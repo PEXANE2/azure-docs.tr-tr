@@ -1,18 +1,18 @@
 ---
-title: VMM bulutlarındaki Hyper-V VM 'lerinin olağanüstü durum kurtarması için Azure Site Recovery olan bir ikincil siteye olağanüstü durum kurtarma desteği matrisi
+title: Azure Site Recovery ile ikincil bir VMM sitesine Hyper-V olağanüstü durum kurtarma desteği matrisi
 description: VMM bulutlarındaki Hyper-V VM çoğaltma desteğini Azure Site Recovery olan ikincil bir siteye özetler.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 46d6cba1d702773639420a3bc5ac74b9c16ce706
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7711ebaaddccd68d4322c1d3ebdd049a57bc709b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933820"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686173"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM 'lerinin ikincil bir siteye olağanüstü durum kurtarması için destek matrisi
 
@@ -56,15 +56,15 @@ Yalnızca aşağıdaki depolama alanına sahip Linux makineleri çoğaltılabili
 
 **Yapılandırma** | **Destekleniyor**  
 --- | --- 
-Konak-NIC Grubu oluşturma | Yes 
-Konak-VLAN | Yes 
-Ana bilgisayar-IPv4 | Yes 
+Konak-NIC Grubu oluşturma | Evet 
+Konak-VLAN | Evet 
+Ana bilgisayar-IPv4 | Evet 
 Ana bilgisayar-IPv6 | Hayır 
 Konuk VM-NIC ekibi oluşturma | Hayır
-Konuk VM-IPv4 | Yes
+Konuk VM-IPv4 | Evet
 Konuk VM-IPv6 | Hayır
-Konuk VM-Windows/Linux-statik IP adresi | Yes
-Konuk VM-çoklu NIC | Yes
+Konuk VM-Windows/Linux-statik IP adresi | Evet
+Konuk VM-çoklu NIC | Evet
 
 
 ## <a name="storage"></a>Depolama
@@ -74,9 +74,9 @@ Konuk VM-çoklu NIC | Yes
 **Depolama (ana bilgisayar)** | **Destekleniyor**
 --- | --- 
 NFS | Yok
-SMB 3.0 |  Yes
-SAN (ISCSı) | Yes
-Çoklu yol (MPIO) | Yes
+SMB 3.0 |  Evet
+SAN (ISCSı) | Evet
+Çoklu yol (MPIO) | Evet
 
 ### <a name="guest-or-physical-server-storage"></a>Konuk veya fiziksel sunucu depolaması
 
@@ -84,19 +84,19 @@ SAN (ISCSı) | Yes
 --- | --- | 
 VMDK |  Yok
 VHD/VHDX | Evet (16 diske kadar)
-Gen 2 VM | Yes
+Gen 2 VM | Evet
 Paylaşılan küme diski | Hayır
 Şifrelenmiş disk | Hayır
 UEFI| Yok
 NFS | Hayır
 SMB 3.0 | Hayır
 RDM | Yok
-Disk > 1 TB | Yes
-Dizili disk > 1 TB olan birim<br/><br/> LVM | Yes
-Depolama alanları | Yes
+Disk > 1 TB | Evet
+Dizili disk > 1 TB olan birim<br/><br/> LVM | Evet
+Depolama alanları | Evet
 Dinamik disk Ekle/Kaldır | Hayır
-Diski hariç tutma | Yes
-Çoklu yol (MPIO) | Yes
+Diski hariç tutma | Evet
+Çoklu yol (MPIO) | Evet
 
 ## <a name="vaults"></a>Kasalar
 

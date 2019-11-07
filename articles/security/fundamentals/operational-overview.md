@@ -4,7 +4,7 @@ description: Bu makalede, Azure operasyonel güvenliğe genel bakış sunulmakta
 services: security
 documentationcenter: na
 author: unifycloud
-manager: barbkess
+manager: rkarlin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 52d74983458a2c6a4de27ec91bc23a8dd9bee387
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899818"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643779"
 ---
 # <a name="azure-operational-security-overview"></a>Azure operasyonel güvenliğe genel bakış
 
@@ -34,19 +34,19 @@ BT operasyon ekibi, bu sistemlerin kararlılığı ve güvenliği de dahil olmak
 
 ### <a name="azure-monitor"></a>Azure İzleyici
 
-[Azure izleyici](/azure/azure-monitor/overview) , yönetilen kaynaklardan verileri Merkezi veri depolarına toplar. Bu veriler, API aracılığıyla sunulan olayları, performans verilerini veya özel verileri içerebilir. Veriler toplandıktan sonra, uyarı, analiz ve dışarı aktarma için kullanılabilir. 
+[Azure izleyici](/azure/azure-monitor/overview) , yönetilen kaynaklardan verileri Merkezi veri depolarına toplar. Bu veriler, API aracılığıyla sunulan olayları, performans verilerini veya özel verileri içerebilir. Veriler toplandıktan sonra, uyarı, analiz ve dışarı aktarma için kullanılabilir.
 
 Verileri çeşitli kaynaklardan birleştirebilir ve mevcut şirket içi ortamınızdan Azure hizmetinizdeki verileri birleştirebilirsiniz. Azure Izleyici günlükleri Ayrıca, tüm eylemlerin tüm veri türlerinde kullanılabilmesi için, verilerin toplanmasını bu verilerde gerçekleştirilen eylemden açıkça ayırır.
 
-### <a name="automation"></a>Otomasyon
+### <a name="automation"></a>Automation
 
 [Azure Otomasyonu](/azure/automation/automation-intro) , bir bulut ve kurumsal ortamda yaygın olarak gerçekleştirilen el ile, uzun süreli, hataya açık ve sık sık tekrarlanan görevleri otomatikleştirmenizi sağlayan bir yol sağlar. Zaman kazandırır ve yönetim görevlerinin güvenilirliğini artırır. Bu görevleri düzenli aralıklarla otomatik olarak gerçekleştirilmesini de zamanlar. İşlem runbook 'ları kullanarak işlemleri otomatikleştirebilir veya Istenen durum yapılandırmasını kullanarak yapılandırma yönetimini otomatik hale getirebilirsiniz.
 
-### <a name="backup"></a>Yedekle
+### <a name="backup"></a>Backup
 
-[Azure Backup](/azure/backup/backup-introduction-to-azure-backup) , Microsoft bulut verilerinizi yedeklemek (veya korumak) ve geri yüklemek Için kullanabileceğiniz Azure tabanlı hizmettir. Azure Backup, mevcut şirket içi veya site dışı yedekleme çözümünüzü güvenilir, güvenli ve maliyet rekabetçi bir bulut tabanlı çözümle değiştirir. 
+[Azure Backup](/azure/backup/backup-introduction-to-azure-backup) , Microsoft bulut verilerinizi yedeklemek (veya korumak) ve geri yüklemek Için kullanabileceğiniz Azure tabanlı hizmettir. Azure Backup, mevcut şirket içi veya site dışı yedekleme çözümünüzü güvenilir, güvenli ve maliyet rekabetçi bir bulut tabanlı çözümle değiştirir.
 
-Azure Backup, karşıdan yüklediğiniz ve uygun bilgisayar ya da sunucuda ya da bulutta dağıttığınız bileşenleri sunar. Dağıtacağınız bileşen veya aracı, korumak istediğiniz nesnelere göre değişiklik gösterir. Tüm Azure Backup bileşenleri (Şirket içi veya bulutta verileri koruduğunuz), verileri Azure 'daki bir Azure kurtarma hizmetleri kasasına yedeklemek için kullanılabilir. 
+Azure Backup, karşıdan yüklediğiniz ve uygun bilgisayar ya da sunucuda ya da bulutta dağıttığınız bileşenleri sunar. Dağıtacağınız bileşen veya aracı, korumak istediğiniz nesnelere göre değişiklik gösterir. Tüm Azure Backup bileşenleri (Şirket içi veya bulutta verileri koruduğunuz), verileri Azure 'daki bir Azure kurtarma hizmetleri kasasına yedeklemek için kullanılabilir.
 
 Daha fazla bilgi için [Azure Backup bileşenleri tablosuna](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use)bakın.
 
@@ -89,7 +89,7 @@ Sanal makinenizin güvenlik ayarlarını ve tehditleri izlemeye yönelik görün
 
 Güvenlik Merkezi, [rol tabanlı Access Control (RBAC)](/azure/role-based-access-control/role-assignments-portal)kullanır. RBAC, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabilecek [yerleşik roller](../../role-based-access-control/built-in-roles.md) sağlar.
 
-Güvenlik Merkezi, güvenlik sorunlarını ve güvenlik açıklarını tanımlamak amacıyla kaynaklarınızın yapılandırmasını değerlendirir. Güvenlik Merkezi 'nde, bir kaynakla ilgili bilgileri, yalnızca bir kaynağın ait olduğu abonelik veya kaynak grubu için sahip, katkıda bulunan veya okuyucu rolüne atadığınız zaman görürsünüz.
+Güvenlik Merkezi, güvenlik sorunlarını ve güvenlik açıklarını belirlemek için kaynaklarınızın yapılandırmasını değerlendirir. Güvenlik Merkezi 'nde, bir kaynakla ilgili bilgileri, yalnızca bir kaynağın ait olduğu abonelik veya kaynak grubu için sahip, katkıda bulunan veya okuyucu rolüne atadığınız zaman görürsünüz.
 
 >[!Note]
 >Güvenlik Merkezi 'nde roller ve izin verilen eylemler hakkında daha fazla bilgi edinmek için bkz. [Azure Güvenlik Merkezi 'Nde izinler](/azure/security-center/security-center-permissions).
@@ -102,7 +102,7 @@ Bulut uygulamanızdaki performans sorunları işinizi etkileyebilir. Birden çok
 
 [Azure izleyici](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) , Azure üzerinde çalışan hizmetleri izlemeye yönelik temel araçtır. Bu, bir hizmetin ve çevreleyen ortamın verimlilik hakkında altyapı düzeyinde veriler sağlar. Uygulamalarınızı Azure 'da yönetiyorsanız ve kaynak ölçeği büyütme veya küçültme konusunda karar verirseniz, Azure Izleyici 'nin başlangıç yeri vardır.
 
-Uygulamanız hakkında derin Öngörüler elde etmek için izleme verilerini de kullanabilirsiniz. Bu bilgi, uygulama performansını veya bakımlılığını iyileştirebilmeniz ya da aksi takdirde el ile müdahale gerektiren eylemleri otomatikleştirmenize yardımcı olabilir. 
+Uygulamanız hakkında derin Öngörüler elde etmek için izleme verilerini de kullanabilirsiniz. Bu bilgi, uygulama performansını veya bakımlılığını iyileştirebilmeniz ya da aksi takdirde el ile müdahale gerektiren eylemleri otomatikleştirmenize yardımcı olabilir.
 
 Azure Izleyici aşağıdaki bileşenleri içerir.
 
@@ -120,7 +120,7 @@ Tanılama günlükleri [etkinlik günlüğünden](/azure/monitoring-and-diagnost
 
 ### <a name="metrics"></a>Ölçümler
 
-Azure Izleyici, Azure 'da iş yüklerinizin performansına ve sistem durumuna ilişkin görünürlük sunan telemetri sağlar. Azure Telemetri verilerinin en önemli türü, çoğu Azure kaynağı [](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) tarafından yayınlanan ölçümleridir (performans sayaçları da denir). Azure Izleyici, izleme ve sorun giderme amacıyla bu ölçümleri yapılandırmak ve kullanmak için çeşitli yollar sağlar.
+Azure Izleyici, Azure 'da iş yüklerinizin performansına ve sistem durumuna ilişkin görünürlük sunan telemetri sağlar. Azure Telemetri verilerinin en önemli türü, çoğu Azure kaynağı tarafından yayınlanan [ölçümleridir](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) (performans sayaçları da denir). Azure Izleyici, izleme ve sorun giderme amacıyla bu ölçümleri yapılandırmak ve kullanmak için çeşitli yollar sağlar.
 
 ### <a name="azure-diagnostics"></a>Azure Tanılama
 
@@ -140,27 +140,29 @@ Ağ Izleyicisi, Azure ağınızı izlemeyi ve tanılamayı basitleştirir. Ağ i
 
 Ağ Izleyicisi Şu anda aşağıdaki yeteneklere sahiptir:
 
-- [Topoloji](/azure/network-watcher/network-watcher-topology-overview): Bir kaynak grubundaki ağ kaynakları arasındaki çeşitli bağlantılar ve ilişkilerin bir görünümünü sağlar.
-- [Değişken paket yakalama](/azure/network-watcher/network-watcher-packet-capture-overview): Sanal bir makinenin içindeki ve içindeki paket verilerini yakalar. Zaman ve boyut sınırlamaları ayarlama gibi gelişmiş filtreleme seçenekleriyle ince ayarlı denetimler çok yönlülük getirir. Paket verileri bir blob deposunda veya. Cap biçimindeki yerel diskte depolanabilir.
-- [IP akışı doğrulama](/azure/network-watcher/network-watcher-ip-flow-verify-overview): Akış bilgileri (hedef IP, kaynak IP, hedef bağlantı noktası, kaynak bağlantı noktası ve protokol) için 5 demet paket parametrelerine bağlı olarak bir pakete izin verilip verilmediğini denetler. Bir güvenlik grubu paketi reddettiğinde, paketi reddeden kural ve Grup döndürülür.
-- [Sonraki atlama](/azure/network-watcher/network-watcher-next-hop-overview): Azure ağ dokusunda yönlendirilmekte olan paketlerin bir sonraki atlamasını belirler; böylece, Kullanıcı tanımlı hatalı yapılandırılmış herhangi bir yolu tanılayabilirsiniz.
-- [Güvenlik grubu görünümü](/azure/network-watcher/network-watcher-security-group-view-overview): Bir VM 'ye uygulanan geçerli ve uygulanan güvenlik kurallarını alır.
-- [Ağ güvenlik grupları Için NSG akış günlükleri](/azure/network-watcher/network-watcher-nsg-flow-logging-overview): Gruptaki güvenlik kuralları tarafından izin verilen veya reddedilen trafikle ilgili günlükleri yakalamanızı sağlar. Akış, 5 demet bilgi tarafından tanımlanır: kaynak IP, hedef IP, kaynak bağlantı noktası, hedef bağlantı noktası ve protokol.
-- [Sanal ağ geçidi ve bağlantı sorunlarını giderme](/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Sanal ağ geçitlerinin ve bağlantılarının sorunlarını giderme özelliği sağlar.
-- [Ağ abonelik limitleri](/azure/network-watcher/network-watcher-monitoring-overview): Ağ kaynak kullanımını sınırlara karşı görüntülemenize olanak sağlar.
-- [Tanılama günlükleri](/azure/network-watcher/network-watcher-monitoring-overview): Bir kaynak grubundaki ağ kaynakları için tanılama günlüklerini etkinleştirmek veya devre dışı bırakmak için tek bir bölme sağlar.
+- [Topoloji](/azure/network-watcher/network-watcher-topology-overview): bir kaynak grubundaki ağ kaynakları arasındaki çeşitli bağlantılar ve ilişkilerin bir görünümünü sağlar.
+- [Değişken paket yakalama](/azure/network-watcher/network-watcher-packet-capture-overview): sanal bir makinenin içindeki ve içindeki paket verilerini yakalar. Zaman ve boyut sınırlamaları ayarlama gibi gelişmiş filtreleme seçenekleriyle ince ayarlı denetimler çok yönlülük getirir. Paket verileri bir blob deposunda veya. Cap biçimindeki yerel diskte depolanabilir.
+- [IP akışı doğrulama](/azure/network-watcher/network-watcher-ip-flow-verify-overview): akış bilgileri (hedef IP, kaynak IP, hedef bağlantı noktası, kaynak bağlantı noktası ve protokol) için 5 demet paket parametrelerine bağlı olarak bir pakete izin verildiğini veya reddedildiğini denetler. Bir güvenlik grubu paketi reddettiğinde, paketi reddeden kural ve Grup döndürülür.
+- [Sonraki atlama](/azure/network-watcher/network-watcher-next-hop-overview): Azure ağ dokusunda yönlendirilmekte olan paketlerin bir sonraki atlamasını belirler; böylece, Kullanıcı tanımlı yanlış yapılandırılmış yollar tanılayabilirsiniz.
+- [Güvenlik grubu görünümü](/azure/network-watcher/network-watcher-security-group-view-overview): bir VM 'ye uygulanan geçerli ve uygulanan güvenlik kurallarını alır.
+- [Ağ güvenlik grupları Için NSG akış günlükleri](/azure/network-watcher/network-watcher-nsg-flow-logging-overview): gruptaki güvenlik kuralları tarafından izin verilen veya reddedilen trafikle ilgili günlükleri yakalamanızı sağlar. Akış, 5 demet bilgi tarafından tanımlanır: kaynak IP, hedef IP, kaynak bağlantı noktası, hedef bağlantı noktası ve protokol.
+- [Sanal ağ geçidi ve bağlantı sorunlarını giderme](/azure/network-watcher/network-watcher-troubleshoot-manage-rest): sanal ağ geçitlerinin ve bağlantılarının sorunlarını giderme özelliğini sağlar.
+- [Ağ abonelik limitleri](/azure/network-watcher/network-watcher-monitoring-overview): ağ kaynak kullanımını sınırlara karşı görüntülemenize olanak sağlar.
+- [Tanılama günlükleri](/azure/network-watcher/network-watcher-monitoring-overview): bir kaynak grubundaki ağ kaynakları için tanılama günlüklerini etkinleştirmek veya devre dışı bırakmak için tek bir bölme sağlar.
 
 Daha fazla bilgi için bkz. [ağ Izleyicisini yapılandırma](/azure/network-watcher/network-watcher-create).
 
 ## <a name="cloud-service-provider-access-transparency"></a>Bulut hizmeti sağlayıcısı erişim saydamlığı
 
-[Microsoft Azure için müşteri kasası](https://azure.microsoft.com/blog/approve-audit-support-access-requests-to-vms-using-customer-lockbox-for-azure/) , bir Microsoft desteği mühendisinin bir sorunu çözmek için verilerinize erişmesi gerekebilme olanağı sunan Azure Portal ile tümleştirilmiş bir hizmettir. Bir Microsoft Desteği mühendisinin bu sorunu çözmek için yükseltilmiş izinler gerektirdiği bir hata ayıklama uzaktan erişim sorunu gibi çok az örnek vardır. Bu gibi durumlarda, Microsoft mühendisleri, hizmetle sınırlı erişime sahip sınırlı ve zamana sınırlı yetkilendirme sağlayan tam zamanında erişim hizmeti kullanır.  
+[Microsoft Azure için müşteri kasası](customer-lockbox-overview.md) , bir Microsoft desteği mühendisinin bir sorunu çözmek için verilerinize erişmesi gerekebilme olanağı sunan Azure Portal ile tümleştirilmiş bir hizmettir.
+Bir Microsoft Desteği mühendisinin bu sorunu çözmek için yükseltilmiş izinler gerektirdiği bir hata ayıklama uzaktan erişim sorunu gibi çok az örnek vardır. Bu gibi durumlarda, Microsoft mühendisleri, hizmetle sınırlı erişime sahip sınırlı ve zamana sınırlı yetkilendirme sağlayan tam zamanında erişim hizmeti kullanır.  
 Microsoft her zaman erişim için müşteri onayı edinirken Müşteri Kasası artık Azure portalından bu istekleri gözden geçirebilir ve onaylayabilir veya reddedebilirsiniz. İstek onaylanana kadar Microsoft destek mühendislerine erişim verilmeyecektir.
 
 ## <a name="standardized-and-compliant-deployments"></a>Standartlaştırılmış ve uyumlu dağıtımlar
 
 [Azure şemaları](/azure/governance/blueprints/overview) , bulut mimarlarını ve merkezi bilgi teknolojisi gruplarını, bir kuruluşun standartlarına, desenlerine ve gereksinimlerine uyan ve bunları uygulayan yinelenebilir bir Azure kaynakları kümesi tanımlamak için etkinleştirir.  
-Bu, DevOps takımlarının yeni ortamları hızlı bir şekilde oluşturup hazırlamanızı ve bunları kurumsal uyumluluğun bulunduğu altyapıyla yaradıklarından güvenmesini mümkün kılar. Planlar çeşitli kaynak şablonlarının ve diğer yapıtların dağıtımını düzenlemek için bildirim temelli bir yol sağlar: 
+Bu, DevOps takımlarının yeni ortamları hızlı bir şekilde oluşturup hazırlamanızı ve bunları kurumsal uyumluluğun bulunduğu altyapıyla yaradıklarından güvenmesini mümkün kılar.
+Planlar çeşitli kaynak şablonlarının ve diğer yapıtların dağıtımını düzenlemek için bildirim temelli bir yol sağlar:
 
 - Rol Atamaları
 - İlke Atamaları
@@ -189,6 +191,6 @@ Yetişkinlere yönelik DevOps uygulayıcıları aşağıdaki uygulamalardan birk
 
 Güvenlik ve Denetim çözümü hakkında bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Güvenlik ve uyumluluk](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Güvenlik ve uyumluluk](https://azure.microsoft.com/overview/trusted-cloud/)
 - [Azure Güvenlik Merkezi](/azure/security-center/security-center-intro)
 - [Azure İzleyici](/azure/azure-monitor/overview)

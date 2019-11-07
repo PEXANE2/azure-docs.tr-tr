@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Merkezi 'nde SQL Information Protection ilkesini özelleştirme | Microsoft Docs
+title: SQL Information Protection 'ı özelleştirme-Azure Güvenlik Merkezi
 description: Azure Güvenlik Merkezi 'nde bilgi koruma ilkelerini özelleştirmeyi öğrenin.
 services: security-center
 documentationcenter: na
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
-ms.translationtype: HT
+ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520800"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664385"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Güvenlik Merkezi 'nde SQL Information Protection ilkesini özelleştirme (Önizleme)
  
-Azure Güvenlik Merkezi 'nde tüm Azure kiracınız için bir SQL Information Protection ilkesi tanımlanabilir ve özelleştirilebilir.
+Azure Güvenlik Merkezi 'nde tüm Azure kiracınız için bir SQL Information Protection ilkesi tanımlayabilir ve özelleştirebilirsiniz.
 
 Information Protection, Azure veri kaynaklarınızda hassas verileri keşfetme, sınıflandırma, etiketleme ve korumanın gelişmiş bir güvenlik özelliğidir. En hassas verilerinizi bulma ve sınıflandırma (iş, finans, Sağlık Hizmetleri, kişisel veriler vb.), kurumsal bilgi koruma ortamınızda bir özetleme rolü yürütebilir. Bu, için altyapı işlevi görebilir:
 - Veri gizliliği standartları ve yasal uyumluluk gereksinimlerini karşılamanıza yardımcı olma
-- Hassas verilere yönelik anormal erişimlerde izleme (denetim) ve uyarı verme gibi çeşitli güvenlik senaryoları
+- Hassas verilere anormal erişimle izleme (denetim) ve uyarı verme gibi güvenlik senaryoları
 - Son derece hassas veriler içeren veri depolarının güvenliğine erişimi denetleme ve güvenliği artırma
  
 [Sql Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) Şu anda Azure SQL veritabanı IÇIN desteklenen SQL veri depolarınız için Bu paradigma uygular. SQL Information Protection, potansiyel olarak hassas verileri otomatik olarak bulur ve sınıflandırır, hassas verileri sınıflandırma öznitelikleriyle kalıcı olarak etiketlemek için etiketleme mekanizması sağlar ve şu şekilde gösterildiği ayrıntılı bir pano sağlar veritabanının sınıflandırma durumu. Ayrıca, hassas verileri çıkaran sorguların açıkça denetlenmesi ve verilerin korunabilmesi için SQL sorgularının sonuç kümesi duyarlılığını hesaplar. SQL Information Protection hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı veri bulma ve sınıflandırma](../sql-database/sql-database-data-discovery-and-classification.md).
@@ -35,7 +35,7 @@ Sınıflandırma mekanizması, sınıflandırma- **Etiketler** ve **bilgi türle
 - **Etiketler** : sütunda depolanan verilerin duyarlılık düzeyini tanımlamak için kullanılan ana sınıflandırma öznitelikleri. 
 - **Bilgi türleri** : sütunda depolanan verilerin türüne ek ayrıntı düzeyi sağlar.
  
-Information Protection, varsayılan olarak kullanılan yerleşik Etiketler ve bilgi türleri kümesiyle birlikte gelir. Bunları özelleştirmek için, Azure Güvenlik Merkezi 'nde bilgi koruma ilkesini özelleştirebilirsiniz.
+Information Protection, varsayılan olarak kullanılan yerleşik Etiketler ve bilgi türleri kümesiyle birlikte gelir. Bu etiketleri ve türleri özelleştirmek için, güvenlik merkezi 'nde bilgi koruma ilkesini özelleştirebilirsiniz.
  
 ## <a name="customize-the-information-protection-policy"></a>Bilgi koruma ilkesini özelleştirme
 Azure kiracınız için Information Protection ilkesini özelleştirmek üzere [kiracının kök yönetim grubunda yönetici ayrıcalıklarına](security-center-management-groups.md)sahip olmanız gerekir. 

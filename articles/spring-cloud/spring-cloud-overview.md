@@ -4,14 +4,14 @@ description: Azure 'da Java Spring uygulamalarını dağıtmak ve yönetmek içi
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: overview
-ms.date: 10/04/2019
+ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: d79ad88cf87e0ac8a08245558233eb92008f11e2
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: MT
+ms.openlocfilehash: 5b5b5d9eba0e643357054cfd1b0c514a159282a1
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163675"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646812"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud nedir?
 
@@ -19,7 +19,7 @@ Azure yay bulutu, Azure 'a Spring Boot tabanlı mikro hizmet uygulamalarının, 
 
 Azure Spring Cloud, Azure ekosisteminin bir parçası olarak depolama, veritabanları, izleme ve daha fazlasını içeren diğer Azure hizmetlerine kolayca bağlamayı sağlar.
 
-Azure yay bulutu Şu anda önizleme aşamasındadır.  Bu hizmete önizleme sırasında erişim için lütfen [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).  Azure yay bulutu önizlemedeyken Microsoft, SLA olmadan sınırlı destek sunuyor.  Önizlemeler sırasında destek hakkında daha fazla bilgi için lütfen bu [destek hakkında SSS](https://azure.microsoft.com/support/faq/)bölümüne bakın.
+Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizlemeler sırasında destek hakkında daha fazla bilgi için lütfen bir [destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)dosya yapın.
 
 Başlamak için [Azure CLI](spring-cloud-quickstart-launch-app-cli.md), [Azure Portal](spring-cloud-quickstart-launch-app-portal.md)veya [Maven](spring-cloud-quickstart-launch-app-maven.md)kullanarak Spring Cloud hızlı başlangıcı ' nı tamamlayın.
 

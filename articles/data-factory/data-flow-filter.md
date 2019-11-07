@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory eşleme veri akışında filtre dönüşümü | Microsoft Docs
+title: Azure Data Factory eşleme veri akışında filtre dönüşümü
 description: Azure Data Factory eşleme veri akışındaki filtre dönüşümünü kullanarak satırları filtreleme
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: a4dd53f37a8a963d05a3ad9c49769528e945f6a1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 77587d007d9bfcdc1461201f676c79880bd89d6b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527381"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676169"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Eşleme veri akışında filtre dönüşümü
 
@@ -37,7 +37,7 @@ Filtre koşulu için bir ifade girmek üzere veri akışı ifade oluşturucusunu
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen akış `CleanData` alan `FilterBefore1960` adlı koşullu bölünmüş dönüşümdir. Filtre koşulu `year <= 1960` ifadedir.
+Aşağıdaki örnek, gelen akış `CleanData`alan `FilterBefore1960` adlı koşullu bölünmüş dönüşümdir. Filtre koşulu `year <= 1960`ifadedir.
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 

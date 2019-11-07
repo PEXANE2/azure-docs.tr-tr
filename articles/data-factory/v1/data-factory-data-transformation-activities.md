@@ -1,5 +1,5 @@
 ---
-title: 'Veri dönüştürme: Veri dönüştürme & işleme | Microsoft Docs'
+title: 'Veri dönüştürme: Işlem & dönüştürme verileri '
 description: Hadoop, Machine Learning veya Azure Data Lake Analytics kullanarak Azure Data Factory veri dönüştürmeyi veya verileri işlemeyi öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9e70877a51c23be2d626492f84a69ae49fb27fac
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3af01ef76421e95f74a65fe597cafff5fa9ef39e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139764"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682620"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory verileri dönüştürme
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "70139764"
 
 Bu makalede, ham verilerinizi tahmine dayalı ve Öngörüler halinde dönüştürmek ve işlerken kullanabileceğiniz Azure Data Factory veri dönüştürme etkinlikleri açıklanmaktadır. Bir dönüştürme etkinliği, Azure HDInsight kümesi veya bir Azure Batch gibi bir bilgi işlem ortamında yürütülür. Her bir dönüştürme etkinliği hakkında ayrıntılı bilgi içeren makalelere bağlantılar sağlar.
 
-Data Factory, işlem hatlarına tek tek veya başka bir etkinlikle zincirleme [](data-factory-create-pipelines.md) olarak eklenebilen aşağıdaki veri dönüştürme etkinliklerini destekler.
+Data Factory, işlem hatlarına tek tek veya başka bir etkinlikle zincirleme [olarak eklenebilen](data-factory-create-pipelines.md) aşağıdaki veri dönüştürme etkinliklerini destekler.
 
 > [!NOTE]
 > Adım adım yönergeler içeren bir anlatım için bkz. [Hive dönüşümle işlem hattı oluşturma](data-factory-build-your-first-pipeline.md) makalesi.  
@@ -64,8 +64,8 @@ Zaman içinde, Machine Learning Puanlama denemeleri 'un tahmine dayalı modeller
 
 Bu Machine Learning etkinlikleri hakkında daha fazla bilgi için bkz. [Machine Learning etkinlikleri kullanma](data-factory-azure-ml-batch-execution-activity.md) . 
 
-## <a name="stored-procedure-activity"></a>Depolanan yordam etkinliği
-Aşağıdaki veri depolarından birinde saklı yordam çağırmak için bir Data Factory Işlem hattındaki SQL Server saklı yordam etkinliğini kullanabilirsiniz: Azure SQL veritabanı, Azure SQL veri ambarı, kuruluşunuzda SQL Server veritabanı veya bir Azure VM. Ayrıntılar için bkz. [saklı yordam etkinliği](data-factory-stored-proc-activity.md) makalesi.  
+## <a name="stored-procedure-activity"></a>Saklı yordam etkinliği
+Aşağıdaki veri depolarından birinde saklı bir yordam çağırmak için bir Data Factory Işlem hattındaki SQL Server saklı yordam etkinliğini kullanabilirsiniz: Azure SQL veritabanı, Azure SQL veri ambarı, kuruluşunuzda SQL Server veritabanı veya bir Azure VM. Ayrıntılar için bkz. [saklı yordam etkinliği](data-factory-stored-proc-activity.md) makalesi.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL etkinliği
 Data Lake Analytics U-SQL etkinliği Azure Data Lake Analytics kümesinde bir U-SQL betiği çalıştırır. Ayrıntılar için bkz. [Data Analytics U-SQL etkinliği](data-factory-usql-activity.md) makalesi. 
@@ -78,8 +78,8 @@ R yüklü HDInsight kümenizde R betiklerini çalıştırmak için özel bir etk
 ## <a name="compute-environments"></a>İşlem ortamları
 İşlem ortamı için bağlı bir hizmet oluşturun ve ardından bir dönüştürme etkinliği tanımlarken bağlı hizmeti kullanın. Data Factory tarafından desteklenen iki tür işlem ortamı vardır. 
 
-1. **Isteğe bağlı**:  Bu durumda, bilgi işlem ortamı Data Factory tarafından tam olarak yönetilir. Bir iş, verileri işlemek ve iş tamamlandığında kaldırılmadan önce Data Factory hizmeti tarafından otomatik olarak oluşturulur. İş yürütme, küme yönetimi ve önyükleme eylemleri için isteğe bağlı işlem ortamının ayrıntılı ayarlarını yapılandırabilir ve kontrol edebilirsiniz. 
-2. **Kendi kendinize getirin**: Bu durumda, Data Factory ' de bir bağlı hizmet olarak kendi bilgi işlem ortamınızı (örneğin HDInsight kümesi) kaydedebilirsiniz. Bilgi işlem ortamı sizin tarafınızdan yönetilir ve Data Factory hizmeti tarafından etkinlikleri yürütmek için kullanılır. 
+1. **İsteğe**bağlı: Bu durumda, bilgi işlem ortamı Data Factory tarafından tam olarak yönetilir. Bir iş, verileri işlemek ve iş tamamlandığında kaldırılmadan önce Data Factory hizmeti tarafından otomatik olarak oluşturulur. İş yürütme, küme yönetimi ve önyükleme eylemleri için isteğe bağlı işlem ortamının ayrıntılı ayarlarını yapılandırabilir ve kontrol edebilirsiniz. 
+2. **Kendinizinkini getir**: Bu durumda, kendi bilgi işlem ortamınızı (örneğin HDInsight kümesi) Data Factory bağlı bir hizmet olarak kaydedebilirsiniz. Bilgi işlem ortamı sizin tarafınızdan yönetilir ve Data Factory hizmeti tarafından etkinlikleri yürütmek için kullanılır. 
 
 Data Factory tarafından desteklenen işlem hizmetleri hakkında bilgi edinmek için bkz. [Işlem bağlantılı hizmetleri](data-factory-compute-linked-services.md) makalesi. 
 
@@ -92,7 +92,7 @@ Azure Data Factory, etkinlikler için aşağıdaki veri dönüştürme etkinlikl
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop Akışı](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
-| [Machine Learning etkinlikleri: Toplu yürütme ve kaynak güncelleştirme](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
+| [Machine Learning etkinlikleri: Toplu Yürütme ve Kaynak Güncelleştirme](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
 | [Saklı Yordam](data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Veri Ambarı veya SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] veya Azure Batch |

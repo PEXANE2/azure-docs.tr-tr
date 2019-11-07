@@ -1,7 +1,7 @@
 ---
-title: Çalışma alanı ve proje nedir? -Özel Translator
+title: Çalışma alanı ve proje nedir? -Özel çevirici
 titleSuffix: Azure Cognitive Services
-description: Çalışma alanı, özel çeviri sisteminizi oluşturmaya ve oluşturmaya yönelik bir çalışma alanıdır. Bir çalışma alanı birden fazla proje, model ve belge içerebilir. Proje, bir model, belge ve test için bir sarmalayıcıdır. Her proje, doğru dil çiftine sahip olan bu çalışma alanına yüklenen tüm belgeleri otomatik olarak içerir.
+description: Bu makalede, bir çalışma alanı ile proje arasındaki farklar ile özel çevirmen hizmeti için Proje kategorileri ve Etiketler açıklanmaktadır.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 23db27ba7b51b0f5a312498dbcb1d0f2741245bb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595349"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647312"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Özel çevirmen çalışma alanı nedir?
 
@@ -41,7 +41,7 @@ Aynı çalışma alanında, farklı kategorilerde aynı dil çifti için projele
 
 Proje etiketi CategoryID 'nin bir parçası olarak kullanılır. Proje etiketi bırakılır veya projeler genelinde aynı şekilde ayarlanırsa, aynı kategoriye ve *farklı* dil çiftlerine sahip projeler aynı kategorili olur. Bu yaklaşım, sizin veya müşterinizin, her proje için benzersiz olan bir KategoriNo hakkında endişelenmeden metin Çeviricisi API 'sini kullanırken diller arasında geçiş yapmasına olanak sağladığından avantajlıdır.
 
-Örneğin, teknoloji etki alanındaki çevirileri İngilizce 'den Fransızca 'ya ve Fransızca 'dan İngilizce 'ye etkinleştirmek istiyorsam, iki proje oluştururdum: biri İngilizce-\> Fransızca, diğeri de Fransızca-\> İngilizce içindir. Her ikisi için de aynı kategoriyi (teknoloji) belirtir ve proje etiketini boş bırakın. Her iki projenin CategoryID 'si de eşleşir, bu nedenle, CategoryID 'umu değiştirmek zorunda kalmadan hem Ingilizce hem de Fransızca çevirileri için API 'yi sorgulayabilir.
+Örneğin, teknoloji etki alanındaki çevirileri Ingilizce 'den Fransızca 'ya ve Fransızca 'dan Ingilizce 'ye etkinleştirmek istiyorsam iki proje oluştururdum: bir adet Ingilizce-\> Fransızca ve Fransızca\> Ingilizce için bir tane. Her ikisi için de aynı kategoriyi (teknoloji) belirtir ve proje etiketini boş bırakın. Her iki projenin CategoryID 'si de eşleşir, bu nedenle, CategoryID 'umu değiştirmek zorunda kalmadan hem Ingilizce hem de Fransızca çevirileri için API 'yi sorgulayabilir.
 
 Bir dil hizmet sağlayıcısıysanız ve aynı kategori ve Dil çiftini koruyan farklı modellerle birden çok müşteriye hizmet vermek istiyorsanız, müşteriler arasında ayrım yapmak için bir proje etiketi kullanılması, bir karar veren bir karardır.
 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 80b33212afa7fed3f87b241d5cf69b43be66574d
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d0ba3195aef246ff49042f61dcec0b4397b5dde6
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755909"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622629"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Kaynak Grafiği sorgu dilini anlama
 
@@ -31,15 +31,15 @@ Kaynak Grafiği Kaynak Yöneticisi kaynak türlerini ve bunların özelliklerini
 |---|---|
 |Kaynaklar |Sorguda tanımlanmazsa varsayılan tablo. Çoğu Kaynak Yöneticisi kaynak türü ve özelliği burada bulunur. |
 |ResourceContainers |Abonelik (Önizleme--`Microsoft.Resources/subscriptions`) ve kaynak grubu (`Microsoft.Resources/subscriptions/resourcegroups`) kaynak türleri ve verileri içerir. |
-|AlertsManagementResources |@No__t_1 _ilgili_ kaynakları içerir. |
-|SecurityResources |@No__t_1 _ilgili_ kaynakları içerir. |
+|AlertsManagementResources |`Microsoft.AlertsManagement`_ilgili_ kaynakları içerir. |
+|SecurityResources |`Microsoft.Security`_ilgili_ kaynakları içerir. |
 
 > [!NOTE]
-> _Kaynaklar_ varsayılan tablodur. _Kaynak_ tablosu sorgulanırken, `join` veya `union` kullanılmazsa tablo adının sağlanması gerekmez. Ancak önerilen uygulama, her zaman sorguya ilk tabloyu dahil etmek için kullanılır.
+> _Kaynaklar_ varsayılan tablodur. _Kaynak_ tablosu sorgulanırken, `join` veya `union` kullanılmadığı sürece tablo adının sağlanması gerekmez. Ancak önerilen uygulama, her zaman sorguya ilk tabloyu dahil etmek için kullanılır.
 
-Her tabloda hangi kaynak türlerinin kullanılabildiğini öğrenmek için portalda kaynak grafiği gezginini kullanın. Alternatif olarak, kaynak türlerinin bir listesini almak için `<tableName> | distinct type` gibi bir sorgu kullanın, belirtilen kaynak grafiği tablosu ortamınızda var olan kaynağı destekler.
+Her tabloda hangi kaynak türlerinin kullanılabildiğini öğrenmek için portalda kaynak grafiği gezginini kullanın. Alternatif olarak, kaynak türlerinin bir listesini almak için `<tableName> | distinct type` gibi bir sorgu kullanın, bu kaynak grafik tablosu ortamınızda mevcut olan
 
-Aşağıdaki sorguda basit bir `join` gösterilmektedir. Sorgu sonucu sütunları bir araya ve birleştirilmiş tablodaki tüm yinelenen sütun adlarını, bu örnekteki _Resourcecontainer_ 'leri **1**' de eklenmiş şekilde harmanlar. _Resourcecontainers_ tablosunda hem abonelikler hem de kaynak grupları için türler olduğundan, _kaynak tablosundan kaynağa_ katılması için her iki tür de kullanılabilir.
+Aşağıdaki sorguda basit bir `join`gösterilmektedir. Sorgu sonucu sütunları bir araya ve birleştirilmiş tablodaki tüm yinelenen sütun adlarını, bu örnekteki _Resourcecontainer_ 'leri **1**' de eklenmiş şekilde harmanlar. _Resourcecontainers_ tablosunda hem abonelikler hem de kaynak grupları için türler olduğundan, _kaynak tablosundan kaynağa_ katılması için her iki tür de kullanılabilir.
 
 ```kusto
 Resources
@@ -47,7 +47,7 @@ Resources
 | limit 1
 ```
 
-Aşağıdaki sorgu `join` ' ın daha karmaşık bir kullanımını gösterir. Sorgu, birleştirilmiş tabloyu abonelik kaynakları ile sınırlandırır ve yalnızca özgün alan _SubscriptionID_ ve _ad_ alanı _SubName_olarak yeniden adlandırılacak `project` ile. Alan yeniden adlandırma `join`, _kaynak_içinde zaten mevcut olduğundan, _name1_ olarak ekleniyor. Özgün tablo `where` ile filtrelenmiştir ve aşağıdaki `project` her iki tablodan sütun içerir. Sorgu sonucu, türünü, anahtar kasasının adını ve içindeki aboneliğin adını gösteren tek bir Anahtar Kasası.
+Aşağıdaki sorgu `join`daha karmaşık bir kullanımını gösterir. Sorgu, birleştirilmiş tabloyu abonelik kaynakları ile sınırlandırır ve `project` yalnızca özgün alan _SubscriptionID_ ve _ad_ alanı, _SubName_olarak yeniden adlandırılır. Alan yeniden adlandırma `join`, _kaynak_içinde zaten mevcut olduğundan, _name1_ olarak eklenmesini önler. Özgün tablo `where` ile filtrelenmiştir ve aşağıdaki `project` her iki tablodan sütun içerir. Sorgu sonucu, türünü, anahtar kasasının adını ve içindeki aboneliğin adını gösteren tek bir Anahtar Kasası.
 
 ```kusto
 Resources
@@ -58,7 +58,7 @@ Resources
 ```
 
 > [!NOTE]
-> @No__t_0 sonuçları `join` `project` ile sınırlandırırken, yukarıdaki örnekteki SubscriptionID, yukarıdaki örnekteki _abonelik_ `project` dahil olmalıdır.
+> `join` sonuçları `join` `project`ile sınırlandırırken, yukarıdaki örnekteki SubscriptionID, yukarıdaki örnekteki _abonelik_ `project`dahil olmalıdır.
 
 ## <a name="supported-kql-language-elements"></a>Desteklenen KQL dil öğeleri
 
@@ -74,21 +74,21 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
 |[ayrı](/azure/kusto/query/distinctoperator) |[Belirli bir diğer ad için farklı değerleri göster](../samples/starter.md#distinct-alias-values) | |
 |[genişletmeyi](/azure/kusto/query/extendoperator) |[Sanal makineleri işletim sistemi türüne göre sayma](../samples/starter.md#count-os) | |
 |[join](/azure/kusto/query/joinoperator) |[Abonelik adı olan Anahtar Kasası](../samples/advanced.md#join) |Birleşim türleri desteklenir: [ınnerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [soltouter](/azure/kusto/query/joinoperator#left-outer-join). Tek bir sorgudaki 3 `join` limiti. Yayın katılımı gibi özel JOIN stratejilerine izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
-|[sınırlı](/azure/kusto/query/limitoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |@No__t_0 eş anlamlı |
+|[sınırlı](/azure/kusto/query/limitoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |`take` eş anlamlı |
 |[MV-Genişlet](/azure/kusto/query/mvexpandoperator) |[Belirli yazma konumlarına sahip Cosmos DB listeleyin](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ maksimum 400 |
-|[siparişi](/azure/kusto/query/orderoperator) |[Ada göre sıralanmış kaynakları listeleme](../samples/starter.md#list-resources) |@No__t_0 eş anlamlı |
+|[siparişi](/azure/kusto/query/orderoperator) |[Ada göre sıralanmış kaynakları listeleme](../samples/starter.md#list-resources) |`sort` eş anlamlı |
 |[Proje](/azure/kusto/query/projectoperator) |[Ada göre sıralanmış kaynakları listeleme](../samples/starter.md#list-resources) | |
 |[Proje-dışarıda](/azure/kusto/query/projectawayoperator) |[Sütunları sonuçlardan kaldır](../samples/advanced.md#remove-column) | |
-|[düzenine](/azure/kusto/query/sortoperator) |[Ada göre sıralanmış kaynakları listeleme](../samples/starter.md#list-resources) |@No__t_0 eş anlamlı |
+|[düzenine](/azure/kusto/query/sortoperator) |[Ada göre sıralanmış kaynakları listeleme](../samples/starter.md#list-resources) |`order` eş anlamlı |
 |[ölçütü](/azure/kusto/query/summarizeoperator) |[Azure kaynaklarını sayma](../samples/starter.md#count-resources) |Yalnızca Basitleştirilmiş ilk sayfa |
-|[almanız](/azure/kusto/query/takeoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |@No__t_0 eş anlamlı |
+|[almanız](/azure/kusto/query/takeoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |`limit` eş anlamlı |
 |[Sayfanın Üstü](/azure/kusto/query/topoperator) |[Ada ve işletim sistemi türüne göre ilk beş sanal makineyi gösterme](../samples/starter.md#show-sorted) | |
-|[birleşim](/azure/kusto/query/unionoperator) |[İki sorgudan alınan sonuçları tek bir sonuç halinde birleştirin](../samples/advanced.md#unionresults) |Tek tablo izin verildi: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=`_ColumnName_ 1 _tablo_. Tek bir sorgudaki 3 `union` Tag sınırı. @No__t_0 bacak tablolarının benzer çözümüne izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
+|[birleşim](/azure/kusto/query/unionoperator) |[İki sorgudan alınan sonuçları tek bir sonuç halinde birleştirin](../samples/advanced.md#unionresults) |Tek tablo izin verildi: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _tablo_. Tek bir sorgudaki 3 `union` Let limiti. `union` bacak tablolarının benzer çözümüne izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
 |[olmadığı](/azure/kusto/query/whereoperator) |[Depolama içeren kaynakları göster](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Kaçış karakterleri
 
-@No__t_0 veya `$` dahil olanlar gibi bazı özellik adları, sorguda sarmalanmış veya kaçışlanmış ya da özellik adının yanlış yorumlanması ve beklenen sonuçları sağlamamalıdır.
+`.` veya `$`dahil olanlar gibi bazı özellik adları, sorguda sarmalanmış veya kaçışlanmış ya da özellik adının yanlış yorumlanması ve beklenen sonuçları sağlamamalıdır.
 
 - `.`-özellik adını şu şekilde kaydırın: `['propertyname.withaperiod']`
   
@@ -98,11 +98,11 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$`-özellik adındaki karakteri kaçış. Kullanılan kaçış karakteri, Shell kaynak grafiğine göre çalıştırılır.
+- `$`, özellik adındaki karakteri kaçış. Kullanılan kaçış karakteri, Shell kaynak grafiğine göre çalıştırılır.
 
-  - **Bash**  -  `\`
+  - **Bash** - `\`
 
-    Bash içinde _\$türünde_ Özellik kaçışlayan örnek sorgu:
+    Bash içindeki özelliğin _\$türünü_ iptal eden örnek sorgu:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
@@ -110,9 +110,9 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
 
   - **cmd** -`$` karakterini kaçış.
 
-  - **PowerShell**  -  ``` ` ```
+  - **PowerShell** - ``` ` ```
 
-    PowerShell 'de _\$türünde_ özelliğin kaçış örnek sorgusu:
+    PowerShell 'de _\$Özellik türünü_ iptal eden örnek sorgu:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
@@ -120,6 +120,6 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Başlangıç sorgularında](../samples/starter.md) kullanılan dil
-- Gelişmiş [sorgularda](../samples/advanced.md) gelişmiş kullanımlar konusuna bakın
-- [Kaynakları keşfetmeyi](explore-resources.md) öğrenin
+- Bkz. [Başlangıç sorgularında](../samples/starter.md)kullanılan dil.
+- Gelişmiş [sorgularda](../samples/advanced.md)gelişmiş kullanımlar bölümüne bakın.
+- [Kaynakları araştırma](explore-resources.md)hakkında daha fazla bilgi edinin.

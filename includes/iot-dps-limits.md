@@ -4,23 +4,23 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: e427a7b80b28f1cc70a02890152f9f2247a8bcd2
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4bd890adcaa4982c52366faed0f2975729290360
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68360293"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612194"
 ---
 Aşağıdaki tabloda, Azure IoT Hub cihaz sağlama hizmeti kaynakları için uygulanan sınırlar listelenmektedir.
 
-| Resource | Sınır |
+| Kaynak | Sınır |
 | --- | --- |
 | Azure aboneliği başına maksimum cihaz sağlama hizmeti | 10 |
 | En fazla kayıt sayısı | 1\.000.000 |
 | En fazla kayıt sayısı | 1\.000.000 |
 | En fazla kayıt grubu sayısı | 100 |
 | CA sayısı üst sınırı | 25 |
-| En fazla bağlantılı IoT Hub sayısı | 10 |
+| En fazla bağlantılı IoT Hub sayısı | 50 |
 | En büyük ileti boyutu | 96 KB|
 
 

@@ -1,5 +1,5 @@
 ---
-title: VMM bulutlarındaki Hyper-V VM 'lerinin Azure Site Recovery bir ikincil siteye çoğaltılmasına yönelik test sonuçları | Microsoft Docs
+title: Azure Site Recovery kullanarak VMM ile ikincil siteye Hyper-V VM çoğaltmasını test etme
 description: Bu makalede, Azure Site Recovery kullanarak VMM bulutlarındaki Hyper-V VM 'lerinin ikincil bir siteye çoğaltılmasına yönelik performans testi hakkında bilgi sağlanır.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: a7413b2dcb24a42092eb2af9816b1d29a8306e19
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68377216"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663182"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>İkincil siteye Hyper-V çoğaltması için test sonuçları
 
@@ -45,7 +45,7 @@ Testin amacı, Site Recovery kararlı durum çoğaltması sırasında nasıl ger
 
 * Hyper-V çoğaltma (Site Recovery tarafından kullanılan), bir günlük dosyasındaki değişiklikleri zaman uyumsuz olarak birincil sunucuda en düşük depolama ek yüküne göre izler.
 * Hyper-V çoğaltma, izleme için ıOPS yükünü en aza indirmek üzere kendi kendine korunan bellek önbelleğini kullanır. Yazma işlemlerini bellekte depoladığında depolar ve günlüğü kurtarma sitesine gönderilmeden önce günlük dosyasına boşaltır. Bir disk temizleme işlemi, yazmaları önceden belirlenmiş bir sınıra ulaşıyorsa da oluşur.
-* Aşağıdaki grafikte, çoğaltma için sabit durum ıOPS ek yükü gösterilmektedir. Çoğaltma nedeniyle ıOPS ek yükünün% 5 ' ün üzerinde olduğunu görebiliriz. Bu, oldukça düşüktür.
+* Aşağıdaki grafikte, çoğaltma için sabit durum ıOPS ek yükü gösterilmektedir. Çoğaltma nedeniyle ıOPS ek yükünün %5 ' ün üzerinde olduğunu görebiliriz. Bu, oldukça düşüktür.
 
   ![Birincil sonuçlar](./media/hyper-v-vmm-performance-results/IC744913.png)
 
@@ -66,7 +66,7 @@ Hyper-V çoğaltma, depolama işlemlerinin sayısını iyileştirmek için kurta
 Kurtarma sitesindeki g/ç işlemlerinin miktarı, birincil sitede yazma işlemi sayısı işlevidir. Birincil sitedeki toplam g/ç işlemleri ve yazma işlemleri ile karşılaştırıldığında, kurtarma sitesindeki toplam g/ç işlemlerine göz atalım. Grafiklerde, kurtarma sitesindeki toplam ıOPS 'nin olduğunu gösterir
 
 * Birincil üzerinde yazma ıOPS 1,5 ' dir.
-* Birincil sitedeki toplam ıOPS 'nin% 37 ' i.
+* Birincil sitedeki toplam ıOPS 'nin %37 ' i.
 
 ![İkincil sonuçlar](./media/hyper-v-vmm-performance-results/IC744917.png)
 
@@ -106,10 +106,10 @@ Sonuçlar, Hyper-V çoğaltmayla bağlanmış Site Recovery açıkça gösterir,
 
 ![Birincil donanım gereksinimleri](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| Sunucusu | RAM | Model | İşlemci | İşlemci sayısı | NIC | Yazılım |
+| Sunucu | RAM | Model | İşlemci | İşlemci sayısı | NIC | Yazılım |
 | --- | --- | --- | --- | --- | --- | --- |
-| Kümedeki Hyper-V sunucuları: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 256 |Dell™ PowerEdge™ R820 |Intel (r) Xeon (r) CPU E5-4620 0 \@ 2.20 GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V role |
-| VMM Sunucusu |2 | | |2 |1 Gbps |Windows Server veritabanı 2012 R2 (x64) + VMM 2012 R2 |
+| Kümedeki Hyper-V sunucuları: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V rolü |
+| VMM sunucusu |2 | | |2 |1 Gbps |Windows Server veritabanı 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>İkincil site
 
@@ -118,12 +118,12 @@ Sonuçlar, Hyper-V çoğaltmayla bağlanmış Site Recovery açıkça gösterir,
 
 ![Birincil donanım belirtimi](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| Sunucusu | RAM | Model | İşlemci | İşlemci sayısı | NIC | Yazılım |
+| Sunucu | RAM | Model | İşlemci | İşlemci sayısı | NIC | Yazılım |
 | --- | --- | --- | --- | --- | --- | --- |
-| Kümedeki Hyper-V sunucuları: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel (r) Xeon (r) CPU E5-2630 0 \@ 2.30 GHz |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V role |
-| ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel (r) Xeon (r) CPU E5-4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V role |
-| ESTLAB-HOST24 |256 |Dell™ PowerEdge™ R820 |Intel (r) Xeon (r) CPU E5-4620 0 \@ 2.20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V role |
-| VMM Sunucusu |2 | | |2 |1 Gbps |Windows Server veritabanı 2012 R2 (x64) + VMM 2012 R2 |
+| Kümedeki Hyper-V sunucuları: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |6400/96 |Dell™ PowerEdge™ R720 |Intel (R) Xeon (R) CPU E5-2630 0 \@ 2.30 GHz |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V rolü |
+| ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V rolü |
+| ESTLAB-HOST24 |256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V rolü |
+| VMM sunucusu |2 | | |2 |1 Gbps |Windows Server veritabanı 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>Sunucu iş yükleri
 
@@ -133,11 +133,11 @@ Sonuçlar, Hyper-V çoğaltmayla bağlanmış Site Recovery açıkça gösterir,
 
 | İş yükü | G/ç boyutu (KB) | Erişim yüzdesi | % Okuma | Bekleyen g/ç | G/ç stili |
 | --- | --- | --- | --- | --- | --- |
-| Dosya Sunucusu |4<br />8<br />16<br />32<br />64 |60%<br />%20<br />%5<br />%5<br />%10 |%80<br />%80<br />%80<br />%80<br />%80 |8<br />8<br />8<br />8<br />8 |Tüm% 100 rastgele |
-| SQL Server (birim 1)<br />SQL Server (birim 2) |8<br />64 |100%<br />100% |70%<br />0% |8<br />8 |% 100 rastgele<br />% 100 sıralı |
-| Exchange |32 |100% |67% |8 |% 100 rastgele |
-| İş istasyonu/VDı |4<br />64 |% 66<br />% 34 |70%<br />% 95 |1\.<br />1\. |Hem% 100 rastgele |
-| Web dosya sunucusu |4<br />8<br />64 |% 33<br />% 34<br />% 33 |% 95<br />% 95<br />% 95 |8<br />8<br />8 |Tüm% 75 rastgele |
+| Dosya Sunucusu |4<br />8<br />16<br />32<br />64 |%60<br />%20<br />%5<br />%5<br />%10 |%80<br />%80<br />%80<br />%80<br />%80 |8<br />8<br />8<br />8<br />8 |Tüm %100 rastgele |
+| SQL Server (birim 1)<br />SQL Server (birim 2) |8<br />64 |%100<br />%100 |%70<br />%0 |8<br />8 |%100 rastgele<br />%100 sıralı |
+| Exchange |32 |%100 |%67 |8 |%100 rastgele |
+| İş istasyonu/VDı |4<br />64 |%66<br />%34 |%70<br />%95 |1<br />1 |Hem %100 rastgele |
+| Web dosya sunucusu |4<br />8<br />64 |%33<br />%34<br />%33 |%95<br />%95<br />%95 |8<br />8<br />8 |Tüm %75 rastgele |
 
 ### <a name="vm-configuration"></a>VM yapılandırması
 
@@ -145,25 +145,25 @@ Sonuçlar, Hyper-V çoğaltmayla bağlanmış Site Recovery açıkça gösterir,
 * VHDX diski olan tüm VM 'Ler.
 * Tabloda özetlenen iş yüklerini çalıştıran VM 'Ler. Tümü VMM şablonlarıyla oluşturulmuştur.
 
-| İş yükü | VM 'Ler | En düşük RAM (GB) | Maksimum RAM (GB) | VM başına mantıksal disk boyutu (GB) | Maksimum ıOPS |
+| İş yükü | VM Sayısı | En düşük RAM (GB) | Maksimum RAM (GB) | VM başına mantıksal disk boyutu (GB) | Maksimum ıOPS |
 | --- | --- | --- | --- | --- | --- |
-| SQL Server |51 |1\. |4 |167 |10 |
-| Exchange Server |71 |1\. |4 |552 |10 |
-| Dosya Sunucusu |50 |1\. |2 |552 |22 |
-| VDI |149 |.5 |1\. |80 |6 |
-| Web sunucusu |149 |.5 |1\. |80 |6 |
-| TOPLAM |470 | | |96,83 TB |4108 |
+| SQL Server |51 |1 |4 |167 |10 |
+| Exchange Server |71 |1 |4 |552 |10 |
+| Dosya Sunucusu |50 |1 |2 |552 |22 |
+| VDı |149 |5 |1 |80 |6 |
+| Web sunucusu |149 |5 |1 |80 |6 |
+| Toplamda |470 | | |96,83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>Site Recovery ayarları
 
 * Site Recovery şirket içi ve şirket içi koruma için yapılandırıldı
 * VMM sunucusunda, Hyper-V küme sunucularını ve bunların sanal makinelerini içeren dört bulut yapılandırılır.
 
-| Birincil VMM bulutu | Korunan VM'ler | Çoğaltma sıklığı | Ek kurtarma noktaları |
+| Birincil VMM bulutu | Korumalı VM'ler | Çoğaltma sıklığı | Ek kurtarma noktaları |
 | --- | --- | --- | --- |
-| PrimaryCloudRpo15m |142 |15 dakika |Yok. |
-| PrimaryCloudRpo30s |47 |30 saniye |Yok. |
-| PrimaryCloudRpo30sArp1 |47 |30 saniye |1\. |
+| PrimaryCloudRpo15m |142 |15 dakika |None |
+| PrimaryCloudRpo30s |47 |30 saniye |None |
+| PrimaryCloudRpo30sArp1 |47 |30 saniye |1 |
 | PrimaryCloudRpo5m |235 |5 dk. |None |
 
 ### <a name="performance-metrics"></a>Performans ölçümleri
@@ -173,12 +173,12 @@ Tablo, dağıtımda ölçülen performans ölçümlerini ve sayaçlarını özet
 | Ölçüm | Sayaç |
 | --- | --- |
 | CPU |\Processor(_Total)\% Processor Time |
-| Uygun bellek |\Bellek\kullanılabilir MBayt |
+| Available memory |\Bellek\kullanılabilir MBayt |
 | IOPS |\Fiziksel disk (_Total) \Disk aktarımı/sn |
-| VM okuma (ıOPS) işlemi/sn |\Hyper-v sanal depolama cihazı (\<VHD >) \okuma işlemi/sn |
-| VM yazma (ıOPS) işlemi/sn |\Hyper-v sanal depolama cihazı (\<VHD >) \yazma işlemleri/sn |
-| VM okuma performansı |\Hyper-v sanal depolama cihazı (\<VHD >) \okunan bayt/sn |
-| VM yazma performansı |\Hyper-v sanal depolama cihazı (\<VHD >) \yazma bayt/sn |
+| VM okuma (ıOPS) işlemi/sn |\Hyper-V sanal depolama cihazı (\<VHD >) \Okuma Işlemi/sn |
+| VM yazma (ıOPS) işlemi/sn |\Hyper-V sanal depolama cihazı (\<VHD >) \Yazma Işlemleri/sn |
+| VM okuma performansı |\Hyper-V sanal depolama cihazı (\<VHD >) \Okunan bayt/sn |
+| VM yazma performansı |\Hyper-V sanal depolama cihazı (\<VHD >) \Yazılan bayt/sn |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

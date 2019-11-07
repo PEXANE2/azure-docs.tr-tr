@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: bcc272a8189ebb175f546f6a50c2c117a7975216
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 44f31a8c9e5b47fdcc62c87f6181a3812697aa4b
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800174"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622618"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Büyük Azure Kaynak veri kümeleriyle çalışma
 
@@ -24,7 +24,7 @@ Yüksek bir sıklıkta sorgularla çalışmaya ilişkin yönergeler için bkz. [
 Varsayılan olarak, kaynak Graph tüm sorgular yalnızca **100** kayıt döndürüyor şekilde kısıtlar. Bu denetim, büyük veri kümelerine yol açacak istemeden yapılan sorgulardan hem kullanıcıyı hem de hizmeti korur. Bu olay çoğu zaman bir müşteri, kaynakları belirli ihtiyaçlarına uygun şekilde bulmak ve filtrelemek için sorguları deneydiğinde oluşur. Bu denetim, sonuçları sınırlamak için [üst](/azure/kusto/query/topoperator) veya Azure Veri Gezgini Dil işleçlerini [sınırlandırtan](/azure/kusto/query/limitoperator) farklıdır.
 
 > [!NOTE]
-> **İlk**olarak, sonuçları `asc` veya `desc` olan en az bir sütuna göre sıralamak önerilir. Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
+> **İlk**kullanıldığında, sonuçları `asc` veya `desc`en az bir sütuna göre sıralamak önerilir. Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
 
 Varsayılan sınır, kaynak Graph ile etkileşimde bulunmak için tüm yöntemler aracılığıyla geçersiz kılınabilir. Aşağıdaki örneklerde veri kümesi boyut sınırının _200_olarak nasıl değiştirileceği gösterilmektedir:
 
@@ -47,7 +47,7 @@ _En kısıtlayıcı_ olan denetim kazanacaktır. Örneğin, sorgunuz **top** vey
 Büyük veri kümeleriyle çalışma için sonraki seçenek, **atlama** denetimidir. Bu denetim, sorgunuzun sonuçları döndürmeden önce tanımlanan kayıt sayısını atlamasını veya atlamasını sağlar. **Skip** , sonuçları, sonuç kümesinin ortasında bir yerde bir yere alacağınız anlamlı bir şekilde sıralayan sorgular için yararlıdır. Gereken sonuçlar döndürülen veri kümesinin sonunda ise, farklı bir sıralama yapılandırması kullanmak ve bunun yerine veri kümesinin en üstünden sonuçları almak daha etkilidir.
 
 > [!NOTE]
-> **Atla**kullanırken sonuçları en az bir sütundan `asc` veya `desc` ' ye göre sıralamak önerilir. Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
+> **Atla**kullanırken, sonuçları `asc` veya `desc`en az bir sütuna göre sıralamak önerilir. Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
 
 Aşağıdaki örneklerde, bir sorgunun neden olacağı ilk _10_ kaydın nasıl atlanacağını, bunun yerine 11. kayıt ile döndürülen sonuç kümesini başlatmak gösterilmektedir:
 
@@ -171,4 +171,4 @@ response = client.resources(request)
 
 - Bkz. [Başlangıç sorgularında](../samples/starter.md)kullanılan dil.
 - Gelişmiş [sorgularda](../samples/advanced.md)gelişmiş kullanımlar bölümüne bakın.
-- [Kaynakları keşfetmeye](explore-resources.md)öğrenin.
+- [Kaynakları araştırma](explore-resources.md)hakkında daha fazla bilgi edinin.

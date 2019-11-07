@@ -1,7 +1,7 @@
 ---
-title: Projenizi 3,0 API 'sine geçirme
+title: Projenizi 3,0 API 'sine güncelleştirme
 titleSuffix: Azure Cognitive Services
-description: Özel Görüntü İşleme projelerini API 'nin önceki sürümünden 3,0 API 'sine geçirmeyi öğrenin.
+description: Özel Görüntü İşleme projelerini API 'nin önceki sürümünden 3,0 API 'sine güncelleştirme hakkında bilgi edinin.
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
-ms.openlocfilehash: 353fc0a2d8396def17b8e23d9a1c685c755349c5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c134f30b124113a23df0e73cd1bbc8209e335183
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560896"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647493"
 ---
-# <a name="migrate-to-the-30-api"></a>3,0 API 'sine geçiş
+# <a name="update-to-the-30-api"></a>3,0 API 'sine güncelleştirme
 
 Özel Görüntü İşleme artık genel kullanılabilirliğe ulaştı ve bir API güncelleştirmesi gerçekleştirdi.
 Bu güncelleştirme, birkaç yeni özellik ve daha önemlisi bazı önemli değişiklikler içerir:
@@ -52,13 +52,6 @@ Bir yineleme eğitilirken, **[Publishyineleme](https://southcentralus.dev.cognit
 > Bu bilgileri [Azure portalından](https://portal.azure.com) özel görüntü işleme tahmin kaynağına giderek ve **Özellikler**' i seçerek de alabilirsiniz.
 
 Yineleme yayımlandıktan sonra, uygulamalar bu adı tahmin API çağrısında belirterek tahmin için kullanabilir. Bir yinelemeyi tahmin çağrıları için kullanılamaz hale getirmek için **[Unpublishıteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** API 'sini kullanın.
-
-## <a name="additional-export-options"></a>Ek dışarı aktarma seçenekleri
-
-3,0 API 'Leriyle iki ek dışarı aktarma hedefi kullanıma sunuyoruz: ARM mimarisi ve Vision AI geliştirici seti.
-
-* ARM 'yi kullanmak için, yalnızca bir Compact etki alanı seçip DockerFile öğesini ve ardından dışa aktarma seçenekleri olarak ARM 'yi seçmeniz gerekir.
-* Vision AI Dev Kit için, projenin __Genel (Compact)__ etki alanıyla oluşturulması ve hedef dışa aktarma platformları bağımsız değişkeninde vaıdk belirtilmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

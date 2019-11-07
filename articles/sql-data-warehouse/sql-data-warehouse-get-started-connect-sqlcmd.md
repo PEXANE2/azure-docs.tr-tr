@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Veri Ambarı'na Bağlanma sqlcmd | Microsoft Belgeleri
+title: Sqlcmd ile bağlanma
 description: Azure SQL veri ambarına bağlanmak ve bu ambarı sorgulamak için sqlcmd komut satırı yardımcı programını kullanın.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e4b432e0be0cdded5089965b9d272aa82e31bd36
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479499"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685742"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>sqlcmd ile SQL Data Warehouse'a bağlanma
 > [!div class="op_single_selector"]
@@ -30,16 +31,16 @@ ms.locfileid: "68479499"
 Azure SQL veri ambarına bağlanmak ve bu ambarı sorgulamak için [sqlcmd][sqlcmd] komut satırı yardımcı programını kullanın.  
 
 ## <a name="1-connect"></a>1. Bağlan
-**Sqlcmd** kullanmaya başlamadan önce komut istemini açın ve [sqlcmd][sqlcmd] öğesinden sonra SQL Veri Ambarı veritabanınızın bağlantı dizesini girin. Bağlantı dizesi için aşağıdaki parametreler gereklidir:
+[Sqlcmd][sqlcmd] kullanmaya başlamadan önce komut istemini açın ve **sqlcmd** öğesinden sonra SQL Veri Ambarı veritabanınızın bağlantı dizesini girin. Bağlantı dizesi için aşağıdaki parametreler gereklidir:
 
-* **Sunucu (-S):** Sunucu adı `<``>`. Database.Windows.net biçiminde sunucu
-* **Veritabanı (-d):** Veritabanı adı.
-* **Alıntılanmış tanımlayıcıları etkinleştir (-ı):** Bir SQL veri ambarı örneğine bağlanmak için tırnak işareti tanımlayıcıları etkinleştirilmelidir.
+* **Server (-S):** `<`Sunucu Adı`>`.database.windows.net biçiminde belirtilmiş sunucu
+* **Database (-d):** Veritabanı adı.
+* **Tırnak İşaretli Tanımlayıcıları Etkinleştir (-I):** Bir SQL Veri Ambarı örneğine bağlanmak için tırnak işaretli tanımlayıcıların etkinleştirilmesi gerekir.
 
 SQL Server Kimlik Doğrulamasını kullanmak için kullanıcı adı/parola parametrelerini eklemeniz gerekir:
 
-* **Kullanıcı (-U):** Kullanıcı biçimindeki `<`sunucu kullanıcısı`>`
-* **Parola (-P):** Kullanıcıyla ilişkili parola.
+* **User (-U):** `<`Kullanıcı`>` biçimindeki sunucu kullanıcısı
+* **Password (-P):** Kullanıcıyla ilişkili parola.
 
 Örneğin, bağlantı dizeniz aşağıdaki gibi görünebilir:
 
@@ -62,7 +63,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > 
 > 
 
-## <a name="2-query"></a>2. Sorgu
+## <a name="2-query"></a>2. sorgu
 Bağlantının ardından desteklenen herhangi bir Transact-SQL deyimini örnekte yayımlayabilirsiniz.  Bu örnekte sorgular etkileşimli modda gönderilir.
 
 ```sql

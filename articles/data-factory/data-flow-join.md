@@ -1,5 +1,5 @@
 ---
-title: Dönüştürme Azure Data Factory eşleme veri akışında Birleştir | Microsoft Docs
+title: Azure Data Factory eşleme veri akışında dönüştürmeyi birleştirin
 description: Azure Data Factory eşleme veri akışındaki birleştirme dönüşümünü kullanarak iki veri kaynağından verileri birleştirme
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 78de9f2bedfc36add567053e1de47e8893bfaf3c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4680804017a9b08248bb41ff999c6ba6371e99c8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596976"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675923"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi Birleştir
 
@@ -32,7 +32,7 @@ Sol dış birleşim, sol akıştaki tüm satırları ve doğru akıştan eşleş
 
 ### <a name="right-outer"></a>Sağ dış
 
-Sol dış birleşim, sol akıştaki doğru akıştaki ve eşleşen kayıtlardan tüm satırları döndürür. Doğru akıştaki bir satırda eşleşme yoksa, doğru akıştaki çıkış sütunları NULL olarak ayarlanır. Çıktı, bir iç birleşim ile döndürülen satırlar ve doğru akıştan eşleşmeyen satırlar olacaktır.
+Sağ dış birleşim, sol akıştaki doğru akıştaki ve eşleşen kayıtlardan tüm satırları döndürür. Doğru akıştaki bir satırda eşleşme yoksa, sol akıştaki çıkış sütunları NULL olarak ayarlanır. Çıktı, bir iç birleşim ile döndürülen satırlar ve doğru akıştan eşleşmeyen satırlar olacaktır.
 
 ### <a name="full-outer"></a>Tam dış
 
@@ -83,7 +83,7 @@ Hata ayıklama modundaki veri önizlemesiyle JOIN dönüştürmelerinin test edi
 
 ### <a name="inner-join-example"></a>İç birleşim örneği
 
-Aşağıdaki örnek, `JoinMatchedData` adlı bir JOIN dönüştürmedir `TripData` ve sağ Akış `TripFare`.  JOIN koşulu, her akıştaki `hack_license`, `medallion`, `vendor_id` ve `pickup_datetime` sütunları eşleşiyorsa true döndüren ifadedir `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}`. @No__t_0 `'inner'`. @No__t_0 `'left'` değer olduğundan, yalnızca sol akışta yayını etkinleştiriyoruz.
+Aşağıdaki örnek, `JoinMatchedData` adlı bir JOIN dönüştürmedir `TripData` ve sağ Akış `TripFare`.  JOIN koşulu, her akıştaki `hack_license`, `medallion`, `vendor_id`ve `pickup_datetime` sütunları eşleşiyorsa true döndüren ifadedir `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}`. `joinType` `'inner'`. `broadcast` `'left'`değer olduğundan, yalnızca sol akışta yayını etkinleştiriyoruz.
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
@@ -105,7 +105,7 @@ TripData, TripFare
 
 ### <a name="cross-join-example"></a>Çapraz ekleme örneği
 
-Aşağıdaki örnek, `CartesianProduct` adlı bir JOIN dönüştürmedir `TripData` ve sağ Akış `TripFare`. Bu dönüşüm iki akış alır ve satırlarının Kartezyen bir ürününü döndürür. Tam bir Kartezyen ürün çıkış yaptığından, JOIN koşulu `true()`. @No__t_1 `joinType`. @No__t_0 `'left'` değer olduğundan, yalnızca sol akışta yayını etkinleştiriyoruz.
+Aşağıdaki örnek, `CartesianProduct` adlı bir JOIN dönüştürmedir `TripData` ve sağ Akış `TripFare`. Bu dönüşüm iki akış alır ve satırlarının Kartezyen bir ürününü döndürür. Tam bir Kartezyen ürün çıkış yaptığından, JOIN koşulu `true()`. `cross``joinType`. `broadcast` `'left'`değer olduğundan, yalnızca sol akışta yayını etkinleştiriyoruz.
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 

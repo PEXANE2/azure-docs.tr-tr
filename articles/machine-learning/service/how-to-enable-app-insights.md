@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9da057683f3da41f077b309db79271a10738b59d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: c02c502dc2ab85a6ae1c602c53723e9b5a758250
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490001"
+ms.locfileid: "73576749"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web hizmeti uç noktalarından verileri izleme ve toplama
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Bu makalede, Azure Application Insights etkinleştirerek Azure Kubernetes Servic
 [Azure Application Insights hakkında daha fazla bilgi edinin](../../azure-monitor/app/app-insights-overview.md). 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
@@ -60,7 +60,7 @@ Azure portal Azure Application Insights etkinleştirebilir ve devre dışı bır
 
 1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin. 
 
-### <a name="disable"></a>Devre dışı bırakma
+### <a name="disable"></a>Devre Dışı Bırak
 1. [Azure Portal](https://portal.azure.com), çalışma alanınızı açın.
 1. **Dağıtımlar**' ı seçin, hizmeti seçin ve ardından **Düzenle**' yi seçin.
 
@@ -112,39 +112,6 @@ Azure Application Insights 'yi devre dışı bırakmak için aşağıdaki kodu k
 ## replace <service_name> with the name of the web service
 <service_name>.update(enable_app_insights=False)
 ```
-    
-## <a name="use-studio-to-configure"></a>Yapılandırmak için Studio 'yu kullanın
-
-Azure Machine Learning Studio 'da Application Insights etkinleştirebilir ve devre dışı bırakabilirsiniz.
-
-1. [Azure Machine Learning Studio](https://ml.azure.com)'da, çalışma alanınızı açın.
-
-1. **Dağıtımlar** sekmesinde Application Insights etkinleştirmek istediğiniz hizmeti seçin.
-
-   [Dağıtımlar sekmesindeki hizmetlerin listesini ![](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
-
-3. **Düzenle**’yi seçin.
-
-   [![Düzenle düğmesi](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. **Gelişmiş ayarlar**' da **Appınsights tanılamayı etkinleştir** onay kutusunu seçin.
-
-   [Tanılamayı etkinleştirmek için seçili ![onay kutusu](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin. 
-
-### <a name="disable"></a>Devre dışı bırakma
-1. [Azure Machine Learning Studio](https://ml.azure.com)'da, çalışma alanınızı açın.
-1. **Dağıtımlar**' ı seçin, hizmeti seçin ve **Düzenle**' yi seçin.
-
-   [![Düzenle düğmesini kullanma](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. **Gelişmiş ayarlar**' da **Appınsights tanılamayı etkinleştir** onay kutusunu temizleyin. 
-
-   [Tanılamayı etkinleştirmek için ![temizlenmiş onay kutusu](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin. 
- 
 
 ## <a name="evaluate-data"></a>Verileri değerlendir
 Hizmetinizin verileri, Azure Application Insights hesabınızda, Azure Machine Learning ile aynı kaynak grubu içinde depolanır.

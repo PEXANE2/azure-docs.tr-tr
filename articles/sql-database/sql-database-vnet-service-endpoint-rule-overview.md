@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 'de tek ve havuza alınmış veritabanlarının VNet uç noktaları ve kuralları | Microsoft Docs
+title: "Azure SQL 'de tek ve havuza alınmış veritabanlarının VNet uç noktaları ve kuralları "
 description: Bir alt ağı bir sanal ağ hizmeti uç noktası olarak işaretleyin. Ardından, Azure SQL veritabanınızın ACL 'ye bir sanal ağ kuralı olarak uç nokta. SQL veritabanı bundan sonra tüm sanal makinelerden ve alt ağdaki diğer düğümlerden gelen iletişimi kabul eder.
 services: sql-database
 ms.service: sql-database
@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 5506f95d532f69286bf29ec8916485bd63ce94da
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: e1f8ab6725c58d9e1f15f88e6d2465ab88df79e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828821"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686905"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Veritabanı sunucuları için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 
 *Sanal ağ kuralları* , tek veritabanlarınıza yönelik veritabanı sunucusunun ve Azure [SQL veritabanı](sql-database-technical-overview.md) 'ndaki elastik havuzunuzun ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'ndaki veritabanlarınızın iletişim kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir Bu, sanal ağlardaki belirli alt ağlardan gönderilir. Bu makalede, Azure SQL veritabanınıza ve SQL veri ambarınıza yönelik iletişimin güvenli bir şekilde yapılmasına olanak tanımak için sanal ağ kuralı özelliğinin neden bazen en iyi seçenektir.
 
 > [!IMPORTANT]
-> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Basitlik için SQL veritabanı hem SQL veritabanı hem de SQL veri ambarı 'na başvururken kullanılır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası olmadığından Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için uygulanmıyor.*
+> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası olmadığından Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için uygulanmıyor.*
 
 Bir sanal ağ kuralı oluşturmak için öncelikle kuralın başvurması için bir [sanal ağ hizmet uç noktası][vm-virtual-network-service-endpoints-overview-649d] olması gerekir.
 
@@ -53,7 +53,7 @@ Her bir sanal ağ kuralı yalnızca sunucudaki belirli bir veritabanına değil,
 
 Sanal ağ hizmet uç noktalarının yönetiminde güvenlik rollerinin bir ayrımı vardır. Aşağıdaki rollerden her biri için eylem gereklidir:
 
-- **Ağ Yöneticisi:** &nbsp; bitiş noktasını açın.
+- **Ağ Yöneticisi:** uç noktayı açmak &nbsp;.
 - **Veritabanı Yöneticisi:** &nbsp; belirtilen alt ağı SQL veritabanı sunucusuna eklemek için erişim denetim LISTESINI (ACL) güncelleştirin.
 
 *RBAC alternatifi:*
@@ -93,7 +93,7 @@ Azure SQL veritabanı için hizmet uç noktaları kullanırken aşağıdaki nokt
 
 ### <a name="expressroute"></a>ExpressRoute
 
-Şirket içinde genel eşleme veya Microsoft eşlemesi için [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) kullanıyorsanız, kullanılan NAT IP adreslerini belirlemeniz gerekir. Genel eşleme için, her ExpressRoute bağlantı hattı, trafik Microsoft Azure ağ omurgasına girdiğinde Azure hizmet trafiğine uygulanan iki NAT IP adresi kullanır. Microsoft eşlemesi için, kullanılan NAT IP adresleri müşteri tarafından sağlanmış veya hizmet sağlayıcısı tarafından sağlanır. Hizmet kaynaklarınıza erişime izin vermek için, bu genel IP adreslerine kaynak IP güvenlik duvarı ayarında izin vermeniz gerekir. Genel eşleme ExpressRoute bağlantı hattı IP adreslerinizi bulmak için, Azure portal aracılığıyla [ExpressRoute ile bir destek bileti açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) . [ExpressRoute genel ve Microsoft eşlemesi Için NAT](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering) hakkında daha fazla bilgi edinin.
+Şirket içinde genel eşleme veya Microsoft eşlemesi için [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) kullanıyorsanız, kullanılan NAT IP adreslerini belirlemeniz gerekir. Ortak eşleme için, her bir ExpressRoute varsayılan olarak bağlantı hattında trafik Microsoft Azure omurga ağına girdiğinde Azure hizmet trafiğine uygulanan iki NAT IP adresi kullanılır. Microsoft eşlemesi için, kullanılan NAT IP adresleri müşteri tarafından sağlanır veya hizmet sağlayıcısı tarafından sağlanır. Hizmet kaynaklarınıza erişime izin vermek için, bu genel IP adreslerine kaynak IP güvenlik duvarı ayarında izin vermeniz gerekir. Ortak eşleme ExpressRoute bağlantı hattı IP adreslerinizi bulmak için Azure portalında [ExpressRoute ile bir destek bileti açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). [ExpressRoute genel ve Microsoft eşlemesi için NAT](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering) hakkında daha fazla bilgi edinin.
   
 Bağlantı hattınızdan Azure SQL veritabanı 'na yönelik iletişime izin vermek için NAT 'nizin genel IP adresleri için IP ağ kuralları oluşturmanız gerekir.
 
@@ -112,7 +112,7 @@ Azure depolama, Azure depolama hesabınızla olan bağlantıyı sınırlandırma
 
 PolyBase, Azure depolama hesaplarından Azure SQL veri ambarı 'na veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca bir VNet-alt ağ kümesine sınırlandırırsanız, PolyBase 'den hesaba bağlantı kesilir. VNet ile güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SQL veri ambarı ile hem PolyBase içeri ve dışarı aktarma senaryolarını etkinleştirmek için aşağıda belirtilen adımları izleyin:
 
-#### <a name="prerequisites"></a>Prerequisites
+#### <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -191,19 +191,19 @@ Bağlantı hatası 40914, Azure portal güvenlik duvarı bölmesinde belirtilen 
 
 *İleti metni:* Oturum açma tarafından istenen ' *[sunucu-adı]* ' sunucusu açılamıyor. İstemcinin sunucuya erişmesine izin verilmiyor.
 
-*Hata açıklaması:* İstemci, sanal ağ sunucusu uç noktaları olan bir alt ağda bulunur. Ancak Azure SQL veritabanı sunucusunda SQL veritabanıyla iletişim kurmak için gereken alt ağa izin veren bir sanal ağ kuralı yok.
+*Hata açıklaması:* İstemci, sanal ağ sunucusu uç noktaları olan bir alt ağda bulunur. Ancak Azure SQL Veritabanı sunucusunda, alt ağa SQL Veritabanı ile iletişim kurma hakkı veren bir sanal ağ kuralı yok.
 
 *Hata çözümleme:* Azure portal güvenlik duvarı bölmesinde, alt ağa yönelik [bir sanal ağ kuralı eklemek](#anchor-how-to-by-using-firewall-portal-59j) için sanal ağ kuralları denetimini kullanın.
 
 ### <a name="error-40615"></a>Hata 40615
 
-*İleti metni:* Oturum açma tarafından istenen ' {0} ' sunucusu açılamıyor. ' @No__t-0 ' IP adresine sahip istemcinin sunucuya erişmesine izin verilmiyor.
+*İleti metni:* Oturum açma tarafından istenen '{0}' sunucusu açılamıyor. '{1}' IP adresine sahip istemcinin sunucuya erişmesine izin verilmiyor.
 
-*Hata açıklaması:* İstemci, Azure SQL veritabanı sunucusuna bağlanma yetkisine sahip olmayan bir IP adresinden bağlanmaya çalışıyor. Sunucu güvenlik duvarında, bir istemcinin verilen IP adresinden SQL veritabanı ile iletişim kurmasına izin veren bir IP adresi kuralı yok.
+*Hata açıklaması:* İstemci, Azure SQL veritabanı sunucusuna bağlanma yetkisine sahip olmayan bir IP adresinden bağlanmaya çalışıyor. Sunucu güvenlik duvarında, istemcinin belirtilen IP adresinden SQL Veritabanı ile iletişim kurmasına izin veren bir IP adresi kuralı yok.
 
-*Hata çözümleme:* İstemcinin IP adresini bir IP kuralı olarak girin. Bunu, Azure portal güvenlik duvarı bölmesini kullanarak yapın.
+*Hata çözümleme:* İstemcinin IP adresini bir IP kuralı olarak girin. Bu işlemi Azure portalındaki Güvenlik Duvarı bölmesini kullanarak yapabilirsiniz.
 
-Çeşitli SQL veritabanı hata iletilerinin listesi [burada][sql-database-develop-error-messages-419g]belgelenmiştir.
+Birkaç SQL Veritabanı hata iletisi, liste olarak [burada][sql-database-develop-error-messages-419g] bulunabilir.
 
 <a name="anchor-how-to-by-using-firewall-portal-59j" />
 
@@ -226,7 +226,7 @@ Dahili olarak, SQL VNet eylemleri için PowerShell cmdlet 'leri REST API 'Leri �
 
 - [Sanal ağ kuralları: Işlemler][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *türü adıyla* etiketlenmiş bir alt ağa sahip olmanız gerekir.
 
@@ -237,7 +237,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 
 ## <a name="azure-portal-steps"></a>Azure portal adımları
 
-1. [Azure Portal][http-azure-portal-link-ref-477t]oturum açın.
+1. [Azure portalında][http-azure-portal-link-ref-477t] oturum açın.
 
 2. Ardından portalda **SQL server** &gt; **güvenlik duvarı/sanal ağlar**'a gidin.
 
@@ -254,7 +254,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 
     > [!TIP]
     > Alt ağınız için doğru **Adres önekini** dahil etmeniz gerekir. Değeri portalda bulabilirsiniz.
-    > Tüm **kaynaklara** &gt; tüm &gt; **sanal ağ** **türlerine** gidin. Filtre, sanal ağlarınızı görüntüler. Sanal ağınıza ve ardından **alt ağlar**' a tıklayın. **Adres aralığı** sütunu, Ihtiyacınız olan adres ön ekine sahiptir.
+    > Tüm **kaynaklara** &gt; tüm **türler** &gt; **sanal ağlar**' a gidin. Filtre, sanal ağlarınızı görüntüler. Sanal ağınıza ve ardından **alt ağlar**' a tıklayın. **Adres aralığı** sütunu, Ihtiyacınız olan adres ön ekine sahiptir.
 
     ![Yeni kural için alanları doldur.][image-portal-firewall-create-update-vnet-rule-20-png]
 
@@ -273,7 +273,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 
 <a name="anchor-how-to-links-60h" />
 
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 
 - [Azure sanal ağ hizmet uç noktaları][vm-virtual-network-service-endpoints-overview-649d]
 - [Azure SQL veritabanı sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları][sql-db-firewall-rules-config-715d]

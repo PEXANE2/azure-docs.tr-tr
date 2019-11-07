@@ -1,7 +1,7 @@
 ---
 title: Belgeyi karşıya yükleme-özel çevirici
 titleSuffix: Azure Cognitive Services
-description: Belge karşıya yükleme özelliğini kullanarak, traınlarınız için paralel belgeyi karşıya yükleyebilirsiniz. Paralel belgeler, birinin diğerinin çevirisi olduğu belge çiftleridir. Çiftteki bir belge kaynak dilde cümleler içeriyor ve diğer belge, hedef dile çevrilmiş olan bu cümleleri içeriyor.
+description: Belgeyi karşıya yükleme özelliği paralel belgeleri (biri kaynağın kaynağı ve diğeri ise çeviri olduğu iki belge) hizmete yükler.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f2bd6103c27d455265ee967554fb27513f78a472
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595639"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647377"
 ---
 # <a name="upload-a-document"></a>Bir belgeyi karşıya yükleme
 
@@ -37,27 +37,27 @@ Belgeler sayfasına gitmek için [özel çevirmen](https://portal.customtranslat
 
     a.  Belge türü:
 
-    -  Eğitim: Bu belge (ler), eğitim kümesi için kullanılacaktır.
-    -  Ayarlarını Bu belgeler, ayarlama kümesi için kullanılacaktır.
-    -  Edici Bu belgeler, test kümesi için kullanılacaktır.
+    -  Eğitim: Bu belgeler, eğitim kümesi için kullanılacaktır.
+    -  Ayarlama: Bu belgeler, ayarlama kümesi için kullanılacaktır.
+    -  Test: Bu belgeler, test kümesi için kullanılacaktır.
     -  Tümcecik sözlüğü: Bu belgeler, tümcecik sözlüğü için kullanılacaktır.
     -  Tümce sözlüğü: Bu belgeler, tümce sözlüğü için kullanılacak
 
     b.  Dil çifti
 
-    c.  Varsa belgeyi geçersiz kıl: Aynı ada sahip mevcut belgelerin üzerine yazmak istiyorsanız bu onay kutusunu işaretleyin.
+    c.  Varsa belgeyi geçersiz kıl: aynı ada sahip mevcut belgelerin üzerine yazmak istiyorsanız bu onay kutusunu Işaretleyin.
 
     d.  Paralel veriler ya da Birleşik veri verileri için ilgili bölümü girin.
 
     -  Paralel veriler:
-        -  Kaynak dosya: Yerel bilgisayarınızdan kaynak dil dosyası ' nı seçin.
-        -  Hedef dosya: Yerel bilgisayarınızdan hedef dil dosyasını seçin.
-        -  Belge adı: Yalnızca paralel dosyaları karşıya yüklüyorsanız kullanılır.
+        -  Kaynak dosya: yerel bilgisayarınızdan kaynak dil dosyasını seçin.
+        -  Hedef dosya: yerel bilgisayarınızdan hedef dil dosyasını seçin.
+        -  Belge adı: yalnızca paralel dosyaları karşıya yüklüyorsanız kullanılır.
 
     - Birleşik veri verileri:
-        -  Birleşik giriş dosyası: Yerel bilgisayarınızdan Birleşik giriş dosyasını seçin. Birleşik dosyanızın her ikisi de kaynak ve hedef dil cümlelerinizi içerir. [Adlandırma kuralı](document-formats-naming-convention.md) , Birleşik dosyalar için önemlidir.
+        -  Birleşik giriş dosyası: yerel bilgisayarınızdan Birleşik dosya dosyasını seçin. Birleşik dosyanızın her ikisi de kaynak ve hedef dil cümlelerinizi içerir. [Adlandırma kuralı](document-formats-naming-convention.md) , Birleşik dosyalar için önemlidir.
 
-    e.  Yükle'yi tıklatın
+    e.  Karşıya yükle 'ye tıklayın
 
     ![Belgeyi karşıya yükle iletişim kutusu](media/how-to/how-to-upload-dialog.png)
 

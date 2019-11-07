@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin | Microsoft Docs
+title: Azure SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin
 description: Azure SQL Data Sync şema değişikliklerinin çoğaltılmasını nasıl otomatikleştirebileceğinizi öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: b1c3f49808a59576f02178dee1107b4019e34b5e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 01cc82a2ada1f4ac8f26b223b7168b2cca157793
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566259"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686872"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Azure SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin
 
@@ -88,7 +88,7 @@ Diğer şema değişikliği türlerini çoğaltmak için daha fazla tetikleyici 
 
 ### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Ekleme sırasında şema değişikliklerini uygulamak için diğer uç noktalarda Tetikleyici oluşturma
 
-Bu tetikleyici, diğer uç noktalarla eşitlendiğinde şema değiştirme komutunu yürütür. Bu tetikleyiciyi, şema değişikliklerinin yapıldığı (yani, DDL tetikleyicisinin `AlterTableDDLTrigger` önceki adımda oluşturulduğu veritabanında) hariç tüm uç noktalarında oluşturmanız gerekir.
+Bu tetikleyici, diğer uç noktalarla eşitlendiğinde şema değiştirme komutunu yürütür. Şema değişikliklerinin yapıldığı (yani, DDL tetikleyicisi `AlterTableDDLTrigger` önceki adımda oluşturulduğu veritabanında) hariç, bu tetikleyiciyi tüm uç noktalarında oluşturmanız gerekir.
 
 ```sql
 CREATE TRIGGER SchemaChangesTrigger
@@ -161,7 +161,7 @@ Yalnızca DDL tetikleyicisinin oluşturulduğu veritabanında yapılan şema de�
 
 1.  Veritabanı şemasını yenileyin.
 
-1.  Yeni ve eski veri türleri tamamen uyumlu değilse, örneğin,-Sync `int` olarak `bigint` değiştirirseniz, Tetikleyicileri oluşturma adımları tamamlanmadan önce başarısız olabilir. Eşitleme, yeniden denemeden sonra başarılı oldu.
+1.  Yeni ve eski veri türleri tamamen uyumlu değilse-Örneğin, `int` 'den `bigint` olarak değiştirirseniz, Tetikleyicileri oluşturan adımlar tamamlanmadan önce eşitleme başarısız olabilir. Eşitleme, yeniden denemeden sonra başarılı oldu.
 
 #### <a name="rename-columns-or-tables"></a>Sütunları veya tabloları yeniden adlandırma
 
@@ -223,11 +223,11 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 
 -   Genel Bakış- [Azure SQL Data Sync ile birden çok bulut ve şirket içi veritabanı arasında veri eşitleme](sql-database-sync-data.md)
 -   Veri eşitlemesini ayarlama
-    - Portalda- [öğreticide: Verileri Azure SQL veritabanı ve şirket içi SQL Server arasında eşitlemek için SQL Data Sync ayarlama](sql-database-get-started-sql-data-sync.md)
+    - Portalda- [öğreticide, Azure SQL veritabanı ve şirket içi SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-database-get-started-sql-data-sync.md)
     - PowerShell ile
         -  [PowerShell kullanarak birden çok Azure SQL veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak bir Azure SQL Veritabanı ile SQL Server şirket içi veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Veri Eşitleme Aracısı - [veri Aracısı Azure SQL Data Sync için eşitleme](sql-database-data-sync-agent.md)
+-   Veri eşitleme Aracısı- [Azure SQL Data Sync Için veri eşitleme Aracısı](sql-database-data-sync-agent.md)
 -   En iyi uygulamalar- [Azure SQL Data Sync Için en iyi yöntemler](sql-database-best-practices-data-sync.md)
 -   İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](sql-database-sync-monitor-oms.md)
 -   Sorun giderme- [Azure SQL Data Sync sorunlarını giderme](sql-database-troubleshoot-data-sync.md)

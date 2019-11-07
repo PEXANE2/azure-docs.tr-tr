@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 62fb5552d86a802c3ba0213d99be2f91f21025e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472136"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620430"
 ---
 # <a name="access-and-customize-developer-portal"></a>Geliştirici portalına erişme ve özelleştirme
 
@@ -40,7 +40,7 @@ Geliştirici Portalında daha fazla ayrıntı için [Azure API Management geliş
 > Geliştirici portalı şu anda API Management Hizmetleri 'ne alındı.
 > Hizmetiniz yeni oluşturulmuşsa veya bir geliştirici katmanı hizmeti ise, en son sürüme sahip olmanız gerekir. Aksi takdirde sorunlarla karşılaşabilirsiniz (örneğin, yayımlama işlevselliğiyle). Özellik dağıtımı Pazartesi 11 Kasım 2019 ' de tamamlanır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 - Azure API Management örneğini içeri aktarın ve yayımlayın. Daha fazla bilgi için bkz. [Içeri aktarma ve yayımlama](import-and-publish.md)
@@ -125,7 +125,7 @@ Portalınızın ve en son değişikliklerinin ziyaretçi tarafından kullanılab
 
 ## <a name="visit-the-published-portal"></a>Yayınlanan portalı ziyaret edin
 
-Portalı yayımladıktan sonra, yönetim paneliyle aynı URL 'de buna erişebilirsiniz, örneğin `https://contoso-api.portal.azure-api.net`. Bunu dış ziyaretçi olarak görüntülemek için yeni bir tarayıcı sekmesinde açın.
+Portalı yayımladıktan sonra, yönetim paneliyle aynı URL 'de buna erişebilirsiniz, örneğin `https://contoso-api.developer.azure-api.net`. Bunu, dış ziyaretçi olarak ayrı bir tarayıcı oturumunda (bilito/Private gözatma modu) görüntüleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

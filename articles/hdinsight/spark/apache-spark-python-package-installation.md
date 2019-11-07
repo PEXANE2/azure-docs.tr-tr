@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/22/2019
-ms.openlocfilehash: f80486758152c002762bbddd6ae97a2ce9468ccf
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.date: 11/05/2019
+ms.openlocfilehash: e344035f05e192de1779a60fc99a7e0144566654
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241519"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682196"
 ---
 # <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>HDInsight üzerinde Apache Spark jupi Not defterleri için dış Python paketleri yüklemeye yönelik betik eylemi
 
@@ -29,29 +29,28 @@ Kullanılabilir paketlerin tüm listesi için [paket dizininde](https://pypi.pyt
 
 Bu makalede, kümenizin betik eylemini kullanarak [TensorFlow](https://www.tensorflow.org/) paketini yüklemeyi ve örnek olarak Jupyter Not defteri aracılığıyla kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
-Aşağıdakilere sahip olmanız gerekir:
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
    > [!NOTE]  
    > HDInsight Linux üzerinde henüz bir Spark kümeniz yoksa, küme oluşturma sırasında betik eylemleri çalıştırabilirsiniz. [Özel Betik eylemlerinin kullanımı](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)hakkındaki belgeleri ziyaret edin.
-   
+
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>HDInsight kümelerinde kullanılan açık kaynaklı yazılım desteği
 
-Microsoft Azure HDInsight hizmeti Apache Hadoop etrafında oluşturulmuş açık kaynaklı teknolojilerin ekosistemini kullanır. Microsoft Azure, açık kaynaklı teknolojiler için genel bir destek düzeyi sağlar. Daha fazla bilgi için [Azure DESTEĞI SSS Web sitesinin](https://azure.microsoft.com/support/faq/) **Destek kapsamı** bölümüne bakın. HDInsight hizmeti, yerleşik bileşenler için ek bir destek düzeyi sağlar.
+Microsoft Azure HDInsight hizmeti Apache Hadoop etrafında oluşturulmuş açık kaynaklı teknolojilerin ekosistemini kullanır. Microsoft Azure, açık kaynaklı teknolojiler için genel bir destek düzeyi sağlar. Daha fazla bilgi için bkz. [Azure DESTEĞI SSS Web sitesi](https://azure.microsoft.com/support/faq/). HDInsight hizmeti, yerleşik bileşenler için ek bir destek düzeyi sağlar.
 
 HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 
 * **Yerleşik bileşenler** -bu bileşenler HDInsight kümelerinde önceden yüklenir ve kümenin temel işlevlerini sağlar. Örneğin, Apache Hadoop YARN ResourceManager, Apache Hive sorgu dili (HiveQL) ve Mahout kitaplığı bu kategoriye aittir. Tüm küme bileşenleri listesi, [HDInsight tarafından sağlanan Apache Hadoop kümesi sürümlerindeki yenilikler](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)bölümünde bulunur.
 * **Özel bileşenler** -kümenin bir kullanıcısı olarak, kuruluşunuzda bulunan veya sizin tarafınızdan oluşturulan herhangi bir bileşeni iş yükünüze yükleyebilir veya kullanabilirsiniz.
 
-> [!IMPORTANT]   
+> [!IMPORTANT]
 > HDInsight kümesiyle birlikte sunulan bileşenler tam olarak desteklenmektedir. Microsoft Desteği, bu bileşenlerle ilgili sorunları yalıtmaya ve çözmeye yardımcı olur.
 >
 > Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Microsoft desteği sorunu çözebiliyor olabilir veya bu teknoloji için derin uzmanlığın bulunduğu açık kaynaklı teknolojiler için kullanılabilir kanalları ister. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [HDInsight Için MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ayrıca Apache projelerinin [https://apache.org](https://apache.org)proje siteleri vardır, örneğin: [Hadoop](https://hadoop.apache.org/).
-
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Jupyter not defterleri ile dış paketleri kullanma
 
@@ -63,11 +62,10 @@ HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 
 4. **Betiği gönder eylem** penceresi için aşağıdaki değerleri girin:  
 
-
     |Parametre | Değer |
     |---|---|
     |Betik türü | Açılan listeden **özel** ' i seçin.|
-    |Adı |Metin kutusuna `tensorflow` girin.|
+    |Ad |Metin kutusuna `tensorflow` girin.|
     |Bash betiği URI 'SI |Metin kutusuna `https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh` girin. |
     |Düğüm türleri | **Baş**ve **çalışan** onay kutularını seçin. |
 
@@ -75,7 +73,7 @@ HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 
     ```bash
     #!/usr/bin/env bash
-    /usr/bin/anaconda/bin/conda install --yes tensorflow
+    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
     ```
 
 5. **Oluştur**'u seçin.  [Özel Betik eylemlerinin kullanımı](../hdinsight-hadoop-customize-cluster-linux.md)hakkındaki belgeleri ziyaret edin.
@@ -103,19 +101,23 @@ HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 > Kümede iki Python yüklemesi vardır. Spark, `/usr/bin/anaconda/bin` konumunda bulunan Anaconda Python yüklemesini kullanır ve Python 2,7 ortamında varsayılan olarak kullanılır. Python 3. x kullanmak ve PySpark3 çekirdeğine paket yüklemek için, bu ortam için `conda` yürütülebilir dosyasının yolunu kullanın ve ortamı belirtmek için `-n` parametresini kullanın. Örneğin, komut `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`, `conda-forge` kanalını kullanarak Python 3,5 ortamına `ggplot` paketini yüklerse.
 
 ## <a name="seealso"></a>Ayrıca bkz.
+
 * [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Senaryolar
+
 * [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
 * [Machine Learning ile Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
 * [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 'ta Apache Spark kullanarak Web sitesi günlüğü Analizi](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Uygulamaları oluşturma ve çalıştırma
+
 * [Scala kullanarak tek başına uygulama oluşturma](apache-spark-create-standalone-application.md)
 * [Apache Livy kullanarak Apache Spark kümesinde işleri uzaktan çalıştırma](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Araçlar ve uzantılar
+
 * [HDInsight 'ta Apache Spark kümelerinde jupi Not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Spark Scala uygulamaları oluşturmak ve göndermek amacıyla IntelliJ IDEA için HDInsight Araçları Eklentisini kullanma](apache-spark-intellij-tool-plugin.md)
 * [Apache Spark uygulamalarında uzaktan hata ayıklama için IntelliJ fıkır için HDInsight Araçları eklentisini kullanın](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
@@ -124,5 +126,6 @@ HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Kaynakları yönetme
+
 * [Azure HDInsight’ta Apache Spark kümesi kaynaklarını yönetme](apache-spark-resource-manager.md)
 * [HDInsight’ta bir Apache Spark kümesinde çalışan işleri izleme ve hata ayıklama](apache-spark-job-debugging.md)

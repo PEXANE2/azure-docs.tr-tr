@@ -1,5 +1,5 @@
 ---
-title: Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory kullanma | Microsoft Docs
+title: Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory kullanma
 description: Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory nasıl kullanacağınızı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/30/2019
-ms.openlocfilehash: a2e98e46b168ff2e1270c6512aa515278190350f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: b952be49bf5bc00b338aa04ed51e9dc451b5c4f9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677949"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675823"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory kullanma 
 
@@ -107,7 +107,7 @@ Ağ veya veri deposu geçici sorunları nedeniyle kopyalama işlerinin herhangi 
 
 ### <a name="delta-data-migration"></a>Delta verileri geçişi 
 
-Data Factory DistCp modunda, Delta veri geçişi için, kaynak dosya ve hedef dosya boyutu farklı olduğunda, `-update` olan DistCp komut satırı parametresini kullanabilirsiniz.
+Data Factory DistCp modunda, Delta veri geçişi için, kaynak dosya ve hedef dosya boyutu farklı olduğunda veri yaz `-update`, DistCp komut satırı parametresini kullanabilirsiniz.
 
 Data Factory yerel tümleştirme modunda, yeni veya değiştirilmiş dosyaları bir süre olarak belirlemek için en iyi yol, zaman bölümlenmiş bir adlandırma kuralı kullanmaktır. 1\. sırada verileriniz, dosya veya klasör adında saat dilimi bilgileriyle zaman dilimlendiğinde (örneğin, */yyyy/mm/dd/File.exe*), işlem hattı, artımlı olarak hangi dosya ve klasörlerin kopyalanacağını kolayca tanımlayabilir.
 

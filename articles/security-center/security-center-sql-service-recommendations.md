@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Merkezi 'nde Azure veri ve depolama hizmetlerini koruma | Microsoft Docs
+title: Veri & depolama önerileri-Azure Güvenlik Merkezi
 description: Bu belge, Azure Güvenlik Merkezi 'ndeki, verilerinizi ve Azure SQL hizmetinizi korumanıza ve güvenlik ilkeleriyle uyumlu kalmanıza yardımcı olan önerilere yöneliktir.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: memildin
-ms.openlocfilehash: 80611fe0c37af7dfd27b561186f3e967ad3159b4
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21da7c49b158345894ee7fdc164d205bcefe1640
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201031"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663902"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Azure veri ve depolama hizmetlerini koruma
 Bu konu başlığı altında, veri ve depolama kaynakları için güvenlik önerilerini görüntüleme ve uygulama işlemlerinin nasıl yapılacağı gösterilmektedir. Azure Güvenlik Merkezi, Azure kaynaklarınızın güvenlik durumunu analiz edilirken bu önerileri buldu.
@@ -27,16 +27,16 @@ Bu konu başlığı altında, veri ve depolama kaynakları için güvenlik öner
 
 1. **Kaynak güvenliği durumu** bölümünde, **veri ve depolama kaynakları**' na tıklayın.
 
-   ![Veri & depolama kaynakları](./media/security-center-monitoring/click-data.png)
+    ![Veri & depolama kaynakları](./media/security-center-monitoring/click-data.png)
 
     Veri **güvenliği** sayfası, veri kaynaklarına yönelik önerilerle açılır.
 
-     ![Veri Kaynakları](./media/security-center-monitoring/sql-overview.png)
+    ![Veri Kaynakları](./media/security-center-monitoring/sql-overview.png)
 
-Bu sayfadan şunları yapabilirsiniz:
+    Bu sayfadan şunları yapabilirsiniz:
 
-* **Genel bakış** sekmesine tıkladığınızda, düzeltilen tüm veri kaynakları önerileri listelenir. 
-* Her sekmeye tıklayın ve önerileri kaynak türüne göre görüntüleyin.
+    * **Genel bakış** sekmesine tıkladığınızda, düzeltilen tüm veri kaynakları önerileri listelenir. 
+    * Her sekmeye tıklayın ve önerileri kaynak türüne göre görüntüleyin.
 
     > [!NOTE]
     > Depolama şifrelemesi hakkında daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md).
@@ -66,12 +66,12 @@ Bu sayfadan şunları yapabilirsiniz:
 |Redis|20|Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir|Redsıs için yalnızca SSL aracılığıyla bağlantıları Azure önbelleğine etkinleştirin. Güvenli bağlantı kullanımı, sunucu ve hizmet arasında kimlik doğrulaması sağlar ve aradaki bağlantıyı izinsiz izleme, gizlice dinleme ve oturum ele geçirme gibi ağ katmanı saldırılarına karşı korur.|
 |SQL|15|SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir|Rest verilerini korumak ve uyumluluk gereksinimlerini karşılamak için saydam veri şifrelemesini etkinleştirin.|
 |SQL|15|SQL Server denetimi etkinleştirilmelidir|Azure SQL sunucuları için denetimi etkinleştirin. (Yalnızca Azure SQL hizmeti. , Sanal makinelerinizde çalışan SQL içermez.)|
-|Data Lake Analytics|5|Data Lake Analytics tanılama günlükleri etkinleştirilmelidir|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar. |
-|Data Lake Store|5|Azure Data Lake Store tanılama günlükleri etkinleştirilmelidir|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar. |
+|Data Lake Analytics|5|Data Lake Analytics tanılama günlükleri etkinleştirilmelidir|Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. |
+|Data Lake Store|5|Azure Data Lake Store tanılama günlükleri etkinleştirilmelidir|Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. |
 |SQL|30|SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir|SQL güvenlik açığı değerlendirmesi, veritabanınızı güvenlik açıklarına karşı tarar ve yanlış yapılandırma, aşırı izin ve korunmayan gizli veriler gibi en iyi uygulamalardan sapmaları gösterir. Bulunan güvenlik açıklarının çözümlenmesi, veritabanı güvenlik hazırlılığını büyük ölçüde iyileştirebilir.|
 |SQL|20|SQL Server için bir Azure AD yöneticisi sağlama|Azure AD kimlik doğrulamasını etkinleştirmek için SQL sunucunuz için bir Azure AD yöneticisi sağlayın. Azure AD kimlik doğrulaması, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir.|
 |Depolama hesabı|15|Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı olmalıdır|Depolama hesabı güvenlik duvarı ayarlarınızda Kısıtlanmamış ağ erişimini denetleyin. Bunun yerine, ağ kurallarını yalnızca izin verilen ağların uygulamalarının depolama hesabına erişebilmesi için yapılandırın. Belirli Internet veya şirket içi istemcilerden gelen bağlantılara izin vermek için, belirli Azure sanal ağlarından veya genel Internet IP adresi aralıklarına giden trafiğe erişim izni verebilirsiniz.|
-|Depolama hesabı|1\.|Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir|Depolama hesaplarınız için yeni Azure Resource Manager v2 kullanarak, daha güçlü erişim denetimi (RBAC), daha iyi denetim, Kaynak Yöneticisi tabanlı dağıtım ve idare, yönetilen kimliklere erişim, için Anahtar Kasası erişimi gibi güvenlik geliştirmeleri sağlayın. daha kolay güvenlik yönetimi için gizlilikler ve Azure AD tabanlı kimlik doğrulaması ve Etiketler ve kaynak grupları desteği.|
+|Depolama hesabı|1|Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir|Depolama hesaplarınız için yeni Azure Resource Manager v2 kullanarak, daha güçlü erişim denetimi (RBAC), daha iyi denetim, Kaynak Yöneticisi tabanlı dağıtım ve idare, yönetilen kimliklere erişim, için Anahtar Kasası erişimi gibi güvenlik geliştirmeleri sağlayın. daha kolay güvenlik yönetimi için gizlilikler ve Azure AD tabanlı kimlik doğrulaması ve Etiketler ve kaynak grupları desteği.|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 Diğer Azure kaynak türlerine uygulanan öneriler hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:

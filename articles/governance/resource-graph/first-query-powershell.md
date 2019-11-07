@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: a7d65d975d43a63a38863721273debab46115045
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9e41ca2e7c6d789b3d18fa98c4845118fa6538ef
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389719"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622546"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak ilk kaynak grafik sorgunuzu çalıştırın
 
@@ -87,7 +87,7 @@ Azure PowerShell modülünün seçtiğiniz ortamınıza eklenmesiyle birlikte ş
 Son sorgu birkaç kere çalıştırıldığında, ortamınızda hiçbir şeyin değişmediği varsayılarak döndürülen sonuçlar tutarlı ve beklendiği gibi olur, yani **Ad** özelliğine göre düzenlenir ama yine de en iyi beş sonuçla sınırlıdır.
 
 > [!NOTE]
-> Sorgu zaten erişiminiz olan bir abonelikten sonuç döndürmezse, `Search-AzGraph` cmdlet 'inin varsayılan bağlamdaki abonelikler olduğunu unutmayın. Varsayılan bağlamın bir parçası olan abonelik kimliklerinin listesini görmek için bu @no__t çalıştırın-0 ' a erişiminiz olan tüm abonelikler arasında arama yapmak istiyorsanız, birisi `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` ' i çalıştırarak `Search-AzGraph` cmdlet 'inin PSDefaultParameterValues değerlerini ayarlayabilir
+> Sorgu zaten erişiminiz olan bir abonelikten sonuç döndürmezse, `Search-AzGraph` cmdlet 'inin varsayılan bağlamdaki abonelikler olduğunu unutmayın. Varsayılan `(Get-AzContext).Account.ExtendedProperties.Subscriptions` bağlamın bir parçası olan abonelik kimliklerinin listesini görmek için, erişiminiz olan tüm aboneliklerde arama yapmak istiyorsanız, bir tane, `Search-AzGraph` cmdlet 'i çalıştırarak PSDefaultParameterValues değerlerini ayarlayabilir `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -106,9 +106,10 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sorgu dili](./concepts/query-language.md) hakkında daha fazla bilgi edinme
-- [Kaynakları keşfetmeyi](./concepts/explore-resources.md) öğrenin
-- [Azure CLI](first-query-azurecli.md) ile ilk sorgunuzu çalıştırma
-- Bkz. [başlangıç sorguları](./samples/starter.md) örnekleri
-- Bkz. [Gelişmiş sorgular](./samples/advanced.md) örnekleri
-- [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) ile ilgili geri bildirim gönderme
+- [Sorgu dili](./concepts/query-language.md)hakkında daha fazla bilgi alın.
+- [Kaynakları araştırma](./concepts/explore-resources.md)hakkında daha fazla bilgi edinin.
+- [Azure Portal](first-query-portal.md)kullanarak ilk sorgunuzu çalıştırın.
+- [Azure CLI](first-query-azurecli.md)ile ilk sorgunuzu çalıştırın.
+- Bkz. [Başlangıç sorguları](./samples/starter.md)örnekleri.
+- [Gelişmiş sorguların](./samples/advanced.md)örneklerine bakın.
+- [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)hakkında geri bildirim sağlayın.

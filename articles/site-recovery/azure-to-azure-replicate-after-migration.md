@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: ff35c5e23c5d8a448d62a3eeb8d15ba8d5a531e4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 081e1db4df0d77fa600e132a5585172d44f1196a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814543"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663038"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure'a geçişten sonra Azure VM'leri için olağanüstü durumdan kurtarmayı ayarlama 
 
@@ -29,7 +29,7 @@ Olağanüstü durum kurtarmayı ayarlamadan önce geçişin beklenen şekilde ta
 
 Her Azure sanal makinesinde [Azure VM aracısının](../virtual-machines/extensions/agent-windows.md) yüklü olması gerekir. Azure VM 'lerini çoğaltmak için Site Recovery aracıya bir uzantı yüklenir.
 
-- Makine, Site Recovery Mobility hizmetinin sürüm 9.7.0.0 veya sonraki bir sürümünü çalıştırıyorsa, Azure VM Aracısı Windows VM 'lerine Mobility hizmeti tarafından otomatik olarak yüklenir. Mobility hizmetinin önceki sürümlerinde, aracıyı otomatik olarak yüklemeniz gerekir.
+- Makine, Site Recovery Mobility hizmetinin sürüm 9.7.0.0 veya sonraki bir sürümünü çalıştırıyorsa, Azure VM Aracısı Windows VM 'lerine Mobility hizmeti tarafından otomatik olarak yüklenir. Mobility hizmetinin önceki sürümlerinde aracıyı el ile yüklemeniz gerekir.
 - Linux sanal makineleri için Azure VM aracısını el ile yüklemelisiniz. Yalnızca geçirilen makinede yüklü olan Mobility hizmeti v 9.6 'ya veya daha önceki bir sürümdeyse, Azure VM aracısını yüklemeniz gerekir.
 
 

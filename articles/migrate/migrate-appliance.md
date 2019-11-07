@@ -6,14 +6,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: e2faa47a58283623747ae569de22e1c57df1a51f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 249cbea173afe1671118446e0714b721b8c7f72b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231135"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685102"
 ---
-# <a name="azure-migrate-appliance"></a>Azure Geçişi aleti
+# <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
 Bu makalede, Azure geçişi gereci açıklanmaktadır. Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmek, değerlendirmek ve geçirmek üzere Azure geçişi değerlendirmesi ve geçiş araçlarını kullandığınızda gereci dağıtırsınız. 
 
@@ -25,14 +25,14 @@ Bu makalede, Azure geçişi gereci açıklanmaktadır. Microsoft Azure için uyg
 
 Azure geçiş gereç türleri ve kullanımı aşağıdaki gibidir.
 
-**Farklı dağıtıldı** | **İçin kullanılan** | **Ayrıntılar**
+**Farklı dağıtıldı** | **Kullanıldığı yer** | **Ayrıntılar**
 --- | --- |  ---
 VMware VM | Azure geçişi değerlendirme aracı ile VMware VM değerlendirmesi.<br/><br/> Azure geçişi sunucu geçiş aracı ile VMware VM aracısız geçişi | OVA şablonunu indirin ve gereç sanal makinesini oluşturmak için vCenter Server alın.
 Hyper-V VM | Azure geçişi değerlendirme aracı ile Hyper-V VM değerlendirmesi. | Sıkıştırılmış VHD 'yi indirin ve gereç sanal makinesini oluşturmak için Hyper-V ' d e aktarın.
 
 ## <a name="appliance-access"></a>Gereç erişimi
 
-Gereci yapılandırdıktan sonra, Gereç VM 'sine TCP bağlantı noktası 3389 üzerinden uzaktan erişebilirsiniz. Ayrıca, bağlantı noktası 44368 ' de, URL ile birlikte Web yönetimi uygulamasına uzaktan erişebilirsiniz: `https://<appliance-ip-or-name>:44368`.
+Gereci yapılandırdıktan sonra, Gereç VM 'sine TCP bağlantı noktası 3389 üzerinden uzaktan erişebilirsiniz. Ayrıca, 44368 numaralı bağlantı noktası üzerinden gereç için Web yönetimi uygulamasına uzaktan erişim sağlayabilirsiniz: `https://<appliance-ip-or-name>:44368`.
 
 ## <a name="appliance-license"></a>Gereç lisansı
 Gereç, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
@@ -42,7 +42,7 @@ Gereç bu aracıların yüklü olduğunu.
 
 **Aracı** | **Ayrıntılar**
 --- | ---
-Bulma aracısı | Şirket içi sanal makinelerin yapılandırma verilerini toplar
+Keşif Aracısı | Şirket içi sanal makinelerin yapılandırma verilerini toplar
 Değerlendirme aracısı | VM performans verilerini toplamak için şirket içi ortamı profiller.
 Geçiş bağdaştırıcısı | VM çoğaltmasını düzenleyin ve VM 'Ler ile Azure arasındaki iletişimi koordine edin.
 Geçiş ağ geçidi | Çoğaltılan VM verilerini Azure 'a gönderir.
@@ -58,7 +58,7 @@ Geçiş ağ geçidi | Çoğaltılan VM verilerini Azure 'a gönderir.
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM performans verileri aşağıda verilmiştir.
 
-**Veri** | **Counter** | **Değerlendirme etkisi**
+**Veriler** | **Sayaç** | **Değerlendirme etkisi**
 --- | --- | ---
 CPU utilization | CPU. Usage. Average | Önerilen VM boyutu/maliyet
 Bellek kullanımı | mem. kullanım. Ortalama | Önerilen VM boyutu/maliyet
@@ -77,10 +77,10 @@ NIC yazma üretimi (MB/saniye) | net. iletilmiş. Average  |VM boyutu için hesa
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM meta verilerinin tam listesini aşağıda bulabilirsiniz.
 
-**Veri** | **Counter**
+**Veriler** | **Sayaç**
 --- | --- 
 **Makine ayrıntıları** | 
-VM Kimliği | 'nin. Config. ınstanceuuıd 
+VM KIMLIĞI | 'nin. Config. ınstanceuuıd 
 VM adı | 'nin. Config.Name
 vCenter Server KIMLIĞI | VMwareClient. Instance. UUID
 VM açıklaması | 'nin. Summary. config. Annotation
@@ -112,7 +112,7 @@ IPv6 adresleri | 'nin. Guest.Net
 Aktarım hızını oku (MB/saniye) | net. alınan. Ortalama
 Yazma üretilen işi (MB/saniye) | net. iletilmiş. Average
 **Envanter yolu ayrıntıları** | 
-Name | kapsayıcı. GetType (). Ada
+Ad | kapsayıcı. GetType (). Ada
 Alt nesnenin türü | kapsayıcı. ChildType
 Başvuru ayrıntıları | kapsayıcı. MoRef
 Üst Ayrıntılar | Container. Parent
@@ -129,9 +129,9 @@ VM başına ana bilgisayar ayrıntıları | (HostSystem) kapsayıcısı). 'Nın
 > [!NOTE]
 > Azure geçişi gereci tarafından bulunan meta veriler, uygulamalarınızı Azure 'a geçirirken, Azure uygunluk analizi, uygulama bağımlılığı Analizi ve maliyet planlaması gerçekleştirerek uygulamalarınızı doğru boyuta getirmenize yardımcı olmak için kullanılır. Microsoft bu verileri, herhangi bir lisans uyumluluğu denetimine göre kullanmaz.
 
-Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM performans verileri aşağıda verilmiştir.
+Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper VM performans verileri aşağıda verilmiştir.
 
-**Performans sayacı sınıfı** | **Counter** | **Değerlendirme etkisi**
+**Performans sayacı sınıfı** | **Sayaç** | **Değerlendirme etkisi**
 --- | --- | ---
 Hyper-V hiper yönetici sanal Işlemcisi | % Konuk çalışma zamanı | Önerilen VM boyutu/maliyet
 Hyper-V Dinamik Bellek VM | Geçerli basınç (%)<br/> Konuk görünür fiziksel bellek (MB) | Önerilen VM boyutu/maliyet
@@ -148,7 +148,7 @@ Hyper-V sanal ağ bağdaştırıcısı | Gönderilen bayt/saniye | VM boyutu iç
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper-V VM meta verilerinin tam listesidir.
 
-**Veri** | **WMI sınıfı** | **WMI sınıfı özelliği**
+**Veriler** | **WMI sınıfı** | **WMI sınıfı özelliği**
 --- | --- | ---
 **Makine ayrıntıları** | 
 BIOS _ Msvm_BIOSElement seri numarası | Bıino SerialNumber
@@ -162,12 +162,12 @@ Dinamik bellek etkin | Msvm_MemorySettingData | DynamicMemoryEnabled
 VM güç durumu | Msvm_ComputerSystem | EnabledState
 **Disk başına Ayrıntılar** | 
 Disk tanımlayıcısı | Msvm_VirtualHardDiskSettingData | Virtualdiskıd
-Sanal sabit disk türü | Msvm_VirtualHardDiskSettingData | Type
+Sanal sabit disk türü | Msvm_VirtualHardDiskSettingData | Tür
 Sanal sabit disk boyutu | Msvm_VirtualHardDiskSettingData | Maxınternalsize
 Sanal sabit disk üst öğesi | Msvm_VirtualHardDiskSettingData | ParentPath
 **NIC başına Ayrıntılar** | 
 IP adresleri (yapay NIC 'ler) | Msvm_GuestNetworkAdapterConfiguration | IpAdresleri
-DHCP etkin (yapay NIC 'ler) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
+DHCP etkin (yapay NIC 'ler) | Msvm_GuestNetworkAdapterConfiguration | DHCPEtkin
 NIC KIMLIĞI (yapay NIC 'ler) | Msvm_SyntheticEthernetPortSettingData | InstanceId
 NIC MAC adresi (yapay NIC 'ler) | Msvm_SyntheticEthernetPortSettingData | Adres
 NIC KIMLIĞI (eski NIC 'ler) | MsvmEmulatedEthernetPortSetting verileri | InstanceId
@@ -187,14 +187,14 @@ Gereç, aşağıdaki işlemi kullanarak vCenter sunucularıyla ve Hyper-V konakl
 2. **Meta verileri ve performans verilerini toplayın**:
     - Gereç, 5985 ve 5986 bağlantı noktalarında Hyper-V konağı üzerinden Hyper-V VM verilerini toplamak için bir Genel Bilgi Modeli (CıM) oturumu kullanır.
     - Gereç, vCenter Server VMware VM verilerini toplamak için varsayılan olarak bağlantı noktası 443 ile iletişim kurar.
-3. **Veri Gönder**: Gereç, toplanan verileri Azure geçişi sunucu değerlendirmesini ve Azure geçişi sunucu geçişini SSL bağlantı noktası 443 üzerinden gönderir.
+3. **Veri Gönder**: gereç, toplanan verileri Azure geçişi sunucu değerlendirmesini ve Azure geçişi sunucu geçişini SSL bağlantı noktası 443 üzerinden gönderir.
     - Performans verileri için, Gereç gerçek zamanlı kullanım verilerini toplar.
         - Performans verileri her bir performans ölçümü için VMware için 20 saniyede bir ve Hyper-V için her 30 saniyede bir toplanır.
         - Toplanan veriler on dakika boyunca tek bir veri noktası oluşturmak için toplanır.
         - En yüksek kullanım değeri, 20/30 saniyelik tüm veri noktalarından seçilir ve değerlendirme hesaplaması için Azure 'a gönderilir.
         - Değerlendirme özelliklerinde belirtilen yüzdebirlik değerine (50./90./yüzde/sn) göre, on dakikalık noktaları artan düzende sıralanır ve değerlendirmeyi hesaplamak için uygun yüzdebirlik değeri kullanılır
     - Sunucu geçişi için, Gereç VM verilerini toplamaya başlar ve bunu Azure 'a çoğaltır.
-4. **Değerlendirin ve geçirin**: Artık Azure geçişi sunucu değerlendirmesini kullanarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz. Ayrıca, Azure geçişi sunucu geçişini kullanarak VMware VM 'Leri geçirmeyi daha az VM çoğaltmasını düzenlemek için de başlatabilirsiniz.
+4. **Değerlendirin ve geçirin**: artık Azure geçişi sunucu değerlendirmesini kullanarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz. Ayrıca, Azure geçişi sunucu geçişini kullanarak VMware VM 'Leri geçirmeyi daha az VM çoğaltmasını düzenlemek için de başlatabilirsiniz.
 
 
 ![Mimari](./media/migrate-appliance/architecture.png)

@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 6e5e08df444f66f2c5500d968c805552d20901c5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 654ebc6f40e6c365e9abf406ff19cd7269539dd8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861198"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682229"
 ---
-# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Hızlı Başlangıç: IoT Tak ve Kullan cihazı oluşturmak için cihaz yetenek modeli kullanma
+# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Hızlı başlangıç: IoT Tak ve Kullan önizleme cihazı (Windows) oluşturmak için cihaz yetenek modeli kullanma
 
-Bir _cihaz yetenek modeli_ (DCM) IoT Tak ve kullan cihazının yeteneklerini açıklar. DCM, genellikle bir Ürün SKU 'SU ile ilişkilendirilir. DCM 'de tanımlanan yetenekler yeniden kullanılabilir arabirimler halinde düzenlenmiştir. Bir DCM 'den iskelet cihaz kodu oluşturabilirsiniz. Bu hızlı başlangıçta, bir DCM kullanarak IoT Tak ve Kullan cihazı oluşturmak için VS Code nasıl kullanılacağı gösterilmektedir.
+Bir _cihaz yetenek modeli_ (DCM) IoT Tak ve kullan cihazının yeteneklerini açıklar. DCM, genellikle bir Ürün SKU 'SU ile ilişkilendirilir. DCM 'de tanımlanan yetenekler yeniden kullanılabilir arabirimler halinde düzenlenmiştir. Bir DCM 'den iskelet cihaz kodu oluşturabilirsiniz. Bu hızlı başlangıçta, DCM kullanarak IoT Tak ve Kullan cihazı oluşturmak için Windows 'ta VS Code nasıl kullanacağınız gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için yerel makinenize aşağıdaki yazılımı yüklemeniz gerekir:
 
-* [Visual Studio (Community, Professional veya Enterprise)](https://visualstudio.microsoft.com/downloads/) -Visual Studio 'yu yüklerken **NuGet Paket Yöneticisi** bileşenini ve iş yüküyle **Masaüstü geliştirmeyi C++**  eklediğinizden emin olun.
+* Visual Studio  **C++ için derleme araçları ve** **NuGet Paket Yöneticisi bileşen** iş yükleri [için derleme araçları](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) . Ya da [Visual Studio (Community, Professional veya Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 veya 2015 aynı iş yükleri yüklüyken zaten yüklüyse.
 * [Git](https://git-scm.com/download/).
 * [CMake](https://cmake.org/download/).
 * [Visual Studio Code](https://code.visualstudio.com/).
@@ -77,41 +77,57 @@ Hub 'ınız için _IoT Hub bağlantı dizesini_ almak için aşağıdaki komutla
 az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
 ```
 
+Şu ifadeye benzer şekilde görünen cihaz bağlantı dizesini not edin:
+
+```json
+HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={YourSharedAccessKey}
+```
+
+Bu değeri daha sonra hızlı başlangıçta kullanacaksınız.
+
 ## <a name="prepare-the-development-environment"></a>Geliştirme ortamını hazırlama
 
 ### <a name="get-azure-iot-device-sdk-for-c"></a>C için Azure IoT cihaz SDK 'sını alın
 
-Bu hızlı başlangıçta, Azure IoT C cihaz SDK 'sını klonlamak ve derlemek için kullanabileceğiniz bir geliştirme ortamı hazırlarsınız.
+Bu hızlı başlangıçta, [Vcpkg](https://github.com/microsoft/vcpkg)aracılığıyla Azure IoT C CIHAZ SDK 'sını yükleyerek bir geliştirme ortamı hazırlarsınız.
 
-1. Bir komut istemi açın. Aşağıdaki komutu yürüterek [Azure IoT C SDK'sı](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunu kopyalayın:
+1. Bir komut istemi açın. Vcpkg yüklemek için şu komutu yürütün:
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+
+    .\bootstrap-vcpkg.bat
     ```
 
-    Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
-
-1. Deponun yerel `pnp_app` kopyasının kökünde bir alt dizin oluşturun. Bu klasörü cihaz modeli dosyaları ve cihaz kodu saplaması için kullanırsınız.
+    Daha sonra, Kullanıcı genelinde [tümleştirmeyi](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)bağlamak için (Note: ilk kullanımda yönetici gerektirir) öğesini çalıştırın:
 
     ```cmd/sh
-    cd azure-iot-sdk-c
-    mkdir pnp_app
+    .\vcpkg.exe integrate install
+    ```
+
+1. Azure IoT C cihaz SDK 'Sı Vcpkg 'yi yükler:
+
+    ```cmd/sh
+    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
 ## <a name="author-your-model"></a>Modelinizi yazma
 
 Bu hızlı başlangıçta, var olan bir örnek cihaz yetenek modeli ve ilişkili arabirimleri kullanırsınız.
 
+1. Yerel sürücünüzde bir `pnp_app` dizini oluşturun.
+
 1. [Cihaz yetenek modeli](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) ve [arabirim örneğini](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) indirin ve dosyaları `pnp_app` klasöre kaydedin.
 
     > [!TIP]
     > GitHub 'dan bir dosyayı indirmek için dosyasına gidin, **RAW**' a sağ tıklayın ve ardından **Bağlantıyı farklı kaydet**' i seçin.
 
-1. Klasörü `pnp_app` vs Code açın. IntelliSense ile dosyaları görüntüleyebilirsiniz:
+1. VS Code `pnp_app` klasörü açın. IntelliSense ile dosyaları görüntüleyebilirsiniz:
 
     ![Cihaz yetenek modeli](media/quickstart-create-pnp-device/dcm.png)
 
-1. İndirdiğiniz dosyalarda, `<YOUR_COMPANY_NAME_HERE>` `@id` ve `schema` alanlarında öğesini benzersiz bir değerle değiştirin. Yalnızca a-z, A-Z, 0-9 ve alt çizgi karakterlerini kullanın. Daha fazla bilgi için bkz. [Digital ikizi Identifier Format](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
+1. İndirdiğiniz dosyalarda, `@id` ve `schema` alanlarındaki `<YOUR_COMPANY_NAME_HERE>`, benzersiz bir değer ile değiştirin. Yalnızca a-z, A-Z, 0-9 ve alt çizgi karakterlerini kullanın. Daha fazla bilgi için bkz. [Digital ikizi Identifier Format](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
 
 ## <a name="generate-the-c-code-stub"></a>C kodu saplaması oluşturma
 
@@ -120,7 +136,7 @@ Artık bir DCM ve ilişkili arabirimlerinizin olduğu, modeli uygulayan Cihaz ko
 1. DCM dosyaları açık olan klasörde, **CTRL + SHIFT + P** tuşlarına basarak komut paletini açın, **IoT Tak ve kullan**girin ve **cihaz kodu saplama oluştur**' u seçin.
 
     > [!NOTE]
-    > IoT Tak ve Kullan kod Oluşturucu yardımcı programını ilk kez kullandığınızda, indirmesi birkaç saniye sürer.
+    > IoT Tak ve Kullan CodeGen CLı 'yi ilk kez kullandığınızda, otomatik olarak indirilmek ve yüklenmesi birkaç saniye sürer.
 
 1. Cihaz kodu saplaması oluşturmak için kullanmak istediğiniz DCM dosyasını seçin.
 
@@ -128,38 +144,42 @@ Artık bir DCM ve ilişkili arabirimlerinizin olduğu, modeli uygulayan Cihaz ko
 
 1. Diliniz olarak **ANSI C** 'yi seçin.
 
-1. Proje türü olarak **CMake projesini** seçin.
-
 1. Bağlantı yöntemi olarak **IoT Hub cihaz bağlantı dizesi aracılığıyla** seçim yapın.
 
+1. Proje şablonu olarak **Windows 'Da CMake projesi** seçin.
+
+1. Cihaz SDK 'sını dahil etmek için **Vcpkg aracılığıyla** öğesini seçin.
+
 1. VS Code, oluşturulan cihaz kodu saplama dosyaları ile yeni bir pencere açar.
-    ![Cihaz kodu](media/quickstart-create-pnp-device/device-code.png)
+    ![cihaz kodu](media/quickstart-create-pnp-device/device-code.png)
 
 ## <a name="build-the-code"></a>Kodu oluşturma
 
-Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK 'sını kullanın. Oluşturduğunuz uygulama, IoT Hub 'ına bağlanan bir cihaza benzetir. Uygulama telemetri ve Özellikler gönderir ve komutları alır.
+Oluşturulan cihaz kodu saplaması 'nı cihaz SDK 'Sı ile birlikte oluşturursunuz. Oluşturduğunuz uygulama, IoT Hub 'ına bağlanan bir cihaza benzetir. Uygulama telemetri ve Özellikler gönderir ve komutları alır.
 
-1. VS Code ' de, `CMakeLists.txt` cihaz SDK 'sı kök klasöründe açın.
-
-1. Derleme sırasında cihaz kodu saplama klasörünü dahil etmek için `CMakeLists.txt` dosyanın altına aşağıdaki satırı ekleyin:
-
-    ```txt
-    add_subdirectory(pnp_app/sample_device)
-    ```
-
-1. Cihaz SDK 'Sı kök klasöründe bir CMake alt dizini oluşturun ve bu klasöre gidin:
+1. `sample_device` klasöründe bir `cmake` alt dizini oluşturun ve bu klasöre gidin:
 
     ```cmd\sh
     mkdir cmake
     cd cmake
     ```
 
-1. Cihaz SDK 'sını ve üretilen kod Saplaması oluşturmak için aşağıdaki komutları çalıştırın:
+1. Oluşturulan kod Saplaması oluşturmak için aşağıdaki komutları çalıştırın:
 
     ```cmd\sh
-    cmake .. -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON
-    cmake --build . -- /m /p:Configuration=Release
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+
+    cmake --build .
     ```
+    
+    > [!NOTE]
+    > Visual Studio 2017 veya 2015 kullanıyorsanız, kullanmakta olduğunuz yapı araçlarına göre CMake oluşturucuyu belirtmeniz gerekir:
+    >```cmd\sh
+    ># Either
+    >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    ># or
+    >cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    >```
 
     > [!NOTE]
     > CMake derleyicinizi C++ bulamazsa, önceki komutu çalıştırdığınızda derleme hataları alırsınız. Bu durumda, [Visual Studio komut isteminde](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)bu komutu çalıştırmayı deneyin.
@@ -167,8 +187,7 @@ Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK 'sını kullanın
 1. Oluşturma işlemi başarıyla tamamlandıktan sonra, IoT Hub cihaz bağlantı dizesini parametre olarak geçirerek uygulamanızı çalıştırın.
 
     ```cmd\sh
-    cd azure-iot-sdk-c\cmake\pnp_app\sample_device\Release\
-    sample_device.exe "[IoT Hub device connection string]"
+    .\Debug\sample_device.exe "[IoT Hub device connection string]"
     ```
 
 1. Cihaz uygulaması IoT Hub veri göndermeye başlar.
@@ -181,9 +200,9 @@ Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK 'sını kullanın
 
 **Azure IoT Explorer**ile cihaz kodunu doğrulamak için dosyaları model deposuna yayımlamanız gerekir.
 
-1. DCM dosyaları açık olan klasörde, **CTRL + SHIFT + P** tuşlarına basarak komut paletini açın, yazıp IoT eklentisi & oynat ' **ı seçin: Dosyaları model deposuna**gönderme.
+1. DCM dosyaları açık olan klasörde, **CTRL + SHIFT + P** tuşlarına basarak komut paletini açın, **IoT eklentisi & Play: dosyaları model deposuna gönder**' i seçin.
 
-1. `SampleDevice.capabilitymodel.json` Ve`EnvironmentalSensor.interface.json` dosyalarını seçin.
+1. `SampleDevice.capabilitymodel.json` ve `EnvironmentalSensor.interface.json` dosyalarını seçin.
 
 1. Şirket modeli deposu Bağlantı dizenizi girin.
 
@@ -193,7 +212,7 @@ Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK 'sını kullanın
 1. VS Code çıkış penceresinde ve bildiriminde, dosyaların başarıyla yayımlandığını kontrol edebilirsiniz.
 
     > [!NOTE]
-    > Cihaz modeli dosyalarını yayımlarken hata alırsanız, komut **IoT Tak ve kullan kullanmayı deneyebilirsiniz: Oturumu kapatmak için model** deposunu kapatın ve adımları yeniden deneyin.
+    > Cihaz modeli dosyalarını yayımlarken hata alırsanız, oturumu kapatmak için komut **ıot Tak ve kullan: oturumu Kapat model deposunu** kullanmayı deneyebilirsiniz ve adımları yeniden deneyin.
 
 ### <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>Kodu doğrulamak için Azure IoT gezginini kullanın
 
@@ -217,8 +236,9 @@ Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK 'sını kullanın
 
 1. Güncelleştirebilir yazılabilir özellikleri görüntülemek için **Özellikler (yazılabilir)** sayfasını seçin.
 
-1. Özellik **adı**' nı genişletin, yeni bir adla güncelleştirin ve **yazılabilir özelliği Güncelleştir**' i seçin. 
-2. Yeni adın **bildirilen özellik** sütununda görünür olduğunu görmek için sayfanın üst kısmındaki **Yenile** düğmesine tıklayın.
+1. Özellik **adı**' nı genişletin, yeni bir adla güncelleştirin ve **yazılabilir özelliği Güncelleştir**' i seçin.
+
+1. Yeni adın **bildirilen özellik** sütununda görünür olduğunu görmek için sayfanın üst kısmındaki **Yenile** düğmesine tıklayın.
 
 1. Cihazın desteklediği tüm komutları görüntülemek için **komut** sayfasını seçin.
 

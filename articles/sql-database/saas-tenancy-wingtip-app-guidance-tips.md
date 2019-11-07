@@ -1,5 +1,5 @@
 ---
-title: SQL Database çok kiracılı uygulama örneği-Wingtip SaaS | Microsoft Docs
+title: 'SQL Database çok kiracılı uygulama örneği-Wingtip SaaS '
 description: Azure SQL veritabanı, Wingtip bilet SaaS örneği kullanan örnek çok kiracılı uygulamayı yüklemek ve çalıştırmak için adım ve kılavuz sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 6c14fd69521be85dbda5ec4ceda991dfdff54ae0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9258e1e8219300c47e77ea8164e54edd5855bb39
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570070"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691817"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip bilet örnek SaaS uygulamaları ile çalışmaya yönelik genel kılavuz
 
@@ -34,10 +34,10 @@ ZIP dosyaları bir dış kaynaktan indirilip ayıklandığında, yürütülebili
 3. **ZIP 'ı indir** ' e tıklayın ve dosyayı kaydedin.
 4. ZIP dosyasına sağ tıklayın ve **Özellikler**' i seçin. ZIP dosya adı, depo adına karşılık gelir. değerine. _WingtipTicketsSaaS-DbPerTenant-Master. zip_)
 5. **Genel** sekmesinde **Engellemeyi kaldır**' ı seçin.
-6.           **Tamam**'ı tıklatın.
+6. **Tamam** düğmesine tıklayın.
 7. Dosyaları ayıklayın.
 
-Betikler içinde bulunur *. Öğrenme\\modülleri* klasörü.
+Betikler *..\\Learning modülleri* klasöründe bulunur.
 
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Wingtip bilet PowerShell betikleri ile çalışma
@@ -48,7 +48,7 @@ En iyi şekilde yararlanmak için, belirtilen betiklere erişmeniz gerekir. Yür
 
 **Userconfig. psm1** dosyasını, dağıtım sırasında ayarladığınız kaynak grubu ve Kullanıcı değeriyle düzenleyin:
 
-1. *PowerShell ISE* 'yi açın ve yükleyin... Öğrenme modülleri\\*userconfig. psm1* \\ 
+1. *PowerShell ISE* ve Load...\\öğrenme modüllerini\\*userconfig. psm1* ile açın 
 2. *Resourcegroupname* ve *ad* 'yi dağıtımınızın belirli değerleriyle güncelleştirin (yalnızca 10 ve 11. satır).
 3. Değişiklikleri kaydedin!
 
@@ -78,22 +78,22 @@ Uygulama sunucularına ve veritabanlarına bağlanmak ve bu dosyalara gitmek iç
 
 Dağıtım başlangıçta, bağlanılacak kiracılar ve Katalog SQL veritabanı sunucuları vardır. Sunucuların adlandırılması, veritabanı Kiracı düzenine bağlıdır (Ayrıntılar için aşağıya bakın). 
 
-   - **Tek başına uygulama:** her kiracı için sunucular (örn. *contosoconcerthall-&lt;user&gt;*  Server) ve *Catalog-sa-&lt;user&gt;*
-   - **Kiracı başına veritabanı:** *tenants1-DPT-&lt;user&gt;*  ve *Catalog-DPT-&lt;user&gt;*  sunucuları
-   - **Çok kiracılı veritabanı:** *tenants1-MT-&lt;user&gt;*  ve *Catalog-MT-&lt;user&gt;*  Servers
+   - **Tek başına uygulama:** her kiracı için sunucular (örn. *contosoconcerthall-&lt;kullanıcı&gt;* sunucusu) ve *Katalog-sa-&lt;Kullanıcı&gt;*
+   - **Kiracı başına veritabanı:** *tenants1-dpt-&lt;Kullanıcı&gt;* ve *katalog-dpt-&lt;Kullanıcı&gt;* sunucuları
+   - **Çok kiracılı veritabanı:** *tenants1-MT-&lt;Kullanıcı&gt;* ve *Katalog-MT-&lt;Kullanıcı&gt;* sunucuları
 
 Başarılı bir tanıtım bağlantısı sağlamak için, tüm sunucuların tüm IP 'Leri aracılığıyla izin veren bir [güvenlik duvarı kuralı](sql-database-firewall-configure.md) vardır.
 
 
 1. *SSMS* 'yi açın ve kiracılar 'a bağlanın. Sunucu adı, seçtiğiniz veritabanı Kiracı düzenine bağlıdır (Ayrıntılar için aşağıya bakın):
-    - **Tek başına uygulama:** ayrı kiracıların sunucuları (örn. *contosoconcerthall-&lt;user&gt;. Database.Windows.net*) 
-    - **Kiracı başına veritabanı:** *tenants1-DPT-&lt;user&gt;. Database.Windows.net*
-    - **Çok kiracılı veritabanı:** *tenants1-MT-&lt;user&gt;. Database.Windows.net* 
+    - **Tek başına uygulama:** ayrı kiracıların sunucuları (örn. *contosoconcerthall-&lt;User&gt;. Database.Windows.net*) 
+    - **Kiracı başına veritabanı:** *tenants1-dpt-&lt;User&gt;. Database.Windows.net*
+    - **Çok kiracılı veritabanı:** *tenants1-MT-&lt;User&gt;. Database.Windows.net* 
 2. **Bağlan** > **Veritabanı Altyapısı...** :
 
    ![katalog sunucusu seçeneğine tıklayın](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. Demo kimlik bilgileri şunlardır: Login = *Geliştirici*, parola = *P\@ssword1*
+3. Tanıtım bilgileri şunlardır: Login = *Geliştirici*, Password = *P\@ssword1*
 
     Aşağıdaki görüntüde, *kiracı başına veritabanı* için oturum açma bilgisi gösterilmektedir. 
     ![bağlantı](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
@@ -101,9 +101,9 @@ Başarılı bir tanıtım bağlantısı sağlamak için, tüm sunucuların tüm 
    
 
 4. 2-3 adımlarını yineleyin ve katalog sunucusuna bağlanın (veritabanı Kiracı düzenine göre belirli sunucu adları için aşağıya bakın)
-    - **Tek başına uygulama:** *Catalog-sa-&lt;user&gt;. Database.Windows.net*
-    - **Kiracı başına veritabanı:** *Katalog-DPT-&lt;user&gt;. Database.Windows.net*
-    - **Çok kiracılı veritabanı:** *Katalog-MT-&lt;user&gt;. Database.Windows.net*
+    - **Tek başına uygulama:** *Katalog-sa-&lt;User&gt;. Database.Windows.net*
+    - **Kiracı başına veritabanı:** *Katalog-dpt-&lt;User&gt;. Database.Windows.net*
+    - **Çok kiracılı veritabanı:** *Katalog-MT-&lt;User&gt;. Database.Windows.net*
 
 
 Başarıyla bağlandıktan sonra tüm sunucuları görmeniz gerekir. Sağladığınız kiracılara bağlı olarak veritabanları listeniz farklı olabilir.

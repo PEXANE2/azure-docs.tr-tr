@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory ile Azure Data Lake Storage 2. Amazon S3 'ten verileri geçirme | Microsoft Docs
+title: Azure Data Factory ile Azure Data Lake Storage 2. Amazon S3 'ten veri geçirme
 description: Bir bölüm listesini, Azure Data Factory ile AWS S3 üzerinde depolamak için bir dış denetim tablosu kullanarak Amazon S3 'tan verileri geçirmek üzere bir çözüm şablonu kullanmayı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2019
-ms.openlocfilehash: e4567d79b70fc18622e4a5e927031e9849b96e99
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a8591762bf4e8eccd5e1b7d67538674feed720b9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092293"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684201"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Amazon S3 'ten Azure Data Lake Storage 2. veri geçirme
 
@@ -73,7 +73,7 @@ Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta veril
 
     > [!NOTE]
     > Tablo adı s3_partition_control_table ' dir.
-    > Denetim tablosunun şeması, PartitionPrefix ve Başarımaarızası ' dir; burada PartitionPrefix, Amazon ' deki klasör ve dosyaları filtrelemek için S3 ' de önek ayarıdır ve her bölümün kopyalanma durumudur: 0, bu bölümün Azure 'a kopyalanmadığı ve 1 ' in başarıyla Azure 'a kopyalandığı anlamına gelir.
+    > Denetim tablosunun şeması, PartitionPrefix ve Başarımaarızası ' dir; burada PartitionPrefix, Amazon S3 içindeki klasör ve dosyaları filtrelemek için S3 ' de önek ayarıdır ve bu bölümde her bölümün kopyalanma durumu vardır: 0 anlamına gelir. Azure 'a kopyalanmadı ve 1, bu bölümün Azure 'a başarıyla kopyalandığı anlamına gelir.
     > Denetim tablosunda tanımlanmış 5 bölüm vardır ve her bölüm kopyalamanın varsayılan durumu 0 ' dır.
 
     ```sql
@@ -109,7 +109,7 @@ Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta veril
 
 3. **AWS S3 'ten geçmiş verileri Azure Data Lake Storage 2.** şablonuna gidin. Veri kaynağı deposu olarak AWS S3 ve hedef depo olarak Azure Data Lake Storage 2. dış denetim tablonuza yönelik bağlantıları girin. Dış denetim tablosunun ve saklı yordamın aynı bağlantıya başvurduğuna dikkat edin.
 
-    ![Yeni bağlantı oluştur](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
+    ![Yeni bağlantı oluşturma](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
 4. **Bu şablonu kullan**' ı seçin.
 
@@ -134,7 +134,7 @@ Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta veril
 
     > [!NOTE]
     > Tablo adı s3_partition_delta_control_table ' dir.
-    > Denetim tablosunun şeması PartitionPrefix, JobRunTime ve Başarımaarızası olur; burada PartitionPrefix, Amazon S3 içindeki klasör ve dosyaları filtrelemek için, iş çalışma zamanı, kopyalama işlerinin çalıştırıldığı zaman tarih saat değeridir ve başarılı Sorarızası Her bölümün kopyalandığı durum: 0, bu bölümün Azure 'a kopyalanmadığı ve 1 ' in başarıyla Azure 'a kopyalandığı anlamına gelir.
+    > Denetim tablosunun şeması PartitionPrefix, JobRunTime ve Başarımaarızası olur; burada PartitionPrefix, Amazon S3 içindeki klasör ve dosyaları filtrelemek için, iş çalışma zamanı, kopyalama işlerinin çalıştırıldığı zaman tarih saat değeridir ve başarılı Sorarızası Her bölüm kopyalama durumu: 0, bu bölüm Azure 'a kopyalanmamış ve 1, bu bölümün Azure 'a başarıyla kopyalandığı anlamına gelir.
     > Denetim tablosu 'nda tanımlanmış 5 bölüm vardır. JobRunTime için varsayılan değer, bir kerelik geçmiş veri geçişinin başladığı zaman olabilir. ADF kopyalama etkinliği, bu tarihten sonra son değiştirilen AWS S3 üzerindeki dosyaları kopyalayacaktır. Her bölüm kopyalamanın varsayılan durumu 1 ' dir.
 
     ```sql
@@ -172,7 +172,7 @@ Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta veril
 
 3. **AWS S3 'ten Azure Data Lake Storage 2. şablonuna olan Delta verilerini kopyalama** bölümüne gidin. Veri kaynağı deposu olarak AWS S3 ve hedef depo olarak Azure Data Lake Storage 2. dış denetim tablonuza yönelik bağlantıları girin. Dış denetim tablosunun ve saklı yordamın aynı bağlantıya başvurduğuna dikkat edin.
 
-    ![Yeni bağlantı oluştur](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
+    ![Yeni bağlantı oluşturma](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
 
 4. **Bu şablonu kullan**' ı seçin.
 

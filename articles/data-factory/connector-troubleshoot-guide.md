@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory bağlayıcıları sorunlarını giderme | Microsoft Docs
+title: Azure Data Factory bağlayıcılarıyla ilgili sorunları giderme
 description: Azure Data Factory 'deki bağlayıcı sorunlarını giderme hakkında bilgi edinin.
 services: data-factory
 author: linda33wj
@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 08/26/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: bea5191063cf673f6b1395d46a15536e80b0aa30
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8cabc1031f9d0be772ba087109ae1dfc881ce163
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143511"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680077"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory bağlayıcılarıyla ilgili sorunları giderme
 
@@ -21,20 +21,20 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 ## <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
-### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Hata iletisi: Uzak sunucu hata döndürdü: (403) yasak
+### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Hata iletisi: uzak sunucu bir hata döndürdü: (403) yasak
 
-- **Belirtiler**: Kopyalama etkinliği şu hata ile başarısız oldu: 
+- **Belirtiler**: kopyalama etkinliği aşağıdaki hatayla başarısız oldu: 
 
     ```
     Message: The remote server returned an error: (403) Forbidden.. 
     Response details: {"RemoteException":{"exception":"AccessControlException""message":"CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)....
     ```
 
-- **Neden**: Olası nedenlerden biri, kullandığınız hizmet sorumlusu veya yönetilen kimliğin belirli klasöre/dosyaya erişim iznine sahip olmaması olabilir.
+- **Neden**: olası bir neden, kullandığınız hizmet sorumlusu veya yönetilen kimliğin belirli klasöre/dosyaya erişim izni olmaması olabilir.
 
-- **Çözüm**: Kopyalamanız gereken tüm klasörler ve alt klasörlerde ilgili izinleri verin. [Bu belgeye](connector-azure-data-lake-store.md#linked-service-properties)başvurun.
+- **Çözüm**: kopyalamanız gereken tüm klasörler ve alt klasörlerde ilgili izinleri verin. [Bu belgeye](connector-azure-data-lake-store.md#linked-service-properties)başvurun.
 
-### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Hata iletisi: Hizmet sorumlusu kullanılarak erişim belirteci alınamadı. ADAL hatası: service_unavailable
+### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Hata iletisi: hizmet sorumlusu kullanılarak erişim belirteci alınamadı. ADAL hatası: service_unavailable
 
 - **Belirtiler**: kopyalama etkinliği aşağıdaki hatayla başarısız oldu:
 
@@ -43,15 +43,15 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
     ADAL Error: service_unavailable, The remote server returned an error: (503) Server Unavailable.
     ```
 
-- **Neden**: Azure Active Directory sahip olan hizmet belirteci sunucusu (STS) kullanılamıyor, yani istekleri işlemek için çok meşgul olmadığında, HTTP hatası 503 döndürür. 
+- **Neden**: Azure Active Directory sahip olduğu hizmet belirteci sunucusu (STS) kullanılamıyor, yani istekleri işlemek için çok meşgul OLMADıĞıNDA, HTTP hatası 503 döndürür. 
 
-- **Çözüm**: Birkaç dakika sonra kopyalama etkinliğini yeniden çalıştırın.
+- **Çözüm**: birkaç dakika sonra kopyalama etkinliğini yeniden çalıştırın.
 
 ## <a name="azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı
 
-### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Hata iletisi: Bir karakter dizesinden uniqueidentifier öğesine dönüştürülürken dönüştürme başarısız oldu
+### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Hata iletisi: bir karakter dizesinden uniqueidentifier öğesine dönüştürülürken dönüştürme başarısız oldu
 
-- **Belirtiler**: Kaynak veri kaynağından (örneğin, SQL Server) verileri, hazırlanan kopya ve PolyBase kullanarak Azure SQL veri ambarı 'na kopyaladığınızda aşağıdaki hataya ulaşırsınız:
+- **Belirtiler**: tablo veri kaynağından (örneğin, SQL Server) verileri, hazırlanan Copy ve PolyBase kullanarak Azure SQL veri ambarı 'na kopyaladığınızda, aşağıdaki hataya ulaşırsınız:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
@@ -62,11 +62,11 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: Azure SQL veri ambarı PolyBase boş dizeyi GUID 'ye dönüştüremiyor.
 
-- **Çözüm**: Kopyalama etkinliği havuzunda, PolyBase ayarları altında "**tür Varsayılanı kullan**" seçeneğini false olarak ayarlayın.
+- **Çözüm**: kopyalama etkinliği havuzunda, PolyBase ayarları altında "**tür Varsayılanı kullan**" seçeneğini false olarak ayarlayın.
 
-### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Hata iletisi: Beklenen veri türü: DECIMAL (x, x), sorunlu değer
+### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Hata iletisi: beklenen veri türü: DECIMAL (x, x), sorunlu değer
 
-- **Belirtiler**: Kaynak veri kaynağından (örneğin, SQL Server) verileri, hazırlanan Copy ve PolyBase kullanarak SQL DW 'ye kopyaladığınızda aşağıdaki hataya ulaşırsınız:
+- **Belirtiler**: bir tablo veri kaynağından (örneğin, SQL Server) verileri, hazırlanan kopya ve PolyBase kullanarak SQL DW 'ye kopyaladığınızda aşağıdaki hataya ulaşırsınız:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
@@ -78,11 +78,11 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: Azure SQL veri ambarı PolyBase, decimal sütununa boş dize (null değer) ekleyemiyor.
 
-- **Çözüm**: Kopyalama etkinliği havuzunda, PolyBase ayarları altında "**tür Varsayılanı kullan**" seçeneğini false olarak ayarlayın.
+- **Çözüm**: kopyalama etkinliği havuzunda, PolyBase ayarları altında "**tür Varsayılanı kullan**" seçeneğini false olarak ayarlayın.
 
 ### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Hata iletisi: Java özel durum iletisi: HdfsBridge:: CreateRecordReader
 
-- **Belirtiler**: PolyBase kullanarak Azure SQL veri ambarı 'na veri kopyalar ve şu hatayı alırsınız:
+- **Belirtiler**: PolyBase 'ı kullanarak Azure SQL veri ambarı 'na veri kopyalar ve şu hatayı alırsınız:
 
     ```
     Message=110802;An internal DMS error occurred that caused this operation to fail. 
@@ -91,7 +91,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
     Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
     ```
 
-- **Neden**: Olası neden şemanın (Toplam sütun genişliği) çok büyük (1 MB 'den büyük) olması olabilir. Tüm sütunların boyutunu ekleyerek hedef SQL DW tablosunun şemasını denetleyin:
+- **Neden**: olası neden şemanın (Toplam sütun genişliği) çok büyük (1 MB 'den büyük) olması olabilir. Tüm sütunların boyutunu ekleyerek hedef SQL DW tablosunun şemasını denetleyin:
 
     - Int-> 4 bayt
     - Büyük tamsayı-> 8 bayt
@@ -109,7 +109,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
     - Zaman-> 12 bayt
     - Tinyint-> 1 bayt
 
-- **Çözüm**: Sütun genişliğini 1 MB 'tan küçük olacak şekilde azalt
+- **Çözüm**: sütun GENIŞLIĞINI 1 MB 'tan küçük olacak şekilde azalt
 
 - Veya PolyBase 'i devre dışı bırakarak toplu ekleme yaklaşımını kullanın
 
@@ -123,28 +123,28 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: Azure SQL veri ambarı, Azure depolama 'daki dış tabloyu sorgulama sorunu ile karşılaştı.
 
-- **Çözüm**: Aynı sorguyu SSMS 'de çalıştırın ve aynı sonucu görüp göracağınızı denetleyin. Yanıt Evet ise, Azure SQL veri ambarı 'na bir destek bileti açın ve daha fazla sorun gidermek için SQL DW sunucunuzu ve veritabanı adınızı sağlayın.
+- **Çözüm**: aynı sorguyu SSMS 'de çalıştırın ve aynı sonucu görüp gör, kontrol edin. Yanıt Evet ise, Azure SQL veri ambarı 'na bir destek bileti açın ve daha fazla sorun gidermek için SQL DW sunucunuzu ve veritabanı adınızı sağlayın.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-### <a name="error-message-request-size-is-too-large"></a>Hata iletisi: İstek boyutu çok büyük
+### <a name="error-message-request-size-is-too-large"></a>Hata iletisi: Istek boyutu çok büyük
 
-- **Belirtiler**: Verileri varsayılan yazma toplu işi boyutuyla Azure Cosmos DB kopyalar ve *"**istek boyutu çok büyük**"* hatasını görürsünüz.
+- **Belirtiler**: verileri varsayılan yazma toplu işi boyutuyla Azure Cosmos DB kopyalar ve *"**istek boyutu çok büyük**"* hatası ile karşılaşırsınız.
 
-- **Neden**: Cosmos DB tek bir isteğin boyutunu 2 MB ile sınırlar. Formül, Istek boyutu = tek belge boyutu * yazma toplu Iş boyutu ' dür. Belge boyutunuz büyükse, varsayılan davranış çok büyük istek boyutuna neden olur. Yazma toplu iş boyutunu ayarlayabilirsiniz.
+- **Neden**: Cosmos DB tek bir isteğin boyutunu 2 MB olarak sınırlar. Formül, Istek boyutu = tek belge boyutu * yazma toplu Iş boyutu ' dür. Belge boyutunuz büyükse, varsayılan davranış çok büyük istek boyutuna neden olur. Yazma toplu iş boyutunu ayarlayabilirsiniz.
 
-- **Çözüm**: Kopyalama etkinliği havuzu ' nda ' toplu iş boyutunu yaz ' değerini azaltın (varsayılan değer 10000 ' dir).
+- **Çözüm**: kopyalama etkinliği havuzunda ' toplu Iş boyutunu yaz ' değerini küçültün (varsayılan değer 10000 ' dir).
 
-### <a name="error-message-unique-index-constraint-violation"></a>Hata iletisi: Benzersiz dizin kısıtlaması ihlali
+### <a name="error-message-unique-index-constraint-violation"></a>Hata iletisi: benzersiz dizin kısıtlaması ihlali
 
-- **Belirtiler**: Cosmos DB verileri kopyalarken şu hatayla karşılaşabilirsiniz:
+- **Belirtiler**: Cosmos DB veri kopyalarken şu hatayla karşılaşırsınız:
 
     ```
     Message=Partition range id 0 | Failed to import mini-batch. 
     Exception was Message: {"Errors":["Encountered exception while executing function. Exception &#61; Error: {\"Errors\":[\"Unique index constraint violation.\"]}... 
     ```
 
-- **Neden**: Olası iki nedeni vardır:
+- **Neden**: olası iki neden vardır:
 
     - **Insert** as Write davranışını kullanırsanız, bu hata kaynak VERILERDE aynı kimliğe sahip satırlar/nesneler olduğu anlamına gelir.
 
@@ -155,18 +155,18 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
     - Cause1 için, **büyük sert** yazma davranışı olarak ayarlayın.
     - Neden 2 için, her belgenin tanımlanmış benzersiz anahtar için farklı bir değere sahip olduğundan emin olun.
 
-### <a name="error-message-request-rate-is-large"></a>Hata iletisi: İstek oranı çok büyük
+### <a name="error-message-request-rate-is-large"></a>Hata iletisi: Istek hızı büyük
 
-- **Belirtiler**: Cosmos DB verileri kopyalarken şu hatayla karşılaşabilirsiniz:
+- **Belirtiler**: Cosmos DB veri kopyalarken şu hatayla karşılaşırsınız:
 
     ```
     Type=Microsoft.Azure.Documents.DocumentClientException,
     Message=Message: {"Errors":["Request rate is large"]}
     ```
 
-- **Neden**: Kullanılan istek birimleri Cosmos DB ' de yapılandırılan kullanılabilir RU 'dan büyük. Cosmos DB RU 'yi [buradan](../cosmos-db/request-units.md#request-unit-considerations)nasıl hesaplayacağını öğrenin.
+- **Neden**: kullanılan istek birimleri Cosmos DB yapılandırılan ru 'dan daha büyük. Cosmos DB RU 'yi [buradan](../cosmos-db/request-units.md#request-unit-considerations)nasıl hesaplayacağını öğrenin.
 
-- **Çözüm**: İki çözüm aşağıda verilmiştir:
+- **Çözüm**: iki çözüm vardır:
 
     1. Cosmos DB, kopyalama etkinliği performansını iyileştirecek, ancak Cosmos DB daha fazla ücret ödemesine neden olacak şekilde, 1. kapsayıcıyı daha büyük bir değere **yükseltin** . 
 
@@ -174,19 +174,19 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 ### <a name="column-missing-in-column-mapping"></a>Sütun eşlemesinde sütun eksik
 
-- **Belirtiler**: Sütun eşleme için Cosmos DB şemayı içeri aktardığınızda bazı sütunlar eksiktir. 
+- **Belirtiler**: sütun eşleme için Cosmos DB şemayı içeri aktardığınızda bazı sütunlar eksiktir. 
 
 - **Neden**: ADF ilk 10 Cosmos DB belgeden şemayı anlar. Bazı sütunlarda/özelliklerde bu belgelerde değer yoksa, ADF tarafından algılanmaz ve bu nedenle gösterilmez.
 
-- **Çözüm**: Sütunu boş değere sahip sonuç kümesinde göstermek üzere zorlamak için aşağıdaki gibi bir sorgu ayarlayabilirsiniz: (ilk 10 belgede "imkansız" sütunu eksik). Alternatif olarak, eşleme için sütunu el ile ekleyebilirsiniz.
+- **Çözüm**: sütunu boş değere sahip sonuç kümesinde göstermek üzere zorlamak için aşağıdaki gibi bir sorgu ayarlayabilirsiniz: (ilk 10 belgede "imkansız" sütunu eksik). Alternatif olarak, eşleme için sütunu el ile ekleyebilirsiniz.
 
     ```sql
     select c.company, c.category, c.comments, (c.impossible??'') as impossible from c
     ```
 
-### <a name="error-message-the-guidrepresentation-for-the-reader-is-csharplegacy"></a>Hata iletisi: Okuyucunun Guidgösterimi CSharpLegacy
+### <a name="error-message-the-guidrepresentation-for-the-reader-is-csharplegacy"></a>Hata iletisi: okuyucu için Guidtemsili CSharpLegacy
 
-- **Belirtiler**: UUID alanı ile Cosmos DB MongoAPI/MongoDB 'den veri kopyalarken Şu hataya ulaşırsınız:
+- **Belirtiler**: UUID alanı Ile Cosmos DB MongoAPI/MongoDB 'den veri kopyalarken şu hatayla karşılaşırsınız:
 
     ```
     Failed to read data via MongoDB client.,
@@ -194,7 +194,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
     Message=The GuidRepresentation for the reader is CSharpLegacy which requires the binary sub type to be UuidLegacy not UuidStandard.,Source=MongoDB.Bson,’“,
     ```
 
-- **Neden**: BSON-UuidStardard ve UuidLegacy içinde UUID 'yi göstermenin iki yolu vardır. Varsayılan olarak, UuidLegacy veri okumak için kullanılır. MongoDB 'deki UUID verileriniz UuidStandard ise hatayla karşılaşacaktır.
+- **Neden**: bSon-UuidStardard ve UUIDLEGACY 'de UUID 'yi göstermenin iki yolu vardır. Varsayılan olarak, UuidLegacy veri okumak için kullanılır. MongoDB 'deki UUID verileriniz UuidStandard ise hatayla karşılaşacaktır.
 
 - **Çözüm**: MongoDB bağlantı dizesinde "**uuidRepresentation = Standard**" seçeneğini ekleyin. Daha fazla bilgi için bkz. [MongoDB bağlantı dizesi](connector-mongodb.md#linked-service-properties).
 
@@ -202,13 +202,13 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 ### <a name="error-message-invalid-sftp-credential-provided-for-sshpublickey-authentication-type"></a>Hata iletisi: ' SshPublicKey ' kimlik doğrulama türü için geçersiz SFTP kimlik bilgisi belirtildi
 
-- **Belirtiler**: Kimlik doğrulaması `SshPublicKey` kullanıyorsunuz ve şu hatayı alırsınız:
+- **Belirtiler**: `SshPublicKey` kimlik doğrulaması kullanıyorsunuz ve şu hatayı alırsınız:
 
     ```
     Invalid Sftp credential provided for 'SshPublicKey' authentication type
     ```
 
-- **Neden**: Olası 3 neden vardır:
+- **Neden**: 3 olası neden vardır:
 
     1. SFTP bağlantılı hizmetini yazmak için ADF yazma Kullanıcı arabirimini kullanıyorsanız, bu hata, kullanmak üzere seçtiğiniz özel anahtarın yanlış biçimde olduğunu gösterir. Bir PKCS # 8 SSH özel anahtarı biçimi kullanabilirsiniz, ancak ADF 'nin yalnızca geleneksel SSH anahtar biçimini desteklediğini unutmayın. Daha belirgin olarak, PKCS # 8 biçimi ve geleneksel anahtar biçimi arasındaki fark PKCS # 8 anahtar içerikleri, " *-----ŞIFRELENMIŞ özel anahtarla-----* " ile başlar, ancak geleneksel anahtar biçimi " *-----BEGIN RSA özel anahtar-----* " ile başlar.
     2. Özel anahtar içeriğini depolamak için Azure Key Vault kullanırsanız veya SFTP bağlantılı hizmetini yazmak için programmatical yöntemini kullanırsanız, bu hata özel anahtar içeriğinin yanlış olduğu anlamına gelir, büyük olasılıkla Base64 kodlamalı değildir.

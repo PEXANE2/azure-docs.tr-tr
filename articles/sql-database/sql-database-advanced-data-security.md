@@ -1,5 +1,5 @@
 ---
-title: Gelişmiş veri güvenliği-Azure SQL veritabanı | Microsoft Docs
+title: Gelişmiş veri güvenliği-Azure SQL veritabanı
 description: Hassas verileri keşfetme ve sınıflandırma, veritabanınızın güvenlik açıklarını yönetme ve Azure SQL veritabanınızın bir tehdidi olduğunu gösterebilecek anormal etkinlikleri algılama işlevleri hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: 40e556b5d0fe22629eeca9a088d10ea5fc9b95ac
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: ce9cfa7e4b08dac878de52ba9765bcc204ed8196
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965494"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691303"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL veritabanı için gelişmiş veri güvenliği
 

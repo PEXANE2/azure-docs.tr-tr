@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE Analytics 'te SQL Analytics için en iyi uygulamalar (eski adıyla SQL DW) | Microsoft Docs
+title: Azure SYNAPSE Analytics 'te SQL Analytics için en iyi uygulamalar (eski adıyla SQL DW)
 description: Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) SQL Analytics çözümleri geliştirmeye yönelik öneriler ve en iyi uygulamalar.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: bafa4088ee413e28ec6adee3df20f253aeebb861
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6a9d7c4ed020f447e9512c7bc2edd0caecf3400d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499834"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646167"
 ---
 # <a name="best-practices-for-sql-analytics-in-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics 'te SQL Analytics için en iyi uygulamalar (eski adıyla SQL DW)
 

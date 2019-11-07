@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Merkezi araştırmada bulunan Kullanıcı verilerini yönetme | Microsoft Docs
+title: Azure Güvenlik Merkezi araştırmada bulunan Kullanıcı verilerini yönetme
 description: " Azure Güvenlik Merkezi 'nin araştırma özelliğinde bulunan Kullanıcı verilerini yönetmeyi öğrenin. "
 services: operations-management-suite
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 8b6bde69f233fee9fe20b260e392966298f13a9a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 059ca2a26e50128d6bc4313dad9f995e97c06378
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202043"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686395"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Azure Güvenlik Merkezi araştırmada bulunan Kullanıcı verilerini yönetme
 Bu makalede, Azure Güvenlik Merkezi 'nin araştırma özelliğinde bulunan Kullanıcı verilerinin nasıl yönetileceği hakkında bilgi verilmektedir. Araştırma verileri [Azure izleyici günlüklerinde](../log-analytics/log-analytics-overview.md) depolanır ve Güvenlik Merkezi 'nde gösterilir. Kullanıcı verilerini yönetmek, verileri silme veya dışa aktarma olanağını içerir.
@@ -38,14 +38,14 @@ Okuyucu, sahip ve katkıda bulunan rolleri hakkında daha fazla bilgi edinmek i�
 ## <a name="deleting-personal-data"></a>Kişisel verileri silme
 Sahip, katkıda bulunan veya hesap yöneticisinin rolünü atayan bir güvenlik merkezi kullanıcısına araştırma bilgileri silinebilir.
 
-Bir araştırmayı silmek için Azure Resource Manager REST API bir `DELETE` istek gönderebilirsiniz:
+Bir araştırmayı silmek için Azure Resource Manager REST API `DELETE` isteği gönderebilirsiniz:
 
 ```HTTP
 DELETE
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents/{incidentName}
 ```
 
-Giriş `incidentName` , tüm olaylar bir `GET` istek kullanılarak listelenerek bulunabilir:
+`incidentName` girişi, tüm olaylar `GET` isteği kullanılarak listelenerek bulunabilir:
 
 ```HTTP
 GET

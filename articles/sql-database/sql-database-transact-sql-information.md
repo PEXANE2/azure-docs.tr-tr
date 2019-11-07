@@ -1,5 +1,5 @@
 ---
-title: T-SQL farklılıklarını çözme-geçiş-Azure SQL veritabanı | Microsoft Docs
+title: T-SQL farklılıklarını çözme-geçiş-Azure SQL veritabanı
 description: Azure SQL Veritabanında tam olarak desteklenmeyen Transact-SQL deyimleri
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: fbc4628ff3d3d7d90f7ec2c47c87f7afa3e9cd43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: edb978e27621cbc0df66ab32ba7472629c3f8bd1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028825"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686935"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL veritabanına geçiş sırasında Transact-SQL farklılıklarını çözme
 
@@ -57,7 +57,7 @@ SQL veritabanı tarafından desteklenen ve desteklenmeyen özelliklerin listesi 
 - İşlevler: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
 - Donanım: donanımla ilgili sunucu ayarları ile ilgili sözdizimi: bellek, çalışan iş parçacıkları, CPU benzeşimi, izleme bayrakları. Bunun yerine hizmet katmanlarını ve işlem boyutlarını kullanın.
 - `KILL STATS JOB`
-- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE` ve dört bölümden oluşan adlar
+- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`ve dört bölümden oluşan adlar
 - .NET Framework: SQL Server ile CLR tümleştirmesi
 - Anlamsal arama
 - Sunucu kimlik bilgileri: bunun yerine [veritabanı kapsamlı kimlik bilgilerini](https://msdn.microsoft.com/library/mt270260.aspx) kullanın.
@@ -78,11 +78,11 @@ SQL veritabanı tarafından desteklenen ve desteklenmeyen özelliklerin listesi 
 
 ## <a name="full-transact-sql-reference"></a>Tam Transact-SQL başvurusu
 
-Transact-SQL dil bilgisi, kullanımı ve örnekleri hakkında daha fazla bilgi için bkz. [Transact-SQL başvurusu (veritabanı altyapısı)](https://msdn.microsoft.com/library/bb510741.aspx) SQL Server Books Online.
+Transact-SQL dil bilgisi, kullanımı ve örnekleri hakkında daha fazla bilgi için bkz. [Transact-SQL başvurusu (veritabanı altyapısı)](https://msdn.microsoft.com/library/bb510741.aspx) çevrimiçi SQL Server Books Online.
 
 ### <a name="about-the-applies-to-tags"></a>"Uygulandığı öğe" etiketleri hakkında
 
-Transact-SQL başvurusu, 2008 SQL Server sürümleriyle ilgili makaleleri içerir. Makale başlığının altında, dört SQL Server platformunu listelemek ve uygulanabilirliği gösteren bir simge çubuğu bulunur. Örneğin kullanılabilirlik grupları SQL Server 2012'de tanıtılmıştır.  [Create AVAıLABıLıTY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) article, deyimin SQL Server için geçerli olduğunu gösterir **(2012 ile başlayarak)** . Deyim SQL Server 2008, SQL Server 2008 R2, Azure SQL Veritabanı, Azure SQL Veri Ambarı veya Paralel Veri Ambarı için geçerli değildir.
+Transact-SQL başvurusu, 2008 SQL Server sürümleriyle ilgili makaleleri içerir. Makale başlığının altında, dört SQL Server platformunu listelemek ve uygulanabilirliği gösteren bir simge çubuğu bulunur. Örneğin kullanılabilirlik grupları SQL Server 2012'de tanıtılmıştır.  [KULLANıLABILIRLIK grubu oluşturma](https://msdn.microsoft.com/library/ff878399.aspx) makalesi, deyimin SQL Server için geçerli olduğunu gösterir **(2012 ile başlayarak)** . Deyim SQL Server 2008, SQL Server 2008 R2, Azure SQL Veritabanı, Azure SQL Veri Ambarı veya Paralel Veri Ambarı için geçerli değildir.
 
 Bazı durumlarda, bir makalenin genel konusu bir üründe kullanılabilir, ancak ürünler arasında küçük farklılıklar vardır. Farklar, makaledeki orta noktalara uygun şekilde gösterilir. Bazı durumlarda, bir makalenin genel konusu bir üründe kullanılabilir, ancak ürünler arasında küçük farklılıklar vardır. Farklar, makaledeki orta noktalara uygun şekilde gösterilir. Örneğin, oluşturma TETIKLEYICISI makalesi SQL veritabanı 'nda mevcuttur. Ancak sunucu düzeyi Tetikleyiciler için **tüm sunucu** seçeneği, sunucu DÜZEYI tetikleyicilerin SQL veritabanında kullanılamayacağını belirtir. Bunun yerine veritabanı düzeyi Tetikleyicileri kullanın.
 

@@ -1,5 +1,5 @@
 ---
-title: VMware için kaynak ortamını Azure Site Recovery ile Azure 'a çoğaltma için ayarlayın | Microsoft Docs
+title: Azure 'da Azure Site Recovery ile VMware olağanüstü durum kurtarma için kaynak ayarları ayarlama
 description: Bu makalede, Azure Site Recovery ile Azure 'a VMware VM 'lerini çoğaltmak için şirket içi ortamınızın nasıl ayarlanacağı açıklanır.
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,18 +8,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: bf1ff4dfba105b6c90ab949217453e1db82d109d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791768"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622202"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>VMware 'den Azure 'a çoğaltma için kaynak ortamı ayarlama
 
 Bu makalede, VMware VM 'lerini Azure 'a çoğaltmak için kaynak şirket içi ortamınızı ayarlama açıklanmaktadır. Makale, çoğaltma senaryonuzu seçme, Site Recovery yapılandırma sunucusu olarak şirket içi makine ayarlama ve şirket içi VM 'Leri otomatik olarak bulma adımlarını içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Makalesinde zaten sahip olduğunuz varsayılır:
 
@@ -30,7 +30,7 @@ Makalesinde zaten sahip olduğunuz varsayılır:
 ## <a name="choose-your-protection-goals"></a>Koruma hedeflerinizi seçin
 
 1. **Kurtarma Hizmetleri kasaları** bölümünde kasa adını seçin. Bu senaryo için**ContosoVMVault**’u kullanıyoruz.
-2. **Başlangıç** bölümünde Site Recovery’yi seçin. Daha sonra **Altyapıyı Hazırlama**’yı seçin.
+2. **Başlarken** bölümünde Site Recovery’yi seçin. Daha sonra **Altyapıyı Hazırlama**’yı seçin.
 3. **Koruma hedefi** > **Makineleriniz nerede** bölümünde **Şirket içi** seçeneğini belirleyin.
 4. **Makinelerinizi nereye çoğaltmak istiyorsunuz** bölümünde **Azure’a** seçeneğini belirleyin.
 5. **Makineleriniz sanallaştırıldı mı** bölümünde **Evet, VMware vSphere Hypervisor ile** seçeneğini belirleyin. Sonra **Tamam**’ı seçin.

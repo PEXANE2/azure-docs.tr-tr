@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: b50a21f9c1a4bae7ced8afd9a49c33cc936983ac
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0136b101de870ce669e89e67679719e233343330
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389730"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622576"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 
@@ -90,9 +90,10 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sorgu dili](./concepts/query-language.md) hakkında daha fazla bilgi edinme
-- [Kaynakları keşfetmeyi](./concepts/explore-resources.md) öğrenin
-- [Azure PowerShell](first-query-powershell.md) ile ilk sorgunuzu çalıştırma
-- Bkz. [başlangıç sorguları](./samples/starter.md) örnekleri
-- Bkz. [Gelişmiş sorgular](./samples/advanced.md) örnekleri
-- [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) ile ilgili geri bildirim gönderme
+- [Sorgu dili](./concepts/query-language.md)hakkında daha fazla bilgi alın.
+- [Kaynakları araştırma](./concepts/explore-resources.md)hakkında daha fazla bilgi edinin.
+- [Azure Portal](first-query-portal.md)kullanarak ilk sorgunuzu çalıştırın.
+- [Azure PowerShell](first-query-powershell.md)ile ilk sorgunuzu çalıştırın.
+- Bkz. [Başlangıç sorguları](./samples/starter.md)örnekleri.
+- [Gelişmiş sorguların](./samples/advanced.md)örneklerine bakın.
+- [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)hakkında geri bildirim sağlayın.

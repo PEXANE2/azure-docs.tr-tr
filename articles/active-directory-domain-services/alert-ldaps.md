@@ -12,13 +12,13 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: iainfou
 ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 11/05/2019
 ms.locfileid: "71258043"
 ---
-# <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services uyarı Güvenli LDAP
+# <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services Güvenli LDAP uyarılar
 
 Azure Active Directory Domain Services (Azure AD DS) ile iletişim kurmak için Basit Dizin Erişim Protokolü (LDAP) kullanan uygulamalar ve hizmetler, [GÜVENLI LDAP kullanacak şekilde yapılandırılabilir](tutorial-configure-ldaps.md). Güvenli LDAP 'nin düzgün çalışması için uygun bir sertifika ve gerekli ağ bağlantı noktalarının açık olması gerekir.
 
@@ -30,7 +30,7 @@ Bu makale, Azure AD DS 'da Güvenli LDAP erişimiyle genel uyarıları anlamanı
 
 *Internet üzerinden Güvenli LDAP, yönetilen etki alanı için etkinleştirilmiştir. Ancak, 636 numaralı bağlantı noktasına erişim bir ağ güvenlik grubu kullanılarak kilitlenmemiştir. Bu, yönetilen etki alanındaki Kullanıcı hesaplarını parola yanılma saldırısı saldırılarına maruz bırakabilir.*
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 Güvenli LDAP etkinleştirdiğinizde, gelen LDAPS erişimini belirli IP adreslerine kısıtlayan ek kurallar oluşturmanız önerilir. Bu kurallar, Azure AD DS yönetilen etki alanını deneme yanılma saldırılarına karşı korur. Güvenli LDAP için TCP bağlantı noktası 636 erişimini kısıtlamak üzere ağ güvenlik grubunu güncelleştirmek için aşağıdaki adımları izleyin:
 
@@ -54,7 +54,7 @@ Azure AD DS yönetilen etki alanının sistem durumu otomatik olarak iki saat i�
 
 *Yönetilen etki alanı için Güvenli LDAP sertifikasının kullanım süreleri [Date]].*
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 [GÜVENLI LDAP için sertifika oluşturma](tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)adımlarını izleyerek yeni BIR Güvenli LDAP sertifikası oluşturun. Değiştirme sertifikasını Azure AD DS 'a uygulayın ve sertifikayı Güvenli LDAP kullanarak bağlanan tüm istemcilere dağıtın.
 

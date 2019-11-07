@@ -1,5 +1,5 @@
 ---
-title: SQL veritabanı için XEvent halka arabellek kodu | Microsoft Docs
+title: SQL veritabanı için XEvent halka arabellek kodu
 description: Azure SQL veritabanı 'nda halka arabelleği hedefini kullanarak kolay ve hızlı hale getirilen bir Transact-SQL kod örneği sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: f1ec9cd3a4256597ade409fb3e04d44171277554
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8fd04cac394f05a9db18e84117a8647c1a17ba30
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566154"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686817"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL veritabanı 'nda genişletilmiş olaylar için halka arabelleği hedef kodu
 
@@ -40,7 +40,7 @@ Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 7. , Kaynaklarını serbest bırakmak için halka arabelleği hedefini bırakır.
 8. Olay oturumunu ve tanıtım tablosunu bırakır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure hesabı ve aboneliği [Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 * İçinde tablo oluşturabileceğiniz herhangi bir veritabanı.
@@ -57,7 +57,7 @@ Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 Çok küçük değişikliklerle, aşağıdaki halka arabelleği kod örneği Azure SQL veritabanı veya Microsoft SQL Server üzerinde çalıştırılabilir. Bu fark, 5. adımdaki FROM yan tümcesinde kullanılan bazı dinamik yönetim görünümlerinin (DMVs) adında bulunan ' _database ' düğümünün varlığına sahip olur. Örneğin:
 
 * sys. DM _XE<strong>_veritabanı</strong>_session_targets
-* sys.dm_xe_session_targets
+* sys. DM _xe_session_targets
 
 &nbsp;
 
@@ -222,7 +222,7 @@ Sonuçları görüntülemek için **target_data_XML**sütun üst bilgisi altınd
 
 Ardından sonuçlar bölmesinde, **target_data_XML**sütun başlığı altındaki hücreyi tıkladık. Bu, SSMS. exe ' de, sonuç hücresinin içeriğinin XML olarak görüntülendiği başka bir dosya sekmesi oluşturmuştur.
 
-Çıktı aşağıdaki blokta gösterilmiştir. Uzun görünüyor ancak yalnızca iki  **\<olay >** öğesi.
+Çıktı aşağıdaki blokta gösterilmiştir. Uzun görünüyor ancak yalnızca iki **\<olay >** öğesi.
 
 &nbsp;
 
@@ -347,7 +347,7 @@ Azure SQL veritabanı 'nda genişletilmiş olaylara yönelik birincil konu:
 
 Genişletilmiş olaylara yönelik diğer kod örnek konuları aşağıdaki bağlantılarda bulunabilir. Ancak, örnek hedeflerin Azure SQL veritabanı 'na karşı Microsoft SQL Server için her bir örneğe düzenli olarak göz atın. Daha sonra örneği çalıştırmak için küçük değişiklikler gerekip gerekmediğine karar verebilirsiniz.
 
-* Azure SQL veritabanı için kod örneği: [SQL veritabanı 'nda genişletilmiş olaylar için olay dosyası hedef kodu](sql-database-xevent-code-event-file.md)
+* Azure SQL veritabanı için kod örneği: [SQL veritabanı 'nda genişletilmiş olaylar Için Olay dosyası hedef kodu](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

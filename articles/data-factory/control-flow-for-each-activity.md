@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory | ForEach etkinliği | Microsoft Docs
+title: Azure Data Factory 'de ForEach etkinliği
 description: Her etkinlik Için, işlem hattınızda yinelenen bir denetim akışını tanımlar. Bir koleksiyon üzerinde yineleme yapmak ve belirtilen etkinlikleri yürütmek için kullanılır.
 services: data-factory
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 319f4e722184ce840d43b8f23e61711851a6d4a0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142474"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679869"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory 'de ForEach etkinliği
 ForEach etkinliği, işlem hattınızda yinelenen bir denetim akışını tanımlar. Bu etkinlik bir koleksiyon üzerinde yinelemek için kullanılır ve bir döngüde belirtilen etkinlikleri yürütür. Bu etkinliğin döngü uygulaması, programlama dillerindeki Foreach döngü yapısına benzer.
 
 ## <a name="syntax"></a>Sözdizimi
-Bu makalenin ilerleyen bölümlerinde özellikler açıklanmaktadır. Items özelliği, koleksiyondur ve koleksiyondaki her öğe, `@item()` aşağıdaki sözdiziminde gösterildiği gibi kullanılarak adlandırılır:  
+Bu makalenin ilerleyen bölümlerinde özellikler açıklanmaktadır. Items özelliği, koleksiyondur ve koleksiyondaki her öğe, aşağıdaki sözdiziminde gösterildiği gibi `@item()` kullanılarak başvurulur:  
 
 ```json
 {  
@@ -70,21 +70,21 @@ Bu makalenin ilerleyen bölümlerinde özellikler açıklanmaktadır. Items öze
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | Her etkinliğin adı. | Dize | Evet
+ad | Her etkinliğin adı. | Dize | Evet
 type | **Foreach** olarak ayarlanmalıdır | Dize | Evet
-ısequential | Döngünün sıralı olarak veya paralel olarak yürütülmesi gerekip gerekmediğini belirtir.  En fazla 20 döngü yinelemesi paralel olarak çalıştırılabilir). Örneğin, **ıssequential** değeri false olarak ayarlanmış olan 10 farklı kaynak ve havuz veri kümesi içeren bir kopyalama etkinliği üzerinde yineleme Için bir foreach etkinliğinizi varsa, tüm kopyalar aynı anda yürütülür. Varsayılan değer false 'dur. <br/><br/> "Issequential" yanlış olarak ayarlanırsa, birden çok yürütülebilir dosya çalıştırmak için doğru bir yapılandırma olduğundan emin olun. Aksi takdirde, yazma çakışmalarını önlemek için bu özellik dikkatli kullanılmalıdır. Daha fazla bilgi için bkz. [paralel yürütme](#parallel-execution) bölümü. | Boole değeri | Hayır. Varsayılan değer false 'dur.
+ısequential | Döngünün sıralı olarak veya paralel olarak yürütülmesi gerekip gerekmediğini belirtir.  En fazla 20 döngü yinelemesi paralel olarak çalıştırılabilir). Örneğin, **ıssequential** değeri false olarak ayarlanmış olan 10 farklı kaynak ve havuz veri kümesi içeren bir kopyalama etkinliği üzerinde yineleme Için bir foreach etkinliğinizi varsa, tüm kopyalar aynı anda yürütülür. Varsayılan değer false 'dur. <br/><br/> "Issequential" yanlış olarak ayarlanırsa, birden çok yürütülebilir dosya çalıştırmak için doğru bir yapılandırma olduğundan emin olun. Aksi takdirde, yazma çakışmalarını önlemek için bu özellik dikkatli kullanılmalıdır. Daha fazla bilgi için bkz. [paralel yürütme](#parallel-execution) bölümü. | Boole | Hayır. Varsayılan değer false 'dur.
 batchCount | Paralel yürütme sayısını denetlemek için kullanılacak toplu iş sayısı (ıssequential false olarak ayarlandığında). | Tamsayı (en fazla 50) | Hayır. Varsayılan değer 20 ' dir.
 Öğeler | Tekrarlandırılmış bir JSON dizisi döndüren ifade. | İfade (bir JSON dizisi döndürür) | Evet
-Etkinlikler | Yürütülecek etkinlikler. | Etkinlikler Listesi | Evet
+Etkinlikler | Yürütülecek etkinlikler. | Etkinlik Listesi | Evet
 
 ## <a name="parallel-execution"></a>Paralel yürütme
 **Issequential** , false olarak ayarlandıysa, etkinlik en fazla 20 eşzamanlı yineleme ile paralel olarak yinelenir. Bu ayar dikkatli kullanılmalıdır. Eşzamanlı yinelemeler aynı klasöre ancak farklı dosyalara yazıyorsanız, bu yaklaşım iyidir. Eşzamanlı yinelemeler aynı dosyaya aynı anda yazıyorsanız, bu yaklaşım büyük olasılıkla hataya neden olur. 
 
 ## <a name="iteration-expression-language"></a>Yineleme ifadesi dili
-ForEach etkinliğinde, özellik **öğeleri**için tekrarlandırılmış bir dizi sağlayın. " ForEach `@item()` etkinliğinde tek bir sabit listesi üzerinden yinelemek için kullanın. Örneğin, **öğeler** bir diziyse: [1, 2, 3], `@item()` ilk yinelemede 1, ikinci yinelemede 2 ve üçüncü yinelemede 3 döndürür.
+ForEach etkinliğinde, özellik **öğeleri**için tekrarlandırılmış bir dizi sağlayın. " ForEach etkinliğinde tek bir numaralandırma üzerinde yinelemek için `@item()` kullanın. Örneğin, **öğeler** bir diziyse: [1, 2, 3], `@item()` ilk yinelemede 1, ikinci yinelemede 2 ve üçüncü yinelemede 3 ' ü döndürür.
 
 ## <a name="iterating-over-a-single-activity"></a>Tek bir etkinliğin üzerinde yineleme yapma
-**Senaryon** Azure Blob 'daki aynı kaynak dosyasından Azure Blob 'daki birden çok hedef dosyasına kopyalama.
+**Senaryo:** Azure Blob 'daki aynı kaynak dosyasından Azure Blob 'daki birden çok hedef dosyasına kopyalama.
 
 ### <a name="pipeline-definition"></a>İşlem hattı tanımı
 
@@ -236,7 +236,7 @@ Bir ForEach etkinliğinde birden çok etkinliği yinelemek (örneğin: kopyalama
 ```
 
 ### <a name="example"></a>Örnek
-**Senaryon** Bir ForEach etkinlik içindeki bir ınnerpipeline üzerinde işlem hattı yürütme etkinliği ile yineleme yapın. İç ardışık düzen şema tanımları parametreli olarak kopyalanır.
+**Senaryo:** Bir ForEach etkinlik içindeki bir ınnerpipeline üzerinde işlem hattı yürütme etkinliği ile yineleme yapın. İç ardışık düzen şema tanımları parametreli olarak kopyalanır.
 
 #### <a name="master-pipeline-definition"></a>Ana işlem hattı tanımı
 
@@ -475,16 +475,16 @@ Bir ForEach etkinliğinde birden çok etkinliği yinelemek (örneğin: kopyalama
 
 __Foreach__ etkinliğinin çıkışlarını toplamak Için lütfen _değişkenleri_ kullanın ve _değişken Ekle_ etkinliğini kullanın.
 
-İlk olarak, işlem `array` hattında bir _değişken_ bildirin. Ardından, her __foreach__ döngüsünün Içinde _değişken ekleme_ etkinliğini çağırın. Daha sonra, diziden toplamayı elde edebilirsiniz.
+İlk olarak, ardışık düzende bir `array` _değişkeni_ bildirin. Ardından, her __foreach__ döngüsünün Içinde _değişken ekleme_ etkinliğini çağırın. Daha sonra, diziden toplamayı elde edebilirsiniz.
 
 ## <a name="limitations-and-workarounds"></a>Sınırlamalar ve geçici çözümler
 
 ForEach etkinliğinin ve önerilen geçici çözümlerin bazı sınırlamaları aşağıda verilmiştir.
 
-| Sınırlama | Geçici Çözüm |
+| Sınırlama | Geçici çözüm |
 |---|---|
 | ForEach döngüsünü başka bir ForEach döngüsünün içine (veya bir Until döngüsü) iç içe geçirilemez. | Dış ForEach döngüsü ile iç işlem hattının iç içe döngülü bir iç işlem hattı üzerinde yineleme olduğu iki düzeyli bir işlem hattı tasarlayın. |
-| Foreach etkinliğinin paralel işleme için en `batchCount` fazla 50 ve en fazla 100.000 öğe vardır. | ForEach etkinliğinin dış işlem hattının bir iç işlem hattı üzerinde yineleme olduğu iki düzeyli bir işlem hattı tasarlayın. |
+| ForEach etkinliğinin paralel işleme için maksimum 50 `batchCount` ve en fazla 100.000 öğe vardır. | ForEach etkinliğinin dış işlem hattının bir iç işlem hattı üzerinde yineleme olduğu iki düzeyli bir işlem hattı tasarlayın. |
 | | |
 
 ## <a name="next-steps"></a>Sonraki adımlar

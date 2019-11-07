@@ -1,5 +1,5 @@
 ---
-title: İzleme ve performans ayarlama-Azure SQL veritabanı | Microsoft Docs
+title: İzleme ve performans ayarlama-Azure SQL veritabanı
 description: Değerlendirme ve iyileştirme aracılığıyla Azure SQL veritabanı 'nda performans ayarlama ipuçları.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 5df9df1474489d7f1b1fb4e1089143cca63a3e42
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: c11112963ec82a0e53df156048495e7b5141bcb7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71935594"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687755"
 ---
-# <a name="monitoring-and-performance-tuning"></a>İzleme ve performans ayarlaması
+# <a name="monitoring-and-performance-tuning"></a>İzleme ve performans ayarlama
 
 Azure SQL veritabanı, kullanımı kolayca izlemek, kaynak eklemek veya kaldırmak için kullanabileceğiniz araçlar ve yöntemler sağlar (CPU, bellek veya g/ç gibi), olası sorunları giderebilir ve bir veritabanının performansını geliştirmek için öneriler oluşturabilirsiniz. Azure SQL veritabanı 'ndaki özellikler, veritabanlarındaki sorunları otomatik olarak düzeltir. 
 
@@ -40,7 +40,7 @@ Azure 'da bir SQL veritabanının performansını izlemek için, seçtiğiniz ve
 
 Azure SQL veritabanı hizmeti, olası performans sorunlarını gidermenize ve düzeltmenize yardımcı olacak araçlar ve kaynaklar içerir. [Performans ayarlama önerilerini](sql-database-advisor.md)inceleyerek, kaynakları değiştirmeden sorgu performansını iyileştirmek ve iyileştirmek için fırsatları tanımlayabilirsiniz. 
 
-Eksik dizinler ve kötü iyileştirilmiş sorgular kötü veritabanı performansının yaygın nedenleridir. İş yükünün performansını artırmak için ayarlama önerilerini uygulayabilirsiniz. Ayrıca, tüm tanımlanan önerileri uygulayarak Azure SQL veritabanı ['nın sorguların performansını otomatik olarak iyileştirmenize](sql-database-automatic-tuning.md) izin verebilirsiniz. Daha sonra önerilerin veritabanı performansını iyileştirdiğini doğrulayın.
+Veritabanı performansının düşük olmasına yol açan yaygın nedenler, dizinlerin eksik olması ve sorguların hatalı bir şekilde iyileştirilmesidir. İş yükünün performansını artırmak için ayarlama önerilerini uygulayabilirsiniz. Ayrıca, tüm tanımlanan önerileri uygulayarak Azure SQL veritabanı ['nın sorguların performansını otomatik olarak iyileştirmenize](sql-database-automatic-tuning.md) izin verebilirsiniz. Daha sonra önerilerin veritabanı performansını iyileştirdiğini doğrulayın.
 
 > [!NOTE]
 > Dizin oluşturma yalnızca tek veritabanı ve elastik havuzlarda kullanılabilir. Yönetilen bir örnekte dizin oluşturma kullanılamıyor.
@@ -72,7 +72,7 @@ Bir iş yükünde performans sorunu, CPU çekişmesinin ( *çalışırken ilgili
 
 Bekleme ile ilgili sorunlar şunlar olabilir:
 - **Engelleme**: bir sorgu, diğerleri aynı nesnelere erişmeyi denediğinde veritabanındaki nesneler üzerindeki kilidi tutabilir. DMVs veya izleme araçlarını kullanarak engelleme sorgularını belirleyebilirsiniz.
-- **GÇ sorunları**: sorgular sayfaların verilere veya günlük dosyalarına yazılmasını bekliyor olabilir. Bu durumda, DMV 'de `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG` veya `PAGEIOLATCH_*` bekleme istatistiklerini kontrol edin.
+- **GÇ sorunları**: sorgular sayfaların verilere veya günlük dosyalarına yazılmasını bekliyor olabilir. Bu durumda, DMV 'de `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG`veya `PAGEIOLATCH_*` bekleme istatistiklerini kontrol edin.
 - **Tempdb sorunları**: iş yükü geçici tablolar kullanıyorsa veya planlarda tempdb 'den varsa, sorgular tempdb aktarım hızı ile ilgili bir sorun olabilir. 
 - **Bellekle ilgili sorunlar**: iş yükünün yeterli belleği yoksa, erkeklerin sayfa ömrü bırakabilir veya sorgular gerekenden daha az bellek alabilir. Bazı durumlarda, sorgu Iyileştiricinizdeki yerleşik zeka ile ilgili sorunları düzeltir.
  
@@ -105,7 +105,7 @@ Parametre algılaması ve sorgu işleme hakkında daha fazla bilgi için, bkz. [
 
 Bazı geçici çözümler, PSP sorunlarını azaltır. Her geçici çözümün ilişkili avantajları ve dezavantajları vardır:
 
-- Her sorgu yürütmesinde sorgu ipucunu yeniden [Derle](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) ' i kullanın. Bu geçici çözüm, daha iyi plan kalitesi için derleme süresini ve CPU 'YU artırabilir. @No__t-0 seçeneği, yüksek aktarım hızı gerektiren iş yükleri için genellikle mümkün değildir.
+- Her sorgu yürütmesinde sorgu ipucunu yeniden [Derle](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) ' i kullanın. Bu geçici çözüm, daha iyi plan kalitesi için derleme süresini ve CPU 'YU artırabilir. `RECOMPILE` seçeneği genellikle yüksek aktarım hızı gerektiren iş yükleri için mümkün değildir.
 - Gerçek parametre değerini, çoğu parametre değeri olasılıklarından yeterince iyi bir plan üreten tipik bir parametre değeri ile geçersiz kılmak için [seçeneğini kullanın (..](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) .........) sorgu ipucunu kullanın. Bu seçenek, en iyi parametre değerlerinin ve ilişkili plan özelliklerinin iyi bir şekilde anlaşılmasına gerek duyar.
 - Gerçek parametre değerini geçersiz kılmak için [(BILINMEYEN IÇIN iyileştirin)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) sorgu ipucunu kullanın ve bunun yerine yoğunluk vektörü ortalamasını kullanın. Bunu, yerel değişkenlerdeki gelen parametre değerlerini yakalayıp, sonra parametrelerinin kendilerini kullanmak yerine koşulların içindeki yerel değişkenleri kullanarak da yapabilirsiniz. Bu çözüm için, ortalama yoğunluğu *yeterince iyi*olmalıdır.
 - [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) sorgu ipucunu kullanarak parametre algılama özelliğini tamamen devre dışı bırakın.
@@ -132,7 +132,7 @@ FROM t1 JOIN t2 ON t1.c1 = t2.c1
 WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
-Bu örnekte, `t1.c1` `@p1` sürer, ancak `t2.c2`, GUID 'yi sabit değer olarak alma devam ettirir. Bu durumda, `c2` değerini değiştirirseniz sorgu farklı bir sorgu olarak değerlendirilir ve yeni bir derleme gerçekleşecektir. Bu örnekteki derlemeleri azaltmak için GUID 'i de parametreleştirebilirsiniz.
+Bu örnekte, `t1.c1` `@p1`alır, ancak `t2.c2` GUID 'yi sabit değer olarak alma devam eder. Bu durumda, `c2`değerini değiştirirseniz sorgu farklı bir sorgu olarak değerlendirilir ve yeni bir derleme gerçekleşecektir. Bu örnekteki derlemeleri azaltmak için GUID 'i de parametreleştirebilirsiniz.
 
 Aşağıdaki sorgu, bir sorgunun doğru parametreli olup olmadığını anlamak için sorgu karmasında sorgu sayısını gösterir:
 

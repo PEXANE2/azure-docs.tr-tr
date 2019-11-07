@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı sıralı kümelenmiş columnstore dizini ile performans ayarı | Microsoft Docs
+title: Sıralı kümelenmiş columnstore diziniyle performans ayarı
 description: Sorgu performansınızı geliştirmek için sıralı kümelenmiş columnstore dizini kullanırken bilmeniz gereken öneriler ve önemli noktalar.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595364"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685996"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Sıralı kümelenmiş columnstore diziniyle performans ayarı  
 
@@ -43,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> Sıralı bir CCı tablosunda, DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler otomatik olarak sıralanmaz.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralı CCı 'yı YENIDEN oluşturabilir.  Azure SQL veri ambarı 'nda, columnstore dizini yeniden oluşturma, çevrimdışı bir işlemdir.  Bölümlenmiş bir tablo için, yeniden oluşturma tek seferde bir bölüm olarak gerçekleştirilir.  Yeniden oluşturulmakta olan bölümdeki veriler "çevrimdışı" ve bu bölüm için yeniden oluşturma tamamlanana kadar kullanılamaz. 
+> Sıralı bir CCı tablosunda, aynı DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler, bu toplu iş içinde sıralanır ve tablodaki tüm verilerde Genel sıralama yapılmaz.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralı CCı 'yı YENIDEN oluşturabilir.  Azure SQL veri ambarı 'nda, columnstore dizini yeniden oluşturma, çevrimdışı bir işlemdir.  Bölümlenmiş bir tablo için, yeniden oluşturma tek seferde bir bölüm olarak gerçekleştirilir.  Yeniden oluşturulmakta olan bölümdeki veriler "çevrimdışı" ve bu bölüm için yeniden oluşturma tamamlanana kadar kullanılamaz. 
 
 ## <a name="query-performance"></a>Sorgu performansı
 
@@ -63,7 +64,7 @@ ORDER (Col_C, Col_B, Col_A)
 
 ```
 
-Sorgu 1 ' in performansı, sıralı CCı 'dan diğer 3 sorgudan daha fazla avantaj sağlayabilir. 
+Sorgu 1 ' in performansı, sıralı CCı 'dan diğer üç sorgudan daha fazla avantaj sağlayabilir. 
 
 ```sql
 -- Query #1: 
@@ -112,7 +113,7 @@ OPTION (MAXDOP 1);
 - Verileri Azure SQL veri ambarı tablolarına yüklemeden önce sıralama anahtarına göre önceden sıralayın.
 
 
-Aşağıda, Yukarıdaki önerilerden sonra çakışan sıfır kesimine sahip sıralı bir CCı tablo dağıtımına örnek verilmiştir. Sıralı CCı tablosu, MAXG 1 ve xlargerc kullanılarak 20 GB yığın tablosundan CTAS aracılığıyla bir DWU1000c veritabanında oluşturulur.  CCı, yinelenen olmayan bir BIGINT sütununda sıralanır.  
+Aşağıda, Yukarıdaki önerilerden sonra çakışan sıfır kesimine sahip sıralı bir CCı tablo dağıtımına örnek verilmiştir. Sıralı CCı tablosu, MAXTAS ile bir DWU1000c veritabanında, MAXDOP 1 ve xlargerc kullanılarak 20 GB yığın tablosundan oluşturulur.  CCı, yinelenen olmayan bir BIGINT sütununda sıralanır.  
 
 ![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 

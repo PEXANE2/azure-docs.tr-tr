@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi hızlı başlangıç-Azure aboneliğinizi Güvenlik Merkezi standardına ekleme | Microsoft Docs
-description: Bu hızlı başlangıçta, ek güvenlik için Güvenlik Merkezi 'nin standart fiyatlandırma katmanına nasıl yükselteceğiniz gösterilmektedir.
+title: Standart katmana yükseltme-Azure Güvenlik Merkezi
+description: Bu hızlı başlangıçta, ek güvenlik kapsamı için Güvenlik Merkezinizin Standart fiyatlandırma katmanına nasıl yükseltme yapacağınız gösterilmektedir.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,99 +14,99 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 689949b2b6fea1dcd06741fd3fc19c9371a96784
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676387"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664296"
 ---
-# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Hızlı başlangıç: Azure aboneliğinizi Güvenlik Merkezi standardına ekleme
-Azure Güvenlik Merkezi, hibrit bulut iş yükleriniz genelinde Birleşik güvenlik yönetimi ve tehdit koruması sağlar. Ücretsiz katman yalnızca Azure kaynaklarınız için sınırlı güvenlik sağladığından, Standart katman bu özellikleri şirket içi ve diğer bulutlara genişletir. Güvenlik Merkezi standardı, güvenlik açıklarını bulmanıza ve düzeltmenize, kötü amaçlı etkinlikleri engellemek, analiz ve zekası kullanarak tehditleri tespit etmek ve saldırı altında hızla yanıt vermek için erişim ve uygulama denetimleri uygulamanıza yardımcı olur. Güvenlik Merkezi Standart 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi edinmek için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/)bakın.
+# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Hızlı Başlangıç: Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme
+Azure Güvenlik Merkezi, hibrit bulut iş yüklerinizde birleşik güvenlik yönetimi ve tehdit koruması sağlar. Ücretsiz katman yalnızca Azure kaynaklarınız için sınırlı güvenlik sunarken Standart katman bu özellikleri şirket içine ve diğer bulutlara genişletir. Güvenlik Merkezi Standart katmanı; güvenlik açıklarını bulup gidermenize, zararlı etkinlikleri engellemek için erişim ve uygulama denetimleri uygulamanıza, analizden ve bilgilerden yararlanarak tehditleri algılamanıza ve saldırı altındayken hızlıca yanıt vermenize yardımcı olur. Güvenlik Merkezi Standart 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
-Bu makalede, güvenlik açıklarını ve tehditleri izlemek için, ek güvenlik için Standart katmana yükseltirsiniz ve sanal makinelerinize Microsoft Monitoring Agent yükleyebilirsiniz.
+Bu makalede daha fazla güvenlik için Standart katmana yükseltecek, güvenlik açıklarını ve tehditleri izlemek için sanal makinelerinize Microsoft Monitoring Agent’ı yükleyeceksiniz.
 
-## <a name="prerequisites"></a>Prerequisites
-Güvenlik Merkezi 'ni kullanmaya başlamak için Microsoft Azure bir aboneliğiniz olması gerekir. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolabilirsiniz.
+## <a name="prerequisites"></a>Ön koşullar
+Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
-Bir aboneliği Standart katmana yükseltmek için abonelik sahibi, abonelik katılımcısı veya güvenlik yöneticisi rolüne sahip olmanız gerekir.
+Bir aboneliği Standart katmana yükseltebilmeniz için size Abonelik Sahibi, Abonelik Katkıda Bulunanı veya Güvenlik Yöneticisi rolünün atanması gerekir.
 
 ## <a name="enable-your-azure-subscription"></a>Azure aboneliğinizi etkinleştirme
 
-1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açın.
-2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi-genel bakış** açılır.
+1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/) oturum açın.
+2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**’ni seçin. **Güvenlik Merkezi - Genel Bakış** açılır.
 
-   ![Güvenlik Merkezi 'ne genel bakış][2]
+   ![Güvenlik Merkezine genel bakış][2]
 
-**Güvenlik Merkezi – genel bakış** , karma bulut iş yüklerinizin güvenlik duruşuna birleştirilmiş bir görünüm sunarak iş yüklerinizin güvenliğini keşfetmenize ve değerlendirmenize ve riski belirleyip azaltmanıza olanak sağlar. Güvenlik Merkezi, siz veya başka bir abonelik kullanıcısı tarafından daha önce eklendi Azure aboneliklerinizden herhangi birini, ücretsiz katmana otomatik olarak sağlar.
+**Güvenlik Merkezi - Genel Bakış**, hibrit bulut iş yüklerinizin güvenlik durumuna ilişkin birleştirilmiş bir görünüm sağlayarak, iş yüklerinizin güvenliğini tespit edip değerlendirmenize ve riskleri tanımlayıp en aza indirmenize olanak tanır. Güvenlik Merkezi, sizin tarafınızdan veya başka bir abonelik kullanıcısı tarafından daha önce Ücretsiz katmana eklenmemiş olan Azure aboneliklerinizi otomatik olarak etkinleştirir.
 
-**Abonelikler menü öğesine** tıklayarak Aboneliklerin listesini görüntüleyebilir ve filtreleyebilirsiniz. Güvenlik Merkezi artık güvenlik açıklarını belirlemek için bu aboneliklerin güvenliğini değerlendirmeye başlar. Değerlendirme türlerini özelleştirmek için güvenlik ilkesini değiştirebilirsiniz. Güvenlik ilkesi, iş yüklerinizin istenen yapılandırmasını tanımlar ve şirket veya mevzuat güvenlik gereksinimleriyle uyumluluğu sağlamaya yardımcı olur.
+**Abonelikler** menü öğesine tıklayarak aboneliklerin listesini görüntüleyebilir ve filtreleyebilirsiniz. Güvenlik Merkezi artık güvenlik açıklarını belirlemek için bu aboneliklerin güvenliğini değerlendirmeye başlayacaktır. Değerlendirme türlerini özelleştirmek için güvenlik ilkesinde değişiklik yapabilirsiniz. Güvenlik ilkesi iş yüklerinizin istenen yapılandırmasını tanımlar ve şirketin veya yasal düzenlemelerin gerektirdiği güvenlik gereksinimlerine uyum sağlanmasına yardımcı olur.
 
-Güvenlik Merkezi 'nin ilk kez başlatılması sırasında geçen dakikalar içinde şu şekilde karşılaşabilirsiniz:
+Güvenlik Merkezi’ni başlattıktan sonraki ilk birkaç dakika içinde şunları görebilirsiniz:
 
-- Azure aboneliklerinizin güvenliğini artırmanın yolları için **öneriler** . **Öneriler** kutucuğuna tıkladığınızda öncelikli bir liste başlatılır.
-- Güvenlik Merkezi tarafından, her birinin güvenlik duruşağıyla birlikte değerlendirilemeyen bir **işlem & uygulamalar**, **ağ**, **veri güvenliği**ve **kimlik &** .
+- Azure aboneliklerinizin güvenliğini artırmaya yönelik yöntemlere ilişkin **öneriler**. **Öneriler** kutucuğuna tıkladığınızda bir öncelik listesi açılır.
+- Güvenlik Merkezi tarafından her birinin güvenlik durumuyla birlikte değerlendirilen **İşlem ve uygulamalar**, **Ağ İletişimi**, **Veri güvenliği**, **Kimlik ve erişim** kaynaklarının bir envanteri.
 
-Güvenlik Merkezi 'Nden tam olarak yararlanabilmek için, Standart katmana yükseltmek ve Microsoft Monitoring Agent yüklemek üzere aşağıdaki adımları gerçekleştirmeniz gerekir.
+Güvenlik Merkezi’nden tam olarak yararlanmak için Standart katmana yükseltme yapmak ve Microsoft Monitoring Agent’ı yüklemek üzere aşağıdaki adımları tamamlamanız gerekir.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Standart katmana yükseltme
-Güvenlik Merkezi hızlı başlangıç ve öğreticilerin amacı için Standart katmana yükseltmeniz gerekir. Güvenlik Merkezi standardının ücretsiz bir denemesi vardır. Daha fazla bilgi edinmek için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/)bakın. 
+Güvenlik Merkezi hızlı başlangıçlarının ve öğreticilerinin amacı doğrultusunda Standart katmana yükseltme yapmanız gerekir. Güvenlik Merkezi standardının ücretsiz bir denemesi vardır. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). 
 
-1. Güvenlik Merkezi ana **menüsünde Başlarken ' i seçin.**
+1. Güvenlik Merkezi ana menüsü altında, **Başlarken**’i seçin.
  
-   ![Kullanmaya başlayın][4]
+   ![Başlarken][4]
 
-2. **Yükseltme**altında Güvenlik Merkezi, ekleme için uygun olan abonelikleri ve çalışma alanlarını listeler. 
-   - Tüm aboneliklerin ve çalışma alanlarının bir listesini, deneme uygunluğu durumuyla birlikte görmek için Genişletilebilir **uygulama** ' ya tıklayabilirsiniz.
-   -    Deneme yanılma uygun olmayan abonelikleri ve çalışma alanlarını yükseltebilirsiniz.
+2. **Yükselt** altında, Güvenlik Merkezi, ekleme işlemi için uygun abonelikleri ve çalışma alanlarını listeler. 
+   - Tüm abonelikleri ve çalışma alanlarını deneme sürümü uygunluk durumlarıyla birlikte listelemek için, genişletilebilir **Deneme sürümünüzü uygulayın**’a tıklayabilirsiniz.
+   -    Deneme sürümü için uygun olmayan abonelikler ve çalışma alanlarını yükseltebilirsiniz.
    -    Deneme sürümünüzü başlatmak için uygun çalışma alanlarını ve abonelikleri seçebilirsiniz.
-3. Deneme sürümünüzü seçili abonelikler üzerinde başlatmak için **denemeyi Başlat** ' a tıklayın.
+3. Seçili aboneliklerde deneme sürümünüzü başlatmak için **Deneme sürümünü başlat**’a tıklayın.
 
 
   ![Güvenlik uyarıları][9]
 
-## <a name="automate-data-collection"></a>Veri toplamayı otomatikleştirin
-Güvenlik Merkezi, güvenlik açıklarını ve tehditleri izlemek için Azure sanal makinelerinizden ve Azure olmayan bilgisayarlardan veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan Microsoft Monitoring Agent kullanılarak toplanır. Varsayılan olarak, güvenlik merkezi sizin için yeni bir çalışma alanı oluşturur.
+## <a name="automate-data-collection"></a>Veri toplama işlemini otomatikleştirme
+Güvenlik Merkezi, güvenlik açıklarını ve tehditleri izlemek için Azure VM’lerinizden ve Azure olmayan bilgisayarlarınızdan veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırmaları ve olay günlüklerini okuyup verileri analiz için çalışma alanınıza kopyalayan Microsoft Monitoring Agent kullanılarak toplanır. Varsayılan olarak Güvenlik Merkezi sizin için yeni bir çalışma alanı oluşturur.
 
-Otomatik sağlama etkinleştirildiğinde, Güvenlik Merkezi, desteklenen tüm Azure VM 'Lere ve oluşturulan tüm yeni makinelere Microsoft Monitoring Agent yüklenmektedir. Otomatik sağlama kesinlikle önerilir.
+Otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi, desteklenen tüm Azure VM’lere ve oluşturulan yeni VM’lere Microsoft Monitoring Agent’ı yükler. Otomatik sağlama önemle önerilir.
 
-Microsoft Monitoring Agent otomatik sağlamayı etkinleştirmek için:
+Microsoft Monitoring Agent için otomatik sağlamayı etkinleştirmek üzere:
 
 1. Güvenlik Merkezi ana menüsünde, **fiyatlandırma & ayarları**' nı seçin.
 2. Aboneliğin satırı üzerinde, ayarları değiştirmek istediğiniz aboneliğe tıklayın.
-3. **Veri toplama** sekmesinde, **otomatik sağlamayı** **Açık**olarak ayarlayın.
-4. **Kaydet**' i seçin.
+3. **Veri Toplama** sekmesinde, **Otomatik sağlama**’yı **Açık** olarak ayarlayın.
+4. **Kaydet**’i seçin.
 ---
-  ![Otomatik sağlamayı etkinleştir][6]
+  ![Otomatik sağlamayı etkinleştirme][6]
 
-Azure VM 'lerinize yönelik bu yeni Öngörüler sayesinde Güvenlik Merkezi, sistem güncelleştirme durumu, işletim sistemi güvenlik yapılandırması, uç nokta koruması ve ek güvenlik uyarıları oluşturma ile ilgili ek öneriler sağlayabilir.
+Azure VM’lerinize ilişkin bu yeni öngörüyle Güvenlik Merkezi, sistem güncelleştirme durumu, işletim sistemi güvenlik yapılandırmaları ve uç nokta koruması ile ilgili ek Öneriler sunmanın yanı sıra ek Güvenlik uyarıları oluşturabilir.
 
-  ![Öneri][8]
+  ![Öneriler][8]
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
-Bu koleksiyondaki diğer hızlı başlangıçler ve öğreticiler bu hızlı başlangıç üzerine inşa ediyor. Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, standart katmanı çalıştırmaya devam edin ve otomatik sağlamayı etkin tutun. Devam etmeyi planlamıyorsanız veya ücretsiz katmana dönmek istiyorsanız:
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız Standart katmanını çalıştırmaya devam edin ve otomatik sağlamayı etkinleştirilmiş halde tutun. Devam etmeyi planlamıyorsanız veya Ücretsiz katmanına dönmek istiyorsanız:
 
 1. Güvenlik Merkezi ana menüsüne dönüp **fiyatlandırma & ayarları**' nı seçin.
 2. Ücretsiz katmana değiştirmek istediğiniz aboneliğe tıklayın.
-3. **Fiyatlandırma katmanını** seçin ve standart katmandan ücretsiz katmana abonelik değiştirmek için **ücretsiz** ' ı seçin.
-5. **Kaydet**' i seçin.
+3. Aboneliği Standart katmanından Ücretsiz katmanına geçirmek için **Fiyatlandırma katmanı**’nı ve **Ücretsiz**’i seçin.
+5. **Kaydet**’i seçin.
 
 Otomatik sağlamayı devre dışı bırakmak istiyorsanız:
 
 1. Güvenlik Merkezi ana menüsüne dönüp **fiyatlandırma & ayarları**' nı seçin.
 2. Otomatik sağlamayı devre dışı bırakmak istediğiniz abonelikte temizleyin.
-3. **Veri toplama** sekmesinde, **otomatik sağlamayı** **kapalı**olarak ayarlayın.
-4. **Kaydet**' i seçin.
+3. **Veri Toplama** sekmesinde, **Otomatik sağlama**’yı **Kapalı** olarak ayarlayın.
+4. **Kaydet**’i seçin.
 
 >[!NOTE]
-> Otomatik sağlamayı devre dışı bırakmak, aracının sağlandığı Azure VM 'lerinden Microsoft Monitoring Agent kaldırmaz. Otomatik sağlama devre dışı bırakıldığında kaynaklarınız için güvenlik izleme sınırı vardır.
+> Otomatik sağlama devre dışı bırakıldığında Microsoft Monitoring Agent’ın sağlandığı Azure VM’lerinden aracı kaldırılmaz. Otomatik sağlamanın devre dışı bırakılması, kaynaklarınızın güvenliğinin izlenmesini kısıtlar.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta Standart katmana yükseltmiş ve hibrit bulut iş yükleriniz genelinde birleştirilmiş güvenlik yönetimi ve tehdit koruması için Microsoft Monitoring Agent sağlamış olursunuz. Güvenlik Merkezi 'ni kullanma hakkında daha fazla bilgi edinmek için, şirket içinde ve diğer bulutlarda bulunan Windows bilgisayarlarını ekleme hızlı başlangıçlarına devam edin.
+Bu hızlı başlangıçta Standart katmana yükseltme yaptınız ve hibrit bulut iş yüklerinizle birleştirilmiş güvenlik yönetimi ve tehdit korumaması için Microsoft Monitoring Agent’ı sağladınız. Güvenlik Merkezi’ni kullanma hakkında daha fazla bilgi edinmek için şirket içi ortamda ve diğer bulutlarda bulunan Windows bilgisayarları eklemeye ilişkin hızlı başlangıca geçin.
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: Windows bilgisayarlarını Azure Güvenlik Merkezi 'ne ekleme](quick-onboard-windows-computer.md)
+> [Hızlı Başlangıç: Windows bilgisayarları Azure Güvenlik Merkezi’ne ekleme](quick-onboard-windows-computer.md)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

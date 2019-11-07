@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 31d7299b0c14b35aad7a29c875630d8a7fa4827e
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200594"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682249"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight kümeleri için kapasite planlaması
 
@@ -31,13 +31,13 @@ Kapasite planlamasına sorulacak önemli sorular şunlardır:
 
 Azure bölgesi, kümenizin fiziksel olarak sağlandığını belirler. Okuma ve yazma gecikmesini en aza indirmek için, kümenin verilerinize yakın olması gerekir.
 
-HDInsight birçok Azure bölgesinde kullanılabilir. En yakın bölgeyi bulmak için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=hdinsight/).
+HDInsight birçok Azure bölgesinde kullanılabilir. En yakın bölgeyi bulmak için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=hdinsight).
 
 ## <a name="choose-storage-location-and-size"></a>Depolama konumu ve boyutunu seçin
 
 ### <a name="location-of-default-storage"></a>Varsayılan depolama konumu
 
-Bir Azure depolama hesabı veya Azure Data Lake Storage varsayılan depolama, kümenizle aynı konumda olmalıdır. Azure depolama, tüm konumlarda kullanılabilir. Data Lake Storage 1. bazı bölgelerde kullanılabilir-geçerli [Data Lake Storage kullanılabilirliğine](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage)bakın.
+Bir Azure depolama hesabı veya Azure Data Lake Storage varsayılan depolama, kümenizle aynı konumda olmalıdır. Azure depolama, tüm konumlarda kullanılabilir. Data Lake Storage 1. bazı bölgelerde kullanılabilir-geçerli [Data Lake Storage kullanılabilirliğine](https://azure.microsoft.com/global-infrastructure/services/?products=storage)bakın.
 
 ### <a name="location-of-existing-data"></a>Mevcut verilerin konumu
 
@@ -94,7 +94,7 @@ Bazen birden çok eşlemelerin paralel yürütülmesi ve çok düğümlü bir k�
 
 Hedef küme VM 'nizin boyutunu, ölçeğini ve türünü belirledikten sonra, aboneliğinizin geçerli kota kapasitesi sınırlarını kontrol edin. Bir kota sınırına ulaştığınızda, yeni kümeler dağıtabilir veya daha fazla çalışan düğümü ekleyerek var olan kümelerin ölçeğini ölçeklendiremeyebilirsiniz. Tek kota sınırı, her abonelik için bölge düzeyinde bulunan CPU çekirdekleri kotasına yöneliktir. Örneğin, aboneliğiniz Doğu ABD bölgesinde 30 çekirdek sınırına sahip olabilir. Bir kota artışı istemeniz gerekiyorsa, aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Sayfanın sol alt tarafında **Yardım + Destek** ' i seçin.
 1. **Yeni destek isteği**’ni seçin.
 1. **Yeni destek isteği** sayfasında, **temel bilgiler** sekmesinde aşağıdaki seçenekleri belirleyin:

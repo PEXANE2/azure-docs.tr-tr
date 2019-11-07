@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 926c2c0bbe4fdd24a6a8271b2e01ababcacf77d5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 958acd042acba2a8c6c38ad1e6bac614db509da8
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499163"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604432"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure bilişsel hizmetler 'de kapsayıcı desteği
 
-Azure bilişsel hizmetler 'deki kapsayıcı desteği, geliştiricilerin Azure 'da kullanılabilen aynı zengin API 'Leri kullanmasına izin verir ve [Docker kapsayıcılarıyla](https://www.docker.com/what-container)gelen hizmetlerin dağıtılması ve barındıralınması için esneklik sağlar. Kapsayıcı desteği şu anda Azure bilişsel hizmetler 'in şu parçalar dahil olmak üzere bir alt kümesi için önizleme aşamasında sunulmaktadır:
+Azure bilişsel hizmetler 'deki kapsayıcı desteği, geliştiricilerin Azure 'da kullanılabilen aynı zengin API 'Leri kullanmasına izin verir ve [Docker kapsayıcılarıyla](https://www.docker.com/what-container)gelen hizmetlerin dağıtılması ve barındıralınması için esneklik sağlar. Kapsayıcı desteği şu anda Azure bilişsel hizmetler 'in şu parçalar dahil bir alt kümesi için kullanılabilir:
 
 > [!div class="checklist"]
 > * [Anomali algılayıcısı][ad-containers]
@@ -33,7 +33,7 @@ Azure bilişsel hizmetler 'deki kapsayıcı desteği, geliştiricilerin Azure 'd
 
 > [!VIDEO https://www.youtube.com/embed/hdfbn4Q8jbo]
 
-Kapsayıcılama, bağımlılık & yapılandırma dahil olmak üzere bir uygulama veya hizmetin bir kapsayıcı görüntüsü olarak birlikte paketlendiği yazılım dağıtımına yönelik bir yaklaşımdır. Çok az değişiklikle bir kapsayıcı ana bilgisayarına bir kapsayıcı görüntüsü dağıtılabilir. Kapsayıcılar, bir sanal makineden daha küçük bir parmak izine sahip ve temel alınan işletim sisteminden yalıtılmıştır. Kapsayıcılar, kısa süreli görevlere ait kapsayıcı görüntülerinden oluşturulabilir ve artık gerekli olmadığında kaldırılır.
+Kapsayıcılama, bağımlılık & yapılandırma dahil olmak üzere bir uygulama veya hizmetin bir kapsayıcı görüntüsü olarak birlikte paketlendiği yazılım dağıtımına yönelik bir yaklaşımdır. Çok az değişiklikle bir kapsayıcı ana bilgisayarına bir kapsayıcı görüntüsü dağıtılabilir. Birbirine ve bir sanal makine değerinden daha küçük bir kaplama alanı ile temel işletim sistemi, yalıtılmış kapsayıcılardır. Kapsayıcılar, kısa süreli görevlere ait kapsayıcı görüntülerinden oluşturulabilir ve artık gerekli olmadığında kaldırılır.
 
 Bilişsel hizmetler kaynakları [Microsoft Azure](https://azure.microsoft.com)kullanılabilir. Bu hizmetler için Azure kaynakları oluşturmak ve araştırmak üzere [Azure Portal](https://portal.azure.com/) oturum açın.
 
@@ -90,7 +90,7 @@ Azure bilişsel hizmetler kapsayıcıları Azure aboneliğiniz aracılığıyla 
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure bilişsel hizmetler kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir:
 
@@ -132,13 +132,9 @@ Azure bilişsel hizmetler 'de kapsayıcılar tarafından sunulan işlevleri yük
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
-<<<<<<< BAŞ
 [sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
 [sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts
 [sp-containers-ctts]: speech-service/speech-container-howto.md?tabs=ctts
 [ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md
-=======
-[ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md
 [tt-containers]: translator/how-to-install-containers.md
->>>>>>> refs/uzaktan kumandalar/MicrosoftDocs/Master

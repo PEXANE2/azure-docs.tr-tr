@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c0fcb748262b20fd4550d08d74056c0219dbc09
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: edb6d96dfdca63f1bacf45ab0af01d18aafcf302
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694000"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667869"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft Identity platform uç noktasındaki izinler ve onay
 
@@ -38,9 +38,9 @@ Microsoft Identity platformu ile tümleştirilen uygulamalar, kullanıcılara ve
 
 Microsoft Identity platformu, [OAuth 2,0](active-directory-v2-protocols.md) yetkilendirme protokolünü uygular. OAuth 2,0, bir üçüncü taraf uygulamanın bir kullanıcı adına Web 'de barındırılan kaynaklara erişebileceği bir yöntemdir. Microsoft Identity platformu ile tümleştirilen Web 'de barındırılan herhangi bir kaynağın bir kaynak tanımlayıcısı veya *uygulama kimliği URI 'si*vardır. Örneğin, Microsoft 'un web 'de barındırılan kaynaklarından bazıları şunlardır:
 
-* Microsoft Graph:`https://graph.microsoft.com`
-* Office 365 posta API 'SI:`https://outlook.office.com`
-* Azure AD grafiği:`https://graph.windows.net`
+* Microsoft Graph: `https://graph.microsoft.com`
+* Office 365 posta API 'SI: `https://outlook.office.com`
+* Azure AD grafiği: `https://graph.windows.net`
 
 > [!NOTE]
 > Azure AD Graph, Office 365 mail API vb. yerine Microsoft Graph kullanmanızı kesinlikle öneririz.
@@ -49,15 +49,15 @@ Aynı değer, Microsoft Identity platformu ile tümleştirilmiş olan tüm üç�
 
 * Kullanıcının takvimini oku
 * Kullanıcının takvimine yazma
-* Kullanıcı olarak posta gönderin
+* Kullanıcı olarak posta gönder
 
 Bu tür izinleri tanımlayarak, kaynak, verileri üzerinde ayrıntılı denetime sahiptir ve API işlevinin sunulma şeklini içerir. Üçüncü taraf bir uygulama, kullanıcıların ve yöneticilerin bu izinleri talep edebilir ve uygulamanın verilere erişebilmeleri veya Kullanıcı adına işlem yapması için isteği onaylaması gerekir. Kaynağın işlevselliğini daha küçük izin kümelerine ayırarak, üçüncü taraf uygulamalar yalnızca kendi işlevlerini gerçekleştirmeleri için gereken belirli izinleri istemek üzere oluşturulabilir. Kullanıcılar ve Yöneticiler, uygulamanın erişebileceği verileri tam olarak bilir ve kötü amaçlı olarak davranmadığından daha emin olabilirler. Geliştiriciler, yalnızca uygulamalarının çalışması için ihtiyaç duydukları izinleri soran en az ayrıcalık kavramını her zaman bilmelidir.
 
 OAuth 2,0 ' de, bu tür izinler *kapsam*olarak adlandırılır. Bunlar da genellikle *izinler*olarak adlandırılır. Bir izin, Microsoft Identity platformunda bir dize değeri olarak temsil edilir. Microsoft Graph örnekle devam edildiğinde, her izin için dize değeri:
 
-* Kullanarak bir kullanıcının takvimini okuma`Calendars.Read`
-* Kullanarak bir kullanıcının takvimine yazma`Calendars.ReadWrite`
-* İle Kullanıcı olarak posta gönder`Mail.Send`
+* `Calendars.Read` kullanarak bir kullanıcının takvimini okuma
+* `Calendars.ReadWrite` kullanarak bir kullanıcının takvimine yazma
+* `Mail.Send` tarafından Kullanıcı olarak posta gönder
 
 Bu izinleri en yaygın olarak, Microsoft Identity platform yetkilendirme uç noktası isteklerindeki kapsamları belirterek ister. Ancak, belirli yüksek ayrıcalık izinleri yalnızca yönetici onayı üzerinden verilebilir ve [Yönetici onay uç noktası](v2-permissions-and-consent.md#admin-restricted-permissions)kullanılarak istenir/verilir. Daha fazla bilgi için okumaya devam edin.
 
@@ -79,31 +79,31 @@ _Etkili izinler_ , uygulamanızın hedef kaynağa istek yaparken sahip olacağı
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect kapsamları
 
-OpenID Connect 'in Microsoft Identity Platform uygulaması, belirli bir kaynak için uygulanmayan bazı iyi tanımlanmış `openid`kapsamlar içerir:, `email`, `profile`ve `offline_access`. `address` Ve`phone` OpenID Connect kapsamları desteklenmez.
+OpenID Connect 'in Microsoft Identity Platform uygulaması, belirli bir kaynak için uygulanmayan bazı iyi tanımlanmış kapsamlar içerir: `openid`, `email`, `profile`ve `offline_access`. `address` ve `phone` OpenID Connect kapsamları desteklenmez.
 
 ### <a name="openid"></a>OpenID
 
-Bir uygulama, [OpenID Connect](active-directory-v2-protocols.md)kullanarak oturum açma işlemini gerçekleştiriyorsa, `openid` kapsam istemesi gerekir. `openid` Kapsam, çalışma hesabı onay sayfasında "oturumunuzu aç" izninin yanı sıra kişisel Microsoft hesabı onayı sayfasında "profilinizi görüntüleme ve Microsoft hesabı kullanarak uygulamalara ve hizmetlere bağlanma" iznini gösterir. Bu izinle, bir uygulama, `sub` talep biçiminde kullanıcı için benzersiz bir tanımlayıcı alabilir. Ayrıca uygulama, UserInfo uç noktasına erişim sağlar. `openid` Kapsam, uygulama tarafından kimlik doğrulaması için kullanılabilecek kimlik belirteçleri almak için Microsoft Identity platform belirteci uç noktasında kullanılabilir.
+Bir uygulama, [OpenID Connect](active-directory-v2-protocols.md)kullanarak oturum açma işlemini gerçekleştiriyorsa, `openid` kapsamını istemesi gerekir. `openid` kapsam, çalışma hesabı onay sayfasında "oturumunuzu aç" izninin yanı sıra kişisel Microsoft hesabı izin sayfasında "profilinizi görüntüleme ve Microsoft hesabı ile uygulama ve hizmetlere bağlanma" iznini olarak gösterir. Bu izinle, bir uygulama kullanıcı için `sub` talebi biçiminde benzersiz bir tanımlayıcı alabilir. Ayrıca uygulama, UserInfo uç noktasına erişim sağlar. `openid` kapsamı, uygulama tarafından kimlik doğrulaması için kullanılabilecek kimlik belirteçleri elde etmek için Microsoft Identity platform belirteci uç noktasında kullanılabilir.
 
-### <a name="email"></a>email
+### <a name="email"></a>e-posta
 
-`email` Kapsam ,`openid` kapsam ve diğer kullanıcılarla birlikte kullanılabilir. Uygulama, kullanıcının birincil e-posta adresine `email` talep biçiminde erişim sağlar. `email` Talep, yalnızca bir e-posta adresi kullanıcı hesabıyla ilişkiliyse, her zaman durum olmayan bir belirtece dahil edilir. `email` Kapsamı kullanıyorsa, uygulamanız, `email` talebin belirteçte olmadığı bir servis talebini işleyecek şekilde hazırlanmalıdır.
+`email` kapsamı `openid` kapsamı ve diğerleri ile kullanılabilir. Uygulama, kullanıcının birincil e-posta adresine `email` talebi biçiminde erişim sağlar. `email` talebi, yalnızca bir e-posta adresi kullanıcı hesabıyla ilişkiliyse, her zaman durum olmayan bir belirtece dahil edilir. `email` kapsamını kullanıyorsa, uygulamanız `email` talebinin belirteçte olmadığı bir durumu işlemeye hazırlanmalıdır.
 
-### <a name="profile"></a>profile
+### <a name="profile"></a>Profilinizi
 
-`profile` Kapsam ,`openid` kapsam ve diğer kullanıcılarla birlikte kullanılabilir. Uygulamanın kullanıcı hakkındaki önemli miktarda bilgiye erişmesini sağlar. Erişebileceği bilgiler, kullanıcının verilen adı, soyadı, tercih edilen Kullanıcı adı ve nesne KIMLIĞINI içerir, ancak bunlarla sınırlı değildir. Belirli bir kullanıcı için id_tokens parametresinde kullanılabilen profil taleplerinin tüm listesi için, [ `id_tokens` başvuruya](id-tokens.md)bakın.
+`profile` kapsamı `openid` kapsamı ve diğerleri ile kullanılabilir. Uygulamanın kullanıcı hakkındaki önemli miktarda bilgiye erişmesini sağlar. Erişebileceği bilgiler, kullanıcının verilen adı, soyadı, tercih edilen Kullanıcı adı ve nesne KIMLIĞINI içerir, ancak bunlarla sınırlı değildir. Belirli bir kullanıcı için id_tokens parametresinde kullanılabilir olan profil taleplerinin tüm listesi için [`id_tokens` başvurusuna](id-tokens.md)bakın.
 
-### <a name="offlineaccess"></a>offline_access
+### <a name="offline_access"></a>offline_access
 
-[ `offline_access` Kapsam](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) , uygulamanızın kullanıcı adına uzun bir süre boyunca kaynaklara erişmesini sağlar. Onay sayfasında, bu kapsam "erişim vermiş olduğunuz verilere erişimi koru" izni olarak görünür. Kullanıcı `offline_access` kapsamı onayladığında, uygulamanız Microsoft Identity platform belirteci uç noktasından yenileme belirteçleri alabilir. Yenileme belirteçleri uzun süreli. Uygulamanız, eski kullanım süreleri dolana kadar yeni erişim belirteçleri alabilir.
+[`offline_access` kapsamı](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) , uygulamanızın kullanıcı adına uzun bir süre boyunca kaynaklara erişmesini sağlar. Onay sayfasında, bu kapsam "erişim vermiş olduğunuz verilere erişimi koru" izni olarak görünür. Bir Kullanıcı `offline_access` kapsamını onayladığında, uygulamanız Microsoft Identity platform belirteci uç noktasından yenileme belirteçleri alabilir. Yenileme belirteçleri uzun süreli. Uygulamanız, eski kullanım süreleri dolana kadar yeni erişim belirteçleri alabilir.
 
-Uygulamanız açıkça `offline_access` kapsam isteğinde yoksa, yenileme belirteçleri almaz. Bu, [OAuth 2,0 yetkilendirme kodu akışında](active-directory-v2-protocols.md)bir yetkilendirme kodu kullandığınızda `/token` uç noktadan yalnızca bir erişim belirteci alacağınız anlamına gelir. Erişim belirteci kısa bir süre için geçerlidir. Erişim belirtecinin genellikle bir saat içinde süresi dolar. Bu noktada, uygulamanızın yeni bir yetkilendirme kodu almak için kullanıcıyı `/authorize` uç noktaya yeniden yönlendirmesi gerekir. Bu yeniden yönlendirme sırasında, uygulamanın türüne bağlı olarak, kullanıcının kimlik bilgilerini yeniden girmesi veya izinleri yeniden onaylaması gerekebilir. `offline_access` Kapsam sunucu tarafından otomatik olarak istenirken, istemciniz yenileme belirteçlerini almak için yine de istekte bulunmalıdır.
+Uygulamanız `offline_access` kapsamını açıkça istemezse yenileme belirteçleri almaz. Bu, [OAuth 2,0 yetkilendirme kodu akışında](active-directory-v2-protocols.md)bir yetkilendirme kodu kullandığınızda `/token` uç noktasından yalnızca bir erişim belirteci alacağınız anlamına gelir. Erişim belirteci kısa bir süre için geçerlidir. Erişim belirtecinin genellikle bir saat içinde süresi dolar. Bu noktada, uygulamanızın yeni bir yetkilendirme kodu almak için kullanıcıyı `/authorize` uç noktasına yeniden yönlendirmesi gerekir. Bu yeniden yönlendirme sırasında, uygulamanın türüne bağlı olarak, kullanıcının kimlik bilgilerini yeniden girmesi veya izinleri yeniden onaylaması gerekebilir. `offline_access` kapsamı sunucu tarafından otomatik olarak istenirken, istemciniz yenileme belirteçlerini almak için yine de istekte bulunmalıdır.
 
 Yenileme belirteçleri alma ve kullanma hakkında daha fazla bilgi için bkz. [Microsoft Identity platform protokol başvurusu](active-directory-v2-protocols.md).
 
 ## <a name="requesting-individual-user-consent"></a>Bireysel kullanıcı izni isteme
 
-Bir [OpenID Connect veya OAuth 2,0](active-directory-v2-protocols.md) yetkilendirme isteğinde bir uygulama, `scope` sorgu parametresini kullanarak ihtiyaç duyacağı izinleri isteyebilir. Örneğin, bir Kullanıcı bir uygulamada oturum açtığında, uygulama aşağıdaki örnek gibi bir istek gönderir (okunabilirliği sağlamak için satır sonları eklenmiştir):
+Bir [OpenID Connect veya OAuth 2,0](active-directory-v2-protocols.md) yetkilendirme isteğinde, bir uygulama `scope` sorgu parametresini kullanarak ihtiyaç duyacağı izinleri isteyebilir. Örneğin, bir Kullanıcı bir uygulamada oturum açtığında, uygulama aşağıdaki örnek gibi bir istek gönderir (okunabilirliği sağlamak için satır sonları eklenmiştir):
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -117,12 +117,12 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 &state=12345
 ```
 
-`scope` Parametresi, uygulamanın istediği atanan izinlerin boşlukla ayrılmış bir listesidir. Her izin, izin değeri kaynağın tanımlayıcısına eklenerek belirtilir (uygulama KIMLIĞI URI 'SI). İstek örneğinde, uygulamanın kullanıcının takvimini okumak ve Kullanıcı olarak e-posta göndermek için izin gerekir.
+`scope` parametresi, uygulamanın istediği atanan izinlerin boşlukla ayrılmış bir listesidir. Her izin, izin değeri kaynağın tanımlayıcısına eklenerek belirtilir (uygulama KIMLIĞI URI 'SI). İstek örneğinde, uygulamanın kullanıcının takvimini okumak ve Kullanıcı olarak e-posta göndermek için izin gerekir.
 
 Kullanıcı kimlik bilgilerini girdikten sonra, Microsoft Identity platform Endpoint, eşleşen bir *Kullanıcı onayı*kaydı olup olmadığını denetler. Kullanıcı geçmişte istenen izinlerden herhangi birine onay vermezse veya bir yöneticiye tüm kuruluş adına bu izinlere onay verildiyse, Microsoft Identity platform uç noktası kullanıcıdan istenen izinleri vermesini ister.
 
 > [!NOTE]
-> Şu anda, `offline_access` ("erişim vermiş olduğunuz verilere erişimi korur") ve `user.read` ("profilinizi oturum açma ve profilinizi okuma") izinleri, bir uygulamaya ilk onaylamada otomatik olarak eklenir.  Bu izinler genellikle uygun uygulama işlevleri `offline_access` için gereklidir. uygulama, yerel ve Web uygulamaları `user.read` için kritik olan belirteçleri yenileme, bu sayede `sub` talebe erişim sağlar ve istemci ya da uygulamanın düzgün şekilde yapılmasına izin verir zaman içinde kullanıcıyı belirleyip ilkel Kullanıcı bilgilerine erişin.  
+> Şu anda `offline_access` ("erişim vermiş olduğunuz verilere erişimi korur") ve `user.read` ("oturumunuzu oturum açma ve profilinizi okuma") izinleri, bir uygulamaya ilk onaylamada otomatik olarak eklenir.  Bu izinler genellikle uygun uygulama işlevselliği için gereklidir-`offline_access` uygulama, yerel ve Web uygulamaları için kritik olan belirteçleri yenilemek için, `user.read` `sub` talebine erişim sağlarken, istemci veya uygulamanın kullanıcıyı doğru bir şekilde belirlemesine izin verir zaman içinde ilkel Kullanıcı bilgilerine erişin.  
 
 ![İş hesabı onayını gösteren örnek ekran görüntüsü](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -140,9 +140,9 @@ Ayrıca, uygulamalar uygulama Izinleri istemek için yönetici onay uç noktası
 
 Microsoft ekosistemindeki bazı yüksek ayrıcalıklı izinler, *Yönetici kısıtlı*olarak ayarlanabilir. Bu tür izinlere örnek olarak şunlar verilebilir:
 
-* Kullanarak tüm kullanıcıların tam profillerini okuyun`User.Read.All`
-* Kullanarak bir kuruluşun dizinine veri yazma`Directory.ReadWrite.All`
-* Kullanarak bir kuruluşun dizinindeki tüm grupları okuma`Groups.Read.All`
+* `User.Read.All` kullanarak tüm kullanıcının tam profillerini okuyun
+* `Directory.ReadWrite.All` kullanarak bir kuruluşun dizinine veri yazma
+* `Groups.Read.All` kullanarak bir kuruluşun dizinindeki tüm grupları okuma
 
 Bir tüketici kullanıcısı bu tür verilere erişim izni verebilir, ancak kuruluş kullanıcılarının aynı hassas şirket verileri kümesine erişim izni verilmesi kısıtlıdır. Uygulamanız bir kuruluş kullanıcısının bu izinlerinden birine erişim isterse, kullanıcı uygulamanızın izinlerini kabul etmek için yetkilendirilmediğini bildiren bir hata iletisi alır.
 
@@ -174,11 +174,11 @@ Yönetici onayı bir kapsam parametresi kabul etmez, bu nedenle İstenen izinler
 3. Kullanılabilir API 'Ler listesinden **Microsoft Graph** ' yi seçin ve ardından uygulamanızın gerektirdiği izinleri ekleyin.
 3. Uygulama kaydını **kaydedin** .
 
-### <a name="recommended-sign-the-user-into-your-app"></a>Önerilen Kullanıcıyı uygulamanızda imzalama
+### <a name="recommended-sign-the-user-into-your-app"></a>Önerilir: Kullanıcı uygulamanızda Imzalanın
 
 Genellikle, yönetici onay uç noktasını kullanan bir uygulama oluşturduğunuzda, uygulamanın, yöneticinin uygulamanın izinlerini onaylayabileceği bir sayfa veya görünüm gerekir. Bu sayfa, uygulamanın kaydolma akışının bir parçası, uygulamanın ayarlarının bir parçası olabilir veya adanmış bir "Connect" akışı olabilir. Çoğu durumda, uygulamanın bu "Bağlan" görünümünü yalnızca bir kullanıcı iş veya okul Microsoft hesabı oturum açtıktan sonra göstermesini mantıklı hale getirir.
 
-Kullanıcıyı uygulamanıza imzaladığınızda, yöneticinin gerekli izinleri onaylamasını istemeden önce sahip olduğu kuruluşu belirleyebilirsiniz. Kesinlikle gerekli olmasa da, kurumsal kullanıcılarınız için daha sezgisel bir deneyim oluşturmanıza yardımcı olabilir. Kullanıcı oturumu açmak için [Microsoft Identity platform protokol](active-directory-v2-protocols.md)öğreticilerimizi izleyin.
+Kullanıcıyı uygulamanıza imzaladığınızda, yöneticinin gerekli izinleri onaylamasını istemeden önce sahip olduğu kuruluşu belirleyebilirsiniz. Kesinlikle gerekli olmasa da, kurumsal kullanıcılarınız için daha sezgisel bir deneyim oluşturmanıza yardımcı olabilir. Kullanıcı oturumu açmak için [Microsoft Identity platform protokol öğreticilerimizi](active-directory-v2-protocols.md)izleyin.
 
 ### <a name="request-the-permissions-from-a-directory-admin"></a>Dizin yöneticisinden izinleri isteme
 
@@ -186,29 +186,26 @@ Kuruluşunuzun yöneticisinden izin istemek için hazırsanız, kullanıcıyı M
 
 ```
 // Line breaks are for legibility only.
-
-GET https://login.microsoftonline.com/{tenant}/adminconsent?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&state=12345
-&redirect_uri=http://localhost/myapp/permissions
+    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+  &state=12345
+  &redirect_uri=http://localhost/myapp/permissions
+    &scope=
+    https://graph.microsoft.com/calendars.read 
+    https://graph.microsoft.com/mail.send
 ```
 
-```
-// Pro tip: Try pasting the below request in a browser!
-```
 
-```
-https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
-```
-
-| Parametre | Koşul | Açıklama |
-| --- | --- | --- |
-| `tenant` | Gerekli | İzin istemek istediğiniz dizin kiracısı. , Örnekte görüldüğü `common` gibi, GUID veya kolay ad biçiminde veya genel olarak başvuruda bulunulan şekilde belirtilebilir. |
+| Parametre     | Koşul     | Açıklama                                                                               |
+|--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
+| `tenant` | Gerekli | İzin istemek istediğiniz dizin kiracısı. , Örnekte görüldüğü gibi `common` GUID veya kolay ad biçiminde veya genel olarak başvuru yapılabilir. |
 | `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
 | `redirect_uri` | Gerekli |Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Uygulama kayıt portalı 'nda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
 | `state` | Önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Kullanıcının uygulamadaki durumuyla ilgili bilgileri, uygulamanın bulunduğu sayfa veya görünüm gibi kimlik doğrulama isteği olmadan önce kodlamak için bu durumu kullanın. |
+|`scope`        | Gerekli      | Uygulama tarafından istenen izin kümesini tanımlar. Bu, statik (//varsayılan kullanılarak) veya dinamik kapsamlar olabilir.  Bu, OıDC kapsamlarını (`openid`, `profile`, `email`) içerebilir. | 
 
-Bu noktada, Azure AD 'nin isteği tamamlaması için bir kiracı yöneticisinin oturum açması gerekir. Yönetici, uygulama kayıt portalı 'nda uygulamanız için istediğiniz tüm izinleri onaylaması istenir.
+
+Bu noktada, Azure AD 'nin isteği tamamlaması için bir kiracı yöneticisinin oturum açması gerekir. Yöneticinin, `scope` parametresinde istediğiniz tüm izinleri onaylaması istenir.  Statik (`/.default`) bir değer kullandıysanız, bu, uygulama için gerekli izinlerde bulunan tüm kapsamlar için v 1.0 Yönetici onay uç noktası ve istek onayı gibi çalışır.
 
 #### <a name="successful-response"></a>Başarılı yanıt
 
@@ -222,7 +219,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 | --- | --- |
 | `tenant` | Uygulamanıza istenen izinleri (GUID biçiminde) veren dizin kiracısı. |
 | `state` | İstekte bulunan ve belirteç yanıtında de döndürülen bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Durum, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce. |
-| `admin_consent` | , Olarak `True`ayarlanır. |
+| `admin_consent` | , `True`olarak ayarlanır. |
 
 #### <a name="error-response"></a>Hata yanıtı
 
@@ -264,36 +261,36 @@ OAuth 2,0 protokolü ve erişim belirteçleri alma hakkında daha fazla bilgi i�
 
 ## <a name="the-default-scope"></a>/.Exe varsayılan kapsamı
 
-Uygulamalarınızı v 1.0 uç `/.default` noktasından Microsoft Identity platform uç noktasına geçirmeye yardımcı olması için kapsamı kullanabilirsiniz. Bu, uygulama kaydında yapılandırılan izinlerin statik listesine başvuran her uygulama için yerleşik bir kapsamdır. Bir `scope` `resource=https://graph.microsoft.com` değeri,, v 1.0 uç noktalarıyla aynı işleve sahiptir; Yani, Azure Portal uygulamanın kaydolmadığından Microsoft Graph kapsamları ile bir belirteç ister. `https://graph.microsoft.com/.default`
+Uygulamalarınızı v 1.0 uç noktasından Microsoft Identity platform uç noktasına geçirmeye yardımcı olması için `/.default` kapsamını kullanabilirsiniz. Bu, uygulama kaydında yapılandırılan izinlerin statik listesine başvuran her uygulama için yerleşik bir kapsamdır. `scope` bir `https://graph.microsoft.com/.default` değeri, v 1.0 uç noktalarıyla aynı şekilde `resource=https://graph.microsoft.com`; Yani, uygulamanın Azure portal kayıt yaptığı Microsoft Graph kapsamlar ile bir belirteç ister.
 
 /.Exe varsayılan kapsamı herhangi bir OAuth 2,0 akışında kullanılabilir, ancak [Şirket adına](v2-oauth2-on-behalf-of-flow.md) ve [istemci kimlik bilgileri akışında](v2-oauth2-client-creds-grant-flow.md)gereklidir.  
 
 > [!NOTE]
-> İstemciler statik (`/.default`) ve dinamik onayı tek bir istekte birleştiremez. Bu nedenle `scope=https://graph.microsoft.com/.default+mail.read` , kapsam türlerinin birleşimi nedeniyle hata oluşur.
+> İstemciler statik (`/.default`) ve dinamik onayı tek bir istekte birleştiremez. Bu nedenle `scope=https://graph.microsoft.com/.default+mail.read`, kapsam türlerinin birleşimi nedeniyle hata oluşmasına neden olur.
 
 ### <a name="default-and-consent"></a>/.exe varsayılan ve onay
 
-Kapsam, v 1.0 uç nokta `prompt=consent` davranışını de tetikler. `/.default` Kaynak ne olursa olsun, uygulama tarafından kaydedilen tüm izinler için onay ister. İsteğin bir parçası olarak dahil edildiyse `/.default` kapsam, istenen kaynak için Kapsamları içeren bir belirteç döndürür.
+`/.default` kapsam, `prompt=consent` için v 1.0 uç nokta davranışını tetikler. Kaynak ne olursa olsun, uygulama tarafından kaydedilen tüm izinler için onay ister. İsteğin bir parçası olarak dahil edildiyse `/.default` kapsamı, istenen kaynak için Kapsamları içeren bir belirteç döndürür.
 
 ### <a name="default-when-the-user-has-already-given-consent"></a>/.exe Kullanıcı zaten izin vermiş olduğunda varsayılan
 
-, `/.default` `resource`-Merkezli v 1.0 uç noktasının davranışına özdeş olduğundan, bu, v 1.0 uç noktasının izin davranışını de beraberinde getirir. Yani, `/.default` yalnızca istemci ile kaynak arasında izin verilmediği takdirde bir onay istemi tetikler. Böyle bir onay varsa, bu kaynak için Kullanıcı tarafından verilen tüm kapsamları içeren bir belirteç döndürülür. Ancak, izin verilmezse veya `prompt=consent` parametresi sağlanmışsa, istemci uygulaması tarafından kaydedilen tüm kapsamlar için bir onay istemi gösterilir.
+`/.default`, `resource`merkezli v 1.0 uç noktasının davranışına özdeş olduğundan, bu, v 1.0 uç noktasının izin davranışını da beraberinde getirir. Yani, `/.default` yalnızca istemci ile kaynak arasında izin verilmediği takdirde bir onay istemi tetikler. Böyle bir onay varsa, bu kaynak için Kullanıcı tarafından verilen tüm kapsamları içeren bir belirteç döndürülür. Ancak, izin verilmezse veya `prompt=consent` parametresi sağlanmışsa, istemci uygulaması tarafından kaydedilen tüm kapsamlar için bir onay istemi gösterilir.
 
-#### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>Örnek 1: Kullanıcı veya Kiracı Yöneticisi izinleri verdi
+#### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>Örnek 1: Kullanıcı veya kiracı yöneticisi izin verdi
 
-Kullanıcı (veya bir kiracı yöneticisi) istemciye Microsoft Graph izinlerini `mail.read` ve ' i `user.read`verdi. İstemci için `scope=https://graph.microsoft.com/.default`bir istek yapıyorsa, istemci uygulamalarının içerikleri Microsoft Graph için kayıtlı izinlere bakılmaksızın hiçbir onay istemi gösterilmez. Kapsamları `mail.read` ve`user.read`içeren bir belirteç döndürülür.
+Kullanıcı (veya bir kiracı yöneticisi) istemciye `mail.read` ve `user.read`Microsoft Graph izinleri vermiş. İstemci, `scope=https://graph.microsoft.com/.default`için bir istek yapıyorsa, istemci uygulamalarının Microsoft Graph için kaydedilen izinlerinin içeriğinden bağımsız olarak hiçbir onay istemi gösterilmez. `mail.read` ve `user.read`kapsamlar içeren bir belirteç döndürülür.
 
-#### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>Örnek 2: Kullanıcı, istemci ve kaynak arasında izin vermedi
+#### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>Örnek 2: kullanıcıya istemci ve kaynak arasında izin verilmemiş
 
-İstemci ve Microsoft Graph arasında Kullanıcı için izin yok. İstemci, `user.read` ve `contacts.read` izinlerinin yanı sıra Azure Key Vault kapsamına `https://vault.azure.net/user_impersonation`da kaydoldu. İstemci için `scope=https://graph.microsoft.com/.default`bir belirteç istediğinde, Kullanıcı,, ve Key Vault `user_impersonation` kapsamları `user.read`için `contacts.read`bir onay ekranı görür. Döndürülen belirtecin içinde yalnızca `user.read` ve `contacts.read` kapsamları olacaktır.
+İstemci ve Microsoft Graph arasında Kullanıcı için izin yok. İstemci `user.read` ve `contacts.read` izinlerinin yanı sıra Azure Key Vault kapsam `https://vault.azure.net/user_impersonation`için de kaydoldu. İstemci `scope=https://graph.microsoft.com/.default`için bir belirteç istediğinde, Kullanıcı `user.read`, `contacts.read`ve Key Vault `user_impersonation` kapsamlar için bir onay ekranı görür. Döndürülen belirtecin içinde yalnızca `user.read` ve `contacts.read` kapsamları olacak.
 
-#### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>Örnek 3: Kullanıcı onaylı ve istemci ek kapsamlar istiyor
+#### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>Örnek 3: Kullanıcı onaylı ve istemci ek kapsamlar istediğinde
 
-Kullanıcı, istemci `mail.read` için zaten bir daha onayladı. İstemci, kaydında `contacts.read` kapsama kaydoldu. İstemci bir belirteci kullanarak `scope=https://graph.microsoft.com/.default` bir belirteç isteği yaptığında ve aracılığıyla `prompt=consent`onay istediğinde, Kullanıcı yalnızca bir onay ekranı ve uygulama tarafından kaydedilen tüm izinleri görür. `contacts.read`onay ekranında mevcut olacaktır, ancak `mail.read` olmayacaktır. Döndürülen belirteç Microsoft Graph olur ve ve `mail.read` `contacts.read`içerir.
+Kullanıcı, istemci için `mail.read` zaten onayladı. İstemci, kaydında `contacts.read` kapsamına kaydoldu. İstemci, `scope=https://graph.microsoft.com/.default` kullanarak bir belirteç isteği yaptığında ve `prompt=consent`aracılığıyla izin istediğinde, Kullanıcı yalnızca bir onay ekranı ve uygulama tarafından kaydedilen tüm izinleri görür. `contacts.read` izin ekranında mevcut olacaktır, ancak `mail.read` olmayacaktır. Döndürülen belirteç Microsoft Graph olur ve `mail.read` ve `contacts.read`içerecektir.
 
 ### <a name="using-the-default-scope-with-the-client"></a>İstemcisiyle//varsayılan kapsamını kullanma
 
-Bir istemcinin kendi `/.default` kapsamını istemesi `/.default` durumunda kapsamın özel bir durumu vardır. Aşağıdaki örnekte bu senaryo gösterilmektedir.
+Bir istemcinin kendi `/.default` kapsamını istemesi `/.default` kapsamının özel bir durumu vardır. Aşağıdaki örnekte bu senaryo gösterilmektedir.
 
 ```
 // Line breaks are for legibility only.
@@ -306,8 +303,8 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-Bu, tüm kayıtlı izinler için bir onay ekranı üretir (yukarıdaki izin ve `/.default`Bu açıklamalara göre geçerliyse), bir erişim belirteci yerine bir id_token döndürür.  Bu davranış, ADAL 'den MSAL 'e taşınan bazı eski istemciler için ve Microsoft Identity platform uç noktasını hedefleyen yeni istemciler tarafından kullanılmamalıdır.  
+Bu, tüm kayıtlı izinler için bir onay ekranı üretir (yukarıdaki izin ve `/.default`açıklamaları temel alınarak geçerliyse), bir erişim belirteci yerine bir id_token döndürür.  Bu davranış, ADAL 'den MSAL 'e taşınan bazı eski istemciler için ve Microsoft Identity platform uç noktasını hedefleyen yeni istemciler tarafından kullanılmamalıdır.  
 
 ## <a name="troubleshooting-permissions-and-consent"></a>İzinler ve onay sorunlarını giderme
 
-Siz veya uygulamanızın kullanıcıları onay işlemi sırasında beklenmeyen hatalar görüyor ise, sorun giderme adımları için aşağıdaki makaleye bakın: [Bir uygulamaya onay gerçekleştirilirken beklenmeyen hata oluştu](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
+Siz veya uygulamanızın kullanıcıları onay işlemi sırasında beklenmeyen hatalar görüyor ise, sorun giderme adımları için şu makaleye bakın: [bir uygulamaya onay uygularken beklenmeyen hata](../manage-apps/application-sign-in-unexpected-user-consent-error.md).

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı 'nı kullanarak kiracı veritabanlarına yönelik analiz sorguları çalıştırma | Microsoft Docs
+title: "Azure SQL veri ambarı 'nı kullanarak kiracı veritabanlarına yönelik analiz sorguları çalıştırma "
 description: Azure SQL veritabanı, SQL veri ambarı, Azure Data Factory veya Power BI ayıklanan verileri kullanan çapraz kiracı Analizi sorguları.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: b22a9cf8c79530fd931cbe944ef5bfc876a02243
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f4a89029d7ed90f1a2406dcf0f8046a1c651353f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570134"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691883"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Azure SQL veritabanı, SQL veri ambarı, Data Factory ve Power BI SaaS analizlerini keşfet
 
@@ -26,7 +26,7 @@ Bu öğreticide, uçtan uca bir analiz senaryosuna kılavuzluk edersiniz. Bu sen
 2.  **Ayıklanan verileri** analiz Işleme için iyileştirin.
 3.  Karar verme konusunda rehberlik sağlayan yararlı Öngörüler çizmek için **Iş zekası** araçlarını kullanın. 
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > - Yükleme için kiracı Analizi deposu oluşturun.
@@ -64,7 +64,7 @@ Bu öğretici, Wingtip bilet verilerinden glecan temel Öngörüler örnekleri s
 
 ## <a name="setup"></a>Kurulum
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 > [!NOTE]
 > Bu öğretici, şu anda sınırlı bir önizlemede olan Azure Data Factory özelliklerini kullanır (bağlı hizmet parametrelemesi). Bu öğreticiyi yapmak istiyorsanız, abonelik KIMLIĞINIZI [burada](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxrVywox1_tHk9wgd5P8SVJUNlFINjNEOElTVFdMUEREMjVVUlJCUDdIRyQlQCN0PWcu)belirtin. Aboneliğiniz etkinleştirildikten hemen sonra size bir onay göndereceğiz.
@@ -77,31 +77,31 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığı
 
 ### <a name="create-data-for-the-demo"></a>Demo için veri oluşturma
 
-Bu öğreticide, Bilet satış verilerine ilişkin analizler incelenmektedir. Bu adımda, tüm kiracılar için bilet verileri oluşturursunuz. Sonraki bir adımda bu veriler Analize çıkarılır. _Kiracılar toplu işlemini sağladığınızdan emin olun_ (daha önce açıklandığı gibi), farklı bilet satın alma desenlerinin bir aralığını açığa çıkarmak için yeterli veri bulundurabilmeniz gerekir.
+Bu öğreticide, Bilet satış verilerine ilişkin analizler incelenmektedir. Bu adımda, tüm kiracılar için bilet verileri oluşturursunuz. Sonraki bir adımda bu veriler Analize çıkarılır. Farklı bilet satın alma desenlerinin bir aralığını açığa çıkarmak için yeterli veri bulundurabilmeniz için _kiracılar toplu işlemini sağladığınızdan emin olun_ (daha önce açıklandığı gibi).
 
 1. PowerShell ıSE 'de *. ..\Learning Modules\işletimsel Analtics\tenant Analytics DW\Demo-TenantAnalyticsDW.ps1*açın ve aşağıdaki değeri ayarlayın:
-    -  = Tüm havalandırma noktaları için $DemoScenario**1** satın alma bileti
+    - **$DemoScenario** tüm havalandırma ve olaylar için = **1** satın alma bileti
 2. Komut dosyasını çalıştırmak ve tüm havalandırma noktaları için bilet satın alma geçmişi oluşturmak için **F5** tuşuna basın. 20 kiracılar ile, betik on binlerce bilet üretir ve 10 dakika veya daha uzun sürebilir.
 
 ### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>SQL veri ambarı, Data Factory ve BLOB depolama dağıtma 
 Wingtip bilet uygulamasında kiracının işlem verileri birçok veritabanına dağıtılır. Azure Data Factory (ADF), veri ambarına bu verilerin ayıklanma, yükleme ve dönüştürme (ELT) işlemlerini düzenlemek için kullanılır. ADF, verileri SQL veri ambarı 'na en verimli şekilde yüklemek için verileri ara blob dosyalarına ayıklar ve sonra verileri veri ambarına yüklemek için [PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) 'i kullanır.   
 
-Bu adımda, öğreticide kullanılan ek kaynakları dağıtırsınız: _tenantanalytics_adlı bir SQL veri ambarı, _\<dbtodwload-user\>_ adlı bir Azure Data Factory ve adlı _bir Azure depolama hesabı wingtiphazırlama\<kullanıcısı\>_ . Depolama hesabı, ayıklanan veri dosyalarını, veri ambarına yüklenmeden önce blob olarak geçici olarak saklamak için kullanılır. Bu adım Ayrıca veri ambarı şemasını dağıtır ve ELT sürecini düzenleyen ADF işlem hatlarını tanımlar.
+Bu adımda, öğreticide kullanılan ek kaynakları dağıtırsınız: _tenantanalytics_ADLı bir SQL veri ambarı, _dbtodwload-\<Kullanıcı\>_ adlı bir Azure Data Factory ve Wingtiphazırlama adlı bir Azure depolama hesabı.  _Kullanıcı\>\<_ . Depolama hesabı, ayıklanan veri dosyalarını, veri ambarına yüklenmeden önce blob olarak geçici olarak saklamak için kullanılır. Bu adım Ayrıca veri ambarı şemasını dağıtır ve ELT sürecini düzenleyen ADF işlem hatlarını tanımlar.
 1. PowerShell ıSE 'de, *. ..\Learning Modules\işletimsel Analtics\tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* ve set ' i açın:
-    - $DemoScenario = **2** kiracı Analizi veri ambarı, BLOB depolama ve Veri Fabrikası dağıtma 
+    - **$DemoScenario** = **2** kiracı Analizi veri ambarı, BLOB depolama ve Veri Fabrikası dağıtma 
 1. Tanıtım betiğini çalıştırmak ve Azure kaynaklarını dağıtmak için **F5** tuşuna basın. 
 
 Şimdi dağıttığınız Azure kaynaklarını gözden geçirin:
 #### <a name="tenant-databases-and-analytics-store"></a>Kiracı veritabanları ve analiz deposu
-**Tenants1-DPT-&lt;user&gt;**  ve **Catalog-DPT-&lt;user&gt;**  sunucularına bağlanmak için [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) kullanın. &lt;Kullanıcıyı&gt; , uygulamayı dağıtırken kullanılan değerle değiştirin. Login = *Developer* ve Password = *P\@ssword1*kullanın. Daha fazla bilgi için bkz. [giriş öğreticisi](saas-dbpertenant-wingtip-app-overview.md) .
+**Tenants1-DPT-&lt;user&gt;** ve **Catalog-dpt-&lt;Kullanıcı&gt;** sunucularına bağlanmak için [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) kullanın. &lt;Kullanıcı&gt;, uygulamayı dağıtırken kullanılan değerle değiştirin. Login = *Developer* ve Password = *P\@ssword1*kullanın. Daha fazla bilgi için bkz. [giriş öğreticisi](saas-dbpertenant-wingtip-app-overview.md) .
 
 ![SSMS 'den SQL veritabanı sunucusuna bağlanma](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
 
 Nesne Gezgini:
 
-1. *Tenants1-DPT&lt;-user&gt;*  sunucusunu genişletin.
+1. *Tenants1-DPT-&lt;kullanıcı&gt;* sunucusunu genişletin.
 1. Veritabanları düğümünü genişletin ve kiracı veritabanlarının listesini görüntüleyin.
-1. *Katalog-DPT&lt;-Kullanıcı&gt;*  sunucusunu genişletin.
+1. *Katalog-DPT-&lt;kullanıcı&gt;* sunucusunu genişletin.
 1. Aşağıdaki nesneleri içeren analiz deposunu görmediğinizi doğrulayın:
     1. **Raw_Tickets**, **raw_Customers**, **raw_Events** ve **raw_Venues** tabloları, kiracı veritabanlarından ham ayıklanan verileri tutar.
     1. Yıldız şeması tabloları **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**ve **dim_Dates**.
@@ -110,22 +110,22 @@ Nesne Gezgini:
 ![DWtables 'lar](media/saas-tenancy-tenant-analytics/DWtables.JPG)
 
 #### <a name="blob-storage"></a>Blob depolama
-1. [Azure portalında](https://ms.portal.azure.com), uygulamayı dağıtmak için kullandığınız kaynak grubuna gidin. **Wingtiphazırlama\<\> kullanıcısı** adlı bir depolama hesabının eklendiğini doğrulayın.
+1. [Azure portalında](https://ms.portal.azure.com), uygulamayı dağıtmak için kullandığınız kaynak grubuna gidin. **Wingtiphazırlama\<user\>** adlı bir depolama hesabının eklendiğini doğrulayın.
 
    ![DWtables 'lar](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
 
-1. Mevcut nesneleri araştırmak için **wingtiphazırlama\<\> Kullanıcı** depolama hesabı ' na tıklayın.
+1. Mevcut nesneleri araştırmak için **\<wingtiphazırlama kullanıcı\>** depolama hesabı ' na tıklayın.
 1. **Bloblar** kutucuğuna tıklayın
 1. Kapsayıcı **ConfigFile** öğesine tıklayın
 1. **ConfigFile** 'ın **tableconfig. JSON**adlı bir JSON dosyası içerdiğini doğrulayın. Bu dosya, kaynak ve hedef tablo adlarını, sütun adlarını ve izleyici sütun adını içerir.
 
 #### <a name="azure-data-factory-adf"></a>Azure Data Factory (ADF)
-Kaynak grubundaki [Azure portalında](https://ms.portal.azure.com) , _dbtodwload\<-user\>_  adlı bir Azure Data Factory eklendiğini doğrulayın. 
+Kaynak grubundaki [Azure portalında](https://ms.portal.azure.com) , _dbtodwload-\<user\>_ adlı Azure Data Factory eklendiğini doğrulayın. 
 
  ![adf_portal](media/saas-tenancy-tenant-analytics/adf-data-factory-portal.png)
 
 Bu bölüm, oluşturulan veri fabrikasını araştırır. Data Factory 'yi başlatmak için aşağıdaki adımları izleyin:
-1. Portalda, **dbtodwload\<-user\>** adlı Data Factory ' ye tıklayın.
+1. Portalda, **dbtodwload-\<kullanıcı\>** adlı veri fabrikasına tıklayın.
 2. Data Factory tasarımcısını ayrı bir sekmede başlatmak için **& İzleyici** kutucuğuna yaz ' a tıklayın. 
 
 ## <a name="extract-load-and-transform-data"></a>Verileri ayıklama, yükleme ve dönüştürme
@@ -145,7 +145,7 @@ Genel Bakış sayfasında sol paneldeki **Yazar** sekmesine geçin ve üç işle
 
 İşlem **hattı 1-SQLDBToDW** , Katalog veritabanında depolanan kiracı veritabanlarının adlarını arar (tablo adı: [__ShardManagement]. [ ShardsGlobal]) ve her kiracı veritabanı için **Dbcopy** işlem hattını yürütür. Tamamlandıktan sonra, belirtilen **sp_TransformExtractedData** saklı yordam şeması yürütülür. Bu saklı yordam, hazırlama tablolarında yüklenen verileri dönüştürür ve yıldız şema tablolarını doldurur.
 
-İşlem **hattı 2-DBCopy** , BLOB depolama alanında depolanan bir yapılandırma dosyasından kaynak tablolarının ve sütunların adlarını arar.  **Tablecopy** işlem hattı daha sonra dört tablonun her biri için çalıştırılır: Bilet olguları, Customerolguları, Eventf, ve Venueolguları. **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** etkinliği tüm 20 veritabanları için paralel olarak yürütülür. ADF, en fazla 20 döngü yinelemesine paralel olarak çalıştırılmasına izin verir. Daha fazla veritabanı için birden çok işlem hattı oluşturmayı düşünün.    
+İşlem **hattı 2-DBCopy** , BLOB depolama alanında depolanan bir yapılandırma dosyasından kaynak tablolarının ve sütunların adlarını arar.  Daha sonra **Tablecopy** işlem hattı dört tablonun her biri için çalıştırılır: bilet olguları, Customerolgu, Eventfdavranır ve venueolguları. **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** etkinliği tüm 20 veritabanları için paralel olarak yürütülür. ADF, en fazla 20 döngü yinelemesine paralel olarak çalıştırılmasına izin verir. Daha fazla veritabanı için birden çok işlem hattı oluşturmayı düşünün.    
 
 **Ardışık düzen 3-TableCopy** , değiştirilmiş veya güncelleştirilmiş satırları BELIRLEMEK Için SQL veritabanı 'nda (_rowversion_) satır sürüm numaralarını kullanır. Bu etkinlik, kaynak tablolardan satırları ayıklamak için başlangıç ve bitiş satırı sürümünü arar. Her bir kiracı veritabanında depolanan **Copytracker** tablosu, her çalıştırmada her bir kaynak tablosundan ayıklanan son satırı izler. Yeni veya değiştirilmiş satırlar veri ambarındaki ilgili hazırlama tablolarına kopyalanır: **raw_Tickets**, **raw_Customers**, **raw_Venues**ve **raw_Events**. Son olarak, son satır sürümü bir sonraki ayıklama için ilk satır sürümü olarak kullanılacak **Copytracker** tablosuna kaydedilir. 
 
@@ -188,13 +188,13 @@ Yıldız-şema içindeki veriler, analizinizi için gereken tüm bilet satış v
 Power BI bağlanmak ve daha önce oluşturduğunuz görünümleri içeri aktarmak için aşağıdaki adımları kullanın:
 
 1. Power BI Desktop 'ı başlatın.
-2. Giriş şeridinde **veri al**' ı seçin ve **daha fazla...** seçeneğini belirleyin. belirleyin.
+2. Giriş şeridinde **veri al**' ı seçin ve **daha fazla...** seçeneğini belirleyin. menüsünde.
 3. **Veri al** PENCERESINDE **Azure SQL veritabanı**' nı seçin.
-4. Veritabanı oturum açma penceresinde sunucunuzun adını (**Katalog-DPT-&lt;user&gt;. Database.Windows.net**) girin. **Veri bağlantısı modu**Için **içeri aktar** ' ı seçin ve ardından **Tamam**' a tıklayın. 
+4. Veritabanı oturum açma penceresinde sunucunuzun adını (**Katalog-DPT-&lt;User&gt;. Database.Windows.net**) girin. **Veri bağlantısı modu**Için **içeri aktar** ' ı seçin ve ardından **Tamam**' a tıklayın. 
 
     ![oturum açma-Power BI](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Sol bölmedeki **veritabanı** ' nı seçin, ardından Kullanıcı adı = *Geliştirici*yazın ve parola = *P\@ssword1*girin. **Bağlan**'a tıklayın.  
+5. Sol bölmedeki **veritabanı** ' nı seçin, ardından Kullanıcı adı = *Geliştirici*yazın ve Password = *P\@ssword1*girin. **Bağlan**'a tıklayın.  
 
     ![veritabanı-oturum açma](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
@@ -238,10 +238,10 @@ Göreli başarısını belirlemek için her bir mekan satılan yüzde biletlerin
 
 ![Avgbilet sbyvenlar](media/saas-tenancy-tenant-analytics/AvgTicketsByVenues-DW.PNG)
 
-Yukarıdaki çizimde, çoğu venlin biletlerinin% 80 ' inden daha fazla satışı olmasına rağmen bazıları, her birinin oturmasını doldurmakla uğraşmaya uğraştırılmakta. Her bir mekan için satılan anahtarların maksimum veya minimum yüzdesini seçmek için değerler ile etrafında bir oynatma yapın.
+Yukarıdaki çizimde, çoğu venlin biletlerinin %80 ' inden daha fazla satışı olmasına rağmen bazıları, her birinin oturmasını doldurmakla uğraşmaya uğraştırılmakta. Her bir mekan için satılan anahtarların maksimum veya minimum yüzdesini seçmek için değerler ile etrafında bir oynatma yapın.
 
 ## <a name="embedding-analytics-in-your-apps"></a>Uygulamalarınıza analiz ekleme 
-Bu öğreticide, yazılım satıcısının kiracılar hakkında daha iyi şekilde anlaşılmasını sağlamak için kullanılan çapraz kiracı analizine odaklanılmıştır. Analiz, kiracıların işlerini daha etkilibir şekilde yönetmesine yardımcı olmak için de öngörüler sağlayabilir. 
+Bu öğreticide, yazılım satıcısının kiracılar hakkında daha iyi şekilde anlaşılmasını sağlamak için kullanılan çapraz kiracı analizine odaklanılmıştır. Analiz, _kiracıların_işlerini daha etkili bir şekilde yönetmesine yardımcı olmak için de öngörüler sağlayabilir. 
 
 Wingtip bilet örneğinde, daha önce bilet satışlarının tahmin edilebilir desenleri takip etmek üzere olduğunu fark edersiniz. Bu öngörü, Bilet satışlarını artırma konusunda yardımcı olmak için kullanılabilir. Olayların bilet satışlarını tahmin etmek için makine öğrenimi tekniklerini de kullanmak bir fırsat olabilir. Fiyat değişikliklerinin etkileri de modellenebilir ve bu da indirimlerin tahmin edilebileceği etkiyi sağlar. Power BI Embedded, satılan toplam lisans ve düşük satış etkinliklerinden gelir üzerinden indirimlerin etkisi dahil olmak üzere bir olay yönetimi uygulamasıyla tümleştirilebilir. Power BI Embedded sayesinde, gerçekten de görselleştirme deneyimindeki indirimle, anahtarı bilet fiyatlarına uygulayarak tümleştirebilirsiniz.
 

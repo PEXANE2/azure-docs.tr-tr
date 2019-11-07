@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 1bbfd2a64de0b42da19d0a978874d564f1755c59
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2dea1c160b07ac08075dad3a1ca1f6fc753e3481
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387620"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622644"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Kaynak grafiğinde kısıtlanmış isteklere yönelik kılavuz
 
@@ -33,10 +33,10 @@ Her sorgu yanıtında, Azure Kaynak Grafiği iki daraltma üst bilgisi ekler:
 - `x-ms-user-quota-remaining` (int): Kullanıcı için kalan Kaynak kotası. Bu değer sorgu sayısı ile eşlenir.
 - `x-ms-user-quota-resets-after` (SS: DD: SS): kullanıcının kota tüketimi sıfırlanana kadar geçen süre.
 
-Üst bilgilerin nasıl çalıştığını göstermek için, `x-ms-user-quota-remaining: 10` ve `x-ms-user-quota-resets-after: 00:00:03` ' in üst bilgi ve değerlerini içeren bir sorgu yanıtına bakalım.
+Üst bilgilerin nasıl çalıştığını görmek için, `x-ms-user-quota-remaining: 10` ve `x-ms-user-quota-resets-after: 00:00:03`üst bilgi ve değerlerini içeren bir sorgu yanıtına bakalım.
 
 - Sonraki 3 saniye içinde, en fazla 10 sorgu kısıtlanmadan gönderilebilir.
-- 3 saniye içinde, `x-ms-user-quota-remaining` ve `x-ms-user-quota-resets-after` değerleri sırasıyla `15` ve `00:00:05` ' e sıfırlanır.
+- 3 saniye içinde `x-ms-user-quota-remaining` ve `x-ms-user-quota-resets-after` değerleri sırasıyla `15` ve `00:00:05` sıfırlanacak.
 
 Sorgu isteklerinde _geri_ dönmek üzere üst bilgileri kullanmanın bir örneğini görmek için bkz. [sorgudaki örnek paralel](#query-in-parallel).
 
@@ -227,7 +227,7 @@ Azure Kaynak Graph tek bir sorgu yanıtında en fazla 1000 girişi döndürdüğ
 
 ## <a name="still-get-throttled"></a>Hala kısıtlanıyor musunuz?
 
-Yukarıdaki önerileri kullandıktan sonra daraldıysanız [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)' de ekibe başvurun.
+Yukarıdaki önerileri kullandıktan sonra azaldıysanız, [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)' de ekibe başvurun.
 
 Şu ayrıntıları sağlayın:
 
@@ -240,4 +240,4 @@ Yukarıdaki önerileri kullandıktan sonra daraldıysanız [resourcegraphsupport
 
 - Bkz. [Başlangıç sorgularında](../samples/starter.md)kullanılan dil.
 - Gelişmiş [sorgularda](../samples/advanced.md)gelişmiş kullanımlar bölümüne bakın.
-- [Kaynakları keşfetmeye](explore-resources.md)öğrenin.
+- [Kaynakları araştırma](explore-resources.md)hakkında daha fazla bilgi edinin.

@@ -1,5 +1,5 @@
 ---
-title: Multi-Factor Authentication 'ı Yapılandırma-Azure SQL | Microsoft Docs
+title: Multi-Factor Authentication 'ı Yapılandırma-Azure SQL
 description: SQL veritabanı ve SQL veri ambarı için SSMS ile çok yönlü bir kimlik doğrulamasını nasıl kullanacağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 5ffe9de6ecb740a2d8445e88a478e718585eb5d1
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 37b962b84e72cf3b0005ad744d81974a55c1a75e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018897"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687098"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio ve Azure AD için Multi-Factor Authentication 'ı yapılandırma
 
@@ -37,16 +37,16 @@ Bu konu, Azure Active Directory Multi-Factor Authentication (MFA) SQL Server Man
 Aşağıdaki adımlarda, en son SSMS kullanılarak SQL veritabanı veya SQL veri ambarı 'na nasıl bağlanayapılacağı gösterilmektedir.
 
 1. Evrensel kimlik doğrulaması kullanarak bağlanmak için, **sunucuya Bağlan** ILETIŞIM kutusunda **MFA desteğiyle Active Directory-Universal**' ı seçin. ( **Active Directory evrensel kimlik doğrulaması** ' nı görürseniz, en son SSMS sürümünde değilsiniz.)  
-   ![1mfa-universal-connect][1]  
-2. Azure Active Directory kimlik bilgileriyle **Kullanıcı adı** kutusunu, biçimde `user_name@domain.com`doldurun.  
-   ![1mfa-universal-connect-user](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
+   ![1mfa-Universal-Connect][1]  
+2. Azure Active Directory kimlik bilgileriyle **Kullanıcı adı** kutusunu `user_name@domain.com`biçiminde doldurun.  
+   ![1mfa-Universal-Connect-User](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
 3. Konuk Kullanıcı olarak bağlanıyorsanız, SMS 18. x veya daha sonraki bir sürümü tarafından otomatik olarak tanıyacağından, Konuk kullanıcılar için AD etki alanı adını veya kiracı KIMLIĞI alanını doldurmanız artık gerekmez. Daha fazla bilgi için bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md).
    ![MFA-kiracı-SSMS](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
 
    Ancak, SSMS 17. x veya daha eski bir sürümle Konuk Kullanıcı olarak bağlanıyorsanız, **Seçenekler**' e tıklamanız ve **bağlantı özelliği** iletişim kutusunda, **ad etkı alanı adını veya Kiracı kimliği** kutusunu doldurmanız gerekir.
    ![MFA-kiracı-SSMS](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)
 
-4. SQL veritabanı ve SQL veri ambarı için her zamanki gibi **Seçenekler** ' e tıklamanız ve **Seçenekler** iletişim kutusunda veritabanını belirtmeniz gerekir. (Bağlı Kullanıcı bir Konuk Kullanıcı (yani joe@outlook.com), kutuyu denetlemeniz ve geçerli ad etki alanı adını ya da kiracı kimliğini seçeneklerin bir parçası olarak eklemeniz gerekir. Bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md). Ardından **Bağlan**’a tıklayın.  
+4. SQL veritabanı ve SQL veri ambarı için her zamanki gibi **Seçenekler** ' e tıklamanız ve **Seçenekler** iletişim kutusunda veritabanını belirtmeniz gerekir. (Bağlı Kullanıcı bir Konuk Kullanıcı (yani joe@outlook.com), kutuyu denetlemeniz ve geçerli AD etki alanı adını ya da kiracı KIMLIĞINI seçeneklerin bir parçası olarak eklemeniz gerekir. Bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md). Ardından **Bağlan**’a tıklayın.  
 5. **Hesapta oturum açma** iletişim kutusu göründüğünde, Azure Active Directory kimliğinizin hesabını ve parolasını girin. Bir Kullanıcı Azure AD ile federe bir etki alanının parçasıysa parola gerekli değildir.  
    ![2mfa-oturum açma][2]  
 
@@ -59,15 +59,15 @@ Aşağıdaki adımlarda, en son SSMS kullanılarak SQL veritabanı veya SQL veri
 7. İkinci olası bir zaman iletişim kutusu, kimlik doğrulama yönteminizin ayrıntılarını seçmenize olanak sağlar. Olası seçenekler yöneticiniz tarafından yapılandırılır.  
    ![4mfa-doğrula-1][4]  
 8. Azure Active Directory onaylama bilgilerini size gönderir. Doğrulama kodunu aldığınızda, **doğrulama kodunu girin** kutusuna girin ve **oturum aç**' a tıklayın.  
-   ![5mfa-doğrula-2][5]  
+   ![5mfa-Verify-2][5]  
 
 Doğrulama tamamlandığında SSMS, genellikle geçerli kimlik bilgilerini ve güvenlik duvarı erişimini önceden izleyerek bağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure SQL veritabanı Multi-Factor Authentication 'a genel bakış için bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md).  
-- Başkalarına veritabanınıza erişim izni verin: [SQL veritabanı kimlik doğrulaması ve yetkilendirme: Erişim verme](sql-database-manage-logins.md)  
-- Başkalarının güvenlik duvarından bağlanmasına emin olun: [Azure portal kullanarak bir Azure SQL veritabanı sunucu düzeyinde güvenlik duvarı kuralı yapılandırma](sql-database-configure-firewall-settings.md)  
+- Veritabanınıza başkalarının erişmesine izin verme: [SQL veritabanı kimlik doğrulaması ve yetkilendirme: erişim verme](sql-database-manage-logins.md)  
+- Başkalarının güvenlik duvarından bağlanmasına emin olun: [Azure Portal kullanarak Azure SQL veritabanı sunucu düzeyi güvenlik duvarı kuralı yapılandırma](sql-database-configure-firewall-settings.md)  
 - MFA kimlik doğrulamasıyla **Active Directory Universal** KULLANıRKEN, adal Izleme [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)ile başlayarak kullanılabilir. Varsayılan olarak, **Azure hizmetleri**, **Azure Cloud**, **adal çıkış penceresi izleme düzeyi**altındaki **Araçlar**, **Seçenekler** menüsünü ve ardından **Görünüm** menüsünde **çıktıyı** etkinleştirerek, adal izlemeyi açabilirsiniz. İzlemeler **Azure Active Directory seçenek**belirlendiğinde çıkış penceresinde kullanılabilir.   
 
 

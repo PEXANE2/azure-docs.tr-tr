@@ -1,5 +1,5 @@
 ---
-title: Azure Lab Services sınıf laboratuvarları-SSS | Microsoft Docs
+title: Azure Lab Services sınıf laboratuvarları — SSS | Microsoft Docs
 description: Azure Lab Services ' deki sınıf laboratuvarları hakkında sık sorulan sorulara yanıtlar bulun.
 services: lab-services
 documentationcenter: na
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 411037dd97350d877aff4e2d094c3408f168f9fd
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 91c5c1480669829bad7f8d89ce360bb806d6c997
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648571"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646862"
 ---
-# <a name="classroom-labs-in-azure-lab-services---frequently-asked-questions-faq"></a>Azure Lab Services sınıf laboratuvarları-sık sorulan sorular (SSS)
+# <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services sınıf laboratuvarları — sık sorulan sorular (SSS)
 Azure Lab Services ders laboratuvarları hakkında en sık sorulan soruların yanıtlarını alın. 
 
 ## <a name="quotas"></a>Kotalar
@@ -40,6 +40,13 @@ Sınıf laboratuvarları, Azure portal laboratuvar hesabınızı oluştururken b
 
 Örneğin,/19-10.0.0.0/19 bloğuna sahipseniz, bu adres aralığı 8192 IP adresine ve 16 laboratuvara (8192/512 = 16 Labs) uyum sağlar. Bu durumda, Laboratuvar oluşturma, 17. Laboratuvar oluşturma sırasında başarısız olur.
 
+### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Laboratuvar sanal makinelerine RDP/SSH aracılığıyla bağlanmak için Kuruluşumun güvenlik duvarı ayarında hangi bağlantı noktası aralıklarının açılmalıyım?
+
+Bağlantı noktaları: 49152 – 65535. Sınıf laboratuvarları bir yük dengeleyicinin arkasına oturdum, böylece bir laboratuvardaki tüm sanal makinelerin tek IP adresi vardır ve laboratuvardaki her sanal makinenin benzersiz bir bağlantı noktası vardır. Laboratuvar her yeniden yayımlandığında bağlantı noktası numaraları ve genel IP adresi değişebilir.
+
+### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Laboratuvar sanal makinelerine RDP/SSH aracılığıyla bağlanmak için Kuruluşumun güvenlik duvarı ayarlarında ne genel IP adresi aralığı açılmalıyım?
+Azure 'da veri merkezleri için genel IP adresi aralığı sağlayan [genel bulut olan Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519)' ne bakın. Laboratuvar hesaplarınızın bulunduğu bölgelerin IP adreslerini açabilirsiniz.
+
 ## <a name="blog-post"></a>Blog gönderisi
 [Azure Lab Services bloguna](https://azure.microsoft.com/blog/tag/azure-lab-services/)abone olun.
 
@@ -52,5 +59,5 @@ Sorunuz burada listelenmiyorsa bize bilgi verin. bu nedenle bir yanıt bulmanız
 
 - Bu SSS sonunda bir soru gönderin. 
 - Daha geniş bir hedef kitleye ulaşmak için [Azure Lab Services Stack Overflow forumuna](https://stackoverflow.com/questions/tagged/azure-lab-services)bir soru gönderin. 
-- Özellik istekleri için isteklerinizi ve fikirlerinizi [Azure Lab Services Kullanıcı seslerine](https://feedback.azure.com/forums/320373-lab-services?category_id=352774)gönderebilirsiniz.
+- Özellik istekleri için isteklerinizi ve fikirlerinizi [Azure Lab Services — Kullanıcı seslerine](https://feedback.azure.com/forums/320373-lab-services?category_id=352774)gönderebilirsiniz.
 

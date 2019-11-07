@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE Analytics (eski adıyla SQL DW) sık sorulan sorular | Microsoft Docs
+title: Azure SYNAPSE Analytics (eski adıyla SQL DW) sık sorulan sorular
 description: Bu makalede, müşteriler ve geliştiricilerden Azure SYNAPSE Analytics (eski adıyla SQL DW) hakkında sık sorulan sorular listelenmektedir
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4db84ed69979713d613679e94d50cdb73475e2be
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: f7b4f926bb9611d87c67276f754a6b596850b59d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520847"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645599"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) sık sorulan sorular
 
@@ -47,7 +47,7 @@ A. SOC ve ISO gibi ürüne göre çeşitli uyumluluk teklifleri için [Microsoft
 
 S. Power BI bağlanabilir miyim?
 
-A. Evet! Power BI Azure SYNAPSE ile doğrudan sorguyu desteklese de, çok sayıda kullanıcı veya gerçek zamanlı veriler için tasarlanmamıştır. Power BI üretim kullanımı için, Azure Analysis Services veya Analysis Service IaaS üzerinde Power BI kullanmanızı öneririz. 
+A. Evet! Power BI Azure SYNAPSE ile doğrudan sorguyu desteklediğinden, bu, çok sayıda kullanıcı veya gerçek zamanlı veriler için tasarlanmamıştır. Power BI performansını daha iyi hale getirebilmenizi sağlamak için, Azure Analysis Services veya Analysis Service IaaS üzerinde Power BI kullanmayı göz önünde bulundurun.
 
 S. SQL Analytics kapasite sınırları nelerdir?
 

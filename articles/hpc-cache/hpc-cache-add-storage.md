@@ -1,17 +1,17 @@
 ---
-title: Azure HPC önbelleğine depolama ekleme (Önizleme)
+title: Azure HPC önbelleğine depolama ekleme
 description: Azure HPC önbelleğinizin, uzun süreli dosya depolaması için şirket içi NFS sisteminizi veya Azure Blob kapsayıcılarını kullanabilmesi için depolama hedeflerini tanımlama
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b10692e352007ee2b0fd18543d8ae2ad8f9819dc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024567"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621459"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -65,7 +65,7 @@ RBAC rolleri ekleme adımları:
 
 1. Depolama hesabı için **erişim denetimi (IAM)** sayfasını açın. ( **Depolama hedefi Ekle** sayfasındaki bağlantı, seçili hesap için otomatik olarak bu sayfayı açar.)
 
-1. Sayfanın üst kısmındaki **+** ' e tıklayın ve **rol ataması Ekle**' yi seçin.
+1. Sayfanın üst kısmındaki **+** tıklayın ve **rol ataması Ekle**' yi seçin.
 
 1. Listeden "depolama hesabı katılımcısı" rolünü seçin.
 
@@ -74,7 +74,7 @@ RBAC rolleri ekleme adımları:
 1. **Seç** alanında "HPC" ifadesini arayın.  Bu dize, "HPC Cache Resource Provider" adlı bir hizmet sorumlusu ile eşleşmelidir. Bu sorumluyu seçmek için tıklayın.
 
    > [!NOTE]
-   > "HPC" araması işe yaramazsa bunun yerine "storagecache" dizesini kullanmayı deneyin. Önizlemeye daha önce katılmış olan kullanıcıların hizmet sorumlusu için eski adı kullanması gerekebilir.
+   > "HPC" araması işe yaramazsa bunun yerine "storagecache" dizesini kullanmayı deneyin. Önizlemelere katılmış olan (GA 'den önce) kullanıcıların hizmet sorumlusu için eski adı kullanması gerekebilir.
 
 1. Rol atamasını depolama hesabına eklemek için **Kaydet** düğmesine tıklayın.
 
@@ -134,3 +134,5 @@ Depolama hedefleri oluşturduktan sonra şu görevlerden birini göz önünde bu
 
 * [Azure HPC önbelleğini bağlama](hpc-cache-mount.md)
 * [Verileri Azure Blob depolamaya taşıma](hpc-cache-ingest.md)
+
+Bir depolama hedefini değiştirmeniz gerekiyorsa, nasıl yapılacağını öğrenmek için [depolama hedeflerini Düzenle](hpc-cache-edit-storage.md) ' yi okuyun.

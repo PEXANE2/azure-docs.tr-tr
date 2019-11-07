@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 9701aa5d924e82d26ad373f8c94d0391a4dc6ba2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6310e13508c1c789c410f1954a2ac0dbf480a2b8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800167"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622516"
 ---
 # <a name="advanced-resource-graph-queries"></a>Gelişmiş Kaynak Grafiği sorguları
 
@@ -104,7 +104,7 @@ Search-AzGraph -Query "Resources | where type=~ 'microsoft.compute/virtualmachin
 
 ## <a name="a-nameremove-column-remove-columns-from-results"></a>sütunları sonuçlardan kaldırmak <a name="remove-column" />
 
-Aşağıdaki sorgu, kaynakları aboneliğe göre saymak için `summarize` ' ı, _Resourcecontainers_ tablosundan abonelik ayrıntıları ile birleştirmek için `join` ' i kullanır, sonra bazı sütunları kaldırmak için `project-away`.
+Aşağıdaki sorgu, kaynakları aboneliğe göre saymak için `summarize` kullanır, _Resourcecontainers_ tablosundan abonelik ayrıntıları ile birleştirmek için `join` ve daha sonra bazı sütunları kaldırmak için `project-away`.
 
 ```kusto
 Resources
@@ -208,7 +208,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ## <a name="a-namemvexpand-cosmosdb-list-cosmos-db-with-specific-write-locations"></a>belirli yazma konumlarına sahip <a name="mvexpand-cosmosdb" />listesi Cosmos DB
 
-Aşağıdaki sorgu Cosmos DB kaynaklarıyla sınırlıdır, **Properties. writelocations**özellik paketini genişletmek için `mv-expand` kullanır, ardından projeye özel alanlar ve sonuçları **Özellikler. Writelocations. locationname** değerleriyle sınırlayın ' Doğu ABD ' veya ' Batı ABD ' ile eşleşiyor.
+Aşağıdaki sorgu Cosmos DB kaynakları kısıtlar, **Properties. writelocations**özellik paketini genişletmek için `mv-expand` kullanır, ardından projeye özel alanlar ve sonuçları **Özellikler. Writelocations. locationname** değerleriyle sınırlayın ' Doğu ABD ' veya ' Batı ABD ' ile eşleşiyor.
 
 ```kusto
 Resources
@@ -242,7 +242,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 ## <a name="a-namejoin-key-vault-with-subscription-name"></a>Abonelik adı ile anahtar kasasını <a name="join" />
 
-Aşağıdaki sorgu `join` ' ın karmaşık bir kullanımını gösterir. Sorgu, birleştirilmiş tabloyu abonelik kaynakları ile sınırlandırır ve yalnızca özgün alan _SubscriptionID_ ve _ad_ alanı _SubName_olarak yeniden adlandırılacak `project` ile. Alan yeniden adlandırma `join`, _kaynak_içinde zaten mevcut olduğundan, _name1_ olarak ekleniyor. Özgün tablo `where` ile filtrelenmiştir ve aşağıdaki `project` her iki tablodan sütun içerir. Sorgu sonucu, türünü, anahtar kasasının adını ve içindeki aboneliğin adını gösteren tek bir Anahtar Kasası.
+Aşağıdaki sorgu `join`karmaşık bir kullanımını gösterir. Sorgu, birleştirilmiş tabloyu abonelik kaynakları ile sınırlandırır ve `project` yalnızca özgün alan _SubscriptionID_ ve _ad_ alanı, _SubName_olarak yeniden adlandırılır. Alan yeniden adlandırma `join`, _kaynak_içinde zaten mevcut olduğundan, _name1_ olarak eklenmesini önler. Özgün tablo `where` ile filtrelenmiştir ve aşağıdaki `project` her iki tablodan sütun içerir. Sorgu sonucu, türünü, anahtar kasasının adını ve içindeki aboneliğin adını gösteren tek bir Anahtar Kasası.
 
 ```kusto
 Resources
@@ -310,7 +310,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="a-namejoin-vmpip-list-virtual-machines-with-their-network-interface-and-public-ip"></a>sanal makineleri ağ arabirimiyle ve genel IP ile listelemek <a name="join-vmpip" />
 
-Bu sorgu, sanal makineleri, ilgili ağ arabirimlerini ve bu ağ arabirimleriyle ilgili genel IP adreslerini birlikte getirmek için iki **soltouter** `join` komut kullanır.
+Bu sorgu, sanal makineleri, ilgili ağ arabirimlerini ve bu ağ arabirimleriyle ilgili genel IP adreslerini birlikte getirmek için iki **soltouter** `join` komutu kullanır.
 
 ```kusto
 Resources
@@ -340,7 +340,7 @@ on publicIpId
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-azure graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | extend nics=array_length(properties.networkProfile.networkInterfaces) | mvexpand nic=properties.networkProfile.networkInterfaces | where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) | project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) | join kind=leftouter ( Resources | where type =~ 'microsoft.network/networkinterfaces' | extend ipConfigsCount=array_length(properties.ipConfigurations) | mvexpand ipconfig=properties.ipConfigurations | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true' | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id)) on nicId | project-away nicId1 | summarize by vmId, vmName, vmSize, nicId, publicIpId | join kind=leftouter ( Resources | where type =~ 'microsoft.network/publicipaddresses' | project publicIpId = id, publicIpAddress = properties.ipAddress) on publicIpId | project-away publicIpId1"
+az graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | extend nics=array_length(properties.networkProfile.networkInterfaces) | mvexpand nic=properties.networkProfile.networkInterfaces | where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) | project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) | join kind=leftouter ( Resources | where type =~ 'microsoft.network/networkinterfaces' | extend ipConfigsCount=array_length(properties.ipConfigurations) | mvexpand ipconfig=properties.ipConfigurations | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true' | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id)) on nicId | project-away nicId1 | summarize by vmId, vmName, vmSize, nicId, publicIpId | join kind=leftouter ( Resources | where type =~ 'microsoft.network/publicipaddresses' | project publicIpId = id, publicIpAddress = properties.ipAddress) on publicIpId | project-away publicIpId1"
 ```
 
 # <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
@@ -441,6 +441,6 @@ Search-AzGraph -Query "limit 1" -Include DisplayNames
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [başlangıç sorguları](starter.md) örnekleri
-- [Sorgu dili](../concepts/query-language.md) hakkında daha fazla bilgi edinin
-- [Kaynakları keşfetmeyi](../concepts/explore-resources.md) öğrenin
+- Bkz. [Başlangıç sorguları](starter.md)örnekleri.
+- [Sorgu dili](../concepts/query-language.md)hakkında daha fazla bilgi edinin.
+- [Kaynakları araştırma](../concepts/explore-resources.md)hakkında daha fazla bilgi edinin.

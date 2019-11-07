@@ -1,5 +1,5 @@
 ---
-title: Azure 'da veri ambarı geliştirme kaynakları | Microsoft Docs
+title: Azure 'da veri ambarı geliştirme kaynakları
 description: Geliştirme kavramları, tasarım kararları, öneriler ve SQL veri ambarı için kodlama teknikleri.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a78d78618a4cd9bf8d2aaebbd0c0da13697549bc
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: a6cb7937bdd5dea9eb1a48b2b350db9077431fe0
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479466"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645609"
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>SQL veri ambarı için tasarım kararları ve kodlama teknikleri
 Temel tasarım kararlarını, önerileri ve SQL veri ambarı için kodlama tekniklerini daha iyi anlamak için bu geliştirme makalelerine göz atın.

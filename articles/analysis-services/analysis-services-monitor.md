@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services Server ölçümlerini izleme | Microsoft Docs
-description: Azure portal ' de Analysis Services Server ölçümlerini nasıl izleyeceğinizi öğrenin.
+description: Sunucularınızın performansını ve sistem durumunu izlemenize yardımcı olması için portaldaki ücretsiz bir araç olan Azure Ölçüm Gezgini Analysis Services nasıl kullanacağınızı öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 57bcffad2634ea556cc0dd53763011f921acc5e0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9e6eab38e0f7bd55fa671aa8c1e99693eeb54c84
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146806"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572725"
 ---
 # <a name="monitor-server-metrics"></a>Sunucu ölçümlerini izleme
 
@@ -44,7 +44,7 @@ Daha ayrıntılı tanılama gerçekleştirmek, performansı izlemek ve bir kayna
 |CurrentUserSessions|Geçerli Kullanıcı oturumları|Sayı|Ortalama|Geçerli kullanıcı oturumlarının sayısı.|
 |mashup_engine_memory_metric|D motoru belleği|Sayacının|Ortalama|Karma altyapı işlemlerine göre bellek kullanımı|
 |mashup_engine_qpu_metric|A motoru QPU|Sayı|Ortalama|Karma altyapı işlemlerine göre QPU kullanımı|
-|memory_metric|Hafıza|Sayacının|Ortalama|Bellek. S1 için 0-25 GB, S2 için 0-50 GB ve S4 için 0-100 GB|
+|memory_metric|Bellek|Sayacının|Ortalama|Bellek. S1 için 0-25 GB, S2 için 0-50 GB ve S4 için 0-100 GB|
 |memory_thrashing_metric|Bellek dağılması|Yüzde|Ortalama|Ortalama bellek miktarı.|
 |CleanerCurrentPrice|Bellek: temizleyici geçerli fiyatı|Sayı|Ortalama|Geçerli bellek fiyatı, $/Byte/Time, 1000 olarak normalleştirilemez.|
 |Cleanermemorynonınkable|Bellek: temizleyici bellek daraltılamaz|Sayacının|Ortalama|Arka plan temizleyici tarafından temizlenme konusu değil, bayt cinsinden bellek miktarı.|
@@ -88,6 +88,6 @@ Daha ayrıntılı tanılama gerçekleştirmek, performansı izlemek ve bir kayna
 |TotalConnectionRequests|Toplam bağlantı Isteği sayısı|Sayı|Ortalama|Toplam bağlantı isteği sayısı. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure izleyici 'ye genel bakış](../azure-monitor/overview.md)      
+[Azure izlemeye genel bakış](../azure-monitor/overview.md)      
 [Azure Ölçüm Gezgini ile çalışmaya](../azure-monitor/platform/metrics-getting-started.md) başlama      
 [Azure Izleyici 'de ölçümler REST API](/rest/api/monitor/metrics)

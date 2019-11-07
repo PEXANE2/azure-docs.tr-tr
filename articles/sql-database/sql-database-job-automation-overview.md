@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Iş Otomasyonu | Microsoft Docs
+title: Azure SQL Iş Otomasyonu
 description: Transact-SQL (T-SQL) betiklerini bir veya daha fazla Azure SQL veritabanı kümesi üzerinde çalıştırmak için Iş Otomasyonu kullanma
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: 432580017cec548b7ecd7cf766aa8f5cdb2253cc
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: bbef299271618dc672daea17249f29866e75c430
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113588"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689665"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Veritabanı işlerini kullanarak yönetim görevlerini otomatikleştirme
 
@@ -50,7 +50,7 @@ SQL Aracısı (Şirket içi ve SQL veritabanı yönetilen örneği 'nin bir par�
 
 |  |Elastik İşler  |SQL Aracısı |
 |---------|---------|---------|
-|`Scope`     |  İş aracısıyla aynı Azure bulutundaki herhangi bir sayıda Azure SQL veritabanı ve/veya veri ambarı. Hedefler farklı SQL veritabanı sunucularında, aboneliklerde ve/veya bölgelerde olabilir. <br><br>Hedef gruplar tek veritabanı veya veri ambarlarının yanı sıra bir sunucu, havuz veya parça eşlemesi içindeki tüm veritabanlarından (iş zamanında dinamik olarak numaralandırılır) oluşabilir. | SQL aracısıyla aynı SQL Server örneğindeki tek bir veritabanı. |
+|Kapsam     |  İş aracısıyla aynı Azure bulutundaki herhangi bir sayıda Azure SQL veritabanı ve/veya veri ambarı. Hedefler farklı SQL veritabanı sunucularında, aboneliklerde ve/veya bölgelerde olabilir. <br><br>Hedef gruplar tek veritabanı veya veri ambarlarının yanı sıra bir sunucu, havuz veya parça eşlemesi içindeki tüm veritabanlarından (iş zamanında dinamik olarak numaralandırılır) oluşabilir. | SQL aracısıyla aynı SQL Server örneğindeki tek bir veritabanı. |
 |Desteklenen API’ler ve Araçlar     |  Portal, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
 
 ## <a name="sql-agent-jobs"></a>SQL Aracısı Işleri
@@ -96,7 +96,7 @@ Bir zamanlama, bir işin çalıştığı zaman için aşağıdaki koşulları ta
 
 SQL Aracısı Işleri, iş başarıyla tamamlandığında veya başarısız olduğunda bildirim almanızı sağlar. E-posta aracılığıyla bildirim alabilirsiniz.
 
-İlk olarak, aşağıdaki örnekte gösterildiği gibi e-posta bildirimlerini göndermek ve hesabı adlı `AzureManagedInstance_dbmail_profile`e-posta profiline atamak için kullanılacak e-posta hesabını ayarlamanız gerekir:
+İlk olarak, aşağıdaki örnekte gösterildiği gibi, e-posta bildirimlerini göndermek ve hesabı `AzureManagedInstance_dbmail_profile`adlı e-posta profiline atamak için kullanılacak e-posta hesabını ayarlamanız gerekir:
 
 ```sql
 -- Create a Database Mail account
@@ -157,7 +157,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 ### <a name="sql-agent-job-limitations"></a>SQL Aracısı Iş sınırlamaları
 
 SQL Server ' de kullanılabilir olan SQL Aracısı özelliklerinden bazıları yönetilen örnekte desteklenmez:
-- SQL Aracısı ayarları salt okunurdur. Yordam `sp_set_agent_properties` yönetilen örnekte desteklenmiyor.
+- SQL Aracısı ayarları salt okunurdur. Yordam `sp_set_agent_properties` yönetilen örnekte desteklenmez.
 - SQL aracısının etkinleştirilmesi/devre dışı bırakılması Şu anda yönetilen örnekte desteklenmiyor. SQL Aracısı her zaman çalışır.
 - Bildirimler kısmen destekleniyor
   - Sayfalayıcı desteklenmiyor.
@@ -253,7 +253,7 @@ Aşağıdaki örneklerde işin çalıştırılacağı veritabanlarının belirle
 
 #### <a name="job"></a>İş
 
-*İş*, bir zamanlamaya göre veya tek seferlik yürütülen bir çalışma birimidir. Bir işte bir veya daha fazla *iş adımı* bulunur.
+*İş*, bir plan dahilinde veya tek seferlik olarak yürütülen çalışma birimidir. Bir işte bir veya daha fazla *iş adımı* bulunur.
 
 ##### <a name="job-step"></a>İş adımı
 
@@ -265,7 +265,7 @@ Her işte yürütülecek bir T-SQL betiği, bu T-SQL betiğinin çalıştırıla
 
 #### <a name="job-history"></a>İş geçmişi
 
-İş yürütme geçmişi *İş veritabanında* depolanır. Sistem temizleme işlemi 45 günden daha eski olan yürütme geçmişi verilerini siler. 45 günden daha yeni olan geçmişi kaldırmak için *İş veritabanında* **sp_purge_history** saklı yordamını çağırın.
+İş yürütme geçmişi, *İş veritabanında* kaydedilir. Sistem temizleme işlemi 45 günden daha eski olan yürütme geçmişi verilerini siler. 45 günden daha yeni olan geçmişi kaldırmak için **İş veritabanında** *sp_purge_history* saklı yordamını çağırın.
 
 ### <a name="agent-performance-capacity-and-limitations"></a>Aracı performansı, kapasitesi ve sınırlamaları
 

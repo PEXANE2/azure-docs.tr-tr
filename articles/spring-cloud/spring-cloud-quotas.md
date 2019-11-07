@@ -4,14 +4,14 @@ description: Azure Spring Cloud için hizmet kotaları ve hizmet planları hakk�
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 9/27/2019
+ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 89934ee0ab0c901a904a1a5ac2fb620185571a23
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 41a2b1a7d9aa5089ba2ee73cd3c5c5c5e31f5225
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038788"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607679"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Azure yay bulutu için kotalar ve hizmet planları
 
@@ -25,8 +25,8 @@ Bu makalede, geçerli önizleme döneminde sunulan hizmet kotaları ayrıntılı
 
 Kaynak | Miktar
 ------- | -------
-vCPU | 4
-Hafıza | 8 GBayt
+Sanal işlemci | 4
+Bellek | 8 GBayt
 Azure yay bulut aboneliği | 1
 Abonelik başına bölge başına Azure yay bulut hizmeti örnekleri | 2
 Azure yay bulut hizmeti örneği başına toplam uygulama örnekleri | 50
@@ -37,4 +37,4 @@ Bir kotaya ulaştığınızda, şöyle bir 400 hatası alırsınız: "Kota, *Azu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bazı varsayılan limitler ve kotalar artırılabilir. Kaynağınız bir artış gerektiriyorsa isteğiniz bize gönderin: azure-spring-cloud@service.microsoft.com.
+Bazı varsayılan limitler ve kotalar artırılabilir. Kaynağınız bir artış gerektiriyorsa, [bir destek isteği oluşturun](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
