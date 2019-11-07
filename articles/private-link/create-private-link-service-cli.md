@@ -7,19 +7,19 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: c67d2cd4e90b2fa61a4d95e89a68c888a6e1fe3f
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 57ab18c8dfffb6994983179f434491b97589ebda
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273645"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693239"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLı kullanarak özel bağlantı hizmeti oluşturma
 Bu makalede Azure CLı kullanarak Azure 'da özel bir bağlantı hizmeti oluşturma gösterilmektedir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLı 'yı yüklemeye ve kullanmaya karar verirseniz, bu hızlı başlangıç, en son Azure CLı sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version`. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+Bunun yerine Azure CLı 'yı yüklemeye ve kullanmaya karar verirseniz, bu hızlı başlangıç, en son Azure CLı sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için `az --version`çalıştırın. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
 ## <a name="create-a-private-link-service"></a>Özel Bağlantı hizmeti oluşturma
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -62,7 +62,7 @@ Durum araştırması tüm sanal makine örneklerini denetleyerek ağ trafiği al
 
 ### <a name="create-a-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 
-Yük dengeleyici kuralı, gerekli kaynak ve hedef bağlantı noktalarının yanı sıra gelen trafik için ön uç IP yapılandırmasını ve trafiği almak için arka uç IP havuzunu tanımlar. *myFrontEnd* ön uç havuzunda 80 numaralı bağlantı noktasını dinlemek ve yine 80 numaralı bağlantı noktasını kullanarak *myBackEndPool* arka uç adres havuzuna yük dengelemesi yapılmış ağ trafiğini göndermek için [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) ile *myHTTPRule* yük dengeleyici kuralı oluşturun. 
+Yük dengeleyici kuralı, gerekli kaynak ve hedef bağlantı noktalarının yanı sıra gelen trafik için ön uç IP yapılandırmasını ve trafiği almak için arka uç IP havuzunu tanımlar. *myFrontEnd* ön uç havuzunda 80 numaralı bağlantı noktasını dinlemek ve yine 80 numaralı bağlantı noktasını kullanarak [myBackEndPool](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) arka uç adres havuzuna yük dengelemesi yapılmış ağ trafiğini göndermek için *az network lb rule create* ile *myHTTPRule* yük dengeleyici kuralı oluşturun. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -104,14 +104,14 @@ az network private-link-service create \
 ```
 Oluşturulduktan sonra, özel bağlantı hizmeti KIMLIĞI ' ni bir yere göz atın. Bu hizmetle bağlantı istemek için daha sonra ihtiyacınız olacak.  
  
-Bu aşamada, özel bağlantı hizmetiniz başarıyla oluşturulur ve trafik almaya hazırdır. Yukarıdaki örneğin yalnızca Azure CLı kullanarak özel bağlantı hizmeti oluşturmayı gösterdiğine unutmayın.  Trafiği dinlemek için yük dengeleyici arka uç havuzlarını veya arka uç havuzlarındaki herhangi bir uygulamayı yapılandırmadınız. Uçtan uca trafik akışlarını görmek istiyorsanız uygulamanızı Standart Load Balancer gerisinde yapılandırmanız önemle önerilir.  
+Bu aşamada, özel bağlantı hizmetiniz başarıyla oluşturulur ve trafik almaya hazırdır. Yukarıdaki örneğin yalnızca Azure CLı kullanarak özel bağlantı hizmeti oluşturmayı gösterdiğine unutmayın.  Trafiği dinlemek için yük dengeleyici arka uç havuzlarını veya arka uç havuzlarındaki herhangi bir uygulamayı yapılandırmadınız. Uçtan uca trafik akışlarını görmek istiyorsanız uygulamanızı Standart Load Balancer arka planda yapılandırmanız önemle tavsiye edilir.  
  
 Daha sonra, Azure CLı kullanarak bu hizmetin farklı bir sanal ağda özel bir uç noktaya nasıl eşleneceğini göstereceğiz. Bu örnek, Özel uç nokta oluşturma ve yukarıda oluşturulan özel bağlantı hizmetine Azure CLı kullanılarak bağlanma ile sınırlıdır. Ayrıca, Özel uç noktaya trafik göndermek/almak için sanal ağda sanal makineler oluşturabilirsiniz.        
  
 ## <a name="private-endpoints"></a>Özel uç noktalar
 
 ### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma 
- [Az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create)komutuyla bir sanal ağ oluşturun. Bu örnek, *myresourcegroup*adlı kaynak grubu adlı *mypevnet* adlı bir sanal ağ oluşturur: 
+ [Az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create)komutuyla bir sanal ağ oluşturun. Bu örnek, *Myresourcegroup*adlı kaynak grubunda *Mypevnet* adlı bir sanal ağ oluşturur: 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>Alt ağ oluşturma 
- [Az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)komutuyla sanal ağ üzerinde bir alt ağ oluşturun. Bu örnek, *myresourcegroup*adlı kaynak grubunda *mypevnet* adlı sanal ağda *mysubnet* adlı bir alt ağ oluşturur: 
+ [Az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)komutuyla sanal ağ üzerinde bir alt ağ oluşturun. Bu örnek, *Myresourcegroup*adlı kaynak grubunda *Mypevnet* adlı sanal ağ  *mysubnet* adlı bir alt ağ oluşturur: 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -151,7 +151,7 @@ az network private-endpoint create \
 --connection-name myPEConnectingPLS \
 --location westcentralus 
 ```
-Özel bağlantı hizmetinde *özel bağlantı-kaynak kimliği* `az network private-link-service show` ' ni kullanabilirsiniz. KIMLIK şöyle görünür:   
+Özel bağlantı hizmetinde `az network private-link-service show` ile *özel bağlantı-kaynak kimliği* alabilirsiniz. KIMLIK şöyle görünür:   
 /Subscriptions/subıd/ResourceGroups/*resourcegroupname*/Providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>Özel bağlantı hizmeti bağlantılarını göster 

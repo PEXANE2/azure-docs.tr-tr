@@ -1,5 +1,5 @@
 ---
-title: Birden çok Azure SQL veritabanı arasında raporlama sorguları çalıştırma | Microsoft Docs
+title: Birden çok Azure SQL veritabanı arasında raporlama sorguları çalıştırma
 description: Dağıtılmış sorgular kullanan çapraz kiracı raporlaması.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
 ms.date: 01/25/2019
-ms.openlocfilehash: fa8dbbbb09fbdc14049e168afe6eb4810ccc8254
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f9af2af7893bd908988ee45476ce14a56f9768a9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570242"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691894"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Dağıtılmış sorguları kullanarak çapraz kiracı raporlaması
 
@@ -58,7 +58,7 @@ Wingtip biletleri SaaS çok kiracılı veritabanı betikleri ve uygulama kaynak 
 
 Sorguları daha ilgi çekici bir veri kümesine karşı çalıştırmak için, Bilet oluşturma ' yı çalıştırarak bilet satış verileri oluşturun.
 
-1. *PowerShell ISE*'de,... öğesini açın. \\Öğrenme modülleri\\işlem analizi\\geçici raporlama\\*demo-AdhocReporting. ps1* betiği ve aşağıdaki değeri ayarlayın:
+1. *PowerShell ISE*'de,...\\öğrenme modüllerini\\işletimsel analiz\\geçici raporlama\\*demo-AdhocReporting. ps1* komut dosyasını açın ve aşağıdaki değeri ayarlayın:
    * **$DemoScenario** = 1, **Tüm havalandırma olayları Için bilet satın alın**.
 2. Betiği çalıştırmak ve bilet satışları oluşturmak için **F5** tuşuna basın. Betik çalışırken bu öğreticideki adımlara devam edin. Bilet verileri, *geçici olarak dağıtılan sorguları Çalıştır* bölümünde sorgulanır, bu nedenle bilet oluşturucunun tamamlanmasını bekleyin.
 
@@ -66,9 +66,9 @@ Sorguları daha ilgi çekici bir veri kümesine karşı çalıştırmak için, B
 
 Her kiracının kiracı uygulaması başına Wingtip bilet SaaS veritabanında bir veritabanı verilir. Bu nedenle, veritabanı tablolarında bulunan veriler tek bir kiracının perspektifine göre kapsamlandırılır. Ancak, tüm veritabanlarına sorgulama yaparken, elastik sorgunun verileri kiracı tarafından oluşturulmuş tek bir mantıksal veritabanının parçası gibi işleyemesinin önemli olması önemlidir. 
 
-Bu düzenin benzetimini yapmak için, genel olarak sorgulanan her bir tabloya kiracı KIMLIĞI oluşturan kiracı veritabanına bir ' genel ' görünüm kümesi eklenir. Örneğin, *venueevents* görünümü, *Olaylar* tablosundan yansıtılan sütunlara bir hesaplanan *venueıd* ekler. Benzer şekilde, *Venuebilet satın* alımlarını ve *venuebilet* görünümleri, ilgili tablolarından yansıtılan bir hesaplanan *venueıd* sütunu ekler. Bu görünümler, elastik sorgu tarafından paralel hale getirmek sorguları için kullanılır ve bir *Venueıd* sütunu bulunduğunda bunları uygun uzak kiracı veritabanına gönderir. Bu, döndürülen veri miktarını önemli ölçüde azaltır ve birçok sorgu için performans açısından önemli ölçüde artışa neden olur. Bu genel görünümler, tüm kiracı veritabanlarında önceden oluşturulmuştur.
+Bu düzenin benzetimini yapmak için, genel olarak sorgulanan her bir tabloya kiracı KIMLIĞI oluşturan kiracı veritabanına bir ' genel ' görünüm kümesi eklenir. Örneğin, *venueevents* görünümü, *Olaylar* tablosundan yansıtılan sütunlara bir hesaplanan *venueıd* ekler. Benzer şekilde, *Venuebilet satın alımlarını* ve *venuebilet* görünümleri, ilgili tablolarından yansıtılan bir hesaplanan *venueıd* sütunu ekler. Bu görünümler, elastik sorgu tarafından paralel hale getirmek sorguları için kullanılır ve bir *Venueıd* sütunu bulunduğunda bunları uygun uzak kiracı veritabanına gönderir. Bu, döndürülen veri miktarını önemli ölçüde azaltır ve birçok sorgu için performans açısından önemli ölçüde artışa neden olur. Bu genel görünümler, tüm kiracı veritabanlarında önceden oluşturulmuştur.
 
-1. SSMS 'yi açın ve [tenants1-&lt;user&gt; sunucusuna bağlanın](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
+1. SSMS 'yi açın ve [tenants1-&lt;USER&gt; sunucusuna bağlanın](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
 1. **Veritabanları**' nı genişletin, _contosoconcerthall_' a sağ tıklayın ve **Yeni sorgu**' yı seçin.
 1. Tek kiracılı tablolar ve genel görünümler arasındaki farkı araştırmak için aşağıdaki sorguları çalıştırın:
 
@@ -90,12 +90,12 @@ Bu görünümlerde, *Venueıd* , mekan adının karması olarak hesaplanır, anc
 
 *Havalandırma* görünümü tanımını incelemek için:
 
-1. **Nesne Gezgini**' de, **contosoconcerthall** > **görünümleri**' ni genişletin:
+1. **Nesne Gezgini**' de, **contosoconcerthall** > **Görünümler**' i genişletin:
 
-   ![görüntüleme](media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![Görünümler](media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. Dbo öğesine sağ tıklayın **. Havalandırma**.
-3. **Yeni sorgu Düzenleyicisi penceresinde** **Oluştur** > ' u seçerek **betik görünümü** > ' nü seçin
+3. **Yeni sorgu Düzenleyicisi penceresi** >  > **Oluştur** **olarak betik görünümü** seçin
 
 Diğer *mekan* görünümlerini, *venueıd*'nin nasıl ekleneceğini görmek için betiği yapın.
 
@@ -103,7 +103,7 @@ Diğer *mekan* görünümlerini, *venueıd*'nin nasıl ekleneceğini görmek iç
 
 Bu alıştırma, _adhocretaşıma_ veritabanını dağıtır. Bu, tüm kiracı veritabanlarında sorgulamak için kullanılan şemayı içeren baş veritabanıdır. Veritabanı, örnek uygulamadaki tüm yönetim ile ilgili veritabanları için kullanılan sunucu olan var olan katalog sunucusuna dağıtılır.
 
-1. *PowerShell ISE*'de açın... \\Öğrenme modülleri\\işlem analizi\\geçici raporlama\\*demo-AdhocReporting. ps1*. 
+1. *PowerShell ISE*'de,...\\öğrenme modüllerini\\işletimsel analiz\\geçici raporlama\\*demo-AdhocReporting. ps1*. 
 
 1. **$DemoScenario = 2**olarak ayarlayın, _geçici raporlama veritabanını dağıtın_.
 
@@ -123,7 +123,7 @@ Bu alıştırma, tüm kiracı veritabanlarında sorgu sağlamak için, şemayı 
 
     ![kimlik bilgisi oluşturma](media/saas-tenancy-cross-tenant-reporting/create-credential.png)
 
-   Dış veri kaynağı olarak Katalog veritabanı ile, sorgular sorgu çalıştığı sırada katalogda kayıtlı tüm veritabanlarına dağıtılır. Sunucu adları her dağıtım için farklı olduğundan, bu betik, Katalog veritabanının konumunu, komut dosyasının yürütüldüğü geçerli sunucudan (@@servername) alır.
+   Dış veri kaynağı olarak Katalog veritabanı ile, sorgular sorgu çalıştığı sırada katalogda kayıtlı tüm veritabanlarına dağıtılır. Sunucu adları her dağıtım için farklı olduğundan, bu betik geçerli sunucudan (@@servername), komut dosyasının yürütüldüğü Katalog veritabanının konumunu alır.
 
     ![dış veri kaynağı oluştur](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
@@ -149,7 +149,7 @@ Yürütme planı incelenirken Ayrıntılar için plan simgelerinin üzerine geli
 
 Önemli bir deyişle, dış veri kaynağı tanımlandığında **dağıtım = parçalara ayrılmış (Venueıd)** ayarı çok sayıda senaryonun performansını geliştirir. Her *Venueıd* tek bir veritabanıyla eşleniyorsa, filtreleme kolayca uzaktan yapılır ve yalnızca gerekli verileri döndürür.
 
-1. Aç... \\\\ SSMS 'de modül işlem analizi\\geçici raporlama demo-AdhocReportingQueries. SQL ' i öğrenme. \\
+1. Açık...\\öğrenme modüllerini\\Işletimsel analizler\\SSMS 'de geçici raporlama\\*demo-AdhocReportingQueries. SQL* .
 2. **Adhocretaşıma** veritabanına bağlı olduğunuzdan emin olun.
 3. **Sorgu** menüsünü seçin ve **gerçek yürütme planını dahil et** ' e tıklayın.
 4. *Şu anda kayıtlı olan havalandırma noktaları vurgulansın mı?* sorgusu yapın ve **F5**'e basın.
@@ -172,12 +172,12 @@ Yürütme planı incelenirken Ayrıntılar için plan simgelerinin üzerine geli
 
    Bu sorgu biraz daha karmaşık katılım ve toplama yapar. İşlemin büyük bir bölümünü uzaktan meydana gelir.  Baş veritabanına her bir mekanın günlük bilet satışı sayısını içeren tek satırlar.
 
-   ![query](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
+   ![sorgu](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
+Bu öğreticide, şunları öğrendiniz:
 
 > [!div class="checklist"]
 > 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı yönetilen örnek veritabanında çoğaltmayı yapılandırma | Microsoft Docs
+title: 'Azure SQL veritabanı yönetilen örnek veritabanında çoğaltmayı yapılandırma '
 description: Azure SQL veritabanı yönetilen örnek veritabanında işlem çoğaltmasını yapılandırma hakkında bilgi edinin
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 21275ce7716ffc394c1e7445c3f6836f09b44c87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338747"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692171"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Azure SQL veritabanı yönetilen örnek veritabanında çoğaltmayı yapılandırma
 
@@ -41,7 +41,7 @@ Bir yönetilen örneği yayımcı ve/veya bir dağıtıcı olarak çalışacak �
 - Yayımcı tarafından yönetilen örnek, dağıtıcı ve abone ile aynı sanal ağda, ya da her üç varlığın sanal ağları arasında [vNet eşlemesi](../virtual-network/tutorial-connect-virtual-networks-powershell.md) oluşturulmuştur. 
 - Bağlantı, çoğaltma katılımcıları arasında SQL Kimlik Doğrulaması kullanır.
 - Çoğaltma çalışma dizini için bir Azure depolama hesabı payı.
-- Bağlantı noktası 445 (TCP Giden), yönetilen örneklerin Azure dosya paylaşımında erişmesi için NSG güvenlik kurallarında açıktır.  "Azure depolama \<depolama hesabı adı > işletim sistemi hatası 53" hatasıyla karşılaşırsanız, uygun SQL yönetilen örnek alt ağının NSG 'ye bir giden kuralı eklemeniz gerekir.
+- Bağlantı noktası 445 (TCP Giden), yönetilen örneklerin Azure dosya paylaşımında erişmesi için NSG güvenlik kurallarında açıktır.  "Azure Storage \<depolama hesabı adı > OS hatası 53" hatasıyla karşılaşırsanız, uygun SQL yönetilen örnek alt ağının NSG 'ye bir giden kuralı eklemeniz gerekir.
 
 
  > [!NOTE]
@@ -63,7 +63,7 @@ Azure SQL veritabanı 'nda yönetilen bir örnekte aşağıdaki özellikler dest
  
 ## <a name="1---create-a-resource-group"></a>1-kaynak grubu oluşturma
 
-@No__t-1 adlı bir kaynak grubu oluşturmak için [Azure Portal](https://portal.azure.com) kullanın.  
+`SQLMI-Repl`adlı bir kaynak grubu oluşturmak için [Azure Portal](https://portal.azure.com) kullanın.  
 
 ## <a name="2---create-managed-instances"></a>2-yönetilen örnekler oluşturma
 
@@ -154,7 +154,7 @@ GO
 
 ## <a name="7---configure-publisher-to-use-distributor"></a>7-yayımcıyı dağıtıcı kullanacak şekilde yapılandırma 
 
-Yayımcı tarafından yönetilen örnek `sql-mi-pub` ' da, sorgu yürütmeyi [sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) moduna değiştirin ve yeni dağıtıcıyı yayınınızdan kaydettirmek için aşağıdaki kodu çalıştırın. 
+Yayımcı tarafından yönetilen örnek `sql-mi-pub`, sorgu yürütmesini [sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) moduna değiştirin ve yeni dağıtıcıyı yayımcıya kaydetmek için aşağıdaki kodu çalıştırın. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -322,7 +322,7 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-[Yönetilen örnek kaynaklarını kaynak grubundan silerek](../azure-resource-manager/manage-resources-portal.md#delete-resources) ve sonra `SQLMI-Repl` kaynak grubunu silerek Azure kaynaklarınızı temizleyebilirsiniz. 
+[Yönetilen örnek kaynaklarını kaynak grubundan silerek](../azure-resource-manager/manage-resources-portal.md#delete-resources) ve ardından `SQLMI-Repl`kaynak grubunu silerek Azure kaynaklarınızı temizleyebilirsiniz. 
 
    
 ## <a name="see-also"></a>Ayrıca Bkz.

@@ -1,5 +1,5 @@
 ---
-title: Hızlandırılmış veritabanı kurtarma-Azure SQL veritabanı | Microsoft Docs
+title: Hızlandırılmış veritabanı kurtarma-Azure SQL veritabanı
 description: Azure SQL veritabanı, Azure SQL veritabanı 'nda tek veritabanları ve havuza alınmış veritabanları için hızlı ve tutarlı veritabanı kurtarma, anlık işlem geri alma ve agresif günlük kesilme sağlayan yeni bir özelliğe sahiptir ve Azure SQL Data 'daki veritabanları Ambarını.
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,12 +10,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: d516dc51a25cbef92ff9fa22012773507b528a99
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e66b3e6563d796cc7b59e82233bd1b22bc906c6e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569625"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691345"
 ---
 # <a name="accelerated-database-recovery"></a>Hızlandırılmış veritabanı kurtarma
 
@@ -35,7 +35,7 @@ ms.locfileid: "68569625"
 
 ## <a name="the-current-database-recovery-process"></a>Geçerli veritabanı kurtarma işlemi
 
-SQL Server veritabanı kurtarma, [Bu kurtarma modelini](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) izler ve aşağıdaki diyagramda gösterilen ve diyagramda daha ayrıntılı şekilde açıklanacak üç aşamadan oluşur.
+SQL Server [veritabanı kurtarma, bu kurtarma modelini](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) izler ve aşağıdaki diyagramda gösterilen ve diyagramda daha ayrıntılı şekilde açıklanacak üç aşamadan oluşur.
 
 ![geçerli kurtarma işlemi](./media/sql-database-accelerated-database-recovery/current-recovery-process.png)
 
@@ -95,7 +95,7 @@ ADR 'nin dört temel bileşeni şunlardır:
 
 - **Kalıcı sürüm deposu (PVS)**
 
-  Kalıcı sürüm deposu, geleneksel `tempdb` sürüm deposu yerine veritabanında oluşturulan satır sürümlerinin kalıcı hale getirilmesine yönelik yeni bir SQL veritabanı altyapısı mekanizmasıdır. PVS, kaynak yalıtımına izin verir ve okunabilir ikinciller kullanılabilirliğini geliştirir.
+  Kalıcı sürüm deposu, geleneksel `tempdb` sürümü deposu yerine veritabanında oluşturulan satır sürümlerinin kalıcı hale getirilmesine yönelik yeni bir SQL veritabanı altyapısı mekanizmasıdır. PVS, kaynak yalıtımına izin verir ve okunabilir ikinciller kullanılabilirliğini geliştirir.
 
 - **Mantıksal olarak döndürülüyor**
 

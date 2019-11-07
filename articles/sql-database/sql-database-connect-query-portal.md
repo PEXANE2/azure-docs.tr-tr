@@ -1,5 +1,5 @@
 ---
-title: "Azure portalı: Sorgu Düzenleyicisi'ni kullanarak Azure SQL Veritabanını sorgulama | Microsoft Docs"
+title: 'Azure portal: sorgu düzenleyicisini kullanarak Azure SQL veritabanını sorgulama '
 description: SQL Sorgu Düzenleyicisi'ni kullanarak Azure portalında SQL Veritabanına bağlanmayı öğrenin. Ardından, verileri sorgulamak ve düzenlemek için Transact-SQL (T-SQL) deyimleri çalıştırın.
 keywords: sql veritabanına bağlanma,azure portalı, portal, sorgu düzenleyicisi
 services: sql-database
@@ -12,18 +12,18 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 433f2a190cf24a7e59dcd1d5a5aba0d3aa4e8588
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 75882b13341c7fc373de141ba12f8806cb106906
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492166"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690917"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Hızlı başlangıç: Azure portal SQL sorgu düzenleyicisini kullanarak bağlanma ve veri sorgulama
 
 SQL sorgu Düzenleyicisi, Azure SQL veritabanı veya Azure SQL veri ambarı 'nda SQL sorguları yürütmek için kolay bir yol sağlayan bir Azure portal tarayıcı aracıdır. Bu hızlı başlangıçta, sorgu düzenleyicisini kullanarak bir SQL veritabanına bağlanın ve ardından Transact-SQL deyimlerini çalıştırarak verileri sorgulama, ekleme, güncelleştirme ve silme.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 

@@ -11,14 +11,38 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 353e0478172ed03cde848d8c5127d2ee41724963
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b40df5878d08b222d145531bfdad1e30b2fe989d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481247"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647391"
 ---
 # <a name="release-notes"></a>Sürüm notları
+
+## <a name="speech-sdk-180-2019-november-release"></a>Konuşma SDK 1.8.0:2019-Kasım sürümü
+
+**Yeni özellikler**
+*   Şirket içi kapsayıcılar ve bağımsız bulutlarla kullanım kolaylığı sağlamak için bir FromHost () API 'SI eklendi.
+*   Konuşma tanıma için otomatik kaynak Dil Algılama eklendi (Java ve C++)
+*   Beklenen kaynak dillerini (Java ve C++) belirtmek için kullanılan, konuşma tanıma Için SourceLanguageConfig nesnesi eklendi
+*   NuGet ve Unity paketleri aracılığıyla Windows (UWP), Android ve iOS 'ta Keywordtanıyıcı desteği eklendi
+*   Zaman uyumsuz toplu işlemlerdeki konuşma dökümü için uzak konuşma Java API 'SI eklendi.
+
+**Son değişiklikler**
+*   Konuşma yazılı işlevleri Microsoft. Biliveservices. Speech. Transcriptıon ad alanı altına taşındı.
+*   Görüşmenin bir parçası olan yöntemler yeni konuşma sınıfına taşınır.
+*   32-bit (ARMv7 ve x86) iOS için bırakılan destek 
+
+**Hata düzeltmeleri**
+*   Yerel Keywordtanıyıcı geçerli bir konuşma hizmeti abonelik anahtarı olmadan kullanılıyorsa kilitlenme için çözüm yapın
+
+**Örnekler**
+*   Keywordtanıyıcı için Xamarin örneği
+*   Keywordtanıyıcı için Unity örneği
+*   C++ve otomatik kaynak Dil Algılama için Java örnekleri.
+
+
 ## <a name="speech-sdk-170-2019-september-release"></a>Konuşma SDK 1.7.0:2019-Eylül sürümü
 
 **Yeni özellikler**
@@ -37,7 +61,6 @@ ms.locfileid: "73481247"
 *   Bazı bağlantı özelliklerinde benzersiz olmayan UUID 'ler ile ilgili sorun düzeltildi
 *   Swift bağlamalarında null değer alabilme belirticileri hakkında birkaç uyarı düzeltildi (küçük kod değişiklikleri gerektirebilir)
 *   WebSocket bağlantılarına neden olan bir hata düzeltildi ağ yükü altında düzgün şekilde kapatılacak
-*   iOS: arm7s mimarisi desteği bırakıldı
 *   Android 'de, bazı durumlarda DialogServiceConnector tarafından kullanılan yinelenen izlenme kimliklerine neden olan bir sorun düzeltildi
 *   Iletişim kutusu bağlayıcı ile oluştuğunda çok yönlü etkileşimler genelinde bağlantı kararlılığı ve hataların raporlaması (Iptal edilen olaylar aracılığıyla)
 *   DialogServiceConnector oturumu artık, etkin bir StartKeywordRecognitionAsync () sırasında ListenOnceAsync () çağrılırken de dahil olmak üzere olayları doğru olarak sağlayacak

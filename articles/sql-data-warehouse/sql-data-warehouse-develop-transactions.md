@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı 'nda işlemleri kullanma | Microsoft Docs
+title: İşlemleri kullanma
 description: Azure SQL veri ambarı 'nda çözüm geliştirmeye yönelik işlemler uygulama ipuçları.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,17 +10,18 @@ ms.subservice: development
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f00f8a25d0abf3af6d76b372b44145546a79879
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 09fc0f7cee38f799322a1914848a5176e9a223a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479604"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692779"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>SQL veri ambarı 'nda işlemleri kullanma
 Azure SQL veri ambarı 'nda çözüm geliştirmeye yönelik işlemler uygulama ipuçları.
 
-## <a name="what-to-expect"></a>Beklentiler
+## <a name="what-to-expect"></a>Sizi neler bekliyor
 Bekleneceğiniz gibi SQL veri ambarı, veri ambarı iş yükünün parçası olarak işlemleri destekler. Ancak, SQL veri ambarı 'nın performansının ölçekte korunduğundan emin olmak için bazı özellikler SQL Server karşılaştırıldığında sınırlı olur. Bu makalede farklılıklar vurgulanmıştır ve diğerleri listelenmiştir. 
 
 ## <a name="transaction-isolation-levels"></a>İşlem yalıtım düzeyleri
@@ -38,39 +39,39 @@ Aşağıdaki varsayımlar aşağıda verilmiştir:
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | Dağıtım başına sınır (GB) | Dağıtım sayısı | En fazla işlem boyutu (GB) | Dağıtım başına satır sayısı | İşlem başına en fazla satır |
 | --- | --- | --- | --- | --- | --- |
-| DW100c |1\. |60 |60 |4,000,000 |240,000,000 |
-| DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
-| DW300c |2.25 |60 |135 |9,000,000 |540,000,000 |
-| DW400c |3 |60 |180 |12,000,000 |720,000,000 |
-| DW500c |3.75 |60 |225 |15,000,000 |900,000,000 |
-| DW1000c |7.5 |60 |450 |30,000,000 |1,800,000,000 |
-| DW1500c |11.25 |60 |675 |45,000,000 |2,700,000,000 |
-| DW2000c |15 |60 |900 |60,000,000 |3,600,000,000 |
+| DW100c |1 |60 |60 |4\.000.000 |240.000.000 |
+| DW200c |1,5 |60 |90 |6,000,000 |360.000.000 |
+| DW300c |2,25 |60 |135 |9\.000.000 |540.000.000 |
+| DW400c |3 |60 |180 |12.000.000 |720.000.000 |
+| DW500c |3,75 |60 |225 |15.000.000 |900.000.000 |
+| DW1000c |7,5 |60 |450 |30.000.000 |1\.800.000.000 |
+| DW1500c |11,25 |60 |675 |45.000.000 |2\.700.000.000 |
+| DW2000c |15 |60 |900 |60.000.000 |3\.600.000.000 |
 | DW2500c |18,75 |60 |1125 |75.000.000 |4\.500.000.000 |
-| DW3000c |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
+| DW3000c |22,5 |60 |1\.350 |90.000.000 |5\.400.000.000 |
 | DW5000c |37,5 |60 |2\.250 |150.000.000 |9\.000.000.000 |
-| DW6000c |45 |60 |2,700 |180,000,000 |10,800,000,000 |
+| DW6000c |45 |60 |2\.700 |180.000.000 |10.800.000.000 |
 | DW7500c |56,25 |60 |3\.375 |225.000.000 |13.500.000.000 |
 | DW10000c |75 |60 |4\.500 |300,000,000 |18.000.000.000 |
 | DW15000c |112,5 |60 |6\.750 |450.000.000 |27.000.000.000 |
-| DW30000c |225 |60 |13.500 |900,000,000 |54.000.000.000 |
+| DW30000c |225 |60 |13.500 |900.000.000 |54.000.000.000 |
 
 ## <a name="gen1"></a>Gen1
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | Dağıtım başına sınır (GB) | Dağıtım sayısı | En fazla işlem boyutu (GB) | Dağıtım başına satır sayısı | İşlem başına en fazla satır |
 | --- | --- | --- | --- | --- | --- |
-| DW100 |1\. |60 |60 |4,000,000 |240,000,000 |
-| DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
-| DW300 |2.25 |60 |135 |9,000,000 |540,000,000 |
-| DW400 |3 |60 |180 |12,000,000 |720,000,000 |
-| DW500 |3.75 |60 |225 |15,000,000 |900,000,000 |
-| DW600 |4,5 |60 |270 |18,000,000 |1,080,000,000 |
-| DW1000 |7.5 |60 |450 |30,000,000 |1,800,000,000 |
-| DW1200 |9 |60 |540 |36,000,000 |2,160,000,000 |
-| DW1500 |11.25 |60 |675 |45,000,000 |2,700,000,000 |
-| DW2000 |15 |60 |900 |60,000,000 |3,600,000,000 |
-| DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
-| DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
+| DW100 |1 |60 |60 |4\.000.000 |240.000.000 |
+| DW200 |1,5 |60 |90 |6,000,000 |360.000.000 |
+| DW300 |2,25 |60 |135 |9\.000.000 |540.000.000 |
+| DW400 |3 |60 |180 |12.000.000 |720.000.000 |
+| DW500 |3,75 |60 |225 |15.000.000 |900.000.000 |
+| DW600 |4,5 |60 |270 |18.000.000 |1\.080.000.000 |
+| DW1000 |7,5 |60 |450 |30.000.000 |1\.800.000.000 |
+| DW1200 |9 |60 |540 |36.000.000 |2\.160.000.000 |
+| DW1500 |11,25 |60 |675 |45.000.000 |2\.700.000.000 |
+| DW2000 |15 |60 |900 |60.000.000 |3\.600.000.000 |
+| DW3000 |22,5 |60 |1\.350 |90.000.000 |5\.400.000.000 |
+| DW6000 |45 |60 |2\.700 |180.000.000 |10.800.000.000 |
 
 İşlem boyut sınırı işlem veya işlem başına uygulandı. Tüm eşzamanlı işlemler arasında uygulanmaz. Bu nedenle, her bir işlemin günlüğe bu miktarda veri yazmasına izin verilir. 
 
@@ -86,7 +87,7 @@ Günlüğe yazılan veri miktarını iyileştirmek ve en aza indirmek için lüt
 SQL veri ambarı,-2 değerini kullanarak başarısız bir işlemi raporlamak için XACT_STATE () işlevini kullanır. Bu değer, işlemin başarısız olduğu ve yalnızca geri alma için işaretlenen anlamına gelir.
 
 > [!NOTE]
-> Başarısız bir işlemi göstermek için XACT_STATE işlevi tarafından-2 kullanılması SQL Server için farklı davranışı temsil eder. SQL Server, bir uncommittable işlemini göstermek için-1 değerini kullanır. SQL Server, bir işlem içindeki bazı hatalara, uncommittable olarak işaretlenmesi gerekmeden tolerans sağlayabilir. Örneğin `SELECT 1/0` , bir hataya neden olur, ancak bir işlemi committable durumuna zorlamaz. SQL Server ayrıca, komuntable işleminde okuma izni verir. Ancak, SQL veri ambarı bunu yapmanızı sağlar. Bir SQL veri ambarı işleminin içinde bir hata oluşursa, otomatik olarak-2 durumunu girer ve deyim geri alınana kadar başka bir SELECT deyimi de yapamazsınız. Bu nedenle, kod değişiklikleri yapmanız gerekebilmeniz için uygulama kodunuzun XACT_STATE () kullanıp kullanmadığını kontrol etmek önemlidir.
+> Başarısız bir işlemi göstermek için XACT_STATE işlevi tarafından-2 kullanılması SQL Server için farklı davranışı temsil eder. SQL Server, bir uncommittable işlemini göstermek için-1 değerini kullanır. SQL Server, bir işlem içindeki bazı hatalara, uncommittable olarak işaretlenmesi gerekmeden tolerans sağlayabilir. Örneğin `SELECT 1/0` bir hataya neden olur, ancak bir işlemi committable durumuna zorlamaz. SQL Server ayrıca, komuntable işleminde okuma izni verir. Ancak, SQL veri ambarı bunu yapmanızı sağlar. Bir SQL veri ambarı işleminin içinde bir hata oluşursa, otomatik olarak-2 durumunu girer ve deyim geri alınana kadar başka bir SELECT deyimi de yapamazsınız. Bu nedenle, kod değişiklikleri yapmanız gerekebilmeniz için uygulama kodunuzun XACT_STATE () kullanıp kullanmadığını kontrol etmek önemlidir.
 > 
 > 
 
@@ -130,7 +131,7 @@ SELECT @xact_state AS TransactionState;
 
 Yukarıdaki kod aşağıdaki hata iletisini verir:
 
-Msg 111233, düzey 16, durum 1, satır 1 111233; Geçerli işlem iptal edildi ve bekleyen tüm değişiklikler geri alındı. Neden: Yalnızca geri alma durumundaki bir işlem, bir DDL, DML veya SELECT ifadesiyle önce açık bir şekilde geri alınmadı.
+Msg 111233, düzey 16, durum 1, satır 1 111233; Geçerli işlem iptal edildi ve bekleyen tüm değişiklikler geri alındı. Neden: yalnızca geri alma durumundaki bir işlem, bir DDL, DML veya SELECT ifadesiyle önce açıkça geri alınmadı.
 
 ERROR_ * işlevlerinin çıktısını almazsınız.
 
@@ -175,7 +176,7 @@ Beklenen davranış artık gözlemlenmiştir. İşlemdeki hata yönetilir ve ERR
 
 Tüm değiştirilen işlem GERI ALMANıN, CATCH bloğundaki hata bilgilerinin okunmasından önce gerçekleşmesi gerekiyordu.
 
-## <a name="errorline-function"></a>Error_Line () işlevi
+## <a name="error_line-function"></a>Error_Line () işlevi
 Ayrıca, SQL veri ambarı 'nın ERROR_LINE () işlevini uygulamamayı veya desteklemediğini belirten bir değer de vardır. Kodunuzda bu varsa, SQL veri ambarı ile uyumlu olacak şekilde kaldırmanız gerekir. Eşdeğer işlevselliği uygulamak için kodunuzda sorgu etiketleri kullanın. Daha fazla ayrıntı için bkz. [etiket](sql-data-warehouse-develop-label.md) makalesi.
 
 ## <a name="using-throw-and-raiserror"></a>THROW ve RAERROR kullanma

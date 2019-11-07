@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı 'nın en son neslini yükseltin | Microsoft Docs
+title: En son oluşturmaya yükselt
 description: Azure SQL veri ambarı 'nı en son nesil Azure donanım ve depolama mimarisine yükseltin.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2864e3d29a0beccd2ef52732a85ea1495e1efab8
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 02c426cd921f4af19f3b8c271e4b1c08eae2c3c2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575294"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692463"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>SQL Veri Ambarı’nı yükselterek performansı iyileştirme
 
@@ -27,7 +28,7 @@ Artık [Desteklenen bölgeler](gen2-migration-schedule.md#automated-schedule-and
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
-## <a name="applies-to"></a>Şunlara uygulanacaktır:
+## <a name="applies-to"></a>Uygulama hedefi
 
 Bu yükseltme, [desteklenen bölgelerde](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)Işlem Için iyileştirilmiş Gen1 katmanı veri ambarları için geçerlidir.
 
@@ -67,7 +68,7 @@ Bu yükseltme, [desteklenen bölgelerde](gen2-migration-schedule.md#automated-sc
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Yükseltilecek Işlem için Iyileştirilmiş Gen1 katmanı veri ambarı duraklatılmışsa, [veri ambarını sürdürür](pause-and-resume-compute-portal.md).
 
@@ -111,7 +112,7 @@ Bu yükseltme, [desteklenen bölgelerde](gen2-migration-schedule.md#automated-sc
 ## <a name="start-the-upgrade"></a>Yükseltmeyi Başlat
 
 1. Azure portal, Işlem için Iyileştirilmiş Gen1 katmanı veri ambarınıza gidin. Yükseltilecek Işlem için Iyileştirilmiş Gen1 katmanı veri ambarı duraklatılmışsa, [veri ambarını sürdürür](pause-and-resume-compute-portal.md). 
-2. Görevler sekmesinin altındaki **Gen2 kartına Yükselt** ' i seçin:  ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+2. Görevler sekmesi altında **Gen2 kartına Yükselt** ' i seçin: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
     
     > [!NOTE]
     > Görevler sekmesinde **Gen2 kartına yükseltme** seçeneğini görmüyorsanız, abonelik türü geçerli bölgede sınırlandırılır.
@@ -129,7 +130,7 @@ Bu yükseltme, [desteklenen bölgelerde](gen2-migration-schedule.md#automated-sc
 
    Yükseltme işleminin ikinci adımı veri geçişidir ("yükseltiliyor-online"). Veri geçişi, çevrimiçi bir Trickle arka plan işlemidir. Bu işlem, yerel bir SSD Önbelleği kullanarak eski depolama mimarisinden yeni depolama mimarisine veri sütunlu verileri yavaş bir şekilde taşır. Bu süre boyunca, sorgulama ve yükleme için veri ambarınızın çevrimiçi olması gerekir. Verileriniz, TAŞINMADIĞINA bakılmaksızın sorgu için kullanılabilir olacaktır. Veri geçişi, veri boyutunuza, performans düzeyinize ve columnstore segmentlerinizin sayısına bağlı olarak değişen oranlarda meydana gelir. 
 
-5. **İsteğe bağlı öneri:** Ölçeklendirme işlemi tamamlandıktan sonra, veri geçişi arka plan sürecini hızlandırabilirsiniz. Daha büyük bir SLO ve kaynak sınıfında sorguladığınız tüm birincil columnstore tablolarında [alter INDEX REBUILD](sql-data-warehouse-tables-index.md) ' i çalıştırarak veri hareketini zorlayabilirsiniz. Bu işlem, tablolarınızın sayısına ve boyutlarına göre tamamlanması saat sürebilen, Trickle arka plan işlemiyle karşılaştırıldığında **çevrimdışı** . Ancak, işlem tamamlandıktan sonra, yüksek kaliteli satır grupları olan yeni Gelişmiş depolama mimarisi nedeniyle veri geçişi çok daha hızlı olur.
+5. **Isteğe bağlı öneri:** Ölçeklendirme işlemi tamamlandıktan sonra, veri geçişi arka plan sürecini hızlandırabilirsiniz. Daha büyük bir SLO ve kaynak sınıfında sorguladığınız tüm birincil columnstore tablolarında [alter INDEX REBUILD](sql-data-warehouse-tables-index.md) ' i çalıştırarak veri hareketini zorlayabilirsiniz. Bu işlem, tablolarınızın sayısına ve boyutlarına göre tamamlanması saat sürebilen, Trickle arka plan işlemiyle karşılaştırıldığında **çevrimdışı** . Ancak, işlem tamamlandıktan sonra, yüksek kaliteli satır grupları olan yeni Gelişmiş depolama mimarisi nedeniyle veri geçişi çok daha hızlı olur.
  
 > [!NOTE]
 > Alter INDEX REBUILD çevrimdışı bir işlemdir ve tablolar yeniden oluşturma tamamlanana kadar kullanılamaz.
@@ -183,13 +184,13 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Azure portal kullanarak Kullanıcı tanımlı geri yükleme noktası oluşturma
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. İçin geri yükleme noktası oluşturmak istediğiniz SQL veri ambarına gidin.
 
 3. Genel Bakış bölümünün en üstünde **+ Yeni geri yükleme noktası**' nı seçin.
 
-    ![Yeni Geri Yükleme Noktası](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
+    ![Yeni geri yükleme noktası](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
 
 4. Geri yükleme noktanız için bir ad belirtin.
 
@@ -197,7 +198,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Azure portal kullanarak etkin veya duraklatılmış bir veritabanını geri yükleme
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Geri yüklemek istediğiniz SQL veri ambarı 'na gidin.
 3. Genel Bakış bölümünün en üstünde **geri yükle**' yi seçin.
 
@@ -205,7 +206,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 4. **Otomatik geri yükleme noktaları** veya **Kullanıcı tanımlı geri yükleme noktaları**seçeneklerinden birini belirleyin.
 
-    ![Otomatik Geri Yükleme Noktaları](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
+    ![Otomatik geri yükleme noktaları](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
 
 5. Kullanıcı tanımlı geri yükleme noktaları için **bir geri yükleme noktası seçin** veya **Yeni bir Kullanıcı tanımlı geri yükleme noktası oluşturun**. Gen2 tarafından desteklenen bir coğrafi bölgede bir sunucu seçin. 
 

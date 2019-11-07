@@ -1,24 +1,24 @@
 ---
-title: Visual Studio 'Yu kullanarak Azure Analysis Services dağıtma | Microsoft Docs
+title: Visual Studio 'Yu kullanarak Azure Analysis Services model dağıtma | Microsoft Docs
 description: Visual Studio 'Yu kullanarak bir Azure Analysis Services sunucusuna tablolu model dağıtmayı öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 60681739854515078a521a4ff795e52aa7d74183
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 71b3b7815d2a4b0b4de3afdca9db93156f505445
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146956"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572889"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Visual Studio üzerinden model dağıtma
 
 Azure aboneliğinizde bir sunucu oluşturduktan sonra, aboneliğinize bir tablo modeli dağıtmaya hazır olursunuz. Üzerinde çalıştığınız bir tablosal model projesi derlemek ve dağıtmak için Visual Studio 'Yu Analysis Services projeleri ile birlikte kullanabilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için gerekli olanlar:
 

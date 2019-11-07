@@ -1,6 +1,6 @@
 ---
 title: Azure Resource Manager ile Studio (klasik) çalışma alanını dağıtma
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Azure Resource Manager şablonu kullanarak Azure Machine Learning Studio (klasik) için çalışma alanı dağıtma
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: e157ef3944e6c7e231c78e5bce826ccddb1a59f8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d4679eb056aaad1c404d0e0f8b7723d7c57ef1d4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493053"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621693"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Azure Machine Learning Studio (klasik) çalışma alanını dağıtma
 

@@ -1,18 +1,18 @@
 ---
-title: VMware 'den Azure 'a olağanüstü durum kurtarma mimarisi Azure Site Recovery
+title: Azure Site Recovery 'de VMware VM olağanüstü durum kurtarma mimarisi
 description: Bu makalede, Azure Site Recovery ile şirket içi VMware VM 'lerinin olağanüstü durum kurtarması ayarlanırken kullanılan bileşenlere ve mimariye ilişkin genel bir bakış sunulmaktadır
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 7c21b8d7a4a2723ddf10c4ac88f8b1ce4a5d6b47
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8bfbc6783df4f902d25b2a4791708990a327edc8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814595"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663058"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 'den Azure 'a olağanüstü durum kurtarma mimarisi
 
@@ -26,7 +26,7 @@ Aşağıdaki tablo ve grafik, Azure 'da VMware olağanüstü durum kurtarma içi
 **Bileşen** | **Gereksinim** | **Ayrıntılar**
 --- | --- | ---
 **Azure** | Azure aboneliği, önbellek, yönetilen disk ve Azure ağı için Azure depolama hesabı. | Şirket içi VM 'lerden çoğaltılan veriler Azure depolama 'da depolanır. Şirket içinden Azure 'a yük devretme gerçekleştirdiğinizde, çoğaltılan verilerle Azure VM 'Ler oluşturulur. Azure VM’leri oluşturulduğunda Azure sanal ağına bağlanır.
-**Yapılandırma sunucusu makinesi** | Tek bir şirket içi makine. Bunu, indirilen bir OVF şablonundan dağıtılabilecek bir VMware VM olarak çalıştırmanızı öneririz.<br/><br/> Makine, yapılandırma sunucusu, işlem sunucusu ve ana hedef sunucu dahil olmak üzere tüm şirket içi Site Recovery bileşenlerini çalıştırır. | **Yapılandırma sunucusu**: Şirket içi ve Azure arasındaki iletişimleri koordine eder ve veri çoğaltmasını yönetir.<br/><br/> **İşlem sunucusu**: Varsayılan olarak yapılandırma sunucusuna yüklenir. Çoğaltma verilerini alır; önbelleğe alma, sıkıştırma ve şifreleme ile en iyi duruma getirir; ve bunu Azure depolama 'ya gönderir. İşlem sunucusu aynı zamanda çoğaltmak istediğiniz VM’lere Azure Site Recovery Mobility Hizmetini yükler ve şirket içi makinelerinin otomatik olarak bulunmasını sağlar. Dağıtımınız büyüdükçe, daha büyük hacimli çoğaltma trafiğini işlemek için ek ve ayrı işlem sunucuları ekleyebilirsiniz.<br/><br/> **Ana hedef sunucu**: Varsayılan olarak yapılandırma sunucusuna yüklenir. Azure 'dan yeniden çalışma sırasında çoğaltma verilerini işler. Büyük dağıtımlar için yeniden çalışma için ek ve ayrı bir ana hedef sunucu ekleyebilirsiniz.
+**Yapılandırma sunucusu makinesi** | Tek bir şirket içi makine. Bunu, indirilen bir OVF şablonundan dağıtılabilecek bir VMware VM olarak çalıştırmanızı öneririz.<br/><br/> Makine, yapılandırma sunucusu, işlem sunucusu ve ana hedef sunucu dahil olmak üzere tüm şirket içi Site Recovery bileşenlerini çalıştırır. | **Yapılandırma sunucusu**: Şirket Içi ve Azure arasındaki iletişimleri koordine eder ve veri çoğaltmasını yönetir.<br/><br/> **İşlem sunucusu**: yapılandırma sunucusunda varsayılan olarak yüklenir. Çoğaltma verilerini alır; önbelleğe alma, sıkıştırma ve şifreleme ile en iyi duruma getirir; ve bunu Azure depolama 'ya gönderir. İşlem sunucusu aynı zamanda çoğaltmak istediğiniz VM’lere Azure Site Recovery Mobility Hizmetini yükler ve şirket içi makinelerinin otomatik olarak bulunmasını sağlar. Dağıtımınız büyüdükçe, daha büyük hacimli çoğaltma trafiğini işlemek için ek ve ayrı işlem sunucuları ekleyebilirsiniz.<br/><br/> **Ana hedef sunucusu**: yapılandırma sunucusunda varsayılan olarak yüklenir. Azure 'dan yeniden çalışma sırasında çoğaltma verilerini işler. Büyük dağıtımlar için yeniden çalışma için ek ve ayrı bir ana hedef sunucu ekleyebilirsiniz.
 **VMware sunucuları** | VMware VM 'Leri, şirket içi vSphere ESXi sunucularında barındırılır. Konakları yönetmek için bir vCenter sunucusu önerilir. | Site Recovery dağıtımı sırasında, kurtarma hizmetleri kasasına VMware sunucuları eklersiniz.
 **Çoğaltılan makineler** | Mobility hizmeti, çoğaltılan her VMware VM 'ye yüklenir. | İşlem sunucusundan otomatik yüklemeye izin vermeniz önerilir. Alternatif olarak, hizmeti el ile yükleyebilir veya System Center Configuration Manager gibi bir otomatik dağıtım yöntemi kullanabilirsiniz.
 
@@ -72,15 +72,15 @@ Aşağıdaki tablo ve grafik, Azure 'da VMware olağanüstü durum kurtarma içi
 2. İlk yük devretmeyi tetikledikten sonra, Azure VM 'den iş yüküne erişmeye başlamak için bunu işleyin.
 3. Birincil şirket içi siteniz yeniden kullanılabilir olduğunda, tekrar yük devretmek için hazırlık yapabilirsiniz. Yeniden yük devretmek için aşağıdakiler de dahil olmak üzere bir yeniden çalışma altyapısı ayarlamanız gerekir:
 
-    * **Azure 'Da geçici işlem sunucusu**: Azure 'dan yeniden yük devretmek için bir Azure VM 'yi, Azure 'dan çoğaltmayı işleyecek bir işlem sunucusu olarak davranacak şekilde ayarlarsınız. Yeniden çalışma sona erdikten sonra bu VM'yi silebilirsiniz.
-    * **VPN bağlantısı**: Yeniden yük devretmek için, Azure ağından şirket içi siteye bir VPN bağlantısına (veya ExpressRoute) sahip olmanız gerekir.
-    * **Ayrı ana hedef sunucusu**: Varsayılan olarak, şirket içi VMware VM 'de yapılandırma sunucusu ile yüklenen ana hedef sunucu yeniden çalışmayı işler. Büyük hacimlerde trafik geri yüklemeniz gerekiyorsa, bu amaçla ayrı bir şirket içi ana hedef sunucusu ayarlayın.
-    * Yeniden **çalışma ilkesi**: Şirket içi sitenize geri yinelemek için bir yeniden çalışma ilkesi gerekir. Bu ilke, Şirket içinden Azure 'a bir çoğaltma ilkesi oluşturduğunuzda otomatik olarak oluşturulur.
+    * **Azure 'Da geçici işlem sunucusu**: Azure 'dan yeniden yük devretmek Için BIR Azure VM 'yi, Azure 'dan çoğaltmayı işleyecek bir işlem sunucusu olarak davranacak şekilde ayarlarsınız. Yeniden çalışma sona erdikten sonra bu VM'yi silebilirsiniz.
+    * **VPN bağlantısı**: geri dönmek Için, Azure ağından şirket içi sıteye bir VPN bağlantısına (veya ExpressRoute) sahip olmanız gerekir.
+    * **Ayrı ana hedef sunucusu**: varsayılan olarak, şirket ıçı VMware VM 'de yapılandırma sunucusu ile yüklenen ana hedef sunucu yeniden çalışmayı işler. Büyük hacimlerde trafik geri yüklemeniz gerekiyorsa, bu amaçla ayrı bir şirket içi ana hedef sunucusu ayarlayın.
+    * **Yeniden çalışma ilkesi**: Şirket içi sitenize geri çoğaltmak için bir yeniden çalışma ilkeniz olmalıdır. Bu ilke, Şirket içinden Azure 'a bir çoğaltma ilkesi oluşturduğunuzda otomatik olarak oluşturulur.
 4. Bileşenler oluşturulduktan sonra, yeniden çalışma üç eylem halinde gerçekleşir:
 
     - 1\. Aşama: Azure 'dan şirket içi VMware VM 'lerine geri çoğaltılbilmeleri için Azure VM 'lerini yeniden koruyun.
-    -  2\. Aşama: Şirket içi sitede bir yük devretme çalıştırın.
-    - 3\. Aşama: İş yükleri yeniden başarısız olduktan sonra, şirket içi VM 'Ler için çoğaltmayı yeniden etkinleştirin.
+    -  2\. Aşama: şirket içi sitede yük devretme çalıştırın.
+    - 3\. Aşama: iş yükleri yeniden başlatıldıktan sonra, şirket içi VM 'Ler için çoğaltmayı yeniden etkinleştirin.
     
  
 **Azure 'dan VMware yeniden çalışma**

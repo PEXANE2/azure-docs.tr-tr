@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 36e0742101203764a731dd2007d239593a500bfa
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ae3caa2d1f90bbbae1070d95d676eb206a361a0
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507929"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647342"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure bilişsel hizmetler sanal ağlarını yapılandırma
 
@@ -24,7 +24,7 @@ Ağ kuralları etkin olduğunda bilişsel hizmetler kaynağına erişen bir uygu
 
 > [!IMPORTANT]
 > Bilişsel hizmetler hesabınız için güvenlik duvarı kurallarını açmak, varsayılan olarak gelen istekleri engeller. Üzerinden isteklere izin vermek için aşağıdaki koşullardan birinin karşılanması gerekir:
-> * İstek, hedef bilişsel hizmetler hesabının izin verilen alt ağ listesindeki bir Azure sanal ağı (VNet) içinde çalışan bir hizmetten kaynaklanmalıdır.
+> * İstek, hedef bilişsel hizmetler hesabının izin verilen alt ağ listesindeki bir Azure sanal ağı (VNet) içinde çalışan bir hizmetten kaynaklanmalıdır. VNet 'ten kaynaklı isteklerdeki uç noktanın, bilişsel hizmetler hesabınızın [özel alt etki alanı](cognitive-services-custom-subdomains.md) olarak ayarlanması gerekir.
 > * Ya da istek, izin verilen bir IP adresi listesinden geliyor olmalıdır.
 >
 > Engellenen istekler diğer Azure hizmetlerinden, Azure portal, günlük ve ölçüm hizmetlerinden ve bu şekilde devam eder.

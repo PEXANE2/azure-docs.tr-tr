@@ -1,10 +1,10 @@
 ---
 title: Azure’da uzaktan yönetim güvenliğini artırma | Microsoft Docs
-description: Bu makalede bulut hizmetleri, Sanal Makineler ve özel uygulamalar dahil, Microsoft Azure ortamlarını yönetirken uzaktan yönetim güvenliğini geliştirme adımları açıklanmaktadır.
+description: Bu makalede, bulut Hizmetleri, sanal makineler ve özel uygulamalar dahil Microsoft Azure ortamlarını yönetirken uzaktan yönetim güvenliğini geliştirme adımları ele alınmaktadır.
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 5efd82a2cb0652f6dd2aab621c578ff90aca0111
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927863"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643791"
 ---
 # <a name="security-management-in-azure"></a>Azure’da Güvenlik Yönetimi
 Azure aboneleri yönetim iş istasyonları, geliştirici PC’leri ve hatta göreve özel izinleri bulunan ayrıcalıklı son kullanıcı cihazları dahil birden fazla cihazda kendi bulut ortamlarını yönetebilir. Bazı durumlarda, yönetim işlevleri [Azure portal](https://azure.microsoft.com/features/azure-portal/) gibi web tabanlı konsollar aracılığıyla gerçekleştirilir Diğer durumlarda, Sanal Özel Ağlar (VPN), Terminal Hizmetleri, istemci uygulaması protokolleri ya da (programlı olarak) Azure Service Management API (SMAPI) üzerinden şirket için sistemlerden Azure’a bağlantılar olabilir. Ayrıca, istemci uç noktaları ya da etki alanına katılmış veya yalıtılmış ve yönetilmeyen olabilir, tabletler veya akıllı telefonlar gibi.
@@ -118,7 +118,7 @@ Uzak Masaüstü Ağ geçidi, güvenlik gereksinimlerini uygulayan ilke tabanlı 
 ## <a name="security-guidelines"></a>Güvenlik yönergeleri
 Genel olarak, bulutla kullanıma yönelik olarak yönetici iş istasyonlarının güvenliğini sağlamaya yardımcı olmak, şirket içi iş istasyonları için kullanılan uygulamalara benzerdir. Örneğin, en aza indirilmiş yapı ve kısıtlayıcı izinler. Bulut yönetiminin bazı benzersiz yönleri uzaktan ya da bant dışı kurumsal yönetime daha yakındır. Bunlar kimlik bilgilerini, gelişmiş güvenlikli uzaktan erişimin ve tehdit algılama ve yanıtın denetlenmesini içerir.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Kimlik Doğrulaması
 Yönetim araçlarına ve denetim erişim isteklerine erişim için kaynak IP adreslerini sınırlamak amacıyla Azure oturum açma kısıtlamalarını kullanabilirsiniz. Azure’un yönetim istemcilerini (iş istasyonları ve/veya uygulamalar) tanımlamasına yardımcı olmak için, SSL sertifikalarının yanı sıra, istemci tarafı yönetim sertifikalarının yüklenmesini gerekli kılmaya yönelik olarak SMAPI (Windows PowerShell cmdlet’leri gibi müşteri tarafından geliştirilen araçlar aracılığıyla) ve Azure portalını yapılandırabilirsiniz. Yönetici erişiminin multi-factor authentication gerektirmesine de öneriyoruz.
 
 Azure’a dağıttığınız bazı uygulamalar veya hizmetler hem son kullanıcı hem de yönetici erişimi için kendi kimlik doğrulama mekanizmalarına sahip olabilirken, diğerleri Azure AD’den faydalanabilir. Kimlik bilgilerini Active Directory Federasyon Hizmetleri (AD FS) aracılığıyla birleştirip birleştirmemenize bağlı olarak, dizin eşitlemeyi kullanmak veya bulutta yalnızca kullanıcı hesaplarını tutmak, [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (Azure AD Premium’un parçası) kullanmak kaynaklar arasında kimlik yaşam döngülerini yönetmenize yardımcı olur.
@@ -211,7 +211,7 @@ Sağlamlaştırılmış bir iş istasyonunda yöneticilerin gerçekleştirebilec
 * IE sağlamlaştırma. Internet Explorer tarayıcı (bu bağlamda herhangi bir web tarayıcısı) dış sunucularla olan yoğun etkileşimleri nedeniyle zararlı bir kod için temel giriş noktasıdır. İstemci ilkelerinizi inceleyin ve korumalı modda çalışma, eklentileri devre dışı bırakma, dosya yüklemelerini devre dışı bırakma ve [Microsoft SmartScreen](https://technet.microsoft.com/library/jj618329.aspx) filtrelemesi seçeneklerini kullanın. Güvenlik uyarılarının göründüğünden emin olun. İnternet bölgelerinden faydalanın ve makul sağlamlaştırma yapılandırdığınız güveniliri siteler için bir listesini oluşturun. Tüm diğer siteleri ve ActiveX ve Java gibi tarayıcı içi kodları engelleyin.
 * Standart kullanıcı. Standart kullanıcı olarak çalıştırmanın getirdiği bir çok avantaj vardır; bunlardan en büyüğü kötü amaçlı yazılımı aracılığıyla yönetici kimlik bilgilerinin çalınmasının daha zor olmasıdır. Buna ek olarak, standart kullanıcı hesabının kök işletim sisteminde yükseltilmiş ayrıcalıkları yoktur ve birçok yapılandırma seçeneği ve API’leri varsayılan olarak kilitlidir.
 * AppLocker. Kullanıcıların çalıştırabileceği programları ve betikleri kısıtlamak için [AppLocker](https://technet.microsoft.com/library/ee619725.aspx) kullanabilirsiniz. AppLocker’ı denetim veya zorlama modunda çalıştırabilirsiniz. Varsayılan olarak, AppLocker istemcideki tüm kodları çalıştırmak üzere yönetici belirtecine sahip olan kullanıcıların bunu yapmasını mümkün kılan izin vermek kuralına sahiptir. Bu kural yöneticilerin kendilerini içeriye kilitlemelerini önlemek içindir ve yalnızca yükseltilmiş belirteçler için geçerlidir. Ayrıca Windows Server [çekirdek güvenlik](https://technet.microsoft.com/library/dd348705.aspx) parçası olarak Kod Bütünlüğü’ne bakın.
-* Kod imzalama. Yöneticiler tarafından kullanılan tüm araçlar ve betiklerde kod imzalama uygulama kilitleme ilkeleri dağıtmak için yönetilebilir bir mekanizma sağlar. Karmalar koddaki hızlı değişimlerde ölçeklenmez ve dosya yolları yüksek düzeyde güvenlik sağlamaz. AppLocker kurallarını yalnızca özel imzalı kod ve betiklerin [yürütülmesine](https://technet.microsoft.com/library/hh849812.aspx) izin veren PowerShell [yürütme ilkesi](https://technet.microsoft.com/library/ee176961.aspx) ile birleştirmelisiniz.
+* Kod imzalama. Yöneticiler tarafından kullanılan tüm araçlar ve betiklerde kod imzalama uygulama kilitleme ilkeleri dağıtmak için yönetilebilir bir mekanizma sağlar. Karmalar koddaki hızlı değişimlerde ölçeklenmez ve dosya yolları yüksek düzeyde güvenlik sağlamaz. AppLocker kurallarını yalnızca özel imzalı kod ve betiklerin [yürütülmesine](https://technet.microsoft.com/library/ee176961.aspx) izin veren PowerShell [yürütme ilkesi](https://technet.microsoft.com/library/hh849812.aspx) ile birleştirmelisiniz.
 * Grup İlkesi. Yönetim (ve diğer tüm kişilerden gelen erişimi engellemek) için kullanılan tüm etki alanı iş istasyonlarının yanı sıra, bu istasyonlarında kimlik doğrulaması yapılan kullanıcı hesaplarına uygulanan genel bir yönetim ilkesi oluşturun.
 * Gelişmiş güvenlik sağlama. Kurcalanmaya karşı korumaya yardımcı olmak için taban çizgisi sağlamlaştırılmış iş istasyonunu görüntünüzü koruyun. Görüntüler, sanal makineler ve betikleri depolamak için şifreleme ve yalıtma gibi güvenlik önlemleri kullanın ve erişimi kısıtlayın (ya da denetlenebilir iade etme/kullanıma alma işlemi kullanın).
 * Düzeltme eki uygulama. Tutarlı yapıyı koruyun (ya da geliştirme işlemleri ve diğer yönetim görevleri için ayrı görüntülere sahip olun), değişiklikler ve kötü amaçlı yazılımlara karşı düzenli tarama yapın, yapıyı güncel tutun ve makineleri yalnızca gerektiğinden etkinleştirin.
@@ -224,7 +224,6 @@ Azure bulut hizmetlerinizi, Sanal Makinelerinizi ve uygulamalarınızı yönetme
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure ve ilgili Microsoft hizmetlerinin yanı sıra bu belgede başvurulan belirli öğeler hakkında daha genle bilgi aşağıdaki kaynaklarda verilmiştir:
 
-* [Ayrıcalıklı Erişimi Güvenli Hale Getirme](https://technet.microsoft.com/library/mt631194.aspx) – Azure yönetimi için güveni bir iş istasyonu tasarlama ve oluşturmaya ilişkin teknik ayrıntıları alın
+* [Ayrıcalıklı Erişimi Güvenli Hale Getirme](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) – Azure yönetimi için güveni bir iş istasyonu tasarlama ve oluşturmaya ilişkin teknik ayrıntıları alın
 * [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/cloudservices/azure) -Azure dokusunu koruyan Azure platformu özellikleri ve Azure üzerinde çalışan iş yükleri hakkında bilgi edinin
-* [Microsoft Security Response Center](https://technet.microsoft.com/security/dn440717.aspx) --Azure ile ilgili sorunlar da dahil Microsoft güvenlik açıklarının bildirilebileceği veya [secure@microsoft.com](mailto:secure@microsoft.com) adresine e-posta yoluyla gönderilebileceği yer
-* [Azure Güvenlik Web Günlüğü](https://blogs.msdn.com/b/azuresecurity/) – Azure Güvenlik konusundaki yenilikleri takip edin
+* [Microsoft Security Response Center](https://www.microsoft.com/msrc) --Azure ile ilgili sorunlar da dahil Microsoft güvenlik açıklarının bildirilebileceği veya [secure@microsoft.com](mailto:secure@microsoft.com) adresine e-posta yoluyla gönderilebileceği yer

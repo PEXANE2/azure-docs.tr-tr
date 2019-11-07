@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanını kopyalama | Microsoft Docs
+title: Azure SQL veritabanını kopyalama
 description: Aynı sunucuda veya farklı bir sunucuda var olan bir Azure SQL veritabanının işlemsel olarak tutarlı bir kopyasını oluşturun.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 09/04/2019
-ms.openlocfilehash: de56e66046bb61ac31c1842ae6ce7a9c6720760d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d49896d8088ae1352cb2785d061cde6c8647cb89
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934214"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690811"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL veritabanı 'nın işlem temelli tutarlı bir kopyasını kopyalama
 
@@ -86,16 +86,16 @@ Bir veritabanı kopyasını iptal etmek için, aşağıdaki rollerde olması ger
    
 Veritabanı kopyasını Azure portal kullanarak yönetmek için aşağıdaki izinlere de ihtiyacınız olacaktır:
 
-&nbsp;&nbsp; Microsoft.Resources/&nbsp; abonelikler/kaynaklar/okuma   
-&nbsp;&nbsp; Microsoft.Resources/&nbsp; abonelikler/kaynaklar/yazma   
-&nbsp;&nbsp; Microsoft.&nbsp; Resources/dağıtımlar/okuma   
-&nbsp;&nbsp; Microsoft.&nbsp; Resources/dağıtımlar/yazma   
-&nbsp;&nbsp; Microsoft.resources/dağıtımlar&nbsp; /operationdurumlarının/Read    
+&nbsp; &nbsp; &nbsp; Microsoft. resources/abonelikleri/kaynakları/okuma   
+Microsoft. resources/abonelikleri/kaynakları/Write &nbsp; &nbsp; &nbsp;   
+Microsoft. resources/dağıtımlar/Read &nbsp; &nbsp; &nbsp;   
+Microsoft. resources/dağıtımlar/Write &nbsp; &nbsp; &nbsp;   
+&nbsp; &nbsp; Microsoft. resources/dağıtımlar/operationdurumlarının/Read &nbsp;    
 
 Portalda kaynak grubunda bulunan ve SQL işlemleri de dahil olmak üzere birden çok kaynak sağlayıcılarındaki işlemler altında gerçekleştirilen işlemleri görmek isterseniz, bu ek RBAC rollerinin olması gerekir: 
 
-&nbsp;&nbsp; Microsoft.resources/abonelikler/ResourceGroups/&nbsp; dağıtımlar/işlemler/okuma   
-&nbsp;&nbsp; Microsoft.resources/abonelikler/ResourceGroups/dağıtımlar&nbsp; /operationdurumlarının/Read
+&nbsp; &nbsp; &nbsp; Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/işlemler/okuma   
+&nbsp; &nbsp; &nbsp; Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/operationdurumlarının/Read
 
 
 

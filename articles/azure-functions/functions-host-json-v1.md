@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: 89709edf085e1c424156fb68bd86fbc66b6ae8a7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 614e02e4ba2599154cd3308d6a4fe222b6f63d3d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934325"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576140"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Işlevleri 1. x için Host. JSON başvurusu
 
@@ -20,7 +20,7 @@ ms.locfileid: "72934325"
 > * [Sürüm 1](functions-host-json-v1.md)
 > * [Sürüm 2](functions-host-json.md)
 
-*Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede v1 çalışma zamanı için kullanılabilen ayarlar listelenir. JSON şeması http://json.schemastore.org/host ' dır.
+*Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede v1 çalışma zamanı için kullanılabilen ayarlar listelenir. JSON şeması http://json.schemastore.org/host.
 
 > [!NOTE]
 > Bu makale, Azure Işlevleri 1. x içindir.  2\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 2. x](functions-host-json.md).
@@ -142,9 +142,9 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|GatewayMode|Ağ Geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
+|GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
 |Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
-|leasePrefix|Yok|Bir uygulamadaki tüm işlevler genelinde kullanılacak kira öneki.|
+|leasePrefix|yok|Bir uygulamadaki tüm işlevler genelinde kullanılacak kira öneki.|
 
 ## <a name="durabletask"></a>durableTask
 
@@ -194,7 +194,7 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|etkinletir|doğru|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
+|enabled|doğru|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
 |healthCheckWindow|2 dakika|`healthCheckThreshold` ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
 |healthCheckThreshold|6|Konak geri dönüşüm başlatılmadan önce sistem durumu denetiminin başarısız olması için en fazla sayı.| 
@@ -215,11 +215,14 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 }
 ```
 
-[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
+|Özellik  |Varsayılan | Açıklama |
+|---------|---------|---------| 
+|dynamicThrottlesEnabled|false|Bu ayar etkinleştirildiğinde, istek işleme işlem hattının bağlantılar/iş parçacıkları/işlemler/bellek/CPU/vb gibi sistem performans sayaçlarını düzenli olarak denetlemesini sağlar. bu sayaçlardan herhangi biri yerleşik yüksek bir eşiğin üzerindeyse (%80%), istek şöyle olur sayaç (ler) normal düzeylerine dönene kadar 429 "çok meşgul" yanıtıyla reddedildi.|
+|maxConcurrentRequests|Sınırsız (`-1`)|Paralel olarak yürütülecek http işlevlerinin maksimum sayısı. Bu, kaynak kullanımının yönetilmesine yardımcı olabilecek eşzamanlılık denetlemenize olanak tanır. Örneğin, eşzamanlılık çok yüksek olduğunda sorunlara yol açacağından, çok fazla sistem kaynağı (bellek/CPU/yuva) kullanan bir http işleviniz olabilir. Ya da bir üçüncü taraf hizmetine giden istekleri yapan bir işleviniz olabilir ve bu çağrıların hız sınırlı olması gerekir. Bu durumlarda, burada bir kısıtlama uygulanması yardımcı olabilir.|
+|maxOutstandingRequests|Sınırsız (`-1`)|Belirli bir zamanda tutulan bekleyen istek sayısı üst sınırı. Bu sınır, kuyruğa alınmış ancak yürütmeyi başlatmayan isteklerin yanı sıra devam eden yürütmeler içerir. Bu sınırın üzerindeki tüm gelen istekler, 429 "çok meşgul" yanıtıyla reddedilir. Bu, çağıranların zamana dayalı yeniden deneme stratejileri kullanmasına izin verir ve ayrıca en fazla istek gecikme sürelerini denetlemenize yardımcı olur. Bu, yalnızca betik ana bilgisayar yürütme yolu içinde oluşan kuyruğu denetler. ASP.NET istek kuyruğu gibi diğer kuyruklar da etkin olmaya devam eder ve bu ayardan etkilenmez.|
+|routePrefix|API|Tüm yollar için geçerli olan rota öneki. Varsayılan ön eki kaldırmak için boş bir dize kullanın. |
 
 ## <a name="id"></a>id
-
-*Yalnızca sürüm 1. x.*
 
 Bir iş konağının benzersiz KIMLIĞI. Kesik çizgileri kaldırılmış küçük bir harf olabilir. Yerel olarak çalıştırılırken gereklidir. Azure 'da çalışırken, bir KIMLIK değeri ayarlamanıza önerilir. `id` atlandığında Azure 'da otomatik olarak bir KIMLIK oluşturulur. 
 
@@ -252,9 +255,9 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|categoryFilter|Yok|Kategoriye göre filtrelemeyi belirtir| 
+|categoryFilter|yok|Kategoriye göre filtrelemeyi belirtir| 
 |defaultLevel|Bilgi|`categoryLevels` dizide belirtilmeyen hiçbir kategori için, günlükleri bu düzeyde ve yukarıdaki Application Insights gönderin.| 
-|categoryLevels|Yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Önceki örnek *Host. JSON* dosyasında, "Host. toplayıcısı" ile başlayan tüm kategoriler `Information` düzeyinde günlüğe kaydedilir. "Host. yürütücü" gibi "Host" ile başlayan tüm diğer kategoriler `Error` düzeyinde günlüğe kaydedilir.| 
+|categoryLevels|yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Önceki örnek *Host. JSON* dosyasında, "Host. toplayıcısı" ile başlayan tüm kategoriler `Information` düzeyinde günlüğe kaydedilir. "Host. yürütücü" gibi "Host" ile başlayan tüm diğer kategoriler `Error` düzeyinde oturum açın.| 
 
 ## <a name="queues"></a>klarında
 
@@ -276,7 +279,7 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 |---------|---------|---------| 
 |Maxpollingınterval|60000|Sıra yoklamaları arasındaki milisaniye olarak en fazla Aralık.| 
 |visibilityTimeout|0|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur.| 
-|batchSize|16|Işlevlerin çalışma zamanının aynı anda ve işlemleri paralel olarak aldığı sıra iletilerinin sayısı. İşlenen sayı `newBatchThreshold` ' a doğru aldığında, çalışma zamanı başka bir toplu iş alır ve bu iletileri işlemeye başlar. Bu nedenle, işlev başına işlenen en fazla eşzamanlı ileti sayısı `batchSize` ve `newBatchThreshold` ' dir. Bu sınır, kuyruğa tetiklenen her bir işlev için ayrı olarak uygulanır. <br><br>Bir kuyrukta alınan iletiler için paralel yürütmeyi önlemek istiyorsanız, `batchSize` ' ı 1 olarak ayarlayabilirsiniz. Ancak, bu ayar yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. İşlev uygulaması birden çok VM 'ye ölçekleniyorsa, her VM, her bir kuyruk tetiklenen işlevin bir örneğini çalıştırabilir.<br><br>En fazla `batchSize` 32. | 
+|batchSize|16|Işlevlerin çalışma zamanının aynı anda ve işlemleri paralel olarak aldığı sıra iletilerinin sayısı. İşlenen sayı `newBatchThreshold`dolduğunda, çalışma zamanı başka bir toplu iş alır ve bu iletileri işlemeye başlar. Bu nedenle, işlev başına işlenen en fazla eşzamanlı ileti sayısı `batchSize` ve `newBatchThreshold`. Bu sınır, kuyruğa tetiklenen her bir işlev için ayrı olarak uygulanır. <br><br>Bir kuyrukta alınan iletiler için paralel yürütmeyi önlemek istiyorsanız, `batchSize` 1 olarak ayarlayabilirsiniz. Ancak, bu ayar yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. İşlev uygulaması birden çok VM 'ye ölçekleniyorsa, her VM, her bir kuyruk tetiklenen işlevin bir örneğini çalıştırabilir.<br><br>En büyük `batchSize` 32 ' dir. | 
 |maxDequeueCount|5|Zarar sırasına taşımadan önce bir iletiyi işlemeyi deneme sayısı.| 
 |newBatchThreshold|batchSize/2|Aynı anda işlenen ileti sayısı bu sayıya indiğinde, çalışma zamanı başka bir toplu işi alır.| 
 
@@ -293,7 +296,7 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|Kaynak|Yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
+|Kaynak|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -311,8 +314,8 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|Maxconcurrentçağrıları|16|İleti göndericisinin başlatması gereken geri çağrıya yönelik eşzamanlı çağrı sayısı üst sınırı. Varsayılan olarak, Işlevler çalışma zamanı birden çok iletiyi eşzamanlı olarak işler. Çalışma zamanını aynı anda yalnızca tek bir kuyruğu veya konu iletisini işleyecek şekilde yönlendirmek için `maxConcurrentCalls` ' ı 1 ' e ayarlayın. | 
-|prefetchCount|Yok|Temel alınan MessageReceiver tarafından kullanılacak varsayılan PrefetchCount.| 
+|Maxconcurrentçağrıları|16|İleti göndericisinin başlatması gereken geri çağrıya yönelik eşzamanlı çağrı sayısı üst sınırı. Varsayılan olarak, Işlevler çalışma zamanı birden çok iletiyi eşzamanlı olarak işler. Çalışma zamanını aynı anda yalnızca tek bir kuyruğu veya konu iletisini işleyecek şekilde yönlendirmek için `maxConcurrentCalls` ayarlayın. | 
+|prefetchCount|yok|Temel alınan MessageReceiver tarafından kullanılacak varsayılan PrefetchCount.| 
 |autoRenewTimeout|00:05:00|İleti kilidinin otomatik olarak yenilenebileceği en uzun süre.| 
 
 ## <a name="singleton"></a>adet
@@ -337,7 +340,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
 |Listenerlockrecoverypollingınterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
 |Locktanışılationtimeout|00:01:00|Çalışma zamanının kilit edinmeye çalışacak en uzun süre.| 
-|Locktanışmalationpollingınterval|Yok|Kilit alma denemeleri arasındaki Aralık.| 
+|Locktanışmalationpollingınterval|yok|Kilit alma denemeleri arasındaki Aralık.| 
 
 ## <a name="tracing"></a>izleniyor
 
@@ -356,8 +359,8 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|consoleLevel|Bilgisine|Konsol günlüğü için izleme düzeyi. Seçenekler şunlardır: `off`, `error`, `warning`, `info` ve `verbose`.|
-|fileLoggingMode|yalnızca Debug|Dosya günlüğü için izleme düzeyi. Seçenekler `never`, `always`, `debugOnly` ' dir.| 
+|consoleLevel|Bilgisine|Konsol günlüğü için izleme düzeyi. Seçenekler şunlardır: `off`, `error`, `warning`, `info`ve `verbose`.|
+|fileLoggingMode|yalnızca Debug|Dosya günlüğü için izleme düzeyi. Seçenekler `never`, `always``debugOnly`.| 
 
 ## <a name="watchdirectories"></a>watchDirectories
 

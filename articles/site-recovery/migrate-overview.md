@@ -1,19 +1,19 @@
 ---
-title: Şirket içi makinelerin ve Azure VM 'lerinin geçişi hakkında Azure Site Recovery
-description: Bu makalede, Azure Site Recovery hizmeti kullanılarak şirket içi ve Azure IaaS VM 'lerinin Azure 'a nasıl geçirileceği açıklanır.
+title: Azure Site Recovery ile sunucu ve VM 'Leri Azure 'a geçirme
+description: Şirket içi ve Azure IaaS VM 'lerinin Azure Site Recovery hizmeti kullanılarak Azure 'a nasıl geçirileceği açıklanmaktadır.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: c043950de9565f96d52c848f96efac80385f2321
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814479"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620609"
 ---
 # <a name="about-migration"></a>Geçiş hakkında
 
@@ -21,9 +21,9 @@ ms.locfileid: "70814479"
 
 Site Recovery kullanarak geçirebileceğiniz özellikler şunlardır:
 
-- **Şirket Içinden Azure 'A geçiş**: Şirket içi Hyper-V VM 'lerini, VMware VM 'lerini ve fiziksel sunucuları Azure 'a geçirin. Geçişten sonra şirket içi makinelerde çalışan iş yükleri Azure VM'ler üzerinde çalışacaktır. 
-- **Azure 'Da geçiş**: Azure bölgeleri arasında Azure VM 'Leri geçirin. 
-- **AWS 'Yi geçir**: AWS Windows örneklerini Azure IaaS VM 'lerine geçirin. 
+- Şirket **Içinden Azure 'A geçiş**: şirket içi Hyper-V VM 'Lerini, VMware VM 'lerini ve fiziksel sunucuları Azure 'a geçirin. Geçişten sonra şirket içi makinelerde çalışan iş yükleri Azure VM'ler üzerinde çalışacaktır. 
+- **Azure içinde geçiş**: Azure VM’lerini bir Azure bölgesinden diğerine geçirin. 
+- **AWS geçirme**: AWS Windows örneklerini Azure IaaS’ye geçirin. 
 
 > [!NOTE]
 > Artık Azure geçişi hizmetini kullanarak şirket içinden Azure 'a geçiş yapabilirsiniz. [Daha fazla bilgi edinin](../migrate/migrate-overview.md).

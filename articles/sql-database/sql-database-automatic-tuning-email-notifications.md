@@ -1,5 +1,5 @@
 ---
-title: Otomatik ayarlama e-posta bildirimleri nasıl yapılır kılavuzu-Azure SQL veritabanı | Microsoft Docs
+title: Otomatik ayarlama e-posta bildirimleri nasıl yapılır kılavuzu-Azure SQL veritabanı
 description: Azure SQL veritabanı otomatik sorgu ayarlama için e-posta bildirimlerini etkinleştirin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: df9390c00c34fce82de8cc17efb5cc3bce2e4e3d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e1478ab6abc9705a67f2d47bc076d3c2fe54ccd4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569436"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691150"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Otomatik ayarlama için e-posta bildirimleri
 
@@ -81,7 +81,7 @@ Oluşturulan runbook 'un içine bir PowerShell betiği yüklemek için şu adım
 - "**PowerShell runbook 'Unu Düzenle**" bölmesinde, menü ağacında "**runbook 'lar**" ı seçin ve Runbook 'unun adını görene kadar görünümü genişletin (Bu örnekte "**Automatictunıngemailautomation**"). Bu runbook 'u seçin.
 - "PowerShell runbook 'Unu Düzenle" öğesinin ilk satırında (1 numaralı numaradan itibaren), aşağıdaki PowerShell betik kodunu kopyalayın-yapıştırın. Bu PowerShell betiği, başlangıç olarak olduğu gibi sunulmaktadır. Komut dosyasını gereksinimlerinize uygun şekilde değiştirin.
 
-Belirtilen PowerShell betiğinin üst bilgisinde Azure abonelik Kimliğiniz ile değiştirmeniz `<SUBSCRIPTION_ID_WITH_DATABASES>` gerekir. Azure abonelik KIMLIĞINIZI alma hakkında bilgi edinmek için bkz. [Azure ABONELIK GUID 'Nizi alma](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/).
+Belirtilen PowerShell betiğinin üst bilgisinde `<SUBSCRIPTION_ID_WITH_DATABASES>` Azure abonelik KIMLIĞINIZ ile değiştirmeniz gerekir. Azure abonelik KIMLIĞINIZI alma hakkında bilgi edinmek için bkz. [Azure ABONELIK GUID 'Nizi alma](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/).
 
 Birkaç abonelik söz konusu olduğunda, komut dosyasının üstbilgisindeki "$subscriptions" özelliğine virgülle ayrılmış olarak ekleyebilirsiniz.
 

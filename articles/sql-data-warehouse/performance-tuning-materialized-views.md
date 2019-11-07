@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı gerçekleştirilmiş görünümleriyle performans ayarlama | Microsoft Docs
+title: Gerçekleştirilmiş görünümlerle performans ayarı
 description: Sorgu performansınızı geliştirmek için gerçekleştirilmiş görünümleri kullanırken bilmeniz gereken öneriler ve önemli noktalar.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c1cfd3b4c365a04c3d4704f37e4ed4177fa74619
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338904"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692974"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümlerle performans ayarı 
 Azure SQL veri ambarı 'ndaki gerçekleştirilmiş görünümler, bir sorgu değişikliği yapmadan hızlı performans sağlamak üzere karmaşık analitik sorgular için düşük bakım yöntemi sağlar. Bu makalede gerçekleştirilmiş görünümleri kullanma hakkında genel yönergeler ele alınmaktadır.
@@ -37,7 +38,7 @@ Standart görünümde gereksinimlerin çoğu, gerçekleştirilmiş bir görünü
 |Tanımı görüntüleme                 | Azure veri ambarı 'nda depolanır.              | Azure veri ambarı 'nda depolanır.    
 |İçeriği görüntüle                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında Azure veri ambarı 'nda ön işleme ve depolama. Temel tablolara veri eklendikçe güncelleştirildi.                                             
 |Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor                          
-|Karmaşık sorgulardan Görünüm verilerini alma hızı     | dığını                                         | Hızlı  
+|Karmaşık sorgulardan Görünüm verilerini alma hızı     | Dığını                                         | Hızlı  
 |Ek depolama                   | Hayır                                           | Evet                             
 |Sözdizimi                          | GÖRÜNÜM OLUŞTUR                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ           
      

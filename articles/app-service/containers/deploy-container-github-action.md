@@ -3,28 +3,26 @@ title: GitHub eylemleri ile bir CI/CD işlem hattından kapsayıcınızı dağı
 description: App Service kapsayıcınızı dağıtmak için GitHub eylemlerini nasıl kullanacağınızı öğrenin
 services: app-service
 documentationcenter: ''
-author: jasonfreeberg
-writer: ''
-manager: ''
-editor: ''
-ms.assetid: ''
+author: cephalin
+manager: gwallace
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 10/25/2019
 ms.author: jafreebe
-ms.openlocfilehash: 2341eba2c24c06d654c9d2eeda96788d168fe27c
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.reviewer: ushan
+ms.openlocfilehash: 7fbd7b571f5590ff35d52062cc621069a47b619c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809818"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620222"
 ---
-# <a name="github-actions-for-deploying-to-web-app-for-containers"></a>Kapsayıcılar için Web App dağıtmaya yönelik GitHub eylemleri
+# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service özel kapsayıcı dağıtma
 
-[GitHub eylemleri](https://help.github.com/en/articles/about-github-actions) size otomatik yazılım geliştirme yaşam döngüsü iş akışı oluşturma esnekliği sağlar. GitHub için Azure App Service eylemlerle, GitHub eylemlerini kullanarak [kapsayıcılar Için Azure Web Apps](https://azure.microsoft.com/services/app-service/containers/) dağıtmak üzere iş akışınızı otomatikleştirebilir.
+[GitHub eylemleri](https://help.github.com/en/articles/about-github-actions) size otomatik yazılım geliştirme yaşam döngüsü iş akışı oluşturma esnekliği sağlar. [Kapsayıcılar için Azure App Service eylemiyle](https://github.com/Azure/webapps-container-deploy), GitHub eylemlerini kullanarak [App Service uygulamaları özel kapsayıcılar](https://azure.microsoft.com/services/app-service/containers/) olarak dağıtmak üzere iş akışınızı otomatikleştirebilir.
 
 > [!IMPORTANT]
 > GitHub eylemleri Şu anda beta aşamasındadır. GitHub hesabınızı kullanarak [önizlemeye katmak için önce kaydolmanız](https://github.com/features/actions) gerekir.
@@ -32,29 +30,40 @@ ms.locfileid: "72809818"
 
 Bir iş akışı, deponuzdaki `/.github/workflows/` yolundaki bir YAML (. yıml) dosyası tarafından tanımlanır. Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir.
 
-Bir Azure Web uygulaması kapsayıcısı iş akışı için, dosyanın üç bölümü vardır:
+Azure App Service kapsayıcı iş akışı için, dosyanın üç bölümü vardır:
 
 |Section  |Görevler  |
 |---------|---------|
-|**Kimlik doğrulaması** | 1. hizmet sorumlusu tanımlama <br /> 2. GitHub parolası oluşturma |
-|**Derlemeyi** | 1. ortamı ayarlama <br /> 2. kapsayıcı görüntüsünü oluşturma |
-|**Dağıtma** | 1. kapsayıcı görüntüsünü dağıtma |
+|**Kimlik doğrulaması** | 1. bir hizmet sorumlusu tanımlayın. <br /> 2. GitHub gizli dizisi oluşturun. |
+|**Derlemeyi** | 1. ortamı ayarlayın. <br /> 2. kapsayıcı görüntüsünü oluşturun. |
+|**Dağıtma** | 1. kapsayıcı görüntüsünü dağıtın. |
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/)'de [az ad SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) kullanarak veya **deneyin** düğmesini seçerek çalıştırabilirsiniz.
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
+az ad sp create-for-rbac --name "myApp" --role contributor \
+                            --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} \
+                            --sdk-auth
+                            
+  # Replace {subscription-id}, {resource-group} with the subscription, resource group details of the WebApp
 ```
 
-Bu örnekte, kaynaktaki yer tutucuları abonelik KIMLIĞINIZ, kaynak grubunuz ve Web uygulaması adıyla değiştirin. Çıktı, Web uygulamanıza erişim sağlayan rol atama kimlik bilgileridir. GitHub 'dan kimlik doğrulamak için kullanabileceğiniz bu JSON nesnesini kopyalayın.
+Çıktı, aşağıda gösterilene benzer App Service uygulamanıza erişim sağlayan rol atama kimlik bilgileri içeren bir JSON nesnesidir. GitHub 'dan kimlik doğrulaması yapmak için bu JSON nesnesini kopyalayın.
 
-> [!NOTE]
-> Kimlik doğrulaması için Yayımlama profili kullanmaya karar verirseniz bir hizmet sorumlusu oluşturmanız gerekmez.
+ ```azurecli 
+  {
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    (...)
+  }
+```
 
 > [!IMPORTANT]
-> En az erişim sağlamak her zaman iyi bir uygulamadır. Bu nedenle, önceki örnekteki kapsamın tüm kaynak grubu değil, belirli Web uygulamasıyla sınırlı olması neden olur.
+> En az erişim sağlamak her zaman iyi bir uygulamadır. Yukarıdaki az CLı komutundaki kapsamı, belirli App Service uygulamasıyla ve kapsayıcı görüntülerinin gönderildiği Azure Container Registry kısıtlayabilirsiniz.
 
 ## <a name="configure-the-github-secret"></a>GitHub gizliliğini yapılandırma
 
@@ -80,7 +89,7 @@ Aşağıdaki örnekte, Kullanıcı düzeyi kimlik bilgileri (örneğin, dağıt�
     - REGISTRY_USERNAME
     - REGISTRY_PASSWORD
 
-5. Gizli dizileri, tanımlandıktan sonra aşağıda gösterildiği gibi göreceksiniz.
+5. Gizli dizileri, tanımlandıktan sonra aşağıda gösterildiği gibi görürsünüz.
 
     ![kapsayıcı gizli dizileri](../media/app-service-github-actions/app-service-secrets-container.png)
 
@@ -102,7 +111,7 @@ jobs:
       uses: actions/checkout@master
     
     - name: 'Login via Azure CLI'
-      uses: azure/actions/login@v1
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
@@ -117,19 +126,19 @@ jobs:
         docker push contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
 ```
 
-## <a name="deploy-to-web-app-container"></a>Web uygulaması kapsayıcısına dağıtma
+## <a name="deploy-to-an-app-service-container"></a>App Service kapsayıcısına dağıtma
 
-Görüntünüzü bir Web uygulaması kapsayıcısına dağıtmak için `Azure/appservice-actions/webapp@master` eylemini kullanmanız gerekir. Bu eylem 5 parametreye sahiptir:
+Görüntünüzü App Service özel bir kapsayıcıya dağıtmak için `azure/webapps-container-deploy@v1` eylemini kullanın. Bu eylem beş parametreye sahiptir:
 
 | **Parametresinin**  | **Açıklama**  |
 |---------|---------|
-| **uygulama adı** | Istenir Azure Web uygulamasının adı | 
+| **uygulama adı** | Istenir App Service uygulamasının adı | 
 | **yuva adı** | Seçim Üretim yuvası dışında mevcut bir yuva girin |
-| **yansımasını** | Istenir Tam kapsayıcı görüntü adını belirtin. Örneğin, ' myregistry.azurecr.io/nginx:latest ' veya ' Python: 3.7.2-alçam/'. Çok Kapsayıcılı senaryo için birden çok kapsayıcı görüntüsü adı sağlanıyor (çok satırlı ayrılmış) |
-| **yapılandırma-dosya** | Seçim Docker-Compose dosyasının yolu. Tam olarak nitelenmiş bir yol olmalıdır veya varsayılan çalışma dizinine göre değişir. Çok Kapsayıcılı senaryo için gerekli |
+| **yansımasını** | Istenir Tam kapsayıcı görüntü adını belirtin. Örneğin, ' myregistry.azurecr.io/nginx:latest ' veya ' Python: 3.7.2-alçam/'. Çok kapsayıcılı bir uygulama için birden çok kapsayıcı görüntüsü adı sağlanmış olabilir (çok satırlı ayrılmış) |
+| **yapılandırma-dosya** | Seçim Docker-Compose dosyasının yolu. Tam olarak nitelenmiş bir yol olmalıdır veya varsayılan çalışma dizinine göre değişir. Çok Kapsayıcılı uygulamalar için gereklidir. |
 | **kapsayıcı-komut** | Seçim Başlangıç komutunu girin. For ex. DotNet Run veya DotNet filename. dll |
 
-Aşağıda, bir Node. js web uygulamasını derlemek ve Azure Web App Container 'a dağıtmak için örnek iş akışı verilmiştir.
+Aşağıda, bir Node. js uygulamasını derlemek ve App Service bir özel kapsayıcıya dağıtmak için örnek iş akışı verilmiştir.
 
 ```yaml
 on: [push]
@@ -145,7 +154,7 @@ jobs:
       uses: actions/checkout@master
     
     - name: 'Login via Azure CLI'
-      uses: azure/actions/login@v1
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
@@ -173,7 +182,7 @@ jobs:
 
 GitHub 'daki farklı depolarda gruplanmış eylem listemizi, her biri, CI/CD için GitHub kullanmanıza ve uygulamalarınızı Azure 'a dağıtmanıza yardımcı olacak belgeler ve örnekler içeren bir şekilde bulabilirsiniz.
 
-- [Azure oturum açma](https://github.com/Azure/actions)
+- [Azure oturum açma](https://github.com/Azure/login)
 
 - [Azure WebApp](https://github.com/Azure/webapps-deploy)
 
@@ -185,4 +194,6 @@ GitHub 'daki farklı depolarda gruplanmış eylem listemizi, her biri, CI/CD iç
 
 - [K8s dağıtımı](https://github.com/Azure/k8s-deploy)
 
-- [Başlangıç Iş akışları](https://github.com/actions/starter-workflows)
+- [Başlangıç CI Iş akışları](https://github.com/actions/starter-workflows)
+
+- [Azure 'a dağıtılacak Başlatıcı iş akışları](https://github.com/Azure/actions-workflow-samples)

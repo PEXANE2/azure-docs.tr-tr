@@ -1,5 +1,5 @@
 ---
-title: Visual Studio 'Yu .NET ile kullanma C# ve Azure SQL veritabanı 'nı sorgulama | Microsoft Docs
+title: Visual Studio 'Yu .NET ile kullanma C# ve Azure SQL veritabanı 'nı sorgulama
 description: Azure SQL veritabanına bağlanan ve Transact C# -SQL deyimleriyle sorgulayan bir uygulama oluşturmak Için Visual Studio 'yu kullanın.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 3ed11d2b1628cecc0696e4c37135cfc7d2190de5
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 42b7f553d88e130e0958bd38e4e5ff308b74e81f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597916"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690970"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Hızlı başlangıç: Azure SQL C# veritabanına bağlanmak ve veritabanını sorgulamak için .net ve Visual Studio 'da kullanın
 
 Bu hızlı başlangıçta Transact-SQL deyimleriyle bir Azure C# SQL veritabanını sorgulamak için [.NET Framework](https://www.microsoft.com/net/) ve Code 'un Visual Studio 'da nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
   || Tek veritabanı | Yönetilen örnek |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Oluşturma| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [Bir VM 'den bağlantı](sql-database-managed-instance-configure-vm.md)|
@@ -48,7 +48,7 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
@@ -56,13 +56,13 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 
 ## <a name="create-code-to-query-the-sql-database"></a>SQL veritabanını sorgulamak için kod oluşturma
 
-1. Visual Studio 'da **dosya**  > **Yeni**  > **Proje**' yi seçin. 
+1. Visual Studio 'da **dosya** > **Yeni** > **Proje**' yi seçin. 
    
 1. **Yeni proje** iletişim kutusunda **görsel C#** ' i seçin ve **konsol uygulaması ' nı (.NET Framework)** seçin.
    
 1. Proje adı için *SQLtest* girin ve ardından **Tamam**' ı seçin. Yeni proje oluşturulur. 
    
-1. **NuGet paketlerini yönetmek** >  **Proje** ' yi seçin. 
+1. **NuGet paketlerini yönetmek** > **Proje** ' yi seçin. 
    
 1. **NuGet Paket Yöneticisi**' nde, **Gözden** geçirme sekmesini seçin, sonra **System. Data. SqlClient**öğesini arayıp seçin.
    
@@ -72,7 +72,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
    
 1. Yüklemesi tamamlandığında, **NuGet Paket Yöneticisi 'ni**kapatabilirsiniz. 
    
-1. Kod Düzenleyicisi 'nde, **program.cs** içeriğini aşağıdaki kodla değiştirin. @No__t_0, `<username>`, `<password>` ve `<database>` için değerlerinizi değiştirin.
+1. Kod Düzenleyicisi 'nde, **program.cs** içeriğini aşağıdaki kodla değiştirin. `<server>`, `<username>`, `<password>`ve `<database>`için değerlerinizi değiştirin.
    
    >[!IMPORTANT]
    >Bu örnekteki kod, veritabanınızı oluştururken kaynak olarak seçebileceğiniz örnek AdventureWorksLT verilerini kullanır. Veritabanınızda farklı veriler varsa, SELECT sorgusunda kendi veritabanınızdaki tabloları kullanın. 
@@ -133,7 +133,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-1. Uygulamayı çalıştırmak için **hata ayıkla**  >  hata**ayıklamayı Başlat**' ı seçin ya da araç çubuğundan **Başlat** ' ı seçin veya **F5**tuşuna basın.
+1. Uygulamayı çalıştırmak için **hata ayıkla** > hata **ayıklamayı Başlat**' ı seçin ya da araç çubuğundan **Başlat** ' ı seçin veya **F5**tuşuna basın.
 1. Veritabanınızdaki ilk 20 kategori/ürün satırı döndürüldüğünden emin olun ve ardından uygulama penceresini kapatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

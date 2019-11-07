@@ -1,18 +1,18 @@
 ---
-title: Azure Analysis Services sunucusuna bağlanmak için bir. odc dosyası oluşturma | Microsoft Docs
+title: . Odc dosyası ile Azure Analysis Services bağlanma | Microsoft Docs
 description: Azure 'da bir Analysis Services sunucusuna bağlanmak ve veri almak için Office veri bağlantısı dosyası oluşturmayı öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5aa9645ec3138ed661305e1019b3e6dadfe4d212
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146690"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572679"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office veri bağlantısı dosyası oluşturma
 

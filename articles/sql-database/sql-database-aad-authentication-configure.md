@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory kimlik doğrulamasını yapılandırma-SQL | Microsoft Docs
+title: Azure Active Directory kimlik doğrulamasını yapılandırma-SQL
 description: Azure AD 'yi yapılandırdıktan sonra Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı, yönetilen örnek ve SQL veri ambarı 'na nasıl bağlanacağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 10/16/2019
-ms.openlocfilehash: 1dbccf43d03907cefb68315b6908a35735f373ce
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 11/06/2019
+ms.openlocfilehash: d23fcb781f5eddd71d5ddce9344d988d2e323611
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177643"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691378"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -57,6 +57,9 @@ Coğrafi çoğaltma ile Azure Active Directory kullanırken, hem birincil hem de
 
 > [!IMPORTANT]
 > Yalnızca yönetilen bir örnek sağlıyorsanız bu adımları izleyin. Bu işlem, yalnızca genel/şirket yöneticisi veya Azure AD 'de ayrıcalıklı rol yöneticisi tarafından yürütülebilir. Aşağıdaki adımlarda, dizinde farklı ayrıcalıklara sahip kullanıcılar için izin verme işlemi açıklanır.
+
+> [!NOTE]
+> GA öncesinde oluşturulan mı için Azure AD yöneticileri için, ancak devam eden GA 'ye devam ederseniz, mevcut davranışta işlevsel bir değişiklik yoktur. Daha fazla bilgi için, daha fazla ayrıntı için [yeni Azure AD yönetici IŞLEVSELLIĞINE mı](#new-azure-ad-admin-functionality-for-mi) bölümüne bakın.
 
 Yönetilen Örneğinizde, güvenlik grubu üyeliği veya Yeni Kullanıcı oluşturma aracılığıyla kullanıcıların kimlik doğrulaması gibi görevleri başarılı bir şekilde gerçekleştirmek için Azure AD 'yi okumak için izinler gerekir. Bunun çalışması için Azure AD 'yi okumak üzere yönetilen örneğe izinler vermeniz gerekir. Bunu iki şekilde yapabilirsiniz: Portal ve PowerShell 'den. Aşağıdaki adımlarda her iki yöntem de vardır.
 
@@ -146,10 +149,34 @@ Yönetilen Örneğinizde, güvenlik grubu üyeliği veya Yeni Kullanıcı oluşt
 
     Yöneticiyi değiştirme işlemi birkaç dakika sürebilir. Ardından yeni yönetici Active Directory yönetici kutusunda görünür.
 
-Yönetilen örneğiniz için bir Azure AD yöneticisi sağlamaktan sonra, <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">create LOGIN</a> sözdizimi Ile Azure AD Server sorumlularını (oturum açma) (**genel önizleme**) oluşturmaya başlayabilirsiniz. Daha fazla bilgi için bkz. [yönetilen örneğe genel bakış](sql-database-managed-instance.md#azure-active-directory-integration).
+Yönetilen örneğiniz için bir Azure AD yöneticisi sağlamaktan sonra, <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">create LOGIN</a> sözdizimi Ile Azure AD Server sorumlularını (oturum açma) oluşturmaya başlayabilirsiniz. Daha fazla bilgi için bkz. [yönetilen örneğe genel bakış](sql-database-managed-instance.md#azure-active-directory-integration).
 
 > [!TIP]
 > Bir yöneticiyi daha sonra kaldırmak için, Active Directory yönetici sayfasının üst kısmında, **Yöneticiyi Kaldır**' ı seçin ve ardından **Kaydet**' i seçin.
+
+### <a name="new-azure-ad-admin-functionality-for-mi"></a>Mı için yeni Azure AD yönetici işlevselliği
+
+Aşağıdaki tabloda, MI için Azure AD oturum açma Yöneticisi 'nin, Azure AD oturum açmaları için GA ile sunulan yeni bir işlevselliğe karşı genel önizleme işlevselliği özetlenmektedir.
+
+| Genel Önizleme sırasında mı için Azure AD oturum açma Yöneticisi | Mı için Azure AD yöneticisi için GA işlevselliği |
+| --- | ---|
+| Azure AD kimlik doğrulamasını sağlayan SQL veritabanı için Azure AD yöneticisi gibi benzer bir şekilde davranır, ancak Azure AD yöneticisi MI? için ana veritabanında Azure AD ya da SQL oturum açmaları oluşturamaz. | Azure AD yöneticisi sysadmin iznine sahiptir ve mı için Master DB 'de AAD ve SQL oturum açmaları oluşturabilir. |
+| Sys. server_principals görünümünde yok | Sys. server_principals görünümünde mevcuttur |
+| Tek tek Azure AD Konuk kullanıcılarının mı için Azure AD yöneticisi olarak ayarlanalmasına izin verir. Daha fazla bilgi için [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](../active-directory/b2b/add-users-administrator.md)bölümüne bakın. | Bu grubu mı için bir Azure AD yöneticisi olarak ayarlamak için konuk kullanıcıları olan bir Azure AD grubu oluşturulmasını gerektirir. Daha fazla bilgi için bkz. [Azure AD Business to Business Support](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support). |
+
+GA öncesinde oluşturulan mı için mevcut Azure AD yöneticileri için en iyi yöntem olarak, aynı Azure AD kullanıcısı veya grubu için "Yöneticiyi Kaldır" Azure portal ve "Yönetici ayarla" seçeneğini kullanarak Azure AD yöneticisi 'ni sıfırlayın.
+
+### <a name="known-issues-with-the-azure-ad-login-ga-for-mi"></a>Mı için Azure AD oturum açma GA ile ilgili bilinen sorunlar
+
+- T-SQL komutu `CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER`kullanılarak oluşturulan mı için ana veritabanında bir Azure AD oturum açma varsa, MI? için bir Azure AD yöneticisi olarak ayarlanamaz. Azure AD oturum açma bilgilerini oluşturmak için Azure portal, PowerShell veya CLı komutlarını kullanarak Azure AD yöneticisi olarak oturum açma ayarını yaparken bir hata yaşarsınız. 
+  - Hesabın bir Azure AD yöneticisi olarak oluşturulabilmesi için, komut `DROP LOGIN [myaadaccount]`kullanılarak oturum açma ana veritabanına bırakılmalıdır.
+  - `DROP LOGIN` başarılı olduktan sonra Azure portal Azure AD yönetici hesabını ayarlayın. 
+  - Azure AD yönetici hesabı 'nı ayarlayamıyorum, oturum açma için yönetilen Örneğin asıl veritabanını kontrol edin. Şu komutu kullanın: `SELECT * FROM sys.server_principals`
+  - Mı için bir Azure AD yöneticisi ayarlamak, bu hesabın ana veritabanında otomatik olarak bir oturum açma oluşturur. Azure AD yöneticisi 'nin kaldırılması, oturum açma bilgilerini ana veritabanından otomatik olarak kaldırır.
+   
+- Tek tek Azure AD Konuk kullanıcıları mı için Azure AD yöneticileri olarak desteklenmez. Konuk kullanıcıların Azure AD yöneticisi olarak ayarlanması için bir Azure AD grubunun parçası olması gerekir. Şu anda Azure portal dikey penceresi, kullanıcıların yönetici kurulumuna devam etmesine izin veren başka bir Azure AD için konuk kullanıcılar tarafından gri kullanıma sunulmamaktadır. Konuk kullanıcılarını Azure AD yöneticisi olarak kaydetmek, Kurulumun başarısız olmasına neden olur. 
+  - Konuk kullanıcıyı mı için bir Azure AD yöneticisi yapmak istiyorsanız, Konuk kullanıcıyı bir Azure AD grubuna ekleyin ve bu grubu Azure AD yöneticisi olarak ayarlayın.
+
 
 ### <a name="powershell-for-sql-managed-instance"></a>SQL yönetilen örneği için PowerShell
 
@@ -206,7 +233,7 @@ CLı komutları hakkında daha fazla bilgi için bkz. [az SQL mi](https://docs.m
 
 Aşağıdaki iki yordamda, Azure portal Azure SQL Server için ve PowerShell kullanarak Azure Active Directory Yöneticisi sağlama işlemleri gösterilmektedir.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com/), sağ üst köşede, olası etkin dizinlerin listesini aşağı eklemek için bağlantınızı seçin. Varsayılan Azure AD olarak doğru Active Directory seçin. Bu adım, Azure AD ve SQL Server aynı aboneliğin kullanıldığından emin olmak için abonelikle ilişkili Active Directory Azure SQL Server ile bağlantılandırır. (Azure SQL Server, Azure SQL veritabanı veya Azure SQL veri ambarı 'nı barındırıyor olabilir.) ![seçin-ad][8]
 
@@ -318,8 +345,8 @@ Bu gereksinimleri şu şekilde karşılayabilirsiniz:
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Veritabanınızda Azure AD kimlikleriyle eşlenen kapsanan veritabanı kullanıcıları oluşturun
 
->[!IMPORTANT]
->Yönetilen örnek artık Azure ad sunucusu sorumlularını (oturum açma) (**genel önizleme**) DESTEKLEDIĞINDEN Azure AD kullanıcıları, grupları veya uygulamalarından oturum açma bilgileri oluşturmanızı sağlar. Azure AD Server sorumluları (oturumlar), yönetilen örneğiniz için, veritabanı kullanıcılarının kapsanan veritabanı kullanıcısı olarak oluşturulmasını gerektirmeden kimlik doğrulaması yapma olanağı sağlar. Daha fazla bilgi için bkz. [yönetilen örneğe genel bakış](sql-database-managed-instance.md#azure-active-directory-integration). Azure AD Server sorumlularını (oturum açma) oluşturma hakkında sözdizimi için bkz. <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">oturum oluşturma</a>.
+> [!IMPORTANT]
+> Yönetilen örnek artık Azure AD kullanıcıları, grupları veya uygulamalarından oturum açma işlemleri oluşturmanızı sağlayan Azure AD Server sorumlularını (oturum açma) desteklemektedir. Azure AD Server sorumluları (oturumlar), yönetilen örneğiniz için, veritabanı kullanıcılarının kapsanan veritabanı kullanıcısı olarak oluşturulmasını gerektirmeden kimlik doğrulaması yapma olanağı sağlar. Daha fazla bilgi için bkz. [yönetilen örneğe genel bakış](sql-database-managed-instance.md#azure-active-directory-integration). Azure AD Server sorumlularını (oturum açma) oluşturma hakkında sözdizimi için bkz. <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">oturum oluşturma</a>.
 
 Azure Active Directory kimlik doğrulaması, veritabanı kullanıcılarının kapsanan veritabanı kullanıcıları olarak oluşturulmasını gerektirir. Bir Azure AD kimliğine dayanan bir kapsanan veritabanı kullanıcısı, ana veritabanında oturum açma işlemi olmayan ve veritabanı ile ilişkili Azure AD dizinindeki bir kimlikle eşlenen bir veritabanı kullanıcısı. Azure AD kimliği, tek bir kullanıcı hesabı ya da bir grup olabilir. Kapsanan veritabanı kullanıcıları hakkında daha fazla bilgi için bkz. [Kapsanan Veritabanı kullanıcıları-veritabanınızı taşınabilir hale getirme](https://msdn.microsoft.com/library/ff929188.aspx).
 
@@ -405,7 +432,7 @@ Azure AD tarafından yönetilen etki alanını kullanarak bir Azure AD asıl ad�
 Yerel veya federal Azure AD kullanıcıları için Azure AD ile SQL DB/DW kimlik doğrulaması yapmak için bu yöntemi kullanın. Yerel Kullanıcı Azure AD 'de açık bir şekilde oluşturulur ve Kullanıcı adı ve parola kullanılarak kimlik doğrulaması yapılır, ancak Federasyon kullanıcısı etki alanı Azure AD ile federe olan bir Windows kullanıcısı olduğunda. İkinci Yöntem (Kullanıcı & parolasını kullanarak), bir Kullanıcı Windows kimlik bilgilerini kullanmak istediğinde, ancak yerel makineleri etki alanına katılmadığında (örneğin, uzaktan erişim kullanarak) kullanılabilir. Bu durumda, bir Windows kullanıcısı etki alanı hesabını ve parolasını belirtebilir ve Federasyon kimlik bilgilerini kullanarak SQL DB/DW kimlik doğrulamasını yapabilir.
 
 1. Management Studio veya veri araçlarını başlatın ve **sunucuya Bağlan** (veya **veritabanı altyapısına Bağlan**) Iletişim kutusunda, **kimlik doğrulama** kutusunda **Active Directory-Password**' ı seçin.
-2. **Kullanıcı adı** kutusuna Azure Active Directory Kullanıcı adınızı kullanıcı adı **\@domain. com**biçiminde yazın. Kullanıcı adları, Azure Active Directory bir hesap veya Azure Active Directory bir etki alanı Federasyondan bir hesap olmalıdır.
+2. **Kullanıcı adı** kutusuna Azure Active Directory Kullanıcı adınızı kullanıcı adı **\@Domain.com**biçiminde yazın. Kullanıcı adları, Azure Active Directory bir hesap veya Azure Active Directory bir etki alanı Federasyondan bir hesap olmalıdır.
 3. **Parola** kutusuna Azure Active Directory hesabı veya Federasyon etki alanı hesabı için Kullanıcı parolanızı yazın.
 
     ![AD parola kimlik doğrulamasını seçin][12]

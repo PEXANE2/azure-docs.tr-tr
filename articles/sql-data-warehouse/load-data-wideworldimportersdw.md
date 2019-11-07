@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Azure SQL veri ambarı 'na veri yükleme | Microsoft Docs"
+title: 'Öğretici: Azure portal & SSMS kullanarak veri yükleme'
 description: Öğretici, genel bir Azure blobundan Azure SQL veri ambarı 'na WideWorldImportersDW veri ambarını yüklemek için Azure portal ve SQL Server Management Studio kullanır.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,20 +10,21 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f81a19631b29954f9bd3da55a4b332e37746152e
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c59c5ba4e5447d01bb66b9f0ed2edcb948d34d40
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574943"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693071"
 ---
-# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Öğretici: Azure SQL veri ambarı 'na veri yükleme
+# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Öğretici: Azure SQL Veri Ambarı'na veri yükleme
 
 Bu öğreticide, Azure Blob depolamadan Azure SQL Veri Ambarı’na WideWorldImportersDW veri ambarını yüklemek için PolyBase kullanılmaktadır. Öğreticide aşağıdaki işlemler için [Azure Portal](https://portal.azure.com) ve [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) kullanılır:
 
 > [!div class="checklist"]
 > * Azure Portal'da veri ambarı oluşturma
-> * Azure Portal'da sunucu düzeyinde bir güvenlik duvarı kuralı ayarlama
+> * Azure Portal'da sunucu düzeyinde bir güvenlik duvarı kuralı ayarlandı
 > * SSMS ile veri ambarına bağlanma
 > * Verileri yüklemek için belirlenen bir kullanıcı oluşturma
 > * Veri kaynağı olarak Azure blob kullanan dış tablolar oluşturma
@@ -32,7 +33,7 @@ Bu öğreticide, Azure Blob depolamadan Azure SQL Veri Ambarı’na WideWorldImp
 > * Tarih boyutu ve satış bilgi tablolarında bir yıllık veri oluşturma
 > * Yeni yüklenen verilere ilişkin istatistikler oluşturma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -40,11 +41,11 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Boş bir SQL veri ambarı oluşturun
 
-Azure SQL veri ambarı, tanımlı bir [işlem kaynakları](memory-and-concurrency-limits.md)kümesiyle oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-features.md) içinde oluşturulur. 
+Azure SQL veri ambarı, tanımlı bir [işlem kaynakları] bellek-eşzamanlılık-limits.md) kümesiyle oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-features.md) içinde oluşturulur. 
 
 Boş bir SQL veri ambarı oluşturmak için bu adımları izleyin. 
 
@@ -72,11 +73,11 @@ Boş bir SQL veri ambarı oluşturmak için bu adımları izleyin.
     | **Sunucu adı** | Genel olarak benzersiz bir ad | Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). | 
     | **Sunucu yöneticisi oturum açma bilgileri** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).|
     | **Parola** | Geçerli bir parola | Parolanızda en az 8 karakter bulunmalı ve parolanız şu üç kategoriden karakterler içermelidir: büyük harf karakterler, küçük harf karakterler, sayılar ve alfasayısal olmayan karakterler. |
-    | **Location** | Geçerli bir konum | Bölgeler hakkında bilgi için bkz. [Azure Bölgeleri](https://azure.microsoft.com/regions/). |
+    | **Konum** | Geçerli bir konum | Bölgeler hakkında bilgi için bkz. [Azure Bölgeleri](https://azure.microsoft.com/regions/). |
 
     ![veritabanı oluşturma](media/load-data-wideworldimportersdw/create-database-server.png)
 
-5. Tıklayın **seçin**.
+5. **Seç**'e tıklayın.
 
 6. Veri ambarının Gen1 mi yoksa Gen2 mi olduğunu ve veri ambarı birimlerinin sayısını belirtmek için **performans katmanı** ' na tıklayın. 
 
@@ -84,7 +85,7 @@ Boş bir SQL veri ambarı oluşturmak için bu adımları izleyin.
 
     ![performansı yapılandırma](media/load-data-wideworldimportersdw/configure-performance.png)
 
-8. **Uygula**'ya tıklayın.
+8. **Apply (Uygula)** düğmesine tıklayın.
 9. SQL Veri Ambarı sayfasında, boş veritabanı için bir **harmanlama** seçin. Bu öğreticide varsayılan değeri kullanın. Harmanlamalar hakkında daha fazla bilgi için bkz. [Harmanlamalar](/sql/t-sql/statements/collations)
 
 11. SQL Veritabanı formunu tamamladıktan sonra veritabanını sağlamak için **Oluştur**’a tıklayın. Sağlama birkaç dakika sürer. 
@@ -119,7 +120,7 @@ SQL Veri Ambarı hizmeti, dış uygulama ve araçların sunucuya ya da sunucu ü
 
 4.  Geçerli IP adresinizi yeni bir güvenlik duvarı kuralına eklemek için araç çubuğunda **İstemci IP’si Ekle** öğesine tıklayın. Güvenlik duvarı kuralı, 1433 numaralı bağlantı noktasını tek bir IP adresi veya bir IP adresi aralığı için açabilir.
 
-5. **Kaydet**’e tıklayın. Geçerli IP adresiniz için mantıksal sunucuda 1433 numaralı bağlantı noktası açılarak sunucu düzeyinde güvenlik duvarı kuralı oluşturulur.
+5. **Kaydet** düğmesine tıklayın. Geçerli IP adresiniz için mantıksal sunucuda 1433 numaralı bağlantı noktası açılarak sunucu düzeyinde güvenlik duvarı kuralı oluşturulur.
 
 6. **Tamam**’a tıklayın ve sonra **Güvenlik duvarı ayarları** sayfasını kapatın.
 
@@ -132,7 +133,7 @@ SQL Veri Ambarı hizmeti, dış uygulama ve araçların sunucuya ya da sunucu ü
 
 SQL sunucunuzun tam sunucu adını Azure portalından alabilirsiniz. Daha sonra sunucuya bağlanırken tam adı kullanacaksınız.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Soldaki menüden **SQL Veritabanları**’nı seçin ve **SQL veritabanları** sayfasında veritabanınıza tıklayın. 
 3. Veritabanınızın Azure portal sayfasındaki **Temel Bilgiler** bölmesinde, **Sunucu adını** bulup kopyalayın. Bu örnekte, tam ad mynewserver-20171113.database.windows.net. 
 
@@ -142,7 +143,7 @@ SQL sunucunuzun tam sunucu adını Azure portalından alabilirsiniz. Daha sonra 
 
 Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) kullanılmaktadır.
 
-1. SQL Server Management Studio'yu açın.
+1. SQL Server Management Studio’yu açın.
 
 2. **Sunucuya Bağlan** iletişim kutusuna şu bilgileri girin:
 
@@ -150,9 +151,9 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
     | ------------ | --------------- | ----------- | 
     | Sunucu türü | Veritabanı altyapısı | Bu değer gereklidir |
     | Sunucu adı | Tam sunucu adı | Örneğin, **sample-svr.database.windows.net** tam sunucu adıdır. |
-    | Authentication | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırılan tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
-    | Oturum aç | Sunucu yöneticisi hesabı | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
-    | istemcisiyle yönetilen bir cihaz için) | Sunucu yöneticisi hesabınızın parolası | Bu, sunucuyu oluştururken belirttiğiniz paroladır. |
+    | Kimlik Doğrulaması | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırılan tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
+    | Oturum Aç | Sunucu yöneticisi hesabı | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
+    | Parola | Sunucu yöneticisi hesabınızın parolası | Bu, sunucuyu oluştururken belirttiğiniz paroladır. |
 
     ![sunucuya bağlan](media/load-data-wideworldimportersdw/connect-to-server.png)
 
@@ -181,7 +182,7 @@ En iyisi verileri yüklemeye ayrılmış bir oturum açma ve kullanıcı bilgisi
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
     ```
 
-3. **Yürüt**'e tıklayın.
+3. **Yürüt**’e tıklayın.
 
 4. **SampleDW** seçeneğine sağ tıklayın ve **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.  
 
@@ -195,7 +196,7 @@ En iyisi verileri yüklemeye ayrılmış bir oturum açma ve kullanıcı bilgisi
     EXEC sp_addrolemember 'staticrc60', 'LoaderRC60';
     ```
 
-6. **Yürüt**'e tıklayın.
+6. **Yürüt**’e tıklayın.
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>Yükleme kullanıcısı olarak sunucuya bağlanma
 

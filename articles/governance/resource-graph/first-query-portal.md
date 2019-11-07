@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 14615d596c1b673a234ccef541fecfbfce9d5f27
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752140"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622596"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak ilk kaynak Graph sorgunuzu çalıştırma
 
@@ -27,19 +27,19 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Kaynak Grafiği Gezginini**arayın ve seçin.
 
-1. Pencerenin **sorgu 1** kısmına `Resources | project name, type | limit 5` sorgusunu girin ve **Sorguyu Çalıştır**' ı seçin.
+1. Pencerenin **sorgu 1** bölümünde sorgu `Resources | project name, type | limit 5` girin ve **Sorguyu Çalıştır**' ı seçin.
 
    > [!NOTE]
-   > Bu sorgu örneği `order by` gibi bir sıralama değiştiricisi sağlamadığından, bu sorguyu birden çok kez çalıştırmak istek başına farklı bir kaynak kümesi sunabiliyor olabilir.
+   > Bu sorgu örneği, `order by`gibi bir sıralama değiştiricisi sağlamadığından, bu sorguyu birden çok kez çalıştırmak, istek başına farklı bir kaynak kümesi sunmamasından kaynaklanıyor olabilir.
 
 1. **Sonuçlar** sekmesindeki sorgu yanıtını gözden geçirin. sorgu hakkındaki ayrıntıları ve sorgu süresini görmek için **iletiler** sekmesini seçin. Varsa, bu sekme altında hatalar görüntülenir.
 
-1. Sorguyu `order by` **ad** özelliği: `Resources | project name, type | limit 5 | order by name asc` olarak güncelleştirin. Sonra **Sorguyu Çalıştır**' ı seçin.
+1. Sorguyu **ad** özelliği `order by` için güncelleştirin: `Resources | project name, type | limit 5 | order by name asc`. Sonra **Sorguyu Çalıştır**' ı seçin.
 
    > [!NOTE]
    > İlk sorguda olduğu gibi, bu sorguyu birden çok kez çalıştırmak, muhtemelen istek başına farklı bir kaynak kümesi sunacaktır. Sorgu komutlarının düzeni önemlidir. Bu örnekte `order by`, `limit`’den sonra gelmektedir. Bu, sorgu sonuçlarını önce sınırlar, sonra düzenler.
 
-1. Sorguyu ilk `order by` olarak, **ad** özelliğini ve sonra da ilk beş sonuca `limit` ' ye güncelleştirin: `Resources | project name, type | order by name asc | limit 5`. Sonra **Sorguyu Çalıştır**' ı seçin.
+1. Önce **ad** özelliğini `order by` ve ardından en üstteki beş sonuca `limit` için sorguyu güncelleştirin: `Resources | project name, type | order by name asc | limit 5`. Sonra **Sorguyu Çalıştır**' ı seçin.
 
 Son sorgu birkaç kez çalıştırıldığında, ortamınızdaki hiçbir şeyin değişmediği kabul edildiğinde döndürülen sonuçlar, **ad** özelliğine göre sıralanmış, ancak yine de en üstteki beş sonuçla sınırlandırıldı.
 
@@ -47,8 +47,8 @@ Son sorgu birkaç kez çalıştırıldığında, ortamınızdaki hiçbir şeyin 
 
 Şema tarayıcısı, kaynak grafik Gezgini 'nin sol bölmesinde bulunur. Bu kaynak listesi, Azure Kaynak Grafiği tarafından desteklenen ve erişim sahibi olduğunuz bir kiracıda bulunan Azure kaynaklarının tüm _kaynak türlerini_ gösterir. Kaynak türü veya alt özellikleri genişletmek, kaynak grafik sorgusu oluşturmak için kullanılabilecek alt özellikleri gösterir.
 
-Kaynak türü seçildiğinde sorgu kutusuna `where type =="<resource type>"` yerleştirilir. Alt özelliklerden birini seçmek sorgu kutusuna `where <propertyName> == "INSERT_VALUE_HERE"` ekler.
-Şema tarayıcısı, sorgularda kullanılacak özellikleri bulmayı çok iyi bir yoldur. _Insert \_VALUE \_HERE_ kendi değer ile değiştirdiğinizden emin olun, istediğiniz sonuçlara ulaşmak için sorguyu koşullar, işleçler ve işlevlerle ayarlayın.
+Kaynak türünü seçme, sorgu kutusuna `where type =="<resource type>"` koyar. Alt özelliklerden birini seçmek sorgu kutusuna `where <propertyName> == "INSERT_VALUE_HERE"` ekler.
+Şema tarayıcısı, sorgularda kullanılacak özellikleri bulmayı çok iyi bir yoldur. Buraya, bir _ınsert\_\_değerini_ kendi değeri ile değiştirdiğinizden emin olun, sorguyu koşullar, işleçler ve işlevlerle ayarlayıp amaçlanan sonuçlara ulaşın.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Kaynak grafik sorgusundan grafik oluşturma
 
@@ -91,11 +91,11 @@ Kaynak Grafiği sorgularına örnek sağlamak ve kaynak Graph Explorer 'ın Azur
 
 - [Kaynak Grafiği Gezgini-örnek Pano #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-  [Örnek Pano için ![Example resim #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+  [Örnek Pano için örnek resim ![#1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
 
 - [Kaynak Grafiği Gezgini-örnek Pano #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  [Örnek Pano için ![Example resim #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+  [Örnek Pano için örnek resim ![#2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
 > [!NOTE]
 > Yukarıdaki örnek panodaki sayımlar ve grafikler, Azure ortamınıza bağlı olarak değişir.
@@ -120,9 +120,9 @@ Azure portal ortamınızdan örnek kaynak Graflarını kaldırmak istiyorsanız,
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sorgu dili](./concepts/query-language.md) hakkında daha fazla bilgi edinme
-- [Kaynakları keşfetmeyi](./concepts/explore-resources.md) öğrenin
-- [Azure CLI](first-query-azurecli.md) ile ilk sorgunuzu çalıştırma
-- Bkz. [başlangıç sorguları](./samples/starter.md) örnekleri
-- Bkz. [Gelişmiş sorgular](./samples/advanced.md) örnekleri
-- [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) ile ilgili geri bildirim gönderme
+- [Sorgu dili](./concepts/query-language.md)hakkında daha fazla bilgi alın.
+- [Kaynakları araştırma](./concepts/explore-resources.md)hakkında daha fazla bilgi edinin.
+- [Azure CLI](first-query-azurecli.md)ile ilk sorgunuzu çalıştırın.
+- Bkz. [Başlangıç sorguları](./samples/starter.md)örnekleri.
+- [Gelişmiş sorguların](./samples/advanced.md)örneklerine bakın.
+- [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)hakkında geri bildirim sağlayın.

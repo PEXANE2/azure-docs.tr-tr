@@ -1,6 +1,6 @@
 ---
 title: R ile denemenizi genişletme
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: R dil aracılığıyla Azure Machine Learning Studio (klasik) işlevinin işlevselliğini genişletme komut dosyası modülünü kullanma.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: a1a3eca380240d624da3e2f086749756aabccbe2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1a64303702ffa5ccff9c79e0946d5df45eac9479
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492949"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621655"
 ---
 # <a name="azure-machine-learning-studio-classic-extend-your-experiment-with-r"></a>Azure Machine Learning Studio (klasik): deneme 'nizi R ile genişletin 
 Azure Machine Learning Studio (klasik) işlevlerini R dili ile, [Yürüt komut dosyası][execute-r-script] modülünü kullanarak genişletebilirsiniz.

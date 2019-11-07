@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: b92975e3fe73fb1c882bdfc4338fd8e169728e8b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387645"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622677"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Kaynak Grafiği ile Azure kaynaklarınızı keşfedin
 
@@ -308,10 +308,10 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresse
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-Bu adımların `join` işleci ile tek bir sorguda nasıl yapılacağını görmek için, [sanal makineleri ağ arabirimiyle listeleme ve genel IP](../samples/advanced.md#join-vmpip) örneği ' ne bakın.
+Bu adımları `join` işleçle tek bir sorguda nasıl gerçekleştireceğinizi görmek için, [sanal makineleri ağ arabirimiyle listeleme ve genel IP](../samples/advanced.md#join-vmpip) örneği ' ne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sorgu dili](query-language.md) hakkında daha fazla bilgi edinin
-- Bkz. [Başlangıç sorgularında](../samples/starter.md) kullanılan dil
-- Gelişmiş [sorgularda](../samples/advanced.md) gelişmiş kullanımlar konusuna bakın
+- [Sorgu dili](query-language.md)hakkında daha fazla bilgi edinin.
+- Bkz. [Başlangıç sorgularında](../samples/starter.md)kullanılan dil.
+- Gelişmiş [sorgularda](../samples/advanced.md)gelişmiş kullanımlar bölümüne bakın.

@@ -3,15 +3,15 @@ title: 'Hızlı başlangıç: kaynak kodundan Spring Cloud uygulamanızı başla
 description: Azure Spring Cloud uygulamanızı doğrudan kaynak kodınızdan nasıl başlatacağınızı öğrenin
 author: jpconnock
 ms.service: spring-cloud
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 573baa242c06868326568a82bc358e136f1ece2c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: MT
+ms.openlocfilehash: 524fa18dfd4c47e699ba6b9d5d7a98bbbaaf5c72
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177964"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646765"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>Kaynak kodundan Spring Cloud uygulamanızı başlatın
 
@@ -28,10 +28,10 @@ Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğrenecek
 > * Her mikro hizmeti dağıtma
 > * Uygulamanız için genel uç nokta atama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 >[!Note]
-> Bu hızlı başlangıca başlamadan önce Azure aboneliğinizin Azure Spring Cloud 'a erişimi olduğundan emin olun.  Bir önizleme hizmeti olarak, aboneliğinizi izin verilenler-listemize ekleyebilmemiz için bize ulaşmamızı isteyeceğiz.  Azure Spring Cloud 'ın yeteneklerini araştırmak istiyorsanız lütfen [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).  Azure yay bulutu önizlemedeyken Microsoft, SLA olmadan sınırlı destek sunuyor.  Önizlemeler sırasında destek hakkında daha fazla bilgi için lütfen bu [destek hakkında SSS](https://azure.microsoft.com/support/faq/)bölümüne bakın.
+> Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizlemeler sırasında destek hakkında daha fazla bilgi için lütfen bir [destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)dosya yapın.
 
 Başlamadan önce, Azure aboneliğinizin gerekli bağımlılıklara sahip olduğundan emin olun:
 
@@ -49,7 +49,7 @@ Başlamadan önce, Azure aboneliğinizin gerekli bağımlılıklara sahip olduğ
 Aşağıdaki komutla Azure CLı için Azure yay bulutu uzantısını yükler
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-using-the-azure-cli"></a>Azure CLı kullanarak bir hizmet örneği sağlama
@@ -110,7 +110,7 @@ az spring-cloud app deployment create --app <app-name> -n <deployment-name> --ja
 Azure Spring Cloud, projeyi derlemek için [kpack](https://github.com/pivotal/kpack) kullanır.  Azure CLı kullanarak kaynak kodunuzu karşıya yükleyebilir, kpack kullanarak projenizi oluşturabilir ve hedef uygulamaya dağıtabilirsiniz.
 
 > [!WARNING]
-> Proje, `target` ' de (Maven dağıtımları veya `build/libs` (Gradle dağıtımları için) `MANIFEST.MF` içinde `main-class` girişi ile yalnızca bir JAR dosyası üretmelidir.  `main-class` girdileri olan birden çok JAR dosyası dağıtımın başarısız olmasına neden olur.
+> Proje, `target` (Maven dağıtımları veya `build/libs` için) `MANIFEST.MF` `main-class` girişi ile yalnızca bir JAR dosyası üretmelidir (Gradle dağıtımları için).  `main-class` girdileri olan birden çok JAR dosyası dağıtımın başarısız olmasına neden olur.
 
 Tek modüllü Maven/Gradle projeleri için:
 
@@ -140,7 +140,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Ağ geçidine genel uç nokta atama
 
 1. **Uygulama panosu** sayfasını açın.
-2. **Uygulama ayrıntıları** sayfasını göstermek için `gateway` uygulamasını seçin.
+2. **Uygulama ayrıntıları** sayfasını göstermek için `gateway` uygulamayı seçin.
 3. Ağ geçidine bir genel uç nokta atamak için **etki alanı ata** ' yı seçin. Bu birkaç dakika sürebilir. 
 4. Çalışan uygulamanızı görüntülemek için tarayıcınıza atanan ortak IP 'yi girin.
 

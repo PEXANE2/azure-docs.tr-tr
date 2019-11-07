@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı 'nı kullanan çok kiracılı bir uygulamada yeni kiracılar sağlama | Microsoft Docs
+title: Azure SQL veritabanı 'nı kullanan çok kiracılı bir uygulamada yeni kiracılar sağlama
 description: Azure SQL veritabanı çok kiracılı SaaS uygulamasında yeni kiracılar sağlamayı ve kataloglarını öğrenin
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: b5a996fe6be5aa839b78b6693accac9b1000cef8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f0f1ebd8b2ef719a9556b6b20f6685d1da493263
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570429"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692119"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Yeni kiracılar sağlamayı ve bunları kataloğa kaydetmeyi öğrenin
 
@@ -77,11 +77,11 @@ Wingtip bilet SaaS betikleri ve uygulama kaynak kodu [Wingtipbilet ssaas-DbPerTe
 
 Wingtip bilet uygulamasının yeni kiracı sağlaması uygulayıp uygulamadığını anlamak için bir kesme noktası ekleyin ve bir kiracı sağladığınızda iş akışını izleyin.
 
-1. PowerShell ıSE 'de açın... Öğrenme modülleri\\provisionandcatalog\\_demo-ProvisionAndCatalog. ps1_ ve aşağıdaki parametreleri ayarla: \\
+1. PowerShell ıSE 'de,...\\Learning modülleri\\ProvisionAndCatalog\\_demo-ProvisionAndCatalog. ps1_ ' yi açın ve aşağıdaki parametreleri ayarlayın:
 
    * **$TenantName** = yeni mekanın adı (örneğin, *Bushwillow Blues*).
    * **$VenueType** = önceden tanımlanmış mekan türlerinden biri: _maves, classicalmusic, dans, CAI, judo, motor yarış, çok amaçlı, Opera, rockmusic, futbol_.
-   *  = **1**$DemoScenario, *tek bir kiracı sağlayın*.
+   * **$DemoScenario** = **1**, *tek bir kiracı sağlayın*.
 
 2. Kesme noktası eklemek için imlecinizi *Yeni-kiracı '* ı belirten satıra yerleştirin. Ardından F9 tuşuna basın.
 
@@ -91,7 +91,7 @@ Wingtip bilet uygulamasının yeni kiracı sağlaması uygulayıp uygulamadığ�
 
 4. Komut dosyası yürütme kesme noktasında durduktan sonra, koda dönmek için F11 tuşuna basın.
 
-   ![Hata Ayıklama](media/saas-dbpertenant-provision-and-catalog/debug.png)
+   ![Hata ayıklama](media/saas-dbpertenant-provision-and-catalog/debug.png)
 
 
 
@@ -105,7 +105,7 @@ Bu iş akışını açık bir şekilde izlemeniz gerekmez. Betikte hata ayıklam
 * **Yapılandırma ayrıntılarını alın.** F11 kullanarak Get-Configuration içine geçin ve uygulama yapılandırmasının nasıl belirtilme şeklini görün. Kaynak adlarına ve uygulamaya özgü diğer değerler burada tanımlanmıştır. Betikleri öğrenene kadar bu değerleri değiştirmeyin.
 * **Katalog nesnesini alın.** Daha yüksek düzeyde betikte kullanılan bir katalog nesnesini oluşturan ve döndüren Get-Catalog ' a adımla. Bu işlev, **Azureshardmanagement. psm1**'dan içeri aktarılan parça yönetim işlevlerini kullanır. Katalog nesnesi aşağıdaki öğelerden oluşur:
 
-   * $catalogServerFullyQualifiedName, standart gövdesi ve Kullanıcı adınızı kullanarak oluşturulur: _catalog-\<user\>. Database. Windows .net_.
+   * $catalogServerFullyQualifiedName, standart gövde ve Kullanıcı adınız ile oluşturulur: _Katalog-\<user\>. Database. Windows .net_.
    * $catalogDatabaseName, *tenantcatalog* yapılandırmasından alınır.
    * $shardMapManager nesnesi, katalog veritabanından başlatılır.
    * $shardMap nesnesi, katalog veritabanındaki _tenantcatalog_ parça eşlemesinden başlatılır. Bir katalog nesnesi oluşur ve döndürülür. Bu, üst düzey betikte kullanılır.
@@ -135,9 +135,9 @@ Sağlama tamamlandıktan sonra, yürütme özgün *demo-ProvisionAndCatalog* bet
 
 Bu alıştırma, 17 kiracılar toplu işi sağlar. Diğer Wingtip bilet SaaS veritabanı-Kiracı öğreticilerine başlamadan önce Bu kiracı toplu iş örneğini sağlamanızı öneririz. Birlikte çalışmak için birkaç veritabanı daha vardır.
 
-1. PowerShell ıSE 'de açın... Öğrenme modülleri\\provisionandcatalog\\*demo-ProvisionAndCatalog. ps1.* \\ *$DemoScenario* parametresini 3 olarak değiştirin:
+1. PowerShell ıSE 'de,...\\öğrenme modüllerini\\ProvisionAndCatalog\\*demo-ProvisionAndCatalog. ps1*' yi açın. *$DemoScenario* parametresini 3 olarak değiştirin:
 
-   * $DemoScenario = **3**, *kiracı grubu sağlayın*.
+   * **$DemoScenario** = **3**, *kiracı grubu sağlayın*.
 2. Betiği çalıştırmak için F5 tuşuna basın.
 
 Betik, ek kiracı grubu dağıtır. Toplu işi denetleyen [Azure Resource Manager şablonu](../azure-resource-manager/resource-manager-template-walkthrough.md) kullanır ve her bir veritabanının bağlı bir şablona sağlamasını destekler. Şablonların bu şekilde kullanılması, Azure Resource Manager’ın betiğinizin sağlama işlemine aracılık etmesine olanak tanır. Şablonlar, veritabanlarını paralel olarak sağlayın ve gerekirse yeniden denemeleri işler. Betik ıdempotent, bu nedenle herhangi bir nedenle başarısız olursa veya durdurulduğunda yeniden çalıştırın.
@@ -154,16 +154,16 @@ Betik, ek kiracı grubu dağıtır. Toplu işi denetleyen [Azure Resource Manage
 
 Bu öğreticide bulunmayan diğer sağlama desenleri:
 
-**Önceden sağlama veritabanları**: Önceden sağlama modelinde, elastik havuzdaki veritabanlarının ek maliyet eklememesinden yararlanır. Faturalandırma, veritabanlarına değil, elastik havuza yöneliktir. Boştaki veritabanları hiçbir kaynak tüketmez. Bir havuzdaki veritabanlarının ön sağlamasını yaparak ve gerektiğinde ayırarak, kiracılar ekleme süresini azaltabilirsiniz. Önceden sağlanan veritabanlarının sayısı, bir arabelleğin beklenen sağlama oranına uygun tutulması için gerektiği şekilde ayarlanabilir.
+**Ön sağlama veritabanları**: önceden sağlama, elastik havuzdaki veritabanlarının ek maliyet eklememesinden yararlanır. Faturalandırma, veritabanlarına değil, elastik havuza yöneliktir. Boştaki veritabanları hiçbir kaynak tüketmez. Bir havuzdaki veritabanlarının ön sağlamasını yaparak ve gerektiğinde ayırarak, kiracılar ekleme süresini azaltabilirsiniz. Önceden sağlanan veritabanlarının sayısı, bir arabelleğin beklenen sağlama oranına uygun tutulması için gerektiği şekilde ayarlanabilir.
 
-**Otomatik sağlama**: Otomatik sağlama modelinde, bir sağlama hizmeti gerektiğinde sunucuları, havuzları ve veritabanlarını otomatik olarak sağlar. İsterseniz, elastik havuzlarda önceden sağlama veritabanlarını dahil edebilirsiniz. Veritabanları kullanımdan çıkarıldı ve silinirse, elastik havuzlardaki boşluklar sağlama hizmeti tarafından doldurulabilir. Bu tür bir hizmet, birden çok coğrafi sistem genelinde sağlamayı işleme ve olağanüstü durum kurtarma için coğrafi çoğaltma ayarlama gibi basit veya karmaşık olabilir. 
+**Otomatik sağlama**: otomatik sağlama modelinde, bir sağlama hizmeti gerektiğinde sunucuları, havuzları ve veritabanlarını otomatik olarak sağlar. İsterseniz, elastik havuzlarda önceden sağlama veritabanlarını dahil edebilirsiniz. Veritabanları kullanımdan çıkarıldı ve silinirse, elastik havuzlardaki boşluklar sağlama hizmeti tarafından doldurulabilir. Bu tür bir hizmet, birden çok coğrafi sistem genelinde sağlamayı işleme ve olağanüstü durum kurtarma için coğrafi çoğaltma ayarlama gibi basit veya karmaşık olabilir. 
 
 Otomatik sağlama düzeniyle, bir istemci uygulaması veya betiği, sağlama hizmeti tarafından işlenmek üzere bir sıraya sağlama isteği gönderir. Ardından, tamamlanma sağlamak için hizmeti yoklar. Ön sağlama kullanılıyorsa, istekler hızla işlenir. Hizmet, arka planda bir değiştirme veritabanı sağlar.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
+Bu öğreticide, şunları öğrendiniz:
 
 > [!div class="checklist"]
 > 

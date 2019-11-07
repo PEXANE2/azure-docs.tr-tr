@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı-otomatik ayarlama | Microsoft Docs
+title: Azure SQL veritabanı-otomatik ayarlama
 description: Azure SQL veritabanı, SQL sorgusunu analiz eder ve Kullanıcı iş yüküne otomatik olarak uyum sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: b6c2885f0919752f7ede7f5a15121be2f8a953ca
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: bfac5a0eba68469d912efd02699624e1335e40e5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162328"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691119"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL veritabanı 'nda otomatik ayarlama
 
@@ -69,7 +69,7 @@ Azure SQL veritabanında bulunan otomatik ayarlama seçenekleri şunlardır:
 | :----------------------------- | ----- | ----- |
 | **Dizin oluşturma** -iş yükünüzün performansını iyileştirebilecek dizinleri tanımlar, dizinler oluşturur ve sorguların performansının iyileştirildiğini otomatik olarak doğrular. | Evet | Hayır | 
 | **Drop Index** -benzersiz dizinler ve uzun süredir kullanılmayan dizinler dışında, yedekli ve yinelenen dizinleri her gün tanımlar (> 90 gün). Bu seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez. | Evet | Hayır |
-| **son ıyı planı zorla** (otomatik plan düzeltmesi)-önceki iyi plandan daha yavaş bir yürütme planı kullanarak SQL sorgularını tanımlar ve gerileme planı yerine bilinen son iyi planı kullanarak sorgular. | Evet | Evet |
+| **Son ıyı planı zorla** (otomatik plan düzeltmesi)-SQL sorgularını, önceki iyi plandan daha yavaş bir yürütme planı kullanarak tanımlar ve gerileme planı yerine bilinen son iyi planı kullanarak sorgular. | Evet | Evet |
 
 Otomatik ayarlama, veritabanı performanslarını iyileştirebilen ve bunları [Azure Portal](sql-database-advisor-portal.md)gösteren ve [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) [Ile ortaya çıkaran son iyi plan önerilerini tanımlar, Drop Index ve zorlar. REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). EN son ıyı hale zorlama planı ve T-SQL aracılığıyla otomatik ayarlama seçeneklerini yapılandırma hakkında daha fazla bilgi edinmek için bkz. otomatik [ayarlama otomatik plan düzeltmesini tanıtır](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).
 

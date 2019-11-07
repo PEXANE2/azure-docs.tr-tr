@@ -1,5 +1,5 @@
 ---
-title: C ve C++ kullanarak SQL veritabanı 'na bağlanma | Microsoft Docs
+title: C ve kullanarak SQL veritabanı 'na bağlanmaC++
 description: Azure SQL veritabanı ile bulutta güçlü bir ilişkisel veritabanı tarafından desteklenen C++ ve desteklenen modern bir uygulama oluşturmak için bu hızlı başlangıç içindeki örnek kodu kullanın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: c06a16071b1e22e7aa788ff5f15ce8afbf17da04
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fb6094ec418d2b212759bddd2c4d49c7e6193849
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568938"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690709"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C ve kullanarak SQL veritabanı 'na bağlanmaC++
 
@@ -38,10 +38,10 @@ Azure Şu anda SQL Server iş yüklerini barındırmak için iki seçeneğe sahi
 ## <a id="ODBC"></a>Veri erişimi teknolojileri: ODBC ve OLE DB
 Azure SQL DB 'ye bağlanmak farklı değildir ve şu anda veritabanlarına bağlanmanın iki yolu vardır: ODBC (açık veritabanı bağlantısı) ve OLE DB (nesne bağlama ve katıştırma veritabanı). Son yıllarda, Microsoft [Yerel ilişkisel veri erişimi Için ODBC](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/)ile hizalanır. ODBC nispeten basittir ve OLE DB çok daha hızlıdır. Burada yalnızca desteklenmediği uyarısıyla, ODBC 'nin eski bir C stili API kullanması olur.
 
-## <a id="Create"></a>1. Adım:  Azure SQL veritabanınızı oluşturma
+## <a id="Create"></a>1. Adım: Azure SQL veritabanınızı oluşturma
 Örnek veritabanı oluşturmayı öğrenmek için [Başlarken sayfasına](sql-database-single-database-get-started.md) bakın.  Alternatif olarak, Azure portal kullanarak bir Azure SQL veritabanı oluşturmak için bu [kısa iki dakikalık videoyu](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) da izleyebilirsiniz.
 
-## <a id="ConnectionString"></a>2. Adım:  Bağlantı dizesini al
+## <a id="ConnectionString"></a>2. Adım: bağlantı dizesini al
 Azure SQL veritabanınız sağlandıktan sonra bağlantı bilgilerini belirlemeniz ve güvenlik duvarı erişimi için istemci IP 'nizi eklemek üzere aşağıdaki adımları gerçekleştirmeniz gerekir.
 
 [Azure Portal](https://portal.azure.com/)' de, veritabanınızın genel bakış bölümünün bir parçası olarak listelenen **veritabanı bağlantı dizelerini göster** ' i kullanarak Azure SQL veritabanı ODBC bağlantı dizeniz ' ne gidin:
@@ -52,14 +52,14 @@ Azure SQL veritabanınız sağlandıktan sonra bağlantı bilgilerini belirlemen
 
 **ODBC içeriğini (node. js içerir) [SQL Authentication]** dizesini kopyalayın. Bu dizeyi daha sonra ODBC komut satırı yorumlayıcımızdan C++ bağlanmak için kullanıyoruz. Bu dize, sürücü, sunucu ve diğer veritabanı bağlantı parametreleri gibi ayrıntılar sağlar.
 
-## <a id="Firewall"></a>Adım 3:  IP 'nizi güvenlik duvarına ekleme
+## <a id="Firewall"></a>3. Adım: IP 'nizi güvenlik duvarına ekleme
 Başarılı bir bağlantı kurabildiğimiz için, veritabanı sunucunuzun güvenlik duvarı bölümüne gidin ve [aşağıdaki adımları kullanarak ISTEMCI IP 'nizi güvenlik duvarına](sql-database-configure-firewall-settings.md) ekleyin:
 
 ![AddyourIPWindow](./media/sql-database-develop-cplusplus-simple/ip.png)
 
 Bu noktada, Azure SQL DB 'nizi yapılandırdınız ve C++ kodınızdan bağlanmaya hazırsanız.
 
-## <a id="Windows"></a>4. Adım: Windows C/C++ uygulamasından bağlanma
+## <a id="Windows"></a>4. Adım: bir Windows C/C++ uygulamasından bağlanma
 Visual Studio ile derleme yapan [Bu örneği kullanarak Windows ÜZERINDE ODBC kullanarak Azure SQL DB](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29) 'nize kolayca bağlanabilirsiniz. Örnek, Azure SQL DB 'imize bağlanmak için kullanılabilecek bir ODBC komut satırı yorumlayıcısı uygular. Bu örnek, bir veritabanı kaynak adı dosyası (DSN) dosyasını bir komut satırı bağımsız değişkeni veya daha önce Azure portal kopyaladığımız ayrıntılı bağlantı dizesi olarak alır. Bu proje için özellik sayfasını açın ve bağlantı dizesini burada gösterildiği gibi bir komut bağımsız değişkeni olarak yapıştırın:
 
 ![DSN Propsfile](./media/sql-database-develop-cplusplus-simple/props.png)
@@ -68,7 +68,7 @@ Veritabanınız için doğru kimlik doğrulama ayrıntılarını veritabanı ba�
 
 Uygulamayı oluşturmak için başlatın. Başarılı bir bağlantıyı doğrulamak için aşağıdaki pencereyi görmeniz gerekir. Veritabanı bağlantınızı doğrulamak için **tablo oluştur** gibi bazı temel SQL komutlarını da çalıştırabilirsiniz:
 
-![SQL Komutları](./media/sql-database-develop-cplusplus-simple/sqlcommands.png)
+![SQL komutları](./media/sql-database-develop-cplusplus-simple/sqlcommands.png)
 
 Alternatif olarak, bir komut bağımsız değişkeni sağlanmadıysa başlatılan Sihirbazı kullanarak bir DSN dosyası oluşturabilirsiniz. Bu seçeneği de denemeniz önerilir. Otomasyon için bu DSN dosyasını kullanabilir ve kimlik doğrulama ayarlarınızı koruyabilirsiniz:
 
@@ -76,7 +76,7 @@ Alternatif olarak, bir komut bağımsız değişkeni sağlanmadıysa başlatıla
 
 Tebrikler! Artık Windows 'da C++ ve ODBC Ile Azure SQL 'e başarıyla bağlandınız. Okumayı, Linux platformu için de aynı şekilde yapmaya devam edebilirsiniz.
 
-## <a id="Linux"></a>5. Adım: Linux C/C++ uygulamasından bağlanma
+## <a id="Linux"></a>5. Adım: Linux C/C++ uygulamasından bağlantı kurma
 Haberleri henüz duymadıysanız, Visual Studio artık Linux uygulaması geliştirmeye C++ de olanak tanır. Bu yeni senaryo hakkında daha fazla bilgi [Için Visual C++ Linux geliştirme](https://blogs.msdn.microsoft.com/vcblog/20../../visual-c-for-linux-development/) blogunu okuyun. Linux için derlemek için, Linux 'un çalıştığı bir uzak makineye ihtiyacınız vardır. Kullanılabilir bir hesabınız yoksa, [Linux Azure sanal makinelerini](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)kullanarak bir hızla bir tane ayarlayabilirsiniz.
 
 Bu öğreticide, bir Ubuntu 16,04 Linux dağıtımının ayarlanmış olduğunu varsayalım. Buradaki adımlar Ubuntu 15,10, Red hat 6 ve Red hat 7 için de geçerlidir.
@@ -90,7 +90,7 @@ Aşağıdaki adımlarda, uygulamanız için SQL ve ODBC için gereken kitaplıkl
     apt-get install msodbcsql
     apt-get install unixodbc-dev-utf16 #this step is optional but recommended*
 
-Visual Studio'yu başlatın. Araçlar-> Seçenekler altında > platformlar arası > Bağlantı Yöneticisi ' ne, Linux kutuya bir bağlantı ekleyin:
+Visual Studio 'Yu başlatın. Araçlar-> Seçenekler altında > platformlar arası > Bağlantı Yöneticisi ' ne, Linux kutuya bir bağlantı ekleyin:
 
 ![Araç seçenekleri](./media/sql-database-develop-cplusplus-simple/tools.png)
 

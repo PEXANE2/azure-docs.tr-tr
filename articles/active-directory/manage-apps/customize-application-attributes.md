@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef3d6a47986056925f9964638c9c7192341ca5f9
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241001"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641497"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kullanıcı hazırlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler
 
@@ -77,6 +77,16 @@ Bu özellik ile birlikte, öznitelik eşlemeleri de aşağıdaki öznitelikleri 
   - **Her zaman** : Bu eşlemeyi hem Kullanıcı oluşturma hem de güncelleştirme eylemlerinde uygulayın.
   - **Yalnızca oluşturma sırasında** -bu eşlemeyi yalnızca Kullanıcı oluşturma eylemlerinde uygulayın.
 
+## <a name="matching-users-in-the-source-and-target--systems"></a>Kaynak ve hedef sistemlerdeki eşleşen kullanıcılar
+Azure AD sağlama hizmeti hem bir, hem hem de (hedef sistemde olmayan kullanıcılar) ve brownfield (kullanıcılar zaten hedef sistemde mevcut) senaryolarında dağıtılabilir. Her iki senaryoyu de desteklemek için, sağlama hizmeti eşleşen öznitelik kavramını kullanır. Eşleşen öznitelik (ler), bir kullanıcıyı kaynakta benzersiz bir şekilde belirlemeyi ve hedefteki kullanıcıyla eşleştirmeyi belirlemenizi sağlar. Dağıtımınızı planlamanın bir parçası olarak, kaynak ve hedef sistemlerdeki bir kullanıcıyı benzersiz şekilde tanımlamak için kullanılabilecek özniteliği tanımlar. Dikkat edilmesi gerekenler:
+
+- **Eşleşen öznitelikler benzersiz olmalıdır:** Müşteriler genellikle, eşleşen öznitelik olarak userPrincipalName, posta veya nesne KIMLIĞI gibi öznitelikleri kullanır.
+- **Eşleşen öznitelikler olarak birden çok öznitelik kullanılabilir:** Kullanıcıları ve değerlendirildikleri sırayı (Kullanıcı arabiriminde eşleşen öncelik olarak tanımlanır) eşleştirirken değerlendirilecek birden çok öznitelik tanımlayabilirsiniz. Örneğin, eşleşen öznitelikler olarak üç öznitelik tanımlayabilir ve bir Kullanıcı ilk iki öznitelik hesaplandıktan sonra benzersiz bir şekilde eşleşirse, hizmet üçüncü özniteliğe evaluat. Hizmet, eşleşen öznitelikleri belirtilen sırada değerlendirir ve bir eşleşme bulunduğunda değerlendirmeyi durdurur.  
+- **Kaynaktaki ve hedefteki değerin tamamen eşleşmesi gerekmez:** Hedefteki değer, kaynaktaki değerin bazı basit işlevleri olabilir. Bu nedenle, hedefte kaynak ve userPrincipalName içindeki bir Emadresi özniteliği olabilir ve bazı karakterleri sabit değerle değiştiren Emapostaadresi özniteliğinin işleviyle eşleştirebilirsiniz.  
+- **Özniteliklerin birleşimini temel alan eşleştirme desteklenmez:** Çoğu uygulama iki özelliği temel alarak sorgulamayı desteklemez ve bu, özniteliklerin birleşimine göre eşleşmek mümkün değildir. Bir sonraki ' den sonra tek özellikleri değerlendirmek mümkündür.
+- **Tüm kullanıcıların en az bir eşleşen öznitelik için bir değere sahip olması gerekir:** Eşleşen bir öznitelik tanımlarsanız, tüm kullanıcıların kaynak sistemde bu öznitelik için bir değere sahip olması gerekir. Örneğin, bir userPrincipalName öğesini eşleşen öznitelik olarak tanımlarsanız, tüm kullanıcıların userPrincipalName öğesi olmalıdır. Birden çok eşleşen öznitelik (ör. extensionAttribute1 ve posta) tanımlarsanız, tüm kullanıcıların aynı eşleşen özniteliğe sahip olması gerekmez. Bir kullanıcının e-posta extensionAttribute1 olabilir, ancak hiçbir kullanıcı e-posta ile extensionAttribute1. 
+- **Hedef uygulamanın, eşleşen öznitelikte filtrelemeyi desteklemesi gerekir:** Uygulama geliştiricileri, Kullanıcı veya Grup API 'sindeki özniteliklerin bir alt kümesine yönelik filtrelemeye izin verir. Galerideki uygulamalar için, varsayılan öznitelik eşlemesinin hedef uygulamanın API 'sinin filtrelemeyi desteklediği bir özniteliğe ait olduğundan emin veriyoruz. Hedef uygulama için varsayılan eşleşen özniteliği değiştirirken, özniteliğin filtrelenmesini sağlamak için üçüncü taraf API belgelerini denetleyin.  
+
 ## <a name="editing-group-attribute-mappings"></a>Grup özniteliği düzenleniyor-eşlemeler
 
 ServiceNow, Box ve G Suite gibi seçilen sayıda uygulama, Grup nesneleri ve Kullanıcı nesneleri sağlama yeteneğini destekler. Grup nesneleri, Grup üyeleri ile birlikte görünen adlar ve e-posta diğer adları gibi grup özellikleri içerebilir.
@@ -98,9 +108,9 @@ Ancak, bazı uygulamalar özel öznitelikleri destekler ve Azure AD sağlama hiz
 
 Öznitelik listesini özelleştirmeyi destekleyen uygulamalar ve sistemler şunlardır:
 
-- Satış
+- Salesforce
 - ServiceNow
-- Günü
+- Workday
 - Azure Active Directory ([Azure AD Graph API varsayılan öznitelikleri](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) ve özel dizin uzantıları desteklenir)
 - [Çekirdek şemasında](https://tools.ietf.org/html/rfc7643) tanımlanan özniteliklerin eklenmesi gereken [SCIM 2,0](https://tools.ietf.org/html/rfc7643)' ı destekleyen uygulamalar
 
@@ -125,6 +135,113 @@ Desteklenen özniteliklerin listesi düzenlenirken aşağıdaki özellikler sağ
 - **Başvurulan nesne özniteliği** -Eğer bir başvuru türü özniteliği ise, bu menü, öznitelik ile ilişkili değeri içeren hedef uygulamadaki tablo ve özniteliği seçmenizi sağlar. Örneğin, saklı değeri ayrı bir "departmanlar" tablosunda bir nesneye başvuran "Departman" adlı bir özniteliğe sahipseniz, "Departments.Name" seçeneğini belirleyin. Başvuru tabloları ve belirli bir uygulama için desteklenen birincil KIMLIK alanları önceden yapılandırılmıştır ve şu anda Azure portal kullanılarak düzenlenemiyor, ancak [Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)kullanılarak düzenlenebilirler.
 
 Yeni bir öznitelik eklemek için desteklenen özniteliklerin listesinin sonuna kaydırın, yukarıdaki girişleri kullanarak yukarıdaki alanları doldurun ve **öznitelik Ekle**' yi seçin. Öznitelik ekleme bittiğinde **Kaydet** ' i seçin. Ardından, yeni özniteliklerin öznitelik eşleme düzenleyicisinde kullanılabilir olması için **sağlama** sekmesini yeniden yüklemeniz gerekir.
+## <a name="provisioning-a-role-to-a-scim-app"></a>SCıM uygulamasına bir rol sağlama
+Uygulamanıza bir kullanıcı için roller sağlamak üzere aşağıdaki adımları kullanın. Aşağıdaki açıklamanın özel SCIM uygulamalarına özgü olduğunu unutmayın. Salesforce ve ServiceNow gibi Galeri uygulamaları için önceden tanımlı rol eşlemelerini kullanın. Aşağıdaki madde işaretleri, Approtaatamalar özniteliğini uygulamanızın beklediği biçime nasıl dönüştürebileceğinizi açıklamaktadır.
+
+- Azure AD 'de Approlet atamasını uygulamanızdaki bir role eşlemek için özniteliği bir [ifade](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)kullanarak dönüştürmeniz gerekir. Approtaatama özniteliği rol ayrıntılarını ayrıştırmak için bir ifade kullanılmadan doğrudan bir rol özniteliğiyle **eşlenmemelidir** . 
+
+- **Singleapprotaatama** 
+  - **Ne zaman kullanılır:** Bir kullanıcı için tek bir rol sağlamak ve birincil rolü belirtmek için Singleapprotaatama ifadesini kullanın. 
+  - **Nasıl yapılandırılır:** Öznitelik eşlemeleri sayfasına gitmek için yukarıda açıklanan adımları kullanın ve Roles özniteliğiyle eşlemek için Singleapprotaatama ifadesini kullanın. Aralarından seçim yapabileceğiniz üç rol özniteliği vardır: (roller [birincil EQ "true"]. görüntüleme, roller [birincil EQ "true]. Type ve Roles [PRIMARY EQ" true "]. Value). Eşlemelerinizde rol özniteliklerinin herhangi birini veya tümünü eklemeyi seçebilirsiniz. Birden fazla eklemek isterseniz, yeni bir eşleme ekleyin ve onu Target özniteliği olarak dahil edin.  
+  
+  ![Singleapprotaatama Ekle](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  - **Dikkate alınması gereken noktalar**
+    - Bir kullanıcıya birden çok rolün atanmadığından emin olun. Hangi rolün sağlanacağı garanti edilemez.
+    
+  - **Örnek çıkış** 
+
+   ```json
+    {
+      "schemas": [
+          "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": true,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "value": "Admin"
+         }
+      ]
+   }
+   ```
+  
+- **Approleatamasınscomplex** 
+  - **Ne zaman kullanılır:** Bir kullanıcı için birden çok rol sağlamak üzere Approleatamamentscomplex ifadesini kullanın. 
+  - **Nasıl yapılandırılır:** Roller için yeni bir öznitelik eklemek üzere yukarıda açıklanan desteklenen özniteliklerin listesini düzenleyin: 
+  
+    ![Rol Ekleme](./media/customize-application-attributes/add-roles.png)<br>
+
+    Ardından, aşağıdaki görüntüde gösterildiği gibi özel rol özniteliğiyle eşlemek için Approleatamasınscomplex ifadesini kullanın:
+
+    ![Approleatamamentscomplex ekleyin](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+  - **Dikkate alınması gereken noktalar**
+    - Tüm roller birincil = yanlış olarak sağlanacak.
+    - GÖNDERI, rol türünü içerir. Düzeltme Eki isteği türü içermiyor. Hem POST hem de PATCH isteklerinde türü göndermek için çalışıyoruz.
+    
+  - **Örnek çıkış** 
+  
+   ```json
+   {
+       "schemas": [
+           "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "Admin",
+               "value": "Admin"
+         },
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "User",
+             "value": "User"
+         }
+      ]
+   }
+   ```
+
+  
+
+
+## <a name="provisioning-a-multi-value-attribute"></a>Çok değerli bir öznitelik sağlama
+PhoneNumbers ve e-postalar gibi bazı öznitelikler, farklı türlerde telefon numaralarını veya e-postaları belirtmeniz gerekebilecek çok değerli özniteliklerdir. Birden çok değerli öznitelikler için aşağıdaki ifadeyi kullanın. Bu, öznitelik türünü belirtmenize ve bu değeri karşılık gelen Azure AD Kullanıcı özniteliğiyle eşlemenizi sağlar. 
+
+* phoneNumbers [tür EQ "iş"]. değer
+* phoneNumbers [tür EQ "mobil"]. değer
+* phoneNumbers [tür EQ "Faks"]. değer
+
+   ```json
+   "phoneNumbers": [
+       {
+         "value": "555-555-5555",
+         "type": "work"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "mobile"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "fax"
+      }
+   ]
+   ```
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>Varsayılan öznitelikleri ve öznitelik eşlemelerini geri yükleme
 
@@ -149,5 +266,5 @@ Bu seçeneğin belirlenmesi, sağlama hizmeti çalışırken tüm kullanıcılar
 - [SaaS uygulamalarına Kullanıcı sağlamasını/sağlamayı kaldırmayı otomatikleştirme](user-provisioning.md)
 - [Öznitelik eşlemeleri için Ifadeler yazma](functions-for-customizing-application-data.md)
 - [Kullanıcı hazırlama için kapsam filtreleri](define-conditional-rules-for-provisioning-user-accounts.md)
-- [Kullanıcıları ve grupları Azure Active Directory uygulamalara otomatik olarak sağlamayı etkinleştirmek için SCıM kullanma](use-scim-to-provision-users-and-groups.md)
+- [Kullanıcıların ve grupların Azure Active Directory'den uygulamalara otomatik olarak hazırlanmasını etkinleştirmek için SCIM'yi kullanma](use-scim-to-provision-users-and-groups.md)
 - [SaaS uygulamalarının nasıl tümleştirileceği hakkında öğreticiler listesi](../saas-apps/tutorial-list.md)

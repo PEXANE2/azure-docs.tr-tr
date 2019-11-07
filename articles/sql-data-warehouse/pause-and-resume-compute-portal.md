@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Azure SQL veri ambarı 'nda işlem duraklatma ve devam ettirme-Azure portal | Microsoft Docs"
+title: 'Hızlı başlangıç: duraklatma & devam eden işlem-Azure portal '
 description: Maliyetleri kaydetmek için Azure SQL veri ambarı 'nda işlem duraklatmak için Azure portal kullanın. Veri ambarını kullanmaya hazırsanız işlem işlemine da izin verilmez.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,14 +10,15 @@ ms.subservice: manage
 ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 46fb1fc6455cd35d8bb1eaf0a1b7ee499f5c1caf
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 14f66f71948f75a723c9fdbed7490d54c2c3e2b2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574877"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693007"
 ---
-# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portal Azure SQL veri ambarı için işlem duraklatma ve devam ettirme
+# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure SQL veri ambarı için işlem duraklatma ve devam ettirme
 
 Maliyetleri kaydetmek için Azure SQL veri ambarı 'nda işlem duraklatmak için Azure portal kullanın. Veri ambarını kullanmaya hazırsanız [Işlem işlemine](sql-data-warehouse-manage-compute-overview.md) da izin verilmez.
 
@@ -25,7 +26,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -44,8 +45,8 @@ Bir SQL veri ambarını duraklatmak için bu adımları izleyin.
     ![Çevrimiçi işlem](media/pause-and-resume-compute-portal/compute-online.png)
 
 4. Veri ambarını duraklatmak için **Duraklat** düğmesine tıklayın. 
-5. Devam etmek isteyip istemediğinizi soran bir onay sorusu görüntülenir. Yordamı tamamlamak için **Evet**yüklemesini desteklemesi gerekir.
-6. Birkaç dakika bekleyin ve sonra **durumun** duraklatıldığına dikkat edin.
+5. Devam etmek isteyip istemediğinizi soran bir onay sorusu görüntülenir. **Evet**'e tıklayın.
+6. Birkaç dakika bekleyin ve sonra **durumun** **duraklatıldığına**dikkat edin.
 
     ![Duraklatılıyor](media/pause-and-resume-compute-portal/pausing.png)
 
@@ -66,10 +67,10 @@ Bir SQL veri ambarını yeniden başlatmak için aşağıdaki adımları izleyin
     ![Çevrimdışı işlem](media/pause-and-resume-compute-portal/compute-offline.png)
 
 4. Veri ambarını yeniden **başlatmak Için Başlat**' a tıklayın. 
-5. Başlatmak isteyip istemediğinizi soran bir onay sorusu görüntülenir. Yordamı tamamlamak için **Evet**yüklemesini desteklemesi gerekir.
-6. **Durumun** sürdürüldiğine dikkatedin.
+5. Başlatmak isteyip istemediğinizi soran bir onay sorusu görüntülenir. **Evet**'e tıklayın.
+6. **Durumun** **sürdürüldiğine**dikkat edin.
 
-    ![Sürdürülüyor](media/pause-and-resume-compute-portal/resuming.png)
+    ![Etmek](media/pause-and-resume-compute-portal/resuming.png)
 
 7. Veri ambarı yeniden çevrimiçi olduğunda, durum **çevrimiçi** olur ve seçenek düğmesi **duraklatılır**.
 8. Veri ambarı için işlem kaynakları artık çevrimiçi ve hizmeti kullanabilirsiniz. İşlem ücretleri sürdürüldü.

@@ -1,5 +1,5 @@
 ---
-title: Kiracı başına veritabanı SaaS öğreticisi-Azure SQL veritabanı | Microsoft Docs
+title: Kiracı başına veritabanı SaaS öğreticisi-Azure SQL veritabanı
 description: Azure SQL veritabanı 'nı kullanarak kiracı başına veritabanı desenini ve diğer SaaS desenlerini gösteren Wingtip biletleri SaaS çok kiracılı uygulamasını dağıtın ve araştırın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: d5f64f0a9abfa736c1db0e562b6f18ecfc1f6de5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b271c4bbf942bee70c4995ee04ec370591d4f67d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023840"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692177"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL veritabanı ile kiracı başına veritabanı modelini kullanan çok kiracılı SaaS uygulamasını dağıtma ve araştırma
 
@@ -36,7 +36,7 @@ Bu öğreticide şunları öğrenirsiniz:
 
 Çeşitli SaaS tasarım ve yönetim düzenlerini araştırmak için bir [dizi ilgili öğretici](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) sunulmaktadır. Öğreticiler, bu ilk dağıtımın ötesinde derleme içerir. Öğreticileri kullandığınızda, farklı SaaS desenlerinin nasıl uygulandığını görmek için, belirtilen betikleri inceleyebilirsiniz. Betikler, SQL Database özelliklerinin SaaS uygulamalarının geliştirilmesini nasıl basitleştireceğinizi gösterir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için Azure PowerShell yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
@@ -87,16 +87,16 @@ Uygulama dağıtıldıktan sonra, kaynak kodu ve yönetim betikleri ' ni indirin
 1. **Clone or download**'u (Kopyala veya indir) seçin.
 1. **ZIP 'ı indir**' i seçin ve dosyayı kaydedin.
 1. **WingtipTicketsSaaS-DbPerTenant-Master. zip** dosyasına sağ tıklayın ve ardından **Özellikler**' i seçin.
-1. **Genel** sekmesinde, **Engellemeyi kaldır** > **Uygula**' yı seçin.
+1. **Genel** sekmesinde **Engellemeyi kaldır** > **Uygula**' yı seçin.
 1. **Tamam**' ı seçin ve dosyaları ayıklayın
 
-Betikler... \\Wingtipbilet ssaas-DbPerTenant-Master @ no__t-1Learning Modules klasöründe bulunur.
+Betikler...\\Wingtipbilet ssaas-DbPerTenant-Master\\öğrenme modülleri klasöründe bulunur.
 
 ## <a name="update-the-user-configuration-file-for-this-deployment"></a>Bu dağıtım için Kullanıcı yapılandırma dosyasını güncelleştir
 
 Herhangi bir komut dosyasını çalıştırmadan önce, Kullanıcı yapılandırma dosyasındaki kaynak grubunu ve Kullanıcı değerlerini güncelleştirin. Bu değişkenleri, dağıtım sırasında kullandığınız değerlere ayarlayın.
 
-1. PowerShell ıSE 'de açın... \\Learning modülleri @ no__t-1**userconfig. psm1**
+1. PowerShell ıSE 'de,...\\öğrenme modüllerini açın\\**userconfig. psm1**
 1. **Resourcegroupname** ve **ad** 'yi dağıtımınızın belirli değerleriyle güncelleştirin (yalnızca 10 ve 11. satır).
 1. Değişiklikleri kaydedin.
 
@@ -110,26 +110,26 @@ Uygulamada dahili olarak, her kiracı bir SQL elastik havuzuna dağıtılan bir 
 
 Merkezi bir **Olay Hub 'ı** sayfası, dağıtımınızdaki kiracılar için bağlantıların bir listesini sağlar.
 
-1. Web tarayıcınızda Olay Hub 'ını açmak için URL 'YI kullanın: http://events.wingtip-dpt.&lt; user&gt;.trafficmanager.net. @No__t-0user @ no__t-1 değerini dağıtımınızın Kullanıcı değeriyle değiştirin.
+1. Web tarayıcınızda Olay Hub 'ını açmak için URL 'YI kullanın: http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net. &lt;Kullanıcı&gt; dağıtımınızın Kullanıcı değeriyle değiştirin.
 
     ![Olay Hub 'ı](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
 2. Olaylar hub 'ında **fabrikam Cakkulübü** seçin.
 
-    ![Etkinlikler](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
+    ![Olaylar](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 Wingtip Application, gelen isteklerin dağıtımını denetlemek için [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md) kullanır. Belirli bir kiracının Olaylar sayfasına erişim URL 'SI aşağıdaki biçimi kullanır:
 
-- http://events.wingtip-dpt.&lt; user&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt; Kullanıcı&gt;. trafficmanager.net/fabrikamjazzclub
 
     Önceki biçimin parçaları aşağıdaki tabloda açıklanmıştır.
 
     | URL bölümü        | Açıklama       |
     | :-------------- | :---------------- |
     | http://events.wingtip-dpt | Wingtip uygulamasının olaylar bölümü.<br /><br /> *-DPT* , Wingtip bilet 'nin *kiracı başına veritabanı* uygulamasını diğer uygulamalardan ayırır. Bu örnek, *tek* kiracılı kiracı ( *-sa*) veya *çok kiracılı veritabanı* ( *-MT*) uygulamalarından örnektir. |
-    | . *&lt;Kullanıcı @ no__t-2* | örnekteki *AF1* . |
+    | . *&lt;kullanıcı&gt;* | örnekteki *AF1* . |
     | . trafficmanager.net/ | Traffic Manager, temel URL. |
     | fabrikamjazzclub | Fabrikam Cakulüler adlı kiracıyı tanımlar. |
     | &nbsp; | &nbsp; |
@@ -140,7 +140,7 @@ Wingtip Application, gelen isteklerin dağıtımını denetlemek için [*Azure 
   - Katalog, parça *eşleme yönetimi*kullanılarak uygulanır.
 - Olay Hub 'ı, her kiracı için olaylar listesi sayfa URL 'Lerini oluşturmak üzere katalogda genişletilmiş meta verileri kullanır.
 
-Bir üretim ortamında, genellikle [*Şirket İnternet etki alanını*](../traffic-manager/traffic-manager-point-internet-domain.md)Traffic Manager DNS adına @no__t IÇIN BIR CNAME DNS kaydı oluşturursunuz.
+Bir üretim ortamında, genellikle [*Şirket İnternet etki alanı*](../traffic-manager/traffic-manager-point-internet-domain.md) Traffic Manager DNS adına işaret eden BIR CNAME DNS kaydı oluşturursunuz.
 
 > [!NOTE]
 > Traffic Manager 'ın kullanılması bu öğreticide hemen açık olmayabilir. Bu öğretici serisinin amacı, karmaşık bir üretim ortamının ölçeğini işleyebilen desenleri göstermektir. Böyle bir durumda, örneğin, dünya genelinde dağıtılmış birden çok Web uygulamanız vardır ve veritabanları ile birlikte yer alır ve Traffic Manager 'ın bu örnekler arasında yönlendirme yapması gerekir.
@@ -152,7 +152,7 @@ Artık uygulama dağıtıldığına göre, şimdi çalışmaya bakalım.
 
 *Demo-LoadGenerator* PowerShell betiği, tüm kiracı veritabanlarına karşı çalışan bir iş yükünü başlatır. Birçok SaaS uygulamasında gerçek dünyada yük, tek tek ve tahmin edilemez. Bu tür yükün benzetimini yapmak için Oluşturucu, her bir kiracıda rastgele ani artışlar veya etkinlik içeren bir yük oluşturur. Artışlarıyla rastgele aralıklarda oluşur. Yük deseninin ortaya geçmesi birkaç dakika sürer. Yüklemeyi izlemeye başlamadan önce oluşturucunun en az üç veya dört dakika çalışmasına izin verin.
 
-1. PowerShell ıSE 'de... \\Learning modüllerini @ no__t-1Utilities @ no__t-2*demo-LoadGenerator. ps1* betiğini açın.
+1. PowerShell ıSE 'de,...\\öğrenme modüllerini\\yardımcı programları\\*demo-LoadGenerator. ps1* betiği ' ni açın.
 2. Betiği çalıştırmak için F5 tuşuna basın ve yük oluşturucuyu başlatın. Varsayılan parametre değerlerini Şu anda bırakın.
 3. Azure hesabınızda oturum açın ve gerekirse kullanmak istediğiniz aboneliği seçin.
 
@@ -172,18 +172,18 @@ Arka plan işlerini denetlemek ve izlemek isterseniz, aşağıdaki cmdlet 'leri 
 
 1. *Demo-LoadGenerator. ps1* ön planda *loadgenerator. ps1* başlatır.
 
-    - Her iki. ps1 dosyası da @ no__t-0Utilities @ no__t-1.
+    - Her iki. ps1 dosyası de\\yardımcı programlar\\klasörler öğrenme modülleri altında depolanır.
 
 2. , Katalogdaki tüm kiracı veritabanlarında *Loadgenerator. ps1* döngüleri.
 
 3. *Loadgenerator. ps1* her kiracı veritabanı için bir arka plan PowerShell işi başlatır:
 
     - Varsayılan olarak, arka plan işleri 120 dakika boyunca çalışır.
-    - Her iş, *sp_CpuLoadGenerator*yürüterek bir KIRACı veritabanında CPU tabanlı yüke neden olur. Yükün yoğunluğu ve süresi `$DemoScenario` ' a göre değişir.
+    - Her iş, *sp_CpuLoadGenerator*yürüterek bir KIRACı veritabanında CPU tabanlı yüke neden olur. Yükün yoğunluğu ve süresi `$DemoScenario`göre değişir.
     - yüksek CPU yüküne neden olan bir SQL SELECT ifadesinin etrafında *sp_CpuLoadGenerator* döngüleri. SEÇIM sorunları arasındaki zaman aralığı, denetlenebilir bir CPU yükü oluşturmak için parametre değerlerine göre değişir. Yük düzeyleri ve aralıklar daha gerçekçi yükün benzetimini yapmak için rasgeledir.
-    - Bu. SQL dosyası *Wingtiptenantdb @ no__t-1dbo @ no__t-2StoredProcedures @ no__t-3*altında depolanır.
+    - Bu. SQL dosyası *Wingtiptenantdb\\dbo\\StoredProcedures\\* altında depolanır.
 
-4. @No__t-0 ise, yük Oluşturucu arka plan işlerini başlatır ve çalışmaya devam eder. Her 10 saniyede, sağlanan tüm yeni kiracılar için izler. @No__t-0 ' ı ayarlarsanız, LoadGenerator arka plan işlerini başlatır ve ardından ön planda çalışmayı sonlandırır. Bu öğretici için `$OneTime = $false` ' ı bırakın.
+4. `$OneTime = $false`, yük Oluşturucu arka plan işlerini başlatır ve çalışmaya devam eder. Her 10 saniyede, sağlanan tüm yeni kiracılar için izler. `$OneTime = $true`ayarlarsanız, LoadGenerator arka plan işlerini başlatır ve ardından ön planda çalışmayı sonlandırır. Bu öğretici için `$OneTime = $false`bırakın.
 
    Yük oluşturucuyu durdurmak veya yeniden başlatmak istiyorsanız CTRL-C veya Durdur Işlemini CTRL-BREAK kullanın.
 
@@ -198,7 +198,7 @@ Sonraki bölüme geçmeden önce, iş çağırma durumunda yük oluşturucuyu ç
 İlk dağıtım üç örnek kiracı oluşturur. Şimdi, dağıtılan uygulamanın etkisini görmek için başka bir kiracı oluşturursunuz. Wingtip App 'te yeni kiracılar sağlamak için iş akışı, [sağlama ve Katalog öğreticisinde](saas-dbpertenant-provision-and-catalog.md)açıklanmaktadır. Bu aşamada, bir dakikadan kısa süren yeni bir kiracı oluşturacaksınız.
 
 1. Yeni bir PowerShell ıSE açın.
-2. Açık... \\Learning Modules\Provision ve Catalog @ no__t-1*demo-ProvisionAndCatalog. ps1*.
+2. Açık...\\öğrenimi Modules\Provision ve Catalog\\*demo-ProvisionAndCatalog. ps1*.
 3. Betiği çalıştırmak için F5 tuşuna basın. Şimdilik varsayılan değerleri bırakın.
 
    > [!NOTE]
@@ -220,14 +220,14 @@ Yeni kiracının listede görünmesini sağlamak için olaylar hub 'ını yenile
 
 Kiracıların koleksiyonuna karşı bir yük çalıştırmaya başladığınıza göre, dağıtılmış kaynaklara göz atalım.
 
-1.  [Azure Portal](https://portal.azure.com), SQL Server listenize gidin. Ardından **-DPT-&lt;USER @ no__t-2 Server kataloğunu** açın.
+1.  [Azure Portal](https://portal.azure.com), SQL Server listenize gidin. Ardından, **Katalog-DPT-&lt;kullanıcı&gt;** sunucusu ' nu açın.
     - Katalog sunucusu, **tenantcatalog** ve **basetenantdb** olmak üzere iki veritabanı içerir (yeni kiracılar oluşturmak için kopyalanmış bir şablon veritabanı).
 
-   ![Veri tabanları](./media/saas-dbpertenant-get-started-deploy/databases.png)
+   ![Veritabanları](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. SQL Server listenize geri dönün.
 
-3. Kiracı veritabanlarını tutan **tenants1-DPT-&lt;USER @ no__t-2** sunucusunu açın.
+3. Kiracı veritabanlarını tutan **tenants1-DPT-&lt;USER&gt;** sunucusunu açın.
 
 4. Aşağıdaki öğelere bakın:
 
@@ -240,7 +240,7 @@ Kiracıların koleksiyonuna karşı bir yük çalıştırmaya başladığınıza
 
 *Loadgenerator. ps1* birkaç dakika çalıştıktan sonra, bazı izleme özelliklerine bakmak için yeterli veri kullanılabilir olmalıdır. Bu yetenekler havuzlar ve veritabanları içinde yerleşik olarak bulunur.
 
-**Tenants1-DPT-&lt;User @ no__t-2**sunucusuna gidin ve havuzun kaynak kullanımını görüntülemek için **Pool1** ' ı seçin. Aşağıdaki grafiklerde, yük Oluşturucu bir saat boyunca çalışır.
+**Tenants1-DPT-&lt;user&gt;** sunucusuna gidin ve havuzun kaynak kullanımını görüntülemek için **Pool1** ' yi seçin. Aşağıdaki grafiklerde, yük Oluşturucu bir saat boyunca çalışır.
 
    ![Havuzu izle](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

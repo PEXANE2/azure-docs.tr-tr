@@ -1,5 +1,5 @@
 ---
-title: "VS Code: Azure SQL veritabanı 'nda verileri bağlama ve sorgulama | Microsoft Docs"
+title: "VS Code: Azure SQL veritabanı 'nda verileri bağlama ve sorgulama "
 description: Visual Studio Code kullanarak SQL Veritabanına bağlanma hakkında bilgi edinin. Ardından, verileri sorgulamak ve düzenlemek için Transact-SQL (T-SQL) deyimleri çalıştırın.
 keywords: sql veritabanına bağlanma
 services: sql-database
@@ -12,24 +12,24 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: d8f12e699c17787d897a7f5ed23eccdbf3659921
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 20de97e9da7fc70e6712aedb76352db1b5748192
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569128"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690869"
 ---
-# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Hızlı Başlangıç: Azure SQL veritabanına bağlanmak ve veritabanını sorgulamak için Visual Studio Code kullanma
+# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanına bağlanmak ve veritabanını sorgulamak için Visual Studio Code kullanma
 
-[Visual Studio Code](https://code.visualstudio.com/docs) Linux, macOS ve Windows için bir grafiksel kod düzenleyicisidir. Dahil olmak üzere uzantıları destekleyen [mssql uzantısı](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL veritabanı ve SQL veri ambarı'nı sorgulamak için. Bu hızlı başlangıçta, Azure SQL veritabanına bağlanmak ve ardından Transact-SQL deyimlerini kullanarak verileri sorgulamak, eklemek, güncelleştirmek ve silmek için Visual Studio Code kullanacaksınız.
+[Visual Studio Code](https://code.visualstudio.com/docs) , Linux, MacOS ve Windows için bir grafik kod düzenleyicisidir. Microsoft SQL Server, Azure SQL veritabanı ve SQL veri ambarı 'nı sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler. Bu hızlı başlangıçta, Azure SQL veritabanına bağlanmak ve ardından Transact-SQL deyimlerini kullanarak verileri sorgulamak, eklemek, güncelleştirmek ve silmek için Visual Studio Code kullanacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Azure SQL veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
   || Tek veritabanı | Yönetilen örnek |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Oluşturma| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [Bir VM 'den bağlantı](sql-database-managed-instance-configure-vm.md)|
@@ -41,11 +41,11 @@ ms.locfileid: "68569128"
   > [!IMPORTANT]
   > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. Yönetilen bir örnek ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
 
-## <a name="install-visual-studio-code"></a>Visual Studio Kodu'nu yükle
+## <a name="install-visual-studio-code"></a>Visual Studio Code yüklensin
 
-En son yüklediğinizden emin olun [Visual Studio Code](https://code.visualstudio.com/Download) yüklenip yüklenmediğini [mssql uzantısı](https://aka.ms/mssql-marketplace). Mssql uzantısı yükleme hakkında yönergeler için bkz. [VS Code yükleme](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) ve [Visual Studio Code için mssql ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql).
+En son [Visual Studio Code](https://code.visualstudio.com/Download) yüklediğinizden ve [MSSQL uzantısını](https://aka.ms/mssql-marketplace)yüklediğinizden emin olun. MSSQL uzantısını yükleme hakkında yönergeler için, bkz. [yükleme vs Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) ve [MSSQL Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql).
 
-## <a name="configure-visual-studio-code"></a>Visual Studio Code'u yapılandırma
+## <a name="configure-visual-studio-code"></a>Visual Studio Code Yapılandır
 
 ### <a name="mac-os"></a>**Mac OS**
 
@@ -72,7 +72,7 @@ Hiçbir özel yapılandırma gerekmez.
 
 Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
@@ -80,48 +80,48 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 
 ## <a name="set-language-mode-to-sql"></a>Dili modunu SQL’e ayarlama
 
-Dil modunu Visual Studio Code'da kümesine **SQL** mssql komutlarını ve T-SQL IntelliSense'i etkinleştirmek için.
+Visual Studio Code, MSSQL komutlarını ve T-SQL IntelliSense 'i etkinleştirmek için dil modunu **SQL** olarak ayarlayın.
 
 1. Yeni bir Visual Studio Code penceresi açın.
 
-2. **CTRL**+**N**tuşuna basın. Yeni bir düz metin dosyası açılır.
+2. **Ctrl**+**N**tuşuna basın. Yeni bir düz metin dosyası açılır.
 
-3. Seçin **düz metin** durum çubuğunun sağ alt köşesindeki içinde.
+3. Durum çubuğunun sağ alt köşesindeki **düz metin** ' i seçin.
 
-4. İçinde **dil modu Seç** açıldığında seçin açılan menüsü **SQL**.
+4. Açılan **dil modunu seç** açılan menüsünde **SQL**' i seçin.
 
 ## <a name="connect-to-your-database"></a>Veritabanınıza bağlanın
 
 Visual Studio Code’u kullanarak Azure SQL Veritabanı sunucunuzla bağlantı kurun.
 
 > [!IMPORTANT]
-> Devam etmeden önce, sunucunuzun ve oturum açma bilgilerinin hazırlanmasına sahip olduğunuzdan emin olun. Odağınızı Visual Studio Code'dan değiştirirseniz bağlantı profili bilgilerini girmeye başladıktan sonra profil oluşturma işlemini yeniden başlatmanız gerekir.
+> Devam etmeden önce, sunucunuzun ve oturum açma bilgilerinin hazırlanmasına sahip olduğunuzdan emin olun. Bağlantı profili bilgilerini girmeye başladıktan sonra, Visual Studio Code odağınızı değiştirirseniz, profil oluşturma işlemini yeniden başlatmanız gerekir.
 
-1. Visual Studio Code'da basın **Ctrl + Shift + P** (veya **F1**) komut paletini açın.
+1. Visual Studio Code ' de, **CTRL + SHIFT + P** (veya **F1**) tuşlarına basarak komut paletini açın.
 
 2. **MS SQL: Connect** ' i seçin ve **ENTER**' u seçin.
 
-3. Seçin **bağlantı profili oluşturmak**.
+3. **Bağlantı profili oluştur**' u seçin.
 
-4. Yeni profilinin bağlantı özelliklerini belirtmek için istemleri izleyin. Her bir değeri belirttikten sonra, devam etmek için **ENTER** ' ı seçin.
+4. Yeni profilin bağlantı özelliklerini belirtmek için istemleri izleyin. Her bir değeri belirttikten sonra, devam etmek için **ENTER** ' ı seçin.
 
    | Özellik       | Önerilen değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Sunucu adı** | Tam sunucu adı | Aşağıdakine benzer: **mynewserver20170313.database.windows.net**. |
-   | **Veritabanı adı** | mySampleDatabase | Bağlanmak için veritabanı. |
-   | **Kimlik doğrulaması** | SQL Oturum Açma| Bu öğreticide, SQL kimlik doğrulaması kullanır. |
-   | **Kullanıcı adı** | Kullanıcı adı | Sunucu oluşturmak için kullanılan sunucu yönetici hesabı kullanıcı adı. |
-   | **Parola (SQL Oturum Açma)** | Parola | Sunucu oluşturmak için kullanılan sunucu yönetici hesabı parolası. |
-   | **Parola kaydedilsin mi?** | Evet veya Hayır | Seçin **Evet** her defasında parolayı girmek istemiyorsanız. |
-   | **Bu profil için bir ad girin** | Gibi bir profil adı **mySampleProfile** | Kaydedilen bir profilin bağlantınızı sonraki oturum açma hızlandırır. |
+   | **Sunucu adı** | Tam sunucu adı | Şöyle bir şey: **mynewserver20170313.Database.Windows.net**. |
+   | **Veritabanı adı** | mySampleDatabase | Bağlanılacak veritabanı. |
+   | **Kimlik doğrulaması** | SQL Oturum Açma| Bu öğretici, SQL kimlik doğrulamasını kullanır. |
+   | **Kullanıcı adı** | Kullanıcı adı | Sunucuyu oluşturmak için kullanılan sunucu yöneticisi hesabının Kullanıcı adı. |
+   | **Parola (SQL Oturum Açma)** | Parola | Sunucuyu oluşturmak için kullanılan sunucu yöneticisi hesabının parolası. |
+   | **Parola kaydedilsin mi?** | Evet veya Hayır | Her seferinde parolayı girmek istemiyorsanız **Evet** ' i seçin. |
+   | **Bu profil için bir ad girin** | **Mysampleprofile** gibi bir profil adı | Kaydedilen bir profil, sonraki oturumlarda bağlantınızı hızlandırır. |
 
-   Başarılı olursa, profilin oluşturulup bağlandığını söyleyen bir bildirim görüntülenir.
+   Başarılı olursa, profiliniz oluşturulup bağlandığını belirten bir bildirim görüntülenir.
 
 ## <a name="query-data"></a>Verileri sorgulama
 
 Kategoriye göre ilk 20 ürünü sorgulamak için aşağıdaki [Select](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ifadesini çalıştırın.
 
-1. Düzenleyicisi penceresinde, aşağıdaki SQL sorgusunu yapıştırın.
+1. Düzenleyici penceresinde, aşağıdaki SQL sorgusunu yapıştırın.
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -130,15 +130,15 @@ Kategoriye göre ilk 20 ürünü sorgulamak için aşağıdaki [Select](https://
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. Sorguyu +çalıştırmak ve `Product` ve+ tablolarından`ProductCategory` sonuçları göstermek için CTRL SHIFT**E** tuşlarına basın.
+2. Sorguyu çalıştırmak ve `Product` ve `ProductCategory` tablolarından sonuçları göstermek için **Ctrl**+**SHIFT**+**E** tuşlarına basın.
 
-    ![2 tablolarından veri almak için sorgu](./media/sql-database-connect-query-vscode/query.png)
+    ![2 tablodan veri alma sorgusu](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>Veri ekleme
 
-`SalesLT.Product` Tabloya yeni bir ürün eklemek için aşağıdaki [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ifadesini çalıştırın.
+`SalesLT.Product` tablosuna yeni bir ürün eklemek için aşağıdaki [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ifadesini çalıştırın.
 
-1. Önceki sorguyu Bununla değiştirin.
+1. Önceki sorguyu bununla değiştirin.
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -160,13 +160,13 @@ Kategoriye göre ilk 20 ürünü sorgulamak için aşağıdaki [Select](https://
          ,GETDATE() );
    ```
 
-2. Tuşuna **Ctrl**+**Shift**+**E** yeni bir satır eklemek için `Product` tablo.
+2. `Product` tablosuna yeni bir satır eklemek için **Ctrl**+**SHIFT**+**E** tuşlarına basın.
 
 ## <a name="update-data"></a>Verileri güncelleştirme
 
 Eklenen ürünü güncelleştirmek için aşağıdaki [Update](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ifadesini çalıştırın.
 
-1. Önceki sorguyu Bununla değiştirin:
+1. Önceki sorguyu bununla değiştirin:
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -174,23 +174,23 @@ Eklenen ürünü güncelleştirmek için aşağıdaki [Update](https://msdn.micr
    WHERE Name = 'myNewProduct';
    ```
 
-2. Tuşuna **Ctrl**+**Shift**+**E** belirtilen satırı güncelleştirmek için `Product` tablo.
+2. `Product` tablodaki belirtilen satırı güncelleştirmek için **Ctrl**+**SHIFT**+**E** tuşlarına basın.
 
 ## <a name="delete-data"></a>Verileri silme
 
 Yeni ürünü kaldırmak için aşağıdaki [Delete](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ifadesini çalıştırın.
 
-1. Önceki sorguyu Bununla değiştirin:
+1. Önceki sorguyu bununla değiştirin:
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. Tuşuna **Ctrl**+**Shift**+**E** belirtilen satırı silmek için `Product` tablo.
+2. `Product` tablodaki belirtilen satırı silmek için **Ctrl**+**SHIFT**+**E** tuşlarına basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- SQL Server Management Studio kullanarak bağlanmak ve sorgulamak için bkz [. hızlı başlangıç: Azure SQL veritabanına bağlanmak ve verileri](sql-database-connect-query-ssms.md)sorgulamak için SQL Server Management Studio kullanın.
-- Azure Portal kullanarak bağlanmak ve sorgulamak için bkz [. hızlı başlangıç: Bağlanmak ve veri](sql-database-connect-query-portal.md)sorgulamak Için Azure Portal SQL sorgu düzenleyicisini kullanın.
+- SQL Server Management Studio kullanarak bağlanmak ve sorgulamak için bkz. [hızlı başlangıç: Azure SQL veritabanına bağlanmak ve verileri sorgulamak için SQL Server Management Studio kullanma](sql-database-connect-query-ssms.md).
+- Azure portal kullanarak bağlanmak ve sorgulamak için bkz. [hızlı başlangıç: veri bağlamak ve sorgulamak için Azure Portal SQL sorgu düzenleyicisini kullanın](sql-database-connect-query-portal.md).
 - Visual Studio Code'u kullanmaya ilişkin MSDN dergisi makalesi için bkz. [MSSQL uzantısı blog gönderisinden yararlanarak veritabanı IDE'si oluşturma](https://msdn.microsoft.com/magazine/mt809115).

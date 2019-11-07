@@ -1,5 +1,5 @@
 ---
-title: Kapasite sınırları-Azure SYNAPSE Analytics (eski adıyla SQL DW) | Microsoft Docs
+title: Kapasite sınırları-Azure SYNAPSE Analytics (eski adıyla SQL DW)
 description: Azure SYNAPSE 'de çeşitli SQL Analytics bileşenleri için izin verilen en yüksek değer.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,25 +10,26 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 702f78f5bae12b2eba6669a344af14f6d1236856
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c4ab9d9cc8007281e0e5729fe883e654107be6fe
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475802"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645284"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) kapasite sınırları
 
 Çeşitli Azure SYNAPSE bileşenleri için izin verilen en yüksek değer.
 
 ## <a name="workload-management"></a>İş yükü yönetimi
+
 | Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
 | [Veri ambarı birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Tek bir SQL Havuzu (veri ambarı) birimi için maksimum DWU | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Veri ambarı birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Sunucu başına varsayılan DTU |54.000<br></br>Varsayılan olarak, her SQL Server (örneğin, myserver.database.windows.net), 9 DW6000c 'e kadar izin veren bir 54.000 DTU kotasına sahiptir. Bu kota yalnızca bir güvenlik sınırıdır. [Bir destek bileti oluşturarak](sql-data-warehouse-get-started-create-support-ticket.md) ve istek türü olarak *Kota* ' yı seçerek kotanızı artırabilirsiniz.  DTU gereksinimlerinizi hesaplamak için gereken toplam DWU ile 7,5 ' i çarpıp, gereken toplam cDWU ile 9,0 ' i çarpın. Örneğin:<br></br>DW6000 x 7,5 = 45.000 DTU<br></br>DW6000c x 9,0 = 54.000 DTU.<br></br>Geçerli DTU tüketiminizi, portalda SQL Server seçeneğinden görüntüleyebilirsiniz. DTU kotasında hem duraklatılmış hem de duraklatılmamış veritabanları sayılır. |
 | Veritabanı bağlantısı |Maksimum eş zamanlı açık oturum |1024<br/><br/>Eş zamanlı açık oturumların sayısı, seçilen DWU 'ya göre değişiklik gösterecektir. DWU600c ve üzeri, en fazla 1024 açık oturumu destekler. DWU500c ve altı, en fazla eşzamanlı açık oturum sınırı olan 512 ' i destekler. Aynı anda yürütebileceğini sorgu sayısı için sınırlamalar olduğunu unutmayın. Eşzamanlılık sınırı aşıldığında, istek işlenmek üzere beklediği bir iç sıraya gider. |
 | Veritabanı bağlantısı |Hazırlanan deyimler için maksimum bellek |20 MB |
-| [İş yükü yönetimi](resource-classes-for-workload-management.md) |En fazla eşzamanlı sorgu |128<br/><br/>  En fazla 128 eşzamanlı sorgu yürütülecektir ve kalan sorgular sıraya alınacaktır.<br/><br/>Kullanıcılar daha yüksek kaynak sınıflarına atandığında veya [veri ambarı birimi](memory-and-concurrency-limits.md) ayarı düşürülen zaman eşzamanlı sorguların sayısı azalabilir. DMV sorguları gibi bazı sorguların çalışmasına her zaman izin verilir ve eşzamanlı sorgu sınırını etkilemez. Eşzamanlı sorgu yürütme hakkında daha fazla bilgi için bkz. [eşzamanlılık üst sınırları](memory-and-concurrency-limits.md#concurrency-maximums) makalesi. |
+| [İş yükü yönetimi](resource-classes-for-workload-management.md) |En fazla eşzamanlı sorgu |128<br/><br/>  En fazla 128 eşzamanlı sorgu yürütülecektir ve kalan sorgular sıraya alınacaktır.<br/><br/>Kullanıcılar daha yüksek kaynak sınıflarına atandığında veya [veri ambarı birimi] bellek-eşzamanlılık-limits.md) ayarı düşürülen zaman, eşzamanlı sorguların sayısı azalabilir. DMV sorguları gibi bazı sorguların çalışmasına her zaman izin verilir ve eşzamanlı sorgu sınırını etkilemez. Eşzamanlı sorgu yürütme hakkında daha fazla bilgi için [eşzamanlılık maximums] bellek-eşzamanlılık-limits.md) makalesine bakın. |
 | ['nin](sql-data-warehouse-tables-temporary.md) |En fazla GB |DW100 başına 399 GB. Bu nedenle, DWU1000 adresinde tempdb 3,99 TB olarak boyutlandırılır. |
 
 ## <a name="database-objects"></a>Veritabanı nesneleri

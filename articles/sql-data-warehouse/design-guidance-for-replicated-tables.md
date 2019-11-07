@@ -1,5 +1,5 @@
 ---
-title: Çoğaltılan tablolar için tasarım kılavuzu-Azure SQL veri ambarı | Microsoft Docs
+title: Çoğaltılan tablolar için tasarım kılavuzu
 description: Azure SQL veri ambarı şemanızda çoğaltılan tabloları tasarlamaya yönelik öneriler. 
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,19 +10,20 @@ ms.subservice: development
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c622edc6c3a37b2bc71323cf0e2c155f7aec6e33
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 18577cb729c9f17a112979cd1ebb763af38b9ca2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479323"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693052"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda çoğaltılan tabloları kullanmaya yönelik tasarım kılavuzu
 Bu makale, SQL veri ambarı şemanızda çoğaltılan tabloları tasarlamaya yönelik öneriler sağlar. Veri hareketini ve sorgu karmaşıklığını azaltarak sorgu performansını artırmak için bu önerileri kullanın.
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede, SQL veri ambarı 'nda veri dağıtımı ve veri taşıma kavramlarıyla ilgili bilgi sahibi olduğunuz varsayılır.  Daha fazla bilgi için bkz. [mimari](massively-parallel-processing-mpp-architecture.md) makalesi. 
 
 Tablo tasarımının bir parçası olarak, verileriniz ve verilerin nasıl sorgulandığı hakkında mümkün olduğunca fazla bilgi edinin.  Örneğin, bu soruları göz önünde bulundurun:
@@ -95,7 +96,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 Çoğaltılan bir tablo, tüm tablo bir Işlem düğümünde zaten mevcut olduğundan, birleştirmeler için herhangi bir veri taşıması gerektirmez. Boyut tabloları hepsini bir kez daha kez dağıtılmışsa, bir JOIN boyut tablosunu her bir Işlem düğümüne tam olarak kopyalar. Verileri taşımak için, sorgu planı, Yayınmoveoperation adlı bir işlem içerir. Bu tür veri taşıma işlemi sorgu performansını yavaşlatır ve çoğaltılan tablolar kullanılarak ortadan kalkar. Sorgu planı adımlarını görüntülemek için [sys. DM _pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) sistem katalog görünümünü kullanın. 
 
-Örneğin, AdventureWorks şemasına `FactInternetSales` karşı aşağıdaki sorguda tablo karma olarak dağıtılır. `DimDate` Ve`DimSalesTerritory` tabloları daha küçük boyut tablolarıdır. Bu sorgu, 2004 mali yılı için Kuzey Amerika toplam satışları döndürür:
+Örneğin, AdventureWorks şemasına karşı aşağıdaki sorguda `FactInternetSales` tablosu karma olarak dağıtılır. `DimDate` ve `DimSalesTerritory` tabloları daha küçük boyut tablolarıdır. Bu sorgu, 2004 mali yılı için Kuzey Amerika toplam satışları döndürür:
 
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
@@ -107,11 +108,11 @@ INNER JOIN dbo.DimSalesTerritory t
 WHERE d.FiscalYear = 2004
   AND t.SalesTerritoryGroup = 'North America'
 ```
-Yeniden Oluşturulduk `DimDate` ve `DimSalesTerritory` hepsini bir kez deneme tablosu olarak oluşturacağız. Sonuç olarak, sorgu birden çok yayın taşıma işlemine sahip olan aşağıdaki sorgu planını gösterdi: 
+`DimDate` ve `DimSalesTerritory` hepsini bir kez deneme tablosu olarak yeniden oluşturdunuz. Sonuç olarak, sorgu birden çok yayın taşıma işlemine sahip olan aşağıdaki sorgu planını gösterdi: 
  
 ![Hepsini bir kez deneme sorgu planı](media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg) 
 
-Yeniden oluşturulup çoğaltılan tablolar `DimDate` `DimSalesTerritory` olarak yeniden oluşturdunuz ve sorguyu yeniden çalıştırdık. Elde edilen sorgu planı çok daha kısadır ve herhangi bir yayın hareketi yoktur.
+`DimDate` ve `DimSalesTerritory` çoğaltılan tablolar olarak yeniden oluşturdunuz ve sorguyu yeniden çalıştırdık. Elde edilen sorgu planı çok daha kısadır ve herhangi bir yayın hareketi yoktur.
 
 ![Çoğaltılan sorgu planı](media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg) 
 

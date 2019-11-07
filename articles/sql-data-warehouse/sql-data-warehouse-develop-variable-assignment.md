@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı 'nda değişken atama | Microsoft Docs
+title: Değişken atama
 description: Azure SQL veri ambarı 'nda çözüm geliştirmeye yönelik T-SQL değişkenlerini atamaya yönelik ipuçları.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6c943478f3904aac17a572f012f2b2b69ffa2223
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1ae5285a8d1cf6fa391c082d0196b213e6b6a9c5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479556"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692764"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda değişken atama
 
@@ -23,7 +24,7 @@ Azure SQL veri ambarı 'nda çözüm geliştirmeye yönelik T-SQL değişkenleri
 
 ## <a name="setting-variables-with-declare"></a>DECLARE ile değişkenleri ayarlama
 
-SQL veri ambarı 'ndaki değişkenler, `DECLARE` `SET` veya ifadesini kullanarak ayarlanır. Değişkenleri DECLARE ile başlatmak, SQL veri ambarı 'nda değişken değer ayarlamak için en esnek yollarla biridir.
+SQL veri ambarı 'ndaki değişkenler, `DECLARE` ifadesiyle veya `SET` ifadesiyle ayarlanır. Değişkenleri DECLARE ile başlatmak, SQL veri ambarı 'nda değişken değer ayarlamak için en esnek yollarla biridir.
 
 ```sql
 DECLARE @v  int = 0
@@ -38,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Aynı DECLARE ifadesinde bir değişkeni başlatamıyor ve kullanamazsınız. Bu@p1 noktayı göstermek için, aynı Declare ifadesinde hem başlatılmış hem de kullanıldığı için aşağıdaki **örneğe izin verilmez** . Aşağıdaki örnek bir hata verir.
+Aynı DECLARE ifadesinde bir değişkeni başlatamıyor ve kullanamazsınız. Bu noktayı göstermek için, @p1 hem başlatılmış hem de aynı DECLARE ifadesinde kullanıldığı için aşağıdaki **örneğe izin verilmez** . Aşağıdaki örnek bir hata verir.
 
 ```sql
 DECLARE @p1 int = 0

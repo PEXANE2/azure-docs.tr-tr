@@ -1,5 +1,5 @@
 ---
-title: Tek kiracılı SaaS öğreticisi-Azure SQL veritabanı | Microsoft Docs
+title: Tek kiracılı SaaS öğreticisi-Azure SQL veritabanı
 description: Azure SQL veritabanı 'nı kullanan tek bir tek kiracılı SaaS uygulamasını dağıtın ve keşfedebilirsiniz.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 11/07/2018
-ms.openlocfilehash: 2e6b18e53358cad1bfe89e8c0ae7fbacec24d179
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df9c3913851055f1bb477264cf5a7486f79b56b0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570208"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691965"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanan tek başına tek kiracılı bir uygulama dağıtma ve araştırma
 
@@ -43,11 +43,11 @@ Ek öğreticiler yayımlanacak. Bu uygulama düzenine göre bir dizi yönetim se
 Uygulamayı belirtilen üç kiracı için dağıtın:
 
 1. [Azure Portal](https://portal.azure.com)Dağıtım şablonunu açmak için her mavi **Azure 'a dağıt** düğmesine tıklayın. Her şablon iki parametre değeri gerektirir; Yeni bir kaynak grubu için bir ad ve bu dağıtımı uygulamanın diğer dağıtımlarından ayırt eden Kullanıcı adı. Sonraki adımda, bu değerleri ayarlamaya ilişkin ayrıntılar sağlanmaktadır.<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>**Contoso Concert salonu** &nbsp;
+    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **contoso Concert salonu**
 <br><br>
-    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>**Dogwood Dojo** &nbsp;
+    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Dogwood Dojo**
 <br><br>
-    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Fabrikam cakulüsinek**
+    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **fabrikam Cakulüsinek**
 
 2. Her dağıtım için gerekli parametre değerlerini girin.
 
@@ -55,7 +55,7 @@ Uygulamayı belirtilen üç kiracı için dağıtın:
     > Bazı kimlik doğrulama ve sunucu güvenlik duvarları, tanıtım amacıyla güvenli şekilde güvenli değildir. Her uygulama dağıtımı için **Yeni bir kaynak grubu oluşturun** .  Mevcut bir kaynak grubunu kullanmayın. Üretim için bu uygulamayı veya oluşturduğu kaynakları kullanmayın. İlgili faturalandırmayı durdurmak için uygulamalarla işiniz bittiğinde tüm kaynak gruplarını silin.
 
     Kaynak adlarınızdan yalnızca küçük harf, sayı ve kısa çizgi kullanmak en iyisidir.
-    * **Kaynak grubu**Için yeni oluştur ' u seçin ve ardından kaynak grubu için küçük harfli bir ad sağlayın. **Wingtip-sa-\<venuename\>-\<kullanıcısı\>**  önerilen bir modeldir.  Venuename \<\>için, mekan adını boşluk olmadan değiştirin. \<Kullanıcı\>için, Kullanıcı değerini aşağıdan değiştirin.  Bu düzende, kaynak grubu adları *Wingtip-sa-contosoconcerthall-AF1*, *Wingtip-sa-dogwooddojo-AF1*, *Wingtip-sa-fabrikamjazzclub-AF1*olabilir.
+    * **Kaynak grubu**Için yeni oluştur ' u seçin ve ardından kaynak grubu için küçük harfli bir ad sağlayın. **Wingtip-sa-\<venueName\>-\<kullanıcı\>** önerilen bir modeldir.  \<venueName\>için, mekan adını boşluk yok ile değiştirin. Kullanıcı\>\<için, Kullanıcı değerini aşağıdan değiştirin.  Bu düzende, kaynak grubu adları *Wingtip-sa-contosoconcerthall-AF1*, *Wingtip-sa-dogwooddojo-AF1*, *Wingtip-sa-fabrikamjazzclub-AF1*olabilir.
     * Açılan listeden bir **konum** seçin.
 
     * **Kullanıcı** için-adınızın baş ve bir basamak gibi kısa bir kullanıcı değeri önerilir: Örneğin, *AF1*.
@@ -75,16 +75,16 @@ Uygulama Vitrini olayları barındıran olaylar.  Havalandırma noktaları, uygu
 
 1. Her üç kiracının olay sayfasını ayrı tarayıcı sekmelerinde açın:
 
-   - http://events.contosoconcerthall.&lt; user&gt;. trafficmanager.net
-   - http://events.dogwooddojo.&lt; user&gt;. trafficmanager.net
-   - http://events.fabrikamjazzclub.&lt; user&gt;. trafficmanager.net
+   - http://events.contosoconcerthall.&lt; Kullanıcı&gt;. trafficmanager.net
+   - http://events.dogwooddojo.&lt; Kullanıcı&gt;. trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt; Kullanıcı&gt;. trafficmanager.net
 
-     (Her URL 'de, kullanıcıyı &lt;&gt; dağıtımınızın Kullanıcı değeriyle değiştirin.)
+     (Her URL 'de &lt;Kullanıcı&gt;, dağıtımınızın Kullanıcı değeri ile değiştirin.)
 
-   ![Events](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![Olaylar](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Uygulama, gelen isteklerin dağıtımını denetlemek için [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md)kullanır. Kiracıya özgü her uygulama örneği, URL 'deki etki alanı adının bir parçası olarak kiracı adını içerir. Tüm kiracı URL 'Leri, belirli **Kullanıcı** değerini içerir. URL 'Ler aşağıdaki biçimi izler:
-- http://events.&lt; venuename&gt;.&lt; user&gt;. trafficmanager.net
+- http://events.&lt; venuename&gt;.&lt;User&gt;. trafficmanager.net
 
 Her kiracının veritabanı **konumu** , ilgili dağıtılan uygulamanın uygulama ayarlarına dahildir.
 
@@ -97,7 +97,7 @@ Dağıtılan kaynaklara göz atalım:
 
 1. [Azure Portal](https://portal.azure.com), kaynak grupları listesine gidin.
 2. Üç kiracı kaynak grubunu görmeniz gerekir.
-3. Fabrikam Cap kulükünün dağıtımına yönelik kaynakları içeren **Wingtip-sa-&lt;fabrikam-user&gt;**  kaynak grubunu açın.  **Fabrikamjazzclub-&lt;user&gt;**  sunucusu **fabrikamjazzclub** veritabanını içerir.
+3. Fabrikam Cap Kulükünün dağıtımına yönelik kaynakları içeren **Wingtip-sa-fabrikam-&lt;user&gt;** kaynak grubunu açın.  **Fabrikamjazzclub-&lt;user&gt;** sunucusu **fabrikamjazzclub** veritabanını içerir.
 
 Her kiracı veritabanı 50 DTU *tek başına* veritabanıdır.
 

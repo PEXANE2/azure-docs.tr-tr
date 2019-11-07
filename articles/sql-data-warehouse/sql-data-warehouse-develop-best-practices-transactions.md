@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı için işlemleri iyileştirme | Microsoft Docs
+title: İşlemleri iyileştirme
 description: Azure SQL veri ambarı 'nda işlem kodunuzun performansını en üst düzeye çıkarmak ve uzun geri göndermeler riskini en aza indirmek hakkında bilgi edinin.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2299c526dd63eb8e8772661ee8fae66153fc36c3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479668"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692868"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda işlemleri iyileştirme
 Azure SQL veri ambarı 'nda işlem kodunuzun performansını en üst düzeye çıkarmak ve uzun geri göndermeler riskini en aza indirmek hakkında bilgi edinin.
@@ -42,14 +43,14 @@ Her satır değişikliğini izlemek için işlem günlüğünü kullanan tam ola
 ## <a name="minimally-logged-operations"></a>En düşük düzeyde günlüğe kaydedilmiş işlemler
 Aşağıdaki işlemler en düşük düzeyde günlüğe kaydedilebilir:
 
-* SELECT OLARAK CREATE TABLE ([CTAS](sql-data-warehouse-develop-ctas.md))
-* EKLE.. SEÇIN
+* SELECT olarak CREATE TABLE ([CTAS](sql-data-warehouse-develop-ctas.md))
+* Ekle.. SEÇIN
 * CREATE INDEX
-* ALTER INDEX REBUILD
+* ALTER ıNDEX REBUıLD
 * DROP INDEX
 * TRUNCATE TABLE
-* TABLOYU BIRAK
-* ALTER TABLE SWITCH PARTITION
+* TABLOYU BıRAK
+* ALTER TABLE SWıTCH PARTITION
 
 <!--
 - MERGE
@@ -67,7 +68,7 @@ CTAS ve INSERT... Her iki toplu yükleme işlemi de SEÇIN. Ancak, her ikisi de 
 
 | Birincil dizin | Yükleme senaryosu | Günlüğe kaydetme modu |
 | --- | --- | --- |
-| Yığın |Any |**En az** |
+| Yığın |Herhangi biri |**En az** |
 | Kümelenmiş dizin |Boş hedef tablo |**En az** |
 | Kümelenmiş dizin |Yüklenen satırlar, hedefteki mevcut sayfalarla çakışmıyor |**En az** |
 | Kümelenmiş dizin |Yüklü satırlar hedefteki mevcut sayfalarla örtüşüyor |Tam |
@@ -84,7 +85,7 @@ CTAS ve INSERT... Her iki toplu yükleme işlemi de SEÇIN. Ancak, her ikisi de 
 Verilerin kümelenmiş bir dizine sahip boş olmayan bir tabloya yüklenmesi genellikle tam olarak günlüğe kaydedilen ve en düşük düzeyde günlüğe kaydedilen satırlardan oluşan bir karışımı içerebilir. Kümelenmiş dizin, sayfaların dengeli bir ağacıdır (b-Tree). Yazılan sayfa zaten başka bir işlemden satırlar içeriyorsa, bu yazma işlemleri tam olarak günlüğe kaydedilir. Ancak, sayfa boşsa, bu sayfaya yazma işlemi en düşük düzeyde günlüğe kaydedilir.
 
 ## <a name="optimizing-deletes"></a>Silmeleri iyileştirme
-SILME işlemi tam olarak günlüğe kaydedilir.  Tablodaki veya bir bölümdeki büyük miktarda veriyi silmeniz gerekiyorsa, genellikle tutmak istediğiniz verilere daha anlamlı `SELECT` hale gelir ve bu, en düşük düzeyde günlüğe kaydedilmiş bir işlem olarak çalıştırılabilir.  Verileri seçmek için [CTAS](sql-data-warehouse-develop-ctas.md)ile yeni bir tablo oluşturun.  Oluşturulduktan sonra, eski tablonuzu yeni oluşturulan tabloyla değiştirmek için [Yeniden Adlandır](/sql/t-sql/statements/rename-transact-sql) ' ı kullanın.
+SILME işlemi tam olarak günlüğe kaydedilir.  Tablodaki veya bir bölümdeki büyük miktarda veriyi silmeniz gerekiyorsa, genellikle korumak istediğiniz verileri `SELECT` daha anlamlı hale gelir ve bu, en düşük düzeyde günlüğe kaydedilmiş bir işlem olarak çalıştırılabilir.  Verileri seçmek için [CTAS](sql-data-warehouse-develop-ctas.md)ile yeni bir tablo oluşturun.  Oluşturulduktan sonra, eski tablonuzu yeni oluşturulan tabloyla değiştirmek için [Yeniden Adlandır](/sql/t-sql/statements/rename-transact-sql) ' ı kullanın.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -407,7 +408,7 @@ END
 Azure SQL veri ambarı, veri Ambarınızı isteğe bağlı olarak [duraklatmanıza, sürdürmenize ve ölçeklendirmenize](sql-data-warehouse-manage-compute-overview.md) olanak tanır. SQL veri Ambarınızı duraklattığınızda veya ölçeklendirirseniz, tüm uçuş işlemleri hemen sonlandırıldığını anlamak önemlidir; açık işlemlerin geri alınmasına neden olur. İş yükünüz, duraklatma veya ölçeklendirme işleminden önce uzun süre çalışan ve tamamlanmamış veri değişikliği yaptıysanız, bu işin geri yüklenmesi gerekir. Bu geri alma, Azure SQL veri ambarı veritabanınızı duraklatmak veya ölçeklendirmek için gereken süreyi etkileyebilir. 
 
 > [!IMPORTANT]
-> Her `UPDATE` ikisi `DELETE` ve tamamen günlüğe kaydedilir ve bu geri alma/yineleme işlemleri, eşdeğer en düşük düzeyde günlüğe kaydedilmiş işlemden çok daha uzun sürebilir. 
+> Hem `UPDATE` hem de `DELETE` tamamen günlüğe kaydedilir ve bu geri alma/yineleme işlemleri, eşdeğer en düşük düzeyde günlüğe kaydedilmiş işlemden çok daha uzun sürebilir. 
 > 
 > 
 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: c2a8c60502aeb75173371d40475b5d2875417791
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7eef353f45d0387a45fbf8180bc49cae7975dfa9
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808628"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622497"
 ---
 # <a name="starter-resource-graph-queries"></a>Başlangıç Kaynak Grafiği sorguları
 
@@ -195,7 +195,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ## <a name="a-namecount-os-count-virtual-machines-by-os-type"></a><a name="count-os" />işletim sistemi türüne göre sanal makine sayısı
 
 Bir önceki sorguyu oluşturmada, hâlâ `Microsoft.Compute/virtualMachines` türündeki Azure kaynaklarına göre sınırlandırıyoruz, ancak geri gönderilen kayıtların sayısını sınırlandırmıyoruz.
-Bunu yerine, değerleri (bu örnekte `properties.storageProfile.osDisk.osType`) özelliğe göre gruplandırma ve toplamayı tanımlamak için `summarize` ve `count()` kullandık. Bu dizenin tam nesnede nasıl göründüğüne ilişkin bir örnek için, bkz. [ kaynakları keşfetme - sanal makine bulma](../concepts/explore-resources.md#virtual-machine-discovery).
+Bunu yerine, değerleri (bu örnekte `summarize`) özelliğe göre gruplandırma ve toplamayı tanımlamak için `count()` ve `properties.storageProfile.osDisk.osType` kullandık. Bu dizenin tam nesnede nasıl göründüğüne ilişkin bir örnek için, bkz. [ kaynakları keşfetme - sanal makine bulma](../concepts/explore-resources.md#virtual-machine-discovery).
 
 ```kusto
 Resources
@@ -257,7 +257,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ## <a name="a-nameshow-storage-show-resources-that-contain-storage"></a>depolama alanı içeren kaynakları göstermek <a name="show-storage" />
 
-Eşleştirilecek türü şekilde açık olarak tanımlamak yerine, bu örnek sorgu, **depo** sözcüğünü `contains` eden tüm Azure kaynaklarını bulur.
+Eşleştirilecek türü şekilde açık olarak tanımlamak yerine, bu örnek sorgu, `contains`depo**sözcüğünü** eden tüm Azure kaynaklarını bulur.
 
 ```kusto
 Resources
@@ -378,7 +378,7 @@ Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project 
 
 ---
 
-Kaynağın sahip olduğu etiketleri ve değerlerini de sağlamak için `project` sözcüğüne **tags** özelliğini ekleyin.
+Kaynağın sahip olduğu etiketleri ve değerlerini de sağlamak için **sözcüğüne**tags`project` özelliğini ekleyin.
 
 ```kusto
 Resources
@@ -437,7 +437,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 ---
 
 > [!NOTE]
-> Bu örnek, eşleştirme için `=~` koşullu yerine `==` kullanır. `==` büyük küçük harfe duyarlı bir eşleşmedir.
+> Bu örnek, eşleştirme için `==` koşullu yerine `=~` kullanır. `==` büyük küçük harfe duyarlı bir eşleşmedir.
 
 ## <a name="a-nameshow-aliases-show-aliases-for-a-virtual-machine-resource"></a>bir sanal makine kaynağı için diğer adları göstermek <a name="show-aliases" />
 
@@ -534,6 +534,6 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sorgu dili](../concepts/query-language.md) hakkında daha fazla bilgi edinin
-- [Kaynakları keşfetmeyi](../concepts/explore-resources.md) öğrenin
-- Bkz. [Gelişmiş sorgular](advanced.md) örnekleri
+- [Sorgu dili](../concepts/query-language.md)hakkında daha fazla bilgi edinin.
+- [Kaynakları araştırma](../concepts/explore-resources.md)hakkında daha fazla bilgi edinin.
+- [Gelişmiş sorguların](advanced.md)örneklerine bakın.

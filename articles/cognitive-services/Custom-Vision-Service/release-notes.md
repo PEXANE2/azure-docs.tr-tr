@@ -1,6 +1,7 @@
 ---
 title: Sürüm notları-Özel Görüntü İşleme Hizmeti
 titleSuffix: Azure Cognitive Services
+description: Özel Görüntü İşleme ekibinden yeni yayınlar hakkında en son bilgileri alın.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -9,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 79f3f2a5545b8cdcee86e52f35bd22a31e93d387
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b9606c63ec7b53fb0b69918c21bdd9206f34c555
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564083"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647567"
 ---
 # <a name="custom-vision-service-release-notes"></a>Özel Görüntü İşleme Hizmeti sürüm notları
 
@@ -107,7 +108,7 @@ ms.locfileid: "68564083"
 
 ## <a name="december-19-2017"></a>19 Aralık 2017
 
-- Önceden yayımlanmış iOS'a aktarma (CoreML) özelliğine dahil olarak Android'e aktarma (TensorFlow) seçeneği eklendi. Bu sayede eğitilen sıkıştırılmış model dışarı aktarılarak bir uygulamada çevrimdışı olarak çalıştırılabilir.
+- Daha önce iOS 'a dışarı aktarmaya (CoreML.) ek olarak, Android 'e (TensorFlow) dışa aktarma eklendi. Bu, eğitilen bir modelin bir uygulamada çevrimdışı çalışacak şekilde verilmesini sağlar.
 - Perakende ve Yer İşareti "sıkıştırılmış" etki alanları eklendi ve bu etki alanları için model dışarı aktarma özellikleri etkinleştirildi.
 - [1.2 Eğitim API'si](https://southcentralus.dev.cognitive.microsoft.com/docs/services/f2d62aa3b93843d79e948fe87fa89554/operations/5a3044ee08fa5e06b890f11f) ile [1.1 Tahmin API'si](https://southcentralus.dev.cognitive.microsoft.com/docs/services/57982f59b5964e36841e22dfbfe78fc1/operations/5a3044f608fa5e06b890f164) yayımlandı. API'ler model dışarı aktarma seçeneği, görüntüleri "Tahminlere" kaydetmeyen yeni Tahmin işlemi ile güncelleştirildi ve Eğitim API'sine toplu işlem eklendi.
 - Yineleme eğitimi için kullanılan etki alanını görme dahil olmak üzere kullanıcı deneyimi ayarlamaları yapıldı.

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı 'na çoğaltma | Microsoft Docs "
+title: Azure SQL veritabanı 'na çoğaltma "
 description: Azure SQL veritabanı tek veritabanları ve elastik havuzlardaki veritabanları SQL Server çoğaltma kullanma hakkında bilgi edinin
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: eab8f4809742b69e92cb835801493722d28afe49
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ae564a98b77b1ac564fa9aae152b27c491187d0c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570485"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692211"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>SQL veritabanı tekil ve havuza alınmış veritabanlarına çoğaltma
 
@@ -38,7 +38,7 @@ SQL Server çoğaltma, Azure SQL veritabanı 'ndaki bir [SQL veritabanı sunucus
 - SQL Server 2014 (12. x) SP1 CU3
 - SQL Server 2014 (12. x) RTM CU10
 - SQL Server 2012 (11. x) SP2 CU8 veya SP3
-- Daha eski bir sürümü kullanarak çoğaltmayı yapılandırmaya çalışmak, hata numarası MSSQL_REPL20084 (işlem aboneye bağlanamaz.) ve MSSQL_REPL40532 (oturum açma tarafından istenen sunucu \<adı > açılamaz. Oturum açılamadı.).  
+- Daha eski bir sürümü kullanarak çoğaltmayı yapılandırmaya çalışmak, hata numarası MSSQL_REPL20084 (işlem aboneye bağlanamaz.) ve MSSQL_REPL40532 (oturum açma tarafından istenen sunucu \<adı > açılamıyor. Oturum açılamadı.).  
 - Azure SQL veritabanı 'nın tüm özelliklerini kullanmak için, en son [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)sürümlerini kullanıyor olmanız gerekir.  
   
 ## <a name="remarks"></a>Açıklamalar
@@ -51,7 +51,7 @@ SQL Server çoğaltma, Azure SQL veritabanı 'ndaki bir [SQL veritabanı sunucus
 - SQL Server tek bir yayını hem Azure SQL veritabanını hem de SQL Server (Şirket içi ve SQL Server bir Azure sanal makinesinde) aboneleri destekleyebilir.  
 - Şirket içi SQL Server çoğaltma yönetimi, izleme ve sorun giderme işlemleri yapılmalıdır.  
 - Yalnızca Azure SQL veritabanı 'na yönelik gönderme abonelikleri desteklenir.  
-- Yalnızca `@subscriber_type = 0` SQL veritabanı için **sp_addsubscription** desteklenir.  
+- SQL veritabanı için **sp_addsubscription** içinde yalnızca `@subscriber_type = 0` desteklenir.  
 - Azure SQL veritabanı, çift yönlü, anında, güncelleştirilebilir veya eşler arası çoğaltmayı desteklemez.
 
 ## <a name="replication-architecture"></a>Çoğaltma mimarisi  
@@ -113,6 +113,6 @@ Yayın ve gönderme temelli bir abonelik oluşturun. Daha fazla bilgi için bkz.
 - [İşlem çoğaltması](sql-database-managed-instance-transactional-replication.md)
 - [Yayın oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Itme aboneliği oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Çoğaltma türleri](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
+- [Çoğaltma Türleri](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
 - [İzleme (çoğaltma)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
 - [Abonelik başlatma](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  

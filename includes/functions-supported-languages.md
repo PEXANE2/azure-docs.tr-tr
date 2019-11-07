@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: c2060b335c615cf92ec600d072db58cb34ae4963
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5dc200a59b6316b19b75e2ee1cb6169100a9bc22
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597373"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73633770"
 ---
 |Dil                                 |'in         |2.x| 3. x<sup>1</sup> |
 |-----------------------------------------|------------|---| --- |
@@ -22,8 +22,8 @@ ms.locfileid: "72597373"
 |[JavaScript](../articles/azure-functions/functions-reference-node.md)|GA (düğüm 6)|GA (düğüm 8 & 10)| Önizleme (düğüm 8 & 10) |
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET Framework 4,7)|GA (.NET Core 2,2)| Önizleme (.NET Core 3. x) |
 |[Java](../articles/azure-functions/functions-reference-java.md)|Yok|GA (Java 8)| Önizleme (Java 8)|
-|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |Deneysel|Önizleme (PowerShell Core 6)| Önizleme (PowerShell Core 6)|
-|[Python](../articles/azure-functions/functions-reference-python.md)|Deneysel|GA (Python 3.6. x)| Önizleme (Python 3.6. x)|
+|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |Deneysel|GA (PowerShell Core 6)| GA (PowerShell Core 6)|
+|[Python](../articles/azure-functions/functions-reference-python.md)|Deneysel|GA (Python 3.7. x)| Önizleme (Python 3.7. x)|
 |[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |Deneysel|GA<sup>2</sup>| Önizleme<sup>2</sup> |
 |Bash                |Deneysel|Yok|Yok|
 |Batch (.cmd, .bat)  |Deneysel|Yok|Yok|
@@ -31,6 +31,5 @@ ms.locfileid: "72597373"
 
 <sup>1</sup> V3. x çalışma zamanı Işlevleri önizlemededir.  
 <sup>2</sup> Transpiling aracılığıyla JavaScript 'e desteklenir.
-
 
 Dil desteğiyle ilgili planlı değişiklikler hakkında daha fazla bilgi için bkz. [Azure yol haritası](https://azure.microsoft.com/roadmap/?tag=functions).

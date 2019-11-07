@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: c4faa29e092c7cbb550bca1daa87ce369bf03a14
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 1a3d917775f6ba5b0b7f62d19de2b970a8b36838
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099535"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571211"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 .NET Core Özellik Yönetimi kitaplıkları Framework 'ü kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET Core yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET Core yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download).
@@ -38,7 +38,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 6. Aşağıdaki özellik bayraklarını eklemek için **özellik yöneticisi** >  **+ Ekle** ' yi seçin:
 
-    | Anahtar | Eyalet |
+    | Anahtar | Durum |
     |---|---|
     | Beta | Kapalı |
 
@@ -59,7 +59,7 @@ Yeni bir ASP.NET Core MVC web uygulaması projesi oluşturmak için [.NET Core k
 Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/security/app-secrets) projenize ekleyin. Gizli dizi Yöneticisi Aracı, geliştirme çalışması için hassas verileri proje ağacınızdaki dışında depolar. Bu yaklaşım, uygulama gizli dizilerini kaynak kodunun içinde yanlışlıkla paylaşmayı önlemeye yardımcı olur.
 
 1. *. Csproj* dosyasını açın.
-1. Aşağıdaki örnekte gösterildiği gibi `UserSecretsId` öğesi ekleyin ve değerini, genellikle GUID olan kendi değeri ile değiştirin:
+1. Aşağıdaki örnekte gösterildiği gibi bir `UserSecretsId` öğesi ekleyin ve değerini, genellikle GUID olan kendi değeri ile değiştirin:
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -117,7 +117,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
 1. `config.AddAzureAppConfiguration()` metodunu çağırarak uygulama yapılandırmasını kullanmak için `CreateWebHostBuilder` yöntemini güncelleştirin.
     
     > [!IMPORTANT]
-    > `CreateHostBuilder`, .NET Core 3,0 ' de `CreateWebHostBuilder` ' i değiştirir.  Ortamınıza göre doğru söz dizimini seçin.
+    > `CreateHostBuilder` `CreateWebHostBuilder` .NET Core 3,0 ' de yer alır.  Ortamınıza göre doğru söz dizimini seçin.
 
     ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>.NET Core 2. x için güncelleştirme `CreateWebHostBuilder`
 
@@ -127,12 +127,15 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+                config.AddAzureAppConfiguration(options => {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                            .UseFeatureFlags();
+                });
             })
             .UseStartup<Startup>();
     ```
 
-    ### <a name="update-createhostbuilder-for-net-core-3x"></a>.NET Core 3. x için güncelleştirme `CreateHostBuilder`
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>.NET Core 3. x için `CreateHostBuilder` güncelleştirme
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -141,7 +144,8 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
         webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
         {
             var settings = config.Build();
-            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"])
+                .UseFeatureFlags();
         })
         .UseStartup<Startup>());
     ```
@@ -153,7 +157,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     using Microsoft.FeatureManagement;
     ```
 
-1. `services.AddFeatureManagement()` metodunu çağırarak özellik bayrağı desteği eklemek için `ConfigureServices` yöntemini güncelleştirin. İsteğe bağlı olarak, `services.AddFeatureFilter<FilterType>()` ' ı çağırarak özellik bayraklarıyla birlikte kullanılacak herhangi bir filtre ekleyebilirsiniz:
+1. `services.AddFeatureManagement()` metodunu çağırarak özellik bayrağı desteği eklemek için `ConfigureServices` yöntemini güncelleştirin. İsteğe bağlı olarak, `services.AddFeatureFilter<FilterType>()`çağırarak özellik bayraklarıyla birlikte kullanılacak herhangi bir filtre ekleyebilirsiniz:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -272,15 +276,15 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     dotnet run
     ```
 
-1. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `https://localhost:5001` ' a gidin.
+1. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `https://localhost:5001`' a gidin.
 
     ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin:
 
-    | Anahtar | Eyalet |
+    | Anahtar | Durum |
     |---|---|
     | Beta | Açık |
 

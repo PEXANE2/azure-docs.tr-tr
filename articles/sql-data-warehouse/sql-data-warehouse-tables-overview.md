@@ -1,5 +1,5 @@
 ---
-title: Tabloları tasarlama-Azure SQL veri ambarı | Microsoft Docs
+title: Tabloları tasarlama
 description: Azure SQL veri ambarı 'nda tablo tasarlamaya giriş.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 55da4e3dc9c7f1c1f86a649a654ce41ef59ad839
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 9220d3adb31005551b6358034207f1071065b1a7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310111"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692389"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda tablo tasarlama
 
@@ -42,8 +43,8 @@ SQL veri ambarı 'nda tabloların organizasyonunu göstermek için, tablo adlar�
 
 | WideWorldImportersDW tablosu  | Tablo türü | SQL Veri Ambarı |
 |:-----|:-----|:------|:-----|
-| City | Boyut | wwi. DimCity |
-| Sipariş verme | Olgu | wwi.FactOrder |
+| Şehir | Boyut | wwi. DimCity |
+| Sipariş verme | Halde | wwi. FactOrder |
 
 
 ## <a name="table-persistence"></a>Tablo kalıcılığı 
@@ -90,9 +91,9 @@ Tablo kategorisi genellikle tabloyu dağıtmak için hangi seçeneğin tercih ve
 
 | Tablo kategorisi | Önerilen dağıtım seçeneği |
 |:---------------|:--------------------|
-| Olgu           | Kümelenmiş columnstore diziniyle karma dağıtım kullanın. İki karma tablo aynı dağıtım sütununa katıldığında performans artar. |
+| Halde           | Kümelenmiş columnstore diziniyle karma dağıtım kullanın. İki karma tablo aynı dağıtım sütununa katıldığında performans artar. |
 | Boyut      | Daha küçük tablolar için çoğaltılan kullanın. Tablolar her bir Işlem düğümünde depolamaya çok büyükse, karma dağıtılmış kullanın. |
-| Hazırlanıyor        | Hazırlama tablosu için hepsini bir kez deneme kullanın. CTAS ile yük hızlıdır. Veriler hazırlama tablosundan olduktan sonra Insert... öğesini kullanın. Verileri üretim tablolarına taşımak için SEÇIN. |
+| Staging        | Hazırlama tablosu için hepsini bir kez deneme kullanın. CTAS ile yük hızlıdır. Veriler hazırlama tablosundan olduktan sonra Insert... öğesini kullanın. Verileri üretim tablolarına taşımak için SEÇIN. |
 
 ## <a name="table-partitions"></a>Tablo bölümleri
 Bölümlenmiş bir tablo, veri aralıklarına göre tablo satırlarında işlem depolar ve gerçekleştirir. Örneğin, bir tablo güne, aya veya yıla göre bölümlenebilir. Bölüm içindeki verilerle bir sorgu taramasını sınırlayan, Bölüm eliminasyon aracılığıyla sorgu performansını artırabilirsiniz. Ayrıca, verileri bölüm değiştirme aracılığıyla da koruyabilirsiniz. SQL veri ambarı 'ndaki veriler zaten dağıtıldığından, çok fazla bölüm sorgu performansını yavaşlatabilir. Daha fazla bilgi için bkz. [bölümleme kılavuzu](sql-data-warehouse-tables-partition.md).  Bölüm boş olmayan tablo bölümlerine geçiş yaparken, var olan veriler kesilmişse [alter table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) DEYIMINIZDE TRUNCATE_TARGET seçeneğini kullanmayı düşünün. Aşağıdaki kod, dönüştürülmüş günlük verilerde, mevcut verilerin üzerine yazarak Satışolgusuna geçiş yapar. 
@@ -118,9 +119,9 @@ Yeni bir boş tablo olarak tablo oluşturabilirsiniz. Ayrıca bir SELECT ifadesi
 | T-SQL ekstresi | Açıklama |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | Tüm tablo sütunlarını ve seçeneklerini tanımlayarak boş bir tablo oluşturur. |
-| [DIŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql) | Dış tablo oluşturur. Tablonun tanımı SQL veri ambarı 'nda depolanır. Tablo verileri Azure Blob depolamada veya Azure Data Lake Store depolanır. |
+| [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql) | Dış tablo oluşturur. Tablonun tanımı SQL veri ambarı 'nda depolanır. Tablo verileri Azure Blob depolamada veya Azure Data Lake Store depolanır. |
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | Bir SELECT ifadesinin sonuçlarıyla yeni bir tablo doldurur. Tablo sütunları ve veri türleri SELECT ifadesinin sonuçlarını temel alır. Bu ifade, verileri içeri aktarmak için bir dış tablodan seçim yapabilir. |
-| [DIŞ TABLOYU SEÇ OLARAK OLUŞTUR](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | Bir SELECT ifadesinin sonuçlarını dış konuma aktararak yeni bir dış tablo oluşturur.  Konum, Azure Blob depolama veya Azure Data Lake Store. |
+| [DıŞ TABLOYU SEÇ OLARAK OLUŞTUR](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | Bir SELECT ifadesinin sonuçlarını dış konuma aktararak yeni bir dış tablo oluşturur.  Konum, Azure Blob depolama veya Azure Data Lake Store. |
 
 ## <a name="aligning-source-data-with-the-data-warehouse"></a>Veri ambarıyla kaynak verileri hizalama
 

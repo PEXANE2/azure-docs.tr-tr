@@ -1,5 +1,5 @@
 ---
-title: Veri türlerini tanımlama-Azure SQL veri ambarı | Microsoft Docs
+title: Veri türlerini tanımlama
 description: Azure SQL veri ambarı 'nda tablo veri türlerini tanımlamaya yönelik öneriler.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 61bb977271186699b0a72389e1538573f978c56b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a1d88d8fabd5ff32cc1ca5cca4e2a57a86c8dcb3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479362"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692494"
 ---
 # <a name="table-data-types-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'ndaki tablo veri türleri
 Azure SQL veri ambarı 'nda tablo veri türlerini tanımlamaya yönelik öneriler. 
@@ -50,13 +51,13 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 
 Aşağıdaki listede SQL veri ambarı 'nın desteklemediği veri türleri ve desteklenmeyen veri türleri yerine kullanabileceğiniz alternatifler verilmiştir.
 
-| Desteklenmeyen veri türü | Geçici Çözüm |
+| Desteklenmeyen veri türü | Geçici çözüm |
 | --- | --- |
 | [geometrisi](/sql/t-sql/spatial-geometry/spatial-types-geometry-transact-sql) |[ikili](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [Coğrafya](/sql/t-sql/spatial-geography/spatial-types-geography) |[ikili](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
-| [hierarchyid](/sql/t-sql/data-types/hierarchyid-data-type-method-reference) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql) (4000) |
+| [hierarchyid](/sql/t-sql/data-types/hierarchyid-data-type-method-reference) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql)(4000) |
 | [görüntüyle](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[ikili](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
-| [text](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql) |
+| [metinleri](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql) |
 | [n](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql) |
 | [sql_variant](/sql/t-sql/data-types/sql-variant-transact-sql) |Sütunu kesin olarak belirlenmiş birkaç sütuna Böl. |
 | [tablosundan](/sql/t-sql/data-types/table-transact-sql) |Geçici tablolara Dönüştür. |

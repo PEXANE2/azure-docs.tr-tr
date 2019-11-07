@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Sync için en iyi uygulamalar | Microsoft Docs
+title: 'Azure SQL Data Sync için en iyi uygulamalar '
 description: Azure SQL Data Sync yapılandırmak ve çalıştırmak için en iyi yöntemler hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 01962770c011a0107abd4e035c25d6c0d45fa0a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 728ac8ab42573e1cab30eaf12dd38a6d33b97aac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569368"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691070"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL Data Sync için en iyi deneyimler 
 
@@ -56,7 +56,7 @@ Azure SQL veritabanı yalnızca tek bir kimlik bilgileri kümesini destekler. Bu
 
 #### <a name="sql-database-instance-size"></a>SQL veritabanı örnek boyutu
 
-Yeni bir SQL veritabanı örneği oluşturduğunuzda, en büyük boyutu, dağıttığınız veritabanından her zaman daha büyük olacak şekilde ayarlayın. En büyük boyutu dağıtılan veritabanından daha büyük olarak ayarlamazsanız eşitleme başarısız olur. SQL Data Sync otomatik büyüme sunmasa da, oluşturulduktan sonra veritabanının boyutunu `ALTER DATABASE` artırmak için komutunu çalıştırabilirsiniz. SQL veritabanı örneği boyut sınırları içinde kaltığınızdan emin olun.
+Yeni bir SQL veritabanı örneği oluşturduğunuzda, en büyük boyutu, dağıttığınız veritabanından her zaman daha büyük olacak şekilde ayarlayın. En büyük boyutu dağıtılan veritabanından daha büyük olarak ayarlamazsanız eşitleme başarısız olur. SQL Data Sync otomatik büyüme sunmasa da, oluşturulduktan sonra veritabanının boyutunu artırmak için `ALTER DATABASE` komutunu çalıştırabilirsiniz. SQL veritabanı örneği boyut sınırları içinde kaltığınızdan emin olun.
 
 > [!IMPORTANT]
 > SQL Data Sync her veritabanıyla ek meta verileri depolar. Gerekli alanı hesaplarken bu meta veriler için hesap oluşturduğunuzdan emin olun. Eklenen ek yükün miktarı, tabloların genişliğiyle ilgilidir (örneğin, dar tablolar daha fazla ek yük gerektirir) ve trafik miktarı.
@@ -116,7 +116,7 @@ Gecikme süresini en aza indirmek için, hub veritabanını eşitleme grubunun v
 
 Önceki yönergeleri, Kurumsal-bulut ve buluttan buluta senaryolar gibi karmaşık eşitleme grubu yapılandırmalarına uygulayın.
 
-## <a name="sync"></a>Eşitle
+## <a name="sync"></a>Sync
 
 ### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>Yavaş ve maliyetli ilk eşitlemeden kaçının
 
@@ -198,7 +198,7 @@ Bazı durumlarda, bir istemci aracısıyla bir veritabanının kaydını silmek 
 1. A adlı eşitleme grubu, bir SQL veritabanı örneği ve yerel aracı 1 ile ilişkili bir şirket içi SQL Server veritabanı kullanılarak oluşturulmuştur.
 2. Aynı şirket içi veritabanı yerel aracı 2 ile kaydedilir (Bu aracı herhangi bir eşitleme grubuyla ilişkili değildir).
 3. Şirket içi veritabanının kaydını yerel aracı 2 ' den silmek, şirket içi veritabanı için bir eşitleme grubu için izleme ve meta tabloları kaldırır.
-4. Eşitleme grubu A işlemleri başarısız oldu, bu hata: "Veritabanı eşitleme için sağlanmadığından veya eşitleme yapılandırma tabloları için izinleriniz olmadığından geçerli işlem tamamlanamadı."
+4. Eşitleme grubu A işlemleri başarısız oldu, bu hata: "veritabanı eşitleme için sağlanmadığından veya eşitleme yapılandırma tabloları için izinleriniz olmadığından geçerli işlem tamamlanamadı."
 
 #### <a name="solution"></a>Çözüm
 
@@ -223,11 +223,11 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 
 -   Genel Bakış- [Azure SQL Data Sync ile birden çok bulut ve şirket içi veritabanı arasında veri eşitleme](sql-database-sync-data.md)
 -   Veri eşitlemesini ayarlama
-    - Portalda- [öğreticide: Verileri Azure SQL veritabanı ve şirket içi SQL Server arasında eşitlemek için SQL Data Sync ayarlama](sql-database-get-started-sql-data-sync.md)
+    - Portalda- [öğreticide, Azure SQL veritabanı ve şirket içi SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-database-get-started-sql-data-sync.md)
     - PowerShell ile
         -  [PowerShell kullanarak birden çok Azure SQL veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak bir Azure SQL Veritabanı ile SQL Server şirket içi veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Veri Eşitleme Aracısı - [veri Aracısı Azure SQL Data Sync için eşitleme](sql-database-data-sync-agent.md)
+-   Veri eşitleme Aracısı- [Azure SQL Data Sync Için veri eşitleme Aracısı](sql-database-data-sync-agent.md)
 -   İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](sql-database-sync-monitor-oms.md)
 -   Sorun giderme- [Azure SQL Data Sync sorunlarını giderme](sql-database-troubleshoot-data-sync.md)
 -   Eşitleme şemasını güncelleştirme

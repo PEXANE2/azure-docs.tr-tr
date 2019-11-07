@@ -1,19 +1,19 @@
 ---
-title: VMware VM 'lerini veya fiziksel sunucuları Azure Site Recovery ile ikincil bir siteye olağanüstü durum kurtarması ayarlama | Microsoft Docs
+title: VMware VM 'lerini/fiziksel sunucuları Azure Site Recovery ikincil bir siteye olağanüstü durum kurtarma
 description: VMware VM 'Leri veya Windows ve Linux fiziksel sunucularının olağanüstü durum kurtarmayı Azure Site Recovery ile ikincil bir siteye ayarlamayı öğrenin.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: a87abfdd70db07e4310dc6a39a280e12f664d03b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972087"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620529"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Şirket içi VMware sanal makineleri veya fiziksel sunucuları ikincil bir siteye olağanüstü durum kurtarması ayarlama
 
@@ -29,7 +29,7 @@ ms.locfileid: "69972087"
 
 2018 ve 2019 sırasında iki güncelleştirme kullanıma sunulacaktır: 
 
--   Güncelleştirme 7: Ağ yapılandırması ve uyumluluk sorunlarını düzeltir ve TLS 1,2 desteği sağlar.
+-   Güncelleştirme 7: ağ yapılandırma ve uyumluluk sorunlarını düzeltir ve TLS 1,2 desteği sağlar.
 -   Güncelleştirme 8: Linux işletim sistemleri RHEL/CentOS 7.3/7.4/7.5 ve SUSE 12 için destek ekler
 
 Güncelleştirme 8 ' den sonra daha fazla güncelleştirme yayınlanmayacaktır. Güncelleştirme 8 ' de eklenen işletim sistemleri için sınırlı Düzeltme desteği ve en iyi çabayı temel alan hata düzeltmeleri olacaktır.
@@ -46,18 +46,18 @@ o fiziksel makineler Için bu [öğreticiyi](./physical-azure-disaster-recovery.
 
 ### <a name="quick-comparison"></a>Hızlı karşılaştırma
 
-**Özelliği** | **Azure 'a çoğaltma** |**VMware veri merkezleri arasında çoğaltma**
+**Özellik** | **Azure 'a çoğaltma** |**VMware veri merkezleri arasında çoğaltma**
 --|--|--
 **Gerekli bileşenler** |Çoğaltılan makinelerde Mobility hizmeti. Şirket içi yapılandırma sunucusu, işlem sunucusu, ana hedef sunucusu. Yeniden çalışma için Azure 'da geçici işlem sunucusu.|Mobility hizmeti, Işlem sunucusu, yapılandırma sunucusu ve ana hedef
 **Yapılandırma ve düzenleme** |Azure portal kurtarma hizmetleri Kasası | VContinuum kullanma 
 **Çoğaltılamaz** |Disk (Windows ve Linux) |Birim-Windows<br> Disk-Linux
-**Paylaşılan disk kümesi** |Desteklenmiyor|Desteklenen
-**Veri dalgalanma sınırları (Ortalama)** |disk başına 10 MB/s veri<br> VM başına 250 MB/s veri<br> [Daha fazla bilgi edinin](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | disk başına 10 MB/s veri >  <br> VM başına 25 MB/s veri >
+**Paylaşılan disk kümesi** |Desteklenmiyor|Destekleniyor
+**Veri dalgalanma sınırları (Ortalama)** |disk başına 10 MB/s veri<br> VM başına 250 MB/s veri<br> [Daha fazla bilgi](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | disk başına 10 MB/s veri >  <br> VM başına 25 MB/s veri >
 **İzleme** |Azure portal 'den|CX (yapılandırma sunucusu)
 **Destek matrisi** | [Ayrıntılar için buraya tıklayın](./vmware-physical-azure-support-matrix.md)|[ASR Scout uyumlu matrisi indir](https://aka.ms/asr-scout-cm)
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi tamamlamak için:
 
 - Tüm bileşenler için destek gereksinimlerini [gözden geçirin](vmware-physical-secondary-support-matrix.md) .
@@ -84,11 +84,11 @@ Güncelleştirmeleri şu şekilde yükler:
 - InMage_ScoutCloud_RX_ 8.0.1.0 _RHEL6-64_GA_02Mar2015. tar. gz
 - RX_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. tar. gz
 - InMage_CX_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
-- InMage_CX_TP_8.0.1.0_Windows_GA_26Feb2015_release.exe
-- CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe
+- InMage_CX_TP_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
+- CX_Windows_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. exe
 - InMage_PI_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
-- InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe
-- InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe
+- InMage_Scout_vContinuum_MT_ 8.0.7.0 _Windows_GA_27Dec2018_release. exe
+- InMage_UA_ 8.0.7.0 _Windows_GA_27Dec2018_release. exe
 - InMage_UA_ 8.0.7.0 _OL5-32_GA_03Dec2018_release. tar. gz
 - InMage_UA_ 8.0.7.0 _OL5-64_GA_03Dec2018_release. tar. gz
 - InMage_UA_ 8.0.7.0 _OL6-32_GA_03Dec2018_release. tar. gz
@@ -119,13 +119,13 @@ Güncelleştirmeleri şu şekilde yükler:
 - InMage_UA_ 8.0.7.0 _SLES11-SP4-64_GA_03Dec2018_release. tar. gz
   1. . Zip dosyalarını ayıklayın.
   2. **RX sunucusu**: **Rx_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. tar. gz** dosyasını RX sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
-  3. **Yapılandırma sunucusu ve işlem sunucusu**: **Cx_windows_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. exe** ' yi yapılandırma sunucusuna ve işlem sunucusuna kopyalayın. Çalıştırmak için çift tıklayın.<br>
+  3. **Yapılandırma sunucusu ve işlem sunucusu**: **Cx_windows_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. exe** ' yi yapılandırma sunucusu ve işlem sunucusuna kopyalayın. Çalıştırmak için çift tıklayın.<br>
   4. **Windows ana hedef sunucusu**: Birleşik aracıyı güncelleştirmek için **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe dosyasını** sunucuya kopyalayın. Çalıştırmak için çift tıklayın. Aynı dosya aynı zamanda yeni yükleme için de kullanılabilir. Aynı Birleşik aracı güncelleştirmesi aynı zamanda kaynak sunucu için de geçerlidir.
   Güncelleştirme, **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** Ile hazırlanan ana hedefte uygulanması gerekmez, çünkü bu yeni GA yükleyicisinden en son değişikliklerle birlikte geçerlidir.
-  5. **Vcontinuum sunucusu**:  **İnmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** ' yi sunucuya kopyalayın.  VContinuum Sihirbazı 'nı kapattığınızdan emin olun. Dosyayı çalıştırmak için çift tıklayın.
-  6. **Linux ana hedef sunucusu**: Birleşik aracıyı güncelleştirmek için **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** öğesini Linux ana hedef sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
+  5. **Vcontinuum sunucusu**: **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe dosyasını** sunucuya kopyalayın.  VContinuum Sihirbazı 'nı kapattığınızdan emin olun. Dosyayı çalıştırmak için çift tıklayın.
+  6. **Linux ana hedef sunucusu**: Birleşik aracıyı güncelleştirmek için **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** dosyasını Linux ana hedef sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
   7. **Windows kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe dosyasını** kaynak sunucuya kopyalayın. Dosyayı çalıştırmak için çift tıklayın. 
-  8. **Linux kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için, Birleşik aracı dosyasının ilgili sürümünü Linux sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.  Örnek: RHEL 6,7 64-bit sunucu için, **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** dosyasını sunucuya kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
+  8. **Linux kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için, Birleşik aracı dosyasının Ilgili sürümünü Linux sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.  Örnek: RHEL 6,7 64-bit sunucu Için, **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** dosyasını sunucuya kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
   9. Yapılandırma sunucusunu, Işlem sunucusunu ve RX sunucusunu yukarıda bahsedilen yükleyicilerle yükselttikten sonra, PHP ve MySQL kitaplıklarının [hızlı yükleme kılavuzunun](https://aka.ms/asr-scout-quick-install-guide)7,4 bölümünde bahsedilen adımlarla el ile yükseltilmesi gerekir.
 
 ## <a name="enable-replication"></a>Çoğaltmayı etkinleştirme
@@ -143,18 +143,18 @@ Güncelleştirmeleri şu şekilde yükler:
 ## <a name="updates"></a>Güncelleştirmeler
 
 ### <a name="site-recovery-scout-801-update-7"></a>Site Recovery Scout 8.0.1 güncelleştirme 7 
-Güncelleştirme: 31 Aralık 2018, [Scout güncelleştirme 7 ' yi](https://aka.ms/asr-scout-update7)indirin.
+Güncelleştirme tarihi: 31 Aralık 2018, [Scout güncelleştirme 7 ' yi](https://aka.ms/asr-scout-update7)indirin.
 Scout Update 7, yeni yükleme için kullanılabilen ve önceki güncelleştirmelerde (güncelleştirme 1 ' den güncelleştirme 6 ' ya kadar) var olan aracıları/MT 'yi yükseltmek için kullanılabilecek tam bir yükleyicidir. Güncelleştirme 1 ' den güncelleştirme 6 ' ya ve aşağıda açıklanan yeni düzeltmeleri ve geliştirmeleri içeren tüm düzeltmeleri içerir.
  
-#### <a name="new-features"></a>Yeni Özellikler
+#### <a name="new-features"></a>Yeni özellikler
 * PCI uyumluluğu
 * TLS v 1.2 desteği
 
 #### <a name="bug-and-security-fixes"></a>Hata ve güvenlik düzeltmeleri
-* Düzenle Windows kümesi/bağımsız makineler, kurtarma/DR-detaylandırma sonrasında yanlış IP yapılandırmasına sahip.
-* Düzenle Bazen V2V kümesi için disk ekleme işlemi başarısız olur.
+* Düzeltildi: kurtarma/DR-detaylandırma sonrasında Windows kümesi/bağımsız makineler yanlış IP yapılandırmasına sahip.
+* Düzeltildi: bazen V2V kümesi için disk ekleme işlemi başarısız oluyor.
 * Düzeltildi: Ana hedef Windows Server 2016 ise kurtarma aşamasında vContinuum Sihirbazı takıldığında
-* Düzenle MySQL 'in 5.7.23 sürümüne yükseltilmesi yoluyla MySQL güvenlik sorunları azaltıldığında
+* Düzeltildi: MySQL 'in 5.7.23 sürümüne yükseltilmesi için MySQL güvenlik sorunları azaltıldığında
 
 #### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>CS, PS ve RX üzerinde PHP ve MySQL için el ile yükseltme
 PHP betik platformu, yapılandırma sunucusu, Işlem sunucusu ve RX sunucusu üzerinde 7.2.10 sürümüne yükseltilmelidir.
@@ -162,7 +162,7 @@ MySQL veritabanı yönetim sistemi, yapılandırma sunucusu, Işlem sunucusu ve 
 PHP ve MySQL sürümlerini yükseltmek için lütfen [hızlı yükleme kılavuzunda](https://aka.ms/asr-scout-quick-install-guide) verilen el ile adımları izleyin.
 
 ### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 güncelleştirme 6 
-Güncelleştirme: 12 Ekim 2017
+Güncelleştirilme tarihi: 12 Ekim 2017
 
 [Scout güncelleştirme 6 ' yı](https://aka.ms/asr-scout-update6)indirin.
 
@@ -183,23 +183,23 @@ Güncelleştirmeleri şu şekilde yükler:
 >Tüm Scout bileşenlerinin dosya güncelleştirme sürümü Update. zip dosyasında aynı olmayabilir. Eski sürüm, bu güncelleştirme için önceki güncelleştirmeden bu yana bileşende değişiklik olmadığını gösterir.
 
 [Update](https://aka.ms/asr-scout-update6) . zip dosyasını indirin. Dosya aşağıdaki bileşenleri içerir: 
-- RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz
-- CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe
+- RX_ 8.0.4.0 _GA_Update_4_8725872_16Sep16. tar. gz
+- CX_Windows_ 8.0.6.0 _GA_Update_6_13746667_18Sep17. exe
 - UA_Windows_ 8.0.5.0 _GA_Update_5_11525802_20Apr17. exe
 - UA_RHEL6-64_ 8.0.4.0 _GA_Update_4_9035261_26Sep16. tar. gz
-- vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-- RHEL5, OL5, OL6, SUSE 10, SUSE 11 için UA Update4 bitleri: UA_\<Linux OS > _ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz
+- vCon_Windows_ 8.0.6.0 _GA_Update_6_11525767_21Sep17. exe
+- RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_\<Linux OS > _ 8.0.4.0 _GA_Update_4_9035261_26Sep16. tar. gz için UA Update4 bitleri
   1. . Zip dosyalarını ayıklayın.
   2. **RX sunucusu**: **Rx_ 8.0.4.0 _GA_Update_4_8725872_16Sep16. tar. gz** dosyasını RX sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
-  3. **Yapılandırma sunucusu ve işlem sunucusu**: **Cx_windows_ 8.0.6.0 _GA_Update_6_13746667_18Sep17. exe** ' yi yapılandırma sunucusuna ve işlem sunucusuna kopyalayın. Çalıştırmak için çift tıklayın.<br>
+  3. **Yapılandırma sunucusu ve işlem sunucusu**: **Cx_windows_ 8.0.6.0 _GA_Update_6_13746667_18Sep17. exe** ' yi yapılandırma sunucusu ve işlem sunucusuna kopyalayın. Çalıştırmak için çift tıklayın.<br>
   4. **Windows ana hedef sunucusu**: Birleşik aracıyı güncelleştirmek için **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe dosyasını** sunucuya kopyalayın. Çalıştırmak için çift tıklayın. Aynı Birleşik aracı güncelleştirmesi aynı zamanda kaynak sunucu için de geçerlidir. Kaynak güncelleştirme 4 ' e güncellenmemişse, Birleşik aracıyı güncelleştirmeniz gerekir.
   Güncelleştirme, **inmage_scout_vcontinuum_mt_ 8.0.1.0 _Windows_GA_10Oct2017_release. exe** Ile hazırlanan ana hedefe uygulanmamalıdır çünkü bu, en son değişikliklerle yenı bir GA yükleyicidir.
-  5. **Vcontinuum sunucusu**:  **Vcon_windows_ 8.0.6.0 _GA_Update_6_11525767_21Sep17. exe** ' yi sunucuya kopyalayın.  VContinuum Sihirbazı 'nı kapattığınızdan emin olun. Dosyayı çalıştırmak için çift tıklayın.
+  5. **Vcontinuum Server**: **Vcon_windows_ 8.0.6.0 _GA_Update_6_11525767_21Sep17. exe** ' yi sunucuya kopyalayın.  VContinuum Sihirbazı 'nı kapattığınızdan emin olun. Dosyayı çalıştırmak için çift tıklayın.
   Güncelleştirme, **inmage_scout_vcontinuum_mt_ 8.0.1.0 _Windows_GA_10Oct2017_release. exe** Ile hazırlanan ana hedefe uygulanmamalıdır çünkü bu, en son değişikliklerle yenı bir GA yükleyicidir.
   6. **Linux ana hedef sunucusu**: Birleşik aracıyı güncelleştirmek için **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** dosyasını ana hedef sunucuya kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
   7. **Windows kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe dosyasını** kaynak sunucuya kopyalayın. Dosyayı çalıştırmak için çift tıklayın. 
   Güncelleştirme 5 aracısını güncelleştirme 4 ' e zaten güncelleştirilmiş veya kaynak Aracısı en son temel yükleyici **inmage_ua_ 8.0.1.0 _Windows_GA_28Sep2017_release. exe**ile yüklenmişse kaynak sunucuya yüklemeniz gerekmez.
-  8. **Linux kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için, Birleşik aracı dosyasının ilgili sürümünü Linux sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.  Örnek: RHEL 6,7 64-bit sunucu için, **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** dosyasını sunucuya kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
+  8. **Linux kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için, Birleşik aracı dosyasının Ilgili sürümünü Linux sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.  Örnek: RHEL 6,7 64-bit sunucu Için, **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** dosyasını sunucuya kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
 
 
 > [!NOTE]
@@ -231,7 +231,7 @@ Scout güncelleştirme 5, toplu bir güncelleştirmedir. Güncelleştirme 1 ' de
     * SCSI uyumsuzluğu sorunu nedeniyle sabit tek düğümlü küme koruması başarısız oluyor. 
     * Hedef küme diskleri varsa P2V Windows küme sunucusu 'nun sabit yeniden korunması başarısız olur. 
     
-* Düzenle Yeniden çalışma koruması sırasında, seçili ana hedef sunucu korunan kaynak makineyle aynı ESXi sunucusunda değilse (ileri koruma sırasında), vContinuum yeniden çalışma kurtarması sırasında yanlış ana hedef sunucusu seçer ve kurtarma işlem başarısız oldu.
+* Düzeltildi: yeniden çalışma koruması sırasında, seçili ana hedef sunucu korunan kaynak makineyle aynı ESXi sunucusunda değilse (ileriye doğru koruma sırasında), yeniden çalışma kurtarması sırasında vContinuum yanlış ana hedef sunucusunu seçer ve kurtarma işlem başarısız oldu.
 
 > [!NOTE]
 > * P2V küme düzeltmeleri yalnızca Site Recovery Scout güncelleştirme 5 ile yeni korunan fiziksel MSCS kümeleri için geçerlidir. Daha eski güncelleştirmelerle korunan P2V MSCS kümelerine küme düzeltmeleri yüklemek için [Site Recovery Scout sürüm notlarının](https://aka.ms/asr-scout-release-notes)12. bölümünde bahsedilen yükseltme adımlarını izleyin.
@@ -258,7 +258,7 @@ Scout Update 4, toplu bir güncelleştirmedir. Güncelleştirme 1 ' den güncell
 
 * Aşağıdaki Linux işletim sistemleri ve klonları için, istenmeyen yeniden eşitleme sorunlarını engellemek için geliştirilmiş kapalı bir işlem:
     * Red Hat Enterprise Linux (RHEL) 6. x
-    * Oracle Linux (OL) 6.x
+    * Oracle Linux (OL) 6. x
 * Linux için, Birleşik aracı yükleme dizinindeki tüm klasör erişim izinleri artık yalnızca yerel kullanıcıyla kısıtlıdır.
 * Windows 'ta, SQL Server ve paylaşma noktası kümeleri gibi çok sayıda yüklenmiş dağıtılmış uygulamalarda ortak dağıtılmış tutarlılık yer işaretleri verirken oluşan zaman aşımı sorununa yönelik bir çözüm.
 * Yapılandırma sunucusu temel yükleyicisinde günlüğe kaydetme ile ilgili bir çözüm.
@@ -266,7 +266,7 @@ Scout Update 4, toplu bir güncelleştirmedir. Güncelleştirme 1 ' den güncell
 * Yük devretme ve olağanüstü durum kurtarma ile ilgili ağ yapılandırması değişiklikleri için ek denetimler ve Günlükler eklenmiştir.
 * Saklama bilgilerinin yapılandırma sunucusuna raporlanmamasına neden olan bir sorun için bir çözüm.  
 * Fiziksel kümeler için, birim yeniden boyutlandırmasının, kaynak birimi daraltılması sırasında vContinuum sihirbazında başarısız olmasına neden olan bir sorun için bir çözüm.
-* Şu hatayla başarısız olan bir küme koruma sorununa yönelik bir çözüm: Küme diski bir PRDM diski olduğunda "disk imzası bulunamadı".
+* Küme koruma sorununa yönelik bir sorun oluştu; bu, küme diski bir PRDM diski olduğunda "disk imzası bulunamadı" hatasıyla başarısız oldu.
 * Bir cxps aktarım sunucusu kilitlenmesi için, Aralık dışı bir özel durum nedeniyle oluşan bir çözüm.
 * Sunucu adı ve IP adresi sütunları artık vContinuum sihirbazının **anında yükleme** sayfasında yeniden boyutlandırılabilir.
 * RX API geliştirmeleri:
@@ -309,17 +309,17 @@ Güncelleştirme 3 aşağıdaki sorunları düzeltir:
   * CentOS 6 güncelleştirme 7
 * Yapılandırma sunucusu ve RX konsolları artık çift için bit eşlem moduna geçen bildirimleri gösterir.
 * Aşağıdaki güvenlik düzeltmeleri RX 'ye eklenmiştir:
-    * Parametre değişikliği aracılığıyla yetkilendirme atlama: Geçerli olmayan kullanıcılara kısıtlı erişim.
-    * Siteler arası istek sahteciliği: Sayfa belirteci kavramı uygulandı ve her sayfada rastgele olarak oluşturulur. Bu, aynı kullanıcı için yalnızca bir çoklu oturum açma örneği olduğu anlamına gelir ve sayfa yenileme çalışmaz. Bunun yerine, panoya yeniden yönlendirir.
-    * Kötü amaçlı dosya yükleme: Dosyalar belirli uzantılara kısıtlıdır: z, AIFF, ASF, AVI, BMP, CSV, Doc, docx, FLA, FLV, gif, GZ, gzip, JPEG, jpg, log, Mid, MOV, MP3, MP4, MPC, MPEG, MPG, ODS, ODT, PDF, PNG, PPT, PPTX, PXD, QT, RAM, rar, RM, rmi, RMVB, RTF, sdc, SITD, SWF , SXC, SXW, tar, tgz, tif, TIFF, txt, VSD, WAV, WMA, WMV, xls, xlsx, XML ve zip.
-    * Kalıcı siteler arası betik oluşturma: Giriş doğrulamaları eklendi.
+    * Parametre değişikliği aracılığıyla yetkilendirme atlama: geçerli olmayan kullanıcılara kısıtlı erişim.
+    * Çapraz site isteği forgery: sayfa belirteci kavramı uygulandı ve her sayfa için rastgele bir üretir. Bu, aynı kullanıcı için yalnızca bir çoklu oturum açma örneği olduğu anlamına gelir ve sayfa yenileme çalışmaz. Bunun yerine, panoya yeniden yönlendirir.
+    * Kötü amaçlı dosya yükleme: dosyalar belirli uzantılarla kısıtlıdır: z, AIFF, ASF, avi, BMP, CSV, Doc, docx, FLA, FLV, gif, GZ, gzip, JPEG, jpg, log, Mid, MOV, MP3, MP4, MPC, MPEG, MPG, ODS, ODT, , sdc, SITD, SWF, SXC, SXW, tar, tgz, tif, TIFF, txt, VSD, WAV, WMA, WMV, xls, xlsx, XML ve zip.
+    * Kalıcı siteler arası betik oluşturma: giriş doğrulamaları eklendi.
 
 ### <a name="azure-site-recovery-scout-801-update-2-update-03dec15"></a>Azure Site Recovery Scout 8.0.1 güncelleştirme 2 (güncelleştirme 03Dec15)
 
 Güncelleştirme 2 ' deki düzeltmeler şunlardır:
 
-* **Yapılandırma sunucusu**: Yapılandırma sunucusu Azure Site Recovery kasasına kaydedildiğinde, 31 günlük ücretsiz ölçüm özelliğinin beklendiği gibi çalışmasını engelleyen sorunlar.
-* **Birleşik aracı**: Güncelleştirme 1 ' de güncelleştirmenin sürüm 8,0 ' den 8.0.1 ' ye yükseltme sırasında, ana hedef sunucuda yüklü olmayan bir sorunu giderme.
+* **Yapılandırma sunucusu**: yapılandırma sunucusu Azure Site Recovery kasaya kaydedildiğinde, 31 günlük ücretsiz ölçüm özelliğinin beklendiği gibi çalışmasını engelleyen sorunlar.
+* **Birleşik aracı**: 8,0 sürümünden 8.0.1 sürümüne yükseltme sırasında güncelleştirme 1 ' de güncelleştirmenin ana hedef sunucuda yüklü olmayan bir sorunu giderme.
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
 Güncelleştirme 1 aşağıdaki hata düzeltmelerini ve yeni özellikleri içerir:

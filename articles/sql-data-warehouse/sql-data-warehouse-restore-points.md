@@ -1,5 +1,5 @@
 ---
-title: Kullanıcı tanımlı geri yükleme noktaları | Microsoft Docs
+title: Kullanıcı tanımlı geri yükleme noktaları
 description: Geri yükleme noktası Azure SQL veri ambarı oluşturma.
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 9dcb8b2e9c1b75aac3c195f89777ac9c6eb030d7
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 61ceb2f1271d085321215aff1c6d138feb95d743
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575255"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692499"
 ---
 # <a name="user-defined-restore-points"></a>Kullanıcı tanımlı geri yükleme noktaları
 
@@ -65,7 +66,7 @@ Kullanıcı tanımlı geri yükleme noktaları, Azure portal aracılığıyla da
 
 3. Sol bölmeden **genel bakış** ' ı seçin, **+ Yeni geri yükleme noktası**' nı seçin. Yeni geri yükleme noktası düğmesi etkinleştirilmemişse, veri ambarının duraklatılmadığından emin olun.
 
-    ![Yeni Geri Yükleme Noktası](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
+    ![Yeni geri yükleme noktası](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
 4. Kullanıcı tanımlı geri yükleme noktanız için bir ad belirtin ve **Uygula**' ya tıklayın. Kullanıcı tanımlı geri yükleme noktalarının varsayılan saklama süresi yedi gündür.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure portal: SQL veritabanı coğrafi çoğaltma | Microsoft Docs'
+title: 'Azure portal: SQL veritabanı coğrafi çoğaltma '
 description: Azure portal kullanarak Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanı için Coğrafi çoğaltmayı yapılandırma ve yük devretmeyi başlatma
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 049122b97a26e63188142dd5494927c2ae71d852
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 2a9d627cb2b51d0d7d0b07052f18a8dbe1dc2f19
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103220"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691340"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure portal Azure SQL veritabanı için etkin Coğrafi çoğaltmayı yapılandırma ve yük devretmeyi başlatma
 
@@ -24,11 +24,11 @@ Bu makalede, Azure SQL veritabanı 'nda [Azure Portal](https://portal.azure.com)
 
 Tek ve havuza alınmış veritabanlarına sahip otomatik yük devretme grupları hakkında daha fazla bilgi için bkz. [tek ve havuza alınmış veritabanlarıyla yük devretme grupları kullanmanın en iyi yöntemleri](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Yönetilen örneklerle otomatik yük devretme grupları hakkında daha fazla bilgi için bkz. [yönetilen örneklerle yük devretme grupları kullanmanın en iyi yöntemleri](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure portal kullanarak etkin Coğrafi çoğaltmayı yapılandırmak için aşağıdaki kaynağa ihtiyacınız vardır:
 
-* Azure SQL veritabanı: Farklı bir coğrafi bölgeye çoğaltmak istediğiniz birincil veritabanı.
+* Azure SQL veritabanı: farklı bir coğrafi bölgeye çoğaltmak istediğiniz birincil veritabanı.
 
 > [!Note]
 > Azure portal kullanırken, birincil ile aynı abonelik içinde yalnızca ikincil bir veritabanı oluşturabilirsiniz. İkincil veritabanının farklı bir abonelikte olması gerekiyorsa [create database REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) veya [ALTER DATABASE Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)kullanın.
@@ -66,10 +66,10 @@ Aşağıdaki adımlar, coğrafi çoğaltma ortaklığında yeni bir ikincil veri
 İkincil veritabanı birincil olacak şekilde değiştirilebilir.  
 
 1. [Azure Portal](https://portal.azure.com), coğrafi çoğaltma ortaklığının birincil veritabanına gidin.
-2. SQL veritabanı dikey penceresinde **Tüm ayarlar** > **coğrafi çoğaltma**' yı seçin.
+2. SQL veritabanı dikey penceresinde, **coğrafi çoğaltma** > **Tüm ayarlar** ' ı seçin.
 3. **İkincil** öğeler listesinde, yeni birincil olmasını istediğiniz veritabanını seçin ve **Yük devretme**' ye tıklayın.
 
-    ![yük devretme](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![Yükünü](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Yük devretmeyi başlatmak için **Evet** ' e tıklayın.
 
 Komut, ikincil veritabanını hemen birincil role geçirir. Bu işlem normalde 30 saniye veya daha az bir sürede tamamlanır.

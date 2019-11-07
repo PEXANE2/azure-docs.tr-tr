@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services desteklenen veri kaynakları | Microsoft Docs
-description: Azure Analysis Services veri modelleri için desteklenen veri kaynaklarını açıklar.
+description: Azure Analysis Services tablo 1200 ve daha yüksek veri modelleri için desteklenen veri kaynaklarını ve bağlayıcıları açıklar.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cc47ff50aa7bb6dce58ed83f75f69fb600ad040b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146932"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572952"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services desteklenen veri kaynakları
 
@@ -22,14 +22,14 @@ Visual Studio 'da veri alma veya Içeri aktarma Sihirbazı 'nda gösterilen veri
 
 |Veri kaynağı  |Bellek içi  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL veritabanı<sup>[2](#azsqlmanaged)</sup>     |   Yes      |    Yes      |
-|Azure SQL Veri Ambarı     |   Yes      |   Yes       |
-|Azure Blob depolama<sup>[1](#tab1400a)</sup>     |   Yes       |    Hayır      |
-|Azure Tablo depolama<sup>[1](#tab1400a)</sup>    |   Yes       |    Hayır      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Yes        |  Hayır        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Yes       |    Hayır      |
-|Azure HDInsight,<sup>[1](#tab1400a) .</sup>     |     Yes     |   Hayır       |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Yes       |   Hayır       |
+|Azure SQL veritabanı<sup>[2](#azsqlmanaged)</sup>     |   Evet      |    Evet      |
+|Azure SQL Veri Ambarı     |   Evet      |   Evet       |
+|Azure Blob depolama<sup>[1](#tab1400a)</sup>     |   Evet       |    Hayır      |
+|Azure Tablo depolama<sup>[1](#tab1400a)</sup>    |   Evet       |    Hayır      |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Evet        |  Hayır        |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Evet       |    Hayır      |
+|Azure HDInsight,<sup>[1](#tab1400a) .</sup>     |     Evet     |   Hayır       |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Evet       |   Hayır       |
 ||||
 
 yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.   

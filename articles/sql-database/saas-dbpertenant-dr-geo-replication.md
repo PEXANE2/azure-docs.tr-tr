@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı coğrafi çoğaltma kullanılarak SaaS uygulamaları için olağanüstü durum kurtarma | Microsoft Docs
+title: Azure SQL veritabanı Coğrafi çoğaltmayı kullanarak SaaS uygulamaları için olağanüstü durum kurtarma
 description: Bir kesinti durumunda çok kiracılı SaaS uygulamasını kurtarmak için Azure SQL veritabanı coğrafi çoğaltmalarını nasıl kullanacağınızı öğrenin
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: bebbb3d053db37a9716230dfbb14372696dd4936
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f6f8ed39de36ce38b0bc4b879980a054bf480d0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570530"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692233"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Veritabanı coğrafi çoğaltma kullanarak çok kiracılı SaaS uygulaması için olağanüstü durum kurtarma
 
@@ -89,10 +89,10 @@ Daha sonra, ayrı bir yeniden bir geri alma adımında, kurtarma bölgesindeki K
 ## <a name="review-the-healthy-state-of-the-application"></a>Uygulamanın sağlıklı durumunu gözden geçirin
 
 Kurtarma işlemine başlamadan önce, uygulamanın normal sağlıklı durumunu gözden geçirin.
-1. Web tarayıcınızda, Wingtip bilet olayları hub http://events.wingtip-dpt.&lt 'ını açın (; user&gt;. trafficmanager.NET-Kullanıcı&gt; , dağıtımınızın &lt; Kullanıcı değeri ile değiştirin).
+1. Web tarayıcınızda, Wingtip bilet olayları hub 'ını açın (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net-&lt;Kullanıcı&gt; dağıtımınızın Kullanıcı değeriyle değiştirin).
     * Sayfanın alt kısmına ilerleyin ve altbilgide katalog sunucusu adı ve konumuna dikkat edin. Konum, uygulamayı dağıttığınız bölgedir.
-    *IPUCUYLA Ekranı büyütmek için fareyi konumun üzerine getirin. ÖzgünbölgedekiOlayHub*'ısağlıklıdurumu 
-     ![](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *İpucu: ekranı büyütmek için fareyi konumun üzerine getirin.* özgün bölgede ![Olay Hub 'ı sağlıklı durumunu
+    ](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Contoso Concert Salı kiracısına tıklayın ve olay sayfasını açın.
     * Altbilgide, kiracı sunucu adına dikkat edin. Konum, katalog sunucusunun konumuyla aynı olacaktır.
@@ -107,13 +107,13 @@ Bu görevde, sunucuların, elastik havuzların ve veritabanlarının yapılandı
 > [!IMPORTANT]
 > Kolaylık olması için, eşitleme işlemi ve diğer uzun süre çalışan kurtarma ve geri alma işlemleri bu öğreticilerde, istemci kullanıcı oturumu açma bölümünde çalışan yerel PowerShell işleri veya oturumları olarak uygulanır. Oturum açtığınızda verilen kimlik doğrulama belirteçleri, birkaç saat sonra sona erer ve sonra işler başarısız olur. Bir üretim senaryosunda, uzun süre çalışan süreçler, bir hizmet sorumlusu altında çalışan bazı tür güvenilir Azure hizmetleri olarak uygulanmalıdır. Bkz. [sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal).
 
-1. _PowerShell ISE_'de. ..\Learning Modules\userconfig.exe dosyasını açın. 10 ve 11. satırları, uygulamayı dağıtırken kullanılan değerle değiştirin `<resourcegroup>`. `<user>`  Dosyayı kaydedin!
+1. _PowerShell ISE_'de. ..\Learning Modules\userconfig.exe dosyasını açın. 10 ve 11. satırlardaki `<resourcegroup>` ve `<user>`, uygulamayı dağıtırken kullanılan değerle değiştirin.  Dosyayı kaydedin!
 
 2. *PowerShell ISE*'de. ..\Learning Modules\Business Continuity ve olağanüstü durum Recovery\dr-failovertoreplica\demo-failovertoreplica.exe ve set ' i açın:
     * **$DemoScenario = 1**, kiracı sunucusunu eşitlenen bir arka plan işi başlatın ve yapılandırma bilgilerini katalogla havuzlayın
 
 3. Eşitleme betiğini çalıştırmak için **F5** tuşuna basın. Kiracı kaynaklarının yapılandırmasını eşitlemek için yeni bir PowerShell oturumu açılır.
-![Eşitleme işlemi](media/saas-dbpertenant-dr-geo-replication/sync-process.png)
+Eşitleme işlemini ![](media/saas-dbpertenant-dr-geo-replication/sync-process.png)
 
 PowerShell penceresini arka planda çalışır durumda bırakın ve öğreticinin geri kalanı ile devam edin. 
 
@@ -131,7 +131,7 @@ Bu görevde, yinelenen bir uygulama örneği dağıtan ve kataloğu ve tüm kira
     * **$DemoScenario = 2**, yansıtma görüntüsü kurtarma ortamı oluşturma ve Katalog ve kiracı veritabanlarını çoğaltma
 
 2. Betiği çalıştırmak için **F5**'e basın. Çoğaltmaları oluşturmak için yeni bir PowerShell oturumu açıldı.
-![Eşitleme işlemi](media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
+Eşitleme işlemini ![](media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
 
 ## <a name="review-the-normal-application-state"></a>Normal uygulama durumunu gözden geçirme
 
@@ -141,7 +141,7 @@ Bu noktada, uygulama normal olarak özgün bölgede çalışıyor ve şimdi coğ
 
 2. Kurtarma kaynak grubundaki kaynakları keşfet.  
 
-3. _Tenants1-DPT-&lt;user&gt;-Recovery_ sunucusunda contoso Concert salonu veritabanına tıklayın.  Sol tarafta coğrafi çoğaltma ' ya tıklayın. 
+3. _Tenants1-DPT-&lt;user&gt;-Recovery_ Server üzerindeki contoso Concert salonu veritabanına tıklayın.  Sol tarafta coğrafi çoğaltma ' ya tıklayın. 
 
     ![Contoso Concert coğrafi çoğaltma bağlantısı](media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -188,7 +188,7 @@ Kurtarma betiği aşağıdaki görevleri gerçekleştirir:
     * Kurtarma bölgesi, uygulamayı dağıttığınız Azure bölgesiyle ilişkili _eşleştirilmiş bölgedir_ . Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 3. Kurtarma işleminin durumunu PowerShell penceresinde izleyin.
-    ![Yük devretme işlemi](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
+    Yük devretme işlemi ![](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
 
 > [!Note]
 > Kurtarma işlerinin kodunu araştırmak için,. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\drtoreplica\recoveryjobs klasöründeki PowerShell betiklerini inceleyin.
@@ -206,7 +206,7 @@ Uygulama uç noktası Traffic Manager devre dışı bırakılsa da, uygulama kul
  
      ![Etkinlik Hub 'ı çevrimdışı](media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
-   * Bir çevrimdışı kiracının Olaylar sayfasını doğrudan açarsanız, ' kiracı çevrimdışı ' bildirimini görüntüler. Örneğin, contoso Concert Salı çevrimdışıysa, şunu açmayı http://events.wingtip-dpt.&lt deneyin; user&gt;. trafficmanager.net/contosoconcerthall ![ contoso çevrimdışı sayfası](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
+   * Bir çevrimdışı kiracının Olaylar sayfasını doğrudan açarsanız, ' kiracı çevrimdışı ' bildirimini görüntüler. Örneğin, contoso Concert Salı çevrimdışıysa http://events.wingtip-dpt.&ltaçmayı deneyin; User&gt;. trafficmanager.net/contosoconcerthall ![contoso çevrimdışı sayfası](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
 
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>Kurtarma bölgesinde yeni bir kiracı sağlayın
 Tüm mevcut kiracı veritabanlarının yük devretmemesine karşın, kurtarma bölgesinde yeni kiracılar sağlayabilirsiniz.  
@@ -217,7 +217,7 @@ Tüm mevcut kiracı veritabanlarının yük devretmemesine karşın, kurtarma b�
 2. Betiği çalıştırmak ve yeni kiracıyı sağlamak için **F5** tuşuna basın. 
 
 3. Bu işlem tamamlandığında, tarayıcıda, Havth, Salon Salonu olayları sayfası açılır. Ana bilgisayardan, bir kurtarma bölgesinde, Havthtsalya salonu veritabanının sağlandığını unutmayın.
-    ![Havtal salonu etkinlikleri sayfası](media/saas-dbpertenant-dr-geo-replication/hawthornhallevents.png) 
+    ![,](media/saas-dbpertenant-dr-geo-replication/hawthornhallevents.png) 
 
 4. Tarayıcıda, Wingtip bilet olayları hub 'ını yenileyerek, havdan dahil edilen malzemeleri görüntüleyin. 
     * Diğer kiracıları geri yüklemek için beklemeden, diğer kiracılar hala çevrimdışı olabilir.
@@ -229,22 +229,22 @@ Kurtarma işlemi tamamlandığında, uygulama ve tüm kiracılar kurtarma bölge
 
 1. PowerShell konsolu penceresinde görüntülenen tüm kiracılar varsa, Olay Hub 'ını yenileyin.  Kiracıların hepsi, yeni kiracı, Havsalya salonu dahil olmak üzere çevrimiçi olarak görünür.
 
-    ![olaylar hub 'ında kurtarılan ve yeni kiracılar](media/saas-dbpertenant-dr-geo-replication/events-hub-with-hawthorn-hall.png)
+    ![Olaylar hub 'ında kurtarılan ve yeni kiracılar](media/saas-dbpertenant-dr-geo-replication/events-hub-with-hawthorn-hall.png)
 
 2. [Azure Portal](https://portal.azure.com), kaynak grupları listesini açın.  
-    * Dağıttığınız kaynak grubuna ve kurtarma kaynak grubuna ve _Kurtarma sonekine sahip_ olun.  Kurtarma kaynak grubu, kurtarma işlemi sırasında oluşturulan tüm kaynakları ve kesinti sırasında oluşturulan yeni kaynakları içerir.  
+    * Dağıttığınız kaynak grubuna ve kurtarma kaynak _grubuna ve kurtarma sonekine sahip_ olun.  Kurtarma kaynak grubu, kurtarma işlemi sırasında oluşturulan tüm kaynakları ve kesinti sırasında oluşturulan yeni kaynakları içerir.  
 
 3. Kurtarma kaynak grubunu açın ve aşağıdaki öğelere dikkat edin:
    * Katalog ve tenants1 sunucularının kurtarma sürümleri ve _Kurtarma_ son eki.  Bu sunuculardaki geri yüklenen Katalog ve kiracı veritabanlarının hepsi özgün bölgede kullanılan adlara sahiptir.
 
-   * _Tenants2-DPT-&lt;Kullanıcı&gt;-kurtarma_ SQL Server.  Bu sunucu, kesinti sırasında yeni kiracılar sağlamak için kullanılır.
-   * Olaylar uygulamasının kurtarma örneği olan, _-Wingtip-DPT&lt;-recoveryregion&gt;-&lt;kullanıcısı & gt_; adlı App Service. 
+   * _Tenants2-DPT-&lt;user&gt;-Recovery_ SQL Server.  Bu sunucu, kesinti sırasında yeni kiracılar sağlamak için kullanılır.
+   * Olaylar uygulamasının kurtarma örneği olan _&lt;user & gt; -, olaylar-Wingtip-DPT-&lt;recoveryregion&gt;_ adlı App Service. 
 
      ![Azure kurtarma kaynakları](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
 4. _Tenants2-DPT-&lt;user&gt;-Recovery_ SQL Server 'ı açın.  _Hawthornhall_ veritabanı ve elastik havuz, _Pool1_içerdiğini unutmayın.  _Hawthornhall_ veritabanı, _Pool1_ elastik havuzda esnek veritabanı olarak yapılandırılır.
 
-5. Kaynak grubuna geri gidin ve _tenants1-DPT-&lt;user&gt;-Recovery_ sunucusunda contoso Concert salonu veritabanına tıklayın. Sol tarafta coğrafi çoğaltma ' ya tıklayın.
+5. Kaynak grubuna geri gidin ve _tenants1-DPT-&lt;user&gt;-Recovery_ Server üzerindeki contoso Concert salonu veritabanına tıklayın. Sol tarafta coğrafi çoğaltma ' ya tıklayın.
     
     ![Yük devretmeden sonra contoso veritabanı](media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication-after-failover.png)
 
@@ -255,7 +255,7 @@ Bu görevde, kiracı veritabanlarından birini güncelleştirin.
 2. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\dr-failovertoreplica\demo-failovertoreplica.exe. ps1 komut dosyasında aşağıdaki değeri ayarlayın:
     * **$DemoScenario = 5** Kurtarma bölgesindeki bir kiracıdan bir olayı silme
 3. Betiği yürütmek için **F5** 'e basın
-4. Contoso Concert salyamı olayları sayfasını (http://events.wingtip-dpt.&lt ; user&gt;. trafficmanager.net/contosoconcerthall-Kullanıcı &lt;&gt; , dağıtımınızın Kullanıcı değeri ile değiştirin) yenileyip son olayın silindiğini görürsünüz.
+4. Contoso Concert Saletkinlikleri sayfasını (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net/contosoconcerthall-&lt;Kullanıcı&gt; dağıtımınızın Kullanıcı değeriyle değiştirin) ve son olayın silindiğini görürsünüz.
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>Uygulamayı özgün üretim bölgesine yeniden boyar
 
@@ -288,11 +288,11 @@ Yük devretme, veritabanını özgün bölgeye etkin bir şekilde taşıdıkça.
     * Kurtarma betiğini yeni bir PowerShell penceresinde çalıştırmak için **F5** tuşuna basın.  Repama, birkaç dakika sürer ve PowerShell penceresinde izlenebilir.
     ![Repama işlemi](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
-4. Betik çalışırken, Olay Hub 'ı sayfasını (http://events.wingtip-dpt.&lt ; user&gt;. trafficmanager.net) yenileyin
+4. Betik çalışırken, Olay Hub 'ı sayfasını (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net) yenileyin
     * Bu süreç boyunca tüm kiracıların çevrimiçi ve erişilebilir olduğuna dikkat edin.
 
 5. Yeniden atma işlemi tamamlandıktan sonra, Olay Hub 'ını yenileyin ve ayrıntılı Salkayı için Olaylar sayfasını açın. Bu veritabanının özgün bölgeye yeniden onarımduğuna dikkat edin.
-    ![Olay Hub 'ı yeniden repaılır](media/saas-dbpertenant-dr-geo-replication/events-hub-repatriated.png)
+    ![Olay Hub 'ı repaılan](media/saas-dbpertenant-dr-geo-replication/events-hub-repatriated.png)
 
 
 ## <a name="designing-the-application-to-ensure-app-and-database-are-colocated"></a>Uygulamanın ve veritabanının birlikte bulunduğundan emin olmak için uygulamayı tasarlama 
@@ -302,7 +302,7 @@ Kiracı veritabanları, geri alma sırasında bir süre boyunca kurtarma ve özg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
+Bu öğreticide, şunları öğrendiniz:
 > [!div class="checklist"]
 > 
 > * Veritabanı ve elastik havuz yapılandırma bilgilerini kiracı kataloğu ile eşitleyin

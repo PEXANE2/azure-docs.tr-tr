@@ -1,5 +1,5 @@
 ---
-title: Oluşturma, istatistik güncelleştirme-Azure SQL veri ambarı | Microsoft Docs
+title: İstatistikleri oluşturma, güncelleştirme
 description: Azure SQL veri ambarı 'nda tablolar üzerinde sorgu iyileştirme istatistiklerini oluşturmaya ve güncelleştirmeye yönelik öneriler ve örnekler.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 00643e303b3352ce9ce39e5a27fd8b42246aac51
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c995358fc0135a1f9b504b57b23ecb3f6b41d6da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479159"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692404"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda tablo istatistikleri
 
@@ -47,7 +47,7 @@ SET AUTO_CREATE_STATISTICS ON
 Bu deyimler istatistiklerin otomatik olarak oluşturulmasını tetikler:
 
 - SELECT
-- INSERT-SELECT
+- ıNSERT-SELECT
 - CTAS
 - UPDATE
 - DELETE
@@ -61,7 +61,7 @@ Bu deyimler istatistiklerin otomatik olarak oluşturulmasını tetikler:
 > [!NOTE]
 > İstatistik oluşturma, farklı bir kullanıcı bağlamı altında [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) 'e kaydedilir.
 
-Otomatik istatistikler oluşturulduğunda şu biçimdedir: _WA_Sys_< 8 basamaklı sütun kimliği, onaltılı > _ < 8 basamaklı tablo kimliği onaltılık >. [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) komutu çalıştırılarak daha önce oluşturulmuş olan istatistikleri görüntüleyebilirsiniz:
+Otomatik istatistikler oluşturulduğunda, şu biçimde olur: _WA_Sys_< 8 basamaklı sütun kimliği onaltılık > _ < 8 basamaklı tablo kimliği onaltılık >. [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) komutu çalıştırılarak daha önce oluşturulmuş olan istatistikleri görüntüleyebilirsiniz:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -77,12 +77,12 @@ En iyi yöntem, yeni tarihler eklendikçe her gün tarih sütunlarında istatist
 
 |||
 |-|-|
-| **İstatistik güncelleştirme sıklığı**  | Klasik Günlük </br> Verilerinizi yükledikten veya dönüştürdükten sonra |
+| **İstatistik güncelleştirme sıklığı**  | Koruyucu: günlük </br> Verilerinizi yükledikten veya dönüştürdükten sonra |
 | **Örnekleme** |  1\.000.000.000 satırdan az olan varsayılan örnekleme (yüzde 20) kullanın. </br> 1\.000.000.000 ' den fazla satır ile, iki yüzde örnekleme kullanın. |
 
 Bir sorgunun sorunlarını giderirken ilk sorulardan biri, **"istatistiklerin güncel mi?"** olduğunu sorar.
 
-Bu soru, verilerin yaşına göre yanıtlanacak bir değildir. Temel alınan verilerde malzeme değişikliği olmadığında güncel bir istatistik nesnesi eski olabilir. Satır sayısı önemli ölçüde değiştirildiğinde veya bir sütun için değerlerin dağıtımında bir malzeme değişikliği *varsa, istatistiklerin* güncelleştirilmesi zaman olur.
+Bu soru, verilerin yaşına göre yanıtlanacak bir değildir. Temel alınan verilerde malzeme değişikliği olmadığında güncel bir istatistik nesnesi eski olabilir. Satır sayısı önemli ölçüde değiştirildiğinde veya bir sütun için değerlerin dağıtımında bir malzeme değişikliği *varsa, istatistiklerin güncelleştirilmesi zaman olur.*
 
 Son istatistik güncelleştirildikten sonra tablodaki verilerin değişip değişmediğini tespit etmek için dinamik bir yönetim görünümü yoktur. İstatistiklerinizin yaşınızı bilmeniz, resmin bir parçasını sağlayabilir. Her tabloda istatistiklerin güncelleştirildiği son zamanı anlamak için aşağıdaki sorguyu kullanabilirsiniz.
 
@@ -130,11 +130,11 @@ Aşağıdaki temel ilkeler, yükleme işlemi sırasında istatistiklerinizi gün
 * JOIN, GROUP BY, ORDER BY ve DISTINCT yan tümcelerinde yer alan sütunlara odaklanın.
 * Bu değerler istatistik histogramı içinde yer alacağından, işlem tarihleri daha sık olan "artan anahtar" sütunlarını güncelleştirmeyi göz önünde bulundurun.
 * Statik dağıtım sütunlarını daha az sıklıkta güncelleştirmeyi göz önünde bulundurun.
-* Her istatistik nesnesinin sırayla güncelleştirildiğini unutmayın. Özellikle çok `UPDATE STATISTICS <TABLE_NAME>` sayıda istatistik nesnesi olan geniş tablolar için her zaman ideal bir uygulama değildir.
+* Her istatistik nesnesinin sırayla güncelleştirildiğini unutmayın. Yalnızca çok sayıda istatistik nesnesi olan geniş tablolar için `UPDATE STATISTICS <TABLE_NAME>` uygulamak her zaman ideal değildir.
 
 Daha fazla bilgi için bkz. [kardinalite tahmini](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
-## <a name="examples-create-statistics"></a>Örnekler: İstatistik oluşturma
+## <a name="examples-create-statistics"></a>Örnekler: istatistik oluşturma
 
 Bu örneklerde, istatistik oluşturmak için çeşitli seçeneklerin nasıl kullanılacağı gösterilmektedir. Her bir sütun için kullandığınız seçenekler, verilerinizin özelliklerine ve sütun sorgularda nasıl kullanılacağını bağlıdır.
 
@@ -210,13 +210,13 @@ Tam başvuru için bkz. [Istatistik oluşturma](/sql/t-sql/statements/create-sta
 > [!NOTE]
 > Sorgu sonucundaki satır sayısını tahmin etmek için kullanılan histogramı yalnızca istatistik nesne tanımında listelenen ilk sütunda kullanılabilir.
 
-Bu örnekte, histogram *ürün\_kategorisinde*bulunur. *Ürün\_kategorisi* ve *ürün\_sub_category*üzerinde çapraz sütun istatistikleri hesaplanır:
+Bu örnekte, histogram *ürün\_kategorisinde*bulunur. Çapraz sütun istatistikleri *ürün\_kategorisi* ve *ürün\_sub_category*göre hesaplanır:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-*Ürün\_kategorisi* ile *ürün\_alt\_kategorisi*arasında bir bağıntı olduğundan, bu sütunlara aynı anda erişildiğinde çok sütunlu bir istatistik nesnesi yararlı olabilir.
+*Ürün\_kategorisi* ve *ürün\_Sub\_kategorisi*arasında bir bağıntı olduğundan, bu sütunlara aynı anda erişildiğinde çok sütunlu bir istatistik nesnesi yararlı olabilir.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Tablodaki tüm sütunlarda istatistik oluşturma
 
@@ -352,7 +352,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 Tüm sütunlarda örneklenmiş istatistik oluşturmak için
 
-## <a name="examples-update-statistics"></a>Örnekler: İstatistikleri Güncelleştir
+## <a name="examples-update-statistics"></a>Örnekler: güncelleştirme istatistikleri
 
 İstatistikleri güncelleştirmek için şunları yapabilirsiniz:
 
@@ -394,7 +394,7 @@ GÜNCELLEŞTIRME ISTATISTIKLERI bildiriminin kullanımı kolaydır. Yalnızca ta
 > [!NOTE]
 > Bir tablodaki tüm İstatistikleri güncelleştirirken, SQL veri ambarı her istatistik nesnesi için tabloyu örneklemek üzere bir tarama yapar. Tablo büyükse ve çok sayıda sütun ve birçok istatistik içeriyorsa, her bir istatistiği ihtiyaya göre güncelleştirmek daha verimli olabilir.
 
-Bir `UPDATE STATISTICS` yordamın uygulanması için bkz. [geçici tablolar](sql-data-warehouse-tables-temporary.md). Uygulama yöntemi önceki `CREATE STATISTICS` yordamdan biraz farklıdır, ancak sonuç aynıdır.
+`UPDATE STATISTICS` yordamının uygulanması için bkz. [geçici tablolar](sql-data-warehouse-tables-temporary.md). Uygulama yöntemi, önceki `CREATE STATISTICS` yordamından biraz farklıdır, ancak sonuç aynıdır.
 
 Tam sözdizimi için bkz. [güncelleştirme istatistikleri](/sql/t-sql/statements/update-statistics-transact-sql).
 
@@ -409,7 +409,7 @@ Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 | Katalog görünümü | Açıklama |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Her sütun için bir satır. |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Veritabanındaki her nesne için bir satır. |
+| [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Veritabanındaki her nesne için bir satır. |
 | [sys. schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Veritabanındaki her şema için bir satır. |
 | [sys. stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Her istatistik nesnesi için bir satır. |
 | [sys. stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |İstatistikler nesnesindeki her sütun için bir satır. Sys. Columns öğesine geri bağlantı. |
@@ -465,13 +465,13 @@ AND     st.[user_created] = 1
 ;
 ```
 
-## <a name="dbcc-showstatistics-examples"></a>DBCC SHOW_STATISTICS () örnekleri
+## <a name="dbcc-show_statistics-examples"></a>DBCC SHOW_STATISTICS () örnekleri
 
 DBCC SHOW_STATISTICS (), bir istatistik nesnesi içinde tutulan verileri gösterir. Bu veriler üç bölümden oluşur:
 
-- Üstbilgi
+- Üst bilgi
 - Yoğunluk vektörü
-- Çubuk grafik
+- Histogram
 
 İstatistiklerle ilgili üst bilgi meta verileri. Histogram, değerlerin dağılımını istatistik nesnesinin ilk anahtar sütununda görüntüler. Yoğunluk vektörü, çapraz sütun bağıntısını ölçer. SQL veri ambarı, istatistik nesnesindeki verilerle kardinalite tahminleri hesaplar.
 
@@ -489,9 +489,9 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
-### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>DBCC SHOW_STATISTICS () ' in bir veya daha fazla parçasını göster
+### <a name="show-one-or-more-parts-of-dbcc-show_statistics"></a>DBCC SHOW_STATISTICS () ' in bir veya daha fazla parçasını göster
 
-Yalnızca belirli parçaları görüntülemek istiyorsanız, `WITH` yan tümcesini kullanın ve hangi parçaları görmek istediğinizi belirtin:
+Yalnızca belirli parçaları görüntülemeyi ilgileniyorsanız, `WITH` yan tümcesini kullanın ve hangi parçaları görmek istediğinizi belirtin:
 
 ```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
@@ -503,7 +503,7 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
-## <a name="dbcc-showstatistics-differences"></a>DBCC SHOW_STATISTICS () farkları
+## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS () farkları
 
 DBCC SHOW_STATISTICS (), SQL veri ambarı 'nda SQL Server kıyasla daha net bir şekilde uygulanmıştır:
 

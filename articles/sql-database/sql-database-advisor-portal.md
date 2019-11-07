@@ -1,5 +1,5 @@
 ---
-title: Performans önerilerini uygulama-Azure SQL veritabanı | Microsoft Docs
+title: Performans önerilerini uygulama-Azure SQL veritabanı
 description: Azure SQL veritabanınızın performansını iyileştirebilmenizi sağlayan performans önerilerini bulmak için Azure portal kullanın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: b6bcb2650cd11ed97b6e81fda6aaafe7fca61202
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 24a590a80e768bba2e9b102bdf200e0cd96858f8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569599"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691278"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Performans önerilerini bulma ve uygulama
 
@@ -28,8 +28,8 @@ Performans önerilerini görüntülemek ve uygulamak için, Azure 'da doğru [ro
 
 Azure portal performans önerilerini bulmak için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. **Tüm hizmetler** > **SQL veritabanlarına**gidin ve veritabanınızı seçin.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+2. **Tüm hizmetlere** **SQL veritabanlarına** > gidin ve veritabanınızı seçin.
 3. Seçilen veritabanı için kullanılabilir önerileri görüntülemek için **performans önerisi** ' ne gidin.
 
 Performans önerileri aşağıdaki şekilde gösterildiği gibi tabloda gösterilmiştir:
@@ -38,7 +38,7 @@ Performans önerileri aşağıdaki şekilde gösterildiği gibi tabloda gösteri
 
 Öneriler, performans üzerindeki olası etkileriyle aşağıdaki kategorilere göre sıralanır:
 
-| Etkisi | Açıklama |
+| Etki | Açıklama |
 |:--- |:--- |
 | Yüksek |Yüksek etki önerileri en önemli performans etkisini sağlamalıdır. |
 | Orta |Orta etki önerileri performansı artırmalı ancak önemli ölçüde kullanılmamalıdır. |
@@ -53,7 +53,7 @@ Ayrıca, geçmiş işlemlerin durumunu da görüntüleyebilirsiniz. Daha fazla b
 
 Aşağıda, Azure portal "Dizin oluşturma" önerisi örneği verilmiştir.
 
-![Dizin oluştur](./media/sql-database-advisor-portal/sql-database-performance-recommendation.png)
+![Dizin Oluştur](./media/sql-database-advisor-portal/sql-database-performance-recommendation.png)
 
 ## <a name="applying-recommendations"></a>Öneriler uygulanıyor
 Azure SQL veritabanı, aşağıdaki üç seçenekten birini kullanarak önerilerin nasıl etkinleştirildiği konusunda tam denetim sağlar: 
@@ -129,13 +129,13 @@ Herhangi bir önerisi seçin ve ardından **betiği görüntüle**' ye tıklayı
 
 | Durum | Açıklama |
 |:--- |:--- |
-| Bekleniyor |Öneri Uygula komutu alındı ve yürütme için zamanlandı. |
-| Yürütülüyor |Öneri uygulanıyor. |
-| Doğrulanıyor |Öneri başarıyla uygulandı ve hizmet avantajları ölçdi. |
+| Beklemede |Öneri Uygula komutu alındı ve yürütme için zamanlandı. |
+| Gerçekleştirilirken |Öneri uygulanıyor. |
+| Doğrulamada |Öneri başarıyla uygulandı ve hizmet avantajları ölçdi. |
 | Başarılı |Öneri başarıyla uygulandı ve avantajlar ölçülüyor. |
 | Hata |Öneriyi uygulama işlemi sırasında bir hata oluştu. Bu geçici bir sorun olabilir veya tabloda bir şema değişikliği olabilir ve betik artık geçerli değildir. |
-| Geri döndürülüyor |Öneri uygulandı, ancak performans dışı olarak kabul edildi ve otomatik olarak geri döndürülüyor. |
-| Geri döndürüldü |Öneri geri döndürüldü. |
+| Geri alınıyor |Öneri uygulandı, ancak performans dışı olarak kabul edildi ve otomatik olarak geri döndürülüyor. |
+| Çevrildi |Öneri geri döndürüldü. |
 
 Daha fazla bilgi için listeden bir işlem içi öneriye tıklayın:
 

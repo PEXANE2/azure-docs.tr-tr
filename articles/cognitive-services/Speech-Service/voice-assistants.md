@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: c97f6414876441290cade68b8f9a054970586402
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: bd808c0c71e02483b4c4b06e612720c1802869a0
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507742"
+ms.locfileid: "73577969"
 ---
 # <a name="about-voice-assistants"></a>Sesli yardımcılar hakkında
 
@@ -27,26 +27,29 @@ Uygulamalar, konuşma yazılım geliştirme seti (SDK) ile ses Yardımcısı hiz
 
    ![Ses Yardımcısı düzenleme hizmeti akışının kavramsal diyagramı](media/voice-assistants/overview.png "Sesli yardım akışı")
 
+## <a name="choosing-an-assistant-solution"></a>Yardımcı çözümü seçme
+
+Bir ses Yardımcısı oluşturmaya yönelik ilk adım, ne yapacağına karar vermelidir. Azure konuşma Hizmetleri, yardımcı etkileşimlerinizi üretmek için birden çok ve tamamlayıcı çözüm sunar. Bot çerçevesinin [doğrudan hat konuşma](direct-line-speech.md) kanalının sağladığı esneklik ve çok yönlülük, basit senaryolar Için [özel komutların (Önizleme)](custom-commands.md) basitliğini veya basitliğini isteyip istemediğinizi, doğru araçların seçilmesi, çalışmaya başlamanızı sağlar.
+
+| Şunu yapmak istiyorsanız... | Göz önüne alın... | Örneğin... |
+|-------------------|------------------|----------------|
+|Güçlü beceriler tümleştirmesi ve tam dağıtım denetimi ile açık uçlu konuşma | Bot çerçevesinin [doğrudan hat konuşma](direct-line-speech.md) kanalı | <ul><li>"Seattle 'a gitmem gerekiyor"</li><li>"Ne tür bir pizza düzenleyebilir?"</li></ul>
+|Basitleştirilmiş yazma ve barındırma ile komut ve denetim veya görev odaklı konuşma | [Özel komutlar (Önizleme)](custom-commands.md) | <ul><li>"Ek yük ışığını aç"</li><li>"5 derece çarpıtma yapın"</ul>
+
+Yardımcınızın hangi özellikleri işlemesini istediğinizi bilmiyorsanız en iyi varsayılan seçenek olarak [doğrudan ses konuşmanızı](direct-line-speech.md) öneririz. Ortak desenleri oluşturmak ve mevcut bilgi kaynaklarınızı kullanmak için, [sanal yardımcı çözümü ve kurumsal şablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) ve [soru-cevap oluşturma hizmeti](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) gibi zengin araç ve yazma yardımlarıyla tümleştirme sunar.
+
+[Özel komutlar (Önizleme)](custom-commands.md) , doğal dil komut ve denetim senaryoları için özel olarak tasarlanmış ve kolay bir yazma ve barındırma deneyimi sağlar.
+   ![Yardımcı çözümlerin karşılaştırması](media/voice-assistants/assistant-solution-comparison.png "Compyardımcı çözümlerin Arison ")
+
 ## <a name="core-features"></a>Temel Özellikler
+
+Yardımcı etkileşimlerinizi oluşturmak için [doğrudan hat konuşmayı](direct-line-speech.md) veya [özel komutları (Önizleme)](custom-commands.md) seçmenize bakılmaksızın, yardımcınızı marka, ürün ve kişiliğinizi özelleştirmek için zengin bir özelleştirme özellikleri kümesi kullanabilirsiniz.
 
 | Kategori | Özellikler |
 |----------|----------|
 |[Özel anahtar sözcük](speech-devices-sdk-create-kws.md) | Kullanıcılar, "Hey contoso" gibi özel bir anahtar sözcükle konuşmaları kullanarak konuşmalar başlatabilir. Uygulama bunu konuşma SDK 'sında özel bir anahtar sözcük altyapısı ile yapar ve [burada oluşturabileceğiniz](speech-devices-sdk-create-kws.md)özel bir anahtar sözcükle yapılandırılabilir. Sesli yardımcılar, anahtar sözcük etkinleştirmenin doğruluğunu artırmak için hizmet tarafı anahtar sözcük doğrulamasını kullanabilir (tek başına cihaz).
 |[Konuşmayı metne dönüştürme](speech-to-text.md) | Sesli yardımcılar, Azure konuşma hizmetlerinden [konuşmaya metin](speech-to-text.md) kullanarak gerçek zamanlı sesi tanınan metne dönüştürür. Bu metin, hem yardımcınızın hem de istemci uygulamanızın bulunduğu bir şekilde kullanılabilir.
 |[Metinden konuşmaya](text-to-speech.md) | Yardımcınızdan metinsel yanıtlar, Azure konuşma hizmetlerinden gelen [metinden konuşmaya](text-to-speech.md) kullanılarak dağıtılır. Bu birleştirme daha sonra istemci uygulamanız için bir ses akışı olarak sunulur. Microsoft, markanızla ilgili bir ses sağlayan kendi özel, yüksek kaliteli sinir TTS sesinizi oluşturma olanağı sunar. Daha fazla bilgi edinmek için [bizimle iletişime geçin](mailto:mstts@microsoft.com).
-
-## <a name="comparing-assistant-solutions"></a>Yardımcı çözümlerini karşılaştırma
-
-Ses Yardımcısı hizmeti, şirket içi uygulamanızı benzersiz yardımcı uygulamanıza bağlar. Geliştiriciler, (1) bot çerçevesinin [doğrudan hat konuşma](direct-line-speech.md) kanalını ya da (2) [özel komutlar (Önizleme)](custom-commands.md) çözümünü kullanarak sesli yardımcılar yazar.
-
-   ![Yardımcı çözümlerin karşılaştırması](media/voice-assistants/assistant-solution-comparison.png "Yardımcı çözümlerin karşılaştırması")
-
-| Çözüm | Özellikler |
-|----------|----------|
-|[Özel komutlar (Önizleme)](custom-commands.md) | Özel komutlar (Önizleme), sesli Yardımcılar için kolaylaştırılmış bir yazma ve barındırma çözümü sağlar. Görev tamamlama ve komut ve denetim senaryolarının ihtiyaçlarına göre tasarlanmıştır.
-|[Doğrudan konuşma hattı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Doğrudan hat konuşma, (1) istemci uygulamanız (2) ile uyumlu bir bot ve (3) Azure konuşma hizmetlerinin özellikleri arasında sorunsuz ve sorunsuz bir bağlantı imkanı sunar. Botunuzu doğrudan hat konuşma kanalını kullanacak şekilde yapılandırma hakkında daha fazla bilgi için lütfen [bot Framework belgelerindeki sayfasına](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)bakın.
-
-Bu çözümlerden biriyle bir ses Yardımcısı oluşturduktan sonra, konuşma SDK 'sindeki `DialogServiceConnector` kullanarak, şirket içi uygulamanızı bu cihaza bağlayın. Daha fazla ayrıntı için lütfen her çözüm için hızlı başlangıçlara ve örneklere bakın.
 
 ## <a name="getting-started-with-voice-assistants"></a>Sesli yardımcılar ile çalışmaya başlama
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı 'nı kullanarak küresel olarak kullanılabilir hizmetler tasarlama | Microsoft Docs
+title: Azure SQL veritabanı 'nı kullanarak küresel olarak kullanılabilir hizmetler tasarlama
 description: Azure SQL veritabanı 'nı kullanarak yüksek oranda kullanılabilir hizmetler için uygulama tasarımı hakkında bilgi edinin.
 keywords: bulut olağanüstü durum kurtarma, olağanüstü durum kurtarma çözümleri, uygulama veri yedekleme, coğrafi çoğaltma, iş sürekliliği planlama
 services: sql-database
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: a79fa40568502a73194e467de2227d54931d0100
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 034d696fd8c9aae826d0bbc7e4d028cefad09840
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568946"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690728"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanarak küresel olarak kullanılabilir hizmetler tasarlama
 
@@ -26,7 +26,7 @@ Azure SQL veritabanı ile bulut hizmetleri oluştururken ve dağıttığınızda
 > [!NOTE]
 > Premium veya İş Açısından Kritik veritabanları ve elastik havuzlar kullanıyorsanız, bunları bölge yedekli dağıtım yapılandırmasına dönüştürerek bölge kesintilerine dayanıklı hale getirebilirsiniz. Bkz. bölgesel olarak [yedekli veritabanları](sql-database-high-availability.md).  
 
-## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Senaryo 1: En az kapalı kalma süresiyle iş sürekliliği için iki Azure bölgesi kullanma
+## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Senaryo 1: en az kapalı kalma süresiyle iş sürekliliği için iki Azure bölgesi kullanma
 
 Bu senaryoda, uygulamalar aşağıdaki özelliklere sahiptir:
 
@@ -35,7 +35,7 @@ Bu senaryoda, uygulamalar aşağıdaki özelliklere sahiptir:
 * Gecikme ve trafik maliyetini azaltmak için Web katmanı ve veri katmanının birlikte bulunması gerekir
 * Temelde, kapalı kalma süresi bu uygulamalar için veri kaybına kıyasla daha yüksek bir iş riskidir
 
-Bu durumda, uygulama dağıtım topolojisi, tüm uygulama bileşenlerinin birlikte yük devretmesi gerektiğinde bölgesel olağanüstü durumları işlemek için iyileştirilmiştir. Aşağıdaki diyagramda bu topoloji gösterilmektedir. Coğrafi artıklık için, uygulamanın kaynakları A ve B bölgesine dağıtılır. Ancak, bölge B 'deki kaynaklar başarısız olana kadar kullanılmaz. Veritabanı bağlantısı, çoğaltma ve yük devretme yönetimi için iki bölge arasında bir yük devretme grubu yapılandırılır. Her iki bölgedeki Web hizmeti, okuma-yazma dinleyicisi  **&lt;yük devretmesi-Group-Name&gt;. Database.Windows.net** (1) yoluyla veritabanına erişecek şekilde yapılandırılmıştır. Traffic Manager, [Öncelik yönlendirme yöntemini](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2) kullanacak şekilde ayarlanır.  
+Bu durumda, uygulama dağıtım topolojisi, tüm uygulama bileşenlerinin birlikte yük devretmesi gerektiğinde bölgesel olağanüstü durumları işlemek için iyileştirilmiştir. Aşağıdaki diyagramda bu topoloji gösterilmektedir. Coğrafi artıklık için, uygulamanın kaynakları A ve B bölgesine dağıtılır. Ancak, bölge B 'deki kaynaklar başarısız olana kadar kullanılmaz. Veritabanı bağlantısı, çoğaltma ve yük devretme yönetimi için iki bölge arasında bir yük devretme grubu yapılandırılır. Her iki bölgedeki Web hizmeti, **&lt;yük-grup-adı&gt;. Database.Windows.net** (1) ile okuma-yazma dinleyicisi aracılığıyla veritabanına erişecek şekilde yapılandırılmıştır. Traffic Manager, [Öncelik yönlendirme yöntemini](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2) kullanacak şekilde ayarlanır.  
 
 > [!NOTE]
 > [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) , bu makale boyunca yalnızca çizim amaçlarıyla kullanılır. Öncelik yönlendirme yöntemini destekleyen herhangi bir yük dengeleme çözümünü kullanabilirsiniz.
@@ -68,7 +68,7 @@ Bu tasarım deseninin başlıca **avantajları** şunlardır:
 
 Ana **zorunluluğunu getirir** , B bölgesindeki uygulama kaynaklarının çoğu zaman aşırı kullanıldığı yerdedir.
 
-## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>Senaryo 2: Maksimum veri koruma ile iş sürekliliği için Azure bölgeleri
+## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>Senaryo 2: en yüksek veri koruma ile iş sürekliliği için Azure bölgeleri
 
 Bu seçenek, aşağıdaki özelliklere sahip uygulamalar için idealdir:
 
@@ -101,7 +101,7 @@ Bu tasarım deseninin çeşitli **avantajları**vardır:
 
 **Zorunluluğunu getirir** , uygulamanın salt okunurdur modunda çalışabilebilmelidir.
 
-## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>Senaryo 3: Uygulama yeniden konumlandırma, veri kaybı olmadan ve sıfıra yakın kapalı kalma süresi olmadan farklı bir Coğrafya
+## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>Senaryo 3: uygulama, veri kaybı olmadan ve sıfıra yakın kapalı kalma süresi olmadan farklı bir Coğrafya 'ya yeniden konumlandırma
 
 Bu senaryoda, uygulama aşağıdaki özelliklere sahiptir:
 
@@ -112,7 +112,7 @@ Bu senaryoda, uygulama aşağıdaki özelliklere sahiptir:
 
 Bu gereksinimleri karşılamak için, Kullanıcı cihazının, veri tarama, analiz vb. gibi salt okuma işlemleri için aynı coğrafya 'da dağıtılan uygulamaya **her zaman** bağlandığından emin olmanız gerekir. Öte yandan, OLTP işlemleri **zaman**içinde aynı coğrafya içinde işlenir. Örneğin, OLTP işlemlerinin gün içinde aynı coğrafya 'da işlendiği, ancak kapalı saatlerde farklı bir Coğrafya içinde işlenebilecekleri zaman içinde. Son Kullanıcı etkinliği genellikle çalışma saatlerinde gerçekleşdiğinde, çoğu kullanıcının çoğu için en iyi performansı garanti edebilirsiniz. Aşağıdaki diyagramda bu topoloji gösterilmektedir.
 
-Uygulamanın kaynakları, önemli kullanım talebi olan her bir Coğrafya üzerinde dağıtılmalıdır. Örneğin, uygulamanız Birleşik Devletler etkin olarak kullanılıyorsa, Avrupa Birliği ve Güney Doğu Asya, uygulamanın tüm bu coğrafi ormallara dağıtılması gerekir. Birincil veritabanı, çalışma saatlerinin sonunda bir Coğrafya 'dan bir sonrakine dinamik olarak yerleştirilmelidir. Bu yöntem "Güneş izle" olarak adlandırılır. OLTP iş yükü, her zaman okuma-yazma dinleyicisi  **&lt;yük devretmesi-grup-adı&gt;. Database.Windows.net** (1) yoluyla veritabanına bağlanır. Salt okuma iş yükü, veritabanı sunucusu uç nokta  **&lt;sunucusu-adı&gt;. Database.Windows.net** (2) kullanarak doğrudan yerel veritabanına bağlanır. Traffic Manager, [performans yönlendirme yöntemiyle](../traffic-manager/traffic-manager-configure-performance-routing-method.md)yapılandırılır. Son kullanıcının cihazının en yakın bölgede Web hizmetine bağlı olmasını sağlar. Traffic Manager, her Web hizmeti uç noktası (3) için uç nokta izleme etkinleştirilmiş olarak ayarlanmalıdır.
+Uygulamanın kaynakları, önemli kullanım talebi olan her bir Coğrafya üzerinde dağıtılmalıdır. Örneğin, uygulamanız Birleşik Devletler etkin olarak kullanılıyorsa, Avrupa Birliği ve Güney Doğu Asya, uygulamanın tüm bu coğrafi ormallara dağıtılması gerekir. Birincil veritabanı, çalışma saatlerinin sonunda bir Coğrafya 'dan bir sonrakine dinamik olarak yerleştirilmelidir. Bu yöntem "Güneş izle" olarak adlandırılır. OLTP iş yükü her zaman **&lt;yük-grup-adı&gt;. Database.Windows.net** (1) okuma-yazma dinleyicisi aracılığıyla veritabanına bağlanır. Salt okuma iş yükü, **&lt;Server-name&gt;. Database.Windows.net** (2) adlı veritabanları sunucu uç noktasını kullanarak doğrudan yerel veritabanına bağlanır. Traffic Manager, [performans yönlendirme yöntemiyle](../traffic-manager/traffic-manager-configure-performance-routing-method.md)yapılandırılır. Son kullanıcının cihazının en yakın bölgede Web hizmetine bağlı olmasını sağlar. Traffic Manager, her Web hizmeti uç noktası (3) için uç nokta izleme etkinleştirilmiş olarak ayarlanmalıdır.
 
 > [!NOTE]
 > Yük devretme grubu yapılandırması, yük devretme için hangi bölgenin kullanıldığını tanımlar. Yeni birincil konum farklı bir Coğrafya içinde olduğundan, etkilenen bölge yeniden çevrimiçi olana kadar hem OLTP hem de salt okuma iş yükleri için yük devretme sonuçları daha uzun gecikme süresine sahiptir.
@@ -143,12 +143,12 @@ Bu tasarımın başlıca **avantajları** şunlardır:
 * Okuma-yazma uygulaması iş yükü, her Coğrafya 'daki en yüksek Etkinliğin süresi boyunca en yakın bölgedeki verilere erişir
 * Uygulama birden çok bölgeye dağıtıldığından, önemli kapalı kalma süresi olmadan bölgelerden birinin kaybedilmesi devam edebilir.
 
-Ancak bazı dengelervardır:
+Ancak bazı **dengeler**vardır:
 
 * Bölgesel bir kesinti, Coğrafya 'nın daha uzun bir gecikmeyle etkilenmesine neden olur. Okuma-yazma ve salt okuma iş yükleri, uygulama tarafından farklı bir Coğrafya içinde sunulur.
 * Salt okuma iş yükleri her bölgede farklı bir uç noktasına bağlanmalıdır.
 
-## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>İş sürekliliği planlaması: Bulut olağanüstü durum kurtarma için bir uygulama tasarımı seçin
+## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>İş sürekliliği planlama: bulut olağanüstü durum kurtarma için bir uygulama tasarımı seçme
 
 Özel bulut olağanüstü durum kurtarma stratejiniz, uygulamanızın ihtiyaçlarını en iyi şekilde karşılayacak şekilde bu tasarım düzenlerini birleştirebilir veya genişletebilir.  Daha önce belirtildiği gibi, seçtiğiniz strateji müşterilerinize ve uygulama dağıtım topolojisine sunmak istediğiniz SLA 'yı temel alır. Kararmanıza yardımcı olmak için aşağıdaki tabloda, kurtarma noktası hedefi (RPO) ve tahmini kurtarma süresi (ERT) temelinde seçimler karşılaştırılmaktadır.
 

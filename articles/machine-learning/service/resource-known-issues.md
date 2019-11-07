@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 3fd97e33c88e7767e1d9b230792aea675a744f27
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476075"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619777"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -88,9 +88,19 @@ Otomatik ML denemesi yinelemeleriyle gösterilen ikili sınıflandırma grafikle
 
 ## <a name="datasets-and-data-preparation"></a>Veri kümeleri ve veri hazırlama
 
+Bunlar Azure Machine Learning veri kümeleri için bilinen sorunlardır.
+
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>HTTP veya ADLS Gen 2 ' den Parquet dosyası okunamadı
 
-AzureML, HTTP veya ADLS Gen 2 ' den Parquet dosyalarını okuyarak bir veri kümesi oluştururken hata oluşmasına neden olan, AzureML DataPrep SDK sürümü 1.1.25 'da bilinen bir sorun vardır. Bu sorunu onarmak için lütfen 1.1.26 sürümünden daha yüksek bir sürüme yükseltin veya 1.1.24 ' den daha düşük bir sürüme düşürme yapın.
+AzureML, HTTP veya ADLS Gen 2 ' den Parquet dosyalarını okuyarak bir veri kümesi oluştururken hata oluşmasına neden olan, AzureML DataPrep SDK sürümü 1.1.25 'da bilinen bir sorun vardır. `Cannot seek once reading started.`ile başarısız olur. Bu sorunu gidermeye yönelik `azureml-dataprep`, lütfen 1.1.26 'den daha yüksek bir sürüme yükseltin veya 1.1.24 'den daha düşük bir sürüme indirgemeniz gerekir.
+
+```python
+pip install --upgrade azureml-dataprep
+```
+
+### <a name="typeerror-mount-got-an-unexpected-keyword-argument-invocation_id"></a>TypeError: Mount () beklenmeyen bir anahtar sözcük bağımsız değişkeni ' invocation_id ' aldı
+
+`azureml-core` ve `azureml-dataprep`arasında uyumsuz bir sürüme sahipseniz bu hata oluşur. Bu hatayı görürseniz, `azureml-dataprep` paketini daha yeni bir sürüme yükseltin (1.1.29 değerinden büyük veya buna eşittir).
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -146,15 +156,8 @@ Bu adımlar sorunu çözmezse, kümeyi yeniden başlatmayı deneyin.
 Azure Databricks kümesindeki verileri okurken `FailToSendFeather` hatası görürseniz, aşağıdaki çözümlere başvurun:
 
 * `azureml-sdk[automl]` paketini en son sürüme yükseltin.
-* `azure-dataprep` Version 1.1.8 veya üstünü ekleyin.
+* `azureml-dataprep` Version 1.1.8 veya üstünü ekleyin.
 * `pyarrow` sürüm 0,11 veya üstünü ekleyin.
-
-
-## <a name="datasets"></a>Veri kümeleri
-
-Bunlar Azure Machine Learning veri kümeleri için bilinen sorunlardır.
-
-+ **Azure Data Lake Storage 2. 'daki Parquet dosyaları okunamadı** Azure Data Lake Storage 2. veri depolarından Parquet dosyalarının okunması, `azureml-dataprep==1.1.25` yüklüyse çalışmaz. `Cannot seek once reading started.`ile başarısız olur. Bu hatayı görürseniz, `azureml-dataprep<=1.1.24` yükleyebilir ya da `azureml-dataprep>=1.1.26`yükleyebilirsiniz.
 
 ## <a name="azure-portal"></a>Azure portal
 
@@ -175,7 +178,7 @@ Bu eylemlerden bazıları, çalışma alanınızın __Etkinlikler__ alanında g�
 
 ## <a name="resource-quotas"></a>Kaynak kotaları
 
-Azure Machine Learning çalışırken karşılaşabileceğiniz [kaynak kotaları](how-to-manage-quotas.md) hakkında bilgi edinin.
+Hakkında bilgi edinin [kaynak kotaları](how-to-manage-quotas.md) Azure Machine Learning'i kullanmaya çalışırken hatalarla karşılaşabilirsiniz.
 
 ## <a name="authentication-errors"></a>Kimlik Doğrulama hataları
 
@@ -262,3 +265,23 @@ Bu özel durum, eğitim betiklerinden gelmelidir. Tanımlı bir ad veya öznitel
 
 ### <a name="horovod-is-shutdown"></a>Horovod kapanıyor
 Çoğu durumda, bu özel durum horovod ' nin kapanmasına neden olan işlemlerden birinde temeldeki özel durum olduğu anlamına gelir. MPı işindeki her bir derecelendirme, Azure ML 'de özel bir günlük dosyası alır. Bu Günlükler `70_driver_logs`olarak adlandırılır. Dağıtılmış eğitim söz konusu olduğunda, günlüklerin ayırt edilmesini kolaylaştırmak için günlük adları `_rank` ile sonlardır. Horovod kapatmaya neden olan hatayı tam olarak bulmak için tüm günlük dosyalarını gözden geçirin ve driver_log dosyalarının sonundaki `Traceback` bulun. Bu dosyalardan biri size gerçek temel özel durumu verecektir. 
+
+## <a name="labeling-projects-issues"></a>Proje sorunlarını etiketleme
+
+Etiketleme projeleri ile ilgili bilinen sorunlar.
+
+### <a name="only-datasets-created-on-blob-datastores-can-be-used"></a>Yalnızca blob veri depolarında oluşturulan veri kümeleri kullanılabilir
+
+Bu, geçerli sürümün bilinen bir sınırlamasıdır. 
+
+### <a name="after-creation-the-project-shows-initializing-for-a-long-time"></a>Oluşturulduktan sonra proje, uzun süredir "başlatılıyor" olarak gösterilir
+
+Sayfayı el ile yenileyin. Başlatma, saniyede yaklaşık 20 veri noktasında devam etmelidir. Bu, bilinen bir sorundur. 
+
+### <a name="bounding-box-cannot-be-drawn-all-the-way-to-right-edge-of-image"></a>Sınırlayıcı kutu, resmin sağ kenarına kadar çizilemez 
+
+Tarayıcı penceresini yeniden boyutlandırmayı deneyin. Bu davranışın nedenini belirlemeyi araştırıyoruz. 
+
+### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>Görüntüleri gözden geçirirken yeni etiketlenmiş görüntüler gösterilmez
+
+Etiketlenmiş tüm görüntüleri yüklemek için **ilk** düğmeyi seçin. **İlk** düğme, listenin önüne geri götürür, ancak etiketlenmiş tüm verileri yükler.

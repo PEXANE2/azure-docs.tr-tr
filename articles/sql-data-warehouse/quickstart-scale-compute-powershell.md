@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Azure SQL veri ambarı 'nda işlem ölçeğini genişletme-PowerShell | Microsoft Docs"
+title: 'Hızlı başlangıç: ölçek işlem-PowerShell '
 description: PowerShell’den Azure SQL Veri Ambarı’nda işlemi ölçeklendirin. Daha iyi performans için işlem ölçeğini genişletin veya maliyet tasarrufu için işlem ölçeğini daraltın.
 services: sql-data-warehouse
 author: Antvgski
@@ -10,14 +10,15 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 37b5f0a989bb76a9a40529cd11944de40a164156
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f4c2087052e4c3b4fac4d27bb4ecdc2ebf8a42f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306225"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692972"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell Azure SQL veri ambarı 'nda işlem ölçeğini ölçeklendirme
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell Azure SQL veri ambarı 'nda işlem ölçeğini ölçeklendirme
 
 Azure PowerShell kullanarak Azure SQL veri ambarı 'nda işlem ölçeğini ölçeklendirin. Daha iyi performans için [işlem ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu için işlem ölçeğini daraltın.
 
@@ -27,7 +28,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu hızlı başlangıçta ölçeklendirebildiğiniz bir SQL veri ambarı zaten var. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
+Bu hızlı başlangıçta ölçeklendirebildiğiniz bir SQL veri ambarı zaten var. Gerekiyorsa [mySampleDataWarehouse](create-data-warehouse-portal.md) adlı bir veri ambarı oluşturmak için **Oluşturma ve Bağlanma - portal** bölümünü kullanabilirsiniz.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -55,7 +56,7 @@ Duraklatmayı ve sürdürmeyi planladığınız veri ambarı için veritabanı a
 
 Veri ambarınız için konum bilgilerini bulmak amacıyla aşağıdaki adımları uygulayın.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Azure portalının sol taraftaki sayfasında **SQL veri ambarları**’na tıklayın.
 3. **SQL veri ambarları** sayfasından **mySampleDataWarehouse** seçeneğini belirleyin. Bu, veri ambarını açar.
 

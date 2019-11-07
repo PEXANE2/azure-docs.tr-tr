@@ -1,5 +1,5 @@
 ---
-title: Vekil anahtarlar oluşturmak için KIMLIK kullanma-Azure SQL veri ambarı | Microsoft Docs
+title: Vekil anahtarlar oluşturmak için KIMLIK kullanma
 description: Azure SQL veri ambarı 'nda tablolar üzerinde vekil anahtarlar oluşturmak için KIMLIK özelliğinin kullanılmasına yönelik öneriler ve örnekler.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4c65bf7cc8edfa246508bb22001aed40c34414f3
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515582"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692476"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda vekil anahtarlar oluşturmak için KIMLIK kullanma
 
@@ -43,7 +44,7 @@ WITH
 ;
 ```
 
-Daha sonra tabloyu doldurmak `INSERT..SELECT` için öğesini kullanabilirsiniz.
+Daha sonra tabloyu doldurmak için `INSERT..SELECT` kullanabilirsiniz.
 
 Bu bölümün geri kalanında, bunları daha fazla anlamanıza yardımcı olmak için uygulamanın nuslarını vurgular.  
 
@@ -76,13 +77,13 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-Yukarıdaki örnekte, dağıtım 1 ' de iki satır oluşturulmuş. İlk satırda, sütununda `C1`1 vekil değeri bulunur ve ikinci satırda 61 yedek değeri bulunur. Bu değerlerin her ikisi de ıDENTITY özelliği tarafından oluşturulmuştur. Ancak, değerlerin ayrılması bitişik değildir. Bu davranış tasarım gereğidir.
+Yukarıdaki örnekte, dağıtım 1 ' de iki satır oluşturulmuş. İlk satırda, `C1`sütununda 1 vekil değeri bulunur ve ikinci satırda 61 yedek değeri bulunur. Bu değerlerin her ikisi de ıDENTITY özelliği tarafından oluşturulmuştur. Ancak, değerlerin ayrılması bitişik değildir. Bu davranış tasarım gereğidir.
 
 ### <a name="skewed-data"></a>Eğilmiş veriler
 
-Veri türü için değer aralığı, dağıtımlar arasında eşit olarak yayılır. Dağıtılmış bir tablo, asimetrik verilerden bulunursa, veri türü için kullanılabilir olan değer aralığı zamanından önce tükenebilir. Örneğin, tüm veriler tek bir dağıtım içinde sona ererse, etkin şekilde tablo, veri türü değerlerinin yalnızca tek altılarına erişim sağlar. Bu nedenle, Identity özelliği yalnızca `INT` ve `BIGINT` veri türleriyle sınırlıdır.
+Veri türü için değer aralığı, dağıtımlar arasında eşit olarak yayılır. Dağıtılmış bir tablo, asimetrik verilerden bulunursa, veri türü için kullanılabilir olan değer aralığı zamanından önce tükenebilir. Örneğin, tüm veriler tek bir dağıtım içinde sona ererse, etkin şekilde tablo, veri türü değerlerinin yalnızca tek altılarına erişim sağlar. Bu nedenle, ıDENTITY özelliği yalnızca `INT` ve `BIGINT` veri türleriyle sınırlıdır.
 
-### <a name="selectinto"></a>SEÇ.. BIRLEŞTIRIN
+### <a name="selectinto"></a>Seç.. BIRLEŞTIRIN
 
 Varolan bir KIMLIK sütunu yeni bir tabloya seçildiğinde, aşağıdaki koşullardan biri doğru değilse yeni sütun KIMLIK özelliğini devralır:
 
@@ -95,11 +96,11 @@ Bu koşullardan herhangi biri doğru ise, sütun KIMLIK özelliğini devralma ye
 
 ### <a name="create-table-as-select"></a>SEÇIM OLARAK CREATE TABLE
 
-SELECT (CTAS) olarak CREATE TABLE, SELECT için belgelenen aynı SQL Server davranışını izler. Birleştirin. Ancak, deyimin `CREATE TABLE` bölümünün sütun tanımında bir Identity özelliği belirtemezsiniz. CTAS 'nin `SELECT` bölümünde de Identity işlevini kullanamazsınız. Bir tabloyu doldurmak için, tabloyu `CREATE TABLE` `INSERT..SELECT` ve ardından doldurmak üzere öğesini tanımlamak için kullanmanız gerekir.
+SELECT (CTAS) olarak CREATE TABLE, SELECT için belgelenen aynı SQL Server davranışını izler. Birleştirin. Ancak, deyimin `CREATE TABLE` bölümünün sütun tanımında bir ıDENTITY özelliği belirtemezsiniz. CTAS 'nin `SELECT` bölümünde de ıDENTITY işlevini kullanamazsınız. Bir tabloyu doldurmak için `CREATE TABLE` kullanarak tabloyu ve ardından `INSERT..SELECT` doldurmanız gerekir.
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Bir KIMLIK sütununa açıkça değer ekleme
 
-SQL veri ambarı söz `SET IDENTITY_INSERT <your table> ON|OFF` dizimini destekler. KIMLIK sütununa açıkça değer eklemek için bu sözdizimini kullanabilirsiniz.
+SQL veri ambarı `SET IDENTITY_INSERT <your table> ON|OFF` sözdizimini destekler. KIMLIK sütununa açıkça değer eklemek için bu sözdizimini kullanabilirsiniz.
 
 Birçok veri modu, boyutları içindeki belirli satırlar için önceden tanımlanmış negatif değerler kullanmak gibidir. Örnek,-1 veya "bilinmeyen üye" satırıdır.
 
@@ -122,7 +123,7 @@ FROM    dbo.T1
 ;
 ```
 
-## <a name="loading-data"></a>Veriler yükleniyor
+## <a name="loading-data"></a>Veri yükleme
 
 IDENTITY özelliğinin varlığı, veri yükleme kodunuzda bazı etkileri vardır. Bu bölümde, KIMLIK kullanarak tablolara veri yüklemeye yönelik bazı temel desenler vurgulanmıştır.
 
@@ -157,7 +158,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE]
-> Kimlik sütunu olan bir tabloya veri `CREATE TABLE AS SELECT` yüklerken şu anda kullanılamaz.
+> KIMLIK sütunu olan bir tabloya veri yüklerken `CREATE TABLE AS SELECT` kullanmak mümkün değildir.
 >
 
 Veri yükleme hakkında daha fazla bilgi için bkz. [Azure SQL veri ambarı Için ayıklama, yükleme ve dönüştürme (ELT) tasarlama](design-elt-data-loading.md) ve [en iyi uygulamalar yükleme](guidance-for-loading-data.md).
@@ -211,7 +212,7 @@ C1 sütunu, aşağıdaki tüm görevlerdeki KIMLIKTIR.
 
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>Bir tablo için ayrılan en yüksek değeri bulma
 
-Dağıtılmış bir tablo için ayrılan en yüksek değeri öğrenmek için işlevinikullanın:`MAX()`
+Dağıtılmış bir tablo için ayrılan en yüksek değeri öğrenmek için `MAX()` işlevini kullanın:
 
 ```sql
 SELECT MAX(C1)

@@ -1,19 +1,19 @@
 ---
-title: Azure 'dan Azure 'a çoğaltma mimarisi Azure Site Recovery | Microsoft Docs
-description: Bu makalede, Azure Site Recovery hizmetini kullanarak Azure VM 'Leri için Azure bölgeleri arasında olağanüstü durum kurtarmayı ayarlarken kullanılan bileşenlere ve mimariye ilişkin genel bir bakış sunulmaktadır.
+title: Azure 'dan Azure 'a olağanüstü durum kurtarma mimarisi Azure Site Recovery
+description: Azure Site Recovery hizmetini kullanarak Azure VM 'Leri için Azure bölgeleri arasında olağanüstü durum kurtarmayı ayarlarken kullanılan mimariye genel bakış.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: d415f303976ae454cb99f07e8d6e15e338e24d7d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e83c14e5ce337e8a3c4c119acc2397b98afd5b56
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231461"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621115"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -97,13 +97,13 @@ Aşağıdaki tabloda farklı türlerde tutarlılık açıklanmaktadır.
 
 ### <a name="crash-consistent"></a>Kilitlenme ile tutarlı
 
-**Açıklama** | **Ayrıntılar** | **Öneri**
+**Açıklama** | **Ayrıntılar** | **Önerilen**
 --- | --- | ---
 Kilitlenme ile tutarlı bir anlık görüntü, anlık görüntü çekilirken diskteki verileri yakalar. Bellekte herhangi bir şey içermez.<br/><br/> VM kilitlenirse veya güç kablosu anlık görüntünün alındığı anlık sunucudan çekilmişse mevcut olan disk üzerindeki verilerin eşdeğerini içerir.<br/><br/> Kilitlenme tutarlılığı, işletim sistemi veya VM 'deki uygulamalar için veri tutarlılığı garantisi vermez. | Site Recovery, varsayılan olarak her beş dakikada bir çökme ile tutarlı kurtarma noktaları oluşturur. Bu ayar değiştirilemez.<br/><br/>  | Günümüzde, çoğu uygulama kilitlenme ile tutarlı noktalarından iyi bir şekilde kurtarabilir.<br/><br/> Kilitlenme tutarlı kurtarma noktaları, genellikle işletim sistemlerinin ve DHCP sunucuları ve yazdırma sunucuları gibi uygulamaların çoğaltılması için yeterlidir.
 
 ### <a name="app-consistent"></a>Uygulamayla tutarlı
 
-**Açıklama** | **Ayrıntılar** | **Öneri**
+**Açıklama** | **Ayrıntılar** | **Önerilen**
 --- | --- | ---
 Uygulamayla tutarlı kurtarma noktaları, uygulamayla tutarlı anlık görüntülerden oluşturulur.<br/><br/> Uygulamayla tutarlı bir anlık görüntü, kilitlenme ile tutarlı bir anlık görüntüdeki tüm bilgileri, ayrıca bellekteki tüm verileri ve devam eden işlemleri içerir. | Uygulamayla tutarlı anlık görüntüler Birim Gölge Kopyası Hizmeti (VSS) kullanır:<br/><br/>   1) bir anlık görüntü başlatıldığında VSS, birimde bir kopyalama-yazma (COW) işlemi gerçekleştirir.<br/><br/>   2) COW 'yı gerçekleştirmeden önce VSS, makinede bellekte yerleşik verileri diske temizlemesi için gereken her uygulamayı bilgilendirir.<br/><br/>   3) VSS daha sonra yedekleme/olağanüstü durum kurtarma uygulamasının (Bu durumda Site Recovery) anlık görüntü verilerini okumasını ve devam etmesini sağlar. | Uygulamayla tutarlı anlık görüntüler, belirttiğiniz sıklığa göre yapılır. Bu sıklık, kurtarma noktalarını saklamak için ayarlamış olduğunuz her zaman daha az olmalıdır. Örneğin, varsayılan 24 saat ayarını kullanarak kurtarma noktalarını koruuyorsanız, sıklığı 24 saatten az olacak şekilde ayarlamanız gerekir.<br/><br/>Daha karmaşıktır ve kilitlenmeyle tutarlı anlık görüntülerden daha uzun sürer.<br/><br/> Çoğaltma için etkin bir VM üzerinde çalışan uygulamaların performansını etkiler. 
 
@@ -143,17 +143,17 @@ Ağ bağlantısı gereksinimlerinin ayrıntılarının [ağ teknik incelemesi](a
 
 #### <a name="source-region-rules"></a>Kaynak bölgesi kuralları
 
-**Kural** |  **Ayrıntılar** | **Hizmet etiketi**
+**Kurallar** |  **Ayrıntılar** | **Hizmet etiketi**
 --- | --- | --- 
-HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki depolama hesaplarına karşılık gelen aralıklara izin ver | Depo. \<bölge adı >.
+HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki depolama hesaplarına karşılık gelen aralıklara izin ver | Depo.\<bölge adı >.
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Active Directory (Azure AD) öğesine karşılık gelen aralıklara izin verin.<br/><br/> Daha sonra Azure AD adresleri eklenirse yeni ağ güvenlik grubu (NSG) kuralları oluşturmanız gerekir.  | AzureActiveDirectory
 HTTPS giden izin ver: bağlantı noktası 443 | Hedef konuma karşılık gelen [Site Recovery uç noktalarına](https://aka.ms/site-recovery-public-ips) erişime izin verin. 
 
 #### <a name="target-region-rules"></a>Hedef bölge kuralları
 
-**Kural** |  **Ayrıntılar** | **Hizmet etiketi**
+**Kurallar** |  **Ayrıntılar** | **Hizmet etiketi**
 --- | --- | --- 
-HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki depolama hesaplarına karşılık gelen aralıklara izin verin. | Depo. \<bölge adı >.
+HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki depolama hesaplarına karşılık gelen aralıklara izin verin. | Depo.\<bölge adı >.
 HTTPS giden izin ver: bağlantı noktası 443 | Azure AD 'ye karşılık gelen aralıklarına izin verin.<br/><br/> Daha sonra Azure AD adresleri eklenirse yeni NSG kuralları oluşturmanız gerekir.  | AzureActiveDirectory
 HTTPS giden izin ver: bağlantı noktası 443 | Kaynak konuma karşılık gelen [Site Recovery uç noktalara](https://aka.ms/site-recovery-public-ips) erişime izin verin. 
 

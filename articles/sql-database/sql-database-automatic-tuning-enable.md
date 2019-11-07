@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı için otomatik ayarlamayı etkinleştirme | Microsoft Docs
+title: Azure SQL veritabanı için otomatik ayarlamayı etkinleştir
 description: Azure SQL veritabanınızda otomatik ayarlamayı kolayca etkinleştirebilirsiniz.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: c9339b5c7c35378fb85daeae19a6daa01d54f350
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 52e3dd01446a6292c3404f14bd8ebfb32aa00dd6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809654"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691135"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Sorguları izlemek ve iş yükü performansını geliştirmek için otomatik ayarlamayı etkinleştirin
 
@@ -34,7 +34,7 @@ Otomatik ayarlama, [Azure Portal](sql-database-automatic-tuning-enable.md#azure-
 
 Sunucu düzeyinde, otomatik ayarlama yapılandırmasını "Azure Varsayılanları" ndan devralmayı veya yapılandırmayı devralma seçeneğini belirleyebilirsiniz. Azure Varsayılanları FORCE_LAST_GOOD_PLAN etkindir, CREATE_INDEX etkindir ve DROP_INDEX devre dışıdır.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Azure SQL veritabanı mantıksal **sunucusunda**otomatik ayarlamayı etkinleştirmek için Azure Portal ' deki sunucuya gidin ve menüden **otomatik ayarlama** ' yı seçin.
 
@@ -60,7 +60,7 @@ Azure SQL veritabanı, her bir veritabanı için otomatik ayarlama yapılandırm
 > Genel öneri, otomatik ayarlama yapılandırmasını **sunucu düzeyinde** yönetmelidir, böylece aynı yapılandırma ayarları her veritabanına otomatik olarak uygulanabilir. Yalnızca veritabanının aynı sunucudan gelen ayarları devrallarından farklı ayarlara sahip olması gerekiyorsa, tek bir veritabanında otomatik ayarlamayı yapılandırın.
 >
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 **Tek bir veritabanında**otomatik ayarlamayı etkinleştirmek için Azure Portal veritabanında veritabanına gidin ve **otomatik ayarlama**' yı seçin.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure SQL veri ambarı sorunlarını giderme | Microsoft Docs
-description: Azure SQL veri ambarı sorunlarını giderme.
+title: Bağlantı sorunlarını giderme
+description: Azure SQL veri ambarı 'nda bağlantı sorunlarını giderme.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,22 +10,23 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859239"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692416"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Bağlantı sorunlarını giderme
 
 Bu makalede, SQL veri ambarınıza bağlanılmasıyla ilgili yaygın sorun giderme teknikleri listelenmektedir.
 - [Hizmet kullanılabilirliğini denetle](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [Duraklama veya ölçeklendirme işlemini denetle](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
-- [Güvenlik duvarı ayarlarınızı denetleyin](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [VNet/hizmet uç noktası ayarlarınızı denetleyin](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [En son sürücüleri denetle](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
-- [Bağlantı dizenizi denetleyin](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
+- [Duraklatılmış veya ölçeklendirilen işlemleri denetleme](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
+- [Güvenlik duvarı ayarlarını denetleme](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
+- [Sanal Ağ/Hizmet Uç Noktası ayarlarınızı denetleme](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
+- [En son sürücüleri denetleme](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
+- [Bağlantı dizenizi denetleme](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
 - [Aralıklı bağlantı sorunları](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
 - [Genel hata iletileri](./sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
@@ -41,7 +42,7 @@ SQL veri ambarınızın durumu burada gösterilir. Hizmet **kullanılabilir**ola
 
 Kaynak sistem durumu, veri ambarınızın duraklatıldığını veya ölçeklendirilmesini gösteriyorsa, veri Ambarınızı sürdürmeye yönelik yönergeleri izleyin.
 
-![Hizmet duraklatılmış](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) kaynak durumu hakkındaki ek bilgileri burada bulabilirsiniz.
+![hizmeti duraklatıldı](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) Kaynak Durumu hakkında ek bilgiler burada bulunabilir.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Duraklama veya ölçeklendirme işlemini denetle
 
@@ -57,7 +58,7 @@ Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak i�
 
 ## <a name="check-your-firewall-settings"></a>Güvenlik duvarı ayarlarınızı denetleyin
 
-SQL Veri Ambarı 1433 numaralı bağlantı noktası üzerinden iletişim kurar.   Bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı müddetçe Azure SQL veritabanı sunucunuza bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)ulaşabilirsiniz.
+SQL Veri Ambarı 1433 numaralı bağlantı noktası üzerinden iletişim kurar.   Bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)ulaşabilirsiniz.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>VNet/hizmet uç noktası ayarlarınızı denetleyin
 
@@ -84,7 +85,7 @@ En son sürücü sürümlerini kullandığınızdan emin olun.  Eski sürücü
 
 ## <a name="check-your-connection-string"></a>Bağlantı dizenizi denetleyin
 
-Bağlantı Dizelerinizin doğru ayarlandığından emin olmak için denetleyin.  Aşağıda bazı örnekler verilmiştir.  [Burada, bağlantı dizeleri](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings)etrafında ek bilgiler bulabilirsiniz.
+Bağlantı dizelerinizin düzgün ayarlandığından emin olun.  Aşağıda bazı örnekler verilmiştir.  Bağlantı dizeleriyle ilgili ek bilgileri [burada](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings) bulabilirsiniz.
 
 ADO.NET bağlantı dizesi
 
@@ -112,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Aralıklı bağlantı sorunları
 
-Sunucuda yüksek miktarda sıraya alınmış istek olan ağır yük olup olmadığınızı kontrol edin. Ek kaynaklar için veri Ambarınızı ölçeklendirmeniz gerekebilir.
+Sunucu üzerinde çok sayıda sıraya alınmış isteğin olduğu ağır yüklenme sorunu yaşayıp yaşamadığınızı denetleyin. Ek kaynaklar için veri ambarınızın ölçeğini artırmanız gerekebilir.
 
 ## <a name="common-error-messages"></a>Genel hata iletileri
 

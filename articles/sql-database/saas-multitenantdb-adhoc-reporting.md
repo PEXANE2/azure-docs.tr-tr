@@ -1,5 +1,5 @@
 ---
-title: Birden çok Azure SQL veritabanı arasında geçici raporlama sorguları çalıştırın | Microsoft Docs
+title: Birden çok Azure SQL veritabanı arasında geçici raporlama sorguları çalıştırma
 description: Çok kiracılı bir uygulama örneğinde birden çok SQL veritabanı arasında geçici raporlama sorguları çalıştırın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 10/30/2018
-ms.openlocfilehash: 0a6b45db3c8b4071b591ca2b5fc604b986598c0c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3d345e222dac98a63400dd2661ce92674f2534f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570352"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692075"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Birden çok Azure SQL veritabanı arasında geçici analiz sorguları çalıştırma
 
@@ -58,7 +58,7 @@ Wingtip biletleri SaaS çok kiracılı veritabanı betikleri ve uygulama kaynak 
 
 Sorguları daha ilgi çekici bir veri kümesine karşı çalıştırmak için, Bilet oluşturma ' yı çalıştırarak bilet satış verileri oluşturun.
 
-1. *PowerShell ISE*'de,... öğesini açın. \\Öğrenme modülleri\\işlem analizi\\geçici raporlama\\*demo-AdhocReporting. ps1* betiği ve aşağıdaki değerleri ayarlayın:
+1. *PowerShell ISE*'de,...\\öğrenme modüllerini\\işletimsel analiz\\geçici raporlama\\*demo-AdhocReporting. ps1* komut dosyasını açın ve aşağıdaki değerleri ayarlayın:
    * **$DemoScenario** = 1, **Tüm havalandırma olayları Için bilet satın alın**.
 2. Betiği çalıştırmak ve bilet satışları oluşturmak için **F5** tuşuna basın. Betik çalışırken bu öğreticideki adımlara devam edin. Bilet verileri, *geçici olarak dağıtılan sorguları Çalıştır* bölümünde sorgulanır, bu nedenle bilet oluşturucunun tamamlanmasını bekleyin.
 
@@ -72,7 +72,7 @@ Bu düzene ulaşmak için, tüm kiracı tablolarında verilerin hangi kiracıya 
 
 Bu alıştırma, *adhocretaşıma* veritabanını dağıtır. Bu, tüm kiracı veritabanlarında sorgulamak için kullanılan şemayı içeren baş veritabanıdır. Veritabanı, örnek uygulamadaki tüm yönetim ile ilgili veritabanları için kullanılan sunucu olan var olan katalog sunucusuna dağıtılır.
 
-1. Aç... \\\\\\ PowerShell ISE 'de demo-AdhocReporting. ps1 ' de işletimsel analitik geçici raporlama ve aşağıdaki değerleri ayarlama modüllerini öğreniyor: \\
+1. Açık...\\öğrenme modüllerini\\Işletimsel analizler, *PowerShell ISE* 'de *Demo-AdhocReporting. ps1*\\geçici raporlama\\ve aşağıdaki değerleri ayarlar:
    * **$DemoScenario** = 2, geçici **analiz veritabanını dağıtın**.
 
 2. Betiği çalıştırmak ve *adhocretaşıma* veritabanını oluşturmak için **F5** ' e basın.
@@ -115,7 +115,7 @@ Artık *adhocretaşıma* veritabanı ayarlanmış olduğuna göre, devam edin ve
 
 Yürütme planı incelenirken Ayrıntılar için plan simgelerinin üzerine gelin. 
 
-1. *SSMS*'de açın... \\Öğrenme modülleri\\işlem analizi\\geçici raporlama\\*demo-AdhocReportingQueries. SQL*.
+1. *SSMS*'de,...\\öğrenme modüllerini\\işletimsel çözümlemeler\\geçici raporlama\\*demo-AdhocReportingQueries. SQL*.
 2. **Adhocretaşıma** veritabanına bağlı olduğunuzdan emin olun.
 3. **Sorgu** menüsünü seçin ve **gerçek yürütme planını dahil et** ' e tıklayın.
 4. *Şu anda kayıtlı olan havalandırma noktaları vurgulansın mı?* sorgusu yapın ve **F5**'e basın.
@@ -138,12 +138,12 @@ Yürütme planı incelenirken Ayrıntılar için plan simgelerinin üzerine geli
 
    Bu sorgu biraz daha karmaşık katılım ve toplama yapar. Dikkat edilmesi gereken önemli şeyler, işlemin büyük bir kısmının uzaktan yapıldığına ve bir kez daha sonra yalnızca ihtiyaç duyduğumuz satırları geri döndürmemiz, her bir mekanın günlük bilet satışı sayısı için yalnızca tek bir satır döndürüyor.
 
-   ![query](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
+   ![sorgu](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
+Bu öğreticide, şunları öğrendiniz:
 
 > [!div class="checklist"]
 > 

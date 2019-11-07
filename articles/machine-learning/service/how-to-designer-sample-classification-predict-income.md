@@ -1,5 +1,5 @@
 ---
-title: 'Tasarımcı örnek #3: kredi riskini tahmin etmek için sınıflandırma'
+title: 'Tasarımcı: sınıflandırma, gelir tahmin etme'
 titleSuffix: Azure Machine Learning
 description: Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan makine öğrenimi sınıflandırıcısını oluşturmayı öğrenin.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 2709c2e0da154a8530175144070ad560c8921b85
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 383cbc11955598505730a4613c50536afac75f95
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515544"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647971"
 ---
 # <a name="sample-3---classification-with-feature-selection-income-prediction"></a>Örnek 3-Özellik seçimi ile sınıflandırma: gelir tahmini
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Bu örnek için nihai işlem hattı grafiği aşağıda verilmiştir:
 
 ![İşlem hattının grafiği](media/how-to-ui-sample-classification-predict-income/overall-graph.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

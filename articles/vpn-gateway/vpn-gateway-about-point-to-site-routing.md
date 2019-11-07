@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: anzaman
-ms.openlocfilehash: cb5969ccb4ee9780b597326a3811395c3b7d9971
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ced1bc647f93beec73b8101a952944f31e497658
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168475"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693217"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Noktadan Siteye VPN yönlendirme hakkında
 
@@ -32,7 +32,7 @@ Bu makalede birçok farklı diyagram vardır. Her bölümde farklı bir topoloji
 
 Bu örnekteki Noktadan siteye VPN Ağ Geçidi bağlantısı, başka bir sanal ağla bağlantılı veya eşlenmiş olmayan bir VNet için (VNet1). Bu örnekte, istemciler VNet1 'e erişebilir.
 
-![yalıtılmış VNET yönlendirmesi](./media/vpn-gateway-about-point-to-site-routing/1.jpg "yalıtılmış VNET yönlendirmesi")
+![yalıtılmış VNet yönlendirmesi](./media/vpn-gateway-about-point-to-site-routing/1.jpg "yalıtılmış VNet yönlendirmesi")
 
 ### <a name="address-space"></a>Adres alanı
 
@@ -56,7 +56,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Windows kullanan istemciler doğrudan eşlenmiş sanal ağlara erişebilir, ancak VNet eşlemesi veya ağ topolojisi üzerinde herhangi bir değişiklik yapılırsa VPN istemcisinin yeniden indirilmesi gerekir. Windows dışı istemciler, doğrudan eşlenmiş sanal ağlara erişebilir. Erişim geçişli değildir ve yalnızca doğrudan eşlenmiş VNET 'ler ile sınırlıdır.
 
-![birden]çok eşlenmiş VNET(./media/vpn-gateway-about-point-to-site-routing/2.jpg "birden çok sanal") ağ
+![birden çok eşlenen sanal ağlar](./media/vpn-gateway-about-point-to-site-routing/2.jpg "birden çok eşlenen sanal ağlar")
 
 ### <a name="address-space"></a>Adres alanı:
 
@@ -142,7 +142,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Windows ve Windows dışı istemciler yalnızca VNet1 'e erişebilir.
 
-VNET ve(./media/vpn-gateway-about-point-to-site-routing/5.jpg "şube ofisi ile") bir ![VNET ile Yönlendirme ve şube ofisi]yönlendirme
+![VNet ve şube ofisi ile yönlendirme](./media/vpn-gateway-about-point-to-site-routing/5.jpg "VNet ve şube ofisi ile yönlendirme")
 
 ### <a name="address-space"></a>Adres alanı
 
@@ -168,7 +168,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Windows istemcileri VNet 'e ve şube ofise (site1) erişebilir, ancak site1 'e giden yolların el ile istemciye eklenmesi gerekir. Windows dışı istemciler, VNet 'e ve şirket içi şube ofisine erişebilir.
 
-bir ![sanal ağ ve şube ofisi (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "bir sanal ağ ve şube ofisi")
+![bir sanal ağ ve şube ofisi (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "bir sanal ağ ve şube ofisi")
 
 ### <a name="address-space"></a>Adres alanı
 
@@ -195,7 +195,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Tüm istemciler yalnızca VNet1 erişim sağlayabilir.
 
-![Çoklu VNET S2S ve şube](./media/vpn-gateway-about-point-to-site-routing/7.jpg "Çoklu VNET S2S ve şube ofisi")
+![Çoklu VNet S2S ve şube ofisi](./media/vpn-gateway-about-point-to-site-routing/7.jpg "Çoklu VNet S2S ve şube ofisi")
 
 ### <a name="address-space"></a>Adres alanı
 
@@ -209,7 +209,7 @@ Tüm istemciler yalnızca VNet1 erişim sağlayabilir.
 
 ### <a name="routes-added"></a>Eklenen yollar
 
-* Rotalar eklenen istemciler: 10.1.0.0/16, 192.168.0.0/24
+* Windows istemcilerine eklenen yollar: 10.1.0.0/16, 192.168.0.0/24
 
 * Windows olmayan istemcilere eklenen yollar: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
@@ -225,7 +225,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Windows kullanan istemciler, siteden siteye VPN bağlantısı kullanılarak bağlanan sanal ağlara ve sitelere erişebilir, ancak VNet2, VNet3 ve site1 yollarının istemciye el ile eklenmesi gerekir. Windows dışı istemcileri, bir siteden siteye VPN bağlantısı kullanılarak bağlı olan sanal ağlara ve sitelere el ile müdahale olmadan erişebilirler. Erişim geçişlidir ve istemciler tüm bağlı sanal ağlarda ve sitelerde (Şirket içi) kaynaklara erişebilir.
 
-![Çoklu VNET S2S ve şube](./media/vpn-gateway-about-point-to-site-routing/8.jpg "Çoklu VNET S2S ve şube ofisi")
+![Çoklu VNet S2S ve şube ofisi](./media/vpn-gateway-about-point-to-site-routing/8.jpg "Çoklu VNet S2S ve şube ofisi")
 
 ### <a name="address-space"></a>Adres alanı
 
@@ -239,7 +239,7 @@ Windows kullanan istemciler, siteden siteye VPN bağlantısı kullanılarak bağ
 
 ### <a name="routes-added"></a>Eklenen yollar
 
-* Rotalar eklenen istemciler: 10.1.0.0/16, 192.168.0.0/24
+* Windows istemcilerine eklenen yollar: 10.1.0.0/16, 192.168.0.0/24
 
 * Windows olmayan istemcilere eklenen yollar: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 

@@ -1,8 +1,8 @@
 ---
-title: SQL Data Warehouse için Visual Studio 2019 'yi yükler | Microsoft Docs
+title: Visual Studio 2019 'yi yükler
 description: Azure SQL Data Warehouse için Visual Studio'yu ve SQL Server Veri Araçları'nı (SSDT) Yükleme
 services: sql-data-warehouse
-ms.custom: vs-azure
+ms.custom: seo-lt-2019
 ms.workload: azure-vs
 author: kevinvngo
 manager: craigg
@@ -12,12 +12,12 @@ ms.subservice: development
 ms.date: 10/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0ca59080b4056ba74e2f05038e07d647f12de765
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: caf4a3efbfafcdb10a8834c213b2469e30296501
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485049"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692680"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>SQL veri ambarı için Visual Studio 2019 ile çalışmaya başlama
 Visual Studio **2019** SQL Server veri araçları (SSDT), aşağıdakileri yapabilmenizi sağlayan tek bir araçtır:

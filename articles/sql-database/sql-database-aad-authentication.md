@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory auth-Azure SQL | Microsoft Docs
+title: Azure Active Directory auth-Azure SQL
 description: SQL veritabanı, yönetilen örnek ve SQL veri ambarı ile kimlik doğrulaması için Azure Active Directory kullanma hakkında bilgi edinin
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4516f75d80345312a6ca3b6dac3e5156d7e239e8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896992"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691372"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>SQL ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullanma
 
@@ -44,7 +44,7 @@ Azure AD kimlik doğrulamasıyla, veritabanı kullanıcılarının ve diğer Mic
 Yapılandırma adımları Azure Active Directory kimlik doğrulaması yapılandırmak ve kullanmak için aşağıdaki yordamları içerir.
 
 1. Azure AD 'yi oluşturun ve doldurun.
-2. İsteğe bağlı: Azure aboneliğinizle ilişkili olan Active Directory 'yi ilişkilendirin veya değiştirin.
+2. İsteğe bağlı: Azure aboneliğinizle ilişkili olan Active Directory 'yi Ilişkilendirin veya değiştirin.
 3. Azure SQL veritabanı sunucusu, yönetilen örnek veya [Azure SQL veri ambarı](https://azure.microsoft.com/services/sql-data-warehouse/)için Azure Active Directory Yöneticisi oluşturun.
 4. İstemci bilgisayarlarınızı yapılandırın.
 5. Veritabanınızda Azure AD kimlikleriyle eşlenmiş kapsanan veritabanı kullanıcıları oluşturun.
@@ -71,7 +71,7 @@ Azure AD kimlik doğrulaması kullanırken, SQL veritabanı sunucusu ve yönetil
 
 ## <a name="permissions"></a>İzinler
 
-Yeni kullanıcılar oluşturmak için, veritabanında `ALTER ANY USER` izninizin olması gerekir. Herhangi bir veritabanı kullanıcısına izinverilebilir.`ALTER ANY USER` Ayrıca, `CONTROL ON DATABASE` `ALTER ON DATABASE` bu izin Sunucu Yöneticisi hesapları tarafından ve bu veritabanı için veya iznine sahip veritabanı kullanıcıları ve veritabanırolününüyeleritarafındantutulur.`db_owner` `ALTER ANY USER`
+Yeni kullanıcılar oluşturmak için, veritabanında `ALTER ANY USER` izninizin olması gerekir. `ALTER ANY USER` izni herhangi bir veritabanı kullanıcısına verilebilir. `ALTER ANY USER` izin, Sunucu Yöneticisi hesapları tarafından da tutulur ve bu veritabanı için `CONTROL ON DATABASE` veya `ALTER ON DATABASE` iznine sahip veritabanı kullanıcıları ve `db_owner` veritabanı rolü üyeleri tarafından kullanılır.
 
 Azure SQL veritabanı, yönetilen örnek veya SQL veri ambarı 'nda kapsanan bir veritabanı kullanıcısı oluşturmak için, bir Azure AD kimliği kullanarak veritabanına veya örneğe bağlanmanız gerekir. İlk kapsanan veritabanı kullanıcısını oluşturmak için, bir Azure AD Yöneticisi (veritabanının sahibi olan) kullanarak veritabanına bağlanmanız gerekir. Bu, [SQL veritabanı veya SQL veri ambarı ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](sql-database-aad-authentication-configure.md)bölümünde gösterilmiştir. Herhangi bir Azure AD kimlik doğrulaması, Azure SQL veritabanı veya SQL veri ambarı sunucusu için Azure AD yöneticisi oluşturulmuşsa mümkündür. Azure Active Directory Yöneticisi sunucudan kaldırılmışsa, daha önce SQL Server içinde oluşturulan mevcut Azure Active Directory Kullanıcılar artık Azure Active Directory kimlik bilgilerini kullanarak veritabanına bağlanamaz.
 
@@ -79,16 +79,16 @@ Azure SQL veritabanı, yönetilen örnek veya SQL veri ambarı 'nda kapsanan bir
 
 - Azure AD 'nin aşağıdaki üyeleri Azure SQL Server veya SQL veri ambarı 'nda sağlanabilir:
 
-  - Yerel Üyeler: Yönetilen etki alanında veya bir müşteri etki alanında Azure AD 'de oluşturulan bir üye. Daha fazla bilgi için bkz. [Azure AD 'ye kendi etki alanı adınızı ekleme](../active-directory/active-directory-domains-add-azure-portal.md).
-  - Federasyon etki alanı üyeleri: Azure AD 'de Federasyon etki alanı ile oluşturulan bir üye. Daha fazla bilgi için bkz. [Microsoft Azure artık Windows Server Active Directory ile Federasyonu destekliyor](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/).
+  - Yerel Üyeler: yönetilen etki alanında veya bir müşteri etki alanında Azure AD 'de oluşturulan bir üye. Daha fazla bilgi için bkz. [Azure AD 'ye kendi etki alanı adınızı ekleme](../active-directory/active-directory-domains-add-azure-portal.md).
+  - Federasyon etki alanı üyeleri: Azure AD 'de bir Federasyon etki alanı ile oluşturulan bir üye. Daha fazla bilgi için bkz. [Microsoft Azure artık Windows Server Active Directory ile Federasyonu destekliyor](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/).
   - Diğer Azure AD 'den, yerel veya Federasyon etki alanı üyesi olan Üyeler içeri aktarıldı.
   - Güvenlik grupları olarak oluşturulan grupları Active Directory.
 
-- Sunucu rolüne sahip `db_owner` bir grubun parçası olan Azure AD kullanıcıları, Azure SQL veritabanı ve Azure SQL veri ambarı 'nda **[veritabanı kapsamlı kimlik bilgisi oluştur](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)** sözdizimini kullanamaz. Aşağıdaki hatayı görürsünüz:
+- `db_owner` Server rolüne sahip bir grubun parçası olan Azure AD kullanıcıları, Azure SQL veritabanı ve Azure SQL veri ambarı 'nda **[VERITABANı KAPSAMLı KIMLIK bilgisi oluştur](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)** sözdizimini kullanamaz. Aşağıdaki hatayı görürsünüz:
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 
-    **Veritabanı kapsamlı kimlik bilgileri oluşturma** sorununu hafifletmek için roledoğrudantekbirAzureADkullanıcısınaizinverin.`db_owner`
+    **VERITABANı KAPSAMLı KIMLIK bilgileri oluşturma** sorununu hafifletmek için, `db_owner` rolünü tek BIR Azure AD kullanıcısına doğrudan verin.
 
 - Bu sistem işlevleri, Azure AD sorumluları altında yürütüldüğünde NULL değerler döndürüyor:
 
@@ -102,7 +102,7 @@ Azure SQL veritabanı, yönetilen örnek veya SQL veri ambarı 'nda kapsanan bir
 
 - Azure AD Server sorumluları (oturumlar) ve kullanıcılar, [yönetilen örnekler](sql-database-managed-instance.md)için Önizleme özelliği olarak desteklenir.
 - Bir Azure AD grubuna eşlenen Azure AD Server sorumlularını (oturum açma) veritabanı sahibi olarak ayarlama, [yönetilen örneklerde](sql-database-managed-instance.md)desteklenmez.
-    - Bunun bir uzantısı, bir grup `dbcreator` sunucu rolünün bir parçası olarak eklendiğinde, bu gruptaki kullanıcılar yönetilen örneğe bağlanabilir ve yeni veritabanları oluşturabilir, ancak veritabanına erişemeyecektir. Bunun nedeni, yeni veritabanı sahibinin Azure AD kullanıcısı değil, SA. Bu sorun, bireysel kullanıcı `dbcreator` sunucu rolüne eklenirse bildirim yapmaz.
+    - Bunun bir uzantısı, bir grup `dbcreator` sunucusu rolünün bir parçası olarak eklendiğinde, bu gruptaki kullanıcılar yönetilen örneğe bağlanabilir ve yeni veritabanları oluşturabilir, ancak veritabanına erişemeyecektir. Bunun nedeni, yeni veritabanı sahibinin Azure AD kullanıcısı değil, SA. Bu sorun, bireysel kullanıcı `dbcreator` sunucu rolüne eklenirse bildirim almaz.
 - SQL Aracısı yönetimi ve işlerin yürütülmesi, Azure AD Server sorumluları (oturumlar) için desteklenir.
 - Veritabanı yedekleme ve geri yükleme işlemleri, Azure AD Server sorumluları (oturumlar) tarafından yürütülebilir.
 - Azure AD Server sorumluları (oturum açmalar) ve kimlik doğrulama olayları ile ilgili tüm deyimlerin denetlenmesi desteklenir.
@@ -132,7 +132,7 @@ Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum 
 
 - Yönetilebilirlik geliştirmek için, bir yönetici olarak adanmış bir Azure AD grubu sağlamanızı öneririz.   
 - Azure SQL veritabanı sunucusu veya Azure SQL veri ambarı için herhangi bir zamanda yalnızca bir Azure AD Yöneticisi (Kullanıcı veya grup) yapılandırılabilir.
-  - Yönetilen örnekler için Azure AD Server sorumlularını (oturum açma) ekleme (**genel önizleme**), `sysadmin` role eklenebilen birden çok Azure AD Server sorumlusu (oturum açma) oluşturma olasılığa izin verir.
+  - Yönetilen örnekler için Azure AD Server sorumlularını (oturum açma) ekleme (**genel önizleme**), `sysadmin` rolüne eklenebilen birden çok Azure AD Server sorumlusu (oturum açma) oluşturma olasılığa izin verir.
 - SQL Server için yalnızca bir Azure AD yöneticisi, bir Azure Active Directory hesabı kullanarak başlangıçta Azure SQL veritabanı sunucusuna, yönetilen örneğe veya Azure SQL veri ambarına bağlanabilir. Active Directory Yöneticisi, sonraki Azure AD veritabanı kullanıcılarını yapılandırabilir.   
 - Bağlantı zaman aşımını 30 saniyeye ayarlamayı öneririz.   
 - SQL Server 2016 Management Studio ve SQL Server Veri Araçları Visual Studio 2015 için (sürüm 14.0.60311.1 Nisan 2016 veya üzeri) Azure Active Directory kimlik doğrulamasını destekler. (Azure AD kimlik doğrulaması, **SqlServer için .NET Framework veri sağlayıcısı**tarafından desteklenir; en az sürüm .NET Framework 4,6). Bu nedenle, bu araçların ve veri katmanı uygulamalarının en yeni sürümleri (DAC ve. BACPAC), Azure AD kimlik doğrulaması kullanabilir.   

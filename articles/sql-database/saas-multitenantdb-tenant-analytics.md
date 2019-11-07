@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanlarında analiz sorguları çalıştırma | Microsoft Docs
+title: 'Azure SQL veritabanlarında analiz sorguları çalıştırma '
 description: Çok kiracılı bir uygulamadaki birden çok Azure SQL veritabanı veritabanından ayıklanan verileri kullanan çapraz kiracı Analizi sorguları.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 09/19/2018
-ms.openlocfilehash: b36911d274a3afb3582d60ea7e85b5afd5f52ece
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2044e72697526a1c757fa13aeffb85260a9b821e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570291"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691989"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Ayıklanan verileri kullanan çapraz kiracı analizi-çok kiracılı uygulama
  
@@ -26,7 +26,7 @@ Bu öğreticide, çok kiracılı bir uygulama için kapsamlı bir analiz senaryo
 2.  **Ayıklanan verileri** analiz Işleme için iyileştirin.
 3.  Karar verme konusunda rehberlik sağlayan yararlı Öngörüler çizmek için **Iş zekası** araçlarını kullanın. 
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > - Verileri içine ayıklamak için kiracı Analizi deposu oluşturun.
@@ -65,7 +65,7 @@ Her kiracının hizmeti nasıl kullandığını anlamak, ihtiyaçlarını karş�
 
 ## <a name="setup"></a>Kurulum
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -80,7 +80,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığı
 Bu öğreticide, Bilet satış verilerinde analiz yapılır. Geçerli adımda, tüm kiracılara yönelik bilet verileri oluşturun.  Daha sonra bu veriler analiz için ayıklanır. *Daha önce açıklandığı gibi kiracılar toplu işlemini sağladığınızdan emin olun, böylece anlamlı bir veri miktarına sahip olursunuz*. Yeterince büyük miktarda veri, farklı bilet satın alma desenlerinin bir aralığını açığa çıkarır.
 
 1. **PowerShell ISE**'de *. ..\Learning Modules\işletimsel Analtics\tenant Analytics\Demo-TenantAnalytics.ps1*açın ve aşağıdaki değeri ayarlayın:
-    -  = Tüm havalandırma noktaları için $DemoScenario**1** satın alma bileti
+    - **$DemoScenario** tüm havalandırma ve olaylar için = **1** satın alma bileti
 2. Komut dosyasını çalıştırmak ve her bir mekan her olay için bilet satın alma geçmişi oluşturmak için **F5** tuşuna basın.  Betik on binlerce bilet üretmek için birkaç dakika çalışır.
 
 ### <a name="deploy-the-analytics-store"></a>Analiz deposunu dağıtma
@@ -91,17 +91,17 @@ Aşağıdaki adımlarda, **tenantanalytics**adlı analiz deposunu dağıtırsın
 2. Betikteki $DemoScenario değişkenini, analiz deposu seçimiyle eşleşecek şekilde ayarlayın. Öğrenme amacıyla, columnstore olmadan SQL veritabanı önerilir.
     - SQL veritabanı 'nı columnstore olmadan kullanmak için **$DemoScenario** = **2** ' yi ayarlayın.
     - SQL veritabanını columnstore ile kullanmak için, **$DemoScenario** = **3** ' ü ayarlayın  
-3. , Kiracı Analizi deposunu oluşturan tanıtım betiğini ( *Deploy-TenantAnalytics\<xx >. ps1* betiğini çağırır) çalıştırmak için **F5** tuşuna basın. 
+3. , Kiracı Analizi deposunu oluşturan tanıtım betiğini ( *Deploy-TenantAnalytics\<XX >. ps1* betiğini çağırır) çalıştırmak için **F5** tuşuna basın. 
 
-Uygulamayı dağıttığınıza ve ilgi çekici kiracı verileriyle doldurduktan sonra, **tenants1-MT-\<user\>**  ve Catalog-MT- [](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) **\<user\>ilebağlantıkurmakiçinSQLServerManagementStudio(SSMS)kullanın** oturum açma = *Geliştirici*, parola = *P\@ssword1*kullanan sunucular.
+Uygulamayı dağıttığınıza ve ilgi çekici kiracı verileriyle doldurduktan sonra, [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) kullanarak **tenants1-MT-\<User\>** ve **Katalog-MT-\<Kullanıcı\>** sunucularını şu şekilde bağlayın Login = *Geliştirici*, Password = *P\@ssword1*.
 
 ![Mimari Tureoverview](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
 Nesne Gezgini, aşağıdaki adımları gerçekleştirin:
 
-1. *Tenants1-MT\<-user\>*  sunucusunu genişletin.
+1. *Tenants1-MT-\<kullanıcı\>* sunucusunu genişletin.
 2. Veritabanları düğümünü genişletin ve birden çok kiracı içeren *tenants1* veritabanı ' na bakın.
-3. *Catalog-MT\<-user\>*  sunucusunu genişletin.
+3. *Katalog-MT-\<kullanıcı\>* sunucusunu genişletin.
 4. Analiz deposunu ve jobaccount veritabanını gördiğinizi doğrulayın.
 
 Analiz deposu düğümünü genişleterek SSMS Nesne Gezgini aşağıdaki veritabanı öğelerine bakın:
@@ -118,9 +118,9 @@ Analiz deposu düğümünü genişleterek SSMS Nesne Gezgini aşağıdaki verita
 
 Devam etmeden önce, iş hesabını ve jobaccount veritabanını dağıttığınızdan emin olun. Sonraki adımlarda, parçalı kiracılar veritabanından veri ayıklamak ve verileri analiz deposunda depolamak için esnek Işler kullanılır. Ardından ikinci iş, verileri shreds ve yıldızı-Schema 'daki tablolara depolar. Bu iki iş iki farklı hedef gruba karşı çalışır, yani **Tenantgroup** ve **analiz ticsgroup**. Ayıklama işi, tüm kiracı veritabanlarını içeren TenantGroup 'a karşı çalışır. Ayırma işi, yalnızca analiz deposunu içeren analiz Ticsgroup 'a karşı çalışır. Aşağıdaki adımları kullanarak hedef grupları oluşturun:
 
-1. SSMS 'de, Katalog-MT-\<user\>içindeki **jobaccount** veritabanına bağlanın.
+1. SSMS 'de, Katalog-MT-\<User\>içindeki **jobaccount** veritabanına bağlanın.
 2. SSMS 'de *. ..\Learning Modules\işlemsel analiz Tics\tenant Analytics \ TargetGroups. SQL* dosyasını açın 
-3. Komut dosyasının en üstündeki `<User>` değişkeni,WingtipbiletSaaSçokkiracılıveritabanıuygulamasınıdağıtırkenkullanılanKullanıcıdeğeriyledeğiştirerekdeğiştirin.@User
+3. Komut dosyasının en üstündeki @User değişkenini değiştirerek, `<User>` değiştirerek, Wingtip bilet SaaS çok kiracılı veritabanı uygulamasını dağıtırken kullanılan Kullanıcı değeriyle değiştirin.
 4. İki hedef grubunu oluşturan betiği çalıştırmak için **F5** tuşuna basın.
 
 ### <a name="extract-raw-data-from-all-tenants"></a>Tüm kiracılardan ham verileri Ayıkla
@@ -132,9 +132,9 @@ Devam etmeden önce, iş hesabını ve jobaccount veritabanını dağıttığın
 
 Her iş verilerini ayıklar ve analiz deposuna gönderir. Ayıklanan verileri analiz yıldızı-şemasına shreds ayrı bir iş vardır.
 
-1. SSMS 'de, Katalog-MT-\<user\> Server 'daki **jobaccount** veritabanına bağlanın.
+1. SSMS 'de, Katalog-MT-\<User\> Server 'daki **jobaccount** veritabanına bağlanın.
 2. SSMS 'de, *. ..\Learning Modules\işletimsel Analtics\tenant Analtics\tenant Analyzer*' ı açın.
-3. Betiğin @User en üstünde değişiklik yapın ve bunu, Wingtip bilet `<User>` SaaS çok kiracılı veritabanı uygulamasını dağıtırken kullanılan kullanıcı adıyla değiştirin. 
+3. Betiğin en üstünde @User değiştirin ve `<User>`, Wingtip bilet SaaS çok kiracılı veritabanı uygulamasını dağıtırken kullanılan kullanıcı adıyla değiştirin. 
 4. Her kiracı veritabanından bilet ve müşteri verilerini çıkaran işi oluşturan ve çalıştıran betiği çalıştırmak için **F5** ' e basın. İş, verileri analiz deposuna kaydeder.
 5. Tablonun tüm kiracılardan bilet bilgileriyle doldurulduğundan emin olmak için tenantanalytics veritabanındaki bilet Srawdata tablosunu sorgulayın.
 
@@ -152,7 +152,7 @@ Sonraki adım, ayıklanan ham verilerin analiz sorguları için iyileştirilmiş
 
 Öğreticinin bu bölümünde, ayıklanan ham verileri, yıldız şeması tablolarındaki verilerle birleştiren bir iş tanımlar ve çalıştırırsınız. Birleştirme işi tamamlandıktan sonra ham veriler silinir ve tabloları bir sonraki kiracı verileri ayıklama işi tarafından doldurulmaya başlamaya bırakılır.
 
-1. SSMS 'de, Katalog-MT-\<user\>içindeki **jobaccount** veritabanına bağlanın.
+1. SSMS 'de, Katalog-MT-\<User\>içindeki **jobaccount** veritabanına bağlanın.
 2. SSMS 'de *. ..\Learning Modules\işletimsel Analtics\tenant Analtics\shredrawextracteddata.exe*dosyasını açın.
 3. Analiz deposunda sp_ShredRawExtractedData saklı yordamını çağıran bir işi tanımlamak üzere betiği çalıştırmak için **F5** ' e basın.
 4. İşin başarıyla çalışması için yeterli zaman yok.
@@ -169,13 +169,13 @@ Star şeması tablosundaki veriler, analizinizi için gereken tüm bilet satış
 Power BI bağlanmak ve daha önce oluşturduğunuz görünümleri içeri aktarmak için aşağıdaki adımları kullanın:
 
 1. Power BI Desktop 'ı başlatın.
-2. Giriş şeridinde **veri al**' ı seçin ve **daha fazla...** seçeneğini belirleyin. belirleyin.
+2. Giriş şeridinde **veri al**' ı seçin ve **daha fazla...** seçeneğini belirleyin. menüsünde.
 3. **Veri al** PENCERESINDE Azure SQL veritabanı ' nı seçin.
-4. Veritabanı oturum açma penceresinde sunucunuzun adını (Catalog-MT-\<user\>. Database.Windows.net) girin. **Veri bağlantısı modu**Için **içeri aktar** ' ı seçin ve ardından Tamam ' a tıklayın. 
+4. Veritabanı oturum açma penceresinde sunucunuzun adını (Catalog-MT-\<User\>. database.windows.net) girin. **Veri bağlantısı modu**Için **içeri aktar** ' ı seçin ve ardından Tamam ' a tıklayın. 
 
     ![Powerbııgın](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. Sol bölmedeki **veritabanı** ' nı seçin, ardından Kullanıcı adı = *Geliştirici*yazın ve parola = *P\@ssword1*girin. **Bağlan**'a tıklayın.  
+5. Sol bölmedeki **veritabanı** ' nı seçin, ardından Kullanıcı adı = *Geliştirici*yazın ve Password = *P\@ssword1*girin. **Bağlan**'a tıklayın.  
 
     ![Databasesignın](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
@@ -219,7 +219,7 @@ Göreli başarısını belirlemek için her bir mekan satılan yüzde biletlerin
 
 ![Analiz Ticsgörünümleri](media/saas-multitenantdb-tenant-analytics/AvgTicketsByVenues.PNG)
 
-Yukarıdaki çizimde, çoğu havalandırma, biletlerinin% 80 ' undan daha fazla satışı olsa da, bazılarına çok sayıda oturmuş kadar fazla bilgi veren bir süre sonra gösterilmektedir. Her bir mekan için satılan anahtarların maksimum veya minimum yüzdesini seçmek için değerler ile etrafında bir oynatma yapın.
+Yukarıdaki çizimde, çoğu havalandırma, biletlerinin %80 ' undan daha fazla satışı olsa da, bazılarına çok sayıda oturmuş kadar fazla bilgi veren bir süre sonra gösterilmektedir. Her bir mekan için satılan anahtarların maksimum veya minimum yüzdesini seçmek için değerler ile etrafında bir oynatma yapın.
 
 Daha önce, bu bilet satışlarının tahmin edilebilir desenleri takip etmek için analizinizi daha ayrıntılı olarak fark edersiniz. Bu bulgu, Wingtip biletlerinin, dinamik fiyatlandırma önererek bilet satışlarını artırma konusunda yardımcı olmasına izin verebilir. Bu bulma, her olay için bilet satışlarını tahmin etmek üzere makine öğrenimi tekniklerini kullanmayı bir fırsat ortaya çıkarmaktadır. Tahmine dayalı, bilet satışlarında indirim teklif teklifi için de yapılabilir. Power BI Embedded bir olay yönetimi uygulamasıyla tümleştirilebilir. Tümleştirme, öngörülen satışları ve farklı indirimlerin etkisini görselleştirmenize yardımcı olabilir. Uygulama, doğrudan analiz görüntüsüne uygulanan en uygun indirimin Devine sağlanmasına yardımcı olabilir.
 

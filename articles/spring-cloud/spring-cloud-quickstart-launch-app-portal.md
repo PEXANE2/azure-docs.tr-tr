@@ -1,26 +1,23 @@
 ---
-title: Azure portal kullanarak bir Azure Spring Cloud uygulaması başlatın
+title: 'Hızlı başlangıç: Azure portal kullanarak bir Azure Spring Cloud uygulaması başlatın'
 description: Azure portal kullanarak Azure yay bulutuna örnek bir uygulama dağıtın.
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 10/04/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 87826b4c898f67873c2ec8188b934abd467c8a5b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: MT
+ms.date: 11/4/2019
+ms.author: jeconnoc
+ms.openlocfilehash: ab2950ed85d2409cd81ea562ec977c0eee2f6bab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162823"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693142"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Spring Cloud uygulaması başlatın
 
 Azure Spring Cloud, Azure 'da Spring Cloud tabanlı mikro hizmet uygulamalarını kolayca çalıştırmanıza olanak sağlar.
 
-Bu hızlı başlangıçta, mevcut bir yay bulutu uygulamasının Azure 'a nasıl dağıtılacağı gösterilir. Bu öğreticide kullanılan örnek uygulama koduna yönelik [bir bağlantı aşağıda](https://github.com/Azure-Samples/PiggyMetrics) verilmiştir. İşiniz bittiğinde, belirtilen örnek uygulama çevrimiçi olarak erişilebilir ve Azure portal aracılığıyla yönetilmeye hazırlıyordu.
+Bu hızlı başlangıçta, mevcut bir yay bulutu uygulamasının Azure 'a nasıl dağıtılacağı gösterilir.  Bu öğreticide kullanılan örnek uygulama kodunu [GitHub örnekleri depomız](https://github.com/Azure-Samples/PiggyMetrics)bölümünde bulabilirsiniz. İşiniz bittiğinde, belirtilen örnek uygulama çevrimiçi olarak erişilebilir ve Azure portal aracılığıyla yönetilmeye hazırlıyordu.
 
 Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğreneceksiniz:
 
@@ -31,10 +28,10 @@ Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğrenecek
 > * Her mikro hizmeti dağıtma
 > * Uygulamanız için genel uç nokta atama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 >[!Note]
-> Bu hızlı başlangıca başlamadan önce Azure aboneliğinizin Azure Spring Cloud 'a erişimi olduğundan emin olun.  Bir önizleme hizmeti olarak, aboneliğinizin izin verilenler listenize ekleyebilmemiz için bize bize ulaşmaları istenir.  Azure Spring Cloud 'ın yeteneklerini araştırmak isterseniz, [Azure yay bulutu (özel Önizleme)-Ilgi formunu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u)doldurun ve iletin. Azure yay bulutu önizlemedeyken Microsoft, SLA olmadan sınırlı destek sunuyor.  Önizlemeler sırasında destek hakkında daha fazla bilgi için lütfen bu [destek hakkında SSS](https://azure.microsoft.com/support/faq/)bölümüne bakın.
+> Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizlemeler sırasında destek hakkında daha fazla bilgi için lütfen bir [destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)dosya yapın.
 
 >[!TIP]
 > Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur.  Git, JDK, Maven ve Azure CLı 'nin en son sürümleri de dahil olmak üzere önceden yüklenmiş ortak Azure araçları vardır. Azure aboneliğinizde oturum açtıysanız, shell.azure.com adresinden [Azure Cloud Shell](https://shell.azure.com) başlatın.  [Belgelerimizi okuyarak](../cloud-shell/overview.md) Azure Cloud Shell hakkında daha fazla bilgi edinebilirsiniz
@@ -52,16 +49,14 @@ Bu hızlı başlangıcı tamamlamak için:
 Aşağıdaki komutu kullanarak Azure CLı için Azure yay bulutu uzantısını yükler
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Azure portal bir hizmet örneği sağlayın
 
-1. Bir Web tarayıcısında, [Azure Portal Azure Spring Cloud bağlantısını](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=AppPlatformExtension#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Azure%20Spring%20Cloud)açın.
+1. Bir Web tarayıcısında, [Azure Portal Azure Spring Cloud bağlantısını](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)açın.
 
-    ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/goto-portal.png)
-
-1. Genel Bakış sayfasına gitmek için **Azure yay bulutu** ' nı seçin. Sonra, başlamak için **Oluştur** düğmesini seçin.
+1. Genel Bakış sayfasına gitmek için **Azure yay bulutu** ' nı seçin. Başlamak için **Oluştur** düğmesini seçin.
 
 1. Aşağıdaki yönergeleri göz önünde bulundurarak formu doldurun:
     - Hizmet adı: hizmet örneğinizin adını belirtin.  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir.  Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.
@@ -77,26 +72,28 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. **Varsayılan depo** bölümünde, **URI** 'yi "https\://GitHub.com/Azure-Samples/piggymetrics" olarak ayarlayın, **etiketi** "config" olarak ayarlayın ve değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
 
-    ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![ASC portalının ekran görüntüsü](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Mikro hizmet uygulamaları oluşturma ve dağıtma
 
-1. Örnek uygulama deposunu yerel makinenize kopyalamak için bir komut penceresi açın ve aşağıdaki komutu çalıştırın.
+1. Bir [Azure Cloudshell](https://shell.azure.com) açın ve örnek uygulama deposunu yerel makinenize kopyalayın.  Burada, önce uygulamayı kopyalamadan önce `source-code` adlı geçici bir dizin oluşturacağız.
 
-    ```cli
+    ```azurecli
+    mkdir source-code
+    cd source-code
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. Aşağıdaki komutu çalıştırarak projeyi derleyin.
+1. Kopyalanmış paketi oluşturun.
 
-    ```cli
-    cd PiggyMetrics
+    ```azurecli
+    cd piggymetrics
     mvn clean package -DskipTests
     ```
 
 1. Azure CLı 'da oturum açın ve etkin aboneliğinizi ayarlayın.
 
-    ```cli
+    ```azurecli
     # Login to Azure CLI
     az login
 
@@ -123,7 +120,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. Aynı kalıbı izleyerek `account-service` ve `auth-service` uygulamaları oluşturun ve JAR dosyalarını dağıtın.
 
-    ```cli
+    ```azurecli
     az spring-cloud app create -n account-service
     az spring-cloud app deploy -n account-service --jar-path ./account-service/target/account-service.jar
     az spring-cloud app create -n auth-service
@@ -135,8 +132,10 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Ağ geçidine genel uç nokta atama
 
 1. Soldaki menüden **uygulamalar** sekmesini açın.
-2. **Genel bakış** sayfasını göstermek için `gateway` uygulamasını seçin.
-3. Ağ geçidine bir genel uç nokta atamak için **etki alanı ata** ' yı seçin. Bu birkaç dakika sürebilir.
+
+1. **Genel bakış** sayfasını göstermek için `gateway` uygulamayı seçin.
+
+1. Ağ geçidine bir genel uç nokta atamak için **etki alanı ata** ' yı seçin. Bu birkaç dakika sürebilir.
 
     ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 

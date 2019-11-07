@@ -1,5 +1,5 @@
 ---
-title: Harmanlama-Azure SQL veri ambarı | Microsoft Docs
+title: Mediğinden
 description: Azure SQL veri ambarı 'nda desteklenen harmanlama türleri.
 services: sql-data-warehouse
 author: antvgski
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 598ad4c103035ec2d94015e1f8e12194d1b723fc
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f05e54a3dd4b69fff2bc7d122391d145b222b295
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935110"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692559"
 ---
 # <a name="database-collation-support-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için veritabanı harmanlama desteği
 
@@ -99,5 +100,5 @@ Varsayılan harmanlamayı değiştirmek için sağlama deneyiminde harmanlama al
 *   SQL_EBCDIC277_2_CP1_CS_AS
 
 ## <a name="checking-the-current-collation"></a>Geçerli harmanlama denetleniyor
-Veritabanının geçerli harmanlamasını denetlemek için aşağıdaki T-SQL kod parçacığını çalıştırabilirsiniz: Harmanlama olarak DATABASEPROPERTYEX (DB_NAME (), ' harmanlama ') seçeneğini belirleyin; Özellik parametresi olarak ' harmanlama ' geçirildiğinde, DatabasePropertyEx işlevi belirtilen veritabanı için geçerli harmanlamayı döndürür. MSDN 'de DatabasePropertyEx işlevi hakkında daha fazla bilgi edinebilirsiniz.
+Veritabanının geçerli harmanlamasını denetlemek için aşağıdaki T-SQL kod parçacığını çalıştırabilirsiniz: ' i harmanlama olarak DATABASEPROPERTYEX (DB_NAME (), ' harmanlama ') SEÇENEĞINI belirleyebilirsiniz; Özellik parametresi olarak ' harmanlama ' geçirildiğinde, DatabasePropertyEx işlevi belirtilen veritabanı için geçerli harmanlamayı döndürür. MSDN 'de DatabasePropertyEx işlevi hakkında daha fazla bilgi edinebilirsiniz.
 

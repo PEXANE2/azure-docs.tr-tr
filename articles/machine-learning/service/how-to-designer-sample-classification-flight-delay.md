@@ -1,5 +1,5 @@
 ---
-title: 'Tasarımcı örnek #6: uçuş gecikmelerini tahmin etmek için sınıflandırma'
+title: 'Tasarımcı: sınıflandırma, uçuş gecikmelerini tahmin etme'
 titleSuffix: Azure Machine Learning
 description: Bu makalede, sürükle ve bırak tasarımcısını ve özel R kodunu kullanarak uçuş gecikmelerini tahmin etmek için bir makine öğrenimi modelinin nasıl oluşturulacağı gösterilmektedir.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 4b21ebffe8959809acc71fc09aff7e58873e10b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10b3b78b4878eeddf2f786fda90ab9709e4bd2b4
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515531"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647193"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>Örnek 6-sınıflandırma: R kullanarak uçuş gecikmelerini tahmin etme
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Bu örnek için nihai işlem hattı grafiği aşağıda verilmiştir:
 
 [işlem hattının ![grafiği](media/how-to-ui-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

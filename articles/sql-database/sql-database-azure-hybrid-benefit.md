@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı-Azure Hibrit Avantajı | Microsoft Docs
+title: Azure SQL veritabanı-Azure Hibrit Avantajı
 description: SQL veritabanı indirimleri için mevcut SQL Server lisanslarını kullanın.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/08/2019
-ms.openlocfilehash: cb5caf65a3083cfb5700432573cfddcfb7c6385f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a09f7aec4966c02ccfa2101f4359c510ae8b111
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515895"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691093"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure Hibrit Avantajı
 

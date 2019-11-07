@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı ve SQL veri ambarı veri bulma & sınıflandırması | Microsoft Docs
+title: Azure SQL veritabanı ve SQL veri ambarı veri bulma & sınıflandırması
 description: Azure SQL veritabanı ve veri bulma & sınıflandırması
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 9bcb8ce69a65892109702f0f0a409310945b6781
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009987"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690775"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL veritabanı ve SQL veri ambarı veri bulma & sınıflandırması
 
-Veri bulma & sınıflandırması, veritabanlarınızdaki hassas verileri**korumak** , **sınıflandırmak**ve **etiketleme** &  **için Azure**SQL veritabanı 'nda yerleşik olarak bulunan gelişmiş yetenekler sağlar.
+Veri bulma & sınıflandırması, veritabanlarınızdaki hassas verileri **korumak** **Için Azure**SQL veritabanı 'nda **yerleşik olarak bulunan**gelişmiş özellikleri **sağlar & .**
 
 En hassas verilerinizi (iş, finans, sağlık, kişisel olarak tanımlanabilir veriler (PII) vb.) bulmak ve sınıflandırmak, kurumsal bilgi koruma hazırünüzde bir özetleme rolü oynayabilir. Bu, için altyapı işlevi görebilir:
 
@@ -87,7 +87,7 @@ Kiracı genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kulla
 
 4. Excel biçiminde bir rapor indirmek için pencerenin üst menüsünde **dışarı aktar** seçeneğine tıklayın.
 
-   ![Excel'e Aktar](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
+   ![Excel 'e aktar](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
 
 5. <a id="step-5"></a>Verilerinizi sınıflandırmayla başlamak için pencerenin üst kısmındaki **Sınıflandırma sekmesine** tıklayın.
 
@@ -125,7 +125,7 @@ Kiracı genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kulla
 
 Bilgi koruma paradigmasının önemli bir yönü, hassas verilere erişimi izleme olanağıdır. [Azure SQL veritabanı denetimi](sql-database-auditing.md) , sorgu tarafından döndürülen gerçek verilerin duyarlılık sınıflandırmalarını (etiketleri) günlüğe kaydeden *data_sensitivity_information*adlı denetim günlüğüne yeni bir alan içerecek şekilde geliştirilmiştir.
 
-![Denetleme günlüğü](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
+![Denetim günlüğü](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
 ## <a id="subheading-4"></a>T-SQL kullanarak veri sınıflandırmasını yönetme
 
@@ -134,8 +134,8 @@ T-SQL ' i sütun sınıflandırmaları eklemek/kaldırmak ve tüm veritabanını
 > [!NOTE]
 > Etiketleri yönetmek için T-SQL kullanırken, bir sütuna eklenen etiketlerin kurumsal bilgi koruma ilkesinde (portal önerilerinde görünen etiketler kümesi) mevcut olduğu bir doğrulama yoktur. Bu nedenle, bunu doğrulamak için kullanılır.
 
-- Bir veya daha fazla sütunun sınıflandırmasını ekleyin/güncelleştirin: [DUYARLILIK SINIFLANDIRMASI EKLE](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- Sınıflandırmayı bir veya daha fazla sütundan kaldırın: [DUYARLILIK SINIFLANDIRMASINI BIRAK](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Bir veya daha fazla sütunun sınıflandırmasını ekleyin/güncelleştirin: [DUYARLıLıK sınıflandırması Ekle](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Sınıflandırmayı bir veya daha fazla sütundan kaldırma: [DÜŞÜRÜLME DUYARLıLıĞı sınıflandırması](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Veritabanındaki tüm sınıflandırmaları görüntüle: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 ### <a name="manage-classifications-using-rest-apis"></a>REST API 'Leri kullanarak sınıflandırmaları yönetme
@@ -144,8 +144,8 @@ Sınıflandırmaları programlı bir şekilde yönetmek için REST API 'Lerini d
 
 - [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) -belirli bir sütunun duyarlılık etiketini oluşturur veya güncelleştirir
 - [Sil](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) -belirli bir sütunun duyarlılık etiketini siler
-- [Öneriyi devre dışı bırak](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation) -belirli bir sütunda duyarlılık önerilerini devre dışı bırakır
-- [Öneriyi etkinleştir](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation) -belirli bir sütunda duyarlılık önerilerini etkinleştirir (öneriler varsayılan olarak tüm sütunlarda etkindir)
+- [Öneriyi devre dışı bırak](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation) -belirli bir sütunda duyarlılık önerilerini devre dışı bırakır
+- [Öneriyi etkinleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) -belirli bir sütunda duyarlılık önerilerini etkinleştirir (öneriler varsayılan olarak tüm sütunlarda etkindir)
 - [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -belirli bir sütunun duyarlılık etiketini alır
 - [Geçerli veritabanına göre Listele](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) -belirli bir veritabanının geçerli duyarlılık etiketlerini alır
 
@@ -171,9 +171,9 @@ Bir Azure SQL veritabanında ve yönetilen bir örnekte, önerilen tüm sütunla
 
 ## <a name="permissions"></a>İzinler
 
-Aşağıdaki yerleşik roller bir Azure SQL veritabanının veri sınıflandırmasını okuyabilir: `Owner` `Contributor`, `Reader` `SQL Security Manager` , ve `User Access Administrator`.
+Aşağıdaki yerleşik roller bir Azure SQL veritabanının veri sınıflandırmasını okuyabilir: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` ve `User Access Administrator`.
 
-Aşağıdaki yerleşik roller bir Azure SQL veritabanının veri sınıflandırmasını değiştirebilir: `Owner`, `Contributor`, `SQL Security Manager`.
+Aşağıdaki yerleşik roller bir Azure SQL veritabanının veri sınıflandırmasını değiştirebilir: `Owner`, `Contributor``SQL Security Manager`.
 
 [Azure kaynakları Için RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) hakkında daha fazla bilgi edinin
 

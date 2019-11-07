@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Azure SQL veri ambarı oluşturma-Azure PowerShell | Microsoft Docs'
+title: 'Hızlı başlangıç: bir ambar oluşturma-Azure PowerShell'
 description: Azure PowerShell ile bir SQL veritabanı mantıksal sunucusu, sunucu düzeyi güvenlik duvarı kuralı ve veri ambarını hızlıca oluşturun.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,14 +10,15 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f5ee4227b0aeb53be4512dafc91f814468b50c12
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: cfc427b11944cb81d8bc3d12d13668d53be698b7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574896"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693105"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell ile bir Azure SQL veri ambarı oluşturma ve sorgulama
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell bir Azure SQL veri ambarı oluşturma ve sorgulama
 
 Azure PowerShell kullanarak hızlı bir şekilde Azure SQL veri ambarı oluşturun.
 
@@ -72,14 +73,14 @@ $databasename = "mySampleDataWarehosue"
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/resource-group-overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek `westeurope` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur.
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/resource-group-overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek `myResourceGroup` konumunda `westeurope` adlı bir kaynak grubu oluşturur.
 
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>Mantıksal sunucu oluşturma
 
-[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) komutunu kullanarak BIR [Azure SQL mantıksal sunucusu](../sql-database/sql-database-logical-servers.md) oluşturun. Mantıksal sunucu, grup olarak yönetilen bir veritabanı grubu içerir. Aşağıdaki örnek, kaynak grubunuzda, adlı `ServerAdmin` Yönetici Kullanıcı ve parolası ile rastgele olarak `ChangeYourAdminPassword1`adlandırılmış bir sunucu oluşturur. Bu önceden tanımlı değerleri istediğiniz gibi değiştirin.
+[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) komutunu kullanarak BIR [Azure SQL mantıksal sunucusu](../sql-database/sql-database-logical-servers.md) oluşturun. Mantıksal sunucu, grup olarak yönetilen bir veritabanı grubu içerir. Aşağıdaki örnek, kaynak grubunuzda `ServerAdmin` adlı Yönetici Kullanıcı ve `ChangeYourAdminPassword1`parolası ile rastgele olarak adlandırılmış bir sunucu oluşturur. Bu önceden tanımlı değerleri istediğiniz gibi değiştirin.
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $resourcegroupname `
@@ -119,16 +120,16 @@ New-AzSqlDatabase `
 
 Gerekli Parametreler şunlardır:
 
-* **Requestedserviceobjectivename**: İstediğiniz [veri ambarı birimlerinin](what-is-a-data-warehouse-unit-dwu-cdwu.md) miktarı. Bu miktarı artırmak, işlem maliyetini artırır. Desteklenen değerlerin bir listesi için bkz. [bellek ve eşzamanlılık sınırları](memory-and-concurrency-limits.md).
-* **DatabaseName**: Oluşturmakta olduğunuz SQL veri ambarının adı.
-* **ServerName**: Oluşturma için kullanmakta olduğunuz sunucunun adı.
-* **Resourcegroupname**: Kullanmakta olduğunuz kaynak grubu. Aboneliğinizdeki kullanılabilir kaynak gruplarını bulmak için Get-AzureResource komutunu kullanın.
-* **Sürüm**: Bir SQL veri ambarı oluşturmak için "DataWarehouse" olmalıdır.
+* **Requestedserviceobjectivename**: istediğiniz [veri ambarı birimlerinin](what-is-a-data-warehouse-unit-dwu-cdwu.md) miktarı. Bu miktarı artırmak, işlem maliyetini artırır. Desteklenen değerlerin listesi için bkz. [bellek ve eşzamanlılık limitleri] bellek-eşzamanlılık-limits.md).
+* **DatabaseName**: oluşturmakta olduğunuz SQL veri ambarı 'nın adı.
+* **ServerName**: oluşturma için kullanmakta olduğunuz sunucunun adı.
+* **Resourcegroupname**: kullandığınız kaynak grubu. Aboneliğinizdeki kullanılabilir kaynak gruplarını bulmak için Get-AzureResource komutunu kullanın.
+* **Edition**: SQL Veri Ambarı oluşturmak için "DataWarehouse" olmalıdır.
 
 İsteğe Bağlı Parametreler şunlardır:
 
-- **CollationName**: Belirtilmemişse varsayılan harmanlama SQL_Latin1_General_CP1_CI_AS. Harmanlama bir veritabanında değiştirilemez.
-- **Maxsizebytes**: Bir veritabanının varsayılan en büyük boyutu 240TB 'tır. En büyük boyut, rowstore verilerini sınırlandırır. Sütunlu veriler için sınırsız depolama vardır.
+- **CollationName**: Belirtilmezse varsayılan harmanlama SQL_Latin1_General_CP1_CI_AS şeklindedir. Harmanlama bir veritabanında değiştirilemez.
+- **Maxsizebytes**: bir veritabanının varsayılan en büyük boyutu 240tb 'tır. En büyük boyut, rowstore verilerini sınırlandırır. Sütunlu veriler için sınırsız depolama vardır.
 
 Parametre seçenekleri hakkında daha fazla bilgi için, bkz. [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase).
 

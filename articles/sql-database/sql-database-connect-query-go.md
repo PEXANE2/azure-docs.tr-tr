@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Veritabanını sorgulamak için Go kullanma | Microsoft Docs
+title: Go kullanarak Azure SQL veritabanı 'nı sorgulama
 description: Azure SQL Veritabanına bağlanan ve Transact-SQL deyimleriyle veritabanını sorgulayan ve verileri değiştiren bir program oluşturmak için Go kullanın.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: David-Engel
 ms.author: craigg
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
-ms.openlocfilehash: baa43a93ff0c1e814478bdc195b2fd525d4dbbf3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 510f5e0fe62043d592306d2d689174c0d87e129d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569247"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690963"
 ---
-# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Hızlı Başlangıç: Golang kullanarak bir Azure SQL veritabanını sorgulama
+# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanını sorgulamak için Golang kullanma
 
 Bu hızlı başlangıçta, bir Azure SQL veritabanına bağlanmak için [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) programlama dilini kullanacaksınız. Ardından, verileri sorgulamak ve değiştirmek için Transact-SQL deyimlerini çalıştıracaksınız. [Golang](https://golang.org/) basit, güvenilir ve verimli yazılım oluşturmayı kolaylaştıran açık kaynaklı bir programlama dilidir.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -30,7 +30,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
   || Tek veritabanı | Yönetilen örnek |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Oluşturma| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [Bir VM 'den bağlantı](sql-database-managed-instance-configure-vm.md)|
@@ -44,15 +44,15 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 - Yüklü işletim sisteminiz için golang ve ilgili yazılımlar:
 
-  - **MacOS**: Homebrew ve Golang 'yi yükler. Bkz. [Adım 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
-  - **Ubuntu**:  Golang 'yi yükler. Bkz. [Adım 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
+  - **MacOS**: homebrew ve Golang 'yi yükler. Bkz. [Adım 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
+  - **Ubuntu**: Golang 'yi yükler. Bkz. [Adım 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
   - **Windows**: Golang 'yi yükler. Bkz. [Adım 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
 
 Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
@@ -99,7 +99,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
    GO
    ```
 
-2. Veritabanına `sqlcmd` bağlanmak ve yeni oluşturulan SQL betiğini çalıştırmak için kullanın. Sunucunuz, veritabanınız, kullanıcı adınız ve parolanız için uygun değerleri değiştirin.
+2. Veritabanına bağlanmak ve yeni oluşturulan SQL komut dosyanızı çalıştırmak için `sqlcmd` kullanın. Sunucunuz, veritabanınız, kullanıcı adınız ve parolanız için uygun değerleri değiştirin.
 
    ```bash
    sqlcmd -S <your_server>.database.windows.net -U <your_username> -P <your_password> -d <your_database> -i ./CreateTestData.sql
@@ -311,7 +311,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
    go run sample.go
    ```
 
-2. Çıktıyı doğrulama.
+2. Çıktıyı doğrulayın.
 
    ```text
    Connected!

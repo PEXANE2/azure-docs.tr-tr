@@ -1,7 +1,7 @@
 ---
 title: Özel alt etki alanları
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel hizmetler, Azure portal, Azure Cloud Shell veya Azure CLı aracılığıyla oluşturulan her kaynak için özel alt etki alanı adları kullanır. Belirli bir Azure bölgesindeki tüm müşteriler için ortak olan bölgesel bitiş noktalarından farklı olarak, özel alt etki alanı adları kaynağa özeldir. Kimlik doğrulaması için Azure Active Directory (Azure AD) gibi özellikleri etkinleştirmek için özel alt etki alanı adları gereklidir.
+description: Her bilişsel hizmet kaynağı için özel alt etki alanı adları Azure portal, Azure Cloud Shell veya Azure CLı aracılığıyla oluşturulur.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 7153735052f96bef65bf3daaccde4eab3e61b0f9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68473056"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647687"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Bilişsel hizmetler için özel alt etki alanı adları
 
@@ -30,7 +30,7 @@ Mevcut bir kaynağı özel alt etki alanı adlarından yararlanmak üzere geçir
 2. **Genel bakış** dikey penceresinde, **özel etki alanı adı oluştur**' u bulun ve seçin.
 3. Bu, kaynağınız için benzersiz bir özel alt etki alanı oluşturmaya yönelik yönergeler içeren bir panel açar.
    > [!WARNING]
-   > Özel bir alt etki alanı adı oluşturduktan **sonra bu ad** değiştirilemez.
+   > Özel bir alt etki alanı adı oluşturduktan **sonra bu ad değiştirilemez.**
 
 ## <a name="do-i-need-to-update-my-existing-resources"></a>Mevcut kaynaklarımı güncelleştirmem gerekiyor mu?
 
@@ -51,7 +51,7 @@ Evet. Özel bir alt etki alanı adının kullanılması bilişsel hizmetler kayn
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Özel bir alt etki alanı adı için gereksinimler nelerdir?
 
-Özel bir alt etki alanı adı, kaynağınız için benzersizdir. Ad yalnızca alfasayısal karakterler ve `-` karakteri içerebilir; uzunluğu 2 ile 64 karakter arasında olmalıdır ve `-`ile bitemez.
+Özel bir alt etki alanı adı, kaynağınız için benzersizdir. Ad yalnızca alfasayısal karakterler ve `-` karakteri içerebilir; 2 ila 64 karakter uzunluğunda olmalı ve bir `-`bitemez.
 
 ## <a name="can-i-change-a-custom-domain-name"></a>Özel bir etki alanı adını değiştirebilir miyim?
 
@@ -68,7 +68,7 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 > [!NOTE]
 > Translator Metin Çevirisi API'si ve Bing Arama API'leri genel uç noktaları kullanır.
 
-| Uç noktası türü | Bölge | Uç Nokta |
+| Uç nokta türü | Bölge | Uç Nokta |
 |---------------|--------|----------|
 | Genel | Küresel (Translator Metin Çevirisi & Bing) | `https://api.cognitive.microsoft.com` |
 | | Avustralya Doğu | `https://australiaeast.api.cognitive.microsoft.com` |
@@ -76,7 +76,7 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 | | Orta Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
 | | Orta ABD | `https://centralus.api.cognitive.microsoft.com` |
 | | Doğu Asya | `https://eastasia.api.cognitive.microsoft.com` |
-| | East US | `https://eastus.api.cognitive.microsoft.com` |
+| | Doğu ABD | `https://eastus.api.cognitive.microsoft.com` |
 | | Doğu ABD 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | Fransa Orta | `https://francecentral.api.cognitive.microsoft.com` |
 | | Hindistan Orta | `https://centralindia.api.cognitive.microsoft.com` |
@@ -99,4 +99,4 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Bilişsel hizmetler nelerdir?](Welcome.md)
-* [Kimlik Doğrulaması](authentication.md)
+* [Kimlik doğrulaması](authentication.md)

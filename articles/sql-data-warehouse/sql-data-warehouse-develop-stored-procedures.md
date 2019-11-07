@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı 'nda saklı yordamları kullanma | Microsoft Docs
+title: Saklı yordamları kullanma
 description: Azure SQL veri ambarı 'nda çözüm geliştirmeye yönelik saklı yordamları uygulamaya yönelik ipuçları.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,17 +10,18 @@ ms.subservice: development
 ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2c12a679ed5f0a1574deb34df8c0151e737d2d01
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e6e1144043cbbbc8124785351e1e56a776b84527
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479586"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692816"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>SQL veri ambarı 'nda saklı yordamları kullanma
 Azure SQL veri ambarı 'nda çözüm geliştirmeye yönelik saklı yordamları uygulamaya yönelik ipuçları.
 
-## <a name="what-to-expect"></a>Beklentiler
+## <a name="what-to-expect"></a>Sizi neler bekliyor
 
 SQL veri ambarı SQL Server ' de kullanılan T-SQL özelliklerinin çoğunu destekler. Daha da önemlisi, çözümünüzün performansını en üst düzeye çıkarmak için kullanabileceğiniz genişleme özel özellikleri vardır.
 
@@ -63,9 +64,9 @@ GO
 EXEC prc_nesting
 ```
 
-Not, SQL veri ambarı Şu anda [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql)öğesini desteklemiyor. İç içe düzeyi izlemeniz gerekir. Sekiz iç içe düzey sınırı aşmanız çok düşüktür, ancak bunu yaparsanız, iç içe geçme düzeylerine bu sınırın sığması için kodunuzu yeniden güncelleştirmeniz gerekir.
+Not, SQL veri ambarı Şu anda [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql)desteklememektedir. İç içe düzeyi izlemeniz gerekir. Sekiz iç içe düzey sınırı aşmanız çok düşüktür, ancak bunu yaparsanız, iç içe geçme düzeylerine bu sınırın sığması için kodunuzu yeniden güncelleştirmeniz gerekir.
 
-## <a name="insertexecute"></a>EKLE.. YÜRÜTME
+## <a name="insertexecute"></a>Ekle.. YÜRÜTME
 SQL veri ambarı, bir INSERT ifadesiyle saklı yordamın sonuç kümesini kullanmanıza izin vermez. Ancak, kullanabileceğiniz alternatif bir yaklaşım vardır. Bir örnek için [geçici tablolardaki](sql-data-warehouse-tables-temporary.md)makaleye bakın. 
 
 ## <a name="limitations"></a>Sınırlamalar
