@@ -1,7 +1,7 @@
 ---
-title: Machine Learning çalışma ekranına ne oldu?
+title: Workbench'e ne oldu?
 titleSuffix: Azure Machine Learning
-description: Machine Learning çalışma ekranı uygulamasına ne olduğunu, Azure Machine Learning nelerin değiştirildiğini ve destek zaman çizelgesinin ne olduğunu öğrenin.
+description: Çalışma ekranı uygulaması olmadan ve destek zaman çizelgesinin ne olduğu hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 05/14/2019
+ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c98da50d0c50a7fdb94f579444f3c09c1096d18
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 835024f7c8d77d67a2f6321df658c2f5c2007e62
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476417"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647113"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench’te neler oldu?
 
@@ -64,12 +64,6 @@ Portalın çalışma alanı panosu yalnızca Microsoft Edge, Chrome ve Firefox t
 
 Modellerinizi eğitmek ve yeni CLı ve SDK kullanarak çalıştırma geçmişlerini izlemeye başlayın. Öğreticiden nasıl eğitim alabileceğinizi öğrenebilirsiniz [: modelleri Azure Machine Learning ile eğitme](tutorial-train-models-with-aml.md).
 
-## <a name="can-i-still-prep-data"></a>Verileri yine hazırlayabilir miyim?
-
-Önceden var olan veri hazırlama dosyalarınız, artık Machine Learning bir çalışma ekranına sahip olmadığınızdan en son sürüme taşınabilir değildir. Ancak yine de modelleme için herhangi bir boyut verisi kümesi hazırlayacaksınız.
-
-Her boyuttaki veri kümeleri sayesinde, Python kodu yazarak verileri modellemeye başlamadan önce hızlı bir şekilde hazırlamak üzere [Azure Machine Learning için veri hazırlığı paketini](https://aka.ms/data-prep-sdk) kullanabilirsiniz.
-
 ## <a name="will-projects-persist"></a>Projeler kalacak mı?
 
 Hiçbir kodu veya çalışmayı kaybetmeyeceksiniz. Eski sürümde projeler yerel dizini olan bulut varlıklarıydı. En son sürümde, yerel bir yapılandırma dosyası kullanarak Azure Machine Learning çalışma alanına yerel dizinler iliştirerek. [En son mimarinin diyagramını](concept-azure-machine-learning-architecture.md)görüntüleyin.
@@ -97,22 +91,6 @@ En son sürümde, modeller Azure Container Instances (ACI) veya Azure Kubernetes
 Bu makalelerde daha fazla bilgi edinin:
 + [Modellerin nasıl ve nasıl dağıtılacağı](how-to-deploy-and-where.md)
 + [Öğretici: Azure Machine Learning modelleri dağıtma](tutorial-deploy-models-with-aml.md)
-
-## <a name="what-about-the-old-sdk-and-cli"></a>Eski SDK ve CLı hakkında ne olacak?
-
-Önceki [zaman çizelgesine](#timeline)bakın. Yeni denemeleri ve modellerinizi en son SDK veya CLı ile oluşturmaya başlayabilmeniz önerilir.
-
-Yeni Python SDK 'sını en son sürümde kullanarak, herhangi bir Python ortamında Azure Machine Learning etkileşime geçebilirsiniz. En son <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>’yı yüklemeyi öğrenin. Ayrıca, Azure Cloud Shell dahil olmak üzere herhangi bir komut satırı ortamında hizmetle etkileşimde bulunmak için, güncelleştirilmiş [Azure MACHINE LEARNING CLI uzantısını](reference-azure-machine-learning-cli.md) zengin `az ml` komutlarla birlikte kullanabilirsiniz.
-
-## <a name="what-about-visual-studio-code-tools-for-ai"></a>Ne Visual Studio Code Tools for AI?
-
-Bu en son sürümde uzantı, Visual Studio Code için Azure Machine Learning olarak yeniden adlandırıldı ve genişletilmişti ve önceki yeni özelliklerle çalışacak şekilde geliştirildi.
-
-[Visual Studio Code için ![Azure Machine Learning](./media/overview-what-happened-to-workbench/vscode.png)](./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
-
-## <a name="what-about-domain-packages"></a>Etki alanı paketlerine ne oldu?
-
-Bilgisayar görme, metin analizi ve tahmin için etki alanı paketleri Azure Machine Learning en son sürümüyle kullanılamaz. Ancak, en son Azure Machine Learning Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>ile bilgisayar görme, metin ve tahmin modelleri oluşturup eğitmeye devam edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

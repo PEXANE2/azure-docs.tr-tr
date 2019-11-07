@@ -15,16 +15,16 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330018"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641443"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory ile SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme
 
-Azure Active Directory (Azure AD), Dropbox, Salesforce, ServiceNow gibi bulut ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) uygulamalarında kullanıcı kimliklerinin oluşturulmasını, bakımını ve kaldırılmasını otomatik hale getirmenizi sağlar. Bu, SaaS uygulamaları için otomatik Kullanıcı sağlama olarak bilinir.
+Azure Active Directory (Azure AD), [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)gibi bulut SaaS uygulamalarında kullanıcı kimliklerinin oluşturulmasını, bakımını ve kaldırılmasını otomatik hale getirmenizi sağlar. Bu, SaaS uygulamaları için otomatik Kullanıcı sağlama olarak bilinir.
 
 > [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
@@ -56,11 +56,14 @@ Bu özelliği kullanmaya yönelik bazı yaygın nedenler şunlardır:
 
 **Azure AD sağlama hizmeti** , her bir uygulama satıcısı tarafından sağlanan kullanıcı yönetimi API uç noktalarına bağlanarak kullanıcıları ve diğer sistemleri SaaS uygulamaları sağlar. Bu Kullanıcı yönetimi API uç noktaları, Azure AD 'nin Kullanıcı aracılığıyla kullanıcıları oluşturmasına, güncelleştirmesine ve kaldırmasına izin verir. Seçilen uygulamalarda, sağlama hizmeti gruplar ve roller gibi kimlik ile ilgili diğer nesneleri de oluşturabilir, güncelleştirebilir ve kaldırabilir.
 
-![Azure AD sağlama hizmeti @ no__t-1*Şekil 1: Azure AD sağlama hizmeti*
+![Azure AD sağlama hizmeti](./media/user-provisioning/provisioning0.PNG)
+*Şekil 1: Azure AD sağlama hizmeti*
 
-![Giden Kullanıcı sağlama iş akışı @ no__t-1*Şekil 2: Azure AD 'den popüler SaaS uygulamalarına "giden" Kullanıcı sağlama iş akışı*
+Giden Kullanıcı sağlama iş akışı ![](./media/user-provisioning/provisioning1.PNG)
+*Şekil 2: Azure AD 'den popüler SaaS uygulamalarına "giden" Kullanıcı sağlama iş akışı*
 
-![Gelen Kullanıcı sağlama iş akışı @ no__t-1*Şekil 3: "gelen" Kullanıcı sağlama iş akışı popüler ınsan büyük yönetim (HCM) uygulamalarından Azure Active Directory ve Windows Server Active Directory*
+![gelen Kullanıcı sağlama iş akışı](./media/user-provisioning/provisioning2.PNG)
+*Şekil 3: popüler ınsan büyük yönetim (HCM) uygulamalarından Azure Active Directory ve Windows Server 'a "gelen" Kullanıcı sağlama iş akışı Active Directory*
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Azure AD otomatik Kullanıcı sağlama ile hangi uygulamaları ve sistemleri kullanabilirim?
 
@@ -87,11 +90,7 @@ Azure AD sağlama hizmetini seçili bir uygulama için yapılandırmak üzere Az
 
 1. **[Azure Active Directory portalını](https://aad.portal.azure.com)** açın.
 1. Sol bölmeden **Kurumsal uygulamalar** ' ı seçin. Yapılandırılmış tüm uygulamaların listesi gösterilmektedir.
-1. Uygulama eklemek için **+ Yeni uygulama** ' yı seçin. Senaryonuza bağlı olarak aşağıdakilerden birini ekleyin:
-
-   - **Kendi uygulamanızı ekleyin** seçeneği, özel GELIŞTIRMIŞ SCIM tümleştirmelerini destekler.
-   - **Galeriden ekle** > **öne çıkan uygulamalar** bölümünde bulunan tüm uygulamalar otomatik sağlamayı destekler. Daha fazla bilgi için [Kullanıcı sağlamaya yönelik uygulama öğreticilerinin listesine](../saas-apps/tutorial-list.md) bakın.
-
+1. Uygulama eklemek için **+ Yeni uygulama** ' yı seçin. 
 1. Tüm ayrıntıları sağlayın ve **Ekle**' yi seçin. Yeni uygulama, kurumsal uygulamalar listesine eklenir ve uygulama yönetimi ekranına açılır.
 1. Uygulama için Kullanıcı hesabı sağlama ayarlarını yönetmek üzere **sağlamayı** seçin.
 
@@ -193,7 +192,7 @@ Otomatik Kullanıcı sağlama sorunlarını gidermeye yönelik senaryo tabanlı 
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
-Bir uygulamaya giden Kullanıcı sağlama için örnek adım adım dağıtım planı için, bkz. [Kullanıcı hazırlama Için kimlik dağıtım kılavuzu](https://aka.ms/userprovisioningdeploymentplan).
+Bir uygulamaya giden Kullanıcı sağlama için örnek adım adım dağıtım planı için, bkz. [Kullanıcı hazırlama Için kimlik dağıtım kılavuzu](https://aka.ms/deploymentplans/userprovisioning).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -225,7 +224,7 @@ Geçici bir çözüm olarak, sağlanması gereken kullanıcıları içeren grupl
 
 Evet. Sunucu hedefi için HTTPS SSL şifrelemesi kullanıyoruz.
 
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 
 - [SaaS uygulamalarının nasıl tümleştirileceği hakkında öğreticiler listesi](../saas-apps/tutorial-list.md)
 - [Kullanıcı hazırlama için öznitelik eşlemelerini özelleştirme](customize-application-attributes.md)

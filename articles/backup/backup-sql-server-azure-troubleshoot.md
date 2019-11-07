@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: c456dfec72f98dc4ae06f1d7d5d9fb461182d579
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: e4683547a7c305da3d3a3bc7a7d6a50f21ad46f2
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018992"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614391"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -29,10 +29,9 @@ Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için
 
 ### <a name="backup-type-unsupported"></a>Yedekleme türü desteklenmiyor
 
-| severity | Açıklama | Olası nedenler | Önerilen eylem |
+| Severity | Açıklama | Olası nedenler | Önerilen eylem |
 |---|---|---|---|
 | Uyarı | Bu veritabanının geçerli ayarları, ilişkili ilkede mevcut olan bazı yedekleme türlerini desteklemiyor. | <li>Ana veritabanında yalnızca tam bir veritabanı yedekleme işlemi yapılabilir. Değişiklik yedeklemesi veya işlem günlüğü yedeklemesi de mümkün değildir. </li> <li>Basit kurtarma modelindeki tüm veritabanları, işlem günlüklerinin yedeklenme izin vermez.</li> | İlkedeki tüm yedekleme türlerinin desteklendiği şekilde veritabanı ayarlarını değiştirin. Ya da, geçerli ilkeyi yalnızca desteklenen Yedekleme türlerini içerecek şekilde değiştirin. Aksi takdirde, desteklenmeyen yedekleme türleri zamanlanmış yedekleme sırasında atlanır veya yedekleme işi geçici yedekleme için başarısız olur.
-
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -81,9 +80,9 @@ Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-| Veritabanı çevrimdışına alınamadığından geri yükleme başarısız oldu. | Geri yükleme yaparken hedef veritabanının çevrimdışı hale getirilmesi gerekir. Azure Backup bu verileri çevrimdışına getiremedi. | Ana nedenleri daraltmak için Azure portal hata menüsündeki ek ayrıntıları kullanın. Daha fazla bilgi için [SQL Server belgelerine](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms)bakın. |
+| Veritabanı çevrimdışına alınamadığından geri yükleme başarısız oldu. | Geri yükleme yaparken hedef veritabanının çevrimdışı hale getirilmesi gerekir. Azure Backup bu verileri çevrimdışına getiremedi. | Ana nedenleri daraltmak için Azure portal hata menüsündeki ek ayrıntıları kullanın. Daha fazla bilgi için bkz. [SQL Server belgeleri](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
-###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
+### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
@@ -94,7 +93,6 @@ Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
 | Kurtarma için kullanılan günlük yedeklemesi toplu olarak günlüğe kaydedilen değişiklikler içeriyor. SQL yönergelerine göre zamanın rastgele bir noktasında durdurmak için kullanılamaz. | Bir veritabanı toplu olarak günlüğe kaydedilmiş kurtarma modundayken, toplu günlüğe kaydedilen bir işlem ve sonraki günlük işlemi arasındaki veriler kurtarılamaz. | Kurtarma için farklı bir zaman noktası seçin. [Daha fazla bilgi edinin](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105)).
-
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -124,20 +122,19 @@ Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-24 saat içinde izin verilen işlem sayısı sınırına ulaştığınızdan işlem engellendi. | 24 saatin bir sınırında bir işlem için izin verilen en yüksek sınıra ulaştıysanız, bu hata gelir. <br> Örneğin: Günlük tetiklenebilecek yedekleme yapılandırma işi sayısı sınırına ulaşılırsa ve yeni bir öğede yedeklemeyi yapılandırmaya çalışırsanız, bu hatayı görürsünüz. | Genellikle, 24 saat sonra işlemi yeniden denemek bu sorunu çözer. Ancak sorun devam ederse, yardım için Microsoft desteğine başvurabilirsiniz.
+24 saat içinde izin verilen işlem sayısı sınırına ulaştığınızdan işlem engellendi. | 24 saatin bir sınırında bir işlem için izin verilen en yüksek sınıra ulaştıysanız, bu hata gelir. <br> Örneğin: günlük tetiklenebilecek yedekleme yapılandırma işi sayısı sınırına ulaşılırsa ve yeni bir öğede yedeklemeyi yapılandırmaya çalışırsanız, bu hatayı görürsünüz. | Genellikle, 24 saat sonra işlemi yeniden denemek bu sorunu çözer. Ancak sorun devam ederse, yardım için Microsoft desteğine başvurabilirsiniz.
 
 ### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-Kasa, 24 saatlik bir yayılmaya izin verilen bu işlemler için maksimum sınırına ulaştığından, işlem engellendi. | 24 saatin bir sınırında bir işlem için izin verilen en yüksek sınıra ulaştıysanız, bu hata gelir. Bu hata genellikle değiştirme ilkesi veya otomatik koruma gibi ölçekli işlemler söz konusu olduğunda gelir. Clouddosabsolutelimitulaştığı durumdan farklı olarak, bu durumu çözmek için pek çok şey yapabilirsiniz, aslında Azure Backup hizmet, söz konusu tüm öğeler için işlemleri dahili olarak yeniden dener.<br> Örneğin: Bir ilkeyle korunan çok sayıda veri kaynağı varsa ve bu ilkeyi değiştirmeye çalışırsanız, korumalı öğelerin her biri için koruma işlerini yapılandırın ve bazen bu gibi işlemler için izin verilen en yüksek sınıra ulaşabiliriz.| Azure Backup hizmeti, 24 saat sonra bu işlemi otomatik olarak yeniden deneyecek. 
-
+Kasa, 24 saatlik bir yayılmaya izin verilen bu işlemler için maksimum sınırına ulaştığından, işlem engellendi. | 24 saatin bir sınırında bir işlem için izin verilen en yüksek sınıra ulaştıysanız, bu hata gelir. Bu hata genellikle değiştirme ilkesi veya otomatik koruma gibi ölçekli işlemler olduğunda gelir. Clouddosabsolutelimitulaştığı durumdan farklı olarak, bu durumu çözmek için pek çok şey yapabilirsiniz, aslında Azure Backup hizmet, söz konusu tüm öğeler için işlemleri dahili olarak yeniden dener.<br> Örneğin: bir ilkeyle korunan çok sayıda veri kaynağı varsa ve bu ilkeyi değiştirmeye çalışırsanız, korumalı öğelerin her biri için koruma işlerini yapılandırma tetikleyecektir ve bazen bu gibi işlemler için izin verilen en yüksek sınıra ulaşabiliriz.| Azure Backup hizmeti, 24 saat sonra bu işlemi otomatik olarak yeniden deneyecek.
 
 ## <a name="re-registration-failures"></a>Yeniden kayıt sorunları
 
 Yeniden kaydetme işlemini tetiklemeniz için aşağıdaki belirtilerden bir veya daha fazlasını denetleyin:
 
-* Tüm işlemler (yedekleme, geri yükleme ve yapılandırma) şu hata kodlarından biriyle VM 'de başarısız oluyor: **Workloadextensionnoterişilebilen**, **usererrorworkloadextensionnotyüklü**, **workloadextensionnotsun,** **workloadextensiondidntdequeuemsg**.
+* VM 'de şu hata kodlarından birine sahip tüm işlemler (yedekleme, geri yükleme ve yapılandırma) başarısız oluyor: **Workloadextensionnoterişilebilen**, **usererrorworkloadextensionnotyüklü**, **workloadextensionnotsun** , **Workloadextensiondidntdequeuemsg**.
 * Yedekleme öğesi için **Yedekleme durumu** alanı **erişilebilir değil**olarak gösteriliyor. Aynı durumla sonuçlanmasına neden olabilecek tüm diğer nedenler arasında bir kural yapın:
 
   * VM 'de yedeklemeyle ilgili işlemler gerçekleştirme izninin bulunmaması  
@@ -150,14 +147,14 @@ Yeniden kaydetme işlemini tetiklemeniz için aşağıdaki belirtilerden bir vey
 
 Bu belirtiler aşağıdaki nedenlerden biri veya birkaçı olabilir:
 
-* Bir uzantı silinmiş veya portaldan kaldırılmış. 
+* Bir uzantı silinmiş veya portaldan kaldırılmış.
 * Bir uzantıyı **kaldırma veya program değiştirme**altındaki VM 'Deki **denetim masasından** bir uzantı kaldırıldı.
 * VM, yerinde disk geri yüklemesi sırasında geri yüklendi.
 * VM, genişletilmiş bir süre için kapatıldı, bu nedenle uzantı yapılandırması süresi dolmadı.
 * VM silindi ve silinen VM ile aynı kaynak grubunda ve aynı ada sahip başka bir VM oluşturuldu.
 * Kullanılabilirlik grubu düğümlerinden biri, tüm yedekleme yapılandırmasını almadı. Kullanılabilirlik grubu kasaya kaydedildiğinde veya yeni bir düğüm eklendiğinde bu durum oluşabilir.
 
-Yukarıdaki senaryolarda, VM 'de bir yeniden kaydetme işlemi tetiklemeniz önerilir. Şimdilik bu seçenek yalnızca PowerShell üzerinden kullanılabilir.
+Yukarıdaki senaryolarda, VM 'de bir yeniden kaydetme işlemi tetiklemeniz önerilir. Bu görevi PowerShell 'de gerçekleştirme yönergeleri için [buraya](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup) bakın.
 
 ## <a name="size-limit-for-files"></a>Dosyalar için boyut sınırı
 
@@ -185,9 +182,10 @@ Bir örneği aşağıda verilmiştir:
 
 ### <a name="override-the-default-target-restore-file-path"></a>Varsayılan hedef geri yükleme dosya yolunu geçersiz kıl
 
-Geri yükleme işlemi sırasında hedef geri yükleme dosya yolunu, veritabanı dosyasının hedef geri yükleme yoluna eşlemesini içeren bir JSON dosyası yerleştirerek geçersiz kılabilirsiniz. Bir `database_name.json` dosya oluşturun ve *C:\Program files\azure iş yükü backup\bin\plugins\sql*konumuna yerleştirin.
+Geri yükleme işlemi sırasında hedef geri yükleme dosya yolunu, veritabanı dosyasının hedef geri yükleme yoluna eşlemesini içeren bir JSON dosyası yerleştirerek geçersiz kılabilirsiniz. Bir `database_name.json` dosyası oluşturun ve *C:\Program Files\Azure Iş yükü Backup\bin\plugins\SQL*konumuna yerleştirin.
 
 Dosyanın içeriği şu biçimde olmalıdır:
+
 ```json
 [
   {
@@ -227,7 +225,6 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"
   ```
-
 
 Geri yükleme işlemini tetiklemeniz için bu dosyanın yerleştirilmesi gerekir.
 

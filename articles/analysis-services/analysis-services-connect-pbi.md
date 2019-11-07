@@ -1,18 +1,18 @@
 ---
 title: Power BI ile Azure Analysis Services bağlanma | Microsoft Docs
-description: Power BI kullanarak bir Azure Analysis Services sunucusuna nasıl bağlanacağınızı öğrenin.
+description: Power BI kullanarak bir Azure Analysis Services sunucusuna nasıl bağlanacağınızı öğrenin. Bağlandıktan sonra kullanıcılar model verilerini keşfedebilir.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 181a63fda1feddfb654eb32f46632f0656febb82
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: db0c00268c343cd99e439bb49460523cf0563c3c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295302"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573110"
 ---
 # <a name="connect-with-power-bi"></a>Power BI ile bağlanma
 
@@ -44,9 +44,9 @@ Azure 'da bir sunucu oluşturup buna bir tablosal Model dağıttıktan sonra, ku
 ## <a name="connect-in-power-bi-service"></a>Power BI (hizmet) içinde Bağlan
 
 1. Sunucunuzdaki modelinize canlı bağlantısı olan Power BI Desktop bir dosya oluşturun.
-2. [Power BI](https://powerbi.microsoft.com)' de **veri al** > **dosyalar**' ı tıklatın ve ardından. pbix dosyanızı bulun ve seçin.
+2. [Power BI](https://powerbi.microsoft.com), veri > **dosyalarını** **Al** ' a tıklayın ve ardından. pbix dosyanızı bulun ve seçin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
-[Azure Analysis Services @no__t bağlanma](analysis-services-connect.md)-1  
+[Azure Analysis Services  bağlanma](analysis-services-connect.md)  
 [İstemci kitaplıkları](analysis-services-data-providers.md)
 

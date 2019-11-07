@@ -8,14 +8,14 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: f833ded4467da1f129b1ea7f858ae8bdd9c2048e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b65bf177d98d5b0bcbaf9e9eaf06707b43ed7032
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495333"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647437"
 ---
 Bir sohbet robotunda veya başka bir istemci uygulamasında bir LUIS tahmini almak için uygulamayı uç noktasında yayımlamanız gerekir. 
 
@@ -31,4 +31,4 @@ Bir sohbet robotunda veya başka bir istemci uygulamasında bir LUIS tahmini alm
 
     ![LUIS uç noktasına yayımlama](../media/howto-publish/publish-endpoint-success.png)
 
-4. **Anahtarlar ve uç noktaları** sayfasına gitmek için yeşil durum çubuğundaki **uç noktalar** bağlantısını seçin. Uç nokta URL'leri en altta listelenir.
+4. **Azure kaynakları** sayfasına gitmek için bildirimde **uç nokta URL 'lerine erişin** bağlantısına tıklayın. Uç nokta URL 'Leri **örnek sorgu**olarak listelenir.

@@ -1,6 +1,6 @@
 ---
 title: Şirket içi SQL Server
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Azure Machine Learning Studio klasik sürümü ile gelişmiş analizler gerçekleştirmek için bir şirket içi SQL Server veritabanındaki verileri kullanın.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 78b50ac5f0c39a38815b01ab7510d17eda941425
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7f525a2a81d6cda52b363d1fb808327c9d3c1fb1
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492541"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622099"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Şirket içi SQL Server veritabanı kullanarak Azure Machine Learning Studio (klasik) analiz gerçekleştirme
 
@@ -43,7 +43,7 @@ Data Factory kendinden konak Integration Runtime aşağıdaki önkoşullara sahi
 * Data Factory şirket içinde barındırılan tümleştirme .NET Framework 4.6.1 veya üzerini içeren 64 bitlik bir Işletim sistemi gerektirir.
 * Desteklenen Windows işletim sistemi sürümleri, Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
 * IR makinesi için önerilen yapılandırma en az 2 GHz, 4 çekirdek CPU, 8GB RAM ve 80GB disk.
-* Ana makine hazırda beklemesi durumunda, IR veri isteklerine yanıt vermez. Bu nedenle, IR 'yi yüklemeden önce bilgisayarda uygun bir güç planı yapılandırın. Makine hazırda bekleme moduna yapılandırıldıysa, IR yüklemesinde bir ileti görüntülenir.
+* Konak makine hazırda bekleme, IR veri isteklerine yanıt vermiyor. Bu nedenle, IR 'yi yüklemeden önce bilgisayarda uygun bir güç planı yapılandırın. Makine hazırda bekleme moduna yapılandırıldıysa, IR yüklemesinde bir ileti görüntülenir.
 * Kopyalama etkinliği belirli bir sıklıkta gerçekleştiği için makinedeki kaynak kullanımı (CPU, bellek) de yoğun ve boşta zamanlarla aynı düzene uyar. Kaynak kullanımı Ayrıca, taşınmakta olan veri miktarına göre büyük ölçüde farklılık gösterir. Birden çok kopyalama işi devam ederken, yoğun saatlerde kaynak kullanımını gözlemleyeceksiniz. Yukarıda listelenen en düşük yapılandırma Teknik olarak yeterliyse, veri taşıma yüküne bağlı olarak en düşük yapılandırmadan daha fazla kaynağa sahip bir yapılandırmaya sahip olmak isteyebilirsiniz.
 
 Data Factory kendi kendine barındırılan Integration Runtime kurarken ve kullanırken aşağıdakileri göz önünde bulundurun:

@@ -5,46 +5,29 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/15/2019
+ms.date: 11/04/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3f910a3d0466153bd60fe23ef2f9f656cac292ee
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 838037804baad9105b4636934de957c2e5f3e810
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70919757"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612192"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra disklerini kullanma
 
 Azure Ultra diskler, Azure IaaS sanal makineleri (VM 'Ler) için yüksek aktarım hızı, yüksek ıOPS ve tutarlı düşük gecikme süreli disk depolama alanı sunar. Bu yeni teklif, var olan diskler tekliflerimiz ile aynı Kullanılabilirlik düzeylerinde satır performansının üst kısmında yer sağlar. Ultra disklerin büyük bir avantajı, sanal makinelerinizi yeniden başlatmanıza gerek kalmadan SSD 'nin performansını ve iş yüklerinizde dinamik olarak değiştirme yeteneğidir. Ultra diskler SAP HANA, üst katman veritabanları ve işlem açısından ağır iş yükleri gibi veri kullanımı yoğun iş yükleri için uygundur.
 
-## <a name="check-if-your-subscription-has-access"></a>Aboneliğinizin erişimi olup olmadığını denetleyin
+## <a name="ga-scope-and-limitations"></a>GA kapsamı ve sınırlamaları
 
-Zaten Ultra disklere kaydolduysanız ve aboneliğinizin Ultra diskler için etkin olup olmadığını denetlemek istiyorsanız aşağıdaki komutlardan birini kullanın: 
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
-CLI`az feature show --namespace Microsoft.Compute --name UltraSSD`
+## <a name="determine-vm-size-and-region-availability"></a>VM boyutunu ve bölge kullanılabilirliğini belirleme
 
-PowerShell: `Get-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName UltraSSD`
+Ultra disklerden yararlanmak için, hangi kullanılabilirlik bölgesinin bulunduğunu belirlemeniz gerekir. Her bölge, Ultra disklerle her VM boyutunu desteklememektedir. Bölgeniz, bölgeniz ve VM boyutunuzu Ultra diskleri destekleyip desteklemediğini öğrenmek için aşağıdaki komutlardan birini çalıştırın, önce **Region**, **VMSize**ve **abonelik** değerlerini değiştirdiğinizden emin olun:
 
-Aboneliğiniz etkinleştirilmişse, çıktılarınız şuna benzer şekilde görünmelidir:
-
-```bash
-{
-  "id": "/subscriptions/<yoursubID>/providers/Microsoft.Features/providers/Microsoft.Compute/features/UltraSSD",
-  "name": "Microsoft.Compute/UltraSSD",
-  "properties": {
-    "state": "Registered"
-  },
-  "type": "Microsoft.Features/providers/features"
-}
-```
-
-## <a name="determine-your-availability-zone"></a>Kullanılabilirlik bölgenizi belirleme
-
-Onaylandığında, Ultra diskler kullanabilmeniz için hangi kullanılabilirlik bölgesini kullanacağınızı belirlemeniz gerekir. Ultra diskinizin hangi bölgeden dağıtılacağını öğrenmek için aşağıdaki komutlardan birini çalıştırın, önce **bölge**, **VMSize**ve **abonelik** değerlerini değiştirdiğinizden emin olun:
-
-CLI
+CLı
 
 ```bash
 $subscription = "<yourSubID>"
@@ -62,26 +45,26 @@ $vmSize = "Standard_E64s_v3"
 (Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) -and $_.LocationInfo[0].ZoneDetails.Count -gt 0})[0].LocationInfo[0].ZoneDetails
 ```
 
-Yanıt aşağıdaki biçimde olacaktır; burada X, seçtiğiniz bölgede dağıtım için kullanılacak bölgedir. X 1, 2 veya 3 olabilir. Şu anda yalnızca üç bölge Ultra diskleri destekler, bunlar şunlardır: Doğu ABD 2, Güneydoğu Asya ve Kuzey Avrupa.
+Yanıt aşağıdaki biçimde olacaktır; burada X, seçtiğiniz bölgede dağıtım için kullanılacak bölgedir. X 1, 2 veya 3 olabilir.
 
 Bölge değerini koru, kullanılabilirlik **bölgenizi** temsil eder ve bir ultra disk dağıtmak için bu alana ihtiyacınız olur.
 
-|KaynakTürü  |Name  |Location  |Bölgeler  |Kısıtlama  |Özellik  |Value  |
+|ResourceType  |Ad  |Konum  |Bölgeler  |Kısıtlama  |Özellik  |Değer  |
 |---------|---------|---------|---------|---------|---------|---------|
-|diskler     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|disklerinden     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 > [!NOTE]
-> Komuttan yanıt yoksa, özelliğe kaydınız hala bekliyor veya CLı ya da PowerShell 'in eski bir sürümünü kullanıyorsunuz.
+> Komuttan yanıt yoksa, seçilen VM boyutu seçili bölgedeki Ultra disklerle desteklenmez.
 
 Hangi bölgeyi dağıtacağınızı bildiğinize göre, bu makaledeki dağıtım adımlarını izleyerek bir ultra disk eklenmiş bir VM dağıtın veya var olan bir VM 'ye bir ultra disk takın.
 
 ## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Azure Resource Manager kullanarak bir ultra disk dağıtma
 
-İlk olarak, dağıtılacak VM boyutunu saptayın. Şimdilik yalnızca DsV3 ve EsV3 VM aileleri Ultra diskleri destekler. Bu VM boyutları hakkında daha fazla bilgi için bu [blogdaki](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) ikinci tabloya bakın.
+İlk olarak, dağıtılacak VM boyutunu saptayın. Desteklenen VM boyutlarının listesi için bkz. [ga kapsam ve sınırlamalar](#ga-scope-and-limitations) bölümü.
 
 Birden çok Ultra disk içeren bir VM oluşturmak isterseniz, örneğe [birden çok Ultra disk içeren BIR VM oluşturma](https://aka.ms/ultradiskArmTemplate)konusuna bakın.
 
-Kendi şablonunuzu kullanmayı düşünüyorsanız, ve `Microsoft.Compute/Disks` için `Microsoft.Compute/virtualMachines` **apiversion** ' ın (veya üzeri) olarak `2018-06-01` ayarlandığından emin olun.
+Kendi şablonunuzu kullanmayı düşünüyorsanız, `Microsoft.Compute/virtualMachines` ve `Microsoft.Compute/Disks` **Apiversion** ' ın `2018-06-01` (veya üzeri) olarak ayarlandığından emin olun.
 
 Disk SKU 'sunu **UltraSSD_LRS**olarak ayarlayın, ardından bir ultra disk oluşturmak için disk KAPASITESINI, IOPS 'yi, kullanılabilirlik alanını ve aktarım hızını MB olarak ayarlayın.
 
@@ -89,11 +72,11 @@ VM sağlandıktan sonra veri disklerini bölümleyebilir ve biçimlendirebilir v
 
 ## <a name="deploy-an-ultra-disk-using-cli"></a>CLı kullanarak bir ultra disk dağıtma
 
-İlk olarak, dağıtılacak VM boyutunu saptayın. Şimdilik yalnızca DsV3 ve EsV3 VM aileleri Ultra diskleri destekler. Bu VM boyutları hakkında daha fazla bilgi için bu [blogdaki](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) ikinci tabloya bakın.
+İlk olarak, dağıtılacak VM boyutunu saptayın. Desteklenen VM boyutlarının listesi için [ga kapsam ve sınırlamalar](#ga-scope-and-limitations) bölümüne bakın.
 
 Bir ultra disk eklemek için, Ultra diskler kullanabilen bir sanal makine oluşturmanız gerekir.
 
-**$VMName**, **$RgName**, **$diskname**, **$Location**, **$Password**, **$User** değişkenlerini kendi değerlerinizle değiştirin veya ayarlayın. [Bu makalenin başlangıcından](#determine-your-availability-zone)aldığınız kullanılabilirlik bölgenizin değerine **$Zone** ayarlayın. Ardından, bir ultra etkin VM oluşturmak için aşağıdaki CLı komutunu çalıştırın:
+**$VMName**, **$RgName**, **$diskname**, **$Location**, **$Password**, **$User** değişkenlerini kendi değerlerinizle değiştirin veya ayarlayın. [Bu makalenin başlangıcından](#determine-vm-size-and-region-availability)aldığınız kullanılabilirlik bölgenizin değerine **$Zone** ayarlayın. Ardından, bir ultra etkin VM oluşturmak için aşağıdaki CLı komutunu çalıştırın:
 
 ```azurecli-interactive
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
@@ -152,9 +135,9 @@ az disk update `
 
 ## <a name="deploy-an-ultra-disk-using-powershell"></a>PowerShell kullanarak bir ultra disk dağıtma
 
-İlk olarak, dağıtılacak VM boyutunu saptayın. Şimdilik yalnızca DsV3 ve EsV3 VM aileleri Ultra diskleri destekler. Bu VM boyutları hakkında daha fazla bilgi için bu [blogdaki](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) ikinci tabloya bakın.
+İlk olarak, dağıtılacak VM boyutunu saptayın. Desteklenen VM boyutlarının listesi için [ga kapsam ve sınırlamalar](#ga-scope-and-limitations) bölümüne bakın. Bu VM boyutları hakkında daha fazla bilgi için.
 
-Ultra diskler kullanmak için, Ultra diskler kullanabilen bir sanal makine oluşturmanız gerekir. **$Resourcegroup** ve **$vmName** değişkenlerini kendi değerlerinizle değiştirin veya ayarlayın. [Bu makalenin başlangıcından](#determine-your-availability-zone)aldığınız kullanılabilirlik bölgenizin değerine **$Zone** ayarlayın. Ardından, bir ultra etkin VM oluşturmak için aşağıdaki [New-AzVm](/powershell/module/az.compute/new-azvm) komutunu çalıştırın:
+Ultra diskler kullanmak için, Ultra diskler kullanabilen bir sanal makine oluşturmanız gerekir. **$Resourcegroup** ve **$vmName** değişkenlerini kendi değerlerinizle değiştirin veya ayarlayın. [Bu makalenin başlangıcından](#determine-vm-size-and-region-availability)aldığınız kullanılabilirlik bölgenizin değerine **$Zone** ayarlayın. Ardından, bir ultra etkin VM oluşturmak için aşağıdaki [New-AzVm](/powershell/module/az.compute/new-azvm) komutunu çalıştırın:
 
 ```powershell
 New-AzVm `

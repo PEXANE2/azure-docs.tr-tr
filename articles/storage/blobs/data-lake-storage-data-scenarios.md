@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: eba0c6a8932a8c6d50bd98d94712c95516519274
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d6347d75e0a3883f23fdf76016080c8b7b330163
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72300335"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580799"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 2. kullanma
 
@@ -27,7 +27,7 @@ Büyük veri işlemede dört ana aşama vardır:
 
 Bir depolama hesabı ve kapsayıcı oluşturarak başlayın. Ardından, verilere erişim izni verin. Bu makalenin ilk birkaç bölümü, bu görevleri gerçekleştirmenize yardımcı olur. Kalan bölümlerde, her bir işleme aşaması için seçenekleri ve araçları vurgulayacağız.
 
-Azure Data Lake Storage 2. ile kullanabileceğiniz Azure hizmetlerinin kapsamlı bir listesi için bkz. [Azure hizmetleriyle Azure Data Lake Storage tümleştirme](data-lake-store-integrate-with-azure-services.md)
+Azure Data Lake Storage 2. ile kullanabileceğiniz Azure hizmetlerinin kapsamlı bir listesi için bkz. [Azure hizmetleriyle Azure Data Lake Storage tümleştirme](data-lake-storage-integrate-with-azure-services.md)
 
 ## <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage 2. hesabı oluşturma
 
@@ -39,7 +39,7 @@ Bir tane oluşturmak için bkz. [hızlı başlangıç: Azure Data Lake Storage 2
 
 Dosyalarınız için bir kapsayıcı oluşturmak üzere kullanabileceğiniz araçların bir listesi aşağıdadır.
 
-|Araç | Kılavuz |
+|Araç | Rehber |
 |---|--|
 |Azure Depolama Gezgini | [Depolama Gezgini kullanarak kapsayıcı oluşturma](data-lake-storage-explorer.md#create-a-container) |
 |AzCopy | [AzCopyV10 kullanarak blob kapsayıcısı veya dosya paylaşma oluşturma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
@@ -68,7 +68,7 @@ Erişim vermek için üç yol vardır:
 
 Bu tabloda, her bir Azure hizmeti veya aracı için nasıl erişim verilecek gösterilmektedir.
 
-|Araç | Erişim vermek için | Kılavuz |
+|Araç | Erişim vermek için | Rehber |
 |---|--|---|
 |Depolama Gezgini| Kullanıcılara ve gruplara rol atama | [Azure Active Directory sahip kullanıcılara yönetici ve yönetici olmayan roller atama](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) |
 |AzCopy| Kullanıcılara ve gruplara rol atama <br>**veya**<br> SAS belirteci kullanma| [Azure Active Directory sahip kullanıcılara yönetici ve yönetici olmayan roller atama](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)<br><br>[Azure depolama 'dan bir dosyayı Indirmek için kolayca bir SAS oluşturun: Azure Depolama Gezgini kullanarak](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)|
@@ -108,7 +108,7 @@ Bu, uygulamalar, cihazlar, algılayıcılar vb. gibi çeşitli kaynaklarla oluş
 
 İşte, akış verilerini almak için kullanabileceğiniz araçların listesi.
 
-|Araç | Kılavuz |
+|Araç | Rehber |
 |---|--|
 |Azure HDInsight fırtınası | [HDInsight 'ta Apache Storm Apache Hadoop rsunucudan yaz](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
 
@@ -118,7 +118,7 @@ Bu, uygulamalar, cihazlar, algılayıcılar vb. gibi çeşitli kaynaklarla oluş
 
 İlişkisel verileri almak için kullanabileceğiniz araçların listesi aşağıda verilmiştir.
 
-|Araç | Kılavuz |
+|Araç | Rehber |
 |---|--|
 |Azure Data Factory | [Azure Data Factory’de Kopyalama Etkinliği](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 
@@ -128,7 +128,7 @@ Web sunucusu günlük verilerinin çözümlenmesi büyük veri uygulamaları iç
 
 Aşağıda, Web sunucusu günlük verilerini almak için kullanabileceğiniz araçların bir listesi verilmiştir.
 
-|Araç | Kılavuz |
+|Araç | Rehber |
 |---|--|
 |Azure Data Factory | [Azure Data Factory’de Kopyalama Etkinliği](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
 
@@ -140,7 +140,7 @@ Web sunucusu günlük verilerini karşıya yüklemek ve aynı zamanda diğer ver
 
 HDInsight kümeleriyle ilişkili verileri almak için kullanabileceğiniz araçların listesi aşağıda verilmiştir.
 
-|Araç | Kılavuz |
+|Araç | Rehber |
 |---|--|
 |Apache DistCp | [Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
 |AzCopy aracı | [AzCopy ile veri aktarma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
@@ -169,7 +169,7 @@ Data Lake Storage 2. veriler kullanılabildiğinde, desteklenen büyük veri uyg
 
 Data Lake Storage 2. depolanan veriler üzerinde veri analizi işlerini çalıştırmak için kullanabileceğiniz araçların listesi aşağıda verilmiştir.
 
-|Araç | Kılavuz |
+|Araç | Rehber |
 |---|--|
 |Azure HDInsight | [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure Databricks | [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Hızlı başlangıç: Azure Databricks kullanarak Azure Data Lake Storage 2. verileri çözümleme](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
@@ -195,7 +195,7 @@ Ayrıca, gibi senaryolar için Azure Data Lake Storage 2. verileri indirmek veya
 
 Data Lake Storage 2. verileri indirmek için kullanabileceğiniz araçların listesi aşağıda verilmiştir.
 
-|Araç | Kılavuz |
+|Araç | Rehber |
 |---|--|
 |Azure Data Factory | [Azure Data Factory’de Kopyalama Etkinliği](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCp | [Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

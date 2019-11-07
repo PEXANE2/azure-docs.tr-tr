@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 0262be687b74ec1b97cb508f6da1b95cd5d7a533
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 639a3f89e470a832279add8d2ed7cf49441611f4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596931"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571794"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>IoT için Azure Güvenlik Merkezi hakkında sık sorulan sorular  
 
@@ -66,11 +66,11 @@ IoT Aracısı için Azure Güvenlik Merkezi, cihaz yapılandırması, davranış
 
 ## <a name="where-can-i-get-the-azure-security-center-for-iot-security-agent"></a>IoT güvenlik Aracısı için Azure Güvenlik Merkezi 'Ni nereden alabilirim?
 
-IoT güvenlik aracısına yönelik Azure Güvenlik Merkezi, 32 bit ve 64 bit Windows ve Linux sürümlerindeki GitHub 'da açık kaynaktır ve kullanılabilir: https://github.com/Azure/Azure-Security-IoT.
+IoT güvenlik aracısına yönelik Azure Güvenlik Merkezi, 32 bit ve 64-bit Windows ve Linux sürümlerindeki GitHub 'da açık kaynaktır ve mevcuttur: https://github.com/Azure/Azure-Security-IoT.
 
 ## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>IoT aracısının Azure Güvenlik Merkezi 'nin yüklendiği yer nedir? 
 
-Ayrıntılı yükleme ve aracı dağıtım bilgileri GitHub 'da bulunabilir: https://github.com/Azure/Azure-Security-IoT.
+Ayrıntılı yükleme ve aracı dağıtım bilgileri GitHub 'da bulunabilir: https://github.com/Azure/Azure-IoT-Security.
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Aracının bağımlılıkları ve önkoşulları nelerdir?
 
@@ -92,7 +92,7 @@ IoT için Azure Güvenlik Merkezi, yapılandırılabilir aracı taramaları, ver
 
 Evet. Aracı iletilen veriler IoT Hub kotasında sayılır. 
 
-## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Şimdi ne yapacaksınız? Bir aracı yükledim ve hiç etkinlik veya günlük görmüyorum...
+## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Ne kadar ileri? Bir aracı yükledim ve hiç etkinlik veya günlük görmüyorum...
 
 1. [Aracı türünün cihazınızın belirtilen işletim sistemi platformuna uygun](how-to-deploy-agent.md) olduğunu denetleyin
 

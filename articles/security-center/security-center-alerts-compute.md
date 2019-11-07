@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/05/2019
 ms.author: memildin
-ms.openlocfilehash: f6fba7bc8e8b7d040805f0be62d436caebf638af
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: d705174f46ba38f37ae8cce9839c2d1f63ab6bf8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520898"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664265"
 ---
 # <a name="threat-detection-for-cloud-native-computing-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde bulut Yerel bilgi işlem için tehdit algılama
 
@@ -43,7 +43,7 @@ Güvenlik Merkezi 'nin Ayrıca temel alınan sanal makinelere ve VM 'lere erişi
 |Uyarı|Açıklama|
 |---|---|
 |**Şüpheli WordPress teması çağırma algılandı**|App Service etkinlik günlüğü, App Service kaynağınızın olası bir kod ekleme etkinliğini gösterir.<br/> Bu şüpheli etkinlik, kodun sunucu tarafında yürütülmesini desteklemek için bir WordPress temasını ve ardından doğrudan bir Web isteği ile, istenen tema dosyasını çağırma etkinliğine benzer. Bu tür bir etkinlik WordPress üzerinden bir saldırı kampanyasının parçası olabilir.|
-|**Anormal IP adresinden Web sayfasına bağlantı algılandı**|App Service etkinlik günlüğü, daha önce hiçbir şekilde bağlanmayan bir kaynak adresinden hassas bir Web sayfasına bağlantı gösterir. Bu durum, birisinin web uygulaması yönetim sayfalarınıza bir deneme yanılma saldırısı girişiminde bulunduğunu gösterebilir. Ayrıca, yeni bir IP adresi kullanan yasal bir kullanıcının sonucu da olabilir.|
+|**Anormal IP adresinden Web sayfasına bağlantı algılandı**|App Service etkinlik günlüğü, daha önce hiçbir şekilde bağlanmayan bir kaynak adresinden hassas bir Web sayfasına bağlantı gösterir. Bu bağlantı, birisinin web uygulaması yönetim sayfalarınıza bir deneme yanılma saldırısı girişiminde bulunduğunu gösterebilir. Ayrıca, yeni bir IP adresi kullanan yasal bir kullanıcının sonucu da olabilir.|
 |**Tehdit zekasından Azure App Service FTP arayüzüne bağlı bir IP bulundu**|App Service FTP günlükleri analizi, tehdit bilgileri akışında bulunan bir kaynak adresten bağlantı algıladı. Bu bağlantı sırasında, bir Kullanıcı listelenen sayfalara erişti.|
 |**Web parmak baskısı algılandı**|App Service etkinlik günlüğü, App Service kaynağınızın olası bir Web parmak izi etkinliğini gösterir. <br/>Bu şüpheli etkinlik, görünmeyen Elephant adlı bir araçla ilişkilendirilir. Araç parmak izi Web sunucularını yazdırır ve yüklü uygulamaları ve bunların sürümlerini algılamaya çalışır. Saldırganlar genellikle bu aracı, Web uygulamalarının güvenlik açıklarını bulmasını yoklayıp kullanır.|
 |**Olası savunmasız Web sayfasına şüpheli erişim algılandı**|App Service etkinlik günlüğü, gizli olarak görünen bir Web sayfasına erişildiğini belirtir. <br/>Bu şüpheli etkinlik, erişim deseninin bir Web tarayıcısı ile aynı olduğu bir kaynak adresinden kaynaklıır. Bu tür bir etkinlik genellikle, bir saldırganın hassas veya güvenlik açığı bulunan Web sayfalarına erişim kazanmaya çalışacak şekilde ağınızı taraymasıyla ilişkilendirilir.|
@@ -59,15 +59,47 @@ Güvenlik Merkezi, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit a
 
 Farklı düzeylerde tehditler tespit ediyoruz: 
 
-* **Ana bilgisayar düzeyi** -Güvenlik Merkezi 'nin Aracısı (Standart katmanda mevcuttur. Ayrıntılar için [fiyatlandırma](security-center-pricing.md) ) Linux 'u şüpheli etkinlikler için izler. Aracı, düğüm veya üzerinde çalışan bir kapsayıcıdan kaynaklanan şüpheli etkinlikler için uyarıları tetikler. Web kabuğu algılama ve bilinen şüpheli IP adresleriyle bağlantı gibi etkinliklere örnek olarak verilebilir. </br>
-Kapsayıcılı ortamınızın güvenliğine daha ayrıntılı bir bakış için, aracı kapsayıcıya özgü Analizi izler. Ayrıcalıklı kapsayıcı oluşturma, API sunucularına şüpheli erişim ve bir Docker kapsayıcısı içinde çalışan Secure Shell (SSH) sunucuları gibi olaylar için uyarı tetikleyecektir.
+* **Ana bilgisayar düzeyi** -Güvenlik Merkezi 'nin Aracısı (Standart katmanda mevcuttur. Ayrıntılar için [fiyatlandırma](security-center-pricing.md) ) Linux 'u şüpheli etkinlikler için izler. Aracı, düğüm veya üzerinde çalışan bir kapsayıcıdan kaynaklanan şüpheli etkinlikler için uyarıları tetikler. Web kabuğu algılama ve bilinen şüpheli IP adresleriyle bağlantı gibi etkinliklere örnek olarak verilebilir.
+
+    Kapsayıcılı ortamınızın güvenliğine daha ayrıntılı bir bakış için, aracı kapsayıcıya özgü Analizi izler. Ayrıcalıklı kapsayıcı oluşturma, API sunucularına şüpheli erişim ve bir Docker kapsayıcısı içinde çalışan Secure Shell (SSH) sunucuları gibi olaylar için uyarı tetikleyecektir.
 
     >[!NOTE]
     > Aracılarınıza aracıları yüklememeyi seçerseniz, tehdit algılama avantajları ve uyarıların yalnızca bir alt kümesini alacaksınız. Hala kötü amaçlı sunucularla ağ analizi ve iletişimlerle ilgili uyarılar alacaksınız.
 
-* **Aks küme düzeyi**Için, Kubernetes denetim günlükleri analizini temel alan tehdit algılama izlemesi vardır. **Aracısız** izlemeyi etkinleştirmek Için, **fiyatlandırma & ayarları** sayfasından Kubernetes seçeneğini aboneliğinize ekleyin (bkz. [fiyatlandırma](security-center-pricing.md)). Bu düzeyde uyarı oluşturmak için, güvenlik merkezi AKS tarafından yönetilen Hizmetleri AKS tarafından alınan günlükleri kullanarak izler. Bu düzeydeki olay örnekleri, sunulan Kubernetes panoları, yüksek ayrıcalıklı roller ve hassas takmaları oluşturmayı içerir. 
+* **Aks küme düzeyi**Için Kubernetes denetim günlükleri analizini temel alan tehdit algılama izlemesi vardır. **Aracısız** izlemeyi etkinleştirmek Için, **fiyatlandırma & ayarları** sayfasından Kubernetes seçeneğini aboneliğinize ekleyin (bkz. [fiyatlandırma](security-center-pricing.md)). Bu düzeyde uyarı oluşturmak için, güvenlik merkezi AKS tarafından yönetilen Hizmetleri AKS tarafından alınan günlükleri kullanarak izler. Bu düzeydeki olay örnekleri, sunulan Kubernetes panoları, yüksek ayrıcalıklı rollerin oluşturulmasını ve hassas takmaları oluşturmayı içerir. 
 
     >[!NOTE]
     > Güvenlik Merkezi, Azure Kubernetes hizmet eylemleri ve abonelik ayarlarında Kubernetes seçeneği etkinleştirildikten sonra gerçekleşen dağıtımlar için algılama uyarıları oluşturur. 
 
 Ayrıca, güvenlik araştırmacıları küresel takımımız tehdidi sürekli olarak izler. Bulundukları gibi kapsayıcıya özgü uyarıları ve güvenlik açıklarını ekler.
+
+
+### <a name="aks-cluster-level-alerts"></a>AKS küme düzeyi uyarıları
+
+> [!div class="mx-tableFixed"]
+
+|Uyarı|Açıklama|
+|---|---|
+|**Küme Yöneticisi rolüne ÖNIZLEME-rol bağlama algılandı**|Kubernetes denetim günlüğü analizi, Küme Yöneticisi rolüne yeni bir bağlama algıladı ve bu da yönetici ayrıcalıklarına neden oldu. Yönetici ayrıcalıklarını gereksiz şekilde sağlamak, kümede ayrıcalık yükseltme sorunları oluşmasına neden olabilirler.|
+|**ÖNIZLEME-açığa çıkarılan Kubernetes panosu algılandı**|Kubernetes denetim günlüğü analizi, Kubernetes panosunun bir LoadBalancer hizmeti tarafından açığa çıkmasını algıladı. Sunulan panolar küme yönetimine kimliği doğrulanmamış erişime izin verir ve güvenlik tehdidi oluşturabilir.|
+|**ÖNIZLEME-yeni yüksek ayrıcalıklar rolü algılandı**|Kubernetes denetim günlüğü analizi, yüksek ayrıcalıklara sahip yeni bir rol algıladı. Yüksek ayrıcalıklara sahip bir role bağlama, kümede Kullanıcı/Grup yükseltilmiş ayrıcalıklar sağlar. Gereksiz ayrıcalıklar sağlanması, kümede ayrıcalık yükseltme sorunları oluşmasına neden olabilirler.|
+|**ÖNIZLEME-kuin sistemi ad alanında yeni kapsayıcı algılandı**|Kubernetes denetim günlüğü analizi, bu ad alanında normalde çalıştırılan kapsayıcılar arasında olmayan kuin-System ad alanında yeni bir kapsayıcı algıladı. Kuto-System ad alanları kullanıcı kaynaklarını içermemelidir. Saldırganlar, kötü amaçlı bileşenleri gizlemek için bu ad alanını kullanabilir.|
+|**ÖNIZLEME-dijital para birimi araştırma kapsayıcısı algılandı**|Kubernetes denetim günlüğü analizi, dijital para birimi araştırma aracıyla ilişkilendirilmiş bir görüntü içeren bir kapsayıcı algıladı.|
+|**ÖNIZLEME-ayrıcalıklı kapsayıcı algılandı**|Kubernetes denetim günlüğü analizi yeni bir ayrıcalıklı kapsayıcı algıladı. Ayrıcalıklı bir kapsayıcı, düğümün kaynaklarına erişebilir ve kapsayıcılar arasındaki yalıtımı keser. Tehlikeye atılırsa bir saldırgan, düğüme erişim kazanmak için ayrıcalıklı kapsayıcıyı kullanabilir.|
+|**ÖNIZLEME-hassas birim bağlaması ile kapsayıcı algılandı**|Kubernetes denetim günlüğü analizi, hassas birim bağlama ile yeni bir kapsayıcı algıladı. Algılanan birim, düğümden kapsayıcıya gizli bir dosya veya klasör bağlayan bir hostPath türüdür. Kapsayıcının güvenliği tehlikeye girerse, saldırgan bu takma birimi kullanarak düğüme erişim elde edebilir.|
+
+
+
+### <a name="host-level-alerts"></a>Konak düzeyi uyarıları
+
+> [!div class="mx-tableFixed"]
+
+|Uyarı|Açıklama|
+|---|---|
+|**Ayrıcalıklı kapsayıcı algılandı**|Makine günlükleri, ayrıcalıklı bir Docker kapsayıcısının çalıştığını gösterir. Ayrıcalıklı bir kapsayıcı konağın kaynaklarına tam erişime sahiptir. Tehlikeye atılırsa, bir saldırgan konak makinesine erişim kazanmak için ayrıcalıklı kapsayıcıyı kullanabilir.|
+|**Kapsayıcıda ayrıcalıklı komut çalıştırma**|Makine günlükleri, bir Docker kapsayıcısında ayrıcalıklı bir komutun çalıştırıldığını gösterir. Ayrıcalıklı bir komutun konak makinesinde genişletilmiş ayrıcalıkları vardır.|
+|**Sunulan Docker Daemon algılandı**|Makine günlükleri, Docker Daemon 'nizin (dockerd) bir TCP yuvası sunduğunu gösterir. Varsayılan olarak, Docker yapılandırması bir TCP yuvası etkinleştirildiğinde şifreleme veya kimlik doğrulama kullanmaz. İlgili bağlantı noktasına erişimi olan herkes, Docker Daemon 'a tam erişim alabilir.|
+|**SSH sunucusu bir kapsayıcı içinde çalışıyor**|Makine günlükleri, bir SSH sunucusunun bir Docker kapsayıcısı içinde çalıştığını gösterir. Bu davranış bilerek mümkün olsa da, genellikle bir kapsayıcının yanlış yapılandırılmış veya ihlal edilen olduğunu gösterir.|
+|**Bir Miner görüntüsü olan kapsayıcı algılandı**|Makine günlükleri, dijital para birimi madenciliği ile ilişkili bir görüntüyü çalıştıran bir Docker kapsayıcısının yürütülmesini gösterir. Bu davranış muhtemelen kaynaklarınızın nerede olduğunu gösterebilir.|
+|**Kubernetes API 'sine şüpheli istek**|Makine günlükleri, Kubernetes API 'sine şüpheli bir istek yapıldığını gösterir. İstek bir Kubernetes düğümünden gönderilmiş, muhtemelen düğümde çalışan kapsayıcılardan biri. Bu davranış kasıtlı olarak kullanılabilse de, düğümün güvenliği aşılmış bir kapsayıcı çalıştırdığı anlamına gelebilir.|
+|**Kubernetes panosuna şüpheli istek**|Makine günlükleri, Kubernetes panosuna şüpheli bir istek yapıldığını gösterir. İstek bir Kubernetes düğümünden gönderilmiş, muhtemelen düğümde çalışan kapsayıcılardan biri. Bu davranış kasıtlı olarak kullanılabilse de, düğümün güvenliği aşılmış bir kapsayıcı çalıştırdığı anlamına gelebilir.|

@@ -1,21 +1,21 @@
 ---
-title: Azure HPC önbelleği oluşturma (Önizleme)
+title: Azure HPC önbelleği oluşturma
 description: Azure HPC önbellek örneği oluşturma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fa6408d33504c6ac73eacec079e9c08acd4cece2
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255275"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582190"
 ---
-# <a name="plan-the-aggregated-namespace"></a>Toplanan ad alanını planlayın
+# <a name="plan-the-aggregated-namespace"></a>Toplanan ad alanını planlama
 
-Azure HPC Cache (Önizleme), istemcilerin, arka uç depolama sisteminin ayrıntılarını gizleyen bir sanal ad alanı aracılığıyla çeşitli depolama sistemlerine erişmesini sağlar.
+Azure HPC önbelleği, istemcilerin, arka uç depolama sisteminin ayrıntılarını gizleyen bir sanal ad alanı aracılığıyla çeşitli depolama sistemlerine erişmesini sağlar.
 
 Bir depolama hedefi eklediğinizde, istemciye yönelik dosya yolunu ayarlarsınız. İstemci makineler bu dosya yolunu bağlayabilir ve depolama sistemini doğrudan bağlamak yerine önbelleğe dosya okuma istekleri yapabilir.
 
@@ -57,7 +57,7 @@ NFS kaynak yolları aynı dışarı aktarmanın alt dizinleri olduğundan, aynı
 | *IP adresi veya ana bilgisayar adı* | /Goldline/Templates  | acme2017/sku798   | /Templates/sku798 |
 | *IP adresi veya ana bilgisayar adı* | /Goldline/Templates  | acme2017/sku980   | /Templates/sku980 |
 
-Bir istemci uygulaması önbelleği bağlayabilir ve ``/source``, ``/templates/sku798`` ve ``/templates/sku980`` olan toplanmış ad alanı dosya yollarına kolayca erişebilir.
+Bir istemci uygulaması önbelleği bağlayabilir ve ``/source``, ``/templates/sku798``ve ``/templates/sku980``toplanmış ad alanı dosya yollarına kolayca erişebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

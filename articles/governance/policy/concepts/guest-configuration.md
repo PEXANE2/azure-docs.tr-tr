@@ -3,15 +3,15 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin bir Azure makinesi içindeki ayarları denetlemek için konuk yapılandırmasını nasıl kullandığını öğrenin.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/20/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 0e5592f629646db3132ffd65fd56b1a0d5d5be39
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464066"
+ms.locfileid: "73581437"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Ilkesinin Konuk yapılandırmasını anlama
 
@@ -121,30 +121,27 @@ Azure Ilkesi, **Uyumluluk** düğümündeki uyumluluğu raporlamak Için Konuk y
 > [!NOTE]
 > **Uıınotexists** ilkesi, sonuçları döndürmek için bu **ilke için** gereklidir. **Deployifnotexists**olmadan, **auditınotexists** ilkesi "0/0" kaynağını durum olarak gösterir.
 
-Konuk yapılandırması için tüm yerleşik ilkeler, atamalarda kullanılmak üzere tanımları gruplamak için bir girişimde bulunur. [Önizleme] adlı yerleşik girişim *: Linux ve Windows makineler Içindeki denetim parolası güvenlik ayarları* 18 ilke içerir. Windows için altı **Deployifnotexists** ve **Auditınotexists** çiftleri ve Linux için üç çift vardır. [İlke tanımı](definition-structure.md#policy-rule) mantığı yalnızca hedef işletim sisteminin değerlendirildiğini doğrular.
+Konuk yapılandırması için tüm yerleşik ilkeler, atamalarda kullanılmak üzere tanımları gruplamak için bir girişimde bulunur. \[Preview\]adlı yerleşik girişim _: Linux ve Windows makineler Içindeki denetim parolası güvenlik ayarları_ 18 ilke içerir. Windows için altı **Deployifnotexists** ve **Auditınotexists** çiftleri ve Linux için üç çift vardır. [İlke tanımı](definition-structure.md#policy-rule) mantığı yalnızca hedef işletim sisteminin değerlendirildiğini doğrular.
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Sektör temellerini izleyen işletim sistemi ayarlarını denetleme
 
-Azure Ilkesinde bulunan girişimlerden biri, Microsoft 'tan bir "taban çizgisi" dan sonra sanal makineler içindeki işletim sistemi ayarlarını denetleme olanağı sağlar.  Tanım, *[Önizleme]: Azure Güvenlik taban çizgisi ayarlarıyla eşleşmeyen Windows VM 'Lerinin denetimi* , Active Directory Grup İlkesi ayarlara bağlı olarak bir denetim kuralları kümesi içerir.
+Azure Ilkesinde bulunan girişimlerden biri, Microsoft 'tan bir "taban çizgisi" dan sonra sanal makineler içindeki işletim sistemi ayarlarını denetleme olanağı sağlar. Tanım, _\[önizleme\]: Azure Güvenlik temeli ayarlarıyla eşleşmeyen Windows VM 'Lerinin denetimi_ , Active Directory Grup İlkesi ayarlarına bağlı olarak tüm denetim kuralları kümesini içerir.
 
-Ayarların çoğu parametre olarak kullanılabilir.  Bu işlevsellik, ilkeyi Kurumsal gereksinimlerinize göre hizalamak veya ilkeyi sektör mevzuatı standartları gibi üçüncü taraf bilgilerle eşlemek için nelerin denetleneceğini özelleştirmenize olanak sağlar.
+Ayarların çoğu parametre olarak kullanılabilir. Bu işlevsellik, ilkeyi Kurumsal gereksinimlerinize göre hizalamak veya ilkeyi sektör mevzuatı standartları gibi üçüncü taraf bilgilerle eşlemek için nelerin denetleneceğini özelleştirmenizi sağlar.
 
-Bazı parametreler bir tamsayı değer aralığını destekler.  Örneğin, en fazla parola yaşı parametresi, makine sahiplerine esneklik sağlamak için bir Aralık işleci kullanılarak ayarlanabilir.  Kullanıcıların parolalarını değiştirmesi gereken geçerli grup ilkesi ayarının 70 günden fazla olmaması gerektiğini ve 1 günden az olmaması gerektiğini denetleyebilirsiniz.  Parametresinin info-kabarcık bölümünde açıklandığı gibi, etkin denetim değerini yapmak için değeri "1, 70" olarak ayarlayın.
+Bazı parametreler bir tamsayı değer aralığını destekler. Örneğin, en fazla parola yaşı parametresi, makine sahiplerine esneklik sağlamak için bir Aralık işleci kullanılarak ayarlanabilir. Kullanıcıların parolalarını değiştirmesi gereken geçerli grup ilkesi ayarının 70 günden fazla olmaması gerektiğini ve bir günden az olmaması gerektiğini denetleyebilirsiniz. Parametrenin info-kabarcık bölümünde açıklandığı gibi, bu iş ilkesini etkin denetim değeri yapmak için değeri "1, 70" olarak ayarlayın.
 
-İlkeyi bir Azure Resource Manager dplosat şablonu kullanarak atarsanız, bu ayarları kaynak denetiminden yönetmek için bir parametre dosyası kullanabilirsiniz.
-Her iadede yorumlarla denetim ilkelerine yapılan değişiklikleri yönetmek için git gibi bir araç kullanarak, bir atamanın beklenen değer için özel durum olarak neden olması gerektiğine dair kanıt belgelecektir.
+İlkeyi bir Azure Resource Manager dağıtım şablonu kullanarak atarsanız, bu ayarları kaynak denetiminden yönetmek için bir parametre dosyası kullanabilirsiniz. Bir atamanın neden beklenen değer için bir özel durum olması gerektiğine dair her bir iade belgesi hakkında yorumlarla denetim ilkelerine yapılan değişiklikleri yönetmek için git gibi bir araç kullanma.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Konuk yapılandırması kullanılarak yapılandırmaları uygulama
 
-Azure Ilkesinin en son özelliği makineler içindeki ayarları yapılandırır.
-*Windows makinelerinde saat dilimini yapılandırma* tanımı, saat dilimini yapılandırarak makinede değişiklik yapar.
+Azure Ilkesinin en son özelliği makineler içindeki ayarları yapılandırır. _Windows makinelerinde saat dilimini yapılandırma_ tanımı, saat dilimini yapılandırarak makinede değişiklikler yapar.
 
-*Yapılandırma*ile başlayan tanımları atarken, *Windows VM 'Lerde Konuk yapılandırma ilkesini etkinleştirmek için tanım dağıtma ön koşullarını* da atamanız gerekir.
-Seçeneğini belirlerseniz bu tanımları bir girişim içinde birleştirebilirsiniz.
+_Yapılandırma_ile başlayan tanımları atarken, _Windows VM 'Lerde Konuk yapılandırma ilkesini etkinleştirmek için tanım dağıtma ön koşullarını_da atamanız gerekir. Seçeneğini belirlerseniz bu tanımları bir girişim içinde birleştirebilirsiniz.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Azure dışındaki makinelere ilke atama
 
-Konuk yapılandırması için kullanılabilen denetim ilkeleri **Microsoft. HybridCompute/machines** kaynak türünü içerir.  Atama kapsamındaki Azure Arc ile eklendi tüm makineler otomatik olarak dahil edilir.
+Konuk yapılandırması için kullanılabilen denetim ilkeleri **Microsoft. HybridCompute/machines** kaynak türünü içerir. İlke atamasının kapsamındaki [sunucular Için Azure yaya](../../../azure-arc/servers/overview.md) eklendi tüm makineler otomatik olarak eklenir.
 
 ### <a name="multiple-assignments"></a>Birden çok atama
 
@@ -152,8 +149,7 @@ Konuk yapılandırma ilkeleri Şu anda yalnızca makine başına aynı Konuk ata
 
 ## <a name="built-in-resource-modules"></a>Yerleşik kaynak modülleri
 
-Konuk yapılandırma uzantısı yüklenirken, ' GuestConfiguration ' PowerShell modülü DSC kaynak modüllerinin en son sürümüne dahildir. Modül sayfası [Guestconfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/)' dan ' el ile indirme ' bağlantısı kullanılarak bu modül PowerShell Galerisi indirilebilir.
-'. Nupkg ' dosya biçimi, sıkıştırmayı açmak ve gözden geçirmek için '. zip ' olarak yeniden adlandırılabilir.
+Konuk yapılandırma uzantısı yüklenirken, ' GuestConfiguration ' PowerShell modülü DSC kaynak modüllerinin en son sürümüne dahildir. Modül sayfası [Guestconfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/)' dan ' el ile indirme ' bağlantısı kullanılarak bu modül PowerShell Galerisi indirilebilir. '. Nupkg ' dosya biçimi, sıkıştırmayı açmak ve gözden geçirmek için '. zip ' olarak yeniden adlandırılabilir.
 
 ## <a name="client-log-files"></a>İstemci günlük dosyaları
 

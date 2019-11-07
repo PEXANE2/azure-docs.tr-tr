@@ -3,28 +3,26 @@ title: GitHub eylemleri ile bir CI/CD işlem hattından kodunuzu dağıtma-Azure
 description: Kodunuzu dağıtmak için GitHub eylemlerini nasıl kullanacağınızı öğrenin App Service
 services: app-service
 documentationcenter: ''
-author: jasonfreeberg
-writer: ''
-manager: ''
-editor: ''
-ms.assetid: ''
+author: cephalin
+manager: gwallace
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 10/25/2019
 ms.author: jafreebe
-ms.openlocfilehash: b7ec1ae1d04fb1dbe16fd9f4a2640b2b3d9584c2
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.reviewer: ushan
+ms.openlocfilehash: 9842057a590b08f2207a1ea166e0ce0d457e4381
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809779"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620510"
 ---
-# <a name="github-actions-for-deploying-to-app-service"></a>App Service dağıtmaya yönelik GitHub eylemleri
+# <a name="deploy-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service dağıtma
 
-[GitHub eylemleri](https://help.github.com/en/articles/about-github-actions) size otomatik yazılım geliştirme yaşam döngüsü iş akışı oluşturma esnekliği sağlar. GitHub için Azure App Service eylemlerle, GitHub eylemlerini kullanarak [Azure Web Apps](https://azure.microsoft.com/services/app-service/web/) dağıtmak üzere iş akışınızı otomatikleştirebilir.
+[GitHub eylemleri](https://help.github.com/en/articles/about-github-actions) size otomatik yazılım geliştirme yaşam döngüsü iş akışı oluşturma esnekliği sağlar. GitHub için Azure App Service eylemlerle, GitHub eylemlerini kullanarak [Azure App Service](overview.md) dağıtmak üzere iş akışınızı otomatikleştirebilir.
 
 > [!IMPORTANT]
 > GitHub eylemleri Şu anda beta aşamasındadır. GitHub hesabınızı kullanarak [önizlemeye katmak için önce kaydolmanız](https://github.com/features/actions) gerekir.
@@ -32,7 +30,7 @@ ms.locfileid: "72809779"
 
 Bir iş akışı, deponuzdaki `/.github/workflows/` yolundaki bir YAML (. yıml) dosyası tarafından tanımlanır. Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir.
 
-Bir Azure Web uygulaması iş akışı için, dosyanın üç bölümü vardır:
+Azure App Service iş akışı için, dosyanın üç bölümü vardır:
 
 |Section  |Görevler  |
 |---------|---------|
@@ -42,25 +40,25 @@ Bir Azure Web uygulaması iş akışı için, dosyanın üç bölümü vardır:
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/)'de [az ad SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) kullanarak veya **deneyin** düğmesini seçerek çalıştırabilirsiniz.
+[Azure CLI](https://docs.microsoft.com/cli/azure/)'de [az ad SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) kullanarak veya **deneyin** düğmesini seçerek çalıştırabilirsiniz.
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
+az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> --sdk-auth
 ```
 
-Bu örnekte, kaynaktaki yer tutucuları abonelik KIMLIĞINIZ, kaynak grubunuz ve Web uygulaması adıyla değiştirin. Çıktı, Web uygulamanıza erişim sağlayan rol atama kimlik bilgileridir. GitHub 'dan kimlik doğrulamak için kullanabileceğiniz bu JSON nesnesini kopyalayın.
+Bu örnekte, kaynaktaki yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu adı ve uygulama adınızla değiştirin. Çıktı, App Service uygulamanıza erişim sağlayan rol atama kimlik bilgileridir. GitHub 'dan kimlik doğrulamak için kullanabileceğiniz bu JSON nesnesini kopyalayın.
 
 > [!NOTE]
 > Kimlik doğrulaması için Yayımlama profili kullanmaya karar verirseniz bir hizmet sorumlusu oluşturmanız gerekmez.
 
 > [!IMPORTANT]
-> En az erişim sağlamak her zaman iyi bir uygulamadır. Bu nedenle, önceki örnekteki kapsamın tüm kaynak grubu değil, belirli Web uygulamasıyla sınırlı olması neden olur.
+> En az erişim sağlamak her zaman iyi bir uygulamadır. Bu nedenle, önceki örnekteki kapsamın tüm kaynak grubu değil, belirli App Service uygulamasıyla sınırlı olması neden olur.
 
 ## <a name="configure-the-github-secret"></a>GitHub gizliliğini yapılandırma
 
 Uygulama düzeyi kimlik bilgilerini de kullanabilirsiniz. Örneğin, dağıtım için profili yayımlayın. Gizli anahtarı yapılandırmak için aşağıdaki adımları izleyin:
 
-1. **Yayımla profili al** seçeneğini kullanarak portaldan Web uygulamasına ait yayımlama profilini indirin.
+1. **Yayımla profili al** seçeneğini kullanarak portaldan App Service uygulama için yayımlama profilini indirin.
 
 2. [GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin**
 
@@ -76,11 +74,11 @@ Uygulama düzeyi kimlik bilgilerini de kullanabilirsiniz. Örneğin, dağıtım 
             creds: ${{ secrets.azureWebAppPublishProfile }}
     ```
 
-5. Gizli dizi tanımlandıktan sonra aşağıda gösterildiği gibi görüntülenir.
+5. Gizli anahtarı, tanımlandıktan sonra aşağıda gösterildiği gibi görürsünüz.
 
     ![kaynaklanır](media/app-service-github-actions/app-service-secrets.png)
 
-## <a name="setup-the-environment"></a>Ortamı kurma
+## <a name="set-up-the-environment"></a>Ortamı ayarlama
 
 Ortamı ayarlamak, kurulum eylemlerinden biri kullanılarak yapılabilir.
 
@@ -132,7 +130,7 @@ Aşağıdaki örneklerde, desteklenen çeşitli diller için ortamı ayarlayan i
 
 ## <a name="build-the-web-app"></a>Web uygulamasını oluşturma
 
-Bu, dile ve Azure Web Apps tarafından desteklenen dillere bağlıdır. Bu bölüm, her dilin standart derleme adımları olmalıdır.
+Bu, dile ve Azure App Service tarafından desteklenen dillere bağlıdır. Bu bölüm, her dilin standart derleme adımları olmalıdır.
 
 Aşağıdaki örneklerde, desteklenen çeşitli dillerde Web uygulamasını oluşturan iş akışının bölümü gösterilmektedir.
 
@@ -189,20 +187,20 @@ Aşağıdaki örneklerde, desteklenen çeşitli dillerde Web uygulamasını olu�
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 ```
-## <a name="deploy-the-web-app"></a>Web uygulamasını dağıtma
+## <a name="deploy-to-app-service"></a>App Service’e dağıtma
 
-Kodunuzu bir Web uygulamasına dağıtmak için `Azure/appservice-actions/webapp@master` eylemini kullanmanız gerekir. Bu eylemin 4 parametresi vardır:
+Kodunuzu bir App Service uygulamasına dağıtmak için `azure/webapps-deploy@v1 ` eylemini kullanın. Bu eylemin dört parametresi vardır:
 
 | **Parametresinin**  | **Açıklama**  |
 |---------|---------|
-| **uygulama adı** | Istenir Azure Web uygulamasının adı | 
+| **uygulama adı** | Istenir App Service uygulamasının adı | 
 | **Yayımlama profili** | Seçim Web Dağıtımı gizli dizileri ile profil dosyası içeriğini yayımlama |
 | **leyebilir** | Seçim Paket veya klasörün yolu. *. zip, *. war, *. jar veya dağıtılacak bir klasör |
 | **yuva adı** | Seçim Üretim yuvası dışında mevcut bir yuva girin |
 
 ### <a name="deploy-using-publish-profile"></a>Yayımlama profili kullanarak dağıtma
 
-Aşağıda, yayımlama profili kullanarak bir Node. js web uygulamasını derlemek ve Azure 'da dağıtmak için örnek iş akışı verilmiştir.
+Aşağıda, yayımlama profili kullanarak bir Node. js uygulamasını derlemek ve Azure 'a dağıtmak için örnek iş akışı verilmiştir.
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -236,7 +234,7 @@ jobs:
 
 ### <a name="deploy-using-azure-service-principal"></a>Azure hizmet sorumlusu kullanarak dağıtma
 
-Aşağıda, Azure hizmet sorumlusu kullanarak bir Node. js web uygulamasını derlemek ve Azure 'a dağıtmak için örnek iş akışı verilmiştir.
+Bir Azure hizmet sorumlusu kullanarak bir Node. js uygulamasını derlemek ve Azure 'a dağıtmak için örnek iş akışı aşağıda verilmiştir.
 
 ```yaml
 on: [push]
@@ -281,7 +279,9 @@ jobs:
 
 GitHub 'daki farklı depolarda gruplanmış eylem listemizi, her biri, CI/CD için GitHub kullanmanıza ve uygulamalarınızı Azure 'a dağıtmanıza yardımcı olacak belgeler ve örnekler içeren bir şekilde bulabilirsiniz.
 
-- [Azure oturum açma](https://github.com/Azure/actions)
+- [Azure 'a dağıtılacak eylemler iş akışı](https://github.com/Azure/actions-workflow-samples)
+
+- [Azure oturum açma](https://github.com/Azure/login)
 
 - [Azure WebApp](https://github.com/Azure/webapps-deploy)
 

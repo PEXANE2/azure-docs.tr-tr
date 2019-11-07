@@ -1,24 +1,24 @@
 ---
 title: Azure Analysis Services | sunucu yöneticilerini yönetme | Microsoft Docs
-description: Azure 'da bir Analysis Services sunucusu için sunucu yöneticilerini yönetme hakkında bilgi edinin.
+description: Bu makalede, Azure portal, PowerShell veya REST API 'Lerini kullanarak bir Azure Analysis Services sunucusu için sunucu yöneticilerinin nasıl yönetileceği açıklanmaktadır.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f597bc9e34a606a6e40a57e5fc7af791d972c68e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f7c57a5751f2ff34abb26b7653070ce4ee5010fe
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146283"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572617"
 ---
 # <a name="manage-server-administrators"></a>Sunucu yöneticilerini yönetme
 
 Sunucu yöneticileri, sunucunun bulunduğu kiracı için Azure Active Directory (Azure AD) içinde geçerli bir kullanıcı veya güvenlik grubu olmalıdır. Sunucu yöneticileri 'ni yönetmek için sunucu Azure portal, SSMS, PowerShell veya REST API sunucu özellikleri ' nde sunucunuz için **Analysis Services yöneticileri** kullanabilirsiniz. 
 
-**Güvenlik grupları** , `MailEnabled` özelliği `True` olarak ayarlanmış [posta etkin](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) olmalıdır. Bir grup e-posta adresi belirtirken `obj:groupid@tenantid` kullanın.
+**Güvenlik grupları** , `MailEnabled` özelliği `True`olarak ayarlanmış [posta etkin](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) olmalıdır. E-posta adresi ile bir grup belirtirken `obj:groupid@tenantid`kullanın.
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Azure portal kullanarak sunucu yöneticileri eklemek için
 

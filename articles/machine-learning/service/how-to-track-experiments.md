@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2d8bf44f5e5e7a3f8c328a47480599f9dd18b845
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: d8a2c456c725a3170bc940bf17dec6b0c4ad2c3e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489508"
+ms.locfileid: "73584537"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML deneme çalıştırmaları ve ölçümlerini izleme
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,6 +27,9 @@ Denemeleri ve izleme çalıştırma ölçümlerinizi izleyerek model oluşturma 
 > [!NOTE]
 > Azure Machine Learning, otomatik makine öğrenimi çalıştırmaları veya eğitim işini çalıştıran Docker kapsayıcısı gibi eğitim sırasında diğer kaynaklardaki bilgileri de günlüğe alabilir. Bu Günlükler belgelenmemiştir. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.
 
+> [!TIP]
+> Bu belgedeki bilgiler öncelikli olarak, model eğitimi sürecini izlemek isteyen veri bilimcileri ve geliştiricileri içindir. Kotalar, tamamlanan eğitim çalıştırmaları veya tamamlanmış model dağıtımları gibi Azure Machine Learning 'den kaynak kullanımını ve olayları izlemeyi ilgilenen bir yöneticiyseniz, bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
+
 ## <a name="available-metrics-to-track"></a>İzlenecek kullanılabilir ölçümler
 
 Bir denemeye eğitim sırasında aşağıdaki ölçümler bir çalıştırmaya eklenebilir. Bir çalıştırmada nelerin izlenebilecek hakkında daha ayrıntılı bir liste görüntülemek için, [sınıf başvurusunu Çalıştır belgelerine](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)bakın.
@@ -34,7 +37,7 @@ Bir denemeye eğitim sırasında aşağıdaki ölçümler bir çalıştırmaya e
 |Tür| Python işlevi | Notlar|
 |----|:----|:----|
 |Skaler değerler |Çalışmayacaktır<br>`run.log(name, value, description='')`<br><br>Örnek:<br>Çalıştır. log ("doğruluk", 0,95) |Verilen ada sahip bir sayı veya dize değerini çalıştırmaya göre günlüğe kaydedin. Bir ölçüyü bir çalıştırmaya kaydetmek, ölçümün deneme içinde çalıştırma kaydında depolanmasına neden olur.  Aynı ölçümü bir çalıştırma içinde birden çok kez günlüğe kaydedebilirsiniz. sonuç, bu ölçümün bir vektörü olarak kabul edilir.|
-|Liste|Çalışmayacaktır<br>`run.log_list(name, value, description='')`<br><br>Örnek:<br>Çalıştır. log _list ("accuracies", [0,6, 0,7, 0,87]) | Verilen adla çalıştırılacak bir değer listesini günlüğe kaydedin.|
+|Liste|Çalışmayacaktır<br>`run.log_list(name, value, description='')`<br><br>Örnek:<br>Çalıştır. log _list ("accuracies", [0,6, 0,7, 0,87]) | Belirtilen ada sahip farklı çalıştır değerlerin bir listesini oturum.|
 |sırada|Çalışmayacaktır<br>`run.log_row(name, description=None, **kwargs)`<br>Örnek:<br>Çalıştır. log _row ("X üzerinden X", x = 1, Y = 0,4) | *Log_row* kullanmak, kwarg 'ler içinde açıklandığı gibi birden çok sütunlu bir ölçü oluşturur. Her adlandırılmış parametre belirtilen değeri içeren bir sütun oluşturur.  *log_row* , rastgele bir tanımlama grubu günlüğe kaydetmek için bir kez veya bir döngüde bir bütün tablo oluşturmak için birden çok kez çağrılabilir.|
 |Tablo|Çalışmayacaktır<br>`run.log_table(name, value, description='')`<br><br>Örnek:<br>Çalıştır. log _table ("X üzerinden X", {"X": [1, 2, 3], "Y": [0,6, 0,7, 0,89]}) | Bir sözlük nesnesini verilen ada sahip bir çalıştırmaya kaydedin. |
 |Görüntüler|Çalışmayacaktır<br>`run.log_image(name, path=None, plot=None)`<br><br>Örnek:<br>`run.log_image("ROC", plt)` | Çalıştırma kaydına bir görüntü kaydedin. Log_image kullanarak bir görüntü dosyası veya bir Matplotlib çizimi çalıştırmaya kaydedilir.  Bu görüntüler, çalıştırma kaydında görünür ve karşılaştırılabilir olacaktır.|

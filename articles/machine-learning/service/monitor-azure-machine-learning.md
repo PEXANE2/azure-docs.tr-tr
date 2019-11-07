@@ -9,16 +9,24 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: dddc39a0b7b3c43f283750c95d4feaef2cf15b36
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: d9b7a433dd7392e83719f09815f736dbd85f9c7f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514283"
+ms.locfileid: "73582900"
 ---
 # <a name="monitoring-azure-machine-learning"></a>İzleme Azure Machine Learning
 
 Bu makalede, Azure Machine Learning tarafından oluşturulan izleme verileri açıklanmaktadır. Ayrıca, verilerinizi çözümlemek ve uyarıları tanımlamak için Azure Izleyicisini nasıl kullanabileceğinizi açıklar.
+
+> [!TIP]
+> Bu belgedeki bilgiler birincil olarak yöneticiler içindir, çünkü Azure Machine Learning hizmeti için izlemeyi açıklar. Bir veri bilimcu veya geliştiricisiyseniz ve model eğitim çalışmalarınız için özel bilgileri izlemek istiyorsanız aşağıdaki belgelere bakın:
+>
+> * [Eğitim çalıştırmalarını başlatın, izleyin ve iptal edin](how-to-manage-runs.md)
+> * [Eğitim çalıştırmaları için günlük ölçümleri](how-to-track-experiments.md)
+> * [MLflow ile eexperiments izleyin](how-to-use-mlflow.md)
+> * [TensorBoard ile çalıştırmaları görselleştirin](how-to-monitor-tensorboard.md)
 
 ## <a name="azure-monitor"></a>Azure İzleyici
 

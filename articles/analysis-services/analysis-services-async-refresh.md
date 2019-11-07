@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services modelleri için zaman uyumsuz yenileme | Microsoft Docs
-description: REST API kullanarak zaman uyumsuz yenilemeyi nasıl kodleyeceğinizi öğrenin.
+description: Model verilerinin zaman uyumsuz yenilemesini kodlemek için Azure Analysis Services REST API nasıl kullanılacağını açıklar.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5fbb3f2cbc0e53ab1bc04d57b583802e26b92a60
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147356"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573389"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API ile zaman uyumsuz yenileme
 
@@ -61,7 +61,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 Tüm çağrıların yetkilendirme üstbilgisinde geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanması ve aşağıdaki gereksinimleri karşılaması gerekir:
 
 - Belirtecin bir kullanıcı belirteci ya da bir uygulama hizmeti sorumlusu olması gerekir.
-- Belirtecin doğru hedef kitlelerinin `https://*.asazure.windows.net` olarak ayarlanmış olması gerekir.
+- Belirtecin `https://*.asazure.windows.net`için doğru hedef kitlesi ayarlanmış olması gerekir.
 - Kullanıcı veya uygulamanın, istenen çağrıyı yapmak için sunucu veya modelde yeterli izinlere sahip olması gerekir. İzin düzeyi, modeldeki roller veya sunucudaki yönetim grubu tarafından belirlenir.
 
     > [!IMPORTANT]
@@ -97,7 +97,7 @@ Gövde aşağıdakine benzeyebilir:
 
 Parametrelerin belirtilmesi gerekli değildir. Varsayılan değer uygulanır.
 
-| Adı             | Tür  | Açıklama  |Varsayılan  |
+| Ad             | Tür  | Açıklama  |Varsayılan  |
 |------------------|-------|--------------|---------|
 | `Type`           | Sabit Listesi  | Gerçekleştirilecek işleme türü. Türler TMSL [yenileme komut](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) türleriyle hizalanır: Full, clearvalues, Calculate, dataonly, Automatic ve birleştirme. Tür ekleme desteklenmiyor.      |   Otomatik      |
 | `CommitMode`     | Sabit Listesi  | Nesnelerin toplu işlemlere mi yoksa yalnızca tamamlandığında mi uygulanacağını belirler. Modlar şunlardır: Default, işlemsel, partialBatch.  |  işlem       |

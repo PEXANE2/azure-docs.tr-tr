@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 7be0cfbe538d06da617049ac74cba60ff1b713e6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8c7da1b989546950bf61153e96193c0bab11d8ac
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791703"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603538"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure 'da SUSE Linux Enterprise Server Paceyapıcısı ayarlama
 
@@ -32,7 +32,7 @@ ms.locfileid: "72791703"
 [sles-nfs-guide]:high-availability-guide-suse-nfs.md
 [sles-guide]:high-availability-guide-suse.md
 
-Azure 'da bir Paceoluşturucu kümesi kurmak için iki seçenek vardır. Azure API 'Leri aracılığıyla başarısız olan bir düğümü yeniden başlatma işlemini ele alan ve bir SBD cihazı kullanabileceğiniz bir düğüm oluşturma Aracısı kullanabilirsiniz.
+Azure'da Pacemaker kümeyi ayarlamak için iki seçenek vardır. Azure API 'Leri aracılığıyla başarısız olan bir düğümü yeniden başlatma işlemini ele alan ve bir SBD cihazı kullanabileceğiniz bir düğüm oluşturma Aracısı kullanabilirsiniz.
 
 SBD cihazı, Iscsı hedef sunucusu olarak davranan ve bir SBD cihazı sağlayan en az bir ek sanal makine gerektirir. Bu Iscsı hedef sunucuları, diğer Paceüreticisi kümeleriyle paylaşılabilir. Bir SBD cihaz kullanmanın avantajı daha hızlı bir yük devretme zamanı olup, şirket içinde SBD cihazları kullanıyorsanız, paceoluşturucu kümesini nasıl çalıştıracaksınız üzerinde herhangi bir değişiklik yapılmasını gerektirmez. Bir Paceoluşturucu kümesi için en fazla üç SBD cihazı kullanarak bir SBD cihazının kullanılamaz hale gelmesine izin verebilirsiniz (örneğin, Iscsı hedef sunucusu 'nda işletim sistemi düzeltme eki uygulama). Her Paceyapıcısı için birden fazla SBD cihazı kullanmak istiyorsanız, birden çok Iscsı hedef sunucusu dağıttığınızdan ve her bir Iscsı hedef sunucusundan bir SBD 'nin bağlanmasına emin olun. Tek bir SBD cihazı veya üçten birini kullanmanızı öneririz. Yalnızca iki SBD cihazı yapılandırırsanız ve bunlardan biri kullanılabilir değilse pacemaker bir küme düğümünü otomatik olarak dilimlayamaz. Bir Iscsı hedef sunucusu kapatıldığında sınır oluşturabilmek istiyorsanız üç SBD cihaz ve bu nedenle üç Iscsı hedef sunucusu kullanmanız gerekir.
 
@@ -50,7 +50,7 @@ Bir SBD cihazını sınırlama için kullanmak istiyorsanız bu adımları izley
 
 ### <a name="set-up-iscsi-target-servers"></a>Iscsı hedef sunucularını ayarlama
 
-Önce Iscsı hedef sanal makinelerini oluşturmanız gerekir. Iscsı hedef sunucuları, birden çok Paceüreticisi kümesi ile paylaşılabilir.
+Önce iSCSI hedef sanal makineler oluşturmak gerekir. Iscsı hedef sunucuları, birden çok Paceüreticisi kümesi ile paylaşılabilir.
 
 1. Yeni SLES 12 SP1 veya üzeri sanal makineler dağıtın ve SSH aracılığıyla bunlara bağlanın. Makinelerin büyük olması gerekmez. Standard_E2s_v3 veya Standard_D2s_v3 gibi bir sanal makine boyutu yeterlidir. İşletim sistemi diski Premium Storage kullandığınızdan emin olun.
 
@@ -378,14 +378,15 @@ Oluşturmak istediğiniz yeni kümenin düğümlerinde aşağıdaki komutları �
 
 1. **[2]** SSH erişimini etkinleştirme
 
-   <pre><code># insert the public key you copied in the last step into the authorized keys file on the second server
-   sudo vi /root/.ssh/authorized_keys
-   
+   <pre><code>
    sudo ssh-keygen
-
+   
    # Enter file in which to save the key (/root/.ssh/id_rsa): -> Press ENTER
    # Enter passphrase (empty for no passphrase): -> Press ENTER
    # Enter same passphrase again: -> Press ENTER
+   
+   # insert the public key you copied in the last step into the authorized keys file on the second server
+   sudo vi /root/.ssh/authorized_keys   
    
    # copy the public key
    sudo cat /root/.ssh/id_rsa.pub
@@ -442,14 +443,13 @@ Oluşturmak istediğiniz yeni kümenin düğümlerinde aşağıdaki komutları �
 
 1. **[1]** küme yüklemesi
 
-   <pre><code>sudo ha-cluster-init
+   <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
    # Do you want to continue anyway (y/n)? <b>y</b>
    # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
-   # Network address to bind to (e.g.: 192.168.1.0) [10.0.0.0] <b>Press ENTER</b>
-   # Multicast address (e.g.: 239.x.x.x) [239.232.97.43] <b>Press ENTER</b>
-   # Multicast port [5405] <b>Press ENTER</b>
+   # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
+   # Port for ring0 [5405] <b>Press ENTER</b>
    # SBD is already configured to use /dev/disk/by-id/scsi-36001405639245768818458b930abdf69;/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf - overwrite (y/n)? <b>n</b>
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
@@ -469,12 +469,12 @@ Oluşturmak istediğiniz yeni kümenin düğümlerinde aşağıdaki komutları �
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. **[A]** diğer taşıma kullanmak ve NodeList eklemek için Corosync yapılandırın. Küme başka bir şekilde çalışmaz.
+1. **[A]** Corosync ayarlarını ayarlayın.  
 
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Değerler yoksa veya farklıysa, dosyaya aşağıdaki kalın içeriği ekleyin. Bellek Bakımı bakımını sağlamak için belirteci 30000 olarak değiştirdiğinizden emin olun. Daha fazla bilgi için Linux veya [Windows][virtual-machines-windows-maintenance] [için bu makaleye][virtual-machines-linux-maintenance] bakın. Ayrıca, mcastaddr parametresini kaldırdığınızdan emin olun.
+   Değerler yoksa veya farklıysa, dosyaya aşağıdaki kalın içeriği ekleyin. Bellek Bakımı bakımını sağlamak için belirteci 30000 olarak değiştirdiğinizden emin olun. Daha fazla bilgi için Linux veya [Windows][virtual-machines-windows-maintenance] [için bu makaleye][virtual-machines-linux-maintenance] bakın.
 
    <pre><code>[...]
      <b>token:          30000
@@ -486,20 +486,16 @@ Oluşturmak istediğiniz yeni kümenin düğümlerinde aşağıdaki komutları �
      interface { 
         [...] 
      }
-     <b>transport:      udpu</b>
-     # remove parameter mcastaddr
-     <b># mcastaddr: IP</b>
+     transport:      udpu
    } 
-   <b>nodelist {
+   nodelist {
      node {
-      # IP address of <b>prod-cl1-0</b>
       ring0_addr:10.0.0.6
      }
      node {
-      # IP address of <b>prod-cl1-1</b>
       ring0_addr:10.0.0.7
      } 
-   }</b>
+   }
    logging {
      [...]
    }
