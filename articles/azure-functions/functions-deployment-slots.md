@@ -1,8 +1,6 @@
 ---
 title: Azure Işlevleri dağıtım Yuvaları
 description: Azure Işlevleri ile dağıtım yuvaları oluşturmayı ve kullanmayı öğrenin
-services: functions
-documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 keywords: Azure işlevleri, işlevler
@@ -10,12 +8,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 23a4870332266ce180c2e94aeb0b5ca24073878b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70085675"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576312"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Işlevleri dağıtım Yuvaları
 
@@ -27,7 +25,7 @@ Aşağıdaki, işlevlerin takas yuvaları tarafından nasıl etkilendiğini yans
 - Bir işlev değiştirme sırasında çalışıyorsa, yürütme devam eder ve sonraki Tetikleyiciler, takas edilen uygulama örneğine yönlendirilir.
 
 > [!NOTE]
-> Yuvalar, Linux tüketim planı için kullanılamaz.
+> Yuvalar Şu anda Linux tüketim planı için kullanılamaz.
 
 ## <a name="why-use-slots"></a>Yuvalar neden kullanılmalıdır?
 
@@ -82,7 +80,7 @@ Dağıtım ayarı oluşturmak için aşağıdaki adımları kullanın:
 
 ![Dağıtım yuvası ayarı](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
-## <a name="deployment"></a>Kurulum
+## <a name="deployment"></a>Dağıtım
 
 Yuva oluşturduğunuzda yuvalar boştur. Uygulamanızı bir yuvaya dağıtmak için [Desteklenen Dağıtım teknolojilerinden](./functions-deployment-technologies.md) herhangi birini kullanabilirsiniz.
 
@@ -111,8 +109,8 @@ Yuvaları [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot
 
 1. İşlev uygulamasına gidin
 1. Değiştirmek istediğiniz kaynak yuva adına tıklayın
-1. *Genel bakış* sekmesinden, Azure işlevleri dağıtım yuvası ![Swap **takas** düğmesine tıklayın ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Değiştirme için yapılandırma ayarlarını doğrulayın ve Azure Işlevleri dağıtım yuvası ![Swap **takas et** ' e tıklayın ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. *Genel bakış* sekmesinden **takas** düğmesine tıklayın ![Azure işlevleri dağıtım yuvası ' nı değiştirin](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Değiştirme için yapılandırma ayarlarını doğrulayın ve **takas** ![değiştirme Azure işlevleri dağıtım yuvası ' na tıklayın](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
 Değiştirme işlemi yürütülürken işlem biraz zaman alabilir.
 
@@ -169,7 +167,7 @@ Bir yuvanın App Service planını değiştirmek için aşağıdaki adımları k
 Azure Işlevleri dağıtım yuvaları aşağıdaki sınırlamalara sahiptir:
 
 - Bir uygulama için kullanılabilen yuvaların sayısı plana bağlıdır. Tüketim planına yalnızca bir dağıtım yuvası izin verilir. App Service plan kapsamında çalışan uygulamalar için ek yuvalar vardır.
-- Bir `AzureWebJobsSecretStorageType` uygulama ayarı `files` eşit olan uygulamalar için bir yuva sıfırlama anahtarlarını değiştirme.
+- Bir `AzureWebJobsSecretStorageType` uygulama ayarı `files`eşit olan uygulamalar için bir yuva sıfırlama anahtarlarını değiştirme.
 - Yuvalar, Linux tüketim planı için kullanılamaz.
 
 ## <a name="support-levels"></a>Destek düzeyleri
@@ -182,10 +180,10 @@ Dağıtım yuvaları için iki düzey destek vardır:
 | İşletim sistemi/barındırma planı           | Destek düzeyi     |
 | ------------------------- | -------------------- |
 | Windows tüketimi       | Genel kullanılabilirlik |
-| Windows Premium (Önizleme) | Önizleme              |
+| Windows Premium           | Genel kullanılabilirlik  |
 | Windows ayrılmış         | Genel kullanılabilirlik |
 | Linux tüketimi         | Desteklenmeyen          |
-| Linux Premium (Önizleme)   | Önizleme              |
+| Linux Premium             | Genel kullanılabilirlik  |
 | Linux adanmış           | Genel kullanılabilirlik |
 
 ## <a name="next-steps"></a>Sonraki adımlar

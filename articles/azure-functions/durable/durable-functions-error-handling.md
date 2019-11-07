@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5a3cfb78fe97b52abb1406dff64132fc1b3fb985
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: adc23cad4ad7c55ce81096b1550520c496f744c1
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933420"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614865"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler hataları işleme (Azure Işlevleri)
 
@@ -30,7 +30,7 @@ Bir etkinlik işlevinde oluşturulan herhangi bir özel durum Orchestrator işle
 
 ```csharp
 [FunctionName("TransferFunds")]
-public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var transferDetails = ctx.GetInput<TransferOperation>();
 
@@ -69,7 +69,7 @@ public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
 
-public static async Task Run(DurableOrchestrationContext context)
+public static async Task Run(IDurableOrchestrationContext context)
 {
     var transferDetails = ctx.GetInput<TransferOperation>();
 
@@ -103,7 +103,10 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+> [!NOTE]
+> Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -149,7 +152,7 @@ Etkinlik işlevlerini veya alt düzenleme işlevlerini çağırdığınızda oto
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
-public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var retryOptions = new RetryOptions(
         firstRetryInterval: TimeSpan.FromSeconds(5),
@@ -164,7 +167,7 @@ public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext 
 ### <a name="c-script"></a>C#SCRIPT
 
 ```csharp
-public static async Task Run(DurableOrchestrationContext context)
+public static async Task Run(IDurableOrchestrationContext context)
 {
     var retryOptions = new RetryOptions(
         firstRetryInterval: TimeSpan.FromSeconds(5),
@@ -176,7 +179,10 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+> [!NOTE]
+> Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -190,26 +196,26 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-(.Net) veya `callActivityWithRetry` (JavaScript) API 'si bir `RetryOptions` parametre alır. `CallActivityWithRetryAsync` `CallSubOrchestratorWithRetryAsync` (.Net) veya `callSubOrchestratorWithRetry` (JavaScript) API kullanan alt düzenleme çağrıları aynı yeniden deneme ilkelerini kullanabilir.
+`CallActivityWithRetryAsync` (.NET) veya `callActivityWithRetry` (JavaScript) API 'SI bir `RetryOptions` parametresi alır. `CallSubOrchestratorWithRetryAsync` (.NET) veya `callSubOrchestratorWithRetry` (JavaScript) API 'sini kullanan alt düzenleme çağrıları aynı yeniden deneme ilkelerini kullanabilir.
 
 Otomatik yeniden deneme ilkesini özelleştirmek için çeşitli seçenekler vardır:
 
-* **Deneme sayısı üst sınırı**: En fazla yeniden deneme denemesi sayısı.
-* **İlk yeniden deneme aralığı**: İlk yeniden deneme girişiminden önce beklenecek süre.
-* **Geri dönüşlü katsayı**: Geri alma artışının oranını belirlemede kullanılan katsayı. Varsayılan değer 1 ' dir.
-* **En fazla yeniden deneme aralığı**: Yeniden deneme girişimleri arasında beklenecek en uzun süre.
-* **Yeniden deneme zaman aşımı**: Yeniden denemeler yapmak için harcayabileceğiniz en uzun süre. Varsayılan davranış süresiz olarak yeniden denenecektir.
-* **Tanıtıcı**: Bir işlevin yeniden denenip denenmeyeceğini tespit etmek için Kullanıcı tanımlı bir geri çağırma belirlenebilir.
+* **Deneme sayısı**üst sınırı: en fazla yeniden deneme denemesi sayısı.
+* **İlk yeniden deneme aralığı**: ilk yeniden deneme girişiminden önce beklenecek süre.
+* **Geri dönüşlü katsayı**: geri alma artışının oranını belirlemede kullanılan katsayı. Varsayılan değer 1 ' dir.
+* **En fazla yeniden deneme aralığı**: yeniden deneme girişimleri arasında beklenecek en uzun süre.
+* **Yeniden deneme zaman aşımı**: yeniden denemeler yapmak için harcayabileceğiniz en uzun süre. Varsayılan davranış süresiz olarak yeniden denenecektir.
+* **Tanıtıcı**: bir işlevin yeniden denenip denenmeyeceğini anlamak için Kullanıcı tanımlı geri çağırma belirtilebilir.
 
 ## <a name="function-timeouts"></a>İşlev zaman aşımları
 
-Bir Orchestrator işlevi içindeki bir işlev çağrısını, tamamlanamayacak kadar uzun sürerse iptal etmek isteyebilirsiniz. Bu işlemi bugün yapmanın doğru yolu, (.net `context.df.createTimer` ) veya [](durable-functions-timers.md) (JavaScript) `context.CreateTimer` ile `Task.WhenAny` `context.df.Task.any` birlikte (.net) veya (JavaScript) kullanarak, aşağıdaki örnekte olduğu gibi dayanıklı bir Zamanlayıcı oluşturmaktır:
+Bir Orchestrator işlevi içindeki bir işlev çağrısını, tamamlanamayacak kadar uzun sürerse iptal etmek isteyebilirsiniz. Bunu bugün yapmanın doğru yolu, aşağıdaki örnekte olduğu gibi `Task.WhenAny` (.NET) veya `context.df.Task.any` (JavaScript) ile birlikte `context.CreateTimer` (.NET) veya `context.df.createTimer` (JavaScript) kullanarak [dayanıklı bir Zamanlayıcı](durable-functions-timers.md) oluşturmaktır:
 
 ### <a name="precompiled-c"></a>DerlemesiC#
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
-public static async Task<bool> Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     TimeSpan timeout = TimeSpan.FromSeconds(30);
     DateTime deadline = context.CurrentUtcDateTime.Add(timeout);
@@ -238,7 +244,7 @@ public static async Task<bool> Run([OrchestrationTrigger] DurableOrchestrationCo
 ### <a name="c-script"></a>C#SCRIPT
 
 ```csharp
-public static async Task<bool> Run(DurableOrchestrationContext context)
+public static async Task<bool> Run(IDurableOrchestrationContext context)
 {
     TimeSpan timeout = TimeSpan.FromSeconds(30);
     DateTime deadline = context.CurrentUtcDateTime.Add(timeout);
@@ -264,7 +270,10 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+> [!NOTE]
+> Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -293,7 +302,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="unhandled-exceptions"></a>İşlenmeyen özel durumlar
 
-Orchestrator işlevi işlenmeyen bir özel durumla başarısız olursa, özel durumun ayrıntıları günlüğe kaydedilir ve örnek bir `Failed` durum ile tamamlanır.
+Orchestrator işlevi işlenmeyen bir özel durumla başarısız olursa, özel durumun ayrıntıları günlüğe kaydedilir ve örnek `Failed` durumuyla tamamlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

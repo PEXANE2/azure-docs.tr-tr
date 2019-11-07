@@ -65,6 +65,10 @@
               href: rest-speech-to-text.md
             - name: Toplu transkripsiyon REST API'leri
               href: batch-transcription.md
+    - name: Kaynaklar
+      items:
+        - name: Konuşmayı metne dönüştürme hakkında SSS
+          href: faq-stt.md
 - name: Metin okuma
   exanded: false
   items:
@@ -112,6 +116,10 @@
           items:
             - name: Metin okuma REST API'si
               href: rest-text-to-speech.md
+    - name: Kaynaklar
+      items:
+        - name: Metin okuma hakkında SSS
+          href: faq-text-to-speech.md
 - name: Amaç tanıma
   exanded: false
   items:
@@ -182,6 +190,10 @@
               href: 'https://aka.ms/csspeech/pythonref'
             - name: Sürüm notları
               href: releasenotes.md
+    - name: Kaynaklar
+      items:
+        - name: Konuşma çevirisi hakkında SSS
+          href: 'https://www.microsoft.com/translator/faq.aspx'
 - name: Konuşma transkripsiyonu
   expanded: false
   items:
@@ -254,7 +266,7 @@
       items:
         - name: Konuşma SDK’sı ile botunuzu ses ile etkinleştirme
           href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: Başvuru
+    - name: Kaynaklar
       items:
         - name: Ses yardımcıları hakkında SSS
           href: faq-voice-assistants.md
@@ -368,6 +380,8 @@
           href: scenario-availability.md
     - name: Hızlı Başlangıçlar
       items:
+        - name: Proje oluşturma
+          href: quickstarts/create-project.md
         - name: 'C# ile Konuşma SDK''sını Ayarlama'
           href: quickstarts/setup-platform.md?pivots=programming-language-csharp
         - name: C++ ile Konuşma SDK'sını Ayarlama
