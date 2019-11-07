@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: b17b7088276aca6d7d8ed8f2d1cb554479b4de2b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 391cddbbd1b69fb7cb5422adbaea2f3378e273bf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507643"
+ms.locfileid: "73580155"
 ---
 # <a name="long-audio-api-preview"></a>Uzun ses API 'SI (Önizleme)
 
@@ -75,7 +75,3 @@ Uzun ses API 'sinin örnek kodu GitHub ' da kullanılabilir.
 * [Örnek kod: Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
 * [Örnek kod:C#](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)
 * [Örnek kod: Java](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/)
-
-## <a name="see-also"></a>Ayrıca bkz.
-
-* [Uzun ses API 'SI başvurusu](https://aka.ms/long-audio-ref)

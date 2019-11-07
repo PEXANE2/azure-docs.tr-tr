@@ -1,19 +1,19 @@
 ---
-title: Azure HPC Cache (Önizleme) önkoşulları
+title: Azure HPC önbellek önkoşulları
 description: Azure HPC önbelleğini kullanma önkoşulları
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca7a12f45f8d907ee65df85e349883e4c14af47a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709968"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582141"
 ---
-# <a name="prerequisites-for-azure-hpc-cache-preview"></a>Azure HPC önbelleği önkoşulları (Önizleme)
+# <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
 Yeni bir Azure HPC önbelleği oluşturmak için Azure portal kullanmadan önce ortamınızın bu gereksinimleri karşıladığından emin olun.
 
@@ -22,7 +22,7 @@ Yeni bir Azure HPC önbelleği oluşturmak için Azure portal kullanmadan önce 
 Ücretli bir abonelik önerilir.
 
 > [!NOTE]
-> Önizleme sürümü sırasında, Azure HPC önbellek ekibinin, bir önbellek örneği oluşturmak için kullanılmadan önce aboneliğinizi erişim listesine eklemesi gerekir. Bu yordam, her müşterinin test Önbelleklerinden yüksek kaliteli yanıt hızını aldığından emin olmanıza yardımcı olur. Erişim istemek için [Bu formu](https://aka.ms/onboard-hpc-cache) doldurun.
+> GA sürümünün ilk birkaç ayı sırasında, Azure HPC önbellek ekibinin, bir önbellek örneği oluşturmak için kullanılmadan önce aboneliğinizi erişim listesine eklemesi gerekir. Bu yordam, her müşterinin Önbelleklerinden yüksek kaliteli yanıt verdiğini aldığından emin olmanıza yardımcı olur. Erişim istemek için [Bu formu](https://aka.ms/onboard-hpc-cache) doldurun.
 
 ## <a name="network-infrastructure"></a>Ağ altyapısı
 
@@ -86,7 +86,7 @@ Uyumlu bir depolama hesabı oluşturmak için şu ayarları kullanın:
 * Erişim katmanı (varsayılan): **sık** erişimli
 
 Önbelleğiniz ile aynı konumda bir depolama hesabı kullanmak iyi bir uygulamadır.
-<!-- need to clarify location - same region or same resource group or same virtual network? -->
+<!-- clarify location - same region or same resource group or same virtual network? -->
 
 Ayrıca, önbellek uygulamasına Azure depolama hesabınıza erişim izni vermeniz gerekir. Önbelleğe erişim rolleri depolama hesabı katılımcısı ve Depolama Blobu verileri katkıda bulunan ' i vermek için [depolama hedefleri ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) ' deki açıklamayı izleyin. Depolama hesabı sahibi değilseniz, sahibi bu adımı izleyin.
 

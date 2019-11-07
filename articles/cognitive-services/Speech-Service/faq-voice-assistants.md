@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 7ad3f932e9a10723d6cc1bae2fc4854c932d4c64
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507082"
+ms.locfileid: "73579660"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Ses yardımcıları: sık sorulan sorular
 
@@ -29,7 +29,7 @@ Y **:** Cortana gibi, bir ses Yardımcısı, bir kullanıcının konuşulan duyu
 
 **S: özel komutları (Önizleme) mi yoksa doğrudan konuşma hattını mi kullanmalıyım? Fark nedir?**
 
-Y **:** [özel komutlar (Önizleme)](custom-commands.md) , görev tamamlama senaryolarına uygun olan bir yardımcıyı kolayca oluşturup barındırmak için daha düşük karmaşıklığa sahip bir araç kümesidir. [Doğrudan hat](direct-line-speech.md) konuşması, güçlü bir konuşma senaryolarını etkinleştirebilecek daha zengin, daha gelişmiş yetenekler sağlar. Daha fazla bilgi için [yardımcı çözümlerin karşılaştırmasına](voice-assistants.md#comparing-assistant-solutions) bakın.
+Y **:** [özel komutlar (Önizleme)](custom-commands.md) , görev tamamlama senaryolarına uygun olan bir yardımcıyı kolayca oluşturup barındırmak için daha düşük karmaşıklığa sahip bir araç kümesidir. [Doğrudan hat](direct-line-speech.md) konuşması, güçlü bir konuşma senaryolarını etkinleştirebilecek daha zengin, daha gelişmiş yetenekler sağlar. Daha fazla bilgi için [yardımcı çözümlerin karşılaştırmasına](voice-assistants.md#choosing-an-assistant-solution) bakın.
 
 **S: Nasıl yaparım? kullanmaya başlamak istiyor musunuz?**
 
@@ -40,6 +40,17 @@ Y **:** Özel komutlar (Önizleme) uygulaması veya temel bot Framework bot olu�
 * [Bir bot 'ı doğrudan hat konuşma kanalına bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Hata ayıklama
+
+**S: Kanal gizliliğim nerede?**
+
+Y **:** Doğrudan hat konuşma önizleme sürümünü kullandıysanız veya ilgili belgeleri okuyorsanız, doğrudan hat konuşma kanalı kaydı sayfasında bir gizli anahtar bulmayı bekleyebilir. Konuşma SDK 'sında `FromBotSecret` v 1.7 `DialogServiceConfig` Factory yöntemi de bu değeri bekler.
+
+Doğrudan hat konuşma 'nın en son sürümü bir cihazdan bot ile iletişim kurma sürecini basitleştirir. Kanal kaydı sayfasında, üstteki açılan kutuda doğrudan hat konuşma kanalı kaydınızı bir konuşma kaynağıyla ilişkilendirir. Bağlantı kurulduktan sonra, v 1.8 konuşma SDK 'Sı, aboneliğinizle ilişkilendirdiğiniz bot ile iletişim kurmak üzere bir `DialogServiceConnector` yapılandıracak bir `BotFrameworkConfig::FromSubscription` Factory yöntemi içerir.
+
+İstemci uygulamanızı hala v 1.7 'den v 1.8 'e geçiriyorsanız `DialogServiceConfig::FromBotSecret`, kanal gizli parametresi için boş olmayan ve null olmayan bir değer ile çalışmaya devam edebilir, örn. önceki gizli dizi. Daha yeni bir kanal kaydıyla ilişkili bir konuşma aboneliği kullanılırken yalnızca yok sayılır. Bu değer, hizmet tarafı ilişkisinin ilgili olması için cihazda denetlendiğinden, null ve boş olmayan bir değer *olmalıdır* .
+
+
+Daha ayrıntılı bir kılavuz için, lütfen kanal kaydını adım adım gösteren [öğretici bölümüne](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) bakın.
 
 **S: bağlanırken bir 401 hatası alıyorum ve hiçbir şey işe yarar. Konuşma aboneliği anahtarımın geçerli olduğunu biliyorum. Ne var ne yok?**
 

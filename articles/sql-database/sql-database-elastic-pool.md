@@ -1,5 +1,5 @@
 ---
-title: Elastik havuzlarla birden çok SQL veritabanını yönetme-Azure | Microsoft Docs
+title: Elastik havuzlarla birden çok SQL veritabanını yönetme-Azure
 description: Birden çok SQL veritabanını yönetme ve ölçeklendirme-yüzlerce ve binlerce-elastik havuzlar kullanılarak. Gerektiğinde dağıtabileceğiniz kaynaklar için bir fiyat.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 68bb68b47ca240d6c20153af3ed4b0eb42475282
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876429"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690448"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastik havuzlar birden çok Azure SQL veritabanını yönetmenize ve ölçeklendirmenize yardımcı olur
 
@@ -89,7 +89,7 @@ Tek veritabanlarına ait kaynakların toplam miktarı 1,5 x 'ten daha fazla ise,
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Eşzamanlı olarak en üst seviyeye çıkan en fazla veritabanı sayısı
 
-Kaynakları paylaşarak, havuzdaki tüm veritabanları aynı anda kaynakları tek veritabanları için kullanılabilen sınıra kadar eşzamanlı olarak kullanabilir. Eşzamanlı olarak en yüksek olan veritabanları, havuz kaynakları ayarlanabilir ve havuz daha uygun maliyetli hale gelebilir. Genel olarak, 2/3 (veya% 67) değil Havuzdaki veritabanlarının kaynakları için aynı anda en fazla olması gerekir.
+Kaynakları paylaşarak, havuzdaki tüm veritabanları aynı anda kaynakları tek veritabanları için kullanılabilen sınıra kadar eşzamanlı olarak kullanabilir. Eşzamanlı olarak en yüksek olan veritabanları, havuz kaynakları ayarlanabilir ve havuz daha uygun maliyetli hale gelebilir. Genel olarak, 2/3 (veya %67) değil Havuzdaki veritabanlarının kaynakları için aynı anda en fazla olması gerekir.
 
 ***DTU tabanlı satın alma modeli örneği***
 
@@ -101,7 +101,7 @@ Bu örnek, havuzdaki diğer veritabanlarının kullanımını dikkate almaz. Her
 
 Bir veritabanının en yüksek ile ortalama kullanımı arasında büyük bir fark olması, uzun süreli düşük kullanımı ve kısa süreli yüksek kullanımı ifade eder. Bu kullanım modeli, veritabanları arasında kaynakların paylaşılması için idealdir. Bir veritabanının en yüksek kullanımı ortalama kullanımından 1,5 kat fazla olduğunda, veritabanı havuz için düşünülmelidir.
 
-**DTU tabanlı satın alma modeli örneği**: En yüksek kullanımı 100 DTU’ya varan ve ortalama olarak en fazla 67 DTU kullanan bir S3 veritabanı, bir havuzda eDTU paylaşmak için iyi bir adaydır. Alternatif olarak, en yüksek kullanımı 20 DTU’ya varan ve ortalama olarak en fazla 13 DTU kullanan bir S1 veritabanı da havuz için iyi bir adaydır.
+**DTU tabanlı satın alma modeli örneği**: 100 dtu ve 67 Ortalama ile Ilgili bir S3 veritabanı, bir havuzdaki eDTU 'ları paylaşmak için iyi bir adaydır. Alternatif olarak, en yüksek kullanımı 20 DTU’ya varan ve ortalama olarak en fazla 13 DTU kullanan bir S1 veritabanı da havuz için iyi bir adaydır.
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>Doğru havuz boyutunu Nasıl yaparım? seçin
 
@@ -116,11 +116,11 @@ Araçları kullanamadığınız durumlarda aşağıdaki adım adım yönergeler 
 
 1. Havuz için gereken eDTU 'ları veya sanal çekirdekleri aşağıdaki gibi tahmin edin:
 
-   DTU tabanlı satın alma modeli için: MAKS(<*Toplam veritabanı sayısı* X *Veritabanı başına ortalama DTU kullanımı*>,<br>  
+   DTU tabanlı satın alma modeli için: MAX (< VERITABANı başına*Toplam DBs* X *Ortalama DTU kullanımı*sayısı >,<br>  
    <*Eşzamanlı olarak en üst seviyeye çıkan veritabanı sayısı* X *Veritabanı başına en yüksek DTU kullanımı*)
 
-   Sanal çekirdek tabanlı satın alma modeli için: En fazla (< VERITABANı başına*Toplam DBs* X *Ortalama sanal çekirdek kullanımı*>,<br>  
-   <*Eşzamanlı olarak en* üst seviyeye çıkan veritabanı sayısı *Veritabanı başına X en yüksek sanal çekirdek kullanımı*)
+   Sanal çekirdek tabanlı satın alma modeli için: MAX (< VERITABANı başına*Toplam DBs* X *Ortalama sanal çekirdek kullanımı*sayısı >,<br>  
+   Her VERITABANı için *aynı anda* *en üst düzey sanal çekirdek kullanımı*<sayısı
 
 2. Havuzdaki tüm veritabanları için gereken bayt sayısını ekleyerek havuz için gereken depolama alanını tahmin edin. Ardından, bu depolama miktarını sağlayan eDTU havuz boyutunu belirleyin.
 3. DTU tabanlı satın alma modeli için 1. ve 2. adım 'daki eDTU tahminlerinin daha büyük bir kısmını alın. Sanal çekirdek tabanlı satın alma modeli için 1. adımdaki sanal çekirdek tahminini alın.
@@ -159,7 +159,7 @@ Azure portal esnek havuz oluşturabileceğiniz iki yol vardır.
 2. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Veritabanları** kutucuğunda **Ayrıntıları göster** ' i seçerek elastik havuzlarla ilgili ek bilgileri görüntüleyebilirsiniz.
 3. **Veritabanları** kutucuğunda **kaynak türü** açılan listesinde **Esnek havuz** ' ı seçin ve ardından **Oluştur**' u seçin.
 
-   ![Esnek havuz oluşturma](./media/sql-database-elastic-pool/create-elastic-pool.png)
+   ![Elastik havuz oluşturma](./media/sql-database-elastic-pool/create-elastic-pool.png)
 
 
 1. Alternatif olarak, var olan bir Azure SQL sunucusuna gidip **+ yeni havuz** ' a tıklayarak bir elastik havuz oluşturarak bu sunucuya doğrudan bir havuz oluşturabilirsiniz.

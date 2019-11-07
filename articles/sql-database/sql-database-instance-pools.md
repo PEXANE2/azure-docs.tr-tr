@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı örnek havuzları (Önizleme) | Microsoft Docs
+title: Azure SQL veritabanı örnek havuzları (Önizleme)
 description: Bu makalede Azure SQL veritabanı örnek havuzları (Önizleme) açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 34e779f04f59b23733c6fbfa3450931fccb442b1
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 7d8c316d5c78cfe09bcf134b5a5c513e1c007d74
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294262"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689775"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>SQL veritabanı örnek havuzları (Önizleme) nedir?
 
 Örnek havuzlar, Azure SQL veritabanı 'nda daha küçük SQL örneklerini buluta daha küçük bir şekilde geçirmek için kullanışlı ve uygun maliyetli bir yol sağlayan yeni bir kaynaktır.
 
-Örnek havuzları, toplam geçiş gereksinimlerinize göre işlem kaynaklarını önceden sağlamanıza olanak tanır. Daha sonra, önceden sağlanmış işlem düzeyinize kadar bireysel yönetilen birkaç örnek dağıtabilirsiniz. Örneğin, 8 sanal çekirdekleri önceden sağlarsanız iki 2 sanal çekirdek ve bir 4 sanal çekirdek örneği dağıtabilir ve ardından veritabanlarını bu örneklere geçirebilirsiniz. Örnek havuzlarından önce, daha küçük ve daha az işlem yoğunluklu iş yükleri, buluta geçiş yaparken genellikle daha büyük bir yönetilen örneğe birleştirilmelidir. Veritabanı gruplarının büyük bir örneğe geçirilmesi gerekir, genellikle dikkatli kapasite planlama ve kaynak İdaresi, ek güvenlik konuları ve bazı ek veri birleştirme örnek düzeyinde çalışır.
+Örnek havuzları toplam geçiş gereksinimlerinize göre işlem kaynaklarını önceden sağlamanıza olanak tanır. Ardından, önceden sağlanan işlem düzeyinize ulaşana kadar tek tek yönetilen örnekleri dağıtabilirsiniz. Örneğin, 8 sanal çekirdekleri önceden sağlarsanız iki 2 sanal çekirdek ve bir 4 sanal çekirdek örneği dağıtabilir ve ardından veritabanlarını bu örneklere geçirebilirsiniz. Örnek havuzlarından önce, daha küçük ve daha az işlem yoğunluklu iş yükleri, buluta geçiş yaparken genellikle daha büyük bir yönetilen örneğe birleştirilmelidir. Veritabanı gruplarının büyük bir örneğe geçirilmesi gerekir, genellikle dikkatli kapasite planlama ve kaynak İdaresi, ek güvenlik konuları ve bazı ek veri birleştirme örnek düzeyinde çalışır.
 
 Ayrıca, örnek havuzlar aynı alt ağda birden çok örnek havuzu ve birden çok tek örneği dağıtabilmeniz için yerel VNet tümleştirmesini destekler.
 
@@ -31,7 +31,7 @@ Ayrıca, örnek havuzlar aynı alt ağda birden çok örnek havuzu ve birden ço
 
 Örnek havuzlar aşağıdaki avantajları sağlar:
 
-1. 2 sanal çekirdek örnekleri barındırma özelliği. *Yalnızca örnek havuzlardaki örnekler için. \**
+1. 2 sanal çekirdek örnekleri barındırma özelliği. *yalnızca örnek havuzlardaki örneklere\** .
 2. Öngörülebilir ve hızlı örnek dağıtım süresi (5 dakikaya kadar).
 3. En az IP adresi ayırması.
 
@@ -59,7 +59,7 @@ Aşağıdaki listede, örnek havuzlarının göz önünde bulundurulması gereke
 
 ## <a name="architecture-of-instance-pools"></a>Örnek havuzlarının mimarisi
 
-Örnek havuzlarının normal yönetilen örneklere benzer mimarisi vardır (*tek örnekler*).   [Azure sanal ağları (VNet) içindeki dağıtımları](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks)desteklemek ve müşterilere yalıtım ve güvenlik sağlamak için, örnek havuzları [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)da güvenir. Sanal kümeler, müşterinin sanal ağ alt ağı içinde dağıtılan ayrılmış bir yalıtılmış sanal makine kümesini temsil eder.
+Örnek havuzlarının normal yönetilen örneklere benzer mimarisi vardır (*tek örnekler*).  [Azure sanal ağları (VNet) içindeki dağıtımları](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) desteklemek ve müşterilere yalıtım ve güvenlik sağlamak için, örnek havuzları [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)da güvenir. Sanal kümeler, müşterinin sanal ağ alt ağı içinde dağıtılan ayrılmış bir yalıtılmış sanal makine kümesini temsil eder.
 
 İki dağıtım modeli arasındaki temel fark, örnek havuzların, [Windows Iş nesneleri](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)kullanılarak yönetilen kaynak olan aynı sanal makine düğümünde birden çok SQL Server işlem dağıtımına izin vermesinin, tek örneklerin her zaman açık olduğu durumlar bir sanal makine düğümü.
 
@@ -71,7 +71,7 @@ Her örnek havuz, altında ayrı bir sanal küme oluşturur. Bir havuz içindeki
 
 ## <a name="instance-pools-resource-limitations"></a>Örnek havuzları kaynak sınırlamaları
 
-Örnek havuzlarla ilgili birkaç kaynak sınırlaması ve havuzlar içindeki örnekler vardır:
+Örnek havuzlarıyla ve havuzların içindeki örneklerle ilgili çeşitli kaynat sınırlamaları vardır:
 
 - Örnek havuzları yalnızca 5. nesil donanımında kullanılabilir.
 - Bir havuzdaki örneklerin ayrılmış CPU ve RAM 'i vardır; bu nedenle, tüm örneklerde toplanan sanal çekirdek sayısı, havuza ayrılan Vcore sayısından küçük veya ona eşit olmalıdır.
@@ -112,7 +112,7 @@ Belirli değerleri (örneğin, örnek düzeyi harmanlama, saat dilimi, veri traf
 
 Havuzlardaki yönetilen örneklerin ayrılmış sanal çekirdek ve RAM 'i olsa da, yerel disk (tempdb kullanımı için) ve ağ kaynakları paylaşır. Büyük olasılıkla, havuzda birden çok örnek aynı anda yüksek kaynak tüketimine sahip olursa *gürültülü komşu* efektini denemek mümkündür. Bu davranışı gözlemlerseniz, bu örnekleri daha büyük bir havuza veya tek örnek olarak dağıtmaya göz önünde bulundurun.
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Bir havuzda dağıtılan örnekler aynı sanal makineyi paylaştığından, daha yüksek güvenlik riskleri sunan özellikleri devre dışı bırakmayı veya bu özelliklere yönelik erişim izinlerini güvenli bir şekilde kontrol etmek isteyebilirsiniz. Örneğin, CLR tümleştirmesi, yerel yedekleme ve geri yükleme, veritabanı e-postası vb.
 
@@ -136,8 +136,8 @@ Havuzun sanal çekirdek fiyatı, bu havuzda kaç örnek dağıtıldığına bak�
 
 Işlem fiyatı (sanal çekirdekler cinsinden ölçülür) için, iki fiyatlandırma seçeneği mevcuttur:
 
-  1. *Lisans dahil*: Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını uygulayın.
-  2. *Azure hibrit avantajı*: SQL Server için Azure Hibrit Avantajı içeren daha düşük bir fiyat. Müşteriler, Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını kullanarak bu fiyatı kabul edebilir. Uygunluk ve diğer ayrıntılar için bkz. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/).
+  1. *Lisans dahil*: mevcut SQL Server lisanslarını yazılım güvencesi ile uygulayın.
+  2. *Azure hibrit avantajı*: SQL Server için Azure hibrit avantajı içeren daha düşük bir fiyat. Müşteriler, Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını kullanarak bu fiyatı kabul edebilir. Uygunluk ve diğer ayrıntılar için bkz. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Bir havuzdaki tek tek örnekler için farklı fiyatlandırma seçeneklerinin ayarlanması mümkün değildir. Üst havuzdaki tüm örnekler, lisans dahil fiyattan veya Azure Hibrit Avantajı fiyattan olmalıdır. Havuzun lisans modeli, havuz oluşturulduktan sonra değiştirilebilir.
 

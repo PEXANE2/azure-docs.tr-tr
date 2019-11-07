@@ -1,20 +1,21 @@
 ---
-title: Gelişmiş tehdit koruması-Azure SQL veritabanı | Microsoft Docs
+title: Gelişmiş tehdit koruması Yapılandırma-Azure SQL veritabanı
 description: Gelişmiş tehdit koruması, tek bir veritabanı veya elastik havuzdaki veritabanına yönelik olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+ms.custom: seo-dt-2019
 ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: 755a3b391cb7b4909169b034cc8d89892ec2ed05
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8a6d40f37dec3488009a702d52d6437cd345717b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816552"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686947"
 ---
 # <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>Tek veya havuza alınmış veritabanları için Azure SQL veritabanı Gelişmiş tehdit koruması
 
@@ -26,7 +27,7 @@ Gelişmiş [tehdit koruması](sql-database-threat-detection-overview.md) , geli�
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Azure portal Gelişmiş tehdit koruması ayarlama
 
-1. Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal başlatın.
+1. [https://portal.azure.com](https://portal.azure.com)Azure Portal başlatın.
 2. Korumak istediğiniz Azure SQL veritabanı sunucusunun yapılandırma sayfasına gidin. Güvenlik ayarları ' nda **Gelişmiş veri güvenliği**' ni seçin.
 3. **Gelişmiş veri güvenliği** yapılandırması sayfasında:
 

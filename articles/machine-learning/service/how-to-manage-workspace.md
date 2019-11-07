@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1985c596b9f4b9b78b0055bfe1eab9888c30e201
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9e3915a2f55680fc2e24ac63d5e7170ada026c2e
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489739"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615213"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal Azure Machine Learning çalışma alanları oluşturun ve yönetin
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,13 +30,13 @@ Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız var
 
 1. Azure portal sol üst köşesinde **+ kaynak oluştur**' u seçin.
 
-      ![Yeni kaynak oluşturma](../../../includes/media/aml-create-in-portal/portal-create-resource.png)
+      ![Yeni kaynak oluşturma](../../../includes/media/aml-create-in-portal/create-workspace.gif)
 
-1. **Machine Learning hizmeti çalışma alanını**bulmak için arama çubuğunu kullanın.
+1. **Machine Learning**bulmak için arama çubuğunu kullanın.
 
-1. **Machine Learning hizmet çalışma alanı**' nı seçin.
+1. **Machine Learning**seçin.
 
-1. Başlamak için **Machine Learning hizmet çalışma alanı** bölmesinde **Oluştur** ' u seçin.
+1. Başlamak için **Machine Learning** bölmesinde **Oluştur** ' u seçin.
 
 1. Yeni çalışma alanınızı yapılandırmak için aşağıdaki bilgileri sağlayın:
 
@@ -89,18 +89,15 @@ Düşük kod deneyimleri ve gelişmiş güvenlik özellikleri gibi gelişmiş ö
 
 ## <a name="view"></a>Çalışma alanı bul
 
-1. Portalın sol üst köşesinde **tüm hizmetler**' i seçin.
+1. Üst arama alanına **Machine Learning**yazın.  
 
-1. **Tüm hizmetler** Filtresi alanında **makine öğrenimi**yazın.  
+1. **Machine Learning**seçin.
 
-1. **Azure Machine Learning**seçin.
-
-   ![Azure Machine Learning çalışma alanı ara](media/how-to-manage-workspace/all-services.png)
+   ![Azure Machine Learning çalışma alanı ara](media/how-to-manage-workspace/find-workspaces.png)
 
 1. Bulunan çalışma alanları listesine bakın. Abonelik, kaynak grupları ve konumlara göre filtre uygulayabilirsiniz.  
 
 1. Özelliklerini göstermek için bir çalışma alanı seçin.
-   ![çalışma alanı özellikleri](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Çalışma alanını silme
 

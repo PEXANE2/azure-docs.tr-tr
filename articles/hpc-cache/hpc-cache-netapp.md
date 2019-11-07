@@ -1,19 +1,19 @@
 ---
-title: Azure HPC Cache (Önizleme) ve Azure NetApp Files kullanın
+title: Azure HPC Cache ve Azure NetApp Files kullanın
 description: Azure NetApp Files ile depolanan verilere erişimi artırmak için Azure HPC Cache 'i kullanma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 35d7a11c4f39f15c6b2f904df77b88b85c2208e5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c6259dabd5ee9c53d37a3396f36832720a103c23
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954948"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582163"
 ---
-# <a name="use-azure-hpc-cache-preview-with-azure-netapp-files"></a>Azure NetApp Files ile Azure HPC Cache (Önizleme) kullanma
+# <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Azure NetApp Files ile Azure HPC önbelleği kullanma
 
 [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) , Azure HPC önbelleğiniz için bir depolama hedefi olarak kullanabilirsiniz. Bu makalede, iki hizmetin birlikte nasıl çalıştığı açıklanmakta ve bunları ayarlamaya yönelik ipuçları verilmektedir.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 766dacb69a3f1857197684f552d05a1376e94509
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 267a63eba90c74b79078a7c04c1d2d8929cf2a44
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514873"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615769"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure dosyaları ölçeklenebilirlik ve performans hedefleri
 
@@ -78,7 +78,7 @@ Bir aşamanın her biri için dağıtımınızı planlamaya yardımcı olmak üz
 | Sistem Yapılandırması |  |
 |-|-|
 | CPU | 64 MiB L3 önbellek ile 64 sanal çekirdek |
-| Hafıza | 128 GiB |
+| Bellek | 128 GiB |
 | Disk | Pil gücüyle RAID 10 ile SAS diskleri |
 | Ağ | 1 Gbps ağ |
 | İş yükü | Genel Amaçlı dosya sunucusu|
@@ -98,7 +98,7 @@ Bir aşamanın her biri için dağıtımınızı planlamaya yardımcı olmak üz
 | Eşitlenen nesne sayısı| 125.000 nesneleri (%1 karmaşıklık) |
 | Veri kümesi boyutu| 50 GiB |
 | Ortalama dosya boyutu | ~ 500 KiB |
-| Aktarım hızını karşıya yükle | saniyede 30 nesne |
+| Aktarım hızını karşıya yükle | saniyede 20 nesne |
 | Tam Indirme performansı * | saniyede 60 nesne |
 
 \* Bulut katmanlaması etkinse, bazı dosya verilerinin yalnızca bir kısmı indirildiğinden daha iyi performans gözlemleyebilirsiniz. Azure Dosya Eşitleme yalnızca, uç noktaların hiçbirinde değiştirildiklerinde önbelleğe alınmış dosyaların verilerini indirir. Katmanlı veya yeni oluşturulan dosyalar için, aracı dosya verilerini indirmez ve bunun yerine yalnızca ad alanını tüm sunucu uç noktalarına eşitler. Aracı Ayrıca katmanlı dosyaların kullanıcı tarafından erişilen kısmi karşıdan yüklenmesini de destekler. 

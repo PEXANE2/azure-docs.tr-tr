@@ -5,14 +5,14 @@ services: private-link
 author: KumudD
 ms.service: private-link
 ms.topic: overview
-ms.date: 09/16/2019
+ms.date: 11/04/2019
 ms.author: kumud
-ms.openlocfilehash: 9e6206e6f7e09ebe03659eb6e515a9b26d3469bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: aa176cb5ffc67ebba826cf13a1a66608301af5e5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475936"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601524"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Azure Özel Bağlantı nedir? (Önizleme)
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama, Azure Cosmos DB ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki [özel bir uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Ayrıca, kendi [özel bağlantı hizmetinizi](private-link-service-overview.md) sanal ağınızda (VNet) oluşturabilir ve müşterilerinize özel olarak iletebilirsiniz. Azure özel bağlantısı kullanılarak kurulum ve tüketim deneyimi Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
@@ -40,12 +40,12 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 
 |Senaryo  |Desteklenen hizmetler   |Kullanılabilen bölgeler | Durum   |
 |---------|---------|---------|---------|
-|Müşterinin sahip olduğu hizmetler için özel bağlantı|Standart Load Balancer arkasındaki özel bağlantı Hizmetleri |Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Orta Kuzey ABD  |  Önizleme  |
-|Azure PaaS hizmetleri için özel bağlantı   | Azure Depolama        |  Doğu ABD, Batı ABD, Orta Batı ABD       | Önizleme         |
-|  | Azure Data Lake Storage Gen2        |  Doğu ABD, Batı ABD, Orta Batı ABD       | Önizleme         |
-|  |  Azure SQL Veritabanı         | Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Orta Kuzey ABD      |   Önizleme      |
-||Azure SQL Veri Ambarı| Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Orta Kuzey ABD |Önizleme|
-||Azure Cosmos DB| Orta Batı ABD; WestUS EastUS Orta Kuzey ABD; EastUS 2; WestUS 2 |Önizleme|
+|Müşterinin sahip olduğu hizmetler için özel bağlantı|Standart Load Balancer arkasındaki özel bağlantı Hizmetleri | Tüm ortak bölgeler  |  Önizleme  |
+|Azure PaaS hizmetleri için özel bağlantı   | Azure Storage        |  Tüm ortak bölgeler      | Önizleme         |
+|  | Azure Data Lake Storage Gen2        |  Tüm ortak bölgeler      | Önizleme         |
+|  |  Azure SQL Veritabanı         | Tüm ortak bölgeler      |   Önizleme      |
+||Azure SQL Veri Ambarı| Tüm ortak bölgeler |Önizleme|
+||Azure Cosmos DB| Orta Batı ABD, WestUS, Orta Kuzey ABD |Önizleme|
 
 En güncel bildirimler için, [Azure sanal ağ güncelleştirmeleri sayfasını](https://azure.microsoft.com/updates/?product=virtual-network)inceleyin.
 

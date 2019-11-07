@@ -4,14 +4,15 @@ description: IoT Central için IoT bağlı lojistik uygulama şablonu mimarisi
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: e462d879ea1c7756021cd3a241920fb0028a2e4f
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1940f02fdf9badcf99ef85a2ab02ac9099cc1775
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026395"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615387"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central bağlı lojistik uygulama şablonu mimarisi
 
@@ -34,7 +35,7 @@ Aşağıdaki bölümde, IoT etiketlerinden & ağ geçitlerinden kavramsal mimari
 ## <a name="iot-tags"></a>IoT etiketleri
 IoT etiketleri; sıcaklık, nem, darbe, eğim & ışığı gibi fiziksel, çevresel ve çevresel algılayıcı özellikleri sağlar. IoT etiketleri genellikle Zigbee (802.15.4) aracılığıyla ağ geçidi cihazına bağlanır. Etiketler ucuz sensörlerdir; Bu nedenle, ters lojistik ile güçlüklere engel olmak için tipik bir lojistik yolculuğunun sonunda atılabilir.
 
-## <a name="gateway"></a>Ağ Geçidi
+## <a name="gateway"></a>Ağ geçidi
 Ağ geçitleri Ayrıca çevresel algılama özelliklerine sahip IoT etiketleri olarak davranabilir. Ağ Geçidi, hücresel, Wi-Fi kanalları aracılığıyla yukarı akış Azure IoT bulut bağlantısına (MQTT) izin verebilir.  Bluetooth, NFC ve 802.15.4 kablosuz algılayıcı ağı (WSN) modları, IoT etiketleriyle aşağı akış iletişimi için kullanılır. Ağ geçitleri uçtan uca güvenli bulut bağlantısı, IoT etiketi eşleştirmesi, algılayıcı veri toplama, veri saklama ve uyarı eşiklerini yapılandırma yeteneği sağlar.
 
 ## <a name="device-management-with-iot-central"></a>IoT Central ile cihaz yönetimi 

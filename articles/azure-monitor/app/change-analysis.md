@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 3805d7b39c25bcb213a1d4f110161dcd00eb3630
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: dc572d29b4e6d95525959becad0ed8069735e33c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678245"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606036"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
@@ -37,7 +37,7 @@ Aşağıdaki diyagramda değişiklik analizinin mimarisi gösterilmektedir:
 
 [Azure Kaynak Grafiği](https://docs.microsoft.com/azure/governance/resource-graph/overview)'ni kullanarak, değişiklik analizi, uygulamanızı barındıran Azure kaynaklarının zaman içinde nasıl değiştiğini gösteren bir geçmiş kaydı sağlar. Değişiklik analizi, IP yapılandırma kuralları, Yönetilen kimlikler ve SSL ayarlarındaki değişiklikleri algılayabilir. Bu nedenle, bir Web uygulamasına bir etiket eklenirse değişiklik Analizi değişikliği yansıtır. Bu bilgiler, Azure aboneliğinde `Microsoft.ChangeAnalysis` kaynak sağlayıcısı etkinleştirildiği sürece kullanılabilir.
 
-### <a name="changes-in-web-app-deployment-and-configuration"></a>Web uygulaması dağıtımı ve yapılandırmasındaki değişiklikler
+### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>Web uygulaması dağıtımı ve yapılandırmasındaki değişiklikler (konuk içi değişiklikler)
 
 Değişiklik analizi, bir uygulamanın dağıtım ve yapılandırma durumunu her 4 saatte bir yakalar. Uygulama ortamı değişkenlerindeki değişiklikleri algılayabilir. Araç farkları hesaplar ve nelerin değiştiğini gösterir. Kaynak Yöneticisi değişikliklerden farklı olarak, kod dağıtımı değişiklik bilgileri araç içinde hemen kullanılamayabilir. Değişiklik analizinde yapılan en son değişiklikleri görüntülemek için **değişiklikleri şimdi Tara**' yı seçin.
 
@@ -48,13 +48,35 @@ Değişiklik analizi, bir uygulamanın dağıtım ve yapılandırma durumunu her
 Kaynak bağımlılıklarındaki değişiklikler de bir Web uygulamasında sorunlara neden olabilir. Örneğin, bir Web uygulaması Redsıs önbelleğine çağırırsa, Redsıs Cache SKU 'SU Web uygulaması performansını etkileyebilir. Bağımlılıklarda yapılan değişiklikleri algılamak için, değişiklik Analizi Web uygulamasının DNS kaydını denetler. Bu şekilde, tüm uygulama bileşenlerinde sorunlara neden olabilecek değişiklikler tanımlanmaktadır.
 Şu anda aşağıdaki bağımlılıklar desteklenir:
 - Web Apps
-- Azure Depolama
+- Azure Storage
 - Azure SQL
 
+## <a name="viewing-changes-for-all-resources-in-azure"></a>Azure 'daki tüm kaynaklar için değişiklikleri görüntüleme
+Azure Izleyici 'de, Öngörüler ve uygulama bağımlılıkları kaynaklarıyla ilgili tüm değişiklikleri görüntülemek için değişiklik analizinin tek başına dikey penceresi vardır.
+
+Dikey pencereyi başlatmak için Azure portal arama çubuğunda bulunan değişiklik analizini arayın.
+
+![Azure portal değişiklik analizini aramanın ekran görüntüsü](./media/change-analysis/search-change-analysis.png)
+
+Değişiklikleri görüntülemeye başlamak için kaynak grubu ve kaynaklar ' ı seçin.
+
+![Azure portal değişiklik Analizi dikey penceresinin ekran görüntüsü](./media/change-analysis/change-analysis-standalone-blade.png)
+
+Uygulamanızı barındıran öngörüleri ve ilgili bağımlılıklar kaynaklarını görebilirsiniz. Bu görünüm, geliştiricilerin sorunları gidermelerine yönelik uygulama odaklı olacak şekilde tasarlanmıştır.
+
+Şu anda desteklenen kaynaklar şunlardır:
+- Virtual Machines
+- Sanal makine ölçek kümesi
+- Azure ağ kaynakları
+- Konuk içi dosya izleme ve ortam değişkenleri değişiklikleri içeren Web uygulaması
+
+Geri bildirimde bulunmak için lütfen dikey pencere veya e-posta changeanalysisteam@microsoft.comgeri bildirim gönder düğmesini kullanın. 
+
+![Değişiklik Analizi dikey penceresinde geri bildirim düğmesinin ekran görüntüsü](./media/change-analysis/change-analysis-feedback.png)
 
 ## <a name="change-analysis-for-the-web-apps-feature"></a>Web Apps özelliği için değişiklik Analizi
 
-Azure Izleyici 'de, değişiklik Analizi Şu anda self servis **Tanılama ve çözme sorunları** deneyiminde yerleşik olarak bulunur. App Service uygulamanızın **genel bakış** sayfasından bu deneyimle erişin.
+Azure Izleyici 'de, değişiklik Analizi Ayrıca self servis **Tanılama ve sorun sorunları** deneyiminde yerleşik olarak bulunur. App Service uygulamanızın **genel bakış** sayfasından bu deneyimle erişin.
 
 !["Genel bakış" düğmesinin ve "sorunları tanılama ve çözme" düğmesinin ekran görüntüsü](./media/change-analysis/change-analysis.png)
 
@@ -77,7 +99,7 @@ Azure Izleyici 'de, değişiklik Analizi Şu anda self servis **Tanılama ve ç�
     !["Değişiklik analizini etkinleştir" Kullanıcı arabiriminin ekran görüntüsü](./media/change-analysis/change-analysis-on.png)
 
 
-1. Değişiklik analizine erişmek için,**kullanılabilirlik ve performans**  > **uygulama kilitlenmelerine** >  **Tanılama ve çözme sorunlarını çözün** . Zaman içinde değişiklik türlerini özetleyen bir grafik görürsünüz ve bu değişiklikler hakkındaki ayrıntılarla birlikte:
+1. Değişiklik analizine erişmek için, **kullanılabilirlik ve performans** > **uygulama kilitlenmelerine** > **Tanılama ve çözme sorunlarını çözün** . Zaman içinde değişiklik türlerini özetleyen bir grafik görürsünüz ve bu değişiklikler hakkındaki ayrıntılarla birlikte:
 
      ![Değişiklik fark görünümünün ekran görüntüsü](./media/change-analysis/change-view.png)
 

@@ -4,15 +4,15 @@ description: Bu makalede, Application Gateway Web uygulaması güvenlik duvarı 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/16/2019
+ms.date: 11/05/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 3cc0af122143d2ee702f1f16ee26c010befa1155
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6d073648dc908cbbe40962f7ba079abcfe85ce45
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502348"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607301"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway Azure Web uygulaması güvenlik duvarı
 
@@ -20,10 +20,10 @@ Azure Application Gateway Azure Web uygulaması güvenlik duvarı (WAF), Web uyg
 
 Application Gateway WAF, açık Web uygulaması güvenlik projesinden (OWASP) [çekirdek kural kümesi (sp_configure)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1, 3,0 veya 2.2.9 tabanlıdır. WAF, ek yapılandırma gerekmeden yeni güvenlik açıklarına karşı koruma içerecek şekilde otomatik olarak güncelleştirilir. 
 
-Aşağıda listelenen tüm WAF özellikleri bir WAF Ilkesi içinde mevcuttur. İstediğiniz kadar çok ilke oluşturabilirsiniz ve bir Application Gateway, tek tek dinleyicilerine veya bir Application Gateway yol tabanlı yönlendirme kurallarına ilişkilendirilebilen. Bu şekilde, gerekirse Application Gateway ardındaki her bir site için ayrı ilkelere sahip olabilirsiniz. WAF Ilkeleri hakkında daha fazla bilgi için bkz. [WAF Ilkesi oluşturma](create-waf-policy-ag.md).
+Aşağıda listelenen tüm WAF özellikleri bir WAF Ilkesi içinde mevcuttur. Birden çok ilke oluşturabilirsiniz ve bir Application Gateway, tek tek dinleyiciler veya bir Application Gateway yol tabanlı yönlendirme kuralları ile ilişkilendirilebilen. Bu şekilde, gerekirse Application Gateway ardındaki her bir site için ayrı ilkelere sahip olabilirsiniz. WAF Ilkeleri hakkında daha fazla bilgi için bkz. [WAF Ilkesi oluşturma](create-waf-policy-ag.md).
 
    > [!NOTE]
-   > Site başına ve URI başına WAF Ilkeleri genel önizlemede. Bu, bu özelliğin Microsoft 'un ek kullanım koşulları 'na tabi olduğu anlamına gelir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/).
+   > Site başına ve URI başına WAF Ilkeleri genel önizlemede. Bu, bu özelliğin Microsoft 'un ek kullanım koşulları 'na tabi olduğu anlamına gelir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Application Gateway WAF diyagramı](../media/ag-overview/waf1.png)
 
@@ -39,9 +39,11 @@ Bu bölümde, Application Gateway için WAF 'nin sağladığı temel avantajlar 
 
 * Web uygulamalarınızı, arka uç kodunda değişiklik yapmadan Web güvenlik açıklarına ve saldırılarına karşı koruyun.
 
-* Birden çok Web uygulamasını aynı anda koruyun. Bir Application Gateway örneği, bir Web uygulaması güvenlik duvarı tarafından korunan en fazla 100 web sitesi barındırabilir.
+* Birden çok Web uygulamasını aynı anda koruyun. Bir Application Gateway örneği, bir Web uygulaması güvenlik duvarı tarafından korunan en fazla 40 Web sitesi barındırabilir.
 
-* IP saygınlığı RuleSet ile Web uygulamalarınızı kötü amaçlı botlardan koruyun
+* Aynı WAF arkasındaki farklı siteler için özel WAF ilkeleri oluşturma 
+
+* IP saygınlığı RuleSet (Önizleme) ile Web uygulamalarınızı kötü amaçlı botlardan koruyun
 
 ### <a name="monitoring"></a>İzleme
 
@@ -51,9 +53,11 @@ Bu bölümde, Application Gateway için WAF 'nin sağladığı temel avantajlar 
 
 ### <a name="customization"></a>Özelleştirme
 
-* WAF kurallarını ve kural gruplarını, uygulama gereksinimlerinize uyacak şekilde özelleştirebilir ve hatalı pozitif durumları ortadan kaldırabilirsiniz.
+* WAF kurallarını ve kural gruplarını, uygulama gereksinimlerinize uyacak şekilde özelleştirin ve hatalı pozitif sonuçları ortadan kaldırın.
 
-* Bir WAF Ilkesini, WAF 'nin arkasındaki her bir site için siteye özgü yapılandırmaya izin verecek şekilde ilişkilendirebilirsiniz
+* WAF 'nin bir WAF Ilkesini siteye özgü yapılandırmaya izin vermek için WAF 'nin arkasındaki her bir site için ilişkilendirin
+
+* Uygulamanızın ihtiyaçlarını karşılamak için özel kurallar oluşturun
 
 ## <a name="features"></a>Özellikler
 
@@ -62,10 +66,13 @@ Bu bölümde, Application Gateway için WAF 'nin sağladığı temel avantajlar 
 - Komut ekleme, HTTP isteği, HTTP yanıtı bölme ve uzak dosya ekleme gibi diğer yaygın web saldırılarına karşı koruma.
 - HTTP protokol ihlallerine karşı koruma.
 - Eksik konak Kullanıcı Aracısı ve kabul başlıkları gibi HTTP protokol anormallara karşı koruma.
-- Botlar, gezginler ve tarayıcılara karşı koruma.
+- Gezginler ve tarayıcılara karşı koruma.
 - Yaygın uygulama yapılandırmalarını algılama (örneğin, Apache ve IIS).
 - Daha düşük ve üst sınırlara sahip yapılandırılabilir istek boyutu sınırları.
 - Dışlama listeleri, bir WAF değerlendirmesinden belirli istek özniteliklerini atlamanızı sağlar. Ortak bir örnek, kimlik doğrulama veya parola alanları için kullanılan Active Directory eklenen belirteçlerdir.
+- Uygulamalarınızın belirli ihtiyaçlarını karşılamak için özel kurallar oluşturun.
+- Coğrafi filtreleme, belirli ülkelerin uygulamalarınıza erişim kazanmasıyla izin vermek veya engellemek için trafiği filtreleyin. (önizleme)
+- Botları hafifletme kural kümesiyle uygulamalarınızı koruyun. (önizleme)
 
 ## <a name="waf-policy"></a>WAF Ilkesi
 
@@ -79,7 +86,7 @@ Daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı Ayrıntılar kura
 
 ### <a name="custom-rules"></a>Özel kurallar
 
-Ayrıca, özel kuralları da destekler Application Gateway. Özel kurallarla, WAF üzerinden geçen her istek için değerlendirilen kendi kurallarınızı oluşturabilirsiniz. Bu kurallar, yönetilen kural kümelerindeki kuralların geri kalanından daha yüksek bir öncelik tutar. Bir koşul kümesi karşılanıyorsa, izin vermek veya engellemek için bir eylem yapılır. 
+Application Gateway özel kuralları da destekler. Özel kurallarla, WAF üzerinden geçen her istek için değerlendirilen kendi kurallarınızı oluşturabilirsiniz. Bu kurallar, yönetilen kural kümelerindeki kuralların geri kalanından daha yüksek bir öncelik tutar. Bir koşul kümesi karşılanıyorsa, izin vermek veya engellemek için bir eylem yapılır. 
 
 Daha fazla bilgi için bkz [. özel kurallar Application Gateway.](custom-waf-rules-overview.md)
 
@@ -138,6 +145,15 @@ Application Gateway Günlükler [Azure izleyici](../../azure-monitor/overview.md
 
 ![Güvenlik Merkezi genel bakış penceresi](../media/ag-overview/figure1.png)
 
+#### <a name="azure-sentinel"></a>Azure Sentinel
+
+Microsoft Azure Sentinel, ölçeklenebilir, bulutta yerel, güvenlik bilgileri olay yönetimi (SıEM) ve güvenlik Orchestration otomatik yanıtı (SOAR) çözümüdür. Azure Sentinel, bir uyarı algılama, tehdit görünürlüğü, proaktif arama ve tehdit yanıtı için tek bir çözüm sunarak kuruluş genelinde akıllı güvenlik Analizi ve tehdit bilgileri sunar.
+
+Yerleşik Azure WAF güvenlik duvarı olayları çalışma kitabı ile WAF 'nizin güvenlik olaylarına genel bir bakış edinebilirsiniz. Bu, olayları, eşleşen ve engellenen kuralları ve güvenlik duvarı günlüklerinde günlüğe kaydedilen diğer her şeyi içerir. Aşağıda günlüğe kaydetme hakkında daha fazla bilgi bulabilirsiniz. 
+
+
+![Sentinel](../media/ag-overview/sentinel.png)
+
 #### <a name="logging"></a>Günlüğe kaydetme
 
 WAF Application Gateway algıladığı her tehdit üzerinde ayrıntılı raporlama sağlar. Günlüğe kaydetme, Azure Tanılama günlükleriyle tümleşiktir. Uyarılar. JSON biçiminde kaydedilir. Bu Günlükler, [Azure izleyici günlükleri](../../azure-monitor/insights/azure-networking-analytics.md)ile tümleştirilebilir.
@@ -186,4 +202,8 @@ Fiyatlandırma modelleri WAF_v1 ve WAF_v2 SKU 'Ları için farklıdır. Daha faz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [BIR WAF Ilkesi oluşturarak](create-waf-policy-ag.md) başlayın
+- [WAF tarafından yönetilen kurallar](application-gateway-crs-rulegroups-rules.md) hakkında daha fazla bilgi edinin
+- [Özel kurallar](custom-waf-rules-overview.md) hakkında daha fazla bilgi edinin
 - [Azure ön kapıda Web uygulaması güvenlik duvarı](../afds/afds-overview.md) hakkında bilgi edinin
+

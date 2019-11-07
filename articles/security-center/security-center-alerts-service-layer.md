@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Merkezi 'nde Azure hizmet katmanı için tehdit algılama | Microsoft Docs
+title: Azure hizmet katmanı tehdit algılama-Azure Güvenlik Merkezi
 description: Bu konu başlığı altında, Azure Güvenlik Merkezi 'nde bulunan Azure hizmet katmanı uyarıları sunulmaktadır.
 services: security-center
 documentationcenter: na
@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: memildin
-ms.openlocfilehash: 9a600b6b45dbef49f600a5e9e913c9d1839eff93
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b82eab9d20966ddd0678c9213bf25a14b5313f58
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202455"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686460"
 ---
 # <a name="threat-detection-for-the-azure-service-layer-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Azure hizmet katmanı için tehdit algılama
 
@@ -66,8 +66,8 @@ Güvenlik Merkezi, Azure için denetim düzlemi olarak kabul edilen Azure Resour
 |**Etkin olmayan bir hesap kullanan şüpheli yönetim oturumu**|Abonelik etkinlik günlükleri Analizi şüpheli davranış algıladı. Uzun bir süre boyunca kullanımda olmayan bir sorumlu, bir saldırgan için kalıcılığı güvenli hale getirmeye yönelik eylemler gerçekleştiriyor.|
 |**PowerShell kullanarak şüpheli yönetim oturumu**|Abonelik etkinlik günlükleri Analizi şüpheli davranış algıladı. Abonelik ortamını yönetmek için düzenli olarak PowerShell kullanmayan bir sorumlu artık PowerShell kullanıyor ve bir saldırgan için kalıcılığı güvenli hale getirmenize yönelik eylemler gerçekleştiriyor.|
 |**Gelişmiş Azure Kalıcılık teknikleri kullanımı**|Abonelik etkinlik günlükleri Analizi şüpheli davranış algıladı. Özelleştirilmiş rollere, yasallı kimlik varlıkları verildi. Bu, saldırganın bir Azure müşteri ortamında kalıcılığı sağlamasına yol açabilir.|
-|**Sık erişilmeyen ülkeden etkinlik**|Kuruluştaki herhangi bir kullanıcı tarafından kısa süre önce veya hiç ziyaret edilmemiş bir konumdan gelen etkinlik oluştu.<br/>Bu algılama yöntemi, yeni ve sık erişilmeyen konumlarını belirlemek için etkinlik konumları dikkate alır. Anomali algılama altyapısında, kuruluşunuzdaki kullanıcılar tarafından kullanılan önceki konumları hakkında bilgi depolar. 
-|**Anonim IP adreslerinden etkinliği**|Anonim bir proxy IP adresi olarak tanımlanmış bir IP adresinden gelen kullanıcılar etkinliği algılandı. <br/>Bu proxy 'ler, cihazının IP adreslerini gizlemek isteyen kişiler tarafından kullanılır ve kötü amaçlı olarak kullanılabilir. Bu algılama, kuruluştaki kullanıcılar tarafından yaygın olarak kullanılan hatalı etiketli IP adresleri gibi hatalı pozitif sonuçları azaltan bir makine öğrenimi algoritması kullanır.|
+|**Seyrek bir ülkeden etkinlik**|Kuruluştaki herhangi bir kullanıcı tarafından kısa süre önce veya hiç ziyaret edilmemiş bir konumdan gelen etkinlik oluştu.<br/>Bu algılama, geçmiş etkinlik konumlarını göz önünde bulundurur ve yeni ve seyrek bulunan konumları belirlemektir. Anomali algılama altyapısı, kuruluştaki kullanıcılar tarafından kullanılan önceki konumlara ilişkin bilgileri depolar. 
+|**Anonim IP adreslerinden etkinlik**|Anonim bir proxy IP adresi olarak tanımlanmış bir IP adresinden gelen kullanıcılar etkinliği algılandı. <br/>Bu proxy 'ler, cihazının IP adreslerini gizlemek isteyen kişiler tarafından kullanılır ve kötü amaçlı olarak kullanılabilir. Bu algılama, kuruluştaki kullanıcılar tarafından yaygın olarak kullanılan hatalı etiketli IP adresleri gibi hatalı pozitif sonuçları azaltan bir makine öğrenimi algoritması kullanır.|
 |**Mümkün olmayan seyahat algılandı**|Coğrafi olarak uzak konumlardan kaynaklanan iki kullanıcı etkinliği (tek veya birden çok oturumunda) oluştu. Bu, kullanıcının ilk konumdan ikincisine gitmesini sağlamak için geçen süreden daha kısa bir süre içinde gerçekleşir. Bu, farklı bir kullanıcının aynı kimlik bilgilerini kullandığını gösterir. <br/>Bu algılama, kuruluştaki diğer kullanıcılar tarafından düzenli olarak kullanılan VPN 'Ler ve konumlar gibi imkansız seyahat koşullarına katkıda bulunan açık olmayan hatalı pozitif durumları yok sayan bir makine öğrenimi algoritması kullanır. Algılama işlemi, yedi günlük ilk öğrenme dönemine sahiptir ve bu sırada yeni bir kullanıcının etkinlik modelini öğrenir.|
 
 >[!NOTE]

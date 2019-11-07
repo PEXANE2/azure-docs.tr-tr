@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3c9e047db48e12f6ce797c034a6b40084542c8e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 38fe0b0ff3bcb38133444819200254a684f08d44
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178098"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573778"
 ---
 # <a name="access-and-use-workspaces-on-the-my-apps-preview-portal"></a>Uygulamalarım (Önizleme) portalındaki çalışma alanlarına erişin ve bunları kullanın
 
@@ -47,10 +47,10 @@ Uygulamalarınızı **uygulamalarım** portalındaki çeşitli kategorilerde org
 
 - Uygulamalara verilen izinleri gözden geçirin, güncelleştirin veya iptal edin. Daha fazla bilgi için bkz. [uygulamalarım (Önizleme) portalındaki uygulama Izinlerini düzenleme veya iptal etme](my-applications-portal-permissions-saved-accounts.md).
 
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 
-- [Profilinizi ve hesap bilgilerinizi güncelleştirin](myprofile-portal-overview.md). **Profilim** (Önizleme) portalında görüntülenen kişisel bilgilerinizi güncelleştirme yönergeleri.
+- [Profilinizi ve hesap bilgilerinizi güncelleştirin](my-account-portal-overview.md). **Profilim** (Önizleme) portalında görüntülenen kişisel bilgilerinizi güncelleştirme yönergeleri.
 
-- [Kuruluşları yönetin](myprofile-portal-organizations-page.md). Kuruluşunuzda ilgili bilgilerinizin, **profil** portalının **kuruluşlar** sayfasında nasıl görüntüleneceği ve yönetileceği ile ilgili yönergeler.
+- [Kuruluşları yönetin](my-account-portal-organizations-page.md). Kuruluşunuzda ilgili bilgilerinizin, **profil** portalının **kuruluşlar** sayfasında nasıl görüntüleneceği ve yönetileceği ile ilgili yönergeler.
 
-- [Bağlı cihazlarınızı yönetin](myprofile-portal-devices-page.md). İş veya okul hesabınızı kullanarak bağlı olduğunuz cihazların nasıl yönetileceği hakkındaki yönergeler, **profil** portalının **cihazlar** sayfasında.
+- [Bağlı cihazlarınızı yönetin](my-account-portal-devices-page.md). İş veya okul hesabınızı kullanarak bağlı olduğunuz cihazların nasıl yönetileceği hakkındaki yönergeler, **profil** portalının **cihazlar** sayfasında.

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı elastik sorguya genel bakış | Microsoft Docs
+title: Azure SQL veritabanı elastik sorguya genel bakış
 description: Elastik sorgu birden çok veritabanına yayılan bir Transact-SQL sorgusu çalıştırmanızı sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 07/01/2019
-ms.openlocfilehash: 313e8af0e42f5108a22261a475b5340208adb7bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 08c191742425c448618db255491c709130df33a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568558"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690371"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL veritabanı elastik sorguya genel bakış (Önizleme)
 
@@ -24,7 +24,7 @@ Elastik sorgu özelliği (önizlemede), Azure SQL veritabanı 'nda birden çok v
 
 ## <a name="why-use-elastic-queries"></a>Neden elastik sorgular kullanılmalıdır?
 
-### <a name="azure-sql-database"></a>Azure SQL Database
+### <a name="azure-sql-database"></a>Azure SQL Veritabanı
 
 T-SQL ' i Azure SQL veritabanları genelinde tamamen sorgulayın. Bu, uzak veritabanlarının salt okunurdur sorgulanmasını sağlar ve geçerli şirket içi SQL Server müşterilerin, üç ve dört parçalı ad veya bağlı sunucu ile SQL DB 'ye geçiş yapmasına olanak sağlar.
 
@@ -38,7 +38,7 @@ Elastik sorgular artık SQL parametrelerini yürütme için uzak veritabanların
 
 ### <a name="stored-procedure-execution"></a>Saklı yordam yürütme
 
-[SP\_ Execute\_Remote](https://msdn.microsoft.com/library/mt703714)kullanarak uzak saklı yordam çağrılarını veya uzak işlevleri yürütün.
+Uzaktan saklı yordam çağrılarını veya uzak işlevleri, [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714)kullanarak yürütün.
 
 ### <a name="flexibility"></a>Esneklik
 
@@ -55,8 +55,8 @@ Elastik bir sorgu, SQL Server Management Studio veya Visual Studio tarafından v
 
 Elastik sorgu için müşteri senaryoları aşağıdaki topolojilerle belirlenir:
 
-* **Dikey bölümlendirme-veritabanları arası sorgular** (Topoloji 1): Veriler, bir veri katmanındaki birçok veritabanı arasında dikey olarak bölümlenir. Genellikle, farklı tablo kümeleri farklı veritabanlarında bulunur. Diğer bir deyişle, şema farklı veritabanlarında farklı olur. Örneğin, tüm envanter tabloları, tüm muhasebe ile ilgili tablolar ikinci bir veritabanı üzerinde olduğunda tek bir veritabanıdır. Bu topolojideki yaygın kullanım örnekleri, bir veya birden çok veritabanında bulunan tablolarda rapor derlemek için bir tane gerektirir.
-* **Yatay bölümleme-** parçalama (Topoloji 2): Veriler, ölçeklendirilen bir veri katmanındaki satırları dağıtmak için yatay olarak bölümlenir. Bu yaklaşımda, şema tüm katılan veritabanlarında aynıdır. Bu yaklaşım, "parçalama" olarak da adlandırılır. Parçalama, (1) elastik veritabanı araçları kitaplıkları veya (2) kendi kendine parçalı kullanımı kullanılarak gerçekleştirilebilir ve yönetilebilir. Esnek sorgu, birçok parça genelinde raporları sorgulamak veya derlemek için kullanılır.
+* **Dikey bölümlendirme-veritabanları arası sorgular** (topoloji 1): veriler bir veri katmanındaki bir dizi veritabanı arasında dikey olarak bölümlenir. Genellikle, farklı tablo kümeleri farklı veritabanlarında bulunur. Diğer bir deyişle, şema farklı veritabanlarında farklı olur. Örneğin, tüm envanter tabloları, tüm muhasebe ile ilgili tablolar ikinci bir veritabanı üzerinde olduğunda tek bir veritabanıdır. Bu topolojideki yaygın kullanım örnekleri, bir veya birden çok veritabanında bulunan tablolarda rapor derlemek için bir tane gerektirir.
+* **Yatay bölümlendirme-parçalı** oluşturma (topoloji 2): veriler, ölçeklendirilen bir veri katmanındaki satırları dağıtmak için yatay olarak bölümlenir. Bu yaklaşımda, şema tüm katılan veritabanlarında aynıdır. Bu yaklaşım, "parçalama" olarak da adlandırılır. Parçalama, (1) elastik veritabanı araçları kitaplıkları veya (2) kendi kendine parçalı kullanımı kullanılarak gerçekleştirilebilir ve yönetilebilir. Esnek sorgu, birçok parça genelinde raporları sorgulamak veya derlemek için kullanılır.
 
 > [!NOTE]
 > Elastik sorgu, çoğu işlemin (filtreleme, toplama) büyük bir kısmı dış kaynak tarafında gerçekleştirilebileceği raporlama senaryolarında en iyi şekilde kullanılır. Uzak veritabanından büyük miktarda verinin aktarıldığı ETL işlemleri için uygun değildir. Daha karmaşık sorgularla ağır raporlama iş yükleri veya veri ambarı senaryoları için [Azure SQL veri ambarı](https://azure.microsoft.com/services/sql-data-warehouse/)'nı kullanmayı da düşünün.
@@ -72,13 +72,13 @@ Elastik bir sorgu, SQL veritabanında bulunan verilerin diğer SQL veritabanlar�
 > Herhangi bir dış VERI kaynağı iznine sahip olmanız gerekir. Bu izin ALTER DATABASE iznine dahildir. Temel alınan veri kaynağına başvurmak için herhangi bir dış VERI kaynağı izinlerini DEĞIŞTIRME gerekir.
 >
 
-**Başvuru verileri**: Topoloji, başvuru veri yönetimi için kullanılır. Aşağıdaki şekilde, başvuru verileriyle birlikte iki tablo (T1 ve T2) adanmış bir veritabanında tutulur. Esnek sorgu kullanarak artık T1 ve T2 tablolarına, şekilde gösterildiği gibi diğer veritabanlarından uzaktan erişebilirsiniz. Başvuru tablolarının küçük olması veya başvuru tablosuna uzak sorguların seçmeli koşullara sahip olması durumunda topoloji 1 ' i kullanın.
+**Başvuru verileri**: topoloji, başvuru veri yönetimi için kullanılır. Aşağıdaki şekilde, başvuru verileriyle birlikte iki tablo (T1 ve T2) adanmış bir veritabanında tutulur. Esnek sorgu kullanarak artık T1 ve T2 tablolarına, şekilde gösterildiği gibi diğer veritabanlarından uzaktan erişebilirsiniz. Başvuru tablolarının küçük olması veya başvuru tablosuna uzak sorguların seçmeli koşullara sahip olması durumunda topoloji 1 ' i kullanın.
 
 **Şekil 2** Dikey bölümleme-başvuru verilerini sorgulamak için elastik sorgu kullanma
 
 ![Dikey bölümleme-başvuru verilerini sorgulamak için elastik sorgu kullanma][3]
 
-**Veritabanları arası sorgulama**: Elastik sorgular, birkaç SQL veritabanı üzerinde sorgu gerektiren kullanım örneklerini etkinleştirir. Şekil 3 ' te dört farklı veritabanı gösterilmektedir: CRM, envanter, ık ve ürün. Veritabanlarından birinde gerçekleştirilen sorguların aynı zamanda diğer veritabanlarına bir veya diğer veritabanına erişmesi gerekir. Esnek sorgu kullanarak, dört veritabanının her birinde birkaç basit DDL deyimi çalıştırarak, bu durum için veritabanınızı yapılandırabilirsiniz. Bu tek seferlik yapılandırmadan sonra, uzak bir tabloya erişim, T-SQL sorgularından veya bı araçlarınızdaki yerel bir tabloya başvurmak kadar basittir. Bu yaklaşım, uzak sorgular büyük sonuçlar döndürmezse önerilir.
+**Veritabanları arası sorgulama**: elastik sorgular, birkaç SQL veritabanı genelinde sorgu gerektiren kullanım örneklerini etkinleştirir. Şekil 3 ' te dört farklı veritabanı gösterilmektedir: CRM, envanter, HR ve ürünler. Veritabanlarından birinde gerçekleştirilen sorguların aynı zamanda diğer veritabanlarına bir veya diğer veritabanına erişmesi gerekir. Esnek sorgu kullanarak, dört veritabanının her birinde birkaç basit DDL deyimi çalıştırarak, bu durum için veritabanınızı yapılandırabilirsiniz. Bu tek seferlik yapılandırmadan sonra, uzak bir tabloya erişim, T-SQL sorgularından veya bı araçlarınızdaki yerel bir tabloya başvurmak kadar basittir. Bu yaklaşım, uzak sorgular büyük sonuçlar döndürmezse önerilir.
 
 **Şekil 3** Dikey bölümleme-çeşitli veritabanları genelinde sorgulamak için elastik sorgu kullanma
 
@@ -154,7 +154,7 @@ Aşağıda, MSDN forumlarında veya Stack Overflow üzerinde bizimle elastik sor
 * Dikey olarak bölümlenmiş verilere yönelik sözdizimi ve örnek sorgular için bkz. [dikey olarak bölümlenmiş verileri sorgulama)](sql-database-elastic-query-vertical-partitioning.md)
 * Yatay bölümleme (parçalama) öğreticisi için bkz. [Yatay bölümleme (parçalama) için elastik sorgu ile çalışmaya](sql-database-elastic-query-getting-started.md)başlama.
 * Yatay olarak bölümlenmiş veriler için sözdizimi ve örnek sorgular için bkz. [yatay olarak bölümlenmiş verileri sorgulama)](sql-database-elastic-query-horizontal-partitioning.md)
-* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [\_SP Execute \_Remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
+* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-overview/overview.png

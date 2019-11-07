@@ -8,12 +8,12 @@ ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d843e288297db656cca6e2a07f2e1f3322ebfa89
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 99863f68c20a2f95dfc744e13a977bf3ccbbf639
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299659"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580438"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. giriş
 
@@ -43,7 +43,7 @@ Geçmişte, bulut tabanlı analizler performans, yönetim ve güvenlik alanları
 
 -   Uygun **maliyetli**: Data Lake Storage 2. düşük maliyetli depolama kapasitesi ve işlemler sunar. Tam yaşam döngüsü boyunca veri geçişleri olarak faturalandırma ücretleri, [Azure Blob depolama yaşam döngüsü](storage-lifecycle-management-concepts.md)gibi yerleşik özellikler aracılığıyla maliyetleri en düşük düzeyde tutmaya göre değişir.
 
--   **İyileştirilmiş sürücü**: ABFS sürücüsü özellikle büyük veri analizi için [iyileştirilmiştir](data-lake-storage-abfs-driver.md) . Karşılık gelen REST API 'Leri `dfs.core.windows.net` bitiş noktası aracılığıyla ilerlededir.
+-   **İyileştirilmiş sürücü**: ABFS sürücüsü özellikle büyük veri analizi için [iyileştirilmiştir](data-lake-storage-abfs-driver.md) . Karşılık gelen REST API 'Leri, uç nokta `dfs.core.windows.net`üzerinden ortaya çıkmış.
 
 ### <a name="scalability"></a>Ölçeklenebilirlik
 
@@ -75,7 +75,7 @@ Birçok açık kaynak platformu Data Lake Storage 2. destekler. Bu platformlar a
 
 | Platform |  Desteklenen sürüm (ler) | Daha Fazla Bilgi |
 | --- | --- | --- |
-| ['Tan](https://azure.microsoft.com/services/hdinsight/) | 3.6 + | [HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+| [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6 + | [Apache Hadoop bileşenleri ve sürümleri HDInsight ile kullanılabilen nelerdir?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 | [Hadoop](https://hadoop.apache.org/) | 3.2 + | [Apache Hadoop yayınları Arşivi](https://hadoop.apache.org/release.html) |
 | [Cloudera](https://www.cloudera.com/) | 6.1 + | [Cloudera Enterprise 6. x sürüm notları](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
 | [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1 + | [Databricks Runtime sürümleri](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
@@ -83,7 +83,7 @@ Birçok açık kaynak platformu Data Lake Storage 2. destekler. Bu platformlar a
 
 ## <a name="supported-azure-services"></a>Desteklenen Azure hizmetleri
 
-Data Lake Storage Gen2, verileri almak, analiz yapmak ve görsel gösterimler oluşturmak için kullanabileceğiniz çeşitli Azure hizmetlerini destekler. Desteklenen Azure hizmetlerinin bir listesi için bkz. [Azure hizmetleriyle Azure Data Lake Storage tümleştirme](data-lake-store-integrate-with-azure-services.md).
+Data Lake Storage Gen2, verileri almak, analiz yapmak ve görsel gösterimler oluşturmak için kullanabileceğiniz çeşitli Azure hizmetlerini destekler. Desteklenen Azure hizmetlerinin bir listesi için bkz. [Azure hizmetleriyle Azure Data Lake Storage tümleştirme](data-lake-storage-integrate-with-azure-services.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -92,4 +92,4 @@ Aşağıdaki makalelerde Data Lake Storage 2. ana kavramlarından bazıları aç
 - [Hiyerarşik ad alanı](data-lake-storage-namespace.md)
 - [Depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md)
 - [Azure Data Lake Storage çoklu protokol erişimi](data-lake-storage-multi-protocol-access.md)
-- [Azure hizmetleriyle Azure Data Lake Storage tümleştirin](data-lake-store-integrate-with-azure-services.md);
+- [Azure hizmetleriyle Azure Data Lake Storage tümleştirin](data-lake-storage-integrate-with-azure-services.md);

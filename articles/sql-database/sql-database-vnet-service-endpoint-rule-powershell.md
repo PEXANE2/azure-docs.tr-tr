@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 'de tek ve havuza alınmış veritabanlarının sanal ağ uç noktaları ve kuralları için PowerShell | Microsoft Docs
+title: "Azure SQL 'de tek ve havuza alınmış veritabanlarının sanal ağ uç noktaları ve kuralları için PowerShell "
 description: Azure SQL veritabanınız ve SQL veri ambarınız için sanal hizmet uç noktaları oluşturmak ve yönetmek üzere PowerShell betikleri sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,29 +11,29 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 326eec68ed3ca1d42552b89fe4519d24c62cf12a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 0f3c44d705cb3d8b6ff2d855686394d9e9f1575e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841363"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686837"
 ---
-# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  SQL için bir sanal hizmet uç noktası ve VNet kuralı oluşturma
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: SQL için sanal hizmet uç noktası ve VNet kuralı oluşturma
 
 *Sanal ağ kuralları* , tek veritabanlarınıza yönelik veritabanı sunucusunun ve Azure [SQL veritabanı](sql-database-technical-overview.md) 'ndaki elastik havuzunuzun ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'ndaki veritabanlarınızın iletişim kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir Bu, sanal ağlardaki belirli alt ağlardan gönderilir.
 
 > [!IMPORTANT]
-> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası OLMADıĞıNDAN Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı için uygulanmıyor.
+> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası olmadığından Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için uygulanmıyor.*
 
 Bu makalede, aşağıdaki eylemleri alan bir PowerShell betiği sağlanmıştır ve açıklanmaktadır:
 
 1. Alt ağınızda Microsoft Azure *sanal hizmet uç noktası* oluşturur.
 2. Bir *sanal ağ kuralı*oluşturmak için uç NOKTAYı Azure SQL veritabanı sunucunuzun güvenlik duvarına ekler.
 
-Bir kural oluşturmaya yönelik motive şu şekilde açıklanmıştır: [Azure SQL veritabanı Için sanal hizmet uç noktaları][sql-db-vnet-service-endpoint-rule-overview-735r].
+Bir kural oluşturmaya yönelik motive, şu şekilde açıklanmıştır: [Azure SQL veritabanı Için sanal hizmet uç noktaları][sql-db-vnet-service-endpoint-rule-overview-735r].
 
 > [!TIP]
-> Tüm ihtiyacınız varsa, SQL veritabanı için sanal hizmet uç noktası *türü adını* , alt ağınız için değerlendirmek veya eklemek istiyorsanız, daha [doğrudan PowerShell](#a-verify-subnet-is-endpoint-ps-100)betiğimize atlayabilirsiniz.
+> Tüm ihtiyacınız varsa, SQL veritabanı için sanal hizmet uç noktası *türü adını* , alt ağınız için değerlendirmek veya eklemek istiyorsanız, daha [doğrudan PowerShell betiğimize](#a-verify-subnet-is-endpoint-ps-100)atlayabilirsiniz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -45,11 +45,11 @@ Bu makale, alt ağ uç noktasını Azure SQL veritabanı sunucunuzun erişim den
 
 Aşağıdaki listede, **New-AzSqlServerVirtualNetworkRule**çağrınıza hazırlanmanız için çalıştırmanız gereken diğer *ana* cmdlet 'lerin sırası gösterilmektedir. Bu makalede, [komut dosyası 3 "sanal ağ kuralı"](#a-script-30)içinde bu çağrılar oluşur:
 
-1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): Bir alt ağ nesnesi oluşturur.
-2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): Sanal ağınızı oluşturur ve alt ağ verir.
-3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): Alt ağınız için bir sanal hizmet uç noktası atar.
-4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): Sanal ağınızda yapılan güncelleştirmeleri devam ettirir.
-5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): Alt ağınız bir uç nokta olduktan sonra, alt ağınızı bir sanal ağ kuralı olarak Azure SQL veritabanı sunucunuzun ACL 'sine ekler.
+1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): bir alt ağ nesnesi oluşturur.
+2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): Sanal ağınızı, alt ağ vererek oluşturur.
+3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): alt ağınız Için bir sanal hizmet uç noktası atar.
+4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): sanal ağınızda yapılan güncelleştirmeler devam ettirir.
+5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): alt ağınız bir uç nokta olduktan sonra, alt ağınızı bir sanal ağ kuralı olarak Azure SQL VERITABANı sunucunuzun ACL 'sine ekler.
    - Bu cmdlet, Azure RM PowerShell modülü sürüm 5.1.1 'dan başlayarak **-ıgnoremissingvnetserviceendpoint**parametresini sunar.
 
 ## <a name="prerequisites-for-running-powershell"></a>PowerShell çalıştırmaya yönelik önkoşullar
@@ -66,7 +66,7 @@ Tanıtım PowerShell betiğimiz, daha küçük betikler dizisine bölünmüştü
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>Betik 1: Değişkenler
+### <a name="script-1-variables"></a>Betik 1: değişkenler
 
 Bu ilk PowerShell betiği, değişkenlere değerler atar. Sonraki betikler bu değişkenlere bağımlıdır.
 
@@ -206,7 +206,7 @@ Write-Host 'Completed script 2, the "Prerequisites".';
 
 <a name="a-script-30" />
 
-## <a name="script-3-create-an-endpoint-and-a-rule"></a>Betik 3: Uç nokta ve kural oluşturma
+## <a name="script-3-create-an-endpoint-and-a-rule"></a>Betik 3: uç nokta ve kural oluşturma
 
 Bu betik, bir alt ağa sahip bir sanal ağ oluşturur. Sonra betik, **Microsoft. SQL** uç noktası türünü alt ağa atar. Son olarak, betik, alt ağını SQL veritabanı sunucunuzun erişim denetim listesine (ACL) ekler ve böylece bir kural oluşturur.
 
@@ -292,12 +292,12 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 
 <a name="a-script-40" />
 
-## <a name="script-4-clean-up"></a>Betik 4: Temizle
+## <a name="script-4-clean-up"></a>Betik 4: Temizleme
 
 Bu son betik, önceki betiklerin tanıtım için oluşturduğu kaynakları siler. Ancak, komut dosyası aşağıdakileri silmeden önce onay ister:
 
 - Azure SQL veritabanı sunucusu
-- Azure kaynak grubu
+- Azure Kaynak Grubu
 
 Betik 1 tamamlandıktan sonra istediğiniz zaman betiği 4 ' ü çalıştırabilirsiniz.
 

@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ee1168c32cf4d8797b3957340e0acee5605ccc0f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eb7319d665f228c552423a60a3b1529dc9b1143f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951893"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583223"
 ---
 # <a name="what-are-application-templates"></a>Uygulama şablonları nelerdir?
 
@@ -37,11 +37,10 @@ Azure IoT Central, sektörde bağımsız bir uygulama platformudur. Uygulama şa
   - Mağaza içi analiz-kullanıma alma
   - Akıllı envanter yönetimi
 - [Enerji](../energy/overview-iot-central-energy.md)
-  - Bağlı lojistik
   - Akıllı ölçüm izleme
   - Güneş paneli izleme
 - [Devlet](../government/overview-iot-central-government.md)
-  - Bağlı çöp yönetimi
+  - Bağlı atık yönetimi
   - Su tüketimi izleme
   - Su kalitesi izleme
 - [Sağlık](../healthcare/overview-iot-central-healthcare.md).

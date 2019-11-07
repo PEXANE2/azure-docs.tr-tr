@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager şablonuyla Windows sanal masaüstü konak havuzu oluşturma-Azure
+title: Windows sanal masaüstü konak havuzu Azure Resource Manager-Azure
 description: Windows sanal masaüstü 'nde bir Azure Resource Manager şablonuyla konak havuzu oluşturma.
 services: virtual-desktop
 author: Heidilohr
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: b96ecad93c481a762b81a7888940850ed3a73e5f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 23d032a2496e975c7e6ceafb61691c2cb1216218
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679606"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605759"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla konak havuzu oluşturma
+# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla ana bilgisayar havuzu oluşturma
 
 Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu, kullanıcıların fiziksel bir masaüstünde yaptıkları gibi etkileşime girebilecekleri bir uygulama grubu içerebilir.
 
@@ -42,7 +42,7 @@ Kurumsal abonelikte dağıtım yapıyorsanız, aşağı kaydırın ve **Azure 'A
 
 1. Aşağı kaydırın ve **Azure 'A dağıt**' a sağ tıkladıktan sonra **bağlantı konumunu Kopyala**' yı seçin.
 2. Not Defteri gibi bir metin Düzenleyicisi açın ve bağlantıyı buraya yapıştırın.
-3. "@No__t-0" işaretinden önce ve diyez etiketinden önce (#) bir at işareti (@) ve ardından kiracı etki alanı adını girin. İşte kullanmanız gereken biçim örneği: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
+3. "https://portal.azure.com/" işaretinden önce ve diyez etiketinden önce (#) bir at işareti (@) ve ardından kiracı etki alanı adını girin. Aşağıda, kullanmanız gereken biçime bir örnek verilmiştir: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
 4. Bulut çözümü sağlayıcısı aboneliğine yönetici/katkıda bulunan izinleri olan bir kullanıcı olarak Azure portal oturum açın.
 5. Metin düzenleyicisine kopyaladığınız bağlantıyı adres çubuğuna yapıştırın.
 

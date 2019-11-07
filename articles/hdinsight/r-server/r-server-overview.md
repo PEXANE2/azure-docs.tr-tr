@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: bd9b9edde0f4c5e3bea6e31342298f2df5a2b5fe
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 782c860ca50c1ef12eda1ec33f29c5103b396349
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241877"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665297"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight 'ta ML Hizmetleri nedir?
 
@@ -23,7 +23,7 @@ HDInsight üzerinde ML Hizmetleri, Azure Blob veya Data Lake depolama alanına y
 
 Bir kümenin kenar düğümü, kümeye bağlanmak ve R betiklerinizi çalıştırmak için uygun bir yer sağlar. Edge düğümü ile, kenar düğüm sunucusunun çekirdekleri arasında Koraler 'ın paralelleştirilmiş dağıtılmış işlevlerini çalıştırma seçeneğiniz vardır. Ayrıca, ScaleR 'ın Hadoop haritasını azaltma veya Apache Spark işlem bağlamlarını kullanarak bunları kümenin düğümleri arasında çalıştırabilirsiniz.
 
-Analizden kaynaklanan modeller veya tahminler, şirket içi kullanım için indirilebilirler. Ayrıca, Azure 'da [Azure Machine Learning Studio (klasik)](https://studio.azureml.net) [Web hizmeti](../../machine-learning/studio/publish-a-machine-learning-web-service.md)aracılığıyla başka bir yerde de gerçekleştirilebilir.
+Analizden kaynaklanan modeller veya tahminler, şirket içi kullanım için indirilebilirler. Ayrıca, Azure 'da [Azure Machine Learning Studio (klasik)](https://studio.azureml.net) [Web hizmeti](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)aracılığıyla başka bir yerde de gerçekleştirilebilir.
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight 'ta ML hizmetlerini kullanmaya başlama
 

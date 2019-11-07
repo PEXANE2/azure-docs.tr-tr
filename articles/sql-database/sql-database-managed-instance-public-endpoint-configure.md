@@ -1,5 +1,5 @@
 ---
-title: Ortak uç noktayı Yapılandırma-Azure SQL veritabanı yönetilen örneği | Microsoft Docs
+title: Ortak uç noktayı Yapılandırma-Azure SQL veritabanı yönetilen örneği
 description: Yönetilen örnek için genel bir uç nokta yapılandırmayı öğrenin
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cebe6b4ca61b835e7c77f51592c20799fe271853
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6f953e4c549619a30564bdb061e98761474174c3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567401"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687970"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği 'nde ortak uç noktayı yapılandırma
 
@@ -38,7 +38,7 @@ Yönetilen örnekteki verilerin duyarlılığı nedeniyle, yönetilen örnek gen
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Azure portal yönetilen bir örnek için genel uç noktayı etkinleştirme
 
-1. Azure portal şurada başlatın:<https://portal.azure.com/.>
+1. <https://portal.azure.com/.> Azure portal başlatın
 1. Yönetilen örnekle birlikte kaynak grubunu açın ve üzerinde genel uç noktasını yapılandırmak istediğiniz **SQL yönetilen örneğini** seçin.
 1. **Güvenlik** ayarları ' na, **sanal ağ** sekmesini seçin.
 1. Sanal ağ yapılandırması sayfasında, yapılandırmayı güncelleştirmek için **Etkinleştir** ' i ve ardından **Kaydet** simgesini seçin.
@@ -96,9 +96,9 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |---------|---------|---------|
     |**Kaynak**     |Herhangi bir IP adresi veya hizmet etiketi         |<ul><li>Power BI gibi Azure hizmetleri için Azure Cloud Service etiketini seçin</li> <li>Bilgisayarınız veya Azure sanal makinesi için NAT IP adresi kullanın</li></ul> |
     |**Kaynak bağlantı noktası aralıkları**     |*         |Kaynak bağlantı noktaları genellikle dinamik olarak ayrıldığı ve bu şekilde tahmin edilemeyen |
-    |**Hedefine**     |Any         |Yönetilen örnek alt ağına gelen trafiğe izin vermek için hedeften ayrılmaya |
+    |**Hedefine**     |Herhangi biri         |Yönetilen örnek alt ağına gelen trafiğe izin vermek için hedeften ayrılmaya |
     |**Hedef bağlantı noktası aralıkları**     |3342         |Yönetilen örnek genel TDS uç noktası olan 3342 öğesine kapsam hedef bağlantı noktası |
-    |**Protokolü**     |TCP         |Yönetilen örnek TDS için TCP protokolünü kullanır |
+    |**Protokol**     |TCP         |Yönetilen örnek TDS için TCP protokolünü kullanır |
     |**Eylem**     |Allow         |Ortak uç nokta aracılığıyla yönetilen örneğe gelen trafiğe izin ver |
     |**Öncelik**     |1300         |Bu kuralın **deny_all_inbound** kuralından daha yüksek öncelikli olduğundan emin olun |
 

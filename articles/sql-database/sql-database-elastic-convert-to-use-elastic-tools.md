@@ -1,5 +1,5 @@
 ---
-title: Ölçeği genişletmek için mevcut veritabanlarını geçirin | Microsoft Docs
+title: Ölçeği genişletmek için mevcut veritabanlarını geçirme
 description: Parçalı veritabanlarını bir parça eşleme Yöneticisi oluşturarak elastik veritabanı araçlarını kullanacak şekilde dönüştürme
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2d6d5c51cb381c089633ba010a1d64c8486ddcd8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b88c56872408a7ffe127a4e96d2313301d44c892
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568723"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690537"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Ölçeği genişletmek için mevcut veritabanlarını geçirme
 Azure SQL veritabanı veritabanı araçları 'nı ( [elastik veritabanı istemci kitaplığı](sql-database-elastic-database-client-library.md)gibi) kullanarak, ölçeği oluşturulmuş mevcut veritabanlarını kolayca yönetin. Önce var olan bir veritabanı kümesini parça [eşleme yöneticisini](sql-database-elastic-scale-shard-map-management.md)kullanacak şekilde dönüştürün. 
@@ -97,10 +97,10 @@ Bu eşleme modelini kullanmak için kiracı KIMLIĞI değerlerinin sürekli aral
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-an-individual-database"></a>Seçenek 3: Tek bir veritabanındaki eşlemeleri listeleme
+### <a name="option-3-list-mappings-on-an-individual-database"></a>Seçenek 3: ayrı bir veritabanında eşleştirmeleri listeleme
 Bu düzenin ayarlanması ayrıca adım 2, seçenek 1 ' de gösterildiği gibi bir liste eşlemesinin oluşturulmasını gerektirir.
 
-## <a name="step-3-prepare-individual-shards"></a>3\. adım: Bireysel parçaları hazırlama
+## <a name="step-3-prepare-individual-shards"></a>3\. Adım: tek tek parçaları hazırlama
 Parça eşleme Yöneticisi 'ne her parça (veritabanı) ekleyin. Bu, eşleme bilgilerini depolamak için ayrı veritabanlarını hazırlar. Her parça üzerinde bu yöntemi yürütün.
 
     Add-Shard 
@@ -110,7 +110,7 @@ Parça eşleme Yöneticisi 'ne her parça (veritabanı) ekleyin. Bu, eşleme bil
     # The $ShardMap is the shard map created in step 2.
 
 
-## <a name="step-4-add-mappings"></a>4\. Adım: Eşleme Ekle
+## <a name="step-4-add-mappings"></a>4\. Adım: eşlemeler ekleme
 Eşlemelerin eklenmesi, oluşturduğunuz parça haritasının türüne bağlıdır. Bir liste eşlemesi oluşturduysanız, liste eşlemeleri eklersiniz. Bir Aralık eşlemesi oluşturduysanız, Aralık eşlemeleri eklersiniz.
 
 ### <a name="option-1-map-the-data-for-a-list-mapping"></a>Seçenek 1: bir liste eşlemesi için verileri eşleme
@@ -153,7 +153,7 @@ Kurulumu tamamladıktan sonra elastik veritabanı istemci kitaplığını kullan
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure SQL DB-elastik veritabanı araçları betiklerinden](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)PowerShell betikleri alın.
 
-Araçlar ayrıca GitHub üzerinde de bulunur: [Azure/elastik-DB araçları](https://github.com/Azure/elastic-db-tools).
+Araçlar ayrıca GitHub üzerinde de bulunur: [Azure/elastik-DB-Tools](https://github.com/Azure/elastic-db-tools).
 
 Verileri çok kiracılı bir modelden tek bir kiracı modeline taşımak için bölünmüş birleştirme aracını kullanın. Bkz. [bölünmüş birleştirme aracı](sql-database-elastic-scale-get-started.md).
 

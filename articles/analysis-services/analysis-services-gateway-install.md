@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services için şirket içi veri ağ geçidini yükler | Microsoft Docs
-description: Şirket içi veri ağ geçidini yüklemeyi ve yapılandırmayı öğrenin.
+description: Bir Azure Analysis Services sunucusundan şirket içi veri kaynaklarına bağlanmak için şirket içi veri ağ geçidini yüklemeyi ve yapılandırmayı öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 99b5a0ff9cc0fd7fdc3b8a0e453ed287c45e1c60
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 37658ea6b94d6369d282c49f79947a1f183b61c7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147129"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572847"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Şirket içi veri ağ geçidini yükleme ve yapılandırma
 
@@ -20,7 +20,7 @@ Aynı bölgedeki bir veya daha fazla Azure Analysis Services sunucusu şirket i�
 
 Ağ geçidi ve Azure Analysis Services tarafından nasıl kullanıldığı hakkında daha fazla bilgi edinmek için bkz. [Şirket içi veri kaynaklarına bağlanma](analysis-services-gateway.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 **Minimum gereksinimler:**
 
@@ -56,7 +56,7 @@ Ağ geçidi ve Azure Analysis Services tarafından nasıl kullanıldığı hakk�
 
 2. Şirket **içi veri ağ geçidini**seçin.
 
-   ![Seçin](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![Şunu seçin:](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. Bir konum seçin, koşulları kabul edin ve ardından **yükler**' i tıklatın.
 
@@ -64,7 +64,7 @@ Ağ geçidi ve Azure Analysis Services tarafından nasıl kullanıldığı hakk�
 
 3. Azure'da oturum açın. Hesabın kiracınızın Azure Active Directory olması gerekir. Bu hesap, Ağ Geçidi Yöneticisi için kullanılır. Ağ geçidini yüklerken ve kaydederken Azure B2B (konuk) hesapları desteklenmez.
 
-   ![Azure'da oturum açın](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
+   ![Azure'da oturum açma](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
    > Bir etki alanı hesabıyla oturum açarsanız, Azure AD 'de Kurumsal hesabınıza eşlenir. Kuruluş hesabınız ağ geçidi Yöneticisi olarak kullanılır.
@@ -75,14 +75,14 @@ Azure 'da bir ağ geçidi kaynağı oluşturmak için, ağ geçidi bulut hizmeti
 
 1.  **Bu bilgisayara yeni bir ağ geçidi Kaydet '** i seçin.
 
-    ![Kaydol](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Kaydolma](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. Ağ geçidiniz için bir ad ve kurtarma anahtarı yazın. Varsayılan olarak ağ geçidi, aboneliğinizin varsayılan bölgesini kullanır. Farklı bir bölge seçmeniz gerekiyorsa, **bölgeyi değiştir**' i seçin.
 
     > [!IMPORTANT]
     > Kurtarma Anahtarınızı güvenli bir yere kaydedin. Bir ağ geçidini almak, geçirmek veya geri yüklemek için kurtarma anahtarı gereklidir. 
 
-   ![Kaydol](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![Kaydolma](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-resource"></a>Azure ağ geçidi kaynağı oluşturma
@@ -127,7 +127,7 @@ Ağ geçidinizin yüklenip kaydolduktan sonra Azure aboneliğinizde bir ağ geç
 
     ![Sunucuyu ağ geçidi kaynağına bağlama başarılı](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
-Bu kadar. Bağlantı noktalarını açmanız veya sorun giderme yapmanız gerekiyorsa, [Şirket içi veri ağ geçidini](analysis-services-gateway.md)kullanıma aldığınızdan emin olun.
+İşte bu kadar. Bağlantı noktalarını açmanız veya sorun giderme yapmanız gerekiyorsa, [Şirket içi veri ağ geçidini](analysis-services-gateway.md)kullanıma aldığınızdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

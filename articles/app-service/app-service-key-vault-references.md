@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: e42fa7f48b5e6475604570a95f2ffc034b43b8f7
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274421"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604608"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma
 
@@ -43,21 +43,23 @@ Key Vault parolaları okumak için bir kasasının oluşturulmuş olması ve uyg
 
 ## <a name="reference-syntax"></a>Başvuru sözdizimi
 
-Key Vault başvuru `@Microsoft.KeyVault({referenceString})` ' dır, burada `{referenceString}` aşağıdaki seçeneklerden biriyle değiştirilmiştir:
+Key Vault bir başvuru, `{referenceString}` aşağıdaki seçeneklerden biriyle değiştirildiği `@Microsoft.KeyVault({referenceString})`formundadır:
 
 > [!div class="mx-tdBreakAll"]
 > | Başvuru dizesi                                                            | Açıklama                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_Secreturi_                                                       | **Secreturi** , bir sürüm (örneğin, https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931 ) dahil Key Vault bir parolanın tam veri düzlemi URI 'si olmalıdır  |
+> | SecretUri =_Secreturi_                                                       | **Secreturi** , bir sürüm gibi Key Vault bir parolanın tam veri düzlemi URI 'si olmalıdır, örneğin, https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName =_vaultname_; SecretName =_secretname_; SecretVersion =_Secretversion_ | **Vaultname** Key Vault kaynağınızın adı olmalıdır. **Secretname** , hedef parolanın adı olmalıdır. **Secretversion** , kullanılacak gizli dizinin sürümü olmalıdır. |
 
-> [!NOTE] 
-> Sürümler şu anda gerekli. Gizli dizileri döndürürken, uygulama yapılandırmanızda sürümü güncelleştirmeniz gerekir.
-
-Örneğin, bir bütün başvuru aşağıdaki gibi görünür:
+Örneğin, sürüme sahip bir tüm başvuru aşağıdaki gibi görünür:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
+```
+Sürüm olmayan bir tüm başvuru, aşağıdaki gibi görünür:
+
+```
+@Microsoft.KeyVault(SecretUri=https://<MYKEYVAULT>.vault.azure.net/secrets/eShopStorageAccountCS/)
 ```
 
 Kopyalamaktır
@@ -184,11 +186,11 @@ Bir işlev uygulaması için örnek bir psuedo şablonu, aşağıdaki gibi gör�
 ```
 
 > [!NOTE] 
-> Bu örnekte, kaynak denetimi dağıtımı uygulama ayarlarına bağlıdır. Uygulama ayarı güncelleştirmesi zaman uyumsuz olarak davrandığı için bu durum normalde güvenli olmayan bir davranıştır. Ancak, `WEBSITE_ENABLE_SYNC_UPDATE_SITE` uygulama ayarını eklediğimiz için güncelleştirme zaman uyumludur. Bu, kaynak denetimi dağıtımının yalnızca uygulama ayarları tamamen güncelleştirildikten sonra başlayacağı anlamına gelir.
+> Bu örnekte, kaynak denetimi dağıtımı uygulama ayarlarına bağlıdır. Uygulama ayarı güncelleştirmesi zaman uyumsuz olarak davrandığı için bu durum normalde güvenli olmayan bir davranıştır. Ancak `WEBSITE_ENABLE_SYNC_UPDATE_SITE` uygulama ayarını eklediğimiz için güncelleştirme zaman uyumludur. Bu, kaynak denetimi dağıtımının yalnızca uygulama ayarları tamamen güncelleştirildikten sonra başlayacağı anlamına gelir.
 
 ## <a name="troubleshooting-key-vault-references"></a>Key Vault başvuruları sorunlarını giderme
 
-Bir başvuru düzgün çözümlenmezse, bunun yerine başvuru değeri kullanılacaktır. Bu, uygulama ayarları için, değeri `@Microsoft.KeyVault(...)` söz dizimi olan bir ortam değişkeni oluşturulacak anlamına gelir. Bu, belirli bir yapının gizli dizisi beklediği için uygulamanın hata oluşturmasına neden olabilir.
+Bir başvuru düzgün çözümlenmezse, bunun yerine başvuru değeri kullanılacaktır. Bu, uygulama ayarları için, değeri `@Microsoft.KeyVault(...)` sözdizimine sahip olan bir ortam değişkeni oluşturulacak anlamına gelir. Bu, belirli bir yapının gizli dizisi beklediği için uygulamanın hata oluşturmasına neden olabilir.
 
 En yaygın olarak, bunun nedeni [Key Vault erişim ilkesinin](#granting-your-app-access-to-key-vault)yanlış yapılandırılmasından kaynaklanır. Bununla birlikte, aynı zamanda bir gizli dizi yok veya başvurunun kendisi bir sözdizimi hatası olabilir.
 

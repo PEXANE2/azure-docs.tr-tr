@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 33b4ed3974c3e4e88e5d74ff31a3b8008ab565e9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 0f45af2730b05998fc82212c63778c89bb16b6ef
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657326"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585094"
 ---
 # <a name="use-remote-desktop-for-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarında Linux sanal makineleri için Uzak Masaüstü 'nü kullanma
 Bu makalede, öğrencilerin RDP/SSH kullanarak laboratuvara bir Linux sanal makinesine (VM) nasıl bağlanabildiği gösterilmektedir. 
@@ -31,8 +31,8 @@ Bu makalede, öğrencilerin RDP/SSH kullanarak laboratuvara bir Linux sanal maki
 ## <a name="connect-to-the-student-vm"></a>Öğrenci VM 'sine bağlanma
 Öğrenciler, laboratuvar sahibi (öğretmen/Mesleme) ile birlikte Linux VM 'lerinde RDP 'yi makinede yüklü olan RDP ve GUI paketleri ile **yayımlar** . Adımlar aşağıdaki gibidir: 
 
-1. Bir öğrenci, Labs portalında doğrudan (`https://labs.azure.com`) veya bir kayıt bağlantısı (`https://labs.azure.com/register/<registrationCode>`) kullanarak oturum açtığında, öğrencinin erişimi olan her laboratuvar için bir kutucuk görüntülenir. 
-2. Kutucukta, VM durdurulmuşsa **Başlat** ' ı seçin. 
+1. Bir öğrenci, Labs portalında doğrudan (`https://labs.azure.com`) veya bir kayıt bağlantısı (`https://labs.azure.com/register/<registrationCode>`) kullanarak oturum açtığında, öğrencinin erişebileceği her laboratuvar için bir kutucuk görüntülenir. 
+2. Kutucukta, durdurulmuş durumdaysa sanal makineyi başlatmak için düğmeyi değiştirin. 
 3. **Bağlan**’ı seçin. SANAL makineye bağlanmak için iki seçenek görürsünüz: **SSH** ve **Uzak Masaüstü**.
 
     ![Öğrenci VM-bağlantı seçenekleri](../media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)

@@ -1,5 +1,5 @@
 ---
-title: Bölünmüş birleştirme hizmeti dağıtma | Microsoft Docs
+title: Ayırma-birleştirme hizmetini dağıtma
 description: Verileri parçalı veritabanları arasında taşımak için bölünmüş birleştirme işlemini de kullanın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: a8c50f492c28bf1e009d15d6332e939959190a49
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 009fb4be61aad5c700c7520764e9414ed9422721
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568513"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690305"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Parçalı veritabanları arasında veri taşımak için bölünmüş birleştirme hizmeti dağıtma
 
@@ -32,7 +32,7 @@ Bölünmüş birleştirme aracı, verileri parçalı veritabanları arasında ta
 
 Dosyalar, **Microsoft. Azure. SQLDatabase. Elalapscale. Service. SplitMerge. x. x. xxx. x** adlı bir dizine yerleştirilir; burada *x. x. xxx.* x sürüm numarasını yansıtır. Content\splitmerge\service alt dizinindeki bölünmüş birleştirme hizmeti dosyalarını ve, **content\splitmerge\powershell** alt dizinindeki bölünmüş birleştirme PowerShell betiklerini (ve gerekli istemci dll 'leri) bulun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 1. Bölünmüş birleştirme durum veritabanı olarak kullanılacak bir Azure SQL DB veritabanı oluşturun. [Azure Portal](https://portal.azure.com) gidin. Yeni bir **SQL veritabanı**oluşturun. Veritabanına bir ad verin ve yeni bir yönetici ve parola oluşturun. Daha sonra kullanmak üzere adı ve parolayı kaydettiğinizden emin olun.
 2. Azure SQL DB sunucunuzun Azure hizmetlerinin bu sunucuya bağlanmasına izin verdiğinden emin olun. Portalda, **güvenlik duvarı ayarları**' nda, **Azure hizmetlerine erişime Izin ver** ayarının **Açık**olarak ayarlandığından emin olun. "Kaydet" simgesine tıklayın.
 3. Tanılama çıktısı için bir Azure depolama hesabı oluşturun.
@@ -45,7 +45,7 @@ Dosyalar, **Microsoft. Azure. SQLDatabase. Elalapscale. Service. SplitMerge. x. 
 3. Yeni bir veritabanı oluşturun veya bölünmüş birleştirme işlemlerine yönelik durum veritabanı olarak kullanılacak mevcut bir veritabanını seçin ve bu veritabanının bağlantı dizesini alın. 
    
    > [!IMPORTANT]
-   > Şu anda, durum veritabanının Latin harmanlaması (SQL\_Latin1\_General\_CP1\_CI\_as) kullanması gerekir. Daha fazla bilgi için bkz. [Windows harmanlama adı (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
+   > Şu anda, durum veritabanının Latin harmanlaması (SQL\_Latin1\_genel\_CP1\_CI\_AS) kullanması gerekir. Daha fazla bilgi için bkz. [Windows harmanlama adı (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
    >
 
    Azure SQL DB ile bağlantı dizesi genellikle şu biçimdedir:
@@ -142,7 +142,7 @@ Web rolünüzün çevrimiçi olması başarısız olursa, güvenlik yapılandır
    ```
 
 * Sunucu adının **https://** ile başlamadığından emin olun.
-* Azure SQL DB sunucunuzun Azure hizmetlerinin bu sunucuya bağlanmasına izin verdiğinden emin olun. Bunu yapmak için veritabanınızı portalda açın ve emin **Azure hizmetlerine erişime izin ver** ayarı **üzerinde**.
+* Azure SQL DB sunucunuzun Azure hizmetlerinin bu sunucuya bağlanmasına izin verdiğinden emin olun. Bunu yapmak için, veritabanınızı portalda açın ve **Azure hizmetlerine erişime Izin ver** ayarının * * * * * * * * olarak ayarlandığından emin olun.
 
 ## <a name="test-the-service-deployment"></a>Hizmet dağıtımını test etme
 ### <a name="connect-with-a-web-browser"></a>Bir Web tarayıcısı ile bağlanma
@@ -165,7 +165,7 @@ Dahil edilen betik dosyaları şunlardır:
        <th>Adımlar</th>
      </tr>
      <tr>
-       <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
+       <th rowspan="5">SetupSampleSplitMergeEnvironment. ps1</th>
        <td>1.    Parça eşleme Yöneticisi veritabanı oluşturur</td>
      </tr>
      <tr>
@@ -187,7 +187,7 @@ Dahil edilen betik dosyaları şunlardır:
        <th>Adımlar</th>
      </tr>
    <tr>
-       <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
+       <th rowspan="4">ExecuteSampleSplitMerge. ps1 </th>
        <td>1.    Bölünmüş birleştirme hizmeti Web ön ucu için bölünmüş bir istek gönderir ve bu, verileri ilk parçadan ikinci parçaya böler.</td>
      </tr>
      <tr>
@@ -304,7 +304,7 @@ Bölünmüş birleştirme işlemi gerçekleştirmek için, taşınmasını isted
 2. Her başvuru tablosu için, tablonun üst şema adını (isteğe bağlı, varsayılan olarak "dbo") ve tablo adını açıklayan bir **Referencetableınfo** nesnesi oluşturun.
 3. Yukarıdaki Tableınfo **nesnelerini yeni bir** nesne tablosu nesnesine ekleyin.
 4. Bir **Shardmapmanager** nesnesine bir başvuru alın ve **Getıfermainfocollection**' ı çağırın.
-5. Parça eşleme adını sağlayarak, Fermainınfo ' ı bir **Fermainfocollection**öğesine ekleyin.
+5. Parça eşleme adını sağlayarak, **Fermainınfo** ' ı bir **Fermainfocollection**öğesine ekleyin.
 
 SetupSampleSplitMergeEnvironment. ps1 betiğiyle buna örnek olarak görünebilirler.
 

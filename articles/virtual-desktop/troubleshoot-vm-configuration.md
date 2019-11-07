@@ -1,5 +1,5 @@
 ---
-title: Oturum konak sanal makine yapılandırması-Azure
+title: Windows sanal masaüstü oturumu ana bilgisayarı sorunlarını giderme-Azure
 description: Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini yapılandırırken sorunları çözme.
 services: virtual-desktop
 author: Heidilohr
@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: a847ba7d782b332d9cae7f83bc1278fea58b8811
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330814"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607408"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
 Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -80,7 +80,7 @@ VM 'Leri sağlamak için önerilen yol, **Windows sanal masaüstü konak havuzu 
 
 Bileşenlerin yüklendiğini doğrulamak ve hata iletilerini denetlemek için bu yönergeleri izleyin.
 
-1. **Denetim masası** > **Programlar** > **Programlar ve Özellikler**' i denetleyerek iki bileşenin yüklendiğini onaylayın. **Windows sanal masaüstü Aracısı** ve **Windows sanal masaüstü Aracısı önyükleme yükleyicisi** görünür değilse, VM 'de yüklü değildir.
+1. Programlar **ve özellikler** > **Denetim Masası** > **Programlar** ' ın denetleyerek, iki bileşenin yüklendiğini onaylayın. **Windows sanal masaüstü Aracısı** ve **Windows sanal masaüstü Aracısı önyükleme yükleyicisi** görünür değilse, VM 'de yüklü değildir.
 2. **Dosya Gezgini** 'ni açın ve **C:\windows\temp\scriptlogs.log**konumuna gidin. Dosya eksikse, iki bileşeni yükleyen PowerShell DSC 'nin belirtilen güvenlik bağlamında çalıştırılmadığını gösterir.
 3. **C:\windows\temp\scriptlogs.log** dosyası varsa, açın ve hata iletilerini denetleyin.
 
@@ -233,7 +233,7 @@ Düzeltmeyi çalıştırmak için kullanılan VM 'nin, hatalı çalışan yan ya
 Aynı alt ağ ve etki alanından düzeltmeyi çalıştırmak için aşağıdaki yönergeleri izleyin:
 
 1. Standart Uzak Masaüstü Protokolü (RDP) ile, bu, düzeltmesinin uygulanacağı VM 'ye bağlanın.
-2. @No__t-0 ' dan PsExec 'yi indirin.
+2. https://docs.microsoft.com/sysinternals/downloads/psexec'den PsExec 'yi indirin.
 3. İndirilen dosyayı sıkıştırmayı açın.
 4. Komut istemi 'ni yerel yönetici olarak başlatın.
 5. PsExec 'nin sıkıştırısaklandığı klasöre gidin.
@@ -309,7 +309,7 @@ Bu iletilerden birini görürseniz bu, görüntüde en son Windows güncelleşti
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Uzak Masaüstü lisans modu Grup İlkesi ayarını devre dışı bırak
 
-VM 'de grup ilkesi düzenleyicisini açıp **Yönetim Şablonları** > **Windows bileşenlerine**giderek Grup ilkesi ayarını kontrol edin  > **Uzak Masaüstü Hizmetleri** > **Uzak Masaüstü oturumu ana bilgisayarı**@no __T-7**lisans** > **Uzak Masaüstü lisans modunu ayarlar**. Grup İlkesi ayarı **etkinse**, **devre dışı**olarak değiştirin. Zaten devre dışıysa, olduğu gibi bırakın.
+VM 'de grup ilkesi düzenleyicisini açıp **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri** > ' na giderek Grup İlkesi ayarını kontrol edin **Uzak Masaüstü oturumu ana bilgisayarı** > **lisanslama** > **Uzak Masaüstü lisans modunu ayarlayın**. Grup İlkesi ayarı **etkinse**, **devre dışı**olarak değiştirin. Zaten devre dışıysa, olduğu gibi bırakın.
 
 >[!NOTE]
 >Etki alanınız aracılığıyla Grup İlkesi ayarlarsanız, bu Windows 10 Kurumsal Çoklu oturum VM 'lerini hedefleyen ilkelerde bu ayarı devre dışı bırakın.

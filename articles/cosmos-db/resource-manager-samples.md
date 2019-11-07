@@ -4,14 +4,14 @@ description: Azure Cosmos DB oluşturmak ve yapılandırmak için Azure Resource
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7861196daf3b04430200096a0d42bdcc6e6d5cf9
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: ecdfe89e899e0d416784ae32a0d66b335c09e2b6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053231"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582818"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Resource Manager Şablonlar
 
@@ -21,10 +21,8 @@ Aşağıdaki tablolar Azure Cosmos DB için Azure Resource Manager şablonların
 
 |**Şablon**|**Açıklama**|
 |---|---|
-|[Azure Cosmos hesabı, veritabanı, kapsayıcı oluşturma](manage-sql-with-resource-manager.md#create-resource) | Bu şablon, çoklu yönetici özellikli iki bölgede bir SQL (Core) API hesabı oluşturur. Azure Cosmos hesabının, veritabanı düzeyinde üretilen işi paylaşan iki kapsayıcısı olacaktır. |
+|[Azure Cosmos hesabı, veritabanı, kapsayıcı oluşturma](manage-sql-with-resource-manager.md#create-resource) | Bu şablon, paylaşılan veritabanı işleme ve adanmış aktarım hızı olan bir kapsayıcı olmak üzere iki kapsayıcı ile iki bölgede bir SQL (Core) API hesabı oluşturur. Verimlilik, güncelleştirilmiş işleme özelliği değeri olan şablonu yeniden göndererek güncelleştirilemeyebilir. |
 |[Saklı yordam, tetikleyici ve UDF ile bir Azure Cosmos hesabı, veritabanı ve kapsayıcısı oluşturma](manage-sql-with-resource-manager.md#create-sproc) | Bu şablon, bir kapsayıcı için bir saklı yordam, tetikleyici ve UDF ile iki bölgede bir SQL (Core) API hesabı oluşturur. |
-|[Bir veritabanı için güncelleştirme üretilen iş (RU/sn)](manage-sql-with-resource-manager.md#database-ru-update) | Bu şablon bir SQL (çekirdek) API hesabındaki bir veritabanının aktarım hızını güncelleştirir. |
-|[Bir kapsayıcı için güncelleştirme üretilen iş (RU/sn)](manage-sql-with-resource-manager.md#container-ru-update) | Bu şablon bir SQL (çekirdek) API hesabındaki bir kapsayıcının aktarım hızını güncelleştirir. |
 
 ## <a name="mongodb-api"></a>MongoDB API’si
 

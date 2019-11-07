@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432668"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605659"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Sanal ağınızda Azure Databricks'i dağıtma
 
@@ -61,7 +61,7 @@ Alt ağlar ve Azure Databricks denetim düzlemi arasındaki tüm giden ve gelen 
 
 Bu bölümde, Azure portal bir Azure Databricks çalışma alanının nasıl oluşturulduğu ve var olan sanal ağınızda nasıl dağıtılacağı açıklanmaktadır. Azure Databricks sanal ağı, sizin tarafınızdan sunulan CıDR aralıklarını kullanarak iki yeni alt ağ ve ağ güvenlik grubu ile güncelleştirir, gelen ve giden alt ağ trafiğini beyaz listeler ve çalışma alanını güncelleştirilmiş sanal ağa dağıtır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Databricks çalışma alanını dağıtacaksınız bir sanal ağınız olmalıdır. Var olan bir sanal ağı kullanabilir veya yeni bir tane oluşturabilirsiniz ancak sanal ağın, oluşturmayı planladığınız Azure Databricks çalışma alanıyla aynı bölgede olması gerekir. Sanal ağ için/16-/24 arasında bir CıDR aralığı gereklidir.
 
@@ -119,7 +119,7 @@ Bu şablonu ağ güvenlik grupları şablonunu da kullanmadan kullanırsanız, s
 
 ## <a name="whitelisting-subnet-traffic"></a>Alt ağ trafiğini beyaz listeleme
 
-Ağ güvenlik gruplarınızı oluşturmak için [Azure Portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) veya [Azure Resource Manager şablonlarını](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) kullanmıyorsanız, alt ağlarınıza aşağıdaki trafiği el ile eklemeniz gerekir.
+Ağ güvenlik gruplarınızı oluşturmak için [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) veya [Azure Resource Manager şablonlarını](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) kullanmıyorsanız, alt ağlarınıza aşağıdaki trafiği el ile eklemeniz gerekir.
 
 |Yön|Protokol|Kaynak|Kaynak Bağlantı Noktası|Hedef|Hedef Bağlantı Noktası|
 |---------|--------|------|-----------|-----------|----------------|
@@ -139,13 +139,13 @@ Aşağıdaki IP adreslerini kullanarak alt ağ trafiğini beyaz listeye ekleyin.
 |Doğu ABD 2|Denetim düzlemi NAT </br></br>Web|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Orta Kuzey ABD|Denetim düzlemi NAT </br></br>Web|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Orta ABD|Denetim düzlemi NAT </br></br>Web|23.101.152.95/32 </br></br>40.70.58.221/32|
-|Güney Orta ABD|Denetim düzlemi NAT </br></br>Web|40.83.178.242/32 </br></br>40.118.174.12/32|
+|Orta Güney ABD|Denetim düzlemi NAT </br></br>Web|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Batı ABD|Denetim düzlemi NAT </br></br>Web|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Batı ABD 2|Denetim düzlemi NAT </br></br>Web|40.83.178.242/32 </br></br>40.118.174.12/32|
-|Kanada Orta|Denetim düzlemi NAT </br></br>Web|40.85.223.25/32 </br></br>13.71.184.74/32|
-|Kanada Doğu|Denetim düzlemi NAT </br></br>Web|40.85.223.25/32 </br></br>13.71.184.74/32|
-|Birleşik Krallık, Batı|Denetim düzlemi NAT </br></br>Web|51.140.203.27/32 </br></br>51.140.204.4/32|
-|Birleşik Krallık, Güney|Denetim düzlemi NAT </br></br>Web|51.140.203.27/32 </br></br>51.140.204.4/32|
+|Orta Kanada|Denetim düzlemi NAT </br></br>Web|40.85.223.25/32 </br></br>13.71.184.74/32|
+|Doğu Kanada|Denetim düzlemi NAT </br></br>Web|40.85.223.25/32 </br></br>13.71.184.74/32|
+|Birleşik Krallık Batı|Denetim düzlemi NAT </br></br>Web|51.140.203.27/32 </br></br>51.140.204.4/32|
+|Birleşik Krallık Güney|Denetim düzlemi NAT </br></br>Web|51.140.203.27/32 </br></br>51.140.204.4/32|
 |Batı Avrupa|Denetim düzlemi NAT </br></br>Web|23.100.0.135/32 </br></br>52.232.19.246/32|
 |Kuzey Avrupa|Denetim düzlemi NAT </br></br>Web|23.100.0.135/32 </br></br>52.232.19.246/32|
 |Orta Hindistan|Denetim düzlemi NAT </br></br>Web|104.211.89.81/32 </br></br>104.211.101.14/32|
@@ -153,12 +153,12 @@ Aşağıdaki IP adreslerini kullanarak alt ağ trafiğini beyaz listeye ekleyin.
 |Batı Hindistan|Denetim düzlemi NAT </br></br>Web|104.211.89.81/32 </br></br>104.211.101.14/32|
 |Güneydoğu Asya|Denetim düzlemi NAT </br></br>Web|52.187.0.85/32 </br></br>52.187.145.107/32|
 |Doğu Asya|Denetim düzlemi NAT </br></br>Web|52.187.0.85/32 </br></br>52.187.145.107/32|
-|Doğu Avustralya|Denetim düzlemi NAT </br></br>Web|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Güneydoğu Avustralya|Denetim düzlemi NAT </br></br>Web|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Avustralya Doğu|Denetim düzlemi NAT </br></br>Web|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Avustralya Güneydoğu|Denetim düzlemi NAT </br></br>Web|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Avustralya Orta|Denetim düzlemi NAT </br></br>Web|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Avustralya Orta 2|Denetim düzlemi NAT </br></br>Web|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Doğu Japonya|Denetim düzlemi NAT </br></br>Web|13.78.19.235/32 </br></br>52.246.160.72/32|
-|Batı Japonya|Denetim düzlemi NAT </br></br>Web|13.78.19.235/32 </br></br>52.246.160.72/32|
+|Japonya Doğu|Denetim düzlemi NAT </br></br>Web|13.78.19.235/32 </br></br>52.246.160.72/32|
+|Japonya Batı|Denetim düzlemi NAT </br></br>Web|13.78.19.235/32 </br></br>52.246.160.72/32|
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

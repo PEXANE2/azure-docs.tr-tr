@@ -1,5 +1,5 @@
 ---
-title: Azure SQL elastik veritabanı Işleri (Önizleme) | Microsoft Docs
+title: Azure SQL elastik veritabanı Işleri (Önizleme)
 description: Bir veya daha fazla Azure SQL veritabanı kümesi üzerinde Transact-SQL (T-SQL) betikleri çalıştırmak için elastik veritabanı Işlerini (Önizleme) yapılandırma
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3a0aa6e28ea4c40d5cad5ba99edec344c7979acf
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2afe7d5c9667002c97d354cd1e94f292c6302558
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935088"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685301"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Elastik işler oluşturma, yapılandırma ve yönetme
 
@@ -31,7 +31,7 @@ Bu makalede, elastik işler oluşturmayı, yapılandırmayı ve yönetmeyi öğr
 
 ## <a name="create-run-and-manage-jobs"></a>İşleri oluşturma, çalıştırma ve yönetme
 
-1. [PowerShell](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets) veya [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) kullanarak *İş veritabanında* iş yürütme kimlik bilgisi oluşturun.
+1. *PowerShell* veya [T-SQL](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets) kullanarak [İş veritabanında](elastic-jobs-tsql.md#create-a-credential-for-job-execution) iş yürütme kimlik bilgisi oluşturun.
 2. [PowerShell](elastic-jobs-powershell.md#define-the-target-databases-you-want-to-run-the-job-against) veya [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) kullanarak hedef grubu (işi çalıştırmak istediğiniz veritabanları) tanımlayın.
 3. İşin çalışacağı her veritabanında bir iş aracısı kimlik bilgisi oluşturun [(kullanıcıyı (veya rolü) gruptaki her bir veritabanına ekleyin)](sql-database-control-access.md). Örnek için bkz. [PowerShell öğreticisi](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets).
 4. [PowerShell](elastic-jobs-powershell.md#create-a-job) veya [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) kullanarak bir iş oluşturun.
@@ -48,14 +48,14 @@ Bu makalede, elastik işler oluşturmayı, yapılandırmayı ve yönetmeyi öğr
 Bir işi çalıştırmak için uygun kimlik bilgilerinin ayarlanması kafa karışıklığına neden olabileceğinden aşağıdaki noktaları göz önünde bulundurun:
 
 - Veritabanı kapsamlı kimlik bilgileri *İş veritabanında* oluşturulmalıdır.
-- **Tüm hedef veritabanlarının, işin başarıyla tamamlanabilmesi için [yeterli izinlere](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) sahip bir oturum açma işlemi olması gerekir** (`jobuser` aşağıdaki diyagramda).
+- **Tüm hedef veritabanlarının, işin başarıyla tamamlanabilmesi için [yeterli izinlere](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) sahip bir oturum açma işlemi olması gerekir** (Aşağıdaki diyagramda`jobuser`).
 - Kimlik bilgileri işler arasında yeniden kullanılabilir ve kimlik bilgisi parolaları, iş nesnelerine salt okuma erişimi olan kullanıcılardan şifrelenir ve bunların güvenliğini sağlar.
 
 Aşağıdaki resim, uygun iş kimlik bilgilerinin anlaşılması ve ayarlanması konusunda yardımcı olmak üzere tasarlanmıştır. **Kullanıcının, işin çalıştırılacağı her veritabanında (tüm *hedef kullanıcı veritabanlarında*) oluşturulması gerektiğini unutmayın**.
 
 ![Elastik İşler kimlik bilgileri](media/elastic-jobs-overview/job-credentials.png)
 
-## <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
+## <a name="security-best-practices"></a>Güvenlik en iyi uygulamaları
 
 Elastik İşlerle çalışırken dikkat etmeniz gereken en iyi deneyimlerin bazıları:
 
@@ -75,7 +75,7 @@ Hedef veritabanı grubunun boyutuna ve bir işin istenen yürütme süresine (e�
 
 Bir SQL elastik havuzundaki veritabanları üzerinde iş çalıştırılması sırasında kaynakların aşırı yüklenmesini önlemek için işler aynı anda üzerinde çalışılabilecek veritabanı sayısını sınırlayacak şekilde yapılandırılabilir.
 
-Bir işin üzerinde çalıştığı eşzamanlı veritabanı sayısını, T-SQL içinde veya `sp_add_jobstep` `Add-AzSqlElasticJobStep -MaxParallelism` PowerShell 'de saklı `@max_parallelism` yordamın parametresini ayarlayarak ayarlayın.
+`sp_add_jobstep` saklı yordamın T-SQL içinde `@max_parallelism` parametresini veya PowerShell 'de `Add-AzSqlElasticJobStep -MaxParallelism` ayarlayarak bir işin üzerinde çalıştığı eşzamanlı veritabanlarının sayısını ayarlayın.
 
 ## <a name="best-practices-for-creating-jobs"></a>İş oluşturmak için en iyi deneyimler
 

@@ -1,5 +1,5 @@
 ---
-title: Parça eşleme sorunlarını onarmak için kurtarma Yöneticisi 'Ni kullanma | Microsoft Docs
+title: Parça eşleme sorunlarını onarmak için kurtarma Yöneticisi 'Ni kullanma
 description: Parça eşlemeleriyle ilgili sorunları gidermek için RecoveryManager sınıfını kullanın
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: cbc4985f032c228db7a9ddf719390bbf2d0166b9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5920f0a3f08d83b1300956ca830b3b9b827fa5e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568693"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690477"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>RecoveryManager sınıfı ile parça eşleme sorunlarını düzeltme
 
@@ -42,7 +42,7 @@ Aşağıdaki nedenlerden dolayı GSM ve LSM eşitlenmemiş olabilir:
 
 Azure SQL veritabanı elastik veritabanı araçları, coğrafi çoğaltma ve geri yükleme hakkında daha fazla bilgi için aşağıdakilere bakın:
 
-* [Bakýþ SQL veritabanı ile bulut iş sürekliliği ve veritabanı olağanüstü durum kurtarma](sql-database-business-continuity.md)
+* [Genel Bakış: SQL veritabanı ile bulut iş sürekliliği ve veritabanı olağanüstü durum kurtarma](sql-database-business-continuity.md)
 * [Elastik veritabanı araçlarını kullanmaya başlama](sql-database-elastic-scale-get-started.md)  
 * [ShardMap yönetimi](sql-database-elastic-scale-shard-map-management.md)
 

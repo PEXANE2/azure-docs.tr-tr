@@ -1,5 +1,5 @@
 ---
-title: Windows sanal masaüstü-Azure 'da Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma
+title: FSLogix profil kapsayıcıları NetApp Windows sanal masaüstü-Azure
 description: Windows sanal masaüstündeki Azure NetApp Files kullanarak FSLogix profil kapsayıcısı oluşturma.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 4e714b872ae43eb313efe549c77f5610342f430c
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1f5d1050815961f51c2bb1cfce256b1ea37d3ac1
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311627"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605772"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma
 
@@ -32,7 +32,7 @@ Bu kılavuzdaki yönergeler özellikle Windows sanal masaüstü kullanıcıları
 >[!NOTE]
 >Azure 'daki farklı FSLogix profili kapsayıcı depolama seçenekleri hakkında daha fazla bilgi arıyorsanız, bkz. [FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir konak havuzu için bir FSLogix profil kapsayıcısı oluşturabilmeniz için öncelikle şunları yapmanız gerekir:
 
@@ -44,7 +44,7 @@ Bir konak havuzu için bir FSLogix profil kapsayıcısı oluşturabilmeniz için
 
 Başlamak için bir Azure NetApp Files hesabı ayarlamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Hesabınızın katkıda bulunan veya yönetici izinlerine sahip olduğundan emin olun.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Hesabınızın katkıda bulunan veya yönetici izinlerine sahip olduğundan emin olun.
 
 2. Azure Cloud Shell açmak için arama çubuğunun sağ tarafındaki **Azure Cloud Shell simgesini** seçin.
 
@@ -134,7 +134,7 @@ Ardından, yeni bir birim oluşturmanız gerekir.
     - **Sanal ağ**için, açılan menüden etki alanı denetleyicisiyle bağlantısı olan var olan bir sanal ağı seçin.
     - **Alt ağ**altında **Yeni oluştur**' u seçin. Bu alt ağın Azure NetApp Files için temsilci olarak olacağını aklınızda bulundurun.
 
-3.  **Sonraki: protokol \> @ no__t-2 ' yi** seçerek protokol sekmesini açın ve birim erişim parametrelerinizi yapılandırın.
+3.  **İleri ' yi seçin: protokol \>\>** protokol sekmesini açın ve birim erişim parametrelerinizi yapılandırın.
 
 ## <a name="configure-volume-access-parameters"></a>Birim erişim parametrelerini yapılandırma
 
@@ -168,11 +168,11 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 6. **Yükle**’yi seçin.
 
-7. Aracının yüklü olduğunu onaylamak için **C: \\Program Files @ no__t-2FSLogix @ no__t-3Apps** adresine gidin.
+7. Aracının yüklü olduğunu onaylamak için, **C:\\Program Files\\FSLogix\\uygulamaları ' na** gidin.
 
 8. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın.
 
-9. **Bilgisayar @ no__t-1HKEY_LOCAL_MACHINE @ no__t-2software @ no__t-3FSLogix**dizinine gidin.
+9. **\\hkey_local_machıne\\software\\FSLogix bilgisayarına**gidin.
 
 10. **Profiller**adlı bir anahtar oluşturun.
 
@@ -207,7 +207,7 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Kullanıcıların Azure NetApp dosya paylaşımında erişebildiğinizden emin olun
 
-1. Internet tarayıcınızı açın ve <https://rdweb.wvd.microsoft.com/webclient/index.html> ' a gidin.
+1. Internet tarayıcınızı açın ve <https://rdweb.wvd.microsoft.com/webclient/index.html>gidin.
 
 2. Uzak Masaüstü grubuna atanan bir kullanıcının kimlik bilgileriyle oturum açın.
 
@@ -219,7 +219,7 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 5. **Genel bakış** sekmesine gidin ve FSLogix profil kapsayıcısının boşluk kullandığını doğrulayın.
 
-6. Uzak Masaüstü 'Nü kullanarak konak havuzunun herhangi bir sanal makine bölümüne doğrudan bağlanın ve **dosya gezginini açın.** Sonra **bağlama yoluna** gidin (aşağıdaki örnekte, bağlama yolu @no__t -1\\anf-SMB-3863.gt1107.onmicrosoft.com @ no__t-3anf-Vol ' dır.
+6. Uzak Masaüstü 'Nü kullanarak konak havuzunun herhangi bir sanal makine bölümüne doğrudan bağlanın ve **dosya gezginini açın.** Sonra **bağlama yoluna** gidin (aşağıdaki örnekte, bağlama yolu \\\\ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF-Vol).
 
    Bu klasör içinde, aşağıdaki örnekte olduğu gibi bir profil VHD (veya VHDX) olmalıdır.
 

@@ -1,5 +1,5 @@
 ---
-title: Tek veya havuza alınmış bir Azure SQL veritabanını BACPAC dosyasına aktarma | Microsoft Docs
+title: Tek veya havuza alınmış bir Azure SQL veritabanını BACPAC dosyasına aktarma
 description: Azure portal kullanarak bir Azure SQL veritabanını BACPAC dosyasına aktarma
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 9b4770f565f256d444ab6a6f06bb369b8417eb18
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f3f6071d42d77ffa07dd27080b1bc18d7bbc6952
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568250"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690076"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Bir Azure SQL veritabanını BACPAC dosyasına aktarma
 
@@ -42,17 +42,17 @@ Arşivleme için bir veritabanını dışarı veya başka bir platforma taşıma
 Azure PowerShell kullanarak bir veritabanının BACPAC 'i yönetilen bir [örnekten](sql-database-managed-instance.md) dışarı aktarma işlemi şu anda desteklenmiyor. Bunun yerine SQL Server Management Studio veya SQLPackage kullanın.
 
 > [!NOTE]
-> Azure portal veya PowerShell aracılığıyla gönderilen içeri/dışarı aktarma isteklerini işleyen makineler, BACPAC dosyasını ve veri katmanı uygulama çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları da depolaması gerekir. Gerekli disk alanı, aynı boyuta sahip veritabanları arasında önemli ölçüde farklılık gösterir ve veritabanı boyutunun 3 katına kadar disk alanı gerektirebilir. İçeri/dışarı aktarma isteği çalıştıran makinelerde yalnızca 450GB yerel disk alanı vardır. Sonuç olarak, bazı istekler hata `There is not enough space on the disk`vererek başarısız olabilir. Bu durumda geçici çözüm, SqlPackage. exe ' yi yeterli yerel disk alanına sahip bir makinede çalıştırmalıdır. Bu sorundan kaçınmak için, [SQL paketini](#export-to-a-bacpac-file-using-the-sqlpackage-utility) 150gb 'den büyük veritabanlarını içeri/dışarı aktarmak için kullanmayı öneririz.
+> Azure portal veya PowerShell aracılığıyla gönderilen içeri/dışarı aktarma isteklerini işleyen makineler, BACPAC dosyasını ve veri katmanı uygulama çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları da depolaması gerekir. Gerekli disk alanı, aynı boyuta sahip veritabanları arasında önemli ölçüde farklılık gösterir ve veritabanı boyutunun 3 katına kadar disk alanı gerektirebilir. İçeri/dışarı aktarma isteği çalıştıran makinelerde yalnızca 450GB yerel disk alanı vardır. Sonuç olarak, bazı istekler `There is not enough space on the disk`hata vererek başarısız olabilir. Bu durumda geçici çözüm, SqlPackage. exe ' yi yeterli yerel disk alanına sahip bir makinede çalıştırmalıdır. Bu sorundan kaçınmak için, [SQL paketini](#export-to-a-bacpac-file-using-the-sqlpackage-utility) 150gb 'den büyük veritabanlarını içeri/dışarı aktarmak için kullanmayı öneririz.
 
 1. [Azure Portal](https://portal.azure.com)kullanarak bir veritabanını dışarı aktarmak için veritabanınızın sayfasını açın ve araç çubuğunda **dışarı aktar** ' a tıklayın.
 
-   ![Veritabanı dışarı aktarma](./media/sql-database-export/database-export1.png)
+   ![veritabanı dışarı aktarma](./media/sql-database-export/database-export1.png)
 
 2. BACPAC dosya adını belirtin, var olan bir Azure Depolama hesabını ve dışarı aktarma kapsayıcısını seçin ve ardından kaynak veritabanına erişim için uygun kimlik bilgilerini sağlayın. Azure yöneticisi olsanız bile bir SQL **Server Yöneticisi oturum açması** , Azure yöneticisi, SQL Server yönetici izinlerine sahip olmaya karşılık gelmez.
 
-    ![Veritabanı dışarı aktarma](./media/sql-database-export/database-export2.png)
+    ![veritabanı dışarı aktarma](./media/sql-database-export/database-export2.png)
 
-3.           **Tamam**'ı tıklatın.
+3. **Tamam** düğmesine tıklayın.
 
 4. Dışarı aktarma işleminin ilerlemesini izlemek için, dışarı aktarılmakta olan veritabanını içeren SQL veritabanı sunucusunun sayfasını açın. **Ayarlar** ' ın altında, **Içeri/dışarı aktarma geçmişi**' ne tıklayın.
 
@@ -87,7 +87,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-Dışarı aktarma isteğinin durumunu denetlemek için [Get-Azsqldatabaseımportexportstatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet 'ini kullanın. Bu, istek genellikle durumu döndürüyor **sonrasında hemen çalıştırılıyor: Sürüyor**. Durumu gördüğünüzde **:**  Dışarı aktarma işlemi tamamlandı.
+Dışarı aktarma isteğinin durumunu denetlemek için [Get-Azsqldatabaseımportexportstatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet 'ini kullanın. İstek genellikle **durum: InProgress**döndürür. **Durumu gördüğünüzde: başarılı** verme işlemi tamamlandı.
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
@@ -110,4 +110,4 @@ $exportStatus
 - Bir SQL Server veritabanından BACPAC dışarı aktarma hakkında bilgi edinmek için bkz. [veri katmanı uygulamasını dışarı aktarma](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 - Veri geçişi hizmetini kullanarak bir veritabanını geçirme hakkında bilgi edinmek için bkz. [DMS kullanarak Azure SQL veritabanı 'na SQL Server geçirme](../dms/tutorial-sql-server-to-azure-sql.md).
 - Azure SQL veritabanı 'na geçiş yapmak için SQL Server 'den bir Prelude olarak veriyorsanız, bkz. [SQL Server veritabanını Azure SQL veritabanı 'Na geçirme](sql-database-single-database-migrate.md).
-- Depolama anahtarları ve paylaşılan erişim imzaları güvenli bir şekilde, bkz: yönetmek ve paylaşmak hakkında bilgi edinmek için [Azure depolama Güvenlik Kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
+- Depolama anahtarlarını ve paylaşılan erişim imzalarını güvenli bir şekilde yönetme ve paylaşma hakkında bilgi edinmek için bkz. [Azure Storage Güvenlik Kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

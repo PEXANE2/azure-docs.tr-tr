@@ -1,18 +1,18 @@
 ---
 title: Hizmet sorumluları ile Azure Analysis Services görevleri otomatikleştirin | Microsoft Docs
-description: Azure Analysis Services görevlerini otomatikleştirmek için hizmet sorumluları oluşturmayı öğrenin.
+description: Azure Analysis Services yönetim görevlerini otomatikleştirmek için bir hizmet sorumlusu oluşturmayı öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a590590faa422d47306e697a7c90bb635ea8c6e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5078fcc1ba5c581aca475025b286d0319d6024a6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146366"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572599"
 ---
 # <a name="automation-with-service-principals"></a>Hizmet sorumlularıyla otomasyon
 
@@ -33,7 +33,7 @@ Hizmet sorumluları Azure portal veya PowerShell kullanarak oluşturulabilir. Da
 
 Hizmet sorumlusu kimlik bilgileri ve sertifikaları, runbook işlemleri için Azure Otomasyonu 'nda güvenli bir şekilde depolanabilir. Daha fazla bilgi için bkz:
 
-[Azure Otomasyonu 'Nda kimlik bilgisi varlıkları](../automation/automation-credentials.md)   
+[Azure Automation 'Da kimlik bilgisi varlıkları](../automation/automation-credentials.md)   
 [Azure Otomasyonu'ndaki sertifika varlıkları](../automation/automation-certificates.md)
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Sunucu Yöneticisi rolüne hizmet sorumluları ekleme
@@ -48,7 +48,7 @@ Hizmet sorumlusu uygulama kimliği ve parolası ya da sertifikası, bir UPN ile 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />Az. AnalysisServices modülünü kullanma
+#### <a name="a-nameazmodule-using-azanalysisservices-module"></a>Az. AnalysisServices modülünü kullanarak <a name="azmodule" />
 
 [Az. AnalysisServices](/powershell/module/az.analysisservices) modülüyle kaynak yönetimi işlemleri için bir hizmet sorumlusu kullanırken `Connect-AzAccount` cmdlet 'ini kullanın. 
 
@@ -92,9 +92,9 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO ve ADOMD 
 
-İstemci uygulamaları ve Web uygulamalarıyla bağlantı kurulurken, [amo ve ADOMD istemci kitaplıkları](analysis-services-data-providers.md) sürüm 15.0.2 ve bağlantı dizelerindeki NuGet destek hizmeti sorumlularını kullanarak şu sözdizimini kullanarak daha fazla yüklenebilir paketler: `app:AppID` ve parola veya @no__ t-2. 
+İstemci uygulamaları ve Web Apps ile bağlanırken, [amo ve ADOMD istemci kitaplıkları](analysis-services-data-providers.md) sürüm 15.0.2 ve bağlantı dizelerindeki NuGet destek hizmeti sorumlularını kullanarak şu sözdizimini kullanarak daha fazla yüklenebilir paketler: `app:AppID` ve parola veya @no_ _t_2_ .`cert:thumbprint` 
 
-Aşağıdaki örnekte, bir model veritabanı yenileme işlemi gerçekleştirmek için `appID` ve bir `password` kullanılır:
+Aşağıdaki örnekte `appID` ve bir `password` model veritabanı yenileme işlemi gerçekleştirmek için kullanılır:
 
 ```csharp
 string appId = "xxx";
@@ -109,5 +109,5 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure PowerShell   [Ile oturum açın](https://docs.microsoft.com/powershell/azure/authenticate-azureps)  
+[Azure PowerShell  Ile oturum açın](https://docs.microsoft.com/powershell/azure/authenticate-azureps)  
 [Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md)   

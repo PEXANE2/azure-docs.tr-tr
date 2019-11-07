@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı bellek içi örnek | Microsoft Docs
+title: Azure SQL veritabanı bellek içi örnek
 description: OLTP ve columnstore örneği ile Azure SQL veritabanı 'nı bellek Içi teknolojilerle deneyin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e3e819fc90e8900219ebc7809adb293369084a72
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 8526236afdb0a312879cb3c1635a7fd85985278f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828204"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689825"
 ---
 # <a name="in-memory-sample"></a>Bellek içi örnek
 
@@ -24,7 +24,7 @@ Azure SQL veritabanı 'nda bellek içi teknolojiler uygulamanızın performansı
 
 Bu makalede, Azure SQL veritabanı 'nda Ayrıca, bellek Içi OLTP ve columnstore dizinlerinin kullanımını gösteren iki örnek görürsünüz.
 
-Daha fazla bilgi için bkz.:
+Daha fazla bilgi için bkz.
 - [Bellek ıçı OLTP genel bakış ve kullanım senaryoları](https://msdn.microsoft.com/library/mt774593.aspx) (müşteri örnek olay incelemeleri ve kullanmaya başlamak için bilgiler içerir)
 - [Bellek Içi OLTP için belgeler](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Columnstore dizinleri Kılavuzu](https://msdn.microsoft.com/library/gg492088.aspx)
@@ -51,7 +51,7 @@ Daha fazla uyarlaması için, ancak bellek Içi OLTP için daha görsel açıdan
 
 3. [Bellek ıçı OLTP Transact-SQL betiğini](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) panonuza kopyalayın. T-SQL betiği, 1. adımda oluşturduğunuz AdventureWorksLT örnek veritabanında gerekli bellek Içi nesneleri oluşturur.
 
-4. T-SQL betiğini SSMS 'ye yapıştırın ve betiği yürütün. @No__t-0 yan tümcesi CREATE TABLE deyimler çok önemlidir. Örneğin:
+4. T-SQL betiğini SSMS 'ye yapıştırın ve betiği yürütün. `MEMORY_OPTIMIZED = ON` yan tümcesi CREATE TABLE deyimleri önemli. Örneğin:
 
 
 ```sql
@@ -87,7 +87,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 - Demo. DemoSalesOrderDetailSeed
 
 
-Bellek için iyileştirilmiş tabloları SSMS içindeki **Nesne Gezgini** aracılığıyla inceleyebilirsiniz. **Tablolar**@no__t sağ tıklama-1**filtre** > **filtre ayarları** > **bellek için iyileştirilmiştir**. Değer 1 ' e eşittir.
+Bellek için iyileştirilmiş tabloları SSMS içindeki **Nesne Gezgini** aracılığıyla inceleyebilirsiniz. **Tablo** ** > filtre** > **filtre ayarlarını** > **bellek için iyileştirilmiş**' a sağ tıklayın. Değer 1 ' e eşittir.
 
 
 Ya da katalog görünümlerini sorgulayabilirsiniz, örneğin:
@@ -171,7 +171,7 @@ end
 Önceki T-SQL betiğinin *_ondisk* sürümünü ostres. exe için yapmak amacıyla, *_ınmem* alt dizesi her iki tekrarın de *_ondisk*ile değiştirilmesini sağlayabilirsiniz. Bu değişiklikler, tabloların ve saklı yordamların adlarını etkiler.
 
 
-### <a name="install-rml-utilities-and-ostress"></a>RML yardımcı programlarını ve @no__t yüklemesini-0
+### <a name="install-rml-utilities-and-ostress"></a>RML yardımcı programlarını ve `ostress` yükleyip
 
 
 İdeal olarak, ostres. exe ' yi bir Azure sanal makinesinde (VM) çalıştırmayı planlarsınız. AdventureWorksLT veritabanınızın bulunduğu aynı Azure coğrafi bölgesinde bir [Azure VM](https://azure.microsoft.com/documentation/services/virtual-machines/) oluşturursunuz. Ancak bunun yerine, dizüstü bilgisayarınızda ostres. exe dosyasını çalıştırabilirsiniz.
@@ -179,7 +179,7 @@ end
 
 VM 'de veya seçtiğiniz herhangi bir konakta, yeniden yürütme biçimlendirme dili (RML) yardımcı programlarını yükleyebilirsiniz. Yardımcı programlar ostres. exe ' yi içerir.
 
-Daha fazla bilgi için bkz.:
+Daha fazla bilgi için bkz.
 - [Bellek ıçı OLTP Için örnek veritabanında](https://msdn.microsoft.com/library/mt465764.aspx)ostres. exe tartışması.
 - [Bellek ıçı OLTP Için örnek veritabanı](https://msdn.microsoft.com/library/mt465764.aspx).
 - [Ostres. exe ' yi yüklemeye yönelik blog](https://blogs.msdn.com/b/psssql/archive/20../../cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
@@ -223,7 +223,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 2. Önceki ostres. exe komut satırının metnini panonuza kopyalayın.
 
-3. -S-U-P-d parametreleri için `<placeholders>` değerini doğru gerçek değerlerle değiştirin.
+3. -S-U-P-d parametrelerinin `<placeholders>` doğru gerçek değerlerle değiştirin.
 
 4. Düzenlenen Komut satırlarınızı bir RML cmd penceresinde çalıştırın.
 
@@ -231,7 +231,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 #### <a name="result-is-a-duration"></a>Sonuç bir süre
 
 
-@No__t-0 tamamlandığında, RML cmd penceresinde çalışma süresini son çıkış satırı olarak yazar. Örneğin, daha kısa bir test çalışması yaklaşık 1,5 dakika boyunca çalışır:
+`ostress.exe` tamamlandığında, RML cmd penceresinde çalışma süresini son çıkış satırı olarak yazar. Örneğin, daha kısa bir test çalışması yaklaşık 1,5 dakika boyunca çalışır:
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
@@ -256,7 +256,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 #### <a name="expected-comparison-results"></a>Beklenen karşılaştırma sonuçları
 
-Bellek Içi testleriniz, bu uyarlaması iş yükü için, veritabanı ile aynı Azure bölgesindeki bir Azure sanal makinesinde çalışan `ostress` ile, bu performansı **dokuz kez** artmış şekilde göstermiştir.
+Bellek Içi testleriniz, bu uyarlaması iş yükü için, veritabanı ile aynı Azure bölgesindeki bir Azure VM 'de çalışan `ostress` ile bu performansı **dokuz kez** artmış olduğunu göstermiştir.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
@@ -309,7 +309,7 @@ Performans geliştirmelerini görmek için [çalıştırabileceğiniz birkaç T-
 - `FROM FactResellerSalesXL_CCI a`
 
 
-Kümelenmiş bir columnstore dizini FactResellerSalesXL @ no__t-0CCı tablosudur.
+Kümelenmiş bir columnstore dizini FactResellerSalesXL\_CCı tablosudur.
 
 Aşağıdaki T-SQL komut dosyası alıntısı, her tablo sorgusunun GÇ ve zaman istatistiklerini yazdırır.
 
@@ -393,7 +393,7 @@ P2 fiyatlandırma katmanının bulunduğu bir veritabanında, geleneksel dizin i
 
 #### <a name="deeper-information"></a>Daha derin bilgi
 
-- [SQL veritabanı 'nda bellek Içi OLTP ile DTU 'yu% 70 oranında düşürürken, çekirdeğin anahtar veritabanı iş yükünü nasıl çift katına kullandığını öğrenin](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [SQL veritabanı 'nda bellek Içi OLTP ile DTU 'yu %70 oranında düşürürken, çekirdeğin anahtar veritabanı iş yükünü nasıl çift katına kullandığını öğrenin](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 - [Azure SQL veritabanı blog gönderisine bellek içi OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
@@ -413,7 +413,7 @@ P2 fiyatlandırma katmanının bulunduğu bir veritabanında, geleneksel dizin i
 
 #### <a name="tools"></a>Araçlar
 
-- [Azure portal](https://portal.azure.com/)
+- [Azure Portal](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

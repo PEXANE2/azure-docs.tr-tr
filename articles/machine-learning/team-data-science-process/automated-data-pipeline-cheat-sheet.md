@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: b41241d3f0223e7c96dce4a9e98262b403cb0660
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c7011991deb632110264233ea0e7aeabe793fbb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495081"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670479"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure Machine Learning öngörüleri için otomatik veri işlem hattı kopya sayfası
 **Microsoft Azure Machine Learning otomatikleştirilmiş veri ardışık düzen sayfası** , verilerinizi tahmine dayalı analiz modelinize göre puanlabileceğiniz Machine Learning Web hizmetinize almak için kullanabileceğiniz teknolojide gezinmenize yardımcı olur.
@@ -36,6 +36,6 @@ Bu sayfayı buraya indirin:  **[Microsoft Azure Machine Learning otomatik veri a
 
 ## <a name="more-help-with-machine-learning-studio"></a>Machine Learning Studio hakkında daha fazla yardım
 * Microsoft Azure Machine Learning genel bir bakış için bkz. [Microsoft Azure makine öğrenimine giriş](../studio/what-is-machine-learning.md).
-* Puanlama Web hizmeti dağıtma hakkında bir açıklama için bkz. [Azure Machine Learning Web hizmeti dağıtma](../studio/publish-a-machine-learning-web-service.md).
+* Puanlama Web hizmeti dağıtma hakkında bir açıklama için bkz. [Azure Machine Learning Web hizmeti dağıtma](../studio/deploy-a-machine-learning-web-service.md).
 * Puanlama Web hizmetinin nasıl kullanılacağına ilişkin bir tartışma için bkz. [Azure Machine Learning Web hizmeti kullanma](../studio/consume-web-services.md).
 

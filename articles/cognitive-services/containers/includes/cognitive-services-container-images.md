@@ -6,14 +6,14 @@ manager: nitinme
 description: Tüm bilişsel hizmet teklifleri için kapsayıcı kayıt defterleri, depolar ve görüntü adları temsil eden iki tablo.
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/09/2019
+ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: c1593cb3dad7ee1370a66747fa3fe47e93c19957
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: c2e1707c6d757b2bf568f413ce2ab9f7a28ab6e4
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499198"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604428"
 ---
 ### <a name="container-repositories-and-images"></a>Kapsayıcı depoları ve görüntüleri
 
@@ -40,5 +40,9 @@ Kapsayıcı Önizleme kayıt defteri, bilişsel hizmetler için genel kullanıma
 | [Görüntü İşleme](../../Computer-vision/computer-vision-how-to-install-containers.md) | Okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
 | [Ünüzü](../../face/face-how-to-install-containers.md) | Yüz | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Form tanıyıcı](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
-< < < < < < < baş | [Konuşma hizmeti API 'si](../../speech-service/speech-container-howto.md?tab=stt) | Konuşmayı metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` | | [Konuşma hizmeti API 'si](../../speech-service/speech-container-howto.md?tab=cstt) | Özel Konuşma Tanıma metin | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` | | [Konuşma hizmeti API 'si](../../speech-service/speech-container-howto.md?tab=tts) | Metinden konuşmaya | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` | | [Konuşma hizmeti API 'si](../../speech-service/speech-container-howto.md?tab=ctts) | Özel metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` | ======= | [Konuşma hizmeti API 'si](../../speech-service/speech-container-howto.md) | Konuşmayı metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` | | [Konuşma hizmeti API 'si](../../speech-service/speech-container-howto.md) | Metinden konuşmaya | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` | | [Translator metin çevirisi](../../translator/how-to-install-containers.md) | Translator Metin Çevirisi | `containerpreview.azurecr.io/microsoft/cognitive-services-translator-text` |
->>>>>>> refs/uzaktan kumandalar/MicrosoftDocs/Master
+| [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=stt) | Konuşmayı metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
+| [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=cstt) | Özel Konuşma Tanıma metin | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |
+| [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=tts) | Metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` |
+| [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=ctts) | Özel metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` |
+| [Translator Metin Çevirisi](../../translator/how-to-install-containers.md) | Translator Metni | `containerpreview.azurecr.io/microsoft/cognitive-services-translator-text` |
+

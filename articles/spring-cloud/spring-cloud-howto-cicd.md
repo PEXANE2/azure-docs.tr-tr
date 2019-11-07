@@ -1,20 +1,17 @@
 ---
 title: Azure yay bulutu için CI/CD
 description: Azure yay bulutu için CI/CD
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 96795315fcb0dd9b90cd55e8baa46c6a394882ce
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: c19d32f0be2eb817f9f7d73e6c6eaad8d90ce350
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038840"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607793"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>Azure yay bulutu için CI/CD
 
@@ -28,7 +25,7 @@ Azure DevOps projenize Azure Resource Manager bir hizmet bağlantısı oluşturm
 
 ### <a name="deploy-artifacts"></a>Yapıtları dağıt
 
-Projelerinizi bir dizi @no__t kullanarak oluşturabilir ve dağıtabilirsiniz. Bu kod parçacığı ilk olarak, uygulamayı derlemek için bir Maven görevi tanımlar ve ardından Azure Spring Cloud Azure CLı uzantısını kullanarak JAR dosyasını dağıtan ikinci bir görevdir.
+Projelerinizi bir dizi `tasks`kullanarak oluşturabilir ve dağıtabilirsiniz. Bu kod parçacığı ilk olarak, uygulamayı derlemek için bir Maven görevi tanımlar ve ardından Azure Spring Cloud Azure CLı uzantısını kullanarak JAR dosyasını dağıtan ikinci bir görevdir.
 
 ```yaml
 steps:

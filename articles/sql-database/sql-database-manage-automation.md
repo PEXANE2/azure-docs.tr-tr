@@ -1,5 +1,5 @@
 ---
-title: Azure Otomasyonu 'Nu kullanarak Azure SQL veritabanlarını yönetme | Microsoft Docs
+title: Azure Otomasyonu 'Nu kullanarak Azure SQL veritabanlarını yönetme
 description: Azure Otomasyonu hizmetinin Azure SQL veritabanlarını ölçekli ölçekte yönetmek için nasıl kullanılabileceği hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: bb195d5809ef0e2af2a4975a263a9739db1cdfa6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0e29cd85c63bb2f6e083f9cda9abd48fa6d9975a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567737"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689443"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak Azure SQL veritabanlarını yönetme
 
@@ -49,4 +49,4 @@ Azure Otomasyonu ile ilgili temel bilgileri ve Azure SQL veritabanlarını yöne
 
 - [Azure Otomasyonu genel bakış](../automation/automation-intro.md)
 - [İlk runbook’um](../automation/automation-first-runbook-graphical.md)
-- [Azure Otomasyonu: Bulutta SQL aracınız](https://azure.microsoft.com/blog/20../../azure-automation-your-sql-agent-in-the-cloud/) 
+- [Azure Otomasyonu: buluttaki SQL aracınız](https://azure.microsoft.com/blog/20../../azure-automation-your-sql-agent-in-the-cloud/) 

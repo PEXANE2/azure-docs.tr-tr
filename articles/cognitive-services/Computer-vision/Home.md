@@ -1,5 +1,5 @@
 ---
-title: Görüntü İşleme API’si nedir? -Görüntü İşleme
+title: Görüntü İşleme nedir? -Görüntü İşleme
 titleSuffix: Azure Cognitive Services
 description: Görüntü İşleme hizmeti geliştiricilerin görüntü işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişmesini sağlar.
 services: cognitive-services
@@ -8,21 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: a34fdb24573df3287b72991454963c67e9689b9f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719552"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604551"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
-Azure 'un Görüntü İşleme Hizmeti, geliştiricilere resimleri işleyen ve bilgileri döndüren gelişmiş algoritmalara erişim sağlar. Bir görüntüyü analiz etmek için görüntü yükleyebilir veya görüntü URL'si belirtebilirsiniz. Görüntü işleme algoritmaları, ilgilendiğiniz görsel özelliklere bağlı olarak içeriği birkaç farklı şekilde çözümleyebilir. Örneğin, Görüntü İşleme bir görüntünün yetişkinlere yönelik içerik içerip içermediğini belirtebilir veya bir görüntüdeki tüm insan yüzlerini bulabilir.
+Azure Görüntü İşleme Hizmeti, geliştiricilerin resimleri işleyen gelişmiş algoritmalara ve ilgilendiğiniz görsel özelliklere bağlı olarak bilgi döndürmesini sağlar. Örneğin, Görüntü İşleme bir görüntünün yetişkinlere yönelik içerik içerip içermediğini belirtebilir veya bir görüntüdeki tüm insan yüzlerini bulabilir.
 
-Uygulamanızdaki Görüntü İşleme yerel bir SDK kullanarak veya doğrudan REST API çağırarak kullanabilirsiniz. Bu sayfa, Görüntü İşleme ile yapabileceklerinizi büyük ölçüde ele alır.
+Uygulamanızda Yerel bir SDK aracılığıyla veya REST API doğrudan çağırarak Görüntü İşleme kullanabilirsiniz. Bu sayfa, Görüntü İşleme ile yapabileceklerinizi büyük ölçüde ele alır.
+
+## <a name="computer-vision-for-digital-asset-management"></a>Dijital varlık yönetimi için Görüntü İşleme
+
+Görüntü İşleme, birçok dijital varlık yönetimi (DAM) senaryosunu güçlendirin. DAM, zengin medya varlıklarını düzenleme, depolama ve alma ve dijital hakları ve izinleri yönetme iş sürecleridir. Örneğin, bir şirket görünür logo, yüz, nesne, renk vb. temel alarak görüntüleri gruplamak ve tanımlamak isteyebilir. Ya da [görüntüler için otomatik olarak açıklamalı alt yazılar oluşturmak](./Tutorials/storage-lab-tutorial.md) ve anahtar sözcükler eklemek isteyebilirsiniz. Bilişsel hizmetler, Azure Search ve akıllı Raporlama kullanan hepsi bir adet DAM çözümü için bkz. GitHub 'da [bilgi araştırma Çözüm Hızlandırıcısı Kılavuzu](https://github.com/Azure-Samples/azure-search-knowledge-mining) . Diğer DAM örnekleri için [görüntü işleme çözüm şablonları](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates) deposuna bakın.
 
 ## <a name="analyze-images-for-insight"></a>Öngörüler için görüntüleri analiz etme
 
@@ -47,8 +51,6 @@ Görsel özellikleri ve özellikleri hakkında öngörüleri tespit etmek ve sa�
 Görüntülerden, yazdırılmış ve el yazısı metinleri makine tarafından okunabilen bir karakter akışına ayıklamak için Görüntü İşleme [okuma API 'sini](concept-recognizing-text.md#read-api) kullanabilirsiniz. Okuma API 'SI, en son modellerimizi kullanır ve alındılar, posterler, iş kartları, mektuplar ve beyaz tahtalar gibi çeşitli yüzeyler ve arka planlar üzerinde metinle birlikte çalışmaktadır. Şu anda Ingilizce desteklenen tek dildir.
 
 Aynı zamanda, yazdırılan metni birkaç dilde ayıklamak için [optik karakter tanıma (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API 'sini de kullanabilirsiniz. Gerekirse, OCR tanınan metnin dönüşünü düzeltir ve her sözcüğün kare koordinatlarını sağlar. OCR, 25 dili destekler ve tanınan metnin dilini otomatik olarak algılar.
-
-
 
 ## <a name="moderate-content-in-images"></a>Görüntülerde orta içerik
 

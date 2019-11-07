@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 1f934bc5627331cc92ad3f497f1f7e4e0e5526cd
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595334"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579690"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -87,11 +87,11 @@ ya da
 or
 
 - aboneliğiniz için kaynak KIMLIĞI:
-  - @No__t_0 gidin,
+  - https://portal.azure.comgidin,
   - Arama kutusunda `Cognitive Services` ' yi seçin,
   - görüntülenmiş hizmetlerden, eşzamanlılık artışı istediğiniz konuşma hizmetini seçin,
   - Bu hizmetin özelliklerini görüntüle,
-  - `Resource ID` tamamını kopyalayın.
+  - `Resource ID`tamamını kopyalayın.
 
 **S: modelimi indirebilir ve yerel olarak çalıştırabilir miyim?**
 
@@ -175,6 +175,18 @@ Y **: uygulamanızda**kullanılan sözlük ve tümceciklerin başlangıç dili m
 **S: yalnızca bir sözcük listesini karşıya yükleyebilir miyim?**
 
 Y **: sözcüklerin bir listesini**karşıya yüklemek, sözcükleri sözlüğüne ekler, ancak sözcüklerin tipik olarak nasıl kullanıldığını sisteme öğretmez. Tam veya kısmi bir şekilde (kullanıcıların söyledikleri nesnelerin cümleler veya tümceleri), dil modelinin yeni kelimeleri ve nasıl kullanıldığını öğrenebilirsiniz. Özel dil modeli yalnızca sisteme yeni sözcükler eklemek için değil, aynı zamanda uygulamanız için bilinen sözcüklerin olasılığını ayarlamak için de uygundur. Tam dıklarýn sağlanması sistemin daha iyi öğrenilmesine yardımcı olur. 
+
+## <a name="tenant-model-custom-speech-with-office-365-data"></a>Kiracı modeli (Office 365 verileriyle Özel Konuşma Tanıma)
+
+**S: kiracı modeline hangi bilgiler dahildir ve nasıl oluşturulur?**
+
+Y **:** Kiracı modeli, kuruluşunuzdaki herkes tarafından görülemeyen [ortak grup](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) e-postaları ve belgeleri kullanılarak oluşturulmuştur. 
+ 
+**S: kiracı modeli tarafından hangi konuşma deneyimleri geliştirildi?**
+
+Y **:** Kiracı modeli etkinleştirildiğinde, oluşturulup yayımlandığında, konuşma hizmeti kullanılarak oluşturulan tüm kurumsal uygulamalarda tanımayı geliştirmek için kullanılır; Bu Ayrıca, kuruluşa üyelik belirten bir Kullanıcı AAD belirteci de iletir. 
+ 
+Konuşma hizmeti uygulamalarınız için bir kiracı modeli oluşturduğunuzda, dikte ve PowerPoint resim yazısı gibi Office 365 ' de yerleşik konuşma deneyimleri değiştirilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

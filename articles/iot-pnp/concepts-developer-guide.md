@@ -7,12 +7,12 @@ ms.date: 07/05/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6d5247454fe65e5539a2401330192f1db9a65114
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6d8e0e9e675b88c69b74cdad261280f5dcaf7161
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880572"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581617"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT Tak ve Kullan Preview modelleme Geliştirici Kılavuzu
 
@@ -63,7 +63,7 @@ Implements bölümündeki arabirimler listesindeki her giriş için şunu vardı
 
 Görüntü adı ve açıklama gibi yetenek modeline daha fazla ayrıntı eklemek için kullanabileceğiniz ek isteğe bağlı alanlar vardır. Yetenek modeli içinde belirtilen arabirimler, cihazın bileşenleri olarak düşünülebilir. Genel önizleme için, arabirim listesinin her şema için yalnızca bir girişi olabilir.
 
-## <a name="interface"></a>Arabirim
+## <a name="interface"></a>Arayüz
 
 DTDL ile, arabirimlerini kullanarak cihazınızın yeteneklerini anlayacağız. Arabirimler, cihazınızın bir parçası olan _özellikleri_, _telemetri_ve _komutları_ anlatmaktadır:
 
@@ -84,7 +84,7 @@ Aşağıdaki örnek, bir termostat cihazının arabirimini göstermektedir:
       "schema": "double"
     }
   ],
-  "@context": "http://azureiot.com/v1/contexts/Interface.json"
+  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
 }
 ```
 
@@ -93,11 +93,11 @@ Bir arabirimin bazı gerekli alanları vardır:
 - `@id`: basit bir Tekdüzen Kaynak adı biçimindeki benzersiz bir KIMLIK.
 - `@type`: Bu nesnenin bir arabirim olduğunu bildirir.
 - `@context`: arabirim için kullanılan DTDL sürümünü belirtir.
-- `contents`: cihazınızı oluşturan özellikleri, telemetri ve komutları listeler.
+- `contents`: cihazınızı oluşturan özellikleri, telemetrisi ve komutları listeler.
 
 Bu basit örnekte yalnızca tek bir telemetri alanı vardır. En az bir alan açıklamasında şunu vardır:
 
-- `@type`: capability türünü belirtir: `Telemetry`, `Property`, veya `Command`.
+- `@type`: özelliğin türünü belirtir: `Telemetry`, `Property`veya `Command`.
 - `name`: telemetri değerinin adını sağlar.
 - `schema`: telemetri için veri türünü belirtir. Bu değer, Double, Integer, Boolean veya String gibi bir temel tür olabilir. Karmaşık nesne türleri, diziler ve eşlemeler de desteklenir.
 
@@ -111,7 +111,7 @@ Ayrıca, bir özelliği bir arabirim üzerinde yazılabilir olarak işaretleyebi
 
 Özellik değerlerini ayarlamak için cihazların bağlı olması gerekmez. Güncelleştirilmiş değerler cihaz daha sonra hub 'a bağlanırsa aktarılır. Bu davranış hem salt okunurdur hem de yazılabilir özellikler için geçerlidir.
 
-Cihazınızdan telemetri göndermek için özellikleri kullanmayın. Örneğin, gibi bir salt okunur özelliği `temperatureSetting=80` , cihaz sıcaklığının 80 olarak ayarlandığı ve cihazın bu sıcaklığa veya bu sıcaklığın devam etmesi için çalıştığı anlamına gelir.
+Cihazınızdan telemetri göndermek için özellikleri kullanmayın. Örneğin, `temperatureSetting=80` gibi salt okunur bir özellik, cihaz sıcaklığının 80 olarak ayarlandığı ve cihazın bu sıcaklığa veya bu sıcaklığın devam etmesi için çalıştığı anlamına gelir.
 
 Yazılabilir özellikler için, cihaz uygulaması, özellik değerini alınıp uygulamadığını göstermek için istenen bir durum durum kodu, sürüm ve açıklama döndürür.
 
@@ -127,11 +127,11 @@ Komutlar zaman uyumlu ya da zaman uyumsuz. Zaman uyumlu bir komutun varsayılan 
 
 Uzun süre çalışan işlemler için zaman uyumsuz komutları kullanın. Cihaz, telemetri iletilerini kullanarak ilerleme bilgileri gönderir. Bu ilerleme iletileri aşağıdaki üst bilgi özelliklerine sahiptir:
 
-- `iothub-command-name`: Örneğin `UpdateFirmware`, komut adı.
+- `iothub-command-name`: komut adı, örneğin `UpdateFirmware`.
 - `iothub-command-request-id`: sunucu tarafında oluşturulan ve ilk çağrıda cihaza gönderilen istek KIMLIĞI.
-- `iothub-interface-id`:  Bu komutun tanımlanmış olduğu arabirimin KIMLIĞI (örneğin `urn:example:AssetTracker:1`,).
- `iothub-interface-name`: Örneğin `myAssetTracker`, bu arabirimin örnek adı.
-- `iothub-command-statuscode`: Örneğin `202`, cihazdan döndürülen durum kodu.
+- `iothub-interface-id`: Bu komutun tanımlanmış olduğu arabirimin KIMLIĞI, örneğin `urn:example:AssetTracker:1`.
+ `iothub-interface-name`: Bu arabirimin örnek adı, örneğin `myAssetTracker`.
+- `iothub-command-statuscode`: cihazdan döndürülen durum kodu, örneğin `202`.
 
 ## <a name="register-a-device"></a>Cihaz kaydetme
 
@@ -184,15 +184,15 @@ IoT Tak ve Kullan, yeteneklerini IoT Hub 'ınız ile kaydetmiş olan cihazları 
 
 IoT Hub 'ınıza bağlı bir IoT Tak ve Kullan cihazı kullanmak için, IoT Hub REST API veya IoT dil SDK 'Lardan birini kullanın. Aşağıdaki örneklerde IoT Hub REST API kullanılır.
 
-Termostat 'daki`fwVersion` `DeviceInformation` arabirimdeki bellenim sürümü () gibi bir cihaz özelliğinin değerini almak için, dijital TWINS REST API kullanırsınız.
+Termostat 'daki `DeviceInformation` arabirimindeki bellenim sürümü (`fwVersion`) gibi bir cihaz özelliğinin değerini almak için, dijital TWINS REST API kullanırsınız.
 
-Termostat cihazınız çağrılırsa `t-123`, cihazınız tarafından uygulanan tüm özellikleri bir REST API Get çağrısıyla alırsınız:
+Termostat cihazınız `t-123`çağrılırsa, cihazınız tarafından uygulanan tüm özellikleri bir REST API GET çağrısıyla alırsınız:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Daha genel olarak, tüm özelliklere bu REST API şablonuyla erişilir, burada `{device-id}` cihaz tanımlayıcısıdır:
+Daha genel olarak, tüm özelliklere bu REST API şablonuyla erişilir; burada `{device-id}` cihaz tanımlayıcısıdır:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
@@ -204,13 +204,13 @@ Arabirimin adını biliyorsanız ve bu arabirimin özelliklerini almak istiyorsa
 GET /digitalTwins/t-123/interfaces/info
 ```
 
-Daha genel olarak, belirli bir arabirimin özelliklerine bu REST API şablonu `device-id` aracılığıyla erişilebilir ve bu, cihazın tanımlayıcısıdır ve `{interface-name}` arabirimin adıdır:
+Daha genel olarak, belirli bir arabirimin özelliklerine, `device-id` cihaz için tanımlayıcı olduğu ve arabirimin adı `{interface-name}` olan bu REST API şablonu aracılığıyla erişilebilir:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces/{interface-name}
 ```
 
-IoT Tak ve Kullan cihaz komutlarını doğrudan çağırabilirsiniz. Cihazdaki arabirimin bir`restart`komutu varsa, bunu bir REST API `Thermostat`Postçağrısıylaçağırabilirsiniz: `t-123`
+IoT Tak ve Kullan cihaz komutlarını doğrudan çağırabilirsiniz. `t-123` cihazdaki `Thermostat` arabiriminin bir `restart` komutu varsa, bunu bir REST API POST çağrısıyla çağırabilirsiniz:
 
 ```REST
 POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
@@ -218,7 +218,7 @@ POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
 
 Genel olarak, bu REST API şablonu aracılığıyla komutlar çağrılabilir:
 
-- `device-id`: cihaz için tanımlayıcı.
+- `device-id`: cihazın tanımlayıcısı.
 - `interface-name`: cihaz yetenek modelindeki Implements bölümünde arabirimin adı.
 - `command-name`: komutun adı.
 

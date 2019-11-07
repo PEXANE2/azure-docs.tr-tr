@@ -1,5 +1,5 @@
 ---
-title: Hadoop akışı etkinliğini kullanarak verileri dönüştürme-Azure | Microsoft Docs
+title: Hadoop akış etkinliğini kullanarak verileri dönüştürme-Azure
 description: Bir Azure Data Factory 'de Hadoop akışı programlarını isteğe bağlı/kendi HDInsight kümeniz üzerinde çalıştırarak verileri dönüştürmek için nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fd9512f4ede8d9b8b1a8fd69b7120303fe6a0ad5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c56961b28750f3ba6450c26c897c1ef6c54b3ed8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139555"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667497"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory 'de Hadoop akışı etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -41,7 +41,7 @@ Bir Azure Data Factory işlem hattından Hadoop akış işi çağırma HDInsight
 Bir Data Factory işlem [hattının](data-factory-create-pipelines.md) HDInsight akış etkinliği, [kendi kendinize](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe bağlı](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux tabanlı HDInsight kümenizde Hadoop akış programlarını yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) makalesinde oluşturulur.
 
 > [!NOTE] 
-> Azure Data Factory yeni kullanıyorsanız, Azure Data Factory ve Öğreticiyi bir [şekilde](data-factory-introduction.md) okuyun: Bu makaleyi okumadan önce [ilk veri işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) . 
+> Azure Data Factory yeni kullanıyorsanız, [Azure Data Factory 'ye giriş](data-factory-introduction.md) ile okuyun ve öğreticiyi yapın: Bu makaleyi okumadan önce [ilk veri Işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) . 
 
 ## <a name="json-sample"></a>JSON örneği
 HDInsight kümesi, örnek programlarla (WC. exe ve Cat. exe) ve veriler (DaVinci. txt) ile otomatik olarak doldurulur. Varsayılan olarak, HDInsight kümesi tarafından kullanılan kapsayıcının adı kümenin kendisidir. Örneğin, Kümenizin adı myhdicluster ise, ilişkili blob kapsayıcısının adı myhdicluster olacaktır. 
@@ -174,7 +174,7 @@ Bu örnekteki işlem hattı herhangi bir giriş yapmaz. HDInsight akış etkinli
 ```
 
 ### <a name="pipeline"></a>İşlem hattı
-Bu örnekteki işlem hattının şu türde yalnızca bir etkinliği vardır: **Hdınsightstreaming**. 
+Bu örnekteki işlem hattının şu türde yalnızca bir etkinliği vardır: **hdınsightstreaming**. 
 
 HDInsight kümesi, örnek programlarla (WC. exe ve Cat. exe) ve veriler (DaVinci. txt) ile otomatik olarak doldurulur. Varsayılan olarak, HDInsight kümesi tarafından kullanılan kapsayıcının adı kümenin kendisidir. Örneğin, Kümenizin adı myhdicluster ise, ilişkili blob kapsayıcısının adı myhdicluster olacaktır.  
 

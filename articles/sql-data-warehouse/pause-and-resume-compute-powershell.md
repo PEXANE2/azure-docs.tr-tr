@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Azure SQL veri ambarı 'nda işlem duraklatma ve devam ettirme-PowerShell | Microsoft Docs"
+title: 'Hızlı başlangıç: duraklatma & devam eden işlem-PowerShell '
 description: Maliyetleri kaydetmek için Azure SQL veri ambarı 'nda işlem duraklatmak için PowerShell 'i kullanın. Veri ambarını kullanmaya hazırsanız işlem işlemine da izin verilmez.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,14 +10,15 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: da9c3d42919bba6ce04fc54bafc2fb5d245379f5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 2ad83e51a11e08373f2132e861ec1c8f3ac20458
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306101"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686022"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell ile Azure SQL veri ambarı 'nda işlem duraklatma ve devam ettirme
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile Azure SQL veri ambarı 'nda işlem duraklatma ve devam ettirme
 
 Maliyetleri kaydetmek için Azure SQL veri ambarı 'nda işlem duraklatmak için PowerShell 'i kullanın. Veri ambarını kullanmaya hazırsanız [Işlem işlemine](sql-data-warehouse-manage-compute-overview.md) da izin verilmez.
 
@@ -55,7 +56,7 @@ Duraklatmayı ve sürdürmeyi planladığınız veri ambarı için veritabanı a
 
 Veri ambarınız için konum bilgilerini bulmak amacıyla aşağıdaki adımları uygulayın.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Azure portalının sol taraftaki sayfasında **SQL veritabanları**’na tıklayın.
 3. **SQL veritabanları** sayfasından **mySampleDataWarehouse** seçeneğini belirleyin. Veri ambarı açılır.
 

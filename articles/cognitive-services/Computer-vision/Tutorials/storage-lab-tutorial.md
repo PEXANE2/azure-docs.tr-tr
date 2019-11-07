@@ -10,16 +10,18 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 7caf4493db32201a8e83ffb3722c80c5e9b41a8f
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ac292f020bb64c7c70ce3ea5c7f66fe9e9ed1bb7
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057733"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604649"
 ---
-# <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Öğretici: Azure depolama 'da görüntü meta verileri oluşturmak için Görüntü İşleme kullanma
+# <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Öğretici: Azure Storage 'da görüntü meta verileri oluşturmak için Görüntü İşleme kullanma
 
-Bu öğreticide, karşıya yüklenen görüntülerin meta verilerini oluşturmak için Azure Görüntü İşleme hizmetini bir Web uygulamasıyla tümleştirmeyi öğreneceksiniz. GitHub 'daki [Azure depolama ve bilişsel hizmetler laboratuvarında](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) tam bir uygulama kılavuzu bulunabilir ve bu öğretici aslında laboratuvarın 5. alıştırisini ele alır. Her adımı izleyerek uçtan uca uygulamayı oluşturmak isteyebilirsiniz, ancak Görüntü İşleme var olan bir Web uygulamasıyla nasıl tümleştirilediğinin görmek isterseniz, buradan okuyun.
+Bu öğreticide, karşıya yüklenen görüntülerin meta verilerini oluşturmak için Azure Görüntü İşleme hizmetini bir Web uygulamasıyla tümleştirmeyi öğreneceksiniz. Bu, bir şirketin tüm görüntüleri için hızlı bir şekilde açıklayıcı açıklamalı alt yazılar veya aranabilir anahtar sözcükler oluşturmak istemesi gibi [dijital varlık yönetimi (Dam)](../Home.md#computer-vision-for-digital-asset-management) senaryolarında kullanışlıdır.
+
+GitHub 'daki [Azure depolama ve bilişsel hizmetler laboratuvarında](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) tam bir uygulama kılavuzu bulunabilir ve bu öğretici aslında laboratuvarın 5. alıştırisini ele alır. Her adımı izleyerek uçtan uca uygulamayı oluşturmak isteyebilirsiniz, ancak Görüntü İşleme var olan bir Web uygulamasıyla nasıl tümleştirilediğinin görmek isterseniz, buradan okuyun.
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
@@ -31,7 +33,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio 2017 Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) veya üzeri, "ASP.net ve Web geliştirme" ve "Azure geliştirme" iş yükleri yüklendi.
 - Görüntüler için ayrılmış bir blob kapsayıcısına sahip bir Azure depolama hesabı (bu adımla ilgili yardıma ihtiyacınız varsa [Azure Storage laboratuvarının 1. Alıştırmalarınızı](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) izleyin).
@@ -59,7 +61,7 @@ Azure hesabınız için bir Görüntü İşleme kaynağı oluşturmanız gerekir
 
 Daha sonra, Görüntü İşleme kaynaklarına erişebilmeleri için uygulamanıza gerekli kimlik bilgilerini ekleyeceksiniz
 
-Visual Studio 'da ASP.NET Web uygulamanızı açın ve projenin kökündeki **Web. config** dosyasına gidin. Aşağıdaki deyimlerini `<appSettings>` dosyanın bölümüne ekleyin, önceki adımda kopyaladığınız anahtarla değiştirin ve `VISION_KEY` `VISION_ENDPOINT` daha önce adımında kaydettiğiniz URL ile değiştirin.
+Visual Studio 'da ASP.NET Web uygulamanızı açın ve projenin kökündeki **Web. config** dosyasına gidin. Aşağıdaki deyimlerini dosyanın `<appSettings>` bölümüne ekleyin, `VISION_KEY` önceki adımda kopyaladığınız anahtarla değiştirin ve yukarıdaki adımda kaydettiğiniz URL ile `VISION_ENDPOINT`.
 
 ```xml
 <add key="SubscriptionKey" value="VISION_KEY" />
@@ -72,14 +74,14 @@ Ardından Çözüm Gezgini, projeye sağ tıklayın ve **Microsoft. Azure. Biliv
 
 Daha sonra, görüntüler için meta veriler oluşturmak üzere Görüntü İşleme hizmetinden yararlanan kodu eklersiniz. Bu adımlar laboratuvardaki ASP.NET uygulaması için geçerlidir, ancak bunları kendi uygulamanıza uyarlayabilirsiniz. Bu noktada, Azure depolama kapsayıcısına görüntü yükleyebilecekleri ve bunları görünümde görüntüleyebilen bir ASP.NET Web uygulamasına sahip olduğunuz önemli şeyler vardır. Bunun hakkında emin değilseniz, [Azure depolama laboratuvarının 3. Alıştırmayı](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3)izlemeniz en iyisidir. 
 
-1. *HomeController.cs* dosyasını projenin **denetleyiciler** klasöründe açın ve dosyanın en üstüne aşağıdaki `using` deyimleri ekleyin:
+1. *HomeController.cs* dosyasını projenin **denetleyiciler** klasöründe açın ve dosyanın en üstüne aşağıdaki `using` deyimlerini ekleyin:
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
     ```
 
-1. Sonra, **karşıya yükleme** yöntemine gidin; Bu yöntem görüntüleri blob depolamaya dönüştürür ve yükler. (Veya görüntü blobu oluşturma işleminizin sonunda) ile `// Generate a thumbnail` başlayan bloğundan hemen sonra aşağıdaki kodu ekleyin. Bu kod, görüntüyü içeren blobu alır (`photo`) ve bu görüntü için bir açıklama oluşturmak üzere görüntü işleme kullanır. Görüntü İşleme API'si Ayrıca görüntüye uygulanan anahtar sözcüklerin bir listesini oluşturur. Oluşturulan açıklama ve anahtar sözcükler, daha sonra alınabilmesi için Blobun meta verilerinde depolanır.
+1. Sonra, **karşıya yükleme** yöntemine gidin; Bu yöntem görüntüleri blob depolamaya dönüştürür ve yükler. `// Generate a thumbnail` (veya görüntü blobu oluşturma işleminizin sonunda) ile başlayan bloğundan hemen sonra aşağıdaki kodu ekleyin. Bu kod, görüntüyü içeren blobu alır (`photo`) ve bu görüntü için bir açıklama oluşturmak üzere Görüntü İşleme kullanır. Görüntü İşleme API'si Ayrıca görüntüye uygulanan anahtar sözcüklerin bir listesini oluşturur. Oluşturulan açıklama ve anahtar sözcükler, daha sonra alınabilmesi için Blobun meta verilerinde depolanır.
 
     ```csharp
     // Submit the image to Azure's Computer Vision API
@@ -103,7 +105,7 @@ Daha sonra, görüntüler için meta veriler oluşturmak üzere Görüntü İşl
     await photo.SetMetadataAsync();
     ```
 
-1. Ardından, aynı dosyadaki **Dizin** yöntemine gidin; Bu yöntem, hedeflenen blob kapsayıcısında depolanan görüntü bloblarını numaralandırır ( **ıblobitem** örnekleri olarak) ve bunları uygulama görünümüne geçirir. Bu yöntemin `foreach` bloğunu aşağıdaki kodla değiştirin. Bu kod, her Blobun ekli meta verilerini almak için **Cloudblockblob. FetchAttributes** öğesini çağırır. Meta verilerden bilgisayar tarafından oluşturulan açıklamayı (`caption`) ayıklar ve görünüme geçirilen **bloınfo** nesnesine ekler.
+1. Ardından, aynı dosyadaki **Dizin** yöntemine gidin; Bu yöntem, hedeflenen blob kapsayıcısında depolanan görüntü bloblarını numaralandırır ( **ıblobitem** örnekleri olarak) ve bunları uygulama görünümüne geçirir. Bu yöntemdeki `foreach` bloğunu aşağıdaki kodla değiştirin. Bu kod, her Blobun ekli meta verilerini almak için **Cloudblockblob. FetchAttributes** öğesini çağırır. Bilgisayar tarafından oluşturulan açıklamayı (`caption`) meta verilerden ayıklar ve görünüme geçirilen **Bloınfo** nesnesine ekler.
     
     ```csharp
     foreach (IListBlobItem item in container.ListBlobs())
@@ -125,7 +127,7 @@ Daha sonra, görüntüler için meta veriler oluşturmak üzere Görüntü İşl
     }
     ```
 
-## <a name="test-the-app"></a>Uygulamayı test etme
+## <a name="test-the-app"></a>Uygulamayı test edin
 
 Değişikliklerinizi Visual Studio 'da kaydedin ve uygulamayı tarayıcınızda başlatmak için **CTRL + F5** tuşlarına basın. Laboratuvar kaynaklarındaki veya kendi klasörünüzdeki "Fotoğraflar" klasöründen birkaç görüntüyü karşıya yüklemek için uygulamayı kullanın. İmleci görünümdeki görüntülerden birinin üzerine getirdiğinizde, bir araç ipucu penceresi görünür ve görüntü için bilgisayar tarafından oluşturulan resim yazısını görüntülemelidir.
 

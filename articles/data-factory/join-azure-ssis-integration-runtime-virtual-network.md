@@ -1,5 +1,5 @@
 ---
-title: Azure-SSIS tümleştirme çalışma zamanını bir sanal ağa ekleme | Microsoft Docs
+title: Azure-SSIS tümleştirme çalışma zamanını bir sanal ağa katma
 description: Azure-SSIS tümleştirme çalışma zamanını bir Azure sanal ağına nasıl katılacağınızı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 065f69cc98f05fcb19648f190a7dba4b43da1a9a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d36900a1ce05eaf022637a6ef6b866fe0d190b17
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326617"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672742"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS tümleştirme çalışma zamanını bir sanal ağa katma
 Azure Data Factory SQL Server Integration Services (SSIS) kullanırken, Azure-SSIS tümleştirme çalışma zamanı 'nı (IR) aşağıdaki senaryolarda bir Azure sanal ağına katılmanız gerekir: 
@@ -62,7 +62,7 @@ Aşağıdaki bölümlerde daha fazla ayrıntı sağlanmaktadır.
 
 Sanal ağınızı bu gereksinimleri karşılayacak şekilde ayarlayın: 
 
--   @No__t-0 ' ın, Azure-SSIS IR barındıran sanal ağ alt ağınızın aboneliği altında kayıtlı bir sağlayıcı olduğundan emin olun. Klasik bir sanal ağ kullanıyorsanız, bu sanal ağ için `MicrosoftAzureBatch` ' ı klasik sanal makine katılımcısı rolüne de katın. 
+-   `Microsoft.Batch`, Azure-SSIS IR barındıran sanal ağ alt ağınızın aboneliği kapsamında kayıtlı bir sağlayıcı olduğundan emin olun. Klasik bir sanal ağ kullanıyorsanız, bu sanal ağ için klasik sanal makine katılımcısı rolüne de `MicrosoftAzureBatch` katın. 
 
 -   Gerekli izinlere sahip olduğunuzdan emin olun. Daha fazla bilgi için bkz. [Izinleri ayarlama](#perms).
 
@@ -90,7 +90,7 @@ Azure-SSIS IR oluşturan kullanıcının aşağıdaki izinlere sahip olması ger
 
   - Yerleşik ağ katılımcısı rolünü kullanın. Bu rol, gerekenden çok daha büyük bir kapsama sahip olan _Microsoft. Network/\*_ iznine sahiptir.
 
-  - Yalnızca gerekli _Microsoft. Network/virtualNetworks/\*/JOIN/Action_ iznini içeren özel bir rol oluşturun. 
+  - Yalnızca gerekli _Microsoft. Network/virtualNetworks/\*/Join/Action_ iznini içeren özel bir rol oluşturun. 
 
 - SSIS IR 'nizi klasik bir sanal ağa katılıyorsanız yerleşik, klasik sanal makine katılımcısı rolünü kullanmanızı öneririz. Aksi takdirde, sanal ağa ekleme iznini içeren özel bir rol tanımlamanız gerekir.
 
@@ -105,7 +105,7 @@ Bir alt ağ seçtiğinizde:
 -   Diğer Azure hizmetleri tarafından (örneğin, SQL veritabanı yönetilen örneği, App Service vb.) özel olarak bulunan bir alt ağ kullanmayın. 
 
 ### <a name="dns_server"></a>DNS sunucusunu ayarlama 
-Azure-SSIS IR tarafından birleştirilmiş bir sanal ağda kendi DNS sunucunuzu kullanmanız gerekiyorsa, genel Azure ana bilgisayar adlarını (örneğin, `<your storage account>.blob.core.windows.net` adlı bir Azure Depolama Blobu) çözümleyediğinden emin olun. 
+Azure-SSIS IR tarafından birleştirilmiş bir sanal ağda kendi DNS sunucunuzu kullanmanız gerekiyorsa, genel Azure ana bilgisayar adlarını (örneğin, `<your storage account>.blob.core.windows.net`adlı bir Azure Depolama Blobu) çözümleyediğinden emin olun. 
 
 Aşağıdaki adımlar önerilir: 
 
@@ -139,7 +139,7 @@ Bir Azure ExpressRoute senaryosunda Azure-SSIS IR barındıran alt ağda **Inter
 
 Giden internet trafiğini bu alt ağdan İnceleme özelliğini kaybetme konusunda endişeleriniz varsa, trafiği yalnızca Azure Batch Yönetim Hizmetleri ve Azure-SSIS IR bir sonraki atlama türü ile **İnternet**arasında yönlendirmek üzere belirli udrs tanımlayabilirsiniz.
 
-Örneğin, Azure-SSIS IR `UK South` ' da bulunuyorsa, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](https://www.microsoft.com/en-us/download/details.aspx?id=56519) veya [hizmet etiketi bulma API 'si](https://aka.ms/discoveryapi)aracılığıyla hizmet etiketi `BatchNodeManagement.UKSouth` ' inin bir IP aralığı listesini alırsınız. Ardından, sonraki atlama türü ile birlikte, ilgili IP aralığı yollarının aşağıdaki UDRs 'lerini **Internet**olarak uygulayın.
+Örneğin, Azure-SSIS IR `UK South`konumdaysa, hizmet [ETIKETLERI IP aralığı indirme bağlantısı](https://www.microsoft.com/en-us/download/details.aspx?id=56519) veya [hizmet etiketi bulma API 'si](https://aka.ms/discoveryapi)aracılığıyla HIZMET etiketi `BatchNodeManagement.UKSouth` bir IP aralığı listesi alırsınız. Ardından, sonraki atlama türü ile birlikte, ilgili IP aralığı yollarının aşağıdaki UDRs 'lerini **Internet**olarak uygulayın.
 
 ![Azure Batch UDR ayarları](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 
@@ -148,9 +148,9 @@ Giden internet trafiğini bu alt ağdan İnceleme özelliğini kaybetme konusund
 
 ### <a name="resource-group"></a>Kaynak grubunu ayarlama
 Azure-SSIS IR, sanal ağ ile aynı kaynak grubunda belirli ağ kaynaklarını oluşturması gerekir. Bu kaynaklar şunları içerir:
-   -   *@No__t-1Guıd >-azurebatch-cloudserviceloaddengeleyici*adlı bir Azure yük dengeleyici.
-   -   *@No__t-1Guıd >-azurebatch-cloudservicepublicıp*adlı bir Azure genel IP adresi.
-   -   *@No__t-1Guid >-azurebatch-cloudservicenetworksecuritygroup*adlı bir ağ iş güvenlik grubu. 
+   -   *\<guıd >-azurebatch-cloudserviceloaddengeleyici*olan bir Azure yük dengeleyici.
+   -   *\<guıd >-azurebatch-cloudservicepublicıp*adlı bir Azure genel IP adresi.
+   -   *\<guıd >-azurebatch-cloudservicenetworksecuritygroup*adlı bir ağ iş güvenlik grubu. 
 
 IR başlatıldığında bu kaynaklar oluşturulacaktır. IR durdurulduğunda bunlar silinir. IR durmasını engellemeyi önlemek için, diğer kaynaklarınızda bu ağ kaynaklarını yeniden kullanmayın. 
 
@@ -187,7 +187,7 @@ Bir Azure-SSIS IR katılmayı denemeden önce Azure Resource Manager sanal ağı
 
 1. Microsoft Edge veya Google Chrome 'ı başlatın. Şu anda yalnızca bu Web tarayıcıları Data Factory Kullanıcı arabirimini destekler. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 
 1. **Diğer hizmetler**' i seçin. **Sanal ağları**filtreleyin ve seçin. 
 
@@ -216,7 +216,7 @@ Bir Azure-SSIS IR katılmayı denemeden önce, klasik sanal ağı yapılandırma
 
 1. Microsoft Edge veya Google Chrome 'ı başlatın. Şu anda yalnızca bu Web tarayıcıları Data Factory Kullanıcı arabirimini destekler. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 
 1. **Diğer hizmetler**' i seçin. **Sanal ağlar (klasik)** için filtre uygulayın ve seçin. 
 

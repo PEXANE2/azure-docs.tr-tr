@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Language Understanding (LUSıS) Python için istemci kitaplığı yazma'
+title: 'Hızlı başlangıç: Language Understanding (LUSıS) Python için istemci kitaplığı yazma'
 titleSuffix: Azure Cognitive Services
-description: Python için Language Understanding (LUSıS) istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Language Understanding (LUU), bir kullanıcının konuşma, doğal dil metnine, genel anlamı tahmin etmek ve ilgili ayrıntılı bilgileri almak için özel makine öğrenimi zekası uygulamanıza olanak sağlar.
+description: Python için LUSıS istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/07/2019
 ms.author: diberry
-ms.openlocfilehash: f8149372e0a96cda81ef38558ee0bcf87eb53bb3
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1b586af569a9406d7fe9fa3d05c198f62f32744f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258756"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672014"
 ---
-# <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Hızlı Başlangıç: Language Understanding (LUSıS) Python için istemci kitaplığı yazma
+# <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Hızlı başlangıç: Language Understanding (LUSıS) Python için istemci kitaplığı yazma
 
 Python için Language Understanding (LUSıS) yazma istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Language Understanding (LUU), bir kullanıcının konuşma, doğal dil metnine, genel anlamı tahmin etmek ve ilgili ayrıntılı bilgileri almak için özel makine öğrenimi zekası uygulamanıza olanak sağlar. 
 
@@ -28,18 +28,18 @@ Python için Language Understanding (LUSıS) yazma istemci kitaplığını şu �
 * Tümcecik listesi gibi özellikler ekleme.
 * Bir uygulamayı eğitme ve yayımlama.
 
-[Başvuru belge](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [yazma paketi (Pypı)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
+[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [yazma paketi (Pypı)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Language Understanding (LUSıS) portal hesabı: [Ücretsiz bir tane oluşturun](https://www.luis.ai).
+* Language Understanding (LUSıS) portal hesabı: [ücretsiz bir tane oluşturun](https://www.luis.ai).
 * [Python 3. x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Language Understanding (LUSıS) başlangıç anahtarınızı alın
 
-[Başlangıç anahtarınızı](luis-how-to-azure-subscription.md#starter-key)alın ve anahtarı için `LUIS_AUTHORING_KEY` `LUIS_REGION` [bir ortam değişkeni](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) ve anahtar bölgesi için bir ortam değişkeni oluşturun.
+[Başlangıç anahtarınızı](luis-how-to-azure-subscription.md#starter-key)alın ve anahtar için `LUIS_AUTHORING_KEY` adı ve anahtar bölgesi için bir ortam değişkeni [olan `LUIS_REGION`bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ### <a name="install-the-python-library-for-luis"></a>LUSıS için Python kitaplığını yükler
 
@@ -91,7 +91,7 @@ Anahtarınızla bir [Biliveservicescredentials](https://docs.microsoft.com/pytho
 
 [!code-python[Create LUIS client object](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=Client)]
 
-## <a name="create-a-luis-app"></a>Bir LUIS uygulaması oluşturma
+## <a name="create-a-luis-app"></a>LUSıS uygulaması oluşturma
 
 1. Hedefleri, varlıkları ve örnek kullanımları tutan doğal dil işleme (NLP) modelini içeren bir LUO uygulaması oluşturun. 
 
@@ -111,7 +111,7 @@ Bir LUıN uygulamasının modelindeki birincil nesne, amaç ' dır. Amaç, Kulla
 
 Varlıklar gerekli olmasa da, çoğu uygulama içinde bulunur. Varlık, kullanıcının amaç bilgisini almak için gerekli olan bilgileri Kullanıcı aracılığıyla ayıklar. Her biri kendi veri dönüştürme nesnesi (DTO) modelleriyle birlikte, çok sayıda [önceden oluşturulmuş](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-prebuilt-app-id--version-id--prebuilt-extractor-names--custom-headers-none--raw-false----operation-config-) ve özel varlık türü vardır.  Uygulamanıza eklenecek ortak önceden oluşturulmuş varlıklar [Number](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), [geographyV2](luis-reference-prebuilt-geographyv2.md), [Ordinal](luis-reference-prebuilt-ordinal.md)içerir. 
 
-Bu **add_entities** yöntemi `Location` `Flight` iki role sahip basit bir varlık, basitbirvarlık,bileşikbirvarlıkoluşturduveçoksayıdaöncedenoluşturulmuşvarlıkekliyor.`Class`
+Bu **add_entities** yöntemi, iki role sahip `Location` basit bir varlık, `Class` basit bir varlık, `Flight` bileşik bir varlık oluşturdu ve çok sayıda önceden oluşturulmuş varlık ekliyor.
 
 Varlıkların bir amaç ile işaretlenmediğini bilmek önemlidir. Bunlar, genellikle birçok amaç için uygulanabilir. Yalnızca belirli bir amaç için örnek Kullanıcı utbotları işaretlenir.
 
@@ -147,7 +147,7 @@ Bu hızlı başlangıç gibi çok küçük bir model, çok hızlı bir şekilde 
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı hızlı başlangıç dosyanızdaki `python` komutla çalıştırın.
+Uygulamayı hızlı başlangıç dosyanızdaki `python` komutuyla çalıştırın.
 
 ```console
 python quickstart-file.py

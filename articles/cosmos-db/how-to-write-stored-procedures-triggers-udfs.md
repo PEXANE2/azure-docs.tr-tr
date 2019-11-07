@@ -4,14 +4,14 @@ description: Saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlev
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: bec28874bbd67ece4b29f6975e8c7fdcea457bd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cdac8321ec4ac7b2e13c5545a2483527118daae3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092831"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606270"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri Azure Cosmos DB yazma
 
@@ -21,6 +21,9 @@ Saklı yordam, tetikleyici ve Kullanıcı tanımlı işlevi çağırmak için ka
 
 > [!NOTE]
 > Bölümlenmiş kapsayıcılar için, saklı bir yordam yürütürken, istek seçeneklerinde bir bölüm anahtarı değeri belirtilmelidir. Saklı yordamlar her zaman bir bölüm anahtarına göre kapsamlandırılır. Farklı bir bölüm anahtarı değerine sahip öğeler, saklı yordama görünür olmayacaktır. Bu ayrıca tetikleyicilere de uygulanır.
+
+> [!Tip]
+> Cosmos, saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevlerle kapsayıcıları dağıtmaya destekler. Daha fazla bilgi için bkz [. sunucu tarafı işlevleriyle Azure Cosmos DB kapsayıcısı oluşturma.](manage-sql-with-resource-manager.md#create-sproc)
 
 ## <a id="stored-procedures"></a>Saklı yordamları yazma
 
@@ -48,11 +51,11 @@ Yazıldıktan sonra, saklı yordamın bir koleksiyonla kayıtlı olması gerekir
 
 ### <a id="create-an-item"></a>Saklı yordam kullanarak bir öğe oluşturma
 
-Saklı yordam kullanarak bir öğe oluşturduğunuzda, öğe Azure Cosmos kapsayıcısına eklenir ve yeni oluşturulan öğe için bir kimlik döndürülür. Öğe oluşturma zaman uyumsuz bir işlemdir ve JavaScript geri çağırma işlevlerine bağımlıdır. Geri çağırma işlevinin iki parametresi vardır-bir işlem başarısız olması ve bir dönüş değeri için başka bir hata olması durumunda hata nesnesi için bir tane. Bu durumda, oluşturulan nesne. Geri çağırma içinde, özel durumu işleyebilir veya bir hata oluşturabilirsiniz. Bir geri çağırma sağlanmamışsa ve bir hata varsa Azure Cosmos DB çalışma zamanı bir hata oluşturur. 
+Saklı yordam kullanarak bir öğe oluşturduğunuzda, öğe Azure Cosmos kapsayıcısına eklenir ve yeni oluşturulan öğe için bir KIMLIK döndürülür. Öğe oluşturma zaman uyumsuz bir işlemdir ve JavaScript geri çağırma işlevlerine bağımlıdır. Geri çağırma işlevinin iki parametresi vardır-bir işlem başarısız olması ve bir dönüş değeri için başka bir hata olması durumunda hata nesnesi için bir tane. Bu durumda, oluşturulan nesne. Geri çağırma içinde, özel durumu işleyebilir veya bir hata oluşturabilirsiniz. Bir geri çağırma sağlanmamışsa ve bir hata varsa Azure Cosmos DB çalışma zamanı bir hata oluşturur. 
 
 Saklı yordam ayrıca açıklamayı ayarlamak için bir parametre içerir, bu da bir Boole değeridir. Parametresi true olarak ayarlandığında ve açıklama eksik olduğunda, saklı yordam bir özel durum oluşturur. Aksi takdirde, saklı yordamın geri kalanı çalışmaya devam eder.
 
-Aşağıdaki örnek saklı yordam, giriş olarak yeni bir Azure Cosmos öğesi alır, bunu Azure Cosmos kapsayıcısına ekler ve yeni oluşturulan öğenin kimliğini döndürür. Bu örnekte, [hızlı başlangıç .NET SQL API](create-sql-api-dotnet.md) 'sindeki ToDoList örneğini geliştirdik.
+Aşağıdaki örnek saklı yordam, giriş olarak yeni bir Azure Cosmos öğesi alır, bunu Azure Cosmos kapsayıcısına ekler ve yeni oluşturulan öğenin KIMLIĞINI döndürür. Bu örnekte, [hızlı başlangıç .NET SQL API](create-sql-api-dotnet.md) 'sindeki ToDoList örneğini geliştirdik.
 
 ```javascript
 function createToDoItem(itemToCreate) {
@@ -72,7 +75,7 @@ function createToDoItem(itemToCreate) {
 
 ### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Saklı yordamlar için giriş parametreleri olarak diziler 
 
-Azure portal ' de bir saklı yordam tanımlarken, giriş parametreleri her zaman saklı yordama bir dize olarak gönderilir. Dizelerden oluşan bir dizi girdi olarak geçirdiğiniz olsa bile, dizi dizeye dönüştürülür ve saklı yordamı gönderilir. Bu sorunu geçici olarak çözmek için, saklı yordamınız içinde dizeyi bir dizi olarak ayrıştırarak bir işlev tanımlayabilirsiniz. Aşağıdaki kod, bir dize giriş parametresinin dizi olarak nasıl ayrıştıralınacağını gösterir:
+Azure portal ' de bir saklı yordam tanımlarken, giriş parametreleri her zaman saklı yordama bir dize olarak gönderilir. Bir dizi dizeyi girdi olarak iletseniz bile, dizi dizeye dönüştürülür ve saklı yordama gönderilir. Bu sorunu geçici olarak çözmek için, saklı yordamınız içinde dizeyi bir dizi olarak ayrıştırarak bir işlev tanımlayabilirsiniz. Aşağıdaki kod, bir dize giriş parametresinin dizi olarak nasıl ayrıştıralınacağını gösterir:
 
 ```javascript
 function sample(arr) {
@@ -155,7 +158,7 @@ function tradePlayers(playerId1, playerId2) {
 
 ### <a id="bounded-execution"></a>Saklı yordamlar içinde sınırlı yürütme
 
-Aşağıda, öğeleri bir Azure Cosmos kapsayıcısına toplu olarak içeri aktaran saklı yordamın bir örneği verilmiştir. Saklı yordam, ' den `createDocument`Boolean dönüş değerini denetleyerek sınırlı yürütmeyi işler ve sonra toplu işlerin ilerlemesini izlemek ve devam ettirmek için saklı yordamın her bir çağrısında yerleştirilen öğe sayısını kullanır.
+Aşağıda, öğeleri bir Azure Cosmos kapsayıcısına toplu olarak içeri aktaran saklı yordamın bir örneği verilmiştir. Saklı yordam, `createDocument`Boole dönüş değerini denetleyerek ve sonra toplu işlerin ilerlemesini izlemek ve devam ettirmek için saklı yordamın her bir çağrısında yerleştirilen öğe sayısını kullanır.
 
 ```javascript
 function bulkImport(items) {
@@ -235,9 +238,9 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-Öncesi tetikleyici, giriş parametreleri bulunamaz. Tetikleyicide istek nesnesi, işlemle ilişkili istek iletisini işlemek için kullanılır. Önceki örnekte, ön tetikleyici bir Azure Cosmos öğesi oluştururken çalıştırılır ve istek iletisi gövdesi JSON biçiminde oluşturulacak öğeyi içerir.
+Ön tetikleyicilerinin herhangi bir giriş parametresi olamaz. Tetikleyicide istek nesnesi, işlemle ilişkili istek iletisini işlemek için kullanılır. Önceki örnekte, ön tetikleyici bir Azure Cosmos öğesi oluştururken çalıştırılır ve istek iletisi gövdesi JSON biçiminde oluşturulacak öğeyi içerir.
 
-Tetikleyiciler kaydedildikten sonra, birlikte çalışacağı işlemleri belirtebilirsiniz. Bu tetikleyici, bir `TriggerOperation` `TriggerOperation.Create`değeri ile oluşturulmalıdır, bu da tetikleyiciyi aşağıdaki kodda gösterildiği gibi değiştirme işleminde kullanılması anlamına gelir.
+Tetikleyiciler kaydedildikten sonra, birlikte çalışacağı işlemleri belirtebilirsiniz. Bu tetikleyici, aşağıdaki kodda gösterildiği gibi bir değiştirme işleminde tetikleyicinin kullanılmasına izin verilmeyen bir `TriggerOperation` `TriggerOperation.Create`ile oluşturulmalıdır.
 
 Ön tetikleyiciyi kaydetme ve çağırma örnekleri için bkz. [Tetikleyiciler](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) ve [Tetikleyiciler sonrası](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) makaleler. 
 

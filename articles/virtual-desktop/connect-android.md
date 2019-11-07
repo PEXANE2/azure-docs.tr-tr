@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: helohr
-ms.openlocfilehash: c19aa6e0acc936c5b03afdab99ce0b9230838ce2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 41b0c1ced9e66bd58d73683865b2c40afc16c5d3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71339016"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605862"
 ---
-# <a name="connect-with-the-android-client"></a>Android istemcisiyle bağlantı kurmak
+# <a name="connect-with-the-android-client"></a>Android istemcisiyle bağlanma
 
-> Şunlara uygulanır: Android 4,1 ve üzeri, Kmeos 53 ve üzeri ile Kmebooks.
+> İçin geçerlidir: Android 4,1 ve üzeri, Kmeos 53 ve üzeri ile Kmebooks.
 
 >[!NOTE]
 > Android istemcisinden Windows sanal masaüstü kaynaklarına erişme özelliği şu anda önizleme aşamasındadır.
@@ -33,9 +33,9 @@ Android cihazınıza erişebileceğiniz yönetilen kaynakların listesini almak 
 
 Bir akışa abone olmak için:
 
-1. Bağlantı merkezi 'nde **+** ' e ve ardından **uzak kaynak akışı**' na dokunun.
+1. Bağlantı merkezi 'nde **+** ' a ve ardından **uzak kaynak akışı**' na dokunun.
 2. Akış **URL 'si alanına AKıŞ** URL 'sini girin. Akış URL 'SI ya bir URL ya da bir e-posta adresi olabilir.
-   - Bir URL kullanıyorsanız, yöneticinizin size verdiği bir, normalde <https://rdweb.wvd.microsoft.com> ' ı kullanın.
+   - Bir URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın, genellikle <https://rdweb.wvd.microsoft.com>.
    - E-posta kullanmak için e-posta adresinizi girin. Yöneticiniz sunucuyu bu şekilde yapılandırdıysa istemci, e-posta adresinizle ilişkili bir URL arar.
 3. **İleri**' ye dokunun.
 4. İstendiğinde kimlik bilgilerinizi sağlayın.

@@ -9,23 +9,23 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 8707aa55c1126af6a7fb2812d4c7314f031209d0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0436a0898f27d3059069ce2df1fdfb143a98f325
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597469"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601813"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks hakkında sık sorulan sorular
 
 Bu makalede Azure Databricks ilgili olabilecek en önemli sorular listelenmektedir. Ayrıca, Databricks kullanırken karşılaşabileceğiniz bazı yaygın sorunları da listeler. Daha fazla bilgi için bkz. [Azure Databricks nedir?](what-is-azure-databricks.md). 
 
 ## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>Azure Databricks kullanılacak anahtarları/gizli dizileri depolamak için Azure Key Vault kullanabilir miyim?
-Evet. Azure Databricks ile kullanmak üzere anahtarları/gizli dizileri depolamak için Azure Key Vault kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault ile desteklenen kapsamlar](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss).
+Evet. Azure Databricks ile kullanmak üzere anahtarları/gizli dizileri depolamak için Azure Key Vault kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault ile desteklenen kapsamlar](/azure/databricks/security/secrets/secret-scopes).
 
 
 ## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Databricks ile Azure sanal ağlarını kullanabilir miyim?
-Evet. Azure Databricks ile bir Azure sanal ağı (VNET) kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure sanal ağınızda Azure Databricks dağıtma](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html).
+Evet. Azure Databricks ile bir Azure sanal ağı (VNET) kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure sanal ağınızda Azure Databricks dağıtma](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
 
 ## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>Nasıl yaparım? erişim Azure Data Lake Storage bir not defterine mı? 
 
@@ -34,7 +34,7 @@ Evet. Azure Databricks ile bir Azure sanal ağı (VNET) kullanabilirsiniz. Daha 
 1. Data Lake Storage ' deki hizmet sorumlusuna gerekli izinleri atayın.
 1. Data Lake Storage bir dosyaya erişmek için not defterinde hizmet sorumlusu kimlik bilgilerini kullanın.
 
-Daha fazla bilgi için bkz. [Azure Databricks ile Azure Data Lake Storage kullanma](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html).
+Daha fazla bilgi için bkz. [Azure Databricks ile Azure Data Lake Storage kullanma](/azure/databricks/data/data-sources/azure/azure-datalake.html).
 
 ## <a name="fix-common-problems"></a>Sık karşılaşılan sorunları giderme
 
@@ -67,9 +67,9 @@ Bu soruna yönelik birkaç çözüm aşağıda verilmiştir:
 
 * Bu hata, e-posta etki alanı adınız Azure AD 'de birden çok dizine atanırsa da oluşabilir. Bu sorunu geçici olarak çözmek için Databricks çalışma alanınıza sahip aboneliği içeren dizinde yeni bir kullanıcı oluşturun.
 
-    a. Azure portal Azure AD 'ye gidin. **Kullanıcı eklemek** >  **Kullanıcılar ve gruplar ' ı** seçin.
+    a. Azure portal Azure AD 'ye gidin. **Kullanıcı eklemek** > **Kullanıcılar ve gruplar ' ı** seçin.
 
-    b. @No__t_1 e-posta yerine `@<tenant_name>.onmicrosoft.com` bir e-posta ile Kullanıcı ekleyin. Bu seçeneği, Azure portal Azure AD altında **özel etki alanlarında**bulabilirsiniz.
+    b. `@<your_domain>` e-posta yerine `@<tenant_name>.onmicrosoft.com` bir e-posta ile Kullanıcı ekleyin. Bu seçeneği, Azure portal Azure AD altında **özel etki alanlarında**bulabilirsiniz.
     
     c. Bu yeni kullanıcıya Databricks çalışma alanı kaynağında **katkıda** bulunan rolü verin.
     
@@ -82,7 +82,7 @@ Bu soruna yönelik birkaç çözüm aşağıda verilmiştir:
 
 #### <a name="solution"></a>Çözüm
 
-Çalışma alanını oluşturmadıysanız ve Kullanıcı olarak eklenmediyseniz, çalışma alanını oluşturan kişiye başvurun. Azure Databricks Yönetici Konsolu 'Nu kullanarak bu kişinin sizi eklemesini sağlayabilirsiniz. Yönergeler için bkz. [Kullanıcı ekleme ve yönetme](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html). Çalışma alanını oluşturduysanız ve yine de bu hatayı alırsanız, Azure portal **çalışma alanını yeniden Başlat** seçimini yapmayı deneyin.
+Çalışma alanını oluşturmadıysanız ve Kullanıcı olarak eklenmediyseniz, çalışma alanını oluşturan kişiye başvurun. Azure Databricks Yönetici Konsolu 'Nu kullanarak bu kişinin sizi eklemesini sağlayabilirsiniz. Yönergeler için bkz. [Kullanıcı ekleme ve yönetme](/azure/databricks/administration-guide/users-groups/users). Çalışma alanını oluşturduysanız ve yine de bu hatayı alırsanız, Azure portal **çalışma alanını yeniden Başlat** seçimini yapmayı deneyin.
 
 ### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Sorun: küme ayarlanırken bulut sağlayıcısı başlatma hatası (Publicıpcountlimitulaşıldı)
 

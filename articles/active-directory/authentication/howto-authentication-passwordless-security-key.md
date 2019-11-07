@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66102a92ce279b594d61c8b2d484c89a8532057a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 50af82e79e7ba8b979ab28a1b3f608ec7e41bfb2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172005"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603443"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Passwordless güvenlik anahtarı oturum açma özelliğini etkinleştir (Önizleme)
 
@@ -50,7 +50,7 @@ Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kay
 
 ### <a name="enable-fido2-security-key-method"></a>FIDO2 güvenlik anahtarı yöntemini Etkinleştir
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Kimlik doğrulama yöntemi ilkesi (Önizleme)**  > **Azure Active Directory** > **güvenlik** > **kimlik doğrulama yöntemlerini** inceleyin.
 1. Method **FIDO2 Security Key**altında aşağıdaki seçenekleri belirleyin:
    1. **Etkinleştir** -Evet veya Hayır
@@ -95,7 +95,7 @@ Güvenlik anahtarlarının yönetici tarafından sağlanması ve devre dışı s
 
 ### <a name="upn-changes"></a>UPN değişiklikleri
 
-Karma Azure AD 'ye katılmış ve Azure AD 'ye katılmış cihazlarda UPN değişikliğine izin veren bir özelliği desteklemeye çalışıyoruz. Bir kullanıcının UPN 'si değişirse değişiklik için FIDO2 güvenlik anahtarlarını artık değiştiremezsiniz. Çözüm, cihazı sıfırlayıp kullanıcının yeniden kaydolmalıdır.
+Bir kullanıcının UPN 'si değişirse değişiklik için FIDO2 güvenlik anahtarlarını artık değiştiremezsiniz. Çözüm, cihazı sıfırlamadır ve Kullanıcı FIDO2 güvenlik anahtarlarını yeniden kaydetmek zorunda olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

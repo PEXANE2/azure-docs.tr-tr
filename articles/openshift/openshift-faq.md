@@ -7,27 +7,17 @@ ms.author: jzim
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: 8f7349310f72c8cccc7b1906239ece3038dd7861
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 11/04/2019
+ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249211"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582410"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift SSS
 
 Bu makalede, Microsoft Azure Red Hat OpenShift hakkında sık sorulan sorular (SSS) ele alınmaktadır.
-
-## <a name="how-do-i-get-started"></a>Nasıl başlayabilirim?
-
-Azure Red Hat OpenShift kullanabilmeniz için, en az 4 Azure Red Hat OpenShift ayrılmış uygulama düğümü satın almanız gerekir.
-
-Azure müşterisiyseniz, Azure portal aracılığıyla[Azure Red Hat OpenShift ile ayrılmış örnekler satın alın](https://aka.ms/openshift/buy) . Satın aldıktan sonra, aboneliğiniz, daha sonra kümeler sağlayabilmeniz için 24 saat içinde etkinleştirilecektir.
-
-Bir Azure müşterisiyseniz, bu işlemi başlatmak için [satışlarla iletişim kurun](https://aka.ms/openshift/contact-sales) ve sayfanın altındaki satış formunu doldurun.
-
-Daha fazla bilgi için [Azure Red Hat OpenShift fiyatlandırma sayfasına](https://aka.ms/openshift/pricing) bakın.
 
 ## <a name="which-azure-regions-are-supported"></a>Hangi Azure bölgeleri destekleniyor?
 
@@ -59,11 +49,11 @@ Hayır, geçerli zamanda değil.
 
 ## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Jenkins gibi araçları kullanabilmeniz için Docker kayıt defteri dışarıdan kullanılabilir mi?
 
-Docker kayıt defteri `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` ' dan kullanılabilir, ancak güçlü bir depolama dayanıklılık garantisi sağlanmaz. [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)de kullanabilirsiniz.
+Docker kayıt defterinin `https://docker-registry.apps.<clustername>.<region>.azmosa.io/`, ancak güçlü bir depolama dayanıklılık garantisi sağlanmaz. [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)de kullanabilirsiniz.
 
 ## <a name="is-cross-namespace-networking-supported"></a>Çapraz ad alanı ağı destekleniyor mu?
 
-Müşteri ve bireysel proje yöneticileri, `NetworkPolicy` nesnelerini kullanarak her proje için çapraz ad alanı ağını (reddetme dahil) özelleştirebilir.
+Müşteri ve bireysel proje yöneticileri, `NetworkPolicy` nesneleri kullanarak her proje için çapraz ad alanı ağını (reddetme dahil) özelleştirebilir.
 
 ## <a name="can-an-admin-manage-users-and-quotas"></a>Yönetici, kullanıcıları ve kotaları yönetebilir mi?
 
@@ -85,7 +75,7 @@ Hayır. Küme Yöneticisi de dahil olmak üzere tüm kaynaklar müşteri aboneli
 
 Evet. OSBA 'yi Azure Red Hat OpenShift ile birlikte kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure için hizmet Aracısı açma](https://github.com/Azure/open-service-broker-azure#openshift-project-template) .
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Farklı bir abonelikte bir sanal ağ üzerinde eşdüzey ve `Failed to get vnet CIDR` hatası alma girişimi yaşıyorum.
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Farklı bir abonelikte bir sanal ağa eşdüzey ve `Failed to get vnet CIDR` hatası alma girişimi yaşıyorum.
 
 Sanal ağı olan abonelikte `Microsoft.ContainerService` sağlayıcısını `az provider register -n Microsoft.ContainerService --wait` ile kaydettiğinizden emin olun 
 
@@ -93,7 +83,7 @@ Sanal ağı olan abonelikte `Microsoft.ContainerService` sağlayıcısını `az 
 
 ARO: yükseltmeler, etcd verilerinin yedeklenmesi ve geri yüklenmesi ve bulut sağlayıcısının başlattığı bakım için üç tür bakım vardır.
 
-+ Yükseltmeler yazılım yükseltmeleri ve Cvileri içerir. CVE düzeltmesi başlangıçta `yum update` çalıştırılarak oluşur ve anında risk azaltma için sağlar.  Paralel olarak, gelecekteki küme oluşturmak için yeni bir görüntü derlemesi oluşturulacaktır.
++ Yükseltmeler yazılım yükseltmeleri ve Cvileri içerir. CVE düzeltmesi, `yum update` çalıştırılarak ve anında risk azaltma için sağlanarak oluşur.  Paralel olarak, gelecekteki küme oluşturmak için yeni bir görüntü derlemesi oluşturulacaktır.
 
 + Etcd verilerinin yedeklenmesi ve yönetimi, eyleme bağlı olarak küme kapalı kalma süresi gerektirebilecek otomatikleştirilmiş bir işlemdir. Etcd veritabanı bir yedekten geri yüklenirse kapalı kalma süresi olacaktır. Etcd 'yi her saat yedekliyoruz ve son 6 saat yedeklemenin tutulması önerilir.
 
@@ -129,7 +119,7 @@ Etcd düzeyinde şifrelenmez. Etkinleştirme seçeneği şu anda desteklenmiyor.
 
 Syslog, Docker günlükleri, Journal ve dmesg, yönetilen hizmet tarafından işlenir ve müşterilere gösterilmez.
 
-## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Bir müşteri, düğüm düzeyindeki CPU/bellek gibi ölçümlere nasıl erişim alabilir, bu da ölçeklendirme, hata ayıklama sorunları vb. için işlem gerçekleştirebilir. @No__t-0 ' ı bir ARO kümesinde çalıştıramıyorum.
+## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Bir müşteri, düğüm düzeyindeki CPU/bellek gibi ölçümlere nasıl erişim alabilir, bu da ölçeklendirme, hata ayıklama sorunları vb. için işlem gerçekleştirebilir. Bir ARO kümesinde `kubectl top` çalıştıramıyorum.
 
 `kubectl top` Red Hat OpenShift üzerinde kullanılamaz. Bu, OpenShift izleme yığınına dahil olmayan, her ikisi de Heapster (kullanım dışı) veya ölçüm-sunucu (ınubating veya Alpha) için bir yedekleme ölçümleri kaynağı gerektirir.
 

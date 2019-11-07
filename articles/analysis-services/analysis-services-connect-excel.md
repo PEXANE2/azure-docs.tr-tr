@@ -1,18 +1,18 @@
 ---
 title: Excel ile Azure Analysis Services bağlanma | Microsoft Docs
-description: Excel kullanarak bir Azure Analysis Services sunucusuna nasıl bağlanacağınızı öğrenin.
+description: Excel kullanarak bir Azure Analysis Services sunucusuna nasıl bağlanacağınızı öğrenin. Bağlandıktan sonra kullanıcılar verileri araştırmak için PivotTable 'Lar oluşturabilir.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1ba6864d0bab460b270f6f27acced57d7943a17a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: bb76accfef94327386d0ff58d003782a9fe3b0d2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295323"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573147"
 ---
 # <a name="connect-with-excel"></a>Excel ile bağlanma
 
@@ -26,9 +26,9 @@ Oturum açarken kullandığınız hesap, en azından okuma izinlerine sahip bir 
 
 Excel 'deki bir sunucuya bağlanmak, Excel 2016 ve sonraki sürümlerde veri al kullanılarak desteklenir. Power Pivot içindeki tablo Içeri aktarma Sihirbazı 'Nı kullanarak bağlanma desteklenmez. 
 
-1. Excel 'de, **veri** şeridinde **dış veri al** >  ' den**diğer kaynaklardan** >  ' e tıklayın**Analysis Services**.
+1. Excel 'de, **veri** şeridinde **Analysis Services ' den** > **diğer kaynaklardan** **dış veri > al** ' a tıklayın.
 
-2. Veri Bağlantısı Sihirbazı ' nın **sunucu adı**' nda protokol ve URI dahil sunucu adını girin. Örneğin, asazure://westcentralus.asazure.windows.net/advworks. Ardından, **oturum açma kimlik bilgileri**' nde, **aşağıdaki kullanıcı adını ve parolayı kullan**' ı seçin ve ardından kuruluş kullanıcı adını (örneğin nancy@adventureworks.com ve parola) yazın.
+2. Veri Bağlantısı Sihirbazı ' nın **sunucu adı**' nda protokol ve URI dahil sunucu adını girin. Örneğin, asazure://westcentralus.asazure.windows.net/advworks. Ardından, **oturum açma kimlik bilgileri**' nde, **aşağıdaki kullanıcı adını ve parolayı kullan**' ı seçin ve ardından kuruluş kullanıcı adını (örneğin nancy@adventureworks.comve parola) yazın.
 
     > [!IMPORTANT]
     > Bir Microsoft hesabı, Live ID, Yahoo, Gmail, vb. ile oturum açarsanız veya Multi-Factor Authentication ile oturum açmanız gerekiyorsa, parola alanını boş bırakın. Ileri ' ye tıkladıktan sonra parola girmeniz istenir. 
@@ -42,7 +42,7 @@ Excel 'deki bir sunucuya bağlanmak, Excel 2016 ve sonraki sürümlerde veri al 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-@No__t [istemci kitaplıkları](analysis-services-data-providers.md)-1  
+[İstemci kitaplıkları](analysis-services-data-providers.md)   
 [Sunucunuzu Yönetin](analysis-services-manage.md)     
 
 

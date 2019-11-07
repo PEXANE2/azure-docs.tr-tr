@@ -1,18 +1,18 @@
 ---
-title: Azure Analysis Services Server yönetici rolüne hizmet sorumlusu ekleme | Microsoft Docs
-description: Sunucu Yöneticisi rolüne bir Otomasyon Hizmeti sorumlusu ekleme hakkında bilgi edinin
+title: Hizmet sorumlusunu Azure Analysis Services Yönetici rolüne Ekle | Microsoft Docs
+description: Azure Analysis Services Server yönetici rolüne bir Automation hizmet sorumlusu eklemeyi öğrenin
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c141bcea030f5afcc3cb33adba32f4a96c335eec
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0a3a86283c8ec9876fbec049a2a1a110eb1a80f3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147389"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573612"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme 
 
@@ -30,7 +30,7 @@ Bu görevi gerçekleştirmek için Azure 'da sunucu [Yöneticisi](analysis-servi
 ## <a name="add-service-principal-to-server-administrators-role"></a>Hizmet sorumlusunu sunucu yöneticileri rolüne Ekle
 
 1. SSMS 'de, Azure 'u sunucunuza bağlayın.
-2. **Sunucu özellikleri** > **güvenlik**' de, **Ekle**' ye tıklayın.
+2. **Sunucu özellikleri** > **güvenlik**' te, **Ekle**' ye tıklayın.
 3. **Kullanıcı veya Grup Seç**' te, kayıtlı uygulamanızı ada göre arayın, öğesini seçin ve ardından **Ekle**' ye tıklayın.
 
     ![Hizmet sorumlusu hesabı ara](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)

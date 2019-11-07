@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory 'de veri akışı etkinliği | Microsoft Docs
+title: Azure Data Factory 'de veri akışı etkinliği
 description: Data Factory işlem hattının içinden veri akışları yürütme.
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: cbfa1acac34187263f8c4203e41bbe61d7e4c745
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030519"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679940"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 'de veri akışı etkinliği
 
@@ -49,14 +49,14 @@ Veri akışı etkinliğini, veri akışları eşleme yoluyla dönüştürmek ve 
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Özellik | Açıklama | İzin verilen değerler | Gereklidir
+Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | Yes
-ıntegrationruntime | Veri akışının çalıştığı işlem ortamı | IntegrationRuntimeReference | Yes
+veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | Evet
+ıntegrationruntime | Veri akışının çalıştığı işlem ortamı | IntegrationRuntimeReference | Evet
 hazırlama. linkedService | Bir SQL DW kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan depolama hesabı | LinkedServiceReference | Yalnızca veri akışı bir SQL DW 'yi okuduğunda veya yazıyorsa
 hazırlama. folderPath | Bir SQL DW kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan BLOB depolama hesabındaki klasör yolu | Dize | Yalnızca veri akışı bir SQL DW 'yi okuduğunda veya yazıyorsa
 
-![]Veri akışı yürütme veri(media/data-flow/activity-data-flow.png "akışını") Yürüt
+![Veri akışı yürütme](media/data-flow/activity-data-flow.png "Veri akışı yürütme")
 
 ### <a name="data-flow-integration-runtime"></a>Veri akışı tümleştirme çalışma zamanı
 
@@ -79,19 +79,19 @@ Bir Azure SQL veri ambarını havuz veya kaynak olarak kullanıyorsanız, PolyBa
 
 Veri akışınız parametreli veri kümeleri kullanıyorsa, **Ayarlar** sekmesinde parametre değerlerini ayarlayın.
 
-![Veri akışı parametreleri](media/data-flow/params.png "parametrelerini") yürütme
+![Veri akışı parametrelerini yürütme](media/data-flow/params.png "Parametreler")
 
 ### <a name="parameterized-data-flows"></a>Parametreli veri akışları
 
 Veri akışınız parametreleştirilmiş ise, **Parametreler** sekmesindeki veri akışı parametrelerinin dinamik değerlerini ayarlayın. Dinamik veya değişmez değer parametre değerlerini atamak için ADF işlem hattı ifade dilini (yalnızca dize türleri için) veya veri akışı ifade dilini kullanabilirsiniz. Daha fazla bilgi için bkz. [veri akışı parametreleri](parameters-data-flow.md).
 
-![Veri akışı parametresini yürütme örnek](media/data-flow/parameter-example.png "parametre örneği")
+![Veri akışı parametre örneğini Yürüt](media/data-flow/parameter-example.png "Parametre örneği")
 
 ## <a name="pipeline-debug-of-data-flow-activity"></a>Veri akışı etkinliğinin işlem hattı hata ayıklaması
 
 Bir veri akışı etkinliğiyle bir hata ayıklama işlem hattı çalıştırması yürütmek için, üst çubuktaki **veri akışı hata ayıklama** kaydırıcısının üzerinden veri akışı hata ayıklama moduna geçmeniz gerekir. Hata ayıklama modu, veri akışını etkin bir Spark kümesine karşı çalıştırmanızı sağlar. Daha fazla bilgi için bkz. [hata ayıklama modu](concepts-data-flow-debug-mode.md).
 
-![Hata ayıklama düğmesi](media/data-flow/debugbutton.png "hata ayıklama düğmesi")
+![Hata ayıklama düğmesi](media/data-flow/debugbutton.png "Hata ayıklama düğmesi")
 
 Hata ayıklama ardışık düzeni, veri akışı etkinlik ayarlarında belirtilen tümleştirme çalışma zamanı ortamı değil, etkin hata ayıklama kümesine karşı çalışır. Hata ayıklama modunu başlatırken işlem ortamını hata ayıkla seçeneğini belirleyebilirsiniz.
 

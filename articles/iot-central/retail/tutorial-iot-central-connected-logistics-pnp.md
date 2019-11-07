@@ -4,14 +4,15 @@ description: IoT Central için bağlı lojistik uygulama şablonu öğreticisi
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 0fc9291fcb17d6200b32bb04a0a3ffeed5dea713
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 9d55eca3df8897650f78a6bd85b649349c806e95
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027342"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615262"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Öğretici: bağlı bir lojistik uygulama şablonunu dağıtma ve gözden geçir
 
@@ -23,7 +24,7 @@ Bu öğreticide,
 * bağlı lojistik uygulaması oluştur 
 * uygulamayı gözden geçir 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Bu uygulamayı dağıtmak için belirli bir ön koşul gerekmez
 * Azure aboneliğinin olması önerilir, ancak bunu yapmadan da deneyebilirsiniz
 
@@ -88,7 +89,7 @@ Bu uygulama şablonunda bulunan iki farklı kuralı görmek için kurallar sekme
 > [!div class="mx-imgBorder"]
 > ![bağlı lojistik panosu](./media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png)
 
-## <a name="jobs"></a>İş
+## <a name="jobs"></a>İşler
 Bu uygulama şablonunun bir parçası olarak var olan beş farklı işi görmek için işler sekmesini seçin:
 
 > [!div class="mx-imgBorder"]

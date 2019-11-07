@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d96229bb5e3d288915b64e5a7ce29a8651f2a181
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 99f57f2e0b34f2e596ff9cf1a872650228ef0acd
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177374"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614860"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler 'de Eternal düzenlemeleri (Azure Işlevleri)
 
@@ -26,12 +26,12 @@ ms.locfileid: "72177374"
 
 ## <a name="resetting-and-restarting"></a>Sıfırlama ve yeniden başlatma
 
-Sonsuz döngüler kullanmak yerine, Orchestrator işlevleri [Continueasnew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) yöntemini çağırarak durumlarını sıfırlar. Bu yöntem, bir sonraki Orchestrator işlevi oluşturma için yeni giriş haline gelen tek bir JSON-Serializable parametresi alır.
+Sonsuz döngüleri kullanmak yerine, [düzenleme tetikleyicisi bağlamasının](durable-functions-bindings.md#orchestration-trigger)`ContinueAsNew` (.net) veya `continueAsNew` (JavaScript) yöntemini çağırarak Orchestrator işlevleri durumlarını sıfırlar. Bu yöntem, bir sonraki Orchestrator işlevi oluşturma için yeni giriş haline gelen tek bir JSON-Serializable parametresi alır.
 
-@No__t-0 çağrıldığında, örnek çıkış yapmadan önce bir iletiyi kendisine sıraya alır. İleti, örneği yeni giriş değeri ile yeniden başlatır. Aynı örnek KIMLIĞI tutulur, ancak Orchestrator işlevinin geçmişi etkin bir şekilde kesilir.
+`ContinueAsNew` çağrıldığında, örnek çıkış yapmadan önce bir iletiyi kendisine sıraya alır. İleti, örneği yeni giriş değeri ile yeniden başlatır. Aynı örnek KIMLIĞI tutulur, ancak Orchestrator işlevinin geçmişi etkin bir şekilde kesilir.
 
 > [!NOTE]
-> Dayanıklı görev çerçevesi aynı örnek KIMLIĞINI tutar, ancak dahili olarak `ContinueAsNew` tarafından sıfırlanan Orchestrator işlevi için yeni bir *yürütme kimliği* oluşturur. Bu yürütme KIMLIĞI genellikle dışarıdan gösterilmez, ancak düzenleme yürütmesinin hata ayıklaması sırasında öğrenmek faydalı olabilir.
+> Dayanıklı görev çerçevesi aynı örnek KIMLIĞINI tutar, ancak dahili olarak `ContinueAsNew`tarafından sıfırlanan Orchestrator işlevi için yeni bir *yürütme kimliği* oluşturur. Bu yürütme KIMLIĞI genellikle dışarıdan gösterilmez, ancak düzenleme yürütmesinin hata ayıklaması sırasında öğrenmek faydalı olabilir.
 
 ## <a name="periodic-work-example"></a>Düzenli iş örneği
 
@@ -42,7 +42,7 @@ Dış düzenlemeleri için bir kullanım örneği, düzenli olarak sürekli çal
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     await context.CallActivityAsync("DoCleanup", null);
 
@@ -54,7 +54,10 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+> [!NOTE]
+> Önceki C# örnek dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -74,16 +77,17 @@ module.exports = df.orchestrator(function*(context) {
 Bu örnek ve Zamanlayıcı tarafından tetiklenen bir işlev arasındaki fark, temizleme tetikleme sürelerinin bir zamanlamaya göre değil, burada yer alır. Örneğin, bir işlevi her saat yürüten bir CRON zamanlaması, bunu 1:00, 2:00, 3:00 vb. ve büyük olasılıkla çakışma sorunları halinde çalıştıracaktır. Bu örnekte, temizleme işlemi 30 dakika sürüyorsa, 1:00, 2:30, 4:00, vb. olarak zamanlanır.
 
 ## <a name="starting-an-eternal-orchestration"></a>Dış düzenleme başlatılıyor
-Bir dış düzenlemesi başlatmak için [startnewasync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) yöntemini kullanın. Bu, başka bir düzenleme işlevini tetiklemeden farklı değildir.  
+
+Diğer düzenleme işlevlerine benzer şekilde, bir dış Düzenleme başlatmak için `StartNewAsync` (.net) veya `startNew` (JavaScript) metodunu kullanın.  
 
 > [!NOTE]
-> Tek bir dış Orchestration 'un çalıştığından emin olmanız gerekiyorsa, düzenleme başlatılırken aynı örneğin `id` ' ı korumak önemlidir. Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
+> Tek bir dış Orchestration 'un çalıştığından emin olmanız gerekiyorsa, düzenleme başlatılırken aynı örneğin `id` saklanması önemlidir. Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
 public static async Task<HttpResponseMessage> OrchestrationTrigger(
     [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequestMessage request,
-    [OrchestrationClient] DurableOrchestrationClientBase client)
+    [DurableClient] IDurableOrchestrationClient client)
 {
     string instanceId = "StaticId";
     // Null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
@@ -92,11 +96,14 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 }
 ```
 
+> [!NOTE]
+> Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için `DurableClient` özniteliği yerine `OrchestrationClient` özniteliğini kullanmanız gerekir ve `IDurableOrchestrationClient`yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
 ## <a name="exit-from-an-eternal-orchestration"></a>Bir dış Orchestration 'tan çıkma
 
 Bir Orchestrator işlevinin sonunda tamamlanması gerekiyorsa, tek yapmanız gereken `ContinueAsNew` *çağırmamalıdır* ve işlevin çıkmasına izin vermez.
 
-Orchestrator işlevi sonsuz bir döngüde ve durdurulması gerekiyorsa, durdurmak için [Sonlandırateasync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) yöntemini kullanın. Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
+Orchestrator işlevi sonsuz bir döngüde ve durdurulması gerekiyorsa, bunu durdurmak için [Orchestration istemci bağlamasının](durable-functions-bindings.md#orchestration-client) `TerminateAsync` (.net) veya `terminate` (JavaScript) metodunu kullanın. Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

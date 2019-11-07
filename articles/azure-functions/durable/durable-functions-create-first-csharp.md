@@ -8,24 +8,26 @@ manager: jeconnoc
 keywords: azure işlevleri, işlevler, olay işleme, işlem, sunucusuz mimari
 ms.service: azure-functions
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1579a4dfbab1ec9d9aa6bb3995bd88d948d6d5e2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 563412fbc5e8d9af3c399b1f75696053549143c4
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933965"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615002"
 ---
-# <a name="create-your-first-durable-function-in-c"></a>C 'de ilk dayanıklı işlevinizi oluşturma\#
+# <a name="create-your-first-durable-function-in-c"></a>C\# ilk dayanıklı işlevinizi oluşturma
 
 *Dayanıklı işlevler* , bir sunucusuz ortamda durum bilgisi olan işlevler yazmanıza olanak sağlayan bir [Azure işlevleri](../functions-overview.md) uzantısıdır. Uzantı sizin için durumu, denetim noktalarını ve yeniden başlatmaları yönetir.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 Bu makalede, "Hello World" dayanıklı işlevini yerel olarak oluşturmak ve test etmek için Visual Studio 2019 ' i nasıl kullanacağınızı öğreneceksiniz.  Bu işlev, diğer işlevlere birlikte yapılan çağrıları düzenler ve zincirler. Ardından işlev kodunu Azure’da yayımlayacaksınız. Bu araçlar, Visual Studio 2019 ' de Azure geliştirme iş yükünün parçası olarak kullanılabilir.
 
 ![Azure 'da dayanıklı işlevi çalıştırma](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -39,9 +41,9 @@ Bu öğreticiyi tamamlamak için:
 
 Azure Işlevleri şablonu, Azure 'da bir işlev uygulamasına yayımlanmakta olabilecek bir proje oluşturur. İşlev uygulaması, kaynakların yönetilmesi, dağıtılması ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır.
 
-1. Visual Studio'da **Dosya** menüsünden **Yeni** > **Proje**’yi seçin.
+1. Visual Studio'da **Dosya** menüsünden  > Yeni**Proje**’yi seçin.
 
-1. **Yeni Proje Ekle** iletişim kutusunda, için `functions`arama yapın, **Azure işlevleri** şablonunu seçin ve **İleri**' yi seçin. 
+1. **Yeni Proje Ekle** iletişim kutusunda `functions`arayın, **Azure işlevleri** şablonunu seçin ve **İleri**' yi seçin. 
 
     ![Visual Studio'da işlev oluşturmaya yönelik yeni proje iletişim kutusu](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
@@ -53,8 +55,8 @@ Azure Işlevleri şablonu, Azure 'da bir işlev uygulamasına yayımlanmakta ola
 
     | Ayar      | Önerilen değer  | Açıklama                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Sürüm** | Azure İşlevleri 2.x <br />(.NET Core) | .NET Core 'u destekleyen Azure Işlevlerinin sürüm 2. x çalışma zamanını kullanan bir işlev projesi oluşturur. Azure İşlevleri 1.x, .NET Framework’ü destekler. Daha fazla bilgi için bkz. [Azure İşlevleri çalışma zamanı sürümünün hedefini belirleme](../functions-versions.md).   |
-    | **Şablon** | Boş | Boş bir işlev uygulaması oluşturur. |
+    | **Sürüm** | Azure Işlevleri 2,0 <br />(.NET Core) | .NET Core 'u destekleyen Azure Işlevlerinin sürüm 2,0 çalışma zamanını kullanan bir işlev projesi oluşturur. Azure Işlevleri 1,0 .NET Framework destekler. Daha fazla bilgi için bkz. [Azure İşlevleri çalışma zamanı sürümünün hedefini belirleme](../functions-versions.md).   |
+    | **Şablon** | Olmamalıdır | Boş bir işlev uygulaması oluşturur. |
     | **Depolama hesabı**  | Depolama Öykünücüsü | Dayanıklı işlev durumu yönetimi için bir depolama hesabı gereklidir. |
 
 4. Boş bir işlev projesi oluşturmak için **Oluştur** ' u seçin. Bu proje, işlevlerinizi çalıştırmak için gereken temel yapılandırma dosyalarını içerir.
@@ -63,7 +65,7 @@ Azure Işlevleri şablonu, Azure 'da bir işlev uygulamasına yayımlanmakta ola
 
 Aşağıdaki adımlar, projenizde dayanıklı işlev kodu oluşturmak için bir şablon kullanır.
 
-1. Visual Studio 'da projeye sağ tıklayın ve**yeni Azure işlevi** **Ekle** > ' yi seçin.
+1. Visual Studio 'da projeye sağ tıklayın ve > **yeni Azure Işlevi** **Ekle** ' yi seçin.
 
     ![Yeni işlev Ekle](./media/durable-functions-create-first-csharp/functions-vs-add-new-function.png)
 
@@ -73,12 +75,15 @@ Aşağıdaki adımlar, projenizde dayanıklı işlev kodu oluşturmak için bir 
 
     ![Dayanıklı şablon seçin](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
+> [!NOTE]
+> Bu şablon şu anda uzantının eski bir 1. x sürümünü kullanarak dayanıklı bir işlev oluşturuyor. Daha yeni bir Dayanıklı İşlevler 2. x sürümüne yükseltme hakkında bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
 Uygulamaya yeni bir dayanıklı işlev eklenir.  İçeriğini görüntülemek için yeni. cs dosyasını açın. Bu dayanıklı işlev, aşağıdaki yöntemlerle basit bir işlev zincirleme örneğidir:  
 
 | Yöntem | Ifadelerini | Açıklama |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Dayanıklı düzenleme 'yi yönetir. Bu durumda, düzenleme başlar, bir liste oluşturur ve listeye yapılan üç işlev çağrısının sonucunu ekler.  Üç işlev çağrısı tamamlandığında, listeyi döndürür. |
-| **`SayHello`** | `<file-name>_Hello` | İşlev bir merhaba döndürür. Bu işlev, düzenlenen iş mantığını içerir. |
+| **`SayHello`** | `<file-name>_Hello` | İşlev bir merhaba döndürür. Düzenleyen iş mantığını içeren işlevdir. |
 | **`HttpStart`** | `<file-name>_HttpStart` | Orchestration örneğini başlatan ve bir denetim durumu yanıtı döndüren [http ile tetiklenen bir işlev](../functions-bindings-http-webhook.md) . |
 
 Artık işlev projenizi ve dayanıklı bir işlevi oluşturduğunuza göre, bunu yerel bilgisayarınızda test edebilirsiniz.
@@ -99,9 +104,9 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
 
     Yanıt, HTTP işlevinin ilk sonucudur ve dayanıklı düzenleme 'nin başarıyla başlatıldığını öğrenmemize olanak tanıyor.  Orchestration 'un nihai sonucu henüz değildir.  Yanıt birkaç yararlı URL içerir.  Şimdilik düzenleme durumunu sorgulayalım.
 
-4. URL değerini `statusQueryGetUri` kopyalayın ve tarayıcının adres çubuğuna yapıştırın ve isteği yürütün.
+4. `statusQueryGetUri` URL değerini kopyalayın ve tarayıcının adres çubuğuna yapıştırın ve isteği yürütün.
 
-    İstek, bu durum için düzenleme örneğini sorgular. Aşağıdakine benzer bir nihai yanıt almanız gerekir.  Bu, örneğin tamamlandığını gösterir ve dayanıklı işlevin çıkışlarını veya sonuçlarını içerir.
+    İstek, bu durum için düzenleme örneğini sorgular. Aşağıdakine benzer bir nihai yanıt almanız gerekir.  Bu çıktı, örneğin tamamlandığını gösterir ve dayanıklı işlevin çıkışlarını veya sonuçlarını içerir.
 
     ```json
     {
@@ -114,8 +119,8 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
             "Hello Seattle!",
             "Hello London!"
         ],
-        "createdTime": "2018-11-08T07:07:40Z",
-        "lastUpdatedTime": "2018-11-08T07:07:52Z"
+        "createdTime": "2019-11-02T07:07:40Z",
+        "lastUpdatedTime": "2019-11-02T07:07:52Z"
     }
     ```
 

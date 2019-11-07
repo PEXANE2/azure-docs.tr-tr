@@ -5,31 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 11/1/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b26679542753d5fb429c33e4220c23a3937c5cb
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 68acf32660fe36ddd4c2982b818ce21adde7ddab
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430432"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603585"
 ---
-# <a name="add-google-as-an-identity-provider-for-b2b-guest-users-preview"></a>B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme (Önizleme)
+# <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme
 
-|     |
-| --- |
-| Google Federasyonu, Azure Active Directory genel bir önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+Google ile Federasyon ayarlayarak, davet edilen kullanıcıların Microsoft hesapları (MSAs) oluşturmaya gerek kalmadan kendi Gmail hesaplarıyla paylaşılan uygulamalarınızda ve kaynaklarda oturum açmalarına izin verebilirsiniz. 
 
-Google ile Federasyon ayarlayarak, davet edilen kullanıcıların Microsoft hesapları (MSAs) veya Azure AD hesapları oluşturmaya gerek kalmadan kendi Gmail hesaplarıyla paylaşılan uygulamalarınızda ve kaynaklarda oturum açmalarına izin verebilirsiniz. Google Federasyonu, Gmail kullanıcıları için özel olarak tasarlanmıştır. G Suite etki alanlarıyla federasyona eklemek için, bunun yerine [doğrudan Federasyon özelliğini](direct-federation.md) kullanın.
 > [!NOTE]
-> Google Konuk kullanıcılarınızın kiracı bağlamını içeren bir bağlantı kullanarak oturum açması gerekir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>` ya da doğrulanmış bir etki alanı durumunda, `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Uygulama ve kaynakların doğrudan bağlantıları, kiracı bağlamını dahil ettikleri sürece da çalışır. Konuk kullanıcılar şu anda kiracı bağlamı olmayan uç noktaları kullanarak oturum açamıyor. Örneğin, `https://myapps.microsoft.com`, `https://portal.azure.com` veya takımlar ortak uç nokta kullanımı bir hatayla sonuçlanır.
- 
+> Google Federasyonu, Gmail kullanıcıları için özel olarak tasarlanmıştır. G Suite etki alanlarıyla federasyona eklemek için, [doğrudan Federasyon özelliğini](direct-federation.md)kullanın.
+
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google kullanıcısına yönelik deneyim nedir?
 Bir Google Gmail kullanıcısına davetiye gönderdiğinizde, Konuk kullanıcının kiracı bağlamını içeren bir bağlantıyı kullanarak paylaşılan uygulamalarınıza veya kaynaklarınıza erişmesi gerekir. Bu deneyimler, Google 'da zaten oturum açmış olmasına bağlı olarak farklılık gösterir:
   - Konuk Kullanıcı Google 'da oturum açmamışsa, Google 'da oturum açması istenir.
@@ -39,9 +35,22 @@ Konuk Kullanıcı bir "üst bilgi çok uzun" hatası görürse, kendi tanımlama
 
 ![Google oturum açma sayfasını gösteren ekran görüntüsü](media/google-federation/google-sign-in.png)
 
+## <a name="limitations"></a>Sınırlamalar
+
+Takımlar tüm cihazlarda Google Konuk kullanıcılarını tamamen destekler. Google kullanıcıları, `https://teams.microsoft.com`gibi ortak bir uç noktadan ekiplerde oturum açabilirler.
+
+Diğer uygulamaların ortak uç noktaları Google kullanıcılarını desteklemeyebilir. Google Konuk kullanıcılarının kiracı bilgilerinizi içeren bir bağlantı kullanarak oturum açması gerekir. Aşağıda örnekler verilmiştir:
+  * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
+  * `https://portal.azure.com/<your tenant id>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+
+   Google Guest kullanıcıları `https://myapps.microsoft.com` veya `https://portal.azure.com`gibi bir bağlantı kullanmayı denlerse bir hata alırlar.
+
+Ayrıca, bu bağlantı kiracı bilgilerinizi içerdiği sürece (örneğin `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`), Google Konuk kullanıcılarına bir uygulama veya kaynağa doğrudan bağlantı verebilirsiniz. 
+
 ## <a name="step-1-configure-a-google-developer-project"></a>1\. Adım: Google Geliştirici projesini yapılandırma
 İlk olarak, bir istemci KIMLIĞI ve daha sonra Azure AD 'ye ekleyebileceğiniz bir istemci gizli anahtarı almak için Google geliştiricileri konsolunda yeni bir proje oluşturun. 
-1. @No__t-0 ' daki Google API 'Lerine gidin ve Google hesabınızla oturum açın. Paylaşılan bir takım Google hesabı kullanmanızı öneririz.
+1. https://console.developers.google.comadresindeki Google API 'Lerine gidin ve Google hesabınızla oturum açın. Paylaşılan bir takım Google hesabı kullanmanızı öneririz.
 2. Yeni bir proje oluşturun: panoda **proje oluştur**' u seçin ve ardından **Oluştur**' u seçin. Yeni proje sayfasında, bir **Proje adı**girin ve ardından **Oluştur**' u seçin.
    
    ![Google için yeni bir proje sayfası gösteren ekran görüntüsü](media/google-federation/google-new-project.png)
@@ -66,10 +75,10 @@ Konuk Kullanıcı bir "üst bilgi çok uzun" hatası görürse, kendi tanımlama
 
 8. **Uygulama türü**' nün altında **Web uygulaması**' nı seçin ve ardından **yetkili yeniden yönlendirme URI 'leri**altında aşağıdaki URI 'leri girin:
    - `https://login.microsoftonline.com` 
-   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(burada `<directory id>` Dizin KIMLIĞINIZ)
+   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(`<directory id>` Dizin KIMLIĞINIZ)
    
      > [!NOTE]
-     > Dizin KIMLIĞINIZI bulmak için https://portal.azure.com ' a gidin ve **Azure Active Directory**altında **Özellikler** ' i seçin ve **dizin kimliğini**kopyalayın.
+     > Dizin KIMLIĞINIZI bulmak için https://portal.azure.comadresine gidin ve **Azure Active Directory**altında **Özellikler** ' i seçin ve **dizin kimliğini**kopyalayın.
 
    ![Yetkili yeniden yönlendirme URI 'Leri bölümünü gösteren ekran görüntüsü](media/google-federation/google-create-oauth-client-id.png)
 
@@ -116,7 +125,7 @@ Google Federation kurulumunuzu silebilirsiniz. Bunu yaparsanız, davetini zaten 
 1. Graph modülü için Azure AD PowerShell 'in en son sürümünü ([Azureadpreview](https://www.powershellgallery.com/packages/AzureADPreview)) yükler.
 2. `Connect-AzureAD` öğesini çalıştırın.  
 4. Oturum açma isteminde, yönetilen genel yönetici hesabıyla oturum açın.  
-5. Aşağıdaki komutu girin:
+5. Aşağıdaki komutu kullanın:
 
     `Remove-AzureADMSIdentityProvider -Id Google-OAUTH`
 

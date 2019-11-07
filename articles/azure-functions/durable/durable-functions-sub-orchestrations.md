@@ -7,35 +7,31 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/07/2019
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7b5e811daecbb7687abe7a37b75e2730d7830c2c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: cf160b767ee82701bad4c88d3b83951a3b875296
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983610"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614659"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler alt düzenlemeler (Azure Işlevleri)
 
-Orchestrator işlevleri, etkinlik işlevlerini çağırmanın yanı sıra diğer Orchestrator işlevlerini de çağırabilir. Örneğin, bir Orchestrator işlevleri kitaplığından daha büyük bir düzenleme oluşturabilirsiniz. Alternatif olarak, bir Orchestrator işlevinin birden fazla örneğini paralel olarak çalıştırabilirsiniz.
+Orchestrator işlevleri, etkinlik işlevlerini çağırmanın yanı sıra diğer Orchestrator işlevlerini de çağırabilir. Örneğin, daha küçük bir Orchestrator işlevleri kitaplığından daha büyük bir düzenleme oluşturabilirsiniz. Alternatif olarak, bir Orchestrator işlevinin birden fazla örneğini paralel olarak çalıştırabilirsiniz.
 
-Orchestrator işlevi, .net `callSubOrchestrator` `callSubOrchestratorWithRetry` 'teki [callsuborchestratoraysync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) veya [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) yöntemlerini ya da JavaScript içindeki yöntemleri çağırarak başka bir Orchestrator işlevini çağırabilir. [& Dengeleme makalesindeki hata işleme](durable-functions-error-handling.md#automatic-retry-on-failure) otomatik yeniden deneme hakkında daha fazla bilgi içerir.
+Orchestrator işlevi, .NET 'teki `CallSubOrchestratorAsync` veya `CallSubOrchestratorWithRetryAsync` yöntemlerini veya JavaScript 'teki `callSubOrchestrator` ya da `callSubOrchestratorWithRetry` yöntemlerini kullanarak başka bir Orchestrator işlevini çağırabilir. [& Dengeleme makalesindeki hata işleme](durable-functions-error-handling.md#automatic-retry-on-failure) otomatik yeniden deneme hakkında daha fazla bilgi içerir.
 
 Alt Orchestrator işlevleri, çağıranın perspektifinden yalnızca etkinlik işlevleri gibi davranır. Bunlar bir değer döndürebilir, bir özel durum oluşturabilir ve üst Orchestrator işlevi tarafından beklelenebilir. 
-
-> [!NOTE]
-> Şu anda JavaScript 'teki suborchestration API 'sine `instanceId` bir bağımsız değişken değeri sağlamak gereklidir.
-
 ## <a name="example"></a>Örnek
 
-Aşağıdaki örnekte, sağlanması gereken birden çok cihaz olduğu IoT ("Nesnelerin İnterneti") senaryosu gösterilmektedir. Cihazların her biri için gerçekleşmesi gereken belirli bir düzenleme vardır ve bu, aşağıdakine benzer şekilde görünebilir:
+Aşağıdaki örnekte, sağlanması gereken birden çok cihaz olduğu IoT ("Nesnelerin İnterneti") senaryosu gösterilmektedir. Aşağıdaki işlev her bir cihaz için yürütülmesi gereken sağlama iş akışını temsil eder:
 
 ### <a name="c"></a>C#
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string deviceId = context.GetInput<string>();
 
@@ -52,7 +48,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -73,7 +69,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Bu Orchestrator işlevi, tek seferlik cihaz sağlama için olduğu gibi kullanılabilir veya daha büyük bir düzenleme parçası olabilir. İkinci durumda `DeviceProvisioningOrchestration` , üst Orchestrator işlevi `CallSubOrchestratorAsync` (C#) veya `callSubOrchestrator` (JavaScript) API 'sini kullanarak örnekleri zamanlayabilir.
+Bu Orchestrator işlevi, tek seferlik cihaz sağlama için olduğu gibi kullanılabilir veya daha büyük bir düzenleme parçası olabilir. İkinci durumda, üst Orchestrator işlevi `CallSubOrchestratorAsync` (.NET) veya `callSubOrchestrator` (JavaScript) API 'sini kullanarak `DeviceProvisioningOrchestration` örneklerini zamanlayabilir.
 
 Birden çok Orchestrator işlevinin paralel olarak nasıl çalıştırılacağını gösteren bir örnek aşağıda verilmiştir.
 
@@ -82,7 +78,7 @@ Birden çok Orchestrator işlevinin paralel olarak nasıl çalıştırılacağı
 ```csharp
 [FunctionName("ProvisionNewDevices")]
 public static async Task ProvisionNewDevices(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string[] deviceIds = await context.CallActivityAsync<string[]>("GetNewDeviceIds");
 
@@ -100,7 +96,10 @@ public static async Task ProvisionNewDevices(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+> [!NOTE]
+> Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 ```javascript
 const df = require("durable-functions");

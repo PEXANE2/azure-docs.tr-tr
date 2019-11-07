@@ -4,14 +4,15 @@ description: IoT Central için akıllı envanter yönetimi uygulama şablonu ö�
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 7c8b2379ccb7562a79077df026a7083831e5415b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 8360db3e31899dc7ca0a2b502d0036358f0858d6
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027258"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615221"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Öğretici: akıllı envanter yönetimi uygulama şablonunu dağıtma ve yönetme
 
@@ -23,7 +24,7 @@ Bu öğreticide,
 * Akıllı envanter yönetimi uygulaması oluştur 
 * uygulamayı gözden geçir 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Bu uygulamayı dağıtmak için belirli bir ön koşul gerekmez
 * Azure aboneliğinin olması önerilir, ancak bunu yapmadan da deneyebilirsiniz
 
@@ -89,7 +90,7 @@ Bu uygulama şablonunda bulunan iki farklı kuralı görmek için kurallar sekme
 > [!div class="mx-imgBorder"]
 > Akıllı envanter yönetimi panosu ![](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
 
-## <a name="jobs"></a>İş
+## <a name="jobs"></a>İşler
 Bu uygulama şablonunun bir parçası olarak var olan beş farklı işi görmek için işler sekmesini seçin: çözüm genelinde işlemler gerçekleştirmek için işler özelliğinden yararlanabilirsiniz. Burada stok yönetimi işleri, gibi görevleri gerçekleştirmek için ikizi özelliğini & cihaz komutlarını kullanıyor.
    * Tüm ağ geçidi genelinde okuyucuları devre dışı bırakma
    * arasındaki telemetri eşiğini değiştirme 

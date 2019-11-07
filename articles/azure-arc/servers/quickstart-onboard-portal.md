@@ -10,24 +10,24 @@ keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, g�
 ms.date: 08/25/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: b014f6015b3e13a603cf3893062bd0463eb110ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ae7c8545286baebc83077276e356cd2e41f0dc3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501991"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668670"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---portal"></a>Hızlı başlangıç: sunucular için Azure Arc kullanarak makineleri Azure 'a bağlama-Portal
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Desteklenen istemcileri ve [sunucu Için Azure Arc genel bakış](overview.md)' da gereken ağ yapılandırmasını gözden geçirin.
 
 ## <a name="generate-the-agent-install-script-using-the-azure-portal"></a>Azure portal kullanarak aracı yüklemesi betiği oluşturma
 
-1. Başlatma [https://aka.ms/hybridmachineportal] [aka_hybridmachineportal]
+1. [https://aka.ms/hybridmachineportal](https://aka.ms/hybridmachineportal) Başlat
 1. **+ Ekle** 'ye tıklayın
 1. Tamamlamak için Sihirbazı izleyin
 1. Son sayfada, kopyalayabileceğiniz (veya indirebileceğiniz) bir komut dosyası oluşturulur.
@@ -64,6 +64,29 @@ Bir makinenin sunucular için Azure Arc bağlantısını kesmek için iki adım 
 
 1. [Portalda](https://aka.ms/hybridmachineportal)makineyi seçin, üç noktaya (`...`) tıklayın ve **Sil**' i seçin.
 1. Aracıyı makineden kaldırın.
+
+   Windows 'da Aracıyı kaldırmak için "uygulamalar & özellikleri" denetim masasını kullanabilirsiniz.
+  
+  ![Uygulamalar & özellikleri](./media/quickstart-onboard/apps-and-features.png)
+
+   Kaldırma işlemini yapmak isterseniz, **PackageID** 'yi alan ve `msiexec /X`kullanarak aracıyı kaldırabilen aşağıdaki örneği kullanabilirsiniz.
+
+   `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` kayıt defteri anahtarını bulun ve **PackageID**' i bulun. Ardından `msiexec`kullanarak aracıyı kaldırabilirsiniz.
+
+   Aşağıdaki örnekte aracının kaldırılması gösterilmektedir.
+
+   ```powershell
+   Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
+   Get-ItemProperty | `
+   Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
+   ForEach-Object {MsiExec.exe /Quiet /X "$($_.PsChildName)"}
+   ```
+
+   Linux 'ta Aracıyı kaldırmak için aşağıdaki komutu yürütün.
+
+   ```bash
+   sudo apt purge hybridagent
+   ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

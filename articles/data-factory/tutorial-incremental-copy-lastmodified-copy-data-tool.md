@@ -1,5 +1,5 @@
 ---
-title: Veri Kopyalama aracını kullanarak yeni ve değiştirilmiş dosyaları LastModifiedDate tabanlı olarak artımlı olarak kopyalayın | Microsoft Docs
+title: Veri Kopyalama aracını kullanarak, LastModifiedDate tabanlı yeni ve değiştirilmiş dosyaları artımlı olarak kopyalama
 description: Bir Azure Data Factory oluşturun ve ardından Veri Kopyalama aracını kullanarak LastModifiedDate tabanlı yeni dosyaları artımlı olarak yükleyin.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 9f6fd57586603d0d987faa674d40a7e4678530a1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 09a9fa4515913470c86bbafe293add007a3117ea
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933870"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683469"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak, LastModifiedDate tabanlı yeni ve değiştirilmiş dosyaları artımlı olarak kopyalama
 
@@ -36,7 +36,7 @@ Bu öğreticide, aşağıdaki görevleri yerine getirmeniz gerekir:
 > * Veri Kopyalama aracını kullanarak bir işlem hattı oluşturun.
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**: BLOB depolama alanını _kaynak_ ve _Havuz_ veri deposu olarak kullanın. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md) bölümündeki yönergelere bakın.
@@ -49,9 +49,9 @@ Bu adımları uygulayarak BLOB depolama alanınızı öğreticiye hazırlayın.
 
 2. **Hedef**adlı bir kapsayıcı oluşturun. 
 
-## <a name="create-a-data-factory"></a>Data factory oluştur
+## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol taraftaki menüden**veri ve analiz** >  > kaynak oluştur ' u seçin**Data Factory**: 
+1. Sol taraftaki menüden > **kaynak oluştur** ' u seçin **veri ve analiz** > **Data Factory**: 
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -74,7 +74,7 @@ Bu adımları uygulayarak BLOB depolama alanınızı öğreticiye hazırlayın.
 5. **Sürüm**altında **v2**' yi seçin.
 6. **Konum** bölümünde veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikanızın kullandığı veri depoları (örneğin, Azure depolama ve SQL veritabanı) ve işlemler (örneğin, Azure HDInsight) başka konumlarda ve bölgelerde olabilir.
 7. **Panoya sabitle**’yi seçin. 
-8. **Oluştur**’u seçin.
+8. **Oluştur**'u seçin.
 9. Panoda, işlem durumunu görmek için **dağıtma Data Factory** kutucuğuna bakın.
 
     ![Data Factory kutucuğu dağıtılıyor](media/tutorial-copy-data-tool/deploying-data-factory.png)
@@ -125,11 +125,11 @@ Bu adımları uygulayarak BLOB depolama alanınızı öğreticiye hazırlayın.
 
 4. **Girdi dosyasını veya klasörünü seçin** sayfasında aşağıdaki adımları uygulayın:
     
-    a. **Kaynak** klasöre gidip seçin ve ardından Seç ' i seçin.
+    a. **Kaynak** klasöre gidip seçin ve **ardından Seç ' i seçin.**
     
     ![Girdi dosyası veya klasörü seçin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
     
-    b. **Dosya yükleme davranışı**altında artımlı yükleme **' yi seçin: LastModifiedDate**.
+    b. **Dosya yükleme davranışı**altında **artımlı yük: LastModifiedDate**öğesini seçin.
     
     ![Girdi dosyası veya klasörü seçin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-loading-behavior.png)
     
@@ -143,7 +143,7 @@ Bu adımları uygulayarak BLOB depolama alanınızı öğreticiye hazırlayın.
     
 6. **Çıktı dosyasını veya klasörünü seçin** sayfasında aşağıdaki adımları uygulayın:
     
-    a. **Hedef** klasöre gözatıp seçin ve ardından Seç ' iseçin.
+    a. **Hedef** klasöre gözatıp seçin ve ardından Seç ' i **seçin.**
     
     ![Çıktı dosyasını veya klasörünü seçin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
     

@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 06ab1783a6e0f4884ab46d3f00a26c47f28d02b0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 410b945f1a9a8d659f55668e272e2d9d08482bde
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596893"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601759"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks kümeleri için bölgesel olağanüstü durum kurtarma
 
@@ -47,7 +47,7 @@ Kendi bölgesel olağanüstü durum kurtarma topolojinizi oluşturmak için aşa
 
    Bu makalede, Azure Databricks REST API üzerinde kolay bir Kullanıcı sarmalayıcısı olduğundan, otomatik adımların çoğu için komut satırı arabirimini kullanan bir dizi kod örneği gösterilmektedir.
 
-   Herhangi bir geçiş adımını gerçekleştirmeden önce, masaüstü bilgisayarınıza veya işi planladığınız bir sanal makineye databricks-CLI ' yı yükleyebilirsiniz. Daha fazla bilgi için bkz. [Databricks CLI 'Yi Install](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
+   Herhangi bir geçiş adımını gerçekleştirmeden önce, masaüstü bilgisayarınıza veya işi planladığınız bir sanal makineye databricks-CLI ' yı yükleyebilirsiniz. Daha fazla bilgi için bkz. [Databricks CLI 'Yi Install](/azure/databricks/dev-tools/databricks-cli)
 
    ```bash
    pip install databricks-cli
@@ -225,7 +225,7 @@ Kendi bölgesel olağanüstü durum kurtarma topolojinizi oluşturmak için aşa
 
    İş yapılandırması, yeni veya var olan bir küme için ayarları gerektirir. Mevcut küme kullanılıyorsa, aşağıdaki komut dosyası/Code, eski küme KIMLIĞINI yeni küme KIMLIĞIYLE değiştirmeye çalışır.
 
-   Aşağıdaki Python betiğini kopyalayın ve bir dosyaya kaydedin. @No__t_0 ve `new_cluster_id` değerini, önceki adımda yapılan küme geçişinin çıktısı ile değiştirin. Bunu databricks-CLI komut satırında çalıştırın, örneğin `python scriptname.py`.
+   Aşağıdaki Python betiğini kopyalayın ve bir dosyaya kaydedin. `old_cluster_id` ve `new_cluster_id`değerini, önceki adımda yapılan küme geçişinin çıktısı ile değiştirin. Bunu databricks-CLI komut satırında çalıştırın, örneğin `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -286,7 +286,7 @@ Kendi bölgesel olağanüstü durum kurtarma topolojinizi oluşturmak için aşa
 
 8. **Azure Blob depolamayı geçirme ve Azure Data Lake Storage bağlama**
 
-   Tüm [Azure Blob depolama](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) ve [Azure Data Lake Storage (Gen 2)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) bağlama noktalarını Not defteri tabanlı bir çözüm kullanarak el ile yeniden bağlayın. Depolama kaynakları birincil çalışma alanına bağlanmış ve ikincil çalışma alanında tekrarlanmalıdır. Bağlama için dış API yok.
+   Tüm [Azure Blob depolama](/azure/databricks/data/data-sources/azure/azure-storage.html) ve [Azure Data Lake Storage (Gen 2)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html) bağlama noktalarını Not defteri tabanlı bir çözüm kullanarak el ile yeniden bağlayın. Depolama kaynakları birincil çalışma alanına bağlanmış ve ikincil çalışma alanında tekrarlanmalıdır. Bağlama için dış API yok.
 
 9. **Küme başlangıç betiklerini geçir**
 
@@ -302,7 +302,7 @@ Kendi bölgesel olağanüstü durum kurtarma topolojinizi oluşturmak için aşa
 
 10. **Erişim denetimini el ile yeniden yapılandırın ve yeniden uygulayın.**
 
-    Mevcut birincil çalışma alanınız Premium katmanını (SKU) kullanacak şekilde yapılandırıldıysa, büyük olasılıkla [Access Control özelliğini](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control)de kullanıyor olabilirsiniz.
+    Mevcut birincil çalışma alanınız Premium katmanını (SKU) kullanacak şekilde yapılandırıldıysa, büyük olasılıkla [Access Control özelliğini](/azure/databricks/administration-guide/access-control/index)de kullanıyor olabilirsiniz.
 
     Access Control özelliğini kullanıyorsanız, erişim denetimini kaynaklara (Not defterleri, kümeler, Işler, tablolar) el ile yeniden uygulayın.
 
@@ -312,4 +312,4 @@ Diğer Azure hizmetlerini kullanıyorsanız, bu hizmetler için olağanüstü du
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [Azure Databricks belgeleri](https://docs.azuredatabricks.net/user-guide/index.html).
+Daha fazla bilgi için bkz. [Azure Databricks belgeleri](index.yml).

@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 40718cdb12cbc46bf0587dfdc657ee06c090061b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: c8891fc96e3e511e4127b4e114a45b5a865cf8eb
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598235"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603023"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Sorgu deposu ile MySQL için Azure veritabanı performansını izleme
 
 **Uygulama hedefi:** MySQL için Azure veritabanı 5,7
-
-> [!IMPORTANT]
-> Sorgu deposu önizlemededir.
 
 MySQL için Azure veritabanı 'nda bulunan Query Store özelliği, sorgu performansını zamana göre izlemek için bir yol sağlar. Sorgu deposu, en uzun çalışan ve en fazla kaynak yoğunluklu sorguları hızlı bir şekilde bulmanıza yardımcı olarak performans sorunlarını basitleştirir. Sorgu deposu sorgular ve çalışma zamanı istatistikleri geçmişini otomatik olarak yakalar ve bunları gözden geçirmeniz için saklar. Veritabanı kullanım düzenlerini görebilmeniz için verileri zaman pencereleri ile ayırır. Tüm kullanıcılar, veritabanları ve sorgular için veriler, MySQL için Azure veritabanı örneğindeki **MySQL** şema veritabanında depolanır.
 
@@ -107,7 +104,7 @@ Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 > [!NOTE]
 > Şu anda **query_store_capture_mode** , bu yapılandırmanın yerini alır, ancak her iki **query_store_capture_mode** ve **query_store_wait_sampling_capture_mode** de bekleyen istatistiklerin çalışması için her ikisi de etkinleştirilmelidir. **Query_store_capture_mode** devre dışı bırakılırsa, bekleme istatistiği, performance_schema etkin ' i ve sorgu deposu tarafından yakalanan query_text ' den yararlandığından, bekleme istatistikleri de kapanır.
 
-Bir parametre için farklı bir değer almak  to [Azure clı](howto-configure-server-parameters-using-cli.md)  or [Azure Portal](howto-server-parameters.md) kullanın.
+Bir parametre için farklı bir değer almak veya ayarlamak için [Azure portal](howto-server-parameters.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md) kullanın.
 
 ## <a name="views-and-functions"></a>Görünümler ve işlevler
 
@@ -119,7 +116,7 @@ Sorgular, sabit değerler ve sabitler kaldırıldıktan sonra yapısına bakıla
 
 Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI ve sorgu KIMLIĞI için bir satır vardır.
 
-| **Adı** | **Veri türü** | **IS_NULLABLE** | **Açıklama** |
+| **Ad** | **Veri türü** | **IS_NULLABLE** | **Açıklama** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | Şemanın adı |
 | `query_id`| büyük tamsayı (20) | NO| Belirli sorgu için oluşturulan benzersiz KIMLIK, aynı sorgu farklı şemada yürütülüyorsa yeni bir KIMLIK oluşturulur |
@@ -152,7 +149,7 @@ Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritaba
 
 Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI, sorgu KIMLIĞI ve olay için bir satır vardır.
 
-| **Adı**| **Veri türü** | **IS_NULLABLE** | **Açıklama** |
+| **Ad**| **Veri türü** | **IS_NULLABLE** | **Açıklama** |
 |---|---|---|---|
 | `interval_start` | timestamp | NO| Aralık başlangıcı (15 dakikalık artış)|
 | `interval_end` | timestamp | NO| Aralığın sonu (15 dakikalık artış)|
@@ -166,7 +163,7 @@ Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her fa
 
 ### <a name="functions"></a>İşlevler
 
-| **Adı**| **Açıklama** |
+| **Ad**| **Açıklama** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | Verilen zaman damgasından önce tüm sorgu depolama verilerini temizler |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Verilen zaman damgasından önce tüm bekleme olayı verilerini temizler |
@@ -175,9 +172,9 @@ Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her fa
 ## <a name="limitations-and-known-issues"></a>Sınırlamalar ve bilinen sorunlar
 
 - Bir MySQL sunucusunda `default_transaction_read_only` parametresi varsa, sorgu deposu veri yakalayamaz.
-- Sorgu deposu işlevselliği, uzun Unicode sorgularıyla karşılaşırsa kesintiye uğrar (\> = 6000 bayt).
+- Sorgu deposu işlevselliği, uzun Unicode sorgularıyla karşılaşırsa kesintiye uğrar (\>= 6000 bayt).
 - Bekleme istatistikleri için bekletme süresi 24 saattir.
-- Bekleme istatistikleri olay kesirini yakalamak için örnek kullanır. Sıklık `query_store_wait_sampling_frequency` parametresi kullanılarak değiştirilebilir.
+- Bekleme istatistikleri olay kesirini yakalamak için örnek kullanır. Sıklık `query_store_wait_sampling_frequency`parametresi kullanılarak değiştirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

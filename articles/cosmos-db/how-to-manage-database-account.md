@@ -4,20 +4,20 @@ description: Azure Cosmos DB'de veritabanı hesaplarını yönetmeyi öğrenin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: f67487f6da5c9be028703d7890e16ffab0c858c6
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 049be390403fe984ed4f8f38a4cdc86e24060e49
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812522"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582628"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos hesabını yönetme
 
 Bu makalede, Azure Cosmos hesabında Azure portal, Azure PowerShell, Azure CLı ve Azure Resource Manager şablonları kullanılarak çeşitli görevlerin nasıl yönetileceği açıklanır.
 
-## <a name="create-an-account"></a>Hesap oluşturun
+## <a name="create-an-account"></a>Hesap oluşturma
 
 ### <a id="create-database-account-via-portal"></a>Azure portal
 
@@ -33,17 +33,17 @@ Lütfen bkz. [PowerShell ile Azure Cosmos DB hesabı oluşturma](manage-with-pow
 
 ### <a id="create-database-account-via-arm-template"></a>Azure Resource Manager şablonu
 
-Bu Azure Resource Manager şablonu, tutarlılık düzeyi, otomatik yük devretme ve çoklu yönetici seçeneklerini belirlemek için iki bölge ve seçenek ile yapılandırılmış desteklenen API 'ler için bir Azure Cosmos hesabı oluşturur. Bu şablonu dağıtmak için Benioku sayfasında Azure 'a Dağıt ' a tıklayın, [Azure Cosmos hesabı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account)
+Bu Azure Resource Manager şablonu, tutarlılık düzeyi, otomatik yük devretme ve çoklu yönetici seçeneklerini belirlemek için iki bölge ve seçenek ile yapılandırılmış SQL API 'SI için bir Azure Cosmos hesabı oluşturur. Bu şablonu dağıtmak için Benioku sayfasında Azure 'a Dağıt ' a tıklayın, [Azure Cosmos hesabı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)
 
 ## <a name="addremove-regions-from-your-database-account"></a>Veritabanı hesabınızda bölge ekleme/çıkarma işlemi gerçekleştirme
 
 ### <a id="add-remove-regions-via-portal"></a>Azure portal
 
-1. [Azure portalda](https://portal.azure.com) oturum açın. 
+1. [Azure portalda](https://portal.azure.com) oturum açın.
 
 1. Azure Cosmos hesabınıza gidin ve **verileri genel olarak Çoğalt** menüsünü açın.
 
-1. Bölge eklemek için, istediğiniz bölgeye karşılık gelen **+** etiketiyle haritadaki altıons 'yi seçin. Alternatif olarak, bir bölge eklemek için **+ bölge Ekle** seçeneğini belirleyip açılan menüden bir bölge seçin.
+1. Bölge eklemek için, istediğiniz bölge (ler) e ait **+** etiketiyle haritada altıons 'yi seçin. Alternatif olarak, bir bölge eklemek için **+ bölge Ekle** seçeneğini belirleyip açılan menüden bir bölge seçin.
 
 1. Bölgeleri kaldırmak için, bir veya daha fazla bölgeyi onay işaretleri içeren mavi altıgenler seçerek haritalardan kaldırın. Ya da sağ taraftaki bölgenin yanındaki "wastesepet" (🗑) simgesini seçin.
 
@@ -81,7 +81,7 @@ Lütfen bkz. [PowerShell ile birden çok yazma bölgelerini etkinleştirme](mana
 
 ### <a id="configure-multiple-write-regions-arm"></a>Resource Manager şablonu
 
-Hesap oluşturmak için kullanılan Kaynak Yöneticisi şablonu dağıtarak ve `enableMultipleWriteLocations: true` olarak ayarlandığında, bir hesap tek ASILDAN çoklu ana 'e geçirilebilir. Aşağıdaki Azure Resource Manager şablonu, iki bölgeyle SQL API için bir Azure Cosmos hesabı ve birden çok yazma konumu etkinleştirilmiş olan en az bir şablondur.
+Hesap oluşturmak için kullanılan Kaynak Yöneticisi şablonunu dağıtarak ve `enableMultipleWriteLocations: true`ayarlamak için bir hesap tek ASILDAN çoklu ana 'e geçirilebilir. Aşağıdaki Azure Resource Manager şablonu, iki bölgeyle SQL API için bir Azure Cosmos hesabı ve birden çok yazma konumu etkinleştirilmiş olan en az bir şablondur.
 
 ```json
 {
@@ -113,7 +113,7 @@ Hesap oluşturmak için kullanılan Kaynak Yöneticisi şablonu dağıtarak ve `
             "type": "Microsoft.DocumentDb/databaseAccounts",
             "kind": "GlobalDocumentDB",
             "name": "[parameters('name')]",
-            "apiVersion": "2015-04-08",
+            "apiVersion": "2019-08-01",
             "location": "[parameters('location')]",
             "tags": {},
             "properties": {
@@ -123,11 +123,13 @@ Hesap oluşturmak için kullanılan Kaynak Yöneticisi şablonu dağıtarak ve `
                 [
                     {
                         "locationName": "[parameters('primaryRegion')]",
-                        "failoverPriority": 0
+                        "failoverPriority": 0,
+                        "isZoneRedundant": false
                     },
                     {
                         "locationName": "[parameters('secondaryRegion')]",
-                        "failoverPriority": 1
+                        "failoverPriority": 1,
+                        "isZoneRedundant": false
                     }
                 ],
                 "enableMultipleWriteLocations": true

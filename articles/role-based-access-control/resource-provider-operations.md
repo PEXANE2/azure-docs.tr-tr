@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 37d895d5631cf8487549fd9a9ebfb9dc37209c60
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 6360c7ea5bfdfb2d348cc843288655ed904e6c74
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839609"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580783"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager kaynak sağlayıcısı işlemleri
 
@@ -1239,7 +1239,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Eylem | Microsoft. Biliveservices/accounts/regenerateKey/Action | Anahtarı yeniden oluştur |
 > | Eylem | Microsoft. Biliveservices/hesaplar/SKU 'lar/okuma | Mevcut bir kaynak için kullanılabilir SKU 'Ları okur. |
 > | DataAction | Microsoft. Biliveservices/accounts/SpellCheck/SpellCheck/Action | GET veya POST aracılığıyla bir yazım denetimi sorgusunun sonucunu elde edin. |
-> | DataAction | Microsoft. Biliveservices/accounts/TextAnalytics/Entities/Action | API, belirli bir belgedeki bilinen varlıkların ve genel adlandırılmış varlıkların (\"Person @ no__t-1, \"Location @ no__t-3, \"Organization @ no__t-5 vb.) bir listesini döndürür. |
+> | DataAction | Microsoft. Biliveservices/accounts/TextAnalytics/Entities/Action | API, belirli bir belgedeki bilinen varlıkların ve genel adlandırılmış varlıkların (\"kişi\", \"konum\", \"kuruluş\" vb.) listesini döndürür. |
 > | DataAction | Microsoft. Biliveservices/accounts/TextAnalytics/keyphrases/Action | API, giriş metnindeki başlıca konuşma noktalarını gösteren bir dize listesi döndürür. |
 > | DataAction | Microsoft. Biliveservices/accounts/TextAnalytics/Languages/eylem | API, algılanan dile ek olarak 0 ile 1 arasında bir sayısal puan döndürür. Puanın 1’e yakın olması, tanımlanan dilin %100 olasılıkla doğru olduğunu gösterir. Toplamda 120 dil desteklenir. |
 > | DataAction | Microsoft. Biliveservices/hesaplar/TextAnalytics/yaklaşım/eylem | API, 0 ile 1 arasında bir sayısal puan döndürür.<br>1 ' e yakın puan pozitif yaklaşımı, 0 ' a yakın puan negatif yaklaşımı gösterir.<br>0,5 puanı, yaklaşım eksikliğinden (ör.<br>bir FACTOID Bildirisi). |
@@ -3937,7 +3937,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Eylem | Microsoft. Network/virtualNetworks/alt ağlar/contextualServiceEndpointPolicies/Write | Bağlamsal hizmet uç noktası Ilkesi oluşturur veya var olan bir bağlamsal hizmet uç noktası Ilkesini güncelleştirir |
 > | Eylem | Microsoft. Network/virtualNetworks/alt ağlar/Sil | Bir sanal ağ alt ağını siler |
 > | Eylem | Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action | Bir sanal ağı birleştirir. Alertable değil. |
-> | Eylem | Microsoft. Network/virtualNetworks/alt ağlar/Jodavetli Aserviceendpoint/Action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
+> | Eylem | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
 > | Eylem | Microsoft. Network/virtualNetworks/alt ağlar/hazırlık Ilkeleri/eylemi | Gerekli ağ Ilkelerini uygulayarak bir alt ağ hazırlar |
 > | Eylem | Microsoft. Network/virtualNetworks/alt ağlar/okuma | Bir sanal ağ alt ağ tanımını alır |
 > | Eylem | Microsoft. Network/virtualNetworks/alt ağlar/hazırlık Ilkeleri/eylemi | Uygulanan ağ Ilkelerini kaldırarak bir alt ağın hazırlamasını kaldır |
@@ -4559,7 +4559,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/targetComputeSizes/Read | Herhangi bir hedef Işlem boyutunu okuyun |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Test Yük Devretmesi |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/test Failovercleanup/Action | Yük devretme sınamasını Temizleme |
-> | Eylem | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük Devretme |
+> | Eylem | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük devretme |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Updatebir Dıtems/Update, Ityservice/Action | Mobility hizmetini Güncelleştir |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Write | Korunan öğeleri oluşturma veya güncelleştirme |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/replicationProtectionContainerMappings/Delete | Tüm koruma kapsayıcısı eşlemelerini silme |
@@ -5373,7 +5373,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Eylem | Microsoft. SQL/Servers/syncAgents/Read | Eşitleme aracılarının listesini döndürün veya belirtilen eşitleme aracısının özelliklerini alır. |
 > | Eylem | Microsoft. SQL/Servers/syncAgents/Write | Belirtilen parametrelerle bir eşitleme Aracısı oluşturur veya belirtilen eşitleme aracısının özelliklerini güncelleştirir. |
 > | Eylem | Microsoft. SQL/Servers/tdeCertificates/ACTION | TDE sertifikası oluştur/güncelleştir |
-> | Eylem | Microsoft. SQL/Servers/kullanımlar/Read | Sunucu DTU kotasını ve geçerli DTU 'ı sunucu içindeki tüm veritabanları tarafından geri alma |
+> | Eylem | Microsoft. SQL/Servers/kullanımlar/Read | Sunucu DTU kotasını ve geçerli DTU tüketimini sunucu içindeki tüm veritabanlarına göre döndür |
 > | Eylem | Microsoft. SQL/Servers/virtualNetworkRules/Delete | Var olan bir sanal ağ kuralını siler |
 > | Eylem | Microsoft. SQL/Servers/virtualNetworkRules/Read | Sanal ağ kurallarının listesini döndürün veya belirtilen sanal ağ kuralı için özellikleri alır. |
 > | Eylem | Microsoft. SQL/Servers/virtualNetworkRules/Write | Belirtilen parametrelere sahip bir sanal ağ kuralı oluşturur veya belirtilen sanal ağ kuralı için özellikleri veya etiketleri güncelleştirir. |
@@ -5738,7 +5738,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Eylem türü | İşlem | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Subscription/Cancel/ACTION | Aboneliği iptal eder |
-> | Eylem | Microsoft. Subscription/CreateSubscription/eylem | Bir Azure aboneliği oluşturun |
+> | Eylem | Microsoft. Subscription/CreateSubscription/eylem | Azure aboneliği oluşturma |
 > | Eylem | Microsoft. Subscription/Register/ACTION | Aboneliği Microsoft. Subscription kaynak sağlayıcısına kaydeder |
 > | Eylem | Microsoft. abonelik/yeniden adlandırma/eylem | Aboneliği yeniden adlandırır |
 > | Eylem | Microsoft. Subscription/SubscriptionDefinitions/okuma | Bir yönetim grubu içinde bir Azure abonelik tanımı alın. |
