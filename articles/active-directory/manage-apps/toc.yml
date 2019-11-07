@@ -5,7 +5,7 @@
   items:
     - name: Bulut uygulaması yönetimi ve çoklu oturum açma nedir?
       href: what-is-application-management.md
-    - name: Otomatik kullanıcı sağlama nedir?
+    - name: Uygulama sağlama nedir?
       href: user-provisioning.md
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu nedir?
       href: what-is-application-proxy.md
@@ -17,7 +17,7 @@
       href: view-applications-portal.md
 - name: Öğreticiler
   items:
-    - name: SaaS uygulama öğreticileri
+    - name: 'Tümleşik galeri uygulamaları (örneğin ServiceNow, Salesforce, Dropbox)'
       href: /azure/active-directory/saas-apps/
     - name: Uygulama Ara Sunucusu üzerinden şirket içi uygulama ekleme
       href: application-proxy-add-on-premises-application.md
@@ -66,12 +66,12 @@
               href: howto-saml-token-encryption.md
             - name: Son kullanıcı portalları
               href: end-user-experiences.md
-    - name: Otomatik kullanıcı sağlama
+    - name: Uygulama sağlama (SCIM)
       items:
-        - name: Otomatik kullanıcı sağlama dağıtımı planlama
-          href: plan-auto-user-provisioning.md
         - name: SCIM etkin uygulamalar için otomatik sağlama
           href: use-scim-to-provision-users-and-groups.md
+        - name: Otomatik kullanıcı sağlama dağıtımı planlama
+          href: plan-auto-user-provisioning.md
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
       items:
         - name: Uygulama Ara Sunucusu
@@ -223,23 +223,21 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Self servis uygulama erişiminin kullanırken hata oluşuyor
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: Otomatik kullanıcı sağlama
+    - name: Uygulama sağlama (SCIM)
       items:
         - name: Kullanıcı sağlamayı yapılandırma
           items:
-            - name: Galeri uygulamaları için kullanıcı sağlama
+            - name: El ile - otomatik sağlama karşılaştırması
               href: application-provisioning-config-how-to.md
-            - name: Çok kiracılı uygulamalar için otomatik kullanıcı sağlamayı etkinleştirme
-              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: Otomatik kullanıcı sağlamayı yapılandırma
               href: configure-automatic-user-provisioning-portal.md
-            - name: Uygulama özniteliklerini özelleştirme
+            - name: Öznitelik eşlemelerini özelleştirme
               href: Customize-application-attributes.md
-            - name: Kapsam belirleme filtreleri
+            - name: Sağlanacak kullanıcıların veya grupların kapsamını belirleme
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Kapsam dışı kullanıcılar için silme işlemini atlama
               href: skip-out-of-scope-deletions.md
-            - name: Sağlama durumunu denetleme
+            - name: Sağlama durumunu ve performansını izleme
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Otomatik kullanıcı hazırlama raporu
               href: check-status-user-account-provisioning.md
@@ -249,20 +247,20 @@
           items:
             - name: Kullanıcı hazırlama sorunlarını giderme
               href: application-provisioning-config-problem.md
-            - name: Karantina durumu
+            - name: Yetkilendirme sorunu (yönetici kimlik bilgileri kaydedilemiyor)
+              href: application-provisioning-config-problem-storage-limit.md
+            - name: Kullanıcılar sağlanmıyor
+              href: application-provisioning-config-problem-no-users-provisioned.md
+            - name: Yanlış kullanıcılar sağlanıyor
+              href: application-provisioning-config-problem-wrong-users-provisioned.md
+            - name: Karantinadaki sağlama işi
               href: application-provisioning-quarantine-status.md
+            - name: Eksik kaynak özniteliği
+              href: user-provisioning-sync-attributes-for-mapping.md
+            - name: Sağlama işi yavaş
+              href: application-provisioning-when-will-provisioning-finish.md
             - name: Sağlama günlükleri
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: Eşleme için özniteliği eşitleme - galeri uygulaması
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Saatler sürüyor - galeri uygulaması
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Kullanıcı sağlama galeri uygulamasını yapılandırırken yönetici kimlik bilgilerini kaydetme sorunu
-              href: application-provisioning-config-problem-storage-limit.md
-            - name: Kullanıcılar sağlanmıyor - galeri uygulaması
-              href: application-provisioning-config-problem-no-users-provisioned.md
-            - name: Yanlış kullanıcılar sağlanıyor - galeri uygulaması
-              href: application-provisioning-config-problem-wrong-users-provisioned.md
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
       items:
         - name: Bağlayıcıları yapılandırma
@@ -357,10 +355,12 @@
               href: application-proxy-understand-cors-issues.md
 - name: Başvuru
   items:
-    - name: Otomatik kullanıcı sağlama
+    - name: Uygulama sağlama (SCIM)
       items:
         - name: Öznitelik eşlemeleri için ifadeler yazma
           href: functions-for-customizing-application-data.md
+        - name: Sağlama yöntemini seçme
+          href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Azure AD Connect Sağlama Aracısı
       items:
         - name: Sağlama Aracısı sürüm geçmişi

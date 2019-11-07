@@ -245,7 +245,7 @@
             - name: Apache Spark bağlayıcısını kullanan Azure SQL Veritabanı
               href: /azure/databricks/data/data-sources/sql-databases-azure
               maintainContext: true
-            - name: Azure blob depolama
+            - name: Azure Blob depolama
               href: /azure/databricks/data/data-sources/azure/azure-storage
               maintainContext: true
             - name: Azure Data Lake Storage Gen2
@@ -260,7 +260,7 @@
             - name: Cosmos DB
               href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
               maintainContext: true
-            - name: SQL Veri Ambarı
+            - name: Azure SQL Veri Ambarı
               href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
               maintainContext: true
             - name: İkili dosyalar
@@ -272,7 +272,7 @@
             - name: Couchbase
               href: /azure/databricks/data/data-sources/couchbase
               maintainContext: true
-            - name: Elastik arama
+            - name: ElasticSearch
               href: /azure/databricks/data/data-sources/elasticsearch
               maintainContext: true
             - name: Görüntüler
@@ -708,14 +708,17 @@
             - name: Karar ağaçları örneği
               href: /azure/databricks/applications/machine-learning/mllib/decision-trees
               maintainContext: true
-            - name: MLib işlem hatları ve Yapılandırılmış Akış
+            - name: MLlib işlem hatları ve Yapılandırılmış Akış
               href: /azure/databricks/applications/machine-learning/mllib/mllib-pipelines-and-stuctured-streaming
               maintainContext: true
-            - name: Gelişmiş MLib örneği
+            - name: Gelişmiş MLlib örneği
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
         - name: Otomatik ML
           items:
+            - name: Otomatik ML'ye genel bakış
+              href: /azure/databricks/applications/machine-learning/automl/index
+              maintainContext: true
             - name: Hyperopt
               items:
                 - name: Hyperopt'a genel bakış
@@ -730,8 +733,16 @@
                 - name: Dağıtılmış Hyperopt kullanarak Model Araması
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-model-selection
                   maintainContext: true
-            - name: MLib ve otomatik MLflow izleme
+            - name: MLlib ve otomatik MLflow izleme
               href: /azure/databricks/applications/machine-learning/automl/mllib-mlflow-integration
+              maintainContext: true
+        - name: ML modellerini içeri ve dışarı aktarma
+          items:
+            - name: İçeri ve dışarı aktarmaya genel bakış
+              href: /azure/databricks/applications/machine-learning/model-export-import/index
+              maintainContext: true
+            - name: MLeap ML modelini dışarı aktarma
+              href: /azure/databricks/applications/machine-learning/model-export-import/mleap-model-export
               maintainContext: true
         - name: Üçüncü taraf makine öğrenmesi tümleştirmesi
           href: /azure/databricks/applications/machine-learning/third-party/index
@@ -826,33 +837,39 @@
         - name: MLflow'a genel bakış
           href: /azure/databricks/applications/mlflow/index
           maintainContext: true
-        - name: MLflow'u kullanmaya başlama
-          href: /azure/databricks/applications/mlflow/quick-start
-          maintainContext: true
-        - name: MLflow Java ve Scala'yı kullanmaya başlama
-          href: /azure/databricks/applications/mlflow/quick-start-java-scala
-          maintainContext: true
-        - name: MLflow Python'ı kullanmaya başlama
-          href: /azure/databricks/applications/mlflow/quick-start-python
-          maintainContext: true
-        - name: MLflow R'yi kullanmaya başlama
-          href: /azure/databricks/applications/mlflow/quick-start-r
-          maintainContext: true
+        - name: Başlarken
+          items:
+            - name: MLflow'u kullanmaya başlama
+              href: /azure/databricks/applications/mlflow/quick-start
+              maintainContext: true
+            - name: MLflow Java ve Scala'yı kullanmaya başlama
+              href: /azure/databricks/applications/mlflow/  quick-start-java-scala
+              maintainContext: true
+            - name: MLflow Python'ı kullanmaya başlama
+              href: /azure/databricks/applications/mlflow/  quick-start-python
+              maintainContext: true
+            - name: MLflow R'yi kullanmaya başlama
+              href: /azure/databricks/applications/mlflow/quick-start-r
+              maintainContext: true
         - name: Makine öğrenmesi eğitim çalıştırmalarını izleme
-          href: /azure/databricks/applications/mlflow/tracking
-          maintainContext: true
-        - name: MLflow izleme örnekleri
-          href: /azure/databricks/applications/mlflow/tracking-examples
-          maintainContext: true
-        - name: İzlemeye dışarıdan erişme
-          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
-          maintainContext: true
+          items:
+            - name: İzleme’ye genel bakış
+              href: /azure/databricks/applications/mlflow/tracking
+              maintainContext: true
+            - name: MLflow izleme örnekleri
+              href: /azure/databricks/applications/mlflow/  tracking-examples
+              maintainContext: true
+            - name: İzlemeye dışarıdan erişme
+              href: /azure/databricks/applications/mlflow/  access-hosted-tracking-server
+              maintainContext: true
         - name: 'Modelleri kaydetme, yükleme ve dağıtma'
-          href: /azure/databricks/applications/mlflow/models
-          maintainContext: true
-        - name: MLflow modeli örnekleri
-          href: /azure/databricks/applications/mlflow/model-examples
-          maintainContext: true
+          items:
+            - name: 'Kaydetme, yükleme ve dağıtmaya genel bakış'
+              href: /azure/databricks/applications/mlflow/models
+              maintainContext: true
+            - name: MLflow modeli örnekleri
+              href: /azure/databricks/applications/mlflow/  model-examples
+              maintainContext: true
         - name: MLflow projeleriyle çalıştırmaları yeniden oluşturma
           href: /azure/databricks/applications/mlflow/projects
           maintainContext: true
@@ -880,9 +897,6 @@
         - name: Genomiks’e genel bakış
           href: /azure/databricks/applications/genomics/index
           maintainContext: true
-        - name: Genomics ETL'ye genel bakış
-          href: /azure/databricks/applications/genomics/etl/index
-          maintainContext: true
         - name: İkincil analiz
           items:
             - name: İkincil analize genel bakış
@@ -908,6 +922,9 @@
               maintainContext: true
         - name: ETL
           items:
+            - name: Genomics ETL'ye genel bakış
+              href: /azure/databricks/applications/genomics/etl/index
+              maintainContext: true
             - name: Apache Spark SQL ile Değişken GÇ
               href: /azure/databricks/applications/genomics/etl/variant-data
               maintainContext: true
@@ -1211,10 +1228,7 @@
               maintainContext: true
             - name: JSON'da kodlama algılama hatası
               href: /azure/databricks/kb/data-sources/json-unicode
-              maintainContext: true
-            - name: JDBC sorgu seçeneği Oracle Database için çalışmıyor
-              href: /azure/databricks/kb/data-sources/query-option-not-work-oracle
-              maintainContext: true
+              maintainContext: true j
         - name: DBFS
           items:
             - name: DBFS kökünde depolanan nesneler okunamıyor
@@ -1293,6 +1307,9 @@
               maintainContext: true
             - name: İş MaxResultSize ile başarısız oldu
               href: /azure/databricks/kb/jobs/job-fails-maxresultsize-exception
+              maintainContext: true
+            - name: Tek sefer etkili olmayı sağlama
+              href: /azure/databricks/kb/jobs/jobs-idempotency
               maintainContext: true
         - name: Kitaplıklar
           items:

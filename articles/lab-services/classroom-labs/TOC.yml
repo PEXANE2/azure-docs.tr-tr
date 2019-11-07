@@ -52,6 +52,8 @@
       items:
         - name: Sınıf laboratuvarları oluşturma ve yönetme
           href: how-to-manage-classroom-labs.md
+        - name: Panoyu kullanma
+          href: use-dashboard.md
         - name: 'Şablonları ayarlama, özelleştirme ve yayımlama'
           href: how-to-create-manage-template.md
         - name: Sanal makine havuzunu ayarlama ve yönetme
@@ -80,6 +82,8 @@
   items:
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/labservices/'
+    - name: Az.LabServices PowerShell modülü (önizleme)
+      href: reference-powershell-module.md
 - name: Kaynaklar
   items:
     - name: Azure güncelleştirmeleri

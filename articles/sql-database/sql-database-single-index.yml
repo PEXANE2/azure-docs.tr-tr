@@ -3,7 +3,7 @@ documentType: LandingData
 title: 'Azure SQL Veritabanı: Tek veritabanı'
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: 'Azure SQL Veritabanı belgeleri - öğreticiler, API başvurusu'
+  title: Azure SQL Veritabanı belgeleri - tek veritabanı
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
   requires-business-manager-approval: false

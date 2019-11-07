@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure HPC Önbelleği Önizleme belgeleri
+title: Azure HPC Önbelleği belgeleri
 summary: Okuma yoğunluklu yüksek performanslı bilgi işlem (HPC) iş yükleri için dosya erişimini hızlandırmak üzere Azure HPC Önbelleği kullanın
 metadata:
   title: Microsoft Azure HPC Önbelleği
@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: ekpgh
   ms.author: rohogue
-  ms.date: 10/21/2019
-  ms.openlocfilehash: 28e120f271fd6d700649125f86d5d8569cccd7df
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.date: 10/30/2019
+  ms.openlocfilehash: 5bccf917762845df962e5bbb35b597739bae6d2e
+  ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72930853"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73620166"
 landingContent:
 - title: Azure HPC Önbelleği hakkında
   linkLists:
@@ -49,6 +49,8 @@ landingContent:
     links:
     - text: Destek bileti açma
       url: hpc-cache-support-ticket.md
+    - text: Depolama hedefini düzenleme
+      url: hpc-cache-edit-storage.md
   - linkListType: concept
     links:
     - text: Bölgesel kesintiden kurtulma

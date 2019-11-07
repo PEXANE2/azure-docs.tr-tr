@@ -121,11 +121,17 @@
     - name: U-SQL geliştiricileri için Apache Spark'ı anlama
       items:
         - name: U-SQL geliştiricileri için Apache Spark'ı anlama
-          href: data-lake-analytics-understand-spark-for-usql-developers.md
+          href: understand-spark-for-usql-developers.md
         - name: Apache Spark veri biçimlerini anlama
-          href: data-lake-analytics-understand-spark-data-formats.md
+          href: understand-spark-data-formats.md
         - name: Apache Spark kod kavramlarını anlama
-          href: data-lake-analytics-understand-spark-code-concepts.md
+          href: understand-spark-code-concepts.md
+    - name: U-SQL işlerinin sorunlarını giderme
+      items:
+        - name: U-SQL çalışma zamanı hatalarını giderme
+          href: runtime-troubleshoot.md
+        - name: .NET yükseltmesi sorunlarını giderme
+          href: dotnet-upgrade-troubleshoot.md
 - name: Başvuru
   items:
     - name: Azure PowerShell

@@ -174,7 +174,7 @@
 - name: Önyükleme hataları
   href: boot-error-troubleshoot.md
   items:
-    - name: Azure Sanal Makine önyükleme hatası
+    - name: Grub Rescue
       href: troubleshoot-vm-boot-error.md
     - name: Önyükleme tanılamaları
       href: boot-diagnostics.md

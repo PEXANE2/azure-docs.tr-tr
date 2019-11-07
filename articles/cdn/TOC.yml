@@ -26,6 +26,8 @@
       href: cdn-custom-ssl.md
     - name: Önbelleğe alma kuralları ayarlama
       href: cdn-caching-rules-tutorial.md
+    - name: Standart Kural Altyapısını kullanarak HTTPS'yi zorlama
+      href: cdn-standard-rules-engine.md
 - name: Örnekler
   items:
     - name: Kod örnekleri
@@ -134,6 +136,13 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: Başvuru
   items:
+    - name: Microsoft standart kural altyapısı başvurusu
+      href: cdn-standard-rules-engine-reference.md
+      items:
+        - name: Standart Kural altyapısı eşleştirme koşulları
+          href: cdn-standard-rules-engine-match-conditions.md
+        - name: Standart Kural altyapısı eylemleri
+          href: cdn-standard-rules-engine-actions.md
     - name: Verizon Premium kural altyapısı başvurusu
       href: cdn-verizon-premium-rules-engine-reference.md
       items:

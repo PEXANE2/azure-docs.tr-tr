@@ -518,6 +518,8 @@
           href: data-movement-security-considerations.md
         - name: Kimlik bilgilerini Azure Key Vault’ta depolama
           href: store-credentials-in-key-vault.md
+        - name: İşlem hattı etkinliklerinde Azure Key Vault gizli dizilerini kullanma
+          href: how-to-use-azure-key-vault-secrets-pipeline-activities.md
         - name: Kimlik bilgilerini şirket içinde barındırılan tümleştirme çalışma zamanı için şifreleme
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Data Factory için yönetilen kimlik

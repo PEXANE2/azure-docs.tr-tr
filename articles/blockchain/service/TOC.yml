@@ -57,6 +57,8 @@
       href: data-manager-portal.md
     - name: Veri Yöneticisi'ni Yapılandırma - CLI
       href: data-manager-cli.md
+    - name: Verileri Cosmos DB’ye yayımlama
+      href: data-manager-cosmosdb.md
 - name: Kaynaklar
   items:
     - name: Blok Zinciri REST API

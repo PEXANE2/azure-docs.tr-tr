@@ -41,7 +41,7 @@
         - name: Özellikler Eylem ve Bağlam
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
-        - name: Etkin öğrenme
+        - name: Etkin olan ve olmayan olaylar
           href: concept-active-learning.md
           displayName: 'active, inactive'
         - name: Ödüller

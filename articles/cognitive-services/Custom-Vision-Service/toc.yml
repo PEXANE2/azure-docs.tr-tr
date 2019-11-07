@@ -56,7 +56,7 @@
       href: getting-started-improving-your-classifier.md
     - name: Tahmin API’sini kullanma
       href: use-prediction-api.md
-    - name: Önerilen etiketleri kullanma
+    - name: Akıllı Etiketçiyi kullanma
       href: suggested-tags.md
     - name: Modelleri dışarı aktarma
       items:

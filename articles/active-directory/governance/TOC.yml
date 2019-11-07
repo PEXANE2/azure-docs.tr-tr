@@ -84,6 +84,14 @@
               href: entitlement-management-request-access.md
     - name: Erişim gözden geçirmeleri
       items:
+        - name: Erişim paketleri
+          items:
+            - name: Erişim gözden geçirmesi oluşturma
+              href: entitlement-management-access-reviews-create.md
+            - name: Erişimi gözden geçirme
+              href: entitlement-management-access-reviews-review-access.md
+            - name: Kendi erişiminizi gözden geçirme
+              href: entitlement-management-access-reviews-self-review.md
         - name: Gruplar ve uygulamalar
           items:
             - name: Erişim gözden geçirmesi oluşturma

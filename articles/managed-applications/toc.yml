@@ -31,6 +31,8 @@
       href: publish-marketplace-app.md
     - name: Özel sağlayıcı ile yönetilen uygulama oluşturma
       href: tutorial-create-managed-app-with-custom-provider.md
+    - name: Özel sağlayıcılarla kaynak ekleme
+      href: tutorial-custom-providers-resource-onboarding.md
 - name: Örnekler
   items:
     - name: Azure CLI
@@ -45,6 +47,10 @@
       href: custom-providers-overview.md
     - name: Tanım yapıtını görüntüleme
       href: concepts-view-definition.md
+    - name: Rol tanımı yapıtı
+      href: concepts-custom-role-definition.md
+    - name: Kaynak ekleme
+      href: concepts-custom-providers-resourceonboarding.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Özel sağlayıcılar

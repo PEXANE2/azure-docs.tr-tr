@@ -345,6 +345,8 @@
           maintainContext: true
         - name: Dağıtım Merkezi Başlatıcısı
           href: deployment-center-launcher.md
+        - name: Kubernetes için GitHub Eylemleri
+          href: ../aks/kubernetes-action.md
     - name: Sorun giderme
       items:
         - name: Genel sorunlar

@@ -7,10 +7,14 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Cihaz oluşturmak amacıyla cihaz yetenek modelini kullanma
+    - name: Cihaz oluşturma - Windows
       href: quickstart-create-pnp-device.md
-    - name: IoT Hub’a cihaz bağlama
+    - name: Cihaz oluşturma - Linux
+      href: quickstart-create-pnp-device-linux.md
+    - name: IoT Hub’a cihaz bağlama - Windows
       href: quickstart-connect-pnp-device.md
+    - name: IoT Hub’a cihaz bağlama - Linux
+      href: quickstart-connect-pnp-device-linux.md
     - name: IoT Central’a cihaz bağlama
       href: ../iot-central/core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Çözümünüzde bir cihaza bağlanma

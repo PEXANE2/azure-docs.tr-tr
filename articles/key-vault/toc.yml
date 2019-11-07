@@ -7,17 +7,21 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Gizli dizi ayarlama ve alma - CLI
+    - name: CLI
       href: quick-create-cli.md
-    - name: Gizli dizi ayarlama ve alma - Powershell
+    - name: PowerShell
       href: quick-create-powershell.md
-    - name: Gizli dizi ayarlama ve alma - Portal
+    - name: Portal
       href: quick-create-portal.md
-    - name: Gizli dizi ayarlama ve alma - .NET
+    - name: Python
+      href: quick-create-python.md
+    - name: .NET (SDK v4)
       href: quick-create-net.md
-    - name: Gizli dizi ayarlama ve alma - Node.js
+    - name: .NET (SDK v3)
+      href: quick-create-net-v3.md
+    - name: Node.js
       href: quick-create-node.md
-    - name: Gizli dizi ayarlama ve alma - şablon
+    - name: Azure Resource Manager şablonu
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: Öğreticiler

@@ -30,6 +30,8 @@
                   href: hpc-cache-ingest-msrsync.md
                 - name: Önbelleği el ile dosya kopyalama ile doldurma
                   href: hpc-cache-ingest-manual.md
+        - name: Depolama hedeflerini düzenleme
+          href: hpc-cache-edit-storage.md
     - name: Önbelleğe bağlanma
       href: hpc-cache-mount.md
     - name: Önbelleği yönetme

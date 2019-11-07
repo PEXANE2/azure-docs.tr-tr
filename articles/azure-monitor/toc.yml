@@ -295,7 +295,7 @@
                 - name: Özel durumlar
                   href: app/asp-net-exceptions.md
                 - name: Günlük izlemeleri
-                  href: app/java-trace-logs.md
+                  href: app/asp-net-trace-logs.md
                 - name: UNIX ölçümleri
                   href: app/java-collectd.md
                 - name: Bağımlılıklar
@@ -318,6 +318,8 @@
                   href: app/opencensus-python.md
                 - name: Bağımlılıklar
                   href: app/opencensus-python-dependency.md
+                - name: İstekler
+                  href: app/opencensus-python-request.md
             - name: Web sayfaları
               items:
                 - name: İstemci tarafı JavaScript
@@ -593,26 +595,39 @@
         - name: Kaynak günlükleri
           items:
             - name: Genel Bakış
+              displayname: Resource logs
               href: platform/resource-logs-overview.md
             - name: Azure İzleyici günlüklerinde toplama
+              displayname: Resource logs
               href: platform/resource-logs-collect-workspace.md
             - name: Depolamaya arşivleme
+              displayname: Resource logs
               href: platform/resource-logs-collect-storage.md
             - name: Event Hubs’a akış sağlama
+              displayname: Resource logs
               href: platform/resource-logs-stream-event-hubs.md
         - name: Etkinlik günlüğü
           items:
             - name: Genel Bakış
+              displayname: Activity log
               href: platform/activity-logs-overview.md
+            - name: Tanılama ayarıyla toplama
+              displayname: Activity log
+              href: platform/diagnostic-settings-subscription.md
             - name: Görüntüleme ve alma
+              displayname: Activity log
               href: platform/activity-log-view.md
             - name: Toplama ve analiz etme
+              displayname: Activity log
               href: platform/activity-log-collect.md
             - name: Kiracılar genelinde toplama
+              displayname: Activity log
               href: platform/activity-log-collect-tenants.md
             - name: Dışarı Aktarma
+              displayname: Activity log
               href: platform/activity-log-export.md
             - name: Şema
+              displayname: Activity log
               href: platform/activity-log-schema.md
         - name: Tanılama ayarları
           items:
@@ -621,6 +636,7 @@
             - name: Kaynak Yöneticisi ile tanılama ayarı oluşturma
               href: platform/diagnostic-settings-template.md
             - name: Blob depolama biçimiyle değiştirme
+              displayname: Diagnostic settings
               href: platform/resource-logs-blob-format.md
         - name: Event Hubs’a veri akışı sağlama
           href: platform/stream-monitoring-data-event-hubs.md

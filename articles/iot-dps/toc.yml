@@ -141,6 +141,8 @@
       href: how-to-legacy-device-symm-key.md
     - name: Geliştirme için SDK araçlarını kullanma
       href: how-to-use-sdk-tools.md
+    - name: Cihazlardan ek veriler gönderme
+      href: how-to-send-additional-data.md
     - name: Sorun giderme
       href: how-to-troubleshoot-dps.md
 - name: Başvuru

@@ -88,10 +88,6 @@
           href: ingest-data-logstash.md
         - name: Azure Data Factory kullanarak veri kopyalama
           href: data-factory-load-data.md
-    - name: Dağıtma
-      items:
-        - name: DevOps görevi
-          href: devops.md
     - name: Verileri sorgulama
       items:
         - name: Sorgu yazma
@@ -136,6 +132,8 @@
           href: tableau.md
         - name: Sisense
           href: sisense.md
+        - name: Redash
+          href: redash.md
     - name: Yönetme
       items:
         - name: Küme
@@ -166,6 +164,10 @@
               href: delete-data.md
             - name: Yinelenen verilerle ilgilenme
               href: dealing-with-duplicates.md
+    - name: Dağıtma
+      items:
+        - name: Kümenizi sanal ağınızda dağıtma
+          href: vnet-deployment.md
     - name: İzleme
       items:
         - name: Veri alımını izlemek için tanılama günlüklerini kullanma
@@ -186,6 +188,8 @@
           href: connect-from-databricks.md
         - name: Jupyter Notebook ve Kqlmagic’te verileri analiz etme
           href: kqlmagic.md
+        - name: Azure Pipelines
+          href: devops.md
     - name: Sorun giderme
       items:
         - name: Küme oluşturma
@@ -220,9 +224,13 @@
           href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto'
     - name: Ürün geri bildirimi
       href: 'https://aka.ms/adefeedback'
-    - name: Fiyatlandırma
-      href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
-    - name: Maliyet Tahmin Aracı
-      href: 'https://aka.ms/adecostestimator'
+    - name: Fiyatlandırma ve faturalandırma
+      items:
+        - name: Fiyatlandırma sayfası
+          href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
+        - name: Maliyet tahmin aracı
+          href: 'https://aka.ms/adecostestimator'
+        - name: Ayrılmış kapasite
+          href: pricing-reserved-capacity.md
     - name: Hizmet güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=data-explorer'

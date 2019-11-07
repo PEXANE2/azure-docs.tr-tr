@@ -204,22 +204,20 @@
       href: /cli/azure/storage
     - name: .NET
       items:
-        - name: 'Bloblar, Kuyruklar ve Dosyalar'
-          href: /dotnet/api/overview/azure/storage/client
+        - name: Kuyruklar (sürüm 11.x)
+          href: /dotnet/api/microsoft.azure.storage.queue
         - name: Depolama Kaynak Sağlayıcısı
           href: /dotnet/api/overview/azure/storage/management
     - name: Java
       items:
-        - name: 'Bloblar, Kuyruklar ve Dosyalar (sürüm 12.x - önizleme)'
-          href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
-        - name: 'Bloblar, Kuyruklar ve Dosyalar (sürüm 8)'
-          href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+        - name: Kuyruklar (sürüm 8.x)
+          href: /java/api/com.microsoft.azure.storage.queue
         - name: Depolama Kaynak Sağlayıcısı
           href: /java/api/overview/azure/storage/management
-    - name: Node.js
-      href: /javascript/api/overview/azure/storage
-    - name: Python
-      href: /python/api/overview/azure/storage
+    - name: JavaScript (sürüm 10.x)
+      href: /javascript/api/@azure/storage-queue
+    - name: Python (sürüm 2.x)
+      href: /python/api/azure-storage-queue/?view=azure-python
     - name: REST
       items:
         - name: 'Bloblar, Kuyruklar, Tablolar ve Dosyalar'

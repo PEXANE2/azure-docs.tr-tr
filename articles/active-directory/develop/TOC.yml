@@ -436,7 +436,7 @@
                   href: msal-js-prompt-behavior.md
             - name: iOS ve macOS için MSAL
               items:
-                - name: iOS ve macOS için Microsoft Kimlik Doğrulaması Kitaplığı farkları
+                - name: iOS ve macOS için MSAL farklılıkları
                   href: msal-differences-ios-macos.md
                 - name: Anahtarlık yapılandırma
                   href: howto-v2-keychain-objc.md
