@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: bir yük devretme grubuna Azure SQL veritabanı tek veritabanı ekleme | Microsoft Docs'
+title: 'Öğretici: bir yük devretme grubuna Azure SQL veritabanı tek veritabanı ekleme '
 description: Azure portal, PowerShell veya Azure CLı kullanarak bir yük devretme grubuna Azure SQL veritabanı tek veritabanı ekleme.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 106351487980d2f76e9122bc7423114e65593b15
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 022faa04db6f9699d5d80918087c62c69b0fb5fe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933234"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687288"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna Azure SQL veritabanı tek veritabanı ekleme
 
@@ -27,7 +27,7 @@ Azure SQL veritabanı tek veritabanı için bir yük devretme grubu yapılandır
 > - İki mantıksal SQL Server arasında tek bir veritabanı için [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturun.
 > - Yük devretme testi.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun: 

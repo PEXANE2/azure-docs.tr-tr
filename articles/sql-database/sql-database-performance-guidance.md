@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı performans ayarlama Kılavuzu | Microsoft Docs
+title: Azure SQL veritabanı performans ayarlama Kılavuzu
 description: Azure SQL veritabanı sorgu performansınızı el ile ayarlama önerilerini kullanma hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 4ea5d6c734659d36822f62237a42a8fbe332c996
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 971b35838f370f31d6e2d2da06dfdbced2fafb02
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567110"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687684"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Azure SQL veritabanı 'nda el ile ayarlama sorgusu performansı
 
@@ -206,11 +206,11 @@ Bu örneğin her bir bölümü parametreli INSERT ifadesini 1.000 kez çalışt�
 
 Yordamı 1 değerini kullanarak yürütüyoruz, sonuçta elde edilen plan 1 değeri için idealdir, ancak tablodaki diğer tüm değerler için en uygun alt değerdir. Sonuç büyük olasılıkla, her bir planı daha yavaş gerçekleştirdiğinden ve daha fazla kaynak kullandığından, her planı rastgele olarak seçmeniz durumunda istediğiniz şeydir.
 
-Testini `SET STATISTICS IO` olarak`ON`ayarla ' yı çalıştırırsanız, bu örnekteki mantıksal tarama işi arka planda yapılır. Plan tarafından gerçekleştirilen 1.148 okuma olduğunu (ortalama durum yalnızca bir satır döndürmek ise verimsiz olduğunu) görebilirsiniz:
+`SET STATISTICS IO` `ON`olarak ayarlanan testi çalıştırırsanız, bu örnekteki mantıksal tarama çalışması arka planda yapılır. Plan tarafından gerçekleştirilen 1.148 okuma olduğunu (ortalama durum yalnızca bir satır döndürmek ise verimsiz olduğunu) görebilirsiniz:
 
 ![Mantıksal tarama kullanarak sorgu ayarlama](./media/sql-database-performance-guidance/query_tuning_2.png)
 
-Örneğin ikinci bölümü, derleme işlemi sırasında iyileştiricinin belirli bir değeri kullanmasını söylemek için bir sorgu ipucu kullanır. Bu durumda, sorgu işlemcisini parametre olarak geçirilen değeri yok saymaya zorlar ve bunun yerine varsayabilirsiniz `UNKNOWN`. Bu, tabloda ortalama sıklık değeri olan bir değere başvurur (eğriliği yok sayar). Elde edilen plan, bu örnekte daha hızlı olan ve ortalama olarak daha az kaynak kullanan bir arama tabanlı plandır:
+Örneğin ikinci bölümü, derleme işlemi sırasında iyileştiricinin belirli bir değeri kullanmasını söylemek için bir sorgu ipucu kullanır. Bu durumda, sorgu işlemcisini parametre olarak geçirilen değeri yok saymaya zorlar ve bunun yerine `UNKNOWN`varsay. Bu, tabloda ortalama sıklık değeri olan bir değere başvurur (eğriliği yok sayar). Elde edilen plan, bu örnekte daha hızlı olan ve ortalama olarak daha az kaynak kullanan bir arama tabanlı plandır:
 
 ![Sorgu ipucu kullanarak sorgu ayarlama](./media/sql-database-performance-guidance/query_tuning_3.png)
 

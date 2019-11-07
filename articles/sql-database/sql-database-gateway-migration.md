@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı için ağ geçidi trafik geçişi bildirimi | Microsoft Docs
+title: Azure SQL veritabanı için ağ geçidi trafik geçişi bildirimi
 description: Makale, kullanıcılara Azure SQL veritabanı ağ geçitleri IP adreslerini geçirme hakkında bildirim sağlar
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: a2064e0012abea237c1b4c0c6f7e35119c1aeff5
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 37c6c8e0f26d0281c3f6e76cb891fe14eb2ef04e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686814"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690012"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 
@@ -26,17 +26,17 @@ Müşteriler, e-posta ile ve her bölgede kullanılabilir olan ağ geçitlerinde
 ## <a name="impact-of-this-change"></a>Bu değişikliğin etkisi
 
 Trafik geçişinin yeni ağ geçitlerine ilk **turu, aşağıdaki bölgelerde 14 ekim 2019** için zamanlanır:
-- Brezilya Güney
+- Güney Brezilya
 - Batı ABD
 - Batı Avrupa
 - Doğu ABD
 - Orta ABD
 - Güneydoğu Asya
-- Güney Orta ABD
+- Orta Güney ABD
 - Kuzey Avrupa
 - Orta Kuzey ABD
-- Batı Japonya
-- Doğu Japonya
+- Japonya Batı
+- Japonya Doğu
 - Doğu ABD 2
 - Doğu Asya
 
@@ -56,7 +56,7 @@ TCP bağlantı noktası 1433 ' deki bölgedeki tüm [Azure SQL veritabanı ağ G
 
 4,0 sürümünün altında Microsoft JDBC sürücüsü kullanılarak gerçekleştirilen uygulamalardan yapılan bağlantılar sertifika doğrulaması başarısız olabilir. Microsoft JDBC 'nın daha düşük sürümleri, sertifikanın konu alanında ortak adı (CN) kullanır. Risk azaltma, Hostnameincercertificate özelliğinin *. database.windows.net olarak ayarlandığından emin olunması. Hostnameincercertificate özelliğinin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [SSL şifrelemesiyle bağlanma](/sql/connect/jdbc/connecting-with-ssl-encryption).
 
-Yukarıdaki hafifletme işe yaramazsa, aşağıdaki URL 'YI kullanarak SQL veritabanı için bir destek isteği dosyasına dosya: https://aka.ms/getazuresupport
+Yukarıdaki hafifletme işe yaramazsa, aşağıdaki URL 'YI kullanarak SQL veritabanı için bir destek isteği dosyası kullanın: https://aka.ms/getazuresupport
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

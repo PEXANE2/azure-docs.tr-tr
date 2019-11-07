@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory bekleyen etkinlik | Microsoft Docs
+title: Azure Data Factory bekleme etkinliği
 description: Bekleme etkinliği, belirtilen dönem için işlem hattının yürütülmesini duraklatır.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 48a722979e61209a855dd1fec22fcdcc756ae1ce
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f9dd53fded06eec169219d00993620a0f2aa2bf0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142429"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678236"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Azure Data Factory 'de bekleme etkinliğini Yürüt
 İşlem hattında Bekleme etkinliğini kullandığınızda, işlem hattı izleyen etkinlikleri yürütmeye devam etmeden önce belirtilen süre kadar bekler. 
@@ -38,9 +38,9 @@ ms.locfileid: "70142429"
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | `Wait` Etkinliğin adı. | Dize | Evet
+ad | `Wait` etkinliğin adı. | Dize | Evet
 type | **Wait**olarak ayarlanmalıdır. | Dize | Evet
-Waittimeınseconds | İşlem hattının işleme devam etmeden önce bekleyeceği saniye sayısı. | Integer | Evet
+Waittimeınseconds | İşlem hattının işleme devam etmeden önce bekleyeceği saniye sayısı. | Tamsayı | Evet
 
 ## <a name="example"></a>Örnek
 
@@ -48,7 +48,7 @@ Waittimeınseconds | İşlem hattının işleme devam etmeden önce bekleyeceği
 > Bu bölüm, işlem hattını çalıştırmak için JSON tanımları ve örnek PowerShell komutları sağlar. Azure PowerShell ve JSON tanımlarını kullanarak Data Factory işlem hattı oluşturmaya yönelik adım adım yönergeler için bkz. [öğretici: Azure PowerShell kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-wait-activity"></a>Bekleme etkinliği ile işlem hattı
-Bu örnekte, işlem hattının iki etkinliği vardır: **Until** ve **bekle**. Bekleme etkinliği bir saniye bekleyecek şekilde yapılandırılmıştır. İşlem hattı, her çalıştırma arasında ikinci bir bekleme süresine sahip bir döngüde Web etkinliğini çalıştırır. 
+Bu örnekte, işlem hattının iki etkinliği vardır: **until** ve **wait**. Bekleme etkinliği bir saniye bekleyecek şekilde yapılandırılmıştır. İşlem hattı, her çalıştırma arasında ikinci bir bekleme süresine sahip bir döngüde Web etkinliğini çalıştırır. 
 
 ```json
 {

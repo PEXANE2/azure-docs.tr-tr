@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Storage Azure SQL veri ambarı 'na yönelik öğretici yükleme | Microsoft Docs
+title: Eğitim Azure Data Lake Storage verileri yükleme
 description: Azure Data Lake Storage verileri Azure SQL veri ambarı 'na yüklemek için PolyBase dış tablolarını kullanın.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: load-data
 ms.date: 08/08/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3db355cf5782620bda3a9e04afbee073c8929856
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 522cb9b75d5c0db270f8ba4a65850e35a2e8c4fd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935115"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685684"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Azure Data Lake Storage verileri SQL veri ambarı 'na yükleme
 Azure Data Lake Storage verileri Azure SQL veri ambarı 'na yüklemek için PolyBase dış tablolarını kullanın. Data Lake Storage depolanan verilerde geçici sorgular çalıştırabilmenize karşın, en iyi performans için verileri SQL veri ambarı 'na aktarmayı öneririz.
@@ -25,7 +26,7 @@ Azure Data Lake Storage verileri Azure SQL veri ambarı 'na yüklemek için Poly
 > * Data Lake Storage dizinine bağlanın.
 > * Azure SQL veri ambarı 'na veri yükleme.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)’nun (SSMS) en yeni sürümünü indirin ve yükleyin.
@@ -203,7 +204,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ## <a name="optimize-statistics"></a>İstatistikleri iyileştirme
 Bir yükden hemen sonra tek sütunlu istatistikler oluşturmak en iyisidir. İstatistikler için bazı seçimler vardır. Örneğin, her sütunda tek sütunlu istatistikler oluşturursanız tüm istatistiklerin yeniden oluşturulması uzun sürebilir. Bazı sütunların sorgu koşullarına sahip olmadığını biliyorsanız, bu sütunlarda istatistik oluşturmayı atlayabilirsiniz.
 
-Her tablonun her sütununda tek sütunlu istatistikler oluşturmaya karar verirseniz, `prc_sqldw_create_stats` [istatistik](sql-data-warehouse-tables-statistics.md) makalesindeki saklı yordam kodu örneğini kullanabilirsiniz.
+Her tablonun her sütununda tek sütunlu istatistikler oluşturmaya karar verirseniz, [istatistik](sql-data-warehouse-tables-statistics.md) makalesindeki `prc_sqldw_create_stats` saklı yordam kodu örneğini kullanabilirsiniz.
 
 Aşağıdaki örnek, istatistik oluşturmak için iyi bir başlangıç noktasıdır. Boyut tablosundaki her bir sütunda ve olgu tablolarındaki her bir birleştirme sütununda tek sütunlu istatistikler oluşturur. Daha sonra, daha sonra diğer olgu tablosu sütunlarına tek veya çok sütunlu istatistikler ekleyebilirsiniz.
 

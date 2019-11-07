@@ -1,5 +1,5 @@
 ---
-title: Data Factory için işlem hatları oluşturma/zamanlama, zincir etkinlikleri | Microsoft Docs
+title: Data Factory için işlem hatları oluşturma/zamanlama, zincir etkinlikleri
 description: Verileri taşımak ve dönüştürmek için Azure Data Factory bir veri işlem hattı oluşturmayı öğrenin. Kullanıma hazırlık bilgileri üretmek için veri odaklı bir iş akışı oluşturun.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 54d9c875ca0117304dbd686f9a8fa6060b275994
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f93bea240ee3f139c9be84199d116f9f3f231261
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140052"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682734"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory işlem hatları ve Etkinlikler
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -94,15 +94,15 @@ Bir işlem hattının JSON biçiminde nasıl tanımlandığına daha yakından b
 
 | Etiket | Açıklama | Gerekli |
 | --- | --- | --- |
-| name |İşlem hattının adı. İşlem hattının gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 260</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", "\*", "%", "&", ":"\\, ""</li></ul> |Evet |
-| description | İşlem hattının ne için kullanıldığını açıklayan metni belirtin. |Evet |
-| activities | **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. Etkinlikler JSON öğesiyle ilgili ayrıntılar için sonraki bölüme bakın. | Evet |
-| Başlangıç | İşlem hattının başlangıç tarihi-saati. [ISO biçiminde](https://en.wikipedia.org/wiki/ISO_8601)olmalıdır. Örneğin: `2016-10-14T16:32:41Z` <br/><br/>Bir yerel saat belirtmek mümkündür, örneğin bir saat. İşte bir örnek: `2016-02-27T06:00:00-05:00`", 6 EST.<br/><br/>Başlangıç ve bitiş özellikleri, işlem hattının etkin dönemini belirtir. Çıkış dilimleri bu etkin dönemde yalnızca ile üretilir. |Hayır<br/><br/>End özelliği için bir değer belirtirseniz, Start özelliği için bir değer belirtmeniz gerekir.<br/><br/>Bir işlem hattı oluşturmak için başlangıç ve bitiş saatlerinin her ikisi de boş olabilir. İşlem hattının çalışması için etkin bir süre ayarlamak üzere her iki değeri de belirtmeniz gerekir. İşlem hattı oluştururken başlangıç ve bitiş zamanlarını belirtmezseniz, daha sonra set-Azdatafactorypıpelineactiveperiod cmdlet 'ini kullanarak bunları ayarlayabilirsiniz. |
-| end | İşlem hattının bitiş tarihi-saati. Belirtilmişse ISO biçiminde olmalıdır. Örneğin, `2016-10-14T17:32:41Z` <br/><br/>Bir yerel saat belirtmek mümkündür, örneğin bir saat. İşte bir örnek: `2016-02-27T06:00:00-05:00`6 EST.<br/><br/>İşlem hattını süresiz olarak çalıştırmak için, End özelliğinin değeri olarak 9999-09-09 değerini belirtin. <br/><br/> İşlem hattı yalnızca başlangıç saati ve bitiş saati arasında etkindir. Başlangıç zamanından veya bitiş zamanından önce yürütülmez. İşlem hattı duraklatılmışsa, başlangıç ve bitiş zamanından bağımsız olarak yürütülmez. Bir işlem hattının çalışması için duraklatılmamalıdır. Azure Data Factory planlama ve yürütmenin nasıl çalıştığını anlamak için bkz. [zamanlama ve yürütme](data-factory-scheduling-and-execution.md) . |Hayır <br/><br/>Start özelliği için bir değer belirtirseniz, End özelliği için bir değer belirtmeniz gerekir.<br/><br/>**Start** özelliği için notlara bakın. |
+| ad |İşlem hattının adı. İşlem hattının gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 260</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", "\*", "%", "&", ":", "\\"</li></ul> |Evet |
+| açıklama | İşlem hattının ne için kullanıldığını açıklayan metni belirtin. |Evet |
+| etkinlikler | **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. Etkinlikler JSON öğesiyle ilgili ayrıntılar için sonraki bölüme bakın. | Evet |
+| start | İşlem hattının başlangıç tarihi-saati. [ISO biçiminde](https://en.wikipedia.org/wiki/ISO_8601)olmalıdır. Örneğin: `2016-10-14T16:32:41Z`. <br/><br/>Bir yerel saat belirtmek mümkündür, örneğin bir saat. İşte bir örnek: `2016-02-27T06:00:00-05:00`", bu 6 EST.<br/><br/>Başlangıç ve bitiş özellikleri, işlem hattının etkin dönemini belirtir. Çıkış dilimleri bu etkin dönemde yalnızca ile üretilir. |Hayır<br/><br/>End özelliği için bir değer belirtirseniz, Start özelliği için bir değer belirtmeniz gerekir.<br/><br/>Bir işlem hattı oluşturmak için başlangıç ve bitiş saatlerinin her ikisi de boş olabilir. İşlem hattının çalışması için etkin bir süre ayarlamak üzere her iki değeri de belirtmeniz gerekir. İşlem hattı oluştururken başlangıç ve bitiş zamanlarını belirtmezseniz, daha sonra set-Azdatafactorypıpelineactiveperiod cmdlet 'ini kullanarak bunları ayarlayabilirsiniz. |
+| erer | İşlem hattının bitiş tarihi-saati. Belirtilmişse ISO biçiminde olmalıdır. Örneğin, `2016-10-14T17:32:41Z` <br/><br/>Bir yerel saat belirtmek mümkündür, örneğin bir saat. Örnek: `2016-02-27T06:00:00-05:00`, bu 6 EST.<br/><br/>İşlem hattını süresiz olarak çalıştırmak için, End özelliğinin değeri olarak 9999-09-09 değerini belirtin. <br/><br/> İşlem hattı yalnızca başlangıç saati ve bitiş saati arasında etkindir. Başlangıç zamanından veya bitiş zamanından önce yürütülmez. İşlem hattı duraklatılmışsa, başlangıç ve bitiş zamanından bağımsız olarak yürütülmez. Bir işlem hattının çalışması için duraklatılmamalıdır. Azure Data Factory planlama ve yürütmenin nasıl çalıştığını anlamak için bkz. [zamanlama ve yürütme](data-factory-scheduling-and-execution.md) . |Hayır <br/><br/>Start özelliği için bir değer belirtirseniz, End özelliği için bir değer belirtmeniz gerekir.<br/><br/>**Start** özelliği için notlara bakın. |
 | isPaused | True olarak ayarlanırsa işlem hattı çalıştırılmaz. Bu, duraklatılmış durumda. Varsayılan değer = false. Bu özelliği, bir işlem hattını etkinleştirmek veya devre dışı bırakmak için kullanabilirsiniz. |Hayır |
 | pipelineMode | İşlem hattı için zamanlama çalıştırmaları yöntemi. İzin verilen değerler: zamanlanmış (varsayılan), Onetime.<br/><br/>' Zamanlanmış ', işlem hattının etkin döneme (başlangıç ve bitiş saati) göre belirli bir zaman aralığında çalıştığını gösterir. ' Onetime ', işlem hattının yalnızca bir kez çalışacağını gösterir. Her seferinde bir kez oluşturulduktan sonra bir süre işlem hattı değiştirilemez/güncelleştirilemez. Kerelik ayarı hakkında ayrıntılı bilgi için bkz. [kerelik işlem hattı](#onetime-pipeline) . |Hayır |
-| expirationTime | Oluşturulduktan sonra, [tek seferlik işlem hattının](#onetime-pipeline) geçerli olduğu ve sağlanması gereken süre. Etkin, başarısız veya bekleyen çalıştırmaları yoksa, işlem hattı süre sonu zamanına ulaştığında otomatik olarak silinir. Varsayılan değer:`"expirationTime": "3.00:00:00"`|Hayır |
-| datasets |İşlem hattında tanımlanan etkinlikler tarafından kullanılacak veri kümelerinin listesi. Bu özellik, bu işlem hattına özgü ve Veri Fabrikası içinde tanımlanmayan veri kümelerini tanımlamak için kullanılabilir. Bu işlem hattı içinde tanımlanan veri kümeleri yalnızca bu işlem hattı tarafından kullanılabilir ve paylaştırılamaz. Ayrıntılar için bkz. [kapsamlı veri kümeleri](data-factory-create-datasets.md#scoped-datasets) . |Hayır |
+| expirationTime | Oluşturulduktan sonra, [tek seferlik işlem hattının](#onetime-pipeline) geçerli olduğu ve sağlanması gereken süre. Etkin, başarısız veya bekleyen çalıştırmaları yoksa, işlem hattı süre sonu zamanına ulaştığında otomatik olarak silinir. Varsayılan değer: `"expirationTime": "3.00:00:00"`|Hayır |
+| kümelerinin |İşlem hattında tanımlanan etkinlikler tarafından kullanılacak veri kümelerinin listesi. Bu özellik, bu işlem hattına özgü ve Veri Fabrikası içinde tanımlanmayan veri kümelerini tanımlamak için kullanılabilir. Bu işlem hattı içinde tanımlanan veri kümeleri yalnızca bu işlem hattı tarafından kullanılabilir ve paylaştırılamaz. Ayrıntılar için bkz. [kapsamlı veri kümeleri](data-factory-create-datasets.md#scoped-datasets) . |Hayır |
 
 ## <a name="activity-json"></a>Etkinlik JSON
 **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. Her etkinlik aşağıdaki en üst düzey yapıya sahiptir:
@@ -132,28 +132,28 @@ Aşağıdaki tabloda, etkinlik JSON tanımındaki özellikler açıklamaktadır:
 
 | Etiket | Açıklama | Gerekli |
 | --- | --- | --- |
-| name | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 260</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":"\\, ""</li></ul> |Evet |
-| description | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin |Evet |
+| ad | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 260</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li></ul> |Evet |
+| açıklama | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin |Evet |
 | type | Etkinliğin türü. Farklı etkinlik türleri için [veri taşıma etkinlikleri](#data-movement-activities) ve [veri dönüştürme etkinlikleri](#data-transformation-activities) bölümlerine bakın. |Evet |
-| inputs |Etkinlik tarafından kullanılan giriş tabloları<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Evet |
-| outputs |Etkinlik tarafından kullanılan çıkış tabloları.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Evet |
+| girişi |Etkinlik tarafından kullanılan giriş tabloları<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Evet |
+| çıkışı |Etkinlik tarafından kullanılan çıkış tabloları.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Evet |
 | linkedServiceName |Etkinlik tarafından kullanılan bağlı hizmetin adı. <br/><br/>Bir etkinlik için gerekli işlem ortamına bağlanan bağlı hizmeti belirtmeniz gerekebilir. |HDInsight etkinliği için Evet ve Azure Machine Learning Batch puanlama etkinliği <br/><br/>Diğer tümü için hayır |
 | typeProperties |**Typeproperties** bölümündeki özellikler etkinliğin türüne bağlıdır. Bir etkinliğin tür özelliklerini görmek için önceki bölümde verilen etkinlik bağlantılarına tıklayın. | Hayır |
-| policy |Etkinliğin çalışma zamanı davranışını etkileyen ilkeler. Belirtilmemişse, varsayılan ilkeler kullanılır. |Hayır |
-| scheduler | "Scheduler" özelliği, etkinlik için istenen zamanlamayı tanımlamak için kullanılır. Alt özellikleri, [bir veri kümesindeki kullanılabilirlik özelliğindeki](data-factory-create-datasets.md#dataset-availability)olanlarla aynıdır. |Hayır |
+| ilke |Etkinliğin çalışma zamanı davranışını etkileyen ilkeler. Belirtilmemişse, varsayılan ilkeler kullanılır. |Hayır |
+| leyiciyi | "Scheduler" özelliği, etkinlik için istenen zamanlamayı tanımlamak için kullanılır. Alt özellikleri, [bir veri kümesindeki kullanılabilirlik özelliğindeki](data-factory-create-datasets.md#dataset-availability)olanlarla aynıdır. |Hayır |
 
 ### <a name="policies"></a>İlkeler
 İlkeler, özellikle bir tablonun dilimi işlendiğinde bir etkinliğin çalışma zamanı davranışını etkiler. Aşağıdaki tabloda ayrıntılar verilmektedir.
 
-| Özellik | İzin verilen değerler | Default Value | Açıklama |
+| Özellik | İzin verilen değerler | Varsayılan değer | Açıklama |
 | --- | --- | --- | --- |
-| concurrency |Integer <br/><br/>En büyük değer: 10 |1\. |Etkinliğin eşzamanlı yürütmelerinin sayısı.<br/><br/>Farklı dilimlerde gerçekleşebileceğini paralel etkinlik yürütmelerinin sayısını belirler. Örneğin, bir etkinliğin büyük bir kullanılabilir veri kümesiyle geçmesi gerekiyorsa daha büyük bir eşzamanlılık değeri, veri işlemeyi hızlandırır. |
+| Zamanlı |Tamsayı <br/><br/>En büyük değer: 10 |1 |Etkinliğin eşzamanlı yürütmelerinin sayısı.<br/><br/>Farklı dilimlerde gerçekleşebileceğini paralel etkinlik yürütmelerinin sayısını belirler. Örneğin, bir etkinliğin büyük bir kullanılabilir veri kümesiyle geçmesi gerekiyorsa daha büyük bir eşzamanlılık değeri, veri işlemeyi hızlandırır. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |İşlenmekte olan veri dilimlerinin sıralamasını belirler.<br/><br/>Örneğin, 2 dilimdeyse (4pm 'de bir diğeri, 5 pm 'de bir diğeri) ve her ikisi de yürütme bekleniyor. ExecutionPriorityOrder 'ı NewestFirst olarak ayarlarsanız, önce 5 PM 'deki dilim işlenir. Benzer şekilde, önce executionPriorityORder değerini Oldestolarak ayarlarsanız, 4 PM 'deki dilim işlenir. |
-| yeniden dene |Integer<br/><br/>En büyük değer 10 olabilir |0 |Dilim için veri işleme hatası olarak işaretlenmeden önce yeniden deneme sayısı. Bir veri dilimi için Etkinlik yürütme, belirtilen yeniden deneme sayısına yeniden denenir. Yeniden deneme, hatadan sonra mümkün olan en kısa sürede yapılır. |
-| zaman aşımı |TimeSpan |00:00:00 |Etkinliğin zaman aşımı. Örnek: 00:10:00 (zaman aşımı 10 dakika)<br/><br/>Bir değer belirtilmemişse veya 0 ise, zaman aşımı sonsuz olur.<br/><br/>Bir dilimdeki veri işleme süresi, zaman aşımı değerini aşarsa, iptal edilir ve sistem işlemeyi yeniden denemeye çalışır. Yeniden deneme sayısı, retry özelliğine bağlıdır. Zaman aşımı oluştuğunda, durum zaman aşımına uğradı olarak ayarlanır. |
-| delay |TimeSpan |00:00:00 |Dilimin veri işleme başlamadan önce gecikme süresi belirtin.<br/><br/>Bir veri dilimi için etkinliğin yürütülmesi, gecikme beklenen yürütme zamanından sonra başlatılır.<br/><br/>Örnek: 00:10:00 (10 dakikalık gecikme süresi anlamına gelir) |
-| longRetry |Integer<br/><br/>En büyük değer: 10 |1\. |Dilim yürütmesi başarısız olmadan önce uzun yeniden deneme girişimi sayısı.<br/><br/>longRetry denemeleri, Longretryınterval tarafından aralıklıdır. Bu nedenle, yeniden deneme girişimleri arasında bir saat belirtmeniz gerekiyorsa, longRetry kullanın. Hem yeniden dene hem de longRetry belirtilirse, her bir longRetry denemesi, yeniden deneme girişimleri içerir ve deneme sayısı üst sınırı * longRetry.<br/><br/>Örneğin, etkinlik ilkesinde aşağıdaki ayarlara sahipseniz:<br/>Retry 3<br/>LongRetry 2<br/>Longretryınterval: 01:00:00<br/><br/>Yürütülecek yalnızca bir dilim olduğunu varsayalım (durum bekliyor) ve etkinliğin yürütülmesi her seferinde başarısız olur. Başlangıçta 3 ardışık yürütme denemesi vardır. Her denemeden sonra dilimin durumu yeniden denenecek. İlk 3 deneme bittikten sonra, dilim durumu LongRetry olur.<br/><br/>Bir saatten sonra (yani, longRetryInteval değeri), başka bir 3 ardışık yürütme denemesi kümesi olur. Bundan sonra, dilim durumu başarısız olur ve daha fazla yeniden deneme denenmelidir. Bu nedenle, genel 6 deneme yapılmıştır.<br/><br/>Herhangi bir yürütme başarılı olursa, dilim durumu kullanılmaya devam edilir ve daha fazla yeniden deneme denenmelidir.<br/><br/>longRetry, bağımlı verilerin belirleyici olmayan saatlerde ulaştığı durumlarda veya genel ortam, veri işlemenin gerçekleştiği bir düzmeme durumunda kullanılabilir. Bu gibi durumlarda, diğer bir süre sonra yeniden denemeler yapmak, istenen çıktının bir zaman aralığı ile sonuçlanmasından sonra bu işlemi yapmaya ve gerçekleşmeyebilir.<br/><br/>Uyarı sözcüğü: longRetry veya Longretryınterval için yüksek değerler ayarlamayın. Genellikle, daha yüksek değerler diğer systemik sorunlarını kapsıyor. |
-| longRetryInterval |TimeSpan |00:00:00 |Uzun yeniden deneme girişimleri arasındaki gecikme |
+| retry |Tamsayı<br/><br/>En büyük değer 10 olabilir |0 |Dilim için veri işleme hatası olarak işaretlenmeden önce yeniden deneme sayısı. Bir veri dilimi için Etkinlik yürütme, belirtilen yeniden deneme sayısına yeniden denenir. Yeniden deneme, hatadan sonra mümkün olan en kısa sürede yapılır. |
+| timeout |TimeSpan |00:00:00 |Etkinliğin zaman aşımı. Örnek: 00:10:00 (zaman aşımı 10 dakika)<br/><br/>Bir değer belirtilmemişse veya 0 ise, zaman aşımı sonsuz olur.<br/><br/>Bir dilimdeki veri işleme süresi, zaman aşımı değerini aşarsa, iptal edilir ve sistem işlemeyi yeniden denemeye çalışır. Yeniden deneme sayısı, retry özelliğine bağlıdır. Zaman aşımı oluştuğunda, durum zaman aşımına uğradı olarak ayarlanır. |
+| ilir |TimeSpan |00:00:00 |Dilimin veri işleme başlamadan önce gecikme süresi belirtin.<br/><br/>Bir veri dilimi için etkinliğin yürütülmesi, gecikme beklenen yürütme zamanından sonra başlatılır.<br/><br/>Örnek: 00:10:00 (10 dakikalık gecikme süresi anlamına gelir) |
+| longRetry |Tamsayı<br/><br/>En büyük değer: 10 |1 |Dilim yürütmesi başarısız olmadan önce uzun yeniden deneme girişimi sayısı.<br/><br/>longRetry denemeleri, Longretryınterval tarafından aralıklıdır. Bu nedenle, yeniden deneme girişimleri arasında bir saat belirtmeniz gerekiyorsa, longRetry kullanın. Hem yeniden dene hem de longRetry belirtilirse, her bir longRetry denemesi, yeniden deneme girişimleri içerir ve deneme sayısı üst sınırı * longRetry.<br/><br/>Örneğin, etkinlik ilkesinde aşağıdaki ayarlara sahipseniz:<br/>Yeniden dene: 3<br/>longRetry: 2<br/>Longretryınterval: 01:00:00<br/><br/>Yürütülecek yalnızca bir dilim olduğunu varsayalım (durum bekliyor) ve etkinliğin yürütülmesi her seferinde başarısız olur. Başlangıçta 3 ardışık yürütme denemesi vardır. Her denemeden sonra dilimin durumu yeniden denenecek. İlk 3 deneme bittikten sonra, dilim durumu LongRetry olur.<br/><br/>Bir saatten sonra (yani, longRetryInteval değeri), başka bir 3 ardışık yürütme denemesi kümesi olur. Bundan sonra, dilim durumu başarısız olur ve daha fazla yeniden deneme denenmelidir. Bu nedenle, genel 6 deneme yapılmıştır.<br/><br/>Herhangi bir yürütme başarılı olursa, dilim durumu kullanılmaya devam edilir ve daha fazla yeniden deneme denenmelidir.<br/><br/>longRetry, bağımlı verilerin belirleyici olmayan saatlerde ulaştığı durumlarda veya genel ortam, veri işlemenin gerçekleştiği bir düzmeme durumunda kullanılabilir. Bu gibi durumlarda, diğer bir süre sonra yeniden denemeler yapmak, istenen çıktının bir zaman aralığı ile sonuçlanmasından sonra bu işlemi yapmaya ve gerçekleşmeyebilir.<br/><br/>Uyarı sözcüğü: longRetry veya Longretryınterval için yüksek değerler ayarlamayın. Genellikle, daha yüksek değerler diğer systemik sorunlarını kapsıyor. |
+| Longretryınterval |TimeSpan |00:00:00 |Uzun yeniden deneme girişimleri arasındaki gecikme |
 
 ## <a name="sample-copy-pipeline"></a>Örnek kopyalama işlem hattı
 Aşağıdaki örnek işlem hattında, **Etkinlikler** bölümünde **Kopyalama** türünde olan bir etkinlik vardır. Bu örnekte [kopyalama etkinliği](data-factory-data-movement-activities.md), verileri Azure Blob depolama alanından Azure SQL veritabanına kopyalar.
@@ -207,7 +207,7 @@ Aşağıdaki noktalara dikkat edin:
 * Etkinlik girdisi **InputDataset** olarak, etkinlik çıktısı ise **OutputDataset** olarak ayarlanmıştır. JSON biçiminde veri kümeleri tanımlamak için [Veri Kümeleri](data-factory-create-datasets.md) makalesine bakın.
 * **typeProperties** bölümünde **BlobSource** kaynak türü, **SqlSink** de havuz türü olarak belirtilir. Veri [taşıma etkinlikleri](#data-movement-activities) bölümünde, veri deposuna/veri deposundan veri taşıma hakkında daha fazla bilgi edinmek için kaynak veya havuz olarak kullanmak istediğiniz veri deposuna tıklayın.
 
-Bu işlem hattını oluşturmaya yönelik tüm yönergeler için bkz [. Öğretici: Blob depolamadan SQL veritabanına](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)veri kopyalama.
+Bu işlem hattını oluşturma hakkında ayrıntılı yönergeler için bkz. [öğretici: blob DEPOLAMADAN SQL veritabanına veri kopyalama](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="sample-transformation-pipeline"></a>Örnek dönüştürme işlem hattı
 Aşağıdaki örnek işlem hattında, **etkinlikler** bölümünde **HDInsightHive** türünde olan bir etkinlik vardır. Bu örnekte [HDInsight Hive etkinliği](data-factory-hive-activity.md), bir Azure HDInsight Hadoop kümesinde Hive betik dosyası çalıştırarak verileri bir Azure Blob depolamadan dönüştürür.
@@ -261,11 +261,11 @@ Aşağıdaki noktalara dikkat edin:
 
 * Etkinlikler bölümünde **türü** **HDInsightHive** olarak ayarlanmış yalnızca bir etkinlik vardır.
 * **partitionweblogs.hql** Hive betik dosyası Azure depolama hesabında (scriptLinkedService tarafından belirtilen **AzureStorageLinkedService** adıyla) ve **adfgetstarted** kapsayıcısındaki **betik** klasöründe depolanır.
-* Bölümü, Hive betiğine Hive yapılandırma değerleri olarak ( `${hiveconf:partitionedtable}`örn `${hiveconf:inputtable}`.) geçirilen çalışma zamanı ayarlarını belirtmek için kullanılır. `defines`
+* `defines` bölümü, Hive betiğine Hive yapılandırma değerleri olarak geçirilen çalışma zamanı ayarlarını belirtmek için kullanılır (örn. `${hiveconf:inputtable}`, `${hiveconf:partitionedtable}`).
 
 **TypeProperties** bölümü her bir dönüştürme etkinliği için farklıdır. Bir dönüştürme etkinliği için desteklenen tür özellikleri hakkında bilgi edinmek için [veri dönüştürme etkinlikleri](#data-transformation-activities) tablosunda dönüştürme etkinliğine tıklayın.
 
-Bu işlem hattını oluşturmaya yönelik tüm yönergeler için bkz [. Öğretici: Hadoop kümesi](data-factory-build-your-first-pipeline.md)kullanarak verileri işlemek için ilk işlem hattınızı oluşturun.
+Bu işlem hattını oluşturma hakkında ayrıntılı yönergeler için bkz. [öğretici: Hadoop kümesi kullanarak verileri işlemek için ilk işlem hattınızı oluşturma](data-factory-build-your-first-pipeline.md).
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Bir işlem hattında birden çok etkinlik
 Önceki iki örnekte işlem hatları yalnızca bir etkinlik içeriyordu. Bir işlem hattında birden fazla etkinliğiniz olabilir.
@@ -276,7 +276,7 @@ Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi 
 
 ![Aynı ardışık düzende zincirleme etkinlikleri](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
 
-Bu örnekte, işlem hattının iki etkinliği vardır: Activity1 ve Activity2. Activity1, DataSet1 bir girdi olarak alır ve bir çıktı DataSet2 üretir. Etkinlik, DataSet2 bir giriş olarak alır ve bir çıktı Dataset3 üretir. Activity1 (DataSet2) çıkışı Activity2 girişi olduğundan, Activity2 yalnızca etkinlik başarıyla tamamlandıktan sonra ve DataSet2 dilimi üretirse çalışır. Activity1 bir nedenden dolayı başarısız olursa ve DataSet2 dilimini oluşturmazsa, etkinlik 2 bu dilim için çalışmaz (örneğin: 9 ila 10 har).
+Bu örnekte, işlem hattının iki etkinliği vardır: Activity1 ve Activity2. Activity1, DataSet1 bir girdi olarak alır ve bir çıktı DataSet2 üretir. Etkinlik, DataSet2 bir giriş olarak alır ve bir çıktı Dataset3 üretir. Activity1 (DataSet2) çıkışı Activity2 girişi olduğundan, Activity2 yalnızca etkinlik başarıyla tamamlandıktan sonra ve DataSet2 dilimi üretirse çalışır. Activity1 bir nedenden dolayı başarısız olursa ve DataSet2 dilimini oluşturmazsa, etkinlik 2 bu dilim için çalışmaz (örneğin: 9-10 ' a).
 
 Ayrıca, farklı işlem hatlarında olan etkinlikleri zincirleyebilirsiniz.
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı ve veri ambarı ağ erişim denetimleri | Microsoft Docs
+title: Azure SQL veritabanı ve veri ambarı ağ erişim denetimleri
 description: Erişimi yönetmek ve tek veya havuza alınmış bir veritabanını yapılandırmak için Azure SQL veritabanı ve veri ambarı için ağ erişim denetimlerine genel bakış.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: b2c1f01e53cfe41b72e3e079059c66e4e2409012
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: deee668c3597047a5d5f0fd153626916c3fd8517
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703263"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687704"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL veritabanı ve veri ambarı ağ erişim denetimleri
 

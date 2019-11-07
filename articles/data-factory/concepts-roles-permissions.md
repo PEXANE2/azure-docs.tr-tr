@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory için roller ve izinler | Microsoft Docs
+title: Azure Data Factory roller ve izinler
 description: Veri fabrikaları oluşturmak ve alt kaynaklarla çalışmak için gereken rolleri ve izinleri açıklar.
 ms.date: 11/5/2018
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 9df65322958bffd3182aaa8d734e8b29717d939d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f5b4cbc670a429a84f42be79adb00057656a5483
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142520"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681419"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory roller ve izinler
 
@@ -46,7 +46,7 @@ Data Factory oluşturduktan sonra, diğer kullanıcıların Data Factory ile ça
 
 Bu rol hakkında daha fazla bilgi için bkz. [Data Factory katkıda bulunan rolü](../role-based-access-control/built-in-roles.md#data-factory-contributor).
 
-### <a name="resource-manager-template-deployment"></a>Resource Manager şablon dağıtımı
+### <a name="resource-manager-template-deployment"></a>Kaynak Yöneticisi şablonu dağıtımı
 
 Kaynak grubu düzeyinde veya yukarıdaki **Data Factory katkıda** bulunan rolü, kullanıcıların Kaynak Yöneticisi şablonları dağıtmasını sağlar. Sonuç olarak, rol üyeleri veri kümeleri, bağlı hizmetler, işlem hatları, Tetikleyiciler ve tümleştirme çalışma zamanları dahil olmak üzere hem veri fabrikalarını hem de alt kaynaklarını dağıtmak için Kaynak Yöneticisi şablonları kullanabilir. Bu roldeki üyelik, kullanıcının diğer kaynakları oluşturmalarına izin vermez.
 
@@ -82,7 +82,7 @@ Bazen farklı veri fabrikası kullanıcıları için farklı erişim düzeyleri 
 
 - Kullanıcının yalnızca bağlı bir hizmette bağlantıyı test edebilmesini sağlar
 
-    Aşağıdaki eylemler için izinlerle özel bir rol rolü oluşturun: **Microsoft. DataFactory/Factory/getFeatureValue/Read** ve **Microsoft. DataFactory/Factory/getDataPlaneAccess/Read**. Bu özel rolü kullanıcı için Data Factory kaynağına atayın.
+    Şu eylemler için izinlerle özel bir rol rolü oluşturun: **Microsoft. DataFactory/Factory/getFeatureValue/Read** ve **Microsoft. DataFactory/Factory/getDataPlaneAccess/Read**. Bu özel rolü kullanıcı için Data Factory kaynağına atayın.
 
 - Bir kullanıcının PowerShell veya SDK 'dan bir veri fabrikasını güncelleştirmesine izin verin, ancak Azure portal.
 

@@ -1,5 +1,5 @@
 ---
-title: Data Lake ve veri ambarınızdan Azure 'a veri geçirmek için Azure Data Factory kullanın | Microsoft Docs
+title: Data Lake ve veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın
 description: Data Lake ve veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 2d2fc1e2992e379c80a16dee2c1983f9559470c5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 0be9cbc9c5af2e0778654ef70c5350b48f10c35d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931126"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675770"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Data Lake veya veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın
 
@@ -36,7 +36,7 @@ Azure Data Factory Data Lake geçişi için petabaytlarca (PB) verilerin yanı s
   - Azure Data Factory Kullandıkça Öde yöntemini kullanır, böylece yalnızca gerçekten Azure 'a veri geçişini çalıştırmak için kullandığınız süre için ödeme yaparsınız.  
 - Azure Data Factory, hem tek seferlik geçmiş yükleme hem de zamanlanmış artımlı yüklemeler gerçekleştirebilir.
 - Azure Data Factory, verileri herkese açık veri Gölü ve ambar uç noktaları arasında taşımak için Azure Integration Runtime (IR) kullanır. Ayrıca, Azure sanal ağ (VNet) içinde veya bir güvenlik duvarının arkasındaki Data Lake ve ambar uç noktaları için verileri taşımak amacıyla kendinden konak IR kullanabilir.
-- Azure Data Factory kurumsal düzeyde güvenliğe sahiptir: Güvenli hizmetten hizmete tümleştirme için Windows Installer (MSI) veya hizmet kimliğini veya kimlik bilgisi yönetimi için Azure Key Vault kullanabilirsiniz.
+- Azure Data Factory kurumsal düzeyde güvenliğe sahiptir: güvenli hizmetten hizmete tümleştirme için Windows Installer (MSI) veya hizmet kimliğini kullanabilir veya kimlik bilgisi yönetimi için Azure Key Vault kullanabilirsiniz.
 - Azure Data Factory, kod ücretsiz yazma deneyimi ve zengin, yerleşik bir izleme panosu sağlar.  
 
 ## <a name="online-vs-offline-data-migration"></a>Çevrimiçi ve çevrimdışı veri geçişi
@@ -51,7 +51,7 @@ Azure Data Factory, verileri bir ağ üzerinden (Internet, ER veya VPN) aktarmak
 
 Örneğin, veri geçişinizi iki hafta içinde ( *geçiş pencereniz*) tamamlamaya yönelik Azure Data Factory kullanacağınızı varsayalım. Aşağıdaki tabloda pembe/mavi kesme hattına dikkat edin. Verilen herhangi bir sütun için en düşük pembe hücre, geçiş penceresi iki haftadan en yakın olan veri boyutu/ağ bant genişliği eşleştirmesini gösterir. (Mavi hücredeki herhangi bir boyut/bant genişliği eşleştirmesi iki haftadan uzun bir çevrimiçi geçiş penceresine sahiptir.) 
 
-![çevrimiçi ve çevrimdışı](media/data-migration-guidance-overview/online-offline.png) Bu tablo, verilerinizin boyutuna ve kullanılabilir ağ bant genişliğine göre çevrimiçi geçiş (Azure Data Factory) aracılığıyla amaçlanan geçiş pencerenizi karşılayıp karşılamadığını belirlemenize yardımcı olur. Çevrimiçi geçiş penceresi iki haftadan uzun olursa çevrimdışı geçiş kullanmak isteyeceksiniz.
+![çevrimiçi ve çevrimdışı](media/data-migration-guidance-overview/online-offline.png), bu tablo, verilerinizin boyutuna ve kullanılabilir ağ bant genişliğine göre çevrimiçi geçiş (Azure Data Factory) aracılığıyla amaçlanan geçiş pencerenizi karşılayıp karşılamadığını belirlemenize yardımcı olur. Çevrimiçi geçiş penceresi iki haftadan uzun olursa çevrimdışı geçiş kullanmak isteyeceksiniz.
 
 > [!NOTE]
 > Çevrimiçi geçiş kullanarak, hem geçmiş veri yükleme hem de artımlı akışların tek bir araç aracılığıyla uçtan uca elde edebilirsiniz.  Bu yaklaşım sayesinde verileriniz, tüm geçiş penceresi sırasında mevcut mağaza ve yeni mağaza arasında eşitlenebilir. Bu, ETL mantığınızı yenilenen verilerle yeni depoda yeniden oluşturabileceğiniz anlamına gelir.

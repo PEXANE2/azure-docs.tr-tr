@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: e7f4d58ceab78aea7031d2c706504bdcb99434c6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a02e690e344678b512503f8c3beb57023a838ac0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520647"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686664"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -364,35 +364,34 @@ Ağ kuralları, çoğu senaryo için Uygulamalarınız ve verileriniz arasındak
 
 Bazı Microsoft Hizmetleri, ağ kurallarınıza dahil olmayan ağlardan çalışır. Diğer uygulamalar için ağ kurallarını koruyarak, bu tür güvenilen Microsoft hizmetlerinin depolama hesabına erişiminin bir alt kümesine izin verebilirsiniz. Bu güvenilen hizmetler daha sonra, depolama hesabınıza güvenli bir şekilde bağlanmak için güçlü kimlik doğrulaması kullanabilir. Microsoft Hizmetleri için iki tür güvenilen erişimi etkinliyoruz.
 
-- **Aboneliğinizde kayıtlıysa**, bazı hizmetlerin kaynakları yalnızca seçim işlemleri için (örneğin, günlükleri yazma veya yedekleme için) **aynı abonelikte bulunan** depolama hesaplarına erişebilir.
-- Kaynak örneğine [**BIR RBAC rolü atayarak**](storage-auth-aad.md#assign-rbac-roles-for-access-rights) , bazı hizmetlerin kaynak örneklerine depolama hesabınıza açık erişim verilebilir.
+- **Aboneliğinizde kayıtlı**olan bazı hizmetlerin kaynakları, günlük veya yedekleme yazma gibi seçim işlemleri için **aynı abonelikte** depolama hesabınıza erişebilir.
+- Kaynak örneğine [**BIR RBAC rolü atayarak**](storage-auth-aad.md#assign-rbac-roles-for-access-rights) , bazı hizmetlerin kaynaklarına, depolama hesabınıza açık erişim verilebilir.
 
 
-**Güvenilen Microsoft hizmetlerine Izin ver...** özel durumu ' nu etkinleştirdiğinizde, bu hizmetlere (aboneliğinizde kaydedilmişse), aşağıdaki şekilde, select işlemleri için depolama hesabına erişim verilir:
+**Güvenilen Microsoft hizmetlerine Izin ver...** ayarını etkinleştirdiğinizde, depolama hesabınızla aynı abonelikte kayıtlı olan aşağıdaki hizmetlerin kaynaklarına, açıklandığı şekilde sınırlı bir işlem kümesi erişimi verilir:
 
-| Hizmet                  | Kaynak sağlayıcısı adı     | Amaç                            |
+| Hizmet                  | Kaynak sağlayıcısı adı     | İzin verilen işlemler                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
 | Azure Backup             | Microsoft. RecoveryServices | IAAS sanal makinelerinde yedeklemeleri çalıştırın ve yönetilmeyen diskleri geri yükler. (yönetilen diskler için gerekli değildir). [Daha fazla bilgi edinin](/azure/backup/backup-introduction-to-azure-backup). |
 | Azure Data Box           | Microsoft. DataBox          | Data Box kullanarak Azure 'a veri aktarmayı sağlar. [Daha fazla bilgi edinin](/azure/databox/data-box-overview). |
 | Azure DevTest Labs       | Microsoft. DevTestLab       | Özel görüntü oluşturma ve yapıt yüklemesi. [Daha fazla bilgi edinin](/azure/devtest-lab/devtest-lab-overview). |
 | Azure Event Grid         | Microsoft. EventGrid        | Blob Storage olay yayımlamayı etkinleştirin ve Event Grid depolama sıralarında yayımlamaya izin verin. [BLOB depolama olayları](/azure/event-grid/event-sources) ve [kuyruklarda yayımlama](/azure/event-grid/event-handlers)hakkında bilgi edinin. |
 | Azure Event Hubs         | Microsoft. EventHub         | Event Hubs yakalama ile verileri arşivleme. [Daha fazla bilgi edinin](/azure/event-hubs/event-hubs-capture-overview). |
-| Azure Dosya Eşitleme          | Microsoft. Storagessync      | Şirket içi dosya sunucunuzu Azure dosya paylaşımları için bir önbelleğe dönüştürmenizi sağlar. Çok siteli eşitleme, hızlı olağanüstü durum kurtarma ve bulut tarafı yedekleme için izin verme. [Daha fazla bilgi edinin](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft. HDInsight        | Yeni bir HDInsight kümesi için varsayılan dosya sisteminin başlangıçtaki içeriğini sağlayın. [Daha fazla bilgi edinin](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/). |
-| Azure Machine Learning | Microsoft.MachineLearningServices | Yetkili Azure Machine Learning çalışma alanları BLOB depolama alanına deneme çıkış, model ve Günlükler yazar. [Daha fazla bilgi edinin](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace).   
+| Azure Dosya Eşitleme          | Microsoft. Storagessync      | Şirket içi dosya sunucunuzu Azure dosya paylaşımları için bir önbelleğe dönüştürmenizi sağlar. Çok siteli eşitleme, hızlı olağanüstü durum kurtarma ve bulut tarafı yedekleme için izin verme. [Daha fazla bilgi](../files/storage-sync-files-planning.md) |
+| Azure HDInsight          | Microsoft. HDInsight        | Yeni bir HDInsight kümesi için varsayılan dosya sisteminin başlangıçtaki içeriğini sağlayın. [Daha fazla bilgi edinin](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
 | Azure İzleyici            | Microsoft. Insights         | İzleme verilerinin güvenli bir depolama hesabına yazılmasına izin verir [daha fazla bilgi edinin](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
 | Azure Ağı         | Microsoft.Network          | Ağ trafiği günlüklerini depolayın ve çözümleyin. [Daha fazla bilgi edinin](/azure/network-watcher/network-watcher-packet-capture-overview). |
 | Azure Site Recovery      | Microsoft. Sıterecovery     | Güvenlik Duvarı özellikli önbellek, kaynak veya hedef depolama hesapları kullanırken Azure IaaS sanal makinelerinin olağanüstü durum kurtarma için çoğaltmayı etkinleştirin.  [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 
-**Güvenilen Microsoft hizmetlerine Izin ver...** özel durumu, bu kaynak örneği için [sistem tarafından atanan yönetilen KIMLIĞE](../../active-directory/managed-identities-azure-resources/overview.md) açıkça bir RBAC rolü atarsanız, aşağıdaki hizmetlerin belirli bir örneğinin depolama hesabına erişmesini sağlar.
+**Güvenilen Microsoft hizmetlerine Izin ver...** ayarı, bu kaynak örneği için [sistem tarafından atanan yönetilen KIMLIĞE](../../active-directory/managed-identities-azure-resources/overview.md) açıkça bir RBAC rolü atarsanız, aşağıdaki hizmetlerin belirli bir örneğinin depolama hesabına erişmesini sağlar.
 
 | Hizmet                        | Kaynak sağlayıcısı adı          | Amaç                            |
 | :----------------------------- | :------------------------------ | :--------------------------------- |
 | Azure Data Factory             | Microsoft. DataFactory/Factory | ADF çalışma zamanı aracılığıyla depolama hesaplarına erişime izin verir. |
-| Azure Logic Apps               | Microsoft. Logic/iş akışları       | Mantıksal uygulamaların depolama hesaplarına erişmesini sağlar. |
+| Azure Logic Apps               | Microsoft. Logic/iş akışları       | Mantıksal uygulamaların depolama hesaplarına erişmesini sağlar. [Daha fazla bilgi edinin](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md). |
 | Azure Machine Learning Hizmeti | Microsoft.MachineLearningServices | Yetkili Azure Machine Learning çalışma alanları BLOB depolama alanına deneme çıkış, model ve Günlükler yazar. [Daha fazla bilgi edinin](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Veri Ambarı       | Microsoft.Sql                   | PolyBase kullanarak belirli SQL veritabanı örneklerinden verilerin içeri ve dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
-| Azure Stream Analytics         | Microsoft. StreamAnalytics       | Akış işindeki verilerin blob depolamaya yazılmasına izin verir. Bu özellik şu anda önizleme sürümündedir. [Daha fazla bilgi edinin](../../stream-analytics/blob-output-managed-identity.md). |
+| Azure Stream Analytics         | Microsoft. StreamAnalytics       | Akış işindeki verilerin blob depolamaya yazılmasına izin verir. Bu özellik şu anda önizleme sürümündedir. [Daha fazla bilgi edinin](/azure/stream-analytics/blob-output-managed-identity.md). |
 
 
 ### <a name="storage-analytics-data-access"></a>Depolama Analizi veri erişimi

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı 'nda tabloları dizine alma | Microsoft Azure
+title: Tabloları dizinleme
 description: Azure SQL veri ambarı 'nda tabloları dizine alma önerileri ve örnekleri.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4d51bd6906a8299a25fe50ca817b1a2b6082ab91
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 079891824bf71caf1ebfa575833de650a55ed5be
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479850"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685460"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>SQL veri ambarı 'nda tabloları dizinleme
 
@@ -167,7 +167,7 @@ Sorguyu çalıştırdıktan sonra verileri aramaya başlayabilir ve sonuçların
 | [COMPRESSED_rowgroup_rows_MAX] |Yukarıdaki gibi |
 | [OPEN_rowgroup_count] |Açık satır grupları normaldir. Her biri, her tablo dağıtımı için bir açık satır grubu (60) tahmin etmek için makul bir Aşırı sayılar, bölümler arasında veri yükleme önerir. Bir ses olduğundan emin olmak için bölümleme stratejisini çift işaretleyin |
 | [OPEN_rowgroup_rows] |Her satır grubu, en fazla 1.048.576 satıra sahip olabilir. Açık satır gruplarının tam olarak şu anda nasıl olduğunu görmek için bu değeri kullanın |
-| [OPEN_rowgroup_rows_MIN] |Açık gruplar, verilerin tabloya yüklendiğini veya önceki yükün bu satır grubuna kalan satırların geri kırpıldığını gösterir. AÇıK satır gruplarında ne kadar veri Sat olduğunu görmek için MIN, MAX, AVG sütunlarını kullanın. Küçük tablolar için tüm verilerin% 100 ' i olabilir! Bu durumda, verileri columnstore 'e zorlamak için ALTER INDEX REBUıLD. |
+| [OPEN_rowgroup_rows_MIN] |Açık gruplar, verilerin tabloya yüklendiğini veya önceki yükün bu satır grubuna kalan satırların geri kırpıldığını gösterir. AÇıK satır gruplarında ne kadar veri Sat olduğunu görmek için MIN, MAX, AVG sütunlarını kullanın. Küçük tablolar için tüm verilerin %100 ' i olabilir! Bu durumda, verileri columnstore 'e zorlamak için ALTER INDEX REBUıLD. |
 | [OPEN_rowgroup_rows_MAX] |Yukarıdaki gibi |
 | [OPEN_rowgroup_rows_AVG] |Yukarıdaki gibi |
 | [CLOSED_rowgroup_rows] |Kapalı satır grubu satırlarına sağlamlık denetimi olarak bakın. |
@@ -216,7 +216,7 @@ Tablolarınız bazı verilerle yüklendikten sonra, alt optimum kümelenmiş col
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Bölüm kalitesini artırmak için dizinleri yeniden oluşturma
 
-### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>1\. adım: Doğru kaynak sınıfını kullanan Kullanıcı tanımla veya oluştur
+### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>1\. Adım: doğru kaynak sınıfını kullanan Kullanıcı tanımla veya oluştur
 
 Segment kalitesini hemen artırmanın bir hızlı yolu dizini yeniden dermaktır.  Yukarıdaki görünümün döndürdüğü SQL, dizinlerinizi yeniden derlemek için kullanılabilen bir ALTER INDEX REBUıLD ifadesi döndürür. Dizinlerinizi yeniden oluştururken, dizininizin dizinini oluşturan oturuma yeterli bellek ayırdığınızdan emin olun.  Bunu yapmak için, bu tablodaki dizini önerilen en düşük düzeyde yeniden oluşturma izinlerine sahip olan bir kullanıcının kaynak sınıfını arttırın.
 
@@ -226,7 +226,7 @@ Aşağıda, kaynak sınıflarını artırarak bir kullanıcıya daha fazla belle
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
-### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>2\. adım: Kümelenmiş columnstore dizinlerini daha yüksek kaynak sınıfı kullanıcıyla yeniden derle
+### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>2\. Adım: kümelenmiş columnstore dizinlerini daha yüksek kaynak sınıfı kullanıcıyla yeniden oluşturma
 
 1\. adımdaki (örn. LoadUser) Kullanıcı olarak oturum açın, bu, artık daha yüksek bir kaynak sınıfı kullanıyor ve ALTER INDEX deyimlerini yürütür. Bu kullanıcının, dizinin yeniden oluşturulduğu tablolarda ALTER iznine sahip olduğundan emin olun. Bu örneklerde, tüm columnstore dizininin nasıl yeniden oluşturulduğu veya tek bir bölümün nasıl yeniden oluşturulacağı gösterilmektedir. Büyük tablolarda, dizinleri tek bir bölüme yeniden oluşturmak daha pratik bir hale gelir.
 
@@ -254,7 +254,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 
 SQL veri ambarı 'nda bir dizinin yeniden oluşturulması, çevrimdışı bir işlemdir.  Dizinleri yeniden oluşturma hakkında daha fazla bilgi için, [columnstore dizinleri birleştirme](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)ve [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)'teki alter INDEX REBUILD bölümüne bakın.
 
-### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3\. adım: Kümelenmiş columnstore segmenti kalitesinin iyileştirdiğini doğrulama
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3\. Adım: kümelenmiş columnstore segmentinin kalitesinin iyileştirdiğini doğrulama
 
 Tabloyu kötü segment kalitesiyle tanımlayan sorguyu yeniden çalıştırın ve segment kalitesini doğrulayın.  Segment kalitesi geliştirmediği takdirde, tablonuzda bulunan satırlar çok geniş olabilir.  Dizinlerinizi yeniden oluştururken daha yüksek bir kaynak sınıfı veya DWU kullanmayı deneyin.
 

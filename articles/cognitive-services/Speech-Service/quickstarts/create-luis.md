@@ -1,25 +1,25 @@
 ---
 title: 'Hızlı başlangıç: bir LUSıS anahtarı oluşturma'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, hızlı bir şekilde bir LUO uygulaması oluşturmayı öğreneceksiniz.
+description: Bu hızlı başlangıçta, bir LUO uygulamasının nasıl oluşturulduğunu ve bir anahtarın nasıl alınacağını öğreneceksiniz.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 11/04/2019
 ms.author: wolfma
-ms.openlocfilehash: 95becb2574a45536610aef87f8045b3dad5a5003
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ee2b25958feac2387779d9e60734a6600b60a2e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504084"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682066"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Hızlı başlangıç: bir LUSıS uç noktası anahtarı alma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
@@ -54,7 +54,7 @@ Azure panosu 'nda LUO kaynağını oluşturduktan sonra, [Halu portalında](http
    * **Abonelik adı**bölümünde, kullanmak istediğiniz Luo kaynağını içeren Azure aboneliğini seçin.
    * **Anahtar**altında uygulamayla birlikte kullanmak istediğiniz Luo kaynağını seçin.
 
-   Kısa süre içinde yeni abonelik sayfanın altındaki tabloda görüntülenir. 
+   Kısa süre içinde yeni abonelik sayfanın altındaki tabloda görüntülenir.
 
 1. Panoya kopyalamak için bir anahtarın yanındaki simgeyi seçin. (İstediğiniz anahtarı kullanabilirsiniz.)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Merkezi hızlı başlangıç-Azure Stack sanal makinelerinizi Güvenlik Merkezi 'ne ekleme | Microsoft Docs
+title: Azure Güvenlik Merkezi 'ne Azure Stack sanal makineler ekleme
 description: Bu hızlı başlangıçta Azure Izleyici, güncelleştirme ve yapılandırma yönetimi sanal makine uzantısının Azure Stack sanal makinelerde nasıl sağlanacağı gösterilmektedir.
 services: security-center
 documentationcenter: na
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: fiseraci
-ms.openlocfilehash: 1772fd34a2d79b725b2b5ccaa66adb0b251b7e1d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c186dcb2d7d7d423f5c001bdb4d3f3503beebd9c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202859"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686517"
 ---
-# <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>Hızlı Başlangıç:  Azure Stack sanal makinelerinizi Güvenlik Merkezi 'ne ekleme
+# <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Hızlı başlangıç: Azure Stack sanal makinelerinizi Güvenlik Merkezi 'ne ekleme
 Azure aboneliğinizi ekledikten sonra, Azure Stack **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** sanal makine uzantısını ekleyerek Azure Stack çalıştıran sanal makinelerinizi korumak Için Güvenlik Merkezi 'ni etkinleştirebilirsiniz. 'nde.
 
 Bu hızlı başlangıçta, **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** sanal makinesi uzantısının bir sanal makinede (Linux ve Windows 'un her ikisi de desteklenir) Azure Stack nasıl ekleneceğini gösterir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
 Bu hızlı başlangıcı başlatmadan önce güvenlik merkezi 'nin standart katmanında bir Azure aboneliğinizin olması gerekir. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi Standart katmanını, 30 gün boyunca ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="select-your-workspace-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde çalışma alanınızı seçme
 
-1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) oturum açın.
+1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/) oturum açın.
 2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**’ni seçin. **Güvenlik Merkezi - Genel Bakış** açılır. 
 
    ![Güvenlik Merkezine genel bakış][2]
@@ -41,11 +41,11 @@ Bu hızlı başlangıcı başlatmadan önce güvenlik merkezi 'nin standart katm
 3. Güvenlik Merkezi ana menüsü altında, **Başlarken**’i seçin.
 4. **Başlangıç** sekmesini seçin.
 
-   ![başlarken][3]
+   ![Başlarken][3]
 
 5. **Yeni Azure dışı bilgisayarlar ekle** altında, **Yapılandır**’a tıklayın. Log Analytics çalışma alanlarınızın bir listesi gösterilir. Listede, varsa, otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi tarafından sizin için oluşturulan varsayılan çalışma alanı bulunur. Bu çalışma alanını veya Azure Stack VM 'nin güvenlik verilerini rapor etmek istediğiniz başka bir çalışma alanını seçin.
 
-    ![Azure olmayan bilgisayar ekleme](./media/quick-onboard-windows-computer/non-azure.png)
+    ![Azure dışı bilgisayar ekleme](./media/quick-onboard-windows-computer/non-azure.png)
 
    Aracı yapılandırma bölümünde kullanmak üzere çalışma alanı KIMLIĞINIZ için aracı ve anahtarları indirme bağlantısı ile **doğrudan aracı** dikey penceresi açılır.
 
@@ -69,20 +69,20 @@ Artık Azure Stack çalışan sanal makinelere **Azure izleyici, güncelleştirm
 > Market 'te listelenen **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** uzantısını görmüyorsanız, kullanılabilir hale getirmek için lütfen Azure Stack işletmenine ulaşın.
 
 6. **Uzantı** yapılandırma yapılandırma dikey penceresinde, önceki yordamda not defteri ' ne kopyaladığınız **çalışma alanı kimliğini** ve **çalışma alanı anahtarını (birincil anahtar)** yapıştırın.
-7.  Gerekli yapılandırma ayarlarını sağlamayı tamamladığınızda **Tamam**' a tıklayın.
+7. Gerekli yapılandırma ayarlarını sağlamayı tamamladığınızda **Tamam**' a tıklayın.
 8. Uzantı yüklemesi tamamlandıktan sonra, durumu **sağlama başarılı**olarak görünür. Sanal makinenin güvenlik merkezi portalında görünmesi bir saate kadar sürebilir.
 
 Windows için aracı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows bilgisayarlarını bağlama](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
 
 Aracı sorunlarını gidermek için bkz. [Azure Log Analytics Linux Aracısı sorunlarını giderme](../azure-monitor/platform/agent-linux-troubleshoot.md).
 
-Artık Azure VM’lerinizi ve Azure olmayan bilgisayarlarınızı tek bir yerde izleyebilirsiniz. Azure 'daki Güvenlik Merkezi portalında, **işlem**altında tüm VM 'lere ve bilgisayarlara yönelik önerilerle ilgili bir genel bakış sunulmaktadır. Güvenlik Merkezi ayrıca güvenlik uyarılarında bu bilgisayarlar için herhangi bir algılamayı yüzeyler.
+Artık Azure VM’lerinizi ve Azure dışı bilgisayarlarınızı tek bir yerde izleyebilirsiniz. Azure 'daki Güvenlik Merkezi portalında, **işlem**altında tüm VM 'lere ve bilgisayarlara yönelik önerilerle ilgili bir genel bakış sunulmaktadır. Güvenlik Merkezi ayrıca güvenlik uyarılarında bu bilgisayarlar için herhangi bir algılamayı yüzeyler.
 
   ![Bilgi İşlem dikey penceresi][6]
 
 **Bilgi İşlem** dikey penceresinde gösterilen iki türlü simge vardır:
 
-![simge1](./media/quick-onboard-windows-computer/security-center-monitoring-icon1.png) Azure olmayan bilgisayar 
+![simge1](./media/quick-onboard-windows-computer/security-center-monitoring-icon1.png) Azure dışı bilgisayar 
 
 ![simge2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure VM (Azure Stack VM 'Ler bu grupta görünür)
 

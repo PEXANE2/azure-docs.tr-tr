@@ -1,5 +1,5 @@
 ---
-title: Akıllı İçgörüler performans tanılama günlüğü-Azure SQL veritabanı | Microsoft Docs
+title: Akıllı İçgörüler performans tanılama günlüğü-Azure SQL veritabanı
 description: Akıllı İçgörüler Azure SQL veritabanı performans sorunlarını tanılama günlüğü sağlar
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: c25d37a4d1695ab94cc0667a13e36e4da640e12a
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 86381f5670f09b5e6a215793dc1ea4eab7ecbb8e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262141"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689705"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Azure SQL veritabanı performans tanılama günlüğünü Akıllı İçgörüler kullanın
 
@@ -80,11 +80,11 @@ Algılanan performans sorununa bağlı olarak, tanılama günlük dosyasında ol
 | Kaynak sınırlarına ulaşma | <li>Etkilenen kaynaklar</li><li>Sorgu karmaları</li><li>Kaynak tüketim yüzdesi</li> |
 | İş yükü artışı | <li>Yürütmesi arttığı sorgu sayısı</li><li>İş yükü artışına en büyük katkısıyla sorguların sorgu karmaları</li> |
 | Bellek baskısı | <li>Bellek memuru</li> |
-| Kilitleniyor | <li>Etkilenen sorgu karmaları</li><li>Sorgu karmalarını engelleme</li> |
+| Lemeye | <li>Etkilenen sorgu karmaları</li><li>Sorgu karmalarını engelleme</li> |
 | Artan MAXDOP | <li>Sorgu karmaları</li><li>CXP bekleme süreleri</li><li>Bekleme süreleri</li> |
 | Pagemandal çekişmesi | <li>Çekişmeye neden olan sorguların karmalarını sorgulama</li> |
 | Eksik dizin | <li>Sorgu karmaları</li> |
-| Yeni Sorgu | <li>Yeni sorguların sorgu karması</li> |
+| Yeni sorgu | <li>Yeni sorguların sorgu karması</li> |
 | Olağan dışı bekleme Istatistiği | <li>Olağan dışı bekleme türleri</li><li>Sorgu karmaları</li><li>Sorgu bekleme süreleri</li> |
 | TempDB çekişmesi | <li>Çekişmeye neden olan sorguların karmalarını sorgulama</li><li>Genel veritabanı pagemanatısyonu bekleme süresi [%] ile sorgulama</li> |
 | Elastik havuz DTU eksik | <li>Elastik havuz</li><li>En yüksek DTU kullanan veritabanı</li><li>Üst tüketici tarafından kullanılan havuz DTU yüzdesi</li> |
@@ -93,15 +93,15 @@ Algılanan performans sorununa bağlı olarak, tanılama günlük dosyasında ol
 | Yavaş Istemci | <li>Sorgu karmaları</li><li>Bekleme süreleri</li> |
 | Fiyatlandırma Katmanı düşürme | <li>Metin bildirimi</li> |
 
-### <a name="impact"></a>Etkisi
+### <a name="impact"></a>Etki
 
 Etki (etki) özelliği, algılanan bir davranışın bir veritabanının sahip olduğu soruna ne kadar katkıda bulunduğunu açıklar. 1 ile 3 arasında bir değer, en yüksek katkı olarak 3, orta ve en düşük katkı olarak 1 ' i etkiler. Özel gereksinimlerinize bağlı olarak, etki değeri özel uyarı otomasyonu için giriş olarak kullanılabilir. Etkilenen Özellik sorguları (Querykarmaları), belirli bir algılamanın etkilediği sorgu karmalarının bir listesini sağlar.
 
 ### <a name="impacted-queries"></a>Etkilenen sorgular
 
-Akıllı İçgörüler günlüğünün sonraki bölümü, algılanan performans sorunlarından etkilenen belirli sorgular hakkında bilgiler sağlar. Bu bilgiler, impact_s özelliğine katıştırılmış bir nesne dizisi olarak duyurulmuştur. Impact özelliği varlıklardan ve ölçülerden oluşur. Varlıklar belirli bir sorguya başvurur (tür: Sorgu). Benzersiz sorgu karması değer (değer) özelliği altında duyurulmuştur. Ayrıca, duyurulan her bir sorgu, algılanan bir performans sorununu gösteren bir ölçüm ve bir değer izler.
+Akıllı İçgörüler günlüğünün sonraki bölümü, algılanan performans sorunlarından etkilenen belirli sorgular hakkında bilgiler sağlar. Bu bilgiler, impact_s özelliğine katıştırılmış bir nesne dizisi olarak duyurulmuştur. Impact özelliği varlıklardan ve ölçülerden oluşur. Varlıklar belirli bir sorguya başvurur (tür: sorgu). Benzersiz sorgu karması değer (değer) özelliği altında duyurulmuştur. Ayrıca, duyurulan her bir sorgu, algılanan bir performans sorununu gösteren bir ölçüm ve bir değer izler.
 
-Aşağıdaki günlük örneğinde, 0x9102EXZ4 karmasını içeren sorgu, daha fazla yürütme süresine sahip olacak şekilde algılandı (ölçüm: DurationIncreaseSeconds). 110 saniyelik değeri, bu belirli sorgunun yürütülmesi için 110 saniye daha uzun sürdüğünü gösterir. Birden çok sorgu algılanabileceğinden, bu günlük bölümünde birden çok sorgu girişi bulunabilir.
+Aşağıdaki günlük örneğinde, 0x9102EXZ4 karmasından oluşan sorgu, daha fazla yürütme süresine sahip olacak şekilde algılandı (ölçüm: DurationIncreaseSeconds). 110 saniyelik değeri, bu belirli sorgunun yürütülmesi için 110 saniye daha uzun sürdüğünü gösterir. Birden çok sorgu algılanabileceğinden, bu günlük bölümünde birden çok sorgu girişi bulunabilir.
 
 ```json
 "impact" : [{

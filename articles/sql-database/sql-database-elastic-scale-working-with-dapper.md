@@ -1,5 +1,5 @@
 ---
-title: Kaber ile elastik veritabanı istemci kitaplığı kullanma | Microsoft Docs
+title: Kaber ile elastik veritabanı istemci kitaplığı kullanma
 description: Kaber ile elastik veritabanı istemci kitaplığı kullanma.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1eafb123014effad9daca89dc1b852367d9cbbf1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b1fa6ab046845e2fd95e8d4b5611ca2f5d12562
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568261"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690089"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Kaber ile elastik veritabanı istemci kitaplığı kullanma
 Bu belge, uygulamalar oluşturmak için daber 'yi kullanan geliştiricilere yöneliktir, ancak aynı zamanda veri katmanını ölçeklendirmek için parçalara ayırma uygulayan uygulamalar oluşturmak üzere [elastik veritabanı](sql-database-elastic-scale-introduction.md) araçlarını benimseyin.  Bu belge, elastik veritabanı araçlarıyla tümleştirme için gerekli olan paber tabanlı uygulamalardaki değişiklikleri gösterir. Odaklanmamız, elastik veritabanı oluşturma yönetimini ve veri odaklı yönlendirmeyi kaber ile oluşturmaya yönelik. 
 
-**Örnek kod**: [Azure SQL veritabanı Için elastik veritabanı araçları-paber tümleştirmesi](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Örnek kod**: [Azure SQL veritabanı için elastik veritabanı araçları-paber tümleştirmesi](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
 Azure SQL veritabanı için elastik veritabanı istemci kitaplığı ile **daber** ve **dapperextensions** 'ın tümleştirilmesi kolaydır. Uygulamalarınız, yeni [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) nesnelerinin oluşturulmasını ve açılmasını, [Istemci kitaplığından](https://msdn.microsoft.com/library/azure/dn765902.aspx) [openconnectionforkey](https://msdn.microsoft.com/library/azure/dn807226.aspx) çağrısını kullanacak şekilde değiştirerek veriye bağlı yönlendirmeyi kullanabilir. Bu, uygulamanızdaki değişiklikleri yalnızca yeni bağlantıların oluşturulduğu ve açıldığı yerde sınırlandırır. 
 
@@ -30,7 +30,7 @@ Azure SQL veritabanı için elastik veritabanı istemci kitaplığı ile **daber
 
 Paber 'deki Eşleyici işlevselliği, yürütme veya veritabanını sorgulama için T-SQL deyimlerinin gönderilmesini kolaylaştıran Veritabanı bağlantılarında uzantı yöntemleri sağlar. Örneğin, Korber, **yürütme** çağrıları için .net nesneleriniz ile SQL deyimlerinin parametreleri arasında eşlemeyi kolaylaştırır veya katin **sorgu** çağrılarını kullanarak SQL sorgularınızın sonuçlarını .net Objects 'e tüketebilir. 
 
-DapperExtensions kullanırken, artık SQL deyimlerini sağlamanız gerekmez. {1 & gt ; veritabanı & lt; 1} bağlantı gibi UZANTıLAR Yöntemler arka planda SQL deyimlerini oluşturur.
+DapperExtensions kullanırken, artık SQL deyimlerini sağlamanız gerekmez. {1 & gt; veritabanı & lt; 1} **bağlantı gibi uzantılar** Yöntemler arka planda SQL deyimlerini oluşturur.
 
 Daber ve ayrıca Daperextensions 'ın başka bir avantajı da uygulamanın veritabanı bağlantısı oluşturulmasını denetliyorsa. Bu, veritabanı bağlantılarını, veritabanlarının veritabanlarına yönelik olarak eşleşmesini temel alan elastik veritabanı istemci kitaplığıyla etkileşime geçmesini sağlar.
 
@@ -48,9 +48,9 @@ Kaber için bağlantı oluşturmanın geleneksel yolunu kullanmak yerine, [Openc
 ### <a name="requirements-for-dapper-integration"></a>Kaber tümleştirmesi için gereksinimler
 Hem elastik veritabanı istemci kitaplığı hem de kaber API 'Leri ile çalışırken, aşağıdaki özellikleri sürdürmek istersiniz:
 
-* **Ölçeği genişletme**: Uygulamanın kapasite taleplerini için gereken şekilde, parçalı uygulamanın veri katmanında veritabanı eklemek veya kaldırmak istiyoruz. 
-* **Tutarlılık**: Uygulama parçalama kullanılarak ölçeklendirildiğinde veriye bağımlı yönlendirme yapmanız gerekir. Bunu yapmak için kitaplığın veriye bağımlı yönlendirme özelliklerini kullanmak istiyoruz. Özellikle, bozulmaları veya yanlış sorgu sonuçlarının olmaması için parça eşleme Yöneticisi aracılığıyla aracılı bağlantılar tarafından sunulan doğrulama ve tutarlılık garantilerini sürdürmek istiyorsunuz. Bu, (örneğin), parça/birleştirme API 'Leri kullanılarak parçalanan farklı bir parçaya taşınabilmesi durumunda belirli bir parçalanmaya yönelik bağlantıların reddedildiğini veya durdurulmasını sağlar.
-* **Nesne eşleme**: Uygulama ve temel alınan veritabanı yapıları arasında çeviri yapmak için daber tarafından sunulan eşlemelerin rahatlığını sürdürmek istiyoruz. 
+* **Ölçeği genişletme**: uygulamanın kapasite taleplerini için gereken şekilde, parçalı uygulamanın veri katmanında veritabanı eklemek veya kaldırmak istiyoruz. 
+* **Tutarlılık**: uygulama parçalama kullanılarak azaltıldığından, verilere bağımlı yönlendirme yapmanız gerekir. Bunu yapmak için kitaplığın veriye bağımlı yönlendirme özelliklerini kullanmak istiyoruz. Özellikle, bozulmaları veya yanlış sorgu sonuçlarının olmaması için parça eşleme Yöneticisi aracılığıyla aracılı bağlantılar tarafından sunulan doğrulama ve tutarlılık garantilerini sürdürmek istiyorsunuz. Bu, (örneğin), parça/birleştirme API 'Leri kullanılarak parçalanan farklı bir parçaya taşınabilmesi durumunda belirli bir parçalanmaya yönelik bağlantıların reddedildiğini veya durdurulmasını sağlar.
+* **Nesne eşleme**: uygulamadaki sınıflar ve temel alınan veritabanı yapıları arasında çeviri yapmak Için daber tarafından sunulan eşlemelerin rahatlığını sürdürmek istiyoruz. 
 
 Aşağıdaki bölümde, **daber** ve **dapperextensions**tabanlı uygulamalar için bu gereksinimlere yönelik yönergeler sağlanmaktadır.
 
@@ -136,7 +136,7 @@ Sorgu için kod örneği aşağıda verilmiştir:
     }
 
 ### <a name="handling-transient-faults"></a>Geçici hataları işleme
-Microsoft düzenleri & Yöntemler ekibi, uygulama geliştiricilerinin bulutta çalışırken karşılaşılan yaygın geçici hata koşullarını azaltmalarına yardımcı olmak için [geçici hata Işleme uygulama bloğunu](https://msdn.microsoft.com/library/hh680934.aspx) yayımladı. Daha fazla bilgi için, [bkz. tüm üç aylık gizlilik: Geçici hata Işleme uygulama bloğu](https://msdn.microsoft.com/library/dn440719.aspx)kullanılıyor.
+Microsoft düzenleri & Yöntemler ekibi, uygulama geliştiricilerinin bulutta çalışırken karşılaşılan yaygın geçici hata koşullarını azaltmalarına yardımcı olmak için [geçici hata Işleme uygulama bloğunu](https://msdn.microsoft.com/library/hh680934.aspx) yayımladı. Daha fazla bilgi için, bkz. [Tüm Anferance, geçici hata Işleme uygulama bloğunu kullanma](https://msdn.microsoft.com/library/dn440719.aspx).
 
 Kod örneği, geçici hatalara karşı korumak için geçici hata kitaplığını kullanır. 
 

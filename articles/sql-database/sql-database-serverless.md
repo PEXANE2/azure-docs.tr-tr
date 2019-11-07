@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı sunucusuz | Microsoft Docs
+title: Azure SQL Veritabanı sunucusuz
 description: Bu makalede, yeni sunucusuz işlem katmanı açıklanmakta ve mevcut sağlanan işlem katmanıyla karşılaştırılır
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: e8629baa3487795349844229b26d80321c1316ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fcd79182e046d94f9e67acecebd5cf6a45f2706f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496243"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687392"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Veritabanı sunucusuz
 
@@ -174,8 +174,6 @@ Yeni bir veritabanı oluşturmak veya var olan bir veritabanını sunucusuz bir 
    |En düşük sanal çekirdekler|Yapılandırılan en fazla sanal çekirdek sayısını gösterir- [kaynak sınırlarına](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)bakın.|0,5 sanal çekirdekler|
    |Oto duraklatma gecikmesi|En az: 60 dakika (1 saat)<br>Maksimum: 10080 dakika (7 gün)<br>Artımlar: 60 dakika<br>Oto duraklamayı devre dışı bırak:-1|60 dakika|
 
-> [!NOTE]
-> Var olan bir veritabanını sunucusuz 'e taşımak veya işlem boyutunu değiştirmek için T-SQL kullanmak, şu anda desteklenmemektedir ancak Azure portal veya PowerShell aracılığıyla yapılabilir.
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Sunucusuz işlem katmanında yeni veritabanı oluştur 
 
@@ -200,6 +198,17 @@ New-AzSqlDatabase `
   -AutoPauseDelayInMinutes 720
 ```
 
+#### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) kullanma
+
+Aşağıdaki örnek sunucusuz işlem katmanında yeni bir veritabanı oluşturur.
+
+```sql
+CREATE DATABASE testdb
+( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
+```
+
+Ayrıntılar için bkz. [veritabanı oluşturma](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
+
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Veritabanını sağlanan işlem katmanından sunucusuz işlem katmanına taşıma
 
 #### <a name="use-powershell"></a>PowerShell kullanma
@@ -218,6 +227,17 @@ Set-AzSqlDatabase `
   -MaxVcore 4 `
   -AutoPauseDelayInMinutes 1440
 ```
+
+#### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) kullanma
+
+Aşağıdaki örnek, bir veritabanını sağlanan işlem katmanından sunucusuz işlem katmanına taşımakta. 
+
+```sql
+ALTER DATABASE testdb 
+MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
+```
+
+Ayrıntılar için bkz. [alter database](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
 
 ### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Veritabanını sunucusuz işlem katmanından sağlanan işlem katmanına taşıma
 
@@ -323,6 +343,10 @@ Daha kesin olarak, bu örnekteki işlem faturanız aşağıdaki gibi hesaplanır
 |24 saat üzerinden faturalandırılan toplam vCore saniye||||50400 sanal çekirdek saniye|
 
 İşlem birimi fiyatının $0.000073/vCore/Second olduğunu varsayalım.  Ardından bu 24 saatlik dönem için faturalandırılan işlem, faturalandırılan işlem birimi fiyatının ve sanal çekirdek saniyenin ürünüdür: $0.000073/vCore/Second * 50400 sanal çekirdek saniyeler = $3,68
+
+### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure Hibrit Avantajı ve ayrılmış kapasite
+
+Azure Hibrit Avantajı (AHB) ve ayrılmış kapasite iskontoları sunucusuz işlem katmanına uygulanmaz.
 
 ## <a name="available-regions"></a>Kullanılabilen bölgeler
 

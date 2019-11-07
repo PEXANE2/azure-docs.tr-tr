@@ -1,5 +1,5 @@
 ---
-title: P2S-Azure SQL veritabanı yönetilen örneği yapılandırma | Microsoft Docs
+title: 'P2S-Azure SQL veritabanı yönetilen örneği yapılandırma '
 description: Şirket içi istemci bilgisayardan Noktadan siteye bağlantı kullanarak SQL Server Management Studio kullanarak Azure SQL veritabanı yönetilen örneğine bağlanın.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 3ba5190050d45385ad17a87f6dce88ffd601e83d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b3a0ce28c4a936e185ac5f07ba3810c93f4c866
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567697"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689404"
 ---
-# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Hızlı Başlangıç: Şirket içinden Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırma
+# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Hızlı başlangıç: şirket içi Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırma
 
 Bu hızlı başlangıçta, bir şirket içi istemci bilgisayarından Noktadan siteye bağlantı üzerinden [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) kullanarak Azure SQL veritabanı yönetilen örneği 'ne nasıl bağlanacağı gösterilmektedir. Noktadan siteye bağlantılar hakkında bilgi için bkz. [noktadan sıteye VPN hakkında](../vpn-gateway/point-to-site-about.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç:
 
@@ -54,7 +54,7 @@ Bu hızlı başlangıç:
      Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
 
-3. Betiği PowerShell pencerenize yapıştırın ve gerekli parametreleri sağlayın. `<subscriptionId>` ,`<resourceGroup>`Ve değerlerinin`<virtualNetworkName>` , [yönetilen örnek oluşturma](sql-database-managed-instance-get-started.md) hızlı başlangıcı için kullandığınız olanlarla eşleşmesi gerekir. Değeri `<certificateNamePrefix>` , tercih ettiğiniz bir dize olabilir.
+3. Betiği PowerShell pencerenize yapıştırın ve gerekli parametreleri sağlayın. `<subscriptionId>`, `<resourceGroup>`ve `<virtualNetworkName>` değerleri, [yönetilen örnek oluşturma](sql-database-managed-instance-get-started.md) hızlı başlangıcı için kullandıklardan eşleşmelidir. `<certificateNamePrefix>` değeri, tercih ettiğiniz bir dize olabilir.
 
 4. PowerShell betiğini yürütün.
 
@@ -63,7 +63,7 @@ Bu hızlı başlangıç:
 
 ## <a name="create-a-vpn-connection-to-your-managed-instance"></a>Yönetilen örneğiniz için bir VPN bağlantısı oluşturma
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Sanal ağ geçidini oluşturduğunuz kaynak grubunu açın ve sonra sanal ağ geçidi kaynağını açın.
 3. **Noktadan siteye yapılandırma** ' yı seçin ve ardından **VPN istemcisini indir**' i seçin.
 
@@ -92,11 +92,11 @@ Bu hızlı başlangıç:
 
     ![VPN bağlantısı](./media/sql-database-managed-instance-configure-p2s/vpn-connection-succeeded.png)  
 
-## <a name="use-ssms-to-connect-to-the-managed-instance"></a>SSMS, yönetilen örneği'ne bağlanın
+## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Yönetilen örneğe bağlanmak için SSMS kullanma
 
 1. Şirket içi istemci bilgisayarında SQL Server Management Studio (SSMS) öğesini açın.
-2. İçinde **sunucuya Bağlan** iletişim kutusunda, tam girin **ana bilgisayar adı** yönetilen örneğinizin **sunucu adı** kutusu.
-3. Seçin **SQL Server kimlik doğrulaması**kullanıcı adı ve parola sağlayın ve ardından **Connect**.
+2. **Sunucuya Bağlan** iletişim kutusunda, **sunucu adı** kutusuna yönetilen örneğiniz için tam **ana bilgisayar adını** girin.
+3. **SQL Server kimlik doğrulaması**' nı seçin, Kullanıcı adınızı ve parolanızı girin ve ardından **Bağlan**' ı seçin.
 
     ![ssms bağlanma](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 

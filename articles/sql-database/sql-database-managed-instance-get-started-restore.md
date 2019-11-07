@@ -1,5 +1,5 @@
 ---
-title: Yedeklemeyi Azure SQL Veritabanı Yönetilen Örneği’ne geri yükleme| Microsoft Docs
+title: "Azure SQL veritabanı yönetilen örneği 'ne bir yedeklemeyi geri yükleme "
 description: SSMS kullanarak veritabanı yedeklemesini Azure SQL Veritabanı Yönetilen Örneğine geri yükleyin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: c07daf4cf9f355e8eccfe618262dd06b4216106e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ce112628c94c235b028331db5c37ba2b56458044
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146399"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688057"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Hızlı başlangıç: bir veritabanını yönetilen örneğe geri yükleme
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, Azure Blob depolamadan bir veritabanını (geniş dü
 > Azure veritabanı geçiş hizmeti 'ni (DMS) kullanarak geçiş hakkında daha fazla bilgi için bkz. [DMS kullanarak yönetilen örnek geçişi](../dms/tutorial-sql-server-to-managed-instance.md).
 > Çeşitli geçiş yöntemleri hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı yönetilen örneği 'ne SQL Server örnek geçişi](sql-database-managed-instance-migrate.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç:
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: d93c3599bb4a52a03d4ac436ca664ce6be1c55b9
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200833"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682199"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Azure HDInsight kümeniz için doğru VM boyutunu seçme
 
@@ -45,7 +45,7 @@ Azure 'daki sanal makine aileleri farklı kullanım durumlarına uyacak şekilde
 | [İşlem için iyileştirilmiş](../virtual-machines/linux/sizes-compute.md)        | F           | Yüksek CPU/bellek oranı. Orta yoğunlukta trafiğe sahip web sunucuları, ağ gereçleri, toplu işlemler ve uygulama sunucuları için uygundur.        |
 | [Bellek için iyileştirilmiş](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Yüksek bellek-CPU oranı. İlişkisel veritabanı sunucuları, orta veya büyük boyutlu önbellekler ve bellek içi analiz için idealdir.                 |
 
-- HDInsight tarafından desteklenen bölgelerde kullanılabilir sanal makine örneklerinin fiyatlandırması hakkında bilgi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/en-us/pricing/details/hdinsight/).
+- HDInsight tarafından desteklenen bölgelerde kullanılabilir sanal makine örneklerinin fiyatlandırması hakkında bilgi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="cost-saving-vm-types-for-light-workloads"></a>Hafif iş yükleri için VM türlerini kaydetme maliyeti
 
@@ -59,8 +59,8 @@ Aşağıdaki tabloda, Fsv2 serisi VM 'lerle oluşturulabilecek küme türleri ve
 | Hadoop | Tümü | F4 ve üzeri | hayır | hayır |
 | Kafka | Tümü | F4 ve üzeri | hayır | hayır |
 | HBase | Tümü | F4 ve üzeri | hayır | hayır |
-| LLAP | Devre dışı | hayır | hayır | hayır |
-| Storm | Devre dışı | hayır | hayır | hayır |
+| LLAP | devre dışı | hayır | hayır | hayır |
+| Storm | devre dışı | hayır | hayır | hayır |
 | ML hizmeti | YALNıZCA HDı 3,6 | F4 ve üzeri | hayır | hayır |
 
 Her F serisi SKU 'sunun belirtimlerini görmek için bkz. [f SERISI VM boyutları](https://azure.microsoft.com/blog/f-series-vm-size/).

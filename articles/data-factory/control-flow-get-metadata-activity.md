@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory meta verileri Al etkinliği | Microsoft Docs
+title: Azure Data Factory meta veri Al etkinliği
 description: Data Factory ardışık düzeninde meta veri al etkinliğinin nasıl kullanılacağını öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 081d7219407decac5dd36a06f289436aa0da627b
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: e891f6675920e7bb90d2a6d007676cdd65f19917
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061538"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679898"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory meta veri Al etkinliği
 
@@ -43,24 +43,24 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 **Dosya depolama**
 
-| Bağlayıcı/meta veriler | ItemName<br>(dosya/klasör) | ItemType<br>(dosya/klasör) | size<br>dosyasýný | oluşturuldu<br>(dosya/klasör) | lastModified<br>(dosya/klasör) |childItems<br>klasörde |contentMD5<br>dosyasýný | structure<br/>dosyasýný | columnCount<br>dosyasýný | bulunur<br>(dosya/klasör) |
+| Bağlayıcı/meta veriler | ItemName<br>(dosya/klasör) | ItemType<br>(dosya/klasör) | boyutla<br>dosyasýný | yaratıl<br>(dosya/klasör) | lastModified<br>(dosya/klasör) |childItems<br>klasörde |contentMD5<br>dosyasýný | yapısı<br/>dosyasýný | columnCount<br>dosyasýný | Bulunur<br>(dosya/klasör) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
 | [Google bulut depolaması](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
 | [Azure Blob Depolama](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [Azure dosyaları](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Dosyalar](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [Dosya sistemi](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
-- Amazon S3 ve Google Cloud Storage `lastModified` için demet ve anahtar için geçerlidir ancak sanal klasöre `exists` uygulanmaz; demet ve anahtar için geçerlidir ancak önek veya sanal klasöre uygulanmaz.
-- Azure Blob depolama `lastModified` için kapsayıcı ve BLOB için geçerlidir ancak sanal klasöre uygulanmaz.
+- Amazon S3 ve Google Cloud Storage için, `lastModified` demet ve anahtar için geçerlidir, ancak sanal klasöre uygulanmaz ve `exists` demet ve anahtar için geçerlidir ancak önek veya sanal klasöre uygulanmaz.
+- Azure Blob depolama için `lastModified` kapsayıcı ve BLOB için geçerlidir ancak sanal klasöre uygulanmaz.
 
 **İlişkisel veritabanı**
 
-| Bağlayıcı/meta veriler | structure | columnCount | bulunur |
+| Bağlayıcı/meta veriler | yapısı | columnCount | Bulunur |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Veritabanı](connector-azure-sql-database.md) | √ | √ | √ |
 | [Azure SQL Veritabanı yönetilen örneği](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
@@ -75,20 +75,20 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 |:--- |:--- |
 | ItemName | Dosya veya klasörün adı. |
 | ItemType | Dosya veya klasörün türü. Döndürülen değer `File` veya `Folder`. |
-| size | Dosyanın bayt cinsinden boyutu. Yalnızca dosyalar için geçerlidir. |
-| oluşturuldu | Dosya veya klasörün DateTime değeri oluşturuldu. |
+| boyutla | Dosyanın bayt cinsinden boyutu. Yalnızca dosyalar için geçerlidir. |
+| yaratıl | Dosya veya klasörün DateTime değeri oluşturuldu. |
 | lastModified | Dosya veya klasörün son değiştirilme tarihi. |
 | childItems | Belirtilen klasördeki alt klasörlerin ve dosyaların listesi. Yalnızca klasörler için geçerlidir. Döndürülen değer her bir alt öğenin adının ve türünün bir listesidir. |
 | contentMD5 | Dosyanın MD5. Yalnızca dosyalar için geçerlidir. |
-| structure | Dosya veya ilişkisel veritabanı tablosunun veri yapısı. Döndürülen değer, sütun adlarının ve sütun türlerinin bir listesidir. |
+| yapısı | Dosya veya ilişkisel veritabanı tablosunun veri yapısı. Döndürülen değer, sütun adlarının ve sütun türlerinin bir listesidir. |
 | columnCount | Dosya veya ilişkisel tablodaki sütun sayısı. |
-| bulunur| Bir dosya, klasör veya tablo bulunup yok. Meta verileri Al `exists` alan listesinde belirtilmişse, dosya, klasör veya tablo mevcut olmasa bile etkinliğin başarısız olacağını unutmayın. `exists: false` Bunun yerine çıktıda döndürülür. |
+| Bulunur| Bir dosya, klasör veya tablo bulunup yok. Meta verileri al alan listesinde `exists` belirtilirse, dosya, klasör veya tablo mevcut olmasa bile etkinlik başarısız olmaz. Bunun yerine, çıkışta `exists: false` döndürülür. |
 
 >[!TIP]
->Bir dosya, klasör veya tablonun var olduğunu doğrulamak istediğinizde meta verileri al etkinlik alanı listesini `exists` belirtin. Ardından, etkinlik çıkışında `exists: true/false` sonucu kontrol edebilirsiniz. `exists` Alan listesinde belirtilmemişse, nesne bulunamazsa meta verileri Al etkinliği başarısız olur.
+>Bir dosya, klasör veya tablonun var olduğunu doğrulamak istediğinizde meta verileri al etkinlik alanı listesinde `exists` belirtin. Ardından, etkinlik çıkışında `exists: true/false` sonucunu kontrol edebilirsiniz. Alan listesinde `exists` belirtilmemişse, nesne bulunamazsa meta verileri Al etkinliği başarısız olur.
 
 >[!NOTE]
->Dosya mağazalarından meta veriler alırken ve veya `modifiedDatetimeStart` `modifiedDatetimeEnd`' ı yapılandırdığınızda, `childItems` yalnızca belirtilen aralıktaki son değiştirme zamanına sahip olan verilen yoldaki dosyaları dahil eder. ' De alt klasörlerdeki öğeler dahil değildir.
+>Dosya mağazalarından meta verileri alırken ve `modifiedDatetimeStart` veya `modifiedDatetimeEnd`yapılandırdığınızda, çıkışdaki `childItems`, yalnızca belirtilen aralıktaki son değiştirme zamanına sahip olan verilen yoldaki dosyaları içerir. ' De alt klasörlerdeki öğeler dahil değildir.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -137,7 +137,7 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
 fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Evet 
-veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Evet
+Veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Evet
 formatSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
 storeSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
 

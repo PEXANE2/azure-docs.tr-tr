@@ -1,6 +1,6 @@
 ---
-title: Videoları - Azure SQL veri ambarı | Microsoft Docs
-description: Azure SQL veri ambarı için çeşitli video çalma listeleri bağlar.
+title: Videolar
+description: Azure SQL veri ambarı için çeşitli video çalma listelerine bağlantılar.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,18 +10,19 @@ ms.subservice: manage
 ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 52f61f606ddf28c23eb3f72ff91c68a47b667ea1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5d01ff2eb74844997eb1640123e4af59abe2340b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595448"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692445"
 ---
-# <a name="azure-sql-data-warehouse---videos"></a>Azure SQL veri ambarı - video
+# <a name="azure-sql-data-warehouse---videos"></a>Azure SQL veri ambarı-videolar
 
-Yeni özellikler ve performans iyileştirmeleri hakkında bilgi edinmek için en yeni Azure SQL veri ambarı videoları izleyin. 
+Yeni özellikler ve performans iyileştirmeleri hakkında bilgi edinmek için en son Azure SQL veri ambarı videolarını izleyin. 
 
-Başlamak için Azure SQL veri ambarı yeni güncelleştirmeleri hakkında daha fazla bilgi edinmek için aşağıdaki genel bakış videosunu seçin. Ayrıca, Modern veri ambarı desenleri gerçek dünya senaryoları gibi siber gidermek için nasıl kullanılabileceğini öğrenin.
+Başlamak için, Azure SQL veri ambarı 'na yönelik yeni güncelleştirmeler hakkında bilgi edinmek üzere aşağıdaki genel bakış videosunu seçin. Ayrıca, modern veri ambarı desenlerinin sicrı gibi gerçek dünyada senaryolar için nasıl kullanılabileceğini öğrenin.
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">
@@ -30,8 +31,8 @@ Başlamak için Azure SQL veri ambarı yeni güncelleştirmeleri hakkında daha 
   </div>
 </a>
 
-Belirli işlevlerini açıklayan videolar görüntülenebilir: 
-- [YouTube: Azure ile Gelişmiş analiz](https://www.youtube.com/playlist?list=PLLasX02E8BPClOvjNV9bXk3LUuf3nQiS2)
+Belirli işlevleri açıklayan ek videolar şu şekilde görüntülenebilir: 
+- [YouTube: Azure ile gelişmiş analiz](https://www.youtube.com/playlist?list=PLLasX02E8BPClOvjNV9bXk3LUuf3nQiS2)
 - [Azure videoları](https://azure.microsoft.com/resources/videos/index/?services=sql-data-warehouse)
 
 

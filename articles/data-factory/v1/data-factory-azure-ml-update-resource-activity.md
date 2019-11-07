@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory kullanarak Machine Learning modellerini güncelleştirme | Microsoft Docs
+title: Azure Data Factory kullanarak Machine Learning modellerini güncelleştirme
 description: Azure Data Factory ve Azure Machine Learning kullanarak tahmine dayalı işlem hatları oluşturma işlemini açıklar.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: a980f269c8b88618ffa3311c05310a88ade379ed
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140465"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683129"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Kaynak güncelleştirme etkinliğini kullanarak Azure Machine Learning modellerini güncelleştirme
 
@@ -36,7 +36,7 @@ ms.locfileid: "70140465"
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory makine öğrenimi modellerini güncelleştirme](../update-machine-learning-models.md).
 
-Bu makale, ana Azure Data Factory Azure Machine Learning tümleştirme makalesini tamamlar: [Azure Machine Learning ve Azure Data Factory kullanarak tahmine dayalı işlem hatları oluşturun](data-factory-azure-ml-batch-execution-activity.md). Daha önce yapmadıysanız, bu makaleyi okumadan önce ana makaleyi gözden geçirin. 
+Bu makalede, [Azure Machine Learning ve Azure Data Factory kullanarak tahmine dayalı işlem hatları oluşturma](data-factory-azure-ml-batch-execution-activity.md)ana Azure Data Factory Azure Machine Learning tümleştirme makalesini tamamlar. Daha önce yapmadıysanız, bu makaleyi okumadan önce ana makaleyi gözden geçirin. 
 
 ## <a name="overview"></a>Genel Bakış
 Zaman içinde, Azure ML Puanlama denemeleri 'in tahmine dayalı modellerinin yeni giriş veri kümeleri kullanılarak geri çekilmesi gerekir. Yeniden eğitimle işiniz bittiğinde, Puanlama Web hizmetini geri çekme ML modeliyle güncelleştirmek istiyorsunuz. Web Hizmetleri aracılığıyla yeniden eğitime ve Azure ML modellerini güncelleştirmeye yönelik tipik adımlar şunlardır:

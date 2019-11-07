@@ -1,5 +1,5 @@
 ---
-title: Parçalı Azure SQL veritabanlarını sorgulama | Microsoft Docs
+title: Oluşturulmuş Azure SQL veritabanlarını sorgulama
 description: Elastik veritabanı istemci kitaplığını kullanarak parçalar arasında sorguları çalıştırın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 471af9e1bc699ccaa8bc930ab930d6d40bbdc984
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 108da61323f61b009fbfdedac4cd345c6b87a7be
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568378"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690169"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanarak çok parçalı sorgulama
 
@@ -24,7 +24,7 @@ ms.locfileid: "68568378"
 
 [Elastik veritabanı araçlarıyla](sql-database-elastic-scale-introduction.md), parçalı veritabanı çözümleri oluşturabilirsiniz. **Çok parçalı sorgulama** , çeşitli parçalar arasında bir sorgu çalıştırmayı gerektiren veri toplama/raporlama gibi görevler için kullanılır. (Bunu, tek parça üzerinde tüm işleri gerçekleştiren [veriye bağımlı yönlendirmeye](sql-database-elastic-scale-data-dependent-routing.md)tersine getirir.)
 
-1. **Trygetrangeshardmap** [(Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), .net [](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)),[](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap) **trygetlistshardmap** [](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap) [](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)[](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap) [](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1) [(Java, .net) kullanarak bir rangeshardmap (Java, .net) veya listshardmap (Java, .net) alın. .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) veya **Getshardmap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)) yöntemi. Bkz. [bir ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) oluşturma ve [bir rangeshardmap veya listshardmap 'i edinme](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
+1. **Trygetrangeshardmap** [(Java, .net](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap)), **Trygetlistshardmap** [](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap) [](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)[](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap)[](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap) [](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap) [](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) [(Java, .net) kullanarak bir rangeshardmap (Java, .net) veya listshardmap (Java, .net) alın. .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) veya **Getshardmap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)) yöntemi. Bkz. [bir ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) oluşturma ve [bir rangeshardmap veya listshardmap 'i edinme](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
 2. **Multishardconnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)) nesnesi oluşturun.
 3. **Multishardor ve MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) oluşturun.
 4. **CommandText özelliğini** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) bir T-SQL komutuna ayarlayın.

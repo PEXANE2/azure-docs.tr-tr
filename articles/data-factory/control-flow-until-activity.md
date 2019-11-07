@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory etkinlik tarihine kadar | Microsoft Docs
+title: Azure Data Factory etkinlik tarihine kadar
 description: Until etkinliği, etkinlik ile ilişkili koşul doğru olarak değerlendirilene veya zaman aşımına uğrayana kadar bir dizi etkinliği yürütür.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 80eebf0813b6403d5e1e8ff510003f7f0f57c821
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ab24b4f3a819e2b44c68d052c355f10219eb1dc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142457"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679347"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory etkinlik tarihine kadar
 Until etkinliği, programlama dillerinde bir do-Until döngü yapısının sağladığı işlevleri sağlar. Etkinlikle ilişkilendirilmiş olan koşul doğru sonucunu verene kadar bir dizi etkinliği döngüsel olarak yürütür. Data Factory'de bitiş etkinliği için bir zaman aşımı değeri belirtebilirsiniz. 
@@ -53,11 +53,11 @@ Until etkinliği, programlama dillerinde bir do-Until döngü yapısının sağl
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | `Until` Etkinliğin adı. | Dize | Evet
+ad | `Until` etkinliğin adı. | Dize | Evet
 type | To **until**olarak ayarlanmalıdır. | Dize | Evet
-expression | True veya false sonucunu vermesi gereken ifade | İfadesini.  | Evet
-zaman aşımı | Do-Until döngüsü, belirtilen süreden sonra zaman aşımına uğrar. | Dizisinde. `d.hh:mm:ss`veya `hh:mm:ss`. Varsayılan değer 7 gündür. En büyük değer: 90 gün. | Hayır
-Etkinlikler | İfadesi olarak `true`değerlendirilene kadar yürütülen etkinlik kümesi. | Etkinlik dizisi. |  Evet
+ifadesini | True veya false sonucunu vermesi gereken ifade | İfadesini.  | Evet
+timeout | Do-Until döngüsü, belirtilen süreden sonra zaman aşımına uğrar. | dizisinde. `d.hh:mm:ss` (veya) `hh:mm:ss`. Varsayılan değer 7 gündür. Maksimum değer: 90 gün. | Hayır
+Etkinlikler | İfade `true`olarak değerlendirilene kadar yürütülen etkinlik kümesi. | Etkinlik dizisi. |  Evet
 
 ## <a name="example-1"></a>Örnek 1
 
@@ -65,7 +65,7 @@ Etkinlikler | İfadesi olarak `true`değerlendirilene kadar yürütülen etkinli
 > Bu bölüm, işlem hattını çalıştırmak için JSON tanımları ve örnek PowerShell komutları sağlar. Azure PowerShell ve JSON tanımlarını kullanarak Data Factory işlem hattı oluşturmaya yönelik adım adım yönergeler için bkz. [öğretici: Azure PowerShell kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-until-activity"></a>Etkinlik Until işlem hattı
-Bu örnekte, işlem hattının iki etkinliği vardır: **Until** ve **bekle**. Bekleme etkinliği, döngüsünde Web etkinliğini çalıştırmadan önce belirtilen süre boyunca bekler. Data Factory ifadeler ve işlevler hakkında bilgi edinmek için bkz. [Expression Language and Functions](control-flow-expression-language-functions.md). 
+Bu örnekte, işlem hattının iki etkinliği vardır: **until** ve **wait**. Bekleme etkinliği, döngüsünde Web etkinliğini çalıştırmadan önce belirtilen süre boyunca bekler. Data Factory ifadeler ve işlevler hakkında bilgi edinmek için bkz. [Expression Language and Functions](control-flow-expression-language-functions.md). 
 
 ```json
 {
@@ -249,7 +249,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen bir döngüde ç�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu komutlar, JSON dosyalarını klasörüne kaydettiğiniz varsayılmaktadır: C:\ADF. 
+Bu komutlar JSON dosyalarını klasörüne kaydettiğiniz varsayılmaktadır: C:\ADF. 
 
 ```powershell
 Connect-AzAccount

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory 'de etkinlik Değiştir | Microsoft Docs
+title: Azure Data Factory etkinlik değiştirme
 description: Switch etkinliği, işleme akışını bir koşula göre denetlemenizi sağlar.
 services: data-factory
 author: djpmsft
@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 3f60965ad54fb94e7f69b69c161b482f0b953c5a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 582e0c6b9f6a51f97e8d4990634ceac61c6d9f23
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293959"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679411"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure Data Factory etkinlik değiştirme
 
@@ -65,13 +65,13 @@ Switch etkinliği, programlama dillerinde bir switch ifadesinin sağladığı i�
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Özellik | Açıklama | İzin verilen değerler | Gereklidir
+Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | Anahtar etkinliğinin adı. | Dize | Yes
-type | @No__t-1 *anahtarına*ayarlanmalıdır | Dize | Yes
-ifadesini | Dize değeri değerlendirmesi gereken ifade | Sonuç türü dize olan ifade | Yes
-çalışmaların | Değer ifade değerlendirmesiyle eşleştiğinde yürütülecek bir değer ve bir etkinlik kümesi içeren servis talepleri kümesi. En az bir örnek sağlanmalıdır. 25 servis talebi için maksimum sınır vardır. | Case nesneleri dizisi | Yes
-Defaultacmize | İfade değerlendirmesi karşılanmadığı zaman yürütülen etkinlik kümesi. | Etkinlik dizisi | Yes
+ad | Anahtar etkinliğinin adı. | Dize | Evet
+type | *Switch** olarak ayarlanmalıdır | Dize | Evet
+ifadesini | Dize değeri değerlendirmesi gereken ifade | Sonuç türü dize olan ifade | Evet
+çalışmaların | Değer ifade değerlendirmesiyle eşleştiğinde yürütülecek bir değer ve bir etkinlik kümesi içeren servis talepleri kümesi. En az bir örnek sağlanmalıdır. 25 servis talebi için maksimum sınır vardır. | Case nesneleri dizisi | Evet
+Defaultacmize | İfade değerlendirmesi karşılanmadığı zaman yürütülen etkinlik kümesi. | Etkinlik dizisi | Evet
 
 ## <a name="example"></a>Örnek
 

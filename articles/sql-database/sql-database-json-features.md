@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı 'nda JSON verileriyle çalışma | Microsoft Docs
+title: Azure SQL veritabanı 'nda JSON verileriyle çalışma
 description: Azure SQL veritabanı, JavaScript Nesne Gösterimi (JSON) gösteriminde verileri ayrıştırabilmenizi, sorgulamanıza ve biçimlendirmenize olanak sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,19 +11,19 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
-ms.openlocfilehash: 3a09fba3f01eec6c712bad67ef10b8b5c55fb33e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2fe760e3792b5540b18946fd9dbcc5d571b50ee9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567849"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689650"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL veritabanı 'nda JSON özellikleriyle çalışmaya başlama
 Azure SQL veritabanı, JavaScript Nesne Gösterimi [(JSON)](https://www.json.org/) biçiminde temsil edilen verileri ayrıştırabilmenizi ve sorgulamanızı ve ILIŞKISEL verilerinizi JSON metni olarak dışarı aktarmanızı sağlar. Azure SQL veritabanı 'nda aşağıdaki JSON senaryoları kullanılabilir:
-- Yan tümcesini kullanarak `FOR JSON` [JSON biçimindeki ilişkisel verileri biçimlendirme](#formatting-relational-data-in-json-format) .
+- `FOR JSON` yan tümcesini kullanarak [JSON biçimindeki ilişkisel verileri biçimlendirme](#formatting-relational-data-in-json-format) .
 - [JSON verileriyle çalışma](#working-with-json-data)
 - JSON skalar işlevleri kullanılarak [JSON verileri sorgulanıyor](#querying-json-data) .
-- İşlevi kullanarak `OPENJSON` [JSON tablo biçimine dönüştürülüyor](#transforming-json-into-tabular-format) .
+- `OPENJSON` işlevi kullanılarak [JSON tablo biçimine dönüştürülüyor](#transforming-json-into-tabular-format) .
 
 ## <a name="formatting-relational-data-in-json-format"></a>JSON biçimindeki ilişkisel verileri biçimlendirme
 Veritabanı katmanından veri alan bir Web hizmetiniz varsa ve JSON biçiminde bir yanıt veya JSON biçiminde biçimlendirilen verileri kabul eden bir istemci tarafı JavaScript çerçeveleri veya kitaplıklarını içeriyorsa, veritabanı içeriğinizi doğrudan bir SQL sorgusunda JSON olarak biçimlendirebilirsiniz. Artık Azure SQL veritabanı 'ndan gelen sonuçları JSON olarak biçimlendiren uygulama kodu yazmanız gerekmez veya tablo sorgu sonuçlarını dönüştürmek ve ardından nesneleri JSON biçimine seri hale getirmek için bazı JSON serileştirme kitaplığı dahil etmeniz gerekmez. Bunun yerine, FOR JSON yan tümcesini kullanarak SQL sorgu sonuçlarını Azure SQL veritabanı 'nda JSON olarak biçimlendirebilir ve doğrudan uygulamanızda kullanabilirsiniz.
@@ -71,7 +71,7 @@ Bu sorgunun çıktısı şöyle görünür:
 
 Bu örnekte, [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) seçeneğini belirterek dizi yerine tek bir JSON nesnesi döndürüyoruz. Sorgu sonucu olarak tek bir nesne döndürdüğünü biliyorsanız, bu seçeneği kullanabilirsiniz.
 
-FOR JSON yan tümcesinin ana değeri, veritabanınızdaki iç içe geçmiş JSON nesneleri veya diziler olarak biçimlendirilen karmaşık hiyerarşik verileri döndürmenize olanak tanır. Aşağıdaki örnek, `Orders` `Customer` öğesinin `Orders`iç içe bir dizisi olarak öğesine ait olan tablodaki satırların nasıl ekleneceğini gösterir:
+FOR JSON yan tümcesinin ana değeri, veritabanınızdaki iç içe geçmiş JSON nesneleri veya diziler olarak biçimlendirilen karmaşık hiyerarşik verileri döndürmenize olanak tanır. Aşağıdaki örnek, `Orders`iç içe geçmiş dizisi olarak `Customer` ait `Orders` tablosundan satırların nasıl ekleneceğini gösterir:
 
 ```
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
@@ -166,7 +166,7 @@ OPENJSON, JSON metnini ayrıştırır, JSON nesnelerinin bir dizisini bulur, diz
 
 Yukarıdaki örnekte, açılması gereken JSON dizisinin yerini nerede bulabileceğiniz belirtebilirsiniz ($. Siparişler yolu), sonuç olarak döndürülecek sütunlar ve hücre olarak döndürülecek JSON değerlerinin nerede bulunacağı.
 
-@orders Değişkende bir JSON dizisini bir dizi satıra dönüştürebiliriz, bu sonuç kümesini çözümleyebilir veya bir standart tabloya satır ekleyebilirsiniz:
+@orders değişkeninde bir JSON dizisini bir dizi satıra dönüştürebiliriz, bu sonuç kümesini çözümleyebilir veya bir standart tabloya satır ekleyebilirsiniz:
 
 ```
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))

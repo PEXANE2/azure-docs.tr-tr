@@ -1,5 +1,5 @@
 ---
-title: Hareketli uygulama yükseltmeleri-Azure SQL veritabanı | Microsoft Docs
+title: Hareketli uygulama yükseltmeleri-Azure SQL veritabanı
 description: Bulut uygulamanızın çevrimiçi yükseltmelerini desteklemek için Azure SQL veritabanı coğrafi çoğaltma 'nın nasıl kullanılacağını öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 55b23b8d8e03a79aa0806a68306017f89c747760
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 253a10e75832cf6ee8294405e34fa93b801c1b49
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567777"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689491"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL veritabanı etkin coğrafi çoğaltma kullanarak bulut uygulamalarının sıralı yükseltmelerini yönetme
 
@@ -31,10 +31,10 @@ Yükseltme seçeneklerini değerlendirirken, şu faktörleri göz önünde bulun
 
 ## <a name="upgrade-applications-that-rely-on-database-backups-for-disaster-recovery"></a>Olağanüstü durum kurtarma için veritabanı yedeklemelerine güvenen uygulamaları yükseltme
 
-Uygulamanız otomatik veritabanı yedeklemelerine dayanıyorsa ve olağanüstü durum kurtarma için coğrafi geri yükleme kullanıyorsa, tek bir Azure bölgesine dağıtılır. Kullanıcı kesintisini en aza indirmek için, bu bölgede, yükseltmede yer alan tüm uygulama bileşenlerine sahip bir hazırlama ortamı oluşturun. İlk diyagramda yükseltme işleminden önce işletimsel ortam gösterilmektedir. Uç nokta `contoso.azurewebsites.net` , Web uygulamasının üretim ortamını temsil eder. Yükseltmeyi geri almak için veritabanının tamamen eşitlenmiş kopyasıyla bir hazırlama ortamı oluşturmanız gerekir. Yükseltme için bir hazırlama ortamı oluşturmak için aşağıdaki adımları izleyin:
+Uygulamanız otomatik veritabanı yedeklemelerine dayanıyorsa ve olağanüstü durum kurtarma için coğrafi geri yükleme kullanıyorsa, tek bir Azure bölgesine dağıtılır. Kullanıcı kesintisini en aza indirmek için, bu bölgede, yükseltmede yer alan tüm uygulama bileşenlerine sahip bir hazırlama ortamı oluşturun. İlk diyagramda yükseltme işleminden önce işletimsel ortam gösterilmektedir. Uç nokta `contoso.azurewebsites.net` Web uygulamasının üretim ortamını temsil eder. Yükseltmeyi geri almak için veritabanının tamamen eşitlenmiş kopyasıyla bir hazırlama ortamı oluşturmanız gerekir. Yükseltme için bir hazırlama ortamı oluşturmak için aşağıdaki adımları izleyin:
 
 1. Aynı Azure bölgesinde ikincil bir veritabanı oluşturun. Dengeli dağıtım işleminin tamamlanıp tamamlanmamın (1) olup olmadığını görmek için ikincili izleyin.
-2. Web uygulamanız için yeni bir ortam oluşturun ve bunu ' hazırlama ' olarak çağırın. URL `contoso-staging.azurewebsites.net` ile Azure DNS kaydedilecek (2).
+2. Web uygulamanız için yeni bir ortam oluşturun ve bunu ' hazırlama ' olarak çağırın. `contoso-staging.azurewebsites.net` URL 'SI ile Azure DNS kaydedilecek (2).
 
 > [!NOTE]
 > Bu hazırlık adımları üretim ortamını etkilemez ve bu, tam erişim modunda işlev görebilir.
@@ -51,7 +51,7 @@ Hazırlama adımları tamamlandığında, uygulama gerçek yükseltme için geç
 
 Yükseltme başarılı bir şekilde tamamlansa, artık kullanıcıları yükseltilen kopyaya, üretim ortamı haline gelen uygulamaya geçmeye hazırsınız demektir. Geçiş, sonraki diyagramda gösterildiği gibi birkaç adımdan oluşur:
 
-1. Web uygulamasının üretim ve hazırlama ortamları (6) arasında bir takas işlemini etkinleştirin. Bu işlem, iki ortamın URL 'Lerini değiştirir. Şimdi `contoso.azurewebsites.net` Web sitesinin v2 sürümüne ve veritabanına (üretim ortamı) işaret eder. 
+1. Web uygulamasının üretim ve hazırlama ortamları (6) arasında bir takas işlemini etkinleştirin. Bu işlem, iki ortamın URL 'Lerini değiştirir. Artık `contoso.azurewebsites.net` Web sitesinin v2 sürümüne ve veritabanına (üretim ortamı) işaret eder. 
 2. Artık, değiştirme sonrasında hazırlama kopyası olan v1 sürümüne ihtiyacınız yoksa, hazırlama ortamının yetkisini alabilirsiniz (7).
 
 ![Bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırması.](media/sql-database-manage-application-rolling-upgrade/option1-3.png)
@@ -79,13 +79,13 @@ Uygulamanız iş sürekliliği için etkin coğrafi çoğaltma veya otomatik yü
 * Uygulama, yükseltme işlemi sırasında her zaman çok zararlı hatalardan korunmuş olarak kalır.
 * Uygulamanın coğrafi olarak yedekli bileşenleri, etkin bileşenlerle paralel olarak yükseltilir.
 
-Bu hedeflere ulaşmak için, Web Apps ortamlarını kullanmanın yanı sıra, etkin bir uç nokta ve bir yedekleme uç noktası olan bir yük devretme profili kullanarak Azure Traffic Manager avantajlarından yararlanabilirsiniz. Sonraki diyagramda, yükseltme işleminden önce işletimsel ortam gösterilmektedir. Web siteleri `contoso-1.azurewebsites.net` ve `contoso-dr.azurewebsites.net` tam coğrafi yedeklilik ile uygulamanın üretim ortamını temsil eder. Üretim ortamı aşağıdaki bileşenleri içerir:
+Bu hedeflere ulaşmak için, Web Apps ortamlarını kullanmanın yanı sıra, etkin bir uç nokta ve bir yedekleme uç noktası olan bir yük devretme profili kullanarak Azure Traffic Manager avantajlarından yararlanabilirsiniz. Sonraki diyagramda, yükseltme işleminden önce işletimsel ortam gösterilmektedir. `contoso-1.azurewebsites.net` ve `contoso-dr.azurewebsites.net` Web siteleri, tam coğrafi yedeklilik ile uygulamanın üretim ortamını temsil eder. Üretim ortamı aşağıdaki bileşenleri içerir:
 
-* Birincil bölgedeki Web uygulamasının `contoso-1.azurewebsites.net` üretim ortamı (1)
+* Web uygulamasının üretim ortamı, birincil bölgedeki `contoso-1.azurewebsites.net` (1)
 * Birincil bölgedeki birincil veritabanı (2)
 * Yedekleme bölgesindeki Web uygulamasının bekleme örneği (3)
 * Yedekleme bölgesindeki coğrafi çoğaltılan ikincil veritabanı (4)
-* Bir çevrimiçi uç noktası `contoso-1.azurewebsites.net` adlı Traffic Manager performans profili ve çevrimdışı bir uç nokta çağrıldı`contoso-dr.azurewebsites.net`
+* `contoso-1.azurewebsites.net` adlı bir çevrimiçi uç noktaya sahip Traffic Manager performans profili ve `contoso-dr.azurewebsites.net` adlı bir çevrimdışı uç nokta.
 
 Yükseltmeyi geri almayı olanaklı kılmak için, uygulamanın tamamen eşitlenmiş kopyasıyla bir hazırlama ortamı oluşturmanız gerekir. Yükseltme işlemi sırasında çok zararlı bir hata oluşması durumunda uygulamanın hızlı bir şekilde kurtarılabileceğinden emin olmanız gerektiğinden, hazırlama ortamının da coğrafi olarak yedekli olması gerekir. Yükseltme için bir hazırlama ortamı oluşturmak için aşağıdaki adımlar gereklidir:
 
@@ -117,7 +117,7 @@ ALTER DATABASE <Prod_DB>
 REMOVE SECONDARY ON SERVER <Partner-Server>
 ```
 
-3. Yükseltme betiğini `contoso-1-staging.azurewebsites.net` `contoso-dr-staging.azurewebsites.net`, ve hazırlama birincil veritabanında (12) çalıştırın. Veritabanı değişiklikleri otomatik olarak hazırlama ikincil öğesine çoğaltılır.
+3. Yükseltme betiğini `contoso-1-staging.azurewebsites.net`, `contoso-dr-staging.azurewebsites.net`ve hazırlama birincil veritabanına (12) karşı çalıştırın. Veritabanı değişiklikleri otomatik olarak hazırlama ikincil öğesine çoğaltılır.
 
 ![Bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırması.](media/sql-database-manage-application-rolling-upgrade/option2-2.png)
 

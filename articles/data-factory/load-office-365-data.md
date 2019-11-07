@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory kullanarak Office 365 'den veri yükleme | Microsoft Docs
+title: Azure Data Factory kullanarak Office 365 ' den veri yükleme
 description: Office 365 ' den veri kopyalamak için Azure Data Factory kullanma
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: da3d407b39ef00154b717b54213a3b40d2d110bb
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0c938caef81063409d3c8d6632cd7e8df99f1ea1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754645"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672611"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Office 365 ' den veri yükleme
 
@@ -24,7 +24,7 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_Data Fa
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol menüde **kaynak oluştur**  > **analiz**  > **Data Factory**' yı seçin: 
+1. Sol menüde **kaynak oluştur** > **analiz** > **Data Factory**' yı seçin: 
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 

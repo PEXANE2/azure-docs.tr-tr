@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı hizmet katmanları-DTU tabanlı satın alma modeli | Microsoft Docs
+title: 'Azure SQL veritabanı hizmet katmanları-DTU tabanlı satın alma modeli '
 description: İşlem ve depolama boyutları sağlamak üzere tek ve havuza alınmış veritabanları için DTU tabanlı satın alma modelindeki hizmet katmanları hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: e735d8832912f5b512b7cfe015ca47efbe641da7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 43f4f9e0d1e5f33dde32e5274dddf9d17776db21
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000433"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687306"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU tabanlı satın alma modelindeki hizmet katmanları
 
@@ -39,8 +39,8 @@ Bir hizmet katmanını seçmek, birincil olarak iş sürekliliği, depolama ve p
 |CPU|Düşük|Düşük, orta, yüksek|Orta, yüksek|
 |GÇ verimlilik (yaklaşık) |DTU başına 1-5 ıOPS| DTU başına 1-5 ıOPS | DTU başına 25 ıOPS|
 |GÇ gecikme süresi (yaklaşık)|5 ms (okuma), 10 MS (yazma)|5 ms (okuma), 10 MS (yazma)|2 ms (okuma/yazma)|
-|Columnstore dizin oluşturma |Yok|S3 ve üzeri|Desteklenen|
-|Bellek içi OLTP|Yok|Yok|Desteklenen|
+|Columnstore dizin oluşturma |Yok|S3 ve üzeri|Destekleniyor|
+|Bellek içi OLTP|Yok|Yok|Destekleniyor|
 |||||
 
 > [!NOTE]

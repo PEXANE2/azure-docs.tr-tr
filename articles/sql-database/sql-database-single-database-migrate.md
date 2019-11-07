@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı 'nda tek/havuza alınmış bir veritabanına veritabanı geçişini SQL Server | Microsoft Docs
+title: Azure SQL veritabanı 'nda tek/havuza alınmış bir veritabanına veritabanı geçişini SQL Server
 description: Azure SQL veritabanı 'nda tek bir veritabanına veya elastik bir havuza veritabanı geçişi SQL Server hakkında bilgi edinin.
 keywords: veritabanı geçişi,sql server veritabanı geçişi,veritabanı taşıma araçları,veritabanı taşıma,sql veritabanı geçişi
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: a156d73c7eedcbdf7c703b946a26d46ca9129632
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 67030d14670ccc51c89a04863f8b39ab6a9bb183
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566604"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687190"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Azure SQL veritabanı 'na SQL Server veritabanı geçişi
 
@@ -64,7 +64,7 @@ Aşağıdaki liste, içeri aktarma işlemi sırasında en iyi performans için �
 
 Geçiş tamamlandıktan sonra tam tarama ile [istatistikleri güncelleştirin](https://msdn.microsoft.com/library/ms187348.aspx).
 
-## <a name="method-2-use-transactional-replication"></a>Yöntem 2: Işlem çoğaltma kullanma
+## <a name="method-2-use-transactional-replication"></a>Yöntem 2: İşlem Çoğaltma Kullanma
 
 Geçiş gerçekleşirken SQL Server veritabanınızı üretimden kaldırmak kabul edilebilir bir durum değilse, geçiş çözümü olarak SQL Server işlem çoğaltmayı kullanabilirsiniz. Bu yöntemi kullanmak için, kaynak veritabanının [işlem çoğaltma gereksinimlerini](https://msdn.microsoft.com/library/mt589530.aspx) karşılaması ve Azure SQL Veritabanı ile uyumlu olması gerekir. Her zaman açık olan SQL çoğaltma hakkında daha fazla bilgi için bkz. [Always on kullanılabilirlik grupları Için çoğaltmayı yapılandırma (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
 

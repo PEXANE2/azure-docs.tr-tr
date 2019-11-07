@@ -1,5 +1,5 @@
 ---
-title: Performans önerileri-Azure SQL veritabanı | Microsoft Docs
+title: Performans önerileri-Azure SQL veritabanı
 description: Azure SQL veritabanı, geçerli sorgu performansını iyileştirebilecek SQL veritabanlarınıza yönelik öneriler sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 08def3ac2fd94f01586bc690d867c04758b8856b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de6ddd8886f8cadafa57724a5d5e33a3ba4e3c74
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569532"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691255"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL veritabanı için performans önerileri
 
@@ -39,7 +39,7 @@ Dizin oluşturma önerisi uygulandıktan sonra Azure SQL veritabanı, sorguları
 
 Herhangi bir **Dizin oluşturma** önerisi, bir veritabanının veya havuzun kaynak kullanımı yüksek olduğunda öneriyi uygulamaya izin veren bir geri dönüş ilkesine sahiptir. Geri ödeme ilkesi, hesap CPU 'SU, veri GÇ, günlük GÇ ve kullanılabilir depolama alanına girer. 
 
-CPU, veri GÇ veya günlük GÇ, önceki 30 dakika içinde% 80 ' den yüksekse, dizin oluşturma önerisi ertelenir. Kullanılabilir depolama alanı dizin oluşturulduktan sonra% 10 ' un altında olursa öneri bir hata durumuna geçer. Birkaç gün sonra otomatik ayarlama, dizinin faydalı olacağını düşünmeye devam ediyorsa, işlem yeniden başlatılır. 
+CPU, veri GÇ veya günlük GÇ, önceki 30 dakika içinde %80 ' den yüksekse, dizin oluşturma önerisi ertelenir. Kullanılabilir depolama alanı dizin oluşturulduktan sonra %10 ' un altında olursa öneri bir hata durumuna geçer. Birkaç gün sonra otomatik ayarlama, dizinin faydalı olacağını düşünmeye devam ediyorsa, işlem yeniden başlatılır. 
 
 Bu işlem, dizin oluşturmak için yeterli kullanılabilir depolama alanı olana kadar veya dizin artık yararlı olarak görülene kadar yinelenir.
 
@@ -76,7 +76,7 @@ SQL veritabanı hizmeti, SQL veritabanınızda oluşan şema ile ilgili SQL hata
 
 Azure SQL veritabanı hizmeti, SQL veritabanınızda oluşan şemaya ilişkin SQL hatalarının sayısında bir anomali fark edildiğinde "şema sorununu çözme" önerisi görüntülenir. Aşağıdaki tabloda, şema sorunlarıyla ilgili hatalar gösterilmektedir:
 
-| SQL hata kodu | `Message` |
+| SQL hata kodu | İleti |
 | --- | --- |
 | 201 |' ' Yordamı veya işlevi, sağlanmamış *' ' parametresini bekliyor*. |
 | 207 |Geçersiz sütun adı ' * '. |

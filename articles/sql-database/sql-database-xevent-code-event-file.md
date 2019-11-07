@@ -1,5 +1,5 @@
 ---
-title: SQL veritabanı için XEvent olay dosyası kodu | Microsoft Docs
+title: SQL veritabanı için XEvent olay dosyası kodu
 description: Azure SQL veritabanı 'nda genişletilmiş bir olayda olay dosyası hedefini gösteren iki aşamalı kod örneği için PowerShell ve Transact-SQL sağlar. Azure depolama, bu senaryonun gerekli bir parçasıdır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 03/12/2019
-ms.openlocfilehash: f0994f92444da338b18447eb1b248c74df9aa2d2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ea5c90433a4d2928e5fb88df149631c80df9dacf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566107"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686827"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL veritabanı 'nda genişletilmiş olaylar için olay dosyası hedef kodu
 
@@ -34,7 +34,7 @@ Bu konuda, iki aşamalı bir kod örneği sunulmaktadır:
   * Azure depolama kapsayıcısını bir olay dosyası hedefine atamak için.
   * Olay oturumu oluşturmak ve başlatmak için ve bu şekilde devam edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -233,7 +233,7 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 
 PowerShell betiğinin bittiği sırada yazdırdığı birkaç adlandırılmış değeri unutmayın. Bu değerleri, Aşama 2 olarak takip eden Transact-SQL betiğine düzenlemeniz gerekir.
 
-## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>2\. Aşama: Azure depolama kapsayıcısını kullanan Transact-SQL kodu
+## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>2\. Aşama: Azure Storage kapsayıcısını kullanan Transact-SQL kodu
 
 * Bu kod örneğinin 1. aşamasında, bir Azure depolama kapsayıcısı oluşturmak için bir PowerShell betiği çalıştırdınız.
 * Sonraki aşama 2 ' de, aşağıdaki Transact-SQL betiği kapsayıcıyı kullanmalıdır.
@@ -461,11 +461,11 @@ GO
 ```
 
 
-## <a name="output"></a>Output
+## <a name="output"></a>Çıktı
 
-Transact-SQL betiği tamamlandığında, **event_data_XML** sütun üst bilgisinin altındaki bir hücreye tıklayın. Tek bir Update ifadesini gösteren bir  **\<Event >** öğesi görüntülenir.
+Transact-SQL betiği tamamlandığında, **event_data_XML** sütun üst bilgisinin altındaki bir hücreye tıklayın. Tek bir UPDATE ifadesini gösteren bir **\<event >** öğesi görüntülenir.
 
-Test sırasında oluşturulan bir  **\<olay >** öğesi aşağıda verilmiştir:
+Test sırasında oluşturulan bir **\<event >** öğesi aşağıda verilmiştir:
 
 
 ```xml
@@ -510,7 +510,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Yukarıdaki Transact-SQL betiği, event_file okumak için aşağıdaki sistem işlevini kullandı:
 
-* [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+* [sys. fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
 Genişletilmiş olaylardan verilerin görüntülenmesine yönelik gelişmiş seçeneklerin açıklaması şurada bulunabilir:
 
@@ -534,8 +534,8 @@ Azure depolama hizmetindeki hesaplar ve kapsayıcılar hakkında daha fazla bilg
 * [.NET 'ten blob depolamayı kullanma](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](https://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [Kök Kapsayıcınle çalışma](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [Ders 1: Azure kapsayıcısında depolanan erişim ilkesi ve paylaşılan erişim imzası oluşturma](https://msdn.microsoft.com/library/dn466430.aspx)
-  * [2. ders: Paylaşılan erişim imzasını kullanarak SQL Server kimlik bilgisi oluşturma](https://msdn.microsoft.com/library/dn466435.aspx)
+* [1. ders: bir Azure kapsayıcısında depolanan erişim ilkesi ve paylaşılan erişim imzası oluşturma](https://msdn.microsoft.com/library/dn466430.aspx)
+  * [2. ders: paylaşılan erişim imzası kullanarak SQL Server kimlik bilgileri oluşturma](https://msdn.microsoft.com/library/dn466435.aspx)
 * [Microsoft SQL Server için genişletilmiş olaylar](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 
 <!--

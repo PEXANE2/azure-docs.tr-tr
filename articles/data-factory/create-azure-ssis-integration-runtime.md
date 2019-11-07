@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory 'de bir Azure-SSIS tümleştirme çalışma zamanı oluşturma | Microsoft Docs
+title: Azure Data Factory 'de bir Azure-SSIS tümleştirme çalışma zamanı oluşturma
 description: Azure 'da SSIS paketlerini dağıtıp çalıştırmak için Azure Data Factory 'de Azure-SSIS tümleştirme çalışma zamanı oluşturmayı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ddc91a3317d362f6b56e486556f2edf6cdb85131
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ce688248a205981f4a4c60ad01231c0b8f6bae3d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326687"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73677367"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory 'de bir Azure-SSIS tümleştirme çalışma zamanı oluşturma
 
@@ -26,7 +26,7 @@ Bu makalede, Azure Data Factory bir Azure-SQL Server Integration Services (SSIS)
 - Bir Azure SQL veritabanı sunucusu veya yönetilen örnek (proje dağıtım modeli) tarafından barındırılan SSIS kataloğuna (SSıSDB) dağıtılan Paketleri çalıştırma.
 - Dosya sistemlerine, dosya paylaşımlarına veya Azure dosyalarına (paket dağıtım modeli) dağıtılan Paketleri çalıştırma. 
 
-Bir Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve çalıştırmak için tanıdık araçları kullanabilirsiniz. Bu araçlar, `dtinstall`, `dtutil` ve `dtexec` gibi SQL Server Veri Araçları, SQL Server Management Studio ve komut satırı araçlarını içerir.
+Bir Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve çalıştırmak için tanıdık araçları kullanabilirsiniz. Bu araçlar `dtinstall`, `dtutil`ve `dtexec`gibi SQL Server Veri Araçları, SQL Server Management Studio ve komut satırı araçlarını içerir.
 
 [Sağlama Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md) öğretici, Azure portal veya Data Factory uygulaması aracılığıyla bir Azure-SSIS IR oluşturmayı gösterir. Bu öğreticide, bir Azure SQL veritabanı sunucusu veya bir yönetilen örnek için SSSıSDB barındırmak üzere nasıl kullanılacağı gösterilmektedir. Bu makale öğreticiye genişleterek bu isteğe bağlı görevlerin nasıl yapılacağını açıklar:
 
@@ -38,7 +38,7 @@ Bir Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve ç
 
 Bu makalede, Azure portal, Azure PowerShell ve Azure Resource Manager şablonunu kullanarak bir Azure-SSIS IR sağlama gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -182,7 +182,7 @@ Data Factory oluşturulduktan sonra, Azure portal genel bakış sayfasını aç�
 
    c. **Hazırlama yolu**için, seçtiğiniz Azure Blob depolama hesabınızda bir blob kapsayıcısı belirtin. Ya da, hazırlama için varsayılan bir tane kullanmak üzere boş bırakın.
 
-7. **VNET doğrulaması**@no__t **-1 ' i seçin**. 
+7. **VNET doğrulaması** > **İleri ' yi**seçin. 
 
 8. **Özet** sayfasında, tüm sağlama ayarlarını gözden geçirin, önerilen belge bağlantılarına yer işareti ekleyin ve tümleştirme çalışma zamanının oluşturulmasını başlatmak için **son** ' u seçin.
 
@@ -355,9 +355,9 @@ Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
 
 Azure 'da SSIS paketlerini çalıştıran bir Azure-SSIS tümleştirme çalışma zamanı oluşturmak için aşağıdaki komutları çalıştırın.
 
-SSSıSDB kullanmıyorsanız, `CatalogServerEndpoint`, `CatalogPricingTier` ve `CatalogAdminCredential` parametrelerini atlayabilirsiniz.
+SSıSDB kullanmıyorsanız, `CatalogServerEndpoint`, `CatalogPricingTier`ve `CatalogAdminCredential` parametrelerini atlayabilirsiniz.
 
-Sanal ağ hizmet uç noktaları ile bir Azure SQL veritabanı sunucusu veya SSSıSDB barındırmak için özel bir uç noktası olan yönetilen bir örnek kullanmıyorsanız veya şirket içi verilere erişmeniz gerekiyorsa, `VNetId` ve `Subnet` parametrelerini atlayabilir ya da boş değerler aktarabilirsiniz yapıştırabilirsiniz. Şirket içindeki verilere erişmek üzere Azure-SSIS IR için kendi kendine barındırılan IR 'yi bir ara sunucu olarak yapılandırırsanız bunları da atlayabilirsiniz. Aksi takdirde, bunları yok saylayamazsınız ve sanal ağ yapılandırmasından geçerli değerler geçirmeniz gerekir. Daha fazla bilgi için bkz. bir [Azure-SSIS IR sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+Sanal ağ hizmet uç noktaları ile bir Azure SQL veritabanı sunucusu veya SSSıSDB barındırmak için özel bir uç noktası olan yönetilen bir örnek kullanmıyorsanız veya şirket içi verilere erişmeniz gerekiyorsa, `VNetId` ve `Subnet` parametrelerini atlayabilir veya boş değerleri geçirebilirsiniz. yapıştırabilirsiniz. Şirket içindeki verilere erişmek üzere Azure-SSIS IR için kendi kendine barındırılan IR 'yi bir ara sunucu olarak yapılandırırsanız bunları da atlayabilirsiniz. Aksi takdirde, bunları yok saylayamazsınız ve sanal ağ yapılandırmasından geçerli değerler geçirmeniz gerekir. Daha fazla bilgi için bkz. bir [Azure-SSIS IR sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
 
 SSıSDB barındırmak için yönetilen örnek kullanıyorsanız, `CatalogPricingTier` parametresini atlayabilir veya boş bir değer geçirebilirsiniz. Aksi takdirde, bunu atlayamazsınız ve Azure SQL veritabanı için desteklenen fiyatlandırma katmanları listesinden geçerli bir değer geçirmeniz gerekir. Daha fazla bilgi için bkz. [SQL veritabanı kaynak sınırları](../sql-database/sql-database-resource-limits.md).
 
@@ -636,7 +636,7 @@ Bu bölümde, Azure-SSIS tümleştirme çalışma zamanı oluşturmak için bir 
     }
     ```
 
-2. Azure Resource Manager şablonunu dağıtmak için, aşağıdaki örnekte gösterildiği gibi `New-AzResourceGroupDeployment` komutunu çalıştırın. Örnekte, `ADFTutorialResourceGroup`, kaynak grubunuzun adıdır. `ADFTutorialARM.json`, veri fabrikanızın JSON tanımını ve Azure-SSIS IR içeren dosyadır.
+2. Azure Resource Manager şablonunu dağıtmak için, aşağıdaki örnekte gösterildiği gibi `New-AzResourceGroupDeployment` komutunu çalıştırın. Örnekte, `ADFTutorialResourceGroup` kaynak grubunuzun adıdır. `ADFTutorialARM.json`, veri fabrikanızın JSON tanımını ve Azure-SSIS IR içeren dosyadır.
 
     ```powershell
     New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json
@@ -664,11 +664,11 @@ Bu bölümde, Azure-SSIS tümleştirme çalışma zamanı oluşturmak için bir 
 
 SSSıSDB kullanıyorsanız, paketlerinizi bu pakete dağıtabilir ve SQL Server Veri Araçları veya SQL Server Management Studio araçları kullanarak Azure-SSIS IR çalıştırabilirsiniz. Bu araçlar, veritabanı sunucunuza sunucu uç noktası aracılığıyla bağlanır: 
 
-- Özel uç noktası olan bir Azure SQL veritabanı sunucusu için sunucu uç noktası biçimi `<server name>.database.windows.net` ' dır.
-- Özel uç noktası olan yönetilen bir örnek için sunucu uç noktası biçimi `<server name>.<dns prefix>.database.windows.net` ' dır.
-- Ortak uç nokta olan yönetilen bir örnek için sunucu uç noktası biçimi `<server name>.public.<dns prefix>.database.windows.net,3342` ' dır. 
+- Özel uç noktası olan bir Azure SQL veritabanı sunucusu için sunucu uç noktası biçimi `<server name>.database.windows.net`.
+- Özel uç noktası olan yönetilen bir örnek için sunucu uç noktası biçimi `<server name>.<dns prefix>.database.windows.net`.
+- Ortak uç nokta olan yönetilen bir örnek için sunucu uç noktası biçimi `<server name>.public.<dns prefix>.database.windows.net,3342`. 
 
-SSSıSDB kullanmıyorsanız, paketlerinizi dosya sistemlerine, dosya paylaşımlarına veya Azure dosyalarına dağıtabilirsiniz. Ardından, `dtinstall`, `dtutil` ve `dtexec` komut satırı araçlarını kullanarak bunları Azure-SSIS IR çalıştırabilirsiniz. Daha fazla bilgi için bkz. [SSIS paketlerini dağıtma](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
+SSSıSDB kullanmıyorsanız, paketlerinizi dosya sistemlerine, dosya paylaşımlarına veya Azure dosyalarına dağıtabilirsiniz. Daha sonra `dtinstall`, `dtutil`ve `dtexec` komut satırı araçlarını kullanarak bunları Azure-SSIS IR çalıştırabilirsiniz. Daha fazla bilgi için bkz. [SSIS paketlerini dağıtma](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
 
 Her iki durumda da, Data Factory işlem hatlarında SSIS paketi yürütme etkinliğini kullanarak Azure-SSIS IR dağıtılan paketlerinizi çalıştırabilirsiniz. Daha fazla bilgi için bkz. [birinci sınıf Data Factory etkinliği olarak SSIS paketi yürütmeyi çağırma](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory eşleme veri akışında dönüştürme var | Microsoft Docs
+title: Azure Data Factory eşleme veri akışında dönüştürme var
 description: Azure Data Factory eşleme veri akışında var olan dönüştürmeyi kullanarak mevcut satırları denetleyin
 author: kromerm
 ms.author: makromer
@@ -7,16 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 79bdfc84310686b2648e12d73d783de049e9d2fa
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: a477eba246c4ebcfbd32e92f1fd30c301ea1cc5b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596507"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676724"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürme var
 
-Var olan dönüştürme, verilerinizin başka bir kaynakta veya akışta bulunup bulunmadığını denetleyen bir satır filtreleme dönüşümünüze sahiptir. Çıkış akışı, sol akıştaki mevcut veya doğru akışta bulunmayan tüm satırları içerir. Var olan dönüştürme ```SQL WHERE EXISTS``` ve ```SQL WHERE NOT EXISTS``` benzerdir.
+Var olan dönüştürme, verilerinizin başka bir kaynakta veya akışta bulunup bulunmadığını denetleyen bir satır filtreleme dönüşümünüze sahiptir. Çıkış akışı, sol akıştaki mevcut veya doğru akışta bulunmayan tüm satırları içerir. Var olan dönüştürme ```SQL WHERE EXISTS``` ve ```SQL WHERE NOT EXISTS```benzerdir.
 
 ## <a name="configuration"></a>Yapılandırma
 
@@ -54,7 +54,7 @@ Her akıştaki birden çok sütunu karşılaştırmak için var olan bir satır�
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, `checkForChanges` adlı, sol akış `NameNorm2` ve sağ Akış `TypeConversions` alan, var olan bir dönüşümdir.  EXISTS koşulu, her bir akışta `EMPID` ve `Region` sütunları eşleşiyorsa true döndüren ifadedir `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region`. Varlığını denetliyoruz, `negate` false 'tur. En iyileştirme sekmesinde herhangi bir yayını etkinleştirmedik, `broadcast` değer `'none'`.
+Aşağıdaki örnek, `checkForChanges` adlı, sol akış `NameNorm2` ve sağ Akış `TypeConversions`alan, var olan bir dönüşümdir.  EXISTS koşulu, her bir akışta `EMPID` ve `Region` sütunları eşleşiyorsa true döndüren ifadedir `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region`. Varlığını denetliyoruz, `negate` false 'tur. En iyileştirme sekmesinde herhangi bir yayını etkinleştirmedik, `broadcast` değer `'none'`.
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 

@@ -1,5 +1,5 @@
 ---
-title: Azure veri fabrikalarını görsel olarak izleme | Microsoft Docs
+title: Azure veri fabrikalarını görsel olarak izleme
 description: Azure veri fabrikalarını görsel olarak izlemeyi öğrenin
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7b79fd9c87e97e624cce567b57c1c65fefcc151e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029147"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684629"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Azure veri fabrikalarını görsel olarak izleme
 Azure Data Factory, bulut tabanlı bir veri tümleştirme hizmetidir. Veri taşıma ve veri dönüştürmeyi düzenlemek ve otomatikleştirmek için bulutta veri odaklı iş akışları oluşturmak için bu uygulamayı kullanabilirsiniz. Azure Data Factory kullanarak şunları yapabilirsiniz:
@@ -161,7 +161,7 @@ Sol alt köşedeki **bilgi** simgesini seçin. Ardından, işlem hattınızı ve
 
 ## <a name="alerts"></a>Uyarılar
 
-Data Factory içinde desteklenen ölçümler üzerinde uyarı oluşturabilirsiniz. Başlamak için Data Factory izleme sayfasında**ölçümler &**  >  uyarılarını **İzle**' yi seçin.
+Data Factory içinde desteklenen ölçümler üzerinde uyarı oluşturabilirsiniz. Başlamak için **Data Factory izleme sayfasında > ** **uyarıları & ölçümleri** ' ni seçin.
 
 ![Data Factory Izleyici sayfası](media/monitor-visually/alerts01.png)
 

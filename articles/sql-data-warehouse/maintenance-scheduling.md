@@ -1,5 +1,5 @@
 ---
-title: Azure bakım zamanlamaları (Önizleme) | Microsoft Docs
+title: Azure bakım zamanlamaları
 description: Bakım zamanlaması, müşterilerin Azure SQL veri ambarı hizmeti 'nin yeni özellikleri, yükseltmeleri ve düzeltme eklerini almak için kullandığı gerekli zamanlanmış bakım olaylarını planlayabilmesini sağlar.
 services: sql-data-warehouse
 author: antvgski
@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 07/16/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e5df583112bbb6db9651004e5deaceb6b5b9d12
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 91b202f8a5df841fa3d6aa1f0903999b395f8137
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958886"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686057"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Bakım zamanlamalarını kullanarak hizmet güncelleştirmelerini ve bakımını yönetme
 
@@ -29,7 +29,7 @@ Yeni oluşturulan tüm Azure SQL veri ambarı örneklerinin, dağıtım sırası
 
 Her bakım penceresi üç ve sekiz saat arasında olabilir. Bakım, pencerenin içinde herhangi bir zamanda gerçekleşebilir. Bakım başladığında, tüm etkin oturumlar iptal edilir ve teslim edilmemiş işlemler geri alınacaktır. Hizmet, veri ambarınıza yeni kod dağıttığı için bağlantıda birden çok kısa kayıp beklemeniz gerekir. Veri ambarı bakım işlemi tamamlandıktan hemen sonra bilgilendirilirsiniz.
 
- Tüm bakım işlemleri, zamanlanmış bakım pencereleri içinde bitmelidir. Önceki bildirim olmadan belirtilen bakım pencerelerinin dışında hiçbir bakım gerçekleşmeyecektir. Zamanlanan Bakım sırasında veri ambarınız duraklatıldıysa, sürdürme işlemi sırasında güncelleştirilir. 
+ Tüm bakım işlemleri, zamanlanmış bakım pencereleri içinde bitmelidir. Belirtilen bakım pencerelerinin dışında, önceden bildirimde bulunmadan hiçbir bakım yapılmaz. Zamanlanan Bakım sırasında veri ambarınız duraklatıldıysa, sürdürme işlemi sırasında güncelleştirilir. 
 
 ## <a name="alerts-and-monitoring"></a>Uyarılar ve izleme
 
@@ -52,11 +52,11 @@ Bakım zamanlaması seçtiğiniz bölgede mevcut olmasa bile, bakım zamanlaman�
 
 ### <a name="portal"></a>Portal
 
-Varsayılan olarak, yeni oluşturulan tüm Azure SQL veri ambarı örneklerinin, dağıtım sırasında en fazla sekiz saat birincil ve ikincil bakım penceresi vardır. Yukarıda belirtildiği gibi, en kısa sürede dağıtımı tamamlandıktan sonra pencereleri değiştirebilirsiniz. Önceki bildirim olmadan belirtilen bakım pencerelerinin dışında hiçbir bakım gerçekleşmeyecektir.
+Varsayılan olarak yeni oluşturulan tüm Azure SQL Veri Ambarı örneklerinin dağıtım sırasında uygulanan sekiz saatlik birincil ve ikincil bakım pencereleri vardır. Yukarıda belirtildiği gibi, en kısa sürede dağıtımı tamamlandıktan sonra pencereleri değiştirebilirsiniz. Belirtilen bakım pencerelerinin dışında, önceden bildirimde bulunmadan hiçbir bakım yapılmaz.
 
-Veri ambarınıza uygulanan bakım zamanlamasını görüntülemek için aşağıdaki adımları izleyin:
+Veri ambarınıza uygulanan bakım zamanlamasını görüntülemek için aşağıdaki adımları tamamlayın:
 
-1.  [Azure Portal](https://portal.azure.com/)oturum açın.
+1.  [Azure portalında](https://portal.azure.com/) oturum açın.
 2.  Görüntülemek istediğiniz veri ambarını seçin. 
 3.  Seçilen veri ambarı genel bakış dikey penceresinde açılır. Veri ambarına uygulanan bakım zamanlaması **bakım zamanlaması**altında görünür.
 
@@ -72,7 +72,7 @@ Bakım zamanlaması dilediğiniz zaman güncelleştirilebilirler veya değiştir
 Birincil ve ikincil pencerelerin ayrı gün aralıkları olmalıdır. Örnek olarak, Salı – Perşembe ve Cumartesi – Pazar ayının ikincili bir pencere yer aldığı bir örnektir.
 
 Veri ambarınızın bakım zamanlamasını değiştirmek için aşağıdaki adımları izleyin:
-1.  [Azure Portal](https://portal.azure.com/)oturum açın.
+1.  [Azure portalında](https://portal.azure.com/) oturum açın.
 2.  Güncelleştirmek istediğiniz veri ambarını seçin. Sayfa, genel bakış dikey penceresinde açılır. 
 3.  Genel Bakış dikey penceresinde **bakım zamanlaması (Önizleme) Özeti** bağlantısını seçerek bakım zamanlaması ayarları sayfasını açın. Ya da sol taraftaki kaynak menüsünde **bakım zamanlaması** seçeneğini belirleyin.  
 
@@ -89,7 +89,7 @@ Veri ambarınızın bakım zamanlamasını değiştirmek için aşağıdaki adı
 
    Dikey pencerenin alt kısmındaki **zamanlama Özeti** alanı, seçtiğiniz değerlere göre güncelleştirilir. 
   
-6. **Kaydet**' i seçin. Yeni zamanlamanız artık etkin olduğunu onaylayan bir ileti görüntülenir. 
+6. **Kaydet**’i seçin. Yeni zamanlamanız artık etkin olduğunu onaylayan bir ileti görüntülenir. 
 
    Bakım zamanlamasını desteklemeyen bir bölgede bir zamanlama kaydediyorsanız aşağıdaki ileti görüntülenir. Ayarlarınız kaydedilir ve bu özellik seçtiğiniz bölgede kullanılabilir hale geldiğinde etkin hale gelir.    
 

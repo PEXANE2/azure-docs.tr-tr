@@ -1,5 +1,5 @@
 ---
-title: Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services (SSIS) paketleri yürütün | Microsoft Docs
+title: Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services (SSIS) paketlerini yürütme
 description: Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services (SSIS) paketlerini yürütmeyi öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 472792351b8b7ab96e055bacd64141840ce7a630
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 9ab308d0e2145a0d0b40e8b37c8c5be07b55dac6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596957"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673547"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services paketlerini çalıştırma
 Bu makalede, Azure etkinleştirilmiş dtexec (AzureDTExec) komut istemi yardımcı programı açıklanır. SQL Server Integration Services (SSIS) paketlerini Azure Data Factory Azure-SSIS Integration Runtime (IR) üzerinde çalıştırmak için kullanılır.
@@ -30,11 +30,11 @@ AzureDTExec, paketlerinizi Data Factory işlem hatları 'nda SSIS paket etkinlik
 
 AzureDTExec, veri fabrikanıza işlem hatları üreten bir Azure Active Directory (Azure AD) uygulaması kullanmak için SSMS aracılığıyla yapılandırılabilir. Ayrıca, paketlerinizi depoladığınız dosya sistemlerine, dosya paylaşımlarına veya Azure dosyalarına erişecek şekilde yapılandırılabilir. AzureDTExec, çağırma seçeneklerine verdiğiniz değerlere bağlı olarak, içinde bir SSIS paketi yürütme etkinliği ile benzersiz bir Data Factory işlem hattı oluşturur ve çalıştırır. Options için aynı değerlerle AzureDTExec çağırma, mevcut ardışık düzeni yeniden çalıştırır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 AzureDTExec 'yi kullanmak için sürüm 18,3 veya üzeri olan SSMS 'nin en son sürümünü indirip yükleyin. [Bu Web sitesinden](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)indirin.
 
 ## <a name="configure-the-azuredtexec-utility"></a>AzureDTExec yardımcı programını yapılandırma
-SSMS 'nin yerel makinenizde yüklenmesi de AzureDTExec ' i de yüklüyor. Ayarlarını yapılandırmak için SSMS 'yi **yönetici olarak çalıştır** seçeneğiyle başlatın. Ardından **Araçlar** ' ı seçin  >  Azure **'A geçir**  > **Azure özellikli dtexec 'ı yapılandırın**.
+SSMS 'nin yerel makinenizde yüklenmesi de AzureDTExec ' i de yüklüyor. Ayarlarını yapılandırmak için SSMS 'yi **yönetici olarak çalıştır** seçeneğiyle başlatın. Ardından **Araçlar** ' ı seçin > Azure **'A geçir** > **Azure özellikli dtexec 'ı yapılandırın**.
 
 ![Azure etkin dtexec menüsünü yapılandırma](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
 
@@ -68,7 +68,7 @@ Dosya sistemlerinde veya Şirket içindeki dosya paylaşımlarında paketleriniz
 ## <a name="invoke-the-azuredtexec-utility"></a>AzureDTExec yardımcı programını çağırma
 Komut satırı isteminde AzureDTExec ' i çağırabilir ve kullanım örneği senaryonuzun belirli seçenekler için ilgili değerleri sağlayabilirsiniz.
 
-Yardımcı program `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn` ' a yüklenir. Her yerden çağrılması için yolunu ' PATH ' ortam değişkenine ekleyebilirsiniz.
+Yardımcı program `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn`yüklendi. Her yerden çağrılması için yolunu ' PATH ' ortam değişkenine ekleyebilirsiniz.
 
 ```dos
 > cd "C:\Program Files (x86)\Microsoft SQL Server Management Studio 18\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn"
@@ -86,7 +86,7 @@ AzureDTExec çağırma, dtexec 'yi çağırarak benzer seçenekler sunar. Daha f
 - **/Conf [ıgfile]** : değerlerin ayıklanacağı bir yapılandırma dosyasını belirtir. Bu seçeneği kullanarak, paketiniz için tasarım zamanında belirtilenden farklı bir çalışma zamanı yapılandırması belirleyebilirsiniz. Farklı ayarları bir XML yapılandırma dosyasında depolayıp paket yürütmeden önce yükleyebilirsiniz. Daha fazla bilgi için bkz. [SSIS paketi yapılandırması](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017). Bu seçeneğin değerini belirtmek için, dosya sistemi, dosya paylaşımında veya Azure dosyalarında dtsConfig uzantılı yapılandırma dosyanız için UNC yolunu kullanın. Belirtilen UNC yolu herhangi bir boşluk içeriyorsa, tam yolun çevresine tırnak işareti koyun.
 - **/Conn [ection]** : paketinizdeki mevcut bağlantı yöneticileri için bağlantı dizelerini belirtir. Bu seçeneği kullanarak, paketinizdeki mevcut bağlantı yöneticileri için tasarım zamanında belirtilenlerden farklı çalışma zamanı bağlantı dizeleri ayarlayabilirsiniz. Bu seçenek için değeri şu şekilde belirtin: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`.
 - **/Set**: paketteki bir parametrenin, değişkenin, özelliğin, kapsayıcının, günlük sağlayıcının, Foreach Numaralandırıcı veya bağlantının yapılandırmasını geçersiz kılar. Bu seçenek birden çok kez belirtilebilir. Bu seçenek için değeri şu şekilde belirtin: `property_path;value`. Örneğin, `\package.variables[counter].Value;1` `counter` değişkeninin değerini 1 olarak geçersiz kılar. Paketinizdeki değeri geçersiz kılmak istediğiniz öğelerin `property_path` değerini bulmak, kopyalamak ve yapıştırmak için **paket yapılandırma** sihirbazını kullanabilirsiniz. Daha fazla bilgi için bkz. [paket Yapılandırma Sihirbazı](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
-- **/De [Crypt]** : **EncryptAllWithPassword** /**EncryptSensitiveWithPassword** koruma düzeyiyle yapılandırılmış paketinizin şifre çözme parolasını ayarlar.
+- **/De [Crypt]** : **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** koruma düzeyiyle yapılandırılmış paketinizin şifre çözme parolasını ayarlar.
 
 > [!NOTE]
 > Options için yeni değerlerle AzureDTExec çağırmak, **/de [cript]** seçeneği dışında yeni bir işlem hattı oluşturur.

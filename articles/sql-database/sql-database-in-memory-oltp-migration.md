@@ -1,5 +1,5 @@
 ---
-title: Bellek içi OLTP SQL TXN perf 'yi geliştirir | Microsoft Docs
+title: Bellek içi OLTP SQL TXN perf 'yi geliştirir
 description: Mevcut bir SQL veritabanında işlemsel performansı artırmak için bellek Içi OLTP 'yi benimseyin.
 services: sql-database
 ms.service: sql-database
@@ -11,24 +11,24 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: e869b2bba3bd64b58d9063e9445889ef709efdc3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 82b24b51a103d31bf20bbb7a9fc304095be523d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567941"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689829"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>SQL veritabanında uygulama performansınızı geliştirmek için bellek Içi OLTP kullanın
 
 [Bellek ıçı OLTP](sql-database-in-memory.md) , işlem işleme, veri alımı ve geçici veri senaryolarında, fiyatlandırma katmanını arttırmadan [Premium ve iş açısından kritik katmanı](sql-database-service-tiers-vcore.md) veritabanlarında performansı geliştirmek için kullanılabilir. 
 
 > [!NOTE] 
-> [SQL veritabanı Ile DTU 'yu% 70 oranında düşürürken, çekirdeğin anahtar veritabanı iş yükünü nasıl çift katına](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database) kullandığını öğrenin
+> [SQL veritabanı Ile DTU 'yu %70 oranında düşürürken, çekirdeğin anahtar veritabanı iş yükünü nasıl çift katına](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database) kullandığını öğrenin
 
 
 Mevcut veritabanınızda bellek Içi OLTP 'yi benimsemek için bu adımları izleyin.
 
-## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>1\. adım: Premium ve İş Açısından Kritik katmanı veritabanı kullandığınızdan emin olun
+## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>1\. Adım: Premium ve İş Açısından Kritik katmanı veritabanı kullandığınızdan emin olun
 
 Bellek içi OLTP yalnızca Premium ve İş Açısından Kritik katmanı veritabanlarında desteklenir. Döndürülen sonuç 1 ise (0 değil) bellek içi desteklenir:
 
@@ -40,17 +40,17 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>2\. adım: Bellek Içi OLTP 'a geçirilecek nesneleri tanımla
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>2\. Adım: bellek Içi OLTP 'a geçirilecek nesneleri tanımla
 SSMS, etkin iş yüküne sahip bir veritabanında çalıştırabileceğiniz bir **Işlem performansı analizine genel bakış** raporu içerir. Rapor, bellek Içi OLTP 'a geçiş için aday olan tabloları ve saklı yordamları tanımlar.
 
 SSMS 'de, raporu oluşturmak için:
 
 * **Nesne Gezgini**, veritabanı düğümünüz ' a sağ tıklayın.
-* **Raporlar** > **Standart**raporlarişlem > **performansı analizine genel bakış ' a**tıklayın.
+* **Raporlar** > **Standart raporlar** > **Işlem performansı analizine genel bakış ' a**tıklayın.
 
 Daha fazla bilgi için, bkz. [bir tablo veya saklı yordamın bellek ıçı OLTP 'ye mi yerleştirileceğini belirleme](https://msdn.microsoft.com/library/dn205133.aspx).
 
-## <a name="step-3-create-a-comparable-test-database"></a>3\. adım: Karşılaştırılabilir bir test veritabanı oluşturma
+## <a name="step-3-create-a-comparable-test-database"></a>3\. Adım: karşılaştırılabilir bir test veritabanı oluşturma
 Raporun, veritabanınızın, bellek için iyileştirilmiş tabloya dönüştürülmesinin avantajına sahip bir tablo olduğunu olduğunu varsayalım. Test yaparak bildirimi doğrulamak için ilk test etmenizi öneririz.
 
 Üretim veritabanınızın bir test kopyasına ihtiyacınız vardır. Test veritabanı, üretim veritabanınız ile aynı hizmet katmanı düzeyinde olmalıdır.
@@ -66,7 +66,7 @@ Testi kolaylaştırmak için test veritabanınızı şu şekilde ince ayar:
         MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
    ```
 
-## <a name="step-4-migrate-tables"></a>4\. Adım: Tabloları geçirme
+## <a name="step-4-migrate-tables"></a>4\. Adım: tabloları geçirme
 Sınamak istediğiniz tablonun bellek için iyileştirilmiş bir kopyasını oluşturmanız ve doldurmanız gerekir. Bu, aşağıdakilerden birini kullanarak oluşturabilirsiniz:
 
 * SSMS 'de kullanışlı bellek Iyileştirme Sihirbazı.
@@ -93,7 +93,7 @@ Bu geçiş seçeneğini kullanmak için:
 2. Tablonuz ve dizinleri için tam T-SQL betiğini edinin.
    
    * SSMS 'de tablo düğümünüz ' a sağ tıklayın.
-   * **Betik tablosu** > ' na**Yeni sorgu** **Oluştur** > ' a tıklayın.
+   * **Yeni sorgu penceresinde** > **Için > oluştur** **olarak betik tablosu** ' na tıklayın.
 3. Betik penceresinde, CREATE TABLE bildirimine (MEMORY_OPTIMIZED = ON) Ile ekleyin.
 4. KÜMELENMIŞ bir dizin varsa, KÜMELENMEMIŞ olarak değiştirin.
 5. SP_RENAME kullanarak var olan tabloyu yeniden adlandırın.
@@ -106,7 +106,7 @@ INSERT INTO <new_memory_optimized_table>
 ```
 
 
-## <a name="step-5-optional-migrate-stored-procedures"></a>5\. adım (isteğe bağlı): Saklı yordamları geçir
+## <a name="step-5-optional-migrate-stored-procedures"></a>5\. adım (isteğe bağlı): saklı yordamları geçirme
 Bellek Içi özelliği, gelişmiş performans için bir saklı yordamı da değiştirebilir.
 
 ### <a name="considerations-with-natively-compiled-stored-procedures"></a>Yerel koda derlenmiş saklı yordamlar ile ilgili konular
@@ -136,7 +136,7 @@ CREATE PROCEDURE schemaname.procedurename
 * TRANSACTION_ISOLATION_LEVEL için anlık görüntü, yerel koda derlenmiş saklı yordamın en yaygın değeridir. Ancak, diğer değerlerin bir alt kümesi de desteklenir:
   
   * YINELENEBILIR OKUMA
-  * SERI HALE GETIRILEBILIR
+  * SERI hale GETIRILEBILIR
 * DIL değeri sys. Languages görünümünde bulunmalıdır.
 
 ### <a name="how-to-migrate-a-stored-procedure"></a>Saklı yordam geçirme
@@ -150,7 +150,7 @@ Geçiş adımları şunlardır:
 4. SP_RENAME kullanarak eski saklı yordamı yeniden adlandırın. Ya da basitçe BıRAKMALıSıNıZ.
 5. Düzenlediğiniz oluşturma YORDAMıNı çalıştırın T-SQL komut dosyası.
 
-## <a name="step-6-run-your-workload-in-test"></a>6\. Adım: İş yükünüzü testte çalıştırın
+## <a name="step-6-run-your-workload-in-test"></a>6\. Adım: test sırasında iş yükünüzü çalıştırma
 Test veritabanınızda, üretim veritabanınızda çalışan iş yüküne benzer bir iş yükü çalıştırın. Bu, tablolar ve saklı yordamlar için bellek Içi özelliği kullanımı ile elde edilen performans kazancını açığa çıkarmalıdır.
 
 İş yükünün ana öznitelikleri şunlardır:
@@ -162,7 +162,7 @@ Test iş yükünü uyarlamak ve çalıştırmak için, [burada](sql-database-in-
 
 Ağ gecikmesini en aza indirmek için, testinizi, veritabanının bulunduğu aynı Azure coğrafi bölgesinde çalıştırın.
 
-## <a name="step-7-post-implementation-monitoring"></a>7\. Adım: Uygulama sonrası izleme
+## <a name="step-7-post-implementation-monitoring"></a>7\. Adım: uygulama sonrası izleme
 Üretimde bellek Içi uygulamalarınızın performans etkilerini izlemeyi düşünün:
 
 * [Bellek Içi depolamayı izleyin](sql-database-in-memory-oltp-monitoring.md).

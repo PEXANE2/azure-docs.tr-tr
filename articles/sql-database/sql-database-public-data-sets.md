@@ -1,5 +1,5 @@
 ---
-title: Azure Analytics için genel veri kümeleri | Microsoft Docs
+title: Azure Analytics için genel veri kümeleri
 description: Azure Analytics hizmetleri ve çözümlerini prototip ve test etmek için kullanabileceğiniz genel veri kümeleri hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,25 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: a16f6d6b0bf8600270fdf4e00cfa379ee4422fd0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dc8b2a00882abc2e88b357d5778eaf96ec71b1bd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566988"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687577"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Test ve prototipleme için ortak veri kümeleri
 
 Depolama ve analiz hizmetleri ile çözümlerini prototip ve test etmek için kullanabileceğiniz veriler için genel veri kümeleri listesine gidin.
 
-## <a name="us-government-and-agency-data"></a>ABD Devlet ve kamu verileri
+## <a name="us-government-and-agency-data"></a>ABD devlet ve kurumu verileri
 
 | Veri kaynağı | Veriler hakkında | Dosyalar hakkında |
 |---|---|---|
 | [ABD devlet verileri](https://www.census.gov/data.html) | ABD 'de Agric, kele, tüketici, ekosistemleri, eğitim, enerji, finans, sağlık, yerel kamu, üretim, Maritime, okyanus, kamu güvenliği ve bilimçlerini kapsayan 190.000 'den fazla veri kümesi | HTML, XML, CSV, JSON, Excel ve diğer birçok biçimdeki çeşitli boyutlarda bulunan dosyalar. Kullanılabilir veri kümelerini dosya biçimine göre filtreleyebilirsiniz. |
 | [ABD Census verileri](https://www.census.gov/data.html) | ABD popülasyonu hakkında istatistiksel veriler | Veri kümeleri çeşitli biçimlerde. |
 | [NASA 'dan Dünya Bilimi verileri](https://earthdata.nasa.gov/) | Agricsal, Atmosphere, Biyoküre, Climate, cryosphere, insan boyutları, hydrosphere, Land Surface, Oceans, Sun-Earth etkileşimleri ve daha fazlasını kapsayan 32.000 ' den fazla veri koleksiyonu. | Veri kümeleri çeşitli biçimlerde. |
-| [Airline uçuş gecikmeleri ve diğer taşıma verileri](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "ABD Ulaşım 'in (nokta) taşıma Istatistikleri (BTS) Bakanlığı, büyük uçak taşıyıcılar tarafından çalıştırılan yurtiçi fışıkların zaman içindeki performansını izler. Zaman içinde, geciktirilen, iptal edilen ve ayrılan fışıklardan oluşan Özet bilgileri görüntülenir... Bu Web sitesine gönderilen Özet tablolarında. " | Dosyalar CSV biçimindedir. |
+| [Airline uçuş gecikmeleri ve diğer taşıma verileri](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Nakliklerdeki (nokta) nakliye için ABD Bakanlığı (BTS), büyük uçak taşıyıcılar tarafından çalıştırılan yurtiçi fışıkların zaman içindeki performansını izler. Zaman içinde, geciktirilen, iptal edilen ve ayrılan fışıklardan oluşan Özet bilgileri görüntülenir... Bu Web sitesine gönderilen Özet tablolarında. " | Dosyalar CSV biçimindedir. |
 | [Trafik pertalimler-US Fatality Analysis Reporting System (FARS)](https://www.nhtsa.gov/FARS) | "Fars, motor araç trafiği Kilitlenmelerinde çok önemli sakatlama ile ilgili olarak NHTSA, Congress ve American kamu yıllık verileri sağlayan bir ülke genelinde görselleştirmenizdeki." | "Kendi Fatality verilerinizi oluşturma FARS sorgu sistemini kullanarak çevrimiçi olarak çalışır. Ya da tüm FARS verilerini FTP sitesinden sunmak için 1975 adresinden indirebilirsiniz. " |
 | [Toxic kimyasal verileri-EPA Toxicity ForeCaster (ToxCast™) verileri](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "EPA 'nın en güncel, herkese açık bir şekilde, binlerce kimlik üzerinde yüksek aktarım hızı verileri. Bu veriler EPA 'nin ToxCast araştırma çabasıyla oluşturulur. " | Veri kümeleri, elektronik tablolar, R paketleri ve MySQL veritabanı dosyaları gibi çeşitli biçimlerde kullanılabilir. |
 | [Toxic kimyasal verileri-NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | "2014 Tox21 veri sınaması, bilimcilerin, Toxic 'de Toxicoloji tarafından test edilmesine yardımcı olacak şekilde tasarlanmıştır. bu şekilde, kıza ve çözer 'ın, ı, | Veri kümeleri SMSETS ve SDF biçimlerinde kullanılabilir. Veriler ~ 10.000 çözer (Tox21 10.000) Tox21 koleksiyonunda "asdeyin etkinlik verileri ve kimyasal yapıları" sağlar. |

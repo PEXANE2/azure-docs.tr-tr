@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e38f118e10c9d0e2347edb7cbaa5d7b68a0e63f2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 1c2a2f08c31c427241bbd5e482906118a90ee178
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933407"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614843"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler dış olayları işleme (Azure Işlevleri)
 
@@ -25,14 +25,14 @@ Orchestrator işlevlerinin dış olayları bekleme ve dinleme yeteneği vardır.
 
 ## <a name="wait-for-events"></a>Olayları bekle
 
-[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) yöntemi bir Orchestrator işlevinin bir dış olayı zaman uyumsuz olarak bekleyip dinlemesine olanak tanır. Dinleme Orchestrator işlevi, olayın *adını* ve almayı beklediği *verilerin şeklini* bildirir.
+[Orchestration tetikleyicisi bağlamasının](durable-functions-bindings.md#orchestration-trigger) `WaitForExternalEvent` (.net) ve `waitForExternalEvent` (JavaScript) yöntemleri bir Orchestrator işlevinin bir dış olayı zaman uyumsuz olarak bekleyip dinlemesine olanak tanır. Dinleme Orchestrator işlevi, olayın *adını* ve almayı beklediği *verilerin şeklini* bildirir.
 
 ### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("BudgetApproval")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool approved = await context.WaitForExternalEvent<bool>("Approval");
     if (approved)
@@ -46,7 +46,10 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+> [!NOTE]
+> Önceki C# kod dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -70,7 +73,7 @@ Aşağıdaki örnekte olduğu gibi birden çok olayı aynı anda dinleyebilir. B
 ```csharp
 [FunctionName("Select")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var event1 = context.WaitForExternalEvent<float>("Event1");
     var event2 = context.WaitForExternalEvent<bool>("Event2");
@@ -92,7 +95,10 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+> [!NOTE]
+> Önceki C# kod dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
+#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -120,7 +126,7 @@ module.exports = df.orchestrator(function*(context) {
 ```csharp
 [FunctionName("NewBuildingPermit")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string applicationId = context.GetInput<string>();
 
@@ -135,7 +141,10 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+> [!NOTE]
+> Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
+#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -154,16 +163,16 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) , bazı girişler için süresiz olarak bekler.  İşlev uygulaması beklerken güvenli bir şekilde kaldırılabilir. Bu düzenleme örneğine bir olay ulaştığında, başlatılabilmesi uyandırılır otomatik olarak oluşturulur ve olayı anında işler.
+`WaitForExternalEvent` bazı girişler için süresiz olarak bekler.  İşlev uygulaması beklerken güvenli bir şekilde kaldırılabilir. Bu düzenleme örneğine bir olay ulaştığında, başlatılabilmesi uyandırılır otomatik olarak oluşturulur ve olayı anında işler.
 
 > [!NOTE]
-> İşlev uygulamanız tüketim planını kullanıyorsa, bir Orchestrator işlevi bir görevi `WaitForExternalEvent` beklerken (.net) veya `waitForExternalEvent` (JavaScript) bekleme süresi ne olursa olsun, hiçbir faturalandırma ücreti tahakkuk etmez.
+> İşlev uygulamanız tüketim planını kullanıyorsa, bir Orchestrator işlevi `WaitForExternalEvent` (.NET) veya `waitForExternalEvent` (JavaScript) 'den bir görevi beklerken, ne kadar bekleyeceğini bağımsız olarak hiçbir faturalandırma ücreti tahakkuk etmez.
 
-.NET sürümünde, olay yükü beklenen türe `T`dönüştürülemiyorsa, bir özel durum oluşturulur.
+.NET sürümünde, olay yükü beklenen tür `T`dönüştürülemiyorsa, bir özel durum oluşturulur.
 
 ## <a name="send-events"></a>Olayları gönderme
 
-[Durableorchestrationclient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) sınıfının `WaitForExternalEvent` [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) yöntemi, (.net) veya `waitForExternalEvent` (JavaScript) için beklediği olayları gönderir.  Yöntemi `RaiseEventAsync` , *EventName* ve *eventdata* parametrelerini parametre olarak alır. Olay verileri JSON ile seri hale getirilebilir olmalıdır.
+[Orchestration Client bağlamasının](durable-functions-bindings.md#orchestration-client) `RaiseEventAsync` (.net) veya `raiseEvent` (JavaScript) yöntemi, `WaitForExternalEvent` (.net) veya `waitForExternalEvent` (JavaScript) için beklediği olayları gönderir.  `RaiseEventAsync` yöntemi, *EventName* ve *eventdata* parametrelerini parametre olarak alır. Olay verileri JSON ile seri hale getirilebilir olmalıdır.
 
 Aşağıda, bir Orchestrator işlev örneğine "onay" olayı gönderen örnek bir Queue-tetiklenen işlev verilmiştir. Orchestration örnek KIMLIĞI kuyruk iletisinin gövdesinden gelir.
 
@@ -173,13 +182,16 @@ Aşağıda, bir Orchestrator işlev örneğine "onay" olayı gönderen örnek bi
 [FunctionName("ApprovalQueueProcessor")]
 public static async Task Run(
     [QueueTrigger("approval-queue")] string instanceId,
-    [OrchestrationClient] DurableOrchestrationClient client)
+    [DurableClient] IDurableOrchestrationClient client)
 {
     await client.RaiseEventAsync(instanceId, "Approval", true);
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+> [!NOTE]
+> Önceki C# kod dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `DurableClient` özniteliği yerine `OrchestrationClient` özniteliğini kullanmanız gerekir ve `IDurableOrchestrationClient`yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -190,13 +202,10 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Dahili olarak `RaiseEventAsync` , (.net) `raiseEvent` veya (JavaScript), bekleyen Orchestrator işlevinin oluşturduğu bir iletiyi kuyruğa alır. Örnek, belirtilen *olay adında* beklemmediyse, olay iletisi bir bellek içi kuyruğa eklenir. Düzenleme örneği daha sonra bu *olay adını* dinlemeye başlarsa, olay iletileri için sırayı denetler.
+Dahili olarak, `RaiseEventAsync` (.NET) veya `raiseEvent` (JavaScript), bekleyen Orchestrator işlevi tarafından çekilen bir iletiyi sıraya alır. Örnek, belirtilen *olay adında* beklemmediyse, olay iletisi bir bellek içi kuyruğa eklenir. Düzenleme örneği daha sonra bu *olay adını* dinlemeye başlarsa, olay iletileri için sırayı denetler.
 
 > [!NOTE]
-> Belirtilen *örnek kimliğine*sahip bir düzenleme örneği yoksa, olay iletisi atılır. Bu davranış hakkında daha fazla bilgi için bkz. [GitHub sorunu](https://github.com/Azure/azure-functions-durable-extension/issues/29). 
-
-> [!WARNING]
-> JavaScript 'te yerel olarak geliştirme yaparken, ortam değişkenini `WEBSITE_HOSTNAME` `localhost:<port>`, EX olarak ayarlamanız gerekir. `localhost:7071`üzerinde `DurableOrchestrationClient`yöntemleri kullanmak için. Bu gereksinim hakkında daha fazla bilgi için bkz. [GitHub sorunu](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> Belirtilen *örnek kimliğine*sahip bir düzenleme örneği yoksa, olay iletisi atılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

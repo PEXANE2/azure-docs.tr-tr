@@ -1,5 +1,5 @@
 ---
-title: SQL veritabanı yönetilen örneği-zaman içinde geri yükleme | Microsoft Docs
+title: SQL veritabanı yönetilen örneği-zaman içinde geri yükleme
 description: Yönetilen bir örnekteki SQL veritabanını önceki bir noktaya geri yükleyin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 61249d8ac21c3bb698deb92e5f46a8998205ced9
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 44f99b6a5201e91e37ace0f5aa4c5c2eb8e3b1db
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529670"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687992"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Yönetilen bir örnekteki SQL veritabanını önceki zaman noktasına geri yükleme
 
@@ -48,9 +48,9 @@ Aşağıdaki tabloda, yönetilen örnekler için zaman içinde geri yükleme sen
 
 |           |Mevcut VERITABANıNı aynı yönetilen örneğe geri yükle| Varolan VERITABANıNı başka bir yönetilen örneğe geri yükleme|Bırakılan VERITABANıNı aynı yönetilen örneğe geri yükle|Bırakılan VERITABANıNı başka bir yönetilen örneğe geri yükleme|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure portalda**| Yes|Hayır |Hayır|Hayır|
-|**Azure CLI**|Yes |Yes |Hayır|Hayır|
-|**PowerShell**| Yes|Yes |Yes|Yes|
+|**Azure Portal**| Evet|Hayır |Hayır|Hayır|
+|**Azure CLI**|Evet |Evet |Hayır|Hayır|
+|**PowerShell**| Evet|Evet |Evet|Evet|
 
 ## <a name="restore-an-existing-database"></a>Var olan bir veritabanını geri yükleme
 
@@ -58,7 +58,7 @@ Azure portal, PowerShell veya Azure CLı kullanarak mevcut bir veritabanını ay
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Yönetilen örneğinize gidin ve geri yüklemek istediğiniz veritabanını seçin.
 3. Veritabanı sayfasında **geri yükle** ' yi seçin:
 

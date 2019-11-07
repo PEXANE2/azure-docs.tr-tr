@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı yönetilen örnek denetimi | Microsoft Docs
+title: Azure SQL veritabanı yönetilen örnek denetimi
 description: T-SQL kullanarak Azure SQL veritabanı yönetilen örnek denetimi 'ni kullanmaya nasıl başlacağınızı öğrenin
 services: sql-database
 ms.service: sql-database
@@ -13,12 +13,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 23e3a15ac26cdf0950ee31fddad2af4a3b7414c2
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 915d804cd3ae67848b4b9aa2f50fb5f1b4f1f092
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025376"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689435"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL veritabanı yönetilen örnek denetimi 'ni kullanmaya başlama
 
@@ -130,7 +130,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
 
      1. Seçim Azure hesabınızda oturum açın:
 
-        ![Azure'da oturum açın](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
+        ![Azure'da oturum açma](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
 
      1. Açılır listeden bir abonelik, depolama hesabı ve BLOB kapsayıcısı seçin ya da **Oluştur**' a tıklayarak kendi kapsayıcınızı oluşturun. İşiniz bittiğinde **Tamam**' a tıklayın:
 
@@ -229,7 +229,7 @@ Azure SQL veritabanı ve SQL Server veritabanlarında bulunan veritabanlarında 
 
 Yönetilen örnekteki XEvent denetimi Azure Blob depolama hedeflerini destekler. Dosya ve Windows günlükleri **desteklenmez**.
 
-Azure Blob depolamaya yönelik denetim için `CREATE AUDIT` sözdiziminde önemli farklılıklar şunlardır:
+Azure Blob depolamaya denetim için `CREATE AUDIT` sözdiziminde önemli farklılıklar şunlardır:
 
 - Yeni bir sözdizimi `TO URL` sağlanır ve `.xel` dosyalarının yerleştirildiği Azure Blob depolama kapsayıcısının URL 'sini belirtmenize olanak sağlar.
 - Eşit hub ve Azure Izleyici günlükleri hedeflerini etkinleştirmek için yeni bir sözdizimi `TO EXTERNAL MONITOR` sağlanır.

@@ -1,6 +1,6 @@
 ---
 title: Öğretici-Azure Service Fabric kafes uygulamasını yükseltme | Microsoft Docs
-description: Visual Studio kullanarak Service Fabric uygulamasını nasıl yükselteceğinizi öğrenin
+description: Bu öğretici bir serinin dördüncü bölümüdür ve bir Azure Service Fabric kafes uygulamasının doğrudan Visual Studio 'dan nasıl yükseltileceğini gösterir.
 services: service-fabric-mesh
 documentationcenter: .net
 author: dkkapur
@@ -14,18 +14,18 @@ ms.workload: NA
 ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 20aa65f0a8e47485e71fd03d73ff144f5290bcb7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 81f155d5708a2fca2fc1145feb20af12d2fd151e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036078"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686206"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Öğretici: Visual Studio kullanarak Service Fabric uygulamasını nasıl yükselteceğinizi öğrenin
 
 Bu öğretici bir serinin dördüncü bölümüdür ve bir Azure Service Fabric kafes uygulamasının doğrudan Visual Studio 'dan nasıl yükseltileceğini gösterir. Yükseltme hem bir kod güncelleştirmesi hem de bir yapılandırma güncelleştirmesi içerir. Visual Studio içinden yükseltme ve yayımlama adımlarının aynı olduğunu görürsünüz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Visual Studio 'Yu kullanarak Service Fabric bir kafes hizmetini yükseltme
 
@@ -39,7 +39,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -47,23 +47,23 @@ Bu öğreticiye başlamadan önce:
 
 ## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Visual Studio 'Yu kullanarak Service Fabric bir kafes hizmetini yükseltme
 
-Bu makalede bir uygulamanın içindeki bir mikro hizmetin nasıl yükseltileceğini gösterir. Bu örnekte, `WebFrontEnd` hizmeti bir görev kategorisi görüntüleyecek ve verilen CPU miktarını artıracak şekilde değiştireceksiniz. Sonra dağıtılan hizmeti yükseltiyoruz.
+Bu makalede bir uygulamanın içindeki bir mikro hizmetin nasıl yükseltileceğini gösterir. Bu örnekte, `WebFrontEnd` hizmetini bir görev kategorisi görüntüleyecek ve verilen CPU miktarını artıracak şekilde değiştireceksiniz. Sonra dağıtılan hizmeti yükseltiyoruz.
 
 ## <a name="modify-the-config"></a>Yapılandırmayı değiştirme
 
 Service Fabric bir kafes uygulaması oluşturduğunuzda, Visual Studio her dağıtım ortamı (bulut ve yerel) için bir **Parameters. YAML** dosyası ekler. Bu dosyalarda, Service. YAML veya Network. YAML gibi ağ *. YAML dosyalarından başvurulabilen parametreleri ve değerlerini tanımlayabilirsiniz.  Visual Studio, hizmetin ne kadar CPU kullanabileceği gibi bazı değişkenler sağlar.
 
-**Web ön uç** hizmetinin `WebFrontEnd_cpu` daha yoğun bir şekilde `1.5` kullanılması için CPU kaynaklarını olasılığına olarak güncelleştirmek üzere parametresini güncelleştireceğiz.
+**Web ön uç** hizmetinin daha yoğun bir şekilde kullanılması için CPU kaynaklarını olasılığına ' deki `1.5` güncelleştirmek üzere `WebFrontEnd_cpu` parametresini güncelleştireceğiz.
 
-1. **Todolistapp** projesinde, **ortamlar** > **bulutu**altında **Parameters. YAML** dosyasını açın. `WebFrontEnd_cpu`Değerini olarak`1.5`değiştirin. Parametre adı, farklı hizmetlere uygulanan aynı ada sahip parametrelerden `WebFrontEnd_` ayırt edilebilmesi için en iyi uygulama olarak hizmet adı ile önceden başlatılacaktır.
+1. **Todolistapp** projesinde, **ortamlar** > **Cloud**altında **Parameters. YAML** dosyasını açın. `WebFrontEnd_cpu`, değerini `1.5`olarak değiştirin. Parametre adı, farklı hizmetlere uygulanan aynı ada sahip parametrelerden ayırt etmek için en iyi uygulama olarak, hizmet adı `WebFrontEnd_` önceden kullanıma hazır.
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. Webön uç**hizmeti kaynakları** > altında **webön uç** projesinin **Service. YAML** dosyasını açın.
+2. Webön **uç projesinin** **Service. YAML** dosyasını **Web ön** ucu > **hizmet kaynakları**altında açın.
 
-    İçindeki `resources:` bölümünün`cpu:` olarak ayarlandığını`"[parameters('WebFrontEnd_cpu')]"`unutmayın. Proje bulut için `'WebFrontEnd_cpu` derleniyorsa, için değeri,**bulut** > **parametreleri. YAML** dosyası `1.5` **ortamlarından** > alınır ve olur. Proje yerel olarak çalışmak üzere derleniyorsa, bu değer **ortamlar** > **Yerel** > **Parametreler. YAML** dosyasından alınır ve ' 0,5 ' olur.
+    `resources:` bölümünde `cpu:` `"[parameters('WebFrontEnd_cpu')]"`olarak ayarlandığını unutmayın. Proje bulut için derleniyorsa, `'WebFrontEnd_cpu` değeri **bulut** > **Parameters. yaml** dosyası > **ortamlarından** alınır ve `1.5`olacaktır. Proje yerel olarak çalışmak üzere derleniyorsa, bu değer **yerel** > **Parameters. yaml** dosyası > **ortamlarından** alınır ve ' 0,5 ' olur.
 
 > [!Tip]
 > Varsayılan olarak, profile. YAML dosyasının bir eşi olan parametre dosyası, bu profile. YAML dosyasının değerlerini sağlamak için kullanılacaktır.
@@ -73,7 +73,7 @@ Service Fabric bir kafes uygulaması oluşturduğunuzda, Visual Studio her dağ�
 
 ## <a name="modify-the-model"></a>Modeli değiştirme
 
-Bir kod değişikliği tanıtmak için, `Category` `ToDoItem.cs` dosyadaki `ToDoItem` sınıfına bir özellik ekleyin.
+Bir kod değişikliği tanıtmak için `ToDoItem.cs` dosyasındaki `ToDoItem` sınıfına bir `Category` özelliği ekleyin.
 
 ```csharp
 public class ToDoItem
@@ -83,7 +83,7 @@ public class ToDoItem
 }
 ```
 
-Sonra, kategoriyi `Load()` varsayılan bir dizeye ayarlamak için aynı dosyada yöntemi güncelleştirin:
+Sonra, kategoriyi varsayılan bir dizeye ayarlamak için aynı dosyada `Load()` yöntemini güncelleştirin:
 
 ```csharp
 public static ToDoItem Load(string description, int index, bool completed)
@@ -101,7 +101,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 ## <a name="modify-the-service"></a>Hizmeti değiştirme
 
-`WebFrontEnd` Proje, yapılacaklar listesi öğelerini gösteren bir Web sayfası olan ASP.NET Core bir uygulamadır. Projede, görevin kategorisini göstermek `Index.cshtml` için aşağıda gösterildiği gibi aşağıdaki iki satırı açın ve ekleyin: `WebFrontEnd`
+`WebFrontEnd` projesi, bir Web sayfası olan ve yapılacaklar listesi öğelerini gösteren bir ASP.NET Core uygulamadır. `WebFrontEnd` projesinde, `Index.cshtml` açın ve görevin kategorisini göstermek için aşağıdaki iki satırı aşağıda gösterildiği gibi ekleyin:
 
 ```HTML
 <div>

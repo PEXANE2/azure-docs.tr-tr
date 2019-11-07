@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı yönetilebilirlik ve izleme-sorgu etkinliği, kaynak kullanımı | Microsoft Docs
+title: Yönetilebilirlik ve izleme-sorgu etkinliği, kaynak kullanımı
 description: Azure SQL veri ambarı 'nı yönetmek ve izlemek için kullanabileceğiniz özellikleri öğrenin. Sorgu etkinliğini ve veri ambarınızın kaynak kullanımını anlamak için Azure portal ve dinamik yönetim görünümlerini (DMVs) kullanın.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 08/09/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 786ae1f18d52c6763b60f5019ecfe365f1cd540a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1a210e2622212ed59dfa12f9f9a108c6ffe08714
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71334096"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692905"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda kaynak kullanımını ve sorgu etkinliğini izleme
 Azure SQL veri ambarı, veri ambarı iş yükünüze yönelik içgörüler için Azure portal içinde zengin bir izleme deneyimi sağlar. Azure portal, veri Ambarınızı izlerken, ölçüm ve Günlükler için yapılandırılabilir bekletme dönemleri, uyarılar, öneriler ve özelleştirilebilir grafikler ve panolar sağladığından önerilen araçtır. Portal ayrıca Operations Management Suite (OMS) ve Azure Izleyici (Günlükler) gibi diğer Azure izleme hizmetleri ile tümleştirmenize olanak tanıdığından, yalnızca veri Ambarınızla değil, tüm Azure analizlerinizi değil de bir bütünsel izleme deneyimi sağlar tümleşik izleme deneyimi için platform. Bu belgelerde, SQL veri ambarı ile analiz platformunuzu iyileştirmek ve yönetmek için kullanabileceğiniz izleme özellikleri açıklanmaktadır. 
@@ -24,10 +25,10 @@ Azure SQL veri ambarı, veri ambarı iş yükünüze yönelik içgörüler için
 SQL veri ambarı için Azure portal aşağıdaki ölçümler mevcuttur. Bu ölçümler [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics)aracılığıyla ortaya çıkmış.
 
 
-| Ölçüm Adı             | Açıklama                                                  | Toplama Türü |
+| Ölçüm adı             | Açıklama                                                  | Toplama türü |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | CPU yüzdesi          | Veri ambarı için tüm düğümlerde CPU kullanımı      | Maksimum          |
-| Veri GÇ yüzdesi      | Veri ambarı için tüm düğümlerde GÇ kullanımı       | Maksimum          |
+| Veri G/Ç yüzdesi      | Veri ambarı için tüm düğümlerde GÇ kullanımı       | Maksimum          |
 | Bellek yüzdesi       | Veri ambarı için tüm düğümlerde bellek kullanımı (SQL Server) | Maksimum          |
 | Başarılı bağlantılar  | Verilere yönelik başarılı bağlantı sayısı                 | Toplam            |
 | Başarısız Bağlantılar      | Veri ambarına yönelik başarısız bağlantı sayısı           | Toplam            |

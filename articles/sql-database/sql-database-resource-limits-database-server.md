@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı sunucusu kaynak sınırları | Microsoft Docs
+title: Azure SQL veritabanı sunucusu kaynak sınırları
 description: Bu makalede, tek veritabanları ve elastik havuzlar için Azure SQL veritabanı sunucusu kaynak sınırlarına genel bir bakış sunulmaktadır. Ayrıca, bu kaynak limitleri isabet edildiğinde veya aşıldığında ne olacağı hakkında bilgi de sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 04/18/2019
-ms.openlocfilehash: 175f694cbe46f871349136c9ce91888b6de48d21
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b358e69df1df579e91a9098c120c7e6b4e3f2ead
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566864"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687490"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL veritabanı sunucusu için SQL veritabanı kaynak sınırları
 
@@ -27,12 +27,12 @@ Bu makalede, tek veritabanlarını ve elastik havuzları yöneten bir SQL verita
 
 ## <a name="maximum-resource-limits"></a>En fazla kaynak sınırı
 
-| Resource | Sınır |
+| Kaynak | Sınır |
 | :--- | :--- |
 | Sunucu başına veritabanları | 5000 |
 | Herhangi bir bölgedeki abonelik başına varsayılan sunucu sayısı | 20 |
 | Herhangi bir bölgedeki abonelik başına en fazla sunucu sayısı | 200 |  
-| Sunucu başına DTU/eDTU kotası | 54,000 |  
+| Sunucu başına DTU/eDTU kotası | 54.000 |  
 | sunucu/örnek başına sanal çekirdek kotası | 540 |
 | Sunucu başına en fazla havuz | DTU sayısıyla veya sanal çekirdekler ile sınırlıdır. Örneğin, her havuz 1000 DTU ise, bir sunucu 54 havuzlarını destekleyebilir.|
 |||

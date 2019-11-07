@@ -2,33 +2,33 @@
 author: larryfr
 ms.service: machine-learning
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 10/06/2019
 ms.author: larryfr
-ms.openlocfilehash: b8913836baffdad200c198afa11475d617fe5d50
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0463dbd67f27f6664ab246ad56af9c6fb95c52ee
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729376"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682122"
 ---
-`deploymentconfig.json` Belgedeki girişler, [akswebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)parametrelerine eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
+`deploymentconfig.json` belgesindeki girdiler, [Akswebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)parametrelerine eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
 
 | JSON varlığı | Yöntem parametresi | Açıklama |
 | ----- | ----- | ----- |
-| `computeType` | NA | Bilgi işlem hedefi. AKS için değer olmalıdır `aks`. |
+| `computeType` | NA | Bilgi işlem hedefi. AKS için değerin `aks`olması gerekir. |
 | `autoScaler` | NA | Otomatik ölçeklendirme için yapılandırma öğelerini içerir. Bkz. otomatik Scaler tablosu. |
-| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Web hizmeti için otomatik ölçeklendirmenin etkinleştirilip etkinleştirilmeyeceğini belirtir. Eğer `numReplicas` , = ,yoksa, .`True` `0` `False` |
+| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Web hizmeti için otomatik ölçeklendirmenin etkinleştirilip etkinleştirilmeyeceğini belirtir. `numReplicas` = `0``True`; Aksi takdirde, `False`. |
 | &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Bu Web hizmetini otomatik ölçeklendirirken kullanılacak kapsayıcı sayısı alt sınırı. Varsayılan, `1`. |
 | &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Bu Web hizmetini otomatik ölçeklendirirken kullanılacak kapsayıcı sayısı üst sınırı. Varsayılan, `10`. |
 | &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Otomatik Scaler, bu Web hizmetini ölçeklendirmeye ne sıklıkta çalışır. Varsayılan, `1`. |
 | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Otomatik Scaler 'nın bu Web hizmeti için bakımını denemesi gereken hedef kullanım (100 ' dan fazla). Varsayılan, `70`. |
 | `dataCollection` | NA | Veri toplama için yapılandırma öğelerini içerir. |
 | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Web hizmeti için model veri toplamayı etkinleştirip etkinleştirmeyeceğinizi belirtir. Varsayılan, `False`. |
-| `authEnabled` | `auth_enabled` | Web hizmeti için anahtar kimlik doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtir. Her ikisi de `tokenAuthEnabled` olamaz .`True` `authEnabled` Varsayılan, `True`. |
-| `tokenAuthEnabled` | `token_auth_enabled` | Web hizmeti için belirteç kimlik doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtir. Her ikisi de `tokenAuthEnabled` olamaz .`True` `authEnabled` Varsayılan, `False`. |
+| `authEnabled` | `auth_enabled` | Web hizmeti için anahtar kimlik doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtir. Hem `tokenAuthEnabled` hem de `authEnabled` `True`olamaz. Varsayılan, `True`. |
+| `tokenAuthEnabled` | `token_auth_enabled` | Web hizmeti için belirteç kimlik doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtir. Hem `tokenAuthEnabled` hem de `authEnabled` `True`olamaz. Varsayılan, `False`. |
 | `containerResourceRequirements` | NA | CPU ve bellek varlıklarının kapsayıcısı. |
-| &emsp;&emsp;`cpu` | `cpu_cores` | Bu Web hizmeti için ayrılacak CPU çekirdeklerinin sayısı. Olarak`0.1` |
-| &emsp;&emsp;`memoryInGB` | `memory_gb` | Bu Web hizmeti için ayrılacak bellek miktarı (GB cinsinden). Varsayılanını`0.5` |
+| &emsp;&emsp;`cpu` | `cpu_cores` | Bu Web hizmeti için ayrılacak CPU çekirdeklerinin sayısı. Varsayılanlar, `0.1` |
+| &emsp;&emsp;`memoryInGB` | `memory_gb` | Bu Web hizmeti için ayrılacak bellek miktarı (GB cinsinden). Varsayılan, `0.5` |
 | `appInsightsEnabled` | `enable_app_insights` | Web hizmeti için Application Insights günlüğü etkinleştirilip etkinleştirilmeyeceğini belirtir. Varsayılan, `False`. |
 | `scoringTimeoutMs` | `scoring_timeout_ms` | Web hizmetine yönelik Puanlama çağrılarına zorlamak için zaman aşımı. Varsayılan, `60000`. |
 | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Bu Web hizmeti için düğüm başına en fazla eşzamanlı istek. Varsayılan, `1`. |

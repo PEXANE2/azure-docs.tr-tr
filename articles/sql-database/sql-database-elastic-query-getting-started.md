@@ -1,5 +1,5 @@
 ---
-title: Ölçekli bulut veritabanları genelinde rapor (yatay bölümlendirme) | Microsoft Docs
+title: Ölçekli bulut veritabanları genelinde rapor (yatay bölümleme)
 description: Birden çok veritabanı arasında raporlamak için veritabanları arası veritabanı sorguları kullanın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 4e896fae0d8459629c58dfd0bbdfbb32b90b1cac
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1adc7757edc6d5abc50ed31ea2227711db60fcfe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264240"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690421"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Ölçekli bulut veritabanları arasında rapor (Önizleme)
 
@@ -26,7 +26,7 @@ Var olan bir veritabanınız varsa, bkz. [var olan veritabanlarını ölçekli v
 
 Sorgulamak için gereken SQL nesnelerini anlamak için bkz. [yatay bölümlenmiş veritabanlarında sorgulama](sql-database-elastic-query-horizontal-partitioning.md).
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
 [Esnek veritabanı araçları](sql-database-elastic-scale-get-started.md)'nı kullanmaya başlama örneğini indirip çalıştırın.
 
@@ -114,7 +114,7 @@ Sorgunun tüm parçalardan sonuçları topladığına ve aşağıdaki çıktıy�
 3. **Diğer kaynaklardan** öğesine tıklayın ve **SQL Server**' ye tıklayın.
 
    ![Diğer kaynaklardan Excel içeri aktarma][5]
-4. **Veri bağlantısı Sihirbazı** 'nda sunucu adını ve oturum açma kimlik bilgilerini yazın. Sonra **İleri**'ye tıklayın.
+4. **Veri bağlantısı Sihirbazı** 'nda sunucu adını ve oturum açma kimlik bilgilerini yazın. Ardından **İleri**'ye tıklayın.
 5. İletişim kutusunda istediğiniz **verileri içeren veritabanını seçin**, **Elaun dbquery** veritabanını seçin.
 6. Liste görünümünde **Customers** tablosunu seçin ve **İleri**' ye tıklayın. Ardından **son**' a tıklayın.
 7. **Veri al** formunda, **çalışma kitabınızda bu verileri nasıl görüntülemek Istediğinizi seçin**altında **tablo** ' yı seçin ve **Tamam**' ı tıklatın.
@@ -134,7 +134,7 @@ Fiyatlandırma bilgileri için bkz. [SQL Veritabanı Fiyatlandırma ayrıntılar
 * Dikey bölümleme öğreticisi için bkz. [çapraz veritabanı sorgusuna Başlarken (dikey bölümlendirme)](sql-database-elastic-query-getting-started-vertical.md).
 * Dikey olarak bölümlenmiş verilere yönelik sözdizimi ve örnek sorgular için bkz. [dikey olarak bölümlenmiş verileri sorgulama)](sql-database-elastic-query-vertical-partitioning.md)
 * Yatay olarak bölümlenmiş veriler için sözdizimi ve örnek sorgular için bkz. [yatay olarak bölümlenmiş verileri sorgulama)](sql-database-elastic-query-horizontal-partitioning.md)
-* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [SP @ no__t-1execute \_remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
+* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
 
 
 <!--Image references-->

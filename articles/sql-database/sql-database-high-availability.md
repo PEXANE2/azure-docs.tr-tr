@@ -1,5 +1,5 @@
 ---
-title: Yüksek kullanılabilirlik-Azure SQL veritabanı hizmeti | Microsoft Docs
+title: Yüksek kullanılabilirlik-Azure SQL veritabanı hizmeti
 description: Azure SQL veritabanı hizmeti yüksek kullanılabilirlik özellikleri ve özellikleri hakkında bilgi edinin
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: ab3971b4fb6065701d693debf55242be7b15295e
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: b34590ca275b6e7254af7820fdc1a03655351cea
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965969"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689962"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Yüksek kullanılabilirlik ve Azure SQL veritabanı
 
@@ -39,7 +39,7 @@ Bu hizmet katmanları standart kullanılabilirlik mimarisinden yararlanır. Aşa
 
 Standart kullanılabilirlik modeli iki katman içerir:
 
-- `sqlservr.exe` sürecini çalıştıran ve yalnızca geçici ve önbelleğe alınmış veriler (örneğin, eklenen SSD üzerinde model veritabanları, bağlı SSD üzerinde model veritabanları, ve bellek olarak plan önbelleği, arabellek havuzu ve columnstore havuzu) içeren durum bilgisiz işlem katmanı. Bu durum bilgisiz düğüm, `sqlservr.exe` ' ı başlatan Azure Service Fabric tarafından çalıştırılır, düğümün sistem durumunu denetler ve gerekirse başka bir düğüme yük devretme işlemi gerçekleştirir.
+- `sqlservr.exe` sürecini çalıştıran ve yalnızca geçici ve önbelleğe alınmış veriler (örneğin, eklenen SSD üzerinde model veritabanları, bağlı SSD üzerinde model veritabanları, ve bellek olarak plan önbelleği, arabellek havuzu ve columnstore havuzu) içeren durum bilgisiz işlem katmanı. Bu durum bilgisiz düğüm, `sqlservr.exe`Başlatan, düğümün sistem durumunu denetleyen ve gerekirse başka bir düğüme yük devretme gerçekleştiren Azure Service Fabric tarafından çalıştırılır.
 - Azure Blob depolamada depolanan veritabanı dosyaları (. mdf/. ldf) ile durum bilgisi olan bir veri katmanı. Azure Blob depolamada yerleşik veri kullanılabilirliği ve artıklık özelliği bulunur. SQL Server işlemi kilitlense bile, veri dosyasındaki günlük dosyasında veya sayfada bulunan her kaydın korunacağından emin olur.
 
 Veritabanı altyapısı veya işletim sistemi yükseltildiğinde veya bir hata algılandığında, Azure Service Fabric durum bilgisiz SQL Server işlemini yeterli boş kapasiteye sahip başka bir durum bilgisi olmayan işlem düğümüne taşıyacaktır. Azure Blob depolama alanındaki veriler taşımadan etkilenmez ve veri/günlük dosyaları yeni başlatılan SQL Server işlemine eklenir. Bu işlem% 99,99 kullanılabilirliği garanti eder, ancak yeni SQL Server örneği soğuk önbellek ile başladığından bu yana ağır bir iş yükü geçiş sırasında bazı performans düşüşüne neden olabilir.
@@ -63,7 +63,7 @@ Hiper ölçek hizmet katmanı mimarisi, [Dağıtılmış işlevler mimarisinde](
 Hiper ölçekte kullanılabilirlik modeli dört katman içerir:
 
 - `sqlservr.exe` işlemleri çalıştıran ve yalnızca geçici ve önbelleğe alınmış veriler içeren, eklenen SSD 'de kapsayan ve önbellek, arabellek havuzu ve columnstore havuzu gibi durum bilgisi olmayan bir işlem katmanı. Bu durum bilgisiz katmanı, birincil işlem çoğaltmasını ve isteğe bağlı olarak, yük devretme hedefleri olarak kullanılabilecek bir dizi ikincil işlem çoğaltmasını içerir.
-- Sayfa sunucuları tarafından biçimlendirilen durum bilgisi olmayan bir depolama katmanı. Bu katman, işlem çoğaltmaları üzerinde çalışan `sqlservr.exe` işlemleri için dağıtılmış depolama altyapısıdır. Her sayfa sunucusu yalnızca geçici ve önbelleğe alınmış verileri içerir, örneğin takılı SSD üzerinde RBPEX önbelleği ve bellekte önbelleğe alınan veri sayfaları. Her sayfa sunucusunun, Yük Dengeleme, yedeklilik ve yüksek kullanılabilirlik sağlamak için etkin-etkin bir yapılandırmada eşleştirilmiş bir sayfa sunucusu vardır.
+- Sayfa sunucuları tarafından biçimlendirilen durum bilgisi olmayan bir depolama katmanı. Bu katman, işlem çoğaltmaları üzerinde çalışan `sqlservr.exe` işlemlerine yönelik dağıtılmış depolama altyapısıdır. Her sayfa sunucusu yalnızca geçici ve önbelleğe alınmış verileri içerir, örneğin takılı SSD üzerinde RBPEX önbelleği ve bellekte önbelleğe alınan veri sayfaları. Her sayfa sunucusunun, Yük Dengeleme, yedeklilik ve yüksek kullanılabilirlik sağlamak için etkin-etkin bir yapılandırmada eşleştirilmiş bir sayfa sunucusu vardır.
 - Günlük hizmeti işlemi, işlem günlüğü giriş bölgesi ve işlem günlüğü uzun vadeli depolama alanı çalıştıran işlem düğümü tarafından oluşturulan, durum bilgisi olan işlem günlüğü depolama katmanı. Giriş bölgesi ve uzun süreli depolama, işlem günlüğü için kullanılabilirlik ve [Artıklık](https://docs.microsoft.com/azure/storage/common/storage-redundancy) sağlayan ve kaydedilmiş işlemler için veri dayanıklılığı sağlayan Azure depolama 'yı kullanır.
 - Azure depolama 'da depolanan ve sayfa sunucuları tarafından güncelleştirilmiş veritabanı dosyaları (. mdf/. ndf) ile durum bilgisi olan bir veri depolama katmanı. Bu katman, Azure depolama 'nın veri kullanılabilirliği ve [Artıklık](https://docs.microsoft.com/azure/storage/common/storage-redundancy) özelliklerini kullanır. Bir veri dosyasındaki her sayfanın, hiper ölçekli mimarinin diğer katmanlarındaki işlemler çöktüğünde veya işlem düğümleri başarısız olsa bile korunacağından emin olur.
 

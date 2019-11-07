@@ -2,19 +2,19 @@
 title: Hızlı Başlangıç-tarayıcıda JavaScript ve HTML kullanarak Azure depolamada blob oluşturma
 description: HTML sayfasında JavaScript kullanarak Blobları karşıya yüklemeyi, listeleyeceğinizi ve silmeyi öğrenin.
 services: storage
-author: KarlErickson
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
-ms.author: karler
+ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: de21791e1ae11554f7a57c17c3935c0993bea1f9
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 3eb6f68a443e29a7d4c7b4dedad38783f838dee5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025360"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686675"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -22,7 +22,7 @@ ms.locfileid: "73025360"
 
 Bu hızlı başlangıçta, tarayıcıdan tamamen tarayıcıda çalışan JavaScript kodundan blob 'ları yönetmek için [Azure Storage SDK ile v10 arasındaki for JavaScript-blob](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) Kitaplığı ' nı kullanmayı öğreneceksiniz. Burada kullanılan yaklaşım, blob depolama hesabınıza korumalı erişimi güvence altına almak için gerekli güvenlik önlemlerinin nasıl kullanılacağını göstermektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 

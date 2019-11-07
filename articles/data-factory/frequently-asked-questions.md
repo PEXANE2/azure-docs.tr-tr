@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Factory: sık sorulan sorular | Microsoft Docs'
+title: 'Azure Data Factory: sık sorulan sorular '
 description: Azure Data Factory hakkında sık sorulan soruların yanıtlarını alın.
 services: data-factory
 documentationcenter: ''
@@ -9,20 +9,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7ebcf865ad23e75b2aa9070fe14fc3ee8f1397c7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481134"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674722"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory SSS
 Bu makale Azure Data Factory hakkında sık sorulan soruların yanıtlarını sağlar.  
 
 ## <a name="what-is-azure-data-factory"></a>Azure Data Factory nedir? 
-Data Factory, verilerin hareketini ve dönüştürülmesini otomatikleştiren, tam olarak yönetilen, bulut tabanlı bir veri tümleştirme hizmetidir. Ham malzemeleri mamul mallar halinde dönüştürmek üzere ekipman çalıştıran bir fabrikada olduğu gibi, ham verileri toplayıp kullanıma kullanım bilgilerine dönüştüren mevcut hizmetleri düzenler Azure Data Factory. 
+Data Factory, verilerin hareketini ve dönüştürülmesini otomatikleştiren, tam olarak yönetilen, bulut tabanlı bir veri tümleştirme ETL hizmetidir. Ham malzemeleri mamul mallar halinde dönüştürmek üzere ekipman çalıştıran bir fabrikada olduğu gibi, ham verileri toplayıp kullanıma kullanım bilgilerine dönüştüren mevcut hizmetleri düzenler Azure Data Factory. 
 
-Azure Data Factory kullanarak verileri şirket içi ve bulut veri depoları arasında taşımak için veri odaklı iş akışları oluşturabilirsiniz. Azure HDInsight, Azure Data Lake Analytics ve SQL Server Integration Services (SSIS) tümleştirme çalışma zamanı gibi işlem hizmetlerini kullanarak verileri işleyebilir ve dönüştürebilirsiniz. 
+Azure Data Factory kullanarak verileri şirket içi ve bulut veri depoları arasında taşımak için veri odaklı iş akışları oluşturabilirsiniz. Ve veri akışları ile verileri işleyebilir ve dönüştürebilirsiniz. ADF Ayrıca Azure HDInsight, Azure Databricks ve SQL Server Integration Services (SSIS) tümleştirme çalışma zamanı gibi işlem hizmetlerini kullanarak el kodlu dönüşümler için dış işlem altyapılarını destekler. 
 
 Data Factory, veri işlelerinizi Azure tabanlı bir bulut hizmetinde veya SSIS, SQL Server veya Oracle gibi kendi şirket içinde barındırılan bir işlem ortamında yürütebilirsiniz. İhtiyacınız olan eylemi gerçekleştiren bir işlem hattı oluşturduktan sonra, düzenli aralıklarla (saatlik, günlük veya haftalık) çalışacak şekilde zamanlayabilirsiniz (örneğin, zaman penceresi zamanlaması), veya işlem hattını bir olay örneğinden tetikleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Data Factory'ye giriş](introduction.md).
 
@@ -55,7 +55,7 @@ Visual Data Developers ve veri mühendislerine yönelik Data Factory Web Kullan�
 
 ### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Gelişmiş kullanıcılar için zengin platformlar arası SDK 'lar
 Data Factory v2, aşağıdakiler dahil olmak üzere en sevdiğiniz IDE 'yi kullanarak işlem hatlarını yazmak, yönetmek ve izlemek için kullanılabilen zengin bir SDK kümesi sağlar:
-* Python SDK'sı
+* Python SDK
 * PowerShell CLı
 * C# SDK’sı
 
@@ -69,7 +69,7 @@ Azure Data Factory görsel araçları, yinelemeli geliştirme ve hata ayıklamay
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>SSIS paketlerini Azure 'a dağıtma olanağı 
 SSIS iş yüklerinizi taşımak istiyorsanız, bir Data Factory oluşturabilir ve bir Azure-SSIS tümleştirme çalışma zamanı sağlayabilirsiniz. Azure-SSIS Integration Runtime, bulutta SSIS paketlerinizi çalıştırmaya ayrılmış Azure VM 'lerin (düğümler) tam yönetilen bir kümesidir. Adım adım yönergeler için bkz. [SSIS paketlerini Azure 'A dağıtma](tutorial-create-azure-ssis-runtime-portal.md) öğreticisi. 
  
-### <a name="sdks"></a>SDK'lar
+### <a name="sdks"></a>SDK’lar
 İleri düzey bir kullanıcıysanız ve bir programlama arabirimi arıyorsanız Data Factory, sık kullandığınız IDE 'yi kullanarak işlem hatlarını yazmak, yönetmek veya izlemek için kullanabileceğiniz zengin bir SDK kümesi sağlar. Dil desteği .NET, PowerShell, Python ve REST içerir.
 
 ### <a name="monitoring"></a>İzleme
@@ -108,6 +108,9 @@ Azure aboneliğinin bir veya birden çok Azure Data Factory örneği (veya veri 
 
 ### <a name="pipelines"></a>İşlem hatları
 Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir dizi iş gerçekleştirmeye yönelik mantıksal bir etkinlik gruplandırmasıdır. İşlem hattındaki etkinlikler birlikte bir görev gerçekleştirir. Örneğin, bir işlem hattı Azure blobundan verileri alan ve ardından HDInsight kümesinde verileri bölümlemek için bir Hive sorgusu çalıştıran bir etkinlik grubu içerebilir. Bu avantajda, etkinlikleri her bir etkinliği ayrı ayrı yönetmek yerine bir küme olarak yönetmek için bir işlem hattı kullanabilirsiniz. Etkinlikleri sırayla çalıştırmak için bir işlem hattındaki etkinlikleri birlikte zincirleyebilir veya bunları paralel olarak bağımsız olarak çalıştırabilirsiniz.
+
+### <a name="data-flows"></a>Veri akışları
+Veri akışları, arka uç Spark hizmetlerindeki ölçekteki verileri dönüştüren Data Factory görsel olarak oluşturduğunuz nesnelerdir. Programlama veya Spark iç yapıları anlamanız gerekmez. Grafikler (eşleme) veya elektronik tablolar (Wrangling) kullanarak veri dönüştürme hedefini tasarlamanızı yeterlidir.
 
 ### <a name="activities"></a>Etkinlikler
 Etkinlikler bir işlem hattındaki işleme adımını temsil eder. Örneğin, bir veri deposundan başka bir veri deposuna veri kopyalamak için kopyalama etkinliğini kullanabilirsiniz. Benzer şekilde, verilerinizi dönüştürmek veya analiz etmek için bir Azure HDInsight kümesinde Hive sorgusu çalıştıran bir Hive etkinliği kullanabilirsiniz. Data Factory üç tür etkinliği destekler: veri taşıma etkinlikleri, veri dönüştürme etkinlikleri ve denetim etkinlikleri.
@@ -199,12 +202,12 @@ Diğer bağlayıcılardan herhangi birinden veri hazırlamak için kopyalama etk
 Wrangling veri akışı şu anda şu bölgelerde oluşturulan veri fabrikaları 'nda destekleniyor:
 
 * Avustralya Doğu
-* Kanada Orta
+* Orta Kanada
 * Orta Hindistan
 * Orta ABD
 * Doğu ABD
 * Doğu ABD 2
-* Doğu Japonya
+* Japonya Doğu
 * Kuzey Avrupa
 * Güneydoğu Asya
 * Orta Güney ABD

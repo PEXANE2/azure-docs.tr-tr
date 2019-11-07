@@ -1,5 +1,5 @@
 ---
-title: Elastik veritabanı araçlarını kullanarak parça ekleme | Microsoft Docs
+title: Elastik veritabanı araçlarını kullanarak parça ekleme
 description: Yeni parçaları bir parça kümesine eklemek için elastik ölçek API 'Leri kullanma.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 679c1bea640644cd46c436ec04278558f610ceda
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3243c8dfcfa83129f57bcd3ea7969fb4f8b07156
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568530"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690342"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanarak parça ekleme
 
@@ -28,7 +28,7 @@ Yeni anahtar değerleri aralığı zaten varolan bir eşlemenin parçası değil
 
 ### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Örnek: var olan parça eşlemesine parça ve onun aralığını ekleme
 
-Bu örnek, TryGetShard (Java[](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), .net [](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))), createkıard[(Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), .net [](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), createrangemapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) yöntemleri) kullanır ve bir shardlocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) örneği oluşturur sınıfı. Aşağıdaki örnekte, **sample_shard_2** adlı bir veritabanı ve içindeki tüm gerekli şema nesneleri [300, 400) aralığını tutacak şekilde oluşturulmuştur.  
+Bu örnek, TryGetShard[(Java,](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard).net [),](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))createkıard[(Java, .net](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard) [),](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)createrangemapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) yöntemleri) kullanır ve bir shardlocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) örneği oluşturur sınıfı. Aşağıdaki örnekte, **sample_shard_2** adlı bir veritabanı ve içindeki tüm gerekli şema nesneleri [300, 400) aralığını tutacak şekilde oluşturulmuştur.  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -78,6 +78,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Önemli**:  Bu tekniği yalnızca, güncelleştirilmiş eşleme aralığının boş olduğundan eminseniz kullanın.  Önceki yöntemler, taşınmakta olan aralığın verilerini denetlemez, bu nedenle kodunuzda denetimleri eklemek en iyisidir.  Taşınmakta olan aralıkta satırlar varsa, gerçek veri dağıtımı güncelleştirilmiş parça eşlemesiyle eşleşmez. Bu gibi durumlarda işlemi gerçekleştirmek için [bölünmüş birleştirme aracını](sql-database-elastic-scale-overview-split-and-merge.md) kullanın.  
+**Önemli**: Bu tekniği yalnızca, güncelleştirilmiş eşleme aralığının boş olduğundan eminseniz kullanın.  Önceki yöntemler, taşınmakta olan aralığın verilerini denetlemez, bu nedenle kodunuzda denetimleri eklemek en iyisidir.  Taşınmakta olan aralıkta satırlar varsa, gerçek veri dağıtımı güncelleştirilmiş parça eşlemesiyle eşleşmez. Bu gibi durumlarda işlemi gerçekleştirmek için [bölünmüş birleştirme aracını](sql-database-elastic-scale-overview-split-and-merge.md) kullanın.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

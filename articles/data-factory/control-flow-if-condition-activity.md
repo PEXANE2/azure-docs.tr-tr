@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory 'de koşul etkinliği varsa | Microsoft Docs
+title: Azure Data Factory koşul etkinliği
 description: If koşulu etkinliği, işleme akışını bir koşula göre denetlemenizi sağlar.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fc6318b5033ff1297f917ab95b28f8ed9285e930
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 562e84b4fe51603ae32884057578541f5536ebd4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142485"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679837"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory koşul etkinliği
 If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği sağlar. Koşul `true` sonucunu verdiğinde bir dizi etkinliği, `false` sonucu verdiğinde ise başka bir dizi etkinliği değerlendirmeye alır. 
@@ -65,11 +65,11 @@ If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | If-Condition etkinliğinin adı. | Dize | Evet
+ad | If-Condition etkinliğinin adı. | Dize | Evet
 type | **Ifcondition** olarak ayarlanmalıdır | Dize | Evet
-expression | True veya false sonucunu vermesi gereken ifade | Sonuç türü Boole olan ifade | Evet
-ifTrueActivities | İfade olarak `true`değerlendirildiğinde yürütülen etkinlik kümesi. | Array | Evet
-Ifyanlışa etkinlikleri | İfade olarak `false`değerlendirildiğinde yürütülen etkinlik kümesi. | Array | Evet
+ifadesini | True veya false sonucunu vermesi gereken ifade | Sonuç türü Boole olan ifade | Evet
+ifTrueActivities | İfade `true`olarak değerlendirildiğinde yürütülen etkinlik kümesi. | Dizi | Evet
+Ifyanlışa etkinlikleri | İfade `false`olarak değerlendirildiğinde yürütülen etkinlik kümesi. | Dizi | Evet
 
 ## <a name="example"></a>Örnek
 Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasörüne kopyalar. Çıkış klasörü, işlem hattı parametresinin değeri tarafından belirlenir: routeSelection. RouteSelection değeri true ise, veriler outputPath1 ' e kopyalanır. Ve eğer routeSelection değeri false ise, veriler outputPath2 ' e kopyalanır. 
@@ -247,7 +247,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu komutlar, JSON dosyalarını klasörüne kaydettiğiniz varsayılmaktadır: C:\ADF. 
+Bu komutlar JSON dosyalarını klasörüne kaydettiğiniz varsayılmaktadır: C:\ADF. 
 
 ```powershell
 Connect-AzAccount

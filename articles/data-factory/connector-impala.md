@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory kullanarak Impala 'den veri kopyalama Microsoft Docs
+title: Azure Data Factory kullanarak Impala 'ten veri kopyalama
 description: Data Factory işlem hattındaki kopyalama etkinliğini kullanarak Impala 'dan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 54f46c09cfab64d53e8f5f503ca46004289f18c2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4fa43246278c33755f6a8a5b62f914689e6e9b40
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935561"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680793"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Impala 'ten veri kopyalama
 
@@ -34,11 +34,11 @@ Impala 'ten desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsini
 
 Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar. Bu nedenle, bu bağlayıcıyı kullanmak için el ile bir sürücü yüklemeniz gerekmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -48,12 +48,12 @@ Aşağıdaki bölümler, Impala bağlayıcısına özgü Data Factory varlıklar
 
 Aşağıdaki özellikler Impala bağlı hizmeti için desteklenir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği **Impala**olarak ayarlanmalıdır. | Yes |
-| Konağının | Impala sunucusunun IP adresi veya ana bilgisayar adı (yani, 192.168.222.160).  | Yes |
+| type | Type özelliği **Impala**olarak ayarlanmalıdır. | Evet |
+| Konağının | Impala sunucusunun IP adresi veya ana bilgisayar adı (yani, 192.168.222.160).  | Evet |
 | port | Impala sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. Varsayılan değer 21050 ' dir.  | Hayır |
-| authenticationType | Kullanılacak kimlik doğrulaması türü. <br/>İzin verilen değerler **anonim**, **Saslusername**ve **userNameAndPassWord**. | Yes |
+| authenticationType | Kullanılacak kimlik doğrulaması türü. <br/>İzin verilen değerler **anonim**, **Saslusername**ve **userNameAndPassWord**. | Evet |
 | kullanıcı adı | Impala sunucusuna erişmek için kullanılan Kullanıcı adı. SASLUsername kullandığınızda varsayılan değer anonimdir.  | Hayır |
 | password | UsernameAndPassword kullandığınızda Kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
 | enableSsl | Sunucu bağlantılarının SSL kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer **false**'dur.  | Hayır |
@@ -94,11 +94,11 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 Impala adresinden veri kopyalamak için, veri kümesinin Type özelliğini **ımpalaobject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği şu şekilde ayarlanmalıdır: **ımpalaobject** | Yes |
+| type | DataSet 'in Type özelliği şu şekilde ayarlanmalıdır: **ımpalaobject** | Evet |
 | manızı | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
-| Tablosundan | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
+| tablosundan | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve `table` kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -126,9 +126,9 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 Impala adresinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **ımpalasource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği **ımpalasource**olarak ayarlanmalıdır. | Yes |
+| type | Kopyalama etkinliği kaynağının Type özelliği **ımpalasource**olarak ayarlanmalıdır. | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

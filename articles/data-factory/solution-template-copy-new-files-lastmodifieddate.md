@@ -1,5 +1,5 @@
 ---
-title: Yeni ve değiştirilmiş dosyaları Azure Data Factory ile LastModifiedDate göre Kopyala | Microsoft Docs
+title: Azure Data Factory ile yeni ve değiştirilmiş dosyaları LastModifiedDate göre Kopyala
 description: Azure Data Factory ile yeni ve değiştirilmiş dosyaları LastModifiedDate göre kopyalamak için bir çözüm şablonu kullanmayı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
-ms.openlocfilehash: a2a8f0478d1ae4fb19cb911b02572145ff59839b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: aaa7114113d5f0330d2dc7d656b0d91963931512
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030065"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684222"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Azure Data Factory ile yeni ve değiştirilmiş dosyaları LastModifiedDate göre Kopyala
 
@@ -88,8 +88,8 @@ Bu şablon ilk olarak yeni ve değiştirilmiş dosyaları yalnızca öznitelikle
 11. **Tetikleyici çalıştırma parametrelerinin** değerini aşağıdaki şekilde yazın ve **son**' u seçin.
     - **FolderPath_Source** =  **/Source/** .  Kaynak veri deposundaki klasörünüzle değiştirebilirsiniz.
     - **FolderPath_Destination** =  **/Destination/** .  Hedef veri deposundaki klasörünüzle değiştirebilirsiniz.
-    - **LastModified_From** =   **\@trigger (). çıktılar. windowstarttime**.  Bu, işlem hattının son kez tetiklendiği saati belirleyen tetikleyiciden bir sistem değişkenidir.
-    - **LastModified_To** =  **\@trigger (). çıktılar. windowbitişsaati**.  Bu süre, işlem hattının bu kez tetiklendiği saati belirleyen tetikleyiciden bir sistem değişkenidir.
+    - **LastModified_From** =   **\@tetikleyicisi (). çıktılar. windowstarttime**.  Bu, işlem hattının son kez tetiklendiği saati belirleyen tetikleyiciden bir sistem değişkenidir.
+    - **LastModified_To** =  **\@tetikleyicisi (). çıktılar. windowbitişsaati**.  Bu süre, işlem hattının bu kez tetiklendiği saati belirleyen tetikleyiciden bir sistem değişkenidir.
     
     ![Giriş parametreleri](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

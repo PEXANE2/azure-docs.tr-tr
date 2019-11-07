@@ -1,5 +1,5 @@
 ---
-title: Olağanüstü durum kurtarma için Azure SQL veritabanı güvenliğini yapılandırma | Microsoft Docs
+title: Olağanüstü durum kurtarma için Azure SQL veritabanı güvenliğini yapılandırma
 description: Bir veritabanı geri yüklendikten sonra güvenliği yapılandırmak ve yönetmek için güvenlik konularını veya ikincil bir sunucuya yük devretmeyi öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 4d4939b7a0179216d11f594ce12f384276d15e05
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3c08ba1a37d7b0d16042d6496c27e0de8d070b75
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568136"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689978"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Coğrafi geri yükleme veya yük devretme için Azure SQL veritabanı güvenliğini yapılandırma ve yönetme
 
@@ -48,7 +48,7 @@ Coğrafi çoğaltma için Kullanıcı erişiminin hazırlanması, coğrafi çoğ
 
 Hedef sunucuda oturum açma ayarları aşağıda belirtilen üç adımdan oluşur:
 
-#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. Birincil veritabanına erişimi olan oturum açmaları belirleme
+#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. birincil veritabanına erişimi olan oturum açmaları belirleme
 
 İşlemin ilk adımı, hedef sunucuda hangi oturum açmaları tekrarlamak gerektiğini belirlemektir. Bu, biri kaynak sunucuda ve diğeri birincil veritabanında bulunan mantıksal ana veritabanında bulunan bir çift SELECT deyimi ile gerçekleştirilir.
 
@@ -64,7 +64,7 @@ Birincil veritabanındaki tüm veritabanı kullanıcı sorumlularını yalnızca
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
-#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Adım 1 ' de tanımlanan oturum açma SID 'sini bulma
+#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Adım 1 ' de tanımlanan oturum açma SID 'sini bulun
 
 Önceki bölümden ve SID 'Lerle eşleşen sorguların çıkışını karşılaştırarak sunucu oturum açma bilgilerini veritabanı kullanıcısına eşleyebilirsiniz. Eşleşen SID 'si olan bir veritabanı kullanıcısına sahip olan oturumlarda, bu veritabanı kullanıcı sorumlusu olarak bu veritabanına Kullanıcı erişimi vardır.
 
@@ -77,7 +77,7 @@ Aşağıdaki sorgu, tüm kullanıcı sorumlularını ve bunların SID 'Lerini bi
 > [!NOTE]
 > **INFORMATION_SCHEMA** ve **sys** kullanıcıları *null* SID 'lere sahiptir ve **Konuk** SID değeri **0x00**olur. Veritabanı Oluşturucu **DBManager**üyesi yerine sunucu yöneticisi ise, **dbo** SID 'si *0x01060000000001648000000000048454*ile başlayabilir.
 
-#### <a name="3-create-the-logins-on-the-target-server"></a>3. Hedef sunucuda oturum açma işlemleri oluşturma
+#### <a name="3-create-the-logins-on-the-target-server"></a>3. oturum açma bilgilerini hedef sunucuda oluşturun
 
 Son adım hedef sunucuya veya sunuculara gidececektir ve uygun SID 'Ler ile oturum açmaları oluşturacaktır. Temel sözdizimi aşağıdaki gibidir.
 
@@ -96,7 +96,7 @@ Son adım hedef sunucuya veya sunuculara gidececektir ve uygun SID 'Ler ile otur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Veritabanı erişimini ve oturum açmaları yönetme hakkında daha fazla bilgi için [bkz. SQL veritabanı güvenliği: Veritabanı erişimini ve oturum açma güvenliğini](sql-database-manage-logins.md)yönetin.
+* Veritabanı erişimini ve oturum açma bilgilerini yönetme hakkında daha fazla bilgi için bkz. [SQL veritabanı güvenliği: veritabanı erişimini yönetme ve oturum açma güvenliği](sql-database-manage-logins.md).
 * Kapsanan veritabanı kullanıcıları hakkında daha fazla bilgi için bkz. [Kapsanan Veritabanı kullanıcıları-veritabanınızı taşınabilir hale getirme](https://msdn.microsoft.com/library/ff929188.aspx).
 * Etkin coğrafi çoğaltma hakkında bilgi edinmek için bkz. [etkin coğrafi çoğaltma](sql-database-active-geo-replication.md).
 * Otomatik yük devretme grupları hakkında bilgi edinmek için bkz. [otomatik yük devretme grupları](sql-database-auto-failover-group.md).

@@ -1,5 +1,5 @@
 ---
-title: SSIS paketi yürütme etkinliğine sahip bir SSIS paketi çalıştırma-Azure | Microsoft Docs
+title: SSIS paketi yürütme etkinliği ile bir SSIS paketi çalıştırma-Azure
 description: Bu makalede, SSIS paketi yürütme etkinliğini kullanarak bir Azure Data Factory işlem hattında SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacağı açıklanmaktadır.
 services: data-factory
 documentationcenter: ''
@@ -13,17 +13,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 965bb0641aac3224ac98820006f308e6b5fb0f71
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b8ed0a04d2d13556f38873ef5f346d49ba4d1845
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255650"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673742"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory 'de SSIS paketi yürütme etkinliğiyle bir SSIS paketi çalıştırın
 Bu makalede, SSIS paketi yürütme etkinliğini kullanarak bir Azure Data Factory işlem hattında SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacağı açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -39,9 +39,9 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
 
    ![Data Factory giriş sayfası](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 
-   **Haydi** başlayın sayfasında Işlem **hattı oluştur**' u seçin. 
+   **Kullanmaya başlama** sayfasında **İşlem hattı oluştur** seçeneğini belirleyin. 
 
-   ![Kullanmaya başlama sayfası](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
+   ![Başlarken sayfası](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
 
 1. **Etkinlikler** araç kutusunda **genel**' i genişletin. Sonra bir **SSIS paketi yürütme etkinliğini işlem** hattı tasarımcı yüzeyine sürükleyin. 
 
@@ -69,17 +69,17 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
 
    ![Ayarlar sekmesinde özellikleri ayarlama-El Ile](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-   Azure-SSIS IR SSSıSDB olmadan sağlanmışsa otomatik olarak seçilen paket konumunuz olarak **dosya sistemi (paket)** seçeneğini belirlerseniz, paket dosyanıza bir evrensel adlandırma KURALı (UNC) yolu sağlayarak çalıştırılacak paketinizi belirtin (@no __T-1) **paket yolu** kutusunda. Örneğin, paketinizi Azure dosyalarında depolarsanız, paket yolu `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx` ' dır. 
+   Azure-SSIS IR SSSıSDB olmadan sağlanmışsa otomatik olarak seçilen paket konumunuz olarak **dosya sistemi (paket)** seçeneğini belirlerseniz, paket dosyanıza bir evrensel adlandırma KURALı (UNC) yolu sağlayarak çalıştırılacak paketinizi belirtin (@no __t_1_) **paket yolu** kutusunda.`.dtsx` Örneğin, paketinizi Azure dosyalarında depolarsanız, paket yolu `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
    
-   Paketinizi ayrı bir dosyada yapılandırırsanız yapılandırma **yolu** kutusunda yapılandırma dosyanıza (`.dtsConfig`) bir UNC yolu da sağlamanız gerekir. Örneğin, yapılandırmanızı Azure dosyalarında depolarsanız, yapılandırma yolu `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig` ' dır.
+   Paketinizi ayrı bir dosyada yapılandırırsanız, yapılandırma **yolu** kutusunda yapılandırma dosyanıza (`.dtsConfig`) bir UNC yolu da sağlamanız gerekir. Örneğin, yapılandırmanızı Azure dosyalarında depolarsanız, yapılandırma yolu `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`.
 
    ![Ayarlar sekmesinde özellikleri ayarlama-El Ile](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
 
-   Paket konumunuz olarak **dosya sistemi (proje)** seçeneğini belirlerseniz, proje **yolu** kutusuna (`.ispac`) proje dosyanıza bir UNC yolu ve **paket adındaki** projenizden bir paket dosyası (`.dtsx`) sağlayarak çalıştırılacak paketinizi belirtin Kutudaki. Örneğin, projenizi Azure dosyalarında depolarsanız, proje yolu `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac` ' dır.
+   Paket konumunuz olarak **dosya sistemi (proje)** seçeneğini belirlerseniz, proje **yolu** kutusunda proje dosyanıza (`.ispac`) ve **paket adındaki** bir paket dosyasına (`.dtsx`) bir UNC yolu sağlayarak çalıştırılacak paketinizi belirtin Kutudaki. Örneğin, projenizi Azure dosyalarında depolarsanız, proje yolu `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
 
    ![Ayarlar sekmesinde özellikleri ayarlama-El Ile](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
-   Ardından, projenize, paketinize veya yapılandırma dosyalarınıza erişmek için kimlik bilgilerini belirtin. Daha önce paket yürütme kimlik bilgileriniz için değerler girdiyseniz (öncekini gör), **paket yürütme kimlik bilgileri Ile aynı** onay kutusunu seçerek bunları yeniden kullanabilirsiniz. Aksi takdirde, paket erişim kimlik bilgilerinizin değerlerini **etki alanı**, **Kullanıcı adı**ve **parola** kutularına girin. Örneğin, projenizi, paketinizi veya yapılandırmayı Azure dosyalarında depolarsanız, etki alanı `Azure`, Kullanıcı adı `<storage account name>` ' dir ve parola `<storage account key>` ' dir. 
+   Ardından, projenize, paketinize veya yapılandırma dosyalarınıza erişmek için kimlik bilgilerini belirtin. Daha önce paket yürütme kimlik bilgileriniz için değerler girdiyseniz (öncekini gör), **paket yürütme kimlik bilgileri Ile aynı** onay kutusunu seçerek bunları yeniden kullanabilirsiniz. Aksi takdirde, paket erişim kimlik bilgilerinizin değerlerini **etki alanı**, **Kullanıcı adı**ve **parola** kutularına girin. Örneğin, projenizi, paketinizi veya yapılandırmayı Azure dosyalarında depolarsanız, etki alanı `Azure`, Kullanıcı adı `<storage account name>`ve parola `<storage account key>`olur. 
 
    Alternatif olarak, anahtar kasasında depolanan gizli dizileri değerler olarak kullanabilirsiniz (öncekine bakın). Bu kimlik bilgileri, paket ve alt paketlerinize, tüm kendi yolundan veya aynı projeden, ayrıca paketleriniz içinde belirtilenler dahil olmak üzere tüm yapılandırma ve alt paketlere erişmek için kullanılır. 
    
@@ -87,9 +87,9 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
 
    **EncryptAllWithUserKey** koruma düzeyini kullandıysanız, bu desteklenmez. Paketinizi SQL Server Veri Araçları veya `dtutil` komut satırı yardımcı programı aracılığıyla başka bir koruma düzeyi kullanacak şekilde yeniden yapılandırmanız gerekir. 
    
-   **Günlüğe kaydetme düzeyi**için, paket yürütülemenize yönelik önceden tanımlanmış bir günlük kapsamı seçin. Bunun yerine özelleştirilmiş günlük adınızı girmek istiyorsanız **özelleştirilmiş** onay kutusunu seçin. Paketinizdeki belirtime standart günlük sağlayıcılarını kullanarak paket yürütmelerinin daha fazla günlüğe kaydedilmesini istiyorsanız günlük **kaydı yolu** kutusuna UNC yolunu sağlayarak günlük klasörünüzü belirtin. Örneğin, günlüklerinizi Azure dosyalarında depolu, günlük yolunuz `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` ' dır. Bu yolda, her bir paket çalıştırması için bir alt klasör oluşturulur ve, her beş dakikada bir günlük dosyası oluşturulan SSIS paketini Çalıştır etkinlik çalıştırma KIMLIĞIYLE adlandırılır. 
+   **Günlüğe kaydetme düzeyi**için, paket yürütülemenize yönelik önceden tanımlanmış bir günlük kapsamı seçin. Bunun yerine özelleştirilmiş günlük adınızı girmek istiyorsanız **özelleştirilmiş** onay kutusunu seçin. Paketinizdeki belirtime standart günlük sağlayıcılarını kullanarak paket yürütmelerinin daha fazla günlüğe kaydedilmesini istiyorsanız günlük **kaydı yolu** kutusuna UNC yolunu sağlayarak günlük klasörünüzü belirtin. Örneğin, günlüklerinizi Azure dosyalarında depolarsanız, günlük yolunuz `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`. Bu yolda, her bir paket çalıştırması için bir alt klasör oluşturulur ve, her beş dakikada bir günlük dosyası oluşturulan SSIS paketini Çalıştır etkinlik çalıştırma KIMLIĞIYLE adlandırılır. 
    
-   Son olarak, günlük klasörünüze erişmek için kimlik bilgilerini belirtin. Daha önce paket erişim kimlik bilgilerinizin değerlerini girdiyseniz (öncekine bakın), **paket erişimi kimlik bilgileri Ile aynı** onay kutusunu seçerek bunları yeniden kullanabilirsiniz. Aksi takdirde, oturum açma erişim kimlik bilgilerinizin değerlerini **etki alanı**, **Kullanıcı adı**ve **parola** kutularına girin. Örneğin, günlüklerinizi Azure dosyalarında depolarsanız, etki alanı `Azure` ' dır, Kullanıcı adı `<storage account name>` ' dir ve parola `<storage account key>` ' dir. 
+   Son olarak, günlük klasörünüze erişmek için kimlik bilgilerini belirtin. Daha önce paket erişim kimlik bilgilerinizin değerlerini girdiyseniz (öncekine bakın), **paket erişimi kimlik bilgileri Ile aynı** onay kutusunu seçerek bunları yeniden kullanabilirsiniz. Aksi takdirde, oturum açma erişim kimlik bilgilerinizin değerlerini **etki alanı**, **Kullanıcı adı**ve **parola** kutularına girin. Örneğin, günlüklerinizi Azure dosyalarında depolarsanız, etki alanı `Azure`, Kullanıcı adı `<storage account name>`ve parola `<storage account key>`olur. 
 
     Alternatif olarak, anahtar kasasında depolanan gizli dizileri değerler olarak kullanabilirsiniz (öncekine bakın). Bu kimlik bilgileri günlüklerinizi depolamak için kullanılır. 
    
@@ -130,17 +130,17 @@ Bu adımda bir işlem hattı çalıştırması tetiklersiniz.
 
 1. Bir işlem hattı çalıştırması tetiklemek için, araç çubuğunda **tetikleyici** ' i seçin ve **Şimdi Tetikle**' yi seçin. 
 
-   ![Şimdi Tetikle](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
+   ![Şimdi tetikle](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
 
-2. İşlem **hattı çalıştırma** penceresinde **son**' u seçin. 
+2. **İşlem Hattı Çalıştırma** penceresinde **Son**’u seçin. 
 
 ### <a name="monitor-the-pipeline"></a>İşlem hattını izleme
 
-1. Soldaki **izleyici** sekmesine geçin. İşlem hattı çalıştırmasını ve durumunu **çalıştırma başlangıç** saati gibi diğer bilgilerle birlikte görürsünüz. Görünümü yenilemek için **Yenile**' yi seçin.
+1. Soldaki **İzleyici** sekmesine geçin. İşlem hattı çalıştırmasını ve durumunu **çalıştırma başlangıç** saati gibi diğer bilgilerle birlikte görürsünüz. Görünümü yenilemek için **Yenile**’yi seçin.
 
    ![İşlem hattı çalıştırmaları](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-2. **Eylemler** sütunundaki **etkinlik çalıştırmalarını görüntüle** bağlantısını seçin. İşlem hattının yalnızca bir etkinliği olduğundan yalnızca bir etkinlik çalıştırması görürsünüz. Bu, SSIS paketi yürütme etkinliğidir.
+2. **Eylemler** sütununda **Etkinlik Çalıştırma İşlemlerini Görüntüle**’yi seçin. İşlem hattının yalnızca bir etkinliği olduğundan yalnızca bir etkinlik çalıştırması görürsünüz. Bu, SSIS paketi yürütme etkinliğidir.
 
    ![Etkinlik çalıştırmaları](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
 
@@ -383,7 +383,7 @@ Bu adımda, SSIS paketi yürütme etkinliğine sahip bir işlem hattı oluştura
    ```
 
 ### <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
-İşlem hattını çalıştırmak için **Invoke-AzDataFactoryV2Pipeline** cmdlet 'ini kullanın. Cmdlet 'i, gelecekteki izleme için işlem hattı çalıştırma KIMLIĞINI döndürür.
+İşlem hattını çalıştırmak için **Invoke-AzDataFactoryV2Pipeline** cmdlet 'ini kullanın. Cmdlet, gelecekte izlemek üzere işlem hattı çalıştırma kimliğini döndürür.
 
 ```powershell
 $RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
@@ -393,7 +393,7 @@ $RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactor
 
 ### <a name="monitor-the-pipeline"></a>İşlem hattını izleme
 
-Veri kopyalamayı bitirene kadar işlem hattı çalıştırma durumunu sürekli olarak denetlemek için aşağıdaki PowerShell betiğini çalıştırın. Aşağıdaki betiği kopyalayıp PowerShell penceresine yapıştırın ve ENTER ' u seçin. 
+İşlem hattı çalıştırma durumunu, verileri kopyalama işlemi tamamlanıncaya kadar sürekli olarak denetlemek için aşağıdaki PowerShell betiğini çalıştırın. Aşağıdaki betiği kopyalayıp PowerShell penceresine yapıştırın ve ENTER ' u seçin. 
 
 ```powershell
 while ($True) {

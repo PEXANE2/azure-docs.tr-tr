@@ -1,5 +1,5 @@
 ---
-title: "PowerShell ve CLı: SQL TDE ' i etkinleştirin Azure Key Vault-kendi anahtarınızı getirin-Azure SQL veritabanı | Microsoft Docs"
+title: "PowerShell ve CLı: SQL TDE ' i etkinleştirin Azure Key Vault-kendi anahtarınızı getirin-Azure SQL veritabanı "
 description: Azure SQL veritabanı ve veri ambarını, PowerShell veya CLı kullanarak bekleyen şifreleme için Saydam Veri Şifrelemesi (TDE) kullanmaya başlamak üzere nasıl yapılandıracağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: beeb5fa4f979ac457db8a779dd8f8f2e94ef87f5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 232f38b239090356ae3ad1a70b522188f6ab6a4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163861"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686766"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve CLı: Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarla etkinleştirin
 
@@ -65,7 +65,7 @@ Sunucu oluşturuyorsanız, sunucu oluşturma sırasında bir Azure AD kimliği e
    -AssignIdentity 
    ```
 
-## <a name="step-2-grant-key-vault-permissions-to-your-server"></a>2\. Adım Sunucunuza Key Vault izinleri verin
+## <a name="step-2-grant-key-vault-permissions-to-your-server"></a>2\. Adım. Sunucunuza Key Vault izinleri verin
 
 TDE için bir anahtar kullanmadan önce sunucunuza anahtar kasasına erişim izni vermek üzere [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 'ini kullanın.
 
@@ -76,7 +76,7 @@ TDE için bir anahtar kullanmadan önce sunucunuza anahtar kasasına erişim izn
    -PermissionsToKeys get, wrapKey, unwrapKey
    ```
 
-## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>3\. Adım Key Vault anahtarını sunucuya ekleme ve TDE koruyucuyu ayarlama
+## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>3\. Adım. Key Vault anahtarını sunucuya ekleme ve TDE koruyucuyu ayarlama
 
 
 - Anahtar kasasından anahtar KIMLIĞI almak için [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) cmdlet 'ini kullanın
@@ -221,7 +221,7 @@ Bir sorun oluşursa, aşağıdakileri denetleyin:
 >"PrincipalId" sunucusunu sunucu oluşturmaktan tutun, bir sonraki adımda Anahtar Kasası izinleri atamak için kullanılan nesne kimliğidir
 >
  
-## <a name="step-2-grant-key-vault-permissions-to-the-logical-sql-server"></a>2\. Adım Mantıksal SQL Server 'a Key Vault izinleri verme
+## <a name="step-2-grant-key-vault-permissions-to-the-logical-sql-server"></a>2\. Adım. Mantıksal SQL Server 'a Key Vault izinleri verme
       cli
       # create key vault, key and grant permission
        az keyvault create --name <kvname> --resource-group <rgname> --location <location> --enable-soft-delete true
@@ -234,7 +234,7 @@ Bir sorun oluşursa, aşağıdakileri denetleyin:
 >
  
        
-## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>3\. Adım Key Vault anahtarını sunucuya ekleme ve TDE koruyucuyu ayarlama
+## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>3\. Adım. Key Vault anahtarını sunucuya ekleme ve TDE koruyucuyu ayarlama
   
      cli
      # add server key and update encryption protector

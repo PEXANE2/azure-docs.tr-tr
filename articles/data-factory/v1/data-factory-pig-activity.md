@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory | Pig etkinliğini kullanarak verileri dönüştürme | Microsoft Docs
+title: Azure Data Factory Pig etkinliğini kullanarak verileri dönüştürme
 description: Bir Azure Data Factory 'de Pig etkinliğini kullanarak bir isteğe bağlı/kendi HDInsight kümeniz üzerinde Pig betikleri nasıl çalıştırabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 72f532c277096a20387ab1b4922def2cd35a9afb
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a6861a22f853bb0b48eb7c9832adb251bc3467ca
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139121"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682388"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory Pig etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -36,10 +36,10 @@ ms.locfileid: "70139121"
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory Pig etkinliğini kullanarak verileri dönüştürme](../transform-data-using-hadoop-pig.md).
 
 
-Bir Data Factory işlem hattındaki HDInsight Pig [](data-factory-create-pipelines.md) etkinliği, [kendi](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe bağlı](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux tabanlı HDInsight kümenizdeki Pig sorgularını yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) makalesinde oluşturulur.
+Bir [Data Factory işlem](data-factory-create-pipelines.md) hattındaki HDInsight Pig etkinliği, [kendi](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe bağlı](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux tabanlı HDInsight kümenizdeki Pig sorgularını yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) makalesinde oluşturulur.
 
 > [!NOTE] 
-> Azure Data Factory yeni kullanıyorsanız, Azure Data Factory ve Öğreticiyi bir [şekilde](data-factory-introduction.md) okuyun: Bu makaleyi okumadan önce [ilk veri işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) . 
+> Azure Data Factory yeni kullanıyorsanız, [Azure Data Factory 'ye giriş](data-factory-introduction.md) ile okuyun ve öğreticiyi yapın: Bu makaleyi okumadan önce [ilk veri Işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) . 
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -84,15 +84,15 @@ Bir Data Factory işlem hattındaki HDInsight Pig [](data-factory-create-pipelin
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| name |Etkinliğin adı |Evet |
-| description |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
+| ad |Etkinliğin adı |Evet |
+| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
 | type |HDinsightPig |Evet |
-| inputs |Pig etkinliği tarafından tüketilen bir veya daha fazla giriş |Hayır |
-| outputs |Pig etkinliği tarafından üretilen bir veya daha fazla çıkış |Evet |
+| girişi |Pig etkinliği tarafından tüketilen bir veya daha fazla giriş |Hayır |
+| çıkışı |Pig etkinliği tarafından üretilen bir veya daha fazla çıkış |Evet |
 | linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Evet |
-| script |Pig betiğini satır içi olarak belirt |Hayır |
+| betiğini çalıştırın |Pig betiğini satır içi olarak belirt |Hayır |
 | scriptPath |Pig betiğini bir Azure Blob depolama alanına depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |Hayır |
-| defines |Pig betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin |Hayır |
+| tanımlar |Pig betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin |Hayır |
 
 ## <a name="example"></a>Örnek
 Bir oyun günlüğü analizinin bir örneğini, şirketiniz tarafından başlatılan oyuncuların oynatılması için harcadığı süreyi belirlemek istediğiniz yere göz atalım.

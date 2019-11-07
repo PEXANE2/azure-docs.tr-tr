@@ -1,5 +1,5 @@
 ---
-title: Bekletme ilkesiyle zamana bağlı tablolardaki geçmiş verileri yönetme | Microsoft Docs
+title: Bekletme ilkesiyle zamana bağlı tablolardaki geçmiş verileri yönetme
 description: Geçmiş verileri denetiminizin altında tutmak için zamana bağlı saklama ilkesini nasıl kullanacağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 72022510676548fad79031d4334a2c95571fc16d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2568f3be96604856d5353f7f5f94926162880bfd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566379"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687004"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Bekletme ilkesiyle zamana bağlı tablolardaki geçmiş verileri yönetme
 
@@ -73,7 +73,7 @@ CREATE TABLE dbo.WebsiteUserInfo
  );
 ```
 
-Azure SQL veritabanı, farklı zaman birimleri kullanarak saklama süresi belirtmenize olanak sağlar: GÜN, hafta, ay ve yıl. HISTORY_RETENTION_PERIOD atlanırsa, sonsuz saklama varsayılır. SONSUZ anahtar sözcüğünü açıkça de kullanabilirsiniz.
+Azure SQL veritabanı farklı zaman birimleri kullanarak saklama süresi belirtmenizi sağlar: gün, hafta, ay ve yıl. HISTORY_RETENTION_PERIOD atlanırsa, sonsuz saklama varsayılır. SONSUZ anahtar sözcüğünü açıkça de kullanabilirsiniz.
 
 Bazı senaryolarda, tablo oluşturulduktan sonra bekletme yapılandırmak veya daha önce yapılandırılan değeri değiştirmek isteyebilirsiniz. Bu durumda ALTER TABLE deyimini kullanın:
 
@@ -116,11 +116,11 @@ Mükemmel veri sıkıştırma ve verimli bekletme Temizleme, iş yükünüz hız
 
 Rowstore kümelenmiş dizini olan tablolar için temizleme görevi, SYSTEM_TIME döneminin sonuna karşılık gelen sütunla başlamak için Dizin gerektirir. Böyle bir dizin yoksa, sınırlı bir saklama süresi yapılandıramazsınız:
 
-*İleti 13765, düzey 16, durum 1 <br> </br> ayarı sistem sürümü tutulan zamana bağlı tablo ' temporalstagetestdb. dbo. websiteuserınfo ' üzerinde başarısız oldu, çünkü geçmiş tablosu ' temporalstagetestdb. dbo. Websiteuserınfohistory ' gerekli kümelenmiş dizini içermiyor. Geçmiş tablosunda SYSTEM_TIME döneminin sonuyla eşleşen sütundan başlayarak kümelenmiş bir columnstore veya B-ağacı dizini oluşturmayı düşünün.*
+*İleti 13765, düzey 16, durum 1 <br></br> sınırlı saklama süresi ayarı sistem sürümü tutulan zamana bağlı ' temporalstagetestdb. dbo. Websiteuserınfo ' tablosunda başarısız oldu, çünkü ' temporalstagetestdb. dbo. Websiteuserınfohistory ' geçmiş tablosu gerekli kümelenmiş dizini içerir. Geçmiş tablosunda SYSTEM_TIME döneminin sonuyla eşleşen sütundan başlayarak kümelenmiş bir columnstore veya B-ağacı dizini oluşturmayı düşünün.*
 
 Azure SQL veritabanı tarafından oluşturulan varsayılan geçmiş tablosunun, bekletme ilkesi için uyumlu olan kümelenmiş dizine zaten sahip olduğunu fark etmek önemlidir. Sınırlı saklama süresine sahip bir tabloda bu dizini kaldırmaya çalışırsanız, işlem aşağıdaki hatayla başarısız olur:
 
-*İleti 13766, düzey 16, durum 1 <br> </br> , eski verilerin otomatik olarak temizlenmesi için kullanıldığından ' websiteuserınfohistory. IX_WebsiteUserInfoHistory ' kümelenmiş dizinini bırakamıyor. Bu dizini bırakmalısınız, ilgili sistem sürümü tutulan zamana bağlı tabloda HISTORY_RETENTION_PERIOD ayarını sonsuz olarak ayarlamayı düşünün.*
+*Msg 13766, Level 16, durum 1 <br></br> ' Websiteuserınfohistory. IX_WebsiteUserInfoHistory ' kümelenmiş dizinini düşürülemiyor çünkü eski verilerin otomatik temizlenmesi için kullanılıyor. Bu dizini bırakmalısınız, ilgili sistem sürümü tutulan zamana bağlı tabloda HISTORY_RETENTION_PERIOD ayarını sonsuz olarak ayarlamayı düşünün.*
 
 Geçmiş satırları artan düzende (dönem sonuna kadar sıralanır) eklenirse, bu durum, geçmiş tablosunun SYSTEM_VERSIONIOING mekanizması tarafından özel olarak doldurulduğu her zaman büyük/küçük bir süre sonra, kümelenmiş columnstore dizininde Temizleme işlemi en iyi şekilde gerçekleşir. Geçmiş tablosundaki satırlar dönem sonuna göre sıralı değilse (mevcut geçmiş verileri geçirdiyseniz bu durum söz konusu olabilir), en iyi şekilde elde edilen B-Tree rowstore dizininin üstünde kümelenmiş columnstore dizinini yeniden oluşturmanız gerekir mının.
 
@@ -144,7 +144,7 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 
 Yukarıdaki deyimin yürütülmesi girişimi aşağıdaki hatayla başarısız olur:
 
-*İleti 13772, düzey 16, durum 1 <br> </br> , sınırlı saklama süresi ve kümelenmiş columnstore dizini tanımlı olduğundan, zamana bağlı ' websiteuserınfohistory ' geçmiş tablosunda kümelenmemiş dizin oluşturamaz.*
+*İleti 13772, düzey 16, durum 1 <br></br>, sınırlı saklama süresi ve tanımlanmış kümelenmiş columnstore dizini olduğundan, ' Websiteuserınfohistory ' zamana bağlı geçmiş tablosunda kümelenmemiş dizin oluşturamıyor.*
 
 ## <a name="querying-tables-with-retention-policy"></a>Tabloları bekletme ilkesiyle sorgulama
 

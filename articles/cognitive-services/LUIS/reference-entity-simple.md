@@ -1,7 +1,7 @@
 ---
 title: Basit varlık türü-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Basit bir varlık, tek bir kavramı açıklayan ve makine tarafından öğrenilen bağlamdan öğrenilmiş genel bir varlıktır. Basit varlıklar genellikle şirket adları, ürün adları veya diğer ad kategorileri gibi adlar olduğundan, kullanılan adların sinyalini artırmak için basit bir varlık kullanırken bir tümcecik listesi ekleyin.
+description: Basit bir varlık, makine tarafından öğrenilen bağlamdaki tek bir kavramı açıklar. Sonuçları geliştirmek için basit bir varlık kullanırken bir tümcecik listesi ekleyin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2eb3ff847f9bfc162adfb281d2ac1fad6f8c5093
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 27eb4d827c1488b0d051505e62286fd66d6a286b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695122"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671511"
 ---
 # <a name="simple-entity"></a>Basit varlık 
 
@@ -31,7 +31,7 @@ Basit bir varlık, tek bir kavramı açıklayan ve makine tarafından öğrenile
 
 `Bob Jones wants 3 meatball pho`
 
-Önceki söyleyde `Bob Jones` ' ı basit bir `Customer` varlığı olarak etiketlendi.
+Önceki deymede, `Bob Jones` basit bir `Customer` varlık olarak etiketlendi.
 
 Uç noktadan döndürülen veriler varlık adını, utterance 'teki bulunan metni, bulunan metnin konumunu ve puanı içerir:
 
@@ -51,7 +51,7 @@ Uç noktadan döndürülen veriler varlık adını, utterance 'teki bulunan metn
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Sorgu dizesinde `verbose=false` ayarlanmışsa bu JSON olur:
+Bu, sorgu dizesinde `verbose=false` ayarlandıysa JSON olur:
 
 ```json
 "entities": {

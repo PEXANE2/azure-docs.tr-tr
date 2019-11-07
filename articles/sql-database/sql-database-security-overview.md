@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Veritabanı Güvenliğine Genel Bakış | Microsoft Belgeleri
+title: Azure SQL veritabanı güvenliğine genel bakış
 description: Bulut ve şirket içi SQL Server arasındaki farklılıklar dahil olmak üzere Azure SQL veritabanı ve SQL Server güvenliği hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 44b330fcf93b9d2d2d305b3da954421e4fbbcbbc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2365f9cedef73c61870f6e83fa491de5e950c801
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566840"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687463"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL veritabanı güvenlik özelliklerine genel bakış
 
@@ -46,7 +46,7 @@ IP güvenlik duvarı kuralları, her isteğin kaynak IP adresine göre veritaban
 > [!IMPORTANT]
 > Azure 'daki veritabanlarını ve veritabanı sunucularını yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için, bkz. [Azure Portal rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Azure SQL veritabanı iki tür kimlik doğrulamasını destekler:
 
@@ -60,12 +60,12 @@ Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işl
 
      SQL veritabanı ile Azure AD kimlik doğrulamasını kullanmak için **Active Directory Yöneticisi** olarak adlandırılan bir sunucu yöneticisi oluşturulmalıdır. Daha fazla bilgi için bkz. [Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı 'Na bağlanma](sql-database-aad-authentication.md). Azure AD kimlik doğrulaması hem yönetilen hem de Federasyon hesaplarını destekler. Federasyon hesapları, Azure AD ile federe bir müşteri etki alanı için Windows kullanıcılarını ve gruplarını destekler.
 
-    Kullanılabilir ek Azure AD kimlik doğrulaması seçenekleri, [çok faktörlü kimlik](../active-directory/authentication/concept-mfa-howitworks.md) doğrulaması ve [koşullu erişim](sql-database-conditional-access.md)dahil [SQL Server Management Studio bağlantılar için evrensel kimlik doğrulamalardır Active Directory](sql-database-ssms-mfa-authentication.md) .
+    Kullanılabilir ek Azure AD kimlik doğrulama seçenekleri [Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) ve [koşullu erişim](sql-database-conditional-access.md)dahil [SQL Server Management Studio bağlantılar için evrensel kimlik doğrulaması Active Directory](sql-database-ssms-mfa-authentication.md) .
 
 > [!IMPORTANT]
 > Azure 'daki veritabanlarını ve sunucuları yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için, bkz. [Azure Portal rol tabanlı erişim denetimi](../role-based-access-control/overview.md). Güvenlik Duvarı kurallarıyla erişimi denetlemek **yönetilen bir örnek** *için uygulanmaz.* Gereken ağ yapılandırması hakkında daha fazla bilgi için lütfen [yönetilen bir örneğe bağlanma](sql-database-managed-instance-connect-app.md) hakkında aşağıdaki makaleye bakın.
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Yetkilendirme
 
 Yetkilendirme, bir Azure SQL veritabanı içindeki bir kullanıcıya atanan izinleri ifade eder ve kullanıcının ne yapmasına izin verileceğini belirler. İzinler, [veritabanı rollerine](/sql/relational-databases/security/authentication-access/database-level-roles) Kullanıcı hesapları eklenerek ve bu rollere veritabanı düzeyi izinleri atanarak veya kullanıcıya belirli [nesne düzeyi izinleri](/sql/relational-databases/security/permissions-database-engine)verilerek denetlenir. Daha fazla bilgi için bkz. [oturum açma ve kullanıcılar](sql-database-manage-logins.md)
 
@@ -89,7 +89,7 @@ SQL veritabanı denetimi, veritabanı etkinliklerini izler ve müşterilerin sah
 
 Gelişmiş tehdit koruması SQL Server günlüklerinizi çözümleyerek, olağan dışı davranışları ve veritabanlarına erişme veya açıktan yararlanmaya yönelik olabilecek zararlı girişimleri tespit etmek SQL ekleme, olası veri girişi ve deneme yanılma saldırıları gibi şüpheli etkinlikler için uyarılar oluşturulur ve erişim desenlerine yönelik olarak ayrıcalık yürüyen istekleri ve ihlal edilen kimlik bilgileri kullanımını yakalayın. Uyarılar, şüpheli etkinliklerin ayrıntılarının sağlandığı ve tehdidi hafifletmek için eylemlerle birlikte daha fazla araştırma önerileri sunan [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)' nden görüntülenir. Gelişmiş tehdit koruması, sunucu başına ek bir ücret karşılığında etkinleştirilebilir. Daha fazla bilgi için bkz. [SQL veritabanı Gelişmiş tehdit koruması ile çalışmaya başlama](sql-database-threat-detection.md).
 
-![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
+![Azure-Database-TD. jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
 ## <a name="information-protection-and-encryption"></a>Bilgi koruması ve şifreleme
 
@@ -116,7 +116,7 @@ Azure 'da, yeni oluşturulan tüm SQL veritabanları varsayılan olarak şifrele
 
 ### <a name="key-management-with-azure-key-vault"></a>Azure Key Vault ile anahtar yönetimi
 
-[Kendi anahtarını getir](transparent-data-encryption-byok-azure-sql.md) (BYOK) [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption) (tde) desteği, müşterilerin Azure 'un bulut tabanlı dış anahtar yönetim sistemini [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md)kullanarak anahtar yönetiminin ve döndürmenin sahipliğini almasına olanak tanır. Veritabanının anahtar kasasına erişimi iptal edildiğinde, bir veritabanının şifresi çözülemez ve belleğe okunamaz. Azure Key Vault, merkezi bir temel yönetim platformu sağlar, sıkı izlenen donanım güvenlik modüllerini (HSM 'ler) kullanır ve güvenlik uyumluluk gereksinimlerini karşılamaya yardımcı olmak için anahtar ve veri yönetimi arasında görev ayrımı sağlar.
+[Kendi anahtarını getir](transparent-data-encryption-byok-azure-sql.md) (byok) [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption) (tde) desteği, müşterilerin Azure 'un bulut tabanlı dış anahtar yönetim sistemini [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md)kullanarak anahtar yönetiminin ve döndürmenin sahipliğini almasına olanak tanır. Veritabanının anahtar kasasına erişimi iptal edildiğinde, bir veritabanının şifresi çözülemez ve belleğe okunamaz. Azure Key Vault, merkezi bir temel yönetim platformu sağlar, sıkı izlenen donanım güvenlik modüllerini (HSM 'ler) kullanır ve güvenlik uyumluluk gereksinimlerini karşılamaya yardımcı olmak için anahtar ve veri yönetimi arasında görev ayrımı sağlar.
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (kullanımda olan şifreleme)
 

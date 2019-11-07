@@ -1,5 +1,5 @@
 ---
-title: Gelişmiş tehdit korumasını Yapılandırma-Azure SQL veritabanı yönetilen örneği | Microsoft Docs
+title: Gelişmiş tehdit koruması Yapılandırma-Azure SQL veritabanı yönetilen örneği
 description: Gelişmiş tehdit koruması, yönetilen bir örnekteki veritabanına ilişkin olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: eb6d8229e85e54a6a3fc8591dc4688a73773fd8b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8e419031c34a693bac7ab9f9825c24576e80ba14
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816597"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687887"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği 'nde Gelişmiş tehdit korumasını yapılandırma
 
@@ -28,10 +28,10 @@ Gelişmiş [tehdit koruması](sql-database-threat-detection-overview.md) , geli�
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Azure portal Gelişmiş tehdit koruması ayarlama
 
-1. Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal başlatın.
+1. [https://portal.azure.com](https://portal.azure.com)Azure Portal başlatın.
 2. Korumak istediğiniz yönetilen örneğin yapılandırma sayfasına gidin. **Ayarlar** sayfasında **Gelişmiş veri güvenliği**' ni seçin.
 3. Gelişmiş veri güvenliği yapılandırma sayfasında
-   - Gelişmiş veri güvenliğini açın.
+   - Gelişmiş **veri** güvenliğini açın.
    - Anormal veritabanı etkinliklerinin algılanması üzerine güvenlik uyarıları almak için **e-posta listesini** yapılandırın.
    - Anormal tehdit denetim kayıtlarının kaydedildiği **Azure Storage hesabını** seçin.
    - Yapılandırmak istediğiniz **Gelişmiş tehdit koruması türlerini** seçin. [Gelişmiş tehdit koruması uyarıları](sql-database-threat-detection-overview.md)hakkında daha fazla bilgi edinin.

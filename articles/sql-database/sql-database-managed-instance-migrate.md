@@ -1,5 +1,5 @@
 ---
-title: Veritabanını SQL Server örneğinden Azure SQL veritabanı ile yönetilen örneğe geçirme | Microsoft Docs
+title: Veritabanını SQL Server örneğinden Azure SQL veritabanı yönetilen örneği 'ne geçirme
 description: Bir veritabanını SQL Server örneğinden Azure SQL veritabanı yönetilen örneği 'ne geçirmeyi öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: f877306170b45d65a52a4c76afd7f064e83f240a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 228b22d9d283fe8c23cbf7a82036b7f3782cbf25
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937302"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688001"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğine örnek geçişi SQL Server
 
@@ -45,7 +45,7 @@ Yüksek düzeyde, veritabanı geçiş işlemi şöyle görünür:
 
 Azure SQL veritabanında veritabanı işlevselliğini etkileyen olası uyumluluk sorunlarını algılamak için [Data Migration Yardımcısı (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) kullanın. DMA, yönetilen örneği henüz geçiş hedefi olarak desteklemez, ancak Azure SQL veritabanı 'na karşı değerlendirme çalıştırmak ve bildirilen özellik eşliği ve ürün belgelerine karşı uyumluluk sorunları listesini dikkatle gözden geçirmeniz önerilir. Azure SQL veritabanı 'na geçişi engelleyen engelleyici sorunların çoğu yönetilen örnekle kaldırıldığından, bu nedenle [Azure SQL veritabanı özellikleri](sql-database-features.md) 'ne göz atın. Örneğin, çapraz veritabanı sorguları, aynı örnekteki veritabanları arası işlemler, bağlantılı sunucu diğer SQL kaynakları, CLR, genel geçici tablolar, örnek düzeyi görünümler, Hizmet Aracısı ve benzer özellikler yönetilen örneklerde mevcuttur.
 
-Yönetilen örnek dağıtımı seçeneği ile kaldırılmayan bazı raporlanan engelleyici sorunlar varsa, [Azure sanal makinelerinde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)gibi alternatif bir seçeneği göz önünde bulundurmanız gerekebilir. Aşağıda bazı örnekler verilmiştir:
+Yönetilen örnek dağıtımı seçeneği ile kaldırılmayan bazı raporlanan engelleyici sorunlar varsa, [Azure sanal makinelerinde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)gibi alternatif bir seçeneği göz önünde bulundurmanız gerekebilir. İşte bazı örnekler:
 
 - İşletim sistemine veya dosya sistemine doğrudan erişim istiyorsanız, örneğin, SQL Server ile aynı sanal makineye üçüncü taraf veya özel aracılar yüklemek için.
 - FILESTREAM/FileTable, PolyBase ve platformlar arası işlemler gibi hala desteklenmeyen özelliklerde kesin bağımlılığı varsa.
@@ -109,7 +109,7 @@ Yönetilen örnek, aşağıdaki veritabanı geçiş seçeneklerini destekler (Ş
 - Azure veritabanı geçiş hizmeti-neredeyse sıfır kapalı kalma süresi ile geçiş
 - Yerel `RESTORE DATABASE FROM URL`-SQL Server yerel yedeklemeleri kullanır ve bazı kapalı kalma süresi gerektirir.
 
-### <a name="azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti
+### <a name="azure-database-migration-service"></a>Azure Veritabanı Geçiş Hizmeti
 
 [Azure veritabanı geçiş hizmeti (DMS)](../dms/dms-overview.md) , birden çok veritabanı kaynağından Azure veri platformları arasında kesintisiz geçiş sağlamak için tasarlanan, tam olarak yönetilen bir hizmettir. Bu hizmet, var olan üçüncü taraf ve SQL Server veritabanlarını Azure 'a taşımak için gereken görevleri basitleştirir. Genel önizlemede dağıtım seçenekleri Azure SQL veritabanı 'ndaki veritabanlarını ve bir Azure sanal makinesinde SQL Server veritabanlarını içerir. DMS, kurumsal iş yükleriniz için önerilen geçiş yöntemidir.
 
@@ -143,7 +143,7 @@ Bir veritabanı yedeklemesinin SAS kimlik bilgilerini kullanarak yönetilen örn
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 
-## <a name="monitor-applications"></a>Uygulama izleme
+## <a name="monitor-applications"></a>Uygulamaları izleme
 
 Yönetilen örneğe geçişi tamamladıktan sonra, iş yükünüzün uygulama davranışını ve performansını izlemeniz gerekir. Bu işlem aşağıdaki etkinlikleri içerir:
 - [Yönetilen örnekte çalışan iş yükünün performansını](#compare-performance-with-the-baseline) [, kaynak SQL Server oluşturduğunuz performans temeliyle](#create-performance-baseline)karşılaştırın.
@@ -181,7 +181,7 @@ Gereksinimlerinize uygun iş yükü performansını elde edene kadar parametrele
 Yönetilen örnek, izleme ve sorun giderme için çok sayıda gelişmiş araç sağlar ve bunları örneğinizin performansını izlemek için kullanmanız gerekir. İzlemeniz gereken parametrelerden bazıları şunlardır:
 - Örneğin CPU kullanımı, sağladığınız sanal çekirdek sayısının iş yükünüz için doğru eşleşme olduğunu belirlemektir.
 - Daha [fazla bellek](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444)gerekip gerekmediğini öğrenmek için yönetilen Örneğinizde sayfa ömrü erkeklerin.
-- @No__t-0 veya `PAGEIOLATCH` gibi bekleme istatistikleri, özellikle daha iyi GÇ performansı sağlamak için dosyaları önceden ayırmanız gerekebilecek Genel Amaçlı katmanda depolama GÇ sorunları olduğunu söyleyecektir.
+- Daha iyi GÇ performansı almak için dosyaları önceden ayırmanız gerekebilecek Genel Amaçlı katmanda depolama GÇ sorunları olduğunu belirten `INSTANCE_LOG_GOVERNOR` veya `PAGEIOLATCH` gibi bekleme istatistikleri.
 
 ## <a name="leverage-advanced-paas-features"></a>Gelişmiş PaaS özelliklerinden yararlanın
 

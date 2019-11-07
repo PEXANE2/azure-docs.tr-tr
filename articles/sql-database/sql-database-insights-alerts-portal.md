@@ -1,5 +1,5 @@
 ---
-title: Azure portal kullanarak uyarıları ve bildirimleri kurma | Microsoft Docs
+title: Azure portal kullanarak uyarıları ve bildirimleri kurma
 description: Belirttiğiniz koşullar karşılandığında bildirimleri veya Otomasyonu tetikleyebilen SQL veritabanı uyarılarını oluşturmak için Azure portal kullanın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/02/2018
-ms.openlocfilehash: 3103b556098d0b9ccbfca7348ab70c183a69753d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d68055bc64ea36bd3ad024123a8d5b7b239858dc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262225"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689755"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanı ve veri ambarı için uyarı oluşturma
 
@@ -34,12 +34,12 @@ Azure hizmetleriniz, veya üzerindeki olaylar için izleme ölçümlerini temel 
 Bir uyarıyı, tetiklendiğinde aşağıdakileri yapmak için yapılandırabilirsiniz:
 
 * hizmet yöneticisine ve ortak yöneticilere e-posta bildirimleri gönderme
-* belirttiğiniz ek e-postalara e-posta gönderin.
+* Belirttiğiniz ek e-postalara e-posta gönderin.
 * Web kancası çağırma
 
 Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz
 
-* [Azure portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
 * [komut satırı arabirimi (CLı)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure Izleyici REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -50,15 +50,15 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz
    
      ![İzleme](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **YALNIZCA SQL DW**: **DWU kullanım** grafiğine tıklayın. **Klasik Uyarıları görüntüle** seçeneğini belirleyin
+   - **Yalnızca SQL DW**: **DWU kullanım** grafiğine tıklayın. **Klasik Uyarıları görüntüle** seçeneğini belirleyin
 
 3. **Ölçüm uyarısı Ekle (klasik)** düğmesini seçin ve alanları girin.
    
     ![Uyarı Ekle](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. Uyarı kuralınızı **adlandırın** ve bildirim e-postalarında da gösterildiği bir **Açıklama**seçin.
-5. İzlemek istediğiniz **ölçümü** seçin, ardından ölçüm Için bir **koşul** ve **eşik** değeri seçin. Ayrıca **, uyarı** tetikleyiciden önce ölçüm kuralının karşılanması gereken süreyi seçin. Örneğin, "PT5M" dönemini kullanırsanız ve uyarınız% 80 ' ün üzerinde CPU 'YU alıyorsa, uyarı, **Ortalama** CPU, 5 dakika boyunca% 80 üzerinde olduğunda tetiklenir. İlk tetikleyici oluştuktan sonra, ortalama CPU, 5 dakikadan fazla% 80 altına çıktığında yeniden tetiklenir. CPU Ölçümü her 1 dakikada bir gerçekleşir. Desteklenen zaman pencereleri ve her uyarının kullandığı toplama türü için aşağıdaki tabloya başvurun-tüm uyarılar, ortalama değeri kullanmaz.   
+5. İzlemek istediğiniz **ölçümü** seçin, ardından ölçüm Için bir **koşul** ve **eşik** değeri seçin. Ayrıca **, uyarı** tetikleyiciden önce ölçüm kuralının karşılanması gereken süreyi seçin. Örneğin, "PT5M" dönemini kullanırsanız ve uyarınız %80 ' ün üzerinde CPU 'YU alıyorsa, uyarı, **Ortalama** CPU, 5 dakika boyunca %80 üzerinde olduğunda tetiklenir. İlk tetikleyici oluştuktan sonra, ortalama CPU, 5 dakikadan fazla %80 altına çıktığında yeniden tetiklenir. CPU Ölçümü her 1 dakikada bir gerçekleşir. Desteklenen zaman pencereleri ve her uyarının kullandığı toplama türü için aşağıdaki tabloya başvurun-tüm uyarılar, ortalama değeri kullanmaz.   
 6. Uyarı tetiklendiğinde yöneticilerin ve ortak yöneticilerin e-posta ile uyumlu olmasını istiyorsanız **e-posta sahiplerini denetleyin...**
-7. Uyarı tetiklendiğinde ek e-postaların bildirim almasını istiyorsanız, bunları **ek yönetici e-postası** alanına ekleyin. Birden çok e-postayı noktalı virgülle ayırın *-\@e-posta contoso.\@com; Email2 contoso.com*
+7. Uyarı tetiklendiğinde ek e-postaların bildirim almasını istiyorsanız, bunları **ek yönetici e-postası** alanına ekleyin. Birden çok e-postayı noktalı virgülle ayırın *\@contoso. com; email2\@contoso.com*
 8. Uyarı tetiklendiğinde çağırılabilmesi istiyorsanız **Web kancası** alanına GEÇERLI bir URI koyun.
 9. Uyarıyı oluşturmak için bittiğinde **Tamam ' ı** seçin.   
 
@@ -74,44 +74,44 @@ Bir uyarı oluşturduktan sonra, bunu seçebilirsiniz:
 
 ## <a name="sql-database-alert-values"></a>SQL veritabanı uyarı değerleri
 
-| Kaynak Türü | Ölçüm Adı | Kolay Ad | Toplama Türü | En düşük uyarı süresi penceresi|
+| Kaynak Türü | Ölçüm adı | Kolay ad | Toplama türü | En düşük uyarı süresi penceresi|
 | --- | --- | --- | --- | --- |
-| SQL veritabanı | cpu_percent | CPU yüzdesi | Average | 5 dakika |
-| SQL veritabanı | physical_data_read_percent | Veri GÇ yüzdesi | Average | 5 dakika |
-| SQL veritabanı | log_write_percent | Günlük GÇ yüzdesi | Average | 5 dakika |
-| SQL veritabanı | dtu_consumption_percent | DTU yüzdesi | Average | 5 dakika |
+| SQL veritabanı | cpu_percent | CPU yüzdesi | Ortalama | 5 dakika |
+| SQL veritabanı | physical_data_read_percent | Veri G/Ç yüzdesi | Ortalama | 5 dakika |
+| SQL veritabanı | log_write_percent | Günlük GÇ yüzdesi | Ortalama | 5 dakika |
+| SQL veritabanı | dtu_consumption_percent | DTU yüzdesi | Ortalama | 5 dakika |
 | SQL veritabanı | depolama | Toplam veritabanı boyutu | Maksimum | 30 dakika |
 | SQL veritabanı | connection_successful | Başarılı bağlantılar | Toplam | 10 dakika |
 | SQL veritabanı | connection_failed | Başarısız Bağlantılar | Toplam | 10 dakika |
 | SQL veritabanı | blocked_by_firewall | Güvenlik duvarı tarafından engellendi | Toplam | 10 dakika |
-| SQL veritabanı | Çözül | Kilitlenmeler | Toplam | 10 dakika |
+| SQL veritabanı | Çözül | Çık | Toplam | 10 dakika |
 | SQL veritabanı | storage_percent | Veri boyutu yüzdesi | Maksimum | 30 dakika |
-| SQL veritabanı | xtp_storage_percent | Bellek içi OLTP depolama yüzdesi (Önizleme) | Average | 5 dakika |
-| SQL veritabanı | workers_percent | Çalışan yüzdesi | Average | 5 dakika |
-| SQL veritabanı | sessions_percent | Oturum yüzdesi | Average | 5 dakika |
-| SQL veritabanı | dtu_limit | DTU sınırı | Average | 5 dakika |
-| SQL veritabanı | dtu_used | Kullanılan DTU | Average | 5 dakika |
+| SQL veritabanı | xtp_storage_percent | Bellek içi OLTP depolama yüzdesi (Önizleme) | Ortalama | 5 dakika |
+| SQL veritabanı | workers_percent | Çalışan yüzdesi | Ortalama | 5 dakika |
+| SQL veritabanı | sessions_percent | Oturum yüzdesi | Ortalama | 5 dakika |
+| SQL veritabanı | dtu_limit | DTU sınırı | Ortalama | 5 dakika |
+| SQL veritabanı | dtu_used | Kullanılan DTU | Ortalama | 5 dakika |
 ||||||
-| Elastik havuz | cpu_percent | CPU yüzdesi | Average | 10 dakika |
-| Elastik havuz | physical_data_read_percent | Veri GÇ yüzdesi | Average | 10 dakika |
-| Elastik havuz | log_write_percent | Günlük GÇ yüzdesi | Average | 10 dakika |
-| Elastik havuz | dtu_consumption_percent | DTU yüzdesi | Average | 10 dakika |
-| Elastik havuz | storage_percent | Depolama yüzdesi | Average | 10 dakika |
-| Elastik havuz | workers_percent | Çalışan yüzdesi | Average | 10 dakika |
-| Elastik havuz | eDTU_limit | eDTU sınırı | Average | 10 dakika |
-| Elastik havuz | storage_limit | Depolama sınırı | Average | 10 dakika |
-| Elastik havuz | eDTU_used | eDTU kullanıldı | Average | 10 dakika |
-| Elastik havuz | storage_used | Kullanılan depolama | Average | 10 dakika |
+| Elastik havuz | cpu_percent | CPU yüzdesi | Ortalama | 10 dakika |
+| Elastik havuz | physical_data_read_percent | Veri G/Ç yüzdesi | Ortalama | 10 dakika |
+| Elastik havuz | log_write_percent | Günlük GÇ yüzdesi | Ortalama | 10 dakika |
+| Elastik havuz | dtu_consumption_percent | DTU yüzdesi | Ortalama | 10 dakika |
+| Elastik havuz | storage_percent | Depolama yüzdesi | Ortalama | 10 dakika |
+| Elastik havuz | workers_percent | Çalışan yüzdesi | Ortalama | 10 dakika |
+| Elastik havuz | eDTU_limit | eDTU sınırı | Ortalama | 10 dakika |
+| Elastik havuz | storage_limit | Depolama sınırı | Ortalama | 10 dakika |
+| Elastik havuz | eDTU_used | eDTU kullanıldı | Ortalama | 10 dakika |
+| Elastik havuz | storage_used | Kullanılan depolama | Ortalama | 10 dakika |
 ||||||               
-| SQL veri ambarı | cpu_percent | CPU yüzdesi | Average | 10 dakika |
-| SQL veri ambarı | physical_data_read_percent | Veri GÇ yüzdesi | Average | 10 dakika |
+| SQL veri ambarı | cpu_percent | CPU yüzdesi | Ortalama | 10 dakika |
+| SQL veri ambarı | physical_data_read_percent | Veri G/Ç yüzdesi | Ortalama | 10 dakika |
 | SQL veri ambarı | connection_successful | Başarılı bağlantılar | Toplam | 10 dakika |
 | SQL veri ambarı | connection_failed | Başarısız Bağlantılar | Toplam | 10 dakika |
 | SQL veri ambarı | blocked_by_firewall | Güvenlik duvarı tarafından engellendi | Toplam | 10 dakika |
 | SQL veri ambarı | service_level_objective | Veritabanının hizmet katmanı | Toplam | 10 dakika |
 | SQL veri ambarı | dwu_limit | DWU sınırı | Maksimum | 10 dakika |
-| SQL veri ambarı | dwu_consumption_percent | DWU yüzdesi | Average | 10 dakika |
-| SQL veri ambarı | dwu_used | Kullanılan DWU | Average | 10 dakika |
+| SQL veri ambarı | dwu_consumption_percent | DWU yüzdesi | Ortalama | 10 dakika |
+| SQL veri ambarı | dwu_used | Kullanılan DWU | Ortalama | 10 dakika |
 ||||||
 
 
