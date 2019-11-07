@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: ba6d81596cd8a690f5c17e1ca55b91c5ff27b916
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497523"
+ms.locfileid: "73580625"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -56,7 +56,7 @@ Bu araçları Azure Machine Learning için kullanın:
 
 ## <a name="glossary"></a>Sözlük
 + <a href="#activities">Etkinlik</a>
-+ <a href="#compute-instance">İşlem örneği</a>
++ <a href="#compute-instance">Not defteri VM</a>
 + <a href="#compute-targets">İşlem hedefleri</a>
 + <a href="#datasets-and-datastores">Veri kümesi & veri depoları</a>
 + <a href="#endpoints">Noktalarının</a>
@@ -84,15 +84,11 @@ Etkinlik uzun süren bir işlemi temsil eder. Aşağıdaki işlemler etkinlik ö
 
 Etkinlikler, bu işlemlerin ilerlemesini kolayca izleyebilmeniz için SDK veya Web Kullanıcı arabirimi aracılığıyla bildirim sağlayabilir.
 
-### <a name="compute-instance"></a>İşlem örneği
+### <a name="compute-instance"></a>Not defteri VM
 
-> [!NOTE]
-> İşlem örnekleri yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir.
->Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz. 
+**Azure Machine Learning bir not DEFTERI VM** , makine öğrenimi için yüklenen birden çok araç ve ortamı içeren, tam olarak yönetilen bir bulut tabanlı iş istasyonudur. Not defteri VM 'Leri, daha küçük bir eğitim ve ınişsiz işler için işlem hedefi olarak kullanılabilir. Büyük görevler için, çok düğümlü ölçekleme özelliklerine sahip [işlem kümeleri Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute) daha iyi bir işlem hedefi seçimleridir.
 
-Bir **Azure Machine Learning işlem örneği** (eski adıyla Not defteri VM), makine öğrenimi için yüklenmiş birden çok araç ve ortamı içeren tam olarak yönetilen bir bulut tabanlı iş istasyonudur. İşlem örnekleri, eğitim ve ınişsiz işler için işlem hedefi olarak kullanılabilir. Büyük görevler için, çok düğümlü ölçekleme özelliklerine sahip [işlem kümeleri Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute) daha iyi bir işlem hedefi seçimleridir.
-
-[İşlem örnekleri](concept-compute-instance.md)hakkında daha fazla bilgi edinin.
+Not defteri VM 'Leri hakkında daha fazla bilgi edinin.
 
 ### <a name="compute-targets"></a>İşlem hedefleri
 
@@ -241,5 +237,5 @@ Bir örnek için bkz. [öğretici: görüntü sınıflandırma modelini Azure Ma
 Azure Machine Learning kullanmaya başlamak için bkz.:
 
 * [Azure Machine Learning nedir?](overview-what-is-azure-ml.md)
-* [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md)
+* [Bir Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md)
 * [Öğretici (Bölüm 1): bir modeli eğitme](tutorial-train-models-with-aml.md)

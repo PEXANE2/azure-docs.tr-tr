@@ -6,20 +6,20 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: 00d4911c0f2541ea5c64eccca3ab1b1505e06390
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 63e61844ddb5bd0f0ed52b67e26ea5bf1857fd2b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608535"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579914"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure blok zinciri hizmeti güvenliği
 
-Azure blok zinciri hizmeti, verilerinizin güvenliğini ve kullanılabilmesini sağlamak için birkaç Azure özelliği kullanır. Veriler, yalıtım, şifreleme ve kimlik doğrulaması kullanılarak korunmuş olur.
+Azure Blok Zinciri Hizmeti, verilerinizi güvende tutup bunların kullanılabilir olmasını sağlamak için çeşitli Azure özelliklerini kullanır. Verilerin güvenli hale getirilmesi için yalıtım, şifreleme ve kimlik doğrulaması olanaklarından faydalanılır.
 
 ## <a name="isolation"></a>Yalıtım
 
@@ -29,9 +29,9 @@ Azure blok zinciri hizmeti kaynakları özel bir sanal ağda yalıtılmıştır.
 
 ## <a name="encryption"></a>Şifreleme
 
-Kullanıcı verileri Azure depolama 'da depolanır. Kullanıcı verileri, güvenlik ve gizlilik için hareket halindeyken ve geri kalanında şifrelenir. Daha fazla bilgi için bkz. [Azure Depolama güvenlik kılavuzu](../../storage/common/storage-security-guide.md).
+Kullanıcı verileri Azure depolama 'da depolanır. Kullanıcı verileri, güvenlik ve gizlilik için hareket halindeyken ve geri kalanında şifrelenir. Daha fazla bilgi için bkz. [Azure depolama Güvenlik Kılavuzu](../../storage/common/storage-security-guide.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 İşlemler, blok zinciri düğümlerine bir RPC uç noktası aracılığıyla gönderilebilir. İstemciler, Kullanıcı kimlik doğrulamasını işleyen ve SSL üzerinden verileri şifreleyen bir ters ara sunucu kullanarak bir işlem düğümüyle iletişim kurar.
 
@@ -39,11 +39,11 @@ Kullanıcı verileri Azure depolama 'da depolanır. Kullanıcı verileri, güven
 
 RPC erişimi için üç kimlik doğrulama modu vardır.
 
-### <a name="basic-authentication"></a>Temel kimlik doğrulaması
+### <a name="basic-authentication"></a>Temel kimlik doğrulama
 
 Temel kimlik doğrulaması, Kullanıcı adını ve parolasını içeren bir HTTP kimlik doğrulama üstbilgisi kullanır. Kullanıcı adı, blok zinciri düğümünün adıdır. Parola, bir üye veya düğümün sağlanması sırasında ayarlanır. Parola Azure portal veya CLı kullanılarak değiştirilebilir.
 
-### <a name="access-keys"></a>Erişim anahtarları
+### <a name="access-keys"></a>Erişim tuşları
 
 Erişim anahtarları, uç nokta URL 'sinde bulunan rastgele oluşturulmuş bir dize kullanır. İki erişim anahtarı, anahtar döndürmeyi etkinleştirmeye yardımcı olur. Anahtarlar Azure portal ve CLı 'dan yeniden oluşturulabilir.
 

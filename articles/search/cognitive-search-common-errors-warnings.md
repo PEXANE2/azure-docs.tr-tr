@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 540e72a4472fce626822f0b22bfac11a23aea205
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6ed04c875140f3ecd14eff31829e931efbe84ea2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466762"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606659"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme işlem hattının genel hataları ve uyarıları
 
@@ -224,7 +224,12 @@ Tamamlanmamış bir dizin oluşturma işinin sürdürülebilmesi, `_ts` sütunun
 
 Bu davranışı geçersiz kılmak, artımlı ilerleme durumunu etkinleştirmek ve `assumeOrderByHighWatermarkColumn` yapılandırma özelliği kullanılarak bu uyarının gizlenmesi mümkündür.
 
-[Artımlı ilerleme ve özel sorgu Cosmos DB hakkında daha fazla bilgi.](https://go.microsoft.com/fwlink/?linkid=2099593)
+Daha fazla bilgi için bkz. [artımlı ilerleme ve özel sorgular](search-howto-index-cosmosdb.md#IncrementalProgress).
+
+### <a name="truncated-extracted-text-to-x-characters"></a>Ayıklanan metin X karakter olarak kesildi
+Dizin oluşturucular, herhangi bir belgeden ne kadar metin ayıklanabileceği sayısını sınırlar. Bu sınır, fiyatlandırma katmanına bağlıdır: ücretsiz katman için 32.000 karakter, temel için 64.000 ve standart, Standart S2 ve Standart S3 katmanları için 4.000.000. Kesilen metnin dizini oluşturulmaz. Bu uyarıyı önlemek için, büyük miktarlarda metinle birlikte belgeleri birden çok, daha küçük belgeye bölmek için kullanmayı deneyin. 
+
+Daha fazla bilgi için bkz. [Dizin Oluşturucu sınırları](search-limits-quotas-capacity.md#indexer-limits).
 
 ### <a name="could-not-map-output-field-x-to-search-index"></a>' X ' Çıkış alanı arama dizinine eşlenemiyor
 Varolmayan/null olmayan verilere başvuran çıkış alanı eşlemeleri, her belge için uyarı üretir ve boş bir dizin alanına neden olur. Bu soruna geçici bir çözüm olarak, olası yazım hataları için çıkış alanı eşleme kaynak yollarınızı iki kez kontrol edin veya [koşullu beceriye](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)kullanarak varsayılan bir değer ayarlayın.

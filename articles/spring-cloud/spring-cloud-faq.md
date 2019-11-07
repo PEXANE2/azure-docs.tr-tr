@@ -1,20 +1,17 @@
 ---
 title: Azure yay bulutu için sık sorulan sorular | Microsoft Docs
 description: Azure yay bulutu için SSS 'yi gözden geçirin
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 12ef5586ac1e7ecf27824f95add3355451cf555a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: jeconnoc
+ms.openlocfilehash: 1fb241ab1335e6b9c9be55acbbe2e21378831b69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163763"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607239"
 ---
 # <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
 
@@ -60,7 +57,7 @@ Doğu ABD, Batı ABD 2, Batı Avrupa ve Güneydoğu Asya.
 Hizmet önizlemedeyken Azure Spring Cloud 'ın bilinen sınırlamaları aşağıda verilmiştir.
 
 * `spring.application.name`, her uygulamayı oluşturmak için kullanılan uygulama adı tarafından geçersiz kılınır.
-* Git deposundan yapılandırma dosyasında `server.port` ' a izin verilmez. Bunu yapılandırma dosyasına eklemek, uygulamanızın diğer uygulamalardan veya internet 'ten ulaşılamaz olmasına neden olabilir.
+* Git deposundan yapılandırma dosyasında `server.port` izin verilmez. Bunu yapılandırma dosyasına eklemek, uygulamanızın diğer uygulamalardan veya internet 'ten ulaşılamaz olmasına neden olabilir.
 * Azure portal ve Kaynak Yöneticisi şablonları uygulama paketlerinin yüklenmesini desteklemez. Bu, yalnızca Azure CLı tarafından gerçekleştirilen uygulama dağıtımı aracılığıyla yapılabilir.
 * Kota sınırlamaları için, [Azure yay bulutu 'nın sunduğu hizmet planlarını](#what-service-plans-does-azure-spring-cloud-offer)inceleyin.
 
@@ -82,7 +79,7 @@ Azure yay bulutu, Java 8 ve 11 ' i destekler.
 
 Uygulama Genel Bakış sekmesinde ve [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) sekmesinde ölçümleri bulun.
 
-Azure yay bulutu, bahar uygulama günlüklerinizi ve ölçümlerini Azure depolama, EventHub ve [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries)dışa aktarmayı destekler. Log Analytics tablo adı `AppPlatformLogsforSpring` ' dır. Etkinleştirmek için, [tanılama hizmetlerimiz](diagnostic-services.md)hakkındaki bu makaleyi gözden geçirin.
+Azure yay bulutu, bahar uygulama günlüklerinizi ve ölçümlerini Azure depolama, EventHub ve [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries)dışa aktarmayı destekler. Log Analytics tablo adı `AppPlatformLogsforSpring`. Etkinleştirmek için, [tanılama hizmetlerimiz](diagnostic-services.md)hakkındaki bu makaleyi gözden geçirin.
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure yay bulutu dağıtılmış izlemeyi destekliyor mu?
 
@@ -95,7 +92,7 @@ Evet, daha fazla ayrıntı için [Dağıtılmış izlemeyi](spring-cloud-tutoria
 ### <a name="can-i-viewaddmove-persistent-volumes-from-inside-my-applications"></a>Uygulamalarım içinden kalıcı birimleri görüntüleyebilir/ekleyebilir/taşıyabilir miyim?
 Evet.
 
-## <a name="deployment"></a>Kurulum
+## <a name="deployment"></a>Dağıtım
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure yay bulutu mavi yeşil dağıtımı destekliyor mu?
 Evet, daha fazla ayrıntı için [hazırlama ortamı kılavuzunu](spring-cloud-howto-staging-environment.md) ziyaret edin.

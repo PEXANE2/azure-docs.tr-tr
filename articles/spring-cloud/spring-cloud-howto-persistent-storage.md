@@ -1,20 +1,17 @@
 ---
 title: Azure yay bulutu 'nda kalıcı depolamayı kullanma | Microsoft Docs
 description: Azure yay bulutu 'nda kalıcı depolamayı kullanma
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: f14da7d8e64c58a54a9da4d851ac22fd710ea8ca
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d70e7ff747b80b661e848f1c208f0d1c2c928248
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163681"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607782"
 ---
 # <a name="how-to-use-persistent-storage-in-azure-spring-cloud"></a>Azure yay bulutu 'nda kalıcı depolamayı kullanma
 
@@ -23,7 +20,7 @@ Azure yay bulutu, uygulamanız için iki tür depolama alanı sağlar: kalıcı 
 > [!WARNING]
 > Bir uygulama örneğini yeniden başlatmak, ilişkili geçici depolamayı kalıcı olarak siler.
 
-Kalıcı depolama, uygulama başına ayrılan Azure tarafından yönetilen bir dosya paylaşma kapsayıcısıdır. Kalıcı depolamada depolanan veriler tüm uygulamanın örnekleri arasında paylaşılır. Azure yay bulut hizmeti örneği, kalıcı disk etkin olan en fazla 10 uygulama içerebilir. Her uygulama 50 GB kalıcı depolama alanı alır. Kalıcı depolama için varsayılan bağlama yolu `/persistent` ' dır.
+Kalıcı depolama, uygulama başına ayrılan Azure tarafından yönetilen bir dosya paylaşma kapsayıcısıdır. Kalıcı depolamada depolanan veriler tüm uygulamanın örnekleri arasında paylaşılır. Azure yay bulut hizmeti örneği, kalıcı disk etkin olan en fazla 10 uygulama içerebilir. Her uygulama 50 GB kalıcı depolama alanı alır. Kalıcı depolama için varsayılan bağlama yolu `/persistent`.
 
 > [!WARNING]
 > Kalıcı depolamayı *devre dışı bırakmak* , bu uygulama için depolamayı serbest bırakır.  Bu depolama hesabındaki tüm veriler kaybedilecek. 
@@ -53,6 +50,12 @@ Kalıcı depolama, uygulama başına ayrılan Azure tarafından yönetilen bir d
 Kalıcı depolama etkinleştirildiğinde, boyutu ve yolu bu sayfada her ikisi de gösterilir.
 
 ## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Kalıcı depolamayı değiştirmek için Azure CLı 'yi kullanma
+
+Gerekirse, Azure CLı için yay bulutu uzantısını yüklerken:
+
+```azurecli
+az extension add --name spring-cloud
+```
 
 Kalıcı disk etkin olan bir uygulama oluşturun:
  

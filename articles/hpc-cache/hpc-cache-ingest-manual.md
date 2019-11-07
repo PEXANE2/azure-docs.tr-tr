@@ -1,19 +1,19 @@
 ---
-title: Azure HPC önbellek Önizleme verileri alma-el ile kopyalama
+title: Azure HPC önbellek verileri alma-el ile kopyalama
 description: Azure HPC önbelleğinde bir BLOB depolama hedefine veri taşımak için CP komutlarını kullanma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7e29cbd202b32897026bed074743de543d3fd587
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b2514eaaf70d13d3be63963f24ea7be99c4fbcce
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254477"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582277"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC Cache (Önizleme) veri alma-el ile kopyalama yöntemi
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC önbelleği veri alma-el ile kopyalama yöntemi
 
 Bu makalede, Azure HPC Cache ile kullanmak üzere verileri bir BLOB depolama kapsayıcısına el ile kopyalamak için ayrıntılı yönergeler sunulmaktadır. Kopyalama hızını iyileştirmek için çok iş parçacıklı paralel işlemler kullanır.
 
@@ -37,7 +37,7 @@ Bu komutu verdikten sonra, `jobs` komutu iki iş parçacığının çalıştığ
 
 Dosya adlarınız tahmin edilebilir ise, paralel kopyalama iş parçacıkları oluşturmak için ifadeleri kullanabilirsiniz. 
 
-Örneğin, dizininiz `0001` ' dan `1000` ' e ardışık olarak numaralandırılan 1000 dosyaları içeriyorsa, her bir Copy 100 dosyasını izleyen on paralel iş parçacığı oluşturmak için aşağıdaki ifadeleri kullanabilirsiniz:
+Örneğin, dizininiz `1000``0001` sıralı olarak numaralandırılmış 1000 dosya içeriyorsa, her bir kopyalanan 100 dosyasını izleyen on paralel iş parçacığı oluşturmak için aşağıdaki ifadeleri kullanabilirsiniz:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -56,7 +56,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 Dosya adlandırma yapınız tahmin edilebilir değilse, dosyaları dizin adlarına göre gruplandırabilirsiniz. 
 
-Bu örnek, ``cp`` komutlarına gönder arka plan görevleri olarak çalışacak tüm dizinleri toplar:
+Bu örnek, arka plan görevleri olarak çalıştırılan ``cp`` komutlarına göndermek için tüm dizinleri toplar:
 
 ```bash
 /root
@@ -92,7 +92,7 @@ Bu durumda, aynı uzak dosya sistemi bağlama yolunu kullanarak diğer Azure HPC
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-İstemci tarafı bağlama noktaları eklemek ek `/mnt/destination[1-3]` bağlama noktalarına ek kopyalama komutları ekleyerek daha fazla paralellik elde etmenizi sağlar.  
+İstemci tarafı bağlama noktaları eklemek, ek `/mnt/destination[1-3]` bağlama noktalarına daha fazla paralellik elde etmenizi sağlar.  
 
 Örneğin, dosyalarınız çok büyükse, farklı hedef yolları kullanmak için kopyalama komutlarını tanımlayabilir ve kopyayı gerçekleştiren istemciden paralel olarak daha fazla komut gönderebilirsiniz.
 
@@ -214,7 +214,7 @@ Ve altı.... Gerektiğinde extrapogeç.
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-@No__t-2 komutundan çıktının bir parçası olarak elde edilen düzey dört dizinlere sahip olan *n* istemcilerinden her biri için bir tane olmak üzere *n* sonuç dosyası alacaksınız. 
+`find` komutundan çıktının bir parçası olarak elde edilen düzey dört dizine ait yol adlarına sahip *n istemcilerinden her* biri için bir tane olmak üzere *n* sonuç dosyası alacaksınız. 
 
 Kopyalama komutunu oluşturmak için her dosyayı kullanın:
 

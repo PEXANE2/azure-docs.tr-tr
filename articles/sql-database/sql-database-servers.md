@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı sunucuları | Microsoft Docs
+title: Azure SQL veritabanı sunucuları
 description: Azure SQL veritabanı sunucuları ve bunların yönetimi hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 02d57c297926ef375eecaa76af55ffed60668cf1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8ebe08f37255743578cbc3dd44f7d84d79b9d17a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566769"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687401"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL veritabanı sunucuları ve bunların yönetimi
 
@@ -45,7 +45,7 @@ Bir SQL veritabanı sunucusu:
 - Kapsanan kaynaklarda etkinleştirilen yetenekler için sürüm kapsamıdır
 - Sunucu düzeyinde asıl kullanıcı bilgileri bir sunucudaki tüm veritabanlarını yönetebilir
 - Şirketinizde sunucu üzerindeki bir veya daha fazla veritabanına erişim verilmiş SQL Server örneklerinde bulunanlara benzer kullanıcı bilgileri içerebilir ve sınırlı yönetici hakları alabilir. Daha fazla bilgi için bkz. [Kullanıcı Bilgileri](sql-database-manage-logins.md).
-- `SQL_LATIN1_GENERAL_CP1_CI_AS`Bir SQL veritabanı sunucusunda oluşturulan tüm veritabanları için varsayılan harmanlama, burada `LATIN1_GENERAL` İngilizce (Birleşik Devletler), `CP1` kod sayfası 1252, `CI` büyük/küçük harfe duyarsız ve `AS` aksan duyarsızdır.
+- Bir SQL veritabanı sunucusunda oluşturulan tüm veritabanları için varsayılan harmanlama `SQL_LATIN1_GENERAL_CP1_CI_AS`, `LATIN1_GENERAL` Ingilizce (Birleşik Devletler), `CP1` kod sayfası 1252, `CI` büyük/küçük harfe duyarsızdır ve `AS` aksan duyarsızdır.
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Azure portal kullanarak Azure SQL sunucularını, veritabanlarını ve güvenlik duvarlarını yönetme
 
@@ -165,7 +165,7 @@ Transact-SQL ile Azure SQL Server, veritabanları ve güvenlik duvarları oluşt
 |[sp_delete_database_firewall_rule (Azure SQL veritabanı)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Azure SQL veritabanı veya SQL veri Ambarınızdan veritabanı düzeyinde güvenlik duvarı ayarını kaldırır. |
 
 > [!TIP]
-> Microsoft Windows üzerinde SQL Server Management Studio kullanan bir hızlı başlangıç için bkz [. Azure SQL veritabanı: Bağlanmak ve veri](sql-database-connect-query-ssms.md)sorgulamak için SQL Server Management Studio kullanın. MacOS, Linux veya Windows üzerinde Visual Studio Code kullanan bir hızlı başlangıç için bkz [. Azure SQL veritabanı: Bağlanmak ve veri](sql-database-connect-query-vscode.md)sorgulamak için Visual Studio Code kullanın.
+> Microsoft Windows üzerinde SQL Server Management Studio kullanan bir hızlı başlangıç için bkz. [Azure SQL veritabanı: bağlanmak ve veri sorgulamak için SQL Server Management Studio kullanma](sql-database-connect-query-ssms.md). MacOS, Linux veya Windows üzerinde Visual Studio Code kullanan bir hızlı başlangıç için bkz. [Azure SQL veritabanı: bağlanmak ve veri sorgulamak için Visual Studio Code kullanma](sql-database-connect-query-vscode.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>REST API kullanarak Azure SQL sunucularını, veritabanlarını ve güvenlik duvarlarını yönetme
 

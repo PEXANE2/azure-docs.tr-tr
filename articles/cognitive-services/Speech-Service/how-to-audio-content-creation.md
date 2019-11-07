@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 8e3a76abe840a70ba7410855cde1d82ec96c28eb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506961"
+ms.locfileid: "73579639"
 ---
 # <a name="audio-content-creation"></a>Ses Içeriği oluşturma
 
@@ -29,7 +29,7 @@ Bu diyagramda, özelleştirilmiş konuşmaya metin çıkışlarını ayarlama ve
 
 ![](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
-1. İlk adım, [bir Azure hesabı oluşturmak, bir konuşma kaynağını kaydetmek ve bir abonelik anahtarı almak](#create-a-speech-resource)için kullanılır. Abonelik anahtarınız varsa, konuşma hizmetini çağırmak ve [Ses Içeriği oluşturmaya](https://aka.ms/audiocontentcreation)erişmek için kullanabilirsiniz.
+1. İlk adım, [bir Azure hesabı oluşturmak, bir konuşma kaynağını kaydetmek ve bir abonelik anahtarı almak](#create-a-speech-resource)için kullanılır. Abonelik anahtarınız olduktan sonra, konuşma hizmetini çağırmak ve [Ses Içeriği oluşturmaya](https://aka.ms/audiocontentcreation)erişmek için kullanabilirsiniz.
 2. Düz metin veya SSML kullanarak [bir ses ayarlama dosyası oluşturun](#create-an-audio-tuning-file) .
 3. Ayarlamak istediğiniz sesi ve dili seçin. Ses Içeriği oluşturma, tüm [Microsoft metin okuma seslerini](language-support.md#text-to-speech)içerir. Standart, sinir veya kendi özel sesinizi kullanabilirsiniz.
    >[!NOTE]
@@ -43,7 +43,7 @@ Bu diyagramda, özelleştirilmiş konuşmaya metin çıkışlarını ayarlama ve
 
 Konuşma kaynağı oluşturmak ve konuşma Studio 'ya bağlamak için bu adımları izleyin.
 
-1. [Azure hesabına kaydolmak ve bir konuşma kaynağı oluşturmak](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)için bu yönergeleri izleyin. Fiyatlandırma katmanınızın **S0**olarak ayarlandığından emin olun. Sinir sesinden birini kullanıyorsanız, kaynağı [desteklenen bir bölgede](regions.md#standard-and-neural-voices)oluşturduğunuzdan emin olun.
+1. [Azure hesabına kaydolmak](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) ve [bir konuşma kaynağı oluşturmak](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)için bu yönergeleri izleyin. Fiyatlandırma katmanınızın **S0**olarak ayarlandığından emin olun. Sinir sesinden birini kullanıyorsanız, kaynağı [desteklenen bir bölgede](regions.md#standard-and-neural-voices)oluşturduğunuzdan emin olun.
 2. [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation)' da oturum açın.
 3. Mevcut bir projeyi seçin veya **Yeni oluştur**' a tıklayın.
 4. Aboneliğinizi istediğiniz zaman, üst gezinti bölmesinde bulunan **Ayarlar** seçeneğiyle değiştirebilirsiniz.

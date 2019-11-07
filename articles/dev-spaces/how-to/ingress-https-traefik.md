@@ -9,18 +9,18 @@ ms.date: 08/13/2019
 ms.topic: conceptual
 description: Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmak için nasıl yapılandırılacağını öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 50908bde65b69cb475391cd30bca758dd571f114
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c015fe8e7108f07d66d2464c4f8b6287e8f54446
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036949"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582318"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Özel bir traefik giriş denetleyicisi kullanma ve https 'yi yapılandırma
 
 Bu makalede, Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak üzere nasıl yapılandırılacağı gösterilmektedir. Bu makalede ayrıca, bu özel giriş denetleyicisinin HTTPS kullanmak üzere nasıl yapılandırılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap][azure-account-create] oluşturabilirsiniz.
 * [Yüklü Azure CLI][az-cli].
@@ -31,7 +31,7 @@ Bu makalede, Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanm
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>Özel bir traefik giriş denetleyicisi yapılandırma
 
-Kubernetes komut satırı istemcisi olan [kubectl][kubectl]kullanarak kümenize bağlanın. Kubernetes kümenize bağlanacak şekilde yapılandırmak `kubectl` için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
+Kubernetes komut satırı istemcisi olan [kubectl][kubectl]kullanarak kümenize bağlanın. Kubernetes kümenize bağlanmak üzere `kubectl` yapılandırmak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKS
@@ -45,7 +45,7 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
-Traefik giriş denetleyicisi için bir Kubernetes ad alanı oluşturun ve öğesini kullanarak `helm`çalıştırın.
+Traefik giriş denetleyicisi için bir Kubernetes ad alanı oluşturun ve `helm`kullanarak yüklemeyi yapın.
 
 ```console
 kubectl create ns traefik
@@ -87,7 +87,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-[Values. YAML][values-yaml] dosyasını açın ve tüm *< REPLACE_ME_WITH_HOST_SUFFIX >* örneklerini traefik ile değiştirin *. MY_CUSTOM_DOMAIN* için etki alanınızı kullanma. Ayrıca, *Kubernetes.io/ingress.class: traefik # özel*giriş ile *Kubernetes.io/ingress.class: traefik-azds # dev Spaces öğesine özgüdür* . Aşağıda güncelleştirilmiş `values.yaml` bir dosyaya örnek verilmiştir:
+[Values. YAML][values-yaml] dosyasını açın ve tüm *< REPLACE_ME_WITH_HOST_SUFFIX >* örneklerini traefik ile değiştirin *. MY_CUSTOM_DOMAIN* *için etki*alanınızı kullanma. Ayrıca, *Kubernetes.io/ingress.class: traefik # özel*giriş ile *Kubernetes.io/ingress.class: traefik-azds # dev Spaces öğesine özgüdür* . Güncelleştirilmiş `values.yaml` dosyasına bir örnek aşağıda verilmiştir:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -110,7 +110,7 @@ gateway:
 
 Değişikliklerinizi kaydedin ve dosyayı kapatın.
 
-Kullanarak `helm install`örnek uygulamayı dağıtın.
+Örnek uygulamayı `helm install`kullanarak dağıtın.
 
 ```console
 helm install -n bikesharing . --dep-up --namespace dev --atomic
@@ -118,14 +118,14 @@ helm install -n bikesharing . --dep-up --namespace dev --atomic
 
 Yukarıdaki örnek, örnek uygulamayı *dev* ad alanına dağıtır.
 
-`azds list-uris` Kullanarak`azds space select` örnek uygulamanıza yönelik geliştirme alanını seçin ve kullanarak örnek uygulamaya erişmek için URL 'leri görüntüleyin.
+`azds space select` kullanarak örnek uygulamanıza *geliştirme* alanını seçin ve `azds list-uris`kullanarak örnek uygulamaya erişmek Için URL 'leri görüntüleyin.
 
 ```console
 azds space select -n dev
 azds list-uris
 ```
 
-Aşağıdaki çıktıda, ' den `azds list-uris`örnek URL 'ler gösterilmektedir.
+Aşağıdaki çıktıda `azds list-uris`örnek URL 'Ler gösterilmektedir.
 
 ```console
 Uri                                                  Status
@@ -134,16 +134,16 @@ http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-`azds list-uris` Komuttan ortak URL 'yi açarak *bıkesharingweb* hizmetine gidin. Yukarıdaki örnekte, *bıkesharingweb* hizmeti 'nin `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`genel URL 'si.
+`azds list-uris` komutundan ortak URL 'yi açarak *bıkesharingweb* hizmetine gidin. Yukarıdaki örnekte, *bıkesharingweb* hizmeti IÇIN genel URL `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
 
-*Geliştirme altında* bir alt alan oluşturmak için komutunukullanınvealtgeliştirmealanınaerişmekiçinURL'leri`azds space select` listeleyin.
+*Geliştirici* altında bir alt alan oluşturmak ve alt geliştirme alanına erişmek Için URL 'leri listelemek üzere `azds space select` komutunu kullanın.
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-Aşağıdaki çıktı, *azureuser1* alt geliştirme alanındaki örnek `azds list-uris` uygulamaya erişmek için ' den örnek URL 'leri gösterir.
+Aşağıdaki çıktı, *azureuser1* alt geliştirme alanındaki örnek uygulamaya erişmek için `azds list-uris` ' den örnek URL 'leri gösterir.
 
 ```console
 Uri                                                  Status
@@ -152,11 +152,11 @@ http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Komuttan`azds list-uris` ortak URL 'yi açarak *azureuser1* alt geliştirme alanında *bıkesharingweb* hizmetine gidin. Yukarıdaki örnekte, *azureuser1* alt `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`dev Space 'teki *bıkesharingweb* hizmetinin genel URL 'si.
+`azds list-uris` komutundan ortak URL 'yi açarak *azureuser1* alt geliştirme alanında *bıkesharingweb* hizmetine gidin. Yukarıdaki örnekte, *azureuser1* alt dev Space 'teki *bıkesharingweb* hizmeti için genel URL `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>Traefik giriş denetleyicisini HTTPS kullanacak şekilde yapılandırma
 
-Aşağıdaki örneğe `dev-spaces/samples/BikeSharingApp/traefik-values.yaml` benzer bir dosya oluşturun. *E* -posta değerini, kendi e-postanız ile güncelleştirin ve bu, sertifikayı oluşturmak için kullanılır.
+Aşağıdaki örneğe benzer bir `dev-spaces/samples/BikeSharingApp/traefik-values.yaml` dosyası oluşturun. *E* -posta değerini, kendi e-postanız ile güncelleştirin ve bu, sertifikayı oluşturmak için kullanılır.
 
 ```yaml
 fullnameOverride: traefik
@@ -201,7 +201,7 @@ ssl:
     - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 ```
 
-*Traefik* hizmetinizi, oluşturduğunuz `helm repo update` *traefik-values. YAML* dosyasını kullanarak ve ile güncelleştirin.
+`helm repo update` kullanarak *traefik* hizmetinizi güncelleştirin ve oluşturduğunuz *traefik-values. YAML* dosyasını dahil edin.
 
 ```console
 cd ..
@@ -211,7 +211,7 @@ helm upgrade traefik stable/traefik --namespace traefik --values traefik-values.
 Yukarıdaki komut, *traefik-values. YAML* değerlerini kullanarak traefik hizmetinin yeni bir sürümünü çalıştırır ve önceki hizmeti kaldırır. Ayrıca, traefik hizmeti şifrelemeyi kullanarak bir TLS sertifikası oluşturur ve HTTPS kullanmak için Web trafiğini yeniden yönlendirmeye başlar.
 
 > [!NOTE]
-> Traefik hizmetinin yeni sürümünün başlatılması birkaç dakika sürebilir. İlerleme durumunu `kubectl get pods --namespace traefik --watch`kontrol edebilirsiniz.
+> Traefik hizmetinin yeni sürümünün başlatılması birkaç dakika sürebilir. İlerlemeyi `kubectl get pods --namespace traefik --watch`kullanarak kontrol edebilirsiniz.
 
 *Geliştirme/azureuser1* alt alanındaki örnek uygulamaya gıdın ve HTTPS kullanmak üzere yönlendirildiğini unutmayın. Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örneğin:
 
@@ -261,7 +261,7 @@ Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernete
 ...
 ```
 
-Dizinine gidin ve güncelleştirilmiş bikesharingweb hizmetinizi çalıştırmak için kullanın `azds up`. `BikeSharingWeb`
+`BikeSharingWeb` dizinine gidin ve güncelleştirilmiş BikeSharingWeb hizmetinizi çalıştırmak için `azds up` kullanın.
 
 ```console
 cd BikeSharingWeb/
@@ -288,7 +288,7 @@ Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar g
 
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
-[helm-installed]: https://github.com/helm/helm/blob/master/docs/install.md
+[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
 [helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

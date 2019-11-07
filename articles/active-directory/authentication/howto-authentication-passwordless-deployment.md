@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aab9d8c2b7993598c602ae6b730baff06d807e1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9b6f07e1dd8e9252d2b6e00b85a47ba2e19f8bd8
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151636"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603463"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Parolasız kimlik doğrulama dağıtımını tamamlandırma
 
@@ -67,7 +67,7 @@ Bir kuruluşun şirket içi Azure MFA sunucusu aracılığıyla MFA için etkinl
 
 **Cihaz kaydı** -kimlik doğrulayıcı uygulamasını passwordless kimlik doğrulaması için kullanmak Için CIHAZıN Azure AD kiracısında kayıtlı olması ve paylaşılan bir cihaz olması gerekir. Bir cihaz yalnızca tek bir kiracıda kaydedilebilir. Bu sınır, kimlik doğrulayıcı uygulamasını kullanarak telefon oturum açma için yalnızca bir iş veya okul hesabının desteklendiği anlamına gelir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kuruluşların, passwordless dağıtımına başlamadan önce aşağıdaki önkoşulları karşılaması gerekir.
 
@@ -93,7 +93,7 @@ Kullanıcılar, Azure MFA kayıt akışının bir parçası olarak parolasız y�
 Güvenlik anahtarları kaynaklarınıza erişimi etkinleştirir ve bu fiziksel cihazların yönetimini planlamanız gerekir.
 
 1. Anahtar dağıtımı: kuruluşunuza nasıl anahtar sağlayacağınızı planlayın. Merkezi bir sağlama işleminiz olabilir veya son kullanıcıların FIDO 2,0 ile uyumlu anahtarlar satın almasını sağlayabilirsiniz.
-1. Anahtar etkinleştirme: son kullanıcıların güvenlik anahtarını kendi kendine etkinleştirmeleri gerekir. Son kullanıcılar güvenlik anahtarlarını [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) ' de kaydeder ve ilk kullanımda ikinci faktörü (PIN veya biyometri) etkinleştirir.
+1. Anahtar etkinleştirme: son kullanıcıların güvenlik anahtarını kendi kendine etkinleştirmeleri gerekir. Son kullanıcılar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) bir güvenlik anahtarını kaydeder ve ilk kullanımda ikinci faktörü (PIN veya biyometri) etkinleştirir.
 1. Bir anahtarı devre dışı bırakma: güvenlik anahtarı işlevselliği önizleme aşamasında olduğunda, yöneticinin bir kullanıcı hesabından anahtar kaldırması için bir yol yoktur. Kullanıcının onu kaldırması gerekir. Bir anahtar kaybolur veya çalınırsa:
    1. Parolayı, passwordless kimlik doğrulaması için etkinleştirilen herhangi bir gruptan kaldırın.
    1. Anahtarı bir kimlik doğrulama yöntemi olarak kaldırdıklarından emin olun.
@@ -110,15 +110,6 @@ FIDO2 güvenlik anahtarlarını kullanarak Windows 10 oturum açma özelliğinin
    - Intune dağıtımı mümkün değilse, yöneticilerin kimlik bilgisi sağlayıcısı işlevini etkinleştirmek için her makinede bir paket dağıtmaları gerekir. Paket yüklemesi aşağıdaki seçeneklerden biriyle gerçekleştirilebilir:
       - Grup ilkesi veya System Center Configuration Manager (SCCM)
       - Windows 10 makinesinde yerel yükleme
-- [grup ilkesi ile kimlik bilgisi sağlayıcısını etkinleştir](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
-   - Yalnızca karma Azure AD 'ye katılmış cihazlar için desteklenir.
-
-#### <a name="enable-on-premises-integration"></a>Şirket içi tümleştirmeyi etkinleştir
-
-Şirket içi kaynaklara erişimi etkinleştirmek için, Şirket [içi kaynaklarda (Önizleme), passwordless güvenlik anahtarı 'Nı etkinleştirme](howto-authentication-passwordless-security-key-on-premises.md) makalesindeki adımları izleyin.
-
-> [!IMPORTANT]
-> Bu adımların, karma Azure AD 'ye katılmış cihazların Windows 10 oturum açma için FIDO2 güvenlik anahtarlarını kullanmasını sağlamak için de tamamlanması gerekir.
 
 ### <a name="register-security-keys"></a>Güvenlik anahtarlarını Kaydet
 
@@ -142,7 +133,7 @@ Aşağıdaki tabloda bu proje sırasında uygulanacak kullanım durumları özet
 | --- | --- |
 | **Erişim** | Passwordless oturum açma, kurumsal ağ içinde veya dışında bir kurumsal veya kişisel cihazdan kullanılabilir. |
 | **Denetim** | Kullanım verileri, yöneticilere neredeyse gerçek zamanlı olarak denetim sağlamak için kullanılabilir. <br> Kullanım verileri en az 29 günde bir veya SıEM aracı kullanıldığında şirket sistemlerine indirilir. |
-| **#C1** | Uygun kimlik doğrulama yöntemine ve ilişkili gruplara yönelik Kullanıcı atamalarının yaşam döngüsü tanımlanmıştır ve izlenir. |
+| **#** | Uygun kimlik doğrulama yöntemine ve ilişkili gruplara yönelik Kullanıcı atamalarının yaşam döngüsü tanımlanmıştır ve izlenir. |
 | **Güvenlik** | Uygun kimlik doğrulama yöntemine erişim, Kullanıcı ve Grup atamaları aracılığıyla denetlenir. <br> Yalnızca yetkili kullanıcılar parolasız oturum açma kullanabilir. |
 | **Performans** | Erişim atama yayma zaman çizelgeleri belgelenmiştir ve izlenir. <br> Oturum açma süreleri kullanım kolaylığı açısından ölçülür. |
 | **Kullanıcı deneyimi** | Kullanıcılar mobil uyumluluğun farkında değildir. <br> Kullanıcılar, kimlik doğrulayıcı uygulamasının parolasız oturum açmasını yapılandırabilir. |
@@ -163,7 +154,7 @@ Son kullanıcılara yönelik iletişimlerinizin şunları eklemesi gerekir:
 - [Microsoft Authenticator uygulamasına kaydetme](howto-authentication-passwordless-phone.md)
 - [Telefonunuzla oturum açma](../user-help/user-help-auth-app-sign-in.md)
 
-Microsoft, iletişimlerinizin taslağını sağlamak için MFA [iletişim şablonları](https://aka.ms/mfatemplates), self servis parola sıfırlama (SSPR) [iletişim şablonları](https://www.microsoft.com/download/details.aspx?id=56768)ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Bu sayfadaki güvenlik bilgileri bağlantılarını seçerek doğrudan kaydolmak için [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) ' e Kullanıcı gönderebilirsiniz.
+Microsoft, iletişimlerinizin taslağını sağlamak için MFA [iletişim şablonları](https://aka.ms/mfatemplates), self servis parola sıfırlama (SSPR) [iletişim şablonları](https://www.microsoft.com/download/details.aspx?id=56768)ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Kullanıcıları, bu sayfadaki güvenlik bilgileri bağlantılarını seçerek doğrudan kaydettirmek üzere [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) gönderebilirsiniz.
 
 ### <a name="testing-passwordless"></a>Passwordless test ediliyor
 
@@ -226,7 +217,7 @@ Aşağıdaki tabloda tipik raporlama senaryolarının bazı örnekleri verilmiş
 
 **Azure AD, en fazla 30 günlük denetim verilerini korur** ve verileri Azure Yönetim PORTALı veya API aracılığıyla analiz sistemlerinize indirmeniz için kullanılabilir hale getirir. Kuruluşunuz daha uzun bekletme gerektiriyorsa, günlüklerin [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), splunk veya Sumo Logic gıbı bır SIEM aracına aktarılması ve tüketilmesi gerekir. [Erişim ve kullanım raporlarınızı görüntüleme hakkında daha fazla bilgi edinin](../reports-monitoring/overview-reports.md).
 
-Kullanıcılar, [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)' e giderek kimlik bilgilerini kaydedebilir ve yönetebilir. Bu bağlantı, kullanıcıları birleştirilmiş SSPR/MFA kayıt deneyimi aracılığıyla etkinleştirilen Son Kullanıcı kimlik bilgileri yönetim deneyimine yönlendirir. FIDO2 güvenlik cihazlarının herhangi bir kaydı veya bir kullanıcı tarafından kimlik doğrulama yöntemlerine yapılan değişiklikler Azure Active Directory Denetim günlüklerine kaydedilir.
+Kullanıcılar, [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)giderek kimlik bilgilerini kaydedebilir ve yönetebilir. Bu bağlantı, kullanıcıları birleştirilmiş SSPR/MFA kayıt deneyimi aracılığıyla etkinleştirilen Son Kullanıcı kimlik bilgileri yönetim deneyimine yönlendirir. FIDO2 güvenlik cihazlarının herhangi bir kaydı veya bir kullanıcı tarafından kimlik doğrulama yöntemlerine yapılan değişiklikler Azure Active Directory Denetim günlüklerine kaydedilir.
 
 Kullanıcılar bir güvenlik anahtarındaki hesabı etkinleştirir veya devre dışı bırakır veya Windows 10 makinelerinde güvenlik anahtarı için ikinci faktörü sıfırlarsa, güvenlik günlüğüne bir giriş eklenir ve aşağıdaki olay kimlikleri altında bulunur: 4670, 5382.
 

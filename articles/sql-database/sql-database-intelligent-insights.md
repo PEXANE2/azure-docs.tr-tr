@@ -1,5 +1,5 @@
 ---
-title: Akıllı İçgörüler-Azure SQL veritabanı ile veritabanı performansını izleme | Microsoft Docs
+title: Akıllı İçgörüler-Azure SQL veritabanı ile veritabanı performansını izleme
 description: Azure SQL veritabanı Akıllı İçgörüler, yapay zeka aracılığıyla veritabanı kullanımını sürekli olarak izlemek ve zayıf performansa neden olan olayları saptamak için yerleşik zekayı kullanır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 70498c5f4c824681ee59b7232e9409235d7f6a93
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c073b535271ba8f9f11e17ba5203b13e257e211b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262170"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689689"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Veritabanı performansını izlemek ve sorunlarını gidermek için AI kullanarak Akıllı İçgörüler
 
@@ -50,12 +50,12 @@ Tanımlı SQL veritabanı performansı azaltılmaları, tanılama günlüğüne 
 
 | Özellik             | Ayrıntılar              |
 | :------------------- | ------------------- |
-| veritabanı bilgileri | Bir öngörü algılanan ve kaynak URI gibi bir veritabanıyla ilgili meta veriler. |
+| Veritabanı bilgileri | Bir öngörü algılanan ve kaynak URI gibi bir veritabanıyla ilgili meta veriler. |
 | Gözlenen zaman aralığı | Algılanan öngörü dönemi için başlangıç ve bitiş zamanı. |
 | Etkilenen ölçümler | Öngörü oluşturulmasına neden olan ölçümler: <ul><li>Sorgu süresi [saniye] değerini artırır.</li><li>Aşırı bekleyen [saniye].</li><li>Zaman aşımı istekleri [yüzde].</li><li>Hatalı istekler [Percentage].</li></ul>|
 | Etki değeri | Ölçülen ölçüm değeri. |
 | Etkilenen sorgular ve hata kodları | Sorgu karması veya hata kodu. Bunlar, etkilenen sorgularla kolayca ilişki kurmak için kullanılabilir. Sorgu süresi artışını, bekleme süresini, zaman aşımı sayılarını veya hata kodlarını içeren ölçümler sağlanır. |
-| Algılamalar | Bir olay sırasında veritabanında tanımlanan algılama. 15 algılama deseni vardır. Daha fazla bilgi için bkz. [akıllı içgörüler veritabanı performans sorunlarını giderme](sql-database-intelligent-insights-troubleshoot-performance.md). |
+| Durumunda | Bir olay sırasında veritabanında tanımlanan algılama. 15 algılama deseni vardır. Daha fazla bilgi için bkz. [akıllı içgörüler veritabanı performans sorunlarını giderme](sql-database-intelligent-insights-troubleshoot-performance.md). |
 | Kök neden analizi | İnsan tarafından okunabilen bir biçimde tanımlanan sorunun kök neden analizi. Bazı içgörüler, mümkün olduğunda bir performans geliştirme önerisi içerebilir. |
 |||
 

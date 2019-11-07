@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı yönetilen örnek uygulama Connect | Microsoft Docs
+title: Azure SQL veritabanı yönetilen örnek uygulama bağlama
 description: Bu makalede, uygulamanızı Azure SQL veritabanı yönetilen örneği 'ne nasıl bağlayabileceğinizi ele alınmaktadır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 5dc287ab58636b4921c14ae71f9a62ab36d9c596
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060665"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688234"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Uygulamanızı Azure SQL veritabanı yönetilen örneğine bağlama
 
@@ -69,8 +69,8 @@ Müşteriler tarafından uygulanan başka bir senaryo da VPN ağ geçidinin ayr�
 
 Temel altyapıyı ayarladıktan sonra, VPN Gateway yönetilen örneği barındıran sanal ağdaki IP adreslerini görebilmesi için bazı ayarları değiştirmeniz gerekir. Bunu yapmak için, **eşleme ayarları**altında aşağıdaki belirli değişiklikleri yapın.
 
-1. VPN ağ geçidini barındıran VNet 'de, eşlemeler ' e gidin, ardından yönetilen örnek eşlenmiş VNet bağlantısı ' na gidin ve **ağ geçidi aktarımına izin ver**' e tıklayın.
-2. Yönetilen örneği barındıran VNet 'de, eşlemeler ' e gidin,sonra eşlenen vnet bağlantısına VPN Gateway ve ardından **uzak ağ geçitlerini kullan**' a tıklayın.
+1. VPN ağ geçidini barındıran VNet 'de, eşlemeler **' e gidin**, ardından yönetilen örnek eşlenmiş VNet bağlantısı ' na gidin ve **ağ geçidi aktarımına izin ver**' e tıklayın.
+2. Yönetilen örneği barındıran VNet **'de, eşlemeler ' e gidin**, sonra eşlenen vnet bağlantısına VPN Gateway ve ardından **uzak ağ geçitlerini kullan**' a tıklayın.
 
 ## <a name="connect-an-azure-app-service-hosted-application"></a>Azure App Service barındırılan bir uygulamayı bağlama
 
@@ -101,7 +101,7 @@ Bağlantı sorunlarını gidermek için aşağıdakileri gözden geçirin:
 
    ![giriş/çıkış numaraları](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
 
-- İstemci makinesinin (VPN istemcisini çalıştıran), erişmeniz gereken tüm sanal ağlar için rota girişlerine sahip olup olmadığını denetleyin. Yollar içinde `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt`depolanır.
+- İstemci makinesinin (VPN istemcisini çalıştıran), erişmeniz gereken tüm sanal ağlar için rota girişlerine sahip olup olmadığını denetleyin. Yollar `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt`depolanır.
 
    ![Route. txt](./media/sql-database-managed-instance-connect-app/route-txt.png)
 
@@ -137,7 +137,7 @@ Bağlantı sorunlarını gidermek için aşağıdakileri gözden geçirin:
 
 Yönetilen örneğe bağlanmak istiyorsanız, araçların ve sürücülerin aşağıdaki en düşük sürümleri önerilir:
 
-| Sürücü/araç | Version |
+| Sürücü/araç | Sürüm |
 | --- | --- |
 |.NET Framework | 4.6.1 (veya .NET Core) |
 |ODBC sürücüsü| v17 |

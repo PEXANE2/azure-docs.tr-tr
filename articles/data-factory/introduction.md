@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory’ye Giriş | Microsoft Docs
+title: Azure Data Factory'ye giriş
 description: Verilerin taşınmasını ve dönüştürülmesini düzenleyen ve otomatikleştiren bir bulut veri tümleştirme hizmeti olan Azure Data Factory hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 0a81b9b230136a4ac4ed40e3af84859eccadf8d6
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: e23268d21b01435aa71d4f471afc6d37ee9e9c1d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882259"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672696"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory nedir?
 
@@ -56,7 +56,7 @@ Dönüştürmeleri el ile kodlayarak, ADF, HDInsight Hadoop, Spark, Data Lake An
 ### <a name="cicd-and-publish"></a>CI/CD ve yayımlama
 Data Factory, Azure DevOps ve GitHub kullanarak veri işlem hatlarınızın CI/CD 'si için tam destek sunar. Bu, tamamlanmış ürünü yayımlamadan önce ETL işlemlerinizi artımlı olarak geliştirmenize ve sunmanıza olanak tanır. Ham veriler iş için kullanılabilir biçime getirildikten sonra, verileri Azure Veri Ambarı, Azure SQL Veritabanı, Azure CosmosDB'ye veya şirket kullanıcılarınızın iş zekası araçlarından işaret edebildiği herhangi bir analiz altyapısına yükleyebilirsiniz.
 
-### <a name="monitor"></a>İzleyin
+### <a name="monitor"></a>İzleme
 Veri tümleştirme işlem hattınızı başarıyla oluşturup dağıtarak iyileştirilmiş verilerden iş değeri elde ettikten sonra, başarı ve hata oranları için zamanlanmış etkinlikleri ve işlem hatlarını izleyin. Azure Data Factory, Azure Izleyici, API, PowerShell, Azure Izleyici günlükleri ve Azure portal sistem durumu bölmeleri aracılığıyla işlem hattı izleme için yerleşik desteğe sahiptir.
 
 ## <a name="top-level-concepts"></a>Üst düzey kavramlar

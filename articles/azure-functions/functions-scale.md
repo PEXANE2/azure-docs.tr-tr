@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: bf713029f26ac7ec0b6c043fb887fa5190083888
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550630"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576070"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Işlevleri ölçeklendirme ve barındırma
 
@@ -47,8 +47,8 @@ Aşağıdaki tablo, Windows veya Linux üzerinde çalışırken üç barındırm
 
 | | Tüketim planı | Premium planı | Adanmış plan |
 |-|:----------------:|:------------:|:----------------:|
-| Windows | Genel Kullanım | önizleme | Genel Kullanım |
-| Linux | Genel Kullanım | önizleme | Genel Kullanım |
+| Windows | Genel Kullanım | Genel Kullanım | Genel Kullanım |
+| Linux | Genel Kullanım | Genel Kullanım | Genel Kullanım |
 
 ## <a name="consumption-plan"></a>Tüketim planı
 
@@ -65,7 +65,7 @@ Aynı bölgedeki işlev uygulamaları aynı tüketim planına atanabilir. Aynı 
 
 Tüketim planında çalışırken maliyetleri tahmin etme hakkında daha fazla bilgi edinmek için bkz. [Tüketim planı maliyetlerini anlama](functions-consumption-costs.md).
 
-## <a name="premium-plan"></a>Premium plan (Önizleme)
+## <a name="premium-plan"></a>Premium plan
 
 Premium planı kullanırken, Azure Işlevleri ana bilgisayarının örnekleri, tüketim planı gibi gelen olayların sayısına göre eklenir ve kaldırılır.  Premium plan aşağıdaki özellikleri destekler:
 
@@ -128,7 +128,7 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Bu komutun çıktısı `dynamic` olduğunda, işlev uygulamanız tüketim planınızdan olur. Bu komutun çıktısı `ElasticPremium` olduğunda, işlev uygulamanız Premium plandır. Diğer tüm değerler App Service planının farklı katmanlarını gösterir.
+Bu komutun çıktısı `dynamic`olduğunda, işlev uygulamanız tüketim planınızdan olur. Bu komutun çıktısı `ElasticPremium`olduğunda, işlev uygulamanız Premium plandır. Diğer tüm değerler App Service planının farklı katmanlarını gösterir.
 
 ## <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
 

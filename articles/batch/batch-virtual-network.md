@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: b4be715bd910326b3d06837508e7a07ac853189f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 78f29bacaadac5f01e4a8dd26bf03b2bda84f2bf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322630"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577573"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Sanal ağda Azure Batch havuzu oluşturma
 
@@ -24,7 +24,7 @@ Bir Azure Batch havuzu oluşturduğunuzda, havuzu belirttiğiniz bir [Azure sana
 
 Azure Batch havuzun, işlem düğümlerinin birbirleriyle iletişim kurmasına izin vermek için ayarları vardır. Örneğin, çok örnekli görevleri çalıştırmak için. Bu ayarlar ayrı bir sanal ağ gerektirmez. Ancak, varsayılan olarak, düğümler, bir lisans sunucusu ya da bir dosya sunucusu gibi Batch havuzunun parçası olmayan sanal makinelerle iletişim kuramaz. Havuz işlem düğümlerinin diğer sanal makinelerle veya şirket içi bir ağla güvenli bir şekilde iletişim kurmasına izin vermek için, havuzu bir Azure VNet 'in alt ağında sağlayabilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Kimlik Doğrulaması**. Azure sanal ağı kullanmak için Batch istemci API'sinin Azure Active Directory (AD) kimlik doğrulamasını kullanması gerekir. Azure AD için Azure Batch desteği, [Batch hizmeti çözümlerinin kimliğini Active Directory ile doğrulama](batch-aad-auth.md) makalesinde belirtilmiştir. 
 
@@ -56,9 +56,9 @@ Kuruluşunuzdaki Internet 'e bağlı trafiği İnceleme ve günlüğe kaydetme a
 
 Azure Batch havuzu işlem düğümlerinizin Zorlamalı tünel etkin olan bir VNet 'te çalıştığından emin olmak için, bu alt ağ için aşağıdaki [Kullanıcı tanımlı yolları](../virtual-network/virtual-networks-udr-overview.md) eklemeniz gerekir:
 
-* Batch hizmetinin, görevleri zamanlamak için havuz işlem düğümleriyle iletişim kurması gerekir. Bu iletişimi etkinleştirmek için Batch hesabınızın bulunduğu bölgedeki Batch hizmeti tarafından kullanılan her IP adresi için Kullanıcı tanımlı bir yol ekleyin. Batch hizmetinin IP adreslerinin listesini edinme hakkında bilgi edinmek için bkz. [Şirket Içi hizmet etiketleri](../virtual-network/security-overview.md#service-tags-in-on-premises)
+* Batch hizmetinin, görevleri zamanlamak için havuz işlem düğümleriyle iletişim kurması gerekir. Bu iletişimi etkinleştirmek için Batch hesabınızın bulunduğu bölgedeki Batch hizmeti tarafından kullanılan her IP adresi için Kullanıcı tanımlı bir yol ekleyin. Batch hizmetinin IP adreslerinin listesini edinme hakkında bilgi edinmek için bkz. [Şirket Içi hizmet etiketleri](../virtual-network/service-tags-overview.md)
 
-* Azure Storage 'a giden trafiğin (özellikle, formun `<account>.table.core.windows.net` `<account>.queue.core.windows.net`URL 'leri, ve `<account>.blob.core.windows.net`) Şirket içi ağ gereciniz aracılığıyla engellenmediğinden emin olun.
+* Azure Storage 'a giden trafiğin (özellikle, `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`ve `<account>.blob.core.windows.net`) Şirket içi ağ gereciniz aracılığıyla engellenmediğinden emin olun.
 
 Kullanıcı tanımlı bir yol eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlayın ve **sonraki atlama türünü** **Internet**olarak ayarlayın. Aşağıdaki örneğe bakın:
 

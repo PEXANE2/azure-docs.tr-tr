@@ -1,5 +1,5 @@
 ---
-title: Esnek veritabanı araçları ile çalışmaya başlama-Azure | Microsoft Docs
+title: Elastik veritabanı araçlarını kullanmaya başlama-Azure
 description: Kullanımı kolay bir örnek uygulama dahil olmak üzere Azure SQL veritabanı 'nın elastik veritabanı araçları özelliğinin temel açıklaması.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: aa0827bdf6deb388123ed701013ee95f5493eee3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8f5d5bbf6509dd908f94f1500e585913cbb34e41
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568464"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690230"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanmaya başlama
 
@@ -24,7 +24,7 @@ Bu belgede, örnek bir uygulama çalıştırmanıza yardımcı olarak [elastik v
 
 ## <a name="elastic-database-tools-for-java"></a>Java için elastik veritabanı araçları
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Java geliştirici seti (JDK), sürüm 1,8 veya üzeri
 * [Maven](https://maven.apache.org/download.cgi)
@@ -70,7 +70,7 @@ Tebrikler! Azure SQL veritabanı 'nda elastik veritabanı araçlarını kullanar
 
 ## <a name="elastic-database-tools-for-net"></a>.NET için elastik veritabanı araçları
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Visual Studio 2012 veya sonraki sürümleri C#. [Visual Studio Indirmelerinde](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)ücretsiz bir sürüm indirin.
 * NuGet 2,7 veya üzeri. En son sürümü almak için bkz. [NuGet 'ı yükleme](https://docs.nuget.org/docs/start-here/installing-nuget).
@@ -91,7 +91,7 @@ Kitaplığı yüklemek için [Microsoft. Azure. SQLDatabase. Elaol Scale. Client
 
 5. İstemci kitaplığı özellikleri hakkında daha fazla bilgi edinmek için çeşitli seçeneklerle denemeler yapın. Uygulamanın konsol çıkışında aldığı ve arka planda kodu keşfetmeye yönelik adımlara göz atın.
    
-    ![İlerleme durumu][4]
+    ![Lemesine][4]
 
 Tebrikler! SQL veritabanı 'nda elastik veritabanı araçlarını kullanarak ilk parçalı uygulamanızı başarıyla oluşturup çalıştırın. SQL veritabanınıza bağlanmak için Visual Studio 'Yu veya SQL Server Management Studio kullanın ve örneğin oluşturulan parçalara hızlıca göz atın. Yeni örnek parça veritabanları ve örneğin oluşturduğu bir parça eşleme Yöneticisi veritabanı fark edeceksiniz.
 
@@ -100,19 +100,19 @@ Tebrikler! SQL veritabanı 'nda elastik veritabanı araçlarını kullanarak ilk
 
 ## <a name="key-pieces-of-the-code-sample"></a>Kod örneğinin temel parçaları
 
-* **Parçaları ve parça haritalarını yönetme**: Kod, *ShardManagementUtils.cs* dosyasındaki parçalar, aralıklar ve eşlemelerle çalışmayı gösterir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).  
+* **Parçaları ve parça haritalarını yönetme**: kod, *ShardManagementUtils.cs* dosyasındaki parçalar, aralıklar ve eşlemelerle çalışmayı gösterir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).  
 
-* **Verilere bağımlı yönlendirme**: İşlemlerin sağ parçaya yönlendirilmesi *DataDependentRoutingSample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [verilere bağımlı yönlendirme](https://go.microsoft.com/?linkid=9862596). 
+* **Verilere bağımlı yönlendirme**: işlemlerin sağ parçaya yönlendirilmesi *DataDependentRoutingSample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [verilere bağımlı yönlendirme](https://go.microsoft.com/?linkid=9862596). 
 
-* **Birden çok parça üzerinde sorgulama**: Parçaların tamamında sorgulama *MultiShardQuerySample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [çok parçalı sorgulama](https://go.microsoft.com/?linkid=9862597).
+* **Birden çok parça üzerinde sorgulama**: parçalar arasında sorgulama *MultiShardQuerySample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [çok parçalı sorgulama](https://go.microsoft.com/?linkid=9862597).
 
-* **Boş parçalar ekleniyor**: Yeni boş parçaların eklenmesi, *CreateShardSample.cs* dosyasındaki kod tarafından gerçekleştirilir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).
+* **Boş parçalar ekleniyor**: yeni boş parçaların eklenmesi, *CreateShardSample.cs* dosyasındaki kod tarafından gerçekleştirilir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Diğer elastik ölçeklendirme işlemleri
 
-* **Var olan bir parçayı bölme**: Parçalara ayırma özelliği bölünmüş birleştirme aracı tarafından sağlanır. Daha fazla bilgi için bkz. [ölçekli bulut veritabanları arasında veri taşıma](sql-database-elastic-scale-overview-split-and-merge.md).
+* **Var olan bir parçayı bölme: parçalara**ayırma özelliği bölünmüş birleştirme aracı tarafından sağlanır. Daha fazla bilgi için bkz. [ölçekli bulut veritabanları arasında veri taşıma](sql-database-elastic-scale-overview-split-and-merge.md).
 
-* **Mevcut parçaları birleştirme**: Parça birleştirmesi, bölünmüş birleştirme aracı kullanılarak da gerçekleştirilir. Daha fazla bilgi için bkz. [ölçekli bulut veritabanları arasında veri taşıma](sql-database-elastic-scale-overview-split-and-merge.md).   
+* **Mevcut parçaları birleştirme: parça**birleştirmesi, bölünmüş birleştirme aracı kullanılarak da gerçekleştirilir. Daha fazla bilgi için bkz. [ölçekli bulut veritabanları arasında veri taşıma](sql-database-elastic-scale-overview-split-and-merge.md).   
 
 ## <a name="cost"></a>Maliyet
 
@@ -130,10 +130,10 @@ Elastik veritabanı araçları hakkında daha fazla bilgi için aşağıdaki mak
   * Elastik veritabanı araçları ([.net](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Azure SQL Entity Framework tümleştirme için elastik veritabanı araçları](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Betik merkezinde parça esnekliği](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
-* Blog: [Elastik ölçek duyurusu](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
-* Kanal 9: [Elastik ölçeğe genel bakış videosu](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
+* Blog: [elastik ölçek duyurusu](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
+* Channel 9: [elastik ölçeğe genel bakış videosu](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 * Tartışma Forumu: [Azure SQL veritabanı Forumu](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
-* Performansı ölçmek için: [Parça eşleme yöneticisi için performans sayaçları](sql-database-elastic-database-client-library.md)
+* Performansı ölçmek için: parça [eşleme Yöneticisi Için performans sayaçları](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->
 [The Elastic Scale Sample Application]: #The-Elastic-Scale-Sample-Application

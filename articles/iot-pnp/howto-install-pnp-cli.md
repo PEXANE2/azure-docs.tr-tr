@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 41a626ba602ad33f22c3ea4acc39dd4f3438cbd0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935696"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571010"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını yükleyip kullanma
 
@@ -44,7 +44,7 @@ Ortamınızda Azure CLı 'yı ayarlamak için [yükleme yönergelerini](https://
 
 ## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını kullanma
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğinizde oturum açmak için aşağıdaki komutu çalıştırın:
 
@@ -62,7 +62,7 @@ Azure CLı için Azure IoT uzantısını kullanmak için şunlar gerekir:
     > [!NOTE]
     > Genel Önizleme sırasında IoT Tak ve Kullan özellikleri yalnızca **Orta ABD**, **Kuzey Avrupa**ve **Japonya Doğu** bölgelerinde oluşturulan IoT Hub 'larında kullanılabilir.
 
-- IoT Hub 'ınıza kayıtlı bir cihaz. Bir cihazı kaydetmek için aşağıdaki Azure CLI komutunu kullanabilirsiniz, `{YourIoTHubName}` ve `{YourDeviceID}` yer tutucuları değerlerinizle değiştirdiğinizden emin olun:
+- IoT Hub 'ınıza kayıtlı bir cihaz. Bir cihazı kaydetmek için aşağıdaki Azure CLı komutunu kullanabilirsiniz; `{YourIoTHubName}` ve `{YourDeviceID}` yer tutucuları değerlerinizle değiştirdiğinizden emin olun:
 
     ```cmd/sh
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -126,31 +126,31 @@ Bir cihazdaki bir arabirim için tüm komutları listeleyin:
 az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
 ```
 
-`--repo-login` Parametresi olmadan, bu komut ortak model deposunu kullanır.
+`--repo-login` parametresi olmadan, bu komut ortak model deposunu kullanır.
 
 Bir komut çağırın:
 
 ```cmd/sh
-az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --command-name {CommandName} --command-payload {CommandPayload or FilePath}
+az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
-#### <a name="telemetry"></a>Telemetri
+#### <a name="digital-twin-events"></a>Dijital ikizi olayları
 
-Belirli bir cihazdan ve arabiriminden **$Default** Olay Hub 'ı uç noktasına giden tüm IoT Tak ve kullan telemetrilerini izleyin:
+Belirli bir cihazdan ve **$Default** Olay Hub 'ı tüketici grubuna giden arabirimden tüm IoT Tak ve kullan dijital ikizi olaylarını izleyin:
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
-Belirli bir cihazdan ve belirli bir tüketici grubuna giden arabirimden tüm IoT Tak ve Kullan telemetrilerini izleyin:
+Belirli bir cihazdan ve belirli bir tüketici grubuna giden arabirimden tüm IoT Tak ve Kullan dijital ikizi olaylarını izleyin:
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString} --consumer-group {YourConsumerGroup}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
 ### <a name="manage-interfaces-in-a-model-repository"></a>Bir model deposundaki arabirimleri yönetme
 
-Aşağıdaki komutlar, genel IoT Tak ve Kullan modeli havuzunu kullanır. Bir şirket modeli deposu kullanmak için, model deposu `--login` bağlantı dizeniz ile bağımsız değişkeni ekleyin.
+Aşağıdaki komutlar, genel IoT Tak ve Kullan modeli havuzunu kullanır. Bir şirket modeli deposu kullanmak için, model deposu bağlantı dizeniz ile `--login` bağımsız değişkenini ekleyin.
 
 Genel IoT Tak ve Kullan modeli deposundaki arabirimleri listeleyin:
 
@@ -190,7 +190,7 @@ Yalnızca Microsoft iş ortakları, genel model deposuna arabirim yayımlayabili
 
 ### <a name="manage-device-capability-models-in-a-model-repository"></a>Bir model deposundaki cihaz yetenek modellerini yönetme
 
-Aşağıdaki komutlar, genel IoT Tak ve Kullan modeli havuzunu kullanır. Bir şirket modeli deposu kullanmak için, model deposu `--login` bağlantı dizeniz ile bağımsız değişkeni ekleyin.
+Aşağıdaki komutlar, genel IoT Tak ve Kullan modeli havuzunu kullanır. Bir şirket modeli deposu kullanmak için, model deposu bağlantı dizeniz ile `--login` bağımsız değişkenini ekleyin.
 
 IoT Tak ve Kullan ortak model deposundaki cihaz yetenek modellerini listeleyin:
 

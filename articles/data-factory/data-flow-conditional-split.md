@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory eşleme veri akışında koşullu bölünmüş dönüşüm | Microsoft Docs
+title: Azure Data Factory eşleme veri akışında koşullu bölünmüş dönüşüm
 description: Azure Data Factory eşleme veri akışındaki koşullu bölünmüş dönüştürmeyi kullanarak verileri farklı akışlara bölme
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 2d794714f27340e8886843988b6c075dd8d3366e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9ace415aa725a82d8feda5702d25d7e5ff9875d9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72527430"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676823"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Eşleme veri akışında koşullu bölünmüş dönüştürme
 
@@ -42,7 +42,7 @@ Bölünmüş koşul için bir ifade girmek üzere veri akışı ifade oluşturuc
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen akış `CleanData` alan `SplitByYear` adlı koşullu bölünmüş dönüşümdir. Bu dönüşüme `year < 1960` ve `year > 1980` iki bölme koşulu vardır. veriler ilk eşleşen koşula ulaştığı için `disjoint` false. İlk koşulla eşleşen her satır, çıkış akışına `moviesBefore1960` gider. İkinci koşulla eşleşen tüm kalan satırlar çıkış akışı `moviesAFter1980` gider. Varsayılan akış `AllOtherMovies` tüm diğer satırlar akar.
+Aşağıdaki örnek, gelen akış `CleanData`alan `SplitByYear` adlı koşullu bölünmüş dönüşümdir. Bu dönüşüme `year < 1960` ve `year > 1980`iki bölme koşulu vardır. veriler ilk eşleşen koşula ulaştığı için `disjoint` false. İlk koşulla eşleşen her satır, çıkış akışına `moviesBefore1960`gider. İkinci koşulla eşleşen tüm kalan satırlar çıkış akışı `moviesAFter1980`gider. Varsayılan akış `AllOtherMovies`tüm diğer satırlar akar.
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 

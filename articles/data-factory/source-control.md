@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory kaynak denetimi | Microsoft Docs
+title: Azure Data Factory kaynak denetimi
 description: Azure Data Factory 'da kaynak denetimini yapılandırmayı öğrenin
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: f3d443eed43cc1e131cd3dc47407ce2dfb023ce8
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 46c983fcf863c6948c6107b2213879c65396ed39
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326389"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684036"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
 
@@ -75,8 +75,8 @@ Yapılandırma bölmesinde aşağıdaki Azure Repos kod deposu ayarları göster
 |:--- |:--- |:--- |
 | **Depo türü** | Azure Repos kod deposunun türü.<br/> | Azure DevOps git veya GitHub |
 | **Azure Active Directory** | Azure AD kiracı adınız. | `<your tenant name>` |
-| **Azure Repos kuruluş** | Azure Repos kuruluşunuzun adı. Azure Repos kuruluşunuzun adını `https://{organization name}.visualstudio.com` ' da bulabilirsiniz. Visual Studio profilinize erişmek ve depolarınızı ve projelerinizi görmek için [Azure Repos kuruluşunuzda oturum](https://www.visualstudio.com/team-services/git/) açabilirsiniz. | `<your organization name>` |
-| **ProjectName** | Azure Repos projenizin adı. Azure Repos projenizin adını `https://{organization name}.visualstudio.com/{project name}` ' da bulabilirsiniz. | `<your Azure Repos project name>` |
+| **Azure Repos kuruluş** | Azure Repos kuruluşunuzun adı. Azure Repos kuruluşunuzun adını `https://{organization name}.visualstudio.com`adresinde bulabilirsiniz. Visual Studio profilinize erişmek ve depolarınızı ve projelerinizi görmek için [Azure Repos kuruluşunuzda oturum](https://www.visualstudio.com/team-services/git/) açabilirsiniz. | `<your organization name>` |
+| **ProjectName** | Azure Repos projenizin adı. Azure Repos projenizin adını `https://{organization name}.visualstudio.com/{project name}`adresinde bulabilirsiniz. | `<your Azure Repos project name>` |
 | **RepositoryName** | Azure Repos kod deposu adınız. Azure Repos projeler, projeniz büyüdükçe kaynak kodunuzu yönetmek için Git depoları içerir. Yeni bir depo oluşturabilir veya projenizde zaten var olan bir depoyu kullanabilirsiniz. | `<your Azure Repos code repository name>` |
 | **İşbirliği dalı** | Yayımlamak için kullanılan Azure Repos işbirliği dalı. Varsayılan olarak, `master`. Başka bir daldan kaynak yayınlamak istiyorsanız bu ayarı değiştirin. | `<your collaboration branch name>` |
 | **Kök klasör** | Azure Repos işbirliği dalınızdaki kök klasörünüz. | `<your root folder name>` |
@@ -106,7 +106,7 @@ Kuruluşunuzun Active Directory Azure Repos bağlama hakkında daha fazla bilgi 
 
 ## <a name="author-with-github-integration"></a>GitHub tümleştirmesiyle yazar
 
-GitHub tümleştirmesiyle Visual Authoring, Veri Fabrikası işlem hatlarınız üzerinde iş için kaynak denetimi ve işbirliğini destekler. Kaynak denetimi, işbirliği ve sürüm oluşturma için bir GitHub hesap deposuyla bir veri fabrikasını ilişkilendirebilirsiniz. Tek bir GitHub hesabının birden çok deposu olabilir, ancak bir GitHub deposu yalnızca bir veri fabrikası ile ilişkilendirilebilir. GitHub hesabınız veya deponuz yoksa, kaynaklarınızı oluşturmak için  olan [Bu yönergeleri](https://github.com/join)izleyin.
+GitHub tümleştirmesiyle Visual Authoring, Veri Fabrikası işlem hatlarınız üzerinde iş için kaynak denetimi ve işbirliğini destekler. Kaynak denetimi, işbirliği ve sürüm oluşturma için bir GitHub hesap deposuyla bir veri fabrikasını ilişkilendirebilirsiniz. Tek bir GitHub hesabının birden çok deposu olabilir, ancak bir GitHub deposu yalnızca bir veri fabrikası ile ilişkilendirilebilir. GitHub hesabınız veya deponuz yoksa kaynaklarınızı oluşturmak için [Bu yönergeleri](https://github.com/join) izleyin.
 
 Data Factory ile GitHub tümleştirmesi hem genel GitHub (yani, [https://github.com](https://github.com)) hem de GitHub Enterprise 'u destekler. GitHub 'daki depoya okuma ve yazma izniniz olduğu sürece hem ortak hem de özel GitHub depolarını Data Factory ile birlikte kullanabilirsiniz.
 
@@ -143,7 +143,7 @@ Yapılandırma bölmesinde aşağıdaki GitHub deposu ayarları gösterilmektedi
 | **Depo türü** | Azure Repos kod deposunun türü. | GitHub |
 | **GitHub Enterprise kullanma** | GitHub Enterprise 'ı seçme onay kutusu | seçilmemiş (varsayılan) |
 | **GitHub Enterprise URL 'SI** | GitHub Enterprise root URL 'SI. Örneğin: https://github.mydomain.com. Yalnızca **GitHub Enterprise kullan** seçilirse gereklidir | `<your GitHub enterprise url>` |                                                           
-| **GitHub hesabı** | GitHub hesabınızın adı. Bu ad https 'den bulunabilir: \//GitHub. com/{hesap adı}/{Repository adı}. Bu sayfaya gidildiğinde GitHub hesabınıza GitHub OAuth kimlik bilgilerini girmeniz istenir. | `<your GitHub account name>` |
+| **GitHub hesabı** | GitHub hesabınızın adı. Bu ad https 'den bulunabilir:\//GitHub.exe com/{Account Name}/{Repository Name}. Bu sayfaya gidildiğinde GitHub hesabınıza GitHub OAuth kimlik bilgilerini girmeniz istenir. | `<your GitHub account name>` |
 | **Depo adı**  | GitHub kod deposu adınız. GitHub hesapları, kaynak kodunuzu yönetmek için Git depoları içerir. Yeni bir depo oluşturabilir veya hesabınızda zaten var olan bir depoyu kullanabilirsiniz. | `<your repository name>` |
 | **İşbirliği dalı** | Yayımlamak için kullanılan GitHub işbirliği dalınız. Varsayılan olarak, ana. Başka bir daldan kaynak yayınlamak istiyorsanız bu ayarı değiştirin. | `<your collaboration branch>` |
 | **Kök klasör** | GitHub işbirliği dalınızdaki kök klasörünüz. |`<your root folder name>` |
@@ -186,7 +186,7 @@ Bir veri fabrikası ile ilişkili her bir Azure Repos git deposu bir işbirliği
 
 ### <a name="configure-publishing-settings"></a>Yayımlama ayarlarını yapılandırma
 
-Yayımla dalını yapılandırmak için-diğer bir deyişle, Kaynak Yöneticisi şablonlarının kaydedildiği dal-işbirliği dalında kök klasöre bir `publish_config.json` dosyası ekleyin. Data Factory, bu dosyayı okur, `publishBranch` alanını arar ve belirtilen değere sahip yeni bir dal (zaten yoksa) oluşturur. Ardından, tüm Kaynak Yöneticisi şablonlarını belirtilen konuma kaydeder. Örnek:
+Yayımla dalını yapılandırmak için-diğer bir deyişle, Kaynak Yöneticisi şablonlarının kaydedildiği dal-işbirliği dalında kök klasöre bir `publish_config.json` dosyası ekleyin. Data Factory, bu dosyayı okur, alanı `publishBranch`arar ve belirtilen değere sahip yeni bir dal (zaten yoksa) oluşturur. Ardından, tüm Kaynak Yöneticisi şablonlarını belirtilen konuma kaydeder. Örneğin:
 
 ```json
 {
@@ -197,11 +197,11 @@ Yayımla dalını yapılandırmak için-diğer bir deyişle, Kaynak Yöneticisi 
 Yeni bir yayımlama dalı belirttiğinizde, Data Factory önceki yayımlama dalını silmez. Önceki yayımlama dalını uzak yapmak istiyorsanız el ile silin.
 
 > [!NOTE]
-> Data Factory, fabrikası yüklerken yalnızca `publish_config.json` dosyasını okur. Portalda zaten fabrika yüklüyse, değişikliklerinizin geçerli olması için tarayıcıyı yenileyin.
+> Data Factory, fabrikası yüklerken yalnızca `publish_config.json` dosyayı okur. Portalda zaten fabrika yüklüyse, değişikliklerinizin geçerli olması için tarayıcıyı yenileyin.
 
 ### <a name="publish-code-changes"></a>Kod değişikliklerini Yayımla
 
-İşbirliği dalındaki değişiklikleri (`master` varsayılandır) birleştirdikten sonra, kod değişikliklerinizi ana dalda Data Factory hizmetine el ile yayımlamak için **Yayımla** ' ya tıklayın.
+İşbirliği dalındaki değişiklikleri (`master` varsayılan) birleştirdikten sonra, kod değişikliklerinizi ana dalda Data Factory hizmetine el ile yayımlamak için **Yayımla** ' ya tıklayın.
 
 ![Değişiklikleri Data Factory hizmette yayımlayın](media/author-visually/publish-changes.png)
 
@@ -251,7 +251,7 @@ Yayımla dalı ana Dalla eşitlenmemiş ve son bir yayımlamaya rağmen güncel 
 1. İşbirliği dalınızdan tüm kaynakları silme
 1. İşbirliği dalında yapılan değişiklikleri birleştirmek için bir çekme Isteği oluşturun 
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 Özellikler hakkında yorum yapmak veya araçla ilgili sorunları bildirmek için **geri bildirim** ' ı seçin:
 
 ![Geri Bildirim](media/author-visually/provide-feedback.png)

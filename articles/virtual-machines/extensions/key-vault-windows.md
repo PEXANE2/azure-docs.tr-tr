@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 43c4b363f223c61bac3d3f7dbd272519a0cd014d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7c730ad3f14cc26cd1251b497ef2d146fe99e448
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899036"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584362"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows için Key Vault sanal makine uzantısı
 
@@ -59,21 +59,21 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
 ```
 
 > [!NOTE]
-> Gözlemlenen sertifika URL 'lerinizin `https://myVaultName.vault.azure.net/secrets/myCertName` biçiminde olması gerekir.
+> Gözlemlenen sertifikalarınızın URL 'Leri `https://myVaultName.vault.azure.net/secrets/myCertName`biçiminde olmalıdır.
 > 
 > Bunun nedeni, `/secrets` yolunun özel anahtar dahil olmak üzere tam sertifikayı döndürdüğünden `/certificates` yolu değildir. Sertifikalar hakkında daha fazla bilgi için şurada bulunabilir: [Key Vault sertifikaları](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek | Veri Türü |
+| Ad | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | 'ın | Microsoft. Azure. Keykasa. EDP | string |
 | type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
-| Pollingınterinterval bileşenleri | 3600 | int |
+| Pollingınterinterval bileşenleri | 3600 | string |
 | certificateStoreName | MY | string |
-| Linkonyenilemeye | yanlış | boole |
+| Linkonyenilemeye | false | boole |
 | certificateStoreLocation  | LocalMachine | string |
 | requiredInitialSync | doğru | boole |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | dize dizisi

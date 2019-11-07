@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Sync ayarlama | Microsoft Docs
+title: Azure SQL Data Sync’i ayarlama
 description: Bu öğreticide, Azure SQL Data Sync ayarlama gösterilmektedir
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 37b8f64360e871236be7a8623460bbe75bd1d8b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 082721ef1436d0b6668016aca29870016038af86
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568166"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689982"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Öğretici: Azure SQL veritabanı ve şirket içi SQL Server arasında SQL Data Sync ayarlama
 
@@ -31,7 +31,7 @@ SQL Data Sync nasıl yapılandırılacağı hakkında PowerShell örnekleri içi
 > [!IMPORTANT]
 > Azure SQL Data Sync Şu anda Azure SQL veritabanı yönetilen **örneğini desteklemez.**
 
-## <a name="create-sync-group"></a>Eşitleme grubu oluşturma
+## <a name="create-sync-group"></a>Eşitleme grubu oluştur
 
 1. Tarayıcıda Azure portal gidin. Panodan SQL veritabanınızı bulun veya araç çubuğunda **SQL veritabanları** simgesini seçin ve **SQL veritabanları** sayfasında veri eşitleme için merkez veritabanı olarak kullanmak istediğiniz veritabanını seçin.
 
@@ -60,7 +60,7 @@ SQL Data Sync nasıl yapılandırılacağı hakkında PowerShell örnekleri içi
 
    **Tamam** ' ı seçin ve eşitleme grubunun oluşturulmasını ve dağıtılmasını bekleyin.
 
-## <a name="add-sync-members"></a>Eşitleme üyesi ekleme
+## <a name="add-sync-members"></a>Eşitleme üyeleri Ekle
 
 Yeni eşitleme grubu oluşturulup dağıtıldıktan sonra, **eşitleme üyeleri Ekle (2. adım)** , **Yeni eşitleme grubu** sayfasında vurgulanır.
 
@@ -147,7 +147,7 @@ Yeni eşitleme grubu oluşturulup dağıtıldıktan sonra, **eşitleme üyeleri 
 > [!NOTE]
 > SQL Data Sync ve yerel aracısına bağlanmak için Kullanıcı adınızı *DataSync_Executor*rolüne ekleyin. Veri eşitleme, bu rolü SQL Server örneğinde oluşturur.
 
-## <a name="configure-sync-group"></a>Eşitleme grubunu yapılandırma
+## <a name="configure-sync-group"></a>Eşitleme grubunu yapılandır
 
 Yeni eşitleme grubu üyeleri oluşturulup dağıtıldıktan sonra, **eşitleme grubunu yapılandırın (3. adım)** , **Yeni eşitleme grubu** sayfasında vurgulanır.
 

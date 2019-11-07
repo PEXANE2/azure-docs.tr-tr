@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 60d5b8197e142306a51922ce0e042ed2463457d6
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5991d3d2197822b239b946de66f020dd258f835a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301236"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584372"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux için sanal makine uzantısı Key Vault
 
@@ -59,22 +59,22 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 ```
 
 > [!NOTE]
-> Gözlemlenen sertifika URL 'lerinizin `https://myVaultName.vault.azure.net/secrets/myCertName` biçiminde olması gerekir.
+> Gözlemlenen sertifikalarınızın URL 'Leri `https://myVaultName.vault.azure.net/secrets/myCertName`biçiminde olmalıdır.
 > 
 > Bunun nedeni, `/secrets` yolunun özel anahtar dahil olmak üzere tam sertifikayı döndürdüğünden `/certificates` yolu değildir. Sertifikalar hakkında daha fazla bilgi için şurada bulunabilir: [Key Vault sertifikaları](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek | Veri Türü |
+| Ad | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | 'ın | Microsoft. Azure. Keykasa. EDP | string |
 | type | KeyVaultForLinux | string |
 | typeHandlerVersion | 1.0 | int |
-| Pollingınterinterval bileşenleri | 3600 | int |
+| Pollingınterinterval bileşenleri | 3600 | string |
 | certificateStoreName | MY | string |
-| Linkonyenilemeye | yanlış | boole |
+| Linkonyenilemeye | false | boole |
 | certificateStoreLocation  | LocalMachine | string |
 | requiredInitialSync | doğru | boole |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | dize dizisi
@@ -84,7 +84,7 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 
 Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. Sertifikaların dağıtım sonrası yenilenmesini gerektiren bir veya daha fazla sanal makine dağıtıldığında şablonlar idealdir. Uzantı ayrı VM 'lere veya sanal makine ölçek kümelerine dağıtılabilir. Şema ve yapılandırma her iki şablon türü için ortaktır. 
 
-Bir sanal makine uzantısının JSON yapılandırması, şablonun sanal makine kaynak parçasının içinde iç içe, özellikle de sanal makine şablonu için `"resources": []` nesnesi ve `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` nesnesi altında sanal makine ölçek kümesi olması gerekir.
+Bir sanal makine uzantısının JSON yapılandırması, şablonun sanal makine kaynak parçasının içinde iç içe, özellikle sanal makine şablonu için nesne `"resources": []` ve `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` nesnesi altında sanal makine ölçek kümesi olması gerekir.
 
 ```json
     {

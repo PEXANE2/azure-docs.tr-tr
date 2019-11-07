@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Azure SQL veri ambarı 'nda işlem ölçeğini genişletme-Azure portal | Microsoft Docs"
+title: 'Hızlı başlangıç: ölçek işlem-Azure portal '
 description: Azure portalından Azure SQL Veri Ambarı’nda işlemi ölçeklendirin. Daha iyi performans için işlem ölçeğini genişletin veya maliyet tasarrufu için işlem ölçeğini daraltın.
 services: sql-data-warehouse
 author: Antvgski
@@ -10,14 +10,15 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4197d7a4724199f8c42fc09a6d1ed18af46cc4f8
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 59d929165ac9618d68707e2f13741e7bbba7b37f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575366"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685968"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portal Azure SQL veri ambarı 'nda işlem ölçeğini ölçeklendirme
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portalından Azure SQL Veri Ambarı’nda işlemi ölçeklendirme
 
 Azure portalından Azure SQL Veri Ambarı’nda işlemi ölçeklendirin. Daha iyi performans için [işlem ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu için işlem ölçeğini daraltın. 
 
@@ -25,7 +26,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -50,7 +51,7 @@ Veri ambarı birimlerini değiştirmek için:
 
     ![Kaydırıcıyı Taşıyın](media/quickstart-scale-compute-portal/scale-dwu.png)
 
-3. **Kaydet**’e tıklayın. Bir onay iletisi görüntülenir. Onaylamak için **evet**’e, iptal etmek için **hayır**’a tıklayın.
+3. **Kaydet** düğmesine tıklayın. Bir onay iletisi görüntülenir. Onaylamak için **evet**’e, iptal etmek için **hayır**’a tıklayın.
 
     ![Kaydet’e tıklayın.](media/quickstart-scale-compute-portal/confirm-change.png)
 

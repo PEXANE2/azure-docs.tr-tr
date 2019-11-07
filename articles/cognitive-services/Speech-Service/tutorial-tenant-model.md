@@ -1,7 +1,7 @@
 ---
 title: Kiracı modeli oluşturma (Önizleme)-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Hem güvenli hem de uyumlu kuruluşa özgü terimler için en iyi konuşma tanımayı sunmak üzere Office365 verilerinizi kullanan özel bir konuşma modeli oluşturun.
+description: Hem güvenli hem de uyumlu olan kuruluşa özgü terimler için en iyi konuşma tanıma sunmak üzere Office 365 verilerinizi kullanan bir kiracı modelini (Office 365 verileriyle Özel Konuşma Tanıma) otomatik olarak oluşturun.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 85b9291ee24c024ebc8ce81ddba46d04f7744081
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502663"
+ms.locfileid: "73578230"
 ---
 # <a name="create-a-tenant-model-preview"></a>Kiracı modeli oluşturma (Önizleme)
 
-Kiracı modeli, kuruluşunuzun Office365 verilerinden otomatik olarak özel bir konuşma tanıma modeli oluşturan Office365 kurumsal müşterilerine yönelik bir katılım hizmetidir. Oluşturulan model teknik şartlar, öğretmek ve insanların adları için en iyi duruma getirilmiştir, güvenli ve uyumlu bir şekilde yapılır.
+Kiracı modeli (Office 365 verileriyle Özel Konuşma Tanıma), kuruluşunuzun Office365 verilerinden otomatik olarak özel bir konuşma tanıma modeli üreten Office 365 kurumsal müşterilerine yönelik bir katılım hizmetidir. Oluşturulan model teknik şartlar, öğretmek ve insanların adları için en iyi duruma getirilmiştir, güvenli ve uyumlu bir şekilde yapılır.
 
 > [!IMPORTANT]
-> Kuruluşunuzun kiracı modeliyle ilgili olması halinde konuşma hizmeti, e-posta ve belgeler gibi Office 365 kaynakları tarafından oluşturulan kuruluşunuzun dil modeline erişebilir. Kuruluşunuzun Office 365 Yöneticisi, Office 365 Yönetici portalını kullanarak kuruluş genelindeki dil modelinin kullanımını kapatabilir/kapatabilir.
+> Kuruluşunuzun kiracı modeliyle ilgili olması halinde konuşma hizmeti, kuruluşunuzun Office 365 Genel Grup e-postalarından ve kuruluşunuzdaki herkes tarafından görülemeyen belgelerden oluşturulan dil modeline erişebilir. Kuruluşunuzun Office 365 Yöneticisi, Office 365 Yönetici portalını kullanarak kuruluş genelindeki dil modelinin kullanımını kapatabilir/kapatabilir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -33,8 +33,6 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Kiracı modeli dağıtma
 > * Konuşma SDK 'Sı ile kiracı modeli kullanma
 
-![Kiracı modeli diyagramı](media/tenant-language-model/tenant-language-model-diagram.png)
-
 ## <a name="enroll-using-the-microsoft-365-admin-center"></a>Microsoft 365 Yönetim merkezini kullanarak kaydetme
 
 Kiracı modelinizi dağıtabilmeniz için önce Microsoft 365 Yönetim merkezini kullanarak kaydetmeniz gerekir. Bu görev yalnızca Microsoft 365 yöneticiniz tarafından tamamlanabilir.
@@ -42,11 +40,11 @@ Kiracı modelinizi dağıtabilmeniz için önce Microsoft 365 Yönetim merkezini
 1. [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com )oturum açın.
 2. Sol bölmede **Ayarlar** ve **uygulamalar**' ı seçin.
 
-   ![Kiracı modeli diyagramı](media/tenant-language-model/tenant-language-model-enrollment.png)
+   ![Kiracı modeli kaydı](media/tenant-language-model/tenant-language-model-enrollment.png)
 
 3. **Azure konuşma Hizmetleri**' ni bulun ve seçin.
 
-   ![Kiracı modeli diyagramı](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+   ![Kiracı modeli kaydı 2](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
 4. Onay kutusuna tıklayın ve kaydedin.
 
@@ -77,9 +75,10 @@ Yöneticiniz kuruluşunuz için kiracı modelini etkinleştirdikten sonra, Offic
 
 3. Bu noktada, bir kiracı modeli oluşturmak için uygun olup olmadığını bilmenizi sağlayan bir ileti görürsünüz.
    > [!NOTE]
-   > Kuzey Amerika 'de Office 365 Kurumsal müşterileri bir kiracı modeli (Ingilizce) oluşturmaya uygundur. Bir Müşteri Kasası (CLB) veya müşteri anahtarı (CK) müşterisiyseniz, bu özellik kullanılamaz. Müşteri Kasası veya müşteri anahtarı müşterisi olup olmadığınızı öğrenmek için şu yönergeleri izleyin:
+   > Kuzey Amerika 'de Office 365 Kurumsal müşterileri bir kiracı modeli (Ingilizce) oluşturmaya uygundur. Müşteri Kasası (CLB), müşteri anahtarı (CK) veya Office 365 Kamu müşterisiyseniz bu özellik kullanılamaz. Müşteri Kasası veya müşteri anahtarı müşterisi olup olmadığınızı öğrenmek için şu yönergeleri izleyin:
    > * [Müşteri Kasası](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
    > * [Müşteri anahtarı](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
+   > * [Office 365 Kamu](https://www.microsoft.com/microsoft-365/government)
 
 4. Ardından **kabul**et ' i seçin. Kiracı modeliniz hazırlanmaya yönelik yönergeler içeren bir e-posta alacaksınız.
 

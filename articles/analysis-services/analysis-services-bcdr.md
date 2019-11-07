@@ -1,18 +1,18 @@
 ---
 title: Yüksek kullanılabilirlik Azure Analysis Services | Microsoft Docs
-description: Yüksek kullanılabilirlik Azure Analysis Services.
+description: Bu makalede, Azure Analysis Services hizmet kesintisi sırasında yüksek kullanılabilirlik sağlar.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 151739c77939ab98b0cdca6d75692267ef0d4385
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 2e750dce804ea93f3d3068ffd36bc7a73a50906a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295320"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573352"
 ---
 # <a name="analysis-services-high-availability"></a>Yüksek kullanılabilirlik Analysis Services
 
@@ -33,6 +33,6 @@ Raporlama istemcilerinde bağlantı dizelerini değiştirmek zorunda kalmamak i�
 ## <a name="related-information"></a>İlgili bilgiler
 
 [Yedekleme ve geri yükleme](analysis-services-backup.md)   
-[Azure Analysis Services @no__t Yönet](analysis-services-manage.md)-1  
+[Azure Analysis Services  Yönet](analysis-services-manage.md)  
 [Diğer ad sunucu adları](analysis-services-server-alias.md) 
 

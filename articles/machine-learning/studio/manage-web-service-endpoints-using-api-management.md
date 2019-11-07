@@ -1,6 +1,6 @@
 ---
 title: API Management kullanarak Web hizmetlerini yönetme
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: API Management kullanarak AzureML Web hizmetlerini yönetmeyi gösteren kılavuz. Kullanıcı erişimi, kullanım azaltma ve Pano izlemeyi tanımlayarak REST API uç noktalarınızı yönetin.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 60f890912874cfda993ae45f84fa3d1c04503d00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 227a7205788194cc507dcd9dab7e5cad57abc7f9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489253"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671584"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management kullanarak Azure Machine Learning Studio (klasik) Web hizmetlerini yönetme
 ## <a name="overview"></a>Genel Bakış
@@ -24,12 +24,12 @@ Bu kılavuzda, Azure Machine Learning Studio (klasik) Web hizmetlerinizi yönetm
 ## <a name="what-is-azure-api-management"></a>Azure API Management nedir?
 Azure API Management, Kullanıcı erişimi, kullanım azaltma ve Pano izlemeyi tanımlayarak REST API uç noktalarınızı yönetmenize olanak tanıyan bir Azure hizmetidir. Daha fazla bilgi için bkz. [Azure API Management sitesi](https://azure.microsoft.com/services/api-management/) . Azure API Management kullanmaya başlamak için [içeri aktarma ve yayımlama kılavuzuna](/azure/api-management/import-and-publish)bakın. Bu kılavuzun temel aldığı bu diğer kılavuz, bildirim konfigürasyonları, katman fiyatlandırması, yanıt işleme, Kullanıcı kimlik doğrulaması, ürün oluşturma, geliştirici abonelikleri ve kullanım oluşturmasının dahil olduğu daha fazla konuyu ele alır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu kılavuzu gerçekleştirmek için şunlar gerekir:
 
 * Bir Azure hesabı.
 * Bir AzureML hesabı.
-* Web hizmeti olarak dağıtılan bir AzureML denemesinde çalışma alanı, hizmet ve api_key. Bir AzureML denemesi oluşturma hakkında ayrıntılı bilgi için bkz. [Studio hızlı](create-experiment.md)başlangıcı. Bir Web hizmeti olarak bir Studio (klasik) denemesinin nasıl dağıtılacağı hakkında bilgi için bkz. bir Web hizmeti olarak bir AzureML denemesinin nasıl dağıtılacağı hakkında ayrıntılı bilgi için bkz. [Studio dağıtımı nasıl yapılır](publish-a-machine-learning-web-service.md) . Alternatif olarak, ek A basit bir AzureML denemesi oluşturma ve test etme ve bir Web hizmeti olarak dağıtma yönergelerini içerir.
+* Web hizmeti olarak dağıtılan bir AzureML denemesinde çalışma alanı, hizmet ve api_key. Bir AzureML denemesi oluşturma hakkında ayrıntılı bilgi için bkz. [Studio hızlı](create-experiment.md)başlangıcı. Bir Web hizmeti olarak bir Studio (klasik) denemesinin nasıl dağıtılacağı hakkında bilgi için bkz. bir Web hizmeti olarak bir AzureML denemesinin nasıl dağıtılacağı hakkında ayrıntılı bilgi için bkz. [Studio dağıtımı nasıl yapılır](deploy-a-machine-learning-web-service.md) . Alternatif olarak, ek A basit bir AzureML denemesi oluşturma ve test etme ve bir Web hizmeti olarak dağıtma yönergelerini içerir.
 
 ## <a name="create-an-api-management-instance"></a>API Management örneği oluşturma
 

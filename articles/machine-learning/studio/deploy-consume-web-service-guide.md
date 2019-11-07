@@ -1,6 +1,6 @@
 ---
 title: Dağıtım ve tüketim
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Makine öğrenimi iş akışlarını ve modellerini Web Hizmetleri olarak dağıtmak için Azure Machine Learning Studio (klasik) kullanabilirsiniz. Bu Web Hizmetleri daha sonra, gerçek zamanlı veya toplu işlem modunda tahmine dayalı olarak, makine öğrenimi modellerini Internet üzerinden uygulamalardan çağırmak için kullanılabilir.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: bf169a9b7064bd83caf0c9f8ec6dd6dd55894d67
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 47cd04615919fcc9db757ed4b9e8fd06eb297592
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493010"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684829"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri: dağıtım ve tüketim
 
@@ -31,8 +31,8 @@ Studio (klasik) portalı ve Microsoft Azure Machine Learning Web Hizmetleri port
 
 Aşağıdaki bağlantılar, yeni bir Web hizmetinin nasıl dağıtılacağı hakkında genel bilgiler sağlar:
 
-* Azure Resource Manager tabanlı yeni bir Web hizmetinin nasıl dağıtılacağı hakkında genel bir bakış için, bkz. [Yeni bir Web hizmeti dağıtma](publish-a-machine-learning-web-service.md).
-* Web hizmetinin nasıl dağıtılacağı hakkında bir anlatım için bkz. [Azure Machine Learning Web hizmeti dağıtma](publish-a-machine-learning-web-service.md).
+* Azure Resource Manager tabanlı yeni bir Web hizmetinin nasıl dağıtılacağı hakkında genel bir bakış için, bkz. [Yeni bir Web hizmeti dağıtma](deploy-a-machine-learning-web-service.md).
+* Web hizmetinin nasıl dağıtılacağı hakkında bir anlatım için bkz. [Azure Machine Learning Web hizmeti dağıtma](deploy-a-machine-learning-web-service.md).
 * Bir Web hizmeti oluşturma ve dağıtma hakkında tam bir anlatım için [öğretici 1: kredi riskini tahmin](tutorial-part1-credit-risk.md)edin ' i kullanmaya başlayın.
 * Web hizmeti dağıtan belirli örnekler için bkz.:
 
@@ -87,13 +87,13 @@ Ek ayrıntılar için aşağıdaki makalelere ve örnek koda bakın:
 
 Web hizmetinizi Azure Machine Learning Web Hizmetleri portalından test edebilirsiniz. Bu, Istek-yanıt hizmeti (RR) ve toplu yürütme hizmeti (BES) arabirimlerinin test edilmesini içerir.
 
-* [Yeni bir web hizmeti dağıtma](publish-a-machine-learning-web-service.md)
-* [Azure Machine Learning Web hizmeti dağıtma](publish-a-machine-learning-web-service.md)
+* [Yeni bir web hizmeti dağıtma](deploy-a-machine-learning-web-service.md)
+* [Azure Machine Learning Web hizmeti dağıtma](deploy-a-machine-learning-web-service.md)
 * [Öğretici 3: Kredi risk modelini dağıtma](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Excel 'den
 
-Web hizmetini tüketen bir Excel şablonu indirebilirsiniz:
+Web hizmeti bir Excel şablonu indirebilirsiniz:
 
 * [Excel 'den bir Azure Machine Learning Web hizmeti kullanma](consuming-from-excel.md)
 * [Azure Machine Learning Web Hizmetleri için Excel eklentisi](excel-add-in-for-web-services.md)

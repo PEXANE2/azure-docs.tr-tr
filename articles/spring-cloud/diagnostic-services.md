@@ -1,20 +1,17 @@
 ---
 title: Azure yay bulutu 'nda günlükleri ve ölçümleri çözümleme | Microsoft Docs
 description: Azure Spring Cloud 'da tanılama verilerini çözümlemeyi öğrenin
-services: spring-cloud
 author: jpconnock
-manager: gwallace
-editor: ''
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 955641f3511989baa5bfc3c0fa4d7df7ccbf9bfa
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ebe438bd2dc5b4921ce733001f3c9df19bc592fe
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554585"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607852"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c3d07c95592c1c43a070afbbf5091693ce0a6611
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: adcaa29ed894f2d61871f467369bcdd05f8cc593
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950359"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601612"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda cihazları yönetme
 
@@ -21,7 +21,7 @@ ms.locfileid: "72950359"
 
 Bu makalede, Azure IoT Central uygulamanızdaki cihazları yönetmek için bir operatör olarak nasıl yapılacağı açıklanır. Bir işleç olarak şunları yapabilirsiniz:
 
-- Azure IoT Central uygulamanıza bağlı cihazları görüntülemek, eklemek ve silmek için **Device Explorer** sayfasını kullanın.
+- Azure IoT Central uygulamanıza bağlı cihazları görüntülemek, eklemek ve silmek için **cihazlar** sayfasını kullanın.
 - Cihazlarınızın güncel envanterini saklayın.
 - Cihaz özelliklerinde depolanan değerleri değiştirerek cihaz meta verilerinizi güncel tutun.
 - **Ayarlar** sayfasından belirli bir cihazdaki bir ayarı güncelleştirerek cihazlarınızın davranışını denetleyin.
@@ -30,11 +30,11 @@ Bu makalede, Azure IoT Central uygulamanızdaki cihazları yönetmek için bir o
 
 Tek bir cihazı görüntülemek için:
 
-1. Sol bölmedeki **Device Explorer** seçin. Burada, [cihaz şablonlarınızın](howto-set-up-template.md)bir listesini görürsünüz.
+1. Sol bölmedeki **cihazlar** ' ı seçin. Burada, [cihaz şablonlarınızın](howto-set-up-template.md)bir listesini görürsünüz.
 
 1. **Şablonlar** listesinden bir cihaz şablonu seçin.
 
-1. **Device Explorer** sayfanın sağ bölmesinde, bu cihaz şablonundan oluşturulan cihazların bir listesini görürsünüz. Bu cihaz için cihaz ayrıntıları sayfasını görmek için tek bir cihaz seçin:
+1. **Cihazlar** sayfasının sağ bölmesinde, bu cihaz şablonundan oluşturulan cihazların bir listesini görürsünüz. Bu cihaz için cihaz ayrıntıları sayfasını görmek için tek bir cihaz seçin:
 
     ![Cihaz ayrıntıları sayfası](./media/howto-manage-devices/devicelist.png)
 
@@ -42,7 +42,7 @@ Tek bir cihazı görüntülemek için:
 
 Azure IoT Central uygulamanıza bir cihaz eklemek için:
 
-1. Sol bölmedeki **Device Explorer** seçin.
+1. Sol bölmedeki **cihazlar** ' ı seçin.
 
 1. Cihaz oluşturmak istediğiniz cihaz şablonunu seçin.
 
@@ -59,7 +59,7 @@ Azure IoT Central uygulamanıza bir cihaz eklemek için:
 
 Uygulamanızdaki cihazları toplu olarak kaydetmek için:
 
-1. Sol bölmedeki **Device Explorer** seçin.
+1. Sol bölmedeki **cihazlar** ' ı seçin.
 
 1. Sol bölmede, cihazlarını toplu olarak oluşturmak istediğiniz cihaz şablonunu seçin.
 
@@ -84,7 +84,7 @@ Cihaz içeri aktarma işlemi başarısız olursa, cihaz kılavuzunda bir hata il
 
 **İlişkilendirilmemiş cihazlarda**içeri aktarma işlemi başlatarak cihazları kaydedersiniz, cihazlar herhangi bir cihaz şablonu ilişkilendirmesi olmadan oluşturulur. Cihazların verileri ve cihazla ilgili diğer ayrıntıları araştırmak için bir şablonla ilişkilendirilmesi gerekir. Cihazları bir şablonla ilişkilendirmek için aşağıdaki adımları izleyin:
 
-1. Sol bölmedeki **Device Explorer** seçin.
+1. Sol bölmedeki **cihazlar** ' ı seçin.
 
 1. Sol bölmede **ilişkilendirilmemiş cihazlar**' ı seçin:
 
@@ -109,13 +109,13 @@ Gerçek bir cihazı IoT Central bağlamak için, bağlantı dizesine ihtiyacın�
 
 Uygulamanızdaki cihazları toplu olarak dışarı aktarmak için:
 
-1. Sol bölmedeki **Device Explorer** seçin.
+1. Sol bölmedeki **cihazlar** ' ı seçin.
 
 1. Sol bölmede, cihazlarını dışarı aktarmak istediğiniz cihaz şablonunu seçin.
 
 1. Dışarı aktarmak istediğiniz cihazları seçin ve ardından **dışarı aktarma** eylemini seçin.
 
-    ![Dışarı Aktar](./media/howto-manage-devices/export1a.png)
+    ![Dışarı Aktarma](./media/howto-manage-devices/export1a.png)
 
 1. Dışarı aktarma işlemi başlar. Durumu Kılavuzun üst kısmında izleyebilirsiniz.
 
@@ -140,7 +140,7 @@ Bağlantı dizeleri hakkında daha fazla bilgi ve gerçek Cihazları IoT Central
 
 Azure IoT Central uygulamanızdan gerçek ya da sanal bir cihazı silmek için:
 
-1. Sol bölmedeki **Device Explorer** seçin.
+1. Sol bölmedeki **cihazlar** ' ı seçin.
 
 1. Silmek istediğiniz cihazın cihaz şablonunu seçin.
 
@@ -152,7 +152,7 @@ Azure IoT Central uygulamanızdan gerçek ya da sanal bir cihazı silmek için:
 
 Ayarlar bir cihazın davranışını denetler. Diğer bir deyişle, cihazınıza giriş sağlamanıza olanak tanır. Cihaz ayarlarını **cihaz ayrıntıları** sayfasında görüntüleyebilir ve güncelleştirebilirsiniz.
 
-1. Sol bölmedeki **Device Explorer** seçin.
+1. Sol bölmedeki **cihazlar** ' ı seçin.
 
 1. Ayarlarını değiştirmek istediğiniz cihazın cihaz şablonunu seçin.
 
@@ -166,7 +166,7 @@ Ayarlar bir cihazın davranışını denetler. Diğer bir deyişle, cihazınıza
 
 Özellikler, cihazla ilişkili, şehir ve seri numarası gibi cihaz meta verileriydi. **Cihaz ayrıntıları** sayfasında özellikleri görüntüleyebilir ve güncelleştirebilirsiniz.
 
-1. Sol bölmedeki **Device Explorer** seçin.
+1. Sol bölmedeki **cihazlar** ' ı seçin.
 
 1. Özelliklerini değiştirmek istediğiniz cihazın cihaz şablonunu seçin.
 

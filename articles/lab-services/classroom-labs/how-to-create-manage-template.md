@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: f0fc1e143ce7d271d5faaa8dda0eb40cdfc9e006
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: fd3396a98359aef966cd8bb2f984e556fc6abcc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332781"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584838"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Azure Lab Services bir sınıf şablonu oluşturma ve yönetme
 Laboratuvardaki şablon, tüm kullanıcıların sanal makinelerinin oluşturulduğu bir temel sanal makine görüntüsüdür. Şablon sanal makinesini, tam olarak laboratuvar kullanıcılarına sağlamak istediklerinizle yapılandırılacak şekilde ayarlayın. Laboratuvar kullanıcılarının görebileceği bir ad ve açıklama belirtebilirsiniz. Daha sonra, şablon VM 'nin örneklerini laboratuvar kullanıcılarınız için kullanılabilir hale getirmek üzere şablonu yayımlayabilirsiniz. Bir şablonu yayımladığınızda Azure Lab Services, şablonu kullanarak laboratuvarda sanal makineler oluşturur. Bu işlemde oluşturulan sanal makine sayısı, laboratuvarda izin verilen maksimum kullanıcı sayısıyla aynıdır. Laboratuvarın kullanım ilkesinde bu maksimum değeri ayarlayabilirsiniz. Tüm sanal makineler, şablonla aynı yapılandırmaya sahiptir.
@@ -40,12 +40,10 @@ Sınıf Laboratuvarı oluştururken bir şablonu yayımlamayı öğrenmek için 
 Bir şablon VM 'sini güncelleştirmek için aşağıdaki adımları kullanın.  
 
 1. **Şablon** sayfasında, araç çubuğunda **şablonu Özelleştir** ' i seçin. 
-
-    ![Şablonu Özelleştir düğmesi](../media/how-to-create-manage-template/customize-template-button.png)
 2. **Şablonu Özelleştir** Iletişim kutusunda **devam**' ı seçin. Şablonu başlatıp değişiklik yaptıktan sonra, artık kullanıcılarınız için en son yayımlanan sanal makinelerle aynı kuruluma sahip olmaz. Şablon değişiklikleri, yeniden yayımladıktan sonra kullanıcılarınızın var olan sanal makinelerine yansıtılmaz.
 
     ![Özelleştirme iletişim kutusu](../media/how-to-create-manage-template/customize-template-dialog.png)
-1. Şablon sanal makinesine bağlanmak için araç çubuğunda **şablona Bağlan** düğmesine tıklayın ve yönergeleri izleyin. Bu bir Windows makinedir, RDP dosyasını indirme seçeneği görüntülenir. 
+1. Şablon VM 'si başlatılana kadar bekleyin ve ardından araç çubuğundan **şablona Bağlan** ' ı seçerek şablon VM 'sine bağlanın ve yönergeleri izleyin. Bu bir Windows makinedir, RDP dosyasını indirme seçeneği görüntülenir. 
 
     ![Şablon VM'ye bağlanma](../media/how-to-create-manage-template/connect-template-vm.png)
 1. Öğrencilerinizin laboratuvarda ihtiyaç duyacağı uygulamaları (Visual Studio, Azure Depolama Gezgini gibi) yükleyin. 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı hiper ölçeğe genel bakış | Microsoft Docs
+title: Azure SQL veritabanı hiper ölçeğe genel bakış
 description: Bu makalede, Azure SQL veritabanı 'ndaki sanal çekirdek tabanlı satın alma modelinde hiper ölçek hizmeti katmanı açıklanmakta ve bu hizmetin Genel Amaçlı ve İş Açısından Kritik hizmet katmanlarından farklı olduğu açıklanır.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: dimitri-furman
+ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: db6e47b39b7ebe35a6c0fef42af53f91e96c363f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 38402d6ccf5c5582fff878ad60bf1c9fd4a07118
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496199"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687313"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -82,7 +82,7 @@ Veri yönetimi işlevlerinin tümünü tek bir konum/işlemde merkezi olarak kul
 
 Aşağıdaki diyagramda, bir hiper ölçek veritabanındaki farklı düğüm türleri gösterilmektedir:
 
-![architecture](./media/sql-database-hyperscale/hyperscale-architecture.png)
+![architecture](./media/sql-database-hyperscale/hyperscale-architecture2.png)
 
 Hiper ölçekli bir veritabanı aşağıdaki farklı bileşen türlerini içerir:
 
@@ -104,7 +104,7 @@ Azure depolama, bir veritabanındaki tüm veri dosyalarını içerir. Sayfa sunu
 
 ## <a name="backup-and-restore"></a>Yedekleme ve geri yükleme
 
-Yedeklemeler dosya anlık görüntüsü tabanlıdır ve bu nedenle neredeyse anında yapılır. Depolama ve işlem ayrımı, birincil işlem çoğaltmasındaki işleme yükünü azaltmak için yedekleme/geri yükleme işleminin depolama katmanına itimmesini sağlar. Sonuç olarak, veritabanı yedeklemesi birincil işlem düğümünün performansını etkilemez; benzer şekilde, geri yüklemeler dosya anlık görüntülerine geri dönerek yapılır, bu nedenle de veri işlemi boyutu değildir. Geri yükleme, sabit zamanlı bir işlemdir ve hatta birden çok terabaytlık veritabanları saat veya gün değil dakikalar içinde geri yüklenebilir. Var olan bir yedeklemeyi geri yükleyerek yeni veritabanlarının oluşturulması bu özellikten de yararlanır: terabayt boyutlu veritabanları bile, geliştirme veya test amaçları için veritabanı kopyaları oluşturma, dakikalar içinde dolanabilir.
+Yedeklemeler dosya anlık görüntüsü tabanlıdır ve bu nedenle neredeyse anında yapılır. Depolama ve işlem ayrımı, birincil işlem çoğaltmasındaki işleme yükünü azaltmak için yedekleme/geri yükleme işleminin depolama katmanına itimmesini sağlar. Sonuç olarak, veritabanı yedeklemesi birincil işlem düğümünün performansını etkilemez; benzer şekilde, geri yüklemeler dosya anlık görüntülerine geri dönerek yapılır, bu nedenle de veri işlemi boyutu değildir. Geri yükleme, sabit zamanlı bir işlemdir ve hatta birden çok terabaytlık veritabanları saat veya gün değil dakikalar içinde geri yüklenebilir. Mevcut bir yedeklemeyi geri yükleyerek yeni veritabanlarının oluşturulması, bu özellikten de yararlanır: aynı mantıksal sunucu içindeki geliştirme veya test amaçları için veritabanı kopyaları oluşturma, terabayttan boyutlu veritabanları bile, dakikalar içinde dolanabilir.
 
 ## <a name="scale-and-performance-advantages"></a>Ölçek ve performans avantajları
 
@@ -169,7 +169,7 @@ Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde k
 - Avustralya Doğu
 - Avustralya Güneydoğu
 - Güney Brezilya
-- Kanada Orta
+- Orta Kanada
 - Orta ABD
 - Çin Doğu 2
 - Çin Kuzey 2
@@ -177,7 +177,7 @@ Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde k
 - Doğu ABD
 - Doğu ABD 2
 - Fransa Orta
-- Doğu Japonya
+- Japonya Doğu
 - Japonya Batı
 - Kore Orta
 - Kore Güney

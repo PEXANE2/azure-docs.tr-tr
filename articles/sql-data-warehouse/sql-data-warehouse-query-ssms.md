@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı 'na bağlanma-SSMS | Microsoft Docs
+title: SSMS ile bağlanma
 description: Azure SQL veri ambarı 'na bağlanmak ve sorgu yapmak için SQL Server Management Studio (SSMS) kullanın.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b96896c0366c6fba2548480b166bdb9cf6ca692c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d5c903a24ea47cb152555330688dd0bc515c625b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575335"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692590"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) ile SQL Data Warehouse 'a bağlanma
 > [!div class="op_single_selector"]
@@ -29,18 +30,18 @@ ms.locfileid: "69575335"
 
 Azure SQL veri ambarı 'na bağlanmak ve sorgu yapmak için SQL Server Management Studio (SSMS) kullanın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi kullanmak için şunlar gerekir:
 
 * Mevcut bir SQL veri ambarı. Bir tane oluşturmak için bkz. [SQL Data Warehouse oluşturma][Create a SQL Data Warehouse].
 * SQL Server Management Studio (SSMS) yüklendi. Zaten yoksa [SSMS 'yi][Install SSMS] ücretsiz olarak yükleyebilirsiniz.
 * Tam SQL server adı. Bunu bulmak için bkz. [SQL Data Warehouse'a bağlanma][Connect to SQL Data Warehouse].
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1. SQL Data Warehouse'unuza bağlanma
+## <a name="1-connect-to-your-sql-data-warehouse"></a>1. SQL veri Ambarınızla bağlantı kurmak
 1. SSMS’i açın.
-2. Nesne Gezgini açın. Bunu yapmak için **Dosya** > **Connect Nesne Gezgini**seçin.
+2. Nesne Gezgini açın. Bunu yapmak için **dosya** > **Connect Nesne Gezgini**' i seçin.
    
-    ![SQL Server Object Explorer][1]
+    ![SQL Server Nesne Gezgini][1]
 3. Sunucuya Bağlan penceresindeki alanları doldurun.
    
     ![Sunucuya bağlanma][2]
@@ -53,7 +54,7 @@ Bu öğreticiyi kullanmak için şunlar gerekir:
    
     ![AdventureWorksDW'yi araştırma][3]
 
-## <a name="2-run-a-sample-query"></a>2. Örnek sorgu çalıştırma
+## <a name="2-run-a-sample-query"></a>2. örnek bir sorgu çalıştırın
 Artık veritabanınızla bağlantı kurulduğuna göre bir sorgu yazalım.
 
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
@@ -65,9 +66,9 @@ Artık veritabanınızla bağlantı kurulduğuna göre bir sorgu yazalım.
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Sorguyu çalıştırın. Bunu yapmak için aşağıdaki kısayola `Execute` tıklayın veya kullanın:. `F5`
+4. Sorguyu çalıştırın. Bunu yapmak için `Execute` ' ye tıklayın veya şu kısayolu kullanın: `F5`.
    
-    ![Sorguyu çalıştır][5]
+    ![Sorgu çalıştırma][5]
 5. Sorgu sonuçlarına bakın. Bu örnekte FactInternetSales tablosunda 60398 satır var.
    
     ![Sorgu sonuçları][6]

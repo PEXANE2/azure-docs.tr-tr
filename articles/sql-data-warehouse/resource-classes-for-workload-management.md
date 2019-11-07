@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı 'nda iş yükü yönetimi için kaynak sınıfları | Microsoft Docs
+title: İş yükü yönetimi için kaynak sınıfları
 description: Azure SQL veri ambarı 'ndaki sorgulara yönelik eşzamanlılık ve işlem kaynaklarını yönetmek için kaynak sınıflarını kullanma kılavuzu.
 services: sql-data-warehouse
 author: ronortloff
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/04/2019
+ms.date: 11/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ef95faf162a6774e42b7cf258515757fdc9c7eb
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035085"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685932"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda kaynak sınıflarıyla iş yükü yönetimi
 
@@ -35,7 +36,7 @@ Bir sorgunun performans kapasitesi kullanıcının kaynak sınıfına göre beli
 
 Kaynak sınıfları, kaynak tüketimini ölçmek için eşzamanlılık yuvaları kullanır.  [Eşzamanlılık yuvaları](#concurrency-slots) , bu makalenin ilerleyen kısımlarında açıklanmıştır.
 
-- Kaynak sınıflarının kaynak kullanımını görüntülemek için bkz. [bellek ve eşzamanlılık sınırları](memory-and-concurrency-limits.md#concurrency-maximums).
+- Kaynak sınıflarının kaynak kullanımını görüntülemek için bkz. [bellek ve eşzamanlılık sınırları] bellek-eşzamanlılık-limits.md).
 - Kaynak sınıfını ayarlamak için sorguyu farklı bir kullanıcı altında çalıştırabilir veya [geçerli kullanıcının kaynak sınıfı üyeliğini değiştirebilirsiniz](#change-a-users-resource-class) .
 
 ### <a name="static-resource-classes"></a>Statik kaynak sınıfları
@@ -70,7 +71,7 @@ Her kaynak sınıfı için bellek ayırma, **hizmet düzeyinden bağımsız**ola
 |:--------------:|:-----------------:|:----------------------:|
 | smallrc        | 03                | 32                     |
 | düz RC       | %10               | 10                     |
-| largerc        | #c16               | 4                      |
+| largerc        | #               | 4                      |
 | xlargerc       | %70               | 1                      |
 
 ### <a name="default-resource-class"></a>Varsayılan kaynak sınıfı
@@ -157,13 +158,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 Kaynak sınıfları, kullanıcılar veritabanı rollerine atanarak uygulanır. Bir Kullanıcı bir sorgu çalıştırdığında, sorgu kullanıcının kaynak sınıfıyla çalışır. Örneğin, bir Kullanıcı staticrc10 veritabanı rolünün üyesiyse, sorguları az miktarda bellekle çalışır. Bir veritabanı kullanıcısı xlargerc veya staticrc80 veritabanı rollerinin üyesiyse, sorguları büyük miktarda bellekle çalışır.
 
-Bir kullanıcının kaynak sınıfını artırmak için, [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) kullanarak kullanıcıyı büyük bir kaynak sınıfının veritabanı rolüne ekleyin.  Aşağıdaki kod, bir kullanıcıyı largerc veritabanı rolüne ekler.  Her istek, sistem belleğinin% 22 ' i alır.
+Bir kullanıcının kaynak sınıfını artırmak için, [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) kullanarak kullanıcıyı büyük bir kaynak sınıfının veritabanı rolüne ekleyin.  Aşağıdaki kod, bir kullanıcıyı largerc veritabanı rolüne ekler.  Her istek, sistem belleğinin %22 ' i alır.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Kaynak sınıfını azaltmak için [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)kullanın.  ' Loaduser ' bir üye veya başka herhangi bir kaynak sınıfı değilse, varsayılan smallrc kaynak sınıfına,% 3 bellek izni ile gitirler.  
+Kaynak sınıfını azaltmak için [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)kullanın.  ' Loaduser ' bir üye veya başka herhangi bir kaynak sınıfı değilse, varsayılan smallrc kaynak sınıfına, %3 bellek izni ile gitirler.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';
@@ -182,7 +183,7 @@ Belirli bir sorgu veya yükleme işlemi türünü çalıştırmaya ayrılmış b
 
 ### <a name="resource-classes-for-load-users"></a>Yükleme kullanıcıları için kaynak sınıfları
 
-`CREATE TABLE` varsayılan olarak kümelenmiş columnstore dizinleri kullanır. Verileri bir columnstore dizinine sıkıştırmak bellek yoğun bir işlemdir ve bellek baskısı Dizin kalitesini azaltabilir. Bellek baskısı, verileri yüklerken daha yüksek bir kaynak sınıfına ihtiyaç duymasına yol açabilir. Yüklerin yeterli belleğe sahip olduğundan emin olmak için, yükleri çalıştırmak için tasarlanmış bir kullanıcı oluşturabilir ve bu kullanıcıyı daha yüksek bir kaynak sınıfına atayabilirsiniz.
+`CREATE TABLE`, varsayılan olarak kümelenmiş columnstore dizinleri kullanır. Verileri bir columnstore dizinine sıkıştırmak bellek yoğun bir işlemdir ve bellek baskısı Dizin kalitesini azaltabilir. Bellek baskısı, verileri yüklerken daha yüksek bir kaynak sınıfına ihtiyaç duymasına yol açabilir. Yüklerin yeterli belleğe sahip olduğundan emin olmak için, yükleri çalıştırmak için tasarlanmış bir kullanıcı oluşturabilir ve bu kullanıcıyı daha yüksek bir kaynak sınıfına atayabilirsiniz.
 
 Yüklemeleri verimli bir şekilde işlemek için gereken bellek, yüklenen tablonun yapısına ve veri boyutuna bağlıdır. Bellek gereksinimleri hakkında daha fazla bilgi için bkz. [satır grubu kalitesini en üst düzeye çıkarma](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
@@ -233,9 +234,9 @@ Bu saklı yordamın amacı aşağıda verilmiştir:
 Sözdizimi  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU: geçerli DWU 'yi DW DB 'den ayıklamak için NULL bir parametre sağlayın ya da ' DW100c ' biçiminde desteklenen DWU 'yi sağlayın
-2. @SCHEMA_NAME: tablonun şema adını sağlar
-3. @TABLE_NAME:, ilgilendiğiniz bir tablo adı sağlar
+1. @DWU:, DW DB 'den geçerli DWU 'yi ayıklamak için NULL bir parametre sağlayın ya da ' DW100c ' biçiminde desteklenen DWU 'yi sağlayın
+2. @SCHEMA_NAME: tablonun şema adını sağlama
+3. @TABLE_NAME: ilgilendiğiniz tablo adını sağlayın
 
 Bu saklı proc yürütülen örnekler:
 
@@ -331,7 +332,7 @@ SELECT 'DW100c' AS DWU,4 AS max_queries,4 AS max_slots,1 AS slots_used_
     SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128 
 )
 -- Creating workload mapping to their corresponding slot consumption and default memory grant.
-,map
+,map  
 AS
 (
   SELECT CONVERT(varchar(20), 'SloDWGroupSmall') AS wg_name, slots_used_smallrc AS slots_used FROM alloc WHERE DWU = @DWU
@@ -580,7 +581,7 @@ SELECT  CASE
 GO
 ```
 
-## <a name="next-step"></a>Sonraki adım
+## <a name="next-steps"></a>Sonraki adımlar
 
 Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için bkz. [SQL veri ambarı 'nda veritabanını güvenli hale getirme][Secure a database in SQL Data Warehouse]. Daha büyük kaynak sınıflarının kümelenmiş columnstore dizini kalitesini nasıl iyileştirebilecek hakkında daha fazla bilgi için bkz. [columnstore sıkıştırması Için bellek iyileştirmeleri](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 

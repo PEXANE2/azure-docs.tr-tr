@@ -8,17 +8,21 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e6e51d2a058f89a04a81800b81f3c316be4eab7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b47604f2c8703ba587e98d68dc30552e5944f562
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301496"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614495"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Dayanıklı İşlevler için sıfır kesinti süresi dağıtımı
+
 Dayanıklı İşlevler [güvenilir yürütme modeli](durable-functions-checkpointing-and-replay.md) , güncelleştirmelerin dağıtımı sırasında göz önünde bulundurulması gereken ek bir sınama oluşturan, düzenlemeler belirleyici olmasını gerektirir. Bir dağıtım, etkinlik işlevi imzalarında veya Orchestrator mantığındaki değişiklikler içerdiğinde uçuş düzenleme örnekleri başarısız olur. Bu durum özellikle uzun süre çalışan düzenleyiciler örneklerine yönelik bir sorundur ve bu da saatleri veya iş günlerini temsil edebilir.
 
 Bu hataların oluşmasını engellemek için, çalışan tüm düzenleme örnekleri tamamlanana kadar dağıtımınızı geciktirmeli veya çalışan tüm düzenleme örneklerinin işlevlerinizin mevcut sürümlerini kullanmasını sağlamalısınız. Sürüm oluşturma hakkında daha fazla bilgi için bkz. [dayanıklı işlevler sürüm oluşturma](durable-functions-versioning.md).
+
+> [!NOTE]
+> Bu makalede, Dayanıklı İşlevler 1. x ' i hedefleyen işlevler uygulamaları için rehberlik sunulmaktadır. Henüz Dayanıklı İşlevler 2. x sürümünde tanıtılan değişiklikler için hesaba güncelleştirilmedi. Uzantı sürümleri arasındaki farklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 Aşağıdaki grafik, Dayanıklı İşlevler için sıfır kesinti süresi dağıtımı elde etmek için üç ana stratejileri karşılaştırmaktadır: 
 
@@ -29,6 +33,7 @@ Aşağıdaki grafik, Dayanıklı İşlevler için sıfır kesinti süresi dağı
 | **[Uygulama yönlendirme](#application-routing)** | 24 saatten fazla veya sık sık çakışan düzenleyicilerle düzenleme gerçekleştirenler gibi, düzenleme çalışmadığı zaman süreleri olmayan bir sistem. | Sürekli değişiklikler içeren düzenlemeleri çalıştıran sistemlerin yeni sürümlerini işler. | Akıllı uygulama yönlendiricisi gerektirir.<br/>Aboneliğiniz tarafından izin verilen işlev uygulamalarının sayısı üst sınırı (varsayılan 100). |
 
 ## <a name="versioning"></a>Sürüm oluşturma
+
 İşlevlerinizin yeni sürümlerini tanımlayın ve işlev uygulamanızda eski sürümleri bırakın. Diyagramda görebileceğiniz gibi, bir işlevin sürümü adının bir parçası haline gelir. İşlevlerin önceki sürümleri korunduğundan, uçuş sırasında düzenleme örnekleri bunlara başvurmasına devam edebilir. Bu sırada, Orchestration Client işlevinizin bir uygulama ayarından başvurmasına yönelik yeni düzenleme örnekleri istekleri en son sürüm için çağrı yapılır.
 
 ![Sürüm oluşturma stratejisi](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
@@ -62,7 +67,7 @@ Aşağıdaki diyagramda, dağıtım yuvaları ve depolama hesaplarının açıkl
 
 Aşağıdaki JSON parçaları, Host. JSON dosyasındaki bağlantı dizesi ayarına örnektir.
 
-#### <a name="functions-2x"></a>İşlevler 2.x
+#### <a name="functions-20"></a>İşlevler 2,0
 
 ```json
 {
@@ -146,7 +151,7 @@ Yönlendirici, uygulama kodunuzun hangi sürümünün Azure 'daki işlev uygulam
 
 ![Uygulama yönlendirme (ilk kez)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-Yönlendirici dağıtım ve düzenleme isteklerini, isteğiyle gönderilen `version` ' ı temel alarak uygun işlev uygulamasına yönlendirir ve düzeltme eki sürümü yok sayılıyor.
+Yönlendirici dağıtım ve düzenleme isteklerini istekle birlikte gönderilen `version` temel alarak uygun işlev uygulamasına yönlendirir ve düzeltme eki sürümü yok sayılıyor.
 
 Uygulamanızın yeni bir sürümünü bir değişiklik *yapmadan* dağıttığınızda, düzeltme eki sürümünü artırabilirsiniz. Yönlendirici mevcut işlev uygulamanıza dağıtılır ve kodun eski ve yeni sürümleri için istek gönderir ve aynı işlev uygulamasına yönlendirilir.
 
@@ -160,7 +165,7 @@ Yönlendirici 1.0.1 sürümündeki düzenlemeleri izler ve tüm düzenlemeler ta
 
 ### <a name="tracking-store-settings"></a>İzleme deposu ayarları
 
-Her işlev uygulaması, muhtemelen ayrı depolama hesaplarında ayrı zamanlama kuyrukları kullanmalıdır. Ancak, uygulamanızın tüm sürümlerindeki tüm organize durumlarını sorgulamak istiyorsanız, işlev uygulamalarınız genelinde örnek ve geçmiş tabloları paylaşabilirsiniz. Her tümünün aynı değerleri kullanabilmesi için [Host. JSON ayarları](durable-functions-bindings.md#host-json) dosyasında `trackingStoreConnectionStringName` ve `trackingStoreNamePrefix` ' i yapılandırarak tabloları paylaşabilirsiniz.
+Her işlev uygulaması, muhtemelen ayrı depolama hesaplarında ayrı zamanlama kuyrukları kullanmalıdır. Ancak, uygulamanızın tüm sürümlerindeki tüm organize durumlarını sorgulamak istiyorsanız, işlev uygulamalarınız genelinde örnek ve geçmiş tabloları paylaşabilirsiniz. Tabloları, tümünün aynı değerleri kullanabilmesi için [Host. JSON ayarları](durable-functions-bindings.md#host-json) dosyasındaki `trackingStoreConnectionStringName` ve `trackingStoreNamePrefix` yapılandırarak paylaşabilirsiniz.
 
 Daha ayrıntılı bilgi için [Azure 'daki dayanıklı işlevler örnekleri yönetin](durable-functions-instance-management.md).
 

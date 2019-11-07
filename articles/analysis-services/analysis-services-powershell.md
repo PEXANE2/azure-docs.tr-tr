@@ -1,18 +1,18 @@
 ---
 title: PowerShell ile Azure Analysis Services yönetme | Microsoft Docs
-description: PowerShell ile Azure Analysis Services Yönetimi.
+description: Sunucu oluşturma, işlemleri askıya alma veya hizmet düzeyini değiştirme gibi yaygın yönetim görevleri için Azure Analysis Services PowerShell cmdlet 'lerini açıklar.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: reference
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 329ea51895c45c8cdf50a323328fac3c580ffc16
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 2c8f4c0541d97a189087af692658cfe794eaaf7e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146227"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572704"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>PowerShell ile Azure Analysis Services yönetme
 
@@ -30,7 +30,7 @@ Azure PowerShell cmdlet 'lerini kullanan sunucu işlemlerinde, hesabınız veya 
 
 ## <a name="resource-and-server-operations"></a>Kaynak ve sunucu işlemleri 
 
-Modül-Install- [az. AnalysisServices](https://www.powershellgallery.com/packages/Az.AnalysisServices)   
+Modülü Install- [az. AnalysisServices](https://www.powershellgallery.com/packages/Az.AnalysisServices)   
 Belgeler- [az. AnalysisServices başvurusu](/powershell/module/az.analysisservices)
 
 ## <a name="database-operations"></a>Veritabanı işlemleri
@@ -39,7 +39,7 @@ Azure Analysis Services veritabanı işlemleri SQL Server Analysis Services ayn�
 
 SqlServer modülü, göreve özgü veritabanı yönetim cmdlet 'lerinin yanı sıra bir tablosal model betik dili (TMSL) sorgusu veya betiği kabul eden genel amaçlı Invoke-ASCmd cmdlet 'ini sağlar. Azure Analysis Services için SqlServer modülündeki aşağıdaki cmdlet 'ler desteklenir.
 
-Modül Install- [SqlServer](https://www.powershellgallery.com/packages/SqlServer)   
+Modül yüklemesi- [SqlServer](https://www.powershellgallery.com/packages/SqlServer)   
 Belgeler- [SqlServer başvurusu](/powershell/module/sqlserver)
 
 ### <a name="supported-cmdlets"></a>Desteklenen Cmdlet 'ler

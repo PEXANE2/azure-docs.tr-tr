@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d50b946e67bbcc171850b71021165356011f58e3
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d0b5042c1401a95cc75f4c01ace843659b6babfe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755196"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681689"
 ---
 # <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>Azure Cosmos DB 'de küresel olarak dağıtılmış analiz kullanan çözümler
 
@@ -34,12 +34,12 @@ Gerçek zamanlı öneriler ve teklifler sunmak için Azure Cosmos DB Spark deste
 
 Aşağıdaki görüntüde, fiyatlandırma ve yükseltmeleri iyileştirmek için Azure Cosmos DB Spark desteğinin nasıl kullanıldığı gösterilmektedir:
 
-![Fiyatlandırma ve yükseltmeleri iyileştirmek için Azure Cosmos DB Spark desteği](./media/spark-api-introduction/optimize-pricing-and-promotions.png)
+![Fiyatlandırma ve yükseltmeleri iyileştirmek için Azure Cosmos DB Spark desteği](./media/analytics-solution-architectures/optimize-pricing-and-promotions.png)
 
 
 Aşağıdaki görüntüde, Azure Cosmos DB Spark desteğinin gerçek zamanlı öneri altyapısında nasıl kullanıldığı gösterilmektedir:
 
-![Gerçek zamanlı öneri altyapısında Spark desteğini Azure Cosmos DB](./media/spark-api-introduction/real-time-recommendation-engine.png)
+![Gerçek zamanlı öneri altyapısında Spark desteğini Azure Cosmos DB](./media/analytics-solution-architectures/real-time-recommendation-engine.png)
 
 ## <a name="manufacturing-and-iot"></a>Üretim ve IoT
 
@@ -49,9 +49,9 @@ Azure Cosmos DB yerleşik analiz platformu, küresel ölçekte Milyonlarca cihaz
 
 Aşağıdaki görüntüde, IoT cihazlarından ölçümleri okumak ve akıllı kılavuz Analizi uygulamak için Azure Cosmos DB Spark desteğinin nasıl kullanıldığı gösterilmektedir:
 
-![IoT cihazlarından ölçümleri okumak için Azure Cosmos DB Spark desteği](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
+![IoT cihazlarından ölçümleri okumak için Azure Cosmos DB Spark desteği](./media/analytics-solution-architectures/read-metrics-from-iot-devices.png)
 
-## <a name="predictive-maintenance"></a>Öngörücü bakım
+## <a name="predictive-maintenance"></a>Tahmine dayalı bakım
 
 * Küçük bir ayrıntıya gitme gibi varlıkların, derinlemesine ve derin platformlar arasında saklanması karmaşık bir Endeavor. Bu varlıklar dünya genelinde bulunur ve veri petabaytlarca oluşturur. Azure Cosmos DB kullanarak, büyük miktarlarda algılayıcı telemetrisi, mağaza varlık parçaları ve algılayıcı eşlemeleri verilerini işlemek için Spark akışını kullanan uçtan uca tahmine dayalı bir veri işlem hattı oluşturabilirsiniz.
 
@@ -59,11 +59,11 @@ Aşağıdaki görüntüde, IoT cihazlarından ölçümleri okumak ve akıllı k�
 
 Aşağıdaki görüntüde, tahmine dayalı bakım sistemi oluşturmak için Azure Cosmos DB Spark desteğinin nasıl kullanıldığı gösterilmektedir:
 
-![Tahmine dayalı bakım sistemi oluşturmak için Azure Cosmos DB Spark desteği](./media/spark-api-introduction/predictive-maintenance-system.png)
+![Tahmine dayalı bakım sistemi oluşturmak için Azure Cosmos DB Spark desteği](./media/analytics-solution-architectures/predictive-maintenance-system.png)
 
 Aşağıdaki görüntüde gerçek zamanlı bir araç Tanılama sistemi oluşturmak için Azure Cosmos DB Spark desteğinin nasıl kullanıldığı gösterilmektedir:
 
-![Gerçek zamanlı bir araç Tanılama sistemi oluşturmak için Azure Cosmos DB Spark desteği](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
+![Gerçek zamanlı bir araç Tanılama sistemi oluşturmak için Azure Cosmos DB Spark desteği](./media/analytics-solution-architectures/real-time-vehicle-diagnostic-system.png)
 
 ## <a name="gaming"></a>Oyun
 
@@ -75,7 +75,7 @@ Aşağıdaki görüntüde gerçek zamanlı bir araç Tanılama sistemi oluşturm
 
 Aşağıdaki görüntüde, oyun analizinin Azure Cosmos DB Spark desteğinin nasıl kullanıldığı gösterilmektedir:
 
-![Oyun analizinden Azure Cosmos DB Spark desteği](./media/spark-api-introduction/gaming-analytics.png)
+![Oyun analizinden Azure Cosmos DB Spark desteği](./media/analytics-solution-architectures/gaming-analytics.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

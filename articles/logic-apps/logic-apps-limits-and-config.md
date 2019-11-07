@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: e2b866ddd888261e7d8817c73952d4830a4f8147
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: cd7b8c3de46cb88833f27cbebb7d07f944a711e4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464014"
+ms.locfileid: "73580845"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
-Bu makalede, Azure Logic Apps ile otomatik iş akışları oluşturma ve çalıştırmaya yönelik sınırlar ve yapılandırma ayrıntıları açıklanmaktadır. Microsoft Flow için, [Microsoft Flow Içindeki sınırlara ve yapılandırmaya](https://docs.microsoft.com/flow/limits-and-config)bakın.
+Bu makalede, Azure Logic Apps ile otomatik iş akışları oluşturma ve çalıştırmaya yönelik sınırlar ve yapılandırma ayrıntıları açıklanmaktadır. Güç otomatikleştirme için bkz. [Güç otomatikleştirmede sınırlar ve yapılandırma](https://docs.microsoft.com/flow/limits-and-config).
 
 <a name="definition-limits"></a>
 
@@ -267,7 +267,7 @@ Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam ed
 Azure Logic Apps gelen ve giden çağrılar için kullandığı IP adresleri, mantıksal uygulamanızın bulunduğu bölgeye göre değişir. Aynı bölgedeki *Tüm* mantıksal uygulamalar aynı IP adresi aralıklarını kullanır.
 
 > [!NOTE]
-> **Http** ve **http + openapı** istekleri gibi bazı Microsoft Flow çağrılar, doğrudan Azure Logic Apps hizmeti aracılığıyla doğrudan gıder ve burada listelenen IP adreslerinden gelir. Microsoft Flow tarafından kullanılan IP adresleri hakkında daha fazla bilgi için, [Microsoft Flow Içindeki sınırlara ve yapılandırmaya](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration)bakın.
+> **Http** ve **http + openapı** Istekleri gibi bazı güç otomatikleştirme çağrıları, doğrudan Azure Logic Apps HIZMETINE giderek burada listelenen IP adreslerinden gelir. Güç otomatikleştirme tarafından kullanılan IP adresleri hakkında daha fazla bilgi için bkz. [Güç otomatikleştirmede sınırlamalar ve yapılandırma](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration).
 
 * Mantıksal uygulamalarınızın [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)ve diğer http istekleriyle doğrudan yaptığı çağrıları desteklemek için, Logic Apps tarafından kullanılan *Tüm* [gelen](#inbound) *ve* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın mantıksal uygulamalarınızın bulunduğu bölgelere göre hizmet. Bu adresler, bu bölümdeki **gelen** ve **giden** başlıkların altında görüntülenir ve bölgeye göre sıralanır.
 
@@ -293,7 +293,7 @@ Azure Logic Apps gelen ve giden çağrılar için kullandığı IP adresleri, ma
 | Avustralya Doğu | 13.75.153.66, 52.187.231.161, 104.210.89.222, 104.210.89.244 |
 | Avustralya Güneydoğu | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
 | Güney Brezilya | 191.234.166.198, 191.235.86.199, 191.235.94.220, 191.235.95.229 |
-| Kanada Orta | 13.88.249.209, 40.85.241.105, 52.233.29.79, 52.233.30.218 |
+| Orta Kanada | 13.88.249.209, 40.85.241.105, 52.233.29.79, 52.233.30.218 |
 | Doğu Kanada | 40.86.202.42, 52.229.125.57, 52.232.129.143, 52.232.133.109 |
 | Orta Hindistan | 52.172.157.194, 52.172.184.192, 52.172.191.194, 104.211.73.195 |
 | Orta ABD | 13.67.236.76, 40.77.31.87, 40.77.111.254, 104.43.243.39 |
@@ -302,7 +302,7 @@ Azure Logic Apps gelen ve giden çağrılar için kullandığı IP adresleri, ma
 | Doğu ABD 2 | 40.70.27.253, 40.79.44.7, 40.84.25.234, 40.84.59.136 |
 | Fransa Orta | 52.143.162.83, 20.188.33.169, 52.143.156.55, 52.143.158.203 |
 | Fransa Güney | 52.136.131.145, 52.136.129.121, 52.136.130.89, 52.136.131.4 |
-| Doğu Japonya | 13.71.146.140, 13.78.43.164, 13.78.62.130, 13.78.84.187 |
+| Japonya Doğu | 13.71.146.140, 13.78.43.164, 13.78.62.130, 13.78.84.187 |
 | Japonya Batı | 40.74.68.85, 40.74.81.13, 40.74.85.215, 40.74.140.173 |
 | Kore Orta | 52.231.14.182, 52.231.103.142, 52.231.39.29, 52.231.14.42 |
 | Kore Güney | 52.231.166.168, 52.231.163.55, 52.231.163.150, 52.231.192.64 |
@@ -329,7 +329,7 @@ Azure Logic Apps gelen ve giden çağrılar için kullandığı IP adresleri, ma
 | Avustralya Doğu | 13.75.149.4, 52.187.226.96, 52.187.226.139, 52.187.227.245, 52.187.229.130, 52.187.231.184, 104.210.90.241, 104.210.91.55 | 13.70.72.192 - 13.70.72.207, 13.72.243.10 |
 | Avustralya Güneydoğu | 13.70.159.205, 13.73.114.207, 13.77.3.139, 13.77.56.167, 13.77.58.136, 52.189.214.42, 52.189.220.75, 52.189.222.77 | 13.77.50.240 - 13.77.50.255, 13.70.136.174 |
 | Güney Brezilya | 191.234.161.28, 191.234.161.168, 191.234.162.131, 191.234.162.178, 191.234.182.26, 191.235.82.221, 191.235.91.7, 191.237.255.116 | 191.233.203.192 - 191.233.203.207, 104.41.59.51 | 
-| Kanada Orta | 13.71.184.150, 13.71.186.1, 40.85.250.135, 40.85.250.212, 40.85.252.47, 52.233.29.92, 52.228.39.241, 52.228.39.244 | 13.71.170.208 - 13.71.170.223, 13.71.170.224 - 13.71.170.239, 52.237.24.126 |
+| Orta Kanada | 13.71.184.150, 13.71.186.1, 40.85.250.135, 40.85.250.212, 40.85.252.47, 52.233.29.92, 52.228.39.241, 52.228.39.244 | 13.71.170.208 - 13.71.170.223, 13.71.170.224 - 13.71.170.239, 52.237.24.126 |
 | Doğu Kanada | 40.86.203.228, 40.86.216.241, 40.86.217.241, 40.86.226.149, 40.86.228.93, 52.229.120.45, 52.229.126.25, 52.232.128.155 | 40.69.106.240 - 40.69.106.255, 52.242.35.152 |
 | Orta Hindistan | 52.172.154.168, 52.172.185.79, 52.172.186.159, 104.211.74.145, 104.211.90.162, 104.211.90.169, 104.211.101.108, 104.211.102.62 | 104.211.81.192 - 104.211.81.207, 52.172.211.12 |
 | Orta ABD | 13.67.236.125, 23.100.82.16, 23.100.86.139, 23.100.87.24, 23.100.87.56, 40.113.218.230, 40.122.170.198, 104.208.25.27 | 13.89.171.80 - 13.89.171.95, 52.173.245.164 |
@@ -338,7 +338,7 @@ Azure Logic Apps gelen ve giden çağrılar için kullandığı IP adresleri, ma
 | Doğu ABD 2 | 40.70.26.154, 40.70.27.236, 40.70.29.214, 40.70.131.151, 40.84.30.147, 104.208.140.40, 104.208.155.200, 104.208.158.174 | 40.70.146.208 - 40.70.146.223, 52.232.188.154 |
 | Fransa Orta | 52.143.164.80, 52.143.164.15, 40.89.186.30, 20.188.39.105, 40.89.191.161, 40.89.188.169, 40.89.186.28,40.89.190.104 | 40.89.135.2, 40.79.130.208 - 40.79.130.223 |
 | Fransa Güney | 52.136.132.40, 52.136.129.89, 52.136.131.155, 52.136.133.62, 52.136.139.225, 52.136.130.144, 52.136.140.226, 52.136.129.51 | 52.136.133.184, 40.79.178.240 - 40.79.178.255 |
-| Doğu Japonya | 13.71.158.3, 13.71.158.120, 13.73.4.207, 13.78.18.168, 13.78.20.232, 13.78.21.155, 13.78.35.229, 13.78.42.223 | 13.78.108.0 - 13.78.108.15, 13.71.153.19 |
+| Japonya Doğu | 13.71.158.3, 13.71.158.120, 13.73.4.207, 13.78.18.168, 13.78.20.232, 13.78.21.155, 13.78.35.229, 13.78.42.223 | 13.78.108.0 - 13.78.108.15, 13.71.153.19 |
 | Japonya Batı | 40.74.64.207, 40.74.68.85, 40.74.74.21, 40.74.76.213, 40.74.77.205, 40.74.140.4, 104.214.137.243, 138.91.26.45 | 40.74.100.224 - 40.74.100.239, 104.215.61.248 |
 | Kore Orta | 52.231.14.11, 52.231.14.219, 52.231.15.6, 52.231.10.111, 52.231.14.223, 52.231.77.107, 52.231.8.175, 52.231.9.39 | 52.141.36.214, 52.231.18.208 - 52.231.18.223 |
 | Kore Güney | 52.231.204.74, 52.231.188.115, 52.231.189.221, 52.231.203.118, 52.231.166.28, 52.231.153.89, 52.231.155.206, 52.231.164.23 | 52.231.163.10, 52.231.147.0 - 52.231.147.15 |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 691907d1c221283f99ba59f0937cfbaf673f427a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324532"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584087"
 ---
 # <a name="add-and-manage-lab-users"></a>Laboratuvar kullanıcılarını ekleme ve yönetme
 Bu makalede, laboratuvara Kullanıcı ekleme, laboratuvarda nasıl kayıt yapılacağı, VM 'nin kullanabileceği saat sayısını denetleme ve daha fazla bilgi edinebilirsiniz. 
@@ -36,6 +36,9 @@ Bu makalede, laboratuvara Kullanıcı ekleme, laboratuvarda nasıl kayıt yapıl
 4. **Kaydet**’i seçin. Kullanıcıların e-posta adreslerini ve bunların durumlarını (kayıtlı veya değil) listede görürsünüz. 
 
     ![Kullanıcı listesi](../media/how-to-configure-student-usage/users-list-new.png)
+
+    > [!NOTE]
+    > Laboratuvar 'e kaydolduktan sonra listedeki kullanıcıların adlarını görürsünüz. Listede gösterilen ad, Azure Active Directory kullanıcının ilk ve son adları kullanılarak oluşturulur. 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>CSV dosyası karşıya yükleyerek Kullanıcı ekleme
 Kullanıcıları, kullanıcıların e-posta adreslerine sahip bir CSV dosyası karşıya yükleyerek da ekleyebilirsiniz.
@@ -60,15 +63,16 @@ Kullanıcıları, kullanıcıların e-posta adreslerine sahip bir CSV dosyası k
 Laboratuvar için **erişimi kısıtla** etkinleştirilirse, yalnızca Kullanıcı listesindeki kullanıcılar, laboratuvara kaydolmak için kayıt bağlantısını kullanabilir. Bu seçenek varsayılan olarak etkindir. 
 
 ### <a name="invite-all-users"></a>Tüm kullanıcıları davet et
+1. Zaten sayfada değilseniz **Kullanıcılar** görünümüne geçin ve araç çubuğunda **Tümünü davet et** ' i seçin. 
 
-1. Laboratuvarın **Kullanıcılar** sayfasına geçin. 
-2. Araç çubuğundan **Tümünü davet et** ' i seçin. 
-3. Kullanıcılara bir **ileti** girin. Bu, isteğe bağlı bir adımdır.
-4. Sonra **Gönder**' i seçin.
+    ![Öğrencileri seçin](../media/tutorial-setup-classroom-lab/invite-all-button.png)
 
-    ![Tüm kullanıcıları davet et](../media/how-to-configure-student-usage/invite-all.png)
+1. **E-postaya davet gönder** sayfasında, isteğe bağlı bir ileti girin ve ardından **Gönder**' i seçin. E-posta otomatik olarak kayıt bağlantısını içerir. Bu kayıt bağlantısını,... öğesini seçerek alabilirsiniz **. (üç nokta)** araç çubuğunda ve **kayıt bağlantısı**. 
 
-    Bu işlemin durumunu **Kullanıcılar** listesinin **davet** sütununda görürsünüz. Davet e-postası, kullanıcıların laboratuvara kaydolmak için kullanabileceği kayıt bağlantısını içerir. 
+    ![Kayıt bağlantısını e-posta ile gönder](../media/tutorial-setup-classroom-lab/send-email.png)
+4. **Kullanıcı** listesindeki **davetin** durumunu görürsünüz. Durum, **\<tarih >** **gönderilmesi ve ardından** gönderilmek üzere değiştirilmelidir. 
+
+    Bir sınıfa öğrenci ekleme ve laboratuvarın kullanımını yönetme hakkında daha fazla bilgi için bkz. [öğrenci kullanımını yapılandırma](how-to-configure-student-usage.md).
 
 ### <a name="invite-selected-users"></a>Seçili kullanıcıları davet et
 
@@ -107,19 +111,21 @@ Laboratuvara kayıtlı kullanıcıların listesini görmek için sol menüdeki *
 Aşağıdaki adımları kullanarak, Kullanıcı başına kota ayarlayabilirsiniz: 
 
 1. Sayfa zaten etkin değilse Sol menüdeki **Kullanıcılar** ' ı seçin. 
-2. **Kullanıcı başına kota seçin: araç çubuğunda &lt;sayı @ no__t-2 saat** . 
+2. **Kullanıcı başına kota seçin: araç çubuğunda \<sayı > saat** . 
 3. **Kullanıcı başına kota** sayfasında, zamanlanan sınıf süresi dışında her kullanıcıya (öğrenci) vermek istediğiniz saat sayısını belirtin ve ardından **Kaydet**' i seçin.
 
     ![Kullanıcı başına kota](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. Değiştirilen değerleri şimdi araç çubuğunda görürsünüz: **Kullanıcı başına kota: &lt; saat @ no__t-2**. 
+5. Değiştirilen değerleri şimdi araç çubuğunda görürsünüz: **Kullanıcı başına kota: \<saat sayısı >** . 
 
-    ![Kullanıcı başına kota-sonra](../media/how-to-configure-student-usage/quot-per-user-after.png)
+    ![Kullanıcı başına kota (sonrasında)](../media/how-to-configure-student-usage/quot-per-user-after.png)
 
     > [!IMPORTANT]
     > [VM 'lerin zamanlanan çalışma süresi](how-to-create-schedules.md) , bir kullanıcıya ayrılan kotaya göre sayılmaz. Kota, bir öğrencinin VM 'lerde harcadığı zamanlama saatleri dışında bir süredir. 
 
 ## <a name="set-additional-quota-for-a-specific-user"></a>Belirli bir kullanıcı için ek kota ayarlama
-Bir kullanıcı için ayrı bir kota ayarlayabilirsiniz. Bunu yapmak için şu adımları izleyin:
+Bir kullanıcı için ek kota belirtebilirsiniz. Bu kota, önceki bölümde yer aldığı tüm kullanıcılar için genel kota kümesine ek olarak yapılır. Örneğin, (bir eğitmen olarak) tüm kullanıcılar için kotayı 10 saate ayarlarsanız ve belirli bir kullanıcı için 5 saatlik ek kota ayarlarsanız, kullanıcılar 15 (10 + 5) saatlik kotayı alır. Ortak kotayı daha sonra olarak değiştirirseniz, 15, daha sonra Kullanıcı 20 (15 + 5) saatlik kotayı alır. Bu genel kotanın zamanlanan sürenin dışında olduğunu unutmayın. Zamanlama sırasında öğrencinin bir laboratuvar VM 'sinde harcadığı süre bu kotaya göre sayılmaz. 
+
+Bunu yapmak için şu adımları izleyin:
 
 1. **Kullanıcılar** sayfasındaki kullanıcılar listesinden bir Kullanıcı (öğrenci) seçin.
 2. Ardından araç çubuğundan **kotayı ayarla** ' yı seçin. 
@@ -132,6 +138,38 @@ Bir kullanıcı için ayrı bir kota ayarlayabilirsiniz. Bunu yapmak için şu a
 
     ![Kullanıcı için yeni kullanım](../media/how-to-configure-student-usage/new-usage-hours.png)
 
+## <a name="student-accounts"></a>Öğrenci hesapları
+Bir sınıf laboratuvarına öğrenci eklemek için e-posta hesaplarını kullanın. Aşağıdaki e-posta hesabı türleri kullanılabilir:
+
+- University in Office 365 Azure Active Directory (AAD) tarafından sunulan bir öğrenci e-posta hesabı. 
+- `@outlook.com`, `@hotmail.com`, `@msn.com`veya `@live.com`gibi bir Microsoft e-posta hesabı.
+- Microsoft olmayan bir e-posta hesabı, örneğin, Yahoo veya Google tarafından sağlanmamıştır. Ancak, bu tür hesapların bir Microsoft hesabı bağlantılı olması gerekir.
+- GitHub hesabı. Bu hesabın bir Microsoft hesabı ile bağlantılı olması gerekir.
+
+### <a name="using-a-non-microsoft-email-account"></a>Microsoft olmayan bir e-posta hesabı kullanma
+Öğrenciler, bir sınıf laboratuvarına kaydolmak ve oturum açmak için Microsoft olmayan e-posta hesaplarını kullanabilir.  Ancak kayıt, öğrencilerin öncelikle Microsoft olmayan e-posta adreslerine bağlı bir Microsoft hesabı oluşturmasını gerektirir.
+
+Birçok öğrenciye, Microsoft olmayan e-posta adreslerine bağlı bir Microsoft hesabı zaten sahip olabilir. Örneğin, öğrenciler zaten Microsoft 'un e-posta adreslerini Office, Skype, OneDrive veya Windows gibi diğer ürün veya hizmetleriyle kullandıklarında Microsoft hesabı sahiptir.  
+
+Bir öğrenci bir sınıfta oturum açmak için kayıt URL 'sine tıkladığında, kendilerine ait e-posta adresi ve parolası sorulur. Öğrenci, Microsoft hesabı bağlantılı olmayan bir Microsoft hesabı oturum açmaya çalışırsa, öğrenci aşağıdaki hata iletisini alır: 
+
+![Hata iletisi](../media/how-to-configure-student-usage/cant-find-account.png)
+
+Microsoft hesabı kaydolmak için öğrenciler [http://signup.live.com](http://signup.live.com)gitmelidir.  
+
+> [!IMPORTANT]
+> Öğrenciler bir derslik laboratuvarında oturum açtıklarında, bunlara Microsoft hesabı oluşturma seçeneği verilmez. Bu nedenle, bu kayıt bağlantısını Microsoft dışı hesapları kullanan öğrencilerle göndereceğiniz sınıf Laboratuvarı kayıt e-postasına dahil etmenizi öneririz.
+
+### <a name="using-a-github-account"></a>GitHub hesabı kullanma
+Öğrenciler, bir sınıf laboratuvarına kaydolmak ve oturum açmak için mevcut bir GitHub hesabı da kullanabilir. Öğrencinin zaten GitHub hesabına bağlı bir Microsoft hesabı varsa, bu kullanıcılar oturum açabilir ve önceki bölümde gösterildiği gibi parolasını sağlayabilir. Henüz GitHub hesabını bir Microsoft hesabı bağlamamış olmaları durumunda, **oturum açma seçeneklerini**seçmeleri gerekir:
+
+![Oturum açma seçenekleri bağlantısı](../media/how-to-configure-student-usage/signin-options.png)
+
+**Oturum açma seçenekleri** sayfasında **GitHub ile oturum aç**' ı seçin.
+
+![GitHub bağlantısıyla oturum açın](../media/how-to-configure-student-usage/signin-github.png)
+
+Son olarak, bunlara GitHub hesaplarına bağlı bir Microsoft hesabı oluşturması istenir. Öğrenci bir **Sonrakini**seçtiğinde otomatik olarak gerçekleşir.  Daha sonra öğrenci hemen oturum açtı ve derslik laboratuvarına bağlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:

@@ -1,5 +1,5 @@
 ---
-title: Akıllı İçgörüler Azure SQL veritabanı performans sorunlarını giderme | Microsoft Docs
+title: Akıllı İçgörüler Azure SQL veritabanı performans sorunlarını giderme
 description: Akıllı İçgörüler, Azure SQL veritabanı performans sorunlarını gidermenize yardımcı olur.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: f884b39db92f44f7cff938e0ac4b9c2e22dc36cb
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fef1ed386dbf3acccc09b9bba743b6b33492da0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262204"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689723"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Akıllı İçgörüler Azure SQL veritabanı performans sorunlarını giderme
 
@@ -108,9 +108,9 @@ En yüksek bellek kullanımıyla birlikte bulunan kişilerle ilgili sorguları i
 
 Ayrıca, birden çok veritabanı üzerinde iyileştirerek veya dağıtarak iş yükünü azaltabilirsiniz. Ya da iş yükünüzü birden çok veritabanı arasında dağıtabilirsiniz. Bu çözümler mümkün değilse, veritabanı için kullanılabilir bellek kaynakları miktarını artırmak için SQL veritabanı aboneliğinizin fiyatlandırma katmanını artırmayı göz önünde bulundurun.
 
-Ek sorun giderme önerileri için bkz [. bellek desteği verir: Çok sayıda adı](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/)olan bellek tüketicisini gizSQL Server.
+Ek sorun giderme önerileri için bkz. [bellek desteği: çok sayıda adı olan, bilinmeyen SQL Server bellek tüketicisi](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
-## <a name="locking"></a>Kilitleniyor
+## <a name="locking"></a>Lemeye
 
 ### <a name="what-is-happening"></a>Ne oluyor
 
@@ -188,7 +188,7 @@ Tanılama günlüğü, iş yükü performansını etkilemek için tanımlanan so
 > SQL Database 'in sürekli performans iyileştirmesi için, [SQL veritabanı otomatik ayarlamayı](sql-database-automatic-tuning.md)etkinleştirmenizi öneririz. SQL veritabanı yerleşik zeka 'nın bu benzersiz özelliği, SQL veritabanınızı sürekli olarak izler ve veritabanlarınızın dizinlerini otomatik olarak oluşturur.
 >
 
-## <a name="new-query"></a>Yeni Sorgu
+## <a name="new-query"></a>Yeni sorgu
 
 ### <a name="what-is-happening"></a>Ne oluyor
 
@@ -226,7 +226,7 @@ Bu algılanabilir performans modelinde, tempDB kaynaklarına erişmeye çalışa
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
-Tanılama günlüğünde tempDB çekişme ayrıntıları çıktı. Sorun giderme için başlangıç noktası olarak bu bilgileri kullanabilirsiniz. Bu tür çekişmeyi hafifetmek ve genel iş yükünün verimini artırmak için kullanabileceğiniz iki şey vardır: Geçici tabloları kullanmayı durdurabilirsiniz. Bellek için iyileştirilmiş tabloları da kullanabilirsiniz. 
+Tanılama günlüğünde tempDB çekişme ayrıntıları çıktı. Sorun giderme için başlangıç noktası olarak bu bilgileri kullanabilirsiniz. Bu tür çekişmeyi hafifetmek ve genel iş yükünün verimini artırmak için kullanabileceğiniz iki şey vardır: geçici tabloları kullanmayı durdurabilirsiniz. Bellek için iyileştirilmiş tabloları da kullanabilirsiniz. 
 
 Daha fazla bilgi için bkz. [bellek için iyileştirilmiş tablolara giriş](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
 
@@ -320,7 +320,7 @@ Fiyatlandırma katmanınızı düşürüyorsanız ve bu nedenle SQL veritabanı 
 
 Azure SQL Analytics 'e giderek Azure portal üzerinden Akıllı İçgörüler erişin. Gelen performans uyarısını bulmayı deneyin ve seçin. Algılamalar sayfasında neler olduğunu belirler. Sorunun, sorgu metninin, sorgu süresi eğilimlerini ve olay evriminin belirtilen kök neden analizini gözlemleyin. Sorunu gidermek için Akıllı İçgörüler öneriyi kullanarak sorunu çözmeyi deneyin. 
 
-[![Akış grafiği sorunlarını giderme](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
+[![sorun giderme akış grafiği](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
 > [!TIP]
 > PDF sürümünü indirmek için akış çizelgesini seçin.

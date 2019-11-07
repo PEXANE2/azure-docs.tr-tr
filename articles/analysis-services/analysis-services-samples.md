@@ -1,18 +1,18 @@
 ---
 title: Kod, proje ve veritabanı örnekleri Azure Analysis Services | Microsoft Docs
-description: Azure Analysis Services için kod, proje ve veritabanı örnekleri hakkında bilgi edinin.
+description: Bu makalede, Azure Analysis Services için kod, proje ve veritabanı örnekleri hakkında bilgi edinmek için kaynaklar açıklanır.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17ce7de58afcf9ef2090371b897ff1bbbef824e3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 743061c1e32d9ca86e90733dbfd66575d2085dbc
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146305"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572297"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services örnekleri
 

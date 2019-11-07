@@ -1,5 +1,5 @@
 ---
-title: Uzak Masaüstü 'nde grafik performans sorunlarını tanılama-Azure
+title: Grafik performans sorunlarını tanılama uzak masaüstü-Azure
 description: Bu makalede, Windows sanal masaüstündeki grafiklerle ilgili performans sorunlarını tanılamak için Uzak Masaüstü Protokolü oturumlarında RemoteFX grafik sayaçlarının nasıl kullanılacağı açıklanır.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: b6a78fbf2fcb12962b42537965deea6c7912315d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c41a433ee19969546e1db2aa583c72ed166b7ebf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676539"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607473"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Uzak Masaüstü 'nde grafik performans sorunlarını tanılama
 
@@ -34,7 +34,7 @@ Grafik performans sayaçlarını belirlemek için uzak oturum adınızın olmas�
 
 Uzak oturum adınızı belirledikten sonra, uzak oturumunuz için RemoteFX grafik performans sayaçlarını toplamak üzere aşağıdaki yönergeleri izleyin.
 
-1. @No__t **Başlat**-1**Yönetim Araçları** > **Performans İzleyicisi**' ni seçin.
+1. **Yönetim araçları** > **Performans İzleyicisi** > **Başlat** ' ı seçin.
 2. **Performans İzleyicisi** Iletişim kutusunda **izleme araçları**' nı genişletin, **Performans İzleyicisi**' ni seçin ve ardından **Ekle**' yi seçin.
 3. **Sayaç Ekle** iletişim kutusunda, **kullanılabilir sayaçlar** listesinden, RemoteFX grafikleri bölümünü genişletin.
 4. İzlenecek sayaçları seçin.

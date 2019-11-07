@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 3f619caf7e2713e1c9251550b06c8bdefba5936f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 1854599956755716955a6e691c3266ac54ddafd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493395"
+ms.locfileid: "73581559"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Öğretici: CLı 'dan model eğitme ve dağıtma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Aşağıdaki eylemleri nasıl gerçekleştireceğinizi öğrenin:
 > * Modeli bir Web hizmeti olarak dağıtma
 > * Web hizmetini kullanarak veri puanı
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
@@ -183,7 +183,7 @@ Bu komut, çalışma alanınıza bağlanmak için gereken bilgileri içeren bir 
 
 ## <a name="create-the-compute-target-for-training"></a>Eğitim için işlem hedefi oluşturma
 
-Bu örnek, modeli eğitmek için bir Azure Machine Learning Işlem kümesi kullanır. Yeni bir işlem kümesi oluşturmak için aşağıdaki komutu kullanın:
+Bu örnek, modeli eğitmek için bir Azure Machine Learning Not defteri VM kullanır. Yeni bir not defteri VM 'si oluşturmak için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az ml computetarget create amlcompute -n cpu --max-nodes 4 --vm-size Standard_D2_V2
@@ -239,7 +239,7 @@ Bu metin, eğitim betiğinden (`train-sklearn.py`) günlüğe kaydedilir ve bu m
 
 `train-sklearn.py`görüyorsanız, Ayrıca, eğitilen modelleri dosya olarak depoladığında Alfa değerini de kullandığını fark edeceksiniz. Bu durumda, çeşitli modeller de vardır. En yüksek Alpha ile olan en iyi bir değer olmalıdır. Yukarıdaki çıktıya ve kod, 0,95 Alpha içeren modelin `./outputs/ridge_0.95.pkl` olarak kaydedildiğini göz lıyor
 
-Model, eğitilen işlem hedefinde `./outputs` dizinine kaydedildi. Bu durumda, Azure bulutu 'nda Azure Machine Learning Işlem örneği. Eğitim süreci, eğitim Azure Machine Learning çalışma alanınıza gerçekleştiği işlem hedefinden `./outputs` dizininin içeriğini otomatik olarak yükler. Bu, denemenin bir parçası olarak depolanır (Bu örnekteki`myexperiment`).
+Model, eğitilen işlem hedefinde `./outputs` dizinine kaydedildi. Bu durumda, Azure bulutundaki Azure Machine Learning Not defteri sanal makinesi. Eğitim süreci, eğitim Azure Machine Learning çalışma alanınıza gerçekleştiği işlem hedefinden `./outputs` dizininin içeriğini otomatik olarak yükler. Bu, denemenin bir parçası olarak depolanır (Bu örnekteki`myexperiment`).
 
 ## <a name="register-the-model"></a>Modeli Kaydet
 

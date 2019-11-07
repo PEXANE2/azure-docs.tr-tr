@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: b765e7a03f84211d4a86c4242e9484b3517c95f9
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 238969b320608c08491c3d3e85870d57f41c1589
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933556"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614972"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal kullanarak Dayanıklı İşlevler oluşturun
 
@@ -36,7 +36,7 @@ Oluşturulan işlev uygulaması, varsayılan olarak Azure Işlevleri çalışma 
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Dayanıklı işlevler NPM paketini (yalnızca JavaScript) yükler
 
-JavaScript dayanıklı işlevler oluşturuyorsanız [ `durable-functions` NPM paketini](https://www.npmjs.com/package/durable-functions)yüklemeniz gerekir.
+JavaScript Dayanıklı İşlevler oluşturuyorsanız, [`durable-functions` NPM paketini](https://www.npmjs.com/package/durable-functions)yüklemeniz gerekecektir.
 
 1. İşlev uygulamanızın adını, ardından **platform özelliklerini**ve **Gelişmiş Araçlar 'ı (kudu)** seçin.
 
@@ -46,25 +46,25 @@ JavaScript dayanıklı işlevler oluşturuyorsanız [ `durable-functions` NPM pa
 
    ![Kudu hata ayıklama konsolu](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-3. İşlev uygulamanızın dosya dizini yapısı görüntülenmelidir. `site/wwwroot` klasörüne gidin. Buradan dosya dizini penceresine sürükleyip bırakarak bir `package.json` dosyayı karşıya yükleyebilirsiniz. Örnek `package.json` aşağıda verilmiştir:
+3. İşlev uygulamanızın dosya dizini yapısı görüntülenmelidir. `site/wwwroot` klasörüne gidin. Buradan dosya dizini penceresine sürükleyip bırakarak bir `package.json` dosyasını karşıya yükleyebilirsiniz. Örnek bir `package.json` aşağıda verilmiştir:
 
     ```json
     {
       "dependencies": {
-        "durable-functions": "^1.1.2"
+        "durable-functions": "^1.3.1"
       }
     }
     ```
 
    ![Kudu yükleme paketi. JSON](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-4. Karşıya yüklendikten sonra kudu uzaktan yürütme `npm install` konsolundan komutunu çalıştırın. `package.json`
+4. `package.json` karşıya yüklendikten sonra, kudu uzaktan yürütme konsolundan `npm install` komutunu çalıştırın.
 
    ![Kudu çalıştırma NPM yüklemesi](./media/durable-functions-create-portal/kudu-npm-install.png)
 
 ## <a name="create-an-orchestrator-function"></a>Orchestrator işlevi oluşturma
 
-1. İşlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
+1. İşlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
 
    ![Azure portalındaki İşlevler hızlı başlangıç sayfası](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
 
@@ -72,7 +72,7 @@ JavaScript dayanıklı işlevler oluşturuyorsanız [ `durable-functions` NPM pa
 
     ![İşlevler hızlı başlangıcı diğer şablonlar](./media/durable-functions-create-portal/add-first-function.png)
 
-1. Arama alanına yazın `durable` ve ardından **dayanıklı işlevler http başlangıç** şablonunu seçin.
+1. Arama alanına `durable` yazın ve ardından **DAYANıKLı işlevler http başlangıç** şablonunu seçin.
 
 1. İstendiğinde, Azure DurableTask uzantısını işlev uygulamasına herhangi bir bağımlılığı **yüklemek için,** ' ı seçin. Bir verme işlevi uygulaması için uzantıyı yalnızca bir kez yüklemeniz gerekir. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
 
@@ -80,9 +80,9 @@ JavaScript dayanıklı işlevler oluşturuyorsanız [ `durable-functions` NPM pa
 
 1. Yükleme tamamlandıktan sonra, yeni işlevi `HttpStart` adlandırın ve **Oluştur**' u seçin. Oluşturulan işlev Düzenleme başlatmak için kullanılır.
 
-1. İşlev uygulamasında, bu kez **dayanıklı işlevler Orchestrator** şablonunu kullanarak başka bir işlev oluşturun. Yeni düzenleme işlevinizi `HelloSequence`adlandırın.
+1. İşlev uygulamasında, bu kez **dayanıklı işlevler Orchestrator** şablonunu kullanarak başka bir işlev oluşturun. Yeni düzenleme işlevinizi `HelloSequence`olarak adlandırın.
 
-1. **Dayanıklı işlevler etkinlik** şablonunu kullanarak adlı `Hello` üçüncü bir işlev oluşturun.
+1. **Dayanıklı işlevler etkinlik** şablonunu kullanarak `Hello` adlı üçüncü bir işlev oluşturun.
 
 ## <a name="test-the-durable-function-orchestration"></a>Dayanıklı işlev düzenlemesini test etme
 
@@ -106,7 +106,7 @@ JavaScript dayanıklı işlevler oluşturuyorsanız [ `durable-functions` NPM pa
     }
     ```
 
-1. `statusQueryGetUri` Uç nokta URI 'sini çağırın ve dayanıklı işlevin geçerli durumunu görürsünüz ve bu örnek aşağıdaki gibi görünebilir:
+1. `statusQueryGetUri` uç noktası URI 'sini çağırın ve dayanıklı işlevin geçerli durumunu görürsünüz ve bu örnek aşağıdaki gibi görünebilir:
 
     ```json
         {
@@ -118,7 +118,7 @@ JavaScript dayanıklı işlevler oluşturuyorsanız [ `durable-functions` NPM pa
         }
     ```
 
-1. Durum tamamlanana kadar `statusQueryGetUri` , bitiş noktasını çağırmaya devam edinve aşağıdaki örnekte olduğu gibi bir yanıt görürsünüz:
+1. Durum **tamamlanana**kadar `statusQueryGetUri` uç noktasını çağırmaya devam edin ve aşağıdaki örnekte olduğu gibi bir yanıt görürsünüz:
 
     ```json
     {

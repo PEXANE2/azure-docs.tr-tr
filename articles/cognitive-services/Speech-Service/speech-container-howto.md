@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 647edcab5ec2925016e8a099ae43b6133037f8de
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: efb2fd8fd6b77a27130b834c2b192c1e88eec97c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491154"
+ms.locfileid: "73578393"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yükleyip çalıştırma
 
@@ -35,7 +35,7 @@ Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Konuşma kapsayıcılarını kullanmadan önce aşağıdaki Önkoşullar:
 
@@ -167,19 +167,7 @@ Aşağıdaki etiket, biçiminin bir örneğidir:
 2.0.0-amd64-en-us-preview
 ```
 
-Aşağıdaki tabloda, kapsayıcının 2.0.0 sürümünde **konuşmayı metne** yönelik desteklenen yerel ayarlar listelenmiştir:
-
-| Dil yerel ayarı | Etiketler |
-|--|--|
-| Çince | `zh-CN` |
-| Türkçe | `en-US`<br>`en-GB`<br>`en-AU`<br>`en-IN` |
-| Fransızca | `fr-CA`<br>`fr-FR` |
-| Almanca | `de-DE` |
-| İtalyanca | `it-IT` |
-| Japonca | `ja-JP` |
-| Korece | `ko-KR` |
-| Portekizce | `pt-BR` |
-| İspanyolca | `es-ES`<br>`es-MX` |
+**Konuşma-metin** kapsayıcısının 2.0.0 sürümünde desteklenen tüm yerel ayarlar için, kira [metin dili destek](language-support.md#speech-to-text) tablosunun **kapsayıcı desteği** sütununa bakın.
 
 # <a name="custom-speech-to-texttabcstt"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
 
@@ -221,24 +209,7 @@ Aşağıdaki etiket, biçiminin bir örneğidir:
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-Aşağıdaki tabloda, kapsayıcının 1.3.0 sürümünde **metinden konuşmaya** için desteklenen yerel ayarlar listelenmektedir:
-
-| Dil yerel ayarı | Etiketler | Desteklenen sesler |
-|--|--|--|
-| Çince | `zh-CN` | kuihuırus<br>kangkang-Apollo<br>yaoyao-Apollo |
-| Türkçe | `en-AU` | Catherine<br>hayleyrus |
-| Türkçe | `en-GB` | George-Apollo<br>hazelrus<br>çiğdem-Apollo |
-| Türkçe | `en-IN` | Heera-Apollo<br>Primus<br>rampadili-Apollo<br> |
-| Türkçe | `en-US` | jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus |
-| Fransızca | `fr-CA` | Caroline dili<br>HARMİ Erus |
-| Fransızca | `fr-FR` | hortenserus<br>Julie-Apollo<br>Paul-Apollo |
-| Almanca | `de-DE` | Hedda<br>heddarus<br>Stefan-Apollo |
-| İtalyanca | `it-IT` | cosımo-Apollo<br>luciarus |
-| Japonca | `ja-JP` | Ayumi-Apollo<br>harukarus<br>Ichiro-Apollo |
-| Korece | `ko-KR` | heamirus |
-| Portekizce | `pt-BR` | Daniel-Apollo<br>heloisarus |
-| İspanyolca | `es-ES` | elenarus<br>gamze-Apollo<br>Pablo-Apollo<br> |
-| İspanyolca | `es-MX` | tepdarus<br>vaul-Apollo |
+**Metin okuma** kapsayıcısının 1.3.0 sürümünde desteklenen tüm yerel ayarlar ve karşılık gelen sesler için lütfen [standart sesler dil desteği](language-support.md#standard-voices) tablosunun **kapsayıcı desteği** sütununa bakın.
 
 > [!IMPORTANT]
 > *Standart bir metinden konuşmaya* http gönderisi oluştururken, [konuşma birleştirme biçimlendirme dili (SSML)](speech-synthesis-markup.md) iletisi, `name` özniteliği olan bir `voice` öğesi gerektirir. Değer, ["kısa ad"](language-support.md#standard-voices)olarak da bilinen karşılık gelen kapsayıcı yerel ayarı ve sestir. Örneğin, `latest` etiketinde `en-US-JessaRUS`bir ses adı olacaktır.
@@ -267,7 +238,7 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı `docker run` ile çalıştırma
 
-Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{Endpoint_URI}` ve `{API_Key}` değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın. `docker run` komutuna ek [örnekler](speech-container-configuration.md#example-docker-run-commands) de mevcuttur.
+Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. [ Ve](#gathering-required-parameters) değerlerini alma hakkında ayrıntılar için gerekli `{Endpoint_URI}`parametreleri`{API_Key}` toplama bölümüne bakın. `docker run` komutuna ek [örnekler](speech-container-configuration.md#example-docker-run-commands) de mevcuttur.
 
 # <a name="speech-to-texttabstt"></a>[Konuşmayı metne dönüştürme](#tab/stt)
 

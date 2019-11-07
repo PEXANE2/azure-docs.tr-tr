@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 249afcaad85d9031e0972d4fcfc185b5ff890f65
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 197bd14c425d80a814f370a2050c085b1eef143d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390339"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579028"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Kaynakları Resource Manager şablonları ve Azure portalı ile dağıtma
 
@@ -89,7 +89,7 @@ Bir dağıtımı yürütmek, ancak Market 'teki şablonlardan hiçbirini kullanm
 1. Şablon oluşturmak için çeşitli seçenekler görürsünüz:
 
     - **Düzenleyicide kendi şablonunuzu**oluşturun: Portal şablonu düzenleyicisini kullanarak şablon oluşturma.  Düzenleyici, bir kaynak şablonu şeması ekleyebilir.
-    - **Ortak şablonlar**: bir Linux sanal makinesi, Windows sanal makinesi, bir Web uygulaması ve bır Azure SQL veritabanı oluşturmak için dört ortak templatess vardır.
+    - **Ortak şablonlar**: bir Linux sanal makinesi, Windows sanal makinesi, bir Web uygulaması ve bır Azure SQL veritabanı oluşturmak için dört ortak şablon vardır.
     - **GitHub hızlı başlangıç şablonu yükleme**: mevcut bir [Hızlı Başlangıç şablonlarını](https://azure.microsoft.com/resources/templates/)kullanın.
 
    ![Görüntüleme seçenekleri](./media/resource-group-template-deploy-portal/see-options.png)

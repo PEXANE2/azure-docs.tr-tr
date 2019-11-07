@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı ve veri ambarı için özel bağlantı | Microsoft Docs
+title: Azure SQL veritabanı ve veri ambarı için özel bağlantı
 description: Özel uç nokta özelliğine genel bakış
 author: rohitnayakmsft
 ms.author: rohitna
@@ -7,12 +7,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: 3adcccde89823f865535c9e1350ac4c3e541eef6
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: a056c4beeeb05886d4b4ed492a05d1963372b366
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71066252"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687617"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Azure SQL veritabanı ve veri ambarı için özel bağlantı (Önizleme)
 
@@ -60,16 +60,16 @@ Ağ Yöneticisi özel uç noktayı (PE) oluşturduktan sonra, SQL Yöneticisi ö
 
     - (1) sol bölmedeki özel uç nokta bağlantılarını seçin
     - (2) tüm özel uç nokta bağlantılarının (lar) bir listesini gösterir
-    - (3) karşılık gelen özel uç nokta (PE) oluşturuldu @no__t-tüm ö @ no__t-1 için-0Ekran görüntüsü
+    - (3) karşılık gelen özel uç nokta (PE), tüm ![][3] ekran görüntüsü oluşturdu
 
 1. Listeden tek bir PEC seçin.
-![Ekran görüntüsü seçili PEC @ no__t-1
+![ekran görüntüsü seçili PEC][6]
 
 1. SQL Yöneticisi bir PEC 'i onaylamayı veya reddetmeyi seçebilir ve isteğe bağlı olarak kısa bir metin yanıtı ekleyebilir.
-![PEC onayının @ no__t-1 ekran görüntüsü
+PEC onay][4] ekran görüntüsünü ![
 
 1. Onay veya reddetme sonrasında, liste, yanıt metniyle birlikte uygun durumu yansıtır.
-onay @ no__t-1 ' den sonra tüm ö 'leri ![Ekran görüntüsü
+onay sonrasında tüm ö ![ekran görüntüsünü][5]
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Azure SQL veritabanı için özel bağlantı durumlarını kullanma 
 
@@ -128,7 +128,7 @@ Connecting to 10.6.1.4:1433: from 10.6.0.4:49958: 2.28ms
 
 ### <a name="check-connectivity-using-nmap"></a>Nmap kullanarak bağlantıyı denetle
 
-Nmap (ağ Eşleyici), ağ bulma ve güvenlik denetimi için kullanılan ücretsiz ve açık kaynaklı bir araçtır. Daha fazla bilgi ve indirme bağlantısı için https://nmap.org ' ı ziyaret edin. Özel uç noktanın 1433 numaralı bağlantı noktasında bağlantıları dinlediğinden emin olmak için bu aracı kullanabilirsiniz.
+Nmap (ağ Eşleyici), ağ bulma ve güvenlik denetimi için kullanılan ücretsiz ve açık kaynaklı bir araçtır. Daha fazla bilgi ve indirme bağlantısı için https://nmap.orgziyaret edin. Özel uç noktanın 1433 numaralı bağlantı noktasında bağlantıları dinlediğinden emin olmak için bu aracı kullanabilirsiniz.
 
 Özel uç noktayı barındıran alt ağın adres aralığını sağlayarak Nmap 'i aşağıdaki şekilde çalıştırın.
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici günlükleri ile Azure SQL Data Sync izleme | Microsoft Docs
+title: 'Azure Izleyici günlükleri ile Azure SQL Data Sync izleme '
 description: Azure Izleyici günlüklerini kullanarak Azure SQL Data Sync izlemeyi öğrenin
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 26dc1ebef1c627ed2b20eb0fda68b2ca2d01b82a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9e89ad8e6ac556df87a674efdf2d3bbc2041c38b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791750"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687037"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle SQL Data Sync izleme 
 
@@ -61,7 +61,7 @@ Aşağıdaki iki örneği indirin:
 
 -   [Veri eşitleme Azure Izleyici görünümü](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki şeyleri ayarladığınızdan emin olun:
 
@@ -135,7 +135,7 @@ Azure Izleyici günlüklerini kullanan bir uyarı oluşturmak için aşağıdaki
 
 1.  Azure portal **günlük araması**' nı seçin.
 
-2.  Seçtiğiniz Aralık dahilinde eşitleme grubuna göre hataları ve uyarıları seçmek için bir sorgu oluşturun. Örnek:
+2.  Seçtiğiniz Aralık dahilinde eşitleme grubuna göre hataları ve uyarıları seçmek için bir sorgu oluşturun. Örneğin:
 
     `DataSyncLog_CL | where TimeGenerated > ago(60m) | where LogLevel_s != "Success" | summarize count() by SyncGroupName_s`
 

@@ -1,17 +1,17 @@
 ---
-title: Azure HPC Cache (Önizleme) ile bölgesel artıklık ve yük devretme kurtarma
+title: Azure HPC Cache ile bölgesel artıklık ve yük devretme kurtarma
 description: Azure HPC Cache ile olağanüstü durum kurtarma için yük devretme özellikleri sağlama teknikleri
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: ca771ceed433c6eb0ed26bba6fcb1bf11db211f0
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: e0ff9bc66c7d185f8fe07b4b4574833fcd7e2604
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031623"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582075"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Bölgesel yük devretme kurtarması için birden çok önbellek kullanma
 
@@ -55,7 +55,7 @@ Doğu ABD bölge genelinde hata durumunda Batı ABD 2 bölgesinde hazırladığ�
 
 İstemcilerin bölge kesintisinden etkilenmemesi durumunda bile, tüm istemcilerin yeni önbelleği takmasına gerek olacaktır. Yeni önbelleğin eskileri 'den farklı bağlama adresleri vardır.
 
-## <a name="learn-more"></a>Daha fazla bilgi
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 Azure Uygulama Mimarisi Kılavuzu, [bölge genelinde hizmet kesintisini nasıl kurtarabileceğiniz](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>)hakkında daha fazla bilgi içerir.
 <!-- this should be an internal link instead of a URL but I can't find the tree  -->

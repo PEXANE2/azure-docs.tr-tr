@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Veritabanı hizmeti nedir? | Microsoft Docs
+title: Azure SQL Veritabanı hizmeti nedir?
 description: "SQL veritabanı 'na giriş: bulutta Microsoft ilişkisel veritabanı yönetim sistemi 'nin (RDBMS) teknik ayrıntıları ve özellikleri."
 keywords: sql'e giriş,sql veritabanı nedir
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: e5782ba016cf58335de17cdacabbcca95914f59a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d22408904ae21bc7512d4ebe8792666227893337
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066274"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687014"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Veritabanı hizmeti nedir?
 
@@ -99,9 +99,9 @@ Azure SQL veritabanı, iş yükü özelliklerine daha derin Öngörüler elde et
 
 Azure, binlerce veritabanının durumunu izlemenize olanak sağlayan, performans derecelendirmeleri ile birleştirilmiş [yerleşik performans izleme](sql-database-performance.md) ve [Uyarı](sql-database-insights-alerts-portal.md) araçları sağlar. Bu araçları kullanarak, geçerli veya tahmini performans ihtiyaçlarınıza göre ölçeği artırma veya azaltma etkilerini hızla değerlendirebilirsiniz. SQL Veritabanı ayrıca izlemeyi kolaylaştırmak için [ölçümler ve tanılama günlükleri oluşturabilir](sql-database-metrics-diag-logging.md). SQL Veritabanını kaynak kullanımını, çalışanları, oturumları ve bu Azure kaynaklarından birine yapılan bağlantıları kaydedecek şekilde yapılandırabilirsiniz:
 
-- **Azure depolama**: Küçük bir fiyata ait çok sayıda telemetrinin arşivlenmesi için.
+- **Azure Depolama**: Küçük maliyetlerle çok sayıda telemetri arşivleme için.
 - **Azure Event Hubs**: SQL veritabanı telemetrisini özel izleme çözümünüz veya etkin işlem hatlarınız ile tümleştirmek için.
-- **Azure izleyici günlükleri**: Raporlama, uyarma ve azaltıcı yetenekler içeren yerleşik bir izleme çözümü için.
+- **Azure izleyici günlükleri**: raporlama, uyarı ve azaltıcı yetenekler içeren yerleşik bir izleme çözümü için.
 
 ![Azure izleme mimarisi diyagramı](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -152,8 +152,8 @@ SQL veritabanı üzerinde [SaaS çok kiracılı uygulamalar](sql-database-design
 
 [SQL veritabanında](sql-database-automatic-tuning.md)iki otomatik ayarlama yönü mevcuttur:
 
-- **Otomatik Dizin Yönetimi**: Veritabanınıza eklenmesi gereken dizinleri ve kaldırılması gereken dizinleri tanımlar.
-- **Otomatik plan düzeltmesi**: Sorunlu planları tanımlar ve SQL planı performans sorunlarını düzeltir.
+- **Otomatik dizin yönetimi**: Veritabanınıza eklenmesi ve veritabanınızdan kaldırılması gereken dizinleri tanımlar.
+- **Otomatik plan düzeltme**: sorunlu planları TANıMLAR ve SQL planı performans sorunlarını düzeltir.
 
 ### <a name="adaptive-query-processing"></a>Uyarlamalı sorgu işleme
 
@@ -184,7 +184,7 @@ Gelişmiş veri güvenliği, gelişmiş SQL güvenlik özelliklerine yönelik Bi
 
 [Denetim](sql-database-auditing.md) , veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazar. Denetim, yasal uyumluluğu korumanıza, veritabanı etkinliklerini anlamanıza ve işle ilgili endişeleri veya şüpheli güvenlik ihlallerini gösteren tutarsızlıklar ve bozukluklar elde etmenize yardımcı olabilir.
 
-### <a name="data-encryption"></a>Veri şifreleme
+### <a name="data-encryption"></a>Veri şifrelemesi
 
 SQL veritabanı, şifreleme sağlayarak verilerinizin güvenliğinin sağlanmasına yardımcı olur. Hareket halindeki veriler için [Aktarım Katmanı Güvenliği](https://support.microsoft.com/kb/3135244)kullanır. Bekleyen veriler için [Saydam veri şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)kullanır. Kullanılan veriler için [her zaman şifreli](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)' i kullanır.
 
@@ -250,11 +250,11 @@ SQL veritabanı müşterileri, SQL Server için Azure Hibrit Avantajı ilişkili
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>SQL Server mühendislik ekibi ile iletişime geçme
 
-- [DBA yığın değişimi](https://dba.stackexchange.com/questions/tagged/sql-server): Veritabanı yönetim sorularını sorun.
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): Geliştirme sorularını sorun.
+- [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): veritabanı yönetim sorularına sorun.
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): geliştirme sorularını sorun.
 - [MSDN forumları](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Teknik sorular sorun.
-- [Geri bildirim](https://aka.ms/sqlfeedback): Hataları ve istek özelliğini bildirin.
-- [Reddıt](https://www.reddit.com/r/SQLServer/): SQL Server tartışın.
+- [Geri bildirim](https://aka.ms/sqlfeedback): hataları ve istek özelliğini bildir.
+- [Reddit](https://www.reddit.com/r/SQLServer/): SQL Server tartışın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -2,20 +2,20 @@
 title: Azure blok zinciri sınırları
 description: Azure blok zinciri hizmetindeki hizmet ve işlevsel sınırlara genel bakış
 services: azure-blockchain
-keywords: blok zinciri
+keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: aeed84f19da3843d043eafef9d7444661901c53e
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 20c26db9453220270d17801b74d904384c74cb36
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147140"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577212"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure blok zinciri hizmeti sınırları
 
@@ -27,7 +27,7 @@ Azure blok zinciri hizmeti, bir üyenin sahip olduğu düğüm sayısı, konsors
 
 | Fiyatlandırma katmanı | En fazla işlem düğümleri | En fazla Doğrulayıcı düğümleri |
 |:---|:---:|:---:|
-| Temel | 10 | 1\. |
+| Temel | 10 | 1 |
 | Standart | 10 | 2 |
 
 Üye oluşturulduktan sonra temel ve standart arasındaki fiyatlandırma katmanını değiştirmek desteklenmez.

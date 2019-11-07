@@ -1,5 +1,5 @@
 ---
-title: App Service Mobile Apps ile tümleştirme
+title: App Service Mobile Apps ile Tümleştirme
 description: Azure Notification Hubs Azure App Service Mobile Apps nasıl çalıştığını öğrenin.
 author: sethmanheim
 manager: femila
@@ -17,37 +17,32 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8c3bc90b282092ede0e924d32b50b67e5c4e22b8
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 09ecc258001dd735b920c3a7cb51d8ce7443ceb4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244495"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686532"
 ---
-# <a name="integration-with-app-service-mobile-apps"></a>App Service Mobile Apps ile tümleştirme
+# <a name="integration-with-app-service-mobile-apps"></a>App Service Mobile Apps ile Tümleştirme
 
-Azure hizmetlerinde sorunsuz ve geri yükleme deneyimini kolaylaştırmak için, [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) Notification Hubs kullanarak anında iletme bildirimleri için yerleşik desteğe sahiptir. [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) , kurumsal geliştiriciler ve sistem tümleştiricileri için mobil geliştiricilere zengin bir özellik kümesi sağlayan yüksek düzeyde ölçeklenebilir, genel olarak kullanılabilir bir mobil uygulama geliştirme platformu sunar.
+Azure hizmetleri genelinde kesintisiz ve birleştirici bir deneyimi kolaylaştırmak amacıyla [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md)'in Notification Hubs'ı kullanan anında iletme bildirimleri için yerleşik desteği mevcuttur. [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md), Kurumsal Geliştiriciler ve Sistem Tümleştiricileri için mobil geliştiricilere zengin bir özellik kümesi sağlayan, yüksek düzeyde ölçeklenebilir, global olarak kullanılabilir bir mobil uygulama geliştirme platformu sunar.
 
-Visual Studio App Center, günümüzde geliştiriciler için daha modern bir mobil çözüm sunar. Mobil uygulama geliştirmeye yönelik uçtan uca ve tümleşik hizmetler merkezi 'ni destekler. Geliştiriciler, sürekli tümleştirme ve teslim işlem hattı ayarlamak için **oluşturma**, **Test** etme ve **dağıtma** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **analiz** ve **Tanılama** hizmetlerini kullanarak uygulamasının durumunu ve kullanımını izleyebilir ve **Push** hizmetini kullanarak kullanıcılarla etkileşime geçebilir. Geliştiriciler, uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için kullanıcıların ve **veri** hizmetinin kimliklerini doğrulamak üzere **kimlik** doğrulamasından faydalanabilir.
+Mobile Apps geliştiricileri Notification Hubs'ı aşağıdaki iş akışı ile kullanabilir:
 
-> [!NOTE]
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/signup?utm_source=NotificationHubs&utm_medium=Azure&utm_campaign=docs) kaydolun.
-
-Mobile Apps geliştiriciler aşağıdaki iş akışıyla Notification Hubs kullanabilir:
-
-1. Cihaz PNS tanıtıcısını al
-2. Cihazı uygun Mobile Apps Istemci SDK 'Sı kayıt API 'siyle Notification Hubs kaydetme
+1. Cihaz PNS tanıtıcısını alma
+2. Uygun Mobile Apps İstemci SDK'sı kayıt API'si yoluyla Notification Hubs'a cihazı kaydetme
 
     > [!NOTE]
-    > Mobile Apps, güvenlik amacıyla kayıtlarda tüm etiketleri uzağa kayacağını unutmayın. Etiketleri cihazlarla ilişkilendirmek için doğrudan arka ucunuzdaki Notification Hubs çalışın.
+    > Mobile Apps'in güvenlik amacıyla kayıtlardaki tüm etiketleri kaldırdığını unutmayın. Etiketleri cihazlarla ilişkilendirmek için doğrudan arka ucunuzdan Notification Hubs ile çalışın.
 
-3. Notification Hubs ile uygulama arka ucunuzdaki bildirimleri gönderin
+3. Uygulama arka ucunuzdan Notification Hubs ile bildirimler gönderme
 
-Aşağıda, bu tümleştirmeyle geliştiricilere getirilen bazı kolaylığı verilmiştir:
+Bu tümleştirme ile geliştiricilere sağlanan bazı kolaylıklar şunlardır:
 
-- **Mobile Apps Istemci SDK**'ları: Bu çok platformlu SDK 'lar kayıt Için basit API 'ler sağlar ve Mobil uygulamayla bağlantılı Bildirim Hub 'ına otomatik olarak konuşur. Geliştiricilerin Notification Hubs kimlik bilgilerini incelemek ve ek bir hizmetle çalışması gerekmez.
-  - *Kullanıcıya gönder*: SDK 'lar, Kullanıcı senaryosuna gönderimi etkinleştirmek için, belirtilen cihazı Mobile Apps kimliği DOĞRULANMıŞ kullanıcı kimliğiyle otomatik olarak etiketleyin.
-  - *Cihaza gönder*: sdk 'Lar MOBILE Apps yükleme kimliğini otomatik olarak, Notification Hubs kayıt yapmak için GUID olarak kullanır, geliştiricilerin birden çok hizmet GUID 'sini koruma sorunu.
-- **Yükleme modeli**: Mobile Apps, anında iletme bildirim hizmetleri ile hizalanan ve kullanımı kolay bir JSON yüklemesinde bir cihazla ilişkili tüm gönderme özelliklerini temsil etmek için Notification Hubs ' en son gönderim modeliyle birlikte çalışıyor.
-- **Esneklik**: geliştiriciler, her zaman tümleştirmeyle birlikte Notification Hubs doğrudan çalışmayı tercih edebilir.
-- **[Azure Portal](https://portal.azure.com)'de tümleşik deneyim**: bir özellik olarak gönderim, Mobile Apps görsel olarak temsil edilir ve geliştiriciler Mobile Apps üzerinden ilişkili Bildirim Hub 'ı ile kolayca çalışabilir.
+- **Mobile Apps İstemci SDK’ları**: Bu çoklu platform SDK'ları kayıt için basit API'ler sağlar ve mobil uygulama ile bağlantılı bildirim hub'ı ile otomatik olarak konuşur. Geliştiricilerin Notification Hubs kimlik bilgilerini sorgulaması ve ek bir hizmet ile çalışması gerekmez.
+  - *Kullanıcıya gönderme*: SDK'lar, kullanıcı senaryosuna gönderimi sağlamak için, belirli bir cihazı otomatik olarak Mobile Apps kimliği doğrulanmış Kullanıcı Kimliği ile etiketler.
+  - *Cihaza gönderme*: SDK'lar, Notification Hubs'a kaydetmek için Mobile Apps Yükleme Kimliği'ni otomatik olarak GUID gibi kullanır. Böylece, geliştiricileri birden çok hizmet GUID'i saklama zahmetinden kurtarır.
+- **Yükleme modeli**: Mobile Apps, Anında İletme Bildirimi Hizmetleri ile hizalanan ve kullanımı kolay olan bir JSON Yüklemesi'nde, bir cihaz ile ilişkili tüm gönderim özelliklerini temsil etmek için Notification Hubs'ın en son gönderim modeli ile çalışır.
+- **Esneklik**: Geliştiriciler, yerinde tümleştirme söz konusu olduğunda bile her zaman için Notification Hubs ile doğrudan çalışmayı tercih edebilir.
+- **[Azure portalında](https://portal.azure.com) tümleşik deneyim**: Mobile Apps'te gönderim özelliği görsel olarak temsil edilir ve geliştiriciler Mobile Apps aracılığıyla ilişkili bildirim hub'ı ile kolayca çalışabilir.

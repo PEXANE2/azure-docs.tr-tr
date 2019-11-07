@@ -1,5 +1,5 @@
 ---
-title: Azure portal ve PowerShell kullanarak işlem hatlarını izleme ve yönetme | Microsoft Docs
+title: Azure portal ve PowerShell kullanarak işlem hatlarını izleme ve yönetme
 description: Azure portal ve Azure PowerShell kullanarak oluşturduğunuz Azure veri fabrikalarını ve işlem hatlarını izleyip yönetme hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 8e8215d9737087cf1a5632dc8514c12988ff999f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139653"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666975"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure portal ve PowerShell 'i kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Azure portal kullanarak şunları yapabilirsiniz:
 Bu bölümde ayrıca bir veri kümesi diliminin bir durumdan başka bir duruma nasıl geçirdiği açıklanmaktadır.   
 
 ### <a name="navigate-to-your-data-factory"></a>Veri fabrikanıza gitme
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Soldaki menüdeki **veri fabrikaları** ' na tıklayın. Bunu görmüyorsanız, **diğer hizmetler >** ' a tıklayın ve ardından **zeka + analiz** kategorisi altında **veri fabrikaları** ' na tıklayın.
 
    ![Tüm > veri fabrikalarını inceleyin](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -63,7 +63,7 @@ Bir veri fabrikasının **Diyagram** görünümü, veri fabrikasını ve varlık
 
 ![Diyagram görünümü](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
-Yakınlaştırabilir, yakınlaştırabilir, sığacak kadar yakınlaştırabilir,% 100 Yakınlaştır, Diyagram düzenini kilitler ve işlem hatlarını ve veri kümelerini otomatik olarak konumlandırabilirsiniz. Data kökenini bilgilerini de görebilirsiniz (diğer bir deyişle, seçili öğelerin yukarı akış ve aşağı akış öğelerini gösterebilirsiniz).
+Yakınlaştırabilir, yakınlaştırabilir, sığacak kadar yakınlaştırabilir, %100 Yakınlaştır, Diyagram düzenini kilitler ve işlem hatlarını ve veri kümelerini otomatik olarak konumlandırabilirsiniz. Data kökenini bilgilerini de görebilirsiniz (diğer bir deyişle, seçili öğelerin yukarı akış ve aşağı akış öğelerini gösterebilirsiniz).
 
 ### <a name="activities-inside-a-pipeline"></a>İşlem hattının içindeki etkinlikler
 1. İşlem hattına sağ tıklayın ve sonra işlem hattındaki tüm etkinlikleri görüntülemek için işlem hattını **Aç** ' a tıklayın. Bu işlem, etkinliklerin giriş ve çıkış veri kümeleriyle birlikte. Bu özellik, işlem hatlarınız birden fazla etkinlik içerdiğinde ve tek bir işlem hattının işletimsel kökenini anlamak istediğinizde yararlıdır.
@@ -87,7 +87,7 @@ Data Factory 'deki veri kümesi dilimleri aşağıdaki durumlardan birine sahip 
 
 <table>
 <tr>
-    <th align="left">State</th><th align="left">Alt durum</th><th align="left">Açıklama</th>
+    <th align="left">Durum</th><th align="left">Alt</th><th align="left">Açıklama</th>
 </tr>
 <tr>
     <td rowspan="8">Bekleniyor</td><td>ScheduleTime</td><td>Dilimin çalışması için geçen süre.</td>
@@ -115,7 +115,7 @@ Data Factory 'deki veri kümesi dilimleri aşağıdaki durumlardan birine sahip 
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Devam ediyor</td><td>Doğrulanıyor</td><td>Doğrulama devam ediyor.</td>
+<td rowspan="2">Ediyor</td><td>Doğrulamada</td><td>Doğrulama devam ediyor.</td>
 </tr>
 <td>-</td>
 <td>Dilim işleniyor.</td>
@@ -135,10 +135,10 @@ Data Factory 'deki veri kümesi dilimleri aşağıdaki durumlardan birine sahip 
 <td>Hazır</td><td>-</td><td>Dilim, tüketim için hazırlayın.</td>
 </tr>
 <tr>
-<td>Atlandı</td><td>Yok.</td><td>Dilim işlenmiyor.</td>
+<td>Atlanmış</td><td>None</td><td>Dilim işlenmiyor.</td>
 </tr>
 <tr>
-<td>Yok.</td><td>-</td><td>Farklı bir durumla aynı şekilde kullanılan bir dilim, ancak sıfırlandı.</td>
+<td>None</td><td>-</td><td>Farklı bir durumla aynı şekilde kullanılan bir dilim, ancak sıfırlandı.</td>
 </tr>
 </table>
 
@@ -161,7 +161,7 @@ Bir veri fabrikası dağıttıktan ve işlem hatları geçerli bir etkin döneme
 
 ![Durum diyagramı](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-Data Factory 'de veri kümesi durumu geçiş akışı aşağıda verilmiştir: Bekleme-> devam ediyor/sürüyor (doğrulanıyor)-> Ready/Failed.
+Data Factory 'deki veri kümesi durumu geçiş akışı şunlardır: bekleme-> sürüyor/devam ediyor (doğrulanıyor)-> Ready/Failed.
 
 Dilim **bekleme** durumunda başlar ve yürütmeden önce önkoşulların karşılanmasını bekler. Sonra, etkinlik yürütülmeye başlar ve dilim **devam ediyor** durumuna geçer. Etkinlik yürütmesi başarılı veya başarısız olabilir. Dilim, yürütmenin sonucuna bağlı olarak, **Ready** veya **Failed**olarak işaretlenir.
 
@@ -287,7 +287,7 @@ Bir ilke hatası nedeniyle dilimin doğrulanmasına başarısız olması durumun
 
 ![Hataları düzeltin ve doğrulayın](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
-### <a name="use-azure-powershell"></a>Azure PowerShell kullanma
+### <a name="use-azure-powershell"></a>Azure PowerShell’i kullanma
 **Set-AzDataFactorySliceStatus** cmdlet 'ini kullanarak başarısızlıklarını yeniden çalıştırabilirsiniz. Sözdizimi ve cmdlet ile ilgili diğer ayrıntılar için [set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) konusuna bakın.
 
 **Örnek:**

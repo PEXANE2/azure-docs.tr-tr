@@ -1,24 +1,24 @@
 ---
 title: Log Analytics SSS | Microsoft Docs
-description: Azure Log Analytics hizmeti hakkında sık sorulan soruların yanıtları.
+description: Azure Izleyici günlükleri Analizi hizmeti hakkında sık sorulan soruların yanıtları.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 11/13/2018
-ms.openlocfilehash: e3ebb87a7a5f6200d860c1c79591719c32313e11
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 11/01/2019
+ms.openlocfilehash: 9eb921fc8ea19486db0fc3311764931f09e11464
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932225"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579304"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics SSS
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bu Microsoft SSS, Microsoft Azure Log Analytics hakkında sık sorulan soruların bir listesidir. Log Analytics hakkında başka sorularınız varsa, [tartışma forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) gidin ve sorularınızı gönderin. Bir soru sıkça sorulduğunda, hızlı ve kolay bir şekilde bulunabilmesi için bu makaleye ekleyeceğiz.
+Bu Microsoft SSS, Azure Izleyici Log Analytics çalışma alanı hakkında sık sorulan sorulardan oluşan bir listesidir. Log Analytics hakkında başka sorularınız varsa, [tartışma forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) gidin ve sorularınızı gönderin. Bir soru sıkça sorulduğunda, hızlı ve kolay bir şekilde bulunabilmesi için bu makaleye ekleyeceğiz.
 
 
 ## <a name="new-logs-experience"></a>Yeni günlük deneyimi
@@ -62,10 +62,12 @@ Y: VM günlüklerini görüntülemek Için, VM günlüklerini depolayan çalış
 
 Y: Azure 'daki bir çalışma alanına erişmek Için Azure izinlerinin atanmış olması gerekir. Uygun erişim izinlerine sahip olmayabilirsiniz bazı durumlar vardır. Bu durumlarda yöneticinizin Azure 'daki izinleri vermesi gerekir. daha fazla bilgi için bkz. [OMS portalı Azure 'a geçme](oms-portal-transition.md) .
 
-### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>S. Günlüklerde neden görünüm tasarımcı girişi göremiyorum? 
+### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>S. Günlüklerde neden görünüm tasarımcı girişi göremiyorum?
+
 Y: Görünüm Tasarımcısı, yalnızca katkıda bulunan izinlerle veya üzeri olarak atanan kullanıcılara yönelik günlüklerde kullanılabilir.
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>S. Analiz portalını Azure dışında kullanmaya devam edebilir miyim?
+
 A. Evet, Azure 'daki Günlükler sayfası ve gelişmiş analiz portalı aynı koda göre yapılır. Log Analytics, Azure Izleyici 'de daha birleştirilmiş bir izleme deneyimi sağlamak için bir özellik olarak tümleştirilir. Şu URL 'YI kullanarak analiz portalına erişmeye devam edebilirsiniz: https:\/\/Portal. loganalytics. IO/abonelikler/{SubscriptionID}/ResourceGroups/{resourceGroupName}/çalışma alanları/{Çalışmaadı}.
 
 
@@ -105,29 +107,6 @@ Y: hangi Operations Manager güncelleştirme toplamasına bağlı olarak, *Syste
 
 Y: Hayır. Log Analytics, büyük miktarlarda veriyi işleyen ve depolayan ölçeklenebilir bir bulut hizmetidir. 
 
-### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>S. Log Analytics artık veri toplanmadıysa sorun Nasıl yaparım?.
-
-Y: *ücretsiz* fiyatlandırma katmanında 2 Nisan 2018 tarihinden önce oluşturulan bir abonelik ve çalışma alanı için, günde 500 MB 'tan fazla veri gönderiliyorsa, veri toplama gün için duraklar. Günlük sınıra ulaşmak Log Analytics veri toplamayı durdurmasının ve verilerin eksik göründüğünden yaygın bir nedenidir.  
-
-Log Analytics, *sinyal* türünde bir olay oluşturur ve veri toplamanın durmasını tespit etmek için kullanılabilir. 
-
-Günlük sınıra ve eksik verilere ulaşıp ulaşılmayacağını denetlemek için aramada aşağıdaki sorguyu çalıştırın: `Heartbeat | summarize max(TimeGenerated)`
-
-Belirli bir bilgisayarı denetlemek için aşağıdaki sorguyu çalıştırın: `Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)`
-
-Veri toplama durdurulduğunda, seçilen zaman aralığına bağlı olarak, döndürülen hiçbir kayıt görmezsiniz.   
-
-Aşağıdaki tabloda veri koleksiyonunun durduğu nedenler ve veri toplamayı sürdürmesi için önerilen bir eylem açıklanmaktadır:
-
-| Veri toplama durdurulduğunda oluşan neden                       | Veri toplamayı sürdürmesini sağlamak için |
-| -------------------------------------------------- | ----------------  |
-| Boş veri sınırına ulaşıldı<sup>1</sup>       | Koleksiyonun otomatik olarak yeniden başlatılmasını sağlamak için aşağıdaki aya kadar bekleyin veya<br> Ücretli bir fiyatlandırma katmanına geçin |
-| Azure aboneliği şu nedenlerle askıya alınmış durumda: <br> Ücretsiz deneme süresi sona erdi <br> Azure Pass 'nin süre geçti <br> Aylık harcama sınırına ulaşıldı (örneğin, bir MSDN veya Visual Studio aboneliği)                          | Ücretli aboneliğe Dönüştür <br> Ücretli aboneliğe Dönüştür <br> Limiti Kaldır veya sınır sıfırlanana kadar bekle |
-
-<sup>1</sup> çalışma alanınız *ücretsiz* fiyatlandırma katmanındaysa, hizmete günde 500 MB veri göndermeye sınırlı olursunuz. Günlük sınırına ulaştığınızda, veri toplama bir sonraki güne kadar duraklar. Veri toplama durdurulduğunda gönderilen veriler dizinlenmemiş ve arama için kullanılamaz. Veri toplama işlemi devam ettiğinde, işleme yalnızca gönderilen yeni veriler için gerçekleşir. 
-
-Log Analytics UTC saatini kullanır ve her gün UTC gece yarısı başlar. Çalışma alanı günlük sınıra ulaşırsa, işlem sonraki UTC günün ilk saati boyunca devam eder.
-
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>S. Veri toplama durdurulduğunda nasıl bildirim gönderebilirim?
 
 A: veri toplama durdurulduğunda bildirim almak için [Yeni bir günlük uyarısı oluşturma](../../azure-monitor/platform/alerts-metric.md) bölümünde açıklanan adımları kullanın.
@@ -147,6 +126,7 @@ Veri toplama durdurulduğunda uyarı oluştururken şunu ayarlayın:
 Var olan veya yeni bir [eylem grubu](../../azure-monitor/platform/action-groups.md) oluşturun, böylece günlük uyarısı ölçütle eşleştiğinde, 15 dakikadan uzun bir sinyalle kayıp varsa size bildirilir.
 
 ## <a name="configuration"></a>Yapılandırma
+
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>S. Azure Tanılama (WAD) öğesinden okumak için kullanılan tablo/blob kapsayıcısının adını değiştirebilir miyim?
 
 A. Hayır, şu anda Azure Storage 'daki rastgele tablolardan veya kapsayıcılardan okumak mümkün değildir.
@@ -180,7 +160,7 @@ Y: en son güncelleştirme toplamasına ve içeri aktarma yönetim paketlerini g
 
 ### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>S: bir aracının Log Analytics ile iletişim kurabildiğini nasıl doğrulayabilirim?
 
-Y: aracının OMS ile iletişim kurabildiğinden emin olmak Için şuraya gidin: Denetim Masası, güvenlik & ayarları, **Microsoft Monitoring Agent**.
+Y: aracının Log Analytics çalışma alanıyla iletişim kurabildiğinden emin olmak Için şuraya gidin: Denetim Masası, güvenlik & ayarları **Microsoft Monitoring Agent**.
 
 **Azure Log Analytics (OMS)** sekmesinde, yeşil bir onay işareti bulun. Yeşil onay işareti simgesi, aracının Azure hizmeti ile iletişim kurabildiğini onaylar.
 
@@ -188,7 +168,7 @@ Sarı bir uyarı simgesi, aracının Log Analytics iletişim sorunu olduğu anla
 
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>S: Nasıl yaparım? bir aracının Log Analytics iletişim kurmasını mi durdurdunuz?
 
-Y: System Center Operations Manager, bilgisayarı OMS tarafından yönetilen bilgisayarlar listesinden kaldırın. Operations Manager, aracının yapılandırmasını artık Log Analytics raporlanmayacak şekilde güncelleştirir. Doğrudan Log Analytics bağlı aracılar için, iletişim kurmasını engellemek için: Denetim Masası, güvenlik & ayarları **Microsoft Monitoring Agent**.
+Y: System Center Operations Manager, bilgisayarı Log Analytics yönetilen bilgisayarlar listesinden kaldırın. Operations Manager, aracının yapılandırmasını artık Log Analytics raporlanmayacak şekilde güncelleştirir. Doğrudan Log Analytics bağlı aracılar için, iletişim kurmasını engellemek için: Denetim Masası, güvenlik & ayarları **Microsoft Monitoring Agent**.
 **Azure Log Analytics (OMS)** altında, listelenen tüm çalışma alanlarını kaldırın.
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>S: çalışma alanım 'ı bir Azure aboneliğinden diğerine taşımaya çalıştığımda neden bir hata alıyorum?
@@ -212,11 +192,11 @@ Y: API 'nin gövdesine ' ETag ' eklemeniz veya Azure Resource Manager şablonu �
 
 ## <a name="agent-data"></a>Aracı verileri
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>S. Log Analytics için aracıdan ne kadar veri gönderebilirim? Müşteri başına maksimum miktarda veri var mı?
-A. Ücretsiz plan, çalışma alanı başına 500 MB 'lık günlük bir üst sınır ayarlar. Standart ve Premium planların karşıya yüklenen veri miktarına hiçbir sınırı yoktur. Bulut hizmeti olarak Log Analytics, bir müşteriden gelen hacmi işlemek üzere otomatik olarak ölçeklendirilecek şekilde tasarlanmıştır. Bu, gün başına terabayt olsa bile.
+A. Karşıya yüklenen veri miktarı için bir sınır yoktur, bu, seçtiğiniz kapasite rezervasyonu veya kullandıkça öde fiyatlandırma seçeneğine dayanır. Bir Log Analytics çalışma alanı, bir müşteriden gelen hacmi işlemek üzere otomatik olarak ölçeklendirilecek şekilde tasarlanmıştır. Bu, gün başına terabayt olsa bile. Daha fazla bilgi için bkz. [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/monitor/).
 
 Log Analytics Aracısı, küçük bir parmak izine sahip olduğundan emin olmak için tasarlandı. Veri hacmi, etkinleştirdiğiniz çözümlere göre farklılık gösterir. Veri hacminin ayrıntılı bilgilerini bulabilir ve [kullanım](../../azure-monitor/platform/data-usage.md) sayfasında çözüme göre döküm bölümüne bakabilirsiniz.
 
-Daha fazla bilgi için OMS aracısının kaynak kullanımını (parmak izi) değerlendirdikten sonra sonuçlarını gösteren bir [Müşteri blogunu](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) okuyabilirsiniz.
+Daha fazla bilgi için, Log Analytics aracısının kaynak kullanımını (parmak izi) değerlendirdikten sonra sonuçlarını gösteren bir [Müşteri blogunu](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) okuyabilirsiniz.
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>S. Log Analytics veri gönderilirken Microsoft Yönetim Aracısı (MMA) tarafından ne kadar ağ bant genişliği kullanılıyor?
 
@@ -230,7 +210,7 @@ A. Aracı başına gönderilen veri miktarı şunlara bağlıdır:
 * Toplanmakta olan günlük ve performans sayacı sayısı
 * Günlüklerdeki verilerin hacmi
 
-Ücretsiz Fiyatlandırma Katmanı, birkaç sunucuyu eklemek ve tipik veri hacmini ölçmek için iyi bir yoldur. Genel kullanım, [kullanım](../../azure-monitor/platform/data-usage.md) sayfasında gösterilir.
+Genel kullanım, [kullanım](../../azure-monitor/platform/data-usage.md) sayfasında gösterilir.
 
 Kablolu veri aracısını çalıştırabilecek bilgisayarlar için, ne kadar veri gönderildiğini görmek üzere aşağıdaki sorguyu kullanın:
 
@@ -239,4 +219,5 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Log Analytics hakkında daha fazla bilgi edinmek için [Log Analytics kullanmaya başlayın](../../azure-monitor/overview.md) ve dakikalar içinde çalışmaya başlayın.
+
+Log Analytics hakkında daha fazla bilgi edinmek için [Azure izleyici 'yi kullanmaya](../../azure-monitor/overview.md) başlayın ve dakikalar içinde çalışmaya başlayın.

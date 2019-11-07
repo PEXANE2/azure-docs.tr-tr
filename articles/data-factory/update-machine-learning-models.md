@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory kullanarak makine öğrenimi modellerini güncelleştirme | Microsoft Docs
+title: Azure Data Factory kullanarak makine öğrenimi modellerini güncelleştirme
 description: Azure Data Factory ve makine öğrenimi kullanarak tahmine dayalı işlem hatları oluşturma işlemini açıklar.
 services: data-factory
 documentationcenter: ''
@@ -11,22 +11,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 56d0ce6668c1077b99c980c2bc5b16998a3a41c1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3313c9c362a9b82cf7ed8db63479aaa5cf0c777e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140542"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683251"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Kaynak güncelleştirme etkinliğini kullanarak Azure Machine Learning modellerini güncelleştirme
-Bu makale, ana Azure Data Factory Azure Machine Learning tümleştirme makalesini tamamlar: [Azure Machine Learning ve Azure Data Factory kullanarak tahmine dayalı işlem hatları oluşturun](transform-data-using-machine-learning.md). Daha önce yapmadıysanız, bu makaleyi okumadan önce ana makaleyi gözden geçirin.
+Bu makalede, [Azure Machine Learning ve Azure Data Factory kullanarak tahmine dayalı işlem hatları oluşturma](transform-data-using-machine-learning.md)ana Azure Data Factory Azure Machine Learning tümleştirme makalesini tamamlar. Daha önce yapmadıysanız, bu makaleyi okumadan önce ana makaleyi gözden geçirin.
 
 ## <a name="overview"></a>Genel Bakış
-Azure Machine Learning modellerini işlemin bir parçası olarak modelinize eğitim ve kaydedilir. Ardından, bir Tahmine dayalı Web hizmeti oluşturmak için kullanabilirsiniz. Web hizmeti web siteleri, panolar ve mobil uygulamalarda tüketilebilir.
+Azure Machine Learning modellerini işlemin bir parçası olarak modelinize eğitim ve kaydedilir. Daha sonra bunu, tahmine dayalı bir Web hizmeti oluşturmak için kullanırsınız. Web hizmeti daha sonra Web sitelerinde, panolarda ve mobil uygulamalarda tüketilebilir.
 
-Machine Learning kullanarak oluşturduğunuz modelleri genellikle statik değildir. Yeni veriler kullanılabilir olduğunda ya da kendi veri tüketici API'si varsa, model eğitilebileceği gerekir. Azure Machine Learning bir modeli nasıl yeniden eğitebilmeniz hakkındaki ayrıntılar için [Machine Learning modelini yeniden eğitme](../machine-learning/machine-learning-retrain-machine-learning-model.md) bölümüne bakın.
+Machine Learning kullanarak oluşturduğunuz modeller genellikle statik değildir. Yeni veriler kullanılabilir hale geldiğinde veya API 'nin tüketicisi kendi verilerine sahip olduğunda, modelin geri çekilmesi gerekir. Azure Machine Learning bir modeli nasıl yeniden eğitebilmeniz hakkındaki ayrıntılar için [Machine Learning modelini yeniden eğitme](../machine-learning/machine-learning-retrain-machine-learning-model.md) bölümüne bakın.
 
-Yeniden eğitme sık gerçekleşebilir. Toplu yürütme etkinliği ve kaynak güncelleştirme etkinliği sayesinde, Data Factory kullanarak tahmine dayalı Web hizmetini yeniden eğitmek ve güncelleştirmek Azure Machine Learning modelini çalıştırabilirsiniz.
+Yeniden eğitim sık gerçekleşebilir. Toplu yürütme etkinliği ve kaynak güncelleştirme etkinliği sayesinde, Data Factory kullanarak tahmine dayalı Web hizmetini yeniden eğitmek ve güncelleştirmek Azure Machine Learning modelini çalıştırabilirsiniz.
 
 Aşağıdaki resimde, eğitim ve tahmine dayalı Web Hizmetleri arasındaki ilişki gösterilmektedir.
 
@@ -58,13 +58,13 @@ Aşağıdaki JSON kod parçacığı bir Azure Machine Learning Batch yürütme e
 
 | Özellik                      | Açıklama                              | Gerekli |
 | :---------------------------- | :--------------------------------------- | :------- |
-| name                          | İşlem hattındaki etkinliğin adı     | Evet      |
-| description                   | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
+| ad                          | İşlem hattındaki etkinliğin adı     | Evet      |
+| açıklama                   | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
 | type                          | Azure Machine Learning kaynak güncelleştirme etkinliği için etkinlik türü **AzureMLUpdateResource**' dir. | Evet      |
 | linkedServiceName             | UpdateResourceEndpoint özelliği içeren bağlı hizmet Azure Machine Learning. | Evet      |
 | Traınedmodelname              | Web hizmeti denemesinde güncellenmek üzere eğitilen model modülünün adı | Evet      |
-| trainedModelLinkedServiceName | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını tutan Azure depolama bağlı hizmetinin adı | Evet      |
-| trainedModelFilePath          | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını temsil etmek için Traınedmodellinkedservice içindeki göreli dosya yolu | Evet      |
+| Traınedmodellinkedservicename | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını tutan Azure depolama bağlı hizmetinin adı | Evet      |
+| Traınedmodelfilepath          | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını temsil etmek için Traınedmodellinkedservice içindeki göreli dosya yolu | Evet      |
 
 ## <a name="end-to-end-workflow"></a>Uçtan uca iş akışı
 
@@ -92,7 +92,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 Web hizmetini [Azure Machine Learning Web Hizmetleri portalında](https://services.azureml.net/)sorgularken URL 'deki yer tutucuları için değerler alabilirsiniz.
 
-Güncelleştirme kaynak uç noktasının yeni türü hizmet sorumlusu kimlik doğrulaması gerektirir. Hizmet sorumlusu kimlik doğrulamasını kullanmak için, bir uygulama varlığını Azure Active Directory (Azure AD) olarak kaydedin ve aboneliğin veya Web hizmetinin ait olduğu kaynak grubunun **katkıda** bulunan veya **sahip** rolü verin. [Azure kaynağını yönetmek için hizmet sorumlusu oluşturma ve izinleri atama](../active-directory/develop/howto-create-service-principal-portal.md)bölümüne bakın. Bağlı hizmetini tanımlamak için kullandığınız şu değerleri not edin:
+Güncelleştirme kaynak uç noktasının yeni türü hizmet sorumlusu kimlik doğrulaması gerektirir. Hizmet sorumlusu kimlik doğrulamasını kullanmak için, bir uygulama varlığını Azure Active Directory (Azure AD) olarak kaydedin ve aboneliğin veya Web hizmetinin ait olduğu kaynak grubunun **katkıda** bulunan veya **sahip** rolü verin. [Azure kaynağını yönetmek için hizmet sorumlusu oluşturma ve izinleri atama](../active-directory/develop/howto-create-service-principal-portal.md)bölümüne bakın. Bağlı hizmeti tanımlamak için kullandığınız aşağıdaki değerleri unutmayın:
 
 - Uygulama Kimliği
 - Uygulama anahtarı
@@ -127,7 +127,7 @@ Güncelleştirme kaynak uç noktasının yeni türü hizmet sorumlusu kimlik do�
 Aşağıdaki senaryo daha fazla ayrıntı sağlar. Bir Azure Data Factory işlem hattından Azure Machine Learning Studio modellerini yeniden eğitim ve güncelleştirme için bir örnektir.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Örnek: Azure Machine Learning modelini yeniden eğitim ve güncelleştirme
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Örnek: Azure Machine Learning modeli yeniden eğitim ve güncelleştirme
 
 Bu bölüm, bir modeli yeniden eğitmek için **Azure Machine Learning Studio Batch yürütme etkinliğini** kullanan bir örnek işlem hattı sağlar. İşlem hattı Ayrıca, Puanlama Web hizmetindeki modeli güncelleştirmek için **Azure Machine Learning Studio güncelleştirme kaynağı etkinliğini** kullanır. Bu bölüm, örnekteki tüm bağlı hizmetler, veri kümeleri ve işlem hattı için JSON parçacıkları da sağlar.
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d9a879e92f78275f2366ccfc008068afbe208e5a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 276e741a9462c19a3cba9ad1f9ac44e2da7ef1d3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497358"
+ms.locfileid: "73580702"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,7 +57,7 @@ Yerel zaman serisi öğrenimi de otomatik ML 'nin bir parçası olarak sağlanı
 
 Oto gerileme tümleşik hareketli ortalama (ARıMA), zaman serisi tahminlerine yönelik popüler istatistiksel bir yöntemdir. Bu tahmin tekniği genellikle verilerin döngüler gibi eğilimler gösterdiği kısa süreli tahmin senaryolarında kullanılır ve bu da tahmin edilemez ve modellenebilir veya tahmin edilebilir. Otomatik-ARıMA, tutarlı ve güvenilir sonuçlar almak için verilerinizi sabit verilere dönüştürür.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 * Bu makalede, bir otomatik makine öğrenimi denemesi ayarlamaya yönelik temel benzerlik varsayılmaktadır. Temel otomatik makine öğrenimi tasarım düzenlerini görmek için [öğreticiyi](tutorial-auto-train-models.md) izleyin veya [nasıl yapılır?](how-to-configure-auto-train.md)
@@ -181,7 +181,7 @@ Gelişmiş tahmin yapılandırmasına yönelik ayrıntılı kod örnekleri için
 
 Tahmin için DNNs 'ten yararlanmak üzere,, oto Mlconfig içindeki `enable_dnn` parametresini true olarak ayarlamanız gerekir. 
 
-DNNs 'yi kullanabilmeniz için, bir AML Işlem kümesini GPU SKU 'Ları ve işlem hedefi olarak en az 2 düğüm ile kullanmanızı öneririz. Daha fazla bilgi için bkz. [AML işlem belgeleri](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute) . GPU 'ları içeren VM boyutları hakkında daha fazla bilgi için bkz. [GPU iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-gpu) .
+DNNs 'yi kullanabilmeniz için, bir AML Işlem kümesini GPU SKU 'Ları ve işlem hedefi olarak en az 2 düğüm ile kullanmanızı öneririz. Daha fazla bilgi için bkz. [AML işlem belgeleri](how-to-set-up-training-targets.md#amlcompute) . GPU 'ları içeren VM boyutları hakkında daha fazla bilgi için bkz. [GPU iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) .
 
 DNN eğitiminin tamamlanmasına yetecek zaman izin vermek için deneme zaman aşımını en az birkaç saate ayarlamayı öneririz.
 

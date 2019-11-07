@@ -1,5 +1,5 @@
 ---
-title: Tek veritabanı kaynaklarını ölçeklendirme-Azure SQL veritabanı | Microsoft Docs
+title: Tek veritabanı kaynaklarını ölçeklendirme-Azure SQL veritabanı
 description: Bu makalede, Azure SQL veritabanı 'nda tek bir veritabanı için kullanılabilen işlem ve depolama kaynaklarının nasıl ölçeklendiriyapılacağı açıklanır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: d2571b04f10bbbd3a461e553a56904abb3b46588
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7f3e0c6a5f2d3594e8a03ed4034248b1fd43c73d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496036"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687169"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanı kaynaklarını ölçeklendirme
 

@@ -9,22 +9,22 @@ ms.date: 07/25/2019
 ms.topic: conceptual
 description: Windows kapsayıcıları ile mevcut bir kümede Azure Dev Spaces çalıştırmayı öğrenin
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Windows kapsayıcıları
-ms.openlocfilehash: 6c15534d5d47ba384a0f368f5d212fb1350e5229
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 90d7c8e5fc08405178ab6596b765f289b9bd716f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858579"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582785"
 ---
 # <a name="use-azure-dev-spaces-to-interact-with-windows-containers"></a>Windows kapsayıcılarıyla etkileşim kurmak için Azure Dev Spaces kullanma
 
 Hem yeni hem de mevcut Kubernetes ad alanlarında Azure Dev Spaces etkinleştirebilirsiniz. Azure Dev Spaces, Linux kapsayıcıları üzerinde çalışan hizmetleri çalıştıracak ve araç çalıştıracaktır. Bu hizmetler ayrıca aynı ad alanındaki Windows kapsayıcıları üzerinde çalışan uygulamalarla etkileşime geçebilir. Bu makalede, mevcut Windows kapsayıcılarıyla bir ad alanında hizmetleri çalıştırmak için geliştirme alanlarının nasıl kullanılacağı gösterilir.
 
-## <a name="set-up-your-cluster"></a>Kümenizi ayarlayın
+## <a name="set-up-your-cluster"></a>Kümenizi ayarlama
 
 Bu makalede, hem Linux hem de Windows düğüm havuzlarının bulunduğu bir kümeniz zaten var. Linux ve Windows düğüm havuzlarıyla bir küme oluşturmanız gerekiyorsa [buradaki][windows-container-cli]yönergeleri izleyebilirsiniz.
 
-Kubernetes komut satırı istemcisi olan [kubectl][kubectl]kullanarak kümenize bağlanın. Kubernetes kümenize bağlanacak şekilde yapılandırmak `kubectl` için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
+Kubernetes komut satırı istemcisi olan [kubectl][kubectl]kullanarak kümenize bağlanın. Kubernetes kümenize bağlanmak üzere `kubectl` yapılandırmak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -57,7 +57,7 @@ kubectl taint node aksnpwin987654 sku=win-node:NoSchedule
 
 Windows hizmetinizi AKS kümenizde çalıştırın ve *çalışır* durumda olduğunu doğrulayın. Bu makalede, kümenizde çalışan bir Windows ve Linux hizmetini göstermek için [örnek bir uygulama][sample-application] kullanılmaktadır.
 
-GitHub 'dan örnek uygulamayı kopyalayın ve `dev-spaces/samples/existingWindowsBackend/mywebapi-windows` dizine gidin:
+GitHub 'dan örnek uygulamayı kopyalayın ve `dev-spaces/samples/existingWindowsBackend/mywebapi-windows` dizinine gidin:
 
 ```console
 git clone https://github.com/Azure/dev-spaces
@@ -73,7 +73,7 @@ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admi
 kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ``` 
 
-`charts` Dizine gidin ve Windows hizmetini çalıştırın:
+`charts` dizinine gidin ve Windows hizmetini çalıştırın:
 
 ```console
 cd charts/
@@ -82,7 +82,7 @@ helm install . --namespace dev
 
 Yukarıdaki komut, Windows hizmetinizi *geliştirme* ad alanında çalıştırmak Için Held kullanır. *Dev*adlı bir ad alanı yoksa, oluşturulur.
 
-Windows hizmetinizin kümenizde çalıştığını doğrulamak için komutunukullanın.`kubectl get pods` 
+Windows hizmetinizin kümenizde çalıştığını doğrulamak için `kubectl get pods` komutunu kullanın. 
 
 ```console
 $ kubectl get pods --namespace dev --watch
@@ -102,9 +102,9 @@ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
 
 ## <a name="update-your-windows-service-for-dev-spaces"></a>Windows hizmetinizi geliştirme alanları için güncelleştirme
 
-Zaten çalışmakta olan kapsayıcılarla mevcut bir ad alanında dev alanlarını etkinleştirdiğinizde, dev Spaces, bu ad alanında çalışan tüm yeni kapsayıcıları dener ve etkinleştirir. Geliştirme alanları aynı zamanda, ad alanında zaten çalışmakta olan hizmet için oluşturulan yeni kapsayıcıları da dener ve yeniden dener. Geliştirme boşlukların, ad Boşlukınızda çalışan bir kapsayıcıyı eklemesini engellemek için, *proxy olmayan* üst bilgisini öğesine `deployment.yaml`ekleyin.
+Zaten çalışmakta olan kapsayıcılarla mevcut bir ad alanında dev alanlarını etkinleştirdiğinizde, dev Spaces, bu ad alanında çalışan tüm yeni kapsayıcıları dener ve etkinleştirir. Geliştirme alanları aynı zamanda, ad alanında zaten çalışmakta olan hizmet için oluşturulan yeni kapsayıcıları da dener ve yeniden dener. Geliştirme boşlukların, ad Boşlukınızda çalışan bir kapsayıcıyı eklemesini engellemek için, `deployment.yaml`*proxy olmayan* üst bilgisini ekleyin.
 
-Dosyaya ekleyin `azds.io/no-proxy: "true"`: `existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml`
+`existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` dosyasına `azds.io/no-proxy: "true"` ekleyin:
 
 ```yaml
 apiVersion: apps/v1
@@ -123,7 +123,7 @@ spec:
         azds.io/no-proxy: "true"
 ```
 
-Windows `helm list` hizmetinizin dağıtımını listelemek için kullanın:
+Windows hizmetinizin dağıtımını listelemek için `helm list` kullanın:
 
 ```cmd
 $ helm list
@@ -131,18 +131,18 @@ NAME            REVISION    UPDATED                     STATUS      CHART       
 gilded-jackal   1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-Yukarıdaki örnekte, dağıtımınızın adı, *Gilded-jackal*' dır. Aşağıdakileri kullanarak `helm upgrade`Windows hizmetinizi yeni yapılandırmayla güncelleştirin:
+Yukarıdaki örnekte, dağıtımınızın adı, *Gilded-jackal*' dır. `helm upgrade`kullanarak Windows hizmetinizi yeni yapılandırmayla güncelleştirin:
 
 ```cmd
 $ helm upgrade gilded-jackal . --namespace dev
 Release "gilded-jackal" has been upgraded.
 ```
 
-Uygulamanızı `deployment.yaml`güncelleştirmenizden sonra dev Spaces, hizmetinizi denemeyecek ve bunları işaretlemecektir.
+`deployment.yaml`güncelleştirmenizden sonra, dev Spaces hizmetinizi denemeyecek ve bunları işaretlemecektir.
 
 ## <a name="run-your-linux-application-with-azure-dev-spaces"></a>Linux uygulamanızı Azure Dev Spaces ile çalıştırma
 
-Dizinine gidin ve Linux uygulamanızı kümenizde çalıştırmak `azds prep` için `azds up` ve komutlarını kullanın. `webfrontend`
+`webfrontend` dizinine gidin ve Linux uygulamanızı kümenizde çalıştırmak için `azds prep` ve `azds up` komutlarını kullanın.
 
 ```console
 cd ../../webfrontend-linux/
@@ -150,7 +150,7 @@ azds prep --public
 azds up
 ```
 
-Bu `azds prep --public` komut, uygulamanız için Helu grafiğini ve dockerfiles 'ı oluşturur. Komut `azds up` , hizmetinizi ad alanında çalıştırır.
+`azds prep --public` komutu, uygulamanız için Helu grafiğini ve Dockerfiles 'ı oluşturur. `azds up` komutu, hizmetinizi ad alanında çalıştırır.
 
 ```console
 $ azds up
@@ -168,7 +168,7 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-Hizmetin çalışır durumda olduğunu, genel URL 'yi açarak, azds up komutunun çıktısında görüntülendiğini görebilirsiniz. Bu örnekte, genel URL olur `http://dev.webfrontend.abcdef0123.eus.azds.io/`. Bir tarayıcıda hizmete gidin ve üst kısımdaki *hakkında* ' ya tıklayın. Kapsayıcının kullandığı Windows sürümünü içeren *mywebapi* hizmetinden bir ileti görüntülendiğini doğrulayın.
+Hizmetin çalışır durumda olduğunu, genel URL 'yi açarak, azds up komutunun çıktısında görüntülendiğini görebilirsiniz. Bu örnekte, genel URL `http://dev.webfrontend.abcdef0123.eus.azds.io/`. Bir tarayıcıda hizmete gidin ve üst kısımdaki *hakkında* ' ya tıklayın. Kapsayıcının kullandığı Windows sürümünü içeren *mywebapi* hizmetinden bir ileti görüntülendiğini doğrulayın.
 
 ![Mywebapi 'ten Windows sürümünü gösteren örnek uygulama](../media/run-dev-spaces-windows-containers/sample-app.png)
 
@@ -181,7 +181,7 @@ Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar g
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[helm-installed]: https://github.com/helm/helm/blob/master/docs/install.md
+[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md

@@ -1,21 +1,18 @@
 ---
 title: Linux üzerinde Azure portal bir işlev uygulaması oluşturun | Microsoft Docs
 description: Azure portalını kullanarak sunucusuz yürütme için ilk Azure İşlevinizi oluşturma hakkında bilgi edinin.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: glenga
-ms.custom: ''
-ms.openlocfilehash: a612505acdc37591377eebf290365b65cc3836cd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 89755e8b70a490f1c5746b23e0d36c5d90b624c1
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098282"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571661"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure App Service planında Linux üzerinde bir işlev uygulaması oluşturma
 
@@ -33,7 +30,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com> sayfasında otu
 
 Linux’ta işlevlerinizin yürütülmesini barındıran bir işlev uygulamasına sahip olmanız gerekir. İşlev uygulaması, işlev kodunuzun yürütülmesine yönelik bir ortam sağlar. Kaynakların daha kolay yönetilmesi, dağıtılması ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır. Bu makalede, işlev uygulamanızı oluştururken bir App Service planı oluşturacaksınız.
 
-1. Azure Portal sol üst köşesinde bulunan **kaynak oluştur** düğmesini seçin ve ardından **işlem** > **işlev uygulaması**' nı seçin.
+1. Azure portal sol üst köşesinde bulunan **kaynak oluştur** düğmesini seçin ve ardından **işlem** > **işlev uygulaması**' yı seçin.
 
     ![Azure portalında işlev uygulaması oluşturma](./media/create-function-app-linux-app-service-plan/function-app-create-flow.png)
 
@@ -50,9 +47,9 @@ Linux’ta işlevlerinizin yürütülmesini barındıran bir işlev uygulamasın
     | **Yayımlama** | Kod | **Çalışma zamanı yığınınızın** varsayılan Linux kapsayıcısı kullanılır. İhtiyacınız olan tek şey, işlev uygulaması proje kodsundır. Başka bir seçenek de özel bir [Docker görüntüsü](functions-create-function-linux-custom-image.md)yayımlamaktır. |
     | **[Barındırma planı](functions-scale.md)** | App Service planı | Kaynakların işlev uygulamanıza nasıl ayrılacağını tanımlayan barındırma planı. App Service bir planda çalıştırdığınızda, [işlev uygulamanızın ölçeklendirmesini](functions-scale.md)kontrol edebilirsiniz.  |
     | **Plan/konum App Service** | Plan oluştur | **Yeni oluştur** ' a tıklayın ve bir **App Service plan** adı sağlayın. Size yakın bir [bölgede](https://azure.microsoft.com/regions/) veya işlevlerinizin erişebileceği diğer hizmetlere yakın bir **konum** seçin. İstediğiniz **[fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/app-service/linux/)** seçin. <br/>Aynı App Service planında hem Linux hem de Windows işlev uygulamalarını çalıştıramazsınız. |
-    | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. C# ve F# için **.NET** işlevlerini seçin. [Python desteği](functions-reference-python.md) Şu anda önizleme aşamasındadır. |
+    | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. C# ve F# için **.NET** işlevlerini seçin. |
     | **[Depolama](../storage/common/storage-quickstart-create-account.md)** |  Genel olarak benzersiz bir ad |  İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ile 24 karakter arasında olmalı ve yalnızca sayıyla küçük harf içermelidir. Dilerseniz [depolama hesabı gereksinimlerini](functions-scale.md#storage-account-requirements) karşılayan mevcut bir hesap da kullanabilirsiniz. |
-    | **[Application Insights](functions-monitoring.md)** | Enabled | Application Insights varsayılan olarak devre dışıdır. Application Insights tümleştirmesinin etkinleştirilmesini ve App Service planı konumunuz yakınında bir barındırma konumu seçmenize önerilir. Bunu daha sonra yapmak istiyorsanız bkz. [Azure Işlevlerini izleme](functions-monitoring.md).  |
+    | **[Application Insights](functions-monitoring.md)** | Etkin | Application Insights varsayılan olarak devre dışıdır. Application Insights tümleştirmesinin etkinleştirilmesini ve App Service planı konumunuz yakınında bir barındırma konumu seçmenize önerilir. Bunu daha sonra yapmak istiyorsanız bkz. [Azure Işlevlerini izleme](functions-monitoring.md).  |
 
 3. İşlev uygulamasını sağlamak ve dağıtmak için **Oluştur**'u seçin.
 

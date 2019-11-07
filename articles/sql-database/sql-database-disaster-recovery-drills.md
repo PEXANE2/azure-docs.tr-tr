@@ -1,5 +1,5 @@
 ---
-title: SQL veritabanı olağanüstü durum kurtarma detaylar | Microsoft Docs
+title: SQL veritabanı olağanüstü durum kurtarma ayrıntılarına ls
 description: Olağanüstü durum kurtarma detaylarını gerçekleştirmek için Azure SQL veritabanı 'nı kullanmaya yönelik kılavuzluk ve en iyi uygulamaları öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 2923ae8b9b25932ae214cfa45780dffb8780dd39
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf337b1312abc59048649aabe3e4f895d07a8d51
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568842"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690613"
 ---
 # <a name="performing-disaster-recovery-drill"></a>Olağanüstü durum kurtarma ayrıntısı gerçekleştiriliyor
 
@@ -25,7 +25,7 @@ Kurtarma iş akışı için uygulama hazırlığını doğrulamanın düzenli ar
 Olağanüstü durum kurtarma detayının gerçekleştirilmesi aşağıdakilerden oluşur:
 
 * Veri katmanı kesintisi benzetimi yapma
-* Kurtarılıyor
+* Kurtar
 * Uygulama bütünlüğünü doğrulama sonrası kurtarma
 
 [Uygulamanızı iş sürekliliği için nasıl tasarlamış](sql-database-business-continuity.md)olduğunuza bağlı olarak, detaya gitmeyi yürütmek için iş akışı farklılık gösterebilir. Bu makalede, Azure SQL veritabanı bağlamında olağanüstü durum kurtarma detayına yönelik en iyi yöntemler açıklanmaktadır.

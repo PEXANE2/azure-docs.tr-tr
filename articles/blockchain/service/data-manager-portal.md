@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 1f46fe92fd6650daa3ba4b9a930c4d781925d3fc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 484322fb0486eeb4ab67366d32350c69a18da743
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518261"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605914"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portal kullanarak blok zinciri Veri Yöneticisi yapılandırma
 
@@ -24,7 +24,7 @@ Bir blok zinciri Veri Yöneticisi örneği yapılandırmak için şunları yapı
 * Azure blok zinciri hizmeti işlem düğümü için bir blok zinciri Veri Yöneticisi örneği oluşturma
 * Blok zinciri uygulamalarınızı ekleyin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Hızlı başlangıç: Azure Portal veya hızlı başlangıç kullanarak bir blok zinciri üyesi oluşturma](create-member.md) [: Azure CLI kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi](create-member-cli.md) oluşturma
 * [Event Grid konu başlığı](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) oluşturma
@@ -53,7 +53,7 @@ Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği o
 
 1. **Tamam**’ı seçin.
 
-    Bir blok zinciri Veri Yöneticisi örneği oluşturmak bir dakikadan kısa sürer. Örnek dağıtıldıktan sonra otomatik olarak başlatılır. Çalışan bir blok zinciri Veri Yöneticisi örneği, işlem düğümündeki blok zinciri olaylarını yakalar ve giden bağlantılara veri gönderir. Aynı zamanda işlem düğümünden kodu çözülmüş olay ve özellik verilerini yakalamak istiyorsanız, blok zinciri Veri Yöneticisi örneği için bir blok zinciri uygulaması oluşturun.
+    Bir blok zinciri Veri Yöneticisi örneği oluşturmak bir dakikadan kısa sürer. Örnek dağıtıldıktan sonra otomatik olarak başlatılır. Çalışan bir blok zinciri Veri Yöneticisi örneği, işlem düğümündeki blok zinciri olaylarını yakalar ve giden bağlantılara veri gönderir.
 
     Yeni örnek, Azure blok zinciri hizmeti üyesine yönelik blok zinciri Veri Yöneticisi örnekleri listesinde görünür.
 
@@ -63,7 +63,10 @@ Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği o
 
 Bir blok zinciri uygulaması eklerseniz, blok zinciri uygulama için olay ve özellik durumunun kodunu çözer Veri Yöneticisi. Aksi takdirde, yalnızca ham blok ve ham işlem verileri gönderilir. Blok zinciri Veri Yöneticisi sözleşme dağıtıldığında sözleşme adreslerini de bulur. Bir blok zinciri Veri Yöneticisi örneğine birden çok blok zinciri uygulaması ekleyebilirsiniz.
 
-Blok zinciri Veri Yöneticisi, uygulamayı eklemek için bir akıllı sözleşme ABı ve bytecode dosyası gerektirir.
+> [!IMPORTANT]
+> Şu anda, Solidity [dizi türlerini](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) veya [eşleme türlerini](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) bildiren blok zinciri uygulamaları tam olarak desteklenmez. Bir dizi veya eşleme türü olarak tanımlanan özellikler, *Contractpropertiesmsg* veya *Decodedcontracteventsmsg* iletilerinde kodu çözülür.
+
+Blok zinciri Veri Yöneticisi, uygulamayı eklemek için akıllı sözleşme ABı ve dağıtılan bir bytecode dosyası gerektirir.
 
 ### <a name="get-contract-abi-and-bytecode"></a>Sözleşme ABı ve bytecode 'u al
 
@@ -79,17 +82,15 @@ Sözleşme ABı, akıllı sözleşme arabirimlerini tanımlar. Akıllı sözleş
 
 1. **ABI** DIZISINI bir JSON dosyası olarak kaydedin. Örneğin, *ABI. JSON*. Dosyayı sonraki bir adımda kullanırsınız.
 
-Sözleşme bayt kodu, Ethereum sanal makinesi tarafından yürütülen derlenmiş akıllı sözleşmedir. Uzantıyı panoya sözleşme bytecode 'u kopyalamak için kullanabilirsiniz.
+Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodunu gerektirir. Dağıtılan bytecode, akıllı sözleşme bytecode değerinden farklı. Derlenen anlaşma meta veri dosyasından dağıtılan bayt kodunu alabilirsiniz.
 
-1. Visual Studio Code gezgin bölmesinde, Solidity projenizin **Build/Contracts** klasörünü genişletin.
-1. Sözleşme meta verileri JSON dosyasına sağ tıklayın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
-1. **Sözleşme bayt kodunu kopyala**' yı seçin.
+1. Solidity projenizin **Build/Contracts** klasöründe yer alan Sözleşme meta veri dosyasını açın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
+1. JSON dosyasında **Deployedbytecode** öğesini bulun.
+1. Tırnak işaretleri olmadan onaltılık değeri kopyalayın.
 
-    ![Sözleşmeyi Kopyala bytecode seçimine sahip Visual Studio Code bölmesi](./media/data-manager-portal/bytecode-devkit.png)
+    ![Meta verilerde bytecode ile Visual Studio Code bölmesi](./media/data-manager-portal/bytecode-metadata.png)
 
-    Sözleşme bayt kodu panoya kopyalanır.
-
-1. **Bytecode** DEĞERINI bir JSON dosyası olarak kaydedin. Örneğin, *bytecode. JSON*. Yalnızca onaltılı değeri kaydet. Dosyayı sonraki bir adımda kullanırsınız.
+1. **Bytecode** DEĞERINI bir JSON dosyası olarak kaydedin. Örneğin, *bytecode. JSON*. Dosyayı sonraki bir adımda kullanırsınız.
 
 Aşağıdaki örnek, VS Code düzenleyicide açık olan *ABI. JSON* ve *bytecode. JSON* dosyalarını gösterir. Dosyalarınız benzer görünmelidir.
 
@@ -169,4 +170,7 @@ Blok zinciri olaylarını yakalamayı durdurmak ve giden bağlantılara veri gö
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Event Grid Içindeki olay işleyicileri](../../event-grid/event-handlers.md)hakkında daha fazla bilgi edinin.
+Blok zinciri Veri Yöneticisi ve Azure Cosmos DB kullanarak bir blok zinciri işlem iletisi Gezgini oluşturmayı deneyin.
+
+> [!div class="nextstepaction"]
+> [Öğretici: Azure Cosmos DB 'a veri göndermek için blok zinciri Veri Yöneticisi kullanma](data-manager-cosmosdb.md)

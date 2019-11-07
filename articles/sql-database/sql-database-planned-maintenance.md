@@ -1,5 +1,5 @@
 ---
-title: Azure bakım olaylarını planlama-Azure SQL veritabanı | Microsoft Docs
+title: Azure bakım olaylarını planlama-Azure SQL veritabanı
 description: Planlı bakım olaylarını Azure SQL veritabanınıza hazırlama hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
-ms.openlocfilehash: 1bb88d6f74ab4b93e226fe8630f07f0a96f4ba47
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5598d5a465645ce20d9244011de6d9cef47ac3c4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567050"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687621"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Azure SQL veritabanı 'nda Azure bakım olaylarını planlama
 
@@ -28,13 +28,13 @@ Her veritabanı için Azure SQL DB, bir çoğaltmanın birincil olduğu veritaba
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Planlı bir bakım olayı sırasında beklenmeniz gerekenler
 
-Yeniden yapılandırma/yük devretme işlemleri genellikle 30 saniye içinde tamamlanır – ortalama 8 saniyedir. Zaten bağlıysa, uygulamanızın veritabanının yeni birincil çoğaltmasını sağlıklı bir şekilde kopyalaması gerekir. Yeni birincil çoğaltma çevrimiçi olmadan önce veritabanı yeniden yapılandırılması sırasında yeni bir bağlantı denendiğinde, 40613 hatasını alırsınız (veritabanı kullanılamıyor): "' {ServerName} ' sunucusundaki ' {DatabaseName} ' veritabanı şu anda kullanılamıyor. Lütfen bağlantıyı daha sonra yeniden deneyin. ". Veritabanınızda çalışan uzun bir sorgu varsa, bu sorgu yeniden yapılandırma sırasında kesintiye uğratılacaktır ve yeniden başlatılması gerekir.
+Yeniden yapılandırma/yük devretme işlemleri genellikle 30 saniye içinde tamamlanır – ortalama 8 saniyedir. Zaten bağlıysa, uygulamanızın veritabanının yeni birincil çoğaltmasını sağlıklı bir şekilde kopyalaması gerekir. Yeni birincil çoğaltma çevrimiçi olmadan önce veritabanı yeniden yapılandırılması sırasında yeni bir bağlantı denendiğinde, 40613 hatasını alırsınız (veritabanı kullanılamıyor): "' {ServerName} ' sunucusundaki" veritabanı ' {DatabaseName} ' Şu anda kullanılamıyor. Lütfen bağlantıyı daha sonra yeniden deneyin. ". Veritabanınızda çalışan uzun bir sorgu varsa, bu sorgu yeniden yapılandırma sırasında kesintiye uğratılacaktır ve yeniden başlatılması gerekir.
 
 ## <a name="retry-logic"></a>Yeniden deneme mantığı
 
 Bir bulut veritabanı hizmetine bağlanan tüm istemci üretim uygulamaları sağlam bir bağlantı [yeniden deneme mantığı](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)uygulamalıdır. Bu durum, bu durumların azaltılmasına yardımcı olur ve genellikle hataları son kullanıcıya saydam hale getirir.
 
-## <a name="frequency"></a>Sıklık
+## <a name="frequency"></a>Frequency
 
 Ortalama olarak, 1,7 planlı bakım olayları her ay oluşur.
 

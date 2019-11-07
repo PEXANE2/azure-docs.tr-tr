@@ -1,6 +1,6 @@
 ---
-title: içerme dosyası
-description: içerme dosyası
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3dfc3c309fe3583ddd4307cbfe4e55bf6522ffc3
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 60d0425a7dbc532e856c7bf3c91065d2548c9b9a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955882"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601405"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 'da hangi disk türleri kullanılabilir?
 
@@ -25,8 +25,8 @@ Aşağıdaki tabloda, ne kullanacağınıza karar vermenize yardımcı olmak üz
 
 |   | Ultra disk   | Premium SSD   | Standart SSD   | Standart HDD   |
 |---------|---------|---------|---------|---------|
-|Disk türü   |SSD   |SSD   |SSD   |BARıNDıRABILIR   |
-|Senaryo   |SAP HANA, üst katman veritabanları (örneğin, SQL, Oracle) ve diğer işlem açısından ağır iş yükleri gibi GÇ yoğunluklu iş yükleri.   |Üretim ve performansa duyarlı iş yükleri   |Web sunucuları, hafif kullanılan kurumsal uygulamalar ve geliştirme/test   |Yedekleme, kritik olmayan, seyrek erişimli erişim   |
+|Disk türü   |SSD   |SSD   |SSD   |HDD   |
+|Senaryo   |[SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), üst katman veritabanları (ÖRNEĞIN, SQL, Oracle) ve diğer işlem açısından ağır iş YÜKLERI gibi GÇ yoğunluklu iş yükleri.   |Üretim ve performansa duyarlı iş yükleri   |Web sunucuları, hafif kullanılan kurumsal uygulamalar ve geliştirme/test   |Yedekleme, kritik olmayan, seyrek erişimli erişim   |
 |En fazla disk boyutu   |65.536 gibibayt (gib)    |32.767 GiB    |32.767 GiB   |32.767 GiB   |
 |En fazla aktarım hızı   |2\.000 MIB/sn    |900 MIB/sn   |750 MIB/sn   |500 MIB/sn   |
 |Maksimum ıOPS   |160.000    |20.000   |6\.000   |2\.000   |
@@ -48,7 +48,7 @@ Ultra disklerin bazı önemli özellikleri şunlardır:
 
 ### <a name="disk-size"></a>Disk boyutu
 
-|Disk boyutu (GiB)  |IOPS Cap  |Verimlilik sınırı (MBps)  |
+|Disk Boyutu (GiB)  |IOPS Cap  |Verimlilik sınırı (MBps)  |
 |---------|---------|---------|
 |4     |1\.200         |300         |
 |8     |2\.400         |600         |
@@ -62,13 +62,4 @@ Ultra disklerin bazı önemli özellikleri şunlardır:
 
 ### <a name="ga-scope-and-limitations"></a>GA kapsamı ve sınırlamaları
 
-Şimdilik, Ultra diskler ek sınırlamalara sahiptir ve bunlar şu şekildedir:
-
-- Her bölge için iki kullanılabilirlik bölgesinde Doğu ABD 2, Güneydoğu Asya ve Kuzey Avrupa desteklenir  
-- Yalnızca kullanılabilirlik alanları ile kullanılabilir (bölge dışındaki kullanılabilirlik kümeleri ve tek VM dağıtımları, bir ultra disk iliştirebilme özelliğine sahip olmaz)
-- Yalnızca ES/DS v3 sanal makinelerinde desteklenir
-- Yalnızca veri diskleri olarak kullanılabilir ve yalnızca 4k fiziksel sektör boyutunu destekler  
-- Yalnızca boş disk olarak oluşturulabilir  
-- Disk anlık görüntülerini, VM görüntülerini, kullanılabilirlik kümelerini, sanal makine ölçek kümelerini ve Azure disk şifrelemesini henüz desteklemez
-- Azure Backup veya Azure Site Recovery tümleştirmeyi henüz desteklemez
-- GA VM 'lerde ıOPS için geçerli en büyük sınır 80.000 ' dir.
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](managed-disks-ultra-disks-GA-scope-and-limitations.md)]

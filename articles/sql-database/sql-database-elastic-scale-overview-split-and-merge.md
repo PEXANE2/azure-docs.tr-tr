@@ -1,5 +1,5 @@
 ---
-title: Ölçeği genişletilen bulut veritabanları arasında veri taşıma | Microsoft Docs
+title: Ölçeği genişletilen bulut veritabanları arasında veri taşıma
 description: Elastik veritabanı API 'Leri kullanarak parçaların nasıl düzenleneceğini ve verileri şirket içinde barındırılan bir hizmet aracılığıyla nasıl taşıyabileceğinizi açıklar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 841794dcbb41249ea25f615524150df4bd257b45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b2203b7fb9e168b251eda16a9505ae2004b0460
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568380"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690197"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Ölçeği genişletilen bulut veritabanları arasında veri taşıma
 
@@ -26,7 +26,7 @@ Bölünmüş birleştirme aracı bir Azure Web hizmeti olarak çalışır. Yöne
 
 ![Genel Bakış][1]
 
-## <a name="download"></a>İndirme
+## <a name="download"></a>İndir
 
 [Microsoft. Azure. SqlDatabase. Elayapışscale. Service. SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
@@ -98,7 +98,7 @@ Bölünmüş birleştirme aracı bir Azure Web hizmeti olarak çalışır. Yöne
 
     Diğer tablolar, bir bölünmüş ve birleştirme işleminin kaynağında ya da hedefinde bulunabilir. Bölünmüş birleştirme hizmeti, veri taşıma veya kopyalama işlemleri için bu tabloları yoksayar. Ancak, kısıtlamalar söz konusu olduğunda bu işlemleri kesintiye uğratabilecekleri unutulmamalıdır.
 
-    Başvuru ile parçalı tablolardaki bilgiler, parça eşlemesindeki `SchemaInfo` API 'ler tarafından sağlanır. Aşağıdaki örnek, belirli bir parça eşleme Yöneticisi nesnesinde bu API 'lerin kullanımını göstermektedir:
+    Başvuru ile parçalı tablolardaki bilgiler, parça eşlemesindeki `SchemaInfo` API 'Leri tarafından sağlanır. Aşağıdaki örnek, belirli bir parça eşleme Yöneticisi nesnesinde bu API 'lerin kullanımını göstermektedir:
 
     ```csharp
     // Create the schema annotations
@@ -115,7 +115,7 @@ Bölünmüş birleştirme aracı bir Azure Web hizmeti olarak çalışır. Yöne
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    ' Region ' ve ' Nation ' tabloları başvuru tabloları olarak tanımlanır ve bölünmüş/birleştirme/taşıma işlemleri ile kopyalanır. sırasıyla ' Customer ' ve ' Orders ', parçalı tablolar olarak tanımlanmıştır. `C_CUSTKEY`ve `O_CUSTKEY` parçalama anahtarı olarak görev yapar.
+    ' Region ' ve ' Nation ' tabloları başvuru tabloları olarak tanımlanır ve bölünmüş/birleştirme/taşıma işlemleri ile kopyalanır. sırasıyla ' Customer ' ve ' Orders ', parçalı tablolar olarak tanımlanmıştır. `C_CUSTKEY` ve `O_CUSTKEY` parçalı anahtar olarak görev yapar.
 
 - **Bilgi tutarlılığı**
 
@@ -193,7 +193,7 @@ Bölünmüş birleştirme hizmeti, tamamlanan ve devam eden isteklerin izlenmesi
 
   İsteği benzersiz bir şekilde tanımlayan GUID. Bu istek hala devam ederken işlemi iptal etmek için de kullanılabilir.
 
-- **Durumu**
+- **Durum**
 
   İsteğin geçerli durumu. Devam eden istekler için, isteğin olduğu geçerli aşamayı de listeler.
 
@@ -203,7 +203,7 @@ Bölünmüş birleştirme hizmeti, tamamlanan ve devam eden isteklerin izlenmesi
 
 - **Lemesine**
 
-  İşlem için tamamlanma yüzdesi tahmini. 50 değeri, işlemin yaklaşık% 50 tamamlandığını gösterir.
+  İşlem için tamamlanma yüzdesi tahmini. 50 değeri, işlemin yaklaşık %50 tamamlandığını gösterir.
 
 - **Ayrıntılar**
 
@@ -233,11 +233,11 @@ NuGet paketi tarafından sunulan Web ve çalışan rolleri için tanılama yapı
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
 ```
 
-Tanılama ayarlarını yapılandırma ve dağıtma hakkında daha fazla bilgiyi burada bulabilirsiniz: [Azure Cloud Services ve sanal makinelerde tanılamayı etkinleştirme](../cloud-services/cloud-services-dotnet-diagnostics.md).
+Tanılama ayarlarını yapılandırma ve dağıtma hakkında daha fazla bilgiye buradan ulaşabilirsiniz: [Azure Cloud Services ve sanal makinelerde tanılamayı etkinleştirme](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## <a name="retrieve-diagnostics"></a>Tanılamayı al
 
-Sunucu Gezgini ağacının Azure bölümünde Visual Studio Sunucu Gezgini tanılamalara kolayca erişebilirsiniz. Bir Visual Studio örneği açın ve menü çubuğunda görüntüle ' ye tıklayın ve Sunucu Gezgini. Azure aboneliğinize bağlanmak için Azure simgesine tıklayın. Azure-> Storage-> `<your storage account>` -> tabloları-> wadlogstable 'a gidin. Daha fazla bilgi için bkz. [Sunucu Gezgini](https://msdn.microsoft.com/library/x603htbk.aspx).
+Sunucu Gezgini ağacının Azure bölümünde Visual Studio Sunucu Gezgini tanılamalara kolayca erişebilirsiniz. Bir Visual Studio örneği açın ve menü çubuğunda görüntüle ' ye tıklayın ve Sunucu Gezgini. Azure aboneliğinize bağlanmak için Azure simgesine tıklayın. Ardından Azure-> Storage-> `<your storage account>`-> tabloları-> WADLogsTable ' a gidin. Daha fazla bilgi için bkz. [Sunucu Gezgini](https://msdn.microsoft.com/library/x603htbk.aspx).
 
 ![WADLogsTable][2]
 

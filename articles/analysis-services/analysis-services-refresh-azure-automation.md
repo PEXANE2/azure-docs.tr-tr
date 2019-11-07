@@ -1,17 +1,17 @@
 ---
 title: Azure Otomasyonu ile Azure Analysis Services modellerini yenileme | Microsoft Docs
-description: Azure Otomasyonu 'Nu kullanarak nasıl kod yenilemelerini kullanacağınızı öğrenin.
+description: Bu makalede, Azure Otomasyonu kullanılarak Azure Analysis Services için model yenilemelerinin nasıl değiştirileceği açıklanır.
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: ed1634ef1009149dc2937174b20248eab9cd335f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294787"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572363"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Otomasyonu ile yenileme
 
@@ -27,7 +27,7 @@ Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belir
 
 Hizmet sorumlusu oluşturma hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 > [!IMPORTANT]
 > Aşağıdaki örnek, Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını varsayar. Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresinin güvenlik duvarında beyaz listelenmesi gerekir.
@@ -44,7 +44,7 @@ Hizmet sorumlusu oluşturma hakkında daha fazla bilgi için, bkz. [Azure Portal
  
     ![Modül içeri aktar](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. **Tamam**’a tıklayın.
+4. **Tamam** düğmesine tıklayın.
  
 ### <a name="create-a-service-principal-spn"></a>Hizmet sorumlusu oluşturma (SPN)
 
@@ -101,17 +101,17 @@ Bu, aşağıdaki gibi yapılandırılabilir:
  
     ![Zamanlama Oluştur](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. **Zamanla** > **Yeni bir zamanlama oluştur ' a**tıklayın ve ardından ayrıntıları girin.
+2. **Zamanla** ' ya tıklayın > **Yeni bir zamanlama oluşturun**ve ardından ayrıntıları girin.
 
     ![Zamanlamayı Yapılandır](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. **Oluştur**’a tıklayın.
+3. **Oluştur**'a tıklayın.
 
 4. Zamanlamanın parametrelerini girin. Bunlar runbook 'un her tetiklenilişinde kullanılacaktır. **Web kancası verileri** parametresi, bir zamanlama aracılığıyla çalışırken boş bırakılmalıdır.
 
     ![Parametreleri Yapılandır](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. **Tamam**’a tıklayın.
+5. **Tamam** düğmesine tıklayın.
 
 ## <a name="consume-with-data-factory"></a>Data Factory kullanma
 
@@ -147,7 +147,7 @@ Azure Data Factory kullanarak runbook 'u kullanmak için önce runbook için bir
 |Özellik  |Değer  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Azure Analysis Services veritabanının adı <br/> Örnek: AdventureWorksDB         |
-|**AnalysisServicesServer**     |Azure Analysis Services sunucu adı. <br/> Örnek: https: \//westus. aşama zure. Windows. net/Servers/sunucum/modeller/AdventureWorks/         |
+|**AnalysisServicesServer**     |Azure Analysis Services sunucu adı. <br/> Örnek: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
 |**DatabaseRefreshType**     |Gerçekleştirilecek yenileme türü. <br/> Örnek: tam         |
 
 Örnek JSON gövdesi:
@@ -175,7 +175,7 @@ Statik bir genel IP adresine sahip bir Azure sanal makinesi, Azure Otomasyon Kar
 >
 >Azure Otomasyonu karma çalışanları yapılandırma hakkında daha fazla bilgi edinmek için bkz. [karma runbook çalışanı kullanarak veri merkezinizdeki veya buluttaki kaynakları otomatikleştirme](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker).
 
-Karma çalışan yapılandırıldıktan sonra [Data Factory](#consume-with-data-factory)kullanma bölümünde açıklandığı gibi bir Web kancası oluşturun.  Buradaki tek fark, Web kancasını yapılandırırken  > **karma çalışanı** **üzerinde Çalıştır**seçeneğini seçmedir.
+Karma çalışan yapılandırıldıktan sonra [Data Factory](#consume-with-data-factory)kullanma bölümünde açıklandığı gibi bir Web kancası oluşturun.  Buradaki tek fark, Web kancasını yapılandırırken > karma çalışanı **üzerinde Çalıştır** seçeneğini **seçmedir** .
 
 Karma çalışanı kullanan örnek Web kancası:
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory etkinliği filtreleme | Microsoft Docs
+title: Azure Data Factory etkinliği filtrele
 description: Filtre etkinliği girdileri filtreler.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: c0f5d3264d953498af61c6e8d36dadee7dd61931
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5794a2c754e2082fdf45ad689bdb89ea494541c2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915523"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679867"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory etkinliği filtrele
 Bir giriş dizisine filtre ifadesi uygulamak için bir işlem hattındaki filtre etkinliklerini kullanabilirsiniz. 
@@ -38,10 +38,10 @@ Bir giriş dizisine filtre ifadesi uygulamak için bir işlem hattındaki filtre
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | `Filter` Etkinliğin adı. | Dize | Evet
+ad | `Filter` etkinliğin adı. | Dize | Evet
 type | **Filter**olarak ayarlanmalıdır. | Dize | Evet
-condition | Girişi filtrelemek için kullanılacak koşul. | İfade | Evet
-items | Filtrenin uygulanması gereken giriş dizisi. | İfade | Evet
+Koşul | Girişi filtrelemek için kullanılacak koşul. | İfadeler | Evet
+öğeler | Filtrenin uygulanması gereken giriş dizisi. | İfadeler | Evet
 
 ## <a name="example"></a>Örnek
 

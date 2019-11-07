@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 4f1b8b116cf2a8411a90946dd5801dd1e541323c
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: bcdc6633980ec3684217c8c19b4799befe2af3a3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063974"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576868"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
 
@@ -35,7 +35,7 @@ Mikro hizmetler ortamında, bileşenlerden izlemeler farklı depolama öğelerin
 
 ## <a name="example"></a>Örnek
 
-`Stock`adlı bir dış API kullanarak bir hisse senedinin geçerli pazar fiyatını gösteren Stok fiyatları adlı bir uygulamaya örnek atalım. Hisse senedi fiyatları uygulamasının, `GET /Home/Stock` kullanarak istemci Web tarayıcısının açtığı `Stock page` adlı bir sayfası vardır. Uygulama, HTTP çağrısı `GET /api/stock/value` kullanarak `Stock` API 'sini sorgular.
+`Stock`adlı bir dış API kullanarak bir hisse senedinin geçerli pazar fiyatını gösteren Stok fiyatları adlı bir uygulamaya örnek atalım. Hisse senedi fiyatları uygulamasının, `GET /Home/Stock`kullanarak istemci Web tarayıcısının açtığı `Stock page` adlı bir sayfası vardır. Uygulama, HTTP çağrısı `GET /api/stock/value`kullanarak `Stock` API 'sini sorgular.
 
 Bir sorgu çalıştırarak elde edilen telemetrisini çözümleyebilirsiniz:
 
@@ -88,7 +88,7 @@ Eski `Request-Id` protokolünü kullanarak korumak istediğiniz nedenlerden dola
 
 SDK 'nın eski bir sürümünü çalıştırırsanız, bunu güncelleştirmenizi veya Izleme bağlamını etkinleştirmek için aşağıdaki yapılandırmayı uygulamayı öneririz.
 Bu özellik, 2.8.0-Beta1 sürümü ile başlayan `Microsoft.ApplicationInsights.Web` ve `Microsoft.ApplicationInsights.DependencyCollector` paketlerinde kullanılabilir.
-Varsayılan olarak devre dışıdır. Etkinleştirmek için `ApplicationInsights.config` değiştirin:
+Varsayılan olarak devre dışıdır. Etkinleştirmek için `ApplicationInsights.config`değiştirin:
 
 - `RequestTrackingTelemetryModule`altında, değeri `true`olarak ayarlanan `EnableW3CHeadersExtraction` öğesini ekleyin.
 - `DependencyTrackingTelemetryModule`altında, değeri `true`olarak ayarlanan `EnableW3CHeadersInjection` öğesini ekleyin.
@@ -118,7 +118,7 @@ Eski `Request-Id` protokolünü kullanarak korumak istediğiniz nedenlerden dola
 SDK 'nın eski bir sürümünü çalıştırırsanız, bunu güncelleştirmenizi veya Izleme bağlamını etkinleştirmek için aşağıdaki yapılandırmayı uygulamayı öneririz.
 
 Bu özellik `Microsoft.ApplicationInsights.AspNetCore` sürüm 2.5.0-Beta1 ve `Microsoft.ApplicationInsights.DependencyCollector` Version 2.8.0-Beta1 ' dır.
-Varsayılan olarak devre dışıdır. Etkinleştirmek için `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` `true` olarak ayarlayın:
+Varsayılan olarak devre dışıdır. Etkinleştirmek için `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` `true`olarak ayarlayın:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -205,8 +205,8 @@ Bu özellik `Microsoft.ApplicationInsights.JavaScript`. Varsayılan olarak devre
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `span.kind = server` `Span`                  |
-| `Dependency`                          | `span.kind = client` `Span`                  |
+| `Request`, `PageView`                 | `Span` `span.kind = server`                  |
+| `Dependency`                          | `Span` `span.kind = client`                  |
 | `Request` ve `Dependency` `Id`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
 | `Operation_ParentId`                  | `ChildOf` türü `Reference` (üst Aralık)   |
@@ -244,14 +244,14 @@ if __name__ == '__main__':
     app.run(host='localhost', port=8080, threaded=True)
 ```
 
-Bu, yerel makinenizde bir örnek `flask` uygulaması çalıştırır ve bağlantı noktası `8080` dinler. İzleme bağlamını ilişkilendirmek için uç noktaya bir istek göndereceğiz. Bu örnekte, bir `curl` komutu kullanabiliriz.
+Bu, yerel makinenizde bir örnek `flask` uygulaması çalıştırır ve bağlantı noktası `8080`dinler. İzleme bağlamını ilişkilendirmek için uç noktaya bir istek göndereceğiz. Bu örnekte, bir `curl` komutu kullanabiliriz.
 ```
 curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
 ```
-[Izleme bağlamı üst bilgisi biçimine](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)bakarak şu bilgileri türetik: `version`: `00` 
- `trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736` 
- `parent-id/span-id`: `00f067aa0ba902b7` 
- 0: 1
+[Izleme bağlamı üst bilgisi biçimine](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)bakarak şu bilgileri türetik: `version`: `00`
+`trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736`
+`parent-id/span-id`: `00f067aa0ba902b7`
+`trace-flags`: `01`
 
 Azure Izleyici 'ye gönderilen istek girişine göz atalım, izleme üst bilgisi bilgileriyle doldurulmuş alanları görebiliriz. Bu verileri Azure Izleyici Application Insights kaynak bölümünde Günlükler (Analiz) altında bulabilirsiniz.
 
@@ -263,7 +263,7 @@ Azure Izleyici 'ye gönderilen istek girişine göz atalım, izleme üst bilgisi
 
 ### <a name="logs-correlation"></a>Günlük bağıntısı
 
-OpenCensus Python, günlük kayıtlarını izleme KIMLIĞI, yayılma KIMLIĞI ve örnekleme bayrağıyla zenginleştirerek günlüklerin bağıntı almasına izin verir. Bu işlem, OpenCensus [günlüğe kaydetme tümleştirmesi](https://pypi.org/project/opencensus-ext-logging/)yüklenerek yapılır. Aşağıdaki öznitelikler Python `LogRecord`s eklenecektir: `traceId`, `spanId` ve `traceSampled`. Bunun yalnızca tümleştirmeden sonra oluşturulan Günlükçüler için geçerli olduğunu unutmayın.
+OpenCensus Python, günlük kayıtlarını izleme KIMLIĞI, yayılma KIMLIĞI ve örnekleme bayrağıyla zenginleştirerek günlüklerin bağıntı almasına izin verir. Bu işlem, OpenCensus [günlüğe kaydetme tümleştirmesi](https://pypi.org/project/opencensus-ext-logging/)yüklenerek yapılır. Aşağıdaki öznitelikler Python `LogRecord`s: `traceId`, `spanId` ve `traceSampled`eklenecektir. Bunun yalnızca tümleştirmeden sonra oluşturulan Günlükçüler için geçerli olduğunu unutmayın.
 Bunu gösteren örnek bir uygulama aşağıda verilmiştir.
 
 ```python
@@ -310,7 +310,7 @@ ASP.NET Core 2,0, HTTP üstbilgilerinin ayıklanmasını ve yeni bir etkinliğin
 
 sürüm 4.1.0 ile başlayan `System.Net.Http.HttpClient`, bağıntı HTTP üst bilgilerinin otomatik olarak eklenmesine ve HTTP çağrısının etkinlik olarak izlenmesini destekler.
 
-Klasik ASP.NET için [Microsoft. Aspnet. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)yenı bir http modülü vardır. Bu modül `DiagnosticSource` kullanarak telemetri bağıntısını uygular. Gelen istek üst bilgilerine göre bir etkinlik başlatır. Ayrıca, her bir Internet Information Services (IIS) işleminin farklı bir yönetilen iş parçacığında çalıştığı durumlar da dahil olmak üzere istek işlemenin farklı aşamalarından Telemetriyi de ilişkilendirir.
+Klasik ASP.NET için [Microsoft. Aspnet. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)yenı bir http modülü vardır. Bu modül `DiagnosticSource`kullanarak telemetri bağıntısını uygular. Gelen istek üst bilgilerine göre bir etkinlik başlatır. Ayrıca, her bir Internet Information Services (IIS) işleminin farklı bir yönetilen iş parçacığında çalıştığı durumlar da dahil olmak üzere istek işlemenin farklı aşamalarından Telemetriyi de ilişkilendirir.
 
 2\.4.0-Beta1 sürümünden başlayarak Application Insights SDK, telemetri toplamak ve geçerli etkinlikle ilişkilendirmek için `DiagnosticSource` ve `Activity` kullanır.
 
@@ -334,25 +334,22 @@ Zaman uyumsuz Spring Boot uygulamasındaki Telemetriyi ilişkilendirmek için l�
 
 Her zaman, bileşen adlarının [uygulama eşlemesinde](../../azure-monitor/app/app-map.md)görüntülenme şeklini özelleştirmek isteyebilirsiniz. Bunu yapmak için aşağıdakilerden birini yaparak `cloud_RoleName` el ile ayarlayabilirsiniz:
 
+- Application Insights Java SDK 2.5.0 ' den başlayarak, bulut rolü adını `ApplicationInsights.xml` dosyanıza `<RoleName>` ekleyerek belirtebilirsiniz, örn.
+
+  ```XML
+  <?xml version="1.0" encoding="utf-8"?>
+  <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+     <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+     <RoleName>** Your role name **</RoleName>
+     ...
+  </ApplicationInsights>
+  ```
+
 - Spring Boot uygulamasını Application Insights Spring Boot Starter ile kullanırsanız, tek yapmanız gereken tek değişiklik, uygulama. Özellikler dosyasında uygulama için özel adınızı ayarlamanıza yöneliktir.
 
   `spring.application.name=<name-of-app>`
 
   Spring Boot Starter, `spring.application.name` özelliği için girdiğiniz değere `cloudRoleName` otomatik olarak atar.
-
-- `WebRequestTrackingFilter`kullanıyorsanız, `WebAppNameContextInitializer` uygulama adı otomatik olarak ayarlanır. Yapılandırma dosyanıza (ApplicationInsights. xml) aşağıdakini ekleyin:
-
-  ```XML
-  <ContextInitializers>
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
-  </ContextInitializers>
-  ```
-
-- Bulut bağlamı sınıfını kullanıyorsanız:
-
-  ```Java
-  telemetryClient.getContext().getCloud().setRole("My Component Name");
-  ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

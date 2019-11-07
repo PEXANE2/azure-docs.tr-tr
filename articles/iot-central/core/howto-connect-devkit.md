@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 24ce6de63d06402e24abdeb33996a3853175ce91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954415"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582935"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -119,7 +119,7 @@ Bildirilen bir özelliği göndermek için cihazı sallayın. Cihaz, **zar numar
 
 Telemetri ölçümlerini ve bildirilen özellik değerlerini görüntüleyebilir ve Azure IoT Central ayarları yapılandırabilirsiniz:
 
-1. Eklediğiniz gerçek Mxyonga cihazının **ölçümler** sayfasına gitmek için **Device Explorer** kullanın:
+1. Eklediğiniz gerçek Mxyonga cihazının **ölçümler** sayfasına gitmek için **cihazları** kullanın:
 
     ![Gerçek cihaza git](media/howto-connect-devkit/realdevicenew.png)
 
@@ -210,12 +210,12 @@ Cihazın IoT Central uygulamasından çağrılan komutlara nasıl yanıt verdiğ
 | Jroscopez     | MDPS   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Durumlar 
-| Adı          | Görünen ad   | OLAĞAN | DIKKATLI | OLMA TEHLIKESI | 
+| Ad          | Görünen ad   | OLAĞAN | DIKKATLI | OLMA TEHLIKESI | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | Cihaz Durumu   | Yeşil  | Orange  | Kırmızı    | 
 
-#### <a name="events"></a>Etkinlikler 
-| Adı             | Görünen ad      | 
+#### <a name="events"></a>Olaylar 
+| Ad             | Görünen ad      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Düğme B tuşuna basıldı  | 
 
@@ -248,7 +248,7 @@ Ayarları aç
 | Görünen ad | Alan adı | Dönüş türü | Giriş alanı görünen adı | Giriş alanı adı | Giriş alanı türü |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | Girdilerinizi         | echo       | metin        | görüntülenecek değer         | displayedValue   | metin             |
-| Sayıma    | sayıma  | number      | Sayım               | Sayaçdan        | number           |
+| Sayıma    | Sayıma  | number      | Sayım               | Sayaçdan        | number           |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,7 +1,7 @@
 ---
-title: İşlem örneklerine model dağıtma
+title: Modelleri dizüstü bilgisayar VM 'lerine dağıtma
 titleSuffix: Azure Machine Learning
-description: İşlem örnekleri kullanarak Azure Machine Learning modellerinizi Web hizmeti olarak dağıtmayı öğrenin.
+description: Azure Machine Learning modellerinizi Not defteri VM 'lerini kullanarak bir Web hizmeti olarak dağıtmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,38 +10,34 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: bb187826250b3edc9ac3d9e36a243d75819a45b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: d4e37b02b3d7a21546a04c8948fbbfb7262bfa6a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496887"
+ms.locfileid: "73584765"
 ---
-# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Azure Machine Learning işlem örneklerine model dağıtma
+# <a name="deploy-a-model-to-azure-machine-learning-notebook-vms"></a>Azure Machine Learning Not defteri VM 'lerine model dağıtma
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-> [!NOTE]
-> İşlem örnekleri yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir.
->Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz.  Bu makaledeki adımları kullanarak bir modeli, bir işlem örneğine veya bir not defteri VM 'sine dağıtabilirsiniz.
-
-Azure Machine Learning kullanarak bir modeli Azure Machine Learning işlem örneğiniz üzerinde Web hizmeti olarak dağıtma hakkında bilgi edinin. Aşağıdaki koşullardan biri doğru ise, işlem örnekleri kullanın:
+Azure Machine Learning kullanarak bir modeli bir Web hizmeti olarak Azure Machine Learning Not defteri sanal makinenizde nasıl dağıtacağınızı öğrenin. Aşağıdaki koşullardan biri doğru ise Not defteri VM 'lerini kullanın:
 
 - Modelinizi hızlıca dağıtmanız ve doğrulamanız gerekir.
 - Geliştirme aşamasındaki bir modeli test edersiniz.
 
 > [!TIP]
-> Bir işlem örneğindeki Jupyter Notebook bir modeli aynı VM 'deki bir Web hizmetine dağıtmak _yerel bir dağıtımdır_. Bu durumda, ' yerel ' bilgisayar işlem örneğidir. Dağıtımlar hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
+> Bir not defteri VM 'deki Jupyter Notebook bir modeli aynı VM 'deki bir Web hizmetine dağıtmak _yerel bir dağıtımdır_. Bu durumda, ' yerel ' bilgisayar, Not defteri sanal bilgisayardır. Dağıtımlar hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- İşlem örneği çalıştıran bir Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Kurulum ortamı ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md).
+- Bir not defteri VM 'si çalıştıran bir Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Kurulum ortamı ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md).
 
-## <a name="deploy-to-the-compute-instances"></a>İşlem örneklerine dağıtın
+## <a name="deploy-to-the-notebook-vms"></a>Not defteri VM 'lerine dağıtma
 
-Yerel dağıtımları gösteren örnek bir not defteri, işlem örneğinize dahil edilmiştir. Not defterini yüklemek ve modeli bir Web hizmeti olarak sanal makineye dağıtmak için aşağıdaki adımları kullanın:
+Not defteri sanal makinenize yerel dağıtımları gösteren örnek bir not defteri dahildir. Not defterini yüklemek ve modeli bir Web hizmeti olarak sanal makineye dağıtmak için aşağıdaki adımları kullanın:
 
-1. [Azure Machine Learning Studio](https://ml.azure.com)'dan Azure Machine Learning işlem örneklerinizi seçin.
+1. [Azure Machine Learning Studio](https://ml.azure.com)'Dan Azure Machine Learning Not defteri VM 'lerinizi seçin.
 
 1. `samples-*` alt dizinini açın ve `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`açın. Açıldığında, Not defterini çalıştırın.
 
@@ -51,13 +47,7 @@ Yerel dağıtımları gösteren örnek bir not defteri, işlem örneğinize dahi
 
     ![Çalışan yerel hizmet bağlantı noktasının ekran görüntüsü](media/how-to-deploy-local-container-notebookvm/deploy-local-service-port.png)
 
-1. Hizmeti bir işlem örneğinden test etmek için `https://localhost:<local_service.port>` URL 'sini kullanın. Uzak bir istemciden test etmek için, işlem örneğinde çalışan hizmetin genel URL 'sini alın. Ortak URL belirlenebilir ve şu formülü kullanın; 
-    * Not defteri VM 'si: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`. 
-    * İşlem örneği: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`. 
-    
-    Örneğin, 
-    * Not defteri VM 'si: `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
-    * İşlem örneği: `https://vm-name-6789.northcentralus.instances.azureml.net/score`
+1. Hizmeti not defteri VM 'sinden test etmek için `https://localhost:<local_service.port>` URL 'sini kullanın. Uzak bir istemciden test etmek için, Not defteri VM 'sinde çalışan hizmetin genel URL 'sini alın. Ortak URL belirlenebilir ve şu formülü kullanın; `https://<notebookvm_name>-<local_service_port>.<azure_region_of_notebook>.notebooks.azureml.net/score`. Örneğin, `https://mynotebookvm-6789.eastus2.notebooks.azureml.net/score`.
 
 ## <a name="test-the-service"></a>Hizmeti test etme
 

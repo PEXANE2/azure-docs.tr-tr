@@ -5,39 +5,40 @@ services: expressroute
 author: rambk
 ms.service: expressroute
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 026900e3dcbf7c20750bb8e17e44ba64897c9a30
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: c5001e884047fc6078faf3a8de0e45b7e30e1038
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71123455"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580312"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute bağlantısını doğrulama
-Bu makale, ExpressRoute bağlantısını doğrulamanıza ve sorunlarını gidermenize yardımcı olur. ExpressRoute, bir bağlantı sağlayıcısı tarafından kolaylaştırılıan özel bir bağlantı üzerinden şirket içi ağı Microsoft bulutuna genişleten, aşağıdaki üç farklı ağ bölgesini içerir:
+Bu makale, ExpressRoute bağlantısını doğrulamanıza ve sorunlarını gidermenize yardımcı olur. ExpressRoute, bir bağlantı sağlayıcısı tarafından yaygın olarak kullanılan özel bir bağlantı üzerinden şirket içi bir ağı Microsoft bulutuna genişletir. ExpressRoute bağlantısı, geleneksel olarak üç farklı ağ bölgesi içerir ve aşağıdaki gibi:
 
 -   Müşteri ağı
 -   Sağlayıcı ağı
 -   Microsoft veri merkezi
 
-Bu belgenin amacı, kullanıcının nerede (veya hatta) bir bağlantı sorunu olduğunu ve hangi bölgede olduğunu belirlemesine yardımcı olmak ve bu sayede sorunu çözmek için uygun takımdan yardım almak sağlamaktır. Bir sorunu çözmek için Microsoft desteği gerekiyorsa [Microsoft desteği][Support]bir destek bileti açın.
+> [!NOTE]
+> ExpressRoute doğrudan bağlantı modelinde (10/100 GB/sn 'lik bant genişliğine sunulmaktadır), bu, Microsoft Enterprise Edge (MSEE) yönlendiricileri bağlantı noktasına doğrudan bağlanabilir. Bu nedenle, doğrudan bağlantı modelinde yalnızca müşteri ve Microsoft ağ alanları vardır.
+>
+
+
+Bu belgenin amacı, kullanıcının bir bağlantı sorunu olup olmadığını ve nerede olduğunu belirlemesine yardımcı olur. Bu nedenle, bir sorunu çözmek için uygun takımdan destek sağlanmasına yardımcı olma. Bir sorunu çözmek için Microsoft desteği gerekiyorsa [Microsoft desteği][Support]bir destek bileti açın.
 
 > [!IMPORTANT]
 > Bu belge basit sorunları tanılamaya ve düzeltmeye yardımcı olmaya yöneliktir. Microsoft desteği için bir değişiklik olması amaçlanmamıştır. Belirtilen Kılavuzu kullanarak sorunu çözemediğiniz bir destek bileti [Microsoft desteği][Support] açın.
 >
 >
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="overview"></a>Genel Bakış
 Aşağıdaki diyagramda, ExpressRoute kullanarak bir müşteri ağının Microsoft Network 'e mantıksal bağlantısı gösterilmektedir.
 [![1]][1]
 
-Yukarıdaki diyagramda, numaralar anahtar ağ noktalarını gösterir. Ağ noktalarına genellikle ilgili numara ile bu makale aracılığıyla başvurulur.
-
-ExpressRoute bağlantı modeline (bulut Exchange ortak konumu, noktadan noktaya Ethernet bağlantısı veya herhangi birine (ıPVPN)) bağlı olarak, ağ noktaları 3 ve 4 olabilir (katman 2 cihazları). Gösterilen anahtar ağ noktaları aşağıdaki gibidir:
+Yukarıdaki diyagramda, numaralar anahtar ağ noktalarını gösterir. Bu ağ noktalarına, bu makalede ilişkili oldukları numara ile başvurulur. ExpressRoute bağlantı modeline bağlı olarak, bulut Exchange ortak konumu, noktadan noktaya Ethernet bağlantısı veya herhangi bir (ıPVPN) arasında, ağ noktaları 3 ve 4 (katman 2 cihazları) veya yönlendiriciler (katman 3 cihazları) olabilir. Doğrudan bağlantı modelinde, 3 ve 4 ağ noktaları yoktur; Bunun yerine, (2), koyu bir fiber aracılığıyla MSEE 'e doğrudan bağlanır. Gösterilen anahtar ağ noktaları aşağıdaki gibidir:
 
 1.  Müşteri işlem cihazı (örneğin, bir sunucu veya BILGISAYAR)
 2.  CEs: müşteri Edge yönlendiricileri 
@@ -47,34 +48,38 @@ ExpressRoute bağlantı modeline (bulut Exchange ortak konumu, noktadan noktaya 
 6.  Sanal ağ (VNet) ağ geçidi
 7.  Azure VNet 'te işlem cihazı
 
-Bulut Exchange ortak konumu veya noktadan noktaya Ethernet bağlantı modelleri kullanılıyorsa, müşteri Edge yönlendiricisi (2) MSEE (5) ile BGP eşlemesi kurar. 3 ve 4 ağ noktaları hala mevcuttur ancak katman 2 cihazları olarak saydam olur.
+Bulut değişim ortak konumu, noktadan noktaya Ethernet veya doğrudan bağlantı modelleri kullanılırsa, CEs (2) MSEE (5) ile BGP eşlemesi oluşturun. 
 
-Herhangi bir (ıPVPN) bağlantı modeli kullanılırsa, PEs (MSEE 'e bakan) (4), MSEE (5) ile BGP eşlemesi kurar. Ardından yollar, ıPVPN hizmet sağlayıcısı ağı aracılığıyla müşteri ağına geri yayılır.
+Any-any (ıPVPN) bağlantı modeli kullanılırsa, PE-MSEE (4) MSEE (5) ile BGP eşlemesi oluşturun. PE-MSEE, Microsoft 'tan alınan yolları ıPVPN hizmet sağlayıcısı ağı aracılığıyla müşteri ağına yayar.
 
 > [!NOTE]
->ExpressRoute yüksek kullanılabilirliği için, Microsoft, MSEE (5) ve PE-MSEE (4) arasında fazladan bir BGP oturumu çifti gerektirir. Ek bir ağ yolu çifti de müşteri ağı ile PE 'ler arasında teşvik edilir. Ancak, herhangi bir (ıPVPN) bağlantı modelinde tek bir CE aygıtı (2) bir veya daha fazla PEs 'e (3) bağlı olabilir.
+>Microsoft, yüksek kullanılabilirlik için MSEE (5) ve PE-MSEE (4) çiftleri arasında tam olarak yedekli bir paralel bağlantı kurar. Müşteri ağı ile PE-CEs çifti arasında tam olarak yedekli bir paralel ağ yolu da önerilir. Yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [ExpressRoute ile yüksek kullanılabilirlik Için tasarlama][HA] makalesi
 >
 >
 
-Bir ExpressRoute devresini doğrulamak için aşağıdaki adımlar ele alınmıştır (ağ noktası ilişkili sayıyla belirtilir):
-1. [Devre sağlamayı ve durumu doğrula (5)](#validate-circuit-provisioning-and-state)
-2. [En az bir ExpressRoute eşlemesinin yapılandırıldığını doğrula (5)](#validate-peering-configuration)
-3. [Microsoft ile hizmet sağlayıcı arasında ARP 'yi doğrula (4 ve 5 arasında bağlantı)](#validate-arp-between-microsoft-and-the-service-provider)
-4. [MSEE BGP ve yolları doğrulama (sanal ağ bağlantısı varsa 4 ila 5 arasında BGP ve 5 ila 6 arası)](#validate-bgp-and-routes-on-the-msee)
-5. [Trafik Istatistiklerini denetleme (5 üzerinden geçen trafik)](#check-the-traffic-statistics)
+Aşağıda, ExpressRoute bağlantı hattının giderilmesi için mantıksal adımlar verilmiştir:
 
-Daha sonra daha fazla doğrulama ve denetim eklenecektir, her ay geri çekin!
+* [Devre sağlamayı ve durumu doğrulama](#verify-circuit-provisioning-and-state)
+  
+* [Eşleme yapılandırmasını doğrula](#validate-peering-configuration)
+  
+* [ARP doğrulama](#validate-arp)
+  
+* [MSEE BGP ve rotalar doğrulama](#validate-bgp-and-routes-on-the-msee)
+  
+* [Trafik akışını onaylama](#confirm-the-traffic-flow)
 
-## <a name="validate-circuit-provisioning-and-state"></a>Devre sağlamayı ve durumu doğrula
-Bağlantı modelinden bağımsız olarak, bir ExpressRoute devresi oluşturulması ve bu nedenle devre sağlama için bir hizmet anahtarı oluşturulmalıdır. ExpressRoute devresini sağlamak, PE-MSEE (4) ve MSEE (5) arasında yedekli katman 2 bağlantıları kurar. ExpressRoute bağlantı hattı oluşturma, değiştirme, sağlama ve doğrulama hakkında daha fazla bilgi için, [bir ExpressRoute bağlantı hattı oluşturma ve değiştirme][CreateCircuit]makalesine bakın.
+
+## <a name="verify-circuit-provisioning-and-state"></a>Devre sağlamayı ve durumu doğrulama
+ExpressRoute devresini sağlamak, CEs/PE-MSEE (2)/(4) ve MSEE (5) arasında yedekli katman 2 bağlantıları kurar. ExpressRoute bağlantı hattı oluşturma, değiştirme, sağlama ve doğrulama hakkında daha fazla bilgi için, [bir ExpressRoute bağlantı hattı oluşturma ve değiştirme][CreateCircuit]makalesine bakın.
 
 >[!TIP]
->Bir hizmet anahtarı, bir ExpressRoute devresini benzersiz bir şekilde tanımlar. Bu belgede belirtilen PowerShell komutlarının birçoğu için bu anahtar gereklidir. Ayrıca, bir ExpressRoute sorununu gidermek için Microsoft 'tan veya bir ExpressRoute ortağından yardım almanız gerekir, devreyi kolay bir şekilde tanımlamak için hizmet anahtarını sağlayın.
+>Bir hizmet anahtarı, bir ExpressRoute devresini benzersiz bir şekilde tanımlar. ExpressRoute sorununu gidermek için Microsoft 'tan veya bir ExpressRoute ortağından yardım almanız gerekiyorsa, devreyi kolay bir şekilde tanımlamak için hizmet anahtarını sağlayın.
 >
 >
 
 ### <a name="verification-via-the-azure-portal"></a>Azure portal aracılığıyla doğrulama
-Azure portal, bir ExpressRoute bağlantı hattının durumu, sol taraftaki çubuk menüsünde ![2][2] ' yi ve ardından ExpressRoute bağlantı hattını seçerek denetlenebilir. "Tüm kaynaklar" altında listelenen bir ExpressRoute devresini seçmek ExpressRoute bağlantı hattı dikey penceresini açar. Dikey pencerenin ![3][3] bölümünde ExpressRoute Essentials aşağıdaki ekran görüntüsünde gösterildiği gibi listelenir:
+Azure portal ExpressRoute devre dikey penceresini açın. Dikey pencerenin ![3][3] bölümünde ExpressRoute Essentials aşağıdaki ekran görüntüsünde gösterildiği gibi listelenir:
 
 ![4][4]    
 
@@ -83,7 +88,7 @@ ExpressRoute Essentials 'da, *devre durumu* Microsoft tarafında devre 'nın dur
 Bir ExpressRoute bağlantı hattının işlemsel olması için *devre durumunun* *etkinleştirilmesi* ve *sağlayıcı durumunun* *sağlanması*gerekir.
 
 > [!NOTE]
-> *Devre durumu* etkinleştirilmemişse [Microsoft desteği][Support]başvurun. *Sağlayıcı durumu* sağlanmamışsa, hizmet sağlayıcınıza başvurun.
+> Bir ExpressRoute devresini yapılandırdıktan sonra, *devre durumu* etkin değil durumunda olduğunda [Microsoft desteği][Support]başvurun. Öte yandan, *sağlayıcının durumu* sağlanmamış durumunda değilse hizmet sağlayıcınıza başvurun.
 >
 >
 
@@ -93,9 +98,9 @@ Bir kaynak grubundaki tüm ExpressRoute devrelerini listelemek için aşağıdak
     Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 
 >[!TIP]
->Azure üzerinden kaynak grubu adınızı alabilirsiniz. Bu belgenin önceki alt bölümüne bakın ve örnek ekran görüntüsünde kaynak grubu adının listelendiğini unutmayın.
+>Bir kaynak grubunun adını arıyorsanız, aboneliğinizdeki tüm kaynak gruplarını, *Get-AzResourceGroup* komutunu kullanarak bu alana alabilirsiniz.
 >
->
+
 
 Bir kaynak grubunda belirli bir ExpressRoute devresini seçmek için aşağıdaki komutu kullanın:
 
@@ -132,58 +137,33 @@ Bir ExpressRoute bağlantı hattının çalışır durumda olup olmadığını d
     ServiceProviderProvisioningState : Provisioned
 
 > [!NOTE]
-> *Devresi Provisioningstate* etkinleştirilmemişse, [Microsoft desteği][Support]başvurun. *Serviceproviderprovisioningstate* sağlanmamışsa, hizmet sağlayıcınıza başvurun.
->
->
-
-### <a name="verification-via-powershell-classic"></a>PowerShell aracılığıyla doğrulama (klasik)
-Bir abonelik altındaki tüm ExpressRoute devrelerini listelemek için aşağıdaki komutu kullanın:
-
-    Get-AzureDedicatedCircuit
-
-Belirli bir ExpressRoute devresini seçmek için aşağıdaki komutu kullanın:
-
-    Get-AzureDedicatedCircuit -ServiceKey **************************************
-
-Örnek yanıt:
-
-    andwidth                         : 100
-    BillingType                      : UnlimitedData
-    CircuitName                      : Test-ER-Ckt
-    Location                         : westus2
-    ServiceKey                       : **************************************
-    ServiceProviderName              : ****
-    ServiceProviderProvisioningState : Provisioned
-    Sku                              : Standard
-    Status                           : Enabled
-
-Bir ExpressRoute bağlantı hattının çalışır durumda olup olmadığını doğrulamak için, aşağıdaki alanlara özellikle dikkat edin: ServiceProviderProvisioningState: sağlanan durum: etkin
-
-> [!NOTE]
-> *Durum* etkinleştirilmemişse [Microsoft desteği][Support]başvurun. *Serviceproviderprovisioningstate* sağlanmamışsa, hizmet sağlayıcınıza başvurun.
+> Bir ExpressRoute devresini yapılandırdıktan sonra, *devre durumu* etkin değil durumunda olduğunda [Microsoft desteği][Support]başvurun. Öte yandan, *sağlayıcının durumu* sağlanmamış durumunda değilse hizmet sağlayıcınıza başvurun.
 >
 >
 
 ## <a name="validate-peering-configuration"></a>Eşleme yapılandırmasını doğrula
-Hizmet sağlayıcı ExpressRoute bağlantı hattını sağlamayı tamamladıktan sonra, MSEE-PR 'ler (4) ve MSEE (5) arasındaki ExpressRoute devresi üzerinden bir yönlendirme yapılandırması oluşturulabilir. Her ExpressRoute bağlantı hattı bir, iki veya üç yönlendirme bağlamı etkin olabilir: Azure özel eşlemesi (Azure 'da özel sanal ağlara trafik), Azure genel eşlemesi (Azure 'da genel IP adreslerine giden trafik) ve Microsoft eşlemesi (Office 365 trafiği). Yönlendirme yapılandırması oluşturma ve değiştirme hakkında daha fazla bilgi için, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]makalesine bakın.
+Hizmet sağlayıcı ExpressRoute bağlantı hattını sağlamayı tamamladıktan sonra, CEs/MSEE-PEs (2)/(4) ve MSEE (5) arasındaki ExpressRoute bağlantı hattı üzerinden birden çok eBGP tabanlı Yönlendirme yapılandırması oluşturulabilir. Her ExpressRoute bağlantı hattı şu olabilir: Azure özel eşlemesi (Azure 'da özel sanal ağlara trafik) ve/veya Microsoft eşlemesi (PaaS ve SaaS 'nin Genel uç noktalarına giden trafik). Yönlendirme yapılandırması oluşturma ve değiştirme hakkında daha fazla bilgi için, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]makalesine bakın.
 
 ### <a name="verification-via-the-azure-portal"></a>Azure portal aracılığıyla doğrulama
 
 > [!NOTE]
-> Katman 3 hizmet sağlayıcısı tarafından sağlanmışsa ve eşlemeler portalda boşsa, portalda Yenile düğmesini kullanarak devre yapılandırmasını yenileyin. Bu işlem, devreniz için doğru yönlendirme yapılandırmasını uygular. 
->
+> IPVPN bağlantı modelinde, hizmet sağlayıcılar, eşlemeleri yapılandırma sorumluluğunu (katman 3 Hizmetleri) işler. Böyle bir modelde, hizmet sağlayıcı bir eşleme yapılandırdıktan sonra ve portalda eşleme boşsa, portalda Yenile düğmesini kullanarak devre yapılandırmasını yenilemeyi deneyin. Bu işlem, geçerli yönlendirme yapılandırmasını devreye alacak. 
 >
 
-Azure portal, bir ExpressRoute bağlantı hattının durumu, sol taraftaki çubuk menüsünde ![2][2] ' yi ve ardından ExpressRoute bağlantı hattını seçerek denetlenebilir. "Tüm kaynaklar" altında listelenen bir ExpressRoute devresini seçmek ExpressRoute bağlantı hattı dikey penceresini açar. Dikey pencerenin ![3][3] bölümünde ExpressRoute Essentials aşağıdaki ekran görüntüsünde gösterildiği gibi listelenir:
+Azure portal, ExpressRoute bağlantı hattı eşlemesinin durumu ExpressRoute bağlantı hattı dikey penceresinde denetlenebilir. Dikey pencerenin ![3][3] bölümünde ExpressRoute eşayarları aşağıdaki ekran görüntüsünde gösterildiği gibi listelenir:
 
 ![5][5]
 
-Yukarıdaki örnekte, belirtilen Azure özel eşleme yönlendirme bağlamı etkinleştirildiğinden Azure genel ve Microsoft eşleme yönlendirme bağlamları etkin değildir. Başarıyla etkinleştirilmiş bir eşleme bağlamı, listelenen birincil ve ikincil noktadan noktaya (BGP için gereklidir) alt ağları da içermelidir. /30 alt ağları, MSEE ve PE-MSEE Arabirim IP adresi için kullanılır. 
+Yukarıdaki örnekte, belirtilen Azure özel eşlemesi sağlandığı için Azure genel ve Microsoft eşlemeleri sağlanmamıştır. Başarılı bir şekilde sağlanmış eşleme bağlamı, listelenen birincil ve ikincil noktadan noktaya alt ağları da içermelidir. /30 alt ağları, Mgördüğü ve CEs/PE-MSEE Arabirim IP adresi için kullanılır. Sağlanan eşlemeler için, liste yapılandırmayı en son kimin değiştirdiğini de belirtir. 
 
 > [!NOTE]
-> Bir eşleme etkinleştirilmemişse, atanan birincil ve ikincil alt ağların PE-MSEE yapılandırması ile eşleşip eşleşmediğinden emin olun. Aksi takdirde, MSEE yönlendiricilerinde yapılandırmayı değiştirmek için bkz. [ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]
+> Bir eşlemenin etkinleştirilmesi başarısız olursa, atanan birincil ve ikincil alt ağların bağlı CE/PE-MSEE yapılandırmasıyla eşleşip eşleşmediği kontrol edin. Ayrıca, MSEE doğru *Vlanıd*, *Azureasn*ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı CE/PE-MSEE ile eşlenenlere eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve PE-MSEE/CE çifti ile aynı olmalıdır. Önceden yapılandırılmış paylaşılan anahtar, güvenlik nedenleriyle gösterilmeyecek. Bir MSEE yönlendiricisinde bu yapılandırmanın herhangi birini değiştirmeniz gerekir, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.  
 >
+
+> [!NOTE]
+> Arabirim için atanan bir/30 alt ağda, Microsoft MSEE arabirimi için alt ağın kullanılabilir ikinci IP adresini seçer. Bu nedenle, alt ağın ilk kullanılabilir IP adresinin eşlenen CE/PE-MSEE atanmış olduğundan emin olun.
 >
+
 
 ### <a name="verification-via-powershell"></a>PowerShell aracılığıyla doğrulama
 Azure özel eşleme yapılandırma ayrıntılarını almak için aşağıdaki komutları kullanın:
@@ -198,17 +178,17 @@ Başarılı bir şekilde yapılandırılmış özel eşleme için örnek yanıt:
     Etag                       : W/"################################"
     PeeringType                : AzurePrivatePeering
     AzureASN                   : 12076
-    PeerASN                    : ####
+    PeerASN                    : 123##
     PrimaryPeerAddressPrefix   : 172.16.0.0/30
     SecondaryPeerAddressPrefix : 172.16.0.4/30
     PrimaryAzurePort           : 
     SecondaryAzurePort         : 
     SharedKey                  : 
-    VlanId                     : 300
+    VlanId                     : 200
     MicrosoftPeeringConfig     : null
     ProvisioningState          : Succeeded
 
- Başarıyla etkinleştirilen bir eşleme bağlamı, birincil ve ikincil adres ön eklerinin listelenmesine neden olur. /30 alt ağları, MSEE ve PE-MSEE Arabirim IP adresi için kullanılır.
+ Başarıyla etkinleştirilen bir eşleme bağlamı, birincil ve ikincil adres ön eklerinin listelenmesine neden olur. /30 alt ağları, Mgördüğü ve CEs/PE-MSEE Arabirim IP adresi için kullanılır.
 
 Azure genel eşleme yapılandırma ayrıntılarını almak için aşağıdaki komutları kullanın:
 
@@ -231,134 +211,68 @@ Bir eşleme yapılandırılmamışsa, bir hata iletisi olur. Bir örnek yanıt, 
 
 
 > [!NOTE]
-> Bir eşleme etkinleştirilmemişse, atanan birincil ve ikincil alt ağların bağlı PE-MSEE yapılandırmasıyla eşleşip eşleşmediğinden emin olun. Ayrıca, MSEE doğru *Vlanıd*, *Azureasn*ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı PE-MSEE ile eşlenenlere eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve PE-MSEE çiftinde aynı olmalıdır. MSEE yönlendiricilerinde yapılandırmayı değiştirmek için, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.  
->
->
-
-### <a name="verification-via-powershell-classic"></a>PowerShell aracılığıyla doğrulama (klasik)
-Azure özel eşleme yapılandırma ayrıntılarını almak için aşağıdaki komutu kullanın:
-
-    Get-AzureBGPPeering -AccessType Private -ServiceKey "*********************************"
-
-Başarılı bir şekilde yapılandırılmış özel eşleme için örnek yanıt:
-
-    AdvertisedPublicPrefixes       : 
-    AdvertisedPublicPrefixesState  : Configured
-    AzureAsn                       : 12076
-    CustomerAutonomousSystemNumber : 
-    PeerAsn                        : ####
-    PrimaryAzurePort               : 
-    PrimaryPeerSubnet              : 10.0.0.0/30
-    RoutingRegistryName            : 
-    SecondaryAzurePort             : 
-    SecondaryPeerSubnet            : 10.0.0.4/30
-    State                          : Enabled
-    VlanId                         : 100
-
-Başarılı, etkin bir eşleme bağlamı, birincil ve ikincil eşdüzey alt ağlarını listeleyebilir. /30 alt ağları, MSEE ve PE-MSEE Arabirim IP adresi için kullanılır.
-
-Azure genel eşleme yapılandırma ayrıntılarını almak için aşağıdaki komutları kullanın:
-
-    Get-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
-
-Microsoft eşleme yapılandırma ayrıntılarını almak için aşağıdaki komutları kullanın:
-
-    Get-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
-
-> [!IMPORTANT]
-> Katman 3 eşayarları hizmet sağlayıcısı tarafından ayarlandıysa, portal veya PowerShell aracılığıyla ExpressRoute eşayarlarını ayarlamak hizmet sağlayıcısı ayarlarının üzerine yazar. Sağlayıcı tarafı eşleme ayarlarını sıfırlamak için hizmet sağlayıcısı desteği gerekir. Yalnızca hizmet sağlayıcının katman 2 hizmetleri sağlaması durumunda ExpressRoute eşayarlarını değiştirin!
+> Bir eşlemenin etkinleştirilmesi başarısız olursa, atanan birincil ve ikincil alt ağların bağlı CE/PE-MSEE yapılandırmasıyla eşleşip eşleşmediği kontrol edin. Ayrıca, MSEE doğru *Vlanıd*, *Azureasn*ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı CE/PE-MSEE ile eşlenenlere eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve PE-MSEE/CE çifti ile aynı olmalıdır. Önceden yapılandırılmış paylaşılan anahtar, güvenlik nedenleriyle gösterilmeyecek. Bir MSEE yönlendiricisinde bu yapılandırmanın herhangi birini değiştirmeniz gerekir, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.  
 >
 >
 
 > [!NOTE]
-> Eşleme etkinleştirilmediyse, birincil ve ikincil eşdüzey alt ağlarının bağlı PE-MSEE yapılandırma ile eşleşip eşleşmediğinden emin olun. Ayrıca, MSEE doğru *Vlanıd*, *Azureasn*ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı PE-MSEE ile eşlenenlere eşlendiğini kontrol edin. MSEE yönlendiricilerinde yapılandırmayı değiştirmek için, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.
->
->
-
-## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>Microsoft ile hizmet sağlayıcı arasında ARP doğrulama
-Bu bölümde PowerShell (klasik) komutları kullanılmaktadır. PowerShell Azure Resource Manager komutlarını kullanıyorsanız, aboneliğe yönelik yönetici/ortak yönetici erişimine sahip olduğunuzdan emin olun. Azure Resource Manager komutlarını kullanarak sorun giderme için lütfen [Kaynak Yöneticisi dağıtım modeli BELGESINDE ARP tablolarını alma][ARP] bölümüne bakın.
-
-> [!NOTE]
->ARP 'yi almak için hem Azure portal hem de Azure Resource Manager PowerShell komutları kullanılabilir. Azure Resource Manager PowerShell komutlarıyla hatalar ile karşılaşılırsa klasik PowerShell komutları, klasik PowerShell komutları Azure Resource Manager ExpressRoute devreleri ile de çalışır.
->
+> Arabirim için atanan bir/30 alt ağda, Microsoft MSEE arabirimi için alt ağın kullanılabilir ikinci IP adresini seçer. Bu nedenle, alt ağın ilk kullanılabilir IP adresinin eşlenen CE/PE-MSEE atanmış olduğundan emin olun.
 >
 
-Özel eşleme için birincil MSEE yönlendiricisinde ARP tablosunu almak için aşağıdaki komutu kullanın:
+## <a name="validate-arp"></a>ARP doğrulama
 
-    Get-AzureDedicatedCircuitPeeringArpInfo -AccessType Private -Path Primary -ServiceKey "*********************************"
+ARP tablosu, belirli bir eşleme için IP adresi ve MAC adresi eşleştirmesi sağlar. Bir ExpressRoute bağlantı hattı eşlemesi için ARP tablosu, her arabirim (birincil ve ikincil) için aşağıdaki bilgileri sağlar:
+* Şirket içi yönlendirici arabirimi IP adresini MAC adresine eşleme
+* ExpressRoute yönlendirici arabirimi IP adresini MAC adresine eşleme
+* Eşleme ARP tablolarının yaşı katman 2 yapılandırmasını doğrulamaya ve temel katman 2 bağlantı sorunlarını gidermenize yardımcı olabilir.
 
-Başarılı senaryoda komut için örnek bir yanıt:
 
-    ARP Info:
+Bkz. [Kaynak Yöneticisi dağıtım modeli BELGESINDE ARP tablolarını alma][ARP] , bir EXPRESSROUTE eşlemesinin ARP tablosunu görüntüleme ve bu bilgilerin katman 2 bağlantı sorununu gidermek için nasıl kullanılacağı.
 
-                 Age           Interface           IpAddress          MacAddress
-                 113             On-Prem       10.0.0.1           e8ed.f335.4ca9
-                   0           Microsoft       10.0.0.2           7c0e.ce85.4fc9
-
-Benzer şekilde, *özel* /*genel* /*Microsoft* eşlemeleri için *birincil* /*İkincil* yolundaki MSEE ARP tablosunu kontrol edebilirsiniz.
-
-Aşağıdaki örnek, bir eşleme için komutun yanıtı olmadığını gösterir.
-
-    ARP Info:
-       
-> [!NOTE]
-> ARP tablosunun MAC adreslerine eşlenen arabirimlerin IP adresleri yoksa, aşağıdaki bilgileri gözden geçirin:
->1. MSEE-PR ve MSEE arasında bağlantı için atanan/30 alt ağının ilk IP adresi MSEE-PR arabiriminde kullanılırsa. Azure, Mgördüğü için her zaman ikinci IP adresini kullanır.
->2. Müşterinin (C-Tag) ve hizmet (S-Tag) VLAN etiketlerinin hem MSEE-PR hem de MSEE çiftinin ile eşleşip eşleşmediğinden emin olun.
->
->
 
 ## <a name="validate-bgp-and-routes-on-the-msee"></a>MSEE BGP ve rotalar doğrulama
-Bu bölümde PowerShell (klasik) komutları kullanılmaktadır. PowerShell Azure Resource Manager komutlarını kullanıyorsanız, aboneliğe yönelik yönetici/ortak yönetici erişimine sahip olduğunuzdan emin olun.
 
-> [!NOTE]
->BGP bilgilerini almak için hem Azure portal hem de Azure Resource Manager PowerShell komutları kullanılabilir. Azure Resource Manager PowerShell komutlarıyla hatalar ile karşılaşılırsa klasik PowerShell komutları, klasik PowerShell komutları Azure Resource Manager ExpressRoute devreleri ile de çalışır.
->
->
+*Özel* yönlendirme bağlamı için *birincil* yolda MSEE yönlendirme tablosunu almak için aşağıdaki komutu kullanın:
 
-Belirli bir yönlendirme bağlamı için yönlendirme tablosu (BGP komşusu) özetini almak için aşağıdaki komutu kullanın:
-
-    Get-AzureDedicatedCircuitPeeringRouteTableSummary -AccessType Private -Path Primary -ServiceKey "*********************************"
+    Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
 
 Örnek yanıt:
 
-    Route Table Summary:
+    Network : 10.1.0.0/16
+    NextHop : 10.17.17.141
+    LocPrf  : 
+    Weight  : 0
+    Path    : 65515
 
-            Neighbor                   V                  AS              UpDown         StatePfxRcd
-            10.0.0.1                   4                ####                8w4d                  50
+    Network : 10.1.0.0/16
+    NextHop : 10.17.17.140*
+    LocPrf  : 
+    Weight  : 0
+    Path    : 65515
 
-Yukarıdaki örnekte gösterildiği gibi, komut yönlendirme bağlamının ne kadar süreyle kurulabileceğini belirlemede yararlı olur. Ayrıca, eşleme yönlendiricisi tarafından tanıtılan rota önekleri sayısını belirtir.
+    Network : 10.2.20.0/25
+    NextHop : 172.16.0.1
+    LocPrf  : 
+    Weight  : 0
+    Path    : 123##
+
 
 > [!NOTE]
-> Durum etkin veya boşta ise, bağlı PE-MSEE yapılandırma ile ilişkili birincil ve ikincil eş alt ağlarının olup olmadığını denetleyin. Ayrıca, MSEE doğru *Vlanıd*, *Azureasn*ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı PE-MSEE ile eşlenenlere eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve PE-MSEE çiftinde aynı olmalıdır. MSEE yönlendiricilerinde yapılandırmayı değiştirmek için, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.
+> Bir MSEE ve bir CE/PE-MSEE arasındaki eBGP eşlemesinin durumu etkin veya boşta ise, birincil ve ikincil eş alt ağlarının bağlı CE/PE-MSEE yapılandırmasıyla eşleşip eşleşmediğinden emin olun. Ayrıca, MSEE doğru *Vlanıd*, *Azureasn*ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı PE-MSEE/CE üzerinde kullanılanlara eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve CE/PE-MSEE çiftiyle aynı olmalıdır. Bir MSEE yönlendiricisinde bu yapılandırmanın herhangi birini değiştirmeniz gerekir, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.
 >
->
+
 
 > [!NOTE]
-> Belirli bir eşleme üzerinden erişilebilir değilse, belirli eşleme bağlamına ait olan MSEE yol tablosunu kontrol edin. Yönlendirme tablosunda eşleşen bir ön ek (IP olabilir) varsa, yolda güvenlik duvarları/NSG/ACL 'ler olup olmadığını ve trafiğe izin verip vermediğinin kontrol edin.
+> Belirli hedeflere bir eşleme üzerinden ulaşılamıyorsa, karşılık gelen eşleme bağlamı için Mgördüğü yol tablosunu kontrol edin. Yönlendirme tablosunda eşleşen bir ön ek (IP olabilir) varsa, trafiği engelleyen yolda güvenlik duvarları/NSG/ACL 'ler olup olmadığını kontrol edin.
 >
->
 
-Belirli bir *özel* yönlendirme bağlamı için *birincil* yolda MSEE tam yönlendirme tablosunu almak için aşağıdaki komutu kullanın:
 
-    Get-AzureDedicatedCircuitPeeringRouteTableInfo -AccessType Private -Path Primary -ServiceKey "*********************************"
+Aşağıdaki örnek, varolmayan bir eşleme için komutun yanıtını gösterir:
 
-Komut için başarılı bir sonuç örneği şunlardır:
+    Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+    StatusCode: 400
 
-    Route Table Info:
-
-             Network             NextHop              LocPrf              Weight                Path
-         10.1.0.0/16            10.0.0.1                                       0    #### ##### #####     
-         10.2.0.0/16            10.0.0.1                                       0    #### ##### #####
-    ...
-
-Benzer şekilde,*Microsoft* 'un bir eşleme bağlamı olan *özel* /*genel* / için *birincil* /*İkincil* yolundaki MSEE yönlendirme tablosunu kontrol edebilirsiniz.
-
-Aşağıdaki örnek, bir eşleme için komutun yanıtı olmadığını gösterir:
-
-    Route Table Info:
-
-## <a name="check-the-traffic-statistics"></a>Trafik Istatistiklerini denetleme
+## <a name="confirm-the-traffic-flow"></a>Trafik akışını onaylama
 Birleşik birincil ve ikincil yol trafiği istatistiklerini almak için, bir eşleme bağlamının içindeki ve çıkan baytlar, aşağıdaki komutu kullanın:
 
     Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private
@@ -371,12 +285,8 @@ Komutun örnek çıktısı şu şekilde olur:
 
 Mevcut olmayan bir eşleme için komutun örnek çıktısı:
 
-    Get-AzureDedicatedCircuitStats : ResourceNotFound: Can not find any subinterface for peering type 'Public' for circuit '97f85950-01dd-4d30-a73c-bf683b3a6e5c' .
-    At line:1 char:1
-    + Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf ...
-    + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        + CategoryInfo          : CloseError: (:) [Get-AzureDedicatedCircuitStats], CloudException
-        + FullyQualifiedErrorId : Microsoft.WindowsAzure.Commands.ExpressRoute.GetAzureDedicatedCircuitPeeringStatsCommand
+    Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+    StatusCode: 400
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Daha fazla bilgi veya yardım için aşağıdaki bağlantıları inceleyin:
@@ -397,7 +307,8 @@ Daha fazla bilgi veya yardım için aşağıdaki bağlantıları inceleyin:
 [CreateCircuit]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager 
 [CreatePeering]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-routing-portal-resource-manager
 [ARP]: https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager
-
+[HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute
+[DR-Pvt]: https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Sync sorunlarını giderme | Microsoft Docs
+title: 'Azure SQL Data Sync sorunlarını giderme '
 description: Azure SQL Data Sync ile ilgili sık karşılaşılan sorunları nasıl giderebileceğinizi öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: f1345c7de3ef56473b8ebd16cea20cfe76f0380e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 31cf2693ba33461f38ea6361bf2ca8b688f177ff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566283"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686895"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL Data Sync sorunlarını giderme
 
@@ -39,7 +39,7 @@ SQL Data Sync hizmetine genel bakış için bkz. [Azure SQL Data Sync ile birden
 
 - [Performans açısından önemli bir düşme görüyorum](#sync-perf)
 
-- [Şu iletiyi görüyorum: "Null değeri > sütun \<sütununa eklenemiyor. Sütun null değerlere izin vermiyor. " Bu ne anlama geliyor ve nasıl çözebilirim?](#sync-nulls)
+- [Şu iletiyi görüyorum: "NULL değeri sütun \<sütununa eklenemiyor >. Sütun null değerlere izin vermiyor. " Bu ne anlama geliyor ve nasıl çözebilirim?](#sync-nulls)
 
 - [Veri eşitleme, dairesel başvuruları nasıl işler? Diğer bir deyişle, aynı veriler birden çok eşitleme grubunda eşitlendiğinde ve sonuç olarak değişene devam ediyor mu?](#sync-circ)
 
@@ -104,7 +104,7 @@ Performansı önemli ölçüde düşürür, muhtemelen veri eşitleme Kullanıc�
 
 - **Çözümleme**. En iyi çözüm engeldir. Eşitleme gruplarında döngüsel başvurular olmadığından emin olun. Bir eşitleme grubu tarafından eşitlenen herhangi bir satır başka bir eşitleme grubu tarafından eşitlenemez.
 
-### <a name="sync-nulls"></a>Şu iletiyi görüyorum: "Null değeri > sütun \<sütununa eklenemiyor. Sütun null değerlere izin vermiyor. " Bu ne anlama geliyor ve nasıl çözebilirim? 
+### <a name="sync-nulls"></a>Şu iletiyi görüyorum: "NULL değeri sütun \<sütununa eklenemiyor >. Sütun null değerlere izin vermiyor. " Bu ne anlama geliyor ve nasıl çözebilirim? 
 Bu hata iletisi aşağıdaki iki sorunlardan birinin oluştuğunu gösterir:
 -  Tablonun birincil anahtarı yok. Bu sorunu onarmak için, eşitmekte olduğunuz tüm tablolara birincil bir anahtar ekleyin.
 -  CREATE INDEX deyiminizde WHERE yan tümcesi vardır. Veri eşitleme bu koşulu işlemez. Bu sorunu onarmak için WHERE yan tümcesini kaldırın veya değişiklikleri tüm veritabanlarında el ile yapın. 
@@ -193,10 +193,10 @@ Bir eşitleme grubunu silme denemeniz başarısız olur. Aşağıdaki senaryolar
 
 - **Çözümleme**. Kullanıcı hesabına hizmet olarak oturum açma kimlik bilgileri verin:
 
-  1. **Başlat**DenetimMasası > **Yönetim Araçları** **yerel güvenlik ilkesi** **Yerel**ilkeKullanıcı > **Rights Management**' ye gidin. >  >  > 
+  1.  > **Denetim Masası** ' **na gidin** > **Yönetim araçları** > yerel **güvenlik ilkesi** > **yerel ilke** > **Kullanıcı Rights Management**.
   1. **Hizmet olarak oturum aç '** ı seçin.
   1. **Özellikler** iletişim kutusunda Kullanıcı hesabını ekleyin.
-  1. Seçin **Uygula**ve ardından **Tamam**.
+  1. **Uygula**’yı ve sonra **Tamam**’ı seçin.
   1. Tüm pencereleri kapatın.
 
 ### <a name="setup-date"></a>Bir veritabanında "güncel olmayan" durumu vardır
@@ -243,11 +243,11 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 
 -   Genel Bakış- [Azure SQL Data Sync ile birden çok bulut ve şirket içi veritabanı arasında veri eşitleme](sql-database-sync-data.md)
 -   Veri eşitlemesini ayarlama
-    - Portalda- [öğreticide: Verileri Azure SQL veritabanı ve şirket içi SQL Server arasında eşitlemek için SQL Data Sync ayarlama](sql-database-get-started-sql-data-sync.md)
+    - Portalda- [öğreticide, Azure SQL veritabanı ve şirket içi SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-database-get-started-sql-data-sync.md)
     - PowerShell ile
         -  [PowerShell kullanarak birden çok Azure SQL veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak bir Azure SQL Veritabanı ile SQL Server şirket içi veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Veri Eşitleme Aracısı - [veri Aracısı Azure SQL Data Sync için eşitleme](sql-database-data-sync-agent.md)
+-   Veri eşitleme Aracısı- [Azure SQL Data Sync Için veri eşitleme Aracısı](sql-database-data-sync-agent.md)
 -   En iyi uygulamalar- [Azure SQL Data Sync Için en iyi yöntemler](sql-database-best-practices-data-sync.md)
 -   İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](sql-database-sync-monitor-oms.md)
 -   Eşitleme şemasını güncelleştirme

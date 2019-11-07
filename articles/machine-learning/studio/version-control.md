@@ -1,6 +1,6 @@
 ---
 title: Uygulama yaşam döngüsü yönetimi
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Azure Machine Learning Studio klasik sürümünde uygulama yaşam döngüsü yönetimi en iyi yöntemlerini uygulayın
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: ce1a398939a65bb47c74f00159b667c3659f5a93
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d5e2ee72c30933305356cd2a7792d1972fa938da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467011"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684716"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 'de uygulama yaşam döngüsü yönetimi (klasik)
 Azure Machine Learning Studio (klasik), Azure bulut platformunda çalışır durumda olan Machine Learning denemeleri geliştirmeye yönelik bir araçtır. Visual Studio IDE ve ölçeklenebilir bulut hizmeti tek bir platformda birleştirilmiştir. Standart uygulama yaşam döngüsü yönetimi (ALM) uygulamalarını, çeşitli varlıkların sürümlerini otomatik yürütmeye ve dağıtıma, klasik Azure Machine Learning Studio, klasik sürümüne ekleyebilirsiniz. Bu makalede bazı seçenekler ve yaklaşımların bazıları açıklanmaktadır.
@@ -96,4 +96,4 @@ ALM 'nin önemli bir yönü, uygulamanın yürütme ve dağıtım sürecini otom
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Machine Learning Studio (klasik) PowerShell](https://aka.ms/amlps) modülünü INDIRIN ve ALM görevlerinizi otomatikleştirmeye başlayın.
 * PowerShell ve yeniden eğitme API aracılığıyla [yalnızca tek bir deneme kullanarak çok sayıda ml modeli oluşturmayı ve yönetmeyi](create-models-and-endpoints-with-powershell.md) öğrenin.
-* [Azure Machine Learning Web hizmetlerini dağıtma](publish-a-machine-learning-web-service.md)hakkında daha fazla bilgi edinin.
+* [Azure Machine Learning Web hizmetlerini dağıtma](deploy-a-machine-learning-web-service.md)hakkında daha fazla bilgi edinin.

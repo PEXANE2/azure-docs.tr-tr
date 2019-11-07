@@ -1,5 +1,5 @@
 ---
-title: Bölünmüş birleştirme güvenlik yapılandırması | Microsoft Docs
+title: Bölünmüş birleştirme güvenlik yapılandırması
 description: Elastik ölçek için bölünmüş/birleştirme hizmetiyle şifreleme için x409 sertifikaları ayarlayın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: ada794807f980854c203b56874e452713ecef6ea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98d645fc76010d96bc016a63b4882979f3489698
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568352"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690149"
 ---
 # <a name="split-merge-security-configuration"></a>Bölünmüş birleştirme güvenlik yapılandırması
 
@@ -37,8 +37,8 @@ Bu seçenekler yoksa, **otomatik olarak imzalanan sertifikalar**oluşturabilirsi
 
 ## <a name="tools-to-generate-certificates"></a>Sertifika oluşturmaya yönelik araçlar
 
-* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [MakeCert. exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [Pvk2pfx. exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Araçları çalıştırmak için
 
@@ -47,7 +47,7 @@ Bu seçenekler yoksa, **otomatik olarak imzalanan sertifikalar**oluşturabilirsi
     Yüklüyse, şuraya gidin:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* [Windows 8.1 WDK al: Takımları ve araçları indir](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Windows 8.1 WDK Al [: takımları ve araçları indirme](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>SSL sertifikasını yapılandırmak için
 
@@ -120,7 +120,7 @@ Varsayılan yapılandırma HTTP uç noktasına tüm erişimi reddeder. Bu uç no
 Varsayılan yapılandırma, HTTPS uç noktasına tüm erişime izin verir. Bu ayar daha fazla kısıtlanmış olabilir.
 
 ### <a name="changing-the-configuration"></a>Yapılandırmayı değiştirme
-Ve uç nokta için uygulanan erişim denetimi kuralları grubu, **hizmet yapılandırma dosyasındaki**  **\<EndpointAcls >** bölümünde yapılandırılır.
+Ve uç nokta için uygulanan erişim denetimi kuralları grubu, **hizmet yapılandırma dosyasının** **\<EndpointAcls >** bölümünde yapılandırılır.
 
 ```xml
 <EndpointAcls>
@@ -129,7 +129,7 @@ Ve uç nokta için uygulanan erişim denetimi kuralları grubu, **hizmet yapıla
 </EndpointAcls>
 ```
 
-Bir erişim denetim grubundaki kurallar, hizmet yapılandırma dosyasının bir \<AccessControl Name = "" > bölümünde yapılandırılır. 
+Bir erişim denetim grubundaki kurallar, hizmet yapılandırma dosyasının \<AccessControl Name = "" > bölümünde yapılandırılır. 
 
 Biçim, ağ Access Control listeleri belgelerinde açıklanmıştır.
 Örneğin, 100.100.0.0 ile 100.100.255.255 arasında yalnızca IP 'Lerin HTTPS uç noktasına erişmesine izin vermek için kurallar şuna benzer:
@@ -420,10 +420,10 @@ Hizmet yapılandırma dosyasında, bulut hizmetine yüklenen sertifikanın parma
 1. MMC. exe ' yi çalıştırın.
 2. Dosya-> ek bileşen Ekle/Kaldır...
 3. **Sertifikalar**' ı seçin.
-4.           **Ekle**'yi tıklatın.
+4. **Ekle**'ye tıklayın.
 5. Sertifika deposu konumunu seçin.
-6.           **Son**'a tıklayın.
-7.           **Tamam**'ı tıklatın.
+6. **Finish (Son)** düğmesine tıklayın.
+7. **Tamam** düğmesine tıklayın.
 8. **Sertifikalar**' ı genişletin.
 9. Sertifika depolama düğümünü genişletin.
 10. Sertifika alt düğümünü genişletin.
@@ -432,18 +432,18 @@ Hizmet yapılandırma dosyasında, bulut hizmetine yüklenen sertifikanın parma
 ## <a name="export-certificate"></a>Sertifikayı dışarı aktarma
 **Sertifika dışarı aktarma Sihirbazı**'nda:
 
-1.           **İleri**'ye tıklayın.
+1. **İleri**’ye tıklayın.
 2. **Evet**' i seçin ve ardından **özel anahtarı dışarı aktarın**.
-3.           **İleri**'ye tıklayın.
+3. **İleri**’ye tıklayın.
 4. İstenen çıkış dosyası biçimini seçin.
 5. İstenen seçenekleri denetleyin.
 6. **Parolayı**denetleyin.
 7. Güçlü bir parola girin ve onaylayın.
-8.           **İleri**'ye tıklayın.
+8. **İleri**’ye tıklayın.
 9. Sertifikanın depolanacağı bir dosya adı yazın veya dosyaya gidin (bir kullanın. PFX uzantısı).
-10.           **İleri**'ye tıklayın.
-11.           **Son**'a tıklayın.
-12.           **Tamam**'ı tıklatın.
+10. **İleri**’ye tıklayın.
+11. **Finish (Son)** düğmesine tıklayın.
+12. **Tamam** düğmesine tıklayın.
 
 ## <a name="import-certificate"></a>Sertifikayı içeri aktar
 Sertifika Içeri aktarma Sihirbazı 'nda:
@@ -452,7 +452,7 @@ Sertifika Içeri aktarma Sihirbazı 'nda:
    
    * Yalnızca geçerli kullanıcı altında çalışan işlemlerin hizmete erişmesi durumunda **Geçerli Kullanıcı** ' yı seçin
    * Bu bilgisayardaki başka işlemlerin hizmete erişmesi durumunda **yerel makine** ' yi seçin
-2.           **İleri**'ye tıklayın.
+2. **İleri**’ye tıklayın.
 3. Bir dosyadan içeri aktarıldıysanız dosya yolunu onaylayın.
 4. İçeri aktarıldıysanız. PFX dosyası:
    1. Özel anahtarı koruyan parolayı girin
@@ -460,12 +460,12 @@ Sertifika Içeri aktarma Sihirbazı 'nda:
 5. Aşağıdaki depoya "yerleştir" sertifikalarını seçin
 6. **Gözat**’a tıklayın.
 7. İstenen depoyu seçin.
-8.           **Son**'a tıklayın.
+8. **Finish (Son)** düğmesine tıklayın.
    
    * Güvenilen kök sertifika yetkilisi deposu seçilmişse **Evet**' e tıklayın.
 9. Tüm iletişim kutusu pencereleri üzerinde **Tamam** ' ı tıklatın.
 
-## <a name="upload-certificate"></a>Karşıya sertifika yükleme
+## <a name="upload-certificate"></a>Sertifikayı karşıya yükleme
 [Azure portalında](https://portal.azure.com/)
 
 1. **Cloud Services**seçin.

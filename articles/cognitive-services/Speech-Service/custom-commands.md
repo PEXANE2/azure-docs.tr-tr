@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: e41a037e657a8d2b484a3fcb62eb3bc03f53682d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 62210bf480d09ce2a256a44b7554ac53aa06eb0c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507093"
+ms.locfileid: "73579696"
 ---
 # <a name="custom-commands-preview"></a>Özel komutlar (Önizleme)
 
 [Ses yardımcıları](voice-assistants.md) kullanıcıları dinler ve genellikle geri konuşarak bir işlem gerçekleştirebilir. Bu kişiler, kullanıcının konuşma işlemini yapmak için [konuşmayı metne](speech-to-text.md) dönüştürme özelliğini kullanır ve ardından metnin doğal dilde anlaşılmasına ilişkin işlem yapın. Bu eylem sıklıkla, [metinden konuşmaya](text-to-speech.md)ile oluşturulan yardımcdan konuşulan çıktıyı içerir. Cihazlar, konuşma SDK 'sının `DialogServiceConnector` nesnesiyle birlikte yardımcılar 'a bağlanır.
 
-**Özel komutlar (Önizleme)** , Ses Yardımcısı oluşturmak için kolaylaştırılmış bir çözümdür. Bu, birleştirilmiş bir yazma deneyimi, otomatik barındırma modeli ve görece daha düşük karmaşıklığa karşı [doğrudan hat konuşma](direct-line-speech.md)gibi diğer yardımcı oluşturma seçeneklerine benzer. Ancak bu basitleştirme, esneklik açısından bir düşüş ile birlikte gelir. Bu nedenle, özel komutlar (Önizleme) görev tamamlama veya komut ve denetim senaryoları için idealdir.
+**Özel komutlar (Önizleme)** , Ses Yardımcısı oluşturmak için kolaylaştırılmış bir çözümdür. Bu, birleştirilmiş bir yazma deneyimi, otomatik barındırma modeli ve görece daha düşük karmaşıklığa karşı [doğrudan hat konuşma](direct-line-speech.md)gibi diğer yardımcı oluşturma seçeneklerine benzer. Ancak bu basitleştirme, esneklik açısından bir düşüş ile birlikte gelir. Bu nedenle, özel komutlar (Önizleme) görev tamamlama veya komut ve denetim senaryoları için idealdir. Nesnelerin İnterneti (IoT) ve gözetimsiz cihazlar için oldukça iyi eşleştirilir.
 
 Karmaşık konuşma etkileşimi ve [sanal yardımcı çözümü ve kurumsal şablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) gibi diğer çözümlerle tümleştirme Için doğrudan hat konuşmayı kullanmanız önerilir.
 

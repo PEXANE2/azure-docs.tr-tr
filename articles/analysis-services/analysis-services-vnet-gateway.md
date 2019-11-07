@@ -1,22 +1,22 @@
 ---
-title: Azure sanal ağ veri kaynakları için şirket içi veri ağ geçidini kullanma | Microsoft Docs
-description: VNet üzerindeki veri kaynakları için bir ağ geçidini kullanmak üzere bir sunucuyu nasıl yapılandıracağınızı öğrenin.
+title: VNet veri kaynakları için Azure Analysis Services yapılandırma | Microsoft Docs
+description: Azure sanal ağ (VNet) üzerinde veri kaynakları için bir ağ geçidi kullanmak üzere bir Azure Analysis Services sunucusunu nasıl yapılandıracağınızı öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d1993996c0f982624d6976b50871fa8c4592e2f6
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 384f4c2ee3021678c530aa5c98eaf4dbfd661e95
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301209"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572273"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Azure sanal ağı (VNet) üzerinde veri kaynakları için ağ geçidi kullanma
 
-Bu makalede, veri kaynakları bir [Azure sanal ağı 'nda (VNet)](../virtual-network/virtual-networks-overview.md)olduğunda kullanılmak üzere **Alwaysusegateway** sunucusu özelliği açıklanır.
+Bu makalede, veri kaynakları bir [Azure sanal ağı 'nda (VNet)](../virtual-network/virtual-networks-overview.md)olduğunda kullanılmak üzere Azure Analysis Services **Alwaysusegateway** Server özelliği açıklanmaktadır.
 
 ## <a name="server-access-to-vnet-data-sources"></a>VNet veri kaynaklarına sunucu erişimi
 
@@ -29,7 +29,7 @@ Azure SQL veritabanı yönetilen örnek veri kaynakları, Azure sanal ağı 'nda
 
 ## <a name="configure-alwaysusegateway-property"></a>AlwaysUseGateway özelliğini yapılandırma
 
-1. SSMS > Server > **özellikler** > **genel**, **Gelişmiş (tümü) özelliklerini göster**' i seçin.
+1. SSMS > Server > **özellikleri** **genel** > , **Gelişmiş (tümü) özelliklerini göster**' i seçin.
 2. **Aspaas\alwaysusegateway**içinde **true**seçeneğini belirleyin.
 
     ![Her zaman ağ geçidi özelliğini kullan](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
@@ -37,6 +37,6 @@ Azure SQL veritabanı yönetilen örnek veri kaynakları, Azure sanal ağı 'nda
 
 ## <a name="see-also"></a>Ayrıca bkz.
 Şirket [içi veri kaynaklarına bağlanma](analysis-services-gateway.md)   
-[Şirket içi veri ağ geçidi @no__t yükleyip yapılandırma](analysis-services-gateway-install.md)-1  
+[Şirket içi veri ağ geçidi  yükleyip yapılandırma](analysis-services-gateway-install.md)  
 [Azure sanal ağı (VNET)](../virtual-network/virtual-networks-overview.md)   
 

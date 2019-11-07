@@ -1,21 +1,19 @@
 ---
 title: Azure Işlevlerinde dağıtım teknolojileri | Microsoft Docs
 description: Azure Işlevlerine kod dağıtabilmeniz için farklı yollar edinin.
-services: functions
-documentationcenter: .net
 author: ColbyTresness
-manager: dariac
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 4d32a652219d48a2cc101259ea6b76fbfa910821
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
-ms.translationtype: HT
+ms.openlocfilehash: ce8287626b390d6eac4a3461d928c24f515f4023
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674955"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576135"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
@@ -31,7 +29,7 @@ Azure Işlevleri, platformlar arası yerel geliştirme ve Windows ve Linux üzer
 
 Her planın farklı davranışları vardır. Her Azure Işlevleri özelliği için tüm dağıtım teknolojileri bulunmaz. Aşağıdaki grafikte, her bir işletim sistemi ve barındırma planı birleşimi için hangi dağıtım teknolojilerinin desteklendiği gösterilmektedir:
 
-| Dağıtım teknolojisi | Windows tüketimi | Windows Premium (Önizleme) | Windows ayrılmış  | Linux tüketimi | Linux Premium (Önizleme) | Linux adanmış |
+| Dağıtım teknolojisi | Windows tüketimi | Windows Premium | Windows ayrılmış  | Linux tüketimi | Linux Premium | Linux adanmış |
 |-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
 | Dış paket URL 'SI<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | ZIP dağıtımı |✔|✔|✔|✔|✔|✔|
@@ -86,7 +84,7 @@ Uygulamalar Linux üzerinde uzaktan oluşturulduğunda, [dağıtım paketinden �
 
 Tüketim planında çalışan Linux işlev uygulamalarının, dağıtım seçeneklerini sınırlayan bir SCM/kudu sitesi yok. Ancak, tüketim planında çalışan Linux 'ta işlev uygulamaları uzak yapıları destekler.
 
-##### <a name="dedicated-and-premium-preview-plans"></a>Adanmış ve Premium (Önizleme) planları
+##### <a name="dedicated-and-premium-plans"></a>Adanmış ve Premium planlar
 
 Linux üzerinde çalışan işlev uygulamalarının [adanmış (App Service) planı](functions-scale.md#app-service-plan) ve [Premium planda](functions-scale.md#premium-plan) Ayrıca sınırlı bir SCM/kudu sitesi de vardır.
 
@@ -183,8 +181,8 @@ Portal tabanlı düzenleyicide, işlev uygulamanızda olan dosyaları doğrudan 
 
 Aşağıdaki tabloda, Portal düzenlemesini destekleyen işletim sistemleri ve diller gösterilmektedir:
 
-| | Windows tüketimi | Windows Premium (Önizleme) | Windows ayrılmış | Linux tüketimi | Linux Premium (Önizleme)| Linux adanmış |
-|-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
+| | Windows tüketimi | Windows Premium | Windows ayrılmış | Linux tüketimi | Linux Premium | Linux adanmış |
+|-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | C#SCRIPT |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |

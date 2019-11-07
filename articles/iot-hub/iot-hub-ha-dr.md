@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: f1944e06989844528a55c89f82c3db3b3a28dca1
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 533a199f75baa5a27ed06698f22d4d046be45507
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876904"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607884"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma IoT Hub
 
@@ -62,7 +62,7 @@ IoT Hub 'ı için yük devretme işlemi tamamlandıktan sonra, cihazdaki ve arka
 > [!CAUTION]
 > - IoT Hub yerleşik olaylar uç noktasının Olay Hub 'ı ile uyumlu adı ve uç noktası, yük devretmeden sonra değişir. Olay Hub 'ı istemcisini ya da olay işlemcisi konağını kullanarak yerleşik uç noktadan telemetri iletileri alırken, bağlantıyı kurmak için [IoT Hub bağlantı dizesini kullanmanız](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) gerekir. Bu, arka uç uygulamalarınızın el ile müdahale sonrası yük devretmeye gerek kalmadan çalışmaya devam etmesini sağlar. Arka uç uygulamanızda Olay Hub 'ı ile uyumlu adı ve uç noktayı doğrudan kullanırsanız, işleme devam etmek için yük devretmeden sonra [Yeni Olay Hub 'ı ile uyumlu adı ve uç noktasını getirerek](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) uygulamanızı yeniden yapılandırmanız gerekir.
 >
-> - BLOB depolama alanına yönlendirirken, tüm kapsayıcıların bölüm varsayımından okunmalarını sağlamak için Blobları listeleyip daha sonra bu nesnelerin üzerinde değişiklik yapmanızı öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Blob 'ların listesini numaralandırma hakkında bilgi edinmek için bkz. [BLOB depolamaya yönlendirme](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+> - Depolama alanına yönlendirirken, tüm kapsayıcıların bölüm varsayımından okunmalarını sağlamak için depolama kapsayıcısını listeleyip daha sonra bunların üzerinde yineleme yapmanızı öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Blob 'ların listesini numaralandırma hakkında bilgi edinmek için bkz. [Azure depolama 'ya yönlendirme](iot-hub-devguide-messages-d2c.md#azure-storage).
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft tarafından başlatılan yük devretme
 
@@ -108,14 +108,14 @@ Bölgesel yük devretme modelinde, çözüm arka ucu öncelikle bir veri merkezi
 
 Yüksek düzeyde, IoT Hub bir bölgesel yük devretme modeli uygulamak için aşağıdaki adımları gerçekleştirmeniz gerekir:
 
-* **Ikincil bir IoT Hub ve cihaz yönlendirme mantığı**: Birincil bölgenizdeki hizmet kesintiye uğradıysanız, cihazların ikincil bölgenize bağlanmayı başlatması gerekir. Birçok hizmetin durum durumunu algılayan doğası göz önüne alındığında, çözüm yöneticilerinin bölgeler arası yük devretme sürecini tetiklemesi yaygındır. Yeni uç noktayı cihazlara iletmenin en iyi yolu, işlem denetimini sürdürirken, geçerli etkin uç nokta için bir *danışman* hizmetini düzenli olarak denetlerken olur. Concierge Hizmeti, DNS yeniden yönlendirme teknikleri (örneğin, [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)kullanılarak) kullanılarak çoğaltılan ve erişilebilir durumda tutulan bir Web uygulaması olabilir.
+* **Ikincil bir IoT Hub ve cihaz yönlendirme mantığı**: birincil bölgenizde hizmet kesintiye uğradıysanız, cihazların ikincil bölgenize bağlanmasına başlaması gerekir. Birçok hizmetin durum durumunu algılayan doğası göz önüne alındığında, çözüm yöneticilerinin bölgeler arası yük devretme sürecini tetiklemesi yaygındır. Yeni uç noktayı cihazlara iletmenin en iyi yolu, işlem denetimini sürdürirken, geçerli etkin uç nokta için bir *danışman* hizmetini düzenli olarak denetlerken olur. Concierge Hizmeti, DNS yeniden yönlendirme teknikleri (örneğin, [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)kullanılarak) kullanılarak çoğaltılan ve erişilebilir durumda tutulan bir Web uygulaması olabilir.
 
    > [!NOTE]
    > IoT Hub hizmeti, Azure Traffic Manager 'de desteklenen bir uç nokta türü değil. Önerilen danışman hizmetini, Endpoint Health araştırma API 'sini uygulayarak Azure Traffic Manager ile tümleştirmeniz önerilir.
 
-* **Kimlik kayıt defteri çoğaltması**: Kullanılabilmesi için, ikincil IoT Hub 'ının çözüme bağlanabilecek tüm cihaz kimliklerini içermesi gerekir. Çözüm, cihaz kimliklerinin coğrafi olarak çoğaltılan yedeklemelerini tutmalı ve cihazların etkin uç noktasını değiştirmeden önce ikincil IoT Hub 'ına yükler. IoT Hub cihaz kimliği dışarı aktarma işlevselliği bu bağlamda yararlıdır. Daha fazla bilgi için bkz. [IoT Hub Geliştirici Kılavuzu-kimlik kayıt defteri](iot-hub-devguide-identity-registry.md).
+* **Kimlik kayıt defteri çoğaltması**: kullanılabilir olması için, ikincil IoT Hub 'ının çözüme bağlanabilecek tüm cihaz kimliklerini içermesi gerekir. Çözüm, cihaz kimliklerinin coğrafi olarak çoğaltılan yedeklemelerini tutmalı ve cihazların etkin uç noktasını değiştirmeden önce ikincil IoT Hub 'ına yükler. IoT Hub cihaz kimliği dışarı aktarma işlevselliği bu bağlamda yararlıdır. Daha fazla bilgi için bkz. [IoT Hub Geliştirici Kılavuzu-kimlik kayıt defteri](iot-hub-devguide-identity-registry.md).
 
-* **Birleştirme mantığı**: Birincil bölge yeniden kullanılabilir duruma geldiğinde, ikincil sitede oluşturulmuş tüm durum ve verilerin birincil bölgeye geri geçirilmesi gerekir. Bu durum ve veriler genellikle, birincil IoT Hub ile ve birincil bölgedeki uygulamaya özel depolarla birleştirilmesi gereken cihaz kimlikleri ve uygulama meta verileri ile ilgilidir. 
+* **Mantık birleştirme**: birincil bölge yeniden kullanılabilir olduğunda, ikincil sitede oluşturulmuş tüm durum ve verilerin birincil bölgeye geri geçirilmesi gerekir. Bu durum ve veriler genellikle, birincil IoT Hub ile ve birincil bölgedeki uygulamaya özel depolarla birleştirilmesi gereken cihaz kimlikleri ve uygulama meta verileri ile ilgilidir. 
 
 Bu adımı basitleştirmek için ıdempotent işlemlerini kullanmanız gerekir. Idempotent işlemleri, olayların son tutarlı dağılımından ve yinelenen veya sıra dışı tesliminden gelen yan etkileri en aza indirir. Buna ek olarak, uygulama mantığı olası tutarsızlıkları veya biraz güncel durumu tolerans sağlayacak şekilde tasarlanmalıdır. Bu durum, sistemin kurtarma noktası hedeflerine (RPO) dayalı olması için gereken ek süre nedeniyle ortaya çıkabilir.
 
@@ -125,8 +125,8 @@ Bu makalede sunulan HA/DR seçeneklerinin Özeti, çözümünüz için uygun ola
 
 | HA/DR seçeneği | RTO | RPO | El ile müdahale gerektiriyor mu? | Uygulama karmaşıklığı | Ek maliyet etkisi|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|Hayır|Yok.|Yok.|
-| El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Evet|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|Yok.|
+| Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|Hayır|None|None|
+| El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Evet|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|None|
 | Çapraz bölge HA |< 1 dk|Özel HA çözümünüzün çoğaltma sıklığına bağlıdır|Hayır|Yüksek|> 1x, 1 IoT Hub 'ın maliyeti|
 
 ## <a name="next-steps"></a>Sonraki adımlar

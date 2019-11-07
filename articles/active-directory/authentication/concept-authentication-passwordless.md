@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17a99a522c6ab960c2ccd0cc2729076c54ed07f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8c8bfa5fc31ce8500d1ed339ba28afeed21e25a0
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151856"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603502"
 ---
 # <a name="passwordless-authentication-options"></a>Passwordless kimlik doğrulama seçenekleri
 
@@ -52,7 +52,7 @@ Tüm iOS veya Android telefonlarını, kullanıcıların telefonda bir bildirim 
 
 FIDO2 güvenlik anahtarları, herhangi bir form faktöründe yer alan unphishable standartlara dayalı, passwordless kimlik doğrulama yöntemidir. Hızlı kimlik çevrimiçi (FIDO), passwordless kimlik doğrulaması için açık bir standarttır. Kullanıcıların ve kuruluşların, bir dış güvenlik anahtarı veya bir cihaza yerleşik bir platform anahtarı kullanarak bir Kullanıcı adı veya parola olmadan kendi kaynaklarında oturum açmasını sağlamak için standart kullanmasına olanak sağlar.
 
-Çalışanlar, genel önizleme için güvenlik anahtarlarını kullanarak Azure AD 'ye veya karma Azure AD 'ye katılmış Windows 10 cihazlarında oturum açabilir ve bulutta ve şirket içi kaynaklarda çoklu oturum açma imkanı alabilir. Ayrıca, desteklenen tarayıcılarda oturum açabilir.
+Çalışanlar, genel önizleme için Azure AD 'ye katılmış Windows 10 cihazlarında oturum açmak ve bulutta ve şirket içi kaynaklarda çoklu oturum açmak için güvenlik anahtarlarını kullanabilir. Ayrıca, desteklenen tarayıcılarda oturum açabilir.
 
 ![Bir güvenlik anahtarıyla Microsoft Edge 'de oturum açın](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -81,7 +81,7 @@ Aşağıdaki sağlayıcılar, passwordless deneyimiyle uyumlu oldukları bilinen
 > [!NOTE]
 > Satınalma ve NFC tabanlı güvenlik anahtarları kullanmayı planlıyorsanız, desteklenen bir NFC okuyucusuna ihtiyacınız olacaktır.
 
-Bir satıcısıysanız ve cihazınızı bu listede almak istiyorsanız [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)' e başvurun.
+Bir satıcısıysanız ve cihazınızı bu listede almak istiyorsanız [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)başvurun.
 
 FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numarası ikinci bir faktör olarak kullanabilecek senaryolar veya çalışanlar olan kuruluşlar için harika bir seçenektir.
 
