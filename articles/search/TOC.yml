@@ -195,6 +195,8 @@
           href: search-blob-storage-integration.md
         - name: Blob dizin oluşturucu ayarlama
           href: search-howto-indexing-azure-blob-storage.md
+        - name: Azure Data Lake Storage 2. Nesil dizin oluşturucuyu ayarlama
+          href: search-howto-index-azure-data-lake-storage.md
         - name: Bire çok blobları dizinleme
           href: search-howto-index-one-to-many-blobs.md
         - name: CSV bloblarını dizine ekleme

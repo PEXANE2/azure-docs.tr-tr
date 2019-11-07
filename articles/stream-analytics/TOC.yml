@@ -97,6 +97,8 @@
           href: stream-analytics-power-bi-dashboard.md
         - name: İşi durdurma veya silme
           href: stream-analytics-clean-up-your-job.md
+        - name: İşi kopyalama veya yedekleme
+          href: copy-job.md
         - name: Güvenilirlik için işleri eşleştirme
           href: stream-analytics-job-reliability.md
         - name: Yönetilen kimlikle kimlik doğrulaması - ADLS 1. Nesil çıkışı

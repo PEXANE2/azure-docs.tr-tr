@@ -502,6 +502,8 @@
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Güvenliği yapılandırma
           href: sql-database-security-tutorial.md
+        - name: Stream Analytics ile verilerin akışını yapma
+          href: sql-database-stream-analytics.md
     - name: Kavramlar
       items:
         - name: Tek veritabanı kaynakları

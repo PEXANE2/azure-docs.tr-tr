@@ -8,6 +8,8 @@
   items:
     - name: Hizmet oluşturma - Portal
       href: quickstart-create-data-migration-service-portal.md
+    - name: Karma modda hizmet oluşturma - Portal
+      href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: Öğreticiler
   items:
     - name: SQL Server'ı Azure SQL Veritabanı tek veritabanına çevrimdışı geçirme

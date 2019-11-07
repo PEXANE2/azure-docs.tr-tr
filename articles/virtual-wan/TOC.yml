@@ -34,6 +34,8 @@
       href: vpn-over-expressroute.md
     - name: Sanal ağ geçidini Sanal WAN'a bağlama
       href: connect-virtual-network-gateway-vwan.md
+    - name: Genel Sanal Ağ eşlemesini yapılandırma
+      href: global-peering-vnet.md
     - name: Özel IPsec ilkesini yapılandırma
       href: virtual-wan-custom-ipsec-portal.md
     - name: Kullanıcı VPN'si için sertifikaları yapılandırma

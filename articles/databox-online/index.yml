@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure Data Box belgeleri - çevrimiçi aktarım
-summary: Ağ üzerinden yüksek performanslı veri aktarımları için Azure Data Box Gateway ve Azure Data Box Edge cihazlarını kullanın. Bulutta arşivleme, olağanüstü durum kurtarma veya bulut ölçeğinde işleme için verilerinizi buluta göndermek üzere Data Box Gateway hizmetini seçin. Azure’a taşınmadan önce verilerinizi filtrelemek, analiz etmek ve dönüştürmek için Data Box Edge hizmetini kullanın.
+title: Azure Stack Edge ve Azure Data Box Gateway belgeleri - Çevrimiçi aktarım
+summary: Ağ üzerinden yüksek performanslı veri aktarımları için Azure Data Box Gateway ve Azure Stack Edge cihazlarını kullanın. Bulutta arşivleme, olağanüstü durum kurtarma veya bulut ölçeğinde işleme için verilerinizi buluta göndermek üzere Data Box Gateway hizmetini seçin. Azure'a taşınmadan önce verilerinizi filtrelemek, analiz etmek ve dönüştürmek için Azure Stack Edge hizmetini kullanın. Azure Data Box Edge markası kısa süre önce Azure Stack Edge olarak değiştirildi.
 metadata:
-  title: Azure Data Box belgeleri - çevrimiçi aktarım
-  description: Azure’a ağ üzerinden yüksek performanslı veri aktarımı için Data Box Gateway, Data Box Edge Belgeleri.
+  title: Azure Stack Edge ve Azure Data Box Gateway belgeleri - Çevrimiçi aktarım
+  description: Azure’a ağ üzerinden yüksek performanslı veri aktarımı için Data Box Gateway, Azure Stack Edge (eski marka adı Data Box Edge) Belgeleri.
   services: databox
   ms.service: databox
   ms.subservice: edge
@@ -11,21 +11,21 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 08/15/2019
-  ms.openlocfilehash: f1b3c4f8473807b7bbffa2b40f1d3a89b6acff5a
-  ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 61cda4ccab69396c13581598f399104b0a4fb181
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/23/2019
-  ms.locfileid: "70012873"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73570110"
 landingContent:
-- title: Data Box ailesi hakkında
+- title: Azure Stack Edge ve Data Box Gateway hakkında
   linkLists:
   - linkListType: overview
     links:
     - text: Data Box Gateway nedir?
       url: data-box-gateway-overview.md
-    - text: Data Box Edge nedir?
+    - text: Azure Stack Edge nedir?
       url: data-box-edge-overview.md
   - linkListType: architecture
     links:
@@ -43,11 +43,11 @@ landingContent:
     links:
     - text: Data Box Gateway gereksinimleri
       url: data-box-gateway-system-requirements.md
-    - text: Data Box Edge gereksinimleri
+    - text: Azure Stack Edge gereksinimleri
       url: data-box-edge-system-requirements.md
     - text: Data Box Gateway sınırları
       url: data-box-gateway-limits.md
-    - text: Data Box Edge sınırları
+    - text: Azure Stack Edge sınırları
       url: data-box-edge-limits.md
 - title: Dağıtma
   linkLists:
@@ -55,7 +55,7 @@ landingContent:
     links:
     - text: Data Box Gateway
       url: data-box-gateway-deploy-prep.md
-    - text: Data Box Edge
+    - text: Azure Stack Edge
       url: data-box-edge-deploy-prep.md
 - title: Geliştirme
   linkLists:
@@ -65,7 +65,7 @@ landingContent:
       url: data-box-edge-create-iot-edge-module.md
   - linkListType: download
     links:
-    - text: Örnekler - Data Box Edge için C#
+    - text: Örnekler - Azure Stack Edge için C#
       url: https://docs.microsoft.com/samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
 - title: Yönetme
   linkLists:
@@ -73,7 +73,7 @@ landingContent:
     links:
     - text: Data Box Gateway paylaşımları
       url: data-box-gateway-manage-shares.md
-    - text: Data Box Edge paylaşımları
+    - text: Azure Stack Edge paylaşımları
       url: data-box-edge-manage-shares.md
     - text: Uç işlemi
       url: data-box-edge-manage-compute.md
@@ -85,11 +85,11 @@ landingContent:
     links:
     - text: Data Box Gateway
       url: data-box-gateway-troubleshoot.md
-    - text: Data Box Edge
+    - text: Azure Stack Edge
       url: data-box-edge-troubleshoot.md
     - text: Uç işlemi modülleri
       url: data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
-    - text: Data Box Edge'i döndürme veya değiştirme
+    - text: Azure Stack Edge'i döndürme veya değiştirme
       url: data-box-edge-return-device.md
     - text: Destek bileti açma
       url: data-box-edge-contact-microsoft-support.md

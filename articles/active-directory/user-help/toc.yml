@@ -54,18 +54,22 @@
       href: user-help-auth-app-backup-recovery.md
     - name: SSS
       href: user-help-auth-app-faq.md
-- name: Profilim (önizleme) portalı yardımı
+- name: Hesabım portalı yardımı
   items:
     - name: Genel Bakış
-      href: myprofile-portal-overview.md
+      href: my-account-portal-overview.md
     - name: Güvenlik bilgilerinizi yönetme
       href: user-help-security-info-overview.md
-    - name: Kuruluşlarınızı yönetme
-      href: myprofile-portal-organizations-page.md
     - name: Bağlı cihazlarınızı yönetme
-      href: myprofile-portal-devices-page.md
+      href: my-account-portal-devices-page.md
+    - name: Parolanızı değiştirme
+      href: my-account-change-password-page.md
+    - name: Kuruluşlarınızı yönetme
+      href: my-account-portal-organizations-page.md
     - name: Gizlilikle ilgili bilgilerinizi görüntüleme
-      href: myprofile-portal-privacy-page.md
+      href: my-account-portal-privacy-page.md
+    - name: Son oturum açma etkinliğinizi görüntüleme
+      href: my-account-portal-sign-ins-page.md
 - name: Güvenlik bilgileri (önizleme) yardımı
   items:
     - name: Genel Bakış

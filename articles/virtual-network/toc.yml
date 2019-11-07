@@ -39,6 +39,8 @@
       href: security-overview.md
     - name: Yönlendirme
       href: virtual-networks-udr-overview.md
+    - name: Hizmet etiketleri
+      href: service-tags-overview.md
     - name: Hizmet uç noktaları
       href: virtual-network-service-endpoints-overview.md
     - name: Hizmet uç noktası ilkeleri
@@ -65,6 +67,8 @@
       href: ipv6-public-ip-address-prefix.md
     - name: DDoS koruması
       href: ddos-protection-overview.md
+    - name: Alt ağ uzantısı
+      href: subnet-extension.md
     - name: Arka Uç Bağlantısı Birlikte Çalışabilirliği
       items:
         - name: Önsöz ve Test Kurulumu
@@ -297,6 +301,8 @@
           href: diagnose-network-routing-problem.md
         - name: Aktarım hızı testi
           href: virtual-network-bandwidth-testing.md
+        - name: VM ağ gecikmesini sınama
+          href: virtual-network-test-latency.md
         - name: Sanal ağlar silinemiyor
           href: virtual-network-troubleshoot-cannot-delete-vnet.md
         - name: VM’den VM’ye bağlantı sorunları

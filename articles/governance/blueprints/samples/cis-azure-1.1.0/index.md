@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 0c33c0832590fdfd4fe78a1645ef1b0e3e391163
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: bf4b79dbb3da15605dc4362b5f0578a457886316
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200576"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581368"
 ---
 # <a name="overview-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark şeması örneğine genel bakış
 
@@ -19,16 +19,16 @@ CIS Microsoft Azure Foundations Benchmark şeması örneği, belirli CIS Microso
 
 ## <a name="recommendation-mapping"></a>Öneri eşlemesi
 
-Öneri eşlemesi bölümü bu şemaya dahil edilmiş olan ilkelerin ayrıntılarını sağlar ve bu ilkelerin CIS Microsoft Azure Foundations Benchmark'taki çeşitli önerileri nasıl ele aldığını açıklar.
-Kaynaklar bir mimariye atandığında, atanan ilkeler ile uyumsuzluk için Azure İlkesi tarafından değerlendirilir. Daha fazla bilgi için bkz. [Azure İlkesi](../../../policy/overview.md).
+Öneri eşlemesi bölümü bu şemaya dahil edilmiş olan ilkelerin ayrıntılarını sağlar ve bu ilkelerin CIS Microsoft Azure Foundations Benchmark v1.1.0'daki çeşitli önerileri nasıl ele aldığını açıklar. Kaynaklar bir mimariye atandığında, atanan ilkeler ile uyumsuzluk için Azure İlkesi tarafından değerlendirilir. Daha fazla bilgi için bkz. [Azure İlkesi](../../../policy/overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 CIS Microsoft Azure Foundations Benchmark şeması örneğine genel bakışı gözden geçirdiniz.
-Şimdi öneri eşlemesi hakkında daha fazla bilgi edinmek için aşağıdaki makaleyi ziyaret edin:
+Şimdi öneri eşlemesi hakkında daha fazla bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [CIS Microsoft Azure Foundations Benchmark şeması - Öneri eşlemesi](./control-mapping.md)
+> [CIS Microsoft Azure Foundations Benchmark şema örneği - Öneri eşlemesi](./control-mapping.md)
+> [CIS Microsoft Azure Foundations Benchmark şema örneği - Dağıtım adımları](./deploy.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
