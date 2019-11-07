@@ -7,22 +7,22 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: overview
-ms.date: 08/31/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e3a83730e47686e9d4757f057d2e8da4629fdd7a
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1a9ad16d6ecd7e75848ca1ea56e6238ee3b29c2d
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312144"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614960"
 ---
-# <a name="entity-functions-preview"></a>Varlık işlevleri (Önizleme)
+# <a name="entity-functions"></a>Varlık işlevleri
 
 Varlık işlevleri, *dayanıklı varlıklar*olarak bilinen küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü, *varlık tetikleyicisi*olan işlevlerdir. Orchestrator işlevlerinin aksine, varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine bir varlığın durumunu açıkça yönetir.
 Varlıklar, her biri modestly boyutlu bir duruma sahip birçok varlıkta iş dağıtarak uygulamaları ölçeklendirmek için bir yol sağlar.
 
 > [!NOTE]
-> Varlık işlevleri ve ilgili işlevler yalnızca Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir. Varlık işlevleri şu anda genel önizlemededir.
+> Varlık işlevleri ve ilgili işlevler yalnızca Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir.
 
 ## <a name="general-concepts"></a>Genel kavramlar
 
@@ -36,7 +36,7 @@ Varlıklara benzersiz bir tanımlayıcı, *VARLıK kimliği*üzerinden erişilir
 * Bir **varlık adı**: varlığın türünü tanımlayan bir ad (örneğin, "Counter"). Bu ad, varlığı uygulayan varlık işlevinin adı ile aynı olmalıdır. Büyük/küçük harfe duyarlı değildir.
 * Bir **varlık anahtarı**: varlığı, aynı ada sahip diğer tüm varlıklar arasında benzersiz şekilde tanımlayan bir dize (örneğin, bir GUID).
 
-Örneğin, bir *sayaç* varlığı işlevi çevrimiçi bir oyunda puanı korumak için kullanılabilir. Oyunun her örneği, `@Counter@Game1`, `@Counter@Game2` gibi benzersiz bir varlık KIMLIĞINE sahip olur. Belirli bir varlığı hedefleyen tüm işlemler, bir varlık KIMLIĞINI parametre olarak belirtmeyi gerektirir.
+Örneğin, bir *sayaç* varlığı işlevi çevrimiçi bir oyunda puanı korumak için kullanılabilir. Oyunun her örneği, `@Counter@Game1`, `@Counter@Game2`vb. gibi benzersiz bir varlık KIMLIĞINE sahip olacaktır. Belirli bir varlığı hedefleyen tüm işlemler, bir varlık KIMLIĞINI parametre olarak belirtmeyi gerektirir.
 
 ### <a name="entity-operations"></a>Varlık işlemleri ###
 
@@ -58,9 +58,9 @@ Varlıkların işlev olarak temsil edildiği **işlev tabanlı sözdizimi** ve i
 
 Varlıkların ve işlemlerin sınıflar ve yöntemlerle temsil edildiği **sınıf tabanlı sözdizimi** . Bu sözdizimi daha kolay okunabilir kod üretir ve işlemlerin tür açısından güvenli bir şekilde çağrılmasına izin verir. Sınıf tabanlı sözdizimi yalnızca işlev tabanlı sözdiziminin üzerinde ince bir katman olduğundan, her iki çeşit de aynı uygulamada birbirinin yerine kullanılabilir.
 
-### <a name="example-function-based-syntax"></a>Örnek: Işlev tabanlı sözdizimi
+### <a name="example-function-based-syntax---c"></a>Örnek: Işlev tabanlı sözdizimi-C#
 
-Aşağıdaki kod, dayanıklı bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, her biri bir tamsayı durumu üzerinde çalışan üç işlem olan `add`, `reset` ve `get` tanımlar.
+Aşağıdaki kod, dayanıklı bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, her biri bir tamsayı durumu üzerinde çalışan üç işlem, `add`, `reset`ve `get`tanımlar.
 
 ```csharp
 [FunctionName("Counter")]
@@ -83,9 +83,9 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 İşlev tabanlı sözdizimi ve nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Işlev tabanlı sözdizimi](durable-functions-dotnet-entities.md#function-based-syntax).
 
-### <a name="example-class-based-syntax"></a>Örnek: sınıf tabanlı sözdizimi
+### <a name="example-class-based-syntax---c"></a>Örnek: sınıf tabanlı sözdizimi-C#
 
-Aşağıdaki örnek, sınıfları ve yöntemleri kullanarak `Counter` varlığının eşdeğer bir uygulamasıdır.
+Aşağıdaki örnek, sınıfları ve yöntemleri kullanarak `Counter` varlığın eşdeğer bir uygulamasıdır.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -106,9 +106,48 @@ public class Counter
 }
 ```
 
-Bu varlığın durumu, sayacın geçerli değerini depolayan bir alan içeren `Counter` türünde bir nesnedir. Bu nesneyi depolamada kalıcı hale getirmek için, [JSON.net](https://www.newtonsoft.com/json) kitaplığı tarafından serileştirilmiş ve seri durumdan çıkarılmış olur. 
+Bu varlığın durumu, sayacın geçerli değerini depolayan bir alan içeren `Counter`türünde bir nesnedir. Bu nesneyi depolamada kalıcı hale getirmek için, [JSON.net](https://www.newtonsoft.com/json) kitaplığı tarafından serileştirilmiş ve seri durumdan çıkarılmış olur. 
 
 Sınıf tabanlı sözdizimi ve nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [varlık sınıfları tanımlama](durable-functions-dotnet-entities.md#defining-entity-classes).
+
+### <a name="example-javascript-entity"></a>Örnek: JavaScript varlığı
+
+Dayanıklı varlıklar, `durable-functions` NPM paketinin sürüm **1.3.0** Ile başlayan JavaScript 'te kullanılabilir. Aşağıdaki kod, JavaScript 'te yazılmış dayanıklı bir işlev olarak uygulanan *sayaç* varlıktır.
+
+**function. JSON**
+```json
+{
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+**index. js**
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
 
 ## <a name="accessing-entities"></a>Varlıklara erişme
 
@@ -145,6 +184,16 @@ public static Task Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
 *Sinyal* terimi, varlık API çağrısı tek yönlü ve zaman uyumsuz olduğu anlamına gelir. Bir *istemci işlevinin* , varlığın işlemi ne zaman işlediğini bilmesi mümkün değildir. Ayrıca, istemci işlevi sonuç değerlerini veya özel durumları gözlemleyemiyorum. 
 
 ### <a name="example-client-reads-an-entity-state"></a>Örnek: istemci bir varlık durumunu okur
@@ -163,6 +212,16 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    return context.df.readEntityState(entityId);
+};
+```
+
 Varlık durumu sorguları, dayanıklı izleme deposuna gönderilir ve varlığın en son *kalıcı* durumunu döndürür. Bu durum her zaman bir "taahhüt" durumudur, yani bir işlemin yürütüldüğü ortasında hiçbir zaman geçici bir ara durum kabul edilir. Bununla birlikte, bu durum varlığın bellek içi durumuna kıyasla eski olabilir. Aşağıdaki bölümde açıklandığı gibi, yalnızca düzenlemeler bir varlığın bellek içi durumunu okuyabilir.
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Örnek: Orchestration sinyalleri ve bir varlığı çağırır
@@ -176,7 +235,7 @@ public static async Task Run(
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
 
-   // Two-way call to the entity which returns a value - awaits the response
+    // Two-way call to the entity which returns a value - awaits the response
     int currentValue = await context.CallEntityAsync<int>(entityId, "Get");
     if (currentValue < 10)
     {
@@ -184,6 +243,21 @@ public static async Task Run(
         context.SignalEntity(entityId, "Add", 1);
     }
 }
+```
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const entityId = new df.EntityId("Counter", "myCounter");
+
+    // Two-way call to the entity which returns a value - awaits the response
+    currentValue = yield context.df.callEntity(entityId, "get");
+    if (currentValue < 10) {
+        // One-way signal to the entity which updates the value - does not await a response
+        yield context.df.signalEntity(entityId, "add", 1);
+    }
+});
 ```
 
 Yalnızca düzenlemeler, varlık çağırma ve bir dönüş değeri ya da özel durum olabilen bir yanıt alma yeteneğine sahiptir. [İstemci bağlamasını](durable-functions-bindings.md#entity-client) kullanan istemci işlevleri yalnızca varlıklara *sinyal* verebilir.
@@ -198,87 +272,38 @@ Bir varlık işlevi, bir işlemi yürütürken diğer varlıklara (veya hatta ke
 
 ```csharp
    case "add":
+        var currentValue = ctx.GetState<int>();
         var amount = ctx.GetInput<int>();
         if (currentValue < 100 && currentValue + amount >= 100)
         {
             ctx.SignalEntity(new EntityId("MonitorEntity", ""), "milestone-reached", ctx.EntityKey);
         }
-        currentValue += amount;
+
+        ctx.SetState(currentValue + amount);
         break;
 ```
 
-Aşağıdaki kod parçacığında, eklenen hizmetin varlık sınıfınıza nasıl dahil olduğu gösterilmektedir.
-
-```csharp
-public class HttpEntity
-{
-    private readonly HttpClient client;
-
-    public HttpEntity(IHttpClientFactory factory)
-    {
-        this.client = factory.CreateClient();
-    }
-
-    public async Task<int> GetAsync(string url)
-    {
-        using (var response = await this.client.GetAsync(url))
-        {
-            return (int)response.StatusCode;
+```javascript
+    case "add":
+        const amount = context.df.getInput();
+        if (currentValue < 100 && currentValue + amount >= 100) {
+            const entityId = new df.EntityId("MonitorEntity", "");
+            context.df.signalEntity(entityId, "milestone-reached", context.df.instanceId);
         }
-    }
-
-    // The function entry point must be declared static
-    [FunctionName(nameof(HttpEntity))]
-    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
-        => ctx.DispatchAsync<HttpEntity>();
-}
+        context.df.setState(currentValue + amount);
+        break;
 ```
-
-> [!NOTE]
-> Normal .NET Azure Işlevlerinde Oluşturucu Ekleme kullanmanın aksine, sınıf tabanlı varlıkların işlevler giriş noktası yöntemi- *1 olarak bildirilmelidir* @no__t. Statik olmayan bir işlev giriş noktası bildirmek, normal Azure Işlevleri nesne Başlatıcısı ve dayanıklı varlıklar nesne Başlatıcısı arasında çakışmalara neden olabilir.
-
-### <a name="bindings-in-entity-classes-net"></a>Varlık sınıflarında bağlamalar (.NET)
-
-Normal işlevlerin aksine, varlık sınıfı yöntemlerinin giriş ve çıkış bağlamalarına doğrudan erişimi yoktur. Bunun yerine, bağlama verileri giriş noktası işlev bildiriminde yakalanmalı ve sonra `DispatchAsync<T>` yöntemine geçirilmelidir. @No__t-0 ' a geçirilen tüm nesneler, bağımsız değişken olarak varlık sınıfı oluşturucusuna otomatik olarak geçirilir.
-
-Aşağıdaki örnek, [BLOB giriş bağlamasındaki](../functions-bindings-storage-blob.md#input) bir `CloudBlobContainer` başvurusunun, sınıf tabanlı bir varlık için nasıl kullanılabilir hale getirilebilir olduğunu gösterir.
-
-```csharp
-public class BlobBackedEntity
-{
-    private readonly CloudBlobContainer container;
-
-    public BlobBackedEntity(CloudBlobContainer container)
-    {
-        this.container = container;
-    }
-
-    // ... entity methods can use this.container in their implementations ...
-    
-    [FunctionName(nameof(BlobBackedEntity))]
-    public static Task Run(
-        [EntityTrigger] IDurableEntityContext context,
-        [Blob("my-container", FileAccess.Read)] CloudBlobContainer container)
-    {
-        // passing the binding object as a parameter makes it available to the
-        // entity class constructor
-        return context.DispatchAsync<BlobBackedEntity>(container);
-    }
-}
-```
-
-Azure Işlevleri 'ndeki bağlamalar hakkında daha fazla bilgi için bkz. [Azure Işlevleri Tetikleyicileri ve bağlamaları](../functions-triggers-bindings.md) belgeleri.
 
 ## <a name="entity-coordination"></a>Varlık düzenlemesi
 
 Birden çok varlık arasında işlem koordine etmeniz gerektiğinde zaman alabilir. Örneğin, bir bankacılık uygulamasında, tek tek banka hesaplarını temsil eden varlıklara sahip olabilirsiniz. Fonları bir hesaptan diğerine aktarırken, _kaynak_ hesapta yeterli fon bulunduğundan ve hem _kaynak_ hem de _hedef_ hesaplara yapılan güncelleştirmelerin işlem temelli olarak tutarlı bir şekilde yapıldığından emin olmanız gerekir.
 
-### <a name="example-transfer-funds"></a>Örnek: transfer fonları
+### <a name="example-transfer-funds-c"></a>Örnek: transfer fonlarıC#()
 
-Aşağıdaki örnek kod, bir Orchestrator işlevi kullanarak iki _Hesap_ varlığı arasındaki fonları aktarır. Varlık güncelleştirmelerini koordine etmek, düzenleme içinde _kritik bir bölüm_ oluşturmak için `LockAsync` yönteminin kullanılmasını gerektirir:
+Aşağıdaki örnek kod, bir Orchestrator işlevi kullanarak iki _Hesap_ varlığı arasındaki fonları aktarır. Varlık güncelleştirmelerini koordine etmek için, düzenleme içinde _kritik bir bölüm_ oluşturmak üzere `LockAsync` yöntemi kullanılması gerekir:
 
 > [!NOTE]
-> Kolaylık olması için bu örnek, daha önce tanımlanan `Counter` varlığını yeniden kullanır. Ancak gerçek bir uygulamada, daha ayrıntılı bir `BankAccount` varlığı tanımlanması daha iyi olacaktır.
+> Kolaylık olması için bu örnek daha önce tanımlanan `Counter` varlığını yeniden kullanır. Ancak gerçek bir uygulamada, daha ayrıntılı bir `BankAccount` varlığı tanımlanması daha iyi olacaktır.
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -320,21 +345,21 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-.NET ' te, `LockAsync`, aktiften çıkarıldığı zaman kritik bölümü sonlandıran bir `IDisposable` döndürür. Bu `IDisposable` sonucu, kritik bölümün sözdizimsel bir gösterimini elde etmek için bir `using` bloğu ile birlikte kullanılabilir.
+.NET ' te, `LockAsync` elden çıkarıldığı zaman kritik bölümü sonlandıran bir `IDisposable` döndürür. Bu `IDisposable` sonucu, kritik bölümün sözdizimsel bir gösterimini almak için bir `using` bloğuyla birlikte kullanılabilir.
 
-Önceki örnekte, bir Orchestrator işlevi bir _kaynak_ varlıktan bir _hedef_ varlığa fon aktardı. @No__t-0 yöntemi hem _kaynak_ hem de _hedef_ hesap varlıklarını kilitlediği. Bu, düzenleme mantığı `using` ifadesinin sonundaki _önemli bölümden_ çıkana kadar, başka hiçbir istemcinin herhangi bir hesabın durumunu sorgulayamaması veya değiştirememesi için bu kilidi kilitler. Bu, _kaynak_ hesaptan daha fazla taslak oluşturma olasılığını ortadan kaldırmayacak şekilde engelledi.
+Önceki örnekte, bir Orchestrator işlevi bir _kaynak_ varlıktan bir _hedef_ varlığa fon aktardı. `LockAsync` yöntemi hem _kaynak_ hem de _hedef_ hesap varlıklarını kilitlediği. Bu, düzenleme mantığı `using` deyimin sonundaki _önemli bölümden_ çıkana kadar başka hiçbir istemcinin herhangi bir hesabın durumunu sorgulayamayarak veya değiştirememesi için bu kilidi kilitler. Bu davranış, _kaynak_ hesaptan daha fazla taslak oluşturma olasılığını ortadan kaldırmaya engel olur.
 
 > [!NOTE] 
 > Bir düzenleme sonlandırıldığında (normalde veya bir hata ile), devam eden tüm kritik bölümler örtük olarak sonlandırılır ve tüm kilitler serbest bırakılır.
 
 ### <a name="critical-section-behavior"></a>Kritik bölüm davranışı
 
-@No__t-0 yöntemi bir düzenleme içinde _kritik bir bölüm_ oluşturur. Bu _kritik bölümler_ , diğer düzenlemeler için, belirli bir varlık kümesinde çakışan değişiklikler yapılmasını engeller. Dahili olarak, `LockAsync` API 'SI varlıklara "kilit" işlemleri gönderir ve aynı varlıkların her birinden "kilit alındı" yanıt iletisi aldığında bunu döndürür. Hem *kilit* hem de *kilit açma* , tüm varlıkların desteklediği yerleşik işlemlerdir.
+`LockAsync` yöntemi bir düzenleme içinde _kritik bir bölüm_ oluşturur. Bu _kritik bölümler_ , diğer düzenlemeler için, belirli bir varlık kümesinde çakışan değişiklikler yapılmasını engeller. Dahili olarak, `LockAsync` API 'SI varlıklara "kilit" işlemleri gönderir ve aynı varlıkların her birinden "kilit alındı" yanıt iletisi aldığında bunu döndürür. Hem *kilit* hem de *kilit açma* , tüm varlıkların desteklediği yerleşik işlemlerdir.
 
 Kilitli durumda olan bir varlıkta diğer istemcilerden herhangi bir işlem yapılmasına izin verilmez. Bu davranış, tek seferde yalnızca bir düzenleme örneğinin bir varlığı kilitleyebilmesini sağlar. Bir çağıran bir düzenleme tarafından kilitliyken bir varlık üzerinde bir işlem çağırmaya çalışırsa, bu işlem *bekleyen bir işlem kuyruğuna*yerleştirilir. Bekleyen bir işlem, ' ın düzenleme kilidini serbest bırakana kadar işlenmeyecektir.
 
 > [!NOTE] 
-> Bu, içindeki C#`lock` açıklaması gibi çoğu programlama dilinde kullanılan eşitleme temel elemanlarından biraz farklıdır. Örneğin, ' de C#, `lock` ifadesinin birden çok iş parçacığında doğru bir şekilde eşitlenip emin olmak için tüm iş parçacıkları tarafından kullanılması gerekir. Ancak varlıklar, tüm çağıranların bir varlığı açıkça _kilitlemesine_ gerek yoktur. Herhangi bir çağıran bir varlığı kilitlerse, o varlıktaki tüm diğer işlemler engellenir ve bu kilidin arkasında sıraya alınır.
+> Bu, içindeki C#`lock` deyimleri gibi çoğu programlama dilinde kullanılan eşitleme temel larından biraz farklıdır. Örneğin, ' de C#, ' de, birden çok iş parçacığında doğru eşitlemeyi sağlamak için `lock` deyimin tüm iş parçacıkları tarafından kullanılması gerekir. Ancak varlıklar, tüm çağıranların bir varlığı açıkça _kilitlemesine_ gerek yoktur. Herhangi bir çağıran bir varlığı kilitlerse, o varlıktaki tüm diğer işlemler engellenir ve bu kilidin arkasında sıraya alınır.
 
 Varlıkların kilitleri dayanıklı olduğundan, yürütülmekte olan işlem geri dönüştürülüp bile devam ederler. Kilitler, bir varlığın dayanıklı durumunun bir parçası olarak dahili olarak kalıcı hale getirilir.
 
@@ -350,11 +375,11 @@ Varlıkların kilitleri dayanıklı olduğundan, yürütülmekte olan işlem ger
 * Kritik bölümler birden çok paralel çağrı kullanarak aynı varlığı çağıramaz.
 * Kritik bölümler yalnızca kilitlendikleri varlıkları işaret edebilir.
 
-Bu kuralların herhangi bir ihlali, hangi kuralın bozulduğunu belirten bir ileti içeren bir çalışma zamanı hatasına neden olur (örneğin, .NET 'te `LockingRulesViolationException`).
+Bu kuralların herhangi bir ihlali, hangi kuralın bozulduğunu belirten bir ileti içeren bir çalışma zamanı hatasına (.NET 'teki `LockingRulesViolationException` gibi) neden olur.
 
 ## <a name="comparison-with-virtual-actors"></a>Sanal aktörler ile karşılaştırma
 
-Birçok dayanıklı varlık özelliği [aktör modeli](https://en.wikipedia.org/wiki/Actor_model)tarafından ilham olarak sağlanır. Aktörlerle zaten bilgi sahibiyseniz, bu makalede açıklanan kavramların birçoğunu de tanıyabilirsiniz. Dayanıklı varlıklar özellikle, [Orleans projesi](http://dotnet.github.io/orleans/)tarafından popularas olarak [sanal aktörlerin](https://research.microsoft.com/projects/orleans/)veya *grasındalara*benzer. Örnek:
+Birçok dayanıklı varlık özelliği [aktör modeli](https://en.wikipedia.org/wiki/Actor_model)tarafından ilham olarak sağlanır. Aktörlerle zaten bilgi sahibiyseniz, bu makalede açıklanan kavramların birçoğunu de tanıyabilirsiniz. Dayanıklı varlıklar özellikle, [Orleans projesi](http://dotnet.github.io/orleans/)tarafından popularas olarak [sanal aktörlerin](https://research.microsoft.com/projects/orleans/)veya *grasındalara*benzer. Örneğin:
 
 * Dayanıklı varlıklar bir *VARLıK kimliği*aracılığıyla adreslidir.
 * Yarış durumlarını engellemek için, sürekli varlık işlemleri tek seferde bir kez yürütülür.

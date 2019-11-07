@@ -8,35 +8,57 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b61e194bdea5fd8272ffc0fc9e16a2d80d3cf60
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: d0cdd78aaa2b58743e16a2e7cfe213a9daed85ff
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989702"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605890"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri depolama ve giriş
 
-Bu makalede Azure Time Series Insights önizlemesi için veri depolama ve giriş güncelleştirmeleri açıklanmaktadır. Temel depolama yapısını, dosya biçimini ve zaman serisi KIMLIĞI özelliğini içerir. Ayrıca temel alınan giriş işlemini, üretilen işi ve sınırlamaları da açıklar.
+Bu makalede Azure Time Series Insights önizlemesi için veri depolama ve giriş güncelleştirmeleri açıklanmaktadır. Temel depolama yapısını, dosya biçimini ve zaman serisi KIMLIĞI özelliğini içerir. Ayrıca temel alınan giriş işlemini, en iyi uygulamaları ve geçerli önizleme sınırlamalarını da açıklar.
 
 ## <a name="data-ingress"></a>Veri girişi
 
-Time Series Insights önizlemede, veri giriş ilkeleri verilerin nereden kaynakta yapılabileceğini ve verilerin ne biçimde olması gerektiğini tespit edebilir.
-
-[![zaman serisi modeline genel bakış](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
+Azure Time Series Insights ortamınız, zaman serisi verilerini toplamak, işlemek ve depolamak için bir giriş altyapısı içerir. Ortamınızı planlarken, tüm gelen verilerin işlenmesini sağlamak ve yüksek giriş ölçeğine ulaşmak ve giriş gecikmesini en aza indirmek için göz önünde bulundurmanız gereken bazı noktalar vardır. (TSI tarafından olaydan gelen verileri okumak ve işlemek için geçen süre Kaynak). Time Series Insights önizlemede, veri giriş ilkeleri verilerin nereden kaynakta yapılabileceğini ve verilerin ne biçimde olması gerektiğini tespit edebilir.
 
 ### <a name="ingress-policies"></a>Giriş ilkeleri
 
-Time Series Insights önizlemesi, Time Series Insights Şu anda desteklediği olay kaynaklarını destekler:
+Time Series Insights önizlemesi aşağıdaki olay kaynaklarını destekler:
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
 Time Series Insights önizlemesi, örnek başına en fazla iki olay kaynağını destekler.
   
-Azure Time Series Insights Azure IoT Hub veya Azure Event Hubs aracılığıyla gönderilen JSON 'yi destekler. IoT JSON verilerinizi iyileştirmek için [JSON şeklini nasıl şekilleyeceğinizi](./time-series-insights-send-events.md#supported-json-shapes)öğrenin.
+Azure Time Series Insights Azure IoT Hub veya Azure Event Hubs aracılığıyla gönderilen JSON 'yi destekler.
+
+> [!WARNING] 
+> Time Series Insights önizleme ortamınıza yeni bir olay kaynağı eklerken, şu anda IoT Hub veya Olay Hub 'ında bulunan olay sayısına bağlı olarak, ilk alma gecikmesi gecikme süresine karşılaşabilirsiniz. Verilerin içeri alınmasının ardından, bu yüksek gecikme süresini alt tarafa beklemeniz gerekir, ancak deneyiminiz yoksa, lütfen Azure portal bir destek bileti göndererek bizimle iletişim kurun.
+
+## <a name="ingress-best-practices"></a>Giriş en iyi uygulamaları
+
+Aşağıdaki en iyi yöntemleri kullanmanızı öneririz:
+
+* Time Series Insights ve bir IoT Hub veya Olay Hub 'ını aynı bölgede yapılandırın. Bu, ağ nedeniyle oluşan gecikme süresini azaltır.
+* Beklenen alma hızınızı hesaplayarak ve aşağıda listelenen desteklenen oran dahilinde olduğunu doğrulayarak ölçek gereksinimlerinizi planlayın
+* Giriş [ve sorgu IÇIN JSON şeklini](./time-series-insights-update-how-to-shape-events.md)okuyarak, JSON verilerinizin ve önizleme aşamasında geçerli sınırlamaların nasıl iyileştirileceği ve şekillendirilmeli olduğunu anlayın.
+
+### <a name="ingress-scale-and-limitations-in-preview"></a>Önizlemede giriş ölçeği ve sınırlamalar
+
+Time Series Insights önizleme, varsayılan olarak, ortam başına en fazla 1 megabayt (MB/sn) kadar bir başlangıç giriş ölçeğini destekler. Gerekirse, en fazla 16 MB/sn aktarım hızı mevcuttur, lütfen bu gerekliyse Azure portal bir destek bileti göndererek bizimle iletişim kurun. Ayrıca, 0,5 MB/sn 'lik bölüm başına sınır vardır. Bu, IoT Hub bir cihaz bölümü arasındaki benzeşim verildiğinde, özellikle IoT Hub kullanan müşterilere yönelik etkileri vardır. Bir ağ geçidi cihazının kendi cihaz KIMLIĞI ve bağlantı dizesi kullanılarak hub 'a ileti ileten senaryolarda, olay yükü farklı TS 'yi belirtse bile, iletilerin tek bir bölüme ulaştığını sağlayan 0,5 MB/s sınırına ulaşmada tehlike vardır. Ayrılacak. Genel olarak, giriş oranı, kuruluşunuzda bulunan cihaz sayısının, olay egörev sıklığının ve bir olay boyutunun faktörü olarak görüntülenir. Alma oranını hesaplarken, IoT Hub kullanıcıların kuruluştaki toplam cihaz yerine kullanımdaki Hub bağlantısı sayısını kullanması gerekir. Gelişmiş ölçeklendirme desteği devam etmektedir. Bu belgeler, bu geliştirmeleri yansıtacak şekilde güncelleştirilecektir. 
+
+> [!WARNING]
+> Bir olay kaynağı olarak IoT Hub kullanan ortamlarda, kullanımdaki hub cihazlarının sayısını kullanarak alım oranını hesaplayın.
+
+İşleme birimleri ve bölümleri hakkında daha fazla bilgi için lütfen aşağıdaki bağlantılara bakın:
+
+* [IoT Hub ölçeği](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
+* [Olay Hub 'ı ölçeği](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
+* [Olay Hub 'ı bölümleri](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
 ### <a name="data-storage"></a>Veri depolama
 
@@ -53,21 +75,13 @@ Time Series Insights önizleme, soğuk mağaza verilerinizi [Parquet dosya biçi
 > Soğuk depo verilerinin bulunduğu Azure Blob depolama hesabının sahibi olarak hesaptaki tüm verilere tam erişiminiz vardır. Bu erişim yazma ve silme izinleri içerir. Veri kaybına neden olabileceğinden, önizleme yazmaları Time Series Insights verileri düzenleme veya silme.
 
 ### <a name="data-availability"></a>Veri kullanılabilirliği
+
 En iyi sorgu performansı için bölümleri ve dizinleri Time Series Insights görüntüleyin. Veriler dizinlendikten sonra sorgu için kullanılabilir hale gelir. Alınan veri miktarı bu kullanılabilirliği etkileyebilir.
 
 > [!IMPORTANT]
-> Time Series Insights genel kullanılabilirlik (GA) sürümü, verilerin olay kaynağından okunduktan sonra 60 saniye içinde kullanılabilir hale gelir. Önizleme sırasında, veriler kullanılabilir hale gelmeden önce daha uzun bir süre yaşayabilirsiniz. 60 saniyenin ötesinde önemli gecikme yaşınızı yaşıyorsanız lütfen bizimle iletişime geçin.
+> Time Series Insights gelecek genel kullanılabilirlik (GA) sürümü, verilerin olay kaynağından okunduktan sonra 60 saniye içinde kullanılabilir hale gelir. Önizleme sırasında, veriler kullanılabilir hale gelmeden önce daha uzun bir süre yaşayabilirsiniz. 60 saniyenin ötesinde önemli gecikme yaşınızı yaşıyorsanız lütfen Azure portal bir destek bileti gönderebilirsiniz.
 
-### <a name="scale"></a>Ölçeklendirme
-
-Time Series Insights önizleme, varsayılan olarak, ortam başına en fazla 1 megabayt (MB/sn) kadar bir başlangıç giriş ölçeğini destekler. İhtiyacınız varsa 16 MB/sn 'ye kadar aktarım hızı kullanılabilir. Gelişmiş ölçeklendirme desteğine ihtiyacınız varsa lütfen bizimle iletişime geçin.
-
-Olay kaynağı için ek giriş ve ölçeklendirme özellikleri edinebilirsiniz:
-
-* [IoT Hub’ı](../iot-hub/iot-hub-scaling.md)
-* [Event Hubs](../event-hubs/event-hubs-scalability.md)
-
-## <a name="azure-storage"></a>Azure Depolama
+## <a name="azure-storage"></a>Azure Storage
 
 Bu bölümde Azure Time Series Insights önizlemesiyle ilgili Azure depolama ayrıntıları açıklanmaktadır.
 

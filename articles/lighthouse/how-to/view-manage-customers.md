@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f6c98a67394db8028901f3f1f8e799af4c7a8c5f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d68ac0a1b6a66482a85f7ab79840099a34c731c2
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898904"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615529"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Müşterileri ve Temsilcili kaynakları görüntüleme ve yönetme
 
@@ -30,6 +30,9 @@ Azure portal **müşterilerimiz** sayfasına erişmek Için, **tüm hizmetler**'
 Müşteri ayrıntılarını görüntülemek için **müşterilerimin** sol tarafında bulunan **müşteriler** ' i seçin.
 
 Her müşteri için müşterinin adını, müşteri KIMLIĞINI (kiracı KIMLIĞI) ve görevlendirmede ilişkili teklifi görürsünüz. **Temsilciler** sütununda, temsilci olan aboneliklerin sayısını ve/veya atanan kaynak grubu sayısını görürsünüz.
+
+> [!IMPORTANT]
+> Bir temsilciyi görmek için kullanıcılara, ekleme sürecinde [okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) rolü (veya okuyucu erişimi içeren başka bir yerleşik rol) verilmiş olması gerekir.
 
 Sayfanın üst kısmındaki filtreler, müşteri bilgilerinizi, tekliflerini veya anahtar sözcüklere göre filtrelemenizi ve gruplamanıza olanak tanır.
 

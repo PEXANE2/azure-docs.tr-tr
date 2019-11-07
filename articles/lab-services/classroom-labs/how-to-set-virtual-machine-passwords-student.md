@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 26b0f710590496875521e0dd8577a35841fbd3dd
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c757ef8508f9364a46116e6ddf19207f23a4b6f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657014"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583689"
 ---
 # <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs-students"></a>Sınıf laboratuvarlarında (öğrenciler) sanal makineler için parola ayarlama veya sıfırlama
 Bu makalede, öğrencilerin VM 'Leri için parola ayarlama/sıfırlama işlemlerinin nasıl yapılacağı gösterilir. 
@@ -40,4 +40,4 @@ Bu seçenek devre dışıysa, kullanıcıların VM 'yi ilk kez bağlamaya çalı
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir laboratuvar sahibinin yapılandıray, diğer öğrenci kullanım seçenekleri hakkında bilgi edinmek için aşağıdaki makaleye bakın: [Öğrenci kullanımını yapılandırın](how-to-configure-student-usage.md).
+Bir laboratuvar sahibinin yapılandıray, diğer öğrenci kullanım seçenekleri hakkında bilgi edinmek için şu makaleye bakın: [öğrenci kullanımını yapılandırma](how-to-configure-student-usage.md).

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme | Microsoft Docs'
+title: 'Öğretici: bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme '
 description: Azure portal, PowerShell veya Azure CLı kullanarak bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 838bdd2aeba18ebeaa964cb329939931419c588c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 980740c4417d1085d7c367b172005b10ce828e0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933411"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690513"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme
 
@@ -28,7 +28,7 @@ Azure SQL veritabanı elastik havuzu için bir yük devretme grubu yapılandır�
 > - İki mantıksal SQL Server arasında iki elastik havuz için bir [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturun.
 > - Yük devretme testi.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun: 
 

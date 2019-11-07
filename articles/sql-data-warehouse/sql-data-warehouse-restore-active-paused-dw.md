@@ -1,5 +1,5 @@
 ---
-title: Mevcut bir Azure SQL veri ambarını geri yükleme | Microsoft Docs
+title: Mevcut bir veri ambarını geri yükleme
 description: Mevcut bir Azure SQL veri ambarını geri yüklemek için nasıl yapılır Kılavuzu.
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 7470dd96109823057a174d2ecf097583dcb51898
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a73658510111df44c522d88ed5eceb7dcfa80d0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575278"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685543"
 ---
 # <a name="restore-an-existing-azure-sql-data-warehouse"></a>Mevcut bir Azure SQL veri ambarını geri yükleme
 
@@ -88,7 +89,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-data-warehouse-through-the-azure-portal"></a>Mevcut bir veri ambarını Azure portal aracılığıyla geri yükleme
 
-1. [Azure Portal][Azure portal] oturum açın.
+1. [Azure portalında][Azure portal] oturum açın.
 2. Geri yüklemek istediğiniz SQL veri ambarı 'na gidin.
 3. Genel Bakış dikey penceresinin en üstünde **geri yükle**' yi seçin.
 
@@ -96,7 +97,7 @@ $RestoredDatabase.status
 
 4. **Otomatik geri yükleme noktaları** veya **Kullanıcı tanımlı geri yükleme noktaları**seçeneklerinden birini belirleyin. Veri ambarının hiçbir otomatik geri yükleme noktası yoksa, birkaç saat bekleyin veya geri yüklemeden önce Kullanıcı tanımlı geri yükleme noktası oluşturun. Kullanıcı tanımlı geri yükleme noktaları için, mevcut bir tane seçin veya yeni bir tane oluşturun. **Sunucu**için, farklı bir kaynak grubunda ve bölgede bir mantıksal sunucu seçebilir veya yeni bir tane oluşturabilirsiniz. Tüm parametreleri sağladıktan sonra, **gözden geçir + geri yükle**' ye tıklayın.
 
-    ![Otomatik Geri Yükleme Noktaları](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
+    ![Otomatik geri yükleme noktaları](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 - [Silinen bir veri ambarını geri yükleme][Restore a deleted data warehouse]

@@ -1,5 +1,5 @@
 ---
-title: Data Factory ile zamanlama ve yürütme | Microsoft Docs
+title: Data Factory ile zamanlama ve yürütme
 description: Azure Data Factory uygulama modelinin zamanlama ve yürütme yönlerini öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6ea8a03f45a3655c5761e0011876c6232b5bf36b
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 15a2d6ae5d8b80468ffcdd00d60b1f36843ed677
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135299"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666124"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory zamanlama ve yürütme
 > [!NOTE]
@@ -59,9 +59,9 @@ Etkinliğin **Zamanlayıcı** özelliği isteğe bağlıdır. Bu özelliği beli
 ## <a name="specify-schedule-for-a-dataset"></a>Veri kümesi için zamanlamayı belirtin
 Bir Data Factory işlem hattındaki etkinlik sıfır veya daha fazla giriş **veri kümesi** alabilir ve bir veya daha fazla çıkış veri kümesi oluşturabilir. Bir etkinlik için, giriş verilerinin kullanılabildiği temposunda veya çıktı verilerinin veri kümesi tanımlarının **kullanılabilirlik** bölümü kullanılarak üretilmekte olduğunu belirtebilirsiniz. 
 
-**Kullanılabilirlik** bölümündeki **Sıklık** , zaman birimini belirtir. Sıklık için izin verilen değerler şunlardır: Dakika, saat, gün, hafta ve ay. Kullanılabilirlik bölümünde **Interval** özelliği sıklık için bir çarpan belirtir. Örneğin: sıklık gün olarak ayarlanmışsa ve Interval bir çıkış veri kümesi için 1 olarak ayarlandıysa, çıkış verileri günlük olarak üretilir. Sıklığı dakika olarak belirtirseniz, aralığı 15 ' ten az olmayacak şekilde ayarlamanız önerilir. 
+**Kullanılabilirlik** bölümündeki **Sıklık** , zaman birimini belirtir. Sıklık için izin verilen değerler şunlardır: dakika, saat, gün, hafta ve ay. Kullanılabilirlik bölümünde **Interval** özelliği sıklık için bir çarpan belirtir. Örneğin: sıklık gün olarak ayarlanmışsa ve Interval bir çıkış veri kümesi için 1 olarak ayarlandıysa, çıkış verileri günlük olarak üretilir. Sıklığı dakika olarak belirtirseniz, aralığı 15 ' ten az olmayacak şekilde ayarlamanız önerilir. 
 
-Aşağıdaki örnekte, giriş verileri saatlik olarak kullanılabilir ve çıktı verileri saatlik (`"frequency": "Hour", "interval": 1`) üretilir. 
+Aşağıdaki örnekte, giriş verileri saatlik olarak kullanılabilir ve çıkış verileri saatlik olarak (`"frequency": "Hour", "interval": 1`) üretilir. 
 
 **Giriş veri kümesi:** 
 
@@ -170,7 +170,7 @@ Bir etkinlik çalıştırması tarafından tüketilen veya üretilen her veri bi
 
 Diyagramda giriş ve çıkış veri kümesi için saatlik veri dilimleri gösterilmektedir. Diyagramda, işleme için kullanılabilen üç giriş dilimi gösterilmektedir. 10-11 etkinliği devam ediyor, 10-11 ÖÖ çıkış dilimi üretiliyor. 
 
-JSON veri kümesindeki geçerli dilimle ilişkili zaman aralığına değişkenler kullanarak erişebilirsiniz: [Festart](data-factory-functions-variables.md#data-factory-system-variables) ve [dilimleyiceend](data-factory-functions-variables.md#data-factory-system-variables). Benzer şekilde, WindowStart ve WindowEnd ' i kullanarak bir etkinlik penceresiyle ilişkili zaman aralığına erişebilirsiniz. Etkinliğin zamanlaması, etkinliğin çıkış veri kümesinin zamanlamasıyla eşleşmelidir. Bu nedenle, sınıf, sırasıyla WindowStart ve WindowEnd değerleriyle aynıdır. Bu değişkenler hakkında daha fazla bilgi için bkz. [Data Factory işlevleri ve sistem değişkenleri](data-factory-functions-variables.md#data-factory-system-variables) makaleleri.  
+JSON veri kümesindeki geçerli dilimle ilişkili zaman aralığına şu değişkenleri kullanarak erişebilirsiniz: [Fedestart](data-factory-functions-variables.md#data-factory-system-variables) ve [Slice Eend](data-factory-functions-variables.md#data-factory-system-variables). Benzer şekilde, WindowStart ve WindowEnd ' i kullanarak bir etkinlik penceresiyle ilişkili zaman aralığına erişebilirsiniz. Etkinliğin zamanlaması, etkinliğin çıkış veri kümesinin zamanlamasıyla eşleşmelidir. Bu nedenle, sınıf, sırasıyla WindowStart ve WindowEnd değerleriyle aynıdır. Bu değişkenler hakkında daha fazla bilgi için bkz. [Data Factory işlevleri ve sistem değişkenleri](data-factory-functions-variables.md#data-factory-system-variables) makaleleri.  
 
 Bu değişkenleri, etkinliğinizin JSON 'inizdeki farklı amaçlar için kullanabilirsiniz. Örneğin, zaman serisi verilerini temsil eden giriş ve çıkış veri kümelerinden verileri seçmek için bunları kullanabilirsiniz (örneğin: 8-9 ' a kadar). Bu örnek ayrıca, bir etkinliğin çalışması için ilgili verileri seçmek üzere **Windowstart** ve **windowend** ' i kullanır ve uygun **FolderPath**ile blob 'a kopyalar. **FolderPath** , her saat için ayrı bir klasöre sahip olacak şekilde parametrelendirilir.  
 
@@ -184,14 +184,14 @@ Aşağıdaki tabloda **kullanılabilirlik** bölümünde kullanabileceğiniz öz
 
 | Özellik | Açıklama | Gerekli | Varsayılan |
 | --- | --- | --- | --- |
-| frequency |Veri kümesi dilimi üretiminin zaman birimini belirtir.<br/><br/><b>Desteklenen sıklık</b>: Dakika, saat, gün, hafta, ay |Evet |NA |
-| aralığı |Sıklık için bir çarpan belirtir<br/><br/>"Sıklık x Interval", dilimin ne sıklıkta üretildiğini belirler.<br/><br/>Veri kümesinin saatlik olarak dilimlendirilecekliğine ihtiyaç duyuyorsanız <b>Sıklık</b> değerini <b>Hour</b>ve <b>Interval</b> değerini <b>1</b>olarak ayarlarsınız.<br/><br/><b>Not</b>: Sıklık değerini dakika olarak belirtirseniz, aralığı 15 ' ten az olmayacak şekilde ayarlamanız önerilir |Evet |NA |
-| style |Dilimin aralığın başlangıcında/sonunda üretilmesi gerekip gerekmediğini belirtir.<ul><li>StartOfInterval</li><li>Endofınterval</li></ul><br/><br/>Sıklık değeri month olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim ayın son gününde oluşturulur. Stil StartOfInterval olarak ayarlandıysa, dilim ayın ilk gününde oluşturulur.<br/><br/>Sıklık, gün olarak ayarlanır ve stil, Endofınterval olarak ayarlanırsa, dilim günün son saati içinde oluşturulur.<br/><br/>Sıklık değeri Hour olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim saatin sonunda üretilir. Örneğin, 1 PM – 2 dönemi için dilim için dilim 2 PM 'de oluşturulur. |Hayır |Endofınterval |
-| anchorDateTime |Veri kümesi dilim sınırlarını hesaplamak için Zamanlayıcı tarafından kullanılan mutlak konumu tanımlar. <br/><br/><b>Not</b>: AnchorDateTime değerinin sıklığından daha ayrıntılı olan tarih bölümleri varsa, daha ayrıntılı parçalar yok sayılır. <br/><br/>Örneğin, <b>Aralık</b> <b>saat</b> ise (sıklık: Saat ve Aralık: 1) ve <b>Anchordatetime</b> değeri <b>dakika ve saniye</b>içeriyorsa, anchordatetime değerinin <b>dakika ve saniye</b> kısımları göz ardı edilir. |Hayır |01/01/0001 |
-| offset |Tüm veri kümesi dilimlerinin başlangıcını ve bitişini kaydırılan zaman aralığı. <br/><br/><b>Not</b>: Hem anchorDateTime hem de kaydır belirtilirse, sonuç Birleşik kaydırmadır. |Hayır |NA |
+| frequency |Veri kümesi dilimi üretiminin zaman birimini belirtir.<br/><br/><b>Desteklenen sıklık</b>: dakika, saat, gün, hafta, ay |Evet |NA |
+| interval |Sıklık için bir çarpan belirtir<br/><br/>"Sıklık x Interval", dilimin ne sıklıkta üretildiğini belirler.<br/><br/>Veri kümesinin saatlik olarak dilimlendirilecekliğine ihtiyaç duyuyorsanız <b>Sıklık</b> değerini <b>Hour</b>ve <b>Interval</b> değerini <b>1</b>olarak ayarlarsınız.<br/><br/><b>Note</b>: sıklık değerini dakika olarak belirtirseniz, aralığı 15 ' ten az olmayacak şekilde ayarlamanız önerilir |Evet |NA |
+| Biçim |Dilimin aralığın başlangıcında/sonunda üretilmesi gerekip gerekmediğini belirtir.<ul><li>StartOfInterval</li><li>Endofınterval</li></ul><br/><br/>Sıklık değeri month olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim ayın son gününde oluşturulur. Stil StartOfInterval olarak ayarlandıysa, dilim ayın ilk gününde oluşturulur.<br/><br/>Sıklık, gün olarak ayarlanır ve stil, Endofınterval olarak ayarlanırsa, dilim günün son saati içinde oluşturulur.<br/><br/>Sıklık değeri Hour olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim saatin sonunda üretilir. Örneğin, 1 PM – 2 dönemi için dilim için dilim 2 PM 'de oluşturulur. |Hayır |Endofınterval |
+| anchorDateTime |Veri kümesi dilim sınırlarını hesaplamak için Zamanlayıcı tarafından kullanılan mutlak konumu tanımlar. <br/><br/><b>Note</b>: anchordatetime değerinin sıklığından daha ayrıntılı olan tarih bölümleri varsa, daha ayrıntılı parçalar yok sayılır. <br/><br/>Örneğin, <b>Aralık</b> <b>saatlik</b> (sıklık: Hour ve Interval: 1) ve <b>anchordatetime</b> değeri <b>dakika ve saniye</b>içeriyorsa, anchordatetime değerinin <b>dakika ve saniye</b> kısımları yok sayılır. |Hayır |01/01/0001 |
+| konumu |Tüm veri kümesi dilimlerinin başlangıcını ve bitişini kaydırılan zaman aralığı. <br/><br/><b>Note</b>: hem anchordatetime hem de kaydır belirtilirse, sonuç Birleşik kaydırmadır. |Hayır |NA |
 
 ### <a name="offset-example"></a>fark örneği
-Varsayılan olarak, günlük (`"frequency": "Day", "interval": 1`) dilimleri 12: UTC saat (gece yarısı) ile başlar. Başlangıç saatinin 6 ' dan UTC zamanı olmasını istiyorsanız, sapmayı aşağıdaki kod parçacığında gösterildiği gibi ayarlayın: 
+Günlük (`"frequency": "Day", "interval": 1`) dilimleri varsayılan olarak 12: UTC saat (gece yarısı) ile başlar. Başlangıç saatinin 6 ' dan UTC zamanı olmasını istiyorsanız, sapmayı aşağıdaki kod parçacığında gösterildiği gibi ayarlayın: 
 
 ```json
 "availability":
@@ -202,7 +202,7 @@ Varsayılan olarak, günlük (`"frequency": "Day", "interval": 1`) dilimleri 12:
 }
 ```
 ### <a name="anchordatetime-example"></a>anchorDateTime örneği
-Aşağıdaki örnekte, veri kümesi her 23 saatte bir oluşturulur. İlk dilim, (UTC saati) olarak `2017-04-19T08:00:00` ayarlanan anchordatetime tarafından belirtilen saatte başlar.
+Aşağıdaki örnekte, veri kümesi her 23 saatte bir oluşturulur. İlk dilim, `2017-04-19T08:00:00` (UTC saati) olarak ayarlanan anchorDateTime tarafından belirtilen saatte başlar.
 
 ```json
 "availability":    
@@ -214,7 +214,7 @@ Aşağıdaki örnekte, veri kümesi her 23 saatte bir oluşturulur. İlk dilim, 
 ```
 
 ### <a name="offsetstyle-example"></a>fark/stil örneği
-Aşağıdaki veri kümesi aylık bir veri kümesidir ve 8:00 (`3.08:00:00`) adresindeki her ay üzerinde üretilir:
+Aşağıdaki veri kümesi, aylık bir veri kümesidir ve 8:00 (`3.08:00:00`) adresindeki her ay üzerinde üretilir:
 
 ```json
 "availability": {
@@ -233,7 +233,7 @@ DataSet tanımındaki **ilke** bölümü, veri kümesi dilimlerinin yerine getir
 | İlke Adı | Açıklama | Uygulanan | Gerekli | Varsayılan |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | Bir **Azure blobundaki** verilerin en düşük boyut gereksinimlerini (megabayt cinsinden) karşıladığını doğrular. |Azure Blob |Hayır |NA |
-| minimumRows | Bir **Azure SQL veritabanındaki** veya bir **Azure tablosundaki** verilerin en az sayıda satırı içerdiğini doğrular. |<ul><li>Azure SQL Database</li><li>Azure Tablosu</li></ul> |Hayır |NA |
+| minimumRows | Bir **Azure SQL veritabanındaki** veya bir **Azure tablosundaki** verilerin en az sayıda satırı içerdiğini doğrular. |<ul><li>Azure SQL Veritabanı</li><li>Azure Tablosu</li></ul> |Hayır |NA |
 
 #### <a name="examples"></a>Örnekler
 **minimumSizeMB:**
@@ -266,15 +266,15 @@ Bu özellikler ve örnekler hakkında daha fazla bilgi için bkz. [veri kümesi 
 ## <a name="activity-policies"></a>Etkinlik ilkeleri
 İlkeler, özellikle bir tablonun dilimi işlendiğinde bir etkinliğin çalışma zamanı davranışını etkiler. Aşağıdaki tabloda ayrıntılar verilmektedir.
 
-| Özellik | İzin verilen değerler | Default Value | Açıklama |
+| Özellik | İzin verilen değerler | Varsayılan değer | Açıklama |
 | --- | --- | --- | --- |
-| concurrency |Integer <br/><br/>En büyük değer: 10 |1\. |Etkinliğin eşzamanlı yürütmelerinin sayısı.<br/><br/>Farklı dilimlerde gerçekleşebileceğini paralel etkinlik yürütmelerinin sayısını belirler. Örneğin, bir etkinliğin büyük bir kullanılabilir veri kümesiyle geçmesi gerekiyorsa daha büyük bir eşzamanlılık değeri, veri işlemeyi hızlandırır. |
+| Zamanlı |Tamsayı <br/><br/>En büyük değer: 10 |1 |Etkinliğin eşzamanlı yürütmelerinin sayısı.<br/><br/>Farklı dilimlerde gerçekleşebileceğini paralel etkinlik yürütmelerinin sayısını belirler. Örneğin, bir etkinliğin büyük bir kullanılabilir veri kümesiyle geçmesi gerekiyorsa daha büyük bir eşzamanlılık değeri, veri işlemeyi hızlandırır. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |İşlenmekte olan veri dilimlerinin sıralamasını belirler.<br/><br/>Örneğin, 2 dilimdeyse (4pm 'de bir diğeri, 5 pm 'de bir diğeri) ve her ikisi de yürütme bekleniyor. ExecutionPriorityOrder 'ı NewestFirst olarak ayarlarsanız, önce 5 PM 'deki dilim işlenir. Benzer şekilde, önce executionPriorityORder değerini Oldestolarak ayarlarsanız, 4 PM 'deki dilim işlenir. |
-| yeniden dene |Integer<br/><br/>En büyük değer 10 olabilir |0 |Dilim için veri işleme hatası olarak işaretlenmeden önce yeniden deneme sayısı. Bir veri dilimi için Etkinlik yürütme, belirtilen yeniden deneme sayısına yeniden denenir. Yeniden deneme, hatadan sonra mümkün olan en kısa sürede yapılır. |
-| zaman aşımı |TimeSpan |00:00:00 |Etkinliğin zaman aşımı. Örnek: 00:10:00 (zaman aşımı 10 dakika)<br/><br/>Bir değer belirtilmemişse veya 0 ise, zaman aşımı sonsuz olur.<br/><br/>Bir dilimdeki veri işleme süresi, zaman aşımı değerini aşarsa, iptal edilir ve sistem işlemeyi yeniden denemeye çalışır. Yeniden deneme sayısı, retry özelliğine bağlıdır. Zaman aşımı oluştuğunda, durum zaman aşımına uğradı olarak ayarlanır. |
-| delay |TimeSpan |00:00:00 |Dilimin veri işleme başlamadan önce gecikme süresi belirtin.<br/><br/>Bir veri dilimi için etkinliğin yürütülmesi, gecikme beklenen yürütme zamanından sonra başlatılır.<br/><br/>Örnek: 00:10:00 (10 dakikalık gecikme süresi anlamına gelir) |
-| longRetry |Integer<br/><br/>En büyük değer: 10 |1\. |Dilim yürütmesi başarısız olmadan önce uzun yeniden deneme girişimi sayısı.<br/><br/>longRetry denemeleri, Longretryınterval tarafından aralıklıdır. Bu nedenle, yeniden deneme girişimleri arasında bir saat belirtmeniz gerekiyorsa, longRetry kullanın. Hem yeniden dene hem de longRetry belirtilirse, her bir longRetry denemesi, yeniden deneme girişimleri içerir ve deneme sayısı üst sınırı * longRetry.<br/><br/>Örneğin, etkinlik ilkesinde aşağıdaki ayarlara sahipseniz:<br/>Retry 3<br/>LongRetry 2<br/>Longretryınterval: 01:00:00<br/><br/>Yürütülecek yalnızca bir dilim olduğunu varsayalım (durum bekliyor) ve etkinliğin yürütülmesi her seferinde başarısız olur. Başlangıçta 3 ardışık yürütme denemesi vardır. Her denemeden sonra dilimin durumu yeniden denenecek. İlk 3 deneme bittikten sonra, dilim durumu LongRetry olur.<br/><br/>Bir saatten sonra (yani, longRetryInteval değeri), başka bir 3 ardışık yürütme denemesi kümesi olur. Bundan sonra, dilim durumu başarısız olur ve daha fazla yeniden deneme denenmelidir. Bu nedenle, genel 6 deneme yapılmıştır.<br/><br/>Herhangi bir yürütme başarılı olursa, dilim durumu kullanılmaya devam edilir ve daha fazla yeniden deneme denenmelidir.<br/><br/>longRetry, bağımlı verilerin belirleyici olmayan saatlerde ulaştığı durumlarda veya genel ortam, veri işlemenin gerçekleştiği bir düzmeme durumunda kullanılabilir. Bu gibi durumlarda, diğer bir süre sonra yeniden denemeler yapmak, istenen çıktının bir zaman aralığı ile sonuçlanmasından sonra bu işlemi yapmaya ve gerçekleşmeyebilir.<br/><br/>Uyarı sözcüğü: longRetry veya Longretryınterval için yüksek değerler ayarlamayın. Genellikle, daha yüksek değerler diğer systemik sorunlarını kapsıyor. |
-| longRetryInterval |TimeSpan |00:00:00 |Uzun yeniden deneme girişimleri arasındaki gecikme |
+| retry |Tamsayı<br/><br/>En büyük değer 10 olabilir |0 |Dilim için veri işleme hatası olarak işaretlenmeden önce yeniden deneme sayısı. Bir veri dilimi için Etkinlik yürütme, belirtilen yeniden deneme sayısına yeniden denenir. Yeniden deneme, hatadan sonra mümkün olan en kısa sürede yapılır. |
+| timeout |TimeSpan |00:00:00 |Etkinliğin zaman aşımı. Örnek: 00:10:00 (zaman aşımı 10 dakika)<br/><br/>Bir değer belirtilmemişse veya 0 ise, zaman aşımı sonsuz olur.<br/><br/>Bir dilimdeki veri işleme süresi, zaman aşımı değerini aşarsa, iptal edilir ve sistem işlemeyi yeniden denemeye çalışır. Yeniden deneme sayısı, retry özelliğine bağlıdır. Zaman aşımı oluştuğunda, durum zaman aşımına uğradı olarak ayarlanır. |
+| ilir |TimeSpan |00:00:00 |Dilimin veri işleme başlamadan önce gecikme süresi belirtin.<br/><br/>Bir veri dilimi için etkinliğin yürütülmesi, gecikme beklenen yürütme zamanından sonra başlatılır.<br/><br/>Örnek: 00:10:00 (10 dakikalık gecikme süresi anlamına gelir) |
+| longRetry |Tamsayı<br/><br/>En büyük değer: 10 |1 |Dilim yürütmesi başarısız olmadan önce uzun yeniden deneme girişimi sayısı.<br/><br/>longRetry denemeleri, Longretryınterval tarafından aralıklıdır. Bu nedenle, yeniden deneme girişimleri arasında bir saat belirtmeniz gerekiyorsa, longRetry kullanın. Hem yeniden dene hem de longRetry belirtilirse, her bir longRetry denemesi, yeniden deneme girişimleri içerir ve deneme sayısı üst sınırı * longRetry.<br/><br/>Örneğin, etkinlik ilkesinde aşağıdaki ayarlara sahipseniz:<br/>Yeniden dene: 3<br/>longRetry: 2<br/>Longretryınterval: 01:00:00<br/><br/>Yürütülecek yalnızca bir dilim olduğunu varsayalım (durum bekliyor) ve etkinliğin yürütülmesi her seferinde başarısız olur. Başlangıçta 3 ardışık yürütme denemesi vardır. Her denemeden sonra dilimin durumu yeniden denenecek. İlk 3 deneme bittikten sonra, dilim durumu LongRetry olur.<br/><br/>Bir saatten sonra (yani, longRetryInteval değeri), başka bir 3 ardışık yürütme denemesi kümesi olur. Bundan sonra, dilim durumu başarısız olur ve daha fazla yeniden deneme denenmelidir. Bu nedenle, genel 6 deneme yapılmıştır.<br/><br/>Herhangi bir yürütme başarılı olursa, dilim durumu kullanılmaya devam edilir ve daha fazla yeniden deneme denenmelidir.<br/><br/>longRetry, bağımlı verilerin belirleyici olmayan saatlerde ulaştığı durumlarda veya genel ortam, veri işlemenin gerçekleştiği bir düzmeme durumunda kullanılabilir. Bu gibi durumlarda, diğer bir süre sonra yeniden denemeler yapmak, istenen çıktının bir zaman aralığı ile sonuçlanmasından sonra bu işlemi yapmaya ve gerçekleşmeyebilir.<br/><br/>Uyarı sözcüğü: longRetry veya Longretryınterval için yüksek değerler ayarlamayın. Genellikle, daha yüksek değerler diğer systemik sorunlarını kapsıyor. |
+| Longretryınterval |TimeSpan |00:00:00 |Uzun yeniden deneme girişimleri arasındaki gecikme |
 
 Daha fazla bilgi için bkz. işlem [hatları](data-factory-create-pipelines.md) makalesi. 
 
@@ -323,14 +323,14 @@ Bir örnek için ekin sıralı kopyalama bölümüne bakın.
 ## <a name="model-datasets-with-different-frequencies"></a>Farklı sıklıklarla model veri kümelerini modelleme
 Örneklerde, girdi ve çıktı veri kümeleri ve etkinlik zamanlaması penceresi için sıklık aynı. Bazı senaryolar, bir veya daha fazla girişin sıklığından farklı bir sıklıkta çıkış üretme yeteneği gerektirir. Data Factory, bu senaryoların modellemesini destekler.
 
-### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>Örnek 1: Her saat kullanılabilir olan giriş verileri için günlük çıkış raporu oluşturun
+### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>Örnek 1: her saat kullanılabilir olan giriş verileri için günlük çıkış raporu oluşturma
 Azure Blob depolamada her saat için sensörlerden alınan giriş ölçümü verilerinin bulunduğu bir senaryoyu göz önünde bulundurun. [Data Factory Hive etkinliği](data-factory-hive-activity.md)ile gün için Ortalama, maksimum ve minimum gibi istatistiklerle günlük bir toplam rapor oluşturmak istiyorsunuz.
 
 Bu senaryoyu Data Factory ile modelleyebilirsiniz:
 
 **Giriş veri kümesi**
 
-Saatlik giriş dosyaları belirtilen gün için klasöre bırakılır. Girişin kullanılabilirliği **saat** olarak ayarlanır (sıklık: Saat, Aralık: 1).
+Saatlik giriş dosyaları belirtilen gün için klasöre bırakılır. Girişin kullanılabilirliği **saat** olarak ayarlanır (sıklık: saat, Aralık: 1).
 
 ```json
 {
@@ -359,7 +359,7 @@ Saatlik giriş dosyaları belirtilen gün için klasöre bırakılır. Girişin 
 ```
 **Çıkış veri kümesi**
 
-Gün klasörünün her gününde bir çıkış dosyası oluşturulur. Çıkışın kullanılabilirliği **gün** olarak ayarlanır (sıklık: Gün ve Aralık: 1).
+Gün klasörünün her gününde bir çıkış dosyası oluşturulur. Çıkışın kullanılabilirliği **gün** olarak ayarlanır (sıklık: gün ve Aralık: 1).
 
 ```json
 {
@@ -443,7 +443,7 @@ Aşağıdaki diyagramda, bir veri bağımlılığı görünümündeki senaryo g�
 
 Her güne ait çıkış dilimi, giriş veri kümesinden alınan 24 saatlik dilimlere bağlıdır. Data Factory, üretilmekte olan çıkış dilimiyle aynı döneme denk gelen giriş veri dilimlerini tanımlayarak bu bağımlılıkları otomatik olarak hesaplar. 24 giriş dilimlerinin herhangi biri kullanılamıyorsa Data Factory, günlük etkinlik çalıştırmasına başlamadan önce giriş diliminin hazır olmasını bekler.
 
-### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>Örnek 2: İfadeler ve Data Factory işlevlerle bağımlılığı belirtin
+### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>Örnek 2: ifadelerle ve Data Factory işlevlerle bağımlılığı belirtme
 Başka bir senaryoyu ele alalım. İki giriş veri kümesini işleyen bir Hive etkinliğinizi olduğunu varsayalım. Bunlardan birinin günlük yeni verileri vardır, ancak biri her hafta yeni verileri alır. İki girdi arasında bir JOIN ve her gün bir çıktı üretmek istediğinizi varsayalım.
 
 Çıkış verileri diliminin zaman dilimine göre işlem yapmak için Data Factory doğru giriş dilimlerinin otomatik olarak oluşturulduğu basit yaklaşım çalışmaz.
@@ -510,9 +510,9 @@ Input2, Azure Blobun haftalık olarak güncelleştiriliyor.
 }
 ```
 
-**Çıktıların Azure blobu**
+**Çıkış: Azure blobu**
 
-Günün her gününde bir çıkış dosyası oluşturulur. Çıkışın kullanılabilirliği **gün** olarak ayarlanır (sıklık: Gün, Aralık: 1).
+Günün her gününde bir çıkış dosyası oluşturulur. Çıkışın kullanılabilirliği **gün** olarak ayarlanır (sıklık: gün, Aralık: 1).
 
 ```json
 {
@@ -604,11 +604,11 @@ Birden çok kopyalama işlemini ardışık ve sıralı bir şekilde başka bir �
 
 CopyActivity1
 
-Giriş: Veri kümesi. Çıktı: Dataset2.
+Giriş: veri kümesi. Çıkış: DataSet2.
 
 CopyActivity2
 
-Giriş: Dataset2.  Çıktı: Dataset3.
+Giriş: DataSet2.  Çıkış: Dataset3.
 
 CopyActivity2 yalnızca CopyActivity1 başarıyla çalıştırılmışsa ve DataSet2 kullanılabiliyorsa çalışır.
 
@@ -699,11 +699,11 @@ CopyActivity2 yalnızca CopyActivity1 başarıyla çalıştırılmışsa ve Data
 
 CopyActivity1
 
-Giriş: DataSet1. Çıktı: Dataset2.
+Giriş: dataSet1. Çıkış: DataSet2.
 
 CopyActivity2
 
-Girişi Dataset3, Dataset2. Çıktı: Dataset4.
+Girişler: Dataset3, DataSet2. Çıkış: Dataset4.
 
 ```json
 {

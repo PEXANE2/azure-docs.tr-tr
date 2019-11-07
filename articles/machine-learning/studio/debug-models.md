@@ -1,6 +1,6 @@
 ---
 title: Modelinizde hata ayıklama
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Azure Machine Learning Studio (klasik) içinde model eğitme ve model modülleri Puanlama tarafından oluşturulan hatalarda hata ayıklama.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 053bb75bb7beea86215397bdfd81a1dbc9d1bcb9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0ab7f041da63731706742547a53df47462bc584a
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493072"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619431"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio modelinizde hata ayıklama (klasik)
 

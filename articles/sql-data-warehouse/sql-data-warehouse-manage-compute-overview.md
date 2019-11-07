@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı 'nda işlem kaynağını yönetme | Microsoft Docs
+title: İşlem kaynağını Yönet
 description: Azure SQL veri ambarı 'nda performans ölçeği genişletme özellikleri hakkında bilgi edinin. Veri ambarını duraklatarak DWU 'ları veya daha düşük maliyetleri ayarlayarak ölçeği ölçeklendirin.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,18 +10,19 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f0935ccc4c4274bfab0c589ef158d4ea0bef455c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f93996d834ab805f2228543a833c4ce601042dc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575329"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692621"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda işlem yönetme
 Azure SQL veri ambarı 'nda işlem kaynaklarını yönetme hakkında bilgi edinin. Veri ambarını duraklatarak veya performans taleplerini karşılamak için veri ambarını ölçeklendirerek maliyetleri düşürün. 
 
 ## <a name="what-is-compute-management"></a>İşlem yönetimi nedir?
-SQL veri ambarı 'nın mimarisi, depolama ve işlem ayırır ve her birinin bağımsız olarak ölçeklendirilmesine olanak tanır. Sonuç olarak, veri depolamadan bağımsız performans taleplerini karşılamak için işlem ölçeğini ölçeklendirebilirsiniz. Ayrıca işlem kaynaklarını duraklatabilir ve devam ettirebilirsiniz. Bu mimarinin doğal bir sonucu, işlem [](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) ve depolama için faturalandırmaya yöneliktir. Veri Ambarınızı bir süre için kullanmanız gerekmiyorsa, işlem maliyetlerini duraklaleyerek işlem maliyetlerini kaydedebilirsiniz. 
+SQL veri ambarı 'nın mimarisi, depolama ve işlem ayırır ve her birinin bağımsız olarak ölçeklendirilmesine olanak tanır. Sonuç olarak, veri depolamadan bağımsız performans taleplerini karşılamak için işlem ölçeğini ölçeklendirebilirsiniz. Ayrıca işlem kaynaklarını duraklatabilir ve devam ettirebilirsiniz. Bu mimarinin doğal bir sonucu, işlem ve depolama için [faturalandırmaya](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) yöneliktir. Veri Ambarınızı bir süre için kullanmanız gerekmiyorsa, işlem maliyetlerini duraklaleyerek işlem maliyetlerini kaydedebilirsiniz. 
 
 ## <a name="scaling-compute"></a>Ölçeklendirme işlem
 Veri ambarınız için [veri ambarı birimleri](what-is-a-data-warehouse-unit-dwu-cdwu.md) ayarını ayarlayarak, işlem ölçeğini ölçeklendirebilir veya ölçeklendirebilirsiniz. Yükleme ve sorgu performansı, daha fazla veri ambarı birimi eklerken doğrusal olarak artabilir. 
@@ -32,9 +33,9 @@ Bir ölçeklendirme işlemi gerçekleştirmek için, SQL veri ambarı ilk olarak
 
 Aşağıdaki tabloda, veri ambarı birimleri değiştiğinde Işlem düğümü başına dağıtım sayısının nasıl değiştiği gösterilmektedir.  DWU6000 60 Işlem düğümleri sağlar ve DWU100 ' den çok daha yüksek sorgu performansına erişir. 
 
-| Veri ambarı birimleri  | \#Işlem düğümlerinin | \#düğüm başına dağıtım sayısı |
+| Veri ambarı birimleri  | Işlem düğümlerinin \# | düğüm başına dağıtım \# |
 | ---- | ------------------ | ---------------------------- |
-| 100  | 1\.                  | 60                           |
+| 100  | 1                  | 60                           |
 | 200  | 2                  | 30                           |
 | 300  | 3                  | 20                           |
 | 400  | 4                  | 15                           |
@@ -45,7 +46,7 @@ Aşağıdaki tabloda, veri ambarı birimleri değiştiğinde Işlem düğümü b
 | 1500 | 15                 | 4                            |
 | 2000 | 20                 | 3                            |
 | 3000 | 30                 | 2                            |
-| 6000 | 60                 | 1\.                            |
+| 6000 | 60                 | 1                            |
 
 
 ## <a name="finding-the-right-size-of-data-warehouse-units"></a>Veri ambarı birimlerinin doğru boyutunu bulma

@@ -10,12 +10,12 @@ keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, g�
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 0178f27c39c065399208e7fc5afe7352ba4f8e30
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 57dbfa0c2063c2059955294ccc1337bb76b72614
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502005"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606094"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Sunucular için Azure Arc nedir?
 
@@ -83,7 +83,7 @@ Aracıyı proxy 'nizi kullanacak şekilde yapılandırma hakkında bilgi için, 
 
 ## <a name="register-the-required-resource-providers"></a>Gerekli kaynak sağlayıcılarını Kaydet
 
-' Özellik bayrağı ' kaydı onaylandığında, gerekli kaynak sağlayıcılarını kaydetmeniz gerekir.
+Sunucular için Azure Arc kullanabilmek için gerekli kaynak sağlayıcılarını kaydetmeniz gerekir.
 
 * **Microsoft. HybridCompute**
 * **Microsoft. GuestConfiguration**

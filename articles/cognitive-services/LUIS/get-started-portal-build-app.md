@@ -1,26 +1,25 @@
 ---
 title: 'Hızlı başlangıç: LUO portalında yeni bir uygulama oluşturma'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, LUı portalında yeni bir uygulama oluşturacaksınız. Uygulama, amaç ve varlıkların temel parçalarını oluşturun. Tahmin edilen amacı almak için etkileşimli test paneline örnek bir Kullanıcı yazarak uygulamayı test edin. Uygulama oluşturma ücretsizdir; Azure aboneliği gerektirmez.
+description: Bu hızlı başlangıçta, bir uygulamanın, amaçlarınızın ve varlıkların temel parçalarını ve Ayrıca Lua portalındaki örnek utbotlarla test oluşturursunuz.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/04/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 6888c53122e649d6a0e91f8ece30101f051c08e8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488839"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669671"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Hızlı başlangıç: LUO portalında yeni bir uygulama oluşturma
 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 Bu hızlı başlangıçta, [LUI portalında](https://www.luis.ai)yeni bir uygulama oluşturacaksınız. İlk olarak bir uygulama, **Amaç**ve **varlıkların**temel parçalarını oluşturursunuz. Ardından, tahmin edilen amacı almak için etkileşimli test panelinde örnek bir Kullanıcı yazarak uygulamayı test edersiniz.
 
@@ -32,7 +31,7 @@ Uygulama oluşturma ücretsizdir ve bir Azure aboneliği gerektirmez. Uygulaman�
 
 1. Bağlam araç çubuğundan **+ Oluştur** ' u seçin.
 
-   [LUSıS portalında yeni uygulama oluşturma ![](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [LUSıS portalında yeni uygulama oluşturma ![](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
 1. Açılır pencerede, uygulamayı aşağıdaki ayarlarla yapılandırın ve **bitti**' yi seçin.
 
@@ -40,8 +39,8 @@ Uygulama oluşturma ücretsizdir ve bir Azure aboneliği gerektirmez. Uygulaman�
    |--|--|--|
    |Ad|`myEnglishApp`|Benzersiz LUSıS uygulama adı<br>Gerekli|
    |Kültür|**İngilizce**|Kullanıcılardan gelen **söylenme dili, en-US**<br>Gerekli|
-   |Açıklama|`App made with LUIS Portal`|Uygulamanın açıklaması<br>Seçim|
-   | | | |
+   |Açıklama (Isteğe bağlı)|`App made with LUIS Portal`|Uygulamanın açıklaması<br>Seçim|
+   |Tahmin kaynağı (Isteğe bağlı) |-  |' Yi seçmeyin. LUSıS, yazma ve 1.000 tahmin uç noktası istekleri için ücretsiz olarak kullanabileceğiniz bir başlangıç anahtarı sağlar. |
 
    ![Yeni uygulama ayarlarını girin](./media/get-started-portal-build-app/create-new-app-settings.png)
 
@@ -61,13 +60,11 @@ Uygulamanın _iki farklı amacı_ aşağıdaki amaçlar için hizalanacaktır:
 
 Amaç oluşturmak için aşağıdaki adımları izleyin:
 
-1. Uygulama oluşturulduktan sonra, **derleme** bölümünün **amaçlar** sayfasında olursunuz. **Create new intent** (Yeni amaç oluştur) öğesini seçin.
+1. Uygulama oluşturulduktan sonra, **derleme** bölümünün **amaçlar** sayfasında olursunuz. **Oluştur**'u seçin.
 
-   [![yeni amaç Oluştur düğmesini seçin](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [Yeni amaç oluşturmak için Oluştur ' u ![seçin](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
 1. Amaç adı ' nı `FindForm`girin ve **bitti**' yi seçin.
-
-   ![FindForm 'un amaç adını girin](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
 ## <a name="add-an-example-utterance"></a>Örnek bir mekan ekleyin
 
@@ -113,13 +110,16 @@ Bu örnek, tasarıma göre aşağıdaki yollarla farklılık gösterir:
 
 1. Sol taraftaki menüden **varlıklar** ' ı seçin.
 
-1. **Varlıklar** sayfasında **yeni varlık oluştur** ' u seçin.
+1. **Varlıklar** sayfasında **Oluştur** ' u seçin.
 
-1. `Human Resources Form Number`adı girin, **Regex** varlık türünü seçin ve `hrf-[0-9]{6}`normal ifade girin. Bu giriş, `hrf-`değişmez karakterlerle eşleşir ve tam 6 basamağa izin verir.
+1. `Human Resources Form Number`adı girin, **Regex** varlık türünü seçin ve ardından **İleri**' yi seçin.
 
-   ![Normal ifade varlığı için varlık bilgilerini girin](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+   ![Normal ifade varlığı oluştur](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
-1. **Done** (Bitti) öğesini seçin.
+1. `hrf-[0-9]{6}`normal ifade (**Regex**) ifadesini girin. Bu giriş, `hrf-`değişmez karakterlerle eşleşir, tam olarak 6 basamak sağlar ve ardından **Oluştur**' u seçin.
+
+   ![Varlık için normal ifade girin](./media/get-started-portal-build-app/create-regular-expression-entity-with-expression.png)
+
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Hiçbiri amacına örnek ekleme
 
@@ -137,11 +137,11 @@ Bu örnek, tasarıma göre aşağıdaki yollarla farklılık gösterir:
    |Order a pizza for me (Bana bir pizza söyle)|
    |Penguins in the ocean (Okyanustaki penguenler)|
 
-   Bu insan kaynakları uygulaması için bu örnek, etki alanının dışındadır. İnsan kaynakları etki alanınız hayvanlar, yiyecek veya okyanus içeriyorsa, **none** amacı için farklı örnek utbotları kullanmanız gerekir.
+   Bu uygulama için bu örnek, etki alanının dışındadır. Etki alanınız hayvanlar, yiyecek veya okyanus içeriyorsa, **none** amacı için farklı örnek utbotları kullanmanız gerekir.
 
 ## <a name="train-the-app"></a>Uygulamayı eğitme
 
-Sağ üst taraftaki menüde, amaç ve varlık modeli değişikliklerini uygulamanın geçerli sürümüne uygulamak için **eğitme** ' yi seçin.
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Örnek mekan normal ifade varlığına bakın
 
@@ -168,8 +168,6 @@ Varlığın, uygulamanın henüz görülmemiş yeni dıklardan ayıklandığın�
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu hızlı başlangıç ile işiniz bittiğinde ve sonraki hızlı başlangıca geçmeden, üst gezinti menüsünden **uygulamalarım** ' ı seçin. Ardından listedeki uygulamanın sol onay kutusunu seçin ve listenin üzerindeki bağlam araç çubuğundan **Sil** ' i seçin.
-
-[Uygulama ![uygulamalarımın listesinden sil](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

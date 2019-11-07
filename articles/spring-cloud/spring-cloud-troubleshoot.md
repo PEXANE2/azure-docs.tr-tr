@@ -1,20 +1,17 @@
 ---
 title: Azure yay bulutu için sorun giderme kılavuzu | Microsoft Docs
 description: Azure yay bulutu için sorun giderme kılavuzu
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 546c97421fdb3a581a22e34f6110986a1a0732b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.topic: troubleshooting
+ms.date: 11/04/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 9603f4a687b55f45be2875ccaa7b801c0c5589c9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929159"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607621"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Sık karşılaşılan sorunlar için sorun giderme kılavuzu
 
@@ -70,7 +67,7 @@ Hangi durumun olduğunu onaylamak için,
 
 1. _Ölçümler_’e gidin ve `Service CPU Usage Percentage` veya `Service Memory Used` öğesini seçin.
 2. İzlemek istediğiniz uygulamayı belirtmek için `App=` filtresini ekleyin ve
-3. Ölçümleri `Instance` göre ayırın.
+3. Ölçümleri `Instance`göre ayırın.
 
 Tüm örnekler yüksek CPU/bellek yaşıyorsa, uygulamayı ölçeklendirmeniz veya CPU/bellek ölçeğini ölçeklendirmeniz gerekir. Daha fazla ayrıntı için lütfen [Ölçek uygulamalarını](spring-cloud-tutorial-scale-manual.md) ziyaret edin
 
@@ -105,9 +102,9 @@ Bununla birlikte, Azure [CLI](https://docs.microsoft.com/cli/azure/get-started-w
 * Örnek için kaynak grubu zaten oluşturulmuş.
 * Kaynak adı adlandırma kuralına uyar. (Bu, yalnızca küçük harf, sayı ve kısa çizgi içerebilir. İlk karakter bir harf olmalıdır. Son karakter bir harf veya sayı olmalıdır. Değer, 2 ila 32 karakter uzunluğunda olmalıdır.)
 
-_Azure yay bulut_ hizmeti örneğini Kaynak Yöneticisi şablonuyla sağlamaya çalışırsanız, Şablon sözdizimini denetlemek için lütfen https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates ' i ziyaret edin.
+_Azure yay bulut_ hizmeti örneğini Kaynak Yöneticisi şablonuyla sağlamaya çalışırsanız, şablon söz dizimini denetlemek için lütfen https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates ziyaret edin.
 
-_Azure yay bulut_ hizmeti örneğinin adı, `azureapps.io` altında bir alt etki alanı adı istemek için kullanılır; bu nedenle, ad var olan bir adla çakışıyorsa sağlama başarısız olur. Etkinlik günlüklerinde diğer ayrıntıları bulabilirsiniz.
+_Azure Spring Cloud_ Service örneğinin adı, `azureapps.io`altında bir alt etki alanı adı istemek için kullanılır, bu nedenle ad var olan bir adla çakışıyorsa sağlama başarısız olur. Etkinlik günlüklerinde diğer ayrıntıları bulabilirsiniz.
 
 ### <a name="i-cannot-deploy-a-jar-package"></a>JAR paketini dağıtamıyorum
 
@@ -119,7 +116,7 @@ Yoklama kesintiye uğrarsa, yine de şu komutu kullanarak dağıtım günlükler
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Uygulama paketinin doğru [yürütülebilir jar biçiminde](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html) olduğundan emin olun. Değilse, aşağıdakine benzer bir hatayla karşılaşırsınız:
+Uygulamanızın doğru [yürütülebilir jar biçiminde](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html)paketlendiğinden emin olun. Değilse, aşağıdakine benzer bir hatayla karşılaşırsınız:
 
 `Error: Invalid or corrupt jarfile /jar/38bc8ea1-a6bb-4736-8e93-e8f3b52c8714`
 
@@ -156,7 +153,7 @@ Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek Azure 'un
 
 1. Bu URL 'ye gidin: `https://<your application test endpoint>/actuator/health`.  
     - `{"status":"UP"}` benzer bir yanıt, uç noktanın etkinleştirildiğini gösterir.
-    - Yanıt negatifse, `POM.xml` aşağıdaki bağımlılığı ekleyin:
+    - Yanıt negatifse, `POM.xml`aşağıdaki bağımlılığı ekleyin:
 
         ```xml
             <dependency>
@@ -194,7 +191,7 @@ Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek Azure 'un
 
 Uygulamanın _çalıştığından ve çalışır_ hale geldiğinden emin olmak için uygulama _yönetimi_ 'negidin.
 
-_JVM_ 'den ölçümleri görebiliyorsanız ancak _Tomcat_'ten ölçüm yoksa, uygulama paketinizdeki `spring-boot-actuator` bağımlılığının etkinleştirilip etkinleştirilmediğini ve başarıyla önleyip önolmadığını kontrol edin.
+_JVM_ 'den ölçümleri görebiliyorsanız ancak _Tomcat_'ten ölçüm yoksa, uygulama paketinizdeki`spring-boot-actuator` bağımlılığının etkinleştirilip etkinleştirilmediğini ve başarıyla önleyip önolmadığını kontrol edin.
 
 ```xml
 <dependency>

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı, bellek içi teknolojiler | Microsoft Docs
+title: Azure SQL veritabanı bellek içi teknolojiler
 description: Azure SQL veritabanı bellek Içi teknolojiler, işlem ve analiz iş yüklerinin performansını önemli ölçüde artırır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: 325dda3695e796bc0814954d3bd69b9b340133b8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7ee643c10c61368ee91692cbddf326ba488f81e6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567969"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689779"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL veritabanında bellek Içi teknolojileri kullanarak performansı iyileştirin
 
@@ -26,9 +26,9 @@ Azure SQL veritabanı 'nda bellek içi teknolojiler uygulamanızın performansı
 
 Azure SQL veritabanı 'nda bellek Içi teknolojileri kullanarak, çeşitli iş yükleriyle performans iyileştirmeleri elde edebilirsiniz:
 
-- **İşlem** (çevrimiçi işlem işleme (OLTP)) çoğu istek, daha küçük veri kümesini okur veya güncelleştirir (örneğin, CRUD işlemleri).
-- **Analitik** (çevrimiçi analitik işleme (OLAP)), sorguların çoğunun raporlama amaçları için karmaşık hesaplamaları olduğu durumlarda, var olan tablolara veri yükleyen ve ekleyen (toplu yükleme olarak adlandırılır) veya tablolardaki verileri silen belirli sayıda sorguya sahip olan. 
-- **Karma** (karma işlem/analitik işleme (HTAP)) ve hem OLTP hem de OLAP sorgularının aynı veri kümesinde yürütüldüğü yer.
+- **İşlem** (çevrimiçi işlem Işleme (OLTP)) çoğu istek, daha küçük veri kümesini okur veya güncelleştirir (ÖRNEĞIN, CRUD işlemleri).
+- Sorguların çoğunun raporlama amaçları için karmaşık hesaplamaları olduğu analiz (çevrimiçi analitik işleme (OLAP)), var olan tablolara veri yükleyen ve ekleyen belirli bir **sorgu (toplu** yükleme olarak adlandırılır) veya verileri silme tablolar. 
+- Aynı veri kümesinde hem OLTP hem de OLAP sorgularının yürütüldüğü **karma** (karma işlem/analitik Işleme (htap)).
 
 Bellek içi teknolojiler, bu iş yüklerinin performansını iyileştirebilirler, sorguların yerel derlemesini kullanarak veya toplu işleme ve yığın işleme ve SıMD yönergeleri gibi gelişmiş işleme, temel alınan donanım. 
 
@@ -48,11 +48,11 @@ Daha verimli sorgu ve işlem işleme nedeniyle, bellek Içi teknolojiler de mali
 
 Aşağıda, bellek Içi OLTP 'un performansı önemli ölçüde iyileştirmesine yardımcı olacak iki örnek verilmiştir:
 
-- Bellek Içi OLTP kullanarak, [çekirdek Iş çözümleri,% 70 oranında DTU 'ları geliştirirken iş yükünü ikiye](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)katırdi.
+- Bellek Içi OLTP kullanarak, [çekirdek Iş çözümleri, %70 oranında DTU 'ları geliştirirken iş yükünü ikiye katırdi](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
 
   - DTU, *veritabanı işlem birimini*gösterir ve kaynak tüketiminin bir ölçüsünü içerir.
-- Aşağıdaki videoda örnek bir iş yüküne sahip kaynak tüketimine ilişkin önemli geliştirme gösterilmektedir: [Azure SQL veritabanı videosunda bellek ıçı OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
-  - Daha fazla bilgi için blog gönderisine bakın: [Azure SQL veritabanı blog gönderisine bellek içi OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
+- Aşağıdaki videoda örnek bir iş yüküyle kaynak tüketimine ilişkin önemli bir geliştirme gösterilmektedir: [Azure SQL veritabanı videosunda bellek ıçı OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
+  - Daha fazla bilgi için bkz. blog gönderisi: [Azure SQL veritabanı 'Nda bellek ıçı OLTP Web günlüğü gönderisi](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
 > [!NOTE]  
 > Bellek içi teknolojiler Premium ve İş Açısından Kritik katmanı Azure SQL veritabanlarında ve Premium elastik havuzlarda mevcuttur.
@@ -71,7 +71,7 @@ Bu makalede, Azure SQL veritabanı 'na özgü bellek Içi OLTP ve columnstore di
 
 Daha fazla bilgi için bkz.
 
-- [Bellek ıçı OLTP genel bakış ve kullanım senaryoları](https://msdn.microsoft.com/library/mt774593.aspx) (müşteri örnek olay incelemeleri için başvurular ve kullanmaya başlamak için bilgiler içerir)
+- [Bellek ıçı OLTP genel bakış ve kullanım senaryoları](https://msdn.microsoft.com/library/mt774593.aspx) (müşteri örnek olay incelemeleri ve kullanmaya başlamak için bilgiler içerir)
 - [Bellek Içi OLTP için belgeler](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Columnstore dizinleri Kılavuzu](https://msdn.microsoft.com/library/gg492088.aspx)
 - [Gerçek zamanlı işlemsel analiz](https://msdn.microsoft.com/library/dn817827.aspx) olarak da bilinen karma işlem/analitik Işleme (htap)
@@ -81,19 +81,19 @@ Daha fazla bilgi için bkz.
 Bellek içi OLTP teknolojisi, tüm verileri bellekte tutarak son derece hızlı veri erişim işlemleri sağlar. Ayrıca OLTP iş yükünün performansını artırmak için özel dizinleri, sorguların yerel derlemesini ve manuca veri erişimini de kullanır. Bellek Içi OLTP verilerinizi düzenlemenin iki yolu vardır:
 
 - Her satırın ayrı bir bellek nesnesi olduğu **bellek için iyileştirilmiş rowstore** biçimi. Bu, yüksek performanslı OLTP iş yükleri için iyileştirilmiş, klasik bir bellek Içi OLTP biçimidir. Bellek için iyileştirilmiş rowstore biçiminde kullanılabilecek, bellek için iyileştirilmiş iki tür tablo vardır:
-  - *Dayanıklı tablolar* (SCHEMA_AND_DATA) sunucu yeniden başlatıldıktan sonra belleğe yerleştirilmiş satırların korunması. Bu tür tablolar, bellek içi iyileştirmelerin ek avantajları ile geleneksel bir rowstore tablosu gibi davranır.
-  - *Dayanıklı olmayan tablolar* (SCHEMA_ONLY) yeniden başlattıktan sonra satırların korunmayan. Bu tür bir tablo, geçici veriler (örneğin, geçici tabloları değiştirme) veya kalıcı bir tabloya taşımadan önce verileri hızlı bir şekilde yüklemeniz gereken tablolar (hazırlama tabloları olarak adlandırılır) için tasarlanmıştır.
+  - Sunucu yeniden başlatıldıktan sonra belleğe yerleştirilmiş satırların korunduğu *dayanıklı tablolar* (SCHEMA_AND_DATA). Bu tür tablolar, bellek içi iyileştirmelerin ek avantajları ile geleneksel bir rowstore tablosu gibi davranır.
+  - Yeniden başlatıldıktan sonra satırların korunmayan, *dayanıklı olmayan tablolar* (SCHEMA_ONLY). Bu tür bir tablo, geçici veriler (örneğin, geçici tabloları değiştirme) veya kalıcı bir tabloya taşımadan önce verileri hızlı bir şekilde yüklemeniz gereken tablolar (hazırlama tabloları olarak adlandırılır) için tasarlanmıştır.
 - Verilerin sütunlu biçimde düzenlendiği, **bellek için iyileştirilmiş columnstore** biçimi. Bu yapı, OLTP iş yükünüzün çalıştığı veri yapısında analitik sorgular çalıştırmanız gereken, HTAP senaryoları için tasarlanmıştır.
 
 > [!Note]
 > Bellek içi OLTP teknolojisi, bellekte tam olarak yer alan veri yapıları için tasarlanmıştır. Bellek Içi veriler diske boşaltılamıyorsa, yeterli belleğe sahip olan veritabanını kullandığınızdan emin olun. Daha fazla ayrıntı için bkz. [bellek ıçı OLTP Için veri boyutu ve depolama üst sınırı](#data-size-and-storage-cap-for-in-memory-oltp) .
 
-Bellek Içi OLTP üzerinde hızlı bir öncü: [Hızlı Başlangıç 1: Daha hızlı T-SQL performansı](https://msdn.microsoft.com/library/mt694156.aspx) için bellek içi OLTP teknolojileri (başlamanıza yardımcı olacak başka bir makale)
+Bellek Içi OLTP üzerinde hızlı bir başlangıç: hızlı [Başlangıç 1: daha hızlı T-SQL performansı Için bellek ıçı OLTP teknolojileri](https://msdn.microsoft.com/library/mt694156.aspx) (başlamanıza yardımcı olacak başka bir makale)
 
 Teknolojiler hakkında ayrıntılı Videolar:
 
-- [Azure SQL veritabanı 'Nda bellek ıçı OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (performans avantajları hakkında bir tanıtım ve bu sonuçları kendiniz yeniden oluşturma adımları içerir)
-- [Bellek içi OLTP videoları: Ne olduğu ve ne zaman/nasıl kullanılacağı](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
+- [Azure SQL veritabanı 'Nda bellek ıçı OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (performans avantajları ve bu sonuçları kendiniz yeniden oluşturma adımları içeren)
+- [Bellek içi OLTP videoları: nedir ve ne zaman/nasıl kullanılır?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
 
 Belirli bir veritabanının bellek Içi OLTP 'Yi destekleyip desteklemediğini anlamak için programlı bir yoldur. Aşağıdaki Transact-SQL sorgusunu çalıştırabilirsiniz:
 ```
@@ -126,8 +126,8 @@ Bellek içi OLTP depolama kullanımını izleme ve ekranı neredeyse vurmak iste
 
 Elastik havuzlarla, bellek Içi OLTP depolaması, havuzdaki tüm veritabanları arasında paylaşılır. Bu nedenle, bir veritabanındaki kullanım diğer veritabanlarını etkileyebilir. Bunun için iki azaltıcı etken şunlardır:
 
-- Bir `Max-eDTU` bütün olarak `MaxvCore` havuz için eDTU veya sanal çekirdek sayısından düşük olan veritabanları için veya yapılandırın. Bu en büyük bellek Içi OLTP depolama kullanımı, havuzdaki tüm veritabanları, eDTU sayısına karşılık gelen boyuta kadar büyük.
-- 0 ' `Min-eDTU` dan `MinvCore` büyük bir veya yapılandırın. Bu en düşük değer, havuzdaki her bir veritabanının, yapılandırılan `Min-eDTU` veya `vCore`buna karşılık gelen bellek içi OLTP depolama miktarına sahip olmasını güvence altına alır.
+- Havuz için eDTU veya vCore sayısından daha düşük olan veritabanları için bir `Max-eDTU` veya `MaxvCore` yapılandırın. Bu en büyük bellek Içi OLTP depolama kullanımı, havuzdaki tüm veritabanları, eDTU sayısına karşılık gelen boyuta kadar büyük.
+- 0 ' dan büyük bir `Min-eDTU` veya `MinvCore` yapılandırın. Bu en az, havuzdaki her bir veritabanının, yapılandırılan `Min-eDTU` veya `vCore`karşılık gelen bellek Içi OLTP depolama miktarına sahip olmasını güvence altına alır.
 
 ### <a name="changing-service-tiers-of-databases-that-use-in-memory-oltp-technologies"></a>Bellek içi OLTP teknolojileri kullanan veritabanlarının hizmet katmanlarını değiştirme
 
@@ -140,7 +140,7 @@ Ancak katmanı daha eski sürüme dönüştürmek veritabanınızı olumsuz etki
 
 Veritabanını Standard/Basic 'e indirgediğinizde, tüm bellek için iyileştirilmiş tabloları ve tablo türlerini ve yerel koda derlenmiş T-SQL modüllerini kaldırın. 
 
-*İş açısından kritik katmanındaki ölçek azaltma kaynakları*: Bellek için iyileştirilmiş tablolardaki veriler, veritabanının veya yönetilen örneğin katmanıyla ilişkili bellek Içi OLTP depolaması içine sığmalıdır ya da elastik havuzda kullanılabilir. Katmanı ölçeklendirmeye veya veritabanını bellek Içi OLTP depolaması yeterli olmayan bir havuza taşımaya çalışırsanız, işlem başarısız olur.
+*İş açısından kritik katmanındaki ölçeklendirme kaynakları*: bellek için iyileştirilmiş tablolardaki veriler, veritabanının veya yönetilen örneğin katmanıyla Ilişkili bellek içi OLTP depolama alanına sığmalıdır ya da elastik havuzda kullanılabilir. Katmanı ölçeklendirmeye veya veritabanını bellek Içi OLTP depolaması yeterli olmayan bir havuza taşımaya çalışırsanız, işlem başarısız olur.
 
 ## <a name="in-memory-columnstore"></a>Bellek içi columnstore
 
@@ -155,7 +155,7 @@ Verilerinizi düzenlemek için kullanabileceğiniz iki tür columnstore modeli v
 
 Teknoloji hakkında ayrıntılı video:
 
-- [Columnstore dizini: Ignite 2016 'den bellek içi analiz videoları](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
+- [Columnstore dizini: Ignite 2016 'den bellek Içi analiz videoları](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Columnstore dizinleri için veri boyutu ve depolama
 
@@ -180,7 +180,7 @@ Hedef katmanınız S3 altındaysa, *tek veritabanını temel veya Standart sür�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı Başlangıç 1: Daha hızlı T-SQL performansı için bellek içi OLTP teknolojileri](https://msdn.microsoft.com/library/mt694156.aspx)
+- [Hızlı Başlangıç 1: daha hızlı T-SQL performansı için bellek Içi OLTP teknolojileri](https://msdn.microsoft.com/library/mt694156.aspx)
 - [Mevcut bir Azure SQL uygulamasında bellek Içi OLTP kullanın](sql-database-in-memory-oltp-migration.md)
 - Bellek içi OLTP için [bellek ıçı OLTP depolama alanını izleme](sql-database-in-memory-oltp-monitoring.md)
 - [Azure SQL veritabanı 'nda bellek Içi özellikleri deneyin](sql-database-in-memory-sample.md)
@@ -189,7 +189,7 @@ Hedef katmanınız S3 altındaysa, *tek veritabanını temel veya Standart sür�
 
 ### <a name="deeper-information"></a>Daha derin bilgi
 
-- [SQL veritabanı 'nda bellek Içi OLTP ile DTU 'yu% 70 oranında düşürürken, çekirdeğin anahtar veritabanı iş yükünü nasıl çift katına kullandığını öğrenin](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [SQL veritabanı 'nda bellek Içi OLTP ile DTU 'yu %70 oranında düşürürken, çekirdeğin anahtar veritabanı iş yükünü nasıl çift katına kullandığını öğrenin](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 - [Azure SQL veritabanı blog gönderisine bellek içi OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 - [Bellek Içi OLTP hakkında bilgi edinin](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Columnstore dizinleri hakkında bilgi edinin](https://msdn.microsoft.com/library/gg492088.aspx)
@@ -203,6 +203,6 @@ Hedef katmanınız S3 altındaysa, *tek veritabanını temel veya Standart sür�
 
 ### <a name="tools"></a>Araçlar
 
-- [Azure portal](https://portal.azure.com/)
+- [Azure Portal](https://portal.azure.com/)
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 - [SQL Server Veri Araçları (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

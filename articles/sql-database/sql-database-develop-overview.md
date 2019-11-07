@@ -1,5 +1,5 @@
 ---
-title: SQL Veritabanı Uygulaması Geliştirmeye Genel Bakış | Microsoft Belgeleri
+title: SQL Veritabanı Uygulaması Geliştirmeye Genel Bakış
 description: SQL Veritabanına bağlanan uygulamalar için kullanılabilen bağlantı kitaplıkları ve en iyi uygulamalar hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 02/07/2019
-ms.openlocfilehash: 42fc73b5557fba91cc132a0abe8561f0a72bbb64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 58f823aad157657de5445b1010a405af01c70171
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568858"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690634"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL veritabanı uygulaması geliştirmeye genel bakış
 
@@ -32,7 +32,7 @@ Azure SQL veritabanı 'na bağlanmak ve veritabanını sorgulamak için çeşitl
 
 [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/)gibi açık kaynaklı araçlardan yararlanabilirsiniz. Ayrıca, Azure SQL Veritabanı [Visual Studio](https://www.visualstudio.com/downloads/) ve [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) gibi Microsoft araçlarıyla birlikte çalışır. Ayrıca, Azure portal, PowerShell ve REST API 'Lerini kullanarak ek üretkenlik elde etmenize yardımcı olabilirsiniz.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Azure SQL veritabanı 'na erişim, oturum açmalar ve güvenlik duvarları ile korunmaktadır. Azure SQL veritabanı hem SQL Server hem de [Azure Active Directory (AAD) kimlik doğrulama](sql-database-aad-authentication.md) kullanıcılarını ve oturum açmaları destekler. AAD oturum açmaları yalnızca yönetilen örnekte kullanılabilir. 
 
@@ -54,7 +54,7 @@ Azure SQL veritabanınızda planlı bakım olaylarına hazırlanma hakkında dah
 
 ## <a name="network-considerations"></a>Ağ konuları
 
-- İstemci programınızı barındıran bilgisayarda güvenlik duvarının 1433 numaralı bağlantı noktasından giden TCP iletişimine izin verdiğinden emin olun.  Daha fazla bilgi: [Azure SQL veritabanı güvenlik duvarını yapılandırın](sql-database-configure-firewall-settings.md).
+- İstemci programınızı barındıran bilgisayarda güvenlik duvarının 1433 numaralı bağlantı noktasından giden TCP iletişimine izin verdiğinden emin olun.  Daha fazla bilgi: [Azure SQL veritabanı güvenlik duvarını yapılandırma](sql-database-configure-firewall-settings.md).
 - İstemciniz bir Azure sanal makinesi (VM) üzerinde çalışırken istemci programınız SQL veritabanı 'na bağlanırsa, sanal makine üzerinde belirli bağlantı noktası aralıklarını açmanız gerekir. Daha fazla bilgi: [ADO.NET 4,5 ve SQL veritabanı için 1433 dışındaki bağlantı noktaları](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Azure SQL veritabanı 'na yönelik istemci bağlantıları bazen proxy 'yi atlar ve veritabanıyla doğrudan etkileşime geçin. 1433 dışındaki bağlantı noktaları önemli hale gelmiştir. Daha fazla bilgi için, [Azure SQL veritabanı bağlantı mimarisi](sql-database-connectivity-architecture.md) ve [ADO.NET 4,5 ve SQL veritabanı için 1433](sql-database-develop-direct-route-ports-adonet-v12.md)' den fazla bağlantı noktası.
 - Yönetilen bir örnek için ağ yapılandırması için bkz. [yönetilen örnekler için ağ yapılandırması](sql-database-howto-managed-instance.md#network-configuration).

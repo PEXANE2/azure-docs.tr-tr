@@ -9,16 +9,18 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 5cb4602ac0431e09208953122f13b30124ab77f5
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734345"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614745"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Dayanıklı İşlevler-Hava durumu izleyici örneğinde izleme senaryosu
 
 İzleyici stili, bir iş akışında esnek bir *yinelenen* işleme anlamına gelir. Örneğin, belirli koşullar karşılanana kadar yoklama yapar. Bu makalede, izlemeyi uygulamak için [dayanıklı işlevler](durable-functions-overview.md) kullanan bir örnek açıklanmaktadır.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -41,7 +43,7 @@ Bu örnek, bir konumun geçerli hava durumu koşullarını izler ve skıes açı
 
 Bu örnek, bir konum için geçerli hava durumu koşullarını denetlemek için hava durumu düşük olan API 'sini kullanmayı içerir.
 
-İhtiyaç duyduğunuz ilk şey, hava durumu düşük bir hesaptır. ' De ücretsiz [https://www.wunderground.com/signup](https://www.wunderground.com/signup)olarak bir tane oluşturabilirsiniz. Hesabınız olduktan sonra bir API anahtarı edinmeniz gerekir. Bunu, sonra anahtar ayarları ' [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)nı ziyaret ederek yapabilirsiniz. Bu örneği çalıştırmak için, Stratler geliştirici planı ücretsizdir ve yeterlidir.
+İhtiyaç duyduğunuz ilk şey, hava durumu düşük bir hesaptır. [https://www.wunderground.com/signup](https://www.wunderground.com/signup)adresinden ücretsiz olarak bir tane oluşturabilirsiniz. Hesabınız olduktan sonra bir API anahtarı edinmeniz gerekir. Bunu, [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)ziyaret ederek ve sonra anahtar ayarları ' nı seçerek yapabilirsiniz. Bu örneği çalıştırmak için, Stratler geliştirici planı ücretsizdir ve yeterlidir.
 
 Bir API anahtarınız olduğunda, işlev uygulamanıza aşağıdaki **uygulama ayarını** ekleyin.
 
@@ -53,8 +55,8 @@ Bir API anahtarınız olduğunda, işlev uygulamanıza aşağıdaki **uygulama a
 
 Bu makalede örnek uygulamada aşağıdaki işlevler açıklanmaktadır:
 
-* `E3_Monitor`: Düzenli aralıklarla çağıran `E3_GetIsClear` bir Orchestrator işlevi. Doğru `E3_GetIsClear` döndürürse `E3_SendGoodWeatherAlert` çağırır.
-* `E3_GetIsClear`: Bir konum için geçerli hava durumu koşullarını denetleyen bir etkinlik işlevi.
+* `E3_Monitor`: düzenli aralıklarla `E3_GetIsClear` çağıran bir Orchestrator işlevi. `E3_GetIsClear` true döndürürse `E3_SendGoodWeatherAlert` çağırır.
+* `E3_GetIsClear`: bir konum için geçerli hava durumu koşullarını denetleyen bir etkinlik işlevi.
 * `E3_SendGoodWeatherAlert`: Twilio aracılığıyla SMS iletisi gönderen bir etkinlik işlevi.
 
 Aşağıdaki bölümlerde, komut dosyası ve JavaScript için C# kullanılan yapılandırma ve kod açıklanmaktadır. Visual Studio geliştirme kodu makalenin sonunda gösterilmektedir.
@@ -71,7 +73,7 @@ Aşağıdaki bölümlerde, komut dosyası ve JavaScript için C# kullanılan yap
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
@@ -82,7 +84,7 @@ Bu Orchestrator işlevi aşağıdaki eylemleri gerçekleştirir:
 3. İstenen konumda açık skiler olup olmadığını anlamak için **E3_GetIsClear** çağırır.
 4. Hava durumu açık ise, istenen telefon numarasına SMS bildirimi göndermek için **E3_SendGoodWeatherAlert** çağırır.
 5. Bir sonraki yoklama aralığında Orchestration işlemini sürdürecek dayanıklı bir zamanlayıcı oluşturur. Örnek, breçekimi için sabit kodlanmış bir değer kullanır.
-6. [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (C#) veya `currentUtcDateTime` (JavaScript) izleyicinin sona erme süresini geçirene veya bir SMS uyarısı gönderildiğinde çalışmaya devam eder.
+6. `CurrentUtcDateTime` (.NET) veya `currentUtcDateTime` (JavaScript) izleyicinin sona erme süresini geçirene veya SMS uyarısı gönderildiğinde çalışmaya devam eder.
 
 Birden çok Orchestrator **isteği**göndererek birden fazla Orchestrator örneği aynı anda çalışabilir. İzlenecek konum ve SMS uyarısı gönderilecek telefon numarası belirtilebilir.
 
@@ -97,7 +99,7 @@ JavaScript örneği, normal JSON nesnelerini parametre olarak kullanır.
 
 ## <a name="helper-activity-functions"></a>Yardımcı etkinlik işlevleri
 
-Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de `activityTrigger` tetikleyici bağlamayı kullanan normal işlevlerdir. **E3_GetIsClear** Işlevi, hava durumu düşük olan API 'yi kullanarak geçerli hava durumu koşullarını alır ve çatonun açık olup olmadığını belirler. *Function. JSON* aşağıdaki gibi tanımlanır:
+Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de `activityTrigger` tetikleyici bağlamasını kullanan normal işlevlerdir. **E3_GetIsClear** Işlevi, hava durumu düşük olan API 'yi kullanarak geçerli hava durumu koşullarını alır ve çatonun açık olup olmadığını belirler. *Function. JSON* aşağıdaki gibi tanımlanır:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
 
@@ -107,7 +109,7 @@ Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de `activityTrig
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
@@ -121,7 +123,7 @@ SMS iletisini gönderen kod aşağıda verilmiştir:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
@@ -140,10 +142,10 @@ Content-Type: application/json
 ```
 HTTP/1.1 202 Accepted
 Content-Type: application/json; charset=utf-8
-Location: https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={SystemKey}
+Location: https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={SystemKey}
 RetryAfter: 10
 
-{"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
+{"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
 
 **E3_Monitor** örneği başlatılır ve istenen konum için geçerli hava durumu koşullarını sorgular. Hava durumu açık ise, uyarı göndermek için bir etkinlik işlevi çağırır; Aksi takdirde, bir Zamanlayıcı ayarlar. Süreölçerin süresi dolduğunda düzenleme sürdürülecek.
@@ -166,10 +168,10 @@ Azure Işlevleri portalındaki işlev günlüklerine bakarak Orchestration 'un e
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-Zaman aşımı süresine ulaşıldığında düzenleme [sonlandırılır](durable-functions-instance-management.md) veya temizleme işlemi algılanır. Ayrıca, (.net `TerminateAsync` ) veya `terminate` (JavaScript) öğesini başka bir işlev içinde kullanabilir veya yukarıdaki 202 yanıtında başvurulan **terminateposturi** http post Web kancasını çağırarak sonlandırma nedeni `{text}` ile değiştirin:
+Zaman aşımı süresine ulaşıldığında düzenleme [sonlandırılır](durable-functions-instance-management.md) veya temizleme işlemi algılanır. Ayrıca, başka bir işlev içinde `TerminateAsync` (.NET) veya `terminate` (JavaScript) kullanabilir veya yukarıdaki 202 yanıtında başvurulan **Terminateposturi** http post Web kancasını çağırabilirsiniz ve bu `{text}` sonlandırma nedeni ile değiştirebilirsiniz:
 
 ```
-POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
+POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio örnek kodu

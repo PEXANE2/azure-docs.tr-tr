@@ -1,5 +1,5 @@
 ---
-title: SQL veritabanı olağanüstü durum kurtarma | Microsoft Docs
+title: SQL veritabanı olağanüstü durum kurtarma
 description: Azure SQL veritabanı etkin coğrafi çoğaltma ve coğrafi geri yükleme özellikleri ile bölgesel bir veri merkezi kesintisinden veya hatasından bir veritabanını nasıl kurtaracağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
-ms.openlocfilehash: 95814805d0bcb2532c09f4f68c6b8d97c3b8c6a5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bc4968541c29e3bf18eb4caca2abe648d17342a4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568826"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690610"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Bir Azure SQL veritabanını veya yük devretmeyi ikincil olarak geri yükleme
 
@@ -67,7 +67,7 @@ En son coğrafi çoğaltılan geri yükleme noktasını almak için [kurtarılab
 
 ## <a name="wait-for-service-recovery"></a>Hizmet kurtarmayı bekle
 
-Azure ekipleri, hizmet kullanılabilirliğini mümkün olduğunca hızlı bir şekilde geri yüklemek için, ancak köke bağlı olarak, saat veya gün sürelerine bağlı olarak çalışır.  Uygulamanız önemli ölçüde kapalı kalma süresine yol açabilir, kurtarmanın tamamlanmasını beklemeniz yeterlidir. Bu durumda, sizin bölüminizdeki hiçbir işlem yapmanız gerekmez. Geçerli hizmet durumunu [Azure hizmet durumu](https://azure.microsoft.com/status/)panoımızda görebilirsiniz. Bölgenin kurtarmasından sonra uygulamanızın kullanılabilirliği geri yüklenir.
+Azure ekipleri, hizmet kullanılabilirliğini mümkün olduğunca hızlı bir şekilde geri yüklemek için, ancak köke bağlı olarak, saat veya gün sürelerine bağlı olarak çalışır.  Uygulamanız önemli ölçüde kapalı kalma süresine yol açabilir, kurtarmanın tamamlanmasını beklemeniz yeterlidir. Bu durumda, sizin bölüminizdeki hiçbir işlem yapmanız gerekmez. Geçerli hizmet durumunu [Azure hizmet durumu panoımızda](https://azure.microsoft.com/status/)görebilirsiniz. Bölgenin kurtarmasından sonra uygulamanızın kullanılabilirliği geri yüklenir.
 
 ## <a name="fail-over-to-geo-replicated-secondary-server-in-the-failover-group"></a>Yük devretme grubundaki coğrafi çoğaltılan ikincil sunucu yükünü devreder
 
@@ -89,7 +89,7 @@ Uygulamanızın kapalı kalma süresi iş yükümlülük sonucu içermiyorsa, uy
 
 Bir kesinti durumundan kurtulmak için coğrafi geri yükleme kullanıyorsanız, normal uygulama işlevinin devam edebilmesi için yeni veritabanlarıyla bağlantının doğru şekilde yapılandırıldığından emin olmanız gerekir. Bu, Kurtarılan veritabanı üretimini hazırlamak için bir görev denetim listesi sağlar.
 
-### <a name="update-connection-strings"></a>Bağlantı dizelerini güncelleştir
+### <a name="update-connection-strings"></a>Bağlantı dizelerini Güncelleştir
 
 Kurtarılan veritabanınız farklı bir sunucuda bulunduğundan, bu sunucuyu işaret etmek için uygulamanızın bağlantı dizesini güncelleştirmeniz gerekir.
 
@@ -97,7 +97,7 @@ Bağlantı dizelerini değiştirme hakkında daha fazla bilgi için bkz. [bağla
 
 ### <a name="configure-firewall-rules"></a>Güvenlik duvarı kurallarını yapılandırma
 
-Sunucuda ve veritabanında yapılandırılan Güvenlik Duvarı kurallarının birincil sunucuda ve birincil veritabanında yapılandırılananlarla eşleştiğinden emin olmanız gerekir. Daha fazla bilgi için [nasıl yapılır: Güvenlik Duvarı ayarlarını yapılandırma (Azure SQL veritabanı](sql-database-configure-firewall-settings.md)).
+Sunucuda ve veritabanında yapılandırılan Güvenlik Duvarı kurallarının birincil sunucuda ve birincil veritabanında yapılandırılananlarla eşleştiğinden emin olmanız gerekir. Daha fazla bilgi için bkz. [nasıl yapılır: güvenlik duvarı ayarlarını yapılandırma (Azure SQL veritabanı)](sql-database-configure-firewall-settings.md).
 
 ### <a name="configure-logins-and-database-users"></a>Oturum açmaları ve veritabanı kullanıcılarını yapılandırma
 

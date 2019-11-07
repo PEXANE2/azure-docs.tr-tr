@@ -1,6 +1,6 @@
 ---
-title: Bir veri tümleştirme hizmeti olan Data Factory’ye giriş | Microsoft Belgeleri
-description: 'Azure Data Factory ne olduğunu öğrenin: Veri taşıma ve dönüştürme işlemlerini düzenleyen ve otomatikleştiren bir bulut veri tümleştirme hizmeti.'
+title: Veri tümleştirme hizmeti Data Factory giriş
+description: 'Azure Data Factory’nin ne olduğunu öğrenin: verilerin taşınmasını ve dönüştürülmesini düzenleyen ve otomatikleştiren bir bulut veri tümleştirme hizmetidir.'
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 2e508839cd343820a36cc715ebde0f47c2ac4ab1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139517"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666809"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory'ye giriş 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -41,7 +41,7 @@ Bu günlükleri analiz etmek için, şirketin şirket içi veri deposunda buluna
 
 ![Data Factory'ye genel bakış](media/data-factory-introduction/what-is-azure-data-factory.png) 
 
-Azure Data Factory, bu tür senaryolara yönelik bir platformdur. *Bulutta veri hareketi ve veri dönüştürmeyi düzenleyip otomatikleştirmek için veri odaklı iş akışları oluşturmanıza olanak tanıyan, bulut tabanlı bir veri tümleştirme hizmetidir*. Azure Data Factory hizmetini kullanarak aşağıdaki görevleri gerçekleştirebilirsiniz: 
+Azure Data Factory, bu tür senaryolara yönelik platformdur. *Bulutta veri hareketi ve veri dönüştürmeyi düzenleyip otomatikleştirmek için veri odaklı iş akışları oluşturmanıza olanak tanıyan, bulut tabanlı bir veri tümleştirme hizmetidir*. Azure Data Factory hizmetini kullanarak aşağıdaki görevleri gerçekleştirebilirsiniz: 
 
 - Farklı veri depolarından veri alabilen veri odaklı iş akışları (işlem hattı olarak adlandırılır) oluşturabilir ve zamanlayabilirsiniz.
 
@@ -51,7 +51,7 @@ Azure Data Factory, bu tür senaryolara yönelik bir platformdur. *Bulutta veri 
 
 Bu, geleneksel bir Ayıklama-Dönüştürme-Yükleme (ETL) platformu yerine daha çok Ayıklama-Dönüştürme (EL) ve sonra Dönüştürme-Yükleme (TL) platformudur. Dönüştürmeler verileri türetilmiş sütun ekleme, satır sayısını belirleme, veri sıralama vb. yerine işlem hizmetlerini kullanarak işler. 
 
-Şu anda Azure Data Factory'de iş akışları tarafından kullanılan ve üretilen veriler, *zaman dilimli verilerdir* (saatlik, günlük, haftalık vb.). Örneğin, bir işlem hattı günde bir kez giriş verilerini okuyabilir, verileri işleyebilir ve çıktı üretebilir. Bir iş akışını yalnızca bir kez de çalıştırabilirsiniz.  
+Şu anda Azure Data Factory'de iş akışları tarafından kullanılan ve üretilen veriler, *zaman dilimli verilerdir* (saatlik, günlük, haftalık vs.). Örneğin, bir işlem hattı günde bir kez giriş verilerini okuyabilir, verileri işleyebilir ve çıktı üretebilir. Bir iş akışını yalnızca bir kez de çalıştırabilirsiniz.  
   
 
 ## <a name="how-does-it-work"></a>Nasıl çalışır? 
@@ -69,7 +69,7 @@ Data Factory ile, veri işlem hattında Kopyalama Etkinliği’ni kullanarak hem
 Örneğin, Azure Data Lake Store'da veri toplayabilir ve daha sonra Azure Data Lake Analytics işlem hizmetini kullanarak verileri dönüştürebilirsiniz. Verileri Azure blob depolama alanından toplayıp daha sonra Azure HDInsight Hadoop kümesi kullanarak da dönüştürebilirsiniz.
 
 ### <a name="transform-and-enrich"></a>Dönüştürme ve zenginleştirme
-Veriler buluttaki merkezi bir veri deposuna yerleştirildikten sonra HDInsight Hadoop, Spark, Data Lake Analytics veya Machine Learning gibi işlem hizmetlerini kullanarak bunları işleyin veya aktarın. Üretim ortamlarının güvenilir verilerle beslenmesi için sürdürülebilir ve denetlenebilir bir zamanlamaya göre dönüştürülmüş verileri güvenilir bir şekilde üretmeniz gerekir. 
+Veriler buluttaki merkezi bir veri deposuna sunulduktan sonra HDInsight Hadoop, Spark, Data Lake Analytics veya Machine Learning gibi işlem hizmetlerini kullanarak işleyin veya dönüştürün. Üretim ortamlarının güvenilir verilerle beslenmesi için sürdürülebilir ve denetlenebilir bir zamanlamaya göre dönüştürülmüş verileri güvenilir bir şekilde üretmeniz gerekir. 
 
 ### <a name="publish"></a>Yayımlama 
 Dönüştürülen verileri buluttan SQL Server gibi şirket içi kaynaklara gönderebilirsiniz. Alternatif olarak BI uygulamaları, analiz araçları ve diğer uygulamalar tarafından kullanılmak üzere bulut depolama kaynaklarınızda tutabilirsiniz.
@@ -118,7 +118,7 @@ Bağlı hizmetler Data Factory'de iki nedenle kullanılır:
 
 ### <a name="relationship-between-data-factory-entities"></a>Data Factory varlıkları arasındaki ilişki
 
-![Çizimindeki Bulut veri tümleştirme hizmeti Data Factory, temel kavramlar](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![Diyagram: Bir bulut veri tümleştirme hizmeti olan Data Factory - temel kavramlar](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 Şu anda Batı ABD, Doğu ABD ve Kuzey Avrupa bölgelerinde veri fabrikaları oluşturabilirsiniz. Ancak, verileri veri depoları arasında taşımak ve işlem hizmetlerini kullanarak verileri işlemek amacıyla veri fabrikası başka Azure bölgelerindeki veri depolarına ve işlem hizmetlerine erişebilir.

@@ -1,5 +1,5 @@
 ---
-title: Şirket içi SSIS iş yüklerini SSIS 'ye geçirme Azure Data Factory | Microsoft Docs
+title: Şirket içi SSIS iş yüklerini SSIS 'ye geçirme Azure Data Factory
 description: On-premises SSIS iş yüklerini ADF 'de SSIS 'e geçirin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 3bf5ddebd59c95d00d0d3270f0e8e1a2d29b379a
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e75e6bc78740ffb8aba0faa0ef95f4b13a8c56ef
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968477"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684415"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Şirket içi SSIS iş yüklerini ADF 'de SSIS 'ye geçirme
 
@@ -27,7 +27,7 @@ Veritabanı iş SQL Server yüklerinizi, Azure SQL veritabanı veya Azure SQL ve
 
 Azure Data Factory (ADF) içindeki Azure-SSIS Integration Runtime (IR), SSIS paketlerinin çalıştırılmasını destekler. Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve çalıştırmak için SQL Server Veri Araçları (SSDT)/SQL Server Management Studio (SSMS) gibi tanıdık araçları ve dtınstall/dtutil/dtexec gibi komut satırı yardımcı programlarını kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure SSIS Asansör-ve-SHIFT 'e genel bakış](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
-Bu makalede, şirket içi SSIS 'den SSIS 'e yönelik ETL iş yüklerinizin geçiş süreci ADF 'de gösterilmektedir. Geçiş işlemi iki aşamadan oluşur: **Değerlendirme** ve **geçiş**.
+Bu makalede, şirket içi SSIS 'den SSIS 'e yönelik ETL iş yüklerinizin geçiş süreci ADF 'de gösterilmektedir. Geçiş işlemi iki aşamadan oluşur: **değerlendirme** ve **geçiş**.
 
 ## <a name="assessment"></a>Değerlendirme
 
@@ -35,7 +35,7 @@ Tam bir geçiş planı oluşturmak için, eksiksiz bir değerlendirme, başarıl
 
 Data Migration Yardımcısı (DMA), bu amaçla yerel olarak yüklenebilen ve çalıştırılabilen, ücretsiz indirilebilir bir araçtır. SSIS paketlerini toplu olarak değerlendirmek ve aşağıdaki kategorilerde sunulan uyumluluk sorunlarını belirlemek için, Type **Integration Services** türünde DMA değerlendirmesi projesi oluşturulabilir:
 
-- Geçiş engelleyicileri: Bunlar, geçiş kaynak paketlerinin Azure-SSIS IR üzerinde çalıştırılmasını engelleyen uyumluluk sorunlarıdır. DMA, bu sorunları gidermenize yardımcı olacak kılavuzluk sağlar.
+- Geçiş engelleyiciler: Bu, geçiş kaynak paketlerinin Azure-SSIS IR çalıştırılmasını engelleyen uyumluluk sorunlarıdır. DMA, bu sorunları gidermenize yardımcı olacak kılavuzluk sağlar.
 
 - Bilgilendirici sorunlar: Bunlar kısmen destekleniyor veya kaynak paketlerinde kullanılan kullanım dışı özelliklerdir. DMA, Azure 'da sunulan kapsamlı öneriler, diğer yaklaşımların bir kümesini sağlar ve çözüm adımlarını azaltıcı adımları ortadan kaldırmanın yanı sıra.
 
@@ -63,8 +63,8 @@ Kaynak SSIS paketlerinin [depolama türlerine](#four-storage-types-for-ssis-pack
 
 | **Paket depolama türü** |SSIS paketlerini toplu geçirme|SSIS işlerinin toplu olarak geçirilmesi|
 |-|-|-|
-|SSISDB|[**SSISDB** 'yi geçir](scenario-ssis-migration-ssisdb-mi.md)|[SSIS işlerini Azure SQL veritabanı yönetilen örnek aracısına geçirme](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-azure-sql-database-managed-instance-agent)|
-|Dosya sistemi|Onları dtınstall/dtutil/Manual Copy aracılığıyla dosya paylaşımlarına/Azure dosyalarına yeniden dağıtın veya dosya sistemlerinde VNet/şirket içinde barındırılan IR aracılığıyla erişmesini sağlayın. Daha fazla bilgi için bkz. [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
+|SSıSDB|[**SSISDB** 'yi geçir](scenario-ssis-migration-ssisdb-mi.md)|[SSIS işlerini Azure SQL veritabanı yönetilen örnek aracısına geçirme](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-azure-sql-database-managed-instance-agent)|
+|Dosya Sistemi|Onları dtınstall/dtutil/Manual Copy aracılığıyla dosya paylaşımlarına/Azure dosyalarına yeniden dağıtın veya dosya sistemlerinde VNet/şirket içinde barındırılan IR aracılığıyla erişmesini sağlayın. Daha fazla bilgi için bkz. [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |SQL Server (MSDB)|Dosyaları SSMS/dtutil aracılığıyla dosya sistemlerine/dosya paylaşımlarına/Azure dosyalarına dışarı aktarın. Daha fazla bilgi için bkz. [SSIS paketlerini dışarı aktarma](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service).|Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Paket deposu|Onları SSMS/dtutil aracılığıyla dosya sistemlerine/dosya paylaşımlarına/Azure dosyalarına dışarı aktarın veya dtınstall/dtutil/Manual Copy aracılığıyla dosya paylaşımlarına/Azure dosyalarına yeniden dağıtın ya da bunları VNet/şirket içinde barındırılan IR aracılığıyla erişmek için dosya sistemlerinde saklayın. Daha fazla bilgi için bkz. dtutil Utility. Daha fazla bilgi için bkz. [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 
@@ -72,8 +72,8 @@ Kaynak SSIS paketlerinin [depolama türlerine](#four-storage-types-for-ssis-pack
 
 | **Paket depolama türü** |SSIS paketlerini toplu geçirme|İşleri toplu geçirme|
 |-|-|-|
-|SSISDB|SSDT/SSMS aracılığıyla Azure-SSıSDB 'ye yeniden dağıtın. Daha fazla bilgi için bkz. [Azure 'DA SSIS paketlerini dağıtma](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial).|Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
-|Dosya sistemi|Onları dtınstall/dtutil/Manual Copy aracılığıyla dosya paylaşımlarına/Azure dosyalarına yeniden dağıtın veya dosya sistemlerinde VNet/şirket içinde barındırılan IR aracılığıyla erişmesini sağlayın. Daha fazla bilgi için bkz. [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
+|SSıSDB|SSDT/SSMS aracılığıyla Azure-SSıSDB 'ye yeniden dağıtın. Daha fazla bilgi için bkz. [Azure 'DA SSIS paketlerini dağıtma](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial).|Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
+|Dosya Sistemi|Onları dtınstall/dtutil/Manual Copy aracılığıyla dosya paylaşımlarına/Azure dosyalarına yeniden dağıtın veya dosya sistemlerinde VNet/şirket içinde barındırılan IR aracılığıyla erişmesini sağlayın. Daha fazla bilgi için bkz. [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |SQL Server (MSDB)|Dosyaları SSMS/dtutil aracılığıyla dosya sistemlerine/dosya paylaşımlarına/Azure dosyalarına dışarı aktarın. Daha fazla bilgi için bkz. [SSIS paketlerini dışarı aktarma](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service).|Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Paket deposu|Onları SSMS/dtutil aracılığıyla dosya sistemlerine/dosya paylaşımlarına/Azure dosyalarına dışarı aktarın veya dtınstall/dtutil/Manual Copy aracılığıyla dosya paylaşımlarına/Azure dosyalarına yeniden dağıtın ya da bunları VNet/şirket içinde barındırılan IR aracılığıyla erişmek için dosya sistemlerinde saklayın. Daha fazla bilgi için bkz. dtutil Utility. Daha fazla bilgi için bkz. [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 

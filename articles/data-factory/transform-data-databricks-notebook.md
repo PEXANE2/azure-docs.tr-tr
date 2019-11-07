@@ -1,5 +1,5 @@
 ---
-title: Databricks Not defteri ile verileri dönüştürme-Azure | Microsoft Docs
+title: Databricks Not defteri ile verileri dönüştürme-Azure
 description: Databricks Not defteri çalıştırarak verileri nasıl işleyeceğini veya dönüştürebileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 23166a4a0110629674db6ccc9d225118264b3c15
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 685a7863af74bf90c819453b41078b48ab6d2045
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233067"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683919"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Databricks Not defteri çalıştırarak verileri dönüştürme
 
-Bir [Data Factory](concepts-pipelines-activities.md) işlem hattındaki Azure Databricks Not defteri etkinliği Azure Databricks çalışma alanınızda bir Databricks Not defteri çalıştırır. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesinde oluşturulur. Azure Databricks, Apache Spark çalıştırmak için yönetilen bir platformdur.
+Bir [Data Factory](concepts-pipelines-activities.md) işlem hattındaki Azure Databricks Not defteri etkinliği Azure Databricks çalışma alanınızda bir Databricks Not defteri çalıştırır. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesine yönelik olarak oluşturulur. Azure Databricks, Apache Spark çalıştırmak için yönetilen bir platformdur.
 
 ## <a name="databricks-notebook-activity-definition"></a>Databricks Not defteri etkinlik tanımı
 
@@ -59,13 +59,13 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 
 |Özellik|Açıklama|Gerekli|
 |---|---|---|
-|name|İşlem hattındaki etkinliğin adı.|Evet|
-|description|Etkinliğin ne yaptığını açıklayan metin.|Hayır|
+|ad|İşlem hattındaki etkinliğin adı.|Evet|
+|açıklama|Etkinliğin ne yaptığını açıklayan metin.|Hayır|
 |type|Databricks Not defteri etkinliği için etkinlik türü Databricksnot Defterinizdir.|Evet|
-|linkedServiceName|Databricks Not defterinin çalıştığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.|Evet|
+|linkedServiceName|Databricks Not defterinin çalıştığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md) makalesi.|Evet|
 |Not Defteriyolu|Databricks çalışma alanında çalıştırılacak olan Not defterinin mutlak yolu. Bu yol bir eğik çizgiyle başlamalıdır.|Evet|
 |baseParameters|Anahtar-değer çiftleri dizisi. Temel parametreler her etkinlik çalıştırması için kullanılabilir. Not defteri belirtilmemiş bir parametre alırsa, not defterindeki varsayılan değer kullanılacaktır. [Databricks not defterlerinde](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)parametreler hakkında daha fazla bilgi bulabilirsiniz.|Hayır|
-|Kütüphaneler|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. Bu bir \<dize dizisi, nesne > olabilir.|Hayır|
+|Kütüphaneler|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. \<dize, nesne > dizisi olabilir.|Hayır|
 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks etkinlikleri için desteklenen kitaplıklar
@@ -120,7 +120,7 @@ Belirli durumlarda, veri fabrikasında denetim akışı (koşullu denetimler) i�
 
 1. Not defterinizde [dbutils. Not defteri. Exit ("ReturnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) ve karşılık gelen "ReturnValue" de Data Factory 'ye döndürülür.
 
-2. Veri fabrikasında, gibi bir ifade `'@activity('databricks notebook activity name').output.runOutput'`kullanarak çıktıyı kullanabilirsiniz. 
+2. `'@activity('databricks notebook activity name').output.runOutput'`gibi bir ifade kullanarak çıktıyı Data Factory 'de kullanabilirsiniz. 
 
    > [!IMPORTANT]
    > JSON nesnesi geçirçalışıyorsanız, özellik adlarını ekleyerek değerleri alabilirsiniz. Örnek: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`

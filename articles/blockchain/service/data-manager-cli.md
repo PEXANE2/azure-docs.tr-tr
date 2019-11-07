@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 1e92ae36aee5e62cd05b40bbaa38a226943f0adb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 9f408b090db40e5145b424034c39cdba4de14a8f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518027"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605911"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Azure CLı kullanarak blok zinciri Veri Yöneticisi yapılandırma
 
@@ -27,7 +27,7 @@ Bir blok zinciri Veri Yöneticisi örneği yapılandırmak için şunları yapı
 * Blok zinciri uygulaması ekleme
 * Örnek başlatma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * En son [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 'yı yükleyip `az login`kullanarak oturum açtınız.
 * [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanma](connect-vscode.md)
@@ -259,6 +259,10 @@ az resource create \
 
 Bir blok zinciri uygulaması eklerseniz, blok zinciri uygulama için olay ve özellik durumunun kodunu çözer Veri Yöneticisi. Aksi takdirde, yalnızca ham blok ve ham işlem verileri gönderilir. Blok zinciri Veri Yöneticisi sözleşme dağıtıldığında sözleşme adreslerini de bulur. Bir blok zinciri Veri Yöneticisi örneğine birden çok blok zinciri uygulaması ekleyebilirsiniz.
 
+
+> [!IMPORTANT]
+> Şu anda, Solidity [dizi türlerini](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) veya [eşleme türlerini](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) bildiren blok zinciri uygulamaları tam olarak desteklenmez. Bir dizi veya eşleme türü olarak tanımlanan özellikler, *Contractpropertiesmsg* veya *Decodedcontracteventsmsg* iletilerinde kodu çözülür.
+
 ``` azurecli
 az resource create \
                    --resource-group <Resource group> \
@@ -306,7 +310,7 @@ Configuration JSON örneği, sözleşme ABı ve bytecode tarafından tanımlanan
 | location | Uygulama kaynağının oluşturulacağı bölge. |
 | artifactType | Uygulamanın türü. Şu anda **Ethereumsmartcontract** destekleniyor. |
 | Abıfileurl | Akıllı sözleşme ABı JSON dosyası URL 'SI. Sözleşme ABı edinme ve bir URL oluşturma hakkında daha fazla bilgi için bkz. [sözleşme ABI ve bytecode 'U alma](data-manager-portal.md#get-contract-abi-and-bytecode) ve [sözleşme ABı ve bytecode URL 'si oluşturma](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
-| bytecodeFileUrl | Akıllı sözleşme bytecode JSON dosyası URL 'SI. Akıllı sözleşme bayt kodu alma ve bir URL oluşturma hakkında daha fazla bilgi için bkz. [sözleşme ABI ve bytecode bilgilerini alma](data-manager-portal.md#get-contract-abi-and-bytecode) ve [sözleşme ABı ve bytecode URL 'si oluşturma](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
+| bytecodeFileUrl | Akıllı sözleşme tarafından dağıtılan bytecode JSON dosyası URL 'SI. Akıllı sözleşme dağıtılan ByteCode ve bir URL oluşturma hakkında daha fazla bilgi için bkz. [sözleşme ABI ve bytecode 'U alma](data-manager-portal.md#get-contract-abi-and-bytecode) ve [sözleşme ABı ve bytecode URL 'si oluşturma](data-manager-portal.md#create-contract-abi-and-bytecode-url). Note: blok zinciri Veri Yöneticisi **dağıtılan bytecode**'u gerektirir. |
 | queryTargetTypes | Yayınlanan ileti türleri. **Contractproperties** 'ı belirleme *contractpropertiesmsg* ileti türünü yayımlar. **ContractEvents** yayım *Decodedcontracteventsmsg* ileti türü belirtiliyor. Note: *Rawblockandtransactionmsg* ve *Rawtransactioncontractcreationmsg* ileti türleri her zaman yayımlanır. |
 
 JSON dizesi tarafından tanımlanan akıllı sözleşmeyi izleyen *myizleyici* için *MyApplication* adlı bir uygulama oluşturun.
@@ -415,4 +419,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Event Grid Içindeki olay işleyicileri](../../event-grid/event-handlers.md)hakkında daha fazla bilgi edinin.
+Blok zinciri Veri Yöneticisi ve Azure Cosmos DB kullanarak bir blok zinciri işlem iletisi Gezgini oluşturmayı deneyin.
+
+> [!div class="nextstepaction"]
+> [Öğretici: Azure Cosmos DB 'a veri göndermek için blok zinciri Veri Yöneticisi kullanma](data-manager-cosmosdb.md)

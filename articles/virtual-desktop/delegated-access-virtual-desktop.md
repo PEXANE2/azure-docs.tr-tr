@@ -7,27 +7,27 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: e8d1ba00043f43f626043d78ce0ab8953a0b3fbe
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: ad8dc610d15742844b8bec630d7bc3e08fb46973
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679556"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606891"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop"></a>Windows sanal masaüstü 'nde temsilci erişimi
+# <a name="delegated-access-in-windows-virtual-desktop"></a>Windows Sanal Masaüstü'ne temsilci erişimi
 
 Windows sanal masaüstü, belirli bir kullanıcının bir rol atayarak izin verilen erişim miktarını tanımlamanızı sağlayan bir temsilci erişim modeli sağlar. Rol atamasının üç bileşeni vardır: güvenlik sorumlusu, rol tanımı ve kapsam. Windows sanal masaüstü temsilcisi erişim modeli, Azure RBAC modelini temel alır. Belirli rol atamaları ve bileşenleri hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimine genel bakış](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
 
 Windows sanal masaüstü temsilcisi erişimi, rol atamasının her bir öğesi için aşağıdaki değerleri destekler:
 
 * Güvenlik sorumlusu
-    * kullanıcılarına
+    * Kullanıcılar
     * Hizmet sorumluları
 * Rol tanımı
     * Yerleşik roller
 * Kapsam
     * Kiracı grupları
-    * Kiracılar
+    * Kira
     * Konak havuzları
     * Uygulama grupları
 

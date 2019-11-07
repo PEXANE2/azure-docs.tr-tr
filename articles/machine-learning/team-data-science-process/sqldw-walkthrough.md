@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc70e2e6475620bfb8842fc740772e326f8ee8d0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76afafb59de762776b7d2614e383320b7d8f79e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480347"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669397"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Takım veri bilimi süreci: SQL veri ambarı kullanma
 Bu öğreticide, genel kullanıma açık bir veri kümesi için SQL veri ambarı (SQL DW) kullanarak makine öğrenimi modeli oluşturma ve dağıtma konusunda size yol gösterir. Bu, [NYC TAXI gezme](https://www.andresmh.com/nyctaxitrips/) veri kümesi. Oluşturulan ikili sınıflandırma modeli, bir ucun seyahat için ödenip ödenmediğini tahmin eder ve çok sınıflı sınıflandırma ve gerileme için modeller, ücretli tıp miktarları için dağılımı tahmin eden bir şekilde da ele alınmıştır.
@@ -851,7 +851,7 @@ Bu alıştırmada, verileri SQL veri ambarı 'nda zaten araştırmış ve sunduk
 >
 
 ## <a name="mldeploy"></a>Azure Machine Learning modelleri dağıtma
-Modeliniz hazırlandığınızda, doğrudan denemenizin içinden Web hizmeti olarak kolayca dağıtım yapabilirsiniz. Azure ML Web Hizmetleri 'ni dağıtma hakkında daha fazla bilgi için bkz. [Azure Machine Learning Web hizmeti dağıtma](../studio/publish-a-machine-learning-web-service.md).
+Modeliniz hazırlandığınızda, doğrudan denemenizin içinden Web hizmeti olarak kolayca dağıtım yapabilirsiniz. Azure ML Web Hizmetleri 'ni dağıtma hakkında daha fazla bilgi için bkz. [Azure Machine Learning Web hizmeti dağıtma](../studio/deploy-a-machine-learning-web-service.md).
 
 Yeni bir Web hizmeti dağıtmak için şunları yapmanız gerekir:
 

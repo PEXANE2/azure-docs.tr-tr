@@ -1,5 +1,5 @@
 ---
-title: Windows Virtual Desktop 'ta Windows 7 sanal makinelerinin sorunlarını giderme-Azure
+title: Windows 7 sanal makineleri Windows sanal masaüstü-Azure
 description: Windows Sanal Masaüstü ortamındaki Windows 7 sanal makineleri (VM 'Ler) için sorunları çözme.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: helohr
-ms.openlocfilehash: 282a4d166e48a41015cb2f08496fe39419bdcaf7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ee641a694371ffd3fbc691a05edac707e37e959d
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374255"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607335"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesiyle ilgili sorunları giderme
 
@@ -42,7 +42,7 @@ Bu hatayı onarmak için kullanıcıyı uzak masaüstü kullanıcı grubuna ekle
 1. Azure portalı açın.
 2. Hata iletisini gördüğünüz sanal makineyi seçin.
 3. **Çalıştır komutunu**seçin.
-4. @No__t-0 ile, eklemek istediğiniz kullanıcının adı ile değiştirilmiş olan aşağıdaki komutu çalıştırın:
+4. `<username>`, eklemek istediğiniz kullanıcının adı ile değiştirilmiş olan aşağıdaki komutu çalıştırın:
    
    ```cmd
    net localgroup "Remote Desktop Users" <username> /add

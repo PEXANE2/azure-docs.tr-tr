@@ -1,5 +1,5 @@
 ---
-title: SQL veritabanında genişletilmiş olaylar | Microsoft Docs
+title: SQL veritabanında genişletilmiş olaylar
 description: Azure SQL veritabanı 'nda genişletilmiş olayları (XEvents) ve olay oturumlarının Microsoft SQL Server olay oturumlarından biraz farklı bir şekilde nasıl farklı olduğunu açıklar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: f9af487e2eb35e7dc94e1b70945d5c03ffdde2ba
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 64cfcd9451416a6eb35301268b285bd00cf0cad4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566071"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686771"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL veritabanında genişletilmiş olaylar
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -34,7 +34,7 @@ Azure SQL veritabanı ve Microsoft SQL Server için genişletilmiş olaylar hakk
 - [Hızlı başlangıç: SQL Server genişletilmiş olaylar](https://msdn.microsoft.com/library/mt733217.aspx)
 - [Genişletilmiş Olaylar](https://msdn.microsoft.com/library/bb630282.aspx)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu konu başlığı altında zaten bir bilginiz olduğunu varsaymaktadır:
 
@@ -58,7 +58,7 @@ Aşağıdaki öğelerin önceki pozlaması, olay dosyasını [hedef](#AzureXEven
 
 - [SQL veritabanı 'nda genişletilmiş olaylar için halka arabelleği hedef kodu](sql-database-xevent-code-ring-buffer.md)
     - Kısa basit Transact-SQL betiği.
-    - Bir halka arabellek hedefi ile işiniz bittiğinde, bir alter drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` deyimini yürüterek kaynaklarını serbest bırakmanız gerektiğini belirten kod örneği konusunu vurgularız. Daha sonra, tarafından `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`başka bir halka arabelleği örneği ekleyebilirsiniz.
+    - Bir halka arabelleği hedefi ile işiniz bittiğinde, bir alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` deyimini yürüterek kaynaklarını serbest bırakmanız gerektiğini belirten kod örneği konusunu vurgularız. Daha sonra `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`tarafından başka bir halka arabelleği örneği ekleyebilirsiniz.
 
 
 - [SQL veritabanı 'nda genişletilmiş olaylar için olay dosyası hedef kodu](sql-database-xevent-code-event-file.md)
@@ -83,13 +83,13 @@ Genişletilmiş olaylar özelliği, çeşitli [Katalog görünümleri](https://m
 
 | Adı<br/>Katalog görünümü | Açıklama |
 |:--- |:--- |
-| **sys.database_event_session_actions** |Olay oturumunun her bir olayında her eylem için bir satır döndürür. |
-| **sys.database_event_session_events** |Olay oturumundaki her olay için bir satır döndürür. |
-| **sys.database_event_session_fields** |Olaylar ve hedeflerde açıkça ayarlanmış olan her özelleştirme özellikli sütun için bir satır döndürür. |
-| **sys.database_event_session_targets** |Olay oturumu için her olay hedefi için bir satır döndürür. |
-| **sys.database_event_sessions** |SQL veritabanı veritabanındaki her olay oturumu için bir satır döndürür. |
+| **sys. database_event_session_actions** |Olay oturumunun her bir olayında her eylem için bir satır döndürür. |
+| **sys. database_event_session_events** |Olay oturumundaki her olay için bir satır döndürür. |
+| **sys. database_event_session_fields** |Olaylar ve hedeflerde açıkça ayarlanmış olan her özelleştirme özellikli sütun için bir satır döndürür. |
+| **sys. database_event_session_targets** |Olay oturumu için her olay hedefi için bir satır döndürür. |
+| **sys. database_event_sessions** |SQL veritabanı veritabanındaki her olay oturumu için bir satır döndürür. |
 
-Microsoft SQL Server, benzer katalog görünümlerinde. *\_Database*yerine *. Server\_*  adı yer alır. Ad stili, **sys. server_event_%** gibidir.
+Microsoft SQL Server, benzer katalog görünümlerinde. *database\_* yerine *. Server\_* dahil olmak üzere adlar bulunur. Ad stili, **sys. server_event_%** gibidir.
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Yeni dinamik yönetim görünümleri [(DMVs)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -97,23 +97,23 @@ Azure SQL veritabanı, genişletilmiş olayları destekleyen [dinamik yönetim g
 
 | DMV adı | Açıklama |
 |:--- |:--- |
-| **sys.dm_xe_database_session_event_actions** |Olay oturumu eylemleri hakkında bilgi döndürür. |
-| **sys.dm_xe_database_session_events** |Oturum olayları hakkında bilgi döndürür. |
-| **sys.dm_xe_database_session_object_columns** |Bir oturuma bağlanan nesneler için yapılandırma değerlerini gösterir. |
-| **sys.dm_xe_database_session_targets** |Oturum hedefleri hakkında bilgi döndürür. |
-| **sys.dm_xe_database_sessions** |Geçerli veritabanı kapsamındaki her olay oturumu için bir satır döndürür. |
+| **sys. DM _xe_database_session_event_actions** |Olay oturumu eylemleri hakkında bilgi döndürür. |
+| **sys. DM _xe_database_session_events** |Oturum olayları hakkında bilgi döndürür. |
+| **sys. DM _xe_database_session_object_columns** |Bir oturuma bağlanan nesneler için yapılandırma değerlerini gösterir. |
+| **sys. DM _xe_database_session_targets** |Oturum hedefleri hakkında bilgi döndürür. |
+| **sys. DM _xe_database_sessions** |Geçerli veritabanı kapsamındaki her olay oturumu için bir satır döndürür. |
 
-Microsoft SQL Server, benzer Katalog görünümleri adın  *\_veritabanı* bölümü olmadan adlandırılır, örneğin:
+Microsoft SQL Server, benzer Katalog görünümleri adın *\_veritabanı* bölümü olmadan adlandırılır, örneğin:
 
-- ad yerine **sys. DM _xe_sessions**<br/>**sys.dm_xe_database_sessions**.
+- ad yerine **sys. DM _xe_sessions**<br/>**sys. DM _xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Her ikisine de genel olarak DMVs
 Genişletilmiş olaylar için hem Azure SQL veritabanı hem de Microsoft SQL Server için ortak olan ek DMVs 'ler vardır:
 
-- **sys.dm_xe_map_values**
-- **sys.dm_xe_object_columns**
-- **sys.dm_xe_objects**
-- **sys.dm_xe_packages**
+- **sys. DM _xe_map_values**
+- **sys. DM _xe_object_columns**
+- **sys. DM _xe_objects**
+- **sys. DM _xe_packages**
 
   <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
@@ -171,7 +171,7 @@ Azure depolama Kapsayıcınız için oluşturduğunuz SAS belirtecinin izinleri 
 
 - Okuma
 - Yazma
-- List
+- Liste
 
 ## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 
@@ -180,7 +180,7 @@ Genişletilmiş olayların yoğun kullanımı, genel sistem için sağlıklı ol
 Bellek üst sınırının zorlandığını belirten bir hata iletisi alırsanız, gerçekleştirebileceğiniz bazı düzeltme işlemleri şunlardır:
 
 - Daha az eşzamanlı olay oturumu çalıştırın.
-- Olay oturumlarına yönelik **oluşturma** ve **değiştirme** deyimlerinizi kullanarak, **maksimum\_bellek** yan tümcesinde belirttiğiniz bellek miktarını azaltın.
+- Olay oturumlarına yönelik **oluşturma** ve **değiştirme** deyimlerinizi kullanarak, **Maksimum\_bellek** yan tümcesinde belirttiğiniz bellek miktarını azaltın.
 
 ### <a name="network-latency"></a>Ağ gecikmesi
 

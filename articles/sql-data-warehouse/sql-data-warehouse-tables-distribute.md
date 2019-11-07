@@ -1,5 +1,5 @@
 ---
-title: Dağıtılmış tablolar tasarım kılavuzu-Azure SQL veri ambarı | Microsoft Docs
+title: Dağıtılmış tablolar Tasarım Kılavuzu
 description: Azure SQL veri ambarı 'nda karma dağıtılan ve hepsini bir kez deneme dağıtılmış tablolar tasarlamaya yönelik öneriler.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4b322415592a7202387cb6776d2c040cda765b27
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479344"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685470"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda dağıtılmış tablo tasarlamaya yönelik kılavuz
 Azure SQL veri ambarı 'nda karma dağıtılan ve hepsini bir kez deneme dağıtılmış tablolar tasarlamaya yönelik öneriler.
@@ -112,8 +113,8 @@ Doğru sorgu sonucu sorgularının elde etmek için verileri bir Işlem düğüm
 
 Veri hareketini en aza indirmek için şu şekilde bir dağıtım sütunu seçin:
 
-- `JOIN`, ,,`GROUP BY`Ve yan`HAVING` tümcelerinde kullanılır. `DISTINCT` `OVER` İki büyük olgu tablosunun sık birleşme durumunda, her iki tabloyu da birleştirme sütunlarından birine dağıttığınızda sorgu performansı artar.  Bir tablo birleşimlerde kullanılmazsa, tabloyu `GROUP BY` yan tümcesindeki sık kullanılan bir sütuna dağıtmayı düşünün.
-- `WHERE` Yan *tümcelerde kullanılmaz.* Bu, sorguyu tüm dağıtımların çalıştırılmadığından daraltabilirdi. 
+- `JOIN`, `GROUP BY`, `DISTINCT`, `OVER`ve `HAVING` yan tümcelerinde kullanılır. İki büyük olgu tablosunun sık birleşme durumunda, her iki tabloyu da birleştirme sütunlarından birine dağıttığınızda sorgu performansı artar.  Bir tablo birleşimlerde kullanılmazsa, tabloyu `GROUP BY` yan tümcesindeki sık kullanılan bir sütuna dağıtmayı düşünün.
+- `WHERE` yan tümcelerinde *kullanılmaz.* Bu, sorguyu tüm dağıtımların çalıştırılmadığından daraltabilirdi. 
 - Bir tarih sütunu *değil* . WHERE yan tümceleri genellikle tarihe göre filtreleyerek.  Bu durumda, tüm işleme yalnızca birkaç dağıtımda çalıştırılabilir.
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Sütunlardan hiçbiri iyi bir dağıtım sütunu olmadığında yapmanız gerekenler
@@ -123,7 +124,7 @@ Sütunlarınızın hiçbirinde bir dağıtım sütunu için yeterli sayıda fark
 Karma olarak dağıtılan bir tablo tasarladıktan sonra, sonraki adım tabloya veri yüklemek olur.  Yükleme Kılavuzu için bkz. [yüklemeye genel bakış](sql-data-warehouse-overview-load.md). 
 
 ## <a name="how-to-tell-if-your-distribution-column-is-a-good-choice"></a>Dağıtım sütunlarınızın iyi bir seçenek olup olmadığını nasıl söyleyeceğinizi
-Veriler karma olarak dağıtılmış bir tabloya yüklendikten sonra, satırların 60 dağıtımları arasında ne kadar eşit dağıtıldığını görmek için işaretleyin. Dağıtım başına satır sayısı, performans üzerinde belirgin bir etki olmadan% 10 ' a kadar farklılık gösterebilir. 
+Veriler karma olarak dağıtılmış bir tabloya yüklendikten sonra, satırların 60 dağıtımları arasında ne kadar eşit dağıtıldığını görmek için işaretleyin. Dağıtım başına satır sayısı, performans üzerinde belirgin bir etki olmadan %10 ' a kadar farklılık gösterebilir. 
 
 ### <a name="determine-if-the-table-has-data-skew"></a>Tabloda veri eğriliği olup olmadığını belirleme
 Veri eğriliğini denetlemeye yönelik hızlı bir yol [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)kullanmaktır. Aşağıdaki SQL kodu, 60 dağıtımların her birinde depolanan tablo satırı sayısını döndürür. Dengeli performans için, dağıtılmış tablodaki satırların tüm dağıtımlarla eşit olarak yayılmalıdır.
@@ -133,7 +134,7 @@ Veri eğriliğini denetlemeye yönelik hızlı bir yol [DBCC PDW_SHOWSPACEUSED](
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-Hangi tabloların% 10 ' dan fazla veri eğriliğini olduğunu belirlemek için:
+Hangi tabloların %10 ' dan fazla veri eğriliğini olduğunu belirlemek için:
 
 1. [Tablolara genel bakış](sql-data-warehouse-tables-overview.md#table-size-queries) makalesinde gösterilen dbo. vtablesize görünümünü oluşturun.  
 2. Aşağıdaki sorguyu çalıştırın:
@@ -161,7 +162,7 @@ Bir JOIN sırasında veri hareketini önlemek için:
 - Birleşime dahil olan tabloların, birleşime katılan sütunlardan **birinde** karma dağıtılmış olması gerekir.
 - JOIN sütunlarının veri türleri her iki tablo arasında aynı olmalıdır.
 - Sütunlar bir Equals işleci ile birleştirilmelidir.
-- JOIN türü bir `CROSS JOIN`olamaz.
+- JOIN türü bir `CROSS JOIN`olmayabilir.
 
 Sorguların veri hareketi yaşamadığını görmek için sorgu planına bakabilirsiniz.  
 

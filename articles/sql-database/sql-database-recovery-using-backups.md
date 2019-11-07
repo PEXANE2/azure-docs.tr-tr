@@ -1,5 +1,5 @@
 ---
-title: Bir Azure SQL veritabanını yedekten geri yükleme | Microsoft Docs
+title: Bir Azure SQL veritabanını yedekten geri yükleme
 description: Azure SQL veritabanı 'nı 35 güne kadar geri almanıza olanak sağlayan bir noktadan noktaya geri yükleme hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: b858776d8309be94a0dd64f994a9e34e589d3c49
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 799926eeb6a508ea04b879231625cf321e95d043
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750456"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687546"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Otomatik veritabanı yedeklemeleri kullanarak bir Azure SQL veritabanını kurtarma
 
-Varsayılan olarak, Azure SQL veritabanı yedeklemeleri coğrafi olarak çoğaltılan BLOB depolama alanında (RA-GRS depolama türü) depolanır. [Otomatik veritabanı yedeklemeleri](sql-database-automated-backups.md)kullanılarak veritabanı kurtarma için aşağıdaki seçenekler kullanılabilir. Yapabilecekleriniz:
+Varsayılan olarak, Azure SQL veritabanı yedeklemeleri coğrafi olarak çoğaltılan BLOB depolama alanında (RA-GRS depolama türü) depolanır. [Otomatik veritabanı yedeklemeleri](sql-database-automated-backups.md)kullanılarak veritabanı kurtarma için aşağıdaki seçenekler kullanılabilir. Şunları yapabilirsiniz:
 
 - Aynı SQL veritabanı sunucusunda, bekletme dönemi içinde belirli bir zaman noktasına kurtarılan yeni bir veritabanı oluşturun.
 - Aynı SQL veritabanı sunucusunda bir veritabanı oluşturun ve silinen bir veritabanının silme zamanına kurtarıldı.
@@ -145,7 +145,7 @@ Azure portal, yeni bir tek veya yönetilen örnek veritabanı oluşturur ve kull
 
 Seçtiğiniz bölgedeki ve sunucudaki Azure portal tek bir SQL veritabanını coğrafi olarak geri yüklemek için şu adımları izleyin:
 
-1. **Panodan**, **Ekle**  > **SQL veritabanı oluştur**' u seçin. **Temel bilgiler** sekmesinde, gerekli bilgileri girin.
+1. **Panodan**, **Ekle** > **SQL veritabanı oluştur**' u seçin. **Temel bilgiler** sekmesinde, gerekli bilgileri girin.
 2. **Ek ayarlar**' ı seçin.
 3. **Mevcut verileri kullan**için **Yedekle**' yi seçin.
 4. **Yedekleme**için, kullanılabilir coğrafi geri yükleme yedeklemeleri listesinden bir yedekleme seçin.
@@ -222,7 +222,7 @@ Yönetilen örnek veritabanını geri yüklemek için bkz. [restore-Azsqlınstan
 
 REST API kullanarak tek veya havuza alınmış bir veritabanını geri yüklemek için:
 
-| eklentisi | Açıklama |
+| API | Açıklama |
 | --- | --- |
 | [REST (createMode = kurtarma)](https://docs.microsoft.com/rest/api/sql/databases) |Bir veritabanını geri yükler. |
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](https://docs.microsoft.com/rest/api/sql/operations) |Geri yükleme işlemi sırasında durumu döndürür. |

@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş tehdit koruması
+title: Microsoft Defender Gelişmiş tehdit koruması-Azure Güvenlik Merkezi
 description: Bu belge, Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş tehdit koruması arasındaki tümleştirmeyi tanıtır.
 services: security-center
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 6ceed914d1c69ccdfce5d7acb6dcfc1afc9ef868
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 46b9fe5c6a038aa98cf8df64c40bf8ea1747efec
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819896"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663604"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş tehdit koruması
 
@@ -95,7 +95,7 @@ Anonim trafiği engelleyen bir ara sunucu veya güvenlik duvarınız varsa, Micr
 
 Bir zararsız Microsoft Defender ATP test uyarısı oluşturmak için:
 
-1. Uzak Masaüstü 'Nü kullanarak bir Windows Server 2012 R2 VM 'sine veya Windows Server 2016 sanal makinesine erişin.  Bir komut istemi penceresi açın.
+1. Uzak Masaüstü 'Nü kullanarak bir Windows Server 2012 R2 VM 'sine veya Windows Server 2016 sanal makinesine erişin. Bir komut istemi penceresi açın.
 
 2. Komut isteminde aşağıdaki komutu kopyalayın ve çalıştırın. Komut Istemi penceresi otomatik olarak kapatılacak.
 
@@ -107,7 +107,7 @@ Bir zararsız Microsoft Defender ATP test uyarısı oluşturmak için:
 
 3. Komut başarılı olursa, Azure Güvenlik Merkezi panosunda ve Microsoft Defender ATP portalında yeni bir uyarı görürsünüz. Bu uyarının görünmesi birkaç dakika sürebilir.
 
-4. Güvenlik Merkezi 'nde uyarıyı gözden geçirmek için, **güvenlik uyarıları** >  **şüpheli PowerShell komut satırı**' na gidin.
+4. Güvenlik Merkezi 'nde uyarıyı gözden geçirmek için **güvenlik uyarıları** > **şüpheli PowerShell komut satırı**' na gidin.
 
 5. Araştırma penceresinde, Microsoft Defender ATP portalına gitmek için bağlantıyı seçin.
 

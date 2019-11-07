@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Merkezi 'nde makinelerinizi ve uygulamalarınızı koruma | Microsoft Docs
+title: Azure Güvenlik Merkezi 'nde makinelerinizi ve uygulamalarınızı koruyun
 description: Bu belge, güvenlik merkezi 'ndeki, sanal makinelerinizi ve bilgisayarlarınızı ve Web uygulamalarınızı ve App Service ortamlarınızı korumanıza yardımcı olan önerilere yöneliktir.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 2317d0206e3fc4a342606d17c172ac42cbe82870
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 803e64c9df1b52a33a1b50714f77b005032bf200
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520683"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686346"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde makinelerinizi ve uygulamalarınızı koruma
 Azure Güvenlik Merkezi, Azure kaynaklarınızın, Azure olmayan sunucularınızın ve sanal makinelerinizin güvenlik durumunu analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur. Öneriler Azure Kaynak türleri için geçerlidir: sanal makineler (VM 'Ler) ve bilgisayarlar, uygulamalar, ağ, SQL ve kimlik ve erişim.
@@ -153,7 +153,7 @@ Bu listede temsil edilen üç tür simge vardır:
 
 2. Önerinin açıklamasını ve sağlıksız kaynakların, sağlıklı kaynakların ve taranmamış kaynakların bir listesini görmek için bir öneri seçin.
 
-   - **Geçirilen değerlendirmeler** sütununun altında, geçirilen değerlendirmelerin listesi bulunur.  Bu değerlendirmelerin önem derecesi her zaman yeşildir.
+   - **Geçirilen değerlendirmeler** sütununun altında, geçirilen değerlendirmelerin listesi bulunur. Bu değerlendirmelerin önem derecesi her zaman yeşildir.
 
    - Değerlendirmede bir açıklama, sağlıksız ve sağlıklı kaynakların bir listesi ve taranmamış kaynakların bir listesi için listeden bir geçmiş değerlendirmesi seçin. Sağlıksız kaynaklar için bir sekme bulunur, ancak bu liste, değerlendirme başarılı olduğu için her zaman boştur.
 
@@ -198,7 +198,7 @@ Microsoft Monitoring Agent yüklemek için tüm mevcut ölçek kümelerini ayarl
 |İşlem kaynakları (Batch)|5|Toplu Iş hesaplarında tanılama günlüklerini etkinleştirme|Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. |
 |İşlem kaynakları (Olay Hub 'ı)|5|Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir|Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. |
 |İşlem kaynakları (Logic Apps)|5|Logic Apps tanılama günlüklerini etkinleştirme|Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. |
-|İşlem kaynakları (Service Fabric)|15|ClusterProtectionLevel özelliğini EncryptAndSign olarak ayarlayın Service Fabric|Service Fabric, birincil küme sertifikası kullanarak düğümden düğüme iletişim için üç koruma düzeyi (None, Sign ve EncryptAndSign) sağlar.  Tüm düğümden düğüme mesajların şifrelendiğinden ve dijital olarak imzalandığından emin olmak için koruma düzeyini ayarlayın. |
+|İşlem kaynakları (Service Fabric)|15|ClusterProtectionLevel özelliğini EncryptAndSign olarak ayarlayın Service Fabric|Service Fabric, birincil küme sertifikası kullanarak düğümden düğüme iletişim için üç koruma düzeyi (None, Sign ve EncryptAndSign) sağlar. Tüm düğümden düğüme mesajların şifrelendiğinden ve dijital olarak imzalandığından emin olmak için koruma düzeyini ayarlayın. |
 |İşlem kaynakları (hizmet veri yolu)|1|Service Bus ad alanından RootManageSharedAccessKey hariç tüm yetkilendirme kurallarını kaldır |Service Bus istemcileri, bir ad alanındaki tüm kuyruklara ve konulara erişim sağlayan bir ad alanı düzeyinde erişim ilkesi kullanmamalıdır. En az ayrıcalık güvenlik modeliyle uyum sağlamak için, yalnızca belirli varlığa erişim sağlamak üzere kuyruklar ve konular için varlık düzeyinde erişim ilkeleri oluşturmanız gerekir.|
 |İşlem kaynakları (Olay Hub 'ı)|1|RootManageSharedAccessKey hariç tüm yetkilendirme kuralları, Olay Hub 'ı ad alanından kaldırılmalıdır|Olay Hub 'ı istemcileri, bir ad alanındaki tüm kuyruklara ve konulara erişim sağlayan bir ad alanı düzeyinde erişim ilkesi kullanmamalıdır. En az ayrıcalık güvenlik modeliyle uyum sağlamak için, yalnızca belirli varlığa erişim sağlamak üzere kuyruklar ve konular için varlık düzeyinde erişim ilkeleri oluşturmanız gerekir.|
 |İşlem kaynakları (Olay Hub 'ı)|5|Olay Hub 'ı varlığındaki yetkilendirme kuralları tanımlanmalıdır|En az ayrıcalıklı erişim sağlamak için Olay Hub 'ı varlığındaki yetkilendirme kurallarını denetleyin.|

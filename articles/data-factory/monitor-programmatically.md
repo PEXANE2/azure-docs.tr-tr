@@ -1,5 +1,5 @@
 ---
-title: Programlı olarak bir Azure Data Factory izleme | Microsoft Docs
+title: Programlı olarak bir Azure Data Factory izleme
 description: Farklı yazılım geliştirme setleri (SDK 'lar) kullanarak bir veri fabrikasında bir işlem hattını izlemeyi öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 5c1f64282f1e0b1f225bcad0935c4c9b9a0f96b4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f9e85a2660ffe1088a9897e9936b6fd0360f87d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141048"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684606"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programlı olarak bir Azure Data Factory izleme
 Bu makalede, farklı yazılım geliştirme setleri (SDK 'lar) kullanılarak bir veri fabrikasında bir işlem hattının nasıl izleneceği açıklanır. 
@@ -25,7 +25,7 @@ Bu makalede, farklı yazılım geliştirme setleri (SDK 'lar) kullanılarak bir 
 
 ## <a name="data-range"></a>Veri aralığı
 
-Data Factory yalnızca 45 gün boyunca işlem hattı çalıştırma verilerini depolar. Data Factory işlem hattı çalıştırmaları hakkında daha fazla bilgi için bkz. Örneğin, PowerShell komutu `Get-AzDataFactoryV2PipelineRun` ile isteğe bağlı `LastUpdatedAfter` ve `LastUpdatedBefore` parametreler için en fazla tarih yok. Ancak, bir önceki yıla ait veriler için sorgulama yaparsanız sorgu bir hata döndürmez, ancak yalnızca son 45 günden alınan işlem hattı çalıştırma verilerini döndürür.
+Data Factory yalnızca 45 gün boyunca işlem hattı çalıştırma verilerini depolar. Data Factory işlem hattı çalıştırmaları hakkında verileri programlama yoluyla sorgulayıp (örneğin, PowerShell komutuyla `Get-AzDataFactoryV2PipelineRun`, isteğe bağlı `LastUpdatedAfter` ve `LastUpdatedBefore` parametreleri için en fazla tarih yoktur. Ancak, bir önceki yıla ait veriler için sorgulama yaparsanız sorgu bir hata döndürmez, ancak yalnızca son 45 günden alınan işlem hattı çalıştırma verilerini döndürür.
 
 İşlem hattı çalıştırma verilerini 45 günden fazla süreyle kalıcı hale getirmek istiyorsanız, [Azure izleyici](monitor-using-azure-monitor.md)ile kendi tanılama günlük kaydını ayarlayın.
 

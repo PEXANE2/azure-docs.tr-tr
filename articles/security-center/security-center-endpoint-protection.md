@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Merkezi 'nde Endpoint Protection çözümlerini bulma ve sistem durumu değerlendirmesi | Microsoft Docs
+title: Azure Güvenlik merkezlerindeki Endpoint Protection önerileri
 description: Endpoint Protection çözümlerinin nasıl keşfedildiği ve sağlıklı olduğu nasıl tanımlandığı.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
 ms.author: memildin
-ms.openlocfilehash: 8de0caa5db4a7e1d97c7d6c055bcb01fed635821
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: dad8c6173495d11abd6c9f5babb4ef8bc789e4ce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202265"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686423"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Endpoint Protection değerlendirmesi ve önerileri
 
@@ -29,29 +29,29 @@ Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](https
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Güvenlik Merkezi, [Get-mpcomputerstatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) çalıştırıldığında ve Result **amserviceenabled olduğunda **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir. Yanlýþ**
+* Güvenlik Merkezi, [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) çalıştırıldığında ve Result **amserviceenabled** olduğunda **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir.
 
 * Güvenlik Merkezi, [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) çalıştırıldığında ve aşağıdakilerden biri gerçekleştiğinde **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** işlemi yapmanızı önerir:
 
   * Aşağıdaki özelliklerden herhangi biri false şeklindedir:
 
-     **AMServiceEnabled**
+    **AMServiceEnabled**
 
-     **AntispywareEnabled**
+    **AntispywareEnabled**
 
-     **RealTimeProtectionEnabled**
+    **RealTimeProtectionEnabled**
 
-     **BehaviorMonitorEnabled**
+    **BehaviorMonitorEnabled**
 
-     **Ioavprotectionenabled**
+    **Ioavprotectionenabled**
 
-     **OnAccessProtectionEnabled**
+    **OnAccessProtectionEnabled**
 
   * Aşağıdaki özelliklerden biri veya her ikisi 7 veya daha fazla.
 
-     **AntispywareSignatureAge**
+    **AntispywareSignatureAge**
 
-     **AntivirusSignatureAge**
+    **AntivirusSignatureAge**
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
@@ -61,23 +61,23 @@ Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](https
 
     * Aşağıdaki özelliklerden en az biri false şeklindedir:
 
-       **AMServiceEnabled**
+            **AMServiceEnabled**
+
+            **AntispywareEnabled**
     
-       **AntispywareEnabled**
+            **RealTimeProtectionEnabled**
     
-       **RealTimeProtectionEnabled**
+            **BehaviorMonitorEnabled**
     
-       **BehaviorMonitorEnabled**
+            **IoavProtectionEnabled**
     
-       **Ioavprotectionenabled**
-    
-       **OnAccessProtectionEnabled**
+            **OnAccessProtectionEnabled**
           
     * Aşağıdaki Imza güncelleştirmelerinden biri veya her ikisi 7 ' ye eşit veya daha büyükse. 
 
-       **AntispywareSignatureAge**
+            **AntispywareSignatureAge**
     
-       **AntivirusSignatureAge**
+            **AntivirusSignatureAge**
 
 ## <a name="trend-micro"></a>Trend Micro
 
@@ -94,7 +94,7 @@ Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"E
 
 * **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-Or
+Veya
 
 * **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
@@ -102,17 +102,17 @@ Or
 
 Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** yapmanızı önerir:
 
-* Symantec sürümünü denetle > = 12:  Kayıt defteri konumu: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion "-değer" PRODUCTVERSION "**
+* Symantec sürümünü denetleyin > = 12: kayıt defteri konumu: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion "-değer" PRODUCTVERSION "**
 
-* Gerçek zamanlı koruma durumunu denetleyin: **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
+* Gerçek zamanlı koruma durumunu denetle: **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
 
-* Imza güncelleştirme durumunu denetle: **HKLM\Software\Symantec\Symantec uç noktası Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 gün**
+* Imza güncelleştirme durumunu denetle: **HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 gün**
 
-* Tam tarama durumunu denetleyin: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\currentversion\public-opstate\lastbaşarılı fulscandatetime < = 7 gün**
+* Tam tarama durumunu denetle: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\currentversion\public-opstate\lastbaşarılı fulscandatetime < = 7 gün**
 
-* Symantec 12 için imza sürümüne ait imza sürüm numarası yolunu bul: **Kayıt defteri yolları + "CurrentVersion\SharedDefs"-değer "SRTSP"** 
+* Symantec 12 için imza sürümüne ait imza sürüm numarası yolunu bul: **kayıt defteri yolları + "CurrentVersion\SharedDefs"-değer "SRTSP"** 
 
-* Symantec 14 için imza sürümü yolu: **Kayıt defteri yolları + "CurrentVersion\SharedDefs\SDSDefs"-değer "SRTSP"**
+* Symantec 14 için imza sürümü yolu: **kayıt defteri yolları + "CurrentVersion\SharedDefs\SDSDefs"-Value "SRTSP"**
 
 Kayıt defteri yolları:
 
@@ -131,7 +131,7 @@ Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"m
 
 * McAfee sürümü: **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion > = 10**
 
-* Imza sürümünü bul: **HKLM: \ Software\McAfee\AVSolution\DS\DS-value "dwContentMajorVersion"**
+* Imza bulma sürümü: **HKLM: \ Software\McAfee\AVSolution\DS\DS-value "dwContentMajorVersion"**
 
 * Imza bulma tarihi: **HKLM: \ Software\McAfee\AVSolution\DS\DS-value "szContentCreationDate" > = 7 gün**
 
@@ -143,7 +143,7 @@ Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"E
 
 - **/Opt/iSEC/ens/threatprevention/bin/isecav** dosyası çıkıyor 
 
-- **"/opt/iSEC/ens/threatprevention/bin/isecav--Version"** çıkışı: **McAfee Name = Linux tehdit önleme ve McAfee sürümü için McAfee Endpoint Security > = 10**
+- **"/opt/iSEC/ens/threatprevention/bin/isecav--Version"** çıkışı: **McAfee Name = Linux tehdit önleme ve McAfee sürümü Için mcafee Endpoint Security > = 10**
 
 Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** yapmanızı önerir:
 
@@ -163,23 +163,22 @@ Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"E
 
 Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** yapmanızı önerir:
 
-- **"/opt/Sophos-av/bin/savlog--maxAge = 7 | GREP-i "zamanlanmış tarama. "\* | tail-1" tamamlandı**, bir değer döndürüyor   
+- **"/opt/Sophos-av/bin/savlog--maxAge = 7 | GREP-i "zamanlanmış tarama.\* tamamlandı "| Tail-1 "** , bir değer döndürür
 
-- **"/opt/Sophos-av/bin/savlog--maxAge = 7 | grep "tarama tamamlandı"** | Tail-1 ", bir değer döndürür   
+- **"/opt/Sophos-av/bin/savlog--maxAge = 7 | grep "tarama tamamlandı"** | Tail-1 ", bir değer döndürür
 
 - **"/opt/Sophos-av/bin/savdstatus--LastUpdate"** , < = 7 gün olması gereken LastUpdate döndürür 
 
 - " **/opt/Sophos-av/bin/savdstatus-v"** , **"erişim taraması çalışıyor"** olarak eşit 
 
-- **"/opt/Sophos-av/bin/savconfig LiveProtection al"** işlevi etkin  
+- **"/opt/Sophos-av/bin/savconfig LiveProtection al"** işlevi etkin
 
-## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
+## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Microsoft kötü amaçlı yazılımdan koruma uzantısı günlükleri şurada bulunabilir:  
-**%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware (veya PaaSAntimalware) \1.5.5.x (sürüm #) \CommandExecution.log**
+Microsoft kötü amaçlı yazılımdan koruma uzantısı günlükleri şurada bulunabilir: **%systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware (veya PaaSAntimalware) \1.5.5.x (sürüm #) \CommandExecution.log**
 
 ### <a name="support"></a>Destek
 
-Daha fazla yardım için [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Ya da bir Azure destek olayı dosyası. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+Daha fazla yardım için [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Ya da bir Azure destek olayı dosyası. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.

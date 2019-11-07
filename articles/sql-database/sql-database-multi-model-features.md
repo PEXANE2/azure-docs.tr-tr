@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı çok modelli özellikleri | Microsoft Docs
+title: Azure SQL veritabanı çok modelli yetenekler
 description: Azure SQL veritabanı, aynı veritabanında birden çok veri modeli ile çalışmanıza olanak sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: e319daf322d688828c7d05d78dacd2359273223f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7156b9923c9cb98ae3dde143c98eb32a6eb11a9c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567136"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687737"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL veritabanı 'nın çok modelli özellikleri
 
@@ -34,7 +34,7 @@ Aşağıdaki durumlarda Azure SQL veritabanı 'nın birden çok modelli yetenekl
 ## <a name="overview"></a>Genel Bakış
 
 Azure SQL aşağıdaki çok modelli özellikleri sağlar:
-- [Grafik özellikleri](#graph-features) , verilerinizi düğüm ve kenar kümesi olarak temsil ediyor ve Graf verilerini sorgulamak için Graph `MATCH` işleciyle geliştirilmiş standart Transact-SQL sorguları kullanmanızı sağlar.
+- [Grafik özellikleri](#graph-features) , verilerinizi düğüm ve kenar kümesi olarak temsil etmeniz ve grafik verilerini sorgulamak için Graph `MATCH` işleciyle geliştirilmiş standart Transact-SQL sorguları kullanmanızı sağlar.
 - [JSON özellikleri](#json-features) , JSON belgelerini tablolara yerleştirmeniz, ILIŞKISEL verileri JSON belgelerine dönüştürebilmeniz ve tam tersi de sağlar. Sorguları iyileştirmek için JSON işlevleriyle geliştirilmiş standart Transact-SQL dilini kullanabilir ve kümelenmemiş dizinler, columnstore dizinleri ya da bellek için iyileştirilmiş tablolar kullanabilirsiniz.
 - [Uzamsal Özellikler](#spatial-features) , coğrafi ve geometrik verileri depolamanıza, uzamsal dizinleri kullanarak dizinlemenize ve uzamsal sorgular kullanarak verileri almanıza olanak sağlar.
 - XML [özellikleri](#xml-features) , veritabanınıza XML verilerini depolayıp DIZINLERINIZI ve XML verileriyle çalışmak Için yerel XQuery/XPath işlemlerini kullanmanızı sağlar. Azure SQL veritabanı, XML verilerini işleyen özelleştirilmiş yerleşik XML sorgu motoruna sahiptir.
@@ -132,7 +132,7 @@ CREATE TABLE Collection (
 )
 ```
 
-Bu anahtar-değer yapısını, herhangi bir kısıtlama olmadan gereksinimlerinize uyacak şekilde özelleştirebilirsiniz. Örnek olarak, değeri `nvarchar(max)` türü yerine XML belgesi olabilir. değer JSON belgesi ise, JSON içeriğinin geçerliliğini doğrulayan bir kısıtlama koyabilirsiniz. `CHECK` Ek sütunlarda bir anahtarla ilgili herhangi bir sayıda değer koyabilirsiniz, veri erişimini basitleştirmek ve iyileştirmek için hesaplanmış sütunlar ve dizinler ekleyebilirsiniz, daha iyi performans sağlamak için tabloyu bellek/en iyileştirilmiş şema tablosu olarak tanımlayın, vb.
+Bu anahtar-değer yapısını, herhangi bir kısıtlama olmadan gereksinimlerinize uyacak şekilde özelleştirebilirsiniz. Örnek olarak, değer JSON belgesi ise `nvarchar(max)` türü yerine XML belgesi olabilir, JSON içeriğinin geçerliliğini doğrulayan `CHECK` kısıtlaması koyabilirsiniz. Ek sütunlarda bir anahtarla ilgili herhangi bir sayıda değer koyabilirsiniz, veri erişimini basitleştirmek ve iyileştirmek için hesaplanmış sütunlar ve dizinler ekleyebilirsiniz, daha iyi performans sağlamak için tabloyu bellek/en iyileştirilmiş şema tablosu olarak tanımlayın, vb.
 
 Bkz. [BWin 'Nın bellek ıçı OLTP kullanarak](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) , bir saniyede 1.200.000 toplu işi elde eden bir örnek olarak, ilişkisel modelin, içinde anahtar-değer çifti çözümü olarak nasıl etkili bir şekilde kullanılabileceğini gösteren ASP.NET önbelleğe alma çözümü Sonuç.
 

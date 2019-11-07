@@ -1,5 +1,5 @@
 ---
-title: Ölçekli bulut veritabanları arasında raporlama | Microsoft Docs
+title: Ölçekli bulut veritabanları genelinde raporlama
 description: yatay bölümler üzerinde esnek sorgular ayarlama
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 1416cbdc29d355e2ed83737140b46306de734127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37b19cd86cd13dd2bdc8b3a38abf61898b81d01b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568568"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690374"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Ölçekli bulut veritabanları genelinde raporlama (Önizleme)
 
@@ -28,7 +28,7 @@ Hızlı başlangıç için bkz. [ölçekli bulut veritabanları genelinde raporl
 
 Parçalı olmayan veritabanları için bkz. [farklı şemalarla bulut veritabanları genelinde sorgulama](sql-database-elastic-query-vertical-partitioning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Elastik veritabanı istemci kitaplığını kullanarak bir parça haritası oluşturun. bkz. parça [eşleme yönetimi](sql-database-elastic-scale-shard-map-management.md). Ya da [elastik veritabanı araçlarını kullanmaya başlama](sql-database-elastic-scale-get-started.md)bölümünde örnek uygulamayı kullanın.
 * Alternatif olarak, bkz. [var olan veritabanlarını ölçekli veritabanlarına geçirme](sql-database-elastic-convert-to-use-elastic-tools.md).
@@ -40,9 +40,9 @@ Parçalı olmayan veritabanları için bkz. [farklı şemalarla bulut veritabanl
 Bu deyimler, esnek sorgu veritabanında bulunan, parçalı veri katmanınızın meta veri temsilini oluşturur.
 
 1. [ANA ANAHTAR OLUŞTUR](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [VERITABANI KAPSAMLI KIMLIK BILGISI OLUŞTUR](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [DIŞ VERI KAYNAĞI OLUŞTUR](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [DIŞ TABLO OLUŞTUR](https://msdn.microsoft.com/library/dn935021.aspx)
+2. [VERITABANı KAPSAMLı KIMLIK BILGISI OLUŞTUR](https://msdn.microsoft.com/library/mt270260.aspx)
+3. [DıŞ VERI KAYNAĞı OLUŞTUR](https://msdn.microsoft.com/library/dn935022.aspx)
+4. [DıŞ TABLO OLUŞTUR](https://msdn.microsoft.com/library/dn935021.aspx)
 
 ## <a name="11-create-database-scoped-master-key-and-credentials"></a>1,1 veritabanı kapsamlı ana anahtar ve kimlik bilgileri oluşturma
 
@@ -54,7 +54,7 @@ Kimlik bilgisi, uzak veritabanlarınıza bağlanmak için elastik sorgu tarafın
     [;]
 
 > [!NOTE]
-> *"\<Kullanıcıadı\>"* nın hiçbir *\@"ServerName"* sonekini içermediğinden emin olun.
+> *"\<Kullanıcı adı\>"* ' nın herhangi bir *"\@ServerName"* sonekini içermediğinden emin olun.
 
 ## <a name="12-create-external-data-sources"></a>1,2 dış veri kaynakları oluşturma
 
@@ -136,19 +136,19 @@ Dış tabloları bırakmak için:
 
 ### <a name="remarks"></a>Açıklamalar
 
-Veri\_kaynağı yan tümcesi, dış tablo için kullanılan dış veri kaynağını (bir parça eşlemesi) tanımlar.  
+DATA\_SOURCE yan tümcesi dış tablo için kullanılan dış veri kaynağını (bir parça eşlemesi) tanımlar.  
 
-Şema\_adı ve nesne\_adı yan tümceleri, dış tablo tanımını farklı bir şemadaki bir tabloyla eşleştirir. Atlanırsa, uzak nesne şeması "dbo" olarak kabul edilir ve adı tanımlanmakta olan dış tablo adıyla aynı kabul edilir. Bu, uzak tablonuzun adı, dış tabloyu oluşturmak istediğiniz veritabanında zaten alınmış ise yararlıdır. Örneğin, genişleme veri katmanınızda katalog görünümlerinin veya DMV 'nin toplam görünümünü almak için bir dış tablo tanımlamak istiyorsunuz. Katalog görünümleri ve DMVs yerel olarak zaten mevcut olduğundan, dış tablo tanımı için adlarını kullanamazsınız. Bunun yerine, farklı bir ad kullanın ve şema\_adı ve/veya nesne\_adı yan tümcelerinde katalog görünümünün veya DMV 'nin adını kullanın. (Aşağıdaki örneğe bakın.)
+ŞEMA\_adı ve nesne\_adı yan tümceleri, dış tablo tanımını farklı bir şemadaki bir tabloyla eşleştirir. Atlanırsa, uzak nesne şeması "dbo" olarak kabul edilir ve adı tanımlanmakta olan dış tablo adıyla aynı kabul edilir. Bu, uzak tablonuzun adı, dış tabloyu oluşturmak istediğiniz veritabanında zaten alınmış ise yararlıdır. Örneğin, genişleme veri katmanınızda katalog görünümlerinin veya DMV 'nin toplam görünümünü almak için bir dış tablo tanımlamak istiyorsunuz. Katalog görünümleri ve DMVs yerel olarak zaten mevcut olduğundan, dış tablo tanımı için adlarını kullanamazsınız. Bunun yerine, farklı bir ad kullanın ve şema\_adı ve/veya nesne\_adı yan tümcelerinde katalog görünümünün veya DMV 'nin adını kullanın. (Aşağıdaki örneğe bakın.)
 
 DAĞıTıM yan tümcesi, bu tablo için kullanılan veri dağılımını belirtir. Sorgu işlemcisi, en verimli sorgu planlarını oluşturmak için DAĞıTıM yan tümcesinde belirtilen bilgileri kullanır.
 
 1. Parçalama, verilerin veritabanları arasında yatay olarak bölümlenmesi **anlamına gelir** . Veri dağıtımına ilişkin bölümlendirme anahtarı **< sharding_column_name >** parametresidir.
 2. **Çoğaltılan** , tablonun aynı kopyalarının her veritabanında bulunduğu anlamına gelir. Çoğaltmalarınızın veritabanları genelinde özdeş olmasını sağlamak sizin sorumluluğunuzdadır.
-3. Hepsini bir kez deneme, bir uygulamaya bağımlı dağıtım yöntemi kullanılarak tablonun yatay olarak bölümlenmesi anlamına gelir. **\_**
+3. Hepsini bir **kez deneme\_** , tablonun bir uygulamaya bağımlı dağıtım yöntemi kullanılarak yatay olarak bölümlenmesi anlamına gelir.
 
-**Veri katmanı başvurusu**: Dış tablo DDL, bir dış veri kaynağını ifade eder. Dış veri kaynağı, dış tabloya, veri katmanınızda tüm veritabanlarını bulmak için gereken bilgileri sağlayan bir parça Haritası belirtir.
+**Veri katmanı başvurusu**: dış tablo DDL, bir dış veri kaynağını ifade eder. Dış veri kaynağı, dış tabloya, veri katmanınızda tüm veritabanlarını bulmak için gereken bilgileri sağlayan bir parça Haritası belirtir.
 
-### <a name="security-considerations"></a>Güvenlik konuları
+### <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Dış tabloya erişimi olan kullanıcılar, dış veri kaynağı tanımında verilen kimlik bilgileri altındaki temeldeki uzak tablolara otomatik olarak erişim elde edebilir. Dış veri kaynağının kimlik bilgileri aracılığıyla, ayrıcalıkların istenmeyen ayrıcalıklarından kaçının. Bir dış tablo için, normal bir tablo gibi verme veya Iptal etme kullanın.  
 
@@ -175,16 +175,16 @@ Aşağıdaki sorgu, ambarlar, siparişler ve sipariş satırları arasında üç
     group by w_id, o_c_id
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Uzak T-SQL yürütmesi için saklı yordam: SP\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Uzak T-SQL yürütmesi için saklı yordam: SP\_execute_remote
 
-Elastik sorgu Ayrıca, parçalara doğrudan erişim sağlayan bir saklı yordam de sunar. Saklı yordama [\_SP Execute \_Remote](https://msdn.microsoft.com/library/mt703714) adı verilir ve uzak veritabanlarında uzak saklı yordamları veya T-SQL kodu yürütmek için kullanılabilir. Aşağıdaki parametreleri alır:
+Elastik sorgu Ayrıca, parçalara doğrudan erişim sağlayan bir saklı yordam de sunar. Saklı yordama [\_uzaktan çalıştır\_](https://msdn.microsoft.com/library/mt703714) ve uzak veritabanlarında uzak saklı yordamları veya t-SQL kodu yürütmek için kullanılabilir. Aşağıdaki parametreleri alır:
 
 * Veri kaynağı adı (nvarchar): RDBMS türünde dış veri kaynağının adı.
-* Sorgu (nvarchar): Her parça üzerinde yürütülecek T-SQL sorgusu.
-* Parametre bildirimi (nvarchar)-isteğe bağlı: Sorgu parametresinde kullanılan parametreler için veri türü tanımlarına sahip dize (sp_executesql gibi).
-* Parametre değeri listesi-isteğe bağlı: Parametre değerlerinin virgülle ayrılmış listesi (sp_executesql gibi).
+* Sorgu (nvarchar): her parça üzerinde yürütülecek T-SQL sorgusu.
+* Parametre bildirimi (nvarchar)-isteğe bağlı: sorgu parametresinde kullanılan parametreler için veri türü tanımlarına sahip dize (sp_executesql gibi).
+* Parametre değeri listesi-isteğe bağlı: parametre değerlerinin virgülle ayrılmış listesi (sp_executesql gibi).
 
-SP\_Execute\_Remote, uzak veritabanlarında verilen T-SQL ifadesini yürütmek için çağırma parametrelerinde sağlanan dış veri kaynağını kullanır. Bu, shardmap Manager veritabanına ve uzak veritabanlarına bağlanmak için dış veri kaynağının kimlik bilgilerini kullanır.  
+SP\_Execute\_uzak veritabanlarında verilen T-SQL ifadesini yürütmek için çağırma parametrelerinde sağlanan dış veri kaynağını kullanır. Bu, shardmap Manager veritabanına ve uzak veritabanlarına bağlanmak için dış veri kaynağının kimlik bilgilerini kullanır.  
 
 Örnek:
 
@@ -211,7 +211,7 @@ Uygulamanızı, bı ve veri tümleştirme araçlarınızı, dış tablo tanımla
 * Dikey bölümleme öğreticisi için bkz. [çapraz veritabanı sorgusuna Başlarken (dikey bölümlendirme)](sql-database-elastic-query-getting-started-vertical.md).
 * Dikey olarak bölümlenmiş verilere yönelik sözdizimi ve örnek sorgular için bkz. [dikey olarak bölümlenmiş verileri sorgulama)](sql-database-elastic-query-vertical-partitioning.md)
 * Yatay bölümleme (parçalama) öğreticisi için bkz. [Yatay bölümleme (parçalama) için elastik sorgu ile çalışmaya](sql-database-elastic-query-getting-started.md)başlama.
-* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [\_SP Execute \_Remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
+* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png

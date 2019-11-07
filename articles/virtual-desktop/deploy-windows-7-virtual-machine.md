@@ -1,5 +1,5 @@
 ---
-title: Windows Virtual Desktop 'ta Windows 7 sanal makinesi dağıtma-Azure
+title: Windows 7 sanal makinesini dağıtma Windows sanal masaüstü-Azure
 description: Windows sanal masaüstü 'nde Windows 7 sanal makinesini yapılandırma ve dağıtma.
 services: virtual-desktop
 author: Heidilohr
@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 3a6fb67ce531ed8cc028d2d0a8dfc3022544efe0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 90b871c2b75f7ed40c290231ef822258c6b4e6d4
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947578"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606882"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows sanal masaüstü 'nde Windows 7 sanal makinesini dağıtma
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesi dağıtma
 
 Windows sanal masaüstü üzerinde bir Windows 7 sanal makinesi (VM) dağıtma işlemi, Windows 'un sonraki sürümlerini çalıştıran VM 'lerden biraz farklıdır. Bu kılavuzda, Windows 7 ' nin nasıl dağıtılacağı açıklanır.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, bir konak havuzu oluşturmak için [PowerShell ile konak havuzu oluşturma](create-host-pools-powershell.md) ' daki yönergeleri izleyin. Bundan sonra, Masaüstü uygulama grubuna bir veya daha fazla kullanıcı atamak için [Azure Marketi 'nde konak havuzları oluşturma](create-host-pools-azure-marketplace.md#optional-assign-additional-users-to-the-desktop-application-group) ' daki yönergeleri izleyin.
 
@@ -35,7 +35,7 @@ Windows sanal masaüstü 'nde Windows 7 VM ayarlamak için:
 5. SANAL makinenizde Windows Update gidin.
 6. Tüm Windows güncelleştirmelerini önemli kategoride yükler.
 7. Tüm Windows güncelleştirmelerini Isteğe bağlı kategoride (dil paketleri hariç) yükler. Bu, bu yönergeleri tamamlayabilmeniz için ihtiyaç duyduğunuz Uzak Masaüstü Protokolü 8,0 güncelleştirmesini ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)) yüklüyor.
-8. Yerel Grup İlkesi Düzenleyicisi açın ve **bilgisayar yapılandırması**' na gidin  > **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri**@no__t **-7 Uzak Masaüstü oturumu ana bilgisayarı**  > **uzak oturum ortamı**.
+8. Yerel Grup İlkesi Düzenleyicisi açın ve **bilgisayar yapılandırması** > **Yönetim Şablonları** > **Windows bileşenleri** ** > Uzak Masaüstü Hizmetleri > Uzak Masaüstü oturumu ana bilgisayarı** **uzak oturum ortamı** > .
 9. Uzak Masaüstü Protokolü 8,0 ilkesini etkinleştirin.
 10. Aşağıdaki komutu çalıştırarak sanal makineyi yeniden başlatın:
     

@@ -8,12 +8,12 @@ ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 16dd63e22182dedb4af97c2ef6238e6628778467
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 689b5aa0cd8a5fb310925b2c52baeec6860af0d5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485167"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607075"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama bilgi deposu oluşturma
 
@@ -87,7 +87,7 @@ Bu sihirbaz adımında Bilişsel Beceri bilişsel becerileri ile bir beceri olu�
 1. Bilişsel **Hizmetler Ekle**' yi genişletin. **Ücretsiz (sınırlı enzenginler)** varsayılan olarak seçilidir. Bu kaynağı, HotelReviews-Free. csv içindeki kayıt sayısı 19 ve bu ücretsiz kaynak günde en fazla 20 işlem sağladığından kullanabilirsiniz.
 1. Bilişsel **yetenekler ekleme**' yi genişletin.
 1. **Beceri adı**için `hotel-reviews-ss`girin.
-1. **Kaynak veri alanı**için **reviews_text*öğesini seçin.
+1. **Kaynak veri alanı**için **reviews_text**öğesini seçin.
 1. **Zenginleştirme ayrıntı düzeyi**için **sayfalar (5000 karakter öbekleri)** seçeneğini belirleyin
 1. Bu bilişsel becerileri seçin:
     + **Anahtar ifadeleri ayıklama**

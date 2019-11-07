@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı özellik kısıtlamaları | Microsoft Docs
+title: Azure SQL veritabanı özellik kısıtlamaları
 description: Azure SQL veritabanı özellik kısıtlamaları, veritabanınızdaki bilgilere erişim kazanmak için saldırganlar tarafından olabilecek özellikleri kısıtlayarak veritabanı güvenlerinizi geliştirir.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: f2fd6cb73428c69fbb27cb93377f851a4e06221d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: e9518065b2240d72698ed75f2fa8a7aed343b7bf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959128"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690053"
 ---
 # <a name="azure-sql-database-feature-restrictions"></a>Azure SQL veritabanı özellik kısıtlamaları
 
@@ -24,7 +24,7 @@ SQL Server saldırılarının yaygın bir kaynağı, veritabanı hakkında bilgi
 
 ## <a name="enabling-feature-restrictions"></a>Özellik kısıtlamalarını etkinleştirme
 
-Özellik kısıtlamalarını etkinleştirme, `sp_add_feature_restriction` saklı yordam kullanılarak şu şekilde yapılır:
+Özellik kısıtlamalarını etkinleştirme, aşağıdaki gibi `sp_add_feature_restriction` saklı yordamı kullanılarak yapılır:
 
 ```sql
 EXEC sp_add_feature_restriction <feature>, <object_class>, <object_name>
@@ -37,9 +37,9 @@ Aşağıdaki özellikler kısıtlanabilir:
 | N'ErrorMessages ' | Bu, kısıtlı olduğunda, hata iletisindeki tüm Kullanıcı verileri maskelenir. Bkz. [hata Iletileri Özellik kısıtlaması](#error-messages-feature-restriction) |
 | Nwaitfor '       | Kısıtlanmış olduğunda, komut herhangi bir gecikme olmadan hemen döndürülür. Bkz. [WAITFOR Özellik kısıtlaması](#waitfor-feature-restriction) |
 
-Değeri `object_class` , veya `object_name` `N'User'` veritabanındabirKullanıcıadıyadaroladıolupolmadığınıbelirtmekiçinyadaolabilir.`N'Role'`
+`object_class` değeri, `object_name` bir Kullanıcı adı ya da bir rol adı olup olmadığını belirtmek için `N'User'` veya `N'Role'` olabilir.
 
-Aşağıdaki örnek, kullanıcının `MyUser` tüm hata iletilerinin maskelenecek olmasına neden olur:
+Aşağıdaki örnek, Kullanıcı `MyUser` için tüm hata iletilerinin maskelenecek olmasına neden olur:
 
 ```sql
 EXEC sp_add_feature_restriction N'ErrorMessages', N'User', N'MyUser'
@@ -47,13 +47,13 @@ EXEC sp_add_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 
 ## <a name="disabling-feature-restrictions"></a>Özellik kısıtlamalarını devre dışı bırakma
 
-Özellik kısıtlamalarını devre dışı bırakmak, `sp_drop_feature_restriction` saklı yordam kullanılarak şu şekilde yapılır:
+Özellik kısıtlamalarını devre dışı bırakmak, aşağıdaki gibi `sp_drop_feature_restriction` saklı yordamı kullanılarak yapılır:
 
 ```sql
 EXEC sp_drop_feature_restriction <feature>, <object_class>, <object_name>
 ```
 
-Aşağıdaki örnek, Kullanıcı `MyUser`için hata iletisi maskeleme 'yi devre dışı bırakır:
+Aşağıdaki örnek, Kullanıcı `MyUser`için hata iletisi maskelemeyi devre dışı bırakır:
 
 ```sql
 EXEC sp_drop_feature_restriction N'ErrorMessages', N'User', N'MyUser'
@@ -61,13 +61,13 @@ EXEC sp_drop_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 
 ## <a name="viewing-feature-restrictions"></a>Özellik kısıtlamalarını görüntüleme
 
-`sys.sql_feature_restrictions` Görünüm, veritabanında geçerli olarak tanımlanmış tüm özellik kısıtlamalarını gösterir. Aşağıdaki sütunlara sahiptir:
+`sys.sql_feature_restrictions` görünümü veritabanında geçerli olarak tanımlanmış tüm özellik kısıtlamalarını gösterir. Aşağıdaki sütunlara sahiptir:
 
 | Sütun adı | Veri türü | Açıklama |
 |-------------|-----------|-------------|
-| sınıf       | nvarchar (128) | Kısıtlamanın uygulandığı nesne sınıfı |
+| sınıfı       | nvarchar (128) | Kısıtlamanın uygulandığı nesne sınıfı |
 | object      | nvarchar (256) | Kısıtlamanın uygulandığı nesnenin adı |
-| özellik     | nvarchar (128) | Kısıtlanmış Özellik |
+| Özellik     | nvarchar (128) | Kısıtlanmış Özellik |
 
 ## <a name="feature-restrictions"></a>Özellik kısıtlamaları
 
@@ -87,7 +87,7 @@ Aşağıdaki veritabanı sorgusunu yürüten:
 SELECT Name FROM EMPLOYEES WHERE Id=$EmpId
 ```
 
-Web uygulaması isteğine `id` parametre olarak geçirilen değer veritabanı sorgusundaki $EmpID değiştirmek üzere kopyalanırsa, bir saldırgan aşağıdaki isteği yapabilir:
+Web uygulaması isteğine `id` parametresi olarak geçirilen değer veritabanı sorgusunda $EmpId değiştirmek üzere kopyalanırsa, bir saldırgan aşağıdaki isteği yapabilir:
 
 ```html
 http://www.contoso.com/employee.php?id=1 AND CAST(DB_NAME() AS INT)=0
@@ -145,4 +145,4 @@ Web uygulaması isteklerine ID parametresi olarak geçirilen değer veritabanı 
 http://www.contoso.com/employee.php?id=1; IF SYSTEM_USER='sa' WAITFOR DELAY '00:00:05'
 ```
 
-`sa` Hesap kullanılıyorsa sorgu ek 5 saniye sürer. Özellik kısıtlaması veritabanında devre dışı bırakılmışsa `WAITFOR` , bu saldırı kullanılarak bilgi alınmaz ve bu saldırı kullanılarak bilgiler sızdırılmaz. `WAITFOR`
+`sa` hesap kullanılıyorsa sorgu ek 5 saniye sürer. Veritabanında `WAITFOR` Özellik kısıtlaması devre dışıysa, `WAITFOR` deyimleri yok sayılır ve bu saldırı kullanılarak bilgiler sızdırılmaz.

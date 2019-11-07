@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-Azure SQL veritabanı 'nda tek veritabanları | Microsoft Docs
+title: Hızlı başlangıç-Azure SQL veritabanı 'nda tek veritabanları
 description: Azure SQL veritabanı 'nda tek veritabanlarına hızlı bir şekilde nasıl başlaleyeceğinizi öğrenin
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: 45b0b2bc7a2ef5c3cb6ca801668f7b5be7c8ac73
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 279d0a2016bc3323632651db256c43121d388412
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639984"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687145"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanlarıyla çalışmaya başlama
 
@@ -24,11 +24,11 @@ ms.locfileid: "68639984"
 
 ## <a name="quickstart-overview"></a>Hızlı başlangıç genel bakış
 
-Bu bölümde, tek veritabanlarını hızlıca kullanmaya başlamanıza yardımcı olabilecek kullanılabilir makalelere bir genel bakış görürsünüz. Aşağıdaki hızlı başlangıçler hızlı bir şekilde tek bir veritabanı oluşturmanızı, bir veritabanı sunucusu güvenlik duvarı kuralını yapılandırmanızı ve sonra bir `.bacpac` dosyayı kullanarak yeni tek veritabanına bir veritabanını almanızı sağlar:
+Bu bölümde, tek veritabanlarını hızlıca kullanmaya başlamanıza yardımcı olabilecek kullanılabilir makalelere bir genel bakış görürsünüz. Aşağıdaki hızlı başlangıçler hızlı bir şekilde tek bir veritabanı oluşturmanıza, bir veritabanı sunucusu güvenlik duvarı kuralı yapılandırmanıza ve sonra bir veritabanını yeni tek veritabanına bir `.bacpac` dosyası kullanarak aktarmanıza olanak tanır:
 
 - [Azure Portal kullanarak tek bir veritabanı oluşturun](sql-database-single-database-get-started.md).
 - Veritabanını oluşturduktan sonra, [güvenlik duvarı kurallarını yapılandırarak veritabanınızı güvenli hale](sql-database-server-level-firewall-rule.md)getirmeniz gerekir.
-- Azure 'a geçirmek istediğiniz SQL Server var olan bir veritabanınız varsa, SQL Server veritabanlarınızı çözümleyen ve tek veritabanı dağıtımına geçişi engelleyebilen herhangi bir sorun bulacağınız [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) yüklemelisiniz. seçeneği. Herhangi bir sorun bulamazsanız, veritabanınızı dosya olarak `.bacpac` dışa aktarabilir ve [Azure Portal veya SqlPackage kullanarak içeri aktarabilirsiniz](sql-database-import.md).
+- Azure 'a geçirmek istediğiniz SQL Server var olan bir veritabanınız varsa, SQL Server veritabanlarınızı çözümleyen ve tek veritabanı dağıtımına geçişi engelleyebilen herhangi bir sorun bulacağınız [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) yüklemelisiniz. seçeneği. Herhangi bir sorun bulamazsanız, veritabanınızı `.bacpac` dosyası olarak dışarı aktarabilir ve [Azure Portal veya SqlPackage kullanarak içeri aktarabilirsiniz](sql-database-import.md).
 
 ## <a name="automating-management-operations"></a>Yönetim işlemlerini otomatikleştirme
 
@@ -41,7 +41,7 @@ Veritabanınızı oluşturmak, yapılandırmak ve ölçeklendirmek için PowerSh
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>En az kapalı kalma süresiyle tek bir veritabanına geçiş
 
-Bu hızlı başlangıç, bir dosya kullanarak veritabanınızı hızlı bir `.bacpac` şekilde oluşturmanıza veya Azure 'da aktarmanıza olanak tanır. Ancak, `.bacpac` ve `.dacpac` dosyaları Azure SQL veritabanı içindeki farklı SQL Server ve dağıtım seçenekleri arasında hızlı bir şekilde taşımak veya DevOps işlem hattınızda sürekli tümleştirme uygulamak için tasarlanmıştır. Ancak, bu yöntem, üretim veritabanlarınızı en az kapalı kalma süresiyle geçiş için tasarlanmamıştır, çünkü yeni veri ekleme işlemini durdurmanız, kaynak veritabanının bir `.bacpac` dosyanın tamamlanmasını beklemeniz ve sonra içeri aktarılmasını beklemeniz gerekir Tamamlanacak Azure SQL veritabanı. Bu bekleyen tüm bu durum, özellikle büyük veritabanları için uygulamanızın kapalı kalma süresine neden olur. Üretim veritabanınızı taşımak için geçişin en az kapalı kalma süresini garanti eden geçiş için daha iyi bir yol gerekir. Bunun için, [veri geçiş hizmeti 'ni (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) kullanarak veritabanınızı en düşük kapalı kalma süresiyle geçirin. DMS, kaynak veritabanınızda yapılan değişiklikleri geri yüklenen tek veritabanına artırarak bunu gerçekleştirir. Bu şekilde, uygulamanızı kaynaktan hedef veritabanına en az kapalı kalma süresi ile hızlıca geçirebilirsiniz.
+Bu hızlı başlangıç, bir `.bacpac` dosyası kullanarak veritabanınızı hızlı bir şekilde oluşturmanıza veya Azure 'da aktarmanıza olanak tanır. Ancak `.bacpac` ve `.dacpac` dosyalar, veritabanlarını Azure SQL veritabanı 'ndaki farklı SQL Server ve dağıtım seçenekleri arasında hızlı bir şekilde taşımak veya DevOps işlem hattınızda sürekli tümleştirme uygulamak için tasarlanmıştır. Ancak, bu yöntem, üretim veritabanlarınızı en az kapalı kalma süresiyle geçiş için tasarlanmamıştır, çünkü yeni veri eklemeyi durdurmanız, kaynak veritabanının bir `.bacpac` dosyasına verilmesini beklemeniz ve sonra Azure SQL 'e aktarmayı beklemeniz gerekir Tamamlanacak veritabanı. Bu bekleyen tüm bu durum, özellikle büyük veritabanları için uygulamanızın kapalı kalma süresine neden olur. Üretim veritabanınızı taşımak için geçişin en az kapalı kalma süresini garanti eden geçiş için daha iyi bir yol gerekir. Bunun için, [veri geçiş hizmeti 'ni (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) kullanarak veritabanınızı en düşük kapalı kalma süresiyle geçirin. DMS, kaynak veritabanınızda yapılan değişiklikleri geri yüklenen tek veritabanına artırarak bunu gerçekleştirir. Bu şekilde, uygulamanızı kaynaktan hedef veritabanına en az kapalı kalma süresi ile hızlıca geçirebilirsiniz.
 
 ## <a name="hands-on-learning-modules"></a>Uygulamalı öğrenme modülleri
 

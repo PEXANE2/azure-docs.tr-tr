@@ -11,22 +11,24 @@ ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: glenga
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: b47e828f3b8d760594cb04ba40ceaa7248050c52
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 1a1586124a1cfb05f2b7c4e9c3b0070170447b96
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933484"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614587"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript 'te ilk dayanıklı işlevinizi oluşturma
 
 *Dayanıklı işlevler* , bir sunucusuz ortamda durum bilgisi olan işlevler yazmanıza olanak sağlayan bir [Azure işlevleri](../functions-overview.md) uzantısıdır. Uzantı sizin için durumu, denetim noktalarını ve yeniden başlatmaları yönetir.
 
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
+
 Bu makalede, bir "Hello World" dayanıklı işlevini yerel olarak oluşturmak ve test etmek için Visual Studio Code Azure Işlevleri uzantısının nasıl kullanılacağını öğrenirsiniz.  Bu işlev, diğer işlevlere yönelik çağrıları düzenler ve birlikte zincirler. Ardından işlev kodunu Azure’da yayımlayacaksınız.
 
 ![Azure 'da dayanıklı işlevi çalıştırma](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -46,7 +48,7 @@ Bu öğreticiyi tamamlamak için:
 
 ## <a name="install-the-durable-functions-npm-package"></a>Dayanıklı İşlevler NPM paketini yükler
 
-1. İşlev uygulamasının kök dizininde çalıştırarak `npm install durable-functions` NPMpaketiniyükler.`durable-functions`
+1. İşlev uygulamasının kök dizininde `npm install durable-functions` çalıştırarak NPM paketini `durable-functions`.
 
 ## <a name="creating-your-functions"></a>İşlevleriniz oluşturma
 
@@ -56,7 +58,7 @@ Artık Dayanıklı İşlevler kullanmaya başlamak için ihtiyacınız olan üç
 
 İlk olarak, dayanıklı bir işlev düzenlemesi Başlatan HTTP ile tetiklenen bir işlev oluşturun.
 
-1. Azure *'dan: İşlevler*, **oluşturma işlevi** simgesini seçin.
+1. *Azure: işlevler*' de **işlev oluştur** simgesini seçin.
 
     ![İşlev oluşturma](./media/quickstart-js-vscode/create-function.png)
 
@@ -74,7 +76,7 @@ Artık Dayanıklı İşlevler kullanmaya başlamak için ihtiyacınız olan üç
 
 Şimdi, etkinlik işlevlerini koordine etmek için bir Orchestrator oluşturacağız.
 
-1. Azure *'dan: İşlevler*, **oluşturma işlevi** simgesini seçin.
+1. *Azure: işlevler*' de **işlev oluştur** simgesini seçin.
 
     ![İşlev oluşturma](./media/quickstart-js-vscode/create-function.png)
 
@@ -88,7 +90,7 @@ Etkinlik işlevlerine koordine etmek için bir Orchestrator ekledik. Şimdi baş
 
 Şimdi, çözümün işini gerçekten yürütmek için bir etkinlik işlevi oluşturacağız.
 
-1. Azure *'dan: İşlevler*, **oluşturma işlevi** simgesini seçin.
+1. *Azure: işlevler*' de **işlev oluştur** simgesini seçin.
 
     ![İşlev oluşturma](./media/quickstart-js-vscode/create-function.png)
 
@@ -102,14 +104,14 @@ Artık bir düzenleme ve zincir oluşturma etkinlik işlevlerini başlatmak içi
 
 Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirme bilgisayarınızda çalıştırmanıza olanak sağlar. Visual Studio Code'da ilk kez bir işlev başlattığınızda bu araçları yüklemeniz istenir.
 
-1. Bir Windows bilgisayarında, Azure Storage öykünücüsü ' nü başlatın ve *Local. Settings. JSON* ' ın `UseDevelopmentStorage=true` **AzureWebJobsStorage** özelliğinin olarak ayarlandığından emin olun.
+1. Bir Windows bilgisayarında, Azure Storage öykünücüsü ' nü başlatın ve *Local. Settings. JSON* ' ın **AzureWebJobsStorage** özelliğinin `UseDevelopmentStorage=true`olarak ayarlandığından emin olun.
 
-    Depolama öykünücüsü 5,8 için, Local. Settings. JSON **AzureWebJobsSecretStorageType** özelliğinin olarak `files`ayarlandığından emin olun. Mac veya Linux bilgisayarda, **AzureWebJobsStorage** özelliğini mevcut bir Azure depolama hesabının bağlantı dizesine ayarlamanız gerekir. Bu makalede daha sonra bir depolama hesabı oluşturursunuz.
+    Depolama öykünücüsü 5,8 için, Local. Settings. JSON **AzureWebJobsSecretStorageType** özelliğinin `files`olarak ayarlandığından emin olun. Mac veya Linux bilgisayarda, **AzureWebJobsStorage** özelliğini mevcut bir Azure depolama hesabının bağlantı dizesine ayarlamanız gerekir. Bu makalede daha sonra bir depolama hesabı oluşturursunuz.
 
 2. İşlevinizi test etmek için işlev kodunda bir kesme noktası ayarlayın ve işlev uygulaması projesini başlatmak için F5 tuşuna basın. Temel Araçlar’daki çıktı, **Terminal** panelinde görüntülenir. Dayanıklı İşlevler ilk kez kullanıyorsanız, Dayanıklı İşlevler uzantısı yüklenir ve derleme birkaç saniye sürebilir.
 
     > [!NOTE]
-    > JavaScript Dayanıklı İşlevler, **Microsoft. Azure. WebJobs. Extensions. DurableTask** uzantısının sürüm **1.7.0** veya üstünü gerektirir. Dayanıklı İşlevler uzantısını yüklemek için Azure Işlevleri uygulamanızın kök klasöründen aşağıdaki komutu çalıştırın`func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
+    > JavaScript Dayanıklı İşlevler, **Microsoft. Azure. WebJobs. Extensions. DurableTask** uzantısının sürüm **1.7.0** veya üstünü gerektirir. Dayanıklı İşlevler uzantısını yüklemek için Azure Işlevleri uygulamanızın kök klasöründen aşağıdaki komutu çalıştırın `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
 
 3. **Terminal** panelinde, HTTP ile tetiklenen işlevinizin URL uç noktasını kopyalayın.
 
@@ -121,7 +123,7 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
 
    Yanıt, HTTP işlevinin ilk sonucudur ve dayanıklı düzenleme 'nin başarıyla başlatıldığını öğrenmemize olanak tanıyor. Orchestration 'un nihai sonucu henüz değildir. Yanıt birkaç yararlı URL içerir. Şimdilik düzenleme durumunu sorgulayalım.
 
-6. URL değerini `statusQueryGetUri` kopyalayın ve tarayıcının adres çubuğuna yapıştırın ve isteği yürütün. Alternatif olarak, GET isteğini vermek için Postman kullanmaya de devam edebilirsiniz.
+6. `statusQueryGetUri` URL değerini kopyalayın ve tarayıcının adres çubuğuna yapıştırın ve isteği yürütün. Alternatif olarak, GET isteğini vermek için Postman kullanmaya de devam edebilirsiniz.
 
    İstek, bu durum için düzenleme örneğini sorgular. Örneğin, örneğin tamamlandığını gösteren ve dayanıklı işlevin çıkışlarını veya sonuçlarını içeren nihai bir yanıt almanız gerekir. Şöyle görünür: 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Veritabanı Premium RS hizmet katmanı emekli | Microsoft Docs
+title: Azure SQL Veritabanı Premium RS hizmet katmanı emekli
 description: Premium RS hizmet katmanı kullanımdan kaldırılıyor ve bu hizmet için destek sonlandırılıyor-bkz. geçiş seçenekleri.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/07/2019
-ms.openlocfilehash: d2637618ea9e2a0a0d0369eddce01fae073be221
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 688fd3fdefb54fc25d5236277c85dd4262df5f34
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566639"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687235"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL Veritabanı Premium RS hizmet katmanı (Önizleme) kullanımdan kaldırılıyor-geçiş seçenekleri
 
@@ -29,10 +29,10 @@ Premium RS müşterileri için uygun olabilecek geçiş hedefleri ve fiyatlandı
   [Sanal çekirdek tabanlı satın alma modelindeki](sql-database-service-tiers-vcore.md) **genel amaçlı** ve **iş açısından kritik** hizmet katmanları. Bu iki hizmet katmanı genel kullanıma sunulduğuna göre yapılır. Sanal çekirdek tabanlı satın alma modeli Ayrıca, iş yükünüzün ihtiyaçlarına göre isteğe bağlı olarak, veritabanı başına 100 TB 'a kadar otomatik ölçeklendirme sağlayan **hiper ölçekli** hizmet katmanını da sunar. Hiper ölçek hizmeti katmanı, Premium RS hizmet katmanına daha yakın bir fiyata [DTU tabanlı satın alma modelindeki](sql-database-service-tiers-dtu.md) Premium hizmet KATMANıNA benzer GÇ performansı sağlar.
 - Geliştirme ve Test fiyatlandırması
 
-  [Geliştirme ve test fiyatlandırması](https://azure.microsoft.com/pricing/dev-test/) , Visual Studio aboneliğinizle lisans dahil olmak üzere% 55 ' e kadar tasarruf sağlar.
+  [Geliştirme ve test fiyatlandırması](https://azure.microsoft.com/pricing/dev-test/) , Visual Studio aboneliğinizle lisans dahil olmak üzere %55 ' e kadar tasarruf sağlar.
 - Azure Hibrit Avantajı ve ayrılmış kapasite fiyatlandırması
 
-  [Azure hibrit avantajı ve ayrılmış kapasite fiyatlandırması,](https://azure.microsoft.com/pricing/details/sql-database/) % 80 ve lisans dahil ücretlere kadar tasarruf sağlar. Bu seçenekler hakkında daha fazla bilgi için bkz. SQL Server ve [Azure SQL veritabanı ayrılmış kapasitesi](sql-database-reserved-capacity.md) [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) .
+  [Azure hibrit avantajı ve ayrılmış kapasite fiyatlandırması,](https://azure.microsoft.com/pricing/details/sql-database/) %80 ve lisans dahil ücretlere kadar tasarruf sağlar. Bu seçenekler hakkında daha fazla bilgi için bkz. SQL Server ve [Azure SQL veritabanı ayrılmış kapasitesi](sql-database-reserved-capacity.md) [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) .
 
 ## <a name="act-now-to-migrate-your-premium-rs-databases-to-alternative-sql-database-service-tiers"></a>Artık Premium RS veritabanlarınızı alternatif SQL veritabanı hizmet katmanlarına geçirmeye çalışır
 
@@ -83,7 +83,7 @@ En iyi performans ve maliyet birleşimi için, GÇ yoğun tek veritabanlarınız
 
 ## <a name="take-advantage-of-our-new-offers"></a>Yeni tekliflerimizden yararlanın
 
-Sanal çekirdek tabanlı satın alma modelindeki hizmet katmanlarımız, size% 80 ve lisans dahil fiyatlandırmaya karşı tasarruf sağlayan özel teklifler için uygun değildir. [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)ve lisans dahil olmak üzere% 55 ' e varan bir lisansa sahip SQL Server Standard veya Enterprise Edition lisanslarını kullanın. Karma avantajını [Azure SQL veritabanı ayrılmış kapasite](sql-database-reserved-capacity.md) fiyatlandırmasıyla birleştirebilir ve en öne bir veya üç yıllık bir dönem boyunca kaydolduğunuzda% 80 ' e kadar tasarruf edebilirsiniz.  Azure portal avantajlarından her ikisi de hemen etkinleştirin.
+Sanal çekirdek tabanlı satın alma modelindeki hizmet katmanlarımız, size %80 ve lisans dahil fiyatlandırmaya karşı tasarruf sağlayan özel teklifler için uygun değildir. [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)ve lisans dahil olmak üzere %55 ' e varan bir lisansa sahip SQL Server Standard veya Enterprise Edition lisanslarını kullanın. Karma avantajını [Azure SQL veritabanı ayrılmış kapasite](sql-database-reserved-capacity.md) fiyatlandırmasıyla birleştirebilir ve en öne bir veya üç yıllık bir dönem boyunca kaydolduğunuzda %80 ' e kadar tasarruf edebilirsiniz.  Azure portal avantajlarından her ikisi de hemen etkinleştirin.
 
 Bu değişiklik ile ilgili sorularınız veya endişeleriniz varsa veya geçiş yardımı gerekiyorsa, [Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)'a başvurun.
 

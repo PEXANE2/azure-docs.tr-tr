@@ -1,6 +1,6 @@
 ---
-title: Azure Yapay Zeka Galerisi verileri yönetme
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Azure Yapay Zeka Galerisi verilerini yönetme
+titleSuffix: ML Studio (classic) Azure
 description: Arabirim veya AI Galerisi kataloğu API 'sini kullanarak Azure Yapay Zeka Galerisi ürün içi kullanıcı verilerinizi dışa aktarabilir ve silebilirsiniz. Bu makalede nasıl yapılacağı gösterilir.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: f0b0bd4b01056769d38179597e477ecb164fa9ab
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b99fa6ae740de4e9c87061b201f2104d6d025e6c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493537"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684898"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi ürün içi kullanıcı verilerini görüntüleyin ve silin
 

@@ -1,6 +1,5 @@
 ---
-title: Python makine öğrenimi betikleri yürütün
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Python betiklerini yürütme
 description: Machine Learning Studio (klasik) denemeleri ve Web hizmetlerinde Python kodu kullanmak için Python betiği yürütme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +9,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 1be367191ab042611f45d1f773df0d499400c500
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dea8fd7971f0572350306ea11ee1f9d897438d11
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493004"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684869"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) üzerinde Python Machine Learning betikleri yürütme
 

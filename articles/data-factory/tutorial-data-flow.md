@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory bir eşleme veri akışı kullanarak verileri dönüştürme | Microsoft Docs
+title: Azure Data Factory bir eşleme veri akışı kullanarak veri dönüştürme
 description: Bu öğretici, veri akışı eşleme ile verileri dönüştürmek için Azure Data Factory kullanmaya yönelik adım adım yönergeler sağlar
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 5b618798c74393f3e7d89cfc69c67ba831356ce4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 886e6e659dee2a898167054c5d76bc3977f27e11
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385549"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683633"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Veri akışlarını eşleme kullanarak verileri dönüştürme
 
@@ -29,7 +29,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * İşlem hattında test çalıştırması yapma.
 > * Veri akışı etkinliğini izleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**. ADLS depolamayı *kaynak* ve *Havuz* veri depoları olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md).
 
@@ -40,7 +40,7 @@ Bu öğreticide dönüştürtiğimiz dosya MoviesDB. csv ' dir ve [burada](https
 Bu adımda, bir veri fabrikası oluşturur ve veri fabrikasında bir işlem hattı oluşturmak için Data Factory UX 'i açarsınız. 
 
 1. **Microsoft Edge** veya **Google Chrome**'ı açın. Şu anda Data Factory UI yalnızca Microsoft Edge ve Google Chrome Web tarayıcılarında desteklenir.
-2. Sol taraftaki menüden @no__t **kaynak oluştur**' u seçin-1**analiz** > **Data Factory**: 
+2. Sol menüde **kaynak oluştur** > **analiz** > **Data Factory**' yı seçin: 
   
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -115,10 +115,10 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
     ![Veri akışı tuvali](media/tutorial-data-flow/dataflow5.png)
 1. Filtre dönüştürmesinin **Filtreyıllarınızı**adlandırın. **Filtre Uygula** ' nın yanındaki ifade kutusuna tıklayıp deyim Oluşturucu 'yu açın. Burada filtreleme koşullarınızı belirtirsiniz. 
     
-    ![Filtrele](media/tutorial-data-flow/filter1.png)
+    ![Filtre](media/tutorial-data-flow/filter1.png)
 1. Veri akışı ifade Oluşturucusu, çeşitli dönüşümlerde kullanılacak ifadeleri etkileşimli bir şekilde oluşturmanıza olanak tanır. İfadeler, yerleşik işlevleri, giriş şemasından sütunları ve Kullanıcı tanımlı parametreleri içerebilir. İfadelerin nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [veri akışı ifade Oluşturucusu](concepts-data-flow-expression-builder.md).
     
-    Bu öğreticide, 1910 ve 2000 yılları arasında gelen tarz komedi filmlerini filtrelemek istersiniz. Yıl şu anda bir dize olduğu için, ```toInteger()``` işlevini kullanarak bunu bir tamsayıya dönüştürmeniz gerekir. 1910 ve 200-sabit yıl değerlerine göre karşılaştırmak için büyüktür veya eşittir (> =) ve küçüktür veya eşittir (< =) işleçlerini kullanın. Bu ifadeleri ve (& &) işleciyle toplayın. İfade şu şekilde gelir:
+    Bu öğreticide, 1910 ve 2000 yılları arasında gelen tarz komedi filmlerini filtrelemek istersiniz. Yıl şu anda bir dize olduğu için ```toInteger()``` işlevini kullanarak bunu bir tamsayıya dönüştürmeniz gerekir. 1910 ve 200-sabit yıl değerlerine göre karşılaştırmak için büyüktür veya eşittir (> =) ve küçüktür veya eşittir (< =) işleçlerini kullanın. Bu ifadeleri ve (& &) işleciyle toplayın. İfade şu şekilde gelir:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
 
@@ -128,13 +128,13 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
 
     Etkin bir hata ayıklama kümeniz varsa, kullanılan girişlerle karşılaştırılan ifade çıktısını görmek için **Yenile** ' ye tıklayarak mantığınızı doğrulayabilirsiniz. Veri akışı ifade dilini kullanarak bu mantığı nasıl gerçekleştirebileceğiniz üzerinde birden fazla doğru yanıt vardır.
     
-    ![Filtrele](media/tutorial-data-flow/filter2.png)
+    ![Filtre](media/tutorial-data-flow/filter2.png)
 
     Deyiminizi tamamladıktan sonra Kaydet ' e tıklayın **ve son** ' a tıklayın.
 
 1. Filtrenin düzgün çalıştığını doğrulamak için bir **veri önizlemesi** getirin.
     
-    ![Filtrele](media/tutorial-data-flow/filter3.png)
+    ![Filtre](media/tutorial-data-flow/filter3.png)
 1. Ekleyeceğiniz bir sonraki dönüşüm, **şema değiştiricisi**altında bir **Toplam** dönüşümdir.
     
     ![Toplama](media/tutorial-data-flow/agg1.png)
@@ -144,7 +144,7 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
 1. **Toplamlar** sekmesine gidin. Sol metin kutusunda, toplam sütununu **Averagecomedyıderecelendirme**olarak adlandırın. Deyim Oluşturucu aracılığıyla toplama ifadesini girmek için sağ ifade kutusuna tıklayın.
     
     ![Toplama](media/tutorial-data-flow/agg3.png)
-1. Sütun **derecelendirmesinin**ortalamasını almak için ```avg()``` toplama işlevini kullanın. **Derecelendirme** bir dize olduğundan ve ```avg()``` sayısal bir girişte yer alıyorsa, ```toInteger()``` işlevi aracılığıyla değeri bir sayıya dönüştürmemiz gerekir. Bu ifade şöyle görünür:
+1. Sütun **derecelendirmesinin**ortalamasını almak için ```avg()``` toplama işlevini kullanın. **Derecelendirme** bir dize olduğundan ve ```avg()``` sayısal bir girişte yer alıyorsa, ```toInteger()``` işlevi yoluyla değeri bir sayıya dönüştürmemiz gerekir. Bu ifade şöyle görünür:
 
     ```avg(toInteger(Rating))```
     

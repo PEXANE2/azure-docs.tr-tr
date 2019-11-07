@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: New York Taxicab verilerini Azure SQL veri ambarı 'na yükleme | Microsoft Docs"
+title: 'Öğretici: New York Taxicab verilerini yükleme'
 description: Öğretici Azure portal ve SQL Server Management Studio kullanarak küresel bir Azure blobundan Azure SQL veri ambarı 'na New York Taxicab verilerini yükler.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2e799d84aee9ba4d3bfb00ddfad358c9b90c3d59
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5bf1a600bf57ecb598aac485e11f3618dda7244e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482394"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686084"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Öğretici: New York Taxicab verilerini Azure SQL veri ambarı 'na yükleme
 
@@ -44,7 +45,7 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Boş bir SQL veri ambarı oluşturun
 
-Azure SQL veri ambarı, tanımlı bir [işlem kaynakları](memory-and-concurrency-limits.md)kümesiyle oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-features.md) içinde oluşturulur. 
+Azure SQL veri ambarı, tanımlı bir [işlem kaynakları] bellek-eşzamanlılık-limits.md) kümesiyle oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-features.md) içinde oluşturulur. 
 
 Boş bir SQL veri ambarı oluşturmak için bu adımları izleyin. 
 
@@ -564,7 +565,7 @@ Verileri Azure Depolama Blobu'ndan veri ambarınızdaki yeni tablolara yüklemek
 ## <a name="authenticate-using-managed-identities-to-load-optional"></a>Yüklenecek yönetilen kimlikleri kullanarak kimlik doğrulama (isteğe bağlı)
 PolyBase kullanarak yükleme ve yönetilen kimlikler aracılığıyla kimlik doğrulaması en güvenli mekanizmadır ve Azure Storage ile VNet hizmet uç noktalarından yararlanmanızı sağlar. 
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 1.  Bu [Kılavuzu](https://docs.microsoft.com/powershell/azure/install-az-ps)kullanarak Azure PowerShell 'i yükler.
 2.  Genel amaçlı v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)kullanarak genel amaçlı v2 'ye yükseltmeniz gerekir.
 3.  Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsünde **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin vermeniz** gerekir. Daha fazla bilgi için bu [kılavuza](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) bakın.

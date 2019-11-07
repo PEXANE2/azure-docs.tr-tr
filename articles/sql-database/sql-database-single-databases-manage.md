@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı sunucuları ve tek veritabanları oluşturun, yönetin | Microsoft Docs
+title: Azure SQL veritabanı sunucuları ve tek veritabanları oluşturun, yönetin
 description: SQL veritabanı sunucularını ve tek veritabanlarını oluşturma ve yönetme hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: ecbfc8cee75da5bdf78bcc2d4ed426bc5193808c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 91a5ca6ef842b364ada24aa4ede5768cf205c776
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566506"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687116"
 ---
 # <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda SQL veritabanı sunucuları ve tek veritabanları oluşturma ve yönetme
 
@@ -117,7 +117,7 @@ Azure [CLI](/cli/azure)Ile Azure SQL Server, veritabanları ve güvenlik duvarla
 Transact-SQL ile Azure SQL Server, veritabanları ve güvenlik duvarları oluşturup yönetmek için aşağıdaki T-SQL komutlarını kullanın. Bu komutları, Azure portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs)veya bir Azure SQL veritabanı sunucusuna BAĞLANABILECEK ve Transact-SQL komutlarını geçirebilmeniz gereken herhangi bir programı kullanarak verebilirsiniz. Elastik havuzları yönetmek için bkz. [elastik havuzlar](sql-database-elastic-pool.md).
 
 > [!TIP]
-> Microsoft Windows üzerinde SQL Server Management Studio kullanan bir hızlı başlangıç için bkz [. Azure SQL veritabanı: Bağlanmak ve veri](sql-database-connect-query-ssms.md)sorgulamak için SQL Server Management Studio kullanın. MacOS, Linux veya Windows üzerinde Visual Studio Code kullanan bir hızlı başlangıç için bkz [. Azure SQL veritabanı: Bağlanmak ve veri](sql-database-connect-query-vscode.md)sorgulamak için Visual Studio Code kullanın.
+> Microsoft Windows üzerinde SQL Server Management Studio kullanan bir hızlı başlangıç için bkz. [Azure SQL veritabanı: bağlanmak ve veri sorgulamak için SQL Server Management Studio kullanma](sql-database-connect-query-ssms.md). MacOS, Linux veya Windows üzerinde Visual Studio Code kullanan bir hızlı başlangıç için bkz. [Azure SQL veritabanı: bağlanmak ve veri sorgulamak için Visual Studio Code kullanma](sql-database-connect-query-vscode.md).
 > [!IMPORTANT]
 > Transact-SQL kullanarak sunucu oluşturamaz veya silemezsiniz.
 

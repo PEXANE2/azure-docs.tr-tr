@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
-ms.openlocfilehash: b8633bd91abc1f336870158f54d75829ed5cf6a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496595"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606168"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Azure açık veri kümeleri nedir ve bunları nasıl kullanabilirsiniz?
 
@@ -25,7 +25,7 @@ Veri kümeleri, makine öğrenimi modellerini ve zenginleştirme çözümlerini 
 ## <a name="curated-prepared-datasets"></a>Seçkin, hazırlanan veri kümeleri
 Azure açık veri kümelerinde seçkin açık genel veri kümeleri, makine öğrenimi iş akışlarında tüketim için iyileştirilmiştir. 
 
-Veri bilimcileri, genellikle gelişmiş analizler için verileri temizleme ve hazırlama zamanının çoğunu harcamaktadır. Açık veri kümeleri Azure bulutuna kopyalanır ve zamandan tasarruf etmek için önceden işlenir. Düzenli aralıklarla veriler, Ulusal Okyanus ve atmosfer yönetimine (NOAA) yönelik FTP bağlantısı, yapılandırılmış bir biçimde ayrıştırılıp ZIP kodu veya konumu gibi özelliklerle uygun şekilde zenginleştirerek kaynaklar tarafından çekilir. En yakın hava durumu istasyonu.
+Veri bilimcileri, genellikle gelişmiş analizler için verileri temizleme ve hazırlama zamanının çoğunu harcamaktadır. Açık veri kümeleri Azure bulutuna kopyalanır ve zamandan tasarruf etmek için önceden işlenir. Düzenli aralıklarla veriler, Ulusal Okyanus ve atmosfer yönetimine (NOAA) FTP bağlantısı gibi kaynaklardan alınır. Ardından, veriler yapılandırılmış bir biçimde ayrıştırılır ve ardından ZIP kodu veya en yakın hava durumu istasyonun konumu gibi özelliklerle uygun şekilde zenginleştirir.
 
 Veri kümeleri, Azure 'da erişim ve düzenleme daha kolay hale getirerek bulut işlem ile birlikte barındırılır.  
 
@@ -57,5 +57,5 @@ Ancak açık veri kümelerine erişmeniz için bir Azure hesabınızın olması 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Örnek Not defteri](samples.md)
-* [Öğretici: NY TAXI verileriyle gerileme modelleme](tutorial-opendatasets-automl.md)
+* [Öğretici: NY TAXI verileriyle gerileme modelleme](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Açık veri kümeleri için Python SDK](/python/api/azureml-opendatasets/?view=azure-ml-py)

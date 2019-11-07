@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory kullanarak MySQL 'ten veri taşıma | Microsoft Docs
+title: Azure Data Factory kullanarak MySQL 'ten veri taşıma
 description: Azure Data Factory kullanarak MySQL veritabanından veri taşıma hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 675189a5485bb0cfcc833fc21b376a21ddde7cdf
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 4a7b42b51f49ab0c11aa8af3af6495c60907d230
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809353"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666107"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory kullanarak MySQL 'Ten veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -33,7 +33,7 @@ Bu makalede, verileri şirket içi bir MySQL veritabanından taşımak için Azu
 
 Şirket içi bir MySQL veri deposundan, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca bir MySQL veri deposundan diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından MySQL veri deposuna taşımamaktadır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Data Factory hizmeti, Veri Yönetimi ağ geçidini kullanarak şirket içi MySQL kaynaklarına bağlanmayı destekler. Veri Yönetimi ağ geçidini ayarlama hakkında bilgi edinmek ve ağ geçidini ayarlamaya yönelik adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makaleleri arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
 
 MySQL veritabanı bir Azure IaaS sanal makinesinde (VM) barındırılıyorsa bile ağ geçidi gereklidir. Ağ geçidini, veri deposuyla aynı VM 'ye veya ağ geçidinin veritabanına bağlanabildiği sürece farklı bir VM 'ye yükleyebilirsiniz.
@@ -47,7 +47,7 @@ MySQL veritabanına bağlanmak üzere Veri Yönetimi ağ geçidinin, Veri Yönet
 > [!TIP]
 > "Uzak taraf aktarım akışını kapattığından" kimlik doğrulaması başarısız oldu. "hatasını alırsanız MySQL bağlayıcısını/NET 'i daha yüksek sürüme yükseltmeyi göz önünde bulundurun.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz. 
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
@@ -66,23 +66,23 @@ Aşağıdaki bölümler, bir MySQL veri deposuna özgü Data Factory varlıklar�
 ## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 Aşağıdaki tabloda, MySQL bağlantılı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Type özelliği: **OnPremisesMySql** olarak ayarlanmalıdır |Yes |
-| sunucu |MySQL sunucusunun adı. |Yes |
-| veritabanı |MySQL veritabanının adı. |Yes |
+| type |Type özelliği: **OnPremisesMySql** olarak ayarlanmalıdır |Evet |
+| sunucu |MySQL sunucusunun adı. |Evet |
+| veritabanı |MySQL veritabanının adı. |Evet |
 | manızı |Veritabanındaki şemanın adı. |Hayır |
-| authenticationType |MySQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler: `Basic`. |Yes |
-| Nitelen |MySQL veritabanına bağlanmak için Kullanıcı adını belirtin. |Yes |
-| password |Belirttiğiniz kullanıcı hesabı için parola belirtin. |Yes |
-| gatewayName |Data Factory hizmetinin şirket içi MySQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
+| authenticationType |MySQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler: `Basic`. |Evet |
+| Nitelen |MySQL veritabanına bağlanmak için Kullanıcı adını belirtin. |Evet |
+| password |Belirttiğiniz kullanıcı hesabı için parola belirtin. |Evet |
+| gatewayName |Data Factory hizmetinin şirket içi MySQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
 
 **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Relationaltable** türündeki veri kümesinin typeproperties bölümü (MySQL veri kümesini içerir) aşağıdaki özelliklere sahiptir
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | tableName |Bağlantılı hizmetin başvurduğu MySQL veritabanı örneğindeki tablonun adı. |Hayır ( **Relationalsource** **sorgusu** belirtilmişse) |
 
@@ -93,7 +93,7 @@ Ancak, etkinliğin **typeproperties** bölümünde kullanılabilen özellikler h
 
 Copy etkinliğinin kaynağı **Relationalsource** (MySQL içeren) türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Hayır ( **veri kümesi** **TableName** belirtilmişse) |
 

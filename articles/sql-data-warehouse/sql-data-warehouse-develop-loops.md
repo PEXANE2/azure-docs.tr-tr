@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı 'nda T-SQL döngülerini kullanma | Microsoft Docs
+title: T-SQL döngüleri kullanma
 description: Çözüm geliştirmek için T-SQL döngülerini kullanma ve Azure SQL veri ambarı 'nda imleçler değiştirme ipuçları.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e27edcc1383a235fbdb9513066e69e2f680ea2f9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b57358e32bda83ef51fe67aa1057411d51773fa6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479617"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685834"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>SQL Data Warehouse 'da T-SQL döngüleri kullanma
 Çözüm geliştirmek için T-SQL döngülerini kullanma ve Azure SQL veri ambarı 'nda imleçler değiştirme ipuçları.
@@ -25,7 +26,7 @@ ms.locfileid: "68479617"
 SQL veri ambarı, sürekli olarak ekstre blokları yürütmeye yönelik [while](/sql/t-sql/language-elements/while-transact-sql) döngüsünü destekler. Bu WHILE döngüsü, belirtilen koşullar doğru olduğu sürece veya kod BREAK anahtar sözcüğünü kullanarak döngüyü özel olarak sonlandırana kadar devam eder. Döngüler SQL kodunda tanımlanan imleçleri değiştirmek için kullanışlıdır. Neyse ki SQL Code 'da yazılan neredeyse tüm imleçler hızlı ileri, salt okunurdur. Bu nedenle, [WHILE] döngüleri, imleçleri değiştirmek için harika bir alternatiftir.
 
 ## <a name="replacing-cursors-in-sql-data-warehouse"></a>SQL veri ambarı 'ndaki imleçleri değiştirme
-Bununla birlikte, önce baş olarak kullanmadan önce aşağıdaki soruyu sormanız gerekir: "Bu imleç, küme tabanlı işlemleri kullanmak için yeniden yazılabilir mi?." Çoğu durumda, yanıt Evet 'tir ve genellikle en iyi yaklaşım olur. Küme temelli bir işlem, genellikle yinelemeli, satır satır yaklaşımına göre daha hızlı gerçekleştirilir.
+Bununla birlikte, önce baş olarak kullanmadan önce şu soruyu sormanız gerekir: "Bu imleç, küme tabanlı işlemleri kullanmak için yeniden yazılabilir mi?." Çoğu durumda, yanıt Evet 'tir ve genellikle en iyi yaklaşım olur. Küme temelli bir işlem, genellikle yinelemeli, satır satır yaklaşımına göre daha hızlı gerçekleştirilir.
 
 İleri sarma salt okuma imleçleri, bir döngü yapısıyla kolayca değiştirilebilir. Aşağıda basit bir örnek verilmiştir. Bu kod örneği, veritabanındaki her tablo için istatistikleri günceller. Döngüdeki tabloları yineleerek her komut sırayla yürütülür.
 

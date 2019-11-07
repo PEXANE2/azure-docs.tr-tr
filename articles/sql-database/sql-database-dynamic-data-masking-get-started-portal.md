@@ -1,5 +1,5 @@
 ---
-title: 'Azure portal: SQL veritabanı dinamik veri maskeleme | Microsoft Docs'
+title: 'Azure portal: SQL veritabanı dinamik veri maskeleme '
 description: Azure portal SQL veritabanı dinamik veri maskelemeyi kullanmaya başlama
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2018
-ms.openlocfilehash: 1400a21c3fee51bb26a3271546a7553a3429b42d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d92f77c56221d7c79ed30a6ca67d31d1b3f7f703
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568796"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690591"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure portal ile SQL veritabanı dinamik veri maskeleme ile çalışmaya başlama
 
@@ -24,7 +24,7 @@ Bu makalede, Azure portal ile [dinamik veri maskeleme](sql-database-dynamic-data
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Azure portal kullanarak veritabanınız için dinamik veri maskeleme ayarlayın
 
-1. Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal başlatın.
+1. [https://portal.azure.com](https://portal.azure.com)Azure Portal başlatın.
 2. Maskelemek istediğiniz hassas verileri içeren veritabanının ayarlar sayfasına gidin.
 3. **Dinamik veri maskeleme** yapılandırma sayfasını başlatan **dinamik veri maskeleme** kutucuğuna tıklayın.
 

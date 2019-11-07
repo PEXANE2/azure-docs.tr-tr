@@ -1,5 +1,5 @@
 ---
-title: Resource Manager şablonu kullanarak Azure veri fabrikası oluşturma | Microsoft Docs
+title: Kaynak Yöneticisi şablonu kullanarak Azure Veri Fabrikası oluşturma
 description: Bu öğreticide, bir Azure Resource Manager şablonu kullanarak örnek bir Azure Data Factory işlem hattı oluşturacaksınız.
 services: data-factory
 documentationcenter: ''
@@ -11,20 +11,20 @@ ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 8766ff461227a749a432771dfe7dbe96a291109a
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 6bba764060c243417711205083bf02f84a68fed1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008700"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684516"
 ---
-# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Öğretici: Azure Resource Manager şablonu kullanarak Azure Veri Fabrikası oluşturma
+# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Öğretici: Azure Resource Manager şablonu kullanarak Azure veri fabrikası oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-resource-manager-template.md)
 
-Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanarak bir Azure veri fabrikasını nasıl oluşturacağınız ve izleyeceğiniz açıklanmaktadır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure blob depolama alanındaki bir klasörden başka bir klasöre **kopyalar**. Azure Data Factory kullanarak verileri **dönüştürme** hakkında bir öğretici için bkz [. Öğretici: Spark](transform-data-using-spark.md)kullanarak verileri dönüştürme.
+Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanarak bir Azure veri fabrikasını nasıl oluşturacağınız ve izleyeceğiniz açıklanmaktadır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure blob depolama alanındaki bir klasörden başka bir klasöre **kopyalar**. Azure Data Factory kullanarak verileri **dönüştürme** hakkında bir öğretici için bkz. [Öğretici: Spark kullanarak verileri dönüştürme](transform-data-using-spark.md).
 
 > [!NOTE]
 > Bu makale, Data Factory hizmetine ayrıntılı giriş bilgileri sağlamaz. Azure Data Factory hizmetine giriş bilgileri için bkz. [Azure Data Factory'ye giriş](introduction.md).
@@ -435,16 +435,16 @@ Dağıtılan tetikleyici durdurulmuş durumdadır. Tetikleyiciyi başlatma yönt
 
 3. Data Factory sayfasında, **& İzleyicisi** kutucuğunu yaz ' a tıklayın.
 
-4. **Haydi başlayalım** sayfasında, **izleyici sekmesini**seçin.  ![İşlem hattı çalıştırmasını izleme](media/doc-common-process/get-started-page-monitor-button.png)
+4. **Haydi başlayalım** sayfasında, **izleyici sekmesini**seçin.  ![Izleme işlem hattı çalıştırma](media/doc-common-process/get-started-page-monitor-button.png)
 
     > [!IMPORTANT]
-    > İşlem hattı çalıştırmalarını yalnızca saat saatinde görürsünüz (örneğin: 4, 5, 10:00, vb.). Zaman sonraki saate ulaştığında listeyi yenilemek için araç çubuğunda **Yenile**’ye tıklayın.
+    > İşlem hattının yalnızca saat başı çalıştığını görürsünüz (örneğin: sabah 4, 5, 6 vb.). Zaman sonraki saate ulaştığında listeyi yenilemek için araç çubuğunda **Yenile**’ye tıklayın.
 
 5. **Eylemler** sütunundaki **etkinlik çalıştırmalarını görüntüle** bağlantısına tıklayın.
 
     ![İşlem hattı eylemleri bağlantısı](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
-6. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görürsünüz. Bu hızlı başlangıçta, işlem hattının türünde yalnızca bir etkinliği vardır: Kopya. Bu nedenle, bu etkinliğe ait bir çalıştırma görürsünüz.
+6. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görürsünüz. Bu hızlı başlangıçta işlem hattı yalnızca bir etkinlik türü içerir: Kopyalama. Bu nedenle, bu etkinliğe ait bir çalıştırma görürsünüz.
 
     ![Etkinlik çalıştırmaları](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
 7. Eylemler sütununun altındaki **Çıkış** bağlantısına tıklayın. Kopyalama işleminin çıktısını bir **Çıktı** penceresinde görürsünüz. Tam çıktıyı görmek için ekranı kapla düğmesine tıklayın. Ekranı kaplayan çıktı penceresini veya çıktıyı kapatabilirsiniz.
@@ -495,7 +495,7 @@ ConnectionString, storageAccountName ve storageAccountKey parametrelerini kullan
 
 #### <a name="binary-input-dataset"></a>İkili giriş veri kümesi
 
-Azure Depolama bağlı hizmeti, Data Factory hizmetinin Azure depolama hesabınıza bağlanmak için çalışma zamanında kullandığı bağlantı dizesini belirtir. Ikili veri kümesi tanımında, blob kapsayıcısı, klasör ve girdi verilerini içeren dosyanın adını belirtirsiniz. Ikili veri kümesini tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi için bkz. [ikili veri kümesi özellikleri](format-binary.md#dataset-properties) .
+Azure depolama bağlı hizmeti, Data Factory hizmetinin Azure depolama hesabınıza bağlanmak için çalışma zamanında kullandığı bağlantı dizesini belirtir. Ikili veri kümesi tanımında, blob kapsayıcısı, klasör ve girdi verilerini içeren dosyanın adını belirtirsiniz. Ikili veri kümesini tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi için bkz. [ikili veri kümesi özellikleri](format-binary.md#dataset-properties) .
 
 ```json
 {  

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 844e24466e9a9b46be3212690767a408e75f234d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516623"
+ms.locfileid: "73585405"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure Application Gateway Web uygulaması güvenlik duvarı v2 için özel kurallar
 
@@ -162,6 +162,11 @@ Eşleştirilecek değerler listesi, *veya*' Ed olarak düşünülebilir. Örneğ
 - GNLK – kuralın günlüğe yazmasına Izin verir, ancak kuralların geri kalanının değerlendirme için çalışmasına izin verir. Sonraki özel kurallar öncelik sırasına göre değerlendirilir ve ardından yönetilen kuralları izler.
 
 ## <a name="geomatch-custom-rules-preview"></a>Geomatch özel kuralları (Önizleme)
+
+Özel kurallar, uygulamanızın tam ihtiyaçlarına ve Güvenlik ilkelerinize uyacak şekilde uyarlanmış kuralların oluşturulmasına olanak sağlar. Artık, Web uygulamalarınıza erişimi, genel önizlemede bulunan ülkeye/bölgeye göre kısıtlayabileceksiniz. Tüm özel kurallarda olduğu gibi, bu mantık uygulamanızın ihtiyaçlarını karşılamak için diğer kurallarla birlikte iade edilebilir. 
+
+   > [!NOTE]
+   > Geomatch özel kuralları Orta Güney ABD ve Kuzey Avrupa kullanılabilir. Portalda bunlara erişmek için lütfen herkes için etkin olana kadar [Bu bağlantıyı](https://aka.ms/AppGWWAFGeoMatch) kullanın. 
 
 Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ülke kodlarından herhangi biri olabilir. 
 

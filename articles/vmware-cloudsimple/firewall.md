@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772337"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606450"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Özel bulutlar için güvenlik duvarı tabloları ve kuralları ayarlama
 
@@ -33,6 +33,9 @@ Güvenlik Duvarı tabloları ve ilişkili kurallar, belirli alt ağlara ve VLAN 
 4. Tablo için bir ad girin.
 5. Tablo için varsayılan bir kural listelenir. **Yeni kural** oluştur ' a tıklayarak ek bir kural oluşturun. Ayrıntılar için aşağıdaki yordama bakın.
 6. Güvenlik Duvarı tablosunu kaydetmek için **bitti** ' ye tıklayın.
+
+> [!IMPORTANT]
+> Özel bulut başına en fazla iki güvenlik duvarı tablosu oluşturabilirsiniz.
 
 ## <a name="firewall-rules"></a>Güvenlik duvarı kuralları
 
@@ -62,6 +65,9 @@ Güvenlik duvarı kuralları, güvenlik duvarının belirli trafik türlerini na
 
 3. Kuralı kaydetmek ve güvenlik duvarı tablosu için kurallar listesine eklemek için **bitti** ' ye tıklayın.
 
+> [!IMPORTANT]
+> Her güvenlik duvarı tablosu en fazla 10 gelen kurala ve 20 giden kurala sahip olabilir. Bu sınırlar, [Destek ile iletişim](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)kurarak artırılabilir.
+
 ## <a name="attach-vlanssubnets"></a>VLAN 'Ları/alt ağları Ekle
 
 Bir güvenlik duvarı tablosu tanımladıktan sonra, tablodaki kurallara tabi olan alt ağları belirtebilirsiniz.
@@ -70,4 +76,4 @@ Bir güvenlik duvarı tablosu tanımladıktan sonra, tablodaki kurallara tabi ol
 2. **Bağlı VLAN/alt ağ** sekmesini açın.
 3. **VLAN/subnet 'e Ekle**' ye tıklayın.
 4. Özel bulutu ve VLAN 'ı seçin. İlişkili alt ağ adı ve CıDR bloğu gösterilmektedir.
-5. **Gönder**'e tıklayın.
+5. **Gönder**' e tıklayın.

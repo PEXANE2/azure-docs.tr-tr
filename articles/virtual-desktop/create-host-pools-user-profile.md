@@ -1,5 +1,5 @@
 ---
-title: Sanal makine tabanlı dosya paylaşma kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma-Azure
+title: Windows sanal masaüstü FSLogix profili kapsayıcı paylaşma-Azure
 description: Sanal makine tabanlı dosya paylaşımının kullanıldığı bir Windows sanal masaüstü konak havuzu için FSLogix profil kapsayıcısını ayarlama.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 0e7516fc4874e4cbc387f2f494efc6ef745d64f7
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 65d800cc6c1b6818369807ffeae9cd350a34066f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311599"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606999"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Dosya paylaşımı kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturma
 
@@ -59,13 +59,13 @@ Sanal makineleri FSLogix yazılımıyla yapılandırmak için, konak havuzuna ka
 
 1. Sanal makineyi oluştururken girdiğiniz kimlik bilgileriyle [sanal makineye bağlanın](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) .
 2. Bir internet tarayıcısı başlatın ve FSLogix aracısını indirmek için [Bu bağlantıya](https://go.microsoft.com/fwlink/?linkid=2084562) gidin.
-3. . Zip dosyasında \\ @ no__t-1Win32 @ no__t-2Release veya \\ @ no__t-4X64 @ no__t-5Release ' e gidin ve **Fslogixappssetup** ' ı çalıştırarak FSLogix aracısını kurun.  FSLogix 'i yükleme hakkında daha fazla bilgi edinmek için bkz. [Fslogix indirme ve yükleme](https://docs.microsoft.com/fslogix/install-ht).
-4. Aracının yüklü olduğunu onaylamak için  > **Fslogix** > **uygulamalarıyla** **Program Files**' a gidin.
-5. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **Bilgisayar @ no__t-1HKEY_LOCAL_MACHINE @ no__t-2software @ no__t-3FSLogix**dizinine gidin.
+3. . Zip dosyasında \\\\Win32\\Release veya \\\\x64\\sürümü ' ne gidin ve **Fslogixappssetup** ' ı çalıştırarak FSLogix aracısını kurun.  FSLogix 'i yükleme hakkında daha fazla bilgi edinmek için bkz. [Fslogix indirme ve yükleme](https://docs.microsoft.com/fslogix/install-ht).
+4. Aracının yüklü olduğunu onaylamak için > **Fslogix** > **Apps** **program dosyalarına** gidin.
+5. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **\\hkey_local_machıne\\software\\FSLogix bilgisayarına**gidin.
 6. **Profiller**adlı bir anahtar oluşturun.
 7. Profiller anahtarı için aşağıdaki değerleri oluşturun:
 
-| Adı                | Tür               | Veri/değer                        |
+| Ad                | Tür               | Veri/değer                        |
 |---------------------|--------------------|-----------------------------------|
 | Etkin             | EKLEYEBILECEĞI              | 1                                 |
 | Vhdkonumları        | Çok dizeli değer | "Dosya paylaşımının ağ yolu"     |

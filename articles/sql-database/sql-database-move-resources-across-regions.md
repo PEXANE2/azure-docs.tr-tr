@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı kaynaklarını başka bir bölgeye taşıma | Microsoft Docs
+title: Azure SQL veritabanı kaynaklarını başka bir bölgeye taşıma
 description: Azure SQL veritabanınızı, Azure SQL elastik havuzunu veya Azure SQL yönetilen örneğinizi başka bir bölgeye taşımayı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 2158d4120445de4c62461fb89555a1b73bc1e2b4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e7cd6cb338de1d029d38ef08693a7b52f7cf15c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567165"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687783"
 ---
 # <a name="how-to-move-azure-sql-resources-to-another-region"></a>Azure SQL kaynaklarını başka bir bölgeye taşıma
 
@@ -67,19 +67,19 @@ Bu makale, kaynakları farklı bir bölgeye taşımak için genel bir iş akış
  
 ### <a name="monitor-the-preparation-process"></a>Hazırlama işlemini izleme
 
-Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate**için bir özellik içerir: 
-   - **Replicationstate = 2** (CATCH_UP) veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir. 
-   - **Replicationstate = 0** (Dengelı DAĞıTıM), veritabanının henüz çalıştırılmadığını ve Yük Devretme girişiminin başarısız olacağını gösterir. 
+Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. `Get-AzSqlDatabaseFailoverGroup` çıkış nesnesi **replicationstate**için bir özellik içerir: 
+   - **Replicationstate = 2** (CATCH_UP), veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir. 
+   - **Replicationstate = 0** (dengeli dağıtım), veritabanının henüz çalıştırılmadığını ve yük devretme denemesinin başarısız olacağını belirtir. 
 
 ### <a name="test-synchronization"></a>Test eşitlemesi
 
-Bir **replicationstate** `2`olduktan sonra, bağlantı, uygun güvenlik yapılandırması ve verileri sağlamak için her bir veritabanına `<fog-name>.secondary.database.windows.net` veya ikincil uç noktayı kullanarak veritabanlarının alt kümesine bağlanın ve veritabanlarına yönelik sorgu gerçekleştirin yinelemesi. 
+**Replicationstate** `2`olduktan sonra, ikincil uç nokta `<fog-name>.secondary.database.windows.net` kullanarak her bir veritabanına veya veritabanlarının alt kümesine bağlanın ve bağlantı, uygun güvenlik yapılandırması ve veri çoğaltmayı sağlamak için veritabanlarına yönelik sorgu gerçekleştirin. 
 
 ### <a name="initiate-the-move"></a>Taşımayı Başlat
 
-1. İkincil uç noktayı `<fog-name>.secondary.database.windows.net`kullanarak hedef sunucuya bağlanın.
+1. İkincil uç nokta `<fog-name>.secondary.database.windows.net`kullanarak hedef sunucuya bağlanın.
 1. İkincil yönetilen örneği tam eşitlemeyle birincil olacak şekilde değiştirmek için [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) komutunu kullanın. Bu işlem başarılı olur ya da geri alınacaktır. 
-1. DNS CNAME girişinin hedef bölgenin IP adresine işaret ettiğini `nslook up <fog-name>.secondary.database.windows.net` belirlemek için komutunu kullanarak komutun başarıyla tamamlandığını doğrulayın. Switch komutu başarısız olursa CNAME güncellenmez. 
+1. DNS CNAME girişinin hedef bölgenin IP adresine işaret ettiğini belirlemek için `nslook up <fog-name>.secondary.database.windows.net` kullanarak komutun başarıyla tamamlandığını doğrulayın. Switch komutu başarısız olursa CNAME güncellenmez. 
 
 ### <a name="remove-the-source-databases"></a>Kaynak veritabanlarını kaldırma
 
@@ -119,19 +119,19 @@ Taşıma tamamlandıktan sonra gereksiz ücretlerden kaçınmak için kaynak bö
 
 ### <a name="monitor-the-preparation-process"></a>Hazırlama işlemini izleme
 
-Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate**için bir özellik içerir: 
-   - **Replicationstate = 2** (CATCH_UP) veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir. 
-   - **Replicationstate = 0** (Dengelı DAĞıTıM), veritabanının henüz çalıştırılmadığını ve Yük Devretme girişiminin başarısız olacağını gösterir. 
+Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. `Get-AzSqlDatabaseFailoverGroup` çıkış nesnesi **replicationstate**için bir özellik içerir: 
+   - **Replicationstate = 2** (CATCH_UP), veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir. 
+   - **Replicationstate = 0** (dengeli dağıtım), veritabanının henüz çalıştırılmadığını ve yük devretme denemesinin başarısız olacağını belirtir. 
 
 ### <a name="test-synchronization"></a>Test eşitlemesi
  
-Bir **replicationstate** `2`olduktan sonra, bağlantı, uygun güvenlik yapılandırması ve verileri sağlamak için her bir veritabanına `<fog-name>.secondary.database.windows.net` veya ikincil uç noktayı kullanarak veritabanlarının alt kümesine bağlanın ve veritabanlarına yönelik sorgu gerçekleştirin yinelemesi. 
+**Replicationstate** `2`olduktan sonra, ikincil uç nokta `<fog-name>.secondary.database.windows.net` kullanarak her bir veritabanına veya veritabanlarının alt kümesine bağlanın ve bağlantı, uygun güvenlik yapılandırması ve veri çoğaltmayı sağlamak için veritabanlarına yönelik sorgu gerçekleştirin. 
 
 ### <a name="initiate-the-move"></a>Taşımayı Başlat
  
-1. İkincil uç noktayı `<fog-name>.secondary.database.windows.net`kullanarak hedef sunucuya bağlanın.
+1. İkincil uç nokta `<fog-name>.secondary.database.windows.net`kullanarak hedef sunucuya bağlanın.
 1. İkincil yönetilen örneği tam eşitlemeyle birincil olacak şekilde değiştirmek için [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) komutunu kullanın. Bu işlem başarılı olur ya da geri alınacaktır. 
-1. DNS CNAME girişinin hedef bölgenin IP adresine işaret ettiğini `nslook up <fog-name>.secondary.database.windows.net` belirlemek için komutunu kullanarak komutun başarıyla tamamlandığını doğrulayın. Switch komutu başarısız olursa CNAME güncellenmez. 
+1. DNS CNAME girişinin hedef bölgenin IP adresine işaret ettiğini belirlemek için `nslook up <fog-name>.secondary.database.windows.net` kullanarak komutun başarıyla tamamlandığını doğrulayın. Switch komutu başarısız olursa CNAME güncellenmez. 
 
 ### <a name="remove-the-source-elastic-pools"></a>Kaynak elastik havuzları kaldırma
  
@@ -166,19 +166,19 @@ Her kaynak örneği ve ilgili hedef örneği arasında bir yük devretme grubu o
  
 ### <a name="monitor-the-preparation-process"></a>Hazırlama işlemini izleme
 
-Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate**için bir özellik içerir: 
-   - **Replicationstate = 2** (CATCH_UP) veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir. 
-   - **Replicationstate = 0** (Dengelı DAĞıTıM), veritabanının henüz çalıştırılmadığını ve Yük Devretme girişiminin başarısız olacağını gösterir. 
+Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) öğesini düzenli aralıklarla çağırabilirsiniz. `Get-AzSqlDatabaseFailoverGroup` çıkış nesnesi **replicationstate**için bir özellik içerir: 
+   - **Replicationstate = 2** (CATCH_UP), veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir. 
+   - **Replicationstate = 0** (dengeli dağıtım), veritabanının henüz çalıştırılmadığını ve yük devretme denemesinin başarısız olacağını belirtir. 
 
 ### <a name="test-synchronization"></a>Test eşitlemesi
 
-Bir **replicationstate** `2`olduktan sonra, bağlantı, uygun güvenlik yapılandırması ve verileri sağlamak için her bir veritabanına `<fog-name>.secondary.database.windows.net` veya ikincil uç noktayı kullanarak veritabanlarının alt kümesine bağlanın ve veritabanlarına yönelik sorgu gerçekleştirin yinelemesi. 
+**Replicationstate** `2`olduktan sonra, ikincil uç nokta `<fog-name>.secondary.database.windows.net` kullanarak her bir veritabanına veya veritabanlarının alt kümesine bağlanın ve bağlantı, uygun güvenlik yapılandırması ve veri çoğaltmayı sağlamak için veritabanlarına yönelik sorgu gerçekleştirin. 
 
 ### <a name="initiate-the-move"></a>Taşımayı Başlat 
 
-1. İkincil uç noktayı `<fog-name>.secondary.database.windows.net`kullanarak hedef sunucuya bağlanın.
+1. İkincil uç nokta `<fog-name>.secondary.database.windows.net`kullanarak hedef sunucuya bağlanın.
 1. İkincil yönetilen örneği tam eşitlemeyle birincil olacak şekilde değiştirmek için [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) komutunu kullanın. Bu işlem başarılı olur ya da geri alınacaktır. 
-1. DNS CNAME girişinin hedef bölgenin IP adresine işaret ettiğini `nslook up <fog-name>.secondary.database.windows.net` belirlemek için komutunu kullanarak komutun başarıyla tamamlandığını doğrulayın. Switch komutu başarısız olursa CNAME güncellenmez. 
+1. DNS CNAME girişinin hedef bölgenin IP adresine işaret ettiğini belirlemek için `nslook up <fog-name>.secondary.database.windows.net` kullanarak komutun başarıyla tamamlandığını doğrulayın. Switch komutu başarısız olursa CNAME güncellenmez. 
 
 ### <a name="remove-the-source-managed-instances"></a>Kaynak yönetilen örnekleri kaldır
 Taşıma tamamlandıktan sonra gereksiz ücretlerden kaçınmak için kaynak bölgedeki kaynakları kaldırın. 

@@ -1,6 +1,6 @@
 ---
-title: SQL Data Warehouse 'da geçici tablolar | Microsoft Docs
-description: Geçici tabloları kullanmaya yönelik temel kılavuz ve oturum düzeyi geçici tablolarının ilkelerini vurgular.
+title: Geçici tablolar
+description: Azure SQL veri ambarı 'nda geçici tabloları kullanmaya yönelik temel kılavuz, oturum düzeyi geçici tablolarının ilkelerini vurgulamalıdır.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e43e52e56ec7abbf5d8eb879defef54bd7d50658
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 23a5825a32c602f70aff1d9f577ce13d3e9f2260
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479820"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685439"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL Data Warehouse 'da geçici tablolar
 Bu makale, geçici tabloları kullanmaya yönelik temel kılavuz içerir ve oturum düzeyi geçici tablolarının ilkelerini vurgular. Bu makaledeki bilgilerin kullanılması, kodunuzun kodlarınızın hem yeniden kullanılabilirliğini hem de bakımının kolayca bakımını iyileştirmeye yardımcı olabilir.
@@ -24,7 +25,7 @@ Bu makale, geçici tabloları kullanmaya yönelik temel kılavuz içerir ve otur
 Geçici tablolar, özellikle ara sonuçların geçici olduğu dönüştürme sırasında verileri işlerken yararlı olur. SQL veri ambarı 'nda, geçici tablolar oturum düzeyinde bulunur.  Bunlar yalnızca oluşturuldukları oturum için görünür ve oturum kapattığında otomatik olarak bırakılır.  Geçici tablolar, sonuçları uzak depolama yerine yerel olarak yazıldığı için bir performans avantajı sunar.
 
 ## <a name="create-a-temporary-table"></a>Geçici tablo oluşturma
-Geçici tablolar, tablo adınızın bir `#`ile önek olarak eklenerek oluşturulur.  Örneğin:
+Geçici tablolar, tablo adınızı bir `#`önek olarak ekleyerek oluşturulur.  Örneğin:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -44,7 +45,7 @@ WITH
 )
 ```
 
-Geçici tablolar, tam olarak aynı yaklaşımla `CTAS` birlikte kullanılarak da oluşturulabilir:
+Geçici tablolar, tam olarak aynı yaklaşım kullanılarak `CTAS` de oluşturulabilir:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -85,12 +86,12 @@ GROUP BY
 ``` 
 
 > [!NOTE]
-> `CTAS`güçlü bir komuttur ve işlem günlüğü alanı kullanımıyla ilgili verimli bir avantajdır. 
+> `CTAS` güçlü bir komuttur ve işlem günlüğü alanı kullanımıyla ilgili verimli bir avantajdır. 
 > 
 > 
 
 ## <a name="dropping-temporary-tables"></a>Geçici tabloları bırakma
-Yeni bir oturum oluşturulduğunda geçici tabloların olmaması gerekir.  Ancak, aynı ada sahip bir geçici oluşturan aynı saklı yordamı arıyorsanız, deyimlerinizin `CREATE TABLE` başarılı olmasını sağlamak için, aşağıdaki örnekte olduğu gibi, bir ile birlikte bir `DROP` basit ön varlık denetimi kullanılabilir:
+Yeni bir oturum oluşturulduğunda geçici tabloların olmaması gerekir.  Ancak, aynı ada sahip bir geçici oluşturan aynı saklı yordamı arıyorsanız, `CREATE TABLE` deyimlerinizin başarılı olduğundan emin olmak için, aşağıdaki örnekte olduğu gibi, bir `DROP` basit bir ön varlık denetimi kullanılabilir:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -99,7 +100,7 @@ BEGIN
 END
 ```
 
-Kodlama tutarlılığı için, bu düzenin hem tablolar hem de geçici tablolar için kullanılması iyi bir uygulamadır.  Ayrıca, kodunuzda işiniz bittiğinde geçici tabloları kaldırmak `DROP TABLE` için kullanmak iyi bir fikirdir.  Saklı yordam geliştirme bölümünde, bu nesnelerin temizlendiğinden emin olmak için bir yordamın sonunda bırakma komutlarının birlikte paketlenmiştir.
+Kodlama tutarlılığı için, bu düzenin hem tablolar hem de geçici tablolar için kullanılması iyi bir uygulamadır.  Kodunuzda bitirdiğinizde geçici tabloları kaldırmak için `DROP TABLE` kullanmak da iyi bir fikirdir.  Saklı yordam geliştirme bölümünde, bu nesnelerin temizlendiğinden emin olmak için bir yordamın sonunda bırakma komutlarının birlikte paketlenmiştir.
 
 ```sql
 DROP TABLE #stats_ddl
@@ -180,7 +181,7 @@ FROM    t1
 GO
 ```
 
-Bu aşamada, oluşan tek eylem, DDL deyimleriyle #stats_ddl geçici bir tablo oluşturan bir saklı yordamın oluşturulmasına neden olur.  Bu saklı yordam, bir oturum içinde birden fazla kez çalıştırıldığında başarısız olmamasını sağlamak için zaten mevcutsa #stats_ddl bırakır.  Bununla birlikte, `DROP TABLE` saklı yordamın sonunda, saklı yordam tamamlandığında, saklı yordamın dışında okunabilmesi için oluşturulan tabloyu bırakır.  SQL veri ambarı ' nda, diğer SQL Server veritabanlarının aksine, geçici tabloyu onu oluşturan yordamın dışında kullanmak mümkündür.  SQL veri ambarı geçici tabloları, oturum içinde **herhangi bir yerde** kullanılabilir. Bu, aşağıdaki örnekte olduğu gibi daha modüler ve yönetilebilir kod oluşmasına neden olabilir:
+Bu aşamada, oluşan tek eylem, DDL deyimleriyle #stats_ddl geçici bir tablo oluşturan bir saklı yordamın oluşturulmasına neden olur.  Bu saklı yordam, bir oturum içinde birden fazla kez çalıştırıldığında başarısız olmamasını sağlamak için zaten mevcutsa #stats_ddl bırakır.  Ancak, saklı yordamın sonunda `DROP TABLE` olmadığından, saklı yordam tamamlandığında, saklı yordamın dışında okunabilmesi için oluşturulan tabloyu bırakır.  SQL veri ambarı ' nda, diğer SQL Server veritabanlarının aksine, geçici tabloyu onu oluşturan yordamın dışında kullanmak mümkündür.  SQL veri ambarı geçici tabloları, oturum içinde **herhangi bir yerde** kullanılabilir. Bu, aşağıdaki örnekte olduğu gibi daha modüler ve yönetilebilir kod oluşmasına neden olabilir:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;

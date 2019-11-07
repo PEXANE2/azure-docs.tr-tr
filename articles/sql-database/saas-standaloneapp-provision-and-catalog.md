@@ -1,5 +1,5 @@
 ---
-title: Çok kiracılı SaaS öğreticisi-Azure SQL veritabanı | Microsoft Docs
+title: Çok kiracılı SaaS öğreticisi-Azure SQL veritabanı
 description: Tek başına uygulama modelini kullanarak yeni kiracılar sağlama ve kataloglayın
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/24/2018
-ms.openlocfilehash: f9087ff33bccb54497ec8d781a47469553683d65
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de1007aac3988f2ea78b9d1b7b1de19b862f196a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570279"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691944"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Kiracı SaaS düzenine göre uygulama kullanarak yeni kiracılar sağlayın ve kataloglayın
 
@@ -57,7 +57,7 @@ Her kiracı, kaynakların içinde sağlanmasından önce oluşturulması gereken
 
 ## <a name="tutorial"></a>Öğretici
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Katalog sağlama
 * Daha önce katalogda dağıttığınız örnek kiracı veritabanlarını kaydedin
@@ -67,7 +67,7 @@ Uygulamayı dağıtmak ve yapılandırmak için bir Azure Resource Manager şabl
 
 Bu öğreticinin sonunda, her bir veritabanı katalogda kayıtlı olan bir tek başına kiracı uygulamaları kümesine sahip olursunuz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun: 
 
@@ -81,10 +81,10 @@ Bu görevde, tüm kiracı veritabanlarını kaydetmek için kullanılan kataloğ
 * Azure Kaynak Yönetimi şablonu kullanarak **Katalog veritabanını sağlayın** . Veritabanı bacpac dosyası içeri aktarılmasıyla başlatılır.  
 * Daha önce dağıttığınız **örnek kiracı uygulamalarını kaydettirin** .  Her kiracı, kiracı adının karmasından oluşturulmuş bir anahtar kullanılarak kaydedilir.  Kiracı adı, katalogdaki bir uzantı tablosunda da depolanır.
 
-1. PowerShell ISE 'de *. ..\learning modules\userconfig.exe* dosyasını açın ve **\<Kullanıcı\>** değerini üç örnek uygulamayı dağıttığınızda kullandığınız değere güncelleştirin.  **Dosyayı kaydedin**.  
+1. PowerShell ıSE 'de *. ..\Learning Modules\userconfig.exe* dosyasını açın ve **\<User\>** değerini üç örnek uygulamayı dağıtmada kullandığınız değere güncelleştirin.  **Dosyayı kaydedin**.  
 1. PowerShell ıSE 'de *. ..\Learning Modules\provisiontenants\demo-provisionandcatalog.exe dosyasını* açın ve **$Scenario = 1**olarak ayarlayın. Kiracı kataloğunu dağıtın ve önceden tanımlanmış kiracılar 'ı kaydedin.
 
-1. İmlecinizi, `& $PSScriptRoot\New-Catalog.ps1`, ve ardından **F9**tuşuna basarak bir yere yerleştirerek bir kesme noktası ekleyin.
+1. İmlecinizi, `& $PSScriptRoot\New-Catalog.ps1`belirten satıra yerleştirerek bir kesme noktası ekleyin ve ardından **F9**tuşuna basın.
 
     ![izleme için kesme noktası ayarlama](media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
@@ -97,14 +97,14 @@ Betik tamamlandıktan sonra, katalog var olur ve tüm örnek kiracılar kaydedil
 
 Şimdi oluşturduğunuz kaynaklara bakın.
 
-1. [Azure Portal](https://portal.azure.com/) açın ve kaynak gruplarına gözatamazsınız.  **Wingtip-sa-\<Catalog-user\>**  kaynak grubunu açın ve katalog sunucusunu ve veritabanını göz önünde edin.
-1. Portalda veritabanını açın ve sol taraftaki menüden *Veri Gezgini* ' ni seçin.  Oturum aç komutuna tıklayın ve ardından Password = **P\@ssword1**yazın.
+1. [Azure Portal](https://portal.azure.com/) açın ve kaynak gruplarına gözatamazsınız.  **Wingtip-sa-Catalog-\<kullanıcı\>** kaynak grubunu açın ve katalog sunucusunu ve veritabanını göz önünde edin.
+1. Portalda veritabanını açın ve sol taraftaki menüden *Veri Gezgini* ' ni seçin.  Oturum aç komutuna tıklayın ve ardından Password = **P\@ssword1**girin.
 
 
 1. *Tenantcatalog* veritabanının şemasını gezin.  
-   * `__ShardManagement` Şemadaki nesneler, elastik veritabanı istemci kitaplığı tarafından sağlanır.
-   * `Tenants` Tablo ve`TenantsExtended` görünüm, ek değer sağlamak üzere kataloğun nasıl uzatılacağını gösteren, örneğe eklenen uzantılardır.
-1. Sorguyu `SELECT * FROM dbo.TenantsExtended`çalıştırın.          
+   * `__ShardManagement` şemadaki nesneler, elastik veritabanı Istemci kitaplığı tarafından sağlanır.
+   * `Tenants` tablosu ve `TenantsExtended` görünümü, ek değer sağlamak üzere kataloğun nasıl uzatılacağını gösteren, örneğe eklenen uzantılardır.
+1. `SELECT * FROM dbo.TenantsExtended`sorguyu çalıştırın.          
 
    ![Veri Gezgini](media/saas-standaloneapp-provision-and-catalog/data-explorer-tenantsextended.png)
 
@@ -124,7 +124,7 @@ Bu görevde, tek bir kiracı uygulamasını sağlamayı öğreneceksiniz. Yapaca
 
 1. PowerShell ıSE 'de *. ..\Learning Modules\provisiontenants\demo-provisionandcatalog.exe* ve set **$Scenario = 2**' yi açın. Kiracı kataloğunu dağıtma ve önceden tanımlanmış kiracılar kaydetme
 
-1. İmlecinizi, `& $PSScriptRoot\New-TenantApp.ps1`, ve ardından **F9**tuşuna basarak satır 49 ' de bir yere yerleştirerek betiğe bir kesme noktası ekleyin.
+1. İmlecinizi, `& $PSScriptRoot\New-TenantApp.ps1`ve ardından **F9**tuşuna basarak satır 49 ' de istediğiniz yere yerleştirerek betiğe bir kesme noktası ekleyin.
 1. **F5**tuşuna basarak betiği çalıştırın. 
 1.  Komut dosyası yürütme kesme noktasında durduktan sonra, New-Catalog. ps1 betiğine dönmek için **F11** tuşuna basın.
 1.  Komut dosyasının yürütülmesini, hata ayıklama menü seçenekleri, F10 ve F11 kullanarak, çağrılan işlevleri üzerinde veya içine adımla izleyin.

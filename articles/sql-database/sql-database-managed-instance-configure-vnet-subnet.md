@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı yönetilen örneği için mevcut bir sanal ağı yapılandırma | Microsoft Docs
+title: Azure SQL veritabanı yönetilen örneği için mevcut bir sanal ağı yapılandırma
 description: Bu makalede, Azure SQL veritabanı yönetilen örneğini dağıtabileceğiniz mevcut bir sanal ağın ve alt ağın nasıl yapılandırılacağı açıklanır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 01/15/2019
-ms.openlocfilehash: 509a08705d87e8f789e26ebbcec295a31f99f416
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0f6ababa9d25798f4b150c322d48d4c7af04a511
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567635"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689383"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği için mevcut bir sanal ağı yapılandırma
 
@@ -52,9 +52,9 @@ Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepar
 
 Betik, alt ağı üç adımda hazırlar:
 
-1. Doğrulamalısınız Yönetilen örnek ağ gereksinimleri için seçili sanal ağı ve alt ağı doğrular.
-2. Göründüğünü Kullanıcıya, yönetilen örnek dağıtımı için alt ağı hazırlamak üzere yapılması gereken bir değişiklik kümesi gösterir. Ayrıca onay ister.
-3. Hazırlanır Sanal ağı ve alt ağı düzgün şekilde yapılandırır.
+1. Doğrula: yönetilen örnek ağ gereksinimleri için seçili sanal ağı ve alt ağı doğrular.
+2. Onayla: kullanıcıya, yönetilen örnek dağıtımı için alt ağı hazırlamak üzere yapılması gereken bir değişiklik kümesi gösterilir. Ayrıca onay ister.
+3. Hazırlama: sanal ağı ve alt ağı düzgün şekilde yapılandırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory içindeki saklı yordam etkinliğini kullanarak verileri dönüştürme | Microsoft Docs
+title: Azure Data Factory içindeki saklı yordam etkinliğini kullanarak verileri dönüştürme
 description: Bir Data Factory işlem hattından bir Azure SQL veritabanı/veri ambarında saklı yordam çağırmak için SQL Server saklı yordam etkinliğinin nasıl kullanılacağını açıklar.
 services: data-factory
 documentationcenter: ''
@@ -10,33 +10,33 @@ ms.date: 11/27/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: e063875e4c619b65290511d61923fd7c715aba49
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 5ebb2b9cdcbef59e07476dbebd289bb4402ca5fa
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742173"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683711"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory SQL Server saklı yordam etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-stored-proc-activity.md)
 > * [Geçerli sürüm](transform-data-using-stored-procedure.md)
 
-Ham verileri tahmine dayalı ve Öngörüler halinde dönüştürmek [](concepts-pipelines-activities.md) ve işlemek için bir Data Factory işlem hattındaki veri dönüştürme etkinliklerini kullanırsınız. Saklı yordam etkinliği Data Factory desteklediği dönüştürme etkinliklerinden biridir. Bu makalede, veri dönüşümüyle ilgili genel bir genel bakış ve Data Factory içindeki desteklenen dönüştürme etkinlikleri sunan [verileri Dönüştür](transform-data.md) makalesinde derleme yapılır.
+Ham verileri tahmine dayalı ve Öngörüler halinde dönüştürmek ve [işlemek için bir](concepts-pipelines-activities.md) Data Factory işlem hattındaki veri dönüştürme etkinliklerini kullanırsınız. Saklı yordam etkinliği Data Factory desteklediği dönüştürme etkinliklerinden biridir. Bu makalede, veri dönüşümüyle ilgili genel bir genel bakış ve Data Factory içindeki desteklenen dönüştürme etkinlikleri sunan [verileri Dönüştür](transform-data.md) makalesinde derleme yapılır.
 
 > [!NOTE]
-> Azure Data Factory yeni kullanıyorsanız, Azure Data Factory ve Öğreticiyi bir [şekilde](introduction.md) okuyun: [Öğretici:](tutorial-transform-data-spark-powershell.md) bu makaleyi okumadan önce verileri dönüştürün. 
+> Azure Data Factory yeni bir deyişle, [Azure Data Factory 'ye giriş](introduction.md) yapın ve öğreticiyi yapın: Öğretici: Bu makaleyi okumadan önce [verileri dönüştürün](tutorial-transform-data-spark-powershell.md) . 
 
 Saklı yordam etkinliğini, kuruluşunuzda bulunan aşağıdaki veri depolarından birinde veya bir Azure sanal makinesinde (VM) bulunan bir saklı yordamı çağırmak için kullanabilirsiniz: 
 
-- Azure SQL Database
+- Azure SQL Veritabanı
 - Azure SQL Veri Ambarı
 - SQL Server veritabanı.  SQL Server kullanıyorsanız, kendisini barındıran aynı makineye veya veritabanına erişimi olan ayrı bir makineye şirket içinde barındırılan tümleştirme çalışma zamanı 'nı yükleyebilirsiniz. Şirket içinde barındırılan tümleştirme çalışma zamanı, Azure VM 'deki veri kaynaklarını güvenli ve yönetilen bir şekilde bulut hizmetleriyle bağlayan bir bileşendir. Ayrıntılar için bkz. [Şirket içinde barındırılan tümleştirme çalışma zamanı](create-self-hosted-integration-runtime.md) makalesi.
 
 > [!IMPORTANT]
-> Verileri Azure SQL veritabanı 'na veya SQL Server kopyalarken, Copy etkinliğinde **Sqlsink** öğesini, **sqlWriterStoredProcedureName** özelliğini kullanarak bir saklı yordam çağırmak üzere yapılandırabilirsiniz. Özelliği hakkında daha fazla bilgi için, aşağıdaki bağlayıcı makalelerine bakın: [Azure SQL veritabanı](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Bir kopyalama etkinliği kullanarak verileri Azure SQL veri ambarı 'na kopyalarken saklı bir yordamı çağırmak desteklenmez. Ancak, bir SQL veri ambarında saklı yordam çağırmak için saklı yordam etkinliğini kullanabilirsiniz. 
+> Verileri Azure SQL veritabanı 'na veya SQL Server kopyalarken, Copy etkinliğinde **Sqlsink** öğesini, **sqlWriterStoredProcedureName** özelliğini kullanarak bir saklı yordam çağırmak üzere yapılandırabilirsiniz. Özelliği hakkında daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Bir kopyalama etkinliği kullanarak verileri Azure SQL veri ambarı 'na kopyalarken saklı bir yordamı çağırmak desteklenmez. Ancak, bir SQL veri ambarında saklı yordam çağırmak için saklı yordam etkinliğini kullanabilirsiniz. 
 >
-> Azure SQL veritabanı veya SQL Server ya da Azure SQL veri ambarı 'ndan veri kopyalarken, **sqlReaderStoredProcedureName** kullanarak kaynak veritabanından veri okumak için bir saklı yordam çağırmak üzere **SQLSource** 'u Copy etkinliğinde yapılandırabilirsiniz. özelliði. Daha fazla bilgi için aşağıdaki bağlayıcı makalelerine bakın: [Azure SQL veritabanı](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure SQL veri ambarı](connector-azure-sql-data-warehouse.md)          
+> Azure SQL veritabanı veya SQL Server ya da Azure SQL veri ambarı 'ndan veri kopyalarken, **sqlReaderStoredProcedureName** kullanarak kaynak veritabanından veri okumak için bir saklı yordam çağırmak üzere **SQLSource** 'u Copy etkinliğinde yapılandırabilirsiniz. özelliði. Daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure SQL veri ambarı](connector-azure-sql-data-warehouse.md)          
 
  
 
@@ -67,22 +67,22 @@ Aşağıdaki tabloda bu JSON özellikleri açıklanmaktadır:
 
 | Özellik                  | Açıklama                              | Gerekli |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | Etkinliğin adı                     | Evet      |
-| description               | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
+| ad                      | Etkinliğin adı                     | Evet      |
+| açıklama               | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
 | type                      | Saklı yordam etkinliği için etkinlik türü **Sqlserverstoredprocedure** olur | Evet      |
 | linkedServiceName         | **Azure SQL veritabanı** veya **Azure SQL veri ambarı** 'na veya Data Factory bağlı hizmet olarak kaydedilmiş **SQL Server** başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
 | storedProcedureName       | Çağrılacak saklı yordamın adını belirtin. | Evet      |
-| storedProcedureParameters | Saklı yordam parametrelerinin değerlerini belirtin. Parametre `"param1": { "value": "param1Value","type":"param1Type" }` değerlerini ve veri kaynağı tarafından desteklenen türlerini geçirmek için kullanın. Bir parametre için null değer geçirmeniz gerekiyorsa, (tüm `"param1": { "value": null }` küçük harf) seçeneğini kullanın. | Hayır       |
+| storedProcedureParameters | Saklı yordam parametrelerinin değerlerini belirtin. Parametre değerlerini ve veri kaynağı tarafından desteklenen türlerini iletmek için `"param1": { "value": "param1Value","type":"param1Type" }` kullanın. Bir parametre için null değeri geçirmeniz gerekiyorsa `"param1": { "value": null }` (tümü küçük harf) kullanın. | Hayır       |
 
 ## <a name="parameter-data-type-mapping"></a>Parametre veri türü eşleme
 Parametresi için belirttiğiniz veri türü, kullanmakta olduğunuz veri kaynağındaki veri türüyle eşleşen Azure Data Factory türüdür. Veri kaynağınız için veri türü eşlemelerini bağlayıcılar alanında bulabilirsiniz. Bazı örnekler
 
-| Veri Kaynağı          | Veri türü eşleme |
+| Veri kaynağı          | Veri türü eşleme |
 | ---------------------|-------------------|
-| Azure SQL Veri Ambarı | https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
-| Azure SQL Database   | https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
-| Oracle               | https://docs.microsoft.com/en-us/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
-| SQL Server           | https://docs.microsoft.com/en-us/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
+| Azure SQL Veri Ambarı | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
+| Azure SQL Veritabanı   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
+| Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
+| SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
 
 
 ## <a name="error-info"></a>Hata bilgisi

@@ -1,5 +1,5 @@
 ---
-title: Veri işlem hatlarını izleme ve yönetme-Azure | Microsoft Docs
+title: Veri işlem hatlarını izleme ve yönetme-Azure
 description: Izleme ve yönetim uygulamasını kullanarak Azure veri fabrikalarını ve işlem hatlarını izleme ve yönetme hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 052ea99f0489458269adf4dca2c6713535933638
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139583"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666936"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Izleme ve yönetim uygulamasını kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ Ayrıca bir işlem hattına sağ tıklayıp, bir işlem hattını askıya alma, 
 
 ![İşlem hattı menüsünü açma](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-Açık ardışık düzen görünümünde, işlem hattındaki tüm etkinlikleri görürsünüz. Bu örnekte yalnızca bir etkinlik vardır: Kopyalama etkinliği. 
+Açık ardışık düzen görünümünde, işlem hattındaki tüm etkinlikleri görürsünüz. Bu örnekte yalnızca bir etkinlik vardır: kopyalama etkinliği. 
 
 ![Açık işlem hattı](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
@@ -144,7 +144,7 @@ Etkinlik Windows açılır ve etkinlik penceresi Gezgini ' nde sol ve sağ oklar
 
 ![Etkinlik penceresi Gezgini sol/sağ ok](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-Diyagram görünümünün en altında şu düğmeleri görürsünüz: Yakınlaştır, uzaklaştır, sığacak kadar Yakınlaştır, Yakınlaştır% 100, kilit düzeni. **Düzen kilitle** düğmesi, Diyagram görünümünde tabloları ve işlem hatlarını yanlışlıkla taşımayı önler. Varsayılan olarak açık olur. Diyagram içinde devre dışı bırakabilirsiniz ve varlıkları taşıyabilirsiniz. Devre dışı bırakıldığında, son düğmesini kullanarak tabloları ve işlem hatlarını otomatik olarak konumlandırabilirsiniz. Ayrıca fare tekerleğini kullanarak da yakınlaştırıp uzaklaştırabilirsiniz.
+Diyagram görünümünün en altında şu düğmeleri görürsünüz: Yakınlaştır, uzaklaştır, sığacak kadar Yakınlaştır, Yakınlaştır %100, kilit düzeni. **Düzen kilitle** düğmesi, Diyagram görünümünde tabloları ve işlem hatlarını yanlışlıkla taşımayı önler. Varsayılan olarak açık olur. Diyagram içinde devre dışı bırakabilirsiniz ve varlıkları taşıyabilirsiniz. Devre dışı bırakıldığında, son düğmesini kullanarak tabloları ve işlem hatlarını otomatik olarak konumlandırabilirsiniz. Ayrıca fare tekerleğini kullanarak da yakınlaştırıp uzaklaştırabilirsiniz.
 
 ![Diyagram Görünümü Yakınlaştırma komutları](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
@@ -187,7 +187,7 @@ Etkinlik pencereleri aşağıdaki durumlardan birinde olabilir:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Devam ediyor</td><td>Doğrulanıyor</td><td>Doğrulama devam ediyor.</td>
+<td rowspan="2">Ediyor</td><td>Doğrulamada</td><td>Doğrulama devam ediyor.</td>
 </tr>
 <td>-</td>
 <td>Etkinlik penceresi işleniyor.</td>
@@ -207,10 +207,10 @@ Etkinlik pencereleri aşağıdaki durumlardan birinde olabilir:
 <td>Hazır</td><td>-</td><td>Etkinlik penceresi tüketimine hazırlanıyor.</td>
 </tr>
 <tr>
-<td>Atlandı</td><td>-</td><td>Etkinlik penceresi işlenmedi.</td>
+<td>Atlanmış</td><td>-</td><td>Etkinlik penceresi işlenmedi.</td>
 </tr>
 <tr>
-<td>Yok.</td><td>-</td><td>Farklı bir durumla mevcut olan, ancak sıfırlanan bir etkinlik penceresi.</td>
+<td>None</td><td>-</td><td>Farklı bir durumla mevcut olan, ancak sıfırlanan bir etkinlik penceresi.</td>
 </tr>
 </table>
 
@@ -222,10 +222,10 @@ Listedeki bir etkinlik penceresine tıkladığınızda, **etkinlik Windows Gezgi
 ### <a name="refresh-activity-windows"></a>Etkinlik pencerelerini Yenile
 Ayrıntılar otomatik olarak yenilenmez. bu nedenle, etkinlik Windows listesini el ile yenilemek için Komut çubuğundaki Yenile düğmesini (ikinci düğme) kullanın.  
 
-### <a name="properties-window"></a>Özellik penceresi
+### <a name="properties-window"></a>Özellikler penceresi
 Özellikler penceresi, Izleme ve yönetim uygulamasının en sağ bölmesidir.
 
-![Özellik penceresi](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
+![Özellikler penceresi](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
 
 Kaynak Gezgini (ağaç görünümü), Diyagram görünümü veya etkinlik pencereleri listesinde seçtiğiniz öğenin özelliklerini görüntüler.
 
@@ -238,7 +238,7 @@ Kaynak Gezgini (ağaç görünümü), Diyagram görünümü veya etkinlik pencer
 
 Etkinlik penceresini yeniden çalıştırmak veya bölmedeki ayrıntıları yenilemek için alt bölmedeki araç çubuğu düğmelerini kullanabilirsiniz.
 
-### <a name="script"></a>Komut Dosyası
+### <a name="script"></a>Betik
 Seçili Data Factory varlığının (bağlı hizmet, veri kümesi veya işlem hattı) JSON tanımını görüntülemek için **komut dosyası** sekmesini kullanabilirsiniz.
 
 ![Betik sekmesi](./media/data-factory-monitor-manage-app/ScriptTab.png)
@@ -266,11 +266,11 @@ Etkinlik pencerelerini filtrelemek için Komut çubuğundaki **Başlangıç saat
 >
 >
 
-**Etkinlik pencereleri listesinde**bir sütunun adına tıklayın (örneğin: Durum).
+**Etkinlik pencereleri listesinde**bir sütunun adına tıklayın (örneğin: durum).
 
 ![Etkinlik Windows listesi sütun menüsü](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
-Bunu, aşağıdakileri yapabilirsiniz:
+Şunları yapabilirsiniz:
 
 * Artan sırada sıralayın.
 * Azalan sırada sıralayın.
@@ -286,10 +286,10 @@ Filtreleri temizlemek için aynı açılır pencereyi kullanabilirsiniz. Etkinli
 
 ## <a name="perform-batch-actions"></a>Batch eylemleri gerçekleştirme
 ### <a name="rerun-selected-activity-windows"></a>Seçili etkinlik pencerelerini yeniden çalıştır
-Bir etkinlik penceresi seçin, ilk komut çubuğu düğmesine ait aşağı oka tıklayın ve işlem hattında,**ardışık düzende yeniden çalıştır**' ı seçin. /  **Ardışık düzen seçeneğinde yukarı akış Ile yeniden çalıştır** seçeneğini belirlediğinizde, tüm yukarı akış etkinlik pencerelerini de yeniden çalıştırır.
-    ![Etkinlik penceresini yeniden çalıştır](./media/data-factory-monitor-manage-app/ReRunSlice.png)
+Bir etkinlik penceresi seçin, ilk komut çubuğu düğmesine ait aşağı oka tıklayın ve **yeniden çalıştır** / **ardışık düzende yukarı akış ile yeniden çalıştır**' ı seçin. **Ardışık düzen seçeneğinde yukarı akış Ile yeniden çalıştır** seçeneğini belirlediğinizde, tüm yukarı akış etkinlik pencerelerini de yeniden çalıştırır.
+    Etkinlik penceresini yeniden çalıştırmak ![](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-Ayrıca, listede birden çok etkinlik penceresi seçebilir ve bunları aynı anda yeniden çalıştırabilirsiniz. Durum temelinde etkinlik pencerelerini filtrelemek isteyebilirsiniz (örneğin: **Başarısız oldu**) --ve ardından etkinlik pencerelerinin başarısız olmasına neden olan sorunu düzelttikten sonra başarısız etkinlik pencerelerini yeniden çalıştırın. Listedeki etkinlik pencerelerini filtreleme hakkındaki ayrıntılar için aşağıdaki bölüme bakın.  
+Ayrıca, listede birden çok etkinlik penceresi seçebilir ve bunları aynı anda yeniden çalıştırabilirsiniz. Etkinlik pencerelerini duruma göre filtrelemek isteyebilirsiniz (örneğin: **başarısız**)--ve sonra etkinlik pencerelerinin başarısız olmasına neden olan sorunu düzelttikten sonra başarısız etkinlik pencerelerini yeniden çalıştırın. Listedeki etkinlik pencerelerini filtreleme hakkındaki ayrıntılar için aşağıdaki bölüme bakın.  
 
 ### <a name="pauseresume-multiple-pipelines"></a>Çoklu işlem hatlarını duraklatma/devam ettirme
 CTRL tuşunu kullanarak iki veya daha fazla işlem hattı ekleyebilirsiniz. Bunları duraklatmak/devam etmek için komut çubuğu düğmelerini (aşağıdaki görüntüde kırmızı dikdörtgende vurgulanır) kullanabilirsiniz.

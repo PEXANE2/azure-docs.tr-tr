@@ -1,6 +1,6 @@
 ---
-title: Bir Web hizmetini yeniden eğitme ve dağıtma
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Web hizmetini yeniden eğitme
+titleSuffix: ML Studio (classic) Azure
 description: Azure Machine Learning Studio (klasik) sürümünde yeni eğitilen makine öğrenimi modelini kullanmak üzere bir Web hizmetini güncelleştirmeyi öğrenin.
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 55b054ffe55430ea106c72cdd91fdfba3a457cf5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e35ab4b3a45edd5a1172bc3a07d7c31abd2135f7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482990"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684778"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Makine öğrenimi modelini yeniden eğitme ve dağıtma
 
 Yeniden eğitim, makine öğrenimi modellerinin doğru kalmasını sağlamanın ve kullanılabilir en uygun verilere göre bir yoldur. Bu makalede, bir makine öğrenimi modelinin Studio 'da yeni bir Web hizmeti olarak nasıl yeniden eğitilmesi ve dağıtılması gösterilmektedir (klasik). Klasik bir Web hizmetini yeniden eğiteyorsanız, [Bu nasıl yapılır makalesini görüntüleyin.](retrain-classic-web-service.md)
 
-Bu makalede önceden bir tahmine dayalı Web hizmetiniz olduğunu varsaymış olursunuz. Önceden tahmine dayalı bir Web hizmetiniz yoksa, [burada bir Studio (klasik) Web hizmeti dağıtmayı öğrenin.](publish-a-machine-learning-web-service.md)
+Bu makalede önceden bir tahmine dayalı Web hizmetiniz olduğunu varsaymış olursunuz. Önceden tahmine dayalı bir Web hizmetiniz yoksa, [burada bir Studio (klasik) Web hizmeti dağıtmayı öğrenin.](deploy-a-machine-learning-web-service.md)
 
 Machine Learning yeni Web hizmeti 'ni yeniden eğitmek ve dağıtmak için şu adımları izleyin:
 

@@ -1,5 +1,5 @@
 ---
-title: Hive etkinliğini kullanarak verileri dönüştürme-Azure | Microsoft Docs
+title: Hive etkinliğini kullanarak verileri dönüştürme-Azure
 description: Bir Azure Data Factory 'deki Hive etkinliğini isteğe bağlı/kendi HDInsight kümeniz üzerinde kullanarak Hive sorguları çalıştırmak için nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 8a7e6748f450ae398a05097ac6b192d074f5f1f7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f159f672c999d7877ef89cd78d23c4a608ccf1ab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139525"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666987"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory Hive etkinliğini kullanarak verileri dönüştürme 
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -38,7 +38,7 @@ ms.locfileid: "70139525"
 Bir Data Factory işlem [hattının](data-factory-create-pipelines.md) HDInsight Hive etkinliği, [kendi kendinize](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe bağlı](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux tabanlı HDInsight kümenizde Hive sorguları yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) makalesinde oluşturulur.
 
 > [!NOTE] 
-> Azure Data Factory yeni kullanıyorsanız, Azure Data Factory ve Öğreticiyi bir [şekilde](data-factory-introduction.md) okuyun: Bu makaleyi okumadan önce [ilk veri işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) . 
+> Azure Data Factory yeni kullanıyorsanız, [Azure Data Factory 'ye giriş](data-factory-introduction.md) ile okuyun ve öğreticiyi yapın: Bu makaleyi okumadan önce [ilk veri Işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) . 
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -74,20 +74,20 @@ Bir Data Factory işlem [hattının](data-factory-create-pipelines.md) HDInsight
 ## <a name="syntax-details"></a>Söz dizimi ayrıntıları
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| name |Etkinliğin adı |Evet |
-| description |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
+| ad |Etkinliğin adı |Evet |
+| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
 | type |Hdınsighthive |Evet |
-| inputs |Hive etkinliği tarafından tüketilen girişler |Hayır |
-| outputs |Hive etkinliği tarafından oluşturulan çıktılar |Evet |
+| girişi |Hive etkinliği tarafından tüketilen girişler |Hayır |
+| çıkışı |Hive etkinliği tarafından oluşturulan çıktılar |Evet |
 | linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Evet |
-| script |Hive betiğini satır içi olarak belirt |Hayır |
+| betiğini çalıştırın |Hive betiğini satır içi olarak belirt |Hayır |
 | scriptPath |Hive betiğini bir Azure Blob depolama alanında depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |Hayır |
-| defines |' Hiveconf ' kullanarak Hive betiği içinde başvurmak için bir anahtar/değer çiftleri olarak parametre belirtin |Hayır |
+| tanımlar |' Hiveconf ' kullanarak Hive betiği içinde başvurmak için bir anahtar/değer çiftleri olarak parametre belirtin |Hayır |
 
 ## <a name="example"></a>Örnek
 Kullanıcıların, şirketiniz tarafından başlatılan oyunları oynatılması için harcadığı zamanı belirlemek istediğiniz oyun günlüğü analizinin bir örneğini ele alalım. 
 
-Aşağıdaki günlük, virgülle (`,`) ayrılmış bir oyun günlüğü örneğidir ve şu alanları içerir: ProfileId, SessionStart, Duration, srcıaddress ve Gametype.
+Aşağıdaki günlük, virgülle (`,`) ayrılmış bir oyun günlüğü örneğidir ve aşağıdaki alanları içerir: ProfileId, SessionStart, Duration, Srcıaddress ve GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag

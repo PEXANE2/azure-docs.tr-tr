@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7b395bd6024beb52b9263ac4fe655b5328a8e662
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 555b4d95358978e84e14e8a2e8b3d1c9cb2efc18
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "70933149"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614594"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Dayanıklı İşlevler türleri ve özellikleri (Azure Işlevleri)
 
@@ -24,7 +24,7 @@ Dayanıklı İşlevler, [Azure işlevleri](../functions-overview.md)'nin bir uza
 
 ## <a name="orchestrator-functions"></a>Orchestrator işlevleri
 
-Orchestrator işlevleri, eylemlerin nasıl yürütüleceğini ve eylemlerin yürütülme sırasını açıklamaktadır. Orchestrator işlevleri, [dayanıklı işlevler uygulama desenlerinde](durable-functions-overview.md#application-patterns)gösterildiğiC# gibi kodda (veya JavaScript) Orchestration 'u anlatmaktadır. Bir düzenleme, [etkinlik işlevleri](#activity-functions), [alt](durable-functions-orchestrations.md#sub-orchestrations)düzenlemeler dahil olmak üzere çok sayıda farklı eylem türüne sahip olabilir, [dış olaylar](durable-functions-orchestrations.md#external-events), [http](durable-functions-orchestrations.md#calling-http-endpoints)ve [zamanlayıcılar](durable-functions-orchestrations.md#durable-timers)bekleniyor. Orchestrator işlevleri de [varlık işlevleriyle](#entity-functions)etkileşime geçebilir.
+Orchestrator işlevleri, eylemlerin nasıl yürütüleceğini ve eylemlerin yürütülme sırasını açıklamaktadır. Orchestrator işlevleri, [dayanıklı işlevler uygulama desenlerinde](durable-functions-overview.md#application-patterns)gösterildiğiC# gibi kodda (veya JavaScript) Orchestration 'u anlatmaktadır. Bir düzenleme, [etkinlik işlevleri](#activity-functions), [alt](durable-functions-orchestrations.md#sub-orchestrations)düzenlemeler dahil olmak üzere çok sayıda farklı eylem türüne sahip olabilir, [dış olaylar](durable-functions-orchestrations.md#external-events), [http](durable-functions-http-features.md)ve [zamanlayıcılar](durable-functions-orchestrations.md#durable-timers)bekleniyor. Orchestrator işlevleri de [varlık işlevleriyle](#entity-functions)etkileşime geçebilir.
 
 > [!NOTE]
 > Orchestrator işlevleri sıradan kod kullanılarak yazılır, ancak kodun nasıl yazılacağı konusunda katı gereksinimler vardır. Özellikle, Orchestrator işlev kodu *belirleyici*olmalıdır. Bu belirleyici gereksinimlerin izlenmesi başarısız olursa, Orchestrator işlevlerinin düzgün şekilde çalışmamasına neden olabilir. Bu gereksinimlerle ilgili ayrıntılı bilgiler ve bunların çevresinde nasıl çalışılacağı [kod kısıtlamaları](durable-functions-code-constraints.md) konusunda bulunabilir.
@@ -40,7 +40,7 @@ Orchestrator işlevlerinin aksine, etkinlik işlevleri, bunlarda yapabileceğini
 > [!NOTE]
 > Etkinlik işlevleri yalnızca *en az bir kez* yürütmeyi garanti ettiğinden, mümkün olduğunda Etkinlik işlevi mantığınızı *ıdempotent* yapmanızı öneririz.
 
-Etkinlik işlevi tanımlamak için bir [etkinlik tetikleyicisi](durable-functions-bindings.md#activity-trigger) kullanın. .NET işlevleri bir [Durableactivitycontext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) parametresini parametre olarak alır. Ayrıca, bu tetikleyiciyi işleve geçirilecek diğer JSON-serializlenebilir nesnesine da bağlayabilirsiniz. JavaScript 'te, [`context.bindings` nesnesindeki](../functions-reference-node.md#bindings)`<activity trigger binding name>` özelliği aracılığıyla bir girişe erişebilirsiniz. Etkinlik işlevlerine yalnızca tek bir değer geçirilmiş olabilir. Birden çok değer geçirmek için, tanımlama grupları, diziler veya karmaşık türler kullanmanız gerekir.
+Etkinlik işlevi tanımlamak için bir [etkinlik tetikleyicisi](durable-functions-bindings.md#activity-trigger) kullanın. .NET işlevleri parametre olarak bir `DurableActivityContext` alır. Ayrıca, bu tetikleyiciyi işleve geçirilecek diğer JSON-serializlenebilir nesnesine da bağlayabilirsiniz. JavaScript 'te [`context.bindings` nesnesindeki](../functions-reference-node.md#bindings)`<activity trigger binding name>` özelliği aracılığıyla bir girişe erişebilirsiniz. Etkinlik işlevlerine yalnızca tek bir değer geçirilmiş olabilir. Birden çok değer geçirmek için, tanımlama grupları, diziler veya karmaşık türler kullanmanız gerekir.
 
 > [!NOTE]
 > Bir etkinlik işlevini yalnızca bir Orchestrator işlevinden tetikleyebilirsiniz.
@@ -50,7 +50,7 @@ Etkinlik işlevi tanımlamak için bir [etkinlik tetikleyicisi](durable-function
 Varlık işlevleri, küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Genellikle bu durum bilgisi olan varlıklara *dayanıklı varlıklar*olarak başvurduk. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü, *varlık tetikleyicisi*olan işlevlerdir. Bunlar, istemci işlevlerinden veya Orchestrator işlevlerinden de çağrılabilir. Orchestrator işlevlerinin aksine, varlık işlevlerinin belirli kod kısıtlamaları yoktur. Varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine, durumu açıkça da yönetir.
 
 > [!NOTE]
-> Varlık işlevleri ve ilgili işlevler yalnızca Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir. Varlık işlevleri şu anda genel önizlemededir.
+> Varlık işlevleri ve ilgili işlevler yalnızca Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir.
 
 Varlık işlevleri hakkında daha fazla bilgi için bkz. [dayanıklı varlıklar](durable-functions-entities.md) makalesi.
 

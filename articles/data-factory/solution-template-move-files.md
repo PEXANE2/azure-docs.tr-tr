@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory kullanarak dosya tabanlı depolama arasında dosya taşıma | Microsoft Docs
+title: Azure Data Factory kullanarak dosya tabanlı depolama arasında dosya taşıma
 description: Azure Data Factory kullanarak dosya tabanlı depolama arasında dosya taşımak için bir çözüm şablonu kullanmayı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 9eb82a23aac5a98a521976118c1e859d0be253d0
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: f6f83917e84a880fb86b5f592c4d51b03462753d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881249"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684102"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Dosyaları Azure Data Factory taşıma
 
-Bu makalede, dosyaları dosya tabanlı mağazalar arasında bir klasörden diğerine taşımak için kullanabileceğiniz bir çözüm şablonu açıklanmaktadır. Bu şablonu kullanmanın yaygın senaryolarından biri: Dosyalar sürekli olarak kaynak deponuzda bir giriş klasörüne bırakılır. ADF işlem hattı, bir zamanlama tetikleyicisi oluşturarak bu dosyaları kaynaktan hedef depoya düzenli olarak taşıyabilir.  ADF işlem hattının "dosyaları taşıma" yolu, her birini hedef depodaki başka bir klasöre kopyalayarak ve ardından kaynak deposundaki giriş klasöründen aynı dosyaları silerek, giriş klasöründen dosyaları alıyor.
+Bu makalede, dosyaları dosya tabanlı mağazalar arasında bir klasörden diğerine taşımak için kullanabileceğiniz bir çözüm şablonu açıklanmaktadır. Bu şablonu kullanmanın yaygın senaryolarından biri: dosyalar sürekli olarak kaynak deponuzda bir giriş klasörüne bırakılır. ADF işlem hattı, bir zamanlama tetikleyicisi oluşturarak bu dosyaları kaynaktan hedef depoya düzenli olarak taşıyabilir.  ADF işlem hattının "dosyaları taşıma" yolu, her birini hedef depodaki başka bir klasöre kopyalayarak ve ardından kaynak deposundaki giriş klasöründen aynı dosyaları silerek, giriş klasöründen dosyaları alıyor.
 
 > [!NOTE]
 > Bu şablonun klasörleri taşımak yerine dosyaları taşımak için tasarlandığını unutmayın.  Veri kümesini yalnızca bir klasör yolu içerecek şekilde değiştirerek klasörü taşımak ve sonra kopyalama etkinliğini ve silme etkinliğini bir klasörü temsil eden aynı veri kümesine başvuracak şekilde kullanmak istiyorsanız, çok dikkatli olmanız gerekir. Bunun nedeni, kopyalama işlemi ve silme işlemi arasında klasöre ulaşan yeni dosyalar OLMADıĞıNDAN emin olmanızı sağlar. Kopyalama etkinliğinizi kopyalama işini tamamlamış ancak silme etkinliği henüz tamamlanmadığında, klasörde klasöre ulaşan yeni dosyalar varsa, DELETE etkinliğinin destinati kopyalanmamış olan bu yeni gelen dosyayı silmesi mümkündür. henüz tüm klasörü silerek.

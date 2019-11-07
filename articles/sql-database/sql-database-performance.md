@@ -1,5 +1,5 @@
 ---
-title: Performansı izleme ve geliştirme-Azure SQL veritabanı | Microsoft Docs
+title: Performansı izleme ve iyileştirme-Azure SQL veritabanı
 description: Azure SQL veritabanı, geçerli sorgu performansını iyileştirebilecek olan bölgeleri belirlemenize yardımcı olacak performans araçları sağlar.
 ms.service: sql-database
 ms.subservice: performance
@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 39a100c487588fb717c642036c7713150a95e047
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 483cd9f185cfa626d21fe0a5b86ba782ebb2f612
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567070"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687656"
 ---
 # <a name="monitor-and-improve-performance"></a>Performansı izleme ve iyileştirme
 
@@ -70,7 +70,7 @@ Azure SQL veritabanları, [performans önerileri](sql-database-advisor.md)uygula
 * Daha iyi performans için ayarlanabilir olabilecek, en üstteki CPU kullanan sorgular. 
 * Bir sorgunun ayrıntılarına gitme olanağı. 
 
-  ![performans panosu](./media/sql-database-query-performance/performance.png)
+  ![Performans panosu](./media/sql-database-query-performance/performance.png)
 
 Bu sayfa hakkında daha fazla bilgi edinmek **[için sorgu performansı içgörüleri kullanma makalesine gidin](sql-database-query-performance.md)** .
 

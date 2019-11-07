@@ -1,5 +1,5 @@
 ---
-title: Entity Framework ile elastik veritabanı istemci kitaplığı kullanma | Microsoft Docs
+title: Entity Framework ile elastik veritabanı istemci kitaplığı kullanma
 description: Kodlama veritabanları için elastik veritabanı istemci kitaplığı ve Entity Framework kullanma
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: 8ae264f7da84336d5f786d2ff060aa89bbe75837
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a6ed6eb2596663dd276fe580c9f2574163589b1d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568296"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690113"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Entity Framework ile elastik veritabanı istemci kitaplığı
 
@@ -44,10 +44,10 @@ Bu veritabanlarını oluşturduktan sonra, veritabanlarına bağlanmak için Azu
 
 Entity Framework geliştiriciler, uygulamalar oluşturmak ve uygulama nesneleri için kalıcılık sağlamak üzere aşağıdaki dört iş akışının birini kullanır:
 
-* **Code First (yeni veritabanı)** : EF geliştiricisi, model uygulama kodunda oluşturur ve sonra veritabanını bundan oluşturur. 
-* **Code First (varolan veritabanı)** : Geliştirici, var olan bir veritabanından model için uygulama kodu oluşturma EF 'e izin verir.
-* **Model First**: Geliştirici, bir modeli EF tasarımcısında oluşturur ve sonra bir veritabanını modelden oluşturur.
-* **Database First**: Geliştirici, modeli mevcut bir veritabanından çıkarması için EF araçları 'nı kullanır. 
+* **Code First (yeni veritabanı)** : EF geliştiricisi, modeli uygulama kodunda oluşturur ve sonra veritabanını bundan oluşturur. 
+* **Code First (mevcut veritabanı)** : geliştirici, var olan bir veritabanından model için uygulama kodu oluşturmasına izin verir.
+* **Model First**: geliştirici, modeli EF tasarımcısında oluşturur ve EF veritabanını modelden oluşturur.
+* **Database First**: geliştirici, modeli mevcut bir veritabanından ÇıKARMASı için EF araçları 'nı kullanır. 
 
 Bu yaklaşımların hepsi, veritabanı bağlantılarını ve bir uygulamanın veritabanı şemasını saydam bir şekilde yönetmek için DbContext sınıfına bağımlıdır. DbContext temel sınıfındaki farklı oluşturucular bağlantı oluşturma, veritabanı önyükleme ve şema oluşturma üzerinde farklı denetim düzeylerine izin verir. Sorunlar öncelikle, EF tarafından belirtilen veritabanı bağlantı yönetiminin, elastik veritabanı istemci kitaplığı tarafından sunulan veri bağımlı yönlendirme arabirimlerinin bağlantı yönetimi özellikleri ile kesişmesinden kaynaklanır. 
 
@@ -63,8 +63,8 @@ Parça eşleme Yöneticisi, eş zamanlı kıardın yönetim işlemleri (örneği
 
 Hem elastik veritabanı istemci kitaplığıyla hem de Entity Framework API 'Leriyle çalışırken, aşağıdaki özellikleri sürdürmek istersiniz: 
 
-* **Genişleme**: Uygulamanın kapasite taleplerini için gereken şekilde, parçalı uygulamanın veri katmanında veritabanı eklemek veya kaldırmak için. Bu, veritabanlarının oluşturulması ve silinmesinin yanı sıra veritabanlarını yönetmek için elastik veritabanı parça eşleme Yöneticisi API 'Leri ve parçaların eşlemelerinde denetim sağlar. 
-* **Tutarlılık**: Uygulama, parçalama kullanır ve istemci kitaplığının veri bağımlı yönlendirme özelliklerini kullanır. Bozulmaları veya yanlış sorgu sonuçlarının olmaması için bağlantılar parça eşleme Yöneticisi aracılığıyla aracılı olur. Bu, doğrulamayı ve tutarlılığı da korur.
+* **Genişleme**: uygulamanın kapasite taleplerini için gereken şekilde, parçalı uygulamanın veri katmanından veritabanı eklemek veya kaldırmak için. Bu, veritabanlarının oluşturulması ve silinmesinin yanı sıra veritabanlarını yönetmek için elastik veritabanı parça eşleme Yöneticisi API 'Leri ve parçaların eşlemelerinde denetim sağlar. 
+* **Tutarlılık**: uygulama parçalama kullanır ve istemci kitaplığının veri bağımlı yönlendirme özelliklerini kullanır. Bozulmaları veya yanlış sorgu sonuçlarının olmaması için bağlantılar parça eşleme Yöneticisi aracılığıyla aracılı olur. Bu, doğrulamayı ve tutarlılığı da korur.
 * **Code First**: EF 'in kod ilk paradigmasını sağlamak için. Code First, uygulamadaki sınıflar, temel alınan veritabanı yapılarına saydam olarak eşlenir. Uygulama kodu, temel alınan veritabanı işleminde yer alan birçok yönü maskelemekte olan DbSets ile etkileşime girer.
 * **Şema**: Entity Framework, ilk veritabanı şeması oluşturmayı ve sonraki şema gelişiminde geçişleri işler. Bu özellikleri koruyarak, veriler geliştikçe uygulamanızı uyarlanabilir kadar kolay. 
 
@@ -192,9 +192,9 @@ Yukarıdaki kod örnekleri, Entity Framework ile verilere bağımlı yönlendirm
 
 | Geçerli Oluşturucu | Veriler için yeniden yazan Oluşturucu | Taban Oluşturucu | Notlar |
 | --- | --- | --- | --- |
-| MyContext() |Elayapışscalecontext (ShardMap, TKey) |DbContext (DbConnection, bool) |Bağlantı, parça haritasında bir işlev ve verilere bağımlı yönlendirme anahtarı olmalıdır. Otomatik bağlantı oluşturma ile EF ile geçiş yapmanız gerekir, bunun yerine bağlantıyı aracısına eklemek için parça haritasını kullanın. |
+| MyContext () |Elayapışscalecontext (ShardMap, TKey) |DbContext (DbConnection, bool) |Bağlantı, parça haritasında bir işlev ve verilere bağımlı yönlendirme anahtarı olmalıdır. Otomatik bağlantı oluşturma ile EF ile geçiş yapmanız gerekir, bunun yerine bağlantıyı aracısına eklemek için parça haritasını kullanın. |
 | MyContext (dize) |Elayapışscalecontext (ShardMap, TKey) |DbContext (DbConnection, bool) |Bağlantı, parça haritasının ve verilere bağımlı yönlendirme anahtarının bir işlevidir. Sabit bir veritabanı adı veya bağlantı dizesi, parça eşlemesi tarafından doğrulama tarafından doğrudan doğrulanarak çalışmaz. |
-| MyContext(DbCompiledModel) |Elayapışscalecontext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Sağlanan model ile verilen parça eşlemesi ve parçalara ayırma anahtarı için bağlantı oluşturulur. Derlenen model, temel citor 'a geçirilir. |
+| MyContext (DbCompiledModel) |Elayapışscalecontext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Sağlanan model ile verilen parça eşlemesi ve parçalara ayırma anahtarı için bağlantı oluşturulur. Derlenen model, temel citor 'a geçirilir. |
 | MyContext (DbConnection, bool) |Elayapışscalecontext (ShardMap, TKey, bool) |DbContext (DbConnection, bool) |Bağlantı, parça haritalarından ve anahtardan çıkarsanmalıdır. Giriş olarak sağlanamaz (giriş, zaten parça haritasını ve anahtarı kullanmadıkça). Boole değeri geçirilir. |
 | MyContext (dize, DbCompiledModel) |Elayapışscalecontext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Bağlantı, parça haritalarından ve anahtardan çıkarsanmalıdır. Giriş olarak sağlanamaz (giriş, parça haritasını ve anahtarını kullanmadıkça). Derlenen model geçirilir. |
 | MyContext (ObjectContext, bool) |Elayapışscalecontext (ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |Yeni oluşturucunun, bir giriş olarak geçirilen ObjectContext 'teki herhangi bir bağlantının elastik ölçeğe göre yönetilen bir bağlantıya yeniden yönlendirildiğinden emin olması gerekir. Objectbağlamların ayrıntılı bir tartışması, bu belgenin kapsamı dışındadır. |
@@ -204,7 +204,7 @@ Yukarıdaki kod örnekleri, Entity Framework ile verilere bağımlı yönlendirm
 
 Otomatik şema yönetimi, Entity Framework tarafından sağlanmış bir kolaydır. Elastik veritabanı araçlarını kullanan uygulamalar bağlamında, veritabanları parçalı uygulamaya eklendiğinde şemayı otomatik olarak yeni oluşturulan parçalara sağlamak için bu özelliği koruyabilirsiniz. Birincil kullanım durumu, EF kullanarak parçalı uygulamalar için veri katmanındaki kapasiteyi artırmaya yöneliktir. EF 'in şema yönetimi özelliklerine bağlı olarak, EF üzerinde oluşturulmuş bir parçalı uygulamayla veritabanı yönetim çabaları azalır. 
 
-EF geçişleri aracılığıyla şema dağıtımı, **açılmamış bağlantılarda**en iyi şekilde çalışmaktadır. Bu, elastik veritabanı istemci API 'SI tarafından belirtilen açık bağlantıyı kullanan veriye bağımlı yönlendirmeye yönelik senaryoya bağlıdır. Farklı bir fark, tutarlılık gereksinimidir: Eş zamanlı parça eşleme düzenlemesi için tüm verilere bağımlı yönlendirme bağlantıları tutarlılığını sağlamak istenirken, henüz parça eşlemesinde kaydedilmemiş ve henüz değil, yeni bir veritabanına ilk şema dağıtımıyla ilgili bir sorun değildir. , parçalamayı barındırmak için ayrıldı. Bu nedenle, verilere bağımlı yönlendirmeye karşılık olarak bu senaryoya yönelik normal veritabanı bağlantılarına güvenebilirsiniz.  
+EF geçişleri aracılığıyla şema dağıtımı, **açılmamış bağlantılarda**en iyi şekilde çalışmaktadır. Bu, elastik veritabanı istemci API 'SI tarafından belirtilen açık bağlantıyı kullanan veriye bağımlı yönlendirmeye yönelik senaryoya bağlıdır. Farklı bir farklılık, tutarlılık gereksinimidir: eşzamanlı parça eşleme düzenlemesi için tüm verilere bağımlı yönlendirme bağlantıları tutarlılığını sağlamak istediğinizde, yeni bir veritabanına yönelik ilk şema dağıtımıyla ilgili bir sorun değildir. daha önce parça eşlemesinde kayıtlı değildir, ancak henüz parçalara ayrılmalarına ayrılmamıştır. Bu nedenle, verilere bağımlı yönlendirmeye karşılık olarak bu senaryoya yönelik normal veritabanı bağlantılarına güvenebilirsiniz.  
 
 Bu, EF geçişleri aracılığıyla şema dağıtımının, yeni veritabanının uygulamanın parça eşlemesinde bir parça olarak kaydettirilme ile sıkı bir şekilde bağlanmış olmasına yol açar. Bu, aşağıdaki önkoşulları kullanır: 
 

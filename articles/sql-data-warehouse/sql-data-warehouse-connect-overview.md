@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Veri Ambarı'na Bağlanma | Microsoft Belgeleri
+title: Azure SQL Data Warehouse’a bağlanma
 description: Azure SQL veri ambarı 'na bağlanın.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 71f5c8ca56bc188c0664604a78c38a05be3c3b01
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5a14b99753c9f06f2e0cf32dd8b5c7776cfdad89
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68479743"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685883"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse’a bağlanma
 Azure SQL veri ambarı 'na bağlanın.
@@ -61,7 +62,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ## <a name="connection-settings"></a>Bağlantı ayarları
 SQL Veri Ambarı, bağlantı ve nesne oluşturma sırasında bazı ayarları standart hale getirir. Bu ayarlar geçersiz kılınamaz ve şunları içerir:
 
-| Veritabanı Ayarı | Value |
+| Veritabanı Ayarı | Değer |
 |:--- |:--- |
 | [ANSI_NULLS][ANSI_NULLS] |AÇIK |
 | [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |AÇIK |

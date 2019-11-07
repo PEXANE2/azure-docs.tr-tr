@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/10/2018
-ms.openlocfilehash: 04848f763fe8246f8e10f563169c04ea37b0ed37
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3ec20f82bc12b60e5b88a02bb92a4a0ada4dcae7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677306"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668018"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights akış Power BI
 [Power BI](https://www.powerbi.com/) , verileri çözümlemenize ve öngörüleri paylaşmanıza yardımcı olan bir iş araçları paketidir. Her cihazda zengin panolar bulunur. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)Analytics sorguları dahil olmak üzere birçok kaynaktaki verileri birleştirebilirsiniz.
@@ -40,7 +40,7 @@ Application Insights sorgunuzu içeri aktarmak için, Power BI Masaüstü sürü
 3. **Dışarı aktar** menüsünde **Power BI (d)** öğesini seçin. Metin dosyasını kaydedin.
    
     ![Dışa aktarma menüsü vurgulanmış analiz ekran görüntüsü](./media/export-power-bi/analytics-export-power-bi.png)
-4. Power BI Desktop **veri al**  > **boş sorgu**seçeneğini belirleyin. Ardından, sorgu Düzenleyicisi 'nde, **Görünüm**altında **Gelişmiş Düzenleyici**' yi seçin.
+4. Power BI Desktop **veri al** > **boş sorgu**seçeneğini belirleyin. Ardından, sorgu Düzenleyicisi 'nde, **Görünüm**altında **Gelişmiş Düzenleyici**' yi seçin.
 
     Dışarıya aktarılmış e-dil betiğini Gelişmiş Düzenleyici yapıştırın.
 
@@ -65,7 +65,7 @@ Application Insights sorgunuzu içeri aktarmak için, Power BI Masaüstü sürü
 
    ![Power BI düğmesinin ekran görüntüsü](./media/export-power-bi/button.png)
 
-3. Power BI Desktop **veri al**  > **boş sorgu**seçeneğini belirleyin. Ardından, sorgu Düzenleyicisi 'nde, **Görünüm**altında **Gelişmiş Düzenleyici**' yi seçin.
+3. Power BI Desktop **veri al** > **boş sorgu**seçeneğini belirleyin. Ardından, sorgu Düzenleyicisi 'nde, **Görünüm**altında **Gelişmiş Düzenleyici**' yi seçin.
 
    ![Boş sorgu düğmesi vurgulanmış Power BI Desktop ekran görüntüsü](./media/export-power-bi/blankquery.png)
 
@@ -90,6 +90,8 @@ Yenileme belirteciniz güncellenmemişse bu durum oluşabilir. Hala erişiminizi
 
 1. Azure portal oturum açın ve kaynağa erişebildiğinizden emin olun.
 2. Panonun kimlik bilgilerini yenilemeyi deneyin.
+3. PowerBI Desktop 'ınızdan önbelleği temizlemeye çalışın.
+
 
    Erişiminiz varsa ve kimlik bilgilerini yenilediğinizde, lütfen bir destek bileti açın.
 
@@ -100,8 +102,8 @@ Analiz sorgusundan gelen veri kümesini azaltmak gereksinimlerinizi karşılamı
 
 1. Bir [API anahtarı](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)oluşturun.
 2. Azure Resource Manager URL 'sini Application Insights API 'siyle değiştirerek analizden verdiğiniz Power BI d betiğini güncelleştirin.
-   * Https 'yi Değiştir **: \//Management.Azure.com/subscriptions/...**
-   * ile, **https: \//api.applicationinsights.io/Beta/Apps/...**
+   * Https 'yi Değiştir **:\//Management.Azure.com/subscriptions/...**
+   * ile, **https:\//api.applicationinsights.io/Beta/Apps/...**
 3. Son olarak, kimlik bilgilerini temel olarak güncelleştirin ve API anahtarınızı kullanın.
 
 **Mevcut komut dosyası**
@@ -121,7 +123,7 @@ Bu yöntem, sizin için telemetri için tamamen bir pano oluşturur. İlk veri k
 
 ### <a name="get-the-adapter"></a>Bağdaştırıcıyı al
 1. [Power BI](https://app.powerbi.com/)oturum açın.
-2. Sol alt köşedeki ](./media/export-power-bi/001.png), **hizmetlerde** **veri al ![Screenshot al** simgesini açın.
+2. Sol alt köşedeki](./media/export-power-bi/001.png), **hizmetlerde** **veri al ![al** simgesinin ekran görüntüsü ' ni açın.
 
     ![Application Insights veri kaynağından al 'ın ekran görüntüleri](./media/export-power-bi/002.png)
 

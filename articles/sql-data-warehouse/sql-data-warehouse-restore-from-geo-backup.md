@@ -1,5 +1,5 @@
 ---
-title: Coğrafi yedeklemeden Azure SQL veri ambarı 'nı geri yükleme | Microsoft Docs
+title: Bir coğrafi yedeklemeden veri ambarını geri yükleme
 description: Azure SQL veri ambarı coğrafi geri yükleme için nasıl yapılır Kılavuzu.
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 768646522c2589c302fd7a58031d4ebdb7fcdc12
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 69eb1221686da61868df8b06ed80664ae76d1627
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68426661"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685508"
 ---
 # <a name="geo-restore-azure-sql-data-warehouse"></a>Azure SQL veri ambarını coğrafi olarak geri yükleme
 
@@ -79,9 +80,9 @@ Bir coğrafi yedeklemeden Azure SQL veri ambarı 'nı geri yüklemek için aşa�
 1. **+ Kaynak oluştur ' a** tıklayın ve SQL veri ambarı için arama yapın ve **Oluştur**' a tıklayın.
 
     ![Yeni DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
-1. **Temel** bilgiler sekmesinde istenen bilgileri doldurun ve ileri ' ye tıklayın **: Ek ayarlar**.
+1. **Temel** bilgiler sekmesinde istenen bilgileri doldurun ve **İleri**' ye tıklayın.
 
-    ![Temel](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+    ![Temel Bilgiler](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 1. **Mevcut veri parametresini kullan** için **Yedekle** ' yi seçin ve aşağı kaydırma seçeneklerinden uygun yedeği seçin. **Gözden geçir + oluştur**' a tıklayın.
  
    ![yedekleme](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)

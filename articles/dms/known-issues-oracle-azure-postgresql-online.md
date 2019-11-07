@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/03/2019
-ms.openlocfilehash: cc7e510d9a6db93edc211799eda8df79116236a7
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/05/2019
+ms.openlocfilehash: ecd2750926fd04c84d2d6b48f5fde06363dd15df
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053644"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606750"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Oracle 'dan PostgreSQL için Azure DB 'ye çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları-tek sunucu
 
@@ -26,7 +26,7 @@ Oracle 'dan PostgreSQL için Azure veritabanı 'na çevrimiçi geçişlerle ili�
 
 Azure veritabanı geçiş hizmeti, bağlantısını destekler:
 
-- Oracle sürüm 10G, 11c ve 12c.
+- Oracle sürüm 10G, 11g ve 12c.
 - Oracle Enterprise, Standard, Express ve Personal Edition.
 
 Azure veritabanı geçiş hizmeti, çok kiracılı kapsayıcı veritabanlarına (CDBs) bağlanmayı desteklemiyor.

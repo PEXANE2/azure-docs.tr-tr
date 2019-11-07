@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı örnek havuzları nasıl yapılır Kılavuzu (Önizleme) | Microsoft Docs
+title: Azure SQL veritabanı örnek havuzları nasıl yapılır Kılavuzu (Önizleme)
 description: Bu makalede, Azure SQL veritabanı örneği havuzlarının (Önizleme) nasıl oluşturulacağı ve yönetileceği açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5862a54c92de7395ce42865ae32d453e926048d8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 461de4da35905ed860fb2ed9d2c655b55b777683
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294275"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689743"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Azure SQL veritabanı örnek havuzları (Önizleme) nasıl yapılır Kılavuzu
 
@@ -28,7 +28,7 @@ Aşağıdaki tabloda, Azure portal ve PowerShell 'de örnek havuzlarla ilgili ku
 
 |Komut|Azure portal|PowerShell|
 |:---|:---|:---|
-|Örnek Havuzu Oluştur|Hayır|Evet|
+|Örnek havuzu oluşturma|Hayır|Evet|
 |Örnek havuzunu güncelleştir (sınırlı sayıda özellik)|Hayır |Evet |
 |Örnek havuzunun kullanımını ve özelliklerini denetleme|Hayır|Evet |
 |Örnek havuzunu Sil|Hayır|Evet|
@@ -92,7 +92,7 @@ Aşağıdaki kısıtlamalar örnek havuzlar için geçerlidir:
 
 - Yalnızca Genel Amaçlı ve 5. nesil genel önizlemede kullanılabilir.
 - Havuz adı yalnızca küçük harf, rakam ve kısa çizgi içerebilir ve kısa çizgi ile başlayamaz.
-- Alt ağ KIMLIĞINI almak için kullanın `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`.
+- Alt ağ KIMLIĞINI almak için `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`kullanın.
 - AHB 'yi (Azure Hibrit Avantajı) kullanmak istiyorsanız, örnek havuzu düzeyinde uygulanır. Havuz oluşturma sırasında lisans türünü ayarlayabilir veya oluşturulduktan sonra dilediğiniz zaman güncelleştirebilirsiniz.
 
 > [!IMPORTANT]

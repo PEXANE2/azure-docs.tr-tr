@@ -1,5 +1,5 @@
 ---
-title: PowerShell betiği-Data Factory kullanarak buluttaki verileri dönüştürme | Microsoft Docs
+title: 'PowerShell betiği-Data Factory kullanarak buluttaki verileri dönüştürme '
 description: Bu PowerShell betiği, bir Azure HDInsight Spark kümesinde Spark programını çalıştırarak buluttaki verileri dönüştürür.
 author: djpmsft
 ms.author: daperlov
@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/12/2017
-ms.openlocfilehash: 973efe90ea1da68e4c4e4b0dbbb4c191be18213d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 53f64103819476e4efe918bd7a7be4ee2a1bcca3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140870"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684312"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell betiği-Azure Data Factory kullanarak buluttaki verileri dönüştürme
 
@@ -24,7 +24,7 @@ Bu örnek PowerShell betiği, bir Azure HDInsight Spark kümesinde Spark program
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Azure Depolama hesabı**. Bir Python betiği ve bir giriş dosyası oluşturun ve bunları Azure depolama 'ya yükleyin. Spark programının çıktısı bu depolama hesabında depolanır. İsteğe bağlı Spark kümesi, birincil depolama alanıyla aynı depolama hesabını kullanır.  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Python betiğini Blob Depolama hesabınıza yükleme
@@ -62,7 +62,7 @@ Bu örnek PowerShell betiği, bir Azure HDInsight Spark kümesinde Spark program
 
 ### <a name="upload-the-input-file"></a>Girdi dosyasını yükleme
 1. Bazı metinlerle **minecraftstory.txt** adlı bir dosya oluşturun. Spark programı bu metindeki sözcükleri sayar. 
-2. Blob kapsayıcısının `spark` klasöründe adlı `inputfiles` bir alt klasör oluşturun. 
+2. Blob kapsayıcısının `spark` klasöründe `inputfiles` adlı bir alt klasör oluşturun. 
 3. `minecraftstory.txt` dosyasını `inputfiles` alt klasörüne yükleyin. 
 
 ## <a name="sample-script"></a>Örnek betik

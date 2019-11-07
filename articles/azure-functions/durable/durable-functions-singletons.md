@@ -7,22 +7,22 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ba35999d5a7193ba691b14005dc8271120ac2be7
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ec7eb1eba2bc029d592560b39cde20e93e5afcd6
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933224"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614674"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler içindeki tekil düzenleyiciler (Azure Işlevleri)
 
-Arka plan işleri için genellikle belirli bir Orchestrator örneğinin aynı anda çalıştığından emin olmanız gerekir. Bu, bir Orchestrator 'a belirli bir örnek KIMLIĞI atanırken bir Orchestrator 'a atanarak [dayanıklı işlevler](durable-functions-overview.md) yapılabilir.
+Arka plan işleri için, genellikle belirli bir Orchestrator örneğinin aynı anda çalıştığından emin olmanız gerekir. Bu tür bir tek [dayanıklı işlevler](durable-functions-overview.md) davranışın, bir Orchestrator 'a belirli BIR örnek kimliği atayarak bir Orchestrator 'a atanmasını sağlayabilirsiniz.
 
 ## <a name="singleton-example"></a>Tek örnek
 
-Aşağıdaki C# ve JavaScript örnekleri, tek bir arka plan işi düzenlemesi oluşturan bir http tetikleyici işlevi gösterir. Kod, belirtilen örnek KIMLIĞI için yalnızca bir örneğin mevcut olmasını sağlar.
+Aşağıdaki örnek, tek bir arka plan işi düzenlemesi oluşturan bir HTTP tetikleyici işlevini gösterir. Kod, belirtilen örnek KIMLIĞI için yalnızca bir örneğin mevcut olmasını sağlar.
 
 ### <a name="c"></a>C#
 
@@ -30,7 +30,7 @@ Aşağıdaki C# ve JavaScript örnekleri, tek bir arka plan işi düzenlemesi ol
 [FunctionName("HttpStartSingle")]
 public static async Task<HttpResponseMessage> RunSingle(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}/{instanceId}")] HttpRequestMessage req,
-    [OrchestrationClient] DurableOrchestrationClient starter,
+    [DurableClient] IDurableOrchestrationClient starter,
     string functionName,
     string instanceId,
     ILogger log)
@@ -55,9 +55,12 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
+> [!NOTE]
+> Önceki C# kod dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `DurableClient` özniteliği yerine `OrchestrationClient` özniteliğini kullanmanız gerekir ve `IDurableOrchestrationClient`yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-Function.json dosyası aşağıda verilmiştir:
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+
+İşte function. JSON dosyası:
 ```json
 {
   "bindings": [
@@ -83,7 +86,7 @@ Function.json dosyası aşağıda verilmiştir:
 }
 ```
 
-JavaScript kod aşağıdaki gibidir:
+JavaScript kodu aşağıda verilmiştir:
 ```javascript
 const df = require("durable-functions");
 
@@ -111,12 +114,12 @@ module.exports = async function(context, req) {
 };
 ```
 
-Varsayılan olarak, örnek kimlikleri rastgele oluşturulan GUID 'lerdir. Ancak bu durumda, örnek KIMLIĞI URL 'den rota verilerinde geçirilir. Kod, belirtilen kimliğe sahip bir örneğinC#zaten çalışır `getStatus` durumda olup olmadığını denetlemek için [getstatusasync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) () veya (JavaScript) öğesini çağırır. Aksi takdirde, bu KIMLIKLE bir örnek oluşturulur.
+Varsayılan olarak, örnek kimlikleri rastgele oluşturulan GUID 'lerdir. Bununla birlikte, önceki örnekte, örnek KIMLIĞI URL 'den rota verilerinde geçirilir. Kod, belirtilen KIMLIĞE sahipC#bir örneğin zaten çalışır durumda olup olmadığını denetlemek için `GetStatusAsync`() veya `getStatus` (JavaScript) öğesini çağırır. Böyle bir örnek çalışmıyorsa, bu KIMLIKLE yeni bir örnek oluşturulur.
 
 > [!NOTE]
 > Bu örnekte olası bir yarış durumu var. İki tane **Httpstartone** örneği aynı anda yürütülecektir, her iki işlev çağrısı de başarıyı bildirir ancak yalnızca bir düzenleme örneği başlatılır. Gereksinimlerinize bağlı olarak, bu istenmeyen yan etkilere sahip olabilir. Bu nedenle, bu tetikleyici işlevini aynı anda yürütebilmesi için iki isteğin olmadığından emin olmanız önemlidir.
 
-Orchestrator işlevinin uygulama ayrıntıları aslında önemi yoktur. Bu, başlayan ve tamamlanmış normal bir Orchestrator işlevi olabilir ya da sonsuza kadar (yani, bir [Eternal düzenleme](durable-functions-eternal-orchestrations.md)) çalışan bir düzenleyici olabilir. Önemli nokta, tek seferde çalışan yalnızca bir örnek vardır.
+Orchestrator işlevinin uygulama ayrıntıları gerçek anlamda değildir. Bu, başlayan ve tamamlanmış normal bir Orchestrator işlevi olabilir ya da sonsuza kadar (yani, bir [Eternal düzenleme](durable-functions-eternal-orchestrations.md)) çalışan bir düzenleyici olabilir. Önemli nokta, tek seferde çalışan yalnızca bir örnek vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

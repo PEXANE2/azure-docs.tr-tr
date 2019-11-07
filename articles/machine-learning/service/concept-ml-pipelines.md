@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/04/2019
-ms.openlocfilehash: 85346a2334d240eceb0daa4519ce69b4eb4906cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: f1b061e92ce0650da4d5b95643eb6e9df917e3b8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497465"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671537"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları nelerdir?
 
@@ -119,7 +119,7 @@ Görsel tasarım yüzeyini tercih eden geliştiriciler, işlem hatları oluştur
 
 İşlem hatlarını görsel olarak tasarladığınızda, bir adımın giriş ve çıkışları görünmez bir şekilde görüntülenir. Veri akışını sürükleyip bırakabilir, böylece işlem hattınızdaki veri akışını hızla anlamanıza ve değiştirebilirsiniz.
  
-![Azure Machine Learning tasarımcı örneği](./media/concept-ml-pipelines/visual-design-surface.gif)
+![Azure Machine Learning tasarımcı örneği](./media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 ### <a name="understanding-the-execution-graph"></a>Yürütme grafiğini anlama
 
@@ -183,7 +183,7 @@ Gördüğünüz gibi, bir Azure ML işlem hattı oluşturmak, bir betiği başla
 
 * Sorunları ayırmak için tek bir anlamı olan işlem hatlarını kullanma. Python 'un yerleşik işlevleri, nesneleri ve modülleri, programlı bir durum oluşmasını önlemek için uzun bir yoldur! İşlem hattı adımı, bir işlev çağrısından çok daha pahalıdır.
 
-* Ardışık düzen adımları arasında ağır kuponu. Bir bağımlı adımı sık sık yeniden düzenleme, önceki bir adımın çıktılarının değiştirilmesini gerektiriyorsa, bu durum büyük bir avantajdan daha fazla maliyetle zaten daha fazla maliyetlidir. Bu adımların çok fazla bağlanmış olduğunu gösteren bir adım, veri olmayan bir adımın bağımsız değişkenlerdir ancak işlemeyi denetlemek için bayraklar. 
+* Ardışık düzen adımları arasında ağır bir eşlenme. Bir bağımlı adımı sık sık yeniden düzenleme, önceki bir adımın çıktılarının değiştirilmesini gerektiriyorsa, bu durum büyük bir avantajdan daha fazla maliyetle zaten daha fazla maliyetlidir. Bu adımların çok fazla bağlanmış olduğunu gösteren bir adım, veri olmayan bir adımın bağımsız değişkenlerdir ancak işlemeyi denetlemek için bayraklar. 
 
 * İşlem kaynaklarını erken iyileştirme. Örneğin, veri hazırlığı için genellikle birkaç aşama vardır ve diğeri genellikle paralel programlama için bir `MpiStep` kullanabilirim, ancak daha az güçlü bir işlem hedefi ile `PythonScriptStep` kullanabilirim bir yer olabilir , ve benzeri. Belki de uzun çalıştırmada, özellikle de her zaman yeniden hesaplama yerine önbelleğe alınmış sonuçları kullanma olanağı varsa, bu gibi hassas adımlar oluşturma. Ancak ardışık düzenleri `multiprocessing` modülünün yerini alacak şekilde tasarlanmamıştır. 
 

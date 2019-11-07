@@ -1,5 +1,5 @@
 ---
-title: Elastik havuz kaynaklarını ölçeklendirme-Azure SQL veritabanı | Microsoft Docs
+title: Elastik havuz kaynaklarını ölçeklendirme-Azure SQL veritabanı
 description: Bu sayfada, Azure SQL veritabanı 'nda elastik havuzlara yönelik ölçek kaynakları açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
-ms.openlocfilehash: c96be7930a33185077134d051b49cba0695327e3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 812de89b43d1cb2bc7f9b5c5c619f3860344d5dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568648"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690425"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Azure SQL veritabanı 'nda elastik havuz kaynaklarını ölçeklendirme
 
@@ -47,9 +47,9 @@ Hizmet katmanını değiştirme veya tek bir veritabanının veya elastik havuzu
 
 |Hizmet katmanı|Temel tek veritabanı,</br>Standart (S0-S1)|Temel elastik havuz,</br>Standart (S2-S12), </br>Hiper ölçekli </br>Tek veritabanı veya elastik havuz Genel Amaçlı|Premium veya İş Açısından Kritik tek veritabanı veya elastik havuz|
 |:---|:---|:---|:---|
-|**Temel tek veritabanı,</br> standart (S0-S1)**|&bull;&nbsp;Kullanılan alandan bağımsız sabit zaman gecikmesi</br>&bull;&nbsp;Genellikle, 5 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|
-|**Temel elastik havuz </br>, standart (S2-S12) </br>, hiper ölçek </br>genel amaçlı tek veritabanı veya elastik havuz**|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Kullanılan alandan bağımsız sabit zaman gecikmesi</br>&bull;&nbsp;Genellikle, 5 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|
-|**Premium veya İş Açısından Kritik tek veritabanı veya elastik havuz**|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|
+|**Temel tek veritabanı,</br> standart (S0-S1)**|&bull; &nbsp;sabit zaman gecikmesi kullanılan alandan bağımsız</br>&bull; &nbsp;genellikle 5 dakikadan az|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|
+|**Temel elastik havuz, </br>standart (S2-S12), </br>Hyperscale, </br>Genel Amaçlı tek veritabanı veya elastik havuz**|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|&bull; &nbsp;sabit zaman gecikmesi kullanılan alandan bağımsız</br>&bull; &nbsp;genellikle 5 dakikadan az|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|
+|**Premium veya İş Açısından Kritik tek veritabanı veya elastik havuz**|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|
 
 > [!NOTE]
 >
@@ -57,7 +57,7 @@ Hizmet katmanını değiştirme veya tek bir veritabanının veya elastik havuzu
 > - Bir veritabanını elastik bir havuza taşımak durumunda, elastik havuz tarafından kullanılan alana değil, yalnızca veritabanı tarafından kullanılan alan gecikmeyi etkiler.
 >
 > [!TIP]
-> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetin](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetin](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) izleyin ve bu iki PowerShell komutunu kullanın: [Get-azsqldatabaseactivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [stop-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-azsqldatabaseactivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirirken veya işlem boyutunu yeniden oluştururken dikkat edilecek ek noktalar
 
@@ -71,7 +71,7 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 ## <a name="change-elastic-pool-storage-size"></a>Elastik havuz depolama boyutunu değiştir
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için [Azure SQL veritabanı'nda dosya alanı yönetmek](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ### <a name="vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modeli
 
@@ -83,7 +83,7 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 - Elastik havuz için depolama fiyatı, depolama miktarıdır ve hizmet katmanının depolama birimi fiyatıyla çarpılır. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için [Azure SQL veritabanı'nda dosya alanı yönetmek](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>DTU tabanlı satın alma modeli
 
@@ -92,7 +92,7 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 - Elastik havuz için ek depolama alanı fiyatı, ek depolama miktarıdır ve hizmet katmanının ek depolama birimi fiyatıyla çarpılır. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için [Azure SQL veritabanı'nda dosya alanı yönetmek](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

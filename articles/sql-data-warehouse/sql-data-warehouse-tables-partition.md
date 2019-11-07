@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı 'nda tabloları bölümleme | Microsoft Docs
+title: Tabloları bölümleme
 description: Azure SQL veri ambarı 'nda tablo bölümlerinin kullanılmasına yönelik öneriler ve örnekler.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6791ff2f2a9719a19d2c9abc4ff480435de7bb00
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 7ec313094a9ebc05f966e0c49f44284909ca778f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477066"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685425"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>SQL veri ambarı 'nda tabloları bölümleme
 Azure SQL veri ambarı 'nda tablo bölümlerinin kullanılmasına yönelik öneriler ve örnekler.
@@ -115,7 +116,7 @@ SQL veri ambarı bölüm bölmeyi, birleştirmeyi ve değiştirmeyi destekler. B
 Bölümleri iki tablo arasında değiştirmek için bölümlerin ilgili sınırlarına göre hizalanmasına ve tablo tanımlarının eşleştiğinden emin olmanız gerekir. Denetim kısıtlamaları tablodaki değer aralığını zorlamak için kullanılabilir olmadığından, kaynak tablo hedef tabloyla aynı bölüm sınırlarını içermelidir. Bölüm sınırları aynı değilse, Bölüm meta verileri eşitlenmediği için bölüm anahtarı başarısız olur.
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>Veri içeren bir bölümü bölme
-Zaten veri içeren bir bölümü bölmek için en verimli yöntem bir `CTAS` ifade kullanmaktır. Bölümlenmiş tablo kümelenmiş bir columnstore ise, bölünebilmesi için tablo bölümünün boş olması gerekir.
+Zaten veri içeren bir bölümü bölmek için en verimli yöntem `CTAS` bir ifade kullanmaktır. Bölümlenmiş tablo kümelenmiş bir columnstore ise, bölünebilmesi için tablo bölümünün boş olması gerekir.
 
 Aşağıdaki örnek bölümlenmiş bir columnstore tablosu oluşturur. Her bölüme bir satır ekler:
 
@@ -147,7 +148,7 @@ INSERT INTO dbo.FactInternetSales
 VALUES (1,20000101,1,1,1,1,1,1);
 ```
 
-Aşağıdaki sorgu, `sys.partitions` katalog görünümünü kullanarak satır sayısını bulur:
+Aşağıdaki sorgu `sys.partitions` katalog görünümünü kullanarak satır sayısını bulur:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -172,7 +173,7 @@ ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 
 Bölüm boş olmadığından, # 35346, düzey 15, durum 1, ALTER PARTITION ifadesinin Line 44 SPLIT yan tümcesi başarısız oldu. Tabloda bir columnstore dizini mevcut olduğunda yalnızca boş bölümler bölünebilir. ALTER PARTıTıON deyimini yürütmeden önce columnstore dizinini devre dışı bırakmayı, ardından ALTER PARTıTıON tamamlandıktan sonra columnstore dizinini yeniden oluşturmayı düşünün.
 
-Ancak, verileri tutmak üzere `CTAS` yeni bir tablo oluşturmak için kullanabilirsiniz.
+Ancak, verileri tutacak yeni bir tablo oluşturmak için `CTAS` kullanabilirsiniz.
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -198,7 +199,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Her şey, verileri kullanarak `CTAS`yeni bölüm sınırlarına hizalamak ve sonra verileri ana tabloya geri geçirmek için kullanılır.
+Her şey, `CTAS`kullanarak verileri yeni bölüm sınırlarına hizalamak ve sonra verileri ana tabloya geri geçirmek için kullanılır.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -226,7 +227,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Verileri tek bir adımda içeren bölümlere yeni verileri yükleme
-Bölüm değiştirme ile verileri bölümlere yükleme, kullanıcıların yeni verilerde anahtara görünmeyen bir tabloda yeni verileri aşamalandırmaya uygun bir yoldur.  Bölüm geçişle ilişkili kilitleme çekişmesiyle uğraşmak için meşgul sistemler zor olabilir.  Bir bölümdeki mevcut verileri temizlemek için, `ALTER TABLE` verileri değiştirmek için kullanılması gerekir.  Yeni verilerde `ALTER TABLE` geçiş yapmak için başka bir tane gerekiyordu.  SQL veri ambarı 'nda, `TRUNCATE_TARGET` seçeneği `ALTER TABLE` komutta desteklenir.  `TRUNCATE_TARGET` Komutuyla,yeniverilerlebölümdeki`ALTER TABLE` mevcut verilerin üzerine yazar.  Aşağıda, var olan verileri içeren `CTAS` yeni bir tablo oluşturmak, yeni veriler eklemek ve ardından tüm verileri yeniden hedef tabloya dönüştürmek, varolan verilerin üzerine yazmak için kullanılan bir örnek verilmiştir.
+Bölüm değiştirme ile verileri bölümlere yükleme, kullanıcıların yeni verilerde anahtara görünmeyen bir tabloda yeni verileri aşamalandırmaya uygun bir yoldur.  Bölüm geçişle ilişkili kilitleme çekişmesiyle uğraşmak için meşgul sistemler zor olabilir.  Bir bölümdeki mevcut verileri temizlemek için, verileri değiştirmek üzere kullanılan bir `ALTER TABLE`.  Yeni verilerde geçiş yapmak için başka bir `ALTER TABLE` gerekiyordu.  SQL veri ambarı 'nda `TRUNCATE_TARGET` seçeneği, `ALTER TABLE` komutunda desteklenir.  `TRUNCATE_TARGET` `ALTER TABLE` komutu, bölümdeki mevcut verilerin yeni verilerle üzerine yazar.  Aşağıda, var olan verileri içeren yeni bir tablo oluşturmak, yeni veriler eklemek ve ardından tüm verileri yeniden hedef tabloya dönüştürmek, mevcut verilerin üzerine yazmak için `CTAS` kullanan bir örnek verilmiştir.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -251,7 +252,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 ```
 
 ### <a name="table-partitioning-source-control"></a>Tablo bölümleme kaynak denetimi
-Kaynak denetim sisteminizde tablo tanımınızın  bir engel olmasını önlemek için aşağıdaki yaklaşımı göz önünde bulundurmanız gerekebilir:
+Kaynak denetim sisteminizde tablo tanımınızın bir engel olmasını önlemek için aşağıdaki yaklaşımı göz önünde bulundurmanız gerekebilir:
 
 1. Tabloyu bölümlenmiş tablo olarak oluştur, ancak bölüm değeri yok
 
@@ -275,7 +276,7 @@ Kaynak denetim sisteminizde tablo tanımınızın  bir engel olmasını önlemek
     ;
     ```
 
-1. `SPLIT`dağıtım sürecinin bir parçası olarak tablo:
+1. dağıtım işleminin bir parçası olarak tabloyu `SPLIT`:
 
     ```sql
      -- Create a table containing the partition boundaries
