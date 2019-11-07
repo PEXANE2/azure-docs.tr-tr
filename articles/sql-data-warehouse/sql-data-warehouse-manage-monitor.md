@@ -1,5 +1,5 @@
 ---
-title: DMV 'leri kullanarak iş yükünüzü izleme | Microsoft Docs
+title: DMV’leri kullanarak iş yükünüzü izleme
 description: DMV 'leri kullanarak iş yükünüzü izlemeyi öğrenin.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d1af13eb54daf060f0172a0506370ca459f2ece
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: e1a754747ae5c0fb7c50653f4881b67a81e011ef
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018956"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645663"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV’leri kullanarak iş yükünüzü izleme
 Bu makalede, iş yükünüzü izlemek için dinamik yönetim görünümlerinin (DMVs) nasıl kullanılacağı açıklanır. Bu, Azure SQL veri ambarı 'nda sorgu yürütmeyi araştırmanın de içerir.
@@ -45,7 +45,7 @@ SQL Data Warehouse üzerinde yürütülen tüm sorgular [sys. DM _pdw_exec_reque
 
 Belirli bir sorgu için sorgu yürütme planlarını ve saatlerini araştırmak üzere izlenecek adımlar aşağıda verilmiştir.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>1\. ADIM: Araştırmak istediğiniz sorguyu tanımla
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>1\. Adım: araştırmak istediğiniz sorguyu tanımla
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -81,7 +81,7 @@ FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>2\. ADIM: Sorgu planını araştır
+### <a name="step-2-investigate-the-query-plan"></a>2\. Adım: sorgu planını araştırın
 [Sys. DM _pdw_request_steps][sys.dm_pdw_request_steps]öğesinden SORGUNUN dağıtılmış SQL (DSQL) planını almak IÇIN istek kimliğini kullanın.
 
 ```sql
@@ -97,10 +97,10 @@ Bir DSQL planı beklenenden uzun sürüyorsa, nedeni çok sayıda DSQL adımı o
 
 Tek bir adım hakkında daha fazla ayrıntı araştırmak için, uzun süreli sorgu adımının *operation_type* sütunu ve **adım dizini**' ni aklınızda koyun:
 
-* **SQL Işlemlerinde**adım 3A ile devam edin: OnOperation, RemoteOperation, ReturnOperation.
-* **Veri taşıma işlemleri**için adım 3bile devam edin: Karıştırılmış Tamoveoperation, Yayınmoveoperation, Kırmoveoperation, PartitionMoveOperation, MoveOperation, CopyOperation.
+* **SQL Işlemlerinde**adım 3A ile devam edin: Onoperation, Remoteoperation, ReturnOperation.
+* **Veri taşıma işlemleri**için adım 3bile devam edin: karıştırılmış Limoveoperation, Yayınmoveoperation, Kırmoveoperation, Partitionmoveoperation, Moveoperation, CopyOperation.
 
-### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>Adım 3a: Dağıtılmış veritabanlarında SQL 'i araştırın
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>Adım 3a: dağıtılmış veritabanlarında SQL 'i araştırın
 Dağıtılan tüm veritabanlarında Sorgu adımının yürütme bilgilerini içeren [sys. DM _pdw_sql_requests][sys.dm_pdw_sql_requests]içindeki ayrıntıları almak IÇIN istek kimliği ve adım dizinini kullanın.
 
 ```sql
@@ -120,7 +120,7 @@ Sorgu adımı çalışırken, belirli bir dağıtım üzerinde çalışan adım�
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Adım 3B: Dağıtılmış veritabanlarında veri hareketini araştırın
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Adım 3B: dağıtılmış veritabanlarında veri hareketini araştırın
 [Sys. DM _pdw_dms_worker çalışanlarının][sys.dm_pdw_dms_workers]her dağıtımında çalışan bir veri taşıma adımı hakkındaki bilgileri almak IÇIN istek kimliği ve adım dizini ' ni kullanın.
 
 ```sql

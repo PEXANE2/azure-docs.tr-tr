@@ -1,5 +1,6 @@
 ---
-title: Web hizmetlerindeki verileri içeri/dışarı aktarma-Azure Machine Learning Studio (klasik) | Microsoft Docs
+title: Web hizmetlerinde verileri içeri/dışarı aktarma
+titleSuffix: ML Studio (classic) Azure
 description: Verileri Içeri aktarma ve veri alma modüllerini bir Web hizmetinden veri göndermek ve almak için nasıl kullanacağınızı öğrenin.
 services: machine-learning
 author: xiaoharper
@@ -11,12 +12,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: a9259856a792dbd3c2f22ed98eef26c8e5f7b17d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3a88d3958378a0746a22e99a817ad9ecebf217dc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500102"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684705"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Veri Içeri aktarma ve veri dışa aktarma modülleri kullanan Azure Machine Learning Studio (klasik) Web hizmetlerini dağıtma
 

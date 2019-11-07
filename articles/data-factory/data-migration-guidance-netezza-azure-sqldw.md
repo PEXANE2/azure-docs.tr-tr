@@ -1,5 +1,5 @@
 ---
-title: Şirket içi Netezza sunucusundan Azure 'a veri geçirmek için Azure Data Factory kullanma | Microsoft Docs
+title: Şirket içi Netezza sunucusundan Azure 'a veri geçirmek için Azure Data Factory kullanma
 description: Şirket içi Netezza sunucusundan Azure 'a veri geçirmek için Azure Data Factory kullanın.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: 9ea8326b10536cb91b9dc67f637664f0fc055e74
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c5b36a04501b417af4e4527968a082da8a061804
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122842"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675796"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Şirket içi Netezza sunucusundan Azure 'a veri geçirmek için Azure Data Factory kullanma 
 
@@ -120,9 +120,9 @@ Yukarıdaki diyagram aşağıdaki gibi yorumlanabilir:
 
 Küçük tablolar (yani, 100 GB 'tan daha az bir birimi olan veya iki saat içinde Azure 'a geçirilebilecek tablolar) için her bir kopyalama işi tablo başına veri yükleme yapabilirsiniz. Daha fazla verimlilik için, aynı anda ayrı tabloları yüklemek üzere birden çok Azure Data Factory kopyalama işi çalıştırabilirsiniz. 
 
-Her kopyalama işinde, paralel sorgular çalıştırmak ve verileri bölümlere göre kopyalamak için aşağıdaki veri bölümü seçeneklerinden biriyle [ `parallelCopies` özellik ayarını](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) kullanarak, bazı paralellik düzeyine erişebilirsiniz:
+Her kopyalama işinde paralel sorgular çalıştırmak ve verileri bölümlere göre kopyalamak için, aşağıdaki veri bölümü seçeneklerinden biriyle [`parallelCopies` özellik ayarını](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) kullanarak, bazı paralellik düzeyine erişebilirsiniz:
 
-- Daha fazla verimlilik elde etmek için bir veri diliminden başlamanız önerilir.  `parallelCopies` Ayardaki değerin, Netezza sunucusundaki tablonuzdaki veri dilimi bölümlerinin toplam sayısından küçük olduğundan emin olun.  
+- Daha fazla verimlilik elde etmek için bir veri diliminden başlamanız önerilir.  `parallelCopies` ayarındaki değerin, Netezza sunucusundaki tablonuzdaki veri dilimi bölümlerinin toplam sayısından küçük olduğundan emin olun.  
 
 - Her bir veri dilimi bölümünün hacmi hala büyükse (örneğin, 10 GB veya üzeri), dinamik bir Aralık bölümüne geçiş yapmanız önerilir. Bu seçenek, bölüm sütunu, üst sınır ve alt sınır ile her bölümün birim sayısını ve bölüm sayısını tanımlamaya yönelik daha fazla esneklik sağlar.
 
@@ -150,13 +150,13 @@ Netezza sunucusundan Azure 'a veri geçiriyorsanız, sunucunun şirket güvenlik
 
 En iyi uygulama olarak, temsili bir örnek veri kümesiyle bir kavram kanıtı (POC), her kopyalama etkinliği için uygun bölüm boyutunu belirleyebilmeniz için Her bir bölümü Azure 'a iki saat içinde yüklemeniz önerilir.  
 
-Bir tabloyu kopyalamak için tek ve şirket içinde barındırılan bir IR makinesiyle tek bir kopyalama etkinliği ile başlayın. Tablodaki veri dilimi `parallelCopies` bölümlerinin sayısına göre ayarı kademeli olarak artırın. Tüm tablonun, kopyalama işinden kaynaklanan aktarım hızına bağlı olarak iki saat içinde Azure 'a yüklenip yüklenemeyeceğini öğrenin. 
+Bir tabloyu kopyalamak için tek ve şirket içinde barındırılan bir IR makinesiyle tek bir kopyalama etkinliği ile başlayın. Tablodaki veri dilimi bölümlerinin sayısına göre `parallelCopies` ayarını kademeli olarak artırın. Tüm tablonun, kopyalama işinden kaynaklanan aktarım hızına bağlı olarak iki saat içinde Azure 'a yüklenip yüklenemeyeceğini öğrenin. 
 
 Bu, iki saat içinde Azure 'a yüklenemediğinde ve şirket içinde barındırılan IR düğümünün ve veri deposunun kapasitesi tam olarak kullanılmazsa, ağınızın sınırına veya veri deposunun bant genişliği sınırına ulaşana kadar eşzamanlı kopyalama etkinliklerinin sayısını kademeli olarak artırın olmalıdır 
 
 Şirket içinde barındırılan IR makinesinde CPU ve bellek kullanımını izlemeye devam edin ve CPU ve belleğin tam olarak kullanıldığını gördüğünüzde makinenin ölçeğini ölçeklendirmeye veya birden çok makineye ölçeğe hazır olun. 
 
-Azure Data Factory kopyalama etkinliği tarafından bildirilen azaltma hatalarıyla karşılaştığınızda, Azure Data Factory eşzamanlılık veya `parallelCopies` ayarı azaltın ya da ağın bant genişliği veya g/ç işlem/sn (IOPS) sınırlarını artırmayı düşünün ve veri depoları. 
+Azure Data Factory kopyalama etkinliği tarafından bildirilen azaltma hatalarıyla karşılaştığınızda, Azure Data Factory eşzamanlılık veya `parallelCopies` ayarını küçültün ya da ağ ve verilerin bant genişliği veya g/ç işlem/saniye (ıOPS) sınırlarını artırmayı deneyin depolaya. 
 
 
 ### <a name="estimate-your-pricing"></a>Fiyatlandırmanızı tahmin etme 
@@ -173,7 +173,7 @@ Aşağıdaki deyimlerin doğru olduğunu varsayalım:
 
 - 50-TB birimi 500 bölüme bölünmüştür ve her kopyalama etkinliği bir bölüm taşıdır.
 
-- Her kopyalama etkinliği, dört makineye karşı şirket içinde barındırılan bir IR ile yapılandırılır ve saniyede 20 megabayta (MB/sn) bir işleme ulaşır. (Kopyalama etkinliği içinde, `parallelCopies` 4 olarak ayarlanır ve tablodaki verileri yüklemeye yönelik her iş parçacığı 5 MB/sn 'lik bir işleme erişir.)
+- Her kopyalama etkinliği, dört makineye karşı şirket içinde barındırılan bir IR ile yapılandırılır ve saniyede 20 megabayta (MB/sn) bir işleme ulaşır. (Kopyalama etkinliği içinde `parallelCopies` 4 olarak ayarlanır ve tablodaki verileri yüklemek için her iş parçacığı 5 MB/sn 'Lik bir işleme erişir.)
 
 - ForEach eşzamanlılık 3 olarak ayarlanır ve toplam verimlilik 60 MB/sn 'dir.
 

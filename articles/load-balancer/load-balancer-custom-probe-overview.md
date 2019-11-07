@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 62af688c6090b61f2596ab376cb479c270b87759
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 78e085aae97114e6848b736c40b16c755256d0cd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274123"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571112"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer durum araştırmaları
 
@@ -48,6 +48,9 @@ Durum araştırma yapılandırması aşağıdaki öğelerden oluşur:
 - Araştırmanın Protokolü
 - Araştırmanın bağlantı noktası
 - Http (S) yoklamaları kullanılırken HTTP GET için kullanılacak HTTP yolu
+
+> [!NOTE]
+> Azure PowerShell, Azure CLı, şablonlar veya API kullanılırken bir araştırma tanımı zorunlu değildir veya denetlenir. Araştırma doğrulama testleri yalnızca Azure portalı kullanılırken yapılır.
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Uygulama sinyalini anlama, sinyalin algılanması ve platformun yeniden eylemi
 

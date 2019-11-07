@@ -1,5 +1,5 @@
 ---
-title: Olağanüstü durum kurtarma çözümleri tasarlama-Azure SQL veritabanı | Microsoft Docs
+title: Olağanüstü durum kurtarma çözümleri tasarlama-Azure SQL veritabanı
 description: Doğru yük devretme modelini seçerek, olağanüstü durum kurtarma için bulut çözümünüzü nasıl tasarlayacağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: ccdd2443254da065a15911f567577672492ddb4f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 535397dcf32a617038ab4bef4ec7aa227f4563b1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568886"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690656"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>SQL veritabanı elastik havuzlarını kullanan uygulamalar için olağanüstü durum kurtarma stratejileri
 
@@ -113,7 +113,7 @@ Katmanlı hizmet tekliflerle yetişkinlere yönelik bir SaaS uygulaması kullan�
 
 Bu senaryoyu desteklemek için, üç ayrı elastik havuz kullanın. Ücretli müşterilerin kiracı veritabanlarını içerecek şekilde iki farklı bölgede yüksek eDTU 'lar veya veritabanı başına sanal çekirdekler içeren iki eşit boyut havuzu sağlayın. Deneme kiracılarını içeren üçüncü havuz, veritabanı başına daha düşük eDTU 'ları veya sanal çekirdekleri içerebilir ve iki bölgeden birinde sağlanabilir.
 
-Kesintiler sırasında en düşük kurtarma süresini garantilemek için, ödeyen müşterilerin kiracı veritabanları, iki bölgenin her birinde birincil veritabanlarının% 50 ' i ile coğrafi olarak çoğaltılır. Benzer şekilde, her bölge ikincil veritabanlarının% 50 ' i içerir. Bu şekilde, bir bölge çevrimdışı ise, yalnızca ücretli müşterilerin veritabanlarının% 50 ' inden etkilenmekte ve yük devri yapmanız gerekir. Diğer veritabanları değişmeden kalır. Bu yapılandırma aşağıdaki diyagramda gösterilmiştir:
+Kesintiler sırasında en düşük kurtarma süresini garantilemek için, ödeyen müşterilerin kiracı veritabanları, iki bölgenin her birinde birincil veritabanlarının %50 ' i ile coğrafi olarak çoğaltılır. Benzer şekilde, her bölge ikincil veritabanlarının %50 ' i içerir. Bu şekilde, bir bölge çevrimdışı ise, yalnızca ücretli müşterilerin veritabanlarının %50 ' inden etkilenmekte ve yük devri yapmanız gerekir. Diğer veritabanları değişmeden kalır. Bu yapılandırma aşağıdaki diyagramda gösterilmiştir:
 
 ![Şekil 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
@@ -143,7 +143,7 @@ A bölgesi kurtarılırken deneme müşterileri için B bölgesini kullanmak mı
 
 * Deneme DR havuzuna tüm bekleyen coğrafi geri yükleme isteklerini iptal edin.
 * Yönetim veritabanının yükünü devreder (8). Bölgenin kurtarmasından sonra, eski birincil otomatik olarak ikincil haline gelmiştir. Şimdi birincil olur.  
-* Hangi ücretli kiracı veritabanlarının havuz 1 ' e geri dönmesini ve ikincil değerlerine (9) yük devretmeyi başlatmasını seçin. Bölgenin kurtarmasından sonra, havuz 1 ' deki tüm veritabanları otomatik olarak ikincil haline gelmiştir. Şimdi% 50, daha fazla mali hale gelir.
+* Hangi ücretli kiracı veritabanlarının havuz 1 ' e geri dönmesini ve ikincil değerlerine (9) yük devretmeyi başlatmasını seçin. Bölgenin kurtarmasından sonra, havuz 1 ' deki tüm veritabanları otomatik olarak ikincil haline gelmiştir. Şimdi %50, daha fazla mali hale gelir.
 * Havuz 2 ' nin boyutunu orijinal eDTU (10) veya Vçekirdekler sayısıyla küçültün.
 * B bölgesindeki tüm geri yüklenen deneme veritabanlarını salt okunurdur (11) olarak ayarlayın.
 * Kurtarmaya bu yana değiştirilen deneme DR havuzundaki her bir veritabanı için, deneme birincil havuzunda karşılık gelen veritabanını yeniden adlandırın veya silin (12).
@@ -152,9 +152,9 @@ A bölgesi kurtarılırken deneme müşterileri için B bölgesini kullanmak mı
 
 Bu stratejinin başlıca **avantajları** şunlardır:
 
-* Bir kesinti, kiracı veritabanlarının% 50 ' inden fazlasını etkilememesini sağladığından, ödeyen müşterilerinin en agresif SLA 'sını destekler.
+* Bir kesinti, kiracı veritabanlarının %50 ' inden fazlasını etkilememesini sağladığından, ödeyen müşterilerinin en agresif SLA 'sını destekler.
 * Kurtarma sırasında DR havuzu oluşturulduktan hemen sonra yeni denemeler engellenmesini güvence altına alır.
-* Havuz kapasitesinin daha verimli bir şekilde kullanılmasını sağlar. havuz 1 ' deki ikincil veritabanlarının% 50 ' i ve havuz 2 ' nin birincil veritabanlarından daha az etkin olduğu garanti edilir.
+* Havuz kapasitesinin daha verimli bir şekilde kullanılmasını sağlar. havuz 1 ' deki ikincil veritabanlarının %50 ' i ve havuz 2 ' nin birincil veritabanlarından daha az etkin olduğu garanti edilir.
 
 Ana **denge** :
 

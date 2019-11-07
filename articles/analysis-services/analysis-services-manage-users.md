@@ -1,18 +1,18 @@
 ---
-title: Azure Analysis Services | için kimlik doğrulaması ve Kullanıcı izinleri | Microsoft Docs
-description: Azure Analysis Services kimlik doğrulaması ve Kullanıcı izinleri hakkında bilgi edinin.
+title: Azure Analysis Services kimlik doğrulaması ve Kullanıcı izinleri | Microsoft Docs
+description: Bu makalede, Azure Analysis Services kimlik yönetimi ve Kullanıcı kimlik doğrulaması için Azure Active Directory (Azure AD) nasıl kullanıldığı açıklanmaktadır.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a48292b7600d8b9e400bf1e2d61aec313ce29f4b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4a054c3c042e18f1679acd75e5ba5ad74f66edff
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146862"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572760"
 ---
 # <a name="authentication-and-user-permissions"></a>Kimlik doğrulaması ve kullanıcı izinleri
 

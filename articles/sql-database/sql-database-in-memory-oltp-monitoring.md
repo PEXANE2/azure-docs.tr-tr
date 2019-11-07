@@ -1,5 +1,5 @@
 ---
-title: XTP bellek Içi depolamayı izleme | Microsoft Docs
+title: XTP bellek Içi depolamayı izleme
 description: XTP bellek Içi depolama kullanımı, kapasiteyi tahmin edin ve izleyin. Kapasite çözme hatası 41823
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 1c5a57f634c01cc42934a98decd8f392334dede6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d67a6d151f65252faab40f8f7289fe9e884eff17
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567974"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689805"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Bellek Içi OLTP depolama alanını izleme
 
@@ -36,7 +36,7 @@ Tablo ve tablo değişkeni satırları, ayrıca dizinler, en fazla Kullanıcı v
 Bellek Içi depolama kullanımını, [Azure Portal](https://portal.azure.com/)işlem boyutunuz için depolama ucunun yüzdesi olarak izleyebilirsiniz: 
 
 1. Veritabanı dikey penceresinde kaynak kullanımı kutusunu bulun ve Düzenle ' ye tıklayın.
-2. Ölçümü `In-Memory OLTP Storage percentage`seçin.
+2. Ölçüm `In-Memory OLTP Storage percentage`seçin.
 3. Uyarı eklemek için kaynak kullanımı kutusuna tıklayarak ölçüm dikey penceresini açın ve uyarı Ekle ' ye tıklayın.
 
 Ya da bellek Içi depolama kullanımını göstermek için aşağıdaki sorguyu kullanın:

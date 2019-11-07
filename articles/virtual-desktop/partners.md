@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 11/05/2019
 ms.author: helohr
-ms.openlocfilehash: b62351f1d99ef54d2416a2427264aea225afc5a8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cf344d6c551ecd3d301d79c29efe9e7adb7f8d83
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171622"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646884"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -24,7 +24,7 @@ Bu makalede, Windows sanal masaüstü iş ortakları listelenmektedir.
 
 Citrix, Azure 'daki sanal uygulamalar ve masaüstü iş yükleri için şirket içi dağıtımlarla yan yana merkezi bir karma yönetim sunan, onaylanan bir sağlayıcıdır. Sanal uygulamalar ve masaüstleri hizmeti olan Citrix çalışma alanı, kullanıcıların her yerden yüksek tanımlı bir deneyim sunmak için gelişmiş Citrix HDX protokolünü kullanarak herhangi bir cihazdan uygulamalara ve masaüstlerine erişmelerini sağlar.
 
-Citrix, Kullanıcı yoğunluğu ve performansını artırmak, isteğe bağlı iş yüklerini sağlamak ve görüntü ve uygulama yönetimini basitleştirmek için Windows sanal masaüstü 'nün değerini sağlam kurumsal araçlarla genişletir. Bu, maliyetleri akıllı ölçeklendirme araçlarıyla iyileştirebildiğinden, sektörlerin genelinde en zorlu uygulamalara karşı sınanmış olan inanılmaz bir son kullanıcı deneyimi sunar.
+Citrix, Kullanıcı yoğunluğu ve performansını artırmak, isteğe bağlı iş yüklerini sağlamak ve görüntü ve uygulama yönetimini basitleştirmek için Windows sanal masaüstü 'nün değerini sağlam kurumsal araçlarla genişletir. Sektörler genelinde en zorlu uygulamalara karşı test edilen inanılmaz bir kullanıcı deneyimi sunarken, maliyetleri akıllı ölçeklendirme araçlarıyla iyileştirebilirler. Ayrıca, Citrix tarafından yönetilen masaüstleri, her cihaza sanal uygulamalar ve masaüstleri sunmaya yönelik basit, bulut tabanlı bir yönetim çözümü sağlayan bir Windows sanal masaüstü özellikli masaüstü programdır.
 
 - [İş ortağı Web sitesine gidin](https://more.citrix.com/wvd).
 
@@ -44,7 +44,7 @@ Onaylanan bir sağlayıcı olarak, Windows sanal masaüstü 'nün avantajları M
 
 ![Cloudatlatıcı logosu](./media/partners/cloudjumper.png)
 
-Cloudatlatıcı, çözüm sağlayıcılarını ve Windows sanal masaüstü ortamlarını barındırmaya ve yönetmeye yönelik yazılımla kurumsal BT hizmetleri sunan bir Windows sanal masaüstü katma hizmet sağlayıcıdır. Cloudatlatıcı yazılımıyla, Windows sanal masaüstü dağıtımının her katmanını yönetebilir. İş yüklerinin ve uygulamaların teslimi, kullanıcıların her cihazda masaüstüne hızlı bir şekilde erişebilmesini sağlamak için otomatikleştirilmiştir.
+Cloudatlatıcı, çözüm sağlayıcılarını ve Windows sanal masaüstü ortamlarını barındırmaya sağlamak ve yönetmek için yazılım ile kurumsal olan Windows sanal masaüstü katma bir hizmet sağlayıcıdır. Cloudatlatıcı yazılımıyla, Windows sanal masaüstü dağıtımının her katmanını yönetebilir. İş yüklerinin ve uygulamaların teslimi, kullanıcıların her cihazda masaüstüne hızlı bir şekilde erişebilmesini sağlamak için otomatikleştirilmiştir.
 
 Cloudatlatıcı yazılımı, bulut çalışma alanı yönetim paketi, Azure 'daki dağıtımı ve devam eden yönetim görevlerini basitleştirerek Windows sanal masaüstü 'nün değerini genişletir. Tek bir cam bölmeden, Kullanıcı çalışma alanları için altyapıyı sağlayabilir, yönetebilir ve iyileştirebilir. Cloudatlatıcı 'un basit betik tetikleme altyapısı, Windows sanal masaüstü sağlama ile ilgili görevleri otomatikleştirmek için BT hizmeti platformlarıyla tümleştirilir. Ayrıca, Cloudatlatıcı API 'Leri, ServiceNow ve BMC 'ye hazırlanma gibi diğer kurumsal sistemlerle daha fazla genişletilebilirlik ve tümleştirme sağlar.
 
@@ -66,11 +66,21 @@ Windows sanal masaüstü ile kullanıldığında ControlUp, Windows sanal masaü
 
 ![deviceTRUST logosu](./media/partners/devicetrust.png)
 
-deviceTRUST, şirket kurumlarını oluşturan Windows sanal masaüstü katma bir hizmet sağlayıcıdır ve böylece kullanıcılara, herhangi bir cihazdan herhangi bir yerden, herhangi bir ağ üzerinden Windows sanal masaüstlerine erişme özgürlüğü sağlar Departmanlar, idare gereksinimlerini karşılamak için gereken bilgileri ve denetimi sağlar. 
+deviceTRUST, kurumsal kuruluşun bulunduğu Windows sanal masaüstü katma değer eklenmiş bir hizmet sağlayıcıdır. Kullanıcılar, herhangi bir cihazdaki herhangi bir yerden, herhangi bir ağ üzerinden Windows sanal masaüstüne erişim özgürlüğü sunarak BT departmanlarına, idare gereksinimlerini karşılamak için ihtiyaç duydukları bilgileri ve denetimi sağlar. 
 
 deviceTRUST, Windows sanal masaüstü 'nün değerini bağlamsal güvenlik teknolojisi ile genişletir. deviceTRUST, güvenli bir Windows sanal masaüstü erişimi, Windows sanal masaüstü 'nde koşullu uygulama erişimi ve ek bir altyapı olmadan koşullu Windows sanal masaüstü ilkeleri uygulamak için koşullu erişim sağlar. DeviceTRUST kullanmak, tüm güvenlik, uyumluluk ve mevzuat gereksinimlerini karşılayan bir mobil, esnek çalışma alanı sunar. 
 
 - [İş ortağı Web sitesine gidin](https://devicetrust.com/wvd).
+
+## <a name="igel"></a>ILEK dili
+
+![IGEL logosu](./media/partners/igel.png)
+
+ILEK, Microsoft Azure ve Windows Sanal Masaüstü Hizmetleri 'nin onaylı ve onaylanmış bir ortağıdır. ILEK, hafif, basit ve güvenli Linux tabanlı bir uç nokta ile bir veya daha fazla Kullanıcı cihazından sanal uygulamalara, masaüstü bilgisayarlara ve bulut çalışma alanlarına erişmek üzere tasarlanan bulut çalışma alanları için bir sonraki-gen Edge işletim sistemi olan ıLEK IŞLETIM sistemi sağlar. Platformdan bağımsız bir yazılım çözümü, ıLEK işletim sistemi ve sunucu tabanlı yönetim ve denetim yazılımı, ıLEK Universal yönetim paketi (UMS), kuruluşların Azure tabanlı avantajlarından tam olarak yararlanabilmeleri için bir uç nokta yönetimi ve denetim çözümü oluşturur uç nokta donanım ve uç nokta cihaz yönetimi ve işlem maliyetlerini azaltırken ekonomik çoklu oturum Windows sanal masaüstü de dahil olmak üzere bulut örnekleri ve Windows Sanal Masaüstü Masaüstleri.
+ 
+ILEK OS, Citrix, Microsoft ve VMware 'den tüm popüler sanal uygulamaları, masaüstü bilgisayarları ve bulut çalışma alanı istemci protokollerini destekler. Kuruluşların Windows Sanal Masaüstü Hizmetleri 'ni kendi benzersiz kullanıcı ortamlarına hızla benimsemesine yardımcı olmak için 85 çevresel, arabirim ve protokol iş ortaklarının tümleşik teknolojilerini içerir. ILEK OS, bir salt okunurdur, modüler bir uç nokta işletim sistemi ve bu da izinsiz koruma sağlar. Artık, uç nokta donanımında çalışan tüm önemli ana işlemlerin (bazı seçili modellerden) veya UEFı işleminin Azure bulutuna ve Windows sanal masaüstü hizmetlerine kadar her şekilde bütünlüğünü doğrulayan "güven zinciri" de içerir. IGEL işletim sistemi sayesinde kuruluşlar, kullanıcıların uç nokta cihazlarının bütünlüğü, güvenliği ve yönetilebilirliği açısından tam güvenle Azure bulutunda Windows sanal masaüstüne abone olabilir.
+
+- [İş ortağı Web sitesine gidin.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
 
 ## <a name="ivanti"></a>Ivanti
 
@@ -78,7 +88,7 @@ deviceTRUST, Windows sanal masaüstü 'nün değerini bağlamsal güvenlik tekno
 
 Ivantı Kullanıcı çalışma alanı yöneticisi, sorunsuz taşınabilirlik için Kullanıcı verilerini masaüstünden ayırarak masaüstü dağıtımı ve yönetimini kolaylaştırır. Ivanti sayesinde, kullanıcılar Windows 10 ' a geçiş, Office 365 ' i benimseme veya hizmetleri buluta daha hızlı taşıma gibi karmaşık projeler sunabiliyor. 
 
-Ivantı Kullanıcı çalışma alanı yöneticisi, Windows sanal masaüstü ile kullanıldığında, Kullanıcı masaüstü deneyiminin basit bağlamsal yönetimini sağlar, uzun oturum açma sürelerini ortadan kaldırır ve Grup İlkesi nieli Mares 'yi kaldırır. Ivantı Kullanıcı çalışma alanı yöneticisi kullanıma hazır şablonlar, aracılar ve var olan konsol aracılığıyla kullanıcılara yönelik yüklemeyi basitleştirir. Ivantı Kullanıcı çalışma alanı yöneticisi, kullanıcıların sevdiği, sunuculara para tasarrufu, kullanıcıları daha verimli bir şekilde yönetme ve uç nokta güvenlik riskini azaltma konusunda yanıt veren, güvenli masaüstleri sunar. 
+Ivantı Kullanıcı çalışma alanı yöneticisi, Windows sanal masaüstü ile kullanıldığında, Kullanıcı masaüstü deneyiminin basit bağlamsal yönetimini sağlayarak, uzun oturum açma sürelerini ortadan kaldırır ve Grup İlkesi nieli Mares 'yi kaldırır. Ivantı Kullanıcı çalışma alanı yöneticisi kullanıma hazır şablonlar, aracılar ve var olan konsol aracılığıyla kullanıcılara yönelik yüklemeyi basitleştirir. Ivantı Kullanıcı çalışma alanı yöneticisi, kullanıcıların sevdiği, sunuculara para tasarrufu, kullanıcıları daha verimli bir şekilde yönetme ve uç nokta güvenlik riskini azaltma konusunda yanıt veren, güvenli masaüstleri sunar. 
 
 - [İş ortağı Web sitesine gidin](https://www.ivanti.com/products/user-workspace-manager).
 
@@ -137,9 +147,9 @@ PolicyPak için en iyi kullanım örnekleri, yerel yönetici haklarını kaldır
 
 ![PrinterLogic logosu](./media/partners/printerlogic.png)
 
-PrinterLogic, BT uzmanlarına tüm yazdırma sunucularını ortadan kaldırmaya ve yüksek oranda kullanılabilir bir sunucusuz yazdırma Altyapısı sunmaya yönelik bir Windows sanal masaüstü katma değeri olan hizmet sağlayıcı platformudur. PrinterLogic, yazıcı nesnelerini merkezi olarak yönetmeyi ve herhangi bir yazıcı veya uç nokta işletim sistemine dağıtmayı kolaylaştırarak Windows sanal masaüstü ve Azure 'un değerini genişletir.   
+PrinterLogic, BT uzmanlarına tüm yazdırma sunucularını ortadan kaldırmaya ve yüksek oranda kullanılabilir bir sunucusuz yazdırma Altyapısı sunmaya yönelik bir Windows sanal masaüstü katma değeri olan hizmet sağlayıcı platformudur. PrinterLogic, merkezi olarak yönetmeyi ve yazıcı nesnelerini herhangi bir yazıcıya veya uç nokta işletim sistemine dağıtmayı kolaylaştırarak Windows sanal masaüstü ve Azure 'un değerini genişletir.   
 
-Kendi özel bulutunuzda SaaS veya bir Web yığını olarak kullanılabilir, PrinterLogic platform, kullanıcıların kullanıcı KIMLIĞI, cihaz adı veya konum temelinde sanal oturumlarında gerek duydukları doğru yazıcılara her zaman sahip olmasını sağlar. Bu işlevsellik, yazdırma izleme ve raporlama, mobil yazdırma ve güvenli rozet yayını yazdırma gibi Kurumsal Yazdırma Yönetimi özelliklerinin eksiksiz bir paketi tarafından tamamlanmakta. 
+Kendi özel bulutunuzda SaaS veya bir Web yığını olarak kullanılabilir, PrinterLogic platform, kullanıcıların Kullanıcı KIMLIĞINE, cihaz adına veya konuma göre sanal oturumlarında gerek duydukları doğru yazıcılara her zaman sahip olmasını sağlar. Bu işlevsellik, yazdırma izleme ve raporlama, mobil yazdırma ve güvenli rozet yayını yazdırma gibi Kurumsal Yazdırma Yönetimi özelliklerinin eksiksiz bir paketi tarafından tamamlanmakta. 
 
 - [İş ortağı Web sitesine gidin](https://www.printerlogic.com).
 
@@ -149,7 +159,7 @@ Kendi özel bulutunuzda SaaS veya bir Web yığını olarak kullanılabilir, Pri
 
 Numesent, Windows sanal masaüstü ortamlarında karmaşık veya uyumsuz Windows uygulamalarının hızlı bir şekilde eklenmesi ve geçirilmesi ile toplam işletim maliyetlerini önemli ölçüde azaltan bir Windows sanal masaüstü katma hizmet sağlayıcıdır. Numesent, kullanıcıların yapması gereken yapılandırma miktarını da en aza indirir, uygulama güncelleştirmelerini azaltır ve karmaşık işlemleri basitleştirir. Numesent Cloudsayfalama, diğer uygulama teslim araçlarından daha sorunsuz uygulamalar desteklediğinden, farklı uygulamalar kümesine sahip ortamlarda zaman ve BT iş yüklerini azaltır. 
 
-Windows sanal masaüstü ile kullanıldığında Cloudpaging, dağıtım, ölçüm ve uygulamaları kaldırma için dağıtımdan yazılım varlık yaşam döngüsünü tamamlayarak maliyetleri azaltır. Cloudpaging, Windows sanal masaüstü dağıtımlarına gerçek zamanlı olarak uygulamaları gerektiği şekilde dinamik olarak sağlayarak görüntü yönetimini basitleştirir. Cloudsayfalama, uygulamaların düzenli Windows 10 güncelleştirmeleri aracılığıyla yönetimi veya müdahalesi olmadan çalışmasına yardımcı olur. Cloudsayfalama Ayrıca, bu uygulamaların daha verimli bir şekilde dağıtılmasını ve kullanımını etkinleştirerek pahalı uygulamaların lisanslama maliyetini azaltır. 
+Windows sanal masaüstü ile kullanıldığında Cloudpaging, dağıtım, ölçüm ve uygulamaları kaldırma için dağıtımdan yazılım varlık yaşam döngüsünü tamamlayarak maliyetleri azaltır. Cloudsayfalama, Windows sanal masaüstü dağıtımlarına gerçek zamanlı olarak uygulamaları gerektiği şekilde dinamik olarak sağlayarak görüntü yönetimini basitleştirir. Cloudsayfalama, uygulamaların düzenli Windows 10 güncelleştirmeleri aracılığıyla yönetimi veya müdahalesi olmadan çalışmasına yardımcı olur. Cloudsayfalama Ayrıca, bu uygulamaların daha verimli bir şekilde dağıtılmasını ve kullanımını etkinleştirerek pahalı uygulamaların lisanslama maliyetini azaltır. 
 
 - [İş ortağı Web sitesine gidin](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
 
@@ -178,7 +188,7 @@ RDPSoft 'in uzak masaüstü Commander Çözümleri Windows sanal masaüstü yön
 
 ![Karmaşık bir logo](./media/partners/tricerat.png)
 
-Karmaşık bir şekilde, Windows sanal masaüstü ve diğer masaüstü platformları için üstün bir yazdırma yönetimi çözümü sunar. Karmaşık işlevselliğe sahip yazılım, güçlü işlevlere sahiptir ve hem kullanıcılar hem de Yöneticiler için daha iyi bir deneyim sunar. Yöneticiler, tüm sürücü yönetimi, yazdırma sıralarının Basitleştirilmiş dağıtımı ve hibrit platformlar arasında tutarlı yönetim aracılığıyla verimlilik elde edebilir. Kullanıcı deneyimi, kısa oturum açma zamanları, Kullanıcı, cihaz ve ağ konumuna dayalı akıllı yazdırma kuyrukları ve hızlı yazıcı seçimine yönelik self servis seçeneklerini geliştirir. 
+Karmaşık bir şekilde, Windows sanal masaüstü ve diğer masaüstü platformları için üstün bir yazdırma yönetimi çözümü sunar. Karmaşık işlevselliğe sahip yazılım, güçlü işlevlere sahiptir ve hem kullanıcılar hem de Yöneticiler için daha iyi bir deneyim sunar. Yöneticiler, tüm sürücü yönetimi, yazdırma sıralarının Basitleştirilmiş dağıtımı ve hibrit platformlar arasında tutarlı yönetim aracılığıyla verimlilik elde edebilir. Kullanıcı deneyimi, daha kısa oturum açma süreleriyle, Kullanıcı, cihaz ve ağ konumuna dayalı akıllı yazdırma kuyrukları ve hızlı yazıcı seçimine yönelik self servis seçeneklerini geliştirir. 
 
 Karmaşık bir şekilde, Windows sanal masaüstü ve ötesinde yazdırma sorunsuz bir şekilde gerçekleştirilir. Karmaşık yazılım yazılımları, yöneticilerin şirket içi yazıcılara kolayca buluta bağlanmasını sağlar ve bu sayede geleneksel ortamlardan yeni, modern çalışma alanlarına kurumsal yazdırma yönetimini genişleterek.
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Batch hizmet işleri
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Machine Learning Studio (klasik) işlere yönelik Azure Batch hizmetlerine genel bakış. Toplu iş havuzu işleme, üzerinde toplu işler gönderebileceğiniz havuzlar oluşturmanıza olanak sağlar.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 1de7ad10a54c34595f69a543843097cee1377067
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a0e829f61117df25f8643301a0acdadeafd7c267
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493029"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684804"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Azure Machine Learning Studio (klasik) işler için Azure Batch hizmeti
 
@@ -43,7 +43,7 @@ Havuzları, CSS 'nin size verdiği havuz hizmeti URL 'sindeki havuz oluşturma i
 
 Herhangi bir yeni Kaynak Yöneticisi tabanlı Web hizmeti kullanabilirsiniz, ancak işlerin faturalandırılması bu hizmetle ilişkili faturalandırma planına göre ücretlendirilir. Toplu havuz işlerini çalıştırmak için özel olarak bir Web hizmeti ve yeni faturalandırma planı oluşturmak isteyebilirsiniz.
 
-Web Hizmetleri oluşturma hakkında daha fazla bilgi için bkz. [Azure Machine Learning Web hizmeti dağıtma](publish-a-machine-learning-web-service.md).
+Web Hizmetleri oluşturma hakkında daha fazla bilgi için bkz. [Azure Machine Learning Web hizmeti dağıtma](deploy-a-machine-learning-web-service.md).
 
 Bir havuz oluşturduktan sonra, Web hizmeti için Batch Istekleri URL 'sini kullanarak BES işini gönderebilirsiniz. Bir havuza veya klasik toplu işleme göndermek için bu seçeneği belirleyebilirsiniz. Batch havuzu işlemeye bir iş göndermek için şu parametreyi iş gönderim isteği gövdesine eklersiniz:
 

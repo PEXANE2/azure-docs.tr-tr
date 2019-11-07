@@ -1,5 +1,5 @@
 ---
-title: 'SaaS uygulaması: Birçok Azure SQL veritabanının performansını izleme | Microsoft Docs'
+title: 'SaaS uygulaması: birçok Azure SQL veritabanının performansını Izleme '
 description: Çok kiracılı bir SaaS uygulamasında Azure SQL veritabanlarının ve havuzlarının performansını izleme ve yönetme
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 322cc2fd53972c7c084da76ac0c80b757d0d2297
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4860766ddb4214591dc2c77f2746f958cb101741
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570406"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692124"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Çok kiracılı bir SaaS uygulamasında Azure SQL veritabanlarının ve havuzlarının performansını izleme ve yönetme
 
@@ -24,7 +24,7 @@ Bu öğreticide, SaaS uygulamalarında kullanılan bazı önemli performans yön
 
 Kiracı başına Wingtip bilet SaaS veritabanı uygulaması, her bir mekanın (kiracının) kendi veritabanına sahip olduğu tek kiracılı bir veri modeli kullanır. Birçok SaaS uygulaması gibi, beklenen kiracı iş yükü düzeni öngörülemez ve düzensizdir. Diğer bir deyişle, bilet satışı herhangi bir zamanda gerçekleşebilir. Bu tipik veritabanı kullanım düzeninden faydalanmak için, kiracı veritabanları elastik havuzlara dağıtılır. Elastik havuzlar, kaynakları çok sayıda veritabanı arasında paylaştırarak çözüm maliyetini en iyi duruma getirir. Bu düzen türü ile yüklerin havuzlar arasında makul bir şekilde dengelendiğinden emin olmak için veritabanı ve havuz kaynak kullanımının izlenmesi önemlidir. Ayrıca, her bir veritabanının yeterli kaynağa sahip olduğundan ve havuzların [eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model) sınırına ulaşmadığından emin olmanız gerekir. Bu öğreticide, veritabanı ve havuzları izleyip yönetme yollarını ve iş yükündeki değişikliklere yanıt olarak nasıl düzeltici işlem yapılacağını incelenmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > 
@@ -68,7 +68,7 @@ Havuzlar yalnızca iki adet S3 veritabanı ile uygun maliyetli olabilse de, havu
 
 Önceki bir öğreticide bir grup kiracıyı zaten sağladıysanız, [Tüm kiracı veritabanlarında kullanım benzetimi yap](#simulate-usage-on-all-tenant-databases) bölümüne atlayın.
 
-1. **PowerShell ISE**'de açın... Öğrenme modülleri\\performans izleme ve Yönetimi\\*demo-PerformanceMonitoringAndManagement. ps1.* \\ Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
+1. **PowerShell ISE**'de,...\\öğrenme modüllerini\\performans Izleme ve yönetim\\*demo-PerformanceMonitoringAndManagement. ps1*' yi açın. Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
 1. **$DemoScenario** = **1**, **Kiracı grubu sağlama** değerini ayarlayın
 1. Betiği çalıştırmak için **F5**'e basın.
 
@@ -90,8 +90,8 @@ Bu betik, beş dakikadan daha kısa bir süre içinde 17 kiracı dağıtır.
 
 Yük oluşturucu her kiracı veritabanına *yapay* bir yalnızca CPU yükü uygular. Oluşturucu her kiracı veritabanı için yükü oluşturan saklı yordamı düzenli olarak çağıran bir iş başlatır. Yük düzeyleri (eDTU cinsinden), süresi ve aralıkları tüm veritabanlarında farklıdır ve öngörülemez kiracı etkinliğini benzetimi gerçekleştirir.
 
-1. **PowerShell ISE**'de açın... Öğrenme modülleri\\performans izleme ve Yönetimi\\*demo-PerformanceMonitoringAndManagement. ps1.* \\ Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
-1. **$DemoScenario** = **2**' yi ayarlayın, *Normal yoğunluk yükü oluşturun*.
+1. **PowerShell ISE**'de,...\\öğrenme modüllerini\\performans Izleme ve yönetim\\*demo-PerformanceMonitoringAndManagement. ps1*' yi açın. Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
+1. **$DemoScenario** = **2**' i ayarlayın, *normal yoğunlukta yük oluşturun*.
 1. Bir yükü tüm kiracı veritabanlarınıza uygulamak için **F5** tuşuna basın.
 
 Her kiracı için Wingtip bilet SaaS veritabanı bir SaaS uygulamasıdır ve SaaS uygulamasındaki gerçek dünyada yükün genellikle tek tek ve öngörülemeyen bir uygulamadır. Yük oluşturucu, bunun benzetimini gerçekleştirmek için kiracılar genelinde dağıtılan rastgele yük oluşturur. Yük deseninin ortaya geçmesi için birkaç dakika gerekir. bu nedenle, aşağıdaki bölümlerde yükü izlemeye çalışmadan önce 3-5 dakika için yük oluşturucuyu çalıştırın.
@@ -103,7 +103,7 @@ Her kiracı için Wingtip bilet SaaS veritabanı bir SaaS uygulamasıdır ve Saa
 
 Uygulanan yükün sonucu olan kaynak kullanımını izlemek için, kiracı veritabanlarını içeren havuzda portalı açın:
 
-1. [Azure Portal](https://portal.azure.com) açın ve *tenants1-&lt;DPT-user&gt;*  sunucusuna gidin.
+1. [Azure Portal](https://portal.azure.com) açın ve *tenants1-dpt-&lt;User&gt;* sunucusuna gidin.
 1. Aşağı kaydırıp elastik havuzları bulun ve **Pool1**’e tıklayın. Bu havuz o ana kadar oluşturulmuş tüm kiracı veritabanlarını içerir.
 
 **Elastik havuz izleme** ve **elastik veritabanı izleme** grafiklerini gözlemleyin.
@@ -119,9 +119,9 @@ Havuzda ilk beşinin ötesinde ek veritabanları olduğundan, havuz kullanımı,
 
 ## <a name="set-performance-alerts-on-the-pool"></a>Havuzda performans uyarılarını ayarlama
 
-% 75 kullanımı üzerinde \>tetiklenen havuzda şu şekilde bir uyarı ayarlayın:
+\>%75 kullanımı üzerinde tetiklenen havuzda şu şekilde bir uyarı ayarlayın:
 
-1. [Azure Portal](https://portal.azure.com), *Pool1* ( *tenants1-\<DPT-user\>*  Server üzerinde) öğesini açın.
+1. [Azure Portal](https://portal.azure.com) *Pool1* ( *tenants1-dpt-\<User\>* Server) açın.
 1. **Uyarı Kuralları**ve ardından **+ Uyarı ekle**’ye tıklayın:
 
    ![uyarı ekle](media/saas-dbpertenant-performance-monitoring/add-alert.png)
@@ -158,7 +158,7 @@ Oluşturucu tarafından üretilen yükü artırarak meşgul bir havuzun benzetim
 1. **Havuz eDTU** ayarını **100**olarak ayarlayın. Havuz eDTU değerinin değiştirilmesi, veritabanı başına ayarları değiştirmez (veritabanı başına hala en fazla 50 eDTU’dur). **Havuzu Yapılandır** sayfasının sağ tarafında veritabanı başına ayarları görebilirsiniz.
 1. Havuzu ölçeklendirmeye yönelik isteği göndermek için **Kaydet** ' e tıklayın.
 
-İzleme grafiklerini görüntülemek için **Pool1** > **genel bakış** bölümüne geri dönün. Havuzu daha fazla kaynakla sağlama etkisini izleyin (birkaç veritabanı ve rastgele bir yük olsa da, bir süredir çalıştırana kadar yaratacağı görmeniz her zaman kolay değildir). Grafiklere bakarken, üst grafikteki %100 değerinin 100 eDTU’yu, alt grafikteki %100 değerinin ise veritabanı başına en yüksek değer hala 50 eDTU olduğundan 50 eDTU’yu temsil ettiğini aklınızda bulundurun.
+İzleme grafiklerini görüntülemek için **Pool1** > **genel bakışa** geri dönün. Havuzu daha fazla kaynakla sağlama etkisini izleyin (birkaç veritabanı ve rastgele bir yük olsa da, bir süredir çalıştırana kadar yaratacağı görmeniz her zaman kolay değildir). Grafiklere bakarken, üst grafikteki %100 değerinin 100 eDTU’yu, alt grafikteki %100 değerinin ise veritabanı başına en yüksek değer hala 50 eDTU olduğundan 50 eDTU’yu temsil ettiğini aklınızda bulundurun.
 
 İşlem boyunca veritabanları çevrimiçi ve tam olarak kullanılabilir durumdadır. Her veritabanının yeni havuz eDTU değeriyle etkinleştirilmeye hazır olduğu son anda tüm etkin bağlantılar kesilir. Kesilen bağlantıları yeniden denemek için her zaman uygulama kodunun yazılması gerekir, böylece ölçeği artırılmış havuzda veritabanına yeniden bağlanılır.
 
@@ -166,7 +166,7 @@ Oluşturucu tarafından üretilen yükü artırarak meşgul bir havuzun benzetim
 
 Havuz ölçeğini artırmanın alternatif bir yolu, ikinci bir havuz oluşturup veritabanlarını bu havuza taşımak ve iki havuz arasındaki yükü dengelemektir. Bunu yapmak için yeni havuzun birinci havuzla aynı sunucuda oluşturulması gerekir.
 
-1. [Azure Portal](https://portal.azure.com), **tenants1-&lt;DPT-user&gt;**  sunucusunu açın.
+1. [Azure Portal](https://portal.azure.com), **tenants1-dpt-&lt;Kullanıcı&gt;** sunucusu ' nu açın.
 1. Geçerli sunucuda bir havuz oluşturmak için **+ yeni havuz** ' a tıklayın.
 1. **Elastik havuz** şablonunda:
 
@@ -177,14 +177,14 @@ Havuz ölçeğini artırmanın alternatif bir yolu, ikinci bir havuz oluşturup 
    1. Sunucuda *pool2*'e eklenebilecek veritabanlarının listesini görmek Için **veritabanı Ekle** ' ye tıklayın.
    1. Bunları yeni havuza taşımak için 10 veritabanı seçin ve ardından **Seç**' e tıklayın. Yük oluşturucuyu çalıştırıyorsanız, hizmet performans profilinizin varsayılan 50 eDTU boyutundan daha büyük bir havuz gerektirdiğini ve 100 eDTU ayarı ile başlamasını önermenizi zaten biliyor.
 
-      ![öneri](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![Önerilen](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
    1. Bu öğreticide, varsayılan değer olarak 50 eDTU 'yu bırakın ve yeniden **Seç** ' e tıklayın.
    1. Yeni havuzu oluşturmak ve seçili veritabanlarını bu havuza taşımak için **Tamam ' ı** seçin.
 
 Havuzun oluşturulması ve veritabanlarının taşınması birkaç dakika sürer. Veritabanları taşındığında, çevrimiçi kalır ve en son bir kez açık olan tüm bağlantılar kapalı olana kadar tamamen erişilebilir olur. Bir yeniden deneme mantığınızın olduğu sürece, istemciler yeni havuzdaki veritabanına bağlanır.
 
-Havuzu açmak ve performansını izlemek için **pool2** ( *tenants1-DPT\> -\<User* Server üzerinde) öğesine gidin. Bunu görmüyorsanız, yeni havuzun sağlanması için bekleyin.
+Havuzu açmak ve performansını izlemek için **pool2** ( *tenants1-dpt-\<User\>* Server) konumuna gidin. Bunu görmüyorsanız, yeni havuzun sağlanması için bekleyin.
 
 Artık *Pool1* üzerinde kaynak kullanımının bırakıldığına ve *pool2* 'in artık benzer şekilde yüklendiğini görürsünüz.
 
@@ -194,19 +194,19 @@ Havuzdaki tek bir veritabanı, havuz yapılandırmasına bağlı olarak sürekli
 
 Bu alıştırmada, popüler bir konser için biletler satışa çıktığında yüksek bir yükle karşılaşan Contoso Konser Salonu etkisinin benzetimi gerçekleştirilmektedir.
 
-1. **PowerShell ISE**'de,... öğesini açın. *Demo-PerformanceMonitoringAndManagement. ps1 betiği.* \\
+1. **PowerShell ISE**'de...\\*demo-PerformanceMonitoringAndManagement. ps1* betiğini açın.
 1. **$DemoScenario = 5 olarak ayarlayın, tek bir kiracı üzerinde normal yük ve yüksek yük oluşturun (yaklaşık 95 DTU).**
 1. **$SingleTenantDatabaseName = contosoconcerthall** değerini ayarlayın
 1. **F5**’i kullanarak betiği yürütün.
 
 
-1. [Azure Portal](https://portal.azure.com), *tenants1-\<DPT-user\>*  sunucusundaki veritabanları listesine gidin. 
+1. [Azure Portal](https://portal.azure.com), *tenants1-dpt-\<User\>* sunucusundaki veritabanları listesine gidin. 
 1. **Contosoconcerthall** veritabanına tıklayın.
 1. **Contosoconcerthall** bulunduğu havuza tıklayın. **Elastik havuz** bölümünde havuzu bulun.
 
 1. **Elastik havuz izleme** grafiğini inceleyin ve daha fazla havuz eDTU kullanımını arayın. Bir veya iki dakika sonra, daha yüksek olan yük etkisini göstermeye başlar ve havuzun %100 kullanıma ulaştığını görürsünüz.
 2. Son saatteki en yoğun veritabanlarını gösteren **elastik veritabanı izleme** ekranını inceleyin. *Contosoconcerthall* veritabanı kısa süre önce beş en yoğun veritabanından biri olarak görünmelidir.
-3. **Elastik veritabanı Izlemeye tıklayın** **grafik** ve **veritabanı kaynak kullanımı** sayfasını açar, buradan veritabanlarını izleyebilirsiniz. Bu, *contosoconcerthall* veritabanının görüntüsünü yalıtmanızı sağlar.
+3. **Elastik veritabanı izleme** **grafiğine** tıklayın ve veritabanlarını Izleyebileceğiniz **veritabanı kaynak kullanımı** sayfasını açar. Bu, *contosoconcerthall* veritabanının görüntüsünü yalıtmanızı sağlar.
 4. Veritabanları listesinden **contosoconcerthall**' ye tıklayın.
 5. Veritabanı için tek başına bir işlem boyutu ayarlayabileceğiniz **performansı Yapılandır** sayfasını açmak Için **Fiyatlandırma Katmanı (DTU 'lar)** ' ne tıklayın.
 6. Standart katmanındaki ölçeklendirme seçeneklerini açmak için **Standart** sekmesine tıklayın.
@@ -230,7 +230,7 @@ Toplu kiracı kullanımının öngörülebilir kullanım düzenlerini takip etti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Sağlanan bir yük oluşturucuyu çalıştırarak kiracı veritabanlarındaki kullanımın benzetimini gerçekleştirme

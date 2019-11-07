@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0879cb33a0796e19724bd143e57780d6ce27bfcf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c884d3c7102fc47f6efad86d9fe3704afd0edcf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657892"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73591488"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM Yeniden Başlatma İşlemlerini Anlama - bakım ve kapalı kalma süresi
 Azure 'da sanal makineye etkilenmesine neden olan üç senaryo vardır: planlanmamış donanım bakımı, beklenmedik kapalı kalma süresi ve planlı bakım.
@@ -39,7 +39,7 @@ Bu olayların bir veya daha fazlası nedeniyle kapalı kalma süresinin etkisini
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>Veri merkezi düzeyindeki hatalardan korumak için kullanılabilirlik bölgelerini kullanma
 
-[Kullanılabilirlik alanları](../articles/availability-zones/az-overview.md) , sanal makinelerinizdeki uygulamaların ve verilerin kullanılabilirliğini korumak için sahip olduğunuz denetim düzeyini genişletir. Kullanılabilirlik, bir Azure bölgesi içinde benzersiz fiziksel konumlara bölgeleridir. Her bölge, soğutma ve ağ bağımsız güç ile donatılmış bir veya daha fazla veri merkezlerinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaları ve verileri veri merkezi hatalarından korur. Bölgesel olarak yedekli hizmetler, uygulamalarınızı ve verilerinizi Kullanılabilirlik Alanları arasında çoğaltarak hata noktalarından koruyun.
+[Kullanılabilirlik alanları](../articles/availability-zones/az-overview.md) , sanal makinelerinizdeki uygulamaların ve verilerin kullanılabilirliğini korumak için sahip olduğunuz denetim düzeyini genişletir. Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaları ve verileri veri merkezi hatalarından korur. Bölgesel olarak yedekli hizmetler, uygulamalarınızı ve verilerinizi Kullanılabilirlik Alanları arasında çoğaltarak hata noktalarından koruyun.
 
 Bir Azure bölgesindeki kullanılabilirlik bölgesi bir **hata etki alanının** ve bir **güncelleştirme etki alanının**birleşimidir. Örneğin, bir Azure bölgesindeki üç bölgede üç veya daha fazla VM oluşturursanız, VM 'niz üç hata etki alanına ve üç güncelleştirme etki alanına etkili bir şekilde dağıtılır. Azure platformu, farklı bölgelerdeki VM 'Lerin aynı anda güncelleştirildiğinden emin olmak için bu dağıtımı güncelleştirme etki alanları genelinde tanır.
 
@@ -60,24 +60,31 @@ Kullanılabilirlik kümenizdeki her sanal makineye, temel alınan Azure platform
 Hata etki alanları ortak bir güç kaynağı ve ağ anahtarını paylaşan sanal makine grubunu tanımlar. Varsayılan olarak, kullanılabilirlik kümenizde yapılandırılmış olan sanal makineler, Resource Manager dağıtımları için en fazla üç hata etki alanı (Klasik için iki etki alanı) arasında ayrılır. Sanal makinelerinizin bir kullanılabilirlik kümesine yerleştirilmesi uygulamanızı işletim sistemine veya uygulamaya özel hatalardan korumasa da, olası fiziksel donanım hatalarının, ağ kesintilerinin veya güç kesintilerinin etkilerini sınırlar.
 
 <!--Image reference-->
-   ![Güncelleştirme etki alanı ve hata etki alanı yapılandırmasının kavramsal çizimi](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+   güncelleştirme etki alanı ve hata etki alanı yapılandırma](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png) kavramsal çizimini ![
 
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Bir kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma
 Şu anda yönetilmeyen disklere sahip VM’ler kullanıyorsanız, [Kullanılabilirlik Kümesindeki VM’leri Yönetilen Diskleri kullanacak şekilde dönüştürmeniz](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md) önemle tavsiye edilir.
 
 [Yönetilen diskler](../articles/virtual-machines/windows/managed-disks-overview.md), bir Kullanılabilirlik Kümesindeki VM disklerinin tek arıza noktalarından kaçınmak üzere birbirinden yeterince ayrılmasını sağlayarak Kullanılabilirlik Kümeleri için daha fazla güvenilirlik sunar. Bu, diskleri farklı depolama hata etki alanlarına (depolama kümeleri) otomatik olarak yerleştirerek ve bunları VM hata etki alanıyla hizalayarak yapar. Bir depolama hatası etki alanı, donanım veya yazılım arızası nedeniyle başarısız olursa, yalnızca depolama hatası etki alanındaki disklere sahip VM örneği başarısız olur.
-![Yönetilen diskler FDs](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
+![yönetilen diskler FDs](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]
 > Yönetilen kullanılabilirlik kümelerine yönelik arıza etki alanlarının sayısı bölgeye göre farklılık gösterir (bölge başına iki veya üç). Aşağıdaki tabloda bölge başına sayı gösterilmektedir
 
 [!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
 
+> Note: belirli koşullar altında, aynı Kullanılabilirlik alanının 2 VM 'nin bir parçası aynı FaultDomain ' ı paylaşmasından kaynaklanabilir. Bu, kullanılabilirlik kümesine gidip "hata etki alanı" sütununu denetleyerek onaylanır.
+> Bu davranış, VM 'Ler dağıtıldığında aşağıdaki sıra meydana geldiğinde gözlemlenebilir:
+> - 1\. VM 'yi dağıtma
+> - 1\. VM 'yi durdur/serbest bırak
+> - 2\. VM 'yi bu koşullarda dağıtın, 2. VM 'nin işletim sistemi diski, 1. VM ile aynı hata etki alanında oluşturulabilir ve bu nedenle 2. VM aynı FaultDomain etki alanına da eklenecektir. 
+> Bu sorundan kaçınmak için, dağıtımları arasında VM 'nin durdurulması/serbest olmaması önerilir.
+
 VM 'Leri yönetilmeyen disklerle kullanmayı planlıyorsanız, VM 'lerin sanal sabit disklerinin (VHD) [sayfa Blobları](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)olarak depolandığı depolama hesapları için aşağıdaki en iyi yöntemleri izleyin.
 
 1. **Bir VM ile ilişkili tüm diskleri (işletim sistemi ve veri) aynı depolama hesabında tutma**
 2. Bir depolama hesabına daha fazla VHD eklemeden önce **Depolama hesabındaki yönetilmeyen disk sayısına ilişkin [limitleri](../articles/storage/common/storage-scalability-targets.md) gözden geçirin**
-3. **Bir Kullanılabilirlik Kümesindeki her VM için ayrı depolama hesabı kullanın.** Depolama hesaplarını aynı Kullanılabilirlik Kümesinde birden fazla VM ile paylaşmayın. Yukarıdaki en iyi uygulamalardan sonra yönetilmeyen diskler bundan sonra ![, depolama hesaplarını paylaşmak için farklı kullanılabilirlik kümelerindeki VM 'ler için kabul edilebilir](./media/virtual-machines-common-manage-availability/umd-updated.png)
+3. **Bir Kullanılabilirlik Kümesindeki her VM için ayrı depolama hesabı kullanın.** Depolama hesaplarını aynı Kullanılabilirlik Kümesinde birden fazla VM ile paylaşmayın. Yukarıdaki en iyi uygulamalardan ![, yönetilmeyen diskler](./media/virtual-machines-common-manage-availability/umd-updated.png) ardından, depolama hesaplarını paylaşmak için farklı kullanılabilirlik kümelerindeki VM 'Ler için kabul edilebilir.
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>VM etkileyen olayları önceden yanıtlamak için zamanlanmış olayları kullanma
 
@@ -89,7 +96,7 @@ Sanal makineleriniz neredeyse aynıysa ve uygulamanız için aynı amaca sahipse
 Örneğin, tüm sanal makineleri IIS, Apache ve NGINX çalıştıran uygulamanızın ön ucuna tek bir kullanılabilirlik alanına veya kümesine yerleştirebilirsiniz. Yalnızca ön uç sanal makinelerin aynı Kullanılabilirlik alanına yerleştirildiğinden veya ayarlanmış olduğundan emin olun. Benzer şekilde, çoğaltılan SQL Server sanal makineleriniz ya da MySQL sanal makineleriniz gibi yalnızca veri katmanı sanal makinelerinin kendi kullanılabilirlik bölgesine veya kümesine yerleştirildiğinden emin olun.
 
 <!--Image reference-->
-   ![Uygulama katmanları](./media/virtual-machines-common-manage-availability/application-tiers.png)
+   Uygulama katmanlarını ![](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Bir yük dengeleyiciyi kullanılabilirlik alanları veya kümeleriyle birleştirme
 [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) bir kullanılabilirlik bölgesi ile birleştirin veya en fazla uygulama dayanıklılığı sağlamak için ayarlayın. Azure Load Balancer, birden fazla sanal makine arasında trafiği dağıtır. Standart katman sanal makinelerimize Azure Load Balancer dahildir. Tüm sanal makine katmanları Azure Load Balancer hizmetini içermez. Sanal makinelerinizde yük dengeleme hakkında daha fazla bilgi için bkz. [Sanal makinelerde yük dengeleme](../articles/virtual-machines/virtual-machines-linux-load-balance.md).

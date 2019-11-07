@@ -2,17 +2,17 @@
 title: Azure HDInsight sanal ağ mimarisi
 description: Bir Azure sanal ağında HDInsight kümesi oluştururken kullanılabilir kaynakları öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: 340974201d62f97669db442f4a95439a6ac90a5e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.date: 10/31/2019
+ms.openlocfilehash: 0a1139f7bf1711a5f6d980e67a8a9027bfd3af52
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960616"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665317"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight sanal ağ mimarisi
 
@@ -22,7 +22,7 @@ Bu makalede, bir HDInsight kümesini özel bir Azure sanal ağına dağıtırken
 
 Azure HDInsight kümelerinde farklı türlerde sanal makineler veya düğümler vardır. Her düğüm türü, sistem işleminde bir rol oynar. Aşağıdaki tabloda bu düğüm türleri ve bunların rolleri kümede özetlenmektedir.
 
-| Type | Açıklama |
+| Tür | Açıklama |
 | --- | --- |
 | Baş düğüm |  Apache Storm dışındaki tüm küme türleri için baş düğümler, dağıtılmış uygulamanın yürütülmesini yöneten süreçler barındırır. Baş düğüm aynı zamanda, SSH ve küme kaynakları genelinde çalışacak şekilde koordine ettiğiniz uygulamaları yürütebilmeniz için de düğümdür. Baş düğümlerin sayısı, tüm küme türleri için iki olarak düzeltilir. |
 | ZooKeeper düğümü | Zookeeper, veri işleme yapan düğümler arasındaki görevleri düzenler. Ayrıca baş düğümün öncü seçimi de yapar ve hangi baş düğümün belirli bir ana hizmetin çalıştığını izler. ZooKeeper düğümlerinin sayısı üç olarak düzeltilir. |
@@ -54,24 +54,24 @@ Mevcut olan aşağıdaki ağ kaynakları, HDInsight ile kullanılan sanal ağ i�
 | Ağ kaynağı | Sayı var | Ayrıntılar |
 | --- | --- | --- |
 |Yük dengeleyici | üç | |
-|Ağ Arabirimleri | dokuz | Bu değer, her düğümün kendi ağ arabirimine sahip olduğu normal bir kümeyi temel alır. Dokuz arabirim iki baş düğüm, üç Zookeeper düğümü, iki çalışan düğümü ve önceki tabloda belirtilen iki ağ geçidi düğümü içindir. |
+|Ağ Arabirimleri | lusu | Bu değer, her düğümün kendi ağ arabirimine sahip olduğu normal bir kümeyi temel alır. Dokuz arabirim iki baş düğüm, üç Zookeeper düğümü, iki çalışan düğümü ve önceki tabloda belirtilen iki ağ geçidi düğümü içindir. |
 |Genel IP Adresleri | iki |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>HDInsight 'a bağlanmak için uç noktalar
 
 HDInsight kümenize üç yolla erişebilirsiniz:
 
-- Üzerinde `CLUSTERNAME.azurehdinsight.net`sanal AĞıN dışında bir HTTPS uç noktası.
-- Konumundaki `CLUSTERNAME-ssh.azurehdinsight.net`baş düğümüne 'a doğrudan bağlanmak için bir SSH uç noktası.
-- Sanal ağ `CLUSTERNAME-int.azurehdinsight.net`içinde bir HTTPS uç noktası. Bu URL 'de "-int" olduğuna dikkat edin. Bu uç nokta, bu sanal ağdaki özel bir IP 'ye çözümlenir ve genel İnternet 'ten erişilemez.
+- `CLUSTERNAME.azurehdinsight.net`konumundaki sanal ağın dışında bir HTTPS uç noktası.
+- `CLUSTERNAME-ssh.azurehdinsight.net`konumundaki baş düğümüne 'a doğrudan bağlanmak için bir SSH uç noktası.
+- Sanal ağ içinde bir HTTPS uç noktası `CLUSTERNAME-int.azurehdinsight.net`. Bu URL 'de "-int" olduğuna dikkat edin. Bu uç nokta, bu sanal ağdaki özel bir IP 'ye çözümlenir ve genel İnternet 'ten erişilemez.
 
 Bu üç uç noktaya her biri bir yük dengeleyici atanır.
 
 Genel IP adresleri, sanal ağın dışından bağlantıya izin veren iki uç noktaya de sağlanır.
 
-1. Bir genel IP, kümeye internet `CLUSTERNAME.azurehdinsight.net`'ten bağlanırken kullanılacak tam etki alanı adı (FQDN) için yük dengeleyiciye atanır.
-1. İkinci genel IP adresi yalnızca SSH etki alanı adı `CLUSTERNAME-ssh.azurehdinsight.net`için kullanılır.
+1. Internet `CLUSTERNAME.azurehdinsight.net`kümeye bağlanırken kullanılacak tam etki alanı adı (FQDN) için yük dengeleyiciye tek bir genel IP atanır.
+1. İkinci genel IP adresi, yalnızca SSH etki alanı adı `CLUSTERNAME-ssh.azurehdinsight.net`için kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel uç nokta ile bir sanal ağdaki HDInsight kümelerine gelen trafiği güvenli hale getirme](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+- [Özel uç nokta ile bir sanal ağdaki HDInsight kümelerine gelen trafiği güvenli hale getirme](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)

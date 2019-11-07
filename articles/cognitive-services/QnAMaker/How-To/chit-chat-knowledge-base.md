@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 15253e67283d1ad53bb1d4c018987dceaafac6c8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 418324ea0d50cb2f8ff4a30018a31e7807d52eac
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486748"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602590"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Bilgi Bankası 'na sohbet ekleme
 
@@ -45,15 +45,15 @@ CHIT-chat veri kümeleri aşağıdaki dillerde desteklenmektedir:
 
 |Dil|
 |--|
-|Çince, `zh-cn`|
-|İngilizce, `en-us`|
-|Fransızca, `fr-fr`|
-|Almanya, `de-de`|
-|İtalyanca, `it-it`|
-|Japonca, `ja-jp`|
-|Korece, `ko-kr`|
-|Portekizce, `pr-br`|
-|İspanyolca, `es-es`|
+|Çince|
+|Türkçe|
+|Fransızca|
+|Almanya|
+|İtalyanca|
+|Japonca|
+|Korece|
+|Portekizce|
+|İspanyolca|
 
 
 ## <a name="add-chit-chat-during-kb-creation"></a>KB oluşturma sırasında CHIT-chat ekleme

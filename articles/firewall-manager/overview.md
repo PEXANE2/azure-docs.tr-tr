@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 11/05/2019
 ms.author: victorh
-ms.openlocfilehash: 3e19a2a45dde8a951e0ae3a4bd3c8d019609a5e1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: df649eab1f0e2946078f8efd3cdd6ab68c3b7938
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502383"
+ms.locfileid: "73580202"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Azure Güvenlik Duvarı Yöneticisi önizlemesi nedir?
 
@@ -20,7 +20,7 @@ ms.locfileid: "73502383"
 
 Azure Güvenlik Duvarı Yöneticisi önizlemesi, bulut tabanlı güvenlik perimeters için merkezi güvenlik ilkesi ve rota yönetimi sağlayan bir güvenlik yönetim hizmetidir. Hub ve bağlı bileşen mimarilerini kolayca oluşturmanıza olanak tanıyan, Microsoft tarafından yönetilen bir kaynak olan [Azure sanal WAN hub](../virtual-wan/virtual-wan-about.md#resources)ile birlikte çalışmaktadır. Güvenlik ve yönlendirme ilkeleri böyle bir hub ile ilişkilendirildiğinde, bu, *[güvenli bir sanal hub](secured-virtual-hub.md)* olarak adlandırılır. 
 
-![Güvenlik Duvarı-yönetici](media/overview/firewall-manager-conceptual.png)
+![Güvenlik Duvarı-yönetici](media/overview/firewallmanagerv3.png)
 
 ## <a name="azure-firewall-manager-preview-features"></a>Azure Güvenlik Duvarı Yöneticisi Önizleme özellikleri
 
@@ -70,7 +70,7 @@ Azure Güvenlik Duvarı Yöneticisi önizlemesi aşağıdaki bilinen sorunlara s
 
 |Sorun  |Açıklama  |Risk azaltma  |
 |---------|---------|---------|
-|El ile oluşturulan Merkezi sanal ağlar desteklenmez|Şu anda Azure Güvenlik Duvarı Yöneticisi, sanal hub 'larla oluşturulan ağları destekler. Kendi el ile oluşturulmuş hub VNet 'in kullanılması henüz desteklenmiyor.|Şimdilik, sanal hub 'larla oluşturulan hub ve bağlı bileşen ağları ile Azure Güvenlik Duvarı Yöneticisi 'ni kullanın<br>Şu anda araştırma.
+|El ile oluşturulan Merkezi sanal ağlar desteklenmez|Şu anda Azure Güvenlik Duvarı Yöneticisi, sanal hub 'larla oluşturulan ağları destekler. Kendi el ile oluşturulmuş hub VNet 'in kullanılması henüz desteklenmiyor.|Şimdilik, Azure Güvenlik Duvarı Yöneticisi 'Ni sanal hub 'larla oluşturulan hub ve bağlı bileşen ağları ile birlikte kullanın.<br>Şu anda araştırma.
 |Üçüncü taraf filtreleme sınırlamaları|V2I Azure Firewall B2V ve V2V ile üçüncü taraf sağlayıcılarla trafik filtrelemesi desteklenmez.|Şu anda araştırma.|
 |Trafik bölme şu anda desteklenmiyor|Office 365 ve Azure genel PaaS trafik bölünmesi Şu anda desteklenmiyor. Bu nedenle, V2I veya B2I için bir üçüncü taraf sağlayıcı seçilirse ortak hizmet aracılığıyla tüm Azure genel PaaS ve Office 365 trafiği de gönderilir.|Şu anda hub 'da trafik bölmeyi araştırıyoruz.
 |Bölge başına bir hub|Bölge başına birden fazla hub 'ınız olamaz|Bir bölgede birden çok sanal WAN oluşturun.|

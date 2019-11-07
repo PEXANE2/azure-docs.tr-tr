@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/04/2019
-ms.openlocfilehash: 1fb16f6ef58efc5c63e743e557558dc60cf52f86
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/06/2019
+ms.openlocfilehash: 178c60d82c8337987e9858a409fcdef7063c9559
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514244"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684902"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure Machine Learning izleme verileri başvurusu
 
@@ -54,7 +54,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | JobErrorMessage | Iş hatası ayrıntılı iletisi |
 | NodeId | İşin çalıştığı, oluşturulan düğümün KIMLIĞI |
 
-### <a name="amlcomputerclusterevents-table"></a>AmlComputerClusterEvents tablosu
+### <a name="amlcomputeclusterevents-table"></a>AmlComputeClusterEvents tablosu
 
 | Özellik | Açıklama |
 |:--- |:--- |

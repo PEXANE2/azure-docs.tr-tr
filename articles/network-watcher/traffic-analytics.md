@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: vinigam
-ms.openlocfilehash: ce59b46667f9139157a751d7d7b0205504d71ab0
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 831e75ba2d3f6af62496d437da3d1413dc612594
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695645"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686561"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -61,57 +61,59 @@ Trafik Analizi, ham NSG akış günlüklerini inceler ve aynı kaynak IP adresi,
 
 NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi birinde kullanabilirsiniz:
 
-* Kanada Orta
-* Orta Batı ABD
+* Orta Kanada
+* Batı Orta ABD
 * Doğu ABD
 * Doğu ABD 2
 * Orta Kuzey ABD
-* Güney Orta ABD
+* Orta Güney ABD
 * Orta ABD
 * Batı ABD
 * Batı ABD 2
 * Fransa Orta
 * Batı Avrupa
 * Kuzey Avrupa
-* Brezilya Güney
-* Birleşik Krallık, Batı
-* Birleşik Krallık, Güney
-* Doğu Avustralya
-* Güneydoğu Avustralya
+* Güney Brezilya
+* Birleşik Krallık Batı
+* Birleşik Krallık Güney
+* Avustralya Doğu
+* Avustralya Güneydoğu
 * Doğu Asya
 * Güneydoğu Asya
 * Kore Orta
 * Orta Hindistan
 * Güney Hindistan
-* Doğu Japonya 
-* Batı Japonya
-* ABD Hükümeti Virginia
+* Japonya Doğu 
+* Japonya Batı
+* ABD Devleti Virginia
+* Çin Doğu 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Desteklenen bölgeler: Log Analytics çalışma alanları
 
 Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
-* Kanada Orta
-* Orta Batı ABD
+* Orta Kanada
+* Batı Orta ABD
 * Doğu ABD
 * Doğu ABD 2
-* Güney Orta ABD
+* Orta Güney ABD
 * Batı ABD
 * Batı ABD 2
 * Orta ABD
 * Fransa Orta
 * Kuzey Avrupa
 * Batı Avrupa
-* Birleşik Krallık, Güney
-* Doğu Avustralya
-* Güneydoğu Avustralya
+* Birleşik Krallık Güney
+* Avustralya Doğu
+* Avustralya Güneydoğu
 * Doğu Asya
 * Güneydoğu Asya
 * Kore Orta
 * Orta Hindistan
-* Doğu Japonya
-* ABD Hükümeti Virginia
+* Japonya Doğu
+* ABD Devleti Virginia
+* Çin Doğu 2
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="user-access-requirements"></a>Kullanıcı erişimi gereksinimleri
 
@@ -119,7 +121,7 @@ Hesabınız aşağıdaki Azure [yerleşik rollerinin](../role-based-access-contr
 
 |Dağıtım modeli   | Rol                   |
 |---------          |---------               |
-|Kaynak Yöneticisi   | Sahip                  |
+|Resource Manager   | Sahip                  |
 |                   | Katılımcı            |
 |                   | Okuyucu                 |
 |                   | Ağ katılımcısı    |
@@ -163,7 +165,7 @@ Aboneliğiniz için henüz kayıtlı değilse, Azure Insights sağlayıcısını
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
-NSG akış günlüklerini depolamak için henüz bir Azure depolama hesabınız yoksa bir depolama hesabı oluşturmanız gerekir. Aşağıdaki komutla bir depolama hesabı oluşturabilirsiniz. Komutu çalıştırmadan önce, `<replace-with-your-unique-storage-account-name>` ' ı tüm Azure konumlarında benzersiz olan bir adla, yalnızca sayılar ve küçük harfler kullanılarak 3-24 karakter uzunluğunda olacak şekilde değiştirin. Gerekirse, kaynak grubu adını da değiştirebilirsiniz.
+NSG akış günlüklerini depolamak için henüz bir Azure depolama hesabınız yoksa bir depolama hesabı oluşturmanız gerekir. Aşağıdaki komutla bir depolama hesabı oluşturabilirsiniz. Komutu çalıştırmadan önce, `<replace-with-your-unique-storage-account-name>` tüm Azure konumlarında benzersiz olan bir adla değiştirin, yalnızca rakamlar ve küçük harfler kullanılarak 3-24 karakter uzunluğunda olacak şekilde değiştirin. Gerekirse, kaynak grubu adını da değiştirebilirsiniz.
 
 ```azurepowershell-interactive
 New-AzStorageAccount `
@@ -196,7 +198,7 @@ Resimde gösterildiği gibi aşağıdaki seçenekleri belirleyin:
 
 İçin trafik analizini etkinleştirmek istediğiniz diğer NSG 'ler için önceki adımları tekrarlayın. Akış günlüklerinden veriler çalışma alanına gönderilir, böylece ülkenizde bulunan yerel yasaları ve yönetmelikler, çalışma alanının bulunduğu bölgede veri depolamaya izin verdiğinden emin olun. Farklı NSG 'ler için farklı işleme aralıkları ayarladıysanız, veriler farklı aralıklarla toplanır. Örneğin: kritik VNET 'ler için 10 dakikalık işleme aralığını ve kritik olmayan VNET 'ler için 1 saat etkinleştirmeyi seçebilirsiniz.
 
-Ayrıca, Azure PowerShell içindeki [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 'ini kullanarak trafik analizini yapılandırabilirsiniz. Yüklü sürümünüzü bulmak için `Get-Module -ListAvailable Az` ' yı çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps).
+Ayrıca, Azure PowerShell içindeki [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 'ini kullanarak trafik analizini yapılandırabilirsiniz. Yüklü sürümünüzü bulmak için `Get-Module -ListAvailable Az` çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps).
 
 ## <a name="view-traffic-analytics"></a>Trafik analizini görüntüleme
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: eb48afb15e1314dcf670ba04afd9609876dc9539
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472834"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605081"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Kullanılabilirlik Alanları kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma
 
@@ -34,7 +34,7 @@ AKS kümeleri Şu anda şu bölgelerde kullanılabilirlik alanları kullanılara
 * Doğu ABD 2
 * Doğu ABD
 * Fransa Orta
-* Doğu Japonya
+* Japonya Doğu
 * Kuzey Avrupa
 * Güneydoğu Asya
 * Birleşik Krallık Güney
@@ -72,9 +72,9 @@ Bir bölge kesintisi durumunda, düğümler el ile yeniden dengelenebilir veya k
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>Kullanılabilirlik alanları arasında AKS kümesi oluşturma
 
-[Az aks Create][az-aks-create] komutunu kullanarak bir küme oluşturduğunuzda `--zones` parametresi, aracı düğümlerinin hangi bölgelerde dağıtılacağını tanımlar. Kümeniz için AKS denetim düzlemi bileşenleri, `--zones` parametresini belirten bir küme oluşturduğunuzda, en yüksek kullanılabilir yapılandırmadaki bölgelere de yayılır.
+[Az aks Create][az-aks-create] komutunu kullanarak bir küme oluşturduğunuzda `--zones` parametresi, aracı düğümlerinin hangi bölgelerde dağıtılacağını tanımlar. Kümeniz için AKS denetim düzlemi bileşenleri, küme oluşturma sırasında `--zones` parametresini tanımlarken, kullanılabilir en yüksek yapılandırmaya göre bölgelere yayılır.
 
-Bir AKS kümesi oluştururken varsayılan aracı havuzu için herhangi bir bölge tanımlamadıysanız, kümenizin AKS denetim düzlemi bileşenleri kullanılabilirlik bölgelerini kullanmaz. [Az aks nodepool Add][az-aks-nodepool-add] komutunu kullanarak ek düğüm havuzları ekleyebilir ve bu yeni aracı düğümleri için `--zones` belirtebilirsiniz, ancak denetim düzlemi bileşenleri kullanılabilirlik alanı tanıma olmadan kalır. Bir düğüm havuzu veya AKS denetim düzlemi bileşenleri dağıtıldıktan sonra bölge tanımayı değiştiremezsiniz.
+Bir AKS kümesi oluştururken varsayılan aracı havuzu için herhangi bir bölge tanımlamadıysanız, kümenizin AKS denetim düzlemi bileşenleri kullanılabilirlik bölgelerini kullanmaz. [Az aks nodepool Add][az-aks-nodepool-add] komutunu kullanarak ek düğüm havuzları ekleyebilir ve bu yeni düğümler için `--zones` belirtebilirsiniz, ancak denetim düzlemi bileşenleri kullanılabilirlik alanı tanıma olmadan kalır. Bir düğüm havuzu veya AKS denetim düzlemi bileşenleri dağıtıldıktan sonra bölge tanımayı değiştiremezsiniz.
 
 Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* adlı bir aks kümesi oluşturur. Toplam *3* düğüm oluşturulur-bölge *1*' de bir aracı, biri *2*' de ve diğeri *3*' te. AKS denetim düzlemi bileşenleri, küme oluşturma işleminin bir parçası olarak tanımlandıklarından, en yüksek kullanılabilir yapılandırma alanları arasında da dağıtılır.
 

@@ -1,19 +1,19 @@
 ---
-title: Azure HPC önbelleği bağlama (Önizleme)
+title: Azure HPC önbelleği bağlama
 description: İstemcileri Azure HPC önbellek hizmetine bağlama
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 3257cf92c628650fc50e0a36ec37fcab920aba2f
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: d906ed9a1a55e936c6374806a9037085c47e3b01
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254574"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582223"
 ---
-# <a name="mount-the-azure-hpc-cache-preview"></a>Azure HPC önbelleğini bağlama (Önizleme)
+# <a name="mount-the-azure-hpc-cache"></a>Azure HPC önbelleğini bağlama
 
 Önbellek oluşturulduktan sonra, NFS istemcileri basit bir Mount komutuyla erişebilir.
 
@@ -25,7 +25,7 @@ Bağlama komutu iki öğeden oluşur:
 ![Azure HPC önbellek örneğinin genel bakış sayfasının ekran görüntüsü, sağ alt taraftaki bağlama adresleri listesi etrafında bir vurgulama kutusuyla](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
-> Önbellek bağlama adresleri, önbelleğin alt ağının içindeki ağ arabirimlerine karşılık gelir. Bir kaynak grubunda, bu NIC 'ler `-cluster-nic-` ve bir sayı ile biten adlarla listelenir. Bu arabirimleri değiştirmeyin veya silmeyin, aksi durumda önbellek kullanılamaz hale gelir.
+> Önbellek bağlama adresleri, önbelleğin alt ağının içindeki ağ arabirimlerine karşılık gelir. Bir kaynak grubunda, bu NIC 'ler `-cluster-nic-` ile biten adlarla ve bir sayı ile listelenir. Bu arabirimleri değiştirmeyin veya silmeyin, aksi durumda önbellek kullanılamaz hale gelir.
 
 Sanal ad alanı yolları, **depolama hedefleri** sayfasında gösterilir. Ayrıntılarını görmek için, bununla ilişkili toplanmış ad alanı yolları da dahil olmak üzere, ayrı bir depolama hedefi adına tıklayın.
 
@@ -61,7 +61,7 @@ Sağlam bir istemci bağlama için, bu ayarları ve bağımsız değişkenleri b
 ``hard`` | Azure HPC Cache 'e yönelik hafif bağlar, uygulama hatalarıyla ve olası veri kaybı ile ilişkilendirilir. 
 ``proto=netid`` | Bu seçenek NFS ağ hatalarının uygun işlenmesini destekler.
 ``mountproto=netid`` | Bu seçenek, bağlama işlemleri için ağ hatalarının uygun işlenmesini destekler.
-``retry=n`` | Geçici bağlama hatalarından kaçınmak için ``retry=30`` olarak ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)
+``retry=n`` | Geçici bağlama hatalarından kaçınmak için ``retry=30`` ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

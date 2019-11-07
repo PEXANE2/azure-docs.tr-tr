@@ -3,17 +3,17 @@ title: IoT Tak ve Kullan önizleme aygıtları oluşturmak için Visual Studio v
 description: IoT Tak ve Kullan cihaz modellerini yazmayı ve cihaz kodunu uygulamayı hızlandırmak için Visual Studio ve Visual Studio Code kullanın.
 author: liydu
 ms.author: liydu
-ms.date: 09/10/2019
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: d68a3f99096ca64b357239f61cf7ff17d6fc3f83
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 7bb4e507df24f50238197b738fd54e6b5c1d05ee
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935735"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571168"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code"></a>Visual Studio Code için Azure IoT araçları 'nı kullanma
 
@@ -25,9 +25,9 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 - Cihaz projenizde oluşturulan kodu kullanın.
 - İskelet kodunu yeniden oluşturarak yineleyin.
 
-IoT cihazları geliştirmek için VS Code kullanma hakkında daha fazla bilgi için bkz [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench).
+IoT cihazları geliştirmek için VS Code kullanma hakkında daha fazla bilgi için bkz. [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Visual Studio Code](https://code.visualstudio.com/)'i yükler.
 
@@ -46,23 +46,32 @@ VS Code ' de, **Ctrl + Shift + P** tuşlarına basarak komut paletini açın, **
 
 - **Proje adı**. Proje adı, oluşturulan kod ve diğer proje dosyaları için klasör adı olarak kullanılır. Klasör, varsayılan olarak DCM dosyasının yanına yerleştirilir. DCM Dosyanızı güncelleştirdiğinizde ve cihaz kodunu yeniden oluşturduğunuzda oluşturulan kod klasörünü el ile kopyalamak zorunda kalmamak için, DCM Dosyanızı proje klasörüyle aynı klasörde saklayın.
 
-- **Proje türü**. Kod Oluşturucu Ayrıca, kodu kendi projenizle veya cihaz SDK projesiyle tümleştirilebilen bir proje dosyası da oluşturur. Şu anda desteklenen proje türleri şunlardır:
-
-    - **CMake projesi**: [CMake](https://cmake.org/) yapı sistemi olarak kullanan bir cihaz projesi için. Bu seçenek C koduyla `CMakeLists.txt` aynı klasörde bir dosya oluşturur.
-    - **Mxyongaıot devkit projesi**: [Mxyonga IoT devkit](https://aka.ms/iot-devkit) cihazında çalışan bir cihaz projesi için. Bu seçenek, IoT DevKit cihazında derlemek ve çalıştırmak için [vs Code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) veya ARDUINO IDE 'de kullanabileceğiniz bir Arduino projesi oluşturur.
-
 - **Azure IoT 'ye bağlanma yöntemi**. Oluşturulan dosyalar Ayrıca, cihazı Azure IoT Hub bağlanacak şekilde yapılandırmak için kod içerir. Doğrudan [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) bağlanmayı veya [cihaz sağlama hizmeti](https://docs.microsoft.com/azure/iot-dps)'ni kullanmayı seçebilirsiniz.
 
     - **IoT Hub cihaz bağlantı dizesi aracılığıyla**: cihaz uygulaması için doğrudan IoT Hub bağlanacak cihaz bağlantı dizesini belirtin.
-    - **DPS simetrik anahtarı aracılığıyla**: IoT Hub veya DPS kullanarak IoT Central bağlanmak için gereken cihaz uygulaması IÇIN **Kapsam KIMLIĞI**, **kayıt kimliği**ve **SAS anahtarını** belirtin.
+    - **DPS simetrik anahtarı aracılığıyla**: IoT Hub veya DPS kullanarak IoT Central bağlanmak için gereken cihaz uygulaması Için **kimlik kapsamını**, **simetrik anahtarı** ve **cihaz kimliğini** belirtin.
+
+- **Proje türü**. Kod Oluşturucu Ayrıca bir CMake veya Arduino projesi oluşturur. Şu anda desteklenen proje türleri şunlardır:
+
+    - Windows 'da CMake **projesi**: Windows üzerinde [CMake](https://cmake.org/) olarak derleme sistemi kullanan bir cihaz projesi için. Bu seçenek, C koduyla aynı klasörde bulunan cihaz SDK yapılandırmalarının `CMakeLists.txt` oluşturur.
+    - **Linux üzerinde CMake projesi**: [CMake](https://cmake.org/) 'i Linux üzerinde derleme sistemi olarak kullanan bir cihaz projesi için. Bu seçenek, C koduyla aynı klasörde bulunan cihaz SDK yapılandırmalarının `CMakeLists.txt` oluşturur.
+    - **Mxyongaıot devkit projesi**: [Mxyonga IoT devkit](https://aka.ms/iot-devkit) cihazında çalışan bir cihaz projesi için. Bu seçenek, IoT DevKit cihazında derlemek ve çalıştırmak için [vs Code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) veya ARDUINO IDE 'de kullanabileceğiniz bir Arduino projesi oluşturur.
+
+- **CIHAZ SDK türü**. CMake 'i proje türü olarak seçerseniz, `CMakeLists.txt`oluşturulan kodun Azure IoT C cihaz SDK 'sını nasıl dahil edileceğini yapılandırmak için bu adım aşağıdaki gibidir:
+
+    - **Kaynak kodu aracılığıyla**: oluşturulan kod, içine dahil etmek ve birlikte oluşturmak IÇIN [cihaz SDK kaynak kodunu](https://github.com/Azure/azure-iot-sdk-c) kullanır. Bu, cihaz SDK 'Sı kaynak kodunu özelleştirdiğiniz durumlarda önerilir.
+    - **Vcpkg aracılığıyla**: oluşturulan kod, üzerine eklemek ve birlikte oluşturmak için [cihaz SDK 'Sı vcpkg](https://github.com/microsoft/vcpkg/tree/master/ports/azure-iot-sdk-c) 'yi kullanır. Bu, Windows, Linux veya macOS çalıştıran cihazlar için önerilen yoldur.
+
+    > [!NOTE]
+    > Azure IoT C cihaz SDK 'Sı Vcpkg için macOS desteği devam etmektedir.
 
 Kod Oluşturucu, yerel klasörde bulunan DCM ve arabirim dosyalarını kullanmayı dener. Arabirim dosyaları yerel klasörde değilse, kod Oluşturucu bunları ortak model deposunda veya şirket modeli deposunda arar. Ortak [arabirim dosyaları](./concepts-common-interfaces.md) ortak model deposunda depolanır.
 
 Kod oluşturma işlemi tamamlandıktan sonra uzantı, kodla yeni bir VS Code penceresi açar. **Main. c**gibi oluşturulmuş bir dosyayı açarsanız, IntelliSense 'ın c SDK kaynak dosyalarını açmadığı hakkında bilgi edinebilirsiniz. Doğru IntelliSense ve kod gezintisini etkinleştirmek için, C SDK kaynağını eklemek için aşağıdaki adımları kullanın:
 
-1. VS Code ' de, **CTRL + SHIFT + P** ' yi kullanarak komut paletini açın, yazın ve **şunu seçinC++: **C_cpp_properties. JSON** dosyasını açmak** için konfigürasyonları düzenleyin (JSON).
+1. VS Code ' de, **CTRL + SHIFT + P** tuşlarına basarak komut paletini açın, yazın ve **c_cpp_properties. JSON** dosyasını açmak için **C/C++: Edit Configurations (JSON)** öğesini seçin.
 
-1. Cihaz SDK 'sının `includePath` yolunu bölümüne ekleyin:
+1. `includePath` bölümünde cihaz SDK 'sının yolunu ekleyin:
 
     ```json
     "includePath": [
@@ -79,100 +88,81 @@ Aşağıdaki yönergelerde, farklı geliştirme makinesi platformlarında kendi 
 
 ### <a name="linux"></a>Linux
 
-Ubuntu veya de, gibi bir Linux ortamında CMake kullanarak cihaz C SDK 'Sı ile birlikte cihaz kodu oluşturmak için:
+Ubuntu veya de, gibi bir Linux ortamında CMake 'i kullanarak, cihaz kodunu C SDK Vcpkg ile birlikte derlemek için:
 
 1. Bir Terminal uygulaması açın.
 
-1. Komutunu kullanarak `cmake`GCC, git, ve tüm bağımlılıkları yükler: `apt-get`
+1. `apt-get` komutunu kullanarak **GCC**, **Git**, `cmake`ve tüm bağımlılıkları yükler:
 
-    ```sh
+    ```bash
     sudo apt-get update
     sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
     ```
 
-    Öğesinin `cmake` sürümünün **2.8.12** üzerinde olduğunu ve **GCC** 'nin sürümünün **4.4.7**'in üzerinde olduğunu doğrulayın.
+    `cmake` sürümünün **2.8.12** üzerinde olduğunu ve **GCC** 'nin sürümünün **4.4.7**üzerinde olduğunu doğrulayın.
 
-    ```sh
+    ```bash
     cmake --version
     gcc --version
     ```
 
-1. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) deposunu kopyalayın:
+1. Vcpkg 'yi yükler:
 
-    ```sh
-    git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
+    ```bash
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+
+    ./bootstrap-vcpkg.sh
     ```
 
-    Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
+    Ardından, Kullanıcı genelinde [tümleştirmeyi](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)yedeklemek için şunu çalıştırın:
 
-1. Oluşturulan kodu içeren klasörü cihaz SDK 'Sı kök klasörüne kopyalayın.
-
-1. VS Code, `CMakeLists.txt` dosyayı cihaz SDK 'sı kök klasöründe açın.
-
-1. SDK 'yı derlerken cihaz kodu saplama klasörünü dahil etmek `CMakeLists.txt` için dosyanın sonuna aşağıdaki satırı ekleyin:
-
-    ```txt
-    add_subdirectory({generated_code_folder_name})
+    ```bash
+    ./vcpkg integrate install
     ```
 
-1. Cihaz SDK 'sı kök `cmake` klasöründe adlı bir klasör oluşturun ve bu klasöre gidin.
+1. Azure IoT C cihaz SDK 'Sı Vcpkg 'yi yükler:
 
-    ```sh
+    ```bash
+    ./vcpkg install azure-iot-sdk-c[public-preview,use_prov_client]
+    ```
+
+1. Klasörde bir `cmake` alt dizini oluşturun oluşturulan kod Saplaması ' nı içerir ve bu klasöre gidin:
+
+    ```bash
     mkdir cmake
     cd cmake
     ```
 
 1. Aşağıdaki komutları çalıştırarak, CMake 'i kullanarak cihaz SDK 'sını ve oluşturulan kod Saplaması 'nı oluşturun:
 
-    ```cmd\sh
-    cmake -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON ..
+    ```bash
+    cmake .. -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}/scripts/buildsystems/vcpkg.cmake"
+
     cmake --build .
     ```
 
 1. Yapı başarılı olduktan sonra, IoT Hub cihaz bağlantı dizesini parametre olarak belirterek uygulamayı çalıştırın.
 
-    ```cmd\sh
-    cd azure-iot-sdk-c/cmake/{generated_code_folder_name}/
+    ```bash
     ./{generated_code_project_name} "[IoT Hub device connection string]"
     ```
 
 ### <a name="windows"></a>Windows
 
-Komut satırında CMake ve Visual Studio C/C++ derleyicileri kullanarak Windows 'Daki DEVICE c SDK ile birlikte cihaz kodunu derlemek için bkz. [IoT Tak ve kullan hızlı başlangıç](./quickstart-create-pnp-device.md). Aşağıdaki adımlarda, Visual Studio 'da CMake projesi olarak cihaz C SDK 'Sı ile birlikte cihaz kodunun nasıl oluşturulacağı gösterilmektedir.
+Komut satırında CMake ve Visual Studio C/C++ derleyicileri kullanarak Windows 'Daki DEVICE c SDK ile birlikte cihaz kodunu derlemek için bkz. [IoT Tak ve kullan hızlı başlangıç](./quickstart-create-pnp-device.md). Aşağıdaki adımlarda, Visual Studio 'da C SDK Vcpkg as CMake projesi olarak cihaz kodunun nasıl oluşturulacağı gösterilmektedir.
+
+1. Vcpkg aracılığıyla C için Azure IoT cihaz SDK 'sını yüklemek için [hızlı](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device#prepare-the-development-environment) başlangıçta bulunan adımları izleyin.
 
 1. [Visual Studio 2019 'yi (Community, Professional veya Enterprise)](https://visualstudio.microsoft.com/downloads/) yükledikten sonra, iş yüküyle **NuGet Paket Yöneticisi** bileşenini ve **Masaüstü geliştirmeyi C++**  eklediğinizden emin olun.
 
-1. Visual Studio 'yu açın ve **Başlarken** sayfasında **kopya veya**kullanıma alma kodu ' nu seçin:
-
-1. **Depo konumu**' nda [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) deposunu kopyalayın:
-
-    ```txt
-    https://github.com/Azure/azure-iot-sdk-c
-    ```
-
-    Bu işlemin tamamlanması birkaç dakika sürer, ilerleme durumunu **Takım Gezgini** bölmesinde görebilirsiniz.
-
-1. Takım Gezgini **Azure-IoT-SDK-c** deposunu açın, **dallar**' ı seçin, **genel önizleme** dalını arayın ve kontrol edin.
-
-    ![Genel önizleme](media/howto-develop-with-vs-vscode/vs-public-preview.png)
-
-1. Oluşturulan kodu içeren klasörü cihaz SDK 'Sı kök klasörüne kopyalayın.
-
-1. `azure-iot-sdk-c` Klasörünü vs 'de açın.
-
-1. `CMakeLists.txt` Dosyayı cihaz SDK 'sı kök klasöründe açın.
-
-1. SDK 'yı derlerken cihaz kodu saplama klasörünü dahil etmek `CMakeLists.txt` için dosyanın sonuna aşağıdaki satırı ekleyin:
-
-    ```txt
-    add_subdirectory({generated_code_folder_name})
-    ```
+1. Visual Studio 'yu açın, **dosya > > CMake aç** ' ı seçin. klasörde `CMakeLists.txt` açmak için oluşturulan kodu içerir.
 
 1. **Genel** araç çubuğunda, **Konfigürasyonlar** açılan listesini bulun. Projenizin CMake ayarını eklemek için **yapılandırmayı Yönet** ' i seçin.
 
     ![Yapılandırmayı Yönet](media/howto-develop-with-vs-vscode/vs-manage-config.png)
 
-1. **CMake ayarlarında**yeni bir yapılandırma ekleyin ve **x64-Release** as Target ' ı seçin.
+1. **CMake ayarlarında**yeni bir yapılandırma ekleyin ve hedef olarak **x86-hata ayıkla** ' yı seçin.
 
 1. **CMake komut bağımsız değişkenlerinde**aşağıdaki satırı ekleyin:
 
@@ -182,21 +172,24 @@ Komut satırında CMake ve Visual Studio C/C++ derleyicileri kullanarak Windows 
 
 1. Dosyayı kaydedin.
 
-1. **Çözüm Gezgini**, kök klasörde öğesine sağ tıklayın ve ardından `CMakeLists.txt` bağlam menüsünden **Oluştur** ' u seçerek cihaz SDK 'sı ve üretilen kod Saplaması oluşturun.
+1. **Konfigürasyonlar** açılan menüsünde **x86-hata ayıkla** ' ya geçin. CMake 'in önbellek oluşturması için birkaç saniye gerekir. İlerleme durumunu görmek için çıkış penceresini görüntüleyin.
+
+    ![CMake çıkışı](media/howto-develop-with-vs-vscode/vs-cmake-output.png)
+
+1. **Çözüm Gezgini**, kök klasördeki `CMakeLists.txt` sağ tıklayın ve oluşturulan kod Saplaması ' nı cihaz SDK 'sı ile derlemek için bağlam menüsünden **Oluştur** ' u seçin.
 
 1. Oluşturma başarılı olduktan sonra komut isteminde, IoT Hub cihaz bağlantı dizesini parametre olarak belirten uygulamayı çalıştırın.
 
     ```cmd
-    cd %USERPROFILE%\CMakeBuilds\{workspaceHash}\build\x64-Release\{generated_code_folder_name}\
-    {generated_code_project_name}.exe "[IoT Hub device connection string]"
+    .\out\build\x86-Debug\{generated_code_project_name}.exe "[IoT Hub device connection string]"
     ```
 
 > [!TIP]
 > Visual Studio 'da CMake 'i kullanma hakkında daha fazla bilgi için bkz. [CMake projesi oluşturma](https://docs.microsoft.com/cpp/build/cmake-projects-in-visual-studio?view=vs-2019#building-cmake-projects) .
 
-### <a name="macos"></a>Mac OS
+### <a name="macos"></a>macOS
 
-Aşağıdaki adımlarda, CMake kullanarak macOS 'ta Device C SDK 'Sı ile birlikte cihaz kodunun nasıl oluşturulacağı gösterilmektedir:
+Aşağıdaki adımlarda, CMake kullanarak macOS 'ta Device C SDK kaynak kodu ile birlikte cihaz kodunun nasıl oluşturulacağı gösterilmektedir:
 
 1. Terminal uygulamasını açın.
 
@@ -215,7 +208,7 @@ Aşağıdaki adımlarda, CMake kullanarak macOS 'ta Device C SDK 'Sı ile birlik
 
 1. [Düzeltme Eki](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#upgrade-curl-on-mac-os) , kullanılabilir en son sürüme kıvır.
 
-1. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) deposunu kopyalayın:
+1. Oluşturulan kodu içeren klasörde, [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) deposunu kopyalayın:
 
     ```bash
     git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
@@ -223,17 +216,7 @@ Aşağıdaki adımlarda, CMake kullanarak macOS 'ta Device C SDK 'Sı ile birlik
 
     Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
 
-1. Oluşturulan kodu içeren klasörü cihaz SDK 'Sı kök klasörüne kopyalayın.
-
-1. VS Code, `CMakeLists.txt` dosyayı cihaz SDK 'sı kök klasöründe açın.
-
-1. SDK 'yı derlerken cihaz kodu saplama klasörünü dahil etmek `CMakeLists.txt` için dosyanın sonuna aşağıdaki satırı ekleyin:
-
-    ```txt
-    add_subdirectory({generated_code_folder_name})
-    ```
-
-1. Cihaz SDK 'sı kök `cmake` klasöründe adlı bir klasör oluşturun ve bu klasöre gidin.
+1. Oluşturulan kodu içeren klasör altında `cmake` adlı bir klasör oluşturun ve bu klasöre gidin.
 
     ```bash
     mkdir cmake
@@ -250,7 +233,7 @@ Aşağıdaki adımlarda, CMake kullanarak macOS 'ta Device C SDK 'Sı ile birlik
 1. Yapı başarılı olduktan sonra, IoT Hub cihaz bağlantı dizesini parametre olarak belirterek uygulamayı çalıştırın.
 
     ```bash
-    cd azure-iot-sdk-c/cmake/{generated_code_folder_name}/
+    cd {generated_code_folder_name}/cmake/
     ./{generated_code_project_name} "[IoT Hub device connection string]"
     ```
 
@@ -267,7 +250,7 @@ DCM veya arabirim dosyalarınızı güncelleştirirseniz kod Oluşturucu kodu ye
 1. Kod Oluşturucu yapılandırdığınız önceki ayarı kullanır ve kodu yeniden oluşturur. Ancak, `main.c` ve `{project_name}_impl.c`gibi Kullanıcı kodu içerebilen dosyaların üzerine yazmaz.
 
 > [!NOTE]
-> Arabirim dosyanızdaki URN kimliğini güncelleştirirseniz, yeni bir arabirim olarak kabul edilir. Kodu yeniden oluşturduğunuzda, kod Oluşturucu arabirim için kod üretir ancak `{project_name}_impl.c` dosyanın özgün olanın üzerine yazmaz.
+> Arabirim dosyanızdaki URN kimliğini güncelleştirirseniz, yeni bir arabirim olarak kabul edilir. Kodu yeniden oluşturduğunuzda, kod Oluşturucu arabirim için kod üretir ancak `{project_name}_impl.c` dosyasında özgün olanın üzerine yazmaz.
 
 ## <a name="problems-and-feedback"></a>Sorunlar ve geri bildirim
 

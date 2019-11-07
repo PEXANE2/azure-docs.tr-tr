@@ -1,23 +1,23 @@
 ---
 title: Azure Analysis Services Yönet | Microsoft Docs
-description: Azure 'da bir Analysis Services sunucusu yönetmeyi öğrenin.
+description: Bu makalede, bir Azure Analysis Services sunucusu için yönetim ve yönetim görevlerini yönetmek üzere kullanılan araçlar açıklanmaktadır.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6846eaedc7f20f5a7597ee889193e977e86a5ed6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 28d7b2955c84833841760e441cd2919181e22bc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146835"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572804"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services’ı yönetme
 Azure 'da bir Analysis Services sunucusu oluşturduktan sonra, hemen gerçekleştirmeniz gereken bazı yönetim ve yönetim görevleri olabilir. Örneğin, işleme verilerini yenileme, sunucunuzdaki modellere kimlerin erişebileceğini denetleme veya sunucunuzun sistem durumunu izleme gibi işlemler gerçekleştirin. Bazı yönetim görevleri yalnızca Azure portal, diğer SQL Server Management Studio (SSMS) ve bazı görevlerde gerçekleştirilebilir.
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portal
 [Azure Portal](https://portal.azure.com/) , sunucuları oluşturabileceğiniz ve silebileceğiniz, sunucu kaynaklarını izleyebileceğiniz, boyutu değiştirebileceğiniz ve sunucularınıza kimlerin erişebileceğini yönetebilen yerdir.  Bazı sorunlarla karşılaşırsanız, bir destek isteği de gönderebilirsiniz.
 
 ![Azure'da sunucu adını alma](./media/analysis-services-manage/aas-manage-portal.png)

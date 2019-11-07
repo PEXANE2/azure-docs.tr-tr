@@ -1,18 +1,18 @@
 ---
-title: Azure Analysis Services bağlantı için istemci kitaplıkları gerekir | Microsoft Docs
+title: Azure Analysis Services istemci kitaplıkları | Microsoft Docs
 description: İstemci uygulamaları ve araçları 'na bağlanmak için gereken istemci kitaplıklarını açıklar Azure Analysis Services
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ce5083d444aa05b59677fb46e7aa80200835412
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f78ac8686f23c47995cab9686c2ca3f6cf88fa6b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147082"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573050"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services bağlantı için istemci kitaplıkları
 
@@ -20,7 +20,7 @@ ms.locfileid: "73147082"
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>En son istemci kitaplıklarını indir (Windows Installer)  
 
-|İndirin  |Ürün sürümü  | 
+|İndir  |Ürün sürümü  | 
 |---------|---------|
 |[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.5.15    |
 |[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.5.15       |
@@ -54,11 +54,11 @@ Power BI Desktop ve Excel gibi Microsoft istemci uygulamaları, her üç istemci
   
  Analysis Services OLE DB Sağlayıcısı, Analysis Services veritabanlarına erişmek için kullanılan çoğu araç ve istemci uygulaması tarafından otomatik olarak yüklenir. Analysis Services verilerine erişmek için kullanılan bilgisayarlarda yüklü olmalıdır.  
   
- OLE DB sağlayıcılar genellikle bağlantı dizelerinde belirtilir. Analysis Services bağlantı dizesi OLE DB sağlayıcısına başvurmak için farklı bir terminolojisi kullanır: MSOLAP. \<Sürüm >. dll.
+ OLE DB sağlayıcılar genellikle bağlantı dizelerinde belirtilir. Analysis Services bağlantı dizesi, OLE DB sağlayıcısına başvurmak için farklı bir terminolojisi kullanır: MSOLAP.\<sürümü >. dll.
 
 ### <a name="amo"></a>AMO  
 
- AMO, sunucu yönetimi ve veri tanımı için kullanılan bir yönetilen istemci kitaplığıdır. Bu, Araçlar ve istemci uygulamaları tarafından yüklenir ve kullanılır. Örneğin, SQL Server Management Studio (SSMS) Analysis Services bağlanmak için AMO kullanır. AMO kullanan bir bağlantı genellikle en az `"data source=\<servername>"` ' dan oluşur. Bir bağlantı kurulduktan sonra, veritabanı koleksiyonları ve ana nesnelerle çalışmak için API 'yi kullanırsınız. Hem Visual Studio hem de SSMS, bir Analysis Services örneğine bağlanmak için AMO kullanır.  
+ AMO, sunucu yönetimi ve veri tanımı için kullanılan bir yönetilen istemci kitaplığıdır. Bu, Araçlar ve istemci uygulamaları tarafından yüklenir ve kullanılır. Örneğin, SQL Server Management Studio (SSMS) Analysis Services bağlanmak için AMO kullanır. AMO kullanan bir bağlantı genellikle en az `"data source=\<servername>"`oluşur. Bir bağlantı kurulduktan sonra, veritabanı koleksiyonları ve ana nesnelerle çalışmak için API 'yi kullanırsınız. Hem Visual Studio hem de SSMS, bir Analysis Services örneğine bağlanmak için AMO kullanır.  
 
   
 ### <a name="adomd"></a>ADOMD
@@ -74,7 +74,7 @@ Power BI Desktop ve Excel gibi Microsoft istemci uygulamaları, her üç istemci
   
 1.  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` kısmına gidin. Birden fazla klasörünüz varsa, daha yüksek bir sayı seçin.
   
-2.  **MSOLAP. dll**  > **Özellikler**  > **Ayrıntılar**' a sağ tıklayın. Dosya adı msolap140. dll ise, en son sürümden daha eski ve yükseltilmesi gerekir.
+2.  **MSOLAP. dll** > **Özellikler** > **Ayrıntılar**' a sağ tıklayın. Dosya adı msolap140. dll ise, en son sürümden daha eski ve yükseltilmesi gerekir.
     
     ![İstemci kitaplığı ayrıntıları](media/analysis-services-data-providers/aas-msolap-details.png)
     
@@ -82,14 +82,14 @@ Power BI Desktop ve Excel gibi Microsoft istemci uygulamaları, her üç istemci
 ### <a name="amo"></a>AMO
 
 1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` kısmına gidin. Birden fazla klasörünüz varsa, daha yüksek bir sayı seçin.
-2. **Microsoft. AnalysisServices** > **özellikleri** > **ayrıntıları**' na sağ tıklayın.  
+2. **Microsoft. AnalysisServices** > **Özellikler** > **Ayrıntılar**' a sağ tıklayın.  
 
 ### <a name="adomd"></a>ADOMD
 
 1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` kısmına gidin. Birden fazla klasörünüz varsa, daha yüksek bir sayı seçin.
-2. **Microsoft. AnalysisServices. AdomdClient**  > **Özellikler**  > **Ayrıntılar**' a sağ tıklayın.  
+2. **Microsoft. AnalysisServices. AdomdClient** > **Özellikler** > **Ayrıntılar**' a sağ tıklayın.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Excel    bağlanma](analysis-services-connect-excel.md)  
+[Excel   bağlanma](analysis-services-connect-excel.md)  
 [Power BI ile bağlanma](analysis-services-connect-pbi.md)

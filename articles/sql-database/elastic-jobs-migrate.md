@@ -1,5 +1,5 @@
 ---
-title: Yeni elastik veritabanı Işlerine geçiş | Microsoft Docs
+title: 'Yeni elastik veritabanı Işlerine geçiş '
 description: Yeni elastik veritabanı Işlerine geçiş yapın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 9fa3444244cbd51c3f14abcfef5212a366cadbd2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2cba7ecb4be500a8f7007c8da009e03e6f33dfde
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550564"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692270"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Yeni Elastik Veritabanı işleri geçir
 
@@ -25,7 +25,7 @@ ms.locfileid: "68550564"
 Esnek veritabanı Işlerinin mevcut bir müşteri barındırılan sürümüne sahipseniz, en son sürüme kolayca geçiş yapmak için geçiş cmdlet 'leri ve komut dosyaları sağlanır.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Elastik Veritabanı işleri yükseltilen sürümünde, geçiş sırasında kullanılmak üzere yeni bir PowerShell cmdlet 'leri kümesi vardır. Bu yeni cmdlet 'ler, tüm mevcut iş kimlik bilgilerinizi, hedefleri (veritabanları, sunucular, özel koleksiyonlar dahil), iş Tetikleyicileri, iş zamanlamaları, iş içerikleri ve işleri yeni bir elastik Iş aracısına aktarır.
 
@@ -368,7 +368,7 @@ function Setup-TargetGroup ($tgName, $agent) {
 
 Hedeflerinizi (sunucular, veritabanları ve özel koleksiyonlarınız) yeni iş veritabanınıza geçirmek için, aşağıdaki işlemleri gerçekleştirmek üzere **Migrate-TargetGroups** cmdlet 'ini yürütün:
 
-- Sunucular ve veritabanları olan kök düzeyi hedefleri, yalnızca kök düzeyi hedefi içeren "\<(ServerName\>, \<DatabaseName\>)" adlı yeni bir hedef gruba geçirilecektir.
+- Sunucular ve veritabanları olan kök düzeyi hedefleri, yalnızca kök düzeyi hedefi içeren "(\<serverName\>, \<databaseName\>)" adlı yeni bir hedef gruba geçirilecektir.
 - Özel bir koleksiyon, tüm alt hedefleri içeren yeni bir hedef gruba geçirilir.
 
 ```powershell
@@ -564,7 +564,7 @@ function Setup-JobStep ($newJob, $job) {
 
 İşlerinizi, iş içeriğinizi, iş tetikleyicilerini ve iş zamanlamalarınızı yeni elastik Iş aracısının veritabanına geçirmek için, aracısında geçen **geçiş işleri** cmdlet 'ini yürütün.
 
-- Farklı zamanlamalarla birden çok tetikleyici içeren işler, adlandırma düzenine sahip birden çok iş halinde ayrılmıştır\<: "\> JobName (\>\<ScheduleName)".
+- Farklı zamanlamalara sahip birden çok tetikleyici içeren işler, "\<jobName\> (\<scheduleName\>)" adlı birden çok iş halinde ayrılmıştır.
 - İş içerikleri, ilişkili komut metniyle birlikte JobStep adlı bir varsayılan iş adımı eklenerek bir işe geçirilir.
 - İşler varsayılan olarak devre dışı bırakılmıştır, böylece bunları etkinleştirmeden önce bunları doğrulayabilirler.
 
