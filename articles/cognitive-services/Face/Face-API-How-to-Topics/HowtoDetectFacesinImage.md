@@ -1,7 +1,7 @@
 ---
 title: Görüntüdeki yüzeyleri algılama-Yüz Tanıma API'si
 titleSuffix: Azure Cognitive Services
-description: Yüz algılama özelliği tarafından döndürülen çeşitli verileri nasıl kullanacağınızı öğrenin.
+description: Bu kılavuzda, belirli bir görüntüden cinsiyet, Age veya poz gibi öznitelikleri ayıklamak için yüz algılamanın nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 07089def3290d6d64919ad2551de7584646cc681
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306628"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744287"
 ---
 # <a name="get-face-detection-data"></a>Yüz algılama verilerini al
 
@@ -29,7 +29,7 @@ Bu kılavuzda nasıl yapılacağı gösterilmektedir:
 
 ## <a name="setup"></a>Kurulum
 
-Bu kılavuzda, bir yüz abonelik anahtarı ve uç nokta URL 'si olan `faceClient`adlı bir [faceclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) nesnesi oluşturmuş olduğunuz varsayılmaktadır. Buradan, bu kılavuzda kullanılan [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), ya da [Detectwithstreamasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)' i çağırarak yüz algılama özelliğini kullanabilirsiniz. Bu özelliği ayarlama hakkında yönergeler için hızlı başlangıçlardan birini izleyin.
+Bu kılavuzda, bir yüz abonelik anahtarı ve uç nokta URL 'SI ile `faceClient`adlı bir [Faceclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) nesnesi oluşturmuş olduğunuz varsayılmaktadır. Buradan, bu kılavuzda kullanılan [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), ya da [Detectwithstreamasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)' i çağırarak yüz algılama özelliğini kullanabilirsiniz. Bu özelliği ayarlama hakkında yönergeler için hızlı başlangıçlardan birini izleyin.
 
 Bu kılavuz, hangi bağımsız değişkenleri geçebileceğinize ve döndürülen verilerle yapabileceklerinize ilişkin olarak, algılama çağrısının özelliklerine odaklanır. Yalnızca ihtiyacınız olan özellikleri sorgulamanızı öneririz. Her işlemin tamamlanabilmesi için ek süre sürer.
 
@@ -144,8 +144,8 @@ foreach (var face in faces)
 
 Bu kılavuzda, çeşitli yüz algılama işlevlerini nasıl kullanacağınızı öğrendiniz. Daha sonra, derinlemesine bir öğreticiyi izleyerek bu özellikleri uygulamanız ile tümleştirin.
 
-- [Öğretici: Görüntüde yüz verileri göstermek için bir WPF uygulaması oluşturma](../Tutorials/FaceAPIinCSharpTutorial.md)
-- [Öğretici: Görüntüdeki yüzeyleri algılamak ve çerçeveye eklemek için bir Android uygulaması oluşturma](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+- [Öğretici: görüntüde yüz verileri göstermek için WPF uygulaması oluşturma](../Tutorials/FaceAPIinCSharpTutorial.md)
+- [Öğretici: görüntüdeki yüzeyleri algılamak ve çerçeveye eklemek için bir Android uygulaması oluşturma](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
 ## <a name="related-topics"></a>İlgili konular
 

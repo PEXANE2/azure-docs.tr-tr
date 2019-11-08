@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: b0345773956a0adc5c7f403195c496a3ea5e6fd6
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 48bac68b518706cf3a23d2283da7cda49846e0a7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982335"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795825"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Bilişsel Hizmetler ve makine öğrenmesi
 
@@ -24,9 +24,9 @@ Bilişsel [Hizmetler](welcome.md) , her biri farklı, genelleştirilmiş tahmin 
 
 |Hizmet kategorisi|Amaç|
 |--|--|
-|[Seçim](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bilgiye dayalı ve verimli kararlar almak için öneri sunan uygulamalar derleyin.|
-|[Dil](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Uygulamalarınızın önceden oluşturulmuş betiklerle doğal dili işlemesini sağlar, yaklaşımı değerlendirin ve kullanıcıların neleri istediğini nasıl anlayacağınızı öğrenin.|
-|[Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Uygulamalarınıza Bing Arama API'leri ekleyin ve tek bir API çağrısıyla milyarlarca web sayfası, resim, video ve haberi bir şekilde ekleyin.|
+|[Seçim](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bilgiye dayalı ve verimli kararlar almak için öneriler sunan uygulamalar derleyin.|
+|[Dil](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Önceden oluşturulmuş betiklerle uygulamalarınızın doğal dil işlemesine, duyguları değerlendirmesine ve kullanıcıların ne istediğini tanımayı öğrenmesine imkan sağlayın.|
+|[Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Uygulamalarınıza Bing Arama API'leri ekleyin ve tek bir API çağrısıyla milyarlarca web sayfası, resim, video ve haberi tarama imkanından yararlanın.|
 |[Konuşmayı](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Konuşmaları metne, metinleri kulağa doğal gelen konuşmalara dönüştürün. Bir dilden başka bir dile çeviri yapın, konuşmacı doğrulama ve tanıma özelliğini etkinleştirin.|
 |[Minin](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Resimlerinizi, videolarınızı ve dijital mürekkep içeriğinizi tanıyın, tanımlayın, altyazı ekleyin, dizine alın ve yönetin.|
 ||||
@@ -40,7 +40,7 @@ Bilişsel hizmetler 'i şu durumlarda kullanın:
 
 * Algoritmayı seçmeniz ve çok özel verilerde eğitmeniz gerekir.
 
-## <a name="what-is-machine-learning"></a>Machine learning nedir?
+## <a name="what-is-machine-learning"></a>Makine öğrenimi nedir?
 
 Makine öğrenimi, belirli bir ihtiyacı çözümlemek için verileri ve algoritmayı birlikte getiren bir kavramdır. Veriler ve algoritma eğitilirken, çıktı farklı verilerle tekrar kullanabileceğiniz bir modeldir. Eğitilen model yeni verileri temel alan öngörüler sağlar. 
 
@@ -89,19 +89,19 @@ Etkin bir model oluşturmak için bir hizmetin gerçek zamanlı veya neredeyse g
 
 Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne göre kategorilere ayırır.
 
-|Bilişsel Hizmet|Eğitim verisi gerekli değil|Eğitim verilerinin bazılarını veya tümünü sağlarsınız|Gerçek zamanlı veya neredeyse gerçek zamanlı veri toplama|
+|Bilişsel hizmet|Eğitim verisi gerekli değil|Eğitim verilerinin bazılarını veya tümünü sağlarsınız|Gerçek zamanlı veya neredeyse gerçek zamanlı veri toplama|
 |--|--|--|--|
 |[Anomali algılayıcısı](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing Arama |x|||
 |[Görüntü İşleme](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Özel Görüntü İşleme](./Custom-Vision-Service/home.md)||x||
-|[Yüz tanıma](./Face/Overview.md)|x|x||
+|[Ünüzü](./Face/Overview.md)|x|x||
 |[Form tanıyıcı](./form-recognizer/overview.md)||x||
 |[Modern okuyucu](./immersive-reader/overview.md)|x|||
 |[Mürekkep tanıyıcı](./Ink-recognizer/overview.md)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
-|[Kişiselleştirici](./personalizer/what-is-personalizer.md)|x*|x*|x|
+|[Kişiselleştirici](./personalizer/what-is-personalizer.md)|sayı|sayı|x|
 |[Soru-Cevap Oluşturma](./QnAMaker/Overview/overview.md)||x||
 |[Konuşmacı tanıyıcı](./speaker-recognition/home.md)||x||
 |[Konuşma metni okuma (TTS)](speech-service/text-to-speech.md)|x|x||
@@ -117,9 +117,9 @@ Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne
  
 Hizmetler, REST API veya SDK çağrısı yapan tüm uygulamalar için kullanılır. Uygulama örnekleri arasında Web siteleri, botlar, sanal veya karma gerçeklik, masaüstü ve mobil uygulamalar sayılabilir. 
 
-## <a name="how-is-cognitive-search-related-to-cognitive-services"></a>Bilişsel hizmetler ile ilgili bilişsel arama nasıl?
+## <a name="how-is-azure-cognitive-search-related-to-cognitive-services"></a>Azure Bilişsel Arama bilişsel hizmetlerle nasıl ilişkilidir?
 
-[Azure Search](../search/search-what-is-azure-search.md) , bu özelliği sağlamak için bilişsel hizmetler kullanır. Bilişsel hizmetler, tek tek API 'Leri çevreleyecek [yerleşik yetenekler](../search/cognitive-search-predefined-skills.md) aracılığıyla Azure Search kullanıma sunulur. İzlenecek yollar için ücretsiz bir kaynak kullanabilirsiniz, ancak daha büyük birimler için [faturalanabilir bir kaynak](../search/cognitive-search-attach-cognitive-services.md) oluşturma ve ekleme planlaması gerçekleştirebilirsiniz.
+[Azure bilişsel arama](../search/search-what-is-azure-search.md) , isteğe bağlı olarak, dizin oluşturma iş yükleri için görüntü ve doğal dil işleme eklemek üzere bilişsel hizmetler kullanan ayrı bir bulut arama hizmetidir. Bilişsel hizmetler, tek tek API 'Leri çevreleyecek [yerleşik yetenekler](../search/cognitive-search-predefined-skills.md) aracılığıyla Azure bilişsel arama kullanıma sunulur. İzlenecek yollar için ücretsiz bir kaynak kullanabilirsiniz, ancak daha büyük birimler için [faturalanabilir bir kaynak](../search/cognitive-search-attach-cognitive-services.md) oluşturma ve ekleme planlaması gerçekleştirebilirsiniz.
 
 ## <a name="how-can-you-use-cognitive-services"></a>Bilişsel hizmetleri nasıl kullanabilirsiniz?
 
@@ -127,7 +127,7 @@ Her hizmet, verileriniz hakkında bilgi sağlar. Konuşmayı (ses) metne dönü�
 
 Diğer makine öğrenimi araçları için aktarılmış modeller sağlayan bilişsel hizmetler:
 
-|Bilişsel Hizmet|Model bilgileri|
+|Bilişsel hizmet|Model bilgileri|
 |--|--|
 |[Özel Görüntü İşleme](./custom-vision-service/home.md)|Android için TensorFlow için [dışarı aktarma](./Custom-Vision-Service/export-model-python.md) , IOS11 Için Coreml, Windows ml IÇIN onnx|
 

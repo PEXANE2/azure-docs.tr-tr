@@ -1,5 +1,5 @@
 ---
-title: Bilgi Bankası - soru-cevap Oluşturucu
+title: Bilgi Bankası-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
 description: Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili bir soru-cevap (QnA) çiftleri ve isteğe bağlı meta veri kümesi içerir.
 services: cognitive-services
@@ -11,32 +11,32 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 78fc9fe34eb3463021dae69990fe1d30668d453f
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 355556e98300ecad6aa3141f0f4ab14b834cd91e
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300502"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794893"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma Bilgi Bankası nedir?
 
 Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili bir soru-cevap (QnA) çiftleri ve isteğe bağlı meta veri kümesi içerir.
 
-## <a name="key-knowledge-base-concepts"></a>Bilgi Bankası anahtar kavramlar
+## <a name="key-knowledge-base-concepts"></a>Önemli Bilgi Bankası kavramları
 
-* **Sorular**: Bir soru, Kullanıcı sorgusunu en iyi şekilde temsil eden metni içerir. 
-* **Yanıtlar**: Yanıt, bir Kullanıcı sorgusu ilişkili soru ile eşleştiğinde döndürülen yanıttır.  
-* **Meta veriler**: Meta veriler bir QnA çiftiyle ilişkili olan ve anahtar-değer çiftleri olarak temsil edilen etiketlerdir. Meta veri etiketleri, QnA çiftlerini filtrelemek ve sorgu eşleştirmesinin gerçekleştirileceği kümeyi sınırlamak için kullanılır.
+* **Sorular**: bir soru, Kullanıcı sorgusunu en iyi şekilde temsil eden metni içerir. 
+* **Yanıtlar**: bir yanıt, bir Kullanıcı sorgusu ilişkili soru ile eşleştiğinde döndürülen yanıttır.  
+* **Meta**veri: meta veriler bir QNA çiftiyle ilişkili etiketlerdir ve anahtar-değer çiftleri olarak temsil edilir. Meta veri etiketleri, QnA çiftlerini filtrelemek ve sorgu eşleştirmesinin gerçekleştirileceği kümeyi sınırlamak için kullanılır.
 
-Sayısal bir soru-cevap kimliği tarafından temsil edilen bir tek soru-cevap, soru (diğer Sorular) tümünü tek bir yanıt harita birden çok çeşitlemesi vardır. Buna ek olarak, her bir çiftin ilişkili birden fazla meta veri alanı olabilir: bir anahtar ve bir değer.
+Sayısal bir QnA ID tarafından temsil edilen tek bir QnA, tek bir yanıta eşlenen bir soru (alternatif sorular) için birden çok çeşitle sahiptir. Buna ek olarak, her bir çiftin ilişkili birden fazla meta veri alanı olabilir: bir anahtar ve bir değer.
 
-![Soru-cevap Oluşturucu bilgi bankalarından](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
+![Bilgi temellerini Soru-Cevap Oluşturma](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
 
 ## <a name="knowledge-base-content-format"></a>Bilgi Bankası içerik biçimi
 
-Bilgi Bankası zengin içerik içe alma, içerik markdown biçimine dönüştürmek soru-cevap Oluşturucu çalışır. Çoğu sohbet istemcisi tarafından anlaşılabilen markın biçimleri hakkında bilgi edinmek için [Bu blogu](https://aka.ms/qnamaker-docs-markdown-support) okuyun.
+Bilgi Bankası 'nda zengin içerik aldığınızda, Soru-Cevap Oluşturma içeriği markına dönüştürmeye çalışır. Çoğu sohbet istemcisi tarafından anlaşılabilen markın biçimleri hakkında bilgi edinmek için [Bu blogu](https://aka.ms/qnamaker-docs-markdown-support) okuyun.
 
-Meta veri alanları, ürün: Shredder gibi iki noktayla ayrılmış anahtar-değer çiftlerinden oluşur. Hem anahtar hem de değer salt metin olmalıdır. Meta verileri anahtar boşluk içermemelidir. Meta veriler anahtar başına yalnızca bir değeri destekler.
+Meta veri alanları, ürün: Shredder gibi iki noktayla ayrılmış anahtar-değer çiftlerinden oluşur. Hem anahtar hem de değer salt metin olmalıdır. Meta veri anahtarı boşluk içermemelidir. Meta veriler anahtar başına yalnızca bir değeri destekler.
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Soru-Cevap Oluşturma en iyi yanıtı seçmek için Kullanıcı sorgusunu nasıl işler?
 
@@ -50,12 +50,12 @@ Eğitilen ve [yayınlanan](/azure/cognitive-services/qnamaker/quickstarts/create
 
 |Adım|Amaç|
 |--|--|
-|1\.|İstemci uygulaması, Kullanıcı sorgusunu [Generateanswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)'sine gönderir.|
+|1|İstemci uygulaması, Kullanıcı sorgusunu [Generateanswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)'sine gönderir.|
 |2|Soru-Cevap Oluşturma dil algılama, yazım ve sözcük ayırıcılarını kullanarak Kullanıcı sorgusunu önceden işler.|
 |3|Bu ön işleme, en iyi arama sonuçları için Kullanıcı sorgusunu değiştirmek üzere alınır.|
-|4|Değiştirilen sorgu Azure Search dizine gönderilir ve bu da sonuçların `top` sayısını alır. Bu sonuçlarda doğru yanıt yoksa, `top` biraz değerini artırın. Genellikle, için `top` 10 değeri sorguların% 90 ' de işe yarar.|
-|5|Soru-Cevap Oluşturma, Kullanıcı sorgusunun getirilen Azure Search sonuçlarının doğruluğunu belirlemede gelişmiş özellikler uygular. |
-|6|Eğitilen su modeli, Azure Search sonuçlarını derecelendirmek için 5. adımdaki Özellik Puanını kullanır.|
+|4|Bu değiştirilen sorgu bir Azure Bilişsel Arama dizinine gönderilir ve bu da sonuçların `top` sayısını alır. Bu sonuçlarda doğru yanıt yoksa `top` değerini biraz artırın. Genellikle, `top` için 10 değeri sorguların %90 ' de işe yarar.|
+|5|Soru-Cevap Oluşturma, Kullanıcı sorgusunun getirilen arama sonuçlarının doğruluğunu belirlemede gelişmiş bir özellik uygular. |
+|6|Eğitimli derecelendiricisini modeli, Azure bilişsel arama sonuçlarını derecelendirmek için 5. adımdaki Özellik Puanını kullanır.|
 |7|Yeni sonuçlar, istemci uygulamasına derecelendirilir sırada döndürülür.|
 |||
 
@@ -66,7 +66,7 @@ Bilgi bankanızı yayımladığınızda, hizmet, uygulama ile tümleştirilen bi
 
 ### <a name="the-user-query-request-to-generate-an-answer"></a>Bir yanıt oluşturmak için Kullanıcı sorgulama isteği
 
-Kullanıcı sorgusu, son kullanıcının bilgi bankasını `How do I add a collaborator to my app?`sorduğu sorudır. Sorgu genellikle doğal dil biçiminde veya soruyu `help with collaborators`temsil eden birkaç anahtar sözcüğe (gibi) sahiptir. Sorgu, istemci uygulamanızdaki bir HTTP isteğinden bilgi tabanınızdan gönderilir.
+Kullanıcı sorgusu, son kullanıcının Bilgi Bankası 'nda `How do I add a collaborator to my app?`gibi sorduğu sorudır. Sorgu genellikle doğal bir dil biçiminde veya soruyu temsil eden birkaç anahtar kelimedir, örneğin `help with collaborators`. Sorgu, istemci uygulamanızdaki bir HTTP isteğinden bilgi tabanınızdan gönderilir.
 
 ```json
 {
@@ -89,7 +89,7 @@ Doğru ve nihai yanıtı bulmak için konuşmayı, soruları ve yanıtları beli
 
 ### <a name="the-response-from-a-call-to-generate-an-answer"></a>Yanıt oluşturmak için bir çağrıdan yanıt
 
-HTTP yanıtı, belirli bir Kullanıcı sorgusuna en iyi eşleşme temelinde Bilgi Bankası 'ndan alınan yanıttır. Yanıt, yanıtı ve tahmin Puanını içerir. `top` Özelliği ile birden fazla en iyi yanıt sorulursa, her biri puanı olan birden fazla top yanıtı alırsınız. 
+HTTP yanıtı, belirli bir Kullanıcı sorgusuna en iyi eşleşme temelinde Bilgi Bankası 'ndan alınan yanıttır. Yanıt, yanıtı ve tahmin Puanını içerir. `top` özelliği ile birden fazla en iyi yanıt sorulursa, her biri puanı olan birden fazla en iyi yanıt alırsınız. 
 
 ```json
 {
@@ -122,23 +122,23 @@ Bilgi Bankası, Soru-Cevap Oluşturma ile oluşturulan, tutulan ve kullanılan s
 
 Bilgi Bankası 'nda iki durum vardır: *Test* ve *yayımlandı*.
 
-*Test bilgi tabanı* , doğruluk ve yanıtların eksiksiz olması için düzenlenen, kaydedilen ve sınanan sürümdür. Test Bilgi Bankası 'nda yapılan değişiklikler uygulamanızın son kullanıcısını veya sohbet bot 'ı etkilemez. Test bilgi tabanı, http isteğinde olarak `test` bilinir. 
+*Test bilgi tabanı* , doğruluk ve yanıtların eksiksiz olması için düzenlenen, kaydedilen ve sınanan sürümdür. Test Bilgi Bankası 'nda yapılan değişiklikler uygulamanızın son kullanıcısını veya sohbet bot 'ı etkilemez. Test bilgi tabanı, HTTP isteğinde `test` olarak bilinir. 
 
-*Yayımlanan bilgi tabanı* , sohbet bot veya uygulamanızda kullanılan sürümdür. Bilgi Bankası yayımlama eylemi, bilgi bankasındaki yayımlanmış sürüme test bilgi tabanı içeriğini koyar. Yayımlanan bilgi tabanı uygulamanın uç nokta aracılığıyla kullandığı sürüm olduğundan, içeriğin doğru ve iyi test edildiğinden emin olun. Yayımlanan bilgi tabanı, http isteğinde olarak `prod` bilinir.
+*Yayımlanan bilgi tabanı* , sohbet bot veya uygulamanızda kullanılan sürümdür. Bilgi Bankası yayımlama eylemi, bilgi bankasındaki yayımlanmış sürüme test bilgi tabanı içeriğini koyar. Yayımlanan bilgi tabanı uygulamanın uç nokta aracılığıyla kullandığı sürüm olduğundan, içeriğin doğru ve iyi test edildiğinden emin olun. Yayımlanan Bilgi Bankası, HTTP isteğinde `prod` olarak bilinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bilgi Bankası geliştirme yaşam döngüsü](./development-lifecycle-knowledge-base.md)
+> [Bilgi bankasındaki geliştirme yaşam döngüsü](./development-lifecycle-knowledge-base.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 [Soru-Cevap Oluşturma’ya genel bakış](../Overview/overview.md)
 
 İle bir Bilgi Bankası oluşturun ve düzenleyin: 
-* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamaker/knowledgebase)
-* [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+* [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
 Şunu kullanarak bir yanıt oluşturun: 
-* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
-* [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)
+* [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

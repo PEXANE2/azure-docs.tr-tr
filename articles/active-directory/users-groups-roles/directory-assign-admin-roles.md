@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 10/28/2019
+ms.date: 11/06/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea38317868d183bd02958398b51ef906eb78e799
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e1e4fe4c06833302ac3ef9794981ee4a47fa454b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177037"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747758"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -74,13 +74,13 @@ Bu role sahip kullanıcılar, parola olmayan kimlik bilgilerini ayarlayabilir ve
 * Rapor okuyucu
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
-
-* Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve kimlik doğrulama yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir kimlik doğrulama Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
-* Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
-* Güvenlik grubu ve Office 365 Grup sahipleri, Grup üyeliğini yönetebilir. Bu gruplar, Azure AD 'de ve başka bir yerde hassas veya özel bilgilere veya kritik yapılandırmaya erişim verebilir.
-* Exchange Online, Office Security ve Uyumluluk Merkezi ve insan kaynakları sistemleri gibi Azure AD dışında diğer hizmetlerde bulunan yöneticiler.
-* Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
+>
+>- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve kimlik doğrulama yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir kimlik doğrulama Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
+>- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
+>- Güvenlik grubu ve Office 365 Grup sahipleri, Grup üyeliğini yönetebilir. Bu gruplar, Azure AD 'de ve başka bir yerde hassas veya özel bilgilere veya kritik yapılandırmaya erişim verebilir.
+>- Exchange Online, Office Security ve Uyumluluk Merkezi ve insan kaynakları sistemleri gibi Azure AD dışında diğer hizmetlerde bulunan yöneticiler.
+>- Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
 
 ### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Azure DevOps Yöneticisi](#azure-devops-administrator-permissions)
 
@@ -139,7 +139,7 @@ Bu role sahip olan kullanıcılar, Uyumluluk Merkezi 'nde, Microsoft 365 Yöneti
 [Uyumluluk Yöneticisi](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Kuruluşunuzun yasal uyumluluk etkinliklerini izleyin, atayın ve doğrulayın
 [Office 365 Güvenlik ve Uyumluluk Merkezi](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Veri idare yönetimi<br>Yasal ve veri araştırmasını gerçekleştirme<br>Veri konu Isteğini yönetme<br><br>Bu rol, Office 365 ' deki [Uyumluluk Yöneticisi RoleGroup](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) ile aynı izinlere sahiptir güvenlik ve Uyumluluk Merkezi rol tabanlı erişim denetimi.
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Tüm Intune denetim verilerini görüntüleyin
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Salt okuma izinlerine sahiptir ve uyarıları yönetebilir<br>Dosya ilkeleri oluşturabilir ve değiştirebilir ve dosya idare eylemlerine izin verebilir<br> Tüm yerleşik raporları Veri Yönetimi altına görüntüleyebilir
+[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Salt okuma izinlerine sahiptir ve uyarıları yönetebilir<br>Dosya ilkeleri oluşturabilir ve değiştirebilir ve dosya idare eylemlerine izin verebilir<br>Tüm yerleşik raporları Veri Yönetimi altına görüntüleyebilir
 
 ### <a name="compliance-data-administratorcompliance-data-administrator-permissions"></a>[Uyumluluk verileri Yöneticisi](#compliance-data-administrator-permissions)
 
@@ -151,7 +151,7 @@ Bu role sahip olan kullanıcılar, Microsoft 365 Uyumluluk Merkezi, Microsoft 36
 [Uyumluluk Yöneticisi](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Kuruluşunuzun yasal uyumluluk etkinliklerini izleyin, atayın ve doğrulayın
 [Office 365 Güvenlik ve Uyumluluk Merkezi](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Veri idare yönetimi<br>Yasal ve veri araştırmasını gerçekleştirme<br>Veri konu Isteğini yönetme<br><br>Bu rol, Office 365 ' deki [Uyumluluk verileri Yöneticisi RoleGroup](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) ile aynı izinlere sahiptir güvenlik ve Uyumluluk Merkezi rol tabanlı erişim denetimi.
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Tüm Intune denetim verilerini görüntüleyin
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Salt okuma izinlerine sahiptir ve uyarıları yönetebilir<br>Dosya ilkeleri oluşturabilir ve değiştirebilir ve dosya idare eylemlerine izin verebilir<br> Tüm yerleşik raporları Veri Yönetimi altına görüntüleyebilir
+[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Salt okuma izinlerine sahiptir ve uyarıları yönetebilir<br>Dosya ilkeleri oluşturabilir ve değiştirebilir ve dosya idare eylemlerine izin verebilir<br>Tüm yerleşik raporları Veri Yönetimi altına görüntüleyebilir
 
 ### <a name="conditional-access-administratorconditional-access-administrator-permissions"></a>[Koşullu Erişim Yöneticisi](#conditional-access-administrator-permissions)
 
@@ -224,14 +224,14 @@ Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönet
 > [!NOTE]
 > Genel okuyucu rolünde Şu anda birkaç kısıtlama vardır-
 >
->* SharePoint Yönetim Merkezi-SharePoint Yönetim Merkezi, genel okuyucu rolünü desteklemez. [Microsoft 365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage)'Nde yönetim merkezleri altında sol bölmede ' SharePoint ' öğesini görmezsiniz.
->* [OneDrive Yönetim Merkezi](https://admin.onedrive.com/) -OneDrive Yönetim Merkezi, genel okuyucu rolünü desteklemez.
->* [Azure AD Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -genel okuyucu, bir kurumsal uygulamanın sağlama modunu okuyamıyor.
->* [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, müşteri kasası isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde, **destek** altında **müşteri kasası istekleri** sekmesini bulmayacağız.
->* [M365 Güvenlik Merkezi](https://security.microsoft.com/homepage) -genel okuyucu duyarlılık ve Bekletme etiketlerini okuyamıyor. M365 Güvenlik Merkezi 'nin sol bölmesinde **duyarlık etiketleri**, **bekletme etiketleri**ve **etiket Analizi** sekmelerini bulmayacağız.
->* [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu **takımlar yaşam döngüsünü**, **Analiz & raporlarını**, **IP telefon cihaz yönetimini** ve **uygulama kataloğunu**okuyamıyor.
->* [Privileged Access Management (Pam)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) , genel okuyucu rolünü desteklemez.
->* [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) -genel okuyucu, yalnızca [merkezi raporlama](https://docs.microsoft.com/azure/information-protection/reports-aip) için ve kiracınız [Birleşik etiketleme platformunda](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)olmadığında desteklenir.
+>- SharePoint Yönetim Merkezi-SharePoint Yönetim Merkezi, genel okuyucu rolünü desteklemez. [Microsoft 365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage)'Nde yönetim merkezleri altında sol bölmede ' SharePoint ' öğesini görmezsiniz.
+>- [OneDrive Yönetim Merkezi](https://admin.onedrive.com/) -OneDrive Yönetim Merkezi, genel okuyucu rolünü desteklemez.
+>- [Azure AD Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -genel okuyucu, bir kurumsal uygulamanın sağlama modunu okuyamıyor.
+>- [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, müşteri kasası isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde, **destek** altında **müşteri kasası istekleri** sekmesini bulmayacağız.
+>- [M365 Güvenlik Merkezi](https://security.microsoft.com/homepage) -genel okuyucu duyarlılık ve Bekletme etiketlerini okuyamıyor. M365 Güvenlik Merkezi 'nin sol bölmesinde **duyarlık etiketleri**, **bekletme etiketleri**ve **etiket Analizi** sekmelerini bulmayacağız.
+>- [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu **takımlar yaşam döngüsünü**, **Analiz & raporlarını**, **IP telefon cihaz yönetimini** ve **uygulama kataloğunu**okuyamıyor.
+>- [Privileged Access Management (Pam)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) , genel okuyucu rolünü desteklemez.
+>- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) -genel okuyucu yalnızca [merkezi raporlama Için](https://docs.microsoft.com/azure/information-protection/reports-aip) desteklenir ve Azure AD Kuruluşunuz [Birleşik etiketleme platformunda](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)ne zaman değildir.
 >
 > Bu özellikler Şu anda geliştirme aşamasındadır.
 >
@@ -255,18 +255,17 @@ Bu role sahip kullanıcılar parolaları değiştirebilir, yenileme belirteçler
 * Rapor okuyucu
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
-
-* Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve yardım masası yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir yardım masası Yöneticisi, bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
-* Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
-* Güvenlik grubu ve Office 365 Grup sahipleri, Grup üyeliğini yönetebilir. Bu gruplar, Azure AD 'de ve başka bir yerde hassas veya özel bilgilere veya kritik yapılandırmaya erişim verebilir.
-* Exchange Online, Office Security ve Uyumluluk Merkezi ve insan kaynakları sistemleri gibi Azure AD dışında diğer hizmetlerde bulunan yöneticiler.
-* Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
-
-> [!NOTE]
-> Yönetim [birimleri (Önizleme)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units)ile kullanıcıların alt kümeleri üzerinde yönetim izinlerinin yetkisini verme ve ilke uygulama.
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
 >
-> Bu rol daha önce [Azure Portal](https://portal.azure.com/)"parola Yöneticisi" olarak adlandırılmıştı. Adını Azure AD PowerShell, Azure AD Graph API ve Microsoft Graph API 'sindeki adıyla eşleşecek şekilde "Yardım Masası Yöneticisi" olarak değiştirdik.
+>- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve yardım masası yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir yardım masası Yöneticisi, bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
+>- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
+>- Güvenlik grubu ve Office 365 Grup sahipleri, Grup üyeliğini yönetebilir. Bu gruplar, Azure AD 'de ve başka bir yerde hassas veya özel bilgilere veya kritik yapılandırmaya erişim verebilir.
+>- Exchange Online, Office Security ve Uyumluluk Merkezi ve insan kaynakları sistemleri gibi Azure AD dışında diğer hizmetlerde bulunan yöneticiler.
+>- Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
+
+Kullanıcıların alt kümeleri üzerinde yönetim izinlerinin yetkisini verme ve Kullanıcı alt kümesine ilke uygulama, [yönetim birimleri (şimdi genel önizlemede)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units)olabilir.
+
+Bu rol daha önce [Azure Portal](https://portal.azure.com/)"parola Yöneticisi" olarak adlandırılmıştı. Azure AD 'deki "Yardım Masası Yöneticisi" adı artık Azure AD PowerShell, Azure AD Graph API ve Microsoft Graph API 'sindeki adıyla eşleşiyor.
 
 ### <a name="intune-administratorintune-service-administrator-permissions"></a>[Intune Yöneticisi](#intune-service-administrator-permissions)
 
@@ -439,13 +438,13 @@ Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara
 |Yalnızca yönetici olmayan veya aşağıdaki sınırlı Yönetici rollerinin hiçbirinde olan kullanıcılar için:<ul><li>Dizin okuyucuları<li>Konuk davetci<li>Yardım Masası Yöneticisi<li>İleti Merkezi okuyucusu<li>Rapor okuyucu<li>Kullanıcı Yöneticisi|<p>Sil ve geri yükle</p><p>Devre dışı bırak ve Etkinleştir</p><p>Yenileme belirteçlerini geçersiz kıl</p><p>Kullanıcı asıl adı dahil tüm kullanıcı özelliklerini yönet</p><p>Parola sıfırlama</p><p>Güncelleştirme (FIDO) cihaz anahtarları</p>|
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
-
-* Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve Kullanıcı yöneticilerine başka bir yerde izin verilmez. Bu yoldan, bir Kullanıcı Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
-* Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
-* Güvenlik grubu ve Office 365 Grup sahipleri, Grup üyeliğini yönetebilir. Bu gruplar, Azure AD 'de ve başka bir yerde hassas veya özel bilgilere veya kritik yapılandırmaya erişim verebilir.
-* Exchange Online, Office Security ve Uyumluluk Merkezi ve insan kaynakları sistemleri gibi Azure AD dışında diğer hizmetlerde bulunan yöneticiler.
-* Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
+>
+>- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve Kullanıcı yöneticilerine başka bir yerde izin verilmez. Bu yoldan, bir Kullanıcı Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
+>- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
+>- Güvenlik grubu ve Office 365 Grup sahipleri, Grup üyeliğini yönetebilir. Bu gruplar, Azure AD 'de ve başka bir yerde hassas veya özel bilgilere veya kritik yapılandırmaya erişim verebilir.
+>- Exchange Online, Office Security ve Uyumluluk Merkezi ve insan kaynakları sistemleri gibi Azure AD dışında diğer hizmetlerde bulunan yöneticiler.
+>- Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
 
 ## <a name="role-permissions"></a>Rol Izinleri
 

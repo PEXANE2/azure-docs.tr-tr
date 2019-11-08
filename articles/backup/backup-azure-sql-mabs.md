@@ -1,6 +1,6 @@
 ---
 title: Azure Backup Sunucusu kullanarak SQL Server iş yükleri için Azure Backup
-description: Azure Backup Sunucusu kullanarak SQL Server veritabanlarını yedeklemeye giriş
+description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak SQL Server veritabanlarının yedeklenmesi için yapılandırma adımlarını öğrenin.
 ms.reviewer: kasinh
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: f36560dbaea5b3efe29d38ca750fc732b9281360
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: e1e1c7f30066197c6420956368a09de69e87e466
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969131"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747340"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Azure Backup Sunucusu Ile Azure 'a yedekleme SQL Server
 

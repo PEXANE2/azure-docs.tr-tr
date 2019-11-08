@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: raynew
-ms.openlocfilehash: 90b1250009e6efdb2f8cb9351fe270c8324cc77a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e752d52d0f792d39f417031c26d923fce07ccdf8
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715474"
+ms.locfileid: "73747987"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -51,7 +51,7 @@ Azure geçiş sunucusu geçişi | NA | [VMware VM 'leri](tutorial-migrate-vmware
 [Corent teknolojisi](https://go.microsoft.com/fwlink/?linkid=2084928) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin ve geçirin. |  VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri geçirin.
 [Cihaz 42](https://go.microsoft.com/fwlink/?linkid=2097158) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin.| NA
 [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | Şirket içi SQL Server veritabanlarını değerlendirin. | NA
-[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB geçirin. | NA
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB geçirin. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Sanal Masaüstü altyapısını (VDı) değerlendirme | NA
 [Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'Leri, fiziksel makineler, iş istasyonları (VDı dahil), genel bulut iş yükleri | NA
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'leri, KVM VM 'Leri, fiziksel makineler, genel bulut iş yükleri geçirin 

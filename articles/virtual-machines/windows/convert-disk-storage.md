@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: fa6b005be91f47f5976dace7fd1e76f6ea7e0b29
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 274697d555974f286c2c71f26280640077c11f81
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698839"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749556"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Yönetilen bir diskin depolama türünü güncelleştirme
 
-Azure tarafından yönetilen disklerin dört disk türü vardır: Azure Ultra SSDs (Önizleme), Premium SSD, standart SSD ve standart HDD. Performans gereksinimlerinize göre üç GA disk türü (Premium SSD, standart SSD ve standart HDD) arasında geçiş yapabilirsiniz. Ya da bir ultra SSD 'ye geçiş yapamazsınız, yeni bir tane dağıtmanız gerekir.
+Azure yönetilen disklerinin dört disk türü vardır: Azure Ultra SSDs (Önizleme), Premium SSD, standart SSD ve standart HDD. Performans gereksinimlerinize göre üç GA disk türü (Premium SSD, standart SSD ve standart HDD) arasında geçiş yapabilirsiniz. Ya da bir ultra SSD 'ye geçiş yapamazsınız, yeni bir tane dağıtmanız gerekir.
 
 Bu işlev, yönetilmeyen diskler için desteklenmez. Ancak, disk türleri arasında geçiş yapabilmesi için, [yönetilmeyen bir diski yönetilen bir diske kolayca dönüştürebilirsiniz](convert-unmanaged-to-managed-disks.md) .
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Dönüştürme, sanal makinenin (VM) yeniden başlatılmasını gerektirdiğinden, önceden var olan bir bakım penceresi sırasında disk depolama alanınızı geçirmeyi zamanlamanız gerekir.
 * Diskiniz yönetilmiyorsa, depolama seçenekleri arasında geçiş yapabilmeniz [için önce onu bir yönetilen diske dönüştürün](convert-unmanaged-to-managed-disks.md) .
@@ -113,7 +113,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 Şu adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portaldaki **sanal makineler** listesinden VM 'yi seçin.
 3. VM durdurulmamışsa, VM **'ye genel bakış** bölmesinin üst kısmında **Durdur** ' u seçin ve VM 'nin durdurulmasını bekleyin.
 3. VM 'nin bölmesinde, menüden **diskler** ' i seçin.

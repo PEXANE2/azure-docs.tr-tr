@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2238f223f22ee43e7afd8b5162fb16cb16a2adf4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 92f437a175228ab75287bdbcf6da31b2786bcbd4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090749"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748720"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>Yüksek oranda kullanılabilir sanal makineler arasında yük dengeleme trafiği
 
@@ -30,7 +30,7 @@ Bu betik örneği, yüksek oranda kullanılabilir ve yük dengeli bir yapıland�
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -68,7 +68,7 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Sanal makine oluşturur. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Kaynak grubunu ve grubun içerdiği tüm kaynakları kaldırır. |
 
-Ayrıca, kendi özel yönetilen görüntünüzü kullanarak da VM 'Ler oluşturabilirsiniz. VM yapılandırmasında `Set-AzVMSourceImage` ,, ve `-VM` `-Id` `-PublisherName`yerine ve`-Offer`parametrelerinikullanın. `-Skus` `-Version`
+Ayrıca, kendi özel yönetilen görüntünüzü kullanarak da VM 'Ler oluşturabilirsiniz. `Set-AzVMSourceImage` için VM yapılandırmasında, `-PublisherName`, `-Offer`, `-Skus`ve `-Version`yerine `-Id` ve `-VM` parametrelerini kullanın.
 
 Örneğin, VM yapılandırması oluşturma şöyle olacaktır:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: b7d2e1b08653cb8023ef6a5190ab53ecc3d568a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: de394a98f78b0bdb7cdf090de5c052cc761aa92d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951516"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748602"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -25,16 +25,16 @@ Bu nasıl yapılır makalesinde şunları yapabilirsiniz:
 - Cihazı hazırlayın ve IoT Central uygulamanıza bağlayın.
 - IoT Central cihaz telemetri ve özelliklerini görüntüleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
-1. Bir [devkit cihazı](https://aka.ms/iot-devkit-purchase).
-1. **Önizleme uygulaması** şablonundan oluşturulan bir IoT Central uygulaması. [Iot Tak ve kullan uygulaması oluşturma](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)bölümündeki adımları izleyebilirsiniz.
+- Bir [devkit cihazı](https://aka.ms/iot-devkit-purchase).
+- **Önizleme uygulaması** şablonundan oluşturulan bir IoT Central uygulaması. [Iot Tak ve kullan uygulaması oluşturma](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)bölümündeki adımları izleyebilirsiniz.
 
 ## <a name="get-device-connection-details"></a>Cihaz bağlantısı ayrıntılarını al
 
-Azure IoT Central uygulamanızda, **Yönetim** sekmesini seçin ve **cihaz bağlantısı**' nı seçin. **Kimlik kapsamını** ve **birincil anahtarı**bir yere getirin.
+Azure IoT Central uygulamanızda, **Yönetim** sekmesini seçin ve **cihaz bağlantısı**' nı seçin. **Kapsam kimliği** ve **birincil anahtarı** ( **anahtarları görüntüle** bağlantısında) bir yere göz önünde yapın. Ve **otomatik onaylama** özelliğinin etkinleştirildiğinden emin olun.
 
 ![Cihaz grubu bağlantı ayrıntıları](media/howto-connect-devkit-pnp/device-group-connection-details.png)
 
@@ -53,7 +53,7 @@ Azure IoT Central uygulamanızda, **Yönetim** sekmesini seçin ve **cihaz bağl
 
 1. Bilgisayarınızda veya tabletinizde, cihazın ekranında gösterilen WiFi ağ adına bağlanın. WiFi ağı **az** ve ardından MAC adresi ile başlar. Bu ağa bağlandığınızda Internet erişiminiz yok demektir. Bu durum beklenir ve bu ağa yalnızca cihazı yapılandırırken kısa bir süre boyunca bağlanırsınız.
 
-1. Web tarayıcınızı açın ve [http://192.168.0.1/](http://192.168.0.1/)' e gidin. Aşağıdaki Web sayfası görüntülenir:
+1. Web tarayıcınızı açın ve [http://192.168.0.1/](http://192.168.0.1/)gidin. Aşağıdaki Web sayfası görüntülenir:
 
     ![Yapılandırma Kullanıcı arabirimi](media/howto-connect-devkit-pnp/config-ui.png)
 
@@ -61,7 +61,7 @@ Azure IoT Central uygulamanızda, **Yönetim** sekmesini seçin ve **cihaz bağl
 
     - WiFi ağınızın adı (SSID).
     - WiFi ağı parolanız.
-    - Bağlantı ayrıntıları: kendiniz seçebileceğiniz **CIHAZ kimliği** ve **kimlik KAPSAMı** ve **Grup SAS birincil anahtarı** daha önce bir yere göz ınızı yapmış olursunuz.
+    - Bağlantı ayrıntıları: kendiniz seçebileceğiniz **CIHAZ kimliği** ve **Kapsam KIMLIĞI** ve **Grup SAS birincil anahtarı** daha önce bir yere göz ınızı yapmış olursunuz.
 
     > [!NOTE]
     > Şu anda IoT DevKit yalnızca 2,4 GHz Wi-Fi ' a bağlanabilir, donanım kısıtlamaları nedeniyle 5 GHz desteklenmez.
@@ -82,11 +82,11 @@ Bu adımda, Azure IoT Central uygulamanızda Telemetriyi görüntüleyebilirsini
 
 IoT Central uygulamanızda, **cihazlar** sekmesini seçin, eklediğiniz cihazı seçin. **Genel bakış** sekmesinde, devkit cihazdan Telemetriyi görebilirsiniz:
 
-   ![IoT Central cihaza genel bakış](media/howto-connect-devkit-pnp/mxchip-overview-page.png)
+![IoT Central cihaza genel bakış](media/howto-connect-devkit-pnp/mxchip-overview-page.png)
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Kodu gözden geçirmek veya değiştirmek ve derlemek için [kod örneklerine](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)gidin.
+Kodu gözden geçirmek veya değiştirmek ve derlemek için, [Mxyongaıot DevKit örnek kodu GitHub deposuna](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp)gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

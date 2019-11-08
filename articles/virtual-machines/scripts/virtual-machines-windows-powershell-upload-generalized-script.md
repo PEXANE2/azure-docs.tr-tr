@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 245a98a3e7d4e8b365f1eedd20f45daaf6e23891
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bd1be056576275194a013671cf0aae1f7855df69
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080681"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749710"
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>Bir VHD’yi Azure’a yüklemek ve yeni bir sanal makine oluşturmak için örnek betik
 
@@ -30,7 +30,7 @@ Bu betik, genelleştirilmiş bir sanal makineden yerel bir .vhd dosyasını alı
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>Örnek betik
 

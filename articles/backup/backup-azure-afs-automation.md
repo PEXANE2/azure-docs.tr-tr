@@ -1,6 +1,6 @@
 ---
 title: Azure Backup ve PowerShell ile Azure dosyalarını yedekleme ve geri yükleme
-description: Azure Backup ve PowerShell kullanarak Azure dosyalarını yedekleyin ve geri yükleyin.
+description: Bu makalede, Azure Backup hizmetini ve PowerShell 'i kullanarak Azure dosyalarını yedeklemeyi ve geri yüklemeyi öğrenin.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: bfaecc5fe9fbbd68ba0f138b7b40b2507d729635
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 491e27f85d00ce512995a63e43b9e248798e5d0f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968645"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747635"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>PowerShell ile Azure dosyalarını yedekleme ve geri yükleme
 
@@ -22,6 +22,7 @@ Bu makalede, bir [Azure Backup](backup-overview.md) kurtarma hizmetleri Kasası 
 Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
 
 > [!div class="checklist"]
+>
 > * PowerShell 'i ayarlayın ve Azure kurtarma hizmetleri sağlayıcısını kaydedin.
 > * Kurtarma Hizmetleri kasası oluşturun.
 > * Azure dosya paylaşımının yedeklemesini yapılandırın.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: fd5014de622c37950c15006c2cc4dcbbb27ef8e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2ae9a1419232cca051f7cab4e9bd8c70f885df73
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101117"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749040"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>SAP NetWeaver için Red Hat Enterprise Linux üzerinde Azure Sanal Makineler'de GlusterFS
 
@@ -98,37 +98,37 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
    4. Yönetici Kullanıcı adı, yönetici parolası veya SSH anahtarı  
       Makinede oturum açmak için kullanılabilecek yeni bir Kullanıcı oluşturulur.
    5. Alt ağ KIMLIĞI  
-      VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. Kimlik genellikle/Subscriptions/ **&lt;abonelik kimliği&gt;** /ResourceGroups/ **&lt;kaynak grubu adı&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt; gibi görünür sanal ağ adı&gt;** /Subnets/ **&lt;alt ağ&gt; adı**
+      VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle/Subscriptions/ **&lt;ABONELIK kimliği&gt;** /ResourceGroups/ **&lt;kaynak grubu adı&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;sanal ağ adı&gt;** /Subnets/ **&lt;alt ağ adı&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux 'u Azure portal aracılığıyla el ile dağıtın
 
-Önce bu küme için sanal makineleri oluşturmanız gerekir. Daha sonra, bir yük dengeleyici oluşturur ve arka uç havuzlarındaki sanal makineleri kullanırsınız.
+Önce bu küme için sanal makineleri oluşturmanız gerekir. Daha sonra, bir yük dengeleyici oluşturur ve arka uç havuzlarındaki sanal makineleri kullanırsınız. [Standart yük dengeleyiciyi](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)öneririz.  
 
 1. Kaynak Grubu oluşturma
-1. Sanal Ağ Oluştur
+1. Sanal ağ oluşturma
 1. Kullanılabilirlik kümesi oluşturma  
    En fazla güncelleştirme etki alanını ayarla
 1. Sanal makine oluştur 1  
-   En az RHEL 7 kullanın, bu örnekte Red Hat Enterprise Linux 7,4 görüntüsü<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   En az RHEL 7 kullanın, bu örnekte Red Hat Enterprise Linux 7,4 görüntüsü <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Daha önce oluşturulan kullanılabilirlik kümesini seçin  
 1. Sanal makine oluştur 2  
-   En az RHEL 7 kullanın, bu örnekte Red Hat Enterprise Linux 7,4 görüntüsü<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   En az RHEL 7 kullanın, bu örnekte Red Hat Enterprise Linux 7,4 görüntüsü <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Daha önce oluşturulan kullanılabilirlik kümesini seçin  
 1. Her iki sanal makineye de her SAP sistemi için bir veri diski ekleyin.
 
 ### <a name="configure-glusterfs"></a>GlusterFS 'yi yapılandırma
 
-Şu öğeler **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1, **[2]** için geçerlidir-yalnızca düğüm 3 için geçerlidir.
+Şu öğeler **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1, **[2]** için **geçerlidir-yalnızca** düğüm 3 için geçerlidir.
 
-1. **[A]**  Kurulum ana bilgisayar adı çözümlemesi
+1. **[A]** kurulum konak adı çözümlemesi
 
-   Bir DNS sunucusu kullanabilir veya/etc/hosts tüm düğümlerde değiştirin. Bu örnek/Etc/Hosts dosyasının nasıl kullanılacağını gösterir.
+   Bir DNS sunucusu kullanabilir veya tüm düğümlerdeki/etc/Konakları değiştirebilirsiniz. Bu örnek,/etc/hosts dosyasının nasıl kullanılacağını gösterir.
    Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   / Etc/hosts aşağıdaki satırları ekleyin. IP adresi ve ana bilgisayar adını, ortamınızla eşleşecek şekilde değiştirin.
+   /Etc/hostklasörüne aşağıdaki satırları ekleyin. IP adresini ve ana bilgisayar adını ortamınıza uyacak şekilde değiştirin
 
    <pre><code># IP addresses of the Gluster nodes
    <b>10.0.0.40 glust-0</b>

@@ -1,6 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Java için Content Moderator istemci kitaplığı | Microsoft Docs'
-description: Java için Content Moderator istemci kitaplığı ile çalışmaya başlayın.
+title: 'Hızlı başlangıç: Java için Content Moderator istemci kitaplığı'
+titleSuffix: Azure Cognitive Services
+description: Java için Azure bilişsel hizmetler Content Moderator istemci kitaplığı 'nı kullanmaya başlama hakkında bilgi edinin.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 9f31d54314c6d6bd7a7f9ae2d134c1281bfe9294
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: edc51be93ba209a1c60970e6fa1b47fca75048c6
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044086"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744446"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Hızlı başlangıç: Java için Content Moderator istemci kitaplığı
 
@@ -26,7 +27,7 @@ Java için Content Moderator istemci kitaplığını kullanarak şunları yapın
 
 [Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [Yapıt (maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [örnekleri](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Java Development Kit 'in (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) geçerli sürümü
@@ -94,7 +95,7 @@ Ardından yeni klasörde *Contentmoderatorquickstart. Java* adlı bir dosya olu�
 
 Aşağıdaki sınıflar Content Moderator Java SDK 'sının bazı önemli özelliklerini işler.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
 |[Imagedenetlemesi](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|

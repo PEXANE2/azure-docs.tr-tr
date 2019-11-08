@@ -1,33 +1,31 @@
 ---
 title: Öğretici-SQL Server veritabanlarını Azure 'a yedekleme
-description: Bu öğreticide SQL Server Azure 'a nasıl yedekleyeceğiniz açıklanmaktadır.
+description: Bu öğreticide, bir Azure VM üzerinde çalışan SQL Server bir veritabanını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 729eb0d77cee85356e359dc475f4e439b8236ebb
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 28a804a57a4113b22efd5274ad00b3a216b700aa
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736561"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747037"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Azure VM 'de SQL Server veritabanını yedekleme
-
-
 
 Bu öğreticide, bir Azure VM üzerinde çalışan SQL Server bir veritabanını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğiniz gösterilmektedir. Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Kasa oluşturun ve yapılandırın.
 > * Veritabanlarını bulun ve yedeklemeleri ayarlayın.
 > * Veritabanları için otomatik korumayı ayarlayın.
 > * Geçici yedekleme çalıştırın.
 
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SQL Server veritabanınızı yedeklemebilmeniz için aşağıdaki koşulları kontrol edin:
 
@@ -37,17 +35,16 @@ SQL Server veritabanınızı yedeklemebilmeniz için aşağıdaki koşulları ko
 4. SQL Server veritabanlarının Azure Backup için [adlandırma yönergelerine](#verify-database-naming-guidelines-for-azure-backup) uygun olarak adlandırıldığından emin olun.
 5. Veritabanı için etkinleştirilmiş başka bir yedekleme çözümünden emin olun. Bu senaryoyu ayarlamadan önce diğer tüm SQL Server yedeklemelerini devre dışı bırakın. Bir Azure VM için Azure Backup, bir çakışma olmadan VM üzerinde çalışan bir SQL Server veritabanının Azure Backup birlikte etkinleştirebilirsiniz.
 
-
 ### <a name="establish-network-connectivity"></a>Ağ bağlantısı kurma
 
 Tüm işlemler için SQL Server VM sanal makinenin Azure genel IP adreslerine bağlanması gerekir. VM işlemleri (veritabanı bulma, yedeklemeleri yapılandırma, yedeklemeleri zamanlama, kurtarma noktalarını geri yükleme vb.), genel IP adreslerine bağlantı olmadan başarısız olur. Şu seçeneklerden biriyle bağlantı kurun:
 
-- **Azure veri MERKEZI IP aralıklarına Izin ver**: İndirme sırasında [IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653) izin verin. Ağ güvenlik grubuna (NSG) erişmek için **set-AzureNetworkSecurityRule** cmdlet 'ini kullanın.
-- **Trafiği yönlendirmek için BIR http proxy sunucusu dağıtma**: Azure VM 'de bir SQL Server veritabanını yedeklerken, VM 'deki yedekleme uzantısı, yönetim komutlarını Azure Backup ve Azure depolama 'ya veri göndermek için HTTPS API 'Lerini kullanır. Yedekleme Uzantısı ayrıca kimlik doğrulaması için Azure Active Directory (Azure AD) kullanır. Bu üç hizmetin yedekleme uzantısı trafiğini HTTP proxy üzerinden yönlendirin. Uzantılar, genel internet erişimi için yapılandırılan tek bileşendir.
+* **Azure veri MERKEZI IP aralıklarına Izin ver**: Indirme sırasında [IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653) izin verin. Ağ güvenlik grubuna (NSG) erişmek için **set-AzureNetworkSecurityRule** cmdlet 'ini kullanın.
+* **Trafiği yönlendirmek için BIR http proxy sunucusu dağıtma**: Azure VM 'de bir SQL Server veritabanını YEDEKLERKEN, VM 'deki yedekleme uzantısı, yönetim komutlarını Azure Backup ve Azure depolama 'ya veri göndermek Için https API 'lerini kullanır. Yedekleme Uzantısı ayrıca kimlik doğrulaması için Azure Active Directory (Azure AD) kullanır. Bu üç hizmetin yedekleme uzantısı trafiğini HTTP proxy üzerinden yönlendirin. Uzantılar, genel internet erişimi için yapılandırılan tek bileşendir.
 
 Her seçeneğin avantajları ve dezavantajları vardır
 
-**Seçeneği** | **Üstünlü** | **Olumsuz**
+**Seçenek** | **Üstünlü** | **Olumsuz**
 --- | --- | ---
 IP aralıklarına izin ver | Ek maliyet yok. | IP adresi aralıkları zaman içinde değiştiğinden yönetilmesi karmaşıktır. <br/><br/> Yalnızca Azure Storage değil Azure 'un tamamına erişim sağlar.
 HTTP proxy kullanma   | Depolama URL 'Lerinde ara sunucuya ayrıntılı denetime izin verilir. <br/><br/> VM 'lere tek bir internet erişimi noktası. <br/><br/> Azure IP adresi değişikliklerine tabi değildir. | Proxy yazılımıyla VM çalıştırmak için ek maliyetler.
@@ -56,23 +53,22 @@ HTTP proxy kullanma   | Depolama URL 'Lerinde ara sunucuya ayrıntılı denetime
 
 Azure Backup, SQL Server veritabanı için yedekleme yapılandırdığınızda bir dizi şey yapar:
 
-- **AzureBackupWindowsWorkload** uzantısını ekler.
-- Sanal makinedeki veritabanlarını saptamak için Azure Backup **NT SERVICE\AzureWLBackupPluginSvc**hesabını oluşturur. Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir.
-- Azure Backup, veritabanı bulma/sorgulama için **NT AUTHORITY\SYSTEM** hesabını kullanır, bu nedenle bu hesabın SQL 'de genel oturum açması gerekir.
+* **AzureBackupWindowsWorkload** uzantısını ekler.
+* Sanal makinedeki veritabanlarını saptamak için Azure Backup **NT SERVICE\AzureWLBackupPluginSvc**hesabını oluşturur. Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir.
+* Azure Backup, veritabanı bulma/sorgulama için **NT AUTHORITY\SYSTEM** hesabını kullanır, bu nedenle bu hesabın SQL 'de genel oturum açması gerekir.
 
 Azure Marketi 'nden SQL Server VM oluşturmadıysanız **Usererrorsqlnosysadminmembership**hatası alabilirsiniz. Bu durum oluşursa, [Bu yönergeleri izleyin](backup-azure-sql-database.md#set-vm-permissions).
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>Azure Backup için veritabanı adlandırma yönergelerini doğrulama
 
-Veritabanı adları için aşağıdan kaçının:
+Veritabanı adları için aşağıdakilerden kaçının:
 
-  * Sondaki/önde gelen boşluklar
-  * Sondaki '! '
-  * Kapalı köşeli ayraç '] '
-  * ' F:\ ' ile başlayan veritabanı adları
+* Sondaki/önde gelen boşluklar
+* Sondaki '! '
+* Kapalı köşeli ayraç '] '
+* ' F:\ ' ile başlayan veritabanı adları
 
 Azure Tablo desteklenmeyen karakterler için diğer ad veriyoruz, ancak bunlardan kaçınıyoruz. [Daha fazla bilgi edinin](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
-
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -92,11 +88,11 @@ VM üzerinde çalışan veritabanlarını bulur.
 
     ![Yedekleme için Azure VM 'de SQL Server seçin](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-5. **Yedekleme hedefi** > ' nde,**VM 'lerde veritabanlarını bulur**, abonelikteki korumasız VM 'leri aramak için **bulmayı Başlat** ' ı seçin. Abonelikte korunmayan sanal makinelerin sayısına bağlı olarak bu işlem biraz zaman alabilir.
+5. **Yedekleme hedefi** ' nde, **VM 'lerde veritabanlarını bulur** > abonelikte korumasız VM 'Leri aramak için **bulmayı Başlat** ' ı seçin. Abonelikte korunmayan sanal makinelerin sayısına bağlı olarak bu işlem biraz zaman alabilir.
 
-   - Korumasız VM 'Ler, ad ve kaynak grubuna göre listelenmiş bulma sonrasında listede görünmelidir.
-   - Bir VM beklendiği gibi listelenmiyorsa, bir kasada zaten yedeklenmiş olup olmadığını kontrol edin.
-   - Birden çok VM aynı ada sahip olabilir, ancak bunlar farklı kaynak gruplarına ait olacaktır.
+   * Korumasız VM 'Ler, ad ve kaynak grubuna göre listelenmiş bulma sonrasında listede görünmelidir.
+   * Bir VM beklendiği gibi listelenmiyorsa, bir kasada zaten yedeklenmiş olup olmadığını kontrol edin.
+   * Birden çok VM aynı ada sahip olabilir, ancak bunlar farklı kaynak gruplarına ait olacaktır.
 
      ![VM 'lerde veritabanları için arama sırasında yedekleme bekliyor](./media/backup-azure-sql-database/discovering-sql-databases.png)
 
@@ -108,12 +104,12 @@ VM üzerinde çalışan veritabanlarını bulur.
 
 8. Azure Backup VM 'deki tüm SQL Server veritabanlarını bulur. Bulma işlemi sırasında arka planda aşağıdakiler gerçekleşir:
 
-    - Azure Backup, VM 'yi iş yükü yedeklemesi için kasaya kaydedin. Kayıtlı VM 'deki tüm veritabanları yalnızca bu kasaya yedeklenebilir.
-    - Azure Backup, **AzureBackupWindowsWorkload** uzantısını VM 'ye yüklenir. SQL veritabanında hiçbir aracı yüklü değil.
-    - Azure Backup VM üzerinde **NT Service\AzureWLBackupPluginSvc** hizmet hesabını oluşturur.
-      - Tüm yedekleme ve geri yükleme işlemleri hizmet hesabını kullanır.
-      - **NT Service\AzureWLBackupPluginSvc** , SQL sysadmin izinlerine sahip olmalıdır. Azure Marketi 'nde oluşturulan tüm SQL Server VM 'Ler, **Sqliaasextenma** yüklenmiş olarak gelir. **AzureBackupWindowsWorkload** uzantısı, gerekli izinleri otomatik olarak almak Için **Sqliaasexten** kullanır.
-    - VM 'yi Market 'ten oluşturmadıysanız, sanal makinede **Sqliaasexten,** yüklü değildir ve bulma Işlemi **Usererrorsqlnosysadminmembership**hata iletisiyle başarısız olur. Bu sorunu gidermeye yönelik [yönergeleri](backup-azure-sql-database.md#set-vm-permissions) izleyin.
+    * Azure Backup, VM 'yi iş yükü yedeklemesi için kasaya kaydedin. Kayıtlı VM 'deki tüm veritabanları yalnızca bu kasaya yedeklenebilir.
+    * Azure Backup, **AzureBackupWindowsWorkload** uzantısını VM 'ye yüklenir. SQL veritabanında hiçbir aracı yüklü değil.
+    * Azure Backup VM üzerinde **NT Service\AzureWLBackupPluginSvc** hizmet hesabını oluşturur.
+      * Tüm yedekleme ve geri yükleme işlemleri hizmet hesabını kullanır.
+      * **NT Service\AzureWLBackupPluginSvc** , SQL sysadmin izinlerine sahip olmalıdır. Azure Marketi 'nde oluşturulan tüm SQL Server VM 'Ler, **Sqliaasextenma** yüklenmiş olarak gelir. **AzureBackupWindowsWorkload** uzantısı, gerekli izinleri otomatik olarak almak Için **Sqliaasexten** kullanır.
+    * VM 'yi Market 'ten oluşturmadıysanız, sanal makinede **Sqliaasexten,** yüklü değildir ve bulma Işlemi **Usererrorsqlnosysadminmembership**hata iletisiyle başarısız olur. Bu sorunu gidermeye yönelik [yönergeleri](backup-azure-sql-database.md#set-vm-permissions) izleyin.
 
         ![VM ve veritabanını seçin](./media/backup-azure-sql-database/registration-errors.png)
 
@@ -121,7 +117,7 @@ VM üzerinde çalışan veritabanlarını bulur.
 
 Yedeklemeyi şu şekilde yapılandırın:
 
-1. **Yedekleme hedefi** ' nde **yedeklemeyi Yapılandır**' ı seçin.
+1. **Yedekleme hedefi**' nde **yedeklemeyi Yapılandır**' ı seçin.
 
    ![Yedeklemeyi Yapılandır ' ı seçin](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
@@ -135,8 +131,7 @@ Yedeklemeyi şu şekilde yapılandırın:
 
    Yedekleme yüklerini iyileştirmek için Azure Backup bir yedekleme işinde en fazla veritabanı sayısını 50 olarak ayarlar.
 
-    
-     * Alternatif olarak, otomatik koruma sütunundaki ilgili açılan menüde **bulunan** seçeneğini belirleyerek tüm örnek veya Always on kullanılabilirlik grubu üzerinde otomatik korumayı etkinleştirebilirsiniz. Otomatik koruma özelliği yalnızca tek bir go içindeki tüm mevcut veritabanlarında koruma olanağı sağlar, ancak Ayrıca bu örneğe veya gelecekte kullanılabilirlik grubuna eklenecek yeni veritabanlarını otomatik olarak korur.  
+     * Alternatif olarak **, otomatik koruma sütunundaki ilgili** açılan menüde **bulunan** seçeneğini belirleyerek tüm örnek veya Always on kullanılabilirlik grubu üzerinde otomatik korumayı etkinleştirebilirsiniz. Otomatik koruma özelliği yalnızca tek bir go içindeki tüm mevcut veritabanlarında koruma olanağı sağlar, ancak Ayrıca bu örneğe veya gelecekte kullanılabilirlik grubuna eklenecek yeni veritabanlarını otomatik olarak korur.  
 
 4. **Tamam** ' a tıklayarak **yedekleme ilkesi** dikey penceresini açın.
 
@@ -144,9 +139,9 @@ Yedeklemeyi şu şekilde yapılandırın:
 
 5. **Yedekleme Ilkesini seçin**bölümünde bir ilke seçin ve ardından **Tamam**' a tıklayın.
 
-   - Varsayılan ilkeyi seçin: HourlyLogBackup.
-   - Daha önce SQL için oluşturulmuş mevcut bir yedekleme ilkesi seçin.
-   - RPO ve bekletme aralığınızı temel alarak yeni bir ilke tanımlayın.
+   * Varsayılan ilkeyi seçin: HourlyLogBackup.
+   * Daha önce SQL için oluşturulmuş mevcut bir yedekleme ilkesi seçin.
+   * RPO ve bekletme aralığınızı temel alarak yeni bir ilke tanımlayın.
 
      ![Yedekleme ilkesi seçin](./media/backup-azure-sql-database/select-backup-policy.png)
 
@@ -162,49 +157,49 @@ Yedeklemeyi şu şekilde yapılandırın:
 
 Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle korunduğunu tanımlar.
 
-- Kasa düzeyinde bir ilke oluşturulur.
-- Birden çok kasa aynı yedekleme ilkesini kullanabilir, ancak yedekleme ilkesini her kasaya uygulamanız gerekir.
-- Bir yedekleme ilkesi oluşturduğunuzda, varsayılan olarak günlük tam yedekleme varsayılandır.
-- Değişiklik yedeklemesi ekleyebilirsiniz, ancak yalnızca tam yedeklemeleri haftalık olarak gerçekleşecek şekilde yapılandırabilirsiniz.
-- Farklı yedekleme ilkesi türleri [hakkında bilgi edinin](backup-architecture.md#sql-server-backup-types) .
+* Kasa düzeyinde bir ilke oluşturulur.
+* Birden çok kasa aynı yedekleme ilkesini kullanabilir, ancak yedekleme ilkesini her kasaya uygulamanız gerekir.
+* Bir yedekleme ilkesi oluşturduğunuzda, varsayılan olarak günlük tam yedekleme varsayılandır.
+* Değişiklik yedeklemesi ekleyebilirsiniz, ancak yalnızca tam yedeklemeleri haftalık olarak gerçekleşecek şekilde yapılandırabilirsiniz.
+* Farklı yedekleme ilkesi türleri [hakkında bilgi edinin](backup-architecture.md#sql-server-backup-types) .
 
 Bir yedekleme ilkesi oluşturmak için:
 
-1. Kasada, **yedekleme ilkeleri** > **Ekle**' ye tıklayın.
-2. **Ekle** menüsünde, **Azure VM 'de SQL Server**' ye tıklayın. İlke türünü tanımlar.
+1. Kasada, **ekle** > **yedekleme ilkeleri** ' ne tıklayın.
+2. **Ekle** menüsünde, ilke türünü tanımlamak IÇIN **Azure VM 'de SQL Server** ' a tıklayın.
 
    ![Yeni yedekleme ilkesi için bir ilke türü seçin](./media/backup-azure-sql-database/policy-type-details.png)
 
 3. **İlke adı**alanına yeni ilke için bir ad girin.
 4. **Tam yedekleme ilkesinde**, bir **yedekleme sıklığı**seçin, **günlük** veya **haftalık**' ı seçin.
 
-   - **Günlük**için, yedekleme işinin başladığı saat ve saat dilimini seçin.
-   - **Tam yedekleme** seçeneğini kapatamıyoruz, tam yedekleme çalıştırmanız gerekir.
-   - İlkeyi görüntülemek için **tam yedekleme** ' ye tıklayın.
-   - Günlük tam yedeklemeler için fark yedeklemeleri oluşturamazsınız.
-   - **Haftalık**olarak, yedekleme işinin başladığı hafta, saat ve saat diliminin gününü seçin.
+   * **Günlük**için, yedekleme işinin başladığı saat ve saat dilimini seçin.
+   * **Tam yedekleme** seçeneğini kapatamıyoruz, tam yedekleme çalıştırmanız gerekir.
+   * İlkeyi görüntülemek için **tam yedekleme** ' ye tıklayın.
+   * Günlük tam yedeklemeler için fark yedeklemeleri oluşturamazsınız.
+   * **Haftalık**olarak, yedekleme işinin başladığı hafta, saat ve saat diliminin gününü seçin.
 
      ![Yeni yedekleme ilkesi alanları](./media/backup-azure-sql-database/full-backup-policy.png)  
 
 5. **Bekletme aralığı**için varsayılan olarak tüm seçenekler seçilidir. Kullanmak istemediğiniz istenmeyen bekletme aralığı sınırlarını temizleyin ve kullanılacak aralıkları ayarlayın.
 
-    - Herhangi bir yedekleme türü için en düşük saklama süresi (tam/değişiklik/günlük) 7 gündür.
-    - Kurtarma noktaları, bekletme aralığına göre bekletme için etiketlenir. Örneğin, günlük tam yedekleme seçerseniz, her gün yalnızca bir tam yedekleme tetiklenir.
-    - Belirli bir günün yedeklemesi, haftalık bekletme aralığına ve haftalık saklama ayarına göre etiketlenebilir ve korunur.
-    - Aylık ve yıllık bekletme aralıkları benzer bir şekilde davranır.
+    * Herhangi bir yedekleme türü için en düşük saklama süresi (tam/değişiklik/günlük) yedi gündür.
+    * Kurtarma noktaları, bekletme aralığına göre bekletme için etiketlenir. Örneğin, günlük tam yedekleme seçerseniz, her gün yalnızca bir tam yedekleme tetiklenir.
+    * Belirli bir günün yedeklemesi, haftalık bekletme aralığına ve haftalık saklama ayarına göre etiketlenebilir ve korunur.
+    * Aylık ve yıllık bekletme aralıkları benzer bir şekilde davranır.
 
    ![Bekletme aralığı aralığı ayarları](./media/backup-azure-sql-database/retention-range-interval.png)
 
 6. **Tam yedekleme ilkesi** menüsünde, ayarları kabul etmek için **Tamam** ' ı seçin.
 7. Bir değişiklik yedekleme ilkesi eklemek için, **fark yedeklemesi**' ni seçin.
 
-   ![Bekletme aralığı aralığı ayarları](./media/backup-azure-sql-database/retention-range-interval.png)
-   ![, fark yedekleme ilkesi menüsünü açın](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
+   ![saklama aralığı aralığı ayarları](./media/backup-azure-sql-database/retention-range-interval.png)
+   ![fark yedekleme ilkesi menüsünü açın](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
 8. **Değişiklik yedekleme ilkesinde**, sıklık ve bekletme denetimlerini açmak için **Etkinleştir** ' i seçin.
 
-    - En çok, her gün bir değişiklik yedeklemesi tetikleyebilirsiniz.
-    - Değişiklik yedeklemeleri, en fazla 180 gün boyunca korunabilir. Daha uzun bekletme yapmanız gerekiyorsa tam yedeklemeler kullanmanız gerekir.
+    * En çok, her gün bir değişiklik yedeklemesi tetikleyebilirsiniz.
+    * Değişiklik yedeklemeleri, en fazla 180 gün boyunca korunabilir. Daha uzun bekletme yapmanız gerekiyorsa tam yedeklemeler kullanmanız gerekir.
 
 9. İlkeyi kaydetmek ve ana **yedekleme ilkesi** menüsüne dönmek için **Tamam ' ı** seçin.
 
@@ -215,8 +210,8 @@ Bir yedekleme ilkesi oluşturmak için:
     ![Günlük yedekleme ilkesini düzenleme](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
 13. **Yedekleme ilkesi** menüsünde, **SQL Backup sıkıştırmasını**etkinleştirilip etkinleştirilmeyeceğini seçin.
-    - Sıkıştırma varsayılan olarak devre dışıdır.
-    - Arka uçta Azure Backup SQL yerel yedekleme sıkıştırmasını kullanır.
+    * Sıkıştırma varsayılan olarak devre dışıdır.
+    * Arka uçta Azure Backup SQL yerel yedekleme sıkıştırmasını kullanır.
 
 14. Yedekleme ilkesinde yapılan düzenlemeleri tamamladıktan sonra **Tamam**' ı seçin.
 
@@ -229,12 +224,12 @@ Bir yedekleme ilkesi oluşturmak için:
 5. Yedeklemeyi başlatmak için Tamam ' ı seçin.
 6. Kurtarma Hizmetleri kasanıza gidip "yedekleme Işleri" seçeneğini belirleyerek yedekleme işini izleyin.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure portalını kullanarak şu işlemleri gerçekleştirdiniz:
+Bu öğreticide, Azure portalı kullanarak şu işlemleri gerçekleştirdiniz:
 
 > [!div class="checklist"]
+>
 > * Kasa oluşturun ve yapılandırın.
 > * Veritabanlarını bulun ve yedeklemeleri ayarlayın.
 > * Veritabanları için otomatik korumayı ayarlayın.
@@ -244,5 +239,3 @@ Bir Azure sanal makinesini diskten geri yüklemek için sonraki öğreticiye dev
 
 > [!div class="nextstepaction"]
 > [Azure VM 'lerinde SQL Server veritabanlarını geri yükleme](./restore-sql-database-azure-vm.md)
- 
-

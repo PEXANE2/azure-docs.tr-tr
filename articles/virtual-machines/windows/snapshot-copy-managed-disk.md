@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 76110fa04441540875e65c8bc056fc21555c5db6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 74ef55fe9a0a6603bd43d68b6b8557dce1bca921
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102273"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749136"
 ---
 # <a name="create-a-snapshot"></a>Anlık görüntü oluşturma
 
@@ -29,21 +29,21 @@ Yeni bir VM oluşturmak için anlık görüntüyü kullanacaksanız, devam eden 
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol menüden **kaynak oluştur**' u seçin ve ardından **anlık görüntü**' i arayıp seçin.
 3. **Anlık görüntü** penceresinde **Oluştur**' u seçin. **Anlık görüntü oluştur** penceresi görüntülenir.
 4. Anlık görüntü için bir **ad** girin.
 5. Mevcut bir kaynak grubunu seçin veya yeni bir [kaynak grubu](../../azure-resource-manager/resource-group-overview.md#resource-groups) adı girin. 
 6. Azure veri merkezi **Konumu** seçin.  
 7. **Kaynak disk**için, anlık görüntü yapılacak yönetilen diski seçin.
-8. Anlık görüntüyü depolamak için kullanılacak **hesap türünü** seçin. Anlık görüntünün yüksek performanslı bir diskte depolanması gerekmiyorsa **Standard_HDD**' ı seçin.
-9. **Oluştur**’u seçin.
+8. Anlık görüntüyü depolamak için kullanılacak **hesap türünü** seçin. Anlık görüntünün yüksek performanslı bir diskte depolanması gerekmiyorsa **Standard_HDD**' yi seçin.
+9. **Oluştur**'u seçin.
 
 ## <a name="use-powershell"></a>PowerShell kullanma
 
 Aşağıdaki adımlarda, [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) cmdlet 'INI kullanarak VHD diskinin nasıl kopyalanacağı, anlık görüntü yapılandırması oluşturulması ve diskin anlık görüntüsünü alma işlemleri gösterilmektedir. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 1. Bazı parametreleri ayarla: 
 
@@ -72,7 +72,7 @@ Aşağıdaki adımlarda, [New-AzSnapshot](https://docs.microsoft.com/powershell/
    ```
    
    > [!NOTE]
-   > Anlık görüntüsünü bölge dayanıklı depolamada depolamak istiyorsanız, [kullanılabilirlik alanlarını](../../availability-zones/az-overview.md) destekleyen bir bölgede oluşturun ve `-SkuName Standard_ZRS` parametresini ekleyin.   
+   > Anlık görüntüsünü bölge dayanıklı depolamada depolamak isterseniz, [kullanılabilirlik alanlarını](../../availability-zones/az-overview.md) destekleyen bir bölgede oluşturun ve `-SkuName Standard_ZRS` parametresini ekleyin.   
    
 4. Anlık görüntüyü al:
 

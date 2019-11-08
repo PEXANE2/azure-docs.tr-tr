@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
-ms.translationtype: MT
+ms.openlocfilehash: 3b616ac76d2b7fca0d83db2b17b0978bbb249e45
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032669"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742713"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
@@ -25,7 +25,7 @@ API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmalar
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-Metin analizi farklı şeyler anlamına gelebilir, ancak bilişsel hizmetler 'de Metin Analizi API'si, aşağıda açıklandığı gibi dört tür analiz sağlar. Bu özellikleri [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)veya [.net](quickstarts/csharp.md), [Python](quickstarts/python-sdk.md), [Node. js](quickstarts/nodejs-sdk.md), [Go](quickstarts/go-sdk.md)veya [Ruby](quickstarts/ruby-sdk.md)için bir istemci kitaplığı ile kullanabilirsiniz.
+Metin analizi farklı şeyler anlamına gelebilir, ancak bilişsel hizmetler 'de Metin Analizi API'si, aşağıda açıklandığı gibi dört tür analiz sağlar. Bu özellikleri [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)veya [istemci kitaplığıyla](quickstarts/text-analytics-sdk.md)birlikte kullanabilirsiniz.
 
 ## <a name="sentiment-analysis"></a>Duygu Analizi
 Olumlu veya olumsuz yaklaşım hakkında ipuçları için ham metni analiz ederek hangi müşterilerin markanızı veya konuyu düşündüğünü öğrenmek için yaklaşım [analizini](how-tos/text-analytics-how-to-sentiment-analysis.md) kullanın. API, her belge için 0 ile 1 arasında bir yaklaşım puanı döndürür ve 1 en pozitif değerdir.<br /> Analiz modelleri, Microsoft tarafından sağlanan geniş kapsamlı gövde metinleri ve doğal dil teknolojileri kullanılarak önceden eğitilmiştir. API, [seçili dillerde](text-analytics-supported-languages.md) sağladığınız ham metni analiz edip puanlayabilir ve sonuçları doğrudan çağrıyı yapan uygulamaya döndürebilir.
@@ -83,9 +83,9 @@ Bu bölüm, daha kolay bulunmasını sağlama amacıyla başka bir makaleye taş
 
 Tüm Metin Analizi API'si uç noktaları ham metin verisi kabul eder. Geçerli sınır, her belge için 5.120 karakterdir; daha büyük belgeleri analiz etmeniz gerekiyorsa, bunları daha küçük parçalara ayırın.
 
-| Sınır | Value |
+| Sınır | Değer |
 |------------------------|---------------|
-| Tek belge için maksimum boyut | tarafından [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)ölçülen 5.120 karakter. |
+| Tek belge için maksimum boyut | [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)ölçülen 5.120 karakter. |
 | İsteğin tamamının maksimum boyutu | 1 MB |
 | Bir istekte bulunabilecek maksimum belge sayısı | 1000 belge |
 
@@ -104,13 +104,13 @@ Oran sınırınız fiyatlandırma katmanınızda farklılık gösterecektir.
 
 ## <a name="unicode-encoding"></a>Unicode kodlama
 
-Metin Analizi API'si, metin gösterimi ve karakter sayısı hesaplamaları için Unicode kodlamasını kullanır. İstekler UTF-8 ve UTF-16 olarak gönderilebilir, karakter sayısında fark olmayacaktır. Karakter uzunluğu için Unicode kod noktaları buluşsal değer olarak kullanılır ve metin analizi veri sınırları için eşdeğer kabul edilir. Karakter sayısını almak [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) için kullanırsanız, veri boyutunu ölçmek için kullandığımız yöntemi de kullanıyorsunuz.
+Metin Analizi API'si, metin gösterimi ve karakter sayısı hesaplamaları için Unicode kodlamasını kullanır. İstekler UTF-8 ve UTF-16 olarak gönderilebilir, karakter sayısında fark olmayacaktır. Karakter uzunluğu için Unicode kod noktaları buluşsal değer olarak kullanılır ve metin analizi veri sınırları için eşdeğer kabul edilir. Karakter sayısını almak için [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) kullanıyorsanız, veri boyutunu ölçmek için kullandığımız yöntemi de kullanıyorsunuz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 + Uygulamalarınız için bir anahtar ve uç nokta almak üzere Metin Analizi için [bir Azure kaynağı oluşturun](../cognitive-services-apis-create-account.md) .
 
-+ [Hızlı Başlangıç](quickstarts/csharp.md), C# dilinde yazılan REST API çağrılarına ilişkin bir adım adım kılavuzdur. Minimum kodla metin göndermeyi, analiz seçmeyi ve sonuçları görüntülemeyi öğrenin. Tercih ederseniz, bunun yerine [Python hızlı](quickstarts/python.md) başlangıcı ile başlayabilirsiniz.
++ [Hızlı Başlangıç](quickstarts/text-analytics-sdk.md), C# dilinde yazılan REST API çağrılarına ilişkin bir adım adım kılavuzdur. Minimum kodla metin göndermeyi, analiz seçmeyi ve sonuçları görüntülemeyi öğrenin. Tercih ederseniz, bunun yerine [Python hızlı](quickstarts/python.md) başlangıcı ile başlayabilirsiniz.
 
 + Yeni yayınlar ve özellikler hakkında bilgi edinmek için [Metin Analizi API'si](whats-new.md) yenilikleri inceleyin.
 

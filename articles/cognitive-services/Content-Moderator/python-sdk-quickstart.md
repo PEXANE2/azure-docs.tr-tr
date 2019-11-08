@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Python için Content Moderator istemci kitaplığı | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Python için Content Moderator istemci kitaplığı ile çalışmaya başlayın.
+description: Python için istemci kitaplığı Content Moderator Azure bilişsel hizmetler 'i kullanmaya nasıl başlaleyeceğinizi öğrenin.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 28c70e7d226e8f4b2458234e1f14754cdbb1825c
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3978b4ec302bf4dd2390f2390c967ca6e12e67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044042"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744397"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Hızlı başlangıç: Python için Content Moderator istemci kitaplığı
 
@@ -29,9 +29,9 @@ Python için Content Moderator istemci kitaplığını şu şekilde kullanın:
 * [Özel görüntü listesi kullanma](#use-a-custom-image-list)
 * [İnceleme oluştur](#create-a-review)
 
-[Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [paket (pıy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [örnek](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [paketi (pipy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Python 3. x](https://www.python.org/)
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 Aşağıdaki sınıflar, Content Moderator Python SDK 'sının bazı önemli özelliklerini işler.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
 |[Imagemoderationoperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
@@ -101,7 +101,7 @@ Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızl
 
 ## <a name="moderate-text"></a>Orta metin
 
-Aşağıdaki kod, bir metin gövdesini çözümlemek ve sonuçları konsola yazdırmak için bir Content Moderator istemcisi kullanır. İlk olarak, projenizin kökünde bir **text_files/** klasörü oluşturun ve bir *content_moderator_text_moderation. txt* dosyası ekleyin. Bu dosyaya kendi metninizi ekleyin veya aşağıdaki örnek metni kullanın:
+Aşağıdaki kod, bir metin gövdesini çözümlemek ve sonuçları konsola yazdırmak için bir Content Moderator istemcisi kullanır. İlk olarak, projenizin kökünde bir **text_files/** klasör oluşturun ve bir *content_moderator_text_moderation. txt* dosyası ekleyin. Bu dosyaya kendi metninizi ekleyin veya aşağıdaki örnek metni kullanın:
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -242,7 +242,7 @@ Aşağıdaki kod, tüm görüntülerinizi listeye ekler.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_add)]
 
-**Add_images** Helper işlevini betiğiniz başka bir yerde tanımlayın.
+**Add_images** yardımcı işlevini betiğiniz başka bir yerde tanımlayın.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_addhelper)]
 
@@ -335,7 +335,7 @@ Bu senaryoda bir geri çağırma uç noktası kullandıysanız, bu biçimde bir 
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı hızlı başlangıç dosyanızda `python` komutuyla çalıştırın.
+Uygulamayı hızlı başlangıç dosyanızdaki `python` komutuyla çalıştırın.
 
 ```console
 python quickstart-file.py

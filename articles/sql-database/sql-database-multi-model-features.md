@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: 7156b9923c9cb98ae3dde143c98eb32a6eb11a9c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.openlocfilehash: 0d59db65e940cab12dccaeeacc9083eb7fbba20e
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687737"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795758"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL veritabanı 'nın çok modelli özellikleri
 
@@ -29,7 +29,7 @@ Aşağıdaki durumlarda Azure SQL veritabanı 'nın birden çok modelli yetenekl
 - NoSQL modellerine daha iyi uyan bazı bilgi veya yapılar vardır ve ayrı NoSQL veritabanı kullanmak istemezsiniz.
 - Verilerinizin çoğunluğu ilişkisel model için uygundur ve NoSQL stilinde verilerinizin bazı parçalarını modelleyebilirsiniz.
 - Hem ilişkisel hem de NoSQL verilerini sorgulamak ve analiz etmek için zengin Transact-SQL dilinden yararlanmak ve bunu SQL dilini kullanan çeşitli araçlar ve uygulamalarla bütünleştirmek istiyorsunuz.
-- NoSQL veri yapısı analitik veya işlemesinin performansını artırmak üzere [bellek içi teknolojiler](sql-database-in-memory.md) gibi veritabanı özelliklerini uygulamak, verilerin kopyasını oluşturmak için [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) veya [okunabilir çoğaltmalar](sql-database-read-scale-out.md) kullanın diğer bir deyişle, birincil veritabanından bazı analitik iş yüklerinin yükünü devretmek.
+- NoSQL Veri yapılarınızın analitik veya işlemesinin performansını artırmak üzere [bellek içi teknolojiler](sql-database-in-memory.md) gibi veritabanı özelliklerini uygulamak, verilerinizin kopyasını oluşturmak için [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) veya [okunabilir çoğaltmalar](sql-database-read-scale-out.md) kullanın diğer bir deyişle, birincil veritabanından bazı analitik iş yüklerinin yükünü devretmek.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -38,7 +38,7 @@ Azure SQL aşağıdaki çok modelli özellikleri sağlar:
 - [JSON özellikleri](#json-features) , JSON belgelerini tablolara yerleştirmeniz, ILIŞKISEL verileri JSON belgelerine dönüştürebilmeniz ve tam tersi de sağlar. Sorguları iyileştirmek için JSON işlevleriyle geliştirilmiş standart Transact-SQL dilini kullanabilir ve kümelenmemiş dizinler, columnstore dizinleri ya da bellek için iyileştirilmiş tablolar kullanabilirsiniz.
 - [Uzamsal Özellikler](#spatial-features) , coğrafi ve geometrik verileri depolamanıza, uzamsal dizinleri kullanarak dizinlemenize ve uzamsal sorgular kullanarak verileri almanıza olanak sağlar.
 - XML [özellikleri](#xml-features) , veritabanınıza XML verilerini depolayıp DIZINLERINIZI ve XML verileriyle çalışmak Için yerel XQuery/XPath işlemlerini kullanmanızı sağlar. Azure SQL veritabanı, XML verilerini işleyen özelleştirilmiş yerleşik XML sorgu motoruna sahiptir.
-- Anahtar-değer çiftleri, iki sütunlu tablolar olarak yerel olarak modellendirildiğinden, anahtar- [değer çiftleri](#key-value-pairs) özel özellikler olarak açıkça desteklenmez.
+- Anahtar-değer çiftleri, iki sütunlu tablolar olarak yerel olarak modellendirildiğinden, [anahtar-değer çiftleri](#key-value-pairs) özel özellikler olarak açıkça desteklenmez.
 
   > [!Note]
   > Veritabanında depoladığınız tüm verilere erişmek için aynı Transact-SQL sorgusunda JSON yol ifadesini, XQuery/XPath ifadelerini, uzamsal işlevleri ve Graph-Query ifadelerini de kullanabilirsiniz. Ayrıca, Transact-SQL sorgularını yürüteerişebilen herhangi bir araç veya programlama dili, çok modelli verilere erişmek için bu sorgu arabirimini de kullanabilir. Bu, farklı veri modelleri için özelleştirilmiş API sağlayan [Azure Cosmos DB](/azure/cosmos-db/) gibi çok modelli veritabanlarıyla karşılaştırıldığında önemli farktır.
@@ -68,13 +68,13 @@ Bir grafik veritabanının elde edilebileceği, ilişkisel bir veritabanı kulla
 
 Azure SQL veritabanı, JavaScript Nesne Gösterimi [(JSON)](https://www.json.org/) biçiminde temsil edilen verileri ayrıştırabilmenizi ve sorgulamanızı ve ILIŞKISEL verilerinizi JSON metni olarak dışarı aktarmanızı sağlar.
 
-JSON, Modern Web ve mobil uygulamalarda veri alışverişi için kullanılan popüler bir veri biçimidir. JSON, yarı yapılandırılmış verileri günlük dosyalarında veya [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)gibi NoSQL veritabanlarında depolamak için de kullanılır. Birçok REST Web hizmeti, JSON metni olarak biçimlendirilen sonuçları döndürür veya JSON olarak biçimlendirilen verileri kabul eder. [Azure Search](https://azure.microsoft.com/services/search/), [azure depolama](https://azure.microsoft.com/services/storage/)ve [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gibi birçok Azure HIZMETI, JSON döndüren veya kullanan REST uç noktalarına sahiptir.
+JSON, Modern Web ve mobil uygulamalarda veri alışverişi için kullanılan popüler bir veri biçimidir. JSON, yarı yapılandırılmış verileri günlük dosyalarında veya [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)gibi NoSQL veritabanlarında depolamak için de kullanılır. Birçok REST Web hizmeti, JSON metni olarak biçimlendirilen sonuçları döndürür veya JSON olarak biçimlendirilen verileri kabul eder. [Azure bilişsel arama](https://azure.microsoft.com/services/search/), [azure depolama](https://azure.microsoft.com/services/storage/)ve [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gibi birçok Azure HIZMETI, JSON döndüren veya tüketen REST uç noktalarına sahiptir.
 
 Azure SQL veritabanı, JSON verileriyle kolayca çalışmanıza ve veritabanınızı modern hizmetlerle tümleştirmenize imkan tanır. Azure SQL veritabanı, JSON verileriyle çalışmak için aşağıdaki işlevleri sağlar:
 
 ![JSON Işlevleri](./media/sql-database-json-features/image_1.png)
 
-JSON metinleriniz varsa, JSON 'dan veri ayıklayabilir veya [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)ve [ıSJSON](https://msdn.microsoft.com/library/dn921896.aspx)yerleşik işlevleri kullanılarak JSON 'ın düzgün şekilde biçimlendirildiğini doğrulayabilirsiniz. [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) IşLEVI, JSON metni içindeki değeri güncelleştirmenizi sağlar. Daha gelişmiş sorgulama ve çözümleme için, [openjson](https://msdn.microsoft.com/library/dn921885.aspx) işlevi BIR dizi JSON nesnesini bir dizi satır içine dönüştürebilir. Döndürülen sonuç kümesinde herhangi bir SQL sorgusu çalıştırılabilir. Son olarak, ilişkisel Tablolarınızda depolanan verileri JSON metni olarak biçimlendirmenize imkan tanıyan bir [for JSON](https://msdn.microsoft.com/library/dn921882.aspx) yan tümcesi vardır.
+JSON metinleriniz varsa JSON 'dan veri ayıklayabilir veya [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)ve [ıSJSON](https://msdn.microsoft.com/library/dn921896.aspx)yerleşik işlevlerini kullanarak JSON 'ın düzgün biçimlendirildiğinden emin olabilirsiniz. [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) IşLEVI, JSON metni içindeki değeri güncelleştirmenizi sağlar. Daha gelişmiş sorgulama ve çözümleme için, [openjson](https://msdn.microsoft.com/library/dn921885.aspx) işlevi BIR dizi JSON nesnesini bir dizi satır içine dönüştürebilir. Döndürülen sonuç kümesinde herhangi bir SQL sorgusu çalıştırılabilir. Son olarak, ilişkisel Tablolarınızda depolanan verileri JSON metni olarak biçimlendirmenize imkan tanıyan bir [for JSON](https://msdn.microsoft.com/library/dn921882.aspx) yan tümcesi vardır.
 
 Daha fazla bilgi için bkz. [Azure SQL veritabanı 'NDA JSON verileriyle çalışma](sql-database-json-features.md).
 [JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) , bir veritabanı altyapısı özelliği SQL Server olduğundan JSON özelliği hakkında daha fazla bilgi edinebilirsiniz.

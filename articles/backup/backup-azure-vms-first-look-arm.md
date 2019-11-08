@@ -1,18 +1,18 @@
 ---
 title: Azure Backup ile sanal makine ayarlarından bir Azure VM 'yi yedekleme
-description: Azure Backup hizmeti ile bir Azure VM 'yi nasıl yedekleyeceğinizi öğrenin
+description: Bu makalede, Azure Backup hizmetiyle tek bir Azure VM veya birden fazla Azure VM 'yi nasıl yedekleyeceğinizi öğrenin.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: cfbec94a2922995eed546d526c1f469e2ea54118
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 232c027ef60a031df53f2439586a0ae459ab67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969038"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747243"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM ayarlarından bir Azure VM 'yi yedekleme
 
@@ -35,7 +35,7 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
 
 ## <a name="back-up-from-azure-vm-settings"></a>Azure VM ayarlarından yedekleme
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Tüm hizmetler** ' e tıklayın ve filtreye, **sanal makineler**yazın ve ardından **sanal makineler**' e tıklayın.
 3. VM 'Ler listesinden yedeklemek istediğiniz VM 'yi seçin.
 4. VM menüsünde **Yedekle**' ye tıklayın.
@@ -67,7 +67,7 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
     - Sonraki zamanlanmış yedeklemenin ne zaman çalışacağını görmek için yedekleme ilkesi adına tıklayın.
 
 > [!NOTE]
-> Azure Backup hizmeti, anlık görüntüyü depolamak için **AzureBackupRG_geography_number** (örnek: AzureBackupRG_northeurope_1) ile ayrı bir kaynak grubu (VM kaynak grubu dışında) oluşturur. Bu kaynak grubundaki veriler, Azure sanal makine yedekleme ilkesinin "anlık kurtarma anlık görüntüsünü sakla" bölümünde belirtildiği gibi gün boyunca tutulur. Bu kaynak grubuna bir kilit uygulandığında yedekleme hatalara neden olabilir.<br>
+> Azure Backup hizmet, anlık görüntüyü depolamak için (örneğin: AzureBackupRG_northeurope_1) **AzureBackupRG_geography_number** , farklı bir kaynak grubu (VM kaynak grubu dışında) oluşturur. Bu kaynak grubundaki veriler, Azure sanal makine yedekleme ilkesinin "anlık kurtarma anlık görüntüsünü sakla" bölümünde belirtildiği gibi gün boyunca tutulur. Bu kaynak grubuna bir kilit uygulandığında yedekleme hatalara neden olabilir.<br>
 Bu kaynak grubu, bir kısıtlama ilkesi herhangi bir ad/etiket kısıtlamalarından dışlanmalıdır, çünkü bu durum, bir kısıtlama ilkesi üzerinde kaynak noktası koleksiyonlarının oluşturulmasını engeller.
 
 ## <a name="run-a-backup-immediately"></a>Yedeklemeyi hemen Çalıştır

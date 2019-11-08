@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: e3928d865178d0afc3d814ae0d7794f981f49d47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1c16ebe1f0b07e5ee5ef73dc3dd4781161f934b6
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079407"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749375"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Teklifi
 Yazılım güvencesi olan müşteriler için, Windows Server Azure Hibrit Avantajı, şirket içi Windows Server lisanslarınızı kullanmanıza ve Azure 'da Windows sanal makinelerini daha düşük bir maliyetle çalıştırmanıza olanak sağlar. Windows işletim sistemi ile yeni sanal makineler dağıtmak için Windows Server Azure Hibrit Avantajı kullanabilirsiniz. Bu makalede, Windows Server için Azure Hibrit Avantajı ile yeni VM 'Leri dağıtma ve var olan çalışan VM 'Leri güncelleştirme adımları ele alınarak devam edebilir. Windows Server Lisanslama ve maliyet tasarrufları için Azure Hibrit Avantajı hakkında daha fazla bilgi için, bkz. [Windows Server Lisanslama için Azure hibrit avantajı sayfası](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -35,7 +35,7 @@ Yazılım güvencesi olan müşteriler için, Windows Server Azure Hibrit Avanta
 > Klasik VM 'Ler için, yalnızca şirket içi özel görüntülerden yeni VM dağıtımı desteklenir. Bu makalede desteklenen özelliklerden faydalanmak için, önce klasik VM 'Leri Kaynak Yöneticisi modele geçirmeniz gerekir.
 >
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı kullanmanın yolları
 Windows sanal makinelerini Azure Hibrit Avantajı kullanmanın birkaç yolu vardır:
@@ -74,7 +74,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>Şablon
-Kaynak Yöneticisi şablonlarınız içinde ek bir parametre `licenseType` belirtilmesi gerekir. [Azure Resource Manager şablonları yazma](../../resource-group-authoring-templates.md) hakkında daha fazla bilgi edinebilirsiniz
+Kaynak Yöneticisi şablonlarınız içinde ek bir `licenseType` parametresi belirtilmelidir. [Azure Resource Manager şablonları yazma](../../resource-group-authoring-templates.md) hakkında daha fazla bilgi edinebilirsiniz
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -170,7 +170,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı bir sanal makine ölçek kümesi dağıtma
-Sanal Makine Ölçek Kümesi Kaynak Yöneticisi şablonlarında, virtualmachineprofile özelliği içinde `licenseType` ek bir parametre belirtilmelidir. ARM şablonu, PowerShell, Azure CLı veya REST aracılığıyla ölçek kümesi oluşturma veya güncelleştirme sırasında bunu yapabilirsiniz.
+Sanal Makine Ölçek Kümesi Kaynak Yöneticisi şablonlarında, VirtualMachineProfile özelliği içinde ek bir parametre `licenseType` belirtilmelidir. ARM şablonu, PowerShell, Azure CLı veya REST aracılığıyla ölçek kümesi oluşturma veya güncelleştirme sırasında bunu yapabilirsiniz.
 
 Aşağıdaki örnek ARM şablonunu bir Windows Server 2016 Datacenter görüntüsüyle kullanır:
 ```json

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: efbb6ccef9096ed89f6ccd16f8d3b37c9a97b278
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: de33ed80055c26870a29b4c4393a9072ec8dda5e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103223"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749482"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Bir Windows sanal makinesinden veri diski ayırma
 
@@ -31,13 +31,13 @@ Sanal makineye bağlı bir veri diskine ihtiyacınız olmadığında bunu kolayc
 
 Disk üzerinde var olan verileri yeniden kullanmak isterseniz bu verileri aynı sanal makineye veya başka birine yeniden ekleyebilirsiniz.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="detach-a-data-disk-using-powershell"></a>PowerShell kullanarak veri diskini ayırma
 
 PowerShell kullanarak bir veri diskini *etkin* bir şekilde kaldırabilirsiniz, ancak diskin VM 'den kullanımdan çıkarmadan önce hiçbir şeyin etkin bir şekilde kullanıldığından emin olun.
 
-Bu örnekte, Myresourcegroup kaynak grubundaki Myvm VM 'sinden mydisk adlı diski kaldırdık. Önce [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) cmdlet 'ini kullanarak diski kaldırırsınız. Ardından, veri diskini kaldırma işlemini gerçekleştirmek için [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) cmdlet 'ini kullanarak sanal makinenin durumunu güncelleştirin.
+Bu örnekte, **Myresourcegroup** kaynak grubundaki **myvm** VM 'sinden **mydisk** adlı diski kaldırdık. Önce [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) cmdlet 'ini kullanarak diski kaldırırsınız. Ardından, veri diskini kaldırma işlemini gerçekleştirmek için [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) cmdlet 'ini kullanarak sanal makinenin durumunu güncelleştirin.
 
 ```azurepowershell-interactive
 $VirtualMachine = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -53,7 +53,7 @@ Disk depolamada kalır, ancak artık bir sanal makineye bağlı değildir.
 2. Ayırmak istediğiniz veri diskine sahip sanal makineyi seçin ve VM 'yi serbest bırakmak için **Durdur** ' a tıklayın.
 3. Sanal makine bölmesinde, **diskler**' i seçin.
 4. **Diskler** bölmesinin üst kısmında **Düzenle**' yi seçin.
-5. **Diskler** bölmesinde, ayırmak istediğiniz veri diskinin en sağına doğru ![ayır düğmesine tıklayın resmi](./media/detach-disk/detach.png) ayır düğmesine tıklayın.
+5. **Diskler** bölmesinde, ayırmak istediğiniz veri diskinin en sağında yer alan ![ayır düğme görüntüsünü](./media/detach-disk/detach.png) ayır düğmesine tıklayın.
 5. Disk kaldırıldıktan sonra bölmenin en üstünde yer alan **Kaydet** ' e tıklayın.
 6. Sanal makine bölmesinde **genel bakış** ' a tıklayın ve ardından sanal makineyi yeniden başlatmak için bölmenin üst kısmındaki **Başlat** düğmesine tıklayın.
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: ec8250f6cdb44af3c99c1d34d1f14fbd2209aac0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f70052a62152a20f808c1e491a663d1406fbd407
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530101"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747720"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde Linkerd 'yi kurma
 
@@ -21,9 +21,9 @@ ms.locfileid: "72530101"
 Bu makalede, Linkerd 'yi nasıl yükleyeceğiniz gösterilmektedir. Linkerd `linkerd` istemci ikilisi istemci makinenize yüklenir ve Linkerd bileşenleri AKS üzerinde bir Kubernetes kümesine yüklenir.
 
 > [!NOTE]
-> Bu yönergeler, Linkerd sürümüne `stable-2.6.0` başvurur.
+> Bu yönergeler, Linkerd sürümüne `stable-2.6.0`başvurur.
 >
-> Linkerd `stable-2.6.x`, Kubernetes sürümleriyle `1.13+` çalıştırılabilir. [GitHub-Linkerd yayınlarına][linkerd-github-releases]ek kararlı ve kenar linkerd sürümlerini bulabilirsiniz.
+> Linkerd `stable-2.6.x`, Kubernetes sürümleriyle `1.13+`çalıştırılabilir. [GitHub-Linkerd yayınlarına][linkerd-github-releases]ek kararlı ve kenar linkerd sürümlerini bulabilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -118,7 +118,7 @@ linkerd-version
 Status check results are √
 ```
 
-Şimdi Linkerd bileşenlerini yüklemeye zaman atalım. AKS kümenize Linkerd bileşenlerini yüklemek için `linkerd` ve `kubectl` ikili dosyaları kullanın. @No__t_0 bir ad alanı otomatik olarak oluşturulur ve bileşenler bu ad alanına yüklenir.
+Şimdi Linkerd bileşenlerini yüklemeye zaman atalım. AKS kümenize Linkerd bileşenlerini yüklemek için `linkerd` ve `kubectl` ikili dosyaları kullanın. `linkerd` bir ad alanı otomatik olarak oluşturulur ve bileşenler bu ad alanına yüklenir.
 
 ```console
 linkerd install | kubectl apply -f -
@@ -248,7 +248,7 @@ Opening Linkerd dashboard in the default browser
 > [!WARNING]
 > Çalışan bir sistemden Linkerd silme, hizmetleriniz arasında trafik ile ilgili sorunlar oluşmasına neden olabilir. Devam etmeden önce, sisteminizin Linkerd olmadan hala düzgün şekilde çalışmaya yönelik bir sağlama gerçekleştirdiğinizden emin olun.
 
-İlk olarak, veri düzlemi proxy 'lerini kaldırmanız gerekecektir. İş yükü ad alanlarından otomatik ara sunucu ekleme [ek açıklamalarını][linkerd-automatic-proxy-injection] kaldırın ve iş yükü dağıtımlarınızı alın. İş yükleriniz artık ilişkili hiçbir veri düzlemi bileşenine sahip olmamalıdır.
+İlk olarak, veri düzlemi proxy 'lerini kaldırmanız gerekecektir. İş yükü ad alanlarından otomatik ara sunucu ekleme [ek açıklamalarını][linkerd-automatic-proxy-injection] kaldırın ve iş yükü dağıtımlarınızı kullanıma alın. İş yükleriniz artık ilişkili hiçbir veri düzlemi bileşenine sahip olmamalıdır.
 
 Son olarak, denetim düzlemi 'ni aşağıdaki gibi kaldırın:
 
