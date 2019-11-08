@@ -107,6 +107,8 @@
           href: sql-reference-data.md
         - name: Yönetilen kimlikle kimlik doğrulaması - Blob çıkışı
           href: blob-output-managed-identity.md
+        - name: Yönetilen kimlikle kimlik doğrulaması - Power BI
+          href: powerbi-output-managed-identity.md
     - name: Çözüm oluşturma
       items:
         - name: Twitter yaklaşım analizi

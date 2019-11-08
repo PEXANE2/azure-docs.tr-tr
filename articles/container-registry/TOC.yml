@@ -39,7 +39,7 @@
           href: container-registry-tutorial-deploy-update.md
 - name: Kavramlar
   items:
-    - name: Container Registry SKU’ları
+    - name: Kapsayıcı kayıt defteri SKU’ları ve sınırları
       href: container-registry-skus.md
     - name: 'Kayıt defterleri, depolar ve resimler'
       href: container-registry-concepts.md
@@ -75,8 +75,6 @@
               href: container-registry-retention-policy.md
             - name: Etiketleri ve bildirimleri otomatik olarak temizleme (önizleme)
               href: container-registry-auto-purge.md
-        - name: Klasik kayıt defterini yükseltme
-          href: container-registry-upgrade.md
         - name: ACR web kancalarını kullanma
           href: container-registry-webhook.md
         - name: Helm grafiği havuzları (önizleme)
