@@ -14,30 +14,22 @@
   items:
     - name: İstemci kitaplığı
       items:
-        - name: 'C#'
-          href: quickstarts/csharp.md
-        - name: Python
-          href: quickstarts/python-sdk.md
-        - name: Başlayın
-          href: quickstarts/go-sdk.md
-        - name: Ruby
-          href: quickstarts/ruby-sdk.md
-        - name: Node.js
-          href: quickstarts/nodejs-sdk.md
+        - name: İstemci kitaplığını kullanarak Metni analiz etme
+          href: quickstarts/text-analytics-sdk.md
     - name: REST API
       items:
-        - name: Başlayın
-          href: quickstarts/go.md
-        - name: Java
+        - name: Java'yı kullanma
           href: quickstarts/java.md
-        - name: Node.js
-          href: quickstarts/nodejs.md
-        - name: PHP
-          href: quickstarts/php.md
-        - name: Python
+        - name: Python’u kullanma
           href: quickstarts/python.md
-        - name: Ruby
-          href: quickstarts/ruby.md
+        - name: Node.js'yi kullanma
+          href: quickstarts/nodejs.md
+        - name: PHP'yi kullanma
+          href: quickstarts/php.md
+        - name: Go kullanma
+          href: quickstarts/php.md
+        - name: Ruby'yi kullanma
+          href: quickstarts/php.md
 - name: Öğreticiler
   items:
     - name: Müşteri geri bildirimini analiz etmek için Power BI’ı tümleştirme
@@ -91,7 +83,7 @@
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable'
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics?view=azure-node-latest'
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/?view=azure-node-latest'
         - name: Başlayın
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
 - name: Kaynaklar

@@ -361,7 +361,7 @@
               href: /azure/connectors/connectors-create-api-sqlazure?toc=/azure/sql-database/toc.json
             - name: Spark Bağlayıcısı kullanma
               href: sql-database-spark-connector.md
-            - name: Azure Search ile dizin
+            - name: Azure Bilişsel Arama ile dizinleme
               href: /azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers?toc=/azure/sql-database/toc.json
             - name: Zamana bağlı saklama ilkesini yapılandırma
               href: sql-database-temporal-tables-retention-policy.md

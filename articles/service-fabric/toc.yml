@@ -487,6 +487,8 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: Linux üzerinde şifreleme sertifikası ayarlama ve gizli dizileri şifreleme
                   href: service-fabric-application-secret-management-linux.md
+                - name: Gizli anahtarları KeyVaultReference ile güvenli bir şekilde depolama (önizleme)
+                  href: service-fabric-keyvault-references.md
             - name: Güvenli iletişim için ters proxy ayarlarını yapılandırma
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: Yerel kullanıcı veya sistem hesabı olarak bir hizmet başlangıcı komut dosyası çalıştırma

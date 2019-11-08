@@ -119,7 +119,7 @@
           href: search-security-trimming-for-azure-search.md
         - name: AAD kimlikleri üzerinde filtreleme
           href: search-security-trimming-for-azure-search-with-aad.md
-        - name: Şifreleme anahtarlarını yönetme (önizleme)
+        - name: Şifreleme anahtarlarını yönetme
           href: search-security-manage-encryption-keys.md
     - name: Geliştirme
       items:
@@ -253,7 +253,7 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: Belge bağlantıları
           href: cognitive-search-resources-documentation.md
-        - name: Bilgi deposu (önizleme)
+        - name: Bilgi deposu
           items:
             - name: REST ve Postman kullanarak oluşturma
               href: knowledge-store-create-rest.md
@@ -277,7 +277,7 @@
           href: query-simple-syntax.md
         - name: Tam Lucene sorgu söz dizimi
           href: query-lucene-syntax.md
-        - name: moreLikeThis (önizleme)
+        - name: moreLikeThis sorgu parametresi
           href: search-more-like-this.md
     - name: Filtreleri uygulama
       items:
