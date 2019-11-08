@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: REST API kullanarak yedekleme Işlerini yönetme'
-description: REST API kullanarak Azure Backup yedekleme ve geri yükleme işlerini yönetme
+description: Bu makalede REST API kullanarak Azure Backup yedekleme ve geri yükleme işlerini izleme ve yönetme hakkında bilgi edinin.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: b10283c2946d01101b941d53b6bf03be3a12e99e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c0ce79c68b9d9cf11ea20c2d6469f4240fb38a95
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954923"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747549"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>REST API kullanarak yedekleme ve geri yükleme işlerini izleme
 
@@ -23,7 +23,7 @@ Azure Backup hizmeti, yedekleme, geri yükleme işlemlerini tetikleme, yedekleme
 
 ## <a name="fetch-job-information-from-operations"></a>İşlemlerden Iş bilgilerini getir
 
-Yedeklemenin tetiklenmesi gibi bir işlem, her zaman bir iş kimliği döndürür. Örneğin: Bir [tetikleyici yedekleme REST API işleminin](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) son yanıtı aşağıdaki gibidir:
+Yedeklemenin tetiklenmesi gibi bir işlem, her zaman bir iş kimliği döndürür. Örneğin: bir [tetikleyici yedekleme REST API işleminin](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) son yanıtı aşağıdaki gibidir:
 
 ```http
 {
@@ -47,7 +47,7 @@ Azure VM yedekleme işi "JobId" alanı tarafından tanımlanır ve basit bir *Ge
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2017-07-01
 ```
 
-, `{jobName}` Yukarıda bahsedilen "JobId" dır. Yanıt, işin geçerli durumunu gösteren "durum" alanı ile her zaman 200 Tamam olur. "Completed" veya "Completedwithuyarılarla" olduğunda, ' Extendeınfo ' bölümü iş hakkında daha fazla ayrıntı gösterir.
+`{jobName}` yukarıda bahsedilen "JobId" dır. Yanıt, işin geçerli durumunu gösteren "durum" alanı ile her zaman 200 Tamam olur. "Completed" veya "Completedwithuyarılarla" olduğunda, ' Extendeınfo ' bölümü iş hakkında daha fazla ayrıntı gösterir.
 
 ### <a name="response"></a>Yanıt
 

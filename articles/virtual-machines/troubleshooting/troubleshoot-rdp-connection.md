@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: 0a88c1e4d357f2919635e36a223e79b0407c0b8b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d3ad0e6d88ed849074989dc36698c01209921449
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168756"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749689"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme
 Windows tabanlı Azure sanal makinenize (VM) olan Uzak Masaüstü Protokolü (RDP) bağlantısı çeşitli sebeplerle başarısız olabilir ve VM'nize erişememenize yol açabilir. Bu sorun VM'deki Uzak Masaüstü hizmetinden, ağ bağlantısından veya ana bilgisayarınızdaki Uzak Masaüstü istemcisinden kaynaklanabilir. Bu makalede, RDP bağlantısı sorunlarını gidermek için en yaygın yöntemlerin bazılarında size kılavuzluk eder. 
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayına dosya. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 <a id="quickfixrdp"></a>
 
@@ -106,16 +106,16 @@ Hala RDP sorunlarıyla karşılaşdıysanız [bir destek isteği açabilir](http
 ## <a name="troubleshoot-using-azure-powershell"></a>Azure PowerShell kullanarak sorun giderme
 Henüz yapmadıysanız, [en son Azure PowerShell yükleyip yapılandırın](/powershell/azure/overview).
 
-Aşağıdaki örnekler,, ve `myResourceGroup` `myVMAccessExtension`gibi değişkenleri `myVM`kullanır. Bu değişken adlarını ve konumlarını kendi değerlerinizle değiştirin.
+Aşağıdaki örnekler `myResourceGroup`, `myVM`ve `myVMAccessExtension`gibi değişkenleri kullanır. Bu değişken adlarını ve konumlarını kendi değerlerinizle değiştirin.
 
 > [!NOTE]
-> [Set-Azvmaccessextenma](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell cmdlet 'ini kullanarak Kullanıcı kimlik BILGILERINI ve RDP yapılandırmasını sıfırladınız. Aşağıdaki örneklerde, `myVMAccessExtension` işlemin bir parçası olarak belirttiğiniz bir addır. Daha önce VMAccessAgent ile çalıştıysanız, sanal makinenin özelliklerini denetlemek için kullanarak `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` var olan uzantının adını alabilirsiniz. Adı görüntülemek için çıktının ' Uzantılar ' bölümüne bakın.
+> [Set-Azvmaccessextenma](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell cmdlet 'ini kullanarak Kullanıcı kimlik BILGILERINI ve RDP yapılandırmasını sıfırladınız. Aşağıdaki örneklerde `myVMAccessExtension`, işlemin bir parçası olarak belirttiğiniz addır. Daha önce VMAccessAgent ile çalıştıysanız, sanal makinenin özelliklerini denetlemek için `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` kullanarak mevcut uzantının adını alabilirsiniz. Adı görüntülemek için çıktının ' Uzantılar ' bölümüne bakın.
 
 Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı deneyin. Hala bağlanamıyorsanız, bir sonraki adımı deneyin.
 
 1. **RDP bağlantınızı sıfırlayın**. Bu sorun giderme adımı, uzaktan bağlantılar devre dışı bırakıldığında veya Windows güvenlik duvarı kuralları RDP 'yi engellediği zaman RDP yapılandırmasını sıfırlar.
    
-    Aşağıdaki örnek, `myVM` `WestUS` konumunda ve adlı `myResourceGroup`kaynak grubunda adlı bir VM 'deki RDP bağlantısını sıfırlar:
+    Aşağıdaki örnek, `WestUS` konumundaki ve `myResourceGroup`adlı kaynak grubundaki `myVM` adlı bir VM 'deki RDP bağlantısını sıfırlar:
    
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
@@ -123,7 +123,7 @@ Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı d
     ```
 2. **Ağ güvenlik grubu kurallarını doğrulayın**. Bu sorun giderme adımı, RDP trafiğine izin vermek için ağ güvenlik grubunuzda bir kuralınız olduğunu doğrular. RDP için varsayılan bağlantı noktası, TCP bağlantı noktası 3389 ' dir. VM 'nizi oluşturduğunuzda RDP trafiğine izin veren bir kural otomatik olarak oluşturulamaz.
    
-    İlk olarak, ağ güvenlik grubunuzun `$rules` tüm yapılandırma verilerini değişkenine atayın. Aşağıdaki örnek, adlı `myNetworkSecurityGroup` `myResourceGroup`kaynak grubunda adlı ağ güvenlik grubu hakkında bilgi edinir:
+    İlk olarak, ağ güvenlik grubunuzun tüm yapılandırma verilerini `$rules` değişkenine atayın. Aşağıdaki örnek, `myResourceGroup`adlı kaynak grubunda `myNetworkSecurityGroup` adlı ağ güvenlik grubu hakkında bilgi edinir:
    
     ```powershell
     $rules = Get-AzNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
@@ -136,7 +136,7 @@ Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı d
     $rules.SecurityRules
     ```
    
-    Aşağıdaki örnek, RDP trafiğine izin veren geçerli bir güvenlik kuralını gösterir. `Protocol` ,`DestinationPortRange`,, Ve`Direction` doğru şekilde yapılandırıldığını görebilirsiniz: `Access`
+    Aşağıdaki örnek, RDP trafiğine izin veren geçerli bir güvenlik kuralını gösterir. `Protocol`, `DestinationPortRange`, `Access`ve `Direction` doğru şekilde yapılandırıldığını görebilirsiniz:
    
     ```powershell
     Name                     : default-allow-rdp
@@ -157,13 +157,13 @@ Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı d
     RDP trafiğine izin veren bir kuralınız yoksa [bir ağ güvenlik grubu kuralı oluşturun](../windows/nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). TCP bağlantı noktası 3389 ' ye izin verin.
 3. **Kullanıcı kimlik bilgilerini sıfırlayın**. Bu sorun giderme adımı, kimlik bilgilerini bilmiyorsanız veya unutdığınızda belirttiğiniz yerel yönetici hesabındaki parolayı sıfırlar.
    
-    İlk olarak, aşağıdaki gibi, `$cred` değişkenine kimlik bilgileri atayarak Kullanıcı adını ve yeni bir parolayı belirtin:
+    İlk olarak, `$cred` değişkenine kimlik bilgilerini aşağıdaki gibi atayarak Kullanıcı adını ve yeni parolayı belirtin:
    
     ```powershell
     $cred=Get-Credential
     ```
    
-    Şimdi, sanal makinenizin kimlik bilgilerini güncelleştirin. Aşağıdaki örnek, `myVM` `WestUS` konumunda ve adlı `myResourceGroup`kaynak grubunda adlı bir sanal makinede bulunan kimlik bilgilerini güncelleştirir:
+    Şimdi, sanal makinenizin kimlik bilgilerini güncelleştirin. Aşağıdaki örnek, `WestUS` konumundaki ve `myResourceGroup`adlı kaynak grubundaki `myVM` adlı bir VM üzerindeki kimlik bilgilerini güncelleştirir:
    
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
@@ -173,14 +173,14 @@ Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı d
     ```
 4. **Sanal makineyi yeniden başlatın**. Bu sorun giderme adımı, VM 'nin sahip olduğu temeldeki sorunları düzeltebilir.
    
-    Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda adlı VM 'yi yeniden başlatır:
+    Aşağıdaki örnek, `myResourceGroup`adlı kaynak grubunda `myVM` adlı sanal makineyi yeniden başlatır:
    
     ```powershell
     Restart-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
     ```
 5. **Sanal makineyi yeniden dağıtın**. Bu sorun giderme adımı, temel alınan platformu veya ağ sorunlarını düzeltmek için VM 'nizi Azure 'daki başka bir konağa yeniden dağıtır.
    
-    Aşağıdaki örnek, `myVM` `WestUS` konumunda ve adlı `myResourceGroup`kaynak grubunda adlı sanal makineyi yeniden dağıtır:
+    Aşağıdaki örnek, `myVM` adlı sanal makineyi `WestUS` konumunda ve `myResourceGroup`adlı kaynak grubunda yeniden dağıtır:
    
     ```powershell
     Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -238,7 +238,7 @@ VM 'nize RDP aracılığıyla bağlanmaya çalışırken belirli bir hata iletis
 * [Bir lisans sağlamak için kullanılabilir Uzak Masaüstü lisans sunucusu olmadığından uzak oturumun bağlantısı kesildi](troubleshoot-specific-rdp-errors.md#rdplicense).
 * [Uzak Masaüstü "adı" bilgisayarını bulamıyor](troubleshoot-specific-rdp-errors.md#rdpname).
 * [Bir kimlik doğrulama hatası oluştu. Yerel güvenlik yetkilisine](troubleshoot-specific-rdp-errors.md#rdpauth)ulaşılamıyor.
-* [Windows güvenlik hatası: Kimlik bilgileriniz çalışmadı](troubleshoot-specific-rdp-errors.md#wincred).
+* [Windows güvenlik hatası: kimlik bilgileriniz çalışmadı](troubleshoot-specific-rdp-errors.md#wincred).
 * [Bu bilgisayar uzak bilgisayara bağlanamıyor](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
 ## <a name="additional-resources"></a>Ek kaynaklar

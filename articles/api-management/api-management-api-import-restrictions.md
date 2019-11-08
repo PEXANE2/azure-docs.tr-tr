@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 11/06/2019
 ms.author: apimpm
-ms.openlocfilehash: 0bf52b45bc315874c58be50bccbffa49090d554d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 88ef235d47a548ce426eaa2e8a8a56fb9dcb01d2
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294349"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796028"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API içeri aktarma kısıtlamaları ve bilinen sorunlar
 
@@ -33,13 +33,15 @@ Openapı belgenizi içeri aktarırken hata alıyorsanız, önceden doğruladığ
 ### <a name="open-api-general"> </a>Genel
 
 -   Hem yol hem de sorgu üzerinde gerekli parametreler benzersiz adlara sahip olmalıdır. (Openapı 'de bir parametre adının yalnızca bir konum içinde benzersiz olması gerekir, örneğin yol, sorgu, üstbilgi. Ancak API Management ' de, işlemlerin hem yol hem de sorgu parametrelerine göre ayırt edilebilir (Openapı 'Yi desteklemez). Bu nedenle, tüm URL şablonu içinde parametre adlarının benzersiz olması gerekir.)
--   **\$ref** işaretçileri dış dosyalara başvuramaz.
+-   **\$başvuru** işaretçileri dış dosyalara başvuramaz.
 -   **x-MS-Paths** ve **x-Servers** desteklenen tek uzantılardır.
 -   Özel uzantılar İçeri aktarmada yok sayılır ve dışarı aktarma için kaydedilmez veya korunmaz.
 -   **Özyineleme** -API Management özyinelemeli olarak tanımlanan tanımları desteklemez (örneğin, kendilerine başvuran şemalar).
 -   Kaynak dosya URL 'SI (varsa) göreli sunucu URL 'Lerine uygulanır.
 -   Güvenlik tanımları yok sayılır.
 -   API işlemleri için satır içi şema tanımları desteklenmez. Şema tanımları API kapsamında tanımlanır ve API işlemleri isteği veya Yanıt kapsamları içinde başvurulabilir.
+-   Tanımlı URL parametresinin URL şablonunun bir parçası olması gerekir.
+-   Bir API tarafından döndürülen MIME türlerini **açıklayan anahtar sözcük** , desteklenmez. 
 
 ### <a name="open-api-v2"> </a>Openapı sürüm 2
 

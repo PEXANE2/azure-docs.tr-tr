@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: d515982dc2937b660de75ee723cebe39b33bec7d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/06/2019
+ms.openlocfilehash: a8deb7933bb19745bbe4c3b3a209c19c9cc712bd
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580893"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796301"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidini yükler
 
@@ -33,9 +33,9 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 * Bir Azure hesabı ve aboneliği Aboneliği olan bir Azure hesabınız yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-  * Yerel bilgisayarınızda ağ geçidini yüklemek ve yönetmek için aynı Azure hesabını kullanmanız gerekir.
+  * Azure hesabınız tek bir [Azure Active Directory (Azure AD) kiracısına veya dizine](../active-directory/fundamentals/active-directory-whatis.md#terminology)ait olmalıdır. Yerel bilgisayarınızda ağ geçidini yüklemek ve yönetmek için aynı Azure hesabını kullanmanız gerekir.
 
-    Ağ geçidi yüklemesi sırasında, ağ geçidi yüklemenizi Azure hesabınıza ve yalnızca bu hesaba bağlayan Azure hesabınızla oturum açın. Daha sonra Azure portal, ağ geçidi yüklemenizi kaydeden ve talep eden bir Azure ağ geçidi kaynağı oluşturmak için aynı Azure hesabını kullanmanız gerekir. Azure Logic Apps, şirket içi Tetikleyiciler ve Eylemler ' de şirket içi veri kaynaklarına bağlanmak için ağ geçidi kaynağını kullanır.
+  * Ağ geçidi yüklemesi sırasında, ağ geçidi yüklemenizi Azure hesabınıza ve yalnızca bu hesaba bağlayan Azure hesabınızla oturum açın. Daha sonra Azure portal, ağ geçidi yüklemenizi kaydeden ve talep eden bir Azure ağ geçidi kaynağı oluştururken aynı Azure hesabı ve Azure AD kiracısını kullanmanız gerekir. Azure Logic Apps, şirket içi Tetikleyiciler ve Eylemler ' de şirket içi veri kaynaklarına bağlanmak için ağ geçidi kaynağını kullanır.
 
     > [!NOTE]
     > Yalnızca bir ağ geçidi yüklemesini ve bir Azure Gateway kaynağını birbirlerine bağlayabilirsiniz. Aynı ağ geçidi yüklemesini birden çok Azure hesabına veya Azure Gateway kaynaklarına bağlayamazsınız. Bununla birlikte, bir Azure hesabı birden çok ağ geçidi yüklemelerine ve Azure Gateway kaynaklarına bağlanabilir. Şirket içi bir tetikleyici veya eylemde, çeşitli Azure aboneliklerinizden seçim yapabilir ve ardından ilişkili bir ağ geçidi kaynağı seçebilirsiniz.

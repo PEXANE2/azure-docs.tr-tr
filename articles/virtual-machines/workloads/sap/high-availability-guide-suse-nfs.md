@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 0e4daaa3417ce349111fbc811be36a4615058c76
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 771a20ccf1c34958308d58dafb6fb01e36bb408a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791716"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749031"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik
 
@@ -94,7 +94,7 @@ NFS sunucusu, bu NFS sunucusunu kullanan her SAP sistemi için ayrılmış bir s
 * Araştırma bağlantı noktası
   * NW1 için bağlantı noktası 61000
   * NW2 için bağlantı noktası 61001
-* Loaddengeleme kuralları
+* Loaddengeleme kuralları (temel yük dengeleyici kullanılıyorsa)
   * NW1 için 2049 TCP
   * NW1 için 2049 UDP
   * NW2 için 2049 TCP
@@ -136,51 +136,88 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
    SLES for SAP Applications 12 SP3 (BYOS) kullanılır  
    Daha önce oluşturulan kullanılabilirlik kümesini seçin  
 1. Her iki sanal makineye de her SAP sistemi için bir veri diski ekleyin.
-1. Load Balancer oluşturma (iç)  
-   1. Ön uç IP adreslerini oluşturma
-      1. NW1 için IP adresi 10.0.0.4
-         1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
-         1. Yeni ön uç IP havuzunun adını girin (örneğin, **NW1-ön uç**)
-         1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **10.0.0.4**)
-         1. Tamam 'a tıklayın
-      1. NW2 için IP adresi 10.0.0.5
-         * NW2 için yukarıdaki adımları yineleyin
-   1. Arka uç havuzlarını oluşturma
-      1. NW1 için NFS kümesinin bir parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
-         1. Yük dengeleyiciyi açın, arka uç havuzları ' nı seçin ve Ekle ' ye tıklayın
-         1. Yeni arka uç havuzunun adını girin (örneğin, **NW1-arka uç**)
-         1. Sanal makine Ekle 'ye tıklayın
-         1. Daha önce oluşturduğunuz kullanılabilirlik kümesini seçin
-         1. NFS kümesinin sanal makinelerini seçin
-         1. Tamam 'a tıklayın
-      1. NW2 için NFS kümesinin bir parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
-         * NW2 için bir arka uç havuzu oluşturmak için yukarıdaki adımları yineleyin
-   1. Sistem durumu araştırmalarını oluşturma
-      1. NW1 için bağlantı noktası 61000
-         1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
-         1. Yeni sistem durumu araştırmasının adını girin (örneğin, **NW1-HP**)
-         1. TCP as Protocol, bağlantı noktası 610**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
-         1. Tamam 'a tıklayın
-      1. NW2 için bağlantı noktası 61001
-         * NW2 için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları yineleyin
-   1. Loaddengeleme kuralları
-      1. NW1 için 2049 TCP
+1. Load Balancer oluşturun (iç). [Standart yük dengeleyiciyi](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)öneririz.  
+   1. Standart yük dengeleyici oluşturmak için aşağıdaki yönergeleri izleyin:
+      1. Ön uç IP adreslerini oluşturma
+         1. NW1 için IP adresi 10.0.0.4
+            1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
+            1. Yeni ön uç IP havuzunun adını girin (örneğin, **NW1-ön uç**)
+            1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **10.0.0.4**)
+            1. Tamam 'a tıklayın
+         1. NW2 için IP adresi 10.0.0.5
+            * NW2 için yukarıdaki adımları yineleyin
+      1. Arka uç havuzlarını oluşturma
+         1. NW1 için NFS kümesinin bir parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
+            1. Yük dengeleyiciyi açın, arka uç havuzları ' nı seçin ve Ekle ' ye tıklayın
+            1. Yeni arka uç havuzunun adını girin (örneğin, **NW1-arka uç**)
+            1. Sanal ağ seçin
+            1. Sanal makine Ekle 'ye tıklayın
+            1. NFS kümesinin sanal makinelerini ve IP adreslerini seçin.
+            1. Ekle'ye tıklayın.
+         1. NW2 için NFS kümesinin bir parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
+            * NW2 için bir arka uç havuzu oluşturmak için yukarıdaki adımları yineleyin
+      1. Sistem durumu araştırmalarını oluşturma
+         1. NW1 için bağlantı noktası 61000
+            1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
+            1. Yeni sistem durumu araştırmasının adını girin (örneğin, **NW1-HP**)
+            1. TCP as Protocol, bağlantı noktası 610**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
+            1. Tamam 'a tıklayın
+         1. NW2 için bağlantı noktası 61001
+            * NW2 için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları yineleyin
+      1. Loaddengeleme kuralları
          1. Yük dengeleyiciyi açın, Yük Dengeleme kuralları ' nı seçin ve Ekle ' ye tıklayın
-         1. Yeni yük dengeleyici kuralının adını girin (örneğin, **NW1-lb-2049**)
-         1. Daha önce oluşturduğunuz ön uç IP adresini, arka uç havuzunu ve sistem durumu araştırmasını seçin (örneğin, **NW1-ön uç**)
-         1. Protokol **TCP**'yi tut, bağlantı noktası **2049** girin
+         1. Yeni yük dengeleyici kuralının adını girin (örneğin, **NW1-lb**)
+         1. Daha önce oluşturduğunuz ön uç IP adresini, arka uç havuzunu ve sistem durumu araştırmasını seçin (örneğin, **NW1-ön uç**. **NW1-arka uç** ve **NW1-HP**)
+         1. **Ha bağlantı noktalarını**seçin.
          1. Boşta kalma zaman aşımını 30 dakikaya yükselt
          1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
          1. Tamam 'a tıklayın
-      1. NW1 için 2049 UDP
-         * NW1 için bağlantı noktası 2049 ve UDP için yukarıdaki adımları yineleyin
-      1. NW2 için 2049 TCP
-         * NW2 için bağlantı noktası 2049 ve TCP için yukarıdaki adımları yineleyin
-      1. NW2 için 2049 UDP
-         * NW2 için bağlantı noktası 2049 ve UDP için yukarıdaki adımları yineleyin
+         * NW2 için Yük Dengeleme kuralı oluşturmak için yukarıdaki adımları yineleyin
+   1. Alternatif olarak, senaryonuz temel yük dengeleyici gerektiriyorsa, şu yönergeleri izleyin:
+      1. Ön uç IP adreslerini oluşturma
+         1. NW1 için IP adresi 10.0.0.4
+            1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
+            1. Yeni ön uç IP havuzunun adını girin (örneğin, **NW1-ön uç**)
+            1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **10.0.0.4**)
+            1. Tamam 'a tıklayın
+         1. NW2 için IP adresi 10.0.0.5
+            * NW2 için yukarıdaki adımları yineleyin
+      1. Arka uç havuzlarını oluşturma
+         1. NW1 için NFS kümesinin bir parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
+            1. Yük dengeleyiciyi açın, arka uç havuzları ' nı seçin ve Ekle ' ye tıklayın
+            1. Yeni arka uç havuzunun adını girin (örneğin, **NW1-arka uç**)
+            1. Sanal makine Ekle 'ye tıklayın
+            1. Daha önce oluşturduğunuz kullanılabilirlik kümesini seçin
+            1. NFS kümesinin sanal makinelerini seçin
+            1. Tamam 'a tıklayın
+         1. NW2 için NFS kümesinin bir parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
+            * NW2 için bir arka uç havuzu oluşturmak için yukarıdaki adımları yineleyin
+      1. Sistem durumu araştırmalarını oluşturma
+         1. NW1 için bağlantı noktası 61000
+            1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
+            1. Yeni sistem durumu araştırmasının adını girin (örneğin, **NW1-HP**)
+            1. TCP as Protocol, bağlantı noktası 610**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
+            1. Tamam 'a tıklayın
+         1. NW2 için bağlantı noktası 61001
+            * NW2 için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları yineleyin
+      1. Loaddengeleme kuralları
+         1. NW1 için 2049 TCP
+            1. Yük dengeleyiciyi açın, Yük Dengeleme kuralları ' nı seçin ve Ekle ' ye tıklayın
+            1. Yeni yük dengeleyici kuralının adını girin (örneğin, **NW1-lb-2049**)
+            1. Daha önce oluşturduğunuz ön uç IP adresini, arka uç havuzunu ve sistem durumu araştırmasını seçin (örneğin, **NW1-ön uç**)
+            1. Protokol **TCP**'yi tut, bağlantı noktası **2049** girin
+            1. Boşta kalma zaman aşımını 30 dakikaya yükselt
+            1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
+            1. Tamam 'a tıklayın
+         1. NW1 için 2049 UDP
+            * NW1 için bağlantı noktası 2049 ve UDP için yukarıdaki adımları yineleyin
+         1. NW2 için 2049 TCP
+            * NW2 için bağlantı noktası 2049 ve TCP için yukarıdaki adımları yineleyin
+         1. NW2 için 2049 UDP
+            * NW2 için bağlantı noktası 2049 ve UDP için yukarıdaki adımları yineleyin
 
 > [!IMPORTANT]
-> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. TCP _Zaman damgaları** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. tcp_timestamps** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker kümesi oluşturma
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 1980ee0bdea1316f6117d9deb7d2adb9df941768
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 6566ce4b9cec9ff09666e734625f15033c85127b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162604"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749560"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum açma
 Bir Windows masaüstü bilgisayarından Uzak Masaüstü (RDP) oturumu başlatmak için Azure portalında **Bağlan** düğmesini kullanırsınız. Önce sanal makineye bağlanın ve ardından oturum açın.
@@ -33,19 +33,19 @@ Mac 'ten bir Windows VM 'sine bağlanmak için, [Microsoft Uzak Masaüstü](http
 4. Sanal makine sayfasının üst kısmında **Bağlan**' ı seçin.
 2. **Sanal makineye bağlan** sayfasında, uygun IP adresini ve bağlantı noktasını seçin. Çoğu durumda, varsayılan IP adresi ve bağlantı noktası kullanılmalıdır. **RDP dosyasını indir**'i seçin. VM 'nin tam zamanında bir ilke kümesi varsa, RDP dosyasını indirebilmeniz için **önce erişim iste düğmesini seçmeniz** gerekir. Tam zamanında ilkesi hakkında daha fazla bilgi için, bkz. [tam zamanında ilkesini kullanarak sanal makine erişimini yönetme](../../security-center/security-center-just-in-time.md).
 2. İndirilen RDP dosyasını açın ve istendiğinde **Bağlan** ' ı seçin. 
-2. `.rdp` Dosyanın bilinmeyen bir yayımcıdan olduğunu belirten bir uyarı alacaksınız. Bu beklenen bir durumdur. **Uzak Masaüstü bağlantısı** penceresinde, devam etmek için **Bağlan** ' ı seçin.
+2. `.rdp` dosyasının bilinmeyen bir yayımcıdan olduğunu belirten bir uyarı alacaksınız. Bu beklenen bir durumdur. **Uzak Masaüstü bağlantısı** penceresinde, devam etmek için **Bağlan** ' ı seçin.
    
     ![Bilinmeyen yayımcıya ilişkin uyarı ekran görüntüsü](./media/connect-logon/rdp-warn.png)
 3. **Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Sanal makinedeki bir hesabın kimlik bilgilerini girin ve ardından **Tamam**' ı seçin.
    
      **Yerel hesap**: Bu, genellikle sanal makineyi oluştururken belirttiğiniz yerel hesap Kullanıcı adı ve parolasıdır. Bu durumda, etki alanı sanal makinenin adıdır ve *vmadı*&#92;*kullanıcıadı* olarak girilir.  
    
-    **Etki alanına KATıLMıŞ VM**: VM bir etki alanına aitse, Kullanıcı adını *etkialanı*&#92;*kullanıcıadı*biçiminde girin. Hesabın ayrıca, Yöneticiler grubunda olması ya da VM’ye uzaktan erişim ayrıcalıkları verilmiş olması gerekir.
+    **Etki alanına katılmış VM**: VM bir etki alanına aitse, Kullanıcı adını *etkialanı*&#92;*kullanıcıadı*biçiminde girin. Hesabın ayrıca, Yöneticiler grubunda olması ya da VM’ye uzaktan erişim ayrıcalıkları verilmiş olması gerekir.
    
     **Etki alanı denetleyicisi**: VM bir etki alanı denetleyicisiyse, bu etki alanı için bir etki alanı yönetici hesabının kullanıcı adını ve parolasını girin.
 4. Sanal makinenin kimliğini doğrulamak için **Evet** ' i seçin ve oturum açmayı sona erdirin.
    
-   ![VM kimliğini doğrulamaya ilişkin iletiyi gösteren ekran görüntüsü](./media/connect-logon/cert-warning.png)
+   ![VM kimliğini doğrulamaya ilişkin mesajı gösteren ekran görüntüsü](./media/connect-logon/cert-warning.png)
 
 
    > [!TIP]
@@ -55,7 +55,7 @@ Mac 'ten bir Windows VM 'sine bağlanmak için, [Microsoft Uzak Masaüstü](http
 
 ## <a name="connect-to-the-virtual-machine-using-powershell"></a>PowerShell kullanarak sanal makineye bağlanma
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 PowerShell kullanıyorsanız ve Azure PowerShell modülü yüklüyse, aşağıda gösterildiği gibi `Get-AzRemoteDesktopFile` cmdlet 'ini kullanarak da bağlanabilirsiniz.
 

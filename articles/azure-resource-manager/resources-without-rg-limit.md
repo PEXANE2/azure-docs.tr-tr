@@ -4,14 +4,14 @@ description: Bir kaynak grubunda 800 taneden fazla örneğe sahip olabilir Azure
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 11/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0f9db618b69ff692350f333b8a4a4354f4980169
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: c08b80a841199ed2737f6fe8d7f2b76943c5b269
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249131"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795664"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Kaynak grubu başına 800 örneğiyle sınırlı kaynak yok
 
@@ -74,8 +74,18 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 * services
 
+## <a name="microsofteventhub"></a>Microsoft. EventHub
+
+* leriniz
+* Öznitelikleri
+
+## <a name="microsoftexperimentation"></a>Microsoft. deneme
+
+* experimentWorkspaces
+
 ## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
+* Configurationprofileatamalar
 * Guestconfigurationatamaları
 * yazılımıdır
 * softwareUpdateProfile
@@ -141,13 +151,21 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 * workspaceCollections, varsayılan olarak 800 örnek ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
 
+## <a name="microsoftrelay"></a>Microsoft. Relay
+
+* Öznitelikleri
+
 ## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
 * işlere
 
+## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
+
+* Öznitelikleri
+
 ## <a name="microsoftservicefabricmesh"></a>Microsoft. Servicefabrickafesi
 
-* uygulama
+* uygulamalar
 * Kapsayıcı grupları
 * geçidinin
 * Mamak

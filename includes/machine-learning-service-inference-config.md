@@ -2,16 +2,16 @@
 author: larryfr
 ms.service: machine-learning
 ms.topic: include
-ms.date: 07/19/2019
+ms.date: 11/06/2019
 ms.author: larryfr
-ms.openlocfilehash: 055909d51fcd1228e8eb26189ba682e09aee6a1a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: ab31d45808a8c77c53b895643eec63952201d9e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390637"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73800183"
 ---
-`inferenceconfig.json` Belgedeki girişler, [ınenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) sınıfının parametreleriyle eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
+`inferenceconfig.json` belgesindeki girdiler, [ınenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) sınıfının parametreleriyle eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
 
 | JSON varlığı | Yöntem parametresi | Açıklama |
 | ----- | ----- | ----- |
@@ -23,7 +23,7 @@ ms.locfileid: "70390637"
 | `enableGpu` | `enable_gpu` | İsteğe bağlı. Görüntüde GPU desteğinin etkinleştirilip etkinleştirilmeyeceğini belirtir. GPU görüntüsünün Azure Container Instances, Azure Machine Learning Işlem, Azure sanal makineleri ve Azure Kubernetes hizmeti gibi bir Azure hizmetinde kullanılması gerekir. Varsayılan değer false 'dur. |
 | `baseImage` | `base_image` | İsteğe bağlı. Temel görüntü olarak kullanılacak özel görüntü. Hiçbir temel görüntü sağlanmazsa, görüntü, belirtilen çalışma zamanı parametresini temel alır. |
 | `baseImageRegistry` | `base_image_registry` | İsteğe bağlı. Temel görüntüyü içeren görüntü kayıt defteri. |
-| `cudaVersion` | `cuda_version` | İsteğe bağlı. GPU desteği gerektiren görüntüler için yüklenecek CUDA sürümü. GPU görüntüsünün Azure Container Instances, Azure Machine Learning Işlem, Azure sanal makineleri ve Azure Kubernetes hizmeti gibi bir Azure hizmetinde kullanılması gerekir. Desteklenen sürümler 9,0, 9,1 ve 10,0. `enable_gpu` Ayarlanırsa, varsayılan değer 9,1 ' dir. |
+| `cudaVersion` | `cuda_version` | İsteğe bağlı. GPU desteği gerektiren görüntüler için yüklenecek CUDA sürümü. GPU görüntüsünün Azure Container Instances, Azure Machine Learning Işlem, Azure sanal makineleri ve Azure Kubernetes hizmeti gibi bir Azure hizmetinde kullanılması gerekir. Desteklenen sürümler 9,0, 9,1 ve 10,0. `enable_gpu` ayarlandıysa, varsayılan değer 9,1 ' dir. |
 | `description` | `description` | Görüntü için bir açıklama. |
 
 Aşağıdaki JSON, CLı ile kullanılacak örnek bir çıkarım yapılandırması örneğidir:

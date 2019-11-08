@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: eddfddc994482bcb6e60604703e7f306fee9c32b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 24b1c22d9badc58360b0355bb4ef89017db27f06
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574352"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796727"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' e dağıtılan modellerdeki veri kayması 'nı (Önizleme) Algıla
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -189,6 +189,8 @@ Veri kayması dağıtılan modelinizin performansını olumsuz yönde etkilediğ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Veri drkullanımı hakkında tam bir örnek için bkz. [Azure ML Data değişikliklerini Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb). Bu Jupyter Notebook, bir [Azure açık veri kümesini](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) kullanarak, hava durumunu tahmin etmek, aks 'e dağıtmak ve veri drını izlemek için bir modeli eğitmeniz gerektiğini gösterir. 
+* Veri drkullanımı hakkında tam bir örnek için bkz. [Azure ML Data değişikliklerini Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/drift-on-aks.ipynb). Bu Jupyter Notebook, bir [Azure açık veri kümesini](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) kullanarak, hava durumunu tahmin etmek, aks 'e dağıtmak ve veri drını izlemek için bir modeli eğitmeniz gerektiğini gösterir. 
+
+* Veri [kümesi izleyicilerinde](how-to-monitor-datasets.md)verileri Drın olarak algıla.
 
 * Veri, genel kullanıma yönelik olarak hareket ederken sorularınızı, yorumlarınızı veya önerilerinizi önemli ölçüde beğeneceğiz. Aşağıdaki ürün geri bildirim düğmesini kullanın! 

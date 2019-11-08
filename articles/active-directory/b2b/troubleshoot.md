@@ -4,20 +4,23 @@ description: Azure Active Directory B2B işbirliğiyle ilgili yaygın sorunlar i
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/25/2017
+tags: active-directory
 ms.author: mimart
 author: v-miegge
-manager: celestedg
+manager: dcscontentpm
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom:
+- it-pro
+- seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f91ddee8668316df69c98ed14fbcabcb06b6da82
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6449644f98280d75363f737be11f8e8b824cab36
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983392"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795193"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>B2B işbirliği Azure Active Directory sorunlarını giderme
 
@@ -43,7 +46,7 @@ Son zamanlarda bu ayarları değiştirdiyseniz veya konuk davet eden rolünü bi
 
 ## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>Davet etdiğim Kullanıcı, kullanım sırasında bir hata alıyor
 
-Sık karşılaşılan hatalar şunlardır:
+Yaygın hatalar şunlardır:
 
 ### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Davetli kullanıcının yöneticisinin kiracısında, Emaildoğrulanan kullanıcıların oluşturulmasını izin vermemiş
 
@@ -57,9 +60,9 @@ Federasyon kimlik doğrulaması kullanıyorsanız ve Kullanıcı Azure Active Di
 
 Bu sorunu çözmek için, dış kullanıcının Yöneticisi kullanıcının hesabını Azure Active Directory eşitlemelidir.
 
-## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Normalde geçerli bir\#karakter olmayan ' ' ne olur? Azure AD ile eşitleme?
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Normal olarak geçerli bir karakter olmayan '\#', Azure AD ile eşitleme nasıl yapılır?
 
-"\#", Azure AD B2B işbirliği veya dış kullanıcılar için UPN 'de ayrılmış bir karakter olduğundan, davet edilen hesap user@contoso.com user_contoso. com # ext #@fabrikam.onmicrosoft.comolur. Bu nedenle \# , Şirket içinden gelen UPN 'ler ' de Azure Portal oturum açmasına izin verilmez. 
+davet edilen hesap user@contoso.com user_contoso hale geldiği için, "\#", Azure AD B2B işbirliği veya dış kullanıcılar için UPN 'de ayrılmış bir karakterdir. com # EXT #@fabrikam.onmicrosoft.com. Bu nedenle, Şirket içinden gelen UPN \# Azure portal oturum açmasına izin verilmez. 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Dış kullanıcıları eşitlenmiş bir gruba eklerken bir hata alıyorum
 
@@ -67,7 +70,7 @@ Dış kullanıcılar, yalnızca "atanan" veya "güvenlik" gruplarına eklenebili
 
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Dış Kullanıcı kullanılacak e-posta almadı
 
-Davetli kişinin, aşağıdaki adrese izin verildiğinden emin olmak için ISS veya e-posta filtresini denetlemesi gerekir:Invites@microsoft.com
+Davetli kişinin, şu adrese izin verildiğinden emin olmak için ISS veya e-posta filtresini denetlemesi gerekir: Invites@microsoft.com
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Özel iletinin, zaman içinde davet iletilerine dahil edilmediğini fark ediyorum
 

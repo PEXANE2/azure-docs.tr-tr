@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: 49ed6eedf55a8a3c0faa2fa1ff60b9894af78285
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/06/2019
+ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580862"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796261"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps şirket içi veri kaynaklarına bağlanma
 
@@ -57,7 +57,7 @@ Azure Logic Apps, veri ağ geçidi aracılığıyla okuma ve yazma işlemlerini 
 
 * Şirket [içi veri ağ geçidini zaten yerel bir bilgisayara yüklediniz](../logic-apps/logic-apps-gateway-install.md).
 
-* Bu veri ağ geçidini yüklerken [aynı Azure hesabı ve aboneliğiniz](../logic-apps/logic-apps-gateway-install.md#requirements) vardır.
+* Bu veri ağ geçidini yüklerken kullanılan [Azure hesabı ve aboneliğini](../logic-apps/logic-apps-gateway-install.md#requirements) kullanıyorsunuz. Bu Azure hesabı tek bir [Azure Active Directory (Azure AD) kiracısına veya dizine](../active-directory/fundamentals/active-directory-whatis.md#terminology)ait olmalıdır.
 
 * Ağ Geçidi yüklemeniz zaten kayıtlı değil ve başka bir Azure ağ geçidi kaynağı tarafından talep edildi.
 
@@ -87,7 +87,7 @@ Ağ geçidini yerel bir bilgisayara yükledikten sonra, ağ geçidiniz için Azu
    | **Abonelik** | Ağ geçidi yüklemesi için kullanılan Azure hesabı için Azure aboneliğini seçin. Varsayılan abonelik, oturum açmak için kullandığınız Azure hesabını temel alır. |
    | **Kaynak grubu** | Kullanmak istediğiniz [Azure Kaynak grubu](../azure-resource-manager/resource-group-overview.md) |
    | **Konum** | Ağ [geçidi yüklemesi](../logic-apps/logic-apps-gateway-install.md)sırasında ağ geçidi bulutu hizmeti için seçilen bölge veya konum. Aksi takdirde, ağ geçidi yüklemeniz **yükleme adı** listesinde görünmez. Mantıksal uygulama konumunuz, ağ geçidi kaynak konumunuzda farklılık gösterebilir. |
-   | **Yükleme adı** | Listede yalnızca bu koşullar karşılandığında görüntülenen bir ağ geçidi yüklemesi seçin: <p><p>-Oluşturmak istediğiniz ağ geçidi kaynağıyla aynı bölgede bulunur <br>-Başka bir Azure ağ geçidi kaynağına bağlantısız <br>-Ağ Geçidi kaynağını oluşturmak için kullandığınız aynı Azure hesabına bağlı <p><p>Daha fazla bilgi için [sık sorulan sorular](#faq) bölümüne bakın. |
+   | **Yükleme adı** | Listede yalnızca bu koşullar karşılandığında görüntülenen bir ağ geçidi yüklemesi seçin: <p><p>-Ağ geçidi yüklemesi, oluşturmak istediğiniz ağ geçidi kaynağıyla aynı bölgeyi kullanır. <br>-Ağ geçidi yüklemesi başka bir Azure ağ geçidi kaynağıyla bağlantılı değildir. <br>-Ağ geçidi yüklemesi, ağ geçidi kaynağını oluşturmak için kullandığınız Azure hesabıyla bağlantılıdır. <br>-Azure hesabınız tek bir [Azure Active Directory (Azure AD) kiracısına veya dizine](../active-directory/fundamentals/active-directory-whatis.md#terminology) aittir ve ağ geçidi yüklemesi için kullanılan hesaptır. <p><p>Daha fazla bilgi için [sık sorulan sorular](#faq) bölümüne bakın. |
    |||
 
    Ağ Geçidi kaynağınız ile aynı bölgede olan ve aynı Azure hesabına bağlanan bir ağ geçidi yüklemesi gösteren bir örnek aşağıda verilmiştir:
@@ -164,7 +164,7 @@ Farklı bir ağ geçidi kaynağı oluşturmak, ağ geçidi yüklemenizi farklı 
 **S**: Azure 'da ağ geçidi kaynağı oluşturdığımda ağ geçidi yüklemem neden görünmüyor? <br/>
 Y **: Bu**sorun şu nedenlerden kaynaklanabilir:
 
-* Azure hesabınız, yerel bilgisayardaki ağ geçidi yüklemesiyle bağlantılı aynı hesapla aynı olmalıdır. Ağ Geçidi yüklemesiyle bağlantılı aynı kimliğe sahip Azure portal oturum açtığınızdan emin olun.
+* Azure hesabınız, yerel bilgisayardaki ağ geçidi yüklemesiyle bağlantılı olan hesapla aynı olmalıdır. Ağ Geçidi yüklemesiyle bağlantılı aynı kimliğe sahip Azure portal oturum açtığınızdan emin olun. Ayrıca, Azure hesabınızın tek bir [Azure AD kiracısı veya dizinine](../active-directory/fundamentals/active-directory-whatis.md#terminology) ait olduğundan ve ağ geçidi yüklemesi sırasında kullanılan aynı Azure AD kiracısı veya dizinine ayarlandığından emin olun.
 
 * Ağ Geçidi kaynağınız ve ağ geçidi yüklemenizin aynı bölgeyi kullanması gerekir. Ancak, mantıksal uygulama konumunuz ağ geçidi kaynağı konumınızdan farklı olabilir.
 

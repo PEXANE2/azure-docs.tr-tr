@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracych
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 4390fab3d59706bf692de46d17923dad4f9a8f21
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 615536fbba38279a23516352c69461c19f9972ed
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489611"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796721"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak büyük miktarlarda veri üzerinde toplu çıkarımı çalıştırın
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Bu nasıl yapılır bölümünde aşağıdaki görevleri öğrenirsiniz:
 > * Bir [makine öğrenme işlem hattı](concept-ml-pipelines.md) [oluşturun ve daha](https://publicdataset.azurewebsites.net/dataDetail/mnist/) önce eğitimli bir görüntü sınıflandırma modelini, veri kümesine göre kaydedin. 
 > * Azure Blob depolama hesabınızda bulunan örnek görüntülerde toplu çıkarımı çalıştırmak için modeli kullanın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -184,12 +184,12 @@ model = Model.register(model_path="models/",
 ## <a name="write-your-inference-script"></a>Çıkarım betiğinizi yazma
 
 >[!Warning]
->Aşağıdaki kod, [örnek Not defterinin](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/notebooks/contrib/batch_inferencing/file-dataset-image-inference-mnist.ipynb) kullandığı bir örnektir. Senaryonuz için kendi komut dosyanızı oluşturmanız gerekir.
+>Aşağıdaki kod, [örnek Not defterinin](https://aka.ms/batch-inference-notebooks) kullandığı bir örnektir. Senaryonuz için kendi komut dosyanızı oluşturmanız gerekir.
 
 Betik iki işlev *içermelidir* :
 - `init()`: Bu işlevi, daha sonraki çıkarım için pahalı veya genel hazırlık için kullanın. Örneğin, modeli genel bir nesneye yüklemek için kullanın.
 -  `run(mini_batch)`: işlev her bir `mini_batch` örneği için çalışacaktır.
-    -  `mini_batch`: Batch çıkarımı Run metodunu çağırır ve bir liste ya da Pandas DataFrame 'i yönteme bağımsız değişken olarak geçiracaktır. Min_batch içindeki her giriş, giriş bir TabularDataset ise, bir dosya yolu, giriş bir dosya veri kümesi ise bir FilePath olur.
+    -  `mini_batch`: Batch çıkarımı Run metodunu çağırır ve bir liste ya da Pandas DataFrame 'i yönteme bağımsız değişken olarak geçiracaktır. Giriş bir TabularDataset ise, min_batch içindeki her giriş bir dosya DosyaYolu olur.
     -  `response`: Run () yöntemi bir Pandas DataFrame veya Array döndürmelidir. Append_row output_action için, döndürülen bu öğeler ortak çıkış dosyasına eklenir. Summary_only için öğelerin içeriği yok sayılır. Tüm çıkış eylemleri için döndürülen her çıkış öğesi, giriş öğesinin girdi mini Batch 'de başarılı bir çıkardığını gösterir. Kullanıcı, girişi çıkarımı ile eşlemek için çıkarım sonucuna yeterli miktarda veri eklendiğinden emin olmalıdır. Çıkarım çıkışı çıkış dosyasında yazılır ve bu sırada olması garanti edilmez, kullanıcının çıktıda bir anahtar kullanması gerekir.
 
 ```python
@@ -347,7 +347,7 @@ pipeline_run.wait_for_completion(show_output=True)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu işlemin sona erdirmek için, [toplu çıkarım Not defterini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/)deneyin. 
+Bu işlemin sona erdirmek için, [toplu çıkarım Not defterini](https://aka.ms/batch-inference-notebooks)deneyin. 
 
 İşlem hatları için hata ayıklama ve sorun giderme kılavuzu için bkz. [nasıl yapılır Kılavuzu](how-to-debug-pipelines.md).
 

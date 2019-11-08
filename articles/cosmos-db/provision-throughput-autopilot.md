@@ -6,19 +6,19 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3e2d9b892ad42563b481a0b1fe6a468daefad672
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606413"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748376"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Autopilot modunda Azure Cosmos kapsayıcıları ve veritabanları oluşturma (Önizleme)
 
 Azure Cosmos DB, kapsayıcılarınızdaki iş üretimini el ile veya Autopilot modunda sağlamanıza olanak tanır. Bu makalede, Autopilot modunun avantajları ve kullanım durumları açıklanmaktadır.
 
 > [!NOTE]
-> Autopilot modu şu anda genel önizlemede kullanılabilir.
+> Autopilot modu şu anda genel önizlemede kullanılabilir. Azure Cosmos hesabınız için Autopilot özelliğini etkinleştirmek üzere, bu makalenin [Autopilot 'i etkinleştir](#enable-autopilot) bölümüne bakın. Yalnızca yeni veritabanları ve kapsayıcılar için Autopilot etkinleştirebilirsiniz; bu, mevcut kapsayıcılar ve veritabanları için kullanılamaz.
 
 Aktarım hızını el ile sağlamaya ek olarak, artık Autopilot modundaki Azure Cosmos kapsayıcıları ' nı yapılandırabilirsiniz. Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları ve veritabanları, **SLA 'lara ödün vermeden uygulama gereksinimlerinize göre sağlanan üretilen işi otomatik olarak ve anında ölçeklendirecektir.**
 
@@ -68,7 +68,7 @@ Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları için kullanı
 | **Fiyatlandırma** | Saat başına el ile sağlanan RU/s. | Tek bir yazma bölgesi hesabında, saat başına Autopilot RU/s 'yi kullanarak saatlik olarak kullanılan aktarım hızı için ödeme yaparsınız. <br/><br/>Birden fazla yazma bölgesi olan hesaplar için Autopilot için ek ücret alınmaz. Saat başına aynı çok yöneticili RU/sn 'yi kullanarak saatlik olarak kullanılan aktarım hızı için ödeme yaparsınız. |
 | **İş yükü türleri için en uygun** |  Öngörülebilir ve kararlı iş yükleri|   Tahmin edilemeyen ve değişken iş yükleri  |
 
-## <a name="enable-autopilot-from-azure-portal"></a>Azure portal Autopilot etkinleştir
+## <a name="a-idenable-autopilot-enable-autopilot-from-azure-portal"></a>Azure portal Autopilot <a id="enable-autopilot"> etkinleştir
 
 Azure portal ' den ' i etkinleştirerek Azure Cosmos hesaplarınızda Autopilot deneyebilirsiniz. Autopilot seçeneğini etkinleştirmek için aşağıdaki adımları kullanın:
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bced7a4b994172a1a2076149d6f25adb39c99b54
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 62d75267421d1f7587f136ea1e76f7c4b4341a37
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015559"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742616"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C dil özelleştirmesi
 
@@ -23,13 +23,13 @@ Azure Active Directory B2C (Azure AD B2C) dil özelleştirmesi, Kullanıcı akı
 
 ## <a name="how-language-customization-works"></a>Dil özelleştirmesi nasıl kullanılır?
 
-Kullanıcı akışlarınızın hangi dillerde kullanılabilir olduğunu seçmek için dil özelleştirmesi ' nı kullanırsınız. Özellik etkinleştirildikten sonra, uygulamanızdan sorgu dizesi parametresini `ui_locales`sağlayabilirsiniz. Azure AD B2C ' a çağırdığınızda, sayfanız belirttiğiniz yerel ayara çevrilir. Bu tür bir yapılandırma, Kullanıcı akışlarınızdaki diller üzerinde tüm denetimleri denetlemenizi sağlar ve müşterinin tarayıcısının dil ayarlarını yoksayar.
+Kullanıcı akışlarınızın hangi dillerde kullanılabilir olduğunu seçmek için dil özelleştirmesi ' nı kullanırsınız. Özellik etkinleştirildikten sonra, `ui_locales`sorgu dizesi parametresini uygulamanızdan sağlayabilirsiniz. Azure AD B2C ' a çağırdığınızda, sayfanız belirttiğiniz yerel ayara çevrilir. Bu tür bir yapılandırma, Kullanıcı akışlarınızdaki diller üzerinde tüm denetimleri denetlemenizi sağlar ve müşterinin tarayıcısının dil ayarlarını yoksayar.
 
-Müşterinizin hangi dillerde gördüğü üzerinde bu denetim düzeyine ihtiyaç duymayabilir. Bir `ui_locales` parametre sağlamazsanız, müşterinin deneyimi tarayıcının ayarları tarafından belirlenir. Desteklenen bir dil olarak ekleyerek, Kullanıcı akışlarınızın hangi dillerde çevrildiğinden de denetleyebilirsiniz. Bir müşterinin tarayıcısı, desteklemek istemediğiniz bir dili gösterecek şekilde ayarlandıysa, desteklenen kültürler için varsayılan olarak seçtiğiniz dil bunun yerine gösterilir.
+Müşterinizin hangi dillerde gördüğü üzerinde bu denetim düzeyine ihtiyaç duymayabilir. `ui_locales` parametresi sağlamazsanız, müşterinin deneyimi tarayıcının ayarları tarafından belirlenir. Desteklenen bir dil olarak ekleyerek, Kullanıcı akışlarınızın hangi dillerde çevrildiğinden de denetleyebilirsiniz. Bir müşterinin tarayıcısı, desteklemek istemediğiniz bir dili gösterecek şekilde ayarlandıysa, desteklenen kültürler için varsayılan olarak seçtiğiniz dil bunun yerine gösterilir.
 
-* **UI-yerel ayar belirtilen dil**: Dil özelleştirmesini etkinleştirdikten sonra, Kullanıcı akışınız burada belirtilen dile çevrilir.
-* **Tarayıcı tarafından istenen dil**: Hiçbir `ui_locales` parametre belirtilmemişse, *dil destekleniyorsa*Kullanıcı akışınız tarayıcı tarafından istenen dile çevrilir.
-* **İlke varsayılan dili**: Tarayıcı bir dil belirtmezse veya desteklenmeyen bir değer belirtiyorsa, Kullanıcı akışı, Kullanıcı akışı varsayılan diline çevrilir.
+* **UI-yerel ayarlar belirtilen dil**: dil özelleştirmesini etkinleştirdikten sonra, Kullanıcı akışınız burada belirtilen dile çevrilir.
+* **Tarayıcı tarafından istenen dil**: `ui_locales` parametresi belirtilmemişse, *dil destekleniyorsa*Kullanıcı akışınız tarayıcı tarafından istenen dile çevrilir.
+* **İlke varsayılan dili**: tarayıcı bir dil belirtmezse veya desteklenmeyen bir değer belirtiyorsa, Kullanıcı akışı, Kullanıcı akışı varsayılan diline çevrilir.
 
 > [!NOTE]
 > Özel Kullanıcı özniteliklerini kullanıyorsanız kendi çevirilerinizi sağlamanız gerekir. Daha fazla bilgi için bkz. [dizelerinizi özelleştirme](#customize-your-strings).
@@ -55,7 +55,7 @@ Kullanıcı akışınız için `ui_locales` parametresi olmadan tarayıcı taraf
 1. Özellikler bölmesinin en üstünde **Kaydet** ' i seçin.
 
 >[!NOTE]
->Bir `ui_locales` parametre sağlanmazsa, sayfa yalnızca etkinleştirildiğinde müşterinin tarayıcı diline çevrilir.
+>Bir `ui_locales` parametresi sağlanmazsa, sayfa yalnızca etkinleştirildiğinde müşterinin tarayıcı diline çevrilir.
 >
 
 ## <a name="customize-your-strings"></a>Dizelerinizi özelleştirin
@@ -72,13 +72,13 @@ Bu adımlar size Dizelerinizin düzenlenmesine başlamak için kullanabileceğin
 ### <a name="change-any-string-on-the-page"></a>Sayfadaki herhangi bir dizeyi değiştirme
 
 1. JSON düzenleyicisinde önceki yönergelerden indirilen JSON dosyasını açın.
-1. Değiştirmek istediğiniz öğeyi bulun. Aradığınız dize `StringId` için arama yapabilir veya `Value` değiştirmek istediğiniz özniteliği arayabilirsiniz.
-1. Özniteliğini, `Value` görüntülenmesini istediğiniz şekilde güncelleştirin.
-1. Değiştirmek istediğiniz her dize için olarak `Override` `true`değiştirin.
+1. Değiştirmek istediğiniz öğeyi bulun. Aradığınız dize için `StringId` bulabilir veya değiştirmek istediğiniz `Value` özniteliğini arayabilirsiniz.
+1. `Value` özniteliğini, görüntülenmesini istediğiniz şekilde güncelleştirin.
+1. Değiştirmek istediğiniz her dize için `true``Override` değiştirin.
 1. Dosyayı kaydedin ve değişikliklerinizi karşıya yükleyin. (Karşıya yükleme denetimini, JSON dosyasını indirdiğiniz konum ile aynı yerde bulabilirsiniz.)
 
 > [!IMPORTANT]
-> Bir dizeyi geçersiz kılmanız gerekirse `Override` değerini olarak `true`ayarladığınızdan emin olun. Değer değiştirilmemişse, giriş yok sayılır.
+> Bir dizeyi geçersiz kılmanız gerekirse `Override` değerini `true`olarak ayarladığınızdan emin olun. Değer değiştirilmemişse, giriş yok sayılır.
 
 ### <a name="change-extension-attributes"></a>Uzantı özniteliklerini Değiştir
 
@@ -98,13 +98,13 @@ Bir özel kullanıcı özniteliği için dizeyi değiştirmek isterseniz veya bi
 }
 ```
 
-Özel `<ExtensionAttribute>` Kullanıcı özniteme adıyla değiştirin.
+`<ExtensionAttribute>`, Özel Kullanıcı özniteme adıyla değiştirin.
 
-Görüntülenecek `<ExtensionAttributeValue>` yeni dize ile değiştirin.
+`<ExtensionAttributeValue>`, görüntülenecek yeni dize ile değiştirin.
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>LocalizedCollections kullanarak değer listesi sağlama
 
-Yanıtlar için bir değer listesi kümesi sağlamak istiyorsanız, bir `LocalizedCollections` öznitelik oluşturmanız gerekir. `LocalizedCollections`, `Name` ve`Value` çiftleri dizisidir. Öğelerin sırası görüntülendikleri sıra olacaktır. Eklemek `LocalizedCollections`için aşağıdaki biçimi kullanın:
+Yanıtlar için bir değer listesi kümesi sağlamak istiyorsanız, bir `LocalizedCollections` özniteliği oluşturmanız gerekir. `LocalizedCollections`, `Name` ve `Value` çiftlerinin oluşan bir dizidir. Öğelerin sırası görüntülendikleri sıra olacaktır. `LocalizedCollections`eklemek için aşağıdaki biçimi kullanın:
 
 ```JSON
 {
@@ -128,9 +128,9 @@ Yanıtlar için bir değer listesi kümesi sağlamak istiyorsanız, bir `Localiz
 }
 ```
 
-* `ElementId`, bu `LocalizedCollections` özniteliğin yanıt olduğu Kullanıcı özniteliğidir.
+* `ElementId`, bu `LocalizedCollections` özniteliğinin yanıt olduğu Kullanıcı özniteliğidir.
 * `Name`, kullanıcıya gösterilen değerdir.
-* `Value`Bu seçenek belirlendiğinde talepte döndürülen değer.
+* Bu seçenek belirlendiğinde talepte döndürülen `Value`.
 
 ### <a name="upload-your-changes"></a>Değişikliklerinizi karşıya yükleyin
 
@@ -147,13 +147,13 @@ Değişiklikler Kullanıcı akışınıza otomatik olarak kaydedilir.
 
 HTML içeriğinizi yerelleştirmenin iki yolu vardır. Bir yol, [dil özelleştirmesini](active-directory-b2c-reference-language-customization.md)açmak için bir yoldur. Bu özelliğin etkinleştirilmesi, Azure AD B2C OpenID Connect parametresini `ui-locales`uç noktanıza iletmesine izin verir. İçerik sunucunuz bu parametreyi dile özgü özelleştirilmiş HTML sayfaları sağlamak için kullanabilir.
 
-Alternatif olarak, kullanılan yerel ayara göre farklı yerlerden içerik çekebilirsiniz. CORS etkin uç noktanıza, belirli diller için içerik barındırmak üzere bir klasör yapısı ayarlayabilirsiniz. Joker karakter değerini `{Culture:RFC5646}`kullanırsanız, doğru olanı çağıracaksınız. Örneğin, bunun özel sayfa URI 'SI olduğunu varsayalım:
+Alternatif olarak, kullanılan yerel ayara göre farklı yerlerden içerik çekebilirsiniz. CORS etkin uç noktanıza, belirli diller için içerik barındırmak üzere bir klasör yapısı ayarlayabilirsiniz. `{Culture:RFC5646}`joker karakter değerini kullanırsanız, doğru olanı çağıracaksınız. Örneğin, bunun özel sayfa URI 'SI olduğunu varsayalım:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
 ```
 
-Sayfasını ' de `fr`yükleyebilirsiniz. Sayfa HTML ve CSS içeriğini çeker, buradan çekilir:
+Sayfayı `fr`yükleyebilirsiniz. Sayfa HTML ve CSS içeriğini çeker, buradan çekilir:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
@@ -191,7 +191,7 @@ Microsoft şu anda sağdan sola diller için destek sağlamaz. Bu bunu, özel ye
 
 ### <a name="social-identity-provider-translations"></a>Sosyal kimlik sağlayıcısı çevirileri
 
-Microsoft, `ui_locales` sosyal oturumlar için OIDC parametresini sağlar. Ancak Facebook ve Google dahil bazı sosyal kimlik sağlayıcıları bunları dikkate almaz.
+Microsoft, sosyal oturumlar için `ui_locales` OıDC parametresi sağlar. Ancak Facebook ve Google dahil bazı sosyal kimlik sağlayıcıları bunları dikkate almaz.
 
 ### <a name="browser-behavior"></a>Tarayıcı davranışı
 
@@ -203,56 +203,56 @@ Azure AD B2C aşağıdaki diller için destek içerir. Kullanıcı akış diller
 
 | Dil              | Dil kodu | Kullanıcı akışları         | MFA bildirimleri  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
-| Arapça                | Ar            | sayı                | :heavy_check_mark: |
-| Bulgarca             | bg            | sayı                | :heavy_check_mark: |
-| Bangla                | milyar TL            | :heavy_check_mark: | sayı                |
-| Katalanca               | yetkilisini            | sayı                | :heavy_check_mark: |
-| Çekçe                 | cs            | :heavy_check_mark: | :heavy_check_mark: |
-| Danca                | da            | :heavy_check_mark: | :heavy_check_mark: |
-| Almanca                | de            | :heavy_check_mark: | :heavy_check_mark: |
-| Yunanca                 | el            | :heavy_check_mark: | :heavy_check_mark: |
-| Türkçe               | tr-TR            | :heavy_check_mark: | :heavy_check_mark: |
-| İspanyolca               | es            | :heavy_check_mark: | :heavy_check_mark: |
-| Estonca              | lale            | sayı                | :heavy_check_mark: |
-| Bask dili                | yapılan            | sayı                | :heavy_check_mark: |
-| Fince               | fi            | :heavy_check_mark: | :heavy_check_mark: |
-| Fransızca                | fr            | :heavy_check_mark: | :heavy_check_mark: |
-| Galiçya dili              | g            | sayı                | :heavy_check_mark: |
-| Gucerat dili              | çubuğu            | :heavy_check_mark: | sayı                |
-| İbranice                | LIP            | sayı                | :heavy_check_mark: |
-| Hintçe                 | n            | :heavy_check_mark: | :heavy_check_mark: |
-| Hırvatça              | sa.            | :heavy_check_mark: | :heavy_check_mark: |
-| Macarca             | hu            | :heavy_check_mark: | :heavy_check_mark: |
-| Endonezya dili            | id            | sayı                | :heavy_check_mark: |
-| İtalyanca               | it            | :heavy_check_mark: | :heavy_check_mark: |
-| Japonca              | ja            | :heavy_check_mark: | :heavy_check_mark: |
-| Kazakça                | kk            | sayı                | :heavy_check_mark: |
-| Kannada dili               | KN            | :heavy_check_mark: | sayı                |
-| Korece                | ko            | :heavy_check_mark: | :heavy_check_mark: |
-| Litvanca            | itme            | sayı                | :heavy_check_mark: |
-| Letonca               | aramasını            | sayı                | :heavy_check_mark: |
-| Malayalam dili             | ml            | :heavy_check_mark: | sayı                |
-| Marathi dili               | Mr            | :heavy_check_mark: | sayı                |
-| Malay dili                 | ms            | :heavy_check_mark: | :heavy_check_mark: |
-| Norveççe Bokmal      | nb            | :heavy_check_mark: | sayı                |
-| Felemenkçe                 | nl            | :heavy_check_mark: | :heavy_check_mark: |
-| Norveççe             | hayır            | sayı                | :heavy_check_mark: |
-| Pencap dili               | VARS            | :heavy_check_mark: | sayı                |
-| Lehçe                | pl            | :heavy_check_mark: | :heavy_check_mark: |
-| Portekizce - Brezilya   | pt-br         | :heavy_check_mark: | :heavy_check_mark: |
-| Portekizce-Portekiz | pt-pt         | :heavy_check_mark: | :heavy_check_mark: |
-| Rumence              | ro            | :heavy_check_mark: | :heavy_check_mark: |
-| Rusça               | ru            | :heavy_check_mark: | :heavy_check_mark: |
-| Slovakça                | sor            | :heavy_check_mark: | :heavy_check_mark: |
-| Slovence             | SL            | sayı                | :heavy_check_mark: |
-| Sırpça-Kiril    | SR-cryıl-CS    | sayı                | :heavy_check_mark: |
-| Sırpça-Latin       | sr-Latn-CS    | sayı                | :heavy_check_mark: |
-| İsveççe               | sv            | :heavy_check_mark: | :heavy_check_mark: |
-| Tamil dili                 | dolu            | :heavy_check_mark: | sayı                |
-| Telugu dili                | ot            | :heavy_check_mark: | sayı                |
-| Tay Dili                  | .            | :heavy_check_mark: | :heavy_check_mark: |
-| Türkçe               | tr            | :heavy_check_mark: | :heavy_check_mark: |
-| Ukrayna dili             | tr            | sayı                | :heavy_check_mark: |
-| Vietnam dili            | v            | sayı                | :heavy_check_mark: |
-| Çince - Basitleştirilmiş  | zh-Hans       | :heavy_check_mark: | :heavy_check_mark: |
-| Çince - Geleneksel | zh-Hant       | :heavy_check_mark: | :heavy_check_mark: |
+| Arapça                | Ar            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Bulgarca             | bg            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Bangla                | milyar TL            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) |
+| Katalanca               | yetkilisini            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Çekçe                 | cs            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Danca                | da            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Almanca                | de            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Yunanca                 | el            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Türkçe               | tr            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| İspanyolca               | es            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Estonca              | lale            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Bask dili                | yapılan            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Fince               | fi            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Fransızca                | fr            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Galiçya lehçesi              | g            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Gucerat dili              | çubuğu            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) |
+| İbranice                | LIP            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Hintçe                 | n            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Hırvatça              | HR            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Macarca             | hu            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Endonezya dili            | id            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| İtalyanca               | it            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Japonca              | ja            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Kazakça                | kk            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Kannada dili               | KN            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) |
+| Korece                | ko            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Litvanca            | itme            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Letonca               | aramasını            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Malayalam dili             | ml            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) |
+| Marathi               | Mr            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) |
+| Malay dili                 | SWM            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Norveççe Bokmal      | nb            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) |
+| Hollanda dili                 | nl            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Norveççe             | hayır            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Pencap dili               | VARS            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) |
+| Lehçe                | pl            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Portekizce-Brezilya   | pt-br         | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Portekizce-Portekiz | pt-pt         | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Rumence              | ro            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Rusça               | ru            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Slovakça                | sor            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Slovence             | SL            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Sırpça-Kiril    | SR-cryıl-CS    | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Sırpça-Latin       | sr-Latn-CS    | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| İsveççe               | sv            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Tamil dili                 | dolu            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) |
+| Telugu dili                | ot            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) |
+| Tay dili                  | 11            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Türkçe               | tr            | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Ukrayna dili             | tr            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Vietnam dili            | v            | ![hayır](media/active-directory-b2c-reference-language-customization/no.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Çince-Basitleştirilmiş  | zh-Hans       | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Çince-Geleneksel | zh-Hant       | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) | ![evet](media/active-directory-b2c-reference-language-customization/yes.png) |

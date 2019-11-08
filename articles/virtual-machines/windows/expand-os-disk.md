@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 692046070ffc04942a5d8a73825f6cb59e462f8b
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 12fa8cb09a9864b49c9368462ae3d5ca1d88f2c9
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147204"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749419"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Bir sanal makinenin işletim sistemi sürücüsünü genişletme
 
@@ -37,7 +37,7 @@ ms.locfileid: "71147204"
 > 
 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ## <a name="resize-a-managed-disk"></a>Yönetilen diski yeniden boyutlandırma
@@ -166,7 +166,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>Veri disklerini yeniden boyutlandırma
 
-Bu makale, birincil olarak VM 'nin işletim sistemi diskini genişletmeden odaklanır, ancak betik, VM 'ye bağlı veri disklerini genişletmek için de kullanılabilir. Örneğin, VM’ye bağlı ilk veri diskini genişletmek için `StorageProfile` öğesinin `OSDisk` nesnesini `DataDisks` dizisi ile değiştirin ve aşağıda gösterildiği gibi sayısal bir dizin kullanarak ilk bağlanan veri diskinin başvurusunu edinin:
+Bu makale, birincil olarak VM 'nin işletim sistemi diskini genişletmeden odaklanır, ancak betik, VM 'ye bağlı veri disklerini genişletmek için de kullanılabilir. Örneğin, VM’ye bağlı ilk veri diskini genişletmek için `OSDisk` öğesinin `StorageProfile` nesnesini `DataDisks` dizisi ile değiştirin ve aşağıda gösterildiği gibi sayısal bir dizin kullanarak ilk bağlanan veri diskinin başvurusunu edinin:
 
 **Yönetilen disk**
 
@@ -207,11 +207,11 @@ VM 'nin diskini genişlettikten sonra, işletim sistemine gitmeniz ve yeni alan�
 
 2.  Bir komut istemi açın ve **DiskPart**yazın.
 
-2.  **DISKPART** isteminde yazın `list volume`. Genişletmek istediğiniz birimi unutmayın.
+2.  **DISKPART** isteminde `list volume`yazın. Genişletmek istediğiniz birimi unutmayın.
 
-3.  **DISKPART** isteminde yazın `select volume <volumenumber>`. Bu, aynı diskteki bitişik boş alana genişletmek istediğiniz birim *volumenumber* seçer.
+3.  **DISKPART** isteminde `select volume <volumenumber>`yazın. Bu, aynı diskteki bitişik boş alana genişletmek istediğiniz birim *volumenumber* seçer.
 
-4.  **DISKPART** isteminde yazın `extend [size=<size>]`. Bu, seçilen birimi megabayt (MB) cinsinden *boyuta* genişletir.
+4.  **DISKPART** isteminde `extend [size=<size>]`yazın. Bu, seçilen birimi megabayt (MB) cinsinden *boyuta* genişletir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

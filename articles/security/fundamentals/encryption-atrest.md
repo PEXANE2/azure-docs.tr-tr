@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: 0fddabc7973fbea147de9f3b6e6da5556407030c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc3c7ea2f0060fc6ab20fa821c9e45d6e5173d4f
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498462"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795792"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
 
@@ -262,11 +262,11 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı**     | **Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı**             | **İstemci-yönetilen anahtarı kullanarak istemci tarafı**      |
 | **AI ve Machine Learning**      |                    |                    |                    |
-| Azure Search                     | Evet                | Önizleme            | -                  |
+| Azure Bilişsel Arama                     | Evet                | Önizleme            | -                  |
 | Azure Machine Learning   | Evet                | -                  | -                  |
 | Azure Machine Learning Studio    | Evet                | Önizleme, RSA 2048 bit | -               |
 | Power BI                         | Evet                | Önizleme, RSA 2048 bit | -                  |
-| **Analiz**                    |                    |                    |                    |
+| **Analizler**                    |                    |                    |                    |
 | Azure Stream Analytics           | Evet                | -                  | -                  |
 | Event Hubs                       | Evet                | Önizleme, tüm RSA uzunlukları. | -                  |
 | Azure Analysis Services          | Evet                | -                  | -                  |
@@ -277,7 +277,7 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 | Azure Data Lake Store            | Evet                | Evet, RSA 2048 bit  | -                  |
 | **Kapsayıcılar**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Evet                | -                  | -                  |
-| Container Registry               | Evet                | -                  | -                  |
+| Container Kayıt Defteri               | Evet                | -                  | -                  |
 | **İşlem**                      |                    |                    |                    |
 | Virtual Machines                 | Evet                | Evet, RSA 2048 bit  | -                  |
 | Sanal makine ölçek kümesi        | Evet                | Evet, RSA 2048 bit  | -                  |
@@ -303,7 +303,7 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 | Event Grid                       | Evet                | -                  | -                  |
 | API Management                   | Evet                | -                  | -                  |
 | **IoT Hizmetleri**                 |                    |                    |                    |
-| IoT Hub                          | Evet                | -                  | Evet                |
+| IoT Hub’ı                          | Evet                | -                  | Evet                |
 | **Yönetim ve Idare**    |                    |                    |                    |
 | Azure Site Recovery              | Evet                | Evet, RSA 2048 bit  | Evet                |
 | **Medyasını**                        |                    |                    |                    |

@@ -5,18 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 11/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 57e8905fd9722d5b8a8b0ab76dbcea5b91c6d30a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6fa1912e80a98c98f058931708e191d0fff5bc66
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495822"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73800192"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Özel IPsec/IKE ilkesi tüm Azure VPN Gateway SKU’larında desteklenir mi?
-Özel IPSec/ıKE ilkesi **, temel SKU dışında tüm Azure SKU 'larında**desteklenir.
+Özel IPsec/IKE ilkesi, Azure **VpnGw1, VpnGw2, VpnGw3, Standard** ve **HighPerformance** VPN ağ geçitlerinde desteklenir. **Temel** SKU **desteklenmemektedir**.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Bir bağlantıda kaç tane ilke belirtebilirim?
 Belirli bir bağlantı için yalnızca ***bir*** ilke birleşimi belirtebilirsiniz.
@@ -27,22 +27,22 @@ Hayır, hem IKE (Ana Mod) hem de IPsec (Hızlı Mod) için tüm algoritmaları v
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Özel ilkede desteklenen algoritmalar ve anahtar güçleri nelerdir?
 Aşağıdaki tabloda, müşteriler tarafından yapılandırılabilecek şifreleme algoritmaları ve anahtar güçleri listelenmiştir. Her alan için bir seçeneği belirlemeniz gerekir.
 
-| **IPsec/IKEv2**  | **Seçenekler**                                                                   |
-| ---              | ---                                                                           |
-| IKEv2 Şifrelemesi | AES256, AES192, AES128, DES3, DES                                             |
-| IKEv2 Bütünlüğü  | SHA384, SHA256, SHA1, MD5                                                     |
-| DH Grubu         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Hiçbiri |
-| IPsec Şifrelemesi | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, None      |
-| IPsec Bütünlüğü  | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
-| PFS Grubu        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Hiçbiri                              |
-| QM SA Yaşam Süresi   | Saniye (tamsayı; **en az 300**/varsayılan 27000 saniye)<br>Kilobayt (tamsayı; **en az 1024**/varsayılan 102400000 kilobayt)           |
-| Trafik Seçicisi | UsePolicyBasedTrafficSelectors ($True/$False; varsayılan $False)                 |
-|                  |                                                                               |
+| **IPSec/IKEv1, Ikev2**  | **Seçenekler**                                                                   |
+| ---                     | ---                                                                           |
+| IKEv1, Ikev2 şifreleme | AES256, AES192, AES128, DES3, DES                                             |
+| IKEv1, Ikev2 bütünlüğü  | SHA384, SHA256, SHA1, MD5                                                     |
+| DH Grubu                | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Hiçbiri  |
+| IPsec Şifrelemesi        | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, None      |
+| IPsec Bütünlüğü         | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
+| PFS Grubu               | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Hiçbiri                              |
+| QM SA Yaşam Süresi          | Saniye (tamsayı; **en az 300**/varsayılan 27000 saniye)<br>Kilobayt (tamsayı; **en az 1024**/varsayılan 102400000 kilobayt) |
+| Trafik Seçicisi        | UsePolicyBasedTrafficSelectors ($True/$False; varsayılan $False)                 |
+|                         |                                                                               |
 
 > [!IMPORTANT]
 > 1. DHGroup2048 ve PFS2048, IKE ve IPsec PFS’de Diffie-Hellman Grubu **14** ile aynıdır. Eşlemelerin tamamı için [Diffie-Hellman Grupları](#DH) konusuna bakın.
 > 2. GCMAES algoritmalarında, hem IPsec Şifrelemesi hem de Bütünlüğü için aynı GCMAES algoritmasını belirtmelisiniz.
-> 3. Azure VPN ağ geçitlerinde IKEv2 Ana Modu SA yaşam süresi 28.800 saniye olarak sabitlenmiştir
+> 3. IKEv1 ve IKEv2 ana mod SA yaşam süresi, Azure VPN ağ geçitlerinde 28.800 saniye içinde düzeltilir.
 > 4. QM SA Yaşam Süreleri isteğe bağlı parametrelerdir. Hiçbiri belirtilmemişse, varsayılan 27.000 saniye (7,5 saat) ve 102400000 kilobayt (102 GB) değerleri kullanılır.
 > 5. UsePolicyBasedTrafficSelector, bağlantıda bir seçenek parametresidir. "UsePolicyBasedTrafficSelectors" için bir sonraki SSS maddesine bakın.
 
@@ -102,6 +102,18 @@ Evet. VNet-VNet tüneli, her iki yön için birer tane olmak üzere Azure’daki
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Özel IPsec/IKE ilkesi ExpressRoute bağlantısında çalışır mı?
 Hayır. IPsec/IKE ilkesi yalnızca Azure VPN ağ geçitleri aracılığıyla kurulan S2S VPN ve VNet-VNet bağlantılarında çalışır.
+
+### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Nasıl yaparım? IKEv1 veya Ikev2 protokol türüyle bağlantı oluşturulsun mu?
+IKEv1 bağlantısı, temel SKU dışında tüm RouteBased VPN türü SKU 'Larında oluşturulabilir. Bağlantılar oluştururken, IKEv1 veya Ikev2 bağlantı protokolü türünü belirtebilirsiniz. Bağlantı protokolü türü belirtmezseniz, Ikev2 varsayılan seçenek olarak kullanılır. Daha fazla bilgi için bkz. [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) belgeleri. SKU türleri ve IKEv1/Ikev2 desteği için bkz. [ağ geçitlerini ilke tabanlı VPN cihazlarına bağlama](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+
+### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>IKEv1 ve IKEv2 bağlantıları arasında aktarım yapılmasına izin veriliyor mu?
+Evet. IKEv1 ve IKEv2 bağlantıları arasındaki aktarım desteklenir.
+
+### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>RouteBased VPN türünün temel SKU 'Larında siteden siteye bağlantıları IKEv1 olabilir mi?
+Hayır. Rota tabanlı VPN türünün temel SKU 'Ları dışındaki tüm RouteBased VPN SKU 'ları siteden siteye bağlantı için IKEv1 bağlantılarını destekler.
+
+### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Bağlantı oluşturulduktan sonra bağlantı protokolü türünü değiştirebilir miyim (Ikev2 'e IKEv1 ve tam tersi)?
+Hayır. Bağlantı oluşturulduktan sonra, IKEv1/Ikev2 protokolleri değiştirilemez. İstenen protokol türüyle yeni bir bağlantı silip yeniden oluşturmanız gerekir.
 
 ### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>IPSec için daha fazla yapılandırma bilgilerini nerede bulabilirim?
 Bkz. [S2S veya VNET-VNET bağlantıları Için IPSec/IKE Ilkesini yapılandırma](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

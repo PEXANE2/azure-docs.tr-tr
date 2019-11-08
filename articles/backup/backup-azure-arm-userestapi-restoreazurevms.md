@@ -1,6 +1,6 @@
 ---
 title: "Azure Backup: REST API kullanarak Azure VM 'lerini geri yükleme"
-description: REST API kullanarak Azure VM yedeklemesi 'nin geri yükleme işlemlerini yönetme
+description: Bu makalede, REST API kullanarak Azure sanal makine yedekleme 'nin geri yükleme işlemlerini yönetmeyi öğrenin.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: bdbceec2f1d0a900ffdb392d8a0505ce11419036
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 364b6ab589cc0fa50953a71d55adeccc79462eed
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954901"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747523"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API kullanarak Azure sanal makinelerini geri yükleme
 
@@ -31,11 +31,11 @@ Bir yedekleme öğesinin kullanılabilir kurtarma noktaları, [Liste kurtarma no
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2016-12-01
 ```
 
-`{containerName}` Ve burada`{protectedItemName}` oluşturulur. [](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1) `{fabricName}`"Azure" dır.
+`{containerName}` ve `{protectedItemName}` [burada](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)oluşturulur. `{fabricName}` "Azure".
 
 *Get* URI 'sinin tüm gerekli parametreleri vardır. Ek bir istek gövdesi gerekmez
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Yanıtlar
 
 |Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
@@ -119,7 +119,7 @@ X-Powered-By: ASP.NET
 ......
 ```
 
-Kurtarma noktası yukarıdaki yanıttaki `{name}` alanla tanımlanır.
+Kurtarma noktası, yukarıdaki yanıtta `{name}` alanı ile tanımlanır.
 
 ## <a name="restore-disks"></a>Diskleri geri yükleme
 
@@ -131,7 +131,7 @@ Geri yükleme disklerinin tetiklenmesi bir *Post* isteğidir. Diskleri geri yük
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
 ```
 
-`{containerName}` Ve burada`{protectedItemName}` oluşturulur. [](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1) `{fabricName}`, `{recoveryPointId}` [yukarıda](#example-response)belirtilen kurtarma noktasının `{name}` alanı olan "Azure" dır.
+`{containerName}` ve `{protectedItemName}` [burada](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)oluşturulur. `{fabricName}` "Azure" ve `{recoveryPointId}` [yukarıda](#example-response)belirtilen kurtarma noktasının `{name}` alanıdır.
 
 ### <a name="create-request-body"></a>İstek gövdesi oluştur
 
@@ -169,11 +169,11 @@ Aşağıdaki istek gövdesi, disk geri yükleme tetiklenmesi için gereken özel
 
 Geri yükleme diskini tetikleme [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
-İki yanıt döndürür: başka bir işlem oluşturulduğunda 202 (kabul edildi) ve sonra bu işlem tamamlandığında 200 (Tamam).
+Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
 |Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
-|202 kabul edildi     |         |     Kabul Edildi    |
+|202 kabul edildi     |         |     Eden    |
 
 #### <a name="example-responses"></a>Örnek yanıtlar
 
@@ -284,4 +284,4 @@ Yanıt, [diskleri geri yüklemek için yukarıda açıklanacak](#response)şekil
 Azure Backup REST API 'Leri hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
 - [Azure kurtarma hizmetleri sağlayıcısı REST API](/rest/api/recoveryservices/)
-- [Azure REST API kullanmaya başlama](/rest/api/azure/)
+- [Azure REST API’yi kullanmaya başlayın](/rest/api/azure/)

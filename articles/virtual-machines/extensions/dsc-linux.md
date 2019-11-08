@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: e2faf444aa411f0e60f1b5c7b1f811abc2f6b63a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1825f9f0f5d525c0129341d800ca5949136ae633
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176679"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750080"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux için DSC Uzantısı (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -35,20 +35,20 @@ DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzant�
 - Linux VM 'ye özel DSC modülleri yükler (ExtensionAction 'ı Install)
 - Özel DSC modüllerini Linux VM 'ye kaldırma (ExtensionAction 'ı Kaldır)
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
 DSC Linux uzantısı, aşağıdakiler dışında [Azure 'da onaylı tüm Linux dağıtımlarını](/azure/virtual-machines/linux/endorsed-distros) destekler:
 
-| Dağılı | Sürüm |
+| Dağıtım | Sürüm |
 |---|---|
 | Debian | tüm sürümler |
 | Ubuntu| 18,04 |
  
-### <a name="internet-connectivity"></a>Internet bağlantısı
+### <a name="internet-connectivity"></a>İnternet bağlantısı
 
 DSCForLinux uzantısı, hedef sanal makinenin Internet 'e bağlı olmasını gerektirir. Örneğin, YAZMAÇ uzantısının Automation hizmetine bağlantısı olması gerekir. Çekme, çekme, çekme gibi diğer eylemler için Azure Storage/GitHub bağlantısı gerekir. Bu, müşteri tarafından sunulan ayarlara bağlıdır.
 
@@ -65,7 +65,7 @@ Desteklenen tüm ortak yapılandırma parametreleri şunlardır:
 * `RefreshFrequencyMins`: (isteğe bağlı, int) DSC 'nin yapılandırmayı çekme sunucusundan edinmeye ne sıklıkta (dakika cinsinden) çalıştığını belirtir. 
        Çekme sunucusundaki yapılandırma hedef düğümdeki geçerli olandan farklıysa, bu, bekleyen depoya kopyalanır ve uygulanır.
 * `ConfigurationMode`: (isteğe bağlı, dize) DSC 'nin yapılandırmayı nasıl uygulanacağını belirtir. Geçerli değerler: ApplyOnly, ApplyAndMonitor, Applyandadutocorrect.
-* `ConfigurationModeFrequencyMins`: (isteğe bağlı, int) DSC 'nin, yapılandırmanın istenen durumda olmasını ne sıklıkta (dakika cinsinden) belirtir.
+* `ConfigurationModeFrequencyMins`: (isteğe bağlı, int), ne sıklıkta (dakika cinsinden) DSC 'nin yapılandırmanın istenen durumda olmasını sağlar.
 
 > [!NOTE]
 > 2,3 < sürümünü kullanıyorsanız, mode parametresi ExtensionAction ile aynı olur. Mod aşırı yüklenmiş bir terim gibi görünüyor. Bu nedenle, karışıklığın önüne geçmek için, 2,3 sürümden sonraki sürümlerde ExtensionAction kullanılır. Uzantı, geriye dönük uyumluluk için hem modu hem de ExtensionAction 'ı destekler. 
@@ -286,7 +286,7 @@ Azure Resource Manager şablonu hakkında daha fazla ayrıntı için, [yazma Azu
 ## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
 
 ### <a name="21-using-azure-cliazure-cli"></a>2,1. [**Azure CLI**] [Azure-CLI] kullanma
-DSCForLinux uzantısını dağıtmadan önce, Bölüm 3 ' teki farklı senaryolara göre `public.json` ve `protected.json` ' i yapılandırmanız gerekir.
+DSCForLinux uzantısını dağıtılmadan önce, Bölüm 3 ' teki farklı senaryolara göre `public.json` ve `protected.json`yapılandırmanız gerekir.
 
 #### <a name="211-classic"></a>2.1.1. Klasik
 Klasik moda Azure hizmet yönetimi modu da denir. Şunu çalıştırarak geçiş yapabilirsiniz:
@@ -305,7 +305,7 @@ Kullanılabilir en son uzantı sürümünü öğrenmek için şunu çalıştır�
 $ azure vm extension list
 ```
 
-#### <a name="212-resource-manager"></a>2.1.2 'yi. Kaynak Yöneticisi
+#### <a name="212-resource-manager"></a>2.1.2 'yi. Resource Manager
 Şunu çalıştırarak Azure Resource Manager moduna geçebilirsiniz:
 ```
 $ azure config mode arm
@@ -318,7 +318,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> Azure Resource Manager modunda `azure vm extension list` şu anda kullanılamıyor.
+> Azure Resource Manager modunda `azure vm extension list` şimdilik kullanılamaz.
 >
 
 ### <a name="22-using-azure-powershellazure-powershell"></a>2,2. [**Azure PowerShell**] [Azure-PowerShell] kullanma
@@ -406,7 +406,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 
-### <a name="troubleshoot"></a>Sorunları Gider
+### <a name="troubleshoot"></a>Sorun giderme
 
 Uzantı dağıtımlarının durumu hakkındaki veriler Azure portal ve Azure CLı kullanılarak alınabilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için, Azure CLı 'yı kullanarak aşağıdaki komutu çalıştırın.
 
@@ -425,7 +425,7 @@ Bazı durumlarda DSC Linux uzantısı, makinede OMı 'nın daha yüksek bir sür
 
 
 
-### <a name="support"></a>Support
+### <a name="support"></a>Destek
 
 Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/community/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
 

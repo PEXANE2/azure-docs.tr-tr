@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Azure Backup Sunucusu yüklemesi | Microsoft Docs
-description: Azure Stack iş yüklerini korumak veya yedeklemek için Azure Backup Sunucusu kullanın.
+description: Bu makalede, Azure Stack iş yüklerini korumak veya yedeklemek için Azure Backup Sunucusu nasıl kullanacağınızı öğrenin.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: da941d0234fe78791f9a1c2f2a7d01122247534c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639850"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747295"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 
@@ -25,6 +25,7 @@ Bu makalede Azure Stack Azure Backup Sunucusu nasıl yükleneceği açıklanır.
 >
 
 ## <a name="azure-backup-server-protection-matrix"></a>Azure Backup Sunucusu koruma matrisi
+
 Azure Backup Sunucusu aşağıdaki Azure Stack sanal makine iş yüklerini korur.
 
 | Korumalı veri kaynağı | Koruma ve kurtarma |
@@ -46,20 +47,26 @@ Azure Backup Sunucusu aşağıdaki Azure Stack sanal makine iş yüklerini korur
 Azure Stack ortamınıza Azure Backup Sunucusu yüklerken bu bölümdeki önerileri göz önünde bulundurun. Azure Backup Sunucusu yükleyicisi ortamınızın gerekli önkoşullara sahip olduğunu denetler, ancak yüklemeden önce hazırlanırken zaman kazanabilirsiniz.
 
 ### <a name="determining-size-of-virtual-machine"></a>Sanal makinenin boyutunu belirleme
+
 Azure Stack bir sanal makinede Azure Backup Sunucusu çalıştırmak için, a2 veya daha büyük boyut kullanın. Bir sanal makine boyutu seçme konusunda yardım için [Azure Stack VM boyutu hesaplayıcısını](https://www.microsoft.com/download/details.aspx?id=56832)indirin.
 
 ### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Azure Stack sanal makinelerde sanal ağlar
+
 Bir Azure Stack iş yükünde kullanılan tüm sanal makineler aynı Azure sanal ağına ve Azure aboneliğine ait olmalıdır.
 
 ### <a name="azure-backup-server-vm-performance"></a>VM performansını Azure Backup Sunucusu
+
 Diğer sanal makinelerle paylaşılırsa, depolama hesabı boyutu ve ıOPS sınırları Azure Backup Sunucusu VM performansını etkiler. Bu nedenle, Azure Backup Sunucusu sanal makinesi için ayrı bir depolama hesabı kullanmanız gerekir. Azure Backup Sunucusu çalıştıran Azure Backup Aracısı için geçici depolamaya ihtiyaç duyuyor:
+
 - kendi kullanımı (bir önbellek konumu),
 - buluttan geri yüklenen veriler (yerel hazırlama alanı)
 
 ### <a name="configuring-azure-backup-temporary-disk-storage"></a>Azure Backup geçici disk depolamayı yapılandırma
-Her Azure Stack sanal makine, Kullanıcı tarafından birim `D:\`olarak kullanılabilen geçici disk depolama alanıyla birlikte gelir. Azure Backup için gereken yerel hazırlama alanı, içinde `D:\`bulunacak şekilde yapılandırılabilir ve önbellek konumu üzerine `C:\`yerleştirilebilecek. Bu şekilde, Azure Backup Sunucusu sanal makinesine bağlı veri disklerinden hiçbir depolamanın ayrılması gerekmez.
+
+Her Azure Stack sanal makine, Kullanıcı tarafından birim `D:\`olarak kullanılabilen geçici disk depolamayla birlikte gelir. Azure Backup için gereken yerel hazırlama alanı `D:\`ve önbellek konumu `C:\`yerleştirilebilecek şekilde yapılandırılabilir. Bu şekilde, Azure Backup Sunucusu sanal makinesine bağlı veri disklerinden hiçbir depolamanın ayrılması gerekmez.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Yedekleme verilerini yerel diskte ve Azure 'da depolama
+
 Azure Backup Sunucusu, işletimsel kurtarma için sanal makineye bağlı Azure disklerinde yedekleme verilerini depolar. Diskler ve depolama alanı sanal makineye eklendikten sonra, depolamayı sizin için yönetir Azure Backup Sunucusu. Yedekleme veri depolama miktarı, her bir [Azure Stack sanal makinesine](/azure-stack/user/azure-stack-storage-overview)bağlı disklerin sayısına ve boyutuna bağlıdır. Azure Stack VM 'nin her boyutunun, sanal makineye eklenebilecek en fazla disk sayısı vardır. Örneğin, a2 dört diskdir. A3 sekiz disk. A4 16 diskdir. Yeniden, disk boyutu ve sayısı toplam yedekleme depolama havuzunu belirler.
 
 > [!IMPORTANT]
@@ -69,12 +76,14 @@ Azure Backup Sunucusu, işletimsel kurtarma için sanal makineye bağlı Azure d
 Yedekleme verilerinin Azure 'da depolanması, Azure Stack üzerindeki yedekleme altyapısını azaltır. Veriler beş günden eski olursa Azure 'da depolanması gerekir.
 
 Yedekleme verilerini Azure 'da depolamak için bir kurtarma hizmetleri Kasası oluşturun veya kullanın. Azure Backup Sunucusu iş yükünü yedeklemeye hazırlanırken, [Kurtarma Hizmetleri kasasını yapılandırırsınız](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Yapılandırıldıktan sonra, bir yedekleme işi her çalıştığında kasada bir kurtarma noktası oluşturulur. Her kurtarma hizmetleri Kasası en fazla 9999 kurtarma noktası içerir. Oluşturulan kurtarma noktası sayısına ve ne kadar süreyle saklandığına bağlı olarak, yedekleme verilerini birçok yıl boyunca koruyabilirsiniz. Örneğin, aylık kurtarma noktaları oluşturabilir ve bunları beş yıl boyunca koruyabilirsiniz.
- 
+
 ### <a name="scaling-deployment"></a>Dağıtım ölçeklendiriliyor
+
 Dağıtımınızı ölçeklendirmek istiyorsanız aşağıdaki seçeneklere sahip olursunuz:
-  - Ölçeği artırma-bir serideki Azure Backup Sunucusu sanal makinenin boyutunu D serisine yükseltin ve [Azure Stack sanal makine yönergeleri temelinde](/azure-stack/user/azure-stack-manage-vm-disks)yerel depolamayı yükseltin.
-  - Veri boşaltma-eski verileri Azure 'a gönderin ve Azure Backup Sunucusu bağlı depolamada yalnızca en yeni verileri tutun.
-  - Ölçeği genişletme-iş yüklerini korumak için daha fazla Azure Backup sunucusu ekleyin.
+
+- Ölçeği artırma-bir serideki Azure Backup Sunucusu sanal makinenin boyutunu D serisine yükseltin ve [Azure Stack sanal makine yönergeleri temelinde](/azure-stack/user/azure-stack-manage-vm-disks)yerel depolamayı yükseltin.
+- Veri boşaltma-eski verileri Azure 'a gönderin ve Azure Backup Sunucusu bağlı depolamada yalnızca en yeni verileri tutun.
+- Ölçeği genişletme-iş yüklerini korumak için daha fazla Azure Backup sunucusu ekleyin.
 
 ### <a name="net-framework"></a>.NET Framework
 
@@ -86,12 +95,13 @@ Azure Backup Sunucusu sanal makinenin bir etki alanına katılması gerekir. Yö
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>Azure Stack bir IaaS VM kullanma
 
-Azure Backup Sunucusu için bir sunucu seçerken, bir Windows Server 2012 R2 Datacenter veya Windows Server 2016 Datacenter Galeri görüntüsü ile başlayın. Makalede, [Ilk Windows sanal makinenizi Azure Portal oluşturun](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), önerilen sanal makine ile çalışmaya başlama hakkında bir öğretici sağlar. Sunucu sanal makinesi (VM) için önerilen minimum gereksinimler şunlardır: İki çekirdekle ve 3,5 GB RAM ile a2 standart.
+Azure Backup Sunucusu için bir sunucu seçerken, bir Windows Server 2012 R2 Datacenter veya Windows Server 2016 Datacenter Galeri görüntüsü ile başlayın. Makalede, [Ilk Windows sanal makinenizi Azure Portal oluşturun](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), önerilen sanal makine ile çalışmaya başlama hakkında bir öğretici sağlar. Sunucu sanal makinesi (VM) için önerilen minimum gereksinimler şunlardır: iki çekirdek ve 3,5 GB RAM ile a2 standart.
 
 Azure Backup Sunucusu olan iş yüklerini koruma çok sayıda nusmaya sahiptir. [Azure sanal makinesi olarak DPM 'Yi yükleyen](https://technet.microsoft.com/library/jj852163.aspx)makale, bu nusların açıklanmasına yardımcı olur. Makineyi dağıttıktan önce, bu makaleyi tamamen okuyun.
 
 > [!NOTE]
 > Azure Backup Sunucusu, özel, tek amaçlı bir sanal makinede çalışmak üzere tasarlanmıştır. Üzerinde Azure Backup Sunucusu yükleyemezsiniz:
+>
 > - Etki alanı denetleyicisi olarak çalıştırılan bir bilgisayar
 > - Uygulama Sunucusu rolünün yüklü olduğu bir bilgisayar
 > - Exchange Server’ın çalıştırıldığı bir bilgisayar
@@ -108,7 +118,7 @@ Kurtarma Hizmetleri Kasası depolama çoğaltma seçeneği, coğrafi olarak yede
 Depolama çoğaltma ayarını düzenlemek için:
 
 1. Kasa panosunu ve Ayarlar menüsünü açmak için kasanızı seçin. **Ayarlar** menüsü açılmazsa, kasa panosunda **Tüm ayarlar** ' a tıklayın.
-2. **Ayarlar** menüsünde, yedekleme **yapılandırma** menüsünü açmak için **altyapıyı** > yedekle**yedekleme yapılandırması** ' na tıklayın. **Yedekleme yapılandırması** menüsünde, kasanızın depolama çoğaltma seçeneğini belirleyin.
+2. **Ayarlar** menüsünde yedekleme **altyapısı** ** > yedekleme yapılandırması '** na tıklayarak yedekleme **yapılandırma** menüsünü açın. **Yedekleme yapılandırması** menüsünde, kasanızın depolama çoğaltma seçeneğini belirleyin.
 
     ![Yedekleme kasalarının listesi](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -159,7 +169,7 @@ Azure Backup Sunucusu yükleyicisini indirmenin iki yolu vardır. Azure Backup S
 
     ![İndirme Merkezi 1](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
-    Tüm yükleme dosyalarının karşıdan yükleme boyutu 3 GB 'tan büyüktür. 10 Mbps bir indirme bağlantısında, tüm yükleme dosyalarını indirmek 60 dakikaya kadar sürebilir. Dosyalar, belirtilen indirme konumunuza indirilir.
+    Tüm yükleme dosyalarının karşıdan yükleme boyutu 3 GB 'den büyük. 10 Mbps bir indirme bağlantısında, tüm yükleme dosyalarını indirmek 60 dakikaya kadar sürebilir. Dosyalar, belirtilen indirme konumunuza indirilir.
 
 ## <a name="extract-azure-backup-server-install-files"></a>Dosyaları ayıkla Azure Backup Sunucusu yüklemesi
 
@@ -213,7 +223,7 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 
     ![Azure Backup Sunucusu-hoş geldiniz ve önkoşul denetimi](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    Ortamınız gerekli önkoşullara sahipse, makinenin gereksinimleri karşıladığını belirten bir ileti görürsünüz.           **İleri**'ye tıklayın.  
+    Ortamınız gerekli önkoşullara sahipse, makinenin gereksinimleri karşıladığını belirten bir ileti görürsünüz. **İleri**’ye tıklayın.  
 
     ![Azure Backup Sunucusu-önkoşul denetimi başarılı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
@@ -239,7 +249,7 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Azure 'a yedeklemek için karalama konumu gereklidir. Karalama konumunun boyutunun Azure 'a yedeklenmek üzere planlandığı verilerin en az% 5 ' ine eşit olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [depolama havuzlarını ve Disk depolamayı yapılandırma](https://technet.microsoft.com/library/hh758075.aspx).
+    Azure 'a yedeklemek için karalama konumu gereklidir. Karalama konumunun boyutunun Azure 'a yedeklenmek üzere planlandığı verilerin en az %5 ' ine eşit olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [depolama havuzlarını ve Disk depolamayı yapılandırma](https://technet.microsoft.com/library/hh758075.aspx).
 
 6. **Güvenlik ayarları** ekranında, kısıtlı yerel kullanıcı hesapları için güçlü bir parola girin ve **İleri**' ye tıklayın.
 
@@ -314,7 +324,7 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 
 ## <a name="network-connectivity"></a>Ağ bağlantısı
 
-Azure Backup Sunucusu, ürünün başarıyla çalışması için Azure Backup hizmetine bağlantı kurulmasını gerektirir. Makinenin Azure bağlantısına sahip olup olmadığını doğrulamak için Azure Backup sunucusu PowerShell konsolundaki ```Get-DPMCloudConnection``` cmdlet 'ini kullanın. Cmdlet 'in çıktısı TRUE ise, bağlantı var, aksi durumda bağlantı yok.
+Azure Backup Sunucusu, ürünün başarıyla çalışması için Azure Backup hizmetine bağlantı kurulmasını gerektirir. Makinenin Azure bağlantısına sahip olup olmadığını doğrulamak için, Azure Backup Sunucusu PowerShell konsolundaki ```Get-DPMCloudConnection``` cmdlet 'ini kullanın. Cmdlet 'in çıktısı TRUE ise, bağlantı var, aksi durumda bağlantı yok.
 
 Aynı zamanda Azure aboneliğinin sağlıklı bir durumda olması gerekir. Aboneliğinizin durumunu öğrenmek ve yönetmek için [abonelik portalında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)oturum açın.
 
@@ -322,22 +332,22 @@ Azure bağlantısının ve Azure aboneliğinin durumunu öğrendikten sonra, sun
 
 | Bağlantı durumu | Azure Aboneliği | Azure 'a yedekleme | Diske Yedekle | Azure 'dan geri yükleme | Diskten geri yükleme |
 | --- | --- | --- | --- | --- | --- |
-| Bağlı |Etkin |İzin Verildi |İzin Verildi |İzin Verildi |İzin Verildi |
-| Bağlı |Süresi dolmuş |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
-| Bağlı |Yetki Kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
-| Kesilen bağlantı > 15 gün |Etkin |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
-| Kesilen bağlantı > 15 gün |Süresi dolmuş |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
-| Kesilen bağlantı > 15 gün |Yetki Kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
+| Bağlı |Etkin |İzin verilen |İzin verilen |İzin verilen |İzin verilen |
+| Bağlı |Süresi doldu |Durduruldu |Durduruldu |İzin verilen |İzin verilen |
+| Bağlı |Sağlaması kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
+| Kesilen bağlantı > 15 gün |Etkin |Durduruldu |Durduruldu |İzin verilen |İzin verilen |
+| Kesilen bağlantı > 15 gün |Süresi doldu |Durduruldu |Durduruldu |İzin verilen |İzin verilen |
+| Kesilen bağlantı > 15 gün |Sağlaması kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Bağlantı kaybından kurtarma
 
-Bir güvenlik duvarı veya proxy Azure 'a erişimi engelliyorsa, güvenlik duvarı/proxy profilinde aşağıdaki etki alanı adreslerini beyaz listeye ekleyin:
+Bir güvenlik duvarı veya proxy Azure 'a erişimi engelliyorsa, güvenlik duvarı/proxy profili izin verilenler listesine şu etki alanı adreslerini ekleyin:
 
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com
 - \*.WindowsAzure.com
-- \*. microsoftonline.com
-- \*. windows.net
+- \*.microsoftonline.com
+- \*.windows.net
 
 Azure 'a bağlantı Azure Backup Sunucusu geri yüklendikten sonra, Azure abonelik durumu gerçekleştirilebileceği işlemleri belirler. Sunucu **bağlandıktan**sonra, kullanılabilir işlemleri görmek için [ağ bağlantısı](backup-mabs-install-azure-stack.md#network-connectivity) 'ndaki tabloyu kullanın.
 
@@ -345,7 +355,7 @@ Azure 'a bağlantı Azure Backup Sunucusu geri yüklendikten sonra, Azure abonel
 
 Bir Azure aboneliğini, *zaman aşımına uğradı* veya *sağlaması kaldırılmış* durumundan *etkin* duruma değiştirmek mümkündür. Abonelik durumu *etkin*değil:
 
-- Abonelik sağlaması *kaldırılırken, işlevselliği*kaybeder. Aboneliği *etkin*olarak geri yükleme, yedekleme/geri yükleme işlevini yeniden canlandırın. Yerel diskteki yedekleme verileri yeterince büyük bir bekletme süresiyle korunursa, bu yedekleme verileri alınabilir. Ancak, abonelik *sağlanan* duruma girdiğinde Azure 'daki yedekleme verileri irretrievably kaybolur.
+- Abonelik *sağlaması kaldırılırken, işlevselliği*kaybeder. Aboneliği *etkin*olarak geri yükleme, yedekleme/geri yükleme işlevini yeniden canlandırın. Yerel diskteki yedekleme verileri yeterince büyük bir bekletme süresiyle korunursa, bu yedekleme verileri alınabilir. Ancak, abonelik *sağlanan* duruma girdiğinde Azure 'daki yedekleme verileri irretrievably kaybolur.
 - Aboneliğin süre *dolduğunda*işlevselliği kaybeder. Zamanlanan yedeklemeler, aboneliğin süre *dolduğunda*çalışmaz.
 
 ## <a name="troubleshooting"></a>Sorun giderme

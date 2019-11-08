@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
 ms.author: memildin
-ms.openlocfilehash: dad8c6173495d11abd6c9f5babb4ef8bc789e4ce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 140361b7ba3a6a618d4c416447525f8a73690b81
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686423"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748435"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Endpoint Protection değerlendirmesi ve önerileri
 
@@ -84,8 +84,8 @@ Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](https
 * Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir:
     * **HKLM: \ Software\trendmikro \ derin güvenlik Aracısı** var
     * **HKLM: \ Software\trendmikro \ derin güvenlik alanı \ ınstalyüklemeklasörü** var
-    * **Dsq_query. cmd** dosyası yükleme klasöründe bulunur
-    * **Dsa_query. cmd** Ile sonuçları **bileşen. har. Mode: on-Trend mikro derin güvenlik Aracısı algılandı**
+    * **Dsa_query. cmd** dosyası yükleme klasöründe bulunur
+    * **Dsa_query. cmd** Ile sonuçları **bileşen. mod. Mode: eğilim üzerine mikro derin güvenlik Aracısı algılandı**
 
 ## <a name="symantec-endpoint-protection"></a>Symantec uç nokta koruması
 Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir:
