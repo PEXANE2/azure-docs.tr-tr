@@ -2,7 +2,7 @@
 title: Azure Machine Learning belgeleri
 summary: Azure Machine Learning, makine öğrenimi modellerinizi ve işlem hatlarınızı ölçeğe uygun olarak hızlı bir şekilde eğitip dağıtabilmeniz için web arabirimleri ve SDK’lar sunar. PyTorch, TensorFlow ve scikit-learn gibi açık kaynak Python çerçeveleri aracılığıyla bu özellikleri kullanın.
 metadata:
-  title: Machine Learning belgeleri - Azure
+  title: Azure Machine Learning belgeleri
   description: Azure Machine Learning, size makine öğrenimi modellerinizi ve işlem hatlarınızı ölçeğe uygun olarak hızlı bir şekilde eğitip dağıtmaya yönelik web arabirimleri ve SDK’lar sunar. PyTorch, TensorFlow ve scikit-learn gibi açık kaynak Python çerçeveleri aracılığıyla bu özellikleri kullanın.
   services: machine-learning
   ms.service: machine-learning
@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 10/29/2019
-  ms.openlocfilehash: 0b5e264cc7fd2e220e2d6b5b7c4e886f4c8a8d32
-  ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+  ms.openlocfilehash: c6b0b67f206ec335a5e30098dd75b7e71db5770f
+  ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/07/2019
-  ms.locfileid: "73748027"
+  ms.lasthandoff: 11/08/2019
+  ms.locfileid: "73828107"
 landingContent:
 - title: Azure ML’yi kullanmaya başlama
   linkLists:
