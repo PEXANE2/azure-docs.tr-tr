@@ -4,15 +4,16 @@ description: Go-to-market Services-yayımcılar, bu bölümde Microsoft ile işi
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 9549e40ea3b79c356867c2fe36dc336e69795c8b
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d1ac8963e673044e1d3ca3a0163df065097e12be
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962835"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825963"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Microsoft ile işletmenizi tanıtma
 
@@ -36,6 +37,6 @@ Teklifinizi veya uygulamanızı yükseltmek ve daha fazla avantaj ve kaynağa er
 
 Market GTM Hizmetleri hakkında daha fazla bilgi edinmek için bkz. [pazara yönelik hizmetler](https://partner.microsoft.com/reach-customers/gtm)'e gidin.
 
-Oturum [bulut iş ortağı portalı](https://cloudpartner.azure.com) oluşturmak ve teklifinizi yapılandırmak için.
+Teklifinizi oluşturmak ve yapılandırmak için [bulut iş ortağı portalı](https://cloudpartner.azure.com) oturum açın.
 
 ---

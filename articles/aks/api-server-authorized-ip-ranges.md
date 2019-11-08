@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: 558c04be77f911f40be9e8880950d1670a3c169e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: aa0cf1ef3f758d7aba4639d779bde90249d039cb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747754"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815664"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki yetkili IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim
 
@@ -25,17 +25,9 @@ Bu makalede, API sunucusu yetkilendirilmiş IP adresi aralıklarının hangi IP 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, [Kubernetes kullanan][kubenet]kullanan kümelerle çalıştığınızdan varsayılmaktadır.  [Azure Container Networking Interface (CNı)][cni-networking] tabanlı kümeler sayesinde, erişimi güvenli hale getirmek için gerekli yol tablosuna sahip değilsiniz.  Yol tablosunu el ile oluşturmanız gerekir.  Rota tablolarını yönetme hakkında daha fazla bilgi için bkz. [yol tablosu oluşturma, değiştirme veya silme][route-tables].
-
 API sunucusu yetkilendirilmiş IP aralıkları yalnızca sizin oluşturduğunuz yeni AKS kümelerinde çalışır. Bu makalede, Azure CLı kullanarak bir AKS kümesinin nasıl oluşturulacağı gösterilmektedir.
 
 Azure CLı sürüm 2.0.76 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
-
-## <a name="limitations"></a>Sınırlamalar
-
-API sunucusu yetkilendirilmiş IP aralıklarını yapılandırdığınızda aşağıdaki sınırlamalar geçerlidir:
-
-* API sunucusuyla iletişim de engellendiğinden Azure Dev Spaces Şu anda kullanamazsınız.
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>API sunucusu yetkilendirilmiş IP aralıklarına genel bakış
 
@@ -69,6 +61,7 @@ az aks create \
 > Bu aralıkları bir izin verilenler listesine eklemeniz gerekir:
 > - Güvenlik Duvarı genel IP adresi
 > - Kümeyi yönettiğiniz ağları temsil eden herhangi bir Aralık
+> - AKS kümenizde Azure Dev Spaces kullanıyorsanız, [bölgeniz temelinde ek aralıklara][dev-spaces-ranges]izin vermeniz gerekir.
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Standart SKU yük dengeleyici için giden IP 'Leri belirtin
 
@@ -141,6 +134,7 @@ Daha fazla bilgi için bkz. [aks 'teki uygulamalar ve kümeler Için güvenlik k
 
 <!-- LINKS - external -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
+[dev-spaces-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 
 <!-- LINKS - internal -->

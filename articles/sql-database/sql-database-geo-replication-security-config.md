@@ -1,5 +1,5 @@
 ---
-title: Olağanüstü durum kurtarma için Azure SQL veritabanı güvenliğini yapılandırma
+title: Olağanüstü durum kurtarma için güvenliği yapılandırma
 description: Bir veritabanı geri yüklendikten sonra güvenliği yapılandırmak ve yönetmek için güvenlik konularını veya ikincil bir sunucuya yük devretmeyi öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 3c08ba1a37d7b0d16042d6496c27e0de8d070b75
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d628583168883276e67d9e2f2fcafdce292769e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689978"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807491"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Coğrafi geri yükleme veya yük devretme için Azure SQL veritabanı güvenliğini yapılandırma ve yönetme
 
@@ -58,7 +58,7 @@ Yalnızca sunucu yöneticisi veya **loginmanager** sunucu rolünün bir üyesi, 
     FROM [sys].[sql_logins]
     WHERE [type_desc] = 'SQL_Login'
 
-Birincil veritabanındaki tüm veritabanı kullanıcı sorumlularını yalnızca db_owner veritabanı rolünün, dbo kullanıcısının veya sunucu yöneticisinin bir üyesi belirleyebilir.
+Yalnızca db_owner veritabanı rolünün bir üyesi, dbo kullanıcısı veya Sunucu Yöneticisi, birincil veritabanındaki tüm veritabanı kullanıcı sorumlularını tespit edebilir.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]

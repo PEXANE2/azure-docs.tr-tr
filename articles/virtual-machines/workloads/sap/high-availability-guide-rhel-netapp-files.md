@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/14/2019
+ms.date: 11/07/2019
 ms.author: radeltch
-ms.openlocfilehash: 98a12e6892ac8710ae2195cd2c29df43b4c65aba
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 333bc12c475cedbd98480e3b596bcc7ad4e30ecc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71706295"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824923"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirlik, SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux
 
@@ -86,7 +86,7 @@ Veritabanı katmanı Bu makalede ayrıntılı olarak ele alınmıyor.
   * [Microsoft Azure üzerinde Red Hat Enterprise Linux 7,4 (ve üzeri) yüksek kullanılabilirlik kümesi yükleme ve yapılandırma](https://access.redhat.com/articles/3252491)
 * [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları][anf-sap-applications-azure]
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 SAP NetWeaver Merkezi Hizmetleri için yüksek kullanılabilirlik (HA), paylaşılan depolama gerektirir.
 Şimdiye kadar Red Hat Linux 'ta bu işlemi gerçekleştirmek için yüksek oranda kullanılabilir GlusterFS kümesi oluşturulması gerekir. 
@@ -95,7 +95,7 @@ Artık Azure NetApp Files dağıtılan paylaşılan depolamayı kullanarak SAP N
 
 ![SAP NetWeaver yüksek kullanılabilirliğe genel bakış](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
 
-SAP NetWeaver yoks, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı sanal konak adı ve sanal IP adreslerini kullanır. Azure 'da bir sanal IP adresi kullanmak için bir yük dengeleyici gereklidir. Aşağıdaki listede, (A) SCS ve ERS için ayrı ön uç IP 'Leri ile yük dengeleyicinin yapılandırması gösterilmektedir.
+SAP NetWeaver yoks, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı sanal konak adı ve sanal IP adreslerini kullanır. Azure 'da bir sanal IP adresi kullanmak için bir yük dengeleyici gereklidir. [Standart yük dengeleyici](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)kullanmanızı öneririz. Aşağıdaki listede, (A) SCS ve ERS için ayrı ön uç IP 'Leri ile yük dengeleyicinin yapılandırması gösterilmektedir.
 
 > [!IMPORTANT]
 > Azure VM 'lerinde Konuk işletim sistemi olarak Red Hat Linux içeren SAP yoks/ERS 'in çoklu SID Kümelemesi **desteklenmez**. Çoklu SID Kümelemesi, tek bir Paceoluşturucu kümesinde farklı SID 'Leri olan birden fazla SAP ASCS/ERS örneğinin yüklenmesini açıklar.
@@ -107,15 +107,16 @@ SAP NetWeaver yoks, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı
 * Arka uç yapılandırması
   * (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 620<strong>&lt;NR&gt;</strong>
+  * Bağlantı noktası 620<strong>&lt;nr&gt;</strong>
 * Yük Dengeleme kuralları
-  * <strong>&lt;&gt;</strong>  TCP
-  * <strong>&lt;&gt;</strong>  TCP
-  * <strong>&lt;&gt;</strong>  TCP
-  * <strong>&lt;&gt;</strong>  TCP
-  * <strong>&lt;&gt;</strong>13 TCP
-  * <strong>&lt;&gt;</strong>14 TCP
-  * <strong>&lt;&gt;</strong>16 TCP
+  * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
+  * 32<strong>&lt;nr&gt;</strong> TCP
+  * 36<strong>&lt;nr&gt;</strong> TCP
+  * 39<strong>&lt;nr&gt;</strong> TCP
+  * 81<strong>&lt;nr&gt;</strong> TCP
+  * 5<strong>&lt;nr&gt;</strong>13 TCP
+  * 5<strong>&lt;nr&gt;</strong>14 TCP
+  * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ### <a name="ers"></a>SÖZCÜKLERI
 
@@ -124,13 +125,14 @@ SAP NetWeaver yoks, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı
 * Arka uç yapılandırması
   * (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 621<strong>&lt;NR&gt;</strong>
+  * Bağlantı noktası 621<strong>&lt;nr&gt;</strong>
 * Yük Dengeleme kuralları
-  * <strong>&lt;&gt;</strong>  TCP
-  * <strong>&lt;&gt;</strong>  TCP
-  * <strong>&lt;&gt;</strong>13 TCP
-  * <strong>&lt;&gt;</strong>14 TCP
-  * <strong>&lt;&gt;</strong>16 TCP
+  * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
+  * 32<strong>&lt;nr&gt;</strong> TCP
+  * 33<strong>&lt;nr&gt;</strong> TCP
+  * 5<strong>&lt;nr&gt;</strong>13 TCP
+  * 5<strong>&lt;nr&gt;</strong>14 TCP
+  * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Azure NetApp Files altyapısını ayarlama 
 
@@ -180,7 +182,42 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home)aracılığ
 
 Öncelikle Azure NetApp Files birimleri oluşturmanız gerekir. VM 'Leri dağıtın. Daha sonra, bir yük dengeleyici oluşturur ve arka uç havuzlarındaki sanal makineleri kullanırsınız.
 
-1. Load Balancer oluşturma (iç)  
+1. Yük dengeleyici oluşturma (iç, standart):  
+   1. Ön uç IP adreslerini oluşturma
+      1. YOKS için IP adresi 192.168.14.9
+         1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
+         1. Yeni ön uç IP havuzunun adını girin (örneğin **ön uç. QAS. YOKS**)
+         1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **192.168.14.9**)
+         1. Tamam 'a tıklayın
+      1. YOKLAR için IP adresi 192.168.14.10
+         * "A" altında bulunan adımları tekrarlar için bir IP adresi oluşturmak için (örneğin, **192.168.14.10** ve **ön uç). QAS. ERS**)
+   1. Arka uç havuzlarını oluşturma
+      1. YOKS için bir arka uç havuzu oluşturun
+         1. Yük dengeleyiciyi açın, arka uç havuzları ' nı seçin ve Ekle ' ye tıklayın
+         1. Yeni arka uç havuzunun adını girin (örneğin, **arka uç. QAS**)
+         1. Sanal makine Ekle ' ye tıklayın.
+         1. Sanal makineyi seçin. 
+         1. (A) SCS kümesinin sanal makinelerini ve IP adreslerini seçin.
+         1. Ekle'ye tıklayın.
+   1. Sistem durumu araştırmalarını oluşturma
+      1. YOKS için bağlantı noktası 620**00**
+         1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
+         1. Yeni sistem durumu araştırmasının adını (örneğin, **sistem durumu) girin. QAS. YOKS**)
+         1. TCP as Protocol, bağlantı noktası 620**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
+         1. Tamam 'a tıklayın
+      1. YOKLAR için bağlantı noktası 621**01**
+            * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları "c" altında yineleyin (örneğin, 621**01** ve **sistem durumu). QAS. ERS**)
+   1. Yük Dengeleme kuralları
+      1. YOKS için Yük Dengeleme kuralları
+         1. Yük dengeleyiciyi açın, Yük Dengeleme kuralları ' nı seçin ve Ekle ' ye tıklayın.
+         1. Yeni yük dengeleyici kuralının adını girin (örneğin, **lb. QAS. YOKS**)
+         1. Daha önce oluşturduğunuz Ass, arka uç havuzu ve sistem durumu araştırması için ön uç IP adresini seçin (örneğin **ön uç. QAS. YOKLAR**, **arka uç. QAS** ve **sağlık. QAS. YOKS**)
+         1. **Ha bağlantı noktalarını** seçin
+         1. Boşta kalma zaman aşımını 30 dakikaya yükselt
+         1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
+         1. Tamam 'a tıklayın
+         * ÇÖZÜMLEYICILER için Yük Dengeleme kuralları oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, **lb. QAS. ERS**)
+1. Alternatif olarak, senaryonuz temel yük dengeleyici (iç) gerektiriyorsa, şu adımları izleyin:  
    1. Ön uç IP adreslerini oluşturma
       1. YOKS için IP adresi 192.168.14.9
          1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
@@ -219,9 +256,11 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home)aracılığ
       1. YOKLAR için ek bağlantı noktaları
          * 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 ve d/sn için TCP bağlantı noktaları için yukarıdaki adımları yineleyin
 
+> [!Note]
+> Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
 > [!IMPORTANT]
-> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. TCP _Zaman damgaları** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. tcp_timestamps** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker kümesi oluşturma
 
@@ -511,7 +550,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
 
    SAP NetWeaver uygulama sunucusu ve yoks/SCS arasındaki iletişim, bir yazılım yük dengeleyici aracılığıyla yönlendirilir. Yük dengeleyici, yapılandırılabilir bir zaman aşımından sonra etkin olmayan bağlantıları keser. Bunu engellemek için SAP NetWeaver ASCS/SCS profilinde bir parametre ayarlamanız ve Linux sistem ayarlarını değiştirmeniz gerekir. Daha fazla bilgi için [SAP Note 1410736][1410736] makalesini okuyun.
 
-   Ass/SCS profil parametresi EnQue/encnı/set_so_keepalive, son adımda zaten eklendi.
+   Ass/SCS profil parametresi EnQue/encnı/set_so_keepalive son adımla zaten eklendi.
 
    ```
    # Change the Linux system configuration
@@ -559,7 +598,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
     ```
 
    SAP, SAP NW 7,52 itibariyle çoğaltma dahil olmak üzere sıraya alma sunucusu 2 için destek sunmuştur. ABAP platform 1809 ' den başlayarak, sıraya alma sunucusu 2 varsayılan olarak yüklenir. Sıraya alma sunucusu 2 desteği için bkz. SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) .
-   Sıraya alma sunucusu 2 mimarisini ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) kullanıyorsanız, Resource Agent Resource-Agents-sap-4.1.1 -12. EL7. x86_64 veya sonraki bir sürümünü yükleyip kaynakları aşağıdaki gibi tanımlayın:
+   Sıraya alma sunucusu 2 mimarisini ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) kullanıyorsanız, Resource Agent Resource-Agents-sap-4.1.1 -12. el7. x86_64 veya sonraki bir sürümünü yükleyip kaynakları aşağıdaki gibi tanımlayın:
 
     ```
     sudo pcs property set maintenance-mode=true
@@ -747,7 +786,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
 
 ## <a name="install-database"></a>Veritabanını yükler
 
-Bu örnekte, SAP HANA SAP NetWeaver yüklüdür. Bu yükleme için desteklenen her veritabanını kullanabilirsiniz. SAP HANA Azure 'da nasıl yükleyeceğiniz hakkında daha fazla bilgi için, Red Hat Enterprise Linux . For a list of supported databases, see [SAP Note 1928533][1928533] [' de Azure VM 'Lerinde yüksek kullanılabilirlik SAP HANA][sap-hana-ha]bakın.
+Bu örnekte, SAP HANA SAP NetWeaver yüklüdür. Bu yükleme için desteklenen her veritabanını kullanabilirsiniz. SAP HANA Azure 'da nasıl yükleyeceğiniz hakkında daha fazla bilgi için Red Hat Enterprise Linux. For a list of supported databases, see [SAP Note 1928533][1928533][Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik][sap-hana-ha] bölümüne bakın.
 
 1. SAP veritabanı örnek yüklemesini çalıştırma
 
@@ -945,7 +984,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   İleti sunucusunu yalnızca bir kez sonlandırdıysanız, `sapstart` tarafından yeniden başlatılır. Bunu yeterince fazla sonlandırdıysanız, Paceyapıcısı sonunda yoks örneğini diğer düğüme taşıyacaktır. Testten sonra Ass ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
+   İleti sunucusunu yalnızca bir kez sonlandırdıysanız, `sapstart`tarafından yeniden başlatılır. Bunu yeterince fazla sonlandırdıysanız, Paceyapıcısı sonunda yoks örneğini diğer düğüme taşıyacaktır. Testten sonra Ass ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
@@ -1039,7 +1078,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
    [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
    ```
 
-   Komutu yalnızca bir kez çalıştırırsanız, `sapstart` işlem yeniden başlatılır. Bunu yeterince sık çalıştırırsanız, `sapstart` işlem yeniden başlatmaz ve kaynak durdurulmuş durumda olur. Testten sonra ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
+   Komutu yalnızca bir kez çalıştırırsanız `sapstart` işlem yeniden başlatılır. Bunu yeterince sık çalıştırırsanız, `sapstart` işlemi yeniden başlatmaz ve kaynak durdurulmuş durumda olur. Testten sonra ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
 
    ```
    [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01

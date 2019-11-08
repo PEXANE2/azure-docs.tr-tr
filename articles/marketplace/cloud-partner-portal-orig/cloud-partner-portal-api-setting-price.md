@@ -4,15 +4,16 @@ description: Sanal makine tekliflerinin Fiyatlandırmasını belirtmenin üç y�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e398b43e679fb6420c2256e77d34359ae537ac1c
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868754"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827330"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Sanal makine tekliflerinin fiyatlandırması
 ==================================
@@ -23,7 +24,7 @@ Sanal makine teklifleri için fiyatlandırma belirtmek için üç yol vardır: �
 <a name="customized-core-pricing"></a>Özelleştirilmiş çekirdek fiyatlandırma
 -----------------------
 
-Fiyatlandırma her bölge ve çekirdek birleşimine özgüdür. Satış listesindeki her bölge, tanımın **virtualmachinefiyatlandırma**/**regionfiyatların** bölümünde belirtilmelidir.  İsteğinizin her bir [bölgesi](#regions) için doğru para birimi kodlarını kullanın.  Aşağıdaki örnek bu gereksinimleri göstermektedir:
+Fiyatlandırma her bölge ve çekirdek birleşimine özgüdür. Satış listesindeki her bölge, tanımın **Virtualmachinefiyatlandırma**/**regionfiyatlar** bölümünde belirtilmelidir.  İsteğinizin her bir [bölgesi](#regions) için doğru para birimi kodlarını kullanın.  Aşağıdaki örnek bu gereksinimleri göstermektedir:
 
 ``` json
     "virtualMachinePricing": 
@@ -106,12 +107,12 @@ Yayımcı Ayrıca fiyatlandırma elektronik tablosunu geçici bir depolama konum
 VM yayımcılarının, yeni Azure sanal makine boyutlarına (çekirdek sayısına göre) yeni fiyatlara ek olarak, 2 Temmuz 2019 tarihinde bilgilendirildi.  Yeni fiyatlar, 10, 44, 48, 60, 120, 208 ve 416 temel boyutlarına yöneliktir.  Mevcut VM için, bu çekirdek boyutları için yeni fiyatlar, geçerli fiyatlara göre otomatik olarak hesaplanır.  Yayımcılar, ek fiyatları gözden geçirmek ve istediğiniz değişiklikleri yapmak için 1 Ağustos 2019 ' e kadar.  Bu tarihten sonra, yayımcı tarafından zaten yeniden yayımlanmamışsa, bu yeni çekirdek boyutları için otomatik olarak hesaplanan fiyatlar geçerli olur.
 
 
-<a name="regions"></a>Regions
+<a name="regions"></a>Bölgeler
 -------
 
 Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirtebileceğiniz farklı bölgeler ve bunlara karşılık gelen para birimi kodları gösterilmektedir.
 
-| **Bölge** | **Name**             | **Para birimi kodu** |
+| **Bölge** | **Ad**             | **Para birimi kodu** |
 |------------|----------------------|-------------------|
 | DZ         | Cezayir              | DZD               |
 | AR         | Arjantin            | ARS               |
@@ -126,9 +127,9 @@ Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirteb
 | CL         | Şili                | CLP               |
 | CO         | Kolombiya             | COP               |
 | CR         | Kosta Rika           | CRC               |
-| HR         | Hırvatistan              | HRK DİLİ               |
+| HR         | Hırvatistan              | HRK dili               |
 | CY         | Kıbrıs               | EUR               |
-| CZ         | Çek Cumhuriyeti       | CZK               |
+| CZ         | Çek Cumhuriyeti       | CZK dili               |
 | DK         | Danimarka              | DKK               |
 | DO         | Dominik Cumhuriyeti   | USD               |
 | EC         | Ekvador              | USD               |
@@ -140,11 +141,11 @@ Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirteb
 | DE         | Almanya              | EUR               |
 | GR         | Yunanistan               | EUR               |
 | GT         | Guatemala            | GTQ               |
-| HK         | Hong Kong SAR        | HKD               |
+| HK         | Hong Kong ÖIB        | HKD               |
 | HU         | Macaristan              | KUF               |
 | IS         | İzlanda              | ISK               |
 | IN         | Hindistan                | INR               |
-| id         | Endonezya            | IDR               |
+| Kimlik         | Endonezya            | IDR               |
 | IE         | İrlanda              | EUR               |
 | IL         | İsrail               | ÖR               |
 | BT         | İtalya                | EUR               |

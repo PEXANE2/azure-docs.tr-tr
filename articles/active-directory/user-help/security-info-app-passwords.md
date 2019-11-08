@@ -1,5 +1,5 @@
 ---
-title: Güvenlik bilgileri (Önizleme) sayfasından uygulama parolaları ayarlama-Azure Active Directory | Microsoft Docs
+title: Güvenlik bilgilerinde uygulama parolaları oluşturma (Önizleme)-Azure AD
 description: Herhangi bir tarayıcı olmayan uygulamayla veya iki öğeli doğrulamayı desteklemeyen herhangi bir uygulamayla kullanmak için otomatik olarak oluşturulan parolalar (Uygulama parolaları) ayarlayın. Bu uygulama parolası normal bir paroladan ayrıdır ve güvenlik bilgileri sayfasından ayarlanabilir.
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: eb26d90772fc9e3e3e506946363c76cf02e6b2ef
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915989"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820335"
 ---
-# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Uygulama parolalarını güvenlik bilgileriniz (Önizleme) sayfasından yönetin
+# <a name="create-app-passwords-from-your-security-info-preview-page"></a>Güvenlik bilgileri (Önizleme) sayfasından uygulama parolaları oluşturma
 
 Outlook 2010 gibi bazı uygulamalar iki aşamalı doğrulamayı desteklemez. Bu destek eksikliği, kuruluşunuzda iki aşamalı doğrulama kullanıyorsanız uygulamanın çalışmamasıdır. Bu sorunu çözmek için, her tarayıcı olmayan uygulamayla birlikte kullanmak üzere otomatik olarak oluşturulan bir parola oluşturarak normal parolanınızdan ayırabilirsiniz.
 

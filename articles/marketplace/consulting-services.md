@@ -4,15 +4,16 @@ description: Bu makalede, Azure Marketi 'ndeki yeni danışmanlık hizmeti tekli
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: e23a83ab3a5b110f74ab4ac203dfc020e8920c24
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285988"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825966"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Market ve AppSource için danışmanlık hizmetleri
 Azure Market ve AppSource 'ta Danışmanlık Hizmetleri, Microsoft iş ortakları 'na, Azure ve iş hedefleri kullanımını desteklemek ve bunları genişletmek üzere Hizmetleri ile bağlama amacını sağlar. 
@@ -24,7 +25,7 @@ Bu danışmanlık hizmeti teklifleri müşteriye özgü görevlendirmelerdir. Ya
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure Marketi 'nde danışmanlık hizmetleri vs AppSource storefront
 Market storetları, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için izleyiciler ve Microsoft bulut ürünleriyle hizalanır. Her storefront, yayımlama yatırımınızın en üst düzeye çıkmasına yardımcı olacak özel yayımlama seçenekleri sunar. Aşağıdaki tabloda bu seçenekler özetlenmektedir:
 
-|         |Azure Marketi  |Microsoft AppSource |
+|         |Azure Market  |Microsoft AppSource |
 |---------|---------|---------|
 |**Grubu**   |**BT uzmanları ve bulut geliştiricileri**|**İş kullanıcıları/iş kolu karar mekanizmaları**|
 |Çözüm Ilgisi     |Azure 'da oluşturulan veya oluşturulan teknik uygulamalar|D365, Power BI, O365, Azure 'dan yararlanan/genişleten iş uygulamaları. (Eklenti veya eklenti tamamlanmış uygulamalar)|
@@ -64,7 +65,7 @@ Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Az
 |Finans ve Işlemler için Dynamics 365, Enterprise Edition  |  Gümüş veya altın [Kurumsal kaynak planlama](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) uzmanlığına ve son 12 ay Içinde bulut işlemlerinde minimum $25k gelir.       |
 |Finans ve Işlemler için Dynamics 365, Iş sürümü  |  En az bir müşteri için [bulut hizmeti sağlayıcısı (CSP)](https://partner.microsoft.com/cloud-solution-provider) veya [dijital kayıt Iş ortağı (DPOR)](https://partner.microsoft.com/membership/digital-partner-of-record) olarak hizmet verir      |
 |Power BI, özel görseller Power BI | [Çözüm Iş ortağı ölçütlerini](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf)karşılayın.|
-|PowerApp’ler | Yayınlanmış [Iş ortağı gösterimi](https://appsource.microsoft.com/partners) çözümüne sahip olun
+|PowerApps | Yayınlanmış [Iş ortağı gösterimi](https://appsource.microsoft.com/partners) çözümüne sahip olun
 
 <b>Daha fazla bilgi için [Microsoft iş ortağı ağı aracılığıyla Uzmanlıklar](https://partner.microsoft.com/membership/competencies)konusuna bakın.</b>
  
@@ -76,7 +77,7 @@ Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Az
 |Avustralya |Fransa  |     Meksika          |İspanya       |
 |Belçika   |Almanya |     Hollanda     |İsveç       |
 |Kanada    |Hindistan   |     Yeni Zelanda     |Birleşik Krallık  |
-|Danimarka   |İtalya   |     Norveç          |Birleşik Devletler |
+|Danimarka   |İtalya   |     Norveç          |Amerika Birleşik Devletleri |
 |Finlandiya   |Japonya   |     Polonya          
 
 
@@ -150,7 +151,7 @@ Başlık alanı 50 karakterlik bir sınıra sahiptir ve arama motoru iyileştirm
 
 Teklif açıklamalarını ve teklif özetlerini gözden geçirirken, takım aşağıdaki ölçütleri uygular:
 
-|Teklif Türü  |Gereklidir |Önerilen  |
+|Teklif Türü  |Gerekli |Önerilen  |
 |---------|---------|---------|
 |**Değerlendirme**    |   Multi-Day veya Multi-Week değerlendirmeleri için ayrıntılı bir gündem ekleyin ve müşterinin beklediği teslim edilebilirini ifade edin      |    En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin     |
 |**Bilgilendirme istemek**    |   Müşterinin beklediği teslim edilebilirini ifade edebilir. Kişi içinde Brit 'in sunulması gerektiğini unutmayın. Bir sanal hizmet sağlıyorsanız, lütfen farklı bir teklif türü seçin    |  En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin       |

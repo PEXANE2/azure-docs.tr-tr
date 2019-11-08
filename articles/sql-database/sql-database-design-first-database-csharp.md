@@ -1,22 +1,23 @@
 ---
-title: İlk ilişkisel veritabanınızı tasarlama- C# -Azure SQL veritabanı | Microsoft Docs
+title: İlk ilişkisel veritabanınızı tasarlamaC#
 description: ADO.NET C# kullanarak Azure SQL veritabanı 'nda tek bir veritabanında ilk ilişkisel veritabanınızı tasarlamayı öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
+ms.custom: seo-lt-2019
 ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 3359c39b21edad72ce0b9d7feb35d442c842f002
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 201f90ae1ee7309f0271d046f341729c79749421
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640103"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825198"
 ---
-# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Öğretici: Azure SQL veritabanı C&#x23; ve ADO.NET içinde tek bir veritabanında ilişkisel veritabanı tasarlama
+# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Öğretici: Azure SQL veritabanı C&#x23; ve ADO.NET içinde tek bir veritabanında Ilişkisel veritabanı tasarlama
 
 Azure SQL veritabanı, Microsoft Bulut (Azure) içindeki ilişkisel bir hizmet olarak veritabanı (DBaaS). Bu öğreticide, Visual Studio ile ADO.NET ve Azure portalını kullanarak şu işlemleri gerçekleştirmeyi öğreneceksiniz:
 
@@ -33,7 +34,7 @@ Azure SQL veritabanı, Microsoft Bulut (Azure) içindeki ilişkisel bir hizmet o
 > [!TIP]
 > Aşağıdaki Microsoft Learn modülü, basit bir veritabanının oluşturulması dahil olmak üzere [Azure SQL veritabanını sorgulayan bir ASP.NET uygulamasının nasıl geliştirileceği ve yapılandırılacağı](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)hakkında bilgi edinmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Visual Studio 2019](https://www.visualstudio.com/downloads/) veya sonraki bir sürümünü yükleme.
 
@@ -64,11 +65,11 @@ Boş tek veritabanı oluşturmak için bu adımları izleyin.
     | **Sunucu adı** | Genel olarak benzersiz bir ad | Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/naming-conventions). |
     | **Sunucu yöneticisi oturum açma bilgileri** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [veritabanı tanımlayıcıları](/sql/relational-databases/databases/database-identifiers). |
     | **Parola** | Geçerli bir parola | Parolanız en az sekiz karakter uzunluğunda olmalı ve şu kategorilerden üçünden karakter kullanmalıdır: büyük harf karakterler, küçük harf karakterler, sayılar ve alfasayısal olmayan karakterler. |
-    | **Location** | Geçerli bir konum | Bölgeler hakkında bilgi için bkz. [Azure Bölgeleri](https://azure.microsoft.com/regions/). |
+    | **Konum** | Geçerli bir konum | Bölgeler hakkında bilgi için bkz. [Azure Bölgeleri](https://azure.microsoft.com/regions/). |
 
     ![create database-server](./media/sql-database-design-first-database/create-database-server.png)
 
-5. Tıklayın **seçin**.
+5. **Seç**'e tıklayın.
 6. Hizmet katmanını, DTU veya sanal çekirdek sayısını ve depolama alanı miktarını belirtmek için **Fiyatlandırma katmanı**’na tıklayın. Her hizmet katmanı için kullanılabilir DTU 'lar/sanal çekirdek sayısı ve depolama seçeneklerini keşfedebilirsiniz.
 
     Hizmet katmanını, DTU 'Lar veya sanal çekirdekler sayısını ve depolama alanı miktarını seçtikten sonra **Uygula**' ya tıklayın.
@@ -100,7 +101,7 @@ SQL veritabanı hizmeti, sunucu düzeyinde bir IP güvenlik duvarı oluşturur. 
 
 4. Geçerli IP adresinizi yeni bir IP güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' ye tıklayın. Bir IP güvenlik duvarı kuralı, tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir.
 
-5. **Kaydet**’e tıklayın. SQL veritabanı sunucusunda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+5. **Kaydet** düğmesine tıklayın. SQL veritabanı sunucusunda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
 6. **Tamam**’a tıklayın ve sonra **Güvenlik duvarı ayarları** sayfasını kapatın.
 

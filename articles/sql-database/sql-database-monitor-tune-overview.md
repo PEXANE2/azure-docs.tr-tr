@@ -1,5 +1,5 @@
 ---
-title: İzleme ve performans ayarlama-Azure SQL veritabanı
+title: İzleme ve performans ayarlama
 description: Değerlendirme ve iyileştirme aracılığıyla Azure SQL veritabanı 'nda performans ayarlama ipuçları.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: c11112963ec82a0e53df156048495e7b5141bcb7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e77af00dc3352af3265da90685e58b34c96bee81
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687755"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825151"
 ---
 # <a name="monitoring-and-performance-tuning"></a>İzleme ve performans ayarlama
 
@@ -34,7 +34,7 @@ Bir veritabanının sorunsuz çalıştığından emin olmak için şunları yapm
 
 Azure 'da bir SQL veritabanının performansını izlemek için, seçtiğiniz veritabanı performansı düzeyine göre kullanılan kaynakları izleyerek başlayın. Aşağıdaki kaynakları izleyin:
  - **CPU kullanımı**: gelişmiş bir süre IÇIN veritabanının CPU kullanımının yüzde 100 ' una ulaşmasını denetleyin. Yüksek CPU kullanımı, en fazla işlem gücünü kullanan sorguları belirlemeniz ve ayarlamanız gerektiğini gösterebilir. Yüksek CPU kullanımı, veritabanının veya örneğin daha yüksek bir hizmet katmanına yükseltilmesi gerektiğini de gösterebilir. 
- - **Bekleme istatistikleri**: sorguların beklediği süreyi öğrenmek için [sys. DM _os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) kullanın. Sorgular, kaynakların, kuyruğun beklediği veya dış bekleme için bekleniyor. 
+ - **Bekleme istatistikleri**: sorguların beklediği süreyi öğrenmek için [sys. dm_os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) kullanın. Sorgular, kaynakların, kuyruğun beklediği veya dış bekleme için bekleniyor. 
  - **GÇ kullanımı**: veritabanının TEMELDEKI depolamanın GÇ sınırlarına ulaşmakta olup olmadığını denetleyin.
  - **Bellek kullanımı**: veritabanı veya örnek için kullanılabilir bellek miktarı, sanal çekirdek sayısıyla orantılıdır. Belleğin iş yükü için yeterli olduğundan emin olun. Sayfa ömrü erkeklerin sayfaların bellekten ne kadar hızlı bir şekilde kaldırıldığını gösterebilen parametrelerden biridir.
 
@@ -91,11 +91,11 @@ Genel bir kılavuz olarak, CPU kullanımı düzenli olarak yüzde 80 ' lik veya 
 - CPU yüzdesi kullanımını izlemek için [Azure Portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal) kullanın.
 - Aşağıdaki [DMVs](sql-database-monitoring-with-dmvs.md)'leri kullanın:
 
-  - [Sys. DM _db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV, bir SQL VERITABANı için CPU, g/ç ve bellek tüketimi döndürüyor. Veritabanında etkinlik olmasa bile, her 15 saniyelik Aralık için bir satır vardır. Geçmiş verileri bir saat boyunca tutulur.
+  - [Sys. dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV, bir SQL VERITABANı için CPU, g/ç ve bellek tüketimi döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyelik Aralık için bir satır vardır. Geçmiş verileri bir saat boyunca tutulur.
   - [Sys. resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV, Azure SQL VERITABANı için CPU kullanımı ve depolama verileri döndürür. Veriler, beş dakikalık aralıklarla toplanır ve toplanır.
 
 > [!IMPORTANT]
-> Sys. DM _db_resource_stats ve sys. resource_stats DMVs kullanan T-SQL sorgularıyla ilgili CPU kullanımı sorunlarını gidermek için bkz. [CPU performans sorunlarını belirleme](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
+> Sys. dm_db_resource_stats ve sys. resource_stats DMVs kullanan T-SQL sorguları için CPU kullanımı sorunlarını gidermek için bkz. [CPU performans sorunlarını tanımla](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
 
 ### <a name="ParamSniffing"></a>PSP sorunları olan sorgular
 
@@ -108,7 +108,7 @@ Bazı geçici çözümler, PSP sorunlarını azaltır. Her geçici çözümün i
 - Her sorgu yürütmesinde sorgu ipucunu yeniden [Derle](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) ' i kullanın. Bu geçici çözüm, daha iyi plan kalitesi için derleme süresini ve CPU 'YU artırabilir. `RECOMPILE` seçeneği genellikle yüksek aktarım hızı gerektiren iş yükleri için mümkün değildir.
 - Gerçek parametre değerini, çoğu parametre değeri olasılıklarından yeterince iyi bir plan üreten tipik bir parametre değeri ile geçersiz kılmak için [seçeneğini kullanın (..](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) .........) sorgu ipucunu kullanın. Bu seçenek, en iyi parametre değerlerinin ve ilişkili plan özelliklerinin iyi bir şekilde anlaşılmasına gerek duyar.
 - Gerçek parametre değerini geçersiz kılmak için [(BILINMEYEN IÇIN iyileştirin)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) sorgu ipucunu kullanın ve bunun yerine yoğunluk vektörü ortalamasını kullanın. Bunu, yerel değişkenlerdeki gelen parametre değerlerini yakalayıp, sonra parametrelerinin kendilerini kullanmak yerine koşulların içindeki yerel değişkenleri kullanarak da yapabilirsiniz. Bu çözüm için, ortalama yoğunluğu *yeterince iyi*olmalıdır.
-- [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) sorgu ipucunu kullanarak parametre algılama özelliğini tamamen devre dışı bırakın.
+- [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) sorgu ipucunu kullanarak tamamen parametre algılaması 'nı devre dışı bırakın.
 - Önbellekte yeniden derleme yapılmasını engellemek için [KeepFixedPlan](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) sorgu ipucunu kullanın. Bu geçici çözüm, daha önce önbellekte olan uygun bir plan olduğunu varsayar. Ayrıca, iyi planın çıkartılacağı ve yeni bir hatalı planın derlenmesi olasılığını azaltmak için otomatik istatistik güncelleştirmelerini devre dışı bırakabilirsiniz.
 - Sorguyu yeniden yazarak ve sorgu metnine ipucu ekleyerek planı [kullanma](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) sorgu ipucunu kullanarak planı kesin olarak zorlayın. Veya sorgu deposu kullanarak veya [otomatik ayarlamayı](sql-database-automatic-tuning.md)etkinleştirerek belirli bir planı ayarlayın.
 - Tek yordamı, her biri koşullu Logic ve ilişkili parametre değerlerine göre kullanılabilecek, iç içe geçmiş bir yordamlar kümesiyle değiştirin.
@@ -181,7 +181,7 @@ Yeniden derleme (veya önbellek çıkarılması sonrasında yeni derleme), oriji
 
 - **Farklı istatistikler**: başvurulan nesnelerle ilişkili istatistikler değişmiş olabilir veya özgün sistemin istatistikleriyle, bu durum önemli ölçüde farklı olabilir.  İstatistik değişikliği ve yeniden derleme gerçekleştiğinde, sorgu iyileştiricisi değiştiği sırada başlangıç istatistiklerini kullanır. Düzeltilen istatistiklerin veri dağıtımları ve frekansları, özgün derlemeden farklı bir farklılık gösterebilir.  Bu değişiklikler, kardinalite tahminleri oluşturmak için kullanılır. (*Kardinalite tahminleri* , mantıksal sorgu ağacı üzerinden akışı beklenen satır sayısıdır.) Kardinalite tahminlerinde yapılan değişiklikler, farklı fiziksel işleçler ve ilişkili işlem siparişleri seçmenize yol açabilir.  İstatistikte küçük değişiklikler bile değiştirilen bir sorgu yürütme planına yol açabilir.
 
-- **Değiştirilen veritabanı uyumluluk düzeyi veya kardinalite tahmini sürümü**: veritabanı uyumluluk düzeyinde yapılan değişiklikler, farklı bir sorgu yürütme planına neden olabilecek yeni stratejiler ve özellikler sağlayabilir.  Veritabanı uyumluluk düzeyinin ötesinde, devre dışı veya etkin bir izleme bayrağı 4199 veya veritabanı kapsamlı yapılandırma QUERY_OPTIMIZER_HOTFIXES değiştirilmiş durumu, derleme zamanında sorgu yürütme planı seçimlerini de etkileyebilir.  İzleme bayrakları 9481 (eski CE 'yi zorla) ve 2312 (varsayılan CE 'yi zorla) Ayrıca planı da etkiler. 
+- **Değiştirilen veritabanı uyumluluk düzeyi veya kardinalite tahmini sürümü**: veritabanı uyumluluk düzeyinde yapılan değişiklikler, farklı bir sorgu yürütme planına neden olabilecek yeni stratejiler ve özellikler sağlayabilir.  Veritabanı uyumluluk düzeyinin ötesinde, devre dışı veya etkin bir izleme bayrağı 4199 veya veritabanı kapsamlı yapılandırma QUERY_OPTIMIZER_HOTFIXES değiştirilen bir durum, derleme zamanında sorgu yürütme planı seçimlerini de etkileyebilir.  İzleme bayrakları 9481 (eski CE 'yi zorla) ve 2312 (varsayılan CE 'yi zorla) Ayrıca planı da etkiler. 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Sorun sorgularını çözümleyin veya daha fazla kaynak sağlayın
 
@@ -215,16 +215,16 @@ Performans sorununuzun yüksek CPU kullanımı veya çalışıyor ile ilgili olm
 
 Bu yöntemler genellikle bekleme türlerinin en üstteki kategorilerini göstermek için kullanılır:
 
-- Zaman içinde her bir sorgunun bekleme istatistiklerini bulmak için [sorgu deposu](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) ' nu kullanın. Sorgu deposunda, bekleme türleri bekleme kategorilerine birleştirilir. Wait kategorilerinin [sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table)içinde bekleme türleri eşlemesini bulabilirsiniz.
-- İşlem sırasında yürütülen iş parçacıklarının karşılaştığı tüm bekler hakkında bilgi döndürmek için [sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) kullanın. Azure SQL veritabanı ve ayrıca belirli sorgular ve toplu işlerle ilgili performans sorunlarını tanılamak için bu toplanmış görünümü kullanabilirsiniz.
-- Bazı kaynakları bekleyen görev kuyruğu hakkında bilgi döndürmek için [sys. DM _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) kullanın.
+- Zaman içinde her bir sorgunun bekleme istatistiklerini bulmak için [sorgu deposu](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) ' nu kullanın. Sorgu deposunda, bekleme türleri bekleme kategorilerine birleştirilir. Wait kategorilerinin, [sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table)içindeki bekleme türlerine eşlemesini bulabilirsiniz.
+- İşlem sırasında yürütülen iş parçacıklarının karşılaştığı tüm bekler hakkında bilgi döndürmek için [sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) kullanın. Azure SQL veritabanı ve ayrıca belirli sorgular ve toplu işlerle ilgili performans sorunlarını tanılamak için bu toplanmış görünümü kullanabilirsiniz.
+- Bazı kaynakları bekleyen görev kuyruğu hakkında bilgi döndürmek için [sys. dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) kullanın.
 
 Yüksek CPU senaryolarında sorgu deposu ve bekleme istatistikleri şu durumlarda CPU kullanımını yansıtmayabilir:
 
 - Yüksek CPU kullanan sorgular hala yürütülüyor.
 - Yük devretme sırasında yüksek CPU kullanan sorgular çalışıyor.
 
-Dmv sorgu deposunu ve bekleme istatistiklerini izleyen yalnızca başarıyla tamamlanan ve zaman aşımına uğrayan sorgular için sonuçları gösterir. Deyimler tamamlanana kadar Şu anda yürütülmekte olan deyimler için veri göstermez. Şu anda yürütülmekte olan sorguları ve ilişkili çalışan saatini izlemek için dinamik yönetim görünümü [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ' i kullanın.
+Dmv sorgu deposunu ve bekleme istatistiklerini izleyen yalnızca başarıyla tamamlanan ve zaman aşımına uğrayan sorgular için sonuçları gösterir. Deyimler tamamlanana kadar Şu anda yürütülmekte olan deyimler için veri göstermez. Şu anda yürütülmekte olan sorguları ve ilişkili çalışan saatini izlemek için, dinamik yönetim görünümü [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) kullanın.
 
 Bu makalenin başındaki grafik en sık görülen süreyi gösterir:
 

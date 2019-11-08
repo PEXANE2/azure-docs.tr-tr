@@ -1,6 +1,6 @@
 ---
 title: İlk otomatik iş akışınızı oluşturma-Azure Logic Apps
-description: Hızlı başlangıç-sistem tümleştirme ve kuruluş uygulaması Tümleştirme (EAı) çözümleri için Azure Logic Apps kullanarak ilk otomatikleştirilmiş görevinizi oluşturun
+description: Hızlı başlangıç-sistem tümleştirme ve kuruluş uygulaması Tümleştirme (EAı) çözümleri için Azure Logic Apps kullanarak ilk otomatikleştirilmiş iş akışınızı oluşturun
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,20 +11,20 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: d5ac23da7b4460211100f1140c24f6ed28ab3e39
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b6222747e352f446dab33314729f7f697e328909
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584340"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824898"
 ---
-# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Hızlı başlangıç: Azure Logic Apps ile ilk otomatik iş akışınızı oluşturma - Azure portal
+# <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Hızlı başlangıç: Azure Logic Apps Azure portal kullanarak ilk iş akışınızı oluşturun
 
-Bu hızlı başlangıçta, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ile ilk otomatik iş akışınızı nasıl oluşturabileceğiniz konusuna giriş yapılır. Bu makalede, bir web sitesinin RSS akışında yeni öğe olup olmadığını düzenli olarak denetleyen bir mantıksal uygulama oluşturursunuz. Yeni öğeler varsa, mantıksal uygulama her öğe için bir e-posta gönderir. İşlemi tamamladığınızda, mantıksal uygulamanız bu yüksek düzeyli iş akışı gibi görünür:
+Bu hızlı başlangıçta, boş bir mantıksal uygulama oluşturma, tetikleyici ve eylem ekleme ve daha sonra mantıksal uygulamanızı test etme gibi [Azure Logic Apps](../logic-apps/logic-apps-overview.md)kullanarak ilk iş akışınızı oluşturma konusunda temel genel kavramlar tanıtılmıştır. Bu hızlı başlangıçta, yeni öğeler için bir Web sitesinin RSS akışını düzenli olarak denetleyen bir mantıksal uygulama oluşturacaksınız. Yeni öğeler varsa, mantıksal uygulama her öğe için bir e-posta gönderir. İşlemi tamamladığınızda, mantıksal uygulamanız bu yüksek düzeyli iş akışı gibi görünür:
 
 ![Üst düzey örnek mantıksal uygulama iş akışı](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Bu hızlı başlangıcı takip etmek için Office 365 Outlook, Outlook.com veya Gmail gibi Azure Logic Apps tarafından desteklenen sağlayıcıdan bir e-posta hesabına sahip olmanız gerekir. Diğer sağlayıcılar için [buradaki bağlayıcı listesini inceleyin](https://docs.microsoft.com/connectors/). Bu mantıksal uygulama bir Office 365 Outlook hesabı kullanır. Başka bir e-posta hesabı kullanırsanız, genel adımlar aynıdır, ancak Kullanıcı arabiriminiz biraz farklı görünebilir.
+Bu senaryo için, Office 365 Outlook, Outlook.com veya Gmail gibi Azure Logic Apps tarafından desteklenen bir hizmetten e-posta hesabına ihtiyacınız vardır. Desteklenen diğer e-posta hizmetleri için [burada bağlayıcılar listesini gözden geçirin](https://docs.microsoft.com/connectors/). Bu örnekte, mantıksal uygulama Office 365 Outlook 'U kullanır. Farklı bir e-posta hizmeti kullanıyorsanız genel adımlar aynıdır, ancak Kullanıcı arabiriminiz biraz farklı görünebilir.
 
 Ayrıca, Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -42,7 +42,7 @@ Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azur
 
    ![Yeni mantıksal uygulama ekle](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
-1. Mantıksal uygulama bölmesinde aşağıda gösterildiği gibi mantıksal uygulamanız hakkında ayrıntılı bilgi sağlayın. İşiniz bittiğinde **Oluştur**' u seçin.
+1. **Mantıksal uygulama** bölmesinde aşağıda gösterildiği gibi mantıksal uygulamanız hakkında ayrıntılı bilgi sağlayın. İşiniz bittiğinde **Oluştur**' u seçin.
 
    ![Yeni mantıksal uygulama için ayrıntıları sağlayın](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
@@ -69,11 +69,11 @@ Sonra, yeni bir RSS akışı öğesi göründüğünde tetiklenen bir [tetikleyi
 
 <a name="add-rss-trigger"></a>
 
-## <a name="check-rss-feed-with-a-trigger"></a>Bir tetikleyici ile RSS akışı denetleme
+## <a name="add-the-rss-trigger"></a>RSS tetikleyicisi ekleme
 
 1. **Mantıksal uygulama Tasarımcısı**' nda, arama kutusunda, **Tümü**' nü seçin.
 
-1. Arama kutusuna `rss` yazın. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **bir akış öğesi yayımlandığında**.
+1. RSS bağlayıcısını bulmak için arama kutusuna `rss` girin. Tetikleyiciler listesinden **bir akış öğesi yayımlandığında** tetikleyicisi ' ni seçin.
 
    !["Akış öğesi yayımlandığında" tetikleyicisini seçin](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -90,7 +90,7 @@ Sonra, yeni bir RSS akışı öğesi göründüğünde tetiklenen bir [tetikleyi
 
    Aralık ve sıklık özelliği, mantıksal uygulamanızın tetikleyicisi için zamanlamayı tanımlar. Bu mantıksal uygulama, akışı dakika başı denetler.
 
-1. Tetikleyici ayrıntılarını şimdilik gizlemek için tetikleyicinin başlık çubuğunun içine tıklayın.
+1. Tetikleyici ayrıntılarını şimdilik daraltmak için tetikleyicinin başlık çubuğunun içine tıklayın.
 
    ![Ayrıntıları gizlemek için mantıksal uygulama şeklini daraltın](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
@@ -98,7 +98,7 @@ Sonra, yeni bir RSS akışı öğesi göründüğünde tetiklenen bir [tetikleyi
 
 Mantıksal uygulamanız çalışıyor ancak RSS akışını kontrol etme dışında bir işlem gerçekleştirmiyor. Şimdi, tetikleyici etkinleştirildiğinde gerçekleştirilecek bir eylem ekleyin.
 
-## <a name="send-email-with-an-action"></a>Bir eylemle e-posta gönderme
+## <a name="add-the-send-email-action"></a>"E-posta gönder" eylemini ekleyin
 
 Şimdi RSS akışında yeni bir öğe göründüğünde e-posta gönderen bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-concepts) ekleyin.
 
@@ -108,7 +108,7 @@ Mantıksal uygulamanız çalışıyor ancak RSS akışını kontrol etme dışı
 
 1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü**' nü seçin.
 
-1. Arama kutusuna `send an email` yazın. Eylemler listesinden istediğiniz e-posta sağlayıcısıyla "e-posta gönder" eylemini seçin.
+1. Bu eylemi sunan bağlayıcıları bulmak için arama kutusuna `send an email` girin. Eylemler listesinden, kullanmak istediğiniz e-posta hizmeti için "e-posta gönder" eylemini seçin. Bu örnek, **e-posta gönder** eylemi olan Office 365 Outlook bağlayıcısını kullanır.
 
    ![Office 365 Outlook için "e-posta gönder" eylemini seçin](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
@@ -117,7 +117,15 @@ Mantıksal uygulamanız çalışıyor ancak RSS akışını kontrol etme dışı
    * Azure iş veya okul hesapları için Office 365 Outlook girişini seçin.
    * Kişisel Microsoft hesapları için Outlook.com girişini seçin.
 
-1. Kimlik bilgileriniz istenirse, Logic Apps’in e-posta hesabınıza yönelik bir bağlantı oluşturması için e-posta hesabınızda oturum açın.
+1. Seçtiğiniz e-posta Bağlayıcınız kimliğinizin kimliğini doğrulamanızı isterse, mantıksal uygulamanız ile e-posta hizmetiniz arasında bir bağlantı oluşturmak için bu adımı hemen doldurun.
+
+   > [!NOTE]
+   > Bu belirli örnekte, kimliğinizi el ile doğrukullanırsınız. Ancak, kimlik doğrulaması gerektiren bağlayıcılar destekledikleri kimlik doğrulama türlerinde farklılık gösterir. Ayrıca, kimlik doğrulamasını işlemek istediğiniz şekilde ayarlama seçenekleriniz vardır. Örneğin, dağıtım için Azure Resource Manager Şablonlar kullandığınızda, bağlantı bilgileri gibi sıklıkla veya kolayca değiştirmek istediğiniz girdileri parametreleştirebilirsiniz ve güvenli hale getirebilirsiniz. Daha fazla bilgi için şu konulara bakın:
+   >
+   > * [Dağıtım için şablon parametreleri](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
+   > * [OAuth bağlantılarını yetkilendir](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)
+   > * [Yönetilen kimliklerle erişimin kimliğini doğrulama](../logic-apps/create-managed-service-identity.md)
+   > * [Mantıksal uygulama dağıtımı için bağlantı kimlik doğrulaması](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)
 
 1. **E-posta gönderme** eyleminde, e-postanızın içermesini istediğiniz verileri belirtin.
 

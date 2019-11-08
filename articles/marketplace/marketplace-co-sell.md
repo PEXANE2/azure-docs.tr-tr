@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 14e8eb625658eac7f65e976e79669dac4ea1bdbd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: fcc275b7534ebbfd65b28cbfce170dc6e1b926d9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076166"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823048"
 ---
 # <a name="co-sell-partner-engagement"></a>Ortak satış iş ortağı etkileşimi
 
@@ -22,11 +23,11 @@ Microsoft 'un ortak satış programı, iş ortaklarının doğrudan Microsoft il
 
 Üç iş ortağı satışı vardır:
 
-* *İş ortağı üzerinden satış*: Microsoft teknolojisini kendi satıcılarınız aracılığıyla yeniden satıtabilirsiniz.
-* *Hizmetler ortak satışı*: Satıcılar ve iş ortakları, Microsoft Technology Embedded ile projenizi veya yönetilen Hizmetleri satmak için işbirliği yapıyor.
-* *IP ortak satışı*: Satıcılar/iş ortakları, tekrarlanabilir, paketlenmiş IP çözümünüzü satmak için işbirliği yapıyor.
+* *İş ortağı aracılığıyla satın*alabilirsiniz: Microsoft teknolojisini kendi satıcılarınız aracılığıyla yeniden satabilirsiniz.
+* *Hizmetler ortak satış*: satıcılar ve iş ortakları, Microsoft Technology Embedded ile projenizi veya yönetilen Hizmetleri satmak için işbirliği yapıyor.
+* *IP ortak satışı*: satıcılar/iş ortakları, tekrarlanabilir, paketlenmiş IP çözümünüzü satmak için işbirliği yapıyor.
 
-\*Bu IP ortak satış çözümlerinin bazıları, Microsoft 'un alan satış ekipleriyle başarıyla satıldığında ve dağıtıldığında ek teşvikleri alabilir.
+Bu IP ortak satış çözümlerinin bazıları \*, Microsoft 'un alan satış ekipleriyle başarıyla satıldığında ve dağıtıldığında ek teşvikleri alabilir.
 
 ![Ortak satış gerçekleştiğinde](./media/marketplace-publishers-guide/marketplace-co-sell.png)
 

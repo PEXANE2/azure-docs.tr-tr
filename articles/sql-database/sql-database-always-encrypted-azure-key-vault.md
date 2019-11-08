@@ -1,5 +1,5 @@
 ---
-title: 'Always Encrypted: SQL veritabanı-Azure Key Vault '
+title: Always Encrypted Azure Key Vault
 description: Bu makalede, SQL Server Management Studio ' de Always Encrypted Sihirbazı kullanılarak bir SQL veritabanında hassas verilerin nasıl güvenli hale kullanılacağı gösterilir.
 keywords: veri şifreleme, şifreleme anahtarı, bulut şifreleme
 services: sql-database
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 7ba19f3f3e03c414d651082898976c5bd17e89c9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4fa4c461a3bcf5921be74eab9259fd07cc6b5f61
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691258"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826443"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: hassas verileri koruma ve şifreleme anahtarlarını Azure Key Vault içinde depolama
 

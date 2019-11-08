@@ -1,5 +1,5 @@
 ---
-title: Sunucu düzeyinde güvenlik duvarı kuralı oluşturma-Azure SQL veritabanı | Microsoft Docs
+title: Sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 description: Tek ve havuza alınmış veritabanları için SQL veritabanı sunucu düzeyinde güvenlik duvarı kuralı oluşturma
 services: sql-database
 ms.service: sql-database
@@ -11,31 +11,31 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 27b554159fca2043fbd0c853e260a66294c10387
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: ff2508952b75bad88ff8ff92388c20ba52f50f42
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162304"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818251"
 ---
-# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak tek ve havuza alınmış veritabanları için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
+# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak tek ve havuza alınmış veritabanları için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 
 Bu hızlı başlangıçta, veritabanı sunucularına, tek veritabanlarına ve elastik havuzlara ve veritabanlarına bağlanmanızı sağlamak üzere Azure portal kullanarak Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanları için [sunucu düzeyinde güvenlik duvarı kuralı](sql-database-firewall-configure.md) oluşturma işlemi gösterilmektedir. Diğer Azure kaynaklarından ve şirket içi kaynaklardan bağlanmak için bir güvenlik duvarı kuralı gereklidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıçta, başlangıç noktası olarak [Azure Portal kullanarak tek bir veritabanı oluşturma](sql-database-single-database-get-started.md) bölümünde oluşturulan kaynaklar kullanılmaktadır.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Sunucu düzeyinde IP güvenlik duvarı kuralı oluşturma
 
 SQL veritabanı hizmeti, tek ve havuza alınmış veritabanları için veritabanı sunucu düzeyinde bir güvenlik duvarı oluşturur. Bu güvenlik duvarı, güvenlik duvarını açmak için bir IP güvenlik duvarı kuralı oluşturmadığınız müddetçe istemci uygulamalarının sunucuya veya tek veya havuza alınmış veritabanlarından herhangi birine bağlanmasını engeller. Azure dışındaki bir IP adresinden bağlantı için, bağlanabilmek istediğiniz belirli bir IP adresi veya adres aralığı için bir güvenlik duvarı kuralı oluşturun. Sunucu düzeyinde ve veritabanı düzeyinde IP güvenlik duvarı kuralları hakkında daha fazla bilgi için bkz. [SQL veritabanı sunucu düzeyi ve veritabanı DÜZEYINDE IP güvenlik duvarı kuralları](sql-database-firewall-configure.md).
 
 > [!NOTE]
-> SQL Veritabanı 1433 numaralı bağlantı noktası üzerinden iletişim kurar. Bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı takdirde Azure SQL veritabanı sunucunuza bağlanamazsınız.
+> SQL Veritabanı 1433 numaralı bağlantı noktası üzerinden iletişim kurar. Bir şirket ağından bağlanmaya çalışıyorsanız ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı takdirde Azure SQL veritabanı sunucunuza bağlanamazsınız.
 > [!IMPORTANT]
 > 0\.0.0.0 güvenlik duvarı kuralı, tüm Azure hizmetlerinin sunucu düzeyinde güvenlik duvarı kuralı üzerinden geçmesini ve sunucu üzerinden tek veya havuza alınmış bir veritabanına bağlanmayı denemesini sağlar. 
 

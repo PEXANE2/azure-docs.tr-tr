@@ -1,5 +1,5 @@
 ---
-title: Go kullanarak Azure SQL veritabanı 'nı sorgulama
+title: Sorguya git 'i kullanma
 description: Azure SQL Veritabanına bağlanan ve Transact-SQL deyimleriyle veritabanını sorgulayan ve verileri değiştiren bir program oluşturmak için Go kullanın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: David-Engel
 ms.author: craigg
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
-ms.openlocfilehash: 510f5e0fe62043d592306d2d689174c0d87e129d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9b85b1bfb8935b5e311bb7d9503c17261a210127
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690963"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827073"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanını sorgulamak için Golang kullanma
 

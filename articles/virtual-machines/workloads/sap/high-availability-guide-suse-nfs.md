@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 771a20ccf1c34958308d58dafb6fb01e36bb408a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749031"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824873"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik
 
@@ -94,7 +94,7 @@ NFS sunucusu, bu NFS sunucusunu kullanan her SAP sistemi için ayrılmış bir s
 * Araştırma bağlantı noktası
   * NW1 için bağlantı noktası 61000
   * NW2 için bağlantı noktası 61001
-* Loaddengeleme kuralları (temel yük dengeleyici kullanılıyorsa)
+* Yük Dengeleme kuralları (temel yük dengeleyici kullanılıyorsa)
   * NW1 için 2049 TCP
   * NW1 için 2049 UDP
   * NW2 için 2049 TCP
@@ -164,8 +164,8 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
             1. Tamam 'a tıklayın
          1. NW2 için bağlantı noktası 61001
             * NW2 için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları yineleyin
-      1. Loaddengeleme kuralları
-         1. Yük dengeleyiciyi açın, Yük Dengeleme kuralları ' nı seçin ve Ekle ' ye tıklayın
+      1. Yük Dengeleme kuralları
+         1. Yük dengeleyiciyi açın, Yük Dengeleme kuralları ' nı seçin ve Ekle ' ye tıklayın.
          1. Yeni yük dengeleyici kuralının adını girin (örneğin, **NW1-lb**)
          1. Daha önce oluşturduğunuz ön uç IP adresini, arka uç havuzunu ve sistem durumu araştırmasını seçin (örneğin, **NW1-ön uç**. **NW1-arka uç** ve **NW1-HP**)
          1. **Ha bağlantı noktalarını**seçin.
@@ -200,7 +200,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
             1. Tamam 'a tıklayın
          1. NW2 için bağlantı noktası 61001
             * NW2 için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları yineleyin
-      1. Loaddengeleme kuralları
+      1. Yük Dengeleme kuralları
          1. NW1 için 2049 TCP
             1. Yük dengeleyiciyi açın, Yük Dengeleme kuralları ' nı seçin ve Ekle ' ye tıklayın
             1. Yeni yük dengeleyici kuralının adını girin (örneğin, **NW1-lb-2049**)
@@ -215,6 +215,9 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
             * NW2 için bağlantı noktası 2049 ve TCP için yukarıdaki adımları yineleyin
          1. NW2 için 2049 UDP
             * NW2 için bağlantı noktası 2049 ve UDP için yukarıdaki adımları yineleyin
+
+> [!Note]
+> Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
 > [!IMPORTANT]
 > Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. tcp_timestamps** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).

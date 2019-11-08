@@ -1,22 +1,22 @@
 ---
-title: 'Transact-SQL (T-SQL) kullanarak Azure SQL elastik veritabanı Işleri oluşturma ve yönetme '
+title: Transact-SQL (T-SQL) ile elastik veritabanı Işleri oluşturma ve yönetme
 description: Transact-SQL (T-SQL) kullanarak elastik veritabanı Iş aracısına sahip birçok veritabanı arasında komut dosyalarını çalıştırın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 374346faacf99148cc20a5e9f11325af1e436108
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: deefc1cc1d8fe82eab9ec0085b3a11ccd2fe7840
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685288"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820593"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) kullanarak elastik veritabanı Işleri oluşturma ve yönetme
 
@@ -191,7 +191,7 @@ Aşağıdaki örnek, birden çok veritabanından performans verilerini toplamak 
 
 Varsayılan olarak, İş Aracısı döndürülen sonuçları depolamak için tablo oluşturmayı arayacaktır. Sonuç olarak, çıkış kimlik bilgisi için kullanılan kimlik bilgileriyle ilişkili oturum açmanın bu işlemi gerçekleştirmek için yeterli izinlere sahip olması gerekir. Tabloyu daha önce el ile oluşturmak isterseniz, aşağıdaki özelliklere sahip olması gerekir:
 1. Sonuç kümesi için doğru adı ve veri türlerini içeren sütunlar.
-2. Uniqueidentifier veri türü ile internal_execution_id için ek sütun.
+2. Uniqueidentifier veri türüyle internal_execution_id için ek sütun.
 3. İnternal_execution_id sütununda `IX_<TableName>_Internal_Execution_ID` adlı kümelenmemiş bir dizin.
 
 [*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutları çalıştırın:
@@ -446,8 +446,8 @@ Yeni bir iş ekler.
   
 #### <a name="arguments"></a>Bağımsız Değişkenler  
 
-[ **\@job_name =** ] 'job_name'  
-İşin adı. Ad benzersiz olmalıdır ve yüzdeyi (%) içeremez inde. job_name, varsayılan değer olmadan nvarchar (128).
+[ **\@job_name =** ] ' job_name '  
+İşin adı. Ad benzersiz olmalıdır ve yüzdeyi (%) içeremez inde. job_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
 [ **\@Description =** ] açıklaması  
 İşin açıklaması. Açıklama nvarchar (512), varsayılan değeri NULL. Açıklama atlanırsa boş bir dize kullanılır.
@@ -456,7 +456,7 @@ Yeni bir iş ekler.
 İşin zamanlamanın etkin olup olmadığı. Etkin, varsayılan değer olan 0 olan bittir (devre dışı). 0 ise, iş etkin değildir ve zamanlamaya göre çalışmaz; Ancak, el ile çalıştırılabilir. 1 ise, iş zamanlamaya göre çalışacaktır ve ayrıca el ile çalıştırılabilir.
 
 [ **\@schedule_interval_type =** ] schedule_interval_type  
-Değer, işin ne zaman yürütüleceğini belirtir. schedule_interval_type, nvarchar (50), varsayılan bir kez, ve aşağıdaki değerlerden biri olabilir:
+Değer, işin ne zaman yürütüleceğini belirtir. schedule_interval_type nvarchar (50), varsayılan bir kez ve aşağıdaki değerlerden biri olabilir:
 - ' Bir kez ',
 - ' Dakika ',
 - ' Saat ',
@@ -465,10 +465,10 @@ Değer, işin ne zaman yürütüleceğini belirtir. schedule_interval_type, nvar
 - Ay
 
 [ **\@schedule_interval_count =** ] schedule_interval_count  
-İşin her yürütmesi arasında gerçekleşecek schedule_interval_count dönemi sayısı. schedule_interval_count, varsayılan değer olan 1 ' dir. Değer 1 ' e eşit veya daha büyük olmalıdır.
+İşin her yürütmesi arasında gerçekleştirilecek schedule_interval_count dönemi sayısı. schedule_interval_count, varsayılan değer olan 1 ' dir. Değer 1 ' e eşit veya daha büyük olmalıdır.
 
 [ **\@schedule_start_time =** ] schedule_start_time  
-İş yürütmenin başlayabileceği tarih. schedule_start_time, varsayılan olarak 0001-01-01 00:00:00.0000000 ile DATETIME2.
+İş yürütmenin başlayabileceği tarih. schedule_start_time DATETIME2, varsayılan olarak 0001-01-01 00:00:00.0000000.
 
 [ **\@schedule_end_time =** ] schedule_end_time  
 İş yürütmenin durulabileceği tarih. schedule_end_time, varsayılan olarak 9999-12-31 11:59:59.0000000 ile DATETIME2. 
@@ -482,7 +482,7 @@ Değer, işin ne zaman yürütüleceğini belirtir. schedule_interval_type, nvar
 
 #### <a name="remarks"></a>Açıklamalar
 sp_add_job, İş Aracısı oluşturulurken belirtilen iş Aracısı veritabanından çalıştırılmalıdır.
-Bir iş eklemek için sp_add_job yürütüldükten sonra, sp_add_jobstep iş için etkinlikleri gerçekleştiren adımları eklemek için kullanılabilir. İşin ilk sürüm numarası 0 ' dır ve ilk adım eklendiğinde 1 ' e yükseltilir.
+Sp_add_job bir iş eklemek için yürütüldükten sonra, sp_add_jobstep iş için etkinlikleri gerçekleştiren adımları eklemek için kullanılabilir. İşin ilk sürüm numarası 0 ' dır ve ilk adım eklendiğinde 1 ' e yükseltilir.
 
 #### <a name="permissions"></a>İzinler
 Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
@@ -509,11 +509,11 @@ Var olan bir işi güncelleştirir.
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_name =** ] 'job_name'  
-Güncellenme işinin adı. job_name, nvarchar (128).
+[ **\@job_name =** ] ' job_name '  
+Güncellenme işinin adı. job_name nvarchar (128).
 
-[ **\@new_name =** ] 'new_name'  
-İşin yeni adı. new_name, nvarchar (128).
+[ **\@new_name =** ] ' new_name '  
+İşin yeni adı. new_name nvarchar (128).
 
 [ **\@Description =** ] açıklaması  
 İşin açıklaması. Açıklama nvarchar (512).
@@ -522,7 +522,7 @@ Güncellenme işinin adı. job_name, nvarchar (128).
 İş zamanlamasının etkin olup olmadığını belirtir (1) veya etkin değil (0). Etkin bit.
 
 [ **\@schedule_interval_type =** ] schedule_interval_type  
-Değer, işin ne zaman yürütüleceğini belirtir. schedule_interval_type, nvarchar (50) ve aşağıdaki değerlerden biri olabilir:
+Değer, işin ne zaman yürütüleceğini belirtir. schedule_interval_type nvarchar (50) ve aşağıdaki değerlerden biri olabilir:
 
 - ' Bir kez ',
 - ' Dakika ',
@@ -532,10 +532,10 @@ Değer, işin ne zaman yürütüleceğini belirtir. schedule_interval_type, nvar
 - Ay
 
 [ **\@schedule_interval_count =** ] schedule_interval_count  
-İşin her yürütmesi arasında gerçekleşecek schedule_interval_count dönemi sayısı. schedule_interval_count, varsayılan değer olan 1 ' dir. Değer 1 ' e eşit veya daha büyük olmalıdır.
+İşin her yürütmesi arasında gerçekleştirilecek schedule_interval_count dönemi sayısı. schedule_interval_count, varsayılan değer olan 1 ' dir. Değer 1 ' e eşit veya daha büyük olmalıdır.
 
 [ **\@schedule_start_time =** ] schedule_start_time  
-İş yürütmenin başlayabileceği tarih. schedule_start_time, varsayılan olarak 0001-01-01 00:00:00.0000000 ile DATETIME2.
+İş yürütmenin başlayabileceği tarih. schedule_start_time DATETIME2, varsayılan olarak 0001-01-01 00:00:00.0000000.
 
 [ **\@schedule_end_time =** ] schedule_end_time  
 İş yürütmenin durulabileceği tarih. schedule_end_time, varsayılan olarak 9999-12-31 11:59:59.0000000 ile DATETIME2. 
@@ -544,7 +544,7 @@ Değer, işin ne zaman yürütüleceğini belirtir. schedule_interval_type, nvar
 0 (başarılı) veya 1 (hata)
 
 #### <a name="remarks"></a>Açıklamalar
-Bir iş eklemek için sp_add_job yürütüldükten sonra, sp_add_jobstep iş için etkinlikleri gerçekleştiren adımları eklemek için kullanılabilir. İşin ilk sürüm numarası 0 ' dır ve ilk adım eklendiğinde 1 ' e yükseltilir.
+Sp_add_job bir iş eklemek için yürütüldükten sonra, sp_add_jobstep iş için etkinlikleri gerçekleştiren adımları eklemek için kullanılabilir. İşin ilk sürüm numarası 0 ' dır ve ilk adım eklendiğinde 1 ' e yükseltilir.
 
 #### <a name="permissions"></a>İzinler
 Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
@@ -566,8 +566,8 @@ Var olan bir işi siler.
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_name =** ] 'job_name'  
-Silinecek işin adı. job_name, nvarchar (128).
+[ **\@job_name =** ] ' job_name '  
+Silinecek işin adı. job_name nvarchar (128).
 
 [ **\@zorla =** ] zorla  
 İşin sürmekte olan yürütmeler varsa silinip oluşturulmayacağını belirtir ve devam eden tüm yürütmeleri (1) iptal edip devam eden herhangi bir iş yürütmesi varsa başarısız olur (0). zorla bit.
@@ -621,21 +621,21 @@ Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümü
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
 
-[ **\@job_name =** ] 'job_name'  
-Adımın ekleneceği işin adı. job_name, nvarchar (128).
+[ **\@job_name =** ] ' job_name '  
+Adımın ekleneceği işin adı. job_name nvarchar (128).
 
 [ **\@step_id =** ] step_id  
-İş adımının sıra kimlik numarası. Adım tanımlama numaraları 1 ' de başlar ve boşluklar olmadan artış yapın. Mevcut bir adım zaten bu kimliğe sahipse, bu adım ve tüm adımlar, bu yeni adımın diziye eklenebilmesi için kimliğinin artmasını sağlayacaktır. Belirtilmezse, step_id otomatik olarak adım dizisindeki son ' a atanır. step_id bir int.
+İş adımının sıra kimlik numarası. Adım tanımlama numaraları 1 ' de başlar ve boşluklar olmadan artış yapın. Mevcut bir adım zaten bu kimliğe sahipse, bu adım ve tüm adımlar, bu yeni adımın diziye eklenebilmesi için kimliğinin artmasını sağlayacaktır. Belirtilmezse, step_id adım dizisindeki son ' a otomatik olarak atanır. step_id bir int.
 
 [ **\@step_name =** ] step_name  
-Adımın adı. Bir işin ilk adımı dışında (kolaylık sağlaması için) ' JobStep ' varsayılan adı olan belirtilmelidir. step_name, nvarchar (128).
+Adımın adı. Bir işin ilk adımı dışında (kolaylık sağlaması için) ' JobStep ' varsayılan adı olan belirtilmelidir. step_name nvarchar (128).
 
-[ **\@command_type =** ] 'command_type'  
-Bu JobStep tarafından yürütülen komutun türü. command_type, varsayılan değeri TSql olan nvarchar (50), yani @command_type parametresinin değeri T-SQL betiği olur.
+[ **\@command_type =** ] ' command_type '  
+Bu JobStep tarafından yürütülen komutun türü. command_type, TSql parametresinin bir T-SQL betiği olduğu @command_type anlamına gelen varsayılan değeri olan nvarchar (50) değeridir.
 
 Belirtilmişse, değerin TSql olması gerekir.
 
-[ **\@command_source =** ] 'command_source'  
+[ **\@command_source =** ] ' command_source '  
 Komutun depolandığı konumun türü. command_source, varsayılan satır Içi değeri olan nvarchar (50), yani @command_source parametresinin değeri komutun değişmez metinidir.
 
 Belirtilmişse, değerin satır Içi olması gerekir.
@@ -643,52 +643,52 @@ Belirtilmişse, değerin satır Içi olması gerekir.
 [ **\@komutu =** ] komutundaki  
 Komut geçerli bir T-SQL betiği olmalıdır ve sonra bu iş adımı tarafından yürütülür. komut, varsayılan değeri NULL olan nvarchar (max).
 
-[ **\@credential_name =** ] 'credential_name'  
-Bu adım yürütüldüğünde hedef grup içindeki her bir hedef veritabanına bağlanmak için kullanılan, bu iş denetim veritabanında depolanan veritabanı kapsamlı kimlik bilgisinin adı. credential_name, nvarchar (128).
+[ **\@credential_name =** ] ' credential_name '  
+Bu adım yürütüldüğünde hedef grup içindeki her bir hedef veritabanına bağlanmak için kullanılan, bu iş denetim veritabanında depolanan veritabanı kapsamlı kimlik bilgisinin adı. credential_name nvarchar (128).
 
-[ **\@target_group_name =** ] ' Target-Group_name '  
-İş adımının üzerinde yürütüleceği hedef veritabanlarını içeren hedef grubun adı. target_group_name, nvarchar (128).
+[ **\@target_group_name =** ] ' Target-group_name '  
+İş adımının üzerinde yürütüleceği hedef veritabanlarını içeren hedef grubun adı. target_group_name nvarchar (128).
 
 [ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 İlk yürütme denemesinde iş adımı başarısız olursa, ilk yeniden deneme denemesinden önceki gecikme. initial_retry_interval_seconds, varsayılan değer olan 1 ' dir.
 
 [ **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
-Yeniden deneme girişimleri arasındaki gecikme üst sınırı. Denemeler arasındaki gecikme bu değerden daha büyük büyürken, bunun yerine bu değere eşit hale gelir. maximum_retry_interval_seconds, varsayılan değeri 120 olan int 'tir.
+Yeniden deneme girişimleri arasındaki gecikme üst sınırı. Denemeler arasındaki gecikme bu değerden daha büyük büyürken, bunun yerine bu değere eşit hale gelir. maximum_retry_interval_seconds, varsayılan değer olan 120 ' dir.
 
 [ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 Birden çok iş adımı yürütme denemesi başarısız olursa yeniden deneme gecikmesine uygulanacak çarpan. Örneğin, ilk yeniden denenmede 5 saniyelik bir gecikme vardı ve geri dönüş çarpanı 2,0 ise ikinci yeniden deneme 10 saniyelik bir gecikme olur ve üçüncü yeniden deneme 20 saniye gecikmeyle oluşur. retry_interval_backoff_multiplier, varsayılan değer olan 2,0 ile gerçek bir değerdir.
 
 [ **\@retry_attempts =** ] retry_attempts  
-İlk girişim başarısız olursa yürütme yeniden denenme sayısı. Örneğin, retry_attempts değeri 10 ise, 1 Başlangıç denemesi ve 10 yeniden deneme girişiminde bulunur ve toplam 11 deneme olur. Son yeniden deneme girişimi başarısız olursa, iş yürütmesi başarısız bir yaşam döngüsü ile sonlandırılır. retry_attempts, varsayılan değer 10 olan int 'tir.
+İlk girişim başarısız olursa yürütme yeniden denenme sayısı. Örneğin, retry_attempts değeri 10 ise, 1 Başlangıç denemesi ve 10 yeniden deneme girişiminde bulunur ve toplam 11 deneme olur. Son yeniden deneme girişimi başarısız olursa, iş yürütmesi başarısız bir yaşam döngüsü ile sonlandırılır. retry_attempts, varsayılan değer 10 ' dur.
 
 [ **\@step_timeout_seconds =** ] step_timeout_seconds  
 Adımın yürütülmesi için izin verilen en uzun süre. Bu süre aşılırsa, iş yürütmesi zaman aşımı yaşam döngüsü ile sonlandırılır. step_timeout_seconds, varsayılan değer olan 43.200 saniyedir (12 saat).
 
-[ **\@output_type =** ] 'output_type'  
-Null değilse, komutun ilk sonuç kümesinin yazıldığı hedefin türü. output_type, varsayılan değeri NULL olan nvarchar (50).
+[ **\@output_type =** ] ' output_type '  
+Null değilse, komutun ilk sonuç kümesinin yazıldığı hedefin türü. output_type nvarchar (50), varsayılan değeri NULL.
 
 Belirtilmişse değer SqlDatabase olmalıdır.
 
-[ **\@output_credential_name =** ] 'output_credential_name'  
-Null değilse, çıkış hedef veritabanına bağlanmak için kullanılan veritabanı kapsamlı kimlik bilgisinin adı. Output_type eşitse, belirtilmelidir. output_credential_name, varsayılan değeri NULL olan nvarchar (128) değeridir.
+[ **\@output_credential_name =** ] ' output_credential_name '  
+Null değilse, çıkış hedef veritabanına bağlanmak için kullanılan veritabanı kapsamlı kimlik bilgisinin adı. Output_type SqlDatabase ise belirtilmesi gerekir. output_credential_name, varsayılan değeri NULL olan nvarchar (128) değeridir.
 
-[ **\@output_subscription_id =** ] 'output_subscription_id'  
+[ **\@output_subscription_id =** ] ' output_subscription_id '  
 Açıklama gerekiyor.
 
-[ **\@output_resource_group_name =** ] 'output_resource_group_name'  
+[ **\@output_resource_group_name =** ] ' output_resource_group_name '  
 Açıklama gerekiyor.
 
-[ **\@output_server_name =** ] 'output_server_name'  
-Null değilse, çıkış hedefi veritabanını içeren sunucunun tam DNS adı. Output_type eşitse, belirtilmelidir. output_server_name, varsayılan değeri NULL olan nvarchar (256).
+[ **\@output_server_name =** ] ' output_server_name '  
+Null değilse, çıkış hedefi veritabanını içeren sunucunun tam DNS adı. Output_type SqlDatabase ise belirtilmesi gerekir. output_server_name nvarchar (256), varsayılan değeri NULL.
 
-[ **\@output_database_name =** ] 'output_database_name'  
-Null değilse, çıkış hedefi tablosunu içeren veritabanının adı. Output_type eşitse, belirtilmelidir. output_database_name, varsayılan değeri NULL olan nvarchar (128).
+[ **\@output_database_name =** ] ' output_database_name '  
+Null değilse, çıkış hedefi tablosunu içeren veritabanının adı. Output_type SqlDatabase ise belirtilmesi gerekir. output_database_name nvarchar (128), varsayılan değeri NULL.
 
-[ **\@output_schema_name =** ] 'output_schema_name'  
-Null değilse, çıkış hedefi tablosunu içeren SQL şemasının adı. Output_type eşitse, varsayılan değer dbo olur. output_schema_name, nvarchar (128).
+[ **\@output_schema_name =** ] ' output_schema_name '  
+Null değilse, çıkış hedefi tablosunu içeren SQL şemasının adı. Output_type SqlDatabase öğesine eşitse, varsayılan değer dbo olur. output_schema_name nvarchar (128).
 
-[ **\@output_table_name =** ] 'output_table_name'  
-Null değilse, komutun ilk sonuç kümesinin yazılacağı tablonun adı. Tablo önceden yoksa, döndürülen sonuç kümesi şemasına göre oluşturulur. Output_type eşitse, belirtilmelidir. output_table_name, varsayılan değeri NULL olan nvarchar (128) değeridir.
+[ **\@output_table_name =** ] ' output_table_name '  
+Null değilse, komutun ilk sonuç kümesinin yazılacağı tablonun adı. Tablo önceden yoksa, döndürülen sonuç kümesi şemasına göre oluşturulur. Output_type SqlDatabase ise belirtilmesi gerekir. output_table_name, varsayılan değeri NULL olan nvarchar (128) değeridir.
 
 [ **\@job_version =** ] job_version çıkışı  
 Yeni iş sürümü numarasına atanacak çıkış parametresi. job_version int.
@@ -745,27 +745,27 @@ Bir iş adımını güncelleştirir.
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_name =** ] 'job_name'  
-Adımın ait olduğu işin adı. job_name, nvarchar (128).
+[ **\@job_name =** ] ' job_name '  
+Adımın ait olduğu işin adı. job_name nvarchar (128).
 
 [ **\@step_id =** ] step_id  
 Değiştirilecek iş adımının kimlik numarası. Step_id ya da step_name belirtilmelidir. step_id bir int.
 
-[ **\@step_name =** ] 'step_name'  
-Değiştirilecek adımın adı. Step_id ya da step_name belirtilmelidir. step_name, nvarchar (128).
+[ **\@step_name =** ] ' step_name '  
+Değiştirilecek adımın adı. Step_id ya da step_name belirtilmelidir. step_name nvarchar (128).
 
 [ **\@new_id =** ] new_id  
 İş adımının yeni sıra kimlik numarası. Adım tanımlama numaraları 1 ' de başlar ve boşluklar olmadan artış yapın. Bir adım yeniden düzenlendiğinde, diğer adımlar otomatik olarak yeniden numaralandırılır.
 
-[ **\@new_name =** ] 'new_name'  
-Adımın yeni adı. new_name, nvarchar (128).
+[ **\@new_name =** ] ' new_name '  
+Adımın yeni adı. new_name nvarchar (128).
 
-[ **\@command_type =** ] 'command_type'  
-Bu JobStep tarafından yürütülen komutun türü. command_type, varsayılan değeri TSql olan nvarchar (50), yani @command_type parametresinin değeri T-SQL betiği olur.
+[ **\@command_type =** ] ' command_type '  
+Bu JobStep tarafından yürütülen komutun türü. command_type, TSql parametresinin bir T-SQL betiği olduğu @command_type anlamına gelen varsayılan değeri olan nvarchar (50) değeridir.
 
 Belirtilmişse, değerin TSql olması gerekir.
 
-[ **\@command_source =** ] 'command_source'  
+[ **\@command_source =** ] ' command_source '  
 Komutun depolandığı konumun türü. command_source, varsayılan satır Içi değeri olan nvarchar (50), yani @command_source parametresinin değeri komutun değişmez metinidir.
 
 Belirtilmişse, değerin satır Içi olması gerekir.
@@ -773,52 +773,52 @@ Belirtilmişse, değerin satır Içi olması gerekir.
 [ **\@komutu =** ] komutundaki  
 Komut (ler) geçerli bir T-SQL betiği olmalıdır ve sonra bu iş adımı tarafından yürütülür. komut, varsayılan değeri NULL olan nvarchar (max).
 
-[ **\@credential_name =** ] 'credential_name'  
-Bu adım yürütüldüğünde hedef grup içindeki her bir hedef veritabanına bağlanmak için kullanılan, bu iş denetim veritabanında depolanan veritabanı kapsamlı kimlik bilgisinin adı. credential_name, nvarchar (128).
+[ **\@credential_name =** ] ' credential_name '  
+Bu adım yürütüldüğünde hedef grup içindeki her bir hedef veritabanına bağlanmak için kullanılan, bu iş denetim veritabanında depolanan veritabanı kapsamlı kimlik bilgisinin adı. credential_name nvarchar (128).
 
-[ **\@target_group_name =** ] ' Target-Group_name '  
-İş adımının üzerinde yürütüleceği hedef veritabanlarını içeren hedef grubun adı. target_group_name, nvarchar (128).
+[ **\@target_group_name =** ] ' Target-group_name '  
+İş adımının üzerinde yürütüleceği hedef veritabanlarını içeren hedef grubun adı. target_group_name nvarchar (128).
 
 [ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 İlk yürütme denemesinde iş adımı başarısız olursa, ilk yeniden deneme denemesinden önceki gecikme. initial_retry_interval_seconds, varsayılan değer olan 1 ' dir.
 
 [ **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
-Yeniden deneme girişimleri arasındaki gecikme üst sınırı. Denemeler arasındaki gecikme bu değerden daha büyük büyürken, bunun yerine bu değere eşit hale gelir. maximum_retry_interval_seconds, varsayılan değeri 120 olan int 'tir.
+Yeniden deneme girişimleri arasındaki gecikme üst sınırı. Denemeler arasındaki gecikme bu değerden daha büyük büyürken, bunun yerine bu değere eşit hale gelir. maximum_retry_interval_seconds, varsayılan değer olan 120 ' dir.
 
 [ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 Birden çok iş adımı yürütme denemesi başarısız olursa yeniden deneme gecikmesine uygulanacak çarpan. Örneğin, ilk yeniden denenmede 5 saniyelik bir gecikme vardı ve geri dönüş çarpanı 2,0 ise ikinci yeniden deneme 10 saniyelik bir gecikme olur ve üçüncü yeniden deneme 20 saniye gecikmeyle oluşur. retry_interval_backoff_multiplier, varsayılan değer olan 2,0 ile gerçek bir değerdir.
 
 [ **\@retry_attempts =** ] retry_attempts  
-İlk girişim başarısız olursa yürütme yeniden denenme sayısı. Örneğin, retry_attempts değeri 10 ise, 1 Başlangıç denemesi ve 10 yeniden deneme girişiminde bulunur ve toplam 11 deneme olur. Son yeniden deneme girişimi başarısız olursa, iş yürütmesi başarısız bir yaşam döngüsü ile sonlandırılır. retry_attempts, varsayılan değer 10 olan int 'tir.
+İlk girişim başarısız olursa yürütme yeniden denenme sayısı. Örneğin, retry_attempts değeri 10 ise, 1 Başlangıç denemesi ve 10 yeniden deneme girişiminde bulunur ve toplam 11 deneme olur. Son yeniden deneme girişimi başarısız olursa, iş yürütmesi başarısız bir yaşam döngüsü ile sonlandırılır. retry_attempts, varsayılan değer 10 ' dur.
 
 [ **\@step_timeout_seconds =** ] step_timeout_seconds  
 Adımın yürütülmesi için izin verilen en uzun süre. Bu süre aşılırsa, iş yürütmesi zaman aşımı yaşam döngüsü ile sonlandırılır. step_timeout_seconds, varsayılan değer olan 43.200 saniyedir (12 saat).
 
-[ **\@output_type =** ] 'output_type'  
-Null değilse, komutun ilk sonuç kümesinin yazıldığı hedefin türü. Output_type değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' (boş dize) olarak ayarlayın. output_type, varsayılan değeri NULL olan nvarchar (50).
+[ **\@output_type =** ] ' output_type '  
+Null değilse, komutun ilk sonuç kümesinin yazıldığı hedefin türü. Output_type değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' olarak ayarlayın (boş dize). output_type nvarchar (50), varsayılan değeri NULL.
 
 Belirtilmişse değer SqlDatabase olmalıdır.
 
-[ **\@output_credential_name =** ] 'output_credential_name'  
-Null değilse, çıkış hedef veritabanına bağlanmak için kullanılan veritabanı kapsamlı kimlik bilgisinin adı. Output_type eşitse, belirtilmelidir. Output_credential_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' (boş dize) olarak ayarlayın. output_credential_name, varsayılan değeri NULL olan nvarchar (128) değeridir.
+[ **\@output_credential_name =** ] ' output_credential_name '  
+Null değilse, çıkış hedef veritabanına bağlanmak için kullanılan veritabanı kapsamlı kimlik bilgisinin adı. Output_type SqlDatabase ise belirtilmesi gerekir. Output_credential_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' olarak ayarlayın (boş dize). output_credential_name, varsayılan değeri NULL olan nvarchar (128) değeridir.
 
-[ **\@output_server_name =** ] 'output_server_name'  
-Null değilse, çıkış hedefi veritabanını içeren sunucunun tam DNS adı. Output_type eşitse, belirtilmelidir. Output_server_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' (boş dize) olarak ayarlayın. output_server_name, varsayılan değeri NULL olan nvarchar (256).
+[ **\@output_server_name =** ] ' output_server_name '  
+Null değilse, çıkış hedefi veritabanını içeren sunucunun tam DNS adı. Output_type SqlDatabase ise belirtilmesi gerekir. Output_server_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' olarak ayarlayın (boş dize). output_server_name nvarchar (256), varsayılan değeri NULL.
 
-[ **\@output_database_name =** ] 'output_database_name'  
-Null değilse, çıkış hedefi tablosunu içeren veritabanının adı. Output_type eşitse, belirtilmelidir. Output_database_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' (boş dize) olarak ayarlayın. output_database_name, varsayılan değeri NULL olan nvarchar (128).
+[ **\@output_database_name =** ] ' output_database_name '  
+Null değilse, çıkış hedefi tablosunu içeren veritabanının adı. Output_type SqlDatabase ise belirtilmesi gerekir. Output_database_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' olarak ayarlayın (boş dize). output_database_name nvarchar (128), varsayılan değeri NULL.
 
-[ **\@output_schema_name =** ] 'output_schema_name'  
-Null değilse, çıkış hedefi tablosunu içeren SQL şemasının adı. Output_type eşitse, varsayılan değer dbo olur. Output_schema_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' (boş dize) olarak ayarlayın. output_schema_name, nvarchar (128).
+[ **\@output_schema_name =** ] ' output_schema_name '  
+Null değilse, çıkış hedefi tablosunu içeren SQL şemasının adı. Output_type SqlDatabase öğesine eşitse, varsayılan değer dbo olur. Output_schema_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' olarak ayarlayın (boş dize). output_schema_name nvarchar (128).
 
-[ **\@output_table_name =** ] 'output_table_name'  
-Null değilse, komutun ilk sonuç kümesinin yazılacağı tablonun adı. Tablo önceden yoksa, döndürülen sonuç kümesi şemasına göre oluşturulur. Output_type eşitse, belirtilmelidir. Output_server_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' (boş dize) olarak ayarlayın. output_table_name, varsayılan değeri NULL olan nvarchar (128) değeridir.
+[ **\@output_table_name =** ] ' output_table_name '  
+Null değilse, komutun ilk sonuç kümesinin yazılacağı tablonun adı. Tablo önceden yoksa, döndürülen sonuç kümesi şemasına göre oluşturulur. Output_type SqlDatabase ise belirtilmesi gerekir. Output_server_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' olarak ayarlayın (boş dize). output_table_name, varsayılan değeri NULL olan nvarchar (128) değeridir.
 
 [ **\@job_version =** ] job_version çıkışı  
 Yeni iş sürümü numarasına atanacak çıkış parametresi. job_version int.
 
 [ **\@max_parallelism =** ] max_parallelism çıkışı  
-Elastik havuz başına en yüksek paralellik düzeyi. Ayarlanırsa, iş adımı yalnızca elastik havuz başına en fazla veritabanı üzerinde çalışacak şekilde kısıtlanır. Bu, doğrudan hedef gruba dahil edilen veya hedef gruba dahil olan bir sunucu içinde olan her esnek havuz için geçerlidir. Max_parallelism değerini null olarak sıfırlamak için bu parametrenin değerini-1 olarak ayarlayın. max_parallelism int.
+Elastik havuz başına en yüksek paralellik düzeyi. Ayarlanırsa, iş adımı yalnızca elastik havuz başına en fazla veritabanı üzerinde çalışacak şekilde kısıtlanır. Bu, doğrudan hedef gruba dahil edilen veya hedef gruba dahil olan bir sunucu içinde olan her esnek havuz için geçerlidir. Max_parallelism değerini null olarak sıfırlamak için, bu parametrenin değerini-1 olarak ayarlayın. max_parallelism int.
 
 
 #### <a name="return-code-values"></a>Dönüş kodu değerleri
@@ -852,14 +852,14 @@ Bir işten iş adımını kaldırır.
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_name =** ] 'job_name'  
-Adımın kaldırılacağı işin adı. job_name, varsayılan değer olmadan nvarchar (128).
+[ **\@job_name =** ] ' job_name '  
+Adımın kaldırılacağı işin adı. job_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
 [ **\@step_id =** ] step_id  
 Silinecek iş adımının kimlik numarası. Step_id ya da step_name belirtilmelidir. step_id bir int.
 
-[ **\@step_name =** ] 'step_name'  
-Silinecek adımın adı. Step_id ya da step_name belirtilmelidir. step_name, nvarchar (128).
+[ **\@step_name =** ] ' step_name '  
+Silinecek adımın adı. Step_id ya da step_name belirtilmelidir. step_name nvarchar (128).
 
 [ **\@job_version =** ] job_version çıkışı  
 Yeni iş sürümü numarasına atanacak çıkış parametresi. job_version int.
@@ -896,11 +896,11 @@ Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümü
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_name =** ] 'job_name'  
-Adımın kaldırılacağı işin adı. job_name, varsayılan değer olmadan nvarchar (128).
+[ **\@job_name =** ] ' job_name '  
+Adımın kaldırılacağı işin adı. job_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
 [ **\@job_execution_id =** ] job_execution_id çıkışı  
-İş yürütmenin kimliğine atanacak çıkış parametresi. job_version, uniqueidentifier.
+İş yürütmenin kimliğine atanacak çıkış parametresi. job_version uniqueidentifier.
 
 #### <a name="return-code-values"></a>Dönüş kodu değerleri
 0 (başarılı) veya 1 (hata)
@@ -957,10 +957,10 @@ Bir hedef grup ekler.
 
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@target_group_name =** ] 'target_group_name'  
-Oluşturulacak hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128).
+[ **\@target_group_name =** ] ' target_group_name '  
+Oluşturulacak hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
-[ **\@target_group_id =** ] target_group_id çıktı başarıyla oluşturulursa, işe atanan hedef grup kimlik numarası. target_group_id, varsayılan değeri NULL olan uniqueidentifier türünde bir çıkış değişkenidir.
+[ **\@target_group_id =** ] target_group_id çıkış başarıyla oluşturulursa, işe atanan hedef grup kimlik numarası. target_group_id, varsayılan değeri NULL olan uniqueidentifier türünde bir çıkış değişkenidir.
 
 #### <a name="return-code-values"></a>Dönüş kodu değerleri
 0 (başarılı) veya 1 (hata)
@@ -987,8 +987,8 @@ Hedef grubu siler.
 
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@target_group_name =** ] 'target_group_name'  
-Silinecek hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128).
+[ **\@target_group_name =** ] ' target_group_name '  
+Silinecek hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
 #### <a name="return-code-values"></a>Dönüş kodu değerleri
 0 (başarılı) veya 1 (hata)
@@ -1021,29 +1021,29 @@ Hedef gruba bir veritabanı veya veritabanı grubu ekler.
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@target_group_name =** ] 'target_group_name'  
-Üyenin ekleneceği hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128).
+[ **\@target_group_name =** ] ' target_group_name '  
+Üyenin ekleneceği hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
-[ **\@membership_type =** ] 'membership_type'  
+[ **\@membership_type =** ] ' membership_type '  
 Hedef grubu üyesinin dahil edilip edilmeyeceğini veya dışlanacağını belirtir. target_group_name, varsayılan değer olan ' Include ' ile nvarchar (128). Target_group_name için geçerli değerler ' Include ' veya ' exclude '.
 
-[ **\@target_type =** ] 'target_type'  
-Bir sunucudaki tüm veritabanları, bir elastik havuzdaki tüm veritabanları, parça haritadaki tüm veritabanları veya ayrı bir veritabanı dahil olmak üzere hedef veritabanının türü veya veritabanı koleksiyonu. target_type, varsayılan değer olmadan nvarchar (128). Target_type için geçerli değerler ' SqlServer ', ' Sqtalakpool ', ' SqlDatabase ' veya ' SqlShardMap '. 
+[ **\@target_type =** ] ' target_type '  
+Bir sunucudaki tüm veritabanları, bir elastik havuzdaki tüm veritabanları, parça haritadaki tüm veritabanları veya ayrı bir veritabanı dahil olmak üzere hedef veritabanının türü veya veritabanı koleksiyonu. target_type, varsayılan değer olmadan nvarchar (128) ' dir. Target_type için geçerli değerler ' SqlServer ', ' Sqtalakpool ', ' SqlDatabase ' veya ' SqlShardMap '. 
 
-[ **\@refresh_credential_name =** ] 'refresh_credential_name'  
-SQL veritabanı sunucusunun adı. refresh_credential_name, varsayılan değer olmadan nvarchar (128).
+[ **\@refresh_credential_name =** ] ' refresh_credential_name '  
+SQL veritabanı sunucusunun adı. refresh_credential_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
-[ **\@sunucu_adı =** ] ' sunucu_adı '  
-Belirtilen hedef gruba eklenmesi gereken SQL veritabanı sunucusunun adı. target_type ' SqlServer ' olduğunda sunucu_adı belirtilmelidir. sunucu_adı, varsayılan değer olmadan nvarchar (128).
+[ **\@SERVER_NAME =** ] ' server_name '  
+Belirtilen hedef gruba eklenmesi gereken SQL veritabanı sunucusunun adı. target_type ' SqlServer ' olduğunda server_name belirtilmelidir. server_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
-[ **\@veritabanı_adı =** ] veritabanı  
-Belirtilen hedef gruba eklenmesi gereken veritabanının adı. target_type ' SqlDatabase ' olduğunda veritabanı_adı belirtilmelidir. veritabanı_adı, varsayılan değer olmadan nvarchar 'dir (128).
+[ **\@database_name =** ] ' database_name '  
+Belirtilen hedef gruba eklenmesi gereken veritabanının adı. target_type ' SqlDatabase ' olduğunda database_name belirtilmelidir. database_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
-[ **\@elastic_pool_name =** ] 'elastic_pool_name'  
-Belirtilen hedef gruba eklenmesi gereken elastik havuzun adı. target_type ' Sqtalakpool ' olduğunda elastic_pool_name belirtilmelidir. elastic_pool_name, varsayılan değer olmadan nvarchar (128).
+[ **\@elastic_pool_name =** ] ' elastic_pool_name '  
+Belirtilen hedef gruba eklenmesi gereken elastik havuzun adı. target_type ' Sqtalakpool ' olduğunda elastic_pool_name belirtilmelidir. elastic_pool_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
-[ **\@shard_map_name =** ] 'shard_map_name'  
-Belirtilen hedef gruba eklenmesi gereken parça eşleme havuzunun adı. target_type ' SqlSqlShardMap ' olduğunda elastic_pool_name belirtilmelidir. shard_map_name, varsayılan değer olmadan nvarchar (128).
+[ **\@shard_map_name =** ] ' shard_map_name '  
+Belirtilen hedef gruba eklenmesi gereken parça eşleme havuzunun adı. target_type ' SqlSqlShardMap ' olduğunda elastic_pool_name belirtilmelidir. shard_map_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
 [ **\@target_id =** ] target_group_id çıkışı  
 Oluşturulmuş hedef grup üyesine atanan hedef kimlik numarası, hedef gruba eklendiyse. target_id, varsayılan değeri NULL olan uniqueidentifier türünde bir çıkış değişkenidir.
@@ -1106,7 +1106,7 @@ Hedef grup üyesini hedef gruptan kaldırır.
 
 
 Bağımsız değişkenler [@target_group_name =] ' target_group_name '  
-Hedef grup üyesinin kaldırılacağı hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128).
+Hedef grup üyesinin kaldırılacağı hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
 [@target_id =] target_id  
  Kaldırılacak hedef grup üyesine atanan hedef kimlik numarası. target_id, varsayılan değeri NULL olan bir uniqueidentifier.
@@ -1156,14 +1156,14 @@ Bir işin geçmiş kayıtlarını kaldırır.
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_name =** ] 'job_name'  
-Geçmiş kayıtlarının silineceği işin adı. job_name, varsayılan değeri NULL olan nvarchar (128). Job_id veya job_name belirtilmelidir, ancak her ikisi de belirtilemez.
+[ **\@job_name =** ] ' job_name '  
+Geçmiş kayıtlarının silineceği işin adı. job_name nvarchar (128), varsayılan değeri NULL. Job_id ya da job_name belirtilmelidir, ancak her ikisi de belirtilemez.
 
 [ **\@job_id =** ] job_id  
- Silinecek kayıtlar için işin iş kimliği numarası. job_id, varsayılan değeri NULL olan uniqueidentifier. Job_id veya job_name belirtilmelidir, ancak her ikisi de belirtilemez.
+ Silinecek kayıtlar için işin iş kimliği numarası. job_id, varsayılan değeri NULL olan uniqueidentifier. Job_id ya da job_name belirtilmelidir, ancak her ikisi de belirtilemez.
 
 [ **\@oldest_date =** ] oldest_date  
- Geçmişte tutulacak en eski kayıt. oldest_date, varsayılan değeri NULL olan DATETIME2. Oldest_date belirtildiğinde, sp_purge_jobhistory yalnızca belirtilen değerden eski olan kayıtları kaldırır.
+ Geçmişte tutulacak en eski kayıt. oldest_date, varsayılan değer olan DATETIME2. Oldest_date belirtildiğinde, sp_purge_jobhistory yalnızca belirtilen değerden eski olan kayıtları kaldırır.
 
 #### <a name="return-code-values"></a>Dönüş kodu değerleri
 0 (başarı) veya 1 (hata) açıklamalar hedef grupları, bir işi veritabanı koleksiyonunda hedeflemek için kolay bir yol sağlar.
@@ -1225,7 +1225,7 @@ Aşağıdaki görünümler [işler veritabanında](sql-database-job-automation-o
 |**current_attempts**   |int    |Adımın yeniden denenme sayısı. Ana iş 0 olacak, alt iş yürütmeleri yürütme ilkesine göre 1 veya daha büyük olacaktır.
 |**current_attempt_start_time** |datetime2 (7)|  İşin yürütmeye başladığı tarih ve saat. NULL, bunun ana iş yürütmesi olduğunu gösterir.
 |**last_message**   |nvarchar (max)| İş veya adım geçmişi iletisi. 
-|**target_type**|   nvarchar (128)   |Bir sunucudaki tüm veritabanları, bir elastik havuzdaki veya bir veritabanındaki tüm veritabanları dahil hedef veritabanı veya veritabanı koleksiyonu türü. Target_type için geçerli değerler ' SqlServer ', ' Sqtalakpool ' veya ' SqlDatabase '. NULL, bunun ana iş yürütmesi olduğunu gösterir.
+|**target_type**|   nvarchar (128)   |Bir sunucudaki tüm veritabanları, bir elastik havuzdaki veya bir veritabanındaki tüm veritabanları dahil hedef veritabanı veya veritabanı koleksiyonu türü. Target_type için geçerli değerler ' SqlServer ', ' Sqtalakpool ' veya ' SqlDatabase ' değerleridir. NULL, bunun ana iş yürütmesi olduğunu gösterir.
 |**target_id**  |benzersiz tanımlayıcı|  Hedef grubu üyesinin benzersiz KIMLIĞI.  NULL, bunun ana iş yürütmesi olduğunu gösterir.
 |**target_group_name**  |nvarchar (128)  |Hedef grubun adı. NULL, bunun ana iş yürütmesi olduğunu gösterir.
 |**target_server_name**|    nvarchar (256)|  Hedef grupta bulunan SQL veritabanı sunucusunun adı. Yalnızca target_type ' SqlServer ' ise belirtilir. NULL, bunun ana iş yürütmesi olduğunu gösterir.
@@ -1245,7 +1245,7 @@ Tüm işleri gösterir.
 |**job_version**    |int    |İşin sürümü (iş her değiştirililişinde otomatik olarak güncelleştirilir).|
 |**açıklaması**    |nvarchar (512)| İş için açıklama. etkin bit, işin etkin veya devre dışı olduğunu belirtir. 1 etkin işleri gösterir ve 0 devre dışı işleri gösterir.|
 |**schedule_interval_type** |nvarchar (50)   |İşin ne zaman yürütüleceğini belirten değer: ' bir kez ', ' dakika ', ' saat ', ' Days ', ' hafta ', ' ay '
-|**schedule_interval_count**|   int|    İşin her yürütmesi arasında gerçekleşecek schedule_interval_type dönemi sayısı.|
+|**schedule_interval_count**|   int|    İşin her yürütmesi arasında gerçekleştirilecek schedule_interval_type dönemi sayısı.|
 |**schedule_start_time**    |datetime2 (7)|  İşin en son başladığı tarih ve saat.|
 |**schedule_end_time**| datetime2 (7)|   İşin yürütmenin en son tamamlandığı tarih ve saat.|
 
@@ -1331,8 +1331,8 @@ Tüm hedef grupların tüm üyelerini gösterir.
 |**refresh_credential_name**    |nvarchar (128)  |Hedef grup üyesine bağlanmak için kullanılan veritabanı kapsamlı kimlik bilgisinin adı.|
 |**subscription_id**    |benzersiz tanımlayıcı|  Aboneliğin benzersiz KIMLIĞI.|
 |**resource_group_name**    |nvarchar (128)| Hedef grup üyesinin bulunduğu kaynak grubunun adı.|
-|**sunucu_adı**    |nvarchar (128)  |Hedef grupta bulunan SQL veritabanı sunucusunun adı. Yalnızca target_type ' SqlServer ' ise belirtilir. |
-|**veritabanı**  |nvarchar (128)  |Hedef grupta bulunan veritabanının adı. Yalnızca target_type ' SqlDatabase ' olduğunda belirtilir.|
+|**server_name**    |nvarchar (128)  |Hedef grupta bulunan SQL veritabanı sunucusunun adı. Yalnızca target_type ' SqlServer ' ise belirtilir. |
+|**database_name**  |nvarchar (128)  |Hedef grupta bulunan veritabanının adı. Yalnızca target_type ' SqlDatabase ' olduğunda belirtilir.|
 |**elastic_pool_name**  |nvarchar (128)| Hedef grupta bulunan elastik havuzun adı. Yalnızca target_type ' Sqtalakpool ' olduğunda belirtilir.|
 |**shard_map_name** |nvarchar (128)| Hedef grupta bulunan parça eşlemesinin adı. Yalnızca target_type ' SqlShardMap ' olduğunda belirtilir.|
 

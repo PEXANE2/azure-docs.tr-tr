@@ -1,24 +1,24 @@
 ---
-title: JavaScript için Azure Storage ile v10 arasındaki SDK 'sını kullanarak Blobları karşıya yükleme, indirme, listeleme ve silme
-description: Azure Depolama ile Node.js'de blob ve kapsayıcı oluşturma, yükleme ve silme
+title: 'Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı ile v10 arasındaki'
+description: JavaScript için Azure Storage istemci kitaplığı ile v10 arasındaki ile Node. js ' de blob ve kapsayıcılar oluşturma, karşıya yükleme ve silme
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/24/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f8c7de63f2bd4b7329e8ae6a53123c9c1ea035af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: b909da5da0d7352d4086222fe0411ac37668bd92
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240435"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825333"
 ---
-# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Hızlı Başlangıç: JavaScript için Azure Storage ile v10 arasındaki SDK 'sını kullanarak Blobları karşıya yükleme, indirme, listeleme ve silme
+# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı ile v10 arasındaki
 
 Bu hızlı başlangıçta blob yükleme, indirme, listeleme ve silme ile kapsayıcıları yönetme amacıyla Node.js'de [JavaScript için Azure Storage v10 SDK'sını](https://github.com/Azure/azure-sdk-for-js) kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -203,7 +203,7 @@ Kapsayıcıda olduğu gibi blok blobu da henüz mevcut değildir. *blockBlobURL*
 
 ### <a name="using-the-aborter-class"></a>Aborter sınıfını kullanma
 
-API tarafından yapılan istekler belirli bir sürenin sonunda zaman aşımına uğrayacak şekilde ayarlanabilir. *Aborter* sınıfı istekleri zaman aşımına uğrama açısından yönetmekten sorumludur. Aşağıdaki kod, bir dizi isteğe yürütme için 30 dakika verilen bir bağlam oluşturur.
+API tarafından yapılan istekler belirli bir sürenin sonunda zaman aşımına uğrayacak şekilde ayarlanabilir. *Aborter* sınıfı, isteklerin zaman aşımına uğradığını yönetmekten sorumludur. Aşağıdaki kod, bir istek kümesinin yürütülmesi için 30 dakika verildiği bir bağlam oluşturur.
 
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);

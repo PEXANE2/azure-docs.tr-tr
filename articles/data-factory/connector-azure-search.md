@@ -12,44 +12,44 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: f4e9e9f66d9bf1fecd4565d5eb469703e7a83d0d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ffdde571bbd2ae967003c520b09349ea9dcff414
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681180"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806081"
 ---
-# <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Search dizine veri kopyalama
+# <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Bilişsel Arama dizinine veri kopyalama
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-azure-search-connector.md)
 > * [Geçerli sürüm](connector-azure-search.md)
 
-Bu makalede, verileri Azure Search dizine kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
+Bu makalede, Azure Bilişsel Arama dizinine veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Desteklenen herhangi bir kaynak veri deposundan verileri Azure Search dizine kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+Desteklenen herhangi bir kaynak veri deposundan verileri arama dizinine kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler Azure Search bağlayıcıya özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, Azure Bilişsel Arama Connector 'a özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
 ## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-Azure Search bağlı hizmeti için aşağıdaki özellikler desteklenir:
+Azure Bilişsel Arama bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Type özelliği: **Azuresearch** olarak ayarlanmalıdır | Evet |
-| url | Azure Search hizmeti URL 'SI. | Evet |
-| anahtar | Azure Search hizmeti için yönetici anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| url | Arama Hizmeti URL 'SI. | Evet |
+| anahtar | Arama hizmeti için yönetici anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 > [!IMPORTANT]
-> Verileri bir bulut veri deposundan Azure Search dizinine kopyalarken, Azure Search bağlı hizmette, Connactto aracılığıyla açık bölge ile bir Azure Integration Runtime başvurmanız gerekir. Bölgeyi Azure Search yer aldığı bir şekilde ayarlayın. [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)hakkında daha fazla bilgi edinin.
+> Verileri bir bulut veri deposundan arama dizinine kopyalarken, Azure Bilişsel Arama bağlı hizmetinde, Connactto aracılığıyla açık bölge ile bir Azure Integration Runtime başvurmanız gerekir. Bölgeyi, arama hizmetinizin bulunduğu konum olarak ayarlayın. [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)hakkında daha fazla bilgi edinin.
 
 **Örnek:**
 
@@ -75,14 +75,14 @@ Azure Search bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm Azure Search veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Azure Bilişsel Arama veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Azure Search verileri kopyalamak için aşağıdaki özellikler desteklenir:
+Verileri Azure Bilişsel Arama 'e kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | DataSet 'in Type özelliği: **AzureSearchIndex** olarak ayarlanmalıdır | Evet |
-| indexName | Azure Search dizininin adı. Data Factory dizini oluşturmaz. Dizinin Azure Search olması gerekir. | Evet |
+| indexName | Arama dizininin adı. Data Factory dizini oluşturmaz. Dizinin Azure Bilişsel Arama mevcut olması gerekir. | Evet |
 
 **Örnek:**
 
@@ -96,7 +96,7 @@ Azure Search verileri kopyalamak için aşağıdaki özellikler desteklenir:
         },
         "schema": [],
         "linkedServiceName": {
-            "referenceName": "<Azure Search linked service name>",
+            "referenceName": "<Azure Cognitive Search linked service name>",
             "type": "LinkedServiceReference"
         }
    }
@@ -105,21 +105,21 @@ Azure Search verileri kopyalamak için aşağıdaki özellikler desteklenir:
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm Azure Search kaynak tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, Azure Bilişsel Arama kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="azure-search-as-sink"></a>Havuz olarak Azure Search
+### <a name="azure-cognitive-search-as-sink"></a>Havuz olarak Azure Bilişsel Arama
 
-Azure Search içine veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **AzureSearchIndexSink**olarak ayarlayın. Aşağıdaki özellikler, kopyalama etkinliği **havuzu** bölümünde desteklenir:
+Verileri Azure Bilişsel Arama 'e kopyalamak için kopyalama etkinliğindeki kaynak türünü **AzureSearchIndexSink**olarak ayarlayın. Aşağıdaki özellikler, kopyalama etkinliği **havuzu** bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği kaynağının Type özelliği: **AzureSearchIndexSink** olarak ayarlanmalıdır | Evet |
-| WriteBehavior | Dizinde bir belgenin zaten mevcut olduğu zaman birleştirilip birleştirilmeyeceğini veya değiştirip edilmeyeceğini belirtir. Bkz. [Writebehavior özelliği](#writebehavior-property).<br/><br/>İzin verilen değerler şunlardır: **birleştirme** (varsayılan) ve **karşıya yükleme**. | Hayır |
-| writeBatchSize | Arabellek boyutu writeBatchSize ulaştığında verileri Azure Search dizinine yükler. Ayrıntılar için bkz. [Writebatchsize özelliği](#writebatchsize-property) .<br/><br/>İzin verilen değerler: tamsayı 1 ile 1.000 arasında; Varsayılan değer 1000 ' dir. | Hayır |
+| writeBehavior | Dizinde bir belgenin zaten mevcut olduğu zaman birleştirilip birleştirilmeyeceğini veya değiştirip edilmeyeceğini belirtir. Bkz. [Writebehavior özelliği](#writebehavior-property).<br/><br/>İzin verilen değerler şunlardır: **birleştirme** (varsayılan) ve **karşıya yükleme**. | Hayır |
+| WriteBatchSize | Arabellek boyutu writeBatchSize ulaştığında verileri arama dizinine yükler. Ayrıntılar için bkz. [Writebatchsize özelliği](#writebatchsize-property) .<br/><br/>İzin verilen değerler: tamsayı 1 ile 1.000 arasında; Varsayılan değer 1000 ' dir. | Hayır |
 
 ### <a name="writebehavior-property"></a>WriteBehavior özelliği
 
-Veri yazarken AzureSearchSink upları. Diğer bir deyişle, bir belge yazarken belge anahtarı Azure Search dizininde zaten mevcutsa, bir çakışma özel durumu oluşturmak yerine mevcut belgeyi günceller Azure Search.
+Veri yazarken AzureSearchSink upları. Diğer bir deyişle, bir belge yazarken belge anahtarı arama dizininde zaten mevcutsa Azure Bilişsel Arama bir çakışma özel durumu oluşturmak yerine mevcut belgeyi güncelleştirir.
 
 AzureSearchSink aşağıdaki iki yukarı yönlü davranışı sağlar (AzureSearch SDK kullanarak):
 
@@ -130,7 +130,7 @@ Varsayılan davranış **birleştirilir**.
 
 ### <a name="writebatchsize-property"></a>WriteBatchSize özelliği
 
-Azure Search hizmet, toplu iş olarak belge yazmayı destekler. Batch, 1 ile 1.000 arasında eylem içerebilir. Bir eylem, karşıya yükleme/birleştirme işlemini gerçekleştirmek için bir belgeyi işler.
+Azure Bilişsel Arama hizmeti, toplu iş olarak belge yazmayı destekler. Batch, 1 ile 1.000 arasında eylem içerebilir. Bir eylem, karşıya yükleme/birleştirme işlemini gerçekleştirmek için bir belgeyi işler.
 
 **Örnek:**
 
@@ -147,7 +147,7 @@ Azure Search hizmet, toplu iş olarak belge yazmayı destekler. Batch, 1 ile 1.0
         ],
         "outputs": [
             {
-                "referenceName": "<Azure Search output dataset name>",
+                "referenceName": "<Azure Cognitive Search output dataset name>",
                 "type": "DatasetReference"
             }
         ],
@@ -166,9 +166,9 @@ Azure Search hizmet, toplu iş olarak belge yazmayı destekler. Batch, 1 ile 1.0
 
 ## <a name="data-type-support"></a>Veri türü desteği
 
-Aşağıdaki tablo Azure Search veri türünün desteklenip desteklenmediğini belirtir.
+Aşağıdaki tabloda bir Azure Bilişsel Arama veri türünün desteklenip desteklenmediğini belirtir.
 
-| Azure Search veri türü | Azure Search havuzunda desteklenir |
+| Azure Bilişsel Arama veri türü | Azure Bilişsel Arama havuzunda desteklenir |
 | ---------------------- | ------------------------------ |
 | Dize | E |
 | Int32 | E |
@@ -179,7 +179,7 @@ Aşağıdaki tablo Azure Search veri türünün desteklenip desteklenmediğini b
 | Dize dizisi | N |
 | GeographyPoint | N |
 
-Şu anda diğer veri türleri, yani ComplexType desteklenmez. Desteklenen Azure Search veri türü tam listesi için bkz. [desteklenen veri türleri (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
+Şu anda diğer veri türleri, yani ComplexType desteklenmez. Desteklenen Azure Bilişsel Arama veri türlerinin tam listesi için bkz. [desteklenen veri türleri (Azure bilişsel arama)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md##supported-data-stores-and-formats).

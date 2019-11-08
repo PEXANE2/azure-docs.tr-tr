@@ -1,22 +1,22 @@
 ---
-title: PowerShell-TDE koruyucuyu döndürme-Azure SQL veritabanı | Microsoft Docs
+title: TDE koruyucuyu döndürme-PowerShell
 description: Azure SQL Server için Saydam Veri Şifrelemesi (TDE) koruyucusunu döndürme hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 464ea73d9b3d7116205377600ffccee13a9e2dcb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5bfcacb9348940e0b36947f6e4e0d27839de35bb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566049"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824676"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell kullanarak Saydam Veri Şifrelemesi (TDE) koruyucusunu döndürme
 
@@ -32,7 +32,7 @@ Bu kılavuzda, sunucuda TDE koruyucusunu döndürmek için iki seçenek ele alı
 > Bir geçişten sonra anahtarın önceki sürümlerini **silmeyin** .  Anahtarlar devralındığında, bazı veriler, daha eski veritabanı yedeklemeleri gibi önceki anahtarlarla de şifrelenir. 
 >
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -94,6 +94,6 @@ El ile anahtar döndürme, [Add-AzKeyVaultKey](/powershell/module/az.keyvault/Ad
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Güvenlik riskine karşı, riskli olabilecek bir TDE koruyucuyu kaldırma hakkında bilgi edinin: [Tehlikede olabilecek bir anahtarı kaldır](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
+- Güvenlik riskine karşı, riskli olabilecek bir TDE koruyucuyu kaldırma hakkında bilgi edinin: [riskli olabilecek bir anahtarı kaldırma](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
 
-- TDE Azure Key Vault tümleştirme ve Kendi Anahtarını Getir desteği ile çalışmaya başlama: [PowerShell kullanarak Key Vault kendi anahtarınızı kullanarak TDE açma](transparent-data-encryption-byok-azure-sql-configure.md)
+- Azure Key Vault tümleştirme ile çalışmaya başlayın ve TDE için Kendi Anahtarını Getir desteğini kullanın: [PowerShell kullanarak Key Vault kendi anahtarınızı kullanarak TDE açma](transparent-data-encryption-byok-azure-sql-configure.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: d4a16fc3d4c29b1e270fa088af75d287a81180c0
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 04dcdbe6854a386f7edaa04aa9c2912789122a31
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552071"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827451"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
 
@@ -69,7 +69,7 @@ Circonus, şirket içi veya SaaS dağıtımı için oluşturulmuş bir mikro hiz
 
 Zaman ve para tasarrufu için oluşturulmuş bir platforma sahip bulutunuzu oluşturup otomatikleştirin. CloudHealth, bulut yönetimi için görünürlük, sezgisel iyileştirme ve Rock-Solid idare uygulamaları sağlar. CloudHealth platformu, kuruluşların ve MSPs 'nin bulut yatırımlarına dönüşü en üst düzeye çıkarmasına olanak sağlar. Maliyet, kullanım, performans ve güvenlik konusunda kendinize yönelik kararlar alın.
 
-[Daha fazla bilgi edinin.][cloudhealth-doc]
+[Daha Fazla Bilgi Edinin.][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>Cloudmonitorx
 
@@ -267,5 +267,5 @@ Turbonomic, performansı, maliyeti ve uyumluluğu gerçek zamanlı bir şekilde 
 [solarwinds-doc]: https://www.solarwinds.com/topics/azure-monitoring "SolarWinds belgeleri."
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk belgeleri."
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic belgeleri."
-[turbonomic-doc]: https://turbonomic.com/solutions/technologies/azure-cloud/ "Turbonomic giriş."
+[turbonomic-doc]: https://turbonomic.com/ "Turbonomic giriş."
 

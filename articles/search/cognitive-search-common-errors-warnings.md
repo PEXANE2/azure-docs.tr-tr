@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6ed04c875140f3ecd14eff31829e931efbe84ea2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: bbaec55666b877e1d9343d8b80ea44a189c0c5b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606659"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806118"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme işlem hattının genel hataları ve uyarıları
 
@@ -63,6 +63,8 @@ Dizin Oluşturucu beceri içinde bir yetenek çalıştıramıyor.
 
 | Neden | Örnek | Eylem |
 | --- | --- | --- |
+| Bir alan çok büyük bir terim içeriyor | Belgenizdeki bir terim [32 KB sınırından](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Alanın filtrelenebilir, çok yönlü veya sıralanabilir olarak yapılandırılmadığından emin olmak için bu kısıtlamayı önleyebilirsiniz.
+| Belge dizine eklenemeyecek kadar büyük | Belge, [en yüksek API istek boyutundan](search-limits-quotas-capacity.md#api-request-limits) daha büyük | [Büyük veri kümelerini dizin oluşturma](search-howto-large-index.md)
 | Geçici bağlantı sorunları | Geçici bir hata oluştu. Lütfen daha sonra tekrar deneyin. | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
 | Olası ürün hatası | Beklenmeyen bir hata oluştu. | Bu, bilinmeyen bir hata sınıfını gösterir ve bir ürün hatası olduğu anlamına gelebilir. Yardım almak için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) girin. |
 | Bir beceri yürütme sırasında bir hatayla karşılaştı | (Birleştirme becerinizden) Bir veya daha fazla fark değeri geçersizdi ve ayrıştırılamadı. Metnin sonuna öğe eklendi | Sorunu giderecek hata iletisindeki bilgileri kullanın. Bu tür bir hata çözümü için eylem gerekir. |
@@ -114,6 +116,7 @@ Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi.
 | --- | --- | --- |
 | Belgenizdeki bir terim [32 KB sınırından](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Bir alan çok büyük bir terim içeriyor | Alanın filtrelenebilir, çok yönlü veya sıralanabilir olarak yapılandırılmadığından emin olmak için bu kısıtlamayı önleyebilirsiniz.
 | Belge, [en yüksek API istek boyutundan](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Belge dizine eklenemeyecek kadar büyük | [Büyük veri kümelerini dizin oluşturma](search-howto-large-index.md)
+| Belge koleksiyonda çok fazla nesne içeriyor | Belgenizdeki bir koleksiyon [tüm karmaşık koleksiyonlar limitindeki en fazla öğeyi](search-limits-quotas-capacity.md#index-limits) aşıyor | Belgedeki karmaşık toplamanın boyutunu sınırın altına düşürmenizi ve yüksek depolama kullanımından kaçınmanızı öneririz.
 | Hizmet, sorgulama veya dizin oluşturma gibi başka bir yük altında olduğundan, hedef dizine bağlanma sorunu (yeniden denemeden sonra devam eden). | Güncelleştirme diziniyle bağlantı kurulamadı. Arama hizmeti ağır yük altında. | [Arama hizmetinizin ölçeğini artırma](search-capacity-planning.md)
 | Arama hizmeti 'nin hizmet güncelleştirmesi için düzeltme eki uygulanıyor veya bir topoloji yeniden yapılandırması ortasında. | Güncelleştirme diziniyle bağlantı kurulamadı. Arama hizmeti şu anda açık/arama hizmeti bir geçiş işlemi yaşıyor. | [SLA belgeleri](https://azure.microsoft.com/support/legal/sla/search/v1_0/) başına% 99,9 kullanılabilirlik için en az 3 çoğaltmalarla hizmeti yapılandırın
 | Temeldeki işlem/ağ kaynağında hata (nadir) | Güncelleştirme diziniyle bağlantı kurulamadı. Bilinmeyen bir hata oluştu. | Başarısız bir durumdan almak için [bir zamanlamaya göre çalıştırılacak](search-howto-schedule-indexers.md) Dizin oluşturucularını yapılandırın.

@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: da6fee7158344d331c6c2a68f0fab1b13cc3a291
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9eb283f538759f9591add4b04462de151f2cb014
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934112"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825584"
 ---
 # <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturun
 
@@ -57,10 +58,10 @@ Başka bir teklif türü seçerseniz, eski [bulut iş ortağı portalı](https:/
 - **Yayımlama durumu** , bu teklifi yayımlamak için gereken adımların görsel bir gösterimini ve her adımın tamamlanması için ne kadar sürdüğünü gösterir. Tamamlanmamış yayımlama adımı simgeleri gri olacak. 
 
 - **Teklif genel bakış** menüsü, bu teklif üzerinde işlem gerçekleştirmek için bağlantıların bir listesini içerir. Bu işlem listesi, teklifiniz için yaptığınız seçime göre değişecektir.  
-    - Teklif bir taslak ise, taslağı Sil 
-    - Teklif canlı ise, satış teklifini durdur 
-    - Teklif önizleme sürümündedir – canlı ol 
-    - Yayımcı oturumu kapatma Işlemini tamamlamadıysanız, yayımlamayı Iptal edin
+    - Teklif bir taslak silise taslak silme 
+    - Teklif canlı değilse, satış teklifini durdur 
+    - Teklif önizleme sürümündedir-canlı 
+    - Yayımcı oturumunu kapatma Işlemini tamamlamadıysanız, yayımlamayı Iptal edin
 
 ## <a name="offer-setup"></a>Teklif kurulumu
 
@@ -241,8 +242,8 @@ Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı bi�
 
     **Örnek**: 
 
-    `<p>` ilk paragrafım. `</p>` <br>
-    `<p>`, ikinci paragrafım. `</p>` <br>
+    ilk paragrafım `<p>`. `</p>` <br>
+    `<p>` ikinci paragrafım. `</p>` <br>
 
     Yukarıdaki şöyle görünür:
 
@@ -268,7 +269,7 @@ Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı bi�
         <li> Buraya metin ekleyin </li> 
     </ul> 
 
-1. **Kalın** içeriğe kadar, kalın yapmak istediğiniz metnin başına `<b>` ' i ekleyin ve kalın olmasını istediğiniz metnin sonuna `</b>` ekleyin. 
+1. **Kalın** içerik için, kalın yapmak istediğiniz metnin başına `<b>` ekleyin ve kalın olmasını istediğiniz metnin sonuna `</b>` ekleyin. 
 
     **Örnek**: `<b>` ücretsiz deneme `</b>`
     
@@ -276,17 +277,17 @@ Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı bi�
 
     **ÜCRETSIZ DENEME**
 
-1. İçeriğiniz arasına **satır sonları** eklemek için, yeni bir satıra başlamak istediğiniz içerikten önce `<br>` ekleyin. Bir boşluk bırakmak ve içeriğin yeni bir satırda başlamasını sağlamak istiyorsanız, içerikten önce `<br><br>` ' ı ekleyin. 
+1. İçeriğiniz arasına **satır sonları** eklemek için, yeni bir satırda başlamasını istediğiniz içerikten önce `<br>` ekleyin. Bir boşluk bırakmak ve içeriğin yeni bir satırda başlamasını sağlamak istiyorsanız, içerikten önce `<br><br>` ekleyin. 
 
     **Örnek**:
 
-    Bu bir metin çizgisi. `<br>` Bu, yeni bir satırda başlatılacak bir metin çizgisi. `<br><br>` Bu, aşağıdaki iki satırı başlatacak bir satırdır. 
+    Bu bir metin çizgisi. `<br>` yeni bir satırda başlatılacak bir metin çizgisi. `<br><br>` aşağıda iki satırı başlatacak bir satırdır. 
 
     Yukarıdaki şöyle görünür:
 
     Bu bir metin çizgisi. <br> Bu, yeni bir satırda başlatılacak bir metin çizgisi. <br><br> Bu, aşağıdaki iki satırı başlatacak bir satırdır. 
 
-1. **Metnin boyutunu artırmak**istiyorsanız, önce metnin ne kadar büyük olmasını istediğinizi seçin. Aşağıdaki örnekleri kullanın. Metnin boyutunu seçtikten sonra, karşılık gelen `<H*></H*>` etiketlerini metnin başlangıcına ve sonuna ekleyin. 
+1. **Metnin boyutunu artırmak**istiyorsanız, önce metnin ne kadar büyük olmasını istediğinizi seçin. Aşağıdaki örnekleri kullanın. Metnin boyutunu seçtikten sonra, metnin başına ve sonuna karşılık gelen `<H*></H*>` etiketlerini ekleyin. 
 
     **Örnek**:
 
@@ -351,7 +352,7 @@ Canlı yayımlamadan önce teklifinizi doğrulamaya yardımcı olmak üzere mevc
 
 - **Giriş sayfası URL 'si** (gerekli): müşterilerinizin teklifinizi marketten aldıktan sonra hangi site URL 'sini tanımlayın. Bu URL, bir müşteri sayfaya yönlendirildiğini belirteç alan uç nokta olur. Bu belirteç, karşılama API 'Lerinde çözümle kullanılarak sağlama ayrıntıları için takas edilebilir. Bu ayrıntılar ve topladığınız tüm diğerleri, kaydınızı tamamlayıp satın almasını etkinleştirmek için deneyiminizin yerleşik olduğu müşteri etkileşimli Web sayfasının bir parçası olarak kullanılabilir.
 
-- **Bağlantı Web kancası** (gerekli): Microsoft 'un müşteri adına size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örnek: SaaS aboneliği geçersiz oldu), bağlantı Web kancası sağlamanız gerekir. Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde işleymelidir (ör. https: \//prod-1westus. Logic. Azure. com: 443/Work ). Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Bağlantı Web kancası** (gerekli): Microsoft 'un müşteri adına size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örnek: SaaS aboneliği geçersiz oldu), bağlantı Web kancası sağlamanız gerekir. Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde (ör. https:\//prod-1westus.logic.azure.com:443/work) işleymelidir. Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **Azure AD KIRACı kimliği** (gerekli): Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) gerekir. [KIRACı kimliğini](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)bulmak için Azure Active Directory gidin ve **Özellikler**' i seçin, ardından listelenen **dizin kimliği** numarasını (ör. 50c464d3-4930-494c-963c-1e951d15360e) arayın.
 
@@ -367,8 +368,8 @@ Oluşturulduktan sonra plan adlarınızı, kimlikleri, fiyatlandırma modellerin
 
 **Plana genel bakış** bakımından sunulan **Eylemler** planınızın geçerli durumuna bağlı olarak farklılık gösterir ve şunlar olabilir:
 
-- Plan durumu **taslak** ise, taslağı Sil
-- Plan durumu **canlı** ise, planı satmayı veya özel izleyiciyi Eşitlemeyi Durdur
+- Plan durumu **taslak** ise taslağı Sil
+- Plan durumu **canlı** ise, bir planı satmayı veya özel izleyiciyi Eşitlemeyi Durdur
 
 **Yeni plan oluştur** (Microsoft üzerinden satış için seçim yapan kişiler için en az bir plan)
 
@@ -406,7 +407,7 @@ Ticari Market aracılığıyla sunulan SaaS teklifleri, Microsoft üzerinden sat
 >[!Note]
 >Transactable teklifiniz ücretsiz bir deneme ile yayımlandıktan sonra bu plan için devre dışı bırakılamaz. Planı yeniden oluşturmak zorunda kalmamak için bu ayarın ilk yayımlama için doğru olduğundan emin olun.
 
-Ücretsiz bir denemeye katılmış olan müşteri abonelikleri hakkında bilgi edinmek için, true veya false olarak işaretlenecek `isFreeTrial` yeni API özelliğini kullanın. Daha fazla bilgi için [SaaS Get abonelik API 'sine](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) bakın.
+Ücretsiz bir denemeye katılmış olan müşteri abonelikleri hakkında bilgi edinmek için, true veya false olarak işaretlenecek `isFreeTrial`yeni API özelliğini kullanın. Daha fazla bilgi için [SaaS Get abonelik API 'sine](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) bakın.
 
 >[!Note]
 >Market ölçüm hizmetinden yararlanan planlar için ücretsiz denemeler desteklenmez.
@@ -459,7 +460,7 @@ Planınızı özel ve yalnızca seçtiğiniz kısıtlanmış kitlele görünür 
 
 Bu özel plana erişimi olacak hedef kitleyi atayın. Atanan her kiracı KIMLIĞININ açıklamasını ekleme seçeneğiyle kiracı kimlikleri kullanılarak erişim atanır. Bir. csv elektronik tablo dosyası içeri aktarıldıysanız, en fazla 10 Kiracı kimliği eklenebilir veya 20.000 müşteri Kiracı kimliği olabilir.
 
-Kiracı, bir GUID (genel benzersiz tanımlayıcı, kaynakları tanımlamak için kullanılan 128 bitlik bir tamsayı numarası) olarak temsil edilen KIMLIĞE sahip bir kuruluşun gösterimidir. Kuruluş veya uygulama geliştirici Microsoft'la bir ilişki oluşturduğunda, örneğin Azure'a, Microsoft Intune'a veya Microsoft 365'e kaydolduğunda kuruluşun veya uygulama geliştiricinin aldığı özel bir Azure AD örneğidir. Her Azure AD kiracısı benzersizdir ve diğer Azure AD kiracılarından ayrıdır. Kiracıyı denetlemek için, uygulamanızı yönetmek üzere kullanmak istediğiniz hesapla Azure portal oturum açın. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz. Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin. Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır. Ayrıca, [https://www.whatismytenantid.com](https://www.whatismytenantid.com)' de bir etki alanı adı URL 'si kullanarak KURULUŞUNUZUN Kiracı kimliğini de arayabilirsiniz.
+Kiracı, bir GUID (genel benzersiz tanımlayıcı, kaynakları tanımlamak için kullanılan 128 bitlik bir tamsayı numarası) olarak temsil edilen KIMLIĞE sahip bir kuruluşun gösterimidir. Kuruluş veya uygulama geliştirici Microsoft'la bir ilişki oluşturduğunda, örneğin Azure'a, Microsoft Intune'a veya Microsoft 365'e kaydolduğunda kuruluşun veya uygulama geliştiricinin aldığı özel bir Azure AD örneğidir. Her Azure AD kiracısı benzersizdir ve diğer Azure AD kiracılarından ayrıdır. Kiracıyı denetlemek için, uygulamanızı yönetmek üzere kullanmak istediğiniz hesapla Azure portal oturum açın. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz. Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin. Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır. Ayrıca, şu adreste bir etki alanı adı URL 'SI kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
 SaaS, özel bir hedef kitle tanımlamak için kiracı kimlikleri kullanır, diğer teklif türleri de Azure abonelik kimliklerini (GUID 'Ler olarak da temsil edilir) kullanabilir.
 
@@ -483,9 +484,9 @@ Teklifin tüm gerekli bölümlerini tamamladıktan sonra portalın sağ üst kö
 Bu teklifi ilk kez yayınlıyorsanız, şunları yapabilirsiniz:
 
 - Teklifin her bölümü için tamamlanma durumuna bakın.
-    - *Başlatılmamış* – bölüm dokunulmamış ve tamamlanması gereken anlamına gelir.
-    - *Tamamlanmamış* – bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Lütfen bölüm (ler) e geri dönün ve güncelleştirin.
-    - *Tamamlandı* – bölümün tamamlandığı, tüm gerekli verilerin sağlandığı ve hata olmadığı anlamına gelir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
+    - *Başlatılmamış* -bölüm dokunulmamış ve tamamlanması gereken anlamına gelir.
+    - *Tamamlanmamış* -bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Lütfen bölüm (ler) e geri dönün ve güncelleştirin.
+    - *Tam* -bölümün tamamlandığı, tüm gerekli verilerin sağlandığı ve hata olmadığı anlamına gelir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
 - Uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın.
 - **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Size, gözden geçirmeniz ve onaylamanız için teklifin bir önizleme sürümünün ne zaman kullanılabileceğini bilmenizi sağlayacak bir e-posta göndereceğiz. Teklifinizi ortak (veya özel bir teklif, özel hedef kitleye) yayımlamak için Iş Ortağı Merkezi 'ne dönmeniz ve teklif için **Go-Live** ' ı seçmeniz gerekir.
 

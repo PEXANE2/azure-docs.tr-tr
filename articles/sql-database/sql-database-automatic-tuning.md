@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı-otomatik ayarlama
+title: Otomatik ayarlamaya genel bakış
 description: Azure SQL veritabanı, SQL sorgusunu analiz eder ve Kullanıcı iş yüküne otomatik olarak uyum sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: bfac5a0eba68469d912efd02699624e1335e40e5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 179bb5c9d718a556b829af8f860cb284597835aa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691119"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821886"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL veritabanı 'nda otomatik ayarlama
 
@@ -77,7 +77,7 @@ Portalı kullanarak ayarlama önerilerini el ile uygulayabilir ya da otomatik ay
 
 T-SQL aracılığıyla ayarlama önerileri uyguluyorsanız, otomatik performans doğrulaması ve ters çevirme mekanizmaları kullanılamaz. Bu şekilde uygulanan öneriler etkin kalır ve 24-48 saat için ayarlama önerileri listesinde gösterilir. sistemi otomatik olarak çizmadan önce. Bir öneriyi daha erken kaldırmak istiyorsanız, Azure portal ' den atabilirsiniz.
 
-Otomatik ayarlama seçenekleri veritabanı başına bağımsız olarak etkinleştirilebilir veya devre dışı bırakılabilir ya da SQL veritabanı sunucularında yapılandırılabilirler ve ayarları sunucudan devralan her veritabanına uygulanabilir. SQL veritabanı sunucuları, otomatik ayarlama ayarları için Azure varsayılanlarını devralınabilir. Azure Varsayılanları Şu anda FORCE_LAST_GOOD_PLAN olarak ayarlanır, CREATE_INDEX etkindir ve DROP_INDEX devre dışıdır.
+Otomatik ayarlama seçenekleri veritabanı başına bağımsız olarak etkinleştirilebilir veya devre dışı bırakılabilir ya da SQL veritabanı sunucularında yapılandırılabilirler ve ayarları sunucudan devralan her veritabanına uygulanabilir. SQL veritabanı sunucuları, otomatik ayarlama ayarları için Azure varsayılanlarını devralınabilir. Azure Varsayılanları Şu anda FORCE_LAST_GOOD_PLAN etkinleştirilir, CREATE_INDEX etkinleştirilir ve DROP_INDEX devre dışı bırakılır.
 
 Bir sunucuda otomatik ayarlama seçeneklerinin yapılandırılması ve üst sunucuya ait olan veritabanlarının ayarlarını devralma, çok sayıda veritabanı için otomatik ayarlama seçeneklerinin yönetimini basitleştikten sonra otomatik ayarlamayı yapılandırmak için önerilen bir yöntemdir.
 

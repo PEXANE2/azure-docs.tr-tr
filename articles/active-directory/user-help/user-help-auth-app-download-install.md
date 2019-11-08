@@ -1,5 +1,5 @@
 ---
-title: Microsoft Authenticator App-Azure Active Directory indirin ve yükleyin | Microsoft Docs
+title: Microsoft Authenticator uygulamasını indirme ve yükleme-Azure AD
 description: İki öğeli doğrulama için Microsoft Authenticator uygulamasını indirme, yükleme ve kullanma.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15ecdf0feb0d8e5307eac9916748e0bacdf51620
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ebe80d44d52ffa348413e51cd5e82e8468537479
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616041"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820220"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını indirme ve yükleme
 
@@ -52,7 +52,7 @@ Microsoft Authenticator uygulamasını, aşağıdakiler dahil olmak üzere birde
 - **Apple iOS.** Apple iOS cihazınızda, [Microsoft Authenticator uygulamayı indirip yüklemek](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)Için App Store 'a gidin.
 
 >[!Important]
->Şu anda mobil cihazınızda değilseniz, [Microsoft Authenticator sayfasından](https://www.microsoft.com/account/authenticator)kendinize bir indirme bağlantısı göndererek Microsoft Authenticator uygulamayı almaya devam edebilirsiniz.
+>Şu anda mobil cihazınızda değilseniz, [Microsoft Authenticator sayfasından](https://www.microsoft.com/en-us/account/authenticator)kendinize bir indirme bağlantısı göndererek Microsoft Authenticator uygulamayı almaya devam edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

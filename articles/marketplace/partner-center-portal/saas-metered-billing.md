@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a244e4f7ac406fecd4c053b39a5e9a9cb6ecab2c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 54b59cfecbbba6b71cf301aa4872892825d4b675
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105506"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827923"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Market ölçüm hizmeti kullanılarak ölçülen faturalandırma
 
@@ -72,13 +73,13 @@ Fatura boyutları, bir teklif için tüm planlar arasında paylaşılır.  Bazı
 
 Boyutun kendisini tanımlayan öznitelikler, bir teklif için tüm planlar arasında paylaşılır.  Teklifi yayımlamadan önce, herhangi bir planın bağlamından bu özniteliklerde yapılan bir değişiklik, tüm planlar genelinde boyut tanımını etkiler.  Teklifi yayımladıktan sonra bu öznitelikler artık düzenlenemeyecektir.  Bu öznitelikler şunlardır:
 
-* tanımlayıcı
-* Name
+* Tanımlayıcı
+* Ad
 * Ölçü birimi
 
 Bir boyutun diğer öznitelikleri her plana özeldir ve plandan plana göre farklı değerlere sahip olabilir.  Planı yayımlamadan önce bu değerleri düzenleyebilir ve yalnızca bu plan etkilenecektir.  Planı yayımladıktan sonra bu öznitelikler artık düzenlenemeyecektir.  Bu öznitelikler şunlardır:
 
-* Birim fiyat
+* Birim başına fiyat
 * Aylık müşteriler için dahil edilen miktar 
 * Yıllık müşteriler için dahil edilen miktar 
 
@@ -102,13 +103,13 @@ Market ölçüm hizmeti ile kullanılan bir boyut bir müşterinin hizmet için 
   
 Bir teklif bir boyutla yayımlandıktan sonra, bu boyut için teklif düzeyi ayrıntıları artık değiştirilemez:
 
-* tanımlayıcı
-* Name
+* Tanımlayıcı
+* Ad
 * Ölçü birimi
 
 Bir plan yayımlandığında, plan düzeyi ayrıntıları artık değiştirilemez:
 
-* Birim fiyat
+* Birim başına fiyat
 * Aylık dönem için dahil edilen miktar
 * Yıllık dönem için dahil edilen miktar
 * Plan için boyutun etkinleştirilip etkinleştirilmeyeceğini belirtir

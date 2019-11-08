@@ -1,18 +1,19 @@
 ---
-title: Azure SQL veritabanı ve veri ambarı için özel bağlantı
+title: Özel Bağlantı
 description: Özel uç nokta özelliğine genel bakış
 author: rohitnayakmsft
 ms.author: rohitna
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: a056c4beeeb05886d4b4ed492a05d1963372b366
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fcb89cbcadb5e101ab2b4bfd18d0b7b91c63c92a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687617"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821301"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Azure SQL veritabanı ve veri ambarı için özel bağlantı (Önizleme)
 

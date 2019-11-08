@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 77659fdf93947cfbaa0daa322dccf4e9cb1a41fa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3911d4e780e993fdd1c2945b34cd683d47fb884a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844723"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827285"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Azure haritalar Hizmetleri modülünü kullanma
 
@@ -124,7 +124,7 @@ Azure Haritalar Web SDK 'Sı bir *hizmet modülü*sağlar. Bu modül, JavaScript
 
     Daha fazla bilgi için bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md).
 
-1. Aşağıdaki kod, bir adresi coğrafi koda eklemek için yeni oluşturulan Azure Search hizmeti URL istemcisini kullanır: "1 Microsoft Way, Redmond, WA". Kod `searchAddress` işlevini kullanır ve sonuçları sayfanın gövdesinde bir tablo olarak görüntüler.
+1. Aşağıdaki kod, "1 Microsoft Way, Redmond, WA" adresine coğrafi olarak yeni oluşturulan Azure Maps arama hizmeti URL 'SI istemcisini kullanır. Kod `searchAddress` işlevini kullanır ve sonuçları sayfanın gövdesinde bir tablo olarak görüntüler.
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".
@@ -160,7 +160,7 @@ Azure Haritalar Web SDK 'Sı bir *hizmet modülü*sağlar. Bu modül, JavaScript
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Hizmetler modülünü kullanma" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>Hizmetler modülünü kullanarak</a> kaleme bakın.
+<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>Hizmetler modülünü kullanarak</a> kaleme bakın.
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar

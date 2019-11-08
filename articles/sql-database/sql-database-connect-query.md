@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Veritabanı bağlanma ve sorgu hızlı başlangıçlarını Başlat
+title: Bağlanma ve sorgu hızlı başlangıçlarını sorgula
 description: Azure SQL veritabanına nasıl bağlanacağınızı ve bu veritabanını nasıl sorgulayacağınızı gösteren Azure SQL Veritabanı hızlı başlangıçları.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e7ddd5449b7a12b8586b0c1675690a9cebab57b8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 647bdcf5c8c49b5c942419c78155ed4f61c848bb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690844"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826868"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Hızlı başlangıç: Azure SQL veritabanı Connect ve Query
 
@@ -59,7 +59,7 @@ Azure SQL veritabanı 'na bağlanmak için çeşitli kitaplıkları ve çerçeve
 
 Aşağıdaki tabloda, istemci uygulamalarının şirket içinde veya bulutta çalışan SQL Server bağlanmak ve kullanmak için çeşitli dillerden kullanabileceği bağlantı kitaplıkları veya *sürücüler* listelenmiştir. Bunları Linux, Windows veya Docker üzerinde kullanabilir ve Azure SQL veritabanı ve Azure SQL veri ambarı 'na bağlanmak için kullanabilirsiniz. 
 
-| Dil | Platform | Ek kaynaklar | İndirin | Başlarken |
+| Dil | Platform | Ek kaynaklar | İndir | Başlarken |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [SQL Server için Microsoft ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [İndir](https://www.microsoft.com/net/download/) | [Başlangıç](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [SQL Server için Microsoft JDBC sürücüsü](https://msdn.microsoft.com/library/mt484311.aspx) | [İndir](https://go.microsoft.com/fwlink/?linkid=852460) |  [Başlangıç](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)

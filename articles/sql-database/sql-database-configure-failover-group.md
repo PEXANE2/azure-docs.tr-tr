@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı için bir yük devretme grubu yapılandırma
+title: Yük devretme grubu yapılandırma
 description: Azure portal, az CLı ve PowerShell kullanarak Azure SQL veritabanı tek veritabanı, elastik havuz ve yönetilen örnek için otomatik yük devretme grubu yapılandırmayı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 626677ef9444e0ad99fd3678e23bdeec62fd920c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fb9ee2378679c420a7675856ec95e60f6ae1d14f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933384"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827147"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL veritabanı için bir yük devretme grubu yapılandırma
 
@@ -25,7 +25,7 @@ Bu konu, bir Azure SQL veritabanı için bir [otomatik yük devretme grubu](sql-
 ## <a name="single-database"></a>Tek veritabanı
 Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna tek bir veritabanı ekleyin.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulları göz önünde bulundurun:
 
@@ -186,7 +186,7 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 ## <a name="elastic-pool"></a>Elastik havuz
 Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna bir elastik havuz ekleyin.  
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulları göz önünde bulundurun:
 
@@ -334,7 +334,7 @@ Azure portal veya PowerShell kullanarak iki yönetilen örnek arasında bir yük
 
 Her bir yönetilen örneğin sanal ağı için bir ağ geçidi oluşturmanız, iki ağ geçidini bağlamanız ve ardından yük devretme grubu oluşturmanız gerekir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Aşağıdaki önkoşulları göz önünde bulundurun:
 
 - İkincil yönetilen örnek boş olmalıdır.
@@ -366,7 +366,7 @@ Azure portal kullanarak birincil sanal ağ geçidini oluşturun.
     | **Alan** | Değer |
     | --- | --- |
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
-    | **Adı** | Sanal ağ geçidinizin adı. | 
+    | **Ad** | Sanal ağ geçidinizin adı. | 
     | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
     | **Ağ Geçidi türü** | **VPN**' yi seçin. |
     | **VPN türü** | **Rota tabanlı** seçin |
@@ -427,7 +427,7 @@ Azure portal veya PowerShell kullanarak ikincil sanal ağ geçidini oluşturun.
    | **Alan** | Değer |
    | --- | --- |
    | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
-   | **Adı** | `secondary-mi-gateway`gibi sanal ağ geçidinizin adı. | 
+   | **Ad** | `secondary-mi-gateway`gibi sanal ağ geçidinizin adı. | 
    | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
    | **Ağ Geçidi türü** | **VPN**' yi seçin. |
    | **VPN türü** | **Rota tabanlı** seçin |

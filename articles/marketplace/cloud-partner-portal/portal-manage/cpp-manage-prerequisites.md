@@ -4,15 +4,16 @@ description: Bulut İş Ortağı Portalı Azure Marketi hesaplarını yönetmeye
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: b0a9f312ba78e148a573064b81ff1f52fbd85c03
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720078"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826664"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı hesaplarını yönetmek için Önkoşullar 
 
@@ -34,7 +35,7 @@ Aşağıdaki tabloda, Microsoft bulut yayımcısı olarak tamamen kaydolmak içi
 |                   Adım                   |  Ortaya çıkan kayıt veya kaynak                     |
 |                  ------                  |  -----------------------------------                    |
 | 1. Microsoft İş Ortağı Ağı kaydolun |  Kuruluşunuz için Microsoft İş Ortağı Ağı KIMLIĞI |
-| 2. bir Microsoft hesabı * oluşturun           |  Doğrulanmış bir Microsoft hesabı, @outlook.com, @live.com vb. ile biter. |
+| 2. bir Microsoft hesabı * oluşturun           |  Doğrulanmış bir Microsoft hesabı, @outlook.combiten @live.com, vb. |
 | 3. Market kayıt formunu gönderme | Bulut İş Ortağı Portalı yayımcı hesabı      |
 | 4. oturum Bulut İş Ortağı Portalı        | Teklif oluşturma ve yayımlama, kullanıcıları yönetme, Market ölçümlerini toplama ve vb. |
 | 5. Microsoft Geliştirici Merkezi 'ne kaydolun * | Doğrulanan bir geliştirme merkezi hesabı; Market işlemlerini yürütme yetkisi  |

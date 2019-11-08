@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell IoT Central Yönet | Microsoft Docs
-description: Azure PowerShell IoT Central yönetin.
+description: Bu makalede, Azure PowerShell IoT Central uygulamalarınızın nasıl oluşturulacağı ve yönetileceği açıklanmaktadır.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 269b8a6c2a90884b060b4fb916b77af919a63a63
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eadc021335488bed1f236d3728acca245be7d71e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953349"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806639"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell’den IoT Central’ı yönetme
 
@@ -21,7 +21,7 @@ ms.locfileid: "72953349"
 
 [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) web sitesinde IoT Central uygulamaları oluşturup yönetmek yerine uygulamalarınızı yönetmek için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -45,7 +45,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-Azure aboneliğinizde bir IoT Central uygulaması oluşturmak için [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) cmdlet 'ini kullanın. Örnek:
+Azure aboneliğinizde bir IoT Central uygulaması oluşturmak için [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) cmdlet 'ini kullanın. Örneğin:
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -67,11 +67,11 @@ Betik ilk olarak uygulamanın Doğu ABD bölgesinde bir kaynak grubu oluşturur.
 |------------------|------------|
 |ResourceGroupName |Uygulamayı içeren kaynak grubu. Bu kaynak grubu aboneliğinizde zaten var olmalıdır. |
 |Konum |Varsayılan olarak, bu cmdlet kaynak grubundaki konumu kullanır. Şu anda **Doğu ABD**, **Batı ABD**, **Kuzey Avrupa**veya **Batı Avrupa** bölgelerinde veya **Avustralya** ya da **Asya Pasifik** coğrafi bölgelerde IoT Central bir uygulama oluşturabilirsiniz.  |
-|Adı              |Azure portal uygulamanın adı. |
-|alanınızın         |Uygulamanın URL 'sindeki alt etki alanı. Örnekte, uygulama URL 'SI https://mysubdomain.azureiotcentral.com ' dır. |
+|Ad              |Azure portal uygulamanın adı. |
+|alanınızın         |Uygulamanın URL 'sindeki alt etki alanı. Örnekte, uygulama URL 'SI https://mysubdomain.azureiotcentral.com. |
 |Sku               |Şu anda tek değer **S1** 'dir (Standart katman). Bkz. [Azure IoT Central fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Şablon          | Kullanılacak uygulama şablonu. Daha fazla bilgi için aşağıdaki tabloya bakın: |
-|DisplayName       |Kullanıcı arabiriminde gösterildiği şekilde uygulamanın adı. |
+|displayName       |Kullanıcı arabiriminde gösterildiği şekilde uygulamanın adı. |
 
 **Uygulama şablonları**
 
@@ -100,7 +100,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>Uygulamayı kaldırma
 
-IoT Central uygulamasını silmek için [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) cmdlet 'ini kullanın. Örnek:
+IoT Central uygulamasını silmek için [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) cmdlet 'ini kullanın. Örneğin:
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `

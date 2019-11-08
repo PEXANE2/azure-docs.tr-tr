@@ -4,19 +4,20 @@ description: Go-to-market Services-yayımcıların kullanabileceği Microsoft ka
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7b563cd90ec3e46dfd2d4420b728cd6f69df40eb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752407"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818642"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
-Market 'te yayımladınız, şimdi teklifinizin başarılı olduğunu görmek istiyorsunuz. Size, satış, teknik ve pazarlama avantajları sunuyoruz; teklifinizin büyümesini hızlandırmanız gerekir.
+Market 'te yayımladınız, şimdi teklifinizin başarılı olduğunu görmek istiyorsunuz. Size satış, teknik ve pazarlama avantajları sunuyoruz; teklifinizin büyümesini hızlandırmanız gerekir.
 
 Teklifinizle canlı olduğunuzda, Market Remaronları ekibi, uygun avantajlarınız üzerinde sizinle çalışmaya başlamak için kullanıma sunulacaktır. Market 'in sağladığı avantajlar, ticari Market katılımınız ve satışlarınıza göre tahakkuk eder. Daha fazla ne kadar çok geri döndüğünüzde, geri dönebilirsiniz.
 
@@ -44,7 +45,7 @@ Kullanmaya başlamak için adımlarınız kolaydır:
 2. Ekip, Market teklifi başına "sahip" veya "birincil iletişim" na ulaşır. Düzenli olarak kontrol ettiğiniz bir bireyin ya da diğer adı girmek en iyi uygulamadır: info@company.com gibi diğer adlara gönderilen iletiler genellikle kaybediliyor.
 
 >[!Note]
->Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, lütfen Bulut İş Ortağı Portalı veya Iş Ortağı Merkezi ' nde arayarak söz konusu teklifin sahibi olan kuruluşunuz dahilinde kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa https://aka.ms/marketplacepublishersupport bir destek bileti yükseltebilirsiniz.
+>Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, lütfen Bulut İş Ortağı Portalı veya Iş Ortağı Merkezi ' nde arayarak söz konusu teklifin sahibi olan kuruluşunuz dahilinde kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa https://aka.ms/marketplacepublishersupportbir destek bileti yükseltebilirsiniz.
 
 Tekliflerinizi Market 'te büyürken genişleyebilmeniz için kullanabileceğiniz etkinliklerin kapsamı. Tüm dökümler, kaynakların ve en iyi yöntemlerin self servis e-postasıyla ilgili bir temel düzey iyileştirme önerisi ve promosyon alır.
 

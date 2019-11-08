@@ -1,5 +1,5 @@
 ---
-title: Geçici hatalarla çalışma-Azure SQL veritabanı
+title: Geçici hatalarla çalışma
 description: Azure SQL veritabanı 'nda bir SQL bağlantı hatasını veya geçici bir hatayı nasıl giderebileceğinizi, tanıleyeceğinizi ve önleyeceğinizi öğrenin.
 keywords: SQL bağlantısı, bağlantı dizesi, bağlantı sorunları, geçici hata, bağlantı hatası
 services: sql-database
@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: 0191506cab9a54ad3978bfa7387c9ba1112ae815
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690831"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826807"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL veritabanı bağlantı sorunlarıyla ve geçici hatalarla çalışma
 
@@ -278,7 +278,7 @@ Hata günlüklerini ve diğer bilgileri sorgulayan bazı Transact-SQL SELECT dey
 | Günlük sorgusu | Açıklama |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) görünümü, geçici hatalara veya bağlantı hatalarına neden olabilecek bazı olaylar hakkında bilgi sunar.<br/><br/>İdeal olarak, **start_time** veya **end_time** değerlerini, istemci programınızın sorun yaşadığında ilgili bilgilerle ilişkilendirebiliriz.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) görünümü, ek Tanılamalar için toplanan olay türleri sayısını sağlar.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) görünümü, ek Tanılamalar için toplanan olay türleri sayısını sunar.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
@@ -311,7 +311,7 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Sys. fn_xe_telemetry_blob_target_read_file ' den döndürülen birkaç satır
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Sys. fn_xe_telemetry_blob_target_read_file 'den döndürülen birkaç satır
 
 Aşağıdaki örnekte, döndürülen bir satırın nasıl görünebileceğini gösterilmektedir. Gösterilen null değerler genellikle diğer satırlarda null değildir.
 

@@ -5,26 +5,27 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0dd53689f7528e73845ab47a9791f062e0f2cb0c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: a7abb73f229c444f88626ef03c90f62e138023c6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962792"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825918"
 ---
 # <a name="register-in-dev-center"></a>Geliştirme Merkezi'ne Kaydolma  
 Kişisel bir tarayıcı hesabında oturum Açmadığınızda emin olmak için, yeni bir Internet Explorer InPrivate veya Chrome 'dan göz atma oturumunu açın.  
 1.  Geliştirme Merkezi 'nde satıcı olarak kaydolun.  
     *   Oturum açmak ve satıcı olarak kaydetmek için, [dev.Windows.com/registration?accountprogram=Azure](https://dev.windows.com/registration?accountprogram=azure)adresinde bulunan Azure Geliştirme Merkezi sayfasını ziyaret edin.  
-2.  Telefon numaranızı veya e-posta adresinizi kullanarak kimliğinizi doğrulayan Sihirbazıdoldurun.`Help us protect your account`  
+2.  Telefon numaranızı veya e-posta adresinizi kullanarak kimliğinizi doğrulayan `Help us protect your account` Sihirbazı ' nı doldurun.  
 
 <!--
     ![Boxes for phone info in the Help us protect your account wizard](./media/marketplace-publishers-guide/registerdevcenteremail.png)  
 -->
-3.  Bölümünde, *Hesap ülkesi/bölgesi* açılan menüsünden Hesap ülkenizi veya bölgenizi seçin. `Registration - Account Info`  
+3.  `Registration - Account Info` bölümünde, *Hesap ülkesi/bölgesi* açılan menüsünden Hesap ülkenizi veya bölgenizi seçin.  
 <!--
     ![Account info with box for country/region](./media/marketplace-publishers-guide/devcenterregistrationaccountinfo.png)  
 -->
@@ -53,7 +54,7 @@ Kişisel bir tarayıcı hesabında oturum Açmadığınızda emin olmak için, y
 <!--
     !["Account info" page with sections highlighted](./media/marketplace-publishers-guide/devcenterregistrationpayment.png)  
 -->
-8.  `Registration - Payment` Bölümünde, Dev Center hesabınız için ödeme yapmak üzere ödeme bilgilerinizi girmeniz gerekir.  
+8.  `Registration - Payment` bölümünde, Dev Center hesabınız için ödeme yapmak üzere ödeme bilgilerinizi girmeniz gerekir.  
     *   *Promosyon kodu*için kayıt maliyetini karşılayan bir promosyon kodu girin.  
     *   *Faturalandırma*için kredi kartı bilgilerinizi sağlayın. PayPal bilgileri, desteklenen pazarlarda kredi kartının yerine kullanılabilir.  
 
@@ -61,7 +62,7 @@ Kişisel bir tarayıcı hesabında oturum Açmadığınızda emin olmak için, y
 <!--
     ![Dev Center payment information](./media/marketplace-publishers-guide/devcenterregistrationpayment2.png)  
 -->
-9.  `Registration - Review` Bölümünde, hesap bilgilerinizi gözden geçirin ve her şeyin doğru olduğundan emin olun.  
+9.  `Registration - Review` bölümünde, hesap bilgilerinizi gözden geçirin ve her şeyin doğru olduğundan emin olun.  
 
     Microsoft Azure Market [Yayımcı sözleşmesinin](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)hüküm ve koşullarını okuyun.  
 
@@ -70,9 +71,9 @@ Kişisel bir tarayıcı hesabında oturum Açmadığınızda emin olmak için, y
     Onay e-posta iletisi göndermek için son düğmesine tıklayın.  
 11. Teklifiniz için faturalandırma modelini kullanarak sonraki adımları seçin.  
 
-    | Faturalama modeli | Sonraki adımlar |  
+    | Faturalandırma modeli | Sonraki adımlar |  
     |:--- |:--- |  
-    | Boş | Bulut İş Ortağı Portalı gidin.<ul> <li>Azure Market 'te yayımlamak için, [cloudpartner.Azure.com](https://cloudpartner.azure.com)adresinde bulunan bulut iş ortağı portalı sayfasını ziyaret edin.</li> </ul> |  
+    | Ücretsiz | Bulut İş Ortağı Portalı gidin.<ul> <li>Azure Market 'te yayımlamak için, [cloudpartner.Azure.com](https://cloudpartner.azure.com)adresinde bulunan bulut iş ortağı portalı sayfasını ziyaret edin.</li> </ul> |  
     | Ticari (Transact) | Hesap bilgilerinizi güncelleştirin.<ul> <li>Hesap bilgilerini ekleme hakkında daha fazla bilgi için [Banka ve vergi bilgilerini ekleme](#add-bank-information) bölümünü ziyaret edin.</li> </ul> |  
 
     *   Ticari bir teklifin bir örneği, saatlik faturalandırma modeliyle bir VM teklifidir.  
@@ -98,7 +99,7 @@ Geliştirme Merkezi kaydıyla ilgili sorunlarınız varsa, bir destek bileti gö
 3.  Bileti göndermek için Gönder düğmesine tıklayın. 
 
 
-## <a name="issue-add-bank-and-tax-information-for-publisher-payouts"></a>Sorun: Yayımcı ödemeler için banka ve vergi bilgilerini ekleyin  
+## <a name="issue-add-bank-and-tax-information-for-publisher-payouts"></a>Sorun: Yayımcı ödeyaşımları için banka ve vergi bilgilerini ekleyin  
 Banka ve vergi bilgileri, Transact listeleme türü kullanılarak tüm ticari teklifler için gereklidir.  
 *   Satın alma için ticari teklifler yayımlıyorsanız, geliştirme merkezi 'nde ödeme ve vergi bilgilerini ve istek doğrulamasını eklemeniz gerekir.  
     >[!IMPORTANT]
@@ -110,7 +111,7 @@ Banka ve vergi bilgileri, Transact listeleme türü kullanılarak tüm ticari te
 1.  Microsoft KIMLIĞINIZI kullanarak geliştirme merkezi 'Nde oturum açın.  
     *   Geliştirme Merkezi 'Nde oturum açmak için, [dev.Windows.com](https://dev.windows.com)adresinde bulunan Windows Geliştirme Merkezi sayfasını ziyaret edin.  
 2.  Sol taraftaki menüden ödeme hesabı ' nı seçin.
-3.  Sayfasında, `Bank account` veya`PayPal`öğesiniseçin. `Choose payment method`  
+3.  `Choose payment method` sayfasında `Bank account` veya `PayPal`' yı seçin.  
     >[!IMPORTANT]
     >Müşterilerin Market 'te satın aldığı ticari tekliflerinizi kullanıyorsanız, ödeme hesabınız satın alma işlemleri için ödeme yaptığınız yerdir.  
 
@@ -126,7 +127,7 @@ Banka ve vergi bilgileri, Transact listeleme türü kullanılarak tüm ticari te
 1.  Microsoft KIMLIĞINIZI kullanarak geliştirme merkezi 'Nde oturum açın.  
     *   Geliştirme Merkezi 'Nde oturum açmak için, [dev.Windows.com](https://dev.windows.com)adresinde bulunan Windows Geliştirme Merkezi sayfasını ziyaret edin.  
 2.  Sol taraftaki menüden vergi profilini seçin. 
-3.  `Set up your tax form` Sayfasında, kalıcı olarak sahip olduğunuz ülkeyi veya bölgeyi seçin.  
+3.  `Set up your tax form` sayfasında, kalıcı olarak bulunduğunuz ülkeyi veya bölgeyi seçin.  
     
     Birincil vatandaşlık ' ı tuttuğunuz ülkeyi veya bölgeyi seçin.  
     
@@ -144,7 +145,7 @@ Banka ve vergi bilgileri, Transact listeleme türü kullanılarak tüm ticari te
   > Geliştirme Merkezi hesabı, Microsoft 'un müşteriyi, Transact listesi türü için yayımcının adına faturalandırma özelliğini etkinleştirmek için gereklidir. Geliştirme merkezi hesap kaydı, Microsoft 'un şirketiniz için yasal, vergi ve bankacılık bilgilerini doğrulamasını sağlar. Daha fazla bilgi edinmek için [buraya tıklayın.](https://docs.microsoft.com/azure/marketplace/become-publisher)
 
 * **Nasıl yaparım? Dev Center kaydı ile çalışmaya başlama**
-  > Yinelemeyi engellemek için, şirketinizin zaten kayıtlı bir Geliştirici Merkezi hesabına sahip olmadığından emin olun. Geliştirici hesabınızla ilişkilendirmek istediğiniz Microsoft hesabı oturum açmış olmanız gerekir. Zaten bir Microsoft hesabı yoksa, burada yeni bir hesap oluşturabilirsiniz [.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (örnek: contoso_marketplace@live.com) oturum açmak ve kaydolmak için şuraya gidin: https://dev.windows.com/registration?accountProgram=Azure
+  > Yinelemeyi engellemek için, şirketinizin zaten kayıtlı bir Geliştirici Merkezi hesabına sahip olmadığından emin olun. Geliştirici hesabınızla ilişkilendirmek istediğiniz Microsoft hesabı oturum açmış olmanız gerekir. Zaten bir Microsoft hesabı yoksa, burada yeni bir hesap oluşturabilirsiniz [.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (örnek: contoso_marketplace@live.com) Oturum açmak ve kaydolmak için https://dev.windows.com/registration?accountProgram=Azure gidin.
   > <br>Kayıt işlemi hakkında daha fazla bilgi edinmek için [buraya tıklayın.](https://docs.microsoft.com/azure/marketplace/register-dev-center)</br>
 
 * **' Bireysel ' veya ' Şirket ' hesap türünü seçmem gerekir mi?**
@@ -160,10 +161,10 @@ Banka ve vergi bilgileri, Transact listeleme türü kullanılarak tüm ticari te
   > Bir Geliştirici Merkezi promosyon kodu almak için [Market kayıt](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) formunu doldurun. Daha fazla bilgi için bkz. [Iş Ortağı Merkezi hesabı oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .
  
 * **Kaydı tamamladıktan sonra ne beklemeliyim?**
-  > Konu satırıyla bir e- verify@microsoft.com posta ara "eylem gerekiyor: E-posta hesabınızı Microsoft ile doğrulayın ". Kaydı tamamlamaya yönelik zamana duyarlı doğrulama bağlantısına tıklayın. *24 saat içinde bir e-posta almadıysanız lütfen istenmeyen posta klasörünü kontrol edin.*
+  > Konu satırı ile verify@microsoft.com bir e-posta arayın "eylem gerekiyor: e-posta hesabınızı Microsoft ile doğrulayın". Kaydı tamamlamaya yönelik zamana duyarlı doğrulama bağlantısına tıklayın. *24 saat içinde bir e-posta almadıysanız lütfen istenmeyen posta klasörünü kontrol edin.*
 
 * **Geliştirme Merkezi doğrulaması sonrasında sonraki adımlar nelerdir?**
-  > "Programlarınız" bölümüne gidin (https://developer.microsoft.com/dashboard/Account/Programs) ve geliştirme merkezi hesabında oturum açın. Kayıtlı bir program olarak Azure 'u görmüyorsanız, "sizin için önerilen programlar" bölümüne bakın ve ardından "kullanmaya başlayın" seçeneğini belirlemek için Azure 'ı arayın.
+  > "Programlarınız" (https://developer.microsoft.com/dashboard/Account/Programs)) gidin ve Geliştirme Merkezi hesabına oturum açın. Kayıtlı bir program olarak Azure 'u görmüyorsanız, "sizin için önerilen programlar" bölümüne bakın ve ardından "kullanmaya başlayın" seçeneğini belirlemek için Azure 'ı arayın.
 
 * **Geliştirici Merkezi hesabımı Bulut İş Ortağı Portalı yayımcı profilime bağlamak Nasıl yaparım??**
   > Yayımlamadan önce son adım, geliştirme merkezi hesabınızı Bulut İş Ortağı Portalı [profilinize](https://cloudpartner.azure.com/#profile)bağlarken. Geliştirme Merkezi hesabınız [bulut iş ortağı portalı](https://cloudpartner.azure.com/#alloffers)hesabınızda farklıysa, geliştirme merkezi hesabınızı bulut iş ortağı portalı yeni bir [Kullanıcı](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users) olarak ekleyin. [Bulut iş ortağı portalı](https://cloudpartner.azure.com/#alloffers) Geliştirici Merkezi hesabınızla oturum açın. Web tarayıcınızın sağ üst köşesinde bulunan menüde yayımcı profili ' ni seçin. Bağlantı geliştirme merkezi hesabını seçin.
@@ -171,7 +172,7 @@ Banka ve vergi bilgileri, Transact listeleme türü kullanılarak tüm ticari te
 * **Geliştirme Merkezi uygulamamın neden reddedildi?**
   > Üçüncü taraf ile mücadele şirketi (DLI& Bradstreet), verdiğiniz telefon numarası ile sizinle iletişim kuramadı. Vetting işlemini yeniden başlatmak için [Developer.Microsoft.com/Windows/Support](https://developer.microsoft.com/windows/support) adresindeki desteğe başvurun
 
-> veya
+> or
 > 
 > Hesap kaydı, Coğrafya sorunlarına göre reddedilir. Genel merkezlerinden farklı konumlara bağlı olan şirketlerin yalnızca bir Geliştirme Merkezi hesabına ihtiyacı olacaktır.
  

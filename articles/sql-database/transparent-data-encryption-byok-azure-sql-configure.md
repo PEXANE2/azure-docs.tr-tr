@@ -1,22 +1,22 @@
 ---
-title: "PowerShell ve CLı: SQL TDE ' i etkinleştirin Azure Key Vault-kendi anahtarınızı getirin-Azure SQL veritabanı "
+title: SQL TDE Azure Key Vault etkinleştir
 description: Azure SQL veritabanı ve veri ambarını, PowerShell veya CLı kullanarak bekleyen şifreleme için Saydam Veri Şifrelemesi (TDE) kullanmaya başlamak üzere nasıl yapılandıracağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 232f38b239090356ae3ad1a70b522188f6ab6a4f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8668718f33cff1ebc0c8e159c0edcae41de3ad75
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686766"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821682"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve CLı: Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarla etkinleştirin
 

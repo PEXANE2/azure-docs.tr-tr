@@ -1,5 +1,5 @@
 ---
-title: Geliştirme platformunu ayarlama
+title: 'Hızlı başlangıç: geliştirme platformunu ayarlama'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, tercih ettiğiniz platform ve programlama dili birleşimi için konuşma SDK 'sını yüklemeyi öğreneceksiniz.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: c1d8a9b6dd7bf7ccf29997f26a1c8cafb01a536e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ad1806daa1fc00d5b14f9c6a30027f278f53e892
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682045"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826956"
 ---
-# <a name="quickstart-setup-development-environment"></a>Hızlı başlangıç: geliştirme ortamını kurma.
+# <a name="quickstart-setup-development-environment"></a>Hızlı başlangıç: geliştirme ortamını kurulum
 
 ::: zone pivot="programming-language-csharp"
 **Hedef ortamınızı seçin**

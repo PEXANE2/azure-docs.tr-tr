@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/26/2019
+ms.date: 11/07/2019
 ms.author: aahi
-ms.openlocfilehash: 3b616ac76d2b7fca0d83db2b17b0978bbb249e45
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: 0f16c687f9816e99e05c2495a05596bd988ca9d2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742713"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827313"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
@@ -110,7 +110,7 @@ Metin Analizi API'si, metin gösterimi ve karakter sayısı hesaplamaları için
 
 + Uygulamalarınız için bir anahtar ve uç nokta almak üzere Metin Analizi için [bir Azure kaynağı oluşturun](../cognitive-services-apis-create-account.md) .
 
-+ [Hızlı Başlangıç](quickstarts/text-analytics-sdk.md), C# dilinde yazılan REST API çağrılarına ilişkin bir adım adım kılavuzdur. Minimum kodla metin göndermeyi, analiz seçmeyi ve sonuçları görüntülemeyi öğrenin. Tercih ederseniz, bunun yerine [Python hızlı](quickstarts/python.md) başlangıcı ile başlayabilirsiniz.
++ API çağrıları göndermeye başlamak için [hızlı](quickstarts/text-analytics-sdk.md) başlangıcı kullanın. Minimum kodla metin göndermeyi, analiz seçmeyi ve sonuçları görüntülemeyi öğrenin.
 
 + Yeni yayınlar ve özellikler hakkında bilgi edinmek için [Metin Analizi API'si](whats-new.md) yenilikleri inceleyin.
 

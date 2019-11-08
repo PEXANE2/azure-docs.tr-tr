@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f6bee53268ea99e99d79e218eaf7a5ae9fcb1d05
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: d8e23188aa07b1b271c3adc7c5550b18c0c60977
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104474"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827694"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma
 
@@ -36,7 +36,7 @@ Depolama için Data Lake Storage 2. kullanan bir HDInsight kümesi oluşturmak i
 
 Henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
 1. Arama kutusuna **Kullanıcı atandı** yazın ve **Kullanıcı tarafından atanan yönetilen kimlik**' e tıklayın.
 1. **Oluştur**'a tıklayın.
@@ -51,19 +51,19 @@ Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha
 
 Azure Data Lake Storage 2. depolama hesabı oluşturun. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
 1. Arama kutusuna **depolama** yazın ve **depolama hesabı**' na tıklayın.
 1. **Oluştur**'a tıklayın.
 1. **Depolama hesabı oluştur** ekranında:
     1. Doğru aboneliği ve kaynak grubunu seçin.
-    1. Data Lake Storage 2. hesabınız için bir ad girin. Depolama hesabı adlandırma kuralları hakkında daha fazla bilgi için bkz. [Azure kaynakları Için adlandırma kuralları](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage).
+    1. Data Lake Storage 2. hesabınız için bir ad girin. Depolama hesabı adlandırma kuralları hakkında daha fazla bilgi için bkz. [Azure kaynakları Için adlandırma kuralları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#storage).
     1. **Gelişmiş** sekmesine tıklayın.
     1. **Data Lake Storage 2.** altındaki **hiyerarşik ad alanı** ' nın yanında **etkin** ' e tıklayın.
     1. **Gözden geçir ve oluştur**’a tıklayın.
-    1. **Oluştur**'a tıklayın.
+    1. **Oluştur**'a tıklayın
 
-Depolama hesabı oluşturma sırasında diğer seçenekler hakkında daha fazla bilgi için bkz [. hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı](../storage/blobs/data-lake-storage-quickstart-create-account.md)oluşturun.
+Depolama hesabı oluşturma sırasında diğer seçenekler hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
 ![Azure portal depolama hesabı oluşturmayı gösteren ekran görüntüsü](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
 
@@ -116,7 +116,7 @@ Aşağıdaki kod parçacığı aşağıdaki ilk adımları yapar:
 1. Yeni dağıtım etkinlikleri için yeni bir kaynak grubu oluşturur. 
 1. Kullanıcı tarafından atanan yönetilen kimlik oluşturur.
 1. Data Lake Storage 2. özelliklerini kullanmak için Azure CLı 'ya bir uzantı ekler.
-1. `--hierarchical-namespace true` Bayrağını kullanarak yeni bir Data Lake Storage 2. hesabı oluşturur. 
+1. `--hierarchical-namespace true` bayrağını kullanarak yeni bir Data Lake Storage 2. hesabı oluşturur. 
 
 ```azurecli
 az login

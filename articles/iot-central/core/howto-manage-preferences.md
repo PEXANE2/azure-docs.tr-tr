@@ -1,6 +1,6 @@
 ---
 title: IoT Central kişisel tercihlerinizi yönetin | Microsoft Docs
-description: IoT Central kişisel uygulama tercihlerinizi yönetme
+description: IoT Central uygulamanızda dil ve temayı değiştirme gibi kişisel uygulama tercihlerinizi yönetme.
 author: lmasieri
 ms.author: lmasieri
 ms.date: 07/10/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 154ac608d9d6174ca981f3c358bff1e8272182f8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6bfc70ada906f5c444ace5cd7bb96555700586db
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950086"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806150"
 ---
 # <a name="manage-your-personal-application-preferences"></a>Kişisel uygulama tercihlerinizi yönetin
 

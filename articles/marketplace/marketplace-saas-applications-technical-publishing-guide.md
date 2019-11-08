@@ -4,19 +4,20 @@ description: Azure Market 'Te SaaS uygulamaları yayımlamak için adım adım k
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: keithcharlie
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: f9ff6e19a0f0091cb5b831279eee90727bbb89fd
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: c213bbcb3c7859aa4718916aafab970b3ffd4613
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742253"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813035"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS uygulamaları için Yayımlama Kılavuzu
 
-SaaS uygulamaları, farklı eylemlere üç farklı çağrıya sahip Market 'te yayımlanabilir: "Benimle iletişim kurun," "Şimdi deneyin" ve "Şimdi al". Bu kılavuzda, her biri için gereksinimler dahil olmak üzere bu üç seçenek açıklanmaktadır. 
+SaaS uygulamaları, "benimle Iletişime geçin", "Şimdi deneyin" ve "Şimdi al" eylemine yönelik üç farklı çağrıya sahip Market 'te yayımlanabilir. Bu kılavuzda, her biri için gereksinimler dahil olmak üzere bu üç seçenek açıklanmaktadır. 
 
 ## <a name="offer-overview"></a>Teklifin genel bakış  
 
@@ -25,10 +26,10 @@ SaaS uygulamaları, Azure Storets 'de kullanılabilir geçerli seçenekleri aç�
 | Storefront seçeneği | Döküm | Deneme/Transact |  
 | --- | --- | --- |  
 | AppSource | Evet (benimle Iletişim kurun) | Evet (PowerBI/Dynamics) |
-| Azure Market | Hayır | Evet (SaaS uygulamaları) |   
+| Azure Marketi | Hayır | Evet (SaaS uygulamaları) |   
 
-**Listele**  Listeleme yayımlama seçeneği, bir kişi kullanım teklifi türü içerir ve deneme ya da Işlem düzeyinde katılım uygulanabilir olmadığında kullanılır. Bu yaklaşımın avantajı, işletmeden bir çözüm sunan yayımcıların, işinizi artırma konusunda anlaşabilecek müşteri adaylarını hemen almaya başlamasını sağlar.  
-**Deneme/Işlem:**  Müşterinin çözümünüz için bir deneme süresi doğrudan satın alma veya isteme seçeneği vardır. Deneme deneyimini sağlamak, müşterilere sunulan katılım düzeyini artırır ve müşterilerin satın almadan önce çözümünüzü araştırmalarını sağlar. Deneme deneyimiyle, daha fazla bilgi sahibi olursunuz ve müşteri görevlendirmelerden daha fazla ve daha zengin müşteri adayları beklemeniz gerekir. Denemeler, deneme süresi boyunca en az ücretsiz destek içermelidir.  
+**Liste:**  Listeleme yayımlama seçeneği, bir kişi kullanım teklifi türü içerir ve deneme ya da Işlem düzeyinde katılım uygulanabilir olmadığında kullanılır. Bu yaklaşımın avantajı, işletmeden bir çözüm sunan yayımcıların, işinizi artırma konusunda anlaşabilecek müşteri adaylarını hemen almaya başlamasını sağlar.  
+**Deneme/işlem:**  Müşterinin çözümünüz için bir deneme süresi doğrudan satın alma veya isteme seçeneği vardır. Deneme deneyimini sağlamak, müşterilere sunulan katılım düzeyini artırır ve müşterilerin satın almadan önce çözümünüzü araştırmalarını sağlar. Deneme deneyimiyle, daha fazla bilgi sahibi olursunuz ve müşteri görevlendirmelerden daha fazla ve daha zengin müşteri adayları beklemeniz gerekir. Denemeler, deneme süresi boyunca en az ücretsiz destek içermelidir.  
 
 | SaaS uygulamaları teklifi | İş Gereksinimleri | Teknik Gereksinimler |  
 | --- | --- | --- |  
@@ -87,7 +88,7 @@ Video öğreticileri için aşağıdakileri gözden geçirin:
 * [Microsoft Azure videoların Active Directory odaklı](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
 Ücretsiz Azure Active Directory eğitimi şurada bulunabilir:  
-* [BT uzmanları Içerik serisi için Microsoft Azure: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+* [BT uzmanları için Microsoft Azure Içerik serisi: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 Ayrıca, Azure Active Directory hizmet güncelleştirmelerini denetlemek için bir site sağlar   
 * [Azure AD hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/?product=active-directory)
@@ -133,7 +134,7 @@ Microsoft, ticaret hareketini barındırır. Microsoft, müşterinizin adına fa
 | Gereksinim | Ayrıntılar |  
 |:--- |:--- |  
 |Faturalandırma ve ölçüm | Teklifiniz, yayımlamadan önce seçtiğiniz fiyatlandırma modeline (sabit fiyat veya Kullanıcı başına) göre fiyatlandırılır.  Düz oran modeli kullanıyorsanız, isteğe bağlı olarak, sabit fiyata dahil edilen kullanım için müşterileri ücretlendirmeden kullanılan ek boyutları ekleyebilirsiniz. |  
-|Kin | Teklifiniz herhangi bir zamanda müşteri tarafından iptal edilir. |  
+|İptal | Teklifiniz herhangi bir zamanda müşteri tarafından iptal edilir. |  
 |İşlem giriş sayfası | Kullanıcıların SaaS hizmet hesabını oluşturup yönetebilecekleri bir Azure ortak markalı işlem giriş sayfası barındırabilirsiniz. |   
 | Abonelik API 'SI | Bir kullanıcı hesabı ve hizmet planı oluşturmak, güncelleştirmek ve silmek için SaaS aboneliğiyle etkileşime girebilen bir hizmeti kullanıma sunacaksınız. Kritik API değişikliklerinin 24 saat içinde desteklenmesi gerekir. Kritik olmayan API değişiklikleri düzenli olarak serbest bırakılır. |  
 

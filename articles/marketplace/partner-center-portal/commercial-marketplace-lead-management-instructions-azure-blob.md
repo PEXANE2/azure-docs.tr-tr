@@ -4,15 +4,16 @@ description: Azure Blob için lider yönetimini yapılandırma
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/30/2019
 ms.author: evansma
-ms.openlocfilehash: c67855422808f5ec4c81242edcece4e447f2f44f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5da4e0ab315b3f66a477b816f6fc5d27de7aa339
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902370"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812378"
 ---
 # <a name="lead-management-instructions-for-azure-blob"></a>Azure Blob için lider yönetimi yönergeleri
 
@@ -49,7 +50,7 @@ Müşteri Ilişkileri yönetimi (CRM) sisteminiz, Azure Marketi ve AppSource mü
 
     ![Azure depolama anahtarı](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
-6. Depolama hesabı sayfasından Bloblar ' ıseçin.
+6. Depolama hesabı sayfasından **Bloblar**' ı seçin.
 
    ![Azure depolama anahtarı](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
@@ -80,8 +81,8 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini ya
 
 4. Bu yönergeleri izleyerek aldığınız **kapsayıcı adı** ve **depolama hesabı bağlantı dizesini** belirtin.
 
-    * Kapsayıcı adı örneği:`marketplaceleadcontainer`
-    * Depolama hesabı bağlantı dizesi örneği: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net`![Bağlantı ayrıntısı](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
+    * Kapsayıcı adı örneği: `marketplaceleadcontainer`
+    * Depolama hesabı bağlantı dizesi örneği: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![bağlantı ayrıntısı](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. **Kaydet**’i seçin.
 

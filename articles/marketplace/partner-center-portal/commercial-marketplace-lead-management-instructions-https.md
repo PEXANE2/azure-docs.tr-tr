@@ -4,15 +4,16 @@ description: Bir HTTPS uç noktası için lider yönetimini yapılandırın.
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: evansma
-ms.openlocfilehash: 6a34bdcab5a13af682515bbae96e9a1800ccc37f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 83efb9cfd1ee7464a334ebc4064dbfaa20ab30de
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902201"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812283"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS uç noktası kullanarak müşteri adayı yönetimini yapılandırma
 
@@ -24,7 +25,7 @@ Müşteri Ilişkileri yönetimi (CRM) sisteminiz, Azure Marketi ve AppSource mü
 
 2. Oturum açın ve menü çubuğunda **Akışlarım** ' ı seçin.
 
-3. **+ Otomatik – boş**' ı seçin.
+3. **Boş + otomatik**' i seçin.
 
     ![Akışlarım + otomatik-boş](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
@@ -108,7 +109,7 @@ Müşteri Ilişkileri yönetimi (CRM) sisteminiz, Azure Marketi ve AppSource mü
 1. **+ Yeni adım**' ı seçin.
 2. İstediğiniz CRM sistemini, *arama bağlayıcılar ve eylemler*' i arayarak seçin ve *Eylemler* bölümünün altında yeni bir kayıt oluşturma eylemine sahip seçin. Aşağıdaki ekran yakalama, **Dynamics 365** ' i gösterir. örnek olarak yeni bir kayıt oluşturur.
 
-    ![Yeni kayıt oluşturma](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
+    ![Yeni bir kayıt oluştur](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
 
 3. CRM sistemiyle ilişkili **kuruluş adını** belirtin. **Varlık adı** açılır listesinden **müşteri adayları** ' nı seçin.
 
@@ -116,9 +117,9 @@ Müşteri Ilişkileri yönetimi (CRM) sisteminiz, Azure Marketi ve AppSource mü
 
 4. Flow, müşteri adayı bilgilerini sağlamak için bir form gösterir. Dinamik Içerik eklemeyi seçerek giriş isteğinden öğeleri eşleyebilirsiniz. Aşağıdaki ekran yakalama, bir örnek olarak **Offertitle** gösterir.
 
-    ![Dinamik içerik ekle](./media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png)
+    ![Dinamik içerik Ekle](./media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png)
 
-5. İstediğiniz alanları eşleyin ve sonra akışınızı kaydetmek için **Kaydet** ' i seçin. HTTP POST URL 'SI oluşturulur ve *BIR http isteği alındığında* penceresinde erişilebilir. HTTP POST URL 'sinin sağında bulunan kopyalama denetimini kullanarak bu URL 'yi kopyalayın. Bu, tüm URL 'nin herhangi bir bölümünü yanlışlıkla kaçırmamak açısından önemlidir. Bu URL 'YI, Yayımlama portalında lider yönetimini yapılandırırken ihtiyacınız olacak şekilde kaydedin.
+5. İstediğiniz alanları eşleyin ve sonra akışınızı kaydetmek için **Kaydet** ' i seçin. HTTP POST URL 'SI oluşturulur ve *BIR http isteği alındığında* penceresinde erişilebilir. HTTP POST URL 'sinin sağında bulunan kopyalama denetimini kullanarak bu URL 'yi kopyalayın. Bu, tüm URL 'nin herhangi bir bölümünü yanlışlıkla kaçırmamak için önemlidir. Bu URL 'YI, Yayımlama portalında lider yönetimini yapılandırırken ihtiyacınız olacak şekilde kaydedin.
 
     ![Bir HTTP isteği alındığında.](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
 
@@ -135,7 +136,7 @@ Müşteri Ilişkileri yönetimi (CRM) sisteminiz, Azure Marketi ve AppSource mü
 
 4. **E-posta gönder** penceresinde, aşağıdaki gerekli alanları yapılandırın:
 
-   - Müşteri adaylarının gönderileceği en az bir geçerli e-posta adresi girin.
+   - Müşteri adaylarının gönderileceği en az bir geçerli **e-posta** adresi girin.
    - **Konu** akışı, aşağıdaki ekran yakalamadaki **Leadsource** gibi dinamik içerik ekleme seçeneği sunar. Bir alan adını yazarak başlayın ve ardından açılan penceredeki dinamik Içerik seçme listesine tıklayın. 
 
         >[!Note] 
@@ -148,15 +149,15 @@ Müşteri Ilişkileri yönetimi (CRM) sisteminiz, Azure Marketi ve AppSource mü
 
        ![E-posta eylemi ekleme](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
 
-5. Akışınızı son vermek için **Kaydet** ' i seçin. HTTP POST URL 'SI oluşturulur ve *BIR http isteği alındığında* penceresinde erişilebilir. HTTP POST URL 'sinin sağında bulunan kopyalama denetimini kullanarak bu URL 'yi kopyalayın. Bu, tüm URL 'nin herhangi bir bölümünü yanlışlıkla kaçırmamak açısından önemlidir. Bu URL 'YI, Yayımlama portalında lider yönetimini yapılandırırken ihtiyacınız olacak şekilde kaydedin.
+5. Akışınızı son vermek için **Kaydet** ' i seçin. HTTP POST URL 'SI oluşturulur ve *BIR http isteği alındığında* penceresinde erişilebilir. HTTP POST URL 'sinin sağında bulunan kopyalama denetimini kullanarak bu URL 'yi kopyalayın. Bu, tüm URL 'nin herhangi bir bölümünü yanlışlıkla kaçırmamak için önemlidir. Bu URL 'YI, Yayımlama portalında lider yönetimini yapılandırırken ihtiyacınız olacak şekilde kaydedin.
 
-   ![HTTP POST URL'si ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
+   ![HTTP POST URL 'SI ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
 
 ### <a name="testing"></a>Test Etme
 
 Çevrimiçi olarak indirilebilen [Postman](https://app.getpostman.com/app/download/win64)adlı bir araç kullanarak aşağıdaki adımları kullanarak her şeyin beklendiği gibi çalıştığından test edebilirsiniz. Bu, Windows için kullanılabilir. 
 
-1. Postman 'ı başlatın ve test aracınızı ayarlamak için **Yeni** > **istek** ' ı seçin. 
+1. Postman 'ı başlatın ve test aracınızı ayarlamak için **yeni** > **isteği** seçin. 
 
    ![Test aracınızı ayarlama isteği](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 
@@ -172,7 +173,7 @@ Müşteri Ilişkileri yönetimi (CRM) sisteminiz, Azure Marketi ve AppSource mü
 
    ![HTTP POST URL 'sini yapıştırın](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
-5. Akışa geri dönün [](https://flow.microsoft.com/) ve akış menü çubuğundan **akışlarıma** giderek müşteri adaylarını göndermek için oluşturduğunuz akışı bulun.  Flow adının yanındaki 3 noktayı seçin ve **Düzenle**' yi seçin.
+5. [Akışa geri dönün ve akış](https://flow.microsoft.com/) menü çubuğundan **akışlarıma** giderek müşteri adaylarını göndermek için oluşturduğunuz akışı bulun.  Flow adının yanındaki 3 noktayı seçin ve **Düzenle**' yi seçin.
 
    ![Akışlarım-Düzenle](./media/commercial-marketplace-lead-management-instructions-https/my-flows-edit.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Coğrafi olarak dağıtılmış bir Azure SQL veritabanı çözümü uygulama | Microsoft Docs
+title: Coğrafi olarak dağıtılmış bir çözüm uygulama
 description: Azure SQL veritabanınızı ve uygulamanızı, çoğaltılan bir veritabanına yük devretme için yapılandırmayı ve yük devretmeyi test yapmayı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,25 +11,25 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 4a21fe3ed15d1dc2550f6863611b27d2b36c5c51
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 51380d312c778380602c64cac766b050511cf994
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568099"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810935"
 ---
-# <a name="tutorial-implement-a-geo-distributed-database"></a>Öğretici: Coğrafi olarak dağıtılmış bir veritabanı uygulama
+# <a name="tutorial-implement-a-geo-distributed-database"></a>Öğretici: coğrafi olarak dağıtılmış bir veritabanı uygulama
 
 Bir Azure SQL veritabanı ve uygulamasını uzak bir bölgeye yük devretme için yapılandırın ve yük devretme planını test edin. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
 > - [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturma
 > - Bir Java uygulamasını çalıştırarak bir Azure SQL veritabanını sorgulama
-> - Test yük devretmesi
+> - Yük devretme testi
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -101,7 +101,7 @@ Yük devretme grubu oluşturmak için aşağıdaki betiği çalıştırın:
        -FailoverGroupName $myfailovergroupname
    ```
 
-Coğrafi çoğaltma ayarları Azure Portal Ayrıca, veritabanınızı seçip **Ayarlar** > **coğrafi çoğaltma**ayarları ' nı seçerek de değiştirebilirsiniz.
+Coğrafi çoğaltma ayarları Azure portal Ayrıca, veritabanınızı seçip, ardından **coğrafi çoğaltma** > **Ayarlar** ' da değiştirilebilir.
 
 ![Coğrafi çoğaltma ayarları](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
@@ -123,7 +123,7 @@ Coğrafi çoğaltma ayarları Azure Portal Ayrıca, veritabanınızı seçip **A
 
 1. En sevdiğiniz düzenleyiciyi kullanarak, proje klasörünüzdeki *Pod. xml* dosyasını açın.
 
-1. Aşağıdaki `dependency` bölümü ekleyerek SQL Server bağımlılığı için Microsoft JDBC sürücüsü ekleyin. Bağımlılığın daha büyük `dependencies` bölüm içinde yapıştırılabilmesi gerekir.
+1. Aşağıdaki `dependency` bölümünü ekleyerek SQL Server bağımlılığı için Microsoft JDBC sürücüsü ekleyin. Bağımlılığın daha büyük `dependencies` bölümü içine yapıştırılabilmesi gerekir.
 
    ```xml
    <dependency>
@@ -133,7 +133,7 @@ Coğrafi çoğaltma ayarları Azure Portal Ayrıca, veritabanınızı seçip **A
    </dependency>
    ```
 
-1. Bölümün sonrasına bölüm`properties` ekleyerek Java sürümünü belirtin: `dependencies`
+1. `dependencies` bölümünden sonra `properties` bölümünü ekleyerek Java sürümünü belirtin:
 
    ```xml
    <properties>
@@ -142,7 +142,7 @@ Coğrafi çoğaltma ayarları Azure Portal Ayrıca, veritabanınızı seçip **A
    </properties>
    ```
 
-1. Bölümünden sonraki bölümü`build` ekleyerek bildirim dosyalarını destekleme: `properties`
+1. `properties` bölümünden sonra `build` bölümünü ekleyerek bildirim dosyalarını destekleme:
 
    ```xml
    <build>
@@ -296,7 +296,7 @@ Coğrafi çoğaltma ayarları Azure Portal Ayrıca, veritabanınızı seçip **A
    ...
    ```
 
-## <a name="test-failover"></a>Test yük devretmesi
+## <a name="test-failover"></a>Yük devretme testi
 
 Yük devretmenin benzetimini yapmak ve uygulama sonuçlarını gözlemlemek için aşağıdaki komut dosyalarını çalıştırın. Veritabanı geçişi sırasında bazı ekleme ve seçimi nasıl başarısız olacağını fark edebilirsiniz.
 
@@ -336,7 +336,7 @@ Bu öğreticide, uzak bir bölgeye yük devretme için bir Azure SQL veritabanı
 > [!div class="checklist"]
 > - Coğrafi çoğaltma yük devretme grubu oluşturma
 > - Bir Java uygulamasını çalıştırarak bir Azure SQL veritabanını sorgulama
-> - Test yük devretmesi
+> - Yük devretme testi
 
 DMS kullanarak geçiş yapmak için bir sonraki öğreticiye ilerleyin.
 

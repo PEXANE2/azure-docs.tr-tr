@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 37b19cd86cd13dd2bdc8b3a38abf61898b81d01b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 79abaade22fc107fa4c848607ff48232eeeb58ad
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690374"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823754"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Ölçekli bulut veritabanları genelinde raporlama (Önizleme)
 
@@ -142,7 +142,7 @@ DATA\_SOURCE yan tümcesi dış tablo için kullanılan dış veri kaynağını 
 
 DAĞıTıM yan tümcesi, bu tablo için kullanılan veri dağılımını belirtir. Sorgu işlemcisi, en verimli sorgu planlarını oluşturmak için DAĞıTıM yan tümcesinde belirtilen bilgileri kullanır.
 
-1. Parçalama, verilerin veritabanları arasında yatay olarak bölümlenmesi **anlamına gelir** . Veri dağıtımına ilişkin bölümlendirme anahtarı **< sharding_column_name >** parametresidir.
+1. Parçalama, verilerin veritabanları arasında yatay olarak bölümlenmesi **anlamına gelir** . Veri dağıtımına ilişkin bölümlendirme anahtarı, **< sharding_column_name >** parametresidir.
 2. **Çoğaltılan** , tablonun aynı kopyalarının her veritabanında bulunduğu anlamına gelir. Çoğaltmalarınızın veritabanları genelinde özdeş olmasını sağlamak sizin sorumluluğunuzdadır.
 3. Hepsini bir **kez deneme\_** , tablonun bir uygulamaya bağımlı dağıtım yöntemi kullanılarak yatay olarak bölümlenmesi anlamına gelir.
 

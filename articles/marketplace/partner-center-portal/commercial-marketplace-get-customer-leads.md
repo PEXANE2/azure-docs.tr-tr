@@ -4,15 +4,16 @@ description: Ticari Market 'te müşteri adaylarını yapılandırın.
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: 31dcc8c1e35b627b231dbe2a62998c8514d05a20
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7ead8dee12d4376e6e1058b84a25b91c021a937c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902656"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812638"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Market teklifinizin müşteri adayları
 
@@ -48,11 +49,11 @@ Bir müşteri adayının oluşturulduğu yer şunlardır:
 
 ## <a name="understand-lead-data"></a>Müşteri adayı verilerini anlama
 
-Müşteri alma işlemi sırasında aldığınız her bir müşteri, belirli alanlardaki verilere sahiptir. İçin ilk aranacak alan, bu biçimi izleyen `LeadSource` alandır: **Kaynak eylem** | **teklifi**.
+Müşteri alma işlemi sırasında aldığınız her bir müşteri, belirli alanlardaki verilere sahiptir. Aranacak ilk alan, şu biçimi izleyen `LeadSource` alanıdır: **Kaynak-eylem** | **teklif**.
 
 **Kaynaklar**: Bu alanın değeri, müşteri adayını oluşturan Market 'e göre doldurulur. Olası değerler şunlardır `"AzureMarketplace"`, `"AzurePortal"`ve `"AppSource (SPZA)"`.
 
-**Eylemler**: Bu alanın değeri, müşterinin Market 'te aldığı eyleme göre doldurulur ve bu da müşteri adayını oluşturmuş olur. 
+**Eylemler**: Bu alanın değeri, müşterinin müşteri adayını oluşturan, Market 'te aldığı eyleme göre doldurulur. 
 
 Olası değerler şunlardır:
 
@@ -62,9 +63,9 @@ Olası değerler şunlardır:
 - "Oluştur"--Bu eylem yalnızca Azure portal içindedir ve müşteri teklifinizi kendi hesaplarına satın aldığında üretilir.
 - "StartTestDrive"--Bu eylem yalnızca test sürücüleri için geçerlidir ve bir müşteri test sürücüsünü başlattığında oluşturulur.
 
-Şunları **sunar**: Market 'te birden fazla teklif olabilir. Bu alanın değeri, müşteri adayını oluşturan teklifine göre doldurulur. Yayımcı KIMLIĞI ve teklif KIMLIĞI bu alana gönderilir ve teklifi Market 'e yayımladığınızda verdiğiniz değerlerdir.
+**Teklifler**: market 'te birden çok teklif olabilir. Bu alanın değeri, müşteri adayını oluşturan teklifine göre doldurulur. Yayımcı KIMLIĞI ve teklif KIMLIĞI bu alana gönderilir ve teklifi Market 'e yayımladığınızda verdiğiniz değerlerdir.
 
-Aşağıdaki örneklerde beklenen biçimdeki `publisherid.offerid`örnek değerler gösterilmektedir: 
+Aşağıdaki örneklerde, beklenen biçimdeki örnek değerler gösterilmektedir `publisherid.offerid`: 
 
 1. `checkpoint.check-point-r77-10sg-byol`
 1. `bitnami.openedxcypress`
@@ -74,13 +75,13 @@ Aşağıdaki örneklerde beklenen biçimdeki `publisherid.offerid`örnek değerl
 
 Müşterinin bilgileri birden çok alan aracılığıyla gönderilir. Aşağıdaki örnek, bir müşteri adayıyla bulunan müşteri bilgilerini gösterir.
 
-- FirstName John
-- Soyadı Smith
-- E-posta:\@jsmith Microsoft.com
-- Numarası 1234567890
+- FirstName: John
+- Soyadı: Smith
+- E-posta: jsmith\@microsoft.com
+- Telefon: 1234567890
 - Ülke: ABD
-- Şirketlerin Microsoft
-- Başlığın CTO
+- Şirket: Microsoft
+- Başlık: CTO
 
 >[!Note]
 >Önceki örnekteki verilerin hepsi her bir müşteri adayı için her zaman kullanılabilir değildir. Müşteri adayları bölümünde belirtildiği gibi birden çok adımdan müşteri adaylarını alacağınız için, müşteri adaylarını işlemenin en iyi yolu, kayıtları yeniden çoğaltmanız ve takip eden pencereleri kişiselleştirmenize neden olur. Bu şekilde, her müşteri uygun bir ileti almaya ve benzersiz bir ilişki oluşturuyoruz.
@@ -104,7 +105,7 @@ Yanıt, yayımladığınız teklifin türüne bağlıdır. Müşteri katılım i
 
 ### <a name="how-can-i-find-the-test-lead"></a>Test lideri nasıl bulabilirim?
 
-Microsoft 'tan gelen örnek bir test lideri olanmüşteriadayıhedefindearamayapın:`“MSFT_TEST”`
+Müşteri adayı Hedefinizdeki `"MSFT_TEST"` arayın, Microsoft 'tan örnek bir test lideri aşağıda verilmiştir:
 
 ```
 company = MSFT_TEST_636573304831318844

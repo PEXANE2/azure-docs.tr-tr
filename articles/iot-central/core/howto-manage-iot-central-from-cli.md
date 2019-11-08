@@ -1,6 +1,6 @@
 ---
 title: Azure CLı 'dan IoT Central yönetme | Microsoft Docs
-description: Azure CLı 'dan IoT Central yönetin.
+description: Bu makalede, CLı kullanarak IoT Central uygulamanızın nasıl oluşturulacağı ve yönetileceği açıklanmaktadır. CLı kullanarak uygulamayı görüntüleyebilir, değiştirebilir ve kaldırabilirsiniz.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 91ef85a0e74af6488d22345ac056431ad5ba0533
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ddf1cfb1cb3997431b83812d03535ed990c88922
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953427"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806883"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Azure CLı 'dan IoT Central yönetme
 
@@ -21,7 +21,7 @@ ms.locfileid: "72953427"
 
 [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) web sitesinde IoT Central uygulamaları oluşturup yönetmek yerine uygulamalarınızı yönetmek IÇIN [Azure CLI](/cli/azure/) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -31,7 +31,7 @@ Azure CLı 'yi yerel makinenizde çalıştırmayı tercih ediyorsanız bkz. [Azu
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-Azure aboneliğinizde bir IoT Central uygulaması oluşturmak için [az ıotcentral App Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) komutunu kullanın. Örnek:
+Azure aboneliğinizde bir IoT Central uygulaması oluşturmak için [az ıotcentral App Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) komutunu kullanın. Örneğin:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -55,7 +55,7 @@ Bu komutlar öncelikle uygulamanın Doğu ABD bölgesinde bir kaynak grubu oluş
 | resource-group    | Uygulamayı içeren kaynak grubu. Bu kaynak grubu aboneliğinizde zaten var olmalıdır. |
 | location          | Varsayılan olarak, bu komut kaynak grubundaki konumu kullanır. Şu anda **Doğu ABD**, **Batı ABD**, **Kuzey Avrupa**veya **Batı Avrupa** bölgelerinde veya **Avustralya** ya da **Asya Pasifik** coğrafi bölgelerde IoT Central bir uygulama oluşturabilirsiniz. |
 | ad              | Azure portal uygulamanın adı. |
-| alanınızın         | Uygulamanın URL 'sindeki alt etki alanı. Örnekte, uygulama URL 'SI https://mysubdomain.azureiotcentral.com ' dır. |
+| alanınızın         | Uygulamanın URL 'sindeki alt etki alanı. Örnekte, uygulama URL 'SI https://mysubdomain.azureiotcentral.com. |
 | İsteyin               | Şu anda tek değer **S1** 'dir (Standart katman). Bkz. [Azure IoT Central fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-central/). |
 | şablon          | Kullanılacak uygulama şablonu. Daha fazla bilgi için aşağıdaki tabloya bakın: |
 | görünen ad      | Kullanıcı arabiriminde gösterildiği şekilde uygulamanın adı. |
@@ -87,7 +87,7 @@ az iotcentral app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Uygulamayı kaldırma
 
-Bir IoT Central uygulamasını silmek için [az ıotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) komutunu kullanın. Örnek:
+Bir IoT Central uygulamasını silmek için [az ıotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) komutunu kullanın. Örneğin:
 
 ```azurecli-interactive
 az iotcentral app delete --name myiotcentralapp \

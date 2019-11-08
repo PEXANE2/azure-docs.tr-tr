@@ -1,5 +1,5 @@
 ---
-title: 'SSMS: bir Azure SQL veritabanındaki verileri bağlama ve sorgulama '
+title: 'SSMS: verileri bağlama ve sorgulama'
 description: SQL Server Management Studio (SSMS) kullanarak Azure'da SQL Database'e nasıl bağlanılacağını öğrenin. Ardından, verileri sorgulamak ve düzenlemek için Transact-SQL (T-SQL) deyimleri çalıştırın.
 keywords: sql veritabanına bağlanma,sql server management studio
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 0744b8bc8e3582a23802d87424bba9f92bf43073
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 69a6939cdbcc9b2c4e496c8d47aa20c9f6e85d57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690891"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826946"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanına bağlanmak ve veritabanını sorgulamak için SQL Server Management Studio kullanma
 

@@ -6,18 +6,18 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/11/2019
+ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 32c7a2a79c8d6a35008255b3c117f20d04ad7749
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927413"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809193"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub cihaz kimliklerini toplu olarak içeri ve dışarı aktarma
 
-Her IoT Hub 'ında, hizmette cihaz başına kaynaklar oluşturmak için kullanabileceğiniz bir kimlik kayıt defteri vardır. Kimlik kayıt defteri, cihaza yönelik uç noktalara erişimi denetlemenize de olanak sağlar. Bu makalede, cihaz kimliklerinin bir kimlik kayıt defterine toplu ve dışarı aktarma işlemlerinin nasıl yapılacağı açıklanır.
+Her IoT Hub 'ında, hizmette cihaz başına kaynaklar oluşturmak için kullanabileceğiniz bir kimlik kayıt defteri vardır. Kimlik kayıt defteri, cihaza yönelik uç noktalara erişimi denetlemenize de olanak sağlar. Bu makalede, cihaz kimliklerinin bir kimlik kayıt defterine toplu ve dışarı aktarma işlemlerinin nasıl yapılacağı açıklanır. Üzerinde C# çalışan bir örnek görmek ve bir hub 'ı farklı bir bölgeye kopyalarken bu özelliği nasıl kullanabileceğinizi öğrenmek için, bkz. [IoT Hub kopyalama](iot-hub-how-to-clone.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -421,7 +421,11 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir IoT Hub 'ında kimlik kayıt defterine yönelik toplu işlemler gerçekleştirmeyi öğrendiniz. Azure IoT Hub 'yi yönetme hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin:
+Bu makalede, bir IoT Hub 'ında kimlik kayıt defterine yönelik toplu işlemler gerçekleştirmeyi öğrendiniz. Cihazların bir hub 'dan diğerine taşınması dahil olmak üzere bu işlemlerin çoğu, [bir IoT Hub nasıl klonlamalarının IoT Hub 'ına kayıtlı cihazları yönetme bölümünde](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub)kullanılır. 
+
+Kopyalama makalesinde onunla ilişkili çalışan bir örnek vardır ve bu sayfada IoT C# örneklerinde bulunur: [için C#Azure IoT örnekleri ](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/), projeyle ımportexportdevicessample. Örneği indirebilir ve deneyebilirsiniz; [IoT Hub nasıl klonlamadaki](iot-hub-how-to-clone.md) yönergeler vardır.
+
+Azure IoT Hub 'yi yönetme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere göz atın:
 
 * [IoT Hub ölçümleri](iot-hub-metrics.md)
 * [IoT Hub günlükleri](iot-hub-monitor-resource-health.md)

@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: jamwall
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.openlocfilehash: c0f3fba389f9cb6f55ac5bf7bb81475fa8244cbf
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 53d6b5b43a028d552c95c58aebf7268353621759
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195258"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827894"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market programı desteği
 
@@ -44,9 +45,9 @@ Microsoft, çok çeşitli ürün ve hizmetler için destek sağlar. Doğru deste
 
 İş Ortağı Merkezi 'nde ticari Market destek menüsünden **ek yardım** ' ın seçilmesi sizi iş için Microsoft desteği sayfasına yönlendirir. Birkaç açılan menü görürsünüz. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur. Market desteği için ürün ailesini **bulut ve çevrimiçi hizmetler**, **Market yayımcısı**olarak ve ürün sürümünü **Market Publishing**olarak belirleyebilirsiniz. Önceden doldurulmuş bu açılan menü seçimlerini değiştirmeyin. 
 
-- **Sorunu en iyi açıklayan bir kategori seçin**: Sorunuz veya sorununuz ile en iyi şekilde hizalanan kategoriyi seçin. Bir kategorinin seçilmesi ek bir açılan menünün görünmesine neden olur ve bu da sorununuzu en iyi şekilde açıklayan sorunu seçmenizi ister.
+- **Sorunu en iyi açıklayan kategoriyi seçin**: sorunuz veya sorununuz ile en iyi şekilde hizalanan kategoriyi seçin. Bir kategorinin seçilmesi ek bir açılan menünün görünmesine neden olur ve bu da sorununuzu en iyi şekilde açıklayan sorunu seçmenizi ister.
 
-- **Sorunu en iyi açıklayan bir sorun seçin**: Sorununuzla en iyi şekilde hizalanan listelenen seçeneklerden sorunu seçin. Sorununuzla ilgili olarak yeni bir bölüm görünebilir ve bu konuda "yardım alabileceğiniz bazı bilgiler" aşağıda verilmiştir. Sorunuz veya sorununuzun sorunu olup olmadığını görmek için **İleri** düğmesini seçmeden önce bu bağlantıları gözden geçirin.
+- **Sorunu en iyi açıklayan bir sorun seçin**: sorununuzla en iyi şekilde hizalanan listelenen seçeneklerden sorunu seçin. Sorununuzla ilgili olarak yeni bir bölüm görünebilir ve bu konuda "yardım alabileceğiniz bazı bilgiler" aşağıda verilmiştir. Sorunuz veya sorununuzun sorunu olup olmadığını görmek için **İleri** düğmesini seçmeden önce bu bağlantıları gözden geçirin.
 
 **İleri** düğmesini seçerek **Sorun ayrıntıları** sayfasına yönlendirilirsiniz. 
 

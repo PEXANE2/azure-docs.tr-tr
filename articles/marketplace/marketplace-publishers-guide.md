@@ -4,15 +4,16 @@ description: Azure Marketi 'ne genel bakış ve uygulama ve hizmet yayımcılar�
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fba9c481ad9b3da1eb0dd5d8a4ff2499240a8cfa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962617"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826475"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketi ve AppSource Yayımlama Kılavuzu
 
@@ -30,7 +31,7 @@ Bu kılavuzda aşağıdaki konular ele alınmaktadır:
 
 Bu kılavuz, uygulamalarınızı ve hizmetlerinizi listeetmeden önce uygulamanız gereken adımlarla ilgili teknik ve iş bilgilerini içerir. Kılavuzun farklı bölümlerine gitmek ve doğrudan temel konulara gitmek için İçindekiler tablosunu kullanın.
 
-Azure Marketi ve appsource hakkında sorularınız için, **sorun türü** > **Market ekleme**altında bize bir ileti gönderin.  Market Yayımcımız ekleme ekibi, yardım almak için mutluluk duyarız! 
+Azure Marketi ve AppSource hakkında sorular için, **sorun türü** altında **Market ekleme** > bir ileti gönderin.  Market Yayımcımız ekleme ekibi, yardım almak için mutluluk duyarız! 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>Market 'e katılımın avantajları 
 
@@ -56,9 +57,9 @@ Market aracılığıyla kullanabileceğiniz Öngörüler ve analizler aracılı�
 
 Market 'teki yeni listeler, iş ortaklarının Market 'te işletmelerini büyütmeye yönelik çeşitli ücretsiz avantajlar için uygundur. Bu avantajlar aşağıdaki kategorilere ayrılır: 
 
-*   Teknik Uygulamanızı başlatma için hazırlamak üzere ihtiyacınız olan her şey. Teknik destek, uygulama tasarımı ve mimari tasarımından, geliştirme ve test için Azure kredilerine. 
+*   Teknik: uygulamanızı başlatmaya hazırlamak için ihtiyacınız olan her şey. Teknik destek, uygulama tasarımı ve mimari tasarımından, geliştirme ve test için Azure kredilerine. 
 
-*   Ortak pazarlama: Teklifinizi başlatmanız için ihtiyacınız olan her şey. Çözümünüzü başlatıp yükseltebilmeniz için ücretsiz Microsoft go-to-market başlatma temelleri 'ne erişin. Market 'te öne çıkmaya yönelik ek Microsoft pazarlama kampanyası dahil ve fırsatları da uygun olabilir.
+*   Ortak pazarlama: teklifinizi başlatmanız için ihtiyacınız olan her şey. Çözümünüzü başlatıp yükseltebilmeniz için ücretsiz Microsoft go-to-market başlatma temelleri 'ne erişin. Market 'te öne çıkmaya yönelik ek Microsoft pazarlama kampanyası dahil ve fırsatları da uygun olabilir.
 
 *   Ortak satış: Market üzerinden Microsoft ile satış yapmak için yolculuğa başlayın veya hızlandırın. Microsoft ekipleriyle Birleşik satışları sağlamak için programlar ve desteğe erişin.
 

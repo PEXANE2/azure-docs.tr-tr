@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı bellek içi örnek
+title: Bellek içi örnek
 description: OLTP ve columnstore örneği ile Azure SQL veritabanı 'nı bellek Içi teknolojilerle deneyin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 8526236afdb0a312879cb3c1635a7fd85985278f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e7e7fc44d5f8b46a66c698d3a33ceeab5b8625c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689825"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810337"
 ---
 # <a name="in-memory-sample"></a>Bellek içi örnek
 
@@ -100,7 +100,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 ```
 
 
-**Yerel koda derlenmiş saklı yordam**: SalesLT. USP _ınsertsalesorder_ınmem öğesini bir Katalog görünümü sorgusu aracılığıyla inceleyebilirsiniz:
+**Yerel koda derlenmiş saklı yordam**: bir Katalog görünümü sorgusu aracılığıyla saleslt. usp_InsertSalesOrder_inmem inceleyebilirsiniz:
 
 
 ```sql
@@ -116,7 +116,7 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 Aşağıdaki iki *saklı yordam* arasındaki tek fark, ilk yordamın tabloları en iyi duruma getirilmiş sürümlerini kullandığından, ikinci yordam ise normal disk üzerinde tablo kullanır:
 
-- SalesLT **.** usp_InsertSalesOrder **_ınmem**
+- SalesLT **.** usp_InsertSalesOrder **_inmem**
 - SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
 
@@ -168,7 +168,7 @@ end
 ```
 
 
-Önceki T-SQL betiğinin *_ondisk* sürümünü ostres. exe için yapmak amacıyla, *_ınmem* alt dizesi her iki tekrarın de *_ondisk*ile değiştirilmesini sağlayabilirsiniz. Bu değişiklikler, tabloların ve saklı yordamların adlarını etkiler.
+Önceki T-SQL betiğinin, ostres. exe için *_ondisk* sürümünü yapmak için, *_inmem* alt dizenin her iki tekrarı da *_ondisk*ile değiştirmelisiniz. Bu değişiklikler, tabloların ve saklı yordamların adlarını etkiler.
 
 
 ### <a name="install-rml-utilities-and-ostress"></a>RML yardımcı programlarını ve `ostress` yükleyip
@@ -236,10 +236,10 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Sıfırla, *_ondisk*için Düzenle, sonra yeniden çalıştır
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>*_Ondisk*için sıfırlayın, düzenleyin ve yeniden çalıştırın
 
 
-*_Inmem* çalıştırağından elde ettikten sonra, *_ondisk* çalıştırması için aşağıdaki adımları gerçekleştirin:
+*_İnmem* çalıştırıldıktan sonra, *_ondisk* çalıştırmak için aşağıdaki adımları gerçekleştirin:
 
 
 1. Önceki çalıştırma tarafından eklenen tüm verileri silmek için SSMS 'de aşağıdaki komutu çalıştırarak veritabanını sıfırlayın:
@@ -247,7 +247,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Tüm *_ınmem* *_ondisk*ile değiştirmek için ostres. exe komut satırını düzenleyin.
+2. Tüm *_inmem* *_ondisk*olacak şekilde değiştirmek için ostres. exe komut satırını düzenleyin.
 
 3. Ostres. exe dosyasını ikinci kez yeniden çalıştırın ve süre sonucunu yakalayın.
 
@@ -279,7 +279,7 @@ OLTP iş yükünde gerçek zamanlı analizler için, kümelenmemiş bir columnst
    - Bu tam adı kullanın.
    - Herhangi bir Premium hizmet katmanını seçin.
 
-2. [Sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) ' i panonuza kopyalayın.
+2. [Sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) panonuza kopyalayın.
    - T-SQL betiği, 1. adımda oluşturduğunuz AdventureWorksLT örnek veritabanında gerekli bellek Içi nesneleri oluşturur.
    - Betik, boyut tablosu ve iki olgu tablosu oluşturur. Olgu tabloları her biri 3.500.000 satır ile doldurulur.
    - Betiğin tamamlanması 15 dakika sürebilir.

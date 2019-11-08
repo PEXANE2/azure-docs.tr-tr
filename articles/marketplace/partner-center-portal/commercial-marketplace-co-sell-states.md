@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f0fa86cc3de9f8c183d7b7a24fb03d02204adc17
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 38dcfe04473e8d2fbd81614908adef9636c44b19
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076153"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812852"
 ---
 # <a name="co-sell-state-codes"></a>Ortak satış eyalet kodları
 
@@ -26,16 +27,16 @@ Uygulanabiliyorsa, [teklifinizin ortak satış sayfasında iletişim bilgilerini
 | Alaska                              | ABD-AK     |
 | Arizona                             | ABD-AZ     |
 | Arkansas                            | ABD-AR     |
-| California                          | ABD-CA     |
+| Kaliforniya                          | ABD-CA     |
 | Colorado                            | ABD-CO     |
 | Connecticut                         | ABD-CT     |
 | Delaware                            | ABD-DE     |
-| Florida                             | ABD-FL     |
-| Georgia                             | ABD-GA     |
+| Yapılacak                             | ABD-FL     |
+| Gürcistan                             | ABD-GA     |
 | Hawaii                              | ABD-HI     |
 | Idaho                               | ABD-KIMLIĞI     |
-| Illinois                            | ABD-IL     |
-| Indiana                             | ABD-IN     |
+| Illinois                            | ABD-ıL     |
+| Indiana                             | ABD-ıN     |
 | Iowa                                | ABD-IA     |
 | Kansas                              | ABD-KS     |
 | Kentucky                            | ABD-KY     |
@@ -43,41 +44,41 @@ Uygulanabiliyorsa, [teklifinizin ortak satış sayfasında iletişim bilgilerini
 | Maine                               | ABD-BEN     |
 | Maryland                            | ABD-MD     |
 | Massachusetts                       | ABD-MA     |
-| Michigan                            | ABD-MI     |
-| Minnesota                           | ABD-MN     |
-| Mississippi                         | ABD-MS     |
-| Missouri                            | ABD-MO     |
+| Michigan                            | ABD-Mı     |
+| Minessota                           | ABD-MN     |
+| Sısıtik ppi                         | ABD-MS     |
+| Hatalı Souri                            | ABD-MO     |
 | Montana                             | ABD-MT     |
 | Nebraska                            | ABD-NE     |
-| Nevada                              | ABD-NV     |
-| New Hampshire                       | ABD-NH     |
-| New Jersey                          | ABD-NJ     |
-| New Mexico                          | ABD-NM     |
+| Nevada dili                              | ABD-NV     |
+| Yeni Hampshire                       | ABD-NH     |
+| Yeni Jersey                          | ABD-NJ     |
+| Yeni Meksika                          | ABD-NM     |
 | New York                            | ABD-NY     |
 | Kuzey Carolina                      | ABD-NC     |
-| Kuzey Dakota                        | ABD-ND     |
+| Kuzey Bakota                        | ABD-ND     |
 | Ohio                                | ABD-OH     |
 | Oklahoma                            | ABD-TAMAM     |
-| Oregon                              | ABD VEYA     |
+| 'Daki                              | ABD VEYA     |
 | Pennsylvania                        | ABD-PA     |
-| Rhode Island                        | ABD-RI     |
+| Rhode Adası                        | ABD-Rı     |
 | Güney Carolina                      | ABD-SC     |
-| Güney Dakota                        | ABD-SD     |
+| Güney Davkota                        | ABD-SD     |
 | Tennessee                           | US-TN     |
 | Texas                               | ABD-TX     |
 | Utah                                | ABD-UT     |
 | Vermont                             | ABD-VT     |
 | Virginia                            | ABD-VA     |
-| Washington                          | ABD-WA     |
+| Washington DC                          | ABD-WA     |
 | Batı Virginia                       | ABD-WV     |
 | Wisconsin                           | ABD-WI     |
 | Wyoming                             | ABD-WY     |
-| District of Columbia                | ABD-DC     |
+| Kolumbiyası bölgesi                | ABD-DC     |
 | Amerikan Samoası                      | ABD-AS     |
 | Guam                                | ABD-GU     |
 | Kuzey Mariana Adaları            | ABD-MP     |
 | Porto Riko                         | ABD-PR     |
-| Amerika Birleşik Devletleri Küçük Harici Adaları | ABD-UM    |
+| Birleşik Devletler Küçük Harici Adaları | ABD-UM    |
 |Virgin Adaları, ABD                 | ABD-VI     |
 
 ## <a name="next-steps"></a>Sonraki adımlar

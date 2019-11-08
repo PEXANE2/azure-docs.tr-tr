@@ -1,5 +1,5 @@
 ---
-title: Geçişten sonra tek ve havuza alınmış veritabanlarını yönetme-Azure SQL veritabanı
+title: Geçişten sonra tek ve havuza alınmış veritabanlarını yönetme
 description: Azure SQL veritabanı 'na geçişten sonra veritabanınızı yönetme hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: d92b4b99e6ae6a7a07174e59d7cf3c9766c0eabf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689530"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818974"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Bulutta yeni DBA: Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanlarınızı yönetme
 
@@ -272,7 +272,7 @@ Bu grafikten, uyarıları kaynağa göre de yapılandırabilirsiniz. Bu uyarıla
 
 #### <a name="dynamic-management-views"></a>Dinamik yönetim görünümleri
 
-Son 14 günün geçmişini döndürmek için son saatten ve [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Sistem kataloğu görünümünden kaynak tüketimi istatistikleri geçmişini döndürmek üzere [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamik yönetim görünümünü sorgulayabilirsiniz.
+Son 14 günün geçmişini döndürmek için son saatten ve [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Sistem kataloğu görünümünden kaynak tüketimi istatistikleri geçmişini döndürmek üzere [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamik yönetim görünümünü sorgulayabilirsiniz.
 
 #### <a name="query-performance-insight"></a>Sorgu Performansı İçgörüleri
 
@@ -292,7 +292,7 @@ Performans sorunlarını gidermek için yaklaşım, [sorgu performansı içgör�
 
 Performans sorunlarını giderme sayesinde, uygulamanın yalnızca uygulamanın mı yoksa veritabanı yedeklemesi mi olduğunu belirlemek önemlidir. Bu, uygulama performansınızı etkiliyor. Genellikle, performans sorunu uygulama katmanında yer alır. Bu, mimari veya veri erişim deseninin olabilir. Örneğin, ağ gecikme süresine duyarlı bir geveze uygulamanız olduğunu düşünün. Bu durumda uygulamanız, uygulama ile sunucu arasında ve çok yönlü bir ağ üzerinde ileri ve geri dönerek ("geveze") bir çok kısa istek olduğu için, bu gidiş dönüşlerin hızlı bir şekilde daha hızlı bir şekilde bir şekilde yapıldığından, uygulamanız vardır. Bu durumda performansı artırmak için [Batch sorgularını](sql-database-performance-guidance.md#batch-queries)kullanabilirsiniz. Artık istekleriniz bir toplu işte işlendiğinden, toplu işlem gecenin size yardımcı olur; Bu nedenle, gidiş dönüş gecikmesini kesip uygulama performansınızı iyileştirmenize yardımcı olur.
 
-Ayrıca, veritabanınızın genel performansına karşı bir düşüş fark ederseniz, CPU, GÇ ve bellek tüketimini anlamak için [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ve [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamik yönetim görünümlerini izleyebilirsiniz. Veritabanınız kaynakları kullandığından, performanstan etkilenmiş olabilirsiniz. Artan ve daraltma iş yükü taleplerine göre işlem boyutunu ve/veya hizmet katmanını değiştirmeniz gerekebilir.
+Ayrıca, veritabanınızın genel performansına karşı bir düşüş fark ederseniz, CPU, GÇ ve bellek tüketimini anlamak için [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ve [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamik yönetim görünümlerini izleyebilirsiniz. Veritabanınız kaynakları kullandığından, performanstan etkilenmiş olabilirsiniz. Artan ve daraltma iş yükü taleplerine göre işlem boyutunu ve/veya hizmet katmanını değiştirmeniz gerekebilir.
 
 Performans sorunlarını ayarlama hakkında kapsamlı bir öneriler kümesi için bkz.: [veritabanınızı ayarlama](sql-database-performance-guidance.md#tune-your-database).
 

@@ -4,15 +4,16 @@ description: Azure Marketi ve Microsoft AppSource ile tümleşik çözümler
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 8bffb2c71f5e07499338ea32e0c064392af81684
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: eaba5612221e712ad5b14f10876e083729970fde
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71706305"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818556"
 ---
 # <a name="publish-an-integrated-solution"></a>Tümleşik bir çözüm yayımlama
 
@@ -38,11 +39,11 @@ Tümleşik çözümler programına genel bir bakış için [Bu videoyu](https://
 
     * Uygulama Geliştirme
     * Uygulama Tümleştirme
-    * Uygulama Yaşam Döngüsü Yönetimi
+    * Uygulama yaşam döngüsü yönetimi
     * Bulut platformu
     * Veri Analizi
-    * Zi
-    * Veri platformu
+    * Veri merkezi
+    * Veri Platformu
     * DevOps
 
 * Çözüm, bir bütün müşteri çözümü ve deneyimi için IP ve Hizmetleri bir araya getiren en az iki iş ortağı kuruluş içermelidir.
@@ -56,16 +57,16 @@ Programa katılmak isteyen iş ortakları, birlikte çalışmak istedikleri diğ
 
 ## <a name="develop-an-integrated-solution"></a>Tümleşik bir çözüm geliştirin 
 
-Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek için bağlantılı program kaynaklarını kullanın. Aşağıdaki adımları uygulayın: 
+Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek için bağlantılı program kaynaklarını kullanın. Şu adımları uygulayın: 
 
 1. Çözüm ve tümleştirme yaklaşımını tanımlamak için bir Workshop formatında önemli iş ve teknik tartışmalar yapın. 
 
     Çözümle ilgili tartışmanızın aşağıdaki noktaları içeren noktaları olması gerekir:
     * Kapsam
     * Hedef müşteriler
-    * Değer teklifi
+    * Değer önerisi
     * Fiyatlandırma
-    * Lisans
+    * Lisanslama
     * Hüküm ve koşullar
     * Destek yaklaşımı
     * Pazarlama etkinlikleri
@@ -75,7 +76,7 @@ Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek iç
     Tümleştirme yaklaşımına ilişkin tartışmanızın aşağıdaki noktaları olması gerekir: 
     * Tümleştirme noktaları
     * Çözüm mimarisi
-    * Kimlik doğrulaması
+    * Kimlik Doğrulaması
     * Kullanıcı arabirimi
     * İzleme
     * Dağıtım mekanizması

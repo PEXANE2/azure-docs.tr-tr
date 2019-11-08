@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: d6bf0f788f7c71a55a4c3667023d8b1d9f571baf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 4f577e6497e853d9b75f81b5da4f7121064a9d07
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820969"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826348"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Redsıs zaman aşımları için Azure önbelleğinde sorun giderme
 
@@ -34,7 +34,7 @@ Bu bölümde, Redsıs için Azure önbelleğine bağlanılırken oluşan zaman a
 
 ## <a name="redis-server-patching"></a>Redsıs sunucusu düzeltme eki uygulama
 
-Redsıs için Azure önbelleği, sağladığı yönetilen hizmet işlevselliğinin bir parçası olarak sunucu yazılımını düzenli olarak güncelleştirir. Bu [düzeltme eki uygulama](cache-failover.md) , büyük ölçüde sahnenin arkasında yer alır. Redsıs sunucu düğümlerine düzeltme eki eklenen yük devretme işlemleri sırasında, bu düğümlere bağlı olan Redsıs istemcileri bu düğümler arasında bağlantı kurulmasını geçici zaman aşımları ile karşılaşabilir. Bir yük devretmenin, uygulamanızda neler olabileceği ve düzeltme eki uygulama işlemini nasıl geliştirebileceğiniz hakkında daha fazla bilgi için [istemci uygulamamı nasıl etkilediğini](cache-failover.md#how-does-a-failover-impact-my-client-application) görün.
+Redsıs için Azure önbelleği, sağladığı yönetilen hizmet işlevselliğinin bir parçası olarak sunucu yazılımını düzenli olarak güncelleştirir. Bu [düzeltme eki uygulama](cache-failover.md) , büyük ölçüde sahnenin arkasında yer alır. Redsıs sunucu düğümlerine düzeltme eki eklenen yük devretme işlemleri sırasında, bu düğümlere bağlı olan Redsıs istemcileri bu düğümler arasında bağlantı kurulmasını geçici zaman aşımları ile karşılaşabilir. Bkz. bir yük devretme, uygulamanızda hangi yan etkilere sahip olabilir ve düzeltme eki uygulama işlemlerini nasıl geliştirebileceğiniz hakkında daha fazla bilgi için [istemci uygulamamı nasıl etkiler](cache-failover.md#how-does-a-failover-affect-my-client-application) ?
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange. Redsıs zaman aşımı özel durumları
 
@@ -47,7 +47,7 @@ Bu hata iletisi, sorunun nedenine ve olası çözümüne işaret etmenize yardı
 | Hata iletisi ölçümü | Ayrıntılar |
 | --- | --- |
 | inst |Son zaman dilimi: 0 komutları yayımlandığında |
-| SETUPAPI |Yuva Yöneticisi `socket.select` yapıyor. Bu, işletim sisteminin yapması gereken bir yuva olduğunu belirtmesidir. Okuyucu herhangi bir şey olduğunu düşünmediği için ağ üzerinden etkin bir şekilde okunamaz |
+| SETUPAPI |Yuva Yöneticisi `socket.select`yapıyor. Bu, işletim sisteminin yapması gereken bir yuva olduğunu belirtmesidir. Okuyucu herhangi bir şey olduğunu düşünmediği için ağ üzerinden etkin bir şekilde okunamaz |
 | kuyruk |Devam eden 73 Toplam işlem var |
 | Qu |işlemin 6 ' dan devam eden işlemler gönderilmemiş kuyrukta ve henüz giden ağa yazılmadı |
 | QS |devam eden işlemlerin 67 sunucuya gönderilmesi ancak bir yanıt henüz kullanılamıyor. Yanıt `Not yet sent by the server` veya `sent by the server but not yet processed by the client.` olabilir |
@@ -94,7 +94,7 @@ Olası temel nedenleri araştırmak için aşağıdaki adımları kullanabilirsi
 1. Yüksek Redsıs sunucu yüklemesi zaman aşımına neden olabilir. `Redis Server Load` [önbelleği performans ölçümünü](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)izleyerek sunucu yükünü izleyebilirsiniz. Sunucu yükü 100 (en yüksek değer), redsıs sunucusunun meşgul olduğunu, boşta kalma süresi olmadan ve işleme isteklerini belirtir. Belirli isteklerin tüm sunucu yeteneklerini mi aldığını görmek için, önceki paragrafta açıklandığı gibi Yavaşgünlüğü komutunu çalıştırın. Daha fazla bilgi için bkz. yüksek CPU kullanımı/sunucu yükü.
 1. İstemci tarafında ağ Blip oluşmasına neden olabilecek başka bir olay vardı mi? Ortak olaylar şunlardır: istemci örneklerinin sayısını ölçeği artırma veya azaltma, istemcinin yeni bir sürümünü dağıtma veya otomatik ölçeklendirme özelliği. Testinizde, otomatik ölçeklendirmeyi veya ölçeklendirmeyi artırma/azaltma, giden ağ bağlantısının birkaç saniye süreyle kaybolmasına neden olabilir. StackExchange. Redsıs kodu, bu tür olaylara esnektir ve yeniden bağlanır. Yeniden bağlanıldığında kuyruktaki isteklerin zaman aşımına uğrar.
 1. Birkaç küçük istekten daha önce zaman aşımına uğramış bir istek var mı? Hata iletisindeki parametre `qs`, istemciden sunucuya kaç istek gönderildiğini söyler, ancak bir yanıt işlenmedi. StackExchange. redin tek bir TCP bağlantısı kullandığından ve aynı anda yalnızca bir yanıt okuyabildiğinden bu değer büyümeye devam edebilir. İlk işlem zaman aşımına uğrasa da, sunucudan veya sunucudan daha fazla verinin gönderilmesini durdurmaz. Diğer istekler, büyük istek tamamlanana kadar engellenecek ve zaman aşımlarına neden olabilir. Tek bir çözüm, önbelleğinizin iş yükünüz için yeterince büyük olmasını ve büyük değerleri daha küçük parçalara bölünmesini sağlayarak zaman aşımları olasılığını en aza indirmektir. Başka bir olası çözüm, istemcinizdeki `ConnectionMultiplexer` nesnelerinin bir havuzunu kullanmaktır ve yeni bir istek gönderirken en az yüklenen `ConnectionMultiplexer` seçer. Birden çok bağlantı nesnesi arasında yükleme, tek bir zaman aşımının diğer isteklerin da zaman aşımına uğramasına neden olur.
-1. `RedisSessionStateProvider`kullanıyorsanız, yeniden deneme zaman aşımını doğru ayarlamış olduğunuzdan emin olun. `retryTimeoutInMilliseconds` `operationTimeoutInMilliseconds` daha yüksek olmalıdır, aksi takdirde yeniden deneme gerçekleşmez. Aşağıdaki örnekte `retryTimeoutInMilliseconds` 3000 olarak ayarlanmıştır. Daha fazla bilgi için bkz. [ASP.NET oturum durumu sağlayıcısı, redsıs Için Azure önbelleği](cache-aspnet-session-state-provider.md) ve [oturum durumu sağlayıcısı ve çıkış önbelleği sağlayıcısı yapılandırma parametrelerinin nasıl kullanılacağı](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
+1. `RedisSessionStateProvider`kullanıyorsanız, yeniden deneme zaman aşımını doğru ayarlamış olduğunuzdan emin olun. `retryTimeoutInMilliseconds` `operationTimeoutInMilliseconds`daha yüksek olmalıdır, aksi takdirde yeniden deneme gerçekleşmez. Aşağıdaki örnekte `retryTimeoutInMilliseconds` 3000 olarak ayarlanmıştır. Daha fazla bilgi için bkz. [ASP.NET oturum durumu sağlayıcısı, redsıs Için Azure önbelleği](cache-aspnet-session-state-provider.md) ve [oturum durumu sağlayıcısı ve çıkış önbelleği sağlayıcısı yapılandırma parametrelerinin nasıl kullanılacağı](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
 
     ```xml
     <add
@@ -111,7 +111,7 @@ Olası temel nedenleri araştırmak için aşağıdaki adımları kullanabilirsi
       retryTimeoutInMilliseconds="3000" />
     ```
 
-1. `Used Memory RSS` ve `Used Memory`[Izleyerek](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) redo Server Için Azure önbelleğindeki bellek kullanımını kontrol edin. Çıkarma ilkesi mevcutsa, `Used_Memory` önbellek boyutuna ulaştığında redo, anahtarları çıkarma işlemi başlatır. İdeal olarak, `Used Memory RSS` `Used memory` göre yalnızca biraz daha yüksek olmalıdır. Büyük bir fark, bellek parçalanması (iç veya dış) anlamına gelir. `Used Memory RSS` `Used Memory`daha az olduğunda, önbellek belleğinin bir kısmının işletim sistemi tarafından değiştirilmiş olması anlamına gelir. Bu değiştirme gerçekleşirse bazı önemli gecikme süreleri bekleyebilir. Redsıs 'in, ayırmaların bellek sayfalarına eşlenme üzerinde denetimi olmadığından, yüksek `Used Memory RSS` genellikle bellek kullanımında ani bir ani sonuçlardır. Redsıs sunucusu belleği serbest bıraktığı zaman ayırıcı belleği alır, ancak bu bellek sisteme geri dönüş gösterebilir veya olmayabilir. `Used Memory` değeri ile işletim sistemi tarafından bildirilen bellek tüketimi arasında bir tutarsızlık olabilir. Bellek, Redsıs tarafından kullanılmış, ancak sisteme geri verilmeyebilir. Bellek sorunlarını azaltmaya yardımcı olmak için aşağıdaki adımları gerçekleştirebilirsiniz:
+1. `Used Memory RSS` ve `Used Memory`[Izleyerek](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) redo Server Için Azure önbelleğindeki bellek kullanımını kontrol edin. Çıkarma ilkesi mevcutsa, `Used_Memory` önbellek boyutuna ulaştığında redo, anahtarları çıkarma işlemi başlatır. İdeal olarak, `Used Memory RSS` `Used memory`göre yalnızca biraz daha yüksek olmalıdır. Büyük bir fark, bellek parçalanması (iç veya dış) anlamına gelir. `Used Memory RSS` `Used Memory`daha az olduğunda, önbellek belleğinin bir kısmının işletim sistemi tarafından değiştirilmiş olması anlamına gelir. Bu değiştirme gerçekleşirse bazı önemli gecikme süreleri bekleyebilir. Redsıs 'in, ayırmaların bellek sayfalarına eşlenme üzerinde denetimi olmadığından, yüksek `Used Memory RSS` genellikle bellek kullanımında ani bir ani sonuçlardır. Redsıs sunucusu belleği serbest bıraktığı zaman ayırıcı belleği alır, ancak bu bellek sisteme geri dönüş gösterebilir veya olmayabilir. `Used Memory` değeri ile işletim sistemi tarafından bildirilen bellek tüketimi arasında bir tutarsızlık olabilir. Bellek, Redsıs tarafından kullanılmış, ancak sisteme geri verilmeyebilir. Bellek sorunlarını azaltmaya yardımcı olmak için aşağıdaki adımları gerçekleştirebilirsiniz:
 
    - Sistemdeki bellek sınırlamalarıyla çalışmaya devam edebilmeniz için önbelleği daha büyük bir boyuta yükseltin.
    - Eski değerlerin önceden çıkarılabilmesi için anahtarların süre sonu zamanlarını ayarlayın.
@@ -119,7 +119,7 @@ Olası temel nedenleri araştırmak için aşağıdaki adımları kullanabilirsi
 
    Daha fazla bilgi için bkz. [redsıs sunucusu 'Nda bellek baskısı](cache-troubleshoot-server.md#memory-pressure-on-redis-server).
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 - [Redsıs istemci tarafı sorunları için Azure Cache sorunlarını giderme](cache-troubleshoot-client.md)
 - [Redsıs sunucu tarafı sorunları için Azure Cache sorunlarını giderme](cache-troubleshoot-server.md)

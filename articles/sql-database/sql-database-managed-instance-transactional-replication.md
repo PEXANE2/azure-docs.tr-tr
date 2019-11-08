@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı ile işlem çoğaltma "
+title: İşlem çoğaltması
 description: Azure SQL veritabanı 'nda tek, havuza alınmış ve örnek veritabanlarıyla SQL Server işlemsel çoğaltma kullanma hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 016b4f2ee191443cf608af18d1be6a94b6d53a39
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a57d1c85384204c26e75f7138b9514f2b3297bef
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687836"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823303"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek, havuza alınmış ve örnek veritabanlarıyla işlem çoğaltması
 
@@ -74,7 +74,7 @@ Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-database
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > - Daha eski bir sürümü kullanarak çoğaltmayı yapılandırmaya çalışmak, hata numarası MSSQL_REPL20084 (işlem aboneye bağlanamaz.) ve MSSQ_REPL40532 (oturum açma tarafından istenen sunucu \<adı > açılamıyor. Oturum açılamadı.)
+  > - Daha eski bir sürümü kullanarak çoğaltmayı yapılandırmaya çalışmak, hata numarası MSSQL_REPL20084 (işlem aboneye bağlanamaz.) ve MSSQ_REPL40532 (oturum açma tarafından istenen > sunucu \<adı açılamıyor. Oturum açılamadı.)
   > - Azure SQL veritabanı 'nın tüm özelliklerini kullanmak için, en son [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)sürümlerini kullanmanız gerekir.
   
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Örnek veritabanları ve şirket içi sistemler için Supportability matrisi

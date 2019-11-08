@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı bellek içi teknolojiler
+title: Bellek içi teknolojiler
 description: Azure SQL veritabanı bellek Içi teknolojiler, işlem ve analiz iş yüklerinin performansını önemli ölçüde artırır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: 7ee643c10c61368ee91692cbddf326ba488f81e6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: de60712451d4c2e8a7d931f7a09352f55be05694
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689779"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810256"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL veritabanında bellek Içi teknolojileri kullanarak performansı iyileştirin
 
@@ -81,7 +81,7 @@ Daha fazla bilgi için bkz.
 Bellek içi OLTP teknolojisi, tüm verileri bellekte tutarak son derece hızlı veri erişim işlemleri sağlar. Ayrıca OLTP iş yükünün performansını artırmak için özel dizinleri, sorguların yerel derlemesini ve manuca veri erişimini de kullanır. Bellek Içi OLTP verilerinizi düzenlemenin iki yolu vardır:
 
 - Her satırın ayrı bir bellek nesnesi olduğu **bellek için iyileştirilmiş rowstore** biçimi. Bu, yüksek performanslı OLTP iş yükleri için iyileştirilmiş, klasik bir bellek Içi OLTP biçimidir. Bellek için iyileştirilmiş rowstore biçiminde kullanılabilecek, bellek için iyileştirilmiş iki tür tablo vardır:
-  - Sunucu yeniden başlatıldıktan sonra belleğe yerleştirilmiş satırların korunduğu *dayanıklı tablolar* (SCHEMA_AND_DATA). Bu tür tablolar, bellek içi iyileştirmelerin ek avantajları ile geleneksel bir rowstore tablosu gibi davranır.
+  - Bellekte bulunan satırların sunucu yeniden başlatıldıktan sonra korunduğu *dayanıklı tablolar* (SCHEMA_AND_DATA). Bu tür tablolar, bellek içi iyileştirmelerin ek avantajları ile geleneksel bir rowstore tablosu gibi davranır.
   - Yeniden başlatıldıktan sonra satırların korunmayan, *dayanıklı olmayan tablolar* (SCHEMA_ONLY). Bu tür bir tablo, geçici veriler (örneğin, geçici tabloları değiştirme) veya kalıcı bir tabloya taşımadan önce verileri hızlı bir şekilde yüklemeniz gereken tablolar (hazırlama tabloları olarak adlandırılır) için tasarlanmıştır.
 - Verilerin sütunlu biçimde düzenlendiği, **bellek için iyileştirilmiş columnstore** biçimi. Bu yapı, OLTP iş yükünüzün çalıştığı veri yapısında analitik sorgular çalıştırmanız gereken, HTAP senaryoları için tasarlanmıştır.
 

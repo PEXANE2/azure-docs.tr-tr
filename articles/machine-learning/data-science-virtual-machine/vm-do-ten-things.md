@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 75a685dc90db9133ee9bc5d52d046246270ea32a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dc8a870d692108f3a33b89a1c3826d421dfd1f63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497615"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824393"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makinesi yapabileceğiniz on işlem
 
@@ -40,7 +40,7 @@ Bu makalede, veri bilimi görevlerini gerçekleştirmek ve diğer Azure hizmetle
 > 
 > 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure aboneliğine ihtiyacınız vardır. [Ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 * Azure portal bir Veri Bilimi Sanal Makinesi sağlamaya yönelik yönergeler, [sanal makine oluşturma](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)bölümünde bulunabilir.
@@ -265,7 +265,7 @@ Github.com ' de bulunan kaynaklardan GitHub deponuzla çalışmak için git kull
 ### <a name="azure-blob-storage"></a>Azure Blob depolama
 Azure Blob depolama, büyük ve küçük veriler için güvenilir, ekonomik bir bulut depolama hizmetidir. Bu bölümde, blob depolamaya verileri nasıl taşıyacağınız ve bir Azure Blob 'da depolanan verilere erişim açıklanmaktadır.
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Portal](https://portal.azure.com)Azure Blob Storage hesabınızı oluşturun.
 
@@ -367,7 +367,7 @@ Veriler veri çerçevesi olarak okundu:
 ### <a name="azure-data-lake"></a>Azure Data Lake
 Azure Data Lake Storage, büyük veri analizi iş yükleri için hiper ölçekli bir depodur ve Hadoop Dağıtılmış Dosya Sistemi (bir) ile uyumludur. Hadoop, Spark ve Azure Data Lake Analytics ile birlikte kullanılır. Bu bölümde, Azure Data Lake Analytics kullanarak Azure Data Lake Storage verileri nasıl taşıyabileceğinizi ve analizi nasıl çalıştıracağınızı öğreneceksiniz.
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 * Azure Data Lake Analytics örneğinizi [Azure Portal](https://portal.azure.com)oluşturun.
 
@@ -452,7 +452,7 @@ Dosya bilgileri görüntülenir:
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop kümeleri
 Azure HDInsight, bulutta yönetilen bir Apache Hadoop, Spark, HBase ve fırtınası hizmetidir. Veri Bilimi Sanal Makinesi Azure HDInsight kümeleriyle kolayca çalışabilirsiniz.
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Portal](https://portal.azure.com)Azure Blob Storage hesabınızı oluşturun. Bu depolama hesabı, HDInsight kümelerine yönelik verileri depolamak için kullanılır.
 
@@ -826,7 +826,7 @@ DSVM 'den Azure Cosmos DB erişmek için aşağıdaki önkoşul adımlarını ku
 
 1. Azure Cosmos DB Python SDK, DSVM üzerinde zaten yüklü. Güncelleştirmek için bir komut isteminden ```pip install pydocumentdb --upgrade``` çalıştırın.
 2. [Azure Portal](https://portal.azure.com)bir Azure Cosmos DB hesabı ve veritabanı oluşturun.
-3. Azure Cosmos DB veri geçiş aracı 'nı [Microsoft Indirme merkezi](https://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) ' nden indirin ve seçtiğiniz bir dizine ayıklayın.
+3. Azure Cosmos DB veri geçiş aracı 'nı [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=53595) ' nden indirin ve seçtiğiniz bir dizine ayıklayın.
 4. Bir [genel Blobun](https://cahandson.blob.core.windows.net/samples/volcano.json) IÇINDE depolanan JSON verilerini (Volcano verileri), geçiş aracına aşağıdaki komut parametreleriyle Azure Cosmos DB içine aktarın. (Azure Cosmos DB Data Migration aracını yüklediğiniz dizinden dtuı. exe ' yi kullanın.) Şu parametrelerle kaynak ve hedef konumu girin:
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`

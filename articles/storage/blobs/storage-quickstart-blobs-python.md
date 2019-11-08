@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0851ee9061fcb01a5e007f0cc4989d6a3febc665
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 397464a70164ef06642a991fb8470ddfa2922647
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605163"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809920"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Hızlı başlangıç: Python için Azure Blob depolama istemci kitaplığı V12
 
@@ -30,6 +30,8 @@ Azure Blob depolama istemci kitaplığını kullanarak şunları yapın:
 * Kapsayıcı silme
 
 [API başvuru belgeleri](/python/api/azure-storage-blob) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [paketi (Python paket dizini)](https://pypi.org/project/azure-storage-blob/) | [örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -267,7 +269,7 @@ with open(download_file_path, "wb") as download_file:
 
 ### <a name="delete-a-container"></a>Kapsayıcı silme
 
-Aşağıdaki kod, [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) yöntemini kullanarak kapsayıcının tamamını kaldırarak uygulamanın oluşturduğu kaynakları temizler. Ayrıca, isterseniz yerel dosyaları silebilirsiniz.
+Aşağıdaki kod, [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) yöntemi kullanılarak kapsayıcının tamamını kaldırarak uygulamanın oluşturduğu kaynakları temizler. Ayrıca, isterseniz yerel dosyaları silebilirsiniz.
 
 Uygulama, blob, kapsayıcı ve yerel dosyaları silmeden önce `input()` çağırarak kullanıcı girişi için duraklatılır. Bu, kaynakların silinmeden önce gerçekten doğru şekilde oluşturulduğunu doğrulamak iyi bir şansınız olur.
 

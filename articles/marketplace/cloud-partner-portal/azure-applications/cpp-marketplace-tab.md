@@ -4,19 +4,20 @@ description: Azure Uygulama teklifinin pazarlama varlıklarını belirlemek içi
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: b5d54e4c6744675da0dea5b095590b71df6d2641
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 967b66a67d51b3a79bcf930ce977af48acc3dd63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962871"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827573"
 ---
 # <a name="azure-application-marketplace-tab"></a>Azure Uygulama marketi sekmesi
 
-Azure uygulamanızı anlatmak ve pazarlama varlıkları sağlamak için Market sekmesini kullanın. Bu sekme aşağıdaki formları içerir: Genel bakış, pazarlama yapıtları, müşteri adayı yönetimi ve yasal.
+Azure uygulamanızı anlatmak ve pazarlama varlıkları sağlamak için Market sekmesini kullanın. Bu sekme aşağıdaki formları içerir: genel bakış, pazarlama yapıtları, müşteri adayı yönetimi ve yasal.
 
 ## <a name="overview-form"></a>Genel Bakış formu
 
@@ -28,12 +29,12 @@ Aşağıdaki tabloda, teklif için bir storefront oluşturmak üzere kullanılac
 
 |      Alan         |    Açıklama    |
 |  ---------------   |  ---------------  |
-| **Başlığın\***        | Teklifin başlığı. Market 'te göze çarpacak olarak görüntülenecektir. En fazla 50 karakter uzunluğunda olur. |
-| **Özetleme\***      | Teklifin kısa özeti. En fazla 100 karakter uzunluğunda olur.           |
+| **Başlık\***        | Teklifin başlığı. Market 'te göze çarpacak olarak görüntülenecektir. En fazla 50 karakter uzunluğunda olur. |
+| **Özet\***      | Teklifin kısa özeti. En fazla 100 karakter uzunluğunda olur.           |
 | **Uzun Özet\*** | Teklifin daha uzun Özeti (ancak Özet ile aynı olabilir). En fazla 256 karakter uzunluğunda olur.           |
-| **Açıklaması\***  | Teklifin açıklaması. En fazla 3000 karakter uzunluğunda olur. &lt;P ,&lt;Em, UL, li ,&lt;olve üst bilgi etiketleri dahil basit HTML biçimlendirmesine izin verilir.&gt; &gt;&gt; &lt;&gt; &lt;&gt;  |
-| **Pazarlama tanımlayıcısı\*** | Bu teklifle ilişkilendirilecek benzersiz bir URL, genellikle kuruluşunuzun ve çözüm adı, maksimum uzunluk 50 karakter içerir. Hizmetiniz için kısa ve kolay bir pazarlama tanımlayıcısı seçin. Bu, bu teklif için Market URL 'Lerinde kullanılacaktır. Örneğin, yayımcı KIMLIĞINIZ "contoso" ise ve pazarlama tanımınız "sampleApp" ise, Azure Marketi 'nde teklifinizin URL 'SI şu şekilde olur https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
-| **Abonelik kimliklerini Önizle\*** | Ön görüntüleyicilerin bir den 100 abonelik tanımlayıcılarından birini ekleyin. Bu beyaz listeye alınan abonelikler, yayımlandıktan sonra, kullanıma hazır hale gelmeden önce, kullanıma alındıktan sonra teklifinizin erişimine sahip olur.          |
+| **Açıklama\***  | Teklifin açıklaması. En fazla 3000 karakter uzunluğunda olur. &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt; ve üst bilgi etiketleri dahil basit HTML biçimlendirmesine izin verilir.  |
+| **Pazarlama tanımlayıcısı\*** | Bu teklifle ilişkilendirilecek benzersiz bir URL, genellikle kuruluşunuzun ve çözüm adı, maksimum uzunluk 50 karakter içerir. Hizmetiniz için kısa ve kolay bir pazarlama tanımlayıcısı seçin. Bu, bu teklif için Market URL 'Lerinde kullanılacaktır. Örneğin, yayımcı KIMLIĞINIZ "contoso" ise ve pazarlama tanımınız "sampleApp" ise, Azure Marketi 'nde teklifinizin URL 'SI https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp olacaktır.  
+| **Abonelik kimliklerini önizleme\*** | Ön görüntüleyicilerin bir den 100 abonelik tanımlayıcılarından birini ekleyin. Bu beyaz listeye alınan abonelikler, yayımlandıktan sonra, kullanıma hazır hale gelmeden önce, kullanıma alındıktan sonra teklifinizin erişimine sahip olur.          |
 | **Faydalı bağlantılar**    | İsteğe bağlı olarak, tekliflerinizin kullanıcıları için destek, belgeler, forumlar vb. gibi çeşitli kaynaklara bağlantı sağlayabilirsiniz.  Belgelerinize en az bir bağlantı eklemeniz önerilir.            |
 | **Önerilen Kategoriler (en fazla 5)\*** | Bir ila beş kategori seçin. Seçili kategoriler, teklifinizi Azure Marketi 'nde ve Azure portalında bulunan ürün kategorileriyle eşlemek için kullanılır. Bunlar, tarayıcı sayfalarında ve ürün ayrıntıları sayfasında gösterilir. |
 |  |  |
@@ -50,12 +51,12 @@ Aşağıdaki tabloda, pazarlama yapıtları açıklanmaktadır.
 |      Alan         |    Açıklama    |
 |  ---------------   |  ---------------  |
 | **Küçük\***        | Küçük logo: PNG biçiminde 40x40 piksel     |
-| **Uzunlukta\***       | Orta Logo: PNG biçiminde 90x90 piksel    |
-| **Miktarda\***        | Büyük Logo: 115x115 piksel biçimli piksel   |
-| **Geniş\***         | Geniş Logo: 255x115 piksel biçimli piksel    |
-| **Hero**           | İsteğe bağlı Hero logosu: PNG biçiminde 815x290 piksel. **Not:** Hero simgesi karşıya yüklendikten sonra silinemez. |
+| **Orta\***       | Orta Logo: PNG biçiminde 90x90 piksel    |
+| **Büyük\***        | Büyük Logo: 115x115 piksel, PNG biçiminde   |
+| **Geniş\***         | Geniş amblem: 255x115 piksel, PNG biçiminde    |
+| **Hero**           | İsteğe bağlı Hero logosu: 815x290 piksel PNG biçiminde. **Note:** Hero simgesi karşıya yüklendikten sonra silinemez. |
 | **Ekran görüntüleri (en fazla 5)** |        Ekran görüntüleri, ürün ayrıntıları sayfanızda görüntülenir. Bu uygulamalar, uygulamanızın ne yaptığını ve nasıl çalıştığını görsel olarak iletmenin iyi bir yoludur. Örneğin, mimari diyagramlarını gösterebilir veya örnek durum çizimlerini kullanabilirsiniz. Ekran görüntüleri isteğe bağlıdır ve SKU başına 5 ile sınırlı olursunuz. Bir ekran görüntüsü eklemek için:<ul><li>Ekran görüntüsü penceresini açmak için **+ ekran görüntüsü Ekle** ' yi seçin</li><li>**Ad** -bir ad/başlık girin (en fazla 100 karakter uzunluğunda).</li><li>**Karşıya yükle** -görüntüyü karşıya yükleyin. Bu, PNG biçiminde olmalıdır ve boyut 533 x 324 pikseldir.</li></ul>           |
-| **Video ekle**      | İsteğe bağlı, videolar ürün ayrıntıları sayfanızda görüntülenir. Uygulamanızın ne yaptığını ve nasıl çalıştığını görsel olarak iletmenin iyi bir yoludur. Video eklemek için: <ul><li>Video penceresini açmak için **+ video ekle** ' yi seçin</li><li>**Ad** -bir ad/başlık girin (en fazla 100 karakter uzunluğunda).</li><li>**Bağlantı** – videoyu barındıran sitenin URL 'sini girin (YouTube veya Vimeo)</li><li>**Küçük resim** – bir küçük resim yükleyin. Bu, PNG biçiminde olmalıdır ve boyut 533 x 324 pikseldir.</li></ul>          |
+| **Video ekle**      | İsteğe bağlı, videolar ürün ayrıntıları sayfanızda görüntülenir. Uygulamanızın ne yaptığını ve nasıl çalıştığını görsel olarak iletmenin iyi bir yoludur. Video eklemek için: <ul><li>Video penceresini açmak için **+ video ekle** ' yi seçin</li><li>**Ad** -bir ad/başlık girin (en fazla 100 karakter uzunluğunda).</li><li>**Bağlantı** -videoyu barındıran sitenin URL 'sini girin (YouTube veya Vimeo)</li><li>**Küçük resim** -küçük resim yükleyin. Bu, PNG biçiminde olmalıdır ve boyut 533 x 324 pikseldir.</li></ul>          |
 |  |  |
 
 
@@ -114,19 +115,19 @@ Lider Yönetimi formu, müşteri adayı yönetimini yapılandırmak için isteğ
 ![Müşteri adayı yönetim hedefini seçin](./media/azureapp-marketplace-leadmgmt.png)
 
 >[!TIP]
->Bu iletiyi görmek için bilgi simgesini seçin: "Müşteri adaylarınızın depolanacağı sistemi seçin. CRM sisteminize [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) nasıl bağlanacağınızı öğrenin. "
+>Bu iletiyi görmek için bilgi simgesini seçin: "müşteri adaylarınızın depolanacağı sistemi seçin. CRM sisteminize [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) nasıl bağlanacağınızı öğrenin. "
 
 Daha fazla bilgi için bkz. [müşteri adaylarını yapılandırma](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads).
 
 
-## <a name="legal"></a>Yasal
+## <a name="legal"></a>Yasal Bilgiler
 
 Her teklif için gereken yasal belgeleri sağlamak için yasal formu kullanın.
 
 Şu bilgileri belirtin:
 
-- **Gizlilik ilkesi URL\* 'si** – uygulamanızın gizlilik ilkesine bir bağlantı girin.
-- **Kullanımkoşulları\***  – uygulamanız için kullanım koşulları 'nı girin. Müşterilerinizin uygulamanızı deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
+- **Gizlilik ILKESI URL\*** -uygulamanızın gizlilik ilkesine bir bağlantı girin.
+- **Kullanım koşulları\*** -uygulamanız için kullanım koşulları 'nı girin. Müşterilerinizin uygulamanızı deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
 
 ![Yasal form](./media/azureapp-marketplace-legal.png)
 

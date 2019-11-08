@@ -1,19 +1,20 @@
 ---
 title: Azure Marketi 'nde yayımlama seçeneğinizi belirleme | Azure Marketi
-description: Bu makalede, uygulamalarını Azure Market'te yayımlama işlemini anlama çalışılırken yayımlama gereksinimleri iş ortakları ve uygunluk ölçütlerini açıklanır.
+description: Bu makalede, uygulamaları Azure Marketi 'Nde nasıl yayımlayacağınızı anlamaya çalışan uygunluk ölçütleri ve yayımlama gereksinimleri iş ortakları açıklanır.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 8a06573e6bcb2d5a6c6c97ad19e168f9c71aaa13
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 43ca74faadf7890f1274afc4905af79237918f4a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308228"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827786"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Teklif türüne göre yayımlama kılavuzu
 
@@ -46,6 +47,6 @@ Son olarak, çoklu oturum açma gereksinimleri hakkında daha fazla bilgi için 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-*   Seçme ve yapılandırma teklifinizin sonlandırmak için Teklif türü bölümünde yayımlama seçeneklerini uygunluk gereksinimlerini gözden geçirin.
-*   Yayımlama modelleri, çözümünüzü bir teklif türüne ve yapılandırmayı eşlemelerini nasıl ilişkin örnekler için mağaza tarafından gözden geçirin.
+*   Teklifinizin seçimini ve yapılandırmasını tamamlamak için teklif türüne göre yayımlama seçeneklerinde uygunluk gereksinimlerini gözden geçirin.
+*   Çözümünüzün bir teklif türü ve yapılandırmaya nasıl eşlendiğini gösteren örnekler için storefront göre yayımlama düzenlerini gözden geçirin.
 

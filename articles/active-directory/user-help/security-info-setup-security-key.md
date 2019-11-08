@@ -1,5 +1,5 @@
 ---
-title: Güvenlik anahtarı (Önizleme) kullanmak için güvenlik bilgilerini ayarlama-Azure Active Directory | Microsoft Docs
+title: Güvenlik anahtarı için güvenlik bilgilerini ayarlama (Önizleme)-Azure AD
 description: Hızlı kimlik çevrimiçi (FIDO2) güvenlik anahtarı kullanarak kimliğinizi doğrulamak için güvenlik bilgilerinizi ayarlama.
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47ae7de87efd787b7d3cba14a33688c4b29637e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160714"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803781"
 ---
-# <a name="set-up-security-info-to-use-a-security-key-preview"></a>Güvenlik anahtarı kullanmak için güvenlik bilgilerini ayarlama (Önizleme)
+# <a name="set-up-security-info-preview-for-a-security-key"></a>Güvenlik anahtarı için güvenlik bilgilerini ayarlama (Önizleme)
 
 Güvenlik anahtarlarını, kuruluşunuzda bir passwordless oturum açma yöntemi olarak kullanabilirsiniz. Güvenlik anahtarı, iş veya okul hesabınızda oturum açmak için benzersiz bir PIN ile kullanılan fiziksel bir cihazdır. Güvenlik anahtarlarına fiziksel cihaz ve yalnızca bildiğiniz bir şey gerektiğinden, bu, Kullanıcı adı ve paroladan daha güçlü bir kimlik doğrulama yöntemi olarak kabul edilir.
 

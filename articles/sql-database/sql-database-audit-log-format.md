@@ -1,5 +1,5 @@
 ---
-title: SQL veritabanı denetim günlüğü biçimi
+title: Denetim Günlüğü Biçimi
 description: SQL veritabanı denetim günlüklerinin nasıl yapılandırıldığını anlayın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 5befd15beba6a5c8071a6f5a01e34dc109fd118a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 389404f59b5a0cba1acd7aa097ddd3dd929d8082
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691209"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821986"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL veritabanı denetim günlüğü biçimi
 
@@ -48,14 +48,14 @@ Denetim olayları denetim yapılandırması sırasında tanımlanan Log Analytic
 | action_name | action_name_s | Eylemin adı | Yok | string |
 | additional_information | additional_information_s | XML olarak depolanan olayla ilgili ek bilgiler | nvarchar (4000) | string |
 | affected_rows | affected_rows_d | Sorgudan etkilenen satır sayısı | bigint | int |
-| Uygulama_adı | application_name_s| İstemci uygulamasının adı | nvarchar (128) | string |
+| application_name | application_name_s| İstemci uygulamasının adı | nvarchar (128) | string |
 | audit_schema_version | audit_schema_version_d | Always 1 | int | int |
 | class_type | class_type_s | Denetim üzerinde gerçekleştiği denetlenebilir varlık türü | varchar (2) | string |
 | class_type_desc | class_type_description_s | Denetim üzerinde gerçekleştiği denetlenebilir varlığın açıklaması | Yok | string |
 | client_ip | client_ip_s | İstemci uygulamasının kaynak IP 'si | nvarchar (128) | string |
 | connection_id | Yok | Sunucudaki bağlantının KIMLIĞI | 'INI | Yok |
 | data_sensitivity_information | data_sensitivity_information_s | Veritabanındaki sınıflandırılan sütunlara göre denetlenen sorgu tarafından döndürülen bilgi türleri ve duyarlılık etiketleri. [Azure SQL veritabanı veri bulma ve sınıflandırma](sql-database-data-discovery-and-classification.md) hakkında daha fazla bilgi edinin | nvarchar (4000) | string |
-| veritabanı | database_name_s | Eylemin gerçekleştiği veritabanı bağlamı | döndürmeli | string |
+| database_name | database_name_s | Eylemin gerçekleştiği veritabanı bağlamı | döndürmeli | string |
 | database_principal_id | database_principal_id_d | İşlemin gerçekleştirildiği veritabanı kullanıcı bağlamının KIMLIĞI | int | int |
 | database_principal_name | database_principal_name_s | Eylemin gerçekleştirildiği veritabanı kullanıcı bağlamının adı | döndürmeli | string |
 | duration_milliseconds | duration_milliseconds_d | Milisaniye cinsinden sorgu yürütme süresi | bigint | int |
@@ -85,7 +85,7 @@ Denetim olayları denetim yapılandırması sırasında tanımlanan Log Analytic
 | target_server_principal_name | target_server_principal_name_s | Eylemin hedef oturum açması. Geçerli değilse NULL | döndürmeli | string |
 | target_server_principal_sid | target_server_principal_sid_s | Hedef oturum açmanın SID 'SI. Geçerli değilse NULL | ikili | string |
 | transaction_id | transaction_id_d | Yalnızca SQL Server (2016 ile başlayarak)-Azure SQL DB için 0 | bigint | int |
-| user_defined_event_id | user_defined_event_id_d | Sp_audit_write öğesine bir bağımsız değişken olarak geçirilen kullanıcı tanımlı olay kimliği. Sistem olayları için NULL (varsayılan) ve Kullanıcı tanımlı olay için sıfır olmayan değer. Daha fazla bilgi için bkz. [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
+| user_defined_event_id | user_defined_event_id_d | Sp_audit_write bir bağımsız değişken olarak Kullanıcı tanımlı olay kimliği geçirildi. Sistem olayları için NULL (varsayılan) ve Kullanıcı tanımlı olay için sıfır olmayan değer. Daha fazla bilgi için bkz. [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
 | user_defined_information | user_defined_information_s | Sp_audit_write için bir bağımsız değişken olarak geçirilen kullanıcı tanımlı bilgiler. Sistem olayları için NULL (varsayılan) ve Kullanıcı tanımlı olay için sıfır olmayan değer. Daha fazla bilgi için bkz. [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar (4000) | string |
 
 ## <a name="next-steps"></a>Sonraki Adımlar

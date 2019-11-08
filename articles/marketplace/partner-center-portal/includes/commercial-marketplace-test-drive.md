@@ -7,6 +7,7 @@ author: qianw211
 manager: evansma
 editor: ''
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
@@ -14,12 +15,12 @@ ms.workload: identity
 ms.date: 08/13/2019
 ms.author: v-qiwe
 ms.custom: include file
-ms.openlocfilehash: ee4d253eaa50b4299f4b912ccacbd50307d6fdc5
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 831e3330126d82795cece128c28cb96b7199d69a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72601180"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825577"
 ---
 **Test sürücüsü** sekmesi, müşterilerin satın alma işlemine geçmeden önce teklifinizi denemesini sağlayacak bir tanıtım (veya "test sürücüsü") ayarlamanıza olanak sağlar. [Test sürücüsü nedir?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)makalesinde daha fazla bilgi edinin. Teklifiniz için artık bir test sürücüsü sağlamak istemiyorsanız, **teklif kurulumu** sayfasına dönün ve **Test sürücüsünü etkinleştir**' i işaretleyin.
 
@@ -55,9 +56,9 @@ Microsoft, bu test sürücüsü türünü kullanarak hizmet sağlamayı ve dağ�
 
 - **Sınama sürücüsü süresi** (zorunlu): saat sayısını tanımlayarak test sürücüsünün etkin kalacağı sürenin uzunluğunu girin. Bu süre dolduktan sonra, oturum sona erdir ve artık lisanslarınızdan birini tüketmez. Teklifinizin karmaşıklığına bağlı olarak 2-24 saat arasında bir değer öneririz. Bu süre yalnızca birkaç saat (örn. "2" saat, "1,5" geçerli değildir) ile ayarlanabilir.  Kullanıcı zaman aşımına uğrar ve test sürücüsüne yeniden erişmek istediğinizde yeni bir oturum isteyebilir.
 
-- **Örnek URL** (gerekli): müşterinin test sürücüsüne başlayacağı URL. Genellikle uygulamanızı örnek verilerle çalıştıran Dynamics 365 örneğinizin URL 'SI (ör. https://testdrive.crm.dynamics.com) ).
+- **Örnek URL** (gerekli): müşterinin test sürücüsüne başlayacağı URL. Genellikle uygulamanızı örnek verilerle çalıştıran Dynamics 365 örneğinizin URL 'SI (ör. https://testdrive.crm.dynamics.com).
 
-- **Örnek Web API URL 'si** (gerekli): Microsoft 365 hesabınızda oturum açarak ve **Ayarlar** \&Gt;, Dynamics 365 ÖRNEĞINIZ IÇIN Web API URL 'sini alın **Özelleştirme** \&GT; **Geliştirici kaynakları** \&GT; **Örnek Web API 'si (hizmet kök URL 'si)** , burada bulunan URL 'yi kopyalayın (örn. https://testdrive.crm.dynamics.com/api/data/v9.0).
+- **Örnek Web API URL 'si** (gerekli): Microsoft 365 hesabınızda oturum açarak ve **Ayarlar** ' a giderek, Dynamics 365 ÖRNEĞINIZ IÇIN Web apı URL 'sini alın \&gt; **Özelleştirme** \&gt; **Geliştirici kaynakları** \&gt; **Örnek Web API 'si (hizmet kök URL 'si)** , burada bulunan URL 'yi kopyalayın (ör. https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Rol adı** (gerekli): özel Dynamics 365 test sürücünüzde tanımladığınız güvenlik rolü adını sağlayın. Bu, kullanıcıya test sürücüleri sırasında atanır (örn. Test-Drive-Role).
 
@@ -87,7 +88,7 @@ Test sürücüsünü sizin adınıza dağıtmak için lütfen benzersiz ve benze
 
 - **Azure ABONELIK kimliği** (Azure Resource Manager ve Logic Apps için gereklidir): Azure hesap hizmetlerinizi kaynak kullanımı raporlama ve faturalama için erişim izni vermek üzere abonelik kimliğini girin. Henüz bir tane yoksa, test sürücüleri için kullanmak üzere [ayrı bir Azure aboneliği oluşturmayı](https://docs.microsoft.com/azure/billing/billing-create-subscription) düşünmeniz önerilir. [Azure Portal](https://portal.azure.com/) oturum açarak ve sol taraftaki menüdeki **abonelikler** SEKMESINE giderek Azure abonelik kimliğinizi bulabilirsiniz. Sekmeyi seçtiğinizde, abonelik KIMLIĞINIZ görüntülenir (örneğin, "a83645ac-1234-5AB6-345-1h234g764ghty").
 
-- **Azure AD KIRACı kimliği** (gerekli): Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **Özellikler** ' i seçin, sonra listelenen **dizin kimliği** numarasını (ör. 50c464d3-4930-494c-963c-1e951d15360e) arayın. Ayrıca, etki alanı adı URL 'nizi kullanarak kuruluşunuzun kiracı KIMLIĞINI: [https://www.whatismytenantid.com](https://www.whatismytenantid.com)' de arayabilirsiniz.
+- **Azure AD KIRACı kimliği** (gerekli): Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **Özellikler** ' i seçin, sonra listelenen **dizin kimliği** numarasını (ör. 50c464d3-4930-494c-963c-1e951d15360e) arayın. Kuruluşunuzun kiracı KIMLIĞINI Ayrıca, etki alanı adı URL 'nizi kullanarak da arayabilirsiniz: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
 - **Azure AD kiracı adı** (dinamik 365 için gereklidir): Azure ACTIVE DIRECTORY (ad) adınızı girin. Bu adı bulmak için sağ üst köşedeki [Azure Portal](https://portal.azure.com/)oturum açın, kiracı adınız hesap adınızın altında listelenecektir.
 

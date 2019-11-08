@@ -1,5 +1,5 @@
 ---
-title: Visual Studio 'Yu .NET ile kullanma C# ve Azure SQL veritabanı 'nı sorgulama
+title: Visual Studio 'Yu .NET ile ve C# sorgulamak için kullanın
 description: Azure SQL veritabanına bağlanan ve Transact C# -SQL deyimleriyle sorgulayan bir uygulama oluşturmak Için Visual Studio 'yu kullanın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 42b7f553d88e130e0958bd38e4e5ff308b74e81f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b9bc7d077acd3e6e3716cf0a012205e6de54a4b7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690970"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827066"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Hızlı başlangıç: Azure SQL C# veritabanına bağlanmak ve veritabanını sorgulamak için .net ve Visual Studio 'da kullanın
 

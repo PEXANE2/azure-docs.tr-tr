@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: fa3eb39ff7ac0df6856fc9fd9e07d720a306fa85
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 18f4053a2f8b1b5c880b46cf6eeb46c0dbf97f15
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607645"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825391"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı V12
 
@@ -30,6 +30,8 @@ ms.locfileid: "73607645"
 * Kapsayıcı silme
 
 [API başvuru belgeleri](/dotnet/api/azure.storage.blobs) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [paketi (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/12.0.0) | [örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -270,7 +272,7 @@ string downloadFilePath = localFilePath.Replace(".txt", "DOWNLOAD.txt");
 Console.WriteLine("\nDownloading blob to\n\t{0}\n", downloadFilePath);
 
 // Download the blob's contents and save it to a file
-BlobDownloadInfo download = await blob.DownloadAsync();
+BlobDownloadInfo download = await blobClient.DownloadAsync();
 
 using FileStream downloadFileStream = File.OpenWrite(downloadFilePath);
 await download.Content.CopyToAsync(downloadFileStream);

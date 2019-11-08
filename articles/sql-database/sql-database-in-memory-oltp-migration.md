@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: 82b24b51a103d31bf20bbb7a9fc304095be523d5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0f10936867c101c07cc8d29d68dc45021bfad1b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689829"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810300"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>SQL veritabanında uygulama performansınızı geliştirmek için bellek Içi OLTP kullanın
 
@@ -94,9 +94,9 @@ Bu geçiş seçeneğini kullanmak için:
    
    * SSMS 'de tablo düğümünüz ' a sağ tıklayın.
    * **Yeni sorgu penceresinde** > **Için > oluştur** **olarak betik tablosu** ' na tıklayın.
-3. Betik penceresinde, CREATE TABLE bildirimine (MEMORY_OPTIMIZED = ON) Ile ekleyin.
+3. Betik penceresinde, CREATE TABLE bildirimine (MEMORY_OPTIMIZED = ON) ekleyin.
 4. KÜMELENMIŞ bir dizin varsa, KÜMELENMEMIŞ olarak değiştirin.
-5. SP_RENAME kullanarak var olan tabloyu yeniden adlandırın.
+5. SP_RENAME kullanarak mevcut tabloyu yeniden adlandırın.
 6. Düzenlediğiniz CREATE TABLE betiğini çalıştırarak tablonun bellek için iyileştirilmiş yeni kopyasını oluşturun.
 7. INSERT...SELECT * INTO:... kullanarak verileri bellek için iyileştirilmiş tablonuza kopyalayın Seç:
 
@@ -133,7 +133,7 @@ CREATE PROCEDURE schemaname.procedurename
         END;
 ```
 
-* TRANSACTION_ISOLATION_LEVEL için anlık görüntü, yerel koda derlenmiş saklı yordamın en yaygın değeridir. Ancak, diğer değerlerin bir alt kümesi de desteklenir:
+* TRANSACTION_ISOLATION_LEVEL için, anlık görüntü, yerel koda derlenmiş saklı yordamın en yaygın değeridir. Ancak, diğer değerlerin bir alt kümesi de desteklenir:
   
   * YINELENEBILIR OKUMA
   * SERI hale GETIRILEBILIR

@@ -1,5 +1,5 @@
 ---
-title: Kişisel Microsoft hesaplarınızı Microsoft Authenticator uygulamasına ekleyin-Azure Active Directory | Microsoft Docs
+title: Bir kimlik doğrulayıcı uygulamasına kişisel Microsoft hesabı ekleme-Azure AD
 description: Outlook.com veya Xbox LIVE gibi kişisel Microsoft hesaplarınızı, iki öğeli doğrulama için Microsoft Authenticator uygulamasına ekleme.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf4629ca97abc5d4ce508f7078f4691467ba249
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9ca01aad76bfbeba0cf56be8ee74287a79f6346e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616074"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820249"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>Kişisel Microsoft hesaplarınızı ekleyin
 
@@ -39,13 +39,13 @@ Outlook.com ve Xbox gibi kişisel Microsoft hesaplarınızı, hem standart iki �
 
 ### <a name="turn-on-two-factor-verification"></a>İki öğeli doğrulamayı açma
 
-1. Bilgisayarınızda [güvenlik temel bilgileri](https://account.microsoft.com/security) sayfanıza gidin ve kişisel Microsoft hesabı oturum açın. Örneğin: alain@outlook.com.
+1. Bilgisayarınızda [güvenlik temel bilgileri](https://account.microsoft.com/security) sayfanıza gidin ve kişisel Microsoft hesabı oturum açın. Örneğin, alain@outlook.com.
 
 2. **Güvenlik temel bilgileri** sayfasının en altında, **daha fazla güvenlik seçenekleri** bağlantısını seçin.
 
     !["Daha fazla güvenlik seçenekleri" bağlantısı vurgulanmış güvenlik temelleri sayfası](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
 
-3. **İki adımlı doğrulama** bölümüne gidin ve özelliği açmak için seçin. Artık kişisel hesabınızla kullanmak istemiyorsanız, buradan da kapatabilirsiniz.
+3. **İki adımlı doğrulama** bölümüne gidin ve **özelliği açmak için seçin.** Artık kişisel hesabınızla kullanmak istemiyorsanız, buradan da kapatabilirsiniz.
 
 ### <a name="add-your-microsoft-account-to-the-app"></a>Microsoft hesabı uygulamaya ekleyin
 
@@ -57,7 +57,7 @@ Outlook.com ve Xbox gibi kişisel Microsoft hesaplarınızı, hem standart iki �
 
 3. **Hesap Ekle** sayfasında **kişisel hesap**' ı seçin.
 
-4. Kişisel hesabınızda, uygun e-posta adresini (örneğin alain@outlook.com,) kullanarak oturum açın ve ardından **İleri**' yi seçin.
+4. Uygun e-posta adresini (örneğin, alain@outlook.com) kullanarak kişisel hesabınızda oturum açın ve ardından **İleri**' yi seçin.
 
     >[!Note]
     >Kişisel bir Microsoft hesabı yoksa, burada bir tane oluşturabilirsiniz.

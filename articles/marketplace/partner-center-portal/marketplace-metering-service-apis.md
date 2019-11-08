@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 35e6c61a8e8537035d70323c85dfc7a76f87cbcd
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 36ca95191e0e6422bd93360b98243393acad8147
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869566"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825485"
 ---
 # <a name="marketplace-metering-service-apis"></a>Market ölçüm hizmeti API’leri
 
@@ -20,7 +21,7 @@ Kullanım olayı API 'SI, satın alınan belirli bir varlık için kullanım ola
 
 ## <a name="usage-event"></a>Kullanım olayı
 
-**GÖNDERİ**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Gönderi**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -30,11 +31,11 @@ Kullanım olayı API 'SI, satın alınan belirli bir varlık için kullanım ola
 
 *İstek üst bilgileri:*
 
-| İçerik türü       | `application/json`    |
+| içerik türü       | `application/json`    |
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
-| `authorization`   | [JSON Web belirteci (JWT) taşıyıcı belirtecini al.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Not: HTTP isteğini yaparken, başvurulan bağlantıdan alınan `Bearer` belirtecin öneki. |
+| `authorization`   | [JSON Web belirteci (JWT) taşıyıcı belirtecini al.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Note: HTTP isteği yapıldığında, önek başvurulan bağlantıdan alınan belirtece `Bearer`. |
 
 *İsteyen*
 
@@ -48,9 +49,9 @@ Kullanım olayı API 'SI, satın alınan belirli bir varlık için kullanım ola
 }
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Yanıtlar
 
-Kodudur 200<br>
+Kod: 200<br>
 Tamam 
 
 ```json
@@ -66,7 +67,7 @@ Tamam
 }
 ```
 
-Kodudur 400 <br>
+Kod: 400 <br>
 Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman aşımına uğradı
 
 ```json
@@ -84,7 +85,7 @@ Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman a
 }
 ```
 
-Kodudur 403<br>
+Kod: 403<br>
 Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman aşımına uğradı
 
 ```json
@@ -94,8 +95,8 @@ Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman a
 }
 ```
 
-Kodudur 409<br>
-Kullanım kaynak KIMLIĞI için kullanım çağrısını ve zaten var olan etkin kullanımı aldığımızda çakışma. Yanıt, kabul edilen `additionalInfo` ileti hakkında bilgi içeren alanı içerecektir.
+Kod: 409<br>
+Kullanım kaynak KIMLIĞI için kullanım çağrısını ve zaten var olan etkin kullanımı aldığımızda çakışma. Yanıt, kabul edilen ileti hakkında bilgi içeren `additionalInfo` alanı içerecektir.
 
 ```json
 {
@@ -120,7 +121,7 @@ Toplu kullanım olayı API 'SI, bir kerede birden fazla satın alınan varlık i
 >[!Note]
 >Microsoft 'un ticari marketi 'nde birden çok SaaS teklifi kaydedebilirsiniz. Her kayıtlı SaaS teklifinin, kimlik doğrulama ve yetkilendirme amaçları için kayıtlı benzersiz bir Azure AD uygulaması vardır. Toplu iş içinde Yayınlanan olaylar, teklifi kaydetme sırasında aynı Azure AD uygulamasıyla sunulan tekliflere ait olmalıdır.
 
-**GÖNDERİ:** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
+**Gönderi:** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -130,11 +131,11 @@ Toplu kullanım olayı API 'SI, bir kerede birden fazla satın alınan varlık i
 
 *İstek üst bilgileri:*
 
-| İçerik türü       | `application/json`       |
+| içerik türü       | `application/json`       |
 | ------------------ | ------ |
 | `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanmış olur. |
-| `authorization`      | [JSON Web belirteci (JWT) taşıyıcı belirtecini al.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Not: HTTP isteğini yaparken, başvurulan bağlantıdan alınan `Bearer` belirtecin öneki.  |
+| `authorization`      | [JSON Web belirteci (JWT) taşıyıcı belirtecini al.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Note: HTTP isteği yapıldığında, önek başvurulan bağlantıdan alınan belirtece `Bearer`.  |
 
 *İsteyen*
 ```json
@@ -157,9 +158,9 @@ Toplu kullanım olayı API 'SI, bir kerede birden fazla satın alınan varlık i
   ]
 }
 ```
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Yanıtlar
 
-Kodudur 200<br>
+Kod: 200<br>
 Tamam
 
 ```json
@@ -206,7 +207,7 @@ Tamam
 | `InvalidQuantity` | Geçirilen miktar 0 <. |
 | `BadArgument` | Giriş eksik veya hatalı biçimlendirilmiş. |
 
-Kodudur 400<br>
+Kod: 400<br>
 Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman aşımına uğradı
 
 ```json
@@ -223,7 +224,7 @@ Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman a
   "code": "BadArgument"
 }
 ```
-Kodudur 403<br>
+Kod: 403<br>
 Kullanıcının bu çağrıyı yapması yetkilendirilmemiş
 
 ```json

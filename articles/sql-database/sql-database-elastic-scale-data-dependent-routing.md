@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı ile verilere bağımlı yönlendirme
+title: Verilere bağımlı yönlendirme
 description: Azure SQL veritabanı 'nda parçalı veritabanlarının bir özelliği olan verilere bağımlı yönlendirme için .NET uygulamalarında ShardMapManager sınıfını kullanma
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 319f2744cd437aea51a05592cd7a26f8b58fe761
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e5212ba7ed349f3596047fc0c027829b8667ddc5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690280"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823675"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Bir sorguyu uygun veritabanına yönlendirmek için veriye bağımlı yönlendirmeyi kullanma
 
 **Veriye bağımlı yönlendirme** , isteği uygun bir veritabanına yönlendirmek için bir sorgudaki verileri kullanma olanağıdır. Verilere bağımlı yönlendirme, parçalı veritabanlarıyla çalışırken temel bir modeldir. İstek bağlamı, özellikle de parçalama anahtarı sorgunun bir parçası değilse isteği yönlendirmek için de kullanılabilir. Veriye bağlı yönlendirmeyi kullanan bir uygulamadaki her bir özel sorgu veya işleme, istek başına tek bir veritabanına erişmek için kısıtlanır. Azure SQL veritabanı elastik araçları için bu yönlendirme, **Shardmapmanager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) sınıfıyla gerçekleştirilir.
 
-Uygulamanın, parçalı ortamdaki farklı veri dilimleriyle ilişkili çeşitli bağlantı dizelerini veya DB konumlarını izlemesi gerekmez. Bunun yerine, parça [eşleme Yöneticisi](sql-database-elastic-scale-shard-map-management.md) , verileri, parça haritadaki verilere ve uygulama isteğinin hedefi olan parçalı anahtar değerine göre gerektiğinde doğru veritabanlarına açar. Anahtar genellikle, veritabanı isteğinin temel parametresi olan *customer_id*, *tenant_id*, *date_key*veya diğer belirli tanımlayıcılardır.
+Uygulamanın, parçalı ortamdaki farklı veri dilimleriyle ilişkili çeşitli bağlantı dizelerini veya DB konumlarını izlemesi gerekmez. Bunun yerine, parça [eşleme Yöneticisi](sql-database-elastic-scale-shard-map-management.md) , verileri, parça haritadaki verilere ve uygulama isteğinin hedefi olan parçalı anahtar değerine göre gerektiğinde doğru veritabanlarına açar. Anahtar genellikle *customer_id*, *tenant_id*, *date_key*veya veritabanı isteğinin temel bir parametresi olan başka bir özel tanımlayıcı olur.
 
 Daha fazla bilgi için bkz. [veri bağımlı yönlendirme ile SQL Server genişletme](https://technet.microsoft.com/library/cc966448.aspx).
 

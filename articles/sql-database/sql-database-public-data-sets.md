@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: dc8b2a00882abc2e88b357d5778eaf96ec71b1bd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687577"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821274"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Test ve prototipleme için ortak veri kümeleri
 
@@ -42,7 +42,7 @@ Depolama ve analiz hizmetleri ile çözümlerini prototip ve test etmek için ku
 | [New York City TAXI verileri](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "TAXI seyahat kayıtları, çekme ve geri alma tarihleri/saatleri, çekme ve Dropoff konumları, seyahat mesafeleri, listelenen fareler, ücret türleri, ödeme türleri ve sürücü tarafından bildirilen yolcular sayımlarını yakalayan alanları içerir." | Veri kümeleri, aya göre CSV dosyalarıdır. |
 | [Microsoft Research veri kümeleri-"araştırma için veri bilimi"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | İnsan bilgisayar etkileşimini, ses/video, veri araştırma/bilgi alımı, Jeo-uzamsal/konum, doğal dil işleme ve Robotics/bilgisayar vizyonu kapsayan birden çok veri kümesi. | Veri kümeleri, indirme için daraltılmış çeşitli biçimlerde bulunur. |
 | [Genel genom verileri](https://www.completegenomics.com/public-data/) | "Tüm insan genistanlarından oluşan çeşitli veri kümesi, herhangi bir genomik çalışmayı geliştirmek için herkese açık kullanıma sunuldu..." Sağlayıcı, tam Genomiks, özel bir for-kar şirketi. | Veri kümeleri, ayıkladıktan sonra UNIX metin biçiminde. Analiz araçları da kullanılabilir. |
-| [Bilim verileri bulut verilerini aç](https://www.opensciencedatacloud.org/) | "Açık bilim veri bulutu, terabayttan ve petab, bilimsel veri kümelerini depolama, paylaşma ve çözümleme için kaynaklarla bilimsel bir topluluk sağlar."| Veri kümeleri çeşitli biçimlerde. |
+| [Bilim verileri bulut verilerini aç](https://www.opensciencedatacloud.org/projects/) | "Açık bilim veri bulutu, terabayttan ve petab, bilimsel veri kümelerini depolama, paylaşma ve çözümleme için kaynaklarla bilimsel bir topluluk sağlar."| Veri kümeleri çeşitli biçimlerde. |
 | [Küresel iklim verileri-Worldclid](https://worldclim.org/) | "Worldclid, yaklaşık 1 km2 üzerinde uzamsal bir çözünürlükte küresel bir klima katmanları (gridupsal veri) kümesidir. Bu veriler, eşleme ve uzamsal modelleme için kullanılabilir. " | Bu dosyalar Jeo uzamsal verileri içerir. Daha fazla bilgi için bkz. [veri biçimi](https://worldclim.org/formats1). |
 | [İnsan topluluğu hakkındaki veriler-GDELT projesi](https://www.gdeltproject.org/data.html) | "GDELT projesi en büyük, en kapsamlı ve en yüksek çözünürlüklü açık insan topluluğu veritabanı veritabanıdır." | Ham veri dosyaları CSV biçimindedir. |
 | [Criteo 'dan makine öğrenimi için tıklama tahmin verileri tanıtımı](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Genel olarak ML veri kümesi yayınlandı." Daha fazla bilgi için bkz. [Criteo 'ın 1 TB 'ı tahmin veri kümesi](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |

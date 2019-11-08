@@ -1,5 +1,5 @@
 ---
-title: Bekletme ilkesiyle zamana bağlı tablolardaki geçmiş verileri yönetme
+title: Zamana bağlı tablolardaki geçmiş verileri yönetme
 description: Geçmiş verileri denetiminizin altında tutmak için zamana bağlı saklama ilkesini nasıl kullanacağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 2568f3be96604856d5353f7f5f94926162880bfd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3c2460c6f5e0905f45106148ecc3e8a949cf221f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687004"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820680"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Bekletme ilkesiyle zamana bağlı tablolardaki geçmiş verileri yönetme
 
@@ -41,7 +41,7 @@ SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ```
 
-Veritabanı bayrağı **is_temporal_history_retention_enabled** , varsayılan olarak açık olarak ayarlanmıştır, ancak KULLANıCıLAR onu alter database ifadesiyle değiştirebilir. Ayrıca, bir [süre geri yükleme](sql-database-recovery-using-backups.md) işleminden sonra OTOMATIK olarak kapalı olarak ayarlanır. Veritabanınız için zamana bağlı geçmiş bekletme temizleme işlemini etkinleştirmek için aşağıdaki ifadeyi yürütün:
+Veritabanı bayrağı **is_temporal_history_retention_enabled** varsayılan olarak açık olarak ayarlanmıştır, ancak KULLANıCıLAR onu alter database ifadesiyle değiştirebilir. Ayrıca, bir [süre geri yükleme](sql-database-recovery-using-backups.md) işleminden sonra OTOMATIK olarak kapalı olarak ayarlanır. Veritabanınız için zamana bağlı geçmiş bekletme temizleme işlemini etkinleştirmek için aşağıdaki ifadeyi yürütün:
 
 ```sql
 ALTER DATABASE <myDB>
@@ -83,7 +83,7 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 ```
 
 > [!IMPORTANT]
-> SYSTEM_VERSIONING 'in OFF olarak ayarlanması, saklama süresi değerini *korumaz* . HISTORY_RETENTION_PERIOD olmadan açık olarak SYSTEM_VERSIONING ayarı, sonsuz saklama süresi içinde açıkça sonuçlanır.
+> SYSTEM_VERSIONING kapalı olarak ayarlamak *,* saklama süresi değerini korumaz. SYSTEM_VERSIONING HISTORY_RETENTION_PERIOD olmadan açık olarak ayarlanması, sonsuz saklama süresi içinde açıkça sonuçlanır.
 
 Bekletme ilkesinin geçerli durumunu gözden geçirmek için, tek tek tablolar için bekletme dönemleriyle veritabanı düzeyinde zamana bağlı saklama etkinleştirme bayrağını birleştiren aşağıdaki sorguyu kullanın:
 
@@ -120,9 +120,9 @@ Rowstore kümelenmiş dizini olan tablolar için temizleme görevi, SYSTEM_TIME 
 
 Azure SQL veritabanı tarafından oluşturulan varsayılan geçmiş tablosunun, bekletme ilkesi için uyumlu olan kümelenmiş dizine zaten sahip olduğunu fark etmek önemlidir. Sınırlı saklama süresine sahip bir tabloda bu dizini kaldırmaya çalışırsanız, işlem aşağıdaki hatayla başarısız olur:
 
-*Msg 13766, Level 16, durum 1 <br></br> ' Websiteuserınfohistory. IX_WebsiteUserInfoHistory ' kümelenmiş dizinini düşürülemiyor çünkü eski verilerin otomatik temizlenmesi için kullanılıyor. Bu dizini bırakmalısınız, ilgili sistem sürümü tutulan zamana bağlı tabloda HISTORY_RETENTION_PERIOD ayarını sonsuz olarak ayarlamayı düşünün.*
+*Msg 13766, Level 16, durum 1 <br></br> ' Websiteuserınfohistory. IX_WebsiteUserInfoHistory ' kümelenmiş dizinini, eski verilerin otomatik temizlemesi için kullanıldığından bırakamıyor. Bu dizini bırakmalısınız, ilgili sistem sürümü tutulan zamana bağlı tabloda HISTORY_RETENTION_PERIOD sonsuz olarak ayarlamayı düşünün.*
 
-Geçmiş satırları artan düzende (dönem sonuna kadar sıralanır) eklenirse, bu durum, geçmiş tablosunun SYSTEM_VERSIONIOING mekanizması tarafından özel olarak doldurulduğu her zaman büyük/küçük bir süre sonra, kümelenmiş columnstore dizininde Temizleme işlemi en iyi şekilde gerçekleşir. Geçmiş tablosundaki satırlar dönem sonuna göre sıralı değilse (mevcut geçmiş verileri geçirdiyseniz bu durum söz konusu olabilir), en iyi şekilde elde edilen B-Tree rowstore dizininin üstünde kümelenmiş columnstore dizinini yeniden oluşturmanız gerekir mının.
+Geçmiş satırları artan düzende (dönem sonuna kadar sıralanır) eklenirse ve bu durum, geçmiş tablosu SYSTEM_VERSIONIOING mekanizması tarafından özel olarak doldurulduğu zaman büyük/küçük harf olarak, kümelenmiş columnstore dizininde Temizleme işlemi en iyi şekilde gerçekleşir. Geçmiş tablosundaki satırlar dönem sonuna göre sıralı değilse (mevcut geçmiş verileri geçirdiyseniz bu durum söz konusu olabilir), en iyi şekilde elde edilen B-Tree rowstore dizininin üstünde kümelenmiş columnstore dizinini yeniden oluşturmanız gerekir mının.
 
 Geçmiş tablosunda, sistem sürümü oluşturma işlemi tarafından doğal olarak uygulanan satır gruplarındaki sıralamayı değiştirebileceğinden, sınırlı saklama süresine sahip kümelenmiş columnstore dizinini yeniden oluşturmayı önleyin. Geçmiş tablosunda kümelenmiş columnstore dizinini yeniden oluşturmanız gerekiyorsa, bunu uyumlu B ağacı dizininin en üstünde yeniden oluşturarak, normal veri temizleme için gereken RowGroups sıralamasını koruyarak yapın. Garantili veri sırası olmayan kümelenmiş sütun dizini olan mevcut geçmiş tablosuyla zamana bağlı tablo oluşturursanız aynı yaklaşım gerçekleştirilmelidir:
 
@@ -164,11 +164,11 @@ Ancak, geçmiş tablosunu doğrudan sorgularsınız, belirtilen saklama süresin
 
 ![Saklama filtresi olmadan geçmişi sorgulama](./media/sql-database-temporal-tables-retention-policy/queryexecplanhistorytable.png)
 
-Tutarsız veya beklenmedik sonuçlar elde ettiğiniz için, saklama süresinden daha fazla bilgi almak için iş mantığınızı dayanmayın. Zamana bağlı tablolardaki verileri çözümlemek için FOR SYSTEM_TIME yan tümcesiyle birlikte zamana bağlı sorgular kullanmanızı öneririz.
+Tutarsız veya beklenmedik sonuçlar elde ettiğiniz için, saklama süresinden daha fazla bilgi almak için iş mantığınızı dayanmayın. Zamana bağlı tablolardaki verileri analiz etmek için SYSTEM_TIME yan tümcesiyle birlikte zamana bağlı sorgular kullanmanızı öneririz.
 
 ## <a name="point-in-time-restore-considerations"></a>Zaman içindeki bir noktaya geri yükleme konuları
 
-[Mevcut veritabanını belirli bir noktaya geri yükleyerek](sql-database-recovery-using-backups.md)yeni veritabanı oluşturduğunuzda, veritabanı düzeyinde zamana bağlı saklama devre dışıdır. (**is_temporal_history_retention_enabled** bayrağı off olarak ayarlanır). Bu işlevsellik, geri yükleme sırasında geçmiş tüm satırları inceleyerek, eski satırlar sorgulanmadan önce kaldırılmalarını kaygılanmadan incelemenizi sağlar. Bu işlemi, *geçmiş verileri yapılandırılan bekletme döneminin ötesinde incelemek*için kullanabilirsiniz.
+[Mevcut veritabanını belirli bir noktaya geri yükleyerek](sql-database-recovery-using-backups.md)yeni veritabanı oluşturduğunuzda, veritabanı düzeyinde zamana bağlı saklama devre dışıdır. (**is_temporal_history_retention_enabled** bayrak kapalı olarak ayarlanır). Bu işlevsellik, geri yükleme sırasında geçmiş tüm satırları inceleyerek, eski satırlar sorgulanmadan önce kaldırılmalarını kaygılanmadan incelemenizi sağlar. Bu işlemi, *geçmiş verileri yapılandırılan bekletme döneminin ötesinde incelemek*için kullanabilirsiniz.
 
 Zamana bağlı bir tabloda bir ay Bekletme dönemi olduğunu varsayalım. Veritabanınız Premium hizmet katmanında oluşturulduysa, son olarak 35 güne kadar veritabanı durumu ile veritabanı kopyası oluşturabilirsiniz. Bu, geçmiş tablosunu doğrudan sorgulayarak 65 güne kadar eski olan geçmiş satırları analiz etmenize olanak tanır.
 

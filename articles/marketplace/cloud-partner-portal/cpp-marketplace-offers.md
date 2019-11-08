@@ -4,15 +4,16 @@ description: Azure ve AppSource marketlerine yönelik teklifler oluşturma ve y�
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: f1e561e84daed6c24ca0d9b7832af3d975082e25
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962849"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818768"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure ve AppSource Market teklifleri
 
@@ -32,9 +33,9 @@ Bu pazar yerleri hakkında daha fazla bilgi için bkz. [Azure Marketi ve AppSour
 Yeni bir teklif oluşturma işlemi, örneğin bir [Azure Uygulama teklifi](./azure-applications/cpp-azure-app-offer.md) ve [danışmanlık hizmeti teklifi](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)arasında teklif türlerine göre büyük ölçüde farklılık gösterir.  Buna karşılık, [bulut iş ortağı portalı](https://cloudpartner.azure.com) bir teklif üzerinde gerçekleştirdiğiniz diğer işlemlerin çoğu teklif türleri arasında oldukça standartlaştırılmış.  Yayımla, durumu görüntüle, Güncelleştir ve Sil gibi yaygın işlemler, [teklifleri yönetme](./manage-offers/cpp-manage-offers.md) bölümünde ele alınmıştır.
 
 
-## <a name="test-drive"></a>Test Drive
+## <a name="test-drive"></a>Test Sürüşü
 
-*Test sürüşü* , müşterilerin her bir teklif için "tanıtım için deneme" gösterimi seçeneğini sunan bir market özelliğidir.  Test sürücüsü özelliği, aşağıdaki teklif türleri alt kümesiyle sınırlıdır: [Azure uygulamaları](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 iş merkezi](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [finans ve işlemler için Dynamics 365](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS uygulamaları](./saas-app/cpp-saas-offer.md)ve [sanal makineler](./virtual-machine/cpp-virtual-machine-offer.md).  Bu özellik, yayımcının teklifi için özelleştirilmiş bir test sürücü şablonu oluşturmasını gerektirir.  Daha fazla bilgi için, bkz. [test sürücüsü](./test-drive/what-is-test-drive.md).
+*Test sürüşü* , müşterilerin her bir teklif için "tanıtım için deneme" gösterimi seçeneğini sunan bir market özelliğidir.  Test sürücüsü özelliği, teklif türlerinin aşağıdaki alt kümesiyle sınırlıdır: [Azure uygulamaları](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 iş merkezi](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [finans ve işlemler için Dynamics 365](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS uygulamalar](./saas-app/cpp-saas-offer.md)ve [sanal makineler](./virtual-machine/cpp-virtual-machine-offer.md).  Bu özellik, yayımcının teklifi için özelleştirilmiş bir test sürücü şablonu oluşturmasını gerektirir.  Daha fazla bilgi için, bkz. [test sürücüsü](./test-drive/what-is-test-drive.md).
 
 Test sürüşü test [sürücüsü filtresi](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)uygulayarak test sürücüsü gösterimine sahip mevcut Market tekliflerine gidebilirsiniz. 
 
@@ -46,7 +47,7 @@ Aşağıdaki tabloda [bulut iş ortağı portalı](https://cloudpartner.azure.co
 |                Teklif Türü                |  Market  |   Açıklama                                                           |
 |                ----------                |  -----------  |   -----------                                                           |
 | [Azure uygulaması](./azure-applications/cpp-azure-app-offer.md) | Azure | Çözüm, bir Azure Resource Manager şablonuyla dağıtılan bir veya daha fazla sanal makineden (VM), isteğe bağlı özel Azure kodundan oluşur.  Dağıtım, bir çözüm şablonu aracılığıyla müşteri tarafından ya da yayımcı tarafından yönetilebilir. Bu tür, sağlanan sanal makine teklif türünden daha fazla esneklik sağlamak için kullanılır.  |
-| [Danışmanlık hizmeti](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | is | Microsoft-Qualified Consultants, etki alanına özgü hizmetlerini Azure Market veya AppSource 'ta listeleyebilir.  Uzmanlığı müşterilerin sorunlarını değerlendirmesine ve iş hedeflerini karşılamak üzere doğru çözümler oluşturup dağıtmalarına yardımcı olur.  |
+| [Danışmanlık hizmeti](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | İs | Microsoft-Qualified Consultants, etki alanına özgü hizmetlerini Azure Market veya AppSource 'ta listeleyebilir.  Uzmanlığı müşterilerin sorunlarını değerlendirmesine ve iş hedeflerini karşılamak üzere doğru çözümler oluşturup dağıtmalarına yardımcı olur.  |
 | [Kapsayıcı](./containers/cpp-containers-offer.md)  | Azure | Çözüm, bir Kubernetes tabanlı hizmet ya da Azure Container Instances olarak sağlanan bir Docker kapsayıcı görüntüsüdür. |
 | [Dynamics 365 Iş Merkezi](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Bu kurumsal kaynak planlama (ERP) ve iş yönetim sistemini genişleten bir paket. |
 | [Müşteri katılımı için Dynamics 365](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Bu müşteri kaynak yönetimi (CRM) sistemini Sales, Service, Project Service ve Field Service modülleri aracılığıyla genişleten bir paket  |

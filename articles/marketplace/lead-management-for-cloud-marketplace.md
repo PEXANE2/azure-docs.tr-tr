@@ -4,15 +4,16 @@ description: Azure Marketi ve AppSource 'ta teklifleri ve teknik yapıtları yay
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: pabutler
-ms.openlocfilehash: a89921d4b5ec25bc0c924646d3bd41aecf3e8d9c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 047ffd983cecd9f9bd971ee3f97e15734d14ce66
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67870936"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813286"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>Bulut Marketi için lider yönetimi
 
@@ -32,15 +33,15 @@ Müşteri adaylarını almaya başlamak için Bulut İş Ortağı Portalı, mü�
 
 Olası her bir müşteri adayı hedefini nasıl bağlayacağınız hakkında adım adım yönergeler aşağıda verilmiştir:
 
-**Dynamics CRM Online** - müşteri adaylarını almak için Dynamics CRM Online 'ın nasıl yapılandırılacağı hakkında yönergeler almak için[buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) .
+**DYNAMICS CRM online** - müşteri adaylarını almak IÇIN Dynamics CRM Online 'ı yapılandırma yönergelerini almak üzere [buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) .
 
-Marketo - müşteri adaylarını almak üzere Marketo lider yapılandırmasını ayarlamaya yönelik yönergeleri almak için[buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) .
+**Marketo** - müşteri adaylarını almak üzere Marketo lider yapılandırmasını ayarlamaya yönelik yönergeleri almak Için [buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) .
 
-Salesforce - müşteri adaylarını almak için Salesforce örneğinizi ayarlamaya yönelik yönergeler almak üzere[buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) .
+**Salesforce** - müşteri adaylarını almak için Salesforce örneğinizi ayarlamaya yönelik yönergeler almak üzere [buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) .
 
-**Azure tablosu** : Azure tablosu 'nda müşteri adaylarını almak için Azure depolama hesabınızı ayarlamaya yönelik yönergeleri almak üzere [buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) .
+**Azure tablosu - Azure** tablosu 'nda müşteri adaylarını almak için Azure depolama hesabınızı ayarlamaya yönelik yönergeleri almak üzere [buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) .
 
-**Https uç noktası** – müşteri adaylarını almak Için HTTPS uç noktanızı ayarlamaya yönelik yönergeleri almak için [buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) .
+**Https uç noktası** - müşteri adaylarını almak üzere HTTPS uç noktanızı ayarlamaya yönelik yönergeleri almak Için [buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) .
 
 Müşteri adayı hedefini doğru bir şekilde yapılandırdıktan ve teklifiniz üzerinde isabet yayımladıktan sonra, bağlantıyı doğrulayacağız ve size bir test lideri göndereceğiz. Teklifi, canlı çalışmadan önce görüntülerken, teklifi önizleme ortamında edinmeyi deneyerek lider bağlantınızı da test edebilirsiniz. Müşteri adaylarını kaybetmemeniz için müşteri adayı ayarlarınızın güncel kalmasını sağlamak önemlidir. bu nedenle, bu bağlantıları sonunda her değişiklik yapıldığında güncelleştirdiğinizden emin olun.
 
@@ -62,7 +63,7 @@ Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış
 
 > Uygulama/kullanıcının Microsoft Market lider yazıcı için güvenlik rolleri eksik. [Burada](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)Office kullanıcısı kullanıyorsanız, Azure Active Directory veya güvenlik ayarlarını kullanıyorsanız 11-15 adımlarını izleyin.
 
-**AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: Kiracı bulunamadı. Bu örnek, kiracı için etkin abonelikler yoksa gerçekleşebilir.**  
+**AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: kiracı bulunamadı. Bu örnek, kiracı için etkin abonelikler yoksa gerçekleşebilir.**  
 
 > Lider Yönetimi bölümünde belirtilen dizin kimliği geçerli bir dizin değil. Lütfen adım 2 ' deki yönergelere (Azure Active Directory altında, [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) ) göre dizin kimliğini alın 
 
@@ -70,19 +71,19 @@ Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış
 
 > Çözüm: Microsoft Market lider yazıcısına güvenlik rolü atayın. Güvenlik ayarları altında [buradaki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) yönergeleri izleyin 
 
-**AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: Tanımlayıcılı uygulama dizinde bulunamadı** 
+**AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: tanımlayıcılı uygulama dizinde bulunamadı** 
 
 > Lider Yönetimi bölümünde belirtilen uygulama kimliği geçerli bir dizin değil. Lütfen 8. adımdaki yönergelere göre dizin kimliğini alın (Azure Active Directory altında, [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: İstenen kiracı tanımlayıcısı geçerli değil ve geçerli dış etki alanı biçimi değil** 
+**AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: Istenen kiracı tanımlayıcısı geçerli değil ve geçerli dış etki alanı biçimi değil** 
 
 > Lider Yönetimi bölümünde belirtilen dizin kimliği geçerli bir dizin değil. Lütfen adım 2 ' deki yönergelere (Azure Active Directory altında, [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)) göre dizin kimliğini alın. 
 
-**AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: Kimlik bilgileri doğrulanırken hata oluştu.: Geçersiz istemci parolası belirtildi.** 
+**AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: kimlik bilgileri doğrulanırken hata.: geçersiz istemci parolası belirtildi.** 
 
 > Çözüm: Azure portalında oturum açın, uygulama anahtarının Bulut İş Ortağı Portalı ile eşleşip eşleşmediğini denetleyin. Lütfen 10. adımdaki yönergeye (Azure Active Directory), [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)) göre parola oluşturun. 
 
-**Müşteri adayı Dynamics CRM 'ye kaydedilemedi. LastCRMError: İstek kanalı, 00:02:00 sonrasında bir yanıt beklerken zaman aşımına uğradı. Istek çağrısına geçirilen zaman aşımı değerini artırın veya bağlamada SendTimeout değerini artırın. Bu işlem için ayrılan süre daha uzun bir zaman aşımı değerinin bir bölümü olabilir.**  
+**Müşteri adayı Dynamics CRM 'ye kaydedilemedi. LastCRMError: 00:02:00 sonrasında bir yanıt beklenirken istek kanalı zaman aşımına uğradı. Istek çağrısına geçirilen zaman aşımı değerini artırın veya bağlamada SendTimeout değerini artırın. Bu işlem için ayrılan süre daha uzun bir zaman aşımı değerinin bir bölümü olabilir.**  
 
 > Çözüm: Bulut İş Ortağı Portalı oturum açın, storefront > ayrıntılarını > Müşteri adayı hedefi > > URL 'sini denetleyin, geçerli bir dinamik CRM örneği olup olmadığını denetleyin
 
@@ -95,7 +96,7 @@ Müşteri adayları, ürünlerinizi Market 'ten dağıtan müşterilerdir. Ürü
 
 **Lider hedefini ayarlama konusunda nereden yardım alabilirim?** 
 
-Belgeleri buradan bulabilirsiniz: [Müşteri adaylarını alın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) veya aka.MS/marketplacepublishersupport seçim teklifi türü ve müşteri adayı yönetimi aracılığıyla bir destek bileti gönderebilirsiniz. 
+Belgeleri buradan bulabilirsiniz: [müşteri adaylarını al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) veya aka.MS/marketplacepublishersupport aracılığıyla destek bileti gönder teklif türü ve müşteri adayı yönetimi. 
 
 
 
@@ -113,7 +114,7 @@ Teklifinizi ve lider hedefini ayarladıktan sonra teklifinizi yayımlayın. Mü�
 **Test lideri nasıl bulabilirim?**
 
 
-Müşteri adayı Hedefinizdeki "MSFT_TEST" ifadesini arayın, örnek bir test lideri verisi aşağıda verilmiştir: 
+Müşteri adayı Hedefinizdeki "MSFT_TEST" araması yapın, örnek bir test lideri verileri aşağıda verilmiştir: 
 
 Şirket = MSFT_TEST_636573304831318844 
 
@@ -121,17 +122,17 @@ Müşteri adayı Hedefinizdeki "MSFT_TEST" ifadesini arayın, örnek bir test li
 
 Açıklama = MSFT_TEST_636573304831318844 
 
-e-posta =MSFT_TEST_636573304831318844@test.com
+e-posta = MSFT_TEST_636573304831318844@test.com
 
 kodlama = UTF-8 
 
 kodlama = UTF-8 
 
-First_name = MSFT_TEST_636573304831318844 
+first_name = MSFT_TEST_636573304831318844 
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \<Teklif adı > 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 |\<teklif adı > 
 
 OID = 00Do0000000ZHog 
 
@@ -143,32 +144,32 @@ title = MSFT_TEST_636573304831318844
 
 **Canlı bir teklifim var, ancak hiçbir müşteri adayı görmüyorum?**
 
-Her bir müşteri adayının seçtiğiniz müşteri adayı hedefindeki alanlara geçirilmesi için müşteri adayları şu biçimde olacaktır: **Kaynak-eylem | Sunar** 
+Her müşteri adayının seçtiğiniz müşteri adayı hedefindeki alanlara geçirilmesi, müşteri adayları şu biçimde olacaktır: **Kaynak-eylem | Teklif** 
 
   *Ğına*
 
-    “AzureMarketplace”, 
-    “AzurePortal”, 
-    “TestDrive”,  
-    “SPZA” (acronym for AppSource) 
+    "AzureMarketplace", 
+    "AzurePortal", 
+    "TestDrive",  
+    "SPZA" (acronym for AppSource) 
 
   *Eylem*
 
-    “INS” – Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
-    “PLT” – Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
+    "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
+    "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
 
-    “DNC” – Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
+    "DNC" - Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
 
-    “Create” – This is inside Azure Portal only and is whenever a customer purchases your offer to their account. 
+    "Create" - This is inside Azure Portal only and is whenever a customer purchases your offer to their account. 
 
-    “StartTestDrive” – This is for Test Drives only and is whenever a customer starts their test drive. 
+    "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
 
 
   *Sunar*
 
-    “checkpoint.check-point-r77-10sg-byol”, 
-    “bitnami.openedxcypress”, 
-    “docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a” 
+    "checkpoint.check-point-r77-10sg-byol", 
+    "bitnami.openedxcypress", 
+    "docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a" 
 
  
 

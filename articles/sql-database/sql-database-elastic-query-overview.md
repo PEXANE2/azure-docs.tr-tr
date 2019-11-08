@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı elastik sorguya genel bakış
+title: Elastik sorguya genel bakış
 description: Elastik sorgu birden çok veritabanına yayılan bir Transact-SQL sorgusu çalıştırmanızı sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 07/01/2019
-ms.openlocfilehash: 08c191742425c448618db255491c709130df33a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9566ac7169144d984f9200734c99eb10368b3142
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690371"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823753"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL veritabanı elastik sorguya genel bakış (Önizleme)
 
@@ -110,7 +110,7 @@ Aşağıdaki adımlar, (genellikle) çeşitli uzak SQL veritabanlarında bulunan
 * [Ana anahtar oluştur](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
 * [VERITABANı KAPSAMLı KIMLIK bilgisi oluştur](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) myCredential
 * Elastik veritabanı istemci kitaplığını kullanarak veri katmanınızı temsil eden bir parça [Haritası](sql-database-elastic-scale-shard-map-management.md) oluşturun.
-* **SHARD_MAP_MANAGER** türünde BIR [dış veri kaynağı oluştur/bırak](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) myDataSource
+* [Dış VERI kaynağı oluştur/bırak](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) **SHARD_MAP_MANAGER** türünde myDataSource
 * [Dış tablo MyTable oluştur/bırak](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)
 
 Bu adımları gerçekleştirdikten sonra, "MyTable" yatay bölümlenmiş tablosuna bir yerel tablo gibi erişebilirsiniz. Azure SQL veritabanı, tabloların fiziksel olarak depolandığı uzak veritabanlarına otomatik olarak birden çok paralel bağlantı açar, uzak veritabanlarındaki istekleri işler ve sonuçları döndürür.
@@ -138,7 +138,7 @@ Esnek sorgu, Azure SQL veritabanı veritabanlarının maliyetine dahildir. Uzak 
 * İlk elastik sorgunuzu çalıştırmak standart hizmet katmanında birkaç dakika sürebilir. Bu süre, elastik sorgu işlevinin yüklenmesi için gereklidir; daha yüksek hizmet katmanları ve işlem boyutları ile yükleme performansı artar.
 * SSMS veya SSDT 'den dış veri kaynaklarının veya dış tabloların betiği henüz desteklenmiyor.
 * SQL DB için içeri/dışarı aktarma henüz dış veri kaynaklarını ve dış tabloları desteklemez. Içeri/dışarı aktarma kullanmanız gerekiyorsa, dışarı aktarmadan önce bu nesneleri bırakın ve içeri aktardıktan sonra yeniden oluşturun.
-* Elastik sorgu şu anda yalnızca dış tablolara salt okuma erişimini desteklemektedir. Ancak, dış tablonun tanımlandığı veritabanında tam T-SQL işlevselliği kullanabilirsiniz. Bu, örneğin, kullanarak geçici sonuçları kalıcı hale getirmek için faydalı olabilir, örneğin, < column_list > < local_table > SEÇIN ya da dış tablolara başvuran elastik sorgu veritabanında saklı yordamları tanımlayabilirsiniz.
+* Elastik sorgu şu anda yalnızca dış tablolara salt okuma erişimini desteklemektedir. Ancak, dış tablonun tanımlandığı veritabanında tam T-SQL işlevselliği kullanabilirsiniz. Bu, örneğin, kullanarak geçici sonuçları kalıcı hale getirmek için faydalı olabilir, örneğin, < column_list > < local_table > veya dış tablolara başvuran elastik sorgu veritabanında saklı yordamları tanımlamak için yararlı olabilir.
 * Nvarchar (max) dışında, LOB türleri (uzamsal türler dahil) dış tablo tanımlarında desteklenmez. Geçici bir çözüm olarak, LOB türünü nvarchar (max) olarak veren uzak veritabanında bir görünüm oluşturabilir, dış tablonuzu temel tablo yerine görünüm üzerinden tanımlayabilir ve sonra Sorgularınızdaki özgün LOB türüne geri çevirebilirsiniz.
 * Sonuç kümesi içindeki nvarchar (max) veri türü sütunları, elastik sorgu uygulamasında kullanılan gelişmiş toplu işlem Technics devre dışı bırakır ve hatta büyük miktarda bir büyüklük için sorgu performansını etkileyebilir toplanmayan veriler sorgu sonucu olarak aktarılır.
 * Dış tablolar üzerinde sütun istatistikleri Şu anda desteklenmiyor. Tablo istatistikleri desteklenir, ancak el ile oluşturulması gerekir.

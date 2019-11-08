@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı sunucusu kaynak sınırları
+title: Sunucu kaynak sınırları
 description: Bu makalede, tek veritabanları ve elastik havuzlar için Azure SQL veritabanı sunucusu kaynak sınırlarına genel bir bakış sunulmaktadır. Ayrıca, bu kaynak limitleri isabet edildiğinde veya aşıldığında ne olacağı hakkında bilgi de sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 04/18/2019
-ms.openlocfilehash: b358e69df1df579e91a9098c120c7e6b4e3f2ead
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 907fc89c0d9af01865037f650c407edd97e96645
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687490"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821149"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL veritabanı sunucusu için SQL veritabanı kaynak sınırları
 
@@ -88,7 +88,7 @@ Günlük kayıtları üretildiğinden, her işlem değerlendirilir ve en fazla i
 
 Çalışma zamanında uygulanan gerçek günlük oluşturma ücretleri ayrıca, geri bildirim mekanizmalarından etkilenerek, sistemin sabitlenebilmesi için izin verilen günlük hızlarını geçici olarak azaltabilirsiniz. Günlük dosyası alanı yönetimi, oturum açma alanı koşullarını ve kullanılabilirlik grubu çoğaltma mekanizmalarını çalıştırmanın genel sistem sınırlarını geçici olarak azalmasını önleme. 
 
-Günlük hızı idarecisi trafik şekillendirme, aşağıdaki bekleme türleri aracılığıyla ortaya çıkarılır ( [sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV içinde gösterilir):
+Günlük hızı idarecisi trafik şekillendirme, aşağıdaki bekleme türleri aracılığıyla ortaya çıkarılır ( [sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV içinde gösterilir):
 
 | Bekleme türü | Notlar |
 | :--- | :--- |

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: 0241af88d30d47233d972bcb3e7c58ef8de12d6e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1e39126324de486d118f808b37672c9fd08af711
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648254"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822753"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Öğretici: Kullanıcı amaçları 'nı öğrenmek için LUSıS uygulaması oluşturma
 
@@ -205,4 +205,4 @@ JSON yanıtı döndürdükten sonra LUIS’in istekle işi biter. LUIS kullanıc
 Bu öğretici, bir LUSıS uygulaması, oluşturma amaçları, her amaca yönelik eklenen örnek, eklenen örnek ve son noktadaki yok etme, eğitilen, yayımlanan ve test edilen bir örnek ile oluşturulmuştur. Bunlar, LUIS modeli oluşturmanın temel adımlarıdır. 
 
 > [!div class="nextstepaction"]
-> [Bu uygulamaya önceden derlenmiş amaçlar ve varlıklar ekleme](luis-tutorial-prebuilt-intents-entities.md)
+> [Bu uygulamaya önceden derlenmiş amaçlar ve varlıklar ekleme](tutorial-machine-learned-entity.md)

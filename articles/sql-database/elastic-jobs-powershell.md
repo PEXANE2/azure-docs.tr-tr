@@ -1,22 +1,22 @@
 ---
-title: 'PowerShell kullanarak bir Azure SQL veritabanı elastik Iş Aracısı oluşturma '
+title: PowerShell kullanarak Elastik İş aracısı oluşturma
 description: PowerShell kullanarak Elastik İş aracısı oluşturmayı öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 80f9db2d11c875d9be9bef225c04e3e90f3d0ff8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9724e54b03e5de065b8b39cb57c6a9880cf37cc6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692256"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827204"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell kullanarak Elastik İş aracısı oluşturma
 
@@ -72,7 +72,7 @@ Elastik İş aracısı oluşturmak için [İş veritabanı](sql-database-job-aut
 
 *Aşağıdaki komut dosyası, Iş veritabanı olarak kullanılmak üzere yeni bir kaynak grubu, sunucu ve veritabanı oluşturur. Aşağıdaki komut dosyası, işleri yürütmek için iki boş veritabanı içeren ikinci bir sunucu da oluşturur.*
 
-Elastik İşlere özel adlandırma gereksinimleri olmadığından [Azure gereksinimlerine](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) uygun olduğu sürece istediğiniz adlandırma kuralını kullanabilirsiniz.
+Elastik İşlere özel adlandırma gereksinimleri olmadığından [Azure gereksinimlerine](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) uygun olduğu sürece istediğiniz adlandırma kuralını kullanabilirsiniz.
 
 ```powershell
 # Sign in to your Azure account

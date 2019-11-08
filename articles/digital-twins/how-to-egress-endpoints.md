@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959109"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822264"
 ---
 # <a name="egress-and-endpoints"></a>Çıkış ve uç noktalar
 
@@ -49,19 +49,19 @@ Olaylar, Azure ileti ve olay aracıları tarafından işlenmek üzere IoT nesnel
 
 | Öznitelik | Tür | Açıklama |
 | --- | --- | --- |
-| kimlik | dize | Etkinliğin benzersiz tanımlayıcısı. |
-| Konu | dize | Olay konusunun yayımcı tanımlı yolu. |
-| veri | nesne | Kaynak sağlayıcısına özel olay verileri. |
-| Türü | dize | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | dize | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| Veri sürümü | dize | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
-| metadataVersion | dize | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
-| ilerde | dize | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| id | string | Etkinliğin benzersiz tanımlayıcısı. |
+| Konu | string | Olay konusunun yayımcı tanımlı yolu. |
+| verileri | object | Kaynak sağlayıcısına özel olay verileri. |
+| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 
 Event Grid olay şeması hakkında daha fazla bilgi için:
 
 - [Azure Event Grid olay şeması başvurusunu](../event-grid/event-schema.md)gözden geçirin.
-- [Azure EventGrid Node. js SDK EventGridEvent başvurusunu](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest)okuyun.
+- [Azure EventGrid Node. js SDK EventGridEvent başvurusunu](https://docs.microsoft.com/javascript/api/@azure/eventgrid/eventgridevent?view=azure-node-latest)okuyun.
 
 ## <a name="event-types"></a>Olay türleri
 
@@ -90,7 +90,7 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 - Algılayıcısı
 - SensorBlobMetadata
 - SensorExtendedProperty
-- Alan
+- Uzay
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -122,7 +122,7 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 }
 ```
 
-| Değer | Değiştir |
+| Değer | Şununla değiştir |
 | --- | --- |
 | YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
 
@@ -153,7 +153,7 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 }
 ```
 
-| Değer | Değiştir |
+| Değer | Şununla değiştir |
 | --- | --- |
 | YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
 
@@ -188,7 +188,7 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 }
 ```
 
-| Değer | Değiştir |
+| Değer | Şununla değiştir |
 | --- | --- |
 | YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
 
@@ -223,7 +223,7 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 }
 ```
 
-| Değer | Değiştir |
+| Değer | Şununla değiştir |
 | --- | --- |
 | YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
 
@@ -268,7 +268,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Değer | Değiştir |
+    | Değer | Şununla değiştir |
     | --- | --- |
     | YOUR_NAMESPACE | Uç noktanızın ad alanı |
     | YOUR_PRIMARY_KEY | Kimlik doğrulaması için kullanılan birincil bağlantı dizesi |
@@ -291,7 +291,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Değer | Değiştir |
+    | Değer | Şununla değiştir |
     | --- | --- |
     | YOUR_PRIMARY_KEY | Kimlik doğrulaması için kullanılan birincil bağlantı dizesi|
     | YOUR_SECONDARY_KEY | Kimlik doğrulaması için kullanılan ikincil bağlantı dizesi |
@@ -313,7 +313,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Değer | Değiştir |
+    | Değer | Şununla değiştir |
     | --- | --- |
     | YOUR_NAMESPACE | Uç noktanızın ad alanı |
     | YOUR_PRIMARY_KEY | Kimlik doğrulaması için kullanılan birincil bağlantı dizesi |
@@ -334,7 +334,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Değer | Değiştir |
+    | Değer | Şununla değiştir |
     | --- | --- |
     | YOUR_NAMESPACE | Uç noktanızın ad alanı |
     | YOUR_PRIMARY_KEY | Kimlik doğrulaması için kullanılan birincil bağlantı dizesi |

@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 16b75a98a5a42c9acf6d9a68330cbf8e005f7179
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b3d66cab8cf43d862bbf17d5783f0469e3e1a5f8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819804"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825646"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Yeni bir Dynamics 365 Iş Merkezi teklifi oluşturma
 
@@ -31,7 +32,7 @@ Dynamics 365 Iş Merkezi teklifleri oluşturmaya başlamak için önce [bir Iş 
 
 ### <a name="offer-id-and-alias"></a>Teklif KIMLIĞI ve diğer ad
 
-- **TEKLIF kimliği**: hesabınızdaki her teklif için benzersiz tanımlayıcı. Bu KIMLIK, Market teklifi ve Azure Resource Manager şablonları (varsa) için URL adresindeki müşterilere görünür olacaktır. Teklif KIMLIĞI küçük harf alfasayısal karakterler (tireler ve alt çizgiler dahil ancak boşluk yok), 50 karakterle sınırlı ve **Oluştur**' u seçtikten sonra değiştirilemez.  Örneğin, burada *Test-teklif-1* girerseniz, teklif URL 'si `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` olur.
+- **TEKLIF kimliği**: hesabınızdaki her teklif için benzersiz tanımlayıcı. Bu KIMLIK, Market teklifi ve Azure Resource Manager şablonları (varsa) için URL adresindeki müşterilere görünür olacaktır. Teklif KIMLIĞI küçük harf alfasayısal karakterler (tireler ve alt çizgiler dahil ancak boşluk yok), 50 karakterle sınırlı ve **Oluştur**' u seçtikten sonra değiştirilemez.  Örneğin, burada *Test-teklif-1* girerseniz, teklif URL 'si `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`olur.
 
 - **Teklif diğer adı**: Iş Ortağı Merkezi içindeki teklifine başvurmak için kullanılan ad. Bu ad Market 'te kullanılmayacak ve teklif adından ve müşterilere gösterilecek diğer değerlerden farklı. Bu değer, **Oluştur**' u seçtikten sonra değiştirilemez.
 
@@ -130,7 +131,7 @@ Her dil/Pazar için Market ayrıntılarını (teklif adı, açıklama, görünt�
 > [!NOTE]
 > Teklif açıklaması (örneğin, açıklama, belgeler, ekran görüntüleri, kullanım koşulları vb.) için teklif listesi içeriği, "Bu uygulama yalnızca [Ingilizce olmayan dil] içinde kullanılabilir" olarak, Ingilizce olması gerekmez. Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Ad
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metin ile önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -207,7 +208,7 @@ Teklifinizin nasıl çalıştığını gösteren ekran görüntüleri ekleyin. E
 
 - [Market teklif listeleri için en iyi uygulamalar](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-## <a name="availability"></a>Erişilebilirlik
+## <a name="availability"></a>Kullanılabilirlik
 
 **Kullanılabilirlik** sayfası, teklifinizin nerede ve nasıl kullanılabilir hale sunulabileceği hakkında seçenekler sağlar.
 
@@ -298,9 +299,9 @@ Microsoft, bu test sürücüsü türünü kullanarak hizmet sağlamayı ve dağ�
 
 - **Sınama sürücüsü süresi** (zorunlu): saat sayısını tanımlayarak test sürücüsünün etkin kalacağı sürenin uzunluğunu girin. Bu süre dolduktan sonra, oturum sona erdir ve artık lisanslarınızdan birini tüketmez. Teklifinizin karmaşıklığına bağlı olarak 2-24 saat arasında bir değer öneririz. Bu süre yalnızca birkaç saat kadar ayarlanabilir (örneğin, "2" saat, "1,5" geçerli değildir).  Kullanıcı zaman aşımına uğrar ve test sürücüsüne yeniden erişmek istediğinizde yeni bir oturum isteyebilir.
 
-- **Örnek URL** (gerekli): müşterinin test sürücüsüne başlayacağı URL. Genellikle uygulamanızı örnek verilerle çalıştıran Dynamics 365 örneğinizin URL 'SI (örneğin, https://testdrive.crm.dynamics.com) ).
+- **Örnek URL** (gerekli): müşterinin test sürücüsüne başlayacağı URL. Genellikle uygulamanızı örnek verilerle çalıştıran Dynamics 365 örneğinizin URL 'SI (örneğin, https://testdrive.crm.dynamics.com).
 
-- **Örnek Web API URL 'si** (gerekli): Microsoft 365 hesabınızda oturum açarak ve **Ayarlar** \&Gt;, Dynamics 365 ÖRNEĞINIZ IÇIN Web API URL 'sini alın **Özelleştirme** \&GT; **Geliştirici kaynakları** \&GT; **Örnek Web API 'si (hizmet kök URL 'si)** , burada bulunan URL 'yi kopyalayın (örneğin, https://testdrive.crm.dynamics.com/api/data/v9.0).
+- **Örnek Web API URL 'si** (gerekli): Microsoft 365 hesabınızda oturum açarak ve **Ayarlar** ' a giderek, Dynamics 365 ÖRNEĞINIZ IÇIN Web apı URL 'sini alın \&gt; **Özelleştirme** \&gt; **Geliştirici kaynakları** \&gt; **Örnek Web API 'si (hizmet kök URL 'si)** , burada bulunan URL 'yi kopyalayın (örneğin, https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Rol adı** (gerekli): özel Dynamics 365 test sürücünüzde tanımladığınız güvenlik rolü adını sağlayın, bu kullanıcı sınama sürücüleri sırasında kullanıcıya atanır (örneğin, test-sürücü-rolü).
 
@@ -330,7 +331,7 @@ Test sürücüsünü sizin adınıza dağıtmak için, ayrı ve benzersiz bir Az
 
 - **Azure ABONELIK kimliği** (Azure Resource Manager ve Logic Apps için gereklidir): Azure hesap hizmetlerinizi kaynak kullanımı raporlama ve faturalama için erişim izni vermek üzere abonelik kimliğini girin. Henüz bir tane yoksa, test sürücüleri için kullanmak üzere [ayrı bir Azure aboneliği oluşturmayı](https://docs.microsoft.com/azure/billing/billing-create-subscription) düşünmeniz önerilir. [Azure Portal](https://portal.azure.com/) oturum açarak ve sol taraftaki menüdeki **abonelikler** SEKMESINE giderek Azure abonelik kimliğinizi bulabilirsiniz. Sekmeyi seçtiğinizde, abonelik KIMLIĞINIZ görüntülenir (örneğin, "a83645ac-1234-5AB6-345-1h234g764ghty").
 
-- **Azure AD KIRACı kimliği** (gerekli): Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, * * Özellikler ' i seçin, sonra LISTELENEN **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın. Ayrıca, etki alanı adı URL 'nizi kullanarak kuruluşunuzun kiracı KIMLIĞINI: [https://www.whatismytenantid.com](https://www.whatismytenantid.com)' de arayabilirsiniz.
+- **Azure AD KIRACı kimliği** (gerekli): Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, * * Özellikler ' i seçin, sonra LISTELENEN **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın. Kuruluşunuzun kiracı KIMLIĞINI Ayrıca, etki alanı adı URL 'nizi kullanarak da arayabilirsiniz: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
 - **Azure AD kiracı adı** (dinamik 365 için gereklidir): Azure ACTIVE DIRECTORY (ad) adınızı girin. Bu adı bulmak için sağ üst köşedeki [Azure Portal](https://portal.azure.com/)oturum açın, kiracı adınız hesap adınızın altında listelenecektir.
 
@@ -388,9 +389,9 @@ Teklifin tüm gerekli bölümlerini tamamladıktan sonra portalın sağ üst kö
 Bu teklifi ilk kez yayımladıysanız şunları yapabilirsiniz:
 
 - Teklifin her bölümü için tamamlanma durumuna bakın.
-    - *Başlatılmamış* – bölüm dokunulmamış ve tamamlanması gereken anlamına gelir.
-    - *Tamamlanmamış* – bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Bölüm (ler) e geri dönün ve güncelleştirin.
-    - *Tamamlandı* – bölümün tamamlandığı, tüm gerekli verilerin sağlandığı ve hata olmadığı anlamına gelir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
+    - *Başlatılmamış* -bölüm dokunulmamış ve tamamlanması gereken anlamına gelir.
+    - *Tamamlanmamış* -bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Bölüm (ler) e geri dönün ve güncelleştirin.
+    - *Tam* -bölümün tamamlandığı, tüm gerekli verilerin sağlandığı ve hata olmadığı anlamına gelir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
 - **Sertifika notları** bölümünde, uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın.
 - **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Teklifin önizleme sürümü gözden geçirmeniz ve onaylamanız için kullanılabilir olduğunda size bir e-posta göndereceğiz. Iş Ortağı Merkezi 'ne dönün ve teklifinizi herkese açık bir şekilde (veya özel bir teklif olarak özel hedef kitleye) yayımlama teklifi için **Go-Live** ' ı seçin.
 

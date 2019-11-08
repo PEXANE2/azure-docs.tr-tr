@@ -1,7 +1,7 @@
 ---
-title: AKS dağıtımlarında veri kayması 'nı (Önizleme) Algıla
+title: AKS dağıtımlarında veri drları algılama
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning 'de Azure Kubernetes hizmeti tarafından dağıtılan modellerdeki verileri algılayın.
+description: Azure Machine Learning 'de Azure Kubernetes Service tarafından dağıtılan modellerdeki veri kayması 'nı (Önizleme) algıla.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b1c22d9badc58360b0355bb4ef89017db27f06
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: HT
+ms.openlocfilehash: 9ac1c5cb25d6b2ad396c2caed74942988a723a0e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796727"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824249"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' e dağıtılan modellerdeki veri kayması 'nı (Önizleme) Algıla
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]

@@ -1,5 +1,5 @@
 ---
-title: Machine Learning için Visual Studio Code kullanma
+title: Visual Studio Code Azure Machine Learning
 titleSuffix: Azure Machine Learning
 description: Visual Studio Code için Azure Machine Learning yüklemeyi ve Azure Machine Learning bir deneme oluşturma hakkında bilgi edinin.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df23c41629dfe86058f0f2fb6602e85fd5a6d494
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dd85f3a495b90b3a1dc9d3f021d3600496792759
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489286"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824365"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Visual Studio Code için Azure Machine Learning kullanmaya başlama
 
@@ -25,7 +25,7 @@ Bu makalede, makine öğrenimi modellerini eğitmek ve dağıtmak için **Visual
 + Eğitim için, denemeleri yerel olarak veya uzaktan çalıştırılmasına yönelik destek sağlar. Her deneme için, hiper parametrelere ince ayar yapmak üzere birden çok çalıştırmanın özel ölçümlerini günlüğe kaydedebilirsiniz
 + Test ve üretim gereksinimleriniz için makine öğrenimi modellerini kolayca dağıtmak üzere Azure Machine Learning de kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 

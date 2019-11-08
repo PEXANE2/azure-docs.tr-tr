@@ -7,16 +7,16 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0433f3faf0a62a4cf4fb103aaad1b810c623e9d8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ee95ccd30d0f2eddcca7327dc4e5b60a3efe7e64
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608760"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825412"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-for-net"></a>Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı
+# <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı v11
 
-.NET için Azure Blob depolama istemci kitaplığı 'nı kullanmaya başlayın. Azure Blob depolama, Microsoft 'un bulut için nesne depolama çözümüdür. Paketi yüklemek ve temel görevler için örnek kodu denemek için adımları izleyin. Blob depolama, çok miktarda yapılandırılmamış veriyi depolamak için iyileştirilmiştir.
+.NET için Azure Blob depolama istemci kitaplığı v11 ile çalışmaya başlayın. Azure Blob depolama, Microsoft 'un bulut için nesne depolama çözümüdür. Paketi yüklemek ve temel görevler için örnek kodu denemek için adımları izleyin. Blob depolama, çok miktarda yapılandırılmamış veriyi depolamak için iyileştirilmiştir.
 
 .NET için Azure Blob depolama istemci kitaplığı 'nı kullanarak şunları yapın:
 

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: atsenthi
-ms.openlocfilehash: 6ee7c71a66488e9636752676d68a79fdfaf855cb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cf808bef75a73cef6e8c17045506f29fabf3b52e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599838"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819439"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric kümesi güvenlik senaryoları
-Azure Service Fabric kümesi, sahip olduğunuz bir kaynaktır. Yetkisiz kullanıcıların bunlara bağlanmasını önlemeye yardımcı olmak için kümelerinizin güvenliğini sağlamak sizin sorumluluğunuzdadır. Küme üzerinde üretim iş yüklerini çalıştırırken güvenli bir küme özellikle önemlidir. Güvenli olmayan bir küme oluşturmak mümkün olsa da, küme yönetim uç noktalarını genel İnternet 'e alıyorsa anonim kullanıcılar bu sunucuya bağlanabilir. Güvenli olmayan kümeler üretim iş yükleri için desteklenmez. 
+Azure Service Fabric kümesi, sahip olduğunuz bir kaynaktır. Yetkisiz kullanıcıların bunlara bağlanmasını önlemeye yardımcı olmak için kümelerinizin güvenliğini sağlamak sizin sorumluluğunuzdadır. Küme üzerinde üretim iş yüklerini çalıştırırken güvenli bir küme özellikle önemlidir. Güvenli olmayan bir küme oluşturmak mümkündür, ancak küme yönetim uç noktalarını genel İnternet 'e alıyorsa anonim kullanıcılar bu sunucuya bağlanabilir. Güvenli olmayan kümeler üretim iş yükleri için desteklenmez. 
 
 Bu makalede, Azure kümeleri ve tek başına kümeler için güvenlik senaryolarına ve bunları uygulamak için kullanabileceğiniz çeşitli teknolojilerle ilgili bir genel bakış sunulmaktadır:
 
@@ -57,7 +57,7 @@ Tek başına bir Windows Server kümesi için Windows güvenliği ayarlama hakk�
 Azure 'da çalıştırılan kümeler ve Windows üzerinde çalışan tek başına kümeler, [sertifika güvenliği](https://msdn.microsoft.com/library/ff649801.aspx) veya [Windows güvenliği](https://msdn.microsoft.com/library/ff649396.aspx)kullanabilir.
 
 ### <a name="client-to-node-certificate-security"></a>İstemciden düğüme Sertifika güvenliği
-Azure portal, bir Kaynak Yöneticisi şablonu kullanarak veya tek başına bir JSON şablonu kullanarak küme oluştururken istemciden düğüme Sertifika güvenliği ayarlayın. Sertifikayı oluşturmak için, bir yönetici istemci sertifikası veya bir kullanıcı istemci sertifikası belirtin. En iyi uygulama olarak, belirttiğiniz yönetici istemcisi ve Kullanıcı istemci sertifikaları, [düğümden düğüme güvenlik](#node-to-node-security)için belirttiğiniz birincil ve ikincil sertifikalardan farklı olmalıdır. Varsayılan olarak, düğümden düğüme güvenlik için küme sertifikaları izin verilen istemci Yöneticisi sertifikaları listesine eklenir.
+Azure portal, bir Kaynak Yöneticisi şablonu kullanarak veya tek başına bir JSON şablonu kullanarak küme oluştururken istemciden düğüme Sertifika güvenliği ayarlayın. Sertifikayı oluşturmak için, bir yönetici istemci sertifikası veya bir kullanıcı istemci sertifikası belirtin. En iyi uygulama olarak, belirttiğiniz yönetici istemcisi ve Kullanıcı istemci sertifikaları, [düğümden düğüme güvenlik](#node-to-node-security)için belirttiğiniz birincil ve ikincil sertifikalardan farklı olmalıdır. Küme sertifikaları, istemci yönetici sertifikalarıyla aynı haklara sahiptir. Bununla birlikte, yalnızca bir güvenlik en iyi uygulaması olarak yönetici kullanıcılar tarafından değil, yalnızca küme tarafından kullanılmalıdır.
 
 Yönetici sertifikasını kullanarak kümeye bağlanan istemciler, yönetim özelliklerine tam erişime sahiptir. Salt okuma Kullanıcı istemci sertifikasını kullanarak kümeye bağlanan istemciler yalnızca yönetim özelliklerine okuma erişimine sahiptir. Bu sertifikalar, bu makalenin ilerleyen kısımlarında açıklanan RBAC için kullanılır.
 
@@ -83,7 +83,7 @@ Azure 'da barındırılan ortak bir ağda dağıtılan Service Fabric kümeleri 
 Tek başına Windows Server kümeleri için Windows Server 2012 R2 ve Windows Active Directory varsa, grup yönetilen hizmet hesaplarıyla Windows güvenliği kullanmanızı öneririz. Aksi takdirde, Windows Güvenlik ile Windows hesaplarını kullanın.
 
 ## <a name="role-based-access-control-rbac"></a>Rol Tabanlı Erişim Denetimi (RBAC)
-Farklı Kullanıcı grupları için belirli küme işlemlerine erişimi sınırlandırmak için erişim denetimi kullanabilirsiniz. Bu, kümenin daha güvenli olmasına yardımcı olur. Bir kümeye bağlanan istemciler için iki erişim denetimi türü desteklenir: Yönetici rolü ve Kullanıcı rolü.
+Farklı Kullanıcı grupları için belirli küme işlemlerine erişimi sınırlandırmak için erişim denetimi kullanabilirsiniz. Bu, kümenin daha güvenli olmasına yardımcı olur. Bir kümeye bağlanan istemciler için iki erişim denetimi türü desteklenir: yönetici rolü ve Kullanıcı rolü.
 
 Yönetici rolüne atanan kullanıcıların, okuma ve yazma özellikleri dahil olmak üzere yönetim özelliklerine tam erişimi vardır. Kullanıcı rolüne atanan kullanıcılar varsayılan olarak, yönetim özelliklerine yalnızca okuma erişimine sahiptir (örneğin, sorgu özellikleri). Ayrıca, uygulama ve hizmetleri de çözümleyebilir.
 

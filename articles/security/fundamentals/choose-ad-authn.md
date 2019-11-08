@@ -2,19 +2,19 @@
 title: Azure AD karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin | Microsoft Docs
 description: Bu kılavuz, orta ve büyük ölçekli kuruluşlarda Azure AD karma kimlik çözümü için bir kimlik doğrulama yöntemi seçmekten sorumlu CEOs, Cıos, Cıos, kimlik mimarları, kuruluş mimarları ve güvenlik ve BT karar mekanizmalarına yardımcı olur.
 keywords: ''
-author: TerryLanfear
-ms.author: terrylan
+author: martincoetzer
+ms.author: martinco
 ms.date: 10/30/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 564175141a8076d2ac4324b0dccf02cc250a613c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 71b4a8abc641a3ab11d6b17bbc8de3b42b61c34c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621174"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820551"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin
 

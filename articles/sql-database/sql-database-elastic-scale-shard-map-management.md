@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanının ölçeğini genişletme
+title: Bir veritabanının ölçeğini genişletme
 description: ShardMapManager 'ı kullanma, elastik veritabanı istemci kitaplığı
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d704e22dcd9ce4442ed16ae901c9c447fc025ebd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8175563d8c1c2ec59b4195b2ede06f6e1dbf8556
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690160"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823553"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Parça eşleme Yöneticisi ile veritabanlarını genişletme
 
@@ -59,7 +59,7 @@ Elastik ölçek, aşağıdaki türleri parçalama anahtarları olarak destekler:
 | Byte []  |Byte [] |
 | datetime | timestamp |
 | TimeSpan | sürenin|
-| Türünde |offsetdatetime |
+| türünde |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Liste ve Aralık parça haritaları
 
@@ -97,8 +97,8 @@ Yukarıda gösterilen tabloların her biri, bir **Shardmap** nesnesine ilişkin 
 
 İstemci kitaplığında, parça eşleme Yöneticisi bir parça haritaları koleksiyonudur. Bir **Shardmapmanager** örneği tarafından yönetilen veriler üç yerde tutulur:
 
-1. **Küresel parça Haritası (GSM)** : tüm parça haritaları ve eşlemelerinin tümü için depo olarak kullanılacak bir veritabanı belirtirsiniz. Özel tablolar ve saklı yordamlar bilgileri yönetmek için otomatik olarak oluşturulur. Bu genellikle küçük bir veritabanıdır ve güvenle erişilir ve uygulamanın diğer ihtiyaçları için kullanılmamalıdır. Tablolar, **__Shardmanagement**adlı özel bir şemadır.
-2. **Yerel parça Haritası (LSM)** : parça olarak belirttiğiniz her veritabanı, bu parçaya özgü parça eşleme bilgilerini içeren ve yöneten birkaç küçük tablo ve özel saklı yordam içerecek şekilde değiştirilir. Bu bilgiler, GSM 'deki bilgilerle gereksizdir ve uygulamanın, GSM üzerinde herhangi bir yük yerleştirmeksizin önbelleğe alınmış parça eşleme bilgilerini doğrulamasını sağlar; uygulama, önbelleğe alınmış bir eşlemenin hala geçerli olup olmadığını anlamak için LSM 'yi kullanır. Her parçadaki LSM 'ye karşılık gelen tablolar da **__Shardmanagement**şemasında bulunur.
+1. **Küresel parça Haritası (GSM)** : tüm parça haritaları ve eşlemelerinin tümü için depo olarak kullanılacak bir veritabanı belirtirsiniz. Özel tablolar ve saklı yordamlar bilgileri yönetmek için otomatik olarak oluşturulur. Bu genellikle küçük bir veritabanıdır ve güvenle erişilir ve uygulamanın diğer ihtiyaçları için kullanılmamalıdır. Tablolar **__ShardManagement**adlı özel bir şemadır.
+2. **Yerel parça Haritası (LSM)** : parça olarak belirttiğiniz her veritabanı, bu parçaya özgü parça eşleme bilgilerini içeren ve yöneten birkaç küçük tablo ve özel saklı yordam içerecek şekilde değiştirilir. Bu bilgiler, GSM 'deki bilgilerle gereksizdir ve uygulamanın, GSM üzerinde herhangi bir yük yerleştirmeksizin önbelleğe alınmış parça eşleme bilgilerini doğrulamasını sağlar; uygulama, önbelleğe alınmış bir eşlemenin hala geçerli olup olmadığını anlamak için LSM 'yi kullanır. Her parçadaki LSM öğesine karşılık gelen tablolar da şema **__ShardManagement**.
 3. **Uygulama önbelleği**: bir **Shardmapmanager** nesnesine erişen her uygulama örneği, eşlemelerinizin yerel bir bellek içi önbelleğini korur. Yakın zamanda alınmış yönlendirme bilgilerini depolar.
 
 ## <a name="constructing-a-shardmapmanager"></a>ShardMapManager oluşturma

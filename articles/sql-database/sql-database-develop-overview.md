@@ -1,5 +1,5 @@
 ---
-title: SQL Veritabanı Uygulaması Geliştirmeye Genel Bakış
+title: Uygulama geliştirmeye genel bakış
 description: SQL Veritabanına bağlanan uygulamalar için kullanılabilen bağlantı kitaplıkları ve en iyi uygulamalar hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 02/07/2019
-ms.openlocfilehash: 58f823aad157657de5445b1010a405af01c70171
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: af657d28bc3052ebefe25ea54891b8d3555692c9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690634"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825831"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL veritabanı uygulaması geliştirmeye genel bakış
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 3243c8dfcfa83129f57bcd3ea7969fb4f8b07156
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4043fd374a314735173a1f07f46c8394592b81e2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690342"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823705"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanarak parça ekleme
 
@@ -28,7 +28,7 @@ Yeni anahtar değerleri aralığı zaten varolan bir eşlemenin parçası değil
 
 ### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Örnek: var olan parça eşlemesine parça ve onun aralığını ekleme
 
-Bu örnek, TryGetShard[(Java,](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard).net [),](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))createkıard[(Java, .net](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard) [),](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)createrangemapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) yöntemleri) kullanır ve bir shardlocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) örneği oluşturur sınıfı. Aşağıdaki örnekte, **sample_shard_2** adlı bir veritabanı ve içindeki tüm gerekli şema nesneleri [300, 400) aralığını tutacak şekilde oluşturulmuştur.  
+Bu örnek, TryGetShard[(Java,](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard).net [),](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))createkıard[(Java, .net](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard) [),](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)createrangemapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) yöntemleri) kullanır ve bir shardlocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) örneği oluşturur sınıfı. Aşağıdaki örnekte, **sample_shard_2** adlı bir veritabanı ve içindeki tüm gerekli şema nesneleri [300, 400) aralığını tutmak için oluşturulmuştur.  
 
 ```csharp
 // sm is a RangeShardMap object.

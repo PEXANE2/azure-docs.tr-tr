@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c59c5ba4e5447d01bb66b9f0ed2edcb948d34d40
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5ae6844cf11ffa095f56c429e17b9c39ad0c76aa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693071"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822913"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Öğretici: Azure SQL Veri Ambarı'na veri yükleme
 
@@ -61,7 +61,7 @@ Boş bir SQL veri ambarı oluşturmak için bu adımları izleyin.
    | ------- | --------------- | ----------- | 
    | **Veritabanı adı** | SampleDW | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers). | 
    | **Abonelik** | Aboneliğiniz  | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
-   | **Kaynak grubu** | SampleRG | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
+   | **Kaynak grubu** | SampleRG | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). |
    | **Kaynak seçme** | Boş veritabanı | Boş bir veritabanı oluşturulacağını belirtir. Veri ambarının bir veritabanı türü olduğuna dikkat edin.|
 
     ![veri ambarı oluşturma](media/load-data-wideworldimportersdw/create-data-warehouse.png)
@@ -70,7 +70,7 @@ Boş bir SQL veri ambarı oluşturmak için bu adımları izleyin.
 
     | Ayar | Önerilen değer | Açıklama | 
     | ------- | --------------- | ----------- |
-    | **Sunucu adı** | Genel olarak benzersiz bir ad | Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). | 
+    | **Sunucu adı** | Genel olarak benzersiz bir ad | Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). | 
     | **Sunucu yöneticisi oturum açma bilgileri** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).|
     | **Parola** | Geçerli bir parola | Parolanızda en az 8 karakter bulunmalı ve parolanız şu üç kategoriden karakterler içermelidir: büyük harf karakterler, küçük harf karakterler, sayılar ve alfasayısal olmayan karakterler. |
     | **Konum** | Geçerli bir konum | Bölgeler hakkında bilgi için bkz. [Azure Bölgeleri](https://azure.microsoft.com/regions/). |
@@ -959,7 +959,7 @@ Wwi. fact_Sale tablosunda milyonlarca satır oluşturmak için oluşturduğunuz 
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Wwi. fact_Sale öğesini 2000 yılında her gün için günde 100.000 satır ile doldurmak için bu yordamı çalıştırın.
+2. Wwi. fact_Sale, 2000 yılında her gün için günde 100.000 satır ile doldurmak için bu yordamı çalıştırın.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000

@@ -1,5 +1,5 @@
 ---
-title: Metin mesajlaşma-Azure Active Directory kullanmak için güvenlik bilgilerini ayarlama (Önizleme) | Microsoft Docs
+title: Metin iletileri için güvenlik bilgilerini ayarlama (Önizleme)-Azure AD
 description: Metin mesajlaşma ve mobil cihazınızı kullanarak kimliğinizi doğrulamak için güvenlik bilgilerinizi ayarlama.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3544094da72c1c0f854f3d02a34f8540ad2f784
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5a4be99a84964b7a55448692385d027262ecfec3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160876"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803832"
 ---
 # <a name="set-up-security-info-preview-to-use-text-messaging"></a>Metin iletilerini kullanmak için güvenlik bilgilerini ayarlama (Önizleme)
 
@@ -94,7 +94,7 @@ Artık metin iletilerini bir güvenlik bilgisi yöntemi olarak kullanmak istemiy
 
     ![Varsayılan oturum açma yöntemini seçin](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
-    Telefon metninde oturum açma değişiklikleri için kullanılan varsayılan yöntem **( *_your_phone_number_* )** .
+    **Telefon metni ( *_your_phone_number_* )** için oturum açma değişiklikleri için kullanılan varsayılan yöntem.
 
 ## <a name="additional-security-info-methods"></a>Ek güvenlik bilgileri yöntemleri
 

@@ -1,5 +1,5 @@
 ---
-title: SQL veritabanı için XEvent halka arabellek kodu
+title: XEvent halka arabellek kodu
 description: Azure SQL veritabanı 'nda halka arabelleği hedefini kullanarak kolay ve hızlı hale getirilen bir Transact-SQL kod örneği sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 8fd04cac394f05a9db18e84117a8647c1a17ba30
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7adffac045ddb2ba369993b1b805e3ce2304fb38
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686817"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822322"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL veritabanı 'nda genişletilmiş olaylar için halka arabelleği hedef kodu
 
@@ -27,7 +27,7 @@ Sınama sırasında genişletilmiş bir olay için en kolay hızlı bir şekilde
 Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 
 1. Göstermek üzere verileri içeren bir tablo oluşturur.
-2. Var olan genişletilmiş bir olay için bir oturum oluşturur; örneğin, **SqlServer. SQL _statement_starting**.
+2. Var olan genişletilmiş bir olay için, örneğin **SqlServer. sql_statement_starting**için bir oturum oluşturur.
    
    * Olay, belirli bir Update dize içeren SQL deyimleriyle sınırlıdır: **'% Update tabEmployee% ' gibi bir deyim**.
    * Olayın çıkışını halka arabelleği türünde bir hedefe göndermeyi seçer, yani **package0. ring_buffer**.
@@ -35,7 +35,7 @@ Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 4. Birkaç basit SQL UPDATE deyimi yayınlar.
 5. Halka arabelleğinden olay çıktısını almak için bir SQL SELECT ifadesiyle karşılaşır.
    
-   * **sys. DM _xe_database_session_targets** ve diğer dinamik yönetim görünümleri (DMVs) birleştirilir.
+   * **sys. dm_xe_database_session_targets** ve diğer dinamik yönetim görünümleri (DMVs) birleştirilir.
 6. Olay oturumunu sonlandırır.
 7. , Kaynaklarını serbest bırakmak için halka arabelleği hedefini bırakır.
 8. Olay oturumunu ve tanıtım tablosunu bırakır.
@@ -54,10 +54,10 @@ Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 
 ## <a name="code-sample"></a>Kod örneği
 
-Çok küçük değişikliklerle, aşağıdaki halka arabelleği kod örneği Azure SQL veritabanı veya Microsoft SQL Server üzerinde çalıştırılabilir. Bu fark, 5. adımdaki FROM yan tümcesinde kullanılan bazı dinamik yönetim görünümlerinin (DMVs) adında bulunan ' _database ' düğümünün varlığına sahip olur. Örneğin:
+Çok küçük değişikliklerle, aşağıdaki halka arabelleği kod örneği Azure SQL veritabanı veya Microsoft SQL Server üzerinde çalıştırılabilir. Bu fark, 5. adımdaki FROM yan tümcesinde kullanılan, bazı dinamik yönetim görünümlerinin (DMVs) adında bulunan ' _database ' düğümünün varlığına sahip olur. Örneğin:
 
-* sys. DM _XE<strong>_veritabanı</strong>_session_targets
-* sys. DM _xe_session_targets
+* sys. dm_xe<strong>_database</strong>_session_targets
+* sys. dm_xe_session_targets
 
 &nbsp;
 
@@ -218,9 +218,9 @@ GO
 
 Kod örneğini çalıştırmak için SSMS. exe ' yi kullandık.
 
-Sonuçları görüntülemek için **target_data_XML**sütun üst bilgisi altındaki hücreyi tıkladık.
+Sonuçları görüntülemek için **target_data_XML**sütun başlığı altındaki hücreyi tıkladık.
 
-Ardından sonuçlar bölmesinde, **target_data_XML**sütun başlığı altındaki hücreyi tıkladık. Bu, SSMS. exe ' de, sonuç hücresinin içeriğinin XML olarak görüntülendiği başka bir dosya sekmesi oluşturmuştur.
+Ardından sonuçlar bölmesinde, sütun üst bilgisi **target_data_XML**altındaki hücreyi tıkladık. Bu, SSMS. exe ' de, sonuç hücresinin içeriğinin XML olarak görüntülendiği başka bir dosya sekmesi oluşturmuştur.
 
 Çıktı aşağıdaki blokta gösterilmiştir. Uzun görünüyor ancak yalnızca iki **\<olay >** öğesi.
 

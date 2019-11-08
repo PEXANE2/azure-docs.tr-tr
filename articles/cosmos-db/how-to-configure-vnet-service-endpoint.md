@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1c81045408a948820c8b9fef56e2c7d69cd39e08
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: c399bed803145659bae1863e9e0b919f33254627
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811909"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820209"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) erişimi yapılandırma
 
@@ -68,7 +68,7 @@ Aboneliği kaynak sağlayıcısına kaydetme yönergeleri aşağıda verilmişti
 
    ![Yeni bir sanal ağ için bir sanal ağ ve alt ağ seçin](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-Azure Cosmos DB hesabınız Azure Search gibi diğer Azure hizmetleri tarafından kullanılıyorsa veya Stream Analytics veya Power BI 'e erişildiğinde, **Genel Azure veri merkezlerinden gelen bağlantıları kabul et**' i seçerek erişime izin verebilirsiniz.
+Azure Cosmos DB hesabınız Azure Bilişsel Arama gibi diğer Azure hizmetleri tarafından kullanılıyorsa veya Stream Analytics veya Power BI 'e erişildiğinde, **Genel Azure veri merkezlerinden gelen bağlantıları kabul et**' i seçerek erişime izin verebilirsiniz.
 
 Portaldan Azure Cosmos DB ölçümlerine erişiminizin olduğundan emin olmak için **Azure Portal seçeneklerinden erişime Izin ver** ' i etkinleştirmeniz gerekir. Bu seçenekler hakkında daha fazla bilgi edinmek için bkz. [IP güvenlik duvarı yapılandırma](how-to-configure-firewall.md) makalesi. Erişimi etkinleştirdikten sonra ayarları kaydetmek için **Kaydet** ' i seçin.
 

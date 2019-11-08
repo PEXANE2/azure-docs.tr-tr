@@ -4,15 +4,16 @@ description: Azure Tablo Depolaması 'nda lider yönetimini yapılandırın.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: a53ed93813215655c4a165faa0bce36d9249e8e6
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 21105d72ccd288faf0fed58019e67afe2e1c9d01
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227893"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825281"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>Tablo depolama için öncü yönetim yönergeleri
 
@@ -31,7 +32,7 @@ Bu makalede, satış fırsatlarını yönetmek için Azure Tablo depolamanın na
 
     Depolama hesapları hakkında daha fazla bilgi için bkz. [hızlı başlangıç öğreticileri](https://docs.microsoft.com/azure/storage/). Fiyatlandırma bilgileri için bkz. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
-1. Depolama Hesabınız sağlanana kadar bekleyin, genellikle birkaç dakika sürer. Ardından, Azure portal giriş sayfasından hesaba erişin: Gezinti bölmesindeki **Tüm kaynaklarınızı** veya **tüm kaynakları** göster ' i seçin.
+1. Depolama Hesabınız sağlanana kadar bekleyin, genellikle birkaç dakika sürer. Sonra, Azure portal giriş sayfasından hesaba erişin: **Tüm kaynaklarınızı** veya gezinti bölmesindeki **tüm kaynakları** görüntüle ' yi seçin.
 
     ![Azure depolama hesabınıza erişin](./media/cloud-partner-portal-lead-management-instructions-azure-table/azure-storage-access.png)
 
@@ -84,7 +85,7 @@ Bu örnek, temel akışın nasıl oluşturulacağını gösterir. Akış, yeni m
     ![Son tarihi al zaman aralığını ayarla](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getpast-time.png)
 
     >[!TIP] 
-    >Her adımın doğru yapılandırıldığını doğrulamak için akışınızı dilediğiniz zaman kontrol edebilirsiniz: Akış menü çubuğundan **akış denetleyicisi** ' ni seçin.
+    >Her adımın doğru yapılandırıldığını doğrulamak için akışınızı dilediğiniz zaman kontrol edebilirsiniz: Flow menü çubuğundan **Flow denetleyicisi** ' ni seçin.
 
 Sonraki adımlarda, depolama tablonuza bağlanır ve yeni müşteri adaylarını işlemek için işleme mantığını ayarlarsınız.
 
@@ -96,7 +97,7 @@ Sonraki adımlarda, depolama tablonuza bağlanır ve yeni müşteri adaylarını
 
      ![Azure Tablo adı için özel bir değer seçin](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **Filtre sorgusu**: Bu alanı seçtiğinizde, **son zaman al** simgesi açılır pencerede görüntülenir. Sorguyu filtrelemek için bu değeri bir zaman damgası olarak kullanmak üzere **geçmiş zamanı** seçin. Veya, alanına aşağıdaki işlevi yapıştırabilirsiniz:
+   - **Filtre sorgusu**: bu alanı seçtiğinizde, **son zaman al** simgesi açılır pencerede görüntülenir. Sorguyu filtrelemek için bu değeri bir zaman damgası olarak kullanmak üzere **geçmiş zamanı** seçin. Veya, alanına aşağıdaki işlevi yapıştırabilirsiniz:
    
       `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
 
@@ -111,7 +112,7 @@ Sonraki adımlarda, depolama tablonuza bağlanır ve yeni müşteri adaylarını
      ![Koşul denetimi ekleme](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
 
 1. **Koşul** penceresinde, **bir değer seçin**' i seçin ve ardından açılır pencerede **ifade** ' ı seçin.
-1. FX `length(body('Get_entities')?['value'])` alanına yapıştırın . Bu işlevi eklemek için **Tamam ' ı** seçin. 
+1. `length(body('Get_entities')?['value'])` ***FX*** alanına yapıştırın. Bu işlevi eklemek için **Tamam ' ı** seçin. 
 
 
 
@@ -132,8 +133,8 @@ Sonraki adımlarda, depolama tablonuza bağlanır ve yeni müşteri adaylarını
    1. **E-posta gönder** penceresinde, aşağıdaki alanlara bilgi girin:
 
       - **Kime**: bildirimi alacak herkese yönelik bir e-posta adresi.
-      - **Konu**: e-posta konusu. Örneğin: *Yeni müşteri adayları!*
-      - **Gövde**: her bir e-postaya dahil etmek istediğiniz metin (isteğe bağlı). Ayrıca, müşteri `body('Get_entities')?['value']` adayı bilgilerini eklemek için bir işlev olarak içine yapıştırın.
+      - **Konu**: e-posta konusu. Örneğin: *yeni müşteri adayları!*
+      - **Gövde**: her bir e-postaya dahil etmek istediğiniz metin (isteğe bağlı). Ayrıca, müşteri adayı bilgilerini eklemek için `body('Get_entities')?['value']` bir işlev olarak yapıştırın.
 
         >[!NOTE] 
         >E-postanın gövdesine ek statik veya dinamik veri noktaları ekleyebilirsiniz.
@@ -144,7 +145,7 @@ Sonraki adımlarda, depolama tablonuza bağlanır ve yeni müşteri adaylarını
 
     Aşağıdaki görüntüde, son akışın nasıl görüneceğine ilişkin bir örnek gösterilmektedir.
 
-    [![Son akış sırası](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
+    [![son akış sırası](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
 
     (*Büyütmek için görüntüyü seçin.* )
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL veritabanlarında analiz sorguları çalıştırma '
+title: Analiz sorguları çalıştırma
 description: Çok kiracılı bir uygulamadaki birden çok Azure SQL veritabanı veritabanından ayıklanan verileri kullanan çapraz kiracı Analizi sorguları.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 09/19/2018
-ms.openlocfilehash: 2044e72697526a1c757fa13aeffb85260a9b821e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 067afd09f942b8062825553a3cf90f715e8d3938
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691989"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822141"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Ayıklanan verileri kullanan çapraz kiracı analizi-çok kiracılı uygulama
  
@@ -108,7 +108,7 @@ Analiz deposu düğümünü genişleterek SSMS Nesne Gezgini aşağıdaki verita
 
 - Tablo **biletleri** , ham veri ve **olayları** , işlenmemiş veri tutan verileri kiracı veritabanlarından ayıklamalıdır.
 - Yıldız şeması tabloları **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**ve **dim_Dates**.
-- Ham veri tablolarından yıldız şeması tablolarını doldurmak için **sp_ShredRawExtractedData** saklı yordamı kullanılır.
+- **Sp_ShredRawExtractedData** saklı yordamı, yıldız şeması tablolarını ham veri tablolarından doldurmak için kullanılır.
 
 ![tenantAnalytics](media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
@@ -156,7 +156,7 @@ Sonraki adım, ayıklanan ham verilerin analiz sorguları için iyileştirilmiş
 2. SSMS 'de *. ..\Learning Modules\işletimsel Analtics\tenant Analtics\shredrawextracteddata.exe*dosyasını açın.
 3. Analiz deposunda sp_ShredRawExtractedData saklı yordamını çağıran bir işi tanımlamak üzere betiği çalıştırmak için **F5** ' e basın.
 4. İşin başarıyla çalışması için yeterli zaman yok.
-    - İş durumu için Jobs. jobs_execution tablosunun **yaşam döngüsü** sütununu kontrol edin. Devam etmeden önce işin **başarılı** olduğundan emin olun. Başarılı bir çalıştırma aşağıdaki grafiğe benzer verileri görüntüler:
+    - İş için işler. jobs_execution tablosunun **yaşam döngüsü** sütununu kontrol edin. Devam etmeden önce işin **başarılı** olduğundan emin olun. Başarılı bir çalıştırma aşağıdaki grafiğe benzer verileri görüntüler:
 
 ![shreddingJob](media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
@@ -179,7 +179,7 @@ Power BI bağlanmak ve daha önce oluşturduğunuz görünümleri içeri aktarma
 
     ![Databasesignın](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
-6. **Gezgin** bölmesinde, analiz veritabanı altında, yıldız şeması tablolarını seçin: Fact_Tickets, Dim_Events, Dim_Venues, Dim_Customers ve dim_Dates. Sonra **Yükle**' yi seçin. 
+6. **Gezgin** bölmesinde, analiz veritabanı altında, yıldız şema tablolarını seçin: fact_Tickets, dim_Events, dim_Venues, dim_Customers ve dim_Dates. Sonra **Yükle**' yi seçin. 
 
 Tebrikler! Verileri başarıyla Power BI yüklendi. Artık kiracılarınız hakkında öngörüler elde etmenize yardımcı olmak için ilginç görselleştirmeleri keşfetmeye başlayabilirsiniz. Ardından analizler tarafından, Wingtip bilet iş ekibine veri odaklı öneriler sağlamanıza nasıl olanak sağlayacağız. Öneriler, iş modelini ve müşteri deneyimini iyileştirmenize yardımcı olabilir.
 
@@ -209,7 +209,7 @@ Contoso Concert salonu için önceki çizimde, Mad aceleniz tüm olaylar için g
 
 Bilet satışı desenlerine yönelik Öngörüler, Wingtip biletlerinin iş modellerini iyileştirmesine neden olabilirler. Tüm kiracılar eşit olarak doldurulmak yerine, Wingtip, farklı işlem boyutlarına sahip hizmet katmanlarını göstermelidir. Günde daha fazla Bilet satmayı gerektiren daha büyük havalandırma noktaları, daha yüksek bir hizmet düzeyi sözleşmesi (SLA) ile daha yüksek bir katman sunulamaz. Bu havalandırma kaynakları, veritabanlarının veritabanlarına göre daha yüksek kaynak limitleriyle havuza yerleştirilmesini sağlayabilir. Her hizmet katmanında saatlik satış tahsisi olabilir ve bu da ayırmayı aşmamak için ek ücretler ücretlendirilir. Düzenli olarak elde edilen satışları olan büyük havalandırma noktaları, daha yüksek katmanlardan faydalanır ve Wingtip biletleri, hizmetini daha verimli bir şekilde kullanabilir.
 
-Bu arada, bazı Wingtip bilet müşterileri, hizmet maliyetini yaslamak için yeterli bilet satmaya uğraşır. Belki de bu içgörüler, anahtar satışlarına yönelik çağrı satışlarını artırma fırsatına sahiptir. Daha yüksek satış, hizmetin algılanan değerini artırır. Fact_Tickets sağ tıklayın ve **Yeni ölçü**seçeneğini belirleyin. **Averagebilet Ssold**adlı yeni ölçü için aşağıdaki ifadeyi girin:
+Bu arada, bazı Wingtip bilet müşterileri, hizmet maliyetini yaslamak için yeterli bilet satmaya uğraşır. Belki de bu içgörüler, anahtar satışlarına yönelik çağrı satışlarını artırma fırsatına sahiptir. Daha yüksek satış, hizmetin algılanan değerini artırır. Fact_Tickets sağ tıklayıp **Yeni ölçü**seçeneğini belirleyin. **Averagebilet Ssold**adlı yeni ölçü için aşağıdaki ifadeyi girin:
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))

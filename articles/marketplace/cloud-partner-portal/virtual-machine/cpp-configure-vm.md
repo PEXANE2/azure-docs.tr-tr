@@ -4,15 +4,16 @@ description: Azure 'da barındırılan bir VM 'nin nasıl boyutlandırılacağı
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 1270dff0bcb8de117247a454ab9c144250cfb17c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ce7fe49b07dc250a9f56ff73229e347b997f0cc0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880354"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824488"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Azure 'da barındırılan VM 'yi yapılandırma
 
@@ -43,7 +44,7 @@ Linux dağıtımları için güncelleştirmeler genellikle bir komut satırı ar
 
 ## <a name="perform-additional-security-checks"></a>Ek güvenlik denetimleri gerçekleştirme
 
-Azure Marketi 'nde çözüm görüntüleriniz için yüksek düzeyde güvenlik korumanız gerekir.  Aşağıdaki makalede, bu hedefte size yardımcı olacak güvenlik yapılandırmalarının ve yordamlarının bir denetim listesi sunulmaktadır: [Azure Market görüntüleri Için güvenlik önerileri](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Bu önerilerin bazıları Linux tabanlı görüntülere özgüdür, ancak çoğu sanal makine görüntüsü için geçerlidir. 
+Azure Marketi 'nde çözüm görüntüleriniz için yüksek düzeyde güvenlik korumanız gerekir.  Aşağıdaki makalede, bu hedefte size yardımcı olacak güvenlik yapılandırmalarının ve yordamlarının bir listesini bulabilirsiniz: [Azure Market görüntüleri Için güvenlik önerileri](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Bu önerilerin bazıları Linux tabanlı görüntülere özgüdür, ancak çoğu sanal makine görüntüsü için geçerlidir. 
 
 
 ## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Özel yapılandırma ve zamanlanmış görevler gerçekleştirme
@@ -57,7 +58,7 @@ Linux özelleştirmeleri hakkında daha fazla bilgi için bkz. [Linux Için sana
 
 ## <a name="generalize-the-image"></a>Görüntüyü genelleştirme
 
-Azure Marketi 'ndeki tüm görüntülerin genel bir biçimde yeniden kullanılabilir olması gerekir. Bu yeniden kullanılabilirlik elde etmek için, işletim sistemi VHD 'SI,bir VM 'den örneğe özgü tüm tanımlayıcıları ve yazılım sürücülerini kaldıran bir işlem olan genelleştirilmelidir.
+Azure Marketi 'ndeki tüm görüntülerin genel bir biçimde yeniden kullanılabilir olması gerekir. Bu yeniden kullanılabilirlik elde etmek için, işletim sistemi VHD 'SI, bir VM 'den örneğe özgü tüm tanımlayıcıları ve yazılım sürücülerini kaldıran bir işlem olan *genelleştirilmelidir*.
 
 ### <a name="windows"></a>Windows
 
@@ -76,8 +77,8 @@ Aşağıdaki iki adımlı işlem, bir Linux sanal makinesini genelleştirir ve a
 1.  SSH istemcisi kullanarak Linux sanal makinenize bağlanın.
 2.  SSH penceresinde, aşağıdaki komutu yazın: <br/>
     `sudo waagent -deprovision+user`
-3.  Devam `y` etmek için yazın. ( `-force` Parametresini önceki komuta ekleyebilirsiniz, bu onay adımından kaçının.)
-4.  Komut tamamlandıktan sonra SSH istemcisini kapatmak `exit` için yazın.
+3.  Devam etmek için `y` yazın. (`-force` parametresini önceki komuta ekleyebilirsiniz, bu onay adımından kaçının.)
+4.  Komut tamamlandıktan sonra SSH istemcisini kapatmak için `exit` yazın.
 
 <!-- TD: I need to add meat and/or references to the following steps -->
 #### <a name="capture-the-image"></a>Görüntüyü yakala
@@ -89,8 +90,8 @@ Aşağıdaki iki adımlı işlem, bir Linux sanal makinesini genelleştirir ve a
 
 VM kopyalarının oluşturulması genellikle yedekleme, test, özelleştirilmiş yük devretme veya yük dengeleme için, bir çözümün farklı yapılandırmalarının sunulmasını sağlamak için yararlıdır. Birincil VHD 'yi yineleme ve indirme hakkında daha fazla bilgi için, yönetilmeyen bir kopya oluşturmak üzere, bkz.:
 
-- Linux VM: [Azure 'dan bir Linux VHD indirin](../../../virtual-machines/linux/download-vhd.md)
-- Windows VM: [Azure 'dan bir Windows VHD indirin](../../../virtual-machines/windows/download-vhd.md)
+- Linux VM: [Azure 'dan bir LINUX VHD indirin](../../../virtual-machines/linux/download-vhd.md)
+- Windows VM: [Azure 'dan bir WINDOWS VHD indirin](../../../virtual-machines/windows/download-vhd.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
