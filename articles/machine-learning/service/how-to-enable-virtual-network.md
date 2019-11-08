@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: 2559a3cbd786c737b316a860e9c75434c6c719a4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e5dee838df2a60bf2038f2c7d2b1cc5958354d29
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576568"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796762"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak �
     - __Sanal ağlar__altında __var olan sanal ağ ekle__ bağlantısını seçin. Bu eylem, işlemin bulunduğu sanal ağı ekler (bkz. 1. adım).
 
         > [!IMPORTANT]
-        > Depolama hesabı, eğitim veya çıkarım için kullanılan not defteri VM 'Leri veya kümeleriyle aynı sanal ağda olmalıdır.
+        > Depolama hesabı, eğitim veya çıkarım için kullanılan kümeler ile aynı sanal ağda olmalıdır.
 
     - __Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver__ onay kutusunu seçin.
 
@@ -108,7 +108,7 @@ Bir sanal ağın arkasındaki Azure Key Vault Azure Machine Learning deneme yete
 
 ## <a name="use-a-machine-learning-compute"></a>Machine Learning İşlem kullanma
 
-Bir sanal ağda Azure Machine Learning bir not defteri VM 'si veya işlem kümesi kullanmak için aşağıdaki ağ gereksinimlerinin karşılanması gerekir:
+Bir sanal ağda Azure Machine Learning işlem kümesi kullanmak için aşağıdaki ağ gereksinimlerinin karşılanması gerekir:
 
 > [!div class="checklist"]
 > * Sanal ağın, Azure Machine Learning çalışma alanıyla aynı abonelikte ve bölgede olması gerekir.
@@ -156,8 +156,8 @@ Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın 
 - NSG kurallarını kullanarak giden internet bağlantısını reddedin.
 
 - Giden trafiği şu şekilde sınırlayın:
-   - __Storage. Region_Name__ __hizmet etiketi__ kullanılarak Azure depolama (örneğin, Storage. EastUS)
-   - __AzureContainerRegistry. Region_Name__ __hizmet etiketi__ kullanılarak Azure Container Registry (örneğin, AzureContainerRegistry. EastUS)
+   - Depolama alanı __hizmet etiketi__ kullanılarak Azure storage __. Region_Name__ (örneğin, Storage. EastUS)
+   - Azure Container Registry, __AzureContainerRegistry. Region_Name__ __hizmet etiketi__ kullanılarak (örneğin, AzureContainerRegistry. EastUS)
    - __AzureMachineLearning__ __hizmet etiketi__ kullanılarak Azure Machine Learning
 
 Azure portal NSG kural yapılandırması aşağıdaki görüntüde gösterilmektedir:
@@ -246,27 +246,6 @@ Oluşturma işlemi tamamlandığında, bir deneyde kümeyi kullanarak modelinizi
 
 <a id="vmorhdi"></a>
 
-### <a name="create-a-compute-instance-in-a-virtual-network"></a>Bir sanal ağda işlem örneği oluşturma
-
-Bir sanal ağda Azure Machine Learning işlem örneği oluşturun. Bir işlem örneği oluşturmak için aşağıdakileri yapın:
-
-1. Çalışma alanı Studio 'da sol bölmeden **işlem** ' i seçin.
-
-1. İşlem örnekleri **sekmesinde yeni ' yi seçerek yeni** bir işlem örneği oluşturmaya başlayın.
-
-1. Işlem adı ve sanal makine boyutu alanlarını ayarlayın ve SSH erişimini etkinleştirin/devre dışı bırakın.
-
-1. Bu işlem örneğini bir sanal ağ kullanacak şekilde yapılandırmak için aşağıdakileri yapın:
-
-    a.  **Gelişmiş ayarlar**' ı seçin.
-
-    b.  **Kaynak grubu** aşağı açılan listesinde, sanal ağı içeren kaynak grubunu seçin.
-
-    c.  **Sanal ağ** açılan listesinde, alt ağı içeren sanal ağı seçin.
-
-    d.  **Alt ağ** açılan listesinde, kullanılacak alt ağı seçin.
-
-1. Bir sanal ağ içinde bir işlem örneği sağlamak için **Oluştur** ' u seçin.
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Bir sanal makine veya HDInsight kümesi kullanma
 

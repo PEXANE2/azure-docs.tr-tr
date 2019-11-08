@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: 849c919950c57a1df3b0fb76021de6e10254c7b4
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: a818d84bf3df712190ccc6c1721c26933a9fbcdb
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286387"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73793932"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Soru-Cevap Oluşturma için Bilgi Bankası içeriğinin dil desteği
 
@@ -38,9 +38,9 @@ Dil seçimi, bir kaynakta ilk bilgi tabanının oluşturulması için adımları
 ![İlk bilgi tabanı için dil seçme 'nin Soru-Cevap Oluşturma portalı ekran görüntüsü](../media/language-support/select-language-when-creating-knowledge-base.png)
 
 ## <a name="query-matching-and-relevance"></a>Sorgu eşleştirme ve ilgisi
-Soru-Cevap Oluşturma, sonuçlar sağlamak için [Azure Search dil Çözümleyicileri](https://docs.microsoft.com/rest/api/searchservice/language-support) 'ne bağlıdır. 
+Soru-Cevap Oluşturma, sonuçları sağlamak için [Azure bilişsel arama dil Çözümleyicileri](https://docs.microsoft.com/rest/api/searchservice/language-support) 'ne bağlıdır. 
 
-Azure Search özellikleri desteklenen diller için eşit olsa da, soru-cevap oluşturma Azure Arama sonuçlarının üzerinde yer alan ek bir derecelendiricisini vardır. Bu derecelendiricisini modelinde, aşağıdaki dillerde bazı özel semantik ve Word tabanlı özellikleri kullanırız. 
+Azure bilişsel arama özellikleri desteklenen diller için eşit olsa da, soru-cevap oluşturma Azure Arama sonuçlarının üzerinde yer alan ek bir derecelendiricisini vardır. Bu derecelendiricisini modelinde, aşağıdaki dillerde bazı özel semantik ve Word tabanlı özellikleri kullanırız. 
 
 |Ek derecelendiricisini ile diller|
 |--|

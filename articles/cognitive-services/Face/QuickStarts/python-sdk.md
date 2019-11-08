@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Python için yüz istemci kitaplığı | Microsoft Docs'
-description: Python için yüz istemci kitaplığı ile çalışmaya başlama...
+description: Bu makalede, Python için yüz istemci kitaplığı ile çalışmaya başlamanıza yardımcı olacak, benzer, daha fazla bilgi, kimlik doğrulama, doğrulama ve daha fazlasını bulabilirsiniz.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: b265ec68039f03c09d45c9605965de8ce0baba99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9728ff86de8561c463886847494ecc4c1c007851
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935866"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743204"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Hızlı başlangıç: Python için yüz istemci kitaplığı
 
@@ -29,9 +29,9 @@ Python için yüz istemci kitaplığını kullanarak şunları yapın:
 * Yüzeyleri doğrula
 * Veri geçişi için bir anlık görüntü alın
 
-[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [paket (pıy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [örnek](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [paketi (pipy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [örnekleri](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Python 3. x](https://www.python.org/)
@@ -53,7 +53,7 @@ Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, `FACE_SU
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
-Daha sonra, kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. Son noktanın (`westus`) ilk bölümünü aboneliğinize uyacak şekilde değiştirmeniz gerekebilir.
+Daha sonra, kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. Aboneliğinizi eşleştirmek için uç noktanın (`westus`) ilk kısmını değiştirmeniz gerekebilir.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_subvars)]
 
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 Aşağıdaki sınıflar ve arabirimler, yüz Python SDK 'sının önemli özelliklerinden bazılarını işler.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
 |[Çok yönlü Işlemler](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
@@ -147,7 +147,7 @@ Aşağıdaki kod, üç farklı **kişi** nesnesi Ile bir **persongroup** oluştu
 
 Bu senaryoya geçmek için aşağıdaki görüntüleri projenizin kök dizinine kaydetmeniz gerekir: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
-Bu görüntü grubu üç farklı kişiye karşılık gelen üç yüz görüntüsü kümesini içerir. Kod, üç **kişi** nesnesini tanımlar ve bunları `woman`, `man` ve `child` ile başlayan resim dosyalarıyla ilişkilendirir.
+Bu görüntü grubu üç farklı kişiye karşılık gelen üç yüz görüntüsü kümesini içerir. Kod, üç **kişi** nesnesini tanımlar ve bunları `woman`, `man`ve `child`ile başlayan resim dosyalarıyla ilişkilendirir.
 
 Görüntülerinizi ayarladıktan sonra, oluşturduğunuz **Persongroup** nesnesi için betiğinizin en üstünde bir etiket tanımlayın.
 
@@ -262,7 +262,7 @@ Bu adımları tamamladıktan sonra, yeni (hedef) aboneliğinizden yüz veri yap�
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı hızlı başlangıç dosyanızda `python` komutuyla çalıştırın.
+Uygulamayı hızlı başlangıç dosyanızdaki `python` komutuyla çalıştırın.
 
 ```console
 python quickstart-file.py

@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 11/06/2019
 ms.author: tamram
-ms.openlocfilehash: 60104496006e790887dd9c4b3e4c3196e0ef6444
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671365"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748996"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Azure portal depolama hesabı ayarlarını yönetme
 
@@ -24,7 +24,7 @@ Azure depolama, rol tabanlı erişim denetimi (RBAC) aracılığıyla BLOB depol
 
 Azure portal **erişim denetimi** ayarları, kullanıcılara, gruplara, hizmet sorumlularına ve YÖNETILEN kimliklere RBAC rolleri atamak için basit bir yol sunar. RBAC rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ile blob ve kuyruk verileri için erişim haklarını yönetme](storage-auth-aad-rbac.md).
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>Etiketler
 
 Azure depolama, Azure kaynaklarınızı özelleştirilmiş bir taksonomi ile düzenlemek için Azure Resource Manager etiketlerini destekler. Depolama hesaplarınıza Etiketler uygulayarak bunları aboneliğinizde mantıksal bir biçimde gruplayabilirsiniz.
 
@@ -32,7 +32,7 @@ Depolama hesapları için, bir etiket adı 128 karakterle sınırlıdır ve bir 
 
 Daha fazla bilgi için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../../azure-resource-manager/resource-group-using-tags.md).
 
-## <a name="access-keys"></a>Erişim anahtarları
+## <a name="access-keys"></a>Erişim tuşları
 
 Bir depolama hesabı oluşturduğunuzda, Azure 2 512 bit depolama hesabı erişim anahtarları oluşturur. Bu anahtarlar, paylaşılan anahtar aracılığıyla depolama hesabınıza erişim yetkisi vermek için kullanılabilir. Uygulamalarınız için kesintiye uğramadan anahtarları döndürebilir ve yeniden oluşturabilirsiniz. Microsoft, bunu düzenli olarak yapmanızı önerir.
 

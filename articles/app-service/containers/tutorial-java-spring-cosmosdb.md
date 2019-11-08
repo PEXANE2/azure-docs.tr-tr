@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 582ed374e7895d0b99f25ac033d0d4b1ec99104c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 077c9b22dbb629c8408d431de3e2e621b79c9c48
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171483"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747683"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Öğretici: Linux ve Azure Cosmos DB üzerinde Azure App Service bir Java Spring Boot Web uygulaması oluşturun
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Kendi bilgisayarınızda yüklü olan [Azure CLI](https://docs.microsoft.com/cli/azure/overview). 
 * [Git](https://git-scm.com/)
@@ -71,7 +71,7 @@ Aboneliğinizde bir Azure Cosmos DB veritabanı oluşturmak için aşağıdaki a
         -l <your-resource-group-region>
     ```
 
-3. `GlobalDocumentDB` Tür ile Azure Cosmos DB oluşturun. Cosmos DB adı yalnızca küçük harf kullanımı kullanmalıdır. Komuttan gelen yanıttaki `documentEndpoint` alanı aşağı göz önünde edin.
+3. `GlobalDocumentDB` tür ile Azure Cosmos DB oluşturun. Cosmos DB adı yalnızca küçük harf kullanımı kullanmalıdır. Komutun yanıtında `documentEndpoint` alanı ' na göz önünde kalın.
 
     ```bash
     az cosmosdb create --kind GlobalDocumentDB \
@@ -79,7 +79,7 @@ Aboneliğinizde bir Azure Cosmos DB veritabanı oluşturmak için aşağıdaki a
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
     ```
 
-4. Uygulamaya bağlanmak için Azure Cosmos DB anahtarınızı alın. Bir sonraki adımda ihtiyacınız olacak şekilde yakınınızdasaklayın.`documentEndpoint` `primaryMasterKey`
+4. Uygulamaya bağlanmak için Azure Cosmos DB anahtarınızı alın. Bir sonraki adımda ihtiyacınız olacak şekilde `primaryMasterKey``documentEndpoint` tutun.
 
     ```bash
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
@@ -94,7 +94,7 @@ cd initial/spring-todo-app
 cp set-env-variables-template.sh .scripts/set-env-variables.sh
 ```
  
-En `.scripts/set-env-variables.sh` sevdiğiniz düzenleyicide düzenleyin ve Azure Cosmos DB bağlantı bilgilerini sağlayın. App Service Linux yapılandırması için, Cosmos db veritabanını oluştururken kullanılan (`your-resource-group-region`) ve kaynak grubu (`your-azure-group-name`) ile aynı bölgeyi kullanın. Herhangi bir Azure dağıtımında herhangi bir Web uygulaması adı yinelemediğinden benzersiz bir WEBAPP_NAME seçin.
+En sevdiğiniz düzenleyicide `.scripts/set-env-variables.sh` düzenleyin ve Azure Cosmos DB bağlantı bilgilerini sağlayın. App Service Linux yapılandırması için, Cosmos DB veritabanını oluştururken kullanılan (`your-resource-group-region`) ve kaynak grubu (`your-azure-group-name`) ile aynı bölgeyi kullanın. Herhangi bir Azure dağıtımında herhangi bir Web uygulaması adı yinelemediğinden benzersiz bir WEBAPP_NAME seçin.
 
 ```bash
 export COSMOSDB_URI=<put-your-COSMOS-DB-documentEndpoint-URI-here>
@@ -113,7 +113,7 @@ Sonra betiği çalıştırın:
 source .scripts/set-env-variables.sh
 ```
    
-Bu ortam değişkenleri, yapılacaklar listesi `application.properties` uygulamasında ' de kullanılır. Özellikler dosyasındaki alanlar yay verileri için varsayılan bir depo yapılandırması ayarlar:
+Bu ortam değişkenleri, YAPıLACAKLAR listesi uygulamasındaki `application.properties` kullanılır. Özellikler dosyasındaki alanlar yay verileri için varsayılan bir depo yapılandırması ayarlar:
 
 ```properties
 azure.cosmosdb.uri=${COSMOSDB_URI}
@@ -127,7 +127,7 @@ public interface TodoItemRepository extends DocumentDbRepository<TodoItem, Strin
 }
 ```
 
-Ardından örnek uygulama, Cosmos DB tarafından `@Document` depolanacak ve yönetilmek üzere bir varlık türü ayarlamak için öğesinden `com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document` içeri aktarılan ek açıklamayı kullanır:
+Ardından örnek uygulama, Cosmos DB tarafından depolanacak ve yönetilmek üzere bir varlık türü ayarlamak için `com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document` içeri aktarılan `@Document` ek açıklamasını kullanır:
 
 ```java
 @Document
@@ -171,11 +171,11 @@ Uygulama başlatıldıktan sonra Spring TODO uygulamasına bu bağlantıyı kull
 
  ![Spring TODO uygulamasına yerel olarak erişin](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-"Started TodoApplication" iletisi yerine özel durumlar görürseniz, önceki adımda bulunan `bash` betiğin ortam değişkenlerini doğru bir şekilde ve oluşturduğunuz Azure Cosmos DB veritabanı için doğru olduğundan emin olun.
+"Started TodoApplication" iletisi yerine özel durumlar görürseniz, önceki adımda `bash` betiğinin ortam değişkenlerini doğru bir şekilde ve oluşturduğunuz Azure Cosmos DB veritabanı için doğru olduğundan emin olun.
 
 ## <a name="configure-azure-deployment"></a>Azure dağıtımını yapılandırma
 
-Dosyayı dizinde açın ve [Azure App Service yapılandırma için aşağıdaki Maven eklentisini](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) ekleyin. `initial/spring-boot-todo` `pom.xml`
+`initial/spring-boot-todo` dizininde `pom.xml` dosyasını açın ve [Azure App Service yapılandırması için aşağıdaki Maven eklentisini](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) ekleyin.
 
 ```xml    
 <plugins> 
@@ -186,24 +186,38 @@ Dosyayı dizinde açın ve [Azure App Service yapılandırma için aşağıdaki 
        
     <plugin>
         <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-webapp-maven-plugin</artifactId>
-            <version>1.4.0</version>
-            <configuration>
-            <deploymentType>jar</deploymentType>
-            
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.8.0</version>
+        <configuration>
+            <schemaVersion>v2</schemaVersion>
+
             <!-- Web App information -->
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
-            
+
             <!-- Java Runtime Stack for Web App on Linux-->
-            <linuxRuntime>jre8</linuxRuntime>
-            
+            <runtime>
+                 <os>linux</os>
+                 <javaVersion>jre8</javaVersion>
+                 <webContainer>jre8</webContainer>
+             </runtime>
+             <deployment>
+                 <resources>
+                 <resource>
+                     <directory>${project.basedir}/target</directory>
+                     <includes>
+                     <include>*.jar</include>
+                     </includes>
+                 </resource>
+                 </resources>
+             </deployment>
+
             <appSettings>
                 <property>
                     <name>COSMOSDB_URI</name>
                     <value>${COSMOSDB_URI}</value>
-                </property>
+                </property> 
                 <property>
                     <name>COSMOSDB_KEY</name>
                     <value>${COSMOSDB_KEY}</value>
@@ -217,16 +231,16 @@ Dosyayı dizinde açın ve [Azure App Service yapılandırma için aşağıdaki 
                     <value>-Dserver.port=80</value>
                 </property>
             </appSettings>
-            
+
         </configuration>
-    </plugin>            
+    </plugin>           
     ...
 </plugins>
 ```
 
-## <a name="deploy-to-app-service-on-linux"></a>Linux üzerinde App Service'e dağıtma
+## <a name="deploy-to-app-service-on-linux"></a>Linux üzerinde App Service dağıtma
 
-`azure-webapp:deploy` Maven hedefini kullanarak, Todo uygulamasını Linux üzerinde Azure App Service için dağıtın.
+`azure-webapp:deploy` Maven hedefini kullanarak, TODO uygulamasını Linux üzerinde Azure App Service için dağıtın.
 
 ```bash
 
@@ -238,24 +252,27 @@ bash-3.2$ mvn azure-webapp:deploy
 [INFO] Building spring-todo-app 2.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- azure-webapp-maven-plugin:1.4.0:deploy (default-cli) @ spring-todo-app ---
-[INFO] Authenticate with Azure CLI 2.0
+[INFO] --- azure-webapp-maven-plugin:1.8.0:deploy (default-cli) @ spring-todo-app ---
 [INFO] Target Web App doesn't exist. Creating a new one...
 [INFO] Creating App Service Plan 'ServicePlanb6ba8178-5bbb-49e7'...
 [INFO] Successfully created App Service Plan.
 [INFO] Successfully created Web App.
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource to /home/test/e2e-java-experience-in-app-service-linux-part-2/initial/spring-todo-app/target/azure-webapp/spring-todo-app-61bb5207-6fb8-44c4-8230-c1c9e4c099f7
 [INFO] Trying to deploy artifact to spring-todo-app...
+[INFO] Renaming /home/test/e2e-java-experience-in-app-service-linux-part-2/initial/spring-todo-app/target/azure-webapp/spring-todo-app-61bb5207-6fb8-44c4-8230-c1c9e4c099f7/spring-todo-app-2.0-SNAPSHOT.jar to app.jar
+[INFO] Deploying the zip package spring-todo-app-61bb5207-6fb8-44c4-8230-c1c9e4c099f7718326714198381983.zip...
 [INFO] Successfully deployed the artifact to https://spring-todo-app.azurewebsites.net
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time: 02:19 min
-[INFO] Finished at: 2018-10-28T15:32:03-07:00
+[INFO] Finished at: 2019-11-06T15:32:03-07:00
 [INFO] Final Memory: 50M/574M
 [INFO] ------------------------------------------------------------------------
 ```
 
-Çıktı, dağıtılan uygulamanızın URL 'sini içerir (Bu örnekte, `https://spring-todo-app.azurewebsites.net` ). Uygulamanızı yüklemek için, bu URL 'YI Web tarayıcınıza kopyalayabilir veya Terminal pencerenizde aşağıdaki komutu çalıştırabilirsiniz.
+Çıktı, dağıtılan uygulamanızın URL 'sini içerir (Bu örnekte, `https://spring-todo-app.azurewebsites.net`). Uygulamanızı yüklemek için, bu URL 'YI Web tarayıcınıza kopyalayabilir veya Terminal pencerenizde aşağıdaki komutu çalıştırabilirsiniz.
 
 ```bash
 open https://spring-todo-app.azurewebsites.net
@@ -292,8 +309,8 @@ az group delete --name <your-azure-group-name>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Java geliştiricileri](/java/azure/)
-için Azure, Cosmos DB, [Azure Cosmos DB](/azure/cosmos-db/sql-api-introduction) ve [App Service Linux](app-service-linux-intro.md) [için veri Spring](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable)[Boot](https://spring.io/projects/spring-boot).
+[Java geliştiricileri Için Azure](/java/azure/)
+[spring Boot](https://spring.io/projects/spring-boot), [Cosmos DB için yay verileri](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable) [Azure Cosmos DB](/azure/cosmos-db/sql-api-introduction) ve [App Service Linux](app-service-linux-intro.md).
 
 Java uygulamalarını, Linux üzerinde App Service geliştirici kılavuzunda çalıştırma hakkında daha fazla bilgi edinin.
 

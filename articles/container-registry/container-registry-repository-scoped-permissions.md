@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: danlep
-ms.openlocfilehash: dbfadea9bc05614108333ef5a046e11b5280cc68
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7b9d220ac7e507513458eab6b55276b3aa434739
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588440"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742753"
 ---
 # <a name="repository-scoped-permissions-in-azure-container-registry"></a>Azure Container Registry içinde depo kapsamlı izinler 
 
@@ -28,9 +28,8 @@ Belirteç kavramları ve senaryolar hakkında arka plan için bu makalenin sonra
 
 ## <a name="preview-limitations"></a>Önizleme sınırlamaları
 
-* Bu özellik yalnızca bir **Premium** kapsayıcı kayıt defterinde kullanılabilir. Kayıt defteri hizmeti katmanları hakkında bilgi için bkz. [Azure Container Registry SKU 'lar](container-registry-skus.md).
+* Bu özellik yalnızca bir **Premium** kapsayıcı kayıt defterinde kullanılabilir. Kayıt defteri hizmeti katmanları ve limitleri hakkında bilgi için bkz. [Azure Container Registry SKU 'lar](container-registry-skus.md).
 * Şu anda, hizmet sorumlusu veya yönetilen kimlik gibi bir Azure Active Directory nesnesine depo kapsamlı izinler atayamazsınız.
-* Kayıt defteri en fazla 20.000 kapsam eşlemesi ve 20.000 belirteçlerine izin verir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: d554629c4a03b81ee3c04d27f6365c1a8734c952
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 47ff8870df7c89ee2ab3e48e064e31aa581f65f0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058190"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748641"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Zorlamalı tünel senaryosunda Windows etkinleştirme başarısız oluyor
 
@@ -38,7 +38,7 @@ Bu sorunu çözmek için etkinleştirme trafiğini Azure KMS sunucusuna yönlend
 
 Azure genel bulutu için KMS sunucusunun IP adresi 23.102.135.246 ' dir. DNS adı kms.core.windows.net ' dir. Azure Almanya gibi diğer Azure platformlarını kullanıyorsanız, karşılık gelen KMS sunucusunun IP adresini kullanmanız gerekir. Daha fazla bilgi için aşağıdaki tabloya bakın:
 
-|Platform| KMS DNS|KMS IP 'SI|
+|Platform| KMS DNS|KMS ıP 'SI|
 |------|-------|-------|
 |Azure genel|kms.core.windows.net|23.102.135.246|
 |Azure Almanya|kms.core.cloudapi.de|51.4.143.248|
@@ -50,7 +50,7 @@ Azure genel bulutu için KMS sunucusunun IP adresi 23.102.135.246 ' dir. DNS ad�
 
 ### <a name="for-resource-manager-vms"></a>Kaynak Yöneticisi VM 'Ler için
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 > [!NOTE] 
 > Etkinleştirme, genel IP adreslerini kullanır ve standart SKU Load Balancer yapılandırmasından etkilenecek. Gereksinimler hakkında bilgi edinmek için [Azure 'Daki giden bağlantıları](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) dikkatle gözden geçirin.

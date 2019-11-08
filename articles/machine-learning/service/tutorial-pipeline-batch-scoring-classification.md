@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: f693a80726c9185bbd75d5fb99eb7e5f3ccad987
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: ccd29952693ecbc1db5927d5deabae874b6e9933
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493510"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796705"
 ---
 # <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Toplu Puanlama için & oluşturma Azure Machine Learning işlem hattı kullanma
 
@@ -37,7 +37,7 @@ Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa, [Kurulum öğreticisinin 1. kısmını](tutorial-1st-experiment-sdk-setup.md)doldurun.
 * Kurulum öğreticisini tamamladığınızda, *Öğreticiler/Tutorial-Pipeline-Batch-Scoring-Classification. ipynb* Not defterini açmak için aynı not defteri sunucusunu kullanın.
@@ -480,7 +480,7 @@ published_pipeline
 
 Hizmet sorumlusu kimlik doğrulaması, *Azure Active Directory*bir *uygulama kaydı* oluşturulmasını içerir. İlk olarak, bir istemci parolası oluşturun ve ardından hizmet sorumlusu rolünüze Machine Learning çalışma alanınıza *erişim* verirsiniz. Kimlik doğrulama akışınızı yönetmek için [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) sınıfını kullanın. 
 
-Hem `InteractiveLoginAuthentication` hem de `ServicePrincipalAuthentication` `AbstractAuthentication`devralınır. Her iki durumda da `get_authentication_header()` işlevini, üstbilgiyi getirmek için aynı şekilde kullanın:
+Hem [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) hem de `ServicePrincipalAuthentication` `AbstractAuthentication`devralınır. Her iki durumda da [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) işlevini, üstbilgiyi getirmek için aynı şekilde kullanın:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -522,7 +522,7 @@ RunDetails(published_pipeline_run).show()
 
 Diğer Azure Machine Learning öğreticileri çalıştırmayı planlıyorsanız, bu bölümü tamammayın.
 
-### <a name="stop-the-compute-instance"></a>İşlem örneğini durdur
+### <a name="stop-the-notebook-vm"></a>Not defteri VM 'sini durdur
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 

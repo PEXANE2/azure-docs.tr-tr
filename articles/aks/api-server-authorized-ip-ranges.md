@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: 8418499cc3e094162ac7483aaa6c71e74db95ae1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 558c04be77f911f40be9e8880950d1670a3c169e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472970"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747754"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki yetkili IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim
 
@@ -25,7 +25,7 @@ Bu makalede, API sunucusu yetkilendirilmiş IP adresi aralıklarının hangi IP 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, [Kubernetes kullanan][kubenet]kullanan kümelerle çalıştığınızdan varsayılmaktadır.  [Azure Container Networking Interface (CNı)][cni-networking] tabanlı kümeler sayesinde, erişimi güvenli hale getirmek için gerekli yol tablosuna sahip değilsiniz.  Yol tablosunu el ile oluşturmanız gerekir.  Daha fazla bilgi için bkz. [Rota tablolarını yönetme](https://docs.microsoft.com/azure/virtual-network/manage-route-table) .
+Bu makalede, [Kubernetes kullanan][kubenet]kullanan kümelerle çalıştığınızdan varsayılmaktadır.  [Azure Container Networking Interface (CNı)][cni-networking] tabanlı kümeler sayesinde, erişimi güvenli hale getirmek için gerekli yol tablosuna sahip değilsiniz.  Yol tablosunu el ile oluşturmanız gerekir.  Rota tablolarını yönetme hakkında daha fazla bilgi için bkz. [yol tablosu oluşturma, değiştirme veya silme][route-tables].
 
 API sunucusu yetkilendirilmiş IP aralıkları yalnızca sizin oluşturduğunuz yeni AKS kümelerinde çalışır. Bu makalede, Azure CLı kullanarak bir AKS kümesinin nasıl oluşturulacağı gösterilmektedir.
 
@@ -41,60 +41,86 @@ API sunucusu yetkilendirilmiş IP aralıklarını yapılandırdığınızda aşa
 
 Kubernetes API sunucusu, temeldeki Kubernetes API 'Lerinin nasıl açığa çıkmasıdır. Bu bileşen, `kubectl` veya Kubernetes panosu gibi yönetim araçları için etkileşim sağlar. AKS, adanmış bir API sunucusuyla tek kiracılı bir Küme Yöneticisi sağlar. Varsayılan olarak, API sunucusuna bir genel IP adresi atanır ve rol tabanlı erişim denetimleri (RBAC) kullanarak erişimi kontrol etmelisiniz.
 
-Genel olarak erişilebilen AKS denetim düzlemi/API sunucusuna erişimi güvenli hale getirmek için, yetkilendirilmiş IP aralıklarını etkinleştirebilir ve kullanabilirsiniz. Bu yetkili IP aralıkları yalnızca tanımlı IP adresi aralıklarının API sunucusuyla iletişim kurmasına izin verir. Bu yetkili IP aralıklarının parçası olmayan bir IP adresinden API sunucusuna yapılan istek engellenir. Daha sonra kullanıcıları ve istediği eylemleri yetkilendirmek için RBAC kullanmaya devam etmelisiniz.
+Genel olarak erişilebilen AKS denetim düzlemi/API sunucusuna erişimi güvenli hale getirmek için, yetkilendirilmiş IP aralıklarını etkinleştirebilir ve kullanabilirsiniz. Bu yetkili IP aralıkları yalnızca tanımlı IP adresi aralıklarının API sunucusuyla iletişim kurmasına izin verir. Bu yetkili IP aralıklarının parçası olmayan bir IP adresinden API sunucusuna yapılan istek engellenir. Kullanıcıları ve istediği eylemleri yetkilendirmek için RBAC kullanmaya devam edin.
 
 API sunucusu ve diğer küme bileşenleri hakkında daha fazla bilgi için bkz. [AKS Için Kubernetes temel kavramları][concepts-clusters-workloads].
 
-## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
+## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>API sunucusu yetkilendirilmiş IP aralıkları etkin olan bir AKS kümesi oluşturma
 
-API sunucusu yetkilendirilmiş IP aralıkları yalnızca yeni AKS kümelerinde çalışır. Küme oluşturma işleminin parçası olarak yetkili IP aralıklarını etkinleştiremezsiniz. Küme oluşturma işleminin parçası olarak yetkili IP aralıklarını etkinleştirmeye çalışırsanız, çıkış IP adresi bu noktada tanımlanmadığı için küme düğümleri dağıtım sırasında API sunucusuna erişemez.
+API sunucusu yetkilendirilmiş IP aralıkları yalnızca yeni AKS kümelerinde çalışır. [Az aks Create][az-aks-create] ' i kullanarak bir küme oluşturun ve yetkili IP adresi aralıklarının bir listesini sağlamak için *--api-Server-yetkilendirilmiş-IP aralıkları* parametresini belirtin. Bu IP adresi aralıkları genellikle şirket içi ağlarınızda veya genel IP 'Lerde kullanılan adres aralıklarından oluşur. Bir CıDR aralığı belirttiğinizde, aralıktaki ilk IP adresi ile başlayın. Örneğin, *137.117.106.90/29* geçerli bir aralıktır, ancak ARALıKTAKI ilk IP adresini *137.117.106.88/29*gibi belirttiğinizden emin olun.
 
-İlk olarak, [az aks Create][az-aks-create] komutunu kullanarak bir küme oluşturun. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* adlı tek düğümlü bir küme oluşturur.
+> [!IMPORTANT]
+> Varsayılan olarak, kümeniz, giden ağ geçidini yapılandırmak için kullanabileceğiniz [Standart SKU yük dengeleyiciyi][standard-sku-lb] kullanır. Küme oluşturma sırasında API sunucusu yetkilendirilmiş IP aralıklarını etkinleştirdiğinizde, belirttiğiniz aralıklara ek olarak kümenizin genel IP 'sine de varsayılan olarak izin verilir. *""* Belirtirseniz veya *--api-Server-yetkilendirmesiz IP aralıkları*için değer yoksa, API sunucusu yetkilendirilmiş IP aralıkları devre dışı bırakılır.
+
+Aşağıdaki örnek, API sunucusu yetkilendirilmiş IP aralıkları etkin olan *Myresourcegroup* adlı kaynak grubunda *Myakscluster* adlı tek düğümlü bir küme oluşturur. İzin verilen IP adresi aralıkları *73.140.245.0/24*' dir:
 
 ```azurecli-interactive
-# Create an Azure resource group
-az group create --name myResourceGroup --location eastus
-
-# Create an AKS cluster
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 1 \
     --vm-set-type VirtualMachineScaleSets \
     --load-balancer-sku standard \
+    --api-server-authorized-ip-ranges 73.140.245.0/24 \
     --generate-ssh-keys
-
-# Get credentials to access the cluster
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
-```
-
-## <a name="update-cluster-with-authorized-ip-ranges"></a>Kümeyi yetkilendirilmiş IP aralıklarıyla Güncelleştir
-
-Varsayılan olarak, kümeniz, giden ağ geçidini yapılandırmak için kullanabileceğiniz [Standart SKU yük dengeleyiciyi][standard-sku-lb]kullanır. [Az Network public-ip List][az-network-public-ip-list] kullanın ve genellikle *Mc_* ile başlayan aks kümenizin kaynak grubunu belirtin. Bu, kümenizin genel IP 'sini görüntüler ve bu, izin verebilir. [Az aks Update][az-aks-update] komutunu kullanın ve kümenin IP 'sine izin vermek için *--api-Server-yetkilendirilmiş-IP aralıkları* parametresini belirtin. Örneğin:
-
-```azurecli-interactive
-RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-SLB_PublicIP=$(az network public-ip list --resource-group $RG --query [].ipAddress -o tsv)
-az aks update --api-server-authorized-ip-ranges $SLB_PublicIP --resource-group myResourceGroup --name myAKSCluster
-```
-
-API sunucusu yetkilendirilmiş IP aralıklarını etkinleştirmek için [az aks Update][az-aks-update] komutunu kullanın ve yetkili IP adresi aralıklarının listesini sağlamak için *--API-Server-yetkilendirilmiş-IP aralıkları* parametresini belirtin. Bu IP adresi aralıkları genellikle şirket içi ağlarınızda veya genel IP 'Lerde kullanılan adres aralıklarından oluşur. Bir CıDR aralığı belirttiğinizde, aralıktaki ilk IP adresi ile başlayın. Örneğin, *137.117.106.90/29* geçerli bir aralıktır, ancak ARALıKTAKI ilk IP adresini *137.117.106.88/29*gibi belirttiğinizden emin olun.
-
-Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* adlı kümede bulunan API sunucusu yetkili IP aralıklarını mümkün bir şekilde sunar. Yetkilendirmede kullanılacak IP adresi aralıkları *172.0.0.0/16* (pod/Nodes adres aralığı) ve *168.10.0.0/18* (ServiceCidr):
-
-```azurecli-interactive
-az aks update \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --api-server-authorized-ip-ranges 172.0.0.0/16,168.10.0.0/18
 ```
 
 > [!NOTE]
 > Bu aralıkları bir izin verilenler listesine eklemeniz gerekir:
 > - Güvenlik Duvarı genel IP adresi
-> - Hizmet CıDR
-> - Alt ağların, düğümler ve pod ile adres aralığı
 > - Kümeyi yönettiğiniz ağları temsil eden herhangi bir Aralık
+
+### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Standart SKU yük dengeleyici için giden IP 'Leri belirtin
+
+Bir AKS kümesi oluştururken, küme için giden IP adreslerini veya öneklerini belirtirseniz, bu adreslere veya öneklere de izin verilir. Örneğin:
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 1 \
+    --vm-set-type VirtualMachineScaleSets \
+    --load-balancer-sku standard \
+    --api-server-authorized-ip-ranges 73.140.245.0/24 \
+    --load-balancer-outbound-ips <publicIpId1>,<publicIpId2> \
+    --generate-ssh-keys
+```
+
+Yukarıdaki örnekte,- *-Load-dengeleyici-giden-IP-önekleri* parametresinde belirtilen tüm IP 'lerde, *--api-Server-yetkilendirilmiş-ip-Ranges* parametresindeki IP 'ler ile birlikte izin verilir.
+
+Alternatif olarak, giden yük dengeleyici IP öneklerine izin vermek için *--Load-dengeleyici-giden-IP-önekleri* parametresini de belirtebilirsiniz.
+
+### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Standart SKU yük dengeleyicisinin yalnızca giden genel IP 'si için izin ver
+
+Küme oluşturma sırasında API sunucusu yetkilendirilmiş IP aralıklarını etkinleştirdiğinizde, kümenizin standart SKU 'SU yük dengeleyiciye giden genel IP 'ye Ayrıca belirttiğiniz aralıklara ek olarak varsayılan olarak izin verilir. Standart SKU yük dengeleyicisinin yalnızca giden genel IP 'sine izin vermek için *--api-Server-yetkilendirilmiş-IP-Ranges* parametresini belirtirken *0.0.0.0/32* kullanın.
+
+Aşağıdaki örnekte, yalnızca standart SKU yük dengeleyicisine giden genel IP 'ye izin verilir ve API sunucusuna yalnızca küme içindeki düğümlerden erişebilirsiniz.
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 1 \
+    --vm-set-type VirtualMachineScaleSets \
+    --load-balancer-sku standard \
+    --api-server-authorized-ip-ranges 0.0.0.0/32 \
+    --generate-ssh-keys
+```
+
+## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>Kümenin API sunucusu yetkilendirilmiş IP aralıklarını güncelleştirme
+
+Var olan bir kümede API sunucusu yetkilendirilmiş IP aralıklarını güncelleştirmek için [az aks Update][az-aks-update] komutunu kullanın ve *--API-Server-yetkili-IP-aralıklarını*kullanın,- *-Load-dengeleyici-giden-IP-öneklerini*, *--Load-dengeleyiciden giden-IP 'leri*, ya da *--yük dengeleyici-giden-IP-önekleri* parametreleri.
+
+Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* adlı kümede bulunan API sunucusu yetkili IP aralıklarını güncelleştirir. Yetkilendirmek için IP adresi aralığı *73.140.245.0/24*' dir:
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --api-server-authorized-ip-ranges  73.140.245.0/24
+```
+
+Yalnızca standart SKU yük dengeleyicinin genel IP 'sine izin vermek için *--api-Server-yetkilendirilmiş-IP-Ranges* parametresini belirtirken *0.0.0.0/32* kullanabilirsiniz.
 
 ## <a name="disable-authorized-ip-ranges"></a>Yetkili IP aralıklarını devre dışı bırak
 
@@ -125,4 +151,5 @@ Daha fazla bilgi için bkz. [aks 'teki uygulamalar ve kümeler Için güvenlik k
 [concepts-security]: concepts-security.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[route-tables]: ../virtual-network/manage-route-table.md
 [standard-sku-lb]: load-balancer-standard.md

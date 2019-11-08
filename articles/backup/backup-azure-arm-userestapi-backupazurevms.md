@@ -1,6 +1,6 @@
 ---
 title: "Azure Backup: REST API kullanarak Azure VM 'lerini yedekleme"
-description: REST API kullanarak Azure VM yedeklemesi 'nin yedekleme işlemlerini yönetme
+description: Bu makalede, REST API kullanarak Azure VM yedeklemesi 'nin yedekleme işlemlerini yapılandırma, başlatma ve yönetme hakkında bilgi edinin.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 837401256aa264a527e2323b055713f4bd8e8d1c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 901ae66281e1d68474304a4f5456a0163fcb6f2a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671678"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747618"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak bir Azure VM 'yi yedekleme
 
@@ -108,13 +108,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *Get* URI 'sinin tüm gerekli parametreleri vardır. Ek istek gövdesi gerekli değildir.
 
-##### <a name="responses-1"></a>Lerinde
+#### <a name="responses-1"></a>Lerinde
 
 |Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 TAMAM     | [Workloadkorunabilir Tableıtemresourcelist](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       Tamam |
 
-##### <a name="example-responses-1"></a>Örnek yanıtlar
+#### <a name="example-responses-1"></a>Örnek yanıtlar
 
 *Get* isteği gönderildikten sonra bir 200 (Tamam) yanıtı döndürülür.
 
@@ -329,7 +329,7 @@ Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandı
 |---------|---------|---------|
 |202 kabul edildi     |         |     Eden    |
 
-##### <a name="example-responses-3"></a>Örnek yanıtlar
+#### <a name="example-responses-3"></a>Örnek yanıtlar
 
 İstek üzerine yedekleme için *Post* isteğini gönderdikten sonra, ilk yanıt bir konum üst bilgisi veya Azure-Async-header ile 202 (kabul edilir) olur.
 

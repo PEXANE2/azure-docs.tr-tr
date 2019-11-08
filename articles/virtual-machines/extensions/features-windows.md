@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e8543f1f6ef2cdf1695340b07dcbc51365a01a5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8d73a2dcd0aab3b972a3e0a9237e53d05d4a9a53
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438146"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750027"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
@@ -28,7 +28,7 @@ Azure sanal makinesi (VM) uzantıları, Azure VM 'lerinde dağıtım sonrası ya
 
 Bu makalede VM uzantılarına genel bakış, Azure VM uzantıları kullanma önkoşulları ve VM uzantılarının algılanması, yönetilmesi ve kaldırılması ile ilgili yönergeler sunulmaktadır. Bu makalede birçok VM Uzantısı kullanılabildiği için, her biri potansiyel olarak benzersiz bir yapılandırma olan Genelleştirilmiş bilgiler sağlanmaktadır. Uzantıya özgü ayrıntılar, tek tek uzantıya özgü her belge içinde bulunabilir.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="use-cases-and-samples"></a>Kullanım örnekleri ve örnekler
 
@@ -42,7 +42,7 @@ Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile k
 
 İşleme özgü uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel bir betik uzantısı vardır. Windows için özel Betik uzantısı, bir VM 'de herhangi bir PowerShell betiğinin çalıştırılmasını sağlar. Özel betikler, yerel Azure araçlarının sağlayabildiklerinin ötesinde yapılandırılması gereken Azure dağıtımlarını tasarlamak için yararlıdır. Daha fazla bilgi için bkz. [WINDOWS VM özel Betik uzantısı](custom-script-windows.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SANAL makinede uzantıyı işlemek için Azure Windows aracısının yüklü olması gerekir. Bazı ayrı uzantılar, kaynaklara veya bağımlılıklara erişim gibi önkoşullara sahiptir.
 
@@ -137,10 +137,10 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-@No__t-0 komutu herhangi bir VM uzantısını başlatmak için kullanılabilir. Daha fazla bilgi için bkz. [set-Azvmexgerme başvurusu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
+`Set-AzVMExtension` komutu herhangi bir VM uzantısını başlatmak için kullanılabilir. Daha fazla bilgi için bkz. [set-Azvmexgerme başvurusu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 VM uzantıları, mevcut bir VM 'ye Azure portal aracılığıyla uygulanabilir. Portalda VM 'yi seçin, **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
 
@@ -351,7 +351,7 @@ Aşağıdaki sorun giderme adımları tüm VM uzantıları için geçerlidir.
 
 1. Windows Konuk Aracısı günlüğünü denetlemek için, uzantınızın *C:\windowsazure\logs\waappagent.txt* dizininde sağlanması durumunda etkinliğe bakın
 
-2. *C:\windowsazure\logs\eklentiler @ no__t-1extensionName >* hakkında daha fazla bilgi için gerçek uzantı günlüklerine bakın
+2. *C:\windowsazure\logs\eklentiler\<extensionName >* hakkında daha fazla ayrıntı için gerçek uzantı günlüklerine bakın
 
 3. Hata kodları, bilinen sorunlar vb. için uzantıya özgü belge sorunlarını giderme bölümlerini denetleyin.
 

@@ -1,18 +1,18 @@
 ---
 title: Azure kurtarma hizmetleri kasalarını ve sunucularını yönetme
-description: Azure kurtarma hizmetleri kasasındaki işleri ve uyarıları yönetme.
+description: Bu makalede, kurtarma hizmetleri kasalarınızı izlemek ve yönetmek için kurtarma hizmetleri Kasası genel bakış panosunu nasıl kullanacağınızı öğrenin.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7e7312f942103125217c1f61ae8fe8007a49529b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a86af57f49b91615cc453946b0b5d51d22f2d163
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954756"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747451"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Kurtarma Hizmetleri kasalarını izleme ve yönetme
 
@@ -23,7 +23,6 @@ Bu makalede, kurtarma hizmetleri kasalarınızı izlemek ve yönetmek için kurt
 Bu makaleye yönelik önkoşullar: bir Azure aboneliği, bir kurtarma hizmetleri kasası ve kasa için yapılandırılmış en az bir yedekleme öğesi vardır.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
-
 
 ## <a name="open-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasasını açma
 
@@ -66,7 +65,7 @@ Kullanım kutucukları şunları sağlar:
 
 ![Kritik uyarılar için filtrelenmiş yedekleme uyarıları menüsü](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
-Yukarıdaki görüntüde bulunan yedekleme uyarıları menüsü şu şekilde filtrelenmiştir: Durum etkindir, önem derecesi kritik 'tir ve zaman önceki 24 saattir.
+Yukarıdaki görüntüde bulunan yedekleme uyarıları menüsü, şu şekilde filtrelenmiştir: durum etkindir, önem derecesi kritik ve zaman, önceki 24 saattir.
 
 ## <a name="manage-backup-alerts"></a>Yedekleme uyarılarını yönetme
 
@@ -84,8 +83,8 @@ Yedekleme uyarıları listesi, filtrelenmiş uyarılarla ilgili seçili bilgiler
 
 | Uyarı düzeyi | Uyarı üreten olaylar |
 | ----------- | ----------- |
-| Kritik | Şu durumlarda kritik uyarılar alırsınız: Yedekleme işleri başarısız olur, kurtarma işleri başarısız olur ve bir sunucuda korumayı durdurduğunuzda, ancak verileri koruyabilir.|
-| Uyarı | Şu durumlarda uyarı uyarısı alırsınız: Yedekleme işleri uyarılarla tamamlandı (örneğin, bozulma sorunları nedeniyle 100 'den az dosya yedeklenmemişse veya 1.000.000 ' den fazla dosya başarıyla yedekleniyorsa). |
+| Kritik | Yedekleme işleri başarısız olduğunda, kurtarma işleri başarısız olduğunda ve bir sunucuda korumayı durdurduğunuzda ancak verileri koruduğunuz zaman kritik uyarılar alırsınız.|
+| Uyarı | Şu durumlarda uyarı uyarısı alırsınız: yedekleme işleri uyarılarla tamamlandı, örneğin, bozulma sorunları nedeniyle 100 'den az dosya yedeklenmemişse veya 1.000.000 ' den fazla dosya başarıyla yedekleniyorsa). |
 | Bilgilendirici | Şu anda, hiçbir bilgilendirme uyarısı kullanımda değil. |
 
 ### <a name="viewing-alert-details"></a>Uyarı ayrıntılarını görüntüleme
@@ -99,9 +98,9 @@ Varsayılan olarak, **en son oluşum süresi**dışında tüm ayrıntılar rapor
 * Uyarı
 * Yedekleme öğesi
 * Korumalı sunucu
-* severity
-* Duration
-* Oluşturma zamanı
+* Severity
+* Süre
+* Oluşturulma Zamanı
 * Durum
 * En son oluşum zamanı
 
@@ -177,7 +176,7 @@ Kasa panosundaki **yedekleme işleri** kutucuğu, son 24 saat içinde sürmekte 
 
 ![Öğeleri ayarlardan yedekleme](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
 
-İşlerle ilgili ek ayrıntıları görmek için **devam** ' a tıklayın veya bu durum için filtrelenmiş yedekleme işleri menüsünü açamadı.
+İşlerle ilgili ek ayrıntıları görmek için **devam** ' a tıklayın veya bu durum Için filtrelenmiş yedekleme işleri **menüsünü açamadı.**
 
 ### <a name="backup-jobs-menu"></a>Yedekleme işleri menüsü
 
@@ -215,15 +214,15 @@ Filtreleri değiştirmek için:
 * Azure Storage
 * Azure iş yükü
 
-#### <a name="operation"></a>Çalışma
+#### <a name="operation"></a>İşlem
 
 Bir işlemi veya tüm işlemleri görüntüleyebilirsiniz. İki veya üç işlem seçemezsiniz. Kullanılabilir Işlemler şunlardır:
 
 * Tüm İşlemler
-* Kaydet
+* Kaydolma
 * Yedeklemeyi yapılandırma
-* Yedekle
-* Geri yükle
+* Backup
+* Geri Yükleme
 * Yedeklemeyi devre dışı bırak
 * Yedekleme verilerini silme
 
@@ -233,7 +232,7 @@ Tüm durumu veya birini görüntüleyebilirsiniz. İki veya üç durumu seçemez
 
 * Tüm durum
 * Tamamlandı
-* Sürüyor
+* Devam ediyor
 * Başarısız
 * İptal edildi
 * Uyarılarla tamamlandı
@@ -259,22 +258,22 @@ Panodaki yedekleme depolama kutucuğu, Azure 'da tüketilen depolamayı gösteri
 * Kasayla ilişkili bulut LRS depolama kullanımı
 * Kasayla ilişkili bulut GRS depolama alanı kullanımı
 
-
 ## <a name="troubleshooting-monitoring-issues"></a>Izleme sorunlarını giderme
 
 **Sorun:** Azure Backup aracısındaki işler ve/veya uyarılar portalda görünmez.
 
-**Sorun giderme adımları:** İşlem ```OBRecoveryServicesManagementAgent```, Azure Backup hizmetine iş ve uyarı verilerini gönderir. Bazen bu işlem, takılmış veya kapalı hale gelebilir.
+**Sorun giderme adımları:** ```OBRecoveryServicesManagementAgent```işlem, Azure Backup hizmetine iş ve uyarı verilerini gönderir. Bazen bu işlem, takılmış veya kapalı hale gelebilir.
 
-1. İşlemin çalışmadığını doğrulamak için, **Görev Yöneticisi**'ni açın ve denetleyin ```OBRecoveryServicesManagementAgent``` ' ı çalıştırın.
+1. İşlemin çalışmadığını doğrulamak için, **Görev Yöneticisi**'ni açın ve ```OBRecoveryServicesManagementAgent``` çalışıp çalışmadığını denetleyin.
 
 2. İşlem çalışmıyorsa, **Denetim Masası**'nı açın ve hizmetler listesine gözatamazsınız. **Microsoft Azure Kurtarma Hizmetleri yönetim aracısını**başlatın veya yeniden başlatın.
 
     Daha fazla bilgi için şu adreste günlüklere gözatamazsınız:<br/>
-   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`Örneğin:<br/>
+   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` örneğin:<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Windows Server veya Windows Istemcisini Azure 'dan geri yükleme](backup-azure-restore-windows-server.md)
 * Azure Backup hakkında daha fazla bilgi edinmek için bkz. [Azure Backup genel bakış](backup-introduction-to-azure-backup.md)
 * [Azure Backup forumunu](https://go.microsoft.com/fwlink/p/?LinkId=290933) ziyaret edin

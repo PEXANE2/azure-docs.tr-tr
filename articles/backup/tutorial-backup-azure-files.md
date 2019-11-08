@@ -1,44 +1,49 @@
 ---
 title: Azure dosya dosya paylaşımlarını Azure Backup hizmetiyle yedekleme
-description: Bu öğreticide, Azure dosya paylaşımlarının nasıl yedekleneceği açıklanmaktadır.
+description: Bu öğreticide, bir kurtarma hizmetleri Kasası yapılandırmak ve Azure dosya paylaşımlarını yedeklemek için Azure portal nasıl kullanacağınızı öğrenin.
 author: dcurwin
 ms.author: dacurwin
 ms.date: 06/10/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: e63ad75effb03cf9dd5eb5c66b142cce629ea290
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a8b08f87441f9b4c67f718dfe9f0c894d0730a5f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736245"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747059"
 ---
-# <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Azure portalında Azure dosya paylaşımlarını yedekleme
+# <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Azure portal Azure dosya paylaşımlarını yedekleme
+
 Bu öğreticide, [Azure dosya paylaşımlarını](../storage/files/storage-files-introduction.md)yedeklemek için Azure Portal nasıl kullanılacağı açıklanmaktadır.
 
 Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
+>
 > * Azure Dosyalarını yedeklemek için Kurtarma Hizmetleri kasasını yapılandırma
 > * Geri yükleme noktası oluşturmak için isteğe bağlı yedekleme işini çalıştırma
 
+## <a name="prerequisites"></a>Ön koşullar
 
-## <a name="prerequisites"></a>Önkoşullar
 Azure dosya paylaşımını yedekleyebilmeniz için önce [desteklenen Depolama Hesabı türlerinden](tutorial-backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview) birinde yer aldığından emin olmalısınız. Bunu doğruladıktan sonra dosya paylaşımlarınızı koruyabilirsiniz.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Önizleme sırasında Azure dosya paylaşma yedeklemesi için sınırlamalar
+
 Azure dosya paylaşımları için yedekleme önizlemede sunulmaktadır. Hem genel amaçlı v1 hem de genel amaçlı v2 depolama hesaplarında Azure dosya paylaşımları desteklenir. Aşağıdaki yedekleme senaryoları, Azure dosya paylaşımları için desteklenmemektedir:
-- Sanal Ağların veya Güvenlik Duvarının etkin olduğu depolama hesaplarında Azure dosya paylaşımlarını koruyamazsınız.
-- Azure Backup kullanarak Azure dosyalarını korumak için kullanılabilir CLı yoktur.
-- Günlük zamanlanan maksimum yedekleme sayısı birdir.
-- Günlük zamanlanan maksimum istek üzerine yedekleme sayısı dörttür.
-- Kurtarma Hizmetleri kasanızdaki yedeklemelerin yanlışlıkla silinmesini önlemek için depolama hesabındaki [kaynak kilitlerini](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) kullanın.
-- Azure Backup tarafından oluşturulan anlık görüntülerin silmeyin. Anlık görüntülerin silinmesi, kurtarma noktalarının kaybolması ve/veya geri yükleme işlemlerinin başarısız olmasıyla sonuçlanabilir
-- Azure Backup tarafından korunan dosya paylaşımlarını silmeyin. Geçerli çözüm, dosya paylaşımının silindiği ve bu nedenle tüm geri yükleme noktalarını kaybetmesine Azure Backup tarafından alınan tüm anlık görüntüleri siler
+
+* Sanal Ağların veya Güvenlik Duvarının etkin olduğu depolama hesaplarında Azure dosya paylaşımlarını koruyamazsınız.
+* Azure Backup kullanarak Azure dosyalarını korumak için kullanılabilir CLı yoktur.
+* Günlük zamanlanan maksimum yedekleme sayısı birdir.
+* Günlük zamanlanan maksimum istek üzerine yedekleme sayısı dörttür.
+* Kurtarma Hizmetleri kasanızdaki yedeklemelerin yanlışlıkla silinmesini önlemek için depolama hesabındaki [kaynak kilitlerini](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) kullanın.
+* Azure Backup tarafından oluşturulan anlık görüntülerin silmeyin. Anlık görüntülerin silinmesi, kurtarma noktalarının kaybolması ve/veya geri yükleme işlemlerinin başarısız olmasıyla sonuçlanabilir
+* Azure Backup tarafından korunan dosya paylaşımlarını silmeyin. Geçerli çözüm, dosya paylaşımının silindiği ve bu nedenle tüm geri yükleme noktalarını kaybetmesine Azure Backup tarafından alınan tüm anlık görüntüleri siler
 
 [Bölge yedekli depolama](../storage/common/storage-redundancy-zrs.md) (ZRS) çoğaltması Ile depolama hesaplarında Azure dosya paylaşımları için yedekleme şu anda yalnızca Orta ABD (cu düzeyinde kapsanır), Doğu ABD (EUS), Doğu ABD 2 (EUS2), Kuzey Avrupa (ne), Güneydoğu Asya (SEA), Batı Avrupa (we) ve Batı ABD 2 (WUS2) ' de kullanılabilir.
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Azure dosya paylaşımı için yedeklemeyi yapılandırma
+
 Bu öğreticide zaten yerleşik bir Azure dosya paylaşımınız olduğu varsayılır. Azure dosya paylaşımınızı yedeklemek için:
 
 1. Dosya paylaşımınızla aynı bölgede bir Kurtarma Hizmetleri kasası oluşturun. Zaten bir kasanız varsa, kasanızın Genel Bakış sayfasını açın ve **Yedekle**'ye tıklayın.
@@ -70,8 +75,8 @@ Bu öğreticide zaten yerleşik bir Azure dosya paylaşımınız olduğu varsay�
     Yedekleme ilkesi oluşturulduktan sonra, planlanan zamanda Dosya Paylaşımlarının anlık görüntüsü alınır ve seçilen süre için kurtarma noktası korunur.
 
 ## <a name="create-an-on-demand-backup"></a>İsteğe bağlı yedekleme oluşturma
-Yedekleme ilkesini yapılandırdıktan sonra, verilerinizin bir sonraki zamanlanmış yedeklemeye kadar korunmasını sağlamak için isteğe bağlı bir yedekleme oluşturmak isteyeceksiniz.
 
+Yedekleme ilkesini yapılandırdıktan sonra, verilerinizin bir sonraki zamanlanmış yedeklemeye kadar korunmasını sağlamak için isteğe bağlı bir yedekleme oluşturmak isteyeceksiniz.
 
 ### <a name="to-create-an-on-demand-backup"></a>İsteğe bağlı yedekleme oluşturmak için
 
@@ -91,12 +96,12 @@ Yedekleme ilkesini yapılandırdıktan sonra, verilerinizin bir sonraki zamanlan
 
    ![Kurtarma noktası bekletme için tarih seçin](./media/backup-file-shares/backup-now-menu.png)
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, Azure portalı kullanarak şu işlemleri gerçekleştirdiniz:
 
 > [!div class="checklist"]
+>
 > * Azure Dosyalarını yedeklemek için Kurtarma Hizmetleri kasasını yapılandırma
 > * Geri yükleme noktası oluşturmak için isteğe bağlı yedekleme işini çalıştırma
 
@@ -104,4 +109,3 @@ Bir Azure dosya paylaşımının yedeğinden geri yüklemek için sonraki makale
 
 > [!div class="nextstepaction"]
 > [Azure dosya paylaşımlarının yedeğinden geri yükleme](./backup-azure-files.md#restore-from-backup-of-azure-file-share)
- 

@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 71e4b62ddcb3f144b49b99e6ba95a47971d3f4bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 12e9367ca9e330806af4c7cc5db626edddff5c25
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476952"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795231"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar
 Bu belgede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure limitlerin bazıları listelenir. Bu belge şu anda tüm Azure hizmetlerini kapsamıyor. Zamanla, liste genişletilir ve daha fazla hizmeti kapsayacak şekilde güncelleştirilir.
@@ -48,6 +48,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Otomasyon](#automation-limits)
 * [Redis için Azure Önbelleği](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
+* [Azure Bilişsel Arama](#azure-cognitive-search-limits)
 * [Azure Bilişsel Hizmetler](#azure-cognitive-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [MySQL için Azure Veritabanı](#azure-database-for-mysql)
@@ -60,7 +61,6 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Azure Haritalar](#azure-maps-limits)
 * [Azure İzleyici](#azure-monitor-limits)
 * [Azure İlkesi](#azure-policy-limits)
-* [Azure Search](#azure-search-limits)
 * [Azure SignalR hizmeti](#azure-signalr-service-limits)
 * [Backup](#backup-limits)
 * [Batch](#batch-limits)
@@ -106,7 +106,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [SQL Veri Ambarı](#sql-data-warehouse-limits)
 * [Depolama](#storage-limits)
 * [StorSimple sistemi](#storsimple-system-limits)
-* [Stream Analytics](#stream-analytics-limits)
+* [Akış Analizi](#stream-analytics-limits)
 * [Abonelik](#subscription-limits)
 * [Sanal Makineler](#virtual-machines-limits)
 * [Sanal makine ölçek kümeleri](#virtual-machine-scale-sets-limits)
@@ -270,7 +270,7 @@ MySQL için Azure veritabanı limitleri için bkz. [MySQL Için Azure veritaban�
 ### <a name="azure-database-for-postgresql"></a>PostgreSQL için Azure Veritabanı
 PostgreSQL için Azure veritabanı limitleri için bkz. [PostgreSQL Için Azure veritabanı sınırlamaları](postgresql/concepts-limits.md).
 
-### <a name="azure-search-limits"></a>Azure Search sınırları
+### <a name="azure-cognitive-search-limits"></a>Azure Bilişsel Arama limitleri
 Fiyatlandırma katmanları, arama hizmetinizin kapasitesini ve sınırlarını tespit edin. Katmanlar şunları içerir:
 
 * Diğer Azure aboneleri ile paylaşılan **ücretsiz** çok kiracılı hizmet, değerlendirme ve küçük geliştirme projelerine yöneliktir.
@@ -285,7 +285,7 @@ Fiyatlandırma katmanları, arama hizmetinizin kapasitesini ve sınırlarını t
 
 [!INCLUDE [azure-search-limits-per-service](../includes/azure-search-limits-per-service.md)]
 
-Belge boyutu, saniye başına sorgu, anahtar, istek ve yanıt gibi daha ayrıntılı bir düzeyde sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure Search hizmet limitleri](search/search-limits-quotas-capacity.md).
+Belge boyutu, saniye başına sorgu, anahtar, istek ve yanıt gibi daha ayrıntılı bir düzeyde sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure bilişsel arama hizmet limitleri](search/search-limits-quotas-capacity.md).
 
 ### <a name="media-services-limits"></a>Media Services sınırları
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]

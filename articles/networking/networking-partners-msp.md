@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 089d54a2aae288511a283dfb28b03efa34c33b53
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 83c3c72ad189720b8f0aa554b7804b55f3488b83
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715448"
+ms.locfileid: "73747957"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ağ MSP iş ortakları hakkında
 
@@ -28,7 +28,7 @@ Müşteriler, Azure Market 'te veya doğrudan MSP 'den MSP ile yönetilen hizmet
 
 Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetleri hakkında daha fazla bilgi için bu bölümdeki bağlantıları kullanın. Bulut ağ hizmetleri ortağınız aşağıdaki bölümde listelenmiyorsa, sağlayıcının bizimle iletişim kurun. ManagedVirtualWAN@microsoft.comadresine bir e-posta göndererek bizimle iletişim kurabilirler. 
 
-| **MSP** | **Bulut ağı dönüştürme Hizmetleri** | **Yönetilen ExpressRoute** | **Yönetilen sanal WAN** | **Yönetilen güvenlik duvarı** |**Yönetilen ağ Edge Işlem** |
+| **MSP** | **Bulut ağı dönüştürme Hizmetleri** | **Yönetilen ExpressRoute** | **Yönetilen sanal WAN** | **Yönetilen ağ güvenlik hizmetleri** |**Yönetilen ağ Edge Işlem** |
 | ---| ---| ---| ---| ---| ---|
 |[Amdocs](https://www.amdocs.com/)|||||Evet|
 |[ANS grubu UK](https://www.ans.co.uk/)|Evet|Evet||||
