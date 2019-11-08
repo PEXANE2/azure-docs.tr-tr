@@ -1,5 +1,5 @@
 ---
-title: Uygulamalarım portalından profilinizi ve hesap bilgilerinizi güncelleştirme-Azure Active Directory | Microsoft Docs
+title: My Apps Portalındaki profilinizi ve hesabınızı güncelleştirme-Azure AD
 description: Parolanızı değiştirme, parola sıfırlamayı açma, güvenlik doğrulama yöntemlerinizi güncelleştirme, kuruluşunuzun kullanım koşullarını görüntüleme ve oturumunu kapatma dahil olmak üzere profilinizi ve iş veya okul hesabı bilgilerinizi güncelleştirmeyi öğrenin. iş veya okul hesabınızı kullanarak oturum açtığınız her yerde.
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4416b35d2e2204cec2a9ffe2f50e92983d6204c0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160757"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820375"
 ---
-# <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Uygulamalarım portalından profilinizi ve hesap bilgilerinizi güncelleştirme
+# <a name="update-your-profile-and-account-info-on-the-my-apps-portal"></a>Uygulamalarım portalındaki profilinizi ve hesap bilgilerinizi güncelleştirme
 
 İş veya okul hesabınızı Web tabanlı **My Apps** portalından kullanarak kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyip başlatabilir, profil ve hesap bilgilerinizin bazılarını güncelleştirebilir, **gruplarınızın** bilgilerini görebilir ve şunları yapabilirsinizUygulamalarınız ve gruplarınız için erişim gözden geçirmeleri. **Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
 

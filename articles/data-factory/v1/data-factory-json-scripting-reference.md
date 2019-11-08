@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: bade2e7ac53277b2e23e8cf6847cc30940cd4819
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b72be7026b0b8077cf5bf9f775d10fd03edd9118
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666822"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815632"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory-JSON betik başvurusu
 > [!NOTE]
@@ -318,7 +318,7 @@ Aşağıdaki tabloda **kullanılabilirlik** bölümünde kullanabileceğiniz öz
 | --- | --- | --- | --- |
 | frequency |Veri kümesi dilimi üretiminin zaman birimini belirtir.<br/><br/><b>Desteklenen sıklık</b>: dakika, saat, gün, hafta, ay |Evet |NA |
 | interval |Sıklık için bir çarpan belirtir<br/><br/>"Sıklık x Interval", dilimin ne sıklıkta üretildiğini belirler.<br/><br/>Veri kümesinin saatlik olarak dilimlendirilecekliğine ihtiyaç duyuyorsanız <b>Sıklık</b> değerini <b>Hour</b>ve <b>Interval</b> değerini <b>1</b>olarak ayarlarsınız.<br/><br/><b>Note</b>: sıklık değerini dakika olarak belirtirseniz, aralığı 15 ' ten az olmayacak şekilde ayarlamanız önerilir |Evet |NA |
-| Biçim |Dilimin aralığın başlangıcında/sonunda üretilmesi gerekip gerekmediğini belirtir.<ul><li>StartOfInterval</li><li>Endofınterval</li></ul><br/><br/>Sıklık değeri month olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim ayın son gününde oluşturulur. Stil StartOfInterval olarak ayarlandıysa, dilim ayın ilk gününde oluşturulur.<br/><br/>Sıklık, gün olarak ayarlanır ve stil, Endofınterval olarak ayarlanırsa, dilim günün son saati içinde oluşturulur.<br/><br/>Sıklık değeri Hour olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim saatin sonunda üretilir. Örneğin, 1 PM – 2 dönemi için dilim için dilim 2 PM 'de oluşturulur. |Hayır |Endofınterval |
+| biçim |Dilimin aralığın başlangıcında/sonunda üretilmesi gerekip gerekmediğini belirtir.<ul><li>StartOfInterval</li><li>Endofınterval</li></ul><br/><br/>Sıklık değeri month olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim ayın son gününde oluşturulur. Stil StartOfInterval olarak ayarlandıysa, dilim ayın ilk gününde oluşturulur.<br/><br/>Sıklık, gün olarak ayarlanır ve stil, Endofınterval olarak ayarlanırsa, dilim günün son saati içinde oluşturulur.<br/><br/>Sıklık değeri Hour olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim saatin sonunda üretilir. Örneğin, 1 PM – 2 dönemi için dilim için dilim 2 PM 'de oluşturulur. |Hayır |Endofınterval |
 | anchorDateTime |Veri kümesi dilim sınırlarını hesaplamak için Zamanlayıcı tarafından kullanılan mutlak konumu tanımlar. <br/><br/><b>Note</b>: anchordatetime değerinin sıklığından daha ayrıntılı olan tarih bölümleri varsa, daha ayrıntılı parçalar yok sayılır. <br/><br/>Örneğin, <b>Aralık</b> <b>saatlik</b> (sıklık: Hour ve Interval: 1) ve <b>anchordatetime</b> değeri <b>dakika ve saniye</b> içeriyorsa, anchordatetime değerinin <b>dakika ve saniye</b> kısımları yok sayılır. |Hayır |01/01/0001 |
 | konumu |Tüm veri kümesi dilimlerinin başlangıcını ve bitişini kaydırılan zaman aralığı. <br/><br/><b>Note</b>: hem anchordatetime hem de kaydır belirtilirse, sonuç Birleşik kaydırmadır. |Hayır |NA |
 
@@ -378,7 +378,7 @@ Bağlı hizmet, veri kümesi ve kopyalama etkinliğinin kaynak/havuz için JSON 
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL Veritabanı](#azure-sql-database) |
 | &nbsp; |[Azure SQL Veri Ambarı](#azure-sql-data-warehouse) |
-| &nbsp; |[Azure Search](#azure-search) |
+| &nbsp; |[Azure Bilişsel Arama](#azure-cognitive-search) |
 | &nbsp; |[Azure Tablo Depolama](#azure-table-storage) |
 | **Veritabanları** |[Amazon Redshift](#amazon-redshift) |
 | &nbsp; |[IBM DB2](#ibm-db2) |
@@ -597,7 +597,7 @@ Azure Data Lake Store bağlı bir hizmet tanımlamak için, bağlantılı hizmet
 | Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. | Evet (hizmet sorumlusu kimlik doğrulaması için) |
 | Servicesprincipalkey | Uygulamanın anahtarını belirtin. | Evet (hizmet sorumlusu kimlik doğrulaması için) |
 | Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Evet (hizmet sorumlusu kimlik doğrulaması için) |
-| Yetkisi | **Data Factory düzenleyicisinde** **Yetkilendir** düğmesine tıklayın ve bu özelliğe OTOMATIK olarak üretilen yetkilendirme URL 'sini atayan kimlik bilgilerinizi girin. | Evet (Kullanıcı kimlik bilgisi kimlik doğrulaması için)|
+| yetkisi | **Data Factory düzenleyicisinde** **Yetkilendir** düğmesine tıklayın ve bu özelliğe OTOMATIK olarak üretilen yetkilendirme URL 'sini atayan kimlik bilgilerinizi girin. | Evet (Kullanıcı kimlik bilgisi kimlik doğrulaması için)|
 | Kimliği | OAuth yetkilendirme oturumundan gelen OAuth oturum kimliği. Her oturum kimliği benzersizdir ve yalnızca bir kez kullanılabilir. Bu ayar Data Factory düzenleyicisini kullandığınızda otomatik olarak oluşturulur. | Evet (Kullanıcı kimlik bilgisi kimlik doğrulaması için) |
 
 #### <a name="example-using-service-principal-authentication"></a>Örnek: hizmet sorumlusu kimlik doğrulamasını kullanma
@@ -884,7 +884,7 @@ Azure Cosmos DB verileri kopyalıyorsunuz, kopyalama etkinliğinin **Havuz tür�
 | **Özellik** | **Açıklama** | **İzin verilen değerler** | **Gerekli** |
 | --- | --- | --- | --- |
 | nestingSeparator |İç içe geçmiş belgenin gerekli olduğunu göstermek için kaynak sütun adında özel bir karakter. <br/><br/>Örneğin, yukarıdaki: çıktı tablosundaki `Name.First`, Cosmos DB belgesinde aşağıdaki JSON yapısını üretir:<br/><br/>"Ad": {<br/>    "İlk": "John"<br/>}, |İç içe geçme düzeylerini ayırmak için kullanılan karakterdir.<br/><br/>Varsayılan değer `.` ' dır (nokta). |İç içe geçme düzeylerini ayırmak için kullanılan karakterdir. <br/><br/>Varsayılan değer `.` ' dır (nokta). |
-| writeBatchSize |Azure Cosmos DB hizmetine belge oluşturmak için paralel istek sayısı.<br/><br/>Bu özelliği kullanarak Azure Cosmos DB veri kopyalarken performansı ayarlayabilirsiniz. Azure Cosmos DB için daha fazla paralel istek gönderildiği için writeBatchSize ' i artırdığınızda daha iyi bir performans sağlayabilirsiniz. Bununla birlikte, hata iletisini oluşturabilecek azaltmaktan kaçınmanız gerekir: "Istek hızı çok büyük".<br/><br/>Daraltma, belge boyutu, belgelerdeki terim sayısı, hedef koleksiyonun dizin oluşturma ilkesi vb. dahil olmak üzere bir dizi etkene karar vermiştir. Kopyalama işlemleri için, en fazla üretilen iş (2.500 istek birimi/saniye) sağlamak üzere daha iyi bir koleksiyon (örneğin, S3) kullanabilirsiniz. |Tamsayı |Hayır (varsayılan: 5) |
+| WriteBatchSize |Azure Cosmos DB hizmetine belge oluşturmak için paralel istek sayısı.<br/><br/>Bu özelliği kullanarak Azure Cosmos DB veri kopyalarken performansı ayarlayabilirsiniz. Azure Cosmos DB için daha fazla paralel istek gönderildiği için writeBatchSize ' i artırdığınızda daha iyi bir performans sağlayabilirsiniz. Bununla birlikte, hata iletisini oluşturabilecek azaltmaktan kaçınmanız gerekir: "Istek hızı çok büyük".<br/><br/>Daraltma, belge boyutu, belgelerdeki terim sayısı, hedef koleksiyonun dizin oluşturma ilkesi vb. dahil olmak üzere bir dizi etkene karar vermiştir. Kopyalama işlemleri için, en fazla üretilen iş (2.500 istek birimi/saniye) sağlamak üzere daha iyi bir koleksiyon (örneğin, S3) kullanabilirsiniz. |Tamsayı |Hayır (varsayılan: 5) |
 | writeBatchTimeout |İşlemin zaman aşımına uğramadan önce tamamlanmasını bekleme süresi. |TimeSpan<br/><br/> Örnek: "00:30:00" (30 dakika). |Hayır |
 
 #### <a name="example"></a>Örnek
@@ -1048,7 +1048,7 @@ Verileri Azure SQL veritabanı 'na kopyalıyorsunuz, kopyalama etkinliğinin **H
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |TimeSpan<br/><br/> Örnek: "00:30:00" (30 dakika). |Hayır |
-| writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
+| WriteBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
 | sqlWriterCleanupScript |Bir kopyalama etkinliğinin yürütülmesi için belirli bir dilim verilerinin temizlenmesi için bir sorgu belirtin. |Sorgu ekstresi. |Hayır |
 | Dilimleyiceıdentifiercolumnname |Kopyalama etkinliği için, yeniden çalıştırıldığında belirli bir dilimin verilerini temizlemek için kullanılan otomatik olarak oluşturulan dilim tanımlayıcısı ile doldurulacak bir sütun adı belirtin. |Binary (32) veri türüne sahip bir sütunun sütun adı. |Hayır |
 | sqlWriterStoredProcedureName |Hedef tabloya veri (güncelleştirme/ekleme) içeren saklı yordamın adı. |Saklı yordamın adı. |Hayır |
@@ -1230,7 +1230,7 @@ Verileri Azure SQL veri ambarı 'na kopyalıyorsunuz, kopyalama etkinliğinin **
 | rejectType |RejectValue seçeneğinin sabit değer değeri mi yoksa yüzde olarak mı belirtilmediğini belirtir. |Değer (varsayılan), yüzde |Hayır |
 | rejectSampleValue |PolyBase reddedilen satırların yüzdesini yeniden hesaplamadan önce alınacak satır sayısını belirler. |1, 2,... |Evet, **rejectType** **ise** |
 | useTypeDefault |PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin. |True, false (varsayılan) |Hayır |
-| writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
+| WriteBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
 | writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |TimeSpan<br/><br/> Örnek: "00:30:00" (30 dakika). |Hayır |
 
 #### <a name="example"></a>Örnek
@@ -1279,15 +1279,15 @@ Verileri Azure SQL veri ambarı 'na kopyalıyorsunuz, kopyalama etkinliğinin **
 
 Daha fazla bilgi için bkz. [Azure SQL veri ambarı Bağlayıcısı](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) makalesi.
 
-## <a name="azure-search"></a>Azure Search
+## <a name="azure-cognitive-search"></a>Azure Bilişsel Arama
 
 ### <a name="linked-service"></a>Bağlı hizmet
-Azure Search bağlı bir hizmet tanımlamak için, bağlı hizmetin **türünü** **azuresearch**olarak ayarlayın ve **typeproperties** bölümünde aşağıdaki özellikleri belirtin:
+Azure Bilişsel Arama bağlı hizmetini tanımlamak için, bağlı hizmetin **türünü** **azuresearch**olarak ayarlayın ve **typeproperties** bölümünde aşağıdaki özellikleri belirtin:
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
-| url | Azure Search hizmeti URL 'SI. | Evet |
-| anahtar | Azure Search hizmeti için yönetici anahtarı. | Evet |
+| url | Arama Hizmeti URL 'SI. | Evet |
+| anahtar | Arama hizmeti için yönetici anahtarı. | Evet |
 
 #### <a name="example"></a>Örnek
 
@@ -1304,15 +1304,15 @@ Azure Search bağlı bir hizmet tanımlamak için, bağlı hizmetin **türünü*
 }
 ```
 
-Daha fazla bilgi için bkz. [Azure Search Bağlayıcısı](data-factory-azure-search-connector.md#linked-service-properties) makalesi.
+Daha fazla bilgi için bkz. [Azure bilişsel Arama Bağlayıcısı](data-factory-azure-search-connector.md#linked-service-properties) makalesi.
 
 ### <a name="dataset"></a>Veri kümesi
-Bir Azure Search veri kümesi tanımlamak için, veri kümesinin **türünü** **AzureSearchIndex**olarak ayarlayın ve **typeproperties** bölümünde aşağıdaki özellikleri belirtin:
+Bir Azure Bilişsel Arama veri kümesi tanımlamak için, veri kümesinin **türünü** **AzureSearchIndex**olarak ayarlayın ve **typeproperties** bölümünde aşağıdaki özellikleri belirtin:
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
 | type | Type özelliği **AzureSearchIndex**olarak ayarlanmalıdır.| Evet |
-| indexName | Azure Search dizininin adı. Data Factory dizini oluşturmaz. Dizinin Azure Search olması gerekir. | Evet |
+| indexName | Arama dizininin adı. Data Factory dizini oluşturmaz. Dizinin Azure Bilişsel Arama mevcut olması gerekir. | Evet |
 
 #### <a name="example"></a>Örnek
 
@@ -1333,15 +1333,15 @@ Bir Azure Search veri kümesi tanımlamak için, veri kümesinin **türünü** *
 }
 ```
 
-Daha fazla bilgi için bkz. [Azure Search Bağlayıcısı](data-factory-azure-search-connector.md#dataset-properties) makalesi.
+Daha fazla bilgi için bkz. [Azure bilişsel Arama Bağlayıcısı](data-factory-azure-search-connector.md#dataset-properties) makalesi.
 
-### <a name="azure-search-index-sink-in-copy-activity"></a>Kopyalama etkinliğinde Dizin havuzunu Azure Search
-Verileri bir Azure Search dizinine kopyalıyorsunuz, kopyalama etkinliğinin **Havuz türünü** **AzureSearchIndexSink**olarak ayarlayın ve **Havuz** bölümünde aşağıdaki özellikleri belirtin:
+### <a name="azure-cognitive-search-index-sink-in-copy-activity"></a>Kopyalama etkinliğinde Azure Bilişsel Arama Dizin havuzu
+Verileri bir arama dizinine kopyalıyorsunuz, kopyalama etkinliğinin **Havuz türünü** **AzureSearchIndexSink**olarak ayarlayın ve **Havuz** bölümünde aşağıdaki özellikleri belirtin:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Dizinde bir belgenin zaten mevcut olduğu zaman birleştirilip birleştirilmeyeceğini veya değiştirip edilmeyeceğini belirtir. | Birleştir (varsayılan)<br/>Karşıya Yükle| Hayır |
-| writeBatchSize | Arabellek boyutu writeBatchSize ulaştığında verileri Azure Search dizinine yükler. | 1 ile 1.000 arasında. Varsayılan değer 1000 ' dir. | Hayır |
+| writeBehavior | Dizinde bir belgenin zaten mevcut olduğu zaman birleştirilip birleştirilmeyeceğini veya değiştirip edilmeyeceğini belirtir. | Birleştir (varsayılan)<br/>Karşıya Yükle| Hayır |
+| WriteBatchSize | Arabellek boyutu writeBatchSize ulaştığında verileri arama dizinine yükler. | 1 ile 1.000 arasında. Varsayılan değer 1000 ' dir. | Hayır |
 
 #### <a name="example"></a>Örnek
 
@@ -1386,7 +1386,7 @@ Verileri bir Azure Search dizinine kopyalıyorsunuz, kopyalama etkinliğinin **H
 }
 ```
 
-Daha fazla bilgi için bkz. [Azure Search Bağlayıcısı](data-factory-azure-search-connector.md#copy-activity-properties) makalesi.
+Daha fazla bilgi için bkz. [Azure bilişsel Arama Bağlayıcısı](data-factory-azure-search-connector.md#copy-activity-properties) makalesi.
 
 ## <a name="azure-table-storage"></a>Azure Table Storage
 
@@ -1537,7 +1537,7 @@ Azure Tablo depolama birimine veri kopyalıyorsanız, kopyalama etkinliğinin **
 | azureTablePartitionKeyName |Değerleri bölüm anahtarları olarak kullanılan sütunun adını belirtin. Belirtilmemişse, bölüm anahtarı olarak AzureTableDefaultPartitionKeyValue kullanılır. |Bir sütun adı. |Hayır |
 | azureTableRowKeyName |Sütun değerleri satır anahtarı olarak kullanılan sütunun adını belirtin. Belirtilmezse, her satır için bir GUID kullanın. |Bir sütun adı. |Hayır |
 | azureTableInsertType |Azure tablosuna veri ekleme modu.<br/><br/>Bu özellik, çıkış tablosunda eşleşen bölüm ve satır anahtarlarının değerlerinin değiştirilmesini veya birleştirildiğini denetler. <br/><br/>Bu ayarların (birleştirme ve değiştirme) nasıl çalıştığını öğrenmek için bkz. [varlık ekleme veya birleştirme](https://msdn.microsoft.com/library/azure/hh452241.aspx) ve [varlık ekleme veya değiştirme](https://msdn.microsoft.com/library/azure/hh452242.aspx) konuları. <br/><br> Bu ayar tablo düzeyinde değil, satır düzeyinde uygulanır ve hiçbir seçenek, girişte bulunmayan çıkış tablosundaki satırları silmez. |Birleştir (varsayılan)<br/>değiştirin |Hayır |
-| writeBatchSize |WriteBatchSize veya writeBatchTimeout değeri isabet edildiğinde Azure tablosuna veri ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
+| WriteBatchSize |WriteBatchSize veya writeBatchTimeout değeri isabet edildiğinde Azure tablosuna veri ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
 | writeBatchTimeout |WriteBatchSize veya writeBatchTimeout değeri isabet edildiğinde Azure tablosuna veri ekler |TimeSpan<br/><br/>Örnek: "00:20:00" (20 dakika) |Hayır (varsayılan olarak, depolama istemcisi varsayılan zaman aşımı değeri 90 sn) |
 
 #### <a name="example"></a>Örnek
@@ -2058,7 +2058,7 @@ Daha fazla bilgi için bkz. [Oracle Bağlayıcısı](data-factory-onprem-oracle-
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |TimeSpan<br/><br/> Örnek: 00:30:00 (30 dakika). |Hayır |
-| writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 100) |
+| WriteBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 100) |
 | sqlWriterCleanupScript |Bir kopyalama etkinliğinin yürütülmesi için belirli bir dilim verilerinin temizlenmesi için bir sorgu belirtin. |Sorgu ekstresi. |Hayır |
 | Dilimleyiceıdentifiercolumnname |Yeniden çalıştırıldığında belirli bir dilimin verilerini temizlemek için kullanılan otomatik olarak oluşturulan dilim tanımlayıcısı ile doldurulacak kopyalama etkinliğinin sütun adını belirtin. |Binary (32) veri türüne sahip bir sütunun sütun adı. |Hayır |
 
@@ -2609,7 +2609,7 @@ Verileri bir SQL Server veritabanına kopyalıyorsunuz, kopyalama etkinliğinin 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |TimeSpan<br/><br/> Örnek: "00:30:00" (30 dakika). |Hayır |
-| writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
+| WriteBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
 | sqlWriterCleanupScript |Belirli bir dilim verilerinin temizlenmesi gibi, yürütülecek kopyalama etkinliğinin sorgusunu belirtin. Daha fazla bilgi için bkz. yinelenebilirlik Section. |Sorgu ekstresi. |Hayır |
 | Dilimleyiceıdentifiercolumnname |Yeniden çalıştırıldığında belirli bir dilimin verilerini temizlemek için kullanılan otomatik olarak oluşturulan dilim tanımlayıcısı ile doldurulacak kopyalama etkinliğinin sütun adını belirtin. Daha fazla bilgi için bkz. yinelenebilirlik Section. |Binary (32) veri türüne sahip bir sütunun sütun adı. |Hayır |
 | sqlWriterStoredProcedureName |Hedef tabloya veri (güncelleştirme/ekleme) içeren saklı yordamın adı. |Saklı yordamın adı. |Hayır |
@@ -2903,7 +2903,7 @@ Cassandra bağlı hizmetini tanımlamak için, bağlantılı hizmetin **türün�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| Konağının |Cassandra sunucularının bir veya daha fazla IP adresi veya ana bilgisayar adı.<br/><br/>Aynı anda tüm sunuculara bağlanmak için IP adreslerinin veya ana bilgisayar adlarının virgülle ayrılmış bir listesini belirtin. |Evet |
+| konağının |Cassandra sunucularının bir veya daha fazla IP adresi veya ana bilgisayar adı.<br/><br/>Aynı anda tüm sunuculara bağlanmak için IP adreslerinin veya ana bilgisayar adlarının virgülle ayrılmış bir listesini belirtin. |Evet |
 | port |Cassandra sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |Hayır, varsayılan değer: 9042 |
 | authenticationType |Temel veya anonim |Evet |
 | kullanıcı adı |Kullanıcı hesabı için Kullanıcı adını belirtin. |Evet, authenticationType temel olarak ayarlandıysa. |
@@ -2976,7 +2976,7 @@ Cassandra 'dan veri kopyalıyorsanız, kopyalama etkinliğinin **kaynak türün�
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | sorgu |Verileri okumak için özel sorguyu kullanın. |SQL-92 sorgusu veya CQL sorgusu. Bkz. [CQL başvurusu](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL sorgusu kullanırken, sorgulamak istediğiniz tabloyu temsil etmek için **anahtar alanı Name. Table adını** belirtin. |Hayır (veri kümesinde TableName ve anahtar alanı tanımlanmışsa). |
-| Bu düzey |Tutarlılık düzeyi, istemci uygulamasına veri döndürmeden önce bir okuma isteğine kaç yinelemenin yanıt vereceğini belirtir. Cassandra, okuma isteğini karşılamak üzere verilerin belirtilen sayıda çoğaltmasını denetler. |ONE, IKI, ÜÇ, ÇEKIRDEK, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Ayrıntılar için bkz. [veri tutarlılığını yapılandırma](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |Hayır. Varsayılan değer BIR. |
+| Bu düzey |Tutarlılık düzeyi, istemci uygulamasına veri döndürmeden önce bir okuma isteğine kaç yinelemenin yanıt vereceğini belirtir. Cassandra, okuma isteğini karşılamak üzere verilerin belirtilen sayıda çoğaltmasını denetler. |BIR, IKI, ÜÇ, ÇEKIRDEK, TÜMÜ, LOCAL_QUORUM EACH_QUORUM, LOCAL_ONE. Ayrıntılar için bkz. [veri tutarlılığını yapılandırma](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |Hayır. Varsayılan değer BIR. |
 
 #### <a name="example"></a>Örnek
 
@@ -3316,7 +3316,7 @@ Daha fazla bilgi için bkz. [Amazon S3 bağlayıcı makalesi](data-factory-amazo
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | type |Type özelliğinin **OnPremisesFileServer**olarak ayarlandığından emin olun. |Evet |
-| Konağının |Kopyalamak istediğiniz klasörün kök yolunu belirtir. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için bkz. örnek bağlantılı hizmet ve veri kümesi tanımları. |Evet |
+| konağının |Kopyalamak istediğiniz klasörün kök yolunu belirtir. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için bkz. örnek bağlantılı hizmet ve veri kümesi tanımları. |Evet |
 | UserID |Sunucuya erişimi olan kullanıcının KIMLIĞINI belirtin. |Hayır (encryptedCredential öğesini seçerseniz) |
 | password |Kullanıcının parolasını belirtin (Kullanıcı kimliği). |Hayır (encryptedCredential seçeneğini belirlerseniz |
 | encryptedCredential |New-AzDataFactoryEncryptValue cmdlet 'ini çalıştırarak alabileceğiniz şifrelenmiş kimlik bilgilerini belirtin. |Hayır (Kullanıcı kimliği ve parolayı düz metin olarak belirtmeyi seçerseniz) |
@@ -3550,7 +3550,7 @@ Bir FTP bağlı hizmeti tanımlamak için, bağlı hizmetin **türünü** **FtpS
 
 | Özellik | Açıklama | Gerekli | Varsayılan |
 | --- | --- | --- | --- |
-| Konağının |FTP sunucusunun adı veya IP adresi |Evet |&nbsp; |
+| konağının |FTP sunucusunun adı veya IP adresi |Evet |&nbsp; |
 | authenticationType |Kimlik doğrulaması türünü belirtme |Evet |Temel, anonim |
 | kullanıcı adı |FTP sunucusuna erişimi olan Kullanıcı |Hayır |&nbsp; |
 | password |Kullanıcı için parola (Kullanıcı adı) |Hayır |&nbsp; |
@@ -3864,7 +3864,7 @@ SFTP bağlı hizmetini tanımlamak için, bağlantılı hizmetin **türünü** *
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| Konağının | SFTP sunucusunun adı veya IP adresi. |Evet |
+| konağının | SFTP sunucusunun adı veya IP adresi. |Evet |
 | port |SFTP sunucusunun dinlediği bağlantı noktası. Varsayılan değer: 21 |Hayır |
 | authenticationType |Kimlik doğrulama türünü belirtin. İzin verilen değerler: **temel**, **sshpublickey**. <br><br> Temel kimlik doğrulamasını kullanma ve sırasıyla daha fazla özellik ve JSON örnekleri üzerinde [SSH ortak anahtar kimlik doğrulama bölümlerini kullanma](#using-ssh-public-key-authentication) bölümüne bakın. |Evet |
 | skipHostKeyValidation | Konak anahtarı doğrulamanın atlanıp atlanmayacağını belirtin. | Hayır. Varsayılan değer: false |
@@ -4705,7 +4705,7 @@ Salesforce 'tan veri kopyalıyorsanız, kopyalama etkinliğinin **kaynak türün
 ```
 
 > [!IMPORTANT]
-> Tüm özel nesneler için API adının "__C" kısmı gereklidir.
+> Tüm özel nesneler için API adının "__c" kısmı gereklidir.
 
 Daha fazla bilgi için bkz. [Salesforce Bağlayıcısı](data-factory-salesforce-connector.md#copy-activity-properties) makalesi.
 
@@ -4837,7 +4837,7 @@ Aşağıdaki tabloda, isteğe bağlı HDInsight bağlı hizmetinin Azure JSON ta
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | type |Type özelliği **hdınsightondemand**olarak ayarlanmalıdır. |Evet |
-| clusterSize |Kümedeki çalışan/veri düğümlerinin sayısı. HDInsight kümesi, bu özellik için belirttiğiniz çalışan düğümü sayısıyla birlikte 2 baş düğüm ile oluşturulur. Düğümler 4 çekirdeğe sahip Standard_D3 boyutudur, bu nedenle 4 çalışan düğümü kümesi 24 çekirdek alır (çalışan düğümleri için 4\*4 = 16 çekirdek, ve baş düğümler için 2\*4 = 8 çekirdek). Standard_D3 katmanı hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Linux tabanlı Hadoop kümeleri oluşturma](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) . |Evet |
+| clusterSize |Kümedeki çalışan/veri düğümlerinin sayısı. HDInsight kümesi, bu özellik için belirttiğiniz çalışan düğümü sayısıyla birlikte 2 baş düğüm ile oluşturulur. Düğümler 4 çekirdeğe sahip Standard_D3 boyutlardır, bu nedenle 4 çalışan düğümü kümesi 24 çekirdek alır (çalışan düğümleri için 4\*4 = 16 çekirdek, ve baş düğümler için 2\*4 = 8 çekirdek). Standard_D3 katmanı hakkında ayrıntılar için bkz. [HDInsight 'Ta Linux tabanlı Hadoop kümeleri oluşturma](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) . |Evet |
 | timeToLive |İsteğe bağlı HDInsight kümesi için izin verilen boşta kalma süresi. Kümede başka bir etkin iş yoksa, bir etkinlik çalıştırıldıktan sonra, isteğe bağlı HDInsight kümesinin ne kadar süreyle etkin kalacağını belirtir.<br/><br/>Örneğin, bir etkinlik çalıştırması 6 dakika sürüyorsa ve TimeToLive, 5 dakika olarak ayarlanırsa, etkinlik çalıştırmasının sonunda 6 dakikadan sonra küme, 5 dakika boyunca etkin kalır. Başka bir etkinlik çalıştırması 6 dakikalık bir pencere ile yürütülürse aynı küme tarafından işlenir.<br/><br/>İsteğe bağlı HDInsight kümesi oluşturma işlemi pahalı bir işlemdir, bu nedenle isteğe bağlı HDInsight kümesini yeniden kullanarak bir veri fabrikasının performansını artırmak için bu ayarı gereken şekilde kullanın.<br/><br/>TimeToLive değerini 0 olarak ayarlarsanız, etkinlik işlenmiş olarak çalıştırıldığında küme silinir. Öte yandan, yüksek bir değer ayarlarsanız, küme gereksiz bir şekilde yüksek maliyetlerle ortaya çıkabilir. Bu nedenle, gereksinimlerinize göre uygun değeri ayarlamanız önemlidir.<br/><br/>TimeToLive Özellik değeri uygun şekilde ayarlandıysa, birden çok işlem hattı, isteğe bağlı HDInsight kümesinin aynı örneğini paylaşabilir |Evet |
 | version |HDInsight kümesinin sürümü. Ayrıntılar için [Azure Data Factory desteklenen HDInsight sürümleri](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory)bölümüne bakın. |Hayır |
 | linkedServiceName |Verileri depolamak ve işlemek için isteğe bağlı küme tarafından kullanılacak Azure depolama bağlı hizmeti. <p>Şu anda depolama olarak bir Azure Data Lake Store kullanan isteğe bağlı bir HDInsight kümesi oluşturamazsınız. Bir Azure Data Lake Store HDInsight işlemeden elde edilen sonuç verilerini depolamak istiyorsanız, verileri Azure Blob depolama alanından Azure Data Lake Store kopyalamak için bir kopyalama etkinliği kullanın.</p>  | Evet |
@@ -4970,7 +4970,7 @@ Aşağıdaki tabloda, Azure Data Lake Analytics bağlı bir hizmetin JSON tanım
 | Tür |Type özelliği: **AzureDataLakeAnalytics**olarak ayarlanmalıdır. |Evet |
 | Adı |Azure Data Lake Analytics hesap adı. |Evet |
 | Datalakeanaliz Ticsurı |Azure Data Lake Analytics URI 'SI. |Hayır |
-| Yetkisi |Yetkilendirme kodu, Data Factory düzenleyicisinde **Yetkilendir** düğmesine tıkladıktan sonra ve OAuth oturum açma işlemini tamamladıktan sonra otomatik olarak alınır. |Evet |
+| yetkisi |Yetkilendirme kodu, Data Factory düzenleyicisinde **Yetkilendir** düğmesine tıkladıktan sonra ve OAuth oturum açma işlemini tamamladıktan sonra otomatik olarak alınır. |Evet |
 | subscriptionId |Azure abonelik kimliği |Hayır (belirtilmemişse, Veri Fabrikası aboneliği kullanılır). |
 | resourceGroupName |Azure kaynak grubu adı |Hayır (belirtilmemişse, veri fabrikasının kaynak grubu kullanılır). |
 | Kimliği |OAuth yetkilendirme oturumundan oturum kimliği. Her oturum kimliği benzersizdir ve yalnızca bir kez kullanılabilir. Data Factory düzenleyicisini kullandığınızda bu KIMLIK otomatik olarak üretilir. |Evet |
@@ -5177,7 +5177,7 @@ Bir MapReduce etkinliği JSON tanımında aşağıdaki özellikleri belirtebilir
 | jarLinkedService | JAR dosyasını içeren Azure depolama için bağlı hizmetin adı. | Evet |
 | jarFilePath | Azure depolama 'daki JAR dosyasının yolu. | Evet |
 | className | JAR dosyasındaki ana sınıfın adı. | Evet |
-| Değişkenlerinden | MapReduce programı için virgülle ayrılmış bağımsız değişkenlerin bir listesi. Çalışma zamanında, MapReduce çerçevesinden birkaç ek bağımsız değişken (örneğin: MapReduce. job. Tag) görürsünüz. Bağımsız değişkenlerinizi MapReduce bağımsız değişkenleriyle ayırt etmek için, aşağıdaki örnekte gösterildiği gibi her iki seçeneği ve değeri bağımsız değişkenler olarak kullanmayı düşünün (-s,--Input,--Output vb.) | Hayır |
+| değişkenlerinden | MapReduce programı için virgülle ayrılmış bağımsız değişkenlerin bir listesi. Çalışma zamanında, MapReduce çerçevesinden birkaç ek bağımsız değişken (örneğin: MapReduce. job. Tag) görürsünüz. Bağımsız değişkenlerinizi MapReduce bağımsız değişkenleriyle ayırt etmek için, aşağıdaki örnekte gösterildiği gibi her iki seçeneği ve değeri bağımsız değişkenler olarak kullanmayı düşünün (-s,--Input,--Output vb.) | Hayır |
 
 ### <a name="json-example"></a>JSON örneği
 
@@ -5238,7 +5238,7 @@ Bir Hadoop akış etkinliği JSON tanımında aşağıdaki özellikleri belirteb
 | çıkış | Reducer için çıkış dosyası (konum dahil). Hadoop akış işinin çıktısı, bu özellik için belirtilen konuma yazılır. |
 | FilePaths parametresine | Eşleyici ve Reducer Yürütülebilirler için yollar. Örnek: "adfsample/example/Apps/WC. exe", adfsample blob kapsayıcısıdır, örnek/uygulamalar klasördür ve WC. exe yürütülebilir bir dosyadır. |
 | Dosya Linkedservice | FilePaths bölümünde belirtilen dosyaları içeren Azure Storage 'ı temsil eden Azure depolama bağlı hizmeti. |
-| Değişkenlerinden | MapReduce programı için virgülle ayrılmış bağımsız değişkenlerin bir listesi. Çalışma zamanında, MapReduce çerçevesinden birkaç ek bağımsız değişken (örneğin: MapReduce. job. Tag) görürsünüz. Bağımsız değişkenlerinizi MapReduce bağımsız değişkenleriyle ayırt etmek için, aşağıdaki örnekte gösterildiği gibi her iki seçeneği ve değeri bağımsız değişkenler olarak kullanmayı düşünün (-s,--Input,--Output vb.) |
+| değişkenlerinden | MapReduce programı için virgülle ayrılmış bağımsız değişkenlerin bir listesi. Çalışma zamanında, MapReduce çerçevesinden birkaç ek bağımsız değişken (örneğin: MapReduce. job. Tag) görürsünüz. Bağımsız değişkenlerinizi MapReduce bağımsız değişkenleriyle ayırt etmek için, aşağıdaki örnekte gösterildiği gibi her iki seçeneği ve değeri bağımsız değişkenler olarak kullanmayı düşünün (-s,--Input,--Output vb.) |
 | GetDebugInfo | İsteğe bağlı bir öğe. Hata olarak ayarlandığında Günlükler yalnızca hata durumunda indirilir. Tümü olarak ayarlandığında, yürütme durumu ne olursa olsun Günlükler her zaman indirilir. |
 
 > [!NOTE]
@@ -5299,7 +5299,7 @@ Spark etkinliği JSON tanımında aşağıdaki özellikleri belirtebilirsiniz. E
 | rootPath | Spark dosyasını içeren Azure Blob kapsayıcısı ve klasörü. Dosya adı büyük/küçük harfe duyarlıdır. | Evet |
 | entryFilePath | Spark kodunun/paketinin kök klasörünün göreli yolu. | Evet |
 | className | Uygulamanın Java/Spark ana sınıfı | Hayır |
-| Değişkenlerinden | Spark programına yönelik komut satırı bağımsız değişkenlerinin listesi. | Hayır |
+| değişkenlerinden | Spark programına yönelik komut satırı bağımsız değişkenlerinin listesi. | Hayır |
 | proxyUser | Spark programını yürütmek için kimliğe bürünmeye yönelik kullanıcı hesabı | Hayır |
 | Mini yapılandırma | Spark yapılandırma özellikleri. | Hayır |
 | GetDebugInfo | Spark günlük dosyalarının, HDInsight kümesi tarafından kullanılan (veya) mini iş Linkedservice tarafından belirtilen Azure depolama 'ya ne zaman kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: yok. | Hayır |

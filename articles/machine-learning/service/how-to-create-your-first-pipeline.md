@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: a092647f9772aafdf610ee9a5ba85ded17d50def
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3dc439c352bb3e6e56fae4b83d783da94720bfe1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577716"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818409"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -114,7 +114,7 @@ output_data1 = PipelineData(
 
 ## <a name="set-up-compute-target"></a>İşlem hedefini ayarla
 
-Azure Machine Learning, computes__ (veya __COMPUTE Target__) terimi, Machine Learning ardışık düzeninde hesaplama adımlarını gerçekleştiren makinelere veya kümelere başvurur.   İşlem hedeflerinin tam listesi için bkz. [model eğitimi için işlem hedefleri](how-to-set-up-training-targets.md) ve bunları oluşturma ve çalışma alanınıza iliştirme.  Bir işlem hedefi oluşturma ve ekleme işlemi, bir modeli eğitmek veya bir ardışık düzen adımını çalıştırmak olmanıza bakılmaksızın aynıdır. İşlem hedefini oluşturup iliştirdikten sonra, işlem [hattı adımınızdaki](#steps)`ComputeTarget` nesnesini kullanın.
+Azure Machine Learning, computes__ (veya __işlem hedefi__) terimi, Machine Learning ardışık düzeninde hesaplama adımlarını gerçekleştiren makinelere veya kümelere başvurur.   İşlem hedeflerinin tam listesi için bkz. [model eğitimi için işlem hedefleri](how-to-set-up-training-targets.md) ve bunları oluşturma ve çalışma alanınıza iliştirme.  Bir işlem hedefi oluşturma ve ekleme işlemi, bir modeli eğitmek veya bir ardışık düzen adımını çalıştırmak olmanıza bakılmaksızın aynıdır. İşlem hedefini oluşturup iliştirdikten sonra, işlem [hattı adımınızdaki](#steps)`ComputeTarget` nesnesini kullanın.
 
 > [!IMPORTANT]
 > İşlem hedeflerinde yönetim işlemleri gerçekleştirmek uzak işlerin içinden desteklenmez. Makine öğrenimi ardışık düzenleri uzak bir iş olarak gönderildiğinden, işlem hedefleri üzerinde yönetim işlemlerini işlem hattı içinden kullanmayın.
@@ -166,7 +166,7 @@ Azure Databricks bir işlem hedefi olarak eklemek için aşağıdaki bilgileri s
 
 * __Databricks işlem adı__: Bu işlem kaynağına atamak istediğiniz ad.
 * __Databricks çalışma alanı adı__: Azure Databricks çalışma alanının adı.
-* __Databricks erişim belirteci__: Azure Databricks için kimlik doğrulaması yapmak için kullanılan erişim belirteci. Erişim belirteci oluşturmak için, bkz. [kimlik doğrulama](https://docs.azuredatabricks.net/api/latest/authentication.html) belgesi.
+* __Databricks erişim belirteci__: Azure Databricks için kimlik doğrulaması yapmak için kullanılan erişim belirteci. Erişim belirteci oluşturmak için, bkz. [kimlik doğrulama](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) belgesi.
 
 Aşağıdaki kod, Azure Machine Learning SDK ile Azure Databricks işlem hedefi olarak nasıl ekleneceğini gösterir:
 
@@ -279,7 +279,7 @@ trainStep = PythonScriptStep(
 )
 ```
 
-Gereksiz yeniden çalışma olanağı sunan çevikliği ortadan kaldıran, önceki sonuçların (`allow_reuse`) kullanılması, işbirliği ortamında işlem hatları kullanırken anahtardır. Bir adımın script_name, girişleri ve parametreleri aynı kaldığında yeniden kullanım varsayılan davranıştır. Adımın çıkışı yeniden kullanıldığında, iş işleme gönderilmez, bunun yerine önceki çalıştırmanın sonuçları hemen sonraki adımın çalıştırmasında kullanılabilir. `allow_reuse` false olarak ayarlandıysa işlem hattı yürütme sırasında bu adım için her zaman yeni bir çalıştırma oluşturulacaktır. 
+Gereksiz yeniden çalışma olanağı sunan çevikliği ortadan kaldıran, önceki sonuçların (`allow_reuse`) kullanılması, işbirliği ortamında işlem hatları kullanırken anahtardır. Script_name, girişleri ve bir adımın parametreleri aynı kaldığında, yeniden kullanım varsayılan davranıştır. Adımın çıkışı yeniden kullanıldığında, iş işleme gönderilmez, bunun yerine önceki çalıştırmanın sonuçları hemen sonraki adımın çalıştırmasında kullanılabilir. `allow_reuse` false olarak ayarlandıysa işlem hattı yürütme sırasında bu adım için her zaman yeni bir çalıştırma oluşturulacaktır. 
 
 Adımlarınızı tanımladıktan sonra, bu adımların bazılarını veya tümünü kullanarak işlem hattını oluşturursunuz.
 
@@ -437,7 +437,7 @@ p.disable()
 
 İşlem hatlarınızın davranışını iyileştirmek ve özelleştirmek için, önbelleğe alma ve yeniden kullanma konusunda birkaç şey yapabilirsiniz. Örneğin, şunları yapabilirsiniz:
 + Adım [tanımı](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)sırasında `allow_reuse=False` ayarlayarak **adım çalıştırma çıkışının varsayılan yeniden kullanımını devre dışı bırakın** . Gereksiz çalıştırmaları ortadan kaldıran çeviklik sunarak, birlikte çalışma sırasında işlem hattı kullanılırken anahtar kullanın. Ancak, yeniden kullanım dışı bırakabilirsiniz.
-+ `hash_paths=['<file or directory']` kullanarak diğer dosyalara ve dizinlere yönelik mutlak bir yolu veya göreli yolları da içerecek şekilde, **karma kodun ötesine genişletmeyi genişletin**. 
++ `hash_paths=['<file or directory']` kullanarak diğer dosyalara ve dizinlere yönelik source_directory mutlak bir yolu veya göreli yolları da içerecek şekilde, **karma kodu kodun ötesine genişletin**. 
 + `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)` **Çalıştırma içindeki tüm adımlarda çıkış yeniden oluşturmayı zorla**
 
 Varsayılan olarak, adımlar için `allow_reuse` etkindir ve yalnızca ana betik dosyası karma hale getirilir. Bu nedenle, belirli bir adımın betiği aynı (`script_name`, girişler ve parametreler) olarak kalırsa, önceki bir adım çalıştırmasının çıkışı yeniden kullanılır, iş işleme gönderilmez ve önceki çalıştırmanın sonuçları hemen bir sonraki adımda kullanılabilir.  

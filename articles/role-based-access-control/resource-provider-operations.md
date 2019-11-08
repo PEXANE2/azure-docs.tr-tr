@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6360c7ea5bfdfb2d348cc843288655ed904e6c74
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca9b0289fbc8dd01427de38e0e7b30eec266bb12
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580783"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818600"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager kaynak sağlayıcısı işlemleri
 
@@ -4559,7 +4559,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/targetComputeSizes/Read | Herhangi bir hedef Işlem boyutunu okuyun |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Test Yük Devretmesi |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/test Failovercleanup/Action | Yük devretme sınamasını Temizleme |
-> | Eylem | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük devretme |
+> | Eylem | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük Devretme |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Updatebir Dıtems/Update, Ityservice/Action | Mobility hizmetini Güncelleştir |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Write | Korunan öğeleri oluşturma veya güncelleştirme |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/replicationProtectionContainerMappings/Delete | Tüm koruma kapsayıcısı eşlemelerini silme |
@@ -4778,8 +4778,8 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Eylem | Microsoft. Search/searchServices/Delete | Arama hizmetini siler. |
 > | Eylem | Microsoft. Search/searchServices/deleteQueryKey/Delete | Sorgu anahtarını siler. |
 > | Eylem | Microsoft. Search/searchServices/listAdminKeys/Action | Yönetici anahtarlarını okur. |
-> | Eylem | Microsoft. Search/searchServices/listQueryKeys/Action | Verilen Azure Search hizmeti için sorgu API 'SI anahtarlarının listesini döndürür. |
-> | Eylem | Microsoft. Search/searchServices/listQueryKeys/Read | Verilen Azure Search hizmeti için sorgu API 'SI anahtarlarının listesini döndürür. |
+> | Eylem | Microsoft. Search/searchServices/listQueryKeys/Action | Verilen Azure Bilişsel Arama hizmeti için sorgu API 'SI anahtarlarının listesini döndürür. |
+> | Eylem | Microsoft. Search/searchServices/listQueryKeys/Read | Verilen Azure Bilişsel Arama hizmeti için sorgu API 'SI anahtarlarının listesini döndürür. |
 > | Eylem | Microsoft. Search/searchServices/Read | Arama hizmetini okur. |
 > | Eylem | Microsoft. Search/searchServices/regenerateAdminKey/Action | Yönetici anahtarını yeniden oluşturur. |
 > | Eylem | Microsoft. Search/searchServices/start/Action | Arama hizmetini başlatır. |

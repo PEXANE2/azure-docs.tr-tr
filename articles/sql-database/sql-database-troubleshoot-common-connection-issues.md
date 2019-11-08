@@ -1,5 +1,5 @@
 ---
-title: Yaygın olarak karşılaşılan Azure SQL Veritabanı bağlantı sorunlarını giderme
+title: Sık karşılaşılan bağlantı sorunlarını giderme
 description: Azure SQL veritabanı için genel bağlantı hatalarını belirlemek ve çözümlemek için gereken adımlar.
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ manager: dcscontentpm
 ms.author: daleche
 ms.reviewer: jrasnik
 ms.date: 01/25/2019
-ms.openlocfilehash: cd0ab6d89d88c594d283dc0718c0f58ebb98bf43
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: dc58e495256bff9521eb6567736700f5ffcd6e4f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090792"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822470"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Azure SQL veritabanı ile ilgili bağlantı sorunlarını giderme
 
@@ -32,7 +32,7 @@ Bağlantı sorunlarına aşağıdakilerden biri neden olmuş olabilir:
 
 * Uygulama tasarım sürecinde en iyi yöntemler ve tasarım yönergeleri uygulama başarısız oldu.  Başlamak için bkz. [SQL veritabanı geliştirmeye genel bakış](sql-database-develop-overview.md) .
 * Azure SQL veritabanı yeniden yapılandırması
-* Güvenlik Duvarı ayarları
+* Güvenlik duvarı ayarları
 * Bağlantı zaman aşımı
 * Hatalı oturum açma bilgileri
 * Bazı Azure SQL veritabanı kaynaklarında maksimum sınıra ulaşıldı

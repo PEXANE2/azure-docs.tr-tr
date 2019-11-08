@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı sanal çekirdek kaynak limitleri-elastik havuzlar | Microsoft Docs
+title: Sanal çekirdek kaynak limitleri-elastik havuzlar
 description: Bu sayfa, Azure SQL veritabanı 'nda esnek havuzlar için bazı yaygın sanal çekirdek kaynak sınırlarını açıklamaktadır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 65c2bfe4d79f5b7d468999143524b96b60f0efaf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f356b9d248ac9c5f0bcfaaeeb37b43d958eaa528
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496003"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822369"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modelini kullanarak elastik havuzlar için kaynak sınırları
 
@@ -226,7 +226,7 @@ her veritabanı için en fazla eşzamanlı çalışan (istek) Için \*, bkz. [te
 |Bellek (GB)|81,6|91,8|102|122,4|163,2|204|
 |Havuz başına en fazla veritabanı|100|100|100|100|100|100|
 |Columnstore desteği|Yok|Yok|Yok|Yok|Yok|Yok|
-|Bellek içi OLTP depolaması (GB)|7|8|9,5|11|20|36|
+|Bellek içi OLTP depolaması (GB)|7|8|9.5|11|20|36|
 |Depolama türü|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|
 |En fazla veri boyutu (GB)|650|650|650|650|1024|1024|
 |En fazla günlük boyutu (GB)|195|195|195|195|307|307|
@@ -340,7 +340,7 @@ Elastik havuzun tüm sanal çekirdekleri meşgulse, havuzdaki her veritabanı, s
 Aşağıdaki tabloda, havuza alınmış veritabanlarının özellikleri açıklanmaktadır.
 
 > [!NOTE]
-> Elastik havuzlardaki ayrı veritabanlarının kaynak sınırları, aynı işlem boyutuna sahip havuzlar dışındaki tek veritabanları için genellikle aynıdır. Örneğin, bir GP_Gen4_1 veritabanı için en fazla eş zamanlı çalışan 200 çalışandır. Bu nedenle, bir GP_Gen4_1 havuzundaki bir veritabanının maksimum eş zamanlı çalışanları da 200 çalışanlardır. GP_Gen4_1 havuzundaki eşzamanlı çalışanların toplam sayısı 210 ' dir.
+> Elastik havuzlardaki ayrı veritabanlarının kaynak sınırları, aynı işlem boyutuna sahip havuzlar dışındaki tek veritabanları için genellikle aynıdır. Örneğin, bir GP_Gen4_1 veritabanı için en fazla eş zamanlı çalışan 200 çalışandır. Bu nedenle, bir GP_Gen4_1 havuzundaki bir veritabanı için en fazla eş zamanlı çalışan da 200 çalışandır. GP_Gen4_1 havuzundaki eşzamanlı çalışanların toplam sayısı 210 ' dir.
 
 | Özellik | Açıklama |
 |:--- |:--- |

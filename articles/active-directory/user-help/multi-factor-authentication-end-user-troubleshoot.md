@@ -1,5 +1,5 @@
 ---
-title: Yaygın iki öğeli doğrulama sorunlarını giderme-Azure Active Directory | Microsoft Docs
+title: Yaygın iki öğeli doğrulama sorunlarını giderme-Azure AD
 description: Daha yaygın iki öğeli doğrulama sorunlarından bazılarına yönelik olası çözümler hakkında bilgi edinin.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 10/28/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb510755e7cc163af8ff0cb2c8699e1d2dd04d7f
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: f8d226d61f4b67541a6991fef3a435b4cfff500f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043215"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805296"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>Yaygın iki öğeli doğrulama sorunlarını giderme
 
@@ -104,7 +104,7 @@ Uygulama parolaları, iki öğeli doğrulamayı desteklemeyen eski masaüstü uy
 
 Bu adımları denediyseniz ancak hala sorun yaşıyorsanız yardım için yardım masasına başvurun.
 
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 
 - [İki öğeli doğrulama yöntemi ayarlarınızı yönetin](multi-factor-authentication-end-user-manage-settings.md)
 

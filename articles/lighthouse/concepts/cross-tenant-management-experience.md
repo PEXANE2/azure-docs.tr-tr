@@ -4,15 +4,15 @@ description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim den
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/24/2019
+ms.date: 11/7/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: eb4ec10755b7ca2227623ba0842d2b1175635594
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 182970cc39d200c37264a93d5e1b70c8839e5ef7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901807"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825816"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -46,6 +46,11 @@ Ayrıca, Azure Temsilcili kaynak yönetimi görevlerini gerçekleştirmek için 
 ## <a name="enhanced-services-and-scenarios"></a>Geliştirilmiş hizmetler ve senaryolar
 
 Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar üzerinde gerçekleştirilebilir. Platformlar arası yönetimin etkili olabilmesi için aşağıdaki önemli senaryolardan bazılarını aşağıda bulabilirsiniz.
+
+[Sunucular Için Azure Arc (Önizleme)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
+
+- Azure 'daki [Windows Server veya Linux makinelerini](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) , Azure 'daki abonelik ve/veya kaynak grupları için temsilci olarak bağlayın
+- Azure Ilkesi ve etiketleme gibi Azure yapılarını kullanarak bağlı makineleri yönetme
 
 [Azure Otomasyonu](https://docs.microsoft.com/azure/automation/):
 
@@ -126,7 +131,7 @@ Destek istekleri:
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 Tüm senaryolarla, lütfen aşağıdaki geçerli sınırlamalara dikkat edin:
 
-- Azure Resource Manager tarafından işlenen istekler, Azure tarafından atanan kaynak yönetimi kullanılarak gerçekleştirilebilir. Bu istekler için işlem URI 'Leri `https://management.azure.com` ile başlar. Ancak, kaynak türünün bir örneği tarafından işlenen istekler (örneğin, Anahtar Kasası gizli dizileri erişimi veya depolama veri erişimi), Azure tarafından atanan kaynak yönetimi ile desteklenmez. Bu isteklerin işlem URI 'Leri genellikle örneğiniz için benzersiz olan bir adresle başlar, örneğin `https://myaccount.blob.core.windows.net` veya `https://mykeyvault.vault.azure.net/`. İkincisi ayrıca yönetim işlemleri yerine genellikle veri operasyonlardır. 
+- Azure Resource Manager tarafından işlenen istekler, Azure tarafından atanan kaynak yönetimi kullanılarak gerçekleştirilebilir. Bu isteklerin işlem URI 'Leri `https://management.azure.com`başlar. Ancak, kaynak türünün bir örneği tarafından işlenen istekler (örneğin, Anahtar Kasası gizli dizileri erişimi veya depolama veri erişimi), Azure tarafından atanan kaynak yönetimi ile desteklenmez. Bu isteklerin işlem URI 'Leri genellikle örneğiniz için benzersiz olan ve `https://myaccount.blob.core.windows.net` veya `https://mykeyvault.vault.azure.net/`gibi bir adresle başlar. İkincisi ayrıca yönetim işlemleri yerine genellikle veri operasyonlardır. 
 - Rol atamalarının rol tabanlı erişim denetimi (RBAC) [yerleşik rollerini](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kullanması gerekir. Tüm yerleşik roller Şu anda, sahip veya [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) iznine sahip herhangi bir yerleşik rol haricinde Azure tarafından yetkilendirilen kaynak yönetimi ile desteklenmektedir. Kullanıcı erişimi yönetici rolü yalnızca [yönetilen kimliklere rol atama](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)konusunda sınırlı kullanım için desteklenir.  Özel roller ve [Klasik abonelik yöneticisi rolleri](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) desteklenmez.
 - Şu anda, abonelik Azure Databricks kullanıyorsa, Azure tarafından atanan kaynak yönetimi için abonelik (veya bir abonelik içinde kaynak grubu) ekleyemezsiniz. Benzer şekilde, **Microsoft. ManagedServices** kaynak sağlayıcısı ile ekleme için bir abonelik kaydedilmişse, bu abonelik için şu anda bir Databricks çalışma alanı oluşturamazsınız.
 - Kaynak kilitleri olan Azure tarafından atanan kaynak yönetimi için abonelikler ve kaynak grupları ekleyebilirsiniz, ancak bu kilitler, eylemlerin yönetim kiracısındaki kullanıcılar tarafından gerçekleştirilmesini engellemez. Azure tarafından yönetilen uygulamalar veya Azure şemaları (sistem tarafından atanan reddetme atamaları) tarafından oluşturulanlar gibi sistem tarafından yönetilen kaynakları koruyan [atamaları reddetme](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) , yönetim kiracısındaki kullanıcıların bu kaynaklara göre davranmasını önler; Bununla birlikte, müşteri kiracısındaki kullanıcılar kendi reddetme atamalarını oluşturamaz (Kullanıcı tarafından atanan reddetme atamaları).

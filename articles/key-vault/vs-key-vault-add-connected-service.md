@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 27c21171c2a53cb739215dcae070b94c8610a490
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9331f13bd85d9df0d47f8fa9d0964974764691f7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880895"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815110"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio bağlı hizmetler 'i kullanarak Web uygulamanıza Key Vault ekleme
 
@@ -22,7 +22,7 @@ Bu öğreticide, ASP.NET Core veya herhangi bir tür ASP.NET projesi kullanıp k
 
 Bağlı hizmetlerin projenizde Key Vault sağlamak üzere yaptığı değişikliklerle ilgili ayrıntılar için, bkz. [Key Vault bağlı hizmet-ASP.NET 4.7.1 projem 'A ne oldu](#how-your-aspnet-framework-project-is-modified) veya [Key Vault bağlı Service-ASP.NET Core projem Için ne oldu?](#how-your-aspnet-core-project-is-modified).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Bir Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
 - **Web geliştirme** iş yükü yüklüyken **Visual studio 2019 sürüm 16,3 Preview 1** veya üzeri ya da **Visual Studio 2017 sürüm 15,7** . [Şimdi indir](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
@@ -33,7 +33,7 @@ Bağlı hizmetlerin projenizde Key Vault sağlamak üzere yaptığı değişikli
 
 Başlamadan önce, Visual Studio 'da oturum açtığınızdan emin olun. Azure aboneliğiniz için kullandığınız hesapla oturum açın. Sonra bir ASP.NET 4.7.1 veya üzeri veya ASP.NET Core 2,0 Web projesi açın ve aşağıdaki adımları uygulayın:
 
-1. **Çözüm Gezgini**’nde **Ekle** > **Bağlı Hizmet** seçeneklerini belirleyin.
+1. **Çözüm Gezgini**' de, Anahtar Kasası desteğini eklemek istediğiniz projeye sağ tıklayın ve > **bağlı hizmet** **Ekle** ' yi seçin.
    Projenize ekleyebileceğiniz hizmetlerle birlikte Bağlı Hizmet sayfası görüntülenir.
 1. Kullanılabilir hizmetler menüsünde **Azure Key Vault Ile güvenli gizli**dizileri seçin.
 
@@ -57,7 +57,7 @@ Başlamadan önce, Visual Studio 'da oturum açtığınızdan emin olun. Azure a
 
 1. *MySecret* gibi bir gizli dizi girin ve bir test olarak herhangi bir dize değeri verin, **Oluştur** düğmesini seçin.
 
-   ![Gizli dizi oluşturma](media/vs-key-vault-add-connected-service/azure-create-a-secret.png)
+   ![Gizli anahtar oluşturma](media/vs-key-vault-add-connected-service/azure-create-a-secret.png)
 
 1. seçim Başka bir gizli dizi girin, ancak bu süre, bu kez gizli anahtar adlandırarak bir kategoriye konur *--MySecret*. Bu söz dizimi, gizli dizi "MySecret" içeren bir "gizli dizi" kategorisini belirtir.
 
@@ -65,9 +65,9 @@ Artık kod içinde gizli dizilerimize erişebilirsiniz. Sonraki adımlar, ASP.NE
 
 ## <a name="access-your-secrets-in-code"></a>Koddaki gizli dizilerinizdeki verilerinize erişin
 
-1. Çözüm Gezgini, projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. Bu iki NuGet paketini bulun ve **inceleyin** : [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve [Microsoft. Azure. keykasası](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
+1. Çözüm Gezgini, projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Araştır** sekmesinde şu iki NuGet paketini bulun ve yükleme: [Microsoft. Azure. Services. appauthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve [Microsoft. Azure. keykasası](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
 
-1. `Program.cs` Sekmesini seçin ve program sınıfını aşağıdaki kodla değiştirin:
+1. `Program.cs` sekmesini seçin ve program sınıfını aşağıdaki kodla değiştirin:
 
    ```csharp
     public class Program
@@ -99,8 +99,8 @@ Artık kod içinde gizli dizilerimize erişebilirsiniz. Sonraki adımlar, ASP.NE
     }
    ```
 
-1. Sonraki dosyayı `About.cshtml.cs` açın ve aşağıdaki kodu yazın:
-   1. Bu using ifadesiyle bir `Microsoft.Extensions.Configuration` başvuru ekleyin:
+1. Daha sonra `About.cshtml.cs` dosyası açın ve aşağıdaki kodu yazın:
+   1. Bu using ifadesiyle `Microsoft.Extensions.Configuration` bir başvuru ekleyin:
 
        ```csharp
        using Microsoft.Extensions.Configuration
@@ -115,7 +115,7 @@ Artık kod içinde gizli dizilerimize erişebilirsiniz. Sonraki adımlar, ASP.NE
        }
        ```
 
-   1. `OnGet` Yöntemini güncelleştirin. Burada gösterilen yer tutucu değerini yukarıdaki komutlarda oluşturduğunuz parola adıyla güncelleştirin.
+   1. `OnGet` yöntemini güncelleştirin. Burada gösterilen yer tutucu değerini yukarıdaki komutlarda oluşturduğunuz parola adıyla güncelleştirin.
 
        ```csharp
        public void OnGet()
@@ -143,13 +143,13 @@ Bu bölümde, Key Vault bağlı hizmeti Visual Studio kullanılarak eklenirken b
 
 , .NET başvuruları ve NuGet paket başvurularını proje dosyası etkiler.
 
-| Type | Başvuru |
+| Tür | Başvuru |
 | --- | --- |
 | NuGet | Microsoft. AspNetCore. AzureKeyVault. HostingStartup |
 
 ### <a name="added-files-for-aspnet-core"></a>ASP.NET Core için dosyalar eklendi
 
-- `ConnectedService.json`Bağlı hizmet sağlayıcısı, sürüm ve belge bağlantısıyla ilgili bazı bilgileri kaydeden eklendi.
+- Bağlı hizmet sağlayıcısı, sürüm ve belge bağlantısıyla ilgili bazı bilgileri kaydeden `ConnectedService.json` eklendi.
 
 ### <a name="project-file-changes-for-aspnet-core"></a>ASP.NET Core için proje dosyası değişiklikleri
 
@@ -177,9 +177,9 @@ Bu bölümde, Key Vault bağlı hizmeti Visual Studio kullanılarak eklenirken b
 
 ### <a name="added-references-for-aspnet-framework"></a>ASP.NET Framework için başvurular eklendi
 
-, Proje dosyası .net başvurularını ve `packages.config` (NuGet başvuruları) etkiler.
+, Proje dosyası .NET başvurularını ve `packages.config` (NuGet başvuruları) etkiler.
 
-| Type | Başvuru |
+| Tür | Başvuru |
 | --- | --- |
 | NET NuGet | Microsoft. Azure. Keykasası |
 | NET NuGet | Microsoft. Azure. Keykasası. WebKey |
@@ -188,7 +188,7 @@ Bu bölümde, Key Vault bağlı hizmeti Visual Studio kullanılarak eklenirken b
 
 ### <a name="added-files-for-aspnet-framework"></a>ASP.NET Framework için dosyalar eklendi
 
-- `ConnectedService.json`Bağlı hizmet sağlayıcısı, sürümü ve belgelerinin bağlantısı hakkında bazı bilgileri kaydeden eklendi.
+- Bağlı hizmet sağlayıcısıyla ilgili bazı bilgileri, sürümü ve belgelerin bağlantısını kaydeden `ConnectedService.json` eklendi.
 
 ### <a name="project-file-changes-for-aspnet-framework"></a>ASP.NET Framework için proje dosya değişiklikleri
 

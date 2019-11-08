@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.openlocfilehash: 5df8bb0ba0323692bddf94ae2888e8fcf1ad24a9
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b0c3d72085e008524811f479ccbdeec013e26c4c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063277"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822257"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital TWINS yönetim API 'Lerini kullanma
 
@@ -116,4 +116,4 @@ Bazı ortak API sorgu desenleri hakkında daha fazla bilgi edinmek için [Azure 
 
 API uç noktalarınız hakkında daha fazla bilgi edinmek için [dijital TWINS Swagger nasıl kullanacağınızı](./how-to-use-swagger.md)okuyun.
 
-OData söz dizimini ve kullanılabilir karşılaştırma işleçlerini gözden geçirmek için [Azure Search OData karşılaştırma işleçlerini](../search/search-query-odata-comparison-operators.md)okuyun.
+OData söz dizimini ve kullanılabilir karşılaştırma işleçlerini gözden geçirmek için [Azure bilişsel arama 'Da OData karşılaştırma işleçlerini](../search/search-query-odata-comparison-operators.md)okuyun.

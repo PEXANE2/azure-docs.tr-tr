@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 654ebc6f40e6c365e9abf406ff19cd7269539dd8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 019dbe8b977932c6a806f7efca8c0724597718d8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682229"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818064"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Hızlı başlangıç: IoT Tak ve Kullan önizleme cihazı (Windows) oluşturmak için cihaz yetenek modeli kullanma
 
@@ -38,7 +38,7 @@ VS Code Uzantı paketi [Için Azure IoT araçları](https://marketplace.visualst
 
 ### <a name="install-the-azure-iot-explorer"></a>Azure IoT Gezginini yüklemeyi
 
-Azure IoT gezgin aracını [en son sürüm](https://github.com/Azure/azure-iot-explorer/releases) sayfasından indirin ve yükleyin.
+En son güncelleştirme için "varlıklar" altında. msi dosyasını seçerek aracın [Depo](https://github.com/Azure/azure-iot-explorer/releases) sayfasından **Azure IoT Explorer** 'ın en son sürümünü indirin ve yükleyin.
 
 ### <a name="get-the-connection-string-for-your-company-model-repository"></a>Şirket modeli deponuzun bağlantı dizesini alın
 
@@ -100,7 +100,7 @@ Bu hızlı başlangıçta, [Vcpkg](https://github.com/microsoft/vcpkg)aracılı�
     .\bootstrap-vcpkg.bat
     ```
 
-    Daha sonra, Kullanıcı genelinde [tümleştirmeyi](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)bağlamak için (Note: ilk kullanımda yönetici gerektirir) öğesini çalıştırın:
+    Ardından, Kullanıcı genelinde [tümleştirmeyi](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)yedeklemek için aşağıdakileri çalıştırın (Note: ilk kullanımda yönetici gerektirir):
 
     ```cmd/sh
     .\vcpkg.exe integrate install
@@ -131,7 +131,7 @@ Bu hızlı başlangıçta, var olan bir örnek cihaz yetenek modeli ve ilişkili
 
 ## <a name="generate-the-c-code-stub"></a>C kodu saplaması oluşturma
 
-Artık bir DCM ve ilişkili arabirimlerinizin olduğu, modeli uygulayan Cihaz kodunu oluşturabilirsiniz. VS Code 'da C kodu saplaması oluşturmak için:
+Artık bir DCM ve ilişkili arabirimlerinizin olduğuna göre, modeli uygulayan Cihaz kodunu oluşturabilirsiniz. VS Code ' de C kodu saplaması oluşturmak için:
 
 1. DCM dosyaları açık olan klasörde, **CTRL + SHIFT + P** tuşlarına basarak komut paletini açın, **IoT Tak ve kullan**girin ve **cihaz kodu saplama oluştur**' u seçin.
 
@@ -150,7 +150,7 @@ Artık bir DCM ve ilişkili arabirimlerinizin olduğu, modeli uygulayan Cihaz ko
 
 1. Cihaz SDK 'sını dahil etmek için **Vcpkg aracılığıyla** öğesini seçin.
 
-1. VS Code, oluşturulan cihaz kodu saplama dosyaları ile yeni bir pencere açar.
+1. **Sample_device** adlı yeni bir klasör, DCM dosyasıyla aynı konumda oluşturulur ve içinde oluşturulan cihaz kodu saplama dosyalarıdır. VS Code, bunları göstermek için yeni bir pencere açar.
     ![cihaz kodu](media/quickstart-create-pnp-device/device-code.png)
 
 ## <a name="build-the-code"></a>Kodu oluşturma
@@ -164,7 +164,7 @@ Oluşturulan cihaz kodu saplaması 'nı cihaz SDK 'Sı ile birlikte oluşturursu
     cd cmake
     ```
 
-1. Oluşturulan kod Saplaması oluşturmak için aşağıdaki komutları çalıştırın:
+1. Oluşturulan kod Saplaması oluşturmak için aşağıdaki komutları çalıştırın (yer tutucuyu Vcpkg depoağınızın diziniyle değiştirin):
 
     ```cmd\sh
     cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
@@ -184,7 +184,7 @@ Oluşturulan cihaz kodu saplaması 'nı cihaz SDK 'Sı ile birlikte oluşturursu
     > [!NOTE]
     > CMake derleyicinizi C++ bulamazsa, önceki komutu çalıştırdığınızda derleme hataları alırsınız. Bu durumda, [Visual Studio komut isteminde](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)bu komutu çalıştırmayı deneyin.
 
-1. Oluşturma işlemi başarıyla tamamlandıktan sonra, IoT Hub cihaz bağlantı dizesini parametre olarak geçirerek uygulamanızı çalıştırın.
+1. Yapı başarıyla tamamlandıktan sonra, IoT Hub cihaz bağlantı dizesini parametre olarak geçirerek uygulamanızı çalıştırın.
 
     ```cmd\sh
     .\Debug\sample_device.exe "[IoT Hub device connection string]"
@@ -200,7 +200,7 @@ Oluşturulan cihaz kodu saplaması 'nı cihaz SDK 'Sı ile birlikte oluşturursu
 
 **Azure IoT Explorer**ile cihaz kodunu doğrulamak için dosyaları model deposuna yayımlamanız gerekir.
 
-1. DCM dosyaları açık olan klasörde, **CTRL + SHIFT + P** tuşlarına basarak komut paletini açın, **IoT eklentisi & Play: dosyaları model deposuna gönder**' i seçin.
+1. DCM dosyaları VS Code ' de açık olan klasörde, **CTRL + SHIFT + P** tuşlarına basarak komut paletini açın, **IoT tak & Play: dosyaları model deposuna gönder**' i yazın ve seçin.
 
 1. `SampleDevice.capabilitymodel.json` ve `EnvironmentalSensor.interface.json` dosyalarını seçin.
 
@@ -222,15 +222,13 @@ Oluşturulan cihaz kodu saplaması 'nı cihaz SDK 'Sı ile birlikte oluşturursu
 
 1. Bağlandıktan sonra, cihaza genel bakış sayfasını görürsünüz.
 
-1. Şirket deponuzu eklemek için **Ayarlar**' ı ve sonra **+ Yeni**' yi ve ardından **Şirket deposu**' nu seçin.
-
-1. Şirket modeli deposu Bağlantı dizenizi ekleyin. **Bağlan**’ı seçin.
+1. Şirket deponuzu eklemek için **Ayarlar**' ı ve **+ modül tanımı kaynağı Ekle**' yi ve ardından **Şirket deposu**' nu seçin. Şirket modeli deposu Bağlantı dizenizi ekleyin ve **Kaydet ve Bağlan**' ı seçin.
 
 1. Cihaza Genel Bakış sayfasında, daha önce oluşturduğunuz cihaz kimliğini bulun ve daha fazla ayrıntı görüntülemek için seçin.
 
-1. IoT Tak ve Kullan temel özellikler, komutlar ve Telemetriyi görmek için, KIMLIK **urn: azureiot: Environmentalalgılayıcı: 1** olan arabirimi genişletin.
+1. IoT Tak ve Kullan temel özellikler, komutlar ve telemetri özelliklerini görmek için, KIMLIK **urn: < YOUR_INTERFACE_NAME >: Environmentalalgılayıcı: 1** olan arabirimi genişletin. Görüntülenecek arabirim adı, modelinizi yazarken yerleştirdiğiniz addır.
 
-1. Cihazın gönderdiği telemetri verilerini görüntülemek için **telemetri** sayfasını seçin.
+1. **Telemetri** sayfasını seçin ve cihazın gönderdiği telemetri verilerini görüntülemek için _Başlat_ 'a basın.
 
 1. Cihaz tarafından raporlanan yazılabilir olmayan özellikleri görüntülemek için **Özellikler (yazılabilir değil)** sayfasını seçin.
 

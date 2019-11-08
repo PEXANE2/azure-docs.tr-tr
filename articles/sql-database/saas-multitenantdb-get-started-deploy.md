@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL veritabanı 'nı kullanan, parçalı bir çok kiracılı veritabanı SaaS uygulaması dağıtma "
+title: Parçalı bir çok kiracılı veritabanı SaaS uygulaması dağıtma
 description: Azure SQL veritabanı 'nı kullanarak SaaS düzenlerini gösteren parçalı Wingtip bilet SaaS Multi-tenant veritabanı uygulamasını dağıtın ve araştırın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
 ms.date: 10/16/2018
-ms.openlocfilehash: aa61c9af2e8fbfbe1caeaffb6231afe5b8be6f3c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3277318e01362df8fc21ff7ca769aaeb8006abc6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692053"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828003"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Parçalı bir çok kiracılı uygulamayı dağıtma ve araştırma
 

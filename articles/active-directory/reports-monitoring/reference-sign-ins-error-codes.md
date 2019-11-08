@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 931f2fbe5798966c41378d9b401dcd59cafc5cca
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 9bb7114611ce5c7eabb8124ad11db64d50e12946
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820882"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809814"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Oturum açma Etkinliği raporu hata kodları 
 
@@ -127,6 +127,7 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |50177|Dışarıdan sınama, geçiş kullanıcıları için desteklenmez.|
 |50178|Geçiş kullanıcıları için oturum denetimi desteklenmez.|
 |50180|Windows Tümleşik kimlik doğrulaması gerekli. Sorunsuz SSO için kiracıyı etkinleştirin.|
+|50181|Oturum açma sırasında OTP ile ilgili hata. |
 |50201|Bu ileti istemi kesmesi, kullanıcıya ek bilgi sağlanması gerektiğinde oturum açma sırasında kullanıcıya gösterilir.|
 |51001|Şirket içi güvenlik tanımlayıcısı-şirket Içi UPN ile etki alanı Ipucu yok.|
 |51004|Kullanıcı hesabı dizinde yok.|

@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL veritabanı satın alma modelleri '
+title: Satın alma modelleri
 description: Azure SQL veritabanı için kullanılabilen satın alma modelleri hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 48537ec4c62410565d32350b1e3a11bbc7a2ca6e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687567"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821258"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>VCore ve DTU satın alma modelleri arasında seçim yapın
 
@@ -125,7 +125,7 @@ Mevcut bir havuza, veritabanı kapalı kalma süresi olmadan ve havuzdaki verita
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Bir iş yükü için gereken DTU sayısını belirleme
 
-Mevcut bir şirket içi veya SQL Server sanal makine iş yükünü Azure SQL veritabanı 'na geçirmek istiyorsanız, gereken DTU sayısını yaklaşık olarak tahmin etmek için [DTU hesaplayıcısını](https://dtucalculator.azurewebsites.net/) kullanın. Mevcut bir Azure SQL veritabanı iş yükü için, veritabanı kaynak tüketiminizi (DTU 'Lar) anlamak üzere [Query-Performance Insights](sql-database-query-performance.md) 'ı kullanın ve iş yükünüzü iyileştirmek için daha derin Öngörüler elde edin. [Sys. DM _db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) Dynamic yönetim görünümü (DMV), son saatin kaynak tüketimini görüntülemenize olanak sağlar. [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) Katalog görünümü son 14 güne ait kaynak tüketimini görüntüler, ancak beş dakikalık Ortalamalar için daha düşük bir hassaside.
+Mevcut bir şirket içi veya SQL Server sanal makine iş yükünü Azure SQL veritabanı 'na geçirmek istiyorsanız, gereken DTU sayısını yaklaşık olarak tahmin etmek için [DTU hesaplayıcısını](https://dtucalculator.azurewebsites.net/) kullanın. Mevcut bir Azure SQL veritabanı iş yükü için, veritabanı kaynak tüketiminizi (DTU 'Lar) anlamak üzere [Query-Performance Insights](sql-database-query-performance.md) 'ı kullanın ve iş yükünüzü iyileştirmek için daha derin Öngörüler elde edin. [Sys. dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) dinamik yönetim görünümü (DMV), son saatin kaynak tüketimini görüntülemenize olanak sağlar. [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) Katalog görünümü son 14 güne ait kaynak tüketimini görüntüler, ancak beş dakikalık Ortalamalar için daha düşük bir hassaside.
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Elastik bir kaynak havuzundan faydalanabilir iş yükleri
 

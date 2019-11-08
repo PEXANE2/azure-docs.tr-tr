@@ -1,35 +1,35 @@
 ---
 title: Azure özel sağlayıcılarıyla kaynak ekleme
-description: Özel sağlayıcılar aracılığıyla kaynak ekleme, mevcut Azure kaynaklarının yönetilmesine ve uzantısına izin verir.
+description: Özel sağlayıcılar aracılığıyla kaynak ekleme, mevcut Azure kaynaklarını yönetmenize ve genişletmenize olanak tanır.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: tutorial
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
-ms.openlocfilehash: c722b4dc3219f76f8c7c571af3613996fec9e69c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45086987d5ba3a619028ced798712f2870c6d487
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608683"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826795"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Öğretici: Azure özel sağlayıcılarıyla kaynak ekleme
 
-Bu öğretici, Azure 'a, Azure Resource Manager API 'sini "Microsoft. CustomProviders/Association" kaynak türüyle genişleten özel bir kaynak sağlayıcısı dağıtacaktır. Bu örnek, özel sağlayıcı örneğinin yaşadığı kaynak grubunun dışındaki mevcut kaynakların nasıl genişletileceğini gösterir. Bu örnekte, özel kaynak sağlayıcısı bir Azure Logic App tarafından desteklenir, ancak tüm ortak API uç noktaları kullanılabilir.
+Bu öğreticide, Microsoft. CustomProviders/Association kaynak türü ile Azure Resource Manager API 'yi genişleten özel bir kaynak sağlayıcısı Azure 'a dağıtırsınız. Öğreticide, özel sağlayıcı örneğinin bulunduğu kaynak grubunun dışındaki mevcut kaynakların nasıl genişletileceği gösterilmektedir. Bu öğreticide, özel kaynak sağlayıcısı bir Azure Logic App tarafından desteklenir, ancak herhangi bir genel API uç noktasını kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunları bilmeniz gerekir:
 
-* [Azure özel sağlayıcı](custom-providers-overview.md) özellikleri.
-* [Özel sağlayıcılarla kaynak ekleme](concepts-custom-providers-resourceonboarding.md).
+* [Azure özel sağlayıcılarının](custom-providers-overview.md)özellikleri.
+* [Özel sağlayıcılarla kaynak ekleme](concepts-custom-providers-resourceonboarding.md)hakkında temel bilgiler.
 
-## <a name="getting-started-with-resource-onboarding"></a>Kaynak ekleme ile çalışmaya başlama
+## <a name="get-started-with-resource-onboarding"></a>Kaynak ekleme ile çalışmaya başlama
 
-Bu örnekte, dağıtılması gereken iki parça vardır: özel sağlayıcı ve ilişkilendirme. Örneği basitleştirmek için, isteğe bağlı olarak her ikisini de dağıtabilecek tek bir şablon vardır.
+Bu öğreticide, dağıtılması gereken iki parça vardır: özel sağlayıcı ve ilişkilendirme. İşlemi daha kolay hale getirmek için isteğe bağlı olarak her ikisini de dağıtan tek bir şablon kullanabilirsiniz.
 
-Şablon aşağıdaki kaynakları kullanacaktır:
+Şablon şu kaynakları kullanacaktır:
 
 * Microsoft. CustomProviders/resourceProviders
 * Microsoft. Logic/iş akışları
@@ -207,89 +207,87 @@ Bu örnekte, dağıtılması gereken iki parça vardır: özel sağlayıcı ve i
 
 ### <a name="deploy-the-custom-provider-infrastructure"></a>Özel sağlayıcı altyapısını dağıtma
 
-Şablonun ilk bölümü özel sağlayıcı altyapısını dağıtmakta. Bu altyapı, "ilişkilendirmeler" kaynağının etkisini tanımlar. Özel sağlayıcılar hakkında bilginiz yoksa bkz. [özel sağlayıcı temelleri](custom-providers-overview.md).
+Şablonun ilk bölümü özel sağlayıcı altyapısını dağıtır. Bu altyapı, ilişkilendirmeler kaynağının etkisini tanımlar. Özel sağlayıcılar hakkında bilgi sahibi değilseniz bkz. [özel sağlayıcı temelleri](custom-providers-overview.md).
 
-Özel sağlayıcı altyapısını dağıtarak, yukarıdaki şablonu kopyalayabilir, kaydedebilir ve dağıtabilir ya da Azure portal aracılığıyla uygulayın ve dağıtın.
+Özel sağlayıcı altyapısını dağıtalım. Önceki şablonu kopyalayın, kaydedin ve dağıtın ya da Azure portal kullanarak altyapıyı uygulayın ve dağıtın.
 
-1. https://portal.azure.comAzure portal açın.
+1. [Azure Portal](https://portal.azure.com) gidin.
 
-2. `All Services` veya ortadaki arama çubuğunda "Şablonlar" araması yapın. 
+2. **Tüm hizmetlerde** **Şablonlar** arayın veya ana arama kutusunu kullanarak:
 
-![Şablon arama](media/custom-providers-resource-onboarding/templates.png)
+   ![Şablon ara](media/custom-providers-resource-onboarding/templates.png)
 
-3. "Şablonlar" dikey penceresinin sol üst kısmındaki `+ Add` düğmesine basın.
+3. **Şablonlar** bölmesinde **Ekle** ' yi seçin:
 
-![Şablon yeni Ekle](media/custom-providers-resource-onboarding/templatesadd.png)
+   ![Ekle 'yi seçin](media/custom-providers-resource-onboarding/templatesadd.png)
 
-4. Yeni şablon için "ad" ve "Açıklama" alanlarını "genel" altında girin.
+4. **Genel**altında, yeni şablon Için bir **ad** ve **Açıklama** girin:
 
-![Şablon adı ve açıklaması](media/custom-providers-resource-onboarding/templatesdescription.png)
+   ![Şablon adı ve açıklaması](media/custom-providers-resource-onboarding/templatesdescription.png)
 
-5. JSON şablonunu "kaynak ekleme ile çalışmaya başlama" öğesinden kopyalayarak Kaynak Yöneticisi şablonunu doldur
+5. Bu makalenin "kaynak ekleme ile çalışmaya başlama" bölümünde JSON şablonunda kopyalama yaparak Kaynak Yöneticisi şablonu oluşturun:
 
-![Kaynak Yöneticisi şablonu doldur](media/custom-providers-resource-onboarding/templatesarmtemplate.png)
+   ![Kaynak Yöneticisi şablonu oluşturma](media/custom-providers-resource-onboarding/templatesarmtemplate.png)
 
-6. Yeni bir şablon oluşturmak için `Add` düğmesine basın. Yeni şablon görünmüyorsa, `Refresh`isabet edin.
+6. Şablonu oluşturmak için **Ekle** ' yi seçin. Yeni şablon görünmezse **Yenile**' yi seçin.
 
-7. Yeni oluşturulan şablonu seçin ve `Deploy` düğmesine basın.
+7. Yeni oluşturulan şablonu seçin ve ardından **Dağıt**' ı seçin:
 
-![Yeni oluşturulan şablonu seçin ve dağıtın](media/custom-providers-resource-onboarding/templateselectspecific.png)
+   ![Yeni şablonu seçin ve ardından Dağıt ' ı seçin.](media/custom-providers-resource-onboarding/templateselectspecific.png)
 
-8. Gerekli alanlar için ayar parametrelerini girin ve abonelik ve kaynak grubunu seçin. "Özel kaynak sağlayıcısı KIMLIĞI" boş bırakılabilir.
+8. Gerekli alanların ayarlarını girin ve ardından abonelik ve kaynak grubunu seçin. **Özel kaynak sağlayıcısı kimliği** kutusunu boş bırakabilirsiniz.
 
-| Ayar Adı | Gerekli | Açıklama |
-| ------------ | -------- | ----------- |
-| Konum | *Yes* | Şablondaki kaynakların konumu. |
-| Mantıksal uygulama adı | *eşleşen* | Mantıksal uygulama adı. |
-| Özel kaynak sağlayıcısı adı | *eşleşen* | Özel kaynak sağlayıcısı adı. |
-| Özel kaynak sağlayıcısı KIMLIĞI | *eşleşen* | "İlişkilendirme" kaynağını destekleyen mevcut bir özel kaynak sağlayıcısı. Bunu belirtmek, mantıksal uygulama ve özel sağlayıcı dağıtımını atlar. |
-| İlişkilendirme adı | *eşleşen* | İlişkilendirme kaynağının adı. |
+   | Ayar adı | Gerekli mi? | Açıklama |
+   | ------------ | -------- | ----------- |
+   | Konum | Evet | Şablondaki kaynakların konumu. |
+   | Mantıksal uygulama adı | Hayır | Mantıksal uygulamanın adı. |
+   | Özel kaynak sağlayıcısı adı | Hayır | Özel kaynak sağlayıcısı adı. |
+   | Özel kaynak sağlayıcısı kimliği | Hayır | İlişki kaynağını destekleyen mevcut bir özel kaynak sağlayıcısı. Burada bir değer belirtirseniz, mantıksal uygulama ve özel sağlayıcı dağıtımı atlanır. |
+   | İlişkilendirme adı | Hayır | İlişkilendirme kaynağının adı. |
 
-Örnek parametreler:
+   Örnek parametreler:
 
-![Giriş şablonu parametreleri](media/custom-providers-resource-onboarding/templatescustomprovider.png)
+   ![Şablon parametrelerini girin](media/custom-providers-resource-onboarding/templatescustomprovider.png)
 
-9. Dağıtıma gidip işlemin bitmesini bekleyin. Başarılı ve yeni "ilişkilendirme" kaynağının çıkışını görüntülemesi gerekir.
+9. Dağıtıma gidip işlemin bitmesini bekleyin. Aşağıdaki ekran görüntüsüne benzer bir şey görmeniz gerekir. Yeni ilişkilendirme kaynağını çıkış olarak görmeniz gerekir:
 
-Dağıtım başarısı:
+   ![Başarılı dağıtım](media/custom-providers-resource-onboarding/customproviderdeployment.png)
 
-![Özel sağlayıcı dağıtımı](media/custom-providers-resource-onboarding/customproviderdeployment.png)
+   Aşağıda **gizli türleri göster** seçiliyken kaynak grubu verilmiştir:
 
-"Gizli türleri göster" ile kaynak grubu:
+   ![Özel sağlayıcı dağıtımı](media/custom-providers-resource-onboarding/showhidden.png)
 
-![Özel sağlayıcı dağıtımı](media/custom-providers-resource-onboarding/showhidden.png)
+10. İlişki oluşturma çağrılarını görmek için Logic App **çalıştırmaları geçmişi** sekmesini inceleyin:
 
-10. "İlişkilendirme" oluşturma çağrılarını görmek için mantıksal uygulama "çalışma geçmişi" sekmesini inceleyin.
-
-![Mantıksal uygulama çalıştırma geçmişi](media/custom-providers-resource-onboarding/logicapprun.png)
+    ![Mantıksal uygulama çalıştırma geçmişi](media/custom-providers-resource-onboarding/logicapprun.png)
 
 ## <a name="deploy-additional-associations"></a>Ek ilişkilendirmeler dağıtma
 
-Özel sağlayıcı altyapısı kurulduktan sonra, ek "ilişkilendirmeler" de kolayca dağıtılabilir. Ek "ilişkilendirmeler" için kaynak grubunun, özel sağlayıcı altyapısının dağıtıldığı kaynak grubuyla aynı olması gerekmez. Bir ilişki oluşturmak için, belirtilen "özel kaynak sağlayıcısı KIMLIĞI" için "Microsoft. CustomProviders/resourceproviders/Write" izinleri gerekir.
+Özel sağlayıcı altyapısını ayarladıktan sonra kolayca daha fazla ilişkilendirme dağıtabilirsiniz. Ek İlişkilendirmelerin kaynak grubunun, özel sağlayıcı altyapısını dağıttığınız kaynak grubuyla aynı olması gerekmez. Bir ilişki oluşturmak için, belirtilen özel kaynak sağlayıcısı KIMLIĞINDE Microsoft. CustomProviders/resourceproviders/Write izinlerine sahip olmanız gerekir.
 
-1. Önceki dağıtımın kaynak grubundaki "Microsoft. CustomProviders/resourceProviders" kaynak grubundaki özel sağlayıcıya gidin. "Gizli türleri göster" onay kutusunun seçilmesi gerekir.
+1. Önceki dağıtımın kaynak grubundaki özel sağlayıcı **Microsoft. customproviders/resourceproviders** kaynağına gidin. **Gizli türleri göster** onay kutusunu seçmeniz gerekir:
 
-![Özel sağlayıcı dağıtımı](media/custom-providers-resource-onboarding/showhidden.png)
+   ![Kaynağa git](media/custom-providers-resource-onboarding/showhidden.png)
 
-2. Özel sağlayıcının "kaynak KIMLIĞI" özelliğini kopyalayın.
+2. Özel sağlayıcının kaynak KIMLIĞI özelliğini kopyalayın.
 
-3. `All Services` veya ortadaki arama çubuğunda "Şablonlar" araması yapın. 
+3. **Tüm hizmetlerde** **Şablonlar** arayın veya ana arama kutusunu kullanarak:
 
-![Şablon arama](media/custom-providers-resource-onboarding/templates.png)
+   ![Şablon ara](media/custom-providers-resource-onboarding/templates.png)
 
-4. Önceden oluşturulan şablonu seçin ve `Deploy` düğmesine basın.
+4. Önceden oluşturulan şablonu seçin ve ardından **Dağıt**' ı seçin:
 
-![Önceden oluşturulan şablonu seçin ve dağıtın](media/custom-providers-resource-onboarding/templateselectspecific.png)
+   ![Önceden oluşturulan şablonu seçin ve ardından Dağıt ' ı seçin.](media/custom-providers-resource-onboarding/templateselectspecific.png)
 
-5. Gerekli alanlar için ayar parametrelerini girin ve aboneliği ve farklı bir kaynak grubunu seçin. "Özel kaynak sağlayıcısı KIMLIĞI" ayarı için, önceden dağıtılan özel sağlayıcının kopyalanmış "kaynak KIMLIĞI" ni girin.
+5. Gerekli alanların ayarlarını girin ve ardından aboneliği ve farklı bir kaynak grubunu seçin. **Özel kaynak sağlayıcısı kimliği** ayarı için, daha önce dağıttığınız özel sağlayıcıdan KOPYALADıĞıNıZ kaynak kimliğini girin.
 
-6. Dağıtıma gidip işlemin bitmesini bekleyin. Şimdi yalnızca yeni "ilişkilendirmeler" kaynağını dağıtmalıdır.
+6. Dağıtıma gidip işlemin bitmesini bekleyin. Şimdi yalnızca yeni ilişkilendirmeler kaynağını dağıtmalıdır:
 
-![İlişki oluşturuldu](media/custom-providers-resource-onboarding/createdassociationresource.png)
+   ![Yeni ilişkilendirmeler kaynağı](media/custom-providers-resource-onboarding/createdassociationresource.png)
 
-İsteğe bağlı olarak, "çalıştırma geçmişi" mantıksal uygulamasına geri gidebilir ve mantıksal uygulamada başka bir çağrının yapıldığını görebilirsiniz. Mantıksal uygulama, oluşturulan her ilişki için ek işlevselliği artırmak üzere güncelleştirilemeyebilir.
+İsterseniz, mantıksal uygulama **çalıştırma geçmişine** geri dönerek mantıksal uygulama için başka bir çağrının yapıldığını görebilirsiniz. Mantıksal uygulamayı, oluşturulan her ilişkilendirme için ek işlevselliği artırmak üzere güncelleştirebilirsiniz.
 
-## <a name="looking-for-help"></a>Yardım aranıyor
+## <a name="getting-help"></a>Yardım alma
 
-Azure özel sağlayıcılar hakkında sorularınız varsa [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-custom-providers)yapmayı deneyin. Benzer bir soru zaten istendi ve yanıtlamış olabilir, bu nedenle göndermeden önce kontrol edin. Hızlı bir yanıt almak için etiketi `azure-custom-providers` ekleyin!
+Azure özel sağlayıcılar hakkında sorularınız varsa, [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-custom-providers)üzerinde soru sormayı deneyin. Benzer bir soru zaten yanıtlanmış olabilir, bu nedenle göndermeden önce kontrol edin. Hızlı bir yanıt almak için etiketi `azure-custom-providers` ekleyin!
 

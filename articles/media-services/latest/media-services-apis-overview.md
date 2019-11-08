@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 574b1591669cc32ce30677cad5158e13b944486f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0c263e1353a07ca388ea9a7fb48ebcf99be07fc1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750195"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820630"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Media Services v3 API 'Leri ile geliştirme
 
@@ -75,7 +75,7 @@ Azure Media Services v3 kaynaklarının adları (Varlıklar, İşler, Dönüşü
 
 Media Services kaynak adları şu karakterleri içeremez: '<', '>', '%', '&', ':', '&#92;', '?', '/', '*', '+', '.', tek tırnak karakteri veya kontrol karakterleri. Diğer tüm karakterlere izin verilir. Bir kaynağın adı en fazla 260 karakter olabilir. 
 
-Azure Resource Manager adlandırma kuralları hakkında daha fazla bilgi için bkz. [Adlandırma gereksinimleri](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) ve [Adlandırma kuralları](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+Azure Resource Manager adlandırma kuralları hakkında daha fazla bilgi için bkz. [Adlandırma gereksinimleri](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) ve [Adlandırma kuralları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Bir varlık içindeki dosyaların/Blobların adları
 
@@ -83,7 +83,7 @@ Bir varlık içindeki dosyaların/Blobların adları, hem [BLOB adı gereksiniml
 
 ## <a name="long-running-operations"></a>Uzun süre çalışan işlemler
 
-Azure Media Services [Swagger dosyalarında](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) `x-ms-long-running-operation` ile işaretlenen işlemler uzun süren işlemlerdir. 
+Azure Media Services [Swagger dosyalarında](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) `x-ms-long-running-operation` işaretli işlemler uzun süren işlemlerdir. 
 
 Zaman uyumsuz Azure işlemlerini izlemeye ilişkin ayrıntılar için bkz. [Async Operations](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
@@ -112,7 +112,7 @@ Uzun bir işlemin başarıyla gönderilmesi için bir ' 202 kabul edildi ' ve d�
 
 Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzun süreli bir işlem desteklenir. Başlatıldıktan sonra, uzun süre çalışan bir işlem, aynı LiveEvent veya ilgili canlı çıkışlar üzerinde sonraki uzun süreli bir işlem başlatmadan önce tamamlanmalıdır. Birden çok canlı çıkışı olan canlı olaylar için, başka bir canlı çıkışta uzun süre çalışan bir işlemi tetiklemeden önce, bir canlı çıkışta uzun süre çalışan bir işlemin tamamlanmasını beklemiş olmanız gerekir. 
 
-## <a name="sdks"></a>SDK'ler
+## <a name="sdks"></a>SDK'lar
 
 > [!NOTE]
 > Azure Media Services v3 SDK 'larının iş parçacığı açısından güvenli olması garanti edilmez. Çok iş parçacıklı bir uygulama geliştirirken, istemciyi korumak için kendi iş parçacığı eşitleme mantığınızı eklemeniz veya iş parçacığı başına yeni bir Azudüzeltici Istemci nesnesi kullanmanız gerekir. Ayrıca, kodunuzun istemciye (.NET 'teki bir HttpClient örneği gibi) sağlanan isteğe bağlı nesneler tarafından sunulan çoklu iş parçacığı oluşturma sorunlarından de dikkatli olmanız gerekir.
@@ -135,7 +135,7 @@ Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzu
 
 [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (amo), Media Services hakkında bilgi edinmek isteyen Windows müşterilerine sunulan bir araçtır. AMO, Media Services ile karşıyaC# yükleme, indirme, kodlama, akış ve canlı içerik akışı yapan bir WinForms/uygulamadır. AMO Aracı, herhangi bir kod yazmadan Media Services test etmek isteyen istemcilere yöneliktir. AMI kodu, Media Services geliştirmek isteyen müşteriler için bir kaynak olarak sağlanır.
 
-AMO bir açık kaynak projem, topluluk tarafından destek sağlanır (sorunlar https://github.com/Azure/Azure-Media-Services-Explorer/issues) ' a bildirilebilir. Bu proje [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Microsoft Açık Kaynak Kullanım Kuralları) belgesinde listelenen kurallara uygundur. Daha fazla bilgi için bkz. [kullanım KURALLARı SSS](https://opensource.microsoft.com/codeofconduct/faq/) veya opencode@microsoft.com ile ilgili diğer sorular veya yorumlar.
+AMO, bir açık kaynak projem, topluluk tarafından destek sağlanır (https://github.com/Azure/Azure-Media-Services-Explorer/issues), sorunlar bildirilebilir. Bu proje [Microsoft Açık Kaynak Davranış Kuralları](https://opensource.microsoft.com/codeofconduct/)’nı benimsemiştir. Daha fazla bilgi için bkz. [kullanım KURALLARı SSS](https://opensource.microsoft.com/codeofconduct/faq/) veya ek soru ya da açıklamalarla iletişim opencode@microsoft.com.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services varlıkların filtrelenmesi, sıralanması, sayfalama
 

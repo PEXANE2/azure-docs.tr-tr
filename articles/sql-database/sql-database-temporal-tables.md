@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı 'nda zamana bağlı tabloları kullanmaya başlama
+title: Zamana bağlı tabloları kullanmaya başlama
 description: Azure SQL veritabanı 'nda zamana bağlı tabloları kullanmaya başlama hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: 44a5589357301f979bb094579626e1c02e582846
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 98fd2658f3fbcb0e7e29114d29f8dc6ed39eedf2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686973"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820717"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL veritabanı 'nda zamana bağlı tabloları kullanmaya başlama
 
@@ -49,7 +49,7 @@ SSDT 'de, veritabanı projesine yeni öğeler eklerken "zamana bağlı tablo (si
 
 ![SSDTNewTable](./media/sql-database-temporal-tables/AzureTemporal3.png)
 
-Aşağıdaki örnekte gösterildiği gibi doğrudan Transact-SQL deyimlerini belirterek de zamana bağlı tablo oluşturabilirsiniz. Her zamana bağlı tablonun zorunlu öğelerinin dönem tanımı ve SYSTEM_VERSIONING yan tümcesinin geçmiş satır sürümlerini depolayabileceği başka bir Kullanıcı tablosuna başvurdığına göz önünde bulunmaktadır:
+Aşağıdaki örnekte gösterildiği gibi doğrudan Transact-SQL deyimlerini belirterek de zamana bağlı tablo oluşturabilirsiniz. Her zamana bağlı tablonun zorunlu öğelerinin, geçmiş satır sürümlerini depolayacağı başka bir Kullanıcı tablosuna bir başvuruya sahip dönem tanımı ve SYSTEM_VERSIONING yan tümcesi olduğunu unutmayın:
 
 ```
 CREATE TABLE WebsiteUserInfo 
@@ -120,7 +120,7 @@ Güncelleştirme sorgusunun, gerçek işlem gerçekleştiği zaman ve geçmiş v
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
 ## <a name="step-3-perform-historical-data-analysis"></a>3\. Adım: geçmiş veri analizini gerçekleştirme
-Zamana bağlı sistem sürümü oluşturma özelliği etkin olduğunda, geçmiş veri analizi yalnızca bir sorgudur. Bu makalede, genel analiz senaryolarını ele alan birkaç örnek sağlayacağız. tüm ayrıntıları öğrenmek için [for SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) yan tümcesiyle sunulan çeşitli seçenekleri inceleyin.
+Zamana bağlı sistem sürümü oluşturma özelliği etkin olduğunda, geçmiş veri analizi yalnızca bir sorgudur. Bu makalede, genel analiz senaryolarını ele alan birkaç örnek sağlayacağız. tüm ayrıntıları öğrenmek için [FOR SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) yan tümcesiyle sunulan çeşitli seçenekleri inceleyin.
 
 Ziyaret edilen Web sayfası sayısına göre sıralanan ilk 10 kullanıcıyı bir saat önce görmek için şu sorguyu çalıştırın:
 

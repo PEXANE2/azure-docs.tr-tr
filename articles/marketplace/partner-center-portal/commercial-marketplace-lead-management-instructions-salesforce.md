@@ -4,15 +4,16 @@ description: Azure Market müşterileri için Salesforce 'ta lider yönetimini y
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: d941a7902dd374a931147bdaa8f015c46268ee8a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: bdd3bb50fc69083c73eb01a84bf0fb0db82a8a65
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901993"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812145"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Salesforce için lider yönetimini yapılandırma
 
@@ -23,10 +24,10 @@ Bu makalede, Salesforce teklifinizin satış fırsatlarını işlemek üzere Sal
 1. Salesforce 'ta oturum açın.
 2. Salesforce aydınlatma deneyimini kullanıyorsanız.
     1. Salesforce ana sayfasından **Kurulum** ' u seçin.
-    ![Salesforce kurulumu](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
+    ![Salesforce kurulum](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
     1. Kurulum sayfasında, **platform araçları-> özellik ayarları ' na (> pazarlama-> Web 'Den müşteri adayına**kadar) kadar gezinin.
-    ![Salesforce Web 'den sağlama](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
+    Salesforce Web-müşteri adayı](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png) ![
 
 3. Salesforce Classic deneyimini kullanıyorsanız:
     1. Salesforce ana sayfasından **Kurulum** ' u seçin.
@@ -41,11 +42,11 @@ Kullandığınız Salesforce deneyimi ne olursa olsun, yönergelerin geri kalan�
 5. **Web 'Den müşteri adayı kurulumunda**, Web 'Den yapılacak **Müşteri formu oluştur**' u seçin.
     ![Salesforce-Web 'den müşteri adayına kurulum](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
 
-6. Web 'den **müşteri adayı oluştur formunda**, ayarın işaretli olmadığından emin `the Include reCAPTCHA in HTML` olun ve **Oluştur**' u seçin. 
-    ![Salesforce-bir Web 'den sağlama formu oluşturma](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
+6. Web 'den **müşteri adayı oluştur formunda**`the Include reCAPTCHA in HTML` ayarının işaretlenmemiş olduğundan emin olun ve **Oluştur**' u seçin. 
+    Salesforce ![-bir Web 'den sağlama formu oluşturun](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
 
 7. Size bazı HTML metinleri sunulacaktır. "OID" metnini arayın ve **OID DEĞERINI** HTML metinden (yalnızca tırnak işaretleri arasındaki metin) kopyalayın ve kaydedin. Bu değeri, yayımlama portalındaki **kuruluş tanımlayıcı** alanına yapıştırabilirsiniz.
-    ![Salesforce-bir Web 'den sağlama formu oluşturma](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
+    Salesforce ![-bir Web 'den sağlama formu oluşturun](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
 
 8. Seçili **tamamlandı**.
 
@@ -55,9 +56,9 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini ya
 
 1. Teklifiniz için **teklif kurulumu** sayfasına gidin.
 1. Müşteri adayı Yönetimi bölümünde **Bağlan** ' ı seçin.
-    ![Lider yönetimi-Bağlan](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
+    ![sağlama yönetimi-bağlantı](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
 
-1. Bağlantı ayrıntıları açılır penceresinde, **müşteri adayı hedefi** için **Salesforce** ' ı seçin ve daha önceki adımları izleyerek oluşturduğunuz `oid` Web 'den müşteri adayı formunu **kuruluş tanımlayıcı** alanına yapıştırın.
+1. Bağlantı ayrıntıları açılır penceresinde, **müşteri adayı hedefi** için **Salesforce** ' ı seçin ve daha önceki adımları **kuruluş tanımlayıcı** alanına uygulayarak oluşturduğunuz Web 'den müşteri adayı formundan `oid` yapıştırın.
 
 1. **Kaydet**’i seçin. 
 

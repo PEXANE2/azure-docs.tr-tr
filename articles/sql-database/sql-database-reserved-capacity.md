@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı sanal çekirdekleri için maliyetleri kaydetme
+title: Maliyetleri Kaydet
 description: İşlem maliyetlerinizi kaydetmek için Azure SQL veritabanı ayrılmış kapasitesini nasıl satın alacağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/29/2019
-ms.openlocfilehash: 70e274d765b409d4024155f8553ba92200598394
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 52a3665da99ca9885c57db1a2779dc6ce4dbec21
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687532"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821172"
 ---
 # <a name="save-costs-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL veritabanı ayrılmış kapasitesi ile SQL veritabanı işlem kaynakları için maliyetleri kaydetme
 

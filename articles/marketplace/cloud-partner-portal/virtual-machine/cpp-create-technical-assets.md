@@ -4,22 +4,23 @@ description: Azure Marketi 'nde bir sanal makine teklifi için teknik varlıklar
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: pabutler
-ms.openlocfilehash: c1ef00f846dfad76629b0603ab79fba17249417c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 45d0ff5b7b3fea1566b13b61bd01cc17da61e4b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224520"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824504"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Bir sanal makine teklifi için teknik varlıklar oluşturma
 
 Bu bölümde, Azure Marketi için bir sanal makine (VM) teklifiyle ilgili teknik varlıkları oluşturma ve yapılandırma adımları anlatılmaktadır.  VM iki bileşen içerir: çözüm sanal sabit diski (VHD) ve isteğe bağlı olarak ilişkili veri diskleri.  
 
 - Azure Market teklifinizle birlikte dağıtacağınız işletim sistemini ve çözümünüzü içeren *sanal sabit diskler (VHD)* . VHD 'yi hazırlama işlemi, Linux tabanlı, Windows tabanlı veya özel tabanlı bir VM olmasına bağlı olarak farklılık gösterir.
-- *Veri diskleri* , bir sanal makine için adanmış ve kalıcı depolamayı temsil eder. Kalıcı bilgileri depolamak için çözüm VHD 'sini (örneğin, `C:` sürücü) kullanmayın.
+- *Veri diskleri* , bir sanal makine için adanmış ve kalıcı depolamayı temsil eder. Kalıcı bilgileri depolamak için çözüm VHD 'yi (örneğin, `C:` sürücüsü *) kullanmayın.*
 
 Bir VM görüntüsü, bir işletim sistemi diski ve sıfır veya daha fazla veri diski içerir. Disk başına bir VHD gereklidir. Boş veri diskleri bile, bir VHD 'nin oluşturulmasını gerektirir.
 VM işletim sistemini, VM boyutunu, açılacak bağlantı noktalarını ve en fazla 15 bağlı veri diski yapılandırmanız gerekir.
@@ -52,9 +53,9 @@ Ayrıca, aşağıdaki araçların geliştirme ortamınıza eklenmesini öneririz
 
 -   [Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Uzantının [Azure Resource Manager araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Uzantının [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Uzantının [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+    *   Uzantı: [Azure Resource Manager araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Uzantı: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Uzantı: [prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Ayrıca, [Azure Geliştirici Araçları](https://azure.microsoft.com/tools/) sayfasındaki kullanılabilir araçların incelenmesi önerilir ve Visual Studio kullanıyorsanız, [Visual Studio Market](https://marketplace.visualstudio.com/).
 

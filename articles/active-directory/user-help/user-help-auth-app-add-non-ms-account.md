@@ -1,5 +1,5 @@
 ---
-title: Microsoft dışı hesaplarınızı Microsoft Authenticator uygulamasına ekleyin-Azure Active Directory | Microsoft Docs
+title: Bir Authenticator uygulamasına Microsoft hesabı olmayan bir uygulamaya ekleme-Azure AD
 description: Google, Facebook veya GitHub gibi Microsoft dışı hesaplarınızı iki öğeli doğrulama için Microsoft Authenticator uygulamasına ekleme.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1521d2b3d47667466636a1ac15f107826e40942
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 62d866e9bf543577887ee99173a52202fcfec632
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942941"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803674"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Microsoft dışı hesaplarınızı ekleyin
 
@@ -45,7 +45,7 @@ Facebook, Google, GitHub ve Amazon hesaplarınız için bu işlemi burada sunuyo
 
 ### <a name="turn-on-two-factor-verification"></a>İki öğeli doğrulamayı açma
 
-1. Bilgisayarınızda adresine gidin https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome, **kullanmaya**başlayın ' ı seçin ve sonra kimliğinizi doğrulayın.
+1. Bilgisayarınızda https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome' a gidin, **kullanmaya**başlayın ' ı seçin ve sonra kimliğinizi doğrulayın.
 
 2. Kişisel Google hesabınız için iki aşamalı doğrulamayı açmak üzere sayfa üzerindeki adımları izleyin.
 
@@ -81,7 +81,7 @@ Facebook, Google, GitHub ve Amazon hesaplarınız için bu işlemi burada sunuyo
 
 ### <a name="turn-on-two-factor-verification"></a>İki öğeli doğrulamayı açma
 
-1. Bilgisayarınızda Facebook ' u açın, sağ üst köşedeki açılan menüyü seçin ve ardından **Ayarlar** > **güvenlik ve oturum aç**' a gidin.
+1. Bilgisayarınızda Facebook ' u açın, sağ üst köşedeki açılan menüyü seçin ve ardından **ayarlar** > **güvenlik ve oturum açma**' ya gidin.
 
     **Güvenlik ve oturum açma** sayfası görüntülenir.
 
@@ -187,7 +187,7 @@ Facebook, Google, GitHub ve Amazon hesaplarınız için bu işlemi burada sunuyo
 
 10. Bilgisayarınızda **bir yedekleme doğrulama yöntemi ekleme** sayfasında, Amazon hesabınız için yedekleme doğrulama yönteminiz tarafından belirtilen altı basamaklı doğrulama kodunu yazın ve ardından **kodu doğrula ve devam et**' i seçin.
 
-11. **Neredeyse bitti** sayfasında, bilgisayarınızı güvenilir bir cihaz yapıp yapmayacağınıza karar verin ve ardından alındı ' ı **seçin. Iki aşamalı doğrulamayı**açın.
+11. **Neredeyse bitti** sayfasında, bilgisayarınızı güvenilir bir cihaz yapıp yapmayacağınıza karar verin ve ardından alındı ' ı seçin **. Iki aşamalı doğrulamayı açın**.
 
     Güncelleştirilmiş iki öğeli doğrulama ayrıntılarınızın gösterildiği **Gelişmiş güvenlik ayarları** sayfası görüntülenir.
 

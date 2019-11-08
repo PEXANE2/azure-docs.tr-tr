@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı yönetilen örnek T-SQL farkları
+title: Yönetilen örnek T-SQL farkları
 description: Bu makalede, Azure SQL veritabanı ve SQL Server yönetilen bir örnek arasındaki T-SQL farklılıkları ele alınmaktadır
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5efa52da0005d0b98820c648dfe7c8489bc39076
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3518404b76625e2557aaefdc6ab5ad7353683984
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687873"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823317"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamaları ve bilinen sorunlar
 
@@ -149,7 +149,7 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
 - Veritabanı sahibi olarak Azure AD grubuna eşlenmiş bir Azure AD oturum açmanın ayarlanması desteklenmez.
 - Diğer Azure AD sorumlularını kullanarak Azure AD sunucu düzeyi sorumluları 'nın kimliğe bürünme işlemi, [execute as](/sql/t-sql/statements/execute-as-transact-sql) yan tümcesi gibi desteklenir. FARKLı ÇALıŞTıR sınırlamaları şunlardır:
 
-  - Ad, oturum açma adından farklı olduğunda Azure AD kullanıcıları için Kullanıcı tarafından desteklenmez. Kullanıcı, [john@contoso.com] oturum açma aşamasından [myAadUser] Kullanıcı oluşturma [] ve kimliğe bürünme Kullanıcı = _myaaduser_aracılığıyla denendiğinde bir örnektir. Bir Azure AD sunucu sorumlusu 'ndan (oturum açma) bir **Kullanıcı** oluşturduğunuzda, **oturum açma**işleminden aynı login_name için user_name 'yi belirtin.
+  - Ad, oturum açma adından farklı olduğunda Azure AD kullanıcıları için Kullanıcı tarafından desteklenmez. Kullanıcı, [john@contoso.com] oturum açma aşamasından [myAadUser] Kullanıcı oluşturma [] ve kimliğe bürünme Kullanıcı = _myaaduser_aracılığıyla denendiğinde bir örnektir. Bir Azure AD sunucu sorumlusu 'ndan (oturum açma) bir **Kullanıcı** oluşturduğunuzda, user_name **oturum açma**işleminden aynı login_name olarak belirtin.
   - Yalnızca `sysadmin` rolünün bir parçası olan SQL Server düzeyi sorumlular (oturum açmalar), Azure AD sorumlularını hedefleyen aşağıdaki işlemleri yürütebilirler:
 
     - KULLANıCı OLARAK YÜRÜT
@@ -170,11 +170,11 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
 - Azure AD yönetici hesabıyla çakışan Azure AD Server sorumlularına (oturum açmalar) izin verilir. Sorumluyu çözümlediğinizde ve yönetilen örneğe izinleri uyguladığınızda Azure AD Server sorumluları (oturum açmalar) Azure AD Yöneticisi üzerinden önceliklidir.
 - Kimlik doğrulama sırasında, kimliği doğrulanan sorumluyu çözümlemek için aşağıdaki sıra uygulanır:
 
-    1. Azure AD hesabı, "E" türü olarak sys. server_principals ' de bulunan Azure ad sunucu sorumlusu (oturum açma) ile doğrudan eşlenmiş olarak mevcutsa, Azure AD Server sorumlusu (oturum açma) için erişim izni verin ve izinleri uygulayın.
-    2. Azure AD hesabı, "X" türü olarak sys. server_principals ' de bulunan Azure ad sunucu sorumlusu (oturum açma) ile eşlenmiş bir Azure AD grubunun üyesiyse, erişim izni verin ve Azure AD grubu oturum açma izinlerini uygulayın.
+    1. Azure AD hesabı, sys. server_principals ' de bulunan Azure AD Server sorumlusu (oturum açma) ile doğrudan eşlenmiş olarak mevcutsa, Azure AD Server sorumlusu (oturum açma) için erişim izni verin ve izinleri uygulayın.
+    2. Azure AD hesabı, server_principals sys 'de bulunan Azure AD Server sorumlusu (oturum açma) ile eşlenmiş bir Azure AD grubunun üyesiyse, "X" türü olarak erişim izni verin ve Azure AD grubu oturum açma izinlerini uygulayın.
     3. Azure AD hesabı yönetilen örnek için yönetilen örnek sistem görünümlerinde mevcut olmayan özel bir portal tarafından yapılandırılmış Azure AD yöneticisi ise, yönetilen örnek (eski mod) için Azure AD yöneticisi 'nin özel sabit izinlerini uygulayın.
-    4. Azure AD hesabı, bir veritabanında bulunan bir Azure AD kullanıcısına doğrudan eşlenmiş olarak mevcutsa ("E" türü olarak sys. database_principals ' de bulunur), Azure AD veritabanı kullanıcısına erişim izni verin ve izinleri uygulayın.
-    5. Azure AD hesabı, bir veritabanında bulunan bir Azure AD kullanıcısına eşlenmiş bir Azure AD grubunun üyesiyse, "X" türü olarak sys. database_principals ' de bulunan ve Azure AD grubu oturum açma izinlerini uygulamaya erişim izni verin.
+    4. Azure AD hesabı bir veritabanında bulunan bir Azure AD kullanıcısına doğrudan eşlenmiş olarak varsa ("E" türü olarak, Azure AD veritabanı kullanıcısına erişim izni verin ve izinleri uygulayın. database_principals.
+    5. Azure AD hesabı, sys. database_principals "X" türü olarak bir veritabanında bulunan bir Azure AD kullanıcısına eşlenmiş bir Azure AD grubunun üyesiyse, erişim izni verin ve Azure AD grubu oturum açma izinlerini uygulayın.
     6. Kimlik doğrulaması yapan kullanıcıya çözümlenen bir Azure AD kullanıcı hesabıyla veya bir Azure AD grup hesabıyla eşlenmiş bir Azure AD oturum açma bilgileri varsa, bu Azure AD oturum açma bilgilerini tüm izinler uygulanır.
 
 ### <a name="service-key-and-service-master-key"></a>Hizmet anahtarı ve hizmet ana anahtarı
@@ -345,7 +345,7 @@ SQL Server ' de etkin olan belgelenmemiş DBCC deyimleri yönetilen örneklerde 
 
 - Yalnızca sınırlı sayıda genel Izleme bayrağı desteklenir. Oturum düzeyi `Trace flags` desteklenmez. Bkz. [izleme bayrakları](/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [DBCC TRACEOFF](/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) ve [DBCC TRACEON](/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) , sınırlı sayıda Global Trace-Flags ile çalışır.
-- Veritabanı `SINGLE_USER` modda ayarlanamadığı için REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST ve REPAIR_REBUILD seçeneklerine sahip [DBCC CHECKDB](/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) kullanılamaz-bkz. [alter database farkları](#alter-database-statement). Olası veritabanı bozuklukları Azure destek ekibi tarafından işlenir. Yaşıyorsanız veritabanında düzeltilmesi gereken bir veritabanı bozulması varsa Azure desteği 'ne başvurun.
+- Veritabanı `SINGLE_USER` modda ayarlanamadığı için REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST ve REPAIR_REBUILD seçenekleriyle [DBCC CHECKDB](/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) kullanılamıyor-bkz. [alter database farkları](#alter-database-statement). Olası veritabanı bozuklukları Azure destek ekibi tarafından işlenir. Yaşıyorsanız veritabanında düzeltilmesi gereken bir veritabanı bozulması varsa Azure desteği 'ne başvurun.
 
 ### <a name="distributed-transactions"></a>Dağıtılmış işlemler
 
@@ -355,8 +355,8 @@ SQL Server ' de etkin olan belgelenmemiş DBCC deyimleri yönetilen örneklerde 
 
 Genişletilmiş olaylar (XEvents) için Windows 'a özgü bazı hedefler desteklenmez:
 
-- `etw_classic_sync` hedefi desteklenmiyor. Azure Blob depolamada `.xel` dosyaları depolayın. Bkz. [etw_classic_sync Target](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
-- `event_file` hedefi desteklenmiyor. Azure Blob depolamada `.xel` dosyaları depolayın. Bkz. [event_file Target](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
+- `etw_classic_sync` hedefi desteklenmiyor. Azure Blob depolamada `.xel` dosyaları depolayın. [Etw_classic_sync hedefi](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target)' ne bakın.
+- `event_file` hedefi desteklenmiyor. Azure Blob depolamada `.xel` dosyaları depolayın. [Event_file hedefi](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target)' ne bakın.
 
 ### <a name="external-libraries"></a>Dış kitaplıklar
 
@@ -458,7 +458,7 @@ Yönetilen örneklerdeki bağlı sunucular sınırlı sayıda hedef destekler:
   - `FROM DISK`/`TAPE`/Backup cihazı desteklenmez.
   - Yedekleme kümeleri desteklenmez.
 - `DIFFERENTIAL` veya `STATS`gibi `WITH` seçenekleri desteklenmez.
-- `ASYNC RESTORE`: geri yükleme, istemci bağlantısı kesilse bile devam eder. Bağlantınız atıldığı takdirde, bir geri yükleme işleminin durumu için `sys.dm_operation_status` görünümü ve bir oluşturma ve BıRAKMA veritabanı için denetim yapabilirsiniz. Bkz. [sys. DM _operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- `ASYNC RESTORE`: geri yükleme, istemci bağlantısı kesilse bile devam eder. Bağlantınız atıldığı takdirde, bir geri yükleme işleminin durumu için `sys.dm_operation_status` görünümü ve bir oluşturma ve BıRAKMA veritabanı için denetim yapabilirsiniz. Bkz. [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Aşağıdaki veritabanı seçenekleri ayarlanır veya geçersiz kılınır ve daha sonra değiştirilemez: 
 
@@ -512,7 +512,7 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 - `SERVERPROPERTY('EngineEdition')` 8 değerini döndürür. Bu özellik yönetilen bir örneği benzersiz bir şekilde tanımlar. Bkz. [ServerProperty](/sql/t-sql/functions/serverproperty-transact-sql).
 - `SERVERPROPERTY('InstanceName')`, SQL Server için mevcut olduğu gibi örnek kavramı yönetilen bir örnek için uygulanamadığından NULL değerini döndürür. Bkz. [ServerProperty (' ÖrnekAdı ')](/sql/t-sql/functions/serverproperty-transact-sql).
 - `@@SERVERNAME`, tam DNS "bağlanılabilir" adı döndürür, örneğin, my-managed-instance.wcus17662feb9ce98.database.windows.net. Bkz. [@@SERVERNAME](/sql/t-sql/functions/servername-transact-sql). 
-- `SYS.SERVERS`, "Name" ve "data_source" özellikleri için `myinstance.domain.database.windows.net` gibi tam DNS "bağlanılabilir" adı döndürür. Bkz [. sys. Sunucu](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
+- `SYS.SERVERS`, "ad" ve "data_source" özellikleri için `myinstance.domain.database.windows.net` gibi tam DNS "bağlanılabilir" adı döndürür. Bkz [. sys. Sunucu](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
 - `@@SERVICENAME`, SQL Server için mevcut olduğu gibi hizmet kavramı yönetilen bir örneğe uygulanamadığından NULL değerini döndürür. Bkz. [@@SERVICENAME](/sql/t-sql/functions/servicename-transact-sql).
 - `SUSER_ID` desteklenir. Azure AD oturum açma, sys. syslogins içinde değilse NULL değerini döndürür. Bkz. [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
 - `SUSER_SID` desteklenmez. Yanlış veriler döndürülür, bu geçici olarak bilinen bir sorundur. Bkz. [SUSER_SID](/sql/t-sql/functions/suser-sid-transact-sql). 
@@ -537,7 +537,7 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 
 ### <a name="error-logs"></a>Hata günlükleri
 
-Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata günlüğünde günlüğe kaydedilen çok sayıda iç sistem olayı vardır. İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için bkz. [yönetilen örnek – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) veya [yönetilen örnek uzantısı (Önizleme)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data Studio.
+Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata günlüğünde günlüğe kaydedilen çok sayıda iç sistem olayı vardır. İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için bkz. Azure Data Studio için [yönetilen örnek – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) veya [yönetilen örnek uzantısı (Önizleme)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) .
 
 ## <a name="Issues"></a>Bilinen sorunlar
 
@@ -607,7 +607,7 @@ Aşağıdaki AAD sorumlularının `EXECUTE AS USER` veya `EXECUTE AS LOGIN` kull
 -   Diğer ad AAD kullanıcıları. Bu durumda `15517`aşağıdaki hata döndürülür.
 - Aad uygulamaları ve hizmet sorumlularına göre AAD oturum açmaları ve kullanıcılar. Bu durumda `15517` ve `15406`aşağıdaki hatalar döndürülür.
 
-### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>sp_send_db_mail içinde desteklenmeyen @query parametresi
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@query parametre sp_send_db_mail desteklenmiyor
 
 **Tarih:** 2019 Nisan
 

@@ -1,20 +1,21 @@
 ---
-title: Azure SQL veritabanı-hiper ölçek hizmet katmanında Performans Tanılama
+title: Hiper ölçekte Performans Tanılama
 description: Bu makalede, Azure SQL veritabanı 'nda hiper ölçekli performans sorunlarının nasıl giderileceği açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
+ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: b8acdbc63098ae99355e8874f7c1585759e5fb7f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a7c64284c958fa8b3ec89c2b27515fe167a04011
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689852"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811141"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL hiper ölçek performans sorunlarını giderme tanılaması
 
@@ -27,7 +28,7 @@ Hiper ölçekli bir veritabanında performans sorunlarını gidermek için, Azur
 
 Her Azure SQL veritabanı hizmet düzeyinde günlük oluşturma oranı sınırlamaları, [günlük hızı](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)yönetimi aracılığıyla uygulanır. Hiper ölçekte, günlük oluşturma sınırı hizmet düzeyinden bağımsız olarak şu anda 100 MB/sn olarak ayarlanmıştır. Ancak, birincil işlem çoğaltmasındaki günlük oluşturma hızının, kurtarılabilirlik sağlamak için kısıtlandığı durumlar vardır. Bu kısıtlama, bir [sayfa sunucusu veya başka bir işlem çoğaltması](sql-database-service-tier-hyperscale.md#distributed-functions-architecture) , günlük hizmetinden yeni günlük kayıtlarının uygulanması önemli ölçüde geride olduğunda gerçekleşir.
 
-Aşağıdaki bekleme türleri ( [sys. DM _os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)içinde), günlük hızının birincil işlem çoğaltmasında nasıl kısıtlanamadığına ilişkin nedenleri anlatmaktadır:
+Aşağıdaki bekleme türleri ( [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)' de), günlük hızının birincil işlem çoğaltmasında nasıl kısıtlanamadığına ilişkin nedenleri anlatmaktadır:
 
 |Bekleme türü    |Açıklama                         |
 |-------------          |------------------------------------|
@@ -46,10 +47,10 @@ Bir işlem çoğaltmasında okuma yapıldığında, veriler arabellek havuzunda 
 Birçok DMVs ve genişletilmiş olay, bir sayfa sunucusundan gelen ve toplam okumaların karşılaştırılabileceği uzaktan okuma sayısını belirten sütunlara ve alanlara sahiptir. 
 
 - Sayfa sunucusu okumalarını raporlamak için sütunlar, yürütme DMVs 'de mevcuttur, örneğin:
-    - [sys. DM _exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
-    - [sys. DM _exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
-    - [sys. DM _exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
-    - [sys. DM _exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+    - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+    - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+    - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
 - Sayfa sunucusu okuma aşağıdaki genişletilmiş olaylara eklenir:
     - sql_statement_completed
     - sp_statement_completed
@@ -68,12 +69,12 @@ Birçok DMVs ve genişletilmiş olay, bir sayfa sunucusundan gelen ve toplam oku
 
 ## <a name="virtual-file-stats-and-io-accounting"></a>Sanal dosya Istatistikleri ve GÇ hesabı
 
-Azure SQL veritabanı 'nda, [sys. DM _io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) dmf, SQL Server IO izlemenin birincil yoludur. Hiper ölçekte GÇ özellikleri, [Dağıtılmış mimarisi](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)nedeniyle farklıdır. Bu bölümde, bu DMF 'de görüldüğü gibi veri dosyalarına GÇ 'ye (okuma ve yazma) odaklanıyoruz. Hiper ölçekte, bu DMF 'de görünür olan her veri dosyası uzak bir sayfa sunucusuna karşılık gelir. Burada bahsedilen RBPEX önbelleği, işlem çoğaltmasındaki kapsayan olmayan bir önbellek olan yerel bir SSD tabanlı önbelleğidir.
+Azure SQL veritabanı 'nda, [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) dmf, SQL Server GÇ izlemenin birincil yoludur. Hiper ölçekte GÇ özellikleri, [Dağıtılmış mimarisi](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)nedeniyle farklıdır. Bu bölümde, bu DMF 'de görüldüğü gibi veri dosyalarına GÇ 'ye (okuma ve yazma) odaklanıyoruz. Hiper ölçekte, bu DMF 'de görünür olan her veri dosyası uzak bir sayfa sunucusuna karşılık gelir. Burada bahsedilen RBPEX önbelleği, işlem çoğaltmasındaki kapsayan olmayan bir önbellek olan yerel bir SSD tabanlı önbelleğidir.
 
 
 ### <a name="local-rbpex-cache-usage"></a>Yerel RBPEX önbelleği kullanımı
 
-Yerel RBPEX önbelleği, yerel SSD depolamada işlem düğümünde mevcuttur. Bu nedenle, bu RBPEX önbelleğindeki GÇ, uzak sayfa sunucularındaki GÇ 'den daha hızlıdır. Şu anda, bir hiper ölçek veritabanında [sys. DM _io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) , işlem çoğaltmasındaki yerel RBPEX ÖNBELLEĞINDE gerçekleştirilen GÇ 'yi bildiren özel bir satıra sahiptir. Bu satırda hem `database_id` hem de `file_id` sütunları için 0 değeri bulunur. Örneğin, aşağıdaki sorgu, veritabanının başlamasından itibaren RBPEX kullanım istatistikleri döndürüyor.
+Yerel RBPEX önbelleği, yerel SSD depolamada işlem düğümünde mevcuttur. Bu nedenle, bu RBPEX önbelleğindeki GÇ, uzak sayfa sunucularındaki GÇ 'den daha hızlıdır. Şu anda, bir hiper ölçek veritabanında bulunan [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) , işlem çoğaltmasındaki yerel RBPEX ÖNBELLEĞINDE gerçekleştirilen GÇ 'yi bildiren özel bir satıra sahiptir. Bu satırda hem `database_id` hem de `file_id` sütunları için 0 değeri bulunur. Örneğin, aşağıdaki sorgu, veritabanının başlamasından itibaren RBPEX kullanım istatistikleri döndürüyor.
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
@@ -83,20 +84,20 @@ Tüm diğer veri dosyalarında yapılan toplanmış okumaların, RBPEX üzerinde
 ### <a name="data-reads"></a>Veri okuma
 
 - Okuma SQL Server altyapısı tarafından bir işlem çoğaltması üzerinde verildiğinde, bunlar yerel RBPEX önbelleği veya uzak sayfa sunucuları tarafından ya da birden çok sayfa okunıyorsa ikisinin bir birleşimi tarafından sunulabilir.
-- İşlem çoğaltması belirli bir dosyadaki bazı sayfaları okuduğunda, örneğin file_id 1, bu veriler yalnızca yerel RBPEX önbelleğinde bulunuyorsa, bu okuma için tüm GÇ 'lar file_id 0 ' a (RBPEX) göre hesaba katılmaz. Bu verilerin bir bölümü yerel RBPEX önbelleğinde ise ve bazı bölümleri uzak sayfa sunucusunda ise, RBPEX 'tan sunulan bölüm için GÇ file_id 0 ' a ve uzak sayfa sunucusundan sunulan Bölüm file_id 1 ' e doğru şekilde hesaba katılmaz. 
-- Bir işlem çoğaltması bir sayfa sunucusundan belirli bir [LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) 'nin bir sayfasını istediğinde, sayfa sunucusu istenen LSN 'ye bakmadığında, işlem çoğaltmasındaki okuma işlemi sayfa sunucusu işlem çoğaltmasına döndürülmeden önce yakalanana kadar bekler. İşlem çoğaltmasındaki bir sayfa sunucusundan okunan her türlü, PAGEIOLATCH_ * bekleme türünü bu GÇ üzerinde bekliyorsa görürsünüz. Bu bekleme süresi, sayfa sunucusundaki istenen sayfayı gereken LSN 'ye ve sayfa sunucusundan bilgi işlem çoğaltmasına aktarmak için gereken süreyi de içerir.
+- İşlem çoğaltması belirli bir dosyadaki bazı sayfaları okuduğunda, örneğin file_id 1, bu veriler yalnızca yerel RBPEX önbelleğinde bulunuyorsa, bu okuma için tüm GÇ 'ler file_id 0 (RBPEX) ile hesaba katılmaz. Bu verilerin bir bölümü yerel RBPEX önbelleğinde ise ve bazı bölümleri uzak sayfa sunucusunda ise, bu durumda, RBPEX 'tan sunulan bölüm için GÇ file_id ve uzak sayfa sunucusundan sunulan Bölüm file_id 1 ' e doğru bir şekilde hesaba katılmaz. 
+- Bir işlem çoğaltması bir sayfa sunucusundan belirli bir [LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) 'nin bir sayfasını istediğinde, sayfa sunucusu istenen LSN 'ye bakmadığında, işlem çoğaltmasındaki okuma işlemi sayfa sunucusu işlem çoğaltmasına döndürülmeden önce yakalanana kadar bekler. İşlem çoğaltmasında bir sayfa sunucusundan okunan her türlü, bu GÇ üzerinde bekliyorsa, PAGEIOLATCH_ * bekleme türünü görürsünüz. Bu bekleme süresi, sayfa sunucusundaki istenen sayfayı gereken LSN 'ye ve sayfa sunucusundan bilgi işlem çoğaltmasına aktarmak için gereken süreyi de içerir.
 - Okuma sonrası gibi büyük okumalar genellikle ["dağılım-toplama" okumaları](/sql/relational-databases/reading-pages/)kullanılarak yapılır. Bu, SQL Server altyapısında tek bir okuma olarak kabul edilen, her seferinde 4 MB 'a kadar sayfa okumalarını sağlar. Öte yandan, okunan veriler RBPEX olduğunda, arabellek havuzu ve RBPEX her zaman 8 KB sayfa kullandığından, bu okumalar birden çok bireysel 8 KB okuma olarak hesaba katılmaz. Sonuç olarak, RBPEX 'ye karşı görülen okuma IOs sayısı, altyapı tarafından gerçekleştirilen gerçek IOs sayısından daha büyük olabilir.
 
 
 ### <a name="data-writes"></a>Veri yazma
 
 - Birincil işlem çoğaltması doğrudan sayfa sunucularına yazmaz. Bunun yerine, günlük hizmetindeki günlük kayıtları ilgili sayfa sunucularında yeniden yürütülür. 
-- İşlem çoğaltmasında gerçekleşen yazma işlemleri, yerel RBPEX (file_id 0) ağırlıklı yazar. 8 KB 'den büyük olan mantıksal dosyalardaki yazma işlemleri için, her yazma işlemi, bellek havuzu ve RBPEX her zaman 8 KB sayfa kullandığından, her yazma [işlemi,](/sql/relational-databases/writing-pages/)rbpex 'e birden fazla 8 KB 'a çevrilir. Sonuç olarak, RBPEX 'ye karşı görülen yazma IOs sayısı, altyapı tarafından gerçekleştirilen gerçek IOs sayısından daha büyük olabilir.
-- RBPEX dosyaları veya sayfa sunucularına karşılık gelen file_id 0 dışında bir veri dosyası da yazma gösterir. Hiper ölçek hizmet katmanında, işlem çoğaltmaları hiçbir şekilde doğrudan sayfa sunucularına yazmadığından bu yazma 'lar benzetilir. Yazma ıOPS ve aktarım hızı, işlem çoğaltmasında gerçekleştikleri şekilde hesaba katılmaz, ancak file_id 0 dışında bir veri dosyası gecikmesi, sayfa sunucusu yazma işleminin gerçek gecikmesini yansıtmaz.
+- İşlem çoğaltmasında gerçekleşen yazma işlemleri, yerel RBPEX (file_id 0) ağırlıklı. 8 KB 'den büyük olan mantıksal dosyalardaki yazma işlemleri için, her yazma işlemi, bellek havuzu ve RBPEX her zaman 8 KB sayfa kullandığından, her yazma [işlemi,](/sql/relational-databases/writing-pages/)rbpex 'e birden fazla 8 KB 'a çevrilir. Sonuç olarak, RBPEX 'ye karşı görülen yazma IOs sayısı, altyapı tarafından gerçekleştirilen gerçek IOs sayısından daha büyük olabilir.
+- RBPEX dosyaları veya sayfa sunucularına karşılık gelen file_id 0 dışında bir veri dosyası, aynı zamanda yazma işlemlerini gösterir. Hiper ölçek hizmet katmanında, işlem çoğaltmaları hiçbir şekilde doğrudan sayfa sunucularına yazmadığından bu yazma 'lar benzetilir. Yazma ıOPS ve aktarım hızı, işlem çoğaltmasında gerçekleştikleri şekilde hesaba katılmaz, ancak file_id 0 dışında bir veri dosyası gecikmesi sayfa sunucusu yazma işleminin gerçek gecikmesini yansıtmaz.
 
 ### <a name="log-writes"></a>Günlük yazma Işlemleri
 
-- Birincil işlem sırasında, file_id 2/sys. DM _io_virtual_file_stats içindeki bir günlük yazma işlemi hesaba katılmaz. Birincil işlem üzerine bir günlük yazma, günlük giriş bölgesine bir yazma işlemi olur.
+- Birincil işlem sırasında, file_id 2 ' nin sys. dm_io_virtual_file_stats ' de bir günlük yazma işlemi hesaba katılmaz. Birincil işlem üzerine bir günlük yazma, günlük giriş bölgesine bir yazma işlemi olur.
 - Günlük kayıtları, bir işlemede ikincil çoğaltmada sağlamlaştırılmış değildir. Hiper ölçekte, günlük xlog hizmeti tarafından uzak yinelemelere uygulanır. Günlük yazma işlemleri ikincil çoğaltmalarda gerçekten gerçekleşmediğinden, ikincil çoğaltmalarda tüm günlük GÇ işlemleri yalnızca izleme amaçlıdır.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar

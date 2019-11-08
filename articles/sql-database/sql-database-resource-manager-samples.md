@@ -1,5 +1,5 @@
 ---
-title: SQL veritabanı için Azure Resource Manager şablonları
+title: Azure Resource Manager şablonları
 description: Azure SQL veritabanı oluşturmak ve yapılandırmak için Azure Resource Manager şablonlarını kullanın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 2bd9b110b5ea416bacc8896da8ca514b50f958ce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 16091286aecc6dfdbcfa833a76920ff4bc9c64de
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687466"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821120"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL veritabanı için Azure Resource Manager şablonları
 

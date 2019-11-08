@@ -4,15 +4,16 @@ description: Azure tarafından dağıtılan bir VHD 'den bir sanal makinenin nas
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: c27605d2f9b87a9d4ba3d2326c0ce7ad437d3441
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4adc6f716050e2d792e0a5c022972e4340d2846a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240991"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823122"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Azure Key Vault için sertifikalar oluşturma
 
@@ -32,7 +33,7 @@ Bu iş için yeni veya var olan bir Azure Kaynak grubu kullanabilirsiniz.  Aşa�
 
 Sertifika dosyasını (. pfx) yerel bir klasörde oluşturmak için aşağıdaki Azure PowerShell betiğini düzenleyin ve çalıştırın.  Aşağıdaki parametrelerin değerlerini değiştirmeniz gerekir:
 
-|  **Parametre**        |   **Açıklama**                                                               |
+|  **Parametresinin**        |   **Açıklama**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$certroopath` | . Pfx dosyasının kaydedileceği yerel klasör  |
 | `$location`    | Azure Standart coğrafi konumlarından biri  |
@@ -78,7 +79,7 @@ Sertifika dosyasını (. pfx) yerel bir klasörde oluşturmak için aşağıdaki
 
 [Anahtar Kasası dağıtım şablonunun](./cpp-key-vault-deploy-template.md) içeriğini yerel makinenizde bir dosyaya kopyalayın. (Aşağıdaki örnek betikte bu kaynak `C:\certLocation\keyvault.json`.)  Bir Azure Key Vault örneği ve ilişkili kaynak grubu oluşturmak için aşağıdaki Azure PowerShell betiğini düzenleyin ve çalıştırın.  Aşağıdaki parametrelerin değerlerini değiştirmeniz gerekir:
 
-|  **Parametre**        |   **Açıklama**                                                               |
+|  **Parametresinin**        |   **Açıklama**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$postfix`            | Dağıtım tanımlayıcılarına eklenen rastgele sayısal dize                     |
 | `$rgName`             | Oluşturulacak Azure Kaynak grubu (RG) adı                                        |
@@ -205,7 +206,7 @@ Artık,. pfx dosyasında yer alan sertifikaları aşağıdaki betiği çalışt�
             echo $certpassword
             $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
             $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
-            $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
+            $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
             $objAzureKeyVaultSecret=Set-AzureKeyVaultSecret -VaultName $kvname -Name "ISVSecret$postfix" -SecretValue $secret
             echo $objAzureKeyVaultSecret.Id 
     
