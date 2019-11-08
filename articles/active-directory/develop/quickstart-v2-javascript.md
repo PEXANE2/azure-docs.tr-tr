@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad79ee0fd1d421c7e869424ccb8daa595e51a970
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5ca9a8b87713508a581a833f60fbe863fd93919a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149415"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795605"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Hızlı başlangıç: bir JavaScript SPA 'da Kullanıcı oturumu açma ve erişim belirteci edinme
 
 Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamanın (SPA) kişisel hesap, iş hesabı ve okul hesapları kullanıcılarına nasıl oturum açabileceğinizi öğrenmek için bir kod örneği kullanırsınız. JavaScript SPA, Microsoft Graph API 'sini veya herhangi bir Web API 'sini çağırmak için bir erişim belirteci de alabilir. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/).
@@ -80,12 +80,11 @@ Geliştirme ortamınız için uygun olan seçeneği seçin:
 
 * Seçim Projeyi IIS sunucusuyla çalıştırmak için [Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). ZIP dosyasını yerel bir klasöre (örneğin, *C:\Azure-Samples*) ayıklayın.
 
-#### <a name="step-3-configure-your-javascript-app"></a>3\. Adım: JavaScript uygulamanızı yapılandırma
-
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-javascript-app"></a>3\. Adım: JavaScript uygulamanızı yapılandırma
 > *Javascriptspa* klasöründe, *index. html*dosyasını düzenleyin ve `msalConfig`altındaki `clientID` ve `authority` değerlerini ayarlayın.
 
-> [!div class="sxs-lookup" renderon="portal"]
+> [!div renderon="docs"]
 > *Javascriptspa* klasöründe, *index. html*dosyasını düzenleyin ve `msalConfig` aşağıdaki kodla değiştirin:
 
 ```javascript
@@ -102,14 +101,10 @@ var msalConfig = {
 };
 
 ```
-> [!div renderon="portal"]
-> > [!NOTE]
-> > Bu hızlı başlangıç, Enter_the_Supported_Account_Info_Here destekler.
-
 
 > [!div renderon="docs"]
 >
-> Nerede:
+> Konumlar:
 > - *\<Enter_the_Application_Id_here >* , kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
 > - *\<Enter_the_Tenant_info_here >* aşağıdaki seçeneklerden birine ayarlanır:
 >    - Uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adı** (örneğin, *contoso.Microsoft.com*) ile değiştirin.
@@ -120,7 +115,12 @@ var msalConfig = {
 > > **Uygulama (istemci) Kimliği**, **Dizin (kiracı) Kimliği** ve **Desteklenen hesap türleri** değerlerini bulmak için Azure portalında uygulamanın **Genel bakış** sayfasına gidin.
 >
 
-#### <a name="step-4-run-the-project"></a>4\. Adım: projeyi çalıştırma
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3\. Adım: uygulamanız yapılandırıldı ve çalıştırılmaya hazırlanıyor
+> Projenizi uygulamanızın özelliklerinin değerleriyle yapılandırdık. 
+
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-project"></a>4\. Adım: projeyi çalıştırma
 
 * [Node. js](https://nodejs.org/en/download/)kullanıyorsanız:
 
@@ -242,7 +242,7 @@ myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Kullanıcıları Microsoft Identity platform uç noktasıyla etkileşimde bulunmak için zorlamanız gereken durumlar vardır. Örnek:
+Kullanıcıları Microsoft Identity platform uç noktasıyla etkileşimde bulunmak için zorlamanız gereken durumlar vardır. Örneğin:
 * Parolasının süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekebilir.
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.
 * İki öğeli kimlik doğrulaması gereklidir.

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/22/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 6d59964013a2631430ecd7e46d1ce0f6be60a05f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 611b3e608d9b0de9423c861ec70e9fc2e7ad67d5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802034"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720760"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure maliyet yönetimi 'ni kullanmaya başlama
 
@@ -37,7 +37,7 @@ tek bir müşterinin maliyetlerini gösteren örnek ![](./media/get-started-part
 
 Azure maliyet yönetimi 'nde kullanılabilen tüm işlevler REST API 'Leri ile de kullanılabilir. Maliyet yönetimi görevlerini otomatikleştirmek için API 'Leri kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure maliyet yönetimi, faturalandırma hesabınıza veya aboneliğine yönelik okuma erişimi gerektirir. Verileriniz üzerinde, faturalama hesabından veya bir yönetim grubundan, uygulamalarınızı yönettiğiniz tek tek kaynak gruplarına kadar erişim verilebilir. Bir faturalandırma hesabı için Azure maliyet yönetimine erişimi etkinleştirme ve atama hakkında daha fazla bilgi için bkz. [Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview). **Genel yönetici** ve **yönetici Aracısı** rolleri bir faturalandırma hesabının maliyetlerini yönetebilir.
 
@@ -83,7 +83,7 @@ Faturalandırma profilleri, bir faturaya dahil edilen abonelikleri tanımlar. Fa
 İş ortakları, faturalara mutabık kılmak için kapsamı kullanabilir. Ayrıca, aşağıdaki öğeler için faturalandırma para birimindeki bütçeleri ayarlamak için kapsamı kullanırlar:
 
 - Belirli filtrelenmiş fatura
-- Müşteri
+- Müşterisi
 - Abonelik
 - Kaynak grubu
 - Kaynak
@@ -139,7 +139,7 @@ Müşteri kiracının maliyetlerini görüntülemek için maliyet yönetimi + Fa
 ![Bir Azure aboneliği müşterisi seçin](./media/get-started-partners/subscriptions-select-customer.png)
 
 **Maliyet Analizi** ' ne tıklayın ve maliyetleri gözden geçirmeye başlayın.
-Maliyet analizi, bütçeler ve uyarılar, Kullandıkça Öde tarifesine göre, abonelik ve kaynak grubu RBAC kapsamları için artık kullanılabilir.
+Maliyet analizi, bütçeler ve uyarılar, Kullandıkça Öde tarifesine göre abonelik ve kaynak grubu RBAC kapsamları için kullanılabilir.
 
 ![Maliyet analizini müşteri olarak görüntüleme ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
 
@@ -147,21 +147,22 @@ RBAC kapsamlarındaki ayrılmış örnekler için itfası görünümleri ve ger�
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Maliyet analizinde maliyetleri analiz etme
 
-İş ortakları, belirli bir müşteri ya da bir fatura için müşteriler genelinde maliyet analizinde maliyetleri araştırabilir ve analiz edebilir. Filtre ve gruplandırma özellikleri, aşağıdakiler de dahil olmak üzere birden çok alana göre maliyetleri analiz etmenize olanak tanır:
+İş ortakları, belirli bir müşteri ya da bir fatura için müşteriler genelinde maliyet analizinde maliyetleri araştırabilir ve analiz edebilir.
 
-| **Alan** | **Açıklama** |
+Kullanım ayrıntı dosyaları ve maliyet yönetimi API 'Lerinde aşağıdaki alanlar bulunur. Maliyetleri birden çok alana göre analiz etmek için, maliyet analizinde filtre ve gruplandırma özelliklerini kullanabilirsiniz. Alanların tüm listesini görüntülemek için bkz. [maliyet yönetimi veri alanları](understand-cost-mgt-data.md#cost-management-data-fields).
+
+| Alan adı | Açıklama |
 | --- | --- |
-| Partnertenantıd | Ortağın Azure Active Directory kiracısı için tanımlayıcı |
-| PartnerName | Kiracının Azure Active Directory kiracı adı |
-| Customertenantıd | Müşterinin aboneliğine ait Azure Active Directory kiracının tanımlayıcısı |
-| CustomerName | Müşterinin aboneliğini içeren Azure Active Directory kiracının adı |
-| Resellermpnıd | Abonelikle ilişkili Bayi için MPNıD |
-| abonelik kimliği | Azure aboneliği için Microsoft tarafından oluşturulan benzersiz tanımlayıcı |
-| subscriptionName | Azure aboneliğinin adı |
-| Billingprofileıd | Faturalandırma profili için tanımlayıcı. Müşteriler genelinde tek bir faturalandırma para birimiyle, faturalardaki maliyetleri gruplandırır.
-| InvoiceId | Faturada belirli bir işlemin göründüğü fatura KIMLIĞI |
-| resourceGroup | Azure Kaynak grubunun adı. Kaynak yaşam döngüsü yönetimi için kullanılır. |
-| Partnerearnedtrate | İş ortağı yönetici bağlantısı erişimine dayalı bir iş ortağı kazanılmış kredisi (PEC) varsa, indirim ücreti uygulanır. |
+| Customertenantıd | Müşteri&#39;aboneliğinin Azure Active Directory kiracının tanımlayıcısı. |
+| CustomerName | Müşteri&#39;aboneliğinin Azure Active Directory kiracının adı. |
+| CustomerTenantDomainName | Müşteri&#39;aboneliğinin Azure Active Directory kiracının etki alanı adı. |
+| Partnertenantıd | İş ortağı&#39;Azure Active Directory kiracının tanımlayıcısı. |
+| PartnerName | Kiracının kiracı Azure Active Directory adı. |
+| Resellermpnıd | Abonelikle ilişkili Bayi için MPNıD. |
+| Maliyetinusd | ABD Doları cinsinden vergi öncesi tahmini ExtendedCost veya karıştırılan maliyet. |
+| Paygcostınbillingcurrency | Fiyatlandırma perakende fiyatlarında ise maliyetleri gösterir. Faturalandırma para birimiyle Kullandıkça Öde fiyatlarını gösterir. Yalnızca RBAC kapsamlarında kullanılabilir. |
+| Paygcostınusd | Fiyatlandırma perakende fiyatlarında ise maliyetleri gösterir. ABD Doları cinsinden Kullandıkça Öde fiyatlarını gösterir. Yalnızca RBAC kapsamlarında kullanılabilir. |
+| Partnerearnedtrate | İş ortağı yönetici bağlantısı erişimine dayalı bir iş ortağı kazanılmış kredisi (PEC) varsa, uygulanan indirim oranı. |
 | Ortaklıklıya Tattatmi | Ortağın kazanılmış kredisi uygulanıp uygulanmadığı gösterir. |
 
 [Maliyet Analizi](quick-acm-cost-analysis.md) görünümünde, [görünümleri kaydedebilir](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) ve verileri [CSV ve PNG dosyalarına](quick-acm-cost-analysis.md#automation-and-offline-analysis)dışarı aktarabilirsiniz.
@@ -203,36 +204,67 @@ Aboneliğe erişimleri varsa, abonelik kapsamındaki API 'Ler, maliyet ilkesinde
 #### <a name="to-get-a-list-of-billing-accounts"></a>Faturalama hesaplarının bir listesini almak için
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-get-a-list-of-customers"></a>Müşterilerin bir listesini almak için
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers?api-version=2019-10-01-preview
 ```
+
 #### <a name="to-get-a-list-of-subscriptions"></a>Aboneliklerin listesini almak için
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/billingSubscriptions?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions?api-version=2019-10-01-preview
 ```
+
+#### <a name="to-get-a-list-of-invoices-for-a-period-of-time"></a>Bir süre için faturaların listesini almak için
+
+```
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices?api-version=2019-10-01-preview&periodStartDate={periodStartDate}&periodEndDate={periodEndDate}
+```
+
+API çağrısı, aşağıdaki JSON koduna benzer öğeler içeren bir fatura dizisi döndürür.
+
+```
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/{billingAccountID}/billingProfiles/{BillingProfileID}/invoices/{InvoiceID}",
+      "name": "{InvoiceID}",
+      "properties": {
+        "amountDue": {
+          "currency": "USD",
+          "value": x.xx
+        },
+        ...
+    }
+```
+
+Önceki döndürülen KIMLIK alanı değerini kullanın ve aşağıdaki örnekte, kullanım ayrıntılarını sorgulayan kapsam olarak değiştirin.
+
+```
+GET https://management.azure.com/{id}/providers/Microsoft.Consumption/UsageDetails?api-version=2019-10-01
+```
+
+Örnek, belirli faturayla ilişkili kullanım kayıtlarını döndürür.
+
 
 #### <a name="to-get-the-policy-for-customers-to-view-costs"></a>Müşterilerin maliyetleri görüntüleme ilkesini almak için
 
 ```
-armclient get "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/policies/default?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-set-the-policy-for-customers-to-view-costs"></a>Müşterilerin maliyetleri görüntülemesi için ilkeyi ayarlamak için
 
 ```
-armclient put "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/policies/default?api-version=2019-10-01-preview" @policy.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-get-azure-service-usage-for-a-billing-account"></a>Bir faturalandırma hesabı için Azure hizmet kullanımını almak için
 
 ```
-armclient GET /providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
+GET https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
 ```
 
 #### <a name="to-download-a-customers-azure-service-usage"></a>Müşterinin Azure hizmet kullanımını indirmek için
@@ -240,7 +272,7 @@ armclient GET /providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XX
 Aşağıdaki Get çağrısı zaman uyumsuz bir işlemdir.
 
 ```
-armclient get providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
+GET https://management.azure.com/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
 ```
 
 İşlemin durumunu denetlemek için yanıtta döndürülen `Location` URI 'sini çağırın. Durum *tamamlandığında*, `downloadUrl` özelliği oluşturulan raporu indirmek için kullanabileceğiniz bir bağlantı içerir.
@@ -251,50 +283,40 @@ armclient get providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXX
 İlk olarak, aşağıdaki gönderiyi kullanın.
 
 ```
-armclient post "/providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/billingProfiles/YYYY-YYYY-YYY-YYYY-YYY/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
+POST https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
 ```
 
-Ardından, zaman uyumsuz işlem özelliği değerini çağırın. Örnek:
+Ardından, zaman uyumsuz işlem özelliği değerini çağırın. Örneğin:
 
 ```
-armclient get "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/billingProfiles/YYYY-YYYY-YYY-YYYY-YYY/pricesheetDownloadOperations/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX?sessiontoken=0:11186&api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheetDownloadOperations/{operation}?sessiontoken=0:11186&api-version=2019-10-01-preview
 ```
 Önceki Get çağrısı, Fiyat listesini içeren indirme bağlantısını döndürür.
 
-#### <a name="to-get-customer-costs-for-the-last-two-months-sorted-by-month"></a>Son iki aya ait müşteri maliyetlerini almak için, aya göre sıralanmış
+
+#### <a name="to-get-aggregated-costs"></a>Toplu maliyetleri almak için
 
 ```
-armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryCustomer.json
-```
-
-#### <a name="to-get-azure-subscription-costs-for-the-last-two-months-sorted-by-month"></a>Son iki aya ait Azure abonelik maliyetlerini, aya göre sıralanmış olarak almak için
-
-```
-armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQuerySubscription.json
-```
-
-#### <a name="to-get-daily-costs-for-the-current-month"></a>Geçerli aya ait günlük maliyetleri almak için
-
-```
-armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryDaily.json
+POST https://management.azure.com/providers/microsoft.billing/billingAccounts/{billingAccountName}/providers/microsoft.costmanagement/query?api-version=2019-10-01
 ```
 
 #### <a name="create-a-budget-for-a-partner"></a>İş ortağı için bütçe oluşturma
 
 ```
-armclient put providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01 @budgetCreate.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
 ```
-
 
 #### <a name="create-a-budget-for-a-customer"></a>Müşteri için bütçe oluşturma
 
 ```
-armclient put providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/providers/Microsoft.Consumption/budgets/test-partner-demo?api-version=2019-10-01 @budgetCreate.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2019-10-01
 ```
+
 #### <a name="delete-a-budget"></a>Bir bütçeyi silme
 
 ```
-armclient delete providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
+PUT
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/budgets/{budgetName}?api-version=2019-10-01
 ```
 
 

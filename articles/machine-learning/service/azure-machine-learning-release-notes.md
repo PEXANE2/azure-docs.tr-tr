@@ -10,16 +10,16 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4db535c9ecaf74f189d81740a26ef40e1f99ed13
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 587856be6ca1064e5d2487ba6740b51a8c645fee
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497600"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716626"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
-Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sayfasına gidin. Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin. Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sayfasına gidin. 
+Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sayfasına gidin.
 
 Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen sorunlar listesine](resource-known-issues.md) bakın.
 
@@ -36,13 +36,10 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
 | Web tabanlı araç | Açıklama | Sürüm |
 |-|-|-|
-| [Işlem örneği](concept-compute-instance.md) (Önizleme) | Tam olarak yönetilen bulut tabanlı iş istasyonu | Temel & Kurumsal |
+| Not defteri VM (Önizleme) | Tam olarak yönetilen bulut tabanlı iş istasyonu | Temel & Kurumsal |
 | [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | Enterprise |
 | [Tasarımcı](ui-concept-visual-interface.md) (Önizleme) | Daha önce tasarımcı olarak bilinen sürükle ve bırak makine öğrenimi modelleme aracı | Enterprise |
 
-> [!NOTE]
-> İşlem örnekleri yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir.
->Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz.  
 
 ### <a name="azure-machine-learning-designer-enhancements"></a>Azure Machine Learning tasarımcı geliştirmeleri 
 
@@ -68,15 +65,14 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
 ### <a name="azure-machine-learning-sdk-for-python-v1072"></a>Python v 1.0.72 için SDK Azure Machine Learning
 
 + **Yeni özellikler**
-  + Veri kümeleri ve zaman içinde diğer istatistiksel değişiklikler için zaman serisi veri kümelerini izlemeye izin veren `azureml-datadrift` paketi aracılığıyla veri kümesi izleyicileri eklendi. Uyarılar ve olaylar, DRIP algılanırsa veya veriler üzerinde başka koşullar karşılanıyorsa tetiklenebilir. Ayrıntılar için [belgelerimizi](http://aka.ms/datadrift) inceleyin. 
-  + Azure Machine Learning ' de iki yeni sürüm Duyuruyor (aynı zamanda SKU ile birlikte da adlandırılır). Bu sürümle birlikte, artık temel veya kurumsal bir Azure ML çalışma alanı oluşturabilirsiniz. Tüm mevcut çalışma alanları temel sürüme varsayılan olarak uygulanır ve Azure portal veya Studio 'ya giderek çalışma alanını dilediğiniz zaman yükseltebilirsiniz. Azure portalından temel veya kurumsal bir çalışma alanı oluşturabilirsiniz. Daha fazla bilgi edinmek için lütfen [belgelerimizi](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-manage-workspace) okuyun. SDK 'dan çalışma alanınızın sürümü çalışma alanı nesnenizin "SKU" özelliği kullanılarak belirlenebilir.
-  + Ayrıca, Azure Machine Learning Işlem için enhancments yaptık. artık, Azure Izleyici 'de kümeleriniz için (Toplam düğümler, çalışan düğümler, toplam çekirdek kota gibi) ölçümleri, hata ayıklama için tanılama günlüklerini görüntülemenin yanı sıra görüntüleyebilirsiniz. Ayrıca, kümenizde çalışmakta olan veya sıraya alınmış çalıştırmaları ve kümenizdeki çeşitli düğümlerin IP 'Leri gibi ayrıntıları da görüntüleyebilirsiniz. Bunları portalda veya SDK ya da CLı 'de karşılık gelen işlevleri kullanarak görüntüleyebilirsiniz. 
+  + Veri kümesi izleyicileri ve zaman içinde diğer istatistiksel değişiklikler için zaman serisi veri kümelerini izlemeye izin veren, [**azureml-datadrift**](https://docs.microsoft.com/python/api/azureml-datadrift) paketi aracılığıyla veri kümesi izleyicileri eklendi. Uyarılar ve olaylar, DRIP algılanırsa veya veriler üzerinde başka koşullar karşılanıyorsa tetiklenebilir. Ayrıntılar için [belgelerimizi](https://aka.ms/datadrift) inceleyin. 
+  + Azure Machine Learning ' de iki yeni sürüm (aynı zamanda SKU da denir) duyuruldu. Bu sürümle birlikte, artık temel veya kurumsal bir Azure ML çalışma alanı oluşturabilirsiniz. Tüm mevcut çalışma alanları temel sürüme varsayılan olarak uygulanır ve Azure portal veya Studio 'ya giderek çalışma alanını dilediğiniz zaman yükseltebilirsiniz. Azure portalından temel veya kurumsal bir çalışma alanı oluşturabilirsiniz. Daha fazla bilgi edinmek için lütfen [belgelerimizi](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) okuyun. SDK 'dan çalışma alanınızın sürümü çalışma alanı nesnenizin "SKU" özelliği kullanılarak belirlenebilir.
+  + Ayrıca, Azure Machine Learning Işlem için geliştirmeler yaptık. artık, kümeleriniz için (Toplam düğümler, çalışan düğümler, toplam çekirdek kota gibi) ölçümleri, hata ayıklama için tanılama günlüklerini görüntülemenin yanı sıra Azure Izleyici 'de görüntüleyebilirsiniz. Ayrıca, kümenizde çalışmakta olan veya sıraya alınmış çalıştırmaları ve kümenizdeki çeşitli düğümlerin IP 'Leri gibi ayrıntıları da görüntüleyebilirsiniz. Bunları portalda veya SDK ya da CLı 'de karşılık gelen işlevleri kullanarak görüntüleyebilirsiniz. 
   
   + **Önizleme özellikleri**
     + Azure Machine Learning Işlem sırasında yerel SSD 'nizin disk şifrelemesi için Önizleme desteği yayınlıyoruz. Aboneliğinizi bu özelliği kullanmak için daha sonra listelenen bir teknik destek bileti sağlayın.
-    + Azure Machine Learning Batch çıkarımı genel önizlemesi. Azure Machine Learning Batch çıkarımı zamana duyarlı olmayan büyük çıkarım işlerini hedefler. Batch çıkarımı, zaman uyumsuz uygulamalar için paralellik verimlilik ile uygun maliyetli çıkarım işlem Ölçeklendirmesi sağlar. Büyük veri koleksiyonları üzerinde yüksek aktarım hızı, yangın ve unutma çıkarımı için iyileştirilmiştir. https://aka.ms/binb hakkında daha fazla bilgi edinin 
-    + [Contrib özellikleri aşağıda verilmiştir] 
-    + **azureml-contrib-veri kümesi**
+    + Azure Machine Learning Batch çıkarımı genel önizlemesi. Azure Machine Learning Batch çıkarımı zamana duyarlı olmayan büyük çıkarım işlerini hedefler. Batch çıkarımı, zaman uyumsuz uygulamalar için paralellik verimlilik ile uygun maliyetli çıkarım işlem Ölçeklendirmesi sağlar. Büyük veri koleksiyonları üzerinde yüksek aktarım hızı, yangın ve unutma çıkarımı için iyileştirilmiştir.  
+    + [**azureml-contrib-veri kümesi**](https://docs.microsoft.com/python/api/azureml-contrib-dataset)
         + Etiketli veri kümesi için etkinleştirilen işlevler
         ```Python
         import azureml.core
@@ -125,34 +121,34 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
     + Not defteri için yayın kanalı düzeltildi
     + Desteklemeyen bir AmlCompute işlem hedefi için uyarı eklendi
     + Azureml-contrib-gbdt paketine LightGMB Estimator eklendi
-  + **azureml-çekirdek**    
+  + [**azureml-çekirdek**](https://docs.microsoft.com/python/api/azureml-core)
     + CLı artık model paketlemeyi destekliyor.
     + Kullanım dışı veri kümesi API 'Leri için kullanımdan kaldırma uyarısı ekleyin. https://aka.ms/tabular-dataset'de veri kümesi API 'SI değişiklik bildirimi ' ne bakın.
-    + Veri kümesi kayıtlıysa `Dataset.get_by_id` kayıt adını ve sürümünü döndürecek şekilde değiştirin.
+    + Veri kümesi kayıtlıysa [`Dataset.get_by_id`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29#get-by-id-workspace--id-) kayıt adını ve sürümünü döndürecek şekilde değiştirin.
     + Bağımsız değişken olarak ScriptRunConfig ile birlikte bulunan bir hatayı düzelttikten sonra, deneme çalıştırması göndermek için tekrar tekrar kullanılamaz.
-    + Çalıştırma sırasında alınan veri kümeleri izlenir ve çalıştırma ayrıntıları sayfasında veya çalıştırma tamamlandıktan sonra `run.get_details()` çağırarak görünebilir.
-    + Azure Machine Learning ardışık düzeninde ara verinin tablo veri kümesine dönüştürülmesine ve `AutoMLStep`kullanılmasına izin verin.
+    + Çalıştırma sırasında alınan veri kümeleri izlenir ve çalıştırma ayrıntıları sayfasında veya çalıştırma tamamlandıktan sonra [`run.get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29#get-details--) çağırarak görünebilir.
+    + Azure Machine Learning ardışık düzeninde ara verinin tablo veri kümesine dönüştürülmesine ve [`AutoMLStep`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlstep)kullanılmasına izin verin.
     + Bir ınenceconfig örneği olmadan desteklenen modellerin (ONNX, scikit-öğren ve TensorFlow) dağıtımı ve paketlenmesi için destek eklendi.
     + SDK ve CLı 'de hizmet dağıtımı (acı ve AKS) için üzerine yazma bayrağı eklendi. Sağlanmışsa, zaten adlı hizmet varsa mevcut hizmetin üzerine yazar. Hizmet yoksa, yeni hizmet oluşturacaktır.
-    +  Modeller, Onnx ve TensorFlow olmak üzere iki yeni çerçeve ile kaydedilebilir. -Model kaydı, örnek giriş verilerini, örnek çıkış verilerini ve model için kaynak yapılandırmasını kabul eder.
-    + MySQL için Azure veritabanı için yeni veri deposu eklendi. -Azure Machine Learning işlem hatları 'nda DataTransferStep içinde MySQL için Azure veritabanı kullanımı için örnek eklenmiştir.
-    + Etiketleri çalıştırmalardan kaldırmak için denemeleri tarafından eklenen işlevlerden etiket ekleme ve kaldırma işlevselliği eklendi
+    +  Modeller, Onnx ve TensorFlow olmak üzere iki yeni çerçeve ile kaydedilebilir. Model kaydı, model için örnek giriş verilerini, örnek çıkış verilerini ve kaynak yapılandırmasını kabul eder.
+    + MySQL için Azure veritabanı için yeni veri deposu eklendi. DataTransferStep içinde MySQL için Azure veritabanı 'nın Azure Machine Learning işlem hatları 'nda kullanılması için örnek eklenmiştir.
+    + Etiketleri çalıştırmalardan kaldırmak için denemeleri eklenen işlevden etiket ekleme ve kaldırma işlevselliği eklendi
     + SDK ve CLı 'de hizmet dağıtımı (acı ve AKS) için üzerine yazma bayrağı eklendi. Sağlanmışsa, zaten adlı hizmet varsa mevcut hizmetin üzerine yazar. Hizmet yoksa, yeni hizmet oluşturacaktır.
-  + **azureml-datadrift**
+  + [**azureml-datadrift**](https://docs.microsoft.com/python/api/azureml-datadrift)
     + `azureml-contrib-datadrift` `azureml-datadrift` içine taşındı
     + Değişikliklerini ve diğer istatistiksel ölçüler için zaman serisi veri kümelerini izleme desteği eklendi 
-    + Yeni yöntemler `create_from_model()` ve `DataDriftDetector` sınıfına `create_from_dataset()`. `create()` yöntemi kullanım dışı olacaktır. 
+    + Yeni yöntemler `create_from_model()` ve [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) sınıfına `create_from_dataset()`. `create()` yöntemi kullanım dışı olacaktır. 
     + Azure Machine Learning Studio 'daki Python ve Kullanıcı arabirimindeki görselleştirmelerin ayarlamaları.
     + Günlük veri kümesi izleyicilerine ek olarak haftalık ve aylık izleme zamanlamasını destekler.
     + Veri kümesi izleyicilerinin geçmiş verilerini çözümlemek için veri izleme ölçümlerinin geri doldurmasını destekler. 
     + Çeşitli hata düzeltmeleri 
-  + **azureml-işlem hattı-çekirdek**
+  + [**azureml-işlem hattı-çekirdek**](https://docs.microsoft.com/python/api/azureml-pipeline-core)
     + işlem hattı `yaml` dosyasından Azure Machine Learning işlem hattı çalıştırması göndermek için azureml-dataprep artık gerekli değildir.
-  + **azureml-eğitme-oto ml**
+  + [**azureml-eğitme-oto ml**](https://docs.microsoft.com/python/api/azureml-train-automl)
     + Model dağıtım hatasını çözümlemek için otomatik olarak oluşturulan Conda env öğesine azureml-varsayılanlar ekleyin
     + Oto ml uzak eğitimi artık, çıkarım için eğitim env 'nin yeniden kullanımına izin vermek üzere azureml-varsayılanlar içerir.
   + **azureml-tren-çekirdek**
-    + Pytorch tahmin aracı içinde pytorch 1,3 desteği eklendi
+    + [`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch) tahmin aracı 'da pytorch 1,3 desteği eklendi
   
 ## <a name="2019-10-21"></a>2019-10-21
 
@@ -162,8 +158,6 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
   + SDK varlıklarıyla Birleşik yönetim deneyimi
   + Görsel arabirim modelleri, işlem hatları ve uç noktalar için sürüm oluşturma ve izleme 
   + Yeniden tasarlanan kullanıcı arabirimi
-  + Toplu iş ınırm dağıtımı eklendi
-  + Inlekele işlem hedefleri için Azure Kubernetes hizmeti (AKS) desteği eklendi
   + Toplu çıkarım dağıtımı eklendi
   + Çıkarım işlem hedefleri için Azure Kubernetes hizmeti (AKS) desteği eklendi
   + Yeni Python-adım işlem hattı yazma iş akışı
@@ -187,7 +181,6 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
     + `automl` bağımlılığı olarak psutil eklendi ve amlcompute içindeki bir Conda bağımlılığı olarak psutil dahil edildi.
     + Tahmin verileri ile ilgili sorun düzeltilme ve kayan pencere boyutları, bazı dizileri doğrusal algedeniz hatalarına neden olabilir
       + Tahmin çalıştırmalarının buluşsal belirlenen parametreleri için baskı çıkışı eklendi.
-  + **azureml-contrib-datadrift**
   + **[azureml-contrib-datadrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
     + Veri kümesi düzeyi değişikliklerini ilk bölümde değilse, çıkış ölçümleri oluşturulurken koruma eklendi.
   + **azureml-contrib-yorumlama**
@@ -273,7 +266,7 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
 
 ### <a name="new-web-experience-preview-for-azure-machine-learning-workspaces"></a>Azure Machine Learning çalışma alanları için yeni Web deneyimi (Önizleme)
 
-[Yeni çalışma alanı portalındaki](http://ml.azure.com) deneme sekmesi, veri bilimcilerinin denemeleri daha performanslı bir şekilde izleyebilmesi için güncelleştirilmiştir. Aşağıdaki özellikleri inceleyebilirsiniz:
+[Yeni çalışma alanı portalındaki](https://ml.azure.com) deneme sekmesi, veri bilimcilerinin denemeleri daha performanslı bir şekilde izleyebilmesi için güncelleştirilmiştir. Aşağıdaki özellikleri inceleyebilirsiniz:
 + Denemeleri listenizi kolayca filtreleyip sıralamak için meta verileri deneyin
 + Öngörülerinizi görselleştirmenize ve karşılaştırmanıza olanak tanıyan Basitleştirilmiş ve performanslı deneme ayrıntıları sayfaları
 + Eğitim çalıştırmalarını anlamak ve izlemek için Ayrıntılar sayfalarını çalıştırmak üzere yeni tasarım
@@ -1312,7 +1305,7 @@ Azure Machine Learning Işlem, Python 'da Azure portal veya CLı kullanılarak o
   * Ek daha net hata iletileri
   * Spark `Kryo` serileştirme kullandığında to_spark_dataframe () artık kilitlenmeyecektir
   * Değer sayısı denetçisi artık 1000 ' den fazla benzersiz değer gösteriyor olabilir
-  * Özgün veri akışının adı yoksa rastgele bölme artık başarısız olmaz  
+  * Özgün veri akışı bir adı yoksa rastgele bir bölünmüş artık başarısız  
 
 + **Daha fazla bilgi**
   * [Azure Machine Learning Veri Hazırlama SDK'sı](https://aka.ms/data-prep-sdk)

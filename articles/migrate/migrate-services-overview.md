@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: eadfc4e302f4445e8e0d5105aeac4361328cb259
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 8b1e716e482c49ceba0c600aaba30fe276bdb74d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715463"
+ms.locfileid: "73748011"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
 
@@ -44,16 +44,16 @@ Azure geçişi, yerel Azure araçlarına ek olarak çeşitli ISV teklifleri ile 
 
 **'Ye** | **Özellik**
 --- | ---
-[Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Geçiş
-[Cloudamize](https://www.cloudamize.com/platform) | Değerlendirme 
-[Corent teknolojisi](https://www.corenttech.com/AzureMigrate/) | Değerlendirin ve geçirin
-[Cihaz 42](https://docs.device42.com/) | Değerlendirme
-[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Değerlendirme
-[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Geçiş
-[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Değerlendirme
-[Unifrivcloud](https://www.cloudatlasinc.com/cloudrecon/) | Değerlendirme
+[Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Sunucuları geçirme
+[Cloudamize](https://www.cloudamize.com/platform) | Sunucuları değerlendir
+[Corent teknolojisi](https://www.corenttech.com/AzureMigrate/) | Sunucuları değerlendirin ve geçirin
+[Cihaz 42](https://docs.device42.com/) | Sunucuları değerlendir
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | VDı 'yi değerlendir
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Sunucuları geçirme
+[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Sunucuları değerlendir
+[Unifrivcloud](https://www.cloudatlasinc.com/cloudrecon/) | Sunucuları ve veritabanlarını değerlendir
 
-## <a name="tool-integration"></a>Araç tümleştirmesi
+## <a name="azure-tool-integration"></a>Azure araç tümleştirmesi
 
 Tablo, Azure geçişi ile tümleştirilmiş diğer araçları özetler.
 
@@ -112,7 +112,7 @@ Azure geçişi, şirket içi veritabanlarını Azure 'a geçirmek için Azure ve
 ## <a name="movere"></a>Movere
 
  
-Movere, tüm BT ortamlarını tek bir gün içinde doğru şekilde sunarak iş zekası artıran bir SaaS platformudur. Kuruluşlar arttıkça, değiştirirken ve dijital olarak iyileştirirken, uygulamalar platforma, uygulamaya veya coğrafi hale bakılmaksızın ortamları üzerinde görünürlük ve denetim sahibi olmaları gereken güveni sağlar. Movere Microsoft tarafından [alındı](https:/azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools) ve artık tek başına bir teklif olarak satılmamaktadır.  Movere, Microsoft çözüm değerlendirmesi ve bulut Ekonomikler programları aracılığıyla kullanılabilir. Movere hakkında [daha fazla bilgi edinin](https://www.movere.io) . Sorularınız varsa, bunları ' ye gönderebilirsiniz: movereq@microsoft.com veya Microsoft temsilcinize başvurun.
+Movere, tüm BT ortamlarını tek bir gün içinde doğru şekilde sunarak iş zekası artıran bir SaaS platformudur. Kuruluşlar arttıkça, değiştirirken ve dijital olarak iyileştirirken, uygulamalar platforma, uygulamaya veya coğrafi hale bakılmaksızın ortamları üzerinde görünürlük ve denetim sahibi olmaları gereken güveni sağlar. Movere Microsoft tarafından [alındı](https://azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools/) ve artık tek başına bir teklif olarak satılmamaktadır.  Movere, Microsoft çözüm değerlendirmesi ve bulut Ekonomikler programları aracılığıyla kullanılabilir. Movere hakkında [daha fazla bilgi edinin](https://www.movere.io) . Sorularınız varsa, bunları ' ye gönderebilirsiniz: movereq@microsoft.com veya Microsoft temsilcinize başvurun.
 
 Ayrıca, yerleşik geçiş hizmetimiz olan Azure geçişi ' ne da bakmanız önerilir. Azure geçişi, buluta geçişinizi basitleştirecek bir merkezi Merkez sağlar. Hub, fiziksel ve sanal sunucular, veritabanları ve uygulamalar dahil farklı iş yükleri için kapsamlı destek sunar. Uçtan uca görünürlük, bulma, değerlendirme ve geçiş genelinde ilerlemeyi izlemeyi kolaylaştırır. Hem Azure hem de partner ISV araçları ile birlikte Azure geçişi, sanal ve fiziksel sunucu keşfi, performans tabanlı doğru boyutlandırma, maliyet planlama, içeri aktarma tabanlı değerlendirmeler ve aracısız uygulama gibi çok çeşitli özelliklere sahiptir. bağımlılık analizi. Kullanmaya başlamak için uzman yardımı arıyorsanız, Microsoft, yolculukta size rehberlik etmek için [Azure uzman tarafından yönetilen hizmet sağlayıcısına](https://azure.microsoft.com/partners) sahiptir. [Azure geçişi Web sitesine](https://azure.microsoft.com/services/azure-migrate/)göz atın. 
  
