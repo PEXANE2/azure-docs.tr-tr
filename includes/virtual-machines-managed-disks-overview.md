@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f041381534dfe59036ce1b9d91792f9e78d0dace
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7ceff623c6559ef5e929d6d5bff9e07cca9039d2
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73524022"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796273"
 ---
 ## <a name="benefits-of-managed-disks"></a>Yönetilen disklerin avantajları
 
@@ -33,7 +33,7 @@ Yönetilen diskler, [bir kullanılabilirlik kümesindeki VM](../articles/virtual
 
 ### <a name="integration-with-availability-zones"></a>Kullanılabilirlik Alanları ile tümleştirme
 
-Yönetilen diskler, uygulamalarınızı veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir teklif olan [kullanılabilirlik alanları](../articles/availability-zones/az-overview.md)destekler. Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Azure, Kullanılabilirlik Alanları sayesinde sektörün en iyi% 99,99 VM çalışma süresi SLA 'sını sunmaktadır.
+Yönetilen diskler [kullanılabilirlik alanları](../articles/availability-zones/az-overview.md)destekler, bu, uygulamalarınızı veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Azure, Kullanılabilirlik Alanları sayesinde sektörün en iyi% 99,99 VM çalışma süresi SLA 'sını sunmaktadır.
 
 ### <a name="azure-backup-support"></a>Azure Backup desteği
 
@@ -55,7 +55,7 @@ Yönetilen diskler iki farklı şifreleme türü sunar. Birincisi, depolama hizm
 
 ### <a name="server-side-encryption"></a>Sunucu tarafı şifrelemesi
 
-[Azure sunucu tarafı şifrelemesi](../articles/storage/common/storage-service-encryption.md) , bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. Yönetilen disklerin kullanılabildiği tüm bölgelerde tüm yönetilen diskler, anlık görüntüler ve görüntüler için sunucu tarafı şifreleme varsayılan olarak etkindir. Daha fazla ayrıntı için [yönetilen DISKLER SSS sayfasını](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) ziyaret edin.
+[Azure sunucu tarafı şifrelemesi](../articles/virtual-machines/windows/disk-encryption.md) , bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. Yönetilen disklerin kullanılabildiği tüm bölgelerde tüm yönetilen diskler, anlık görüntüler ve görüntüler için sunucu tarafı şifreleme varsayılan olarak etkindir. Azure 'un anahtarlarınızı sizin için yönetmesine izin verebilir, bunlar platform tarafından yönetilen anahtarlardır ya da anahtarları kendiniz yönetebilirsiniz. Bunlar, müşteri tarafından yönetilen anahtarlardır (Önizleme). Daha fazla ayrıntı için [yönetilen DISKLER SSS sayfasını](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) ziyaret edin.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
 
@@ -85,7 +85,7 @@ Her VM, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygu
 
 Yönetilen disk anlık görüntüsü, varsayılan olarak standart yönetilen disk olarak depolanan bir yönetilen diskin salt okunurdur, kilitlenmeyle tutarlı bir tam kopyasıdır. Anlık görüntülerle, yönetilen disklerinizi dilediğiniz zaman bir noktada yedekleyebilirsiniz. Bu anlık görüntüler, kaynak diskten bağımsız olarak bulunur ve yeni yönetilen diskler oluşturmak için kullanılabilir. 
 
-Anlık görüntüler, kullanılan boyuta göre faturalandırılır. Örneğin, sağlanan 64 GiB kapasitesine sahip bir yönetilen diskin anlık görüntüsünü ve 10 GiB 'nin gerçek kullanılan veri boyutunu oluşturursanız, bu anlık görüntü yalnızca 10 GiB 'nin kullanılan veri boyutu için faturalandırılır. [Azure kullanım raporuna](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill)bakarak anlık görüntülerinizin kullanılan boyutunu görebilirsiniz. Örneğin, bir anlık görüntünün kullanılan veri boyutu 10 GiB ise **günlük** kullanım raporu, tüketilen miktar olarak 10 GiB/(31 gün) = 0,3226 gösterir.
+Anlık görüntüler, kullanılan boyuta göre faturalandırılır. Örneğin, sağlanan 64 GiB kapasitesine sahip bir yönetilen diskin anlık görüntüsünü ve 10 GiB 'nin gerçek kullanılan veri boyutunu oluşturursanız, bu anlık görüntü yalnızca 10 GiB 'nin kullanılan veri boyutu için faturalandırılır. [Azure kullanım raporuna](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)bakarak anlık görüntülerinizin kullanılan boyutunu görebilirsiniz. Örneğin, bir anlık görüntünün kullanılan veri boyutu 10 GiB ise **günlük** kullanım raporu, tüketilen miktar olarak 10 GiB/(31 gün) = 0,3226 gösterir.
 
 Yönetilen diskler için anlık görüntüler oluşturma hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
@@ -117,7 +117,7 @@ Aşağıdaki diyagramda, üç düzeyli bir sağlama sistemi kullanılarak, diskl
 
 İlk düzey sağlama, disk başına ıOPS ve bant genişliği atamasını belirler.  İkinci düzeyde, işlem sunucusu ana bilgisayarı SSD sağlama işlemini uygular ve yalnızca, önbelleğe alma (ReadWrite ve salt okunur) diskler ve yerel ve geçici disklere dahil olmak üzere yalnızca sunucunun SSD 'de depolanan verilere uygulanır. Son olarak, VM ağı sağlama işlemi, işlem konağının Azure depolama 'nın arka ucuna gönderdiği herhangi bir g/ç için üçüncü düzeyde gerçekleşir. Bu şemayla, VM 'nin performansı, sanal makinenin yerel SSD 'yi nasıl kullandığı, eklenen disklerin sayısı ve bağlı olduğu disklerin performans ve önbelleğe alma türü gibi çeşitli faktörlere bağlıdır.
 
-Bu sınırlamalara örnek olarak, bir Standard_DS1v1 VM 'nin, SSD ve ağ düzeylerindeki sınırlar nedeniyle önbelleğe alınıp alınmadığı, bir P30 disk için 5.000 ıOPS potansiyelini elde etmesinin engellenmektedir:
+Bu sınırlamalara örnek olarak, bir Standard_DS1v1 VM 'nin, SSD ve ağ düzeylerindeki limitlerin dışında, önbelleğe alınıp alınmadığı P30 bir diskin 5.000 ıOPS 'sini elde etmesinin engellenmiş olması önlenir:
 
 ![Standard_DS1v1 örnek ayırma](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
 

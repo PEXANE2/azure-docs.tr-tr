@@ -1,6 +1,6 @@
 ---
 title: Azure Hızlı Başlangıcı - Azure portalla VM yedekleme
-description: Azure portalıyla sanal makinelerinizi nasıl yedekleyeceğinizi öğrenin
+description: Bu hızlı başlangıçta, bir kurtarma hizmetleri Kasası oluşturmayı, bir Azure VM 'de korumayı etkinleştirmeyi ve Azure portal VM 'yi yedeklemeyi öğrenin.
 ms.reviewer: saurse
 author: dcurwin
 manager: carmonm
@@ -11,31 +11,33 @@ ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 485273fbde5e54b467210cb5fd47ea432efceb85
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 09154c68ab5cb0c3db3cd3325a4bf37fa33c1144
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210048"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747072"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure'daki bir sanal makineyi yedekleme
-Azure yedekleri Azure portalı üzerinden oluşturulabilir. Bu yöntem, Azure yedeklerini ve tüm ilgili kaynakları oluşturup yapılandırmaya yönelik tarayıcı tabanlı bir kullanıcı arabirimi sağlar. Düzenli aralıklarla yedekleme yaparak verilerinizi koruyabilirsiniz. Azure Backup, coğrafi olarak yedekli kurtarma kasalarında saklanabilecek kurtarma noktaları oluşturur. Bu makalede Azure portalıyla bir sanal makinenin nasıl yedekleneceği anlatılmaktadır. 
+
+Azure yedekleri Azure portalı üzerinden oluşturulabilir. Bu yöntem, Azure yedeklerini ve tüm ilgili kaynakları oluşturup yapılandırmaya yönelik tarayıcı tabanlı bir kullanıcı arabirimi sağlar. Düzenli aralıklarla yedekleme yaparak verilerinizi koruyabilirsiniz. Azure Backup, coğrafi olarak yedekli kurtarma kasalarında saklanabilecek kurtarma noktaları oluşturur. Bu makalede Azure portalıyla bir sanal makinenin nasıl yedekleneceği anlatılmaktadır.
 
 Bu hızlı başlangıç belgesi var olan bir Azure VM'de yedeklemeyi etkinleştirir. Bir sanal makine oluşturmanız gerekiyorsa [Azure portalıyla sanal makine oluşturabilirsiniz](../virtual-machines/windows/quick-create-portal.md).
 
-## <a name="log-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
+<https://portal.azure.com.> Azure portal oturum açın
 
 ## <a name="select-a-vm-to-back-up"></a>Yedeklenecek sanal makineyi seçme
-Kurtarma Hizmetleri Kasasına basit bir zamanlanmış günlük yedekleme oluşturma. 
 
-1. Sol taraftaki menüden **Sanal makineler**'i seçin. 
+Kurtarma Hizmetleri Kasasına basit bir zamanlanmış günlük yedekleme oluşturma.
+
+1. Sol taraftaki menüden **Sanal makineler**'i seçin.
 2. Listeden yedekleyeceğiniz sanal makineyi seçin. Örnek VM hızlı başlangıç komutlarını kullandıysanız VM'nin adı *myVM*, kaynak grubunun adı ise *myResourceGroup* olacaktır.
 3. **İşlemler** bölümünde **Yedekle**'yi seçin. **Yedeklemeyi etkinleştir** penceresi açılır.
 
-
 ## <a name="enable-backup-on-a-vm"></a>Bir sanal makinede yedeklemeyi etkinleştirme
+
 Kurtarma Hizmetleri kasası, Azure sanal makineleri gibi koruma altındaki kaynakların yedeklenen verilerini saklayan bir mantıksal kapsayıcıdır. Koruma altındaki bir kaynak için yedekleme işi çalıştığında Kurtarma Hizmetleri kasasının içinde bir kurtarma noktası oluşturulur. Daha sonra bu kurtarma noktalarından birini kullanarak verileri dilediğiniz zaman geri yükleyebilirsiniz.
 
 1. **Yeni oluştur**'u seçin ve yeni kasa için *myRecoveryServicesVault* gibi bir ad girin.
@@ -45,14 +47,14 @@ Kurtarma Hizmetleri kasası, Azure sanal makineleri gibi koruma altındaki kayna
 
     Varsayılan olarak kasada Coğrafi Olarak Yedekli depolama özelliği etkindir. Bu depolama yedekliliği seviyesi verilerinizi daha fazla korumak için yedeklenen verilerinizin birincil bölgeden yüzlerce kilometre uzaktaki ikincil bir Azure bölgesinde çoğaltılmasını sağlar.
 
-    Bir yedekleme işinin çalışma zamanını ve kurtarma noktalarının saklama süresini tanımlamak için ilke oluşturur ve kullanırsınız. Varsayılan koruma ilkesi yedekleme işini her gün çalıştırır ve kurtarma noktalarını 30 gün boyunca tutar. Sanal makinenizi hızlı bir şekilde koruma altına almak için bu varsayılan ilke değerlerini kullanabilirsiniz. 
+    Bir yedekleme işinin çalışma zamanını ve kurtarma noktalarının saklama süresini tanımlamak için ilke oluşturur ve kullanırsınız. Varsayılan koruma ilkesi yedekleme işini her gün çalıştırır ve kurtarma noktalarını 30 gün boyunca tutar. Sanal makinenizi hızlı bir şekilde koruma altına almak için bu varsayılan ilke değerlerini kullanabilirsiniz.
 
 3. Varsayılan yedekleme ilkesi değerlerini kabul etmek için **Yedeklemeyi Etkinleştir**'i seçin.
 
 Kurtarma Hizmetleri kasasının oluşturulması birkaç dakika sürer.
 
-
 ## <a name="start-a-backup-job"></a>Bir yedekleme işi başlatma
+
 Varsayılan ilkenin işi planlanan saatte başlatmasını beklemek yerine yedekleme işini hemen başlatabilirsiniz. İlk yedekleme işi tam kurtarma noktası oluşturur. Bu ilk yedekleme sonrasında çalıştırılan tüm yedekleme işleri artımlı kurtarma noktaları oluşturur. Yalnızca son yedekleme sonrasında yapılan değişiklikleri aktardığından artımlı kurtarma noktaları depolama alanı ve süre açısından verimlilik sağlar.
 
 1. Sanal makinenizin **Yedekleme** penceresinde **Şimdi yedekle**'yi seçin.
@@ -61,12 +63,12 @@ Varsayılan ilkenin işi planlanan saatte başlatmasını beklemek yerine yedekl
 
 2. 30 günlük yedekleme tutma ilkesini kabul etmek için varsayılan **Yedekleri Şu Tarihe Kadar Tut:** tarihini kullanın. İşi başlatmak için **Yedekle**'yi seçin.
 
-
 ## <a name="monitor-the-backup-job"></a>Yedekleme işini izleme
+
 Sanal makinenizin **Yedekleme** penceresinde yedekleme durumu ve tamamlanan geri yükleme noktası sayısı gösterilir. Sanal makine yedekleme işi tamamlandıktan sonra **Son yedekleme zamanı**, **En son geri yükleme noktası** ve **En eski geri yükleme noktası**, **Genel Bakış** penceresinin sağ tarafında gösterilir.
 
-
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
+
 Artık gerekli değilse sanal makine korumasını devre dışı bırakabilir, kurtarma noktalarını ve Kurtarma Hizmetleri kasasını kaldırabilir ve ardından sanal makine kaynaklarıyla ilişkilendirilmiş kaynak grubunu silebilirsiniz
 
 Sanal makine verilerini nasıl geri yükleyeceğinizi açıklayan bir Yedekleme öğreticisine geçecekseniz bu bölümdeki adımları atlayın ve [Sonraki adımlar](#next-steps) bölümüne geçin.
@@ -83,14 +85,14 @@ Sanal makine verilerini nasıl geri yükleyeceğinizi açıklayan bir Yedekleme 
 
     Sanal makine yedekleme işlemi durdurulduktan ve kurtarma noktaları kaldırıldıktan sonra kaynak grubunu silebilirsiniz. Var olan bir sanal makineyi kullandıysanız kaynak grubunu ve sanal makineyi bırakmak isteyebilirsiniz.
 
-5. Soldaki menüden **Kaynak grupları**'nı seçin. 
+5. Soldaki menüden **Kaynak grupları**'nı seçin.
 6. Listeden kaynak grubunuzu seçin. Örnek sanal makine hızlı başlangıç komutlarını kullandıysanız kaynak grubunun adı *myResourceGroup* olacaktır.
 7. **Kaynak grubunu sil**'i seçin. Onaylamak için kaynak grubunun adını girin ve **Sil**'i seçin.
 
     ![Kaynak grubunu Azure portalından silme](./media/quick-backup-vm-portal/delete-resource-group.png)
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Bu hızlı başlangıçta bir Kurtarma Hizmetleri kasası oluşturdunuz, bir sanal makine için koruma özelliklerini etkinleştirdiniz ve ilk kurtarma noktasını oluşturdunuz. Azure Backup ve Kurtarma Hizmetleri hakkında daha fazla bilgi edinmek için öğreticilere geçin.
 
 > [!div class="nextstepaction"]
