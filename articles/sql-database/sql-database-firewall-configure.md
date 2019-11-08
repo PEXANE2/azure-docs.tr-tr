@@ -1,9 +1,10 @@
 ---
-title: Azure SQL veritabanı ve Azure SQL veri ambarı IP güvenlik duvarı kuralları
+title: IP güvenlik duvarı kuralları
 description: Bir SQL veritabanı veya SQL veri ambarı güvenlik duvarı için sunucu düzeyi IP güvenlik duvarı kurallarını yapılandırın. Tek veya havuza alınmış bir veritabanı için erişimi yönetin ve veritabanı düzeyinde IP güvenlik duvarı kurallarını yapılandırın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 52566dbc60c3c2fd532891ab4f7d3461f9d77557
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 668744121c41a6e4797bc335b2736c8b31d87a41
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690041"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807941"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL veritabanı ve Azure SQL veri ambarı IP güvenlik duvarı kuralları
 
@@ -52,7 +53,7 @@ Aşağıdaki diyagramda gösterildiği gibi, internet 'ten ve Azure 'dan gelen b
   
   Veritabanı düzeyi IP güvenlik duvarı kuralında sunucu düzeyi IP güvenlik duvarı kuralında aralığın dışında bir IP adresi aralığı belirtirseniz, yalnızca veritabanı düzeyinde IP adresi olan istemciler veritabanına erişebilir.
   
-  Bir veritabanı için en fazla 128 veritabanı düzeyinde IP güvenlik duvarı kuralına sahip olabilirsiniz. Veritabanı düzeyinde IP güvenlik duvarı kurallarını yapılandırma hakkında daha fazla bilgi için, bu makalenin devamındaki örneğe bakın ve bkz. [sp_set_database_firewall_rule (Azure SQL veritabanı)](https://msdn.microsoft.com/library/dn270010.aspx).
+  Bir veritabanı için en fazla 128 veritabanı düzeyinde IP güvenlik duvarı kuralına sahip olabilirsiniz. Veritabanı düzeyinde IP güvenlik duvarı kurallarını yapılandırma hakkında daha fazla bilgi için, bu makalenin devamındaki örneğe bakın ve [sp_set_database_firewall_rule (Azure SQL veritabanı)](https://msdn.microsoft.com/library/dn270010.aspx)bölümüne bakın.
 
 ### <a name="recommendations-for-how-to-set-firewall-rules"></a>Güvenlik duvarı kuralları ayarlama önerileri
 

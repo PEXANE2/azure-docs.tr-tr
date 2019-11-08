@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 08094469da87a6aae31acac599f8422487c10d28
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b76d8f25cfb8bd1dfda43c8383a538f8cf9769b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580746"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818451"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure Storage hizmetlerindeki verilere erişme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,7 +56,7 @@ Bir Azure depolama çözümünü bir veri deposu olarak kaydettiğinizde, bu ver
 
 ### <a name="using-the-python-sdk"></a>Python SDK'yı kullanma
 
-Tüm yazmaç yöntemleri [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) sınıfta bulunur ve register_azure_ * biçiminde olmalıdır.
+Tüm yazmaç yöntemleri [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) sınıftır ve register_azure_ * biçiminde bulunur.
 
 Register () metodunu doldurmanız için gereken bilgiler [Azure Machine Learning Studio](https://ml.azure.com)aracılığıyla bulunabilir. Sol bölmede **depolama hesapları** ' nı seçin ve kaydettirmek istediğiniz depolama hesabını seçin. **Genel bakış** sayfası, hesap adı ve kapsayıcısı ya da dosya paylaşma adı gibi bilgiler sağlar. Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama bilgileri için sol taraftaki **Ayarlar** bölmesi altındaki **Hesap anahtarlarına** gidin. 
 
@@ -183,7 +183,7 @@ datastore.download(target_path='your target path',
 ## <a name="access-your-data-during-training"></a>Eğitim sırasında verilerinize erişin
 
 > [!IMPORTANT]
-> [Azure Machine Learning veri kümeleri (Önizleme)](how-to-create-register-datasets.md) kullanmak, eğitiminde verilerinize erişmenin yeni bir yoludur. Veri kümeleri, Pandas veya Spark DataFrame 'e tablo verileri yükleyen ve Azure blob, Azure dosyası, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL, Azure PostgreSQL ' den herhangi bir biçimde dosya indirme veya bağlama olanağı sunan işlevler sağlar. [Veri kümeleriyle eğitme](how-to-train-with-datasets.md)hakkında daha fazla bilgi edinin.
+> [Azure Machine Learning veri kümeleri](how-to-create-register-datasets.md) kullanmak, eğitiminde verilerinize erişmek için önerilen yeni yoldur. Veri kümeleri, Pandas veya Spark DataFrame 'e tablo verileri yükleyen ve Azure blob, Azure dosyası, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL, Azure PostgreSQL ' den herhangi bir biçimde dosya indirme veya bağlama olanağı sunan işlevler sağlar. [Veri kümeleriyle eğitme](how-to-train-with-datasets.md)hakkında daha fazla bilgi edinin.
 
 Aşağıdaki tabloda, işlem hedefine çalışma sırasında veri depolarını nasıl kullanacağınızı söyleyen Yöntemler listelenmiştir. 
 
@@ -209,7 +209,7 @@ datastore.path('./bar').as_download()
 
 Aşağıdaki kod örnekleri, eğitim sırasında verilere erişmek için [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) sınıfına özgüdür. 
 
-`script_params`, entry_script parametrelerini içeren bir sözlüktür. Bunu kullanarak veri deposuna geçiş yapın ve verilerin işlem hedefi üzerinde nasıl kullanılabilir yapıldığını tanımlayabilirsiniz. Uçtan uca [öğreticimizden](tutorial-train-models-with-aml.md)daha fazla bilgi edinin.
+`script_params`, entry_script parametreleri içeren bir sözlüktür. Bunu kullanarak veri deposuna geçiş yapın ve verilerin işlem hedefi üzerinde nasıl kullanılabilir yapıldığını tanımlayabilirsiniz. Uçtan uca [öğreticimizden](tutorial-train-models-with-aml.md)daha fazla bilgi edinin.
 
 ```Python
 from azureml.train.estimator import Estimator

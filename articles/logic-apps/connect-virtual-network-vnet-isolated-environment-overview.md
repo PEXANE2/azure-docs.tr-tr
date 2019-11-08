@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: adb89c04a83bbfbd5bddd5c23b0fa88019a88991
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/08/2019
+ms.openlocfilehash: da68cfe504332ed6641c52322f0df0d2efd95997
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721376"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820664"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
@@ -108,8 +108,8 @@ Bir Azure sanal ağına bağlı şirket içi sistemler için, mantıksal uygulam
 
 * O sistem için ıSE etiketli bağlayıcı
 
-  > [!IMPORTANT]
-  > Windows kimlik doğrulamasını SQL Server Bağlayıcısı ile kullanmak için şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-install.md)kullanmanız gerekir. SQL Server Bağlayıcısı, ıSE 'deki bir mantıksal uygulama için Windows kimlik doğrulamasını desteklemez.
+  > [!NOTE]
+  > Windows kimlik doğrulamasını bir [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)SQL Server Bağlayıcısı ile kullanmak için, Şirket [içi veri ağ geçidiyle](../logic-apps/logic-apps-gateway-install.md)bağlayıcının Ise sürümünü kullanın. ISE etiketli sürüm Windows kimlik doğrulamasını desteklemez.
 
 * Özel bağlayıcı
 

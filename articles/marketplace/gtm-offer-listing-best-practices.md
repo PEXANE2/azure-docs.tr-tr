@@ -4,15 +4,16 @@ description: Go-to-market Services-Bu bölümde, bir teklif için en iyi uygulam
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 9f55abf85803adf0f52bbfa445b9f3e489c9448b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 439617c07b8059860c6d412cc60d56d4ac8c36a5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821062"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818657"
 ---
 # <a name="offer-listing-best-practices"></a>En iyi teklif listeleme deneyimleri
 
@@ -45,7 +46,7 @@ Bir teklif için en fazla iki kategori ve iki alt kategori seçebilirsiniz. Aşa
 | Dağıtım    | \* Toptan <br> \* Paket & paket dağıtımı |
 | Eğitim     | \* Daha yüksek eğitim <br> \* Birincil & Ikincil Eğitim/K-12 <br> \* Kitaplıklar & Museums |
 | Finansal Hizmetler     | \* Bankacılık & sermaye piyasaları <br> \* Sigorta |
-| Resmi Kurumlar    | \* Savunma & Zeka (Ulusal ve genel güvenlik olarak adlandırılabilmesi için kullanılır) <br> \* Genel güvenlik & Let <br> \* Cıvilian kamu |
+| Devlet    | \* Savunma & Zeka (Ulusal ve genel güvenlik olarak adlandırılabilmesi için kullanılır) <br> \* Genel güvenlik & Let <br> \* Cıvilian kamu |
 | Sağlık (sistem durumu olarak adlandırılabilecek şekilde kullanılır)   | \* Sağlık payor <br> \* Sistem durumu sağlayıcısı <br> \* İlaç |
 | Üretim & kaynakları (üretim olarak adlandırılabilmesi için kullanılır)   | \* Kimyasal & Agrokimyasal <br> \* Ayrık üretim <br> \* Enerji |
 | Perakende & tüketici malları (perakende olarak adlandırılabilmesi için kullanılır)  | \* Tüketici malları <br> \* Perakendeciler |

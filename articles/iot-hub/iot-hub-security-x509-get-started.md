@@ -8,18 +8,18 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 03ac9f878f0869ef33d22f50c6bdba4276bd4d3c
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 32219eeaee7980b685ac3453c6af3beff716abe2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048335"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824077"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub 'ınızda X. 509.440 güvenliğini ayarlama
 
 Bu öğreticide, *X. 509.952 sertifika kimlik doğrulamasını*kullanarak Azure IoT Hub 'ınızı güvence altına almak için gereken adımlar gösterilmektedir. Çizim amacına yönelik olarak, Windows makinenizde yerel olarak sertifika oluşturmak için OpenSSL açık kaynaklı aracını kullanırız. Bu öğreticiyi yalnızca test amacıyla kullanmanızı öneririz. Üretim ortamında, sertifikaları bir *kök sertifika yetkilisinden (CA)* satın almalısınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, aşağıdaki kaynakların size hazırlanmaya yönelik olması gerekir:
 
@@ -37,13 +37,13 @@ Sertifikalarınızı almak için aşağıdaki yollarla seçim yapabilirsiniz:
 
 * [OpenSSL](https://www.openssl.org/)gibi üçüncü taraf bir araç kullanarak kendi X. 509.440 sertifikalarınızı oluşturun. Bu teknik, test ve geliştirme amacıyla uygundur. PowerShell veya Bash kullanarak test CA sertifikaları oluşturma hakkında bilgi için bkz. [örnek ve öğreticiler için test CA sertifikalarını yönetme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) . Bu öğreticinin geri kalanı, [örnek ve öğreticiler için test CA sertifikalarını yönetme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)bölümündeki yönergeleri izleyerek oluşturulan test CA sertifikalarını kullanır.
 
-* Var olan bir kök CA sertifikası tarafından imzalanmış bir [X. 509.440 ara CA sertifikası](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) oluşturun ve hub 'a yükleyin. Ara sertifika karşıya yüklenip doğrulandıktan sonra, aşağıda belirtildiği gibi, aşağıda bahsedilen bir kök CA sertifikası yerine kullanılabilir. OpenSSL ([OpenSSL REQ](https://www.openssl.org/docs/manmaster/man1/openssl-req.html) ve [OpenSSL CA](https://www.openssl.org/docs/manmaster/man1/openssl-ca.html)) gibi araçlar, bir ara CA sertifikası oluşturmak ve imzalamak için kullanılabilir.
+* Var olan bir kök CA sertifikası tarafından imzalanmış bir [X. 509.440 ara CA sertifikası](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) oluşturun ve hub 'a yükleyin. Ara sertifika karşıya yüklenip doğrulandıktan sonra, aşağıda belirtildiği gibi, aşağıda bahsedilen bir kök CA sertifikası yerine kullanılabilir. OpenSSL ([OpenSSL REQ](https://www.openssl.org/docs/man1.1.0/man1/req.html) ve [OpenSSL CA](https://www.openssl.org/docs/man1.1.0/man1/ca.html)) gibi araçlar, bir ara CA sertifikası oluşturmak ve imzalamak için kullanılabilir.
 
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>X. 509.440 CA sertifikalarını IoT Hub 'ınıza kaydetme
 
 Bu adımlarda, Portal üzerinden IoT Hub 'ınıza yeni bir sertifika yetkilisini nasıl ekleyeceğiniz gösterilir.
 
-1. Azure Portal, IoT Hub 'ınıza gidin ve hub için **ayar** > **sertifikaları** ' nı seçin.
+1. Azure portal, IoT Hub 'ınıza gidin ve hub için **ayarlar** > **Sertifikalar** ' ı seçin.
 
 1. Yeni bir sertifika eklemek için **Ekle** ' yi seçin.
 
@@ -51,7 +51,7 @@ Bu adımlarda, Portal üzerinden IoT Hub 'ınıza yeni bir sertifika yetkilisini
 
 1. Sertifikanızın başarıyla karşıya yüklendiğini belirten bir bildirim aldıktan sonra **Kaydet**' i seçin.
 
-    ![Karşıya sertifika yükleme](./media/iot-hub-security-x509-get-started/iot-hub-add-cert.png)  
+    ![Sertifikayı karşıya yükleme](./media/iot-hub-security-x509-get-started/iot-hub-add-cert.png)  
 
    Sertifikanız, sertifika listesinde **doğrulanmamış**durumuyla görüntülenir.
 
@@ -69,7 +69,7 @@ Bu adımlarda, Portal üzerinden IoT Hub 'ınıza yeni bir sertifika yetkilisini
 
 ## <a name="create-an-x509-device-for-your-iot-hub"></a>IoT Hub 'ınız için bir X. 509.952 cihazı oluşturma
 
-1. Azure Portal IoT Hub 'ınıza gidin ve ardından araştırıcılar > **IoT cihazları**' nı seçin.
+1. Azure portal IoT Hub 'ınıza gidin ve ardından **IoT cihazları** > **araştırıcılar** ' nı seçin.
 
 1. Yeni bir cihaz eklemek için **Yeni** ' yi seçin.
 
@@ -116,7 +116,7 @@ Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 C# cihazının benzetimin
         private static Random rnd = new Random();
     ```
 
-    Önceki bölümde _< your_device_id >_ yerine kullandığınız kolay cihaz adını kullanın.
+    Yukarıdaki bölümde _< your_device_id >_ yerine kullandığınız kolay cihaz adını kullanın.
 
 1. Sıcaklık ve nem için rastgele sayılar oluşturmak ve bu değerleri hub 'a göndermek için aşağıdaki işlevi ekleyin:
 

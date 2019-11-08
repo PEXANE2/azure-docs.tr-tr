@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9cefdc9354560ac5b7f3789cde2408a4c255c186
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f2cb1907557c2440a5a94c0f4799eac95a8cf507
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191771"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827853"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Ticari Market 'te mevcut bir teklifi güncelleştirme
 
@@ -21,7 +22,7 @@ Mevcut tekliflerinizi, Iş Ortağı Merkezi ' nde [ticari Market portalının](h
 Market 'te Şu anda etkin olan mevcut bir teklifi güncelleştirmek için: 
 
 1. Güncelleştirmek istediğiniz teklifin adını seçin. Teklifin durumu **canlı**, **Yayımla devam ediyor**, **taslak**, **ilgilenmeniz gerekiyor**veya **Market 'te satılmamış** olabilir (daha önce teklifi satmayı durdurmayı seçtiyseniz). Seçildiğinde, bu teklif için **teklif genel bakış** sayfası açılır.
-2. Güncelleştirmek istediğiniz alan için genel bakış kartından veya sol gezinmede bulunan menü öğesinden **Güncelleştir** ' i seçin. **Teklif kurulumu**, **Özellikler**, **teklif listesi**, **Önizleme**, **Teknik yapılandırma**, **plana genel bakış**veya **Test**sürüşü güncelleştirmek isteyebilirsiniz. 
+2. Güncelleştirmek istediğiniz alan için genel bakış kartından veya sol gezinmede bulunan menü öğesinden **Güncelleştir** ' i seçin. **Teklif kurulumu**, **Özellikler**, **teklif listesi**, **Önizleme**, **Teknik yapılandırma**, **plana genel bakış**veya **test sürüşü**güncelleştirmek isteyebilirsiniz. 
 3. Değişikliklerinizi yapın ve ardından **Kaydet**' i seçin. Tüm değişiklikleriniz tamamlanana kadar bu işlemi tekrarlayın.
 
 ## <a name="review-and-publish-an-updated-offer"></a>Güncelleştirilmiş bir teklifi İnceleme ve yayımlama
@@ -31,11 +32,11 @@ Güncelleştirilmiş teklifinizi yayımlamaya hazırsanız herhangi bir sayfadan
 
 - Seçtiğiniz teklifin bölümlerinin tamamlanma durumunu görün: 
     - **Yayımlanmamış değişiklikler**: Bölüm güncelleştirildi ve tamamlandı. Tüm gerekli veriler sağlandı ve güncelleştirmelerde hiçbir hata alınmadı.
-    - **Tamamlanmamış**: Bölümde yapılan güncelleştirmeler, düzeltilmesi gereken veya daha fazla bilgi gerektiren hatalar sağladı.
+    - **Tamamlanmamış**: bölümde yapılan güncelleştirmeler düzeltilmekte olan veya daha fazla bilgi sağlanması gereken hatalar getirdi.
 - Testin sorunsuz bir şekilde çalışmasını sağlamak için sertifika sınama ekibine ek bilgi sağlayın.
 - **Gönder**' i seçerek yayımlama için güncelleştirilmiş teklifi gönder.  Gözden geçirmeniz ve oturum açmanız için güncelleştirilmiş teklifin önizleme sürümü kullanılabilir olduğunda size e-posta göndereceğiz.
 
-**ÖNEMLİ**: Sunulan hedef kitlenize (ortak veya özel) sahip olduğunuz teklifinizi yayımlamak için, teklif önizlemeyi gözden geçirmeniz ve **canlı çalış** ' ı seçmeniz gerekir.
+**Önemli**: sunulan hedef kitlenize (ortak veya özel) sunulan teklifinizi yayımlamak için, teklif önizlemeyi gözden geçirmeniz ve **canlı çalış** ' ı seçmeniz gerekir.
 
 ## <a name="update-a-plan-within-an-existing-offer"></a>Mevcut bir teklif içindeki bir planı güncelleştirme
 

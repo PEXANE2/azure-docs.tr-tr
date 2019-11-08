@@ -1,5 +1,5 @@
 ---
-title: İş veya okul hesabınızı yönetilmeyen bir dizinde kapatma-Azure Active Directory | Microsoft Docs
+title: Yönetilmeyen bir Azure AD dizininde iş veya okul hesabını kapatma
 description: Yönetilmeyen bir Azure Active Directory iş veya okul hesabınızı kapatma.
 services: active-directory
 author: rolyon
@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da4c6b1c1434dae564ab4876a3ab3f341a87097
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 3c101c0ef7932151e675c5c514ac558e6e0f94b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891949"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815714"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>İş veya okul hesabınızı yönetilmeyen bir dizinde kapatma
 

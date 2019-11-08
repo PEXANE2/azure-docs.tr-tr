@@ -1,5 +1,5 @@
 ---
-title: Redsıs için Azure Cache ile TLS 1,0 ve 1,1 kullanımını kaldırın | Microsoft Docs
+title: TLS 1,0 ve 1,1 ' i Redsıs için Azure önbelleğiyle kaldırın | Microsoft Docs
 description: Redsıs için Azure önbelleğiyle iletişim kurarken uygulamanızın TLS 1,0 ve 1,1 ' i nasıl kaldıracağınızı öğrenin
 services: cache
 documentationcenter: ''
@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: d1d44467d310b87d306ea7401e66784d684a1bf3
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 638ce4b07201453d0bb00d3610cb695b72b6d698
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901904"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806768"
 ---
-# <a name="remove-use-of-tls-10-and-11-with-azure-cache-for-redis"></a>Redsıs için Azure Cache ile TLS 1,0 ve 1,1 kullanımını kaldırma
+# <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>TLS 1,0 ve 1,1 ' i Redsıs için Azure Cache ile birlikte kullanarak kaldırma
 
-Yalnızca TLS 1,2 veya üzeri bir sürümü kullanarak sektör genelinde bir gönderim vardır. 1,0 ve 1,1 arasındaki TLS sürümleri, BEAST ve POOıDA gibi saldırılara açıktır ve diğer yaygın güvenlik açıkları ve Etkilenmeler (CVE) zayıf yönleri vardır. Ayrıca, PCI uyumluluk standartları tarafından önerilen modern şifreleme yöntemlerini ve şifre paketlerini desteklemezler. Bu [TLS güvenlik blogu](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) , daha fazla ayrıntı için bu güvenlik açıklarından bazılarını açıklamaktadır.
+Aktarım Katmanı Güvenliği (TLS) sürüm 1,2 veya üzeri için özel kullanıma yönelik sektör genelinde bir gönderim vardır. TLS sürümleri 1,0 ve 1,1, BEAST ve POOTEKı gibi saldırılara açıktır ve diğer yaygın güvenlik açıkları ve Etkilenmeler (CVE) zayıflıklarına sahip olur. Ayrıca, ödeme kartı sektör (PCI) uyumluluk standartları tarafından önerilen modern şifreleme yöntemlerini ve şifre paketlerini desteklemezler. Bu [TLS güvenlik blogu](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) , bu güvenlik açıklarından bazılarını daha ayrıntılı bir şekilde açıklamaktadır.
 
-Bu sorun ortaya çıkan sorunlardan hiçbiri sırasında, TLS 1,0 ve 1,1 ' yi mümkün olduğunca erken kullanmaya dikkat etmelisiniz. Redsıs için Azure önbelleği, 31 Mart 2020 ' den itibaren bu TLS sürümlerinin desteklenmesini durdurur. Bu tarihten sonra önbelleğiniz ile iletişim kurmak için uygulamanızın en az TLS 1,2 kullanması gerekecektir.
+Bu önemli noktaların hiçbiri bir sorun oluştursa da yakında TLS 1,0 ve 1,1 kullanımını durdurmanız önerilir. Redsıs için Azure önbelleği, bu TLS sürümlerinin 31 Mart 2020 ' de desteklenmesini durdurur. Bu tarihten sonra, uygulamanızın önbelleğiyle iletişim kurması için TLS 1,2 veya üstünü kullanması gerekecektir.
 
-Bu makalede, bu bağımlılıkları nasıl tespit etmek ve uygulamanızdan kaldırmak için genel yönergeler sağlanmaktadır.
+Bu makalede, bu önceki TLS sürümlerindeki bağımlılıkların nasıl algılanacağı ve uygulamanızdan kaldırılacağı hakkında genel yönergeler sunulmaktadır.
 
-## <a name="check-if-your-application-is-already-compliant"></a>Uygulamanızın zaten uyumlu olup olmadığını denetleyin
+## <a name="check-whether-your-application-is-already-compliant"></a>Uygulamanızın zaten uyumlu olup olmadığını denetleyin
 
-Uygulamanızın TLS 1,2 ile çalışacağından en kolay yolu, kullandığı bir test veya hazırlama önbelleğinde en düşük TLS sürümünü ayarlamak ve TLS 1,2 ' dir. En düşük TLS sürümü ayarını, Azure portal önbellek örneğinizin [Gelişmiş ayarlarında](cache-configure.md#advanced-settings) bulabilirsiniz. Uygulama bu değişiklikten sonra beklendiği gibi çalışmaya devam ediyorsa, büyük olasılıkla uyumlu olabilir. Uygulamamız tarafından kullanılan Redsıs istemci kitaplıklarının, bu güvenlik protokolünün üzerinden Red. için Azure önbelleğine bağlanmak üzere TLS 1,2 ' i etkinleştirmek için özellikle yapılandırılması gerekebilir.
+Uygulamanızın TLS 1,2 ile çalışıp çalışmadığını bulmanın en kolay yolu, kullandığı bir test veya hazırlama önbelleğinde **En düşük TLS sürümü** değerini TLS 1,2 olarak ayarlayacaktır. **En düşük TLS sürümü** ayarı, Azure Portal önbellek örneğinizin [Gelişmiş ayarlarından](cache-configure.md#advanced-settings) oluşur. Bu değişiklikten sonra uygulama beklendiği gibi çalışmaya devam ederse büyük olasılıkla uyumludur. Özellikle TLS 1,2 ' i etkinleştirmek için, uygulamanız tarafından kullanılan bazı Reddir istemci kitaplıklarını yapılandırmanız gerekebilir. bu nedenle, bu güvenlik protokolünün üzerinden Red. Azure önbelleğine bağlanabilirler.
 
 ## <a name="configure-your-application-to-use-tls-12"></a>Uygulamanızı TLS 1,2 kullanacak şekilde yapılandırma
 
-Çoğu uygulama, önbellekleri ile iletişimi işlemek için Redsıs istemci kitaplıklarını kullanır. Aşağıda, çeşitli programlama dillerinde ve çerçevelerindeki bazı popüler istemci kitaplıklarının, TLS 1,2 kullanması için nasıl yapılandırılacağı hakkında yönergeler verilmiştir.
+Çoğu uygulama, önbellekleri ile iletişimi işlemek için Redsıs istemci kitaplıklarını kullanır. Aşağıda, çeşitli programlama dillerinde ve çerçevelerinizdeki bazı popüler istemci kitaplıklarını, TLS 1,2 kullanacak şekilde yapılandırma yönergeleri verilmiştir.
 
 ### <a name="net-framework"></a>.NET Framework
 
-Redsıs .NET istemcileri en düşük TLS sürümünü varsayılan olarak .NET Framework 4.5.2 veya altında ve 4,6 veya üzeri sürümlerde en yüksek TLS sürümünü kullanır. .NET Framework eski bir sürümünü kullanıyorsanız, TLS 1,2 'yi el ile etkinleştirebilirsiniz:
+Redsıs .NET istemcileri, en eski TLS sürümünü varsayılan olarak .NET Framework 4.5.2 veya önceki sürümlerde kullanır ve .NET Framework 4,6 veya sonraki sürümlerde en son TLS sürümünü kullanır. .NET Framework eski bir sürümünü kullanıyorsanız, TLS 1,2 'yi el ile etkinleştirebilirsiniz:
 
-* StackExchange. Redsıs: bağlantı dizesinde `ssl=true` ve `sslprotocls=tls12` ayarla.
-* ServiceStack. Redsıs: [Bu yönergeleri](https://github.com/ServiceStack/ServiceStack.Redis/pull/247)izleyin.
+* **StackExchange. Reddir:** Bağlantı dizesinde `ssl=true` ve `sslprotocls=tls12` ayarlayın.
+* **Servicestack. redsıs:** [Servicestack. redin yönergelerini](https://github.com/ServiceStack/ServiceStack.Redis/pull/247)izleyin.
 
 ### <a name="net-core"></a>.NET Core
 
-Redsıs .NET Core istemcileri varsayılan olarak en yüksek TLS sürümünü kullanır.
+Redsıs .NET Core istemcileri varsayılan olarak en son TLS sürümünü kullanır.
 
 ### <a name="java"></a>Java
 
-Redsıs Java istemcileri Java sürüm 6 veya altında TLS 1,0 kullanır. Jedsıs, Lettuce ve Sedisson, TLS 1,0 önbellekte devre dışı bırakılmışsa redin için Azure önbelleğine bağlanamayacak. Şu anda bilinen bir geçici çözüm yoktur.
+Redsıs Java istemcileri Java sürüm 6 veya daha önceki bir sürümünde TLS 1,0 kullanır. TLS 1,0, önbellekte devre dışı bırakılmışsa, jedsıs, Lettuce ve Sedisson, redin için Azure önbelleğine bağlanamaz. Şu anda bilinen bir geçici çözüm yok.
 
-Java 7 veya üzeri sürümlerde, Redsıs istemcileri varsayılan olarak TLS 1,2 kullanmaz ancak bu için yapılandırılmış olabilir. Aşağıdaki anda Lettuce ve Oydisson desteklenmez. Önbellek yalnızca TLS 1,2 bağlantılarını kabul ediyorsa, bunlar kesilir. Jedsıs, aşağıdaki kod parçacığı ile temeldeki TLS ayarlarını belirtmenize olanak sağlar:
+Java 7 veya sonraki sürümlerde, Redsıs istemcileri varsayılan olarak TLS 1,2 kullanmaz ancak bu için yapılandırılabilir. Bu yapılandırmayı şu an için Lettuce ve Oydisson desteklemez. Önbellek yalnızca TLS 1,2 bağlantısı kabul ediyorsa bunlar kesilir. Jedsıs, aşağıdaki kod parçacığı ile temeldeki TLS ayarlarını belirtmenize olanak sağlar:
 
 ``` Java
 SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
@@ -74,7 +74,7 @@ Redsıs ve ıoredin Node, varsayılan olarak TLS 1,2 kullanır.
 
 ### <a name="php"></a>PHP
 
-İkincisi yalnızca TLS 1,0 ' i desteklediğinden PHP 7 ' deki predıs çalışmaz. PHP 7.2.1 veya altında, Predıs varsayılan olarak TLS 1,0 veya 1,1 kullanır. İstemciyi örnekledikten sonra TLS 1,2 ' i belirtebilirsiniz:
+PHP 7 yalnızca TLS 1,0 ' i desteklediği için PHP 7 üzerinde ön dis çalışmaz. PHP 7.2.1 veya önceki sürümlerde, Predıs varsayılan olarak TLS 1,0 veya 1,1 kullanır. İstemci örneğini oluştururken TLS 1,2 ' i belirtebilirsiniz:
 
 ``` PHP
 $redis=newPredis\Client([
@@ -100,6 +100,6 @@ Redin-Kopyala varsayılan olarak TLS 1,2 kullanır.
 
 Redigo varsayılan olarak TLS 1,2 kullanır.
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 - [Redsıs için Azure önbelleğini yapılandırma](cache-configure.md)

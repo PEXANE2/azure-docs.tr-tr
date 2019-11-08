@@ -4,15 +4,16 @@ description: Azure Marketi çözümleri için müşteri kullanımını izlemeye 
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c077b93b887482dda5ae127bb3dbaec71b2ea11b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260077"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819881"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure iş ortağı müşteri kullanımı ilişkilendirmesi
 
@@ -22,9 +23,9 @@ Microsoft artık iş ortaklarının, Azure üzerinde yazılımlarının müşter
 
 Bir Microsoft iş ortağı olarak, Azure kullanımını müşterinin adına sağladığınız tüm Azure kaynaklarıyla ilişkilendirebilirsiniz. İlişkiyi Azure Marketi, hızlı başlangıç deposu, özel GitHub depoları ve tek bir müşteri katılımı aracılığıyla oluşturabilirsiniz. Müşteri kullanım attributıon üç dağıtım seçeneğini destekler:
 
-- Azure Resource Manager şablonları: İş ortakları, iş ortağının yazılımlarını çalıştırmak için Azure hizmetlerini dağıtmak üzere Kaynak Yöneticisi şablonları kullanabilir. İş ortakları, Azure çözümünün altyapısını ve yapılandırmasını tanımlamak için bir Kaynak Yöneticisi şablonu oluşturabilir. Bir Kaynak Yöneticisi şablonu, size ve müşterilerinizin kendi yaşam döngüsünün tamamında çözümünüzü dağıtmasına olanak sağlar. Kaynaklarınızın tutarlı bir durumda dağıtıldığından emin olabilirsiniz.
-- Azure Resource Manager API 'Leri: İş ortakları Kaynak Yöneticisi şablonu dağıtmak veya doğrudan Azure hizmetlerini sağlamak üzere API çağrıları oluşturmak için Kaynak Yöneticisi API 'Lerini doğrudan çağırabilir.
-- Terraform İş ortakları, Kaynak Yöneticisi şablonu dağıtmak veya doğrudan Azure hizmetlerini dağıtmak için Terrayform gibi bulut Orchestrator 'ı kullanabilir.
+- Azure Resource Manager şablonlar: Iş ortakları, iş ortağının yazılımlarını çalıştırmak üzere Azure hizmetlerini dağıtmak için Kaynak Yöneticisi şablonları kullanabilir. İş ortakları, Azure çözümünün altyapısını ve yapılandırmasını tanımlamak için bir Kaynak Yöneticisi şablonu oluşturabilir. Bir Kaynak Yöneticisi şablonu, size ve müşterilerinizin kendi yaşam döngüsünün tamamında çözümünüzü dağıtmasına olanak sağlar. Kaynaklarınızın tutarlı bir durumda dağıtıldığından emin olabilirsiniz.
+- Azure Resource Manager API 'Leri: Iş ortakları, doğrudan bir Kaynak Yöneticisi şablonu dağıtmak veya doğrudan Azure hizmetlerini sağlamak üzere API çağrıları oluşturmak için Kaynak Yöneticisi API 'Lerini çağırabilir.
+- Terrayform: Iş ortakları, Kaynak Yöneticisi şablonu dağıtmak veya doğrudan Azure hizmetlerini dağıtmak için Terrayform gibi bulut Orchestrator 'ı kullanabilir.
 
 Müşteri kullanım attributıon yeni dağıtım içindir ve zaten dağıtılmış olan mevcut kaynakların etiketlemesini desteklemez.
 
@@ -118,7 +119,7 @@ Kaynakları Azure PowerShell aracılığıyla dağıtırsanız, aşağıdaki yö
 
 #### <a name="tag-a-deployment-by-using-the-azure-cli"></a>Azure CLı kullanarak bir dağıtımı etiketleme
 
-GUID 'nizi eklemek için Azure CLı kullandığınızda, **AZURE_HTTP_USER_AGENT** ortam değişkenini ayarlayın. Bu değişkeni bir komut dosyasının kapsamı içinde ayarlayabilirsiniz. Değişkeni kabuk kapsamı için de genel olarak ayarlayabilirsiniz:
+GUID 'nizi eklemek için Azure CLı kullandığınızda **AZURE_HTTP_USER_AGENT** ortam değişkenini ayarlayın. Bu değişkeni bir komut dosyasının kapsamı içinde ayarlayabilirsiniz. Değişkeni kabuk kapsamı için de genel olarak ayarlayabilirsiniz:
 
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
@@ -127,7 +128,7 @@ Daha fazla bilgi için bkz. [Go için Azure SDK](https://docs.microsoft.com/azur
 
 ## <a name="use-terraform"></a>Terrayform kullanma
 
-Terrayform desteği, Azure sağlayıcısı 'nın 1.21.0 sürümü ile kullanılabilir: [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019).  Bu destek, çözümünü Terrayform aracılığıyla dağıtan tüm iş ortakları ve Azure sağlayıcısı tarafından dağıtılan ve ölçülen tüm kaynaklar için geçerlidir (sürüm 1.21.0 veya üzeri).
+Terrayform desteği, Azure sağlayıcının 1.21.0 sürümü: [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019)ile kullanılabilir.  Bu destek, çözümünü Terrayform aracılığıyla dağıtan tüm iş ortakları ve Azure sağlayıcısı tarafından dağıtılan ve ölçülen tüm kaynaklar için geçerlidir (sürüm 1.21.0 veya üzeri).
 
 Terrayform için Azure sağlayıcısı, çözümünüz için kullandığınız izleme GUID 'sini belirttiğiniz [*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id) adlı yeni bir isteğe bağlı alan ekledi. Bu alanın değeri, *ARM_PARTNER_ID* ortam değişkeninden de kaynak oluşturulabilir.
 
@@ -137,7 +138,7 @@ provider "azurerm" {
           client_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           ……
           # new stuff for ISV attribution
-          partner_id = “xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
+          partner_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
 ```
 Müşteri kullanımı attributıon tarafından izlenen Terrayform aracılığıyla dağıtımını almak isteyen iş ortakları şunları yapmanız gerekir:
 
@@ -240,21 +241,21 @@ Raporu görmek için Iş ortağı Ilişki türü açılan listesinde Izlenen şa
 
 ## <a name="notify-your-customers"></a>Müşterilerinize bildirme
 
-İş ortakları, müşterilerine müşteri kullanımı attributıon kullanan dağıtımlar hakkında bilgi sağlamalıdır. Microsoft, bu dağıtımlarla ilişkili olan Azure kullanımını iş ortaklarına bildirir. Aşağıdaki örneklerde, bu dağıtımlar hakkında müşterilerinizi bilgilendirmek için kullanabileceğiniz içerikler yer alır. Örneklerde, iş ortağı > \<değerini şirket adınızla değiştirin. İş ortakları, kullanıcıların izlemenin dışında bırakılmasını sağlama seçenekleri de dahil olmak üzere, veri gizliliğiyle ve koleksiyon ilkeleriyle hizalandığından emin olmalıdır.
+İş ortakları, müşterilerine müşteri kullanımı attributıon kullanan dağıtımlar hakkında bilgi sağlamalıdır. Microsoft, bu dağıtımlarla ilişkili olan Azure kullanımını iş ortaklarına bildirir. Aşağıdaki örneklerde, bu dağıtımlar hakkında müşterilerinizi bilgilendirmek için kullanabileceğiniz içerikler yer alır. Örneklerde \<Iş ortağı > Şirket adınızla değiştirin. İş ortakları, kullanıcıların izlemenin dışında bırakılmasını sağlama seçenekleri de dahil olmak üzere, veri gizliliğiyle ve koleksiyon ilkeleriyle hizalandığından emin olmalıdır.
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Kaynak Yöneticisi Şablon dağıtımları için bildirim
 
-Bu şablonu dağıttığınızda, Microsoft, dağıtılan Azure kaynaklarıyla \<iş ortağı > yazılımını yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde https://www.microsoft.com/trustcenter bulunan gizlilik ilkelerine göre toplanır ve yönetilir.
+Bu şablonu dağıttığınızda Microsoft, dağıtılan Azure kaynaklarıyla \<Iş ortağı > yazılımının yüklenmesini tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un https://www.microsoft.com/trustcenter' de bulunan Gizlilik ilkeleri tarafından toplanır ve yönetilir.
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>SDK veya API dağıtımları için bildirim
 
-İş ortağı > \<yazılımını dağıtırken, Microsoft, dağıtılan Azure kaynaklarıyla \<iş ortağı > yazılımının yüklenmesini tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde https://www.microsoft.com/trustcenter bulunan gizlilik ilkelerine göre toplanır ve yönetilir.
+\<Iş ortağı > yazılımını dağıtırken, Microsoft, dağıtılan Azure kaynaklarıyla \<Iş ortağı > yazılımının yüklenmesini tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un https://www.microsoft.com/trustcenter' de bulunan Gizlilik ilkeleri tarafından toplanır ve yönetilir.
 
 ## <a name="get-support"></a>Destek alın
 
 Karşılaştığınız sorunlara bağlı olarak iki destek kanalı vardır.
 
-Iş Ortağı Merkezi 'nde müşteri kullanımı attributıon raporunu görmek veya oturum açmak gibi herhangi bir sorunla karşılaşırsanız, Iş ortağı merkezi destek ekibi ile bir destek isteği oluşturun:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
+Iş Ortağı Merkezi 'nde müşteri kullanımı attributıon raporunu görmek veya oturum açmak gibi herhangi bir sorunla karşılaşırsanız, Iş ortağı merkezi destek ekibi ile bir destek isteği oluşturun: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
@@ -273,7 +274,7 @@ Müşteri kullanımı attribuini ayarlama gibi Market ekleme ve/veya müşteri k
 
 1. **Isteği Başlat**' ı seçin.
 
-1. Sonraki sayfada gerekli değerleri girin. Seçin **devam**.
+1. Sonraki sayfada gerekli değerleri girin. **Devam**'ı seçin.
 
 1. Sonraki sayfada gerekli değerleri girin.
 
@@ -288,7 +289,7 @@ Ayrıca, teknik satış, dağıtım ve uygulama geliştirme senaryolarına yöne
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Teknik bir danışmandaki istek gönderme
 
-1. Adresini [https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney)ziyaret edin.
+1. [https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney)ziyaret edin.
 1. Bulut altyapısı ve Yönetimi ' ni seçin ve teknik yolculuğun görüntüleneceği yeni bir sayfa açılır.
 1. Dağıtım Hizmetleri altında istek gönder düğmesine tıklayın
 1. MSA (MPN hesabı) veya AAD 'nizi (Iş ortağı Pano hesabı) kullanarak oturum açın; oturum açma kimlik bilgileriniz temelinde bir çevrimiçi istek formu açılır:
@@ -297,9 +298,9 @@ Ayrıca, teknik satış, dağıtım ve uygulama geliştirme senaryolarına yöne
     * Sorun için bir başlık ve açıklama girin (mümkün olduğunca fazla ayrıntı sağlayın).
 1. Gönder 'e tıklayın
 
-İçindeki ekran [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions)görüntüleriyle adım adım yönergeleri görüntüleyin.
+[https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions)ekran görüntüleriyle birlikte adım adım yönergeleri görüntüleyin.
 
-### <a name="whats-next"></a>Sıradaki
+### <a name="whats-next"></a>Sırada ne var?
 
 İhtiyaçlarınızı karşılamak için bir çağrı kurmak üzere Microsoft Iş ortağı teknik danışman ile iletişim kurulacaksınız.
 
@@ -331,7 +332,7 @@ Azure depolama 'nın GUID Oluşturucu formu, gerekli biçimdeki bir GUID oluştu
 
 **Azure Marketi 'nde bir çözüm şablonu teklifi için özel, özel bir VHD kullanabilir miyim?**
 
-Hayır, şu yapılamıyor. Sanal makine görüntüsünün Azure Marketi 'nden gelmesi gerekir, bkz.: [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines).
+Hayır, şu yapılamıyor. Sanal makine görüntüsünün Azure Marketi 'nden gelmesi gerekir, bkz: [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines).
 
 Özel VHD 'nizi kullanarak Market 'te bir VM teklifi oluşturabilir ve bunu hiçbir kimse görememesi için özel olarak işaretleyebilirsiniz. Sonra çözüm şablonunuzda bu VM 'ye başvurun.
 

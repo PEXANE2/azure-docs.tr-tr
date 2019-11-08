@@ -10,12 +10,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: 33c6007ebc429bb0d95d702ae9b90f9ac411a88c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: a48ba0d2d691314a1ca7c91ac7ae27b62fbb379b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695204"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825234"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -31,7 +31,7 @@ SFTP sunucunuzdaki olayları izleyen ve çıktıyı diğer eylemler için kullan
 
 SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu konunun ilerleyen kısımlarında [SFTP-SSH Ile SFTP karşılaştırması](#comparison) bölümüne bakın.
 
-## <a name="limits"></a>Değerleri
+## <a name="limits"></a>Sınırlar
 
 * Varsayılan olarak, SFTP-SSH eylemleri, *1 GB veya daha küçük* olan, ancak aynı anda yalnızca *15 MB* öbekteki dosyaları okuyabilir veya yazabilir. 15 MB 'tan büyük dosyaları işlemek için SFTP-SSH eylemleri, yalnızca 15 MB 'lık dosyaları işleyebilen Dosya Kopyala eylemi dışında [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)desteği sağlar. **Dosya Içeriğini al** eylemi örtük olarak ileti parçalama kullanır.
 
@@ -49,7 +49,7 @@ SFTP-SSH Bağlayıcısı ile SFTP-SSH bağlayıcısının bu yeteneklere sahip o
 
 * , .NET 'i destekleyen bir açık kaynaklı Secure Shell (SSH) kitaplığı olan [SSH.net kitaplığını](https://github.com/sshnet/SSH.NET)kullanır.
 
-* Varsayılan olarak, SFTP-SSH eylemleri, *1 GB veya daha küçük* olan, ancak aynı anda yalnızca *15 MB* öbekteki dosyaları okuyabilir veya yazabilir. 15 MB 'tan büyük dosyaları işlemek için SFTP-SSH eylemleri [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)kullanabilir. Ancak, bu eylem ileti parçalama işlemini desteklemediğinden, Dosya Kopyala eylemi yalnızca 15 MB dosyayı destekler. SFTP-SSH Tetikleyicileri parçalama desteklemez.
+* Varsayılan olarak, SFTP-SSH eylemleri, *1 GB veya daha küçük* olan, ancak aynı anda yalnızca *15 MB* öbekteki dosyaları okuyabilir veya yazabilir. 15 MB 'tan büyük dosyaları işlemek için SFTP-SSH eylemleri [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)kullanabilir. Büyük dosyaları karşıya yüklemek için hem okuma hem de yazma izinlerine sahip olmanız gerekir. Ancak, bu eylem ileti parçalama işlemini desteklemediğinden, Dosya Kopyala eylemi yalnızca 15 MB dosyayı destekler. SFTP-SSH Tetikleyicileri parçalama desteklemez.
 
 * SFTP sunucusundaki belirtilen yolda bir klasör oluşturan **klasör oluştur** eylemini sağlar.
 
@@ -57,11 +57,11 @@ SFTP-SSH Bağlayıcısı ile SFTP-SSH bağlayıcısının bu yeteneklere sahip o
 
 * SFTP sunucusu bağlantısını, performansı artıran ve sunucuya bağlanma girişimlerinin sayısını azaltan *1 saate kadar*önbelleğe alır. Bu önbelleğe alma davranışının süresini ayarlamak için SFTP sunucunuzdaki SSH yapılandırmasındaki [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) özelliğini düzenleyin.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
-* Bir Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* SFTP sunucunuzun adresi ve hesap kimlik bilgileriniz, mantıksal uygulamanızın SFTP hesabınıza erişmesine izin verir. Ayrıca SSH özel anahtarına ve SSH özel anahtar parolasına erişmeniz gerekir.
+* SFTP sunucunuzun adresi ve hesap kimlik bilgileriniz, mantıksal uygulamanızın SFTP hesabınıza erişmesine izin verir. Ayrıca SSH özel anahtarına ve SSH özel anahtar parolasına erişmeniz gerekir. Büyük dosyaları karşıya yüklerken parçalama kullanmak için hem okuma hem de yazma izinlerine sahip olmanız gerekir.
 
   > [!IMPORTANT]
   >
@@ -86,8 +86,8 @@ SFTP-SSH Tetikleyicileri SFTP dosya sistemini yoklayarak ve Son yoklamadan bu ya
 
 | SFTP istemcisi | Eylem |
 |-------------|--------|
-| WinSCP | **Seçenekler**@no__t git-1**Tercihler** > **aktarım** > **düzenleme** > **zaman damgasını koru** > **devre dışı** |
-| FileZilla | **Aktarım**@no__t git-1**aktarılan dosyaların zaman damgalarını koru** > **devre dışı bırak** |
+| WinSCP | **Seçenekler** > **tercihleri** ' ne gidin > **Aktar** > **Düzenle** > **zaman damgasını koru** > **devre dışı bırak** |
+| FileZilla | **Aktarım** > git > **aktarılan dosyaların zaman damgalarını koru ve** **devre dışı bırak** |
 |||
 
 Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığını ve kısmen yazılmadığını denetler. Örneğin, tetikleyici dosya sunucusunu denetlerken bir dosya sürmekte olan değişiklikler olabilir. Kısmen yazılmış bir dosyanın döndürülmemek için tetikleyici, son değişiklikleri olan dosyanın zaman damgasını Not etmez, ancak bu dosyayı hemen döndürmez. Tetikleyici dosyayı yalnızca sunucuyu yoklayarak geri döndürür. Bazen bu davranış, tetikleyicinin yoklama aralığı iki katına varan bir gecikmeye neden olabilir.
@@ -112,7 +112,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 
-### <a name="windows-os"></a>Windows işletim sistemi
+### <a name="windows-os"></a>Windows İşletim Sistemi
 
 1. Daha önce yapmadıysanız, [en son PuTTY Oluşturucu (PuTTYgen. exe) aracını indirin](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)ve ardından aracı başlatın.
 
@@ -138,7 +138,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 1. Boş Logic Apps için, arama kutusuna filtreniz olarak "SFTP SSH" yazın. Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin.
 
-   veya
+   -veya-
 
    Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. Arama kutusuna filtreniz olarak "SFTP SSH" yazın. Eylemler listesi altında istediğiniz eylemi seçin.
 
@@ -156,7 +156,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
    1. Not defteri **düzenleme** menüsünde **Tümünü Seç**' i seçin.
 
-   1. @No__t **Düzenle**-1**Kopyala**' yı seçin.
+   1.  > **kopyasını** **Düzenle** ' yi seçin.
 
    1. Eklediğiniz SFTP-SSH tetikleyicisi veya eyleminde, birden çok satırı destekleyen **SSH özel anahtar** özelliğine kopyaladığınız *tam* anahtarı yapıştırın.  Anahtarı ***yapıştırdığınızdan emin olun*** . ***Anahtarı el ile girmeyin veya düzenleyemezsiniz***.
 

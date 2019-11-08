@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı için güvenlik denetimleri
+title: Güvenlik denetimleri
 description: Azure SQL veritabanı 'nı değerlendirmek için güvenlik denetimlerinin denetim listesi
 services: sql-database
 author: msmbaldwin
@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 77ff55389bac53d8719d86b4ac77f281415af49f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 58070cab1221b9d9585784d82cf1a48afcedb8af
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886654"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802838"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Azure SQL veritabanı için güvenlik denetimleri
 
@@ -44,14 +44,14 @@ SQL veritabanı hem [tek veritabanı](sql-database-single-index.yml) hem de [yö
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Authentication| Evet | Azure Active Directory (Azure AD) |
-| Authorization| Evet | Yok. |
+| Kimlik Doğrulaması| Evet | Azure Active Directory (Azure AD) |
+| Yetkilendirme| Evet | None |
 
 ## <a name="data-protection"></a>Veri koruma
 
 | Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Bekleyen sunucu tarafı şifrelemesi: Microsoft tarafından yönetilen anahtarlar | Evet | [Always Encrypted](sql-database-always-encrypted.md)makalesinde açıklandığı gibi "kullanımda olan şifreleme" olarak adlandırılır. Sunucu tarafı şifreleme, [Saydam veri şifrelemesi](transparent-data-encryption-azure-sql.md)kullanır.|
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet | [Always Encrypted](sql-database-always-encrypted.md)makalesinde açıklandığı gibi "kullanımda olan şifreleme" olarak adlandırılır. Sunucu tarafı şifreleme, [Saydam veri şifrelemesi](transparent-data-encryption-azure-sql.md)kullanır.|
 | Aktarım sırasında şifreleme:<ul><li>Azure ExpressRoute şifrelemesi</li><li>Bir sanal ağda şifreleme</li><li>Sanal ağlar arasında şifreleme</ul>| Evet | HTTPS kullanma. |
 | CMK veya BYOK gibi şifreleme anahtarı işleme| Evet | Hem hizmet tarafından yönetilen hem de müşteri tarafından yönetilen anahtar işleme sunulur. İkincisi [Azure Key Vault](../key-vault/index.yml)aracılığıyla sunulur. |
 | Azure veri Hizmetleri tarafından sunulan sütun düzeyinde şifreleme| Evet | [Always Encrypted](sql-database-always-encrypted.md)üzerinden. |
@@ -61,7 +61,7 @@ SQL veritabanı hem [tek veritabanı](sql-database-single-index.yml) hem de [yö
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma sürümü oluşturma gibi yapılandırma yönetimi desteği| Hayır  | Yok. |
+| Yapılandırma sürümü oluşturma gibi yapılandırma yönetimi desteği| Hayır  | None |
 
 ## <a name="additional-security-controls-for-sql-database"></a>SQL veritabanı için ek güvenlik denetimleri
 

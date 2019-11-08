@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 593d43339961ab4576081aaa18a8d68716e40e9b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2b1d3167828f2c2c49bb22580222fbd0e54d31d8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332118"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813185"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market için analiz
 
@@ -23,7 +24,7 @@ Iş ortağı merkezi analiz araçlarına erişmek için, ticari Market altında 
 |**Pano**|**Görünen içerik**|
 |:---|:---|
 |[Özet](#summary-dashboard)|Tekliflerinizle ilgili Market etkinliklerini özetleyen grafikler, eğilimler ve toplam veri değerleri|
-|[Siparişlerine](#orders-dashboard)|Grafik ve indirilebilir biçimdeki Siparişleriniz hakkında bilgi|
+|[Siparişler](#orders-dashboard)|Grafik ve indirilebilir biçimdeki Siparişleriniz hakkında bilgi|
 |[Müşterinizin](#customer-dashboard)|Grafik ve indirilebilir biçimde sunulan büyüme eğilimleri dahil olmak üzere müşterileriniz hakkında bilgiler|
 |[Dosyaların](#downloads-dashboard)|Son 30 gün içindeki indirme isteklerinizin listesi|
 |[Derecelendirmeler ve İncelemeler](#ratings-and-reviews)| Derecelendirdikleri tekliflere ait olan derecelendirmeler ve müşterilerinizin değerlendirmeleriyle ilgili bilgiler.
@@ -240,9 +241,9 @@ Coğrafya ısı haritasını **tarafından siparişler** , bir dünya haritasın
 | Azure lisans türü: Kurumsal | Müşteri, sipariş | Azure procures son müşterisi ve Market, doğrudan Microsoft ile imzalanmış bir Kurumsal Anlaşma aracılığıyla teklif.|
 | Azure lisans türü: satıcı aracılığıyla kurumsal  | Müşteri, sipariş | Azure ve Market procures son müşterisi, Microsoft ile Kurumsal Anlaşma kolaylaştıran bir satıcı aracılığıyla teklif sunuyor.|  |
 | Azure lisans türü: Kullandıkça öde| Müşteri, sipariş | Azure procures son müşterisi ve Market, doğrudan Microsoft ile imzalanmış bir "Kullandıkça öde" sözleşmesi aracılığıyla teklif sunuyor.||
-| Bulut örneği adı| Sipariş| Bir VM dağıtımının gerçekleştiği Microsoft Bulut.||
-| Bulut örneği adı: Azure genel| Sipariş| Genel genel Microsoft bulutu.|| |
-| Bulut örneği adı: Azure Kamu | Sipariş| Aşağıdaki hükümetlerden biri için kamu 'ya özgü Microsoft bulutları: Çin, Almanya veya Amerika Birleşik Devletler.| |
+| Bulut örneği adı| Sipariş verme| Bir VM dağıtımının gerçekleştiği Microsoft Bulut.||
+| Bulut örneği adı: Azure genel| Sipariş verme| Genel genel Microsoft bulutu.|| |
+| Bulut örneği adı: Azure Kamu | Sipariş verme| Aşağıdaki hükümetlerden biri için kamu 'ya özgü Microsoft bulutları: Çin, Almanya veya Amerika Birleşik Devletler.| |
 | Müşteri şehri| Müşterisi| Müşteri tarafından sunulan şehir adı. Şehir, müşterinin Azure aboneliğindeki şehirden farklı olabilir.||
 | Müşteri Iletişim dili  | Müşterisi| İletişim için müşterinin tercih ettiği dil.||
 | Müşteri şirket adı | Müşteri, sipariş | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki şehirden farklı olabilir.|  |
@@ -254,38 +255,38 @@ Coğrafya ısı haritasını **tarafından siparişler** , bir dünya haritasın
 | Müşteri durumu| Müşterisi| Müşteri tarafından sunulan eyalet (adres). Durum, müşterinin Azure aboneliğinde belirtilen durumdan farklı olabilir.| |
 | Alınma tarihi| Müşterisi| Müşterinin sizin tarafınızdan yayınlanan teklifi satın aldığı ilk tarih.| |
 | Kayıp tarihi| Müşterisi| Müşterinin daha önce satın alınan tüm tekliflerden son iptal ettiği son tarih.||
-| Yeni müşteri  | Sipariş| Bu değer, yeni bir müşteriyi, bir veya daha fazla teklifinizden ilk kez (veya değil) edinirsiniz. "Tarihi alındı" için aynı takvim ayı içinde değer "Evet" olacaktır. Müşteri tekliflerinizin herhangi birini bildirilen takvim ayına göre satın alıyorsa değer "Hayır" olacaktır. |
-| Önizleme SKU 'SU| Sipariş| Bu değer, SKU 'YU "Önizleme" olarak etiketlediyseniz size bilgi verir. SKU buna uygun şekilde etiketlenmişse değer "Evet" olur ve yalnızca sizin tarafından yetkilendirilen Azure abonelikleri bu görüntüyü dağıtabilir ve kullanabilir. SKU "Önizleme" olarak tanımlanmamışsa, değer "Hayır" olacaktır.  |
+| Yeni müşteri  | Sipariş verme| Bu değer, yeni bir müşteriyi, bir veya daha fazla teklifinizden ilk kez (veya değil) edinirsiniz. "Tarihi alındı" için aynı takvim ayı içinde değer "Evet" olacaktır. Müşteri tekliflerinizin herhangi birini bildirilen takvim ayına göre satın alıyorsa değer "Hayır" olacaktır. |
+| Önizleme SKU 'SU| Sipariş verme| Bu değer, SKU 'YU "Önizleme" olarak etiketlediyseniz size bilgi verir. SKU buna uygun şekilde etiketlenmişse değer "Evet" olur ve yalnızca sizin tarafından yetkilendirilen Azure abonelikleri bu görüntüyü dağıtabilir ve kullanabilir. SKU "Önizleme" olarak tanımlanmamışsa, değer "Hayır" olacaktır.  |
 | Promosyon ekibine katılım kabul ediyor| Müşterisi| Bu değer, müşterinin yayımcılardan promosyon kişisini önceden kabul eder olduğunu bilmenizi sağlar. Şu anda, bu seçeneği müşterilere sunuyoruz, bu nedenle Pano genelinde "Hayır" belirtiyoruz. Bu özellik dağıtıldıktan sonra, güncelleştirmeye uygun olarak başlayacağız.|
-| Market lisans türü| Sipariş| Market teklifinin faturalandırma yöntemi.||
-| Market lisans türü: Azure üzerinden faturalandırılır| Sipariş| Microsoft bu Market 'e yönelik aracısıdır ve sizin adınıza müşteri reçeteleri sunun. (PAYG kredi kartı ya da kurumsal fatura)||
-| Market lisans türü: kendi lisansınızı getirin | Sipariş| VM, dağıtım için müşterinin sunduğu bir lisans anahtarı gerektirir. Microsoft, tekliflerini Market aracılığıyla bu şekilde listelemek için müşterileri faturalandırmaz.||
-| Market lisans türü: ücretsiz| Sipariş| Teklif, tüm kullanıcılar için ücretsiz olacak şekilde yapılandırılmıştır. Microsoft, müşterileri bu teklifin kullanımıyla ilgili olarak faturalandırmaz.||
-| Market lisans türü: satıcı olarak Microsoft  | Sipariş| Microsoft bu Market teklifinin satıcısına yöneliktir.|  |
+| Market lisans türü| Sipariş verme| Market teklifinin faturalandırma yöntemi.||
+| Market lisans türü: Azure üzerinden faturalandırılır| Sipariş verme| Microsoft bu Market 'e yönelik aracısıdır ve sizin adınıza müşteri reçeteleri sunun. (PAYG kredi kartı ya da kurumsal fatura)||
+| Market lisans türü: kendi lisansınızı getirin | Sipariş verme| VM, dağıtım için müşterinin sunduğu bir lisans anahtarı gerektirir. Microsoft, tekliflerini Market aracılığıyla bu şekilde listelemek için müşterileri faturalandırmaz.||
+| Market lisans türü: ücretsiz| Sipariş verme| Teklif, tüm kullanıcılar için ücretsiz olacak şekilde yapılandırılmıştır. Microsoft, müşterileri bu teklifin kullanımıyla ilgili olarak faturalandırmaz.||
+| Market lisans türü: satıcı olarak Microsoft  | Sipariş verme| Microsoft bu Market teklifinin satıcısına yöneliktir.|  |
 | Market abonelik KIMLIĞI | Müşteri, sipariş | Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. KIMLIĞI daha önce Azure aboneliği GUID 'iydi.||
-| Teklif Adı  | Sipariş| Market sunumunun adı.|| |
-| Teklif Türü  | Sipariş| Microsoft Market teklif türü.|||
+| Teklif Adı  | Sipariş verme| Market sunumunun adı.|| |
+| Teklif Türü  | Sipariş verme| Microsoft Market teklif türü.|||
 | Teklif türü: yönetilen uygulama  | Siparişi | Aşağıdaki koşullar gerektiğinde Azure uygulaması: yönetilen uygulama teklifi türünü kullanın: bir VM veya tüm IaaS tabanlı bir çözümü kullanarak müşteriniz için abonelik tabanlı bir çözüm dağıtırsınız. Siz veya müşteriniz, çözümün bir iş ortağı tarafından yönetilmesini gerektirir. |
 | Teklif türü: Azure uygulaması| Siparişi | Çözümünüz basit bir sanal makinenin ötesinde ek dağıtım ve yapılandırma Otomasyonu gerektirdiğinde Azure Uygulama çözümü şablonu teklif türünü kullanın.||
-| Teklif türü: danışmanlık hizmeti| Sipariş| Azure Marketi 'ndeki Danışmanlık Hizmetleri, Azure 'un kullanımını desteklemek ve genişletmek için müşterilerin hizmetleriyle bağlantı sağlanmasına yardımcı olur.| |
-| Teklif türü: kapsayıcı | Sipariş| Çözümünüz, Kubernetes tabanlı bir Azure Container Service olarak sağlanan bir Docker kapsayıcı görüntüsü olduğunda kapsayıcı teklif türünü kullanın.||
-| Teklif türü: Dynamics 365 Iş Merkezi| Sipariş| Çözümünüz finans ve Işlemler için Dynamics 365 ile tümleştirildiğinde bu teklif türünü kullanın| |
-| Teklif türü: müşteri katılımı için Dynamics 365 | Sipariş| Çözümünüz müşteri katılımı için Dynamics 365 ile tümleştirildiğinde bu teklif türünü kullanın.||
-| Teklif türü: IoT Edge modülü | Sipariş| Azure IoT Edge modüller, IoT Edge tarafından yönetilen en düşük hesaplama birimleridir ve Microsoft hizmetlerini (Azure Stream Analytics), 3. taraf hizmetleri veya kendi çözümüne özgü kodunuzu içerebilir. |
-| Teklif türü: Power BI uygulama | Sipariş| Power BI ile tümleştirilmiş bir uygulama dağıtırken Power BI uygulama teklifi türünü kullanın.|  |
-| Teklif türü: SaaS uygulaması| Sipariş| Müşterinizin SaaS tabanlı, teknik çözümünüzü bir abonelik olarak satın almasını sağlamak için SaaS uygulaması teklif türünü kullanın.||
-| Teklif türü: sanal makine | Sipariş| Müşterinizin ilişkili aboneliğine bir Sanal Gereç dağıtırken sanal makine teklif türünü kullanın.||
-| Teklif türü: Visual Studio Market uzantısı  | Sipariş| Daha önce Azure DevOps uzantı geliştiricileri için sunulan teklif türü. Azure DevOps uzantısı geliştiricilerinin ileri, doğrudan müşterilere dahili olarak dahili olarak iletilmesini sağlayabilir. Uzantı teklifleri ücretli olarak veya bir deneme dahil olmak üzere yapılandırılabilir. |
-| Sipariş Iptali tarihi| Sipariş| Market siparişinin iptal edildiği tarih.||
-| Sipariş Kimliği| Sipariş| Market hizmetiniz için müşteri siparişinin benzersiz tanımlayıcısı. Sanal makine kullanımı tabanlı teklifler bir siparişle ilişkili değildir.| |
-| Sipariş satın alma tarihi| Sipariş| Market siparişinin oluşturulduğu tarih.|||
-| Sipariş durumu| Sipariş| Verilerin son yenilenme sırasında Market siparişi durumu.|     |
-| Sipariş durumu: etkin  | Sipariş| Müşterinin siparişi satın almış ve siparişi iptal edilmemiş.|         |
-| Sipariş durumu: iptal edildi | Sipariş| Müşteri daha önce bir siparişi satın almış ve ardından sıralarını iptal etti.||
+| Teklif türü: danışmanlık hizmeti| Sipariş verme| Azure Marketi 'ndeki Danışmanlık Hizmetleri, Azure 'un kullanımını desteklemek ve genişletmek için müşterilerin hizmetleriyle bağlantı sağlanmasına yardımcı olur.| |
+| Teklif türü: kapsayıcı | Sipariş verme| Çözümünüz, Kubernetes tabanlı bir Azure Container Service olarak sağlanan bir Docker kapsayıcı görüntüsü olduğunda kapsayıcı teklif türünü kullanın.||
+| Teklif türü: Dynamics 365 Iş Merkezi| Sipariş verme| Çözümünüz finans ve Işlemler için Dynamics 365 ile tümleştirildiğinde bu teklif türünü kullanın| |
+| Teklif türü: müşteri katılımı için Dynamics 365 | Sipariş verme| Çözümünüz müşteri katılımı için Dynamics 365 ile tümleştirildiğinde bu teklif türünü kullanın.||
+| Teklif türü: IoT Edge modülü | Sipariş verme| Azure IoT Edge modüller, IoT Edge tarafından yönetilen en düşük hesaplama birimleridir ve Microsoft hizmetlerini (Azure Stream Analytics), 3. taraf hizmetleri veya kendi çözümüne özgü kodunuzu içerebilir. |
+| Teklif türü: Power BI uygulama | Sipariş verme| Power BI ile tümleştirilmiş bir uygulama dağıtırken Power BI uygulama teklifi türünü kullanın.|  |
+| Teklif türü: SaaS uygulaması| Sipariş verme| Müşterinizin SaaS tabanlı, teknik çözümünüzü bir abonelik olarak satın almasını sağlamak için SaaS uygulaması teklif türünü kullanın.||
+| Teklif türü: sanal makine | Sipariş verme| Müşterinizin ilişkili aboneliğine bir Sanal Gereç dağıtırken sanal makine teklif türünü kullanın.||
+| Teklif türü: Visual Studio Market uzantısı  | Sipariş verme| Daha önce Azure DevOps uzantı geliştiricileri için sunulan teklif türü. Azure DevOps uzantısı geliştiricilerinin ileri, doğrudan müşterilere dahili olarak dahili olarak iletilmesini sağlayabilir. Uzantı teklifleri ücretli olarak veya bir deneme dahil olmak üzere yapılandırılabilir. |
+| Sipariş Iptali tarihi| Sipariş verme| Market siparişinin iptal edildiği tarih.||
+| Sipariş kimliği| Sipariş verme| Market hizmetiniz için müşteri siparişinin benzersiz tanımlayıcısı. Sanal makine kullanımı tabanlı teklifler bir siparişle ilişkili değildir.| |
+| Sipariş satın alma tarihi| Sipariş verme| Market siparişinin oluşturulduğu tarih.|||
+| Sipariş durumu| Sipariş verme| Verilerin son yenilenme sırasında Market siparişi durumu.|     |
+| Sipariş durumu: etkin  | Sipariş verme| Müşterinin siparişi satın almış ve siparişi iptal edilmemiş.|         |
+| Sipariş durumu: iptal edildi | Sipariş verme| Müşteri daha önce bir siparişi satın almış ve ardından sıralarını iptal etti.||
 | Sağlayıcı e-postası| Müşterisi| Sağlayıcının Microsoft ile son müşteri arasındaki ilişkiye dahil olan e-posta adresi. Müşteri, satıcı üzerinden bir kurumsal ise, bu satıcı olacaktır. Bir bulut çözümü sağlayıcısı (CSP) dahil edilmişse, bu CSP olacaktır.|
 | Sağlayıcı adı| Müşterisi| Microsoft ile son müşteri arasındaki ilişkiye katılan sağlayıcının adı. Müşteri, satıcı üzerinden bir kurumsal ise, bu satıcı olacaktır. Bir bulut çözümü sağlayıcısı (CSP) dahil edilmişse, bu CSP olacaktır.|
-| SKU| Sipariş| Yayımlama sırasında tanımlanan SKU adı. Bir teklifin birçok SKU 'su olabilir, ancak bir SKU yalnızca tek bir teklifle ilişkilendirilebilir.||
-| Deneme bitiş tarihi| Sipariş| Bu sipariş için deneme döneminin sona erdiği veya sonlandırmış olacağı tarih.||
+| SKU| Sipariş verme| Yayımlama sırasında tanımlanan SKU adı. Bir teklifin birçok SKU 'su olabilir, ancak bir SKU yalnızca tek bir teklifle ilişkilendirilebilir.||
+| Deneme bitiş tarihi| Sipariş verme| Bu sipariş için deneme döneminin sona erdiği veya sonlandırmış olacağı tarih.||
 
 ## <a name="ratings-and-reviews"></a>Derecelendirmeler ve İncelemeler
 

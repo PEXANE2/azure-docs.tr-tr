@@ -4,15 +4,16 @@ description: Business Applications ISV Connect programına nasıl ekleneceği a�
 services: Azure Marketplace, Cloud Partner Portal
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
 ms.author: evansma
-ms.openlocfilehash: 349998b53378d00b6524f94578aa11642321d691
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 4a47886176b704cc3bc36cc9fa85d1d3faee4c58
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182550"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819163"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications bağımsız yazılım satıcısı (ISV) bağlama programı ekleme Kılavuzu
 
@@ -77,7 +78,7 @@ Ardından, Business Applications ISV Connect programı için faturalandırma bil
 
 5. Varsa vergi KIMLIĞI/KDV KIMLIĞI ayarlarını belirtin.
 
-6. Seçin **Kaydet** yaptığınız değişiklikleri kaydedin.
+6. Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.
 
 Faturalandırma profilinizi dilediğiniz zaman güncelleştirebilirsiniz, ancak *Şirket adı* ve fatura adresi *ülkesi* daha sonra değiştirilemez.
 

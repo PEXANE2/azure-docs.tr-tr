@@ -5,26 +5,27 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: a6b2a7981452b47a3992b6c0efee286878e143fb
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d47a67be157f71a30a6ae155790ed78a78fd6743
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962891"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814652"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
 
 Bu makalede, işletmenizin en iyi şekilde büyümesini sağlamak için Web analizinin nasıl öğreneceği ve kullanılacağı hakkında yönergeler sunulmaktadır. Şu anda bu Öngörüler sekmesi tüm AppSource teklifleri için kullanılabilir.
 
-Teklifinizi oluşturup yayımladığınıza göre, yolculuğun bir sonraki kısmı\' başarınızı izleyip ölçmeye hazır. **Web Analytics**ile, tekliflerinizin her birinin Market 'te ne kadar iyi bir şekilde çalıştığını görme imkanını ekledik. Yolculuğa başlamak için, yeni analiz sekmesini görmek üzere Bulut İş Ortağı Portalı sol tarafındaki Öngörüler sayfasına gidin.
+Teklifinizi oluşturup yayımladığınıza göre, yolculuğun bir sonraki bölümü,\' başarısını izleyip ölçmeye yönelik. **Web Analytics**ile, tekliflerinizin her birinin Market 'te ne kadar iyi bir şekilde çalıştığını görme imkanını ekledik. Yolculuğa başlamak için, yeni analiz sekmesini görmek üzere Bulut İş Ortağı Portalı sol tarafındaki Öngörüler sayfasına gidin.
 
 ![WebAnalytics sayfası](./media/si-getting-started/WebAnalytics1.png)
 
-Microsoft Power BI ile oluşturulmuş yayımcı Kimliğiniz için zengin bir pano görürsünüz ve her gün, her\' gün yenilenen verileri görmenizi sağlar.
+Microsoft Power BI ile oluşturulmuş yayımcı KIMLIĞINIZ için zengin bir pano görürsünüz ve her gün, her gün yenilenen\' verilerinizi görmenize olanak sağlar.
 
 <a name="microsoft-campaigns"></a>**Microsoft kampanyaları**
 -----------------------
@@ -41,23 +42,23 @@ Kendi kampanyanızı oluşturmak için iki yol vardır.
 
 1. URL 'nize, kampanyanın ne olduğunu ve bu müşterilerin hangi sayfa/olay geldiğini açıklayan **mktcmpıd** sorgu parametresini ekleyin.
 
-Örneğin, şunları kullanabilirsiniz:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+Örneğin, şunları kullanabilirsiniz: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
 1. (Gelişmiş): URL 'de desteklenen, genel kampanya kimliklerimizden birini kullanın. Kullanmanız gereken ek başvuru etiketlerine göz duymasını istiyoruz, bu nedenle bu ek etiketleri otomatik olarak tanıma kuralını destekliyoruz:
     
     1. **UTM\_kampanyası**
-    2. **Utd\_kaynağı**
+    2. **Uta\_kaynağı**
     3. **ref**
     4. **YN**
 
-Örneğin, şunları kullanabilirsiniz:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+Örneğin, şunları kullanabilirsiniz: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
 
 Kampanyanın, müşterinin geldiği konum (e-posta, blog, sosyal medya kaynağı vb.) gibi birden fazla kaynağı daha ayrıntılı olarak belirlemek için bu kampanya kimliklerinin birden çok birleşimini kullanabilirsiniz.
 
 Örneğin:
 
-1. Bülten başvuran:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. LinkedIn başvuran:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. Bülten başvuran: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
+2. LinkedIn başvuran: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
 
 ### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Kampanyaların tüm sayfalarınızda geçiş yapmalarını sağlama**
 
@@ -65,13 +66,13 @@ Kampanyalarınızın, trafiği yönlendiren bir ara sayfasına sahip olduğu bir
 
 Örnek aşağıda verilmiştir:
 
-1. Pazarlama çalışanı, Google 'dan trafiği şirket\'s giriş sayfasına <https://contoso.com>yönlendirmek için reklamları satın alarak. Bu giriş sayfasında, ürünümüzü \"\" deneyin bağlantısı <https://appsource.com>bulunur.
+1. Pazarlama çalışanı, Google 'dan şirket\'s giriş sayfasına <https://contoso.com>trafiği yönlendirmek için reklamları satın alarak. Bu giriş sayfasında, <https://appsource.com>'e giden ürün\" bağlantısını deneyin \".
 2. Kullanıcı ad 'ye tıklar ve şirket\'s giriş sayfasında yer alır.
     1.  Başvuru URL 'SI = google.com
-    2.  Giriş sayfası URL 'SI =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-3. Kullanıcı ürünümüzü \"\" dene bağlantısına tıklar ve appsource 'a gider.
-    1. Başvuru URL 'SI =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. Giriş sayfası URL 'si (**Bu URL 'nin bu URL 'ye\_UTM kampanyası ve\_UTM kaynağı eklendiğinden emin olun**) = [ https://appsource.microsoft.com/product/dynamics-365/contoso.offername? **\_ UTM kampanyası = MyCampaignAdName & UTM\_ kaynağı = mysourceadname** ](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    2.  Giriş sayfası URL 'SI = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+3. Kullanıcı \"tıkladıktan sonra ürünümüzü\" bağlantısını deneyin ve AppSource 'a gider.
+    1. Başvuru URL 'SI = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2. Giriş sayfası URL 'SI (**Bu URL 'nin utm\_kampanyası içerdiğinden ve utm\_kaynağının bu URL 'ye eklendiğinden emin olun**) = [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**UTM\_kampanya = MyCampaignAdName & UTM\_kaynak = mysourceadname** ](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>Kampanyanın başarısını değerlendirme
 -----------------------------------------

@@ -1,22 +1,22 @@
 ---
-title: Çok kiracılı bir SaaS uygulamasında Azure SQL veritabanını geri yükleme
+title: Çok kiracılı bir SaaS uygulamasında bir veritabanını geri yükleme
 description: Verileri yanlışlıkla sildikten sonra tek bir kiracının SQL veritabanını geri yüklemeyi öğrenin
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 12/04/2018
-ms.openlocfilehash: 0719fc5482e583218d42e808a4d94045a497f33c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a54e8e5629f6f8ad688b6fe11bbf50fc038095bf
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692097"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818521"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Tek bir kiracıyı kiracı başına veritabanı SaaS uygulamasıyla geri yükleme
 
@@ -99,7 +99,7 @@ Bu alıştırma, contoso Concert Salı veritabanını, olay silinmeden önceki b
 
 Betik, olayı silmeden önce, kiracı veritabanını zaman içinde bir noktaya geri yükler. Veritabanı, _ContosoConcertHall\_eski_adlı yeni bir veritabanına geri yüklendi. Bu geri yüklenen veritabanında bulunan katalog meta verileri silinir ve sonra *ContosoConcertHall\_eski* adından oluşturulan bir anahtar kullanılarak veritabanı kataloğa eklenir.
 
-Demo betiği, tarayıcınızdaki bu yeni kiracı veritabanının Olaylar sayfasını açar. URL 'den, bu sayfanın " *eski* " ada eklendiği geri yüklenen veritabanından verileri gösterdiğine ```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old```.
+Demo betiği, tarayıcınızdaki bu yeni kiracı veritabanının Olaylar sayfasını açar. URL 'den, bu sayfanın *_old* adına eklendiği geri yüklenen veritabanından verileri gösterdiğine ```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old```.
 
 Önceki bölümde silinen olayın geri yüklendiğini doğrulamak için tarayıcıda listelenen olayları kaydırın.
 

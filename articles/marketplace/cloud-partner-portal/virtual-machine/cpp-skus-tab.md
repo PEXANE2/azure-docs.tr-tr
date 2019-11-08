@@ -4,15 +4,16 @@ description: Azure Marketi 'nde bir sanal makine teklifi oluşturmak için kulla
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: dceb82af73061b91676ffb7061c7495995e76667
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 101f928e296d0b48b4e077676393772829aa76ab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868714"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808978"
 ---
 # <a name="virtual-machine-skus-tab"></a>Sanal makine SKU 'Ları sekmesi
 
@@ -42,21 +43,21 @@ Aşağıdaki tabloda bu alanların amacı, içeriği ve biçimlendirmesi açıkl
 |  *SKU ayarları*   |    |
 | **SKU KIMLIĞI\***       | Bu SKU için tanımlayıcı.  Bu ad, küçük harfli alfasayısal karakterler veya tireler (-) içeren en fazla 50 karakter içerir, ancak kısa çizgi ile bitemez.  Teklif yayımlandıktan sonra değiştirilemez.  |
 |  *SKU ayrıntıları*   |  |
-| **Başlığın\***        | Market 'te görüntülenmek üzere teklif için kolay ad. En fazla 50 karakter uzunluğunda. |
-| **Özetleme\***      | Market 'te görüntüleme teklifinin kısa açıklaması. En fazla 100 karakter uzunluğunda. |
-| **Açıklaması\***  | Teklifin daha ayrıntılı bir açıklamasını sağlayan açıklama metni.  <!-- TD: max len/guidance? 3k characters -->  |
-| **Bu SKU 'YU gizle\*** | SKU 'nun Market 'te müşterilere görünür olup olmayacağını gösterir.  Yalnızca çözüm şablonları aracılığıyla kullanılabilir olmasını istiyorsanız SKU 'YU gizlemek isteyebilirsiniz.  Bu, ilk test veya geçici ya da mevsimsel teklifler için de yararlı olabilir. |
+| **Başlık\***        | Market 'te görüntülenmek üzere teklif için kolay ad. En fazla 50 karakter uzunluğunda. |
+| **Özet\***      | Market 'te görüntüleme teklifinin kısa açıklaması. En fazla 100 karakter uzunluğunda. |
+| **Açıklama\***  | Teklifin daha ayrıntılı bir açıklamasını sağlayan açıklama metni.  <!-- TD: max len/guidance? 3k characters -->  |
+| **Bu SKU 'YU Gizle\*** | SKU 'nun Market 'te müşterilere görünür olup olmayacağını gösterir.  Yalnızca çözüm şablonları aracılığıyla kullanılabilir olmasını istiyorsanız SKU 'YU gizlemek isteyebilirsiniz.  Bu, ilk test veya geçici ya da mevsimsel teklifler için de yararlı olabilir. |
 | **Bulut kullanılabilirliği\*** | SKU 'nun hangi bulutta kullanılabilir olacağını belirler.  Varsayılan değer Azure 'un genel sürümüdür.  Microsoft Azure Kamu, ABD Federal, eyalet, yerel veya kaş kamu kurumları ve bunların sertifikalı iş ortakları için denetimli erişime sahip bir Devlet kurumunun bulutuna sahiptir.  Kamu Bulutu hakkında daha fazla bilgi için bkz. [Azure Kamu 'Ya hoş geldiniz](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome). |
-| **Bu özel bir SKU mı?\*** | SKU 'nun özel mi yoksa genel mi olduğunu gösterir. Varsayılan **değer (genel** ) değildir.  Daha fazla bilgi için bkz. [ortak ve özel SKU 'lar](../../cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md). |
+| **Bu özel bir SKU mı?\*** | SKU 'nun özel mi yoksa genel mi olduğunu gösterir. Varsayılan **değer (genel) değildir.**  Daha fazla bilgi için bkz. [ortak ve özel SKU 'lar](../../cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md). |
 | **Ülke/bölge kullanılabilirliği\*** | SKU 'nuzun satın alma için hangi ülkelerin veya dünya bölgelerinin kullanılabilir olacağını belirler. En az bir bölge/ülke seçin. <!-- TD: Is this parameter an AMP visibility control or a contractual one, or both? --> |  
 |  *Fiyatlandırma*   |  |
 | **Lisans modeli\***| Kullanılacak standart faturalandırma modeli.  **Kullanım tabanlı aylık FATURALANDıRıLAN SKU**' yı seçerseniz, çekirdek başına fiyatlandırma ayrıntılarını ve ücretsiz deneme süresi sunmak isteyip istemediğinizi belirtmenizi sağlayan bir Accordion bölümü açılır.  Bu bölüm ayrıca, bu fiyatlandırma zamanlamasını Excel 'e aktarıp içeri aktarmanızı sağlar. Daha fazla bilgi için bkz. [Azure Marketi 'Ndeki faturalandırma seçenekleri](../../billing-options-azure-marketplace.md). | 
 |  *VM görüntüleri*   |  |
 | **İşletim sistemi ailesi\*** | Çözüm VM 'sinin Windows veya Linux tabanlı olup olmadığını gösterir. |
 | **Işletim sistemi türünü seçin** | Belirtilen işletim sisteminin belirli bir satıcısı veya sürümü. |
-| **İşletim sistemi kolay adı\*** | Müşterilere görüntülenecek işletim sistemi adı.  |
+| **OS kolay adı\*** | Müşterilere görüntülenecek işletim sistemi adı.  |
 | **Önerilen VM boyutları\*** | Standartlaştırılmış bir listeden en fazla altı adet önerilen VM boyutu seçimini sağlar.  Bu liste Azure portal ve Microsoft marketlerine iletilir.  Bu listedeki geçerli olan ilk sanal makine boyutu (söz konusu müşteri aboneliği, bölge, bölge vb.), bu potansiyel müşteri için varsayılan olarak ayarlanır.  Kullanıcı bu boyutu çözüm görüntüsüyle uyumlu olacak şekilde değiştirebilir. | 
-| **Açık bağlantı noktaları**| Açık bağlantı noktaları ve SKU için destekedilecek protokol.  Bu yapılandırmaların, çözüm VM ağı için yapılandırdığınız sanal ağla eşleşmesi gerekir. Bu ayarlar VM dağıtımı sırasında devreye girer. Ancak, bir SKU yayımladıktan sonra bağlantı noktası ayarları değiştirilebilir. Daha fazla bilgi için bkz. [Azure Portal ile bağlantı noktalarını bir sanal makineye açma](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>Aşağıdaki varsayılan ağ eşlemeleri tüm VM 'lere eklenir. &emsp;Pencerelerin 3389-> 3389 TCP, 5986-> 5986 TCP; &emsp; Linux: 22-> 22, TCP (SSH). |
+| **Açık bağlantı noktaları**| Açık bağlantı noktaları ve SKU için destekedilecek protokol.  Bu yapılandırmaların, çözüm VM ağı için yapılandırdığınız sanal ağla eşleşmesi gerekir. Bu ayarlar VM dağıtımı sırasında devreye girer. Ancak, bir SKU yayımladıktan sonra bağlantı noktası ayarları değiştirilebilir. Daha fazla bilgi için bkz. [Azure Portal ile bağlantı noktalarını bir sanal makineye açma](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>Aşağıdaki varsayılan ağ eşlemeleri tüm VM 'lere eklenir. &emsp; Windows: 3389-> 3389 TCP, 5986-> 5986 TCP; Linux &emsp;: 22-> 22, TCP (SSH). |
 | **Disk sürümü**  | Disk sürüm numarası ve disk URL 'SI tarafından belirtilen ilişkili çözüm sanal makinesi. Disk sürümü [anlam sürümü](https://semver.org/) biçiminde olmalıdır: `<major>.<minor>.<patch>`.  URL, işletim sistemi VHD 'si için oluşturulan paylaşılan erişim imzası URI 'sidir.  SKU başına en fazla sekiz disk sürümü ekleyebilirsiniz, ancak Azure Marketi 'nde yalnızca bir SKU için en yüksek disk sürüm numarası görünür. Diğer sürümler yalnızca API 'Ler aracılığıyla görünür olur.  <!--TD: Add more specific link to API --> <br/> **Yeni Data Disk** Accordion bölümü, sanal makinenize en fazla 15 veri diski eklemenize olanak sağlar.  Belirli bir VM sürümü ve ilişkili veri disklerine sahip bir SKU yayımladığınızda, bu yapılandırma değiştirilemez.  SKU 'ya ek VM sürümleri eklenirse, aynı zamanda aynı sayıda veri diski de desteklemesi gerekir. <br/> Azure tabanlı VM görüntünüzü oluşturmadıysanız, daha sonra bu alanı Güncelleştir ekleyebilirsiniz.  İlişkili VM kaynağı oluşturma hakkında daha fazla bilgi için bkz. [VM teknik varlıkları oluşturma](./cpp-create-technical-assets.md)bölümü.  
 |  |  |
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: fc72c59721a6f244806bf229ebded1e66341a04d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 7558ad2e5a4404db140daff89171af92c6072ef6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177702"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805986"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure'da IaaS iş yükleri için en iyi güvenlik yöntemleri
 Bu makalede, VM 'Ler ve işletim sistemleri için en iyi güvenlik uygulamaları açıklanmaktadır.
@@ -68,7 +68,7 @@ VM 'niz yüksek kullanılabilirliğe sahip olması gereken kritik uygulamalar ç
 Kullanılabilirlik kümesi, Azure 'da yerleştirdiğiniz VM kaynaklarının bir Azure veri merkezinde dağıtıldıklarında birbirinden yalıtılmış olmasını sağlamak için Azure 'da kullanabileceğiniz mantıksal bir gruplandırmadır. Azure, bir kullanılabilirlik kümesine yerleştirdiğiniz VM 'Lerin birden çok fiziksel sunucuda, bilgi işlem raflarının, depolama biriminde ve ağ anahtarlarında çalıştırılmasını sağlar. Bir donanım veya Azure yazılım hatası oluşursa, sanal makinelerinizin yalnızca bir alt kümesi etkilenir ve genel uygulamanız müşterilerinizin kullanımına açık olmaya devam eder. Kullanılabilirlik kümeleri, güvenilir bulut çözümleri oluşturmak istediğinizde önemli bir yetenektir.
 
 ## <a name="protect-against-malware"></a>Kötü amaçlı yazılımlardan korunun
-Virüslerin, casus yazılımların ve diğer kötü amaçlı yazılımların tanımlanmasına ve kaldırılmasına yardımcı olması için kötü amaçlı yazılımdan koruma koruması kurmanız gerekir. [Microsoft kötü amaçlı yazılımdan](antimalware.md) koruma veya bir Microsoft iş ortağının Endpoint Protection çözümünü ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/en-us/search?q=Windows+defender+endpoint+protection&rtc=1)ve [System Center Endpoint Protection](https://www.microsoft.com/en-us/search?q=System+Center+endpoint+protection&rtc=1)) yükleyebilirsiniz.
+Virüslerin, casus yazılımların ve diğer kötü amaçlı yazılımların tanımlanmasına ve kaldırılmasına yardımcı olması için kötü amaçlı yazılımdan koruma koruması kurmanız gerekir. [Microsoft kötü amaçlı yazılımdan](antimalware.md) koruma veya bir Microsoft iş ortağının Endpoint Protection çözümünü ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)ve [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) yükleyebilirsiniz.
 
 Microsoft Antimalware gerçek zamanlı koruma, zamanlanmış tarama, kötü amaçlı yazılım düzeltme, imza güncelleştirmeleri, altyapı güncelleştirmeleri, örnek raporlama ve dışlama olay toplama gibi özellikler içerir. Üretim ortamınızdan ayrı olarak barındırılan ortamlar için, VM 'lerinizin ve bulut hizmetlerinizin korunmasına yardımcı olmak üzere bir kötü amaçlı yazılımdan koruma uzantısı kullanabilirsiniz.
 

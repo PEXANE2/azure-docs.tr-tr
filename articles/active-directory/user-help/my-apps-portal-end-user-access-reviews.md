@@ -1,5 +1,5 @@
 ---
-title: Uygulamalarım portalından bir erişim incelemesi gerçekleştirin-Azure Active Directory | Microsoft Docs
+title: Uygulamalarım portalından bir erişim incelemesi gerçekleştirme-Azure AD
 description: Kuruluşunuzun uygulamaları ve grupları için güvenlik erişimini görüntüleme ve yönetme hakkında bilgi edinin.
 services: active-directory
 author: eross-msft
@@ -13,16 +13,16 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6681720fc7c0fe04c99bf7957be14865c663dd67
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bf803027aac7c62ea500d1af104ae3234fadf8b5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383157"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73804037"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Uygulamalarım portalından bir erişim incelemesi gerçekleştirme
 
-İş veya okul hesabınızı Web tabanlı **My Apps** portalından kullanarak kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyip başlatabilir, profil ve hesap bilgilerinizin bazılarını güncelleştirebilir, **gruplarınızın** bilgilerini görebilir ve şunları yapabilirsiniz Uygulamalarınız ve gruplarınız için erişim gözden geçirmeleri. **Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
+İş veya okul hesabınızı Web tabanlı **My Apps** portalından kullanarak kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyip başlatabilir, profil ve hesap bilgilerinizin bazılarını güncelleştirebilir, **gruplarınızın** bilgilerini görebilir ve şunları yapabilirsinizUygulamalarınız ve gruplarınız için erişim gözden geçirmeleri. **Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -40,7 +40,7 @@ Yöneticiniz kendi erişim incelemelerinizi gerçekleştirme izni verdiyse, kend
 
 1. İş veya okul hesabınızda oturum açın.
 
-2. Web tarayıcınızı açın ve adresine gidin https://myapps.microsoft.com veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için, https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
+2. Web tarayıcınızı açın ve https://myapps.microsoft.comgidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.comgibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
@@ -59,13 +59,13 @@ Yöneticiniz kendi erişim incelemelerinizi gerçekleştirme izni verdiyse, kend
     >[!Note]
     >Yöneticiyseniz ve kuruluşunuzun gruplara ve uygulamalara erişimini incelemeye izin verildiyse, farklı bir sayfa görürsünüz. Kuruluşunuz için grupları veya uygulamaları gözden geçirme hakkında daha fazla bilgi için bkz. [Azure AD erişim gözden geçirmeleriyle gruplara veya uygulamalara erişimi gözden geçirme](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
 
-6. Erişiminizi **kaldırmak için,** erişiminizi korumak için **Evet** ' i seçin.
+6. Erişiminizi **kaldırmak için, erişiminizi korumak Için** **Evet** ' i seçin.
 
     **Evet**' i seçerseniz, **neden** kutusunda bir gerekçe belirtmeniz gerekebilir.
 
     ![Örnek metinle ilgili neden kutusunu gösteren erişim gözden geçirme sayfası](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
-7. Seçin **gönderme**.
+7. **Gönder**' i seçin.
 
     Erişim incelemeniz tamamlanmıştır ve **My Apps** portalına dönersiniz.
 

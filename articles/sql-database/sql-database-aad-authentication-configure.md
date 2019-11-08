@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory kimlik doğrulamasını yapılandırma-SQL
+title: Azure Active Directory kimlik doğrulamasını yapılandırma
 description: Azure AD 'yi yapılandırdıktan sonra Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı, yönetilen örnek ve SQL veri ambarı 'na nasıl bağlanacağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 11/06/2019
-ms.openlocfilehash: d23fcb781f5eddd71d5ddce9344d988d2e323611
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 48334d8ce266ddcc92e4d2b27634db3d8c9f1bc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691378"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816790"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -46,7 +46,7 @@ Daha fazla bilgi edinmek için bkz. [Şirket içi kimliklerinizi Azure Active Di
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Azure SQL Server için Azure AD Yöneticisi oluşturma
 
-Her Azure SQL Server (bir SQL veritabanı veya SQL veri ambarı barındırır), tüm Azure SQL Server Yöneticisi olan tek bir sunucu yöneticisi hesabıyla başlar. İkinci bir SQL Server yöneticisinin oluşturulması gerekir. Bu bir Azure AD hesabıdır. Bu asıl, ana veritabanında kapsanan bir veritabanı kullanıcısı olarak oluşturulur. Yöneticiler olarak, Sunucu Yöneticisi hesapları her kullanıcı veritabanında **db_owner** rolünün üyeleridir ve her bir kullanıcı veritabanını **dbo** kullanıcısı olarak girer. Sunucu Yöneticisi hesapları hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda veritabanlarını ve oturum açma Işlemlerini yönetme](sql-database-manage-logins.md).
+Her Azure SQL Server (bir SQL veritabanı veya SQL veri ambarı barındırır), tüm Azure SQL Server Yöneticisi olan tek bir sunucu yöneticisi hesabıyla başlar. İkinci bir SQL Server yöneticisinin oluşturulması gerekir. Bu bir Azure AD hesabıdır. Bu asıl, ana veritabanında kapsanan bir veritabanı kullanıcısı olarak oluşturulur. Yöneticiler olarak, Sunucu Yöneticisi hesapları her kullanıcı veritabanında **db_owner** rolün üyeleridir ve her bir kullanıcı veritabanını **dbo** kullanıcısı olarak girer. Sunucu Yöneticisi hesapları hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda veritabanlarını ve oturum açma Işlemlerini yönetme](sql-database-manage-logins.md).
 
 Coğrafi çoğaltma ile Azure Active Directory kullanırken, hem birincil hem de ikincil sunucular için Azure Active Directory yöneticisinin yapılandırılması gerekir. Sunucuda bir Azure Active Directory yöneticisi yoksa, Azure Active Directory oturumlar ve kullanıcılar sunucu hatasına bir "bağlanamaz".
 
@@ -279,7 +279,7 @@ Bu komutların her biri hakkında daha fazla bilgi için Get-Help PowerShell kom
 
 ### <a name="powershell-examples-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Azure SQL veritabanı ve Azure SQL veri ambarı için PowerShell örnekleri
 
-Aşağıdaki betik, **Grup-23**adlı bir kaynak grubunda **Demo_server** sunucusu IÇIN **DBA_Group** (nesne KIMLIĞI `40b79501-b343-44ed-9ce7-da4c8cc7353f`) adlı bir Azure AD yönetici grubu sağlar:
+Aşağıdaki betik, **Grup-23**adlı bir kaynak grubundaki **demo_server** sunucusu IÇIN **DBA_Group** (nesne KIMLIĞI `40b79501-b343-44ed-9ce7-da4c8cc7353f`) adlı bir Azure AD yönetici grubu sağlar:
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
@@ -361,7 +361,7 @@ Azure AD tabanlı bir kapsanan veritabanı kullanıcısı (veritabanının sahib
 CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
 ```
 
-*Azure_AD_principal_name* , BIR Azure AD kullanıcısının Kullanıcı asıl adı veya BIR Azure AD grubu için görünen ad olabilir.
+*Azure_AD_principal_name* , bir Azure AD kullanıcısının Kullanıcı asıl adı veya BIR Azure AD grubu için görünen ad olabilir.
 
 **Örnekler:** Bir Azure AD Federasyon veya yönetilen etki alanı kullanıcısını temsil eden bir kapsanan veritabanı kullanıcısı oluşturmak için:
 

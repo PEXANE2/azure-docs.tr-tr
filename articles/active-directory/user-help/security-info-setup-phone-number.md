@@ -1,5 +1,5 @@
 ---
-title: Telefon aramalarını kullanmak için güvenlik bilgilerini (Önizleme) ayarlama-Azure Active Directory | Microsoft Docs
+title: Telefon aramaları için güvenlik bilgilerini ayarlama (Önizleme)-Azure AD
 description: Telefon çağrılarını kullanarak kimliğinizi doğrulamak için güvenlik bilgilerinizi ayarlama.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b28330f8e81efbb496fb30a14e8ae10415ded27f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a5dc5ec06e60112e69a31d1ce4c69e698576609f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160737"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803811"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>Telefon aramalarını kullanmak için güvenlik bilgilerini ayarlama (Önizleme)
 
@@ -90,7 +90,7 @@ Telefon aramalarının, iki öğeli doğrulama veya parola sıfırlama istekleri
 
     ![Varsayılan oturum açma yönteminin bağlantısını değiştir](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. Kullanılabilir yöntemlerin aşağı açılan listesinden **telefon araması ( *_your_phone_number_* )** seçeneğini belirleyin ve ardından **Onayla**' yı seçin.
+2. Kullanılabilir yöntemlerin aşağı açılan listesinden **telefon araması ( *_your_phone_number_* )** öğesini seçin ve ardından **Onayla**' yı seçin.
 
     ![Varsayılan oturum açma yöntemini seçin](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 

@@ -4,21 +4,22 @@ description: Azure Marketi ve AppSource 'ta coğrafi kullanılabilirlik
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 344479a270119137a256620304d88f139d0b0322
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 0b12e122cef3a05af7a09918ba434d103e33a1a2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619977"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822947"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Coğrafi kullanılabilirlik ve para birimi desteği
 
 Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tanımlanan 141 coğrafi yalarda satın alınabilir ve işlemler 17 para biriminde tamamlanabilir. Aşağıdaki tabloda desteklenen her coğrafi konum, [ıso 3166 2 basamaklı alfa kodu](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)ve atanan para birimi listelenmektedir.
 
-|   Ülke/bölge adı               |   ISO-2   |   Currency   |
+|   Ülke/bölge adı               |   ISO-2   |   Para birimi   |
 |-------------------------------------|-----------|--------------|
 | Afganistan                         | AF        | USD          |
 | Arnavutluk                             | AL        | USD          |
@@ -26,8 +27,8 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Andorra                             | AD        | EUR          |
 | Angola                              | AO        | USD          |
 | Arjantin                           | AR        | USD          |
-| Ermenistan                             | ÖÖ        | USD          |
-| Avustralya                           | Otomatik Olarak Güncelleştir        | AUD          |
+| Ermenistan                             | AM        | USD          |
+| Avustralya                           | AU        | AUD          |
 | Avusturya                             | AT        | EUR          |
 | Azerbaycan                          | AZ        | USD          |
 | Bahreyn                             | BH        | USD          |
@@ -35,18 +36,18 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Barbados                            | BB        | USD          |
 | Belarus                             | BY        | USD          |
 | Belçika                             | BE        | EUR          |
-| Belize                              | BZ        | USD          |
+| Beliz                              | BZ        | USD          |
 | Bermuda                             | BM        | USD          |
 | Bolivya                             | BO        | USD          |
-| Bosna - Hersek              | BA        | USD          |
+| Bosna Hersek              | BA        | USD          |
 | Botsvana                            | BW        | USD          |
 | Brezilya                              | BR        | BRL\*        |
-| Brunei                              | BN        | USD          |
+| Barış                              | BN        | USD          |
 | Bulgaristan                            | BG        | EUR          |
 | Kamerun                            | CM        | USD          |
 | Kanada                              | CA        | CAD          |
 | Cabo Verde                          | CV        | USD          |
-| Cayman Adaları                      | KY        | USD          |
+| Kayman Adaları                      | KY        | USD          |
 | Şili                               | CL        | USD          |
 | Kolombiya                            | CO        | USD          |
 | Kosta Rika                          | CR        | USD          |
@@ -66,21 +67,21 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Fiji                                | FJ        | AUD          |
 | Finlandiya                             | FI        | EUR          |
 | Fransa                              | GS        | EUR          |
-| Georgia                             | GE        | USD          |
+| Gürcistan                             | GE        | USD          |
 | Almanya                             | DE        | EUR          |
 | Gana                               | GH        | USD          |
 | Yunanistan                              | GR        | EUR          |
 | Guatemala                           | GT        | USD          |
 | Honduras                            | HN        | USD          |
-| Hong Kong SAR                       | HK        | USD          |
+| Hong Kong ÖIB                       | HK        | USD          |
 | Macaristan                             | HU        | EUR          |
 | İzlanda                             | IS        | EUR          |
 | Hindistan                               | IN        | INR          |
-| Endonezya                           | id        | USD          |
+| Endonezya                           | Kimlik        | USD          |
 | Irak                                | IQ        | USD          |
 | İrlanda                             | IE        | EUR          |
 | İsrail                              | IL        | USD          |
-| İtalya                               | IT        | EUR          |
+| İtalya                               | BT        | EUR          |
 | Jamaika                             | JM        | USD          |
 | Japonya                               | JP        | JPY          |
 | Ürdün                              | JO        | USD          |
@@ -92,10 +93,10 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Letonya                              | LV        | EUR          |
 | Lübnan                             | LB        | USD          |
 | Libya                               | LY        | USD          |
-| Liechtenstein                       | LI        | EUR          |
+| Lihtenştayn                       | LI        | EUR          |
 | Litvanya                           | LT        | EUR          |
 | Lüksemburg                          | LU        | EUR          |
-| Makao ÖİB                           | MO        | USD          |
+| Makao ÖIB                           | MO        | USD          |
 | Kuzey Makedonya                     | MK        | USD          |
 | Malezya                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
@@ -106,7 +107,7 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Moğolistan                            | MN        | USD          |
 | Karadağ                          | YAPA        | USD          |
 | Fas                             | MA        | USD          |
-| Namibia                             | NA        | USD          |
+| Namibya                             | NA        | USD          |
 | Nepal                               | NP        | USD          |
 | Hollanda                         | NL        | EUR          |
 | Nikaragua                           | NI        | USD          |
@@ -126,7 +127,7 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Katar                               | QA        | USD          |
 | Romanya                             | RO        | EUR          |
 | Rusya                              | RU        | RUB          |
-| Ruanda                              | RW        | USD          |
+| Rwanda                              | RW        | USD          |
 | Saint Kitts ve Nevis               | KN        | USD          |
 | Suudi Arabistan                        | SA        | USD          |
 | Senegal                             | SN        | USD          |
@@ -158,9 +159,9 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Özbekistan                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
-| Yemen                               | VET        | USD          |
-| Zambia                              | ZM        | USD          |
+| Yemen                               | Vet        | USD          |
+| Zambiya                              | ZM        | USD          |
 | Zimbabve                            | ZW        | USD          |
 |   |   |   |
 
-\*Brezilya 'daki müşteriler, bulut çözümü sağlayıcıları (CSP) aracılığıyla Market ABD doları kullanır.
+\*, bulut çözümü sağlayıcıları (CSP) aracılığıyla Market ABD doları kullanır.

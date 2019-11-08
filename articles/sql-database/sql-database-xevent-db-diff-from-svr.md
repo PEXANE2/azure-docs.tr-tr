@@ -1,5 +1,5 @@
 ---
-title: SQL veritabanında genişletilmiş olaylar
+title: Genişletilmiş etkinlikler
 description: Azure SQL veritabanı 'nda genişletilmiş olayları (XEvents) ve olay oturumlarının Microsoft SQL Server olay oturumlarından biraz farklı bir şekilde nasıl farklı olduğunu açıklar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 64cfcd9451416a6eb35301268b285bd00cf0cad4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686771"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822292"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL veritabanında genişletilmiş olaylar
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -74,7 +74,7 @@ Aşağıdaki öğelerin önceki pozlaması, olay dosyasını [hedef](#AzureXEven
 - **On Database** yan TÜMCESI [alter Event SESSION](https://msdn.microsoft.com/library/bb630368.aspx) ve [Drop Event Session](https://msdn.microsoft.com/library/bb630257.aspx) Transact-SQL komutları için de geçerlidir.
 
 
-- En iyi uygulama, **Create olay** oturumunuz veya **alter Event Session** DEYIMLERINIZI **startup_state = on** olay oturumu seçeneğini içermelidir.
+- En iyi uygulama, **oluşturma olay** oturumunuz veya **alter Event session** DEYIMLERINIZIN **startup_state = üzerinde** olay oturumu seçeneğini içerkullanmaktır.
     - **= On** değeri, yük devretme nedeniyle mantıksal veritabanının yeniden yapılandırması sonrasında otomatik yeniden başlatmayı destekler.
 
 ## <a name="new-catalog-views"></a>Yeni Katalog görünümleri
@@ -89,7 +89,7 @@ Genişletilmiş olaylar özelliği, çeşitli [Katalog görünümleri](https://m
 | **sys. database_event_session_targets** |Olay oturumu için her olay hedefi için bir satır döndürür. |
 | **sys. database_event_sessions** |SQL veritabanı veritabanındaki her olay oturumu için bir satır döndürür. |
 
-Microsoft SQL Server, benzer katalog görünümlerinde. *database\_* yerine *. Server\_* dahil olmak üzere adlar bulunur. Ad stili, **sys. server_event_%** gibidir.
+Microsoft SQL Server, benzer katalog görünümlerinde. *database\_* yerine *. Server\_* dahil olmak üzere adlar bulunur. Ad deseninin **sys. server_event_%** olduğu görülüyor.
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Yeni dinamik yönetim görünümleri [(DMVs)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -97,23 +97,23 @@ Azure SQL veritabanı, genişletilmiş olayları destekleyen [dinamik yönetim g
 
 | DMV adı | Açıklama |
 |:--- |:--- |
-| **sys. DM _xe_database_session_event_actions** |Olay oturumu eylemleri hakkında bilgi döndürür. |
-| **sys. DM _xe_database_session_events** |Oturum olayları hakkında bilgi döndürür. |
-| **sys. DM _xe_database_session_object_columns** |Bir oturuma bağlanan nesneler için yapılandırma değerlerini gösterir. |
-| **sys. DM _xe_database_session_targets** |Oturum hedefleri hakkında bilgi döndürür. |
-| **sys. DM _xe_database_sessions** |Geçerli veritabanı kapsamındaki her olay oturumu için bir satır döndürür. |
+| **sys. dm_xe_database_session_event_actions** |Olay oturumu eylemleri hakkında bilgi döndürür. |
+| **sys. dm_xe_database_session_events** |Oturum olayları hakkında bilgi döndürür. |
+| **sys. dm_xe_database_session_object_columns** |Bir oturuma bağlanan nesneler için yapılandırma değerlerini gösterir. |
+| **sys. dm_xe_database_session_targets** |Oturum hedefleri hakkında bilgi döndürür. |
+| **sys. dm_xe_database_sessions** |Geçerli veritabanı kapsamındaki her olay oturumu için bir satır döndürür. |
 
 Microsoft SQL Server, benzer Katalog görünümleri adın *\_veritabanı* bölümü olmadan adlandırılır, örneğin:
 
-- ad yerine **sys. DM _xe_sessions**<br/>**sys. DM _xe_database_sessions**.
+- **sys. dm_xe_sessions**, ad yerine<br/>**sys. dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Her ikisine de genel olarak DMVs
 Genişletilmiş olaylar için hem Azure SQL veritabanı hem de Microsoft SQL Server için ortak olan ek DMVs 'ler vardır:
 
-- **sys. DM _xe_map_values**
-- **sys. DM _xe_object_columns**
-- **sys. DM _xe_objects**
-- **sys. DM _xe_packages**
+- **sys. dm_xe_map_values**
+- **sys. dm_xe_object_columns**
+- **sys. dm_xe_objects**
+- **sys. dm_xe_packages**
 
   <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
@@ -186,7 +186,7 @@ Bellek üst sınırının zorlandığını belirten bir hata iletisi alırsanız
 
 **Olay dosyası** hedefi, verileri Azure depolama Blobları ile kalıcı hale getirmeyi sağlarken ağ gecikme süresi veya hata yaşayabilir. SQL veritabanı 'ndaki diğer olaylar, ağ iletişiminin tamamlanmasını beklerken gecikebilir. Bu gecikme, iş yükünüzü yavaşlatabilir.
 
-- Bu performans riskini azaltmak için, olay oturumu tanımlarınızda **EVENT_RETENTION_MODE** seçeneğini **NO_EVENT_LOSS** olarak ayarlamaktan kaçının.
+- Bu performans riskini azaltmak için, **EVENT_RETENTION_MODE** seçeneğini olay oturumu tanımlarınızda **NO_EVENT_LOSS** olarak ayarlamaktan kaçının.
 
 ## <a name="related-links"></a>İlgili bağlantılar
 

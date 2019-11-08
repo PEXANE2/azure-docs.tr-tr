@@ -4,15 +4,16 @@ description: Azure Market müşterileri için Marketo için lider yönetimini ya
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: 9470a593f5db564689a0b26601a201874c215aa2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8d13e8c3aeabf6d3fdea80ffddbae47b80adc139
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902097"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812130"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Marketo 'da lider yönetimini yapılandırma
 
@@ -25,13 +26,13 @@ Bu makalede, satış fırsatlarını Market teklifinizden işlemek üzere Market
     ![Marketo Design Studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
 3.  **Yeni form**' u seçin.
-    ![Marketo yeni formu](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
+    ![Marketo yeni form](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
 4.  Yeni formdaki gerekli alanları doldurup **Oluştur**' u seçin.
     ![Marketo yeni form oluştur](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
 5.  Alan ayrıntıları sayfasında **son**' u seçin.
-    ![Marketo bitiş formu](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
+    ![Marketo son form](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
 6.  Onaylayın ve kapatın.
 
@@ -54,8 +55,8 @@ Bu makalede, satış fırsatlarını Market teklifinizden işlemek üzere Market
 
     **Bu değerleri anlamak için başka bir yol**
 
-    - Sunucu KIMLIĞI, Marketo örneğinizin URL 'sinde bulunur, örneğin, "`serverID.marketo.com`".
-    - "Munchkaya hesap KIMLIĞI" alanında veya Marketo REST API ana bilgisayar alt etki alanınızın ilk kısmından yönetici > bir hesaba giderek, aboneliğinizin kaldırma KIMLIĞINI alın: `https://{Munchkin ID}.mktorest.com`.
+    - Sunucu KIMLIĞI, Marketo örneğinizin URL 'sinde bulunur (örneğin, "`serverID.marketo.com`").
+    - "Munchbal hesap KIMLIĞI" alanında yönetici > bir menü veya Marketo REST API ana bilgisayar alt etki alanının ilk kısmından, aboneliğinizin yeniden oluşturma KIMLIĞINI alın: `https://{Munchkin ID}.mktorest.com`.
     - Form KIMLIĞI, Market 'ten gelen müşteri adaylarını yönlendirmek için adım 7 ' de oluşturduğunuz ekleme kodu formunun KIMLIĞIDIR.
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Teklifinizi müşteri adaylarını Marketo 'ya gönderecek şekilde yapılandırma

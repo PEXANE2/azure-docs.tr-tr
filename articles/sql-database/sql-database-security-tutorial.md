@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanının güvenliğini sağlama
+title: Tek veya havuza alınmış bir veritabanının güvenliğini sağlama
 description: Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanının güvenliğini sağlamaya yönelik teknikler ve özellikler hakkında size öğreten bir öğretici.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 44fd49c391f4c6cddf24e3fddd7fa85a0d5ea4f2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687424"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818029"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Öğretici: tek veya havuza alınmış bir veritabanının güvenliğini sağlama
 
@@ -107,7 +107,7 @@ Veritabanı düzeyinde bir güvenlik duvarı kuralı kurmak için:
 1. Araç çubuğundan **Çalıştır** ' ı seçerek güvenlik duvarı kuralı oluşturun.
 
 > [!NOTE]
-> Ayrıca, [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current) komutunu kullanarak SSMS 'de sunucu düzeyinde bir güvenlik duvarı kuralı oluşturabilirsiniz, ancak *ana* veritabanına bağlı olmanız gerekir.
+> Ayrıca, SSMS 'de [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current) komutunu kullanarak sunucu düzeyinde bir güvenlik duvarı kuralı oluşturabilirsiniz, ancak *ana* veritabanına bağlı olmanız gerekir.
 
 ## <a name="create-an-azure-ad-admin"></a>Azure AD Yöneticisi oluşturma
 
@@ -334,7 +334,7 @@ Veri maskeleme 'yi etkinleştirmek için:
     ![Saydam Veri Şifrelemesi](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> Şifreleme durumunu görüntülemek için [SSMS](./sql-database-connect-query-ssms.md) kullanarak veritabanına bağlanın ve [sys. DM _database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) görünümünün `encryption_state` sütununu sorgulayın. `3` durumu veritabanının şifrelendiğini gösterir.
+> Şifreleme durumunu görüntülemek için [SSMS](./sql-database-connect-query-ssms.md) kullanarak veritabanına bağlanın ve [sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) görünümünün `encryption_state` sütununu sorgulayın. `3` durumu veritabanının şifrelendiğini gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

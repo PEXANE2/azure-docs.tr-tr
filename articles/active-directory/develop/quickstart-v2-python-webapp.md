@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 254a1fd8644015de33855e13f78ab122d28f1e35
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d9349391ad9af1a4ec1c84b586f825f3f7632ff8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817116"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815763"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
 
@@ -32,7 +32,7 @@ Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (
 
 ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -60,13 +60,13 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
 > 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
+> 1. Hesabınız birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
 >      - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `python-webapp`.
 >      - **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
->      - **Yeniden yönlendirme URI 'si** bölümünde, açılan listede, **Web** platformunu seçin ve ardından değeri `http://localhost:5000/getAToken` olarak ayarlayın.
+>      - **Yeniden yönlendirme URI 'si** bölümünde, açılan listede, **Web** platformunu seçin ve ardından değeri `http://localhost:5000/getAToken`olarak ayarlayın.
 >      - **Kaydol**’u seçin. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
 > 1. Sol taraftaki menüde **sertifikalar & gizlilikler** ' ı seçin ve **istemci** gizli dizileri bölümünde **yeni istemci parolası** ' na tıklayın:
 >
@@ -74,6 +74,13 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >      - **1 yılda**bir anahtar süresi seçin.
 >      - **Ekle**' ye tıkladığınızda, anahtar değeri görüntülenecektir.
 >      - Anahtarın değerini kopyalayın. Buna daha sonra ihtiyacınız olacak.
+> 1. **API izinleri** bölümünü seçin
+>
+>      - **Izin Ekle** düğmesine tıklayın ve ardından
+>      - **Microsoft API 'leri** sekmesinin seçili olduğundan emin olun
+>      - *Yaygın olarak kullanılan Microsoft API 'leri* bölümünde, **Microsoft Graph** ' ye tıklayın.
+>      - **Temsilci izinleri** bölümünde, doğru izinlerin işaretli olduğundan emin olun: **User. Readbasic. All**. Gerekirse arama kutusunu kullanın.
+>      - **Izin Ekle** düğmesini seçin
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
@@ -83,11 +90,12 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >
 > 1. `http://localhost:5000/getAToken`olarak bir yanıt URL 'SI ekleyin.
 > 1. Bir Istemci gizli dizisi oluşturun.
+> 1. Microsoft Graph API 'nin User. ReadBasic. All temsilci izinleri ekleyin.
 >
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Bu değişikliği benim için yap]()
+> > [Bu değişiklikleri benim için yap]()
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Zaten yapılandırılmış](media/quickstart-v2-aspnet-webapp/green-check.png) Uygulamanız bu özellikle yapılandırıldı
+> > ![Zaten yapılandırılmış](media/quickstart-v2-aspnet-webapp/green-check.png) Uygulamanız bu öznitelikle yapılandırılmış
 
 #### <a name="step-2-download-your-project"></a>2\. Adım: Projenizi indirme
 
@@ -106,7 +114,7 @@ AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 ```
 
 > [!div renderon="docs"]
-> Nerede:
+> Konumlar:
 >
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 > - `Enter_the_Client_Secret_Here`, **sertifikalarında** oluşturduğunuz ve kaydettiğiniz uygulamanın gizli dizileri & **gizli anahtar olan istemci sırrı** .
@@ -126,24 +134,24 @@ AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
    python app.py
    ```
    > [!IMPORTANT]
-   > Bu hızlı başlangıç uygulaması, kendisini gizli istemci olarak tanımlamak için bir istemci gizli anahtarı kullanır. İstemci parolası proje dosyalarınıza düz metin olarak eklendiğinden, güvenlik nedenleriyle, uygulamayı üretim uygulaması olarak düşünmeden önce istemci parolası yerine bir sertifika kullanmanız önerilir. Sertifika kullanma hakkında daha fazla bilgi için [Bu yönergelere](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials)bakın.
+   > Bu hızlı başlangıç uygulaması, kendisini gizli istemci olarak tanımlamak için bir istemci gizli anahtarı kullanır. İstemci parolası proje dosyalarınıza düz metin olarak eklendiğinden, güvenlik nedenleriyle, uygulamayı üretim uygulaması olarak düşünmeden önce istemci parolası yerine bir sertifika kullanmanız önerilir. Sertifika kullanma hakkında daha fazla bilgi için [Bu yönergelere](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)bakın.
 
-   ## <a name="more-information"></a>Daha fazla bilgi
+## <a name="more-information"></a>Daha fazla bilgi
 
-   ### <a name="getting-msal"></a>MSAL alma
-   MSAL, kullanıcıların oturum açması ve Microsoft Identity platformu tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri istemek için kullanılan bir kitaplıktır.
-   PIP kullanarak uygulamanıza MSAL Python ekleyebilirsiniz.
+### <a name="getting-msal"></a>MSAL alma
+MSAL, kullanıcıların oturum açması ve Microsoft Identity platformu tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri istemek için kullanılan bir kitaplıktır.
+PIP kullanarak uygulamanıza MSAL Python ekleyebilirsiniz.
 
-   ```Shell
-   pip install msal
-   ```
+```Shell
+pip install msal
+```
 
-   ### <a name="msal-initialization"></a>MSAL başlatma
-   MSAL kullanacağınız dosyanın en üstüne aşağıdaki kodu ekleyerek MSAL Python öğesine başvuru ekleyebilirsiniz:
+### <a name="msal-initialization"></a>MSAL başlatma
+MSAL kullanacağınız dosyanın en üstüne aşağıdaki kodu ekleyerek MSAL Python öğesine başvuru ekleyebilirsiniz:
 
-   ```Python
-   import msal
-   ```
+```Python
+import msal
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

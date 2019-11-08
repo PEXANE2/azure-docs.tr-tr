@@ -4,15 +4,16 @@ description: VM Görüntünüz için paylaşılan erişim imzası (SAS) URI 'sin
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: c242fbcd19187abb608ca80a49d04dae195bd7c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: dda074d81857247a922eb7a179b33aa2593e5bf8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374366"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824483"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM Görüntünüz için paylaşılan erişim imzası URI 'SI alın
 
@@ -21,7 +22,7 @@ Yayımlama işlemi sırasında, SKU 'larınız ile ilişkili her bir sanal sabit
 VHD 'niz için SAS URI 'Leri oluştururken aşağıdaki gereksinimlere uyar:
 
 - Yalnızca yönetilmeyen VHD 'ler desteklenir.
-- `List` ve `Read` izinleri yeterlidir. @No__t-1 veya `Delete` *erişimi sağlamaın* .
+- `List` ve `Read`izinleri yeterlidir. `Write` veya `Delete` *erişim sağlamaın* .
 - SAS URI 'sinin oluşturulduğu erişim süresi (*bitiş tarihi*), en az üç hafta olmalıdır.
 - UTC saat çeşitlemelerine karşı korumak için, başlangıç tarihini geçerli tarihten bir güne ayarlayın. Örneğin, geçerli tarih 6 Ekim 2014 ise 10/5/2014 ' i seçin.
 
@@ -44,12 +45,12 @@ Azure CLı ile SAS URI 'SI oluşturmak için aşağıdaki adımları kullanın.
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
    ```
     
-3. Aşağıdaki parametre değerlerini sağlamak için dosyayı düzenleyin.  Tarihler UTC Tarih saat biçiminde belirtilmelidir, örneğin `2016-10-25T00:00:00Z`.
+3. Aşağıdaki parametre değerlerini sağlamak için dosyayı düzenleyin.  Tarihlerin UTC Tarih saat biçiminde sağlanması gerekir, örneğin `2016-10-25T00:00:00Z`.
    - `<account-name>`-Azure depolama hesabınızın adı
    - `<account-key>`-Azure depolama hesabı anahtarınız
    - `<vhd-name>`-VHD adınız
    - `<start-date>`-VHD erişimi için Izin başlangıç tarihi. Geçerli tarihten bir gün önce bir tarih girin. 
-   - `<expiry-date>`-VHD erişimi için Izin sona erme tarihi.  Geçerli tarihin ötesinde en az üç hafta sonra bir tarih girin. 
+   - VHD erişimi için `<expiry-date>` Izni sona erme tarihi.  Geçerli tarihin ötesinde en az üç hafta sonra bir tarih girin. 
  
    Aşağıdaki örnek, doğru parametre değerlerini gösterir (Bu yazma sırasında).
 
@@ -75,7 +76,7 @@ Azure CLı ile SAS URI 'SI oluşturmak için aşağıdaki adımları kullanın.
 
     `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 
-    Örneğin, VDH 'nin adı `TestRGVM2.vhd` ise, elde edilen SAS URI 'SI şöyle olur:
+    Örneğin, VDH 'nin adı `TestRGVM2.vhd`ise, elde edilen SAS URI 'SI şöyle olur:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -97,7 +98,7 @@ Microsoft Azure Depolama Gezgini bir SAS URI 'SI oluşturmak için aşağıdaki 
 6. **Paylaşılan erişim imzası** iletişim kutusu görüntülenir. Aşağıdaki alanlar için değerler girin:
    - VHD erişimi için **Başlangıç zamanı** -izin başlangıç tarihi. Geçerli tarihten bir gün önce bir tarih girin.
    - VHD erişimi için süre sonu **zamanı** -izin sona erme tarihi.  Geçerli tarihin ötesinde en az üç hafta sonra bir tarih girin.
-   - **İzinler** -1 @no__t ve `List` izinlerini seçin. 
+   - **İzinler** -`Read` ve `List` izinleri seçin. 
 
      ![Azure Explorer 'da SAS iletişim kutusu](./media/publishvm_035.png)
 
@@ -108,11 +109,11 @@ Microsoft Azure Depolama Gezgini bir SAS URI 'SI oluşturmak için aşağıdaki 
 
     Bu oluşturulan SAS URL 'SI kapsayıcı düzeyinde erişime yöneliktir.  Özel hale getirmek için ilişkili VHD adı buna eklenmelidir.
 
-9. Metin dosyasını düzenleyin. SAS URL 'sindeki `vhds` dizesinden sonra VHD adınızı ekleyin (baştaki eğik çizgi ekleyin).  Son SAS URI 'SI şu biçimde olmalıdır:
+9. Metin dosyasını düzenleyin. SAS URL 'sindeki `vhds` dizeden sonra VHD adınızı ekleyin (baştaki eğik çizgi ekleyin).  Son SAS URI 'SI şu biçimde olmalıdır:
 
     `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 
-    Örneğin, VDH 'nin adı `TestRGVM2.vhd` ise, elde edilen SAS URI 'SI şöyle olur:
+    Örneğin, VDH 'nin adı `TestRGVM2.vhd`ise, elde edilen SAS URI 'SI şöyle olur:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 

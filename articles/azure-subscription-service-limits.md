@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 12e9367ca9e330806af4c7cc5db626edddff5c25
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: HT
+ms.openlocfilehash: f9fe540611b1b773867e1f92439e13df91ad4bd3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795231"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818340"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar
 Bu belgede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure limitlerin bazıları listelenir. Bu belge şu anda tüm Azure hizmetlerini kapsamıyor. Zamanla, liste genişletilir ve daha fazla hizmeti kapsayacak şekilde güncelleştirilir.
@@ -130,7 +130,7 @@ Kaynak Yöneticisi API okuma ve yazma sınırları hakkında bilgi için bkz. [a
 [!INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 #### <a name="virtual-machines-limits---azure-resource-manager"></a>Sanal makine limitleri-Azure Resource Manager
-Azure Resource Manager ve Azure kaynak gruplarını kullandığınızda aşağıdaki sınırlar geçerlidir. Azure Resource Manager ile değiştirilmemiş sınırlar listelenmez. Bu limitler için önceki tabloya bakın.
+Azure Resource Manager ve Azure kaynak gruplarını kullandığınızda aşağıdaki sınırlar geçerlidir.
 
 [!INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 

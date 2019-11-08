@@ -4,15 +4,16 @@ description: Azure tablosu için lider yönetimini yapılandırın.
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 7151be3ac9f55825fd2e9dde35c9afda6a30726a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 9b24e6eb714c531b49ba08591bf4ed33d0f10101
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902643"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812332"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Azure tablosu kullanarak müşteri adayı yönetimini yapılandırma
 
@@ -66,7 +67,7 @@ Bu örneği, bir Azure tablosuna yeni bir müşteri adayı eklendiğinde otomati
 
    ![Akışlarım * * + zamanlanan-boş * *](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-5.  *Zamanlanan akış oluştur* penceresinde, Aralık için " 1" aralığı ve sıklık için "saat" seçeneğini belirleyin. Ayrıca, isterseniz akışa bir ad verin. **Oluştur**’u seçin.
+5.  *Zamanlanan akış oluştur* penceresinde, Aralık için "1" aralığı ve sıklık için "saat *" seçeneğini belirleyin* . Ayrıca, isterseniz akışa bir ad verin. **Oluştur**'u seçin.
 
     >[!Note]
     >Bu örnekte 1 saatlik bir Aralık kullanılabilse de, iş gereksinimleriniz için en iyi aralığı ve sıklığı seçebilirsiniz.
@@ -94,19 +95,19 @@ Sonraki adımlarda, Azure tablonuza bağlanırsınız ve yeni müşteri adaylar�
 10. **Eylemler**altında **varlıkları al (Azure Tablo Depolama)** seçeneğini belirleyin.
 11. **Azure Tablo Depolaması** penceresinde, aşağıdaki alanlar için bilgi sağlayın ve **Oluştur**' u seçin:
 
-    * *Bağlantı adı* – bu akış ve Azure tablosu arasında oluşturduğunuz bağlantı için anlamlı bir ad girin.
-    * *Depolama hesabı adı* – Azure tablonuz için depolama hesabının adını belirtin. Bunu, depolama hesabının **erişim anahtarları** sayfasında bulabilirsiniz.
-    * *Paylaşılan depolama anahtarı* – Azure tablonuz için mağaza hesabınızın anahtar değerini belirtin. Bunu, depolama hesabının **erişim anahtarları** sayfasında bulabilirsiniz.
+    * *Bağlantı adı* -bu akış ve Azure tablosu arasında oluşturduğunuz bağlantı için anlamlı bir ad sağlayın.
+    * *Depolama hesabı adı* -Azure tablonuz için depolama hesabının adını belirtin. Bunu, depolama hesabının **erişim anahtarları** sayfasında bulabilirsiniz.
+    * *Paylaşılan depolama anahtarı* -Azure tablonuz için mağaza hesabınızın anahtar değerini sağlayın. Bunu, depolama hesabının **erişim anahtarları** sayfasında bulabilirsiniz.
 
         ![Azure Tablo depolaması.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
     Oluştur 'a tıkladıktan sonra *varlıkları al* penceresi görüntülenir. Burada **Gelişmiş seçenekleri göster** ' i seçin ve aşağıdaki alanlar için bilgi sağlayın:
 
-       * *Tablo* – Azure Tablo depolama alanınızı (bir Azure tablosunun nasıl yapılandırılacağı konusunda adım 6 ' dan) seçin. Sonraki ekran yakalama, bu örnek için "marketplaceliderleri" tablosu seçildiğinde istemi gösterir.
+       * *Tablo* -Azure Tablo depolama alanınızı seçin (Azure tablosunun nasıl yapılandırılacağı konusunda adım 6 ' dan itibaren yönergeler). Sonraki ekran yakalama, bu örnek için "marketplaceliderleri" tablosu seçildiğinde istemi gösterir.
 
             ![Azure tablosu varlıkları al.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        * *Filtre sorgusu* – bu alanı seçin ve bu işlevi alana yapıştırın:`Timestamp gt datetime'@{body('Get_past_time')}'`
+        * *Filtre sorgusu* -bu alanı seçin ve bu işlevi alana yapıştırın: `Timestamp gt datetime'@{body('Get_past_time')}'`
 
             ![Azure Tablo Get varlıkları-filtre Querry.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -118,7 +119,7 @@ Sonraki adımlarda, Azure tablonuza bağlanırsınız ve yeni müşteri adaylar�
 
 14. **Koşul** penceresinde, **bir değer seçin** alanını seçin ve ardından açılan pencerede **ifade** ' ı seçin.
 
-15. FX `length(body('Get_entities')?['value'])` alanına yapıştırın . Bu işlevi eklemek için **Tamam ' ı** seçin. 
+15. `length(body('Get_entities')?['value'])` ***FX*** alanına yapıştırın. Bu işlevi eklemek için **Tamam ' ı** seçin. 
 
 16. Koşulu ayarlamayı tamamlaması için:
     1. Açılan listeden "büyüktür" i seçin.
@@ -144,9 +145,9 @@ Sonraki birkaç adımda, koşulun sonucuna göre gerçekleştirilecek eylemi aya
 
 19. **Office 365 Outlook** penceresinde, aşağıdaki alanlar için bilgi sağlayın:
 
-    1. Bu bildirimi alacak herkes için bir e-posta adresi girin.
-    1. **Konu** : e-posta için bir konu girin. Örneğin: Yeni müşteri adayları!
-    1. **Gövde** -her bir e-postaya eklemek istediğiniz metni ekleyin (isteğe bağlı) ve ardından gövdeye `body('Get_entities')?['value']`yapıştırın.
+    1. Bu bildirimi alacak **herkes için bir** e-posta adresi girin.
+    1. **Konu** -e-posta için bir konu girin. Örneğin: yeni müşteri adayları!
+    1. **Gövde** -her bir e-postaya eklemek istediğiniz metni ekleyin (isteğe bağlı) ve sonra gövde `body('Get_entities')?['value']`yapıştırın.
 
     >[!Note]
     >Bu e-postanın gövdesine ek statik veya dinamik veri noktaları ekleyebilirsiniz.

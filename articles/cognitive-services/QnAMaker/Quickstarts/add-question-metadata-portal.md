@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: ed50e6adbcca7cbb4935400c7850c37dc2ed389f
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 92735d8982fb1364d5ebfe0494f5ee51f4302469
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803540"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794001"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Hızlı başlangıç: Soru-Cevap Oluşturma portalı ile soru ve yanıt ekleme
 
@@ -31,7 +31,7 @@ Doğru yanıt tek bir yanıttır ancak bir müşterinin söz konusu tek yanıta 
 |Ayarla|Sorular|Yanıt|Meta Veriler|
 |--|--|--|--|
 |1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
-|2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Search tier supports.`|`service=search`<br>`link_in_answer=false`|
+|2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
 Bir soru-cevap kümesine meta veriler eklendikten sonra istemci uygulama şunları yapabilir:
 
@@ -40,7 +40,7 @@ Bir soru-cevap kümesine meta veriler eklendikten sonra istemci uygulama şunlar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Soru-Cevap Oluşturma Hizmeti
 * Bu Soru-Cevap Oluşturma hizmetinde oluşturulmuş bir bilgi tabanı
@@ -61,7 +61,7 @@ Bu URL içeri aktarıldığında, yalnızca bir yanıtla birlikte tek bir soru o
 
 Bu yordamda, ek sorular ekleyin.
 
-1. **Düzenleme** sayfasında, soru-cevap kümelerinin üzerindeki arama metin kutusunu kullanın `How large a knowledge base can I create?` sorusunu bulun.
+1. **Düzenleme** sayfasında, soruyu bulmak için soru ve yanıt kümelerinin üzerindeki arama metin kutusunu kullanın `How large a knowledge base can I create?`
 
 1. **Soru** sütununda **+ Alternatif ifade Ekle** ' yi seçin ve aşağıdaki tabloda belirtilen her yeni bir ifade ekleyin.
 
@@ -92,9 +92,9 @@ Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrele
 
 1. **Görünüm seçeneklerini**belirleyin ve **meta verileri göster**' i seçin. 
 
-1. Az önce eklediğiniz soru ve yanıt kümesi için **meta veri etiketleri Ekle**' yi seçin, ardından `service` ve değer `search` `service:search` değerini ekleyin.
+1. Yeni eklediğiniz soru ve yanıt kümesi için, **meta veri etiketleri Ekle**' yi seçin, ardından `service` adı ve `search`değeri `service:search`ekleyin.
 
-1. Adı `link_in_answer` ve değeri `false` `link_in_answer:false` olan başka bir meta veri etiketi ekleyin.
+1. `link_in_answer` adı ve `false`değeri `link_in_answer:false`olan başka bir meta veri etiketi ekleyin.
 
 1. Tablodaki ilk yanıtı arayın, `How large a knowledge base can I create?`. 
 1. Aynı iki meta veri etiketi için meta veri çiftleri ekleyin:
@@ -121,7 +121,7 @@ Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrele
     curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Sorunun yalnızca tek bir kelime olan `size` olduğunu ve soru ve yanıt kümesi döndürebileceğini unutmayın. @No__t-0 dizisi, yanıta yalnızca `qna_maker` yanıtlarına azaltmasını söyler. 
+    Sorunun yalnızca tek bir kelime, `size`olduğunu ve soru ve yanıt kümesi döndürebileceğini fark edebilirsiniz. `strictFilters` dizisi, yanıta yalnızca `qna_maker` yanıtlara karşı azaltmasını söyler. 
 
     [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
 
@@ -162,7 +162,7 @@ Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrele
     }
     ```
 
-    Arama terimini karşılamayan ancak filtreye uyan bir soru ve yanıt kümesi varsa, bu geri döndürülemez. Bunun yerine, `No good match found in KB.` genel cevabı döndürülür.
+    Arama terimini karşılamayan ancak filtreye uyan bir soru ve yanıt kümesi varsa, bu geri döndürülemez. Bunun yerine, genel yanıt `No good match found in KB.` döndürülür.
 
     Meta veri adınızı ve değer çiftlerini gerekli limitlerin içinde tutduğunuzdan emin olun. 
 

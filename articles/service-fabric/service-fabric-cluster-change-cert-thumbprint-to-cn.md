@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2019
 ms.author: atsenthi
-ms.openlocfilehash: 3618339349d618b371a40d3b37ebc30192c067ca
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 25aaad02cf8c90c67e87d49553a02cacf033281f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764816"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819486"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Sertifika parmak izine ait kümeyi ortak ada değiştirme
 İki sertifika aynı parmak izine sahip olamaz, bu da küme sertifikası geçişi veya yönetimini zorlaştırır. Ancak, birden çok sertifika aynı ortak ada veya konuya sahip olabilir.  Sertifika ortak adlarını kullanmak için sertifika parmak izlerini kullanarak dağıtılan bir kümeyi değiştirmek, sertifika yönetimini çok daha kolay hale getirir. Bu makalede, çalışan bir Service Fabric kümesinin sertifika parmak izi yerine sertifika ortak adını kullanacak şekilde güncelleştirilmesi açıklanmaktadır.
@@ -128,7 +128,7 @@ Sonra, şablon dosyasını bir metin düzenleyicisinde açın ve sertifika ortak
 
     Ayrıca, *certificateThumbprint*öğesini kaldırmayı da düşünün, bu, artık kaynak yöneticisi şablonunda başvurulmayabilir.
 
-2. **Microsoft. COMPUTE/virtualMachineScaleSets** kaynağında, sanal makine uzantısını parmak izi yerine sertifika ayarları 'nda ortak adı kullanacak şekilde güncelleştirin.  **Virtualmachineprofile**->**extensionprofile**->**Extensions**Özellikler ayarları sertifikası, Ekle->->-> `"commonNames": ["[parameters('certificateCommonName')]"],` ve kaldırın `"thumbprint": "[parameters('certificateThumbprint')]",`.
+2. **Microsoft. COMPUTE/virtualMachineScaleSets** kaynağında, sanal makine uzantısını parmak izi yerine sertifika ayarları 'nda ortak adı kullanacak şekilde güncelleştirin.  **Virtualmachineprofile**->**extensionprofile**->**extensions**->**Özellikler**->**Ayarlar**->**sertifika**, `"commonNames": ["[parameters('certificateCommonName')]"],` ekleyin ve `"thumbprint": "[parameters('certificateThumbprint')]",`Kaldır ' a bakın.
     ```json
         "virtualMachineProfile": {
         "extensionProfile": {
@@ -188,6 +188,8 @@ Sonra, şablon dosyasını bir metin düzenleyicisinde açın ve sertifika ortak
             },
         ...
     ```
+
+Daha fazla bilgi için bkz [. sertifika parmak izine ait kümeyi ortak ada değiştirme.](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)
 
 ## <a name="deploy-the-updated-template"></a>Güncelleştirilmiş şablonu dağıtma
 Değişiklikleri yaptıktan sonra güncelleştirilmiş şablonu yeniden dağıtın.

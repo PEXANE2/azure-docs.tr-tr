@@ -1,19 +1,20 @@
 ---
-title: Microsoft Azure SQL Veritabanı bağlantı sorunlarını giderme | Microsoft Docs
+title: Bağlantı sorunlarını giderme
 description: Azure SQL veritabanı 'nda bağlantı sorunlarını nasıl giderebileceğinizi açıklar.
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
+ms.custom: seo-lt-2019
 author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 9de6d85e1fc54d60f999cfa18665067b3998a432
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 20988296b5eac7152c53abd6d238043288feacc8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390670"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807265"
 ---
 # <a name="troubleshooting-connectivity-issues-with-microsoft-azure-sql-database"></a>Microsoft Azure SQL Veritabanı bağlantı sorunlarını giderme
 
@@ -28,9 +29,9 @@ Azure SQL Veritabanına bağlantı başarısız olduğunda hata iletileri alırs
 Bu sorunu çözmek için:
 
 1. Bilinen kesintiler için [Microsoft Azure hizmeti panosunu](https://status.azure.com/status) denetleyin. 
-2. Bilinen kesintiler yoksa, destek talebi açmak için [Microsoft Azure Destek Web sitesine](http://azure.microsoft.com/support/options) gidin.
+2. Bilinen kesintiler yoksa, destek talebi açmak için [Microsoft Azure Destek Web sitesine](https://azure.microsoft.com/support/options) gidin.
 
-Daha fazla bilgi için bkz. ["sunucudaki veritabanı şu anda kullanılamıyor" hatası](https://docs.microsoft.com/azure/sql-database/sql-database-troubleshoot-common-connection-issues#troubleshoot-transient-errors).
+Daha fazla bilgi için bkz. ["sunucudaki veritabanı şu anda kullanılamıyor" hatası](sql-database-troubleshoot-common-connection-issues.md#troubleshoot-transient-errors).
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server"></a>SQL Server bağlantı kurulurken ağla ilgili veya örneğe özgü bir hata oluştu
 
@@ -62,7 +63,7 @@ Bu hatalar, uygulamanın sunucuya bağlanamadığı için oluşur.
 
 Bu sorunu çözmek için, [yaygın bağlantı sorunlarını giderme adımları](#steps-to-fix-common-connection-issues) bölümündeki adımları (gösterilen sırayla) deneyin.
 
-## <a name="cannot-connect-to-servername-due-to-firewall-issues"></a>Güvenlik Duvarı sorunları nedeniyle <servername> ' a bağlanılamıyor
+## <a name="cannot-connect-to-servername-due-to-firewall-issues"></a>Güvenlik Duvarı sorunları nedeniyle <servername> bağlanılamıyor
 
 ### <a name="error-40615-cannot-connect-to--servername-"></a>Hata 40615: < ServerName > bağlanılamıyor
 
@@ -129,7 +130,7 @@ Genellikle, hizmet Yöneticisi oturum açma kimlik bilgilerini eklemek için aş
    ```
    
    > [!NOTE]
-   > Belirli kullanıcıları belirli veritabanı rollerine eşlemek için `sp_addrolemember` ' yı da kullanabilirsiniz.
+   > Belirli kullanıcıları belirli veritabanı rollerine eşlemek için `sp_addrolemember` de kullanabilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda veritabanlarını ve oturum açma Işlemlerini yönetme](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 
@@ -188,7 +189,7 @@ Bu sorunu geçici olarak çözmek için aşağıdaki yöntemlerden birini deneyi
   > [!NOTE]
   > Bu, sorunu çözemeyebilir bir en az aList yaklaşımdır.
 
-  1. Tüm engelleyici istekleri görmek için [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) görünümünü denetlemek IÇIN aşağıdaki SQL sorgusunu çalıştırın:
+  1. Tüm engelleyici istekleri görmek için [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) görünümünü denetlemek IÇIN aşağıdaki SQL sorgusunu çalıştırın:
 
              ```
              SELECT * FROM dm_exec_requests
@@ -197,7 +198,7 @@ Bu sorunu geçici olarak çözmek için aşağıdaki yöntemlerden birini deneyi
   2. Baş engelleyicisinin **giriş arabelleğini** belirleme.
   3. Baş engelleyici sorgusunu ayarlayın.
 
-    Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+    Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 * Veritabanı, adresleme engelleme ve uzun süre çalışan sorgulara rağmen sürekli olarak sınırına ulaşırsa, yeni önizleme sürümlerinden birine ( [Standart veya Premium sürüm](https://azure.microsoft.com/pricing/details/sql-database/)gibi) yükseltmeyi göz önünde bulundurun.
 
@@ -265,7 +266,7 @@ Aşağıdaki adımlar, sorunu geçici olarak gidermenize veya size ek seçenekle
 
 Bu hatayla sürekli olarak karşılaşırsanız, bu adımları izleyerek sorunu çözmeyi deneyin: 
 
-1. Total_elapsed_time sütunu için yüksek değere sahip tüm açık oturumları görmek için sys. DM _exec_requests görünümünü denetleyin. Aşağıdaki SQL betiğini çalıştırarak bu denetimi gerçekleştirin:
+1. Total_elapsed_time sütunu için yüksek değere sahip tüm açık oturumları görmek için sys. dm_exec_requests görünümünü denetleyin. Aşağıdaki SQL betiğini çalıştırarak bu denetimi gerçekleştirin:
 
    ```
    SELECT * FROM dm_exec_requests
@@ -275,7 +276,7 @@ Bu hatayla sürekli olarak karşılaşırsanız, bu adımları izleyerek sorunu 
 
 Ayrıca, sorgularınızı toplu olarak da düşünün. Toplu işleme hakkında bilgi için bkz. [SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance).
 
-Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Hata 40551: çok sayıda TEMPDB kullanımı nedeniyle oturum sonlandırıldı
 
@@ -311,7 +312,7 @@ Bu sorunu çözmek için aşağıdaki yöntemleri deneyin:
 
 Bu sorunu geçici olarak çözmek için sorguyu iyileştirmeden çalışın.
 
-Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 
 ### <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>Oturum açma tarafından istenen "ana" veritabanı açılamıyor. Oturum açılamadı.
@@ -336,7 +337,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-Özel durum sorgu sorunları tarafından tetiklendiğinde, aşağıdakine benzer bir çağrı yığını görürsünüz ( **SqlCommand** sınıfının başvurusunu unutmayın). Bu durumda, [sorgularınızı ayarlayın](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Özel durum sorgu sorunları tarafından tetiklendiğinde, aşağıdakine benzer bir çağrı yığını görürsünüz ( **SqlCommand** sınıfının başvurusunu unutmayın). Bu durumda, [sorgularınızı ayarlayın](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -364,7 +365,7 @@ Bkz. [SQL Server bağlantı bilgilerini alın](https://docs.microsoft.com/azure/
 
 5. En iyi uygulama olarak, yeniden deneme mantığının yerinde olduğundan emin olun. Yeniden deneme mantığı hakkında daha fazla bilgi için bkz. [SQL veritabanında geçici hata ve bağlantı hatalarını giderme](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues).
 
-Bu adımlar sorununuzu gidermezse daha fazla veri toplamayı deneyin ve desteğe başvurun. Uygulamanız bir bulut hizmeti ise günlüğe kaydetmeyi etkinleştirin. Bu adım, hatanın UTC zaman damgasını döndürür. Ayrıca, SQL Azure izleme KIMLIĞINI döndürür. [Microsoft Müşteri Destek Hizmetleri](http://azure.microsoft.com/support/options/) , bu bilgileri kullanabilir. 
+Bu adımlar sorununuzu gidermezse daha fazla veri toplamayı deneyin ve desteğe başvurun. Uygulamanız bir bulut hizmeti ise günlüğe kaydetmeyi etkinleştirin. Bu adım, hatanın UTC zaman damgasını döndürür. Ayrıca, SQL Azure izleme KIMLIĞINI döndürür. [Microsoft Müşteri Destek Hizmetleri](https://azure.microsoft.com/support/options/) , bu bilgileri kullanabilir. 
 
 Günlüğe kaydetmenin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/).
 

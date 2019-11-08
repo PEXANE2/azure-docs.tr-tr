@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 998513c942cf1b6ceae861160abfe3dc6dac7792
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690322"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823725"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Farklı şemalarla bulut veritabanları genelinde sorgulama (Önizleme)
 
@@ -133,7 +133,7 @@ Bir dış veri kaynağını önceki bölümde özetlenen şekilde kullanarak, d�
 
 DATA_SOURCE yan tümcesi dış tablo için kullanılan dış veri kaynağını (dikey bölümlendirme durumunda uzak veritabanı) tanımlar.  
 
-SCHEMA_NAME ve OBJECT_NAME yan tümceleri, dış tablo tanımını uzak veritabanındaki farklı bir şemadaki bir tabloya veya sırasıyla farklı bir ada sahip bir tabloya eşleme yeteneği sağlar. Bu, uzak veritabanınızdaki bir Katalog görünümü veya DMV için bir dış tablo tanımlamak istiyorsanız veya uzak tablo adının zaten yerel olarak alındığı başka herhangi bir durum için yararlıdır.  
+SCHEMA_NAME ve OBJECT_NAME yan tümceleri, dış tablo tanımını uzak veritabanındaki farklı bir şemadaki bir tabloya veya sırasıyla farklı bir ada sahip bir tabloya eşleyebilme olanağı sağlar. Bu, uzak veritabanınızdaki bir Katalog görünümü veya DMV için bir dış tablo tanımlamak istiyorsanız veya uzak tablo adının zaten yerel olarak alındığı başka herhangi bir durum için yararlıdır.  
 
 Aşağıdaki DDL ekstresi, mevcut bir dış tablo tanımını yerel katalogdan bırakır. Uzak veritabanını etkilemez. 
 

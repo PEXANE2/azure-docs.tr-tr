@@ -1,6 +1,6 @@
 ---
 title: Konuşmaları zenginleştirmek için NLP bilişsel hizmetler 'i kullanma
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bilişsel hizmetler, Language Understanding ve Soru-Cevap Oluşturma her biri farklı bir amaca sahip iki doğal dil işleme hizmeti sağlar. Her bir hizmetin ne zaman kullanılacağını ve birbirini nasıl zorluk yaptığını anlayın.
 author: diberry
 ms.author: diberry
@@ -8,12 +8,12 @@ manager: nitinme
 ms.topic: conceptual
 ms.service: cognitive-services
 ms.date: 08/01/2019
-ms.openlocfilehash: f293f57f4a98e822aa1c3950614ba5a186f9751d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 32159b37d3d1a8609181d81dc1a73f27177adb85
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816930"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818208"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>Bot konuşmalarını zenginleştirmek için bilişsel hizmetler 'i doğal dil işleme (NLP) ile birlikte kullanma
 
@@ -31,17 +31,17 @@ Language Understanding (LUSıS) ve Soru-Cevap Oluşturma farklı sorunları çö
 
 Doğru hizmeti seçmek için, istemci uygulamasından gelen Kullanıcı metnini ve istemci uygulamanın bilişsel hizmetten alınması gereken bilgileri anlamanız gerekir.
 
-Sohbet botunuzu metin `How do I get to the Human Resources building on the Seattle North campus?`alırsa, her bir hizmetin metinle nasıl çalıştığını anlamak için aşağıdaki grafiği kullanın.
+Sohbet botunuzu `How do I get to the Human Resources building on the Seattle North campus?`metin alırsa, her bir hizmetin metinle nasıl çalıştığını anlamak için aşağıdaki grafiği kullanın.
 
 |Hizmet|İstemci uygulaması şunları belirler|
 |--|--|
-|LUIS|**Kullanıcının** metin düzeyini belirler; hizmet soruya cevap vermez. Örneğin, bu metin `FindLocation` amacınızla eşleşen olarak sınıflandırılır.<br>|
-|Soru-Cevap Oluşturma|Özel bir bilgi bankasından **sorunun yanıtını döndürür** . Örneğin, bu metin, statik metin yanıtı `Get on the #9 bus and get off at Franklin street`olan bir soru olarak belirlenir.|
+|LUIS|**Kullanıcının** metin düzeyini belirler; hizmet soruya cevap vermez. Örneğin, bu metin `FindLocation` hedefi ile eşleşen olarak sınıflandırıldı.<br>|
+|Soru-Cevap Oluşturucu|Özel bir bilgi bankasından **sorunun yanıtını döndürür** . Örneğin, bu metin `Get on the #9 bus and get off at Franklin street`statik metin yanıtı ile soru olarak belirlenir.|
 |||
 
 ## <a name="when-do-you-use-luis"></a>Lune zaman kullanıyorsunuz? 
 
-Sohbet botu içindeki bir işlemin parçası olarak söyleyici 'yi bilmeniz gerektiğinde LUO 'u kullanın. Örnek metin `How do I get to the Human Resources building on the Seattle North campus?`ile devam etmek için, kullanıcının amacı bir konum bulmaktan haberdar olduktan sonra, yanıtı almak için bir ulaşım sunucusu gibi başka bir hizmete söylenişi (varlıklarla kullanıma hazır) hakkındaki ayrıntıları geçirebilirsiniz. 
+Sohbet botu içindeki bir işlemin parçası olarak söyleyici 'yi bilmeniz gerektiğinde LUO 'u kullanın. Örnek metin ile devam etmek `How do I get to the Human Resources building on the Seattle North campus?`, kullanıcının amacı bir konum bulmaktan haberdar olduktan sonra, yanıtı almak için bir taşıma sunucusu gibi başka bir hizmete söylenişi (varlıklarla kullanıma hazır) hakkındaki ayrıntıları geçirebilirsiniz. 
 
 Amacı öğrenmek için LUO ve Soru-Cevap Oluşturma birleştirmeniz gerekmez. 
 
@@ -51,7 +51,7 @@ Bu söylemeye yönelik iki hizmeti, sohbet botunuzun, belirli statik metin yanı
 
 Yanıt statik bilgi tabanınız varsa Soru-Cevap Oluşturma kullanın. Bu Bilgi Bankası, PDF 'ler ve URL 'Ler gibi belgelerle oluşturduğunuz gereksinimlerinize göre özel olarak tasarlanmıştır. 
 
-Örnekle `How do I get to the Human Resources building on the Seattle North campus?`devam ederek, yayınlanmış soru-cevap oluşturma hizmetinize bir sorgu olarak metin gönderin ve en iyi yanıtı alın. 
+Örnek utterance ile devam etmek `How do I get to the Human Resources building on the Seattle North campus?`, metni, yayımlanan Soru-Cevap Oluşturma hizmetinize bir sorgu olarak gönderin ve en iyi yanıtı alın. 
 
 Sorunun yanıtını öğrenmek için LUO ve Soru-Cevap Oluşturma birleştirmeniz gerekmez.
 
@@ -63,7 +63,7 @@ Soru-Cevap Oluşturma bilgi tabanınızı oluşturuyorsanız, ancak konu etki al
 
 İstemci uygulamanızın puanlar için LUVE Soru-Cevap Oluşturma yanıtlarını izlemesi gerekir. Soru-Cevap Oluşturma skoru rastgele bir eşiğin altındaysa, bu bilgileri bir üçüncü taraf hizmetine iletmek için LUSıS 'den döndürülen amaç ve varlık bilgilerini kullanın.
 
-Örnek metinle `How do I get to the Human Resources building on the Seattle North campus?`devam ederseniz, soru-cevap oluşturma düşük Güvenirlik puanı döndürdüğünü varsayalım. Bu bilgileri başka bir yanıt için bir eşleme `FindLocation` veya arama hizmetine göndermek için lusıs `Human Resources building` 'den `Seattle North campus`döndürülen amacı ve ayıklanan tüm varlıkları kullanın. 
+Örnek metin ile devam `How do I get to the Human Resources building on the Seattle North campus?`, Soru-Cevap Oluşturma düşük Güvenirlik puanı döndürdüğünü varsayalım. Bu bilgileri başka bir yanıt için bir eşleme veya arama hizmetine göndermek için, LUO, `FindLocation` ve `Human Resources building` ve `Seattle North campus`gibi ayıklanan varlıklardan döndürülen amacı kullanın. 
 
 Bu üçüncü taraf yanıtını doğrulama için kullanıcıya sunabilirsiniz. Kullanıcının onayını aldıktan sonra, bilginizi büyütmek üzere bilgileri eklemek için Soru-Cevap Oluşturma 'e geri dönebilirsiniz. 
 

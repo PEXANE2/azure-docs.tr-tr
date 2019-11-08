@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 6602a47a9d1d34b04f37c6b65a3c3f84cd60c845
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: HT
+ms.openlocfilehash: 34b54459629560ba80e6a38d10edbab32ea44778
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796078"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820166"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Azure Cosmos hesabı için Azure özel bağlantısını yapılandırma (Önizleme)
 
@@ -330,9 +330,9 @@ Bu tür hesaplar için, "GroupID" dizisinde belirtilen API türü ile her API t�
 
 ## <a name="configure-custom-dns"></a>Özel API'yi yapılandırma
 
-Özel bağlantının önizlemesi sırasında, Özel uç noktanın oluşturulduğu alt ağ içinde özel bir DNS kullanmanız gerekir. Ve uç noktaları, her bir özel IP adresinin bir DNS girdisiyle eşlenmesi için yapılandırın (yukarıda gösterilen yanıtta "FQDN 'ler" özelliğine bakın).
+Özel uç noktanın oluşturulduğu alt ağ içinde özel bir DNS kullanmanız gerekir. Ve uç noktaları, her bir özel IP adresinin bir DNS girdisiyle eşlenmesi için yapılandırın (yukarıda gösterilen yanıtta "FQDN 'ler" özelliğine bakın).
 
-Özel uç nokta oluştururken, Azure 'da özel bir DNS bölgesi ile tümleştirilebilir. Özel uç noktanızı Azure 'daki özel DNS bölgesiyle tümleştirmeyi ve bunun yerine özel bir DNS kullanmayı tercih ederseniz, DNS 'nizi yeni bölgeye karşılık gelen özel IP için yeni bir DNS kaydı ekleyecek şekilde yapılandırmanız gerekir.
+Özel uç nokta oluştururken, Azure 'da özel bir DNS bölgesi ile tümleştirilebilir. Özel uç noktanızı Azure 'daki özel DNS bölgesiyle tümleştirmeyi ve bunun yerine özel bir DNS kullanmayı tercih ederseniz, DNS 'nizi özel uç nokta için ayrılan tüm özel IP adresleri için DNS kayıtları ekleyecek şekilde yapılandırmanız gerekir.
 
 ## <a name="firewall-configuration-with-private-link"></a>Özel bağlantıyla güvenlik duvarı yapılandırması
 
@@ -374,19 +374,19 @@ Bir bölgeyi kaldırırken de aynı adımları kullanabilirsiniz. Kaldırılan b
 
 Özel bağlantıyı bir Azure Cosmos hesabıyla kullanırken aşağıdaki sınırlamalar geçerlidir:
 
+* Azure Cosmos hesapları ve sanal ağlar için özel bağlantı desteği yalnızca belirli bölgelerde kullanılabilir. Desteklenen bölgelerin listesi için özel bağlantı makalesinin [kullanılabilir bölgeler](../private-link/private-link-overview.md#availability) bölümüne bakın. **Hem VNET hem de Azure Cosmos hesabının, özel bir uç nokta oluşturabilmek için desteklenen bölgelerde olması gerekir**.
+
 * Doğrudan mod bağlantısı kullanarak Azure Cosmos hesabıyla özel bağlantılar kullanırken, yalnızca TCP protokolünü kullanabilirsiniz. HTTP protokolü henüz desteklenmiyor
 
 * MongoDB hesapları için Azure Cosmos DB API 'SI kullanılırken, Özel uç nokta yalnızca sunucu sürümü 3,6 (Bu, `*.mongo.cosmos.azure.com`biçiminde uç noktası kullanan hesaplardır) için desteklenir. Özel bağlantı, sunucu sürüm 3,2 (`*.documents.azure.com`biçiminde uç nokta kullanan hesaplar) hesapları için desteklenmez. Özel bağlantıyı kullanmak için eski hesapları yeni sürüme geçirmeniz gerekir.
 
 * Özel bağlantısı olan MongoDB hesapları için Azure Cosmos DB API 'SI kullanılırken, Robo 3T, Studio 3T, Mongoose vb. gibi araçları kullanamazsınız. Uç noktanın yalnızca appName =<account name> parametresi belirtilmişse özel bağlantı desteği olabilir. Örneğin: replicaSet = globaldb & appName = mydbaccountname. Bu araçlar, bağlantı dizesindeki uygulama adını hizmete geçirmediğinden özel bağlantıyı kullanamazsınız. Bununla birlikte, 3,6 sürümüyle SDK sürücüleriyle bu hesaplara erişmeye devam edebilirsiniz.
 
-* Azure Cosmos hesapları ve sanal ağlar için özel bağlantı desteği yalnızca belirli bölgelerde kullanılabilir. Desteklenen bölgelerin listesi için özel bağlantı makalesinin [kullanılabilir bölgeler](../private-link/private-link-overview.md#availability) bölümüne bakın. **Hem VNET hem de Azure Cosmos hesabının, özel bir uç nokta oluşturabilmek için desteklenen bölgelerde olması gerekir**.
-
 * Bir sanal ağ, özel bağlantı içeriyorsa taşınamaz veya silinemez.
 
 * Bir Azure Cosmos hesabı, özel bir uç noktaya eklenmişse silinemez.
 
-* Azure Cosmos hesabı, kendisine ekli olan tüm özel uç noktalara eşlenmemiş bir bölgeye yük devredilemez. Daha fazla bilgi için bkz. önceki bölümde bölge ekleme veya kaldırma.
+* Hesaba bağlı olan tüm özel uç noktalara eşlenmemiş bir bölgeye Azure Cosmos hesabı devredilemez. Daha fazla bilgi için bkz. önceki bölümde bölge ekleme veya kaldırma.
 
 * Bir yönetici tarafından otomatik olarak onaylanan özel uç noktalar oluşturmak üzere bir yöneticinin Azure Cosmos hesap kapsamında en az "*/PrivateEndpointConnectionsApproval" iznine sahip olması gerekir.
 

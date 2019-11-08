@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d70812779d392cc4555c91599fad37c2d2c68ba5
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d5d621ec9eccca56c4e4e9075b6e9cca75c05c98
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793570"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818573"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama hizmet limitleri
 
@@ -51,13 +51,15 @@ Depolama, iş yükleri ve dizin, belge ve diğer nesneler için maksimum sınır
 | En fazla dizin |3 |5 veya 15 |50 |200 |200 |Bölüm başına 1000 veya hizmet başına 3000 |10 |10 |
 | Dizin başına en fazla basit alan |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
 | Dizin başına en fazla karmaşık koleksiyon alanı |40 |40 |40 |40 |40 |40 |40 |40 |
-| Belge başına tüm karmaşık koleksiyonlardaki en fazla öğe |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
+| Belge başına tüm karmaşık koleksiyonlar genelinde en fazla öğe&nbsp;<sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | Karmaşık alanların en büyük derinliği |10 |10 |10 |10 |10 |10 |10 |10 |
 | Dizin başına maksimum [Öneri araçları](https://docs.microsoft.com/rest/api/searchservice/suggesters) |1 |1 |1 |1 |1 |1 |1 |1 |
 | Dizin başına maksimum [Puanlama profili](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) |100 |100 |100 |100 |100 |100 |100 |100 |
 | Profil başına en fazla işlev |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> Aralık 2017 ' den önce oluşturulan temel hizmetler, dizinlerde alt limitlere (15 yerine 5) sahip olmalıdır. Temel katman, dizin başına 100 alan için alt sınıra sahip tek SKU.
+
+<sup>2</sup> her belge için karmaşık koleksiyonlarda çok fazla sayıda öğe olması, yüksek depolama kullanımına neden oluyor. Bu bilinen bir sorundur. Bu sırada, 3000 sınırı tüm hizmet katmanları için güvenli bir üst sınırdır. Bu sınır yalnızca karmaşık tür alanlarını (`2019-05-06`) destekleyen en eski genel kullanıma sunulan (GA) API sürümünü kullanan dizin oluşturma işlemleri için zorlanır. Önceki önizleme API sürümleri (karmaşık tür alanlarını destekleyen) kullanan istemcileri bozmak için, bu önizleme API sürümlerini kullanan dizin oluşturma işlemleri için bu sınırı zorlayamıyoruz. Önizleme API 'SI sürümlerinin üretim senaryolarında kullanılmadığını ve müşterilerin en son GA API sürümüne taşınmasını önerdiğimiz unutulmamalıdır.
 
 <a name="document-limits"></a>
 
@@ -75,17 +77,17 @@ Hizmetinizin belge sınırlarına sahip olup olmadığını anlamak için hizmet
 
 Portal bir belge sınırını gösteriyorsa, hizmetiniz geç 2017 ' den önce oluşturulmuştur ya da Azure Bilişsel Arama Hizmetleri 'ni barındırmak için düşük kapasite kümeleri kullanılarak bir veri merkezinde oluşturulmuştur:
 
-+ Doğu Avustralya
++ Avustralya Doğu
 + Doğu Asya
 + Orta Hindistan
-+ Batı Japonya
-+ Orta Batı ABD
++ Japonya Batı
++ Batı Orta ABD
 
 Belge sınırlarına tabi olan hizmetler için aşağıdaki en fazla sınır geçerlidir:
 
 |  Ücretsiz | Temel | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10,000 |1 @ no__t_0_ milyon |Bölüm başına 15 milyon veya hizmet başına 180 milyon |Bölüm başına 60 milyon veya hizmet başına 720 milyon |Bölüm başına 120 milyon veya hizmet başına 1.4 milyar |Dizin başına 1 milyon veya bölüm başına 200 milyon |
+|  10,000 |1&nbsp;milyon |Bölüm başına 15 milyon veya hizmet başına 180 milyon |Bölüm başına 60 milyon veya hizmet başına 720 milyon |Bölüm başına 120 milyon veya hizmet başına 1.4 milyar |Dizin başına 1 milyon veya bölüm başına 200 milyon |
 
 Hizmetiniz sizi engelleyen sınırlar içeriyorsa, yeni bir hizmet oluşturun ve tüm içeriği bu hizmete yeniden yayımlayın. Hizmetinizi arka planda yeni donanıma sorunsuz bir şekilde yeniden sağlamaya yönelik bir mekanizma yoktur.
 
@@ -116,7 +118,7 @@ Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalı
 | Maksimum çalışma süresi <sup>5</sup> | 1-3 dakika |24 saat |24 saat |24 saat |24 saat |Yok  |24 saat |24 saat |
 | Bilişsel arama becerileri için maksimum çalışma süresi veya görüntü analizi ile blob dizin oluşturma <sup>5</sup> | 3-10 dakika |2 saat |2 saat |2 saat |2 saat |Yok  |2 saat |2 saat |
 | Blob Indexer: maksimum BLOB boyutu, MB |16 |16 |128 |256 |256 |Yok  |256 |256 |
-| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32.000 |64.000 |4 @ no__t_0_ milyon |4 @ no__t_0_ milyon |4 @ no__t_0_ milyon |Yok |4 @ no__t_0_ milyon |4 @ no__t_0_ milyon |
+| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32.000 |64.000 |4&nbsp;milyon |4&nbsp;milyon |4&nbsp;milyon |Yok |4&nbsp;milyon |4&nbsp;milyon |
 
 <sup>1</sup> ücretsiz hizmet dizin oluşturucunun en yüksek yürütme süresi olan blob kaynakları için 3 dakika ve diğer tüm veri kaynakları için 1 dakikadır. Bilişsel hizmetler 'e çağıran AI dizin oluşturma için ücretsiz hizmetler, bir işlemin, enzenginleştirme ardışık düzeninde başarıyla geçen bir belge olarak tanımlandığı gün başına 20 ücretsiz işlem ile sınırlıdır.
 
@@ -127,6 +129,9 @@ Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalı
 Beceri <sup>başına en fazla</sup> 30 yetenek.
 
 <sup>5</sup> bilişsel arama iş yükleri ve Azure Blob dizinlemesi içindeki görüntü analizi, normal metin dizinlemesi dışında daha kısa çalışma zamanına sahiptir Görüntü analizi ve doğal dil işleme, yoğun şekilde yoğundur ve orantısız miktarları kullanılabilir işlem gücü kullanıyor. Kuyruktaki diğer işlere bir fırsat sağlamak için çalışma süresi düşürüldü.  
+
+> [!NOTE]
+> [Dizin sınırları](#index-limits)bölümünde belirtildiği gibi, Dizin oluşturucular, karmaşık türleri (`2019-05-06`) destekleyen en son GA API sürümü ile başlayarak her belge için tüm karmaşık koleksiyonlarda 3000 öğelerin üst sınırını da uygular. Yani, Dizin oluşturucuyu önceki bir API sürümüyle oluşturduysanız bu sınıra tabi olmayacaktır. En yüksek uyumluluğu korumak için, önceki bir API sürümüyle oluşturulmuş ve daha sonra bir API sürümü `2019-05-06` veya sonraki bir sürümle güncelleştirilmiş bir Dizin Oluşturucu, sınırlara **dahil** edilmez. Müşteriler çok büyük karmaşık koleksiyonlara sahip olmanın olumsuz etkisinin farkında olmalıdır (daha önce belirtildiği gibi) ve en son GA API sürümüyle yeni Dizin oluşturucular oluşturmanız önerilir.
 
 ## <a name="synonym-limits"></a>Eş anlamlı sınırları
 

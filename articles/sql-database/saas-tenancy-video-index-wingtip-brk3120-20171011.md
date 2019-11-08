@@ -1,5 +1,5 @@
 ---
-title: 'Video dizinli, Azure SaaS SQL uygulaması '
+title: SaaS SQL uygulaması videosu
 description: Bu makalede, 11 Ekim 2017 olan Ignite konferansında SaaS DB kiracı uygulaması tasarımı hakkında 81 dakikalık videolarımızda çeşitli zaman noktaları dizine yer vardır. Sizi ilgilendiren bölüme atlayabilirsiniz. En az 3 desen açıklanmaktadır. Geliştirme ve yönetimi kolaylaştıran Azure özellikleri açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3d9b9c5af1994e2d0b3fd8f720def06489f3669d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0194d99a10eb34ecd8ad10fa0a1509baf8436381
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691903"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818472"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Azure SQL veritabanı kullanılarak çok kiracılı SaaS uygulaması için dizinli ve açıklama eklenmiş video
 

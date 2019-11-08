@@ -4,15 +4,16 @@ description: Azure Marketi için bir sanal makine görüntüsünü önceden doğ
 services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pabutler
-ms.openlocfilehash: 46923ecd33a054a36aa6900a415d0b563e5afff0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fc62875873f38630e592c79aebd6a138665ed6e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163264"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809204"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Bir Azure sanal makine görüntüsünü önceden doğrulamak için bir Self-Test istemcisi oluşturma
 
@@ -99,7 +100,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 Aşağıdaki ekran yakalama, PowerShell 'de API çağırma için bir örnek gösterir.
@@ -109,7 +110,7 @@ Aşağıdaki ekran yakalama, PowerShell 'de API çağırma için bir örnek gös
 Önceki örneği kullanarak, JSON 'u alabilir ve aşağıdaki ayrıntıları almak için ayrıştırın.
 
 ```powershell
-$testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
+$testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
 
   Write-Host "OSName: $($testresult.OSName)"
   Write-Host "OSVersion: $($testresult.OSVersion)"
@@ -144,7 +145,7 @@ PowerShell 'de API 'yi çağırmak için aşağıdaki adımları izleyin:
 Aşağıdaki kod örneği, API 'ye yönelik bir PowerShell çağrısını gösterir.
 
 ```powershell
-$accesstoken = “Get token for your Client AAD App”
+$accesstoken = "Get token for your Client AAD App"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")
 $Body = @{
@@ -156,7 +157,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 
@@ -167,7 +168,7 @@ Aşağıdaki ekran yakalama, PowerShell 'de API çağırma için bir örnek gös
 Önceki örneği kullanarak, JSON 'u alabilir ve aşağıdaki ayrıntıları almak için ayrıştırın.
 
 ```powershell
-$testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
+$testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
 
   Write-Host "OSName: $($testresult.OSName)"
   Write-Host "OSVersion: $($testresult.OSVersion)"
@@ -219,7 +220,7 @@ Aşağıdaki ekran yakalama, kıvrımlı çağrının JSON sonuçlarını göste
 
 Uygulamanızı oluşturmak istediğiniz Azure AD kiracısını seçmek için aşağıdaki adımları kullanın.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Üstteki menü çubuğunda hesabınızı seçin ve dizin listesinde, uygulamanızı kaydetmek istediğiniz Active Directory kiracıyı seçin. Ya da, genel abonelik filtresini görmek için **Dizin + abonelik** simgesini seçin. Aşağıdaki ekran yakalama, bu filtrenin bir örneğini gösterir.
 
    ![Abonelik filtresini seçin](./media/stclient-subscription-filter.png)
@@ -245,9 +246,9 @@ Uygulamanızı oluşturmak istediğiniz Azure AD kiracısını seçmek için aş
 2. **Uygulama kayıtları**altında **+ Yeni uygulama kaydı**' nı seçin.
 3. **Oluştur**altında, aşağıdaki alanlar için gereken bilgileri girin:
 
-   - **Ad** : uygulama için kolay bir ad girin. Örneğin, "SelfTestClient".
-   - **Uygulama türü** – **Web uygulaması/API** seçin
-   - **Oturum açma URL 'si** – tür "https:\//isvapp.azurewebsites.net/selftest-VM"
+   - **Ad** -uygulama için kolay bir ad girin. Örneğin, "SelfTestClient".
+   - **Uygulama türü** - **Web uygulaması/API** seçin
+   - **Oturum açma URL 'si** -tür "https:\//isvapp.azurewebsites.net/selftest-VM"
 
 4. **Oluştur**'u seçin.
 5. **Uygulama kayıtları** veya **kayıtlı**uygulama altında **uygulama kimliği**' ni kopyalayın.
@@ -270,8 +271,8 @@ Uygulamanızı oluşturmak istediğiniz Azure AD kiracısını seçmek için aş
 
 14. **Seç**'e tıklayın.
 15. **Done** (Bitti) öğesini seçin.
-16. **Ayarlar** bölümünde **Özellikler**'i seçin.
-17. **Özellikler**altında, **çok**kiracılı olarak aşağı kaydırın. **Evet**’i seçin.
+16. **Ayarlar** bölümünde **Özellikler**’i seçin.
+17. **Özellikler**altında, **çok**kiracılı olarak aşağı kaydırın. **Evet**' i seçin.
 
     ![Çok kiracılı uygulama için yapılandırma](./media/stclient-yes-multitenant.png)
 
@@ -377,7 +378,7 @@ Yetkili uygulamalarınızdan herhangi biri için Auth0 sormak için, aşağıdak
 
 ```powershell
 $clientId = "Application Id of AD Client APP";
-$clientSecret = "Secret Key of AD Client APP “
+$clientSecret = "Secret Key of AD Client APP "
 $audience = "https://management.core.windows.net";
 $authority = "https://login.microsoftonline.com/common/oauth2/token"
 $grantType = "client_credentials";
@@ -397,8 +398,8 @@ $token.AccessToken
 Kimlik doğrulama üstbilgisinde aşağıdaki kodu kullanarak belirteci kendi kendine test API 'sine geçirin:
 
 ```powershell
-$redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
-$accesstoken = ‘place your token here’
+$redirectUri = 'https://isvapp.azurewebsites.net/selftest-vm'
+$accesstoken = 'place your token here'
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")

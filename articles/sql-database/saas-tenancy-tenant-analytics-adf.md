@@ -1,22 +1,22 @@
 ---
-title: "Azure SQL veri ambarı 'nı kullanarak kiracı veritabanlarına yönelik analiz sorguları çalıştırma "
+title: Analitik sorguları kiracı veritabanlarına karşı çalıştırma
 description: Azure SQL veritabanı, SQL veri ambarı, Azure Data Factory veya Power BI ayıklanan verileri kullanan çapraz kiracı Analizi sorguları.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: f4a89029d7ed90f1a2406dcf0f8046a1c651353f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4791cd3a6b6f72c5d9ee4ca828d66b0d361f356c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691883"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816777"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Azure SQL veritabanı, SQL veri ambarı, Data Factory ve Power BI SaaS analizlerini keşfet
 
@@ -103,9 +103,9 @@ Nesne Gezgini:
 1. Veritabanları düğümünü genişletin ve kiracı veritabanlarının listesini görüntüleyin.
 1. *Katalog-DPT-&lt;kullanıcı&gt;* sunucusunu genişletin.
 1. Aşağıdaki nesneleri içeren analiz deposunu görmediğinizi doğrulayın:
-    1. **Raw_Tickets**, **raw_Customers**, **raw_Events** ve **raw_Venues** tabloları, kiracı veritabanlarından ham ayıklanan verileri tutar.
+    1. Tablolar **raw_Tickets**, **raw_Customers**, **raw_Events** ve **raw_Venues** kiracı veritabanlarından ham ayıklanan verileri tutar.
     1. Yıldız şeması tabloları **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**ve **dim_Dates**.
-    1. **Sp_transformExtractedData** saklı yordamı, verileri dönüştürmek ve yıldız şema tablolarına yüklemek için kullanılır.
+    1. **Sp_transformExtractedData** saklı yordam, verileri dönüştürmek ve yıldız şema tablolarına yüklemek için kullanılır.
 
 ![DWtables 'lar](media/saas-tenancy-tenant-analytics/DWtables.JPG)
 
@@ -129,7 +129,7 @@ Bu bölüm, oluşturulan veri fabrikasını araştırır. Data Factory 'yi başl
 2. Data Factory tasarımcısını ayrı bir sekmede başlatmak için **& İzleyici** kutucuğuna yaz ' a tıklayın. 
 
 ## <a name="extract-load-and-transform-data"></a>Verileri ayıklama, yükleme ve dönüştürme
-Azure Data Factory, verilerin ayıklanmasını, yüklenmesini ve dönüştürülmesini düzenlemek için kullanılır. Bu öğreticide, kiracı veritabanlarının her biri için dört farklı SQL görünümünden Veri ayıkladığınızda: **Rawbiletleri**, **rawcustomers**, **Rawevents**ve **rawvenlar**. Bu görünümler, mekan kimliği içerir, bu sayede veri ambarındaki her bir yerden verileri ayırt edebilirsiniz. Veriler, veri ambarındaki ilgili hazırlama tablolarına yüklenir: **raw_Tickets**, **raw_customers**, **raw_Events** ve **raw_Venue**. Daha sonra saklı bir yordam ham verileri dönüştürür ve yıldız şema tablolarını doldurur: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**ve **dim_Dates**.
+Azure Data Factory, verilerin ayıklanmasını, yüklenmesini ve dönüştürülmesini düzenlemek için kullanılır. Bu öğreticide, kiracı veritabanlarının her biri için dört farklı SQL görünümünden Veri ayıkladığınızda: **Rawbiletleri**, **rawcustomers**, **Rawevents**ve **rawvenlar**. Bu görünümler, mekan kimliği içerir, bu sayede veri ambarındaki her bir yerden verileri ayırt edebilirsiniz. Veriler, veri ambarındaki ilgili hazırlama tablolarına yüklenir: **raw_Tickets**, **raw_customers**, **raw_Events** ve **raw_Venue**. Daha sonra saklı bir yordam ham verileri dönüştürür ve yıldız şema tablolarını **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**ve **dim_Dates**doldurur.
 
 Önceki bölümde, Veri Fabrikası dahil olmak üzere gerekli Azure kaynaklarını dağıtıp başlatıttınız. Dağıtılan veri fabrikası, kiracı verilerini ayıklamak, yüklemek ve dönüştürmek için gereken işlem hatlarını, veri kümelerini, bağlı hizmetleri vb. içerir. Daha sonra bu nesneleri araştıralım ve sonra verileri kiracı veritabanlarından veri ambarına taşımak için işlem hattını tetikleyelim.
 
@@ -198,7 +198,7 @@ Power BI bağlanmak ve daha önce oluşturduğunuz görünümleri içeri aktarma
 
     ![veritabanı-oturum açma](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
-6. **Gezgin** bölmesinde, analiz veritabanı altında, yıldız şeması tablolarını seçin: **fact_Tickets**, **dim_Events**, **dim_Venues**, **dim_Customers** ve **dim_Dates**. Sonra **Yükle**' yi seçin. 
+6. **Gezgin** bölmesinde, analiz veritabanı altında, yıldız şema tablolarını seçin: **fact_Tickets**, **dim_Events**, **dim_Venues**, **dim_Customers** ve **dim_Dates**. Sonra **Yükle**' yi seçin. 
 
 Tebrikler! Verileri başarıyla Power BI yüklendi. Artık kiracılarınız hakkında içgörüler elde etmek için ilginç görselleştirmeler keşfedebilirsiniz. Analiz 'in Wingtip bilet iş ekibine veri odaklı bazı öneriler sağlayabilmesine yol açalım. Öneriler, iş modelini ve müşteri deneyimini iyileştirmenize yardımcı olabilir.
 
@@ -228,7 +228,7 @@ Her olay için Contoso Concert salonu için zaman içinde birikimli bilet satı�
 
 Bilet satışı desenlerine yönelik Öngörüler, Wingtip biletlerinin iş modellerini iyileştirmesine neden olabilirler. Tüm kiracılar eşit olarak doldurulmak yerine, Wingtip, farklı işlem boyutlarına sahip hizmet katmanlarını göstermelidir. Günde daha fazla Bilet satmayı gerektiren daha büyük havalandırma noktaları, daha yüksek bir hizmet düzeyi sözleşmesi (SLA) ile daha yüksek bir katman sunulamaz. Bu havalandırma kaynakları, veritabanlarının veritabanlarına göre daha yüksek kaynak limitleriyle havuza yerleştirilmesini sağlayabilir. Her hizmet katmanında saatlik satış tahsisi olabilir ve bu da ayırmayı aşmamak için ek ücretler ücretlendirilir. Düzenli olarak elde edilen satışları olan büyük havalandırma noktaları, daha yüksek katmanlardan faydalanır ve Wingtip biletleri, hizmetini daha verimli bir şekilde kullanabilir.
 
-Bu arada, bazı Wingtip bilet müşterileri, hizmet maliyetini yaslamak için yeterli bilet satmaya uğraşır. Belki de bu içgörüler, düşük performanslı havalandırma işlemlerinde bilet satışlarını artırma fırsatına sahiptir. Daha yüksek satış, hizmetin algılanan değerini artırır. Fact_Tickets sağ tıklayın ve **Yeni ölçü**seçeneğini belirleyin. **Averagebilet Ssold**adlı yeni ölçü için aşağıdaki ifadeyi girin:
+Bu arada, bazı Wingtip bilet müşterileri, hizmet maliyetini yaslamak için yeterli bilet satmaya uğraşır. Belki de bu içgörüler, düşük performanslı havalandırma işlemlerinde bilet satışlarını artırma fırsatına sahiptir. Daha yüksek satış, hizmetin algılanan değerini artırır. Fact_Tickets sağ tıklayıp **Yeni ölçü**seçeneğini belirleyin. **Averagebilet Ssold**adlı yeni ölçü için aşağıdaki ifadeyi girin:
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))

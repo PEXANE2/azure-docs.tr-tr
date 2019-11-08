@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: tisande
-ms.openlocfilehash: d92e24836a0eb5757de9bbdb516be290456deb7f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333267"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819099"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki GROUP BY yan tümcesi
 
 GROUP BY yan tümcesi sorgunun sonuçlarını belirtilen bir veya daha fazla özellik değerine göre böler.
 
 > [!NOTE]
-> Azure Cosmos DB Şu anda, [.NET SDK 3,3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.3.0) veya sonrakı sürümlerde grubunu destekler.
-> Diğer dil SDK 'Sı ve Azure portalı desteği şu anda mevcut değildir ancak planlanmaktadır.
+> Azure Cosmos DB Şu anda, .NET SDK 3,3 ve üzeri sürümlerde ve JavaScript SDK 3,4 ve üzeri sürümlerde grubunu desteklemektedir.
+> Diğer dil SDK desteği şu anda kullanılamıyor ancak planlanmaktadır.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -173,6 +173,6 @@ Sonuçlar şunlardır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Başlarken](sql-query-getting-started.md)
+- [Başlangıç](sql-query-getting-started.md)
 - [SELECT yan tümcesi](sql-query-select.md)
 - [Toplama işlevleri](sql-query-aggregates.md)

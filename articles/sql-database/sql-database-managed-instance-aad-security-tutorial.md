@@ -1,5 +1,5 @@
 ---
-title: Azure AD Server sorumlularını (oturum açma) kullanarak Azure SQL veritabanı yönetilen örneği güvenliği
+title: Azure AD Server sorumluları (oturum açmalar) ile yönetilen örnek güvenliği
 description: Azure SQL veritabanı 'nda yönetilen bir örneği güvenli hale getirmeye yönelik teknikler ve özellikler hakkında bilgi edinin ve Azure AD Server sorumlularını (oturum açma) kullanın
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 4816b59c56f10a20f74777ad1badc11b59a599d1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bd65a21c2aa21643c76966410931949db7d17ad6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689463"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822799"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Öğretici: Azure AD Server sorumlularını (oturum açma) kullanarak Azure SQL veritabanı 'nda yönetilen örnek güvenliği
 
@@ -258,7 +258,7 @@ Veritabanı izinleri verme hakkında daha fazla bilgi için bkz. [veritabanı al
     **Mygroup** 'a ait olan tüm kullanıcılar **Mymitestdb** veritabanına erişebilir.
 
     > [!IMPORTANT]
-    > Bir Azure AD sunucu sorumlusu 'ndan (oturum açma) bir **Kullanıcı** oluştururken, **oturum açma**işleminden aynı login_name için user_name 'yi belirtin.
+    > Bir Azure AD sunucu sorumlusu 'ndan (oturum açma) bir **Kullanıcı** oluştururken, user_name **oturum açma**işleminden aynı login_name olarak belirtin.
 
     Daha fazla bilgi için bkz. [Kullanıcı oluşturma](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current).
 

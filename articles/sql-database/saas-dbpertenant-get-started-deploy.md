@@ -1,5 +1,5 @@
 ---
-title: Kiracı başına veritabanı SaaS öğreticisi-Azure SQL veritabanı
+title: Veritabanı başına kiracı SaaS öğreticisi
 description: Azure SQL veritabanı 'nı kullanarak kiracı başına veritabanı desenini ve diğer SaaS desenlerini gösteren Wingtip biletleri SaaS çok kiracılı uygulamasını dağıtın ve araştırın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: b271c4bbf942bee70c4995ee04ec370591d4f67d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 31f712f80ee2492e4bbaec99bd093d46f9d04e6d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692177"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824005"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL veritabanı ile kiracı başına veritabanı modelini kullanan çok kiracılı SaaS uygulamasını dağıtma ve araştırma
 
@@ -180,7 +180,7 @@ Arka plan işlerini denetlemek ve izlemek isterseniz, aşağıdaki cmdlet 'leri 
 
     - Varsayılan olarak, arka plan işleri 120 dakika boyunca çalışır.
     - Her iş, *sp_CpuLoadGenerator*yürüterek bir KIRACı veritabanında CPU tabanlı yüke neden olur. Yükün yoğunluğu ve süresi `$DemoScenario`göre değişir.
-    - yüksek CPU yüküne neden olan bir SQL SELECT ifadesinin etrafında *sp_CpuLoadGenerator* döngüleri. SEÇIM sorunları arasındaki zaman aralığı, denetlenebilir bir CPU yükü oluşturmak için parametre değerlerine göre değişir. Yük düzeyleri ve aralıklar daha gerçekçi yükün benzetimini yapmak için rasgeledir.
+    - yüksek CPU yüküne neden olan bir SQL SELECT ifadesinin etrafında döngüler *sp_CpuLoadGenerator* . SEÇIM sorunları arasındaki zaman aralığı, denetlenebilir bir CPU yükü oluşturmak için parametre değerlerine göre değişir. Yük düzeyleri ve aralıklar daha gerçekçi yükün benzetimini yapmak için rasgeledir.
     - Bu. SQL dosyası *Wingtiptenantdb\\dbo\\StoredProcedures\\* altında depolanır.
 
 4. `$OneTime = $false`, yük Oluşturucu arka plan işlerini başlatır ve çalışmaya devam eder. Her 10 saniyede, sağlanan tüm yeni kiracılar için izler. `$OneTime = $true`ayarlarsanız, LoadGenerator arka plan işlerini başlatır ve ardından ön planda çalışmayı sonlandırır. Bu öğretici için `$OneTime = $false`bırakın.

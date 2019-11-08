@@ -4,15 +4,16 @@ description: Teklif kullanılabilirliğini yönetmek için özel SKU 'Ları kull
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: pabutler
-ms.openlocfilehash: 940b50cf4a04abacd4d7be2104dd97fb8b3db736
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: eb6eac5eafaeea239bfaf9cf2aface3db659dd57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883123"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818829"
 ---
 <a name="private-skus-and-plans"></a>Özel SKU 'Lar ve planlar
 ============
@@ -44,7 +45,7 @@ SKU özel olarak işaretlenmişse ve teklifin yeniden kullanılabilen diskler i�
 >[!NOTE]
 >Yayımlandıktan sonra ortak bir SKU özel hale getirilebilir.
 
-<a name="select-an-image"></a>Resim seçme
+<a name="select-an-image"></a>Görüntü seçin
 ------------------
 
 Özel SKU için yeni diskler sağlayabilir veya başka bir SKU 'da zaten sağlanmış olan disklerin aynısını kullanabilirsiniz. Bu, yalnızca fiyatlandırmayı veya açıklamayı değiştirir. Diskleri yeniden kullanmak için, "Bu SKU görüntüsünü ortak bir SKU 'dan yeniden kullan" isteminde yanıt olarak **Evet** ' i seçin.
@@ -53,7 +54,7 @@ SKU özel olarak işaretlenmişse ve teklifin yeniden kullanılabilen diskler i�
 
 SKU 'nun görüntüleri yeniden yeniden sağladığını doğruladıktan sonra, görüntüler için kaynak veya *temel* SKU 'yu seçin:
 
-![Resim seçme](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
+![Görüntü seçin](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
 
 Teklifi yayımladığınızda, seçilen SKU 'daki görüntüler özel ücretler/koşullarla özel SKU KIMLIĞI altında kullanılabilir hale getirilir. Özel SKU yalnızca hedeflenen hedef kitle tarafından görülebilir.
 
@@ -98,7 +99,7 @@ API kullanıyorsanız ve bir CSV dosyası sürdürmek istemiyorsanız, aşağıd
 
 ###  <a name="managing-subscriptions-with-the-api"></a>API ile abonelikleri yönetme
 
-API 'yi kullanarak bir CSV 'yi karşıya yükleyebilir veya doğrudan kitlelerinizi yönetebilir (CSV kullanmadan). Genellikle teklifinizi almanız, `restrictedAudience` nesneyi güncelleştirmeniz ve ardından bu değişiklikleri, hedef kitle üyeleri eklemek veya kaldırmak için teklifinize geri göndermeniz yeterlidir.
+API 'yi kullanarak bir CSV 'yi karşıya yükleyebilir veya doğrudan kitlelerinizi yönetebilir (CSV kullanmadan). Genellikle teklifinizin alınması, `restrictedAudience` nesnesini güncelleştirmeniz ve ardından bu değişiklikleri, hedef kitle üyelerini eklemek veya kaldırmak için teklifinize geri göndermeniz yeterlidir.
 
 Hedef kitle listenizi programlı olarak güncelleştirme:
 
@@ -126,7 +127,7 @@ Hedef kitle listenizi programlı olarak güncelleştirme:
 
     Her kısıtlanmış hedef kitle nesnesi için:
 
-    a. İçeriğini `restrictedAudience.uploadedCsvUri`indirin. İçerik yalnızca üst bilgileri olan bir CSV dosyasıdır. Örneğin:
+    a. `restrictedAudience.uploadedCsvUri`içeriğini indirin. İçerik yalnızca üst bilgileri olan bir CSV dosyasıdır. Örneğin:
 
         type,id,description
         subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
@@ -136,7 +137,7 @@ Hedef kitle listenizi programlı olarak güncelleştirme:
 
     c. Güncelleştirilmiş CSV dosyasını [Azure Blob depolama](../../storage/blobs/storage-blobs-overview.md) veya [OneDrive](https://onedrive.live.com)gibi bir konuma yükleyin ve dosyanıza salt okunurdur bir bağlantı oluşturun. Bu, yeni bir *Sasurl*'niz olacaktır.
 
-    d. Anahtarı yeni sasurl 'niz ile güncelleştirin. `restrictedAudience.uploadedCsvUri`
+    d. `restrictedAudience.uploadedCsvUri` anahtarını yeni *Sasurl*'ınızla güncelleştirin.
 
     **Bulut İş Ortağı Portalı özel teklifiniz için özgün Aboneliklerin listesini el ile girdiyseniz:**
 
@@ -156,7 +157,7 @@ Hedef kitle listenizi programlı olarak güncelleştirme:
         ]}
     ```
 
-    a. Kısıtlanmış her bir hedef kitle nesnesi için, `restrictedAudience.manualEntries` listedeki girdileri gerektiği şekilde ekleyin veya silin.
+    a. Her kısıtlanmış hedef kitle nesnesi için, `restrictedAudience.manualEntries` listesinde girdileri gerektiği gibi ekleyin veya silin.
 
 4. Özel teklifinizin her SKU 'SU için tüm *Kısıttedaudıence* nesnelerinin güncelleştirilmesi bittiğinde [teklifi güncelleştirin](cloud-partner-portal-api-creating-offer.md):
 

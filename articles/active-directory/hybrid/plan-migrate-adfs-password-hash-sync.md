@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ba9b06c9a3e6025d7227493713fe9187fba233
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9603cdf11373891aaa3541330cb7f65c09352496
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514897"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818900"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Azure Active Directory için Federasyondan Parola karması eşitlemesine geçiş
 
@@ -161,7 +161,7 @@ Koşullu erişimde **konum** koşulu hakkında daha fazla bilgi için bkz. [Acti
 
 Bir cihazı Azure AD 'ye katdığınızda, cihazların güvenlik ve uyumluluk için erişim standartlarınızı karşıladığından emin olan koşullu erişim kuralları oluşturabilirsiniz. Ayrıca, kullanıcılar kişisel hesap yerine kuruluş iş veya okul hesabı kullanarak bir cihazda oturum açabilirler. Karma Azure AD 'ye katılmış cihazları kullandığınızda Active Directory etki alanına katılmış cihazlarınızı Azure AD 'ye ekleyebilirsiniz. Federal ortamınız bu özelliği kullanacak şekilde ayarlanmış olabilir.
 
-Etki alanlarınız, Windows 10 istemcileri için Parola karması eşitlemesine dönüştürüldükten sonra etki alanına katılmış tüm cihazlarda çalışmaya devam ettiğinden emin olmak için Azure AD Connect cihaz seçeneklerini kullanarak SCP 'YI doldurun ve ardından etkin olarak eşitleyin Azure AD 'ye dizin bilgisayar hesapları. 
+Etki alanlarınız, Windows 10 istemcileri için Parola karması eşitlemesine dönüştürüldükten sonra etki alanına katılmış tüm cihazlarda çalışmaya devam ettiğinden emin olmak için, Active Directory bilgisayarı eşitlemek üzere Azure AD Connect cihaz seçeneklerini kullanmanız gerekir hesapları Azure AD 'ye. 
 
 Windows 8 ve Windows 7 bilgisayar hesaplarında, karma birleşimi bilgisayarı Azure AD 'ye kaydetmek için sorunsuz SSO kullanır. Windows 10 cihazları için yaptığınız gibi Windows 8 ve Windows 7 bilgisayar hesaplarını eşitlemeniz gerekmez. Ancak, güncelleştirilmiş bir workplacejoın. exe dosyasını (. msi dosyası aracılığıyla) Windows 8 ve Windows 7 istemcilerine dağıtmanız gerekir, böylece bunları sorunsuz SSO kullanarak kaydedebilirler. [. Msi dosyasını indirin](https://www.microsoft.com/download/details.aspx?id=53554).
 
@@ -250,7 +250,7 @@ Planlama amacıyla, yaklaşık 20.000 kullanıcının 1 saat içinde işlendiği
 Parola karma eşitlemesinin düzgün çalıştığını doğrulamak için Azure AD Connect sihirbazındaki **sorun giderme** görevini doldurun:
 
 1. Yönetici olarak çalıştır seçeneğini kullanarak Azure AD Connect sunucunuzda yeni bir Windows PowerShell oturumu açın.
-2. @No__t_0 veya `Set-ExecutionPolicy Unrestricted` çalıştırın.
+2. `Set-ExecutionPolicy RemoteSigned` veya `Set-ExecutionPolicy Unrestricted`çalıştırın.
 3. Azure AD Connect Sihirbazı 'nı başlatın.
 4. **Ek görevler** sayfasına gidin, **sorun gider**' i seçin ve ardından **İleri**' yi seçin.
 5. **Sorun giderme** sayfasında, PowerShell 'de sorun giderme menüsünü başlatmak için **Başlat** ' ı seçin.
@@ -263,7 +263,7 @@ Sorun giderme sorunları için bkz. [Azure AD Connect Sync ile parola karması e
 
 Cihazlarınızın sorunsuz SSO kullanması için, Active Directory ' de bir Grup İlkesi kullanarak kullanıcıların intranet bölgesi ayarlarına bir Azure AD URL 'SI eklemeniz gerekir.
 
-Varsayılan olarak, Web tarayıcıları bir URL 'den Internet veya intranet gibi doğru bölgeyi otomatik olarak hesaplar. Örneğin, **http: \/ \/contoso/** intranet bölgesine eşlenir ve **http: \/ \/intranet. contoso.com** Maps (URL bir nokta içerdiğinden). Tarayıcılar, yalnızca URL 'YI tarayıcının intranet bölgesine eklediğinizde Azure AD URL 'SI gibi bir bulut uç noktasına Kerberos bileti gönderir.
+Varsayılan olarak, Web tarayıcıları bir URL 'den Internet veya intranet gibi doğru bölgeyi otomatik olarak hesaplar. Örneğin, **http:\/\/contoso/** intranet bölgesine eşlenir ve **http:\/\/intranet.contoso.com** Maps for Internet Zone (URL bir nokta içerdiğinden). Tarayıcılar, yalnızca URL 'YI tarayıcının intranet bölgesine eklediğinizde Azure AD URL 'SI gibi bir bulut uç noktasına Kerberos bileti gönderir.
 
 Cihazlarınızda gerekli değişiklikleri [almak](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) için adımları izleyin.
 
@@ -313,7 +313,7 @@ AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıys
    > [!IMPORTANT]
    > Bu noktada, tüm Federasyon etki alanlarınız yönetilen kimlik doğrulamasına göre değişir. Parola karması eşitleme, yeni kimlik doğrulama yöntemidir.
 
-7. Azure AD portalında **Azure Active Directory**  > **Azure AD Connect**' yı seçin.
+7. Azure AD portalında **Azure Active Directory** > **Azure AD Connect**' yı seçin.
 8. Bu ayarları doğrulayın:
    * **Federasyon** **devre dışı**olarak ayarlandı.
    * **Kesintisiz çoklu oturum açma** **özelliği etkin**olarak ayarlanmıştır.
@@ -335,9 +335,9 @@ AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıys
 3. **Azure AD 'ye Bağlan** sayfasında, bir genel yönetici hesabının kullanıcı adını ve parolasını girin.
 4. **Kullanıcı oturum açma** sayfasında **Parola karması eşitleme** düğmesini seçin. **Çoklu oturum açmayı etkinleştir**' i seçin ve ardından **İleri**' yi seçin.
 
-   Parola karması eşitlemesini etkinleştirmeden önce: Kullanıcı oturum açma sayfasında yapılandırmayın seçeneğini gösteren ![Screenshot ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
+   Parola karma eşitlemesini etkinleştirmeden önce: Kullanıcı oturum açma sayfasında yapılandırmayın seçeneğini gösteren ekran görüntüsü ![](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
-   Parola karma eşitlemesini etkinleştirdikten sonra: Kullanıcı oturum açma sayfasında yeni seçenekleri gösteren ![Screenshot ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
+   Parola karma eşitlemesini etkinleştirdikten sonra: Kullanıcı oturum açma sayfasında yeni seçenekleri gösteren ekran görüntüsü ![](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
    
    > [!NOTE]
    > Azure AD Connect Version 1.1.880.0 ile başlayarak, **sorunsuz çoklu oturum açma** onay kutusu varsayılan olarak seçilidir.
@@ -353,7 +353,7 @@ AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıys
 
 6. **Yapılandırmaya hazırlanma** sayfasında, **yapılandırma tamamlandığında eşitleme işlemini başlat** onay kutusunun işaretli olduğundan emin olun. Ardından **Yapılandır**' ı seçin.
 
-   yapılandırmaya hazırlanma sayfasında Yapılandır düğmesini gösteren ![Screenshot ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image15.png)<br />
+   yapılandırmaya hazırlanma sayfasında Yapılandır düğmesini gösteren ekran görüntüsü ![](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image15.png)<br />
    **Yapılandır** düğmesini seçtiğinizde, önceki adımda gösterildiği gıbı sorunsuz SSO yapılandırılır. Parola karması eşitleme yapılandırması daha önce etkinleştirildiğinden değiştirilmedi.
 
    > [!IMPORTANT]
@@ -382,7 +382,7 @@ Azure AD PowerShell modülünü kullanarak dönüştürmeyi doldurun:
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
 
-3. Azure AD portalında **Azure Active Directory**  > **Azure AD Connect**' yı seçin.
+3. Azure AD portalında **Azure Active Directory** > **Azure AD Connect**' yı seçin.
 4. Aşağıdaki komutu çalıştırarak etki alanının yönetilmek üzere dönüştürülmüş olduğunu doğrulayın:
 
    ``` PowerShell
@@ -400,7 +400,7 @@ Kiracınızda Federal Kimlik kullanılıyorsa, kullanıcılar Azure AD oturum a�
 Parola karması eşitlemesini sınamak için:
 
 1. Sorunsuz SSO 'nun oturumunuzu otomatik olarak açmasını sağlamak için Internet Explorer 'ı InPrivate modda açın.
-2. Office 365 oturum açma sayfasına gidin ([ https://portal.office.com](https://portal.office.com/)).
+2. Office 365 oturum açma sayfasına gidin ([https://portal.office.com](https://portal.office.com/)).
 3. Bir Kullanıcı UPN 'si girin ve ardından **İleri**' yi seçin. Şirket içi Active Directory örneğinden eşitlenmiş bir karma kullanıcının UPN 'sini girdiğinizden ve daha önce federal kimlik doğrulamasını kullanmış olduğunuzdan emin olun. Kullanıcı adını ve parolayı girdiğiniz bir sayfa görüntülenir:
 
    ![Kullanıcı adı gireceğiniz oturum açma sayfasını gösteren ekran görüntüsü](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)
@@ -417,8 +417,8 @@ Parola karması eşitlemesini sınamak için:
 1. Şirket ağına bağlı olan, etki alanına katılmış bir makinede oturum açın.
 2. Internet Explorer veya Chrome 'da aşağıdaki URL 'Lerden birine gidin ("contoso" yerine etki alanınızı değiştirin):
 
-   * https: \/ \/myapps. microsoft.com/contoso.com
-   * https: \/ \/myapps. microsoft.com/contoso.onmicrosoft.com
+   * https:\/\/myapps.microsoft.com/contoso.com
+   * https:\/\/myapps.microsoft.com/contoso.onmicrosoft.com
 
    Kullanıcı, "oturumunuzu açmaya çalışırken" iletisini gösteren Azure AD oturum açma sayfasına kısaca yönlendirilir. Kullanıcıdan Kullanıcı adı veya parola istenmez.<br />
 

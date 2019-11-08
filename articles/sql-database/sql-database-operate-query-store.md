@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı 'nda çalışan sorgu deposu
+title: Sorgu deposunu çalıştırma
 description: Azure SQL veritabanı 'nda sorgu deposunu nasıl çalıştıracağınızı öğrenin
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: b4f999818fe3b3517ee3fb48c22e616ee50f2d88
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fa60992c85e69143bfd65cc1a1f420ed85c8fd93
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567144"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802764"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Azure SQL veritabanı 'nda sorgu deposunu çalıştırma
 
@@ -29,15 +29,15 @@ Sorgu deposu, Kasım 2015 ' den beri Azure SQL veritabanı 'nda [genel olarak ku
 
 ## <a name="optimal-query-store-configuration"></a>En iyi sorgu deposu yapılandırması
 
-Bu bölümde, sorgu deposunun ve [SQL veritabanı danışmanı ve performans panosu](https://azure.microsoft.com/updates/sqldatabaseadvisorga/)gibi bağımlı özelliklerin güvenilir bir şekilde çalışmasını sağlamak için tasarlanan en iyi yapılandırma Varsayılanları açıklanmaktadır. Varsayılan yapılandırma, sürekli veri toplama için en iyi duruma getirilmiştir, bu da kapalı/READ_ONLY durumlarında harcanan en az süredir.
+Bu bölümde, sorgu deposunun ve [SQL veritabanı danışmanı ve performans panosu](https://azure.microsoft.com/updates/sqldatabaseadvisorga/)gibi bağımlı özelliklerin güvenilir bir şekilde çalışmasını sağlamak için tasarlanan en iyi yapılandırma Varsayılanları açıklanmaktadır. Varsayılan yapılandırma, sürekli veri toplama için en iyi duruma getirilmiştir. Bu, kapalı/READ_ONLY durumlarında harcanan en az zamandır.
 
-| Yapılandırma | Açıklama | Varsayılan | Yorum |
+| Yapılandırma | Açıklama | Varsayılan | Açıklama |
 | --- | --- | --- | --- |
 | MAX_STORAGE_SIZE_MB |Sorgu deposunun müşteri veritabanının içinde götürebileceği veri alanı sınırını belirtir |100 |Yeni veritabanları için zorlandı |
 | INTERVAL_LENGTH_MINUTES |Sorgu planları için toplanan çalışma zamanı istatistiklerinin toplandığı ve kalıcı olduğu zaman penceresinin boyutunu tanımlar. Her etkin sorgu planının, bu yapılandırmayla tanımlanan bir süre için en fazla bir satırı vardır |60 |Yeni veritabanları için zorlandı |
 | STALE_QUERY_THRESHOLD_DAYS |Kalıcı çalışma zamanı istatistikleri ve etkin olmayan sorguların bekletme süresini denetleyen zamana dayalı temizleme İlkesi |30 |Önceki varsayılan ile yeni veritabanları ve veritabanları için zorlandı (367) |
-| SIZE_BASED_CLEANUP_MODE |Sorgu deposu veri boyutu sınıra yaklaşırsa otomatik veri temizleme işleminin yapılıp yapılmayacağını belirtir |OTOMATİK |Tüm veritabanları için zorlandı |
-| QUERY_CAPTURE_MODE |Tüm sorguların veya yalnızca bir sorgu alt kümesinin izlenip izlenmediğini belirtir |OTOMATİK |Tüm veritabanları için zorlandı |
+| SIZE_BASED_CLEANUP_MODE |Sorgu deposu veri boyutu sınıra yaklaşırsa otomatik veri temizleme işleminin yapılıp yapılmayacağını belirtir |Otomatik |Tüm veritabanları için zorlandı |
+| QUERY_CAPTURE_MODE |Tüm sorguların veya yalnızca bir sorgu alt kümesinin izlenip izlenmediğini belirtir |Otomatik |Tüm veritabanları için zorlandı |
 | FLUSH_INTERVAL_SECONDS |Diske reçeteye göre, yakalanan çalışma zamanı istatistiklerinin bellekte tutulduğu maksimum süreyi belirtir |900 |Yeni veritabanları için zorlandı |
 |  | | | |
 

@@ -1,26 +1,26 @@
 ---
-title: PowerShell-bir TDE koruyucuyu kaldırma-Azure SQL veritabanı | Microsoft Docs
+title: TDE koruyucusunu kaldır-PowerShell
 description: Kendi anahtarını getir (BYOK) desteği ile TDE ' i kullanarak bir Azure SQL veritabanı veya veri ambarı için olası riskli bir TDE için nasıl yapılır Kılavuzu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: dc117dd844a3a47cafa1b37170c95fe852bb82ef
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df1bf5a53cd5c49465acbe363c71a4a316cd2cc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566060"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820787"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell kullanarak Saydam Veri Şifrelemesi (TDE) koruyucusunu kaldırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -40,9 +40,9 @@ Bir anahtarın tehlikeye atılmaya şüphelenildiği durumlarda, bir hizmet veya
 
 Key Vault ' de TDE koruyucusu silindikten sonra, **sunucu altındaki şifreli veritabanlarına yapılan tüm bağlantıların engellendiğini ve bu veritabanlarının çevrimdışı olduğunu ve 24 saat içinde bırakılacağını**unutmayın. Güvenliği aşılmış anahtarla şifrelenen eski yedeklemeler artık erişilebilir değil.
 
-Aşağıdaki adımlarda, belirli bir veritabanının sanal günlük dosyaları (VLF) tarafından hala kullanımda olan TDE Protector parmak izlerinin nasıl denetinin yapılacağı ana hatlarıyla gösterilmiştir. Veritabanının geçerli TDE koruyucunun parmak izi ve veritabanı KIMLIĞI şu şekilde çalıştırılarak bulunabilir: SELECT [database_id],       [encryption_state], [encryptor_type],/*asimetrik anahtar, Akv anlamına gelir, sertifika hizmet tarafından yönetilen anahtarlar*/[encryptor_thumbprint], [sys] öğesinden geliyor. [ dm_database_encryption_keys] 
+Aşağıdaki adımlarda, belirli bir veritabanının sanal günlük dosyaları (VLF) tarafından hala kullanımda olan TDE Protector parmak izlerinin nasıl denetinin yapılacağı ana hatlarıyla gösterilmiştir. Veritabanının geçerli TDE koruyucunun parmak izi ve veritabanı KIMLIĞI şu şekilde çalıştırılarak bulunabilir: SELECT [database_id],       [encryption_state], [encryptor_type],/*asimetrik anahtar, AKV anlamına gelir, sertifika hizmet tarafından yönetilen anahtarlar*/[ encryptor_thumbprint], [sys] ÖĞESINDEN. [dm_database_encryption_keys] 
  
-Aşağıdaki sorgu VLFs 'yi ve kullanılan parmak izlerini kullanan Şifreleyici 'yi geri döndürür. Her farklı parmak izi Azure Key Vault (AKV) içinde farklı bir anahtara başvurur: SELECT * FROM sys. DM _db_log_ınfo (database_id) 
+Aşağıdaki sorgu VLFs 'yi ve kullanılan parmak izlerini kullanan Şifreleyici 'yi geri döndürür. Her farklı parmak izi Azure Key Vault (AKV) içinde farklı bir anahtara başvurur: SELECT * FROM sys. dm_db_log_info (database_id) 
 
 Get-AzureRmSqlServerKeyVaultKey PowerShell komutu, sorguda kullanılan TDE koruyucunun parmak izini sağlar, böylece saklanacak anahtarları ve AKV 'de hangi anahtarların silineceğini görebilirsiniz. Yalnızca, veritabanı tarafından artık kullanılmayan anahtarlar Azure Key Vault güvenle silinebilir.
 
@@ -117,5 +117,5 @@ Bu nasıl yapılır Kılavuzu, olay yanıtından sonra istenen sonuca bağlı ol
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Güvenlik gereksinimleriyle uyum sağlamak için bir sunucunun TDE koruyucusunu döndürme hakkında bilgi edinin: [PowerShell kullanarak Saydam Veri Şifrelemesi koruyucusunu döndürme](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- Güvenlik gereksinimleriyle uyum sağlamak için bir sunucunun TDE koruyucusunu döndürme hakkında bilgi edinin: [PowerShell kullanarak saydam veri şifrelemesi koruyucusunu döndürme](transparent-data-encryption-byok-azure-sql-key-rotation.md)
 - TDE için Kendi Anahtarını Getir desteği ile çalışmaya başlama: [PowerShell kullanarak Key Vault kendi anahtarınızı kullanarak TDE açma](transparent-data-encryption-byok-azure-sql-configure.md)

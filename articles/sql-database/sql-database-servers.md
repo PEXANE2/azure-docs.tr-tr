@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı sunucuları
+title: Sunucular
 description: Azure SQL veritabanı sunucuları ve bunların yönetimi hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 8ebe08f37255743578cbc3dd44f7d84d79b9d17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a3ad3314b8a18ec6a63b5d51bc7d8b3f9d7a6260
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687401"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818295"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL veritabanı sunucuları ve bunların yönetimi
 
@@ -153,7 +153,7 @@ Transact-SQL ile Azure SQL Server, veritabanları ve güvenlik duvarları oluşt
 |[ALTER DATABASE (Azure SQL veri ambarı)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Bir Azure SQL veri ambarını değiştirir.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Bir veritabanını siler.|
 |[sys. database_service_objectives (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Azure SQL veritabanı veya Azure SQL veri ambarı için sürüm (hizmet katmanı), hizmet hedefi (Fiyatlandırma Katmanı) ve elastik havuz adı döndürür. Azure SQL veritabanı sunucusunda ana veritabanında oturum açarsa, tüm veritabanlarına ilişkin bilgileri döndürür. Azure SQL veri ambarı için ana veritabanına bağlı olmanız gerekir.|
-|[sys. DM _db_resource_stats (Azure SQL veritabanı)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Bir Azure SQL veritabanı veritabanı için CPU, GÇ ve bellek tüketimini döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyede bir satır vardır.|
+|[sys. dm_db_resource_stats (Azure SQL veritabanı)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Bir Azure SQL veritabanı veritabanı için CPU, GÇ ve bellek tüketimini döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyede bir satır vardır.|
 |[sys. resource_stats (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Bir Azure SQL veritabanı için CPU kullanımı ve depolama verilerini döndürür. Veriler, beş dakikalık aralıklar içinde toplanır ve toplanır.|
 |[sys. database_connection_stats (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Veritabanı bağlantısı başarıları ve hatalarıyla ilgili bir genel bakış sunan SQL veritabanı veritabanı bağlantı olayları için istatistikleri içerir. |
 |[sys. event_log (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Başarılı Azure SQL veritabanı bağlantılarını, bağlantı başarısızlıklarını ve kilitlenmeleri döndürür. Bu bilgileri, SQL veritabanı ile veritabanı etkinliğinizi izlemek veya sorunlarını gidermek için kullanabilirsiniz.|

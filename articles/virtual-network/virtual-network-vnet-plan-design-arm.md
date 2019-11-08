@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: f7f45e479ad21b27832573b73a5e09e8da1b37b1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 47da2524f719e53edcbd89686a1a0b76fa6e79cd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756123"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802718"
 ---
 # <a name="plan-virtual-networks"></a>Sanal ağları planlayın
 
@@ -27,7 +27,7 @@ Denemek için bir sanal ağ oluşturmak oldukça kolaydır, ancak olasılığın
 
 ## <a name="naming"></a>Adlandırma
 
-Tüm Azure kaynakları bir ada sahiptir. Ad, her kaynak türü için değişebilen bir kapsam içinde benzersiz olmalıdır. Örneğin, bir sanal ağın adı bir [kaynak grubu](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)içinde benzersiz olmalıdır, ancak bir [abonelik](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) veya Azure [bölgesi](https://azure.microsoft.com/regions/#services)içinde yinelenebilir. Zaman içinde birkaç ağ kaynağını yönetirken, kaynak adlandırma yararlı olduğunda tutarlı bir şekilde kullanabileceğiniz bir adlandırma kuralı tanımlama. Öneriler için bkz. [adlandırma kuralları](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#virtual-networking).
+Tüm Azure kaynakları bir ada sahiptir. Ad, her kaynak türü için değişebilen bir kapsam içinde benzersiz olmalıdır. Örneğin, bir sanal ağın adı bir [kaynak grubu](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)içinde benzersiz olmalıdır, ancak bir [abonelik](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) veya Azure [bölgesi](https://azure.microsoft.com/regions/#services)içinde yinelenebilir. Zaman içinde birkaç ağ kaynağını yönetirken, kaynak adlandırma yararlı olduğunda tutarlı bir şekilde kullanabileceğiniz bir adlandırma kuralı tanımlama. Öneriler için bkz. [adlandırma kuralları](/azure/architecture/best-practices/resource-naming#networking).
 
 ## <a name="regions"></a>Bölgeler
 

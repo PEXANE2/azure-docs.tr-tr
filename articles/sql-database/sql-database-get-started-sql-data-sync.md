@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Sync’i ayarlama
+title: Veri eşitlemesini ayarlama
 description: Bu öğreticide, Azure SQL Data Sync ayarlama gösterilmektedir
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 082721ef1436d0b6668016aca29870016038af86
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 315d65b635f34847d0310e6b6adf03e20f2afd45
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689982"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807519"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Öğretici: Azure SQL veritabanı ve şirket içi SQL Server arasında SQL Data Sync ayarlama
 
@@ -145,7 +145,7 @@ Yeni eşitleme grubu oluşturulup dağıtıldıktan sonra, **eşitleme üyeleri 
 1. **Veritabanı Seç** sayfasını kapatmak için **Tamam ' ı** seçin. Ardından, **Şirket Içi yapılandırma** sayfasını kapatmak için **Tamam** ' ı seçin ve yeni eşitleme üyesinin oluşturulması ve dağıtılması için bekleyin. Son olarak, **eşitleme üyelerini Seç** sayfasını kapatmak için **Tamam** ' ı seçin.
 
 > [!NOTE]
-> SQL Data Sync ve yerel aracısına bağlanmak için Kullanıcı adınızı *DataSync_Executor*rolüne ekleyin. Veri eşitleme, bu rolü SQL Server örneğinde oluşturur.
+> SQL Data Sync ve yerel aracısına bağlanmak için, Kullanıcı adınızı rol *DataSync_Executor*ekleyin. Veri eşitleme, bu rolü SQL Server örneğinde oluşturur.
 
 ## <a name="configure-sync-group"></a>Eşitleme grubunu yapılandır
 

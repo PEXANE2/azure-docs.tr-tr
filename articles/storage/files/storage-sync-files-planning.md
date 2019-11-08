@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 698702e24f1f6dfc6b94b75de77c08156832e566
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e1f7aeb5615c1a22c1970f118c24c996ac936870
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177852"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826817"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -143,7 +143,7 @@ Sonuçları CSV 'de göstermek için:
 |-|-|
 | Desktop. ini | Sisteme özel dosya |
 | ethumbs. db $ | Küçük resimler için geçici dosya |
-| ~$ \*. \* | Office geçici dosyası |
+| ~$\*.\* | Office geçici dosyası |
 | \*. tmp | Geçici dosya |
 | \*. laccdb | DB kilitleme dosyasına erişin|
 | 635D02A9D91C401B97884B82B3BCDADEA. * | İç eşitleme dosyası|
@@ -158,7 +158,7 @@ Windows Server Yük Devretme Kümelemesi, "genel kullanım için dosya sunucusu"
 > Eşitlemenin doğru çalışması için, bir yük devretme kümesindeki her düğümde Azure Dosya Eşitleme aracısının yüklü olması gerekir.
 
 ### <a name="data-deduplication"></a>Yinelenen verileri kaldırma
-**Aracı sürümü 5.0.2.0 veya daha yeni**   
+**Windows server 2016 ve Windows server 2019**   
 Yinelenen verileri kaldırma, Windows Server 2016 üzerinde bulut katmanlaması etkinleştirilmiş birimlerde desteklenir. Bulut katmanlaması etkinleştirilmiş bir birimde yinelenen verileri kaldırma özelliğinin etkinleştirilmesi, daha fazla depolama sağlamaya gerek kalmadan şirket içi daha fazla dosya önbelleğe almanızı sağlar. 
 
 Bulut katmanlaması etkinleştirilmiş bir birimde yinelenen verileri kaldırma etkin olduğunda, sunucu uç noktası konumu içinde en iyi duruma getirilmiş dosyalar bulut katmanlama ilkesi ayarlarına bağlı olarak normal bir dosyaya benzer şekilde katmanlanacaktır. Yinelenenleri kaldırma için iyileştirilmiş dosyalar katmanlandıktan sonra, yinelenen verileri kaldırma atık toplama işi, artık birimdeki diğer dosyalar tarafından başvurulmayan gereksiz öbekleri kaldırarak disk alanını geri kazanmak için otomatik olarak çalışır.
@@ -168,8 +168,8 @@ Birim tasarruflarının yalnızca sunucuya uygulanacağını aklınızda yapın;
 > [!Note]  
 > Yinelenen verileri kaldırma ve bulut katmanlaması, gelecekteki bir güncelleştirmede düzeltilecek bir hata nedeniyle sunucu 2019 ' de aynı birimde desteklenmemektedir.
 
-**Windows Server 2012 R2 veya daha eski Aracı sürümleri**  
-Bulut katmanlaması etkinleştirilmemiş birimlerde, Azure Dosya Eşitleme birimde etkinleştirilmiş Windows Server yinelenen verileri kaldırma 'yı destekler.
+**Windows Server 2012 R2**  
+Azure Dosya Eşitleme, yinelenen verileri kaldırma ve bulut katmanlaması aynı birimde desteklenmez. Yinelenen verileri kaldırma özelliği bir birimde etkinleştirilmişse, bulut katmanlaması devre dışı bırakılmalıdır. 
 
 **Notlar**
 - Azure Dosya Eşitleme aracısını yüklemeden önce yinelenen verileri kaldırma yüklüyse, yinelenen verileri kaldırma ve bulut katmanlaması için aynı birimde yeniden başlatma gerekir.
@@ -211,7 +211,7 @@ Azure Dosya Eşitleme aracısının yüklü olduğu bir sunucuda Sysprep kullan�
 Bulut katmanlaması bir sunucu uç noktasında etkinleştirilmişse, katmanlı dosyalar atlanır ve Windows Search tarafından dizine alınmamış olur. Katmanlı olmayan dosyalar doğru şekilde dizine alınır.
 
 ### <a name="antivirus-solutions"></a>Virüsten koruma çözümleri
-Virüsten koruma, bilinen kötü amaçlı kod için dosyaları tarayarak çalıştığından, bir virüsten koruma ürünü katmanlı dosyaların geri çekmesine neden olabilir. Azure Dosya Eşitleme aracısının 4,0 ve üzeri sürümlerinde katmanlı dosyalar güvenli Windows Attribute FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS kümesine sahiptir. Bu öznitelik kümesi ile dosya okumayı atlamak üzere çözümlerini nasıl yapılandıracağınızı öğrenmek için yazılım satıcınıza danışmanız önerilir (birçok şey otomatik olarak yapılır). 
+Virüsten koruma, bilinen kötü amaçlı kod için dosyaları tarayarak çalıştığından, bir virüsten koruma ürünü katmanlı dosyaların geri çekmesine neden olabilir. Azure Dosya Eşitleme aracısının 4,0 ve üzeri sürümlerinde katmanlı dosyalar, güvenli Windows özniteliği FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ayarlanmış olmalıdır. Bu öznitelik kümesi ile dosya okumayı atlamak üzere çözümlerini nasıl yapılandıracağınızı öğrenmek için yazılım satıcınıza danışmanız önerilir (birçok şey otomatik olarak yapılır). 
 
 Microsoft 'un Şirket içi virüsten koruma çözümleri, Windows Defender ve System Center Endpoint Protection (SCEP), her ikisi de bu özniteliği ayarlanmış dosyaları okumayı otomatik olarak atlar. Bunları test ettik ve bir ikincil sorun tanımladı: var olan bir eşitleme grubuna sunucu eklediğinizde, yeni sunucuda 800 bayttan daha küçük dosyalar geri çekilir (indirilir). Bu dosyalar yeni sunucuda kalacak ve katmanlama boyut gereksinimini (> 64 KB) karşılamadığında katmanlanmayacak.
 
@@ -244,16 +244,16 @@ Genellikle, Azure Dosya Eşitleme BitLocker gibi dosya sisteminin altında bulun
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Diğer hiyerarşik depolama yönetimi (HSM) çözümleri
 Azure Dosya Eşitleme ile başka bir HSM çözümü kullanılmamalıdır.
 
-## <a name="region-availability"></a>Bölgelere göre kullanılabilirlik
+## <a name="region-availability"></a>Bölge kullanılabilirliği
 Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 
 | Bölge | Veri merkezi konumu |
 |--------|---------------------|
-| Doğu Avustralya | Yeni Güney Galler |
-| Güneydoğu Avustralya | Victoria |
-| Brezilya Güney | Sao Paulo Eyaleti |
-| Kanada Orta | Toronto |
-| Kanada Doğu | Quebec City |
+| Avustralya Doğu | New South Wales |
+| Avustralya Güneydoğu | Victoria |
+| Güney Brezilya | Sao Paulo Eyaleti |
+| Orta Kanada | Toronto |
+| Doğu Kanada | Quebec City |
 | Orta Hindistan | Pune |
 | Orta ABD | Iowa |
 | Doğu Asya | Hong Kong ÖIB |
@@ -263,24 +263,24 @@ Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 | Fransa Güney * | Marseille |
 | Kore Orta | Seoul |
 | Kore Güney | Busan |
-| Doğu Japonya | Tokyo, Saitama |
-| Batı Japonya | Osaka |
+| Japonya Doğu | Tokyo, Saitama |
+| Japonya Batı | Osaka |
 | Orta Kuzey ABD | Illinois |
 | Kuzey Avrupa | İrlanda |
 | Güney Afrika Kuzey | Johannesburg |
 | Güney Afrika Batı * | Cape Town |
-| Güney Orta ABD | Texas |
+| Orta Güney ABD | Texas |
 | Güney Hindistan | Chennai |
 | Güneydoğu Asya | Singapur |
-| Birleşik Krallık, Güney | Londra |
-| Birleşik Krallık, Batı | Cardiff |
-| US Gov Arizona | Arizona |
-| US Gov Teksas | Texas |
-| ABD Hükümeti Virginia | Virginia |
+| Birleşik Krallık Güney | Londra |
+| Birleşik Krallık Batı | Cardiff |
+| ABD Devleti Arizona | Arizona |
+| ABD Devleti Texas | Texas |
+| ABD Devleti Virginia | Virginia |
 | BAE Kuzey | Dubai |
 | BAE Orta * | Abu Dabi |
 | Batı Avrupa | Hollanda |
-| Orta Batı ABD | Wyoming |
+| Batı Orta ABD | Wyoming |
 | Batı ABD | Kaliforniya |
 | Batı ABD 2 | Washington DC |
 
@@ -298,11 +298,11 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 
 | Birincil bölge      | Eşleştirilmiş bölge      |
 |---------------------|--------------------|
-| Doğu Avustralya      | Güneydoğu Avustralya|
-| Güneydoğu Avustralya | Doğu Avustralya     |
-| Brezilya Güney        | Güney Orta ABD   |
-| Kanada Orta      | Kanada Doğu        |
-| Kanada Doğu         | Kanada Orta     |
+| Avustralya Doğu      | Avustralya Güneydoğu|
+| Avustralya Güneydoğu | Avustralya Doğu     |
+| Güney Brezilya        | Orta Güney ABD   |
+| Orta Kanada      | Doğu Kanada        |
+| Doğu Kanada         | Orta Kanada     |
 | Orta Hindistan       | Güney Hindistan        |
 | Orta ABD          | Doğu ABD 2          |
 | Doğu Asya           | Güneydoğu Asya     |
@@ -310,26 +310,26 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 | Doğu ABD 2           | Orta ABD         |
 | Fransa Orta      | Fransa Güney       |
 | Fransa Güney        | Fransa Orta     |
-| Doğu Japonya          | Batı Japonya         |
-| Batı Japonya          | Doğu Japonya         |
+| Japonya Doğu          | Japonya Batı         |
+| Japonya Batı          | Japonya Doğu         |
 | Kore Orta       | Kore Güney        |
 | Kore Güney         | Kore Orta      |
 | Kuzey Avrupa        | Batı Avrupa        |
-| Orta Kuzey ABD    | Güney Orta ABD   |
+| Orta Kuzey ABD    | Orta Güney ABD   |
 | Güney Afrika Kuzey  | Güney Afrika Batı  |
 | Güney Afrika Batı   | Güney Afrika Kuzey |
-| Güney Orta ABD    | Orta Kuzey ABD   |
+| Orta Güney ABD    | Orta Kuzey ABD   |
 | Güney Hindistan         | Orta Hindistan      |
 | Güneydoğu Asya      | Doğu Asya          |
-| Birleşik Krallık, Güney            | Birleşik Krallık, Batı            |
-| Birleşik Krallık, Batı             | Birleşik Krallık, Güney           |
-| US Gov Arizona      | US Gov Teksas       |
-| US Gov Iowa         | ABD Hükümeti Virginia    |
-| ABD Hükümeti Virginia      | US Gov Teksas       |
+| Birleşik Krallık Güney            | Birleşik Krallık Batı            |
+| Birleşik Krallık Batı             | Birleşik Krallık Güney           |
+| ABD Devleti Arizona      | ABD Devleti Texas       |
+| US Gov Iowa         | ABD Devleti Virginia    |
+| ABD Devleti Virginia      | ABD Devleti Texas       |
 | Batı Avrupa         | Kuzey Avrupa       |
-| Orta Batı ABD     | Batı ABD 2          |
+| Batı Orta ABD     | Batı ABD 2          |
 | Batı ABD             | Doğu ABD            |
-| Batı ABD 2           | Orta Batı ABD    |
+| Batı ABD 2           | Batı Orta ABD    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure Dosya Eşitleme aracısı güncelleştirme ilkesi
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

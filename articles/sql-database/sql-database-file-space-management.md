@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı tek/havuza alınmış veritabanları dosya alanı yönetimi | Microsoft Docs
+title: Tek/havuza alınmış veritabanları dosya alanı yönetimi
 description: Bu sayfada, Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanlarıyla dosya alanının nasıl yönetileceği açıklanır ve tek veya havuza alınmış bir veritabanını daraltmanız gerekip gerekmediğini ve bir veritabanı küçültme işlemini nasıl gerçekleştireceğiniz hakkında kod örnekleri sağlanır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: c92ffb6aa6db9c77a859661115d54ff63ea02401
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8fe58313bce6e9a21b07aa095672ec35ce572d2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568194"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803049"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanları için dosya alanını yönetme
 
@@ -44,7 +44,7 @@ Aşağıdaki senaryolarda dosya alanı kullanımının izlenmesi ve veri dosyala
 Azure portal görüntülendiği en fazla depolama alanı ölçümü ve aşağıdaki API 'Ler yalnızca kullanılan veri sayfalarının boyutunu ölçer:
 
 - PowerShell [Get-ölçümleri](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric) dahil Azure Resource Manager tabanlı ölçüm API 'leri
-- T-SQL: [sys. DM _db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- T-SQL: [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Ancak aşağıdaki API 'Ler Ayrıca veritabanları ve elastik havuzlar için ayrılan alan boyutunu ölçer:
 
@@ -62,7 +62,7 @@ SQL veritabanı hizmeti, veritabanı performansının olası etkisi nedeniyle ku
 
 Aşağıdaki depolama alanı miktarlarını anlamak bir veritabanının dosya alanını yönetmek için önemlidir.
 
-|Veritabanı miktarı|Tanım|Açıklamalar|
+|Veritabanı miktarı|Tanım|Yorumlar|
 |---|---|---|
 |**Kullanılan veri alanı**|Veritabanı verilerini 8 KB 'lik sayfalarda depolamak için kullanılan alan miktarı.|Genellikle, kullanılan alanın eklemeleri (azaltır) ekler (siler). Bazı durumlarda, kullanılan alan, işleme ve parçalanmaya dahil edilen verilerin miktarına ve düzenine bağlı olarak ekleme veya silme üzerinde değişiklik yapmaz. Örneğin, her veri sayfasından bir satırı silmek, kullanılan alanı azaltmayabilir.|
 |**Ayrılan veri alanı**|Veritabanı verilerini depolamak için kullanılabilir hale getirilen biçimlendirilen dosya alanı miktarı.|Ayrılan alan miktarı otomatik olarak büyür, ancak silmeleri hiçbir şekilde azalmıştır. Bu davranış, boşluk yeniden biçimlendirilmesi gerekmediğinden gelecekteki eklemelerin daha hızlı olmasını sağlar.|
@@ -119,7 +119,7 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 
 Aşağıdaki depolama alanı miktarlarını anlamak, elastik havuzun dosya alanını yönetmek için önemlidir.
 
-|Elastik havuz miktarı|Tanım|Açıklamalar|
+|Elastik havuz miktarı|Tanım|Yorumlar|
 |---|---|---|
 |**Kullanılan veri alanı**|Elastik havuzdaki tüm veritabanları tarafından kullanılan veri alanının toplamı.||
 |**Ayrılan veri alanı**|Elastik havuzdaki tüm veritabanları tarafından ayrılan veri alanı toplamı.||
@@ -234,7 +234,7 @@ Bu komut hakkında daha fazla bilgi için bkz. [SHRINKDATABASE](https://docs.mic
 
 ### <a name="auto-shrink"></a>Otomatik küçültme
 
-Alternatif olarak, Otomatik küçültme bir veritabanı için etkinleştirilebilir.  Otomatik küçültme, dosya yönetimi karmaşıklığını azaltır ve veritabanı performansına göre `SHRINKDATABASE` `SHRINKFILE`daha az etkili olur.  Otomatik küçültme özellikle birçok veritabanı ile elastik havuzların yönetilmesi için yararlı olabilir.  Ancak Otomatik küçültme, geri kazanma dosya alanında ve `SHRINKDATABASE` `SHRINKFILE`' den daha az etkili olabilir.
+Alternatif olarak, Otomatik küçültme bir veritabanı için etkinleştirilebilir.  Otomatik küçültme dosya yönetimi karmaşıklığını azaltır ve `SHRINKDATABASE` veya `SHRINKFILE`göre veritabanı performansına göre daha az etkili olur.  Otomatik küçültme özellikle birçok veritabanı ile elastik havuzların yönetilmesi için yararlı olabilir.  Ancak, Otomatik küçültme, geri kazanma dosya alanında `SHRINKDATABASE` ve `SHRINKFILE`daha az etkili olabilir.
 Otomatik küçültmeyi etkinleştirmek için aşağıdaki komutta veritabanının adını değiştirin.
 
 
@@ -256,5 +256,5 @@ Veritabanı veri dosyaları daraltıladıktan sonra, dizinler parçalanabilir ve
   - [DTU tabanlı satın alma modelini kullanan tek veritabanlarına yönelik kaynak sınırları](sql-database-dtu-resource-limits-single-databases.md)
   - [Esnek havuzlar için Azure SQL veritabanı sanal çekirdek tabanlı satın alma modeli sınırları](sql-database-vcore-resource-limits-elastic-pools.md)
   - [DTU tabanlı satın alma modelini kullanarak elastik havuzlar için kaynak limitleri](sql-database-dtu-resource-limits-elastic-pools.md)
-- `SHRINKDATABASE` Komutu hakkında daha fazla bilgi için bkz. [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
+- `SHRINKDATABASE` komutu hakkında daha fazla bilgi için bkz. [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
 - Parçalama ve dizinleri yeniden oluşturma hakkında daha fazla bilgi için bkz. [dizinleri yeniden düzenleme ve yeniden oluşturma](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).

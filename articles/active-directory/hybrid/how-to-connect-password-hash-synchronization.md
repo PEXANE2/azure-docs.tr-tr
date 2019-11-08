@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d8caafe312c123a9d572e9a5f4c5cf64a05f7ea
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ac1b75536e092203490a390860a1cead7ac333b7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721049"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817985"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync ile parola karması eşitlemesini uygulama
 Bu makale, Kullanıcı parolalarınızı şirket içi Active Directory örneğinden bulut tabanlı Azure Active Directory (Azure AD) örneğine eşitlemeniz için gereken bilgileri sağlar.
@@ -100,7 +100,7 @@ Yalnızca Azure AD ile tümleşik hizmetler ile etkileşime geçen eşitlenmiş 
 
 Enforcechoparlör Passwordpolicyforpasswordsyncedusers özelliğini etkinleştirmek için MSOnline PowerShell modülünü kullanarak aşağıdaki komutu çalıştırın:
 
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true`
 
 Azure AD etkinleştirildikten sonra, `DisablePasswordExpiration` değeri PasswordPolicies özniteliğinden kaldırmak için eşitlenmiş her kullanıcıya gitmez. Bunun yerine, daha sonra şirket içi AD 'de parolasını değiştirdiklerinde, her kullanıcı için bir sonraki parola eşitleme sırasında değer `None` olarak ayarlanır.  
 

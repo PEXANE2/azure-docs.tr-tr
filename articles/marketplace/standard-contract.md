@@ -1,58 +1,59 @@
 ---
-title: Standart sözleşme | Azure
-description: Azure Market ve AppSource standart Sözleşmesi
+title: Standart Sözleşme | Mavisi
+description: Azure Market ve AppSource 'ta standart sözleşme
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: ellacroi
-ms.openlocfilehash: 80c157423572d356026f257e81d52650ce01d3e8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 17c1bf9d20b6f2e3ec450ff7bfb54fe61494ff09
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620358"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819489"
 ---
 # <a name="standard-contract"></a>Standart Sözleşme
 
-Müşteriler için satın alma işlemini basitleştirmek ve yazılım satıcıları için yasal karmaşıklığını azaltmak için Microsoft Market bir işlemde kolaylaştırmaya yardımcı olması için standart Sözleşme şablonunu sunar. Özel hüküm ve koşullar oluşturmak yerine, Azure Marketi yayımcılarının yazılımlarını sözleşmesindeki standart Kıdemli ve bir kez kabul etmek için müşterilerin yalnızca ihtiyaç duyan, teklif seçebilirsiniz. Standart sözleşme burada bulunabilir: [ https://go.microsoft.com/fwlink/?linkid=2041178 ](https://go.microsoft.com/fwlink/?linkid=2041178). 
+Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için, Microsoft, Market 'teki bir işlemin kolaylaştırılmasına yardımcı olmak üzere standart bir sözleşme şablonu sunmaktadır. Azure Market yayımcıları, özel hüküm ve koşulları ortadan kaldırmaktansa, müşterilerine yalnızca bir kez ve kabul etmesi gereken standart sözleşme kapsamında yazılım sunmayı tercih edebilir. Standart Sözleşme şurada bulunabilir: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178). 
 
-Hüküm ve koşulları bir teklif için bir teklif bulut iş ortağı Portalı'nda oluştururken Market sekmesinde tanımlanır. Standart sözleşme seçeneği Evet olarak ayarı değiştirerek etkinleştirilir.
+Bir teklifin hüküm ve koşulları, Bulut İş Ortağı Portalı bir teklif oluşturulurken Market sekmesinde tanımlanmıştır. Standart Sözleşme seçeneği, ayarı Evet olarak değiştirilerek etkinleştirilir.
 
-![Standart sözleşme seçeneğini etkinleştirme](media/marketplace-publishers-guide/standard-contract.png)
-
->[!Note] 
->Ayrı hüküm ve koşullar standart sözleşme kullanmayı seçerseniz, hala gereklidir [bulut çözümü sağlayıcısı](./cloud-solution-providers.md) kanal.
-
-## <a name="standard-contract-amendments"></a>Standart sözleşme tarihli Amendments
-
-Standart sözleşme tarihli Amendments standart sözleşme kolaylık ve ürün ya da işletmeniz özelleştirilmiş koşullarıyla seçmek yayımcılar izin verir.  Müşteriler, yalnızca bunlar zaten gözden geçirdi ve Microsoft Standart sözleşmeyi kabul tarihli amendments sözleşme gözden geçirmeniz gerekir.
-
-Azure Market yayımcıları için tarihli amendments iki tür vardır:
-
-* Evrensel tarihli Amendments: Şu tarihli amendments Evrensel standart sözleşme tüm müşteriler için uygulanır. Ürün satın alma akıştaki her müşteri için evrensel tarihli amendments gösterilmektedir.
-
-![Evrensel tarihli Amendments](media/marketplace-publishers-guide/universal-amendaments.png)
-
-* Özel tarihli Amendments: Azure Market, kiracılar için hedeflenen özel tarihli amendments için bir sağlama da vardır. Yalnızca belirli müşteriler için hedeflenen özel tarihli amendments standart sözleşme değildirler. Yayımcılar Kiracı hedeflemek istediğinizi seçebilirsiniz. Kiracınıza ait müşteriler standart sözleşme ve hedeflenen tarihli amendments bölümünde ürün satın.
-
-![Özel tarihli Amendments](media/marketplace-publishers-guide/custom-amendaments.png)
+![Standart Sözleşme seçeneğini etkinleştirme](media/marketplace-publishers-guide/standard-contract.png)
 
 >[!Note] 
->Özel tarihli amendments ile hedeflenen müşteriler satın alma sırasında standart koşullarını Evrensel değişiklik de alırsınız.
+>Standart sözleşmeyi kullanmayı seçerseniz, [bulut çözümü sağlayıcısı](./cloud-solution-providers.md) kanalı için ayrı hüküm ve koşullar hala gereklidir.
+
+## <a name="standard-contract-amendments"></a>Standart Sözleşme düzeltme açıklamaları
+
+Standart Sözleşme, yayımcıların basitlik için standart sözleşmeyi seçmesini ve ürün ya da işletmelerinin Özelleştirilmiş şartlarını seçmesine izin verir.  Müşterilerin, Microsoft standart sözleşmesini gözden geçirmiş ve kabul etmiş olmaları durumunda yalnızca sözleşmenin değişiklik yapması gerekir.
+
+Azure Market yayımcılarına yönelik iki çeşit değişiklik vardır:
+
+* Evrensel değişiklik: Bu değişiklik, tüm müşteriler için standart sözleşmeye evrensel olarak uygulanır. Evrensel değişiklik, satın alma akışındaki ürünün her müşterisi için gösterilir.
+
+![Evrensel değişiklik 'Lar](media/marketplace-publishers-guide/universal-amendaments.png)
+
+* Özel değişiklik açıklamaları: Azure Marketi, kiracılara hedeflenmiş özel değişiklik için bir sağlama de içerir. Bunlar, yalnızca belirli müşterileri hedefleyen standart sözleşmeye özel olarak değişiklik görürler. Yayımcılar hedeflemek istedikleri kiracıyı seçebilirler. Bu kiracının müşterileri, ürünü standart sözleşme ve hedeflenen değişiklik DTU 'ları altında satın alabilir.
+
+![Özel değişiklik açıklamaları](media/marketplace-publishers-guide/custom-amendaments.png)
+
+>[!Note] 
+>Özel değişiklik ile hedeflenen müşteriler Ayrıca satın alma sırasında standart koşullara evrensel değişiklik de sağlar.
 
 >[!Note]
->Standart sözleşme tarihli Amendments aşağıdaki teklif türlerini destekler: Azure uygulamaları (Çözüm şablonları ve yönetilen uygulamalar), sanal makineler, kapsayıcılar, kapsayıcı uygulamaları.
+>Aşağıdaki teklif türleri standart sözleşme değişiklik türlerini destekler: Azure uygulamaları (çözüm şablonları ve yönetilen uygulamalar), sanal makineler, kapsayıcılar, kapsayıcı uygulamaları.
 
-### <a name="customer-experience"></a>Müşteri Deneyimi
+### <a name="customer-experience"></a>Müşteri deneyimi
 
-Müşteriler Azure portalında satın alma işlemi sırasında Microsoft Standart sözleşme ve tarihli amendments ürünle ilgili koşulları görmeye olacaktır.
+Azure portal satın alma işlemi sırasında, müşteriler ürünle ilişkili koşulları Microsoft standart sözleşmesi ve değişiklik DTU 'ları olarak görebilir.
 
 ![Azure portal müşteri deneyimi.](media/marketplace-publishers-guide/ibiza-customer-experience.png)
 
 ### <a name="api"></a>API
 
-Müşterileri kullanabilir `Get-AzureRmMarketplaceTerms` teklif koşullarını almak ve kabul etmek için. Standart sözleşme ve ilişkili tarihli amendments cmdlet çıktısında döndürülür.
+Müşteriler bir teklif şartlarını almak ve kabul etmek için `Get-AzureRmMarketplaceTerms` kullanabilir. Standart Sözleşme ve ilişkili değişiklik, cmdlet 'in çıkışında döndürülür.
 
 ---
