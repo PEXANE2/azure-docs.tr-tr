@@ -7,18 +7,18 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: d835eda044c2a6d1e0e7c678073711e45fde7395
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a70400a1d0c710b939b4dd6d157cb06e729f53cb
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972137"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747809"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Site Recovery bileşenleri (yapılandırma, işlem, ana hedef) hakkında
 
 Bu makalede, [Site Recovery](site-recovery-overview.md) hizmetiyle VMware VM 'leri ve fiziksel sunucuları Azure 'a çoğaltırken kullanılan yapılandırma, süreç ve ana hedef sunucuları açıklanmaktadır.
 
-## <a name="configuration-server"></a>Yapılandırma sunucusu
+## <a name="configuration-server"></a>Yapılandırma Sunucusu
 
 Şirket içi VMware VM 'Leri ve fiziksel sunucular için olağanüstü durum kurtarma için şirket içinde dağıtılan bir Site Recovery yapılandırma sunucusuna ihtiyacınız vardır.
 
@@ -27,7 +27,7 @@ Bu makalede, [Site Recovery](site-recovery-overview.md) hizmetiyle VMware VM 'le
 **Bileşenleri**  | Yapılandırma sunucusu makinesi, yapılandırma sunucusu, işlem sunucusu ve ana hedef sunucu dahil olmak üzere tüm şirket içi Site Recovery bileşenlerini çalıştırır.<br/><br/> Yapılandırma sunucusunu ayarlarken, tüm bileşenler otomatik olarak yüklenir. | Yapılandırma sunucusu SSS [makalesini okuyun](vmware-azure-common-questions.md#configuration-server) .
 **Rol** | Yapılandırma sunucusu yerinde bileşenler ile Azure arasındaki iletişimi düzenler ve veri çoğaltma işlemlerini yönetir. | Azure 'da [VMware](vmware-azure-architecture.md) ve [fiziksel sunucu](physical-azure-architecture.md) olağanüstü durum kurtarma mimarisi hakkında daha fazla bilgi edinin.
 **VMware gereksinimleri** | Şirket içi VMware VM 'lerinin olağanüstü durum kurtarması için yapılandırma sunucusunu şirket içi, yüksek oranda kullanılabilir bir VMware VM 'si olarak yükleyip çalıştırmanız gerekir. | Önkoşullar [hakkında bilgi edinin](vmware-azure-deploy-configuration-server.md#prerequisites) .
-**VMware dağıtımı** | Yapılandırma sunucusunu indirilen bir OVA şablonu kullanarak dağıtmanızı öneririz. Bu yöntem, tüm gereksinimleri ve önkoşulları karşılayan bir yapılandırma sunucusu kurmak için basit bir yol sağlar.<br/><br/> Bir nedenden dolayı bir OVA şablonu kullanarak bir VMware VM 'yi dağıtamazsınız, yapılandırma sunucusu makinelerini fiziksel makine olağanüstü durum kurtarma için aşağıda açıklandığı gibi el ile ayarlayabilirsiniz. | Bir OVA şablonuyla [dağıtın](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) .
+**VMware dağıtımı** | Yapılandırma sunucusunu indirilen bir OVA şablonu kullanarak dağıtmanızı öneririz. Bu yöntem, tüm gereksinimleri ve önkoşulları karşılayan bir yapılandırma sunucusu kurmak için basit bir yol sağlar.<br/><br/> Bir nedenden dolayı bir OVA şablonu kullanarak bir VMware VM 'yi dağıtamazsınız, yapılandırma sunucusu makinelerini fiziksel makine olağanüstü durum kurtarma için aşağıda açıklandığı gibi el ile ayarlayabilirsiniz. | Bir OVA şablonuyla [dağıtın](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template) .
 **Fiziksel sunucu gereksinimleri** | Şirket içi fiziksel sunucularda olağanüstü durum kurtarma için yapılandırma sunucusunu el ile dağıtırsınız. | Önkoşullar [hakkında bilgi edinin](physical-azure-set-up-source.md#prerequisites) .
 **Fiziksel sunucu dağıtımı** | VMware VM olarak yüklenebir fiziksel sunucuya yükleyebilirsiniz. | Yapılandırma sunucusunu el ile [dağıtın](physical-azure-set-up-source.md#set-up-the-source-environment) .
 

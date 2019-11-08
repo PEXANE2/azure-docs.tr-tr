@@ -5,14 +5,14 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: marsma
-ms.openlocfilehash: bdc9c8f5a782704ec7f8cbaa31dd4cc27ed376cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0b5c5fdddeea961858a2c3b8cd69c365bb28f26e
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468981"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73800176"
 ---
-Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Önizleme deneyimi hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
+Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Uygulamalar](#tab/applications/)
 
@@ -39,5 +39,5 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamala
 1. Benzersiz bir düzene sahip bir yeniden yönlendirme URI 'SI girin. Örneğin, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Yeniden yönlendirme URI 'SI seçerken dikkat etmeniz gereken iki önemli nokta vardır:
     * **Benzersiz**: YENIDEN yönlendirme URI 'sinin şeması her uygulama için benzersiz olmalıdır. Örnek `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`, `com.onmicrosoft.contosob2c.exampleapp` şemadır. Bu düzenin izlenmesi gerekir. İki uygulama aynı düzeni paylaşıyorsa, kullanıcıya bir uygulama seçme seçeneği verilir. Kullanıcı yanlış seçerse, oturum açma başarısız olur.
     * **Tamam**: yeniden yönlendirme URI 'sinin hem bir düzen hem de yol olması gerekir. Yol, etki alanından sonra en az bir eğik çizgi içermelidir. Örneğin, `//oauth` başarısız olduğunda `//oauth/` işe yarar. URI 'de, alt çizgi gibi özel karakterler eklemeyin.
-1. **İzinler**altında, *OpenID ve offline_access Permissions Için yönetici izni ver* onay kutusunu seçin.
+1. **İzinler**altında, *openıd ve offline_access izinleri Için yönetici izni ver* onay kutusunu seçin.
 1. **Kaydol**’u seçin.

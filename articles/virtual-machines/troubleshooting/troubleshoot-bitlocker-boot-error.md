@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: b0b8528a8eaf5cab22bb2482bd60e760d8bf5e3d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058102"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749675"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 'de BitLocker önyükleme hataları
 
  Bu makalede, Microsoft Azure ' de bir Windows sanal makinesi (VM) başlattığınızda karşılaşabileceğiniz BitLocker hataları açıklanır.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptom"></a>Belirti
 
@@ -31,7 +31,7 @@ ms.locfileid: "71058102"
 
 - BitLocker anahtarına sahip USB sürücüsünü takın
 
-- Kilitlendi! Yeniden alacağınız kurtarma anahtarını girin (klavye düzeni: ABD) yanlış oturum açma bilgileri çok fazla girilmiştir, bu nedenle BILGISAYARıNıZ gizliliğinizi korumak için kilitlendi. Kurtarma anahtarını almak için, başka bir bilgisayardan https://windows.microsoft.com/recoverykeyfaq veya mobil cihazdan adresine gidin. İhtiyacınız olması durumunda anahtar KIMLIĞI XXXXXXX ' dir. İsterseniz bilgisayarınızı sıfırlayabilirsiniz.
+- Kilitlendi! Yeniden almak için kurtarma anahtarını girin (klavye düzeni: US) yanlış oturum açma bilgileri çok fazla girilmiştir, bu nedenle BILGISAYARıNıZ gizliliğinizi korumak için kilitlendi. Kurtarma anahtarını almak için, başka bir BILGISAYARDAN veya mobil cihazdan https://windows.microsoft.com/recoverykeyfaq gidin. İhtiyacınız olması durumunda anahtar KIMLIĞI XXXXXXX ' dir. İsterseniz bilgisayarınızı sıfırlayabilirsiniz.
 
 - Bu sürücünün kilidini açmak için parolayı girin [] yazdığınız parolayı görmek için Ekle tuşuna basın.
 - Kurtarma anahtarınızı bir USB cihazdan yükleyin.
@@ -46,8 +46,8 @@ Bu sorunu çözmek için VM 'yi durdurup serbest bırakın ve yeniden başlatın
 
 Bu yöntem sorunu çözmezse, BEK dosyasını el ile geri yüklemek için şu adımları izleyin:
 
-1. Etkilenen VM 'nin sistem diskinin bir anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için [bir diskin anlık görüntüsünü alma](../windows/snapshot-copy-managed-disk.md).
-2. [Bir kurtarma VM'si sistem diski](troubleshoot-recovery-disks-portal-windows.md). Adım 7 ' de [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) komutunu çalıştırmak için, kurtarma VM 'sinde **BitLocker Sürücü Şifrelemesi** özelliğinin etkinleştirilmesi gerekir.
+1. Etkilenen VM 'nin sistem diskinin bir anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
+2. [Sistem diskini bir kurtarma VM 'Sine bağlayın](troubleshoot-recovery-disks-portal-windows.md). Adım 7 ' de [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) komutunu çalıştırmak için, kurtarma VM 'sinde **BitLocker Sürücü Şifrelemesi** özelliğinin etkinleştirilmesi gerekir.
 
     Yönetilen bir disk iliştirmeye çalıştığınızda, "şifreleme ayarlarını içerir ve bu nedenle veri diski olarak kullanılamaz" hata iletisi alabilirsiniz. Bu durumda, diski eklemeyi yeniden denemek için aşağıdaki betiği çalıştırın:
 
@@ -107,7 +107,7 @@ Bu yöntem sorunu çözmezse, BEK dosyasını el ile geri yüklemek için şu ad
 
     Artık sürücü için BEK dosyasının adına sahip olduğunuza göre, gizli anahtar adı oluşturmanız gerekir. Sürücünün kilidini açmak için BEK dosyası.
 
-6.  BEK dosyasını kurtarma diskine indirin. Aşağıdaki örnek, BEK dosyasını C:\BEK klasörüne kaydeder. Betikleri çalıştırmadan önce `C:\BEK\` yolun mevcut olduğundan emin olun.
+6.  BEK dosyasını kurtarma diskine indirin. Aşağıdaki örnek, BEK dosyasını C:\BEK klasörüne kaydeder. Betikleri çalıştırmadan önce `C:\BEK\` yolunun var olduğundan emin olun.
 
     ```powershell
     $vault = "myKeyVault"
@@ -271,19 +271,19 @@ Anahtar şifreleme anahtarı senaryosu için aşağıdaki adımları izleyin:
                     manage-bde -off F:
 ## <a name="script-troubleshooting"></a>Betik sorunlarını giderme
 
-**Hata: Dosya veya derleme yüklenemedi**
+**Hata: dosya veya derleme yüklenemedi**
 
-ADAL derlemelerinin yollarının yanlış olduğu için bu hata oluşur. AZ Module yalnızca geçerli kullanıcı için yüklüyse, ADAL derlemeleri içinde `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`bulunur.
+ADAL derlemelerinin yollarının yanlış olduğu için bu hata oluşur. AZ Module yalnızca geçerli kullanıcı için yüklüyse, ADAL derlemeleri `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`' de yer alır.
 
-Ayrıca, doğru yolu bulmak `Az.Accounts` için klasör araması yapabilirsiniz.
+Ayrıca, doğru yolu bulmak için `Az.Accounts` klasörü araması yapabilirsiniz.
 
 **Hata: Get-AzKeyVaultSecret veya Get-AzKeyVaultSecret bir cmdlet 'in adı olarak tanınmıyor**
 
-Eski az PowerShell modülünü kullanıyorsanız, iki komutu `Get-AzureKeyVaultSecret` ve ile `Get-AzureKeyVaultSecret`değiştirmeniz gerekir.
+Eski AZ PowerShell modülünü kullanıyorsanız, iki komutu `Get-AzureKeyVaultSecret` ve `Get-AzureKeyVaultSecret`olarak değiştirmeniz gerekir.
 
 **Parametre örnekleri**
 
-| Parametreler  | Değer örneği  |Açıklamalar   |
+| Parametreler  | Değer örneği  |Yorumlar   |
 |---|---|---|
 |  $keyVaultName | myKeyVault2112852926  | Anahtarı depolayan anahtar kasasının adı |
 |$kekName   |MyKey   | VM 'yi şifrelemek için kullanılan anahtarın adı|

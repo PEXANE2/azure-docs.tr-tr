@@ -8,18 +8,18 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: bbe236bd4575ffb849b6f4739fc3a27c09aa5e47
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fa7f72989d47499127714eddfa6b5e98aa80178c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595155"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749234"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Çalıştır komutunu kullanarak PowerShell betiklerini Windows sanal makinenizde çalıştırma
 
 Çalıştır komutu özelliği, bir Azure Windows VM içinde PowerShell betikleri çalıştırmak için sanal makine (VM) aracısını kullanır. Bu betikleri, genel makine veya uygulama yönetimi için kullanabilirsiniz. VM erişimi ve ağ sorunlarını hızla tanılamanıza ve düzeltmenize ve VM 'yi iyi bir duruma almanıza yardımcı olabilirler.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="benefits"></a>Avantajlar
 
@@ -51,7 +51,7 @@ Bu tabloda, Windows VM 'Leri için kullanılabilen komutların listesi gösteril
 The entity was not found in this Azure location
 ```
 
-|**Adı**|**Açıklama**|
+|**Ad**|**Açıklama**|
 |---|---|
 |**RunPowerShellScript**|Bir PowerShell betiği çalıştırır.|
 |**EnableRemotePS**|Makineyi uzak PowerShell 'i etkinleştirecek şekilde yapılandırır.|
@@ -77,7 +77,7 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
     --scripts @script.ps1 --parameters "arg1=somefoo" "arg2=somebar"
 ```
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portal
 
 [Azure Portal](https://portal.azure.com) bir VM 'ye gidin ve **Işlemler**altında **komutu Çalıştır** ' ı seçin. VM 'de çalıştırılacak kullanılabilir komutların listesini görürsünüz.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a15d450d033c04c59f6981a887689f1fc08919f1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 42c674e236d769d48f6f17fc43494ac006219a8a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958832"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795687"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Bekleyen veriler için Azure depolama şifrelemesi
 
@@ -74,12 +74,12 @@ Aşağıdaki listede, diyagramdaki numaralandırılmış adımlar açıklanmakta
 
 Depolama hesabındaki müşterinin yönettiği anahtarlara erişimi iptal etmek için bkz. PowerShell ve [Azure Key Vault clı](https://docs.microsoft.com/cli/azure/keyvault) [Azure Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) . Erişimi iptal etmek, şifreleme anahtarına Azure depolama tarafından erişilemediğinden, depolama hesabındaki tüm verilere erişimi etkin bir şekilde engeller.
 
-[Azure yönetilen diskler](../../virtual-machines/windows/managed-disks-overview.md)için müşteri tarafından yönetilen anahtarlar desteklenmez.
+Müşteri tarafından yönetilen anahtarlar da genel önizleme olarak Azure yönetilen diskler için de kullanılabilir, müşteri tarafından yönetilen anahtarlar yönetilen diskler için depolama alanının geri kalanından biraz farklı çalışır. Ayrıntılar için [konudaki makalemize](../../virtual-machines/linux/disk-encryption.md#customer-managed-keys-public-preview)bakın.
 
 Azure depolama ile müşteri tarafından yönetilen anahtarları kullanmayı öğrenmek için şu makalelerden birine bakın:
 
-- [Azure portal Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırın](storage-encryption-keys-portal.md)
-- [Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları PowerShell 'den yapılandırma](storage-encryption-keys-powershell.md)
+- [Azure portalından Azure Depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma](storage-encryption-keys-portal.md)
+- [PowerShell'den Azure Depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma](storage-encryption-keys-powershell.md)
 - [Azure CLı ile Azure depolama şifrelemesi ile müşteri tarafından yönetilen anahtarları kullanma](storage-encryption-keys-cli.md)
 
 > [!IMPORTANT]
@@ -144,7 +144,7 @@ Aşağıdaki BLOB depolama işlemleri, bir istekte müşterinin sunduğu şifrel
 
 Aşağıdaki örnek, bir müşteri tarafından sağlanmış anahtar oluşturur ve bir blobu karşıya yüklemek için bu anahtarı kullanır. Kod bir blok yükler ve ardından blok listesini kaydeder ve BLOB 'u Azure depolama 'ya yazar. Anahtar, [CustomerProvidedKey](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.customerprovidedkey) özelliği ayarlanarak [blobrequestoptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) nesnesinde sağlanır.
 
-Anahtar [AesCryptoServiceProvider](/dotnet/api/system.security.cryptography.aescryptoserviceprovider) sınıfıyla oluşturulur. Kodunuzda bu sınıfın bir örneğini oluşturmak için, `System.Security.Cryptography` ad alanına başvuran bir `using` açıklaması ekleyin:
+Anahtar [AesCryptoServiceProvider](/dotnet/api/system.security.cryptography.aescryptoserviceprovider) sınıfıyla oluşturulur. Kodunuzda bu sınıfın bir örneğini oluşturmak için, `System.Security.Cryptography` ad alanına başvuran bir `using` ifade ekleyin:
 
 ```csharp
 public static void UploadBlobWithClientKey(CloudBlobContainer container)
@@ -199,6 +199,6 @@ Azure depolama şifrelemesi sayesinde, Azure sanal makine disklerini geri yükle
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Key Vault nedir?](../../key-vault/key-vault-overview.md)
-- [Azure portal Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırın](storage-encryption-keys-portal.md)
-- [Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları PowerShell 'den yapılandırma](storage-encryption-keys-powershell.md)
-- [Azure CLı 'dan Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma](storage-encryption-keys-cli.md)
+- [Azure portalından Azure Depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma](storage-encryption-keys-portal.md)
+- [PowerShell'den Azure Depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma](storage-encryption-keys-powershell.md)
+- [Azure CLI'dan Azure Depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma](storage-encryption-keys-cli.md)

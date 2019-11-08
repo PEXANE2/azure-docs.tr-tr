@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: 773ffe264446e6a4d9ef2e88634e4f2c9b8aeb45
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 11/07/2019
+ms.openlocfilehash: 460079248e6cbd939c36b84f94cac41dce4dda2b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273988"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747671"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Öğretici: bir Azure Databricks not defteriyle sanal ağda SQL Server Linux Docker kapsayıcısını sorgulama
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Linux Docker kapsayıcısına Microsoft SQL Server yüklemesi
 > * Databricks Not defterinden JDBC kullanarak SQL Server sorgulama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Bir sanal ağda Databricks çalışma alanı](quickstart-create-databricks-workspace-vnet-injection.md)oluşturun.
 
@@ -42,7 +42,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     ![Yeni Azure sanal makinesi Ekle](./media/vnet-injection-sql-server/add-virtual-machine.png)
 
-2. **Temel bilgiler** sekmesinde Ubuntu Server 16,04 LTS ' yi seçin. VM boyutunu, bir VCPU ve 2 GB RAM içeren B1ms olarak değiştirin. Bir Linux SQL Server Docker kapsayıcısı için en düşük gereksinim 2 GB 'dir. Yönetici Kullanıcı adı ve parolası seçin.
+2. **Temel bilgiler** sekmesinde Ubuntu Server 18,04 LTS ' yi SEÇIN ve VM boyutunu B2s olarak değiştirin. Yönetici Kullanıcı adı ve parolası seçin.
 
     ![Yeni sanal makine yapılandırmasının temel bilgiler sekmesi](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
 
@@ -65,13 +65,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     |Ayar|Önerilen değer|Açıklama|
     |-------|---------------|-----------|
     |Kaynak|IP Adresleri|IP adresleri, belirli bir kaynak IP adresinden gelen trafiğe bu kural tarafından izin verileceğini veya reddedileceğini belirtir.|
-    |Kaynak IP adresleri|Genel IP 'niz < @ no__t-0|Genel IP adresinizi girin. [Bing.com](https://www.bing.com/) adresini ziyaret ederek ve **"My IP"** araması yaparak genel IP adresinizi bulabilirsiniz.|
+    |Kaynak IP adresleri|Genel IP\> <|Genel IP adresinizi girin. [Bing.com](https://www.bing.com/) adresini ziyaret ederek ve **"My IP"** araması yaparak genel IP adresinizi bulabilirsiniz.|
     |Kaynak bağlantı noktası aralıkları|*|Herhangi bir bağlantı noktasından trafiğe izin verin.|
     |Hedef|IP Adresleri|IP adresleri, belirli bir kaynak IP adresi için giden trafiğe bu kural tarafından izin verileceğini veya reddedileceğini belirtir.|
-    |Hedef IP adresleri|VM 'nizi < genel IP @ no__t-0|Sanal makinenizin genel IP adresini girin. Bunu, sanal makinenizin **genel bakış** sayfasında bulabilirsiniz.|
+    |Hedef IP adresleri|VM genel IP 'niz <\>|Sanal makinenizin genel IP adresini girin. Bunu, sanal makinenizin **genel bakış** sayfasında bulabilirsiniz.|
     |Hedef bağlantı noktası aralıkları|22|SSH için 22 numaralı bağlantı noktasını açın.|
     |Öncelik|290|Kurala öncelik verin.|
-    |Adı|SSH-databricks-öğretici-VM|Kurala bir ad verin.|
+    |Ad|SSH-databricks-öğretici-VM|Kurala bir ad verin.|
 
 
     ![Bağlantı noktası 22 için gelen güvenlik kuralı ekle](./media/vnet-injection-sql-server/open-port.png)
@@ -80,14 +80,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     |Ayar|Önerilen değer|Açıklama|
     |-------|---------------|-----------|
-    |Kaynak|IP Adresleri|IP adresleri, belirli bir kaynak IP adresinden gelen trafiğe bu kural tarafından izin verileceğini veya reddedileceğini belirtir.|
-    |Kaynak IP adresleri|10.179.0.0/16|Sanal ağınızın adres aralığını girin.|
+    |Kaynak|Herhangi biri|Kaynak, belirli bir kaynak IP adresinden gelen trafiğe bu kural tarafından izin verileceğini veya reddedileceğini belirtir.|
     |Kaynak bağlantı noktası aralıkları|*|Herhangi bir bağlantı noktasından trafiğe izin verin.|
     |Hedef|IP Adresleri|IP adresleri, belirli bir kaynak IP adresi için giden trafiğe bu kural tarafından izin verileceğini veya reddedileceğini belirtir.|
-    |Hedef IP adresleri|VM 'nizi < genel IP @ no__t-0|Sanal makinenizin genel IP adresini girin. Bunu, sanal makinenizin **genel bakış** sayfasında bulabilirsiniz.|
+    |Hedef IP adresleri|VM genel IP 'niz <\>|Sanal makinenizin genel IP adresini girin. Bunu, sanal makinenizin **genel bakış** sayfasında bulabilirsiniz.|
     |Hedef bağlantı noktası aralıkları|1433|SQL Server için 22 numaralı bağlantı noktasını açın.|
     |Öncelik|300|Kurala öncelik verin.|
-    |Adı|SQL-databricks-öğretici-VM|Kurala bir ad verin.|
+    |Ad|SQL-databricks-öğretici-VM|Kurala bir ad verin.|
 
     ![1433 numaralı bağlantı noktası için gelen güvenlik kuralı ekle](./media/vnet-injection-sql-server/open-port2.png)
 
@@ -139,7 +138,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-a-sql-database"></a>SQL veritabanı oluşturma
 
-1. SQL Server Management Studio açın ve sunucu adını ve SQL kimlik doğrulamasını kullanarak sunucuya bağlanın. Oturum açma Kullanıcı adı **sa** ve parola, Docker komutunda ayarlanan paroladır. Örnek komutta parola `Password1234` ' dır.
+1. SQL Server Management Studio açın ve sunucu adını ve SQL kimlik doğrulamasını kullanarak sunucuya bağlanın. Oturum açma Kullanıcı adı **sa** ve parola, Docker komutunda ayarlanan paroladır. Örnek komutta parola `Password1234`.
 
     ![SQL Server Management Studio kullanarak SQL Server bağlanma](./media/vnet-injection-sql-server/ssms-login.png)
 

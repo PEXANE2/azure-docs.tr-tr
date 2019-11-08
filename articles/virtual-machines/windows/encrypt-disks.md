@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 87777d3a6abfeaeac74fd69126cc3e71e11be825
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 73f38760153a6e1db5621801282c71216b3e8560
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597848"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749425"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Windows VM 'de sanal diskleri şifreleme
 Gelişmiş sanal makine (VM) güvenliği ve uyumluluğu için, Azure 'daki sanal diskler şifrelenebilir. Diskler, bir Azure Key Vault güvenli hale getirilmiş şifreleme anahtarları kullanılarak şifrelenir. Bu şifreleme anahtarlarını kontrol edersiniz ve kullanımlarını denetleyebilir. Bu makalede, Azure PowerShell kullanarak bir Windows VM 'de sanal disklerin nasıl şifreleneceği açıklanır. Ayrıca, [Linux sanal makinelerini şifreleyebilirsiniz](../linux/disk-encryption-overview.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="overview-of-disk-encryption"></a>Disk şifrelemeye genel bakış
 Windows VM 'lerinde sanal diskler, BitLocker kullanılarak geri kalanı şifrelenir. Azure 'da sanal disklerin şifrelenmesi ücretsizdir. Şifreleme anahtarları yazılım koruması kullanılarak bir Azure Key Vault depolanır veya anahtarlarınızı FIPS 140-2 düzey 2 standartlarına sertifikalı donanım güvenlik modüllerinde (HSM 'ler) içeri aktarabilir veya oluşturabilirsiniz. Şifreleme anahtarları, VM 'nize bağlı sanal diskleri şifrelemek ve şifrelerini çözmek için kullanılır. Bu şifreleme anahtarlarının denetimini tutar ve kullanımlarını denetleyebilir. 
@@ -94,7 +94,7 @@ Add-AzKeyVaultKey -VaultName $keyVaultName `
     -Destination "Software"
 ```
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 Şifreleme işlemini test etmek için [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)Ile bir VM oluşturun. Aşağıdaki örnek, *Windows Server 2016 Datacenter* görüntüsü kullanan *MYVM* adlı bir VM oluşturur. Kimlik bilgileri istendiğinde, VM 'niz için kullanılacak kullanıcı adını ve parolayı girin:
 
 ```azurepowershell-interactive

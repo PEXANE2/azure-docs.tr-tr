@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: bfb012116f74e451f9479c8c65057e5c8405bbb4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513789"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747696"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management şirket içinde barındırılan bir ağ geçidini Docker 'a dağıtma
 
@@ -26,11 +26,14 @@ Bu makalede, şirket içinde barındırılan Azure API Management ağ geçidini 
 > [!NOTE]
 > Şirket içinde barındırılan ağ geçidi özelliği önizlemededir. Önizleme sırasında, şirket içinde barındırılan ağ geçidi, yalnızca geliştirici ve Premium katmanlarda ek ücret ödemeden kullanılabilir. Geliştirici katmanı, tek bir şirket içinde barındırılan ağ geçidi dağıtımıyla sınırlıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 - Docker ortamı oluşturun. [Masaüstü Için Docker](https://www.docker.com/products/docker-desktop) , geliştirme ve değerlendirme amaçları için iyi bir seçenektir. Tüm Docker sürümleri, özellikleri ve Docker üzerinde kapsamlı belgeler hakkında bilgi için bkz. [Docker belgeleri](https://docs.docker.com) .
 - [API Management örneğiniz için bir ağ geçidi kaynağı sağlama](api-management-howto-provision-self-hosted-gateway.md)
+
+> [!NOTE]
+> Şirket içinde barındırılan ağ geçidi, Linux tabanlı bir Docker kapsayıcısı olarak paketlenmiştir.
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>Şirket içinde barındırılan ağ geçidini Docker 'a dağıtma
 
@@ -63,4 +66,5 @@ CONTAINER ID        IMAGE                                                 COMMAN
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Şirket içinde barındırılan ağ geçidi hakkında daha fazla bilgi edinmek için bkz. [Azure API Management Self-barındırılan ağ geçidine genel bakış](self-hosted-gateway-overview.md)
+* Şirket içinde barındırılan ağ geçidi hakkında daha fazla bilgi edinmek için bkz. [Azure API Management şirket içinde barındırılan ağ geçidine genel bakış](self-hosted-gateway-overview.md).
+* [Şirket içinde barındırılan ağ geçidi için özel etki alanı adını yapılandırın](api-management-howto-configure-custom-domain-gateway.md).

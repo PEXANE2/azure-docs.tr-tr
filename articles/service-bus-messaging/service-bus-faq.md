@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278331"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748438"
 ---
 # <a name="service-bus-faq"></a>Hizmet Veri Yolu SSS
 
@@ -51,7 +51,7 @@ Aşağıdaki protokolleri, ileti göndermek ve almak için Azure Service Bus ile
 
 Azure Event Hubs ile iletişim kurmak için bu protokolleri kullanmak üzere açmanız gereken giden bağlantı noktaları için aşağıdaki tabloya bakın. 
 
-| Protocol | Bağlantı Noktaları | Ayrıntılar | 
+| Protokol | Bağlantı Noktaları | Ayrıntılar | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 ve 5672 | Bkz. [AMQP protokol Kılavuzu](service-bus-amqp-protocol-guide.md) | 
 | SBMP | 9350 9354 | Bkz. [bağlantı modu](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
@@ -65,7 +65,7 @@ Bağlantılarınız için beyaz listeye doğru IP adreslerini bulmak için şu a
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. ' De `Non-authoritative answer`döndürülen IP adresini aklınızda edin. Bu IP adresi statiktir. Ad alanını farklı bir kümeye geri yükledikten sonra değişikliğin değiştirileceği tek zaman nokta.
+2. `Non-authoritative answer`döndürülen IP adresini aklınızda edin. Bu IP adresi statiktir. Ad alanını farklı bir kümeye geri yükledikten sonra değişikliğin değiştirileceği tek zaman nokta.
 
 Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapmanız gerekir: 
 
@@ -111,6 +111,13 @@ Belirli bir Azure bölgesindeki tüm veri aktarımlarında, tüm gelen veri akta
 
 ### <a name="does-service-bus-charge-for-storage"></a>Service Bus depolama için ücretlendirilir mi?
 Hayır, Service Bus depolama için ücret alınmaz. Ancak, kuyruk/Konu başına kalıcı olabilecek maksimum veri miktarını sınırlayan bir kota vardır. Sonraki SSS bölümüne bakın.
+
+### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Service Bus standart bir ad alanı var. ' $System ' kaynak grubu altında ücretleri neden görüyorum?
+Azure Service Bus son zamanlarda faturalandırma bileşenleri yükseltildi. Bunun nedeni, Service Bus standart bir ad alanınız varsa, kaynak grubu altında '/Subscriptions/< azure_subscription_id >/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system ' kaynağı için satır öğeleri görebilirsiniz. Sistem '.
+
+Bu ücretler, Azure aboneliği başına Service Bus standart ad alanı sağlayan temel ücreti temsil eder. 
+
+Bunların yeni ücretler olmadığına dikkat edin, yani önceki faturalandırma modelinde var. Tek değişiklik, artık ' $system ' altında listelenirler. Bu, yeni faturalandırma sisteminde bulunan ve ' $system ' kaynak kimliği altında belirli bir kaynağa bağlı olmayan abonelik düzeyi ücretlerini gruplandıran bir değer nedeniyle yapılır.
 
 ## <a name="quotas"></a>Kotalar
 

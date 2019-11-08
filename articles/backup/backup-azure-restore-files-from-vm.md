@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: Azure VM yedeğinden dosya ve klasörleri kurtarma'
-description: Azure sanal makinesi kurtarma noktasından dosyaları kurtarma
+description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klasörleri kurtarmayı öğrenin.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: df8e309ecb2a81205684c60076015f79ac8c4c8f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: c6b49e794011d915f8cd7b29e6317e80391f2675
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968480"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747376"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -75,7 +75,7 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
 
 > [!Note]
 >
-> - İndirilen betik dosyası adı URL 'de doldurulacak **coğrafi ada** sahip olacaktır. Örneğin: indirilen betik adı, ContosoVM_wcus_12345678.... gibi \'VMname\'\_\'geoname\'_\'GUID\'ile başlar.<br><br>
+> - İndirilen betik dosyası adı URL 'de doldurulacak **coğrafi ada** sahip olacaktır. Örneğin: indirilen betik adı,\'.... gibi \'VMname\'\_\'geoname\'_\'GUID ContosoVM_wcus_12345678 ile başlar.<br><br>
 > - URL "https:\//pod01-rec2.wcus.backup.windowsazure.com" olur
 
    Linux için, betik ' Open-iSCSI ' ve ' lshw ' bileşenlerinin kurtarma noktasına bağlanmasını gerektirir. Bileşenler, betiğin çalıştırıldığı bilgisayarda yoksa, komut dosyası bileşenleri yüklemek için izin ister. Gerekli bileşenleri yüklemeye izin verin.
@@ -215,14 +215,14 @@ Betik Ayrıca, Python ve Bash bileşenlerinin kurtarma noktasına güvenli bir �
 |Bileşen | Sürüm  |
 | --------------- | ---- |
 | Bash | 4 ve üzeri |
-| Python | 2.6.6 ve üzeri  |
+| python | 2.6.6 ve üzeri  |
 | IOCTL | 1,2 desteklenmelidir  |
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Büyük disklere sahip sanal makine yedeklemelerinden dosya kurtarma
 
 Bu bölümde, disk sayısı 16 > ve her disk boyutu > 4 TB olan Azure sanal makine yedeklemelerinden nasıl dosya kurtarmasının gerçekleştirileceği açıklanmaktadır.
 
-Dosya kurtarma işlemi, çok sayıda disk (> 16) veya büyük diskler (> 4 TB) olması durumunda tüm diskleri yedekten iliştirdiğinden, aşağıdaki eylem noktaları önerilir.
+Dosya kurtarma işlemi tüm diskleri yedekten iliştirdiğinden, çok sayıda disk (> 16) veya büyük diskler (her biri > 4 TB) kullanıldığında, aşağıdaki eylem noktaları önerilir:
 
 - Dosya kurtarma için ayrı bir geri yükleme sunucusunu (Azure VM D2v3 VM 'Ler) saklayın. Bu yalnızca dosya kurtarma 'yı kullanabilir ve gerekli olmadığında kapatılabilir. Özgün makineye geri yükleme, sanal makinenin kendisi üzerinde önemli bir etkiye sahip olacağı için önerilmez.
 - Sonra, dosya kurtarma işleminin başarılı olup olmadığını denetlemek için betiği bir kez çalıştırın.
@@ -244,7 +244,7 @@ Dosya kurtarma işlemi, çok sayıda disk (> 16) veya büyük diskler (> 4 TB) o
   - /Etc/IDL/SCC \ dosya \ dosya & lt; 1} dosyasında, ayarı
     - Node. Conn [0]. Timeo. noop_out_timeout = 5 ila Node. Conn [0]. Timeo. noop_out_timeout = 30
 - Aşağıdaki işlemi gerçekleştirdikten sonra betiği yeniden çalıştırın. Bu değişikliklerle dosya kurtarmanın başarılı olması oldukça yüksektir.
-- Kullanıcı bir betiği her indirdiğinde, Azure Backup kurtarma noktasını indirme işlemini hazırlama işlemini başlatır. Büyük diskler söz konusu olduğunda bu durum oldukça zaman alır. İsteklerin birbirini izleyen bir kopyası varsa, hedef hazırlık bir indirme içine gider. Bu nedenle, Portal/PowerShell/CLı 'dan bir betiği indirmeniz, 20-30 dakika boyunca (buluşsal bir değer) bekleyip çalıştırmanız önerilir. Bu süre içinde, hedefin betikten bağlantı için hazırlanma beklenmektedir.
+- Kullanıcı bir betiği her indirdiğinde, Azure Backup kurtarma noktasını indirme işlemini hazırlama işlemini başlatır. Büyük disklerle bu, önemli ölçüde zaman alır. İsteklerin birbirini izleyen bir kopyası varsa, hedef hazırlık bir indirme içine gider. Bu nedenle, Portal/PowerShell/CLı 'dan bir betiği indirmeniz, 20-30 dakika boyunca (buluşsal bir değer) bekleyip çalıştırmanız önerilir. Bu süre içinde, hedefin betikten bağlantı için hazırlanma beklenmektedir.
 - Dosya kurtarmasından sonra, birimleri takabileceğiniz kurtarma noktaları için "diskleri çıkar" seçeneğine tıklayarak portala geri gitdiğinizden emin olun. Temelde, bu adım mevcut tüm işlem/oturumları temizler ve kurtarma olasılığını artırır.
 
 ## <a name="troubleshooting"></a>Sorun giderme

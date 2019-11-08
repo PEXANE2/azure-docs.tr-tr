@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6874372d64fdbb667a23f2ded37a68cd68e32993
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 50addbec1717c7bb76a248053dd889b09441f6f6
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245090"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749471"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure disk şifrelemesi örnek betikleri 
 
 Bu makalede önceden şifrelenen VHD 'ler ve diğer görevler için örnek betikler sağlanmaktadır.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="list-vms-and-secrets"></a>VM 'Leri ve gizli dizileri listeleyin
 
@@ -42,15 +42,15 @@ Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanı
 
 |Parametre|Açıklama|Girilmesi?|
 |------|------|------|
-|$resourceGroupName| Anahtar kasasının ait olduğu kaynak grubunun adı.  Mevcut değilse, bu ada sahip yeni bir kaynak grubu oluşturulur.| Doğru|
-|$keyVaultName|Şifreleme anahtarlarının yerleştirileceği anahtar kasasının adı. Bu ada sahip yeni bir kasa, mevcut değilse oluşturulur.| Doğru|
-|$location|Anahtar kasasının konumu. Şifrelenecek anahtar kasası ve VM 'Lerin aynı konumda olduğundan emin olun. @No__t-0 ile bir konum listesi alın.|Doğru|
-|$subscriptionId|Kullanılacak Azure aboneliğinin tanımlayıcısı.  Abonelik KIMLIĞINIZI `Get-AzSubscription` ile alabilirsiniz.|Doğru|
-|$aadAppName|Anahtar kasasına gizli diziler yazmak için kullanılacak Azure AD uygulamasının adı. Bu ada sahip yeni bir uygulama, mevcut değilse oluşturulacaktır. Bu uygulama zaten varsa, aadClientSecret parametresini betiğe geçirin.|False|
+|$resourceGroupName| Anahtar kasasının ait olduğu kaynak grubunun adı.  Mevcut değilse, bu ada sahip yeni bir kaynak grubu oluşturulur.| True|
+|$keyVaultName|Şifreleme anahtarlarının yerleştirileceği anahtar kasasının adı. Bu ada sahip yeni bir kasa, mevcut değilse oluşturulur.| True|
+|$location|Anahtar kasasının konumu. Şifrelenecek anahtar kasası ve VM 'Lerin aynı konumda olduğundan emin olun. `Get-AzLocation` komutu ile bir konum listesi alın.|True|
+|$subscriptionId|Kullanılacak Azure aboneliğinin tanımlayıcısı.  Abonelik Kimliğinizi `Get-AzSubscription` komutu ile alabilirsiniz.|True|
+|$aadAppName|Anahtar kasasına gizli diziler yazmak için kullanılacak Azure AD uygulamasının adı. Bu ada sahip bir uygulama yoksa yeni bir uygulama oluşturulur. Bu uygulama zaten varsa, aadClientSecret parametresini betiğe geçirin.|False|
 |$aadClientSecret|Daha önce oluşturulan Azure AD uygulamasının istemci gizli anahtarı.|False|
 |$keyEncryptionKeyName|Anahtar Kasası 'nda isteğe bağlı anahtar şifreleme anahtarının adı. Bu ada sahip yeni bir anahtar, yoksa oluşturulur.|False|
 
-## <a name="resource-manager-templates"></a>Kaynak Yöneticisi şablonları
+## <a name="resource-manager-templates"></a>Resource Manager şablonları
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Azure AD uygulaması olmadan VM 'Leri şifreleme veya şifrelerini çözme
 
@@ -68,9 +68,9 @@ Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanı
 Aşağıdaki bölümler, Azure IaaS 'de şifrelenmiş bir VHD olarak dağıtıma önceden şifrelenmiş bir Windows VHD 'si hazırlamak için gereklidir. Azure Site Recovery veya Azure 'da yeni bir Windows VM (VHD) hazırlamak ve önyüklemek için bu bilgileri kullanın. Bir VHD 'yi hazırlama ve karşıya yükleme hakkında daha fazla bilgi için bkz. [Genelleştirilmiş BIR VHD 'Yi karşıya yükleme ve Azure 'da yeni VM 'ler oluşturmak için kullanma](upload-generalized-managed.md).
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Grup ilkesini, işletim sistemi koruması için TPM olmayan bir şekilde güncelleştirme
-**Yerel bilgisayar ilkesi** > **bilgisayar yapılandırması** > **Yönetim Şablonları** >  Windows altında bulacağınız BitLocker Grup İlkesi ayarını **BitLocker Sürücü Şifrelemesi**yapılandırın. **Bileşenler**. Bu ayarı **Işletim sistemi sürücüleriyle**değiştirin  > **Başlangıçta ek kimlik doğrulaması gerektir** >  aşağıdaki şekilde GÖSTERILDIĞI gibi**uyumlu bir TPM olmadan BitLocker 'a izin verir**:
+**Yerel bilgisayar ilkesi** > **bilgisayar yapılandırma** > **Yönetim Şablonları** > Windows altında bulacağınız BitLocker Grup İlkesi ayarını **BitLocker Sürücü Şifrelemesi**yapılandırın  **Bileşenler**. Bu ayarı, aşağıdaki şekilde gösterildiği gibi, > **Başlangıçta ek kimlik doğrulaması gerektirmek** > **işletim sistemi sürücüleri** , **uyumlu bir TPM olmadan BitLocker 'a izin vermek**için değiştirin:
 
-![Azure 'da Microsoft Antimalware](../media/disk-encryption/disk-encryption-fig8.png)
+![Azure’da Microsoft Kötü Amaçlı Yazılımdan Koruma](../media/disk-encryption/disk-encryption-fig8.png)
 
 ### <a name="install-bitlocker-feature-components"></a>BitLocker özellik bileşenlerini yükler
 Windows Server 2012 ve üzeri için aşağıdaki komutu kullanın:
@@ -81,7 +81,7 @@ Windows Server 2008 R2 için aşağıdaki komutu kullanın:
 
     ServerManagerCmd -install BitLockers
 
-### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>@No__t-0 kullanarak işletim sistemi birimini BitLocker için hazırlama
+### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>`bdehdcfg` kullanarak işletim sistemi birimini BitLocker için hazırlama
 İşletim sistemi bölümünü sıkıştırmak ve makineyi BitLocker 'a hazırlamak için gerekirse [BdeHdCfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) ' yi yürütün:
 
     bdehdcfg -target c: shrink -quiet 
@@ -138,7 +138,7 @@ Anahtar kasasında gizli dizi ayarlamak için [set-AzKeyVaultSecret](/powershell
 ```
 
 
-[Kek kullanmadan işletim sistemi diski eklemek](#without-using-a-kek)için bir sonraki adımda `$secretUrl` kullanın.
+[Kek kullanmadan işletim sistemi diskini eklemek](#without-using-a-kek)için bir sonraki adımda `$secretUrl` kullanın.
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Disk şifrelemesi gizli anahtarı bir KEK ile şifrelendi
 Gizli anahtarı anahtar kasasına yüklemeden önce, anahtar şifreleme anahtarını kullanarak isteğe bağlı olarak şifreleyebilirsiniz. Anahtar şifreleme anahtarını kullanarak parolayı ilk kez şifrelemek için wrap [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 'sini kullanın. Bu Wrap işleminin çıktısı, [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet 'ini kullanarak bir gizli dizi olarak karşıya yükleyebileceğiniz Base64 URL kodlamalı bir dizedir.
@@ -231,12 +231,12 @@ Gizli anahtarı anahtar kasasına yüklemeden önce, anahtar şifreleme anahtar�
     $secretUrl = $response.id
 ```
 
-[Kek kullanarak işletim sistemi diskini eklemek](#using-a-kek)için bir sonraki adımda `$KeyEncryptionKey` ve `$secretUrl` ' i kullanın.
+[Kek kullanarak işletim sistemi diskini eklemek](#using-a-kek)için bir sonraki adımda `$KeyEncryptionKey` ve `$secretUrl` kullanın.
 
 ##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Bir işletim sistemi diski iliştirmeye çalıştığınızda gizli bir URL belirtin
 
 ###  <a name="without-using-a-kek"></a>KEK kullanmadan
-İşletim sistemi diskini iliştirirken, `$secretUrl` geçirmeniz gerekir. URL, "bir KEK ile şifrelenmemiş disk şifrelemesi" bölümünde oluşturulmuştur.
+İşletim sistemi diskini iliştirirken `$secretUrl`geçirmeniz gerekir. URL, "bir KEK ile şifrelenmemiş disk şifrelemesi" bölümünde oluşturulmuştur.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
@@ -249,7 +249,7 @@ Gizli anahtarı anahtar kasasına yüklemeden önce, anahtar şifreleme anahtar�
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>KEK kullanma
-İşletim sistemi diskini iliştirmeniz durumunda `$KeyEncryptionKey` ve `$secretUrl` ' i geçirin. URL, "bir KEK ile şifrelenen disk şifreleme gizli dizisi" bölümünde oluşturulmuştur.
+İşletim sistemi diskini iliştirmeniz durumunda `$KeyEncryptionKey` geçirin ve `$secretUrl`. URL, "bir KEK ile şifrelenen disk şifreleme gizli dizisi" bölümünde oluşturulmuştur.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

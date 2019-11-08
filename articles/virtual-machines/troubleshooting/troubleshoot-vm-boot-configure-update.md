@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 4263afe33caa4d6471848c8e7dbf9bc1eeec4bee
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da45e24898bc3b5aead250077af69a61bdb33bab
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332509"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749630"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>"Windows hazırlanıyor" sanal makine başlatması takılmış. Azure 'da bilgisayarınızı kapatmayın "
 
 Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) önyüklediğinizde karşılaşabileceğiniz "hazırlanma" ve "Windows 'a hazırlanma" ekranları açıklanmaktadır. Destek bileti için veri toplamanıza yardımcı olacak adımları sağlar.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptoms"></a>Belirtiler
 
@@ -100,7 +100,7 @@ Döküm günlüğünü ve seri konsolunu etkinleştirmek için aşağıdaki beti
 3. [İşletim sistemi diskini ayırın ve ardından işletim sistemi diskini ETKILENEN VM 'ye yeniden ekleyin](../windows/troubleshoot-recovery-disks-portal.md).
 4. VM 'yi başlatın ve seri konsoluna erişin.
 5. Bellek dökümünü tetiklemek için, **maskelenemeyen kesme (NMI) Gönder** ' i seçin.
-    @no__t-Aralık dışı kesme için nereye gönderileceğini öğrenin @ no__t-1
+    ![maskelenemeyen kesmenin gönderileceği yer hakkında resim](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
 6. İşletim sistemi diskini bir kurtarma VM 'sine yeniden ekleyin, döküm dosyasını toplayın.
 
 ## <a name="contact-microsoft-support"></a>Microsoft destek 'e başvurun

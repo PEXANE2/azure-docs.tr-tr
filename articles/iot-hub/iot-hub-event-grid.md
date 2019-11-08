@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: f411771fbf39a99642506253fc025d6b29840423
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7d5a232d92c37a94ff427a3bf203f6f20764060e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648635"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748588"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylara tepki verme
 
@@ -33,8 +33,8 @@ IoT Hub aşağıdaki olay türlerini yayınlar:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft.Devices.DeviceCreated | Bir cihaz IoT Hub 'ına kaydedildiğinde yayımlandı. |
-| Microsoft.Devices.DeviceDeleted | IoT Hub 'ından bir cihaz silindiğinde yayımlandı. |
+| Microsoft. Devices. DeviceCreated | Bir cihaz IoT Hub 'ına kaydedildiğinde yayımlandı. |
+| Microsoft. Devices. DeviceDeleted | IoT Hub 'ından bir cihaz silindiğinde yayımlandı. |
 | Microsoft. Devices. DeviceConnected | Bir cihaz IoT Hub 'ına bağlandığında yayımlandı. |
 | Microsoft. Devices. DeviceConnected bağlantısı kesildi | Bir cihazın IoT Hub 'ından bağlantısı kesildiğinde yayımlandı. |
 | Microsoft. Devices. Devicetelemetri | Bir IoT Hub 'ına cihaz telemetri iletisi gönderildiğinde yayımlandı |
@@ -166,7 +166,7 @@ Her bir özelliğin ayrıntılı açıklaması için, bkz. [IoT Hub için olay �
 
 IoT Hub olay abonelikleri olayları, cihaz adı olan olay türüne, veri içeriğine ve konuya göre filtreleyebilir.
 
-Event Grid olay türlerinde, konularla ve veri içeriklerinde [filtrelemeye](../event-grid/event-filtering.md) izin vermez. Event Grid aboneliğini oluştururken, seçili IoT olaylarına abone olmayı seçebilirsiniz. Event Grid iş (ön ek) **Ile başlayan** ve (son ek) **ile biten** konu filtreleri. Filtre bir `AND` işleç kullanır, bu nedenle hem önek hem de sonek ile eşleşen bir konuya sahip olaylar aboneye teslim edilir.
+Event Grid olay türlerinde, konularla ve veri içeriklerinde [filtrelemeye](../event-grid/event-filtering.md) izin vermez. Event Grid aboneliğini oluştururken, seçili IoT olaylarına abone olmayı seçebilirsiniz. Event Grid iş (ön ek) **Ile başlayan** ve (son ek) **ile biten** konu filtreleri. Filtre bir `AND` işleci kullanır, bu nedenle hem önek hem de sonek ile eşleşen bir konuya sahip olaylar aboneye teslim edilir.
 
 IoT olaylarının konusu şu biçimi kullanır:
 
@@ -204,4 +204,4 @@ IoT Hub olaylarını işleyen uygulamalar aşağıdaki önerilen yöntemleri izl
 
 * [Yönlendirme IoT Hub olayları ve iletileri arasındaki farkları karşılaştırın](iot-hub-event-grid-routing-comparison.md)
 
-* [Azure haritalar (ve IoT Hub ileti yönlendirme) kullanarak IoT uzamsal analizlerini uygulamak için IoT telemetri olaylarını nasıl kullanacağınızı öğrenin](../azure-maps/tutorial-iot-hub-maps.md#filter-events-using-iot-hub-message-routing)
+* [Azure haritalar kullanarak IoT uzamsal analizlerini uygulamak için IoT telemetri olaylarını nasıl kullanacağınızı öğrenin](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)

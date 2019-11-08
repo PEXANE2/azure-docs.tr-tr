@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: 533a199f75baa5a27ed06698f22d4d046be45507
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607884"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748558"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma IoT Hub
 
@@ -62,7 +62,7 @@ IoT Hub 'ı için yük devretme işlemi tamamlandıktan sonra, cihazdaki ve arka
 > [!CAUTION]
 > - IoT Hub yerleşik olaylar uç noktasının Olay Hub 'ı ile uyumlu adı ve uç noktası, yük devretmeden sonra değişir. Olay Hub 'ı istemcisini ya da olay işlemcisi konağını kullanarak yerleşik uç noktadan telemetri iletileri alırken, bağlantıyı kurmak için [IoT Hub bağlantı dizesini kullanmanız](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) gerekir. Bu, arka uç uygulamalarınızın el ile müdahale sonrası yük devretmeye gerek kalmadan çalışmaya devam etmesini sağlar. Arka uç uygulamanızda Olay Hub 'ı ile uyumlu adı ve uç noktayı doğrudan kullanırsanız, işleme devam etmek için yük devretmeden sonra [Yeni Olay Hub 'ı ile uyumlu adı ve uç noktasını getirerek](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) uygulamanızı yeniden yapılandırmanız gerekir.
 >
-> - Depolama alanına yönlendirirken, tüm kapsayıcıların bölüm varsayımından okunmalarını sağlamak için depolama kapsayıcısını listeleyip daha sonra bunların üzerinde yineleme yapmanızı öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Blob 'ların listesini numaralandırma hakkında bilgi edinmek için bkz. [Azure depolama 'ya yönlendirme](iot-hub-devguide-messages-d2c.md#azure-storage).
+> - Depolama alanına yönlendirirken, tüm Blobların veya dosyaların bölüm üzerinde herhangi bir varsayımından okunmalarını sağlamak için Blobları veya dosyaları listeleyip daha sonra bunları yinelemenizi öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Dosya listesi için Blobların listesini veya [ADLS 2. API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) listesini listelemek Için, [LISTE bloblarını API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. 
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft tarafından başlatılan yük devretme
 

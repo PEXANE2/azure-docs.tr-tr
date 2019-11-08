@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 771064774371e71c0664918790b296c156ed1c1f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 547de4862081b56bf627c3a00564ce6564f2ad09
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084784"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750092"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Windows çalıştıran bir sanal makinede PowerShell kullanarak Azure Tanılama’yı etkinleştirme
 
 Azure Tanılama, Azure 'da dağıtılan bir uygulamadaki tanılama verilerinin toplanmasını sağlayan bir özelliktir. Tanılama uzantısını, Windows çalıştıran bir Azure sanal makinesinden (VM) uygulama günlükleri veya performans sayaçları gibi tanılama verileri toplamak için kullanabilirsiniz. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Kaynak Yöneticisi dağıtım modelini kullanıyorsanız tanılama uzantısını etkinleştirin
 Uzantı yapılandırmasını Kaynak Yöneticisi şablonuna ekleyerek, Azure Resource Manager dağıtım modeli aracılığıyla bir Windows VM oluştururken, tanılama uzantısını etkinleştirebilirsiniz. [Azure Resource Manager şablonunu kullanarak izleme ve tanılama Ile Windows sanal makinesi oluşturma](diagnostics-template.md)konusuna bakın.

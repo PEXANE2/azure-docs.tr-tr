@@ -9,15 +9,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 10/17/2019
+ms.date: 11/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: caf4a3efbfafcdb10a8834c213b2469e30296501
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 96d66e6190732d88ba9a33094b6c27bbadfd4aae
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692680"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747795"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>SQL veri ambarı için Visual Studio 2019 ile çalışmaya başlama
 Visual Studio **2019** SQL Server veri araçları (SSDT), aşağıdakileri yapabilmenizi sağlayan tek bir araçtır:
@@ -29,14 +29,8 @@ Visual Studio **2019** SQL Server veri araçları (SSDT), aşağıdakileri yapab
 - Veritabanı projenizi git gibi kaynak denetim sistemleriyle tümleştirin Azure Repos
 - Azure DevOps gibi Otomasyon sunucularıyla sürekli tümleştirme ve dağıtım işlem hatları ayarlama
 
-> [!NOTE]
-> Visual Studio SSDT veritabanı projeleri Şu anda önizlemededir. Bu özellikte düzenli güncelleştirmeler almak için lütfen [UserVoice]' ı oylayın.
-
-## <a name="install-visual-studio-2019-preview"></a>Visual Studio 2019 Preview 'ı yükler
+## <a name="install-visual-studio-2019"></a>Visual Studio 2019 'yi yükler
 Visual Studio **16,3 ve üstünü**indirmek ve yüklemek için bkz. [Visual Studio 2019 'yi indirin][] . Yüklemesi sırasında veri depolama ve işleme iş yükünü seçin. Visual Studio 2019 için tek başına SSDT yüklemesi artık gerekli değildir.
-
-## <a name="reporting-issues-with-ssdt-visual-studio-2019-preview"></a>SSDT Visual Studio 2019 (Önizleme) ile ilgili sorunları bildirme
-SSDT 'yi SQL veri ambarı ile kullanırken oluşan sorunları bildirmek için şu e-posta dağıtım listesini e-postayla gönderin: <sqldwssdtpreview@service.microsoft.com>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 SSDT 'nin en son sürümüne sahip olduğunuza göre, SQL veri ambarınıza [bağlanmaya][connect] hazırsınız.

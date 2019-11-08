@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 3abf3d562b9ca4d6fc9907c065dbaf9a52d58c5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 81d82ce79130513a2827090a98bfef192c9d7829
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555350"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795712"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Azure Izleyici 'de Öngörüler 'e genel bakış
 Öngörüler, belirli uygulamalar ve hizmetler için özelleştirilmiş bir izleme deneyimi sağlar. Bunlar, verileri [Azure izleyici veri platformunda](../platform/data-platform.md) depolar ve analiz ve uyarı Için diğer Azure izleyici özelliklerinden yararlanır, ancak Azure Portal ek veri toplayabilir ve benzersiz bir kullanıcı deneyimi sağlayabilir. Azure portal Azure Izleyici menüsünün **Öngörüler** bölümünden Öngörüler 'e erişin.
@@ -46,6 +46,11 @@ VM'ler için Azure İzleyici, Azure sanal makinelerinizi (VM) ve sanal makine ö
 Bkz. [VM'ler için Azure izleyici nedir?](vminsights-overview.md)
 
 ![VM'ler için Azure İzleyici](media/insights-overview/vm-insights.png)
+
+## <a name="azure-monitor-for-network-preview"></a>Ağ için Azure Izleyici (Önizleme)
+Ağ için Azure Izleyici, tüm ağ kaynağınızın sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlar. Gelişmiş arama özelliği, yalnızca Web sitenizin adını arayarak Web sitenizi barındıran kaynağı tanımlama gibi senaryoları etkinleştirerek Kaynak bağımlılıklarını belirlemenize yardımcı olur.
+
+![Ağlar için Azure Izleyici](media/insights-overview/network-insights.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Öngörüler tarafından [Azure izleyici veri platformu](../platform/data-platform.md) yararlanılabilir hakkında daha fazla bilgi edinin.

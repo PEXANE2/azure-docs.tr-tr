@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: f7f57a43697a9376062bdd3baa2d5f7333bf4a7f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 25091e8e58fbdba908fb00ece3cd2d3d296c5ab1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100150"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749062"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager 'de sanal makineler için WinRM erişimi ayarlanıyor
 
@@ -31,16 +31,16 @@ WinRM bağlantısı ile bir VM kurmak için gerçekleştirmeniz gereken adımlar
 4. Key Vault otomatik olarak imzalanan sertifikanızın URL 'sini alın
 5. VM oluştururken otomatik olarak imzalanan sertifika URL 'nize başvurma
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-## <a name="step-1-create-a-key-vault"></a>1\. adım: Anahtar kasası oluşturma
+## <a name="step-1-create-a-key-vault"></a>1\. Adım: Key Vault oluşturma
 Key Vault oluşturmak için aşağıdaki komutu kullanabilirsiniz
 
 ```
 New-AzKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
-## <a name="step-2-create-a-self-signed-certificate"></a>2\. adım: Otomatik olarak imzalanan sertifika oluşturma
+## <a name="step-2-create-a-self-signed-certificate"></a>2\. Adım: otomatik olarak imzalanan sertifika oluşturma
 Bu PowerShell betiğini kullanarak kendinden imzalı bir sertifika oluşturabilirsiniz
 
 ```
@@ -55,7 +55,7 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>3\. adım: Otomatik olarak imzalanan sertifikanızı Key Vault karşıya yükleyin
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>3\. Adım: Key Vault otomatik olarak imzalanan sertifikanızı karşıya yükleyin
 Sertifikayı adım 1 ' de oluşturulan Key Vault yüklemeden önce, Microsoft. COMPUTE kaynak sağlayıcısı 'nın anlayabilmesi için bir biçime dönüştürülmesi gerekir. Aşağıdaki PowerShell betiği şunları yapmanıza izin verir
 
 ```
@@ -82,7 +82,7 @@ Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValu
 Microsoft. COMPUTE kaynak sağlayıcısı, VM sağlanırken Key Vault içindeki gizliliğe bir URL 'ye ihtiyaç duyuyor. Bu, Microsoft. COMPUTE kaynak sağlayıcısı 'nın gizli anahtarı indirmesini ve sanal makinede eşdeğer sertifikayı oluşturmasını sağlar.
 
 > [!NOTE]
-> Gizli dizinin URL 'sinin sürümü de içermesi gerekir. Https aşağıdaki gibi bir örnek URL görünür:\//contosovault.Vault.Azure.net:443/Secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> Gizli dizinin URL 'sinin sürümü de içermesi gerekir. Https aşağıdaki gibi bir örnek URL:\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>Şablonlar
 Aşağıdaki kodu kullanarak şablondaki URL bağlantısını edinebilirsiniz
@@ -149,7 +149,7 @@ VM 'ye bağlanabilmeniz için makinenizin WinRM uzaktan yönetimi için yapılan
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> Yukarıdaki işlem çalışmazsa WinRM hizmetinin çalıştığından emin olmanız gerekebilir. Bunu kullanarak şunları yapabilirsiniz`Get-Service WinRM`
+> Yukarıdaki işlem çalışmazsa WinRM hizmetinin çalıştığından emin olmanız gerekebilir. Bunu `Get-Service WinRM` kullanarak yapabilirsiniz
 > 
 > 
 

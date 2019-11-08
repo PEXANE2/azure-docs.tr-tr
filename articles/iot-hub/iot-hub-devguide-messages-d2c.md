@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: e4f1797d600a226eb152a464efe4da8ddbdb6207
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606245"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748049"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma
 
@@ -57,7 +57,7 @@ Toplu iş iletileri IoT Hub ve yığın belirli bir boyuta ulaştığında veya 
 
 Herhangi bir dosya adlandırma kuralını kullanabilirsiniz, ancak listelenen tüm belirteçleri kullanmanız gerekir. Yazılacak veri yoksa IoT Hub boş bir bloba yazılır.
 
-Tüm kapsayıcıların bölüm varsayımından okunmalarını sağlamak için, depolama kapsayıcılarını listeleyip daha sonra bunların üzerinde yineleme yapmanızı öneririz. Bölüm aralığı, [Microsoft tarafından başlatılan bir yük devretme](iot-hub-ha-dr.md#microsoft-initiated-failover) veya [el ile yük devretme](iot-hub-ha-dr.md#manual-failover)IoT Hub değişebilir. Blobların listesini numaralandırmak için, [liste BLOBLARıNı API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. Lütfen kılavuz olarak aşağıdaki örneğe bakın.
+Tüm Blobların veya dosyaların bölüm varsayımlarını yapmadan okunmalarını sağlamak için Blobları veya dosyaları listeleyip daha sonra bu dosyaların üzerinde değişiklik yapmanızı öneririz. Bölüm aralığı, [Microsoft tarafından başlatılan bir yük devretme](iot-hub-ha-dr.md#microsoft-initiated-failover) veya [el ile yük devretme](iot-hub-ha-dr.md#manual-failover)IoT Hub değişebilir. Dosya listesi için Blobların listesini veya [ADLS 2. API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) listesini listelemek Için, [LISTE bloblarını API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. Lütfen kılavuz olarak aşağıdaki örneğe bakın.
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)

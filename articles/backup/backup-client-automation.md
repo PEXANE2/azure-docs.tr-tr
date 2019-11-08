@@ -1,6 +1,6 @@
 ---
 title: Windows Server 'ı Azure 'a yedeklemek için PowerShell 'i kullanma
-description: PowerShell kullanarak Azure Backup dağıtmayı ve yönetmeyi öğrenin
+description: Bu makalede, PowerShell kullanarak Windows Server veya Windows istemcisinde Azure Backup ayarlama ve yedekleme ve kurtarmayı yönetme hakkında bilgi edinin.
 ms.reviewer: shivamg
 author: dcurwin
 manager: carmonm
@@ -8,18 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: d65da05ea2b24e3820d9a6fde31b3d4a5c72dbd1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 78b83eb725da09dc98df05865ba4d41c505f0f4c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656744"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747253"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell kullanarak Windows Server/Windows İstemcisi için Azure’a yedekleme dağıtma ve yönetme
 
 Bu makalede, PowerShell kullanarak Windows Server veya Windows istemcisinde Azure Backup ayarlama ve yedekleme ve kurtarmayı yönetme işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="install-azure-powershell"></a>Azure PowerShell'i yükleyin
+## <a name="install-azure-powershell"></a>Azure PowerShell'i yükleme
+
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Başlamak için [en son PowerShell sürümünü yüklemelisiniz](/powershell/azure/install-az-ps).
@@ -78,7 +79,6 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="installing-the-azure-backup-agent"></a>Azure Backup aracısını yükleme
@@ -102,9 +102,9 @@ MARSAgentInstaller.exe /q
 
 Bu, aracıyı tüm varsayılan seçeneklerle birlikte kurar. Yükleme arka planda birkaç dakika sürer. */Nu* seçeneğini belirtmezseniz, tüm güncelleştirmeleri denetlemek için yüklemenin sonunda **Windows Update** penceresi açılır. Yüklendikten sonra, aracı yüklü programlar listesinde görünür.
 
-Yüklü programların listesini görmek için **Denetim Masası** > **Programlar** > **Programlar ve Özellikler**' e gidin.
+Yüklü programların listesini görmek için **Denetim masası** > **Programlar** > **Programlar ve Özellikler**' e gidin.
 
-![Aracı yüklü](./media/backup-client-automation/installed-agent-listing.png)
+![Aracı yüklendi](./media/backup-client-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Yükleme seçenekleri
 
@@ -119,8 +119,8 @@ Mevcut seçenekler şunlardır:
 | Seçenek | Ayrıntılar | Varsayılan |
 | --- | --- | --- |
 | anahtarın |Sessiz yükleme |- |
-| /p: "konum" |Azure Backup aracısının yükleme klasörünün yolu. |C:\Program Files\Microsoft Azure Recovery Services Agent |
-| /s: "konum" |Azure Backup aracısına ait önbellek klasörünün yolu. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
+| /p: "konum" |Azure Backup aracısının yükleme klasörünün yolu. |C:\Program Files\Microsoft Azure kurtarma hizmetleri Aracısı |
+| /s: "konum" |Azure Backup aracısına ait önbellek klasörünün yolu. |C:\Program Files\Microsoft Azure kurtarma hizmetleri, çalışma |
 | /m |Microsoft Update için kabul etme |- |
 | /nu |Yükleme tamamlandıktan sonra güncelleştirmeleri denetleme |- |
 | belirtilmediyse |Microsoft Azure Kurtarma Hizmetleri Aracısı 'nı kaldırır |- |
@@ -188,7 +188,7 @@ Machine registration succeeded.
 
 Windows makinenin Internet 'e bağlantısı bir ara sunucu üzerinden olduğunda, ara sunucu ayarları da aracıya temin edilebilir. Bu örnekte, proxy sunucusu yoktur, bu nedenle ara sunucu ile ilgili tüm bilgileri açıkça temizliyoruz.
 
-Bant genişliği kullanımı Ayrıca, belirli bir gün kümesi için `work hour bandwidth` ve `non-work hour bandwidth` seçenekleriyle denetlenebilir.
+Bant genişliği kullanımı Ayrıca, haftanın belirli bir gün kümesi için `work hour bandwidth` ve `non-work hour bandwidth` seçenekleriyle denetlenebilir.
 
 Proxy ve bant genişliği ayrıntılarının ayarlanması, [set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) cmdlet 'i kullanılarak yapılır:
 
@@ -212,7 +212,7 @@ Server properties updated successfully.
 
 Azure Backup gönderilen yedekleme verileri verilerin gizliliğini korumak için şifrelenir. Şifreleme parolası, geri yükleme sırasında verilerin şifresini çözmek için "paroladır".
 
-Azure Portal **Kurtarma Hizmetleri Kasası** bölümünde **Ayarlar** > **Özellikler** > **güvenlik PIN** altında **Oluştur**' u seçerek bir güvenlik PIN 'i oluşturmanız gerekir. Ardından, bunu komutunda olduğu gibi `generatedPIN` kullanın:
+Azure portal **Kurtarma Hizmetleri Kasası** bölümünde **ayarlar** > **Özellikler** > **güvenlik PIN** 'i ' nin altında **Oluştur**' u seçerek bir güvenlik PIN 'i oluşturmanız gerekir. Ardından, bunu komutunda `generatedPIN` olarak kullanın:
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force
@@ -246,10 +246,10 @@ Bu noktada, ilke boştur ve diğer cmdlet 'ler, yedeklemelerin ne zaman eklenece
 
 ### <a name="configuring-the-backup-schedule"></a>Yedekleme zamanlamasını yapılandırma
 
-Bir ilkenin 3 kısımlarından ilki, [New-OBSchedule](https://technet.microsoft.com/library/hh770401) cmdlet 'i kullanılarak oluşturulan yedekleme zamanlamadır. Yedekleme zamanlaması, yedeklemelerin ne zaman alınması gerektiğini tanımlar. Bir zamanlama oluştururken, 2 giriş parametresi belirtmeniz gerekir:
+Bir ilkenin üç bölümünün ilki, [New-OBSchedule](https://technet.microsoft.com/library/hh770401) cmdlet 'i kullanılarak oluşturulan yedekleme zamanlamadır. Yedekleme zamanlaması, yedeklemelerin ne zaman alınması gerektiğini tanımlar. Bir zamanlama oluştururken iki giriş parametresi belirtmeniz gerekir:
 
 * Yedeklemenin çalışması gereken **haftanın günleri** . Yedekleme işini yalnızca bir gün veya haftanın her gününde ya da arasında herhangi bir bileşim için çalıştırabilirsiniz.
-* Yedeklemenin çalışması gereken **gün sayısı** . Yedeklemenin tetiklenmesi için en fazla 3 farklı saat tanımlayabilirsiniz.
+* Yedeklemenin çalışması gereken **gün sayısı** . Yedeklemenin tetiklenmesi için günün en fazla üç farklı kez tanımlayabilirsiniz.
 
 Örneğin, her Cumartesi ve Pazar için 4PM 'de çalışan bir yedekleme ilkesi yapılandırabilirsiniz.
 
@@ -266,9 +266,10 @@ Set-OBSchedule -Policy $NewPolicy -Schedule $Schedule
 ```Output
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName : RetentionPolicy : State : New PolicyState : Valid
 ```
+
 ### <a name="configuring-a-retention-policy"></a>Bekletme ilkesi yapılandırma
 
-Bekletme ilkesi, yedekleme işlerinin oluşturduğu kurtarma noktalarının ne kadar süreyle korunacağını tanımlar. [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) cmdlet 'ini kullanarak yeni bir bekletme ilkesi oluştururken, yedekleme kurtarma noktalarının Azure Backup ile saklanması gereken gün sayısını belirtebilirsiniz. Aşağıdaki örnekte, 7 günlük bir bekletme ilkesi ayarlanır.
+Bekletme ilkesi, yedekleme işlerinin oluşturduğu kurtarma noktalarının ne kadar süreyle korunacağını tanımlar. [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) cmdlet 'ini kullanarak yeni bir bekletme ilkesi oluştururken, yedekleme kurtarma noktalarının Azure Backup ile saklanması gereken gün sayısını belirtebilirsiniz. Aşağıdaki örnekte yedi günlük bir bekletme ilkesi ayarlanır.
 
 ```powershell
 $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
@@ -300,9 +301,10 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
+
 ### <a name="including-and-excluding-files-to-be-backed-up"></a>Yedeklenecek dosyaları dahil etme ve hariç tutma
 
-Bir `OBFileSpec` nesne, bir yedeklemeye dahil edilecek ve dışlanacak dosyaları tanımlar. Bu, bir makinedeki korunan dosya ve klasörlerin kapsamını oluşturan bir kurallar kümesidir. Gereken birçok dosya ekleme veya dışlama kuralına sahip olabilir ve bunları bir ilkeyle ilişkilendirebilirsiniz. Yeni bir Obdosyabelirtimi nesnesi oluştururken şunları yapabilirsiniz:
+Bir `OBFileSpec` nesnesi, bir yedeklemeye dahil edilecek ve dışlanacak dosyaları tanımlar. Bu, bir makinedeki korunan dosya ve klasörlerin kapsamını oluşturan bir kurallar kümesidir. Gereken birçok dosya ekleme veya dışlama kuralına sahip olabilir ve bunları bir ilkeyle ilişkilendirebilirsiniz. Yeni bir Obdosyabelirtimi nesnesi oluştururken şunları yapabilirsiniz:
 
 * Dahil edilecek dosya ve klasörleri belirtin
 * Dışlanacak dosya ve klasörleri belirtin
@@ -310,7 +312,7 @@ Bir `OBFileSpec` nesne, bir yedeklemeye dahil edilecek ve dışlanacak dosyalar�
 
 İkincisi, New-Obdosyabelirtimi komutunda-Nonözyinelemeli bayrağı kullanılarak elde edilir.
 
-Aşağıdaki örnekte, C: ve D: birimi Yedeklenecek ve işletim sistemi ikili dosyalarını Windows klasöründe ve tüm geçici klasörlerde dışarıda bırakacağız. Bunu yapmak için [New-Obdosyabelirtimi](https://technet.microsoft.com/library/hh770408) cmdlet 'ini kullanarak iki dosya belirtimleri oluşturacağız. ekleme için bir tane, hariç tutma için bir tane. Dosya belirtimleri oluşturulduktan sonra, [Add-Obdosyabelirtimi](https://technet.microsoft.com/library/hh770424) cmdlet 'i kullanılarak ilkeyle ilişkilendirilir.
+Aşağıdaki örnekte, C: ve D: birimi Yedeklenecek ve işletim sistemi ikili dosyalarını Windows klasöründe ve tüm geçici klasörlerde dışarıda bırakacağız. Bunu yapmak için, [New-Obdosyabelirtimi](https://technet.microsoft.com/library/hh770408) cmdlet 'ini kullanarak iki dosya belirtimi oluşturacağız. ekleme için bir tane ve dışlama için bir tane. Dosya belirtimleri oluşturulduktan sonra, [Add-Obdosyabelirtimi](https://technet.microsoft.com/library/hh770424) cmdlet 'i kullanılarak ilkeyle ilişkilendirilir.
 
 ```powershell
 $Inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
@@ -403,11 +405,13 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
+
 ## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>MABS aracısında Windows Server sistem durumunu yedekleme
 
 Bu bölüm, MABS aracısında sistem durumunu ayarlamak için PowerShell komutunu ele almaktadır
 
 ### <a name="schedule"></a>Zamanlama
+
 ```powershell
 $sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
 ```
@@ -432,7 +436,7 @@ Get-OBSystemStatePolicy
 
 ### <a name="applying-the-policy"></a>İlke uygulanıyor
 
-Artık ilke nesnesi tamamlanmıştır ve ilişkili bir yedekleme zamanlaması, bekletme ilkesi ve bir dosya içerme/dışlama listesi bulunur. Bu ilke artık kullanım Azure Backup için uygulanabilir. Yeni oluşturulan ilkeyi uygulamadan önce [Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) cmdlet 'ini kullanarak sunucuyla ilişkili mevcut bir yedekleme ilkesi olmadığından emin olun. İlke kaldırıldığında onay istenir. Onayı atlamak için, cmdlet 'i `-Confirm:$false` ile bayrağı kullanın.
+Artık ilke nesnesi tamamlanmıştır ve ilişkili bir yedekleme zamanlaması, bekletme ilkesi ve bir dosya içerme/dışlama listesi bulunur. Bu ilke artık kullanım Azure Backup için uygulanabilir. Yeni oluşturulan ilkeyi uygulamadan önce [Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) cmdlet 'ini kullanarak sunucuyla ilişkili mevcut bir yedekleme ilkesi olmadığından emin olun. İlke kaldırıldığında onay istenir. Onayı atlamak için cmdlet 'iyle birlikte `-Confirm:$false` bayrağını kullanın.
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy
@@ -442,7 +446,7 @@ Get-OBPolicy | Remove-OBPolicy
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-İlke nesnesini kaydetme, [set-OBPolicy](https://technet.microsoft.com/library/hh770421) cmdlet 'i kullanılarak yapılır. Bu ayrıca onay ister. Onayı atlamak için, cmdlet 'i `-Confirm:$false` ile bayrağı kullanın.
+İlke nesnesini kaydetme, [set-OBPolicy](https://technet.microsoft.com/library/hh770421) cmdlet 'i kullanılarak yapılır. Bu ayrıca onay ister. Onayı atlamak için cmdlet 'iyle birlikte `-Confirm:$false` bayrağını kullanın.
 
 ```powershell
 Set-OBPolicy -Policy $NewPolicy
@@ -545,7 +549,7 @@ IsRecursive : True
 
 ### <a name="performing-an-ad-hoc-backup"></a>Geçici yedekleme gerçekleştirme
 
-Yedekleme ilkesi ayarlandıktan sonra, yedeklemeler zamanlamaya göre gerçekleşir. [Start-obbackup](https://technet.microsoft.com/library/hh770426) cmdlet 'i kullanılarak geçici yedeklemenin tetiklenmesi de mümkündür:
+Yedekleme ilkesi ayarlandıktan sonra, her zamanlama için yedeklemeler gerçekleşir. [Start-obbackup](https://technet.microsoft.com/library/hh770426) cmdlet 'i kullanılarak geçici yedeklemenin tetiklenmesi de mümkündür:
 
 ```powershell
 Get-OBPolicy | Start-OBBackup
@@ -624,13 +628,13 @@ ItemSize :
 ItemLastModifiedTime :
 ```
 
-Nesne `$Rps` , bir yedekleme noktaları dizisidir. İlk öğe en son noktasıdır ve nth öğesi en eski noktasıdır. En son noktayı seçmek için kullanacağız `$Rps[0]`.
+Nesne `$Rps`, yedekleme noktalarının bir dizisidir. İlk öğe en son noktasıdır ve nth öğesi en eski noktasıdır. En son noktayı seçmek için `$Rps[0]`kullanacağız.
 
 ### <a name="choosing-an-item-to-restore"></a>Geri yüklenecek bir öğe seçme
 
-Geri yüklenecek tam dosyayı veya klasörü belirlemek için, [Get-Obrecoverableıtem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet 'ini yinelemeli olarak kullanın. Bu şekilde, `Get-OBRecoverableItem`klasör hiyerarşisi yalnızca kullanılarak gözatılabilir.
+Geri yüklenecek tam dosyayı veya klasörü belirlemek için, [Get-Obrecoverableıtem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet 'ini yinelemeli olarak kullanın. Bu şekilde, klasör hiyerarşisi yalnızca `Get-OBRecoverableItem`ile gözatılabilir.
 
-Bu örnekte, *finans. xls* dosyasını geri yüklemek istiyoruz, nesneyi `$FilesFolders[1]`kullanarak başvuru yapabilir.
+Bu örnekte, *finans. xls* dosyasını geri yüklemek istiyoruz, nesne `$FilesFolders[1]`kullanarak başvuru yapabilir.
 
 ```powershell
 $FilesFolders = Get-OBRecoverableItem $Rps[0]
@@ -679,7 +683,7 @@ ItemSize : 96256
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 ```
 
-```Get-OBRecoverableItem``` Cmdlet 'ini kullanarak geri yüklenecek öğeleri de arayabilirsiniz. Bizim örneğimizde, *finans. xls* ' i aramak için bu komutu çalıştırarak dosyada bir tanıtıcı edinebilirsiniz:
+Ayrıca, ```Get-OBRecoverableItem``` cmdlet 'ini kullanarak geri yüklenecek öğeler için arama yapabilirsiniz. Bizim örneğimizde, *finans. xls* ' i aramak için bu komutu çalıştırarak dosyada bir tanıtıcı edinebilirsiniz:
 
 ```powershell
 $Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -SearchString "finance*"
@@ -693,7 +697,7 @@ Geri yükleme işlemini tetiklemek için, önce kurtarma seçeneklerini belirtme
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-Şimdi, `Get-OBRecoverableItem` cmdlet 'inin çıktısından seçilen `$Item` üzerinde [Start-obrecovery](https://technet.microsoft.com/library/hh770402.aspx) komutunu kullanarak geri yükleme işlemini tetikleyin:
+Şimdi, `Get-OBRecoverableItem` cmdlet 'inin çıktısından seçili `$Item` [Başlat-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) komutunu kullanarak geri yükleme işlemini tetikleyin:
 
 ```powershell
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption
@@ -770,7 +774,7 @@ Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Windows Server/Client için Azure Backup hakkında daha fazla bilgi için bkz.
+Windows Server/Client Azure Backup hakkında daha fazla bilgi için:
 
 * [Azure Backup'a giriş](backup-introduction-to-azure-backup.md)
 * [Windows sunucularını yedekleme](backup-configure-vault.md)

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: ef3dc13bd7d36e11f3109ef96a6f453b59afe145
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 0f94c89a52de138b261796cbef25c0acb57622c4
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809347"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73800179"
 ---
 ## <a name="trigger"></a>Tetikleyici
 
@@ -385,13 +385,13 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `EventHubTrigger` öznitel
 
 |function. JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | `eventHubTrigger`olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
-|**direction** | Yok | `in`olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**ada** | Yok | İşlev kodundaki olay öğesini temsil eden değişkenin adı. |
+|**type** | yok | `eventHubTrigger`olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**direction** | yok | `in`olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | yok | İşlev kodundaki olay öğesini temsil eden değişkenin adı. |
 |**Yolun** |**EventHubName** | Yalnızca 1. x işlevleri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. |
 |**eventHubName** |**EventHubName** | Yalnızca 2. x işlevleri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. |
 |**consumerGroup** |**ConsumerGroup** | Hub 'daki olaylara abone olmak için kullanılan [Tüketici grubunu](../articles/event-hubs/event-hubs-features.md#event-consumers) ayarlayan isteğe bağlı bir özellik. Atlanırsa, `$Default` Tüketici grubu kullanılır. |
-|**ite** | Yok | JavaScript için. Toplu işleme ' i etkinleştirmek için `many` olarak ayarlayın.  Atlanırsa veya `one`olarak ayarlandıysa, tek bir ileti işleve geçirilir. |
+|**ite** | yok | JavaScript için. Toplu işleme ' i etkinleştirmek için `many` olarak ayarlayın.  Atlanırsa veya `one`olarak ayarlandıysa, tek bir ileti işleve geçirilir. |
 |**bağlanma** |**Bağlanma** | Olay Hub 'ının ad alanına bağlantı dizesini içeren bir uygulama ayarının adı. Bu bağlantı dizesini, Olay Hub 'ının değil, [ad alanı](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)Için **bağlantı bilgileri** düğmesine tıklayarak kopyalayın. Bu bağlantı dizesinin tetikleyiciyi etkinleştirmek için en azından okuma izinlerine sahip olması gerekir.|
 |**Yolun**|**EventHubName**|Olay Hub 'ının adı. Uygulama ayarları aracılığıyla başvurulabilirler `%eventHubName%`|
 
@@ -643,7 +643,7 @@ def main(timer: func.TimerRequest) -> str:
 Aşağıdaki örnek, bir olay hub 'ına geçerli zamanı contianing bir ileti yazan bir Java işlevini gösterir.
 
 ```java
-@}FunctionName("sendTime")
+@FunctionName("sendTime")
 @EventHubOutput(name = "event", eventHubName = "samples-workitems", connection = "AzureEventHubConnection")
 public String sendTime(
    @TimerTrigger(name = "sendTimeTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo)  {
@@ -676,9 +676,9 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `EventHub` özniteliğinde
 
 |function. JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | "EventHub" olarak ayarlanmalıdır. |
-|**direction** | Yok | "Out" olarak ayarlanmalıdır. Bu parametre, Azure portal bağlamayı oluşturduğunuzda otomatik olarak ayarlanır. |
-|**ada** | Yok | Olayı temsil eden işlev kodunda kullanılan değişken adı. |
+|**type** | yok | "EventHub" olarak ayarlanmalıdır. |
+|**direction** | yok | "Out" olarak ayarlanmalıdır. Bu parametre, Azure portal bağlamayı oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | yok | Olayı temsil eden işlev kodunda kullanılan değişken adı. |
 |**Yolun** |**EventHubName** | Yalnızca 1. x işlevleri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. |
 |**eventHubName** |**EventHubName** | Yalnızca 2. x işlevleri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. |
 |**bağlanma** |**Bağlanma** | Olay Hub 'ının ad alanına bağlantı dizesini içeren bir uygulama ayarının adı. Bu bağlantı dizesini, Olay Hub 'ının değil, *ad alanı*Için **bağlantı bilgileri** düğmesine tıklayarak kopyalayın. Bu bağlantı dizesinin iletiyi olay akışına göndermek için gönderme izinleri olmalıdır.|
@@ -687,7 +687,7 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `EventHub` özniteliğinde
 
 ## <a name="output---usage"></a>Çıkış kullanımı
 
-C# Ve C# komut dosyasında,`out string paramName`gibi bir yöntem parametresi kullanarak iletiler gönderin. C# Komut dosyasında `paramName`, *function. json*' nin `name` özelliğinde belirtilen değerdir. Birden çok ileti yazmak için `out string`yerine `ICollector<string>` veya `IAsyncCollector<string>` kullanabilirsiniz.
+C# Ve C# komut dosyasında, `out string paramName`gibi bir yöntem parametresi kullanarak iletiler gönderin. Betik C# ' de, `paramName` *function. json*' nin `name` özelliğinde belirtilen değerdir. Birden çok ileti yazmak için `out string`yerine `ICollector<string>` veya `IAsyncCollector<string>` kullanabilirsiniz.
 
 JavaScript 'te `context.bindings.<name>`kullanarak çıkış olayına erişin. `<name>`, *function. JSON*' nin `name` özelliğinde belirtilen değerdir.
 
@@ -724,5 +724,5 @@ Bu bölümde, sürüm 2. x içinde bu bağlama için kullanılabilen genel yapı
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |maxBatchSize|64|Alma döngüsü başına alınan en yüksek olay sayısı.|
-|prefetchCount|Yok|Temel alınan EventProcessorHost tarafından kullanılacak varsayılan PrefetchCount.|
+|prefetchCount|yok|Temel alınan EventProcessorHost tarafından kullanılacak varsayılan PrefetchCount.|
 |Batchcheckpointflik|1|Bir EventHub imleç denetim noktası oluşturmadan önce işlenecek olay toplu işlemlerinin sayısı.|
