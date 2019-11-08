@@ -1,5 +1,5 @@
 ---
-title: Azure SQL oturum açmaları ve kullanıcıları
+title: Oturum açma bilgileri ve kullanıcılar
 description: SQL veritabanı ve SQL veri ambarı güvenlik yönetimi hakkında, özellikle de sunucu düzeyi sorumlu hesabı aracılığıyla veritabanı erişimini ve oturum açma güvenliğini yönetme hakkında bilgi edinin.
 keywords: sql veritabanı güvenliği,veritabanı güvenliği yönetimi,oturum açma güvenliği,veritabanı güvenliği,veritabanı erişimi
 services: sql-database
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: 501df95b80bd651020fa044970f6bc701959a6a5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a33c653199ae21b551acadfb4503eae029ddc5e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689486"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822820"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>SQL veritabanı ve SQL veri ambarı 'na veritabanı erişimini denetleme ve verme
 
@@ -140,7 +140,7 @@ Başlangıçta veritabanı yöneticilerinden yalnızca biri veya veritabanının
 GRANT ALTER ANY USER TO Mary;
 ```
 
-Başka kullanıcılara veritabanına tam denetim sağlamak için **db_owner** sabit veritabanı rolünün bir üyesi yapın.
+Başka kullanıcılara veritabanına tam denetim sağlamak için, **db_owner** sabit veritabanı rolünün bir üyesi yapın.
 
 Azure SQL veritabanı 'nda `ALTER ROLE` ifadesini kullanın.
 
@@ -148,7 +148,7 @@ Azure SQL veritabanı 'nda `ALTER ROLE` ifadesini kullanın.
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-Azure SQL veri ambarı 'nda [Exec sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)kullanın.
+Azure SQL veri ambarı 'nda [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)kullanın.
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
 ```

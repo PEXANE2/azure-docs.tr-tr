@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central uygulamasına gerçek bir cihaz ekleme | Microsoft Docs
-description: Bir işleç olarak Azure IoT Central uygulamanıza gerçek bir cihaz ekleyin.
+description: Azure IoT Central uygulamanıza gerçek bir cihaz ekleme ve yapılandırma hakkında bilgi edinin. Ayrıca, gerçek cihazınızdaki kod hakkında bilgi edinebilirsiniz.
 author: sandeeppujar
 ms.author: sandeepu
 ms.date: 08/23/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 1f7afde7a5c4f3553cde40e4b179d056b8caee9b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fce5be4d059d7b3698f1e76a4ec6ff46c4ce3c0b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956211"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824619"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanıza gerçek bir cihaz ekleme
 
@@ -36,15 +36,15 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * İstemci kodunun uygulamaya nasıl eşlendiğini anlama
 > * Gerçek cihaz için istemci kodu yapılandırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, oluşturucunun Azure IoT Central uygulamasını oluşturmak için en azından ilk Oluşturucu öğreticisini tamamlaması gerekir: [Yeni bir cihaz türü tanımlama](tutorial-define-device-type.md) (gerekli)
 
-Geliştirme makinenize [Node. js](https://nodejs.org/) sürüm 8.0.0 veya üstünü yükler. Sürümünüzü denetlemek için komut satırında `node --version` ' yı çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
+Geliştirme makinenize [Node. js](https://nodejs.org/) sürüm 8.0.0 veya üstünü yükler. Sürümünüzü denetlemek için komut satırında `node --version` çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
 
 ## <a name="add-a-real-device"></a>Gerçek cihaz ekleme
 
-Uygulamanıza gerçek bir cihaz eklemek için, [Yeni bir cihaz türü belirleme](tutorial-define-device-type.md) öğreticisinde oluşturduğunuz **Bağlı Klima** cihaz şablonunu kullanırsınız.
+Uygulamanıza gerçek bir cihaz eklemek için, **Yeni bir cihaz türü belirleme** öğreticisinde oluşturduğunuz [Bağlı Klima](tutorial-define-device-type.md) cihaz şablonunu kullanırsınız.
 
 1. Yeni bir cihazı operatör olarak eklemek için sol bölmedeki **cihazlar** ' ı seçin:
 
@@ -52,7 +52,7 @@ Uygulamanıza gerçek bir cihaz eklemek için, [Yeni bir cihaz türü belirleme]
 
    **Device Explorer** , **bağlantılı AIR conditioner** cihaz şablonunu ve sanal cihazı gösterir. Bir cihaz şablonu oluşturduğunuzda, IoT Central otomatik olarak sanal bir cihaz oluşturur.
 
-2. **Bağlı hava layıcı** cihaz şablonunun **Device Explorer**seçili olduğunu unutmayın. Bu şablonu kullanan gerçek bir AIR klimaları cihazını bağlamaya başlamak için **+** ' i seçin ve ardından **Gerçek**:
+2. **Bağlı hava layıcı** cihaz şablonunun **Device Explorer**seçili olduğunu unutmayın. Bu şablonu kullanan gerçek bir AIR klimaları cihazını bağlamaya başlamak için **+** ve ardından **Gerçek**' ı seçin:
 
    ![Yeni, gerçek bir klima cihazı eklemeye başlama](media/tutorial-add-device/newreal.png)
 
@@ -118,7 +118,7 @@ Aşağıdaki adımlar [Node.js](https://nodejs.org/) örneğinin nasıl hazırla
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. Bir metin düzenleyicisi kullanarak, `connectedairconditioner` klasöründe **ConnectedAirConditioner.js** adlı bir dosya oluşturun.
+1. Bir metin düzenleyicisi kullanarak, **klasöründe**ConnectedAirConditioner.js`connectedairconditioner` adlı bir dosya oluşturun.
 
 1. Aşağıdaki `require` deyimlerini **ConnectedAirConditioner.js** dosyasının başlangıcına ekleyin:
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı ölçek kaynakları
+title: Kaynakları ölçeklendirin
 description: Bu makalede, ayrılan kaynakları ekleyerek veya kaldırarak veritabanınızın ölçeklendirilmesi açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: fe93dbac74348166ed623754e5e1460132ca968c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 678096037da69bbddf95933e3fdf988f540ca4a6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687445"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819831"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Veritabanı kaynaklarını en az kapalı kalma süresiyle dinamik olarak ölçeklendirin
 

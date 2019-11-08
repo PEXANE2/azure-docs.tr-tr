@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: c28469e15841e2675c20868b74cf044159c4e9ca
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2962f6c5032ba317f9eb8f10c2abddb566aad904
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259186"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825514"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme 
 
@@ -48,12 +49,12 @@ Hesap ayarları, Iş Ortağı Merkezi ' nde [ticari Market panonuzun](https://pa
 ![Iş Ortağı Merkezi 'nde hesap ayarları menüsü](./media/dashboard-developer-settings.png)
 
 **Hesap ayarları**içinde şunları görüntüleyebileceksiniz:
-- **Hesap ayrıntıları**: Hesap türü ve hesap durumu
-- **Yayımcı kimlikleri**: Satıcı KIMLIĞI, Kullanıcı KIMLIĞI, yayımcı KIMLIĞI, Azure AD kiracılar vb.
-- **İletişim bilgileri**: Yayımcı görünen adı, satıcı iletişim adı, e-posta, telefon ve adres
-- **Finansal Ayrıntılar**: Ödeme hesabı, vergi profili ve ödeme tutma durumu
-- **Cihazlar**: Hesabınızla ilişkili tüm test cihazları
-- **Izleme GUID 'leri**: Tüm izleme GUID 'Leri hesabınızla ilişkilendirin
+- **Hesap ayrıntıları**: hesap türü ve hesap durumu
+- **Yayımcı kimlikleri**: satıcı kimliği, Kullanıcı kimliği, Yayımcı kimliği, Azure AD kiracılar vb.
+- **İletişim bilgisi**: yayımcı görünen adı, satıcı iletişim adı, e-posta, telefon ve adres
+- **Finansal Ayrıntılar**: ödeme hesabı, vergi profili ve ödeme bekletme durumu
+- **Cihazlar**: hesabınızla ilişkili tüm test cihazları
+- **Izleme GUID 'leri**: tüm Izleme GUID 'leri hesabınızla ilişkilendirin
 
 ### <a name="account-details"></a>Hesap ayrıntıları
 
@@ -83,8 +84,8 @@ Bir ödeme hesabı, satışınızdan gönderilecek devam eden banka hesabıdır.
 3. Ödeme hesabınızın kurulumunu tamamlayıp iş ortağı merkezinden tamamen oturumunuzu kapatıp Microsoft hesabınızla (iş hesabınız yerine) oturum açın. 
 
 Artık Microsoft hesabınız ilişkilendirildiğinden, bir ödeme hesabı eklemek için şunları yapmanız gerekir:
-- **Ödeme yöntemi seçin**: Banka hesabı veya PayPal
-- **Ödeme bilgilerini ekle**: Bu, hesap türü seçmeyi (denetleme veya tasarruflar), hesap sahibi adı, hesap numarası ve yönlendirme numarası, fatura adresi, telefon numarası veya PayPal e-posta adresini girmeye dahil olabilir. \* Hesap ödeme yönteminiz olarak PayPal kullanma hakkında daha fazla bilgi edinmek ve Pazar bölgenizde desteklenip desteklenmediğini öğrenmek için bkz. [PayPal bilgileri](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
+- **Ödeme yöntemi seçin**: banka hesabı veya PayPal
+- **Ödeme bilgilerini ekle**: Bu, hesap sahibi adı, hesap numarası ve yönlendirme numarası, fatura adresi, telefon numarası veya PayPal e-posta adresini girerek bir hesap türü (denetleme veya tasarruf) seçmeyi içerebilir. \* Hesap ödeme yönteminiz olarak PayPal kullanma hakkında daha fazla bilgi edinmek ve Pazar bölgenizde desteklenip desteklenmediğini öğrenmek için bkz. [PayPal bilgileri](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
 
 > [!IMPORTANT]
 > Ödeme hesabınızı değiştirmek, ödemenizi tek bir ödeme döngüsüne erteleyebilir. Bu gecikme, hesap değişikliğini doğrulamanız gerektiği gibi, yalnızca ödeme hesabını ayarlarken yaptığımız için oluşur. Hesabınız doğrulandıktan sonra da tam miktar için ücret ödeirsiniz; geçerli ödeme döngüsünün süresi dolan tüm ödemeler bir sonrakine eklenecektir.  
@@ -104,7 +105,7 @@ Iş Ortağı Merkezi ' nde vergi formlarınızı elektronik olarak tamamlayabili
 Farklı ülkeler ve bölgeler farklı vergi gereksinimlerine sahiptir. Vergilerle ödeme yapmanız gereken tam tutar, tekliflerinizi sattığınız ülkelere ve bölgelere göre değişir. Microsoft remits Sales ve size bazı ülkelerde sizin adınıza vergi kullanın. Bu ülkeler teklifinizi listeleme sürecinde tanımlanacaktır. Diğer ülkelerde, kaydettiğiniz yere bağlı olarak, satış için satış ve Kullanım vergisini doğrudan yerel talama yetkilisine havale etmeniz gerekebilir. Bunlara ek olarak, aldığınız satış gelirleri gelir olarak vergilendirilebilir olabilir. Ülkeniz veya bölgeniz için, Microsoft satış işlemleriniz için doğru vergi bilgilerini belirlemenize en iyi şekilde yardımcı olabilecek ilgili yetkiliyle iletişim kurmanız önemle önerilir.
 
 ##### <a name="withholding-rates"></a>Stopaj oranları
-Vergi formlarınızda gönderdiğiniz bilgiler uygun vergi stopajı oranını belirler. Stopaj oranı yalnızca Birleşik Devletler yaptığınız satış için geçerlidir; ABD dışı konumlara yapılan satışlar, stopaja tabi değildir. Stopaj ücretleri farklılık gösterir, ancak Birleşik Devletler dışında kayıt yapan çoğu geliştirici için varsayılan oran% 30 ' dur. Ülkeniz Birleşik Devletler bir gelir vergi anlaşmayı kabul ettiğinde bu oranı azaltma seçeneğiniz vardır.
+Vergi formlarınızda gönderdiğiniz bilgiler uygun vergi stopajı oranını belirler. Stopaj oranı yalnızca Birleşik Devletler yaptığınız satış için geçerlidir; ABD dışı konumlara yapılan satışlar, stopaja tabi değildir. Stopaj ücretleri farklılık gösterir, ancak Birleşik Devletler dışında kayıt yapan çoğu geliştirici için varsayılan oran %30 ' dur. Ülkeniz Birleşik Devletler bir gelir vergi anlaşmayı kabul ettiğinde bu oranı azaltma seçeneğiniz vardır.
 
 ##### <a name="tax-treaty-benefits"></a>Vergi anlaşmalar avantajları
 Birleşik Devletler dışındaysanız, vergi anlaşmalar avantajlarından yararlanabilirsiniz. Bu avantajlar ülke ile ülkeye kadar farklılık gösterir ve Microsoft 'un tuttuğu vergi miktarını azaltmanıza olanak tanıyabilir. W-8BEN formunun Bölüm II ' ni tamamlayarak vergi anlaşmalar avantajlarına talep edebilirsiniz. Bu avantajlardan sizin için uygun olup olmadığını öğrenmek üzere ülkenizde veya bölgenizde uygun kaynaklarla iletişim kurmanızı öneririz.
@@ -149,7 +150,7 @@ Daha fazla bilgi için bkz. [Azure müşteri kullanımını GUID 'Lerle Izleme S
 
 İş Ortağı Merkezi, çok kullanıcılı hesap erişimi ve yönetimi için [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) kullanır. Kuruluşunuzun Azure AD, kayıt işleminin bir parçası olarak Iş Ortağı Merkezi hesabınızla otomatik olarak ilişkilendirilir. 
 
-## <a name="manage-users"></a>Kullanıcıları yönet
+## <a name="manage-users"></a>Kullanıcıları yönetme
 
 Iş Ortağı Merkezi 'nin ( **Hesap ayarları**altında) **Kullanıcılar** bölümü, iş ortağı merkezi hesabınıza erişimi olan kullanıcıları, grupları ve Azure AD UYGULAMALARıNı yönetmek için Azure AD 'yi kullanmanızı sağlar. Kullanıcıları yönetmek için [iş hesabınızla](./company-work-accounts.md) (ILIŞKILI Azure AD kiracısı) oturum açmış olmanız gerekir. Farklı bir iş hesabındaki/Kiracıdaki kullanıcıları yönetmek için, oturumu kapatıp bu iş hesabı/kiracısında **yönetici** izinlerine sahip bir kullanıcı olarak yeniden oturum açmanız gerekir. 
 
@@ -223,7 +224,7 @@ Kullanıcılarınızın, parolasını değiştirmesi gerekiyorsa, Kullanıcı he
 3.  Geçici bir parola dahil olmak üzere, kullanıcının oturum açma bilgilerini gösteren bir onay sayfası görüntülenir. Bu sayfadan ayrıldıktan sonra geçici parolaya erişemeyeceksiniz, bu bilgileri yazdırdığınızdan veya kopyalamanız ve kullanıcıya sunduğunuzdan emin olun.
 
 
-## <a name="manage-groups"></a>Grupları yönet
+## <a name="manage-groups"></a>Grupları yönetme
 
 Gruplar, birden fazla kullanıcı rolünü ve izinlerini birlikte denetlemenize olanak tanır.
 
@@ -340,8 +341,8 @@ Iş Ortağı Merkezi hesabınızla yeni bir Azure AD kiracısı oluşturmak içi
 1.  **Kiracılar** sayfasından ( **Hesap ayarları**altında) **Yeni bir Azure AD kiracısı oluştur**' u seçin.
 2. Yeni Azure AD 'niz için dizin bilgilerini girin:
     - **Etki alanı adı**: Azure AD etki alanınız için kullanacağımız benzersiz ad ". onmicrosoft.com" ile birlikte. Örneğin, "örnek" girdiyseniz, Azure AD etki alanınız "example.onmicrosoft.com" olacaktır.
-    - **İletişim e-postası**: Gerekirse hesabınız hakkında sizinle iletişim kurduğumuz bir e-posta adresi.
-    - **Genel yönetici kullanıcı hesabı bilgileri**: Yeni genel yönetici hesabı için kullanmak istediğiniz ilk ad, soyadı, Kullanıcı adı ve parola.
+    - **İletişim e-postası**: gerekirse hesabınız hakkında sizinle iletişim kurabildiğimiz bir e-posta adresi.
+    - **Genel yönetici kullanıcı hesabı bilgileri**: yeni genel yönetici hesabı için kullanmak istediğiniz ilk ad, soyadı, Kullanıcı adı ve parola.
 3. Yeni etki alanı ve hesap bilgilerini onaylamak için **Oluştur** ' u seçin.
 4. [Kullanıcı eklemeye ve yönetmeye](#manage-users)başlamak Için yenı Azure AD Genel Yönetici Kullanıcı adı ve parolasıyla oturum açın.
 

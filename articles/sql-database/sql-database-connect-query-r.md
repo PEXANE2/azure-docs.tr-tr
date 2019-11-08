@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanını sorgulamak için Machine Learning Services ile R kullanma
+title: Sorgulamak için Machine Learning Services ile R kullanın
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: Bu makalede bir Azure SQL veritabanına bağlanmak ve Transact-SQL deyimleriyle sorgulamak için Azure SQL veritabanı ile R betiği kullanma Machine Learning Services gösterilmektedir.
 services: sql-database
@@ -13,20 +13,20 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: ff38346a9b3bd14db51383c116240b030d3ee42a
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514851"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826982"
 ---
-# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Hızlı Başlangıç: Azure SQL veritabanını sorgulamak için Machine Learning Services ile R kullanma (Önizleme)
+# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Hızlı başlangıç: Azure SQL veritabanını sorgulamak için Machine Learning Services ile R kullanma (Önizleme)
 
 Bu hızlı başlangıçta, bir Azure SQL veritabanına bağlanmak ve Transact-SQL deyimleriyle veri sorgulamak için Machine Learning Services ile [R](https://www.r-project.org/) 'nin nasıl kullanılacağı gösterilmektedir. Machine Learning Services, veritabanı içi R betiklerini yürütmek için kullanılan Azure SQL veritabanı 'nın bir özelliğidir. Daha fazla bilgi için bkz. [Azure SQL veritabanı Machine Learning Services R (Önizleme)](sql-database-machine-learning-services-overview.md).
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -47,7 +47,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakilere sahip olduğunuzdan e
 
   || Tek veritabanı |
   |:--- |:--- |
-  | Create| [Portal](sql-database-single-database-get-started.md) |
+  | Oluşturma| [Portal](sql-database-single-database-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
   | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md) |
@@ -70,7 +70,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakilere sahip olduğunuzdan e
 
 Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
@@ -80,11 +80,11 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 
 1. **SQL Server Management Studio**’yu açın ve SQL veritabanınıza bağlanın.
 
-   Bağlantı için yardıma ihtiyacınız varsa bkz [. hızlı başlangıç: Azure SQL veritabanına bağlanmak ve veritabanını](sql-database-connect-query-ssms.md)sorgulamak için SQL Server Management Studio kullanın.
+   Bağlantı için yardıma ihtiyacınız varsa bkz. [hızlı başlangıç: Azure SQL veritabanına bağlanmak ve sorgu sorgulamak için SQL Server Management Studio kullanma](sql-database-connect-query-ssms.md).
 
 1. Tüm R betiğini [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) saklı yordamına geçirin.
 
-   Betiği, `@script` bağımsız değişkeniyle geçirilir. `@script` Bağımsız değişkenin içindeki her şey geçerli bir R kodu olmalıdır.
+   Betik `@script` bağımsız değişkeniyle geçirilir. `@script` bağımsız değişkeninin içindeki her şey geçerli bir R kodu olmalıdır.
    
    >[!IMPORTANT]
    >Bu örnekteki kod, veritabanınızı oluştururken kaynak olarak seçebileceğiniz örnek AdventureWorksLT verilerini kullanır. Veritabanınızda farklı veriler varsa, SELECT sorgusunda kendi veritabanınızdaki tabloları kullanın. 

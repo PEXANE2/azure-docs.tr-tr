@@ -1,5 +1,5 @@
 ---
-title: Etkin coğrafi çoğaltma-Azure SQL veritabanı
+title: Etkin coğrafi çoğaltma
 description: Aynı veya farklı veri merkezinde (bölge) tek tek veritabanlarının okunabilir ikincil veritabanlarını oluşturmak için etkin Coğrafi çoğaltmayı kullanın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 74cbb9fa5a00b287746afd92fe74f50bfa19110b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 33697fd8d3b0c6faea423026e1462834c6b1ef4c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691308"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822651"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma
 
@@ -48,7 +48,7 @@ Etkin coğrafi çoğaltma, birincil veritabanındaki kaydedilmiş işlemleri anl
 > [!NOTE]
 > İki bölge arasında bir ağ arızası varsa, bağlantıları yeniden kurmak için her 10 saniyede bir yeniden deneme yaptık.
 > [!IMPORTANT]
-> Birincil veritabanında kritik bir değişikliğin yük devretmeden önce ikincil olarak çoğaltılıp çoğaltılmadığını garantilemek için, kritik değişikliklerin çoğaltılmasını sağlamak üzere eşitlemeyi zorlayabilirsiniz (örneğin, parola güncelleştirmeleri). Zorlanan eşitleme, tüm kaydedilmiş işlemler çoğaltılana kadar çağıran iş parçacığını engellediği için performansı etkiler. Ayrıntılar için bkz. [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Birincil veritabanı ve coğrafi ikincil arasındaki çoğaltma gecikmesini izlemek için bkz. [sys. DM _geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
+> Birincil veritabanında kritik bir değişikliğin yük devretmeden önce ikincil olarak çoğaltılıp çoğaltılmadığını garantilemek için, kritik değişikliklerin çoğaltılmasını sağlamak üzere eşitlemeyi zorlayabilirsiniz (örneğin, parola güncelleştirmeleri). Zorlanan eşitleme, tüm kaydedilmiş işlemler çoğaltılana kadar çağıran iş parçacığını engellediği için performansı etkiler. Ayrıntılar için bkz. [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Birincil veritabanı ve coğrafi ikincil arasındaki çoğaltma gecikmesini izlemek için bkz. [sys. dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
 
 Aşağıdaki şekilde, Orta Kuzey ABD bölgesinde birincil ile yapılandırılmış etkin coğrafi çoğaltma örneği ve Orta Güney ABD bölgesinde ikincil değer gösterilmektedir.
 
@@ -120,7 +120,7 @@ Birincil ve ikincil veritabanlarının aynı hizmet katmanına sahip olması ger
 > İkincil veritabanı, birincil ile aynı işlem boyutuyla yapılandırılmadığı sürece yayınlanan RPO = 5 sn garanti edilemez. 
 
 
-İkincil işlem boyutuyla ikincil değer oluşturmaya karar verirseniz, Azure portal üzerindeki günlük GÇ yüzdesi grafiği, çoğaltma yükünü sürdürmek için gereken ikincil işlem boyutunu tahmin etmenin iyi bir yolunu sağlar. Örneğin, birincil veritabanınız P6 (1000 DTU) ve günlük GÇ yüzdesi %50 ise ikincinin en az P4 (500 DTU) olması gerekir. [Sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) veya [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) VERITABANı görünümlerini kullanarak günlük GÇ verilerini de alabilirsiniz.  Daraltma, [sys. DM _exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ve [sys. DM _os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) veritabanı görünümlerinde bir HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO bekleme durumu olarak bildirilir. 
+İkincil işlem boyutuyla ikincil değer oluşturmaya karar verirseniz, Azure portal üzerindeki günlük GÇ yüzdesi grafiği, çoğaltma yükünü sürdürmek için gereken ikincil işlem boyutunu tahmin etmenin iyi bir yolunu sağlar. Örneğin, birincil veritabanınız P6 (1000 DTU) ve günlük GÇ yüzdesi %50 ise ikincinin en az P4 (500 DTU) olması gerekir. Ayrıca, [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) veya [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) VERITABANı görünümlerini kullanarak günlük GÇ verilerini de alabilirsiniz.  Daraltma, [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ve [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) veritabanı görünümlerinde HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO bekleme durumu olarak bildirilir. 
 
 SQL veritabanı işlem boyutları hakkında daha fazla bilgi için bkz. [SQL veritabanı hizmet katmanları](sql-database-purchase-models.md)nelerdir.
 
@@ -143,19 +143,19 @@ Coğrafi olarak çoğaltılan veritabanları için [veritabanı DÜZEYINDE IP g�
 
 ## <a name="preventing-the-loss-of-critical-data"></a>Kritik verilerin kaybını önlemek
 
-Geniş alan ağlarının yüksek gecikmesi nedeniyle, sürekli kopyalama zaman uyumsuz bir çoğaltma mekanizması kullanır. Zaman uyumsuz çoğaltma, bir hata oluşursa, bazı veri kaybını korumasız hale getirir. Ancak, bazı uygulamalar veri kaybı gerektirmez. Bu kritik güncelleştirmeleri korumak için, bir uygulama geliştiricisi işlemi kaydettikten hemen sonra [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) sistem yordamını çağırabilir. Çağırma **sp_wait_for_database_copy_sync** , son kaydedilen işlem ikincil veritabanına iletilene kadar çağıran iş parçacığını engeller. Ancak, iletilen işlemlerin yeniden çalınmasını ve ikincil üzerinde gerçekleşmesini beklemez. **sp_wait_for_database_copy_sync** , belirli bir sürekli kopyalama bağlantısının kapsamına alınır. Birincil veritabanında bağlantı hakları olan herhangi bir Kullanıcı, bu yordamı çağırabilir.
+Geniş alan ağlarının yüksek gecikmesi nedeniyle, sürekli kopyalama zaman uyumsuz bir çoğaltma mekanizması kullanır. Zaman uyumsuz çoğaltma, bir hata oluşursa, bazı veri kaybını korumasız hale getirir. Ancak, bazı uygulamalar veri kaybı gerektirmez. Bu kritik güncelleştirmeleri korumak için, bir uygulama geliştiricisi işlemi tamamladıktan hemen sonra [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) sistem yordamını çağırabilir. **Sp_wait_for_database_copy_sync** çağırmak, son kaydedilen işlem ikincil veritabanına iletilene kadar çağıran iş parçacığını engeller. Ancak, iletilen işlemlerin yeniden çalınmasını ve ikincil üzerinde gerçekleşmesini beklemez. **sp_wait_for_database_copy_sync** , belirli bir sürekli kopyalama bağlantısının kapsamına alınır. Birincil veritabanında bağlantı hakları olan herhangi bir Kullanıcı, bu yordamı çağırabilir.
 
 > [!NOTE]
-> **sp_wait_for_database_copy_sync** , yük devretmeden sonra veri kaybını önler, ancak okuma erişimi için tam eşitlemeyi garanti etmez. Bir **sp_wait_for_database_copy_sync** yordam çağrısının neden olduğu gecikme önemli olabilir ve çağrı sırasında işlem günlüğünün boyutuna bağlıdır.
+> **sp_wait_for_database_copy_sync** yük devretmeden sonra veri kaybını önler, ancak okuma erişimi için tam eşitlemeyi garanti etmez. **Sp_wait_for_database_copy_sync** yordam çağrısının neden olduğu gecikme önemli olabilir ve çağrı sırasında işlem günlüğünün boyutuna bağlıdır.
 
 ## <a name="monitoring-geo-replication-lag"></a>Coğrafi çoğaltma gecikmesini izleme
 
-RPO 'ya göre gecikme süresini izlemek için birincil veritabanında [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) öğesinin *replication_lag_sec* sütununu kullanın. Birincil üzerinde yürütülen ve ikincil üzerinde kalıcı olan işlemler arasındaki gecikme süresini saniye cinsinden gösterir. Örneğin öteleme değeri 1 saniye ise, birincil, bu anda bir kesinti tarafından etkilenirse ve yük devretme başlatıldığında en son geçişlerin 1 ikinci geçiş kaydedilmez. 
+RPO 'ya göre gecikme süresini izlemek için birincil veritabanında [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) *replication_lag_sec* sütununu kullanın. Birincil üzerinde yürütülen ve ikincil üzerinde kalıcı olan işlemler arasındaki gecikme süresini saniye cinsinden gösterir. Örneğin öteleme değeri 1 saniye ise, birincil, bu anda bir kesinti tarafından etkilenirse ve yük devretme başlatıldığında en son geçişlerin 1 ikinci geçiş kaydedilmez. 
 
-Birincil veritabanındaki değişikliklere göre gecikme süresini ölçmek için, ikincilden okunmak üzere, ikincil veritabanında *last_commit* saatini birincil veritabanında aynı değere göre karşılaştırın.
+Birincil veritabanındaki değişikliklere göre gecikme süresini ölçmek için, ikincilden okunmak üzere, ikincil veritabanındaki *last_commit* süreyi birincil veritabanında aynı değere göre karşılaştırın.
 
 > [!NOTE]
-> Bazen birincil veritabanındaki *REPLICATION_LAG_SEC* null değere sahiptir, bu da birincil değerin ikinciye ne kadar olduğunu bilmez.   Bu genellikle işlem yeniden başlatıldıktan sonra gerçekleşir ve geçici bir koşul olmalıdır. *Replication_lag_sec* uzun bir süre için null döndürürse uygulamayı uyarma seçeneğini göz önünde bulundurun. Kalıcı bir bağlantı arızası nedeniyle ikincil veritabanının birincil ile iletişim kuramadığını gösterir. Ayrıca, ikincil ve birincil veritabanındaki *last_commit* zaman arasındaki farkın büyük hale gelmesine neden olabilecek koşullar da vardır. Örneğin büyük bir süre sonra birincil üzerinde bir kayıt yapılırsa, fark 0 ' a hızla döndürülmeden önce büyük bir değere geçer. Bu iki değer arasındaki fark uzun bir süre kaldığında bunu bir hata koşuluna göz önünde bulundurun.
+> Birincil veritabanındaki *replication_lag_sec* bazen null değere sahiptir, bu da birincil değerin ikincili 'nin ne kadar olduğunu bilmez.   Bu genellikle işlem yeniden başlatıldıktan sonra gerçekleşir ve geçici bir koşul olmalıdır. *Replication_lag_sec* uzun bir süre için null döndürürse uygulamayı uyarmayı düşünün. Kalıcı bir bağlantı arızası nedeniyle ikincil veritabanının birincil ile iletişim kuramadığını gösterir. Ayrıca, ikincil ve birincil veritabanındaki *last_commit* zaman arasındaki farkın büyük hale gelmesine neden olabilecek koşullar da vardır. Örneğin büyük bir süre sonra birincil üzerinde bir kayıt yapılırsa, fark 0 ' a hızla döndürülmeden önce büyük bir değere geçer. Bu iki değer arasındaki fark uzun bir süre kaldığında bunu bir hata koşuluna göz önünde bulundurun.
 
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Etkin Coğrafi çoğaltmayı programlı bir şekilde yönetme
@@ -170,11 +170,11 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 | Komut | Açıklama |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Var olan bir veritabanı için ikincil bir veritabanı oluşturmak ve veri çoğaltmasını açmak için sunucu bağımsız değişkeni Ekle öğesini kullanın |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Yük devretmeyi başlatmak için ikincil bir veritabanını birincil olacak şekilde değiştirmek için yük DEVRETMEYI veya FORCE_FAILOVER_ALLOW_DATA_LOSS kullanın |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Yük devretmeyi başlatmak için ikincil bir veritabanını birincil olacak şekilde değiştirmek için yük devretme veya FORCE_FAILOVER_ALLOW_DATA_LOSS kullanma |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |SQL veritabanı ve belirtilen ikincil veritabanı arasında bir veri çoğaltmasını sonlandırmak için sunucuda IKINCILI kaldır 'ı kullanın. |
-| [sys. coğrafi _replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Azure SQL veritabanı sunucusundaki her bir veritabanı için varolan tüm çoğaltma bağlantılarıyla ilgili bilgileri döndürür. |
-| [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Belirli bir SQL veritabanının çoğaltma bağlantısı ile ilgili son çoğaltma zamanını, son çoğaltma gecikmesini ve diğer bilgileri alır. |
-| [sys. DM _operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Çoğaltma bağlantılarının durumu da dahil olmak üzere tüm veritabanı işlemlerinin durumunu gösterir. |
+| [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Azure SQL veritabanı sunucusundaki her bir veritabanı için varolan tüm çoğaltma bağlantılarıyla ilgili bilgileri döndürür. |
+| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Belirli bir SQL veritabanının çoğaltma bağlantısı ile ilgili son çoğaltma zamanını, son çoğaltma gecikmesini ve diğer bilgileri alır. |
+| [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Çoğaltma bağlantılarının durumu da dahil olmak üzere tüm veritabanı işlemlerinin durumunu gösterir. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |uygulamanın tüm kaydedilmiş işlemler etkin ikincil veritabanı tarafından çoğaltılıncaya ve onaylanana kadar bekleyip beklememesine neden olur. |
 |  | |
 
@@ -204,8 +204,8 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Oluşturma işlemi sırasında durumu döndürür. |
 | [Ikincil veritabanını birincil olarak ayarla (planlı yük devretme)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Geçerli birincil veritabanından yük devreterek hangi ikincil veritabanının birincil olduğunu ayarlar. **Bu seçenek yönetilen örnek için desteklenmez.**|
 | [Ikincil veritabanını birincil olarak ayarla (planlanmamış yük devretme)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Geçerli birincil veritabanından yük devreterek hangi ikincil veritabanının birincil olduğunu ayarlar. Bu işlem, veri kaybına neden olabilir. **Bu seçenek yönetilen örnek için desteklenmez.**|
-| [Çoğaltma bağlantısını al](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Coğrafi çoğaltma ortaklığı içindeki belirli bir SQL veritabanı için belirli bir çoğaltma bağlantısını alır. Sys. coğrafi _replication_links katalog görünümünde görünen bilgileri alır. **Bu seçenek yönetilen örnek için desteklenmez.**|
-| [Çoğaltma bağlantıları-veritabanına göre liste](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Coğrafi çoğaltma ortaklığında belirli bir SQL veritabanı için tüm çoğaltma bağlantılarını alır. Sys. coğrafi _replication_links katalog görünümünde görünen bilgileri alır. |
+| [Çoğaltma bağlantısını al](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Coğrafi çoğaltma ortaklığı içindeki belirli bir SQL veritabanı için belirli bir çoğaltma bağlantısını alır. Sys. geo_replication_links katalog görünümünde görünen bilgileri alır. **Bu seçenek yönetilen örnek için desteklenmez.**|
+| [Çoğaltma bağlantıları-veritabanına göre liste](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Coğrafi çoğaltma ortaklığında belirli bir SQL veritabanı için tüm çoğaltma bağlantılarını alır. Sys. geo_replication_links katalog görünümünde görünen bilgileri alır. |
 | [Çoğaltma bağlantısını sil](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Bir veritabanı çoğaltma bağlantısını siler. Yük devretme sırasında gerçekleştirilemez. |
 |  | |
 

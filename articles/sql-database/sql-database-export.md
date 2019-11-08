@@ -1,5 +1,5 @@
 ---
-title: Tek veya havuza alınmış bir Azure SQL veritabanını BACPAC dosyasına aktarma
+title: Tek veya havuza alınmış bir veritabanını BACPAC dosyasına aktarma
 description: Azure portal kullanarak bir Azure SQL veritabanını BACPAC dosyasına aktarma
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: f3f6071d42d77ffa07dd27080b1bc18d7bbc6952
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b96d2e69b757774afe177341caffe2f3cbf00e2b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690076"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823464"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Bir Azure SQL veritabanını BACPAC dosyasına aktarma
 
@@ -32,7 +32,7 @@ Arşivleme için bir veritabanını dışarı veya başka bir platforma taşıma
 
   - İşlem boyutunuzu geçici olarak artırın.
   - Dışarı aktarma sırasında tüm okuma ve yazma etkinliklerini durdurun.
-  - Tüm büyük tablolardaki null olmayan değerler içeren bir [kümelenmiş dizin](https://msdn.microsoft.com/library/ms190457.aspx) kullanın. Kümelenmiş dizinler olmadan, 6-12 saatten uzun sürerse dışarı aktarma başarısız olabilir. Bunun nedeni, dışa aktarma hizmetinin tüm tabloyu dışarı aktarmaya çalışmak için bir tablo taramasını tamamlaması gerekir. Tablolarınızın dışarı aktarma için iyileştirildiğini belirlemenin iyi bir yolu, **DBCC SHOW_STATISTICS** çalıştırmak ve *RANGE_HI_KEY* 'nin null ve değeri iyi bir dağıtıma sahip olduğundan emin olmanızı sağlar. Ayrıntılar için bkz. [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
+  - Tüm büyük tablolardaki null olmayan değerler içeren bir [kümelenmiş dizin](https://msdn.microsoft.com/library/ms190457.aspx) kullanın. Kümelenmiş dizinler olmadan, 6-12 saatten uzun sürerse dışarı aktarma başarısız olabilir. Bunun nedeni, dışa aktarma hizmetinin tüm tabloyu dışarı aktarmaya çalışmak için bir tablo taramasını tamamlaması gerekir. Tablolarınızın dışarı aktarma için iyileştirildiğini belirlemenin iyi bir yolu, **DBCC SHOW_STATISTICS** çalıştırmak ve *RANGE_HI_KEY* null olmadığından ve değeri iyi bir dağıtıma sahip olduğundan emin olmanızı sağlar. Ayrıntılar için bkz. [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
 
 > [!NOTE]
 > BACPACs yedekleme ve geri yükleme işlemleri için kullanılmak üzere tasarlanmamıştır. Azure SQL veritabanı her kullanıcı veritabanı için otomatik olarak yedeklemeler oluşturur. Ayrıntılar için bkz. [iş sürekliliği genel bakış](sql-database-business-continuity.md) ve [SQL veritabanı yedeklemeleri](sql-database-automated-backups.md).

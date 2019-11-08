@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanını sorgulamak için PHP 'yi kullanma
+title: Sorgulamak için PHP kullanın
 description: PHP kullanarak Azure SQL veritabanına bağlanan ve T-SQL deyimlerini kullanarak sorgulayan bir program oluşturma.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 02/12/2019
-ms.openlocfilehash: c1c576becc0390a2cb0dfb083755be4e7c772c59
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ae119dd23da670f16c0239b14119519c431e6326
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690946"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827009"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Hızlı Başlangıç: PHP kullanarak Azure SQL veritabanı sorgulama
 

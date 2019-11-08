@@ -1,5 +1,5 @@
 ---
-title: "İstemci VM 'yi bağlama-Azure SQL veritabanı yönetilen örneği "
+title: İstemci VM-yönetilen örneği bağlama
 description: Azure sanal makinesinden SQL Server Management Studio kullanarak Azure SQL veritabanı yönetilen örneğine bağlanın.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: fb45df869bc9ecbe6584837894844c29bafa6223
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a455607b1459ebc9e37b1df70b454feea76d1f2f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689398"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822768"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı yönetilen örneğine bağlanmak için Azure VM 'yi yapılandırma
 
@@ -46,7 +46,7 @@ Aşağıdaki adımlar yönetilen örnek VNet 'inde bir Azure sanal makinesinin y
 
    | Ayar| Önerilen değer | Açıklama |
    | ---------------- | ----------------- | ----------- |
-   | **Ad** | Geçerli bir ad|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
+   | **Ad** | Geçerli bir ad|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).|
    | **Adres aralığı (CIDR bloğu)** | Geçerli bir Aralık | Bu hızlı başlangıç için varsayılan değer iyidir.|
    | **Ağ güvenlik grubu** | None | Bu hızlı başlangıç için varsayılan değer iyidir.|
    | **Yol tablosu** | None | Bu hızlı başlangıç için varsayılan değer iyidir.|
@@ -78,8 +78,8 @@ Tüm gerekli araçlarla istemci sanal makinesi oluşturmanın en kolay yolu Azur
    | **Abonelik** | Geçerli bir abonelik | Yeni kaynaklar oluşturmak için izninizin olduğu bir abonelik olmalıdır. |
    | **Kaynak Grubu** |[Yönetilen örnek oluştur](sql-database-managed-instance-get-started.md) hızlı başlangıçta belirttiğiniz kaynak grubu.|Bu kaynak grubu, VNet 'in bulunduğu bir kaynak olmalıdır.|
    | **Konum** | Kaynak grubunun konumu | Bu değer, seçili kaynak grubuna göre doldurulur. |
-   | **Sanal makine adı**  | Geçerli bir ad | Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Yönetici Kullanıcı adı**|Geçerli bir Kullanıcı adı|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Ayrılmış sunucu düzeyi rol olan gibi "serveradmin" kullanmayın.<br>Bu Kullanıcı adını [, sanal makineye bağlandığınız](#connect-to-virtual-machine)her seferinde kullanırsınız.|
+   | **Sanal makine adı**  | Geçerli bir ad | Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).|
+   |**Yönetici Kullanıcı adı**|Geçerli bir Kullanıcı adı|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). Ayrılmış sunucu düzeyi rol olan gibi "serveradmin" kullanmayın.<br>Bu Kullanıcı adını [, sanal makineye bağlandığınız](#connect-to-virtual-machine)her seferinde kullanırsınız.|
    |**Parola**|Geçerli bir parola|Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.<br>Bu parolayı [, sanal makineye bağlandığınız](#connect-to-virtual-machine)her seferinde kullanırsınız.|
    | **Sanal makine boyutu** | Geçerli boyut | Bu **Standard_B2s** şablonundaki varsayılan değer bu hızlı başlangıç için yeterlidir. |
    | **Konum**|[resourceGroup (). Location].| Bu değeri değiştirmeyin. |

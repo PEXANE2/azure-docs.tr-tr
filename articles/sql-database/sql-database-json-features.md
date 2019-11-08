@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı 'nda JSON verileriyle çalışma
+title: JSON verileriyle çalışma
 description: Azure SQL veritabanı, JavaScript Nesne Gösterimi (JSON) gösteriminde verileri ayrıştırabilmenizi, sorgulamanıza ve biçimlendirmenize olanak sağlar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
-ms.openlocfilehash: 2fe760e3792b5540b18946fd9dbcc5d571b50ee9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689650"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819932"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL veritabanı 'nda JSON özellikleriyle çalışmaya başlama
 Azure SQL veritabanı, JavaScript Nesne Gösterimi [(JSON)](https://www.json.org/) biçiminde temsil edilen verileri ayrıştırabilmenizi ve sorgulamanızı ve ILIŞKISEL verilerinizi JSON metni olarak dışarı aktarmanızı sağlar. Azure SQL veritabanı 'nda aşağıdaki JSON senaryoları kullanılabilir:
@@ -143,7 +143,7 @@ where Id = 1
 
 JSON_VALUE işlevi, veri sütununda depolanan JSON metinden bir değer ayıklar. Bu işlev, Ayıklanacak JSON metnindeki bir değere başvurmak için JavaScript benzeri bir yol kullanır. Ayıklanan değer SQL sorgusunun herhangi bir bölümünde kullanılabilir.
 
-JSON_QUERY işlevi JSON_VALUE ile benzerdir. JSON_VALUE aksine, bu işlev JSON metnine yerleştirilmiş diziler veya nesneler gibi karmaşık alt nesneyi ayıklar.
+JSON_QUERY işlevi JSON_VALUE benzerdir. JSON_VALUE aksine, bu işlev JSON metnine yerleştirilmiş diziler veya nesneler gibi karmaşık alt nesneyi ayıklar.
 
 JSON_MODIFY işlevi, silinecek JSON metninde değerin yolunu, ayrıca eskilerinin üzerine yazacak yeni bir değeri belirtmenize olanak tanır. Bu şekilde, tüm yapıyı yeniden ayrıştırmadan JSON metnini kolayca güncelleştirebilirsiniz.
 

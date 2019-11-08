@@ -1,5 +1,5 @@
 ---
-title: 'Çok kiracılı SaaS desenleri-Azure SQL veritabanı '
+title: Çok kiracılı SaaS desenleri
 description: Azure bulut ortamında çalışan çok kiracılı hizmet olarak yazılım (SaaS) veritabanı uygulamalarının gereksinimleri ve ortak veri mimarisi desenleri hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: ecbcf2cdfea2714e46d0c9cff4066befabddeeb8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ad7bd660ee685b490fb79c7e63fd3c5fce557977
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691935"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822069"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Çok kiracılı SaaS veritabanı Kiracı desenleri
 
@@ -135,7 +135,7 @@ Genel olarak, çok kiracılı veritabanlarının en düşük kiracı başına ma
 
 Çok kiracılı bir veritabanı modelinin iki farklı çeşidi, parçalı çok kiracılı model en esnek ve ölçeklenebilir olacak şekilde aşağıdaki şekilde ele alınmıştır.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>vadeli. Tek bir çok kiracılı veritabanı ile çok kiracılı uygulama
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>Vadeli. Tek bir çok kiracılı veritabanı ile çok kiracılı uygulama
 
 En basit çok kiracılı veritabanı, tüm kiracılara yönelik verileri barındırmak için tek bir veritabanı kullanır.  Daha fazla kiracı eklendikçe, veritabanı daha fazla depolama ve işlem kaynaklarıyla ölçeklenir.  Bu ölçek artırma, her zaman bir en son ölçek sınırı olmasına rağmen gerekli olabilir.  Ancak, bu sınıra ulaşılmadan önce uzun bir süre, veritabanının yönetilmesi için çok daha etkin hale gelir.
 

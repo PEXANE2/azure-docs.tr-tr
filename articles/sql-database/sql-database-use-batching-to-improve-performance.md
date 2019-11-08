@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma
+title: Uygulama performansını artırmak için toplu işlem kullanma
 description: Bu konuda, veritabanı işlemlerinin toplu olarak, Azure SQL veritabanı uygulamalarınızın hızını ve ölçeklenebilirliğini büyük ölçüde geliştirip gelişmediğini belirten bir kanıt sunulmaktadır. Bu toplu işlem teknikleri tüm SQL Server veritabanları için çalışabilse de makalenin konusu Azure 'da yer alır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 3d18f5b77d08a55bd06656a72cbc02c040b6f127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 175ba6b4e65b4a6e276dbfb586e210027a6cd9b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566242"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822411"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma
 
@@ -108,7 +108,7 @@ Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, 
 
 | İşlemler | Işlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
-| 1\. |21 |26 |
+| 1 |21 |26 |
 | 10 |220 |56 |
 | 100 |2145 |341 |
 | 1000 |21479 |2756 |
@@ -124,7 +124,7 @@ Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, 
 
 ADO.NET içindeki işlemler hakkında daha fazla bilgi için bkz. [ADO.net Içindeki yerel işlemler](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
-### <a name="table-valued-parameters"></a>Tablo değerli parametreler
+### <a name="table-valued-parameters"></a>tablo değerli parametreler
 
 Tablo değerli parametreler, Kullanıcı tanımlı tablo türlerini Transact-SQL deyimleriyle, saklı yordamlarda ve işlevlerde parametre olarak destekler. Bu istemci tarafı toplu işleme tekniği, tablo değerli parametre içinde birden fazla veri satırı göndermenizi sağlar. Tablo değerli parametreleri kullanmak için önce bir tablo türü tanımlayın. Aşağıdaki Transact-SQL beyanı, **Mytabletype**adlı bir tablo türü oluşturur.
 
@@ -167,7 +167,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Önceki örnekte, **SqlCommand** nesnesi tablo değerli bir parametre  **\@olan testtvp**öğesinden satır ekler. Önceden oluşturulan **DataTable** nesnesi, **SqlCommand. Parameters. Add** yöntemiyle bu parametreye atanır. Eklemeleri tek bir çağrıda toplu olarak işleme, sıralı eklemelerin performansını önemli ölçüde artırır.
+Önceki örnekte, **SqlCommand** nesnesi tablo değerli bir parametreden, **testtvp\@** satır ekler. Önceden oluşturulan **DataTable** nesnesi, **SqlCommand. Parameters. Add** yöntemiyle bu parametreye atanır. Eklemeleri tek bir çağrıda toplu olarak işleme, sıralı eklemelerin performansını önemli ölçüde artırır.
 
 Önceki örneği daha da geliştirmek için metin tabanlı komut yerine bir saklı yordam kullanın. Aşağıdaki Transact-SQL komutu, **Simpletesttabletype** tablo değerli parametresini alan bir saklı yordam oluşturur.
 
@@ -195,7 +195,7 @@ Aşağıdaki tabloda, tablo değerli parametrelerin kullanım için milisaniye c
 
 | İşlemler | Şirket Içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
 | --- | --- | --- |
-| 1\. |124 |32 |
+| 1 |124 |32 |
 | 10 |131 |25 |
 | 100 |338 |51 |
 | 1000 |2615 |382 |
@@ -235,7 +235,7 @@ Aşağıdaki geçici test sonuçları, her saniye içinde **SqlBulkCopy** ile to
 
 | İşlemler | Şirket Içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
 | --- | --- | --- |
-| 1\. |433 |57 |
+| 1 |433 |57 |
 | 10 |441 |32 |
 | 100 |636 |53 |
 | 1000 |2535 |341 |
@@ -280,7 +280,7 @@ Aşağıdaki geçici test sonuçları, bu tür INSERT deyimlerinin performansın
 
 | İşlemler | Tablo değerli parametreler (MS) | Tek deyimli Insert (MS) |
 | --- | --- | --- |
-| 1\. |32 |20 |
+| 1 |32 |20 |
 | 10 |30 |25 |
 | 100 |33 |51 |
 
@@ -299,7 +299,7 @@ Bu yaklaşım 100 satırdan az olan toplu işlemler için biraz daha hızlı ola
 
 Entity Framework, şu anda toplu işlemeyi desteklemiyor. Topluluktaki farklı geliştiriciler, **SaveChanges** metodunu geçersiz kılma gibi geçici çözümler göstermeye çalıştı. Ancak çözümler genellikle karmaşıktır ve uygulama ve veri modeli için özelleştirilir. Entity Framework CodePlex projesi şu anda bu özellik isteğinde bir tartışma sayfasına sahip. Bu tartışmayı görüntülemek için bkz. [Toplantı notlarını tasarlama-2 ağustos 2012](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
 
-### <a name="xml"></a>XML
+### <a name="xml"></a>'SINI
 
 Bir toplu işlem stratejisi olarak XML hakkında konuşmak için önemli olduğunu biliyoruz. Ancak, XML kullanımı diğer yöntemlere ve birçok dezavantaja yönelik avantaja sahip değildir. Yaklaşım tablo değerli parametrelere benzerdir, ancak bir XML dosyası veya dize, Kullanıcı tanımlı bir tablo yerine bir saklı yordama geçirilir. Saklı yordam saklı yordamdaki komutları ayrıştırır.
 
@@ -321,13 +321,13 @@ Mimarinize bağlı olarak, toplu işleme performans ve dayanıklılık arasında
 
 Bu zorunluluğunu getirir nedeniyle, toplu işlem yaptığınız işlemlerin türünü değerlendirin. Daha az kritik verilerle toplu olarak daha fazla kararlılık (daha büyük toplu işler ve daha uzun zaman pencereleri).
 
-### <a name="batch-size"></a>Toplu işlem boyutu
+### <a name="batch-size"></a>Toplu iş boyutu
 
 Testlerimizde, genellikle büyük toplu işleri küçük parçalara ayırma avantajı yoktur. Aslında, bu alt bölüm genellikle tek bir büyük toplu işlem gönderilmeden daha yavaş performansa neden olur. Örneğin, 1000 satır eklemek istediğiniz bir senaryoyu düşünün. Aşağıdaki tabloda, daha küçük toplu işlemlere ayrıldığınızda 1000 satır eklemek için tablo değerli parametrelerin ne kadar süreceği gösterilmektedir.
 
-| Toplu işlem boyutu | Tekrarları | Tablo değerli parametreler (MS) |
+| Toplu iş boyutu | Tekrarları | Tablo değerli parametreler (MS) |
 | --- | --- | --- |
-| 1000 |1\. |347 |
+| 1000 |1 |347 |
 | 500 |2 |355 |
 | 100 |10 |465 |
 | 50 |20 |630 |
@@ -484,7 +484,7 @@ Bu arabelleğe alma sınıfını kullanmak için, uygulama bir statik Navıizdat
 
 ### <a name="master-detail"></a>Ana ayrıntı
 
-Tablo değerli parametreler basit ekleme senaryoları için faydalıdır. Ancak, birden fazla tablo içeren toplu ekleme eklemeleri daha zor olabilir. "Ana/ayrıntı" senaryosu iyi bir örnektir. Ana tablo, birincil varlığı tanımlar. Bir veya daha fazla ayrıntı tablosu varlık hakkında daha fazla veri depolar. Bu senaryoda, yabancı anahtar ilişkileri, Ayrıntılar için benzersiz bir ana varlıkla ilişki uygular. Bir PurchaseOrder tablosunun basitleştirilmiş bir sürümünü ve ilişkili OrderDetail tablosunu göz önünde bulundurun. Aşağıdaki Transact-SQL, dört sütunlu bir PurchaseOrder tablosu oluşturur: OrderID, SiparişTarihi, CustomerID ve Status.
+Tablo değerli parametreler basit ekleme senaryoları için faydalıdır. Ancak, birden fazla tablo içeren toplu ekleme eklemeleri daha zor olabilir. "Ana/ayrıntı" senaryosu iyi bir örnektir. Ana tablo, birincil varlığı tanımlar. Bir veya daha fazla ayrıntı tablosu varlık hakkında daha fazla veri depolar. Bu senaryoda, yabancı anahtar ilişkileri, Ayrıntılar için benzersiz bir ana varlıkla ilişki uygular. Bir PurchaseOrder tablosunun basitleştirilmiş bir sürümünü ve ilişkili OrderDetail tablosunu göz önünde bulundurun. Aşağıdaki Transact-SQL, dört sütunlu bir PurchaseOrder tablosu oluşturuyor: OrderID, OrderDate, CustomerID ve Status.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrder](
@@ -496,7 +496,7 @@ CONSTRAINT [PrimaryKey_PurchaseOrder]
 PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 ```
 
-Her sipariş bir veya daha fazla ürün satın alma içerir. Bu bilgiler PurchaseOrderDetail tablosunda yakalanır. Aşağıdaki Transact-SQL, beş sütunlu PurchaseOrderDetail tablosunu oluşturur: OrderID, Orderdetailıd, ProductID, BirimFiyat ve Ordermik.
+Her sipariş bir veya daha fazla ürün satın alma içerir. Bu bilgiler PurchaseOrderDetail tablosunda yakalanır. Aşağıdaki Transact-SQL, beş sütunlu PurchaseOrderDetail tablosunu oluşturur: OrderID, Orderdetailıd, ProductID, UnitPrice ve Ordermik.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrderDetail](
@@ -580,9 +580,9 @@ JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
 GO
 ```
 
-Bu örnekte, yerel olarak tanımlanan @IdentityLink tablo, yeni yerleştirilen satırlardan gerçek OrderID değerlerini depolar. Bu sıra tanımlayıcıları, @orders ve @details tablo değerli parametrelerde geçici OrderID değerlerinden farklıdır. Bu nedenle, @IdentityLink tablo, tablodaki ordervalues değerlerini @orders , PurchaseOrder tablosundaki yeni satırların gerçek OrderID değerlerine bağlar. Bu adımdan @IdentityLink sonra tablo, yabancı anahtar kısıtlamasını karşılayan gerçek OrderID ile sipariş ayrıntılarının eklenmesi işlemini kolaylaştırabilir.
+Bu örnekte, yerel olarak tanımlanan @IdentityLink tablosu, yeni yerleştirilen satırlardan gerçek OrderID değerlerini depolar. Bu sıra tanımlayıcıları, @orders ve tablo değerli parametrelerde @details geçici SiparişNo değerlerinden farklıdır. Bu nedenle @IdentityLink tablosu, @orders parametresindeki OrderID değerlerini PurchaseOrder tablosundaki yeni satırların gerçek OrderID değerlerine bağlar. Bu adımdan sonra, @IdentityLink tablosu, yabancı anahtar kısıtlamasına uyan gerçek OrderID ile sipariş ayrıntılarının eklenmesi işlemini kolaylaştırabilir.
 
-Bu saklı yordam, koddan veya diğer Transact-SQL çağrılarından kullanılabilir. Kod örneği için bu kağıdın tablo değerli parametreler bölümüne bakın. Aşağıdaki Transact-SQL, sp_InsertOrdersBatch nasıl çağrılacağını gösterir.
+Bu saklı yordam, koddan veya diğer Transact-SQL çağrılarından kullanılabilir. Kod örneği için bu kağıdın tablo değerli parametreler bölümüne bakın. Aşağıdaki Transact-SQL sp_InsertOrdersBatch nasıl çağrılacağını gösterir.
 
 ```sql
 declare @orders as PurchaseOrderTableType
@@ -612,7 +612,7 @@ Bu örnek, ana ayrıntı işlemleri gibi daha karmaşık veritabanı işlemlerin
 
 Başka bir toplu işlem senaryosu aynı anda mevcut satırları güncellemeyi ve yeni satırlar eklemeyi içerir. Bu işlem bazen "UPSERT" (güncelleştirme + ekleme) işlemi olarak adlandırılır. INSERT ve UPDATE için ayrı çağrılar yapmak yerine MERGE deyimleri bu göreve en uygun seçenektir. MERGE deyimleri tek bir çağrıda hem INSERT hem de Update işlemleri gerçekleştirebilir.
 
-Tablo değerli parametreler, güncelleştirme ve ekleme işlemleri için MERGE ifadesiyle birlikte kullanılabilir. Örneğin, aşağıdaki sütunları içeren basitleştirilmiş bir çalışan tablosu düşünün: EmployeeID, FirstName, LastName, SocialSecurityNumber:
+Tablo değerli parametreler, güncelleştirme ve ekleme işlemleri için MERGE ifadesiyle birlikte kullanılabilir. Örneğin, şu sütunları içeren basitleştirilmiş bir çalışan tablosu düşünün: EmployeeID, FirstName, LastName, SocialSecurityNumber:
 
 ```sql
 CREATE TABLE [dbo].[Employee](
@@ -635,7 +635,7 @@ CREATE TYPE EmployeeTableType AS TABLE
 GO
 ```
 
-Sonra, bir saklı yordam oluşturun veya Update ve INSERT işlemini gerçekleştirmek için MERGE ifadesini kullanan kodu yazın. Aşağıdaki örnek, employeetabletype türünde tablo değerli bir parametre @employeesüzerinde Merge ifadesini kullanır. @employees Tablonun içeriği burada gösterilmez.
+Sonra, bir saklı yordam oluşturun veya Update ve INSERT işlemini gerçekleştirmek için MERGE ifadesini kullanan kodu yazın. Aşağıdaki örnek, EmployeeTableType türünde @employeestablo değerli bir parametre üzerinde MERGE ifadesini kullanır. @employees tablosunun içerikleri burada gösterilmez.
 
 ```sql
 MERGE Employee AS target

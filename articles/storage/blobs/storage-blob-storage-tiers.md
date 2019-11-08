@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 5ba2255cfe0d5c4220ec2215ac837649af1ba896
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4593ee875f98e2c9f2f9406f8b9d4146e06a573d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521170"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825440"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları
 
@@ -59,7 +59,7 @@ Seyrek Erişimli erişim katmanının depolama maliyetleri ve daha yüksek eriş
 
 ## <a name="archive-access-tier"></a>Arşiv erişim katmanı
 
-Arşiv erişim katmanının en düşük depolama maliyeti vardır. Ancak sık ve seyrek katmanlara kıyasla veri alma maliyetlerini daha yüksektir. Arşiv katmanındaki verilerin alınması birkaç saat sürebilir. Verilerin arşiv katmanında en az 180 gün olması veya erken silme ücretine tabi olması gerekir.
+Arşiv erişim katmanının en düşük depolama maliyeti vardır. Ancak sık ve seyrek katmanlara kıyasla veri alma maliyetlerini daha yüksektir. Arşiv katmanındaki verilerin alınması birkaç saat sürebilir. Verilerin arşiv katmanında en az 180 gün kalması veya erken bir silme ücretine tabi olması gerekir.
 
 Blob arşiv depolarken blob verileri çevrimdışı olur ve okunamaz, kopyalanabilir, üzerine yazılamaz veya değiştirilemez. Arşiv depolamadaki bir Blobun anlık görüntülerini alamazsınız. Ancak, blob meta verileri çevrimiçi ve kullanılabilir durumda kalır ve bu da blobu ve özelliklerini listelemenize olanak tanır. Arşivdeki Bloblar için, tek geçerli işlemler GetBlobProperties, GetBlobMetadata, Listbloblar, SetBlobTier ve DeleteBlob.
 
@@ -115,8 +115,8 @@ Aşağıdaki tabloda, Premium performans bloğu blob depolaması ve sık erişim
 
 |                                           | **Premium performans**   | **Etkin katman** | **Cool katmanı**       | **Arşiv katmanı**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
-| **Kullanılabilirlik**                          | %99,9                     | %99,9        | %99                 | Çevrimdışı           |
-| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | Yok                       | %99,99       | %99,9               | Çevrimdışı           |
+| **Kullanılabilirlik**                          | %99,9                     | %99,9        | %99                 | Offline           |
+| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | Yok                       | %99,99       | %99,9               | Offline           |
 | **Kullanım ücretleri**                         | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyeti | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyetleri | Daha düşük depolama maliyetleri, daha yüksek erişim ve işlem maliyetleri | En düşük depolama maliyetleri, en yüksek erişim ve işlem maliyetleri |
 | **En düşük nesne boyutu**                   | Yok                       | Yok          | Yok                 | Yok               |
 | **En az depolama süresi**              | Yok                       | Yok          | 30 gün<sup>1</sup> | 180 gün

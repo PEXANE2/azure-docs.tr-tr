@@ -9,56 +9,52 @@ ms.topic: conceptual
 author: ronychatterjee
 ms.author: achatter
 ms.reviewer: davidph
-ms.date: 11/04/2019
-ms.openlocfilehash: 4771db21a0ea5e841dbe12c8ce915b3833a8a30d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/07/2019
+ms.openlocfilehash: 976c849f9cb48e1c197f70d10e911216a6a7425c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692315"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822839"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>SQL veritabanı Edge önizlemesinde ONNX ile Machine Learning ve AI
 
 Azure SQL veritabanı Edge önizlemesinde makine öğrenimi, [Open sinir Network Exchange (ONNX)](https://onnx.ai/) biçimindeki modelleri destekler. ONNX, çeşitli [makine öğrenimi çerçeveleri ve araçları](https://onnx.ai/supported-tools)arasındaki modelleri değiş tokuş etmek için kullanabileceğiniz bir açık biçimdir.
 
-## <a name="supported-tool-kits"></a>Desteklenen araç setleri
+## <a name="overview"></a>Genel Bakış
 
-ONNXMLTools, farklı makine öğrenme aracı setlerinden bir ONNX modeline modelleri dönüştürmenizi sağlar. Şu anda, sayısal veri türleri ve tek sütunlu girişler için aşağıdaki araç setleri desteklenir:
-
-* [scikit-learn](https://github.com/onnx/sklearn-onnx)
-* [Tensorflow](https://github.com/onnx/tensorflow-onnx)
-* [Keras](https://github.com/onnx/keras-onnx)
-* [CoreML](https://github.com/onnx/onnxmltools)
-* [Spark ML (deneysel)](https://github.com/onnx/onnxmltools/tree/master/onnxmltools/convert/sparkml)
-* [LightGBM](https://github.com/onnx/onnxmltools)
-* [libsvm](https://github.com/onnx/onnxmltools)
-* [XGBoost](https://github.com/onnx/onnxmltools)
+Azure SQL veritabanı Edge 'de makine öğrenimi modellerini çıkarsmak için öncelikle bir model almanız gerekir. Bu, önceden eğitilen bir model veya tercih ettiğiniz çerçeveye eğitilen özel bir model olabilir. Azure SQL veritabanı Edge ONNX biçimini destekler ve modeli bu biçime dönüştürmeniz gerekir. Model doğruluğunun etkilenmemesi gerekir ve ONNX modeline sahip olduğunuzda modeli Azure SQL veritabanı Edge 'de dağıtabilir ve [ön tahmin T-SQL işleviyle yerel Puanlama](/sql/advanced-analytics/sql-native-scoring/)kullanabilirsiniz.
 
 ## <a name="get-onnx-models"></a>ONNX modellerini al
 
 ONNX biçiminde bir model elde etmeniz için çeşitli yollar vardır:
 
-- [Onnx model Zoo](https://github.com/onnx/models): farklı görev türleri için önceden eğitilen bırkaç onnx modeli içerir. Windows Machine Learning tarafından desteklenen sürümleri indirebilir ve kullanabilirsiniz.
+- [Onnx model Zoo](https://github.com/onnx/models): indirilebilecek ve kullanıma hazırlı farklı türdeki görevler için önceden eğitilen bırçok onnx modeli içerir.
 
-- [Machine Learning eğitim çerçevelerinden yerel dışarı aktarma](https://onnx.ai/supported-tools): çeşitli eğitim çerçeveleri, eğitilen MODELINIZI onnx biçiminin belirli bir sürümüne kaydetmenizi sağlayan onnx 'e yerel dışarı aktarma işlevselliğini destekler. Örneğin, Chainer, Caffee2 ve PyTorch. Ayrıca, [Azure Machine Learning hizmeti](https://azure.microsoft.com/services/machine-learning-service/) ve [Azure özel görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) gibi hizmetler yerel onnx dışarı aktarmayı da sağlar.
+- [Ml eğitim çerçevelerinden yerel dışarı aktarma](https://onnx.ai/supported-tools): çeşitli eğitim çerçeveleri onnx 'e yerel dışarı aktarma işlevselliğini destekler ve bu sayede eğitimli modelinizi [pytorch](https://pytorch.org/docs/stable/onnx.html), Chainer ve Caffe2 dahil olmak üzere onnx biçiminin belirli bir sürümüne kaydetmenizi sağlar. Ayrıca, Azure Machine Learning ve [Azure özel görüntü işleme hizmeti](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) [Otomatik Machine Learning özelliği](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) gibi model oluşturma hizmetleri onnx dışarı aktarmayı sağlar.
 
-  - Özel Görüntü İşleme kullanarak bulutta ONNX modelini eğitme ve dışa aktarma hakkında bilgi edinmek için bkz. [öğretici: WINDOWS ml ile özel görüntü işleme BIR onnx modeli kullanma (Önizleme)](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/custom-vision-onnx-windows-ml).
+- [Varolan modelleri Dönüştür](https://github.com/onnx/tutorials#converting-to-onnx-format): yerel dışarı aktarmayı desteklemeyen çerçeveler için, modelleri onnx biçimine dönüştürmek için tek başına paketler vardır. Örnekler ve öğreticiler için bkz. [ONNX biçimine dönüştürme](https://github.com/onnx/tutorials#converting-to-onnx-format). 
 
-- [Mevcut modelleri WinMLTools kullanarak Dönüştür](https://docs.microsoft.com/windows/ai/windows-ml/convert-model-winmltools): Bu Python paketi, modellerin çeşitli eğitim çerçevesi biçimlerinden onnx 'e dönüştürülmesini sağlar. Uygulamanızın hangi Windows yapılarına hedeflediğini bağlı olarak, modelinizi hangi ONNX sürümüne dönüştürmek istediğinizi belirtebilirsiniz. Python ile ilgili bilgi sahibi değilseniz, modellerinizi dönüştürmek için [Windows Machine Learning kullanıcı arabirimi tabanlı Pano 'yu](https://github.com/Microsoft/Windows-Machine-Learning/tree/master/Tools/WinMLDashboard) kullanabilirsiniz.
+### <a name="supported-frameworks"></a>Desteklenen çerçeveler
 
-> [!IMPORTANT]
-> Tüm ONNX sürümleri Azure SQL veritabanı Edge tarafından desteklenmez. Yalnızca ONNX modeliyle sayısal veri türleri tahmin edilebilir.
+ONNX dönüştürücüleri, farklı makine öğrenimi çerçevelerinden eğitilen modelleri ONNX biçimine dönüştürmenize olanak sağlar. Popüler dönüştürücüler şunlardır: 
 
-Bir ONNX modeline sahip olduktan sonra modeli Azure SQL veritabanı Edge 'de dağıtabilirsiniz. Ardından, [ön tahmin T-SQL işleviyle yerel Puanlama](/sql/advanced-analytics/sql-native-scoring/)kullanabilirsiniz.
+* [PyTorch](http://pytorch.org/docs/master/onnx.html)
+* [Tensorflow](https://github.com/onnx/tensorflow-onnx)
+* [Keras](https://github.com/onnx/keras-onnx)
+* [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+* [CoreML](https://github.com/onnx/onnxmltools)
+
+Desteklenen çerçevelerin tam listesi için bkz. [ONNX biçimine dönüştürme](https://github.com/onnx/tutorials#converting-to-onnx-format).
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Şu anda bu destek, **sayısal veri türlerine**sahip modellerle sınırlıdır:
+Şu anda tüm ONNX modelleri Azure SQL veritabanı Edge tarafından desteklenmez. Destek, **sayısal veri türleri**olan modellerle sınırlıdır:
 
 - [int ve bigint](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql5)
 - [gerçek ve float](https://docs.microsoft.com/sql/t-sql/data-types/float-and-real-transact-sql).
   
-Diğer sayısal türler, dönüştürme ve dönüştürme [dönüştürme ve dönüştürme](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)kullanılarak desteklenen türlere dönüştürülebilir.
+Diğer sayısal türler, [dönüştürme ve dönüştürme](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)kullanılarak desteklenen türlere dönüştürülebilir.
 
 Model girişleri, modeldeki her girdinin tablodaki tek bir sütuna karşılık gelmesi için yapılandırılmalıdır. Örneğin, bir modeli eğitebilmeniz için bir Pandas dataframe kullanıyorsanız, her giriş modele ayrı bir sütun olmalıdır.
 

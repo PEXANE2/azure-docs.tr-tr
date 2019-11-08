@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Python ile Azure Blob depolamada blob oluşturma'
-description: Bu hızlı başlangıçta, nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturursunuz. Sonra, Azure Depolama’ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki blobları listelemek amacıyla Python için depolama istemcisi kitaplığını kullanırsınız.
+title: 'Hızlı başlangıç: Python için Azure Blob depolama istemci kitaplığı v 2.1'
+description: Bu hızlı başlangıçta, nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturursunuz. Daha sonra, Azure depolama 'ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Python için depolama istemcisi kitaplığı v 2.1 kullanın.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/11/2019
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 606c7d1fd012052a22afeef906bbe9df4c63a76b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608746"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825291"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>Hızlı başlangıç: Python ile Azure Blob depolamada Blobları karşıya yükleme, indirme ve listeleme
+# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Hızlı başlangıç: Python için Azure Blob depolama istemci kitaplığı v 2.1
 
 Bu makalede, Azure Blob depolama alanındaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için Python 'u kullanırsınız. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri dahil olmak üzere büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Azure depolama 'daki Bloblar dosya paylaşımlarından, şema-daha seyrek tablolardan ve ileti kuyruklarından farklıdır.  Daha fazla bilgi için bkz. [Azure depolama 'Ya giriş](/azure/storage/common/storage-introduction).
 
@@ -98,7 +98,7 @@ Uygulamada, `BlockBlobService` nesnesi oluşturmak için depolama hesabı adın�
 1. Devam etmeden önce *Belgeler* klasörünüze gidin ve iki dosyayı kontrol edin.
 
     * *QuickStart_\<evrensel-benzersiz tanımlayıcı\>*
-    * *QuickStart_\<evrensel-benzersiz-tanımlayıcı\>_INDIRILDI*
+    * *QuickStart_\<evrensel-benzersiz tanımlayıcı\>_DOWNLOADED*
 
 1. Dosyaları açarak aynı olduklarını görebilirsiniz.
 
@@ -145,7 +145,7 @@ Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekle
 
 Bir dosyayı bloba yüklemek için, yerel diskinizdeki dizin adıyla dosya adını birleştirerek dosyanın tam yolunu alın. Sonra, dosyayı belirtilen yola `create_blob_from_path` yöntemiyle yükleyebilirsiniz. 
 
-Örnek kod, sistemin karşıya yükleme ve indirme için kullandığı yerel bir dosya oluşturur, dosyayı *full_path_to_file* olarak ve BLOB adını *local_file_name*olarak depolar. Bu örnek, dosyayı `quickstartblobs`adlı kapsayıcıya yükler:
+Örnek kod, sistemin karşıya yükleme ve indirme için kullandığı yerel bir dosya oluşturur, dosyayı *full_path_to_file* olarak sistem karşıya yükleme ve blob adı *local_file_name*olarak depolar. Bu örnek, dosyayı `quickstartblobs`adlı kapsayıcıya yükler:
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -184,7 +184,7 @@ for blob in generator:
 
 
 `get_blob_to_path` yöntemini kullanarak Blobları yerel diskinize indirin.
-Aşağıdaki kod, daha önce karşıya yüklediğiniz blobu indirir. Sistem, yerel diskinizde her iki dosyayı da görebilmeniz için blob adına *_Indirilen* ekler.
+Aşağıdaki kod, daha önce karşıya yüklediğiniz blobu indirir. Sistem, her iki dosyayı da yerel diskinizde görebileceğiniz şekilde blob adına *_DOWNLOADED* ekler.
 
 ```python
 # Download the blob(s).

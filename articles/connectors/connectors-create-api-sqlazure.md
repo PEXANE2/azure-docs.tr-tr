@@ -10,13 +10,13 @@ ms.reviewer: klam; LADocs
 manager: carmonm
 ms.topic: conceptual
 tags: connectors
-ms.date: 11/06/2019
-ms.openlocfilehash: ed30ba305ec990256625052cb92f1b7524c826e2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/08/2019
+ms.openlocfilehash: a6367e5897e9bd548550b099c0bd2e6186845d6d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720966"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826318"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server veya Azure SQL veritabanı için iş akışlarını Azure Logic Apps kullanarak otomatikleştirin
 
@@ -44,10 +44,11 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
-* Mantıksal uygulamaları SQL Server gibi şirket içi sistemlere bağlayabilmeniz için önce şirket [içi veri ağ geçidini ayarlamanız](../logic-apps/logic-apps-gateway-install.md)gerekir. Bu şekilde, mantıksal uygulamanız için SQL bağlantısı oluştururken ağ geçidini seçebilirsiniz.
+* Yerel bir bilgisayarda yüklü [olan şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-install.md) ve bu senaryolar için [Azure Portal oluşturulan bir Azure veri ağ geçidi kaynağı](../logic-apps/logic-apps-gateway-connection.md) :
 
-  > [!IMPORTANT]
-  > Windows kimlik doğrulamasını bu bağlayıcı ile kullanmak için şirket içi veri ağ geçidini kullanmanız gerekir. Bu bağlayıcı, bir [tümleştirme hizmeti ortamındaki (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)bir mantıksal uygulama için Windows kimlik doğrulamasını desteklemez.
+  * Logic Apps, bir [tümleştirme hizmeti ortamında (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)çalışmaz.
+
+  * Mantıksal uygulamalarınız bir tümleştirme hizmeti *ortamında çalışır,* ancak SQL Server bağlantınız için Windows kimlik doğrulamasını kullanmanız gerekir. Bu senaryo için, ıSE sürümü Windows kimlik doğrulamasını desteklemediğinden, SQL Server bağlayıcısının ıSE sürümünü veri ağ geçidiyle birlikte kullanın.
 
 * SQL veritabanınıza erişmeniz gereken mantıksal uygulama. Mantıksal uygulamanızı bir SQL tetikleyicisi ile başlatmak için [boş bir mantıksal uygulama](../logic-apps/quickstart-create-first-logic-app-workflow.md)gerekir.
 

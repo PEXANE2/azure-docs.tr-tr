@@ -1,5 +1,5 @@
 ---
-title: Elastik veritabanı araçlarını kullanmaya başlama-Azure
+title: Elastik veritabanı araçlarını kullanmaya başlama
 description: Kullanımı kolay bir örnek uygulama dahil olmak üzere Azure SQL veritabanı 'nın elastik veritabanı araçları özelliğinin temel açıklaması.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8f5d5bbf6509dd908f94f1500e585913cbb34e41
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b5c323bf3d5ff55c2c30961003e8c456cbe39c82
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690230"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823652"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanmaya başlama
 

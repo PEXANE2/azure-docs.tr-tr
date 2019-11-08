@@ -1,22 +1,22 @@
 ---
-title: "Hızlı başlangıç: Java SDK 'Sı için Azure Blob depolama istemci kitaplığı V8"
-description: Nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturun. Ardından, Azure depolama 'ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Java SDK 'Sı için Azure depolama istemci Kitaplığı ' nı kullanın V8.
+title: 'Hızlı başlangıç: Java için Azure Blob depolama istemci kitaplığı V8'
+description: Nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturun. Ardından, Azure depolama 'ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Azure depolama istemci kitaplığı v8 ' nı kullanın.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 404599ade960d43ef2cb86777fb41701ce96e11b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a6c4380e44d705e551bc96746a809c57aa02ac5b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609131"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825382"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>Hızlı başlangıç: Java SDK 'Sı için Azure Blob depolama istemci kitaplığı V8
+# <a name="quickstart-azure-blob-storage-client-library-v8-for-java"></a>Hızlı başlangıç: Java için Azure Blob depolama istemci kitaplığı V8
 
-Java için Azure Blob depolama istemci kitaplığı 'nı kullanmaya başlayın. Azure Blob depolama, Microsoft 'un bulut için nesne depolama çözümüdür. Paketi yüklemek ve temel görevler için örnek kodu denemek için adımları izleyin. Blob depolama, çok miktarda yapılandırılmamış veriyi depolamak için iyileştirilmiştir.
+Java için Azure Blob depolama istemci kitaplığı V8 ile çalışmaya başlayın. Azure Blob depolama, Microsoft 'un bulut için nesne depolama çözümüdür. Paketi yüklemek ve temel görevler için örnek kodu denemek için adımları izleyin. Blob depolama, çok miktarda yapılandırılmamış veriyi depolamak için iyileştirilmiştir.
 
 Java için Azure Blob depolama istemci kitaplığını kullanarak şunları yapın:
 

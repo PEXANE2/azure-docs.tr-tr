@@ -1,9 +1,10 @@
 ---
-title: Azure SQL veritabanı ve veri ambarı için dinamik veri maskeleme
+title: Dinamik veri maskeleme
 description: Dinamik veri maskeleme, SQL veritabanı ve veri ambarı için ayrıcalıklı olmayan kullanıcılarla maskeleyerek hassas veri pozlamasını sınırlar
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2019
-ms.openlocfilehash: dc0eab6aa45a943841d19a3aec2eddf4ab22d75d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2ff2dfe6384acc8a56558e6e7ba0fc5cc05f7783
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690551"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819965"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Azure SQL veritabanı ve veri ambarı için dinamik veri maskeleme
 

@@ -8,24 +8,24 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 663ef16511269dd61a6567d6570f3445b7da6447
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 030401623a61e7fcff40187f522309255482647f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804247"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824813"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak REST uç noktalarını çağırma
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik http + Swagger bağlayıcısıyla mantıksal uygulamalar oluşturarak bir [Swagger dosyası](https://swagger.io) aracılığıyla düzenlı olarak herhangi bir REST uç noktasını çağıran iş akışlarını otomatikleştirebilirsiniz. HTTP + Swagger tetikleyicisi ve eylemi, [http tetikleyicisi ve eylemiyle](connectors-native-http.md) aynı şekilde çalışır, ancak Swagger dosyası tarafından tanımlanan API yapısını ve çıkışları açığa çıkararak mantıksal uygulama tasarımcısında daha iyi bir deneyim sağlar. Bir yoklama tetikleyicisi uygulamak için, [mantıksal uygulamalardan diğer API 'leri, hizmetleri ve sistemleri çağırmak üzere özel API 'Ler oluşturma](../logic-apps/logic-apps-create-api-app.md#polling-triggers)bölümünde açıklanan yoklama modelini izleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Hedef REST uç noktasını açıklayan Swagger dosyasının URL 'SI
+* Hedef REST uç noktasını açıklayan Swagger (Openapı değil) dosyasının URL 'SI
 
   Genellikle REST uç noktasının, bağlayıcının çalışması için bu ölçütü karşılaması gerekir:
 
@@ -45,7 +45,7 @@ ms.locfileid: "72804247"
 
 Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini içeren bir yanıt döndüren Swagger dosyası için bir URL 'ye HTTP isteği gönderir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
 1. Tasarımcıda arama kutusuna filtreniz olarak "Swagger" yazın. **Tetikleyiciler** listesinden **http + Swagger** tetikleyicisi ' ni seçin.
 
@@ -81,7 +81,7 @@ Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini i
 
 Bu yerleşik eylem, bir REST API açıklayan ve bu dosyanın içeriğini içeren bir yanıt döndüren Swagger dosyasının URL 'sine bir HTTP isteği oluşturur.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
 1. HTTP + Swagger eylemini eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
@@ -150,17 +150,17 @@ HTTP + Swagger tetikleyicisinden veya eylemden gelen çıktılar hakkında daha 
 
 | Özellik adı | Tür | Açıklama |
 |---------------|------|-------------|
-| Bilgisinde | object | İstekten gelen üstbilgiler |
+| bilgisinde | object | İstekten gelen üstbilgiler |
 | bölümü | object | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
 | durum kodu | int | İstekteki durum kodu |
 |||
 
 | Durum kodu | Açıklama |
 |-------------|-------------|
-| 200 | TAMAM |
+| 200 | Tamam |
 | 202 | Eden |
 | 400 | Hatalı istek |
-| 401 | Yetkilendirilmemiş |
+| 401 | Yetkisiz |
 | 403 | Yasak |
 | 404 | Bulunamadı |
 | 500 | İç sunucu hatası. Bilinmeyen bir hata oluştu. |

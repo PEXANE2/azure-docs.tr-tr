@@ -1,6 +1,6 @@
 ---
 title: OPC Ikizi-Azure nedir | Microsoft Docs
-description: OPC Ikizi 'ye Genel Bakış
+description: Bu makalede OPC Ikizi 'e genel bakış sunulmaktadır. OPC Ikizi, REST API 'Leri aracılığıyla endüstriyel cihazların keşif, kayıt ve uzaktan denetimini sağlar.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c0d824e23a98aa14081fbd21bd6a9fbec5d583e0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 91448f55f0ebb88ba6c685b960ece9d91cb98e25
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815948"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826232"
 ---
 # <a name="what-is-opc-twin"></a>OPC Ikizi nedir?
 
@@ -28,7 +28,7 @@ OPC Ikizi, fabrika İşletmenleri 'nin fabrika ağını taramasını sağlar, b�
 ### <a name="simple-control"></a>Basit denetim
 OPC Ikizi, fabrika İşletmenleri 'nin olaylara tepki vermesini ve fabrika katlarını otomatik olarak ya da el ile el ile yeniden yapılandırmasını sağlar. OPC Ikizi, OPC UA sunucusunda Hizmetleri çağırmak için REST API 'Ler sağlar, kendi adres alanına gözatabilir, değişkenleri okuma/yazma ve çalıştırma yöntemleri de sağlar. Örneğin, bir Boiler üretim satırını denetlemek için sıcaklık KPI 'sını kullanır. Sıcaklık algılayıcısı OPC yayımcısı kullanarak verilerde değişiklik yayımlar. Factory işleci, sıcaklığın eşiğe ulaştığı uyarıyı alır. Üretim satırı OPC Ikizi aracılığıyla otomatik olarak aşağı doğru yapılır. Fabrika işlecine soğuk bir şekilde bildirilir.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Kimlik Doğrulaması
 Kimlik doğrulama ve basit bir geliştirici deneyimi için, OPC Ikizi 'yi basit olarak kullanabilirsiniz.
 
 ### <a name="simple-authentication"></a>Basit kimlik doğrulaması 

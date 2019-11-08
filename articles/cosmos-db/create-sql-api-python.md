@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 92175e3b9776f90bd50e356a700b2a2d475c8a85
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 82426c0093550864b421d7acc35780c4173895a8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602451"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824723"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Python uygulaması oluşturma
 
@@ -39,7 +39,7 @@ Bu hızlı başlangıçta [Python SDK 'sının](https://pypi.org/project/azure-c
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Python 3,6](https://www.python.org/downloads/), `PATH``python` çalıştırılabilir ile kullanılabilir.
+* `PATH``python` çalıştırılabilir dosyası ile [Python 3.6 +](https://www.python.org/downloads/).
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Visual Studio Code için Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
@@ -154,7 +154,7 @@ Aşağıdaki kod parçacıklarının tümü `cosmos_get_started.py` dosyasından
 5. azure-cosmos package'i yüklemek için aşağıdaki komutu çalıştırın. 
 
     ```python
-    pip3 install azure-cosmos==4.0.0b5
+    pip install --pre azure-cosmos
     ```
 
     azure-cosmos'u yüklemeye çalışırken erişim engellendi hatası alırsanız, [VS Code’u yönetici olarak çalıştırmanız gerekir](https://stackoverflow.com/questions/37700536/visual-studio-code-terminal-how-to-run-a-command-with-administrator-rights).
