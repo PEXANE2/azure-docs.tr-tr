@@ -6,18 +6,18 @@ ms.service: virtual-machines-windows
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: d43ad941fe68707bca873fa969fbc27806ba96a5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 64ff47f1dc4b06d1407497adf41981c670ea9064
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698818"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749540"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows sanal makinesini yönetilmeyen disklerden yönetilen disklere dönüştürme
 
 Yönetilmeyen diskler kullanan mevcut Windows sanal makinelerinizi (VM) varsa, [Azure yönetilen diskler](managed-disks-overview.md) hizmeti aracılığıyla VM 'leri yönetilen diskleri kullanacak şekilde dönüştürebilirsiniz. Bu işlem hem işletim sistemi diskini hem de bağlı veri disklerini dönüştürür.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -34,7 +34,7 @@ Yönetilmeyen diskler kullanan mevcut Windows sanal makinelerinizi (VM) varsa, [
 ## <a name="convert-single-instance-vms"></a>Tek örnekli VM 'Leri dönüştürme
 Bu bölümde, tek örnekli Azure VM 'lerinin yönetilmeyen disklerden yönetilen disklere nasıl dönüştürüleceği ele alınmaktadır. (Sanal makinelerleriniz bir kullanılabilirlik kümesinde ise, sonraki bölüme bakın.) 
 
-1. [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) cmdlet 'ini kullanarak VM 'yi serbest bırakın. Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda adlı VM 'yi kaldırır: 
+1. [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) cmdlet 'ini kullanarak VM 'yi serbest bırakın. Aşağıdaki örnek, `myResourceGroup`adlı kaynak grubunda `myVM` adlı VM 'yi kaldırır: 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -54,7 +54,7 @@ Bu bölümde, tek örnekli Azure VM 'lerinin yönetilmeyen disklerden yönetilen
 
 Yönetilen disklere dönüştürmek istediğiniz VM 'Ler bir kullanılabilirlik kümesinde ise, önce kullanılabilirlik kümesini yönetilen bir kullanılabilirlik kümesine dönüştürmeniz gerekir.
 
-1. [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) cmdlet 'ini kullanarak kullanılabilirlik kümesini dönüştürün. Aşağıdaki örnek, adlı `myAvailabilitySet` `myResourceGroup`kaynak grubunda adlı kullanılabilirlik kümesini güncelleştirir:
+1. [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) cmdlet 'ini kullanarak kullanılabilirlik kümesini dönüştürün. Aşağıdaki örnek, `myResourceGroup`adlı kaynak grubunda `myAvailabilitySet` adlı kullanılabilirlik kümesini güncelleştirir:
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -64,7 +64,7 @@ Yönetilen disklere dönüştürmek istediğiniz VM 'Ler bir kullanılabilirlik 
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
    ```
 
-   Kullanılabilirlik kümesi 'nin bulunduğu bölge yalnızca 2 yönetilen hata etki alanına sahipse, ancak yönetilmeyen hata etki alanlarının sayısı 3 ise, bu komut "belirtilen hata etki alanı sayısı 3 ' e kadar 2 ' ye denk gelmelidir" hatasıyla benzer bir hata gösterir. Hatayı gidermek için, hata etki alanını 2 ' ye güncelleştirin ve aşağıdaki `Sku` `Aligned` gibi güncelleştirin:
+   Kullanılabilirlik kümesi 'nin bulunduğu bölge yalnızca 2 yönetilen hata etki alanına sahipse, ancak yönetilmeyen hata etki alanlarının sayısı 3 ise, bu komut "belirtilen hata etki alanı sayısı 3 ' e kadar 2 ' ye denk gelmelidir" hatasıyla benzer bir hata gösterir. Hatayı gidermek için, hata etki alanını 2 ' ye güncelleştirin ve `Sku` `Aligned` aşağıdaki şekilde güncelleştirin:
 
    ```azurepowershell-interactive
    $avSet.PlatformFaultDomainCount = 2
@@ -87,14 +87,14 @@ Yönetilen disklere dönüştürmek istediğiniz VM 'Ler bir kullanılabilirlik 
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Dönüştürme sırasında bir hata oluşursa veya bir VM önceki bir dönüşümdeki sorunlar nedeniyle başarısız durumdaysa, `ConvertTo-AzVMManagedDisk` cmdlet 'i yeniden çalıştırın. Basit bir yeniden deneme genellikle durumun engellemesini kaldırır.
+Dönüştürme sırasında bir hata oluşursa veya bir VM önceki bir dönüşümdeki sorunlar nedeniyle başarısız durumdaysa, `ConvertTo-AzVMManagedDisk` cmdlet 'ini yeniden çalıştırın. Basit bir yeniden deneme genellikle durumun engellemesini kaldırır.
 Dönüştürmeden önce, tüm VM uzantılarının ' sağlama başarılı ' durumunda olduğundan emin olun veya dönüştürme 409 hata koduyla başarısız olur.
 
 ## <a name="convert-using-the-azure-portal"></a>Azure portal kullanarak Dönüştür
 
 Azure portal kullanarak, yönetilmeyen diskleri yönetilen disklere de dönüştürebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portaldaki VM 'Ler listesinden VM 'yi seçin.
 3. VM 'nin dikey penceresinde, menüden **diskler** ' i seçin.
 4. **Diskler** dikey penceresinin üst kısmında, **yönetilen disklere geçir**' i seçin.

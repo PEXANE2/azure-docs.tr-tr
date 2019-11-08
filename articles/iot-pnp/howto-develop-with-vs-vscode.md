@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 7bb4e507df24f50238197b738fd54e6b5c1d05ee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6ce5a93cdd44af7f199d59d459daa46b4adb0719
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571168"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748042"
 ---
-# <a name="use-azure-iot-tools-for-visual-studio-code"></a>Visual Studio Code için Azure IoT araçları 'nı kullanma
+# <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>IoT Tak ve Kullan cihazları oluşturmak için Visual Studio ve Visual Studio Code kullanma
 
 Visual Studio Code için Azure IoT araçları, cihaz yeteneği modellerini (DCM) ve arabirimlerini yazmak, model depolarında yayımlamak ve cihaz uygulamasını uygulamak için iskelet C kodu oluşturmak üzere tümleşik bir ortam sağlar.
 
@@ -69,7 +69,7 @@ Kod Oluşturucu, yerel klasörde bulunan DCM ve arabirim dosyalarını kullanmay
 
 Kod oluşturma işlemi tamamlandıktan sonra uzantı, kodla yeni bir VS Code penceresi açar. **Main. c**gibi oluşturulmuş bir dosyayı açarsanız, IntelliSense 'ın c SDK kaynak dosyalarını açmadığı hakkında bilgi edinebilirsiniz. Doğru IntelliSense ve kod gezintisini etkinleştirmek için, C SDK kaynağını eklemek için aşağıdaki adımları kullanın:
 
-1. VS Code ' de, **CTRL + SHIFT + P** tuşlarına basarak komut paletini açın, yazın ve **c_cpp_properties. JSON** dosyasını açmak için **C/C++: Edit Configurations (JSON)** öğesini seçin.
+1. VS Code ' de, **CTRL + SHIFT + P** tuşlarına basarak komut paletini açın, yazıp **CC++/: Düzenle yapılandırma (JSON)** öğesini seçerek **c_cpp_properties. JSON** dosyasını açın.
 
 1. `includePath` bölümünde cihaz SDK 'sının yolunu ekleyin:
 

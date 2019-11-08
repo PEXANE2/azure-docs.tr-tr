@@ -10,12 +10,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: e66b3e6563d796cc7b59e82233bd1b22bc906c6e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.openlocfilehash: cff481c7c2e09da1dc8c8e2f971d9adb164d54da
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691345"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796118"
 ---
 # <a name="accelerated-database-recovery"></a>Hızlandırılmış veritabanı kurtarma
 
@@ -99,11 +99,11 @@ ADR 'nin dört temel bileşeni şunlardır:
 
 - **Mantıksal olarak döndürülüyor**
 
-  Mantıksal geri döndürme, satır düzeyinde sürüm tabanlı geri alma gerçekleştirmekten sorumlu zaman uyumsuz bir işlemdir ve tüm sürümlenmiş işlemler için anlık işlem geri alma ve geri alma sağlar.
+  Mantıksal geri döndürme, satır düzeyinde sürüm tabanlı geri alma gerçekleştirmekten sorumlu zaman uyumsuz bir işlemdir ve tüm sürümlenmiş işlemler için anlık işlem geri alma ve geri alma sağlar. Mantıksal döndürmeyi şu şekilde gerçekleştirilir:
 
-  - Durdurulan tüm işlemleri izler
-  - Tüm Kullanıcı işlemleri için PVS kullanarak geri alma gerçekleştirir
-  - İşlem iptalinden hemen sonra tüm kilitleri serbest bırakır
+  - Tüm durdurulan işlemleri izleyin ve bunları diğer işlemlere görünmez olarak işaretleyin. 
+  - İşlem günlüğünü fiziksel olarak taramak ve tek seferde değişiklikleri geri almak yerine tüm kullanıcı işlemleri için PVS 'yi kullanarak geri alma işlemi gerçekleştiriliyor.
+  - İşlem iptalinden hemen sonra tüm kilitler serbest bırakılıyor. Abort yalnızca bellekteki değişiklikleri işaretlemeyi içerdiğinden, işlem çok verimlidir ve bu nedenle kilitlerin uzun bir süre tutulması gerekmez.
 
 - **sLog**
 

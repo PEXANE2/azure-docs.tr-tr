@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 70d777fe2e939c1871bc318eed439214fd3e3f60
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: fab1e0b6f3b01446baed974b4be9b7295af4f837
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155740"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749729"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Azure VM sorunlarını gidermek için uzak araçları kullanma
 
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!Note]
 >* Komutun aynı VNET 'teki bir bilgisayarda çalıştırılması gerekir.
->* DIP veya hostname, bilgisayar > değiştirmek \<için kullanılabilir.
+>* DIP veya HostName, \<bilgisayar > değiştirmek için kullanılabilir.
 >* -S parametresi, komutun sistem hesabı (yönetici izni) kullanılarak çağrıldığından emin olur.
 >* PsExec 135 ve 445 TCP bağlantı noktalarını kullanır. Bu nedenle, iki bağlantı noktasının güvenlik duvarında açık olması gerekir.
 
@@ -91,7 +91,7 @@ Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccount
 
 ### <a name="for-v2-vms"></a>V2 VM 'Leri için
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ```powershell
 #Setup the basic variables
@@ -213,7 +213,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. Aynı sanal ağ üzerindeki başka bir VM 'den, kayıt defteri Düzenleyicisi 'ni (Regedit. exe) açın.
 
-2. **Dosya** >**Connect ağ kayıt defteri**' ni seçin.
+2. **Dosya** >**ağ kayıt defterine bağla**' yı seçin.
 
    ![Uzak seçenek](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 

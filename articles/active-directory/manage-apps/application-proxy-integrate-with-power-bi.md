@@ -16,18 +16,18 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2148d6ea869a87571008c1f84c5b1000d4030bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175941"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795619"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile Power BI Mobil uzaktan erişimi etkinleştirme
 
 Bu makalede, Power BI mobil uygulamanın Power BI Rapor Sunucusu (PBIRS) ve SQL Server Reporting Services (SSRS) 2016 ve üzeri bir sürüme bağlanmasını sağlamak için Azure AD Uygulama Ara Sunucusu 'nin nasıl kullanılacağı açıklanır. Bu tümleştirme sayesinde, kurumsal ağdan uzakta olan kullanıcılar Power BI raporlarına Power BI mobil uygulamadan erişebilir ve Azure AD kimlik doğrulaması tarafından korunabilir. Bu koruma, koşullu erişim ve çok faktörlü kimlik doğrulaması gibi [güvenlik avantajlarını](application-proxy-security.md#security-benefits) içerir.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, zaten rapor Hizmetleri dağıttığınız ve [uygulama ara sunucusu 'nu etkinleştirmiş](application-proxy-add-on-premises-application.md)olduğunuz varsayılmaktadır.
 
@@ -73,7 +73,7 @@ KCD 'yi yapılandırmak için, her bağlayıcı makinesi için aşağıdaki adı
 4. **Bu bilgisayara yalnızca belirtilen hizmetlere atamak üzere güvenmek**için, yetkilendirme ayarlarını belirleyin. Ardından **herhangi bir kimlik doğrulama protokolünü kullan**' ı seçin.
 5. **Ekle**' yi ve ardından **Kullanıcılar veya bilgisayarlar**' ı seçin.
 6. Raporlama Hizmetleri için kullandığınız hizmet hesabını girin. Bu, SPN 'yi Raporlama Hizmetleri Yapılandırması içinde eklediğiniz hesaptır.
-7. **Tamam**’a tıklayın. Değişiklikleri kaydetmek için yeniden **Tamam** ' a tıklayın.
+7. **Tamam** düğmesine tıklayın. Değişiklikleri kaydetmek için yeniden **Tamam** ' a tıklayın.
 
 Daha fazla bilgi için bkz. [uygulama proxy 'si ile uygulamalarınızda çoklu oturum açma Için Kerberos kısıtlanmış temsili](application-proxy-configure-single-sign-on-with-kcd.md).
 
@@ -82,7 +82,7 @@ Daha fazla bilgi için bkz. [uygulama proxy 'si ile uygulamalarınızda çoklu o
 Artık Azure AD Uygulama Ara Sunucusu 'yi yapılandırmaya hazırsınız.
 
 1. Aşağıdaki ayarlarla rapor hizmetlerini uygulama proxy 'Si aracılığıyla yayımlayın. Uygulama proxy 'Si aracılığıyla bir uygulamayı yayımlama hakkında adım adım yönergeler için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
-   - **Iç URL**: bağlayıcının şirket ağında ulaşabileceği rapor sunucusunun URL 'sini girin. Bu URL 'ye bağlayıcının yüklendiği sunucudan erişilebildiğinden emin olun. En iyi yöntem, uygulama proxy 'Si aracılığıyla yayımlanmayan alt yollar (örneğin, `https://servername/reports/` ve `https://servername/reportserver/`) ile ilgili sorunlardan kaçınmak için `https://servername/` gibi en üst düzey etki alanı kullanmaktır.
+   - **Iç URL**: bağlayıcının şirket ağında ulaşabileceği rapor sunucusunun URL 'sini girin. Bu URL 'ye bağlayıcının yüklendiği sunucudan erişilebildiğinden emin olun. En iyi yöntem, uygulama proxy 'Si aracılığıyla yayınlanan alt yollar ile ilgili sorunlardan kaçınmak için `https://servername/` gibi en üst düzey etki alanı kullanmaktır. Örneğin, `https://servername/reports/` veya `https://servername/reportserver/`değil `https://servername/` kullanın.
      > [!NOTE]
      > Rapor sunucusuna güvenli bir HTTPS bağlantısı kullanmanızı öneririz. Hakkında bilgi için bkz. [yerel mod rapor sunucusunda SSL bağlantılarını yapılandırma](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) .
    - **Dış URL**: Power BI Mobile App 'in bağlanacağı genel URL 'yi girin. Örneğin, özel bir etki alanı kullanılıyorsa `https://reports.contoso.com` gibi görünebilir. Özel bir etki alanı kullanmak için, etki alanı için bir sertifika yükleyin ve uygulamanız için varsayılan msappproxy.net etki alanına bir DNS kaydı getirin. Ayrıntılı adımlar için bkz. [Azure AD uygulama ara sunucusu özel etki alanları Ile çalışma](application-proxy-configure-custom-domain.md).

@@ -7,13 +7,13 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 10/22/2019
-ms.openlocfilehash: 5a66212122745d0f4426e48e9487e9d674cec53f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/06/2019
+ms.openlocfilehash: 66f5c72fcabb62e21f0110cb981b7271244c0648
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489939"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73800195"
 ---
 >[!IMPORTANT]
 >Diğer Azure Machine Learning öğreticileri ve nasıl yapılır makaleleri için önkoşul olarak oluşturduğunuz kaynakları kullanabilirsiniz.
@@ -28,32 +28,22 @@ Oluşturduğunuz herhangi bir şeyi kullanmayı planlamıyorsanız, herhangi bir
 
 1. Listede, oluşturduğunuz kaynak grubunu seçin.
 
-1. Pencerenin sağ tarafında üç nokta düğmesini ( **...** ) seçin.
-
 1. **Kaynak grubunu sil**'i seçin.
 
 Kaynak grubunun silinmesi, tasarımcıda oluşturduğunuz tüm kaynakları da siler.  
 
-### <a name="delete-only-the-compute-target"></a>Yalnızca işlem hedefini Sil
-
-Burada oluşturduğunuz işlem hedefi, kullanılmadıysa *otomatik olarak sıfır düğümlere otomatik olarak ölçeklendirilir* . Bu, ücretleri en aza indirmektir. İşlem hedefini silmek istiyorsanız şu adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com), çalışma alanınızı açın.
-
-    ![İşlem hedefini silme](./media/aml-ui-cleanup/delete-compute-target.png)
-
-1. Çalışma alanınızın **işlem** bölümünde kaynağı seçin.
-
-1. **Sil**’i seçin.
-
 ### <a name="delete-individual-assets"></a>Tek tek varlıkları Sil
 
 Denemenizi oluşturduğunuz tasarımcıda, her bir varlığı seçerek ve ardından **Sil** düğmesini seçerek tek tek varlıkları silin.
+
+Burada oluşturduğunuz işlem hedefi, kullanılmadıysa *otomatik olarak sıfır düğümlere otomatik olarak ölçeklendirilir* . Bu, ücretleri en aza indirmektir. İşlem hedefini silmek istiyorsanız şu adımları uygulayın:
 
 ![Varlıkları Sil](./media/aml-ui-cleanup/delete-asset.png)
 
 Veri kümelerinin her bir veri kümesini seçip **kayıt Sil**' i seçerek çalışma alanınızdan kaydı yapılabilir.
 
 ![Veri kümesinin kaydını sil](./media/aml-ui-cleanup/unregister-dataset.png)
+
+Bir veri kümesini silmek için Azure portal veya Depolama Gezgini kullanarak depolama hesabına gidin ve bu varlıkları el ile silin.
 
 

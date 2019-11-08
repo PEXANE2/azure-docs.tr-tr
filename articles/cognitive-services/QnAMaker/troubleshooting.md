@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 51d21dca1d8a5223e67cb7ea8489800989cff55c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7e98fd089ce8ec1285232840a40bb42ac5b81446
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026021"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795436"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Soru-Cevap Oluşturma için sorun giderme
 
@@ -26,7 +26,7 @@ Soru-Cevap Oluşturma hizmetiyle ilgili en sık sorulan soruların seçkin liste
 
 ## <a name="how-to-get-the-qnamaker-service-endpoint"></a>QnAMaker hizmet uç noktasını alma
 
-Qnamaker hizmeti uç noktası, QnAMaker desteği veya UserVoice ile iletişime geçerek hata ayıklama amacıyla faydalıdır. Uç nokta bu biçimdeki bir URL 'dir: https://your-resource-name.azurewebsites.net.
+Qnamaker hizmeti uç noktası, QnAMaker desteği veya UserVoice ile iletişime geçerek hata ayıklama amacıyla faydalıdır. Uç nokta şu biçimdeki bir URL 'dir: https://your-resource-name.azurewebsites.net.
     
 1. [Azure Portal](https://portal.azure.com) QnAMaker hizmetinize (kaynak grubu) gidin
 
@@ -121,7 +121,7 @@ Birkaç dilde içeriğiniz varsa mutlaka her biri için ayrı bir hizmet oluştu
 
 ### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>Var olan arama hizmetimi sildim. Bunu nasıl giderebilirim?
 
-Bir Azure Search dizini silerseniz, işlem son ' dur ve Dizin kurtarılamıyor. 
+Azure Bilişsel Arama dizinini silerseniz, işlem nihai ve Dizin kurtarılamıyor. 
 
 ### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Arama hizmetimde `testkb` dizinimi sildim. Bunu nasıl giderebilirim? 
 
@@ -131,15 +131,15 @@ Eski verileriniz kurtarılamıyor. Yeni bir Soru-Cevap Oluşturma kaynağı olu�
 
 Tehlikede olduğunu düşünüyorsanız, uç nokta anahtarlarınızı yenileyin.
 
-### <a name="can-i-use-the-same-azure-search-resource-for-knowledge-bases-using-multiple-languages"></a>Birden çok dil kullanarak Bilgi Bankası için aynı Azure Search kaynağını kullanabilir miyim?
+### <a name="can-i-use-the-same-azure-cognitive-search-resource-for-knowledge-bases-using-multiple-languages"></a>Birden çok dil kullanarak Bilgi Bankası için aynı Azure Bilişsel Arama kaynağını kullanabilir miyim?
 
 Birden çok dil ve birden çok bilgi tabanı kullanmak için, kullanıcının her dil için bir Soru-Cevap Oluşturma kaynağı oluşturması gerekir. Bu, dil başına ayrı bir Azure Arama hizmeti oluşturur. Tek bir Azure Search hizmetinde farklı dil bilgisi esaslarını karışmaya, sonuçların uygunluğu düşürüldü.
 
-### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>Soru-Cevap Oluşturma tarafından kullanılan Azure Search kaynağın adını nasıl değiştirebilirim?
+### <a name="how-can-i-change-the-name-of-the-azure-cognitive-search-resource-used-by-qna-maker"></a>Soru-Cevap Oluşturma tarafından kullanılan Azure Bilişsel Arama kaynağının adını nasıl değiştirebilirim?
 
-Azure Search kaynağın adı, sonunda bazı rastgele harfler eklenmiş Soru-Cevap Oluşturma kaynak adıdır. Bu, Soru-Cevap Oluşturma için birden çok arama kaynağı arasında ayrım yapmayı zorlaştırır. Ayrı bir Azure Search hizmeti oluşturun (bunu istediğiniz şekilde adlandırın) ve QnA hizmetinize bağlayın. Adımlar, [bir Azure aramasını yükseltmek](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-search-service)için yapmanız gereken adımlara benzerdir.
+Azure Bilişsel Arama kaynağının adı, sonunda bazı rastgele harfler eklenmiş Soru-Cevap Oluşturma kaynak adıdır. Bu, Soru-Cevap Oluşturma için birden çok arama kaynağı arasında ayrım yapmayı zorlaştırır. Ayrı bir arama hizmeti oluşturun (istediğiniz şekilde adlandırın) ve QnA hizmetinize bağlayın. Adımlar, [bir Azure aramasını yükseltmek](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)için yapmanız gereken adımlara benzerdir.
 
-### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Soru-Cevap Oluşturma, @no__t döndürdüğünde-0 ' ı nasıl giderebilirim?
+### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Soru-Cevap Oluşturma `Runtime core is not initialized,` döndürüldüğünde bunu nasıl giderebilirim?
 
 App Service 'niz için disk alanı dolu olabilir. Disk alanınızı çözme adımları:
 
@@ -147,7 +147,7 @@ App Service 'niz için disk alanı dolu olabilir. Disk alanınızı çözme adı
 1. Uygulama hizmetinde hala **geliştirme araçları**' nı ve **Gelişmiş Araçlar**' ı seçin, sonra da **Git**' i seçin. Bu, yeni bir tarayıcı penceresi açar.
 1. Komut satırı aracını açmak için **hata ayıklama konsolu**' nu ve ardından **cmd** ' yi seçin. 
 1. _Site/Wwwroot/veri/QnAMaker/_ dizine gidin.
-1. Adı `rd` ile başlayan tüm klasörleri kaldırın. 
+1. Adı `rd`başlayan tüm klasörleri kaldırın. 
 
     Aşağıdakileri **silmeyin** :
 
@@ -174,12 +174,12 @@ Azure bot hizmeti ile bot 'nizi oluşturmak için [Bu](./Tutorials/create-qna-bo
 Bilgi tabanınız hakkında aşağıdaki bilgilere sahip olmanız gerekir:
 
 * Bilgi Bankası KIMLIĞI.
-* Bilgi Bankası 'nın yayımlanmış uç nokta adı `host` olarak bilinen, yayımlama sonrasında **Ayarlar** sayfasında bulunur.
+* Bilgi Bankası 'nın yayımlanan bitiş noktası özel alt etki alanı adı, `host`olarak bilinen, yayımlama sonrasında **Ayarlar** sayfasında bulunur.
 * Bilgi Bankası 'nın yayımlanmış uç nokta anahtarı-yayımladıktan sonra **Ayarlar** sayfasında bulunur. 
 
 Bu bilgilerle, Azure portal bot 'ın App Service 'e gidin. **Ayarlar-> yapılandırma-> uygulama ayarları**altında bu değerleri değiştirin.  
 
-Bilgi Bankası 'nın uç nokta anahtarı, ABS hizmetinde `QnAAuthkey` olarak etiketlenir. 
+Bilgi Bankası 'nın uç nokta anahtarı, ABS hizmetindeki `QnAAuthkey` etiketlidir. 
 
 ### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>İki veya daha fazla istemci uygulaması Bilgi Bankası 'nı paylaşabilir mi? 
 

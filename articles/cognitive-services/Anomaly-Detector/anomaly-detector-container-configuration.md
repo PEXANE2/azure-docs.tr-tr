@@ -1,73 +1,73 @@
 ---
 title: Anomali algılayıcı API 'SI için kapsayıcı yapılandırma
 titleSuffix: Azure Cognitive Services
-description: Anomali algılayıcı API kapsayıcısı çalışma zamanı ortamı, `docker run` komut bağımsız değişkenleri kullanılarak yapılandırılır. Bu kapsayıcıda bazı gerekli ayarlar ve bazı isteğe bağlı ayarlar vardır.
+description: Anomali algılayıcı API kapsayıcısı çalışma zamanı ortamı, `docker run` komutu bağımsız değişkenleri kullanılarak yapılandırılır. Bu kapsayıcıda bazı gerekli ayarlar ve bazı isteğe bağlı ayarlar vardır.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: 4a961080bc124e53a8c5fe4dcc5f3cd6f21e9e5c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f7e04a16fa35d492b8e5e6c53a05220e8b96a38a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102565"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795844"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomali Algılayıcısı kapsayıcılarını yapılandırma
 
-**Anomali algılayıcı** kapsayıcı çalışma zamanı ortamı, `docker run` komut bağımsız değişkenleri kullanılarak yapılandırılır. Bu kapsayıcıda bazı gerekli ayarlar ve bazı isteğe bağlı ayarlar vardır. Birkaç [örnekler](#example-docker-run-commands) komutu kullanılabilir. Kapsayıcıya özgü ayarlar faturalandırma ayarlardır. 
+**Anomali algılayıcı** kapsayıcı çalışma zamanı ortamı, `docker run` komut bağımsız değişkenleri kullanılarak yapılandırılır. Bu kapsayıcıda bazı gerekli ayarlar ve bazı isteğe bağlı ayarlar vardır. Birkaç komuta [örnek](#example-docker-run-commands) vardır. Kapsayıcıya özgü ayarlar faturalandırma ayarlardır. 
 
 ## <a name="configuration-settings"></a>Yapılandırma ayarları
 
-Bu kapsayıcı, aşağıdaki yapılandırma ayarları vardır:
+Bu kapsayıcı aşağıdaki yapılandırma ayarlarına sahiptir:
 
 |Gerekli|Ayar|Amaç|
 |--|--|--|
-|Evet|[ApiKey](#apikey-configuration-setting)|Fatura bilgileri izlemek için kullanılır.|
-|Hayır|[ApplicationInsights](#applicationinsights-setting)|Eklemenizi sağlayan [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) kapsayıcınızı telemetri desteği.|
-|Evet|[Billing](#billing-configuration-setting)|Azure'daki hizmet kaynağının uç nokta URI'sini belirtir.|
-|Evet|[Eula](#eula-setting)| Kapsayıcı lisansını kabul ettiğinizi gösterir.|
-|Hayır|[Fluentd](#fluentd-settings)|Günlük yazma ve isteğe bağlı olarak ölçüm verileri Fluentd sunucusuna.|
+|Evet|[ApiKey](#apikey-configuration-setting)|Faturalandırma bilgilerini izlemek için kullanılır.|
+|Hayır|[ApplicationInsights](#applicationinsights-setting)|, Kapsayıcınıza [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetri desteği eklemenize olanak tanır.|
+|Evet|[Faturalandırma](#billing-configuration-setting)|Azure üzerindeki hizmet kaynağının uç nokta URI 'sini belirtir.|
+|Evet|[Sözleşmesi](#eula-setting)| Kapsayıcının lisansını kabul ettiğinizi gösterir.|
+|Hayır|[Fluentd](#fluentd-settings)|Günlük ve isteğe bağlı olarak ölçüm verilerini Floentd sunucusuna yazın.|
 |Hayır|[Http proxy 'Si](#http-proxy-credentials-settings)|Giden istekler oluşturmak için bir HTTP proxy 'si yapılandırın.|
-|Hayır|[Logging](#logging-settings)|Kapsayıcınız için ASP.NET Core günlük kaydı desteği sunar. |
-|Hayır|[Mounts](#mount-settings)|Ana bilgisayardaki verileri okuyup kapsayıcıya, kapsayıcıdaki verileri okuyup ana bilgisayara yazar.|
+|Hayır|[Açmak](#logging-settings)|, Kapsayıcınız için ASP.NET Core günlük desteği sağlar. |
+|Hayır|[Bağlar](#mount-settings)|Ana bilgisayardan kapsayıcıya ve kapsayıcıdan, ana bilgisayara geri veri okuma ve yazma.|
 
 > [!IMPORTANT]
-> [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), Ve [ `Eula` ](#eula-setting) ayarları birlikte kullanılır ve bunları; Aksi takdirde, tüm üç için geçerli değerler sağlamanız gerekir kapsayıcınızı başlatılamıyor. Bir kapsayıcı örneği oluşturmak için bu yapılandırma ayarlarını kullanma hakkında daha fazla bilgi için bkz. [faturalama](anomaly-detector-container-howto.md#billing).
+> [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)ve [`Eula`](#eula-setting) ayarları birlikte kullanılır ve üç tane için de geçerli değerler sağlamanız gerekir; Aksi takdirde Kapsayıcınız başlatılmaz. Bir kapsayıcı oluşturmak için bu yapılandırma ayarlarını kullanma hakkında daha fazla bilgi için bkz. [faturalandırma](anomaly-detector-container-howto.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>ApiKey yapılandırma ayarı
 
-`ApiKey` Ayar kapsayıcısı için fatura bilgileri izlemek için kullanılan Azure kaynak anahtarını belirtir. Apikey için bir değer belirtmeniz gerekir ve değerin [`Billing`](#billing-configuration-setting) yapılandırma ayarı için belirtilen _anomali algılayıcısı_ kaynağı için geçerli bir anahtar olması gerekir.
+`ApiKey` ayarı, kapsayıcının fatura bilgilerini izlemek için kullanılan Azure Kaynak anahtarını belirtir. ApiKey için bir değer belirtmeniz gerekir ve değerin [`Billing`](#billing-configuration-setting) yapılandırma ayarı Için belirtilen _anomali algılayıcı_ kaynağı için geçerli bir anahtar olması gerekir.
 
 Bu ayar aşağıdaki yerde bulunabilir:
 
-* Azure portal: **Anomali algılayıcısı** Kaynak yönetimi, **anahtarlar** altında
+* Azure portal: **anomali algılayıcısının** kaynak yönetimi, **anahtarlar** altında
 
-## <a name="applicationinsights-setting"></a>Applicationınsights ayarı
+## <a name="applicationinsights-setting"></a>ApplicationInsights ayarı
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-configuration-setting"></a>Yapılandırma ayarı faturalama
+## <a name="billing-configuration-setting"></a>Faturalandırma yapılandırma ayarı
 
-Bu ayar, kapsayıcının fatura bilgilerini ölçmek için kullanılan Azure 'daki _anomali algılayıcısı_ kaynağının uç nokta URI 'sini belirtir. `Billing` Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'da bir _anomali algılayıcısı_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır.
+`Billing` ayarı, Azure 'daki _anomali algılayıcı_ kaynağının uç nokta URI 'sini belirtir ve bu, kapsayıcının fatura bilgilerini ölçer. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'da bir _anomali algılayıcısı_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır.
 
 Bu ayar aşağıdaki yerde bulunabilir:
 
-* Azure portal: **Anomali algılayıcısı** Genel bakış, etiketli`Endpoint`
+* Azure portal: **anomali algılayıcısının** genel bakış, etiketli `Endpoint`
 
 |Gerekli| Ad | Veri türü | Açıklama |
 |--|------|-----------|-------------|
-|Evet| `Billing` | Dize | Faturalandırma uç noktası URI'si<br><br>Örnek:<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
+|Evet| `Billing` | Dize | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](anomaly-detector-container-howto.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
 
-## <a name="eula-setting"></a>EULA'yı ayarlama
+## <a name="eula-setting"></a>EULA ayarı
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Fluentd ayarları
+## <a name="fluentd-settings"></a>Akışkan entd ayarları
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -75,42 +75,42 @@ Bu ayar aşağıdaki yerde bulunabilir:
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-settings"></a>Günlük ayarları
+## <a name="logging-settings"></a>Günlük kaydı ayarları
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
 
 ## <a name="mount-settings"></a>Bağlama ayarları
 
-Kullanım bağlama okumak ve kapsayıcı gelen ve giden veri yazmak için bağlar. Bir giriş bağlama belirtin veya çıkış bağlama belirterek `--mount` seçeneğini [docker run](https://docs.docker.com/engine/reference/commandline/run/) komutu.
+Kapsayıcıya ve kapsayıcılardan veri okumak ve buradan veri yazmak için BIND bağlama kullanın. [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunda `--mount` seçeneğini belirterek bir giriş bağlama veya çıkış bağlama belirtebilirsiniz.
 
 Anomali algılayıcı kapsayıcıları, eğitim veya hizmet verilerini depolamak için giriş veya çıkış taklarını kullanmaz. 
 
-Konak bağlama konumu söz dizimi konak işletim sistemine göre değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](anomaly-detector-container-howto.md#the-host-computer)bağlama konumu erişilebilir olmayabilir. 
+Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](anomaly-detector-container-howto.md#the-host-computer)bağlama konumu erişilebilir olmayabilir. 
 
-|İsteğe Bağlı| Name | Veri türü | Açıklama |
+|İsteğe bağlı| Ad | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
-|İzin verilmedi| `Input` | Dize | Anomali algılayıcı kapsayıcıları bunu kullanmaz.|
-|İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output` şeklindedir. Bu günlükler konumdur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
+|İzin verilmiyor| `Input` | Dize | Anomali algılayıcı kapsayıcıları bunu kullanmaz.|
+|İsteğe bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output` ' dır. Bu, günlüklerin konumudur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Örnek docker komutlarını çalıştırın 
+## <a name="example-docker-run-commands"></a>Örnek Docker Run komutları 
 
-Aşağıdaki örnekler, yazma ve kullanma göstermek için yapılandırma ayarlarını kullanır. `docker run` komutları.  Kapsayıcıyı çalıştıran sonra dek çalıştırmaya devam [Durdur](anomaly-detector-container-howto.md#stop-the-container) bu.
+Aşağıdaki örnekler `docker run` komutlarının nasıl yazılacağını ve kullanılacağını göstermek için yapılandırma ayarlarını kullanır.  Çalışan bir kez, kapsayıcıyı [durduruncaya](anomaly-detector-container-howto.md#stop-the-container) kadar çalışmaya devam eder.
 
-* **Satır devamlılık karakteri**: Aşağıdaki bölümlerdeki Docker komutları, bir bash kabuğu için satır devamlılık karakteri olarak ters eğik çizgi `\`kullanır. Bu konak işletim sisteminin gereksinimlerine göre kaldırın veya değiştirin. Örneğin, Windows için satır devamlılık karakteri bir şapka `^`karakteridir. Ters eğik çizgiyi şapka işareti ile değiştirin. 
+* **Satır devamlılık karakteri**: aşağıdaki bölümlerdeki Docker komutları, bir bash kabuğu için satır devamlılık karakteri olarak `\`ters eğik çizgi kullanır. Bunu, ana bilgisayar işletim sisteminizin gereksinimlerine göre değiştirin veya kaldırın. Örneğin, Windows için satır devamlılık karakteri bir şapka `^`. Ters eğik çizgiyi şapka işareti ile değiştirin. 
 * **Bağımsız değişken sırası**: Docker Kapsayıcıları hakkında bilginiz yoksa bağımsız değişkenlerin sırasını değiştirmeyin.
 
-Parantez `{}`içindeki değeri, kendi değerlerinizle değiştirin:
+`{}`parantez içindeki değeri kendi değerlerinizle değiştirin:
 
 | Yer tutucu | Değer | Biçim veya örnek |
 |-------------|-------|---|
-| **{API_KEY}** | `Anomaly Detector` Azure`Anomaly Detector` anahtarları sayfasında kaynağın uç nokta anahtarı. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{API_KEY}** | Azure `Anomaly Detector` Keys sayfasında `Anomaly Detector` kaynağının bitiş noktası anahtarı. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | **{ENDPOINT_URI}** | Faturalandırma uç noktası değeri, Azure `Anomaly Detector` Genel Bakış sayfasında bulunur.| Açık örnekler için [gerekli parametreleri toplama](anomaly-detector-container-howto.md#gathering-required-parameters) konusuna bakın. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](anomaly-detector-container-howto.md#billing).
+> Kapsayıcıyı çalıştırmak için `Eula`, `Billing`ve `ApiKey` seçenekleri belirtilmelidir; Aksi takdirde, kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](anomaly-detector-container-howto.md#billing).
 > ApiKey değeri, Azure anomali algılayıcısı kaynak anahtarları sayfasından alınan **anahtardır** . 
 
 ## <a name="anomaly-detector-container-docker-examples"></a>Anomali algılayıcı kapsayıcısı Docker örnekleri
@@ -127,7 +127,7 @@ Aşağıdaki Docker örnekleri anomali algılayıcı kapsayıcısı içindir.
   ApiKey={API_KEY} 
   ```
 
-### <a name="logging-example-with-command-line-arguments"></a>Komut satırı bağımsız değişkenleri ile günlük örnek
+### <a name="logging-example-with-command-line-arguments"></a>Komut satırı bağımsız değişkenleriyle günlüğe kaydetme örneği
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

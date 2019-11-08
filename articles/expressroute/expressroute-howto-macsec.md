@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 36cd1bfebe4e5379a1c8cfc551c8e003459ebf5c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 081c448ff09148668dbe5e244e80421a47d77152
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162436"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748280"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>ExpressRoute doğrudan bağlantı noktalarında MACsec yapılandırma
 
@@ -28,7 +28,7 @@ Yapılandırmaya başlamadan önce, aşağıdakileri onaylayın:
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell çalışma
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -47,7 +47,7 @@ Yapılandırmayı başlatmak için Azure hesabınızda oturum açın ve kullanma
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    Zaten bir Anahtar Kasası veya kaynak grubunuz varsa, bunları yeniden kullanabilirsiniz. Ancak, var olan anahtar kasanızda [ **geçici silme** özelliğini](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-ovw-soft-delete) etkinleştirmeniz önemlidir. Geçici silme etkinleştirilmemişse, etkinleştirmek için aşağıdaki komutları kullanabilirsiniz:
+    Zaten bir Anahtar Kasası veya kaynak grubunuz varsa, bunları yeniden kullanabilirsiniz. Ancak, var olan anahtar kasanızda [ **geçici silme** özelliğini](../key-vault/key-vault-ovw-soft-delete.md) etkinleştirmeniz önemlidir. Geçici silme etkinleştirilmemişse, etkinleştirmek için aşağıdaki komutları kullanabilirsiniz:
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"

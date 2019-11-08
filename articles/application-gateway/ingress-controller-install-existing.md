@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 045fb54956e78e826b06dc1c56c29e1c7bd430bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dec43a4d7eb5a9546fcd77cce972b93542ea3b10
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513425"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795948"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Mevcut bir Application Gateway kullanarak bir Application Gateway Ingcontroller (AGıC) yüklemesi
 
@@ -27,7 +27,7 @@ AGIC, Kubernetes giriş [kaynaklarını izler](https://kubernetes.io/docs/concep
 - [Held kullanarak giriş denetleyicisini yükler](#install-ingress-controller-as-a-helm-chart)
 - [Çoklu küme/paylaşılan Application Gateway](#multi-cluster--shared-application-gateway): bir ortamda (Application Gateway bir veya daha fazla aks kümesi ve/veya diğer Azure bileşenleri arasında paylaşıldığında) agic 'yi yükler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu belgede aşağıdaki araçların ve altyapının yüklü olduğu varsayılır:
 - [Gelişmiş ağ](https://docs.microsoft.com/azure/aks/configure-azure-cni) özellikli [aks](https://azure.microsoft.com/services/kubernetes-service/) 'lar
 - [Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant) 'yi aks ile aynı sanal ağda
@@ -72,7 +72,7 @@ AGIC, Kubernetes API sunucusu ve Azure Resource Manager ile iletişim kurar. Bu 
 
 ## <a name="set-up-aad-pod-identity"></a>AAD Pod kimliği ayarlama
 
-[AAD Pod kimliği](https://github.com/Azure/aad-pod-identity) , aks 'de de çalışan agic 'e benzer bir denetleyicidir. Azure Active Directory kimliklerini Kubernetes pods 'nize bağlar. Kubernetes Pod içindeki bir uygulamanın diğer Azure bileşenleriyle iletişim kurabilmesi için kimlik gereklidir. Burada belirli bir durumda, [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)için http istekleri yapmak üzere agic pod için yetkilendirmeye ihtiyacımız var.
+[AAD Pod kimliği](https://github.com/Azure/aad-pod-identity) , aks 'de de çalışan agic 'e benzer bir denetleyicidir. Azure Active Directory kimliklerini Kubernetes pods 'nize bağlar. Kubernetes Pod içindeki bir uygulamanın diğer Azure bileşenleriyle iletişim kurabilmesi için kimlik gereklidir. Burada belirli bir durumda, [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)için http istekleri yapmak üzere agic pod için yetkilendirmemiz gerekir.
 
 Bu bileşeni AKS uygulamanıza eklemek için [AAD Pod kimlik yükleme yönergelerini](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra) izleyin.
 
@@ -91,7 +91,7 @@ Aşağıdaki komutların tümünü çalıştırmak ve bir kimlik oluşturmak iç
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. Kimliğe Application Gateway `Contributor` erişim izni verin. Bunun için Application Gateway KIMLIĞI gerekir ve şuna benzer şekilde görünecektir: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. Kimliğe Application Gateway erişim `Contributor` verin. Bunun için Application Gateway KIMLIĞI gerekir ve şuna benzer şekilde görünecektir: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
     Aboneliğinizdeki Application Gateway kimliklerinin listesini ile alın: `az network application-gateway list --query '[].id'`
 
@@ -244,9 +244,9 @@ Bu ayarı etkinleştirmeden önce lütfen __Application Gateway yapılandırman�
 İndirdiğiniz ZIP dosyası, geri yüklemek için kullanabileceğiniz JSON şablonlarına, bash ve PowerShell betiklerine sahip olacaktır Application Gateway
 
 ### <a name="example-scenario"></a>Örnek Senaryo
-2 Web sitesi için trafiği yöneten bir sanal Application Gateway bakalım:
+İki Web sitesi için trafiği yöneten bir sanal Application Gateway göz atalım:
   - `dev.contoso.com`, Application Gateway ve AGIC kullanarak yeni bir AKS üzerinde barındırılıyor
-  - `prod.contoso.com`- [Azure Virutal makine ölçek kümesi](https://azure.microsoft.com/services/virtual-machine-scale-sets/) üzerinde barındırılıyor
+  - `prod.contoso.com`-bir [Azure sanal makine ölçek kümesi](https://azure.microsoft.com/services/virtual-machine-scale-sets/) üzerinde barındırılıyor
 
 Varsayılan ayarlarla AGIC, işaret ettiği Application Gateway %100 sahipliğini üstlenir. AGIC, tüm uygulama ağ geçidi yapılandırmasının üzerine yazar. `prod.contoso.com` için el ile bir dinleyici oluştururuz (Application Gateway), Kubernetes girişi içinde tanımlamadan, AGIC, `prod.contoso.com` yapılandırmasını Saniyeler içinde siler.
 
@@ -323,7 +323,7 @@ Adın gösterdiği gibi nesne `prohibit-all-targets`, AGIC 'in *herhangi bir* ko
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Mevcut bir AGIC yüklemesi için etkinleştirme
-Zaten bir çalışan AKS, Application Gateway ve kümizdeki AGIC 'ler olduğunu varsayalım. `prod.contosor.com` için bir giriş yapıyoruz ve bu, AKS 'ten gelen trafiğe başarıyla hizmet veriyor. Mevcut Application Gateway `staging.contoso.com` eklemek istiyoruz, ancak bunu bir [VM](https://azure.microsoft.com/services/virtual-machines/)'de barındırmamız gerekiyor. Mevcut Application Gateway yeniden kullanacağız ve `staging.contoso.com`için bir dinleyici ve arka uç havuzlarını el ile yapılandıracağız. Ancak Application Gateway config ( [Portal](https://portal.azure.com), [ARM API 'leri](https://docs.microsoft.com/rest/api/resources/) veya [terkform](https://www.terraform.io/)aracılığıyla) için el ile davaklik, tam sahiplik varsayımlarıyla çakışır. Değişiklikler uygulandıktan sonra, AGIC onları üzerine yazar veya siler.
+Zaten bir çalışan AKS, Application Gateway ve kümizdeki AGIC 'ler olduğunu varsayalım. `prod.contosor.com` için bir giriş yapıyoruz ve bu, AKS 'ten gelen trafiğe başarıyla hizmet veriyor. Mevcut Application Gateway `staging.contoso.com` eklemek istiyoruz, ancak bunu bir [VM](https://azure.microsoft.com/services/virtual-machines/)'de barındırmamız gerekiyor. Var olan Application Gateway yeniden kullanacağız ve `staging.contoso.com`için bir dinleyici ve arka uç havuzlarını elle yapılandıracağız. Ancak Application Gateway config ( [Portal](https://portal.azure.com), [ARM API 'leri](https://docs.microsoft.com/rest/api/resources/) veya [terkform](https://www.terraform.io/)aracılığıyla) için el ile davaklik, tam sahiplik varsayımlarıyla çakışır. Değişiklikler uygulandıktan sonra, AGIC onları üzerine yazar veya siler.
 
 AGC 'nin bir yapılandırma alt kümesinde değişiklik yapmasını yasaklayabiliriz.
 

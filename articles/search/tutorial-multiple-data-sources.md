@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3b94e3e352f4d6b5cd7da41feb9660be2ffed2bd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 69b18cdd4d0bb8e3d13bbacd5d21764004308786
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786477"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795650"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Öğretici: tek bir Azure Bilişsel Arama dizininde bulunan birden çok veri kaynağından verileri birleştirme
 
@@ -30,13 +30,13 @@ Bu öğreticide C#, Azure BILIŞSEL arama .NET SDK ve aşağıdaki görevleri ya
 > * Azure Cosmos DB otel verilerinin dizinini oluştur
 > * BLOB depolama alanından otel odası verilerini birleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki hizmetler, Araçlar ve veriler bu hızlı başlangıçta kullanılır. 
 
 - Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu öğretici için ücretsiz bir hizmet kullanabilirsiniz.
 
-- Örnek otel verilerini depolamak için [bir Azure Cosmos DB hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) .
+- Örnek otel verilerini depolamak için [bir Azure Cosmos DB hesabı oluşturun](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) .
 
 - Örnek JSON blob verilerini depolamak için [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) .
 
@@ -121,13 +121,13 @@ Arama hizmeti ve veri kaynakları için bağlantı bilgileri, çözümdeki **app
 }
 ```
 
-İlk iki giriş, Azure Bilişsel Arama hizmetiniz için URL ve yönetici anahtarlarını kullanır. Örneğin, sağlanacak hizmet adı `mydemo` `https://mydemo.search.windows.net` uç noktası verilir.
+İlk iki giriş, Azure Bilişsel Arama hizmetiniz için URL ve yönetici anahtarlarını kullanır. Örneğin, sağlanacak hizmet adı `mydemo``https://mydemo.search.windows.net`uç noktası verilir.
 
 Sonraki girişler, Azure Blob depolama ve Azure Cosmos DB veri kaynakları için hesap adlarını ve bağlantı dizesi bilgilerini belirtir.
 
 ### <a name="identify-the-document-key"></a>Belge anahtarını tanımla
 
-Azure Bilişsel Arama 'de, anahtar alanı dizindeki her belgeyi benzersiz bir şekilde tanımlar. Her arama dizininin `Edm.String` türünde tam olarak bir anahtar alanı olmalıdır. Bu anahtar alanı, dizine eklenen bir veri kaynağındaki her belge için mevcut olmalıdır. (Aslında, tek gerekli alandır.)
+Azure Bilişsel Arama 'de, anahtar alanı dizindeki her belgeyi benzersiz bir şekilde tanımlar. Her arama dizininin `Edm.String`türünde tam olarak bir anahtar alanı olmalıdır. Bu anahtar alanı, dizine eklenen bir veri kaynağındaki her belge için mevcut olmalıdır. (Aslında, tek gerekli alandır.)
 
 Birden çok veri kaynağından veri dizinlenirken, her veri kaynağı anahtar değeri, Birleşik dizindeki aynı anahtar alanıyla eşleşmelidir. Genellikle dizininiz için anlamlı bir belge anahtarı belirlemek için bazı önde bir planlama gerektirir ve her veri kaynağında bulunduğundan emin olun.
 

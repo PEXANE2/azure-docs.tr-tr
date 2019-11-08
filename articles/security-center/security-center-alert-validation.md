@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d3ea0adb4adf88e557ca360799836555cb90078e
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 709ac3a9f5e7cf0bd13a6e387f0b80caf2608fe0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520937"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748469"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde uyarı doğrulaması (EICAR test dosyası)
 Bu belge, sisteminizin Azure Güvenlik Merkezi uyarıları için doğru yapılandırılıp yapılandırılmadığını doğrulamayı öğrenmenize yardımcı olur.
@@ -33,7 +33,7 @@ Daha fazla bilgi için bkz. Güvenlik [Merkezi 'Nde güvenlik uyarıları](secur
 * [Linux](#validate-linux)
 * [Kubernetes](#validate-kubernetes)
 
-## Windows VM 'de uyarıları doğrulama<a name="validate-windows"></a>
+## Windows VM 'lerinde uyarıları doğrulama<a name="validate-windows"></a>
 
 Güvenlik Merkezi Aracısı bilgisayarınıza yüklendikten sonra, uyarının saldırıya uğrayan kaynak olmasını istediğiniz bilgisayarda bu adımları izleyin:
 
@@ -46,7 +46,7 @@ Güvenlik Merkezi Aracısı bilgisayarınıza yüklendikten sonra, uyarının sa
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## Linux VM 'de uyarıları doğrulama<a name="validate-linux"></a>
+## Linux VM 'lerinde uyarıları doğrulama<a name="validate-linux"></a>
 
 Güvenlik Merkezi Aracısı bilgisayarınıza yüklendikten sonra, uyarının saldırıya uğrayan kaynak olmasını istediğiniz bilgisayarda bu adımları izleyin:
 1. Bir yürütülebilir dosyayı uygun bir konuma kopyalayın ve **./asc_alerttest_662jfi039n**olarak yeniden adlandırın, örneğin:

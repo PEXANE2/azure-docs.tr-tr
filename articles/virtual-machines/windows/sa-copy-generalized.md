@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 45c59ccdd45a0c00635c3e0a3919248f33e2919a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0277e07f67b3f9124dc0e27b20e3d49e0d2f6e9
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102444"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749203"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Azure VM 'den yönetilmeyen VM görüntüsü oluşturma
 
@@ -28,10 +28,10 @@ Bu makalede, depolama hesaplarının kullanımı ele alınmaktadır. Depolama he
 
 Bu makalede, bir depolama hesabı kullanarak genelleştirilmiş bir Azure VM 'nin görüntüsünü oluşturmak için Azure PowerShell nasıl kullanılacağı gösterilmektedir. Daha sonra başka bir VM oluşturmak için görüntüsünü kullanabilirsiniz. Görüntü, işletim sistemi diskini ve sanal makineye bağlı veri disklerini içerir. Görüntüde sanal ağ kaynakları dahil değildir, bu nedenle yeni VM 'yi oluştururken bu kaynakları ayarlamanız gerekir. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="generalize-the-vm"></a>VM 'yi Genelleştirme 
-Bu bölümde, Windows sanal makinenizi görüntü olarak kullanılmak üzere genelleştirirsiniz. Bir VM 'nin genelleştirilmesi, tüm kişisel hesap bilgilerinizi diğer şeyler arasında kaldırır ve makineyi bir görüntü olarak kullanılmak üzere hazırlar. Sysprep hakkındaki ayrıntılar için bkz.[Sysprep İşlemini Kullanma: Giriş](https://technet.microsoft.com/library/bb457073.aspx).
+Bu bölümde, Windows sanal makinenizi görüntü olarak kullanılmak üzere genelleştirirsiniz. Bir VM 'nin genelleştirilmesi, tüm kişisel hesap bilgilerinizi diğer şeyler arasında kaldırır ve makineyi bir görüntü olarak kullanılmak üzere hazırlar. Sysprep hakkındaki ayrıntılar için bkz. [Sysprep İşlemini Kullanma: Giriş](https://technet.microsoft.com/library/bb457073.aspx).
 
 Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emin olun. Daha fazla bilgi için bkz. [sunucu rolleri Için Sysprep desteği](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -40,14 +40,14 @@ Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emi
 > 
 > 
 
-Ayrıca, kullanarak `sudo waagent -deprovision+user` bir Linux VM 'yi genelleştirdiğinizde, VM 'yi yakalamak için PowerShell 'i kullanabilirsiniz. Bir VM yakalamak için CLı kullanma hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak Linux sanal makinesi Genelleştirme ve yakalama](../linux/capture-image.md).
+Ayrıca, `sudo waagent -deprovision+user` kullanarak bir Linux sanal makinesini genelleştirebilirsiniz ve ardından VM 'yi yakalamak için PowerShell 'i kullanabilirsiniz. Bir VM yakalamak için CLı kullanma hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak Linux sanal makinesi Genelleştirme ve yakalama](../linux/capture-image.md).
 
 
 1. Windows sanal makinesinde oturum açın.
-2. Yönetici olarak Komut İstemi penceresini açın. Dizini **%windir%\system32\sysprep**olarak değiştirip komutunu çalıştırın `sysprep.exe`.
+2. Yönetici olarak Komut İstemi penceresini açın. Dizini **%windir%\system32\sysprep**olarak değiştirip `sysprep.exe`çalıştırın.
 3. **Sistem Hazırlama Aracı** iletişim kutusunda  **Sistem İlk Çalıştırma Deneyimi (OOBE) Moduna Gir**'i seçin ve **Genelleştir** onay kutusunun seçili olduğundan emin olun.
 4. **Kapalı seçenekleri**' nde, **kapatır**' ı seçin.
-5. **Tamam**'ı tıklatın.
+5. **Tamam** düğmesine tıklayın.
    
     ![Sysprep 'ı Başlat](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep tamamlandığında, sanal makineyi kapatır. 
@@ -88,7 +88,7 @@ Ayrıca, kullanarak `sudo waagent -deprovision+user` bir Linux VM 'yi genelleşt
     Stop-AzVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
-    Azure portal sanal makinenin *durumu* durduruldu durumundan **durduruldu (serbest bırakıldı)** olarak değişir.
+    Azure portal sanal makinenin *durumu* durduruldu durumundan **durduruldu (serbest bırakıldı)** **olarak değişir** .
 2. Sanal makinenin durumunu **Genelleştirilmiş**olarak ayarlayın. 
    
     ```powershell
@@ -103,7 +103,7 @@ Ayrıca, kullanarak `sudo waagent -deprovision+user` bir Linux VM 'yi genelleşt
 
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
-Bu komutu kullanarak hedef depolama kapsayıcısında bir yönetilmeyen sanal makine görüntüsü oluşturun. Görüntü, özgün sanal makine ile aynı depolama hesabında oluşturulur. `-Path` Parametresi, kaynak VM için JSON şablonunun bir kopyasını yerel bilgisayarınıza kaydeder. `-DestinationContainerName` Parametresi, görüntülerinizi tutmak istediğiniz kapsayıcının adıdır. Kapsayıcı yoksa, sizin için oluşturulur.
+Bu komutu kullanarak hedef depolama kapsayıcısında bir yönetilmeyen sanal makine görüntüsü oluşturun. Görüntü, özgün sanal makine ile aynı depolama hesabında oluşturulur. `-Path` parametresi, kaynak VM için JSON şablonunun bir kopyasını yerel bilgisayarınıza kaydeder. `-DestinationContainerName` parametresi, görüntülerinizi tutmak istediğiniz kapsayıcının adıdır. Kapsayıcı yoksa, sizin için oluşturulur.
    
 ```powershell
 Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -111,7 +111,7 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-Resminizin URL 'sini JSON dosya şablonundan alabilirsiniz. Görüntünüzün tüm yolu için **kaynaklar** > **storageprofile** > **OSDisk** > **görüntü** > **Uri 'si** bölümüne gidin. Görüntünün URL 'SI şöyle görünür: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
+Resminizin URL 'sini JSON dosya şablonundan alabilirsiniz. Görüntünüzün tüm yolu için **Storageprofile** > **osdisk** > **Image** > **Uri** bölümünü > **kaynaklara** gidin. Görüntünün URL 'SI şöyle görünür: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
    
 Ayrıca, portalda URI 'yi doğrulayabilirsiniz. Görüntü, depolama hesabınızda **sistem** adlı bir kapsayıcıya kopyalanır. 
 
@@ -121,7 +121,7 @@ Artık yönetilmeyen görüntüden bir veya daha fazla sanal makine oluşturabil
 
 ### <a name="set-the-uri-of-the-vhd"></a>VHD URI 'sini ayarlama
 
-Kullanılacak VHD için URI şu biçimdedir: https://**mystorageaccount**. blob.Core.Windows.net/**myContainer**/**myvhdname**. vhd. Bu örnekte, **myvhd** adlı VHD, kapsayıcıda Container mystorageaccount depolama hesabıdır.
+Kullanılacak VHD için URI şu biçimdedir: https://**mystorageaccount**. blob.Core.Windows.net/**myContainer**/**myvhdname**. vhd. Bu örnekte, **myvhd** adlı VHD, kapsayıcıda Container **mystorageaccount** depolama **hesabıdır.**
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -249,7 +249,7 @@ Aşağıdaki PowerShell sanal makine yapılandırmasını tamamlar ve yeni yükl
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>VM 'nin oluşturulduğunu doğrulama
-Tamamlandığında,**sanal makinelere** **gözatadaki** >  [Azure Portal](https://portal.azure.com) yeni oluşturulan VM 'yi görmeniz veya aşağıdaki PowerShell komutlarını kullanmanız gerekir:
+Tamamlandığında, yeni oluşturulan VM 'yi, > **sanal makinelere** **gözatarak** [Azure Portal](https://portal.azure.com) veya aşağıdaki PowerShell komutlarını kullanarak görmeniz gerekir:
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

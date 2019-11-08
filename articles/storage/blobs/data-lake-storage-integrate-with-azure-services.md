@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
-ms.openlocfilehash: 3add7e31568831e4c2de6901791d131ff01f43bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7223274417ef4c911c32acbcde1511682d6d9e0
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588115"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796063"
 ---
 # <a name="integrate-azure-data-lake-storage-with-azure-services"></a>Azure hizmetleriyle Azure Data Lake Storage tümleştirme
 
@@ -29,7 +29,7 @@ Aşağıdaki tabloda Azure Data Lake Storage 2. destekleyen Azure hizmetleri lis
 |Azure Event Hubs yakalama| [Azure Blob depolama veya Azure Data Lake Storage Azure Event Hubs aracılığıyla olayları yakalama](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|
 |Azure Logic Apps | [Genel Bakış-Azure Logic Apps nedir?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)|
 |Azure Machine Learning|[Azure Storage hizmetlerindeki verilere erişme](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data)|
-|Azure Search (Önizleme)| [Azure Search ile Blob deposu arama](https://docs.microsoft.com/azure/search/search-blob-storage-integration)|
+|Azure Bilişsel Arama | [Azure Data Lake Storage 2. belgelerini dizin ve arama (Önizleme)](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
 |Azure Stream Analytics| [Hızlı başlangıç: Azure portal kullanarak Stream Analytics işi oluşturma](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Azure Data Lake Gen2 çıkış](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2) |
 |Data Box|  [Şirket içi bir, Azure depolama 'ya veri geçirmek için Azure Data Box kullanma](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
 |HDInsight | [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Data Lake Storage 2. ile](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Öğretici: Azure HDInsight üzerinde Apache Hive kullanarak verileri ayıklama, dönüştürme ve yükleme](data-lake-storage-tutorial-extract-transform-load-hive.md) |
