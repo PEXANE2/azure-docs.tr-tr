@@ -6,12 +6,12 @@ author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 7adf3afe993a01357abcae846f19f602a49862bc
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 7fee1518c36407f4e6607cc9204f9615b024f56f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969464"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837715"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Öğretici: Terrayform ve HCL ile Azure VM kümesi oluşturma
 
@@ -61,7 +61,7 @@ Bu bölümde bir Azure hizmet sorumlusu ve hizmet sorumlusu kimlik bilgilerini i
 
 6. Terraform değişkenlerinin değerlerini için yeni bir dosya oluşturun. Terartform değişken dosyanızı, geçerli dizinde varsa, `terraform.tfvars` adlı herhangi bir dosyayı (veya `*.auto.tfvars`bir desen takip eden) otomatik olarak yüklediği `terraform.tfvars` adlandırma yaygındır. 
 
-7. Aşağıdaki kodu değişken dosyanıza kopyalayın. Yer tutucuları şu şekilde değiştirdiğinizden emin olun: `subscription_id` için `az account set` komutunu çalıştırdığınızda belirttiğiniz Azure abonelik kimliğini kullanın. `tenant_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `tenant` değerini kullanın. `client_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `appId` değerini kullanın. `client_secret` için `az ad sp create-for-rbac` komutunun döndürdüğü `password` değerini kullanın.
+7. Aşağıdaki kodu değişken dosyanıza kopyalayın. Yer tutucuları şu şekilde değiştirdiğinizden emin olun: `subscription_id` için `az account set` komutunu çalıştırdığınızda belirttiğiniz Azure abonelik kimliğini kullanın. `tenant_id` için `tenant` komutunun döndürdüğü `az ad sp create-for-rbac` değerini kullanın. `client_id` için `appId` komutunun döndürdüğü `az ad sp create-for-rbac` değerini kullanın. `client_secret` için `password` komutunun döndürdüğü `az ad sp create-for-rbac` değerini kullanın.
 
    ```hcl
    subscription_id = "<azure-subscription-id>"

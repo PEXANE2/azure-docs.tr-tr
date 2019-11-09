@@ -7,18 +7,18 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 76f995901814c90ff9fd78585c98d56b3478e8b4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ca3486610d6cf71ba315e407b58a2a2551ad6ee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612765"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837477"
 ---
 # <a name="get-labels-for-data"></a>Veri etiketlerini al
 
 Büyük miktarlarda verilerin etiketlenmesi, genellikle makine öğrenimi projelerinde bir zahmetli 'e sahiptir. Görüntü sınıflandırması veya nesne algılama gibi bir bilgisayar vizyonu bileşeni olan ML projeleri genellikle binlerce görüntü ve karşılık gelen Etiketler gerektirir. 
  
-Azure Machine Learning Studio, etiketleme projelerini oluşturmak, yönetmek ve izlemek için size merkezi bir konum sağlar. Verilerin etiketlenmesi, verileri, etiketleri ve takım üyelerini koordine etmenize yardımcı olmak için etiketleme görevlerini daha verimli bir şekilde yönetmenizi sağlar. Şu anda desteklenen görevler, çok etiketli veya çok sınıflı ve sınırlanmış kutular kullanılarak nesne tanımlaması olan görüntü sınıflandırmasıdır.
+Azure Machine Learning, etiketleme projelerini oluşturmak, yönetmek ve izlemek için size merkezi bir konum sağlar. Verilerin etiketlenmesi, verileri, etiketleri ve takım üyelerini koordine etmenize yardımcı olmak için etiketleme görevlerini daha verimli bir şekilde yönetmenizi sağlar. Şu anda desteklenen görevler, çok etiketli veya çok sınıflı ve sınırlanmış kutular kullanılarak nesne tanımlaması olan görüntü sınıflandırmasıdır.
 
 Azure ilerlemeyi izler ve tamamlanmamış etiketleme görevlerinin kuyruğunu korur. Etiketleyiciler katılmak için bir Azure hesabı gerektirmez. Microsoft hesabı (MSA) veya [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)kimlik doğrulamasından sonra, zaman içinde izin verdiği kadar çok veya az etiketleme yapabilir. Klavye kısayollarını kullanarak etiketleri atayabilir ve değiştirebilir. 
 
@@ -33,7 +33,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > * Projeyi çalıştırma ve izleme
 > * Etiketleri dışarı aktarma 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yerel dosyalarda veya zaten Azure Storage 'da etiketlemek istediğiniz veriler
 * Uygulamak istediğiniz etiket kümesi
@@ -43,7 +43,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 ## <a name="create-a-labeling-project"></a>Etiketleme projesi oluşturma
 
-Etiketleme projeleri [Azure Machine Learning Studio](https://ml.azure.com/)'dan yönetilir. **Etiketleme projeleri** sayfası, projelerinizi, ekiplerinizi ve kişilerinizi yönetmenizi sağlar. Bir projede kendisine atanmış bir veya daha fazla takım vardır ve bir takıma bir veya daha fazla kişi atanmış olur. 
+Etiketleme projeleri [Azure Machine Learning](https://ml.azure.com/)yönetilir. **Etiketleme projeleri** sayfası, projelerinizi, ekiplerinizi ve kişilerinizi yönetmenizi sağlar. Bir projede kendisine atanmış bir veya daha fazla takım vardır ve bir takıma bir veya daha fazla kişi atanmış olur. 
 
 Verileriniz zaten Azure Blob depolamada depolanıyorsa, etiketleme projenizi oluşturmadan önce bunları bir veri deposu olarak kullanılabilir hale getirebilirsiniz. Bilgi için bkz. [veri depoları oluşturma ve kaydetme](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores). 
 
@@ -149,7 +149,7 @@ Projeyi çevrimdışı veya çevrimiçi duruma almak isterseniz, projenin çalı
 
 İstediğiniz zaman, Machine Learning deneme için etiket verilerini dışarı aktarabilirsiniz. Resim etiketleri [Coco biçiminde](http://cocodataset.org/#format-data) veya BIR Azure ML veri kümesi olarak aktarılabilir. Etiketleme projenizin **proje ayrıntıları** sayfasında **dışarı aktar** düğmesini bulacaksınız.
 
-COCO dosyası, Azure ML çalışma alanının varsayılan Blob deposunda **dışarı aktarma/Coco**içindeki bir klasörde oluşturulur. İçe aktarılmış Azure ML veri kümesine, Studio 'nun **veri kümeleri** bölümünün altına erişebilirsiniz. Veri kümesi ayrıntıları sayfası, Python 'daki etiketlerinize erişmek için örnek kod de sağlar.
+COCO dosyası, Azure ML çalışma alanının varsayılan Blob deposunda **dışarı aktarma/Coco**içindeki bir klasörde oluşturulur. Azure Machine Learning **veri kümeleri** bölümünde, AKTARıLMıŞ Azure ML veri kümesine erişebilirsiniz. Veri kümesi ayrıntıları sayfası, Python 'daki etiketlerinize erişmek için örnek kod de sağlar.
 
 ![Aktarılmış veri kümesi](media/how-to-create-labeling-projects/exported-dataset.png)
 

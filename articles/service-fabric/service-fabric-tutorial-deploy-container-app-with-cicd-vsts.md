@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b686ceace3679d1541e8f1a74bca7e99b81ba932
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a2dc6aeb7dc2a62c543a58c322c23c9661c6940a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68598900"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832736"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesine CI/CD ile kapsayıcı uygulaması dağıtma
 
@@ -65,15 +65,15 @@ E-postanızı doğrulayın ve **Hesap** açılır penceresinde kuruluşunuzu se�
 
 Depoyu yayımlamak, hesabınızda yerel depoyla aynı adda yeni bir takım projesi oluşturur. Mevcut takım projesinde depoyu oluşturmak için, **Depo adının** yanındaki **Gelişmiş**’e tıklayın ve bir takım projesi seçin. **Web üzerinde görüntüleyin**’i seçerek kodunuzu web’de görüntüleyebilirsiniz.
 
-## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Azure işlem hatlarında sürekli teslimi Yapılandır
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Azure Pipelines ile sürekli teslimi yapılandırma
 
 Azure DevOps derleme tanımı, sıralı olarak yürütülen bir yapı adımları kümesinden oluşan bir iş akışını açıklar. Service Fabric kümenize dağıtmak üzere Service Fabric uygulama paketini ve diğer yapıtları üreten bir derleme tanımı oluşturun. Azure DevOps [derleme tanımları](https://www.visualstudio.com/docs/build/define/create)hakkında daha fazla bilgi edinin. 
 
 Azure DevOps sürüm tanımı, bir kümeye uygulama paketi dağıtan bir iş akışını açıklar. Derleme tanımı ve yayın tanımı birlikte kullanıldığında kaynak dosyalardan başlayıp kümenizde çalışan bir uygulamada biten iş akışının tamamını yürütür. Azure DevOps [sürüm tanımları](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)hakkında daha fazla bilgi edinin.
 
-### <a name="create-a-build-definition"></a>Bir yapı tanımı oluşturun
+### <a name="create-a-build-definition"></a>Derleme tanımı oluşturma
 
-Yeni takım projenizi, bir Web tarayıcısında ve https://dev.azure.com kuruluşunuzu seçerek ve ardından yeni proje ' ye tıklayarak açın. 
+Yeni takım projenizi, bir Web tarayıcısında https://dev.azure.com giderek, kuruluşunuzu seçerek ve ardından yeni proje ' ye tıklayarak açın. 
 
 Sol panelde **ardışık düzen** seçeneğini belirleyin ve ardından **Yeni işlem hattı**' na tıklayın.
 
@@ -110,7 +110,7 @@ El ile bir derleme başlatmak için, **Derleme işlem hattını ve kuyruğunu ka
 
 ![Tetikleyicileri seçme][save-and-queue]
 
-Derlemeler gönderme veya iade işlemleriyle de tetiklenir. Derlemenizin ilerleme durumunu denetlemek için **Derlemeler** sekmesine geçin.  Derlemenin başarıyla yürütüldüğünü doğruladıktan sonra, uygulamanızı kümeye dağıtan bir yayın tanımı belirleyin.
+Derlemeler gönderme veya iade işlemleriyle de tetiklenir. Derleme ilerleme durumunu denetlemek için **derlemeler** sekmesine geçin.  Derlemeyi başarıyla yürüttüğünü doğruladıktan sonra, uygulamanızı bir kümeye dağıtan bir yayın tanımı tanımlayın.
 
 ### <a name="create-a-release-definition"></a>Yayın tanımı oluşturma
 
@@ -147,7 +147,7 @@ Derleme tamamlandığında otomatik olarak bir yayın oluşturulması için sür
 
 Yayını el ile oluşturmak için **+ Yayın** -> **Yayın Oluştur** -> **Oluştur**'u seçin. Yayının ilerleme durumunu **Yayınlar** sekmesinden takip edebilirsiniz.
 
-Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir web tarayıcısı açın ve [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/) sayfasına gidin.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170616.3").
+Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir Web tarayıcısı açın ve `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`gidin.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170616.3").
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Değişiklikleri işleme ve gönderme, yayını tetikleme
 
@@ -167,7 +167,7 @@ Değişikliklerin Azure DevOps'a gönderilmesi otomatik olarak derlemeyi tetikle
 
 Derlemenizin ilerleme durumunu denetlemek için, Visual Studio'nun **Takım Gezgini**'nde **Derlemeler** sekmesine geçin.  Derlemenin başarıyla yürütüldüğünü doğruladıktan sonra, uygulamanızı kümeye dağıtan bir yayın tanımı belirleyin.
 
-Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir web tarayıcısı açın ve [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/) sayfasına gidin.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170815.3").
+Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir Web tarayıcısı açın ve `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`gidin.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170815.3").
 
 ![Service Fabric Explorer][sfx1]
 

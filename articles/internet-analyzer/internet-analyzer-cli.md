@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 3ae3c3f66ce7301023217a91cd8c79783f3ef833
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2952f7f24e92b952daafa682eee9d4605537a37b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501781"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839517"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>CLı kullanarak Internet çözümleyici testi oluşturma (Önizleme)
 
@@ -79,7 +79,7 @@ Internet Çözümleyicisi CLı aşağıdaki kaynak türlerini kullanıma sunar:
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    Yukarıdaki komutta, www.contoso.com ve www.microsoft.com ' nin, özel yollar altında tek piksellik görüntüyü ([Trans. gif](https://fpc.msedge.net/apc/trans.gif)) barındırdığı varsayılır. Bir nesne yolu açıkça belirtilmemişse, Internet çözümleyici varsayılan olarak nesne yolu olarak `/apc/trans.gif` kullanır; bu, önceden yapılandırılmış uç noktaların tek piksellik görüntüyü barındırmakta olduğu yerdir. Ayrıca şemanın (https/http) belirtilmesi gerekmez; Internet çözümleyici yalnızca HTTPS uç noktalarını destekler, bu nedenle HTTPS kabul edilir.
+    Yukarıdaki komutu hem `www.contoso.com` hem de `www.microsoft.com` özel yollar altında tek piksellik görüntüyü ([Trans. gif](https://fpc.msedge.net/apc/trans.gif)) barındırmakta olduğunu varsayar. Bir nesne yolu açıkça belirtilmemişse, Internet çözümleyici varsayılan olarak nesne yolu olarak `/apc/trans.gif` kullanır; bu, önceden yapılandırılmış uç noktaların tek piksellik görüntüyü barındırmakta olduğu yerdir. Ayrıca şemanın (https/http) belirtilmesi gerekmez; Internet çözümleyici yalnızca HTTPS uç noktalarını destekler, bu nedenle HTTPS kabul edilir.
 
 11. Yeni test Internet Çözümleyicisi profili altında görünmelidir:
     ```azurecli-interactive

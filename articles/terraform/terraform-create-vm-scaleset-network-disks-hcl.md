@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: 205cf7610bd9f86bf36fc738ced71fc8175ccdc9
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: e2b7d816a02eaf47ef50bfd2d814f7b26a813446
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969450"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838400"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Öğretici: Terrayform kullanarak Azure sanal makine ölçek kümesi oluşturma
 
@@ -96,7 +96,7 @@ Azure Cloud Shell içinde, aşağıdaki adımları uygulayın:
    }
    ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
 
 ## <a name="create-the-output-definitions-file"></a>Çıkış tanımları dosyasını oluşturma
 Bu bölümde dağıtım sonrasındaki çıkışı açıklayan dosyayı oluşturacaksınız.
@@ -118,7 +118,7 @@ Azure Cloud Shell içinde, aşağıdaki adımları uygulayın:
     }
    ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>Şablonda ağ altyapısını tanımlama
 Bu bölümde yeni bir Azure kaynak grubunda aşağıdaki ağ altyapısını oluşturacaksınız:
@@ -176,7 +176,7 @@ Azure Cloud Shell içinde, aşağıdaki adımları uygulayın:
    }
    ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
 
 ## <a name="provision-the-network-infrastructure"></a>Ağ altyapısını sağlama
 Yapılandırma dosyalarını (. tf) oluşturduğunuz dizinden Azure Cloud Shell kullanarak aşağıdaki adımları uygulayın:
@@ -212,7 +212,7 @@ Bu bölümde şablona aşağıdaki kaynakları eklemeyi öğreneceksiniz:
 - Yük dengeleyiciye atanacak Azure arka uç adres havuzu
 - Uygulama tarafından kullanılan ve yük dengeleyici üzerinde yapılandırılan sistem durumu yoklama bağlantı noktası
 - Bu makalenin önceki bölümlerinde dağıtılan sanal ağ üzerinde çalışan ve yük dengeleyicinin arkasında bulunan bir sanal makine ölçek kümesi
-- [cloud-init](https://cloudinit.readthedocs.io/en/latest/) kullanılarak yüklenen ve sanal makine ölçek kümesi düğümlerinde bulunan [Nginx](https://nginx.org/).
+- [cloud-init](https://nginx.org/) kullanılarak yüklenen ve sanal makine ölçek kümesi düğümlerinde bulunan [Nginx](https://cloudinit.readthedocs.io/en/latest/).
 
 Cloud Shell, aşağıdaki adımları uygulayın:
 
@@ -377,7 +377,7 @@ Cloud Shell, aşağıdaki adımları uygulayın:
     }
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
 
 1. Sanal makine ölçek kümesi dağıtımını görselleştirmek için bir Terraform planı oluşturun. (Kaynaklarınızın konumuna ek olarak bir parola da belirlemeniz gerekir.)
 
@@ -496,7 +496,7 @@ SSH sıçrama *kutusu* , ağdaki diğer sunuculara erişmek için ' atlamanız g
    }
    ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
 
 1. Sıçrama kutusu dağıtın.
 
@@ -524,4 +524,4 @@ Yok etme işleminin tamamlanması birkaç dakika sürebilir.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure 'da terrayform](/azure/ansible/)
+> [Azure 'da Terrayform kullanma hakkında daha fazla bilgi edinin](/azure/terraform)

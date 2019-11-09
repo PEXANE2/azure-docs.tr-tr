@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: b815776b8ff6dddf74c8aaa31a489b56751c0c73
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/07/2019
+ms.openlocfilehash: 1bfeef729bdb3f07fe2cc64cee4fd4f27c49ef67
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162379"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833601"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Öğretici: Terrayform kullanarak Azure Kubernetes hizmeti ile bir Kubernetes kümesi oluşturma
 
@@ -30,7 +30,7 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 
 - **Terraform'u yapılandırma**: [Terraform'u yükleme ve Azure erişimini yapılandırma](/azure/virtual-machines/linux/terraform-install-configure) makalesindeki yönergeleri izleyin
 
-- **Azure hizmet sorumlusu**: [Azure CLI ile Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) makalesinin **Hizmet sorumlusunu oluşturma** bölümündeki yönergeleri izleyin. appId, displayName, password ve tenant değerlerini not edin.
+- **Azure hizmet sorumlusu**: **Azure CLI ile Azure hizmet sorumlusu oluşturma** makalesinin [Hizmet sorumlusunu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) bölümündeki yönergeleri izleyin. appId, displayName, password ve tenant değerlerini not edin.
 
 ## <a name="create-the-directory-structure"></a>Dizin yapısını oluşturma
 
@@ -82,7 +82,7 @@ Azure sağlayıcısını tanımlayan Terraform yapılandırma dosyasını yapıl
     }
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
 
 ## <a name="define-a-kubernetes-cluster"></a>Kubernetes kümesi tanımlama
 
@@ -173,7 +173,7 @@ Kubernetes kümesinin kaynaklarını tanımlayan Terraform yapılandırma dosyas
 
     AKS ile yalnızca çalışan düğümleri için ödeme yaparsınız. `agent_pool_profile` kaydı bu çalışan düğümlerinin ayrıntılarını yapılandırır. `agent_pool_profile record` oluşturulacak çalışan düğümlerinin sayısını ve çalışan düğümlerinin türünü içerir. Daha sonra kümede ölçeği büyütme veya küçültme yapmanız gerekiyorsa, bu kayıttaki `count` değerini değiştirirsiniz.
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
 
 ## <a name="declare-the-variables"></a>Değişkenleri tanımlama
 
@@ -228,7 +228,7 @@ Kubernetes kümesinin kaynaklarını tanımlayan Terraform yapılandırma dosyas
    }
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
 
 ## <a name="create-a-terraform-output-file"></a>Terraform çıkış dosyası oluşturma
 
@@ -272,7 +272,7 @@ Kubernetes kümesinin kaynaklarını tanımlayan Terraform yapılandırma dosyas
     }
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
 
 ## <a name="set-up-azure-storage-to-store-terraform-state"></a>Terraform durumunu depolamak için Azure depolama alanı ayarlama
 
@@ -398,4 +398,4 @@ AKS kümesi oluşturulduğunda hem küme düğümleri hem de pod'lar için siste
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure 'da terrayform](/azure/ansible/)
+> [Azure 'da Terrayform kullanma hakkında daha fazla bilgi edinin](/azure/terraform)

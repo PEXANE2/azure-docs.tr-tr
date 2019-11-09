@@ -5,17 +5,17 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: e00b674df35516da559339af8028c1ca1845b0db
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: 233012d6caf1280914a6d2439ae856d69570fff7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969794"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838042"
 ---
 # <a name="tutorial-create-a-linux-vm-with-a-managed-identity-from-the-azure-marketplace-image-using-terraform"></a>Öğretici: Terrayform kullanarak Azure Marketi görüntüsünden yönetilen kimliğe sahip bir Linux VM oluşturma
 
-Bu makalede bir [Terraform Market görüntüsünü](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) kullanarak [Azure kaynakları için yönetilen kimlikler](/azure/active-directory/managed-service-identity/overview) ile yüklenmiş ve yapılandırılmış en son [Terraform](https://www.terraform.io/intro/index.html) sürümüne sahip bir Ubuntu Linux VM (16.04 LTS) oluşturmayı öğreneceksiniz. Bu görüntü ayrıca Terraform ile [uzak durum](https://www.terraform.io/docs/state/remote.html) yönetimi sağlamak için bir uzak arka uç da yapılandıracaktır. 
+Bu makalede bir [Terraform Market görüntüsünü](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) kullanarak [Azure kaynakları için yönetilen kimlikler](https://www.terraform.io/intro/index.html) ile yüklenmiş ve yapılandırılmış en son [Terraform](/azure/active-directory/managed-service-identity/overview) sürümüne sahip bir Ubuntu Linux VM (16.04 LTS) oluşturmayı öğreneceksiniz. Bu görüntü ayrıca Terraform ile [uzak durum](https://www.terraform.io/docs/state/remote.html) yönetimi sağlamak için bir uzak arka uç da yapılandıracaktır. 
 
 Terraform Market görüntüsü, Terraform'u el ile yükleme ve yapılandırmanıza gerek kalmadan Terraform'u Azure'da kullanmaya başlamanızı kolaylaştırır. 
 
@@ -99,4 +99,4 @@ VM 'yi oluşturduktan sonra aşağıdaki adımları uygulayın:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure 'da terrayform](/azure/ansible/)
+> [Azure 'da Terrayform kullanma hakkında daha fazla bilgi edinin](/azure/terraform)

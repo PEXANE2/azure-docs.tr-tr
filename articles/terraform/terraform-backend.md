@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: f024fd7886ec6f192c440cca6951e3aeb66ad22d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 11/07/2019
+ms.openlocfilehash: cb85897e0a7d281eca4ad3f42e8ef28c9e3fdb7b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177818"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833538"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Öğretici: Azure Storage 'da Terrayform durumunu depolama
 
@@ -57,7 +57,7 @@ Depolama hesabı adı, kapsayıcı adı ve depolama erişim anahtarı ' nı bir 
 
 `terraform init` komutu çalıştırılırken Terrayform durumu arka ucu yapılandırılır. durum arka ucunu yapılandırmak için aşağıdaki veriler gereklidir:
 
-- storage_account_name-Azure Storage hesabının adı.
+- storage_account_name-Azure depolama hesabının adı.
 - container_name-blob kapsayıcısının adı.
 - anahtar-oluşturulacak durum depolama dosyasının adı.
 - access_key-depolama erişim anahtarı.
@@ -125,4 +125,4 @@ Azure depolama şifrelemesi hakkında daha fazla bilgi için bkz. [bekleyen veri
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure 'da terrayform](/azure/ansible/)
+> [Azure 'da Terrayform kullanma hakkında daha fazla bilgi edinin](/azure/terraform)

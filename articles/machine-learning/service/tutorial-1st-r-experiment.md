@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: bcd1fff61e1612cc3361548527e5ed13affa3ba5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 9073893ebfcfea1a7f4e2a00bf82babcb8841122
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501375"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838514"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile ilk modelinizi eğitim ve dağıtma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -167,7 +167,7 @@ Bu öğreticide, uzaktan işlem kümenizi kullanarak karşıya yüklenen veriler
 Bu öğreticiyle aynı dizinde sizin için `accidents.R` adlı bir eğitim betiği sunulmaktadır. Eğitim için Azure ML hizmetinden yararlanmak üzere yapılan **eğitim betiği içinde** aşağıdaki ayrıntılara dikkat edin:
 
 * Eğitim betiği, eğitim verilerini içeren dizini bulmak için `-d` bir bağımsız değişken alır. İşinizi daha sonra tanımlayıp gönderdiğinizde, bu bağımsız değişken için veri deposuna işaret edersiniz. Azure ML, eğitim işi için depolama klasörünü uzak kümeye bağlayacaktır.
-* Eğitim betiği, `log_metric_to_run()`kullanarak Azure ML 'deki çalıştırma kaydına bir ölçüm olarak son doğruluğu günlüğe kaydeder. Azure ML SDK, eğitim çalıştırmaları sırasında çeşitli ölçümleri günlüğe kaydetmek için bir günlük API kümesi sağlar. Bu ölçümler, deneme çalıştırması kaydında kaydedilir ve kalıcı hale getirilir. Ölçümlere daha sonra istediğiniz zaman erişilebilir veya [Azure Machine Learning Studio](http://ml.azure.com)'daki çalıştırma ayrıntıları sayfasında görüntüleyebilirsiniz. `log_*()`günlük yöntemlerinin tamamına yönelik [başvuruya](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) bakın.
+* Eğitim betiği, `log_metric_to_run()`kullanarak Azure ML 'deki çalıştırma kaydına bir ölçüm olarak son doğruluğu günlüğe kaydeder. Azure ML SDK, eğitim çalıştırmaları sırasında çeşitli ölçümleri günlüğe kaydetmek için bir günlük API kümesi sağlar. Bu ölçümler, deneme çalıştırması kaydında kaydedilir ve kalıcı hale getirilir. Ölçümlere daha sonra istediğiniz zaman erişilebilir veya [Azure Machine Learning Studio](https://ml.azure.com)'daki çalıştırma ayrıntıları sayfasında görüntüleyebilirsiniz. `log_*()`günlük yöntemlerinin tamamına yönelik [başvuruya](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) bakın.
 * Eğitim betiği, modelinizi **çıktılar**adlı bir dizine kaydeder. `./outputs` klasörü, Azure ML tarafından özel bir işleme alır. Eğitim sırasında, `./outputs` yazılan dosyalar Azure ML tarafından çalıştırma kaydlarınıza otomatik olarak yüklenir ve yapıtlar olarak kalıcı hale getirilir. Eğitilen modeli `./outputs`kaydederek, çalışma bittikten sonra ve uzak eğitim ortamınıza artık erişiminiz olmadığında bile model dosyanıza erişebiliyor ve bu dosyayı alabilirsiniz.
 
 ### <a name="create-an-estimator"></a>Tahmin aracı oluşturma

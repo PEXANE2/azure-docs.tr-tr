@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 9724e54b03e5de065b8b39cb57c6a9880cf37cc6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e9ef939d46a02b8aa6b0b7f481fec9e30edf53fc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827204"
+ms.locfileid: "73839199"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell kullanarak Elastik İş aracısı oluşturma
 
@@ -34,7 +34,7 @@ Bu öğreticide, birden çok veritabanında bir sorgu çalıştırmak için gere
 > * Bir işin yürütülmesini başlatma
 > * Bir işi izleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Elastik Veritabanı işleri yükseltilen sürümünde, geçiş sırasında kullanılmak üzere yeni bir PowerShell cmdlet 'leri kümesi vardır. Bu yeni cmdlet 'ler, tüm mevcut iş kimlik bilgilerinizi, hedefleri (veritabanları, sunucular, özel koleksiyonlar dahil), iş Tetikleyicileri, iş zamanlamaları, iş içerikleri ve işleri yeni bir elastik Iş aracısına aktarır.
 
@@ -72,7 +72,7 @@ Elastik İş aracısı oluşturmak için [İş veritabanı](sql-database-job-aut
 
 *Aşağıdaki komut dosyası, Iş veritabanı olarak kullanılmak üzere yeni bir kaynak grubu, sunucu ve veritabanı oluşturur. Aşağıdaki komut dosyası, işleri yürütmek için iki boş veritabanı içeren ikinci bir sunucu da oluşturur.*
 
-Elastik İşlere özel adlandırma gereksinimleri olmadığından [Azure gereksinimlerine](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) uygun olduğu sürece istediğiniz adlandırma kuralını kullanabilirsiniz.
+Elastik İşlere özel adlandırma gereksinimleri olmadığından [Azure gereksinimlerine](/azure/architecture/best-practices/resource-naming) uygun olduğu sürece istediğiniz adlandırma kuralını kullanabilirsiniz.
 
 ```powershell
 # Sign in to your Azure account

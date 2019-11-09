@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici 1: kredi riskini tahmin etme'
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Studio klasik sürümünde kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü oluşturmayı gösteren ayrıntılı bir öğretici. Bu öğretici, üç bölümden oluşan bir öğretici serisinin bir parçasıdır.  Çalışma alanı oluşturma, verileri yükleme ve deneme oluşturma işlemlerinin nasıl yapılacağını gösterir.
 keywords: kredi riski, tahmine dayalı analiz çözümü, risk değerlendirmesi
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 78092bd4ad4da896cd2fd36768f181764335ee85
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e8c1eea097fc3ea2704acfae198eb493943b6ccf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619190"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838863"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Öğretici 1: kredi riskini tahmin etme-Azure Machine Learning Studio (klasik)
 
@@ -38,7 +38,7 @@ Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski ver
 
 Daha sonra bu denemeyi, 2. [bölüm içindeki modelleri eğmek](tutorial-part2-credit-risk-train.md) ve sonra [3. bölüm içinde dağıtmak](tutorial-part3-credit-risk-deploy.md)için kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, Machine Learning Studio (klasik) en az bir kez daha önce kullandığınızı ve makine öğrenimi kavramlarını kavradığınızı varsaymaktadır. Bununla birlikte, bir uzman olduğunuz da varsayılmaz.
 

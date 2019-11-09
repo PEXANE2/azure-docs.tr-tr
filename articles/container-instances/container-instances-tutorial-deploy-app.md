@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e14a3ba50d75161afa3325b3b7bcbfe96ea24cc3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f2890948dd15fa972104e4ef11001e83a2abd4f8
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325624"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73846591"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Öğretici: Azure Container Instances bir kapsayıcı uygulaması dağıtma
 
@@ -37,9 +37,11 @@ Bu bölümde, [birinci öğreticide](container-instances-tutorial-prepare-app.md
 
 ### <a name="get-registry-credentials"></a>Kayıt defteri kimlik bilgilerini alma
 
-[İkinci öğreticide](container-instances-tutorial-prepare-acr.md)oluşturulan gibi özel bir kapsayıcı kayıt defterinde barındırılan bir görüntüyü dağıtırken, kayıt defterine erişmek için kimlik bilgilerini sağlamalısınız. [Azure Container Instances Azure Container Registry kimlik doğrulaması](../container-registry/container-registry-auth-aci.md)sırasında gösterildiği gibi birçok senaryo için en iyi yöntem, Kayıt defterinize yönelik *çekme* izinleriyle bir Azure Active Directory hizmet sorumlusu oluşturmak ve yapılandırmaktır. Gerekli izinlere sahip bir hizmet sorumlusu oluşturmak için örnek betikler makalesine bakın. Hizmet sorumlusu KIMLIĞI ve hizmet sorumlusu parolasını göz önünde yararlanın. Kapsayıcıyı dağıtırken bu kimlik bilgilerini kullanırsınız.
+[İkinci öğreticide](container-instances-tutorial-prepare-acr.md)oluşturulan gibi özel bir Azure Container Registry 'de barındırılan bir görüntüyü dağıtırken, kayıt defterine erişmek için kimlik bilgilerini sağlamanız gerekir. 
 
-Ayrıca, kapsayıcı kayıt defteri oturum açma sunucusunun tam adına de ihtiyacınız vardır ( `<acrName>` kayıt defterinizin adıyla değiştirin):
+Birçok senaryo için en iyi yöntem, Kayıt defterinize yönelik *çekme* izinleriyle Azure Active Directory hizmet sorumlusu oluşturmak ve yapılandırmak olacaktır. Gerekli izinlere sahip bir hizmet sorumlusu oluşturmak için örnek betikler için [Azure Container Instances Azure Container Registry Ile kimlik doğrulama](../container-registry/container-registry-auth-aci.md) konusuna bakın. *Hizmet sorumlusu kimliği* ve *hizmet sorumlusu parolasını*göz önünde yararlanın. Bu kimlik bilgilerini, kapsayıcıyı dağıtırken kayıt defterine erişmek için kullanırsınız.
+
+Ayrıca, kapsayıcı kayıt defteri oturum açma sunucusunun tam adına de ihtiyacınız vardır (`<acrName>` kayıt defterinizin adıyla değiştirin):
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
@@ -47,7 +49,7 @@ az acr show --name <acrName> --query loginServer
 
 ### <a name="deploy-container"></a>Kapsayıcıyı dağıtma
 
-Şimdi, kapsayıcıyı dağıtmak için [az Container Create][az-container-create] komutunu kullanın. Önceki `<acrLoginServer>` komuttan elde ettiğiniz değerle değiştirin. `<service-principal-ID>` Ve`<service-principal-password>` kayıt defterine erişmek için oluşturduğunuz hizmet sorumlusu kimliği ve parolasıyla değiştirin. İstenen `<aciDnsLabel>` bir DNS adıyla değiştirin.
+Şimdi, kapsayıcıyı dağıtmak için [az Container Create][az-container-create] komutunu kullanın. `<acrLoginServer>`, önceki komuttan elde ettiğiniz değerle değiştirin. `<service-principal-ID>` ve `<service-principal-password>`, kayıt defterine erişmek için oluşturduğunuz hizmet sorumlusu KIMLIĞI ve parolasıyla değiştirin. `<aciDnsLabel>`, istenen bir DNS adıyla değiştirin.
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80

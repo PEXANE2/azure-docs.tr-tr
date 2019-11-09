@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici 3: Kredi risk modelini dağıtma'
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Studio klasik sürümünde kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü oluşturmayı gösteren ayrıntılı bir öğretici. Bu öğretici, üç bölümden oluşan bir öğretici serisinin üçüncü bölümüdür. Bir modelin Web hizmeti olarak nasıl dağıtılacağını gösterir.
 keywords: kredi riski, tahmine dayalı analiz çözümü, risk değerlendirmesi, dağıtma, Web hizmeti
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 0f4ee6cfebcb5edb38b1cc7a11b070dab5d2098c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 4e8e8a114a06029ef9a81d92b60afd575bc9661f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619007"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839497"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Öğretici 3: Kredi risk modelini dağıtma-Azure Machine Learning Studio (klasik)
 
@@ -40,7 +40,7 @@ Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski ver
 > * Web hizmetini yönetme
 > * Web hizmetine erişme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Öğreticinin ikinci bölümünü](tutorial-part2-credit-risk-train.md)doldurun.
 

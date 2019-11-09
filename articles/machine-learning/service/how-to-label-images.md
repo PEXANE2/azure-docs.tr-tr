@@ -7,23 +7,23 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: af12361ed11d0a16e5a5d0cfe5989bb3918ce154
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9cbebb905ba39dabaf905be2fa741702bd1a0088
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586400"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838950"
 ---
 # <a name="how-to-tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme
 
-Proje yöneticiniz Azure Machine Learning Studio 'da bir etiketleme projesi oluşturduktan sonra, bir makine öğrenimi projesi için hızlı bir şekilde veri hazırlamak üzere etiketleme aracını kullanabilirsiniz. 
+Proje yöneticiniz Azure Machine Learning bir etiketleme projesi oluşturduktan sonra, bir makine öğrenimi projesi için hızlı bir şekilde veri hazırlamak üzere etiketleme aracını kullanabilirsiniz. 
 
 > [!div class="checklist"]
 > * Etiketleme projelerinize erişme
 > * Etiketleme Araçları
 > * Belirli etiketleme görevleri için araçları kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Çalışan bir veri etiketleme projesi için etiketleme portalı URL 'SI
 * Bir [Microsoft hesabı](https://account.microsoft.com/account) veya
