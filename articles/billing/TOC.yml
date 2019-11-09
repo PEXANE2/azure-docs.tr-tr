@@ -5,8 +5,6 @@
   items:
     - name: Faturanızı anlama
       href: billing-understand-your-bill.md
-    - name: EA faturanızı anlama
-      href: billing-understand-your-bill-ea.md
     - name: Faturanızı anlama - Microsoft Müşteri Sözleşmesi
       href: billing-mca-understand-your-bill.md
     - name: Faturanızı anlama - Microsoft İş Ortağı Sözleşmesi
@@ -159,6 +157,8 @@
       items:
         - name: Azure EA portalını kullanmaya başlama
           href: billing-ea-portal-get-started.md
+        - name: EA faturanızı anlama
+          href: billing-understand-your-bill-ea.md
         - name: Azure'da EA rolleri
           href: billing-understand-ea-roles.md
         - name: Azure EA portalı yönetimi

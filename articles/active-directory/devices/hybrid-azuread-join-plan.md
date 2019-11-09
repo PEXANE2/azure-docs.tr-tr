@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66e583a75f7103a7cccf560d537e440ba47cae5a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c016ce349acdfff6145286d9fc07e08db4ed9516
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596331"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882824"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -30,7 +30,7 @@ Cihazlarınızı Azure AD'ye taşıyarak, çoklu oturum açma (SSO) özelliği s
 
 Şirket içi Active Directory (AD) ortamınız varsa ve AD alanına katılmış bilgisayarlarınızı Azure AD 'ye eklemek istiyorsanız, karma Azure AD katılımı yaparak bunu yapabilirsiniz. Bu makalede, ortamınızda karma Azure AD katılımı uygulamak için ilgili adımlar sağlanmaktadır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, [Azure Active Directory ' deki cihaz kimliği yönetimine giriş](../device-management-introduction.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
@@ -75,7 +75,7 @@ Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürü
 
 Ortamınız tek bir AD ormanından oluşuyorsa, kimlik verilerini birden çok Azure AD kiracısıyla eşitlerken karma Azure AD katılımı Şu anda desteklenmiyor.
 
-Ortamınız sanal masaüstü altyapısı (VDı) kullanıyorsa, bkz. [cihaz kimliği ve Masaüstü Sanallaştırması](https://docs.microsoft.com/en-us/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
+Ortamınız sanal masaüstü altyapısı (VDı) kullanıyorsa, bkz. [cihaz kimliği ve Masaüstü Sanallaştırması](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
 Karma Azure AD katılımı, FIPS uyumlu TPM 2,0 için desteklenir ve TPM 1,2 için desteklenmez. Cihazlarınızda FIPS uyumlu TPM 1,2 varsa, hibrit Azure AD JOIN ile devam etmeden önce bunları devre dışı bırakmanız gerekir. Microsoft, TPM üreticisine bağlı olduğundan, TPMs için FIPS modunu devre dışı bırakmaya yönelik herhangi bir araç sağlamaz. Destek için lütfen donanımınızın OEM 'nize başvurun. WIndows 10 1903 sürümünden itibaren, TPMs 1,2 karma Azure AD katılımı için kullanılmaz ve bu TPMs 'Leri içeren cihazlar TPM 'ye sahip olmadıkları sürece kabul edilir.
 
@@ -124,7 +124,7 @@ Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağla
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
+> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
 
 > [!NOTE]
 > Azure AD, yönetilen etki alanlarında akıllı kartlar veya sertifikaları desteklemez.
@@ -155,8 +155,8 @@ Aşağıdaki tabloda, Windows 10 karma Azure AD 'ye yönelik bu şirket içi AD 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Federasyon ortamında karma Azure Active Directory katılmayı yapılandırma](hybrid-azuread-join-federated-domains.md)
-> [yönetilen ortam için karma Azure Active Directory birleştirmesini yapılandırın](hybrid-azuread-join-managed-domains.md)
+> [Federasyon ortamına yönelik karma Azure Active Directory katılmayı yapılandırın](hybrid-azuread-join-federated-domains.md)
+> [yönetilen ortama yönelik karma Azure Active Directory birleştirmesini yapılandırın](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

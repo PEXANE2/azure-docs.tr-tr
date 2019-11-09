@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac1b75536e092203490a390860a1cead7ac333b7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0398ff7eb8931acc400b326ff92deaf75f0aa97e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817985"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882832"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync ile parola karması eşitlemesini uygulama
 Bu makale, Kullanıcı parolalarınızı şirket içi Active Directory örneğinden bulut tabanlı Azure Active Directory (Azure AD) örneğine eşitlemeniz için gereken bilgileri sağlar.
@@ -32,7 +32,7 @@ Parolanızı eşitlemek için Azure AD Connect eşitleme, parola karmalarınız�
 
 Parola karması eşitleme işleminin gerçek veri akışı, Kullanıcı verilerinin eşitlenmesine benzerdir. Ancak, parolalar diğer özniteliklerin standart dizin eşitleme penceresinden daha sık eşitlenir. Parola karması eşitleme işlemi her 2 dakikada bir çalışır. Bu işlemin sıklığını değiştiremezsiniz. Bir parolayı eşitlediğinizde, mevcut bulut parolasının üzerine yazar.
 
-Parola karması eşitleme özelliğini ilk kez etkinleştirdiğinizde, tüm kapsamdaki kullanıcıların parolalarının ilk eşitlemesini gerçekleştirir. Eşitlenmesi istediğiniz kullanıcı parolalarının bir alt kümesini açıkça tanımlayamazsınız. Ancak, birden çok bağlayıcı varsa, bazı bağlayıcılar için parola karma eşitlemesini devre dışı bırakmak mümkündür ancak [set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) cmdlet 'ini kullanarak diğerlerine uygulanmaz.
+Parola karması eşitleme özelliğini ilk kez etkinleştirdiğinizde, tüm kapsamdaki kullanıcıların parolalarının ilk eşitlemesini gerçekleştirir. Eşitlenmesi istediğiniz kullanıcı parolalarının bir alt kümesini açıkça tanımlayamazsınız. Ancak, birden çok bağlayıcı varsa, bazı bağlayıcılar için parola karma eşitlemesini devre dışı bırakmak mümkündür ancak [set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) cmdlet 'ini kullanarak diğerlerine uygulanmaz.
 
 Şirket içi bir parolayı değiştirdiğinizde, güncelleştirilmiş parola genellikle birkaç dakika içinde eşitlenir.
 Parola karması eşitleme özelliği başarısız eşitleme girişimlerini otomatik olarak yeniden dener. Parolayı eşitlemeye çalışırken bir hata oluşursa, olay görüntüleyiciniz bir hata günlüğe kaydedilir.

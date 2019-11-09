@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a77c0e38db06698e714c3d0c3df0d9a5f028787b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71672947"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891412"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -128,7 +128,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
             - Oracle Linux 7,5. RHCKL çekirdeğini kullanıyorsanız, 3.10.0-862.13.1. EL7 sürümü gerekir. Oracle UEK çekirdeğini kullanıyorsanız sürüm 5 gerekir.
         - Sap destek notlarına [#500235](https://launchpad.support.sap.com/#/notes/500235) ve [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)göre SAP uygulama KATMANı VM 'leri ve DBMS VM 'ler arasındaki ağ gecikmesini test edin ve değerlendirin. [Sap desteği not#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)ağ gecikmesi yönergelerine karşı sonuçları değerlendirin. Ağ gecikmesi orta veya iyi bir aralıkta olmalıdır. [Bu makalede](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)belgelendiği gibi, VM 'ler ve Hana büyük örnek birimleri arasındaki trafik için özel durumlar geçerlidir.
         - ILB dağıtımlarının doğrudan sunucu dönüşü kullanacak şekilde ayarlandığından emin olun. Bu ayar, DBMS katmanında yüksek kullanılabilirlik yapılandırmalarında Azure ılbs 'ler kullanıldığında gecikme süresini azaltır.
-        - Linux konuk işletim sistemleriyle birlikte Azure Load Balancer kullanıyorsanız, **net. IPv4. TCP _Zaman damgaları** Linux ağ parametresinin **0**olarak ayarlandığından emin olun. Bu öneri, daha eski [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)sürümlerindeki önerilerle çakışıyor. SAP Note artık bu parametrenin Azure yük dengeleyiciler ile çalışması için **0** olarak ayarlanması gerektiğini belirten bir durum olarak güncelleştirilir.
+        - Linux konuk işletim sistemleriyle birlikte Azure Load Balancer kullanıyorsanız, **net. IPv4. Tcp_timestamps** Linux ağ parametresinin **0**olarak ayarlandığını kontrol edin. Bu öneri, daha eski [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)sürümlerindeki önerilerle çakışıyor. SAP Note artık bu parametrenin Azure yük dengeleyiciler ile çalışması için **0** olarak ayarlanması gerektiğini belirten bir durum olarak güncelleştirilir.
         - En iyi ağ gecikmesini sağlamak için [Azure yakınlık yerleştirme gruplarını](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) kullanmayı düşünün. Daha fazla bilgi için bkz. [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md).
    4. Yüksek kullanılabilirlik ve olağanüstü durum kurtarma dağıtımları.
         - SAP uygulama katmanını belirli bir Azure kullanılabilirlik bölgesi belirtmeden dağıtırsanız, SAP iletişim kutusu örnekleri veya tek bir SAP sisteminin ara yazılım örneklerini çalıştıran tüm VM 'Lerin bir [kullanılabilirlik kümesinde](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)dağıtıldığından emin olun.
@@ -160,7 +160,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
    1.  [Ağ güvenlik grubu ve ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) kurallarının beklenen şekilde çalıştığını ve korunan kaynakları koruduğuna emin olun.
    1.  Şifrelenmesi gereken tüm kaynakların şifrelendiğinden emin olun. Sertifikaları yedeklemek, bu sertifikaları depolamak ve erişmek ve şifrelenmiş varlıkları geri yüklemek için süreçler tanımlayın ve uygulayın.
    1.  Bir işletim sistemi destek noktasından mümkün olduğunda, işletim sistemi diskleri için [Azure disk şifrelemesi](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) kullanın.
-   1.  Çok fazla şifreleme katmanı kullandığınızdan emin olun. Bazı durumlarda, Azure disk şifrelemesi 'ni, DBMS Saydam Veri Şifrelemesi yöntemlerinden biri ile birlikte kullanmak mantıklı olur.
+   1.  Çok fazla şifreleme katmanı kullandığınızdan emin olun. Bazı durumlarda, aynı sunucudaki farklı diskleri veya bileşenleri korumak için, DBMS Saydam Veri Şifrelemesi yöntemlerinden biriyle birlikte Azure disk şifrelemesi 'ni kullanmak mantıklı değildir.  Örneğin, bir SAP DBMS sunucusunda Azure disk şifrelemesi (ADE) işletim sistemi önyükleme diskinde etkinleştirilebilir (IŞLETIM sistemi ADE 'yi destekliyorsa) ve bu veri diskleri DBMS veri Kalıcılık dosyaları tarafından kullanılmaz.  Örnek, DBMS TDE şifreleme anahtarlarını tutan diskte ADE 'yi kullanmaktır.
 1. Performans testi. SAP, SAP izleme ve ölçümlerine bağlı olarak şu karşılaştırmaları yapın:
    - Uygun olduğunda, ilk 10 çevrimiçi raporu geçerli uygulamanız ile karşılaştırın.
    - Uygun olduğunda, ilk 10 toplu işi geçerli uygulamanız ile karşılaştırın.

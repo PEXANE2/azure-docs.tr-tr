@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6cdebb8f6abea2b50dd8aad58ccc9fb5e680cba9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 635431fb87e5f164f92ab4b7a1027ee96e9d801a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798485"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891022"
 ---
 # <a name="generate-maps"></a>Haritalar oluştur
 
@@ -170,7 +170,7 @@ SOIL nemi, SOIL parçacıkları arasındaki boşlukların tutulduğu su. SOIL 
 SOIL Moisture heatmap oluşturmayı denemeden önce aşağıdakileri doğrulayın:
 
 - En az üç Soil nemi sensörünün dağıtılması gerekir. Microsoft, algılayıcılar dağıtılmadan ve grupla ilişkilendirilmeden önce bir SOIL Moisture Haritası oluşturmayı denemenize olanak önerir.  
-- En az bir adet bulut ücretsiz Sentinel görünümü, son 120 gün için, SOIL Moisture eşlemesinin istendiği günden kullanılabilir olmalıdır.
+- SOIL Moisture heatmap, Sentinel 'in yol kapsamı, bulut kapağı ve bulut gölgesi tarafından etkilenir. En az bir adet bulut ücretsiz Sentinel görünümü, son 120 gün için, SOIL Moisture eşlemesinin istendiği günden kullanılabilir olmalıdır.
 - Grupta dağıtılan sensörların en az yarısı çevrimiçi olmalıdır ve veri merkezine veri akışı olmalıdır.
 - Heatmap 'in aynı sağlayıcıdan gelen algılayıcı ölçüleri kullanılarak oluşturulması gerekir.
 
@@ -220,6 +220,6 @@ Aşağıdaki adımları kullanın:
 4. Grup, tarih, Oluşturulma tarihi, Iş KIMLIĞI ve Iş türüne göre sıralamak için tablo üst bilgilerinin yanındaki **sıralama** simgesini seçin.
 5. Sayfanın sonundaki gezinti düğmelerini kullanarak kullanılabilir haritalar listesinde gezinin.
 6. Görüntülemek istediğiniz haritayı seçin. Bir açılır pencere, seçilen haritanın önizlemesini görüntüler.
-7. İndirme biçimini seçmek için **İndir** açılan menüsünü seçin ve eşleme indirilip bilgisayarınızın yerel klasörüne depolanır.
+7. İndirme biçimini seçmek için **İndir** açılan menüsünü seçin ve eşleme indirilip belirtilen klasöre depolanır.
 
     ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)

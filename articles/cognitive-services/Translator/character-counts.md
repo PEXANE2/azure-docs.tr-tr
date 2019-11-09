@@ -1,7 +1,7 @@
 ---
 title: Karakter sayıları-Translator Metin Çevirisi API'si
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si karakterleri nasıl sayar.
+description: Bu makalede, Azure bilişsel hizmetler 'in içeriği nasıl saydığını anlayabilmeniz için karakterlerin kaç tanesinin Translator Metin Çevirisi API'si olduğu açıklanmaktadır.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: e3a16d9272e75f9a94f5381c1681c036d177e0f6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cb70b8624ac0d909511032622948f14f8764b153
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595993"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888156"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>Translator Metin Çevirisi API'si karakterlerin sayısı
 
@@ -24,11 +24,11 @@ Translator Metin Çevirisi API'si, giriş metninin her Unicode kod noktasını b
 Hangi sayımlar şunlardır:
 
 * İsteğin gövdesinde Translator Metin Çevirisi API'si geçirilen metin
-   * `Text`Çeviri, alfabe ve sözlük arama yöntemlerini kullanırken
-   * `Text``Translation` sözlük örnekleri yöntemi kullanılırken
-* Tüm biçimlendirmeler: HTML, XML etiketleri, vb. istek gövdesinin metin alanı içinde. İsteği oluşturmak için kullanılan JSON gösterimi (örneğin, "metin:") sayılmaz.
+   * Çeviri, alfabe ve sözlük arama yöntemlerini kullanırken `Text`
+   * Sözlük örnekleri metodunu kullanırken `Text` ve `Translation`
+* Tüm biçimlendirme: HTML, XML etiketleri, vb. istek gövdesinin metin alanı içinde. İsteği oluşturmak için kullanılan JSON gösterimi (örneğin, "metin:") sayılmaz.
 * Tek bir harf
-* Noktalama işaretleri
+* edilen
 * Boşluk, sekme, biçimlendirme ve her türlü boşluk karakteri
 * Unicode 'da tanımlanan her kod noktası
 * Daha önce aynı metni çevirseniz bile yinelenen çeviri

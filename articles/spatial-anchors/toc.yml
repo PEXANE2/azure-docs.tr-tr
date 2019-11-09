@@ -86,7 +86,7 @@
 - name: Kaynaklar
   items:
     - name: Azure Karma Gerçeklik Kaynak Yönetimi REST API’si
-      href: 'https://docs.microsoft.com/en-us/rest/api/mixedreality/'
+      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
     - name: SSS
       href: spatial-anchor-faq.md
     - name: Ürün Geri Bildirimi Sağlama

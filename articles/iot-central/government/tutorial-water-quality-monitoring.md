@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 94e8695e01ca5e5c456ce230c4cc84b41685fd9c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 51c84410de39516312d2058eeda575023dbe32ab
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026537"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890777"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-iot-central"></a>Öğretici: IoT Central bir su kalite izleme uygulaması oluşturma
 
@@ -33,7 +33,7 @@ Bu öğreticide şunları öğreneceksiniz:
 > * Beyaz etiketleme kullanarak uygulama markanızı özelleştirme
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 -  Bir Azure aboneliği önerilir. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
@@ -64,7 +64,7 @@ Yeni bir Azure IoT Central su kalite izleme uygulaması oluşturmak için:
     * **URL** : isteğe bağlı olarak, istediğiniz URL 'yi seçebilirsiniz. URL 'YI daha sonra değiştirebilirsiniz. 
     * Azure aboneliğiniz varsa *dizininizi, Azure aboneliğinizi ve bölgenizi*girin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
 
-    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../preview/quick-deploy-iot-central.md).
 
 5. Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın. 
 

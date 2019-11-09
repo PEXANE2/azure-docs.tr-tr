@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 7a85ed93d9ee01255d809cce84ebe24e6c3f71d1
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: e90284ce2f8ea37eb9249822e38cef04e1356f59
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847406"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889573"
 ---
 # <a name="sensor-partner-integration"></a>Algılayıcı iş ortağı tümleştirmesi
 
@@ -79,7 +79,7 @@ Farmtts veri hub 'ı, aşağıdaki kimlik bilgilerini gerektiren taşıyıcı ki
 
 Yukarıdaki kimlik bilgilerini kullanarak, çağıran, üstbilgi bölümündeki sonraki API isteklerinde gönderilmesi gereken bir erişim belirteci isteğinde bulunabilir:
 
-```
+```json
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
@@ -124,14 +124,14 @@ REST (temsili durum aktarımı) API isteği oluşturmak için, HTTP (GET, POST v
 
 Aşağıdaki örnek istek, cihazların listesini almak için gereklidir:
 
-```
+```azurepowershell-interactive
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 Çoğu GET, POST ve PUT çağrısı, bir JSON istek gövdesi gerektirir.
 
 Aşağıdaki örnek istek bir cihaz oluşturmaktır (Bu örnek, istek gövdesi ile bir JSON girişi içerir).
 
-```
+```azurepowershell-interactive
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -241,7 +241,7 @@ write_client.stop()
 
 Kurallı ileti biçimi aşağıdaki gibidir:
 
-```
+```json
 {
 “deviceid”: “<id of the Device created>”,
  "timestamp": "<timestamp in ISO 8601 format>",
@@ -269,7 +269,7 @@ Telemetri JSON 'ındaki tüm anahtar adları, örneğin, DeviceID, sensordata vb
 Örneğin, telemetri iletisi:
 
 
-```
+```json
 {
   "deviceid": "7f9b4b92-ba45-4a1d-a6ae-c6eda3a5bd12",
   "timestamp": "2019-06-22T06:55:02.7279559Z",

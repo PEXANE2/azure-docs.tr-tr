@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: e2e829fba9846c2429e362903f5ce49b9344e1bd
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672623"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889852"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure güvenlikle ilgili en iyi deneyimler ve modeller
 
@@ -28,7 +28,7 @@ Aşağıdaki makaleler, Azure kullanarak bulut çözümlerinizi tasarlarken, da�
 
 En iyi uygulamalar BT profesyonelleri için bir kaynak olmak üzere tasarlanmıştır. Bu, güvenli Azure çözümleri oluşturup dağıtan tasarımcılar, mimarlar, geliştiriciler ve test ediciler içerebilir.
 
-* [Azure sınır güvenlik en iyi uygulamaları](https://docs.microsoft.com/en-us/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
+* [Azure sınır güvenlik en iyi uygulamaları](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
 * [Azure veritabanı en iyi güvenlik uygulamaları](database-best-practices.md)
 * [Azure veri güvenliği ve şifreleme en iyi uygulamaları](data-encryption-best-practices.md)
 * [Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları](identity-management-best-practices.md)

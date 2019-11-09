@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 21f55805e0486d987922a1aa160f2938f3a50155
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5acfb60395f39d17e640e389ae2a28e220ccfae6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792431"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884285"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı başlangıç: portalda bir Azure Bilişsel Arama hizmeti oluşturma
 
 Azure Bilişsel Arama, özel uygulamalara bir arama deneyimi eklemek için kullanılan tek başına kaynaktır. Azure Bilişsel Arama diğer Azure hizmetleriyle kolayca tümleştirilebilse de, bunu tek başına bir bileşen olarak kullanabilir veya ağ sunucularındaki uygulamalarla veya diğer bulut platformlarında çalışan yazılımlarla tümleştirebilirsiniz.
 
-Bu makalede, [Azure Portal](https://portal.azure.com/)Azure bilişsel arama kaynağı oluşturmayı öğrenin.
+Bu makalede [Azure Portal](https://portal.azure.com/)kaynak oluşturmayı öğrenin.
 
 [![animasyonlu GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -33,28 +33,30 @@ Alternatif olarak, [MSDN abone avantajlarınızı etkinleştirin](https://azure.
 
 ## <a name="find-azure-cognitive-search"></a>Azure Bilişsel Arama bulun
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Sol üst köşedeki artı işaretine ("+ kaynak oluştur") tıklayın.
 3. "Azure Bilişsel Arama" bulmak için arama çubuğunu kullanın veya **Web** > **Azure bilişsel arama**aracılığıyla kaynağa gidin.
 
-![Azure Bilişsel Arama kaynağına gitme](./media/search-create-service-portal/find-search3.png "Azure Bilişsel Arama gezinti yolu")
+![Portalda kaynak oluşturma](./media/search-create-service-portal/find-search3.png "Portalda kaynak oluşturma")
 
-## <a name="select-a-subscription"></a>Abonelik seçme
+## <a name="choose-a-subscription"></a>Abonelik seçin
 
-Birden fazla aboneliğiniz varsa, veri veya dosya depolama hizmetleri de içeren bir abonelik seçin. Azure Bilişsel Arama, Azure Tablo ve BLOB depolama, SQL veritabanı ve Dizin [*oluşturucular*](search-indexer-overview.md)aracılığıyla Dizin oluşturma için Azure Cosmos DB, ancak yalnızca aynı abonelik kapsamındaki hizmetler için otomatik olarak açabilir.
+Abonelik KIMLIĞINI ve kaynak grubunu ayarlama ilk adımdır. Birden fazla aboneliğiniz varsa, veri veya dosya depolama hizmetleri de içeren bir abonelik seçin. Azure Bilişsel Arama, Azure Tablo ve BLOB depolama, SQL veritabanı ve Dizin [*oluşturucular*](search-indexer-overview.md)aracılığıyla Dizin oluşturma için Azure Cosmos DB, ancak yalnızca aynı abonelik kapsamındaki hizmetler için otomatik olarak açabilir.
 
 ## <a name="set-a-resource-group"></a>Kaynak grubu ayarlama
 
-Kaynak grubu gereklidir ve maliyet yönetimi dahil olmak üzere kaynakları yönetmek için faydalıdır. Bir kaynak grubu, bir hizmetten veya birlikte kullanılan birden fazla hizmetten oluşabilir. Örneğin, Azure Cosmos DB bir veritabanının dizinini oluşturmak için Azure Bilişsel Arama kullanıyorsanız, her iki hizmeti de yönetim amaçlarıyla aynı kaynak grubunun parçası yapabilirsiniz. 
+Kaynak grubu gereklidir ve maliyetler dahil olmak üzere kaynakları yönetmek için faydalıdır. Bir kaynak grubu, bir hizmetten veya birlikte kullanılan birden fazla hizmetten oluşabilir. Örneğin, Azure Cosmos DB bir veritabanının dizinini oluşturmak için Azure Bilişsel Arama kullanıyorsanız, her iki hizmeti de yönetim amaçlarıyla aynı kaynak grubunun parçası yapabilirsiniz. 
 
 Kaynakları tek bir grupta birleştirmemişse veya mevcut kaynak grupları ilişkisiz çözümlerde kullanılan kaynaklarla doldurulduysa, yalnızca Azure Bilişsel Arama kaynağınız için yeni bir kaynak grubu oluşturun. 
 
-Hizmeti kullanırken, geçerli ve tasarlanan maliyetleri (ekran görüntüsünde gösterildiği gibi) izleyebilir veya tek tek kaynakların ücretlerini görüntülemek için aşağı kaydırın.
+![Yeni bir kaynak grubu oluşturun](./media/search-create-service-portal/new-resource-group.png "Yeni bir kaynak grubu oluşturma")
+
+Zaman içinde, geçerli ve tahmini maliyetlerin tümünü izleyebilirsiniz (ekran görüntüsünde gösterildiği gibi) veya tek tek kaynakların ücretlerini görüntülemek için aşağı kaydırın. Aşağıdaki ekran görüntüsünde, en sonunda birden çok kaynağı tek bir grupta birleştirdiğinizde görmeyi bekletirebileceğiniz maliyet bilgilerinin türü gösterilmektedir.
 
 ![Kaynak grubu düzeyinde maliyetleri yönetin](./media/search-create-service-portal/resource-group-cost-management.png "Kaynak grubu düzeyinde maliyetleri yönetin")
 
 > [!TIP]
-> Bir kaynak grubu silindiğinde, o kaynak grubunun içindeki hizmetler de silinir. Birden fazla hizmet kullanan prototip projeler için, tüm bunların aynı kaynak grubuna yerleştirilmesi, proje bittikten sonra temizleme işlemini kolaylaştırır.
+> Kaynak grupları temizleme işlemini basitleştirir çünkü bir grup silindiğinde aynı zamanda içindeki hizmetler de silinir. Birden fazla hizmet kullanan prototip projeler için, tüm bunların aynı kaynak grubuna yerleştirilmesi, proje bittikten sonra temizleme işlemini kolaylaştırır.
 
 ## <a name="name-the-service"></a>Hizmeti adlandırın
 
@@ -77,7 +79,7 @@ Bir Azure hizmeti olarak Azure Bilişsel Arama dünyanın dört bir yanındaki v
 
 Birden fazla hizmet için aynı konumu seçerek bant genişliği ücretlerini en aza indirebilir veya önleyebilirsiniz. Örneğin, başka bir Azure hizmeti (Azure depolama, Azure Cosmos DB, Azure SQL veritabanı) tarafından sağlanmış olan verileri dizinlendirirken, Azure Bilişsel Arama hizmetinizi aynı bölgede oluşturmak bant genişliği ücretlenmesini önler (giden veriler için bir ücret alınmaz Hizmetler aynı bölgedeyse).
 
-Ek olarak, bilişsel arama AI 'nin zenginleştirme kullanıyorsanız, hizmetinizi bilişsel hizmetler kaynağınız ile aynı bölgede oluşturun. *Azure bilişsel arama ve bilişsel hizmetler 'in aynı bölgedeki birlikte bulunması, AI zenginleştirme için bir gereksinimdir*.
+Ayrıca, AI zenginleştirme kullanıyorsanız, hizmetinizi bilişsel hizmetler ile aynı bölgede oluşturun. *Azure bilişsel arama ve bilişsel hizmetler 'in aynı bölgedeki birlikte bulunması, AI zenginleştirme için bir gereksinimdir*.
 
 > [!Note]
 > Orta Hindistan, yeni hizmetler için şu anda kullanılamıyor. Zaten Orta Hindistan olan hizmetler için, kısıtlama olmadan ölçeği ölçeklendirebilirsiniz ve hizmetiniz bu bölgede tam olarak desteklenmektedir. Bu bölgedeki kısıtlama geçicidir ve yalnızca yeni hizmetlerle sınırlıdır. Kısıtlama artık geçerli olmadığında bu notun kaldırılması gerekir.
@@ -104,9 +106,9 @@ Hizmetiniz, Azure bildirimleri aracılığıyla izleyebilmeniz için dakikalar i
 
 Portalı kullanmıyorsanız, yeni hizmetinize programlı erişim, URL uç noktasını ve bir kimlik doğrulama API anahtarı sağlamanızı gerektirir.
 
-1. Hizmete genel bakış sayfasında, sayfanın sağ tarafındaki URL uç noktasını bulup kopyalayın.
+1. **Genel bakış** sayfasında, sayfanın sağ tarafındaki URL uç noktasını bulup kopyalayın.
 
-2. Sol gezinti bölmesinde **anahtarlar** ' ı seçin ve ardından Yönetici anahtarlarından birini kopyalayın (eşdeğerdir). Yönetim API 'si-hizmetinize nesneleri oluşturmak, güncelleştirmek ve silmek için anahtarlar gereklidir.
+2. **Anahtarlar** sayfasında, yönetici anahtarlarından birini (eşdeğerdir) kopyalayın. Yönetim API 'si-hizmetinize nesneleri oluşturmak, güncelleştirmek ve silmek için anahtarlar gereklidir. Buna karşılık sorgu anahtarları, Dizin içeriğine okuma erişimi sağlar.
 
    ![URL uç noktası ile hizmete genel bakış sayfası](./media/search-create-service-portal/get-url-key.png "URL uç noktası ve diğer hizmet ayrıntıları")
 
@@ -151,7 +153,7 @@ Yüksek düzeyde kullanılabilirlik için ikinci bir hizmet gerekmez. Aynı hizm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir Azure Bilişsel Arama hizmeti sağlamaktan sonra, ilk dizininizi oluşturmak için portalda devam edebilirsiniz.
+Bir hizmet sağlamaktan sonra, ilk dizininizi oluşturmak için portalda devam edebilirsiniz.
 
 > [!div class="nextstepaction"]
 > [Hızlı başlangıç: portalda Azure Bilişsel Arama dizini oluşturma](search-get-started-portal.md)

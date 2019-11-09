@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f6d1987012cb401d7167896d9352ba7eae821a04
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208010"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887981"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry’de coğrafi çoğaltma
 
@@ -35,7 +35,7 @@ Contoso, ABD, Kanada ve Avrupa 'Da bulunan bir genel varlık Web sitesi çalış
 
 Geliştirme ekibi, Batı ABD veri merkezini kullanarak Seattle WA 'da bulunur.
 
-![Birden çok kayıt defterlerine iletme](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Birden çok kayıt defterlerine iletme*
+birden çok kayıt defterlerine ![](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Birden çok kayıt defterlerine iletme*
 
 Contoso, coğrafi çoğaltma özelliklerini kullanmadan önce Batı Avrupa ek bir kayıt defteriyle Batı ABD içinde ABD tabanlı kayıt defterine sahipti. Bu farklı bölgelere hizmeti sağlamak için, geliştirme ekibi görüntüleri iki farklı kayıt defterine gönderdi.
 
@@ -43,7 +43,7 @@ Contoso, coğrafi çoğaltma özelliklerini kullanmadan önce Batı Avrupa ek bi
 docker push contoso.azurecr.io/public/products/web:1.2
 docker push contosowesteu.azurecr.io/public/products/web:1.2
 ```
-![Birden çok kayıt defterlerinden çekme](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*Birden çok kayıt defterlerinden çekme*
+![birden çok kayıt defterlerinden çekiliyor](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*Birden çok kayıt defterlerinden çekme*
 
 Birden çok kayıt defterlerinin tipik sorunları şunlardır:
 
@@ -58,8 +58,8 @@ Birden çok kayıt defterlerinin tipik sorunları şunlardır:
 
 Azure Container Registry coğrafi çoğaltma özelliğini kullanarak bu avantajlar gerçekleştirilir:
 
-* Tüm bölgelerde tek bir kayıt defterini yönetme:`contoso.azurecr.io`
-* Tüm bölgeler aynı görüntü URL 'sini kullandığı için tek bir görüntü dağıtımı yapılandırmasını yönetin:`contoso.azurecr.io/public/products/web:1.2`
+* Tüm bölgelerde tek bir kayıt defterini yönetme: `contoso.azurecr.io`
+* Tüm bölgeler aynı görüntü URL 'sini kullandığı için tek bir görüntü dağıtımı yapılandırmasını yönetme: `contoso.azurecr.io/public/products/web:1.2`
 * Tek bir kayıt defterine göndererek ACR, Coğrafi çoğaltmayı yönetir. Bölgesel [Web kancalarını](container-registry-webhook.md) belirli çoğaltmalarda olayları bilgilendirmek üzere yapılandırabilirsiniz.
 
 ## <a name="configure-geo-replication"></a>Coğrafi çoğaltmayı yapılandırma
@@ -70,7 +70,7 @@ Coğrafi çoğaltma yalnızca [Premium kayıt defterlerinin](container-registry-
 
 ![Azure portal SKU 'Ları değiştirme](media/container-registry-skus/update-registry-sku.png)
 
-Premium kayıt defteriniz için Coğrafi çoğaltmayı yapılandırmak üzere, konumundaki https://portal.azure.com Azure Portal oturum açın.
+Premium kayıt defteriniz için Coğrafi çoğaltmayı yapılandırmak üzere https://portal.azure.comAzure portal oturum açın.
 
 Azure Container Registry gidin ve **çoğaltmalar**' ı seçin:
 
@@ -121,13 +121,13 @@ Yukarıdaki örnekte, contoso iki kayıt, Doğu ABD, Kanada Orta ve Batı Avrupa
  
 Bir görüntüyü coğrafi olarak çoğaltılan bir kayıt defterine ileten bir Docker istemcisi, tüm görüntü katmanlarını ve bildirimini tek bir çoğaltılan bölgeye gönderemeyebilir. Azure Traffic Manager kayıt defteri isteklerini ağa en yakın çoğaltılan kayıt defterine yönlendirtiğinden bu durum oluşabilir. Kayıt defterinde *yakın* iki çoğaltma bölgesi varsa, görüntü katmanları ve bildirim iki siteye dağıtılabilir ve bildirim doğrulandığında gönderme işlemi başarısız olur. Bu sorun, bazı Linux konaklarındaki kayıt defteri DNS adının çözümlenme yöntemi nedeniyle oluşur. Bu sorun, istemci tarafı DNS önbelleği sağlayan Windows üzerinde oluşmaz.
  
-Bu sorun oluşursa, bir çözüm, Linux ana bilgisayarına gibi `dnsmasq` bir istemci tarafı DNS önbelleğinin uygulanmasından biridir. Bu, kayıt defteri adının tutarlı bir şekilde çözümlendiğinden emin olmanıza yardımcı olur. Azure 'da bir kayıt defterine göndermek için bir Linux VM kullanıyorsanız, bkz. [Azure 'Da Linux sanal makineleri Için DNS ad çözümleme seçenekleri](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns)seçenekleri.
+Bu sorun oluşursa, bir çözüm, Linux ana bilgisayarında `dnsmasq` gibi bir istemci tarafı DNS önbelleğinin uygulanmasından biridir. Bu, kayıt defteri adının tutarlı bir şekilde çözümlendiğinden emin olmanıza yardımcı olur. Azure 'da bir kayıt defterine göndermek için bir Linux VM kullanıyorsanız, bkz. [Azure 'Da Linux sanal makineleri Için DNS ad çözümleme seçenekleri](https://docs.microsoft.com/azure/virtual-machines/linux/azure-dns)seçenekleri.
 
 Görüntüleri gönderirken en yakın çoğaltma ile DNS çözümlemesini iyileştirmek için, çekme işlemlerinin kaynağıyla aynı Azure bölgelerinde coğrafi olarak çoğaltılan bir kayıt defteri veya Azure dışında çalışırken en yakın bölgeyi yapılandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Container Registry coğrafi çoğaltma](container-registry-tutorial-prepare-registry.md)olmak üzere üç parçalı öğretici serisine göz atın. Coğrafi olarak çoğaltılan bir kayıt defteri oluşturma, kapsayıcı oluşturma ve daha sonra kapsayıcı örnekleri için birden çok bölgesel Web Apps `docker push` tek bir komutla dağıtma adımları.
+[Azure Container Registry coğrafi çoğaltma](container-registry-tutorial-prepare-registry.md)olmak üzere üç parçalı öğretici serisine göz atın. Coğrafi olarak çoğaltılan bir kayıt defteri oluşturma, kapsayıcı oluşturma ve ardından kapsayıcı örnekleri için birden çok bölgesel Web Apps ile tek bir `docker push` komutuyla dağıtma adımları.
 
 > [!div class="nextstepaction"]
 > [Azure Container Registry coğrafi çoğaltma](container-registry-tutorial-prepare-registry.md)

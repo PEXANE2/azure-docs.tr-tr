@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 11/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24b7f05bc59f3eb951897f5e36030b531d8f3aa9
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 5271b14ec008579d18a152a229b9768339927bb7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959089"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888856"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Azure dijital TWINS 'de Kullanıcı tanımlı işlevler oluşturma
 
@@ -44,7 +44,7 @@ Eşleştiriciler, belirli bir telemetri iletisi için hangi kullanıcı tanıml�
   - `SensorDevice`
   - `SensorSpace`
 
-Aşağıdaki örnek Eşleştiricisi, veri türü değeri olarak `"Temperature"` olan herhangi bir algılayıcı telemetri olayında doğru olarak değerlendirilir. Kimliği doğrulanmış bir HTTP POST isteği yaparak, Kullanıcı tanımlı bir işlevde birden fazla eşleşme oluşturabilirsiniz:
+Aşağıdaki örnek Eşleştiricisi, veri türü değeri olarak `"Temperature"` tüm algılayıcı telemetri olaylarından doğru olarak değerlendirilir. Kimliği doğrulanmış bir HTTP POST isteği yaparak, Kullanıcı tanımlı bir işlevde birden fazla eşleşme oluşturabilirsiniz:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/matchers
@@ -54,24 +54,26 @@ JSON gövdesi ile:
 
 ```JSON
 {
-  "Name": "Temperature Matcher",
-  "Conditions": [
+  "id": "3626464-f39b-46c0-d9b0c-436aysj55",
+  "name": "Temperature Matcher",
+  "spaceId": "YOUR_SPACE_IDENTIFIER",
+  "conditions": [
     {
+      "id": "ag7gq35cfu3-e15a-4e9c-6437-sj6w68sy44s",
       "target": "Sensor",
       "path": "$.dataType",
       "value": "\"Temperature\"",
       "comparison": "Equals"
     }
-  ],
-  "SpaceId": "YOUR_SPACE_IDENTIFIER"
+  ]
 }
 ```
 
-| Değer | Değiştir |
+| Değer | Şununla değiştir |
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | Örneğinizin barındırıldığı sunucu bölgesi |
 
-## <a name="create-a-user-defined-function"></a>Kullanıcı tanımlı bir işlev oluşturma
+## <a name="create-a-user-defined-function"></a>Kullanıcı tanımlı işlev oluşturma
 
 Kullanıcı tanımlı bir işlev oluşturmak, Azure Digital TWINS yönetim API 'Lerine çok parçalı bir HTTP isteği yapmayı içerir.
 
@@ -107,7 +109,7 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Değer | Değiştir |
+| Değer | Şununla değiştir |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | Çok parçalı bir içerik sınır adı |
 | YOUR_SPACE_IDENTIFIER | Alan tanımlayıcısı  |
@@ -120,11 +122,11 @@ function process(telemetry, executionContext) {
    - İkinci bölüm JavaScript işlem mantığını içerir.
 
 1. **USER_DEFINED_BOUNDARY** bölümünde, **spaceıd** (`YOUR_SPACE_IDENTIFIER`) ve **Matchers** (`YOUR_MATCHER_IDENTIFIER`) değerlerini değiştirin.
-1. JavaScript Kullanıcı tanımlı işlevinin `Content-Type: text/javascript` olarak verildiğini doğrulayın.
+1. JavaScript Kullanıcı tanımlı işlevinin `Content-Type: text/javascript`olarak verildiğini doğrulayın.
 
 ### <a name="example-functions"></a>Örnek işlevler
 
-Algılayıcı telemetrisini, `sensor.DataType` olan veri türü **sıcaklığını**kullanarak doğrudan algılayıcı için okuma olarak ayarlayın:
+Algılayıcı telemetrisini, `sensor.DataType`veri türü **sıcaklık**ile doğrudan algılayıcı için okuma olarak ayarlayın:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -202,17 +204,17 @@ Kullanıcı tanımlı işlevin altında çalışacağı bir rol ataması oluştu
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   İstenen rol KIMLIĞINI koruyun. Bu işlem, aşağıdaki JSON gövdesi özniteliği **RoleID** (`YOUR_DESIRED_ROLE_IDENTIFIER`) olarak geçirilir.
+   İstenen rol KIMLIĞINI koruyun. Aşağıdaki JSON gövde özniteliği **rol kimliği** (`YOUR_DESIRED_ROLE_IDENTIFIER`) olarak geçirilir.
 
 1. **ObjectID** (`YOUR_USER_DEFINED_FUNCTION_ID`), daha önce oluşturulmuş Kullanıcı TANıMLı işlev kimliği olacaktır.
-1. @No__t-2 ile boşlukların sorgulanmasıyla **yolun** değerini (`YOUR_ACCESS_CONTROL_PATH`) bulur.
+1. `fullpath`ile alanları sorgulayarak **yolun** (`YOUR_ACCESS_CONTROL_PATH`) değerini bulun.
 1. Döndürülen `spacePaths` değerini kopyalayın. Bunu aşağıda kullanacaksınız. Kimliği doğrulanmış bir HTTP GET isteği oluşturmak için:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | Değer | Değiştir |
+    | Değer | Şununla değiştir |
     | --- | --- |
     | YOUR_SPACE_NAME | Kullanmak istediğiniz alanın adı |
 
@@ -232,7 +234,7 @@ Kullanıcı tanımlı işlevin altında çalışacağı bir rol ataması oluştu
     }
     ```
 
-    | Değer | Değiştir |
+    | Değer | Şununla değiştir |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | İstenen rolün tanımlayıcısı |
     | YOUR_USER_DEFINED_FUNCTION_ID | Kullanmak istediğiniz kullanıcı tanımlı işlevin KIMLIĞI |

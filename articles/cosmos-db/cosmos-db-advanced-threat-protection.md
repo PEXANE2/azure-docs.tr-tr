@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: dca653bfaf625ff31e4dd7f43752219b312779d1
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 57303c41d90f6205c284c7de67bb8643aa3cd368
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286769"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888062"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB için Gelişmiş tehdit koruması
 
@@ -32,7 +32,7 @@ Güvenlik uyarılarının tam araştırma deneyimi için, tüm belgeler, kapsay�
 
 ### <a name="set-up-atp-using-the-portal"></a>Portalı kullanarak ATP ayarlama
 
-1. Azure portal [https://portal.azure.com](https://portal.azure.com/)' de başlatın.
+1. [https://portal.azure.com](https://portal.azure.com/)Azure Portal başlatın.
 
 2. Azure Cosmos DB hesabından, **Ayarlar** menüsünden **Gelişmiş güvenlik**' i seçin.
 
@@ -61,7 +61,7 @@ Aşağıdaki PowerShell cmdlet 'lerini kullanın:
 ### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanma
 
 Gelişmiş tehdit koruması etkinleştirilmiş Cosmos DB ayarlamak için bir Azure Resource Manager şablonu kullanın.
-Daha fazla bilgi için bkz. [Gelişmiş tehdit koruması Ile CosmosDB hesabı oluşturma](https://azure.microsoft.com/en-us/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
+Daha fazla bilgi için bkz. [Gelişmiş tehdit koruması Ile CosmosDB hesabı oluşturma](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
 
 ### <a name="using-azure-policy"></a>Azure Ilkesini kullanma
 

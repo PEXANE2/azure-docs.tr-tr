@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bbfab41c3324bc16874463d2fc0201f99ee9284b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: a56abbcb72afc1f45683259d3bd3bf13309cda07
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72517015"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886060"
 ---
 # <a name="back-up-your-app-in-azure"></a>Uygulamanızı Azure’a yedekleme
 [Azure App Service](overview.md) yedekleme ve geri yükleme özelliği, uygulama yedeklemelerini el ile veya bir zamanlamaya göre kolayca oluşturmanızı sağlar. Yedeklemeleri sınırsız bir zaman miktarına kadar tutulacak şekilde yapılandırabilirsiniz. Mevcut uygulamanın üzerine yazarak veya başka bir uygulamaya geri yükleyerek uygulamayı önceki bir anlık görüntüye geri yükleyebilirsiniz.
@@ -36,10 +36,10 @@ App Service, uygulamanızı kullanacak şekilde yapılandırdığınız bir Azur
 
 Aşağıdaki veritabanı çözümleri yedekleme özelliği ile desteklenir: 
 
-- [SQL Database](https://azure.microsoft.com/services/sql-database/)
+- [SQL Veritabanı](https://azure.microsoft.com/services/sql-database/)
 - [MySQL için Azure Veritabanı](https://azure.microsoft.com/services/mysql)
 - [PostgreSQL için Azure Veritabanı](https://azure.microsoft.com/services/postgresql)
-- [uygulama içi MySQL](https://azure.microsoft.com/en-us/blog/mysql-in-app-preview-app-service/)
+- [uygulama içi MySQL](https://azure.microsoft.com/blog/mysql-in-app-preview-app-service/)
  
 
 > [!NOTE]
@@ -68,7 +68,7 @@ Aşağıdaki veritabanı çözümleri yedekleme özelliği ile desteklenir:
     > [!NOTE]
     > Aşağıdaki iletiyi görürseniz, yedeklemelere devam edebilmeniz için App Service planınızı yükseltmek üzere tıklayın.
     > Daha fazla bilgi için bkz. [Azure 'da bir uygulamayı ölçeklendirme](manage-scale-up.md).
-    > ![Choose depolama hesabı ](./media/manage-backup/upgrade-plan.png)
+    > ![depolama hesabı seçin](./media/manage-backup/upgrade-plan.png)
     > 
     > 
 
@@ -128,13 +128,13 @@ Kısmi yedeklemeler, tam olarak yedeklemek istediğiniz dosyaları seçmenize ol
 ### <a name="exclude-files-from-your-backup"></a>Dosyaları yedeklemeinizden hariç tut
 Bir kez yedekleme ve değişiklik yapamamayan günlük dosyalarını ve statik görüntüleri içeren bir uygulamanız olduğunu varsayalım. Böyle durumlarda, bu klasörleri ve dosyaları gelecekteki yedeklemelerde depolanmak üzere dışlayabilirsiniz. Yedeklemelerinizden dosya ve klasörleri dışlamak için, uygulamanızın `D:\home\site\wwwroot` klasöründe bir `_backup.filter` dosyası oluşturun. Bu dosyada dışlamak istediğiniz dosya ve klasörlerin listesini belirtin. 
 
-@No__t_0 giderek dosyalarınıza erişebilirsiniz. İstenirse, Azure hesabınızda oturum açın.
+`https://<app-name>.scm.azurewebsites.net/DebugConsole`giderek dosyalarınıza erişebilirsiniz. İstenirse, Azure hesabınızda oturum açın.
 
 Yedeklemelerinizden dışlamak istediğiniz klasörleri belirler. Örneğin, vurgulanan klasör ve dosyaları filtrelemek istiyorsunuz.
 
 ![Görüntüler klasörü](./media/manage-backup/kudu-images.png)
 
-@No__t_0 adlı bir dosya oluşturun ve önceki listeyi dosyaya yerleştirin, ancak `D:\home` kaldırın. Satır başına bir dizin veya dosya listeleyin. Bu nedenle, dosyanın içeriği şu olmalıdır:
+`_backup.filter` adlı bir dosya oluşturun ve önceki listeyi dosyaya yerleştirin, ancak `D:\home`kaldırın. Satır başına bir dizin veya dosya listeleyin. Bu nedenle, dosyanın içeriği şu olmalıdır:
 
  ```
 \site\wwwroot\Images\brand.png
@@ -156,7 +156,7 @@ Yedeklemeleri, normalde [el ile](#create-a-manual-backup) veya [otomatik olarak]
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>Yedeklemeler nasıl depolanır
-Uygulamanız için bir veya daha fazla yedekleme yaptıktan sonra yedeklemeler, depolama hesabınızın **kapsayıcılar** sayfasında ve uygulamanızda görünür. Depolama hesabında her yedekleme, yedekleme verilerini içeren bir `.zip` dosyasından ve `.zip` dosya içeriğinin bir bildirimini içeren bir `.xml` dosyası oluşur. Uygulama geri yükleme işlemi yapmadan yedeklemelerinize erişmek istiyorsanız bu dosyaları açabilir ve bunlara gözatamazsınız.
+Uygulamanız için bir veya daha fazla yedekleme yaptıktan sonra yedeklemeler, depolama hesabınızın **kapsayıcılar** sayfasında ve uygulamanızda görünür. Depolama hesabında her yedekleme, yedekleme verilerini içeren bir`.zip` dosyasından ve `.zip` dosya içeriğinin bir bildirimini içeren bir `.xml` dosyası oluşur. Uygulama geri yükleme işlemi yapmadan yedeklemelerinize erişmek istiyorsanız bu dosyaları açabilir ve bunlara gözatamazsınız.
 
 Uygulamanın veritabanı yedeklemesi,. zip dosyasının kökünde saklanır. Bir SQL veritabanı için bu bir BACPAC dosyasıdır (dosya uzantısı yoktur) ve içeri aktarılabilir. BACPAC dışarı aktarmaya dayalı bir SQL veritabanı oluşturmak için, bkz. [Yeni bir kullanıcı veritabanı oluşturmak IÇIN bacpac dosyasını Içeri aktarma](https://technet.microsoft.com/library/hh710052.aspx).
 

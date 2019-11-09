@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: b265ff8831275a9f4b84f7dac28b82ae75630f8b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595200"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889780"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage 'da olağanüstü durum kurtarma ve depolama hesabı yük devretme (Önizleme)
 
@@ -47,8 +47,8 @@ Diğer Azure depolama artıklığı seçenekleri arasında, tek bir bölgedeki k
 
 Uygulamanızı, başlangıçtan itibaren yüksek kullanılabilirlik için tasarlamak önemlidir. Uygulamanızı tasarlama ve olağanüstü durum kurtarmayı planlama konusunda rehberlik için bu Azure kaynaklarına başvurun:
 
-* [Azure için dayanıklı uygulamalar tasarlama](https://docs.microsoft.com/azure/architecture/resiliency/): Azure 'da yüksek oranda kullanılabilir uygulamalar oluşturmaya yönelik temel kavramlara genel bakış.
-* [Kullanılabilirlik denetim listesi](https://docs.microsoft.com/azure/architecture/checklist/availability): uygulamanızın yüksek kullanılabilirlik için en iyi tasarım uygulamalarını uyguladığını doğrulamak için bir denetim listesi.
+* [Azure için dayanıklı uygulamalar tasarlama](/azure/architecture/checklist/resiliency-per-service): Azure 'da yüksek oranda kullanılabilir uygulamalar oluşturmaya yönelik temel kavramlara genel bakış.
+* [Kullanılabilirlik denetim listesi](/azure/architecture/checklist/resiliency-per-service): uygulamanızın yüksek kullanılabilirlik için en iyi tasarım uygulamalarını uyguladığını doğrulamak için bir denetim listesi.
 * [RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md): RA-GRS 'nin avantajlarından yararlanmak için uygulama oluşturmaya yönelik tasarım kılavuzu.
 * [Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma](../blobs/storage-create-geo-redundant-storage.md): uç noktalar arasında otomatik olarak bir şekilde geçiş yapan ve kurtarmaların benzetilyilmiş olduğu yüksek oranda kullanılabilir bir uygulamanın nasıl oluşturulacağını gösteren bir öğretici. 
 
@@ -121,8 +121,8 @@ Hesap yük devretmesi, Azure Resource Manager dağıtımlarıyla GRS veya RA-GRS
 
 - Doğu Asya
 - Güneydoğu Asya
-- Doğu Avustralya
-- Güneydoğu Avustralya
+- Avustralya Doğu
+- Avustralya Güneydoğu
 - ABD Orta
 - ABD Doğu 2
 - ABD Orta Batı
@@ -180,7 +180,7 @@ VM kapatılırken geçici bir diskte depolanan tüm verilerin kaybedildiğini ak
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Yük devretmeye alternatif olarak verileri kopyalama
 
-Depolama Hesabınız RA-GRS için yapılandırılmışsa, ikincil uç noktayı kullanarak verilerinize okuma erişiminizin olması gerekir. Birincil bölgedeki bir kesinti durumunda yük devredememeyi tercih ediyorsanız, İkincil bölgedeki depolama hesabınızdan diğerine veri kopyalamak için [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)veya [Azure veri taşıma kitaplığı](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) gibi araçları kullanabilirsiniz. etkilenmeden bir bölgedeki depolama hesabı. Daha sonra hem okuma hem de yazma kullanılabilirliği için uygulamalarınızı bu depolama hesabına işaret edebilirsiniz.
+Depolama Hesabınız RA-GRS için yapılandırılmışsa, ikincil uç noktayı kullanarak verilerinize okuma erişiminizin olması gerekir. Birincil bölgedeki bir kesinti olması durumunda yük devredememeyi tercih ediyorsanız, İkincil bölgedeki depolama hesabınızdan verileri etkilenmeyen bir bölgedeki başka bir depolama hesabına kopyalamak için [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)veya [Azure veri taşıma kitaplığı](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) gibi araçları kullanabilirsiniz. Daha sonra hem okuma hem de yazma kullanılabilirliği için uygulamalarınızı bu depolama hesabına işaret edebilirsiniz.
 
 ## <a name="microsoft-managed-failover"></a>Microsoft tarafından yönetilen yük devretme
 

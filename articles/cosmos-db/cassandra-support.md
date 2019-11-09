@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 12df79696033e69abbf48f053c1a594be9409cda
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721116"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889219"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri 
 
@@ -110,7 +110,7 @@ CENSH komut satırı yardımcı programı Apache Cassandra 3.1.1 ile birlikte ge
 
 **Windows:**
 
-Windows kullanıyorsanız, [Linux Için Windows FileSystem](https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)'ı etkinleştirmenizi öneririz. Daha sonra aşağıdaki Linux komutlarını izleyebilirsiniz.
+Windows kullanıyorsanız, [Linux Için Windows FileSystem](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)'ı etkinleştirmenizi öneririz. Daha sonra aşağıdaki Linux komutlarını izleyebilirsiniz.
 
 **Unix/Linux/Mac:**
 
@@ -179,10 +179,10 @@ Azure Cosmos DB, sağlama, anahtar döndürme, ölçümleri görüntüleme ve [A
 
 ## <a name="keyspace-and-table-options"></a>Keyspace ve tablo seçenekleri
 
-"Keyspace oluşturma" komutunda bölge adı, sınıf, replication_factor ve veri merkezi seçenekleri şu anda yok sayılır. Sistem, bölgeleri eklemek için temel Azure Cosmos DB [genel dağıtım](global-dist-under-the-hood.md) çoğaltma yöntemini kullanır. Bölgeler arası veri varlığına ihtiyacınız varsa, daha fazla bilgi edinmek için PowerShell, CLı veya Portal ile hesap düzeyinde etkinleştirebilir, daha fazla bilgi edinmek için bkz. [bölge ekleme](how-to-manage-database-account.md#addremove-regions-from-your-database-account) makalesi. Azure Cosmos DB her yazmanın dayanıklı olmasını sağladığından, Durable_writes devre dışı bırakılamaz. Her bölgede, Azure Cosmos DB, verileri dört yinelemeden oluşan çoğaltma kümesi genelinde çoğaltır ve bu çoğaltma kümesi [yapılandırması](global-dist-under-the-hood.md) değiştirilemez.
+"Keyspace oluşturma" komutunda bölge adı, sınıf, replication_factor ve veri merkezi seçenekleri şu anda yok sayılır. Sistem, bölgeleri eklemek için temel Azure Cosmos DB [genel dağıtım](global-dist-under-the-hood.md) çoğaltma yöntemini kullanır. Bölgeler arası veri varlığına ihtiyacınız varsa, daha fazla bilgi edinmek için PowerShell, CLı veya Portal ile hesap düzeyinde etkinleştirebilir, daha fazla bilgi edinmek için bkz. [bölge ekleme](how-to-manage-database-account.md#addremove-regions-from-your-database-account) makalesi. Azure Cosmos DB her yazmanın dayanıklı olmasını sağladığından Durable_writes devre dışı bırakılamaz. Her bölgede, Azure Cosmos DB, verileri dört yinelemeden oluşan çoğaltma kümesi genelinde çoğaltır ve bu çoğaltma kümesi [yapılandırması](global-dist-under-the-hood.md) değiştirilemez.
  
-Tablo oluştururken tüm seçenekler yok sayılır, bu, sıfıra ayarlanmalıdır gc_grace_seconds hariç.
-Anahtar alanı ve tablo, minimum 400 RU/sn değerine sahip "cosmosdb_provisioned_throughput" adlı ek bir seçeneğe sahiptir. Anahtar alanı verimlilik, birden çok tablo arasında üretilen iş aktarımına izin verir ve tüm tablolar sağlanan aktarım hızını kullanmadan senaryolar için yararlıdır. Alter table komutu bölgeler genelinde sağlanan aktarım hızını değiştirmeye izin verir. 
+Tablo oluşturulurken tüm seçenekler yok sayılır, gc_grace_seconds hariç, sıfıra ayarlanmalıdır.
+Anahtar alanı ve tablo, en az 400 RU/sn değeri olan "cosmosdb_provisioned_throughput" adlı ek bir seçeneğe sahiptir. Anahtar alanı verimlilik, birden çok tablo arasında üretilen iş aktarımına izin verir ve tüm tablolar sağlanan aktarım hızını kullanmadan senaryolar için yararlıdır. Alter table komutu bölgeler genelinde sağlanan aktarım hızını değiştirmeye izin verir. 
 
 ```
 CREATE  KEYSPACE  sampleks WITH REPLICATION = {  'class' : 'SimpleStrategy'}   AND cosmosdb_provisioned_throughput=2000;  

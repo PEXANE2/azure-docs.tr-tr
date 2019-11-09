@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 8360db3e31899dc7ca0a2b502d0036358f0858d6
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d72636265ff3ac654faba91d1420b502b35d3192
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615221"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889024"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Öğretici: akıllı envanter yönetimi uygulama şablonunu dağıtma ve yönetme
 
@@ -109,4 +109,4 @@ Bu uygulamayı kullanmaya devam edemeyecekiniz, **yönetim** > **uygulama ayarla
 ## <a name="next-steps"></a>Sonraki adımlar
 * Akıllı envanter yönetimi [akıllı envanter yönetimi kavramı](./architecture-smart-inventory-management-pnp.md) hakkında daha fazla bilgi edinin
 * Diğer [IoT Central perakende şablonları](./overview-iot-central-retail-pnp.md) hakkında daha fazla bilgi edinin
-* IoT Central hakkında daha fazla bilgi edinin [IoT Central genel bakış](../core/overview-iot-central-pnp.md)
+* IoT Central hakkında daha fazla bilgi edinin [IoT Central genel bakış](../preview/overview-iot-central.md)

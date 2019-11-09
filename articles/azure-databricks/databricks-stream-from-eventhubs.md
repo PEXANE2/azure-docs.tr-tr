@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/23/2019
 ms.author: alehall
-ms.openlocfilehash: 0ea85e60a84b540af2c772f81326dd8c45f61d4d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4f9999b696191a7ea317906cedfc6c6946c3ae5e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784012"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886348"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Öğretici: Event Hubs kullanarak Azure Databricks’e veri akışı yapma
 
@@ -47,7 +47,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
 > Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığından emin olun:
 - Azure Event Hubs ad alanı.
@@ -59,7 +59,7 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’ında oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks çalışma alanı oluşturma
 
@@ -107,7 +107,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
    * Bu makalede, **5,2** çalışma zamanına sahip bir küme oluşturun.
    * **\_\_ dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
-   Teknik ölçüt ve [Bütçe](https://azure.microsoft.com/en-us/pricing/details/databricks/)için uygun olan küme çalışanını ve sürücü düğümü boyutunu seçin.
+   Teknik ölçüt ve [Bütçe](https://azure.microsoft.com/pricing/details/databricks/)için uygun olan küme çalışanını ve sürücü düğümü boyutunu seçin.
 
      **Küme oluştur**’u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
@@ -413,7 +413,7 @@ Aşağıdaki çıkışı alırsınız:
 
 ![Databricks kümesini durdurma](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Bu kümeyi el ile sonlandıramazsanız, kümeyi oluştururken **\_sonra Sonlandır** onay kutusunu\_, sonra da Durdur seçeneğini belirlediyseniz, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Bu kümeyi el ile sonlandıramazsanız, kümeyi oluştururken **\_sonra Sonlandır** onay kutusunu \_, sonra da Durdur seçeneğini belirlediyseniz, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:

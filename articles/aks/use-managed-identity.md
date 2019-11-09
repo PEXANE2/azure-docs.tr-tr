@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
-ms.openlocfilehash: 77655f08350419f0d102c9927b3e09b87edba341
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 16a1f3b8f9ef036bcdc9af122243d313186f99f1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592868"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885328"
 ---
 # <a name="preview---use-managed-identities-in-azure-kubernetes-service"></a>Önizleme-Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 
@@ -55,13 +55,13 @@ az extension list
 az feature register --name MSIPreview --namespace Microsoft.ContainerService
 ```
 
-Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](https://docs.microsoft.com/en-us/cli/azure/feature?view=azure-cli-latest#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MSIPreview')].{Name:name,State:properties.state}"
 ```
 
-Durum kayıtlı olarak görünüyorsa, [az Provider Register](https://docs.microsoft.com/en-us/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak `Microsoft.ContainerService` kaynak sağlayıcısı kaydını yenileyin:
+Durum kayıtlı olarak görünüyorsa, [az Provider Register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak `Microsoft.ContainerService` kaynak sağlayıcısı kaydını yenileyin:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService

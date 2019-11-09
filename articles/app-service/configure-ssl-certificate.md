@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4f0c8078a502d0332b02d95c0c46d9dbcc53a884
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572146"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886857"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service bir SSL sertifikası Ekle
 
@@ -325,7 +325,7 @@ Yenileme işlemi tamamlandıktan sonra **Eşitle**' ye tıklayın. Eşitleme iş
 
 ### <a name="export-certificate"></a>Sertifikayı dışarı aktarma
 
-App Service sertifikaları [Key Vault bir gizli](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)dizi olduğundan, bunun bir PFX kopyasını dışarı aktarabilir ve diğer Azure hizmetleri veya Azure dışında kullanabilirsiniz.
+Bir App Service Sertifikası [Key Vault gizli](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)dizi olduğundan, bunun bir PFX kopyasını dışarı aktarabilir ve diğer Azure hizmetleri veya Azure dışında kullanabilirsiniz.
 
 App Service Sertifikası PFX dosyası olarak dışarı aktarmak için, [Cloud Shell](https://shell.azure.com)aşağıdaki komutları çalıştırın. Ayrıca, [Azure CLI 'yi yüklediyseniz](https://docs.microsoft.com/cli/azure/install-azure-cli)yerel olarak da çalıştırabilirsiniz. Yer tutucuları [App Service sertifikayı](#start-certificate-order)oluştururken kullandığınız adlarla değiştirin.
 
@@ -344,7 +344,7 @@ az keyvault secret download \
     --encoding base64
 ```
 
-İndirilen *appservicecertificate. pfx* dosyası, hem ortak hem de özel sertifikaları içeren BIR ham PKCS12 dosyasıdır. Her sorulduğunda, hem içeri aktarma parolası hem de pek Pass ifadesi boş dizedir.
+İndirilen *appservicecertificate. pfx* dosyası, hem ortak hem de özel sertifikaları içeren BIR ham PKCS12 dosyasıdır. Her sorulduğunda, Import Password ve pek Pass ifadesi için boş bir dize kullanın.
 
 ### <a name="delete-certificate"></a>Sertifikayı Sil 
 

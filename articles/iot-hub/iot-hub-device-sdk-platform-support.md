@@ -1,18 +1,18 @@
 ---
 title: Azure IoT cihaz SDK 'Ları platform desteği | Microsoft Docs
-description: Kavramlar-Azure IoT cihaz SDK 'Ları tarafından desteklenen platformların listesi
+description: Açık kaynaklı cihaz SDK 'Ları, cihazları Azure IoT Hub ve cihaz sağlama hizmeti 'neC#(DPS) bağlamak için C, .net (), Java, Node. js ve Python 'da GitHub 'da kullanılabilir.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: ac5817675d3cfc97a8732ee2e10ec7b9246b12a5
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d39fd95f8704650db16c1dc1553efaba2f727052
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693328"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889418"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT cihaz SDK 'Ları platform desteği
 
@@ -50,9 +50,9 @@ Listelenen her SDK 'nın her biri için Microsoft:
 | iOS 12,2            | OpenSSL veya yerel OSX        | OSX 10.13.4 'te öykünülmüş XCode                                                               |
 | Windows 10 ailesi   | SChannel                     |                                                                                             |
 | Mbed OS 5,4         | Mbed TLS 2                   | [Mxyongaıot geliştirme seti](https://microsoft.github.io/azure-iot-developer-kit/)                  |
-| Azure Sphere İşletim Sistemi     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/en-us/services/azure-sphere/get-started/) |
+| Azure Sphere İşletim Sistemi     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/services/azure-sphere/get-started/) |
 
-### <a name="python-sdk"></a>Python SDK
+### <a name="python-sdk"></a>Python SDK'sı
 
 [Azure IoT Hub Python cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-python) ile test edilmiştir ve aşağıdaki konfigürasyonları destekler.
 
@@ -75,7 +75,7 @@ Listelenen her SDK 'nın her biri için Microsoft:
 
 .NET SDK, [Azure cihaz Aracısı](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) veya [UWP uygulamalarıyla ILETIŞIM kurmak için RPC kullanan özel bir NTService](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/)ile Windows IoT Core ile de kullanılabilir.
 
-### <a name="nodejs-sdk"></a>Node.js SDK
+### <a name="nodejs-sdk"></a>Node.js SDK'sı
 
 [Azure IoT Hub Node. js cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-node) ile test edilmiştir ve aşağıdaki konfigürasyonları destekler.
 
@@ -98,7 +98,7 @@ Listelenen her SDK 'nın her biri için Microsoft:
 
 Microsoft, birkaç mikro işlemci mimarisi için geliştirme setleri sağlamak üzere çeşitli iş ortaklarıyla çalışır. Bu iş ortakları, platformlarındaki Azure IoT C SDK 'sını geçiyor. İş ortakları SDK 'nın platform soyutlama katmanını (PAL) oluşturur ve korur. Microsoft, genişletilmiş destek sağlamak için bu iş ortaklarıyla birlikte çalışır.
 
-| İş ortağı             | Cihazlar                            | Bağlantı                     | Destek |
+| Partner             | Cihazlar                            | Bağlantı                     | Destek |
 |---------------------|------------------------------------|--------------------------|---------|
 | Espressıo           | ESP32 <br/> ESP8266                              | [ESP-Azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT modem     | [IoT SDK için Qualcomm LTE](https://developer.qualcomm.com/software/lte-iot-sdk) | [Forum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
@@ -115,11 +115,11 @@ Microsoft, Azure IoT test ve sertifikalı cihazlarla Azure IoT Universe 'ı sür
 
 * Azure IoT Sertifikalı cihazlara gitmek için bkz. [cihaz kataloğu IoT için Microsoft Azure Sertifikalı](https://catalog.azureiotsolutions.com/).
 
-* Microsoft güvenilir iş ortakları hakkında daha fazla bilgi edinmek veya Microsoft 'un güvenilir iş ortağı olma hakkında bilgi edinmek için bkz. [Microsoft Azure sertifikalı nesnelerin interneti güvenilir Iş ortakları](https://azure.microsoft.com/en-us/marketplace/certified-iot-partners/).
+* Microsoft güvenilir iş ortakları hakkında daha fazla bilgi edinmek veya Microsoft 'un güvenilir iş ortağı olma hakkında bilgi edinmek için bkz. [Microsoft Azure sertifikalı nesnelerin interneti güvenilir Iş ortakları](https://azure.microsoft.com/marketplace/certified-iot-partners/).
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>SDK olmadan IoT Hub bağlanma
 
-IoT Hub cihaz SDK 'Lardan birini kullanabiletirseniz, HTTPS istekleri ve yanıtları gönderip alma yeteneğine sahip herhangi bir uygulamadan [IoT Hub REST API 'lerini](https://docs.microsoft.com/en-us/rest/api/iothub/) kullanarak doğrudan IoT Hub bağlanabilirsiniz.
+IoT Hub cihaz SDK 'Lardan birini kullanabiletirseniz, HTTPS istekleri ve yanıtları gönderip alma yeteneğine sahip herhangi bir uygulamadan [IoT Hub REST API 'lerini](https://docs.microsoft.com/rest/api/iothub/) kullanarak doğrudan IoT Hub bağlanabilirsiniz.
 
 ## <a name="support-and-other-resources"></a>Destek ve diğer kaynaklar
 

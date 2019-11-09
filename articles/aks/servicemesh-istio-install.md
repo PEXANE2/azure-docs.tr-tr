@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 9c9dcd567b8632626bf4b1f0bf2ef6b5e69b8a9d
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 245ac3b1fd88b8d2430e9ddefef3562efd16e6d1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530452"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885379"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Istio 'yu yükleyip kullanma
 
@@ -21,9 +21,9 @@ ms.locfileid: "72530452"
 Bu makalede, Istio 'un nasıl yükleneceği gösterilmektedir. Istio `istioctl` istemci ikilisi istemci makinenize yüklenir ve ıKS bileşenleri AKS 'deki bir Kubernetes kümesine yüklenir.
 
 > [!NOTE]
-> Bu yönergeler, Istio sürüm `1.3.2` referans ve en az Helm sürüm `2.14.2` kullanır.
+> Bu yönergeler, Istio sürüm `1.3.2`referans ve en az Helm sürüm `2.14.2`kullanır.
 >
-> Istio `1.3.x` yayınları, Kubernetes sürümleriyle `1.13`, `1.14`, `1.15` karşı Istio ekibi tarafından test edilmiştir. [GitHub-Istio yayımları][istio-github-releases]üzerinde ek istio sürümleri, [istio haberleri][istio-release-notes] ve desteklenen Kubernetes sürümlerinin her biri hakkında bilgi edinmek IÇIN bkz. [Genel SSS][istio-faq].
+> Istio `1.3.x` yayınları, Kubernetes sürümleriyle `1.13`, `1.14`, `1.15`karşı Istio ekibi tarafından test edilmiştir. [GitHub-Istio yayımları][istio-github-releases]üzerinde ek istio sürümleri, [istio haberleri][istio-release-notes] ve desteklenen Kubernetes sürümlerinin her biri hakkında bilgi edinmek IÇIN bkz. [Genel SSS][istio-faq].
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -94,7 +94,7 @@ istio-init-crd-11-1.3.2   1/1           12s        14s
 istio-init-crd-12-1.3.2   1/1           14s        14s
 ```
 
-İşlerin başarılı bir şekilde tamamlandığını Onayladığımıza göre, doğru sayıda Istio CRDs yüklü olduğunu doğrulayalım. Aşağıdaki komutu çalıştırarak tüm 23 Istio CRDs 'nin yüklendiğini doğrulayabilirsiniz. Komut `23` sayı döndürmelidir.
+İşlerin başarılı bir şekilde tamamlandığını Onayladığımıza göre, doğru sayıda Istio CRDs yüklü olduğunu doğrulayalım. Aşağıdaki komutu çalıştırarak tüm 23 Istio CRDs 'nin yüklendiğini doğrulayabilirsiniz. Komut `23`sayı döndürmelidir.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -180,13 +180,13 @@ AKS kümenizdeki Grafana ve Kiali gizli dizilerini başarıyla oluşturduğumuzd
 
 ::: zone-end
 
-@No__t_0 Held grafiği çok sayıda nesne dağıtır. Listeyi yukarıdaki `helm install` komutunun çıktısından görebilirsiniz. Çalışan bileşenlerinin dağıtımı, küme ortamınıza bağlı olarak 2 dakika sürer.
+`istio` Held grafiği çok sayıda nesne dağıtır. Listeyi yukarıdaki `helm install` komutunun çıktısından görebilirsiniz. Çalışan bileşenlerinin dağıtımı, küme ortamınıza bağlı olarak 2 dakika sürer.
 
 Bu noktada, AKS kümenize Istio 'u dağıttık. Başarılı bir Istio dağıtımına sahip olduğunuzdan emin olmak için, bir sonraki bölüme ilerleyip bu [yüklemeyi doğrulayalım](#validate-the-istio-installation).
 
 ## <a name="validate-the-istio-installation"></a>Istio yüklemesini doğrulama
 
-Önce beklenen hizmetlerin oluşturulduğunu onaylayın. Çalışan hizmetleri görüntülemek için [kubectl Get svc][kubectl-get] komutunu kullanın. @No__t_0 ad alanını sorgulayın, burada, Istio ve eklenti bileşenlerinin `istio` Helm grafiği tarafından yüklendiği yer:
+Önce beklenen hizmetlerin oluşturulduğunu onaylayın. Çalışan hizmetleri görüntülemek için [kubectl Get svc][kubectl-get] komutunu kullanın. `istio-system` ad alanını sorgulayın, burada, Istio ve eklenti bileşenlerinin `istio` Helm grafiği tarafından yüklendiği yer:
 
 ```console
 kubectl get svc --namespace istio-system --output wide
@@ -195,12 +195,12 @@ kubectl get svc --namespace istio-system --output wide
 Aşağıdaki örnek çıktıda Şu anda çalışıyor olması gereken hizmetler gösterilmektedir:
 
 - `istio-*` Hizmetleri
-- `jaeger-*`, `tracing` ve `zipkin` eklenti izleme hizmetleri
+- `jaeger-*`, `tracing`ve `zipkin` eklenti izleme hizmetleri
 - `prometheus` eklentisi ölçüm hizmeti
 - `grafana` eklentisi Analizi ve izleme panosu hizmeti
 - `kiali` eklentisi hizmet ağı Pano hizmeti
 
-@No__t_0 `<pending>` dış IP 'si gösteriyorsa, Azure ağ tarafından bir IP adresi atanmadan birkaç dakika bekleyin.
+`istio-ingressgateway` `<pending>`dış IP 'si gösteriyorsa, Azure ağ tarafından bir IP adresi atanmadan birkaç dakika bekleyin.
 
 ```console
 NAME                     TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                                                      AGE   SELECTOR
@@ -252,7 +252,7 @@ kiali-65d55bcfb8-tqrfk                   1/1     Running     0          88s
 prometheus-846f9849bd-br8kp              1/1     Running     0          87s
 ```
 
-@No__t_1 durumu olan üç `istio-init-crd-*` Pod olmalıdır. Bu FID 'ler, daha önceki bir adımda CRDs 'yi oluşturan işleri çalıştırmaktan sorumludur. Diğer tüm yığınların `Running` durumunu göstermesi gerekir. Ayırımlarınızın bu durumları yoksa, tamamlanana kadar bir dakika veya iki tane bekleyin. Herhangi bir pod bir sorun bildirirse, çıktısını ve durumlarını gözden geçirmek için [kubectl 'yi bir pod betimleyen][kubectl-describe] komutunu kullanın.
+`Completed` durumu olan üç `istio-init-crd-*` Pod olmalıdır. Bu FID 'ler, daha önceki bir adımda CRDs 'yi oluşturan işleri çalıştırmaktan sorumludur. Diğer tüm yığınların `Running`durumunu göstermesi gerekir. Ayırımlarınızın bu durumları yoksa, tamamlanana kadar bir dakika veya iki tane bekleyin. Herhangi bir pod bir sorun bildirirse, çıktısını ve durumlarını gözden geçirmek için [kubectl 'yi bir pod betimleyen][kubectl-describe] komutunu kullanın.
 
 ## <a name="accessing-the-add-ons"></a>Eklentilere erişme
 
@@ -309,7 +309,7 @@ istioctl dashboard envoy <pod-name>.<namespace>
 
 ### <a name="remove-istio-components-and-namespace"></a>Istio bileşenlerini ve ad alanını kaldır
 
-AKS kümenizdeki ICU 'yi kaldırmak için aşağıdaki komutları kullanın. @No__t_0 komutları `istio` ve `istio-init` grafiklerini kaldırır ve `kubectl delete namespace` komutu `istio-system` ad alanını kaldırır.
+AKS kümenizdeki ICU 'yi kaldırmak için aşağıdaki komutları kullanın. `helm delete` komutları `istio` ve `istio-init` grafiklerini kaldırır ve `kubectl delete namespace` komutu `istio-system` ad alanını kaldırır.
 
 ```azurecli
 helm delete --purge istio
@@ -383,7 +383,7 @@ Application Insights ve Istio kullanarak AKS uygulamanızı nasıl izleyeceğini
 [kubernetes-crd]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions
 [kubernetes-jobs]: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
 [kubernetes-secrets]: https://kubernetes.io/docs/concepts/configuration/secret/
-[kubernetes-node-selectors]: https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: f3006dd3f474dea1add1621f35f902422e244ce1
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 4f3f435110f0cba5ea2370f2900d4e7031904067
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161557"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890322"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services paylaşılan görüntü galerisini bağlama veya ayırma
 Öğretmenler/Laboratuvar Yöneticisi, bir şablon VM görüntüsünü başkalarının tarafından yeniden kullanılabilmesi için Azure [paylaşılan görüntü galerisine](../../virtual-machines/windows/shared-image-galleries.md) kaydedebilir. İlk adım olarak, Laboratuvar Yöneticisi laboratuvar hesabına var olan bir paylaşılan görüntü Galerisi ekler. Paylaşılan görüntü Galerisi eklendikten sonra, laboratuvar hesabında oluşturulan laboratuvarlar paylaşılan görüntü galerisine görüntü kaydedebilir. Diğer öğretmenler bu görüntüyü, sınıfları için bir şablon oluşturmak üzere paylaşılan görüntü galerisinden seçebilir. 
@@ -26,7 +26,7 @@ ms.locfileid: "71161557"
 Bu makalede, paylaşılan bir görüntü galerisinin bir laboratuvar hesabına nasıl ekleneceği veya ayrılabilmesi gösterilmektedir. 
 
 > [!NOTE]
-> Bir görüntü paylaşılan bir görüntü galerisine kaydedildiğinde, Azure Lab Services kaydedilen görüntüyü aynı [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)'da bulunan diğer bölgelere çoğaltır. Görüntünün aynı coğrafya içindeki diğer bölgelerde oluşturulan laboratuvarlarda kullanılabilir olmasını sağlar. Resimleri paylaşılan bir görüntü galerisine kaydetmek, çoğaltılan tüm görüntülerin maliyetini içeren ek bir maliyet doğurur. Bu maliyet Azure Lab Services kullanım maliyetinden ayrıdır. Paylaşılan görüntü Galerisi fiyatlandırması hakkında daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi – faturalandırma]( https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries#billing).
+> Bir görüntü paylaşılan bir görüntü galerisine kaydedildiğinde, Azure Lab Services kaydedilen görüntüyü aynı [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)'da bulunan diğer bölgelere çoğaltır. Görüntünün aynı coğrafya içindeki diğer bölgelerde oluşturulan laboratuvarlarda kullanılabilir olmasını sağlar. Resimleri paylaşılan bir görüntü galerisine kaydetmek, çoğaltılan tüm görüntülerin maliyetini içeren ek bir maliyet doğurur. Bu maliyet Azure Lab Services kullanım maliyetinden ayrıdır. Paylaşılan görüntü Galerisi fiyatlandırması hakkında daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi – faturalandırma]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
 
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Laboratuvar hesabı oluşturma sırasında yapılandırma
@@ -42,8 +42,8 @@ Laboratuvar hesabı oluşturulduktan sonra, aşağıdaki görevleri gerçekleşt
 - Laboratuvar hesabından paylaşılan görüntü galerisini ayır
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>Paylaşılan görüntü galerisi oluşturma ve iliştirme
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **DevOps** bölümünde **Laboratuvar Hizmetleri** ' ni seçin. **Laboratuvar Hizmetleri**' nin yanında`*`Star () seçeneğini belirlerseniz Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar**altında **Laboratuvar Hizmetleri** ' ni seçersiniz.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **DevOps** bölümünde **Laboratuvar Hizmetleri** ' ni seçin. **Laboratuvar Hizmetleri**' nin yanında yıldız (`*`) seçeneğini belirlerseniz Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar**altında **Laboratuvar Hizmetleri** ' ni seçersiniz.
 
     ![Tüm Hizmetler-> Laboratuvar Hizmetleri](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. **Laboratuvar hesabı** sayfasını görmek için laboratuvar hesabınızı seçin. 

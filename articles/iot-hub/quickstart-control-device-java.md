@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: eee8a3b17a23d34610951db8b881397a0649b53a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6ac102fa52977d3f9e07de1666dd98e8c2a31673
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516723"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890542"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Hızlı başlangıç: Java ile Azure IoT Hub 'ına bağlı bir cihazı denetleme
 
@@ -33,11 +33,11 @@ Hızlı başlangıçta, önceden yazılmış iki Java uygulaması kullanılır:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, Java kullanılarak yazılır. Geliştirme makinenizde Java, 8 gerekir.
 
-Birden çok platform için Java SE Development Kit 8 [' i, Azure ve Azure Stack için uzun süreli destekten](https://docs.microsoft.com/en-us/java/azure/jdk/?view=azure-java-stable)indirebilirsiniz. JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
+Birden çok platform için Java SE Development Kit 8 [' i, Azure ve Azure Stack için uzun süreli destekten](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)indirebilirsiniz. JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 
 Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Java sürümünü doğrulayabilirsiniz:
 
@@ -61,7 +61,7 @@ az extension add --name azure-cli-iot-ext
 
 Örnek Java projesini önceden indirmediyseniz https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip adresinden indirip ZIP arşivini ayıklayın.
 
-## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 Önceki [Hızlı Başlangıç: Bir cihazdan IoT hub’a telemetri gönderme](quickstart-send-telemetry-java.md) öğreticisini tamamladıysanız bu adımı atlayabilirsiniz.
 
@@ -125,7 +125,7 @@ Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlan�
 
 2. **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** dosyasını istediğiniz bir metin düzenleyicide açın.
 
-    @No__t_0 değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Ardından **SimulatedDevice. Java**' da yaptığınız değişiklikleri kaydedin.
+    `connString` değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Ardından **SimulatedDevice. Java**' da yaptığınız değişiklikleri kaydedin.
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve simülasyon cihazı uygulamasını derleyin:
 
@@ -151,7 +151,7 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
 
 2. **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** dosyasını istediğiniz bir metin düzenleyicide açın.
 
-    @No__t_0 değişkeninin değerini, daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Ardından **Backendadpplication. Java**' da yaptığınız değişiklikleri kaydedin.
+    `iotHubConnectionString` değişkeninin değerini, daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Ardından **Backendadpplication. Java**' da yaptığınız değişiklikleri kaydedin.
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve arka uç uygulamasını derleyin:
 

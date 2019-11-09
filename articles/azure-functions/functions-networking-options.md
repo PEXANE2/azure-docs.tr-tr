@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 34759077bd7223d17fea70d32bda63fd1b2595eb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4e55932d47389e09b135d571d0e000b9795e6edc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668131"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884958"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Işlevleri ağ seçenekleri
 
@@ -116,6 +116,12 @@ Daha yüksek bir güvenlik düzeyi sağlamak için, hizmet uç noktalarını kul
 Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Şu anda bu hesapta herhangi bir sanal ağ kısıtlaması kullanamazsınız. İşlev uygulamanız için kullandığınız depolama hesabında bir sanal ağ hizmeti uç noktası yapılandırırsanız, bu, uygulamanızı bozacaktır.
 
 [Depolama hesabı gereksinimleri hakkında daha fazla bilgi edinin.](./functions-create-function-app-portal.md#storage-account-requirements)
+
+### <a name="using-key-vault-references"></a>Key Vault başvurularını kullanma 
+
+Key Vault başvurular, Azure Işlevleri uygulamanızda herhangi bir kod değişikliğine gerek kalmadan Azure Key Vault gizli dizileri kullanmanıza olanak sağlar. Azure Key Vault, erişim ilkeleri ve denetim geçmişi üzerinde tam denetim ile merkezi gizli dizi yönetimi sağlayan bir hizmettir.
+
+Key Vault hizmet uç noktalarıyla güvenlik altına alınırsa, şu anda [Key Vault başvuruları](../app-service/app-service-key-vault-references.md) çalışmayacaktır. Sanal ağ tümleştirmesini kullanarak bir Key Vault bağlanmak için uygulama kodunuzda Anahtar Kasası 'nı çağırmanız gerekir.
 
 ## <a name="virtual-network-triggers-non-http"></a>Sanal ağ Tetikleyicileri (HTTP olmayan)
 

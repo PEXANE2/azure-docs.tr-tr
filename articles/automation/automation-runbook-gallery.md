@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5daa1cf04e04507174fa480c785bd15b656541a1
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: d1ef652747dccdcb0e04ac8032dd47e2ebaa6bf2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019100"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886902"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Otomasyonu için Runbook ve modül galerileri
 
@@ -35,7 +35,7 @@ Azure portal kullanarak yalnızca PowerShell Galerisi doğrudan içeri aktarabil
 
 1. Azure portalında, Otomasyon hesabınızı açın.
 2. **Işlem Otomasyonu**altında **runbook 'lar Galerisi** ' ne tıklayın.
-3. Kaynak **seçin: PowerShell Galerisi**.
+3. **Kaynak seçin: PowerShell Galerisi**.
 4. İstediğiniz Galeri öğesini bulun ve ayrıntılarını görüntülemek için seçin. Sol tarafta yayımcı için ek arama parametreleri girebilir ve yazın.
 
    ![Galeriye gözatamıyorum](media/automation-runbook-gallery/browse-gallery.png)
@@ -69,9 +69,9 @@ PowerShell modülleri, runbook 'larınızda kullanabileceğiniz cmdlet 'leri iç
 
 4. **Galeriye gözatamıyorum** sayfasında, aşağıdaki alanlara göre arama yapabilirsiniz:
 
-   * Modül Adı
-   * Tags
-   * Yazar
+   * Modül adı
+   * Etiketler
+   * Yazma
    * Cmdlet/DSC kaynak adı
 
 5. İlgilendiğiniz bir modül bulun ve ayrıntılarını görüntülemek için seçin.
@@ -81,7 +81,7 @@ PowerShell modülleri, runbook 'larınızda kullanabileceğiniz cmdlet 'leri iç
    ![PowerShell modülü ayrıntıları](media/automation-runbook-gallery/gallery-item-details-blade.png)
 
 6. Modülü doğrudan Azure Otomasyonu 'na yüklemek için **Içeri aktar** düğmesine tıklayın.
-7. İçeri Aktar düğmesine tıkladığınızda içeri aktarma bölmesinde içeri aktarmak üzere olduğunuz modül adını görürsünüz. Tüm bağımlılıklar yüklüyse, **Tamam** düğmesi etkinleştirilir. Bağımlılıklarınız eksikse, bu modülü içeri aktarmadan önce bu bağımlılıkları içeri aktarmanız gerekir.
+7. İçeri Aktar düğmesine **tıkladığınızda içeri aktarma bölmesinde içeri** aktarmak üzere olduğunuz modül adını görürsünüz. Tüm bağımlılıklar yüklüyse, **Tamam** düğmesi etkinleştirilir. Bağımlılıklarınız eksikse, bu modülü içeri aktarmadan önce bu bağımlılıkları içeri aktarmanız gerekir.
 8. **İçeri** aktarma sayfasında, modülü içeri aktarmak için **Tamam** ' ı tıklatın. Azure Otomasyonu hesabınıza bir modül içeri aktarırken, modül ve cmdlet 'ler hakkında meta verileri ayıklar. Bu eylem, her etkinliğin ayıklanması gerektiğinden birkaç dakika sürebilir.
 9. Modülün dağıtılmakta olduğu bir başlangıç bildirimi ve tamamlandığında başka bir bildirim alırsınız.
 10. Modül içeri aktarıldıktan sonra, kullanılabilir etkinlikleri görebilirsiniz. Runbook 'larınızda ve Istenen durum yapılandırmanızda kaynaklarını kullanabilirsiniz.
@@ -98,7 +98,7 @@ Python runbook 'Ları, [betik Merkezi galerisinde](https://gallery.technet.micro
 
 ## <a name="requesting-a-runbook-or-module"></a>Runbook veya modül isteme
 
-İstekleri [Kullanıcı seslerine](https://feedback.azure.com/forums/246290-azure-automation/)gönderebilirsiniz.  Bir Runbook yazma veya PowerShell hakkında sorularınız konusunda yardıma ihtiyacınız varsa forumumuza soru gönderin. [](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)
+İstekleri [Kullanıcı seslerine](https://feedback.azure.com/forums/246290-azure-automation/)gönderebilirsiniz.  Bir Runbook yazma veya PowerShell hakkında sorularınız konusunda yardıma ihtiyacınız varsa [forumumuza](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)soru gönderin.
 
 ## <a name="common-solutions-available-in-the-runbook-gallery"></a>Runbook galerisinde kullanılabilen ortak çözümler
 
@@ -113,4 +113,4 @@ Aşağıdaki liste, yaygın senaryolar için çözümler sağlayan birkaç runbo
 
 * Runbook 'ları kullanmaya başlamak için bkz. [Azure Otomasyonu 'nda runbook 'U yönetme](manage-runbooks.md)
 * Runbook 'larla PowerShell ve PowerShell Iş akışı arasındaki farkları anlamak için bkz. [PowerShell iş akışını öğrenme](automation-powershell-workflow.md)
-* Dil başvurusu ve öğrenme modülleri de dahil olmak üzere PowerShell hakkında daha fazla bilgi için [PowerShell belgelerine](https://docs.microsoft.com/en-us/powershell/scripting/overview)bakın.
+* Dil başvurusu ve öğrenme modülleri de dahil olmak üzere PowerShell hakkında daha fazla bilgi için [PowerShell belgelerine](https://docs.microsoft.com/powershell/scripting/overview)bakın.

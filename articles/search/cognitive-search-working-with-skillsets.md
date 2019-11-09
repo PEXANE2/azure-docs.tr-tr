@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8a783581394de05fff9f0060e124e8dc59c96b60
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8fa20608f09b4e3006dad685d2fc52bcc9207b5a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790181"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890156"
 ---
 # <a name="working-with-skillsets-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de becerileri ile çalışma
 
@@ -32,7 +32,7 @@ Bir beceri üç özelliğe sahiptir:
 
 
 
-Becerileri, JSON içinde yazılır. [İfade dilini](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)kullanarak döngü ve [dallanma](https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-conditional) ile karmaşık becerileri oluşturabilirsiniz. İfade dili, enzenginleştirme ağacındaki düğümleri tanımlamak için birkaç değişiklik ile [JSON işaretçi](https://tools.ietf.org/html/rfc6901) yolu gösterimini kullanır. ```"/"``` ağaçta daha düşük bir düzeye geçer ve ```"*"``` bağlamda her bir for-each işleci olarak davranır. Bu kavramlar bir örnekle en iyi şekilde açıklanmıştır. Kavramların ve yeteneklerin bazılarını göstermek için [otel İncelemeleri örnek beceri gözden geçiririz](knowledge-store-connect-powerbi.md) . Verileri içeri aktarma iş akışını beceri bir kez daha sonra görüntülemek için, [beceri almak](https://docs.microsoft.com/en-us/rest/api/searchservice/get-skillset)için bir REST API istemcisi kullanmanız gerekir.
+Becerileri, JSON içinde yazılır. [İfade dilini](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)kullanarak döngü ve [dallanma](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) ile karmaşık becerileri oluşturabilirsiniz. İfade dili, enzenginleştirme ağacındaki düğümleri tanımlamak için birkaç değişiklik ile [JSON işaretçi](https://tools.ietf.org/html/rfc6901) yolu gösterimini kullanır. ```"/"``` ağaçta daha düşük bir düzeye geçer ve ```"*"``` bağlamda her bir for-each işleci olarak davranır. Bu kavramlar bir örnekle en iyi şekilde açıklanmıştır. Kavramların ve yeteneklerin bazılarını göstermek için [otel İncelemeleri örnek beceri gözden geçiririz](knowledge-store-connect-powerbi.md) . Verileri içeri aktarma iş akışını beceri bir kez daha sonra görüntülemek için, [beceri almak](https://docs.microsoft.com/rest/api/searchservice/get-skillset)için bir REST API istemcisi kullanmanız gerekir.
 
 ### <a name="enrichment-tree"></a>Zenginleştirme ağacı
 
@@ -50,7 +50,7 @@ Belge, zenginleştirme ardışık düzeninde olduktan sonra bir içerik ağacı 
  Yetenekler yürütülürken, yeni düğümleri zenginleştirme ağacına ekler. Bu yeni düğümler daha sonra aşağı akış becerileri, bilgi deposuna yansıtma veya dizin alanlarıyla eşleme için giriş olarak kullanılabilir. Enrichments değişebilir değil: oluşturulduktan sonra düğümler düzenlenemez. Becerileri daha karmaşık olsa da, zenginleştirme ağacınızı oluşturur, ancak zenginleştirme ağacındaki tüm düğümlerin dizin veya bilgi deposu üzerinde olması gerekmez. Dizine veya bilgi deposuna yalnızca zenginlerin bir alt kümesini seçerek kalıcı hale getirebilirsiniz.
 
 Dizine veya bilgi deposuna yalnızca zenginlerin bir alt kümesini seçerek kalıcı hale getirebilirsiniz.
-Bu belgenin geri kalanında, [otel İncelemeleri örneği](https://docs.microsoft.com/en-us/azure/search/knowledge-store-connect-powerbi)ile çalıştık, ancak aynı kavramlar diğer tüm veri kaynaklarından belge zenginleştirilmesi için de geçerlidir.
+Bu belgenin geri kalanında, [otel İncelemeleri örneği](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi)ile çalıştık, ancak aynı kavramlar diğer tüm veri kaynaklarından belge zenginleştirilmesi için de geçerlidir.
 
 ### <a name="context"></a>Bağlam
 Her yetenek bir bağlam gerektirir. Bağlam şunları belirler:

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 2edc644f003af2b33054a5cbdbaee81c9baa38cd
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 60837171e3f59312895a76f68c660228697529ad
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847445"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891086"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme 
 
@@ -145,11 +145,11 @@ Raporlama, iş ortağı değeri (Microsoft Iş ortağı KIMLIĞI) ve GUID 'Ler t
 Daha fazla bilgi için bkz. [Azure müşteri kullanımını GUID 'Lerle Izleme SSS](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq).
 
 
-## <a name="establish-a-billing-profile"></a>Faturalandırma profili oluşturma
+## <a name="create-a-billing-profile"></a>Faturalandırma profili oluşturma
 
 Müşteriler için bir [dynamics 365 & Power Apps](./create-new-customer-engagement-offer.md) veya [Operations teklifi için Dynamics 365](./create-new-operations-offer.md) ' i yayımlıyorsanız, **faturalandırma profilinizi**doldurmanız gerekir.
 
-Faturalandırma adresi MPN KIMLIĞINIZLE önceden doldurulur ve bu adresi daha sonra güncelleştirebilirsiniz. VERGI ve KDV KIMLIĞI alanları isteğe bağlıdır.  Ülke adı ve şirket adı düzenlenemiyor.
+Faturalandırma adresi yasal varlığınızdan önceden doldurulur ve bu adresi daha sonra güncelleştirebilirsiniz. VERGI ve KDV KIMLIĞI alanları isteğe bağlıdır.  Ülke adı ve şirket adı düzenlenemiyor.
 
 ## <a name="multi-user-account-management"></a>Çok kullanıcılı hesap yönetimi
 

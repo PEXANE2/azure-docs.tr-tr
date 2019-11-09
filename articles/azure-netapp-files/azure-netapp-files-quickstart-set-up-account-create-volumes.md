@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: 7ecc76a8b1f57d4e397746c28dc4cd56b90c3599
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 06ebe8ed22453289fa02c238d9b2e6ef13191f2a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834707"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888543"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma 
 
@@ -110,7 +110,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
     ``` 
 
     > [!NOTE]
-    > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen ürünlere](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) bakın.
+    > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) bakın.
     > Komut satırı araçlarımız tarafından desteklenen bölge adını almak için lütfen `Get-AzLocation | select Location` kullanın
     >
 
@@ -137,7 +137,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
     ``` 
 
     > [!NOTE]
-    > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen ürünlere](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) bakın.
+    > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) bakın.
     > Komut satırı araçlarımız tarafından desteklenen bölge adını almak için lütfen `az account list-locations -query "[].{Region:name}" --out table` kullanın
     >
 

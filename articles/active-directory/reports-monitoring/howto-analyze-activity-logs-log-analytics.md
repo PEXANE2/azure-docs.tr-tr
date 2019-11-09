@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52ab1bd445f8af0bf58dcb6b1176904aa073877a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 04d9bb8bca64292b73bc14f02d126d384da33780
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820956"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885261"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile Azure AD etkinlik günlüklerini çözümleme
 
@@ -32,13 +32,13 @@ Bu makalede, Log Analytics çalışma alanınızdaki Azure AD etkinlik günlükl
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Bu arada izlemek için şunlar gerekir:
 
 * Azure aboneliğinizdeki bir Log Analytics çalışma alanı. [Log Analytics çalışma alanı oluşturmayı](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)öğrenin.
 * İlk olarak, [Azure ad etkinlik günlüklerini Log Analytics çalışma alanınıza yönlendirmekte](howto-integrate-activity-logs-with-log-analytics.md)olan adımları doldurun.
-*  Log Analytics çalışma alanına [erişim](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)
+*  Log Analytics çalışma alanına [erişim](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)
 * Azure Active Directory 'de aşağıdaki roller (Azure Active Directory Portal üzerinden Log Analytics erişiyorsanız)
     - Güvenlik Yöneticisi
     - Güvenlik okuyucusu
@@ -47,7 +47,7 @@ Bu arada izlemek için şunlar gerekir:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Log Analytics çalışma alanına gidin
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 
 2. **Azure Active Directory**' yi seçin ve sonra Log Analytics çalışma alanınızı açmak için **izleme** bölümünde **Günlükler** ' i seçin. Çalışma alanı varsayılan bir sorgu ile açılır.
 
@@ -104,7 +104,7 @@ Ayrıca, sorgunuzda uyarıları da ayarlayabilirsiniz. Örneğin, son hafta 10 '
 
 Azure AD etkinlik günlükleri için önceden oluşturulmuş Log Analytics görünümlerini de indirebilirsiniz. Görünümler, denetim ve oturum açma olaylarını içeren yaygın senaryolarla ilgili birkaç rapor sağlar. Ayrıca, önceki bölümde açıklanan adımları kullanarak raporlarda belirtilen verileri de uyarabilir.
 
-* **Azure AD hesabı sağlama olayları**: Bu görünüm, sağlanan Yeni Kullanıcı sayısı ve sağlama hatalarının sayısı, Kullanıcı sayısı güncelleştirilmiş ve güncelleştirme başarısızlıklarını ve kullanıcı sayısını gibi denetim sağlama etkinliğiyle ilgili raporları gösterir geçersiz şekilde sağlanmış ve karşılık gelen arızalar.    
+* **Azure AD hesabı sağlama olayları**: Bu görünüm, sağlanan Yeni Kullanıcı sayısı ve sağlama hatalarının sayısı, Kullanıcı sayısı güncelleştirilmiş ve güncelleştirme başarısızlıklarını ve kullanıcı sayısını ve bunlara karşılık gelen hataların sayısını gösterir.    
 * **Oturum açma olayları**: Bu görünüm, uygulama, Kullanıcı, cihaz, oturum açma işlemleri ve zaman içinde oturum açma sayısını izleyen bir Özet görünümü gibi oturum açma etkinliklerini izlemeye ilişkin en ilgili raporları gösterir.
 * **İzin veren kullanıcılar**: Bu görünüm, kullanıcıya izin verilen onay, izin veren kullanıcıların oturum açma işlemleri ve tüm izin tabanlı uygulamalar için uygulamayla oturum açma işlemleri gibi kullanıcı onayı ile ilgili raporları gösterir. 
 

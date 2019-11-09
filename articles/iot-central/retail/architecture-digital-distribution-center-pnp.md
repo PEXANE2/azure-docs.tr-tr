@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 2ab79cccaafeb1b48100285a5fd495340b545278
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 478ebde1de5624796ebf1dde5cf89f4e1f9d9104
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615355"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890727"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>IoT Central Digital Distribution Center uygulama şablonu mimarisi
 
@@ -48,4 +48,4 @@ IoT Central platform sürekli veri dışa aktarma (CDE) ve API 'Ler aracılığ�
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Dijital dağıtım merkezi şablonunu](./tutorial-iot-central-digital-distribution-center-pnp.md) dağıtmayı öğrenin
 * [IoT Central perakende şablonları](./overview-iot-central-retail-pnp.md) hakkında daha fazla bilgi edinin
-* IoT Central hakkında daha fazla bilgi edinin [IoT Central genel bakış](../core/overview-iot-central-pnp.md)
+* IoT Central hakkında daha fazla bilgi edinin [IoT Central genel bakış](../preview/overview-iot-central.md)

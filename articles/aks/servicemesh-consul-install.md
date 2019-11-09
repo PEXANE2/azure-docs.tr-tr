@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 1c48e758e9ee69085034f714652632151912f8d4
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d5d0a575c3fb662df034b66a48135ac33393f95c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530634"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885401"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Tüketil 'ı yükleyip kullanma
 
@@ -21,9 +21,9 @@ ms.locfileid: "72530634"
 Bu makalede, Tüketil 'nin nasıl yükleneceği gösterilmektedir. Tüketil bileşenleri AKS 'teki bir Kubernetes kümesine yüklenir.
 
 > [!NOTE]
-> Bu yönergeler, Tüketil sürüm `1.6.0` referans ve en az Helm sürüm `2.14.2` kullanır.
+> Bu yönergeler, Tüketil sürüm `1.6.0`referans ve en az Helm sürüm `2.14.2`kullanır.
 >
-> Tüketil `1.6.x` sürümleri, Kubernetes sürümleriyle `1.13+` karşı çalıştırılabilir. [GitHub-Tüketil yayınlarına][consul-github-releases] ek tüketil sürümleri ve her bir yayın hakkında bilgi edinmek için, her zaman [Tüketim l-sürüm notları][consul-release-notes]bulabilirsiniz.
+> Tüketil `1.6.x` sürümleri, Kubernetes sürümleriyle `1.13+`karşı çalıştırılabilir. [GitHub-Tüketil yayınlarına][consul-github-releases] ek tüketil sürümleri ve her bir yayın hakkında bilgi edinmek için, her zaman [Tüketim l-sürüm notları][consul-release-notes]bulabilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -42,7 +42,7 @@ Bu makale, Tüketil yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Nih
 
 ### <a name="install-the-consul-components-on-aks"></a>AKS 'e Tüketil bileşenlerini yükler
 
-Tüketil Helm grafiğinin sürüm `v0.10.0` indirerek başlayacağız. Grafiğin bu sürümü, `1.6.0` Tüketil sürümünü içerir.
+Tüketil Helm grafiğinin sürüm `v0.10.0` indirerek başlayacağız. Grafiğin bu sürümü, `1.6.0`Tüketil sürümünü içerir.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -95,13 +95,13 @@ AKS kümenizdeki `consul` ad alanına tüketim l bileşenlerini yüklemek için 
 
 ::: zone-end
 
-@No__t_0 Held grafiği bir dizi nesne dağıtır. Listeyi yukarıdaki `helm install` komutunun çıktısından görebilirsiniz. Tüketil bileşenlerinin dağıtımı, küme ortamınıza bağlı olarak 3 dakika kadar sürebilir.
+`Consul` Held grafiği bir dizi nesne dağıtır. Listeyi yukarıdaki `helm install` komutunun çıktısından görebilirsiniz. Tüketil bileşenlerinin dağıtımı, küme ortamınıza bağlı olarak 3 dakika kadar sürebilir.
 
 Bu noktada, AKS kümenize Tüketil 'yi dağıttık. Tüketil 'nin başarılı bir şekilde dağıtımına sahip olduğunuzdan emin olmak için, tüketim l yüklemesini doğrulamak üzere bir sonraki bölüme geçeceğiz.
 
 ## <a name="validate-the-consul-installation"></a>Tüketil yüklemesini doğrulama
 
-Kaynakların başarıyla oluşturulduğunu doğrulayın. @No__t_2 ad alanını sorgulamak için [kubectl Get svc][kubectl-get] ve [kubectl al][kubectl-get] komutunu kullanın, burada, tüketil bileşenleri `helm install` komutu tarafından yüklenir:
+Kaynakların başarıyla oluşturulduğunu doğrulayın. `consul` ad alanını sorgulamak için [kubectl Get svc][kubectl-get] ve [kubectl al][kubectl-get] komutunu kullanın, burada, tüketil bileşenleri `helm install` komutu tarafından yüklenir:
 
 ```console
 kubectl get svc --namespace consul --output wide
@@ -129,7 +129,7 @@ consul-consul-sync-catalog-d846b79c-8ssr8                         1/1     Runnin
 consul-consul-tz2t5                                               1/1     Running   0          3m9s   10.240.0.12   aks-linux-92468653-vmss000000   <none>           <none>
 ```
 
-Tüm FID 'ler `Running` durumunu göstermelidir. Ayırımlarınızın bu durumları yoksa, tamamlanana kadar bir dakika veya iki tane bekleyin. Herhangi bir pod bir sorun bildirirse, çıktısını ve durumlarını gözden geçirmek için [kubectl 'yi bir pod betimleyen][kubectl-describe] komutunu kullanın.
+Tüm FID 'ler `Running`durumunu göstermelidir. Ayırımlarınızın bu durumları yoksa, tamamlanana kadar bir dakika veya iki tane bekleyin. Herhangi bir pod bir sorun bildirirse, çıktısını ve durumlarını gözden geçirmek için [kubectl 'yi bir pod betimleyen][kubectl-describe] komutunu kullanın.
 
 ## <a name="accessing-the-consul-ui"></a>Tüketil Kullanıcı arabirimine erişme
 
@@ -150,7 +150,7 @@ Artık bir tarayıcı açabilir ve `http://localhost:8080/ui`, Tüketil Kullanı
 
 ### <a name="remove-consul-components-and-namespace"></a>Tüketil bileşenlerini ve ad alanını kaldır
 
-AKS kümenizdeki Tüketil 'yi kaldırmak için aşağıdaki komutları kullanın. @No__t_0 komutları `consul` grafiği kaldırır ve `kubectl delete namespace` komutu `consul` ad alanını kaldırır.
+AKS kümenizdeki Tüketil 'yi kaldırmak için aşağıdaki komutları kullanın. `helm delete` komutları `consul` grafiği kaldırır ve `kubectl delete namespace` komutu `consul` ad alanını kaldırır.
 
 ```azurecli
 helm delete --purge consul
@@ -186,7 +186,7 @@ Ayrıca şunları kullanarak ek senaryolar izleyebilirsiniz:
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward
-[kubernetes-node-selectors]: https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md

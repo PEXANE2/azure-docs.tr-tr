@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 8e8e4524034f0a296045691309b065f8547bdaa0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 057037807a75e50eb2305bfab19d1fcff7fe77ce
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797705"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889603"
 ---
 # <a name="references"></a>Başvurular
 
@@ -85,7 +85,7 @@ API hizmetinin URL 'SI, veri hub URL 'SI https://\<yourdatahub-Web sitesi-adı >
 
 Aşağıdaki örnek istek, cihazların listesini almak için gereklidir:
 
-```
+```azurepowershell-interactive
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
@@ -108,7 +108,6 @@ REST **Get** çağrıları için, istek URI 'sinde bir veya daha fazla sorgu par
 
 Azure Farmtempts veri merkezi API 'SI, standart HTTP hatalarını döndürür. En yaygın hata kodları şunlardır:
 
-
  |Hata kodu             | Açıklama |
  |---                    | --- |
  |200                    | Başarılı |
@@ -121,29 +120,29 @@ Azure Farmtempts veri merkezi API 'SI, standart HTTP hatalarını döndürür. E
 
 Standart HTTP hatalarına ek olarak, Azure Farmtts veri merkezi API 'Leri de iç hataları aşağıdaki biçimde döndürür:
 
-```
-{
-  "message": "<More information on the error>",
-  "status": "<error code>”,
-  "code": "<InternalErrorCode>",
-  "moreInfo": "<Details of the error>"
-}
-```
+    ```
+    {
+      "message": "<More information on the error>",
+      "status": "<error code>”,
+      "code": "<InternalErrorCode>",
+      "moreInfo": "<Details of the error>"
+    }
+    ```
 
 Örnek: bir grup oluştururken, giriş yükünde zorunlu bir "Name" alanı belirtilmedi. Ortaya çıkan hata iletisi şöyle olacaktır:
 
-```
-{
-  "message": "Model validation failed",
-  "status": 400,
-  "code": "ModelValidationFailed",
-  "moreInfo": "[\"The Name field is required.\"]"
-}
-```
+    ```json
+    {
+      "message": "Model validation failed",
+      "status": 400,
+      "code": "ModelValidationFailed",
+      "moreInfo": "[\"The Name field is required.\"]"
+    }
+    ```
 
 ## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Azure Active Directory kullanıcılara veya uygulama kayıtlarını ekleme
 
- Azure Farmtts API 'Lerine Azure Active Directory bir kullanıcı veya bir uygulama kaydı tarafından erişilebilir. Azure Active Directory bir uygulama kaydı oluşturmak için aşağıdaki adımları uygulayın:  
+Azure Farmtts API 'Lerine Azure Active Directory bir kullanıcı veya bir uygulama kaydı tarafından erişilebilir. Azure Active Directory bir uygulama kaydı oluşturmak için aşağıdaki adımları uygulayın:  
 
 1. [Azure portal](https://portal.azure.com) **Azure Active Directory, uygulama kayıtları**> **Yeni kayıt**' a gidin. Alternatif olarak, mevcut bir hesabı kullanabilirsiniz.
 2. Yeni bir hesap için aşağıdakileri tamamlamayı doğrulayın:

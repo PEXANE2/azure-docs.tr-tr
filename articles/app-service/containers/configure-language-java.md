@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: fa3cd84978119a5858e63712b4d22c2ea89ea528
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8f6fb9737d3d8dad93a95f31d566f7cc4706ded3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470909"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886041"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için bir Linux Java uygulaması yapılandırma
 
@@ -86,7 +86,7 @@ jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/hom
 
 #### <a name="continuous-recording"></a>Sürekli kayıt
 
-Çalışma zamanı performansı ([kaynak](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)) üzerinde en az etkiyle Java uygulamanızı sürekli olarak profil oluştururken, Zulu uçuş kaydedicisini kullanabilirsiniz. Bunu yapmak için, gerekli yapılandırmayla JAVA_OPTS adlı bir uygulama ayarı oluşturmak için aşağıdaki Azure CLı komutunu çalıştırın. JAVA_OPTS uygulama ayarının içeriği, uygulamanız başlatıldığında `java` komutuna geçirilir.
+Çalışma zamanı performansı ([kaynak](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)) üzerinde en az etkiyle Java uygulamanızı sürekli olarak profil oluştururken, Zulu uçuş kaydedicisini kullanabilirsiniz. Bunu yapmak için, gerekli yapılandırmayla JAVA_OPTS adlı bir uygulama ayarı oluşturmak için aşağıdaki Azure CLı komutunu çalıştırın. Uygulamanız başlatıldığında JAVA_OPTS uygulama ayarının içeriği `java` komutuna geçirilir.
 
 ```azurecli
 az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --settings JAVA_OPTS=-XX:StartFlightRecording=disk=true,name=continuous_recording,dumponexit=true,maxsize=1024m,maxage=1d
@@ -238,6 +238,24 @@ Var olan bir SSL sertifikasını karşıya yüklemek ve uygulamanızın etki ala
 İlk olarak, uygulamanıza [Key Vault erişim verme](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) ve [bir uygulama ayarında gizli diziniz Için bir Anahtar Kasası başvurusu yapma](../app-service-key-vault-references.md#reference-syntax)yönergelerini izleyin. App Service terminaline uzaktan erişirken ortam değişkenini yazdırarak başvurunun gizli olarak çözümlendiğini doğrulayabilirsiniz.
 
 Bu gizli dizileri Spring veya Tomcat yapılandırma dosyasına eklemek için ortam değişkeni ekleme söz dizimini (`${MY_ENV_VAR}`) kullanın. Spring yapılandırma dosyaları için lütfen [externalized yapılandırmalarında](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)bu belgelere bakın.
+
+## <a name="using-the-java-key-store"></a>Java anahtar deposunu kullanma
+
+Varsayılan olarak, [App Service Linux 'a yüklenen](../configure-ssl-certificate.md) tüm ortak veya özel sertifikalar, kapsayıcı başladığında Java anahtar deposuna yüklenir. Bu, giden TLS bağlantıları yaparken karşıya yüklenen sertifikaların bağlantı bağlamında kullanılabileceği anlamına gelir.
+
+App Service [BIR SSH bağlantısı açıp](app-service-linux-ssh-support.md) komut `keytool`çalıştırarak Java anahtar aracında etkileşim kurabilir veya hata ayıklayabilirsiniz. Komutların listesi için bkz. [anahtar araç belgeleri](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) . Sertifikalar, Java 'nın varsayılan anahtar deposu dosya konumunda depolanır `$JAVA_HOME/jre/lib/security/cacerts`.
+
+JDBC bağlantınızı şifrelemek için ek yapılandırma gerekebilir. Lütfen seçtiğiniz JDBC sürücünüz için belgelere bakın.
+
+- [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
+- [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
+- [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+
+### <a name="manually-initialize-and-load-the-key-store"></a>Anahtar deposunu el ile başlatma ve yükleme
+
+Anahtar deposunu başlatabilir ve sertifikaları el ile ekleyebilirsiniz. App Service sertifikaları anahtar deposuna otomatik olarak yüklemesini devre dışı bırakmak için `1` değeri ile `SKIP_JAVA_KEYSTORE_LOAD`bir uygulama ayarı oluşturun. Azure Portal üzerinden App Service yüklenen tüm genel sertifikalar `/var/ssl/certs/`altında depolanır. Özel sertifikalar `/var/ssl/private/`altında depolanır.
+
+KeyStore API 'SI hakkında daha fazla bilgi için lütfen [resmi belgelere](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)başvurun.
 
 ## <a name="configure-apm-platforms"></a>APM platformlarını yapılandırma
 
@@ -595,7 +613,7 @@ Aşağıdaki adımlarda, mevcut App Service ve veritabanınızı bağlama gereks
             DATABASE_CONNECTION_URL=jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
     ```
 
-    DATABASE_CONNECTION_URL değerleri, her veritabanı sunucusu için farklı ve Azure portal değerlerinden farklı. Burada gösterilen (ve kod parçacıklarında) URL biçimleri, şu şekilde kullanım için gereklidir:
+    DATABASE_CONNECTION_URL değerler her veritabanı sunucusu için farklıdır ve Azure portal değerlerden farklıdır. Burada gösterilen (ve kod parçacıklarında) URL biçimleri, şu şekilde kullanım için gereklidir:
 
     * **PostgreSQL:** `jdbc:postgresql://<database server name>:5432/<database name>?ssl=true`
     * **MySQL:** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`

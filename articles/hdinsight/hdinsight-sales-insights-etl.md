@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: hrasheed
-ms.openlocfilehash: b9bcaf4b7497e8beba377eb7e47a44a6eb061299
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: d662ad59722658ed888aa732c1f45afdf48f850c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178003"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889201"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Öğretici: Sales Insights 'ı türetmek için uçtan uca veri işlem hattı oluşturma
 
@@ -23,7 +23,7 @@ Bu veri ardışık düzeni, çeşitli depolardaki verileri birleştirir, istenme
 
 ![ETL mimarisi](./media/hdinsight-sales-insights-etl/architecture.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -33,10 +33,10 @@ Bu öğreticinin sonunda iş öngörülerini görselleştirmek için [Power BI D
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>Depoyu betikler ve verilerle kopyalayın
 
-1. [Azure portalı](https://portal.azure.com)’nda oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üstteki menü çubuğundan Azure Cloud Shell açın. Cloud Shell isteyip istemediğinizi bir dosya paylaşma oluşturmak için aboneliğinizi seçin.
 
-   ![Azure Cloud Shell açın](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
+   ![Azure Cloud Shell’i açma](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
 1. **Ortam Seç** açılan menüsünde, **Bash**' i seçin.
 1. Azure hesabınızda oturum açın ve aboneliği ayarlayın. 
 1. Proje için kaynak grubunu ayarlayın.
@@ -68,8 +68,8 @@ Bu öğreticinin sonunda iş öngörülerini görselleştirmek için [Power BI D
 
 ### <a name="deploy-azure-resources-needed-for-the-pipeline"></a>İşlem hattı için gereken Azure kaynaklarını dağıtma 
 
-1. @No__t-0 betiği için yürütme izinleri ekleyin.
-1. Aşağıdaki kaynakları Azure 'da dağıtmak üzere betiği çalıştırmak için `./scripts/resources.sh <RESOURCE_GROUP_NAME> <LOCATION>` komutunu kullanın:
+1. `chmod +x scripts/*.sh` betiği için yürütme izinleri ekleyin.
+1. Aşağıdaki kaynakları Azure 'da dağıtmak üzere betiği çalıştırmak için komut `./scripts/resources.sh <RESOURCE_GROUP_NAME> <LOCATION>` kullanın:
 
    1. Azure Blob depolama hesabı. Bu hesap, şirket satışları verilerini tutar.
    2. Azure Data Lake Storage 2. hesabı. Bu hesap, her iki HDInsight kümesi için de depolama hesabı olarak görev yapar. HDInsight ve [Azure hdınsight Data Lake Storage 2. Data Lake Storage 2. ile tümleştirme](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)hakkında daha fazla bilgi edinin.
@@ -80,7 +80,7 @@ Bu öğreticinin sonunda iş öngörülerini görselleştirmek için [Power BI D
 
 Küme oluşturma 20 dakika sürebilir.
 
-@No__t-0 betiği aşağıdaki komutu içerir. Bu komut, istenen yapılandırmayla belirtilen kaynakları oluşturmak için bir Azure Resource Manager şablonu (`resourcestemplate.json`) kullanır.
+`resources.sh` betiği aşağıdaki komutu içerir. Bu komut, istenen yapılandırmayla belirtilen kaynakları oluşturmak için bir Azure Resource Manager şablonu (`resourcestemplate.json`) kullanır.
 
 ```azurecli-interactive 
 az group deployment create --name ResourcesDeployment \
@@ -89,25 +89,25 @@ az group deployment create --name ResourcesDeployment \
     --parameters "@resourceparameters.json"
 ```
 
-@No__t-0 betiği, Sales Data. csv dosyalarını bu komutu kullanarak yeni oluşturulan BLOB depolama hesabına de yükler:
+`resources.sh` betiği, Sales Data. csv dosyalarını bu komutu kullanarak yeni oluşturulan BLOB depolama hesabına de yükler:
 
 ```
 az storage blob upload-batch -d rawdata \
     --account-name <BLOB STORAGE NAME> -s ./ --pattern *.csv
 ```
 
-Kümelere SSH erişiminin varsayılan parolası `Thisisapassword1` ' dır. Parolayı değiştirmek istiyorsanız, `resourcesparameters.json` dosyasına gidin ve `sparksshPassword`, `sparkClusterLoginPassword`, `llapClusterLoginPassword` ve `llapsshPassword` parametrelerinin parolasını değiştirin.
+Kümelere SSH erişiminin varsayılan parolası `Thisisapassword1`. Parolayı değiştirmek istiyorsanız, `resourcesparameters.json` dosyasına gidin ve `sparksshPassword`, `sparkClusterLoginPassword`, `llapClusterLoginPassword`ve `llapsshPassword` parametreleri için parolayı değiştirin.
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>Dağıtımı doğrulama ve kaynak bilgilerini toplama
 
-1. Dağıtımınızın durumunu denetlemek isterseniz Azure portal kaynak grubuna gidin. **Ayarlar**altında **dağıtımlar** ' ı seçin. Dağıtımınızın adını, `ResourcesDeployment` ' ı seçin. Burada, başarıyla dağıtılan kaynakları ve devam eden kaynakları görebilirsiniz.
-1. Dağıtım bittikten sonra, < RESOURCE_GROUP_NAME > > **kaynak gruplarına** > Azure Portal gidin.
+1. Dağıtımınızın durumunu denetlemek isterseniz Azure portal kaynak grubuna gidin. **Ayarlar**altında **dağıtımlar** ' ı seçin. Dağıtımınızın adını seçin, `ResourcesDeployment`. Burada, başarıyla dağıtılan kaynakları ve devam eden kaynakları görebilirsiniz.
+1. Dağıtım bittikten sonra, Azure portal > **kaynak gruplarına** gidin > < RESOURCE_GROUP_NAME >.
 1. Satış dosyalarını depolamak için oluşturulan yeni Azure Depolama hesabını bulun. Depolama hesabının adı `blob` ile başlar ve sonra rastgele bir dize içerir. Şunları yapın:
    1. Daha sonra kullanmak üzere depolama hesabı adını bir yere göz önüne alın.
    1. BLOB depolama hesabının adını seçin.
    1. Portalın sol tarafındaki **Ayarlar**altında **erişim anahtarları**' nı seçin.
    1. **KEY1** kutusuna dizeyi kopyalayın ve daha sonra kullanmak üzere kaydedin.
-1. HDInsight kümeleri için depolama olarak oluşturulan Data Lake Storage 2. hesabını bulun. Bu hesap, BLOB depolama hesabıyla aynı kaynak grubunda bulunur, ancak `adlsgen2` ile başlar. Şunları yapın:
+1. HDInsight kümeleri için depolama olarak oluşturulan Data Lake Storage 2. hesabını bulun. Bu hesap, BLOB depolama hesabıyla aynı kaynak grubunda bulunur, ancak `adlsgen2`ile başlar. Şunları yapın:
    1. Data Lake Storage 2. hesabının adını bir yere göz önüne alın.
    1. Data Lake Storage 2. hesabının adını seçin.
    1. Portalın sol tarafındaki **Ayarlar**altında **erişim anahtarları**' nı seçin.
@@ -122,9 +122,9 @@ Kümelere SSH erişiminin varsayılan parolası `Thisisapassword1` ' dır. Parol
 >    --output table
 > ```
 
-### <a name="create-a-data-factory"></a>Veri Fabrikası oluşturma
+### <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-Azure Data Factory, Azure işlem hatlarını otomatik hale getirmeye yardımcı olan bir araçtır. Bu görevleri gerçekleştirmenin tek yolu değildir, ancak işlemleri otomatik hale getirmek için harika bir yoldur. Azure Data Factory hakkında daha fazla bilgi için [Azure Data Factory belgelerine](https://azure.microsoft.com/en-us/services/data-factory/)bakın. 
+Azure Data Factory, Azure işlem hatlarını otomatik hale getirmeye yardımcı olan bir araçtır. Bu görevleri gerçekleştirmenin tek yolu değildir, ancak işlemleri otomatik hale getirmek için harika bir yoldur. Azure Data Factory hakkında daha fazla bilgi için [Azure Data Factory belgelerine](https://azure.microsoft.com/services/data-factory/)bakın. 
 
 Bu veri fabrikasının iki etkinliği olan bir işlem hattı olacaktır: 
 
@@ -138,9 +138,9 @@ Azure Data Factory işlem hattınızı ayarlamak için `adf.sh` betiğini çalı
 
 Bu betik aşağıdaki işlemleri yapar:
 
-1. Data Lake Storage 2. depolama hesabında `Storage Blob Data Contributor` izinleriyle bir hizmet sorumlusu oluşturur.
+1. Data Lake Storage 2. depolama hesabında `Storage Blob Data Contributor` izinlerle bir hizmet sorumlusu oluşturur.
 1. [Data Lake Storage 2. dosya sistemine REST API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/filesystem/create)post isteklerini yetkilendirmek için bir kimlik doğrulama belirteci alır.
-1. @No__t-0 ve `query.hql` dosyalarındaki Data Lake Storage 2. depolama hesabınızın gerçek adını doldurur.
+1. `sparktransform.py` ve `query.hql` dosyalarındaki Data Lake Storage 2. depolama hesabınızın gerçek adını doldurur.
 1. Data Lake Storage 2. ve BLOB depolama hesapları için depolama anahtarlarını alır.
 1. , İlişkili bağlı hizmetleri ve etkinlikleri ile bir Azure Data Factory işlem hattı oluşturmak için başka bir kaynak dağıtımı oluşturur. Bağlı hizmetlerin depolama hesaplarına doğru şekilde erişebilmeleri için depolama anahtarlarını şablon dosyasına parametreler olarak geçirir.
 
@@ -173,7 +173,7 @@ Oluşturduğunuz Data Factory işlem hattındaki ilk etkinlik, verileri blob dep
 İşlem hatları çalıştırmanın çalıştığını doğrulamak için aşağıdaki adımlardan birini alabilirsiniz:
 
 - Portal aracılığıyla veri fabrikanızın **izleyici** bölümüne gidin.
-- Azure Depolama Gezgini, Data Lake Storage Gen 2 depolama hesabınıza gidin. @No__t-0 dosya sistemine gidin ve sonra işlem hattının başarılı olup olmadığını görmek için `transformed` klasörüne gidin ve içeriğini denetleyin.
+- Azure Depolama Gezgini, Data Lake Storage Gen 2 depolama hesabınıza gidin. `files` dosya sistemine gidin ve sonra işlem hattının başarılı olup olmadığını görmek için `transformed` klasörüne gidin ve içeriğini denetleyin.
 
 HDInsight kullanarak verileri dönüştürmenin diğer yolları için [Jupyter Notebook kullanma konusunda bu makaleye](/azure/hdinsight/spark/apache-spark-load-data-run-query)bakın.
 
@@ -185,7 +185,7 @@ HDInsight kullanarak verileri dönüştürmenin diğer yolları için [Jupyter N
     scp scripts/query.hql sshuser@<clustername>-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-2. Aşağıdaki komutu kullanarak LLAP kümesine erişmek için SSH kullanın ve parolanızı girin. @No__t-0 dosyasını değiştirmediyse, parola `Thisisapassword1` ' dir.
+2. Aşağıdaki komutu kullanarak LLAP kümesine erişmek için SSH kullanın ve parolanızı girin. `resourcesparameters.json` dosyasını değiştirmediyse parola `Thisisapassword1`.
 
     ```
     ssh sshuser@<clustername>-ssh.azurehdinsight.net
@@ -202,9 +202,9 @@ Bu betik, etkileşimli sorgu kümesinde Power BI erişebileceğiniz bir yönetil
 ### <a name="create-a-power-bi-dashboard-from-sales-data"></a>Satış verilerinden Power BI panosu oluşturma
 
 1. Power BI Desktop’ı açın.
-1. **Veri al**' ı seçin.
+1. **Veri Al**’ı seçin.
 1. **HDInsight etkileşimli sorgu kümesi**araması yapın.
-1. Kümenizin URI 'sini buraya yapıştırın. @No__t-0 biçiminde olmalıdır.
+1. Kümenizin URI 'sini buraya yapıştırın. `https://<LLAP CLUSTER NAME>.azurehdinsight.net` biçiminde olmalıdır.
 
    Veritabanı için `default` girin.
 1. Kümeye erişmek için kullandığınız kullanıcı adını ve parolayı girin.

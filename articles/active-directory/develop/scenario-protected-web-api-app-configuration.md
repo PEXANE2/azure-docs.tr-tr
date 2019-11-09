@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8cc02831fa00a3974da1b74b07daf581f50dd22
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: eb562caf2dfc83841762748f37d1a7ee325de10b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569619"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882637"
 ---
 # <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
@@ -158,6 +158,10 @@ Doğrulayıcılar bu tabloda açıklanmıştır:
 | `ValidateTokenReplay` | Belirtecin yeniden çalınmamasını sağlar. (Bazı kerelik protokolleri için özel durum kullanılır.) |
 
 Doğrulayıcılar, ASP.NET/ASP.NET çekirdek yapılandırmasından başlatılan `TokenValidationParameters` sınıfının özellikleriyle ilişkilendirilir. Çoğu durumda, parametreleri değiştirmek zorunda kalmazsınız. Tek kiracılar olmayan uygulamalar için bir özel durum vardır. (Diğer bir deyişle, kullanıcıları herhangi bir kuruluştan veya kişisel Microsoft hesaplarından kabul eden Web Apps.) Bu durumda, verenin doğrulanması gerekir.
+
+## <a name="token-validation-in-azure-functions"></a>Azure Işlevlerinde belirteç doğrulama
+
+Azure işlevlerinde gelen erişim belirteçlerini doğrulamak da mümkündür. [DotNet](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)ve [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)'daki Azure işlevlerinde belirteçleri doğrulama örneklerini bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

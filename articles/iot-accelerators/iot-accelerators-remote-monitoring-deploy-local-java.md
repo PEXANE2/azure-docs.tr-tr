@@ -1,5 +1,5 @@
 ---
-title: Uzaktan Izleme çözümünü yerel olarak dağıtma (IntelliJ IDE aracılığıyla)-Azure | Microsoft Docs
+title: Uzaktan Izleme çözümünü yerel olarak dağıtma-IntelliJ IDE-Azure | Microsoft Docs
 description: Bu nasıl yapılır kılavuzunda, test ve geliştirme için IntelliJ kullanarak uzaktan Izleme çözümü hızlandırıcısının yerel makinenize nasıl dağıtılacağı gösterilmektedir.
 author: v-krghan
 manager: dominicbetts
@@ -8,26 +8,26 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2f3c11763bb2f406caf9d33275fc29b0d140da9a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 779ee1e057d74b11c5e0ba58dc2fd32b803f1e0e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70743303"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888822"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Uzaktan Izleme çözüm Hızlandırıcısını yerel olarak dağıtma-IntelliJ
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-Bu makalede, test ve geliştirme için uzaktan Izleme çözümü hızlandırıcısının yerel makinenize nasıl dağıtılacağı gösterilmektedir. IntelliJ 'de mikro hizmetleri çalıştırmayı öğreneceksiniz. Yerel bir mikro hizmet dağıtımı aşağıdaki bulut hizmetlerini kullanacaktır: IoT Hub, Azure Cosmos DB, Azure Akış Analizi ve Azure Time Series Insights.
+Bu makalede, test ve geliştirme için uzaktan Izleme çözümü hızlandırıcısının yerel makinenize nasıl dağıtılacağı gösterilmektedir. IntelliJ 'de mikro hizmetleri çalıştırmayı öğreneceksiniz. Yerel bir mikro hizmet dağıtımı şu bulut hizmetlerini kullanır: IoT Hub, Azure Cosmos DB, Azure Akış Analizi ve Azure Time Series Insights.
 
 Yerel makinenizde Docker 'da uzaktan Izleme çözüm hızlandırıcıyı çalıştırmak istiyorsanız, bkz. [Uzaktan izleme çözüm hızlandırıcıyı yerel olarak dağıtma-Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Uzaktan Izleme çözümü Hızlandırıcısı tarafından kullanılan Azure hizmetlerini dağıtmak için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
-Hesabınız yoksa yalnızca birkaç dakika içinde ücretsiz bir deneme sürümü hesabı oluşturabilirsiniz. Ayrıntılar için bkz [Azure ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/).
+Hesabınız yoksa yalnızca birkaç dakika içinde ücretsiz bir deneme sürümü hesabı oluşturabilirsiniz. Ayrıntılar için bkz. [Azure Ücretsiz Deneme](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="machine-setup"></a>Makine Kurulumu
 
@@ -98,7 +98,7 @@ Gerekli Azure kaynaklarını henüz oluşturmadıysanız, şu adımları izleyin
    Betik Ayrıca yerel makinenize bir ortam değişkenleri kümesi de ekler. Her değişken adının önek **bilgisayarları**vardır. Bu ortam değişkenleri, uzaktan Izlemenin bir Azure Key Vault kaynağından yapılandırma değerlerini okumasına izin veren ayrıntılar sağlar.
 
    > [!TIP]
-   > Betik tamamlandığında, ortam değişkenlerini  **\<giriş klasörünüz\>\\adlı bir dosyaya kaydeder. PCs\\\<çözüm\>adı. env**. Bunları gelecekteki çözüm hızlandırıcılarına yönelik olarak kullanabilirsiniz. Yerel makinenizde ayarlanan tüm ortam değişkenlerinin, **Docker-Compose**çalıştırdığınızda **yerel\\. env dosyasındaki\\Hizmetler\\betiklerindeki** değerleri geçersiz kılmasını unutmayın.
+   > Komut dosyası tamamlandığında, ortam değişkenlerini **\<giriş klasörünüzün\>\\. pcs\\\<çözüm adı\>. env**adlı bir dosyaya kaydeder. Bunları gelecekteki çözüm hızlandırıcılarına yönelik olarak kullanabilirsiniz. Yerel makinenizde ayarlanan tüm ortam değişkenlerinin, **Docker-Compose**çalıştırdığınızda **Yerel\\. env dosyası\\hizmetler\\betiklerdeki** değerleri geçersiz kılmasını unutmayın.
 
 1. Komut satırı ortamınızı kapatın.
 
@@ -106,10 +106,10 @@ Gerekli Azure kaynaklarını henüz oluşturmadıysanız, şu adımları izleyin
 
 Gerekli Azure kaynaklarını zaten oluşturduysanız, yerel makinenizde karşılık gelen ortam değişkenlerini ayarlayın:
 * **PCS_KEYVAULT_NAME**: Key Vault kaynağının adı.
-* **PCS_AAD_APPID**: Azure Active Directory (Azure AD) uygulama KIMLIĞI.
+* **PCS_AAD_APPID**: Azure Active Directory (Azure AD) uygulama kimliği.
 * **PCS_AAD_APPSECRET**: Azure AD uygulama gizli anahtarı.
 
-Yapılandırma değerleri bu Key Vault kaynağından okunacaktır. Bu ortam değişkenleri, dağıtımdan  **\<giriş klasörünüze\>\\kaydedilebilir. PCs\\\<çözüm\>adı. env** dosyası. Yerel makinenizde ayarlanan ortam değişkenlerinin, **Docker-Compose**çalıştırdığınızda **Hizmetler\\KomutDosyaları\\\\yerel. env** dosyasındaki değerleri geçersiz kıldığını unutmayın.
+Yapılandırma değerleri bu Key Vault kaynağından okunacaktır. Bu ortam değişkenleri, **\\. pcs\\\<çözüm adı\>. env dosyası\<\>giriş klasörünüze** kaydedilebilir. Yerel makinenizde ayarlanan ortam değişkenlerinin, **Docker-Compose**çalıştırdığınızda **Yerel\\. env dosyası\\hizmetler\\betiklerdeki** değerleri geçersiz kılmasını unutmayın.
 
 Mikro hizmet tarafından gereken bazı yapılandırmalar ilk dağıtımda oluşturulmuş bir Key Vault örneğine depolanır. Anahtar kasasındaki ilgili değişkenler gerektiği şekilde değiştirilmelidir.
 
@@ -159,11 +159,11 @@ Aşağıdaki adımlarda, IntelliJ 'de uzaktan Izleme mikro hizmetlerinin nasıl 
 
 #### <a name="create-run-configurations"></a>Çalıştırma yapılandırması oluşturma
 
-1. **Düzenleme yapılandırmasını** **Çalıştır** > ' ı seçin.
-1. **Yeni yapılandırma** > **SBT görevi**Ekle ' yi seçin.
+1. **Çalıştır** > **yapılandırmayı Düzenle**' yi seçin.
+1. **Yeni yapılandırma** > **SBT görevi**' ni seçin.
 1. **Ad**girin ve ardından **görevleri** **çalıştırma**olarak girin.
 1. Çalıştırmak istediğiniz hizmete göre **çalışma dizinini** seçin.
-1. Seçimlerinizi kaydetmek için **Uygula** > **Tamam ' ı** seçin.
+1. Seçimlerinizi kaydetmek için **uygula** > **Tamam ' ı** seçin.
 1. Aşağıdaki Web Hizmetleri için çalıştırma yapılandırması oluşturun:
     * WebService (services\config)
     * WebService (services\device-telemetri)
@@ -172,17 +172,17 @@ Aşağıdaki adımlarda, IntelliJ 'de uzaktan Izleme mikro hizmetlerinin nasıl 
 
 Örnek olarak, aşağıdaki görüntüde bir hizmet için nasıl yapılandırma ekleneceği gösterilmektedir:
 
-[![Sol bölmedeki SBT görevleri listesinde vurgulanan storageAdapter seçeneğini ve sağ bölmedeki ad, görevler, çalışma dizini ve VM parametreleri kutularındaki girdileri gösteren, IntelliJ IDE Run/Debug Configurations penceresinin ekran görüntüsü.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
+[Sol bölmedeki SBT görevleri listesinde vurgulanan storageAdapter seçeneğini ve sağ bölmedeki ad, görevler, çalışma dizini ve VM parametreleri kutularındaki girdileri gösteren, IntelliJ IDE Run/Debug Configurations penceresinin ekran görüntüsünü ![.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
 #### <a name="create-a-compound-configuration"></a>Bileşik yapılandırma oluşturma
 
-1. Tüm Hizmetleri birlikte çalıştırmak için **Yeni yapılandırma** > **bileşik**Ekle ' yi seçin.
+1. Tüm Hizmetleri birlikte çalıştırmak için **bileşik** > **Yeni yapılandırma Ekle** ' yi seçin.
 1. **Ad**girin ve ardından **SBT görevleri ekle**' yi seçin.
-1. Seçimlerinizi kaydetmek için **Uygula** > **Tamam ' ı** seçin.
+1. Seçimlerinizi kaydetmek için **uygula** > **Tamam ' ı** seçin.
 
 Örnek olarak, aşağıdaki görüntüde tüm SBT görevlerinin tek bir yapılandırmaya nasıl ekleneceği gösterilmektedir:
 
-[![Sol bölmedeki Birleşik listede ve sağ bölmede vurgulanan SBT görevi ' Devicetelemetri ' seçeneğinde AllServices seçeneğinin vurgulandığı, IntelliJ IDE Run/Debug Configurations penceresinin ekran görüntüsü.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
+[Sol bölmedeki Birleşik listede ve sağ bölmede vurgulanan SBT görevi ' Devicetelemetri ' seçeneğinde bulunan AllServices seçeneğini gösteren IntelliJ IDE Run/Debug Configurations penceresinin ekran görüntüsünü ![.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
 Yerel makinede Web hizmetlerini derlemek ve çalıştırmak için **Çalıştır** ' ı seçin.
 
@@ -190,10 +190,10 @@ Her Web hizmeti bir komut Istemi penceresi ve Web tarayıcısı penceresi açar.
 
 Hizmetlerin durumuna erişmek için aşağıdaki URL 'Lere gidin:
 
-* IoT-Hub Yöneticisi:[http://localhost:9002/v1/status](http://localhost:9002/v1/status)
-* Cihaz telemetrisi:[http://localhost:9004/v1/status](http://localhost:9004/v1/status)
-* kurulumunun[http://localhost:9005/v1/status](http://localhost:9005/v1/status)
-* depolama bağdaştırıcısı:[http://localhost:9022/v1/status](http://localhost:9022/v1/status)
+* IoT-Hub Yöneticisi: [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
+* Cihaz telemetrisi: [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
+* Yapılandırma: [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
+* depolama-bağdaştırıcı: [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
 
 ### <a name="start-the-stream-analytics-job"></a>Stream Analytics işini Başlat
 
@@ -213,7 +213,7 @@ npm install
 npm start
 ```
 
-**Başlat** komutu tamamlandığında, tarayıcınız sayfayı adreste [http://localhost:3000/dashboard](http://localhost:3000/dashboard)görüntüler. Bu sayfadaki hatalar beklenmektedir. Uygulamayı hata olmadan görüntülemek için aşağıdaki adımları izleyin.
+**Başlat** komutu tamamlandığında, tarayıcınız sayfayı [http://localhost:3000/dashboard](http://localhost:3000/dashboard)adreste görüntüler. Bu sayfadaki hatalar beklenmektedir. Uygulamayı hata olmadan görüntülemek için aşağıdaki adımları izleyin.
 
 ### <a name="configure-and-run-nginx"></a>NGINX 'i yapılandırma ve çalıştırma
 
@@ -226,7 +226,7 @@ NGINX çalıştırma hakkında daha fazla bilgi için bkz. [Windows için NGINX]
 
 ### <a name="connect-to-the-dashboard"></a>Panoya Bağlan
 
-Uzaktan izleme çözümü panosuna erişmek için tarayıcınızda sayfasına gidin http://localhost:9000 .
+Uzaktan Izleme çözümü panosuna erişmek için tarayıcınızda http://localhost:9000 gidin.
 
 ## <a name="clean-up"></a>Temizleme
 

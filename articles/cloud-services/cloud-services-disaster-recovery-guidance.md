@@ -9,12 +9,12 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: 269bb59210e24623a16b27d21d7276c084e4cca7
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a014c3d5ada2024609e9262d8943090ac7b205c6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359665"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888321"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Azure Cloud Services etkileyen bir Azure hizmet kesintisi durumunda yapılacaklar
 Microsoft 'ta, hizmetlerimizin ihtiyacınız olduğunda her zaman sizin için kullanılabilir olduğundan emin olmak için çok çalıştık. Denetiimizin ötesine geçmeye, planlanmamış hizmet kesintilerine neden olacak şekilde bizi etkilemekte yarar vardır.
@@ -38,7 +38,7 @@ En güçlü olağanüstü durum kurtarma çözümü, farklı bölgelerde uygulam
 
 Bir bölgenin kaybedilmesine en hızlı yanıt için Traffic Manager [uç nokta izlemeyi](../traffic-manager/traffic-manager-monitoring.md)yapılandırmanız önemlidir.
 
-## <a name="option-2-deploy-your-application-to-a-new-region"></a>Seçenek 2: Uygulamanızı yeni bir bölgeye dağıtma
+## <a name="option-2-deploy-your-application-to-a-new-region"></a>2\. seçenek: uygulamanızı yeni bir bölgeye dağıtma
 Önceki seçenekte açıklandığı gibi birden çok etkin dağıtımı sürdürmek devam eden ek maliyetler doğurur. Kurtarma zamanı hedefiniz (RTO) yeterince esnektir ve özgün kodunuz veya derlenmiş Cloud Services paketiniz varsa, başka bir bölgede uygulamanızın yeni bir örneğini oluşturabilir ve DNS kayıtlarınızı yeni dağıtıma işaret etmek üzere güncelleştirebilirsiniz.
 
 Bulut hizmeti uygulaması oluşturma ve dağıtma hakkında daha fazla ayrıntı için bkz. [bulut hizmeti oluşturma ve dağıtma](cloud-services-how-to-create-deploy-portal.md).
@@ -46,13 +46,13 @@ Bulut hizmeti uygulaması oluşturma ve dağıtma hakkında daha fazla ayrıntı
 Uygulama veri kaynaklarınıza bağlı olarak, uygulama veri kaynağınız için kurtarma yordamlarını denetlemeniz gerekebilir.
 
 * Azure depolama veri kaynakları için bkz. [Azure depolama çoğaltma](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) , uygulamanız için seçilen çoğaltma modeline göre kullanılabilir seçenekleri denetlemek için.
-* SQL veritabanı kaynakları için, oku [genel bakış: Uygulamanıza yönelik seçili çoğaltma modeline göre kullanılabilir seçenekleri denetlemek için SQL](../sql-database/sql-database-business-continuity.md) veritabanı ile bulut iş sürekliliği ve veritabanı olağanüstü durum kurtarma.
+* SQL veritabanı kaynakları için bkz. genel bakış: uygulamanıza yönelik seçili çoğaltma modeline göre kullanılabilir seçenekleri denetlemek için [SQL veritabanı Ile bulut iş sürekliliği ve veritabanı olağanüstü durum kurtarma](../sql-database/sql-database-business-continuity.md) .
 
 
-## <a name="option-3-wait-for-recovery"></a>Seçenek 3: Kurtarma için bekle
+## <a name="option-3-wait-for-recovery"></a>Seçenek 3: kurtarma için bekle
 Bu durumda, sizin bölüminizdeki hiçbir işlem yapmanız gerekmez, ancak bölge geri yüklenene kadar hizmetiniz kullanılamaz. Geçerli hizmet durumunu [Azure hizmet durumu panosu](https://azure.microsoft.com/status/)'nda görebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Olağanüstü durum kurtarma ve yüksek kullanılabilirlik stratejisi uygulama hakkında daha fazla bilgi edinmek için bkz. [Azure uygulamaları Için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-Bulut platformunun yeteneklerini ayrıntılı bir şekilde anlamak için bkz. [Azure dayanıklılığı teknik kılavuzu](../resiliency/resiliency-technical-guidance.md).
+Bulut platformunun yeteneklerini ayrıntılı bir şekilde anlamak için bkz. [Azure dayanıklılığı teknik kılavuzu](/azure/architecture/checklist/resiliency-per-service).

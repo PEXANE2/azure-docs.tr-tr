@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 880b31702cf1c0a92ab7ee536cd88e8e6957f6f8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3414cc54e5023bdeebb2d5536c1408f981e68f19
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430858"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891393"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Jeam B & R kullanarak CloudSimple özel bulutunda iş yükü VM 'lerini yedekleme
 
@@ -54,7 +54,7 @@ Yedeklenme için 30 TB 'den az olan ortamlarda CloudSimple aşağıdaki yapılan
 
 * Veeab yedekleme sunucusu ve proxy sunucusu özel buluttaki aynı VM 'ye yüklendi.
 * Azure 'da yedekleme işleri için hedef olarak yapılandırılmış Linux tabanlı birincil yedekleme deposu.
-* @no__t-birincil yedekleme deposundan verileri başka bir bölgeye çoğaltılan bir Azure Blob kapsayıcısına kopyalamak için kullanılan 0.
+* `azcopy`, verileri birincil yedekleme deposundan başka bir bölgeye çoğaltılan bir Azure Blob kapsayıcısına kopyalamak için kullanılır.
 
 ![Temel dağıtım senaryoları](media/veeam-basicdeployment.png)
 
@@ -65,7 +65,7 @@ Yedeklenme için 30 TB 'tan fazla olan ortamlarda CloudSimple aşağıdaki yapı
 * Veead tarafından önerildiği şekilde, vSAN kümesindeki düğüm başına bir ara sunucu.
 * Hızlı geri yüklemeler için beş günlük veriyi önbelleğe almak üzere özel buluttaki Windows tabanlı birincil yedekleme deposu.
 * Azure 'daki Linux yedekleme deposu, daha uzun süreli saklama için yedekleme kopyalama işlerinin hedefi olarak. Bu depo, genişleme yedekleme deposu olarak yapılandırılmalıdır.
-* @no__t-birincil yedekleme deposundan verileri başka bir bölgeye çoğaltılan bir Azure Blob kapsayıcısına kopyalamak için kullanılan 0.
+* `azcopy`, verileri birincil yedekleme deposundan başka bir bölgeye çoğaltılan bir Azure Blob kapsayıcısına kopyalamak için kullanılır.
 
 ![Temel dağıtım senaryoları](media/veeam-advanceddeployment.png)
 
@@ -136,7 +136,7 @@ Veead tarafından kullanılan bağlantı noktalarında ağ trafiğine izin verme
 
 Aşağıdaki tabloda bir bağlantı noktası listesi verilmiştir.
 
-| Simg | Açıklama | Simg | Açıklama |
+| simg | Açıklama | simg | Açıklama |
 | ------------ | ------------- | ------------ | ------------- |
 | Backup Sunucusu  | vCenter  | HTTPS/TCP  | 443 |
 | Backup Sunucusu <br> *Veead yedeklemesini dağıtmak için gerekli & çoğaltma bileşenleri* | Yedekleme proxy 'Si  | TCP/UDP  | 135, 137-139 ve 445 |
@@ -194,7 +194,7 @@ Varsayılan ' cloudowner ' kullanıcısı, VEEAD 'yi yüklemek için özel bulut
 
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Uzun süreli veri saklama için Azure Blob depolamayı yapılandırma
 
-1. Microsoft videosunda [Azure Storage Ile çalışmaya başlama](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)bölümünde açıklandığı gibi standart türde ve bir blob kapsayıcısının genel amaçlı depolama hesabı (GPv2) oluşturun.
+1. Microsoft videosunda [Azure Storage Ile çalışmaya başlama](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)bölümünde açıklandığı gibi standart türde ve bir blob kapsayıcısının genel amaçlı depolama hesabı (GPv2) oluşturun.
 2. [Kapsayıcı oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-container) başvurusunda açıklandığı gibi bir Azure depolama kapsayıcısı oluşturun.
 2. Microsoft 'tan Linux için `azcopy` komut satırı yardımcı programını indirin. CentOS 7,5 ' de bash kabuğu 'nda aşağıdaki komutları kullanabilirsiniz.
 
@@ -290,7 +290,7 @@ Ayrıcalıkları devre dışı bırakmak için bkz. [yükseltme ayrıcalıkları
 * [VNet 'i devre dışı bir aboneliğe bağlama](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
 * [Azure portal bir Linux sanal makinesi oluşturun](../virtual-machines/linux/quick-create-portal.md)
 * [Azure portal bir Windows sanal makinesine yönetilen veri diski iliştirme](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [Azure depolama ile çalışmaya başlama-video](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)
+* [Azure depolama ile çalışmaya başlama-video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
 * [Kapsayıcı oluştur](https://docs.microsoft.com/rest/api/storageservices/create-container)
 * [Linux üzerinde AzCopy ile veri aktarma](../storage/common/storage-use-azcopy-linux.md)
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 903fd2309949036b62fb4975596fb645c021d06d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 847c56faae61483813286c46190764327e287783
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535042"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887246"
 ---
 # <a name="application-insights-log-based-metrics"></a>Günlük tabanlı ölçümleri Application Insights
 
@@ -50,7 +50,7 @@ Kullanılabilirlik kategorisindeki ölçümler, Web uygulamanızın durumunu dü
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|---|---|---|
-|Yüzde|Average|Çalıştırma konumu, test adı|
+|Yüzde|Ortalama|Çalıştırma konumu, test adı|
 
 ```Kusto
 availabilityResults 
@@ -64,7 +64,7 @@ availabilityResults
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|---|---|---|
-|Milisaniye|Ortalama, en düşük, en fazla|Çalıştırma konumu, test adı, test sonucu
+|Mayacak|Ortalama, en düşük, en fazla|Çalıştırma konumu, test adı, test sonucu
 
 ```Kusto
 availabilityResults
@@ -80,7 +80,7 @@ availabilityResults
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|---|---|---|
-|Count|Count|Çalıştırma konumu, test adı, test sonucu|
+|Sayı|Sayı|Çalıştırma konumu, test adı, test sonucu|
 
 ```Kusto
 availabilityResults
@@ -99,7 +99,7 @@ Tarayıcı ölçümleri, gerçek Son Kullanıcı tarayıcılarından Application
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Milisaniye|Ortalama, en düşük, en fazla|Yok.|
+|Mayacak|Ortalama, en düşük, en fazla|None|
 
 ```Kusto
 browserTimings
@@ -115,7 +115,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Milisaniye|Ortalama, en düşük, en fazla|Yok.|
+|Mayacak|Ortalama, en düşük, en fazla|None|
 
 ```Kusto
 browserTimings
@@ -131,7 +131,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Milisaniye|Ortalama, en düşük, en fazla|Yok.|
+|Mayacak|Ortalama, en düşük, en fazla|None|
 
 ```Kusto
 browserTimings
@@ -147,7 +147,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Milisaniye|Ortalama, en düşük, en fazla|Yok.|
+|Mayacak|Ortalama, en düşük, en fazla|None|
 
 ```Kusto
 browserTimings
@@ -163,7 +163,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Milisaniye|Ortalama, en düşük, en fazla|Yok.|
+|Mayacak|Ortalama, en düşük, en fazla|None|
 
 ```Kusto
 browserTimings
@@ -185,7 +185,7 @@ Bu ölçüm, tarayıcıda çalışan uygulama kodunuzda oluşan özel durum say�
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|Yok.|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Sayı|Sayı|None|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -200,7 +200,7 @@ Başarısız bağımlılık çağrılarının sayısı.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|Yok.|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Sayı|Sayı|None|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 dependencies
@@ -215,7 +215,7 @@ Application Insights için bir özel durum kaydettiğinizde, SDK 'nın [trackexc
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|Bulut rolü adı, bulut rolü örneği, cihaz türü|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Sayı|Sayı|Bulut rolü adı, bulut rolü örneği, cihaz türü|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -225,11 +225,11 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Başarısız istekler (istek/başarısız)
 
-*Başarısız*olarak işaretlenen izlenen sunucu isteklerinin sayısı. Varsayılan olarak, Application Insights SDK, HTTP yanıt kodu 5 xx veya 4xx döndüren her sunucu isteğini başarısız bir istek olarak otomatik olarak işaretler. [Özel bir telemetri başlatıcısında](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)istek telemetri öğesinin *başarı* özelliğini değiştirerek bu mantığı özelleştirebilirsiniz.
+*Başarısız*olarak işaretlenen izlenen sunucu isteklerinin sayısı. Varsayılan olarak, Application Insights SDK, HTTP yanıt kodu 5 xx veya 4xx döndüren her sunucu isteğini başarısız bir istek olarak otomatik olarak işaretler. [Özel bir telemetri başlatıcısında](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)istek telemetri öğesinin *başarı* özelliğini değiştirerek bu mantığı özelleştirebilirsiniz.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|Bulut rolü örneği, bulut rolü adı, gerçek veya yapay trafik, Istek performansı, yanıt kodu|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Sayı|Sayı|Bulut rolü örneği, bulut rolü adı, gerçek veya yapay trafik, Istek performansı, yanıt kodu|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 requests
@@ -244,7 +244,7 @@ Bu ölçüm, sunucu özel durumlarının sayısını gösterir.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|Bulut rolü adı, bulut rolü örneği|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Sayı|Sayı|Bulut rolü adı, bulut rolü örneği|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -313,7 +313,7 @@ performanceCounters
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Yüzde|Ortalama, en düşük, en fazla|Bulut rol örneği
+|Yüzde|Ortalama, en düşük, en fazla|Bulut rolü örneği
 
 ```Kusto
 performanceCounters
@@ -327,7 +327,7 @@ performanceCounters
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Bayt/saniye|Ortalama, en düşük, en fazla|Bulut rol örneği
+|Bayt/saniye|Ortalama, en düşük, en fazla|Bulut rolü örneği
 
 ```Kusto
 performanceCounters
@@ -343,7 +343,7 @@ performanceCounters
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Bayt|Ortalama, en düşük, en fazla|Bulut rol örneği
+|Sayacının|Ortalama, en düşük, en fazla|Bulut rolü örneği
 
 ```Kusto
 performanceCounters
@@ -359,7 +359,7 @@ performanceCounters
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Yüzde|Ortalama, en düşük, en fazla|Bulut rol örneği
+|Yüzde|Ortalama, en düşük, en fazla|Bulut rolü örneği
 
 >[!NOTE]
 > İşlemci zamanı ölçümü, Azure Uygulama Hizmetleri 'nde barındırılan uygulamalar için kullanılamaz. Uygulama hizmetlerinde barındırılan Web uygulamalarının CPU kullanımını izlemek için [Işlem CPU](#process-cpu-performancecountersprocesscpupercentage) ölçüsünü kullanın.

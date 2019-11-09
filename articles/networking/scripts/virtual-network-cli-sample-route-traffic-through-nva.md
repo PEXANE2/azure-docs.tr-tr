@@ -3,24 +3,21 @@ title: Azure CLI betiği örneği - Ağ sanal gereci aracılığıyla trafiği y
 description: Azure CLI betiği örneği - Güvenlik duvarı ağ sanal gereci aracılığıyla trafiği yönlendirme.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: timlt
-ms.openlocfilehash: f2ba4d919cc17d1c454a39490377477e99aa17e2
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: kumud
+ms.openlocfilehash: 55b9c9cba4a34fc9e209e03565861885ea192cc1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875508"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890232"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>Ağ sanal gereci aracılığıyla trafiği yönlendirme
 

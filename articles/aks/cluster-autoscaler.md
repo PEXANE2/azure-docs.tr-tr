@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: f27b910910ca21aa36582506e6c7b2d1d39da88a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ce5d2965d0127eec01620c702d7d83bd0b39416
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472864"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885772"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde uygulama taleplerini karşılamak için bir kümeyi otomatik olarak ölçeklendirme
 
@@ -122,6 +122,35 @@ az aks update \
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Devre dışı bırakılan bir kümeyi otomatik olarak yeniden etkinleştirin
 
 Küme otomatik olarak var olan bir kümede yeniden etkinleştirmek istiyorsanız, [az aks Update][az-aks-update] komutunu kullanarak, *--Enable-Cluster-otomatik Scaler*, *--Min-Count*ve *--Max-Count* parametrelerini belirterek yeniden etkinleştirebilirsiniz.
+
+## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>Küme otomatik gizleme günlüklerini ve durumunu alma
+
+Otomatik Scaler olaylarını tanılamak ve hatalarını ayıklamak için, Günlükler ve durum otomatik Scaler eklentisi 'nden alınabilir.
+
+AKS, küme otomatik denetimini sizin adınıza yönetir ve yönetilen denetim düzlemine çalıştırır. Ana düğüm günlüklerinin bir sonuç olarak görüntülenmek üzere yapılandırılması gerekir.
+
+Günlüklerin küme otomatik olarak gönderildiği bir şekilde yapılandırılması için Log Analytics aşağıdaki adımları izleyin.
+
+1. Küme-otomatik Scaler günlüklerini Log Analytics 'e göndermek için tanılama günlükleri için bir kural ayarlayın. [Yönergeler burada ayrıntılı olarak verilmiştir](https://docs.microsoft.com/azure/aks/view-master-logs#enable-diagnostics-logs), "Logs" seçeneklerini seçerken `cluster-autoscaler` kutusunu kontrol edin.
+1. Azure portal aracılığıyla kümenizdeki "Günlükler" bölümüne tıklayın.
+1. Aşağıdaki örnek sorguyu Log Analytics olarak girin:
+
+```
+AzureDiagnostics
+| where Category == "cluster-autoscaler"
+```
+
+Alınacak Günlükler olduğu sürece, aşağıdakine benzer Günlükler görmeniz gerekir.
+
+![Log Analytics günlükleri](media/autoscaler/autoscaler-logs.png)
+
+Küme otomatik olarak, `cluster-autoscaler-status`adlı bir configmap 'e sistem durumu da yazar. Bu günlükleri almak için aşağıdaki `kubectl` komutunu yürütün. Küme otomatik olarak yapılandırılmış her düğüm havuzu için bir sistem durumu bildirilir.
+
+```
+kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
+```
+
+Otomatik olarak kaydedilen öğeler hakkında daha fazla bilgi edinmek için [Kubernetes/otomatik Scaler GitHub PROJESINDE](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why)SSS makalesini okuyun.
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>Birden çok düğüm havuzu etkin olan küme otomatik Scaler 'ı kullanma
 

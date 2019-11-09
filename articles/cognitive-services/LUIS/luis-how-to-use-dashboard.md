@@ -1,7 +1,7 @@
 ---
 title: Pano-Language Understanding-LUO
 titleSuffix: Azure Cognitive Services
-description: Görselleştirilen bir raporlama aracı olan analiz panosu ile amaçları düzeltir.
+description: Eğitilen uygulamanızın panosundan hedefleri ve varlıkları onarın. Panoda, düzeltilmesi gereken amaçları vurgularla genel uygulama bilgileri görüntülenir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735046"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888210"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Uygulamanızı geliştirmek için panoyu kullanma
 
@@ -32,8 +32,8 @@ Panoda giderilen üç sorun şunlardır:
 
 |Sorun|Grafik rengi|Açıklama|
 |--|--|--|
-|Veri dengesizliği|-|Bu durum, örnek sayısı önemli ölçüde farklılık gösterdiği zaman oluşur. Tüm Amaçlar, her türlü örnek _utde aynı_ sayıda örneğe sahip olmalıdır; hiçbiri hariç. Bu, uygulamadaki toplam kullanım miktarının% 10 ' dan% 15 ' e sahip olmalıdır.<br><br> Veriler imlenebilir ancak amaç doğruluğu belirli bir eşiğin üzerinde ise, bu dengesizliği bir sorun olarak bildirilmemiştir.<br><br>**Bu sorunla başlayın-diğer sorunların temel nedeni olabilir.**|
-|Belirsiz tahmin|Turuncu|Bu durum, en üstteki amaç ve sonraki amaç puanlarının, bir sonraki eğitimin üzerinde tulabilecekleri, [negatif örnekleme](luis-how-to-train.md#train-with-all-data) veya daha fazla örnek ekleme amacına bağlı olarak yakın olduğu durumlarda meydana gelir. |
+|Veri dengesizliği|-|Bu durum, örnek sayısı önemli ölçüde farklılık gösterdiği zaman oluşur. Tüm Amaçlar, her türlü örnek _utde aynı_ sayıda örneğe sahip olmalıdır; hiçbiri hariç. Bu, uygulamadaki toplam kullanım miktarının %10 ' dan %15 ' e sahip olmalıdır.<br><br> Veriler imlenebilir ancak amaç doğruluğu belirli bir eşiğin üzerinde ise, bu dengesizliği bir sorun olarak bildirilmemiştir.<br><br>**Bu sorunla başlayın-diğer sorunların temel nedeni olabilir.**|
+|Belirsiz tahmin|Orange|Bu durum, en üstteki amaç ve sonraki amaç puanlarının, bir sonraki eğitimin üzerinde tulabilecekleri, [negatif örnekleme](luis-how-to-train.md#train-with-all-data) veya daha fazla örnek ekleme amacına bağlı olarak yakın olduğu durumlarda meydana gelir. |
 |Yanlış tahminler|Kırmızı|Bu durum, etiketlenmiş amaç (içinde olduğu amaç) için bir örnek bir tahmin olmadığında oluşur.|
 
 Doğru tahminler mavi renkle gösterilir.
@@ -100,7 +100,7 @@ Panoda önerilmediği takdirde, yok amacını eklemeyin.
 
 > [!Tip]
 > Hangi amaçlarla ilgili daha fazla bilgi gerektiren hızlı bir görsel kılavuz olarak, sayfa üzerindeki üçüncü bölümü, **utterer (sayı)** ayarıyla birlikte **Amaç uyarınca** kullanın.  
-    ![Veri dengesizliği olan amaçları bulmak için ' Utterslar (sayı) ' kullanın.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
+    veri dengesizliği olan amaçları bulmak için ' Utterslar (sayı) ' ![kullanın.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
 ### <a name="review-incorrect-predictions"></a>Yanlış tahminleri gözden geçirin
 
@@ -157,17 +157,17 @@ Filtre, belirli bir sorunla olan amaçları bulmanıza olanak sağlar:
 |Filtre|Önerilen yüzde|Amaç|
 |--|--|--|
 |En sorunlu amaçlar|-|**Buradan başlayın** -bu amaca göre, uygulamayı diğer düzeltmelerden daha fazla düzeltme.|
-|Aşağıdaki tahminleri doğru yapın|60%|Bu, seçilen amaç içindeki, doğru olan, ancak eşiğin altında güven puanı bulunan utterslar yüzdesinin yüzdesidir. |
+|Aşağıdaki tahminleri doğru yapın|%60|Bu, seçilen amaç içindeki, doğru olan, ancak eşiğin altında güven puanı bulunan utterslar yüzdesinin yüzdesidir. |
 |Yukarıdaki belirsiz Öngörüler|%15|Bu, en yakın Rival amacına karışarak seçili amaç içindeki dıklarının yüzdesidir.|
 |Yukarıdaki yanlış tahminler|%15|Bu, seçilen amaç içindeki, yanlış tahmin edilen madıklarından yüzdesidir. |
 
 ### <a name="correct-prediction-threshold"></a>Doğru tahmin eşiği
 
-Size güvenilir bir tahmin güvenilirliği puanı nedir? Uygulama geliştirmenin başlangıcında% 60, Hedefinizdeki olabilir. Seçilen amaç içinde düzeltilmesi gereken tüm çakışmaları bulmak için aşağıdaki% 60 oranında **doğru tahminleri** kullanın.
+Size güvenilir bir tahmin güvenilirliği puanı nedir? Uygulama geliştirmenin başlangıcında %60, Hedefinizdeki olabilir. Seçilen amaç içinde düzeltilmesi gereken tüm çakışmaları bulmak için aşağıdaki %60 oranında **doğru tahminleri** kullanın.
 
 ### <a name="unclear-or-incorrect-prediction-threshold"></a>Belirsiz veya yanlış tahmin eşiği
 
-Bu iki filtre, eşiğin ötesinde seçili amaç içindeki uttasları bulmanıza olanak tanır. Bu iki yüzdeyi hata yüzdeleri olarak düşünebilirsiniz. Tahmine dayalı olarak% 10-15 hata oranı rahat olursa, bu değerin üzerindeki tüm çakışmaları bulmak için filtre eşiğini% 15 olarak ayarlayın. 
+Bu iki filtre, eşiğin ötesinde seçili amaç içindeki uttasları bulmanıza olanak tanır. Bu iki yüzdeyi hata yüzdeleri olarak düşünebilirsiniz. Tahmine dayalı olarak% 10-15 hata oranı rahat olursa, bu değerin üzerindeki tüm çakışmaları bulmak için filtre eşiğini %15 olarak ayarlayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

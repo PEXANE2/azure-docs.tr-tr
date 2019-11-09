@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 9073893ebfcfea1a7f4e2a00bf82babcb8841122
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
-ms.translationtype: HT
+ms.openlocfilehash: 690df14e4e09b4a35589446029468a7d757d2732
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838514"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888609"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile ilk modelinizi eğitim ve dağıtma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Yükleme yönergelerini](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) izleyerek şunları yapın:
     + Anaconda 'yı yükler
@@ -269,7 +269,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 ## <a name="deploy-as-a-web-service"></a>Web hizmeti olarak dağıtma
 
-Modelinize göre, çakışmadan ölüm tehlikini tahmin edebilirsiniz. Azure ML 'yi kullanarak modelinizi bir tahmin hizmeti olarak dağıtın. Bu öğreticide, Web hizmetini [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) (aci) ' de dağıtacaksınız.
+Modelinize göre, çakışmadan ölüm tehlikini tahmin edebilirsiniz. Azure ML 'yi kullanarak modelinizi bir tahmin hizmeti olarak dağıtın. Bu öğreticide, Web hizmetini [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (aci) ' de dağıtacaksınız.
 
 ### <a name="register-the-model"></a>Modeli Kaydet
 

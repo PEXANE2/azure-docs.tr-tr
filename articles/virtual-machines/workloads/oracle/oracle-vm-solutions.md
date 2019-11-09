@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 23e638b1d678e6ecf19c23220828185eb0e25a00
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858566"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891449"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı
 
@@ -79,7 +79,7 @@ Azure NetApp Files, Azure yerel hizmeti olarak Azure veri merkezi ortamında ça
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure 'da & Yazılım Oracle Database lisanslama
 Microsoft Azure, Oracle Database çalıştırmaya yönelik yetkili bir bulut ortamıdır. Oracle Core Factor tablosu, bulutta Oracle veritabanları lisanslandığınızda geçerli değildir. Bunun yerine, Enterprise Edition veritabanları için etkinleştirilmiş hiper Iş parçacığı teknolojisine sahip VM 'Leri kullanırken, hiper iş parçacığı etkinse (ilke belgesinde belirtildiği gibi) iki vCPU 'yu bir Oracle Işlemci lisansına eşdeğer olarak Sayın. İlke ayrıntıları [burada](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)bulunabilir.
-Oracle veritabanları genellikle daha yüksek bellek ve GÇ gerektirir. Bu nedenle, bu iş yükleri için [bellek Için Iyileştirilmiş VM 'ler](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) önerilir. İş yüklerinizi daha iyi bir şekilde iyileştirmek için, [kısıtlı çekirdek vCPU 'lar](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) yüksek bellek, depolama ve g/ç bant genişliği gerektiren, yüksek çekirdek sayısı olmayan Oracle DB iş yükleri için önerilir.
+Oracle veritabanları genellikle daha yüksek bellek ve GÇ gerektirir. Bu nedenle, bu iş yükleri için [bellek Için Iyileştirilmiş VM 'ler](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) önerilir. İş yüklerinizi daha iyi bir şekilde iyileştirmek için, [kısıtlı çekirdek vCPU 'lar](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) yüksek bellek, depolama ve g/ç bant genişliği gerektiren, yüksek çekirdek sayısı olmayan Oracle DB iş yükleri için önerilir.
 
 Oracle yazılımı ve iş yüklerini Şirket içinden Microsoft Azure 'e geçirirken Oracle, [Azure 'Da Oracle](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) 'da belirtildiği gibi lisans taşınabilirliği sağlar
 
@@ -90,7 +90,7 @@ Oracle RAC, şirket içi çok düğümlü küme yapılandırmasındaki tek bir d
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma konuları
 Azure 'da Oracle veritabanları kullanırken, herhangi bir kesinti yaşanmasını önlemek için yüksek kullanılabilirlik ve olağanüstü durum kurtarma çözümü uygulamaktan siz sorumlusunuz. 
 
-Oracle Database Enterprise Edition için yüksek kullanılabilirlik ve olağanüstü durum kurtarma (Oracle RAC 'ye güvenmek zorunda kalmadan), iki ayrı sanal bilgisayarda iki veritabanı ile [Data Guard, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html)veya [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)kullanılarak Azure 'da elde edilebilir. larla. Her iki sanal makine da, özel kalıcı IP adresi üzerinden bunlara erişebildiklerinden emin olmak için aynı [sanal ağ](https://azure.microsoft.com/documentation/services/virtual-network/) içinde olmalıdır.  Ayrıca, Azure 'un onları ayrı hata etki alanlarına ve yükseltme etki alanlarına yerleştirmesini sağlamak için sanal makineleri aynı Kullanılabilirlik kümesine yerleştirmenizi öneririz. Coğrafi yedeklilik olmasını, iki farklı bölge arasında çoğaltmak üzere iki veritabanını ayarlama ve iki örneği bir VPN Gateway bağlama.
+Oracle Database Enterprise Edition için yüksek kullanılabilirlik ve olağanüstü durum kurtarma (Oracle RAC 'ye bağlı olmadan), iki ayrı sanal makinede iki veritabanı bulunan [Data Guard, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html)veya [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)kullanılarak Azure 'da elde edilebilir. Her iki sanal makine da, özel kalıcı IP adresi üzerinden bunlara erişebildiklerinden emin olmak için aynı [sanal ağ](https://azure.microsoft.com/documentation/services/virtual-network/) içinde olmalıdır.  Ayrıca, Azure 'un onları ayrı hata etki alanlarına ve yükseltme etki alanlarına yerleştirmesini sağlamak için sanal makineleri aynı Kullanılabilirlik kümesine yerleştirmenizi öneririz. Coğrafi yedeklilik olmasını, iki farklı bölge arasında çoğaltmak üzere iki veritabanını ayarlama ve iki örneği bir VPN Gateway bağlama.
 
 [Azure 'Da Oracle Data Guard 'ı uygulama](configure-oracle-dataguard.md) öğreticisinde, Azure 'da temel kurulum yordamında size adım adım yol gösterilir.  
 
@@ -126,7 +126,7 @@ Oracle Destek notunun [belge kimliği 2178595,1](https://support.oracle.com/epmo
     -Dweblogic.rjvm.enableprotocolswitch=true
     ```
 
-İlgili bilgiler için, bkz <https://support.oracle.com>. KB makalesi **860340,1** .
+İlgili bilgiler için <https://support.oracle.com>KB makalesi **860340,1** bölümüne bakın.
 
 * **Dinamik kümeleme ve yük dengeleme sınırlamaları.** Web Logic Server 'da dinamik bir küme kullanmak istediğinizi ve Azure 'da tek ve genel yük dengeli bir uç nokta ile kullanıma sunduğunuzu varsayalım. Bu işlem, yönetilen sunucuların her biri için (bir aralıktan dinamik olarak atanmayan) sabit bir bağlantı noktası numarası kullandığınız ve yöneticinin izlemediği makinelerden daha fazla yönetilen sunucu başlatmadığı sürece yapılabilir. Diğer bir deyişle, sanal makine başına birden fazla yönetilen sunucu yoktur). Yapılandırmanız, sanal makinelerden (birden çok WebLogic Server örneğinin aynı sanal makineyi paylaştığı) daha fazla WebLogic Servers ile sonuçlanmasına neden olursa, bu WebLogic Servers örneklerinden birden fazlası için mümkün değildir belirli bir bağlantı noktası numarasına bağlamak için. Bu sanal makinedeki diğerleri başarısız olur.
 

@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub ileti yönlendirme sonuçlarını görüntüleme (.NET) | Microsoft Docs
-description: Azure IoT Hub ileti yönlendirme sonuçlarını görüntüleme
+description: Öğreticinin 1. kısmını kullanarak tüm kaynakları ayarladıktan sonra, Azure Stream Analytics iletileri yönlendirme ve sonuçları PowerBI 'da görüntüleme özelliğini ekleyin.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 6d40f7d81faa77a48a32aadefdf44ed89e184efb
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900805"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890403"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Öğretici: 2. Bölüm-yönlendirilmiş iletileri görüntüleme
 
@@ -34,7 +34,7 @@ ms.locfileid: "72900805"
 
 Artık iletilerin yönlendirileceği kaynakları oluşturur, hub 'a ileti göndermek için bir uygulama çalıştırın ve yönlendirme eylemi ' ne bakın.
 
-## <a name="create-a-logic-app"></a>Mantıksal Uygulama oluşturun  
+## <a name="create-a-logic-app"></a>Mantıksal Uygulama oluşturma  
 
 Service Bus kuyruğu kritik olarak belirlenmiş iletileri almak için kullanılacaktır. Service Bus kuyruğunu izlemek ve kuyruğa ileti eklendiğinde bir e-posta göndermek için bir Mantıksal uygulama ayarlayın.
 
@@ -186,7 +186,7 @@ Bu öğreticinin 1. bölümünde, IoT cihazı kullanarak benzetim yapılacak bir
 
 Bu uygulama, farklı ileti yönlendirme yöntemlerinin her biri için iletiler gönderir. Ayrıca, indirme sırasında, tüm Azure Resource Manager şablon ve parametre dosyalarının yanı sıra Azure CLı ve PowerShell betikleri içeren bir klasör de vardır.
 
-Bu öğreticinin 1. bölümünde yer almayan dosyaları depodan indirmediyseniz, şimdi [IoT cihaz benzetimine](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)giderek indirin. Bu bağlantının seçilmesi, içindeki çeşitli uygulamalarla bir depoyu indirir; Aradığınız çözüm iot-hub/öğreticiler/yönlendirme/IoT_SimulatedDevice. sln ' dir. 
+Bu öğreticinin 1. bölümünde yer almayan dosyaları depodan indirmediyseniz, şimdi [IoT cihaz benzetimine](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)giderek indirin. Bu bağlantının seçilmesi, içindeki çeşitli uygulamalarla bir depoyu indirir; Aradığınız çözüm IoT-Hub/öğreticiler/yönlendirme/IoT_SimulatedDevice. sln ' dir. 
 
 Kodu Visual Studio 'da açmak için çözüm dosyasına (IoT_SimulatedDevice. sln) çift tıklayın ve ardından Program.cs ' yi açın. `{your hub name}` değerini IoT hub'ı konak adıyla değiştirin. IoT hub'ı konak adı **{iot-hub-adı}.azure-devices.net** biçimindedid. bu öğreticide, hub konak adı olarak **ContosoTestHub.azure-devices.net** kullanılır. Ardından, `{your device key}` değerini daha önce simülasyon cihazını ayarlarken kaydettiğiniz cihaz anahtarıyla değiştirin. 
 

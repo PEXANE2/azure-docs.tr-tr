@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırma | Microsoft Docs
-description: Azure PowerShell kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırma
+description: Azure PowerShell kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırın. İletideki özelliklere bağlı olarak, bir depolama hesabına veya Service Bus kuyruğuna yönlendirin.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 8b054fd8008b926cf63a28b0730589eaece5042a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: a0a64d694429bddf040deeeb901c776adc8ec595
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809400"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888772"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Öğretici: IoT Hub ileti yönlendirmeyi yapılandırmak için Azure PowerShell kullanma
 
@@ -26,7 +26,7 @@ ms.locfileid: "72809400"
 
 Bu öğreticinin ikinci bölümünde, IoT Hub iletileri göndermek için bir Visual Studio uygulaması indirip çalıştırırsınız. İndirmenin, Azure Resource Manager şablonu ve parametreler dosyasının yanı sıra Azure CLı ve PowerShell betikleri içeren bir klasör vardır. 
 
-Tamamlanmış betiği görüntülemek istiyorsanız, [Azure IoT C# örnekleri](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)' ni indirin. Master. zip dosyasını ayıklayın. Azure CLı betiği **iothub_routing_psh. ps1**olarak/iot-hub/Tutorials/Routing/SimulatedDevice/resources/.
+Tamamlanmış betiği görüntülemek istiyorsanız, [Azure IoT C# örnekleri](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)' ni indirin. Master. zip dosyasını ayıklayın. Azure CLı betiği, **iothub_routing_psh. ps1**olarak/iot-hub/Tutorials/Routing/SimulatedDevice/resources/.
 
 ## <a name="create-your-resources"></a>Kaynaklarınızı oluşturun
 

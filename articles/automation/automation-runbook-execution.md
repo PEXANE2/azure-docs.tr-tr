@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 01a321503a2c55bfc28720675932e6813cdab320
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2f8fa4c378ed394930a4018c58b99ed919cbc2c2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850603"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886960"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu 'nda runbook yürütmesi
 
-Azure Otomasyonu 'nda bir runbook başlattığınızda bir iş oluşturulur. Bir iş, runbook’un tek bir yürütme örneğidir. Her işi çalıştırmak için bir Azure Otomasyonu çalışanı atanır. Çalışanlar birçok Azure hesabı tarafından paylaşıldığında, farklı Otomasyon hesaplarından gerçekleştirilen işler diğerinden yalıtılmıştır. İşiniz için hangi çalışan hizmetleri için istek olduğunu denetleyin. Tek bir runbook 'un tek seferde çalışan çok sayıda işi olabilir. Aynı Otomasyon hesabından gerçekleştirilen işlerin yürütme ortamı yeniden kullanılabilir. Aynı anda çalıştırdığınız daha fazla iş, aynı korumalı alana daha fazla gönderilebilir. Aynı korumalı alan işleminde çalışan işler birbirini etkileyebilir, bir örnek `Disconnect-AzureRMAccount` cmdlet 'i çalıştırıyor olur. Bu cmdlet 'in çalıştırılması, paylaşılan korumalı alan işlemindeki her runbook işinin bağlantısını keser. Azure portal runbook 'ların listesini görüntülediğinizde, her runbook için başlatılan tüm işlerin durumunu listeler. Her runbook 'un durumunu izlemek için işlerin listesini görüntüleyebilirsiniz. İş günlükleri en fazla 30 gün boyunca depolanır. Farklı iş durumları [Iş durumlarının](#job-statuses)açıklaması için.
+Azure Otomasyonu 'nda bir runbook başlattığınızda bir iş oluşturulur. Bir iş, runbook 'un tek bir yürütme örneğidir. Her işi çalıştırmak için bir Azure Otomasyonu çalışanı atanır. Çalışanlar birçok Azure hesabı tarafından paylaşıldığında, farklı Otomasyon hesaplarından gerçekleştirilen işler diğerinden yalıtılmıştır. İşiniz için hangi çalışan hizmetleri için istek olduğunu denetleyin. Tek bir runbook 'un tek seferde çalışan çok sayıda işi olabilir. Aynı Otomasyon hesabından gerçekleştirilen işlerin yürütme ortamı yeniden kullanılabilir. Aynı anda çalıştırdığınız daha fazla iş, aynı korumalı alana daha fazla gönderilebilir. Aynı korumalı alan işleminde çalışan işler birbirini etkileyebilir, bir örnek `Disconnect-AzureRMAccount` cmdlet 'ini çalıştırıyor olabilir. Bu cmdlet 'in çalıştırılması, paylaşılan korumalı alan işlemindeki her runbook işinin bağlantısını keser. Azure portal runbook 'ların listesini görüntülediğinizde, her runbook için başlatılan tüm işlerin durumunu listeler. Her runbook 'un durumunu izlemek için işlerin listesini görüntüleyebilirsiniz. İş günlükleri en fazla 30 gün boyunca depolanır. Farklı iş durumları [Iş durumlarının](#job-statuses)açıklaması için.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -45,7 +45,7 @@ Azure Otomasyonu 'ndaki runbook 'lar, Azure 'da veya [karma Runbook Worker](auto
 |Belirli gereksinimlere sahip modülleri kullanma| Karma Runbook Çalışanı|Bazı örnekler şunlardır:</br> **WinSCP** -WinSCP. exe ' de bağımlılık </br> **Iısadministration** -IIS 'nin etkinleştirilmesini gerektirir|
 |Yükleyici gerektiren modülü yükleme|Karma Runbook Çalışanı|Korumalı alan için modüller copable olmalıdır|
 |4\.7.2 'ten farklı .NET Framework gerektiren runbook 'ları veya modülleri kullanma|Karma Runbook Çalışanı|Automation korumalı alanlar .NET Framework 4.7.2 sahiptir ve bunu yükseltmenin bir yolu yoktur|
-|Yükseltme gerektiren betikler|Karma Runbook Çalışanı|Korumalı alanlar yükseltmeye izin vermez. Bunu çözümlemek için karma runbook çalışanı kullanın ve yükseltme gerektiren komutu çalıştırırken UAC 'yi kapatabilir ve kullanabilirsiniz `Invoke-Command`|
+|Yükseltme gerektiren betikler|Karma Runbook Çalışanı|Korumalı alanlar yükseltmeye izin vermez. Bunu çözümlemek için karma bir runbook worker kullanın ve yükseltme gerektiren komutu çalıştırırken UAC 'yi kapatabilir ve `Invoke-Command` kullanabilirsiniz|
 |WMI erişimi gerektiren betikler|Karma Runbook Çalışanı|Bulutta korumalı alanlar üzerinde çalışan işlerin [WMI erişimi yok](#device-and-application-characteristics)|
 
 ## <a name="runbook-behavior"></a>Runbook davranışı
@@ -118,7 +118,7 @@ If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Stat
 
 ### <a name="working-with-multiple-subscriptions"></a>Birden fazla abonelik ile çalışma
 
-Birden çok abonelikle ilgilenen runbook 'ları yazarken, runbook 'unuz, kimlik doğrulama bağlamınızın aynı korumalı alanda çalışan başka bir runbook 'tan alınmadığından emin olmak için [Disable-AzureRmContextAutosave](/powershell/module/azurerm.profile/disable-azurermcontextautosave) cmdlet 'ini kullanır. Daha sonra, `-AzureRmContext` cmdlet 'lerinizin `AzureRM` parametresini kullanmanız ve uygun bağlam geçirmeniz gerekir.
+Birden çok abonelikle ilgilenen runbook 'ları yazarken, runbook 'unuz, kimlik doğrulama bağlamınızın aynı korumalı alanda çalışan başka bir runbook 'tan alınmadığından emin olmak için [Disable-AzureRmContextAutosave](/powershell/module/azurerm.profile/disable-azurermcontextautosave) cmdlet 'ini kullanır. Daha sonra, `AzureRM` cmdlet 'lerinde `-AzureRmContext` parametresini kullanmanız ve uygun bağlamınızı geçirmeniz gerekir.
 
 ```powershell
 # Ensures you do not inherit an AzureRMContext in your runbook
@@ -149,7 +149,7 @@ Betikler yazarken, özel durumları ve potansiyel aralıklı sorunları işleyeb
 
 #### <a name="erroractionpreference"></a>$ErrorActionPreference
 
-[$ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) tercih değişkeni, PowerShell 'in Sonlandırıcı olmayan bir hataya nasıl yanıt vereceğini belirler. Hataları sonlandırma, tarafından `$ErrorActionPreference`etkilenmez, her zaman sonlandırılır. Kullanarak `$ErrorActionPreference` `PathNotFound` , cmdlet`Get-ChildItem` 'ten benzer bir şekilde genellikle Sonlandırılmamış bir hata runbook 'un tamamlanmasını durdurur. Aşağıdaki örnekte kullanımı `$ErrorActionPreference`gösterilmektedir. Komut dosyası `Write-Output` duracaktır, son satır hiçbir şekilde yürütülmeyecektir.
+[$ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) tercih değişkeni, PowerShell 'in Sonlandırıcı olmayan bir hataya nasıl yanıt vereceğini belirler. Hata sonlandırma `$ErrorActionPreference`bundan etkilenmez, her zaman sonlandırılır. `$ErrorActionPreference`kullanarak, `Get-ChildItem` cmdlet 'inden `PathNotFound` gibi Normalde Sonlandırılmamış bir hata runbook 'un tamamlanmasını durdurur. Aşağıdaki örnekte `$ErrorActionPreference`kullanımı gösterilmektedir. Komut dosyası durulacağı için son `Write-Output` satırı hiçbir şekilde yürütülmeyecektir.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -159,7 +159,7 @@ Write-Output "This message will not show"
 
 #### <a name="try-catch-finally"></a>Son catch 'i deneyin
 
-[Deneme](/powershell/module/microsoft.powershell.core/about/about_try_catch_finally) hatalarını işlemenize yardımcı olması için PowerShell betiklerinizde catch 'i deneyin. Try catch 'i kullanarak belirli özel durumları veya genel özel durumları yakalayabilirsiniz. Catch ifadesinin hataları izlemek için kullanılması veya hatayı işlemeye çalışmak için kullanılması gerekir. Aşağıdaki örnek varolmayan bir dosyayı indirmeye çalışır. `System.Net.WebException` Bu, bir özel durum oluşursa, son değer döndürülür.
+[Deneme](/powershell/module/microsoft.powershell.core/about/about_try_catch_finally) hatalarını işlemenize yardımcı olması için PowerShell betiklerinizde catch 'i deneyin. Try catch 'i kullanarak belirli özel durumları veya genel özel durumları yakalayabilirsiniz. Catch ifadesinin hataları izlemek için kullanılması veya hatayı işlemeye çalışmak için kullanılması gerekir. Aşağıdaki örnek varolmayan bir dosyayı indirmeye çalışır. Bir özel durum oluşursa, son değer döndürülen `System.Net.WebException` özel durumu yakalar.
 
 ```powershell-interactive
 try
@@ -179,7 +179,7 @@ catch
 
 #### <a name="throw"></a>Yaratır
 
-[Throw](/powershell/module/microsoft.powershell.core/about/about_throw) , sonlandırma hatası oluşturmak için kullanılabilir. Bu, bir runbook 'ta kendi mantığınızı tanımlarken yararlı olabilir. Komut dosyasını durduran belirli bir ölçüt karşılanıyorsa, komut dosyasını durdurmak için ' i `throw` kullanabilirsiniz. Aşağıdaki örnek, kullanan `throw`bir işlev parametresi olan makineyi gösterir.
+[Throw](/powershell/module/microsoft.powershell.core/about/about_throw) , sonlandırma hatası oluşturmak için kullanılabilir. Bu, bir runbook 'ta kendi mantığınızı tanımlarken yararlı olabilir. Komut dosyasını durduran belirli bir ölçüt karşılanıyorsa, betiği durdurmak için `throw` kullanabilirsiniz. Aşağıdaki örnek, `throw`kullanarak makine için gereken bir işlev parametresini gösterir.
 
 ```powershell-interactive
 function Get-ContosoFiles
@@ -199,22 +199,22 @@ Azure korumalı alanında çalıştırılan runbook işlerinin hiçbir cihaza ve
 
 ## <a name="job-statuses"></a>İş durumları
 
-Aşağıdaki tablo, bir iş için olası farklı durumlarını tanımlar. PowerShell 'de iki tür hata, sonlandırma ve sonlandırma olmayan hatalar vardır. Hataların sonlandırılması, meydana gelir durumunda runbook durumunu **başarısız** olarak ayarlar. Sonlandırılmamış hatalar, komut dosyasının gerçekleştikten sonra bile devam etmesine izin verir. Sonlandırıcı olmayan bir hata örneği, `Get-ChildItem` mevcut olmayan bir yol ile cmdlet 'ini kullanmaktır. PowerShell yolun mevcut olmadığını, bir hata olduğunu ve sonraki klasöre devam ettiğini görür. Bu hata runbook durumunu **başarısız** olarak ayarlanmamış ve **tamamlandı**olarak işaretlenebilir. Bir runbook 'u Sonlandırıcı olmayan bir hata üzerinde durmaya zorlamak için cmdlet 'inde kullanabilirsiniz `-ErrorAction Stop` .
+Aşağıdaki tabloda, bir iş için olası farklı durumlar açıklanmaktadır. PowerShell 'de iki tür hata, sonlandırma ve sonlandırma olmayan hatalar vardır. Hataların sonlandırılması, meydana gelir durumunda runbook durumunu **başarısız** olarak ayarlar. Sonlandırılmamış hatalar, komut dosyasının gerçekleştikten sonra bile devam etmesine izin verir. Sonlandırıcı olmayan bir hata örneği, mevcut olmayan bir yol ile `Get-ChildItem` cmdlet 'ini kullanmaktır. PowerShell yolun mevcut olmadığını, bir hata olduğunu ve sonraki klasöre devam ettiğini görür. Bu hata runbook durumunu **başarısız** olarak ayarlanmamış ve **tamamlandı**olarak işaretlenebilir. Bir runbook 'u Sonlandırıcı olmayan bir hata üzerinde durdurmaya zorlamak için cmdlet üzerinde `-ErrorAction Stop` kullanabilirsiniz.
 
 | Durum | Açıklama |
 |:--- |:--- |
 | Tamamlandı |İş başarıyla tamamlandı. |
 | Başarısız |[Grafik ve PowerShell Iş akışı runbook 'ları](automation-runbook-types.md)için Runbook derlenemedi. [PowerShell betiği runbook 'ları](automation-runbook-types.md)için Runbook başlatılamadı veya iş bir özel duruma sahipti. |
 | Başarısız, kaynak bekleniyor |İş başarısız oldu çünkü bu, [dengeli](#fair-share) bir şekilde, her seferinde ve aynı denetim noktasından ya da runbook 'un başlangıcından her seferinde başlatılmış |
-| Kuyruğa alındı |İş, başlatılabilmek için Otomasyon çalışanındaki kaynakları bekliyor. |
+| Kuyruktan |İş, bir Otomasyon çalışanındaki kaynakların başlatılabilmesini sağlamak için kullanılabilir hale gelmesini bekliyor. |
 | Başlatılıyor |İş bir çalışana atandı ve sistem tarafından başlatılıyor. |
-| Sürdürülüyor |Sistem askıya alındıktan sonra işi sürdürüyor. |
+| Etmek |Sistem askıya alındıktan sonra işi sürdürüyor. |
 | Çalışıyor |İş çalışıyor. |
 | Çalışıyor, kaynakları bekliyor |İş, [dengeli bir paylaşımın](#fair-share) sınırına ulaştığından kaldırıldı. Kısa süre içinde son denetim noktasından devam eder. |
-| Durduruldu |İş tamamlanmadan kullanıcı tarafından durduruldu. |
+| Durduruldu |İş tamamlanmadan önce Kullanıcı tarafından durduruldu. |
 | Durduruluyor |Sistem işi durduruyor. |
-| Askıya alındı |İş; kullanıcı, sistem veya runbook'taki bir komut tarafından askıya alındı. Bir runbook 'ta bir denetim noktası yoksa, runbook 'un başından başlatılır. Bir denetim noktası varsa, yeniden başlayabilir ve son denetim noktasından sürdürebilirsiniz. Runbook yalnızca bir özel durum oluştuğunda sistem tarafından askıya alınır. Varsayılan olarak, ErrorActionPreference devam olarak ayarlanır, yani iş bir hata üzerinde çalışmaya devam **eder**. Bu tercih değişkeni **Durdur**olarak ayarlandıysa, iş bir hata üzerinde askıya alınır. Yalnızca [grafik ve PowerShell Iş akışı runbook 'ları](automation-runbook-types.md) için geçerlidir. |
-| Askıya alınıyor |Sistem, kullanıcının isteği sırasında işi askıya almaya çalışıyor. Runbook, askıya alınmadan önce bir sonraki denetim noktasına ulaşmalıdır. Son denetim noktasını zaten geçirtiyse, askıya alınmadan önce tamamlanır. Yalnızca [grafik ve PowerShell Iş akışı runbook 'ları](automation-runbook-types.md) için geçerlidir. |
+| Alın |İş, Kullanıcı tarafından, sistem tarafından veya Runbook 'taki bir komut tarafından askıya alındı. Bir runbook 'ta bir denetim noktası yoksa, runbook 'un başından başlatılır. Bir denetim noktası varsa, yeniden başlayabilir ve son denetim noktasından sürdürebilirsiniz. Runbook yalnızca bir özel durum oluştuğunda sistem tarafından askıya alınır. Varsayılan olarak, ErrorActionPreference devam olarak ayarlanır, yani iş bir hata üzerinde çalışmaya devam **eder**. Bu tercih değişkeni **Durdur**olarak ayarlandıysa, iş bir hata üzerinde askıya alınır. Yalnızca [grafik ve PowerShell Iş akışı runbook 'ları](automation-runbook-types.md) için geçerlidir. |
+| Askıya alma |Sistem, kullanıcının isteği sırasında işi askıya almaya çalışıyor. Runbook, askıya alınmadan önce bir sonraki denetim noktasına ulaşmalıdır. Son denetim noktasını zaten geçirtiyse, askıya alınmadan önce tamamlanır. Yalnızca [grafik ve PowerShell Iş akışı runbook 'ları](automation-runbook-types.md) için geçerlidir. |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Azure portal iş durumunu görüntüleme
 
@@ -242,7 +242,7 @@ Alternatif olarak, Otomasyon hesabınızdaki runbook **'lar** sayfasından söz 
 
 ### <a name="job-summary"></a>İş Özeti
 
-Belirli bir runbook için oluşturulmuş tüm işlerin listesini ve en son durumunu görüntüleyebilirsiniz. Bu listeyi iş durumuna ve iş için yapılan son değişikliğin tarih aralığına göre filtreleyebilirsiniz. Ayrıntılı bilgilerini ve çıktısını görüntülemek için bir işin adına tıklayın. İşin ayrıntılı görünümü, bu iş için sağlanan runbook parametrelerinin değerlerini içerir.
+Belirli bir runbook için oluşturulmuş tüm işlerin listesini ve en son durumunu görüntüleyebilirsiniz. Bu listeyi iş durumuna ve iş için yapılan son değişikliğin tarih aralığına göre filtreleyebilirsiniz. Ayrıntılı bilgilerini ve çıktısını görüntülemek için bir işin adına tıklayın. İşin ayrıntılı görünümü, bu iş için sağlanmış olan runbook parametrelerinin değerlerini içerir.
 
 Bir runbook işlerini görüntülemek için aşağıdaki adımları kullanabilirsiniz.
 
@@ -327,4 +327,4 @@ Diğer bir seçenek de runbook 'u alt runbook 'ları kullanarak iyileştirmeniz 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Otomasyonu 'nda bir runbook başlatmak için kullanılabilecek farklı yöntemler hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'nda runbook başlatma](automation-starting-a-runbook.md)
-* Dil başvurusu ve öğrenme modülleri de dahil olmak üzere PowerShell hakkında daha fazla bilgi için [PowerShell belgelerine](https://docs.microsoft.com/en-us/powershell/scripting/overview)bakın.
+* Dil başvurusu ve öğrenme modülleri de dahil olmak üzere PowerShell hakkında daha fazla bilgi için [PowerShell belgelerine](https://docs.microsoft.com/powershell/scripting/overview)bakın.

@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1908ed916d61c7a65b1f0061c0fe8d8a08b5e41c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ed9bd6f5932fdcb2d9124a000115a6f68cf21613
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388102"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889301"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Modern Okuyucu SDK 'Sı başvuru kılavuzu
 
 Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu Web uygulamanızla tümleştirmenize olanak tanıyan bir JavaScript kitaplığıdır.
 
-# <a name="functions"></a>İşlevler
+## <a name="functions"></a>İşlevler
 
 SDK işlevleri kullanıma sunar:
 
@@ -33,7 +33,7 @@ SDK işlevleri kullanıma sunar:
 
 ## <a name="launchasync"></a>launchAsync
 
-Web uygulamanızda bir `iframe` içinde tam ekran okuyucu başlatır.
+Web uygulamanızdaki bir `iframe` içinde tam ekran okuyucu başlatır.
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
@@ -41,7 +41,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Parametreler
 
-| Adı | Tür | Açıklama |
+| Ad | Tür | Açıklama |
 | ---- | ---- |------------ |
 | `token` | string | Azure AD kimlik doğrulama belirteci. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
 | `subdomain` | string | Azure 'daki tam ekran okuyucu kaynağınızın özel alt etki alanı. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
@@ -50,17 +50,17 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="returns"></a>Döndürdüğü
 
-Derinlikli okuyucu yüklendiğinde çözümlenen bir `Promise<HTMLDivElement>` döndürür. @No__t-0, yalnızca alt öğesi, tam ekran okuyucu sayfasını içeren bir `iframe` öğesi olan bir `div` öğesine çözümleniyor.
+Derinlikli okuyucu yüklendiğinde çözümlenen bir `Promise<HTMLDivElement>`döndürür. `Promise`, yalnızca alt öğesi, tam ekran okuyucu sayfasını içeren bir `iframe` öğesi olan bir `div` öğesine çözümlenir.
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
-Tam ekran okuyucu yükleyemediğinde, döndürülen `Promise` bir [`Error`](#error) nesnesiyle reddedilir. Daha fazla bilgi için bkz. [hata kodları](#error-codes).
+Tam ekran okuyucu yüklenemezse, döndürülen `Promise` bir [`Error`](#error) nesnesiyle reddedilir. Daha fazla bilgi için bkz. [hata kodları](#error-codes).
 
 ## <a name="close"></a>kapat
 
 Tam ekran okuyucuyu kapatır.
 
-Bu işlev için örnek kullanım örneği, [seçeneklerde](#options)```hideExitButton: true``` ayarlanarak çıkış düğmesidir. Ardından, farklı bir düğme (örneğin, bir mobil üstbilginin geri oku) tıklandığında bu ```close``` işlevini çağırabilir.
+Bu işlev için bir örnek kullanım örneği, [Seçenekler](#options)içinde ```hideExitButton: true``` ayarlanarak çıkış düğmesinin gizlenmesidir. Ardından, farklı bir düğme (örneğin, bir mobil üstbilginin geri oku) tıklandığında bu ```close``` işlevi çağırabilir.
 
 ```typescript
 close(): void;
@@ -68,7 +68,7 @@ close(): void;
 
 ## <a name="renderbuttons"></a>renderButtons
 
-Bu işlev, belgenin tam ekran okuyucusu düğme öğelerini stiller ve güncelleştirir. @No__t-0 sağlanırsa, bu işlev ```options.elements``` içindeki düğmeleri işleyebilir. Aksi takdirde, düğmeler, ```immersive-reader-button``` sınıfına sahip olan belge öğeleri içinde işlenir.
+Bu işlev, belgenin tam ekran okuyucusu düğme öğelerini stiller ve güncelleştirir. ```options.elements``` sağlanmışsa, bu işlev ```options.elements```içindeki düğmeleri işleyebilir. Aksi halde, düğmeler, belgenin ```immersive-reader-button```sınıfına sahip olan öğeleri içinde işlenir.
 
 Bu işlev, pencere yüklendiğinde SDK tarafından otomatik olarak çağırılır.
 
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parametreler
 
-| Adı | Tür | Açıklama |
+| Ad | Tür | Açıklama |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | RenderButtons işlevinin belirli davranışlarını yapılandırmaya yönelik seçenekler. İsteğe bağlı. |
 
@@ -124,7 +124,7 @@ Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
 | Yazı tipi stilleri | Kalın, Italik, altı çizili, kod, üstü çizili, üst simge, alt simge |
 | Sırasız listeler | Disk, daire, kare |
 | Sıralı listeler | Ondalık, büyük Alfa, alt Alfa, büyük Latin, alt roman |
-| Lerinin | Yakında |
+| Lerinin | Çok Yakında |
 
 Desteklenmeyen Etiketler comparably işlenecek. Görüntüler ve tablolar şu anda desteklenmiyor.
 
@@ -168,16 +168,16 @@ Hata hakkındaki bilgileri içerir.
 
 #### <a name="error-codes"></a>Hata kodları
 
-| Kodlayın | Açıklama |
+| Kod | Açıklama |
 | ---- | ----------- |
 | BadArgument | Sağlanan bağımsız değişken geçersiz, Ayrıntılar için bkz. `message`. |
-| aş | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
+| Aş | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
 | Tokenaşımına uğradı | Sağlanan belirtecin geçerliliği zaman aşımına uğradı. |
 | Sürecek | Çağrı hızı sınırı aşıldı. |
 
 ## <a name="launching-the-immersive-reader"></a>Modern okuyucu başlatılıyor
 
-SDK, tam ekran okuyucuyu başlatmaya yönelik düğme için varsayılan stil sağlar. Bu stillendirme özelliğini etkinleştirmek için `immersive-reader-button` Sınıf özniteliğini kullanın.
+SDK, tam ekran okuyucuyu başlatmaya yönelik düğme için varsayılan stil sağlar. Bu stillendirme özelliğini etkinleştirmek için `immersive-reader-button` Class özniteliğini kullanın.
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -189,8 +189,8 @@ Düğmenin genel görünümünü yapılandırmak için aşağıdaki öznitelikle
 
 | Öznitelik | Açıklama |
 | --------- | ----------- |
-| `data-button-style` | Düğmenin stilini ayarlar. @No__t-0, `text` veya `iconAndText` olabilir. Varsayılan değer `icon` ' dır. |
-| `data-locale` | Yerel ayarı ayarlar. Örneğin, `en-US` veya `fr-FR`. Varsayılan olarak Ingilizce `en` olur. |
+| `data-button-style` | Düğmenin stilini ayarlar. `icon`, `text`veya `iconAndText`olabilir. Varsayılan olarak `icon`olur. |
+| `data-locale` | Yerel ayarı ayarlar. Örneğin, `en-US` veya `fr-FR`. Varsayılan olarak Ingilizce `en`. |
 | `data-icon-px-size` | Simgenin boyutunu piksel cinsinden ayarlar. Varsayılan değer 20 px olur. |
 
 ## <a name="browser-support"></a>Tarayıcı desteği

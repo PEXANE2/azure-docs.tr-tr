@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6fc70b55b3e672ecc67eb1145bb751de33d998a1
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: e6bd9b5c09e1af5ec587e1f0e52ab25d21d2293b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847428"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889606"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Inest geçmiş telemetri verileri
 
@@ -50,11 +50,14 @@ Bunları oluşturmak için aşağıdaki adımları izleyin:
 
     ![Proje grubu ları](./media/for-tutorials/power-shell-two-1.png)
 
-5. Dosyaların karşıya yüklendiği dizine gidin (varsayılan olarak,/Home/username/ana dizinine yüklenir.
+5. Dosyaların karşıya yüklendiği dizine git
+
+   >[!NOTE]
+   > Dosya varsayılan olarak,/Home/username/giriş dizinine yüklenir.
 6. Komutunu kullanarak betiği çalıştırın:  
 
     ```azurepowershell-interactive
-    PS> ./generateCredentials.ps1
+    ./generateCredentials.ps1
     ```
 
 7. Yordamı gerçekleştirmek için ekrandaki yönergeleri izleyin.
@@ -127,7 +130,9 @@ Farmtts veri hub 'ı, yukarıdaki bölümde oluşturduğumuz aşağıdaki kimlik
 
 Yukarıdaki kimlik bilgilerini kullanarak, çağıran, üstbilgi bölümündeki sonraki API isteklerinde gönderilmesi gereken bir erişim belirteci isteğinde bulunabilir:
 
-Üstbilgiler = *{"Authorization": "taşıyıcı" + access_token,...}*
+```
+headers = *{"Authorization": "Bearer " + access_token, …}*
+```
 
 **Http Istek üstbilgileri**:
 
@@ -161,8 +166,10 @@ Aşağıda, Farmtts veri merkezine bir API çağrısı yapılırken belirtilmesi
     "additionalProp3": {}
   }
 }
+```
 
-Device
+Cihaz
+
 ```json
 {
   "deviceModelId": "string",
@@ -242,7 +249,7 @@ Algılayıcısı
 ```
 Aşağıdaki örnek istek bir cihaz oluşturmaktır (Bu, istek gövdesinde yük olarak bir JSON girişi olur).  
 
-```
+```azurepowershell-interactive
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
 "accept: application/json" -H  "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>" -d "
@@ -266,6 +273,7 @@ Artık cihaz ve sensörler ' de bir cihaz oluşturdığınıza göre, ilişkili 
 
 Bir EventHub istemcisi olarak kurulan bir bağlantınız olduğunda, EventHub 'e bir JSON olarak ileti gönderebilirsiniz.  
 Geçmiş algılayıcı veri biçimini Azure Farmtarafından anladığı kurallı bir biçime dönüştürün. Kurallı ileti biçimi aşağıdaki gibidir:  
+
 
 
  ```

@@ -16,7 +16,7 @@
     - name: IoT Hub’a cihaz bağlama - Linux
       href: quickstart-connect-pnp-device-linux.md
     - name: IoT Central’a cihaz bağlama
-      href: ../iot-central/core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      href: ../iot-central/preview/quick-create-pnp-device.md
     - name: Çözümünüzde bir cihaza bağlanma
       href: quickstart-connect-pnp-device-solution.md
 - name: Öğreticiler

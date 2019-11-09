@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9206bf07a36cc5724b173790eb94037cb86add9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 25b0ec1b86a59b944cdb895bd536da32a1f8595b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952088"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884501"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central mimarisi
 
@@ -83,7 +83,7 @@ Bir uygulama, her bir cihaz şablonuna dayalı bir veya daha fazla sanal ve ger�
 
 ## <a name="data-export"></a>Veri dışarı aktarma
 
-Azure IoT Central uygulamasında verilerinizi kendi Azure Event Hubs ve Azure Service Bus örneklerine [sürekli olarak dışarı aktarabilirsiniz](howto-export-data-event-hubs-service-bus.md) . Ayrıca verilerinizi Azure Blob depolama hesabınıza düzenli olarak dışarı aktarabilirsiniz. IoT Central ölçümleri, cihazları ve cihaz şablonlarını dışarı aktarabilir.
+Azure IoT Central uygulamasında verilerinizi kendi Azure Event Hubs, Azure Service Bus ve Azure Blob depolama örneklerine [sürekli olarak dışarı aktarabilirsiniz](howto-export-data-event-hubs-service-bus.md) . IoT Central ölçümleri, cihazları ve cihaz şablonlarını dışarı aktarabilir.
 
 ## <a name="batch-device-updates"></a>Batch cihaz güncelleştirmeleri
 

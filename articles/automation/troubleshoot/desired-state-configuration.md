@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7be5e814d8092b523fa69fdd84f0e1476736fda2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259171"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887710"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Istenen durum yapılandırması (DSC) sorunlarını giderme
 
@@ -24,7 +24,7 @@ Bu makalede, Istenen durum yapılandırması (DSC) ile ilgili sorunları giderme
 
 Azure Durum Yapılandırması 'nda yapılandırmaları derlerken veya dağıtmada hatalar olduğunda, sorunu tanılamanıza yardımcı olacak birkaç adım aşağıda verilmiştir.
 
-1. **Yapılandırmanızın yerel makinenizde başarıyla derlendiğinden emin olun:**  Azure Durum Yapılandırması PowerShell DSC üzerine kurulmuştur. DSC dilinin ve sözdiziminin belgelerini [POWERSHELL DSC docs](https://docs.microsoft.com/en-us/powershell/scripting/overview)' da bulabilirsiniz.
+1. **Yapılandırmanızın yerel makinenizde başarıyla derlendiğinden emin olun:**  Azure Durum Yapılandırması PowerShell DSC üzerine kurulmuştur. DSC dilinin ve sözdiziminin belgelerini [POWERSHELL DSC docs](https://docs.microsoft.com/powershell/scripting/overview)' da bulabilirsiniz.
 
    Yerel makinenizde DSC yapılandırmanızı derleyerek, şu gibi yaygın hataları bulabilir ve çözebilirsiniz:
 
@@ -32,7 +32,7 @@ Azure Durum Yapılandırması 'nda yapılandırmaları derlerken veya dağıtmad
    - **Sözdizimi hataları**
    - **Mantık hataları**
 
-2. **Düğümünüz için DSC günlüklerini görüntüleyin:** Yapılandırmanız başarıyla derlenir, ancak bir düğüme uygulandığında başarısız olursa, günlüklerde ayrıntılı bilgiler bulabilirsiniz. DSC günlüklerinin nerede bulunacağı hakkında daha fazla bilgi için, bkz. [WHERE DSC olay günlükleri](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
+2. **Düğümünüz IÇIN DSC günlüklerini görüntüleyin:** Yapılandırmanız başarıyla derlenir, ancak bir düğüme uygulandığında başarısız olursa, günlüklerde ayrıntılı bilgiler bulabilirsiniz. DSC günlüklerinin nerede bulunacağı hakkında daha fazla bilgi için, bkz. [WHERE DSC olay günlükleri](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
    Ayrıca, [Xdscdiagnostics](https://github.com/PowerShell/xDscDiagnostics) , DSC günlüklerinden ayrıntılı bilgiler ayrıştırılırken size yardımcı olabilir. Desteğe başvurursanız, bu günlüklerin sorununuzu tanılamak için bu günlüklere ihtiyacı olacaktır.
 
@@ -45,7 +45,7 @@ Azure Durum Yapılandırması 'nda yapılandırmaları derlerken veya dağıtmad
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Istenen durum yapılandırması (DSC) ile çalışırken sık karşılaşılan hatalar
 
-### <a name="unsupported-characters"></a>Senaryon Özel karakterler içeren bir yapılandırma portaldan silinemiyor
+### <a name="unsupported-characters"></a>Senaryo: özel karakterler içeren bir yapılandırma portaldan silinemiyor
 
 #### <a name="issue"></a>Sorun
 
@@ -65,11 +65,11 @@ Bu hata, çözülmesi planlanan geçici bir sorundur.
 * Bu cmdlet 'in belgeleri henüz güncelleştirilmedi.  Bu durumda, Azurere modülünün belgelerine başvurun.
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="failed-to-register-agent"></a>Senaryon DSC Aracısı kaydettirilemedi
+### <a name="failed-to-register-agent"></a>Senaryo: DSC aracısının kaydı yapılamadı
 
 #### <a name="issue"></a>Sorun
 
-Ya da başka bir `Set-DscLocalConfigurationManager` DSC cmdlet 'i çalışmaya çalışırken şu hatayı alıyorsunuz:
+`Set-DscLocalConfigurationManager` veya başka bir DSC cmdlet 'ini çalıştırmaya çalışırken şu hatayı alıyorsunuz:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -90,7 +90,7 @@ Bu hata, normalde bir güvenlik duvarının, bir proxy sunucusunun arkasında ol
 
 Makinenizin Azure Automation DSC için uygun uç noktalara erişimi olduğunu doğrulayın ve yeniden deneyin. Gereken bağlantı noktaları ve adreslerin listesi için bkz. [ağ planlama](../automation-dsc-overview.md#network-planning)
 
-### <a name="failed-not-found"></a>Senaryon Düğüm, "bulunamadı" hatası ile başarısız durumda
+### <a name="failed-not-found"></a>Senaryo: düğüm, "bulunamadı" hatası ile başarısız durumda
 
 #### <a name="issue"></a>Sorun
 
@@ -112,7 +112,7 @@ Bu hata genellikle düğüm bir düğüm yapılandırma adı (örneğin, ABC) ye
   * Azure portal kullanarak bir düğüme düğüm yapılandırması atamak için **DSC düğümleri** sayfasını açın, ardından bir düğüm seçin ve **düğüm yapılandırması ata** düğmesine tıklayın.
   * PowerShell cmdlet 'ini kullanarak bir düğüme düğüm yapılandırması atamak için **set-AzureRmAutomationDscNode** cmdlet 'ini kullanın
 
-### <a name="no-mof-files"></a>Senaryon Bir yapılandırma derlendiğinde hiçbir düğüm yapılandırması (MOF dosyası) üretilmedi
+### <a name="no-mof-files"></a>Senaryo: bir yapılandırma derlendiğinde hiçbir düğüm yapılandırması (MOF dosyası) üretilmedi
 
 #### <a name="issue"></a>Sorun
 
@@ -124,7 +124,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 #### <a name="cause"></a>Nedeni
 
-DSC yapılandırmasındaki **düğüm** anahtar sözcüğünü izleyen ifade olarak `$null`değerlendirilirse, hiçbir düğüm yapılandırması üretilmez.
+DSC yapılandırmasındaki **düğüm** anahtar sözcüğünü izleyen ifade `$null`olarak değerlendirilirse, hiçbir düğüm yapılandırması üretilmez.
 
 #### <a name="resolution"></a>Çözüm
 
@@ -133,7 +133,7 @@ Aşağıdaki çözümlerden herhangi biri sorunu çözer:
 * Yapılandırma tanımındaki **node** anahtar sözcüğünün yanındaki ifadenin $null olarak değerlendirilmediğinden emin olun.
 * Yapılandırmayı derlerken ConfigurationData geçiriyorken, yapılandırmanın [configurationData](../automation-dsc-compile.md)tarafından gerek duyduğu beklenen değerleri geçirdiğinizden emin olun.
 
-### <a name="dsc-in-progress"></a>Senaryon DSC düğüm raporu "sürüyor" durumunda kalmış olur
+### <a name="dsc-in-progress"></a>Senaryo: DSC düğüm raporu "sürüyor" durumunda takılmış olur
 
 #### <a name="issue"></a>Sorun
 
@@ -151,7 +151,7 @@ WMF sürümünüzü yükselttiniz ve WMI 'yi bozmuş olursunuz.
 
 Sorunu gidermek için, [DSC bilinen sorunlar ve sınırlamalar](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) makalesindeki yönergeleri izleyin.
 
-### <a name="issue-using-credential"></a>Senaryon DSC yapılandırmasında kimlik bilgileri kullanılamıyor
+### <a name="issue-using-credential"></a>Senaryo: DSC yapılandırmasında kimlik bilgileri kullanılamıyor
 
 #### <a name="issue"></a>Sorun
 
@@ -169,7 +169,7 @@ Yapılandırmada bir kimlik bilgisi kullandınız, ancak her düğüm yapıland�
 
 * Yapılandırmada belirtilen her düğüm yapılandırması için **Psdscallowplaintextpassword** öğesini true olarak ayarlamak üzere doğru **configurationData** ' ın geçdiğinizden emin olun. Daha fazla bilgi için bkz. [Azure Automation DSC varlıklar](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
-### <a name="failure-processing-extension"></a>Senaryon DSC uzantısından ekleme, "uzantı işleme hatası" hatası
+### <a name="failure-processing-extension"></a>Senaryo: DSC uzantısından ekleme, "uzantı işleme hatası" hatası
 
 #### <a name="issue"></a>Sorun
 
@@ -188,7 +188,7 @@ Bu hata genellikle, düğüme hizmette olmayan bir düğüm yapılandırma adı 
 * Düğümü, hizmette adıyla tam olarak eşleşen bir düğüm yapılandırma adı ile atadığınızdan emin olun.
 * Düğüm yapılandırma adını eklemeyi tercih edebilirsiniz; Bu, düğüm ekleme, ancak düğüm yapılandırması atamakla sonuçlanır
 
-### <a name="failure-linux-temp-noexec"></a>Senaryon Linux 'ta yapılandırma uygulama genel hata ile bir hata oluşur
+### <a name="failure-linux-temp-noexec"></a>Senaryo: Linux 'ta bir yapılandırma uygulama genel hata ile bir hata oluşur
 
 #### <a name="issue"></a>Sorun
 
@@ -200,13 +200,13 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>Nedeni
 
-Müşteriler, `/tmp` konum olarak `noexec`ayarlandıysa, geçerli DSC sürümü yapılandırmaların uygulanmamasının başarısız olacağını tanımlamıştır.
+Müşteriler `/tmp` konum `noexec`olarak ayarlanırsa, geçerli DSC sürümü yapılandırmaların uygulanmamasının başarısız olacağını belirledi.
 
 #### <a name="resolution"></a>Çözüm
 
-* `noexec` Seçeneği`/tmp` konumdan kaldırın.
+* `noexec` seçeneğini `/tmp` konumundan kaldırın.
 
-### <a name="compilation-node-name-overlap"></a>Senaryon Çakışan düğüm yapılandırma adları bozuk bir yayına neden olabilir
+### <a name="compilation-node-name-overlap"></a>Senaryo: çakışan düğüm yapılandırma adları bozuk bir yayına neden olabilir
 
 #### <a name="issue"></a>Sorun
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2019
-ms.openlocfilehash: 7131cf1902cc92fed66ae4db59449700973c6913
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: aa37717c5037294c2b5ec61f7815b007cbf74992
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899427"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884819"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights ile kullanım analizi
 
@@ -73,7 +73,7 @@ Saklama, kullanıcılarınızın, belirli bir zaman aralığı boyunca bazı iş
 - Gerçek kullanıcı verilerine göre hipotezleri formu 
 - Üretim, ürününüzün bir sorun olup olmadığını belirleme 
 
-![Saklama](./media/usage-overview/retention.png) 
+![Bekletme](./media/usage-overview/retention.png) 
 
 En üstteki bekletme denetimleri, saklama süresini hesaplamak için belirli olayları ve zaman aralığını tanımlamanızı sağlar. Ortadaki grafik, belirtilen zaman aralığına göre genel bekletme yüzdesinin görsel bir gösterimini sağlar. Alt kısımdaki grafik belirli bir dönemde tek tek bekletme 'yi temsil eder. Bu ayrıntı düzeyi, kullanıcılarınızın ne yaptığını ve daha ayrıntılı bir ayrıntı düzeyi üzerinde Kullanıcı döndürmeyi neyin etkileyebileceğini anlamanıza olanak tanır.  
 
@@ -125,7 +125,7 @@ Bu teknik için, uygulamanızın her bir sürümü tarafından gönderilen tüm 
 
 Application Insights portalında, farklı sürümleri karşılaştırmak için, bu verileri özellik değerlerine göre filtreleyin ve ayırın.
 
-Bunu yapmak için [bir telemetri başlatıcısı ayarlayın](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer):
+Bunu yapmak için [bir telemetri başlatıcısı ayarlayın](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer):
 
 **ASP.NET uygulamaları**
 

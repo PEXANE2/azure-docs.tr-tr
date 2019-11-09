@@ -1,23 +1,20 @@
 ---
 title: Azure IoT Hub aracılığıyla cihaz üretici yazılımını güncelleştirme | Microsoft Docs
-description: İşleri ve cihaz ikizlerini kullanarak cihaz üretici yazılımı güncelleştirme işlemi gerçekleştirin.
+description: IoT Hub 'ınıza bağlı bir arka uç uygulamasından tetiklenebilecek bir cihaz üretici yazılımı güncelleştirme işlemini nasıl uygulayacağınızı öğrenin.
 services: iot-hub
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: be1b23991a8dc4d8f29e961e33ba97153d8c5355
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0665a20bfd8253b28936044abe515862b32f1b43
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755827"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888753"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Öğretici: Cihaz yazılımı güncelleştirme işlemi gerçekleştirme
 
@@ -39,7 +36,7 @@ Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, Node.js kullanılarak yazılır. Geliştirme makinenizde Node. js ile v10 arasındaki. x. x veya üzeri gerekir.
 
@@ -99,7 +96,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ## <a name="start-the-firmware-update"></a>Cihaz yazılımı güncelleştirmesini başlatma
 
-**devicetype** etiketine sahip tüm soğutucularda cihaz yazılımı güncelleştirme işlemini başlatmak için arka uç uygulamasında bir [otomatik cihaz yönetimi yapılandırması](iot-hub-automatic-device-management.md#create-a-configuration) oluşturursunuz. Bu bölümde şunları nasıl yapabileceğinizi öğrenirsiniz:
+[devicetype](iot-hub-automatic-device-management.md#create-a-configuration) etiketine sahip tüm soğutucularda cihaz yazılımı güncelleştirme işlemini başlatmak için arka uç uygulamasında bir **otomatik cihaz yönetimi yapılandırması** oluşturursunuz. Bu bölümde şunları nasıl yapabileceğinizi öğrenirsiniz:
 
 * Arka uç uygulamasından yapılandırma oluşturma.
 * İşi tamamlanana kadar izleme.

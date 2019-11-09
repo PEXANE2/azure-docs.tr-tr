@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/11/2019
-ms.openlocfilehash: bee3e24739aa560a43960143d1a18c30ec1ce160
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 356c8389ed486246ce55b5006e1e489ac7c3c1e3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819437"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884778"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Coğrafi konum ve IP adresi işleme
 
@@ -124,7 +124,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Telemetri başlatıcısı
 
-IP adreslerinin tümünü veya bir kısmını kaydetmek için `DisableIpMasking` daha esnek bir alternatif gerekirse, IP 'nin tamamını veya bir kısmını özel bir alana kopyalamak için bir [telemetri başlatıcısı](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) kullanabilirsiniz. 
+IP adreslerinin tümünü veya bir kısmını kaydetmek için `DisableIpMasking` daha esnek bir alternatif gerekirse, IP 'nin tamamını veya bir kısmını özel bir alana kopyalamak için bir [telemetri başlatıcısı](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) kullanabilirsiniz. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 

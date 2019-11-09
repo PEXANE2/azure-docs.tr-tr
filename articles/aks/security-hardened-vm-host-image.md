@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202966"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885639"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS sanal makine konaklarında güvenlik sağlamlaştırma 
 
@@ -30,7 +30,7 @@ Güvenlik sıkı ana bilgisayar işletim sisteminin hedefi, saldırının yüzey
 
 * AKS, varsayılan olarak güvenlik açısından iyileştirilmiş bir konak işletim sistemi sağlar. Alternatif bir işletim sistemi seçmek için geçerli bir seçenek yoktur. 
 
-* Azure, AKS sanal makine konaklarına günlük düzeltme ekleri (güvenlik düzeltme ekleri dahil) uygular. Bu düzeltme eklerinin bazılarının yeniden başlatılması gerekir, diğerleri bu şekilde çalışmaz. Gerektiğinde AKS VM konağının yeniden başlatmaları zamanlamaktan siz sorumlusunuz. AKS düzeltme eki uygulama hakkında yönergeler için bkz. [aks düğümlerine düzeltme eki uygulama](https://docs.microsoft.com/en-us/azure/aks/node-updates-kured).
+* Azure, AKS sanal makine konaklarına günlük düzeltme ekleri (güvenlik düzeltme ekleri dahil) uygular. Bu düzeltme eklerinin bazılarının yeniden başlatılması gerekir, diğerleri bu şekilde çalışmaz. Gerektiğinde AKS VM konağının yeniden başlatmaları zamanlamaktan siz sorumlusunuz. AKS düzeltme eki uygulama hakkında yönergeler için bkz. [aks düğümlerine düzeltme eki uygulama](https://docs.microsoft.com/azure/aks/node-updates-kured).
 
 Aşağıda, AKS-Engine ' de güvenlik için iyileştirilmiş konak işletim sistemini oluşturmak için uygulanan görüntü sağlamlaştırma işinin bir özeti verilmiştir. [Bu GitHub projesinde](https://github.com/Azure/aks-engine/projects/7)iş uygulandı.  
 
@@ -75,7 +75,7 @@ AKS-Engine Şu anda herhangi bir güvenlik standardını yükselmez veya buna uy
 |5.4.1.1 |Parola kullanım süresinin 90 gün veya daha az olduğundan emin olun |
 |5.4.1.4 |Etkin olmayan parola kilidinin 30 gün veya daha az olduğundan emin olun |
 |5.4.4 |Varsayılan Kullanıcı umask 'in 027 veya daha kısıtlayıcı olduğundan emin olun |
-|5.6 |Su komutuna erişimin kısıtlanmasını sağlayın|
+|5,6 |Su komutuna erişimin kısıtlanmasını sağlayın|
 
 ## <a name="additional-notes"></a>Ek notlar
  
@@ -87,7 +87,7 @@ AKS-Engine Şu anda herhangi bir güvenlik standardını yükselmez veya buna uy
 
 AKS güvenliği hakkında daha fazla bilgi için aşağıdaki makalelere bakın: 
 
-[Azure Kubernetes Service'i (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
 
 [AKS güvenlik konuları](https://docs.microsoft.com/azure/aks/concepts-security)
 

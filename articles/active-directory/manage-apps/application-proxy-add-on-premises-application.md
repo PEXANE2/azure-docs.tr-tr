@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8d6297a32cd0f85cf354a93bfdac72cbad9603d
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 72678a67b1bc9845eae2bca658f35a05c9bcf659
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062858"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73883971"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
@@ -45,6 +45,12 @@ Azure AD 'ye şirket içi bir uygulama eklemek için şunlar gerekir:
 Uygulama proxy 'Sini kullanmak için, Windows Server 2012 R2 veya üstünü çalıştıran bir Windows Server gerekir. Uygulama proxy bağlayıcısını sunucuya yüklersiniz. Bu bağlayıcı sunucusunun Azure 'daki uygulama proxy hizmetlerine ve yayımlamayı planladığınız şirket içi uygulamalara bağlanması gerekir.
 
 Üretim ortamınızda yüksek kullanılabilirlik için birden fazla Windows Server olması önerilir. Bu öğretici için, bir Windows Server yeterlidir.
+
+> [!IMPORTANT]
+> Bağlayıcıyı Windows Server 2019 ' ye yüklüyorsanız, HTTP2 sınırlaması vardır. Bağlayıcıyı bu sürümde başarıyla kullanmak için aşağıdaki kayıt defteri anahtarını ekleyin ve sunucuyu yeniden başlatın:
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+    ```
 
 #### <a name="recommendations-for-the-connector-server"></a>Bağlayıcı sunucusu için öneriler
 
@@ -93,9 +99,9 @@ Güvenlik duvarınız kaynak kullanıcılara göre trafiği zorlarsa, ağ hizmet
 
 Aşağıdaki URL 'Lere erişime izin ver:
 
-| URL | Nasıl kullanılır? |
+| URL'si | Nasıl kullanılır? |
 | --- | --- |
-| \*. msappproxy.net<br>\*.servicebus.windows.net | Bağlayıcı ile uygulama proxy 'Si bulut hizmeti arasındaki iletişim |
+| \*. msappproxy.net<br>\*. servicebus.windows.net | Bağlayıcı ile uygulama proxy 'Si bulut hizmeti arasındaki iletişim |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure, sertifikaları doğrulamak için bu URL 'Leri kullanır. |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Bağlayıcı, kayıt işlemi sırasında bu URL 'Leri kullanır. |
 
@@ -171,7 +177,7 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
 
     | Alan | Açıklama |
     | :---- | :---------- |
-    | **Adı** | Erişim panelinde ve Azure portal görünecek uygulamanın adı. |
+    | **Ad** | Erişim panelinde ve Azure portal görünecek uygulamanın adı. |
     | **İç URL** | Özel ağınızın içinden uygulamaya erişim URL 'SI. Arka uç sunucusundaki belirli bir yolun yayımlanmasını sağlayabilirsiniz. Sunucunun geri kalanı yayımlanmaz. Bu şekilde, farklı siteleri farklı uygulamalarla aynı sunucuda yayımlayabilir ve her birine kendi ad ve erişim kurallarına sahip olabilirsiniz.<br><br>Bir yol yayımlarsanız uygulamanıza ilişkin tüm gerekli görüntüleri, betikleri ve stil sayfalarını içerdiğinden emin olun. Örneğin, uygulamanız https:\//yourapp/App ise ve https:\//yourapp/Media konumunda bulunan görüntüleri kullanıyorsa, https:\//yourapp/yolunu yol olarak yayımlamanız gerekir. Bu iç URL 'nin kullanıcılarınızın göreceği giriş sayfası olması gerekmez. Daha fazla bilgi için bkz. [yayımlanan uygulamalar için özel bir giriş sayfası ayarlama](application-proxy-configure-custom-home-page.md). |
     | **Dış URL** | Kullanıcıların uygulamaya ağınızın dışından erişebileceği adres. Varsayılan uygulama proxy 'Si etki alanını kullanmak istemiyorsanız, [Azure AD uygulama ara sunucusu özel etki alanları](application-proxy-configure-custom-domain.md)hakkında bilgi edinin.|
     | **Ön kimlik doğrulama** | Uygulama proxy 'Si, uygulamanıza erişim vermeden önce kullanıcıları nasıl doğrular.<br><br>**Azure Active Directory** -uygulama proxy 'si, kullanıcıların dizin ve uygulama için izinlerinin kimliğini doğrulayan Azure AD ile oturum açmasını yeniden yönlendirir. Koşullu erişim ve Multi-Factor Authentication gibi Azure AD güvenlik özelliklerinin avantajlarından yararlanabilmek için bu seçeneği varsayılan olarak tutmanız önerilir. Uygulamayı Microsoft Bulut uygulama güvenliği ile izlemek için **Azure Active Directory** gereklidir.<br><br>**Geçiş** -kullanıcıların uygulamaya erişmek IÇIN Azure AD 'de kimlik doğrulaması yapması gerekmez. Arka uçta kimlik doğrulama gereksinimlerini ayarlamaya devam edebilirsiniz. |

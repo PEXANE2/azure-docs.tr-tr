@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 366986f989fdd8d76b1707451c2a7cca2aa554cf
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ee4e9bd5487382ebb6f57996aac5d3de1ff6162a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719964"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889964"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -68,9 +68,7 @@ Bu öğreticide, [ **veri alma** Sihirbazı](search-import-data-portal.md)aracı
 
 3. Sonraki sayfaya devam edin.
 
-   ![Bilişsel arama için sonraki sayfa düğmesi](media/search-get-started-portal/next-button-add-cog-search.png)
-
-### <a name="step-2---skip-cognitive-skills"></a>2\. adım-bilişsel becerileri atlama
+### <a name="step-2---skip-the-enrich-content-page"></a>2\. adım-"zenginleştirme içerik" sayfasını atlayın
 
 Sihirbaz bilişsel hizmetler AI algoritmalarını dizine eklemek için bir [AI zenginleştirme ardışık düzeni](cognitive-search-concept-intro.md) oluşturmayı destekler. 
 
@@ -104,7 +102,6 @@ Varsayılan olarak sihirbaz tarafından anahtar alanının temeli olarak benzers
 
 2. Sonraki sayfaya devam edin.
 
-   ![Sonraki sayfa Dizin Oluşturucu oluştur](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>4\. adım-Dizin oluşturucuyu yapılandırma
 
@@ -127,6 +124,8 @@ Portalın sayfayı güncelleştirmesi birkaç dakika sürebilir, ancak "devam ed
 ## <a name="view-the-index"></a>Dizini görüntüleme
 
 Ana hizmet sayfası, Azure Bilişsel Arama hizmetinizde oluşturulan kaynaklara bağlantılar sağlar.  Yeni oluşturduğunuz dizini görüntülemek için bağlantılar listesinden **dizinler** ' e tıklayın. 
+
+Portal sayfasının yenilenmesini bekleyin. Birkaç dakika sonra, dizini bir belge sayısı ve depolama boyutuyla görmeniz gerekir.
 
    ![Hizmet panosundaki dizinler listesi](media/search-get-started-portal/indexes-list.png)
 
@@ -154,7 +153,7 @@ Artık yerleşik [**Arama gezgini**](search-explorer.md) sorgu sayfasını kulla
 
    ![Search gezgini komutu](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. **Dizin** açılan listesinden *oteller-örnek*' i seçin. Hangi REST API 'Lerinin kullanılabilir olduğunu görmek için **API sürümü** açılan listesine tıklayın. Aşağıdaki sorgular için genel kullanıma sunulan sürümü (2019-05-06) kullanın.
+2. **Dizin** açılan listesinden *oteller-örnek-dizin*' i seçin. Hangi REST API 'Lerinin kullanılabilir olduğunu görmek için **API sürümü** açılan listesine tıklayın. Aşağıdaki sorgular için genel kullanıma sunulan sürümü (2019-05-06) kullanın.
 
    ![Dizin ve API komutları](media/search-get-started-portal/search-explorer-changeindex.png)
 

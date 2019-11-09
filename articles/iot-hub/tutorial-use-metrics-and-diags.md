@@ -1,20 +1,19 @@
 ---
 title: Azure IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma | Microsoft Docs
-description: Azure IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
+description: Azure IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlamayı ve kullanmayı öğrenin. Bu, hub 'ınızın sahip olabileceği sorunları tanılamanıza yardımcı olması için analiz edilecek verileri sağlar.
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 7349287945a56bb7674e364f515d0b763015ed59
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3bda78a54b0914465a50d664ab0323444203a387
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262307"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890355"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Öğretici: IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
 
@@ -35,7 +34,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > * Uyarılar çalışmaya başlamadan önce uygulamayı çalıştırın. 
 > * Ölçüm sonuçlarını görüntüleyin ve tanılama günlüklerini denetleyin. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -116,7 +115,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ```
 
 >[!NOTE]
->Cihaz kimliği oluştururken, şu hatayı alabilirsiniz: *IoT Hub ContosoTestHub ilke ıothubowner için anahtar bulunamadı*. Bu hatayı onarmak için Azure CLı IoT uzantısını güncelleştirin ve ardından komut dosyasında son iki komutu yeniden çalıştırın. 
+>Cihaz kimliğini oluştururken şu hatayı alabilirsiniz: *IoT Hub ContosoTestHub ilke ıothubowner için anahtar bulunamadı*. Bu hatayı onarmak için Azure CLı IoT uzantısını güncelleştirin ve ardından komut dosyasında son iki komutu yeniden çalıştırın. 
 >
 >Uzantıyı güncelleştirme komutu aşağıda verilmiştir. Bunu Cloud Shell örneğiniz içinde çalıştırın.
 >
@@ -180,7 +179,7 @@ Artık iletilerin hub 'a ne zaman gönderileceğini izlemek için bazı ölçüm
 
    **Panoya sabitle**' ye tıklayın. Bu işlem, yeniden erişebilmek için Azure portal panoya sabitleyebilir. Panoya sabitleyemez, ayarlarınız korunmaz.
 
-## <a name="set-up-alerts"></a>Uyarılar ayarlayın
+## <a name="set-up-alerts"></a>Uyarıları ayarlama
 
 Portalda hub 'a gidin. **Kaynak grupları**' na tıklayın, *contosoresources*' i ve sonra IoT Hub *ContosoTestHub*' yi seçin 
 
@@ -196,13 +195,13 @@ IoT Hub henüz [Azure izleyici ölçümlerine](/azure/azure-monitor/platform/dat
 
     Şu alanları doldurun: 
 
-    **Abonelik**: Bu alanı geçerli aboneliğiniz olarak bırakın.
+    **Abonelik**: bu alanı geçerli aboneliğiniz olarak bırakın.
 
-    **Kaynak**: Bu alanı *ölçümler*olarak ayarlayın.
+    **Kaynak**: bu alanı *ölçümler*olarak ayarlayın.
 
-    **Kaynak grubu**: Bu alanı geçerli kaynak grubunuz, *Contosoresources*olarak ayarlayın. 
+    **Kaynak grubu**: bu alanı geçerli kaynak grubunuz, *contosoresources*olarak ayarlayın. 
 
-    **Kaynak türü**: Bu alanı IoT Hub olarak ayarlayın. 
+    **Kaynak türü**: bu alanı IoT Hub olarak ayarlayın. 
 
     **Kaynak**: IoT Hub 'ınızı, *ContosoTestHub*seçin.
 
@@ -210,11 +209,11 @@ IoT Hub henüz [Azure izleyici ölçümlerine](/azure/azure-monitor/platform/dat
 
     Şu alanları doldurun:
 
-    **Ad**: Uyarı kuralınız için *telemetri iletileri*gibi bir ad girin.
+    **Ad**: uyarı kuralınız için *telemetri iletileri*gibi bir ad sağlayın.
 
-    **Açıklama**: Uyarı için *1000 telemetri iletisi gönderildiğinde uyarı*gibi bir açıklama girin. 
+    **Açıklama**: uyarı için *1000 telemetri iletisi gönderildiğinde uyarı*gibi bir açıklama belirtin. 
 
-    **Kaynak**: Bunu *ölçümler*olarak ayarlayın.
+    **Kaynak**: bunu *ölçümler*olarak ayarlayın.
 
     **Abonelik**, **kaynak grubu**ve **kaynak** **Klasik Uyarıları görüntüle** ekranında seçtiğiniz değerlere ayarlanmalıdır. 
 
@@ -224,13 +223,13 @@ IoT Hub henüz [Azure izleyici ölçümlerine](/azure/azure-monitor/platform/dat
 
 4. Grafik sonrasında aşağıdaki alanları ayarlayın:
 
-   **Koşul**: *Şundan büyüktür*olarak ayarlayın.
+   **Koşul**: *değerinden büyük*olarak ayarlayın.
 
-   **Eşik**: 1000 olarak ayarlayın.
+   **Threshold**: 1000 olarak ayarlayın.
 
-   **Süre**: *Son 5 dakikada*bir olarak ayarlayın.
+   **Süre**: *son 5 dakika içinde*olarak ayarlanır.
 
-   **Bildirim e-posta alıcıları**: E-posta adresinizi buraya koyun. 
+   **Bildirim e-posta alıcıları**: e-posta adresinizi buraya koyun. 
 
    ![Uyarıların alt yarısında gösterilen ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
 
@@ -240,11 +239,11 @@ IoT Hub henüz [Azure izleyici ölçümlerine](/azure/azure-monitor/platform/dat
 
    **Klasik Uyarıları görüntüle** ekranında, **ölçüm uyarısı Ekle (klasik)** seçeneğine tıklayın ve ardından **Kural Ekle** bölmesinde bu alanları girin.
 
-   **Ad**: Uyarı kuralınız için, *kullanılan ileti sayısı*gibi bir ad girin.
+   **Ad**: uyarı kuralınız için, *kullanılan ileti sayısı*gibi bir ad sağlayın.
 
-   **Açıklama**: Uyarınız için bir açıklama sağlayın (örneğin, *kotaya yakın olduğunda uyarı*).
+   **Açıklama**: size, *kotasından yakın sürede uyarı*gibi bir açıklama sağlayın.
 
-   **Kaynak**: Bu alanı *ölçümler*olarak ayarlayın.
+   **Kaynak**: bu alanı *ölçümler*olarak ayarlayın.
 
     **Abonelik**, **kaynak grubu**ve **kaynak** **Klasik Uyarıları görüntüle** ekranında seçtiğiniz değerlere ayarlanmalıdır. 
 
@@ -252,13 +251,13 @@ IoT Hub henüz [Azure izleyici ölçümlerine](/azure/azure-monitor/platform/dat
 
 6. Grafik altında aşağıdaki alanları girin:
 
-   **Koşul**: *Şundan büyüktür*olarak ayarlayın.
+   **Koşul**: *değerinden büyük*olarak ayarlayın.
 
-   **Eşik**: 1000 olarak ayarlayın.
+   **Threshold**: 1000 olarak ayarlayın.
 
-   **Süre**: Bu alanı *son 5 dakika içinde*olacak şekilde ayarlayın. 
+   **Süre**: bu alanı *son 5 dakika içinde*olacak şekilde ayarlayın. 
 
-   **Bildirim e-posta alıcıları**: E-posta adresinizi buraya koyun. 
+   **Bildirim e-posta alıcıları**: e-posta adresinizi buraya koyun. 
 
    Kuralı kaydetmek için **Tamam** ' ı tıklatın. 
 
@@ -288,7 +287,7 @@ Kodu Visual Studio'da açmak için çözüm dosyasına (SimulatedDevice.sln) çi
 
 ## <a name="run-and-test"></a>Çalıştırma ve test etme 
 
-Program.cs ' de, 1 `Task.Delay` saniyeden. 01 saniyeye ileti gönderme arasındaki süreyi azaltan 1000 olarak değiştirin. Bu gecikmeyi kısaltaştırma, gönderilen ileti sayısını artırır.
+Program.cs ' de, `Task.Delay` 1000 ' den 10 ' a değiştirin. Bu, iletilerin 1 saniye ile. 01 saniyeye gönderilmesi arasındaki süreyi azaltır. Bu gecikmeyi kısaltaştırma, gönderilen ileti sayısını artırır.
 
 ```csharp
 await Task.Delay(10);

@@ -7,15 +7,15 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: b8ea5c54afd4b1e2c212422417688e528367d44f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: 0708b1dd2d272757949d014d768c1da649b50146
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949981"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889674"
 ---
-# <a name="data-processing-and-user-defined-functions"></a>Veri işleme ve Kullanıcı tanımlı işlevler
+# <a name="data-processing-and-user-defined-functions"></a>Veri işleme ve kullanıcı tanımlı işlevleri
 
 Azure dijital TWINS, gelişmiş işlem özellikleri sunar. Geliştiriciler, önceden tanımlanmış uç noktalara olay göndermek için gelen telemetri iletilerine karşı özel işlevler tanımlayabilir ve çalıştırabilir.
 
@@ -23,7 +23,7 @@ Azure dijital TWINS, gelişmiş işlem özellikleri sunar. Geliştiriciler, önc
 
 Cihazların Azure dijital TWINS 'e telemetri verileri gönderdikten sonra, geliştiriciler verileri dört aşamada işleyebilir: *doğrulama*, *eşleşme*, *işlem*ve *dağıtım*.
 
-[![Azure dijital TWINS veri işleme akışı](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
+[Azure dijital TWINS veri işleme akışını ![](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. Doğrulama aşaması, gelen telemetri iletisini, yaygın olarak anlaşılan bir [veri aktarımı nesne](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) biçimine dönüştürür. Bu aşama Ayrıca cihaz ve algılayıcı doğrulamasını yürütür.
 1. Eşleştirme aşaması, çalıştırılacak uygun Kullanıcı tanımlı işlevleri bulur. Önceden tanımlı eşleştiriciler, gelen telemetri iletisinden cihaz, algılayıcı ve alan bilgilerine göre Kullanıcı tanımlı işlevleri bulur.
@@ -34,43 +34,48 @@ Cihazların Azure dijital TWINS 'e telemetri verileri gönderdikten sonra, geli�
 
 Azure dijital TWINS 'de veri işleme üç nesne tanımlamayı içerir: *eşleştiriciler*, *Kullanıcı tanımlı işlevler*ve *rol atamaları*.
 
-[![Azure dijital TWINS veri işleme nesneleri](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
+[Azure dijital TWINS veri işleme nesneleri ![](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>Eşleştiriciler
 
 Eşleştiriciler, gelen algılayıcı telemetrisine göre hangi eylemlerin gerçekleşmekte olduğunu değerlendiren bir koşul kümesi tanımlar. Eşleşmeyi belirleme koşulları, sensörden, sensörün üst cihazından ve sensörün üst alanıyla eşleşen özellikler içerebilir. Koşullar, bu örnekte özetlenen bir [JSON yoluna](https://jsonpath.com/) yönelik karşılaştırmalar olarak ifade edilir:
 
-- Kaçan dize değeri ile temsil edilen veri türü **sıcaklığının** tüm sensörlerinden `\"Temperature\"`
-- Bağlantı noktasında `01` olması
-- Genişletilmiş özellik anahtarı **üreticisine** sahip cihazlara ait olan, @no__t kaçış dize değerine ayarlanmıştır.-1
+- Kaçan dize değeri ile temsil edilen veri türü **sıcaklığının** tüm sensör `\"Temperature\"`
+- Bağlantı noktasında `01` olma
+- Genişletilmiş özellik anahtarı **üreticisine** sahip cihazlara ait olan, kaçan dize değeri olarak ayarlanmış olan cihazlara aittir `\"Contoso\"`
 - Kaçan dize tarafından belirtilen türdeki boşluklara ait olan `\"Venue\"`
-- Üst **Spaceıd** @no__t alt öğesi olan-1
+- Üst **Spaceıd** 'nin alt öğeleri olan `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
 {
-  "SpaceId": "DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
-  "Name": "My custom matcher",
-  "Description": "All sensors of datatype Temperature with 01 in their port that belong to devices with the extended property key Manufacturer set to the value GoodCorp and that belong to spaces of type Venue that are somewhere below space Id DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
-  "Conditions": [
+  "id": "23535afafd-f39b-46c0-9b0c-0dd3892a1c30",
+  "name": "My custom matcher",
+  "spaceId": "DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
+  "description": "All sensors of datatype Temperature with 01 in their port that belong to devices with the extended property key Manufacturer set to the value Contoso and that belong to spaces of type Venue that are somewhere below space Id DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
+  "conditions": [
     {
+      "id": "43898sg43-e15a-4e9c-abb8-2gw464364",
       "target": "Sensor",
       "path": "$.dataType",
       "value": "\"Temperature\"",
       "comparison": "Equals"
     },
     {
+      "id": "wt3th44-e15a-35sg-seg3-235wf3ga463",
       "target": "Sensor",
       "path": "$.port",
       "value": "01",
       "comparison": "Contains"
     },
     {
+      "id": "735hs33-e15a-37jj-23532-db901d550af5",
       "target": "SensorDevice",
       "path": "$.properties[?(@.name == 'Manufacturer')].value",
-      "value": "\"GoodCorp\"",
+      "value": "\"Contoso\"",
       "comparison": "Equals"
     },
     {
+      "id": "222325-e15a-49fg-5744-463643644",
       "target": "SensorSpace",
       "path": "$.type",
       "value": "\"Venue\"",
@@ -84,7 +89,7 @@ Eşleştiriciler, gelen algılayıcı telemetrisine göre hangi eylemlerin gerç
 > - JSON yolları büyük/küçük harfe duyarlıdır.
 > - JSON yükü, tarafından döndürülen yük ile aynıdır:
 >   - algılayıcı için `/sensors/{id}?includes=properties,types`.
->   - algılayıcıyı üst cihaz için `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes`.
+>   - sensör üst cihazının `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes`.
 >   - sensör üst alanı için `/spaces/{id}?includes=properties,types,location,timezone`.
 > - Karşılaştırmalar büyük/küçük harfe duyarlıdır.
 
@@ -92,7 +97,7 @@ Eşleştiriciler, gelen algılayıcı telemetrisine göre hangi eylemlerin gerç
 
 Kullanıcı tanımlı bir işlev, yalıtılmış bir Azure dijital TWINS ortamı içinde yürütülen özel bir işlevdir. Kullanıcı tanımlı işlevlerin, alındığı için ham algılayıcı telemetri iletisine erişimi vardır. Kullanıcı tanımlı işlevlerin de uzamsal grafik ve dağıtıcı hizmetine erişimi vardır. Kullanıcı tanımlı işlev bir grafik içinde kaydedildikten sonra, işlevin ne zaman yürütüleceğini belirtmek için bir eşleştirici ( [yukarıya](#matchers)ayrıntılı) oluşturulmalıdır. Örneğin, Azure dijital TWINS, belirli bir sensörden yeni telemetri aldığında, eşleşen kullanıcı tanımlı işlev, son birkaç algılayıcı okumasının hareketli ortalamasını hesaplayabilir.
 
-Kullanıcı tanımlı işlevler JavaScript 'te yazılabilir. Yardımcı yöntemler Kullanıcı tanımlı yürütme ortamında grafikle etkileşime geçin. Geliştiriciler, algılayıcı telemetri iletilerine karşı özel kod parçacıkları yürütebilir. Örnekler:
+Kullanıcı tanımlı işlevler JavaScript 'te yazılabilir. Yardımcı yöntemler Kullanıcı tanımlı yürütme ortamında grafikle etkileşime geçin. Geliştiriciler, algılayıcı telemetri iletilerine karşı özel kod parçacıkları yürütebilir. Örneklere şunlar dahildir:
 
 - Algılayıcısı grafik içindeki algılayıcı nesnesine doğrudan okumayı ayarlayın.
 - Grafikteki bir boşluk içindeki farklı algılayıcı okumaları temelinde bir eylem gerçekleştirir.

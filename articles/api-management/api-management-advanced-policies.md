@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 166ff5f8866fca955cbe99c5896eb509f52261f6
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 225f26ac2133f45fe7eba9e39d64d0cfe9e20766
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219557"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885296"
 ---
 # <a name="api-management-advanced-policies"></a>Gelişmiş ilkeleri API Management
 
@@ -43,7 +43,7 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ## <a name="choose"></a>Denetim akışı
 
-`choose` İlke, bir bir if-then-else veya bir programlama dilinde Switch yapısına benzer şekilde, Boolean ifadelerin değerlendirilme sonucuna bağlı olarak, kapalı ilke deyimlerini uygular.
+`choose` ilkesi, bir bir if-then-else ya da bir programlama dilinde Switch yapısına benzer şekilde, Boolean ifadelerin değerlendirmesinin sonucuna bağlı olarak, kapalı ilke deyimlerini uygular.
 
 ### <a name="ChoosePolicyStatement"></a>İlke ekstresi
 
@@ -61,7 +61,7 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 </choose>
 ```
 
-Denetim akışı ilkesi en az bir `<when/>` öğe içermelidir. `<otherwise/>` Öğesi isteğe bağlıdır. Öğelerin içindeki `<when/>` koşullar, ilke içindeki görünümleri sırayla değerlendirilir. Koşul özniteliği eşittir `<when/>` `true` olan ilk öğe içine eklenen ilke deyimleri uygulanacak. Varsa `<otherwise/>` öğesi içindeki ilkeler, tüm `<when/>` öğe koşulu öznitelikleri `false`varsa uygulanır.
+Denetim akışı ilkesi en az bir `<when/>` öğesi içermelidir. `<otherwise/>` öğesi isteğe bağlıdır. `<when/>` öğelerdeki koşullar, ilke içindeki görünümleri sırayla değerlendirilir. Koşul özniteliği eşittir `true` olan ilk `<when/>` öğesi içine eklenen ilke deyimleri uygulanacak. Varsa `<otherwise/>` öğesi içindeki ilkeler, tüm `<when/>` öğesi koşul özniteliklerinin `false`olması durumunda uygulanır.
 
 ### <a name="examples"></a>Örnekler
 
@@ -69,11 +69,11 @@ Denetim akışı ilkesi en az bir `<when/>` öğe içermelidir. `<otherwise/>` �
 
 Aşağıdaki örnek, bir [set değişkenli](api-management-advanced-policies.md#set-variable) ilke ve iki denetim akışı ilkesini gösterir.
 
-Değişken ayarla ilkesi gelen bölümdür ve `isMobile` `User-Agent` istek üst bilgisi metin `iPad` `iPhone`içeriyorsa true olarak ayarlanmış bir Boole [bağlam](api-management-policy-expressions.md#ContextVariables) değişkeni oluşturur.
+Değişken ayarla ilkesi gelen bölümdür ve `User-Agent` istek üst bilgisi, `iPad` veya `iPhone`metin içeriyorsa true olarak ayarlanmış bir `isMobile` Boole [bağlam](api-management-policy-expressions.md#ContextVariables) değişkeni oluşturur.
 
-İlk denetim akışı ilkesi de gelen bölümünde bulunur ve `isMobile` bağlam değişkeninin değerine bağlı olarak iki [set sorgu dizesi parametre](api-management-transformation-policies.md#SetQueryStringParameter) ilkesinden birini koşullu olarak uygular.
+İlk denetim akışı ilkesi de gelen bölümünde bulunur ve `isMobile` bağlam değişkeninin değerine bağlı olarak iki [set Query String parametre](api-management-transformation-policies.md#SetQueryStringParameter) ilkesinden birini koşullu olarak uygular.
 
-İkinci denetim akışı ilkesi, çıkış bölümünde bulunur ve olarak `true`ayarlandığında [XML 'i JSON 'ye Dönüştür](api-management-transformation-policies.md#ConvertXMLtoJSON) ilkesini `isMobile` koşullu olarak uygular.
+İkinci denetim akışı ilkesi giden bölümdür ve `isMobile` `true`olarak ayarlandığında, XML 'i [JSON 'A Dönüştür](api-management-transformation-policies.md#ConvertXMLtoJSON) ilkesini koşullu olarak uygular.
 
 ```xml
 <policies>
@@ -106,7 +106,7 @@ Değişken ayarla ilkesi gelen bölümdür ve `isMobile` `User-Agent` istek üst
 
 #### <a name="example"></a>Örnek
 
-Bu örnek, `Starter` ürünü kullanırken arka uç hizmetinden alınan yanıttan veri öğelerini kaldırarak içerik filtrelemenin nasıl gerçekleştirileceğini gösterir. Bu ilkeyi yapılandırma ve kullanma tanıtımı için bkz [. bulut kapak bölümü 177: Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) ile daha fazla API Management özellik ve 34:30 'e ileri sarma. Bu demo için kullanılan [koyu gök tahmini API 'sine](https://developer.forecast.io/) ilişkin bir genel bakış görmek için 31:50 adresinden başlayın.
+Bu örnek, `Starter` ürünü kullanılırken arka uç hizmetinden alınan yanıttan veri öğelerini kaldırarak içerik filtrelemenin nasıl gerçekleştirileceğini gösterir. Bu ilkeyi yapılandırma ve kullanma gösterimi için bkz. [Cloud Cover bölüm 177: Vlad Vinogradsky Ile daha fazla API Management özelliği](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) ve 34:30 ile ileri sarma. Bu demo için kullanılan [koyu gök tahmini API 'sine](https://developer.forecast.io/) ilişkin bir genel bakış görmek için 31:50 adresinden başlayın.
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -129,14 +129,14 @@ Bu örnek, `Starter` ürünü kullanırken arka uç hizmetinden alınan yanıtta
 | Öğe   | Açıklama                                                                                                                                                                                                                                                               | Gerekli |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | 'yu    | Kök öğe.                                                                                                                                                                                                                                                             | Evet      |
-| Oluşturulurken      | `if` İlkenin veya`ifelse` bölümlerinin için kullanılacakkoşul`choose` . İlkede birden çok `when` bölüm varsa, bunlar sırayla değerlendirilir. `choose` Bir zaman öğesi olarak `true`değerlendirildikten sonra, başka `when` hiçbir koşul değerlendirilmez. `condition` | Evet      |
-| güvenmiyorsanız | `when` Koşulların hiçbiri olarak `true`değerlendiriliyorsa kullanılacak ilke kod parçacığını içerir.                                                                                                                                                                               | Hayır       |
+| Oluşturulurken      | `choose` ilkesinin `if` veya `ifelse` bölümleri için kullanılacak koşul. `choose` ilkesinde birden çok `when` bölümü varsa, bunlar sırayla değerlendirilir. Bir zaman öğesinin `condition` `true`olarak değerlendirildikten sonra, başka bir `when` koşulu değerlendirilmez. | Evet      |
+| güvenmiyorsanız | `when` koşullardan hiçbiri `true`olarak değerlendiriliyorsa kullanılacak ilke kod parçacığını içerir.                                                                                                                                                                               | Hayır       |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik                                              | Açıklama                                                                                               | Gerekli |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| Condition = "Boole ifadesi &#124; Boolean sabiti" | İçeren `when` ilke deyimi değerlendirildiğinde değerlendirilen Boole ifadesi veya sabiti. | Evet      |
+| Condition = "Boole ifadesi &#124; Boolean sabiti" | İçeren `when` ilkesi deyimi değerlendirildiğinde değerlendirilen Boole ifadesi veya sabiti. | Evet      |
 
 ### <a name="ChooseUsage"></a>Kullanımıyla
 
@@ -148,7 +148,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="ForwardRequest"></a>İletme isteği
 
-İlke, gelen isteği istek bağlamında belirtilen arka uç hizmetine iletir. [](api-management-policy-expressions.md#ContextVariables) `forward-request` Arka uç hizmeti URL 'SI, API [ayarlarında](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) belirtilir ve [arka uç hizmet ilkesi ayarlama](api-management-transformation-policies.md) kullanılarak değiştirilebilir.
+`forward-request` ilkesi gelen isteği istek [bağlamında](api-management-policy-expressions.md#ContextVariables)belirtilen arka uç hizmetine iletir. Arka uç hizmeti URL 'SI, API [ayarlarında](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) belirtilir ve [arka uç hizmet ilkesi ayarlama](api-management-transformation-policies.md) kullanılarak değiştirilebilir.
 
 > [!NOTE]
 > Bu ilkeyi kaldırmak, isteğin arka uç hizmetine iletilmemesi ve giden bölümündeki ilkeler gelen bölümündeki ilkelerin başarıyla tamamlanmasıyla hemen değerlendirilir.
@@ -183,7 +183,7 @@ Aşağıdaki API düzeyi ilkesi, tüm API isteklerini 60 saniyelik bir zaman aş
 
 #### <a name="example"></a>Örnek
 
-Bu işlem düzeyi ilkesi, `base` üst API düzeyi kapsamından arka uç ilkesini devralması için öğesini kullanır.
+Bu işlem düzeyi ilkesi, üst API düzeyi kapsamından arka uç ilkesini devralması için `base` öğesini kullanır.
 
 ```xml
 <!-- operation level -->
@@ -252,7 +252,7 @@ Bu işlem düzeyi ilke, istekleri arka uç hizmetine iletmiyor.
 
 | Öznitelik                               | Açıklama                                                                                                      | Gerekli | Varsayılan     |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| timeout = "Integer"                       | Bir zaman aşımı hatası oluşturulmadan önce, arka uç hizmeti tarafından HTTP yanıt üst bilgilerinin döndürülmesi için beklenecek saniye cinsinden süre. Minimum değer 0 saniyedir. Temeldeki ağ altyapısı bu süreden sonra boştaki bağlantıları düşürüebileceğinden, 240 saniyeden büyük değerler gerçekleştirilemez. | Hayır       | Yok. |
+| timeout = "Integer"                       | Bir zaman aşımı hatası oluşturulmadan önce, arka uç hizmeti tarafından HTTP yanıt üst bilgilerinin döndürülmesi için beklenecek saniye cinsinden süre. Minimum değer 0 saniyedir. Temeldeki ağ altyapısı bu süreden sonra boştaki bağlantıları düşürüebileceğinden, 240 saniyeden büyük değerler gerçekleştirilemez. | Hayır       | None |
 | İzle-yeniden yönlendirmeler = " &#124; true false"    | Arka uç hizmetinden gelen yönlendirmelerin, ağ geçidi tarafından izlenen veya çağırana döndürülmeyeceğini belirtir.      | Hayır       | false       |
 | buffer-Request-Body = "true &#124; false" | "True" olarak ayarlandığında istek arabelleğe alınır ve [yeniden denenmek](api-management-advanced-policies.md#Retry)üzere tekrar kullanılır. | Hayır       | false       |
 
@@ -265,7 +265,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="LimitConcurrency"></a>Eşzamanlılık sınırı
 
-İlke `limit-concurrency` , belirli bir zamanda belirtilen sayıda istekten daha fazlasını gerçekleştirerek, eklenen ilkelerin yürütülmesini önler. Bu sayıyı aştıktan sonra, yeni istekler 429 çok fazla Istek durum koduyla hemen başarısız olur.
+`limit-concurrency` ilkesi, herhangi bir zamanda belirtilen sayıda istekten daha fazlasını gerçekleştirerek, eklenen ilkelerin yürütülmesini önler. Bu sayıyı aştıktan sonra, yeni istekler 429 çok fazla Istek durum koduyla hemen başarısız olur.
 
 ### <a name="LimitConcurrencyStatement"></a>İlke ekstresi
 
@@ -303,7 +303,7 @@ Aşağıdaki örnek, bir arka uca iletilen isteklerin sayısının bir bağlam d
 
 | Öznitelik | Açıklama                                                                                        | Gerekli | Varsayılan |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| key       | Bir dize. İzin verilen ifade. Eşzamanlılık kapsamını belirtir. Birden çok ilke tarafından paylaşılabilir. | Evet      | Yok     |
+| anahtar       | Bir dize. İzin verilen ifade. Eşzamanlılık kapsamını belirtir. Birden çok ilke tarafından paylaşılabilir. | Evet      | Yok     |
 | en yüksek sayı | Bir tamsayı. İlkeye girmesine izin verilen en fazla istek sayısını belirtir.           | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
@@ -316,7 +316,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="log-to-eventhub"></a>Olay Hub 'ında günlüğe kaydet
 
-İlke `log-to-eventhub` , belirtilen biçimdeki iletileri bir günlükçü varlığı tarafından tanımlanan bir olay hub 'ına gönderir. Adından da anlaşılacağı gibi, ilke, çevrimiçi veya çevrimdışı analize yönelik seçili istek veya Yanıt bağlamı bilgilerini kaydetmek için kullanılır.
+`log-to-eventhub` ilkesi, belirtilen biçimdeki iletileri bir günlükçü varlığı tarafından tanımlanan bir olay hub 'ına gönderir. Adından da anlaşılacağı gibi, ilke, çevrimiçi veya çevrimdışı analize yönelik seçili istek veya Yanıt bağlamı bilgilerini kaydetmek için kullanılır.
 
 > [!NOTE]
 > Bir olay hub 'ı ve günlüğe kaydetme olaylarını yapılandırmaya yönelik adım adım kılavuz için bkz. [Azure Event Hubs ile API Management olaylarını günlüğe](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/)kaydetme.
@@ -332,7 +332,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="example"></a>Örnek
 
-Herhangi bir dize Event Hubs oturum açma değeri olarak kullanılabilir. Bu örnekte, tüm gelen çağrılar için tarih ve saat, dağıtım hizmeti adı, istek kimliği, IP adresi ve işlem adı, `contoso-logger` Kimliğe kayıtlı olan Event hub günlükçüsü günlüğüne kaydedilir.
+Herhangi bir dize Event Hubs oturum açma değeri olarak kullanılabilir. Bu örnekte, tüm gelen çağrılar için tarih ve saat, dağıtım hizmeti adı, istek kimliği, IP adresi ve işlem adı `contoso-logger` kimliği ile kayıtlı olan Event hub günlükçüsü günlüğüne kaydedilir.
 
 ```xml
 <policies>
@@ -357,8 +357,8 @@ Herhangi bir dize Event Hubs oturum açma değeri olarak kullanılabilir. Bu ör
 | Öznitelik     | Açıklama                                                               | Gerekli                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | günlükçü kimliği     | API Management hizmetinize kayıtlı günlükçü kimliği.         | Evet                                                                  |
-| bölüm kimliği  | İletilerin gönderildiği bölümün dizinini belirtir.             | İsteğe bağlı. Kullanılıyorsa, bu öznitelik `partition-key` kullanılamayabilir. |
-| Bölüm-anahtar | İletiler gönderilirken bölüm ataması için kullanılan değeri belirtir. | İsteğe bağlı. Kullanılıyorsa, bu öznitelik `partition-id` kullanılamayabilir.  |
+| bölüm kimliği  | İletilerin gönderildiği bölümün dizinini belirtir.             | İsteğe bağlı. `partition-key` kullanılırsa bu öznitelik kullanılamayabilir. |
+| Bölüm-anahtar | İletiler gönderilirken bölüm ataması için kullanılan değeri belirtir. | İsteğe bağlı. `partition-id` kullanılırsa bu öznitelik kullanılamayabilir.  |
 
 ### <a name="usage"></a>Kullanım
 
@@ -370,7 +370,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="mock-response"></a>Sahte yanıt
 
-`mock-response`, Adın gösterdiği gibi, API 'leri ve işlemleri de anladığı gibi kullanılır. Normal işlem hattı yürütmesini iptal eder ve çağırana bir yanıt döndürür. İlke, her zaman en yüksek uygunlukta yanıtları döndürmeye çalışır. Her kullanılabilir olduğunda yanıt içerik örneklerini tercih eder. Şemalar sağlandığında ve örnekler olmadığında, şemalardan örnek yanıtlar oluşturur. Hiçbir örnek veya şema bulunmazsa, içerik olmayan yanıtlar döndürülmez.
+Adın gösterdiği gibi `mock-response`, API 'Leri ve işlemleri sahte şekilde kullanılır. Normal işlem hattı yürütmesini iptal eder ve çağırana bir yanıt döndürür. İlke, her zaman en yüksek uygunlukta yanıtları döndürmeye çalışır. Her kullanılabilir olduğunda yanıt içerik örneklerini tercih eder. Şemalar sağlandığında ve örnekler olmadığında, şemalardan örnek yanıtlar oluşturur. Hiçbir örnek veya şema bulunmazsa, içerik olmayan yanıtlar döndürülmez.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -402,7 +402,7 @@ status code and media type. If no example or schema found, the content is empty.
 | Öznitelik    | Açıklama                                                                                           | Gerekli | Varsayılan |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | durum kodu  | Yanıt durum kodunu belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır.                 | Hayır       | 200     |
-| İçerik türü | Yanıt `Content-Type` üst bilgisi değerini belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır. | Hayır       | Yok.    |
+| içerik türü | `Content-Type` yanıt üst bilgisi değerini belirtir ve karşılık gelen örnek veya şemayı seçmek için kullanılır. | Hayır       | None    |
 
 ### <a name="usage"></a>Kullanım
 
@@ -414,7 +414,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="Retry"></a>Retry
 
-İlke, alt ilkelerini bir kez yürütür ve `false` sonra yeniden `condition` deneme veya yeniden deneme `count` bitinceye kadar yürütmeyi yeniden dener. `retry`
+`retry` ilkesi alt ilkelerini bir kez yürütür ve sonra yeniden deneme `condition` `false` hale gelinceye kadar yürütmeyi yeniden dener `count` tükenmiş olur.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -434,7 +434,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnekte, istek iletimi bir üstel yeniden deneme algoritması kullanılarak on kata kadar yeniden denenir. `first-fast-retry` , False olarak ayarlandığı için tüm yeniden deneme girişimleri üstel yeniden deneme algoritmasına tabidir.
+Aşağıdaki örnekte, istek iletimi bir üstel yeniden deneme algoritması kullanılarak on kata kadar yeniden denenir. `first-fast-retry` false olarak ayarlandığından, tüm yeniden deneme girişimleri üstel yeniden deneme algoritmasına tabidir.
 
 ```xml
 
@@ -454,23 +454,23 @@ Aşağıdaki örnekte, istek iletimi bir üstel yeniden deneme algoritması kull
 
 | Öğe | Açıklama                                                         | Gerekli |
 | ------- | ------------------------------------------------------------------- | -------- |
-| yeniden dene   | Kök öğe. , Alt öğeleri olarak başka herhangi bir ilke içerebilir. | Evet      |
+| retry   | Kök öğe. , Alt öğeleri olarak başka herhangi bir ilke içerebilir. | Evet      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik        | Açıklama                                                                                                                                           | Gerekli | Varsayılan |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| condition        | Yeniden denemelerin durdurulup durdurulmadığını`false`belirten bir Boole sabit değeri veya [ifadesi](api-management-policy-expressions.md) (`true`).      | Evet      | Yok     |
+| Koşul        | Yeniden denemelerin durdurulup durdurulmadığını belirten bir Boolean sabit değer veya [ifade](api-management-policy-expressions.md) (`false`) veya devamı (`true`).      | Evet      | Yok     |
 | count            | Denemek için en fazla yeniden deneme sayısını belirten pozitif bir sayı.                                                                                | Evet      | Yok     |
 | interval         | Yeniden deneme girişimleri arasındaki bekleme aralığını belirten saniye cinsinden pozitif bir sayı.                                                                 | Evet      | Yok     |
 | Maksimum Aralık     | Yeniden deneme girişimleri arasındaki en fazla bekleme aralığını belirten saniye cinsinden pozitif bir sayı. Üstel yeniden deneme algoritması uygulamak için kullanılır. | Hayır       | Yok     |
 | tamamlanması            | Bekleme aralığı artışını belirten saniye cinsinden pozitif bir sayı. Doğrusal ve üstel yeniden deneme algoritmalarının uygulanması için kullanılır.             | Hayır       | Yok     |
-| ilk hızlı yeniden deneme | Olarak `true` ayarlanırsa, ilk yeniden deneme denemesi hemen gerçekleştirilir.                                                                                  | Hayır       | `false` |
+| ilk hızlı yeniden deneme | `true` olarak ayarlanırsa, ilk yeniden deneme denemesi hemen gerçekleştirilir.                                                                                  | Hayır       | `false` |
 
 > [!NOTE]
-> Yalnızca, `interval` belirtildiğinde, **sabit** Aralık yeniden denemeleri gerçekleştirilir.
-> Yalnızca `interval` `interval + (count - 1)*delta`ve `delta` belirtildiğinde, yeniden denemeler arasındaki bekleme süresi aşağıdaki formül ile hesaplanıyorsa, **Doğrusal** bir Interval yeniden deneme algoritması kullanılır.
-> `interval` , Ve belirtildiğinde, yeniden denemeler arasındaki bekleme süresinin değere katlanarak üstel olarak büyümesi için üstel Aralık yeniden deneme algoritması uygulanır. `delta` `interval` `max-interval` `max-interval`aşağıdaki formüle göre- `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
+> Yalnızca `interval` belirtildiğinde, **sabit** Aralık yeniden denemeleri gerçekleştirilir.
+> Yalnızca `interval` ve `delta` belirtildiğinde, yeniden denemeler arasındaki bekleme süresinin aşağıdaki formül `interval + (count - 1)*delta`göre hesaplandığı bir **Doğrusal** Aralık yeniden deneme algoritması kullanılır.
+> `interval`, `max-interval` ve `delta` belirtildiğinde, yeniden denemeler arasındaki bekleme süresinin, aşağıdaki formüle göre `interval` değerinden değer `max-interval` üstel olarak artmasının gerektiği **üstel** aralığı yeniden deneme algoritması uygulanır.`min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`
 
 ### <a name="usage"></a>Kullanım
 
@@ -482,7 +482,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="ReturnResponse"></a>Dönüş yanıtı
 
-İlke `return-response` , işlem hattı yürütmesini iptal eder ve çağırana varsayılan ya da özel bir yanıt döndürür. Varsayılan yanıt `200 OK` gövde yok. Özel yanıt, bir bağlam değişkeni veya ilke deyimleri ile belirtilebilir. Her ikisi de sağlandığında, bağlam değişkeni içinde yer alan yanıt, çağırana döndürülmeden önce ilke deyimleri tarafından değiştirilir.
+`return-response` ilkesi, işlem hattı yürütmesini iptal eder ve çağırana varsayılan ya da özel bir yanıt döndürür. Varsayılan yanıt, gövde olmadan `200 OK`. Özel yanıt, bir bağlam değişkeni veya ilke deyimleri ile belirtilebilir. Her ikisi de sağlandığında, bağlam değişkeni içinde yer alan yanıt, çağırana döndürülmeden önce ilke deyimleri tarafından değiştirilir.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -520,7 +520,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 | Öznitelik              | Açıklama                                                                                                                                                                          | Gerekli  |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
-| Yanıt değişkeni-adı | Öğesinden başvurulan bağlam değişkeninin adı (örneğin, bir yukarı akış [gönderme isteği](api-management-advanced-policies.md#SendRequest) ilkesi ve bir `Response` nesne içeren) | İsteğe bağlı. |
+| Yanıt değişkeni-adı | ' Den başvurulan bağlam değişkeninin adı, örneğin bir yukarı akış [gönderme isteği](api-management-advanced-policies.md#SendRequest) ilkesi ve bir `Response` nesnesi içerir | İsteğe bağlı. |
 
 ### <a name="usage"></a>Kullanım
 
@@ -532,7 +532,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="SendOneWayRequest"></a>Tek yönlü istek gönder
 
-`send-one-way-request` İlke, sağlanmış isteği, yanıt beklemeden belirtilen URL 'ye gönderir.
+`send-one-way-request` ilkesi, sağlanmış isteği, yanıt beklemeden belirtilen URL 'ye gönderir.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -549,7 +549,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="example"></a>Örnek
 
-Bu örnek ilke, http yanıt kodu 500 değerinden `send-one-way-request` büyük veya bu değere eşitse bir bolluk sohbet odasına bir ileti göndermek için ilkeyi kullanmanın bir örneğini gösterir. Bu örnek hakkında daha fazla bilgi için bkz. [Azure API Management Service 'ten dış hizmetler kullanma](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+Bu örnek ilke, HTTP yanıt kodu 500 değerinden büyük veya bu değere eşitse bir bolluk sohbet odasına ileti göndermek için `send-one-way-request` ilkesi kullanma örneğini gösterir. Bu örnek hakkında daha fazla bilgi için bkz. [Azure API Management Service 'ten dış hizmetler kullanma](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
 
 ```xml
 <choose>
@@ -582,10 +582,10 @@ Bu örnek ilke, http yanıt kodu 500 değerinden `send-one-way-request` büyük 
 | Öğe                    | Açıklama                                                                                                 | Gerekli                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | tek yönlü istek gönder       | Kök öğe.                                                                                               | Evet                             |
-| url                        | İsteğin URL'si.                                                                                     | If modu = Copy; Aksi halde evet. |
-| yöntemi                     | İstek için HTTP yöntemi.                                                                            | If modu = Copy; Aksi halde evet. |
-| header                     | İstek üst bilgisi. Birden çok istek üst bilgisi için birden çok üstbilgi öğesi kullanın.                                  | Hayır                              |
-| body                       | İstek gövdesi.                                                                                           | Hayır                              |
+| url                        | İsteğin URL 'SI.                                                                                     | If modu = Copy; Aksi halde evet. |
+| method                     | İstek için HTTP yöntemi.                                                                            | If modu = Copy; Aksi halde evet. |
+| üst bilgi                     | İstek üst bilgisi. Birden çok istek üst bilgisi için birden çok üstbilgi öğesi kullanın.                                  | Hayır                              |
+| bölümü                       | İstek gövdesi.                                                                                           | Hayır                              |
 | kimlik doğrulama-sertifika | [İstemci kimlik doğrulaması için kullanılacak sertifika](api-management-authentication-policies.md#ClientCertificate) | Hayır                              |
 
 ### <a name="attributes"></a>Öznitelikler
@@ -593,8 +593,8 @@ Bu örnek ilke, http yanıt kodu 500 değerinden `send-one-way-request` büyük 
 | Öznitelik     | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | Mode = "String" | Bunun yeni bir istek mi yoksa geçerli isteğin bir kopyası mı olduğunu belirler. Giden modda Mode = Copy, istek gövdesini başlatmaz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Hayır       | Yeni      |
-| name          | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | Yok      |
-| var-eylem | Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> Aynı ada sahip `override` birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır. | Hayır       | manızı |
+| ad          | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | Yok      |
+| var-eylem | Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> Aynı ada sahip birden çok girişi `override` için ayarlandığında, üst bilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir); Sonuç olarak yalnızca listelenen değerler ayarlanır. | Hayır       | Manızı |
 
 ### <a name="usage"></a>Kullanım
 
@@ -606,7 +606,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="SendRequest"></a>İstek Gönder
 
-`send-request` İlke belirtilen URL 'ye belirtilen isteği gönderiyor, ancak ayarlanan zaman aşımı değerinden daha uzun süre beklemekte.
+`send-request` ilkesi belirtilen URL 'ye belirtilen URL 'yi gönderiyor, ancak ayarlanan zaman aşımı değerinden daha uzun süre beklemekte.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -666,10 +666,10 @@ Bu örnekte, bir yetkilendirme sunucusuyla bir başvuru belirtecini doğrulamak 
 | Öğe                    | Açıklama                                                                                                 | Gerekli                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | gönderme isteği               | Kök öğe.                                                                                               | Evet                             |
-| url                        | İsteğin URL'si.                                                                                     | If modu = Copy; Aksi halde evet. |
-| yöntemi                     | İstek için HTTP yöntemi.                                                                            | If modu = Copy; Aksi halde evet. |
-| header                     | İstek üst bilgisi. Birden çok istek üst bilgisi için birden çok üstbilgi öğesi kullanın.                                  | Hayır                              |
-| body                       | İstek gövdesi.                                                                                           | Hayır                              |
+| url                        | İsteğin URL 'SI.                                                                                     | If modu = Copy; Aksi halde evet. |
+| method                     | İstek için HTTP yöntemi.                                                                            | If modu = Copy; Aksi halde evet. |
+| üst bilgi                     | İstek üst bilgisi. Birden çok istek üst bilgisi için birden çok üstbilgi öğesi kullanın.                                  | Hayır                              |
+| bölümü                       | İstek gövdesi.                                                                                           | Hayır                              |
 | kimlik doğrulama-sertifika | [İstemci kimlik doğrulaması için kullanılacak sertifika](api-management-authentication-policies.md#ClientCertificate) | Hayır                              |
 
 ### <a name="attributes"></a>Öznitelikler
@@ -677,11 +677,11 @@ Bu örnekte, bir yetkilendirme sunucusuyla bir başvuru belirtecini doğrulamak 
 | Öznitelik                       | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | Mode = "String"                   | Bunun yeni bir istek mi yoksa geçerli isteğin bir kopyası mı olduğunu belirler. Giden modda Mode = Copy, istek gövdesini başlatmaz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Hayır       | Yeni      |
-| Response-variable-name = "String" | Bir yanıt nesnesi alacak bağlam değişkeninin adı. Değişken yoksa, ilke başarıyla yürütüldüğünde oluşturulur ve koleksiyon aracılığıyla [`context.Variable`](api-management-policy-expressions.md#ContextVariables) erişilebilir hale gelir.                                                                                                                                                                                                                                                                                                                          | Evet      | Yok      |
+| Response-variable-name = "String" | Bir yanıt nesnesi alacak bağlam değişkeninin adı. Değişken yoksa, ilke başarıyla yürütüldüğünde oluşturulur ve [`context.Variable`](api-management-policy-expressions.md#ContextVariables) koleksiyonu aracılığıyla erişilebilir hale gelir.                                                                                                                                                                                                                                                                                                                          | Evet      | Yok      |
 | timeout = "Integer"               | URL çağrısının başarısız olması için geçmesi gereken saniye cinsinden zaman aşımı aralığı.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Hayır       | 60       |
 | yoksayma-hata                    | True ise ve istek bir hatayla sonuçlanır:<br /><br /> -Response-değişken adı belirtilmişse null değer içerecektir.<br />-Response değişkeni adı belirtilmemişse, bağlam. İstek güncelleştirilmeyecek.                                                                                                                                                                                                                                                                                                                                                                                   | Hayır       | false    |
-| name                            | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | Yok      |
-| var-eylem                   | Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> Aynı ada sahip `override` birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır. | Hayır       | manızı |
+| ad                            | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | Yok      |
+| var-eylem                   | Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> Aynı ada sahip birden çok girişi `override` için ayarlandığında, üst bilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir); Sonuç olarak yalnızca listelenen değerler ayarlanır. | Hayır       | Manızı |
 
 ### <a name="usage"></a>Kullanım
 
@@ -693,7 +693,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="SetHttpProxy"></a>HTTP proxy 'yi ayarla
 
-İlke `proxy` , arka uçlara iletilen istekleri bir http proxy 'si aracılığıyla yönlendirmenize olanak tanır. Ağ geçidi ve proxy arasında yalnızca HTTP (HTTPS değil) desteklenir. Yalnızca temel ve NTLM kimlik doğrulaması.
+`proxy` ilkesi, arka uçlara iletilen istekleri bir HTTP proxy 'si aracılığıyla yönlendirmenize olanak tanır. Ağ geçidi ve proxy arasında yalnızca HTTP (HTTPS değil) desteklenir. Yalnızca temel ve NTLM kimlik doğrulaması.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -721,7 +721,7 @@ Gizli bilgilerin ilke belgesinde depolanmasını önlemek için, [özelliklerin]
 
 | Öznitelik         | Açıklama                                            | Gerekli | Varsayılan |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
-| URL = "String"      | Biçiminde proxy URL 'SI http://host:port.             | Evet      | Yok     |
+| URL = "String"      | http://host:portbiçimindeki proxy URL 'SI.             | Evet      | Yok     |
 | username = "String" | Proxy ile kimlik doğrulaması için kullanılacak Kullanıcı adı. | Hayır       | Yok     |
 | Password = "String" | Proxy ile kimlik doğrulaması için kullanılacak parola. | Hayır       | Yok     |
 
@@ -735,7 +735,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="SetRequestMethod"></a>İstek yöntemini ayarla
 
-`set-method` İlke, istek için http istek yöntemini değiştirmenize izin verir.
+`set-method` ilkesi, istek için HTTP istek yöntemini değiştirmenize izin verir.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -746,7 +746,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="example"></a>Örnek
 
-`set-method` İlkeyi kullanan Bu örnek ilke, http yanıt kodu 500 değerinden büyük veya bu değere eşitse bir bolluk sohbet odasına bir ileti göndermeye yönelik bir örnek gösterir. Bu örnek hakkında daha fazla bilgi için bkz. [Azure API Management Service 'ten dış hizmetler kullanma](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+`set-method` İlkesi kullanan Bu örnek ilke, HTTP yanıt kodu 500 değerinden büyük veya bu değere eşitse bir bolluk sohbet odasına bir ileti göndermeye yönelik bir örnek gösterir. Bu örnek hakkında daha fazla bilgi için bkz. [Azure API Management Service 'ten dış hizmetler kullanma](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
 
 ```xml
 <choose>
@@ -790,7 +790,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="SetStatus"></a>Durum kodunu ayarla
 
-`set-status` İlke, http durum kodunu belirtilen değere ayarlar.
+`set-status` ilkesi, HTTP durum kodunu belirtilen değere ayarlar.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -827,7 +827,7 @@ Bu örnekte, yetkilendirme belirtecinin geçersiz olması durumunda 401 yanıtı
 
 | Öznitelik       | Açıklama                                                | Gerekli | Varsayılan |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
-| code="integer"  | Döndürülecek HTTP durum kodu.                            | Evet      | Yok     |
+| Code = "integer"  | Döndürülecek HTTP durum kodu.                            | Evet      | Yok     |
 | Reason = "String" | Durum kodunu döndürme nedeninin açıklaması. | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
@@ -839,7 +839,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="set-variable"></a>Değişken ayarla
 
-İlke bir bağlam değişkeni bildirir ve bu değere bir [ifade](api-management-policy-expressions.md) veya dize sabiti aracılığıyla belirtilen bir değer atar. [](api-management-policy-expressions.md#ContextVariables) `set-variable` ifade bir değişmez değer içeriyorsa, bir dizeye dönüştürülür ve değerin `System.String`türü olacaktır.
+`set-variable` ilkesi bir [bağlam](api-management-policy-expressions.md#ContextVariables) değişkeni bildirir ve bu değere bir [ifade](api-management-policy-expressions.md) veya dize sabiti ile belirtilen bir değer atar. ifade bir değişmez değer içeriyorsa, bir dizeye dönüştürülür ve değerin türü `System.String`olacaktır.
 
 ### <a name="set-variablePolicyStatement"></a>İlke ekstresi
 
@@ -849,7 +849,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="set-variableExample"></a>Örneğinde
 
-Aşağıdaki örnek, gelen bölümündeki bir değişken kümesi ilkesini gösterir. Bu set değişken ilkesi, `isMobile` `User-Agent` istek üst bilgisi metin `iPad` `iPhone`içeriyorsa true olarak ayarlanmış bir Boole [bağlam](api-management-policy-expressions.md#ContextVariables) değişkeni oluşturur.
+Aşağıdaki örnek, gelen bölümündeki bir değişken kümesi ilkesini gösterir. Bu set değişken ilkesi, `User-Agent` istek üst bilgisi, `iPad` veya `iPhone`metin içeriyorsa true olarak ayarlanmış bir `isMobile` Boole [bağlam](api-management-policy-expressions.md#ContextVariables) değişkeni oluşturur.
 
 ```xml
 <set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
@@ -865,8 +865,8 @@ Aşağıdaki örnek, gelen bölümündeki bir değişken kümesi ilkesini göste
 
 | Öznitelik | Açıklama                                                              | Gerekli |
 | --------- | ------------------------------------------------------------------------ | -------- |
-| name      | Değişkenin adı.                                                | Evet      |
-| value     | Değişkenin değeri. Bu bir ifade veya sabit değer olabilir. | Evet      |
+| ad      | Değişkenin adı.                                                | Evet      |
+| değer     | Değişkenin değeri. Bu bir ifade veya sabit değer olabilir. | Evet      |
 
 ### <a name="usage"></a>Kullanım
 
@@ -877,32 +877,32 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="set-variableAllowedTypes"></a>İzin verilen türler
 
-`set-variable` İlkede kullanılan ifadelerin aşağıdaki temel türlerden birini döndürmesi gerekir.
+`set-variable` ilkesinde kullanılan ifadelerin aşağıdaki temel türlerden birini döndürmesi gerekir.
 
 -   System. Boolean
 -   System. SByte
 -   System. Byte
 -   System. UInt16
--   System.UInt32
--   System.UInt64
+-   System. UInt32
+-   System. UInt64
 -   System. Int16
--   System.Int32
--   System.Int64
+-   System. Int32
+-   System. Int64
 -   System. Decimal
 -   System. Single
 -   System. Double
 -   System. Guid
 -   System. String
 -   System. Char
--   System.DateTime
--   System.TimeSpan
+-   System. DateTime
+-   System. TimeSpan
 -   System. Byte?
 -   System. UInt16?
 -   System. UInt32?
 -   System. UInt64?
 -   System. Int16?
 -   System. Int32?
--   System.Int64?
+-   System. Int64?
 -   System. Decimal?
 -   System. Single?
 -   System. Double?
@@ -913,11 +913,11 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="Trace"></a>İzlemesinin
 
-`trace` İlke, API denetçisi çıktısına, Application Insights Telemetriler ve/veya tanılama günlüklerine özel bir izleme ekler. 
+`trace` ilkesi, API denetçisi çıktısına, Application Insights Telemetriler ve/veya tanılama günlüklerine özel bir izleme ekler. 
 
-* İlke, izleme tetiklendiğinde [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) çıktısına özel bir izleme ekler, yani `Ocp-Apim-Trace` istek üst bilgisi var ve doğru olarak `Ocp-Apim-Subscription-Key` ayarlanır ve istek üst bilgisi bulunur ve izlemeye izin veren geçerli bir anahtar barındırır. 
-* İlke, [Application Insights tümleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) `severity` etkin olduğunda ve ilkede belirtilen düzeyin tanılamasında belirtilen `verbosity` düzeyden daha yüksek olduğu durumlarda Application Insights ' de bir [izleme](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) telemetrisi oluşturur ayarlanmasını. 
-* İlke, [tanılama günlükleri](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) etkinken ve ilkede belirtilen önem düzeyi tanılama ayarında belirtilen ayrıntı düzeyinden daha yüksek olduğunda günlük girişine bir özellik ekler.  
+* İlke, izleme tetiklendiğinde [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) çıktısına özel bir izleme ekler, yani `Ocp-Apim-Trace` istek üst bilgisi var ve true olarak ayarlanır ve `Ocp-Apim-Subscription-Key` istek üst bilgisi bulunur ve izlemeye izin veren geçerli bir anahtar barındırır. 
+* İlke, [Application Insights tümleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) etkinleştirildiğinde ve ilkede belirtilen `severity` düzeyi tanılama ayarında belirtilen `verbosity` düzeyinden daha yüksek olduğunda Application Insights ' de bir [izleme](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) telemetrisi oluşturur. 
+* İlke, [tanılama günlükleri](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) etkinken ve ilkede belirtilen önem düzeyi tanılama ayarında belirtilen ayrıntı düzeyinden daha yüksek olduğunda günlük girişine bir özellik ekler.  
 
 
 ### <a name="policy-statement"></a>İlke ekstresi
@@ -944,18 +944,18 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 | Öğe | Açıklama   | Gerekli |
 | ------- | ------------- | -------- |
-| İzlemesinin   | Kök öğe. | Evet      |
+| izlemesinin   | Kök öğe. | Evet      |
 | message | Günlüğe kaydedilecek bir dize veya ifade. | Evet |
-| meta veriler | Application Insights [izleme](https://docs.microsoft.com/en-us/azure/azure-monitor/app/data-model-trace-telemetry) telemetrisine özel bir özellik ekler. | Hayır |
+| meta veriler | Application Insights [izleme](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) telemetrisine özel bir özellik ekler. | Hayır |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik | Açıklama                                                                             | Gerekli | Varsayılan |
 | --------- | --------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | Dize sabit değeri, izleme görüntüleyicisine anlamlı ve iletinin kaynağını belirtmektir. | Evet      | Yok     |
-| önem derecesi    | İzlemenin önem derecesini belirtir. İzin verilen değerler `verbose` `information`,,(enküçükten en büyüğe). `error` | Hayır      | Ayrıntılı     |
-| name    | Özelliğin adı. | Evet      | Yok     |
-| value    | Özelliğin değeri. | Evet      | Yok     |
+| inin    | İzlemenin önem derecesini belirtir. İzin verilen değerler `verbose`, `information``error` (en küçükten en büyüğe). | Hayır      | Seçeneini     |
+| ad    | Özelliğin adı. | Evet      | Yok     |
+| değer    | Özelliğin değeri. | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -967,7 +967,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="Wait"></a>Bekleneceğini
 
-`wait` İlke, anlık alt ilkelerini paralel olarak yürütür ve tamamlanmadan önce tüm veya ilk alt ilkelerinden birinin tamamlanmasını bekler. Bekleme ilkesi, anlık alt ilkelerine [Istek gönderme](api-management-advanced-policies.md#SendRequest), [önbellekten değer alma](api-management-caching-policies.md#GetFromCacheByKey)ve [akış ilkelerini denetim](api-management-advanced-policies.md#choose) altına alabilir.
+`wait` ilkesi, anlık alt ilkelerini paralel olarak yürütür ve tamamlanmadan önce onun veya ilk alt ilkelerinden birinin tamamlanmasını bekler. Bekleme ilkesi, anlık alt ilkelerine [Istek gönderme](api-management-advanced-policies.md#SendRequest), [önbellekten değer alma](api-management-caching-policies.md#GetFromCacheByKey)ve [akış ilkelerini denetim](api-management-advanced-policies.md#choose) altına alabilir.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -981,7 +981,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnekte, `wait` ilkenin en hızlı alt `choose` ilkelerine sahip iki ilke vardır. Bu `choose` ilkelerin her biri paralel olarak yürütülür. Her `choose` ilke, önbelleğe alınmış bir değer almayı dener. Önbellek isabetsizliği varsa, değeri sağlamak için bir arka uç hizmeti çağırılır. Bu örnekte `wait` , `for` özniteliği olarak `all`ayarlandığından, ilke tüm ilk alt ilkeleri tamamlanana kadar tamamlanmaz. Bu örnekte, bağlam`execute-branch-one`değişkenleri ( `execute-branch-two`, `value-one`, ve `value-two`) Bu örnek ilkenin kapsamı dışında bildirilmiştir.
+Aşağıdaki örnekte, `wait` ilkesinin hemen alt ilkelerine sahip iki `choose` ilkesi vardır. Bu `choose` ilkelerinin her biri paralel olarak yürütülür. Her `choose` ilkesi, önbelleğe alınmış bir değer almayı dener. Önbellek isabetsizliği varsa, değeri sağlamak için bir arka uç hizmeti çağırılır. Bu örnekte, `wait` ilkesi, tüm ilk alt ilkeleri tamamlanana kadar tamamlanmaz, çünkü `for` özniteliği `all`olarak ayarlanmıştır. Bu örnekte, bağlam değişkenleri (`execute-branch-one`, `value-one`, `execute-branch-two`ve `value-two`) Bu örnek ilkenin kapsamı dışında bildirilmiştir.
 
 ```xml
 <wait for="all">
@@ -1019,13 +1019,13 @@ Aşağıdaki örnekte, `wait` ilkenin en hızlı alt `choose` ilkelerine sahip i
 
 | Öğe | Açıklama                                                                                                   | Gerekli |
 | ------- | ------------------------------------------------------------------------------------------------------------- | -------- |
-| bekleneceğini    | Kök öğe. Yalnızca `send-request`alt öğeler, `cache-lookup-value`, ve `choose` ilkeler olarak bulunabilir. | Evet      |
+| Bekleneceğini    | Kök öğe. Yalnızca `send-request`, `cache-lookup-value`ve `choose` ilkeleri alt öğe olarak bulunabilir. | Evet      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                            | Gerekli | Varsayılan |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| for       | `wait` İlkenin tüm hızlı alt ilkelerin tamamlanmasını mi yoksa yalnızca bir tane mi bekleyeceğini belirler. İzin verilen değerler şunlardır:<br /><br /> - `all`-Tüm ilk alt ilkelerin tamamlanmasını bekle<br />-herhangi bir anlık alt ilkenin tamamlanmasını bekleyin. İlk acil alt öğe ilkesi tamamlandıktan sonra, `wait` ilke tamamlanır ve diğer tüm anlık alt ilkelerin yürütülmesi sonlandırılır. | Hayır       | tümü     |
+| bekleniyor       | `wait` ilkesinin tüm hızlı alt ilkelerin tamamlanmasını mi yoksa yalnızca bir tane mi bekleyeceğini belirler. İzin verilen değerler şunlardır:<br /><br /> - `all`-tüm ilk alt ilkelerin tamamlanmasını bekle<br />-herhangi bir anlık alt ilkenin tamamlanmasını bekleyin. İlk acil alt ilke tamamlandıktan sonra, `wait` ilkesi tamamlanır ve diğer tüm anlık alt ilkelerin yürütülmesi sonlandırılır. | Hayır       | tümü     |
 
 ### <a name="usage"></a>Kullanım
 

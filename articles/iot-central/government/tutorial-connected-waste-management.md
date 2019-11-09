@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a0bf3b555334b67659975c150711eab02b957c6e
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: fa2ea8cdf5148d27b025c62fbeec512ceac0943e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026608"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890817"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Öğretici: IoT Central bağlı bir çöp yönetimi uygulaması oluşturma
 
@@ -31,7 +31,7 @@ Bu öğretici, IoT Central **bağlı çöp yönetimi** uygulama şablonundan Azu
 > * İşleri yapılandırma
 > * Beyaz etiketleme kullanarak uygulama markanızı özelleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 -  Bir Azure aboneliği önerilir. İsteğe bağlı olarak 7 günlük ücretsiz deneme kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
@@ -59,7 +59,7 @@ Yeni bir Azure IoT Central bağlı çöp yönetimi uygulaması oluşturmak için
     * **URL** : isteğe bağlı olarak, istediğiniz URL 'yi seçebilirsiniz. URL 'YI daha sonra değiştirebilirsiniz. 
     * Azure aboneliğiniz varsa *dizininizi, Azure aboneliğinizi ve bölgenizi*girin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
 
-    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../preview/quick-deploy-iot-central.md).
 
 5. Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın. 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 8860a297332a3572890ceb4c843040f530b8a897
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f12f92294a9c30ddedea3c433ff65de4a635fd4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935513"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889644"
 ---
 # <a name="expressroute-virtual-network-gateway-and-fastpath"></a>ExpressRoute sanal ağ geçidi ve FastPath
 Azure Sanal ağınızı ve şirket içi ağınızı ExpressRoute aracılığıyla bağlamak için önce bir sanal ağ geçidi oluşturmanız gerekir. Bir sanal ağ geçidi iki amaca hizmet eder: ağlar arasında Exchange IP yolları ve ağ trafiği yönlendirme. Bu makalede, ağ geçidi türleri, ağ geçidi SKU 'Ları ve SKU 'nun tahmini performansı açıklanmaktadır. Bu makalede ayrıca, şirket içi ağınızdan gelen ağ trafiğinin performansı artırmak için sanal ağ geçidini atlaması sağlayan bir özellik olan ExpressRoute [FastPath](#fastpath)açıklanır.
@@ -34,7 +34,7 @@ Bir sanal ağın her ağ geçidi türü için yalnızca bir sanal ağ geçidi ol
 Ağ geçidinizin daha güçlü bir ağ geçidi SKU 'suna yükseltmek istiyorsanız, çoğu durumda ' Resize-AzVirtualNetworkGateway ' PowerShell cmdlet 'ini kullanabilirsiniz. Bu, standart ve HighPerformance SKU 'Larına yükseltmeler için çalışacaktır. Ancak, UltraPerformance SKU 'suna yükseltmek için, ağ geçidini yeniden oluşturmanız gerekecektir. Bir ağ geçidinin yeniden oluşturulması kapalı kalma süresini doğurur.
 
 ### <a name="aggthroughput"></a>Ağ Geçidi SKU 'SU tarafından tahmini performanons
-Aşağıdaki tabloda ağ geçidi türleri ve tahmini performanons gösterilmektedir. Bu tablo hem Resource Manager, hem de klasik dağıtım modellerine uygulanır.
+Aşağıdaki tabloda ağ geçidi türleri ve tahmini performanons gösterilmektedir. Bu tablo hem Resource Manager hem de klasik dağıtım modellerine uygulanır.
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
@@ -85,7 +85,7 @@ FastPath tüm ExpressRoute devrelerinin üzerinde kullanılabilir. Yine de sanal
 FastPath aşağıdaki özellikleri desteklemez:
 * UDR on Gateway alt ağı: sanal ağınızın ağ geçidi alt ağına UDR uygularsanız, şirket içi ağınızdan gelen ağ trafiği sanal ağ geçidine gönderilmeye devam edecektir.
 * VNet eşlemesi: ExpressRoute 'a bağlı başka sanal ağlarınız varsa, şirket içi ağınızdan diğer sanal ağlara (yani "bağlı bileşen" sanal ağları) ağ trafiğini, sanal ağa gönderilmeye devam eder geçidinde. Geçici çözüm tüm sanal ağları ExpressRoute devresine doğrudan bağlamak olur.
-* Temel Load Balancer: sanal ağınızda temel bir iç yük dengeleyici dağıtırsanız veya sanal ağınızda dağıttığınız Azure PaaS hizmeti temel bir iç yük dengeleyici kullanıyorsa, şirket içi ağınızdan gelen ağ trafiği, üzerinde barındırılan sanal IP 'lere Temel yük dengeleyici sanal ağ geçidine gönderilir. Çözüm, temel yük dengeleyiciyi [Standart yük dengeleyiciye](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview)yükseltmeye yönelik bir çözümdür.
+* Temel Load Balancer: sanal ağınızda temel bir iç yük dengeleyici dağıtırsanız veya sanal ağınızda dağıttığınız Azure PaaS hizmeti temel bir iç yük dengeleyici kullanıyorsa, şirket içi ağınızdan gelen ağ trafiği, üzerinde barındırılan sanal IP 'lere Temel yük dengeleyici sanal ağ geçidine gönderilir. Çözüm, temel yük dengeleyiciyi [Standart yük dengeleyiciye](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)yükseltmeye yönelik bir çözümdür.
 * Özel bağlantı: şirket içi ağınızdan sanal ağınızdaki [özel bir uç noktaya](../private-link/private-link-overview.md) bağlanırsanız bağlantı, sanal ağ geçidi üzerinden geçer.
  
 ## <a name="resources"></a>REST API 'leri ve PowerShell cmdlet 'leri

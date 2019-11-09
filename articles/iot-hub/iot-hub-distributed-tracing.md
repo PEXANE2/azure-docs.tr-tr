@@ -1,6 +1,6 @@
 ---
 title: Dağıtılmış izleme ile IoT iletilerine bağıntı kimlikleri ekleme (Önizleme)
-description: ''
+description: Çözümünüz tarafından kullanılan Azure hizmetleri genelinde IoT iletilerini izlemek için dağıtılmış izleme özelliğini nasıl kullanacağınızı öğrenin.
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: e4403c245a3cae671f83260ae313ed400b0f7721
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: a6e7d2dc9b6274c07fda011bff8ec9dc59f74f95
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259364"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889437"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Dağıtılmış izleme (Önizleme) ile Azure IoT cihazdan buluta iletileri izleme
 
@@ -28,9 +28,9 @@ IoT Hub için dağıtılmış izlemeyi etkinleştirmek aşağıdakileri yapabilm
 - IoT Hub ve yönlendirme uç noktalarına kadar cihazdan ileti akışını ve gecikme süresini ölçün ve anlayın.
 - IoT çözümünüzdeki Azure dışı hizmetler için nasıl dağıtılmış izleme uygulamak istediğinizi göz önünde bulundurarak başlayın.
 
-Bu makalede, dağıtılmış izleme ile [C Için Azure IoT cihaz SDK 'sını](./iot-hub-device-sdk-c-intro.md) kullanırsınız. Diğer SDK 'lar için dağıtılmış izleme desteği hala devam ediyor.
+Bu makalede, dağıtılmış izleme ile [C Için Azure IoT cihaz SDK 'sını](iot-hub-device-sdk-c-intro.md) kullanırsınız. Diğer SDK 'lar için dağıtılmış izleme desteği hala devam ediyor.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Dağıtılmış izlemenin önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'Lar için desteklenir:
 
@@ -38,7 +38,7 @@ Bu makalede, dağıtılmış izleme ile [C Için Azure IoT cihaz SDK 'sını](./
   - **Güneydoğu Asya**
   - **Batı ABD 2**
 
-- Bu makalede, IoT Hub 'ınıza telemetri iletileri gönderme hakkında bilgi sahibi olduğunuz varsayılır. [Telemetriyi Gönder C hızlı](./quickstart-send-telemetry-c.md)başlangıcı ' nı tamamladığınızdan emin olun.
+- Bu makalede, IoT Hub 'ınıza telemetri iletileri gönderme hakkında bilgi sahibi olduğunuz varsayılır. [Telemetriyi Gönder C hızlı](quickstart-send-telemetry-c.md)başlangıcı ' nı tamamladığınızdan emin olun.
 
 - IoT Hub 'ınıza bir cihaz kaydedin (her hızlı başlangıçta kullanılabilen adımlar) ve bağlantı dizesini aklınızda edin.
 
@@ -58,9 +58,9 @@ Bu bölümde, dağıtılmış izleme özniteliklerini (bağıntı kimlikleri ve 
 
 1. Günlüğün nereye gönderileceğini belirlemek için aşağıdaki seçeneklerden birini veya daha fazlasını seçin:
 
-    - **Bir depolama hesabına Arşivle**: Günlüğe kaydetme bilgilerini içerecek bir depolama hesabı yapılandırın.
-    - **Bir olay hub 'ına akış**: Günlüğe kaydetme bilgilerini içeren bir olay hub 'ı yapılandırın.
-    - **Log Analytics gönder**: Günlüğe kaydetme bilgilerini içerecek bir Log Analytics çalışma alanı yapılandırın.
+    - **Depolama hesabına Arşivle**: bir depolama hesabını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
+    - **Bir olay hub 'ına akış**: Olay Hub 'ını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
+    - **Log Analytics gönder**: Günlük Analizi çalışma alanını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
 
 1. **Günlük** bölümünde, bilgilerini günlüğe kaydetmek istediğiniz işlemleri seçin.
 
@@ -90,7 +90,7 @@ Bu yönergeler, Windows üzerinde örnek oluşturmak içindir. Diğer ortamlar i
 
 1. Visual Studio 2015 ya da 2017 için ["Ile C++masaüstü geliştirme" iş yükünü](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017) yükler.
 
-1. [CMake](https://cmake.org/)'i yükler. Bir komut isteminden yazarak `PATH` `cmake -version` olduğunuzdan emin olun.
+1. [CMake](https://cmake.org/)'i yükler. Bir komut isteminden `cmake -version` yazarak `PATH` emin olun.
 
 1. Komut istemini veya Git Bash kabuğunu açın. Aşağıdaki komutu yürüterek [Azure IoT C SDK'sı](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunu kopyalayın:
 
@@ -109,7 +109,7 @@ Bu yönergeler, Windows üzerinde örnek oluşturmak içindir. Diğer ortamlar i
     cmake ..
     ```
 
-    Derleyicinizi C++ bulamazsa, yukarıdaki komutu çalıştırırken derleme hataları alabilirsiniz. `cmake` Bu durumda bu komutu [Visual Studio komut isteminde](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs) çalıştırmayı deneyin. 
+    `cmake` derleyicinizi C++ bulamazsa, yukarıdaki komutu çalıştırırken derleme hataları alabilirsiniz. Bu durumda bu komutu [Visual Studio komut isteminde](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs) çalıştırmayı deneyin. 
 
     Derleme başarılı olduktan sonra, son birkaç çıkış satırı aşağıdaki çıkışa benzer olacaktır:
 
@@ -129,23 +129,23 @@ Bu yönergeler, Windows üzerinde örnek oluşturmak içindir. Diğer ortamlar i
 
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>Dağıtılmış izlemeyi etkinleştirmek için telemetri gönder örneğini düzenleyin
 
-1. `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` Kaynak dosyayı açmak için bir düzenleyici kullanın.
+1. `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` kaynak dosyasını açmak için bir düzenleyici kullanın.
 
 1. `connectionString` sabitinin bildirimini bulun:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    `connectionString` Sabitin değerini, [telemetri C gönder hızlı](./quickstart-send-telemetry-c.md)başlangıcı ' nın [bir cihaz kaydetme](./quickstart-send-telemetry-c.md#register-a-device) bölümünde bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin.
+    `connectionString` sabitinin değerini, [telemetri C gönder hızlı başlangıç](./quickstart-send-telemetry-c.md)konusunun [bir cihaz kaydetme](./quickstart-send-telemetry-c.md#register-a-device) bölümünde yer aldığınız cihaz bağlantı dizesiyle değiştirin.
 
-1. Tanımla öğesini şu şekilde `5000`değiştirin: `MESSAGE_COUNT`
+1. `MESSAGE_COUNT` `5000`tanımlamak için değiştirin:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=3)]
 
-1. İleti gönder döngüsünden önce bir bağlantı durumu `IoTHubDeviceClient_LL_SetConnectionStatusCallback` geri çağırma işlevini kaydetmek için çağıran kod satırını bulun. Cihaz için dağıtılmış izlemeyi etkinleştirme çağrısı `IoTHubDeviceClient_LL_EnablePolicyConfiguration` yapmak üzere aşağıda gösterildiği gibi bu satırın altına kod ekleyin:
+1. İleti gönder döngüsünden önce bir bağlantı durumu geri çağırma işlevini kaydetmek için `IoTHubDeviceClient_LL_SetConnectionStatusCallback` çağıran kod satırını bulun. Cihaz için dağıtılmış izlemeyi etkinleştirmek `IoTHubDeviceClient_LL_EnablePolicyConfiguration` çağırmak için bu satırın altına aşağıda gösterildiği gibi kod ekleyin:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_tracing&highlight=5)]
 
-    İşlevi `IoTHubDeviceClient_LL_EnablePolicyConfiguration` , [Device TWINS](./iot-hub-devguide-device-twins.md)aracılığıyla yapılandırılan belirli ıothub özellikleri için ilkeler sunar. Yukarıdaki `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` kod satırıyla etkinleştirildikten sonra, cihazın izleme davranışı cihaz ikizi yapılan dağıtılmış izleme değişikliklerini yansıtır.
+    `IoTHubDeviceClient_LL_EnablePolicyConfiguration` işlevi, [Device TWINS](./iot-hub-devguide-device-twins.md)aracılığıyla yapılandırılan belirli ıothub özellikleri için ilkeler sunar. Yukarıdaki kod satırıyla `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` etkinleştirildikten sonra, cihazın izleme davranışı cihaz ikizi yapılan dağıtılmış izleme değişikliklerini yansıtır.
 
 1. Tüm kotayı kullanmadan örnek uygulamayı çalışır durumda tutmak için ileti gönder döngüsünün sonuna ikinci bir gecikme ekleyin:
 
@@ -153,7 +153,7 @@ Bu yönergeler, Windows üzerinde örnek oluşturmak içindir. Diğer ortamlar i
 
 ### <a name="compile-and-run"></a>Derleyin ve çalıştırın
 
-1. Daha önce oluşturduğunuz CMake dizininden (`azure-iot-sdk-c/cmake`) iothub_ll_telemetry_sample proje dizinine gidin ve örneği derleyin:
+1. Daha önce oluşturduğunuz CMake dizininden (`azure-iot-sdk-c/cmake`) *iothub_ll_telemetry_sample* projesi dizinine gidin ve örneği derleyin:
 
     ```cmd
     cd iothub_client/samples/iothub_ll_telemetry_sample
@@ -174,10 +174,10 @@ Bu yönergeler, Windows üzerinde örnek oluşturmak içindir. Diğer ortamlar i
 
 C SDK kullanılmadan dağıtılmış izleme özelliğinin önizlenmesi **önemsiz değildir** . Bu nedenle, bu yaklaşım önerilmez.
 
-İlk olarak, [IoT Hub Iletileri oluşturma ve okuma](iot-hub-devguide-messages-construct.md)için geliştirme Kılavuzu ' nu izleyerek iletilerinize tüm IoT Hub Protokolü temel öğelerini uygulamanız gerekir. Daha sonra, `tracestate` **System özelliği**olarak eklemek için MQTT/AMQP iletilerindeki protokol özelliklerini düzenleyin. Daha ayrıntılı belirtmek gerekirse:
+İlk olarak, [IoT Hub Iletileri oluşturma ve okuma](iot-hub-devguide-messages-construct.md)için geliştirme Kılavuzu ' nu izleyerek iletilerinize tüm IoT Hub Protokolü temel öğelerini uygulamanız gerekir. Ardından, MQTT/AMQP iletilerindeki protokol özelliklerini düzenleyerek `tracestate` **sistem özelliği**olarak ekleyin. Daha ayrıntılı belirtmek gerekirse:
 
-* MQTT için, `1539243209` , `%24.tracestate=timestamp%3d1539243209` UNIX zaman damgası biçimindeki ileti oluşturma zamanına göre değiştirilmeli ileti konusuna ekleyin. Örnek olarak, [C SDK 'sindeki](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) uygulamaya başvurun
-* AMQP için ileti ek `key("tracestate")` açıklaması `value("timestamp=1539243209")` ekleyin. Başvuru uygulama için [buraya](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)bakın.
+* MQTT için `%24.tracestate=timestamp%3d1539243209` ileti konusuna ekleyin; burada `1539243209`, UNIX zaman damgası biçimindeki ileti oluşturma süresi ile değiştirilmelidir. Örnek olarak, [C SDK 'sindeki](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) uygulamaya başvurun
+* AMQP için, `key("tracestate")` ve `value("timestamp=1539243209")` ileti ek açıklaması olarak ekleyin. Başvuru uygulama için [buraya](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)bakın.
 
 Bu özelliği içeren iletilerin yüzdesini denetlemek için, ikizi güncelleştirmeleri gibi bulut tarafından başlatılan olayları dinlemek için mantığı uygulayın.
 
@@ -195,17 +195,17 @@ Buluttan izlenecek ileti yüzdesini değiştirmek için cihaz ikizi güncelleşt
 
     ![Azure portal 'da dağıtılmış izlemeyi etkinleştir](./media/iot-hub-distributed-tracing/azure-portal.png)
 
-1. % 0 ile% 100 arasında bir **örnekleme oranı** seçin.
+1. %0 ile %100 arasında bir **örnekleme oranı** seçin.
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
 1. Birkaç saniye bekleyin ve **yenileme**' ye basın, sonra cihaz tarafından başarıyla onaylandıysanız, onay işareti içeren bir eşitleme simgesi belirir.
 
-1. Telemetri iletisi uygulamasının konsol penceresine geri dönün. İle `tracestate` gönderilen iletileri uygulama özelliklerinde görürsünüz.
+1. Telemetri iletisi uygulamasının konsol penceresine geri dönün. Uygulama özelliklerinde `tracestate` ile gönderilen iletileri görürsünüz.
 
     ![İzleme durumu](./media/iot-hub-distributed-tracing/MicrosoftTeams-image.png)
 
-1. Seçim Örnekleme hızını farklı bir değere değiştirin ve iletilerin uygulama özelliklerine dahil `tracestate` olduğu sıklığa göre değişikliği gözlemleyin.
+1. Seçim Örnekleme hızını farklı bir değere değiştirin ve iletilerin uygulama özelliklerinde `tracestate` dahil olduğu sıklığa göre değişikliği gözlemleyin.
 
 ### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>VS Code için Azure IoT Hub araç setini kullanarak güncelleştir
 
@@ -242,8 +242,8 @@ Birden çok cihaz için dağıtılmış izleme örnekleme yapılandırmasını g
 
 | Öğe adı | Gerekli | Tür | Açıklama |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Evet | Integer | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1`ve `2` üzerinde. |
-| `sampling_rate` | Evet | Integer | Bu değer bir yüzde değeridir. Yalnızca ' den `0` `100` (kapsamlı) değerlere izin verilir.  |
+| `sampling_mode` | Evet | Tamsayı | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1` ve `2` kapalı. |
+| `sampling_rate` | Evet | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca `0` `100` (dahil) değerlerine izin verilir.  |
 
 ## <a name="query-and-visualize"></a>Sorgulama ve görselleştirme
 
@@ -251,7 +251,7 @@ Bir IoT Hub tarafından günlüğe kaydedilen tüm izlemeleri görmek için Tan�
 
 ### <a name="query-using-log-analytics"></a>Log Analytics kullanarak sorgulama
 
-[Tanılama günlükleri ile Log Analytics](../azure-monitor/platform/resource-logs-collect-storage.md)ayarladıysanız, `DistributedTracing` kategoride Günlükler arayarak sorgulayın. Örneğin, bu sorgu günlüğe kaydedilen tüm izlemeleri gösterir:
+[Tanılama günlükleri ile Log Analytics](../azure-monitor/platform/resource-logs-collect-storage.md)ayarladıysanız, `DistributedTracing` kategorisinde Günlükler arayarak sorgulayın. Örneğin, bu sorgu günlüğe kaydedilen tüm izlemeleri gösterir:
 
 ```Kusto
 // All distributed traces 
@@ -263,7 +263,7 @@ AzureDiagnostics
 
 Log Analytics gösterildiği gibi örnek Günlükler:
 
-| TimeGenerated | OperationName | Category | Düzey | CorrelationId | Ort | properties |
+| TimeGenerated | için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Kategori | Düzey | CorrelationId | Ort | Özellikler |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"DeviceID": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
 | 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "Parentspanıd": "0144d2590aacd909"} |
@@ -300,13 +300,13 @@ Etkinleştirildikten sonra, IoT Hub için dağıtılmış izleme desteği şu ak
 
 1. IoT cihazında bir ileti oluşturulur.
 1. IoT cihazı, bu iletinin bir izleme bağlamı ile atanması gerektiğini (buluttan yardım ile) belirler.
-1. SDK ileti uygulaması özelliğine `tracestate` ileti oluşturma zaman damgasını içeren bir ekler.
+1. SDK ileti uygulaması özelliğine ileti oluşturma zaman damgasını içeren bir `tracestate` ekler.
 1. IoT cihazı IoT Hub ileti gönderir.
 1. İleti, IoT Hub ağ geçidine ulaşır.
-1. IoT Hub ileti uygulama özelliklerinde `tracestate` öğesine bakar ve doğru biçimde olup olmadığını denetler.
-1. Bu durumda, IoT Hub kategorisi `trace-id` `DiagnosticIoTHubD2C`altında ve `span-id` Azure izleyici tanılama günlüklerini oluşturup günlüğe kaydeder.
-1. İleti işleme tamamlandıktan sonra, IoT Hub bir tane `span-id` oluşturur ve kategori `DiagnosticIoTHubIngress`altında var `trace-id` olan ile birlikte günlüğe kaydeder.
-1. İleti için yönlendirme etkinleştirildiyse, IoT Hub özel uç noktaya yazar ve kategori `span-id` `DiagnosticIoTHubEgress`altında aynı `trace-id` olan başka bir oturum açar.
+1. IoT Hub ileti uygulama özelliklerindeki `tracestate` arar ve doğru biçimde olup olmadığını denetler.
+1. Bu durumda, IoT Hub `trace-id` ve Günlükler `DiagnosticIoTHubD2C`kategori altındaki Azure Izleyici tanılama günlüklerine `span-id` oluşturur.
+1. İleti işleme tamamlandıktan sonra, IoT Hub başka bir `span-id` oluşturur ve bu dosyayı kategori `DiagnosticIoTHubIngress`altındaki mevcut `trace-id` birlikte günlüğe kaydeder.
+1. İleti için yönlendirme etkinleştirildiyse, IoT Hub özel uç noktaya yazar ve kategori `DiagnosticIoTHubEgress`altında aynı `trace-id` başka bir `span-id` günlüğe kaydeder.
 1. Yukarıdaki adımlar, oluşturulan her ileti için yinelenir.
 
 ## <a name="public-preview-limits-and-considerations"></a>Genel Önizleme sınırları ve konuları

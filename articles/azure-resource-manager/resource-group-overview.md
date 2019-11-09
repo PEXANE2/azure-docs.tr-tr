@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: overview
 ms.date: 08/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: f8ec833a469e3c3a9b4c88343a48e109fc5c9728
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 525271fdc94e0fd1b2cafe4a5a222ce9100156ef
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338217"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888484"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager genel bakış
 
@@ -61,7 +61,7 @@ Kaynak Yöneticisi, şunları yapabilirsiniz:
 
 Azure dört kapsam düzeyi sağlar: [Yönetim grupları](../governance/management-groups/overview.md), abonelikler, [kaynak grupları](#resource-groups)ve kaynaklar. Aşağıdaki resimde bu katmanlara ait bir örnek gösterilir.
 
-![`Scope`](./media/resource-group-overview/scope-levels.png)
+![Kapsam](./media/resource-group-overview/scope-levels.png)
 
 Yönetim ayarlarını bu kapsam düzeylerinden birinde uygularsınız. Seçtiğiniz düzey, ayarın ne kadar yaygın olarak uygulanacağını belirler. Düşük düzeyler, yüksek düzeylerdeki ayarları devralır. Örneğin, aboneliğe bir [ilke](../governance/policy/overview.md) uyguladığınızda, ilke aboneliğinizdeki tüm kaynak gruplarına ve kaynaklara uygulanır. Kaynak grubuna bir ilke uyguladığınızda, bu ilke kaynak grubu ve tüm kaynakları uygulanır. Ancak, başka bir kaynak grubu Bu ilke atamasına sahip değildir.
 
@@ -87,7 +87,7 @@ Kaynak gruplarınızı tanımlarken göz önüne almanız gereken bazı önemli 
 
 Bir kaynak grubu oluştururken bu kaynak grubu için bir konum belirtmeniz gerekir. "Bir kaynak grubu için neden konum gerekli olsun? Ayrıca kaynaklar kaynak grubundan farklı konumlarda olabiliyorsa kaynak grubu konumu neden önemli olsun?" diye soruyor olabilirsiniz Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Kaynak grubu için bir konum belirttiğinizde, meta verilerin nerede depolandığını belirtirsiniz. Uyumluluk nedeniyle verilerinizin belirli bir bölgeye depolandığından emin olmanız gerekebilir.
 
-Kaynak grubunun bölgesi geçici olarak kullanılamıyorsa, meta veriler kullanılamadığından kaynak grubundaki kaynakları güncelleştiremezsiniz. Diğer bölgelerdeki kaynaklar beklendiği gibi çalışmaya devam eder, ancak bunları güncelleştiremezsiniz. Güvenilir uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [güvenilir Azure uygulamaları tasarlama](/azure/architecture/reliability/).
+Kaynak grubunun bölgesi geçici olarak kullanılamıyorsa, meta veriler kullanılamadığından kaynak grubundaki kaynakları güncelleştiremezsiniz. Diğer bölgelerdeki kaynaklar beklendiği gibi çalışmaya devam eder, ancak bunları güncelleştiremezsiniz. Güvenilir uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [güvenilir Azure uygulamaları tasarlama](/azure/architecture/checklist/resiliency-per-service).
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager esnekliği
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: cf4274931d83b51afb4a8ada7d1c9040ccce3c14
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7003e5b8574d2caa05bfe66e500b93db0c1cdcfa
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606841"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891632"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix profil kapsayıcıları ve Azure dosyaları
 
@@ -78,7 +78,7 @@ Alma işlemi, Microsoft, FSLogix profil kapsayıcılarıyla UPD gibi mevcut kull
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Active Directory etki alanı hizmeti ile Azure dosyaları tümleştirmesi
 
-FSLogix profil kapsayıcılarının performansı ve özellikleri buluttan faydalanır. 7 Ağustos 2019 ' de Microsoft Azure dosyalar [Azure Active Directory etki alanı hizmeti (AD DS) Ile Azure dosyaları kimlik doğrulamasının](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview)genel kullanıma sunulduğunu duyurmuştur. Hem maliyet hem de yönetim yükünü ele alarak Azure AD DS kimlik doğrulaması ile Azure dosyaları, Windows sanal masaüstü hizmetindeki Kullanıcı profillerine yönelik bir Premium çözümdür.
+FSLogix profil kapsayıcılarının performansı ve özellikleri buluttan faydalanır. 7 Ağustos 2019 ' de Microsoft Azure dosyalar [Azure Active Directory etki alanı hizmeti (AD DS) Ile Azure dosyaları kimlik doğrulamasının](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)genel kullanıma sunulduğunu duyurmuştur. Hem maliyet hem de yönetim yükünü ele alarak Azure AD DS kimlik doğrulaması ile Azure dosyaları, Windows sanal masaüstü hizmetindeki Kullanıcı profillerine yönelik bir Premium çözümdür.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Windows sanal masaüstü için en iyi yöntemler
 

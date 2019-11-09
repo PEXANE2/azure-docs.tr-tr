@@ -7,15 +7,15 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 217a1d94a4a5235fc5886f34986ffcb3aef60873
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: f2479d9f3e278d23d62275b667f78d1fd70dd151
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949258"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889700"
 ---
-# <a name="routing-events-and-messages"></a>Olayları ve iletileri yönlendirme
+# <a name="routing-events-and-messages"></a>Yönlendirme olayları ve iletileri
 
 IoT çözümleri genellikle depolama, analiz ve daha fazlasını içeren birkaç güçlü hizmeti kapsar. Bu makalede, Azure dijital TWINS uygulamalarının Azure Analytics, AI ve depolama hizmetlerine bağlanarak daha ayrıntılı Öngörüler ve işlevler vermesini açıklar.
 
@@ -29,9 +29,11 @@ Azure dijital TWINS, IoT olaylarını diğer Azure hizmetleriyle veya iş uygula
 
 Kullanıcılar, olayları göndermek veya iletileri iletmek için bir veya daha fazla çıkış uç noktası belirtebilir. Olaylar ve iletiler, bu önceden tanımlanmış yönlendirme tercihlerine göre uç noktalara gönderilir. Diğer bir deyişle, kullanıcılar, Graph işlem olaylarını almak için başka bir uç nokta belirtebilir, diğer bir deyişle cihaz telemetri olaylarını alabilir ve bu şekilde devam edebilir.
 
-[![Azure dijital TWINS olayları yönlendirme](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
+[Azure dijital TWINS olayları yönlendirme ![](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
-Event Hubs yönlendirme, telemetri iletilerinin gönderilme sırasını korur. Bu nedenle, son olarak alındıkları sırada uç noktaya ulaşır. Event Grid ve Service Bus uç noktaların olayları gerçekleşdikleri sırada almasını garanti etmez. Ancak olay şeması, olaylar uç noktaya ulaştığında sırayı belirlemek için kullanılabilecek bir zaman damgası içerir.
+Event Hubs yönlendirme, telemetri iletilerinin gönderilme sırasını korur. Bu nedenle, son olarak alındıkları sırada uç noktaya ulaşır. 
+
+Event Grid ve Service Bus uç noktaların olayları gerçekleşdikleri sırada almasını garanti etmez. Ancak olay şeması, olaylar uç noktaya ulaştığında sırayı belirlemek için kullanılabilecek bir zaman damgası içerir.
 
 ## <a name="route-implementation"></a>Yol uygulama
 

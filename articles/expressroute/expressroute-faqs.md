@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 4dd4831d6437b7026459dc358455335dd0fa221b
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f27a6df86ebbe2b07b73016f304ac364e88664bb
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063096"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891047"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -101,7 +101,7 @@ Microsoft, belirtilen ' tanıtılan genel ön eklerin ' ve ' eşdüzey ASN ' (ve
 Dynamics 365 ve Common Data Service (CD) ortamları Azure üzerinde barındırılır ve bu nedenle müşteriler Azure kaynakları için temeldeki ExpressRoute desteğinden faydalanır. Yönlendirici filtreniz, Dynamics 365/CD ortamlarınızın barındırıldığı Azure bölgelerini içeriyorsa, hizmet uç noktalarına bağlanabilirsiniz.
 
 > [!NOTE]
-> [ExpressRoute Premium](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-faqs#expressroute-premium) , Azure ExpressRoute üzerinden Dynamics 365 bağlantısı için gerekli **değildir** .
+> [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) , Azure ExpressRoute üzerinden Dynamics 365 bağlantısı için gerekli **değildir** .
 
 ## <a name="data-and-connections"></a>Veriler ve bağlantılar
 

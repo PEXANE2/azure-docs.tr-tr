@@ -1,6 +1,6 @@
 ---
 title: Azure IoT hub'ında elle yük devretme | Microsoft Docs
-description: Bir Azure IoT hub'ı için elle yük devretme gerçekleştirmeyi gösterme
+description: IoT Hub 'ınızı farklı bir bölgeye el ile yük devretme işlemini gerçekleştirmeyi ve çalıştığını onaylamaya ve sonra özgün bölgeye geri dönüp yeniden kontrol yapmayı öğrenin.
 author: robinsh
 manager: timlt
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 308e452f33ded9be3b88ff370ed34326de54895c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 42785e3ee636f24ca185f57a11d4ee1091db3e98
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876980"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890404"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Öğretici: IoT Hub 'ı için el ile yük devretme gerçekleştirme
 
@@ -29,7 +29,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > * IoT hub'ın işlemlerini birincil konuma geri almak için yeniden çalışma gerçekleştirin. 
 > * Hub'ın doğru konumda düzgün biçimde çalıştığını onaylayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -41,7 +41,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 
    ![IoT hub'ı oluşturmayı gösteren ekran görüntüsü](./media/tutorial-manual-failover/create-hub-01.png)
 
-3. **Temel Bilgiler** sekmesini seçin. Aşağıdaki alanları doldurun.
+3. **Temel bilgiler** sekmesini seçin. aşağıdaki alanları girin.
 
     **Abonelik**: Kullanmak istediğiniz Azure aboneliğini seçin.
 
@@ -69,7 +69,7 @@ Bir IoT hub'ı için günlük iki yük devretme ve iki yeniden çalışma sını
 
    ![IoT Hub'ı özellikler bölmesini gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-01.png)
 
-1. El Ile yük devretme bölmesinde **geçerli konumu** ve **Yük devretme konumunu**görürsünüz. Geçerli konum her zaman hub 'ın Şu anda etkin olduğu konumu gösterir. Yük devretme konumu, geçerli konumla eşleştirilmiş standart [Azure coğrafi eşlenmiş bölgesidir](../best-practices-availability-paired-regions.md) . Konum değerlerini değiştiremezsiniz. Bu öğretici için, geçerli konum `West US 2` ve yük devretme konumu olur. `West Central US`
+1. El Ile yük devretme bölmesinde **geçerli konumu** ve **Yük devretme konumunu**görürsünüz. Geçerli konum her zaman hub 'ın Şu anda etkin olduğu konumu gösterir. Yük devretme konumu, geçerli konumla eşleştirilmiş standart [Azure coğrafi eşlenmiş bölgesidir](../best-practices-availability-paired-regions.md) . Konum değerlerini değiştiremezsiniz. Bu öğretici için, geçerli konum `West US 2` ve yük devretme konumu `West Central US`.
 
    ![Elle Yük Devretme bölmesini gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-02.png)
 
@@ -89,11 +89,11 @@ Bir IoT hub'ı için günlük iki yük devretme ve iki yeniden çalışma sını
 
    ![IoT Hub yük devretme işleminin devam ettiğini gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-05-hub-inactive.png)
 
-   Tamamlandıktan sonra, El Ile yük devretme sayfasındaki geçerli ve yük devretme bölgeleri çevrilmiştir ve hub tekrar etkin olur. Bu örnekte, geçerli konum `WestCentralUS` Şu anda ve yük devretme konumu artık `West US 2`vardır. 
+   Tamamlandıktan sonra, El Ile yük devretme sayfasındaki geçerli ve yük devretme bölgeleri çevrilmiştir ve hub tekrar etkin olur. Bu örnekte, geçerli konum artık `WestCentralUS` ve yük devretme konumu artık `West US 2`. 
 
    ![Yük devretme işleminin tamamlandığını gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-06-finished.png)
 
-   Genel Bakış sayfasında ayrıca yük devretme işleminin tamamlandığını ve IoT Hub içinde `West Central US`çalıştığını belirten bir başlık gösterilir.
+   Genel Bakış sayfasında ayrıca yük devretme işleminin tamamlandığını ve IoT Hub `West Central US`çalıştığını belirten bir başlık gösterilir.
 
    ![Genel Bakış sayfasında yük devretme işleminin tamamlandığını gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-06-finished-overview.png)
 
@@ -114,7 +114,7 @@ Yeniden çalışma işlemi, elle yük devretme işlemiyle aynı şekilde gerçek
 
    ![Elle yeniden çalışma isteğinin ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
-   Başlık, yük devretme gerçekleştirme bölümünde açıklandığı gibi görüntülenir. Yeniden `West US 2` çalışma tamamlandıktan sonra, ilk olarak geçerli konum ve `West Central US` yük devretme konumu olarak ayarlanır.
+   Başlık, yük devretme gerçekleştirme bölümünde açıklandığı gibi görüntülenir. Yeniden çalışma tamamlandıktan sonra, geçerli konum olarak `West US 2` ve ilk olarak ayarlanan yük devretme konumu olarak `West Central US` gösterir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 

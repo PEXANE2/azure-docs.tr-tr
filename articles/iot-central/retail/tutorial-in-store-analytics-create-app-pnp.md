@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: a662201823808c9e2e34e9210096cb081e1b9430
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: b0d2617983a7ee1702e8871a2c6bfc5f0511656f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615322"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890690"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Öğretici: Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central
 
@@ -75,7 +75,7 @@ Yeni bir Azure IoT Central uygulaması oluşturmak için:
 
 1. Azure aboneliğiniz varsa *dizininizi, Azure aboneliğinizi ve bölgenizi*girin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
 
-    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../preview/quick-deploy-iot-central.md).
 
 1. **Oluştur**'u seçin.
 
@@ -160,7 +160,7 @@ Uygulamanızdaki cihaz şablonlarını üç şekilde özelleştirebilirsiniz. İ
 
 Üçüncü olarak, özel görünümler oluşturarak cihaz şablonlarını özelleştirin. Görünümler, operatörlerin cihaz ölçümleri ve sistem durumu gibi telemetri ve meta verileri görselleştirmesine yönelik bir yol sağlar.
 
-Burada, RuuviTag sensörlerinizin cihaz şablonunu özelleştirmek için ilk iki yöntemi kullanın. Sensörleriniz için görünüm oluşturma hakkında daha fazla bilgi için, IoT Central uygulamanızın hızlı başlangıç başlığına [sanal cihaz ekleme](../core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) hızlı başlangıç bölümüne bakın.
+Burada, RuuviTag sensörlerinizin cihaz şablonunu özelleştirmek için ilk iki yöntemi kullanın. Sensörleriniz için görünüm oluşturma hakkında daha fazla bilgi için, IoT Central uygulamanızın hızlı başlangıç başlığına [sanal cihaz ekleme](../preview/quick-create-pnp-device.md) hızlı başlangıç bölümüne bakın.
 
 RuuviTag cihaz şablonunun yerleşik arabirimlerini özelleştirmek için:
 
@@ -227,8 +227,8 @@ Bu öğreticide, uygulamayı derlemek için aşağıdaki gerçek ve sanal cihaz 
 
 Gerçek bir Rigado ağ geçidini ve RuuviTag sensörleriyle bağlantı kurmak için aşağıdaki iki makalede bulunan adımları izleyin. İşiniz bittiğinde Bu öğreticiye geri dönün. Bu öğreticide zaten cihaz şablonları oluşturmuş olduğunuzdan, bunları aşağıdaki yönergeler kümesinde yeniden oluşturmanız gerekmez.
 
-- Bir Rigado ağ geçidini bağlamak için bkz. [Azure IoT Central uygulamanıza bir Rigado basamakla 500 bağlama](../core/howto-connect-rigado-cascade-500-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
-- RuuviTag sensörlerinden bağlantı kurmak için bkz. [Azure IoT Central uygulamanıza bir ruuvitag algılayıcısı bağlama](../core/howto-connect-ruuvi-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Gerekirse iki sanal algılayıcı oluşturmak için bu yönergeleri de kullanabilirsiniz.
+- Bir Rigado ağ geçidini bağlamak için bkz. [Azure IoT Central uygulamanıza bir Rigado basamakla 500 bağlama](../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
+- RuuviTag sensörlerinden bağlantı kurmak için bkz. [Azure IoT Central uygulamanıza bir ruuvitag algılayıcısı bağlama](../preview/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Gerekirse iki sanal algılayıcı oluşturmak için bu yönergeleri de kullanabilirsiniz.
 
 ## <a name="add-rules-and-actions"></a>Kural ve eylem ekleme
 Koşulları izlemek için Azure IoT Central uygulamanızda sensörler kullanmanın bir parçası olarak, belirli koşullar karşılandığında eylemleri çalıştırmak için kurallar oluşturabilirsiniz. Bir kural bir cihaz şablonuyla ve bir veya daha fazla cihazla ilişkilendirilir ve cihaz telemetri veya olaylarına göre karşılanması gereken koşulları içerir. Bir kuralda bir veya daha fazla ilişkili eylem de vardır. Eylemler e-posta bildirimleri göndermeyi veya diğer hizmetlere veri göndermek için bir Web kancası eylemi tetiklemesini içerebilir. **Mağaza içi analiz-kullanıma alma** uygulama şablonu, uygulamadaki cihazlar için önceden tanımlanmış bazı kurallar içerir.

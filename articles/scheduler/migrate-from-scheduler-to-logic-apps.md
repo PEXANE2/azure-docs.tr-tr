@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 73aa641fc4bb01ef3d06820ecd18b61197ab81e7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695492"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890172"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler işlerini Azure Logic Apps geçirin
 
@@ -33,9 +33,9 @@ Bu makalede, Azure Scheduler yerine Azure Logic Apps ile otomatik iş akışlar�
 
 Daha fazla bilgi edinmek için bkz. [nedir? Azure Logic Apps nedir?](../logic-apps/logic-apps-overview.md) veya bu hızlı başlangıçta ilk mantıksal uygulamanızı oluşturmayı deneyin: [Ilk mantıksal uygulamanızı oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
-* Bir Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 * HTTP istekleri göndererek mantıksal uygulamanızı tetiklemek için [Postman masaüstü uygulaması](https://www.getpostman.com/apps)gibi bir araç kullanın.
 
@@ -91,7 +91,7 @@ Tek bir mantıksal uygulama oluşturarak birden çok tek seferlik iş çalışt�
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin.
 
-   ![Mantıksal uygulamanızı kaydedin](./media/migrate-from-scheduler-to-logic-apps/save-logic-app.png)
+   ![Mantıksal uygulamanızı kaydetme](./media/migrate-from-scheduler-to-logic-apps/save-logic-app.png)
 
    Mantıksal uygulamanızı ilk kez kaydettiğinizde, mantıksal uygulamanızın Istek tetikleyicisi için uç nokta URL 'SI **http post URL 'si** kutusunda görünür. 
    Mantıksal uygulamanızı çağırmak ve işlem için mantıksal uygulamanıza giriş göndermek istediğinizde, bu URL 'YI çağrı hedefi olarak kullanın.
@@ -106,9 +106,9 @@ Tek seferlik bir işi el ile çalıştırmak veya tetiklemek için, mantıksal u
 
 Örneğin, Postman uygulamasını kullanarak bu örneğe benzer ayarlarla bir POST isteği oluşturabilir ve sonra isteği yapmak için **Gönder** ' i seçebilirsiniz.
 
-| İstek yöntemi | URL | bölümü | Bilgisinde |
+| İstek yöntemi | URL'si | Gövde | Üst bilgiler |
 |----------------|-----|------|---------|
-| **Yayınla** | <*uç noktası-URL*> | **Madde** <p>**JSON (uygulama/JSON)** <p>**Ham** kutusuna, istekte göndermek istediğiniz yükü girin. <p>**Note**: Bu ayar, **üst bilgiler** değerlerini otomatik olarak yapılandırır. | **Anahtar**: içerik türü <br>**Değer**: uygulama/JSON |
+| **POST** | <*uç noktası-URL*> | **Madde** <p>**JSON (uygulama/JSON)** <p>**Ham** kutusuna, istekte göndermek istediğiniz yükü girin. <p>**Note**: Bu ayar, **üst bilgiler** değerlerini otomatik olarak yapılandırır. | **Anahtar**: içerik türü <br>**Değer**: uygulama/JSON |
 |||||
 
 ![Mantıksal uygulamanızı el ile tetikleme isteği gönderme](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -121,7 +121,7 @@ Tek seferlik bir işi el ile çalıştırmak veya tetiklemek için, mantıksal u
 >
 > İşi daha sonra iptal etmek isterseniz, **üst bilgiler** sekmesini seçin. yanıtta **x-MS-Workflow-Run-ID** üstbilgi değerini bulup kopyalayın. 
 >
-> ![Yanıtıyla](./media/migrate-from-scheduler-to-logic-apps/postman-response.png)
+> ![Yanıt](./media/migrate-from-scheduler-to-logic-apps/postman-response.png)
 
 ## <a name="cancel-a-one-time-job"></a>Tek seferlik bir işi iptal etme
 
@@ -151,7 +151,7 @@ Logic Apps, her bir defalık iş tek bir mantıksal uygulama çalıştırma örn
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin.
 
-   ![Mantıksal uygulamanızı kaydedin](./media/migrate-from-scheduler-to-logic-apps/save-logic-app.png)
+   ![Mantıksal uygulamanızı kaydetme](./media/migrate-from-scheduler-to-logic-apps/save-logic-app.png)
 
 ## <a name="advanced-setup"></a>Gelişmiş kurulum
 
@@ -189,7 +189,7 @@ Azure Scheduler 'da, varsayılan eylem çalışamazsa, hata koşulunu ele alan b
 
    !["Sonra Çalıştır" özelliklerini ayarla](./media/migrate-from-scheduler-to-logic-apps/select-run-after-properties.png)
 
-1. İşiniz bittiğinde **bitti**' yi seçin.
+1. İşiniz bittiğinde **Bitti**'yi seçin.
 
 Özel durum işleme hakkında daha fazla bilgi edinmek için bkz. [işleme hataları ve özel durumlar-RunAfter özelliği](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property).
 
@@ -198,7 +198,7 @@ Azure Scheduler 'da, varsayılan eylem çalışamazsa, hata koşulunu ele alan b
 <a name="retire-date"></a>
 
 **S**: Azure Scheduler ne zaman devre dışı bırakılıyor? <br>
-Y **: Azure**Scheduler, 31 Aralık 2019 tarihinde tamamen devre dışı bırakılacak şekilde zamanlandı. Bu tarihten ve ayrıntılı bir zaman çizelgesinden önce gerçekleştirilecek önemli adımlar için, bkz. [Scheduler için kullanımdan kaldırma tarihini 31 aralık 2019 ' e genişletme](https://azure.microsoft.com/en-us/updates/extending-retirement-date-of-scheduler/). Genel güncelleştirmeler için bkz. [Azure Updates-Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
+Y **: Azure**Scheduler, 31 Aralık 2019 tarihinde tamamen devre dışı bırakılacak şekilde zamanlandı. Bu tarihten ve ayrıntılı bir zaman çizelgesinden önce gerçekleştirilecek önemli adımlar için, bkz. [Scheduler için kullanımdan kaldırma tarihini 31 aralık 2019 ' e genişletme](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/). Genel güncelleştirmeler için bkz. [Azure Updates-Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
 
 **S**: hizmet yeniden kurulduktan sonra iş koleksiyonlarıma ve işlerime ne olur? <br>
 Y **: tüm**zamanlayıcı iş koleksiyonları ve işleri çalışmayı durdurur ve sistemden silinir.
@@ -212,7 +212,7 @@ Y **: her**Scheduler işi benzersizdir, bu nedenle tek boyutlu bir-All aracı yo
 **S**: Zamanlayıcı işlerinizin geçirilmesi için nereden destek alabilirim? <br>
 Y: destek almanın bazı yolları aşağıda **verilmiştir:** 
 
-**Azure portal**
+**Azure Portal**
 
 Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik destek isteği oluşturabilirsiniz. Aksi takdirde, farklı bir destek seçeneği belirleyebilirsiniz.
 
@@ -223,13 +223,13 @@ Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik d
    | Özellik | Değer |
    |---------|-------|
    | **Sorun türü** | **Teknik** |
-   | **Aboneliğiniz** | <-*Azure-aboneliğiniz*> |
+   | **Abonelik** | *Azure aboneliği* <> |
    | **Hizmet** | **& yönetimi izleme**altında **Zamanlayıcı**' yı seçin. **Zamanlayıcı 'yı**bulamıyorsanız, önce **tüm hizmetler** ' i seçin. |
    ||| 
 
 1. İstediğiniz destek seçeneğini belirleyin. Ücretli bir destek planınız varsa **İleri**' yi seçin.
 
-**Topluluk**
+**Topluluğundan**
 
 * [Azure Logic Apps Forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)

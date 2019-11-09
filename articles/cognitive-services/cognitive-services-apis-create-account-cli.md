@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: 8ca994b0b4abb27eef284eedf5a76571fe19699d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d715252f16a34f2261c108ebd3ff5d1f6f3424d8
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595313"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887925"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure komut satırı arabirimi 'ni (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Azure [komut satırı arabirimi 'ni (CLI)](https://do
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Geçerli bir Azure aboneliği-ücretsiz olarak [bir tane oluşturun](https://azure.microsoft.com/free/) .
 * [Azure komut satırı arabirimi (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -84,14 +84,14 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 > [!NOTE]
 > Aşağıdaki bilişsel hizmetler 'in çoğunda hizmeti denemek için kullanabileceğiniz ücretsiz bir katman vardır. Ücretsiz katmanı kullanmak için, kaynağınız için SKU olarak `F0` kullanın.
 
-### <a name="vision"></a>Görüntü
+### <a name="vision"></a>Görsel
 
 | Hizmet                    | denetlenmesi                      |
 |----------------------------|---------------------------|
 | Görüntü İşleme            | `ComputerVision`          |
 | Özel Görüntü İşleme tahmin | `CustomVision.Prediction` |
 | Özel Görüntü İşleme-eğitim   | `CustomVision.Training`   |
-| Yüz API'si                   | `Face`                    |
+| Yüz Tanıma API'si                   | `Face`                    |
 | Form Tanıma            | `FormRecognizer`          |
 | Mürekkep Tanıma             | `InkRecognizer`           |
 
@@ -105,7 +105,7 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 | Bing Arama        | `Bing.Search.v7`      |
 | Bing Yazım Denetimi   | `Bing.SpellCheck.v7`  |
 
-### <a name="speech"></a>Konuşma Tanıma
+### <a name="speech"></a>Konuşma
 
 | Hizmet            | denetlenmesi                 |
 |--------------------|----------------------|
@@ -118,7 +118,7 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 |--------------------|---------------------|
 | Form anlama | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
-| Soru-Cevap Oluşturma          | `QnAMaker`          |
+| Soru-Cevap Oluşturucu          | `QnAMaker`          |
 | Metin Analizi     | `TextAnalytics`     |
 | Metin Çevirisi   | `TextTranslation`   |
 
@@ -179,7 +179,7 @@ Fiyatlandırma katmanları (ve faturalandırılan miktar), kimlik doğrulama bil
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>Kaynağınız için geçerli kota kullanımını alın
 
-Bilişsel hizmet kaynağınızın kullanımını almak için [az biliveservices hesap listesi-kullanım](https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) komutunu kullanın.
+Bilişsel hizmet kaynağınızın kullanımını almak için [az biliveservices hesap listesi-kullanım](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) komutunu kullanın.
 
 ```azurecli-interactive
 az cognitiveservices account list-usage \

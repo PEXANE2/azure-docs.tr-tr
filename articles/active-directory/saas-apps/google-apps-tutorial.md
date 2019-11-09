@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 540dbc3605cfddc9b8d83eceeae8407848f1a91e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 66d8e13a4e042146ef2b99728e41e14f1dcb3435
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175986"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885368"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>Öğretici: G Suite ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +33,7 @@ Bu öğreticide, G Suite 'i Azure Active Directory (Azure AD) ile tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -158,7 +158,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, yukarıdaki görüntüde gösterildiği gibi, **Düzen simgesini** kullanarak talepleri DÜZENLEYIN veya aşağıdaki resimde gösterildiği gibi SAML belirteci özniteliğini yapılandırmak için **yeni talep Ekle** ' yi kullanarak talepleri ekleyin ve aşağıdaki adımları gerçekleştirin:
 
-    | Adı | Kaynak özniteliği |
+    | Ad | Kaynak özniteliği |
     | ---------------| --------------- |
     | Benzersiz kullanıcı tanımlayıcısı | Kullanıcı. Mail |
 
@@ -196,9 +196,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -252,7 +252,7 @@ Bu bölümde, G Suite 'e erişim izni vererek Azure çoklu oturum açma özelli�
 
 Bu bölümün amacı, G Suite 'te B. Simon adlı [bir Kullanıcı oluşturmaktır](https://support.google.com/a/answer/33310?hl=en) . Kullanıcı G Suite 'te el ile oluşturulduktan sonra, Kullanıcı artık Office 365 oturum açma kimlik bilgilerini kullanarak oturum açabilir.
 
-G Suite ayrıca otomatik Kullanıcı sağlamayı da destekler. Otomatik Kullanıcı sağlamayı yapılandırmak için, önce [Otomatik Kullanıcı sağlaması Için G Suite 'i yapılandırmanız](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)gerekir.
+G Suite ayrıca otomatik Kullanıcı sağlamayı da destekler. Otomatik Kullanıcı sağlamayı yapılandırmak için, önce [Otomatik Kullanıcı sağlaması Için G Suite 'i yapılandırmanız](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)gerekir.
 
 > [!NOTE]
 > Azure AD 'de sağlama, çoklu oturum açmayı test etmeden önce açık bırakılmadığından, kullanıcının G Suite 'de zaten mevcut olduğundan emin olun.

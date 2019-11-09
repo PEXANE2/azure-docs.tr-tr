@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: c8647e316cc77e7e1eed5108fafccd6d70d181cf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 1fec8a10a6699dc1360494cc7ac66e13f5d37ff0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898195"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885747"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Azure Advisor ile Azure uygulamalarının performansını geliştirme
 
@@ -54,7 +54,7 @@ Azure Premium Depolama, g/ç yoğunluklu iş yüklerini çalıştıran sanal mak
 
 ## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Sorgu performansını artırmak için SQL veri ambarı tablonuzda veri eğriliğini kaldırma
 
-Veri eğriltme, iş yükünüzü çalıştırırken gereksiz veri hareketine veya kaynak performans sorunlarına neden olabilir. Danışman,% 15 ' ten büyük olan dağıtım verilerinin eğriliğini algılar ve verilerinizi yeniden dağıtmanız ve tablo dağıtım anahtarı seçimlerinizi yeniden oluşturmanız önerilir. Eğriliği belirleme ve kaldırma hakkında daha fazla bilgi edinmek için bkz. [skew sorunlarını giderme](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
+Veri eğriltme, iş yükünüzü çalıştırırken gereksiz veri hareketine veya kaynak performans sorunlarına neden olabilir. Danışman, %15 ' ten büyük olan dağıtım verilerinin eğriliğini algılar ve verilerinizi yeniden dağıtmanız ve tablo dağıtım anahtarı seçimlerinizi yeniden oluşturmanız önerilir. Eğriliği belirleme ve kaldırma hakkında daha fazla bilgi edinmek için bkz. [skew sorunlarını giderme](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
 
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Sorgu performansını artırmak için SQL veri ambarı tablonuzda geçmiş tablo istatistiklerini oluşturun veya güncelleştirin
 
@@ -73,7 +73,7 @@ Danışman, çoğaltılan tablo olmayan tabloları tanımlar, ancak dönüştür
 Şablon dağıtımlarınızın, ek güvenlik seçeneklerinin ve Azure depolamanın en son özelliklerinin kullanımı için bir GPv2 hesabına yükseltme yeteneğinin avantajlarından yararlanmak için depolama hesabı dağıtım modelinizi Azure Resource Manager (Kaynak Yöneticisi) sürümüne geçirin. Danışman, klasik dağıtım modelini kullanan tek başına depolama hesaplarını belirler ve Kaynak Yöneticisi dağıtım modeline geçiş yapmanızı önerir.
 
 > [!NOTE]
-> Azure Izleyici 'de klasik uyarılar Ağustos 2019 ' de kullanımdan kaldırılmıştır. Yeni platformla uyarı işlevlerini sürdürmek için Kaynak Yöneticisi kullanmak üzere klasik depolama hesabınızı yükseltmenizi öneririz. Daha fazla bilgi için bkz. [Klasik uyarılar kullanımdan](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)kaldırma.
+> Azure Izleyici 'de klasik uyarılar Ağustos 2019 ' de kullanımdan kaldırılmıştır. Yeni platformla uyarı işlevlerini sürdürmek için Kaynak Yöneticisi kullanmak üzere klasik depolama hesabınızı yükseltmenizi öneririz. Daha fazla bilgi için bkz. [Klasik uyarılar kullanımdan](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)kaldırma.
 
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Maksimum abonelik sınırına vurmasını engellemek için depolama hesaplarınızı tasarlayın
 
@@ -88,7 +88,7 @@ CPU 'nun genişletilmiş bir süre içinde çok yüksek kullanımı, iş yükün
 Düşük önbellek isabet oranı, daha yavaş sorgu performansına ve daha fazla ıOPS oluşmasına neden olabilir. Bunun nedeni hatalı bir sorgu planı veya bellek yoğun iş yükünü çalıştırıyor olabilir. Sorgu planını [düzeltme veya](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) PostgreSQL Için Azure veritabanı veritabanı sunucusu, Azure MySQL veritabanı sunucusu veya Azure MariaDB sunucusu, veritabanı iş yükünün yürütülmesini iyileştirmenize yardımcı olur. Azure Advisor, bu yüksek arabellek havuzu karmaşıklığı nedeniyle etkilenen sunucuları tanımlar ve sorgu planını düzeltmeyi, daha fazla belleğe sahip daha yüksek bir SKU 'ya taşımayı veya daha fazla ıOPS almak için depolama boyutunu artırmayı önerir.
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Okuma yoğunluğu yoğun iş yükleri için okuma ölçeğini genişletmek için bir Azure MySQL veya Azure PostgreSQL okuma çoğaltması kullanın
-Azure Advisor, okuma yoğunluklu iş yüklerini belirlemek için son yedi gün içinde sunucuda yazma işlemleri için okuma oranı gibi iş yükü tabanlı buluşsal yöntemler kullanır. PostgreSQL için Azure veritabanı kaynağı veya çok yüksek bir okuma/yazma oranıyla, MySQL için Azure veritabanı kaynağı, sorgu performansının yavaşlamasına neden olabilir.  [Çoğaltma](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) eklemek, Çoğaltma sunucusuna yapılan okumaların ölçeklendirilmesine, BIRINCIL sunucuda CPU ve/veya bellek kısıtlamalarını engellemeye yardımcı olur. Danışman, yoğun okuma yoğunluklu iş yükleri olan sunucuları belirler ve bazı okuma iş yüklerini boşaltmak için bir [okuma çoğaltması](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) eklemeyi önerir.
+Azure Advisor, okuma yoğunluklu iş yüklerini belirlemek için son yedi gün içinde sunucuda yazma işlemleri için okuma oranı gibi iş yükü tabanlı buluşsal yöntemler kullanır. PostgreSQL için Azure veritabanı kaynağı veya çok yüksek bir okuma/yazma oranıyla, MySQL için Azure veritabanı kaynağı, sorgu performansının yavaşlamasına neden olabilir.  [Çoğaltma](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) eklemek, Çoğaltma sunucusuna yapılan okumaların ölçeklendirilmesine, BIRINCIL sunucuda CPU ve/veya bellek kısıtlamalarını engellemeye yardımcı olur. Danışman, bu yüksek okuma yoğunluklu iş yükleri olan sunucuları belirler ve bazı okuma iş yüklerini boşaltmak için bir [okuma çoğaltması](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) eklemeyi önerir.
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Bağlantı kısıtlamalarını engellemek için Azure MySQL, Azure PostgreSQL veya Azure MariaDB sunucunuzu daha yüksek bir SKU 'ya ölçeklendirin

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9563def1a7b510c403cf299a66066def0b03b59a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796784"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888593"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST kullanarak bir Media Services hesabına dosya yükleme  
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Bu öğreticide, bir dosya ve onunla ilişkili başka bir işlemi karşıya yük
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 - [Azure Portal kullanarak bir Azure Media Services hesabı oluşturun](media-services-portal-create-account.md).
 - [AAD kimlik doğrulamasına genel bakış makalesini Azure Media Services API 'sine](media-services-use-aad-auth-to-access-ams-api.md) göz atın.
-- Ayrıca, [rest makalesine MEDIA SERVICES API 'sine erişmek Için Azure AD kimlik doğrulamasını kullanma](https://docs.microsoft.com/en-us/azure/media-services/previous/media-services-rest-connect-with-aad) konusunu gözden geçirin.
+- Ayrıca, [rest makalesine MEDIA SERVICES API 'sine erişmek Için Azure AD kimlik doğrulamasını kullanma](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) konusunu gözden geçirin.
 - [Media Services REST API çağrılarında Postman yapılandırma](media-rest-apis-with-postman.md)bölümünde açıklandığı gibi **Postman** 'ı yapılandırın.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler

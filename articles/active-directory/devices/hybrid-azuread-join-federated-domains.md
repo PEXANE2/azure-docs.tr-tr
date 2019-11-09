@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4335b8251e31f151e3d965481bead01303ab7420
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 14565c7e499b04b9c41184111d6ddcc88fffac80
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562268"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73883002"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Öğretici: Federasyon etki alanları için karma Azure Active Directory birleştirmesini yapılandırma
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Öğretici: Federasyon etki alanları için hibrit Azure Active Directory'ye katılımı yapılandırma
 
 Kuruluşunuzdaki bir kullanıcı gibi, bir cihaz da korumak istediğiniz çekirdek kimliktir. Kaynaklarınızı istediğiniz zaman ve herhangi bir konumdan korumak için bir cihazın kimliğini kullanabilirsiniz. Aşağıdaki yöntemlerden birini kullanarak cihaz kimliklerini Azure Active Directory (Azure AD) içinde yöneterek, bu hedefi gerçekleştirebilirsiniz:
 
@@ -30,9 +30,9 @@ Cihazlarınızı Azure AD 'ye getirmek, bulut ve şirket içi kaynaklarınız ge
 
 Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağlayıcısı olmalıdır. Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanan bir Federasyon ortamınız varsa, aşağıdaki gereksinimler zaten desteklenmektedir.
 
-- **WIAORMULTIAUTHN talebi:** Bu talep, Windows alt düzey cihazlara yönelik karma Azure AD katılımı yapmak için gereklidir.
+- **Wiaormultiauthn talebi:** Bu talep, Windows alt düzey cihazlara yönelik karma Azure AD katılımı yapmak için gereklidir.
 - **WS-Trust protokolü:** Bu protokol, Azure AD ile Windows geçerli karma Azure AD 'ye katılmış cihazların kimliğini doğrulamak için gereklidir.
-  AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz gerekir:`/adfs/services/trust/2005/windowstransport`
+  AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz gerekir: `/adfs/services/trust/2005/windowstransport`
    `/adfs/services/trust/13/windowstransport`
    `/adfs/services/trust/2005/usernamemixed`
    `/adfs/services/trust/13/usernamemixed`
@@ -40,7 +40,7 @@ Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağla
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
+> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
 
 Bu öğreticide, AD FS kullanarak Federasyon ortamındaki Active Directory etki alanına katılmış bilgisayarlar için karma Azure AD birleştirmesini yapılandırmayı öğreneceksiniz.
 
@@ -52,7 +52,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 > * Kaydı doğrulama
 > * Sorun giderme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, bu makalelerle ilgili bilgi sahibi olduğunuz varsayılır:
 
@@ -79,7 +79,7 @@ Karma Azure AD katılımı, cihazların kuruluşunuzun ağının içinden aşağ
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
 - Kuruluşunuzun güvenlik belirteci hizmeti (STS) (federe etki alanları Için)
-- `https://autologon.microsoftazuread-sso.com`(Sorunsuz SSO kullanmayı planlıyorsanız veya kullanıyorsanız)
+- `https://autologon.microsoftazuread-sso.com` (veya sorunsuz SSO kullanmayı planlıyorsanız)
 
 Windows 10 1803 ' den başlayarak, AD FS kullanarak Federasyon ortamına anında karma Azure AD katılımı başarısız olursa, Azure AD 'de daha sonra karma Azure için cihaz kaydını tamamlamaya yönelik olarak kullanılan bilgisayar nesnesini eşitlemek için Azure AD Connect güveniyoruz AD katılımı. Azure AD Connect, karma Azure AD 'ye katılmış olmasını istediğiniz cihazların bilgisayar nesnelerini Azure AD 'ye eşitlemediğini doğrulayın. Bilgisayar nesneleri belirli kuruluş birimlerine (OU) aitse, OU 'Ları Azure AD Connect de eşitlenecek şekilde yapılandırmanız gerekir. Azure AD Connect kullanarak bilgisayar nesnelerini eşitleme hakkında daha fazla bilgi için bkz. [Azure AD Connect kullanarak filtrelemeyi yapılandırma](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering).
 
@@ -118,7 +118,7 @@ Azure AD Connect kullanarak hibrit bir Azure AD katılımı yapılandırmak içi
 
 1. **Azure AD 'ye Bağlan** sayfasında, Azure AD kiracınız için genel bir yöneticinin kimlik bilgilerini girin ve ardından **İleri**' yi seçin.
 
-   ![Azure AD'ye bağlan](./media/hybrid-azuread-join-federated-domains/14.png)
+   ![Azure AD'ye Bağlanma](./media/hybrid-azuread-join-federated-domains/14.png)
 
 1. **Cihaz seçenekleri** sayfasında, **karma Azure AD birleştirmesini Yapılandır**' ı seçin ve ardından **İleri**' yi seçin.
 
@@ -161,7 +161,7 @@ Windows alt düzey cihazlarınızın karma Azure AD katılmasını başarıyla t
 
 - `https://device.login.microsoftonline.com`
 - Kuruluşunuzun STS 'si (federe etki alanları Için)
-- `https://autologon.microsoftazuread-sso.com`(Sorunsuz SSO için)
+- `https://autologon.microsoftazuread-sso.com` (sorunsuz SSO Için)
 
 Ayrıca, kullanıcının yerel intranet bölgesindeki **komut dosyası aracılığıyla durum çubuğu güncelleştirmelerine Izin ver** ' i etkinleştirmeniz gerekir.
 
@@ -186,7 +186,7 @@ Hizmet ayrıntılarını denetlemek için **Get-MSolDevice** cmdlet 'ini kulland
 **Hizmet ayrıntılarını denetlemek için**:
 
 1. Windows PowerShell 'i yönetici olarak açın.
-1. Azure `Connect-MsolService` kiracınıza bağlanmak için girin.  
+1. Azure kiracınıza bağlanmak için `Connect-MsolService` girin.  
 1. `get-msoldevice -deviceId <deviceId>` yazın.
 1. **Enabled** değerinin **True** olarak ayarlandığını doğrulayın.
 

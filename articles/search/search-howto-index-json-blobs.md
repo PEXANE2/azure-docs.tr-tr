@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f8ddec95b92121c8dad4a39cf0c7b3f1798ec8ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 81e652b90831af0e1e20e716842b4e79f5606d05
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789516"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889860"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob Dizin Oluşturucu kullanarak JSON bloblarını dizin oluşturma
 
@@ -65,17 +65,11 @@ Arama hizmetinizin Genel Bakış sayfasında Sihirbazı komut çubuğundan [baş
 
    ![Blob veri kaynağı tanımı](media/search-howto-index-json/import-wizard-json-data-source.png)
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4-sihirbazda "bilişsel arama Ekle" sayfasını atlayın
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4-sihirbazdaki "zenginleştirme içerik" sayfasını atlayın
 
-Bilişsel yetenekler ekleme JSON belge içeri aktarma için gerekli değildir. Dizin oluşturma işlem hattınızda [AI zenginleştirme eklemek](cognitive-search-concept-intro.md) için özel bir ihtiyacınız yoksa bu adımı atlamanız gerekir.
+Bilişsel yetenekler (veya zenginleştirme) eklemek bir içeri aktarma gereksinimi değildir. Dizin oluşturma işlem hattınızda [AI zenginleştirme eklemek](cognitive-search-concept-intro.md) için özel bir ihtiyacınız yoksa bu adımı atlamanız gerekir.
 
-Adımı atlamak için önce bir sonraki sayfaya gidin.
-
-   ![Bilişsel arama için sonraki sayfa düğmesi](media/search-get-started-portal/next-button-add-cog-search.png)
-
-Bu sayfadan, Dizin özelleştirmeye ileri atlayabilirsiniz.
-
-   ![Bilişsel beceri adımını atlama](media/search-get-started-portal/skip-cog-skill-step.png)
+Adımı atlamak için, "Ileri" ve "atla" için sayfanın altındaki mavi düğmelere tıklayın.
 
 ### <a name="5---set-index-attributes"></a>5-dizin özniteliklerini ayarla
 
@@ -124,7 +118,7 @@ Kod tabanlı JSON dizin oluşturma için [Postman](search-get-started-postman.md
 
 Azure Blob depolamada JSON blob 'ları genellikle tek bir JSON belgesi veya bir JSON "dizisi" olacaktır. Azure Bilişsel Arama blob Indexer, istek üzerinde **Parsingmode** parametresini nasıl ayarlayadiğinize bağlı olarak, her iki oluşturmayı de ayrıştırabilirler.
 
-| JSON belgesi | parsingMode | Açıklama | Erişilebilirlik |
+| JSON belgesi | parsingMode | Açıklama | Kullanılabilirlik |
 |--------------|-------------|--------------|--------------|
 | Blob başına bir tane | `json` | JSON bloblarını tek bir metin öbeği olarak ayrıştırır. Her JSON BLOBU tek bir Azure Bilişsel Arama belgesi haline gelir. | Genellikle [rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API ve [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK 'sında kullanılabilir. |
 | Blob başına birden çok | `jsonArray` | Blob 'ta her bir dizi öğesinin ayrı bir Azure Bilişsel Arama belgesi haline geldiği bir JSON dizisi ayrıştırır.  | Genellikle [rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API ve [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK 'sında kullanılabilir. |
@@ -296,7 +290,7 @@ JSON blob 'ları birden çok formu kabul edebilir. JSON Dizin oluşturucudaki **
 
 Belgeyi, arama sonuçlarında tek bir öğe olarak düşünebilirsiniz. Dizideki her öğenin arama sonuçlarında bağımsız bir öğe olarak gösterilmesini istiyorsanız, `jsonArray` veya `jsonLines` seçeneğini uygun şekilde kullanın.
 
-Dizin Oluşturucu tanımı içinde, isteğe bağlı olarak, kaynak JSON belgesinin hangi özelliklerinin hedef arama dizininizi doldurmak için kullanıldığını seçmek için [alan eşlemelerini](search-indexer-field-mappings.md) kullanabilirsiniz. @No__t_0 ayrıştırma modu için, dizi alt düzey bir özellik olarak mevcutsa, dizinin blob içine yerleştirileceğini gösteren bir belge kökü ayarlayabilirsiniz.
+Dizin Oluşturucu tanımı içinde, isteğe bağlı olarak, kaynak JSON belgesinin hangi özelliklerinin hedef arama dizininizi doldurmak için kullanıldığını seçmek için [alan eşlemelerini](search-indexer-field-mappings.md) kullanabilirsiniz. `jsonArray` ayrıştırma modu için, dizi alt düzey bir özellik olarak mevcutsa, dizinin blob içine yerleştirileceğini gösteren bir belge kökü ayarlayabilirsiniz.
 
 > [!IMPORTANT]
 > `json`, `jsonArray` veya `jsonLines` ayrıştırma modu kullandığınızda Azure Bilişsel Arama, veri kaynağınızdaki tüm Blobların JSON içerdiğini varsayar. Aynı veri kaynağında JSON ve JSON olmayan Blobların bir karışımını desteklemeniz gerekiyorsa [UserVoice sitemizi](https://feedback.azure.com/forums/263029-azure-search)bize bilgilendirin.
@@ -363,7 +357,7 @@ Yine, alan eşlemelerinin atlanabileceğini unutmayın. Aynı "kimlik" ve "metin
         }
     }
 
-@No__t_0 özelliğinde yer alan diziyi indekslemek için bu yapılandırmayı kullanın:
+`level2` özelliğinde yer alan diziyi indekslemek için bu yapılandırmayı kullanın:
 
     {
         "name" : "my-json-array-indexer",
@@ -411,7 +405,7 @@ Kaynak ve hedef alanlar kusursuz hizalı olmadığında, açık alan-alan ilişk
         }
     }
 
-Aşağıdaki alanlarla bir arama dizini olduğunu varsayalım: tür `Edm.String`, `date` türü `Edm.DateTimeOffset` ve `tags` türündeki `text`. Dizindeki kaynak ve `date` alanında "Dateyayýmlandý" arasındaki tutarsızlığı fark edin. JSON 'nizi istenen şekle eşlemek için aşağıdaki alan eşlemelerini kullanın:
+Aşağıdaki alanlarla bir arama dizini olduğunu varsayalım: tür `Edm.String`, `date` türü `Edm.DateTimeOffset`ve `tags` türündeki `text`.`Collection(Edm.String)` Dizindeki kaynak ve `date` alanında "Dateyayýmlandý" arasındaki tutarsızlığı fark edin. JSON 'nizi istenen şekle eşlemek için aşağıdaki alan eşlemelerini kullanın:
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },

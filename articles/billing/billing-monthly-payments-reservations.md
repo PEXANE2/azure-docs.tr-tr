@@ -6,14 +6,14 @@ author: bandersmsft
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: d211334ad2aa760cd63b98c6827fb2512811a1d3
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b1cc034b4d397f170b57e873cb9a5d74c91f83f4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806954"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746452"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Aylık ödemelerle rezervasyonlar satın alma
 
@@ -24,6 +24,7 @@ Aylık ödeme tutarınız, yerel para biriminiz için güncel ayın döviz kurun
 Şunlar için aylık ödemeler kullanılabilir:
 
 - Sanal makineler
+- Azure Storage
 - SQL Veritabanı
 - SQL Veri Ambarı
 - Cosmos DB
@@ -60,20 +61,6 @@ Aylık olarak ödenen bir rezervasyonu değiştirdiğinizde, yeni satın almanı
 Aylık olarak ödenen bir rezervasyon iptal ediliyorsa Microsoft, iptal edilen gelecekteki taahhüt edilen ödemelere bir iptal ücreti uygulayabilir. Kalan taahhüt edilen ödemeler 50.000 ABD Doları para iadesi limitine tahakkuk eder.
 
 Değişim ve para iadeleri hakkında daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](billing-azure-reservations-self-service-exchange-and-refund.md).
-
-## <a name="faq"></a>SSS
-
-S. Azure, “Kısmi peşin rezervasyonlar” sunuyor mu?<br>
-A. Hayır. Peşin ve aylık ödenen rezervasyonların maliyetleri aynı olduğundan Microsoft, kısmi peşin ödemeleri desteklemez.
-
-S. Microsoft Bulut Çözümü Sağlayıcısı (CSP) programı için aylık ödeme var mı?<br>
-A. Evet, iş ortakları Azure portalında CSP müşterileri için rezervasyonlar satın alabilir. İş ortağı merkezinde aylık faturalamalı rezervasyonlar satın alınamaz.
-
-S. ABD Azure Kamu müşterisiyim, rezervasyon satın alımları için aylık ödeme yapabilir miyim?<br>
-A. Şu anda hayır.
-
-S. Destek bileti oluşturmak yerine Azure portalında ne zaman kendim değişim yapabilir veya para iadesi alabilirim?<br>
-A. Şu anda hayır. Aylık ödemelerle rezervasyon değiştirme ve para iadesi alma istekleri, Azure desteği tarafından işlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

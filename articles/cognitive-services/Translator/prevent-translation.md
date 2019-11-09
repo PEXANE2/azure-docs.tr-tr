@@ -1,7 +1,7 @@
 ---
 title: İçerik çevirisini önleme-Translator Metin Çevirisi API'si
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si içerik çevirisini önleyin.
+description: Translator Metin Çevirisi API'si içerik çevirisini önleyin. Translator Metin Çevirisi API'si, içeriği çevrilemeyecek şekilde etiketleyebilmenizi sağlar.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,21 +10,21 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: f9b48b094713f6ee141c5c15d5636ca965ad61b9
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: f3bf784898f7f51beea890d8d2a8401af1403fbc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595230"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888126"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Translator Metin Çevirisi API'si içerik çevirisini önleme
 
 Translator Metin Çevirisi API'si, içeriği çevrilemeyecek şekilde etiketleyebilmenizi sağlar. Örneğin, kod, marka adı veya yerelleştirmeden anlamlı olmayan bir sözcük/tümcecik etiketlemek isteyebilirsiniz.
 
 ## <a name="methods-for-preventing-translation"></a>Çeviriyi önlemek için Yöntemler
-1. Twitter etiketine @somethingtopassthrough veya #somethingtopassthrough kaçış. Çeviri sonrasında kaçış işaretini kaldır.
+1. Twitter etiketine kaçış @somethingtopassthrough veya #somethingtopassthrough. Çeviri sonrasında kaçış işaretini kaldır.
 
-2. İçeriğinizi ile `notranslate`etiketleyin.
+2. İçeriğinizi `notranslate`etiketleyin.
 
    Örnek:
 
@@ -37,7 +37,7 @@ Translator Metin Çevirisi API'si, içeriği çevrilemeyecek şekilde etiketleye
 
 4. Dizeyi çeviri için Translator Metin Çevirisi API'si iletmeyin.
 
-5. Özel çevirici: % 100 olasılığa sahip bir tümceciğin çevirisini yapmak için [özel çevirmende bir sözlük](custom-translator/what-is-dictionary.md) kullanın.
+5. Özel çevirici: bir tümceciği %100 olasılığa sahip bir ifadenin çevirisi yapmak için [özel çevirmende bir sözlük](custom-translator/what-is-dictionary.md) kullanın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

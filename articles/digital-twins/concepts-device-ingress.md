@@ -7,15 +7,15 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 6c61bc6075b3f0713dd790f1b3aa1a47af9d8e6c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: 723fe14db9089e1127f39eae3ed7b10bbddf70bf
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950029"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889723"
 ---
-# <a name="device-connectivity-and-telemetry-ingress"></a>Cihaz bağlantısı ve telemetri girişi
+# <a name="device-connectivity-and-telemetry-ingress"></a>Cihaz bağlantısı ve telemetri sorunları
 
 Cihazlar ve sensörler tarafından gönderilen telemetri verileri, herhangi bir IoT çözümünün omurgasını oluşturur. Bu farklı kaynakları temsil etme ve bunları bir konum bağlamında yönetme IoT uygulama geliştirmede kaygıları beraberinde getirir. Azure dijital TWINS, uzamsal zeka Graf ile cihaz ve sensörlerden yararlanarak IoT çözümleri geliştirme sürecini basitleştirir.
 
@@ -45,7 +45,7 @@ IoT Hub cihaz bağlantı dizesini almak için `includes=ConnectionString` parame
 YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 ```
 
-| Parametre | Değiştir |
+| Parametre | Şununla değiştir |
 | --- | --- |
 | *YOUR_DEVICE_GUID* | Cihaz KIMLIĞI |
 
@@ -53,7 +53,7 @@ YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 YOUR_MANAGEMENT_API_URL/devices?HardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
 ```
 
-| Parametre değeri | Değiştir |
+| Parametre değeri | Şununla değiştir |
 | --- | --- |
 | *YOUR_DEVICE_HARDWARE_ID* | Cihaz donanım KIMLIĞI |
 
@@ -65,7 +65,7 @@ Cihazınızın ileti biçimi ve yükünü, çözümünüzün ihtiyaçlarına uya
 
 ### <a name="telemetry-properties"></a>Telemetri özellikleri
 
- Bir **iletinin** yük içeriği, 256 KB 'a kadar olan rastgele veri olabilir. [@No__t-1](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) türünün özellikleri için birkaç gereksinim bekleniyor. Tablo, sistem tarafından desteklenen gerekli ve isteğe bağlı özellikleri gösterir.
+ Bir **iletinin** yük içeriği, 256 KB 'a kadar olan rastgele veri olabilir. [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) türünün özellikleri için birkaç gereksinim bekleniyor. Tablo, sistem tarafından desteklenen gerekli ve isteğe bağlı özellikleri gösterir.
 
 | Özellik adı | Değer | Gerekli | Açıklama |
 |---|---|---|---|

@@ -9,12 +9,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 description: Geliştirme makinenizi Azure Dev Spaces ile bir AKS kümesine bağlamayı öğrenin
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 0adaa4266978cf9c9ef42359c0cf4f81c5c5f056
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 15e46fba19d92e08a9c87a63f6f01ec6b0836910
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571744"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888917"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Geliştirme makinenizi bir AKS kümesine bağlama (Önizleme)
 
@@ -96,7 +96,7 @@ Bağlantı kipini seçtikten sonra, yerel uygulamanızın TCP bağlantı noktas�
 Uygulamanızın TCP bağlantı noktasını seçtikten sonra, Azure Dev Spaces AKS kümesiyle bağlantı kurar. , AKS kümesi ile geliştirme makineniz arasında trafiği yeniden yönlendirmek için bir aracıyı AKS kümenize çıkartır Azure Dev Spaces. Bu bağlantının oluşturulması birkaç dakika sürebilir. Azure Dev Spaces, geliştirme makinenizdeki *Hosts* dosyasını değiştirmek için yönetici erişimi de ister.
 
 > [!IMPORTANT]
-> Azure Dev Spaces AKS kümenize bir bağlantı kurulduktan sonra, geliştirme makinenizde hizmeti başlatana kadar AKS kümenizdeki diğer hizmetler düzgün çalışmayabilir. Ayrıca, hizmetinizin geliştirme makinenizde kullanılamayan bir bağımlılığı varsa, uygulamanızı değiştirmeniz veya [ek yapılandırma](#additional-configuration) sağlamanız gerekebilir
+> Azure Dev Spaces, AKS kümenize bir bağlantı kurduktan sonra, bağlantı modunu *Değiştir* ' i seçerseniz, aks kümenizdeki diğer hizmetler, geliştirme makinenizde hizmeti başlatana kadar düzgün çalışmayabilir. Yeniden yönlendirme için bir alt dev alanı oluşturmak ve üst alana herhangi bir kesinti yaşamamak *için bağlantı modunu* seçebilirsiniz. Ayrıca, hizmetinizin geliştirme makinenizde kullanılamayan bir bağımlılığı varsa, uygulamanızı değiştirmeniz veya [ek yapılandırma](#additional-configuration) sağlamanız gerekebilir
 
 Azure Dev Spaces, AKS kümenize bir bağlantı kurduktan sonra *azds Connect-Bisiklet* adlı bir Terminal penceresi açar. Bu Terminal penceresinde, AKS kümenizde yapılandırılan tüm ortam değişkenleri ve DNS girişleri bulunur. Bu Terminal penceresinde çalıştırdığınız veya Visual Studio Code hata ayıklayıcıyı kullanan herhangi bir kod AKS kümesine bağlıdır.
 

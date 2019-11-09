@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: df2f22f91cbed17035485d25369965d3284dbaf7
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 0d478b56d7be4ae0c7f2403f9960e5eed59e2b4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622402"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888652"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -228,7 +228,7 @@ model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklea
 
 ##### <a name="get_model_path"></a>get_model_path
 
-Bir modeli kaydettiğinizde, kayıt defterinde modeli yönetmek için kullanılan bir model adı sağlarsınız. Bu adı model dosyasının veya yerel dosya sistemindeki dosyaların yolunu almak için [model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) yöntemiyle birlikte kullanırsınız. Bir klasörü veya dosya koleksiyonunu kaydettiğinizde, bu API bu dosyaları içeren dizinin yolunu döndürür.
+Bir modeli kaydettiğinizde, kayıt defterinde modeli yönetmek için kullanılan bir model adı sağlarsınız. Bu adı model dosyasının veya yerel dosya sistemindeki dosyaların yolunu almak için [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) yöntemiyle birlikte kullanırsınız. Bir klasörü veya dosya koleksiyonunu kaydettiğinizde, bu API bu dosyaları içeren dizinin yolunu döndürür.
 
 Bir modeli kaydettiğinizde, buna bir ad verirsiniz. Ad, modelin yerel olarak ya da hizmet dağıtımı sırasında yerleştirildiği yere karşılık gelir.
 
@@ -627,7 +627,7 @@ Hizmetiniz için anahtar kimlik doğrulamasını etkinleştirdiyseniz, istek üs
 Hizmetiniz için belirteç kimlik doğrulamasını etkinleştirdiyseniz, istek üst bilgisinde taşıyıcı belirteci olarak bir Azure Machine Learning JWT belirteci sağlamanız gerekir.
 
 > [!TIP]
-> Hizmeti dağıttıktan sonra şema JSON belgesini alabilirsiniz. Yerel Web hizmetinin Swagger dosyasına URI 'yi almak için dağıtılan Web hizmetindeki [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) (örneğin, `service.swagger_uri`) kullanın.
+> Hizmeti dağıttıktan sonra şema JSON belgesini alabilirsiniz. Yerel Web hizmetinin Swagger dosyasına URI 'yi almak için dağıtılan Web hizmetindeki [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) kullanın (örneğin, `service.swagger_uri`).
 
 ### <a name="request-response-consumption"></a>İstek-yanıt tüketimi
 
@@ -661,7 +661,7 @@ Daha fazla bilgi için bkz. [Web hizmetlerini kullanmak için istemci uygulamala
 
 ### <a name="web-service-schema-openapi-specification"></a>Web hizmeti şeması (Openapı belirtimi)
 
-Dağıtımınızla otomatik şema oluşturma kullandıysanız, [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)kullanarak hizmet Için openapı belirtiminin adresini alabilirsiniz. (Örneğin, `print(service.swagger_uri)`.) Belirtimi almak için bir GET isteği kullanın veya bir tarayıcıda URI 'yi açın.
+Dağıtımınızla otomatik şema oluşturma kullandıysanız, [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)kullanarak hizmetin openapı belirtiminin adresini alabilirsiniz. (Örneğin, `print(service.swagger_uri)`.) Belirtimi almak için bir GET isteği kullanın veya bir tarayıcıda URI 'yi açın.
 
 Aşağıdaki JSON belgesi, bir dağıtım için oluşturulan bir şemanın (Openapı belirtimi) bir örneğidir:
 
@@ -858,6 +858,78 @@ CLı
 az ml model download --model-id mymodel:1 --target-dir model_folder
 ```
 
+## <a name="preview-no-code-model-deployment"></a>Önizle Kod olmayan model dağıtımı
+
+Şu anda önizleme aşamasında olan kod modeli dağıtımı yok ve şu makine öğrenimi çerçevelerini destekliyor:
+
+### <a name="tensorflow-savedmodel-format"></a>TensorFlow SavedModel biçimi
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='flowers',                        # Name of the registered model in your workspace.
+                       model_path='./flowers_model',                # Local Tensorflow SavedModel folder to upload and register as a model.
+                       model_framework=Model.Framework.TENSORFLOW,  # Framework used to create the model.
+                       model_framework_version='1.14.0',            # Version of Tensorflow used to create the model.
+                       description='Flowers model')
+
+service_name = 'tensorflow-flower-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="onnx-models"></a>ONNX modelleri
+
+ONNX model kaydı ve dağıtımı herhangi bir ONNX çıkarım grafiği için desteklenir. Ön işlem ve postprocess adımları şu anda desteklenmiyor.
+
+Bir MNIST ONNX modelinin nasıl kaydedileceği ve dağıtılacağı hakkında bir örnek aşağıda verilmiştir:
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='mnist-sample',                  # Name of the registered model in your workspace.
+                       model_path='mnist-model.onnx',              # Local ONNX model to upload and register as a model.
+                       model_framework=Model.Framework.ONNX ,      # Framework used to create the model.
+                       model_framework_version='1.3',              # Version of ONNX used to create the model.
+                       description='Onnx MNIST model')
+
+service_name = 'onnx-mnist-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="scikit-learn-models"></a>Scikit-modelleri öğrenme
+
+Tüm yerleşik scikit-öğrenme model türleri için hiçbir kod modeli dağıtımı desteklenmez.
+
+Ek kod olmadan bir sköğren modelinin nasıl kaydedileceği ve dağıtıldığı hakkında bir örnek aşağıda verilmiştir:
+
+```python
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = Model.register(workspace=ws,
+                       model_name='my-sklearn-model',                # Name of the registered model in your workspace.
+                       model_path='./sklearn_regression_model.pkl',  # Local file to upload and register as a model.
+                       model_framework=Model.Framework.SCIKITLEARN,  # Framework used to create the model.
+                       model_framework_version='0.19.1',             # Version of scikit-learn used to create the model.
+                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
+                       description='Ridge regression model to predict diabetes progression.',
+                       tags={'area': 'diabetes', 'type': 'regression'})
+                       
+service_name = 'my-sklearn-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+NOTE: Bu bağımlılıklar önceden oluşturulmuş sköğren çıkarımı kapsayıcısına dahil edilmiştir:
+
+```yaml
+    - azureml-defaults
+    - inference-schema[numpy-support]
+    - scikit-learn
+    - numpy
+```
+
 ## <a name="package-models"></a>Paket modelleri
 
 Bazı durumlarda, modeli dağıtmadan bir Docker görüntüsü oluşturmak isteyebilirsiniz (örneğin, [Azure App Service dağıtmayı](how-to-deploy-app-service.md)planlıyorsanız). Ya da görüntüyü indirmek ve yerel bir Docker yüklemesinde çalıştırmak isteyebilirsiniz. Görüntüyü oluşturmak, incelemek, değiştirmek ve görüntüyü el ile oluşturmak için kullanılan dosyaları da indirmek isteyebilirsiniz.
@@ -997,78 +1069,6 @@ Dağıtılan bir Web hizmetini silmek için `service.delete()`kullanın.
 Kayıtlı bir modeli silmek için `model.delete()`kullanın.
 
 Daha fazla bilgi için bkz. [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) ve [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)belgeleri.
-
-## <a name="preview-no-code-model-deployment"></a>Önizle Kod olmayan model dağıtımı
-
-Şu anda önizleme aşamasında olan kod modeli dağıtımı yok ve şu makine öğrenimi çerçevelerini destekliyor:
-
-### <a name="tensorflow-savedmodel-format"></a>TensorFlow SavedModel biçimi
-
-```python
-from azureml.core import Model
-
-model = Model.register(workspace=ws,
-                       model_name='flowers',                        # Name of the registered model in your workspace.
-                       model_path='./flowers_model',                # Local Tensorflow SavedModel folder to upload and register as a model.
-                       model_framework=Model.Framework.TENSORFLOW,  # Framework used to create the model.
-                       model_framework_version='1.14.0',            # Version of Tensorflow used to create the model.
-                       description='Flowers model')
-
-service_name = 'tensorflow-flower-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-### <a name="onnx-models"></a>ONNX modelleri
-
-ONNX model kaydı ve dağıtımı herhangi bir ONNX çıkarım grafiği için desteklenir. Ön işlem ve postprocess adımları şu anda desteklenmiyor.
-
-Bir MNIST ONNX modelinin nasıl kaydedileceği ve dağıtılacağı hakkında bir örnek aşağıda verilmiştir:
-
-```python
-from azureml.core import Model
-
-model = Model.register(workspace=ws,
-                       model_name='mnist-sample',                  # Name of the registered model in your workspace.
-                       model_path='mnist-model.onnx',              # Local ONNX model to upload and register as a model.
-                       model_framework=Model.Framework.ONNX ,      # Framework used to create the model.
-                       model_framework_version='1.3',              # Version of ONNX used to create the model.
-                       description='Onnx MNIST model')
-
-service_name = 'onnx-mnist-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-### <a name="scikit-learn-models"></a>Scikit-modelleri öğrenme
-
-Tüm yerleşik scikit-öğrenme model türleri için hiçbir kod modeli dağıtımı desteklenmez.
-
-Ek kod olmadan bir sköğren modelinin nasıl kaydedileceği ve dağıtıldığı hakkında bir örnek aşağıda verilmiştir:
-
-```python
-from azureml.core import Model
-from azureml.core.resource_configuration import ResourceConfiguration
-
-model = Model.register(workspace=ws,
-                       model_name='my-sklearn-model',                # Name of the registered model in your workspace.
-                       model_path='./sklearn_regression_model.pkl',  # Local file to upload and register as a model.
-                       model_framework=Model.Framework.SCIKITLEARN,  # Framework used to create the model.
-                       model_framework_version='0.19.1',             # Version of scikit-learn used to create the model.
-                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
-                       description='Ridge regression model to predict diabetes progression.',
-                       tags={'area': 'diabetes', 'type': 'regression'})
-                       
-service_name = 'my-sklearn-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-NOTE: Bu bağımlılıklar önceden oluşturulmuş sköğren çıkarımı kapsayıcısına dahil edilmiştir:
-
-```yaml
-    - azureml-defaults
-    - inference-schema[numpy-support]
-    - scikit-learn
-    - numpy
-```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

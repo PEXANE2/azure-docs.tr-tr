@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 229b4b9f53ea3866dce1169645f6d6da20827271
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969655"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888899"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>DevOps Projeleri ile Azure Cosmos DB tarafından desteklenen Node. js uygulamalarını dağıtın
 
@@ -37,7 +37,7 @@ Bu öğreticide şunları yapacaksınız:
 > * Değişiklikleri git 'e işleyin ve Azure 'a otomatik olarak dağıtın
 > * Kaynakları Temizleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) ücretsiz olarak alabileceğiniz bir Azure aboneliğine ihtiyacınız vardır.
 
@@ -45,7 +45,7 @@ Bu öğreticide şunları yapacaksınız:
 
 DevOps Projeleri, Azure Pipelines bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Projeleri ayrıca, tercih ettiğiniz Azure aboneliğinde Azure Cosmos DB, Application Insights, App Service ve App Service planları gibi Azure kaynakları da oluşturur.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Sol bölmede **kaynak oluştur**' u seçin.
 
@@ -169,6 +169,6 @@ Ekibinizin ihtiyaçlarını karşılamak için bu derleme ve yayın işlem hatla
 > * Git 'e değişiklikleri işleyin ve Azure 'a otomatik olarak dağıtın
 > * Kaynakları temizleme
 
-Daha fazla bilgi ve sonraki adımlar için bkz. [Multi-Stage sürekli dağıtımı (CD) ardışık düzenini tanımlama](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) .
+Daha fazla bilgi ve sonraki adımlar için bkz. [Multi-Stage sürekli dağıtımı (CD) ardışık düzenini tanımlama](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) .
 
 

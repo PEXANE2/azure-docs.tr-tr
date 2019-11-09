@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: pafarley
-ms.openlocfilehash: b19f5a4f4f61285bc7b1a30073ea7d33d95420e0
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d146c264ebc2d36f0842f464f4547520546fd363
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "73519417"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888266"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Öğretici: Görsel durumları raporlamak için IoT cihazındaki Özel Görüntü İşleme kullanma
 
@@ -33,7 +33,7 @@ Bu öğreticide şunları nasıl yapacağınızı gösterilecek:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [!INCLUDE [create-resources](includes/create-resources.md)]
     > [!IMPORTANT]
@@ -116,7 +116,7 @@ Bu işlemi kendi senaryoınızla yinelemek için:
 
 Uygulama eğitilen modeli indirdikten sonra, **Puanlama** durumuna geçiş yapar ve bir sürekli döngüde kameradan Puanlama görüntülerini başlatır.
 
-Yakalanan her görüntü için, uygulama ekranda en üstteki etiketi görüntüler. Görsel durumu tanımmazsa, **hiçbir eşleşme**gösterilmez). Uygulama aynı zamanda bu iletileri IoT Hub gönderir ve algılanmakta olan bir sınıf varsa, bu ileti etiket, Güvenirlik puanı ve `detectedClassAlert`adlı bir özellik içerir. Bu, prope 'ye dayalı hızlı ileti yönlendirme yapma ile ilgilenen IoT Hub istemcileri tarafından kullanılabilir rtıes.
+Yakalanan her görüntü için, uygulama ekranda en üstteki etiketi görüntüler. Görsel durumu algılamazsa, **hiçbir eşleşme**göstermez. Uygulama aynı zamanda bu iletileri IoT Hub gönderir ve algılanmakta olan bir sınıf varsa, bu ileti etiket, Güvenirlik puanı ve `detectedClassAlert`adlı bir özellik içerir. Bu, prope 'ye dayalı hızlı ileti yönlendirme yapma ile ilgilenen IoT Hub istemcileri tarafından kullanılabilir rtıes.
 
 Buna ek olarak, örnek bir Sense HAT birimiyle bir Raspberry Pi üzerinde ne zaman çalıştığını algılamak için bir [Sense hat kitaplığı](https://github.com/emmellsoft/RPi.SenseHat) kullanır. bu nedenle, bir sınıf algıladığında tüm görüntüleme ışıkları kırmızı ve herhangi bir şeyi algılamadığında boş olarak ayarlayarak bunu bir çıktı görüntüsü olarak kullanabilir.
 

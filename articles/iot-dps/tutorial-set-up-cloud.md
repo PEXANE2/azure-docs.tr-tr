@@ -1,20 +1,19 @@
 ---
 title: Portalda Azure IoT Hub Cihazı Sağlama Hizmeti için bulutu ayarlama | Microsoft Docs
-description: Azure Portal’da IoT Hub otomatik cihaz sağlama
+description: IoT Hub cihaz sağlama hizmeti 'ni (DPS) kullanarak [Azure Portal](https://portal.azure.com) cihaz sağlama için bulut kaynaklarını ayarlama
 author: wesmc7777
 ms.author: wesmc
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f2f3e56c9eb9362b8164ec611c9b305f5f994b03
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
-ms.translationtype: HT
+ms.openlocfilehash: f0e61f264ac0e6a4a2306bc94234811b38941bb5
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833060"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888765"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>IoT Hub Cihazı Sağlama Hizmeti ile cihaz sağlama için bulut kaynaklarını yapılandırma
 

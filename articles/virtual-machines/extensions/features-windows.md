@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d73a2dcd0aab3b972a3e0a9237e53d05d4a9a53
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 8b99e919c396ebc3ef72c046fbe3fef1261050ad
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750027"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891588"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
@@ -54,18 +54,18 @@ Desteklenen işletim sistemleri ve yükleme yönergeleri hakkında daha fazla bi
 
 #### <a name="supported-agent-versions"></a>Desteklenen Aracı sürümleri
 
-Mümkün olan en iyi deneyimi sağlamak için aracının en düşük sürümü vardır. Daha fazla bilgi için [bu makaleye](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) bakın.
+Mümkün olan en iyi deneyimi sağlamak için aracının en düşük sürümü vardır. Daha fazla bilgi için [bu makaleye](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) bakın.
 
 #### <a name="supported-oses"></a>Desteklenen Işletim sistemleri
 
-Windows Konuk Aracısı birden çok OSes üzerinde çalışır, ancak uzantı çerçevesinin uzantıları bu uzantılara yönelik bir sınıra sahiptir. Daha fazla bilgi için [bu makaleye](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+Windows Konuk Aracısı birden çok OSes üzerinde çalışır, ancak uzantı çerçevesinin uzantıları bu uzantılara yönelik bir sınıra sahiptir. Daha fazla bilgi için [bu makaleye](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 ) bakın.
 
 Bazı uzantılar tüm Işletim sistemlerinde desteklenmez ve *51 hata kodu, ' desteklenmeyen işletim sistemi '* verilebilir. Desteklenebilirliği için bağımsız uzantı belgelerini denetleyin.
 
 #### <a name="network-access"></a>Ağ erişimi
 
-Uzantı paketleri Azure Storage uzantı deposundan indirilir ve uzantı durumu karşıya yüklemeleri Azure depolama 'ya gönderilir. Aracıların [desteklenen](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) sürümünü kullanıyorsanız, sanal makine bölgesindeki Azure depolama 'ya erişime izin vermeniz gerekmez, çünkü aracıyı aracı Iletişimleri için Azure Fabric denetleyicisi 'Ne (HostGAPlugin özelliği aracılığıyla) yeniden yönlendirmek için kullanabilir. Özel IP [168.63.129.16](https://docs.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16)üzerinde ayrıcalıklı kanal). Aracının desteklenmeyen bir sürümü kullanıyorsanız, VM 'den o bölgedeki Azure depolama 'ya giden erişime izin vermeniz gerekir.
+Uzantı paketleri Azure Storage uzantı deposundan indirilir ve uzantı durumu karşıya yüklemeleri Azure depolama 'ya gönderilir. Aracıların [desteklenen](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) sürümünü kullanıyorsanız, sanal makine bölgesindeki Azure depolama 'ya erişime izin vermeniz gerekmez, çünkü aracıyı aracı Iletişimleri için Azure Fabric denetleyicisi 'Ne (HostGAPlugin özelliği aracılığıyla) yeniden yönlendirmek için kullanabilir. Özel IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)üzerinde ayrıcalıklı kanal). Aracının desteklenmeyen bir sürümü kullanıyorsanız, VM 'den o bölgedeki Azure depolama 'ya giden erişime izin vermeniz gerekir.
 
 > [!IMPORTANT]
 > Konuk güvenlik duvarını veya bir ara sunucu kullanarak *168.63.129.16* 'e erişimi engellediğiniz takdirde, uzantılar yukarıdakilerden bağımsız olarak başarısız olur. 80, 443 ve 32526 bağlantı noktaları gereklidir.

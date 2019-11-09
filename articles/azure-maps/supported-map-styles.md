@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 457154a797a4b6d9853b1effe0d8121053653a99
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: cd16ee87b213c2bfa4c541c4d3c453a4499855d0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174776"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887726"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure haritalar desteklenen harita stilleri
 Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita stilini destekler.
@@ -31,7 +31,7 @@ Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita st
 
 ## <a name="blank-and-blank_accessible"></a>boş ve blank_accessible
 
-**Blank** ve **blank_accessible** harita stilleri üzerinde verilerin görselleştirilecek boş bir tuval sağlar. **Blank_accessible** stili, temel harita görüntülenmese de haritanın bulunduğu konum ayrıntıları ile ekran okuyucu güncelleştirmeleri sağlamaya devam edecektir.
+**Boş** ve **blank_accessible** harita stilleri üzerinde verilerin görselleştirilmesi için boş bir tuval sağlar. **Blank_accessible** stili, temel harita görüntülenmese de haritanın bulunduğu konum ayrıntıları ile ekran okuyucu güncelleştirmeleri sağlamaya devam edecektir.
 
 > [!Note]
 > Web SDK 'sında harita DIV öğesinin CSS `background-color` stilini ayarlayarak haritanın arka plan rengini değiştirebilirsiniz.
@@ -103,4 +103,4 @@ Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için 
 Azure haritalar 'da harita stili ayarlama hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Harita stili seçin](https://docs.microsoft.com/en-us/azure/azure-maps/choose-map-style)
+> [Harita stili seçin](https://docs.microsoft.com/azure/azure-maps/choose-map-style)

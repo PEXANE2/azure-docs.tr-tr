@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7a0cce6b72240b95943fbece08cfbf61eaee3524
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330841"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891702"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
@@ -70,7 +70,7 @@ Kullanıcılarınızın belirli LOB uygulamalarına erişmesi gerekiyorsa, bu b�
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Kullanıcı profili kapsayıcısını ayarlama (FSLogix)
 
-FSLogix kapsayıcısını görüntünün bir parçası olarak eklemek için, bir [dosya paylaşma kullanarak bir konak havuzu için profil kapsayıcısı oluşturma](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)' daki yönergeleri izleyin. FSLogix kapsayıcısının işlevselliğini [Bu hızlı başlangıç](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)ile test edebilirsiniz.
+FSLogix kapsayıcısını görüntünün bir parçası olarak eklemek için, bir [dosya paylaşma kullanarak bir konak havuzu için profil kapsayıcısı oluşturma](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)' daki yönergeleri izleyin. FSLogix kapsayıcısının işlevselliğini [Bu hızlı başlangıç](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial)ile test edebilirsiniz.
 
 ### <a name="configure-windows-defender"></a>Windows Defender 'ı yapılandırma
 
@@ -86,7 +86,7 @@ Windows Defender 'ın belirli dosyaları taramayla hariç tutmak üzere nasıl y
 
 Yerel grup ilkesi aracılığıyla otomatik güncelleştirmeleri devre dışı bırakmak için:
 
-1. **Yerel Grup İlkesi Düzenleyicisi @ no__t-1Yönetim şablonları @ no__t-2Windows bileşenleri @ no__t-3Windows Update**' i açın.
+1. **Windows bileşenleri\\Windows Update\\Yönetim Şablonları Yerel Grup İlkesi Düzenleyicisi\\** açın.
 2. **Otomatik güncelleştirmeyi yapılandır** ' a sağ tıklayın ve **devre dışı**olarak ayarlayın.
 
 Otomatik güncelleştirmeleri devre dışı bırakmak için komut isteminde aşağıdaki komutu da çalıştırabilirsiniz.
@@ -109,7 +109,7 @@ Bir konak havuzundaki tüm VM 'Ler aynı güvenlik grubunun parçası olduğunda
 
 Uzak oturum ilkelerini yapılandırmak için:
 
-1. **Yönetim Şablonları** > **Windows bileşenlerine** > **Uzak Masaüstü Hizmetleri** > **Uzak Masaüstü oturumu ana bilgisayarı** > **oturum süresi sınırını**gidin.
+1. **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri** ** > ** **oturum zaman sınırlarını**Uzak Masaüstü oturumu ana bilgisayarı. > 
 2. Sağ taraftaki bölmede, **etkin ancak boşta Uzak Masaüstü Hizmetleri oturumlar ilkesi için zaman sınırını ayarla** ilkesini seçin.
 3. Kalıcı pencere göründükten sonra ilkeyi **etkinleştirmek için ilke** seçeneğini **Yapılandırılmadı** olarak değiştirin.
 4. İlke seçeneğinin altındaki açılan menüde, zaman miktarını **3 saate**ayarlayın.
@@ -134,7 +134,7 @@ Saat dilimlerini yeniden yönlendirmek için:
 1. Active Directory sunucusunda, **Grup İlkesi Yönetim Konsolu**açın.
 2. Etki alanınızı ve grup ilkesi nesnelerini genişletin.
 3. Grup İlkesi ayarları için oluşturduğunuz **Grup İlkesi nesnesine** sağ tıklayın ve **Düzenle**' yi seçin.
-4. **Grup İlkesi Yönetimi Düzenleyicisi**, **bilgisayar yapılandırması** > **ilkeler** > **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri**@no__ t-10**Uzak Masaüstü Oturumu Ana Bilgisayarı**2**Cihaz ve kaynak yeniden yönlendirme**.
+4. **Grup İlkesi Yönetimi Düzenleyicisi**, Yönetim Şablonları > **Windows bileşenleri** ** >  > ** **Uzak Masaüstü Hizmetleri > ** **Cihaz ve kaynak yeniden yönlendirme**Uzak Masaüstü oturumu ana bilgisayarı >  **bilgisayar yapılandırması** > **ilkeleri** ' ne gidin.
 5. **Saat dilimi yeniden yönlendirmesine Izin ver** ayarını etkinleştirin.
 
 Ayrıca, saat dilimlerini yeniden yönlendirmek için ana görüntüde bu komutu çalıştırabilirsiniz:

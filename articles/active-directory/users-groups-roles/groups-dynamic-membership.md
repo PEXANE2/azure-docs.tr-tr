@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a8823a9b354ca4ae9ecab0eeac265b486116bec
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 050bc3cf6b81b9467d9947a4f611477e2fcbcd9a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808962"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885854"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -88,7 +88,7 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 
 | Özellikler | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
-| AccountEnabled |doğru yanlış |User. accountEnabled-EQ doğru |
+| accountEnabled |doğru yanlış |User. accountEnabled-EQ doğru |
 | dirSyncEnabled |doğru yanlış |User. dirSyncEnabled-EQ doğru |
 
 ### <a name="properties-of-type-string"></a>Dize türü özellikleri
@@ -96,14 +96,14 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | Özellikler | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
 | city |Herhangi bir dize değeri veya *null* |(User. City-EQ "değer") |
-| Ülke |Herhangi bir dize değeri veya *null* |(User. Country-EQ "değer") |
+| ülke |Herhangi bir dize değeri veya *null* |(User. Country-EQ "değer") |
 | Tadı | Herhangi bir dize değeri veya *null* | (User. companyName-EQ "değer") |
-| Bölüme |Herhangi bir dize değeri veya *null* |(User. Department-EQ "değer") |
-| DisplayName |Herhangi bir dize değeri |(User. displayName-EQ "değer") |
+| bölüme |Herhangi bir dize değeri veya *null* |(User. Department-EQ "değer") |
+| displayName |Herhangi bir dize değeri |(User. displayName-EQ "değer") |
 | Çalışan |Herhangi bir dize değeri |(User. EmployeeID-EQ "Value")<br>(User. EmployeeID-ne *null*) |
 | facsimileTelephoneNumber 'dir |Herhangi bir dize değeri veya *null* |(User. facsimileTelephoneNumber-EQ "değer") |
-| GivenName |Herhangi bir dize değeri veya *null* |(User.,-EQ "Value") |
-| JobTitle |Herhangi bir dize değeri veya *null* |(User. jobTitle-EQ "değer") |
+| givenName |Herhangi bir dize değeri veya *null* |(User.,-EQ "Value") |
+| jobTitle |Herhangi bir dize değeri veya *null* |(User. jobTitle-EQ "değer") |
 | - |Herhangi bir dize değeri veya *null* (kullanıcının SMTP adresi) |(User. Mail-EQ "değer") |
 | mailNickName |Herhangi bir dize değeri (kullanıcının posta diğer adı) |(User. Mailtakma ad-EQ "değer") |
 | Mo |Herhangi bir dize değeri veya *null* |(User. Mobile-EQ "değer") |
@@ -111,13 +111,13 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | onPremisesSecurityIdentifier | Şirket içinden buluta eşitlenen kullanıcılar için şirket içi güvenlik tanımlayıcısı (SID). |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword Disablepasswordexpiasyon Disablepasswordexpima, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Herhangi bir dize değeri veya *null* |(User. Physicaldeliveryofficeename-EQ "Value") |
-| PostalCode |Herhangi bir dize değeri veya *null* |(User. PostaKodu-EQ "değer") |
+| postalCode |Herhangi bir dize değeri veya *null* |(User. PostaKodu-EQ "değer") |
 | preferredLanguage |ISO 639-1 kodu |(User. preferredLanguage-EQ "en-US") |
 | sipProxyAddress |Herhangi bir dize değeri veya *null* |(User. sipProxyAddress-EQ "değer") |
 | durum |Herhangi bir dize değeri veya *null* |(User. State-EQ "değer") |
 | streetAddress |Herhangi bir dize değeri veya *null* |(User. streetAddress-EQ "değer") |
 | Soyadı |Herhangi bir dize değeri veya *null* |(User. soyad-EQ "Value") |
-| TelephoneNumber 'dır |Herhangi bir dize değeri veya *null* |(User. telephoneNumber-EQ "değer") |
+| telephoneNumber 'dır |Herhangi bir dize değeri veya *null* |(User. telephoneNumber-EQ "değer") |
 | usageLocation |İki kodlu ülke kodu |(User. usageLocation-EQ "US") |
 | userPrincipalName |Herhangi bir dize değeri |(User. userPrincipalName-EQ "alias@domain") |
 | userType |üye Konuk *null* |(User. userType-EQ "üye") |
@@ -127,7 +127,7 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | Özellikler | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
 | Diğer postalar |Herhangi bir dize değeri |(User. Otherpostalarını-"alias@domain" içerir) |
-| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-Contains "SMTP: alias@domain") |
+| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-"SMTP: alias@domain" içerir) |
 
 Cihaz kuralları için kullanılan özellikler için bkz. [Cihazlar Için kurallar](#rules-for-devices).
 
@@ -357,7 +357,10 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 
 ## <a name="rules-for-devices"></a>Cihazlar için kurallar
 
-Ayrıca, bir gruptaki üyelik için cihaz nesneleri seçen bir kural oluşturabilirsiniz. Grup üyeleri olarak hem Kullanıcı hem de cihaz ekleyemezsiniz. **OrganizationalUnit** özniteliği artık listelenmez ve kullanılmamalıdır. Bu dize, Intune tarafından belirli durumlarda ayarlanır ancak Azure AD tarafından tanınmamaktadır, bu nedenle bu özniteliğe göre gruplara hiçbir cihaz eklenmez.
+Ayrıca, bir gruptaki üyelik için cihaz nesneleri seçen bir kural oluşturabilirsiniz. Grup üyeleri olarak hem Kullanıcı hem de cihaz ekleyemezsiniz. 
+
+> [!NOTE]
+> **OrganizationalUnit** özniteliği artık listelenmez ve kullanılmamalıdır. Bu dize, Intune tarafından belirli durumlarda ayarlanır ancak Azure AD tarafından tanınmamaktadır, bu nedenle bu özniteliğe göre gruplara hiçbir cihaz eklenmez.
 
 > [!NOTE]
 > systemlabels, Intune ile ayarlanamaz salt okunurdur.
@@ -368,8 +371,8 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
 
  Cihaz özniteliği  | Değerler | Örnek
  ----- | ----- | ----------------
- AccountEnabled | doğru yanlış | (Device. accountEnabled-EQ true)
- DisplayName | Herhangi bir dize değeri |(Device. displayName-EQ "Ramiz iPhone")
+ accountEnabled | doğru yanlış | (Device. accountEnabled-EQ true)
+ displayName | Herhangi bir dize değeri |(Device. displayName-EQ "Ramiz iPhone")
  Cihazostürü | Herhangi bir dize değeri | (Device. deviceOSType-EQ "iPad")-veya (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-"AndroidEnterprise" içerir)<br>(Device. deviceOSType-EQ "AndroidForWork")
  deviceOSVersion | Herhangi bir dize değeri | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | geçerli bir cihaz kategorisi adı | (Device. deviceCategory-EQ "BYOD")
@@ -379,9 +382,8 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
  KayıtAdı | Apple cihaz kayıt profili, cihaz kaydı-kurumsal cihaz tanımlayıcıları (Android-bilgi noktası) veya Windows Autopilot profili adı | (Device. kayıtlarına Mentprofilename-EQ "DEP IPhone")
  IBir kökü belirtilmiş | doğru yanlış | (Device. ısınroot-EQ true)
  managementType | MDM (mobil cihazlar için)<br>BILGISAYAR (Intune bılgısayar Aracısı tarafından yönetilen bilgisayarlar için) | (Device. managementType-EQ "MDM")
- organizationalUnit | geçerli bir şirket içi kuruluş birimi (OU) | (Device. organizationalUnit-"dizüstü" içerir)
  deviceId | geçerli bir Azure AD cihaz KIMLIĞI | (Device. DeviceID-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- Uzantının | geçerli bir Azure AD nesne KIMLIĞI |  (Device. ObjectID-EQ 76ad43c9-32c5-45e8-a272-7b58b58f596d ")
+ Uzantının | geçerli bir Azure AD nesne KIMLIĞI |  (Device. ObjectID-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  Devicephysicilar | Tüm Autopilot cihazları, OrderID veya PurchaseOrderID gibi Autopilot tarafından kullanılan herhangi bir dize değeri  | (Device. Devicephysicids-any _-Contains "[Ztdıd]") (Device. Devicephysicids-any _-EQ "[OrderID]: 179887111881") (Device. Devicephysicids-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | Modern çalışma alanı cihazlarını etiketlemek için Intune cihaz özelliği ile eşleşen tüm dizeler | (Device. systemLabels-"M365Managed" içerir)
 

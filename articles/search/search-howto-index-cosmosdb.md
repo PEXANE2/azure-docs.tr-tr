@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 41da5b59c7d9429a068ecd483aa96edb1141b727
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0657d3d5aec414b867e85b627fcf77174c8ce789
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719955"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889904"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure 'da Dizin Oluşturucu kullanarak Cosmos DB verilerini dizin oluşturma Bilişsel Arama 
 
@@ -78,17 +78,11 @@ Sihirbazı Azure Bilişsel Arama hizmeti sayfasında komut çubuğundan [başlat
 
    ![Cosmos DB veri kaynağı tanımı](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB veri kaynağı tanımı")
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4-sihirbazda "bilişsel arama Ekle" sayfasını atlayın
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4-sihirbazdaki "zenginleştirme içerik" sayfasını atlayın
 
-Bilişsel yetenekler ekleme belge içeri aktarma için gerekli değildir. Dizin oluşturma işlem hattınızda [AI zenginleştirme eklemek](cognitive-search-concept-intro.md) için özel bir ihtiyacınız yoksa bu adımı atlamanız gerekir.
+Bilişsel yetenekler (veya zenginleştirme) eklemek bir içeri aktarma gereksinimi değildir. Dizin oluşturma işlem hattınızda [AI zenginleştirme eklemek](cognitive-search-concept-intro.md) için özel bir ihtiyacınız yoksa bu adımı atlamanız gerekir.
 
-Adımı atlamak için önce bir sonraki sayfaya gidin.
-
-   ![Yetenek Ekle için sonraki sayfa düğmesi](media/search-get-started-portal/next-button-add-cog-search.png)
-
-Bu sayfadan, Dizin özelleştirmeye ileri atlayabilirsiniz.
-
-   ![Bilişsel beceri adımını atlama](media/search-get-started-portal/skip-cog-skill-step.png)
+Adımı atlamak için, "Ileri" ve "atla" için sayfanın altındaki mavi düğmelere tıklayın.
 
 ### <a name="5---set-index-attributes"></a>5-dizin özniteliklerini ayarla
 

@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a1a86965eb6a50fa87c63f5713f21d6a467dedb
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 7c5d3941cec7554152090c68bc1dc95f29ca9f17
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242252"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882875"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Hızlı başlangıç: Android uygulamasından kullanıcıların oturum açma ve Microsoft Graph API'sini çağırma
 
@@ -49,11 +49,11 @@ Microsoft Identity platform 'un uygulamanızla belirteçleri paylaşabilmesi iç
 > > ![Zaten yapılandırılmış](media/quickstart-v2-android/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış
 >
 > ### <a name="step-2-download-the-project"></a>2\. Adım: Projeyi indirme 
-> * [Kod örneğini indirin](https://github.com/Azure-Samples/ms-identity-android-java)
+> * [Kod örneğini indirin](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
 > ### <a name="step-3-configure-your-project"></a>3\. Adım:Projenizi yapılandırma
 > 1. Projeyi ayıklayın ve Android Studio’da açın.
-> 2. > Src > Main > Res > RAW ' ın içinde, auth_config_multiple_account. json ' ı açın ve aşağıdaki kodla değiştirin:
+> 2.  >  **src** > **Main** > **res** > **RAW**, **auth_config_multiple_account. JSON** ' ı açın ve aşağıdaki kodla değiştirin:
 > ```javascript 
 > {
 >   "client_id" : "Enter_the_Application_Id_Here",
@@ -74,7 +74,7 @@ Microsoft Identity platform 'un uygulamanızla belirteçleri paylaşabilmesi iç
 > ```
 
 > [!div class="sxs-lookup" renderon="portal"]
-> 3. > Src > Main > Res > RAW ' ın içinde, auth_config_single_account. json ' ı açın ve aşağıdaki kodla değiştirin:
+> 3.  >  **src** > **Main** > **res** > **RAW**, **auth_config_single_account. JSON** ' ı açın ve aşağıdaki kodla değiştirin:
 > ```javascript 
 > {
 >   "client_id" : "Enter_the_Application_Id_Here",
@@ -98,22 +98,22 @@ Microsoft Identity platform 'un uygulamanızla belirteçleri paylaşabilmesi iç
 > 4.  > **src** > **Main** **uygulamasının** içinde, **AndroidManifest. xml**' yi açın.
 > 5. **Manifest\application** node 'da **<activity android:name="com.microsoft.identity.client.BrowserTabActivity">** düğümünü aşağıdaki ile değiştirin:  
 > ```xml
-> <!--Intent filter to catch Microsoft's callback after Sign In-->
-> <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
->     <intent-filter>
->     <action android:name="android.intent.action.VIEW" />
->     <category android:name="android.intent.category.DEFAULT" />
->     <category android:name="android.intent.category.BROWSABLE" />
->         <!--
+> &lt;!--Intent filter to catch Microsoft's callback after Sign In--&gt;
+> &lt;activity android:name=&quot;com.microsoft.identity.client.BrowserTabActivity&quot;&gt;
+>     &lt;intent-filter&gt;
+>     &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
+>     &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+>     &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;
+>         &lt;!--
 >             Add in your scheme/host from registered redirect URI 
->             note that the leading "/" is required for android:path
->         -->
->         <data android:scheme="msauth"
->             android:host="Enter_the_Package_Name_here"
->             android:path="Enter_the_Signature_Hash_here"
->             android:scheme = "msauth" />
->     </intent-filter>
-> </activity>
+>             note that the leading &quot;/&quot; is required for android:path
+>         --&gt;
+>         &lt;data android:scheme=&quot;msauth&quot;
+>             android:host=&quot;Enter_the_Package_Name_Here&quot;
+>             android:path=&quot;Enter_the_Signature_Hash_Here&quot;
+>             android:scheme = &quot;msauth&quot; /&gt;
+>     &lt;/intent-filter&gt;
+> &lt;/activity&gt;
 > ```
 > 6. Uygulamayı çalıştırın!
 > Örnek uygulama, **tek hesap modu** ekranında başlar. Varsayılan olarak, **Kullanıcı. Read**, Microsoft Graph API çağrısı sırasında kendi profil verilerinizi okurken kullanılan varsayılan bir kapsam sağlanır. Microsoft Graph API çağrısı URL 'SI varsayılan olarak sağlanır. İsterseniz bunların her ikisini de değiştirebilirsiniz.
@@ -131,12 +131,12 @@ Microsoft Identity platform 'un uygulamanızla belirteçleri paylaşabilmesi iç
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Bu hızlı başlangıç, Enter_the_Supported_Account_Info_Here destekler.
+> > Bu hızlı başlangıç Enter_the_Supported_Account_Info_Here destekler.
 
 > [!div renderon="docs"]
 > ## <a name="step-1-get-the-sample-app"></a>1\. Adım: örnek uygulamayı edinme
 >
-> [Kodu kopyalayın](https://github.com/Azure-Samples/ms-identity-android-java.git).
+> [Kodu indirin](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip).
 >
 > ## <a name="step-2-run-the-sample-app"></a>2\. Adım: örnek uygulamayı çalıştırma
 >
@@ -541,7 +541,7 @@ Bu, birden çok hesap kullanan bir MSAL uygulamasının yapılandırma dosyasıd
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Bu hızlı başlangıçta kullanılan uygulamayı oluşturmaya yönelik adımları öğrenin
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Bu hızlı başlangıçta kullanılan uygulamayı oluşturma adımlarını öğrenin
 
 [Oturum açma kullanıcılarını deneyin ve bir Android uygulaması öğreticiden Microsoft Graph çağırarak,](tutorial-v2-android.md) bir erişim belirteci alan ve Microsoft Graph API 'sini çağırmak için onu kullanan bir Android uygulaması oluşturmaya yönelik adım adım kılavuz.
 

@@ -9,20 +9,20 @@ ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a42ba0a385b73032e3d4045094bc88613016b849
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8200052e14161d91b7daef6a0acd9c851518d9c2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850335"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886467"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Otomasyonu 'nda runbook başlatma
 
 Aşağıdaki tablo, belirli senaryonuz için en uygun olan Azure Otomasyonu 'nda bir runbook 'u başlatmak için yöntemi belirlemenize yardımcı olur. Bu makale, Azure portal ve Windows PowerShell ile bir runbook başlatma hakkındaki ayrıntıları içerir. Diğer yöntemler hakkındaki ayrıntılar, aşağıdaki bağlantılardan erişebileceğiniz diğer belgelerde sunulmaktadır.
 
-| **Yöntemi** | **Karakter** |
+| **Yöntem** | **Karakter** |
 | --- | --- |
-| [Azure portal](#start-a-runbook-with-the-azure-portal) |<li>Etkileşimli kullanıcı arabirimiyle en basit yöntem.<br> <li>Basit parametre değerleri sağlamak için form.<br> <li>İş durumunu kolayca izleyin.<br> <li>Azure oturum açma ile erişim kimliği doğrulandı. |
+| [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Etkileşimli kullanıcı arabirimiyle en basit yöntem.<br> <li>Basit parametre değerleri sağlamak için form.<br> <li>İş durumunu kolayca izleyin.<br> <li>Azure oturum açma ile erişim kimliği doğrulandı. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Windows PowerShell cmdlet 'leri ile komut satırından çağrı.<br> <li>, Birden çok adımla otomatikleştirilmiş çözüme eklenebilir.<br> <li>İstek sertifika veya OAuth Kullanıcı sorumlusu/hizmet sorumlusu ile doğrulandı.<br> <li>Basit ve karmaşık parametre değerlerini sağlayın.<br> <li>İş durumunu izleyin.<br> <li>PowerShell cmdlet 'lerini desteklemek için gereken istemci. |
 | [Azure Otomasyonu API 'SI](/rest/api/automation/) |<li>En esnek yöntem, ancak çoğu karmaşıktır.<br> <li>HTTP istekleri yapan herhangi bir özel koddan çağırın.<br> <li>Sertifika veya OAuth Kullanıcı sorumlusu/hizmet sorumlusu ile kimlik doğrulaması iste.<br> <li>Basit ve karmaşık parametre değerlerini sağlayın. *API 'yi kullanarak bir Python runbook 'u arıyorsanız JSON yükünün serileştirilmesi gerekir.*<br> <li>İş durumunu izleyin. |
 | [Web kancaları](automation-webhooks.md) |<li>Tek bir HTTP isteğinden runbook 'u başlatın.<br> <li>URL 'de güvenlik belirteci ile kimlik doğrulandı.<br> <li>İstemci, Web kancası oluşturulduğunda belirtilen parametre değerlerini geçersiz kılamaz. Runbook, HTTP istek ayrıntıları ile doldurulmuş tek bir parametre tanımlayabilir.<br> <li>Web kancası URL 'SI aracılığıyla iş durumunu izleyebilme yeteneği yoktur. |
@@ -187,4 +187,4 @@ jsmith
 
 * Geçerli makaledeki runbook mimarisi, Azure 'da ve karma Runbook Worker ile şirket içinde kaynakları yöneten runbook 'lara yönelik yüksek düzeyde bir genel bakış sağlar. Veri merkezinizde Otomasyon Runbook 'larını yürütme hakkında bilgi edinmek için [karma runbook çalışanlarına](automation-hybrid-runbook-worker.md)bakın.
 * Belirli veya yaygın işlevler için diğer runbook 'lar tarafından kullanılacak modüler runbook 'lar oluşturma hakkında daha fazla bilgi edinmek için [alt runbook 'lara](automation-child-runbooks.md)bakın.
-* Dil başvurusu ve öğrenme modülleri de dahil olmak üzere PowerShell hakkında daha fazla bilgi için [PowerShell belgelerine](https://docs.microsoft.com/en-us/powershell/scripting/overview)bakın.
+* Dil başvurusu ve öğrenme modülleri de dahil olmak üzere PowerShell hakkında daha fazla bilgi için [PowerShell belgelerine](https://docs.microsoft.com/powershell/scripting/overview)bakın.

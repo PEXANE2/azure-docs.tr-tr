@@ -9,14 +9,14 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 52fcd0d928ecbce5c617ff6a27175fccb8fd96f6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990251"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886526"
 ---
-# <a name="source-control-integration-in-azure-automation"></a>Azure Otomasyonu'nda kaynak denetimi tümleştirmesi
+# <a name="source-control-integration-in-azure-automation"></a>Azure Otomasyonu’nda kaynak denetimi tümleştirmesi
 
 Kaynak denetimi, runbook 'larınızı GitHub veya Azure Repos kaynak denetimi deponuzdaki betiklerinizde güncel tutmanızı sağlar. Kaynak denetimi, takımınızla kolayca işbirliği yapmanızı, değişiklikleri izlemenizi ve Runbook 'larınızın önceki sürümlerine geri dönmeyi sağlar. Örneğin, kaynak denetimi, kaynak denetimindeki farklı dalları geliştirme, test veya üretim Otomasyon hesaplarınızla eşitlemenize olanak tanır. Bu, geliştirme ortamınızda test edilmiş kodu üretim Otomasyonu hesabınıza yükseltmeyi kolaylaştırır. Otomasyon ile kaynak denetimi tümleştirmesi, kaynak denetimi deponuzdan tek yönlü eşitlemeyi destekler.
 
@@ -49,8 +49,8 @@ Otomasyon hesabınızda, **kaynak denetimi** ' ni seçin ve **+ Ekle** ' ye tık
 |---------|---------|
 |Kaynak Denetim adı     | Kaynak denetimi için kolay bir ad. *Bu ad yalnızca harf ve rakam içermelidir.*        |
 |Kaynak Denetim türü     | Kaynak denetim kaynağının türü. Kullanılabilen seçenekler:</br> GitHub</br>Azure Repos (git)</br> Azure Repos (TFVC)        |
-|Havuz     | Deponun veya projenin adı. İlk 200 depo döndürülür. Bir depoyu aramak için alana adı yazın ve **GitHub 'Da ara**' yı tıklatın.|
-|Dal     | Kaynak dosyaları çekme dalı. TFVC kaynak denetimi türü için dal hedefleme kullanılamıyor.          |
+|Depo     | Deponun veya projenin adı. İlk 200 depo döndürülür. Bir depoyu aramak için alana adı yazın ve **GitHub 'Da ara**' yı tıklatın.|
+|Şube     | Kaynak dosyaları çekme dalı. TFVC kaynak denetimi türü için dal hedefleme kullanılamıyor.          |
 |Klasör yolu     | Eşitlenecek runbook 'ları içeren klasör. Örnek:/runbook 'lar </br>*Yalnızca belirtilen klasördeki runbook 'lar eşitlenir. Özyineleme desteklenmiyor.*        |
 |Otomatik eşitleme<sup>1</sup>     | Kaynak denetim deposunda bir kayıt yapıldığında otomatik eşitlemeyi açar veya kapatır         |
 |Runbook 'U Yayımla     | **Açık**olarak ayarlandıysa, runbook 'lar kaynak denetiminden eşitlendikten sonra otomatik olarak yayımlanır.         |
@@ -93,21 +93,21 @@ Kaynak denetimi, kişisel erişim belirteçleri için bazı minimum izinleri ger
 
 GitHub 'da kişisel erişim belirteci oluşturma hakkında daha fazla bilgi için, [komut satırı için kişisel erişim belirteci oluşturma](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)sayfasını ziyaret edin.
 
-|`Scope`  |Açıklama  |
+|Kapsam  |Açıklama  |
 |---------|---------|
 |**depo**     |         |
 |Depo: durum     | Erişim yapma durumu         |
 |repo_deployment      | Erişim dağıtım durumu         |
 |public_repo     | Genel depolara erişin         |
 |**Yönetici: repo_hook**     |         |
-|şunu yazın: repo_hook     | Depo kancalarını Yaz         |
+|yazma: repo_hook     | Depo kancalarını Yaz         |
 |okuma: repo_hook|Depo kancalarını okuma|
 
 #### <a name="azure-repos"></a>Azure Repos
 
 Azure Repos bir kişisel erişim belirteci oluşturma hakkında daha fazla bilgi için, [kişisel erişim belirteçleriyle erişimi kimlik doğrulaması](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)' nı ziyaret edin.
 
-|`Scope`  |
+|Kapsam  |
 |---------|
 |Kod (okuma)     |
 |Proje ve takım (okuma)|
@@ -118,7 +118,7 @@ Azure Repos bir kişisel erişim belirteci oluşturma hakkında daha fazla bilgi
 
 <sup>1</sup> hizmet bağlantıları izni yalnızca, oto eşitlemesini etkinleştirdiyseniz gereklidir.
 
-## <a name="syncing"></a>Eşitleniyor
+## <a name="syncing"></a>Eşitlenmiyor
 
 **Kaynak denetimi** sayfasındaki tablodan kaynağı seçin. Eşitleme işlemini başlatmak için **Eşitlemeyi Başlat** ' a tıklayın.
 
@@ -177,7 +177,7 @@ Kaynak denetim deponuzda farklı düzenleyicilerle runbook 'ları düzenleyen bi
 
 Şu anda, kaynak denetimindeki erişim belirtecini portaldan güncelleştirmenin bir yolu yoktur. Kişisel erişim belirteciniz zaman aşımına uğradı veya iptal edildikten sonra, aşağıdaki yollarla kaynak denetimini yeni bir erişim belirteciyle güncelleştirebilirsiniz:
 
-* , [REST API](https://docs.microsoft.com/en-us/rest/api/automation/sourcecontrol/update)aracılığıyla.
+* , [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update)aracılığıyla.
 * [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet 'ini kullanarak.
 
 ## <a name="next-steps"></a>Sonraki adımlar

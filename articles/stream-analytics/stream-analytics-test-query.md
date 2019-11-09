@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c67d511f6c94c8b9af034835e149875304e2235
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918976"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891749"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Örnek verilerle Azure Stream Analytics işi test etme
 
-Azure Stream Analytics, işinizi başlatmadan veya durdurmaksızın sorgunuzu test edebilirsiniz. Giriş havuzınızdan gelen veriler üzerinde sorguları test edebilir veya Azure portalındaki yerel bir dosyadan örnek verileri karşıya yükleyebilirsiniz. Sorguları yerel örnek verilerden veya [Visual Studio](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-live-data-local-testing) 'daki canlı verilerden veya [Visual Studio Code](https://docs.microsoft.com/en-us/azure/stream-analytics/vscode-local-run)yerel olarak da test edebilirsiniz. 
+Azure Stream Analytics, işinizi başlatmadan veya durdurmaksızın sorgunuzu test edebilirsiniz. Giriş havuzınızdan gelen veriler üzerinde sorguları test edebilir veya Azure portalındaki yerel bir dosyadan örnek verileri karşıya yükleyebilirsiniz. Sorguları yerel örnek verilerden veya [Visual Studio](stream-analytics-live-data-local-testing.md) 'daki canlı verilerden veya [Visual Studio Code](vscode-local-run.md)yerel olarak da test edebilirsiniz. 
 
 ## <a name="sample-incoming-data-from-input"></a>Girişten gelen veri örneği
 
@@ -74,7 +74,7 @@ Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek i�
 
 1. Azure Portal’da oturum açın.
    
-2. Var olan Stream Analytics işinizi bulun ve seçin.
+2. Mevcut Stream Analytics işinizi bulun ve seçin.
 
 3. Stream Analytics işi sayfasında, **Iş topolojisi** başlığı altında **sorgu** ' yı seçerek sorgu Düzenleyicisi penceresini açın.
 
@@ -106,4 +106,4 @@ Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek i�
 
 * [Azure Stream Analytics için girişleri anlayın](stream-analytics-add-inputs.md)
 
-* [Azure Stream Analytics çıkışları anlama](stream-analytics-define-outputs.md)
+* [Azure Stream Analytics çıkışlarını anlayın](stream-analytics-define-outputs.md)

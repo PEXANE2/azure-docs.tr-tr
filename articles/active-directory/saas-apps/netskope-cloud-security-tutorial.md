@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 853c186155fe5cff3dcf2907246920a43048f65d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0e33d05450e19331d876029b07d520634a40ab31
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600388"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884443"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-cloud-security"></a>Öğretici: Netüse Bulut güvenliği ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +33,7 @@ Bu öğreticide, Netüse bulut güvenliğini Azure Active Directory (Azure AD) i
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -99,12 +99,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Netüse Cloud Security uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Ad |  Kaynak özniteliği|
     | ---------| --------- |
     | yönetici-rol | Kullanıcı. atandroles |
 
     > [!NOTE]
-    > Azure AD 'de rol oluşturmayı öğrenmek için [buraya](https://docs.microsoft.com/en-gb/azure/active-directory/develop/active-directory-enterprise-app-role-management) tıklayın.
+    > Azure AD 'de rol oluşturmayı öğrenmek için [buraya](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) tıklayın.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -122,9 +122,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

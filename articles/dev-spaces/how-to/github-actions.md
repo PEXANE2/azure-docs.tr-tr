@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: GitHub eylemleri ve Azure Dev Spaces kullanarak doğrudan Azure Kubernetes hizmetindeki çekme isteğinden yapılan değişiklikleri gözden geçirin ve test edin.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, GitHub eylemleri, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 590d49f4c189ff48f20369d18b17e0f6e4a46fa2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 09dc9440628ac5d808f90d086bd88e4f90765c28
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571583"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889727"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
 
@@ -96,8 +96,8 @@ Ele geçirilen deponuza gidin ve *Ayarlar*' a tıklayın. Sol kenar çubuğundak
 1. *RESOURCE_GROUP*: Bu örnekte *MYRESOURCEGROUP*olan aks kümeniz için kaynak grubu.
 1. *CLUSTER_NAME*: Bu örnekte *MYAKS*olan aks Kümenizin adı.
 1. *CONTAINER_REGISTRY*: ACR Için *loginserver* .
-1. *Konak*: *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX >* formunu alan dev Space için ana bilgisayar, bu örnekte *dev.bikesharingweb.fedcab0987.EUS.azds.io*.
-1. *HOST_SUFFIX*: geliştirme alanınız için ana bilgisayar soneki, bu örnekte *fedcab0987.EUS.azds.io*.
+1. *Ana bilgisayar*: *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX*> olan geliştirme alanınız için ana bilgisayar. Bu örnekte, *dev.bikesharingweb.fedcab0987.EUS.azds.io*.
+1. *HOST_SUFFIX*: geliştirme alanınız için konak soneki, bu örnekte *fedcab0987.EUS.azds.io*.
 1. *IMAGE_PULL_SECRET*: kullanmak istediğiniz gizli dizi adı, örneğin *demo-gizli*.
 1. *MASTER_SPACE*: Bu örnekte *dev*olan üst geliştirme alanının adı.
 1. *REGISTRY_USERNAME*: hizmet sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından *ClientID* .
@@ -145,7 +145,7 @@ Yeni dalınızı, kullanılan deponuza göndermek için `git push` kullanın:
 git push origin bike-images
 ```
 
-Gönderme işlemi tamamlandıktan sonra, GitHub 'da dallanmış deponuza gidin ve *Bisiklet görüntüleri* dalına kıyasla temel dal olarak, dallanmış deponuzdaki *dev* ile bir çekme isteği oluşturun.
+Gönderme işlemi tamamlandıktan sonra, *Bisiklet görüntüleri* dalına kıyasla temel dal olarak, dallanmış deponuzdaki *ana* dala sahip bir çekme isteği oluşturmak için GitHub 'daki dallanmış deponuza gidin.
 
 Çekme isteğiniz açıldıktan sonra, *Eylemler* sekmesine gidin. yeni bir eylemin başlatıldığını ve *Bisiklet* hizmetini oluşturuyor olduğunu doğrulayın.
 
@@ -158,7 +158,7 @@ Eylem tamamlandıktan sonra, çekme isteğindeki değişiklikleri temel alan yen
 
 Açıklamadan URL 'YI açarak *bıkesharingweb* hizmetine gidin. Kullanıcı olarak *Aurelia Briggs (müşteri)* öğesini seçin ve ardından kiralamak istediğiniz bir bisiklet seçin. Bisiklet için yer tutucu görüntüsünü artık görmediğinizi doğrulayın.
 
-Değişikliklerinizi *geliştirme* dalında birleştirirseniz, uygulamanın tamamını üst geliştirme alanında yeniden oluşturmak ve çalıştırmak için başka bir eylem çalıştırılır. Bu örnekte, üst alan *dev*olur. Bu eylem [. GitHub/iş akışları/bıkesharing. yıml][github-action-bikesharing-yaml]içinde yapılandırılır.
+Değişikliklerinizi çatalınızdaki *ana* dalda birleştirirseniz, uygulamanın tamamını üst geliştirme alanında yeniden oluşturmak ve çalıştırmak için başka bir eylem çalıştırılır. Bu örnekte, üst alan *dev*olur. Bu eylem [. GitHub/iş akışları/bıkesharing. yıml][github-action-bikesharing-yaml]içinde yapılandırılır.
 
 ## <a name="clean-up-your-azure-resources"></a>Azure kaynaklarınızı Temizleme
 

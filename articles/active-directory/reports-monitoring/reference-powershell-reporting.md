@@ -17,17 +17,17 @@ ms.date: 07/12/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d34204b936a608158a0ca3e8af2264059ffc6aa
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: dd1d4f86b6223abd3de8fab618e5975ebd33f892
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136564"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885287"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Raporlama için Azure AD PowerShell cmdlet’leri
 
 > [!NOTE] 
-> Bu PowerShell cmdlet 'leri Şu anda yalnızca [Azure AD önizleme](https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) modülüyle çalışır. Önizleme modülünün üretim kullanımı için önerilmediğini lütfen unutmayın. 
+> Bu PowerShell cmdlet 'leri Şu anda yalnızca [Azure AD önizleme](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) modülüyle çalışır. Önizleme modülünün üretim kullanımı için önerilmediğini lütfen unutmayın. 
 
 Azure Active Directory (Azure AD) raporlarında, yönlerinizde (denetim günlükleri) ve kimlik doğrulama verilerinde (oturum açma günlükleri) tüm yazma işlemlerinde bulunan etkinliklerle ilgili ayrıntılı bilgi edinebilirsiniz. Bilgiler MS Graph API kullanılarak kullanılabilir olsa da, artık raporlama için Azure AD PowerShell cmdlet 'lerini kullanarak aynı verileri alabilirsiniz.
 
@@ -43,7 +43,7 @@ Bu makale, denetim günlükleri ve oturum açma günlükleri için kullanılacak
 | Senaryo                      | PowerShell komutu |
 | :--                           | :--                |
 | Uygulama görünen adı      | Get-AzureADAuditDirectoryLogs-filtre "/App/displayName EQ ' Azure AD bulut eşitlemesi '" |
-| Category                      | Get-AzureADAuditDirectoryLogs-filtre "category EQ ' uygulama yönetimi '" |
+| Kategori                      | Get-AzureADAuditDirectoryLogs-filtre "category EQ ' uygulama yönetimi '" |
 | Etkinlik tarihi saati            | Get-AzureADAuditDirectoryLogs-filtre "activityDateTime gt 2019-04-18" |
 | Yukarıdakilerin tümü              | Get-AzureADAuditDirectoryLogs-filtre "/uygulama/displayName EQ ' Azure AD bulut eşitleme ' ve kategori EQ ' uygulama yönetimi ' ve activityDateTime gt 2019-04-18"|
 
@@ -63,7 +63,7 @@ Aşağıdaki görüntüde bu komut için bir örnek gösterilmektedir.
 
 | Senaryo                      | PowerShell komutu |
 | :--                           | :--                |
-| Kullanıcı Görünen Adı             | Get-Azureadauditsignınlogs-"userDisplayName EQ ' Timoingperkins '" filtresini filtrele |
+| Kullanıcı görünen adı             | Get-Azureadauditsignınlogs-"userDisplayName EQ ' Timoingperkins '" filtresini filtrele |
 | Tarih saat oluştur              | Get-Azureadauditsignınlogs-Filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (4/18 tarihinde 5:30 ile bu yana her şey) |
 | Durum                        | Get-Azureadauditsignınlogs-filtre "Status/errorCode EQ 50105" |
 | Uygulama görünen adı      | Get-Azureadauditsignınlogs-Filter "appDisplayName EQ ' StoreFrontStudio [wsbessenabled] '" |
