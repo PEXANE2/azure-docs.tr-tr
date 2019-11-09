@@ -1,7 +1,7 @@
 ---
-title: Azure Search .NET SDK sürüm 10 ' a yükselt
+title: Azure Bilişsel Arama .NET SDK sürüm 10 ' a yükseltme
 titleSuffix: Azure Cognitive Search
-description: Kodu eski sürümlerden Azure Search .NET SDK sürüm 10 ' a geçirin. Nelerin yeni olduğunu ve hangi kod değişikliklerinin gerekli olduğunu öğrenin.
+description: Kodu eski sürümlerden Azure Bilişsel Arama .NET SDK sürüm 10 ' a geçirin. Nelerin yeni olduğunu ve hangi kod değişikliklerinin gerekli olduğunu öğrenin.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,30 +9,30 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a8550a7f9c6a684a172da6f384039c6050797f6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793047"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847514"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-10"></a>Azure Search .NET SDK sürüm 10 ' a yükselt
+# <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Azure Bilişsel Arama .NET SDK sürüm 10 ' a yükseltme
 
 [Azure Search .NET SDK 'sının](https://aka.ms/search-sdk)sürüm 9,0 veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı sürüm 10 ' u kullanacak şekilde yükseltmenize yardımcı olur.
 
-Örnek içeren SDK hakkında daha genel bir anlatım için bkz. [.NET uygulamasından Azure Search kullanma](search-howto-dotnet-sdk.md).
+Azure Search, sürüm 10 ' da Azure Bilişsel Arama olarak yeniden adlandırıldı, ancak ad alanları ve paket adları değiştirilmez. SDK 'nın önceki sürümleri (9,0 ve öncesi), eski adı kullanmaya devam eder. SDK 'yı kullanma hakkında daha fazla bilgi için örnekler de dahil olmak üzere [.NET uygulamasından Azure bilişsel arama kullanma](search-howto-dotnet-sdk.md)konusuna bakın.
 
 Sürüm 10, birkaç özellik ve hata düzeltmesi ekleyerek REST API sürümünün `2019-05-06`en son sürümüyle aynı işlev düzeyine getirir. Bir değişikliğin mevcut kodu kesen durumlarda, [sorunu çözmek için gereken adımlarda](#UpgradeSteps)size yol göstereceğiz.
 
 > [!NOTE]
 > Sürüm 8,0-Önizleme veya daha eski bir sürümünü kullanıyorsanız, önce sürüm 9 ' a yükseltmeniz ve sonra sürüm 10 ' a yükseltmeniz gerekir. Yönergeler için bkz. [Azure Search .NET SDK sürüm 9](search-dotnet-sdk-migration-version-9.md) ' a yükseltme.
 >
-> Azure Search hizmet örneğiniz, en son sürüm dahil olmak üzere birkaç REST API sürümü destekler. Artık en son bir sürüm olmadığında bir sürümü kullanmaya devam edebilirsiniz, ancak kodunuzu en yeni sürümü kullanmak için geçirmeniz önerilir. REST API kullanırken, API sürümü parametresi aracılığıyla her istekte API sürümünü belirtmeniz gerekir. .NET SDK kullanıldığında, kullanmakta olduğunuz SDK sürümü REST API ilgili sürümünü belirler. Daha eski bir SDK kullanıyorsanız, hizmet daha yeni bir API sürümünü destekleyecek şekilde yükseltilse bile, bu kodu hiçbir değişiklik yapmadan çalıştırmaya devam edebilirsiniz.
+> Arama hizmeti örneğiniz, en son bir dahil olmak üzere birkaç REST API sürümü destekler. Artık en son bir sürüm olmadığında bir sürümü kullanmaya devam edebilirsiniz, ancak kodunuzu en yeni sürümü kullanmak için geçirmeniz önerilir. REST API kullanırken, API sürümü parametresi aracılığıyla her istekte API sürümünü belirtmeniz gerekir. .NET SDK kullanıldığında, kullanmakta olduğunuz SDK sürümü REST API ilgili sürümünü belirler. Daha eski bir SDK kullanıyorsanız, hizmet daha yeni bir API sürümünü destekleyecek şekilde yükseltilse bile, bu kodu hiçbir değişiklik yapmadan çalıştırmaya devam edebilirsiniz.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>Sürüm 10 ' daki yenilikler
-Azure Search .NET SDK 'nın 10. sürümü, bu güncelleştirmelerle Azure Search REST API (`2019-05-06`) en son genel kullanılabilir sürümünü hedefler:
+Azure Bilişsel Arama .NET SDK 'sının 10. sürümü, bu güncelleştirmelerle REST API (`2019-05-06`) en son genel kullanılabilir sürümünü hedefler:
 
 * İki yeni becerinin tanıtımı- [koşullu yetenek](cognitive-search-skill-conditional.md) ve [metin çeviri yeteneği](cognitive-search-skill-text-translation.md).
 * [Tek tek beceri](cognitive-search-skill-shaper.md) girişleri, iç içe bağlamlardan birleştirmeye uyum sağlayacak şekilde yeniden yapılandırılmış. Daha fazla bilgi için bu [örnek JSON tanımına](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)bakın.
@@ -62,7 +62,7 @@ Azure Search .NET SDK 'nın 10. sürümü, bu güncelleştirmelerle Azure Search
 Sürüm 10 ' da uygulamanızı yeniden oluşturmak için ek olarak kod değişikliği gerektirebilecek birçok önemli değişiklik vardır.
 
 > [!NOTE]
-> Aşağıdaki değişikliklerin listesi ayrıntılı değildir. Bazı değişiklikler büyük olasılıkla derleme hatalarına neden olmaz, ancak Azure Search .NET SDK derlemelerinin önceki sürümlerine bağlı olan Derlemelerle ikili uyumluluğu kestikleri için teknik olarak kıranacaktır. Bu kategori altında yer alan önemli değişiklikler, önerilerle birlikte da listelenir. İkili uyumluluk sorunlarından kaçınmak için lütfen sürüm 10 ' a yükseltirken uygulamanızı yeniden derleyin.
+> Aşağıdaki değişikliklerin listesi ayrıntılı değildir. Bazı değişiklikler büyük olasılıkla derleme hatalarına neden olmaz, ancak Azure Bilişsel Arama .NET SDK derlemelerinin önceki sürümlerine bağlı olan Derlemelerle ikili uyumluluğu kestikleri için teknik olarak kıranacaktır. Bu kategori altında yer alan önemli değişiklikler, önerilerle birlikte da listelenir. İkili uyumluluk sorunlarından kaçınmak için lütfen sürüm 10 ' a yükseltirken uygulamanızı yeniden derleyin.
 
 ### <a name="custom-web-api-skill-definition"></a>Özel Web API 'SI yetenek tanımı
 
@@ -139,7 +139,7 @@ var skillset = new Skillset()
 }
 ```
 
-`SentimentSkill` bir ad `#1`atanır `WebApiSkill` `#2`atanır, `ShaperSkill` atanır.
+`SentimentSkill` bir ad `#1`atanır `WebApiSkill` `#2`atanır, `ShaperSkill` atanır.`#3`
 
 Becerileri özel bir ad ile belirlemeyi seçerseniz, istemcilerinizin tüm örneklerini öncelikle SDK 'nın 10. sürümüne güncelleştirdiğinizden emin olun. Aksi takdirde, SDK 'nın eski bir sürümünü kullanan bir istemcinin bir yeteneğin `Name` özelliğini `null`, istemcinin varsayılan adlandırma düzenine geri dönmesine neden olduğu bir olasılık vardır.
 

@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: ccc418cd3af14c0468ab8d669ad2e2e11a0b6d57
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: fdf9b60e38ad37334fe6183bb1a9c60cce9f85e1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772266"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832068"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS bölgelerine ve kayıtlarına genel bakış
 
@@ -30,7 +30,7 @@ Bu sayfada etki alanları, DNS bölgeleri ve DNS kayıtları ve kayıt kümeleri
 
 Etki Alanı Adı Sistemi, bir etki alanları hiyerarşisidir. Hiyerarşi, adı yalnızca " **.** " olan "kök" etki alanından başlar.  Bunun altında "com", "net", "org", "uk" veya "jp" gibi en üst düzey etki alanları bulunur.  Bunların altında "org.uk" veya "co.jp" gibi ikinci düzey etki alanları bulunur. DNS hiyerarşisindeki etki alanları, dünyanın dört bir yanındaki DNS ad sunucuları tarafından barındırılan küresel olarak dağıtılır.
 
-Etki alanı adı kaydedici, ' contoso.com ' gibi bir etki alanı adı satın almanızı sağlayan bir kuruluştur.  Bir etki alanı adı satın alma, bu ad altında DNS hiyerarşisini denetleme hakkını sağlar, örneğin, www.contoso.com adını şirketinizin Web sitenize yönlendirmenize olanak tanır. Kaydedici, etki alanını sizin adınıza kendi ad sunucularında barındırabilir veya alternatif ad sunucuları belirtmenize izin verebilir.
+Etki alanı adı kaydedici, `contoso.com`gibi bir etki alanı adı satın almanızı sağlayan bir kuruluştur.  Bir etki alanı adı satın alma, bu ad altında DNS hiyerarşisini denetleme hakkını sağlar, örneğin adı `www.contoso.com` şirketinizin Web sitenize yönlendirmenize olanak tanır. Kaydedici, etki alanını sizin adınıza kendi ad sunucularında barındırabilir veya alternatif ad sunucuları belirtmenize izin verebilir.
 
 Azure DNS, etki alanınızı barındırmak için kullanabileceğiniz, küresel olarak dağıtılmış, yüksek kullanılabilirliğe sahip bir ad sunucu altyapısı sağlar. Etki alanlarınızı Azure DNS barındırarak DNS kayıtlarınızı, diğer Azure hizmetlerinizle aynı kimlik bilgileri, API, araç, faturalandırma ve destek ile yönetebilirsiniz.
 
@@ -76,7 +76,7 @@ Bu kısıtlamalar DNS standartlarından oluşur ve Azure DNS kısıtlamalarıdı
 
 ### <a name="ns-records"></a>NS kayıtları
 
-Tepesinde (Name '\@') bölgesindeki NS kaydı, her DNS bölgesi ile otomatik olarak oluşturulur ve bölge silindiğinde otomatik olarak silinir (Ayrıca silinemez).
+Bölge tepesinde (adı '\@') konumundaki NS kaydı, her DNS bölgesiyle otomatik olarak oluşturulur ve bölge silindiğinde otomatik olarak silinir (Ayrıca silinemez).
 
 Bu kayıt kümesi, bölgeye atanan Azure DNS ad sunucularının adlarını içerir. Birden fazla DNS sağlayıcısıyla ortak barındırma etki alanlarını desteklemek için bu NS kayıt kümesine ek ad sunucuları ekleyebilirsiniz. Bu kayıt kümesi için TTL ve meta verileri de değiştirebilirsiniz. Ancak, önceden doldurulmuş Azure DNS adı sunucularını kaldıramaz veya değiştiremezsiniz. 
 
@@ -98,7 +98,7 @@ Bölgede kayıtlar üzerinde değişiklik yapıldığında SOA kaydındaki bölg
 
 [SRV kayıtları](https://en.wikipedia.org/wiki/SRV_record) , çeşitli hizmetler tarafından sunucu konumlarını belirtmek için kullanılır. Azure DNS içinde bir SRV kaydı belirtirken:
 
-* *Hizmet* ve *protokol* , kayıt kümesi adının bir parçası olarak belirtilmelidir, alt çizgi öneki.  Örneğin, '\_SIP.\_ tcp.name '.  Tepesinde bölgesindeki bir kayıt için, kayıt adında '\@' belirtmeniz gerekmez, hizmet ve protokolü kullanmanız yeterlidir, örneğin '\_SIP.\_ TCP '.
+* *Hizmet* ve *protokol* , kayıt kümesi adının bir parçası olarak belirtilmelidir, alt çizgi öneki.  Örneğin, '\_SIP.\_tcp.name '.  Tepesinde bölgesindeki bir kayıt için, kayıt adında '\@' belirtmeniz gerekmez, örneğin '\_SIP gibi hizmet ve protokolü kullanmanız yeterlidir.\_TCP '.
 * *Öncelik*, *Ağırlık*, *bağlantı noktası*ve *hedef* , kayıt kümesindeki her bir kaydın parametresi olarak belirtilir.
 
 ### <a name="txt-records"></a>TXT kayıtları
@@ -113,7 +113,7 @@ Bir DNS kaydındaki birden çok dize, bir TXT kayıt kümesindeki birden çok TX
 
 ## <a name="tags-and-metadata"></a>Etiketler ve meta veriler
 
-### <a name="tags"></a>Tags
+### <a name="tags"></a>Etiketler
 
 Etiketler, ad-değer çiftleri listesidir ve kaynakları etiketlemek için Azure Resource Manager tarafından kullanılır.  Azure Resource Manager, Azure faturanızda Filtrelenmiş görünümleri etkinleştirmek için Etiketler kullanır ve ayrıca etiketlerin gerekli olduğu bir ilke ayarlamanıza olanak sağlar. Etiketler hakkında daha fazla bilgi için bkz. [Etiketleri kullanarak Azure kaynaklarınızı düzenleme](../azure-resource-manager/resource-group-using-tags.md).
 
@@ -133,9 +133,9 @@ Varsayılan olarak, Azure DNS PowerShell, bölgelerde ve kayıt kümelerinde eş
 
 Azure DNS REST API düzeyinde ETags, HTTP üstbilgileri kullanılarak belirtilir.  Davranışları aşağıdaki tabloda verilmiştir:
 
-| Üstbilgi | Davranış |
+| Üst bilgi | Davranış |
 | --- | --- |
-| Yok. |PUT her zaman başarılı olur (ETag denetimi yok) |
+| None |PUT her zaman başarılı olur (ETag denetimi yok) |
 | IF-Match \<ETag > |PUT yalnızca kaynak varsa ve ETag eşleştirmelerinde başarılı olur |
 | IF-Match * |PUT yalnızca kaynak mevcutsa başarılı olur |
 | If-None-Match * |PUT yalnızca kaynak yoksa başarılı olur |

@@ -1,25 +1,25 @@
 ---
-title: Privileged Identity Management Azure AD rolleri Güvenlik Sihirbazı Azure Active Directory | Microsoft Docs
+title: PıM-Azure Active Directory 'de Azure AD rolleri Güvenlik Sihirbazı | Microsoft Docs
 description: Kalıcı ayrıcalıklı Azure AD rol atamalarını Azure AD Privileged Identity Management (PıM) kullanarak uygun hale dönüştürmek için kullanabileceğiniz güvenlik sihirbazını açıklar.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d1c9905047cb4b234bf80ba82f2395f72f67f1
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 04bd0993873568ba7cce368ddd9277ed356b636c
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895213"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847041"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Privileged Identity Management 'de Azure AD rolleri Güvenlik Sihirbazı
 
@@ -37,7 +37,7 @@ Sihirbazın ikinci adımı, size yöneticinin rol atamalarını değiştirme ola
 
 ## <a name="run-the-wizard"></a>Sihirbazı çalıştırma
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın.
 

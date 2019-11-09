@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 4c16953d3c708516edbe0b3c13b091dc3181b187
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 75d1f2b6facd438e329555d8595fe159565dbb74
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465067"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837361"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUSıS uygulaması için DatetimeV2 önceden oluşturulmuş varlık
 
@@ -147,7 +147,7 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 |--|--|
 |Timex|saat, tarih veya tarih aralığı, TIMEX3 için [ıso 8601 standardını](https://en.wikipedia.org/wiki/ISO_8601) Izleyen ve timeml dilini kullanarak ek açıklama için ÖZNITELIKLERINI izleyen TIMEX biçiminde ifade edilir. Bu ek açıklama [TIMEX yönergelerine](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)göre açıklanmıştır.|
 |type|Şu öğelerden biri olabilecek alt tür: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
-|değer|**Seçim.** Yyyy: DD: GG (Tarih), ss: DD: SS (Time) yyyy: DD: DD HH: mm: SS (DateTime) biçiminde bir DateTime nesnesi. `type` `duration`, değer saniye sayısıdır (süre) <br/> Yalnızca `type` `datetime` veya `date`, `time`veya ' süre ise kullanılır.|
+|değer|**Seçim.** Yyyy-aa-gg (Tarih), ss: DD: SS (saat) YYYY-AA-GG SS: DD: SS (DateTime) biçiminde bir DateTime nesnesi. `type` `duration`, değer saniye sayısıdır (süre) <br/> Yalnızca `type` `datetime` veya `date`, `time`veya ' süre ise kullanılır.|
 
 ## <a name="valid-date-values"></a>Geçerli tarih değerleri
 

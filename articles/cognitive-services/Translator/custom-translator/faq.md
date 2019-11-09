@@ -1,7 +1,7 @@
 ---
 title: Sık sorulan sorular-özel çevirici
 titleSuffix: Azure Cognitive Services
-description: Özel çevirici hakkında sık sorulan soruların yanıtlarını sağlar.
+description: Bu makale, Azure bilişsel hizmetler özel çevirmeni hakkında sık sorulan soruların yanıtlarını içerir.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 3dacfc0d8371ad9e8fa66d8bb1c5fafa59271ce0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 97d399f4a8ec704fd90eb6c49f0835be7e9e4537
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388177"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836606"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Özel Translator hakkında sık sorulan sorular
 
@@ -45,10 +45,10 @@ Dağıtılmış sistemlere CategoryID 'yi belirterek Microsoft Translator Metin 
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Verilerim zaten tümce hizalanmışsa hizalama ve tümce Nasıl yaparım? atlayın mi?
 
-Özel çevirmen, TMX dosyaları için tümce hizalamasını ve tümce ve `.align` uzantılı metin dosyalarını atlar. `.align` dosyaları kullanıcılara, kusursuz hizalanmış dosyalar için özel çevirmenin tümce ve hizalama sürecini atlama ve daha fazla işlem olmaması gereken bir seçenek sunar. Yalnızca kusursuz hizalanmış dosyalar için `.align` uzantısını kullanmanızı öneririz.
+Özel çevirmen, TMX dosyaları için tümce hizalamasını ve tümce ve `.align` uzantılı metin dosyalarını atlar. `.align` dosyalar, kullanıcılara, kusursuz hizalanmış dosyalar için özel çevirmenin tümce ve hizalama sürecini atlama ve daha fazla işlem olmaması gereken bir seçenek sunar. Yalnızca kusursuz hizalanmış dosyalar için `.align` uzantısı kullanmanızı öneririz.
 
 Ayıklanan Tümcelerin sayısı aynı temel ada sahip iki dosya ile eşleşmezse, özel çevirici `.align` dosyalarında tümce Aligner ' i yine de çalıştıracaktır.
 
 ## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>TMX sayfamı karşıya yüklemeye çalıştım, ancak "belge işleme başarısız oldu" diyor.
 
-TMX 'in <https://www.gala-global.org/tmx-14b> ' da TMX 1.4 b belirtimine uyduğundan emin olun.
+TMX 'in <https://www.gala-global.org/tmx-14b>' de TMX 1.4 b belirtimine uyduğundan emin olun.

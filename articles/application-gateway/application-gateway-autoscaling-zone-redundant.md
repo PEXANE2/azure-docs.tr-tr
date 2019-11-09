@@ -1,18 +1,18 @@
 ---
 title: Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2
-description: Bu makalede, otomatik ölçeklendirme ve bölgesel olarak yedekli özellikler içeren Azure Application Standard_v2 ve WAF_v2 SKU açıklanır.
+description: Bu makalede, otomatik ölçeklendirme ve bölgesel olarak yedekli özellikler içeren Azure Uygulama Standard_v2 ve WAF_v2 SKU açıklanır.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 3b552d37ce176e76bc0a4230a24a910543e5ea0d
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 8f3a732d5d6128ff38f81f715113e87710b11c47
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965114"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847265"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -20,7 +20,7 @@ Application Gateway ve Web uygulaması güvenlik duvarı (WAF), bir Standard_v2 
 
 Yeni v2 SKU 'SU aşağıdaki geliştirmeleri içerir:
 
-- **Otomatik ölçeklendirme**: otomatik ölçeklendirme SKU 'su altındaki Application Gateway veya WAF dağıtımları, değişen trafik yükü desenlerine göre ölçeği değiştirebilir veya azaltabilirsiniz. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Bu SKU, doğru esneklik sunar. Standard_v2 ve WAF_v2 SKU 'sunda, Application Gateway her ikisini de sabit kapasitede (otomatik ölçeklendirme devre dışı) ve otomatik ölçeklendirme etkin modunda çalıştırabilirsiniz. Sabit kapasite modu, tutarlı ve öngörülebilir iş yüklerine sahip senaryolar için faydalıdır. Otomatik ölçeklendirme modu, uygulama trafiğinden varyansı gösteren uygulamalarda faydalıdır.
+- **Otomatik ölçeklendirme**: otomatik ölçeklendirme SKU 'su altındaki Application Gateway veya WAF dağıtımları, değişen trafik yükü desenlerine göre ölçeği değiştirebilir veya azaltabilirsiniz. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Bu SKU, doğru esneklik sunar. Standard_v2 ve WAF_v2 SKU 'sunda Application Gateway, her ikisi de sabit kapasitede (otomatik ölçeklendirme devre dışı) ve otomatik ölçeklendirme etkinleştirilmiş modda işleyebilir. Sabit kapasite modu, tutarlı ve öngörülebilir iş yüklerine sahip senaryolar için faydalıdır. Otomatik ölçeklendirme modu, uygulama trafiğinden varyansı gösteren uygulamalarda faydalıdır.
 - **Bölge artıklığı**: bir Application Gateway veya WAF dağıtımı birden fazla kullanılabilirlik alanları yayılabilir, her Traffic Manager bölgede ayrı Application Gateway örneklerinin sağlanması gereksinimini ortadan kaldırabilir. Application Gateway örneklerinin dağıtıldığı tek bir bölge veya birden çok bölge seçebilirsiniz. Bu, bölge hatasına daha dayanıklı hale gelir. Uygulamalar için arka uç havuzu, kullanılabilirlik alanları arasında benzer şekilde dağıtılabilir.
 
   Bölge yedekliliği yalnızca Azure bölgelerinin kullanılabildiği durumlarda kullanılabilir. Diğer bölgelerde, diğer tüm özellikler desteklenir. Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik alanları nedir?](../availability-zones/az-overview.md#services-support-by-region)
@@ -49,7 +49,7 @@ Her kapasite birimi en çok: 1 işlem birimi veya 2500 kalıcı bağlantı ya da
 İşlem birimi Kılavuzu:
 
 - **Standard_v2** -her işlem BIRIMI, RSA 2048 BIT anahtar TLS sertifikası ile saniyede yaklaşık 50 bağlantı kapasitesine sahiptir.
-- **WAF_v2** -her bir işlem birimi,% 70-30 oranında trafik karması için saniyede yaklaşık 10 eşzamanlı isteği destekleyebilir. 2 KB 'tan daha az %70 WAF performansı şu anda yanıt boyutundan etkilenmez.
+- **WAF_v2** -her işlem birimi,% 70-30 oranında 70 trafik karması için saniyede yaklaşık 10 eşzamanlı isteği destekleyebilir. WAF performansı şu anda yanıt boyutundan etkilenmez.
 
 > [!NOTE]
 > Her örnek şu anda yaklaşık 10 kapasite birimini destekleyebilir.
@@ -77,7 +77,7 @@ Toplam Fiyat = $148,8 + $297,6 = $446,4
 
 **Örnek 2**
 
-Bir Application Gateway standard_v2, 0 minimum örnek ve bu süre boyunca 25 yeni SSL bağlantısı/sn, ortalama 8,88 Mbps veri aktarımı alır. Bağlantıların kısa süreli olduğu varsayıldığında, fiyatınızın şöyle olması gerekir:
+Bir Application Gateway standard_v2, sıfır minimum örnek ve bu süre boyunca 25 yeni SSL bağlantısı/sn, ortalama 8,88 Mbps veri aktarımı alır. Bağlantıların kısa süreli olduğu varsayıldığında, fiyatınızın şöyle olması gerekir:
 
 Sabit fiyat = (saat) * $0,20 = $148,8
 
@@ -85,7 +85,7 @@ Kapasite birim fiyatı = ünle (saatler) * en fazla (25/50 bağlantı için işl
 
 Toplam Fiyat = $148.8 + 23.81 = $172,61
 
-Gördüğünüz gibi, tüm örnek için değil yalnızca 4 Kapasite birimi için faturalandırılırsınız. 
+Gördüğünüz gibi, tüm örnek için değil yalnızca dört Kapasite birimi için faturalandırılırsınız. 
 
 > [!NOTE]
 > Max işlevi, bir değer çiftindeki en büyük değeri döndürür.
@@ -93,7 +93,7 @@ Gördüğünüz gibi, tüm örnek için değil yalnızca 4 Kapasite birimi için
 
 **Örnek 3**
 
-Bir Application Gateway standard_v2, en az 5 örnek içeren bir ayda sağlanır. Hiçbir trafik ve bağlantının kısa süreli olduğunu varsayarsak, fiyatınızın şöyle olması gerekir:
+Bir Application Gateway standard_v2, en az beş örnek içeren bir ayda sağlanır. Hiçbir trafik ve bağlantının kısa süreli olduğunu varsayarsak, fiyatınızın şöyle olması gerekir:
 
 Sabit fiyat = (saat) * $0,20 = $148,8
 
@@ -101,11 +101,11 @@ Kapasite birim fiyatı = ünle (saatler) * en fazla (0/50 bağlantı için işle
 
 Toplam Fiyat = $148.80 + 297.60 = $446,4
 
-Bu durumda, hiçbir trafik olmasa dahi 5 örnek için faturalandırılırsınız.
+Bu durumda, hiçbir trafik olmasa bile beş örnek tümüyle faturalandırılırsınız.
 
 **Örnek 4**
 
-Bir Application Gateway standard_v2, en az 5 örnek içeren bir ayda sağlanır, ancak bu kez ortalama 125 Mbps veri aktarımı ve saniyede 25 SSL bağlantısı vardır. Hiçbir trafik ve bağlantının kısa süreli olduğunu varsayarsak, fiyatınızın şöyle olması gerekir:
+Bir Application Gateway standard_v2 en az beş örnek içeren bir ayda sağlanır, ancak bu kez ortalama 125 Mbps veri aktarımı ve saniye başına 25 SSL bağlantısı vardır. Hiçbir trafik ve bağlantının kısa süreli olduğunu varsayarsak, fiyatınızın şöyle olması gerekir:
 
 Sabit fiyat = (saat) * $0,20 = $148,8
 
@@ -113,7 +113,7 @@ Kapasite birim fiyatı = ünle (saatler) * en fazla (25/50 bağlantı için işl
 
 Toplam Fiyat = $148.80 + 339.26 = $488,06
 
-Bu durumda, tam 5 örnek, artı 7 Kapasite birimi (örneğin 7/10) için faturalandırılırsınız.  
+Bu durumda, tam beş örnek ve yedi Kapasite birimi (örneğin 7/10) için faturalandırılırsınız.  
 
 **Örnek 5**
 
@@ -132,7 +132,7 @@ Toplam Fiyat = $267,84 + $85,71 = $353,55
 
 Application Gateway ve WAF, iki modda ölçeklenebilen şekilde yapılandırılabilir:
 
-- **Otomatik ölçeklendirme** -otomatik ölçeklendirme etkinken, Application Gateway ve WAF v2 SKU 'larının uygulama trafiği gereksinimlerine göre ölçeği artırma veya azaltma. Bu mod, uygulamanız için daha iyi esneklik sunar ve uygulama ağ geçidi boyutunu veya örnek sayısını tahmin etme gereksinimini ortadan kaldırır. Bu mod ayrıca, ağ geçidinin beklenen maksimum trafik yükü için en yüksek sağlanan kapasiteye çalışmasına gerek duymadan maliyeti kaydetmenizi sağlar. En az ve isteğe bağlı olarak en büyük örnek sayısını belirtmeniz gerekir. En düşük kapasite, Application Gateway ve WAF v2 'nin, trafik yokluğunda bile belirtilen minimum örnek sayısının altına düşmemesini sağlar. Her örnek 10 ek ayrılmış Kapasite birimi olarak sayılır. 0, ayrılmış kapasite olmadığını ve doğası içinde tamamen otomatik ölçeklendirmeyi belirtir. Lütfen 0 ek minimum örnek, her zaman sabit fiyata dahil edilen hizmetin yüksek kullanılabilirliğe sahip olduğundan emin olun. İsteğe bağlı olarak, Application Gateway belirtilen örnek sayısını aşmamasını sağlayan en büyük örnek sayısını belirtebilirsiniz. Ağ Geçidi tarafından hizmet verilen trafik miktarı için faturalandırılmaya devam edeceksiniz. Örnek sayıları 0 ile 125 arasında değişebilir. En fazla örnek sayısı için varsayılan değer, belirtilmemişse 20 ' dir.
+- **Otomatik ölçeklendirme** -otomatik ölçeklendirme etkinken, Application Gateway ve WAF v2 SKU 'larının uygulama trafiği gereksinimlerine göre ölçeği artırma veya azaltma. Bu mod, uygulamanız için daha iyi esneklik sunar ve uygulama ağ geçidi boyutunu veya örnek sayısını tahmin etme gereksinimini ortadan kaldırır. Bu mod ayrıca, ağ geçidinin beklenen maksimum trafik yükü için en yüksek sağlanan kapasiteye çalışmasına gerek duymadan maliyeti kaydetmenizi sağlar. En az ve isteğe bağlı olarak en büyük örnek sayısını belirtmeniz gerekir. En düşük kapasite, Application Gateway ve WAF v2 'nin, trafik yokluğunda bile belirtilen minimum örnek sayısının altına düşmemesini sağlar. Her örnek 10 ek ayrılmış Kapasite birimi olarak sayılır. Sıfır, ayrılmış kapasite olmadığını belirtir ve doğası halinde tamamen otomatik ölçeklendirin. Lütfen sıfır ek minimum örnek, her zaman sabit fiyata dahil edilen hizmetin yüksek kullanılabilirliğe sahip olduğundan emin olun. İsteğe bağlı olarak, Application Gateway belirtilen örnek sayısını aşmamasını sağlayan en büyük örnek sayısını belirtebilirsiniz. Ağ Geçidi tarafından hizmet verilen trafik miktarı için faturalandırılmaya devam edeceksiniz. Örnek sayıları 0 ile 125 arasında değişebilir. En fazla örnek sayısı için varsayılan değer, belirtilmemişse 20 ' dir.
 - **El ile** -ağ geçidinin otomatik ölçeklendirme Meyeceği el ile modunu seçebilirsiniz. Bu modda, Application Gateway veya WAF 'nin işleyebileceğinden daha fazla trafik varsa, bu durum trafik kaybına neden olabilir. El ile moduyla, örnek sayısını belirtmek zorunludur. Örnek sayısı 1 ile 125 arasında örnek farklılık gösterebilir.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>V1 SKU 'SU ve v2 SKU 'SU arasındaki Özellik Karşılaştırması
@@ -150,7 +150,8 @@ Aşağıdaki tabloda, her SKU ile kullanılabilen özellikler karşılaştırıl
 | URL tabanlı yönlendirme                                 | &#x2713; | &#x2713; |
 | Birden çok site barındırma                             | &#x2713; | &#x2713; |
 | Trafiği yeniden yönlendirme                               | &#x2713; | &#x2713; |
-| Web uygulaması güvenlik duvarı (WAF)                    | &#x2713; | &#x2713; |
+| Web Uygulaması Güvenlik Duvarı (WAF)                    | &#x2713; | &#x2713; |
+| WAF özel kuralları                                  |          | &#x2713; |
 | Güvenli Yuva Katmanı (SSL) sonlandırma            | &#x2713; | &#x2713; |
 | Uçtan uca SSL şifrelemesi                         | &#x2713; | &#x2713; |
 | Oturum benzeşimi                                  | &#x2713; | &#x2713; |

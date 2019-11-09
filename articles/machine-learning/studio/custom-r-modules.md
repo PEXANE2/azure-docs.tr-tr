@@ -1,6 +1,6 @@
 ---
 title: Özel R modülleri tanımlama
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Bu konu başlığı altında, özel bir R Studio (klasik) yazmak ve dağıtmak açıklanmaktadır. Özel R modüllerinin ne olduğunu ve bunları tanımlamak için hangi dosyaların kullanılacağını açıklar.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: dba1b092d9a12f189ce7b4a207c362cad2bf8858
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 6c81cd927ac26779cab042d1d4e54f2e8c02918c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619489"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838872"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için özel R modülleri tanımlama (klasik)
 
@@ -283,7 +283,7 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
   
   * **allowedtypes** -seçebileceğiniz sütun türlerini filtreler. Geçerli değerler şunlardır: 
     
-    * rakamlardan
+    * Rakamlardan
     * Boole
     * Kategorik
     * Dize

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: absha
-ms.openlocfilehash: 4b233117bc0f967368aeac7baec8c4875aa16826
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: ef2bbf8804e96a3e25f053d189c6d85bfa845b0b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051429"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833186"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway App Service sorunlarını giderme
 
@@ -39,10 +39,10 @@ Ayrıca, uygulama hizmetlerini bir uygulama ağ geçidinin arkasında kullandı�
 
 ## <a name="sample-configuration"></a>Örnek yapılandırma
 
-- HTTP dinleyicisi: Temel veya çok siteli
+- HTTP dinleyicisi: temel veya çok siteli
 - Arka uç adres havuzu: App Service
-- HTTP ayarları: **Arka uç adresinden konak adını seçin** etkin
-- Yokla **Http ayarlarından ana bilgisayar adı Seç** etkin
+- HTTP ayarları: **arka uç adresinden ana bilgisayar adı seçin** etkin
+- Araştırma: **http ayarlarından ana bilgisayar adı seçin**
 
 ## <a name="cause"></a>Nedeni
 
@@ -76,16 +76,16 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-Önceki örnekte, Yanıt üstbilgisinin yeniden yönlendirme için 301 durum koduna sahip olduğuna dikkat edin. Konum üst bilgisi, www.contoso.com özgün ana bilgisayar adı yerine App Service 'in ana bilgisayar adına sahiptir.
+Önceki örnekte, Yanıt üstbilgisinin yeniden yönlendirme için 301 durum koduna sahip olduğuna dikkat edin. Konum üst bilgisi, `www.contoso.com`özgün ana bilgisayar adı yerine App Service 'in ana bilgisayar adına sahiptir.
 
-## <a name="solution-rewrite-the-location-header"></a>Çözümden Konum başlığını yeniden yazın
+## <a name="solution-rewrite-the-location-header"></a>Çözüm: konum başlığını yeniden yazın
 
 Konum üstbilgisindeki ana bilgisayar adını Application Gateway 'in etki alanı adına ayarlayın. Bunu yapmak için, yanıttaki konum üstbilgisinin azurewebsites.net içerdiğini değerlendiren bir koşula sahip bir [yeniden yazma kuralı](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) oluşturun. Ayrıca, uygulama ağ geçidinin ana bilgisayar adına sahip olacak şekilde konum başlığını yeniden yazmak için bir eylem gerçekleştirmelidir. Daha fazla bilgi için bkz. [konum üst bilgisini yeniden yazma](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)yönergeleri.
 
 > [!NOTE]
 > HTTP üst bilgisi yeniden yazma desteği yalnızca Application Gateway [Standard_v2 ve WAF_v2 SKU 'su](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) için kullanılabilir. V1 SKU 'SU kullanıyorsanız [v1 'den v2 'ye geçiş](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2)yapmanızı öneririz. V2 SKU 'SU ile kullanılabilen yeniden yazma ve diğer [Gelişmiş özellikleri](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) kullanmak istiyorsunuz.
 
-## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternatif çözüm: Özel bir etki alanı adı kullanın
+## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternatif çözüm: özel bir etki alanı adı kullanın
 
 V1 SKU 'SU kullanıyorsanız, konum üst bilgisini yeniden yazabilirsiniz. Bu özellik yalnızca v2 SKU 'SU için kullanılabilir. Yeniden yönlendirme sorununu çözmek için, uygulama ağ geçidinin aynı ana bilgisayar adını da App Service 'e geçirin, bunun yerine bir konak geçersiz kılma işlemi yapın.
 
@@ -97,9 +97,9 @@ App Service artık uygulama ağ geçidine işaret eden aynı orijinal ana bilgis
 
     ![App Service özel etki alanı listesi](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- App Service, www.contoso.com ana bilgisayar adını kabul etmeye hazırlanıyor. DNS 'de CNAME girdinizi, uygulama ağ geçidinin FQDN 'sine geri işaret etmek için değiştirin, örneğin, appgw.eastus.cloudapp.azure.com.
+- Uygulama hizmetiniz `www.contoso.com`ana bilgisayar adını kabul etmeye hazırlanıyor. DNS 'de CNAME girdinizi, uygulama ağ geçidinin FQDN 'sine geri işaret etmek için değiştirin, örneğin, `appgw.eastus.cloudapp.azure.com`.
 
-- DNS sorgusu yaptığınızda etki alanı www.contoso.com 'nin uygulama ağ geçidinin FQDN 'sine çözümlendiğinden emin olun.
+- DNS sorgusu yaptığınızda etki alanı `www.contoso.com` uygulama ağ geçidinin FQDN 'sine çözümlendiğinden emin olun.
 
 - Özel araştırmasını **arka uç http ayarlarından seçim ana bilgisayar adını**devre dışı bırakacak şekilde ayarlayın. Azure portal, araştırma ayarlarındaki onay kutusunun işaretini kaldırın. PowerShell 'de, **set-AzApplicationGatewayProbeConfig** komutunda **-pickhostnamefrombackendhttpsettings** anahtarını kullanmayın. Araştırmanın konak adı alanında App Service 'in FQDN 'SI olan example.azurewebsites.net girin. Application Gateway 'den gönderilen araştırma istekleri bu FQDN 'yi konak üstbilgisine taşır.
 
@@ -110,7 +110,7 @@ App Service artık uygulama ağ geçidine işaret eden aynı orijinal ana bilgis
 
 - Özel araştırmayı arka uç HTTP ayarlarına geri ilişkilendirin ve arka ucun sağlıklı olduğunu doğrulayın.
 
-- Uygulama ağ geçidinin artık aynı ana bilgisayar adını App Service 'e iletmesi gerekir www.contoso.com. Yeniden yönlendirme aynı ana bilgisayar adı üzerinde gerçekleşir. Aşağıdaki örnek istek ve yanıt üst bilgilerini denetleyin.
+- Uygulama ağ geçidi artık aynı ana bilgisayar adını App Service 'e `www.contoso.com`iletmelidir. Yeniden yönlendirme aynı ana bilgisayar adı üzerinde gerçekleşir. Aşağıdaki örnek istek ve yanıt üst bilgilerini denetleyin.
 
 Mevcut bir kurulum için PowerShell 'i kullanarak önceki adımları uygulamak için aşağıdaki örnek PowerShell betiğini kullanın. Araştırma ve HTTP ayarları yapılandırmasındaki **-pickhostname** anahtarlarını nasıl kullandığımızda aklınızda olduğunu öğrenin.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: afbf77014ece981568d4123db7820a2fa0a8f60d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: e1b513344b6ea16c25d829939e64cd5ca1063c87
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749117"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838901"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager şablonundaki sanal makineler
 
@@ -282,7 +282,7 @@ Bu özelliği ayarlamak için, ağ arabiriminin mevcut olması gerekir. Bu neden
 Bir sanal makine kaynağı tanımlarken çeşitli profil öğeleri kullanılır. Bazıları gereklidir ve bazıları isteğe bağlıdır. Örneğin, hardwareProfile, osProfile, storageProfile ve networkProfile öğeleri gereklidir, ancak diagnosticsProfile isteğe bağlıdır. Bu profiller gibi ayarları tanımlar:
    
 - [boyutla](sizes.md)
-- [ad](/azure/architecture/best-practices/naming-conventions) ve kimlik bilgileri
+- [ad](/azure/architecture/best-practices/resource-naming) ve kimlik bilgileri
 - disk ve [işletim sistemi ayarları](cli-ps-findimage.md)
 - [Ağ arabirimi](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - önyükleme tanılaması

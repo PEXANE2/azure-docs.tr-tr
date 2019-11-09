@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: c5a07d8b52e83215b2fdc220d76557ca45e1eae9
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: e2f1747b8ae98ce53ce570422044a2f172c1a526
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286021"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834471"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma
 
@@ -37,9 +37,11 @@ Bir **aboneliğe**dağıtmak için [az Deployment Create](/cli/azure/deployment?
 az deployment create --location <location> --template-file <path-to-template>
 ```
 
-Şu anda yönetim grubu dağıtımları yalnızca REST API aracılığıyla desteklenir. Bkz. [Kaynak Yöneticisi şablonları ve Kaynak Yöneticisi REST API ile kaynak dağıtma](resource-group-template-deploy-rest.md).
+Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
 
-Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır. Abonelik dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
+Şu anda yönetim grubu dağıtımları yalnızca REST API aracılığıyla desteklenir. Yönetim grubu düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [Yönetim grubu düzeyinde kaynak oluşturma](deploy-to-management-group.md).
+
+Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
 
 ## <a name="deploy-local-template"></a>Yerel şablon dağıt
 
@@ -102,7 +104,7 @@ Parametre değerlerini geçirmek için satır içi parametreleri ya da bir param
 
 ### <a name="inline-parameters"></a>Satır içi parametreler
 
-Satır içi parametreleri geçirmek için `parameters` ' daki değerleri sağlayın. Örneğin, bir dizeye dize ve dizi geçirmek bir bash kabuğudur, şunu kullanın:
+Satır içi parametreleri geçirmek için `parameters`değerleri girin. Örneğin, bir dizeye dize ve dizi geçirmek bir bash kabuğudur, şunu kullanın:
 
 ```azurecli
 az group deployment create \
@@ -139,7 +141,7 @@ Komut dosyanıza satır içi değer olarak parametre geçirmek yerine, parametre
 
 Parametre dosyası hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi parametre dosyası oluşturma](resource-manager-parameter-files.md).
 
-Yerel bir parametre dosyasını geçirmek için, `@` kullanarak Storage. Parameters. JSON adlı yerel bir dosya belirtin.
+Yerel bir parametre dosyasını geçirmek için `@` kullanarak Storage. Parameters. JSON adlı yerel bir dosya belirtin.
 
 ```azurecli-interactive
 az group deployment create \
@@ -151,7 +153,7 @@ az group deployment create \
 
 ## <a name="handle-extended-json-format"></a>Genişletilmiş JSON biçimini işle
 
-Çok satırlı dizeler veya açıklamalarla bir şablon dağıtmak için `--handle-extended-json-format` anahtarını kullanmanız gerekir.  Örnek:
+Çok satırlı dizeler veya açıklamalarla bir şablon dağıtmak için `--handle-extended-json-format` anahtarını kullanmanız gerekir.  Örneğin:
 
 ```json
 {

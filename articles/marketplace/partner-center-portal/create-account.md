@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 09/26/2019
-ms.openlocfilehash: 072fafac7294757afb26511af569ea75ace0d20a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811925"
+ms.locfileid: "73838752"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 
@@ -137,7 +137,7 @@ Oturum açtıktan sonra, hesabınızı ayarlamayı tamamladıktan sonra aşağı
 
 1. İş Ortağı Merkezi ' nden **ayarlar** > **Geliştirici ayarları** > **Programlar** ' > **kullanmaya**başlayın ' ı seçin ve iş e-posta adresinizi girin.
 2. Yayımcı profili sayfasındaki ayrıntıları doldurun.
-3. [Microsoft Market yayımcı anlaşmasındaki](http://go.microsoft.com/fwlink/?LinkID=699560)hüküm ve koşulları okuyun ve ardından **kabul et '** i seçin ve kayıt bilgilerinizi tamamlamaya devam edin.
+3. [Microsoft Market yayımcı anlaşmasındaki](https://go.microsoft.com/fwlink/?LinkID=699560)hüküm ve koşulları okuyun ve ardından **kabul et '** i seçin ve kayıt bilgilerinizi tamamlamaya devam edin.
 
     >[!Important]
     >*Bu koşulları kabul etmek için şirketinizin adına işlem yapmaya yetkiniz olmalıdır.*

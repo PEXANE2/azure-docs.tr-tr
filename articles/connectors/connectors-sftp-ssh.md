@@ -10,12 +10,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: a48ba0d2d691314a1ca7c91ac7ae27b62fbb379b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f52fc91d218e1a5448f6e6e7465f6416a04fd67d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825234"
+ms.locfileid: "73837145"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -49,7 +49,9 @@ SFTP-SSH Bağlayıcısı ile SFTP-SSH bağlayıcısının bu yeteneklere sahip o
 
 * , .NET 'i destekleyen bir açık kaynaklı Secure Shell (SSH) kitaplığı olan [SSH.net kitaplığını](https://github.com/sshnet/SSH.NET)kullanır.
 
-* Varsayılan olarak, SFTP-SSH eylemleri, *1 GB veya daha küçük* olan, ancak aynı anda yalnızca *15 MB* öbekteki dosyaları okuyabilir veya yazabilir. 15 MB 'tan büyük dosyaları işlemek için SFTP-SSH eylemleri [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)kullanabilir. Büyük dosyaları karşıya yüklemek için hem okuma hem de yazma izinlerine sahip olmanız gerekir. Ancak, bu eylem ileti parçalama işlemini desteklemediğinden, Dosya Kopyala eylemi yalnızca 15 MB dosyayı destekler. SFTP-SSH Tetikleyicileri parçalama desteklemez.
+* Varsayılan olarak, SFTP-SSH eylemleri, *1 GB veya daha küçük* olan, ancak aynı anda yalnızca *15 MB* öbekteki dosyaları okuyabilir veya yazabilir.
+
+  15 MB 'tan büyük dosyaları işlemek için SFTP-SSH eylemleri [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)kullanabilir. Ancak, bu eylem ileti parçalama işlemini desteklemediğinden, Dosya Kopyala eylemi yalnızca 15 MB dosyayı destekler. SFTP-SSH Tetikleyicileri parçalama desteklemez. Büyük dosyaları karşıya yüklemek için SFTP sunucunuzdaki kök klasör için hem okuma hem de yazma izinlerine sahip olmanız gerekir.
 
 * SFTP sunucusundaki belirtilen yolda bir klasör oluşturan **klasör oluştur** eylemini sağlar.
 
@@ -61,7 +63,7 @@ SFTP-SSH Bağlayıcısı ile SFTP-SSH bağlayıcısının bu yeteneklere sahip o
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* SFTP sunucunuzun adresi ve hesap kimlik bilgileriniz, mantıksal uygulamanızın SFTP hesabınıza erişmesine izin verir. Ayrıca SSH özel anahtarına ve SSH özel anahtar parolasına erişmeniz gerekir. Büyük dosyaları karşıya yüklerken parçalama kullanmak için hem okuma hem de yazma izinlerine sahip olmanız gerekir.
+* SFTP sunucunuzun adresi ve hesap kimlik bilgileriniz, mantıksal uygulamanızın SFTP hesabınıza erişmesine izin verir. Ayrıca SSH özel anahtarına ve SSH özel anahtar parolasına erişmeniz gerekir. Büyük dosyaları karşıya yüklerken parçalama kullanmak için SFTP sunucunuzdaki kök klasör için hem okuma hem de yazma izinlerine sahip olmanız gerekir. Aksi takdirde, bir "401 Yetkisiz" hatası alırsınız.
 
   > [!IMPORTANT]
   >

@@ -5,21 +5,22 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e7de815b7254fb071b3094f9ae636b712b38684b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 7a85ed93d9ee01255d809cce84ebe24e6c3f71d1
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797692"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847406"
 ---
 # <a name="sensor-partner-integration"></a>Algılayıcı iş ortağı tümleştirmesi
-Bu makalede, Azure Farmtts **Translator** bileşeni hakkında bilgi sağlanır.
+
+Bu makalede, algılayıcı iş ortağı tümleştirmesini sağlayan Azure Farmtts **Translator** bileşeni hakkında bilgi sağlanır.
 
 İş ortakları, bu bileşeni kullanarak, API 'imizi kullanarak ve müşteri cihaz verilerini ve telemetri 'i Farmtts veri merkezine göndererek, planlayıcıları ile tümleştirilen sensörler geliştirebilir. Veriler, Farmtts Hızlandırıcısı kullanılarak görselleştirilir. Veriler Fusion için ve makine dili/yapay zeka modelleri oluşturmak için kullanılabilir.
 
 ## <a name="link-farmbeats-account"></a>Farmtts hesabını bağla
 
-Müşteriler cihazlar/algılayıcılar satın aldıktan ve dağıttığından sonra cihaz iş ortaklarının SaaS portalındaki (hizmet olarak yazılım) cihaz verilerine ve telemetrisine erişebilirler. Cihaz iş ortaklarının, müşterilerin hesabını Azure 'daki Farmtts örneğine bağlantı kurmasını sağlamak için ihtiyacı vardır. Müşteri/sı tarafından doldurulması için aşağıdaki kimlik bilgileri gereklidir:
+Müşteriler cihazlar/algılayıcılar satın aldıktan ve dağıttığından sonra cihaz iş ortaklarının SaaS portalındaki (hizmet olarak yazılım) cihaz verilerine ve telemetrisine erişebilirler. Cihaz iş ortaklarının, müşterilerin hesabını Azure 'daki Farmtts örneğine bağlantı kurmasını sağlamak için ihtiyacı vardır. Müşteri/sistem tümleştiricisi tarafından doldurulması için aşağıdaki kimlik bilgileri gereklidir:
 
    - Görünen ad (kullanıcının bu tümleştirme için bir ad tanımlayabilmeniz için isteğe bağlı bir alan)
    - API uç noktası
@@ -41,14 +42,11 @@ Müşteriler var olan bir Farmtts tümleştirmesinin bağlantısını kaldırabi
 
 ## <a name="edit-farmbeats-integration"></a>Farmtts tümleştirmesini Düzenle
 
-Müşteri, Farmtts tümleştirmesini düzenleyebilir. Düzenleme için birincil senaryo, istemci sırrı veya bağlantı dizesinin süre sonu nedeniyle değiştiği durumdur, bu durumda müşteri yalnızca aşağıdaki alanları düzenleyebilir.
+İstemci gizli dizisi veya bağlantı dizesi değişirse, müşteri, Farmtts tümleştirme ayarlarını düzenleyebilir. Bu durumda, müşteri yalnızca aşağıdaki alanları düzenleyebilir:
 
    - Görünen ad (varsa)
    - İstemci parolası ("2x8 * * * * * * * * * * *" biçiminde veya şifresiz metin yerine gösterme/gizleme özelliğinde görüntülenmelidir)
    - Bağlantı dizesi ("2x8 * * * * * * * * * * *" biçiminde veya şifresiz metin yerine gösterme/gizleme özelliğinde görüntülenmelidir)
-
-   > [!NOTE]
-   > Düzenle, meta veri nesnelerinin oluşturulmasını kesintiye uğratmamalıdır.
 
 ## <a name="view-last-telemetry-sent"></a>Gönderilen son Telemetriyi görüntüle
 
@@ -165,7 +163,7 @@ Donanım kimliği   |Cihazın MAC adresi vb. gibi benzersiz KIMLIĞI.  |
 Reportingınterval |Saniye cinsinden raporlama aralığı |
 Konum    |Cihaz Latitude (-90 ila + 90)/Boylam (-180 ila 180)/yükseltme (metre) |
 Parentdeviceıd | Bu cihazın bağlandığı ana cihazın KIMLIĞI. Örneğin,. Ağ geçidine bağlı bir düğüm; düğüm, ağ geçidi olarak Parentdeviceıd 'ye sahip olacaktır |
-  Ad  | Kaynağı tanımlamak için ad.  Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz Iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır  |
+  Ad  | Kaynağı tanımlamak için ad.  Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır  |
   Açıklama  | Anlamlı bir açıklama sağlayın  |
   Özellikler  |Üreticiden ek özellikler  |
   **Algılayıcı modeli** | SensorModel, üretici, bir algılayıcı türü olan analog veya dijital, ortam sıcaklık, basınç vb. gibi algılayıcı meta verilerine karşılık gelir. |
@@ -192,7 +190,7 @@ Parentdeviceıd | Bu cihazın bağlandığı ana cihazın KIMLIĞI. Örneğin,. 
   açıklama  | Anlamlı bir açıklama sağlayın
   properties  | Üreticiden ek özellikler
 
- Nesnelerin ve özelliklerinin her biri hakkında bilgi için bkz. [Swagger](httpa://aka.ms/FarmBeatsDatahubSwagger).
+ Nesnelerin ve özelliklerinin her biri hakkında bilgi için bkz. [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
  > [!NOTE]
  > API 'Ler oluşturulan her örnek için benzersiz kimlikler döndürür. Bu KIMLIğIN cihaz yönetimi ve meta veri eşitleme çevirmeni tarafından korunması gerekir.

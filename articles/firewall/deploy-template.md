@@ -1,73 +1,73 @@
 ---
-title: Azure bir şablon kullanarak Güvenlik Duvarı'nı dağıtma
-description: Azure bir şablon kullanarak Güvenlik Duvarı'nı dağıtma
+title: Şablon kullanarak Azure Güvenlik Duvarı dağıtma
+description: Şablon kullanarak Azure Güvenlik Duvarı dağıtma
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
 ms.date: 7/9/2018
 ms.author: victorh
-ms.openlocfilehash: b39174152e427e408e7dfbbc353baf5f96ec7c01
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: c0a6cda54a58e3cc03ba31e221fb57fc725dd779
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657085"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839381"
 ---
-# <a name="deploy-azure-firewall-using-a-template"></a>Azure bir şablon kullanarak Güvenlik Duvarı'nı dağıtma
+# <a name="deploy-azure-firewall-using-a-template"></a>Şablon kullanarak Azure Güvenlik Duvarı dağıtma
 
-[Oluşturma AzureFirewall korumalı alan kurulum şablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox) ağ ortamı testi ile bir güvenlik duvarı oluşturur. Bir sanal ağ (VNet) ile üç alt ağ vardır: *AzureFirewallSubnet*, *ServersSubnet*, ve *JumpboxSubnet*. *ServersSubnet* ve *JumpboxSubnet* her alt ağa sahip bir tek, iki çekirdekli Windows Server sanal makinesi.
+[Create AzureFirewall Sandbox kurulum şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox) , güvenlik duvarıyla bir test ağı ortamı oluşturur. Ağda üç alt ağa sahip bir sanal ağ (VNet) vardır: *AzureFirewallSubnet*, *Serverssubnet*ve *jumpboxsubnet*. *Serverssubnet* ve *jumpboxsubnet* alt ağı her birinin tek, Iki çekirdekli bir Windows Server sanal makinesi vardır.
 
-Güvenlik Duvarı yer *AzureFirewallSubnet* alt ağ ve bir uygulama kuralı koleksiyonu erişimine izin veren tek bir kural *www.microsoft.com*.
+Güvenlik Duvarı *AzureFirewallSubnet* alt ağıdır ve `www.microsoft.com`erişimine izin veren tek bir kuralla bir uygulama kuralı koleksiyonuna sahiptir.
 
-Kullanıcı tanımlı bir yol, gelen ağ trafiğini işaret *ServersSubnet* alt ağ ve güvenlik duvarında burada güvenlik duvarı kuralları uygulanır.
+Kullanıcı tanımlı bir yol, Güvenlik Duvarı kurallarının uygulandığı güvenlik duvarı aracılığıyla *Serverssubnet* alt ağından gelen ağ trafiğini gösterir.
 
-Azure Güvenlik Duvarı hakkında daha fazla bilgi için bkz: [dağıtma ve Azure Azure portalını kullanarak güvenlik duvarı yapılandırma](tutorial-firewall-deploy-portal.md).
+Azure Güvenlik Duvarı hakkında daha fazla bilgi için bkz. [Azure Güvenlik duvarını Azure Portal kullanarak dağıtma ve yapılandırma](tutorial-firewall-deploy-portal.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="use-the-template-to-deploy-azure-firewall"></a>Azure güvenlik duvarı dağıtmak için şablonu kullanın
+## <a name="use-the-template-to-deploy-azure-firewall"></a>Azure Güvenlik Duvarı 'Nı dağıtmak için şablonu kullanma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-**Yükleme ve şablon kullanarak Azure güvenlik duvarı dağıtma hakkında bilgi için:**
+**Şablonu kullanarak Azure Güvenlik Duvarı 'Nı yüklemek ve dağıtmak için:**
 
-1. Şablon erişim [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox).
+1. [https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox)konumundaki şablona erişin.
    
-1. Tanıtımını okuyun ve hazır olduğunuzda dağıtılacağı seçin **azure'a Dağıt**.
+1. Girişi okuyun **ve dağıtıma hazırlanma ' yi seçin.**
    
-1. Gerekirse, Azure portalında oturum açın. 
+1. Gerekirse Azure portal oturum açın. 
 
-1. Portalında, üzerinde **AzureFirewall bir korumalı alan ayarı oluşturma** sayfasında yazın veya aşağıdaki değerleri seçin:
+1. Portalda, **AzureFirewall için Sandbox kurulumu oluştur** sayfasında, aşağıdaki değerleri yazın veya seçin:
    
-   - **Kaynak grubu**: Seçin **Yeni Oluştur**, kaynak grubu için bir ad yazın ve seçin **Tamam**. 
-   - **Sanal ağ adı**: Yeni sanal ağ için bir ad yazın. 
-   - **Yönetici kullanıcı adı**: Yönetici kullanıcı hesabı için bir kullanıcı adı yazın.
-   - **Yönetici parolası**: Bir yönetici parolasını yazın. 
+   - **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için bir ad yazın ve **Tamam**' ı seçin. 
+   - **Sanal ağ adı**: yeni VNET için bir ad yazın. 
+   - **Yönetici Kullanıcı adı**: yönetici kullanıcı hesabı için bir Kullanıcı adı yazın.
+   - **Yönetici parolası**: bir yönetici parolası yazın. 
    
-1. Hüküm ve koşulları okuyun ve ardından **hüküm ve koşulları yukarıda belirtilen kabul ediyorum**.
+1. Hüküm ve koşulları okuyun ve ardından **yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u seçin.
    
 1. **Satın al**'ı seçin.
    
-   Kaynakları oluşturmak için birkaç dakika sürer. 
+   Kaynakların oluşturulması birkaç dakika sürer. 
    
-1. Güvenlik Duvarı ile oluşturulan kaynakları keşfedin. 
+1. Güvenlik duvarıyla oluşturulan kaynakları keşfedebilir. 
 
-Bir Güvenlik Duvarı'nda bir şablon özelliklerini ve JSON söz dizimi hakkında bilgi edinmek için bkz. [Microsoft.Network/azureFirewalls](/azure/templates/microsoft.network/azurefirewalls).
+Bir şablondaki güvenlik duvarının JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. Network/azureFirewalls](/azure/templates/microsoft.network/azurefirewalls).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyacınız olduğunda, kaynak grubu, güvenlik duvarı ve tüm ilgili kaynakları çalıştırarak kaldırabilirsiniz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) PowerShell komutu. Adlı bir kaynak grubunu kaldırmak için *MyResourceGroup*çalıştırın: 
+Artık ihtiyacınız kalmadığında, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) PowerShell komutunu çalıştırarak kaynak grubunu, güvenlik duvarını ve ilgili tüm kaynakları kaldırabilirsiniz. *Myresourcegroup*adlı bir kaynak grubunu kaldırmak için şunu çalıştırın: 
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup
 ```
-Öğretici izleme güvenlik duvarı oturum devam etmeyi planlıyorsanız kaynak grubu ve güvenlik duvarı henüz kaldırmayın. 
+Güvenlik Duvarı izleme öğreticisine devam etmeyi planlıyorsanız, henüz kaynak grubunu ve güvenlik duvarını kaldırmayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından, Azure güvenlik duvarı günlükleri izleyebilirsiniz:
+Ardından, Azure Güvenlik Duvarı günlüklerini izleyebilirsiniz:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure güvenlik duvarı günlüklerini izleyin](./tutorial-diagnostics.md)
+> [Öğretici: Azure Güvenlik Duvarı günlüklerini izleme](./tutorial-diagnostics.md)

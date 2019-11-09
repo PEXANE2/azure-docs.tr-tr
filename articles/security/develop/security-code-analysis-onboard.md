@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8936bc21af951cbabb90188b6a31d610caf80395
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: aaf59de2425e0725958847477f1043a5b7fac68a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241772"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839359"
 ---
 # <a name="onboarding-and-installing"></a>Ekleme ve yükleme
 
@@ -51,7 +51,7 @@ Microsoft Güvenlik kodu çözümlemesi ile çalışmaya başlama önkoşulları
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Microsoft Güvenlik kodu analizi uzantısını yükleme
 
-1. Uzantı Azure DevOps kuruluşunuzla paylaşıldıktan sonra Azure DevOps kuruluş sayfanıza gidin. Böyle bir sayfanın http://dev.azure.com/contoso örnek URL 'si.
+1. Uzantı Azure DevOps kuruluşunuzla paylaşıldıktan sonra Azure DevOps kuruluş sayfanıza gidin. Böyle bir sayfanın örnek URL 'SI `https://dev.azure.com/contoso`.
 1. Adınızın yanındaki sağ üst köşede bulunan alışveriş çantası simgesini seçin ve ardından **Uzantıları Yönet**' i seçin.
 1. Microsoft Güvenlik kodu analiz uzantısı ' nı seçin, sonra yüklemeyi başlatmak için Azure DevOps Kullanıcı Arabirimi Sihirbazı ' nı açın.
 1. Açılan listeden, uzantıyı yüklemek için Azure DevOps organizasyonunu seçin.
@@ -65,11 +65,11 @@ Uzantıyı yükledikten sonra, güvenli geliştirme derleme görevleri görünü
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Azure DevOps işlem hattınızla belirli derleme görevleri ekleme
 
 1. Azure DevOps kuruluşunuzda, takım projenizi açın.
-1. İşlem **hatları** > **derlemeleri**seçin.
+1. **Derlemeler** > işlem **hatlarını** seçin.
 1. Uzantı derleme görevlerini eklemek istediğiniz işlem hattını seçin:
    - Yeni işlem hattı: **Yeni** ' yi seçin ve yeni bir işlem hattı oluşturmak için ayrıntılı adımları izleyin.
-   - Ardışık düzeni Düzenle: Mevcut bir işlem hattı seçin ve ardından işlem hattını düzenlemeye başlamak için **Düzenle** ' yi seçin.
-1. ' **+** İ seçin ve **Görevler Ekle** bölmesine gidin.
+   - İşlem hattını Düzenle: mevcut bir işlem hattını seçin ve ardından işlem hattını düzenlemeye başlamak için **Düzenle** ' yi seçin.
+1. **+** ' yi seçin ve **Görevler Ekle** bölmesine gidin.
 1. Listeden ya da arama kutusunu kullanarak eklemek istediğiniz derleme görevini bulun. **Add (Ekle)** seçeneğini belirleyin.
 1. Görev için gereken parametreleri belirtin.
 1. Yeni bir derlemeyi kuyruğa al.

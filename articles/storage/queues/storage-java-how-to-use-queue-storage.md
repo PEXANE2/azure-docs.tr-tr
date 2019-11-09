@@ -8,12 +8,12 @@ ms.date: 12/08/2016
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 33123c823a2e0d6044e3419f62a512f3e84f953f
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 17d02d8df96927aa506683fef94899e5c5114684
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302992"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839031"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Java’dan Kuyruk depolama kullanma
 
@@ -48,7 +48,7 @@ import com.microsoft.azure.storage.queue.*;
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure depolama bağlantı dizesi ayarlama
 
-Azure depolama istemcisi, veri yönetimi hizmetlerine erişmek üzere uç noktaları ve kimlik bilgilerini depolamak için bir depolama bağlantı dizesi kullanır. Bir istemci uygulamada çalışırken, *AccountName* ve *AccountKey* için [Azure portalında](https://portal.azure.com) listelenen depolama hesabınızın adını ve depolama hesabı Birincil erişim anahtarını kullanarak depolama bağlantı dizesini aşağıdaki biçimde sağlamanız gerekir. Bu örnekte bağlantı dizesini tutmak için nasıl statik bir alan bildirebileceğiniz gösterilmektedir:
+Azure depolama istemcisi, veri yönetimi hizmetlerine erişmek üzere uç noktaları ve kimlik bilgilerini depolamak için bir depolama bağlantı dizesi kullanır. Bir istemci uygulamada çalışırken, [AccountName](https://portal.azure.com) ve *AccountKey* için *Azure portalında* listelenen depolama hesabınızın adını ve depolama hesabı Birincil erişim anahtarını kullanarak depolama bağlantı dizesini aşağıdaki biçimde sağlamanız gerekir. Bu örnekte bağlantı dizesini tutmak için nasıl statik bir alan bildirebileceğiniz gösterilmektedir:
 
 ```java
 // Define the connection-string with your values.
@@ -58,7 +58,7 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-Microsoft Azure bir rol içinde çalışan bir uygulamada, bu dize hizmet yapılandırma dosyasında *ServiceConfiguration. cscfg*' de depolanabilir ve **Roleenvironment. getconfigurationsettings** yöntemi çağrısıyla erişilebilir. Yapılandırma dosyasındaki *StorageConnectionString* adlı bir **Ayar** öğesinden bağlantı dizesini alma örneği aşağıda verilmiştir:
+Microsoft Azure bir rol içinde çalışan bir uygulamada, bu dize hizmet yapılandırma dosyasında *ServiceConfiguration. cscfg*' de depolanabilir ve **Roleenvironment. getconfigurationsettings** yöntemi çağrısıyla erişilebilir. Yapılandırma dosyasındaki **StorageConnectionString** adlı bir *Ayar* öğesinden bağlantı dizesini alma örneği aşağıda verilmiştir:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -402,6 +402,6 @@ Sıra depolamanın temellerini öğrendiğinize göre, daha karmaşık depolama 
 [Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure Depolama İstemcisi SDK Başvurusu]: http://dl.windowsazure.com/storage/javadoc/
+[Azure Depolama İstemcisi SDK Başvurusu]: https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html
 [Azure Storage Services REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/

@@ -1,7 +1,7 @@
 ---
 title: "Öğretici: Visual Studio 'da bağlı hizmetlerle Metin Analizi hizmetine bağlanma"
 titleSuffix: Azure Cognitive Services
-description: ASP.NET Core bir Web uygulamasından Metin Analizi nasıl bağlanacağınızı öğrenin.
+description: Bu makalede ve beraberindeki makalelerde, Metin Analizi Hizmeti için Visual Studio Bağlı Hizmet özelliğinin kullanımına ilişkin ayrıntılar sağlanmaktadır.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: ff4c703070d6a7ebd545de3043e5f59b764fe4c9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b094a6917892dfff58c49435de4dc42551be19df
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478468"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837201"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Öğretici: Visual Studio 'da bağlı hizmetlerle Metin Analizi hizmetine bağlanma
 
@@ -23,7 +23,7 @@ Metin Analizi Hizmeti’ni kullanarak görsel verileri kategorilere ayırıp iş
 
 Bu makalede ve beraberindeki makalelerde, Metin Analizi Hizmeti için Visual Studio Bağlı Hizmet özelliğinin kullanımına ilişkin ayrıntılar sağlanmaktadır. Özelliği, bilişsel hizmetler uzantısı yüklü olan Visual Studio 2019 veya üzeri sürümlerde kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 - Web geliştirme iş yükü yüklü olan Visual Studio 2019. [Şimdi indir](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
@@ -69,7 +69,7 @@ Bu makalede ve beraberindeki makalelerde, Metin Analizi Hizmeti için Visual Stu
  
 ## <a name="use-the-text-analytics-service-to-detect-the-language-for-a-text-sample"></a>Metin örneğinin dilini algılamak için Metin Analizi Hizmeti’ni kullanın.
 
-1. Startup.cs’de deyimleri kullanarak aşağıdakileri ekleyin:
+1. Startup.cs’de deyimleri kullanarak aşağıdakileri ekleyin.
  
    ```csharp
    using System.IO;
@@ -90,7 +90,7 @@ Bu makalede ve beraberindeki makalelerde, Metin Analizi Hizmeti için Visual Stu
       }
    ```
 
-1. Adlı`DemoTextAnalyzeController` *denetleyiciler* klasörüne bir sınıf dosyası ekleyin ve içeriğini aşağıdaki kodla değiştirin:
+1. `DemoTextAnalyzeController` adlı *denetleyiciler* klasörüne bir sınıf dosyası ekleyin ve içeriğini aşağıdaki kodla değiştirin:
 
     ```csharp
     using System;
@@ -153,7 +153,7 @@ Bu makalede ve beraberindeki makalelerde, Metin Analizi Hizmeti için Visual Stu
     }
     ```
     
-    Kod, metin Analizi API'si `GetTextAnalyzeClient` çağrıları yapmak için istemci nesnesini ve belirli bir metinde DetectLanguage öğesini çağıran bir istek işleyicisini almak için içerir.
+    Kod, Metin Analizi API'si çağrıları yapmak için istemci nesnesini ve belirli bir metinde DetectLanguage öğesini çağıran bir istek işleyicisini almak için `GetTextAnalyzeClient` içerir.
 
 1. Önceki kod tarafından kullanılan MyHandler yardımcı sınıfını ekleyin.
 
@@ -193,7 +193,7 @@ Bu makalede ve beraberindeki makalelerde, Metin Analizi Hizmeti için Visual Stu
     }
     ```
 
-1. Çözümlenmiş metni, belirlenen dili ve analizdeki güvenirlik düzeyini temsil eden puanı göstermek için bir Görünüm ekleyin. Bunu yapmak için **Görünümler** klasörüne sağ tıklayın, **Ekle**’yi ve sonra **Görüntüle**’yi seçin. Görüntülenen iletişim kutusunda _TextAnalyzeResult_ adını sağlayın, **Görünümler** klasörüne _TextAnalyzeResult.cshtml_ adlı yeni bir dosya eklemek için varsayılanları kabul edin ve buna aşağıdaki içerikleri kopyalayın:
+1. Çözümlenmiş metni, belirlenen dili ve analizdeki güvenirlik düzeyini temsil eden puanı göstermek için bir Görünüm ekleyin. Bunu yapmak için **Görünümler** klasörüne sağ tıklayın, **Ekle**’yi ve sonra **Görüntüle**’yi seçin. Görüntülenen iletişim kutusunda _TextAnalyzeResult_ adını sağlayın, _Görünümler_ klasörüne **TextAnalyzeResult.cshtml** adlı yeni bir dosya eklemek için varsayılanları kabul edin ve buna aşağıdaki içerikleri kopyalayın:
     
     ```cshtml
     @using System

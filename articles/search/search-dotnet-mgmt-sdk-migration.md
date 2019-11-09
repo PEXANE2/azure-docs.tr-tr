@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b81060bc3d8409a9ccb74ba85c85e6f779650ffd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b18e9688141ee64eb7dfcb82ce58db198e324b5b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792412"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847531"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Azure Search .NET Yönetim SDK 'sının sürümlerini yükseltme
 
@@ -46,7 +46,5 @@ Derlemeniz başarısız olursa, bunun nedeni bazı SDK arabirimlerini (örneğin
 
 Herhangi bir derleme hatasını düzelttikten sonra, isterseniz yeni işlevlerden yararlanmak için uygulamanızda değişiklikler yapabilirsiniz. SDK 'daki yeni özellikler [sürüm 2 ' deki](#WhatsNew)Yenilikler bölümünde ayrıntılı olarak açıklanmıştır.
 
-## <a name="conclusion"></a>Sonuç
-SDK 'daki geri bildirimlerinize hoş geldiniz. Sorunlarla karşılaşırsanız [Azure Search MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)hakkında yardım almak için bize danışabilirsiniz. Bir hata bulursanız, [Azure .NET SDK GitHub deposunda](https://github.com/Azure/azure-sdk-for-net/issues)bir sorun oluşturabilirsiniz. Sorun başlığınız "[Azure Search]" ile öneklediğinizden emin olun.
-
-Azure Search kullandığınız için teşekkürler!
+## <a name="next-steps"></a>Sonraki adımlar
+SDK 'daki geri bildirimlerinize hoş geldiniz. Sorunlarla karşılaşırsanız lütfen sorularınızı [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest)gönderin. Bir hata bulursanız, [Azure .NET SDK GitHub deposunda](https://github.com/Azure/azure-sdk-for-net/issues)bir sorun oluşturabilirsiniz. Sorun başlığınız "[Search]" ile etiketlediğinizden emin olun.

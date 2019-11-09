@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: fe8730b0d97ae3783282cdd401fd5889ed08ad9a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a529ac8b7ce16d3ee4463f1b4bc2e8007e5b79b5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507170"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836777"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Yapay sesli teknolojinin sorumlu dağıtımına ilişkin yönergeler
 Yapay ses teknolojisini kullanmaya yönelik Microsoft 'un genel tasarım yönergeleri aşağıda verilmiştir. Bunlar, Microsoft 'un sesli tatathı, tüketicilerle ve yapay sesten sorumlu geliştirmeye kılavuzluk etmek için konuşma içermeyen kişilerin geliştirdiği çalışmalar üzerinde geliştirilmiştir.
@@ -39,7 +39,7 @@ Belirsiz, işlem senaryolarında (örneğin, bir çağrı Destek Merkezi), kulla
 Ses aktörleri gibi Sesli aktörler ile çalışırken, yapay sesler oluşturmak için aşağıdaki kılavuz geçerlidir.
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>Sesli tatatdan anlamlı onay alın
-Ses tatatzı, ses yazı tipi (nasıl ve nerede kullanılır) üzerinde denetim sahibi olmak için kullanılır ve her zaman dengelenebilir. Bu nedenle, sistem sahipleri, sesli tastasyondan açık yazılı bir izin almalıdır ve kullanım örnekleri, kullanım süresi, kullanım süresi ve benzerlerini açık şekilde sözleşmeli belirtimlere sahip olmalıdır. Bazı ses tastası, teknolojinin olası kötü amaçlı kullanımlarıyla uyumlu değildir ve teknolojinin özellikleri hakkında sistem sahipleri tarafından eğitilmeli. Ses taçanız ve onayı hakkında daha fazla bilgi için, [asetat notumuzu](https://aka.ms/neural-tts-transparency-note)okuyun.
+Ses tatatzı, ses yazı tipi (nasıl ve nerede kullanılır) üzerinde denetim sahibi olmak için kullanılır ve her zaman dengelenebilir. Bu nedenle, sistem sahipleri, sesli tastasyondan açık yazılı bir izin almalıdır ve kullanım örnekleri, kullanım süresi, kullanım süresi ve benzerlerini açık şekilde sözleşmeli belirtimlere sahip olmalıdır. Bazı ses tastası, teknolojinin olası kötü amaçlı kullanımlarıyla uyumlu değildir ve teknolojinin özellikleri hakkında sistem sahipleri tarafından eğitilmeli. Ses taçanız ve onayı hakkında daha fazla bilgi edinmek için [sesli tatatyi](https://aka.ms/disclosure-voice-talent)okuyun.
 
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>Konuşma yemekleriyle ilgili konular
@@ -57,13 +57,13 @@ Konuşmaya sahip kişiler, eskime seslerini yansıtmak için yapay seslerinde g�
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [Asetat notunun](https://aka.ms/neural-tts-transparency-note)
+* [Sesli Taçanın açıklanması](https://aka.ms/disclosure-voice-talent)
 * [Geçişi genel bakış](concepts-gating-overview.md)
 * [Nasıl açığa çıkarmaz](concepts-disclosure-guidelines.md)
 * [Açıklama tasarım desenleri](concepts-disclosure-patterns.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Asetat notunun](https://aka.ms/neural-tts-transparency-note)
+* [Sesli Taçanın açıklanması](https://aka.ms/disclosure-voice-talent)
 * [Nasıl açığa çıkarmaz](concepts-disclosure-guidelines.md)
 * [Açıklama tasarım desenleri](concepts-disclosure-patterns.md)

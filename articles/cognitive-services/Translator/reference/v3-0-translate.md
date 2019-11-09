@@ -1,7 +1,7 @@
 ---
 title: Translator Metin Çevirisi API'si Translate yöntemi
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si Translate metodunu kullanın.
+description: Azure bilişsel hizmetler Translator Metin Çevirisi API'si çevirme yöntemi için parametreleri, üstbilgileri ve gövde iletilerini, metni çevirecek şekilde anlayın.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 10/16/2019
 ms.author: swmachan
-ms.openlocfilehash: b809171549a8f3cbbbb6ccad1553608598afa345
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b4daa04a4dbf87006147fb0d44d7b128a6d8ecf4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161709"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835778"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Metin Çevirisi API'si 3,0: çevir
 
@@ -38,7 +38,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   <th>Açıklama</th>
   <tr>
     <td>api sürümü</td>
-    <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer <code>3.0</code> olmalıdır.</td>
+    <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer <code>3.0</code>olmalıdır.</td>
   </tr>
   <tr>
     <td>Kaynak</td>
@@ -46,11 +46,11 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>-</td>
-    <td><em>Gerekli parametre</em>.<br/>Çıkış metninin dilini belirtir. Hedef dil <code>translation</code> kapsamına dahil <a href="./v3-0-languages.md">desteklenen dillerden</a> biri olmalıdır. Örneğin, Almanca 'ya çevirmek için <code>to=de</code> kullanın.<br/>Sorgu dizesindeki parametresini tekrarlayarak birden fazla dile aynı anda çeviri yapılabilir. Örneğin, Almanca ve Italyanca 'e çevirmek için <code>to=de&to=it</code> kullanın.</td>
+    <td><em>Gerekli parametre</em>.<br/>Çıkış metninin dilini belirtir. Hedef dil <code>translation</code> kapsamında bulunan <a href="./v3-0-languages.md">desteklenen dillerden</a> biri olmalıdır. Örneğin, Almanca 'ya çevirmek için <code>to=de</code> kullanın.<br/>Sorgu dizesindeki parametresini tekrarlayarak birden fazla dile aynı anda çeviri yapılabilir. Örneğin, Almanca ve Italyanca 'e çevirmek için <code>to=de&to=it</code> kullanın.</td>
   </tr>
   <tr>
     <td>textType</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Çevrilen metnin düz metin mi yoksa HTML metni mi olduğunu tanımlar. Herhangi bir HTML 'nin iyi biçimlendirilmiş, tam bir öğe olması gerekir. Olası değerler: <code>plain</code> (varsayılan) veya <code>html</code>.</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Çevrilen metnin düz metin mi yoksa HTML metni mi olduğunu tanımlar. Herhangi bir HTML 'nin iyi biçimlendirilmiş, tam bir öğe olması gerekir. Olası değerler şunlardır: <code>plain</code> (varsayılan) veya <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
@@ -62,19 +62,19 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Profanities 'ın çevirilerde nasıl işaretleneceğini belirtir. Olası değerler: <code>Asterisk</code> (varsayılan) veya <code>Tag</code>. Küfür işleme yollarını anlamak için bkz. <a href="#handle-profanity">küfür işleme</a>.</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Profanities 'ın çevirilerde nasıl işaretleneceğini belirtir. Olası değerler şunlardır: <code>Asterisk</code> (varsayılan) veya <code>Tag</code>. Küfür işleme yollarını anlamak için bkz. <a href="#handle-profanity">küfür işleme</a>.</td>
   </tr>
   <tr>
     <td>ıncludehizalaması</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Kaynak metinden çevrilmiş metne hizalama projeksiyonunun eklenip eklenmeyeceğini belirtir. Olası değerler: <code>true</code> veya <code>false</code> (varsayılan). </td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Kaynak metinden çevrilmiş metne hizalama projeksiyonunun eklenip eklenmeyeceğini belirtir. Olası değerler şunlardır: <code>true</code> veya <code>false</code> (varsayılan). </td>
   </tr>
   <tr>
     <td>includeSentenceLength</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metni ve çevrilmiş metin için tümce sınırları eklenip eklenmeyeceğini belirtir. Olası değerler: <code>true</code> veya <code>false</code> (varsayılan).</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metni ve çevrilmiş metin için tümce sınırları eklenip eklenmeyeceğini belirtir. Olası değerler şunlardır: <code>true</code> veya <code>false</code> (varsayılan).</td>
   </tr>
   <tr>
     <td>müported</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dili tanımlanamıyorsa, bir geri dönüş dili belirtir. Dil otomatik algılama, <code>from</code> parametresi atlandığında uygulanır. Algılama başarısız olursa, <code>suggestedFrom</code> dili kabul edilir.</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dili tanımlanamıyorsa, bir geri dönüş dili belirtir. Dil otomatik algılama, <code>from</code> parametresi atlandığında uygulanır. Algılama başarısız olursa, <code>suggestedFrom</code> dil kabul edilir.</td>
   </tr>
   <tr>
     <td>fromScript</td>
@@ -86,7 +86,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Özel bir sistem mevcut olmadığında hizmetin genel sisteme geri yüklenmesine izin verildiğini belirtir. Olası değerler: <code>true</code> (varsayılan) veya <code>false</code>.<br/><br/><code>allowFallback=false</code> çeviri yalnızca istek tarafından belirtilen <code>category</code> için eğitilen sistemleri kullanması gerektiğini belirtir. Dil X-dil Y için bir çeviri, bir pivot dil E-postayla zincirleme gerektiriyorsa, zincirdeki tüm sistemlerin (X-> E ve E-> Y) özel olması ve aynı kategoriye sahip olması gerekir. Belirli bir kategoriye sahip hiçbir sistem bulunamazsa istek bir 400 durum kodu döndürür. <code>allowFallback=true</code>, bir özel sistem mevcut olmadığında hizmetin genel bir sisteme geri yüklenmesine izin verildiğini belirtir.
+    <td><em>Isteğe bağlı parametre</em>.<br/>Özel bir sistem mevcut olmadığında hizmetin genel sisteme geri yüklenmesine izin verildiğini belirtir. Olası değerler şunlardır: <code>true</code> (varsayılan) veya <code>false</code>.<br/><br/><code>allowFallback=false</code>, çeviri yalnızca istek tarafından belirtilen <code>category</code> için eğitilen sistemleri kullanması gerektiğini belirtir. Dil X-dil Y için bir çeviri, bir pivot dil E-postayla zincirleme gerektiriyorsa, zincirdeki tüm sistemlerin (X-> E ve E-> Y) özel olması ve aynı kategoriye sahip olması gerekir. Belirli bir kategoriye sahip hiçbir sistem bulunamazsa istek bir 400 durum kodu döndürür. <code>allowFallback=true</code>, özel bir sistem mevcut olmadığında hizmetin genel bir sisteme geri dönüşme izin verildiğini belirtir.
 </td>
   </tr>
 </table> 
@@ -116,7 +116,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 ## <a name="request-body"></a>İstek gövdesi
 
-İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, çevrilecek dizeyi temsil eden `Text` adlı dize özelliği olan bir JSON nesnesidir.
+İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, çevrilecek dizeyi temsil eden `Text`adlı dize özelliğine sahip bir JSON nesnesidir.
 
 ```json
 [
@@ -137,7 +137,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
       * `language`: algılanan dilin kodunu temsil eden bir dize.
 
-      * `score`: sonucun güvenilirliğe işaret eden bir float değeri. Puan sıfır ile bir ve düşük puan arasında düşük bir güvenilirlik olduğunu gösterir.
+      * `score`: sonucun güvenilirliği belirten bir float değeri. Puan sıfır ile bir ve düşük puan arasında düşük bir güvenilirlik olduğunu gösterir.
 
     `detectedLanguage` özelliği yalnızca dilin otomatik algılanması istendiğinde sonuç nesnesinde bulunur.
 
@@ -147,7 +147,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
     * `text`: çevrilmiş metni sağlayan bir dize.
 
-    * `transliteration`: `toScript` parametresiyle belirtilen betikte çevrilmiş metni sağlayan nesne.
+    * `transliteration`: `toScript` parametresi tarafından belirtilen betikte çevrilmiş metni sağlayan bir nesne.
 
       * `script`: hedef betiği belirten bir dize.   
 
@@ -155,7 +155,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
     `transliteration` nesnesi, bir alfabeye çevirme gerçekleşmezse dahil edilmez.
 
-    * `alignment`: giriş metnini çevrilmiş metne eşleyen `proj` adlı tek bir dize özelliğine sahip bir nesne. Hizalama bilgileri yalnızca `includeAlignment` olan istek parametresi `true` olduğunda sağlanır. Hizalama, Şu biçimdeki bir dize değeri olarak döndürülür: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  İki nokta üst üste başlangıç ve bitiş dizinini ayırır, tire dilleri ayırır ve boşluklar sözcükleri ayırır. Bir sözcük, diğer dilde sıfır, bir veya birden çok sözcükten hizalanabilir ve hizalanmış sözcükler bitişik olmayabilir. Hiçbir hizalama bilgisi yoksa, hizalama öğesi boş olur. Bkz. bir örnek ve kısıtlamalar için [hizalama bilgileri alma](#obtain-alignment-information) .
+    * `alignment`: giriş metnini çevrilmiş metne eşleyen `proj`adlı tek bir dize özelliğine sahip bir nesne. Hizalama bilgileri yalnızca istek parametresi `includeAlignment` `true`olduğunda sağlanır. Hizalama, Şu biçimdeki bir dize değeri olarak döndürülür: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  İki nokta üst üste başlangıç ve bitiş dizinini ayırır, tire dilleri ayırır ve boşluklar sözcükleri ayırır. Bir sözcük, diğer dilde sıfır, bir veya birden çok sözcükten hizalanabilir ve hizalanmış sözcükler bitişik olmayabilir. Hiçbir hizalama bilgisi yoksa, hizalama öğesi boş olur. Bkz. bir örnek ve kısıtlamalar için [hizalama bilgileri alma](#obtain-alignment-information) .
 
     * `sentLen`: giriş ve çıkış metinlerinde tümce sınırları döndüren bir nesne.
 
@@ -163,9 +163,9 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
       * `transSentLen`: çevrilmiş metindeki Tümcelerin uzunluklarını temsil eden bir tamsayı dizisi. Dizinin uzunluğu, Tümcelerin sayısıdır ve değerler her tümcenin uzunluktadır.
 
-    Tümce sınırları yalnızca `includeSentenceLength` olan istek parametresi `true` olduğunda dahil edilir.
+    Tümce sınırları yalnızca istek parametresi `includeSentenceLength` `true`olduğunda dahil edilir.
 
-  * `sourceText`: `text` adlı tek dizeli bir nesne, giriş metnini kaynak dilin varsayılan betiğine verir. `sourceText` özelliği yalnızca giriş, dilin olağan betiği olmayan bir betikte ifade edildiğinde mevcuttur. Örneğin, giriş bir Latin betiğe yazılmışsa, `sourceText.text`, Arap betiğine dönüştürülen aynı Arapça metin olacaktır.
+  * `sourceText`: `text`adlı tek dizeli bir nesne, giriş metnini kaynak dilin varsayılan betiğine verir. `sourceText` özellik, yalnızca giriş, dilin normal betiği olmayan bir betikte ifade edildiğinde mevcuttur. Örneğin, giriş Latin dilinde yazılmış olarak yazılmışsa, `sourceText.text` aynı Arapça metnin Arap betiğine dönüştürülebilmesine neden olur.
 
 [Örnek bölümünde JSON](#examples) yanıtlarının örneği verilmiştir.
 
@@ -209,7 +209,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
   <tr>
     <td>408</td>
-    <td>Bir kaynak eksik olduğu için istek yerine getirilemedi. Ayrıntılar hata iletisini denetleyin. Özel bir <code>category</code> kullanıldığında, bu genellikle özel çeviri sisteminin istekleri sağlamak için kullanılabilir olmadığını gösterir. İstek bir bekleme süresinden (ör. 1 dakika) sonra yeniden denenmelidir.</td>
+    <td>Bir kaynak eksik olduğu için istek yerine getirilemedi. Ayrıntılar hata iletisini denetleyin. Özel bir <code>category</code>kullanıldığında, bu genellikle özel çeviri sisteminin istekleri sağlamak için kullanılabilir olmadığını gösterir. İstek bir bekleme süresinden (ör. 1 dakika) sonra yeniden denenmelidir.</td>
   </tr>
   <tr>
     <td>429</td>
@@ -217,11 +217,11 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
   <tr>
     <td>500</td>
-    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisinden gelen istek tanımlayıcısı <code>X-RequestId</code> ve istek üst bilgisi <code>X-ClientTraceId</code> ' den istemci tanımlayıcısı.</td>
+    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisi <code>X-RequestId</code>istek tanımlayıcısı ve istek üst bilgisi <code>X-ClientTraceId</code>istemci tanımlayıcısı.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisinden gelen istek tanımlayıcısı <code>X-RequestId</code> ve istek üst bilgisi <code>X-ClientTraceId</code> ' den istemci tanımlayıcısı.</td>
+    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisi <code>X-RequestId</code>istek tanımlayıcısı ve istek üst bilgisi <code>X-ClientTraceId</code>istemci tanımlayıcısı.</td>
   </tr>
 </table> 
 
@@ -374,14 +374,14 @@ Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almay
     <td>Küfürlü sözcükleri çıktıda bir işaret ile değiştirilmiştir. İşaretleyici <code>ProfanityMarker</code> parametresine bağlıdır.<br/><br/>
 <code>ProfanityMarker=Asterisk</code>için, küfürlü kelimeleri <code>***</code>ile değiştirilmiştir:<br/>
     <strong>Örnek kaynak (Japonca)</strong>: 彼はジャッカスです.<br/>
-    <strong>Örnek çeviri (İngilizce)</strong>: \* bir \* \*.<br/><br/>
+    <strong>Örnek çeviri (İngilizce)</strong>: \*bir \*\*.<br/><br/>
 <code>ProfanityMarker=Tag</code>için, küfürlü kelimeleri &lt;küfür&gt; ve &lt;/küfür&gt;XML etiketleri ile çevrelenmiş:<br/>
     <strong>Örnek kaynak (Japonca)</strong>: 彼はジャッカスです.<br/>
-    <strong>Örnek çeviri (İngilizce)</strong>: &lt;profanity &gt;jackass &lt;/küfür &gt;.
+    <strong>Örnek çeviri (İngilizce)</strong>: &lt;Jackass&lt;/küfür&gt;&gt;.
   </tr>
 </table> 
 
-Örnek:
+Örneğin:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
@@ -418,7 +418,7 @@ Bu son istek şunu döndürür:
 
 ### <a name="translate-content-with-markup-and-decide-whats-translated"></a>Biçimlendirme ile içerik çevirin ve ne çevrileceğine karar verin
 
-Bir HTML sayfası veya bir XML belgesinden içerik gibi biçimlendirme içeren içeriği çevirmek yaygındır. Etiketler ile içerik çevrilirken `textType=html` sorgu parametresini ekleyin. Ayrıca, bazı durumlarda belirli içeriği çeviri dışında tutmak yararlı olur. Özgün dilinde kalması gereken içeriği belirtmek için `class=notranslate` özniteliğini kullanabilirsiniz. Aşağıdaki örnekte, birinci `div` öğesi içindeki içerik çevrilmeyecektir; ikinci `div` öğesindeki içerik çevrilir.
+Bir HTML sayfası veya bir XML belgesinden içerik gibi biçimlendirme içeren içeriği çevirmek yaygındır. Etiketler ile içerik çevrilirken `textType=html` sorgu parametresini ekleyin. Ayrıca, bazı durumlarda belirli içeriği çeviri dışında tutmak yararlı olur. Özgün dilinde kalması gereken içeriği belirtmek için `class=notranslate` özniteliğini kullanabilirsiniz. Aşağıdaki örnekte, ilk `div` öğesi içindeki içerik çevrilmeyecektir, ikinci `div` öğesindeki İçerik çevrilmeyecektir.
 
 ```
 <div class="notranslate">This will not be translated.</div>
@@ -467,7 +467,7 @@ Yanıt:
 ]
 ```
 
-Hizalama bilgileri `0:2-0:1` ile başlar. Bu, kaynak metindeki (`The`) ilk üç karakterin, çevrilen metindeki ilk iki karakterle (`La`) eşlenme anlamına gelir.
+Hizalama bilgileri `0:2-0:1`başlar, bu, kaynak metindeki ilk üç karakterin (`The`), çevrilmiş metindeki ilk iki karakterle (`La`) eşlendiğini anlamına gelir.
 
 #### <a name="limitations"></a>Sınırlamalar
 Aşağıdaki kısıtlamalara göz önünde edin:
@@ -531,4 +531,4 @@ Sonuç:
 ]
 ```
 
-Bu özellik `textType=text` ile veya `textType=html` ile aynı şekilde çalışmaktadır. Özelliğin gelişigüzel kullanılması gerekir. Çeviriyi özelleştirmenin uygun ve en iyi yolu özel çeviriciyi kullanmaktır. Özel çevirici, bağlam ve istatistiksel olasılıkların tam kullanımını sağlar. Çalışma veya tümceciğinin bağlam içinde gösterildiği eğitim verileri oluşturmak için veya uygun hale getirebiliyorsanız, daha iyi sonuçlar elde edersiniz. [Özel çevirici hakkında daha fazla bilgi edinin](../customization.md).
+Bu özellik `textType=text` veya `textType=html`ile aynı şekilde çalışmaktadır. Özelliğin gelişigüzel kullanılması gerekir. Çeviriyi özelleştirmenin uygun ve en iyi yolu özel çeviriciyi kullanmaktır. Özel çevirici, bağlam ve istatistiksel olasılıkların tam kullanımını sağlar. Çalışma veya tümceciğinin bağlam içinde gösterildiği eğitim verileri oluşturmak için veya uygun hale getirebiliyorsanız, daha iyi sonuçlar elde edersiniz. [Özel çevirici hakkında daha fazla bilgi edinin](../customization.md).

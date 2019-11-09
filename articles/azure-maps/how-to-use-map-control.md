@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c764460fb65287dab0031b27291d2f332cec3b3d
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ceb3b7315439aced7f781e8de5e62b49fd83818c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756541"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833808"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure haritalar harita denetimini kullanma
 
@@ -74,7 +74,7 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
     </body>
     ```
 
-5. Harita denetimini başlatmak için, HTML gövdesinde yeni bir bölüm tanımlayın ve bir betik oluşturun. @No__t_4 sınıfının bir örneğini oluştururken eşleme `<div>` `id` veya `HTMLElement` (örneğin, `document.getElementById('myMap')`) ilk parametre olarak geçirin. [Kimlik doğrulama seçeneklerini](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)kullanarak haritanın kimliğini doğrulamak Için kendi Azure haritalar hesap anahtarınızı veya Azure ACTIVE DIRECTORY (AAD) kimlik bilgilerinizi kullanın. Bir hesap oluşturmanız veya anahtarınızı bulmanız gerekiyorsa bkz. [Azure Maps hesabınızı ve anahtarlarınızı yönetme](how-to-manage-account-keys.md). **Dil** seçeneği, harita etiketleri ve denetimleri için kullanılacak dili belirtir. Desteklenen diller hakkında daha fazla bilgi için bkz. [desteklenen diller](supported-languages.md). Kimlik doğrulaması için bir abonelik anahtarı kullanılıyorsa.
+5. Harita denetimini başlatmak için, HTML gövdesinde yeni bir bölüm tanımlayın ve bir betik oluşturun. `Map` sınıfının bir örneğini oluştururken eşleme `<div>` `id` veya `HTMLElement` (örneğin, `document.getElementById('myMap')`) ilk parametre olarak geçirin. [Kimlik doğrulama seçeneklerini](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)kullanarak haritanın kimliğini doğrulamak Için kendi Azure haritalar hesap anahtarınızı veya Azure ACTIVE DIRECTORY (AAD) kimlik bilgilerinizi kullanın. Bir hesap oluşturmanız veya anahtarınızı bulmanız gerekiyorsa bkz. [Azure Maps hesabınızı ve anahtarlarınızı yönetme](how-to-manage-account-keys.md). **Dil** seçeneği, harita etiketleri ve denetimleri için kullanılacak dili belirtir. Desteklenen diller hakkında daha fazla bilgi için bkz. [desteklenen diller](supported-languages.md). Kimlik doğrulaması için bir abonelik anahtarı kullanılıyorsa.
 
     ```HTML
     <script type="text/javascript">
@@ -174,7 +174,7 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
 
 8. Web tarayıcınızda dosyasını açın ve işlenmiş Haritayı görüntüleyin. Aşağıdaki kod gibi görünmelidir:
 
-    <iframe height="700" style="width: 100%;" scrolling="no" title="Harita denetimini kullanma" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true"><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'> @azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>harita denetimini kullanma</a> kalemine bakın.
+    <iframe height="700" style="width: 100%;" scrolling="no" title="Harita denetimini kullanma" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true"><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>harita denetimini kullanma</a> kalemine bakın.
     </iframe>
 
 ## <a name="localizing-the-map"></a>Haritayı yerelleştirme
@@ -183,7 +183,7 @@ Azure haritalar haritanın dilini ve bölgesel görünümünü ayarlamanın iki 
 
 ```javascript
 atlas.setLanguage('fr-FR');
-atlas.setView('auto');
+atlas.setView('Auto');
 ```
 
 İkinci seçenek, aşağıdaki gibi eşleme yüklenirken bu bilgileri eşleme seçeneklerine iletmektir:
@@ -191,7 +191,7 @@ atlas.setView('auto');
 ```javascript
 map = new atlas.Map('myMap', {
     language: 'fr-FR',
-    view: 'auto',
+    view: 'Auto',
 
     authOptions: {
         authType: 'aad',

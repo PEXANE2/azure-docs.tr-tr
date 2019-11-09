@@ -1,6 +1,6 @@
 ---
 title: Azure portal Video Indexer hesap oluşturma
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Bu makalede Azure portal Video Indexer hesabının nasıl oluşturulacağı gösterilmektedir.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: 0f67b2e37e264febf11f3fa55b4469d392c59712
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: dc844392d64178cb9000db15af39f923521efc19
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815674"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838392"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı bir Video Indexer hesabı oluşturun
 
@@ -23,7 +23,7 @@ Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli 
 
 Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağlı Video Indexer hesabının nasıl oluşturulacağı gösterilmektedir. Bu konuda otomatik (varsayılan) Flow kullanılarak Azure 'a bağlanmak için gereken adımlar sağlanmaktadır. Ayrıca, Azure 'a el ile nasıl bağlanagösterdiğini gösterir (Gelişmiş).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği.
 
@@ -45,7 +45,7 @@ Azure AD etki alanındaki bir Kullanıcı ve üye. Video Indexer hesabınızı A
 
 Bu Kullanıcı, bir **sahip** rolü ya da **katkıda** bulunan ve **Kullanıcı erişimi yönetici** rolleri ile Azure aboneliğinizde bir üye olmalıdır. Bir Kullanıcı 2 rol ile iki kez eklenebilir. Katkıda bulunan ve Kullanıcı erişimi yöneticisiyle bir kez.
 
-![erişim denetimi](./media/create-account/access-control-iam.png)
+![Erişim denetimi](./media/create-account/access-control-iam.png)
 
 ### <a name="additional-prerequisites-for-manual-flow"></a>El ile akışa yönelik ek önkoşullar
 
@@ -125,9 +125,9 @@ Azure bağlantısı başarısız olduysa, el ile bağlanarak sorunu gidermeyi de
 
     1. Yeni Media Services hesabında **API erişimi**' ni seçin.
     2. [Hizmet sorumlusu kimlik doğrulama yöntemini](../previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)seçin.
-    3. İstemci kimliğini ve istemci gizli anahtarını al bölümünde açıklandığı gibi istemci KIMLIĞINI [](../previous/media-services-portal-get-started-with-aad.md#get-the-client-id-and-client-secret) ve gizli anahtarı alın.
+    3. İstemci kimliğini ve [istemci gizli anahtarını al bölümünde açıklandığı](../previous/media-services-portal-get-started-with-aad.md#get-the-client-id-and-client-secret) gıbı istemci kimliğini ve gizli anahtarı alın.
 
-        **Ayarlar**anahtarlar ' ı seçtikten sonra, açıklama ekleyin, Kaydet ' e basın, anahtar değeri doldurulur.->
+        **Ayarlar**->**anahtarlar**' ı seçtikten sonra **Açıklama**ekleyin, **Kaydet**' e basın, anahtar değeri doldurulur.
 
         Anahtarın süresi dolarsa, hesap sahibinin anahtarı yenilemek için Video Indexer destekle iletişim kurabilmesi gerekir.
 
@@ -142,13 +142,13 @@ Azure bağlantısı başarısız olduysa, el ile bağlanarak sorunu gidermeyi de
 
 |Ayar|Açıklama|
 |---|---|
-|Video Indexer hesabının bölgesi|Video Indexer hesap bölgesinin adı. Daha iyi performans ve düşük maliyetler için, Azure Media Services kaynağının ve Azure depolama hesabının bulunduğu bölgenin adını belirtmeniz kesinlikle önerilir. |
+|Video Indexer hesap bölgesi|Video Indexer hesap bölgesinin adı. Daha iyi performans ve düşük maliyetler için, Azure Media Services kaynağının ve Azure depolama hesabının bulunduğu bölgenin adını belirtmeniz kesinlikle önerilir. |
 |Azure Active Directory (AAD) kiracısı|Azure AD kiracının adı, örneğin "contoso.onmicrosoft.com". Kiracı bilgileri Azure portal elde edilebilir. İmlecinizi sağ üst köşedeki oturum açan kullanıcının adının üzerine getirin. **Etki alanının**sağındaki adı bulun.|
 |Abonelik Kimliği|Bu bağlantının oluşturulması gereken Azure aboneliği. Abonelik KIMLIĞI Azure portal elde edilebilir. Sol panelde **tüm hizmetler** ' e tıklayın ve "abonelikler" i arayın. **Abonelikler** ' i seçin ve aboneliklerinizin LISTESINDEN istediğiniz kimliği seçin.|
 |Azure Media Services kaynak grubu adı|Media Services hesabı oluşturduğunuz kaynak grubunun adı.|
 |Medya hizmeti kaynak adı|Önceki bölümde oluşturduğunuz Azure Media Services hesabının adı.|
 |Uygulama Kimliği|Önceki bölümde oluşturduğunuz Azure AD uygulama KIMLIĞI (belirtilen Media Services hesabı için izinlerle).|
-|Uygulama Anahtarı|Önceki bölümde oluşturduğunuz Azure AD uygulama anahtarı. |
+|Uygulama anahtarı|Önceki bölümde oluşturduğunuz Azure AD uygulama anahtarı. |
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
@@ -173,7 +173,7 @@ Aşağıdaki Azure Media Services ilgili konular geçerlidir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Deneme hesabınızla ve/veya Azure 'a bağlı Video Indexer hesaplarınızın içindeki yönergeleri izleyerek programlı bir şekilde etkileşim kurabilirsiniz: [API 'Leri kullanın](video-indexer-use-apis.md).
+Deneme hesabınızla ve/veya Azure 'a bağlı Video Indexer hesaplarınız ile programlama yoluyla etkileşimli olarak etkileşimde bulunabilirsiniz: [API 'Leri kullanma](video-indexer-use-apis.md).
 
 Azure 'a bağlanırken kullandığınız Azure AD kullanıcısını kullanmanız gerekir.
 

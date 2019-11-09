@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 771a4ffde9f3929a55ee8ce48c2b38e16b83ad49
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4fd6de848756cedf21d7bb1f7f1be31175de6627
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650671"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838247"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 
@@ -35,7 +35,7 @@ Bir Service Fabric kümesindeki Windows kapsayıcısında mevcut olan bir uygula
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Şunları çalıştıran bir geliştirme bilgisayarı:
   * Visual Studio 2015 veya Visual Studio 2019.
@@ -46,7 +46,7 @@ Bir Service Fabric kümesindeki Windows kapsayıcısında mevcut olan bir uygula
 
   Bu makalede, Küme düğümleriniz üzerinde çalışan kapsayıcılarla Windows Server 'ın (derleme) sürümü, geliştirme makinmenizle aynı olmalıdır. Bunun nedeni, geliştirme makinenizde Docker görüntüsünü oluşturmanız ve kapsayıcı işletim sisteminin sürümleri ve dağıtıldığı ana bilgisayar IŞLETIM sistemi arasında uyumluluk kısıtlamaları vardır. Daha fazla bilgi için bkz. [Windows Server kapsayıcısı işletim sistemi ve konak işletim sistemi uyumluluğu](#windows-server-container-os-and-host-os-compatibility). 
   
-Kümeniz için gerekli olan kapsayıcılarla Windows Server sürümünü öğrenmek için, geliştirme makinenizde bir Windows komut `ver` isteminden komutunu çalıştırın:
+Kümeniz için gerekli olan kapsayıcıları içeren Windows Server sürümünü öğrenmek için, geliştirme makinenizde bir Windows komut isteminden `ver` komutunu çalıştırın:
 
 * Sürüm *x. x. 14323. x*içeriyorsa, [bir küme oluştururken](service-fabric-cluster-creation-via-portal.md), Işletim sistemi için *windowsserver 2016-Datacenter-with-containers* ' ı seçin.
   * Sürüm *x. x. 16299. x*içeriyorsa, [bir küme oluştururken](service-fabric-cluster-creation-via-portal.md)Işletim sistemi Için *Windowsserveraltı Datacenter-Core-1709--containers* ' ı seçin.
@@ -158,7 +158,7 @@ Bu komut herhangi bir şey döndürmezse aşağıdaki komutu çalıştırın ve 
 docker inspect my-web-site
 ```
 
-Çalışan kapsayıcıya bağlanın. Döndürülen IP adresine işaret eden bir Web tarayıcısı açın (örneğin, "http:\//172.31.194.61"). "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
+Çalışan kapsayıcıya bağlanın. Döndürülen IP adresini işaret eden bir Web tarayıcısı açın (örneğin, "http:\//172.31.194.61"). "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
 
 Kapsayıcınızı durdurmak için şu komutu çalıştırın:
 
@@ -177,7 +177,7 @@ docker rm my-web-site
 
 Kapsayıcının geliştirme makinenizde çalıştığını doğruladıktan sonra, görüntüyü Azure Container Registry içindeki kayıt defterinize gönderin.
 
-Kayıt ``docker login`` defteri [kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için ' i çalıştırın.
+[Kayıt defteri kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için ``docker login`` çalıştırın.
 
 Aşağıdaki örnekte, bir Azure Active Directory [hizmet sorumlusunun](../active-directory/develop/app-objects-and-service-principals.md) kimliği ve parolası geçirilmiştir. Örneğin, bir otomasyon senaryosu için kayıt defterinize bir hizmet sorumlusu atamış olabilirsiniz. Ya da kayıt defteri Kullanıcı adınızı ve parolanızı kullanarak oturum açmanız gerekir.
 
@@ -249,7 +249,7 @@ Bu ortam değişkenleri, uygulama bildiriminde geçersiz kılınabilir:
 ```
 
 ## <a name="configure-container-port-to-host-port-mapping-and-container-to-container-discovery"></a>Kapsayıcı bağlantı noktasından konak bağlantı noktasına eşlemeyi ve kapsayıcıdan kapsayıcıya keşfi yapılandırma
-Kapsayıcıyla iletişim kurmak için kullanılan konak bağlantı noktasını yapılandırın. Bağlantı noktası bağlama, hizmetin kapsayıcı içinde dinlediği bağlantı noktasını konaktaki bağlantı noktasıyla eşler. ApplicationManifest.xml dosyasının `ContainerHostPolicies` öğesine bir `PortBinding` öğesi ekleyin. Bu makalede `ContainerPort` değeri 80 (Dockerfile içinde belirtildiği gibi kapsayıcı 80 numaralı bağlantı noktasını gösterir) ve `EndpointRef` değeri "Guest1TypeEndpoint" (hizmet bildiriminde daha önce tanımlanmış olan uç nokta) olarak verilir. 8081 numaralı bağlantı noktasında hizmete gelen istekler, kapsayıcı üzerindeki 80 numaralı bağlantı noktasıyla eşlenir.
+Kapsayıcıyla iletişim kurmak için kullanılan konak bağlantı noktasını yapılandırın. Bağlantı noktası bağlama, hizmetin kapsayıcı içinde dinlediği bağlantı noktasını konaktaki bağlantı noktasıyla eşler. ApplicationManifest.xml dosyasının `PortBinding` öğesine bir `ContainerHostPolicies` öğesi ekleyin. Bu makalede `ContainerPort` değeri 80 (Dockerfile içinde belirtildiği gibi kapsayıcı 80 numaralı bağlantı noktasını gösterir) ve `EndpointRef` değeri "Guest1TypeEndpoint" (hizmet bildiriminde daha önce tanımlanmış olan uç nokta) olarak verilir. 8081 numaralı bağlantı noktasında hizmete gelen istekler, kapsayıcı üzerindeki 80 numaralı bağlantı noktasıyla eşlenir.
 
 ```xml
 <ServiceManifestImport>
@@ -281,7 +281,7 @@ Windows, kapsayıcılar için iki yalıtım modunu destekler: İşlem ve Hyper-V
    >
 
 ## <a name="configure-resource-governance"></a>Kaynak idaresini yapılandırma
-[Kaynak idaresi](service-fabric-resource-governance.md) kapsayıcının konakta kullanabildiği kaynakları kısıtlar. Uygulama bildiriminde belirtilen `ResourceGovernancePolicy` öğesi, hizmet kod paketinin kaynak sınırlarını tanımlamak için kullanılır. Kaynak sınırları aşağıdaki kaynaklar için ayarlanabilir: Bellek, MemorySwap, CpuShares (CPU göreli ağırlığı), Memoryrezervationınmb, BlkioWeight (BlockIO göreli ağırlığı). Bu örnekte, Guest1Pkg hizmet paketi bulunduğu küme düğümlerinde bir çekirdek alır. Bellek sınırları mutlaktır; dolayısıyla, kod paketi 1024 MB bellekle (aynı genel garantili ayırmayla) sınırlıdır. Kod paketleri (kapsayıcılar veya işlemler) bu sınırı aşan miktarda bellek ayıramazlar ve bunu denediklerinde yetersiz bellek özel durumu ortaya çıkar. Kaynak sınırı zorlamasının çalışması için, hizmet paketi içindeki tüm kod paketlerinin bellek sınırlarının belirtilmiş olması gerekir.
+[Kaynak idaresi](service-fabric-resource-governance.md) kapsayıcının konakta kullanabildiği kaynakları kısıtlar. Uygulama bildiriminde belirtilen `ResourceGovernancePolicy` öğesi, hizmet kod paketinin kaynak sınırlarını tanımlamak için kullanılır. Şu kaynaklar için kaynak sınırları ayarlanabilir: Memory, MemorySwap, CpuShares (CPU göreli ağırlığı), MemoryReservationInMB, BlkioWeight (BlockIO göreli ağırlığı). Bu örnekte, Guest1Pkg hizmet paketi bulunduğu küme düğümlerinde bir çekirdek alır. Bellek sınırları mutlaktır; dolayısıyla, kod paketi 1024 MB bellekle (aynı genel garantili ayırmayla) sınırlıdır. Kod paketleri (kapsayıcılar veya işlemler) bu sınırı aşan miktarda bellek ayıramazlar ve bunu denediklerinde yetersiz bellek özel durumu ortaya çıkar. Kaynak sınırı zorlamasının çalışması için, hizmet paketi içindeki tüm kod paketlerinin bellek sınırlarının belirtilmiş olması gerekir.
 
 ```xml
 <ServiceManifestImport>
@@ -294,7 +294,7 @@ Windows, kapsayıcılar için iki yalıtım modunu destekler: İşlem ve Hyper-V
 ```
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK ayarlarını yapılandırma 
 
-Service Fabric, v6.1 sürümünden itibaren [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) olaylarını otomatik olarak sistem durumu raporuyla tümleştirir. Bu, kapsayıcınızda **HEALTHCHECK** özelliği etkinse kapsayıcının sistem durumuna ilişkin Docker tarafından bildirilen her değişiklik için Service Fabric’in durumu bildireceği anlamına gelir. *health_status* özelliği *healthy* olduğunda [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)’da **OK** şeklinde bir durum raporu görüntülenirken, *health_status* özelliği *unhealthy* olduğunda **WARNING** görünür. 
+Service Fabric, v6.1 sürümünden itibaren [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) olaylarını otomatik olarak sistem durumu raporuyla tümleştirir. Bu, kapsayıcınızda **HEALTHCHECK** özelliği etkinse kapsayıcının sistem durumuna ilişkin Docker tarafından bildirilen her değişiklik için Service Fabric’in durumu bildireceği anlamına gelir. **health_status** özelliği [healthy](service-fabric-visualizing-your-cluster.md) olduğunda *Service Fabric Explorer*’da *OK* şeklinde bir durum raporu görüntülenirken, **health_status** özelliği *unhealthy* olduğunda *WARNING* görünür. 
 
 En son v 6.4 yenileme sürümü ile başlayarak, Docker HEALTHCHECK değerlendirmelerinin hata olarak bildirilmesi gerektiğini belirtme seçeneğiniz vardır. Bu seçenek etkinleştirilirse, *health_status* *sağlıklı* olduğunda bir **Tamam** sistem durumu raporu görüntülenir ve *health_status* *sağlıksız*olduğunda **hata** görüntülenir.
 
@@ -320,7 +320,7 @@ ApplicationManifest dosyasındaki **ContainerHostPolicies** kapsamında **Health
     </Policies>
 </ServiceManifestImport>
 ```
-Varsayılan olarak, *ıncludedockerhealthstatusınsystemhealthreport* **true**olarak ayarlanır, *RestartContainerOnUnhealthyDockerHealthStatus* **false**olarak ayarlanır ve *treatcontainerunhealthyıstatusaserror* false olarak ayarlanır. 
+Varsayılan olarak, *ıncludedockerhealthstatusınsystemhealthreport* **true**olarak ayarlanır, *RestartContainerOnUnhealthyDockerHealthStatus* **false**olarak ayarlanır ve *treatcontainerunhealthyıstatusaserror* **false**olarak ayarlanır. 
 
 *RestartContainerOnUnhealthyDockerHealthStatus* özelliği **true** olarak ayarlanırsa, tekrarlanan şekilde durumunun iyi olmadığı bildirilen kapsayıcılar yeniden başlatılır (muhtemelen diğer düğümlerde).
 
@@ -331,15 +331,15 @@ Tüm Service Fabric kümesi için **HEALTHCHECK** tümleştirmesini devre dış�
 ## <a name="deploy-the-container-application"></a>Kapsayıcı uygulamasını dağıtma
 Tüm değişikliklerinizi kaydedin ve uygulamayı derleyin. Uygulamanızı yayımlamak için Çözüm Gezgini’nde **MyFirstContainer**’a sağ tıklayın ve **Yayımla**’yı seçin.
 
-**Bağlantı Uç Noktası**’nda kümenin yönetim uç noktasını girin. Örneğin, "containercluster.westus2.cloudapp.azure.com:19000". İstemci bağlantı uç noktasını [Azure portalında](https://portal.azure.com) kümenizin Genel Bakış sekmesinde bulabilirsiniz.
+**Bağlantı Uç Noktası**’nda kümenin yönetim uç noktasını girin. Örneğin, `containercluster.westus2.cloudapp.azure.com:19000`. İstemci bağlantı uç noktasını [Azure portalında](https://portal.azure.com) kümenizin Genel Bakış sekmesinde bulabilirsiniz.
 
-Tıklayın **yayımlama**.
+**Yayımla**’ta tıklayın.
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), bir Service Fabric kümesindeki uygulama ve düğümleri inceleyip yönetmeye yönelik web tabanlı bir araçtır. Bir tarayıcı penceresi açıp http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ konumuna gidin ve uygulama dağıtımını izleyin. Uygulama dağıtılır, ancak görüntü küme düğümlerine indirilene kadar bir hata durumunda olur (görüntü boyutuna bağlı olarak biraz zaman alabilir): ![Hata:][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), bir Service Fabric kümesindeki uygulama ve düğümleri inceleyip yönetmeye yönelik web tabanlı bir araçtır. Bir tarayıcı penceresi açıp `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` konumuna gidin ve uygulama dağıtımını izleyin. Uygulama dağıtılır, ancak görüntü küme düğümlerine yüklenene kadar hatalı durumdadır (bu işlem, görüntü boyutuna bağlı olarak biraz zaman alabilir): ![Hata][1]
 
-Uygulama şu ```Ready``` durumda olduğunda hazırlanıyor: ![Geldiğinizde][2]
+Uygulamanın ```Ready``` durumu ![Hazır][2] olduğunda uygulama hazırdır
 
-Bir tarayıcı açın ve gidin http://containercluster.westus2.cloudapp.azure.com:8081. "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
+Bir tarayıcıyı açın ve `http://containercluster.westus2.cloudapp.azure.com:8081` dizinine gidin. "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
 
 ## <a name="clean-up"></a>Temizleme
 
@@ -379,7 +379,7 @@ Kapsayıcıların Service Fabric kümenize doğru şekilde dağıtıldığından
  
 ## <a name="specify-os-build-specific-container-images"></a>İşletim sistemi derlemesine özgü kapsayıcı görüntüleri belirtme 
 
-Windows Server kapsayıcıları, işletim sisteminin farklı sürümleri arasında uyumlu olmayabilir. Örneğin, Windows Server 2016 kullanılarak oluşturulan Windows Server kapsayıcıları, işlem yalıtım modunda Windows Server sürüm 1709 ' de çalışmaz. Bu nedenle, küme düğümleri en son sürüme güncelleniyorsa, işletim sisteminin önceki sürümleri kullanılarak oluşturulan kapsayıcı hizmetleri başarısız olabilir. Bunu, çalışma zamanının sürüm 6,1 ve daha yeni bir sürümü ile aşmak için, kapsayıcı başına birden çok işletim sistemi görüntüsü belirtmeyi ve uygulama bildiriminde işletim sisteminin yapı sürümleriyle etiketlemeyi destekler Service Fabric. İşletim sisteminin yapı sürümünü bir Windows komut isteminde çalıştırarak `winver` edinebilirsiniz. Düğümlerde işletim sistemini güncelleştirmeden önce uygulama bildirimlerini güncelleştirin ve işletim sistemi başına görüntü geçersiz kılmalarını belirtin. Aşağıdaki kod parçacığında, **ApplicationManifest.xml** adlı uygulama bildiriminde nasıl birden çok kapsayıcı görüntüsü belirtileceği gösterilmektedir:
+Windows Server kapsayıcıları, işletim sisteminin farklı sürümleri arasında uyumlu olmayabilir. Örneğin, Windows Server 2016 kullanılarak oluşturulan Windows Server kapsayıcıları, işlem yalıtım modunda Windows Server sürüm 1709 ' de çalışmaz. Bu nedenle, küme düğümleri en son sürüme güncelleniyorsa, işletim sisteminin önceki sürümleri kullanılarak oluşturulan kapsayıcı hizmetleri başarısız olabilir. Bunu, çalışma zamanının sürüm 6,1 ve daha yeni bir sürümü ile aşmak için, kapsayıcı başına birden çok işletim sistemi görüntüsü belirtmeyi ve uygulama bildiriminde işletim sisteminin yapı sürümleriyle etiketlemeyi destekler Service Fabric. Windows komut isteminde `winver` çalıştırarak işletim sisteminin yapı sürümünü edinebilirsiniz. Düğümlerde işletim sistemini güncelleştirmeden önce uygulama bildirimlerini güncelleştirin ve işletim sistemi başına görüntü geçersiz kılmalarını belirtin. Aşağıdaki kod parçacığında, **ApplicationManifest.xml** adlı uygulama bildiriminde nasıl birden çok kapsayıcı görüntüsü belirtileceği gösterilmektedir:
 
 
 ```xml
@@ -507,7 +507,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Kapsayıcı zorla sonlandırılmadan önceki zaman aralığını yapılandırın
 
-Hizmet silme (veya başka bir düğüme taşıma) başladıktan sonra, çalışma zamanının kapsayıcı kaldırılmadan önce ne kadar bekleyeceğine ilişkin bir zaman aralığı yapılandırabilirsiniz. Zaman aralığını yapılandırma, kapsayıcıya `docker stop <time in seconds>` komutunu gönderir.  Daha ayrıntılı bilgi için bkz. [docker durdurma](https://docs.docker.com/engine/reference/commandline/stop/). Beklenecek zaman aralığı, `Hosting` bölümünde belirtilir. Bölüm `Hosting` , küme oluşturmaya veya daha sonra bir yapılandırma yükseltmesinde eklenebilir. Aşağıdaki küme bildirimi kod parçacığı, bekleme aralığının nasıl ayarlandığını gösterir:
+Hizmet silme (veya başka bir düğüme taşıma) başladıktan sonra, çalışma zamanının kapsayıcı kaldırılmadan önce ne kadar bekleyeceğine ilişkin bir zaman aralığı yapılandırabilirsiniz. Zaman aralığını yapılandırma, kapsayıcıya `docker stop <time in seconds>` komutunu gönderir.  Daha ayrıntılı bilgi için bkz. [docker durdurma](https://docs.docker.com/engine/reference/commandline/stop/). Beklenecek zaman aralığı, `Hosting` bölümünde belirtilir. `Hosting` bölümü, bir yapılandırma yükseltmesinde küme oluşturmaya veya daha sonra eklenebilir. Aşağıdaki küme bildirimi kod parçacığı, bekleme aralığının nasıl ayarlandığını gösterir:
 
 ```json
 "fabricSettings": [

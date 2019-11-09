@@ -4,14 +4,14 @@ description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı a
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 11/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: d8b1be1d79ae0426d73c45408dd3c4f4f4660afb
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 04a46700b68bcf498956f93c96ce2dccf1b555fe
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532199"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832726"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
@@ -23,7 +23,7 @@ Genellikle Azure kaynaklarını Azure aboneliğinizdeki bir kaynak grubuna dağ�
 
 Aşağıdaki kaynak türlerini abonelik düzeyinde dağıtabilirsiniz:
 
-* [dağıtımlar](/azure/templates/microsoft.resources/deployments) 
+* [dağıtımlar](/azure/templates/microsoft.resources/deployments)
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [Poliyasatamaları](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -36,10 +36,16 @@ Aşağıdaki kaynak türlerini abonelik düzeyinde dağıtabilirsiniz:
 
 Abonelik düzeyi dağıtımlar için kullandığınız şema, kaynak grubu dağıtımları için şemadan farklıdır.
 
-Şema için şunu kullanın:
+Şablonlar için şunu kullanın:
 
 ```json
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
+```
+
+Parametre dosyaları için şunu kullanın:
+
+```json
+https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Dağıtım komutları
@@ -76,14 +82,14 @@ Abonelik düzeyindeki dağıtımlar için, dağıtım için bir konum sağlaman�
 
 Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **azuredeploy. JSON** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
 
-Her dağıtım adı için konum sabittir. Aynı ada ancak farklı konuma sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. @No__t_0 hata kodunu alırsanız, bu adın önceki dağıtımıyla farklı bir ad veya aynı konumu kullanın.
+Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. `InvalidDeploymentLocation`hata kodunu alırsanız, bu adın önceki dağıtımıyla farklı bir ad veya aynı konumu kullanın.
 
 ## <a name="use-template-functions"></a>Şablon işlevlerini kullanma
 
 Abonelik düzeyindeki dağıtımlar için, Şablon işlevleri kullanılırken bazı önemli noktalar vardır:
 
 * [ResourceGroup ()](resource-group-template-functions-resource.md#resourcegroup) **işlevi desteklenmiyor.**
-* [RESOURCEID ()](resource-group-template-functions-resource.md#resourceid) işlevi desteklenir. Abonelik düzeyi dağıtımlarında kullanılan kaynakların kaynak KIMLIĞINI almak için kullanın. Örneğin, `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))` ile ilke tanımının kaynak KIMLIĞINI alın
+* [RESOURCEID ()](resource-group-template-functions-resource.md#resourceid) işlevi desteklenir. Abonelik düzeyi dağıtımlarında kullanılan kaynakların kaynak KIMLIĞINI almak için kullanın. Örneğin, `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`bir ilke tanımının kaynak KIMLIĞINI alın. Ya da, abonelik düzeyi kaynağı için kaynak KIMLIĞINI almak üzere [Subscriptionresourceıd ()](resource-group-template-functions-resource.md#subscriptionresourceid) işlevini kullanın.
 * [Reference ()](resource-group-template-functions-resource.md#reference) ve [List ()](resource-group-template-functions-resource.md#list) işlevleri desteklenir.
 
 ## <a name="create-resource-groups"></a>Kaynak grupları oluşturma

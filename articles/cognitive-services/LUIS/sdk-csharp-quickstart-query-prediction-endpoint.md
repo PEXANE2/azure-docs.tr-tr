@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: d7cf46add464a089f15a5bd15a20cea7d17eed37
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bd1fefa828aca71e3faa27f75a8c67a2f1539d52
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488684"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837072"
 ---
 # <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>Hızlı başlangıç: .NET SDK ile C# v2 tahmin uç noktası sorgulama
 
@@ -23,7 +23,7 @@ Language Understanding (LUSıS) kullanıcısına bir Kullanıcı alıp gönderme
 
 Bu hızlı başlangıç, `turn on the bedroom light`gibi bir kullanıcıyı ortak Language Understanding uygulamasına gönderir ve tahmin alır ve en yüksek skor amacını `HomeAutomation.TurnOn` ve varlık içinde bulunan `HomeAutomation.Room` varlığı görüntüler. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Visual Studio Community 2017 sürümü](https://visualstudio.microsoft.com/vs/community/)
 * C# programlama dili (VS Community 2017 sürümünde bulunur)
@@ -77,7 +77,7 @@ using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 
 ## <a name="create-a-new-method-for-the-prediction"></a>Tahmin için yeni bir yöntem oluşturun
 
-Sorguyu sorgu tahmin uç noktasına göndermek için yeni bir yöntem `GetPrediction` oluşturun. Yöntemi, gerekli tüm nesneleri oluşturur ve yapılandırır ve ardından [`LuisResult`](https://docs.microsoft.com/en-us/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-python) tahmin sonuçlarıyla bir `Task` döndürür. 
+Sorguyu sorgu tahmin uç noktasına göndermek için yeni bir yöntem `GetPrediction` oluşturun. Yöntemi, gerekli tüm nesneleri oluşturur ve yapılandırır ve ardından [`LuisResult`](/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.luisresult) tahmin sonuçlarıyla bir `Task` döndürür. 
 
 ```csharp
 static async  Task<LuisResult> GetPrediction() {

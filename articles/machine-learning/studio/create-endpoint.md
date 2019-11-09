@@ -1,6 +1,6 @@
 ---
 title: Web hizmeti uç noktaları oluşturma
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Studio (klasik) Web hizmeti uç noktaları oluşturun. Web hizmetindeki her bir uç nokta bağımsız olarak karşılanır, kısıtlandı ve yönetilir.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: ca7061171eb68b7473f3bf72423e481f6c5dfee1
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 891f680485ec3ee65c0bef102eb7f52cea0611c6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619563"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839640"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Dağıtılan Azure Machine Learning Studio (klasik) Web Hizmetleri için uç noktalar oluşturma
 

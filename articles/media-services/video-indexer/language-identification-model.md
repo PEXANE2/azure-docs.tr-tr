@@ -1,6 +1,6 @@
 ---
 title: Video Indexer-Azure ile konuşulan dili otomatik olarak tanımla
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Bu makalede, bir videodaki konuşulan dili otomatik olarak tanımlamak için Video Indexer dil tanımlama modelinin nasıl kullanıldığı açıklanmaktadır.
 services: media-services
 author: juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: 729ac9fc7c8ec6a85b3497c51888d3b5a6fc8558
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: ce3e488a6387f9a823d7c1b514b52af24944776b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147187"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839002"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Dil tanımlama modeliyle konuşulan dili otomatik olarak tanımla
 
@@ -23,7 +23,7 @@ Video Indexer, otomatik dil kimliğini (kapak) destekler, bu, sesli okunan dil i
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Dizin oluşturma sırasında otomatik dil tanımlamayı seçme
 
-API 'yi kullanarak bir videoyu dizinleme veya [yeniden dizinlerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) , `auto detect` `sourceLanguage` parametresindeki seçeneği belirleyin.
+API 'yi kullanarak bir videoyu dizinleme veya [yeniden dizinlerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) , `sourceLanguage` parametresindeki `auto detect` seçeneğini belirleyin.
 
 Portalı kullanırken [video Indexer](https://www.videoindexer.ai/) giriş sayfasında **Hesap videolarınıza** gidin ve yeniden dizinlemek istediğiniz videonun adının üzerine gelin. Sağ alt köşede yeniden dizin düğmesine tıklayın. **Yeniden dizin videosu** iletişim kutusunda, **video kaynak dili** açılır listesinden *Otomatik Algıla* ' yı seçin.
 
@@ -31,9 +31,9 @@ Portalı kullanırken [video Indexer](https://www.videoindexer.ai/) giriş sayfa
 
 ## <a name="model-output"></a>Model çıkışı
 
-Video Indexer söz konusu dilin güvenilirliği ise, `> 0.6`videoyu en olası dile göre. Dil güvenle tanımlanamıyorsa, konuşulan dilin Ingilizce olduğunu varsayar. 
+Bu dilin güvenilirliği `> 0.6`, videoyu en olası dile göre Video Indexer. Dil güvenle tanımlanamıyorsa, konuşulan dilin Ingilizce olduğunu varsayar. 
 
-Model baskın dil, Öngörüler JSON 'da `sourceLanguage` öznitelik olarak kullanılabilir (kök/videolar/Öngörüler altında). Karşılık gelen bir güven puanı `sourceLanguageConfidence` özniteliği altında da kullanılabilir.
+Model baskın dil, `sourceLanguage` özniteliği (kök/videolar/Öngörüler) olarak Öngörüler JSON 'da bulunabilir. Karşılık gelen güven puanı `sourceLanguageConfidence` özniteliği altında da kullanılabilir.
 
 ```json
 "insights": {
@@ -51,7 +51,7 @@ Model baskın dil, Öngörüler JSON 'da `sourceLanguage` öznitelik olarak kull
 
 * Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Rusça ve Portekizce (Brezilya).
 * Ses yukarıda desteklenen listeden farklı diller içeriyorsa sonuç beklenmedik olur.
-* Video Indexer, yüksek oranda güvenilirlikli (`>0.6`) dili tanımlayamıyor, geri dönüş dili İngilizce olur.
+* Video Indexer yüksek güvenilirliğe sahip dili tanımlayamıyor (`>0.6`), geri dönüş dili Ingilizce olur.
 * Karma diller ses içeren dosya için geçerli destek yoktur. Ses karışık diller içeriyorsa, sonuç beklenmedik olur. 
 * Düşük kaliteli ses, model sonuçlarını etkileyebilir.
 * Model, sese en az bir dakikalık konuşma gerektirir.
@@ -59,5 +59,5 @@ Model baskın dil, Öngörüler JSON 'da `sourceLanguage` öznitelik olarak kull
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Genel bakış](video-indexer-overview.md)
+* [Genel Bakış](video-indexer-overview.md)
 * [Çoklu dil içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md)

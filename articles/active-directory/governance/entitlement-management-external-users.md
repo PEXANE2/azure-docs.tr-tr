@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9107471448a58dc7866fb2cd6052abf168437d2b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174167"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832700"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde dış kullanıcılara erişimi yönetir
 
@@ -97,7 +97,7 @@ Kuruluşunuzun dışındaki kişilerin erişim paketleri isteyebildiğini ve bu 
 
 ### <a name="review-your-sharepoint-online-external-sharing-settings"></a>SharePoint Online dış paylaşım ayarlarınızı gözden geçirin
 
-- Dış kullanıcılara yönelik erişim paketlerinize SharePoint Online siteleri eklemek istiyorsanız, kuruluş düzeyinde dış paylaşım ayarınızdaki **herkesin** (oturum açma gerektirmez) veya **yeni ve mevcut konuklarınızın** (konukların oturum açması gerekir) ayarlandığından emin olun. veya bir doğrulama kodu sağlayın). Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Dış kullanıcılara yönelik erişim paketlerinize SharePoint Online siteleri eklemek istiyorsanız, kuruluş düzeyinde dış paylaşım ayarınızdaki **herkesin** (oturum açma gerektirmez) veya **yeni ve mevcut konuklarınızın** (konukların oturum açması veya bir doğrulama kodu sağlaması gerekir) ayarlanmış olduğundan emin olun. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
 - Yetkilendirme Yönetimi dışında herhangi bir dış paylaşımı kısıtlamak istiyorsanız, dış paylaşım ayarını **var olan konuklara**ayarlayabilirsiniz. Daha sonra, yalnızca Yetkilendirme Yönetimi üzerinden davet edilen yeni kullanıcılar bu sitelere erişim kazanabilecektir. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
@@ -113,7 +113,7 @@ Kuruluşunuzun dışındaki kişilerin erişim paketleri isteyebildiğini ve bu 
 
 ### <a name="review-your-teams-sharing-settings"></a>Takımlarınızın paylaşım ayarlarını gözden geçirin
 
-- Dış kullanıcılara yönelik erişim paketlerinize takımlar eklemek istiyorsanız, Konuk erişimine izin vermek için **Microsoft ekiplerinde Konuk erişimine Izin ver** ' in **Açık** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Microsoft ekipleri Yönetim merkezinde konuk erişimini yapılandırma](https://docs.microsoft.com/microsoftteams/set-up-guests#configure-guest-access-in-the-microsoft-teams-admin-center).
+- Dış kullanıcılara yönelik erişim paketlerinize takımlar eklemek istiyorsanız, Konuk erişimine izin vermek için **Microsoft ekiplerinde Konuk erişimine Izin ver** ' in **Açık** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Microsoft ekipleri Yönetim merkezinde konuk erişimini yapılandırma](/microsoftteams/set-up-guests#configure-guest-access-in-the-teams-admin-center).
 
 ## <a name="manage-the-lifecycle-of-external-users"></a>Dış kullanıcıların yaşam döngüsünü yönetme
 

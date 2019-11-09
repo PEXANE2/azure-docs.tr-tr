@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
-ms.openlocfilehash: dccf1550052910269efe156b999882234669d7dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5933521993b598ae3758df6e2e7dbf61bf424779
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815699"
+ms.locfileid: "73832788"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure panoları yapısı
 Bu belge, örnek olarak aşağıdaki Panoyu kullanarak bir Azure panosunun yapısını gösterir:
@@ -295,7 +295,7 @@ JSON 'ın ilgili bölümlerinin sonuna bakalım.  En üst düzey özellikler, __
 
 ### <a name="the-id-property"></a>ID özelliği
 
-Azure kaynak kimliği, [Azure kaynakları adlandırma kurallarına](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)tabidir. Portal bir pano oluşturduğunda genellikle GUID biçiminde bir kimlik seçer, ancak bunları programlı olarak oluşturduğunuzda geçerli bir ad kullanabilirsiniz. 
+Azure kaynak kimliği, [Azure kaynakları adlandırma kurallarına](/azure/architecture/best-practices/resource-naming)tabidir. Portal bir pano oluşturduğunda genellikle GUID biçiminde bir kimlik seçer, ancak bunları programlı olarak oluşturduğunuzda geçerli bir ad kullanabilirsiniz. 
 
 ### <a name="the-name-property"></a>Name özelliği
 Ad, abonelik, kaynak türü veya kaynak grubu bilgilerini içermeyen kaynak kimliğinin kesimdir. Esas olarak, kaynak kimliğinin son segmentinden oluşur.

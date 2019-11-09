@@ -11,30 +11,31 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c02c502dc2ab85a6ae1c602c53723e9b5a758250
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 545826a66e518366cd993a1e293c4137bde08c22
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576749"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839075"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web hizmeti uç noktalarından verileri izleme ve toplama
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Application Insights etkinleştirerek Azure Kubernetes Service (AKS) veya Azure Container Instances (acı) içindeki Web hizmeti uç noktalarına dağıtılan modellerden veri toplamaya ve bunları izlemeye öğreneceksiniz. Bir uç noktanın giriş verilerini ve yanıtını toplamaya ek olarak şunları izleyebilirsiniz:
-* İstek ücretleri, yanıt süreleri ve hata oranları.
-* Bağımlılık oranları, yanıt süreleri ve hata oranları.
-* Larý.
+
+* İstek ücretleri, yanıt süreleri ve hata oranları
+* Bağımlılık oranları, yanıt süreleri ve hata oranları
+* Özel durumlar
 
 [Azure Application Insights hakkında daha fazla bilgi edinin](../../azure-monitor/app/app-insights-overview.md). 
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+* Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 
-* Azure Machine Learning çalışma alanı, betiklerinizi içeren yerel bir dizin ve Python için Azure Machine Learning SDK yüklü. Bu önkoşulları nasıl alabileceğinizi öğrenmek için bkz. [geliştirme ortamını yapılandırma](how-to-configure-environment.md).
-* Azure Kubernetes hizmeti (AKS) veya Azure Container Instance 'a (acı) dağıtılacak eğitilen bir makine öğrenme modeli. Bir tane yoksa, [görüntü sınıflandırması modelini eğitme](tutorial-train-models-with-aml.md) öğreticisine bakın.
+* Azure Machine Learning çalışma alanı, betiklerinizi içeren yerel bir dizin ve Python için Azure Machine Learning SDK yüklü. Bu önkoşulları nasıl alabileceğinizi öğrenmek için bkz. [geliştirme ortamını yapılandırma](how-to-configure-environment.md)
+* Azure Kubernetes hizmeti (AKS) veya Azure Container Instance 'a (acı) dağıtılacak eğitilen bir makine öğrenme modeli. Bir tane yoksa, bkz. [eğitim resmi sınıflandırma modeli](tutorial-train-models-with-aml.md) öğreticisi
 
 ## <a name="web-service-input-and-response-data"></a>Web hizmeti giriş ve yanıt verileri
 
@@ -44,13 +45,13 @@ ML modeline ve tahmine yönelik girişlere karşılık gelen giriş ve yanıt, A
 
 Azure portal Azure Application Insights etkinleştirebilir ve devre dışı bırakabilirsiniz. 
 
-1. [Azure Portal](https://portal.azure.com), çalışma alanınızı açın.
+1. [Azure Portal](https://portal.azure.com), çalışma alanınızı açın
 
-1. **Dağıtımlar** sekmesinde, Azure Application Insights etkinleştirmek istediğiniz hizmeti seçin.
+1. **Dağıtımlar** sekmesinde, Azure Application Insights etkinleştirmek istediğiniz hizmeti seçin
 
    [Dağıtımlar sekmesindeki hizmetlerin listesini ![](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
-3. **Düzenle**’yi seçin.
+3. **Düzenle** 'yi seçin
 
    [![Düzenle düğmesi](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
@@ -58,51 +59,54 @@ Azure portal Azure Application Insights etkinleştirebilir ve devre dışı bır
 
    [Tanılamayı etkinleştirmek için seçili ![onay kutusu](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
-1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin. 
+1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin
 
 ### <a name="disable"></a>Devre Dışı Bırak
-1. [Azure Portal](https://portal.azure.com), çalışma alanınızı açın.
-1. **Dağıtımlar**' ı seçin, hizmeti seçin ve ardından **Düzenle**' yi seçin.
+
+1. [Azure Portal](https://portal.azure.com), çalışma alanınızı açın
+1. **Dağıtımlar**' ı seçin, hizmeti seçin ve ardından **Düzenle** ' yi seçin.
 
    [![Düzenle düğmesini kullanma](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-1. **Gelişmiş ayarlar**' da **Appınsights tanılamayı etkinleştir** onay kutusunu temizleyin. 
+1. **Gelişmiş ayarlar**' da **Appınsights tanılamayı etkinleştir** onay kutusunu temizleyin.
 
    [Tanılamayı etkinleştirmek için ![temizlenmiş onay kutusu](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
-1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin. 
+1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin
  
 ## <a name="use-python-sdk-to-configure"></a>Yapılandırmak için Python SDK 'sını kullanma 
 
 ### <a name="update-a-deployed-service"></a>Dağıtılan bir hizmeti güncelleştirme
-1. Çalışma alanınızdaki hizmeti belirler. `ws` değeri, çalışma alanınızın adıdır.
+
+1. Çalışma alanınızdaki hizmeti belirler. `ws` değeri, çalışma alanınızın adıdır
 
     ```python
     from azureml.core.webservice import Webservice
     aks_service= Webservice(ws, "my-service-name")
     ```
-2. Hizmetinizi güncelleştirin ve Azure Application Insights etkinleştirin. 
+2. Hizmetinizi güncelleştirme ve Azure Application Insights etkinleştirme
 
     ```python
     aks_service.update(enable_app_insights=True)
     ```
 
 ### <a name="log-custom-traces-in-your-service"></a>Hizmetinizdeki özel izlemeleri günlüğe kaydet
+
 Özel izlemeleri günlüğe kaydetmek istiyorsanız, AKS için standart dağıtım sürecini [ve nasıl dağıtılacağı ve nerede](how-to-deploy-and-where.md) belgede bir aci 'yi izleyin. Ardından aşağıdaki adımları kullanın:
 
-1. Yazdırma deyimleri ekleyerek Puanlama dosyasını güncelleştirin.
+1. Yazdırma deyimleri ekleyerek Puanlama dosyasını güncelleştirme
     
     ```python
     print ("model initialized" + time.strftime("%H:%M:%S"))
     ```
 
-2. Hizmet yapılandırmasını güncelleştirin.
+2. Hizmet yapılandırmasını güncelleştirme
     
     ```python
     config = Webservice.deploy_configuration(enable_app_insights=True)
     ```
 
-3. Bir görüntü oluşturun ve [aks](how-to-deploy-to-aks.md) veya [aci](how-to-deploy-to-aci.md)üzerinde dağıtın.  
+3. Bir görüntü oluşturun ve [aks](how-to-deploy-to-aks.md) veya [aci](how-to-deploy-to-aci.md) 'de dağıtın
 
 ### <a name="disable-tracking-in-python"></a>Python 'da izlemeyi devre dışı bırak
 
@@ -116,22 +120,23 @@ Azure Application Insights 'yi devre dışı bırakmak için aşağıdaki kodu k
 ## <a name="evaluate-data"></a>Verileri değerlendir
 Hizmetinizin verileri, Azure Application Insights hesabınızda, Azure Machine Learning ile aynı kaynak grubu içinde depolanır.
 Görüntülemek için:
-1. [Azure Machine Learning Studio](https://ml.azure.com) 'daki Machine Learning hizmet çalışma alanınıza gidin ve Application Insights bağlantısına tıklayın.
+
+1. [Azure Machine Learning Studio](https://ml.azure.com) 'daki Machine Learning hizmet çalışma alanınıza gidin ve Application Insights bağlantısına tıklayın
 
     [![Appınsi, Sloc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. Hizmetinizin temel ölçüm kümesini görmek için **genel bakış** sekmesini seçin.
+1. Hizmetinizin temel ölçüm kümesini görmek için **genel bakış** sekmesini seçin
 
    [![genel bakış](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. Web hizmeti giriş ve yanıt yüklerinizi görmek için **analiz** ' i seçin.
-1. Şema bölümünde **izlemeler** ' ı seçin ve izleme `"model_data_collection"`ileti ile filtreleyin. Özel boyutlarda girişleri, tahminleri ve diğer ilgili ayrıntıları görebilirsiniz.
+1. Şema bölümünde **izlemeler** ' ı seçin ve izleme `"model_data_collection"`ileti ile filtreleyin. Özel boyutlarda girişleri, tahminleri ve diğer ilgili ayrıntıları görebilirsiniz
 
    [Model verileri ![](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 
-3. Özel izlemelerinizi görmek için **analiz**' ı seçin.
-4. Şema bölümünde **izlemeler**' ı seçin. Sonra sorgunuzu çalıştırmak için **Çalıştır** ' ı seçin. Veriler bir tablo biçiminde görünmelidir ve Puanlama dosyanızdaki özel çağrılarınız ile eşleşmelidir. 
+3. Özel izlemelerinizi görmek için **analiz** ' i seçin
+4. Şema bölümünde **izlemeler**' ı seçin. Sonra sorgunuzu çalıştırmak için **Çalıştır** ' ı seçin. Veriler bir tablo biçiminde görünmelidir ve Puanlama dosyanızdaki özel çağrılarınız ile eşleşmelidir
 
    [Özel izlemeler ![](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
@@ -152,5 +157,5 @@ Azure Application Insights ' [sürekli dışarı aktarma](https://docs.microsoft
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Kubernetes hizmet kümesine model dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service) veya modellerinizi Web hizmeti uç noktalarına dağıtmak için [Azure Container Instances bir modeli dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance) ve Azure Application Insights veri toplamayı ve uç noktasından yararlanmak için etkinleştirme bölümüne bakın. izlemesinin.
-* Üretimde modellerden toplanan verileri kullanma hakkında daha fazla bilgi edinmek için bkz. [Mlops: Azure Machine Learning modelleri yönetme, dağıtma ve izleme](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment) . Bu tür veriler, Machine Learning işleminizi sürekli olarak iyileştirmenize yardımcı olabilir. 
+* [Azure Kubernetes hizmet kümesine model dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service) veya modellerinizi Web hizmeti uç noktalarına dağıtmak için [Azure Container Instances bir modeli dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance) ve Azure Application Insights veri toplamayı ve uç nokta izlemeyi kullanmasını sağlama
+* Üretimde modellerden toplanan verileri kullanma hakkında daha fazla bilgi edinmek için bkz. [Mlops: Azure Machine Learning modelleri yönetme, dağıtma ve izleme](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment) . Bu tür veriler, Machine Learning işleminizi sürekli olarak iyileştirmenize yardımcı olabilir

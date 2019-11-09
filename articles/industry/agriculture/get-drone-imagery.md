@@ -5,16 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 598248a0efb3322a9c22a5e38e4986f5ba5142ab
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 19d709a2eb0af5bdb9d40a2bce96c5716ce3c6f6
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798459"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847425"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Drone iş ortaklarından drone canlandırın al
 
-Bu makalede, içindeki IBir Imagery iş ortakınızdan ormozaik verileri Azure Farmtts veri merkezine nasıl getirebileceğinizi açıklanmaktadır. Şu anda aşağıdaki Imagery iş ortakları desteklenir:  
+Bu makalede, içindeki IBir Imagery iş ortakınızdan ormozaik verileri Azure Farmtts veri merkezine nasıl getirebileceğinizi açıklanmaktadır. Ormozaik, geometrik olarak düzeltilen ve drone tarafından toplanan verilerden alınan bir havadan oluşan bir çizim/görüntüdür.
+
+Şu anda aşağıdaki Imagery iş ortakları desteklenmektedir.
 
   ![Proje grubu ları](./media/get-drone-imagery-from-drone-partner/drone-partner-1.png)
 

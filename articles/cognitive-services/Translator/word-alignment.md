@@ -1,7 +1,7 @@
 ---
-title: Word hizalama - Translator metin çevirisi API'si
+title: Sözcük hizalama-Translator Metin Çevirisi API'si
 titleSuffix: Azure Cognitive Services
-description: Translator metin çevirisi API'si Word hizalama bilgiler alır.
+description: Hizalama bilgilerini almak için Çevir yöntemini kullanın ve isteğe bağlı ıncludehizalaması parametresini ekleyin.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,32 +11,32 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 5818d3f4d2ebed7cbcd46aadf538640914d3b7d4
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: dd4ff1e39c062910f4627973c801dc3c51f345e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594788"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837221"
 ---
-# <a name="how-to-receive-word-alignment-information"></a>Word hizalama bilgi alma
+# <a name="how-to-receive-word-alignment-information"></a>Sözcük hizalama bilgilerini alma
 
-## <a name="receiving-word-alignment-information"></a>Word hizalama bilgi alma
-Hizalama bilgileri almak için çeviri yöntemini kullanın ve isteğe bağlı includeAlignment parametresini ekleyin.
+## <a name="receiving-word-alignment-information"></a>Sözcük hizalama bilgilerini alma
+Hizalama bilgilerini almak için Çevir yöntemini kullanın ve isteğe bağlı ıncludehizalaması parametresini ekleyin.
 
-## <a name="alignment-information-format"></a>Hizalama bilgileri biçimi
-Hizalama, her bir sözcüğün kaynağı için aşağıdaki biçimde bir dize değeri olarak döndürülür. Her sözcüğün bilgilerini boşluk ayrılmış (betik) gibi dillerin Çince dahil olmak üzere, bir boşluk ile ayrılır:
+## <a name="alignment-information-format"></a>Hizalama bilgisi biçimi
+Hizalama, kaynağın her sözcüğü için aşağıdaki biçimin bir dize değeri olarak döndürülür. Her sözcük için bilgiler, Çince gibi boşlukla ayrılmış diller (betikler) gibi bir boşlukla ayrılır:
 
-[[SourceTextStartIndex]:\[SourceTextEndIndex]-[TgtTextStartIndex]:[TgtTextEndIndex]] *
+[[Sourcetextstartındex]: [Sourceıdındex] – [TgtTextStartIndex]: [TgtTextEndIndex]] *
 
 Örnek Hizalama dizesi: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
 
-Diğer bir deyişle, iki nokta üst üste başlangıç ayırır ve dilleri uç dizini, dash ayırır ve sözcükler alanı ayırır. Bir sözcük ile sıfır, bir veya birden çok sözcük başka bir dil yeteri kadar ve hizalanmış sözcükleri bitişik olmayan olabilir. Hizalama bilgi kullanılabilir duruma geldiğinde hizalama öğesi boş olur. Yöntemi, bu durumda hata döndürür.
+Diğer bir deyişle, iki nokta üst üste başlangıç ve bitiş dizinini ayırır, tire dilleri ayırır ve boşluklar sözcükleri ayırır. Bir sözcük, diğer dilde sıfır, bir veya birden çok sözcükten hizalanabilir ve hizalanmış sözcükler bitişik olmayabilir. Hiçbir hizalama bilgisi yoksa, hizalama öğesi boş olur. Yöntemi bu durumda bir hata döndürmez.
 
 ## <a name="restrictions"></a>Kısıtlamalar
-Hizalama dil çiftleri bir alt kümesi için yalnızca bu noktada döndürülür:
-* herhangi bir dili İngilizce;
-* herhangi diğer dili İngilizce dışında Basitleştirilmiş Çince, Geleneksel Çince ve Letonca-İngilizce
-* Japonca-Kore dili veya Japonca, Korece cümlenin tamamlanmış bir çeviri ise hizalama bilgi almazsınız. Tamamlanmış bir çeviri örneği olan "Bu bir test", "I beğendiğiniz" ve diğer yüksek sıklık düzeyi cümleleri.
+Hizalama yalnızca bu noktada dil çiftlerinin bir alt kümesi için döndürülür:
+* Ingilizce 'den başka bir dilde;
+* Basitleştirilmiş Çince, geleneksel Çince ve Letonca Ingilizce dışında diğer dillerden Ingilizce 'ye
+* Japonca 'dan Korece 'e veya Korece 'den Japonca 'ya kadar, tümce bir çeviri ise hizalama bilgilerini almazsınız. "Bu bir sınamadır", "Seni seviyorum" ve diğer yüksek frekanslı cümleler örneği.
 
 ## <a name="example"></a>Örnek
 

@@ -1,6 +1,6 @@
 ---
 title: Bir modelin Web hizmeti haline geldiği
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Studio (klasik) modelinizin bir Web hizmetine yönelik geliştirme denemenizin nasıl ilerlediğini gösteren bir genel bakış.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 24a2c31271d123d6378732bd9f85f6341a78d65c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ce1e7d3b3b9908d5c4608f6ab62e9b743f80c0b0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671243"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838007"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Machine Learning Studio (klasik) modelinin bir deneyden bir Web hizmetine nasıl ilerlemesi
 Azure Machine Learning Studio (klasik), tahmine dayalı bir analiz modelini temsil eden bir ***deneme*** geliştirmenize, çalıştırmanıza, test etmenize ve tekrarlamenize olanak sağlayan etkileşimli bir tuval sağlar. Şunları yapmak için kullanabileceğiniz çok çeşitli modüller mevcuttur:

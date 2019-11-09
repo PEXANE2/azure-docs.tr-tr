@@ -1,7 +1,7 @@
 ---
 title: Translator Metin Çevirisi API'si sözlük arama yöntemi
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si sözlük arama yöntemini kullanın.
+description: Sözlük arama yöntemi, bir sözcük için alternatif çeviriler ve az sayıda dizi deyim sağlar.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 0bbdba343888bc91521245d0c9a0e4eaa87c5538
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bd725d41f75bdfb1048b5bee7e8224679dbece4c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932015"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837264"
 ---
-# <a name="translator-text-api-30-dictionary-lookup"></a>Translator Metin Çevirisi API'si 3,0: Sözlük Arama
+# <a name="translator-text-api-30-dictionary-lookup"></a>Translator Metin Çevirisi API'si 3,0: sözlük arama
 
 Bir sözcük için alternatif çeviriler ve az sayıda deyim kümesi sağlar. Her çeviri, bir konuşma parçası ve arka çeviri listesi içerir. Arka Çeviriler, bir kullanıcının bağlamdaki çeviriyi anlamasına imkan sağlar. [Sözlük örnek](./v3-0-dictionary-examples.md) işlemi, her bir çeviri çiftinin örnek kullanımlarını görmek için detaya gitmeyi sağlar.
 
 ## <a name="request-url"></a>İstek URL'si
 
-Şu kişiye `POST` bir istek gönder:
+`POST` isteği gönder:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
@@ -37,16 +37,16 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   <th width="20%">Sorgu parametresi</th>
   <th>Açıklama</th>
   <tr>
-    <td>API sürümü</td>
-    <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0`.</td>
+    <td>api sürümü</td>
+    <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer `3.0`olmalıdır.</td>
   </tr>
   <tr>
-    <td>from</td>
-    <td>*Gerekli parametre*.<br/>Giriş metninin dilini belirtir. Kaynak dili, `dictionary` kapsamda bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır.</td>
+    <td>Kaynak</td>
+    <td>*Gerekli parametre*.<br/>Giriş metninin dilini belirtir. Kaynak dili, `dictionary` kapsamında yer alan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır.</td>
   </tr>
   <tr>
-    <td>to</td>
-    <td>*Gerekli parametre*.<br/>Çıkış metninin dilini belirtir. Hedef dil, `dictionary` kapsamda bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır.</td>
+    <td>-</td>
+    <td>*Gerekli parametre*.<br/>Çıkış metninin dilini belirtir. Hedef dil `dictionary` kapsamında bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır.</td>
   </tr>
 </table>
 
@@ -60,8 +60,8 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
     <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
   </tr>
   <tr>
-    <td>Content-Type</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json`.</td>
+    <td>İçerik türü</td>
+    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler: `application/json`.</td>
   </tr>
   <tr>
     <td>İçerik uzunluğu</td>
@@ -69,13 +69,13 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>X-Clienttraceıd</td>
-    <td>*İsteğe bağlı*.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. Adlı `ClientTraceId`sorgu PARAMETRESINI kullanarak izleme kimliğini sorgu dizesine eklerseniz, bu üstbilgiyi atlayabilirsiniz.</td>
+    <td>*İsteğe bağlı*.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. `ClientTraceId`adlı bir sorgu parametresi kullanarak, sorgu dizesinde izleme KIMLIĞINI eklerseniz bu üstbilgiyi atlayabilirsiniz.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>İstek gövdesi
 
-İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, arama terimini temsil eden adlı `Text`dize özelliği olan bir JSON nesnesidir.
+İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, arama terimini temsil eden `Text`adlı dize özelliği olan bir JSON nesnesidir.
 
 ```json
 [
@@ -92,15 +92,15 @@ Aşağıdaki sınırlamalar geçerlidir:
 
 Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren bir JSON dizisidir. Bir sonuç nesnesi aşağıdaki özellikleri içerir:
 
-  * `normalizedSource`: Kaynak terimin normalleştirilmiş biçimini sağlayan bir dize. Örneğin, istek "JOHN" ise, normalleştirilmiş form "John" olacaktır. Bu alanın içeriği [arama örneklerine](./v3-0-dictionary-examples.md)giriş haline gelir.
+  * `normalizedSource`: kaynak terimin normalleştirilmiş biçimini sağlayan bir dize. Örneğin, istek "JOHN" ise, normalleştirilmiş form "John" olacaktır. Bu alanın içeriği [arama örneklerine](./v3-0-dictionary-examples.md)giriş haline gelir.
     
-  * `displaySource`: Son Kullanıcı görüntüsü için en uygun biçimde kaynak terim sağlayan bir dize. Örneğin, giriş "JOHN" ise, görüntüleme formu adın olağan yazım görüntüsünü yansıtır: "John". 
+  * `displaySource`: Son Kullanıcı görüntüsü için en uygun biçimde kaynak terim sağlayan bir dize. Örneğin, giriş "JOHN" ise, görüntüleme formu "John" adının olağan yazım görüntüsünü yansıtır. 
 
-  * `translations`: Kaynak terim için çevirilerin listesi. Listenin her öğesi, aşağıdaki özelliklere sahip bir nesnedir:
+  * `translations`: kaynak terime ait çevirilerin bir listesi. Listenin her öğesi, aşağıdaki özelliklere sahip bir nesnedir:
 
-    * `normalizedTarget`: Hedef dilde bu terimin normalleştirilmiş biçimini sağlayan bir dize. Bu değer, [arama örneklerine](./v3-0-dictionary-examples.md)giriş olarak kullanılmalıdır.
+    * `normalizedTarget`: hedef dilde bu terimin normalleştirilmiş biçimini sağlayan bir dize. Bu değer, [arama örneklerine](./v3-0-dictionary-examples.md)giriş olarak kullanılmalıdır.
 
-    * `displayTarget`: Hedef dilde ve Son Kullanıcı görüntüsü için en uygun bir biçimde terim sağlayan bir dize. Genellikle, bu yalnızca büyük küçük harf bakımından `normalizedTarget` farklılık gösterir. Örneğin, "Jua" gibi uygun bir ad `normalizedTarget = "juan"` ve `displayTarget = "Juan"`olur.
+    * `displayTarget`: hedef dilde ve Son Kullanıcı görüntüsü için en uygun bir biçimde terim sağlayan bir dize. Genellikle bu, büyük/küçük harf bakımından `normalizedTarget` farklılık gösterir. Örneğin, "Juan" gibi uygun bir ad `normalizedTarget = "juan"` ve `displayTarget = "Juan"`sahip olur.
 
     * `posTag`: Bu terimi bir konuşma parçası etiketiyle ilişkilendiren bir dize.
 
@@ -112,33 +112,33 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
         | DET      | Determinler  |
         | MODAL    | Eylemlerinin        |
         | ISIM     | İsimleri        |
-        | HAZIRLIĞI     | Ön pozisyonlar |
+        | HAZıRLıĞı     | Ön pozisyonlar |
         | PRON     | Zamirler     |
         | Ü     | Eylemlerinin        |
-        | FARKLI    | Diğer        |
+        | FARKLı    | Diğer        |
 
         Uygulama notunun bir parçası olarak, bu Etiketler Ingilizce tarafı etiketleme ve ardından her kaynak/hedef çifti için en sık kullanılan etikete göre belirlenir. Bu nedenle, kullanıcılar genellikle Ispanyolca bir sözcüğü Ingilizce olarak farklı bir konuşma bölümü etiketine çeviriyorsa, Etiketler hatalı olabilir (Ispanyolca sözcüğe göre).
 
-    * `confidence`: Bu çeviri çiftinin "güvenirlik" (ya da daha doğru "eğitim verilerinde olasılık") temsil eden 0,0 ile 1,0 arasında bir değer. Bir kaynak sözcük için güven puanlarının toplamı 1,0 olabilir veya bu olmayabilir. 
+    * `confidence`: Bu çeviri çiftinin "güvenirlik" (veya daha doğru "eğitim verilerinde olasılık") temsil eden 0,0 ve 1,0 arasında bir değer. Bir kaynak sözcük için güven puanlarının toplamı 1,0 olabilir veya bu olmayabilir. 
 
-    * `prefixWord`: Sözcüğün, çeviri ön eki olarak görüntülenmesini sağlayan bir dize. Şu anda bu, genlere sahip olan ve genilaçilerin bulunduğu dillerde, genlerin genden oluşan determinladır. Örneğin, "Mosca" Ispanyolca ' da bir Feminine ad olduğu için "Mosca" Ispanyolca sözcüğünün ön eki "La" dır. Bu yalnızca, kaynak üzerinde değil, çeviri üzerine bağımlıdır. Önek yoksa, boş dize olur.
+    * `prefixWord`: sözcüğe, çeviri ön eki olarak görüntülenecek bir dize. Şu anda bu, genlere sahip olan ve genilaçilerin bulunduğu dillerde, genlerin genden oluşan determinladır. Örneğin, "Mosca" Ispanyolca ' da bir Feminine ad olduğu için "Mosca" Ispanyolca sözcüğünün ön eki "La" dır. Bu yalnızca, kaynak üzerinde değil, çeviri üzerine bağımlıdır. Önek yoksa, boş dize olur.
     
-    * `backTranslations`: Hedefin "geri çevirilerinin" listesi. Örneğin, hedefin çevrilebileceğini kaynak sözcükler. Listenin, istenen kaynak sözcüğü içermesi garanti edilir (örneğin, aranan kaynak sözcük "uçarak" ise, "Uçmış" `backTranslations` listesinde yer alacak olduğu garanti edilir). Ancak, ilk konumda olması garanti edilmez ve genellikle olmayacaktır. `backTranslations` Listenin her öğesi, aşağıdaki özellikler tarafından tanımlanan bir nesnedir:
+    * `backTranslations`: hedefin "geri çevirilerinin" bir listesi. Örneğin, hedefin çevrilebileceğini kaynak sözcükler. Listenin, istenen kaynak sözcüğü içermesi garanti edilir (örneğin, aranan kaynak sözcük "uçarak" ise, "Uçmış" `backTranslations` listesinde olacaktır). Ancak, ilk konumda olması garanti edilmez ve genellikle olmayacaktır. `backTranslations` listenin her öğesi, aşağıdaki özellikler tarafından tanımlanan bir nesnedir:
 
-        * `normalizedText`: Hedefin geri çevirisi olan kaynak terimin normalleştirilmiş biçimini veren bir dize. Bu değer, [arama örneklerine](./v3-0-dictionary-examples.md)giriş olarak kullanılmalıdır.        
+        * `normalizedText`: hedefin geri çevirisi olan kaynak terimin normalleştirilmiş biçimini veren bir dize. Bu değer, [arama örneklerine](./v3-0-dictionary-examples.md)giriş olarak kullanılmalıdır.        
 
         * `displayText`: Son Kullanıcı görüntüsü için en uygun formda hedefin geri çevirisi olan kaynak terim veren bir dize.
 
-        * `numExamples`: Bu çeviri çifti için kullanılabilen örneklerin sayısını temsil eden bir tamsayı. Gerçek örneklerin [arama örneklerine](./v3-0-dictionary-examples.md)ayrı bir çağrısıyla alınması gerekir. Numara genellikle bir UX içinde görüntülemeyi kolaylaştırmak için tasarlanmıştır. Örneğin, bir kullanıcı arabirimi, örnek sayısı sıfırdan büyükse geri çeviriye köprü ekleyebilir ve örnek yoksa arka çeviriyi düz metin olarak gösterir. [Arama örneklerine](./v3-0-dictionary-examples.md) yapılan bir çağrı tarafından döndürülen gerçek örnek sayısının `numExamples`, "kötü" örnekleri kaldırılacak şekilde hareket halindeyken ek filtreleme uygulanabileceğinden, bunun daha az olabileceğini unutmayın.
+        * `numExamples`: Bu çeviri çifti için kullanılabilen örneklerin sayısını temsil eden bir tamsayı. Gerçek örneklerin [arama örneklerine](./v3-0-dictionary-examples.md)ayrı bir çağrısıyla alınması gerekir. Numara genellikle bir UX içinde görüntülemeyi kolaylaştırmak için tasarlanmıştır. Örneğin, bir kullanıcı arabirimi, örnek sayısı sıfırdan büyükse geri çeviriye köprü ekleyebilir ve örnek yoksa arka çeviriyi düz metin olarak gösterir. [Arama örneklerine](./v3-0-dictionary-examples.md) yapılan bir çağrı tarafından döndürülen gerçek örnek sayısının `numExamples`' den az olabileceğini, "kötü" örnekleri kaldırmak için çalışma sırasında ek filtreleme uygulanabileceğini unutmayın.
         
-        * `frequencyCount`: Verilerdeki bu çeviri çiftinin sıklığını temsil eden bir tamsayı. Bu alanın ana amacı, en sık kullanılan koşulların ilk olması için arka çevirileri sıralamak amacıyla bir kullanıcı arabirimi sağlamaktır.
+        * `frequencyCount`: verilerdeki bu çeviri çiftinin sıklığını temsil eden bir tamsayı. Bu alanın ana amacı, en sık kullanılan koşulların ilk olması için arka çevirileri sıralamak amacıyla bir kullanıcı arabirimi sağlamaktır.
 
     > [!NOTE]
-    > Aranmakta olan terim Sözlükte yoksa, yanıt 200 ' dir (Tamam), ancak `translations` liste boş bir liste olur.
+    > Aranmakta olan terim Sözlükte yoksa, yanıt 200 ' dir (Tamam), ancak `translations` listesi boş bir liste.
 
 ## <a name="examples"></a>Örnekler
 
-Bu örnek, alternatif çevirilerin Ingilizce teriminin `fly` İspanyolca olarak nasıl arama yapılacağını gösterir.
+Bu örnekte, alternatif çevirilerin Ingilizce dönemi `fly` Ispanyolca araması gösterilmektedir.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
@@ -191,7 +191,7 @@ Bu örnek, aranmakta olan terim geçerli sözlük çifti için mevcut olmadığ�
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"
 ```
 
-Terim sözlükte bulunamadığı için, yanıt gövdesi boş `translations` bir liste içerir.
+Terim sözlükte bulunamadığı için, yanıt gövdesi boş bir `translations` listesi içerir.
 
 ```
 [

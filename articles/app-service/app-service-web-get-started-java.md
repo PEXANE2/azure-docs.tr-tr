@@ -16,14 +16,14 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3251637d5a5bd0593a9eaf559963921a68a6ccdc
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: d119ffdcb952405f17e0df152c817df9a8a63110
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102745"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833638"
 ---
-# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Hızlı Başlangıç: Windows üzerinde Azure App Service bir Java uygulaması oluşturma
+# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Hızlı başlangıç: Windows üzerinde Azure App Service Java uygulaması oluşturma
 
 > [!NOTE]
 > Bu makalede bir uygulamanın Windows üzerinde App Service'e dağıtımı yapılır. _Linux_üzerinde App Service dağıtmak için bkz. [Linux üzerinde Java Web uygulaması oluşturma](./containers/quickstart-java.md).
@@ -42,7 +42,7 @@ ms.locfileid: "71102745"
 
 ## <a name="create-a-java-app"></a>Java uygulaması oluşturma
 
-Aşağıdaki Maven komutunu Cloud Shell istemine yürütün, adlı `helloworld`yeni bir uygulama oluşturun:
+`helloworld`adlı yeni bir uygulama oluşturmak için Cloud Shell isteminde aşağıdaki Maven komutunu yürütün:
 
 ```bash
 mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
@@ -50,13 +50,13 @@ mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -Darchetyp
 
 ## <a name="configure-the-maven-plugin"></a>Maven eklentisini yapılandırma
 
-Maven'dan dağıtım için, Cloud Shell'deki kod düzenleyiciyi kullanarak `helloworld` dizinindeki proje `pom.xml` dosyasını açın. 
+Maven'dan dağıtım için, Cloud Shell'deki kod düzenleyiciyi kullanarak `pom.xml` dizinindeki proje `helloworld` dosyasını açın. 
 
 ```bash
 code pom.xml
 ```
 
-Sonra `pom.xml` dosyasının `<build>` öğesinin içine aşağıdaki eklenti tanımını ekleyin.
+Sonra `<build>` dosyasının `pom.xml` öğesinin içine aşağıdaki eklenti tanımını ekleyin.
 
 ```xml
 <plugins>
@@ -66,7 +66,7 @@ Sonra `pom.xml` dosyasının `<build>` öğesinin içine aşağıdaki eklenti ta
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
         <configuration>
             <!-- Specify v2 schema -->
             <schemaVersion>v2</schemaVersion>
@@ -104,7 +104,7 @@ Eklenti yapılandırmasında aşağıdaki yer tutucuları güncelleştirin:
 
 | Yer tutucu | Açıklama |
 | ----------- | ----------- |
-| `SUBSCRIPTION_ID` | Uygulamanızı dağıtmak istediğiniz aboneliğin benzersiz KIMLIĞI. Varsayılan aboneliğin kimliği, Cloud Shell veya CLI 'dan `az account show` komutunu kullanarak bulunabilir. Tüm kullanılabilir abonelikler için `az account list` komutunu kullanın.|
+| `SUBSCRIPTION_ID` | Uygulamanızı dağıtmak istediğiniz aboneliğin benzersiz KIMLIĞI. Varsayılan aboneliğin KIMLIĞI, `az account show` komutu kullanılarak Cloud Shell veya CLı tarafından bulunabilir. Tüm kullanılabilir abonelikler için `az account list` komutunu kullanın.|
 | `RESOURCEGROUP_NAME` | Uygulamanızın oluşturulacağı yeni kaynak grubunun adı. Uygulamanın tüm kaynaklarını bir gruba koyarak birlikte yönetebilirsiniz. Örneğin, kaynak grubunu sildiğinizde uygulamayla ilişkili tüm kaynaklar da silinir. Bu değeri, benzersiz bir yeni kaynak grubu adı (örneğin, *Myresourcegroup*) ile güncelleştirin. Bu kaynak grubunu daha sonraki bir bölümde tüm Azure kaynaklarını temizlemek için kullanacaksınız. |
 | `WEBAPP_NAME` | Uygulama adı, Azure 'a dağıtıldığında uygulamanın ana bilgisayar adının bir parçası olacaktır (WEBAPP_NAME. azurewebsites. net). Bu değeri, Java uygulamanızı barındıracak yeni App Service uygulaması için benzersiz bir adla güncelleştirin. Örneğin, *contoso*. |
 | `REGION` | Uygulamanın barındırıldığı bir Azure bölgesi; Örneğin, *westus2*. Cloud Shell'den veya CLI'dan `az account list-locations` komutunu kullanarak bölgelerin bir listesini alabilirsiniz. |

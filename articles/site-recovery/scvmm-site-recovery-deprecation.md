@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: rajanaki
-ms.openlocfilehash: 68881d57f251d2f26996b2a837780106326ec1d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c126d72720c16d4ba869156e86a6e60110b2c31b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492283"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847486"
 ---
 # <a name="upcoming-deprecation-of-dr-between-customer-owned-sites-using-hyper-v-and-between-sites-managed-by-scvmm-to-azure"></a>Hyper-V ' d e ait müşterilerin sahip olduğu siteler arasında ve SCVMM tarafından Azure 'a yönetilen siteler arasında DR 'nin kullanım dışı bırakılması
 
@@ -43,7 +43,7 @@ Aşağıda, müşterinin, senaryo kullanım dışı olduktan sonra DR stratejile
 - [Hyper-V konaklarındaki VM 'ler Için Azure 'U Dr hedefi olarak kullanmaya başlamak](hyper-v-azure-tutorial.md)için seçin.
 
 > [!IMPORTANT]
-> Şirket içi ortamınızın hala SCVMMM 'e sahip olabileceğini lütfen unutmayın, ancak ASR 'yi yalnızca Hyper-V konaklarına başvurularla yapılandıracaksınız.
+> Şirket içi ortamınızın hala SCVMM 'niz olabileceğini lütfen unutmayın, ancak ASR 'yi yalnızca Hyper-V konaklarına başvurularla yapılandıracaksınız.
 
 - Siteden siteye çoğaltmaya devam etmeyi, ancak temel [Hyper-V çoğaltma çözümünü](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)kullanmayı seçin, ancak Azure Portal Azure SITE Recovery kullanarak Dr yapılandırmasını yönetemeyecektir. 
 

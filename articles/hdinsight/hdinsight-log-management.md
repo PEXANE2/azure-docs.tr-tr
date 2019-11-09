@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: c069b620e129177be5d374f5b23b5e54befd8ca2
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 11/07/2019
+ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105438"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837925"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight kümesi için günlükleri yönetme
 
@@ -23,17 +23,17 @@ HDInsight küme günlüklerinin yönetilmesi, küme ortamının tüm yönleri ha
 
 HDInsight günlük yönetiminde tipik adımlar şunlardır:
 
-* 1\. adım: Günlük bekletme ilkelerini belirleme
-* 2\. adım: Küme hizmeti sürümleri yapılandırma günlüklerini yönetme
-* 3\. adım: Küme işi yürütme günlük dosyalarını yönetme
-* 4\. Adım: Günlük birimi depolama boyutlarını ve maliyetlerini tahmin edin
-* 5\. Adım: Günlük Arşivi ilkelerini ve süreçlerini belirleme
+* 1\. Adım: günlük tutma ilkelerini belirleme
+* 2\. Adım: küme hizmeti sürümlerini yapılandırma günlüklerini yönetme
+* 3\. Adım: küme işi yürütme günlük dosyalarını yönetme
+* 4\. Adım: günlük birimi depolama boyutlarını ve maliyetlerini tahmin etme
+* 5\. Adım: günlük Arşivi ilkelerini ve süreçlerini belirleme
 
-## <a name="step-1-determine-log-retention-policies"></a>1\. adım: Günlük bekletme ilkelerini belirleme
+## <a name="step-1-determine-log-retention-policies"></a>1\. Adım: günlük tutma ilkelerini belirleme
 
 HDInsight küme günlüğü yönetim stratejisi oluşturmanın ilk adımı, iş senaryoları ve iş yürütme geçmişi depolama gereksinimleri hakkında bilgi toplamaktır.
 
-### <a name="cluster-details"></a>Küme Ayrıntıları
+### <a name="cluster-details"></a>Küme ayrıntıları
 
 Aşağıdaki küme ayrıntıları, günlük yönetimi stratejinizde bilgi toplamaya yardımcı olması için kullanışlıdır. Bu bilgileri belirli bir Azure hesabında oluşturduğunuz tüm HDInsight kümelerinden toplayın.
 
@@ -45,8 +45,8 @@ Aşağıdaki küme ayrıntıları, günlük yönetimi stratejinizde bilgi toplam
 Azure portal kullanarak bu en üst düzey bilgilerden çoğunu alabilirsiniz.  Alternatif olarak, HDInsight kümeniz hakkında bilgi almak için [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 'yi de kullanabilirsiniz:
 
 ```azurecli
-    az hdinsight list --resource-group <ResourceGroup>
-    az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
+az hdinsight list --resource-group <ResourceGroup>
+az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
 Bu bilgileri görüntülemek için PowerShell de kullanabilirsiniz.  Daha fazla bilgi için bkz. [Azure PowerShell kullanarak HDInsight 'Ta Hadoop kümelerini yönetme](hdinsight-administer-use-powershell.md).
@@ -69,7 +69,7 @@ Her tür için uygun günlük stratejilerini tasarlamak üzere HDInsight kümeni
 
 * Bir izleme çözümünün veya hizmetinin yararlı bir avantaj olup olmayacağını göz önünde bulundurun. Microsoft System Center bir [HDInsight yönetim paketi](https://www.microsoft.com/download/details.aspx?id=42521)sağlar. Günlükleri toplamak ve merkezileştirmek için Apache Chukwa ve Gana gibi üçüncü taraf araçları da kullanabilirsiniz. Birçok şirket, Hadoop tabanlı büyük veri çözümlerini izlemek için hizmet sunar, örneğin: Centerity, Compuware APM, şeması metin SPM ve zettaset Orchestrator.
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>2\. adım: Küme hizmeti sürümlerini yönetme ve betik eylem günlüklerini görüntüleme
+## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>2\. Adım: küme hizmeti sürümlerini yönetme ve betik eylem günlüklerini görüntüleme
 
 Tipik bir HDInsight kümesi, çeşitli hizmetleri ve açık kaynaklı yazılım paketlerini (Apache HBase, Apache Spark vb.) kullanır. Biyotika gibi bazı iş yükleri için, iş yürütme günlüklerine ek olarak hizmet yapılandırma günlüğü geçmişini saklamanız gerekebilir.
 
@@ -87,11 +87,11 @@ Ambarı Kullanıcı arabirimini kullanarak, kümedeki belirli bir konakta (veya 
 
 ### <a name="view-the-script-action-logs"></a>Betik eylemi günlüklerini görüntüleme
 
-HDInsight [betik eylemleri](hdinsight-hadoop-customize-cluster-linux.md) , el ile veya belirtildiğinde bir kümede betikleri çalıştırır. Örneğin, betik eylemleri kümeye ek yazılım yüklemek veya varsayılan değerlerden yapılandırma ayarlarını değiştirmek için kullanılabilir. Betik eylemi günlükleri, kümenin kurulumu sırasında oluşan hatalara ilişkin Öngörüler ve ayrıca küme performansını ve kullanılabilirliğini etkileyebilecek yapılandırma ayarları ' değişikliklerini sağlayabilir.  Bir betik eyleminin durumunu görmek için, ambarı Kullanıcı arabiriminizdeki **Ops** düğmesini seçin veya varsayılan depolama hesabındaki durum günlüklerine erişin. Depolama günlükleri ' nde `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`kullanılabilir.
+HDInsight [betik eylemleri](hdinsight-hadoop-customize-cluster-linux.md) , el ile veya belirtildiğinde bir kümede betikleri çalıştırır. Örneğin, betik eylemleri kümeye ek yazılım yüklemek veya varsayılan değerlerden yapılandırma ayarlarını değiştirmek için kullanılabilir. Betik eylemi günlükleri, kümenin kurulumu sırasında oluşan hatalara ilişkin Öngörüler ve ayrıca küme performansını ve kullanılabilirliğini etkileyebilecek yapılandırma ayarları ' değişikliklerini sağlayabilir.  Bir betik eyleminin durumunu görmek için, ambarı Kullanıcı arabiriminizdeki **Ops** düğmesini seçin veya varsayılan depolama hesabındaki durum günlüklerine erişin. Depolama günlükleri `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`adresinden kullanılabilir.
 
-## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>3\. adım: Küme işi yürütme günlük dosyalarını yönetme
+## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>3\. Adım: küme işi yürütme günlük dosyalarını yönetme
 
-Sonraki adım çeşitli hizmetlere yönelik iş yürütme günlüğü dosyalarını gözden geçiriyorsunuz.  Hizmetler Apache HBase, Apache Spark ve diğer birçok tane içerebilir. Bir Hadoop kümesi çok sayıda ayrıntılı günlük oluşturur, bu nedenle hangi günlüklerin yararlı (ve olmayan) zaman alabilir olduğunu belirler.  Günlük sistemini anlamak, günlük dosyalarının hedeflenen yönetimi için önemlidir.  Aşağıda örnek bir günlük dosyası verilmiştir.
+Sonraki adım çeşitli hizmetlere yönelik iş yürütme günlüğü dosyalarını gözden geçiriyorsunuz.  Hizmetler Apache HBase, Apache Spark ve diğer birçok tane içerebilir. Bir Hadoop kümesi çok sayıda ayrıntılı günlük üretir, bu nedenle hangi günlüklerin yararlı (ve olmayan) zaman alabilir olduğunu belirleyin.  Günlük sistemini anlamak, günlük dosyalarının hedeflenen yönetimi için önemlidir.  Aşağıda örnek bir günlük dosyası verilmiştir.
 
 ![HDInsight örnek günlük dosyası örnek çıktısı](./media/hdinsight-log-management/hdi-log-file-example.png)
 
@@ -112,29 +112,29 @@ HDInsight tarafından oluşturulan çekirdek günlük dosyalarına ek olarak, YA
 YARN, bir çalışan düğümündeki tüm kapsayıcılar arasında günlükleri toplar ve bu günlükleri çalışan düğümü başına bir toplu günlük dosyası olarak depolar. Bu günlük, bir uygulama bittikten sonra varsayılan dosya sisteminde depolanır. Uygulamanız yüzlerce veya binlerce kapsayıcı kullanabilir, ancak tek bir çalışan düğümünde çalıştırılan tüm kapsayıcılar için Günlükler her zaman tek bir dosyaya toplanır. Uygulamanız tarafından kullanılan her çalışan düğümü için yalnızca bir günlük vardır. Günlük toplama, HDInsight kümeleri sürüm 3,0 ve üzerinde varsayılan olarak etkindir. Toplanan Günlükler, küme için varsayılan depolamada bulunur.
 
 ```
-    /app-logs/<user>/logs/<applicationId>
+/app-logs/<user>/logs/<applicationId>
 ```
 
 Toplanan Günlükler, kapsayıcı tarafından dizini oluşturulmuş bir TFile ikili biçiminde yazıldığı için doğrudan okunabilir değildir. Bu günlükleri uygulamalar veya ilgilendiğiniz kapsayıcılar için düz metin olarak görüntülemek üzere YARN ResourceManager günlüklerini veya CLı araçlarını kullanın.
 
 #### <a name="yarn-cli-tools"></a>YARN CLı araçları
 
-YARN CLı araçlarını kullanmak için önce SSH kullanarak HDInsight kümesine bağlanmanız gerekir. Bu komutları çalıştırırken `<user-who-started-the-application>`,,ve `<applicationId>` `<worker-node-address>`bilgilerinibelirtin. `<containerId>` Günlükleri aşağıdaki komutlardan birini kullanarak düz metin olarak görebilirsiniz:
+YARN CLı araçlarını kullanmak için önce SSH kullanarak HDInsight kümesine bağlanmanız gerekir. Bu komutları çalıştırırken `<applicationId>`, `<user-who-started-the-application>`, `<containerId>`ve `<worker-node-address>` bilgilerini belirtin. Günlükleri aşağıdaki komutlardan birini kullanarak düz metin olarak görebilirsiniz:
 
 ```bash
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
+yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
+yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 ```
 
 #### <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager Kullanıcı arabirimi
 
 YARN ResourceManager Kullanıcı arabirimi küme baş düğümünde çalışır ve bu, ambarı Web Kullanıcı arabirimi üzerinden erişilir. YARN günlüklerini görüntülemek için aşağıdaki adımları kullanın:
 
-1. Bir Web tarayıcısında öğesine `https://CLUSTERNAME.azurehdinsight.net`gidin. CLUSTERNAME değerini HDInsight kümenizin adıyla değiştirin.
+1. Bir Web tarayıcısında `https://CLUSTERNAME.azurehdinsight.net`' a gidin. CLUSTERNAME değerini HDInsight kümenizin adıyla değiştirin.
 2. Soldaki hizmetler listesinden YARN ' yi seçin.
-3. Hızlı bağlantılar açılan listesinden küme baş düğümlerinden birini seçin ve ardından **ResourceManager günlükleri**' ni seçin. YARN günlüklerine bağlantıların bir listesi sunulur.
+3. Hızlı bağlantılar açılan listesinden küme baş düğümlerinden birini seçin ve ardından **ResourceManager günlükleri**' ni seçin. YARN günlüklerine bağlantıların bir listesini görürsünüz.
 
-## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>4\. Adım: Günlük birimi depolama boyutlarını ve maliyetlerini tahmin edin
+## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>4\. Adım: günlük birimi depolama boyutlarını ve maliyetlerini tahmin etme
 
 Önceki adımları tamamladıktan sonra, HDInsight kümenizin üretmiş olduğu günlük dosyalarının türlerini ve hacimlerini kavramış olursunuz.
 
@@ -142,11 +142,11 @@ Ardından, bir süre içinde anahtar günlük depolama konumlarında günlük ve
 
 Artık anahtar günlükleri için bir günlük yönetimi stratejisi oluşturmak üzere yeterli bilgiye sahipsiniz.  Hem günlük boyutu büyümesini hem de günlük depolama Azure hizmeti maliyetlerini tahmin etmek için elektronik tablonuzu (veya seçim aracını) kullanın.  Ayrıca, incelediğiniz Günlükler kümesi için herhangi bir günlük tutma gereksinimini göz önünde bulundurun.  Artık, hangi günlük dosyalarının silinebileceği (varsa) ve hangi günlüklerin korunması ve daha ucuz Azure depolama için arşivlenmesi gerektiğini belirlemekten sonra gelecekteki günlük depolama maliyetlerini yeniden tahmin edebilirsiniz.
 
-## <a name="step-5-determine-log-archive-policies-and-processes"></a>5\. Adım: Günlük Arşivi ilkelerini ve süreçlerini belirleme
+## <a name="step-5-determine-log-archive-policies-and-processes"></a>5\. Adım: günlük Arşivi ilkelerini ve süreçlerini belirleme
 
 Hangi günlük dosyalarının silineceğini belirledikten sonra, belirli bir süre geçtikten sonra günlük dosyalarını otomatik olarak silmek için birçok Hadoop hizmetine ait günlüğe kaydetme parametreleri ayarlayabilirsiniz.
 
-Belirli günlük dosyaları için, düşük fiyatlı günlük dosyası arşivleme yaklaşımını kullanabilirsiniz. Azure Resource Manager etkinlik günlükleri için, Azure portal kullanarak bu yaklaşımı inceleyebilirsiniz.  HDInsight örneğiniz için Azure portal **etkinlik günlüğü**' bağlantısını seçerek ARM günlüklerinin arşivlenmesini ayarlayın.  Etkinlik günlüğü arama sayfasının üst kısmında **dışarı** aktar menü öğesini seçerek **etkinlik günlüğünü dışarı aktar** bölmesini açın.  Abonelik, bölge, bir depolama hesabına verip vermeyeceğinizi ve günlüklerin saklanacağı gün sayısını girin. Aynı bölmede, bir olay hub 'ına dışa aktarıp vermeyeceğinizi de belirtebilirsiniz.
+Belirli günlük dosyaları için, düşük fiyatlı günlük dosyası arşivleme yaklaşımını kullanabilirsiniz. Azure Resource Manager etkinlik günlükleri için, Azure portal kullanarak bu yaklaşımı inceleyebilirsiniz.  HDInsight örneğiniz için Azure portal **etkinlik günlüğü** bağlantısını seçerek kaynak yöneticisi günlüklerini arşivlemeyi ayarlayın.  Etkinlik günlüğü arama sayfasının üst kısmında **dışarı** aktar menü öğesini seçerek **etkinlik günlüğünü dışarı aktar** bölmesini açın.  Abonelik, bölge, bir depolama hesabına verip vermeyeceğinizi ve günlüklerin saklanacağı gün sayısını girin. Aynı bölmede, bir olay hub 'ına dışa aktarıp vermeyeceğinizi de belirtebilirsiniz.
 
 ![Azure portal dışarı aktarma etkinlik günlüğü önizlemesi](./media/hdinsight-log-management/hdi-export-log-files.png)
 
@@ -159,14 +159,14 @@ HDInsight kümesi için verileri tutan Azure depolama için oluşturulan günlü
 
 ### <a name="control-the-size-and-number-of-backup-indexes-for-old-log-files"></a>Eski günlük dosyaları için yedek dizinlerin boyutunu ve sayısını denetleme
 
-Tutulan günlük dosyalarının boyutunu ve sayısını denetlemek için aşağıdaki özellikleri `RollingFileAppender`ayarlayın:
+Tutulan günlük dosyalarının boyutunu ve sayısını denetlemek için `RollingFileAppender`aşağıdaki özelliklerini ayarlayın:
 
 * `maxFileSize`, dosyanın alındığı dosyanın kritik boyutudur. Varsayılan değer 10 MB 'tır.
-* `maxBackupIndex`oluşturulacak yedekleme dosyalarının sayısını, varsayılan 1 ' i belirtir.
+* `maxBackupIndex` oluşturulacak yedekleme dosyalarının sayısını, varsayılan 1 ' i belirtir.
 
 ### <a name="other-log-management-techniques"></a>Diğer günlük yönetimi teknikleri
 
-Disk alanının tükenmesinden kaçınmak için [logrotate](https://linux.die.net/man/8/logrotate) gibi bazı işletim sistemi araçlarını kullanarak günlük dosyalarının işlenmesini yönetebilirsiniz. Günlük dosyalarını sıkıştırmak `logrotate` ve eski olanları kaldırmak için, ' yi günlük olarak çalışacak şekilde yapılandırabilirsiniz. Yaklaşım, yerel düğümlerde günlük dosyalarının saklanacağı süre gibi gereksinimlerinize bağlıdır.  
+Disk alanının tükenmesinden kaçınmak için [logrotate](https://linux.die.net/man/8/logrotate) gibi bazı işletim sistemi araçlarını kullanarak günlük dosyalarının işlenmesini yönetebilirsiniz. `logrotate` günlük olarak çalışacak şekilde yapılandırabilir, günlük dosyalarını sıkıştırarak ve eskilerinin kaldırılmasını sağlayabilirsiniz. Yaklaşım, yerel düğümlerde günlük dosyalarının saklanacağı süre gibi gereksinimlerinize bağlıdır.  
 
 Ayrıca, çıkış günlüğü boyutunu büyük ölçüde artıran bir veya daha fazla hizmet için hata ayıklama günlüğü 'nün etkinleştirilip etkinleştirilmeyeceğini de denetleyebilirsiniz.  
 

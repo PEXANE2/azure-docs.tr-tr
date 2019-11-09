@@ -14,22 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: atsenthi
-ms.openlocfilehash: 3fa40d794d02da08d29b6cac652edf493977f8e1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: fd1787318e8573183293ddd832a11cf8cfe09cf2
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599738"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832614"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric kapsayıcı hizmeti için günlükleri görüntüleme
 Azure Service Fabric bir kapsayıcı Orchestrator ve hem [Linux hem de Windows kapsayıcılarını](service-fabric-containers-overview.md)destekler.  Bu makalede, sorunları tanılamanıza ve giderebilmeniz için çalışan bir kapsayıcı hizmetinin veya ölü kapsayıcının kapsayıcı günlüklerinin nasıl görüntüleneceği açıklanır.
 
 ## <a name="access-the-logs-of-a-running-container"></a>Çalışan bir kapsayıcının günlüklerine erişin
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)kullanılarak kapsayıcı günlüklerine erişilebilir.  Bir Web tarayıcısında, ' a giderek [http://mycluster.region.cloudapp.azure.com:19080/Explorer](http://mycluster.region.cloudapp.azure.com:19080/Explorer)kümenin yönetim uç noktasından Service Fabric Explorer açın.  
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)kullanılarak kapsayıcı günlüklerine erişilebilir.  Bir Web tarayıcısında, `http://mycluster.region.cloudapp.azure.com:19080/Explorer`giderek kümenin yönetim uç noktasındaki Service Fabric Explorer açın.  
 
-Kapsayıcı günlükleri, kapsayıcı hizmeti örneğinin üzerinde çalıştığı küme düğümünde bulunur. Örnek olarak, [Linux oylama örnek uygulamasının](service-fabric-quickstart-containers-linux.md)Web ön uç kapsayıcısının günlüklerini alın. Ağaç görünümünde, **küme**>**uygulamaları**>**votingtype**>**Fabric:/oylama/azuiptal tefront**' ı genişletin.  Sonra bölümü genişletin (Bu örnekte, d1aa737e-f22a-e347-be16-eec90be24bc1) ve kapsayıcının *_lnxvm_0*küme düğümünde çalıştığını görün.
+Kapsayıcı günlükleri, kapsayıcı hizmeti örneğinin üzerinde çalıştığı küme düğümünde bulunur. Örnek olarak, [Linux oylama örnek uygulamasının](service-fabric-quickstart-containers-linux.md)Web ön uç kapsayıcısının günlüklerini alın. Ağaç görünümünde **küme**>**uygulamalar**>**votingtype**>**Fabric:/oylama/azuiptal tefront**' ı genişletin.  Sonra bölümü genişletin (Bu örnekte d1aa737e-f22a-e347-be16-eec90be24bc1) ve kapsayıcının *_lnxvm_0*küme düğümünde çalıştığını görün.
 
-Ağaç görünümünde, _lnxvm_0>**doku:/oylama**>**azuiptal tfrontpkg**>Code **düğümlerini**>genişleterek *_lnxvm_0* düğümündeki kod paketini bulunPaket>**kodu**.  Ardından kapsayıcı günlüklerini göstermek için **kapsayıcı günlükleri** seçeneğini belirleyin.
+Ağaç görünümünde *_lnxvm_0* **düğümünde kod paketini bulun>** **_Lnxvm_0**>**Fabric:/oylama**>**azuiptal tfrontpkg**>**kod paketleri** **>kodu.**  Ardından kapsayıcı günlüklerini göstermek için **kapsayıcı günlükleri** seçeneğini belirleyin.
 
 ![Service Fabric platformu][Image1]
 
@@ -44,10 +44,10 @@ Service Fabric (6.1 veya üzeri sürümler), kapsayıcı başlatma hatalarının
 
 **ContainersRetentionCount** ayarı, başarısız olduğunda bekletilecek kapsayıcı sayısını belirtir. Negatif bir değer belirtilirse başarısız olan tüm kapsayıcılar bekletilir. **ContainersRetentionCount** özniteliği belirtilmediğinde hiçbir kapsayıcı korunmaz. **ContainersRetentionCount** özniteliği, kullanıcıların test ve üretim kümeleri için farklı değerler belirtebilmesi amacıyla Uygulama Parametrelerini destekler. Kapsayıcı hizmetinin diğer düğümlere taşınmasını önlemek için bu özellikler kullanılırken kapsayıcı hizmetinin belirli bir düğümü hedeflemesini sağlamak için yerleştirme kısıtlamaları kullanın. Bu özellik kullanılarak bekletilen tüm kapsayıcılar el ile kaldırılmalıdır.
 
-**Runınteractıve** ayarı Docker `--interactive` ve `tty` [bayraklarına](https://docs.docker.com/engine/reference/commandline/run/#options)karşılık gelir. Bu ayar bildirim dosyasında true olarak ayarlandığında, kapsayıcıyı başlatmak için bu bayraklar kullanılır.  
+**Runınteractıve** ayarı docker 'ın `--interactive` ve `tty` [bayraklarına](https://docs.docker.com/engine/reference/commandline/run/#options)karşılık gelir. Bu ayar bildirim dosyasında true olarak ayarlandığında, kapsayıcıyı başlatmak için bu bayraklar kullanılır.  
 
 ### <a name="rest"></a>REST
-Kilitlenen bir kapsayıcının günlüklerini almak için [düğümde dağıtılan kapsayıcı günlüklerini al](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) işlemini kullanın. Kapsayıcının üzerinde çalıştığı düğümün adını, uygulama adını, hizmet bildirimi adını ve kod paketi adını belirtin.  Belirtin `&Previous=true`. Yanıt, kod paketi örneğinin ölü kapsayıcısının kapsayıcı günlüklerini içerecektir.
+Kilitlenen bir kapsayıcının günlüklerini almak için [düğümde dağıtılan kapsayıcı günlüklerini al](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) işlemini kullanın. Kapsayıcının üzerinde çalıştığı düğümün adını, uygulama adını, hizmet bildirimi adını ve kod paketi adını belirtin.  `&Previous=true`belirtin. Yanıt, kod paketi örneğinin ölü kapsayıcısının kapsayıcı günlüklerini içerecektir.
 
 İstek URI 'SI aşağıdaki biçime sahiptir:
 
@@ -66,7 +66,7 @@ GET http://localhost:19080/Nodes/_Node_0/$/GetApplications/SimpleHttpServerApp/$
 ```
 
 ### <a name="service-fabric-sfctl"></a>Service Fabric (SFCTL)
-Çökmeyle ilgili bir kapsayıcı için günlükleri getirmek üzere [sfctl hizmeti Get-Container-logs](service-fabric-sfctl-service.md) komutunu kullanın.  Kapsayıcının üzerinde çalıştığı düğümün adını, uygulama adını, hizmet bildirimi adını ve kod paketi adını belirtin. `--previous` Bayrağı belirtin.  Yanıt, kod paketi örneğinin ölü kapsayıcısının kapsayıcı günlüklerini içerecektir.
+Çökmeyle ilgili bir kapsayıcı için günlükleri getirmek üzere [sfctl hizmeti Get-Container-logs](service-fabric-sfctl-service.md) komutunu kullanın.  Kapsayıcının üzerinde çalıştığı düğümün adını, uygulama adını, hizmet bildirimi adını ve kod paketi adını belirtin. `--previous` bayrağını belirtin.  Yanıt, kod paketi örneğinin ölü kapsayıcısının kapsayıcı günlüklerini içerecektir.
 
 ```
 sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –-previous

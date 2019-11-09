@@ -1,6 +1,6 @@
 ---
 title: Kullanıcıları Video Indexer davet etme-Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Bu makalede, kullanıcıların Video Indexer için nasıl davet yapılacağı gösterilir.
 services: media-services
 author: ReutAmior
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 740b03179fad91e9042a54f8e74a622b3125b832
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: c1395bc3b329630a1ecbd479d275c30c9c787bb1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950172"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839007"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>Hızlı başlangıç: kullanıcıları Video Indexer davet etme
 
@@ -26,7 +26,7 @@ ms.locfileid: "71950172"
 
 ## <a name="invite-new-users"></a>Yeni Kullanıcı davet et
 
-1. [Video Indexer](https://www.videoindexer.ai/) Web sitesinde oturum açın. Yönetici hesabıyla bağlı olduğunuzdan emin olun.
+1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın. Yönetici hesabıyla bağlı olduğunuzdan emin olun.
 1. Üstteki menüdeki **başkalarını davet et** düğmesine tıklayın:
 
    ![Yeni Kullanıcı davet et](./media/invite-users/invite-users.png)
@@ -39,7 +39,7 @@ ms.locfileid: "71950172"
     > Davet ettiğiniz tüm kullanıcılar hesabınızdaki tüm videolar için okuma ve yazma iznine sahip olacaktır.
 1. Davet ettiğiniz kullanıcılar bağlantı içeren bir e-posta alır ve **katılmayı video Indexer** bağlantısına tıkladıktan sonra hesaba erişebilecektir:
 
-    ![Onaysız](./media/invite-users/invite-msg.png)
+    ![Onay](./media/invite-users/invite-msg.png)
 
     Hesaba erişim kazanmak için kullanıcının katılması için bağlantıyı tıklamalıdır. 
 
@@ -47,7 +47,7 @@ ms.locfileid: "71950172"
 
 Hesabınıza erişimi olan kullanıcıları kaldırmak istiyorsanız, adının yanında bulunan **X** işaretine tıklayabilirsiniz:
 
-![Kullanıcıları Kaldır](./media/invite-users/remove-users.png)
+![Kullanıcıları kaldır](./media/invite-users/remove-users.png)
 
 Kullanıcılar, kaldırma işlemi sırasında bildirim almaz. Kullanıcılar kaldırıldıktan sonra oturum açma yetkisine sahip olmaz.
 
@@ -57,6 +57,6 @@ Artık videonun öngörülerini görmek için [video Indexer Web sitesini](video
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Video Indexer genel bakış](video-indexer-overview.md)
+- [Video Indexer’a genel bakış](video-indexer-overview.md)
 - [Nasıl kaydolun ve ilk videonuzu karşıya yükleyin](video-indexer-get-started.md)
 - [API 'Leri kullanmaya başlama](video-indexer-use-apis.md)

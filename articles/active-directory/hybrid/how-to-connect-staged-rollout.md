@@ -6,16 +6,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24efd9d67e5bcc083ce1a02dcf0850a39189afe8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2596091324acde5c4fdc3f7c467849f90266fec9
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173096"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847222"
 ---
 # <a name="cloud-authentication-staged-rollout-public-preview"></a>Bulut kimlik doğrulaması: hazırlanan dağıtım (Genel Önizleme)
 
@@ -33,7 +33,7 @@ Bu özelliklerin bulut kimlik doğrulamasına geçmeden önce dikkate alınması
 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 -   Federasyon etki alanları içeren bir Azure AD kiracınız var.
 
@@ -117,18 +117,18 @@ PowerShell kullanarak AD ormanlarda sorunsuz SSO 'yu etkinleştirin. Birden fazl
 
 2. % ProgramFiles%\\Microsoft Azure Active Directory Connect klasörüne gidin.
 
-3. Şu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\\AzureADSSO.psd1`.
+3. Şu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1`.
 
 4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de `New-AzureADSSOAuthenticationContext`çağırın. Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir iletişim kutusu vermelidir.
 
-5.  `Get-AzureADSSOStatus \| ConvertFrom-Json`çağırın. Bu komut, bu özelliğin etkinleştirildiği AD ormanları listesini (\"etki alanları\" listesine bakın) sağlar. Varsayılan olarak, kiracı düzeyinde false olarak ayarlanır.
+5.  `Get-AzureADSSOStatus | ConvertFrom-Json`çağırın. Bu komut, bu özelliğin etkinleştirildiği AD ormanları listesini (\"etki alanları\" listesine bakın) sağlar. Varsayılan olarak, kiracı düzeyinde false olarak ayarlanır.
 
    > **Örnek:** 
    > ![Windows PowerShell çıkışının örneğini](./media/how-to-connect-staged-rollout/sr3.png)
 
-6.  `\$creds = Get-Credential`çağırın. İstendiğinde, hedeflenen AD ormanının etki alanı yönetici kimlik bilgilerini girin.
+6.  `$creds = Get-Credential`çağırın. İstendiğinde, hedeflenen AD ormanının etki alanı yönetici kimlik bilgilerini girin.
 
-7. `Enable-AzureADSSOForest -OnPremCredentials \$creds`çağırın. Bu komut, sorunsuz SSO için gerekli olan bu Active Directory orman için şirket içi etki alanı denetleyicisinden AZUREADSSOACC bilgisayar hesabını oluşturur.
+7. `Enable-AzureADSSOForest -OnPremCredentials $creds`çağırın. Bu komut, sorunsuz SSO için gerekli olan bu Active Directory orman için şirket içi etki alanı denetleyicisinden AZUREADSSOACC bilgisayar hesabını oluşturur.
 
 8. Sorunsuz SSO, URL 'Lerin intranet bölgesinde olmasını gerektirir. Bu URL 'nin grup Ilkelerini kullanarak dağıtılması için lütfen [sorunsuz çoklu oturum açma hızlı başlangıç](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature) bölümüne bakın.
 
@@ -240,7 +240,7 @@ Federasyon sağlayıcılarında Kullanıcı oturum açma işlemlerinin hala deva
 
 -   **S: PowerShell 'i hazırlanan dağıtım gerçekleştirmek için kullanabilir miyim?**
 
--   Y: Evet, lütfen PowerShell 'i kullanarak hazırlanan dağıtımı gerçekleştirin.
+-   Y: Evet, lütfen PowerShell 'i kullanarak [hazırlanan dağıtımı gerçekleştirin](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 - [AzureAD 2,0 Önizleme](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

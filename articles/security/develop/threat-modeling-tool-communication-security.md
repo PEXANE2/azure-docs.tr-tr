@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1c9562f413fa0ed52d61d0b38df358f1a2cd03f9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 54d34a120c575fd01f746131d909058951d1facf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498684"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839250"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Güvenlik çerçevesi: Iletişim güvenliği | Karşı 
 | Ürün/hizmet | Makale |
@@ -136,7 +136,7 @@ Aşağıdaki örnek, tüm gelen trafiği HTTPS kullanacak şekilde zorlayan teme
   </system.webServer>
 </configuration>
 ```
-Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yeniden yönlendirme) HTTP durum kodunu döndürerek işe yarar. 301, isteği ziyaretçi isteğiyle aynı URL 'ye yönlendirir, ancak isteğin HTTP bölümünü HTTPS ile değiştirir. Örneğin, HTTP://contoso.com HTTPS://contoso.comyeniden yönlendirilir. 
+Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yeniden yönlendirme) HTTP durum kodunu döndürerek işe yarar. 301, isteği ziyaretçi isteğiyle aynı URL 'ye yönlendirir, ancak isteğin HTTP bölümünü HTTPS ile değiştirir. Örneğin, `HTTP://contoso.com` `HTTPS://contoso.com`yeniden yönlendirilir. 
 
 ## <a id="http-hsts"></a>HTTP Strict Transport Security 'yi (HSTS) etkinleştir
 
@@ -175,7 +175,7 @@ Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Depolama | 
+| **Bileşen**               | Azure Storage | 
 | **SDL aşaması**               | Dağıtım |  
 | **İlgili teknolojiler** | Yorlar |
 | **Özelliklerine**              | Yok  |
@@ -186,7 +186,7 @@ Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Depolama | 
+| **Bileşen**               | Azure Storage | 
 | **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Yorlar |
 | **Özelliklerine**              | StorageType-blob |
@@ -208,7 +208,7 @@ Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Depolama | 
+| **Bileşen**               | Azure Storage | 
 | **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel, Windows Phone |
 | **Özelliklerine**              | Yok  |

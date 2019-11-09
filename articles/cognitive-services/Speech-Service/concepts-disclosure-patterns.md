@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: fde4a73dd4a95028f23563fb6a8ae36c0142fd39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507324"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836990"
 ---
 # <a name="disclosure-design-patterns"></a>Açıklama tasarım desenleri
 Artık yapay sesli&#39;deneyiminize yönelik doğru [Açıklama düzeyini](concepts-disclosure-guidelines.md#disclosure-assessment) saptadığınıza göre,&#39;olası tasarım düzenlerini araştırmak için iyi bir zaman vardır.
@@ -247,11 +247,11 @@ Sorunsuz bir şekilde başarısız olan bir fırsat olarak açıklama kullanın.
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [Asetat notunun](https://aka.ms/neural-tts-transparency-note)
+* [Sesli Taçanın açıklanması](https://aka.ms/disclosure-voice-talent)
 * [Yapay sesli teknolojinin sorumlu dağıtımına ilişkin yönergeler](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Geçişi genel bakış](concepts-gating-overview.md)
 * [Nasıl açığa çıkarmaz](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Asetat notunun](https://aka.ms/neural-tts-transparency-note)
+* [Sesli Taçanın açıklanması](https://aka.ms/disclosure-voice-talent)

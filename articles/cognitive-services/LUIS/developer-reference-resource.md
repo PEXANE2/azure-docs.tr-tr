@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: b2b32d6ccca69f330cfe15faa1446aa91fdb687a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d59646a87727409d759cc1903046fb3cdeade2e0
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465734"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847383"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Language Understanding için geliştirici kaynakları
 
@@ -41,8 +41,10 @@ Language Understanding hizmetine, oluşturmanız gereken bir Azure kaynağından
 
 REST API 'lerden hem yazma hem de tahmin uç nokta API 'LERI kullanılabilir:
 
-* [Başvuru belgelerini](https://go.microsoft.com/fwlink/?linkid=2092087) yazma
-* Tahmin çalışma zamanı [başvuru belgeleri](https://go.microsoft.com/fwlink/?linkid=2092356)
+|Tür|Sürüm|
+|--|--|
+|Yazma|[V2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[izleme v3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
+|Hızlı|[V2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[Yüklemesinde](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
 
 ### <a name="language-based-sdks"></a>Dil tabanlı SDK 'lar
 

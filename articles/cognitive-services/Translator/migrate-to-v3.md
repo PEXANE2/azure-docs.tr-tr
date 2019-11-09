@@ -1,7 +1,7 @@
 ---
 title: V3-Translator Metin Çevirisi API'si 'e geçiş
 titleSuffix: Azure Cognitive Services
-description: V2 'den Translator Metin Çevirisi API'si 'e geçiş yapmayı öğrenin.
+description: Bu makalede, v2 'den Azure bilişsel hizmetler Translator Metin Çevirisi API'si 'dan v3 'e geçiş yapmanıza yardımcı olacak adımlar sağlanmaktadır.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 9ce9dc330ec1b0c32ce045437fadb5d8c191529e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595236"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837321"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Metin Çevirisi API'si v2 'yi v3 geçişine
 
@@ -61,13 +61,13 @@ Aşağıdaki v2 ve v3 yöntemleri listesi, v2 ile gelen işlevleri sağlayacak o
 
 Microsoft Translator Metin Çevirisi çeviri v2, XML biçimindeki verileri kabul etti ve döndürdü. V3 'de, API kullanılarak gönderilen ve alınan tüm veriler JSON biçimindedir. XML artık v3 'de kabul edilmez veya döndürülmeyecektir.
 
-Bu değişiklik, v2 metin çevirisi API 'SI için yazılmış bir uygulamanın çeşitli yönlerini etkileyecektir. Örneğin: Diller API 'SI metin çevirisi, alfabede ve iki sözlük yöntemi için dil bilgilerini döndürür. Tüm yöntemler için tüm dil bilgilerini tek bir çağrıda isteyebilir veya tek tek talep edebilirsiniz.
+Bu değişiklik, v2 metin çevirisi API 'SI için yazılmış bir uygulamanın çeşitli yönlerini etkileyecektir. Örnek olarak: diller API 'SI metin çevirisi, alfabede ve iki sözlük yöntemi için dil bilgilerini döndürür. Tüm yöntemler için tüm dil bilgilerini tek bir çağrıda isteyebilir veya tek tek talep edebilirsiniz.
 
 Diller yöntemi kimlik doğrulaması gerektirmez; Aşağıdaki bağlantıya tıklayarak, JSON 'da v3 için tüm dil bilgilerini görebilirsiniz:
 
 [https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation, sözlük, alfabede](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
 
-## <a name="authentication-key"></a>Kimlik Doğrulaması Anahtarı
+## <a name="authentication-key"></a>Kimlik doğrulama anahtarı
 
 V2 için kullandığınız kimlik doğrulama anahtarı v3 için kabul edilecektir. Yeni bir abonelik almanız gerekmez. Yıluzun geçiş süresi boyunca uygulamalarınızda v2 ve v3 'i karıştıracaksınız, ancak hala v2-XML ' den v3-JSON ' a geçiş yaparken yeni sürümler yayınlanmasını kolaylaştırabilirsiniz.
 

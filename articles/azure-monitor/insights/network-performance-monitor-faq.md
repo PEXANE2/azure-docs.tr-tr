@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: b451597d2d91117e11b1becd8b4ab96f981dade8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce0b917f34cab31227e721e119c72cd5d1f99bff
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931311"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832010"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
 
@@ -98,6 +98,42 @@ NPM her ağ yoluna, ağ kesimine ve bileşen ağ atlıklarına, bir parçası ol
 ### <a name="how-can-i-create-alerts-in-npm"></a>NPM 'de nasıl uyarı oluşturabilirim?
 Adım adım yönergeler için [belgelerde Uyarılar bölümüne](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) bakın.
 
+### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Uyarılar için varsayılan Log Analytics sorguları nelerdir?
+Performans İzleyicisi sorgusu
+
+    NetworkMonitoring 
+     | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
+    
+Hizmet bağlantısı İzleyicisi sorgusu
+
+    NetworkMonitoring                 
+     | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
+    
+ExpressRoute İzleyicisi sorguları: devreler sorgusu
+
+    NetworkMonitoring
+    | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+
+Özel eşleme
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+
+Microsoft eşlemesi
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+
+Ortak sorgu   
+
+    NetworkMonitoring
+    | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") 
+
 ### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Yönlendiriciler ve sunucuları tek tek cihazlar olarak izleyebilir miyim?
 NPM yalnızca kaynak ve hedef IP 'Ler arasındaki temel ağ atlamalarının (anahtarlar, yönlendiriciler, sunucular vb.) IP ve ana bilgisayar adını tanımlar. Bu, tanımlanan atlamaları arasındaki gecikmeyi de belirler. Bu temel atlamaları tek tek izlemez.
 
@@ -110,17 +146,23 @@ Bant genişliği kullanımı, gelen ve giden bant genişliğinin toplamıdır. B
 ### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>ExpressRoute için gelen ve giden bant genişliği bilgilerini alabilir miyim?
 Hem birincil hem de Ikincil bant genişliği için gelen ve giden değerler yakalanabilir.
 
-Eşleme düzeyi bilgileri için, günlük aramasında aşağıdaki belirtilen sorguyu kullanın
+MS eşleme düzeyi bilgileri için, günlük aramasında aşağıdaki belirtilen sorguyu kullanın
 
     NetworkMonitoring 
-    | where SubType == "ExpressRoutePeeringUtilization"
-    | project CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | where SubType == "ERMSPeeringUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+    
+Özel eşleme düzeyi bilgileri için, günlük aramasında aşağıdaki belirtilen sorguyu kullanın
+
+    NetworkMonitoring 
+     | where SubType == "ERVNetConnectionUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
   
-Devre düzeyi bilgileri için, yukarıda bahsedilen sorguyu kullanın 
+Devre düzeyi bilgileri için, günlük aramasında aşağıdaki belirtilen sorguyu kullanın
 
     NetworkMonitoring 
-    | where SubType == "ExpressRouteCircuitUtilization"
-    | project CircuitName,PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | where SubType == "ERCircuitTotalUtilization"
+        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>NPM 'nin performans Izleyicisi için hangi bölgeler desteklenir?
 NPM, dünyanın herhangi bir bölümündeki ağlar arasındaki bağlantıyı, [desteklenen bölgelerden](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) birinde barındırılan bir çalışma alanından izleyebilir
@@ -140,10 +182,10 @@ Bir atlama aşağıdaki senaryolardan birinde veya daha fazla bir izleme Oute 'e
 
 * Yönlendiriciler kimliğini açığa çıkarmayan bir şekilde yapılandırılmıştır.
 * Ağ cihazları ICMP_TTL_EXCEEDED trafiğe izin vermiyor.
-* Bir güvenlik duvarı ağ cihazından gelen ICMP_TTL_EXCEEDED yanıtını engelliyor.
+* Bir güvenlik duvarı, ağ cihazından gelen ICMP_TTL_EXCEEDED yanıtını engelliyor.
 
-### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy-"></a>Sağlıksız testler için uyarı alıyorum, ancak NPM 'nin kayıp ve gecikme grafiğinde yüksek değerleri görmüyorum. Sağlıksız olup olmadığını kontrol Nasıl yaparım? mı?
-Kaynak ve hedef arasındaki uçtan uca gecikme süresi aralarında herhangi bir yol için eşik kesişirse NPM bir uyarı oluşturur. Bazı ağlarda aynı kaynak ve hedefi bağlayan birden fazla yol var. NPM bir uyarı harekete geçirirse herhangi bir yol sağlıksız olur. Grafiklerde görülen kayıp ve gecikme, tüm yolların ortalama değeridir, bu nedenle tek bir yolun tam değerini gösteremeyebilir. Eşiğin ihlal edildiği yeri anlamak için, uyarıdaki "alt tür" sütununu arayın. Sorun bir yol nedeniyle gerçekleşirse, alt tür değeri NetworkPath olacaktır (performans Izleme testleri için), EndpointPath (hizmet bağlantısı Izleyicisi testleri için) ve ExpressRoutePath (ExpressRotue Izleyici testleri için). 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Sağlıksız testler için uyarı alıyorum, ancak NPM 'nin kayıp ve gecikme grafiğinde yüksek değerleri görmüyorum. Sağlıksız olup olmadığını kontrol Nasıl yaparım? mı?
+Kaynak ve hedef arasındaki uçtan uca gecikme süresi, aralarında herhangi bir yol için eşikten kesişirse NPM bir uyarı oluşturur. Bazı ağların aynı kaynak ve hedefi bağlayan birden çok yolu vardır. NPM bir uyarı harekete geçirirse herhangi bir yol sağlıksız olur. Grafiklerde görülen kayıp ve gecikme, tüm yolların ortalama değeridir, bu nedenle tek bir yolun tam değerini gösteremeyebilir. Eşiğin ihlal edildiği yeri anlamak için, uyarıdaki "alt tür" sütununu arayın. Sorun bir yol nedeniyle gerçekleşirse, alt tür değeri NetworkPath olacaktır (performans Izleme testleri için), EndpointPath (hizmet bağlantısı Izleyicisi testleri için) ve ExpressRoutePath (ExpressRotue Izleyici testleri için). 
 
 Yolu bulmak için örnek sorgu uygun değil:
 
@@ -185,7 +227,7 @@ NPM artık kullanıcının erişimi olan tüm aboneliklerde ExpressRoute devrele
 
 Şirket içi ve Azure düğümleri arasında sağlıklı bir bağlantının olduğu, ancak trafiğin NPM tarafından izlenmesi için yapılandırılmış ExpressRoute bağlantı hattı üzerinden gitmediği bir senaryo olabilir. 
 
-Bu hata şu durumlarda oluşabilir:
+Bu durum şu durumlarda oluşabilir:
 
 * ER devresi devre dışı.
 * Yol filtreleri, istenen ExpressRoute bağlantı hattı üzerinden diğer yollara (bir VPN bağlantısı veya başka bir ExpressRoute bağlantı hattı gibi) öncelik vertikleri şekilde yapılandırılır. 

@@ -1,10 +1,10 @@
 ---
-title: PıM-Azure Active Directory 'de Azure AD rollerine erişimi gözden geçirme | Microsoft Docs
-description: Azure AD Privileged Identity Management (PıM) içinde Azure AD rollerinin erişimini incelemeyi öğrenin.
+title: PıM-Azure AD 'de Azure AD rollerine erişimi gözden geçirme | Microsoft Docs
+description: Azure AD Privileged Identity Management (PıM) içindeki Azure Active Directory rollerinin erişimini incelemeyi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b9f16d6c7f738e64f154506228c832e31e0f5b
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 76eccb5d62b68865b7a117312be62753f203e2cb
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809057"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847101"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rollerine erişimi gözden geçirin
 
@@ -33,7 +33,7 @@ Erişim gözden geçirmeleriyle ilgilenen ayrıcalıklı bir rol yöneticisiysen
 
 Azure AD Privileged Identity Management hizmeti Azure portal panonuza sabitlenmemişse, başlamak için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Azure portal sağ üst köşesindeki Kullanıcı adınızı seçin ve çalıştıracağınız dizini seçin.
 3. **Tüm hizmetler** seçeneğini belirleyin ve **Azure AD Privileged Identity Management** araması yapmak için Filtre metin kutusunu kullanın.
 4. **Panoya sabitle**'yi işaretleyin ve ardından **Oluştur**’a tıklayın. Privileged Identity Management uygulaması açılır.

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: d8e23188aa07b1b271c3adc7c5550b18c0c60977
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/04/2019
+ms.openlocfilehash: 89b86124d6da0d0d659ed0673585eadbf1008aa3
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827694"
+ms.locfileid: "73847306"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma
 
@@ -34,7 +34,7 @@ Depolama için Data Lake Storage 2. kullanan bir HDInsight kümesi oluşturmak i
 
 ### <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma
 
-Henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun. 
+Henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
@@ -49,7 +49,7 @@ Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha
 
 ### <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage 2. hesabı oluşturma
 
-Azure Data Lake Storage 2. depolama hesabı oluşturun. 
+Azure Data Lake Storage 2. depolama hesabı oluşturun.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
@@ -57,7 +57,7 @@ Azure Data Lake Storage 2. depolama hesabı oluşturun.
 1. **Oluştur**'a tıklayın.
 1. **Depolama hesabı oluştur** ekranında:
     1. Doğru aboneliği ve kaynak grubunu seçin.
-    1. Data Lake Storage 2. hesabınız için bir ad girin. Depolama hesabı adlandırma kuralları hakkında daha fazla bilgi için bkz. [Azure kaynakları Için adlandırma kuralları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#storage).
+    1. Data Lake Storage 2. hesabınız için bir ad girin. Depolama hesabı adlandırma kuralları hakkında daha fazla bilgi için bkz. [Azure kaynakları Için adlandırma kuralları](/azure/architecture/best-practices/resource-naming#storage).
     1. **Gelişmiş** sekmesine tıklayın.
     1. **Data Lake Storage 2.** altındaki **hiyerarşik ad alanı** ' nın yanında **etkin** ' e tıklayın.
     1. **Gözden geçir ve oluştur**’a tıklayın.
@@ -73,28 +73,28 @@ Yönetilen kimliği depolama hesabındaki **Depolama Blobu veri sahibi** rolüne
 
 1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
 1. Depolama hesabınızı seçin ve ardından **erişim denetimi (IAM)** öğesini seçerek hesabın erişim denetimi ayarlarını görüntüleyin. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
-    
+
     ![Depolama erişim denetimi ayarlarını gösteren ekran görüntüsü](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
-    
+
 1. Yeni bir rol eklemek için **+ rol ataması Ekle** düğmesini seçin.
 1. **Rol ataması Ekle** penceresinde, **Depolama Blobu veri sahibi** rolünü seçin. Ardından, yönetilen kimliğe ve depolama hesabına sahip aboneliği seçin. Ardından, daha önce oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliği bulmak için arama yapın. Son olarak, yönetilen kimliği seçin ve **Seçilen Üyeler**altında listelenecektir.
-    
+
     ![RBAC rolü atamayı gösteren ekran görüntüsü](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
-    
+
 1. **Kaydet**’i seçin. Seçtiğiniz kullanıcı tarafından atanan kimlik artık seçili rol altında listelenmiştir.
 1. Bu ilk kurulum tamamlandıktan sonra Portal aracılığıyla bir küme oluşturabilirsiniz. Küme, depolama hesabıyla aynı Azure bölgesinde olmalıdır. Küme oluşturma menüsünün **depolama** bölümünde aşağıdaki seçenekleri belirleyin:
-        
+
     * **Birincil depolama türü**için **Azure Data Lake Storage 2.** ' yi seçin.
     * **Bir depolama hesabı seçin**altında yeni oluşturulan Data Lake Storage 2. Depolama hesabını arayıp seçin.
-        
+
         ![Azure HDInsight ile Data Lake Storage 2. kullanmaya yönelik depolama ayarları](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
-    
+
     * **Kimlik**altında, doğru aboneliği ve yeni oluşturulan kullanıcı tarafından atanan yönetilen kimliği seçin.
 
         ![HDInsight ile Data Lake Storage 2. kullanmaya yönelik kimlik ayarları](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
 
 > [!Note]
-> Depolama hesabı düzeyinde bir ikincil Data Lake Storage 2. hesabı eklemek için, daha önce oluşturulan yönetilen kimliği, eklemek istediğiniz yeni Data Lake Storage 2. depolama hesabına atamanız yeterlidir. HDInsight üzerinde "ek depolama hesapları" dikey penceresi aracılığıyla bir ikincil Data Lake Storage 2. hesabı eklemenin desteklenmesinin tavsiye edilir. 
+> Depolama hesabı düzeyinde bir ikincil Data Lake Storage 2. hesabı eklemek için, daha önce oluşturulan yönetilen kimliği, eklemek istediğiniz yeni Data Lake Storage 2. depolama hesabına atamanız yeterlidir. HDInsight üzerinde "ek depolama hesapları" dikey penceresi aracılığıyla bir ikincil Data Lake Storage 2. hesabı eklemenin desteklenmesinin tavsiye edilir.
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Azure CLı aracılığıyla Data Lake Storage 2. bir küme oluşturma
 
@@ -113,10 +113,10 @@ Aşağıdaki kod parçacığı aşağıdaki ilk adımları yapar:
 
 1. Azure hesabınızda oturum açar.
 1. Oluşturma işlemlerinin yapılacağı etkin aboneliği ayarlar.
-1. Yeni dağıtım etkinlikleri için yeni bir kaynak grubu oluşturur. 
+1. Yeni dağıtım etkinlikleri için yeni bir kaynak grubu oluşturur.
 1. Kullanıcı tarafından atanan yönetilen kimlik oluşturur.
 1. Data Lake Storage 2. özelliklerini kullanmak için Azure CLı 'ya bir uzantı ekler.
-1. `--hierarchical-namespace true` bayrağını kullanarak yeni bir Data Lake Storage 2. hesabı oluşturur. 
+1. `--hierarchical-namespace true` bayrağını kullanarak yeni bir Data Lake Storage 2. hesabı oluşturur.
 
 ```azurecli
 az login
@@ -171,7 +171,87 @@ Kullanıcı tarafından atanan kimliğin yaşam döngüsü, bu kimliğin atandı
 
 Kullanıcıların verileri sorgulamasına yönelik izinleri ayarlamak için, ACL 'lerdeki atanan sorumlu olarak Azure AD güvenlik gruplarını kullanın. Dosya erişim izinlerini bireysel kullanıcılara veya hizmet sorumlularına doğrudan atamayın. İzin akışını denetlemek için Azure AD güvenlik grupları 'nı kullandığınızda, ACL 'Leri tüm dizin yapısına yeniden ayarlamadan kullanıcıları veya hizmet sorumlularını ekleyebilir ve kaldırabilirsiniz. Kullanıcıları yalnızca uygun Azure AD güvenlik grubundan eklemeniz veya kaldırmanız yeterlidir. ACL 'ler devralınmaz, bu nedenle ACL 'Lerin yeniden uygulanması her dosya ve alt dizinde ACL 'nin güncelleştirilmesini gerektirir.
 
+## <a name="access-files-from-the-cluster"></a>Kümeden dosyalara erişme
+
+HDInsight kümesinden Data Lake Storage 2. dosyalara erişmek için çeşitli yollar vardır.
+
+* **Tam adı kullanarak**. Bu yöntemle, erişmek istediğiniz dosyanın tam yolunu girersiniz.
+
+    ```
+    abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
+    ```
+
+* **Kısaltılmış yol biçimi kullanarak**. Bu yaklaşımda, yolu küme köküne kadar değiştirirsiniz:
+
+    ```
+    abfs:///<file.path>/
+    ```
+
+* **Göreli yolu kullanarak**. Bu yöntemle, erişmek istediğiniz dosyanın yalnızca göreli yolunu girersiniz.
+
+    ```
+    /<file.path>/
+    ```
+
+### <a name="data-access-examples"></a>Veri erişimi örnekleri
+
+Örnekler, kümenin baş düğümüne bir [ssh bağlantısını](./hdinsight-hadoop-linux-use-ssh-unix.md) temel alır. Örneklerde, üç URI şeması da kullanılır. `CONTAINERNAME` ve `STORAGEACCOUNT` ilgili değerlerle değiştirin
+
+#### <a name="a-few-hdfs-commands"></a>Birkaç bir bu komut
+
+1. Yerel depolamada basit bir dosya oluşturun.
+
+    ```bash
+    touch testFile.txt
+    ```
+
+1. Küme depolamada dizinler oluşturun.
+
+    ```bash
+    hdfs dfs -mkdir abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
+    hdfs dfs -mkdir abfs:///sampledata2/
+    hdfs dfs -mkdir /sampledata3/
+    ```
+
+1. Yerel depolamadan küme depolamaya veri kopyalama.
+
+    ```bash
+    hdfs dfs -copyFromLocal testFile.txt  abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
+    hdfs dfs -copyFromLocal testFile.txt  abfs:///sampledata2/
+    hdfs dfs -copyFromLocal testFile.txt  /sampledata3/
+    ```
+
+1. Küme depolamada dizin içeriğini listeleyin.
+
+    ```bash
+    hdfs dfs -ls abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
+    hdfs dfs -ls abfs:///sampledata2/
+    hdfs dfs -ls /sampledata3/
+    ```
+
+#### <a name="creating-a-hive-table"></a>Hive tablosu oluşturma
+
+Üç dosya konumu tanım amacıyla gösterilmiştir. Gerçek yürütme için `LOCATION` girdilerden yalnızca birini kullanın.
+
+```hql
+DROP TABLE myTable;
+CREATE EXTERNAL TABLE myTable (
+    t1 string,
+    t2 string,
+    t3 string,
+    t4 string,
+    t5 string,
+    t6 string,
+    t7 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+STORED AS TEXTFILE
+LOCATION 'abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/example/data/';
+LOCATION 'abfs:///example/data/';
+LOCATION '/example/data/';
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Data Lake Storage 2. Preview ile Azure HDInsight tümleştirmesi-ACL ve güvenlik güncelleştirmesi](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
 * [Azure Data Lake Storage 2. giriş](../storage/blobs/data-lake-storage-introduction.md)
+* [Öğretici: Azure HDInsight 'ta etkileşimli sorgu kullanarak verileri ayıklama, dönüştürme ve yükleme](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

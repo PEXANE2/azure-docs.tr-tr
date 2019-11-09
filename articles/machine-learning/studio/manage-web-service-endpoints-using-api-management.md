@@ -1,6 +1,6 @@
 ---
 title: API Management kullanarak Web hizmetlerini yönetme
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: API Management kullanarak AzureML Web hizmetlerini yönetmeyi gösteren kılavuz. Kullanıcı erişimi, kullanım azaltma ve Pano izlemeyi tanımlayarak REST API uç noktalarınızı yönetin.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 227a7205788194cc507dcd9dab7e5cad57abc7f9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 084f3a1ecc7e44dc404d63a75b4561f8d5cb57cb
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671584"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839807"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management kullanarak Azure Machine Learning Studio (klasik) Web hizmetlerini yönetme
 ## <a name="overview"></a>Genel Bakış
@@ -198,7 +198,7 @@ Aşağıda basit bir AzureML denemesi oluşturma ve bir Web hizmeti olarak dağ�
 
 Bu noktada, denemeyi test etmek için **Çalıştır** ' ı tıklatın.
 
-![Çalışmaz](./media/manage-web-service-endpoints-using-api-management/run.png)
+![çalışmaz](./media/manage-web-service-endpoints-using-api-management/run.png)
 
 ### <a name="create-a-web-service"></a>Web hizmeti oluşturma
 Şimdi bir Web hizmeti oluşturun. **Web hizmeti** 'ni genişletin ve **giriş** denemeniz üzerine sürükleyin. **Girişi** **özellik karmaya**bağlayın. Ayrıca, **çıktıyı** denemenize sürükleyin. **Çıktıyı** **özellik karma**'e bağlayın.
@@ -216,7 +216,7 @@ Denemeyi yayımlamak için **Evet** ' i tıklatın.
 ### <a name="test-the-web-service"></a>Web hizmetini test etme
 Bir AzureML Web hizmeti RSS (istek/yanıt hizmeti) ve BES (Batch yürütme hizmeti) uç noktalarından oluşur. RSS, zaman uyumlu yürütme içindir. BES zaman uyumsuz iş yürütmesi içindir. Web hizmetinizi aşağıdaki örnek Python kaynağıyla test etmek için Python için Azure SDK 'sını indirip yüklemeniz gerekebilir (bkz: [Python nasıl yüklenir](/azure/python/python-sdk-azure-install)).
 
-Ayrıca, aşağıdaki örnek kaynağa yönelik denemeniz için **çalışma alanı**, **hizmet**ve **api_key** gerekir. Web hizmeti panosunda denemeniz için **istek/yanıt** veya **toplu yürütme** ' ya tıklayarak çalışma alanını ve hizmeti bulabilirsiniz.
+Ayrıca, aşağıdaki örnek kaynağa yönelik denemenizin **çalışma alanı**, **hizmet**ve **api_key** olması gerekir. Web hizmeti panosunda denemeniz için **istek/yanıt** veya **toplu yürütme** ' ya tıklayarak çalışma alanını ve hizmeti bulabilirsiniz.
 
 ![bul-çalışma alanı-ve-hizmet](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
@@ -241,7 +241,7 @@ Bu, **col2**için **iyi bir gün** yazın. Onay işaretine tıklayın.
 ##### <a name="sample-code"></a>Örnek kod
 Kaynak kodlarınızı test etmenin başka bir yolu da istemci kodunuzda. Panoda **istek/yanıt** ' a tıklayıp en alta kaydırırsanız, Python ve R için C#örnek kod görürsünüz. Ayrıca, istek URI 'SI, üst bilgiler ve gövde dahil olmak üzere RR isteğinin söz dizimini görürsünüz.
 
-Bu kılavuzda, çalışan bir Python örneği gösterilmektedir. Denemeniz için **çalışma alanı**, **hizmet**ve **api_key** ile değiştirmeniz gerekir.
+Bu kılavuzda, çalışan bir Python örneği gösterilmektedir. Denemeniz için **çalışma alanı**, **hizmet**ve **api_key** değiştirmeniz gerekir.
 
     import urllib2
     import json
@@ -273,7 +273,7 @@ Bu kılavuzda, çalışan bir Python örneği gösterilmektedir. Denemeniz için
 #### <a name="test-bes-endpoint"></a>BES uç noktasını test etme
 Panoda **toplu yürütme** ' ye tıklayın ve en alta kaydırın. , Python ve R için C#örnek kod görürsünüz. Ayrıca, bir işi göndermek, bir işi başlatmak, bir işin durumunu veya sonuçlarını almak ve bir işi silmek için BES isteklerinin söz dizimini görürsünüz.
 
-Bu kılavuzda, çalışan bir Python örneği gösterilmektedir. Denemeniz için **çalışma alanı**, **hizmet**ve **api_key** ile değiştirmeniz gerekir. Ayrıca, **depolama hesabı adını**, **depolama hesabı anahtarını**ve **depolama kapsayıcısı adını**değiştirmeniz gerekir. Son olarak, **giriş dosyasının** konumunu ve **çıkış dosyasının**konumunu değiştirmeniz gerekecektir.
+Bu kılavuzda, çalışan bir Python örneği gösterilmektedir. Denemeniz için **çalışma alanı**, **hizmet**ve **api_key** değiştirmeniz gerekir. Ayrıca, **depolama hesabı adını**, **depolama hesabı anahtarını**ve **depolama kapsayıcısı adını**değiştirmeniz gerekir. Son olarak, **giriş dosyasının** konumunu ve **çıkış dosyasının**konumunu değiştirmeniz gerekecektir.
 
     import urllib2
     import json

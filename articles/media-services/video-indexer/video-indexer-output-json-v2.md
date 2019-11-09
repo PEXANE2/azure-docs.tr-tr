@@ -1,6 +1,6 @@
 ---
 title: V2 API tarafından üretilen Azure Media Services Video Indexer çıktıyı inceleyin
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Bu konuda v2 API tarafından üretilen Video Indexer çıktısı incelenir.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
-ms.openlocfilehash: 20a973e5386cd9cad7d090236f021ced9a64cafc
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 0a42c2dce3976a1bf83c85644f56f4c1d8abc9c8
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300934"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839546"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>API tarafından üretilen Video Indexer çıkışını inceleyin
 
@@ -23,7 +23,7 @@ ms.locfileid: "72300934"
 
 Videonun özetlenen içgörülerini, [video Indexer](https://www.videoindexer.ai/) Web sitesindeki videonun **oynat** düğmesine basarak da görsel olarak inceleyebilirsiniz. Daha fazla bilgi için bkz. [video öngörülerini görüntüleme ve düzenleme](video-indexer-view-edit.md).
 
-![Bilgiler](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 Bu makalede, **video dizini Al** API 'si tarafından döndürülen JSON içeriği incelenir. 
 
@@ -33,7 +33,7 @@ Bu makalede, **video dizini Al** API 'si tarafından döndürülen JSON içeriğ
 
 ## <a name="root-elements"></a>Kök öğeleri
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |Accoun|Çalma listesinin VI hesap KIMLIĞI.|
 |id|Çalma listesinin KIMLIĞI.|
@@ -93,7 +93,7 @@ Bu bölümde öngörülerin özeti gösterilmektedir.
 
 ## <a name="videos"></a>larınız
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |Accoun|Videonun VI hesap KIMLIĞI.|
 |id|Videonun KIMLIĞI.|
@@ -156,7 +156,7 @@ Bir yüz KIMLIĞI, bir ad, küçük resim, diğer meta veriler ve bunun zamana b
 |döküm|Döküm [boyutu.](#transcript)|
 |OCR|[OCR](#ocr) boyutu.|
 |lerimi|[Anahtar sözcük](#keywords) boyutu.|
-|Öbekleri|Bir veya daha fazla [blok](#blocks) içerebilir|
+|öbekleri|Bir veya daha fazla [blok](#blocks) içerebilir|
 |leri|[Yüzler](#faces) boyutu.|
 |etikete|[Etiketler](#labels) boyutu.|
 |görüntüleri|[Anlık görüntüleri](#shots) boyutu.|
@@ -189,7 +189,7 @@ Bir yüz KIMLIĞI, bir ad, küçük resim, diğer meta veriler ve bunun zamana b
 }
 ```
 
-#### <a name="blocks"></a>Öbekleri
+#### <a name="blocks"></a>öbekleri
 
 Öznitelik | Açıklama
 ---|---
@@ -198,7 +198,7 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="transcript"></a>döküm
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Satır KIMLIĞI.|
 |metin|Dökümü.|
@@ -236,7 +236,7 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="ocr"></a>OCR
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|OCR satır KIMLIĞI.|
 |metin|OCR metni.|
@@ -271,7 +271,7 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="keywords"></a>lerimi
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Anahtar sözcük KIMLIĞI.|
 |metin|Anahtar sözcük metni.|
@@ -302,7 +302,7 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="faces"></a>leri
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Yüz KIMLIĞI.|
 |ad|Yüzün adı. ' Bilinmeyen #0, tanımlı bir ünlüde veya müşterinin eğitilen kişi olabilir.|
@@ -347,7 +347,7 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="labels"></a>etikete
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Etiket KIMLIĞI.|
 |ad|Etiket adı (örneğin, ' bilgisayar ', ' TV ').|
@@ -406,7 +406,7 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="scenes"></a>sahne
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Sahne KIMLIĞI.|
 |örnekler|Bu sahnenin zaman aralıklarının listesi (bir sahnenin yalnızca 1 örneği olabilir).|
@@ -439,7 +439,7 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="shots"></a>görüntüleri
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Görüntü KIMLIĞI.|
 |Gezen|Görüntüsündeki ana karelerin bir listesi (her birinin bir KIMLIĞI ve bir örnek zaman aralığı listesi vardır). Her ana kare örneğinin, ana karenin küçük resim KIMLIĞINI tutan bir thumbnailId alanı vardır.|
@@ -489,11 +489,11 @@ id|Bloğun KIMLIĞI.|
 
 Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka adları. Bu, markaların veya amblem algılamanın görsel olarak tanınmasını kapsamaz.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Marka KIMLIĞI.|
 |ad|Markalar adı.|
-|Referenceıd | Vikipedi URL 'sinin son eki. Örneğin, "Target_Corporation", [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)' in sonekidir.
+|Referenceıd | Vikipedi URL 'sinin son eki. Örneğin, "Target_Corporation" [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)sonekidir.
 |referenceUrl | Varsa, markasının Vikipi URL 'si. Örneğin, [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |açıklama|Markalar açıklaması.|
 |etiketler|Bu markala ilişkili önceden tanımlanmış etiketlerin listesi.|
@@ -548,7 +548,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 
 #### <a name="statistics"></a>girecek
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |Yazışma sayısı|Videodaki yazışma sayısı.|
 |Hoparlörlü Kerwordsayısı|Konuşmacı başına sözcük sayısı.|
@@ -558,7 +558,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 
 #### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Ses efekti KIMLIĞI.|
 |type|Ses efekti türü (örneğin, hareketli, konuşma, sessizlik).|
@@ -587,7 +587,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 
 Sentiments, sentimentType alanı tarafından toplanır (pozitif/nötr/negatif). Örneğin, 0-0.1, 0,1-0.2.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Yaklaşım KIMLIĞI.|
 |averageScore |Bu yaklaşım türünün tüm örneklerinin ortalaması-pozitif/nötr/negatif|
@@ -626,7 +626,7 @@ Visualcontentmoderblock blok, büyük olasılıkla yetişkinlere yönelik içeri
 
 Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için kullanılabilir olabilir. Kullanıcılar, içeriğin insan incelemesi için bir istek gönderme seçeneğine sahiptir ve bu durumda Isyetişkin özniteliği insan incelemesi sonucunu içerecektir.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Görsel içerik denetleme KIMLIĞI.|
 |adultScore|Yetişkin puanı (İçerik Yöneticisi 'nden).|
@@ -662,7 +662,7 @@ Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için k
 
 #### <a name="textualcontentmoderation"></a>Textualcontentdenetlemesi 
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Metinsel içerik denetleme KIMLIĞI.|
 |bannedWordsCount |Yasaklanmış sözcüklerin sayısı.|
@@ -672,7 +672,7 @@ Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için k
 
 Video Indexer konuşmayı ve ses ipuçlarını temel alarak tanımlar. Tanımlanan duygu: Joy, sadyeti, Anger veya Fear olabilir.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Duygu KIMLIĞI.|
 |type|Konuşma ve ses ipuçları temelinde tanımlanan duygu. Duygu: Joy, sadyeti, Anger veya Fear olabilir.|
@@ -762,7 +762,7 @@ Video Indexer konuşmayı ve ses ipuçlarını temel alarak tanımlar. Tanımlan
 
 Video Indexer, döküm dosyalarından Ana konuların çıkarımını yapar. Mümkün olduğunda 2. düzey [IPTC](https://iptc.org/standards/media-topics/) taksonomi dahil edilir. 
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |id|Konu KIMLIĞI.|
 |ad|Konu adı, örneğin: "Ilaç".|

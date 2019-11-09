@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 11/07/2019
 ms.author: juliako
-ms.openlocfilehash: c402381534087f1e8cdab711bd1b2a34c78417f4
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 7b4e2d14e8719808db138a4f2607b19cece401a6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675718"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839593"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API çağrıları için Postman yapılandırma
 
@@ -26,7 +26,7 @@ Bu makalede, **Postman** 'ın Azure Media Services (AMS) REST API 'lerini çağ�
 
 Geliştirmeye başlamadan önce [Media Services v3 API 'leri Ile geliştirmeyi](media-services-apis-overview.md)inceleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
 - [API 'lere erişmek](access-api-cli-how-to.md) için gereken bilgileri alın
@@ -54,7 +54,7 @@ Postman koleksiyonunu ve ortam dosyalarını içeren bir GitHub deposunu kopyala
 
     ![Ortamı yönetme](./media/develop-with-postman/postman-import-env.png)
 4. **Ortamı yönet** iletişim kutusunda **İçe aktar**'ı tıklatın.
-2. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` kopyasını oluşturduğunuzda indirilen `Azure Media Service v3 Environment.postman_environment.json` dosyasına gidin.
+2. `Azure Media Service v3 Environment.postman_environment.json` kopyasını oluşturduğunuzda indirilen `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` dosyasına gidin.
 6. **Azure Media Service v3 Environment** ortamı eklenir.
 
     > [!Note]
@@ -69,7 +69,7 @@ Postman koleksiyonunu ve ortam dosyalarını içeren bir GitHub deposunu kopyala
 ### <a name="configure-the-collection"></a>Koleksiyonu yapılandırma
 
 1. Koleksiyon dosyasını içe aktarmak için **İçe Aktar**'ı tıklatın.
-1. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` kopyasını oluşturduğunuzda indirilen `Media Services v3.postman_collection.json` dosyasına gidin
+1. `Media Services v3.postman_collection.json` kopyasını oluşturduğunuzda indirilen `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` dosyasına gidin
 3. **Media Services v3.postman_collection.json** dosyasını seçin.
 
     ![Dosya içe aktarma](./media/develop-with-postman/postman-import-collection.png)
@@ -91,6 +91,11 @@ AMS v3 kaynaklarını değiştirmeye başlamadan önce hizmet sorumlusu kimlik d
 4. Yanıt belirteç ile gelir ve "AccessToken" ortam değişkenini belirteç değerine ayarlar.  
 
     ![AAD belirteci alma](./media/develop-with-postman/postman-get-aad-auth-token.png)
+
+## <a name="troubleshooting"></a>Sorun giderme 
+
+* Uygulamanız "HTTP 504: Gateway timeout" ile başarısız olursa, konum değişkeninin açıkça Media Services hesabının beklenen konumundan farklı bir değere ayarlanmamış olduğundan emin olun. 
+* "Hesap bulunamadı" hatası alırsanız, Body JSON iletisindeki location özelliğinin Media Services hesabının bulunduğu konuma ayarlandığından emin olmak için de denetleyin. 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

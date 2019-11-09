@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 9743f25d89bed4e54b3deed815d1cf29030caff6
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955477"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832205"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -87,7 +87,7 @@ Uygulama kayıtları sayfasında, giriş sayfasının istenen dış URL 'si içi
 
 Hayır, yayımlanan uygulamalar için IIS gereksinimi yoktur. Windows Server dışındaki sunucularda çalışan Web uygulamalarını yayımlayabilirsiniz. Ancak, Web sunucusunun anlaşmayı (Kerberos kimlik doğrulaması) destekleyip desteklemediğine bağlı olarak, Windows dışı bir sunucu ile ön kimlik doğrulaması kullanmeyebilirsiniz. Bağlayıcının yüklü olduğu sunucuda IIS gerekli değildir.
 
-## <a name="integrated-windows-authentication"></a>Tümleşik Windows Kimlik Doğrulaması
+## <a name="integrated-windows-authentication"></a>Tümleşik Windows kimlik doğrulaması
 
 ### <a name="when-should-i-use-the-principalsallowedtodelegatetoaccount-method-when-setting-up-kerberos-constrained-delegation-kcd"></a>Kerberos kısıtlı temsilci (KCD) ayarlarken Principalsallodilimtodelegatetoaccount metodunu ne zaman kullanmalıyım?
 
@@ -95,9 +95,9 @@ Bağlayıcı sunucular Web uygulaması hizmet hesabından farklı bir etki alan�
 Bağlayıcı sunucuları ve Web uygulaması hizmet hesabı aynı etki alanında yer alıyorsa, her bağlayıcı makine hesabında temsilci ayarlarını yapılandırmak için Active Directory Kullanıcıları ve bilgisayarları kullanabilirsiniz, böylece hedef SPN 'nin temsilciliğini alabilir.
 
 Bağlayıcı sunucuları ve Web uygulaması hizmet hesabı farklı etki alanlarındaysa, kaynak tabanlı temsili kullanılır. Temsili izinleri hedef Web sunucusunda ve Web uygulaması hizmeti hesabında yapılandırılır. Bu kısıtlı yetkilendirme yöntemi nispeten yenidir. Yöntemi, kaynak (Web hizmeti) sahibinin hangi makine ve hizmet hesaplarının temsil edebilir olduğunu denetlemesine izin vererek etki alanları arası temsilciyi destekleyen Windows Server 2012 ' de kullanıma sunulmuştur. Bu yapılandırmaya yardımcı olacak bir kullanıcı arabirimi yoktur, bu nedenle PowerShell kullanmanız gerekir.
-Daha fazla bilgi için bkz. [uygulama proxy 'si Ile Kerberos kısıtlanmış temsilciyi anlama](http://aka.ms/kcdpaper).
+Daha fazla bilgi için bkz. [uygulama proxy 'si Ile Kerberos kısıtlanmış temsilciyi anlama](https://aka.ms/kcdpaper).
 
-## <a name="pass-through-authentication"></a>Geçişli kimlik doğrulaması
+## <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulama
 
 ### <a name="can-i-use-conditional-access-policies-for-applications-published-with-pass-through-authentication"></a>Doğrudan kimlik doğrulamasıyla yayımlanan uygulamalar için koşullu erişim Ilkelerini kullanabilir miyim?
 
@@ -145,7 +145,7 @@ Hayır. Azure AD Uygulama Ara Sunucusu, Azure AD ile çalışacak şekilde tasar
 
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>WebSocket desteği QlikSense dışındaki uygulamalar için çalışır mı?
 
-Şu anda WebSocket protokol desteği hala genel önizlemede ve diğer uygulamalar için çalışmayabilir. Bazı müşterilerin WebSocket protokolünü diğer uygulamalarla kullanarak karma başarısı vardı. Bu senaryoları test ediyorsanız, sonuçlarınızı duymak isteriz. Lütfen aadapfeedback@microsoft.com ' dan bize geri bildirim gönderin.
+Şu anda WebSocket protokol desteği hala genel önizlemede ve diğer uygulamalar için çalışmayabilir. Bazı müşterilerin WebSocket protokolünü diğer uygulamalarla kullanarak karma başarısı vardı. Bu senaryoları test ediyorsanız, sonuçlarınızı duymak isteriz. Lütfen aadapfeedback@microsoft.comadresinden bize geri bildirim gönderin.
 
 ## <a name="link-translation"></a>Bağlantı çevirisi
 
@@ -155,7 +155,7 @@ Evet. Bağlantı çevirisi performansı etkiler. Uygulama proxy hizmeti, uygulam
 
 En iyi performansı elde etmek için, [özel etki alanlarını](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)yapılandırarak özdeş iç ve dış URL 'ler kullanmanızı öneririz. Özel etki alanlarının kullanılması mümkün değilse, mobil uygulama veya Microsoft Edge tarayıcısı olan uygulamalarım güvenli oturum açma uzantısı ' nı kullanarak bağlantı çevirisi performansını geliştirebilirsiniz. Bkz. [Azure AD uygulama ara sunucusu ile yayımlanan uygulamalar Için yeniden kodlanmış bağlantıları yeniden yönlendirme](application-proxy-configure-hard-coded-link-translation.md).
 
-## <a name="wildcards"></a>Karakterlerini
+## <a name="wildcards"></a>Joker karakterler
 
 ### <a name="how-do-i-use-wildcards-to-publish-two-applications-with-the-same-custom-domain-name-but-with-different-protocols-one-for-http-and-one-for-https"></a>Aynı özel etki alanı adına sahip, ancak biri HTTP ve HTTPS için olmak üzere farklı protokollerle iki uygulama yayımlamak için joker karakterler kullanın Nasıl yaparım?
 

@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: diberry
-ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2e32d0f4906dea69d6eab27faca4a2e41106ed73
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498942"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836833"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
@@ -31,11 +31,13 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Vide
     * Uygulamaları. lu ([Luaşağı](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) biçimiyle içeri ve dışarı aktarma özelliği. Bu, etkin bir CI/CD işleminin yolunu ele alır. 
 * Dil genişletmesi
     * [Arapça ve Hintçe](luis-language-support.md) genel önizlemede.
-* Ön derleme modelleri
+* Önceden oluşturulmuş modeller
     * [Önceden oluşturulmuş etki alanları](luis-reference-prebuilt-domains.md) artık genel kullanıma sunuldu (GA)
     * Japonca [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md#japanese-entity-support) -yaş, para birimi, sayı, yüzde, v3 'de desteklenmez.
     * İtalyanca [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md#italian-entity-support) -yaş, para birimi, boyut, sayı, yüzde çözünürlüğü v2 'den değişti.
-* [Preview.Luis.ai Portal](https://preview.luis.ai) 'da Kullanıcı deneyimini geliştirin-karmaşık modellerin oluşturulmasını ve hata ayıklamasını etkinleştirmek için yeniden etiketleme deneyimidir.
+* [Preview.Luis.ai Portal](https://preview.luis.ai) 'da Kullanıcı deneyimini geliştirin-karmaşık modellerin oluşturulmasını ve hata ayıklamasını etkinleştirmek için yeniden etiketleme deneyimidir. Önizleme portalı öğreticilerini deneyin:
+    * [Yalnızca amaçlar](tutorial-intents-only.md)
+    * [Ayrıştırılmış makine tarafından öğrenilen varlık](tutorial-machine-learned-entity.md) 
 * Gelişmiş dil özelliklerini anlama-daha az çaba ile [Gelişmiş dil modelleri oluşturma](luis-concept-entity-types.md) . 
 * Makine öğrenimi özelliklerini model düzeyinde tanımlama ve modelleri amaçlar ve diğer varlıklara özellikler olarak kullanma gibi diğer modele işaret olarak kullanılmak üzere etkinleştirme.
 * Yeni, genişletilmiş [sınırlar](luis-boundaries.md) -tümcecik listeleri ve toplam ifadeler için daha yüksek maksimum değer, özellik sınırları olarak yeni model

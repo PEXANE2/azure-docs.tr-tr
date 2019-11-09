@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 88aabb676d3a15dd2efff3acd751818301519ae1
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0634b069c79495ad6de536b27ebd9981eeb36128
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972702"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837088"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma
 
@@ -33,11 +33,13 @@ Bir **aboneliğe**dağıtmak Için, [New-azdeployment](/powershell/module/az.res
 New-AzDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
-Şu anda yönetim grubu dağıtımları yalnızca REST API aracılığıyla desteklenir. Bkz. [Kaynak Yöneticisi şablonları ve Kaynak Yöneticisi REST API ile kaynak dağıtma](resource-group-template-deploy-rest.md).
+Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
 
-Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır. Abonelik dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
+Şu anda yönetim grubu dağıtımları yalnızca REST API aracılığıyla desteklenir. Yönetim grubu düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [Yönetim grubu düzeyinde kaynak oluşturma](deploy-to-management-group.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Dağıtılacak bir şablonunuz olması gerekir. Henüz bir hesabınız yoksa Azure hızlı başlangıç şablonları deposundan bir [örnek şablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) indirip kaydedin. Bu makalede kullanılan yerel dosya adı **c:\MyTemplates\azuredeploy.JSON**' dir.
 
@@ -82,7 +84,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 Şablonunuzu dağıtmak için [Azure Cloud Shell](https://shell.azure.com) kullanabilirsiniz. Dış şablon dağıtmak için şablonun URI 'sini sağlayın. Yerel bir şablon dağıtmak için, önce şablonunuzu Cloud Shell depolama hesabına yüklemeniz gerekir. Dosyaları kabuğa yüklemek için kabuk penceresinden **dosyaları karşıya yükle/indir** menü simgesini seçin.
 
-Cloud Shell 'i açmak için [https://shell.azure.com](https://shell.azure.com)' e gidin veya aşağıdaki kod bölümünden **deneyin** ' i seçin:
+Cloud Shell 'i açmak için [https://shell.azure.com](https://shell.azure.com)gidin veya aşağıdaki kod bölümünden **dene-bunu** seçin:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

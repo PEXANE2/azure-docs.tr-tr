@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f0d732917a6587307e6d60581e0189687cc7e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164776"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832864"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -33,7 +33,7 @@ Azure AD kimlik doğrulamasını kullanarak Azure 'da Windows VM 'lerde oturum a
 - Artık yerel yönetici hesaplarını yönetmek zorunda değildir.
 - Azure RBAC, ihtiyaç duymak üzere VM 'lere uygun erişim izni vermenizi ve artık gerekli olmadığında kaldırmanızı sağlar.
 - Bir sanal makineye erişime izin vermeden önce Azure AD koşullu erişimi, şöyle ek gereksinimler uygulayabilir: 
-   - Çok faktörlü kimlik doğrulama
+   - Multi-factor authentication
    - Oturum açma riski
 - Azure tabanlı Windows VM 'Leri için Azure AD JOIN 'i otomatikleştirin ve ölçeklendirin.
 
@@ -166,7 +166,7 @@ Birkaç dakika sonra, güvenlik sorumlusu seçili kapsamda role atanır.
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>Azure Cloud Shell deneyimini kullanma
 
-Aşağıdaki örnek, geçerli Azure kullanıcılarınız için sanal makine Yöneticisi oturum açma rolünü VM 'ye atamak için [az role atama Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) ' i kullanır. Etkin Azure hesabınızın Kullanıcı adı [az Account Show](https://docs.microsoft.com/cli/azure/account#az-account-show)komutuyla alınır ve kapsam, [az VM Show](https://docs.microsoft.com/cli/azure/vm#az-vm-show)ile ÖNCEKI bir adımda oluşturulan VM 'ye ayarlanır. Kapsam Ayrıca bir kaynak grubuna veya abonelik düzeyine atanabilir ve normal RBAC devralma izinleri geçerlidir. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control).
+Aşağıdaki örnek, geçerli Azure kullanıcılarınız için sanal makine Yöneticisi oturum açma rolünü VM 'ye atamak için [az role atama Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) ' i kullanır. Etkin Azure hesabınızın Kullanıcı adı [az Account Show](https://docs.microsoft.com/cli/azure/account#az-account-show)komutuyla alınır ve kapsam, [az VM Show](https://docs.microsoft.com/cli/azure/vm#az-vm-show)ile ÖNCEKI bir adımda oluşturulan VM 'ye ayarlanır. Kapsam Ayrıca bir kaynak grubuna veya abonelik düzeyine atanabilir ve normal RBAC devralma izinleri geçerlidir. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimleri](../../virtual-machines/linux/login-using-aad.md).
 
 ```AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -217,30 +217,30 @@ VM 'nin Azure AD JOIN işlemini tamamlaması için AADLoginForWindows uzantısı
    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0. 
 
    > [!NOTE]
-   > Uzantı ilk hatadan sonra yeniden başlarsa, dağıtım hatası olan günlük kaydı CommandExecution_YYYYMMDDHHMMSSSSS. log olarak kaydedilir. 
+   > Uzantı ilk hatadan sonra yeniden başlarsa, dağıtım hatasına sahip günlük CommandExecution_YYYYMMDDHHMMSSSSS. log olarak kaydedilir. 
 
 1. VM 'de bir komut istemi açın ve Azure ana bilgisayarında çalışan Instance Metadata Service (ıMDS) uç noktasına karşı bu sorguları doğrulayın:
 
    | Çalıştırılacak komut | Beklenen çıkış |
    | --- | --- |
-   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Azure VM ile ilgili doğru bilgiler |
-   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Azure aboneliğiyle ilişkili geçerli kiracı KIMLIĞI |
-   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Bu VM 'ye atanmış yönetilen kimlik için Azure Active Directory tarafından verilen geçerli erişim belirteci |
+   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Azure VM ile ilgili doğru bilgiler |
+   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Azure aboneliğiyle ilişkili geçerli kiracı KIMLIĞI |
+   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Bu VM 'ye atanmış yönetilen kimlik için Azure Active Directory tarafından verilen geçerli erişim belirteci |
 
    > [!NOTE]
    > Erişim belirtecinin kodu, [http://calebb.net/](http://calebb.net/)gibi bir araç kullanılarak çözülebilir. Erişim belirtecindeki "AppID" nin VM 'ye atanan yönetilen kimlikle eşleştiğini doğrulayın.
 
 1. Komut satırını kullanarak gerekli uç noktaların VM 'den erişilebilir olduğundan emin olun:
    
-   - kıvra https://login.microsoftonline.com/ -D –
-   - https://login.microsoftonline.com/`<TenantID>` /-D-
+   - kıvra https://login.microsoftonline.com/-D –
+   - https://login.microsoftonline.com/`<TenantID>`/-D-
 
    > [!NOTE]
    > `<TenantID>`, Azure aboneliği ile ilişkili Azure AD kiracı KIMLIĞI ile değiştirin.
 
-   - https://enterpriseregistration.windows.net/ -D-
-   - https://device.login.microsoftonline.com/ -D-
-   - https://pas.windows.net/ -D-
+   - https://enterpriseregistration.windows.net/-D-
+   - https://device.login.microsoftonline.com/-D-
+   - https://pas.windows.net/-D-
 
 1. `dsregcmd /status`çalıştırılarak cihaz durumu görüntülenebilir. Amaç, cihaz durumunun `AzureAdJoined : YES`olarak gösterilmesi içindir.
 
@@ -267,15 +267,15 @@ Uzantı https://enterpriseregistration.windows.net uç noktasına ulaşamadığ�
 
 1. Komut satırını kullanarak gerekli uç noktaların VM 'den erişilebilir olduğundan emin olun:
 
-   - kıvra https://login.microsoftonline.com/ -D –
-   - https://login.microsoftonline.com/`<TenantID>` /-D-
+   - kıvra https://login.microsoftonline.com/-D –
+   - https://login.microsoftonline.com/`<TenantID>`/-D-
    
    > [!NOTE]
    > `<TenantID>`, Azure aboneliği ile ilişkili Azure AD kiracı KIMLIĞI ile değiştirin. Kiracı KIMLIĞINI bulmanız gerekiyorsa, Dizin/kiracı KIMLIĞINI almak için hesap adınızın üzerine gelebilirler veya Azure portal > Dizin KIMLIĞI > Azure Active Directory seçebilirsiniz.
 
-   - https://enterpriseregistration.windows.net/ -D-
-   - https://device.login.microsoftonline.com/ -D-
-   - https://pas.windows.net/ -D-
+   - https://enterpriseregistration.windows.net/-D-
+   - https://device.login.microsoftonline.com/-D-
+   - https://pas.windows.net/-D-
 
 1. Komutlardan herhangi biri "ana bilgisayar `<URL>`çözümlenemedi" ile başarısız olursa, VM tarafından kullanılmakta olan DNS sunucusunu öğrenmek için bu komutu çalıştırmayı deneyin.
    
@@ -312,7 +312,7 @@ Sanal makinenize Uzak Masaüstü bağlantısı başlattığınızda aşağıdaki
 
 ![Hesabınız, bu cihazı kullanmanızı engelleyecek şekilde yapılandırıldı.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-VM için sanal makine yöneticisinin oturum açma veya sanal makine Kullanıcı oturum açma rolünü veren [RBAC ilkelerini yapılandırdığınızdan](https://docs.microsoft.com/azure/virtual-machines/linux/login-using-aad#configure-rbac-policy-for-the-virtual-machine) emin olun:
+VM için sanal makine yöneticisinin oturum açma veya sanal makine Kullanıcı oturum açma rolünü veren [RBAC ilkelerini yapılandırdığınızdan](../../virtual-machines/linux/login-using-aad.md) emin olun:
  
 #### <a name="unauthorized-client"></a>Yetkisiz istemci
 

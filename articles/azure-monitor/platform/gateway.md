@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 10/30/2019
-ms.openlocfilehash: 87e1995a84ae2b598b8097d4910914831a75a318
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7574f5c17c1b4598336b8db3108946164dc203f2
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162022"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847279"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
 
@@ -26,7 +26,7 @@ Log Analytics ağ geçidi, HTTP CONNECT komutunu kullanarak HTTP tünelini deste
 
 Log Analytics ağ geçidi şunları destekler:
 
-* Onun arkasındaki ve Azure Otomasyonu karma runbook çalışanları ile yapılandırılmış aynı dört Log Analytics çalışma alanı aracısına raporlama.  
+* Onun arkasındaki ve Azure Otomasyonu karma runbook çalışanları ile yapılandırılmış her aracıda yapılandırılan Log Analytics çalışma alanlarına kadar raporlama yapın.  
 * Microsoft Monitoring Agent Azure Izleyici 'de bir Log Analytics çalışma alanına doğrudan bağlı olduğu Windows bilgisayarları.
 * Linux için Log Analytics aracısının, Azure Izleyici 'deki bir Log Analytics çalışma alanına doğrudan bağlandığı Linux bilgisayarları.  
 * UR7 SÜRÜMLERIYLE ile 2012 SP1, UR3 ile Operations Manager 2012 R2 veya Log Analytics ile tümleştirilmiş Operations Manager 2016 veya sonraki bir yönetim grubu System Center Operations Manager.  
@@ -96,7 +96,7 @@ Daha fazla bilgi için [TLS 1,2 kullanarak verileri güvenli bir şekilde gönde
 
 Aşağıdaki tabloda, bir Ağ Geçidi sunucusuyla yaklaşık olarak kaç aracının iletişim kurabildiği gösterilmektedir. Destek, 6 saniyede bir 200 KB veri karşıya yükleyen aracıları temel alır. Sınanan her bir aracı için, veri hacmi günde yaklaşık 2,7 GB olur.
 
-|Ağ Geçidi |Desteklenen aracılar (yaklaşık)|  
+|Ağ geçidi |Desteklenen aracılar (yaklaşık)|  
 |--------|----------------------------------|  
 |CPU: Intel Xeon Işlemci E5-2660 v3 \@ 2,6 GHz 2 çekirdek<br> Bellek: 4 GB<br> Ağ bant genişliği: 1 Gbps| 600|  
 |CPU: Intel Xeon Işlemci E5-2660 v3 \@ 2,6 GHz 4 çekirdek<br> Bellek: 8 GB<br> Ağ bant genişliği: 1 Gbps| 1000|  
@@ -251,7 +251,7 @@ Tümleştirmeyi yapılandırmak için, Işletim konsolunu çalıştırdığını
 
    b. **Komut istemi** ' ne sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin.  
 
-1. Aşağıdaki komutu girin:
+1. Aşağıdaki komutu kullanın:
 
    `netsh winhttp set proxy <proxy>:<port>`
 
@@ -365,7 +365,7 @@ Aşağıdaki tabloda Log Analytics ağ geçidi günlük olaylarının olay kimli
 
 Aşağıdaki tabloda Log Analytics ağ geçidi için kullanılabilen performans sayaçları gösterilmektedir. Sayaçları eklemek için performans Izleyicisini kullanın.
 
-| **Adı** | **Açıklama** |
+| **Ad** | **Açıklama** |
 | --- | --- |
 | Log Analytics ağ geçidi/etkin Istemci bağlantısı |Etkin istemci ağı (TCP) bağlantısı sayısı |
 | Log Analytics ağ geçidi/hata sayısı |Hata sayısı |

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 10/17/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 91e6f08d1dc3dc829dd7c6a58c651d453121e240
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cfde1355ef5e5a2f9033456ac4089ce3ca3f9d72
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516922"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839964"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri
 
@@ -82,7 +82,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Bu nedenle, URL **http://www.contoso.com/?user%281%29=fdafdasfda** WAF 'ye geçirilirse **fdadfdasfda**dizesini değerlendirmez, ancak yine de **%281 %29**parametre adı kullanıcı olarak değerlendirilir. 
+Bu nedenle, URL `http://www.contoso.com/?user%281%29=fdafdasfda` WAF 'ye geçirilirse **fdadfdasfda**dizesini değerlendirmez, ancak yine de **%281 %29**parametre adı kullanıcı olarak değerlendirilir. 
 
 ## <a name="waf-request-size-limits"></a>WAF istek boyutu sınırları
 

@@ -1,6 +1,6 @@
 ---
 title: Video Indexer ile videoları karşıya yükleme ve dizinleme
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Bu konuda, API'lerı kullanarak Video Indexer ile videolarınızı karşıya yükleme ve dizinleme gösterilmektedir.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 255c98965026266348a66bb98a1741eaf04a1d38
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372369"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839152"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -37,7 +37,7 @@ Videonuz karşıya yüklendikten sonra Video Indexer, isteğe bağlı olarak vid
 - Sorgu dizesi URL 'sinin uzunluğu 4096 karakterle sınırlı olduğunda, istek URL 'si uzunluğu 6144 karakterle sınırlıdır.
 - Bayt dizisi seçeneğiyle karşıya yükleme boyutu 2 GB ile sınırlıdır.
 - Bayt dizisi seçeneği 30 dakikadan sonra zaman aşımına uğrar.
-- @No__t-0 param öğesinde belirtilen URL 'nin kodlanması gerekir.
+- `videoURL` param 'da belirtilen URL 'nin kodlanması gerekir.
 - Dizin oluşturma Media Services varlıkların, URL 'den dizin oluşturma ile aynı sınırlaması vardır.
 - Video Indexer, tek bir dosya için maksimum süre sınırı olan 4 saattir.
 
@@ -61,22 +61,22 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 - Dizin oluşturma durum değişikliği: 
     - Özelliklerinin    
     
-        |Adı|Açıklama|
+        |Ad|Açıklama|
         |---|---|
         |id|Video KIMLIĞI|
         |durum|Video durumu|  
-    - Örnek: https: \//test. com/notifyme? projectName = MyProject & ID = 1234abcd & State = Işlendi
+    - Örnek: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - Videoda tanımlanan kişi:
   - Özellikler
     
-      |Adı|Açıklama|
+      |Ad|Açıklama|
       |---|---|
       |id| Video KIMLIĞI|
       |FaceID|Video dizininde görünen yüz KIMLIĞI|
       |Knownpersonıd|Bir yüz modeli içinde benzersiz olan kişi KIMLIĞI|
       |kişi adı|Kişinin adı|
         
-    - Örnek: https: \//test. com/notifyme? projectName = MyProject & ID = 1234abcd & çok yönlü kimliği = 12 & Knownpersonıd = CCA84350-89B7-4262-861C-3CAC796542A5 & personName = Inigo_Montoya 
+    - Örnek: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Notlar
 

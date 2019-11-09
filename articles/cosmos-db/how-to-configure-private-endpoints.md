@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 34b54459629560ba80e6a38d10edbab32ea44778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3f987b9e05bcdcda9afe26a1eb1354e5e2450ac5
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820166"
+ms.locfileid: "73846531"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Azure Cosmos hesabı için Azure özel bağlantısını yapılandırma (Önizleme)
 
@@ -86,7 +86,7 @@ Aşağıdaki tabloda, farklı Azure Cosmos hesabı API türleri, desteklenen alt
 
 ### <a name="fetch-the-private-ip-addresses"></a>Özel IP adreslerini getir
 
-Özel uç nokta sağlandıktan sonra IP adreslerini sorgulayabilirsiniz. Azure portal IP adreslerini görüntülemek için. **Tüm kaynaklar**' ı seçin, daha önce oluşturduğunuz özel uç noktasını bu durumda "dbPrivateEndpoint3" olarak ARAYıN ve DNS AYARLARıNı ve IP adreslerini görmek Için genel bakış sekmesini seçin:
+Özel uç nokta sağlandıktan sonra IP adreslerini sorgulayabilirsiniz. Azure portal IP adreslerini görüntülemek için **tüm kaynaklar**' ı seçin, daha önce oluşturduğunuz özel uç noktasını bu durumda "dbPrivateEndpoint3" olarak ARAYıN ve DNS AYARLARıNı ve IP adreslerini görmek Için genel bakış sekmesini seçin:
 
 ![Azure portal özel IP adresleri](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
 
@@ -354,7 +354,7 @@ Azure Cosmos hesabına bölge ekleme veya kaldırma, bu hesaba ait DNS girdileri
 
 Örneğin, 3 bölgede bir Azure Cosmos hesabı dağıtırsanız: "Batı ABD", "Orta ABD" ve "Batı Avrupa". Hesabınız için özel bir uç nokta oluşturduğunuzda, alt ağda 4 özel IP ayrılır. Her bölge için bir, toplam 3 ve diğeri ise küresel/bölge agtik uç noktası için.
 
-Daha sonra yeni bir bölge eklerseniz, örneğin, Azure Cosmos hesabına "Doğu ABD". Varsayılan olarak, yeni bölgeye mevcut özel uç noktadan erişilemez. Azure Cosmos Hesap Yöneticisi, yeni bölge formuna erişmeden önce özel uç nokta bağlantısını yenilemelidir. 
+Daha sonra yeni bir bölge eklerseniz, örneğin, Azure Cosmos hesabına "Doğu ABD". Varsayılan olarak, yeni bölgeye mevcut özel uç noktadan erişilemez. Azure Cosmos Hesap Yöneticisi, yeni bölgeden erişmeden önce özel uç nokta bağlantısını yenilemelidir. 
 
 ` Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>` komutunu çalıştırdığınızda komutun çıktısı, "yeniden oluştur" olarak ayarlanan `actionsRequired` parametresini içerir. Bu değer, Özel uç noktanın yenilenmesi gerektiğini gösterir. Daha sonra Azure Cosmos Hesap Yöneticisi, Özel uç nokta yenilemeyi tetiklemek için `Set-AzPrivateEndpoint` komutunu çalıştırır.
 

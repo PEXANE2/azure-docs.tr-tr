@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 2a8a19dfd2cdc7a64a5ea90b96808963b19f73bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4b07252aed2205917f6b43e3e09a2877663e5bab
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498646"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838908"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware değerlendirmesi ve geçiş için destek matrisi
 
@@ -27,7 +27,7 @@ Tablo, VMware VM 'Leri için desteklenen senaryoları özetler.
 **Dağıtım** | **Ayrıntılar**
 --- | ---
 **Şirket içi VMware VM 'lerini değerlendirme** | İlk değerlendirmenizi [ayarlayın](tutorial-prepare-vmware.md) .<br/><br/> Büyük ölçekli bir değerlendirme [çalıştırın](scale-vmware-assessment.md) .
-**VMware VM 'lerini geçirme** | Aracısız geçiş kullanarak geçiş yapabilir veya aracı tabanlı bir geçiş kullanabilirsiniz. [Daha fazla bilgi edinin](server-migrate-overview.md)
+**VMware VM 'lerini geçirme** | Aracısız geçiş kullanarak geçiş yapabilir veya aracı tabanlı bir geçiş kullanabilirsiniz. [Daha fazla bilgi](server-migrate-overview.md)
 
 
 ## <a name="azure-migrate-projects"></a>Azure geçişi projeleri
@@ -112,7 +112,7 @@ dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlükle
 *.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Azure geçişi hizmeti URL 'Lerine bağlanın.
 *.blob.core.windows.net | Verileri depolama hesaplarına yükleyin.
-http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Azure geçiş gereci güncellemeleri için kullanılır.
+https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Azure geçiş gereci güncellemeleri için kullanılır.
 
 ## <a name="assessment-port-requirements"></a>Değerlendirme-bağlantı noktası gereksinimleri
 
@@ -215,7 +215,7 @@ dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlükle
 *.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Azure geçişi hizmeti URL 'Lerine bağlanın.
 *.blob.core.windows.net | Verileri depolama hesaplarına yükleyin.
-http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Azure geçiş gereci güncellemeleri için kullanılır.
+https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Azure geçiş gereci güncellemeleri için kullanılır.
 
 
 ## <a name="agentless-migration-port-requirements"></a>Aracısız geçiş-bağlantı noktası gereksinimleri
@@ -268,7 +268,7 @@ IOCTL | TLS 1,2 etkinleştirilmelidir.
 MySQL | MySQL 'in gereç üzerinde yüklü olması gerekir.<br/> MySQL yüklenmelidir. El ile yükleyebilirsiniz veya Site Recovery gereç dağıtımı sırasında yükleyebilir.
 Diğer uygulamalar | Çoğaltma gereci üzerinde başka uygulamalar çalıştırmayın.
 Windows Server rolleri | Bu rolleri etkinleştirmeyin: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V
-Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi edinin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Önceden var olan varsayılan Web sitesi yok <br> -Var olan bir Web sitesi/uygulama dinleme 443 bağlantı noktasında dinleniyor <br>- [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştir
 **Ağ ayarları** |
 IP adresi türü | Statik
@@ -326,7 +326,7 @@ Azure geçişi 'ne indirme ve yükleme | Gereci yüklerken ve MySQL istendiğind
 **ALACAĞıNı** | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz.
 Iscsı hedefleri | Iscsı hedefleri olan VM 'Ler aracısız geçiş için desteklenmez.
 **Çok yollu GÇ** | Desteklenmiyor.
-**Depolama vMotion** | Desteklenen
+**Depolama vMotion** | Destekleniyor
 **Ekip oluşturulmuş NIC 'ler** | Desteklenmiyor.
 **IPv6** | Desteklenmiyor.
 

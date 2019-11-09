@@ -7,35 +7,34 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 07/16/2019
+ms.date: 11/07/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91b202f8a5df841fa3d6aa1f0903999b395f8137
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686057"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839803"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Bakım zamanlamalarını kullanarak hizmet güncelleştirmelerini ve bakımını yönetme
 
-Bakım zamanlamaları artık tüm Azure SQL veri ambarı bölgelerinde kullanılabilir. Bakım zamanlaması özelliği, hizmet durumu planlı bakım bildirimlerini, Kaynak Durumu denetim Izleyicisini ve Azure SQL veri ambarı bakım zamanlaması hizmetini tümleştirir.
+Bakım zamanlaması özelliği, hizmet durumu planlı bakım bildirimlerini, Kaynak Durumu denetim Izleyicisini ve Azure SQL veri ambarı bakım zamanlaması hizmetini tümleştirir.
 
-Yeni özellikler, yükseltmeler ve düzeltme ekleri almak için uygun olduğunda bir zaman penceresi seçmek için bakım zamanlamasını kullanırsınız. Birincil ve ikincil bakım penceresini yedi günlük bir süre içinde seçersiniz. Bu özelliği kullanmak için, ayrı gün aralıklarında bir birincil ve ikincil pencere belirlemeniz gerekir.
+Yeni özellikleri, yükseltmeleri ve düzeltme eklerini almak için uygun olduğunda bir zaman penceresi seçmek üzere bakım zamanlaması 'nı kullanmanız gerekir. Yedi günlük bir dönemde birincil ve ikincil bakım penceresi seçmeniz gerekir, her pencere ayrı gün aralıklarında olmalıdır.
 
-Örneğin, Cumartesi 22:00 ' nin birincil bir penceresini Pazar 01:00 ' e zamanlayabilir ve sonra da Çarşamba 19:00 ikincil penceresini 22:00 olarak zamanlayabilirsiniz. Birincil bakım pencereniz sırasında SQL Data Warehouse bakım gerçekleştiremediği takdirde, bakım, ikincil bakım pencereniz sırasında yeniden denenecek. Hizmet bakımı hem birincil hem de ikincil pencereler sırasında gerçekleşebilir. Tüm bakım işlemlerinin hızlı bir şekilde tamamlanmasını sağlamak için, DW400 (c) ve daha düşük veri ambarı katmanları, belirli bir bakım penceresi dışında bakım işlemini tamamlayabilir.
+Örneğin, Cumartesi 22:00 ' nin birincil bir penceresini Pazar 01:00 ' e zamanlayabilir ve sonra da Çarşamba 19:00 ikincil penceresini 22:00 olarak zamanlayabilirsiniz. Birincil bakım pencereniz sırasında SQL Data Warehouse bakım gerçekleştiremediği takdirde, bakım, ikincil bakım pencereniz sırasında yeniden denenecek. Hizmet bakımı, birincil ve ikincil pencereler sırasında bazen meydana gelebilir. Tüm bakım işlemlerinin hızlı bir şekilde tamamlanmasını sağlamak için, DW400c ve daha düşük veri ambarı katmanları, belirtilen bakım penceresi dışında bakım işlemini tamamlayabilir.
 
 Yeni oluşturulan tüm Azure SQL veri ambarı örneklerinin, dağıtım sırasında uygulanan sistem tanımlı bir bakım zamanlaması olacaktır. Zamanlama, dağıtım tamamlandıktan hemen sonra düzenlenebilir.
 
-Her bakım penceresi üç ve sekiz saat arasında olabilir. Bakım, pencerenin içinde herhangi bir zamanda gerçekleşebilir. Bakım başladığında, tüm etkin oturumlar iptal edilir ve teslim edilmemiş işlemler geri alınacaktır. Hizmet, veri ambarınıza yeni kod dağıttığı için bağlantıda birden çok kısa kayıp beklemeniz gerekir. Veri ambarı bakım işlemi tamamlandıktan hemen sonra bilgilendirilirsiniz.
+Bakım penceresi üç ve sekiz saat arasında olabilir, ancak bu, veri ambarının süre boyunca çevrimdışı olacağı anlamına gelmez. Bakım, bu pencerede herhangi bir zamanda gerçekleşebilir ve hizmet, veri ambarınıza yeni kod dağıttığı için bu 5 -6 dönemde tek bir bağlantı kesmeyi beklemeniz gerekir. DW400c ve Lower, bakım penceresi sırasında çeşitli zamanlarda bağlantıda birden çok kısa kayıplar olabilir. Bakım başladığında, tüm etkin oturumlar iptal edilir ve teslim edilmemiş işlemler geri alınacaktır. Örnek kapalı kalma süresini en aza indirmek için, veri ambarınızın seçtiğiniz bakım süresinden önce uzun süre çalışan işlemlere sahip olmadığından emin olun.
 
- Tüm bakım işlemleri, zamanlanmış bakım pencereleri içinde bitmelidir. Belirtilen bakım pencerelerinin dışında, önceden bildirimde bulunmadan hiçbir bakım yapılmaz. Zamanlanan Bakım sırasında veri ambarınız duraklatıldıysa, sürdürme işlemi sırasında güncelleştirilir. 
+Zamana duyarlı bir güncelleştirme dağıtmadığımızda, tüm bakım işlemleri belirtilen bakım pencereleri içinde bitmelidir. Zamanlanan Bakım sırasında veri ambarınız duraklatıldıysa, sürdürme işlemi sırasında güncelleştirilir. Veri ambarı bakım işlemi tamamlandıktan hemen sonra bilgilendirilirsiniz.
 
 ## <a name="alerts-and-monitoring"></a>Uyarılar ve izleme
 
-Hizmet durumu bildirimleri ve Kaynak Durumu Check Monitor ile tümleştirme, müşterilerin yaklaşan bakım etkinliklerinden haberdar olmasına olanak sağlar. Yeni otomasyon, Azure Izleyici 'den yararlanır. Yaklaşan bakım olayları hakkında nasıl bilgilendirilmek istediğinize karar verebilirsiniz. Ayrıca, hangi otomatik akışların kapalı kalma süresini yönetmenize ve işlemsel etkiyi en aza indirmenize yardımcı olacağını seçebilirsiniz.
-
-24 saatlik bir öncelikli bildirim, DWC400c ve alt katmanlar için olmayan tüm bakım olaylarının önüne gelir. Örnek kapalı kalma süresini en aza indirmek için, veri ambarınızın seçtiğiniz bakım süresinden önce uzun süre çalışan işlemlere sahip olmadığından emin olun.
+Hizmet durumu bildirimleri ve Kaynak Durumu Check Monitor ile tümleştirme, müşterilerin yaklaşan bakım etkinliklerinden haberdar olmasına olanak sağlar. Bu Otomasyon Azure Izleyici 'den yararlanır. Yaklaşan bakım olayları hakkında nasıl bilgilendirilmek istediğinize karar verebilirsiniz. Ayrıca, hangi otomatik akışların kapalı kalma süresini yönetmenize ve işlemsel etkiyi en aza indirmenize yardımcı olacağını seçebilirsiniz.
+24 saatlik bir öncelikli bildirim, DWC400c ve alt katmanlar için olmayan tüm bakım olaylarının önüne gelir.
 
 > [!NOTE]
 > Zaman açısından kritik güncelleştirme dağıtımı için gerekli olan olayda gelişmiş bildirim süreleri önemli ölçüde azaltılabilir.

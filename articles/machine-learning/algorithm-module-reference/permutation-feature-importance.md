@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a1c3bec4b32a9d3450e307f42958bb19263c3d7a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ddd631b809d4a0635107069f48281db4c0a2e7e0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717159"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837547"
 ---
 # <a name="permutation-feature-importance"></a>Permütasyon özelliği önem derecesi
 
@@ -24,7 +24,7 @@ Bu modülde, özellik değerleri tek seferde bir sütun olacak şekilde rastgele
 
 Modülün döndürdüğü puanlar, permütasyon sonrasında eğitilen bir modelin performansındaki *değişikliği* temsil eder. Önemli özellikler genellikle karışık süreç için daha duyarlıdır ve bu nedenle daha yüksek önem derecesine neden olur. 
 
-Bu makalede, makine öğrenimi: [permütasyon özelliğinin önem derecesine](http://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx)sahip olan permütasyon özelliği, teorik özelliği ve uygulamaları hakkında genel bir bakış sunulmaktadır.  
+Bu makalede, makine öğrenimi: [permütasyon özelliğinin önem derecesine](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx)sahip olan permütasyon özelliği, teorik özelliği ve uygulamaları hakkında genel bir bakış sunulmaktadır.  
 
 ## <a name="how-to-use-permutation-feature-importance"></a>Permütasyon özelliği önem derecesi kullanma
 

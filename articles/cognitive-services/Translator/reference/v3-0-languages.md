@@ -1,7 +1,7 @@
 ---
 title: Translator Metin Çevirisi API'si dilleri yöntemi
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si dilleri yöntemini kullanın.
+description: Diller yöntemi, Translator Metin Çevirisi API'si diğer işlemleri tarafından şu anda desteklenen dil kümesini alır.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 3dd875fbf9a8da464abe1b6312cec84c030dc624
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 37f70399e8125db559098869cdfffdf4533498d7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934010"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835826"
 ---
-# <a name="translator-text-api-30-languages"></a>Translator Metin Çevirisi API'si 3,0: Languages
+# <a name="translator-text-api-30-languages"></a>Translator Metin Çevirisi API'si 3,0: Diller
 
 Translator Metin Çevirisi API'si diğer işlemleri tarafından şu anda desteklenen dil kümesini alır. 
 
 ## <a name="request-url"></a>İstek URL'si
 
-Şu kişiye `GET` bir istek gönder:
+`GET` isteği gönder:
 ```HTTP
 https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 ```
@@ -36,12 +36,12 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   <th width="20%">Sorgu parametresi</th>
   <th>Açıklama</th>
   <tr>
-    <td>API sürümü</td>
-    <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0`.</td>
+    <td>api sürümü</td>
+    <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer `3.0`olmalıdır.</td>
   </tr>
   <tr>
     <td>scope</td>
-    <td>*Isteğe bağlı parametre*.<br/>Döndürülecek dil grubunu tanımlayan adların virgülle ayrılmış bir listesi. İzin verilen grup adları: `translation`, `transliteration` ve `dictionary`. Hiçbir kapsam verilmezse, bu, geçirme `scope=translation,transliteration,dictionary`ile eşdeğer olan tüm gruplar döndürülür. Senaryolarınız için hangi desteklenen diller kümesinin uygun olduğuna karar vermek için, [Yanıt nesnesinin](#response-body)açıklamasına bakın.</td>
+    <td>*Isteğe bağlı parametre*.<br/>Döndürülecek dil grubunu tanımlayan adların virgülle ayrılmış bir listesi. İzin verilen grup adları şunlardır: `translation`, `transliteration` ve `dictionary`. Hiçbir kapsam verilmezse, tüm gruplar döndürülür ve bu, `scope=translation,transliteration,dictionary`geçirme ile eşdeğerdir. Senaryolarınız için hangi desteklenen diller kümesinin uygun olduğuna karar vermek için, [Yanıt nesnesinin](#response-body)açıklamasına bakın.</td>
   </tr>
 </table> 
 
@@ -52,7 +52,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   <th>Açıklama</th>
   <tr>
     <td>Kabul etme-dil</td>
-    <td>*Isteğe bağlı istek üst bilgisi*.<br/>Kullanıcı arabirimi dizelerinde kullanılacak dil. Yanıttaki alanlardan bazıları dilin veya bölge adlarının adlarıdır. Bu adların döndürüleceği dili tanımlamak için bu parametreyi kullanın. Dil, iyi biçimlendirilmiş bir BCP 47 Language etiketi sağlayarak belirtilir. Örneğin, Fransızca 'da ad istemek `fr` için değerini kullanın veya geleneksel Çince 'de ad istemek `zh-Hant` için değeri kullanın.<br/>Adlar, hedef dil belirtilmediğinde veya yerelleştirme kullanılabilir olmadığında Ingilizce dilinde sağlanır.
+    <td>*Isteğe bağlı istek üst bilgisi*.<br/>Kullanıcı arabirimi dizelerinde kullanılacak dil. Yanıttaki alanlardan bazıları dilin veya bölge adlarının adlarıdır. Bu adların döndürüleceği dili tanımlamak için bu parametreyi kullanın. Dil, iyi biçimlendirilmiş bir BCP 47 Language etiketi sağlayarak belirtilir. Örneğin, Fransızca 'da ad istemek için `fr` değerini kullanın veya Çince Geleneksel olarak ad istemek için `zh-Hant` değerini kullanın.<br/>Adlar, hedef dil belirtilmediğinde veya yerelleştirme kullanılabilir olmadığında Ingilizce dilinde sağlanır.
     </td>
   </tr>
   <tr>
@@ -65,15 +65,15 @@ Dil kaynaklarını almak için kimlik doğrulaması gerekli değildir.
 
 ## <a name="response-body"></a>Yanıt gövdesi
 
-İstemci, `scope` hangi dil gruplarını ilgilendiğinizi tanımlamak için sorgu parametresini kullanır.
+İstemci, ilgilendiğiniz dil gruplarını tanımlamak için `scope` sorgu parametresini kullanır.
 
-* `scope=translation`metni bir dilden başka bir dile çevirmek için desteklenen dilleri sağlar;
+* `scope=translation`, metni bir dilden başka bir dile çevirmek için desteklenen dilleri sağlar;
 
-* `scope=transliteration`bir dildeki metni bir betiğe başka bir betiğe dönüştürmek için yetenekler sağlar;
+* `scope=transliteration`, bir dildeki metni bir betiğe başka bir betiğe dönüştürmek için yetenekler sağlar;
 
-* `scope=dictionary``Dictionary` işlem verileri döndüren dil çiftlerini sağlar.
+* `scope=dictionary`, `Dictionary` işlemleri için veri döndürdüğü dil çiftleri sağlar.
 
-Bir istemci, virgülle ayrılmış adların bir listesini belirterek birkaç grubu eşzamanlı alabilir. Örneğin, `scope=translation,transliteration,dictionary` tüm gruplar için desteklenen diller döndürür.
+Bir istemci, virgülle ayrılmış adların bir listesini belirterek birkaç grubu eşzamanlı alabilir. Örneğin, `scope=translation,transliteration,dictionary` tüm gruplar için desteklenen diller döndürebilir.
 
 Başarılı bir yanıt, istenen her grup için bir özelliği olan bir JSON nesnesidir:
 
@@ -93,15 +93,15 @@ Başarılı bir yanıt, istenen her grup için bir özelliği olan bir JSON nesn
 
 Her bir özelliğin değeri aşağıdaki gibidir.
 
-* `translation`özelliði
+* `translation` özelliği
 
-  `translation` Özelliğin değeri (anahtar, değer) çiftlerinin bir sözlüğüdür. Her anahtar bir BCP 47 dili etikettir. Bir anahtar, metnin çevrilebilmesi veya çevrilebilmesi için bir dil tanımlar. Anahtarla ilişkili değer, dili tanımlayan özellikleri içeren bir JSON nesnesidir:
+  `translation` özelliğinin değeri (anahtar, değer) çiftlerinin bir sözlüğüdür. Her anahtar bir BCP 47 dili etikettir. Bir anahtar, metnin çevrilebilmesi veya çevrilebilmesi için bir dil tanımlar. Anahtarla ilişkili değer, dili tanımlayan özellikleri içeren bir JSON nesnesidir:
 
-  * `name`: Üst bilgi aracılığıyla `Accept-Language` istenen yerel ayarda dilin görünen adı.
+  * `name`: `Accept-Language` üst bilgisi aracılığıyla istenen yerel ayarda dilin görünen adı.
 
-  * `nativeName`: Bu dil için yerel ayarda bulunan dilin görünen adı.
+  * `nativeName`: bu dilin yerel ayarında bulunan dilin görünen adı.
 
-  * `dir`: Sağdan sola diller veya `rtl` `ltr` soldan sağa diller için olan yönlülük.
+  * `dir`: sağdan sola diller veya soldan sağa dillerin `ltr` için `rtl` yönlülük.
 
   Örnek:
           
@@ -119,25 +119,25 @@ Her bir özelliğin değeri aşağıdaki gibidir.
   }
   ```
 
-* `transliteration`özelliði
+* `transliteration` özelliği
 
-  `transliteration` Özelliğin değeri (anahtar, değer) çiftlerinin bir sözlüğüdür. Her anahtar bir BCP 47 dili etikettir. Bir anahtar, metnin bir betikten başka bir betiğe dönüştürülebileceği dili tanımlar. Anahtarla ilişkili değer, dili ve desteklenen betikleri tanımlayan özellikleri içeren bir JSON nesnesidir:
+  `transliteration` özelliğinin değeri (anahtar, değer) çiftlerinin bir sözlüğüdür. Her anahtar bir BCP 47 dili etikettir. Bir anahtar, metnin bir betikten başka bir betiğe dönüştürülebileceği dili tanımlar. Anahtarla ilişkili değer, dili ve desteklenen betikleri tanımlayan özellikleri içeren bir JSON nesnesidir:
 
-  * `name`: Üst bilgi aracılığıyla `Accept-Language` istenen yerel ayarda dilin görünen adı.
+  * `name`: `Accept-Language` üst bilgisi aracılığıyla istenen yerel ayarda dilin görünen adı.
 
-  * `nativeName`: Bu dil için yerel ayarda bulunan dilin görünen adı.
+  * `nativeName`: bu dilin yerel ayarında bulunan dilin görünen adı.
 
-  * `scripts`: Dönüştürülecek betikler listesi. Listedeki her öğe için `scripts` özellikler vardır:
+  * `scripts`: dönüştürülecek betiklerin listesi. `scripts` listesindeki her öğe için özellikler vardır:
 
-    * `code`: Betiği tanımlayan kod.
+    * `code`: betiği tanımlayan kod.
 
-    * `name`: Betiğin aracılığıyla `Accept-Language` istenen yerel ayarda görünen ad.
+    * `name`: `Accept-Language` üst bilgisi aracılığıyla istenen yerel ayarda betiğinin görünen adı.
 
-    * `nativeName`: Dil için yerel ayarda bulunan dilin görünen adı.
+    * `nativeName`: dilin yerel ayarında dilin görünen adı.
 
-    * `dir`: Sağdan sola diller veya `rtl` `ltr` soldan sağa diller için olan yönlülük.
+    * `dir`: sağdan sola diller veya soldan sağa dillerin `ltr` için `rtl` yönlülük.
 
-    * `toScripts`: Metni dönüştürmek için kullanılabilen betikler listesi. `toScripts` Listenin her öğesi, daha önce açıklandığı `code`gibi `name`özellikler `nativeName`,, `dir` ve ' dir.
+    * `toScripts`: metni dönüştürmek için kullanılabilen betikler listesi. `toScripts` listenin her öğesi, daha önce açıklandığı gibi özellikler `code`, `name`, `nativeName`ve `dir` sahiptir.
 
   Örnek:
 
@@ -184,25 +184,25 @@ Her bir özelliğin değeri aşağıdaki gibidir.
   }
   ```
 
-* `dictionary`özelliði
+* `dictionary` özelliği
 
-  `dictionary` Özelliğin değeri (anahtar, değer) çiftlerinin bir sözlüğüdür. Her anahtar bir BCP 47 dili etikettir. Anahtar, alternatif çevirilerin ve geri çevirilerin kullanılabildiği dili tanımlar. Değer, kullanılabilir çevirileri içeren kaynak dilini ve hedef dilleri açıklayan bir JSON nesnesidir:
+  `dictionary` özelliğinin değeri (anahtar, değer) çiftlerinin bir sözlüğüdür. Her anahtar bir BCP 47 dili etikettir. Anahtar, alternatif çevirilerin ve geri çevirilerin kullanılabildiği dili tanımlar. Değer, kullanılabilir çevirileri içeren kaynak dilini ve hedef dilleri açıklayan bir JSON nesnesidir:
 
-  * `name`: Başlık aracılığıyla `Accept-Language` istenen yerel ayarda bulunan kaynak dilin görünen adı.
+  * `name`: `Accept-Language` üst bilgisi aracılığıyla istenen yerel ayarda bulunan kaynak dilin görünen adı.
 
-  * `nativeName`: Bu dil için yerel ayarda bulunan dilin görünen adı.
+  * `nativeName`: bu dilin yerel ayarında bulunan dilin görünen adı.
 
-  * `dir`: Sağdan sola diller veya `rtl` `ltr` soldan sağa diller için olan yönlülük.
+  * `dir`: sağdan sola diller veya soldan sağa dillerin `ltr` için `rtl` yönlülük.
 
-  * `translations`: Farklı çeviriler ve kaynak dilde ifade edilen sorgu örnekleri içeren dillerin listesi. Listedeki her öğe için `translations` özellikler vardır:
+  * `translations`: daha farklı çeviriler ve kaynak dilde ifade edilen sorgu örnekleri içeren dillerin listesi. `translations` listesindeki her öğe için özellikler vardır:
 
-    * `name`: Üst bilgi aracılığıyla `Accept-Language` istenen yerel ayarda bulunan hedef dilin görünen adı.
+    * `name`: `Accept-Language` üst bilgisi aracılığıyla istenen yerel ayarda bulunan hedef dilin görünen adı.
 
-    * `nativeName`: Hedef dilin yerel ayarda bulunan hedef dilin görünen adı.
+    * `nativeName`: hedef dilin yerel ayarda bulunan hedef dilin görünen adı.
 
-    * `dir`: Sağdan sola diller veya `rtl` `ltr` soldan sağa diller için olan yönlülük.
+    * `dir`: sağdan sola diller veya soldan sağa dillerin `ltr` için `rtl` yönlülük.
     
-    * `code`: Hedef dili tanımlayan dil kodu.
+    * `code`: hedef dili tanımlayan dil kodu.
 
   Örnek:
 
@@ -224,7 +224,7 @@ Her bir özelliğin değeri aşağıdaki gibidir.
 
 Yanıt nesnesinin yapısı, API sürümünde değişiklik yapılmadan değişmeyecektir. Aynı API sürümü için, Microsoft Translator, Hizmetleri tarafından desteklenen dillerin listesini sürekli olarak genişlettiğinden, kullanılabilir dillerin listesi zaman içinde değişebilir.
 
-Desteklenen dillerin listesi sıklıkla değişmeyecektir. Ağ bant genişliğini kaydetmek ve yanıt hızını artırmak için, bir istemci uygulaması dil kaynaklarını ve ilgili varlık etiketini (`ETag`) önbelleğe almayı göz önünde bulundurmalıdır. Daha sonra, istemci uygulaması düzenli olarak (örneğin, 24 saatte bir kez), desteklenen dillerin en son kümesini getirmek üzere hizmeti sorgular. `If-None-Match` Üstbilgi alanına geçerli `ETag` değeri geçirmek hizmetin yanıtı iyileştirmelerine izin verir. Kaynak değiştirilmediyse, hizmet 304 durum kodunu ve boş bir yanıt gövdesini döndürür.
+Desteklenen dillerin listesi sıklıkla değişmeyecektir. Ağ bant genişliğini kaydetmek ve yanıt hızını artırmak için bir istemci uygulaması, dil kaynaklarını ve ilgili varlık etiketini (`ETag`) önbelleğe almayı düşünmelidir. Daha sonra, istemci uygulaması düzenli olarak (örneğin, 24 saatte bir kez), desteklenen dillerin en son kümesini getirmek üzere hizmeti sorgular. Geçerli `ETag` değerini bir `If-None-Match` üst bilgi alanına geçirmek hizmetin yanıtı iyileştirmelerine izin verir. Kaynak değiştirilmediyse, hizmet 304 durum kodunu ve boş bir yanıt gövdesini döndürür.
 
 ## <a name="response-headers"></a>Yanıt üst bilgileri
 
@@ -232,8 +232,8 @@ Desteklenen dillerin listesi sıklıkla değişmeyecektir. Ağ bant genişliğin
   <th width="20%">Üst bilgiler</th>
   <th>Açıklama</th>
   <tr>
-    <td>eTag</td>
-    <td>İstenen desteklenen diller grupları için varlık etiketinin geçerli değeri. Sonraki istekleri daha verimli hale getirmek için, istemci `ETag` değeri bir `If-None-Match` başlık alanında gönderebilir.
+    <td>Özelliği</td>
+    <td>İstenen desteklenen diller grupları için varlık etiketinin geçerli değeri. Sonraki istekleri daha verimli hale getirmek için, istemci `ETag` değerini bir `If-None-Match` üst bilgi alanında gönderebilir.
     </td>
   </tr>
   <tr>
@@ -247,7 +247,7 @@ Desteklenen dillerin listesi sıklıkla değişmeyecektir. Ağ bant genişliğin
 Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir. 
 
 <table width="100%">
-  <th width="20%">Durum Kodu</th>
+  <th width="20%">Durum kodu</th>
   <th>Açıklama</th>
   <tr>
     <td>200</td>
@@ -255,7 +255,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
   <tr>
     <td>304</td>
-    <td>Kaynak, istek üstbilgileri `If-None-Match`tarafından belirtilen sürümden bu yana değiştirilmedi.</td>
+    <td>İstek üst bilgileri tarafından belirtilen sürümden sonra kaynak değiştirilmedi `If-None-Match`.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -267,11 +267,11 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
   <tr>
     <td>500</td>
-    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt başlığından `X-RequestId`istek tanımlayıcısı ve istek üst `X-ClientTraceId`bilgisinden istemci tanımlayıcısı.</td>
+    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisi `X-RequestId`istek tanımlayıcısı ve istek üst bilgisi `X-ClientTraceId`istemci tanımlayıcısı.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt başlığından `X-RequestId`istek tanımlayıcısı ve istek üst `X-ClientTraceId`bilgisinden istemci tanımlayıcısı.</td>
+    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisi `X-RequestId`istek tanımlayıcısı ve istek üst bilgisi `X-ClientTraceId`istemci tanımlayıcısı.</td>
   </tr>
 </table> 
 

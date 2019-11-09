@@ -1,7 +1,7 @@
 ---
 title: Translator Metin Çevirisi API'si Breakcümle yöntemi
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si Breakcümlesini metodunu kullanın.
+description: Translator Metin Çevirisi API'si Breakcümlesini metodu, tümce sınırlarının bir metin parçasına konumlandırılmasını belirler.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 184677589b3aa777ec556215455f8018e0d71f3f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934048"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835880"
 ---
-# <a name="translator-text-api-30-breaksentence"></a>Translator Metin Çevirisi API'si 3,0: BreakSentence
+# <a name="translator-text-api-30-breaksentence"></a>Translator Metin Çevirisi API'si 3,0: Breakcümlesi
 
 Tümce sınırlarının metin parçasına konumlandırılmasını belirler.
 
 ## <a name="request-url"></a>İstek URL'si
 
-Şu kişiye `POST` bir istek gönder:
+`POST` isteği gönder:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
@@ -37,15 +37,15 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   <th width="20%">Sorgu parametresi</th>
   <th>Açıklama</th>
   <tr>
-    <td>API sürümü</td>
-    <td>*Gerekli sorgu parametresi*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0`.</td>
+    <td>api sürümü</td>
+    <td>*Gerekli sorgu parametresi*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer `3.0`olmalıdır.</td>
   </tr>
   <tr>
-    <td>dil</td>
+    <td>language</td>
     <td>*Isteğe bağlı sorgu parametresi*.<br/>Giriş metninin dilini tanımlayan dil etiketi. Bir kod belirtilmemişse, otomatik dil algılama uygulanır.</td>
   </tr>
   <tr>
-    <td>script</td>
+    <td>betiğini çalıştırın</td>
     <td>*Isteğe bağlı sorgu parametresi*.<br/>Giriş metni tarafından kullanılan betiği tanımlayan betik etiketi. Bir komut dosyası belirtilmemişse, dilin varsayılan betiği kabul edilecektir.</td>
   </tr>
 </table> 
@@ -60,8 +60,8 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
     <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
   </tr>
   <tr>
-    <td>Content-Type</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json`.</td>
+    <td>İçerik türü</td>
+    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler: `application/json`.</td>
   </tr>
   <tr>
     <td>İçerik uzunluğu</td>
@@ -69,13 +69,13 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>X-Clienttraceıd</td>
-    <td>*İsteğe bağlı*.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. Adlı `ClientTraceId`sorgu PARAMETRESINI kullanarak izleme kimliğini sorgu dizesine eklerseniz bu üstbilgiyi atlayabilirsiniz.</td>
+    <td>*İsteğe bağlı*.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. `ClientTraceId`adlı bir sorgu parametresi kullanarak, sorgu dizesinde izleme KIMLIĞINI eklerseniz bu üstbilgiyi atlayabilirsiniz.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>İstek gövdesi
 
-İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, adlı `Text`bir String ÖZELLIĞI olan bir JSON nesnesidir. Tümce sınırları, `Text` özelliğin değeri için hesaplanır. Bir metin parçasına sahip örnek bir istek gövdesi şöyle görünür:
+İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, `Text`adlı dize özelliğine sahip bir JSON nesnesidir. Tümce sınırları `Text` özelliğinin değeri için hesaplanır. Bir metin parçasına sahip örnek bir istek gövdesi şöyle görünür:
 
 ```json
 [
@@ -88,21 +88,21 @@ Aşağıdaki sınırlamalar geçerlidir:
 * Dizi en fazla 100 öğe içerebilir.
 * Bir dizi öğesinin metin değeri boşluk dahil 10.000 karakteri aşamaz.
 * İstekte bulunan metnin tamamı boşluk dahil 50.000 karakteri aşamaz.
-* `language` Sorgu parametresi belirtilmişse, tüm dizi öğeleri aynı dilde olmalıdır. Aksi halde, dil otomatik algılama her bir dizi öğesine bağımsız olarak uygulanır.
+* `language` sorgu parametresi belirtilirse, tüm dizi öğeleri aynı dilde olmalıdır. Aksi halde, dil otomatik algılama her bir dizi öğesine bağımsız olarak uygulanır.
 
 ## <a name="response-body"></a>Yanıt gövdesi
 
 Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren bir JSON dizisidir. Bir sonuç nesnesi aşağıdaki özellikleri içerir:
 
-  * `sentLen`: Metin öğesindeki Tümcelerin uzunluklarını temsil eden bir tamsayılar dizisi. Dizinin uzunluğu, Tümcelerin sayısıdır ve değerler her tümcenin uzunluktadır. 
+  * `sentLen`: metin öğesindeki Tümcelerin uzunluklarını temsil eden bir tamsayılar dizisi. Dizinin uzunluğu, Tümcelerin sayısıdır ve değerler her tümcenin uzunluktadır. 
 
-  * `detectedLanguage`: Aşağıdaki özellikler aracılığıyla algılanan dili açıklayan bir nesne:
+  * `detectedLanguage`: aşağıdaki özellikler aracılığıyla algılanan dili açıklayan bir nesne:
 
-     * `language`: Algılanan dilin kodu.
+     * `language`: algılanan dilin kodu.
 
-     * `score`: Sonucun güvenilirliğe işaret eden bir float değeri. Puan sıfır ile bir ve düşük puan arasında düşük bir güvenilirlik olduğunu gösterir.
+     * `score`: sonucun güvenilirliği belirten bir float değeri. Puan sıfır ile bir ve düşük puan arasında düşük bir güvenilirlik olduğunu gösterir.
      
-    `detectedLanguage` Özelliğin yalnızca dil otomatik algılaması istendiğinde sonuç nesnesinde bulunduğunu unutmayın.
+    `detectedLanguage` özelliğinin yalnızca dil otomatik algılaması istendiğinde sonuç nesnesinde bulunduğunu unutmayın.
 
 Örnek bir JSON yanıtı:
 
@@ -134,7 +134,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir. 
 
 <table width="100%">
-  <th width="20%">Durum Kodu</th>
+  <th width="20%">Durum kodu</th>
   <th>Açıklama</th>
   <tr>
     <td>200</td>
@@ -158,11 +158,11 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
   <tr>
     <td>500</td>
-    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt başlığından `X-RequestId`istek tanımlayıcısı ve istek üst `X-ClientTraceId`bilgisinden istemci tanımlayıcısı.</td>
+    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisi `X-RequestId`istek tanımlayıcısı ve istek üst bilgisi `X-ClientTraceId`istemci tanımlayıcısı.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt başlığından `X-RequestId`istek tanımlayıcısı ve istek üst `X-ClientTraceId`bilgisinden istemci tanımlayıcısı.</td>
+    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisi `X-RequestId`istek tanımlayıcısı ve istek üst bilgisi `X-ClientTraceId`istemci tanımlayıcısı.</td>
   </tr>
 </table> 
 

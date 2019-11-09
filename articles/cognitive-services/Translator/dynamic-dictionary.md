@@ -1,7 +1,7 @@
 ---
 title: Dinamik sözlük-Translator Metin Çevirisi API'si
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si dinamik sözlük özelliğini kullanma.
+description: Bu makalede, Azure bilişsel hizmetler Translator Metin Çevirisi API'si 'ın dinamik Sözlük özelliğinin nasıl kullanılacağı açıklanmaktadır.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: c268616c015c1c8735b2bdddc057f235d02cdc2a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5f007660b98a22ff9ffad072991a39cf59518b6a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161750"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837348"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>Dinamik sözlük kullanma
 

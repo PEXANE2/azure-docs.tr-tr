@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 659c4cb3a6f0d50176875b76eeb2784c711eafd1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 84a46e66bb6c36950a84fbeb2dacc3a8d6bcc241
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967136"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833361"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Özel kök CA ile otomatik olarak imzalanan bir Azure Application Gateway sertifikası oluşturma
 
@@ -23,13 +23,13 @@ Application Gateway, iyi bilinen bir CA tarafından imzalanmışsa (örneğin, G
 > [!NOTE]
 > Otomatik olarak imzalanan sertifikalara varsayılan olarak güvenilmez ve bunların bakımını yapmak zor olabilir. Ayrıca, süresi geçmiş karma ve şifre paketlerinin kullanımı güçlü olmayabilir. Daha iyi güvenlik için, iyi bilinen bir sertifika yetkilisi tarafından imzalanmış bir sertifika satın alın.
 
-Bu makalede, öğreneceksiniz nasıl yapılır:
+Bu makalede şunları yapmayı öğreneceksiniz:
 
 - Kendi özel sertifika yetkilinizi oluşturma
 - Özel sertifika YETKILINIZ tarafından imzalanan kendinden imzalı bir sertifika oluşturma
 - Arka uç sunucusunun kimliğini doğrulamak için bir Application Gateway otomatik olarak imzalanan kök sertifika yükleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Windows veya Linux çalıştıran bir bilgisayarda [OpenSSL](https://www.openssl.org/)** 
 
@@ -40,7 +40,7 @@ Bu makalede, öğreneceksiniz nasıl yapılır:
 
 - **Application Gateway v2 SKU 'SU**
    
-  Mevcut bir uygulama ağ geçidiniz yoksa bkz [. hızlı başlangıç: Azure Application Gateway ile doğrudan web trafiği Azure portal](quick-create-portal.md).
+  Mevcut bir uygulama ağ geçidiniz yoksa, bkz. [hızlı başlangıç: Azure Application Gateway Ile doğrudan web trafiği-Azure Portal](quick-create-portal.md).
 
 ## <a name="create-a-root-ca-certificate"></a>Kök CA sertifikası oluşturma
 
@@ -87,7 +87,7 @@ Sunucu sertifikası için anahtar oluşturmak üzere aşağıdaki komutu kullan�
 CSR, sertifika isteğinde bulunan bir CA 'ya verilen ortak anahtardır. CA, bu belirli istek için sertifikayı yayınlar.
 
 > [!NOTE]
-> Sunucu sertifikası için CN (ortak ad), verenin etki alanından farklı olmalıdır. Örneğin, bu durumda, veren için CN www.contoso.com ve sunucu sertifikasının CN 'si www.fabrikam.com
+> Sunucu sertifikası için CN (ortak ad), verenin etki alanından farklı olmalıdır. Örneğin, bu durumda veren için CN `www.contoso.com` ve sunucu sertifikasının CN 'si `www.fabrikam.com`.
 
 
 1. CSR 'yi oluşturmak için aşağıdaki komutu kullanın:
@@ -96,7 +96,7 @@ CSR, sertifika isteğinde bulunan bir CA 'ya verilen ortak anahtardır. CA, bu b
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. İstendiğinde, kök anahtar için parolayı ve özel CA için kuruluş bilgilerini yazın: Ülke, eyalet, kuruluş, OU ve tam etki alanı adı. Bu, Web sitesinin etki alanıdır ve veren 'den farklı olmalıdır.
+1. İstendiğinde, kök anahtarın parolasını ve özel CA için kuruluş bilgilerini yazın: ülke, eyalet, kuruluş, OU ve tam etki alanı adı. Bu, Web sitesinin etki alanıdır ve veren 'den farklı olmalıdır.
 
    ![Sunucu sertifikası](media/self-signed-certificates/server-cert.png)
 
@@ -130,7 +130,7 @@ Web sunucunuzda, fabrikam. CRT ve fabrikam. Key dosyalarını kullanarak SSL 'yi
 
 ### <a name="iis"></a>IIS
 
-Sertifikayı içeri aktarma ve IIS 'ye sunucu sertifikası olarak yükleme yönergeleri için bkz [. nasıl yapılır: Içeri aktarılan sertifikaları Windows Server 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)' de bir Web sunucusuna yükler.
+Sertifikayı içeri aktarma ve IIS 'ye sunucu sertifikası olarak yükleme yönergeleri için bkz. [nasıl yapılır: Windows Server 'Da Içeri aktarılan sertifikaları bir Web sunucusuna yükleme 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
 
 SSL bağlama yönergeleri için bkz. [IIS 7 ' de SSL ayarlama](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
 

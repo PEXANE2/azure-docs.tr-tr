@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB için Azure Resource Manager Şablonlar
 description: Azure Cosmos DB oluşturmak ve yapılandırmak için Azure Resource Manager şablonları kullanın.
-author: markjbrown
+author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: ecdfe89e899e0d416784ae32a0d66b335c09e2b6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/07/2019
+ms.author: thvankra
+ms.openlocfilehash: 7c508d736c7c04cc6df2b42e0a90a2906052adbc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582818"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835511"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Resource Manager Şablonlar
 
@@ -37,8 +37,6 @@ Aşağıdaki tablolar Azure Cosmos DB için Azure Resource Manager şablonların
 |**Şablon**|**Açıklama**|
 |---| ---|
 |[Azure Cosmos hesabı, keyspace, tablo oluşturma](manage-cassandra-with-resource-manager.md#create-resource) | Bu şablon, çoklu yönetici özellikli iki bölgede bir Cassandra API hesabı oluşturur. Azure Cosmos hesabının, anahtar alanı düzeyinde üretilen işi paylaşan iki tablosu olacaktır. |
-|[Anahtar alanı için üretilen iş (RU/s) güncelleştirme](manage-cassandra-with-resource-manager.md#keyspace-ru-update) | Bu şablon Cassandra API hesabındaki bir anahtar alanı için üretilen işi güncelleştirir. |
-|[Bir tablo için üretilen iş (RU/s) güncelleştirme](manage-cassandra-with-resource-manager.md#table-ru-update) | Bu şablon Cassandra API hesabındaki bir tablo için üretilen işi güncelleştirir. |
 
 ## <a name="gremlin-api"></a>Gremlin API
 

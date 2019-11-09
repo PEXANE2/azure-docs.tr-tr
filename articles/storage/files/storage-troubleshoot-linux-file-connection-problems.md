@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 12976e2b2dd37b640efe1823fc8d2ca7048ebcdb
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 005e93837d1d420526f6fb33e79d25a94da6fab7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097356"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838545"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux 'ta Azure dosyaları sorunlarını giderme
 
@@ -31,9 +31,9 @@ Bu sorunun yaygın nedenleri şunlardır:
 |   | SMB 2.1 <br>(Aynı Azure bölgesi içindeki VM 'lerde takar) | SMB 3.0 <br>(Şirket içi ve çapraz bölgeden takar) |
 | --- | :---: | :---: |
 | Ubuntu Server | 14.04 + | 16.04 + |
-| RHEL | 7 + | 7,5 + |
-| CentOS | 7 + |  7,5 + |
-| Debian | 8 + |   |
+| RHEL | 7 + | 7.5+ |
+| CentOS | 7 + |  7.5+ |
+| Debian | 8+ |   |
 | openSUSE | 13.2 + | 42.3 + |
 | SUSE Linux Enterprise Server | 12 | 12 SP3 + |
 
@@ -60,7 +60,7 @@ Sorunu gidermek için, [Linux 'Ta Azure dosyaları bağlama hataları için soru
 
 Güvenlik nedeniyle, iletişim kanalı şifrelenmemişse ve bağlantı girişimi Azure dosya paylaşımlarının bulunduğu veri merkezinden yapılmıyorsa Azure dosya paylaşımlarına bağlantılar engellenir. Depolama hesabında [Güvenli aktarım gerekli](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarı etkinleştirildiyse aynı veri merkezi içinde şifrelenmemiş bağlantılar da engellenebilir. Şifrelenmiş bir iletişim kanalının sağlanabilmesi için kullanıcının istemcisi SMB şifrelemesini desteklemelidir.
 
-Daha fazla bilgi edinmek için bkz. [Linux ve cifs-utils paketiyle Azure dosya paylaşımını bağlamak için önkoşullar](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux#prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package). 
+Daha fazla bilgi edinmek için bkz. [Linux ve cifs-utils paketiyle Azure dosya paylaşımını bağlamak için önkoşullar](storage-how-to-use-files-linux.md#prerequisites). 
 
 ### <a name="solution-for-cause-1"></a>Neden 1 için çözüm
 
@@ -111,7 +111,7 @@ Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını ka
     - Açık kaynak üçüncü taraf araçları:
         - [GNU paralel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) -dosyaları sıralar ve onları bölümler halinde paketler.
-        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -verileri src_dir 'ten dst_url 'e geçirmek için birden çok örnek oluşturma fpart ve bir kopyalama aracı kullanır.
+        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -src_dir verileri dst_url geçirilecek birden çok örnek atamak Için fpart ve bir kopyalama aracı kullanır.
         - GNU coreutils tabanlı [Çoklu](https://github.com/pkolano/mutil) iş parçacıklı CP ve md5sum.
 - Dosya boyutunu önceden ayarlamak, her yazma için bir genişletme yazma yapmak yerine dosya boyutunun bilinen senaryolarda kopyalama hızını artırmaya yardımcı olur. Yazmaları genişletmeyi önlenebilir olması gerekiyorsa, `truncate - size <size><file>` komutuyla bir hedef dosya boyutu belirleyebilirsiniz. Bundan sonra, `dd if=<source> of=<target> bs=1M conv=notrunc`komutu, hedef dosyanın boyutunu sürekli olarak güncelleştirmek zorunda kalmadan bir kaynak dosyayı kopyalayacaktır. Örneğin, kopyalamak istediğiniz her dosya için hedef dosya boyutunu ayarlayabilirsiniz (bir paylaşımın/mnt/Share altında bağlanmış olduğunu varsayın):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
@@ -136,7 +136,7 @@ Linux SMB istemciniz şifrelemeyi desteklemiyorsa, Azure Dosyalar'ı bağlamak i
 Portalda bir Azure dosya paylaşımınıza gözattığınızda, şu hatayı alabilirsiniz:
 
 Yetkilendirme hatası  
-Erişiminiz yok
+Erişim izniniz yok
 
 ### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Neden 1: Kullanıcı hesabınızın depolama hesabına erişimi yok
 
@@ -228,9 +228,9 @@ Bir Azure dosya paylaşımındaki dosyaları ls komutunu kullanarak listelemeyi 
 ### <a name="solution"></a>Çözüm
 Linux çekirdeğini bu sorun için bir düzeltmesine sahip olan aşağıdaki sürümlere yükseltin:
 
-- 4.4.87 +
+- 4.4.87+
 - 4.9.48 +
-- 4.12.11 +
+- 4.12.11+
 - 4,13 ' den büyük veya buna eşit olan tüm sürümler
 
 ## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Sembolik bağlantılar oluşturulamıyor-ln: sembolik bağlantı oluşturulamadı 't ': Işlem desteklenmiyor
@@ -269,7 +269,7 @@ Linux istemcisi uzun süre boşta kaldığında istemcide "112" bağlama hatası
 
 Bağlantı aşağıdaki nedenlerle boşta kalabilir:
 
--   Varsayılan "geçici" bağlama seçeneği kullanıldığında sunucuyla yeniden TCP bağlantısı kurulmasını engelleyen ağ iletişim hataları
+-   Varsayılan "yazılım yoluyla" bağlama seçeneği kullanıldığında sunucuyla yeniden TCP bağlantısı kurulmasını engelleyen ağ iletişim hataları
 -   Eski çekirdeklerde bulunmayan son yeniden bağlantı düzeltmeleri
 
 ### <a name="solution"></a>Çözüm

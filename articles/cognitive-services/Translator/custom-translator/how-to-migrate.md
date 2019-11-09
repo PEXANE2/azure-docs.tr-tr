@@ -1,7 +1,7 @@
 ---
 title: Microsoft Translator hub çalışma alanı ve projeleri geçişi yapılsın mı? -Özel çevirici
 titleSuffix: Azure Cognitive Services
-description: Hub çalışma alanınızı ve projelerinizi özel çevirmene geçirin.
+description: Bu makalede, hub çalışma alanınızı ve projelerinizi Azure bilişsel hizmetler özel çeviricisine nasıl geçirebileceğiniz açıklanır.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,19 +9,19 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 9c97eaef30a08123605ed4c01810745e312d6aa0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 7ea7b48e1fc36399a0ca173f9068faf8b88849d5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675511"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836586"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub çalışma alanını ve projelerini özel çevirmene geçirme
 
 [Microsoft Translator hub](https://hub.microsofttranslator.com/) çalışma alanınızı ve projelerinizi özel çevirmene kolayca geçirebilirsiniz. Geçiş, Microsoft hub 'dan bir çalışma alanı veya proje seçilerek, sonra özel çevirmende bir çalışma alanı seçerek ve ardından aktarmak istediğiniz eğitimleri seçerek başlatılır. Geçiş başladıktan sonra, seçilen eğitim ayarları tüm ilgili belgelerle birlikte aktarılır. Dağıtılan modeller eğitilir ve tamamlama sonrasında otomatik olarak dağıtılabilir.
 
 Bu eylemler geçiş sırasında gerçekleştirilir:
-* Tüm belgeler ve proje tanımlarının adları, adının önüne "hub_" eklenmiş olarak aktarılır. Otomatik olarak oluşturulan test ve ayarlama verileri, hub_systemtune_ \<modelid > veya hub_systemtest_ \<modelid > olarak adlandırılır.
+* Tüm belgeler ve proje tanımlarının adları, adının önüne "hub_" eklenmiş olarak aktarılır. Otomatik olarak oluşturulan test ve ayarlama verileri hub_systemtune_\<ModelId > veya hub_systemtest_\<ModelId > olarak adlandırılır.
 * Geçiş gerçekleşirken dağıtılan durumda olan tüm insanlar otomatik olarak Merkez eğitiminin belgeleri kullanılarak eğitilecektir. Bu eğitim aboneliğinize ücretlendirilmeyecektir. Geçiş için otomatik dağıtım seçilmişse, eğitilen model tamamlama sonrasında dağıtılır. Düzenli barındırma ücretleri uygulanır.
 * Dağıtılmış durumda olmayan tüm geçirilen değişiklikler geçirilmiş taslak durumuna alınacaktır. Bu durumda, geçirilen tanım ile bir modeli eğitme seçeneğine sahip olursunuz, ancak düzenli eğitim ücretleri uygulanır.
 * Herhangi bir noktada, hub eğitiminden geçirilen BLEU puanı, "MT hub 'ında Bleu puanı" başlığında bulunan modelin Traıningdetails sayfasında bulunabilir.
@@ -78,7 +78,7 @@ Tek bir projeyi geçirmeye ek olarak, çalışma alanındaki başarılı değiş
 
     ![Hub 'dan geçiş yapma](media/how-to/how-to-migrate-workspace-from-hub.png)
 
-4. Sonraki sayfada, bu iki seçenekten birini seçin:
+4. Sonraki sayfada, bu iki seçeneklerinden birini seçin:
 
     a. Yalnızca dağıtılan Traınler: Bu seçeneğin belirlenmesi yalnızca dağıtılan sistemlerinizi ve ilgili belgelerinizi taşıyacaktır.
 
@@ -134,10 +134,10 @@ Bu tablo, Microsoft Translator hub ve özel çevirmen arasındaki özellikleri k
 |:-----|:----:|:----:|
 |Özelleştirme özelliği durumu   | Genel Erişilebilirlik  | Genel Erişilebilirlik |
 | Metin API 'SI sürümü  | V2    | Yüklemesinde  |
-| SMT özelleştirmesi | Yes   | Hayır |
-| NMT özelleştirmesi | Hayır    | Yes |
-| Yeni Birleşik konuşma Hizmetleri özelleştirmesi | Hayır    | Yes |
-| İzleme Yok | Yes | Yes |
+| SMT özelleştirmesi | Evet   | Hayır |
+| NMT özelleştirmesi | Hayır    | Evet |
+| Yeni Birleşik konuşma Hizmetleri özelleştirmesi | Hayır    | Evet |
+| İzleme Yok | Evet | Evet |
 
 ## <a name="new-languages"></a>Yeni diller
 

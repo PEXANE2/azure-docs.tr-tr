@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 84c06c0ac45a5005646cf7b4fb1e274d0347593c
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 1c7a406f0b06b94aaa6d8b4af63b1416b11c7c56
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958500"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847324"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetinde (AKS) Azure diskleriyle kalıcı bir birimi dinamik olarak oluşturma ve kullanma
 
@@ -27,7 +27,7 @@ Kubernetes birimleri hakkında daha fazla bilgi için bkz. [AKS 'de uygulamalar 
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için @ no__t-0 ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="built-in-storage-classes"></a>Yerleşik depolama sınıfları
 
@@ -36,11 +36,11 @@ Depolama sınıfı, bir depolama biriminin kalıcı bir birimle dinamik olarak n
 Her bir AKS kümesi, Azure diskleriyle çalışacak şekilde yapılandırılmış iki önceden oluşturulmuş depolama sınıfı içerir:
 
 * *Varsayılan* depolama sınıfı standart bir Azure diski sağlar.
-    * Standart depolama, HDD 'Ler tarafından desteklenir ve performansa devam ederken uygun maliyetli depolama sunar. Standart diskler, ekonomik bir geliştirme ve test iş yükü için idealdir.
+    * Standart depolama, HDD 'Ler tarafından desteklenir ve performansa devam ederken uygun maliyetli depolama sunar. Standart diskler, uygun maliyetli bir geliştirme ve iş yükü testi için idealdir.
 * *Yönetilen-Premium* depolama sınıfı, Premium bir Azure diski sağlar.
-    * Premium diskler, SSD tabanlı yüksek performanslı ve düşük gecikmeli disk tarafından desteklenir. Üretim iş yükünü çalıştıran VM 'Ler için mükemmeldir. Kümenizdeki AKS düğümleri Premium Depolama kullanıyorsa, *yönetilen-Premium* sınıfını seçin.
+    * Premium diskler SSD tabanlı, yüksek performanslı ve düşük gecikme süreli disk ile desteklenir. Üretim iş yükü çalıştıran VM'ler için son derece uygundur. Kümenizdeki AKS düğümleri Premium Depolama kullanıyorsa, *yönetilen-Premium* sınıfını seçin.
     
-Bu varsayılan depolama sınıfları, oluşturulduktan sonra birim boyutunu güncelleştirmenize izin vermez. Bu özelliği etkinleştirmek için, *Allowvolumegenişletmesini: true* satırını varsayılan depolama sınıflarından birine ekleyin veya size ait özel depolama sınıfınızı oluşturun. Var olan bir depolama sınıfını `kubectl edit sc` komutunu kullanarak düzenleyebilirsiniz. Depolama sınıfları hakkında daha fazla bilgi ve siz veya sahip oluşturma hakkında daha fazla bilgi için bkz. [AKS 'de uygulamalar Için depolama seçenekleri][storage-class-concepts].
+Bu varsayılan depolama sınıfları, oluşturulduktan sonra birim boyutunu güncelleştirmenize izin vermez. Bu özelliği etkinleştirmek için, *Allowvolumegenişletmesini: true* satırını varsayılan depolama sınıflarından birine ekleyin veya size ait özel depolama sınıfınızı oluşturun. Var olan bir depolama sınıfını `kubectl edit sc` komutunu kullanarak düzenleyebilirsiniz. Depolama sınıfları ve kendinizinkini oluşturma hakkında daha fazla bilgi için bkz. [AKS 'de uygulamalar Için depolama seçenekleri][storage-class-concepts].
 
 Önceden oluşturulmuş depolama sınıflarını görmek için [kubectl Get SC][kubectl-get] komutunu kullanın. Aşağıdaki örnek, bir AKS kümesi içinde kullanılabilir olan önceden oluşturma depolama sınıflarını gösterir:
 
@@ -59,7 +59,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 
 Kalıcı bir birim talebi (PVC), depolama sınıfına göre depolamayı otomatik olarak sağlamak için kullanılır. Bu durumda, bir PVC, standart veya Premium bir Azure yönetilen diski oluşturmak için önceden oluşturulmuş depolama sınıflarından birini kullanabilir.
 
-@No__t-0 adlı bir dosya oluşturun ve aşağıdaki bildirimde kopyalayın. Talep, *Readwriteonce* Access Ile boyutu *5 GB* olan `azure-managed-disk` adlı bir disk ister. *Yönetilen-Premium* depolama sınıfı, depolama sınıfı olarak belirtilir.
+`azure-premium.yaml`adlı bir dosya oluşturun ve aşağıdaki bildirimde kopyalayın. Talep, *Readwriteonce* Access Ile boyutu *5 GB* olan `azure-managed-disk` adlı bir disk ister. *Yönetilen-Premium* depolama sınıfı, depolama sınıfı olarak belirtilir.
 
 ```yaml
 apiVersion: v1
@@ -76,7 +76,7 @@ spec:
 ```
 
 > [!TIP]
-> Standart depolama kullanan bir disk oluşturmak için, *Managed-Premium*yerine `storageClassName: default` kullanın.
+> Standart depolama kullanan bir disk oluşturmak için, *yönetilen-Premium*yerine `storageClassName: default` kullanın.
 
 [Kubectl Apply][kubectl-apply] komutuyla kalıcı birim talebi oluşturun ve *Azure-Premium. YAML* dosyanızı belirtin:
 
@@ -88,9 +88,9 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Kalıcı birimi kullan
 
-Kalıcı birim talebi oluşturulduktan ve disk başarıyla sağlandıktan sonra, diske erişimi olan bir pod oluşturulabilir. Aşağıdaki bildirim, `/mnt/azure` yolunda Azure diskini bağlamak için *Azure tarafından yönetilen-disk* adlı kalıcı birim talebini kullanan temel bir NGINX Pod oluşturur. Windows Server kapsayıcıları için (Şu anda AKS 'de önizlemededir), Windows yol kuralını kullanarak *":"* gibi bir *bağlamayolu* belirtin.
+Kalıcı birim talebi oluşturulduktan ve disk başarıyla sağlandıktan sonra, diske erişimi olan bir pod oluşturulabilir. Aşağıdaki bildirim, `/mnt/azure`yolunda Azure diskini bağlamak için *Azure tarafından yönetilen-disk* adlı kalıcı birim talebini kullanan temel bir NGINX Pod oluşturur. Windows Server kapsayıcıları için (Şu anda AKS 'de önizlemededir), Windows yol kuralını kullanarak *":"* gibi bir *bağlamayolu* belirtin.
 
-@No__t-0 adlı bir dosya oluşturun ve aşağıdaki bildirimde kopyalayın.
+`azure-pvc-disk.yaml`adlı bir dosya oluşturun ve aşağıdaki bildirimde kopyalayın.
 
 ```yaml
 kind: Pod
@@ -125,7 +125,7 @@ $ kubectl apply -f azure-pvc-disk.yaml
 pod/mypod created
 ```
 
-Azure diskinizin `/mnt/azure` dizinine bağlı olarak çalışır durumda bir pod var. Bu yapılandırma, aşağıdaki sıkıştırılmış örnekte gösterildiği gibi, Pod 'niz `kubectl describe pod mypod` ile incelenirken görülebilir:
+Azure diskinizin `/mnt/azure` dizinine bağlı olarak çalışan bir pod sahipsiniz. Aşağıdaki sıkıştırılmış örnekte gösterildiği gibi, Pod 'niz `kubectl describe pod mypod`aracılığıyla incelenirken bu yapılandırma görülebilir:
 
 ```console
 $ kubectl describe pod mypod
@@ -171,7 +171,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-[Az Snapshot Create][az-snapshot-create]komutuyla bir anlık görüntü diski oluşturmak IÇIN disk kimliğini kullanın. Aşağıdaki örnek, AKS kümesi (*MC_myResourceGroup_myAKSCluster_eastus*) ile aynı kaynak grubunda *pvcsnapshot* adlı bir anlık görüntü oluşturur. AKS kümesinin erişimi olmayan kaynak gruplarında anlık görüntü ve geri yükleme diskleri oluşturursanız, izin sorunlarıyla karşılaşabilirsiniz.
+[Az Snapshot Create][az-snapshot-create]komutuyla bir anlık görüntü diski oluşturmak IÇIN disk kimliğini kullanın. Aşağıdaki örnek, AKS kümesiyle aynı kaynak grubunda *Pvcsnapshot* adlı bir anlık görüntü oluşturur (*MC_myResourceGroup_myAKSCluster_eastus*). AKS kümesinin erişimi olmayan kaynak gruplarında anlık görüntü ve geri yükleme diskleri oluşturursanız, izin sorunlarıyla karşılaşabilirsiniz.
 
 ```azurecli-interactive
 $ az snapshot create \
@@ -196,7 +196,7 @@ Geri yüklenen diski Pod ile birlikte kullanmak için, bildirimdeki diskin KIMLI
 az disk show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --query id -o tsv
 ```
 
-@No__t-0 adlı bir pod bildirimi oluşturun ve önceki adımda elde edilen disk URI 'sini belirtin. Aşağıdaki örnek, */mnt/Azure*' da bir birim olarak bağlanmış geri yüklenen disk ile temel bir NGINX web sunucusu oluşturur:
+`azure-restored.yaml` adlı bir pod bildirimi oluşturun ve önceki adımda elde edilen disk URI 'sini belirtin. Aşağıdaki örnek, */mnt/Azure*' da bir birim olarak bağlanmış geri yüklenen disk ile temel bir NGINX web sunucusu oluşturur:
 
 ```yaml
 kind: Pod
@@ -233,7 +233,7 @@ $ kubectl apply -f azure-restored.yaml
 pod/mypodrestored created
 ```
 
-, Birim bilgilerini gösteren aşağıdaki sıkıştırılmış örnek gibi Pod 'un ayrıntılarını görüntülemek için `kubectl describe pod mypodrestored` kullanabilirsiniz:
+Bölüm bilgilerini gösteren aşağıdaki sıkıştırılmış örnek gibi Pod 'un ayrıntılarını görüntülemek için `kubectl describe pod mypodrestored` kullanabilirsiniz:
 
 ```console
 $ kubectl describe pod mypodrestored

@@ -1,18 +1,18 @@
 ---
 title: Linux 'ta bir dosya sistemi olarak Azure Blob depolamayı bağlama | Microsoft Docs
 description: Linux üzerinde SIGORTASı ile bir Azure Blob depolama kapsayıcısı bağlama
-author: normesta
+author: rishabpoh
 ms.service: storage
 ms.topic: conceptual
 ms.date: 2/1/2019
-ms.author: normesta
+ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 88002999baacf38b4afd40b574686457c48546e4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 35a4313d10231aec74685069a67d803ea32e68b1
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845012"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847554"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Blob depolamayı blobsigortası ile dosya sistemi olarak bağlama
 
@@ -22,7 +22,7 @@ ms.locfileid: "68845012"
 Bu kılavuzda, blobsigortası kullanma ve Linux üzerinde bir BLOB depolama kapsayıcısı bağlama ve verilere erişme işlemlerinin nasıl yapılacağı gösterilir. Blobsigortası hakkında daha fazla bilgi edinmek için, [blobsigortası deposundaki](https://github.com/Azure/azure-storage-fuse)ayrıntıları okuyun.
 
 > [!WARNING]
-> Blobsigortası yalnızca istekleri [BLOB REST API 'lerine](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)çevirdiğinden% 100 POSIX uyumluluğunu garanti etmez. Örneğin, yeniden adlandırma işlemleri POSIX içinde atomik, ancak blobsigortası içinde değildir.
+> Blobsigortası yalnızca istekleri [BLOB REST API 'lerine](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)çevirdiğinden %100 POSIX uyumluluğunu garanti etmez. Örneğin, yeniden adlandırma işlemleri POSIX içinde atomik, ancak blobsigortası içinde değildir.
 > Yerel dosya sistemi ve blobsigortası arasındaki farkların tam listesi için [blobsigortası kaynak kodu deposunu](https://github.com/azure/azure-storage-fuse)ziyaret edin.
 > 
 
@@ -42,7 +42,7 @@ lsb_release -a
 sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
 ```
 
-Benzer şekilde, URL `.../rhel/7/...` 'yi bir Enterprise Linux 7 dağıtımına işaret olacak şekilde değiştirin.
+Benzer şekilde, bir Kurumsal Linux 7 dağıtımına işaret etmek için URL 'YI `.../rhel/7/...` değiştirin.
 
 Ubuntu 14,04 dağıtımında başka bir örnek:
 ```bash
@@ -51,7 +51,7 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-Benzer şekilde, URL `.../ubuntu/16.04/...` `.../ubuntu/18.04/...` 'yi başka bir Ubuntu sürümüne başvuracak şekilde değiştirin.
+Benzer şekilde, URL 'YI `.../ubuntu/16.04/...` veya `.../ubuntu/18.04/...` başka bir Ubuntu sürümüne başvuracak şekilde değiştirin.
 
 ### <a name="install-blobfuse"></a>Blobsigortası 'yi yükler
 
@@ -97,7 +97,7 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
-, `accountName` Tam URL değil, depolama hesabınızın ön ekidir.
+`accountName`, tam URL değil, depolama hesabınızın ön ekidir.
 
 Bu dosyayı kullanarak oluşturun:
 
@@ -111,7 +111,7 @@ chmod 600 fuse_connection.cfg
 ```
 
 > [!NOTE]
-> Yapılandırma dosyasını Windows üzerinde oluşturduysanız, dosyayı temizleme ve UNIX biçimine dönüştürme `dos2unix` için çalıştırdığınızdan emin olun. 
+> Yapılandırma dosyasını Windows üzerinde oluşturduysanız, dosyayı temizleme ve UNIX biçimine dönüştürmek için `dos2unix` çalıştırdığınızdan emin olun. 
 >
 
 ### <a name="create-an-empty-directory-for-mounting"></a>Bağlama için boş bir dizin oluşturun
@@ -119,19 +119,19 @@ chmod 600 fuse_connection.cfg
 mkdir ~/mycontainer
 ```
 
-## <a name="mount"></a>Bağla
+## <a name="mount"></a>Bağlama
 
 > [!NOTE]
 > Bağlama seçeneklerinin tam listesi için [blobsigortası deposuna](https://github.com/Azure/azure-storage-fuse#mount-options)bakın.  
 > 
 
-Blobsigortası bağlamak için, Kullanıcı ile aşağıdaki komutu çalıştırın. Bu komut, '/Path/to/fuse_connectionncfg ' içinde belirtilen kapsayıcıyı '/myContainer ' konumuna bağlar.
+Blobsigortası bağlamak için, Kullanıcı ile aşağıdaki komutu çalıştırın. Bu komut '/Path/to/fuse_connection. cfg ' içinde belirtilen kapsayıcıyı '/myContainer ' konumuna bağlar.
 
 ```bash
 sudo blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=/path/to/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
 ```
 
-Artık, normal dosya sistemi API 'Leri aracılığıyla blok bloblarınıza erişiminizin olması gerekir. Dizini oluşturan kullanıcı, varsayılan olarak erişime güvenlik altına alan tek kişidir. Tüm kullanıcılara erişim izni vermek için, seçeneğini ```-o allow_other```kullanarak bağlayabilirsiniz. 
+Artık, normal dosya sistemi API 'Leri aracılığıyla blok bloblarınıza erişiminizin olması gerekir. Dizini oluşturan kullanıcı, varsayılan olarak erişime güvenlik altına alan tek kişidir. Tüm kullanıcılara erişim izni vermek için ```-o allow_other```seçeneğini kullanarak bağlayabilirsiniz. 
 
 ```bash
 cd ~/mycontainer

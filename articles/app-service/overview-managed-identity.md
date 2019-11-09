@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: a5176f74964e0809cea39aa160943cc6f3451237
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: a2f6d7f881e404e9e4dbdb8087cabf25f67d561b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176513"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847315"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -41,7 +41,7 @@ Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir uygu
 
 2. Bir işlev uygulaması kullanıyorsanız, **platform özellikleri**' ne gidin. Diğer uygulama türleri için, sol gezinti bölmesinde **Ayarlar** grubuna gidin.
 
-3. **Yönetilen kimlik**' i seçin.
+3. **Kimlik**seçin.
 
 4. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet** düğmesine tıklayın.
 
@@ -168,7 +168,7 @@ Kullanıcı tarafından atanan kimlik ile uygulama oluşturmak için kimlik olu�
 
 3. Bir işlev uygulaması kullanıyorsanız, **platform özellikleri**' ne gidin. Diğer uygulama türleri için, sol gezinti bölmesinde **Ayarlar** grubuna gidin.
 
-4. **Yönetilen kimlik**' i seçin.
+4. **Kimlik**seçin.
 
 5. **Kullanıcı atandı** sekmesinde **Ekle**' ye tıklayın.
 
@@ -193,7 +193,7 @@ Azure Resource Manager şablonu, Azure kaynaklarınızın dağıtımını otomat
 > [!NOTE] 
 > Bir uygulama aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda `type` özelliği `SystemAssigned,UserAssigned`
 
-Kullanıcı tarafından atanan tür ve bir Code eklemek, Azure 'un uygulamanız için kimlik oluşturup yönetmesine yardımcı olduğunu bildirir.
+Kullanıcı tarafından atanan türü eklemek, Azure 'un uygulamanız için belirtilen kullanıcı tarafından atanan kimliğini kullanmasını söyler.
 
 Örneğin, bir Web uygulaması aşağıdaki gibi görünebilir:
 ```json
@@ -251,7 +251,7 @@ App Service ve Azure Işlevlerinde belirteç almak için basit bir REST Protokol
 
 Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahiptir:
 
-- MSI_ENDPOINT-yerel belirteç hizmetinin URL 'SI.
+- MSI_ENDPOINT-yerel belirteç hizmeti URL 'SI.
 - MSI_SECRET-sunucu tarafı istek sahteciliğini önleme (ssrf) saldırılarını azaltmaya yardımcı olmak için kullanılan bir üst bilgi. Değer, platform tarafından döndürülür.
 
 **MSI_ENDPOINT** , uygulamanızın belirteç isteyebileceği yerel bir URL 'dir. Bir kaynağın belirtecini almak için, bu uç noktaya yönelik bir HTTP GET isteği oluşturun ve aşağıdaki parametreleri de dahil edin:
@@ -429,7 +429,7 @@ Portal, PowerShell veya CLı kullanılarak oluşturulduğu gibi özellik devre d
 Sistem tarafından atanan bir kimliğin bu şekilde kaldırılması, AAD 'den de silinecek. Uygulama kaynağı silindiğinde, sistem tarafından atanan kimlikler de AAD 'den otomatik olarak kaldırılır.
 
 > [!NOTE]
-> Ayrıca, yalnızca yerel belirteç hizmetini devre dışı bırakan WEBSITE_DISABLE_MSI, ayarlanabilir bir uygulama ayarı vardır. Ancak, kimliği yerinde bırakır ve araç, yönetilen kimliği "açık" veya "etkin" olarak göstermeye devam eder. Sonuç olarak, bu ayarın kullanılması önerilmez.
+> Ayrıca, yalnızca yerel belirteç hizmetini devre dışı bırakan WEBSITE_DISABLE_MSI ayarlanbilen bir uygulama ayarı da vardır. Ancak, kimliği yerinde bırakır ve araç, yönetilen kimliği "açık" veya "etkin" olarak göstermeye devam eder. Sonuç olarak, bu ayarın kullanılması önerilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

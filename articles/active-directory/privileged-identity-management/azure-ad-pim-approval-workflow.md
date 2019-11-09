@@ -1,5 +1,5 @@
 ---
-title: PıM-Azure Active Directory 'de Azure AD rolleri için istekleri onaylama veya reddetme | Microsoft Docs
+title: PıM-Azure AD 'de Azure AD rolleri için istekleri onaylama veya reddetme | Microsoft Docs
 description: Azure AD Privileged Identity Management (PıM) içinde Azure AD rolleri için istekleri onaylamayı veya reddetmeyi öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3245f7343a48d3e54795c14dcb23b836c8d9d988
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7f663f7daad19e77dcc1cc95a6a324e881d92b28
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756421"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847123"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri için istekleri onaylama veya reddetme
 
@@ -33,7 +33,7 @@ Azure AD rolleri için istekleri onaylamak veya reddetmek için bu makaledeki ad
 
 Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure AD rol isteği olduğunda bir e-posta bildirimi alırsınız. Bu bekleyen istekleri Privileged Identity Management görüntüleyebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın.
 

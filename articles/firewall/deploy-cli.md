@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 94db17405457be91795d1588bee68a0deea68246
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: e97783d1a32916cad151f1d0858a8190d0005fd0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114821"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831977"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure CLı kullanarak Azure Güvenlik Duvarı dağıtma ve yapılandırma
 
@@ -39,7 +39,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Test amaçlı ağ ortamı oluşturma
 > * Güvenlik duvarı dağıtma
 > * Varsayılan rota oluşturma
-> * [www.google.com](www.google.com) erişmesine izin vermek için bir uygulama kuralı yapılandırma
+> * Www.google.com erişimine izin vermek için bir uygulama kuralı yapılandırma
 > * Dış DNS sunucularına erişime izin vermek için ağ kuralı yapılandırma
 > * Güvenlik duvarını test etme
 
@@ -49,7 +49,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -284,7 +284,7 @@ az network firewall network-rule create \
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   [www.google.com](www.google.com) isteklerinin başarılı olması gerekir ve www.microsoft.com istekleri başarısız olması. Bu, güvenlik duvarı kurallarınızın beklendiği şekilde kullanıldığını gösterir.
+   `www.google.com` istekleri başarılı olmalıdır ve `www.microsoft.com` istekleri başarısız olmalıdır. Bu, güvenlik duvarı kurallarınızın beklendiği şekilde kullanıldığını gösterir.
 
 Artık Güvenlik Duvarı kurallarının çalıştığını doğruladınız:
 

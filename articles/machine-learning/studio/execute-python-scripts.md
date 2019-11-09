@@ -1,5 +1,6 @@
 ---
 title: Python betiklerini yürütme
+titleSuffix: ML Studio (classic) - Azure
 description: Machine Learning Studio (klasik) denemeleri ve Web hizmetlerinde Python kodu kullanmak için Python betiği yürütme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: dea8fd7971f0572350306ea11ee1f9d897438d11
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6079f904002f00a39d3ee9d70dedd9d261e2825f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684869"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837637"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) üzerinde Python Machine Learning betikleri yürütme
 
@@ -132,7 +133,7 @@ MatplotLib adresinden görüntü oluşturmak için aşağıdaki adımları uygul
 1. Ekseni alın ve içindeki tüm çizimleri oluşturun.
 1. Şekli bir PNG dosyasına kaydedin.
 
-Bu işlem, Pandas 'teki scatter_matrix işlevini kullanarak dağılım çizim matrisi oluşturan aşağıdaki görüntülerde gösterilmiştir.
+Bu işlem, Pandas 'teki scatter_matrix işlevi kullanılarak dağılım çizim matrisi oluşturan aşağıdaki görüntülerde gösterilmiştir.
 
 ![MatplotLib rakamların görüntülere kaydedileceği kod](./media/execute-python-scripts/figure-v1-8.png)
 

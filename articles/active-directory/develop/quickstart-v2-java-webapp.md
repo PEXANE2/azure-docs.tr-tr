@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 0046443bef0e71215157dfe89aaae45b2a91c330
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 93ae820f8c98b749ef8f71b17bf3d540d7886ed6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200261"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832122"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -32,7 +32,7 @@ Bu hızlı başlangıcı tamamladığınızda, uygulamanız kişisel Microsoft h
 
 ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -42,22 +42,22 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
 > Hızlı başlangıç uygulamanızı başlatmak için iki seçeneğiniz vardır: Express (seçenek 1) veya el ile (seçenek 2)
-> 
+>
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
-> 
+>
 > 1. [Azure portal uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yeni uygulamanızı indirip otomatik olarak yapılandırmak için yönergeleri izleyin.
-> 
+>
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. Seçenek: Uygulamanızı ve kod örneğinizi el ile kaydetme ve yapılandırma
-> 
+>
 > #### <a name="step-1-register-your-application"></a>1\. Adım: Uygulamanızı kaydetme
-> 
+>
 > Uygulamanızı kaydetmek ve uygulamanın kayıt bilgilerini çözümünüze el ile eklemek için şu adımları izleyin:
-> 
+>
 > 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-> 
+> 1. Hesabınız birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
+>
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](/azure/active-directory/develop/) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
@@ -66,10 +66,9 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > 1. **Genel bakış** sayfasında uygulamanın **uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliği** değerlerini bulun. Daha sonra bu değerleri kopyalayın.
 > 1. Menüden **kimlik doğrulamasını** seçin ve ardından aşağıdaki bilgileri ekleyin:
 >    - **Yeniden yönlendirme URI 'lerinde**`http://localhost:8080/msal4jsamples/secure/aad` ve `http://localhost:8080/msal4jsamples/graph/me`ekleyin.
->    - **Gelişmiş ayarlar**' da, **oturum kapatma URL**'sine `https://localhost:8080/msal4jsample/sign-out` ekleyin.
 >    - **Kaydet**’i seçin.
 > 1. Menüdeki **gizli dizileri &** seçin ve **istemci gizli** dizileri bölümünde **yeni istemci parolası**' na tıklayın:
-> 
+>
 >    - Bir anahtar açıklaması yazın (örneğin, uygulama gizli anahtarı).
 >    - **1 yılda**bir anahtar süresi seçin.
 >    - **Ekle**' yi seçtiğinizde anahtar değeri görüntülenecektir.
@@ -77,9 +76,9 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1\. Adım: uygulamanızı Azure portal yapılandırma
-> 
+>
 > Bu hızlı başlangıçta çalışması için kod örneği için şunları yapmanız gerekir:
-> 
+>
 > 1. `http://localhost:8080/msal4jsamples/secure/aad` ve `http://localhost:8080/msal4jsamples/graph/me`olarak yanıt URL 'Leri ekleyin.
 > 1. Bir Istemci gizli dizisi oluşturun.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -97,7 +96,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
  1. ZIP dosyasını yerel bir klasöre ayıklayın.
  1. Tümleşik bir geliştirme ortamı kullanıyorsanız, örneği en sevdiğiniz IDE (isteğe bağlı) içinde açın.
 
- 1. Src/Main/Resources/klasöründe bulunan Application. Properties dosyasını açın ve *AAD. ClientID*, *AAD. Authority* ve *AAD. SecretKey* alanlarının değerlerini **uygulama kimliği**' nin ilgili değerleriyle değiştirin. **Kiracı kimliği** ve **istemci gizli anahtarı** aşağıdaki gibi:
+ 1. Src/Main/Resources/klasöründe bulunan Application. Properties dosyasını açın ve *AAD. ClientID*, *AAD. Authority* ve *AAD. SecretKey* alanlarını aşağıdaki şekilde **uygulama kimliği**, **Kiracı kimliği** ve **istemci gizli** anahtarı değerleriyle değiştirin:
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
@@ -108,7 +107,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
     ```
 
 > [!div renderon="docs"]
-> Nerede:
+> Konumlar:
 >
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 > - `Enter_the_Client_Secret_Here`, **sertifikalarında** oluşturduğunuz ve kaydettiğiniz uygulamanın gizli dizileri & **gizli anahtar olan istemci sırrı** .
@@ -145,12 +144,12 @@ Uygulamanın Pod. xml (Maven) veya Build. Gradle (Gradle) dosyasında aşağıda
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>
-    <version>0.6.0-preview</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 ```$xslt
-compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.6.0-preview'
+compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
 ```
 
 ### <a name="msal-initialization"></a>MSAL başlatma

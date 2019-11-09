@@ -1,6 +1,6 @@
 ---
 title: Model sonuçlarını yorumlama
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Puan modeli çıkışlarını kullanarak bir algoritma için en uygun parametre kümesini seçme ve görselleştirme.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: cdeded35e1afb9313f2dd2c5842aef511ea0dd61
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: acac881a790644532121697e6b79e57a98b168fe
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621662"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839838"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio model sonuçlarını yorumlama (klasik)
 Bu konuda, tahmin sonuçlarının Azure Machine Learning Studio (klasik) görselleştirilmesi ve yorumlanması açıklanmaktadır. Bir modeli eğitdikten ve bunun üzerine ("model puanlanır") ilişkin tahminleri tamamladıktan sonra, tahmin sonucunu anlamanız ve yorumlamanıza gerek duyarsınız.
@@ -26,7 +26,7 @@ Azure Machine Learning Studio klasik sürümünde dört ana makine öğrenimi mo
 
 * Sınıflandırma
 * Lenmesi
-* Regresyon
+* regresyon
 * Öneren sistemleri
 
 Bu modellerin üzerine tahmin için kullanılan modüller şunlardır:
@@ -137,7 +137,7 @@ Web hizmetini yayımladıktan ve çalıştırdıktan sonra bazı giriş özelli�
 
 Şekil 10. Birden çok Lass sınıflandırmasının Web hizmeti sonucu
 
-## <a name="regression"></a>Regresyon
+## <a name="regression"></a>regresyon
 Gerileme sorunları, sınıflandırma sorunlarından farklıdır. Bir sınıflandırma sorunu içinde, bir Iris çiçeği ait olduğu sınıf gibi ayrı sınıfları tahmin etmeye çalışıyorsunuz. Ancak aşağıdaki bir gerileme sorunu örneğinde görebileceğiniz gibi, bir otomobil fiyatı gibi sürekli bir değişkeni tahmin etmeye çalışıyorsunuz demektir.
 
 **Örnek deneme**

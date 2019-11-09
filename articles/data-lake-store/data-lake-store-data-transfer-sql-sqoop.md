@@ -1,5 +1,5 @@
 ---
-title: Sqoop kullanarak Azure Data Lake Storage 1. ve Azure SQL veritabanı arasında veri kopyalama | Microsoft Docs
+title: Data Lake Storage 1. ve Azure SQL-Sqoop arasında veri kopyalama | Microsoft Docs
 description: Azure SQL veritabanı ve Azure Data Lake Storage 1. arasında veri kopyalamak için Sqoop kullanma
 services: data-lake-store
 author: twooley
@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 22789deca0934a9d4e88d587cd24aacacc9b12c6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619996"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839072"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop kullanarak Data Lake Storage 1. ve Azure SQL veritabanı arasında veri kopyalama
 
@@ -24,7 +24,7 @@ Büyük veri uygulamaları, Günlükler ve dosyalar gibi yapılandırılmamış 
 
 [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) , ilişkisel veritabanları ve Data Lake Storage 1. gibi büyük bir veri deposu arasında veri aktarmak için tasarlanan bir araçtır. Azure SQL veritabanı gibi bir ilişkisel veritabanı yönetim sisteminden (RDBMS) verileri Data Lake Storage 1. içine aktarmak için bu işlemi kullanabilirsiniz. Daha sonra büyük veri iş yüklerini kullanarak verileri dönüştürebilir ve analiz edebilir ve ardından verileri bir RDBMS 'ye geri aktarabilirsiniz. Bu makalede, bir Azure SQL veritabanını içeri/dışarı aktarmak için ilişkisel veritabanınız olarak kullanacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -69,7 +69,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 ## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-storage-gen1"></a>Data Lake Storage 1. erişimi olan bir HDInsight kümesinden Sqoop kullanın
 
-An HDInsight kümesinde Sqoop paketleri zaten var. HDInsight kümesini ek depolama alanı olarak Data Lake Storage 1. kullanacak şekilde yapılandırdıysanız, verileri Azure SQL veritabanı gibi ilişkisel bir veritabanı ve bir Data Lake Storage 1. hesabı arasında içeri/dışarı aktarmak için Sqoop (herhangi bir yapılandırma değişikliği olmadan) kullanabilirsiniz. .
+An HDInsight kümesinde Sqoop paketleri zaten var. HDInsight kümesini ek depolama alanı olarak Data Lake Storage 1. kullanacak şekilde yapılandırdıysanız, verileri Azure SQL veritabanı gibi ilişkisel bir veritabanı ve bir Data Lake Storage 1. hesabı arasında içeri/dışarı aktarmak için Sqoop (herhangi bir yapılandırma değişikliği olmadan) kullanabilirsiniz.
 
 1. Bu makalede, kümeye bağlanmak için SSH kullanmanız gereken bir Linux kümesi oluşturduğunuzu varsayalım. Bkz. [Linux tabanlı HDInsight kümesine bağlanma](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 

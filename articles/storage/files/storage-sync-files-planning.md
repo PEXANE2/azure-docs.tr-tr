@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e1f7aeb5615c1a22c1970f118c24c996ac936870
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3c70d2086fc5866b07c31966343397f8ccc809be
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826817"
+ms.locfileid: "73846740"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -169,7 +169,7 @@ Birim tasarruflarının yalnızca sunucuya uygulanacağını aklınızda yapın;
 > Yinelenen verileri kaldırma ve bulut katmanlaması, gelecekteki bir güncelleştirmede düzeltilecek bir hata nedeniyle sunucu 2019 ' de aynı birimde desteklenmemektedir.
 
 **Windows Server 2012 R2**  
-Azure Dosya Eşitleme, yinelenen verileri kaldırma ve bulut katmanlaması aynı birimde desteklenmez. Yinelenen verileri kaldırma özelliği bir birimde etkinleştirilmişse, bulut katmanlaması devre dışı bırakılmalıdır. 
+Azure Dosya Eşitleme, Windows Server 2012 R2 'deki aynı birimde yinelenen verileri kaldırma ve bulut katmanlaması desteklemez. Yinelenen verileri kaldırma özelliği bir birimde etkinleştirilmişse, bulut katmanlaması devre dışı bırakılmalıdır. 
 
 **Notlar**
 - Azure Dosya Eşitleme aracısını yüklemeden önce yinelenen verileri kaldırma yüklüyse, yinelenen verileri kaldırma ve bulut katmanlaması için aynı birimde yeniden başlatma gerekir.
@@ -252,7 +252,7 @@ Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 | Avustralya Doğu | New South Wales |
 | Avustralya Güneydoğu | Victoria |
 | Güney Brezilya | Sao Paulo Eyaleti |
-| Orta Kanada | Toronto |
+| Kanada Orta | Toronto |
 | Doğu Kanada | Quebec City |
 | Orta Hindistan | Pune |
 | Orta ABD | Iowa |
@@ -263,7 +263,7 @@ Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 | Fransa Güney * | Marseille |
 | Kore Orta | Seoul |
 | Kore Güney | Busan |
-| Japonya Doğu | Tokyo, Saitama |
+| Doğu Japonya | Tokyo, Saitama |
 | Japonya Batı | Osaka |
 | Orta Kuzey ABD | Illinois |
 | Kuzey Avrupa | İrlanda |
@@ -301,8 +301,8 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 | Avustralya Doğu      | Avustralya Güneydoğu|
 | Avustralya Güneydoğu | Avustralya Doğu     |
 | Güney Brezilya        | Orta Güney ABD   |
-| Orta Kanada      | Doğu Kanada        |
-| Doğu Kanada         | Orta Kanada     |
+| Kanada Orta      | Doğu Kanada        |
+| Doğu Kanada         | Kanada Orta     |
 | Orta Hindistan       | Güney Hindistan        |
 | Orta ABD          | Doğu ABD 2          |
 | Doğu Asya           | Güneydoğu Asya     |
@@ -310,8 +310,8 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 | Doğu ABD 2           | Orta ABD         |
 | Fransa Orta      | Fransa Güney       |
 | Fransa Güney        | Fransa Orta     |
-| Japonya Doğu          | Japonya Batı         |
-| Japonya Batı          | Japonya Doğu         |
+| Doğu Japonya          | Japonya Batı         |
+| Japonya Batı          | Doğu Japonya         |
 | Kore Orta       | Kore Güney        |
 | Kore Güney         | Kore Orta      |
 | Kuzey Avrupa        | Batı Avrupa        |

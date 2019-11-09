@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: c51af15d2334e873c8c7c399322fbd1279de3784
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 79bb039a1950c9ff56c77e74f244aba7bfe8dd05
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468198"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839364"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application-preview-features"></a>IoT Central uygulamanızda kullanıcıları ve rolleri yönetme (Önizleme özellikleri)
 
@@ -263,4 +263,4 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IoT Central uygulamanızda kullanıcıları ve rolleri yönetme hakkında bilgi edindiğinize göre, önerilen sonraki adım [faturanızı nasıl yöneteceğinizi](howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)öğrenirsiniz.
+Azure IoT Central uygulamanızda kullanıcıları ve rolleri yönetme hakkında bilgi edindiğinize göre, önerilen sonraki adım [faturanızı nasıl yöneteceğinizi](howto-view-bill-pnp.md)öğrenirsiniz.

@@ -1,6 +1,6 @@
 ---
 title: Örnek veri kümelerini kullanma
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Machine Learning Studio (klasik) ' de bulunan örnek modellerde kullanılan veri kümelerinin açıklamaları. Bu örnek veri kümelerini, denemeleri için kullanabilirsiniz.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f22d27f7900ce9dda3a8e65451acb9b743a25811
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73618918"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839402"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) içinde örnek veri kümelerini kullanma
 [top]: #machine-learning-sample-datasets
@@ -127,21 +127,21 @@ Veri kümesi, X-Ray görüntüsünün her şüpheli bölgesi için ek bilgiler i
 <tr>
   <td>CRM uygulama paylaşılan etiketleri</td>
   <td>
-KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency. Labels</a>).
+KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency. Etiketler</a>).
   </td>
 </tr>
 
 <tr>
   <td>Paylaşılan CRM dalgalanması etiketleri</td>
   <td>
-KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn. Labels</a>).
+KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn. Etiketler</a>).
   </td>
 </tr>
 
 <tr>
   <td>CRM veri kümesi paylaşıldı</td>
   <td>
-Bu veriler, KDD Fin2009 müşteri ilişkisi tahmin Challenge (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train. Data. zip</a>) ' den gelir.
+Bu veriler, KDD Kupa 2009 müşteri ilişkisi tahmin Challenge (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train. Data. zip</a>) ' den gelir.
 <p></p>
 Veri kümesi, Fransız telekomünikasyon şirketi turuncu 'dan 50K müşterileri içerir. Her müşterinin 230 anonim özelliği vardır, bunlar sayısal ve 40 kategorik olan 190 ' dir. Özellikler çok seyrek.
   </td>
@@ -150,7 +150,7 @@ Veri kümesi, Fransız telekomünikasyon şirketi turuncu 'dan 50K müşterileri
 <tr>
   <td>Paylaşılan CRM satış etiketleri</td>
   <td>
-KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling. Labels</a>).
+KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling. Etiketler</a>).
   </td>
 </tr>
 
@@ -399,7 +399,7 @@ RCV1-v2 Rebilgisayarlarda Haberler veri kümesindeki haber makalelerine yönelik
   <td>
 Bu veriler, KDD Fin2010 öğrenci performansı değerlendirme zorluğuyla (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">öğrenci performansı değerlendirmesi</a>) gelir. Kullanılan veriler Algebra_2008_2009 eğitim kümesidir (Stamper, J., Niculescu-mizil, A., Riur, S., Gordon, G.J., & Koednik, K.R. (2010). Algeköşeli ı 2008-2009. KDD Fin2010 eğitim veri madenciliği zorluğuyla sınama veri kümesi. <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">Downloads. jsp</a>' de bulun.
 <p></p>
-Veri kümesi, Azure Blob depolama (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a>) ' de indirildi ve depolandı ve bir öğrenci eğitim sistemindeki günlük dosyaları içeriyor. Sağlanan özellikler sorun KIMLIĞI ve kısa açıklaması, öğrenci KIMLIĞI, zaman damgası ve sorunu doğru şekilde çözmeden önce kaç tane deneme yaptığını içerir. Özgün veri kümesinde 8.9 d kayıtları vardır; Bu veri kümesi, ilk 100K satırına örneklenir. Veri kümesinde, farklı türlerde 23 sekmeyle ayrılmış sütun vardır: sayısal, kategorik ve zaman damgası.
+Veri kümesi, Azure Blob depolama (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a>) ' de indirildi ve depolandı ve bir öğrenci eğitim sisteminden günlük dosyaları içeriyor. Sağlanan özellikler sorun KIMLIĞI ve kısa açıklaması, öğrenci KIMLIĞI, zaman damgası ve sorunu doğru şekilde çözmeden önce kaç tane deneme yaptığını içerir. Özgün veri kümesinde 8.9 d kayıtları vardır; Bu veri kümesi, ilk 100K satırına örneklenir. Veri kümesinde, farklı türlerde 23 sekmeyle ayrılmış sütun vardır: sayısal, kategorik ve zaman damgası.
   </td>
 </tr>
 

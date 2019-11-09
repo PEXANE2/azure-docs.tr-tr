@@ -14,37 +14,37 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 068ae6fd581a55892c115f3a7e38d10304f057d8
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 95b7644ab8e0254a53eb4a0872a5af98a0894aec
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170217"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839230"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows Sanal Makineleri hakkında sık sorulan sorular
 Bu makalede, Azure 'da Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan Windows sanal makineleri hakkında bazı yaygın soruların ele alınmaktadır. Bu konunun Linux sürümü için bkz. [Linux sanal makineleri hakkında sık sorulan sorular](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="what-can-i-run-on-an-azure-vm"></a>Azure VM 'de neleri çalıştırabilirim?
-Tüm aboneler, bir Azure sanal makinesinde sunucu yazılımı çalıştırabilir. Azure 'da Microsoft Server yazılımını çalıştırmaya yönelik destek ilkesi hakkında daha fazla bilgi için bkz. [Azure sanal makineleri Için Microsoft sunucu yazılımı desteği](https://support.microsoft.com/kb/2721672).
+## <a name="what-can-i-run-on-an-azure-vm"></a>Azure sanal makinesinde ne çalıştırabilirim?
+Tüm aboneler bir Azure sanal makinesinde sunucu yazılımı çalıştırabilir. Azure 'da Microsoft Server yazılımını çalıştırmaya yönelik destek ilkesi hakkında daha fazla bilgi için bkz. [Azure sanal makineleri Için Microsoft sunucu yazılımı desteği](https://support.microsoft.com/kb/2721672).
 
-Windows 7, Windows 8.1 ve Windows 10 ' un bazı sürümleri, geliştirme ve test görevlerinde MSDN Azure avantajı aboneleri ve MSDN geliştirme ve Test Kullandıkça Öde aboneleri tarafından kullanılabilir. Yönergeler ve sınırlamalar dahil olmak üzere Ayrıntılar için bkz. [MSDN aboneleri Için Windows istemci görüntüleri](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/). 
+Windows 7, Windows 8.1 ve Windows 10 ' un bazı sürümleri, geliştirme ve test görevlerinde MSDN Azure avantajı aboneleri ve MSDN geliştirme ve Test Kullandıkça Öde aboneleri tarafından kullanılabilir. Yönerge ve kısıtlamalar dahil olmak üzere ayrıntılı bilgi edinmek için bkz. [MSDN aboneleri için Windows İstemci görüntüleri](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/). 
 
-## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Bir sanal makineyle ne kadar depolama alanı kullanabilirim?
-Her veri diski 32.767 GiB 'a kadar olabilir. Kullanabileceğiniz veri disklerinin sayısı, sanal makinenin boyutuna bağlıdır. Ayrıntılar için bkz. [sanal makineler Için boyutlar](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Bir sanal makineyle birlikte ne kadar depolama alanı kullanabilirim?
+Her veri diski 32.767 GiB 'a kadar olabilir. Kullanabileceğiniz veri diski sayısı, sanal makinenin boyutuna bağlıdır. Ayrıntılar için bkz. [Virtual Machines boyutları](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Azure yönetilen diskler, verilerin kalıcı olarak depolanması için Azure sanal makineler ile kullanılmak üzere önerilen disk depolama tekliflerdir. Her bir sanal makine ile birden fazla yönetilen disk kullanabilirsiniz. Yönetilen diskler iki tür dayanıklı depolama seçeneği sunar: Premium ve standart yönetilen diskler. Fiyatlandırma bilgileri için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks).
+Azure yönetilen diskler, verilerin kalıcı olarak depolanması için Azure sanal makineler ile kullanılmak üzere önerilen disk depolama tekliflerdir. Her bir Sanal Makine ile birden fazla Yönetilen Disk kullanabilirsiniz. Yönetilen Diskler iki tür dayanıklı depolama seçeneği sunar: Premium ve Standart Yönetilen Diskler. Fiyatlandırma bilgileri için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks).
 
-Azure depolama hesapları, işletim sistemi diski ve tüm veri diskleri için depolama alanı da sağlayabilir. Her disk, Sayfa Blobu olarak depolanan bir. vhd dosyasıdır. Fiyatlandırma ayrıntıları için bkz. [depolama fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/storage/).
+Azure depolama hesapları, işletim sistemi diski ve tüm veri diskleri için depolama alanı da sağlayabilir. Her disk bir sayfa blobu olarak depolanan bir .vhd dosyasıdır. Fiyatlandırma ayrıntıları için bkz. [Depolama Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Sanal makinime nasıl erişebilirim?
 Bir Windows sanal makinesi için Uzak Masaüstü Bağlantısı (RDP) kullanarak uzak bağlantı kurun. Yönergeler için bkz. [Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum açma](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Sunucu bir Uzak Masaüstü Hizmetleri oturumu ana bilgisayarı olarak yapılandırılmadığı sürece en fazla iki eşzamanlı bağlantı desteklenir.  
 
 Uzak Masaüstü ile ilgili sorun yaşıyorsanız, bkz. [Windows tabanlı bir Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Hyper-V ' y i kullandıysanız, VMConnect 'e benzer bir araç arıyor olabilirsiniz. Azure, bir sanal makineye konsol erişimi desteklenmediğinden benzer bir araç sunmaz.
+Hyper-V deneyiminiz varsa VMConnect’e benzer bir araç arıyor olabilirsiniz. Sanal makineye konsol erişimi desteklenmediğinden, Azure benzer bir araç sunmaz.
 
 ## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>Verileri depolamak için geçici diski (varsayılan olarak D: sürücü) kullanabilir miyim?
-Verileri depolamak için geçici diski kullanmayın. Yalnızca geçici depolama alanı olduğundan, kurtarılamamış verileri kaybetme riskini alırsınız. Sanal makine farklı bir konağa taşınırsa veri kaybı oluşabilir. Bir sanal makineyi yeniden boyutlandırma, Konağı güncelleştirme veya konaktaki bir donanım arızası bir sanal makinenin taşıyabileceği nedenlerdir.
+Verileri depolamak için geçici diski kullanmayın. Yalnızca geçici depolama alanı olduğundan, kurtarılamamış verileri kaybetme riskini alırsınız. Sanal makine farklı bir konağa taşınırsa veri kaybı oluşabilir. Sanal makinenin yeniden boyutlandırılması, konağın güncelleştirilmesi veya konaktaki bir donanım hatası, sanal makinenin taşınmasını gerektirecek olası nedenler arasındadır.
 
 D: sürücü harfini kullanması gereken bir uygulamanız varsa, geçici diskin d:farklı bir şey kullanması için sürücü harflerini yeniden atayabilirsiniz. Yönergeler için bkz. [Windows geçici diskinin sürücü harfini değiştirme](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
@@ -75,10 +75,10 @@ Evet. Denemek için hızlı bir şekilde bir Linux VM oluşturmak için, bkz. [p
 Evet, bu artık mümkündür. Önce VM 'nin serbest bırakılmasının durdurulması gerekir. Ardından, bir NIC ekleyebilir veya kaldırabilirsiniz (VM 'deki son NIC olmadığı müddetçe). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Herhangi bir bilgisayar adı gereksinimi var mı?
-Evet. Bilgisayar adı en fazla 15 karakter uzunluğunda olabilir. Kaynaklarınızı adlandırma hakkında daha fazla bilgi için bkz. [adlandırma kuralları kuralları ve kısıtlamaları](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#sample-naming-convention) .
+Evet. Bilgisayar adı en fazla 15 karakter uzunluğunda olabilir. Kaynaklarınızı adlandırma hakkında daha fazla bilgi için bkz. [adlandırma kuralları kuralları ve kısıtlamaları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#sample-naming-convention) .
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Herhangi bir kaynak grubu adı gereksinimi var mı?
-Evet. Kaynak grubu adı en fazla 90 karakter uzunluğunda olabilir. Kaynak grupları hakkında daha fazla bilgi için bkz. [adlandırma kuralları kuralları ve kısıtlamaları](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming) .
+Evet. Kaynak grubu adı en fazla 90 karakter uzunluğunda olabilir. Kaynak grupları hakkında daha fazla bilgi için bkz. [adlandırma kuralları kuralları ve kısıtlamaları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming) .
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>VM oluştururken Kullanıcı adı gereksinimleri nelerdir?
 
@@ -108,7 +108,7 @@ Kullanmakta olduğunuz araca bağlı olarak, farklı parola uzunluğu gereksinim
 * Küçük karakterler var
 * Büyük karakterlere sahip
 * Bir rakam
-* Özel bir karakter (Regex Match [\W_])
+* Özel bir karakter (Regex Match [\ W_])
 
 Aşağıdaki parolalara izin verilmiyor:
 
