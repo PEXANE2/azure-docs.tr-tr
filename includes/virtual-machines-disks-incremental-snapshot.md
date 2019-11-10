@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 72e94b864b15d5c4872ebf6ba9f0d1a00a0e92b0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f9b9773e595d1ff00d92bd757c4b85eb6c219b26
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924859"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897570"
 ---
 # <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>Yönetilen diskler için Artımlı anlık görüntü (Önizleme) oluşturma
 
@@ -45,7 +45,7 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 Yüklendikten sonra, `az login`PowerShell oturumunda oturum açın.
 
-Azure PowerShell ile artımlı bir anlık görüntü oluşturmak için, [New-AzSnapShotConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) ile yapılandırmayı `-Incremental` parametresiyle ayarlayın ve ardından bunu `-Snapshot` parametresi aracılığıyla [New-azsnapshot](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) öğesine bir değişken olarak geçirin.
+Azure PowerShell ile artımlı bir anlık görüntü oluşturmak için, [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) ile yapılandırmayı `-Incremental` parametresiyle ayarlayın ve ardından bunu `-Snapshot` parametresi aracılığıyla [New-azsnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) öğesine bir değişken olarak geçirin.
 
 `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`ve `<yourDesiredSnapShotNameHere>` değerlerini değerlerinizle değiştirin, ardından artımlı bir anlık görüntü oluşturmak için aşağıdaki betiği kullanabilirsiniz:
 
