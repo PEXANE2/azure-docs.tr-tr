@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: f53f260ebe80ce2e3d6d6349e3fa892fa3c021a3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 11/08/2019
+ms.openlocfilehash: 62c5c338f9783c65a3907a706618f653eea5cd0d
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972818"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904382"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>MySQL için Azure veritabanı fiyatlandırma katmanları
 
@@ -22,7 +22,7 @@ Bir MySQL için Azure veritabanı sunucusu oluşturmak için üç farklı fiyatl
 | İşlem oluşturma | Gen 4, Gen 5 | Gen 4, Gen 5 | 5\. Nesil |
 | Sanal çekirdek | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Sanal çekirdek başına bellek | 2 GB | 5 GB | 10 GB |
-| Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 4 TB | 5 GB ila 4 TB |
+| Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 16 TB | 5 GB ila 16 TB |
 | Depolama türü | Azure Standart depolama | Azure Premium Depolama | Azure Premium Depolama |
 | Veritabanı yedekleme saklama süresi | 7-35 gün | 7-35 gün | 7-35 gün |
 
@@ -47,9 +47,15 @@ Sağladığınız depolama alanı, MySQL için Azure veritabanı sunucunuz için
 |    | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
 |:---|:----------|:--------------------|:---------------------|
 | Depolama türü | Azure Standart depolama | Azure Premium Depolama | Azure Premium Depolama |
-| Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 4 TB | 5 GB ila 4 TB |
+| Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 16 TB | 5 GB ila 16 TB |
 | Depolama artış boyutu | 1 GB | 1 GB | 1 GB |
-| IOPS | Değişken |3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 6000 ıOPS | 3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 6000 ıOPS |
+| IOPS | Değişken |3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS | 3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS |
+
+> [!NOTE]
+> 16 TB 'a kadar depolama alanı ve 20.000 ıOPS, şu bölgelerde desteklenir: Doğu ABD, Doğu ABD 2, Orta ABD, Batı ABD, Kuzey Avrupa, Batı Avrupa, UK Güney, UK Batı, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Avustralya Doğu, Avustralya Güney Doğu.
+>
+> Tüm diğer bölgeler 4TB 'a kadar depolamayı ve 6000 ıOPS 'yi destekler.
+>
 
 Sunucu oluşturma sırasında ve sonrasında ek depolama kapasitesi ekleyebilir ve sistemin iş yükünüzün depolama tüketimine göre depolamayı otomatik olarak büyümesine izin verebilirsiniz. 
 
@@ -59,25 +65,6 @@ Sunucu oluşturma sırasında ve sonrasında ek depolama kapasitesi ekleyebilir 
 Temel katman, ıOPS garantisi sağlamıyor. Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında ıOPS, sağlanan depolama boyutuyla 3:1 oranında ölçeklendirilir.
 
 G/ç tüketiminizi Azure portal veya Azure CLı komutlarını kullanarak izleyebilirsiniz. İzlenecek ilgili ölçümler [depolama sınırı, depolama yüzdesi, kullanılan depolama alanı ve yüzde GÇ](concepts-monitoring.md)' dır.
-
-### <a name="large-storage-preview"></a>Büyük depolama (Önizleme)
-
-Genel Amaçlı ve bellek için Iyileştirilmiş katmanlarımızda depolama sınırlarını artırıyoruz. Önizlemeye eklenen yeni oluşturulan sunucular 16 TB 'a kadar depolama alanı sağlayabilir. IOPS ölçeği, 3:1 ıOPS 20.000 'ye varan bir oranına sahiptir. Geçerli genel olarak kullanılabilir depolama alanında olduğu gibi, sunucu oluşturulduktan sonra ek depolama kapasitesi ekleyebilir ve sistemin iş yükünüzün depolama tüketimine göre depolamayı otomatik olarak büyümesine izin verebilirsiniz.
-
-|              | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
-|:-------------|:--------------------|:---------------------|
-| Depolama türü | Azure Premium Depolama | Azure Premium Depolama |
-| Depolama boyutu | 32 GB ila 16 TB| 32 GB ila 16 TB |
-| Depolama artış boyutu | 1 GB | 1 GB |
-| IOPS | 3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS| 3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS |
-
-> [!IMPORTANT]
-> Büyük depolama Şu anda şu bölgelerde genel önizlemede: Doğu ABD, Doğu ABD 2, Orta ABD, Batı ABD, Kuzey Avrupa, Batı Avrupa, UK Güney, UK Batı, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Avustralya Doğu, Avustralya Güney Üzerinden.
->
-> Büyük depolama önizlemesi Şu anda şunları desteklemez:
->
-> * Coğrafi olarak yedekli yedeklemeler
-> * Çapraz bölge çoğaltma
 
 ### <a name="reaching-the-storage-limit"></a>Depolama sınırına ulaşıyor
 
@@ -91,7 +78,7 @@ Depolama otomatik büyümesini etkinleştirmenizi veya sunucu depoağınızın e
 
 ### <a name="storage-auto-grow"></a>Depolama otomatik büyüme
 
-Depolama otomatik büyüme, sunucunuzun depolama dışı ve Salt okunabilir hale gelmesine engel olur. Depolama otomatik büyüme etkinleştirilirse, depolama alanı, iş yükünü etkilemeden otomatik olarak büyür. 100 GB 'den az kullanılabilir depolama alanı olan sunucularda, boş depolama sağlanan depolamanın% 10 ' u altındaysa, sağlanan depolama boyutu 5 GB ile artar. 100 GB 'tan fazla kullanılabilir depolama alanı olan sunucularda, boş depolama alanı sağlanan depolama boyutunun% 10 ' u altındaysa, sağlanan depolama boyutu% 5 oranında artar. Yukarıda belirtilen en fazla depolama sınırı geçerlidir.
+Depolama otomatik büyüme, sunucunuzun depolama dışı ve Salt okunabilir hale gelmesine engel olur. Depolama otomatik büyüme etkinleştirilirse, depolama alanı, iş yükünü etkilemeden otomatik olarak büyür. 100 GB 'den az kullanılabilir depolama alanı olan sunucularda, boş depolama sağlanan depolamanın %10 ' u altındaysa, sağlanan depolama boyutu 5 GB ile artar. 100 GB 'tan fazla kullanılabilir depolama alanı olan sunucularda, boş depolama alanı sağlanan depolama boyutunun %10 ' u altındaysa, sağlanan depolama boyutu %5 oranında artar. Yukarıda belirtilen en fazla depolama sınırı geçerlidir.
 
 Örneğin, 1000 GB depolama alanı sağladıysanız ve gerçek kullanım 900 GB 'den fazla olursa, sunucu depolama boyutu 1050 GB 'a yükseltilir. Alternatif olarak, 10 GB depolama alanı sağladıysanız, 1 GB 'tan az depolama alanı boş olduğunda depolama boyutu 15 GB 'a artar.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 901ae66281e1d68474304a4f5456a0163fcb6f2a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 39ab0caa31f79aca41f2c40a3220412e0683ee22
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747618"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903153"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak bir Azure VM 'yi yedekleme
 
@@ -168,7 +168,7 @@ Yanıt, tüm korumasız Azure VM 'lerinin listesini içerir ve her `{value}`, Az
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Azure VM için korumayı etkinleştirme
 
-İlgili VM "Önbelleğe alındı" ve "tanımlı" olduktan sonra, korunacak ilkeyi seçin. Kasadaki mevcut ilkeler hakkında daha fazla bilgi edinmek için [liste ILKESI API](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)'sine bakın. Ardından ilke adına başvurarak [ilgili ilkeyi](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) seçin. İlke oluşturmak için [ilke oluşturma öğreticisi](backup-azure-arm-userestapi-createorupdatepolicy.md)' ne bakın. Aşağıdaki örnekte "DefaultPolicy" seçilidir.
+İlgili VM "Önbelleğe alındı" ve "tanımlı" olduktan sonra, korunacak ilkeyi seçin. Kasadaki mevcut ilkeler hakkında daha fazla bilgi edinmek için [liste ILKESI API](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)'sine bakın. Ardından ilke adına başvurarak [ilgili ilkeyi](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/get) seçin. İlke oluşturmak için [ilke oluşturma öğreticisi](backup-azure-arm-userestapi-createorupdatepolicy.md)' ne bakın. Aşağıdaki örnekte "DefaultPolicy" seçilidir.
 
 Korumayı etkinleştirme, ' Protected Item ' oluşturan zaman uyumsuz bir *PUT* işlemidir.
 

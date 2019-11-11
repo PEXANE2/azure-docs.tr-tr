@@ -1,7 +1,7 @@
 ---
 title: Tam ekran okuyucu API nedir?
 titleSuffix: Azure Cognitive Services
-description: Modern okuyucu API 'SI hakkında bilgi edinin.
+description: Modern okuyucu API 'SI, kişileri öğrenme farklılığı veya yeni okuyucular ve dil öğrenimine yardımcı olmak için kullanılabilen bir araçtır.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: f84804fbad07357706e786fc449fce9e42a5ec4a
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3e6889cd5d26b88cedd6b110510cb89777252f54
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688342"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904376"
 ---
 # <a name="what-is-immersive-reader"></a>Tam Ekran Okuyucu nedir?
 
@@ -53,7 +53,7 @@ Derinlikli okuyucu herkes için daha fazla erişilebilir hale getirmek üzere ta
 
 ## <a name="how-does-immersive-reader-work"></a>Modern okuyucu nasıl çalışır?
 
-Modern okuyucu, modern okuyucu JavaScript SDK 'Sı kullanılarak çağrıldığında, mevcut Web uygulamanızın en üstünde bir `iframe`ile görüntülenen tek başına bir Web uygulamasıdır. Modern okuyucuyu başlatmak için API 'YI çağırdığınızda, tam ekran okuyucusunda göstermek istediğiniz içeriği belirtin. SDK 'mız, okuma ve metin okuma, `iframe` çeviri vb. için içeriği işleyen, tam ekran okuyucu arka uç hizmeti ile iletişim oluşturma ve stillendirmeyi idare eder.
+Tam ekran okuyucu, modern okuyucu JavaScript SDK 'Sı kullanılarak çağrıldığında, mevcut Web uygulamanızın en üstünde bir `iframe`ile görüntülendiğinde tek başına bir Web uygulamasıdır. Modern okuyucuyu başlatmak için API 'YI çağırdığınızda, tam ekran okuyucusunda göstermek istediğiniz içeriği belirtin. SDK, `iframe` oluşturma ve stillendirme, okuma ve metin okuma, çeviri vb. için içeriği işleyen, derinlikli okuyucu arka uç hizmetiyle iletişim kurmasından de ilgilenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: içerme dosyası
-description: içerme dosyası
+title: include dosyası
+description: include dosyası
 services: digital-twins
 ms.author: alinast
 author: alinamstanciu
@@ -9,33 +9,33 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 09/24/2019
 ms.custom: include file
-ms.openlocfilehash: 7b2df437833f270a6e102257693426f4cc65b9d2
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 92b9a4754769566feb3658e07081e9fdae78fcfc
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949774"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903968"
 ---
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Sol bölmeden **kaynak oluştur**' u seçin. **Dijital TWINS**araması yapın ve **dijital TWINS**' i seçin. Dağıtım işlemini başlatmak için **Oluştur** ' u seçin.
+1. Giriş sayfasından **+ kaynak oluştur**' u seçin. **Dijital TWINS**araması yapın ve **dijital TWINS**' i seçin. Dağıtım işlemini başlatmak için **Oluştur**’u seçin.
 
-   [![ yeni bir dijital TWINS örneği oluşturmaya yönelik seçimler](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+   [Yeni bir dijital TWINS örneği oluşturmak için ![seçimleri](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
 
-1. **Dijital TWINS** bölmesinde aşağıdaki bilgileri girin:
-   * **Kaynak adı**: dijital TWINS örneğiniz için benzersiz bir ad oluşturun.
-   * **Abonelik**: Bu dijital TWINS örneğini oluşturmak için kullanmak istediğiniz aboneliği seçin. 
-   * **Kaynak grubu**: dijital TWINS örneği için bir [kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) seçin veya oluşturun.
-   * **Konum**: cihazlarınızın en yakın konumunu seçin.
+1. **Digital Twins** bölmesine şu bilgileri girin:
+   * **Kaynak Adı**: Digital Twins örneğiniz için benzersiz bir ad oluşturun.
+   * **Abonelik**: Bu Digital Twins örneğini oluşturmak için kullanmak istediğiniz aboneliği seçin. 
+   * **Kaynak grubu**: Digital Twins örneği için bir [kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) seçin veya oluşturun.
+   * **Konum**: Cihazlarınıza en yakın konumu seçin.
 
-     [![Dijital TWINS bölmesi, girilen bilgilerle birlikte](./media/create-digital-twins-portal/create-digital-twins-param.png)](./media/create-digital-twins-portal/create-digital-twins-param.png#lightbox)
+     [girilen bilgilerle dijital TWINS bölmesi ![](./media/create-digital-twins-portal/create-digital-twins-param.png)](./media/create-digital-twins-portal/create-digital-twins-param.png#lightbox)
 
-1. Dijital TWINS bilgilerinizi gözden geçirin ve ardından **Oluştur**' u seçin. Dijital TWINS örneğinizin oluşturulması birkaç dakika sürebilir. İlerleme durumunu **Bildirimler** bölmesinde izleyebilirsiniz.
+1. Dijital TWINS bilgilerinizi gözden geçirin ve ardından **Oluştur**' u seçin. Dijital TWINS örneğinizin oluşturulması birkaç dakika sürebilir. İlerleme durumunu **Bildirimler** bölmesinden izleyebilirsiniz.
 
-1. Dijital TWINS örneğinizin **genel bakış** bölmesini açın. **Yönetim API 'si**altındaki bağlantıyı aklınızda edin.
+1. Digital Twins örneğinizin **Genel Bakış** bölmesini açın. **Yönetim API 'si**altındaki bağlantıyı aklınızda edin.
 
-   **YÖNETIM API** URL 'si `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` olarak biçimlendirilir. Bu URL sizi, örneğiniz için geçerli olan Azure dijital TWINS REST API belgelerine götürür. Bu API belgelerini okumayı ve kullanmayı öğrenmek için [Azure Digital TWINS Swagger 'Yi nasıl kullanacağınızı](../articles/digital-twins/how-to-use-swagger.md) okuyun.
+   **YÖNETIM API** URL 'si `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger`olarak biçimlendirilir. Bu URL, örneğiniz için geçerli olan Azure Digital Twins REST API belgesini açar. Bu API belgelerini okumayı ve kullanmayı öğrenmek için bkz. [Azure Digital Twins Swagger'ı kullanma](../articles/digital-twins/how-to-use-swagger.md).
 
-    **YÖNETIM API** 'si URL 'sini bu biçimle değiştirin `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Uygulamanız, örneğinize erişmek için temel URL olarak değiştirilen URL 'yi kullanacaktır. Bu değiştirilmiş URL 'YI geçici bir dosyaya kopyalayın. Bu, sonraki bölümde gerekecektir.
+    **YÖNETIM API** 'si URL 'sini şu biçimde kopyalayın ve değiştirin: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Uygulamanız, değiştirilen URL'yi örneğinize erişmek için temel URL olarak kullanır. Değiştirdiğiniz URL'yi geçici bir dosyaya kopyalayın. Bu, sonraki bölümde gerekecektir.
 
-    [![Yönetim API 'SI](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)
+    [![yönetim API 'SI](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/06/2019
-ms.openlocfilehash: 46164cfc0c2baff919808a831a67180b65a23ff7
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 11/07/2019
+ms.openlocfilehash: 225ee7028b9610a4974f9bee05da667d78d3355e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337649"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903745"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Not defterini bilgisayarınıza yükleyip HDInsight üzerinde Apache Spark bağlanın
 
@@ -30,9 +30,9 @@ HDInsight kümesi ile Jupyter Not defterleri için kullanılabilen özel çekird
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Burada listelenen Önkoşullar Jupyıter yükleme için değildir. Bunlar, bir dizüstü bilgisayar yüklendikten sonra Jupyter Not defterini HDInsight kümesine bağlamak içindir.
+* HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md). Bu, bir not defteri yüklendikten sonra Jupyter Not defterini HDInsight kümesine bağlamak için bir önkoşuldur.
 
-* HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
+* HDInsight üzerinde Spark ile Jupyter Notebook kullanma bilgisi.
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter Not defterini bilgisayarınıza yükler
 
@@ -46,10 +46,10 @@ Platformunuz için [Anaconda yükleyicisini](https://www.anaconda.com/download/)
 
     |Küme sürümü | Komutu Install |
     |---|---|
-    |v 3.6 ve v 3.5 |`pip install sparkmagic==0.12.7`|
+    |v 3.6 ve v 3.5 |`pip install sparkmagic==0.13.1`|
     |v 3.4|`pip install sparkmagic==0.2.3`|
 
-1. Aşağıdaki `ipywidgets` komutu çalıştırarak emin olun:
+1. Aşağıdaki komutu çalıştırarak `ipywidgets` düzgün yüklendiğinden emin olun:
 
     ```cmd
     jupyter nbextension enable --py --sys-prefix widgetsnbextension
@@ -57,7 +57,7 @@ Platformunuz için [Anaconda yükleyicisini](https://www.anaconda.com/download/)
 
 ## <a name="install-pyspark-and-spark-kernels"></a>Pyspark ve Spark çekirdekler 'i yükler
 
-1. Aşağıdaki komutu `sparkmagic` girerek nerede yükleneceğini belirler:
+1. Aşağıdaki komutu girerek `sparkmagic` nereye yükleneceğini belirler:
 
     ```cmd
     pip show sparkmagic
@@ -67,7 +67,7 @@ Platformunuz için [Anaconda yükleyicisini](https://www.anaconda.com/download/)
 
 1. Yeni çalışma dizininizden, istenen çekirdek (ler) i yüklemek için aşağıdaki komutlardan birini veya birkaçını girin:
 
-    |Çekirdek | Komut |
+    |İne | Komut |
     |---|---|
     |Spark|`jupyter-kernelspec install sparkmagic/kernels/sparkkernel`|
     |SparkR|`jupyter-kernelspec install sparkmagic/kernels/sparkrkernel`|
@@ -100,7 +100,7 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
     exit()
     ```
 
-3. Klasörü `.sparkmagic`içinde, **config. JSON** adlı bir dosya oluşturun ve içine aşağıdaki JSON kod parçacığını ekleyin.  
+3. `.sparkmagic`klasörü içinde **config. JSON** adlı bir dosya oluşturun ve IÇINE aşağıdaki JSON kod parçacığını ekleyin.  
 
     ```json
     {
@@ -116,6 +116,10 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
         "url": "https://{CLUSTERDNSNAME}.azurehdinsight.net/livy"
       },
 
+      "custom_headers" : {
+        "X-Requested-By": "livy"
+      },
+
       "heartbeat_refresh_seconds": 5,
       "livy_server_heartbeat_timeout_seconds": 60,
       "heartbeat_retry_seconds": 1
@@ -128,13 +132,13 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
     |---|---|
     |NITELEN|Küme oturumu açma, varsayılan `admin`.|
     |CLUSTERDNSNAME|Küme adı|
-    |{BASE64ENCODEDPASSWORD}|Gerçek parolanız için Base64 olarak kodlanmış bir parola.  ' De Base64 parolası [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/)oluşturabilirsiniz.|
-    |`"livy_server_heartbeat_timeout_seconds": 60`|Kullanılıyorsa koruyun (kümeler v 3.5 ve v 3.6). `sparkmagic 0.12.7`  Kullanıyorsanız `sparkmagic 0.2.3` (kümeler v 3.4), ile `"should_heartbeat": true`değiştirin.|
+    |{BASE64ENCODEDPASSWORD}|Gerçek parolanız için Base64 olarak kodlanmış bir parola.  [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/)bir Base64 parolası oluşturabilirsiniz.|
+    |`"livy_server_heartbeat_timeout_seconds": 60`|`sparkmagic 0.12.7` (kümeler v 3.5 ve v 3.6) kullanıyorsanız koruyun.  `sparkmagic 0.2.3` (kümeler v 3.4) kullanıyorsanız, `"should_heartbeat": true`ile değiştirin.|
 
     [Örnek config. JSON](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)dosyasında tam bir örnek dosyası görebilirsiniz.
 
    > [!TIP]  
-   > Sinyaller, oturumların sızmasını sağlamak için gönderilir. Bir bilgisayar uyku moduna geçtiğinde veya kapatıldığında, sinyal gönderilmez ve bu da oturum temizlenmelidir. Kümeler v 3.4 için, bu davranışı devre dışı bırakmak istiyorsanız, Savy yapılandırmasını `livy.server.interactive.heartbeat.timeout` , ambarı kullanıcı arabiriminden olarak `0` ayarlayabilirsiniz. Kümeler v 3.5 için, yukarıdaki 3,5 yapılandırmasını ayarlanmamışsa oturum silinmez.
+   > Sinyaller, oturumların sızmasını sağlamak için gönderilir. Bir bilgisayar uyku moduna geçtiğinde veya kapatıldığında, sinyal gönderilmez ve bu da oturum temizlenmelidir. Kümeler v 3.4 için, bu davranışı devre dışı bırakmak istiyorsanız, sanal kullanıcı arabiriminden `0` için Livy yapılandırma `livy.server.interactive.heartbeat.timeout` ayarlayabilirsiniz. Kümeler v 3.5 için, yukarıdaki 3,5 yapılandırmasını ayarlanmamışsa oturum silinmez.
 
 5. Jupyıter 'ı başlatın. Komut isteminden aşağıdaki komutu kullanın.
 
@@ -146,10 +150,10 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
 
     a. Yeni bir not defteri oluşturun. Sağ köşedeki **Yeni**' yi seçin. Varsayılan Çekirdek **Python 2** veya **Python 3 ' ü** ve yüklediğiniz çekirdekleri görmeniz gerekir. Gerçek değerler, yükleme seçimlerinize bağlı olarak farklılık gösterebilir.  **Pyspark**seçin.
 
-    Jupyter Not defteri 'nde ![Jupyter Not defteri](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "çekirdekleri") için kullanılabilir çekirdekler
+    ![Jupyter not defterinde kullanılabilir çekirdekler](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter not defterinde kernels")
 
     > [!IMPORTANT]  
-    > **Yeni** seçildikten sonra, herhangi bir hata için kabuğunuz gözden geçirin.  Hatayı `TypeError: __init__() got an unexpected keyword argument 'io_loop'` görürseniz, belirli bir Tornado sürümü ile ilgili bilinen bir sorunla karşılaşmış olabilirsiniz.  Bu durumda, çekirdeği durdurun ve ardından aşağıdaki komutla Tornado yüklemenizi indirgemeniz gerekir: `pip install tornado==4.5.3`.
+    > **Yeni** seçildikten sonra, herhangi bir hata için kabuğunuz gözden geçirin.  `TypeError: __init__() got an unexpected keyword argument 'io_loop'` hatayı görürseniz, bazı Tornado sürümleriyle ilgili bilinen bir sorun yaşıyor olabilirsiniz.  Bu durumda, çekirdeği durdurun ve ardından Tornado yüklemenizin aşağıdaki komutla indirgenmesini sağlayın: `pip install tornado==4.5.3`.
 
     b. Aşağıdaki kod parçacığını çalıştırın.
 
@@ -170,13 +174,13 @@ Bilgisayarınıza jupi 'yi yüklemek ve sonra HDInsight 'ta bir Apache Spark kü
 * Yerel olarak kullanılabilir olan Not defterleri sayesinde, uygulama gereksiniminize göre farklı Spark kümelerine bağlanabilirsiniz.
 * GitHub kullanarak bir kaynak denetim sistemi uygulayabilir ve Not defterleri için sürüm denetimine sahip olabilirsiniz. Aynı zamanda birden çok kullanıcının aynı not defteriyle çalışılabilecek işbirliği ortamınıza sahip olabilirsiniz.
 * Bir kümeye sahip olmaksızın, Not defterlerle yerel olarak çalışabilirsiniz. Not defterlerinizi veya bir geliştirme ortamını el ile yönetmek için not defterlerinizi test etmek üzere bir kümeye ihtiyacınız vardır.
-* Kendi yerel geliştirme ortamınızı yapılandırmak daha kolay olabilir ve bu, küme üzerinde Jupyıter yüklemesini yapılandırmaktır.  Bir veya daha fazla uzak kümeyi yapılandırmadan yerel olarak yüklediğiniz tüm yazılımlardan faydalanabilirsiniz.
+* Kendi yerel geliştirme ortamınızı, küme üzerinde Jupyıter yüklemesini yapılandırdığından yapılandırmak daha kolay olabilir.  Bir veya daha fazla uzak kümeyi yapılandırmadan yerel olarak yüklediğiniz tüm yazılımlardan faydalanabilirsiniz.
 
 > [!WARNING]  
 > Yerel bilgisayarınızda Jupyter yüklü olduğunda, birden çok kullanıcı aynı aynı not defterini aynı anda aynı Spark kümesinde çalıştırabilir. Böyle bir durumda, birden çok kıvrımlı oturum oluşturulur. Bir sorunla karşılaşırsanız ve hata ayıklamak istiyorsanız, bu oturum hangi kullanıcının hangi kullanıcıya ait olduğunu izlemek için karmaşık bir görev olacaktır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bakýþ Azure HDInsight üzerinde Apache Spark](apache-spark-overview.md)
-* [BI ile Apache Spark: Bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
-* [Machine Learning Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
+* [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
+* [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
+* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)

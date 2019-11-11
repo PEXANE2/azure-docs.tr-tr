@@ -1,6 +1,6 @@
 ---
-title: IoT için Azure Güvenlik Merkezi için güvenlik modülü ikizi oluşturma | Microsoft Docs
-description: IoT için Azure Güvenlik Merkezi ile kullanmak üzere IoT modülü ikizi için Azure Güvenlik Merkezi oluşturma hakkında bilgi edinin.
+title: 'Hızlı başlangıç: IoT için Azure Güvenlik Merkezi için güvenlik modülü ikizi oluşturma'
+description: Bu hızlı başlangıçta, IoT için Azure Güvenlik Merkezi ile kullanmak üzere IoT modülü ikizi için bir Azure Güvenlik Merkezi oluşturmayı öğrenin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 92bf79aa5ae55bad16d68a26dc13d292285a4d46
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b362130c2b717f813a6332f81a3c8179bea4166a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597086"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904157"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Hızlı Başlangıç: Azureiotsecurity modülü oluşturma ikizi
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Hızlı başlangıç: azureiotsecurity modülü oluşturma ikizi
 
 Bu hızlı başlangıçta, yeni cihazlar için tek tek _azureiotsecurity_ Module TWINS oluşturma veya bir IoT Hub tüm cihazlar için toplu işlem modülü oluşturma işlemleri açıklanmaktadır.  
 
@@ -58,18 +58,18 @@ Bir cihaz için el ile yeni bir _azureiotsecurity_ Module ikizi oluşturmak içi
 1. Cihazınıza ve ardından **modül kimliği Ekle**' ye tıklayın.
 1. **Modül kimliği adı** alanına **azureiotsecurity**girin.
 
-1. **Kaydet**’e tıklayın. 
+1. **Save (Kaydet)** düğmesine tıklayın. 
 
 ## <a name="verify-creation-of-a-module-twin"></a>Modül ikizi oluşturmayı doğrulama
 
 Belirli bir cihaz için bir güvenlik modülü ikizi varolup olmadığını doğrulamak için:
 
-1. Azure IoT Hub, araştırıcılar menüsünden **IoT cihazları** ' nı  seçin.    
+1. Azure IoT Hub, **araştırıcılar** menüsünden **IoT cihazları** ' nı seçin.    
 1. Cihaz KIMLIĞINI girin veya **sorgu cihazı alanında** bir seçenek belirleyin ve **sorgu cihazları**' na tıklayın. 
-    ![Cihazları sorgula](./media/quickstart/verify-security-module-twin.png)
+    ![sorgu cihazları](./media/quickstart/verify-security-module-twin.png)
 1. Cihazı seçin veya çift tıklayarak cihaz ayrıntıları sayfasını açın. 
 1. **Modül kimlikleri** menüsünü seçin ve cihazla ilişkili modül kimlikleri listesinde **azureiotsecurity** modülünün varlığını onaylayın. 
-    ![Bir cihazla ilişkili modüller](./media/quickstart/verify-security-module-twin-3.png)
+    bir cihaz](./media/quickstart/verify-security-module-twin-3.png) ilişkili ![modüller
 
 
 IoT modülü TWINS için Azure Güvenlik Merkezi 'nin özelliklerini özelleştirme hakkında daha fazla bilgi edinmek için bkz. [Aracı yapılandırması](how-to-agent-configuration.md).

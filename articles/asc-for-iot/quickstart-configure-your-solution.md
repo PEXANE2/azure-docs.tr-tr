@@ -1,6 +1,6 @@
 ---
-title: IoT çözümü için Azure Güvenlik Merkezi 'Ni yapılandırma | Microsoft Docs
-description: IoT için Azure Güvenlik Merkezi 'ni kullanarak uçtan uca IoT çözümünüzü nasıl yapılandıracağınızı öğrenin.
+title: "Hızlı başlangıç: IoT çözümü için Azure Güvenlik Merkezi 'Ni yapılandırma"
+description: Bu hızlı başlangıçta IoT için Azure Güvenlik Merkezi 'ni kullanarak uçtan uca IoT çözümünüzü nasıl yapılandıracağınızı öğrenin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: a546d153c6fe4f14ccc8c21308bd4a33385870c3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e670df359cc33c9eaca089d0ed8f9614ef8c0468
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299702"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904145"
 ---
-# <a name="quickstart-configure-your-iot-solution"></a>Hızlı Başlangıç: IoT çözümünüzü yapılandırma
+# <a name="quickstart-configure-your-iot-solution"></a>Hızlı başlangıç: IoT çözümünüzü yapılandırma
 
 Bu makalede IoT için Azure Güvenlik Merkezi 'ni kullanarak IoT güvenlik çözümünüzün ilk yapılandırmasını gerçekleştirme hakkında bir açıklama sunulmaktadır. 
 
@@ -47,7 +47,7 @@ IoT çözümünüze yeni kaynak eklemek için aşağıdakileri yapın:
 1. **IoT Hub** Azure Portal açın. 
 1. Sol taraftaki menüden **güvenlik** altında **kaynakları** seçin ve açın. 
 1. **Düzenle** ' yi seçin ve IoT çözümünüze ait kaynak gruplarını seçin.
-1. **Ekle**'yi tıklatın. 
+1. **Ekle**'ye tıklayın. 
 
 Tebrikler! IoT çözümünüze yeni bir kaynak grubu eklediniz.
 

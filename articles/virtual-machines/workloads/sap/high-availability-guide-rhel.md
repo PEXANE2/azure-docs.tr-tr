@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: sedusch
-ms.openlocfilehash: 13f751b472b3443ba50be5d54ab08e015d1a8f5a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a618a2cb976c90174125e54af645123c6b0a9dcd
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824882"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905028"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği
 
@@ -117,7 +117,7 @@ SAP NetWeaver yoks, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı
 * Araştırma bağlantı noktası
   * Bağlantı noktası 621<strong>&lt;nr&gt;</strong>
 * Yük Dengeleme kuralları
-  * Standart Load Balancer kullanıyorsanız, * * HA bağlantı noktaları * * öğesini seçin
+  * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
   * Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
     * 32<strong>&lt;nr&gt;</strong> TCP
     * 33<strong>&lt;nr&gt;</strong> TCP
@@ -250,9 +250,8 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
       1. YOKLAR için ek bağlantı noktaları
          * 33**02**, 5**02**13, 5**02 14, 5** **02**16 ve TCP bağlantı noktaları için yukarıdaki adımları yineleyin
 
-> [!TIP]
-> Ortak IP adresleri olmayan VM 'Ler iç standart yük dengeleyicinin arka uç havuzunda yerleştirildiğinde, ek yapılandırma gerçekleştirilmediği takdirde VM 'Lerin giden internet bağlantısı olmayacaktır.  
-> Senaryonuz, genel uç noktalarına giden bağlantılar gerektiriyorsa, bkz. [Azure Standart Load Balancer sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryoları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)ve giden trafik elde etme hakkında ipuçları ve konular Genel uç noktalarına bağlantı.
+> [!Note]
+> Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
 > [!IMPORTANT]
 > Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. tcp_timestamps** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).

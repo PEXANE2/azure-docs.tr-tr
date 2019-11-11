@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a59e5443c80c9372f646edfdae2261157a41acc9
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d854f41ffc883b40f9159a7dacdde0fb3bb7240f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614881"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904060"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET 'teki dayanıklı varlıklara Geliştirici Kılavuzu
 
@@ -117,7 +117,7 @@ Tüm varlık işlemleri varlık durumunu okuyabilir ve güncelleştirebilir ve d
 
 ## <a name="accessing-entities-directly"></a>Varlıklara doğrudan erişme
 
-Sınıf tabanlı varlıklara, varlık ve onun işlemleri için açık dize adları kullanılarak doğrudan erişilebilir. Aşağıda bazı örnekler sunuyoruz; temel kavramların daha derin bir açıklaması (örneğin, sinyaller ve çağrılar) için [varlıklara erişme](durable-functions-entities.md#accessing-entities)bölümünde yer alan tartışmaya bakın. 
+Sınıf tabanlı varlıklara, varlık ve onun işlemleri için açık dize adları kullanılarak doğrudan erişilebilir. Aşağıda bazı örnekler sunuyoruz; temel kavramların daha derin bir açıklaması (sinyaller ve çağrılar gibi) için bkz. [erişim varlıkları](durable-functions-entities.md#access-entities)içindeki tartışma. 
 
 > [!NOTE]
 > Mümkün olduğunda, daha fazla tür denetimi sağladığından [varlıklara arabirimler üzerinden erişmenizi](#accessing-entities-through-interfaces)öneririz.

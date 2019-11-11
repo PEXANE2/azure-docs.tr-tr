@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cf05468af17a4fafa7c81c7ad8bc89b3306a54af
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286170"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903694"
 ---
-Paylaşılan görüntü galerileri, RBAC kullanarak görüntüleri paylaşmanıza olanak sağlar. RBAC kullanarak kiracınızdaki görüntüleri paylaşabilir ve hatta kiracınızın dışındaki bireyler ekleyebilirsiniz. Ancak, Azure kiracınızın dışındaki görüntüleri, ölçeklendirerek paylaşmak istiyorsanız, paylaşmayı kolaylaştırmak için bir uygulama kaydı oluşturmanız gerekir.  Bir uygulama kaydının kullanılması, şunun gibi daha karmaşık paylaşım senaryolarına olanak sağlayabilir: 
+Ancak, Azure kiracınızın dışındaki görüntüleri, ölçeklendirerek paylaşmak istiyorsanız, paylaşmayı kolaylaştırmak için bir uygulama kaydı oluşturmanız gerekir.  Bir uygulama kaydının kullanılması, şunun gibi daha karmaşık paylaşım senaryolarına olanak sağlayabilir: 
 
 * Bir şirket diğeri edindiğinde paylaşılan görüntüleri yönetme ve Azure altyapısı ayrı kiracılar arasında yayılır. 
 * Azure Iş ortakları, Azure altyapısını müşterileri adına yönetir. Görüntülerin özelleştirilmesi iş ortakları kiracısı içinde yapılır, ancak altyapı dağıtımları müşterinin kiracısında gerçekleşecektir. 
@@ -46,7 +46,7 @@ Paylaşılan görüntü galerisini kullanmak için uygulama kaydı iznini verin.
 
 ## <a name="give-tenant-2-access"></a>Kiracı 2 erişimi verme
 
-Bir tarayıcı kullanarak oturum açmayı isteyerek kiracı 2 ' ye uygulamaya erişim izni verin. *\<Tenant2 ID >* , görüntü galerinizi paylaşmak istediğiniz kiracının kiracı kimliğiyle değiştirin. *\<Uygulama (istemci) kimliğini >* , oluşturduğunuz uygulama kaydının uygulama kimliğiyle değiştirin. Değişiklikleri yapmayı tamamladığınızda, URL 'YI bir tarayıcıya yapıştırın ve kiracı 2 ' de oturum açmak için oturum açma istemlerini izleyin.
+Bir tarayıcı kullanarak oturum açmayı isteyerek kiracı 2 ' ye uygulamaya erişim izni verin. *\<TENANT2 ıd >* , görüntü galerinizi paylaşmak istediğiniz KIRACıNıN kiracı kimliğiyle değiştirin. *\<uygulaması (istemci) kimliği >* , oluşturduğunuz uygulama KAYDıNıN uygulama kimliğiyle değiştirin. Değişiklikleri yapmayı tamamladığınızda, URL 'YI bir tarayıcıya yapıştırın ve kiracı 2 ' de oturum açmak için oturum açma istemlerini izleyin.
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 

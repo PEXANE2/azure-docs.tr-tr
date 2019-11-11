@@ -6,15 +6,15 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 11/01/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cc9b11ba5fe0cd015d0879f28b9e85fb46b11955
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: a785ecbfa09c54d3affa97c220d4808f9fe8d90b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178584"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904460"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances kapsayıcı grupları
 
@@ -51,15 +51,17 @@ Bir kapsayıcı grubunun yapılandırmasını korumak için, [az kapsayıcı dı
 
 Azure Container Instances, gruptaki örneklerin [kaynak isteklerini][resource-requests] ekleyerek CPU, bellek ve Isteğe bağlı [GPU 'lar][gpus] (Önizleme) gibi kaynakları bir kapsayıcı grubuna ayırır. CPU kaynaklarını örnek olarak alma Örneğin, her biri 1 CPU isteyen iki örneğe sahip bir kapsayıcı grubu oluşturursanız, kapsayıcı grubuna 2 CPU tahsis edilir.
 
-Bir kapsayıcı grubu için kullanılabilen en fazla kaynak, dağıtım için kullanılan [Azure bölgesine][region-availability] bağlıdır.
+### <a name="resource-usage-by-instances"></a>Örneklere göre kaynak kullanımı
 
-### <a name="container-resource-requests-and-limits"></a>Kapsayıcı kaynak istekleri ve limitleri
+Her kapsayıcı örneğine, kaynak isteğinde belirtilen kaynaklar ayrılır. Ancak, bir gruptaki bir kapsayıcı örneği tarafından kaynak kullanımı, isteğe bağlı [kaynak sınırı][resource-limits] özelliğini nasıl yapılandırdığınıza bağlıdır.
 
-* Varsayılan olarak, bir gruptaki kapsayıcı örnekleri grubun istenen kaynaklarını paylaşır. Her biri 1 CPU isteyen iki örneğe sahip bir grupta, grubun tamamı 2 CPU 'ya erişebilir. Her örnek 2 CPU 'ya kadar kullanılabilir ve örnekler çalışırken CPU kaynağı için rekabet edebilir.
+* Kaynak sınırı belirtmezseniz, örneğin en büyük kaynak kullanımı kaynak isteğiyle aynı olur.
 
-* Kaynak kullanımını bir gruptaki örnekle sınırlamak için, isteğe bağlı olarak örnek için bir [kaynak sınırı][resource-limits] ayarlayın. 1 CPU isteyen iki örneğe sahip bir grupta, kapsayıcılarınızın biri diğer CPU 'ların çalışmasını gerektirebilir.
+* Bir örnek için bir kaynak sınırı belirtirseniz, kaynak isteğine göre kullanımı azaltarak veya artırarak, örneğin kaynak kullanımını iş yükü için ayarlayabilirsiniz. Ayarlayabileceğiniz maksimum kaynak sınırı, gruba ayrılan toplam kaynaktır.
+    
+    Örneğin, iki örneği 1 CPU isteyen bir grupta, kapsayıcılarınızın biri diğer CPU 'ların çalışmasını gerektiren bir iş yükü çalıştırabilir.
 
-  Bu senaryoda, bir örnek için 0,5 CPU kaynak sınırı ve ikincisi için 2 CPU sınırı ayarlayabilirsiniz. Bu yapılandırma, ilk kapsayıcının kaynak kullanımını 0,5 CPU olarak sınırlandırır ve ikinci kapsayıcının varsa tam 2 CPU 'ya kadar kullanmasına izin verir.
+    Bu senaryoda, bir örnek için 0,5 CPU kaynak sınırı ve ikincisi için 2 CPU sınırı ayarlayabilirsiniz. Bu yapılandırma, ilk kapsayıcının kaynak kullanımını 0,5 CPU olarak sınırlandırır ve ikinci kapsayıcının varsa tam 2 CPU 'ya kadar kullanmasına izin verir.
 
 Daha fazla bilgi için bkz. kapsayıcı gruplarındaki [Resourcerequirements][resource-requirements] özelliği REST API.
 
@@ -69,7 +71,7 @@ Daha fazla bilgi için bkz. kapsayıcı gruplarındaki [Resourcerequirements][re
 
 * Bir kapsayıcı grubundaki **en fazla** kaynak için, dağıtım bölgesindeki Azure Container Instances [kaynak kullanılabilirliğine][region-availability] bakın.
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Ağ İletişimi
 
 Kapsayıcı grupları bir IP adresini ve bu IP adresinde bir bağlantı noktası ad alanını paylaşır. Dış istemcilerin Grup içindeki bir kapsayıcıya ulaşmasını sağlamak için, bağlantı noktasını IP adresinde ve kapsayıcıdan kullanıma sunmalısınız. Grup içindeki kapsayıcılar bir bağlantı noktası ad alanını paylaştığından, bağlantı noktası eşleştirmesi desteklenmez. Bir grup içindeki kapsayıcılar, bu bağlantı noktaları grubun IP adresinde dışarıdan sunulmasa bile, açığa çıkarılan bağlantı noktalarında localhost aracılığıyla birbirlerine erişebilir.
 

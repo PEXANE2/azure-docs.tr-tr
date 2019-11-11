@@ -1,22 +1,22 @@
 ---
-title: Azure CLI kullanarak Cihaz Sağlama Hizmeti'ni ayarlama | Microsoft Docs
+title: 'Hızlı başlangıç: Azure CLı kullanarak cihaz sağlama hizmeti kurma'
 description: Azure Hızlı Başlangıç - Azure CLI kullanarak Azure IoT Hub Cihazı Sağlama Hizmeti’ni ayarlama
 author: wesmc7777
 ms.author: wesmc
-ms.date: 02/26/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3062fb640985498ba35e23f6310828a2bd59bfed
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: ef40d0df630fc369705a1365aa8d95317aa54cb3
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "60363725"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904715"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Azure CLI ile IoT Hub Cihazı Sağlama Hizmeti'ni ayarlama
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile IoT Hub cihaz sağlama hizmetini ayarlama
 
 Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu Hızlı Başlangıç, Azure CLI kullanarak IoT hub ile IoT Hub Cihazı Sağlama Hizmeti oluşturma ve iki hizmeti birbirine bağlama işlemlerinin ayrıntılarını içerir. 
 
@@ -66,7 +66,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 ```
 
 > [!TIP]
-> Örnekte sağlama hizmeti Batı ABD konumunda oluşturulur. `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` komutunu çalıştırarak veya [Azure Durumu](https://azure.microsoft.com/status/) sayfasına gidip "Cihaz Sağlama Hizmeti" için arama yaparak kullanılabilir konumların listesini görüntüleyebilirsiniz. Komutlarda, konumlar tek sözcük veya birden çok sözcük biçiminde belirtilebilir; örneğin: westus, West US, WEST US, Batı ABD, BATI, ABD, vb. Değer büyük/küçük harfe duyarlı değildir. Konumu belirtirken birden çok sözcük biçimini kullanırsanız, değeri çift tırnak içine alın; örneğin, `-- location "West US"`.
+> Örnekte sağlama hizmeti Batı ABD konumunda oluşturulur. `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` komutunu çalıştırarak veya [Azure Durumu](https://azure.microsoft.com/status/) sayfasına gidip "Cihaz Sağlama Hizmeti" için arama yaparak kullanılabilir konumların listesini görüntüleyebilirsiniz. Komutlarda, konumlar tek bir sözcük veya çok sözcüklü biçimde belirtilebilir; Örneğin: westus, Batı ABD, Batı ABD, vb. Değer büyük/küçük harfe duyarlı değildir. Konumu belirtirken birden çok sözcük biçimini kullanırsanız, değeri çift tırnak içine alın; örneğin, `-- location "West US"`.
 >
 
 
@@ -137,4 +137,3 @@ Bu hızlı başlangıçta IoT hub'ını ve bir Cihaz Sağlama Hizmeti örneği d
 
 > [!div class="nextstepaction"]
 > [Sanal cihaz oluşturmak için hızlı başlangıç](./quick-create-simulated-device.md)
-

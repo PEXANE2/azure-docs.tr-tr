@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: d8aee88f6ef3f6a73beadfdf242d79d9b361de0a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 081a0e9ac165fdee2426780be6d1440cf8d4fcc0
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469396"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904011"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Işlevleri için Azure Cosmos DB bağlamaları 2. x
 
@@ -261,12 +261,12 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `CosmosDBTrigger` öznitel
 |**direction** || `in`olarak ayarlanmalıdır. Bu parametre, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** || Değişiklik içeren belge listesini temsil eden işlev kodunda kullanılan değişken adı. |
 |**connectionStringSetting**|**ConnectionStringSetting** | İzlenmekte olan Azure Cosmos DB hesabına bağlanmak için kullanılan bağlantı dizesini içeren uygulama ayarının adı. |
-|**Dosyasında**|**Dosyasında**  | İzlenen koleksiyonun Azure Cosmos DB veritabanının adı. |
+|**databaseName**|**Dosyasında**  | İzlenen koleksiyonun Azure Cosmos DB veritabanının adı. |
 |**Ma** |**Ma** | İzlenen koleksiyonun adı. |
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | Seçim Kira toplamayı tutan hizmete bağlantı dizesini içeren uygulama ayarının adı. Ayarlanmamışsa, `connectionStringSetting` değeri kullanılır. Bu parametre, bağlama portalda oluşturulduğunda otomatik olarak ayarlanır. Kiralamalar koleksiyonunun bağlantı dizesinde yazma izinleri olmalıdır.|
 |**leaseDatabaseName** |**LeaseDatabaseName** | Seçim Kiraları depolamak için kullanılan koleksiyonu tutan veritabanının adı. Ayarlamadığınızda `databaseName` ayarının değeri kullanılır. Bu parametre, bağlama portalda oluşturulduğunda otomatik olarak ayarlanır. |
 |**leaseCollectionName** | **LeaseCollectionName** | Seçim Kiralamaları depolamak için kullanılan koleksiyonun adı. Ayarlanmayan değer `leases` kullanılır. |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | Seçim `true`olarak ayarlandığında, kiralamalar koleksiyonu zaten mevcut olmadığında otomatik olarak oluşturulur. Varsayılan değer `false` ' dır. |
+|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | Seçim `true`olarak ayarlandığında, kiralamalar koleksiyonu zaten mevcut olmadığında otomatik olarak oluşturulur. Varsayılan değer `false`. |
 |**Leasescollectionüretilen Iş**| **Leasescollectionüretilen Iş**| Seçim Kiralamalar koleksiyonu oluşturulduğunda atanacak Istek birimi miktarını tanımlar. Bu ayar yalnızca `createLeaseCollectionIfNotExists` `true`olarak ayarlandığında kullanılır. Bu parametre, bağlama Portal kullanılarak oluşturulduğunda otomatik olarak ayarlanır.
 |**leaseCollectionPrefix**| **LeaseCollectionPrefix**| Seçim Ayarlandığında, bu Işlev için kira koleksiyonunda oluşturulan kiralara bir ön ek ekler ve iki ayrı Azure Işlevinin farklı ön ekleri kullanarak aynı Kiralama koleksiyonunu paylaşmasına olanak tanır.
 |**feedPollDelay**| **FeedPollDelay**| Seçim Ayarlandığında, tüm geçerli değişiklikler boşaltılır sonra, bir bölümü, akıştaki yeni değişiklikler için yokladığında gecikme arasındaki gecikmeyi milisaniye cinsinden tanımlar. Varsayılan değer 5000 ' dir (5 saniye).
@@ -291,6 +291,10 @@ Tetikleyici bir belgenin güncelleştirildiğini veya eklendiğini göstermez, y
 ## <a name="input"></a>Girdi
 
 Azure Cosmos DB girişi bağlama, bir veya daha fazla Azure Cosmos DB belge almak için SQL API 'sini kullanır ve işlevin giriş parametresine geçirir. Belge KIMLIĞI veya sorgu parametreleri, işlevi çağıran tetikleyicisine göre belirlenebilir.
+
+> [!NOTE]
+> Koleksiyon [bölümlenmiş](../cosmos-db/partition-data.md#logical-partitions)ise, arama işlemlerinin bölüm anahtarı değerini de belirtmesi gerekir.
+>
 
 ## <a name="input---examples"></a>Giriş örnekleri
 
@@ -324,6 +328,7 @@ namespace CosmosDBSamplesV2
     public class ToDoItem
     {
         public string Id { get; set; }
+        public string PartitionKey { get; set; }
         public string Description { get; set; }
     }
 }
@@ -333,7 +338,7 @@ namespace CosmosDBSamplesV2
 
 #### <a name="queue-trigger-look-up-id-from-json-c"></a>Kuyruk tetikleyicisi, JSON 'dan KIMLIK arama (C#)
 
-Aşağıdaki örnek tek bir belgeyi alan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. İşlev, JSON nesnesi içeren bir kuyruk iletisi tarafından tetiklenir. Sıra tetikleyicisi, JSON öğesini, aranacak KIMLIĞI içeren `ToDoItemLookup`adlı bir nesne olarak ayrıştırır. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
+Aşağıdaki örnek tek bir belgeyi alan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. İşlev, JSON nesnesi içeren bir kuyruk iletisi tarafından tetiklenir. Sıra tetikleyicisi, JSON öğesini, aranacak KIMLIĞI ve bölüm anahtarı değerini içeren `ToDoItemLookup`adlı bir nesne olarak ayrıştırır. Bu KIMLIK ve bölüm anahtarı değeri, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -341,6 +346,8 @@ namespace CosmosDBSamplesV2
     public class ToDoItemLookup
     {
         public string ToDoItemId { get; set; }
+
+        public string ToDoItemPartitionKeyValue { get; set; }
     }
 }
 ```
@@ -361,10 +368,11 @@ namespace CosmosDBSamplesV2
                 databaseName: "ToDoItems",
                 collectionName: "Items",
                 ConnectionStringSetting = "CosmosDBConnection",
-                Id = "{ToDoItemId}")]ToDoItem toDoItem,
+                Id = "{ToDoItemId}",
+                PartitionKey = "{ToDoItemPartitionKeyValue}")]ToDoItem toDoItem,
             ILogger log)
         {
-            log.LogInformation($"C# Queue trigger function processed Id={toDoItemLookup?.ToDoItemId}");
+            log.LogInformation($"C# Queue trigger function processed Id={toDoItemLookup?.ToDoItemId} Key={toDoItemLookup?.ToDoItemPartitionKeyValue}");
 
             if (toDoItem == null)
             {
@@ -383,7 +391,7 @@ namespace CosmosDBSamplesV2
 
 #### <a name="http-trigger-look-up-id-from-query-string-c"></a>HTTP tetikleyicisi, sorgu dizesinden KIMLIĞI ara (C#)
 
-Aşağıdaki örnek tek bir belgeyi alan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. İşlev, aranacak KIMLIĞI belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
+Aşağıdaki örnek tek bir belgeyi alan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. İşlev, aranacak KIMLIĞI ve bölüm anahtarı değerini belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK ve bölüm anahtarı değeri, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
 
 >[!NOTE]
 >HTTP sorgu dizesi parametresi, büyük/küçük harfe duyarlıdır.
@@ -409,7 +417,8 @@ namespace CosmosDBSamplesV2
                 databaseName: "ToDoItems",
                 collectionName: "Items",
                 ConnectionStringSetting = "CosmosDBConnection",
-                Id = "{Query.id}")] ToDoItem toDoItem,
+                Id = "{Query.id}",
+                PartitionKey = "{Query.partitionKey}")] ToDoItem toDoItem,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
@@ -432,7 +441,7 @@ namespace CosmosDBSamplesV2
 
 #### <a name="http-trigger-look-up-id-from-route-data-c"></a>HTTP tetikleyicisi, rota verilerinden KIMLIK arama (C#)
 
-Aşağıdaki örnek tek bir belgeyi alan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. İşlev, aranacak KIMLIĞI belirtmek için rota verilerini kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
+Aşağıdaki örnek tek bir belgeyi alan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. İşlev, aranacak KIMLIĞI ve bölüm anahtarı değerini belirtmek için rota verilerini kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK ve bölüm anahtarı değeri, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -449,12 +458,13 @@ namespace CosmosDBSamplesV2
         [FunctionName("DocByIdFromRouteData")]
         public static IActionResult Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post",
-                Route = "todoitems/{id}")]HttpRequest req,
+                Route = "todoitems/{partitionKey}/{id}")]HttpRequest req,
             [CosmosDB(
                 databaseName: "ToDoItems",
                 collectionName: "Items",
                 ConnectionStringSetting = "CosmosDBConnection",
-                Id = "{id}")] ToDoItem toDoItem,
+                Id = "{id}",
+                PartitionKey = "{partitionKey}")] ToDoItem toDoItem,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
@@ -481,6 +491,9 @@ Aşağıdaki örnek tek bir belgeyi alan bir [ C# işlevi](functions-dotnet-clas
 
 Örnek, `SqlQuery` parametresinde bağlama ifadesinin nasıl kullanılacağını gösterir. Yol verilerini gösterildiği gibi `SqlQuery` parametresine geçirebilirsiniz, ancak şu anda [sorgu dizesi değerlerini geçiremezsiniz](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583).
 
+> [!NOTE]
+> Yalnızca KIMLIĞE göre sorgulama yapmanız gerekiyorsa, [Önceki örneklerde](#http-trigger-look-up-id-from-query-string-c)olduğu gibi, daha az [istek birimi](../cosmos-db/request-units.md)tükettiği için bir arama kullanmanız önerilir. Nokta okuma işlemleri (GET), KIMLIĞE göre sorgulardan [daha etkilidir](../cosmos-db/optimize-cost-queries.md) .
+>
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -730,7 +743,7 @@ C# Betik kodu aşağıda verilmiştir:
 
 #### <a name="http-trigger-look-up-id-from-query-string-c-script"></a>HTTP tetikleyicisi, sorgu dizesinden KIMLIĞI ara (C# betik)
 
-Aşağıdaki örnekte, tek bir belgeyi alan bir [ C# betik işlevi](functions-reference-csharp.md) gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
+Aşağıdaki örnekte, tek bir belgeyi alan bir [ C# betik işlevi](functions-reference-csharp.md) gösterilmektedir. İşlev, aranacak KIMLIĞI ve bölüm anahtarı değerini belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK ve bölüm anahtarı değeri, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
 
 İşte *function. JSON* dosyası:
 
@@ -759,7 +772,8 @@ Aşağıdaki örnekte, tek bir belgeyi alan bir [ C# betik işlevi](functions-re
       "collectionName": "Items",
       "connectionStringSetting": "CosmosDBConnection",
       "direction": "in",
-      "Id": "{Query.id}"
+      "Id": "{Query.id}",
+      "PartitionKey" : "{Query.partitionKeyValue}"
     }
   ],
   "disabled": false
@@ -792,7 +806,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 
 #### <a name="http-trigger-look-up-id-from-route-data-c-script"></a>HTTP tetikleyicisi, rota verilerinden KIMLIK arama (C# betik)
 
-Aşağıdaki örnekte, tek bir belgeyi alan bir [ C# betik işlevi](functions-reference-csharp.md) gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için rota verilerini kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
+Aşağıdaki örnekte, tek bir belgeyi alan bir [ C# betik işlevi](functions-reference-csharp.md) gösterilmektedir. İşlev, aranacak KIMLIĞI ve bölüm anahtarı değerini belirtmek için rota verilerini kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK ve bölüm anahtarı değeri, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
 
 İşte *function. JSON* dosyası:
 
@@ -808,7 +822,7 @@ Aşağıdaki örnekte, tek bir belgeyi alan bir [ C# betik işlevi](functions-re
         "get",
         "post"
       ],
-      "route":"todoitems/{id}"
+      "route":"todoitems/{partitionKeyValue}/{id}"
     },
     {
       "name": "$return",
@@ -822,7 +836,8 @@ Aşağıdaki örnekte, tek bir belgeyi alan bir [ C# betik işlevi](functions-re
       "collectionName": "Items",
       "connectionStringSetting": "CosmosDBConnection",
       "direction": "in",
-      "Id": "{id}"
+      "Id": "{id}",
+      "PartitionKey": "{partitionKeyValue}"
     }
   ],
   "disabled": false
@@ -1046,7 +1061,7 @@ JavaScript kodu aşağıda verilmiştir:
 
 #### <a name="http-trigger-look-up-id-from-query-string-javascript"></a>HTTP tetikleyicisi, sorgu dizesinden KIMLIĞI ara (JavaScript)
 
-Aşağıdaki örnekte, tek bir belgeyi alan bir [JavaScript işlevi](functions-reference-node.md) gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
+Aşağıdaki örnekte, tek bir belgeyi alan bir [JavaScript işlevi](functions-reference-node.md) gösterilmektedir. İşlev, aranacak KIMLIĞI ve bölüm anahtarı değerini belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK ve bölüm anahtarı değeri, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
 
 İşte *function. JSON* dosyası:
 
@@ -1075,7 +1090,8 @@ Aşağıdaki örnekte, tek bir belgeyi alan bir [JavaScript işlevi](functions-r
       "collectionName": "Items",
       "connectionStringSetting": "CosmosDBConnection",
       "direction": "in",
-      "Id": "{Query.id}"
+      "Id": "{Query.id}",
+      "PartitionKey": "{Query.partitionKeyValue}"
     }
   ],
   "disabled": false
@@ -1104,7 +1120,7 @@ module.exports = function (context, req, toDoItem) {
 
 #### <a name="http-trigger-look-up-id-from-route-data-javascript"></a>HTTP tetikleyicisi, rota verilerinden KIMLIK arama (JavaScript)
 
-Aşağıdaki örnekte, tek bir belgeyi alan bir [JavaScript işlevi](functions-reference-node.md) gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
+Aşağıdaki örnekte, tek bir belgeyi alan bir [JavaScript işlevi](functions-reference-node.md) gösterilmektedir. İşlev, aranacak KIMLIĞI ve bölüm anahtarı değerini belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK ve bölüm anahtarı değeri, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
 
 İşte *function. JSON* dosyası:
 
@@ -1120,7 +1136,7 @@ Aşağıdaki örnekte, tek bir belgeyi alan bir [JavaScript işlevi](functions-r
         "get",
         "post"
       ],
-      "route":"todoitems/{id}"
+      "route":"todoitems/{partitionKeyValue}/{id}"
     },
     {
       "name": "$return",
@@ -1134,7 +1150,8 @@ Aşağıdaki örnekte, tek bir belgeyi alan bir [JavaScript işlevi](functions-r
       "collectionName": "Items",
       "connection": "CosmosDBConnection",
       "direction": "in",
-      "Id": "{id}"
+      "Id": "{id}",
+      "PartitionKey": "{partitionKeyValue}"
     }
   ],
   "disabled": false
@@ -1257,7 +1274,7 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Docu
 
 #### <a name="http-trigger-look-up-id-from-query-string-python"></a>HTTP tetikleyicisi, sorgu dizesinden KIMLIĞI ara (Python)
 
-Aşağıdaki örnekte, tek bir belgeyi alan bir [Python işlevi](functions-reference-python.md) gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
+Aşağıdaki örnekte, tek bir belgeyi alan bir [Python işlevi](functions-reference-python.md) gösterilmektedir. İşlev, aranacak KIMLIĞI ve bölüm anahtarı değerini belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK ve bölüm anahtarı değeri, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
 
 İşte *function. JSON* dosyası:
 
@@ -1286,7 +1303,8 @@ Aşağıdaki örnekte, tek bir belgeyi alan bir [Python işlevi](functions-refer
       "collectionName": "Items",
       "connectionStringSetting": "CosmosDBConnection",
       "direction": "in",
-      "Id": "{Query.id}"
+      "Id": "{Query.id}",
+      "PartitionKey": "{Query.partitionKeyValue}"
     }
   ],
   "disabled": true,
@@ -1315,7 +1333,7 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 #### <a name="http-trigger-look-up-id-from-route-data-python"></a>HTTP tetikleyicisi, rota verilerinden KIMLIK arama (Python)
 
-Aşağıdaki örnekte, tek bir belgeyi alan bir [Python işlevi](functions-reference-python.md) gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
+Aşağıdaki örnekte, tek bir belgeyi alan bir [Python işlevi](functions-reference-python.md) gösterilmektedir. İşlev, aranacak KIMLIĞI ve bölüm anahtarı değerini belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK ve bölüm anahtarı değeri, belirtilen veritabanından ve koleksiyondan `ToDoItem` bir belge almak için kullanılır.
 
 İşte *function. JSON* dosyası:
 
@@ -1331,7 +1349,7 @@ Aşağıdaki örnekte, tek bir belgeyi alan bir [Python işlevi](functions-refer
         "get",
         "post"
       ],
-      "route":"todoitems/{id}"
+      "route":"todoitems/{partitionKeyValue}/{id}"
     },
     {
       "name": "$return",
@@ -1345,7 +1363,8 @@ Aşağıdaki örnekte, tek bir belgeyi alan bir [Python işlevi](functions-refer
       "collectionName": "Items",
       "connection": "CosmosDBConnection",
       "direction": "in",
-      "Id": "{id}"
+      "Id": "{id}",
+      "PartitionKey": "{partitionKeyValue}"
     }
   ],
   "disabled": false,
@@ -1489,7 +1508,7 @@ public class ToDoItem {
 
 #### <a name="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>HTTP tetikleyicisi, sorgu dizesinden KIMLIK arama dizesi-dize parametresi (Java)
 
-Aşağıdaki örnekte, tek bir belgeyi alan bir Java işlevi gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, dize biçiminde belirtilen veritabanından ve koleksiyondan bir belge almak için kullanılır.
+Aşağıdaki örnekte, tek bir belgeyi alan bir Java işlevi gösterilmektedir. İşlev, aranacak KIMLIĞI ve bölüm anahtarı değerini belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK ve bölüm anahtarı değeri, belirtilen veritabanından ve koleksiyondan bir belgeyi dize biçiminde almak için kullanılır.
 
 ```java
 public class DocByIdFromQueryString {
@@ -1504,7 +1523,7 @@ public class DocByIdFromQueryString {
               databaseName = "ToDoList",
               collectionName = "Items",
               id = "{Query.id}",
-              partitionKey = "{Query.id}",
+              partitionKey = "{Query.partitionKeyValue}",
               connectionStringSetting = "Cosmos_DB_Connection_String")
             Optional<String> item,
             final ExecutionContext context) {
@@ -1535,7 +1554,7 @@ public class DocByIdFromQueryString {
 
 #### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>HTTP tetikleyicisi, sorgu dizesinden KIMLIĞI ara-POJO parametresi (Java)
 
-Aşağıdaki örnekte, tek bir belgeyi alan bir Java işlevi gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan bir belgeyi almak için kullanılır. Daha sonra belge daha önce oluşturulan ```ToDoItem``` POJO örneğine dönüştürülür ve işleve bağımsız değişken olarak geçirilir.
+Aşağıdaki örnekte, tek bir belgeyi alan bir Java işlevi gösterilmektedir. İşlev, aranacak KIMLIĞI ve bölüm anahtarı değerini belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK ve bölüm anahtarı değeri, belirtilen veritabanından ve koleksiyondan bir belgeyi almak için kullanılır. Daha sonra belge daha önce oluşturulan ```ToDoItem``` POJO örneğine dönüştürülür ve işleve bağımsız değişken olarak geçirilir.
 
 ```java
 public class DocByIdFromQueryStringPojo {
@@ -1550,7 +1569,7 @@ public class DocByIdFromQueryStringPojo {
               databaseName = "ToDoList",
               collectionName = "Items",
               id = "{Query.id}",
-              partitionKey = "{Query.id}",
+              partitionKey = "{Query.partitionKeyValue}",
               connectionStringSetting = "Cosmos_DB_Connection_String")
             ToDoItem item,
             final ExecutionContext context) {
@@ -1577,7 +1596,7 @@ public class DocByIdFromQueryStringPojo {
 
 #### <a name="http-trigger-look-up-id-from-route-data-java"></a>HTTP tetikleyicisi, rota verilerinden KIMLIK arama (Java)
 
-Aşağıdaki örnekte, tek bir belgeyi alan bir Java işlevi gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için yol parametresi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan bir belgeyi almak için kullanılır, bu da bir ```Optional<String>```olarak geri döndürülüyor.
+Aşağıdaki örnekte, tek bir belgeyi alan bir Java işlevi gösterilmektedir. İşlev, aranacak KIMLIĞI ve bölüm anahtarı değerini belirtmek için yol parametresi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK ve bölüm anahtarı değeri, belirtilen veritabanından ve koleksiyondan bir belgeyi almak için kullanılır, bu da bir ```Optional<String>```olarak döndürülüyor.
 
 ```java
 public class DocByIdFromRoute {
@@ -1587,13 +1606,13 @@ public class DocByIdFromRoute {
             @HttpTrigger(name = "req",
               methods = {HttpMethod.GET, HttpMethod.POST},
               authLevel = AuthorizationLevel.ANONYMOUS,
-              route = "todoitems/{id}")
+              route = "todoitems/{partitionKeyValue}/{id}")
             HttpRequestMessage<Optional<String>> request,
             @CosmosDBInput(name = "database",
               databaseName = "ToDoList",
               collectionName = "Items",
               id = "{id}",
-              partitionKey = "{id}",
+              partitionKey = "{partitionKeyValue}",
               connectionStringSetting = "Cosmos_DB_Connection_String")
             Optional<String> item,
             final ExecutionContext context) {
@@ -1623,6 +1642,10 @@ public class DocByIdFromRoute {
 #### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>HTTP tetikleyicisi, SqlQuery (Java) kullanarak rota verilerinden KIMLIK arama
 
 Aşağıdaki örnekte, tek bir belgeyi alan bir Java işlevi gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için yol parametresi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, sorgu ölçütlerine bağlı olarak birçok belge döndürüldüğünden, belirtilen veritabanından ve ```ToDoItem[]```koleksiyondan bir belgeyi almak için kullanılır.
+
+> [!NOTE]
+> Yalnızca KIMLIĞE göre sorgulama yapmanız gerekiyorsa, [Önceki örneklerde](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)olduğu gibi, daha az [istek birimi](../cosmos-db/request-units.md)tükettiği için bir arama kullanmanız önerilir. Nokta okuma işlemleri (GET), KIMLIĞE göre sorgulardan [daha etkilidir](../cosmos-db/optimize-cost-queries.md) .
+>
 
 ```java
 public class DocByIdFromRouteSqlQuery {
@@ -1719,12 +1742,12 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `CosmosDB` özniteliğinde
 |**type**     || `cosmosDB`olarak ayarlanmalıdır.        |
 |**direction**     || `in`olarak ayarlanmalıdır.         |
 |**ada**     || İşlevdeki belgeyi temsil eden bağlama parametresinin adı.  |
-|**Dosyasında** |**Dosyasında** |Belgeyi içeren veritabanı.        |
+|**databaseName** |**Dosyasında** |Belgeyi içeren veritabanı.        |
 |**Ma** |**Ma** | Belgeyi içeren koleksiyonun adı. |
 |**numarasını**    | **Kimlik** | Alınacak belgenin KIMLIĞI. Bu özellik [bağlama ifadelerin](./functions-bindings-expressions-patterns.md)kullanılmasını destekler. Hem **ID** hem de **SQLQuery** özelliklerini ayarlama. Bunlardan birini ayarlamazsanız, tüm koleksiyon alınır. |
 |**sqlQuery**  |**SqlQuery**  | Birden çok belge almak için kullanılan bir SQL sorgusu Azure Cosmos DB. Özelliği, şu örnekte olduğu gibi çalışma zamanı bağlamalarını destekler: `SELECT * FROM c where c.departmentId = {departmentId}`. Hem **ID** hem de **SQLQuery** özelliklerini ayarlama. Bunlardan birini ayarlamazsanız, tüm koleksiyon alınır.|
 |**connectionStringSetting**     |**ConnectionStringSetting**|Azure Cosmos DB Bağlantı dizenizi içeren uygulama ayarının adı.        |
-|**partitionKey**|**PartitionKey**|Arama için bölüm anahtarı değerini belirtir. Bağlama parametreleri içerebilir.|
+|**partitionKey**|**PartitionKey**|Arama için bölüm anahtarı değerini belirtir. Bağlama parametreleri içerebilir. [Bölümlenmiş](../cosmos-db/partition-data.md#logical-partitions) koleksiyonlardaki aramalar için gereklidir.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -2356,7 +2379,7 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `CosmosDB` özniteliğinde
 |**type**     || `cosmosDB`olarak ayarlanmalıdır.        |
 |**direction**     || `out`olarak ayarlanmalıdır.         |
 |**ada**     || İşlevdeki belgeyi temsil eden bağlama parametresinin adı.  |
-|**Dosyasında** | **Dosyasında**|Belgenin oluşturulduğu koleksiyonu içeren veritabanı.     |
+|**databaseName** | **Dosyasında**|Belgenin oluşturulduğu koleksiyonu içeren veritabanı.     |
 |**Ma** |**Ma**  | Belgenin oluşturulduğu koleksiyonun adı. |
 |**Createıfnotexists çağırmanız**  |**Createıfnotexists çağırmanız**    | Koleksiyonun mevcut olmadığında oluşturulup oluşturulmayacağını belirten bir Boole değeri. Varsayılan değer *false* 'dur çünkü yeni koleksiyonlar, maliyet etkilerine sahip olan ayrılmış aktarım hızı ile oluşturulmuştur. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cosmos-db/).  |
 |**partitionKey**|**PartitionKey** |`CreateIfNotExists` true olduğunda, oluşturulan koleksiyon için bölüm anahtarı yolunu tanımlar.|
@@ -2401,7 +2424,7 @@ Bu bölümde, sürüm 2. x içinde bu bağlama için kullanılabilen genel yapı
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
+|GatewayMode|Ağ Geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
 |Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
 |leasePrefix|yok|Bir uygulamadaki tüm işlevler genelinde kullanılacak kira öneki.|
 

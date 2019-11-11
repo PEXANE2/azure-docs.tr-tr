@@ -7,20 +7,19 @@ author: cynthn
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2019
+ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 8be4890f01ae2c0d893bb7c45f29c6f8178844f9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a56b34318725667a9eef143bbf2be90f411b74a1
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082124"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904957"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Azure portal kullanarak paylaşılan bir görüntü galerisi oluşturun
 
@@ -32,41 +31,45 @@ Galeri, tam rol tabanlı erişim denetimi (RBAC) sağlayan en üst düzey bir ka
 
 Paylaşılan görüntü Galerisi özelliğinin birden çok kaynak türü vardır. Bunları bu makalede kullanacağız veya oluşturacağız:
 
-| Resource | Açıklama|
+| Kaynak | Açıklama|
 |----------|------------|
-| **Yönetilen görüntü** | Bu, tek başına kullanılabilen veya bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılan temel bir görüntüdür. Yönetilen görüntüler Genelleştirilmiş VM 'lerden oluşturulur. Yönetilen görüntü, birden çok VM oluşturmak için kullanılabilen ve artık paylaşılan görüntü sürümleri oluşturmak için kullanılabilen özel bir VHD türüdür. |
+| **Yönetilen görüntü** | Tek başına kullanılabilen veya bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılan temel bir görüntü. Yönetilen görüntüler [Genelleştirilmiş](shared-image-galleries.md#generalized-and-specialized-images) VM 'lerden oluşturulur. Yönetilen görüntü, birden çok VM oluşturmak için kullanılabilen ve artık paylaşılan görüntü sürümleri oluşturmak için kullanılabilen özel bir VHD türüdür. |
+| **Görüntüye** | Bir VHD 'nin **görüntü sürümü**oluşturmak için kullanılabilecek bir kopyası. Anlık görüntüler [özelleştirilmiş](shared-image-galleries.md#generalized-and-specialized-images) bir VM 'den alınabilir (Genelleştirilmiş olmayan bir şekilde) ve özel bir görüntü sürümü oluşturmak için tek başına veya veri disklerinin anlık görüntüleriyle birlikte kullanılır.
 | **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |
-| **Görüntü tanımı** | Görüntüler, bir galeri içinde tanımlanır ve bu görüntüyü dahili olarak kullanmaya yönelik gereksinimler hakkında bilgi taşır. Bu, görüntünün Windows veya Linux, sürüm notları ve en düşük ve en yüksek bellek gereksinimleri olduğunu içerir. Bu, bir görüntü türünün tanımıdır. |
+| **Görüntü tanımı** | Görüntüler, bir galeri içinde tanımlanır ve bu görüntüyü kuruluşunuzda kullanmaya yönelik gereksinimler hakkında bilgi taşır. Görüntünün Genelleştirilmiş veya özel, işletim sistemi, minimum ve maksimum bellek gereksinimleri ve sürüm notları gibi bilgileri ekleyebilirsiniz. Bu, bir görüntü türünün tanımıdır. |
 | **Görüntü sürümü** | Bir **görüntü sürümü** , galerı kullanılırken VM oluşturmak için kullandığınız şeydir. Ortamınız için gerektiğinde bir görüntünün birden fazla sürümüne sahip olabilirsiniz. Yönetilen bir görüntü gibi, bir sanal makine oluşturmak için bir **görüntü sürümü** kullandığınızda, sanal makine için yeni diskler oluşturmak üzere görüntü sürümü kullanılır. Görüntü sürümleri birden çok kez kullanılabilir. |
+
+<br>
+
+> [!IMPORTANT]
+> Özel görüntüler şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+> **Bilinen önizleme sınırlamaları** VM 'Ler yalnızca portal veya API kullanılarak özelleştirilmiş görüntülerden oluşturulabilir. , Önizleme için CLı veya PowerShell desteği yoktur.
 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaledeki örneği tamamlayabilmeniz için, mevcut bir yönetilen görüntünüz olmalıdır. Öğreticiyi izleyebilirsiniz [: Gerekirse bir Azure VM 'nin, Azure PowerShell](tutorial-custom-images.md) oluşturmak için özel bir görüntüsünü oluşturun. Yönetilen görüntü bir veri diski içeriyorsa, veri diski boyutu 1 TB 'den fazla olamaz.
+Bu makaledeki örneği tamamlayabilmeniz için, genelleştirilmiş bir VM 'nin ya da özelleştirilmiş bir sanal makinenin anlık görüntüsünün mevcut bir yönetilen görüntüsüne sahip olmanız gerekir. Öğreticiyi izleyebilirsiniz: yönetilen bir görüntü oluşturmak için [Azure PowerShell Ile Azure VM 'nin özel bir görüntüsünü oluşturma](tutorial-custom-images.md) veya özel bir VM için [anlık görüntü](../windows/snapshot-copy-managed-disk.md) oluşturma. Hem yönetilen hem de anlık görüntülerde, veri diski boyutu 1 TB 'den fazla olamaz.
 
 Bu makalede çalışırken, kaynak grubu ve VM adlarını gerektiği yerde değiştirin.
 
  
 [!INCLUDE [virtual-machines-common-shared-images-portal](../../../includes/virtual-machines-common-shared-images-portal.md)]
 
-## <a name="create-vms-from-an-image"></a>Görüntüden VM oluşturma
+## <a name="create-vms"></a>VM oluşturma 
 
-Görüntü sürümü tamamlandıktan sonra bir veya daha fazla yeni VM oluşturabilirsiniz. 
+Artık bir veya daha fazla yeni VM oluşturabilirsiniz. Bu örnek, *Doğu ABD* veri merkezinde *Myresourcegroup* Içinde *myvmfromımage*adlı bir VM oluşturur.
 
-> [!IMPORTANT]
-> Başka bir Azure kiracısındaki görüntüden bir VM dağıtmak için portalını kullanamazsınız. Kiracılar arasında paylaşılan bir görüntüden VM oluşturmak için [Azure CLI](shared-images.md#create-a-vm) veya [PowerShell](../windows/shared-images.md#create-vms-from-an-image)kullanmanız gerekir.
-
-
-Bu örnek, *Doğu ABD* veri merkezinde *Myresourcegroup* Içinde *myvmfromımage*adlı bir VM oluşturur.
-
-1. Görüntü sürümünüzün sayfasında, sayfanın üst kısmındaki menüden **VM oluştur** ' u seçin.
+1. Görüntü tanımınıza gidin. Kullanılabilir tüm görüntü tanımlarını göstermek için kaynak filtresini kullanabilirsiniz.
+1. Görüntü tanımınızın sayfasında, sayfanın üst kısmındaki menüden **VM oluştur** ' u seçin.
 1. **Kaynak grubu**Için **Yeni oluştur** ' u seçin ve ad için *myresourcegroup* yazın.
 1. **Sanal makine adı**alanına *myvm*yazın.
 1. **Bölge**için *Doğu ABD*' yi seçin.
 1. **Kullanılabilirlik seçenekleri**için, varsayılan *altyapı yedekliliği gerekmez*' ı gerekli olarak bırakın.
-1. Görüntü sürümü için sayfadan başladıysanız **görüntünün** değeri otomatik olarak doldurulmalıdır.
-1. **Boyut**için kullanılabilir boyutlar LISTESINDEN bir VM boyutu seçin ve ardından "Seç" e tıklayın.
-1. **Yönetici hesabı**altında **parola** veya **SSH ortak anahtarı**' nı seçin ve bilgilerinizi girin.
+1. Görüntü tanımı için sayfadan başladıysanız **görüntünün değeri** `latest` görüntü sürümü ile otomatik olarak doldurulur.
+1. **Boyut**için kullanılabilir boyutlar LISTESINDEN bir VM boyutu seçin ve ardından **Seç**' i seçin.
+1. **Yönetici hesabı**altında, kaynak VM genelleştiriliydi, **Kullanıcı adı** ve **SSH ortak anahtarınızı**girin. Kaynak VM özelleştirilise, kaynak VM 'deki bilgiler kullanıldığından bu seçenekler gri kalır.
 1. VM 'ye uzaktan erişime izin vermek istiyorsanız, **ortak gelen bağlantı noktaları**altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılır listeden **SSH (22)** öğesini seçin. VM 'ye uzaktan erişime izin vermek istemiyorsanız, **Genel gelen bağlantı noktaları**için **hiçbirini** seçilmemiş bırakın.
 1. İşiniz bittiğinde sayfanın altındaki **gözden geçir + oluştur** düğmesini seçin.
 1. VM doğrulamayı geçtikten sonra, dağıtımı başlatmak için sayfanın alt kısmındaki **Oluştur** ' u seçin.

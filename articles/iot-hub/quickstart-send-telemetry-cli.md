@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: d926f1c286c4288784d429f13b22436d7c8ae7e5
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 8ebcc863c1812081e6198ff9c684934642e1dc41
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73849279"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904547"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve Azure CLı ile izleme
 
@@ -22,7 +22,7 @@ ms.locfileid: "73849279"
 
 IoT Hub, IoT cihazlarınızdan buluta depolama veya işleme amacıyla yüksek hacimlerde telemetri almanızı sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, bir IoT Hub ve sanal cihaz oluşturmak, hub 'a cihaz telemetrisi göndermek ve buluttan cihaza ileti göndermek için Azure CLı 'yi kullanırsınız. Cihaz ölçümlerini görselleştirmek için Azure portal de kullanabilirsiniz. Bu, IoT Hub bir uygulamayla etkileşim kurmak için CLı kullanan geliştiriciler için temel bir iş akışıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 - Azure CLı. Bu hızlı başlangıçta, tarayıcınızda çalışan etkileşimli bir CLı kabuğu olan Azure Cloud Shell kullanarak tüm komutları çalıştırabilirsiniz. Cloud Shell kullanıyorsanız, herhangi bir şey yüklemeniz gerekmez. CLı 'yi yerel olarak kullanmayı tercih ediyorsanız bu hızlı başlangıç, Azure CLı sürüm 2.0.76 veya üstünü gerektirir. Sürümü bulmak için az --version komutunu çalıştırın. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek]( /cli/azure/install-azure-cli).
 
@@ -74,7 +74,7 @@ Bu bölümde, bir kaynak grubu ve bir IoT Hub oluşturmak için Azure CLı 'yi k
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. IoT Hub 'ı oluşturmak için [az IoT Hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) komutunu çalıştırın.
+1. IoT Hub 'ı oluşturmak için [az IoT Hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) komutunu çalıştırın. IoT Hub 'ı oluşturmak birkaç dakika sürebilir. 
 
     *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. IoT Hub 'ı adı Azure 'da genel olarak benzersiz olmalıdır. Bu yer tutucu, IoT Hub 'ınızın adını göstermek için bu hızlı başlangıçtaki geri kalanında kullanılır.
 
@@ -141,15 +141,15 @@ Bu bölümde, sanal cihaza bir ileti göndermek için ikinci CLı oturumunu kull
 
     ![Buluttan cihaza ileti Cloud Shell](media/quickstart-send-telemetry-cli/cloud-shell-receive-message.png)
 
-1. İletiyi görüntüleyip her iki CLı oturumunu kapatın. 
+1. İletiyi görüntüleyip, ikinci CLı oturumunu kapatın. İlk CLı oturumunu açık tutun. Daha sonraki bir adımda kaynakları temizlemek için bunu kullanırsınız.
 
 ## <a name="view-messaging-metrics-in-the-portal"></a>Portalda mesajlaşma ölçümlerini görüntüleme
 Azure portal, IoT Hub ve cihazlarınızın tüm yönlerini yönetmenizi sağlar. Cihazlardan Telemetriyi gösteren tipik bir IoT Hub uygulamasında cihazları izlemek veya cihaz telemetrisi üzerinde ölçümleri görüntülemek isteyebilirsiniz. 
 
 Azure portal ileti ölçümlerini görselleştirmek için:
-1. Portalın **giriş** sayfasında **tüm kaynaklar**' ı seçin. 
+1. Portalın sol gezinti menüsünde **tüm kaynaklar**' ı seçin. Bu, oluşturduğunuz IoT Hub 'ı dahil olmak üzere aboneliğinizdeki tüm kaynakları listeler. 
 
-1. Kaynak grupları listesinde, oluşturduğunuz IoT Hub 'ını seçin. 
+1. Oluşturduğunuz IoT Hub 'ında bulunan bağlantıya tıklayın. Portal, merkez için genel bakış sayfasını görüntüler.
 
 1. IoT Hub sol bölmede **ölçümler** ' i seçin. 
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 648c5ca1eb1cb1c0f1832654fc66d436b9318af3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 878658135bdb8844c5c86bc207db580ccd7ff63f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161840"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903608"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 'lerinde SQL Server veritabanlarını geri yükleme
 
@@ -76,9 +76,9 @@ Aşağıdaki şekilde geri yükleyin:
    - **Alternatif konum**: veritabanını alternatif bir konuma geri yükleyin ve özgün kaynak veritabanını koruyun.
    - **DB üzerine yaz**: verileri özgün kaynakla aynı SQL Server örneğine geri yükleyin. Bu seçenek özgün veritabanının üzerine yazar.
 
-           > [!IMPORTANT]
-           > If the selected database belongs to an Always On availability group, SQL Server doesn't allow the database to be overwritten. Only **Alternate Location** is available.
-           >
+    > [!IMPORTANT]
+    > Seçilen veritabanı her zaman açık kullanılabilirlik grubuna aitse, SQL Server veritabanının üzerine yazılmasına izin vermez. Yalnızca **alternatif konum** kullanılabilir.
+    >
    - **Dosya olarak geri yükle**: veritabanı olarak geri yüklemek yerine, daha sonra SQL Server Management Studio kullanarak dosyaların bulunduğu herhangi bir makinede veritabanı olarak kurtarılabilen yedekleme dosyalarını geri yükleyin.
      Yapılandırma menüsünü geri ![](./media/backup-azure-sql-database/restore-configuration.png)
 

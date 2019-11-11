@@ -1,22 +1,22 @@
 ---
-title: Bir Azure Resource Manager şablonu kullanarak Cihaz Sağlama’yı ayarlama | Microsoft Docs
+title: 'Hızlı başlangıç: Azure Resource Manager şablonu kullanarak cihaz sağlamayı ayarlama'
 description: Azure Hızlı Başlangıç - Şablon kullanarak Azure IoT Hub Cihazı Sağlama Hizmeti’ni ayarlama
 author: wesmc7777
 ms.author: wesmc
-ms.date: 06/18/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3360bfa7eed15f72fb78f698e837d887e9c8aa85
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: fdc75424c5c99e80c13ac086229da93411e3ce83
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126486"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903386"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Bir Azure Resource Manager şablonu ile IoT Hub Cihazı Sağlama Hizmeti’ni ayarlama
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmetini bir Azure Resource Manager şablonuyla ayarlama
 
 Cihazlarınızın sağlanması için gerekli Azure bulut kaynaklarını programlı olarak ayarlamak için [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)’ı kullanabilirsiniz. Bu adımlarda, IoT hub ve yeni bir IoT Hub Cihazı Sağlama Hizmeti oluşturmanın yanı sıra Azure Resource Manager şablonunu kullanarak iki hizmeti birbirine bağlama işlemleri gösterilmektedir. Bu Hızlı Başlangıç, kaynak grubu oluşturmak ve şablonu dağıtmak için gerekli programlı adımları gerçekleştirmek için [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) kullanır. Ancak bu adımları gerçekleştirmek ve şablonunuzu dağıtmak için [Azure portalını](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)’i, .NET’i, ruby’yi veya başka bir programlama dilini kolayca kullanabilirsiniz. 
 
@@ -31,7 +31,7 @@ Cihazlarınızın sağlanması için gerekli Azure bulut kaynaklarını programl
 
 Azure hesabınızda oturum açın ve aboneliğinizi seçin.
 
-1. Komut isteminde [oturum açma komutunu][lnk-login-command] çalıştırın:
+1. Komut isteminde, [oturum açma komutunu][lnk-login-command]çalıştırın:
     
     ```azurecli
     az login
@@ -39,7 +39,7 @@ Azure hesabınızda oturum açın ve aboneliğinizi seçin.
 
     Kodu kullanarak kimlik doğrulaması gerçekleştirmek için yönergeleri uygulayın ve bir web tarayıcısı üzerinden Azure hesabınızda oturum açın.
 
-2. Birden fazla Azure aboneliğiniz varsa Azure’da oturum açtığınızda, kimlik bilgilerinizle ilişkili tüm Azure hesaplarınıza erişim izni elde edersiniz. Kullanabileceğiniz [Azure hesaplarını listelemek için aşağıdaki komutu][lnk-az-account-command] kullanın:
+2. Birden fazla Azure aboneliğiniz varsa Azure’da oturum açtığınızda, kimlik bilgilerinizle ilişkili tüm Azure hesaplarınıza erişim izni elde edersiniz. Kullanabileceğiniz [Azure hesaplarını listelemek][lnk-az-account-command] için aşağıdaki komutu kullanın:
     
     ```azurecli
     az account list 
@@ -51,7 +51,7 @@ Azure hesabınızda oturum açın ve aboneliğinizi seçin.
     az account set --subscription {your subscription name or id}
     ```
 
-3. IoT hub’ları ve sağlama hizmetleri gibi Azure bulut kaynaklarını bir kaynak grubunda oluşturursunuz. Mevcut bir kaynak grubunu kullanın veya [kaynak grubu oluşturmak için aşağıdaki komutu][lnk-az-resource-command] çalıştırabilirsiniz:
+3. IoT hub’ları ve sağlama hizmetleri gibi Azure bulut kaynaklarını bir kaynak grubunda oluşturursunuz. Mevcut bir kaynak grubunu kullanın veya [bir kaynak grubu oluşturmak için aşağıdaki komutu][lnk-az-resource-command]çalıştırın:
     
     ```azurecli
      az group create --name {your resource group name} --location westus
@@ -78,7 +78,7 @@ Kaynak grubunuzda sağlama hizmeti ve bağlı bir IoT hub’ı oluşturmak için
    }
    ```
 
-2. **parameters** bölümünü aşağıdaki içerikle değiştirin. parameters bölümü, başka bir dosyadan geçirilebilen parametreleri belirtir. Bu bölüm, oluşturulacak IoT hub’ının ve sağlama hizmetinin adını belirtir. Bu aynı zamanda hem IoT hub’ına hem de sağlama hizmetine ilişkin konumu belirtir. Değerler, IoT hub’larını ve sağlama hizmetlerini destekleyen Azure bölgeleriyle sınırlıdır. Cihaz Sağlama Hizmeti için desteklenen konumların listesi için aşağıdaki `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` komutunu çalıştırabilir veya [Azure Durum](https://azure.microsoft.com/status/) sayfasına gidip "Cihaz Sağlama Hizmeti" araması yapabilirsiniz.
+2. **parameters** bölümünü aşağıdaki içerikle değiştirin. parameters bölümü, başka bir dosyadan geçirilebilen parametreleri belirtir. Bu bölüm, oluşturulacak IoT hub’ının ve sağlama hizmetinin adını belirtir. Bu aynı zamanda hem IoT hub’ına hem de sağlama hizmetine ilişkin konumu belirtir. Değerler, IoT hub’larını ve sağlama hizmetlerini destekleyen Azure bölgeleriyle sınırlıdır. Cihaz Sağlama Hizmeti için desteklenen konumların listesine, aşağıdaki `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` komutunu çalıştırararak veya [Azure Durum](https://azure.microsoft.com/status/) sayfasına gidip "Cihaz Sağlama Hizmeti" araması yaparak ulaşabilirsiniz.
 
    ```json
     "parameters": {
@@ -321,7 +321,7 @@ Son adımda tanımladığınız şablon, IoT Hub’ının adını, sağlama hizm
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu koleksiyondaki diğer Hızlı Başlangıçlar, bu Hızlı Başlangıcı temel alır. Sonraki Hızlı Başlangıçlar veya öğreticilerle devam etmeyi planlıyorsanız, bu Hızlı Başlangıçta oluşturulan kaynakları temizlemeyin. Devam etmeyi planlamıyorsanız IoT hub’ı veya sağlama hizmeti gibi [ayrı bir kaynağı silmek][lnk-az-resource-command] ya da bir kaynak grubuyla birlikte bu kaynak grubunun tüm kaynaklarını silmek için Azure CLI’yı kullanabilirsiniz.
+Bu koleksiyondaki diğer Hızlı Başlangıçlar, bu Hızlı Başlangıcı temel alır. Sonraki Hızlı Başlangıçlar veya öğreticilerle devam etmeyi planlıyorsanız, bu Hızlı Başlangıçta oluşturulan kaynakları temizlemeyin. Devam etmeyi planlamıyorsanız, IoT Hub 'ı veya sağlama hizmeti gibi [tek bir kaynağı silmek][lnk-az-resource-command]ya da bir kaynak grubunu ve tüm kaynaklarını silmek IÇIN Azure CLI 'yı kullanabilirsiniz.
 
 Sağlama hizmetini silmek için aşağıdaki komutu çalıştırın:
 

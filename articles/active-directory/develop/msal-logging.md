@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/05/2019
+ms.date: 10/31/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e12badd84bd929bdeb7b60ad6e99d6b3169e5022
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e9045fd6c1f5dcc4587b6ff85d567584f02421ba
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150452"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902912"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL uygulamalarında oturum açma
 
@@ -88,7 +88,7 @@ Günlüğe kaydetme geri araması oluşturarak uygulama oluşturma sırasında o
 - `tag`, kitaplık tarafından geri çağırmaya geçirilen bir dizedir. Günlük girdisiyle ilişkilendirilir ve günlük iletilerini sıralamak için kullanılabilir.
 - `logLevel`, hangi günlük kayıt düzeyini istediğinize karar vermenize olanak sağlar. Desteklenen günlük düzeyleri şunlardır: `Error`, `Warning`, `Info`ve `Verbose`.
 - `message` günlük girdisinin içeridir.
-- `containsPII` kişisel verileri içeren iletilerin veya kurumsal verilerin günlüğe kaydedilip kaydedilmeyeceğini belirtir. Varsayılan olarak, uygulamanızın kişisel verileri günlüğe almamasını sağlamak için bu false olarak ayarlanır. `containsPII` `true`ise, bu yöntem iletileri iki kez alır: `containsPII` parametresi bir kez `false` ve kişisel veriler olmadan `message` ve `containsPii` parametresi `true` olarak ayarlandığında ve ileti şunları içerebilir: kişisel veriler. Bazı durumlarda (ileti kişisel veriler içermiyorsa), ileti aynı olur.
+- `containsPII` kişisel verileri içeren iletilerin veya kurumsal verilerin günlüğe kaydedilip kaydedilmeyeceğini belirtir. Varsayılan olarak, uygulamanızın kişisel verileri günlüğe almamasını sağlamak için bu false olarak ayarlanır. `containsPII` `true`ise, bu yöntem iletileri iki kez alır: `containsPII` parametresi bir kez `false` ve kişisel veriler olmadan `message` ve `containsPii` parametresi `true` olarak ayarlanmış ve ileti kişisel verileri içerebilir. Bazı durumlarda (ileti kişisel veriler içermiyorsa), ileti aynı olur.
 
 ```java
 private StringBuilder mLogs;
@@ -117,14 +117,15 @@ Kişisel verileri ve kuruluş verilerini günlüğe kaydetmeyi devre dışı bı
 Logger.getInstance().setEnablePII(false);
 ```
 
-Günlüğe kaydetme varsayılan olarak Logcat devre dışıdır. Şunları etkinleştirmek için: 
+Günlüğe kaydetme varsayılan olarak Logcat devre dışıdır. Şunları etkinleştirmek için:
+
 ```java
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
 ## <a name="logging-in-msaljs"></a>MSAL. js ' de günlüğe kaydetme
 
- `UserAgentApplication` örneği oluşturmak için yapılandırma sırasında bir günlükçü nesnesi geçirerek MSAL. js ' de günlüğe kaydetmeyi etkinleştirin. Bu günlükçü nesnesi aşağıdaki özelliklere sahiptir:
+ Bir `UserAgentApplication` örneği oluşturmak için yapılandırma sırasında bir günlükçü nesnesi geçirerek MSAL. js ' de (JavaScript) günlük kaydını etkinleştirin. Bu günlükçü nesnesi aşağıdaki özelliklere sahiptir:
 
 - `localCallback`: geliştirici tarafından günlükleri özel bir biçimde tüketmek ve yayımlamak için kullanılabilecek bir geri çağırma örneği. Günlükleri yeniden yönlendirmek istediğiniz yönteme bağlı olarak localCallback yöntemini uygulayın.
 - `level` (isteğe bağlı): yapılandırılabilir günlük düzeyi. Desteklenen günlük düzeyleri şunlardır: `Error`, `Warning`, `Info`ve `Verbose`. Varsayılan değer: `Info`.
@@ -173,7 +174,7 @@ MSAL günlüğünü yakalamak ve kendi uygulamanızın günlüğüne eklemek iç
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Örnek:
+Örneğin:
 
 Objective-C
 ```objc
@@ -202,9 +203,9 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 }
 ```
 
-### <a name="personal-identifiable-information-pii"></a>Kişisel olarak tanımlanabilen bilgiler (PII)
+### <a name="personal-data"></a>Kişisel veriler
 
-Varsayılan olarak, MSAL hiçbir PII yakalamaz veya günlüğe kaydetmez. Kitaplık, uygulama geliştiricilerinin Msalgünlükçü sınıfındaki bir özellik aracılığıyla bunu açmasına olanak sağlar. PII açılarak uygulama, yüksek düzeyde hassas verileri güvenli bir şekilde işlemek ve yasal gereksinimleri takip etmek için sorumluluk kazanır.
+Varsayılan olarak, MSAL kişisel verileri (PII) yakalamaz veya günlüğe kaydetmez. Kitaplık, uygulama geliştiricilerinin Msalgünlükçü sınıfındaki bir özellik aracılığıyla bunu açmasına olanak sağlar. `pii.Enabled`etkinleştirerek uygulama, yüksek düzeyde hassas verileri güvenli bir şekilde işlemek ve yasal gereksinimleri takip etmek için sorumluluk kazanır.
 
 Objective-C
 ```objc
@@ -238,9 +239,9 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 | `MSALLogLevelError` | Varsayılan düzey, yalnızca hata oluştuğunda bilgileri yazdırır |
 | `MSALLogLevelWarning` | Uyarılarına |
 | `MSALLogLevelInfo` |  Kitaplık giriş noktaları, parametreler ve çeşitli Anahtarlık işlemleri |
-|`MSALLogLevelVerbose`     |  API izleme       |
+|`MSALLogLevelVerbose`     |  API izleme |
 
-Örnek:
+Örneğin:
 
 Objective-C
 ```objc
@@ -256,8 +257,56 @@ MSALGlobalConfig.loggerConfig.logLevel = .verbose
 
 MSAL günlük iletilerinin ileti kısmı `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message` biçimindedir
 
-Örnek:
+Örneğin:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
 Bağıntı kimlikleri ve zaman damgaları sağlamak, sorunları izlemek için yararlıdır. Zaman damgası ve bağıntı KIMLIĞI bilgileri günlük iletisinde bulunabilir. Bu dosyaları almak için tek güvenilir yer MSAL Logging iletilerinden alınır.
+
+## <a name="logging-in-msal-for-java"></a>Java için MSAL 'de oturum açma
+
+Java için MSAL (MSAL4J), DOLAYıSıYLA SLF4J ile uyumlu olduğu sürece uygulamanızla zaten kullandığınız günlük kitaplığını kullanmanıza olanak sağlar. MSAL4j Java [. util. Logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html), [Logback](http://logback.qos.ch/) ve [Log4J](https://logging.apache.org/log4j/2.x/)gibi çeşitli günlük çerçeveleri için basit bir façlade veya soyutlama olarak Java (dolayısıyla slf4j) [için basit günlük kaydı](http://www.slf4j.org/) kullanır. DOLAYıSıYLA SLF4J, son kullanıcının dağıtım zamanında istenen günlük çerçevesini eklemesine izin verir.
+
+Örneğin, uygulamanızdaki günlüğe kaydetme çerçevesi olarak Logback kullanmak için, uygulamanız için Maven Pod dosyasına Logback bağımlılığını ekleyin:
+
+```xml
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.2.3</version>
+</dependency>
+```
+
+Sonra Logback yapılandırma dosyasını ekleyin:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+</configuration>
+```
+
+DOLAYıSıYLA SLF4J, dağıtım zamanında otomatik olarak Logback 'a bağlanır. MSAL Günlükler konsola yazılacak.
+
+Diğer günlük çerçevelerine nasıl bağlayacağınız hakkında yönergeler için bkz. [dolayısıyla slf4j Manual](http://www.slf4j.org/manual.html).
+
+### <a name="personal-and-organization-information"></a>Kişisel ve kuruluş bilgileri
+
+Varsayılan olarak, MSAL Logging kişisel veya kurumsal verileri yakalamaz veya günlüğe eklemez. Aşağıdaki örnekte, kişisel veya kurumsal verilerin günlüğe kaydedilmesi varsayılan olarak kapalıdır:
+
+```java
+    PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
+            .authority(AUTHORITY)
+            .build();
+```
+
+İstemci uygulama tasarımcısında `logPii()` ayarlayarak kişisel ve kurumsal veri günlüğünü açın. Kişisel veya kurumsal veri günlüğü 'nü açarsanız, uygulamanızın yüksek oranda duyarlı verileri güvenli bir şekilde işlemek ve tüm düzenleme gereksinimleriyle uyumlu olması için sorumluluk olması gerekir.
+
+Aşağıdaki örnekte, kişisel veya kurumsal verilerin günlüğe kaydedilmesi etkindir:
+
+```java
+PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
+        .authority(AUTHORITY)
+        .logPii(true)
+        .build();
+```

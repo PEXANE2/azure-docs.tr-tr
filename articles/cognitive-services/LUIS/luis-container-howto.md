@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/08/2019
 ms.author: dapine
-ms.openlocfilehash: 98f5c672e9da50f294df6da7d5abcb23b10fc1ba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a47e363e2b51b271c8103ac426362a61fc332601
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487011"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901902"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUSıS Docker kapsayıcılarını yükleyip çalıştırın
  
@@ -36,7 +36,7 @@ Lusıs kapsayıcısını çalıştırmak için aşağıdaki önkoşullara göz �
 |--|--|
 |Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz. [Docker genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
 |Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarından ve temel `docker` komutlarının bilgisine sahip olmanız gerekir.| 
-|Azure `Cognitive Services` kaynak ve LUSıS [paketlenmiş uygulama](luis-how-to-start-new-app.md#export-app-for-containers) dosyası |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>* Bilişsel _Hizmetler_ Azure kaynağı ve ilgili faturalandırma anahtarı faturalandırma uç noktası URI 'si. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir. <br>* İlişkili uygulama KIMLIĞIYLE kapsayıcıya bağlı giriş olarak paketlenmiş eğitilen veya yayımlanmış bir uygulama. Paketlenmiş dosyayı LUıS portalından veya yazma API 'Lerinden alabilirsiniz. [Yazma API 'lerinden](#authoring-apis-for-package-file)LUIS paketlenmiş uygulama alıyorsanız, _yazma anahtarınıza_de ihtiyacınız olacaktır.<br><br>Bu gereksinimler komut satırı bağımsız değişkenlerini aşağıdaki değişkenlere iletmek için kullanılır:<br><br>**{AUTHORING_KEY}** : Bu anahtar, paketteki lusıs hizmetinden paketlenmiş uygulamayı almak ve sorgu günlüklerini buluta geri yüklemek için kullanılır. Biçim `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}** : Bu kimlik, uygulamayı seçmek için kullanılır. Biçim `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : Bu anahtar kapsayıcıyı başlatmak için kullanılır. Uç nokta anahtarını iki yerde bulabilirsiniz. Birincisi, bilişsel _Hizmetler_ kaynağının anahtar listesi içindeki Azure Portal. Uç nokta anahtarı, anahtarlar ve uç nokta ayarları sayfasındaki LUO portalında da kullanılabilir. Başlangıç anahtarını kullanmayın.<br><br>**{ENDPOINT_URI}** : Genel Bakış sayfasında belirtilen bitiş noktası.<br><br>[Yazma anahtarı ve uç nokta anahtarının](luis-boundaries.md#key-limits) farklı amaçları vardır. Bunları birbirlerinin yerine kullanmayın. |
+|Azure `Cognitive Services` kaynak ve LUSıS [paketlenmiş uygulama](luis-how-to-start-new-app.md) dosyası |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>* Bilişsel _Hizmetler_ Azure kaynağı ve ilgili faturalandırma anahtarı faturalandırma uç noktası URI 'si. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir. <br>* İlişkili uygulama KIMLIĞIYLE kapsayıcıya bağlı giriş olarak paketlenmiş eğitilen veya yayımlanmış bir uygulama. Paketlenmiş dosyayı LUıS portalından veya yazma API 'Lerinden alabilirsiniz. [Yazma API 'lerinden](#authoring-apis-for-package-file)LUIS paketlenmiş uygulama alıyorsanız, _yazma anahtarınıza_de ihtiyacınız olacaktır.<br><br>Bu gereksinimler komut satırı bağımsız değişkenlerini aşağıdaki değişkenlere iletmek için kullanılır:<br><br>**{AUTHORING_KEY}** : Bu anahtar, paketteki lusıs hizmetinden paketlenmiş uygulamayı almak ve sorgu günlüklerini buluta geri yüklemek için kullanılır. Biçim `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}** : Bu kimlik, uygulamayı seçmek için kullanılır. Biçim `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : Bu anahtar kapsayıcıyı başlatmak için kullanılır. Uç nokta anahtarını iki yerde bulabilirsiniz. Birincisi, bilişsel _Hizmetler_ kaynağının anahtar listesi içindeki Azure Portal. Uç nokta anahtarı, anahtarlar ve uç nokta ayarları sayfasındaki LUO portalında da kullanılabilir. Başlangıç anahtarını kullanmayın.<br><br>**{ENDPOINT_URI}** : Genel Bakış sayfasında belirtilen bitiş noktası.<br><br>[Yazma anahtarı ve uç nokta anahtarının](luis-boundaries.md#key-limits) farklı amaçları vardır. Bunları birbirlerinin yerine kullanmayın. |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -198,9 +198,9 @@ Sürümlenmiş paketi indirmek için [buradaki API belgelerine][download-version
 
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı `docker run` ile çalıştırma
 
-Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{ENDPOINT_URI}` ve `{API_KEY}` değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın.
+Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. [ Ve](#gathering-required-parameters) değerlerini alma hakkında ayrıntılar için gerekli `{ENDPOINT_URI}`parametreleri`{API_KEY}` toplama bölümüne bakın.
 
-`docker run` komut [örnekleri](luis-container-configuration.md#example-docker-run-commands) mevcuttur.
+Komut [örnekleri](luis-container-configuration.md#example-docker-run-commands) mevcuttur. `docker run`
 
 ```console
 docker run --rm -it -p 5000:5000 ^

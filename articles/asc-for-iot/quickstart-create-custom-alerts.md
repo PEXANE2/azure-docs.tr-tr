@@ -1,6 +1,6 @@
 ---
-title: IoT için Azure Güvenlik Merkezi için özel uyarılar oluşturma | Microsoft Docs
-description: IoT için Azure Güvenlik Merkezi için özel cihaz uyarıları oluşturun ve atayın.
+title: 'Hızlı başlangıç: IoT için Azure Güvenlik Merkezi için özel uyarılar oluşturma'
+description: Bu hızlı başlangıçta IoT için Azure Güvenlik Merkezi için özel cihaz uyarıları oluşturun ve atayın.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: ed10cbf89f878f8d27b43476d26ac93dd373ed66
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eca5d69efb04cf8210b0b2aa502bcee5cd4f5264
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597016"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904133"
 ---
-# <a name="quickstart-create-custom-alerts"></a>Hızlı Başlangıç: Özel uyarılar oluşturma
+# <a name="quickstart-create-custom-alerts"></a>Hızlı başlangıç: özel uyarılar oluşturma
 
 
 Özel güvenlik grupları ve uyarılar kullanarak, IoT çözümünüz genelinde daha iyi güvenlik sağlamak için uçtan uca güvenlik bilgilerinin ve kategorik cihaz bilgilerinin tam avantajlarından yararlanır. 
@@ -82,7 +82,7 @@ Cihazlarınızı mantıksal kategoriler halinde gruplandırmak için güvenlik g
 Aşağıdaki tabloda, özelleştirme için kullanılabilen uyarıların bir özeti verilmiştir.
 
 
-| severity | Ad | Veri Kaynağı | Açıklama | Önerilen düzeltme|
+| Severity | Ad | Veri kaynağı | Açıklama | Önerilen düzeltme|
 |---|---|---|---|---|
 | Düşük      | Özel uyarı-AMQP protokolündeki cihaz iletilerinin bulut sayısı izin verilen aralığın dışında          | IoT Hub     | Belirli bir zaman penceresi içindeki bulut-cihaz iletileri (AMQP Protokolü) sayısı, şu anda yapılandırılmış ve izin verilen aralığın dışında.||
 | Düşük      | Özel uyarı-AMQP protokolündeki cihaz iletilerine reddedilen bulut sayısı izin verilen aralığın dışında | IoT Hub     | Cihaz tarafından reddedilen bulut-cihaz iletileri (AMQP Protokolü) sayısı, belirli bir zaman penceresi içinde yapılandırılmış ve izin verilen aralığın dışında.||

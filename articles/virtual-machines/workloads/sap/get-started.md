@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74c95ed62bcfec8792aaa465d27f539c02188713
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d092dcf6fa9942f7b3283d1d77157b1f291a5062
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891426"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905043"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -120,6 +120,7 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 
 ## <a name="change-log"></a>Değişiklik günlüğü
+- 11/08/2019: [SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](sap-hana-high-availability.md), [Azure sanal makinelerinde (VM) SAP HANA sistem çoğaltmasını ayarlama](sap-hana-high-availability-rhel.md), SAP [uygulamaları için SUSE Linux Enterprise Server üzerinde SAP NetWeaver için yüksek kullanılabilirlik](high-availability-guide-suse.md), Azure sanal makineler for the SUSE Linux Enterprise Server [on](high-availability-guide-suse-netapp-files.md)The SAP NetWeaver for the Azure NetApp Files [ ](high-availability-guide-rhel.md), Azure [sanal makineler Azure NetApp Files Red Hat ENTERPRISE LINUX on SAP NetWeaver için yüksek kullanılabilirlik](high-availability-guide-rhel-netapp-files.md), Azure [VM](high-availability-guide-suse-nfs.md)'lerinde Azure VM 'lerde yüksek kullanılabilirlik, Azure Standart yük dengeleyiciyi önermek için [SAP NetWeaver için Red Hat Enterprise Linux on](high-availability-guide-rhel-glusterfs.md) SUSE Linux Enterprise Server, Azure VM 'lerinde GlusterFS  
 - 11/08/2019: şifreleme önerisini netleştirmek için [SAP iş yükü planlama ve dağıtım denetim listesi](sap-deployment-checklist.md) değişiklikleri  
 - 11/04/2019: [Azure 'daki SUSE Linux Enterprise Server Paceyapıcısı ayarlama](high-availability-guide-suse-pacemaker.md) içindeki değişiklikler, tek noktaya yayın yapılandırmasıyla doğrudan küme oluşturmak için  
 - 10/29/2019: [Azure Standart Load Balancer 'yi kullanarak sanal makineler Için genel uç nokta bağlantısının YAYıMLANMASı SAP yüksek kullanılabilirlik senaryolarında](high-availability-guide-standard-load-balancer-outbound-connections.md)

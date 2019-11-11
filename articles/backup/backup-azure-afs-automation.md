@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: 491e27f85d00ce512995a63e43b9e248798e5d0f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 4642549dcdd455c97ea3e8fd8a8b5440779b923c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747635"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903622"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>PowerShell ile Azure dosyalarını yedekleme ve geri yükleme
 
@@ -276,7 +276,7 @@ Yedeklemeler çekilirken Azure dosya paylaşımının anlık görüntüleri kull
 
 ### <a name="using-on-demand-backups-to-extend-retention"></a>Bekletmeyi uzatmak için isteğe bağlı yedeklemeleri kullanma
 
-İstek üzerine yedeklemeler, anlık görüntülerinizi 10 yıl boyunca koruyacak şekilde kullanılabilir. Zamanlayıcılar, seçili bekletme ile isteğe bağlı PowerShell betikleri çalıştırmak için kullanılabilir ve bu nedenle, anlık görüntüleri her hafta, ay veya yılda düzenli aralıklarla alabilir. Düzenli anlık görüntülerin alınması, Azure Backup kullanarak [isteğe bağlı yedeklemelerin kısıtlamalarına](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share-) başvurur.
+İstek üzerine yedeklemeler, anlık görüntülerinizi 10 yıl boyunca koruyacak şekilde kullanılabilir. Zamanlayıcılar, seçili bekletme ile isteğe bağlı PowerShell betikleri çalıştırmak için kullanılabilir ve bu nedenle, anlık görüntüleri her hafta, ay veya yılda düzenli aralıklarla alabilir. Düzenli anlık görüntüler alırken Azure Backup kullanarak [isteğe bağlı yedeklemelerin kısıtlamalarına](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share) bakın.
 
 Örnek komut dosyaları arıyorsanız, GitHub 'daki örnek betiğe başvurabilirsiniz (Azure Otomasyonu runbook 'u kullanarak<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)>, yedeklemeleri düzenli aralıklarla zamanlamanıza ve 10 yıla kadar bile koruyabilirsiniz.
 

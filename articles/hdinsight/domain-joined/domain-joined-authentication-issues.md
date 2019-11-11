@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 'ta kimlik doğrulama sorunları
 description: Azure HDInsight 'ta kimlik doğrulama sorunları
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/09/2019
-ms.openlocfilehash: 3d2ba5965fef19a36faa8b9bbef235fd4117c20f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 11/08/2019
+ms.openlocfilehash: 17bc9f1ea93b0afa4f53443a53d294acb9e94b2e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71071948"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901397"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight 'ta kimlik doğrulama sorunları
 
@@ -34,11 +34,11 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 ### <a name="cause"></a>Nedeni
 
-Azure AD hata kodu 50126, `AllowCloudPasswordValidation` ilkenin kiracı tarafından ayarlanmadığını gösterir.
+Azure AD hata kodu 50126, `AllowCloudPasswordValidation` ilkesinin kiracı tarafından ayarlanmadığını gösterir.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
-Azure AD kiracının Şirket Yöneticisi, Azure AD 'nin ADFS ile desteklenen kullanıcılar için parola karmaları kullanmasına olanak sağlamalıdır.  [HDInsight 'ta kurumsal güvenlik paketi kullanın](../domain-joined/apache-domain-joined-architecture.md)makalesinde gösterildiği gibiuygulayın.`AllowCloudPasswordValidationPolicy`
+Azure AD kiracının Şirket Yöneticisi, Azure AD 'nin ADFS ile desteklenen kullanıcılar için parola karmaları kullanmasına olanak sağlamalıdır.  [HDInsight 'ta kurumsal güvenlik paketi kullanma](../domain-joined/apache-domain-joined-architecture.md)makalesinde gösterildiği gibi `AllowCloudPasswordValidationPolicy` uygulayın.
 
 ---
 
@@ -56,7 +56,7 @@ Oturum açma 50034 hata koduyla başarısız oluyor. Hata iletisi şuna benzer:
 
 Kullanıcı adı yanlış (yok). Kullanıcı Azure portal ' de kullanılan Kullanıcı adını kullanmıyor.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 Bu portalda çalışacak Kullanıcı adını kullanın.
 
@@ -76,7 +76,7 @@ Kullanıcı hesabı kilitli, hata kodu 50053. Hata iletisi şuna benzer:
 
 Hatalı parola ile çok fazla oturum açma denemesi.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 30 dakika bekleyin, kimlik doğrulamaya çalışıyor olabilecek tüm uygulamaları durdurun.
 
@@ -96,7 +96,7 @@ Parolanın kullanım geçerliliği, hata kodu 50053. Hata iletisi şuna benzer:
 
 Parolanın zaman aşımına uğradı.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 Azure portal parolayı değiştirin (Şirket içi sisteminizde) ve eşitlemenin yakalanması için 30 dakika bekleyin.
 
@@ -106,13 +106,13 @@ Azure portal parolayı değiştirin (Şirket içi sisteminizde) ve eşitlemenin 
 
 ### <a name="issue"></a>Sorun
 
-Hata iletisi `interaction_required`al.
+`interaction_required`hata iletisi alın.
 
 ### <a name="cause"></a>Nedeni
 
-Koşullu erişim ilkesi veya MFA kullanıcıya uygulanıyor. Etkileşimli kimlik doğrulaması henüz desteklenmediğinden, kullanıcının veya kümenin MFA/koşullu erişimden muaf olması gerekir. Kümeyi muaf tutmayı tercih ederseniz (IP adresi tabanlı muafiyet ilkesi), bu sanal ağ için ad `ServiceEndpoints` 'nin etkinleştirildiğinden emin olun.
+Kullanıcıya koşullu erişim ilkesi veya MFA uygulanıyor. Etkileşimli kimlik doğrulaması henüz desteklenmediğinden, kullanıcı veya küme MFA'dan / Koşullu erişimden muaf tutulmalıdır. Kümeyi muaf tutmayı tercih ederseniz (IP adresi tabanlı muafiyet ilkesi), bu sanal ağ için AD `ServiceEndpoints` etkinleştirildiğinden emin olun.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 Azure Active Directory Domain Services kullanarak, koşullu erişim ilkesini kullanın ve [Kurumsal güvenlik paketi Ile HDInsight kümesi yapılandırma](./apache-domain-joined-configure-using-azure-adds.md)bölümünde GÖSTERILDIĞI gibi MFA 'dan HDInsight kümelerini muaf tutabilirsiniz.
 
@@ -128,7 +128,7 @@ Oturum açma reddedildi.
 
 Bu aşamaya ulaşmak için, OAuth kimlik doğrulaması bir sorun değildir, ancak Kerberos kimlik doğrulaması olur. Bu küme ADLS tarafından desteklenir, Kerberos kimlik doğrulaması denenmeden önce OAuth oturum açma işlemi başarılı oldu. Bulunan kümeler üzerinde OAuth oturum açma denenmez. Kerberos hata benzeri parola karmalarının eşitlenmemiş, Kullanıcı hesabının Azure AD DS 'da kilitlediği ve bu şekilde devam etmesinin pek çok nedeni olabilir. Parola karmaları yalnızca Kullanıcı parolayı değiştirdiğinde eşitlenir. Azure AD DS örneğini oluşturduğunuzda, oluşturulduktan sonra değiştirilen parolaları eşitlemeye başlar. Kullanılmadan önce ayarlanmış olan parolaları geriye dönük olarak eşitler.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 Parolaların eşitlenmiş olabileceğini düşünüyorsanız, parolayı değiştirmeyi deneyin ve birkaç dakika eşitlemesini bekleyin.
 
@@ -146,11 +146,11 @@ Kinit başarısız olur.
 
 Olmadığına.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
-Başarılı olması için, hesabınızı `sAMAccountName` bilmeniz gerekir (Bu, bölge olmadan kısa hesap adıdır). `sAMAccountName`genellikle hesap ön eki olur (Bob `bob@contoso.com`gibi). Bazı kullanıcılar için farklı olabilir. Bilgilerinizi `sAMAccountName`öğrenmek için dizine gözatıp araymanıza gerek duyarsınız.
+Kinit 'in başarılı olması için `sAMAccountName` bilmeniz gerekir (Bu, bölge olmadan kısa hesap adıdır). `sAMAccountName` genellikle hesap ön ekidir (`bob@contoso.com`emre gibi). Bazı kullanıcılar için farklı olabilir. `sAMAccountName`öğrenmek için dizine gözatmanıza/aramanıza gerek duyarsınız.
 
-Şunları bulmanın `sAMAccountName`yolları:
+`sAMAccountName`bulmanın yolları:
 
 * Yerel ambarı yöneticisini kullanarak ambarı 'nda oturum açabilirseniz, kullanıcı listesine bakın.
 
@@ -158,7 +158,7 @@ Başarılı olması için, hesabınızı `sAMAccountName` bilmeniz gerekir (Bu, 
 
 * Baş düğümden, ' yi aramak için SAMBA komutlarını kullanabilirsiniz. Bu, geçerli bir Kerberos oturumu gerektirir (başarılı kinit). net ads arama "(userPrincipalName = Bob *)"
 
-    Arama/tarama sonuçları sizi `sAMAccountName` özniteliği göstermelidir. Ayrıca,, `pwdLastSet` `userPrincipalName` vb. gibi diğer özniteliklere de bakabilirsiniz `badPasswordTime`. bu özelliklerin beklediğiniz şekilde eşleşip eşleşmeyeceğini görebilirsiniz.
+    Arama/tarama sonuçları `sAMAccountName` özniteliği göstermelidir. Ayrıca, bu özelliklerin beklediğiniz şekilde eşleşip eşleşmeyeceğini görmek için `pwdLastSet`, `badPasswordTime`, `userPrincipalName` vb. gibi diğer özniteliklere bakabilirsiniz.
 
 ---
 
@@ -166,15 +166,15 @@ Başarılı olması için, hesabınızı `sAMAccountName` bilmeniz gerekir (Bu, 
 
 ### <a name="issue"></a>Sorun
 
-Kinit hata vererek `Preauthentication` başarısız olur.
+Kinit `Preauthentication` hata vererek başarısız olur.
 
 ### <a name="cause"></a>Nedeni
 
 Yanlış Kullanıcı adı veya parola.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
-Kullanıcı adınızı ve parolanızı denetleyin. Ayrıca yukarıda açıklanan diğer özellikleri de denetleyin. Ayrıntılı hata ayıklamayı etkinleştirmek için, `export KRB5_TRACE=/tmp/krb.log` kinit 'i denemeden önce oturumdan çalıştırın.
+Kullanıcı adınızı ve parolanızı denetleyin. Ayrıca yukarıda açıklanan diğer özellikleri de denetleyin. Ayrıntılı hata ayıklamayı etkinleştirmek için, kinit 'i denemeden önce oturumdan `export KRB5_TRACE=/tmp/krb.log` çalıştırın.
 
 ---
 
@@ -182,15 +182,33 @@ Kullanıcı adınızı ve parolanızı denetleyin. Ayrıca yukarıda açıklanan
 
 ### <a name="issue"></a>Sorun
 
-İş/IBir komut nedeniyle `TokenNotFoundException`başarısız oldu.
+İş/IBU komut `TokenNotFoundException`nedeniyle başarısız oluyor.
 
 ### <a name="cause"></a>Nedeni
 
 İş/komutun başarılı olması için gerekli OAuth erişim belirteci bulunamadı. ADLS/ABFS sürücüsü, depolama istekleri yapmadan önce kimlik bilgisi hizmetinden OAuth erişim belirtecini almaya çalışır. Bu belirteç, aynı kullanıcıyı kullanarak ambarı portalında oturum açtığınızda kaydedilir.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 İşi çalıştırmak için kimliği kullanılan Kullanıcı adı aracılığıyla, ambarı portalında bir kez başarıyla oturum açtığınızdan emin olun.
+
+---
+
+## <a name="error-fetching-access-token"></a>Erişim belirteci getirilirken hata oluştu
+
+### <a name="issue"></a>Sorun
+
+Kullanıcı `Error fetching access token`hata iletisi alır.
+
+### <a name="cause"></a>Nedeni
+
+Bu hata, kullanıcılar ACL 'Leri kullanarak ADLS 2. erişmeyi denediğinde ve Kerberos belirtecinin süresi dolduğunda zaman zaman oluşur.
+
+### <a name="resolution"></a>Çözünürlük
+
+* Azure Data Lake Storage 1. için, tarayıcı önbelleğini temizleyin ve yeniden ambarı 'nda oturum açın.
+
+* Azure Data Lake Storage 2. için kullanıcının oturum açmaya çalıştığı kullanıcı için `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` çalıştırın
 
 ---
 
@@ -200,6 +218,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik Yönetimi’ne ve faturalandırma desteğine erişim Microsoft Azure aboneliğinize dahildir, Teknik Destek ise herhangi bir [Azure Destek Planı](https://azure.microsoft.com/support/plans/) üzerinden sağlanır.

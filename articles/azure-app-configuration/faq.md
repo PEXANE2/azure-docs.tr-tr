@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: dbfb6a1c4c53b1bd255560e688d3dc0cf3835a3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d286cbab33a1fb6a2d2a2cb70caed11b21af735
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469623"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904104"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure uygulama yapılandırma hakkında SSS
 
@@ -42,9 +42,19 @@ Uygulama yapılandırması Key Vault için tamamlayıcı ve iki uygulama dağıt
 
 Uygulama yapılandırması sıkı güvenlik sağlar, ancak Key Vault uygulama gizli dizileri depolamak için de en iyi yerdir. Key Vault, donanım düzeyinde şifreleme, ayrıntılı erişim ilkeleri ve sertifika döndürme gibi yönetim işlemleri sağlar.
 
+Key Vault depolanan gizli dizileri referans eden uygulama yapılandırma değerleri oluşturabilirsiniz. Daha fazla bilgi için bkz. [ASP.NET Core uygulamasında Key Vault başvurularını kullanma](./use-key-vault-references-dotnet-core.md).
+
 ## <a name="does-app-configuration-encrypt-my-data"></a>Uygulama yapılandırması verilerimi şifreliyor mu?
 
 Evet. Uygulama yapılandırması, tuttuğu tüm anahtar değerlerini şifreler ve ağ iletişimini şifreler. Anahtar adları, yapılandırma verilerini almak için dizinler olarak kullanılır ve şifrelenmez.
+
+## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Uygulama yapılandırması Azure App Service ayarlarından farklı midir?
+
+Azure App Service, her bir App Service örneği için uygulama ayarlarını tanımlamanızı sağlar. Bu ayarlar, uygulama koduna ortam değişkenleri olarak geçirilir. İsterseniz bir ayarı belirli bir dağıtım yuvası ile ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [uygulama ayarlarını yapılandırma](/azure/app-service/configure-common#configure-app-settings).
+
+Buna karşılık, Azure Uygulama yapılandırması, App Service çalıştıran uygulamalar dahil olmak üzere birden çok uygulama arasında paylaşılabilen ayarları tanımlamanızı sağlar. Bu ayarlara, .NET ve Java için yapılandırma sağlayıcıları aracılığıyla, Azure SDK aracılığıyla veya doğrudan REST API 'Leri aracılığıyla uygulama kodundan erişilebilir.
+
+Ayrıca, App Service ile uygulama yapılandırması arasında ayarları içeri ve dışarı aktarabilirsiniz. Bu, mevcut App Service ayarlarını temel alarak yeni bir uygulama yapılandırma deposu ayarlamanıza veya yapılandırmayı App Service ayarları temel alan mevcut bir uygulamayla kolayca paylaşmanıza olanak sağlar.
 
 ## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>Uygulama yapılandırmasında saklanan anahtarlar ve değerler üzerinde herhangi bir boyut sınırlaması var mı?
 

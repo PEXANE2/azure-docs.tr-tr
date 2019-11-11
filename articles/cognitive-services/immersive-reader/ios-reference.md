@@ -1,7 +1,7 @@
 ---
 title: Modern okuyucu iOS SDK başvurusu
 titleSuffix: Azure Cognitive Services
-description: Modern okuyucu iOS SDK 'Sı için başvuru
+description: Modern okuyucu iOS SDK 'Sı, tam ekran okuyucuyu iOS uygulamanızla tümleştirmenize olanak tanıyan bir Swift CocoaPod.
 services: cognitive-services
 author: metanMSFT
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: 1f85740c358bd0949fed9c954537f0926538995d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 67d6b8c22c5635bd789078a7f91b02f8b07e5e70
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388110"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903132"
 ---
 # <a name="immersive-reader-sdk-reference-for-ios"></a>İOS için modern Okuyucu SDK başvurusu
 
@@ -22,7 +22,7 @@ Modern okuyucu iOS SDK 'Sı, tam ekran okuyucuyu iOS uygulamanızla tümleştirm
 
 ## <a name="functions"></a>İşlevler
 
-SDK tek bir işlev gösterir, `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`.
+SDK tek bir işlev sunar `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`.
 
 ### <a name="launchimmersivereader"></a>launchImmersiveReader
 
@@ -34,7 +34,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 
 #### <a name="parameters"></a>Parametreler
 
-| Adı | Tür | Açıklama |
+| Ad | Tür | Açıklama |
 | ---- | ---- |------------ |
 | `navController` | Uıınavigationcontroller | İşlevin çağrıldığı iOS uygulaması için gezinti denetleyicisi. |
 | `token` | Dize | Azure AD kimlik doğrulama belirteci. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
@@ -44,7 +44,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 | `onSuccess` | ()-> void | Modern okuyucu başarıyla başlatıldığında çağrılan bir kapanış. |
 | `onFailure` | (_ hata: [hata](#error))-> void | Modern okuyucu yükleme başarısız olduğunda çağrılan bir kapanış. Bu kapanış, hata kodu ve hatayla ilişkili hata iletisini temsil eden bir [`Error`](#error) nesnesi döndürür. Daha fazla bilgi için bkz. [hata kodları](#error-codes). |
 
-## <a name="types"></a>Türü
+## <a name="types"></a>Türler
 
 ### <a name="content"></a>İçerik
 
@@ -88,13 +88,13 @@ struct Error {
 
 #### <a name="error-codes"></a>Hata kodları
 
-| Kodlayın | Açıklama |
+| Kod | Açıklama |
 | ---- | ----------- |
 | BadArgument | Sağlanan bağımsız değişken geçersiz, Ayrıntılar için bkz. `message`. |
-| aş | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
+| Aş | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
 | Tokenaşımına uğradı | Sağlanan belirtecin geçerliliği zaman aşımına uğradı. |
 | Sürecek | Çağrı hızı sınırı aşıldı. |
-| InternalError | Modern okuyucu görünüm denetleyicisi içinde bir iç hata oluştu. Ayrıntılar için bkz. `message`.|
+| InternalError | Modern okuyucu görünüm denetleyicisi içinde bir iç hata oluştu. Ayrıntılar için `message` bakın.|
 
 ## <a name="os-version-support"></a>İşletim sistemi sürümü desteği
 

@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: .NET için form tanıyıcı istemci kitaplığı | Microsoft Docs'
-description: .NET için form tanıyıcı istemci kitaplığı ile çalışmaya başlayın.
+description: .NET için form tanıyıcı istemci kitaplığını kullanarak, yapılandırılmış veri çıkışını eğitme, ayıklama, çözümleme ve alma işlemi gerçekleştirin.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: e4e65f38f71b458c34a6747c434ebcd1d8a1b350
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d360939a0196d7e5dc651ecf9a01ef5cbd2f689
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931563"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904598"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Hızlı başlangıç: .NET için form tanıyıcı istemci kitaplığı
 
@@ -28,7 +28,7 @@ ms.locfileid: "72931563"
 * [Özel modellerin bir listesini alın](#get-a-list-of-custom-models)
 * [Özel bir modeli silme](#delete-a-custom-model)
 
-[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
+[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -47,7 +47,7 @@ Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, sırası
 
 ### <a name="create-a-new-c-application"></a>Yeni C# bir uygulama oluşturun
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `formrecognizer-quickstart` adlı yeni bir konsol uygulaması oluşturmak için `dotnet new` komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur: _program.cs_. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `formrecognizer-quickstart`adlı yeni bir konsol uygulaması oluşturmak için `dotnet new` komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur: _program.cs_. 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -91,7 +91,7 @@ Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGe
 
 Aşağıdaki sınıflar form tanıyıcı SDK 'nın ana işlevlerini işler.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Bu sınıf, tüm form tanıyıcı işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
 |[Traınrequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Kendi eğitim girişi verilerinizi kullanarak özel bir form tanıyıcı modeli eğitebilmeniz için bu sınıfı kullanın. |

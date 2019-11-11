@@ -1,23 +1,23 @@
 ---
-title: Bu hızlı başlangıçta C# kullanarak X.509 cihazını Azure Cihaz Sağlama Hizmeti'ne kaydetme adımları gösterilmektedir | Microsoft Docs
+title: "Hızlı başlangıç: kullanarak X. 509.952 cihazını Azure cihaz sağlama hizmeti 'ne kaydetmeC#"
 description: Bu hızlı başlangıçta grup kayıtları kullanılmaktadır. Bu hızlı başlangıçta, kullanarak C#X. 509.952 cihazlarını Azure IoT Hub cihaz sağlama hizmetine kaydedin.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 15bce340b257b5c221192a6ace5c5f0eac30f85a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: e43448337f787115c479f2f53ca57b7a20120108
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035985"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903431"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Hızlı Başlangıç: Kullanarak X. 509.952 cihazlarını cihaz sağlama hizmetine kaydetmeC#
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Hızlı başlangıç: C# kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
@@ -92,7 +92,7 @@ Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol
 
    Bu adım, [Azure IoT sağlama hizmeti istemci SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
 
-1. Aşağıdaki `using` deyimlerini `using` , öğesinin`Program.cs`üst kısmına ekleyin:
+1. Aşağıdaki `using` deyimlerini `Program.cs`en üstündeki diğer `using` deyimlerinden sonra ekleyin:
 
    ```csharp
    using System.Security.Cryptography.X509Certificates;
@@ -100,7 +100,7 @@ Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. `Program` Sınıfına aşağıdaki alanları ekleyin ve listelenen değişiklikleri yapın.  
+1. Aşağıdaki alanları `Program` sınıfına ekleyin ve listelenen değişiklikleri yapın.  
 
    ```csharp
    private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
@@ -108,11 +108,11 @@ Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol
    private static string X509RootCertPath = @"{Path to a .cer or .pem file for a verified root CA or intermediate CA X.509 certificate}";
    ```
 
-   * Yer tutucu `ProvisioningConnectionString` değerini, kaydını oluşturmak istediğiniz sağlama hizmetinin bağlantı dizesiyle değiştirin.
+   * `ProvisioningConnectionString` yer tutucu değerini, kaydını oluşturmak istediğiniz sağlama hizmetinin bağlantı dizesiyle değiştirin.
 
-   * `X509RootCertPath` Yer tutucu değerini bir. pek veya. cer dosyasının yoluyla değiştirin. Bu dosya, daha önce önceden yüklenmiş ve sağlama hizmetinize doğrulanan bir ara veya kök CA X. 509.440 sertifikasının genel bölümünü temsil eder.
+   * `X509RootCertPath` yer tutucu değerini bir. pek veya. cer dosyasının yoluyla değiştirin. Bu dosya, daha önce önceden yüklenmiş ve sağlama hizmetinize doğrulanan bir ara veya kök CA X. 509.440 sertifikasının genel bölümünü temsil eder.
 
-   * İsteğe bağlı olarak `EnrollmentGroupId` değeri değiştirebilirsiniz. Dize yalnızca küçük harflerden ve kısa çizgilerden oluşabilir.
+   * İsteğe bağlı olarak `EnrollmentGroupId` değerini değiştirebilirsiniz. Dize yalnızca küçük harflerden ve kısa çizgilerden oluşabilir.
 
    > [!IMPORTANT]
    > Üretim kodunda, güvenlikle ilgili aşağıdaki noktalara dikkat edin:
@@ -120,7 +120,7 @@ Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol
    > * Sağlama hizmeti yöneticisi için bağlantı dizesinin sabit kodlanması en iyi güvenlik yöntemlerine uygun değildir. Bunun yerine, bağlantı dizesi güvenli bir şekilde, örneğin güvenli yapılandırma dosyasının içinde veya kayıt defterinin içinde tutulmalıdır.
    > * İmzalama sertifikasının yalnızca ortak bölümünü karşıya yüklediğinizden emin olun. Özel anahtarları içeren .pfx (PKCS12) veya .pem dosyalarını asla sağlama hizmetine yüklemeyin.
 
-1. `Program` Sınıfına aşağıdaki yöntemi ekleyin. Bu kod bir kayıt grubu girişi oluşturur ve ardından kayıt grubunu `CreateOrUpdateEnrollmentGroupAsync` sağlama hizmetine `ProvisioningServiceClient` eklemek için üzerinde yöntemini çağırır.
+1. Aşağıdaki yöntemi `Program` sınıfına ekleyin. Bu kod bir kayıt grubu girişi oluşturur ve ardından kayıt grubunu sağlama hizmetine eklemek için `ProvisioningServiceClient` `CreateOrUpdateEnrollmentGroupAsync` yöntemini çağırır.
 
    ```csharp
    public static async Task RunSample()
@@ -164,7 +164,7 @@ Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol
    Console.ReadLine();
    ```
 
-1. Çözümü oluşturun.
+1. Çözümü derleyin.
 
 ## <a name="run-the-enrollment-group-sample"></a>Kayıt grubu örneğini çalıştırma
   

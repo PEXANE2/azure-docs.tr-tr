@@ -1,7 +1,7 @@
 ---
 title: Form Tanıma nedir?
 titleSuffix: Azure Cognitive Services
-description: Form ve tablo verilerini ayrıştırmak için form tanıyıcıyı nasıl kullanacağınızı öğrenin.
+description: Azure bilişsel hizmetler formu tanıyıcı, form belgelerinden anahtar/değer çiftlerini ve tablo verilerini tanımlamanızı ve ayıklamanızı sağlar.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: b07201556f08bde4ef8c7a7904c6619a126d7765
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 86e0494ded84e9711b2283ae5fad77ff626cf792
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594548"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904494"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -49,7 +49,7 @@ Makbuz modeli için giriş gereksinimleri biraz farklıdır.
 * PDF boyutları, yasal veya A3 kağıt boyutlarına ve daha küçük boyutlara karşılık gelen en fazla 17 x 17 inç olmalıdır.
 * PDF ve TIFF için yalnızca ilk 200 sayfa işlenir (ücretsiz bir katman aboneliğiyle yalnızca ilk iki sayfa işlenir).
 
-## <a name="request-access"></a>Erişim izni iste
+## <a name="request-access"></a>Erişim izni isteme
 
 Form tanıyıcı, sınırlı erişim önizlemesinde kullanılabilir. Önizlemeye erişim sağlamak için [form tanıyıcı erişim isteği](https://aka.ms/FormRecognizerRequestAccess) formunu doldurun ve gönderebilirsiniz. Form, sizin, şirketiniz ve form tanıyıcı kullanacağınız kullanıcı senaryosuyla ilgili bilgiler ister. İsteğiniz Azure bilişsel hizmetler ekibi tarafından onaylanırsa, hizmete erişmek için yönergeler içeren bir e-posta alacaksınız.
 
@@ -58,10 +58,10 @@ Form tanıyıcı, sınırlı erişim önizlemesinde kullanılabilir. Önizlemeye
 **1. Adım:** Azure portal bir form tanıyıcı kaynağı oluşturun.
 
 **2. Adım:** REST API kullanmak için hızlı başlangıcı izleyin:
-* [Hızlı Başlangıç: Kıvrımlı REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama](quickstarts/curl-train-extract.md)
-* [Hızlı Başlangıç: Python ile REST API kullanarak form tanıyıcı modelini eğitme ve form verilerini ayıklama](quickstarts/python-train-extract.md)
-* [Hızlı Başlangıç: Kıvrımlı kullanarak alış verilerini ayıklama](quickstarts/curl-receipts.md)
-* [Hızlı Başlangıç: Python kullanarak alış verilerini ayıklama](quickstarts/python-receipts.md)
+* [Hızlı başlangıç: kıvrımlı ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama](quickstarts/curl-train-extract.md)
+* [Hızlı başlangıç: Python ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama](quickstarts/python-train-extract.md)
+* [Hızlı başlangıç: kıvrımlı kullanarak alış verilerini ayıklama](quickstarts/curl-receipts.md)
+* [Hızlı başlangıç: Python kullanarak alış verilerini ayıklama](quickstarts/python-receipts.md)
 
 Teknolojiyi öğrenirken ücretsiz hizmeti kullanmanızı öneririz. Ücretsiz sayfa sayısının ayda 500 ile sınırlı olduğunu aklınızda bulundurun.
 

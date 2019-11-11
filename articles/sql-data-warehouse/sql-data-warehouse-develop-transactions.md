@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 09fc0f7cee38f799322a1914848a5176e9a223a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 376b7b8a734e5064713237e9250542a4c5cc18f1
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692779"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903083"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>SQL veri ambarı 'nda işlemleri kullanma
 Azure SQL veri ambarı 'nda çözüm geliştirmeye yönelik işlemler uygulama ipuçları.
@@ -78,7 +78,7 @@ Aşağıdaki varsayımlar aşağıda verilmiştir:
 Günlüğe yazılan veri miktarını iyileştirmek ve en aza indirmek için lütfen [En Iyi işlemler uygulamalar](sql-data-warehouse-develop-best-practices-transactions.md) makalesine başvurun.
 
 > [!WARNING]
-> En büyük işlem boyutu yalnızca verilerin yayılmasının eşit olduğu karma veya ROUND_ROBIN dağıtılmış tablolar için elde edilebilir. İşlem, dağıtımlarla çarpıtılmış bir şekilde veri yazıyor, en yüksek işlem boyutundan önce sınıra ulaşılması olasıdır.
+> En büyük işlem boyutu yalnızca, verilerin yayılmasının eşit olduğu karma veya ROUND_ROBIN dağıtılmış tablolar için elde edilebilir. İşlem, dağıtımlarla çarpıtılmış bir şekilde veri yazıyor, en yüksek işlem boyutundan önce sınıra ulaşılması olasıdır.
 > <!--REPLICATED_TABLE-->
 > 
 > 
@@ -87,7 +87,7 @@ Günlüğe yazılan veri miktarını iyileştirmek ve en aza indirmek için lüt
 SQL veri ambarı,-2 değerini kullanarak başarısız bir işlemi raporlamak için XACT_STATE () işlevini kullanır. Bu değer, işlemin başarısız olduğu ve yalnızca geri alma için işaretlenen anlamına gelir.
 
 > [!NOTE]
-> Başarısız bir işlemi göstermek için XACT_STATE işlevi tarafından-2 kullanılması SQL Server için farklı davranışı temsil eder. SQL Server, bir uncommittable işlemini göstermek için-1 değerini kullanır. SQL Server, bir işlem içindeki bazı hatalara, uncommittable olarak işaretlenmesi gerekmeden tolerans sağlayabilir. Örneğin `SELECT 1/0` bir hataya neden olur, ancak bir işlemi committable durumuna zorlamaz. SQL Server ayrıca, komuntable işleminde okuma izni verir. Ancak, SQL veri ambarı bunu yapmanızı sağlar. Bir SQL veri ambarı işleminin içinde bir hata oluşursa, otomatik olarak-2 durumunu girer ve deyim geri alınana kadar başka bir SELECT deyimi de yapamazsınız. Bu nedenle, kod değişiklikleri yapmanız gerekebilmeniz için uygulama kodunuzun XACT_STATE () kullanıp kullanmadığını kontrol etmek önemlidir.
+> Başarısız bir işlemi göstermek için XACT_STATE işlevi tarafından-2 kullanılması SQL Server farklı davranışları temsil eder. SQL Server, bir uncommittable işlemini göstermek için-1 değerini kullanır. SQL Server, bir işlem içindeki bazı hatalara, uncommittable olarak işaretlenmesi gerekmeden tolerans sağlayabilir. Örneğin `SELECT 1/0` bir hataya neden olur, ancak bir işlemi committable durumuna zorlamaz. SQL Server ayrıca, komuntable işleminde okuma izni verir. Ancak, SQL veri ambarı bunu yapmanızı sağlar. Bir SQL veri ambarı işleminin içinde bir hata oluşursa, otomatik olarak-2 durumunu girer ve deyim geri alınana kadar başka bir SELECT deyimi de yapamazsınız. Bu nedenle, kod değişiklikleri yapmanız gerekebilmeniz için uygulama kodunuzun XACT_STATE () kullanıp kullanmadığını denetlemek önemlidir.
 > 
 > 
 
@@ -151,8 +151,8 @@ BEGIN TRAN
 
         IF @@TRANCOUNT > 0
         BEGIN
-            PRINT 'ROLLBACK';
             ROLLBACK TRAN;
+            PRINT 'ROLLBACK';
         END
 
         SELECT  ERROR_NUMBER()    AS ErrNumber
@@ -172,12 +172,12 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-Beklenen davranış artık gözlemlenmiştir. İşlemdeki hata yönetilir ve ERROR_ * işlevleri beklenen şekilde değerler sağlar.
+Beklenen davranış artık gözlemlenmiştir. İşlemdeki hata yönetilir ve ERROR_ * işlevleri değerleri beklenen şekilde sağlar.
 
 Tüm değiştirilen işlem GERI ALMANıN, CATCH bloğundaki hata bilgilerinin okunmasından önce gerçekleşmesi gerekiyordu.
 
 ## <a name="error_line-function"></a>Error_Line () işlevi
-Ayrıca, SQL veri ambarı 'nın ERROR_LINE () işlevini uygulamamayı veya desteklemediğini belirten bir değer de vardır. Kodunuzda bu varsa, SQL veri ambarı ile uyumlu olacak şekilde kaldırmanız gerekir. Eşdeğer işlevselliği uygulamak için kodunuzda sorgu etiketleri kullanın. Daha fazla ayrıntı için bkz. [etiket](sql-data-warehouse-develop-label.md) makalesi.
+Ayrıca, SQL veri ambarı 'nın ERROR_LINE () işlevini uygulamamayı veya desteklemediğini de unutmayın. Kodunuzda bu varsa, SQL veri ambarı ile uyumlu olacak şekilde kaldırmanız gerekir. Eşdeğer işlevselliği uygulamak için kodunuzda sorgu etiketleri kullanın. Daha fazla ayrıntı için bkz. [etiket](sql-data-warehouse-develop-label.md) makalesi.
 
 ## <a name="using-throw-and-raiserror"></a>THROW ve RAERROR kullanma
 THROW, SQL veri ambarı 'nda özel durumlar oluşturmak için daha modern bir uygulama, ancak RAERROR da desteklenir. Bununla ilgili dikkat edilmesi gereken birkaç fark vardır.

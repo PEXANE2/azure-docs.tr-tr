@@ -9,12 +9,12 @@ ms.author: estfan
 ms.topic: article
 ms.date: 10/01/2019
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 275d02219087d07a058f486c263d1886839dd4cf
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5b946e36c5da9f122adce1f8e3b99523a789a66f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799824"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901165"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps Azure işlevleri 'ni çağırma
 
@@ -114,7 +114,7 @@ Mantıksal uygulama Tasarımcısı 'nı kullanarak mantıksal uygulamanızın i�
 
    * Mantıksal uygulamanızın iş akışındaki mevcut adımlar arasında farenizi ok üzerine taşıyın, artı (+) işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak "Azure işlevleri" yazın. Eylemler listesinden şu eylemi seçin: **bir Azure Işlevi seçin**
+1. Arama kutusuna filtreniz olarak "Azure işlevleri" yazın. Eylemler listesinden **bir Azure Işlevi seçin** eylemini seçin, örneğin:
 
    !["Azure işlevleri" ni bulun](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -126,24 +126,24 @@ Mantıksal uygulama Tasarımcısı 'nı kullanarak mantıksal uygulamanızın i�
 
    1. **İşlev adı** kutusunda, işleviniz için bir ad girin.
 
-   1. **Kod** kutusunda, işleviniz çalıştıktan sonra mantıksal uygulamanıza döndürülmesini istediğiniz yanıt ve yük dahil olmak üzere, kodunuzu işlev şablonuna ekleyin.
+   1. **Kod** kutusunda, işleviniz çalıştıktan sonra mantıksal uygulamanıza döndürülmesini istediğiniz yanıt ve yük dahil olmak üzere, kodunuzu işlev şablonuna ekleyin. İşiniz bittiğinde **Oluştur**’u seçin.
 
-      ![İşlevinizi tanımlayın](./media/logic-apps-azure-functions/function-definition.png)
+   Örneğin:
 
-      Şablonun kodunda, *`context` nesnesi* , mantıksal uygulamanızın sonraki bir adımda bulunan **İstek gövdesi** alanı aracılığıyla gönderdiği iletiyi ifade eder. İşlevinizin içinden `context` nesnesinin özelliklerine erişmek için şu sözdizimini kullanın:
+   ![İşlevinizi tanımlayın](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-      `context.body.<property-name>`
+   Şablonun kodunda, *`context` nesnesi* , mantıksal uygulamanızın sonraki bir adımda bulunan **İstek gövdesi** alanı aracılığıyla gönderdiği iletiyi ifade eder. İşlevinizin içinden `context` nesnesinin özelliklerine erişmek için şu sözdizimini kullanın:
 
-      Örneğin, `context` nesnesinin içindeki `content` özelliğine başvurmak için şu sözdizimini kullanın:
+   `context.body.<property-name>`
 
-      `context.body.content`
+   Örneğin, `context` nesnesinin içindeki `content` özelliğine başvurmak için şu sözdizimini kullanın:
 
-      Şablon kodu Ayrıca, `data` parametresindeki değeri depolayan bir `input` değişkeni de içerir, böylece işleviniz bu değer üzerinde işlem yapabilir. JavaScript işlevlerinin içinde `data` değişkeni de `context.body`için bir kısayoldur.
+   `context.body.content`
 
-      > [!NOTE]
-      > Burada `body` özelliği `context` nesnesi için geçerlidir ve işlevinize de geçirebilmeniz için bir eylemin çıktısından gelen **gövde** belirteciyle aynı değildir.
+   Şablon kodu Ayrıca, `data` parametresindeki değeri depolayan bir `input` değişkeni de içerir, böylece işleviniz bu değer üzerinde işlem yapabilir. JavaScript işlevlerinin içinde `data` değişkeni de `context.body`için bir kısayoldur.
 
-   1. İşiniz bittiğinde **Oluştur**’u seçin.
+   > [!NOTE]
+   > Burada `body` özelliği `context` nesnesi için geçerlidir ve işlevinize de geçirebilmeniz için bir eylemin çıktısından gelen **gövde** belirteciyle aynı değildir.
 
 1. **Istek gövdesi** kutusunda, bir JAVASCRIPT nesne GÖSTERIMI (JSON) nesnesi olarak biçimlendirilmesi gereken işlevinizin girdisini belirtin.
 
@@ -167,7 +167,7 @@ Mantıksal uygulamalarınızdan mevcut Azure işlevlerini çağırmak için, man
 
 1. İşlevi eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak "Azure işlevleri" yazın. Eylemler listesinden şu eylemi seçin: **bir Azure Işlevi seçin**
+1. **Eylem seçin**altında, arama kutusuna filtreniz olarak "Azure işlevleri" yazın. Eylemler listesinden **bir Azure Işlevi seçin** eylemi seçin.
 
    !["Azure işlevleri" ni bulun](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 

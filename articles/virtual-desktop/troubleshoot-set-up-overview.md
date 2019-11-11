@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/08/2019
+ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: aa4254673d426579a5e5f0e90e389db7c6cadff0
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7f80fb07bbed3bdb478bce557241a92cd571cc83
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607342"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904892"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Sorun çözümüne genel bakış, geri bildirim ve destek
 
@@ -44,6 +44,7 @@ Uzak Masaüstü istemcisi 'ni kullanarak bir kiracı ortamı ayarlarken karşıl
 | İstemcileri bağlama                                                                    | Bkz. [Uzak Masaüstü istemci bağlantıları](troubleshoot-client-connection.md) ve bu sorun çözülmezse, bkz. [oturum ana bilgisayar sanal makine yapılandırması](troubleshoot-vm-configuration.md). |
 | Uzak uygulama veya masaüstü yanıtlama hızı                                      | Sorunlar belirli bir uygulama veya ürüne bağlıysa, bu üründen sorumlu olan ekibe başvurun. |
 | Lisanslama iletileri veya hataları                                                          | Sorunlar belirli bir uygulama veya ürüne bağlıysa, bu üründen sorumlu olan ekibe başvurun. |
+| GitHub 'da Windows sanal masaüstü araçları kullanılırken sorunlar (Azure Resource Manager şablonları, Tanılama Aracı, yönetim aracı) | Sorunları raporlamak için [Uzak Masaüstü Hizmetleri ARM şablonlarına](https://github.com/Azure/RDS-Templates/blob/master/README.md) bakın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

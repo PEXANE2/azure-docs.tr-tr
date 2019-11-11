@@ -1,7 +1,7 @@
 ---
 title: Form tanıyıcı için kapsayıcıyı yüklemek ve çalıştırmak
 titleSuffix: Azure Cognitive Services
-description: Form ve tablo verisini ayrıştırmak için Form Tanıma kapsayıcısını kullanmayı öğrenin.
+description: Bu makalede, form ve tablo verilerini ayrıştırmak için Azure bilişsel hizmetler formu tanıyıcı kapsayıcısının nasıl kullanılacağı açıklanmaktadır.
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: eced3415db27562ea60b67f5c23ca7fafe09ccc0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: f26fe9768930c9d8b99a06e3ea8b51ed1657bcb2
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316638"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904500"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Form tanıyıcı kapsayıcıları yükleyip çalıştırın
 
@@ -34,23 +34,23 @@ Form tanıyıcı kapsayıcılarını kullanmadan önce, aşağıdaki önkoşulla
 
 |Gerekli|Amaç|
 |--|--|
-|Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz: [Docker'a genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> Windows 'da Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
-|Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarından ve temel `docker` komutlar hakkında bilgi sahibi olmanız gerekir.|
+|Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz. [Docker genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> Windows 'da Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
+|Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri ve temel `docker` komutlarının bilgileri gibi Docker kavramlarını temel olarak kavramalısınız.|
 |Azure CLI| [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi konağa yükler.|
-|Görüntü İşleme API'si kaynağı| Taranmış belge ve görüntüleri işlemek için bir Görüntü İşleme kaynağınız olması gerekir. Metin Tanıma özelliğine bir Azure kaynağı (REST API veya SDK) ya da bilişsel hizmetler-tanı- *metin* [kapsayıcısı](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)olarak erişebilirsiniz. Olağan faturalandırma ücretleri uygulanır. <br><br>Görüntü İşleme kaynağınız için hem API anahtarını hem de uç noktalarını geçirin (Azure bulut veya bilişsel hizmetler kapsayıcısı). Bu API anahtarını ve uç noktayı **{COMPUTER_VISION_API_KEY}** ve **{COMPUTER_VISION_ENDPOINT_URI}** olarak kullanın.<br><br> Bilişsel *Hizmetler-tanı-metin* kapsayıcısını kullanırsanız, şunları yaptığınızdan emin olun:<br><br>Form tanıyıcı kapsayıcısı için görüntü işleme anahtarınız, bilişsel `docker run` *Hizmetler-Recognize-metin* kapsayıcısının görüntü işleme komutunda belirtilen anahtardır.<br>Faturanızı, kapsayıcının uç noktasıdır (örneğin, `http://localhost:5000`). Hem Görüntü İşleme kapsayıcısını hem de form tanıyıcı kapsayıcısını aynı konakta kullanıyorsanız, her ikisi de varsayılan bağlantı noktası olan *5000*ile başlatılamaz. |
-|Form tanıyıcı kaynağı |Bu kapsayıcıları kullanmak için, şunları yapmanız gerekir:<br><br>İlişkili API anahtarını ve uç nokta URI 'sini almak için bir Azure **form tanıyıcı** kaynağı. Her iki değer de Azure portal **form tanıyıcıya** genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcının başlaması için her iki değer de gereklidir.<br><br>**{FORM_RECOGNIZER_API_KEY}** : Anahtarlar sayfasındaki kullanılabilir iki kaynak anahtardan biri<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** : Genel Bakış sayfasında belirtilen bitiş noktası|
+|Görüntü İşleme API'si kaynağı| Taranmış belge ve görüntüleri işlemek için bir Görüntü İşleme kaynağınız olması gerekir. Metin Tanıma özelliğine bir Azure kaynağı (REST API veya SDK) ya da bilişsel hizmetler-tanı- *metin* [kapsayıcısı](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)olarak erişebilirsiniz. Olağan faturalandırma ücretleri uygulanır. <br><br>Görüntü İşleme kaynağınız için hem API anahtarını hem de uç noktalarını geçirin (Azure bulut veya bilişsel hizmetler kapsayıcısı). Bu API anahtarını ve uç noktayı **{COMPUTER_VISION_API_KEY}** ve **{COMPUTER_VISION_ENDPOINT_URI}** olarak kullanın.<br><br> Bilişsel *Hizmetler-tanı-metin* kapsayıcısını kullanırsanız, şunları yaptığınızdan emin olun:<br><br>Form tanıyıcı kapsayıcısı için Görüntü İşleme anahtarınız, bilişsel *Hizmetler-Recognize-metin* kapsayıcısının görüntü işleme `docker run` komutunda belirtilen anahtardır.<br>Faturanızı, kapsayıcının uç noktasıdır (örneğin, `http://localhost:5000`). Hem Görüntü İşleme kapsayıcısını hem de form tanıyıcı kapsayıcısını aynı konakta kullanıyorsanız, her ikisi de varsayılan bağlantı noktası olan *5000*ile başlatılamaz. |
+|Form tanıyıcı kaynağı |Bu kapsayıcıları kullanmak için, şunları yapmanız gerekir:<br><br>İlişkili API anahtarını ve uç nokta URI 'sini almak için bir Azure **form tanıyıcı** kaynağı. Her iki değer de Azure portal **form tanıyıcıya** genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcının başlaması için her iki değer de gereklidir.<br><br>**{FORM_RECOGNIZER_API_KEY}** : anahtarlar sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** : Genel Bakış sayfasında belirtilen bitiş noktası|
 
 ## <a name="gathering-required-parameters"></a>Gerekli parametreler toplanıyor
 
-Gerekli olan tüm bilişsel hizmetler için üç birincil parametre vardır. Son Kullanıcı Lisans Sözleşmesi 'nin `accept`(EULA) değeri ile mevcut olması gerekir. Ayrıca, hem bir uç nokta URL 'SI hem de API anahtarı gereklidir.
+Gerekli olan tüm bilişsel hizmetler için üç birincil parametre vardır. Son Kullanıcı Lisans Sözleşmesi 'nin (EULA) `accept`bir değerle mevcut olması gerekir. Ayrıca, hem bir uç nokta URL 'SI hem de API anahtarı gereklidir.
 
-### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Uç nokta `{COMPUTER_VISION_ENDPOINT_URI}` URI 'si ve`{FORM_RECOGNIZER_ENDPOINT_URI}`
+### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Uç nokta URI `{COMPUTER_VISION_ENDPOINT_URI}` ve `{FORM_RECOGNIZER_ENDPOINT_URI}`
 
-**Uç nokta** URI değeri, karşılık gelen bilişsel hizmet kaynağının Azure Portal *genel bakış* sayfasında bulunur. *Genel bakış* sayfasına gidin, uç noktanın üzerine gelin ve bir `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> simge görüntülenir. Gerektiğinde kopyalayın ve kullanın.
+**Uç nokta** URI değeri, karşılık gelen bilişsel hizmet kaynağının Azure Portal *genel bakış* sayfasında bulunur. *Genel bakış* sayfasına gidin, uç noktanın üzerine gelin ve bir `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> simgesi görüntülenir. Gerektiğinde kopyalayın ve kullanın.
 
 ![Uç nokta URI 'sini daha sonra kullanılmak üzere toplayın](../containers/media/overview-endpoint-uri.png)
 
-### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Anahtarlar `{COMPUTER_VISION_API_KEY}` ve`{FORM_RECOGNIZER_API_KEY}`
+### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Anahtarlar `{COMPUTER_VISION_API_KEY}` ve `{FORM_RECOGNIZER_API_KEY}`
 
 Bu anahtar, kapsayıcıyı başlatmak için kullanılır ve ilgili bilişsel hizmet kaynağının Azure portal tuşları sayfasında kullanılabilir. *Anahtarlar* sayfasına gidin ve `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> simgesine tıklayın.
 
@@ -81,7 +81,7 @@ Her form tanıyıcı kapsayıcısı için ayrılacak en düşük ve önerilen CP
 | Metin Tanıma | 1 çekirdek, 8 GB bellek | 2 çekirdek, 8 GB bellek |
 
 * Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.
-* Çekirdek ve bellek, `--cpus` `docker run` komutunun bir parçası `--memory` olarak kullanılan ve ayarlarına karşılık gelir.
+* Çekirdek ve bellek, `docker run` komutunun bir parçası olarak kullanılan `--cpus` ve `--memory` ayarlarına karşılık gelir.
 
 > [!Note]
 > En düşük ve önerilen değerler, konak makine kaynakları *değil* , Docker sınırlarına dayanır.
@@ -122,14 +122,14 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 Kapsayıcı [ana bilgisayar](#the-host-computer)üzerinde olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
 
-1. [Kapsayıcıyı](#run-the-container-by-using-the-docker-run-command)gerekli faturalandırma ayarlarıyla çalıştırın. `docker run` Komuta daha fazla [örnek](form-recognizer-container-configuration.md#example-docker-run-commands) kullanılabilir.
+1. [Kapsayıcıyı](#run-the-container-by-using-the-docker-run-command)gerekli faturalandırma ayarlarıyla çalıştırın. `docker run` komutuna daha fazla [örnek](form-recognizer-container-configuration.md#example-docker-run-commands) kullanılabilir.
 1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint).
 
 ## <a name="run-the-container-by-using-the-docker-run-command"></a>Docker Run komutunu kullanarak kapsayıcıyı çalıştırma
 
-Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{COMPUTER_VISION_ENDPOINT_URI}` ,`{FORM_RECOGNIZER_API_KEY}` [](#gathering-required-parameters) Vedeğerlerini`{COMPUTER_VISION_API_KEY}`alma hakkındaayrıntılariçingerekliparametreleritoplamabölümünebakın`{FORM_RECOGNIZER_ENDPOINT_URI}` .
+Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{COMPUTER_VISION_ENDPOINT_URI}`, `{COMPUTER_VISION_API_KEY}`, `{FORM_RECOGNIZER_ENDPOINT_URI}` ve `{FORM_RECOGNIZER_API_KEY}` değerlerini alma hakkında ayrıntılar için [gereken parametreleri toplama](#gathering-required-parameters) bölümüne bakın.
 
-Komut örnekleri mevcuttur. [](form-recognizer-container-configuration.md#example-docker-run-commands) `docker run`
+Komut [örnekleri](form-recognizer-container-configuration.md#example-docker-run-commands) mevcuttur. `docker run`
 
 ### <a name="form-recognizer"></a>Form Tanıma
 
@@ -186,7 +186,7 @@ Sonraki her kapsayıcı farklı bir bağlantı noktasında olmalıdır.
 
 ### <a name="run-separate-containers-with-docker-compose"></a>Docker Compose ile ayrı kapsayıcılar çalıştırma
 
-Yerel olarak aynı konakta barındırılan form tanıyıcı ve metin tanıyıcı birleşimi için aşağıdaki örneğe bakın Docker Compose YAML dosyası. Metin tanıyıcı `{COMPUTER_VISION_API_KEY}` , `formrecognizer` ve `ocr` kapsayıcıları için aynı olmalıdır. , `{COMPUTER_VISION_ENDPOINT_URI}` `formrecognizer` Kapsayıcı `ocr` adı ve bağlantı noktasını `ocr` kullandığından yalnızca kapsayıcıda kullanılır. 
+Yerel olarak aynı konakta barındırılan form tanıyıcı ve metin tanıyıcı birleşimi için aşağıdaki örneğe bakın Docker Compose YAML dosyası. `{COMPUTER_VISION_API_KEY}` metin tanıyıcı `formrecognizer` ve `ocr` kapsayıcıları için aynı olmalıdır. `{COMPUTER_VISION_ENDPOINT_URI}`, `formrecognizer` kapsayıcısı `ocr` adı ve bağlantı noktasını kullandığından, yalnızca `ocr` kapsayıcısında kullanılır. 
 
 ```docker
 version: '3.3'
@@ -237,7 +237,7 @@ services:
 ```
 
 > [!IMPORTANT]
-> `Eula` `FormRecognizer:ComputerVisionEndpointUri` Kapsayıcı çalıştırmak için, `ApiKey`ve ve seçeneklerinin yanı sıra `FormRecognizer:ComputerVisionApiKey` ve seçenekleri belirtilmelidir; Aksi takdirde kapsayıcı başlatılmaz. `Billing` Daha fazla bilgi için [faturalama](#billing).
+> Kapsayıcının çalıştırılabilmesi için `Eula`, `Billing`ve `ApiKey`, ayrıca `FormRecognizer:ComputerVisionApiKey` ve `FormRecognizer:ComputerVisionEndpointUri` seçenekleri belirtilmelidir; Aksi takdirde, kapsayıcı başlatılmaz. Daha fazla bilgi için bkz. [faturalandırma](#billing).
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
 
@@ -325,12 +325,12 @@ Bu makalede, form tanıyıcı kapsayıcıları indirmek, yüklemek ve çalışt�
 
 * Form tanıyıcı, Docker için bir Linux kapsayıcısı sağlar.
 * Kapsayıcı görüntüleri Azure 'daki özel kapsayıcı kayıt defterinden indirilir.
-* Docker kapsayıcı görüntüleri çalıştırın.
+* Kapsayıcı görüntüleri Docker 'da çalışır.
 * Kapsayıcının ana bilgisayar URI 'sini belirterek, form tanıyıcı kapsayıcısında işlemleri çağırmak için REST API ya da REST SDK kullanabilirsiniz.
 * Bir kapsayıcıyı örneklediğinizde faturalandırma bilgilerini belirtmeniz gerekir.
 
 > [!IMPORTANT]
->  Bilişsel hizmetler kapsayıcıları, kullanım ölçümü için Azure'a bağlanmadan çalıştırmak için lisanslanmaz. Müşteriler, her zaman faturalandırma bilgileri ölçüm hizmeti ile iletişim kurmak kapsayıcıları etkinleştirmeniz gerekiyor. Bilişsel hizmetler kapsayıcıları, müşteri verilerini (örneğin, çözümlenmekte olan resim veya metin) Microsoft 'a göndermez.
+>  Bilişsel hizmetler kapsayıcıları, ölçüm için Azure 'a bağlı kalmadan çalıştırılmak üzere lisanslanmaz. Müşterilerin, ödeme bilgilerini her zaman ölçüm hizmetiyle iletişimine olanak tanımak için kapsayıcıların etkinleştirilmesi gerekir. Bilişsel hizmetler kapsayıcıları, müşteri verilerini (örneğin, çözümlenmekte olan resim veya metin) Microsoft 'a göndermez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

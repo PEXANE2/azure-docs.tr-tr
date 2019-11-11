@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 88a914a2a4d3d62918b01674d6d21f2f011e2c2e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 049b09f7927da2cc841130a0adeaa90768037db8
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834310"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903197"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri Agent yedeklemelerini yönetme
 
@@ -62,7 +62,7 @@ Aşağıdaki şekilde bir ilke oluşturun:
             -Gece yarısı ve 6:00 PM 'deki ayın son haftasında Cumartesi günü alınan yedeklemeler 12 ay boyunca tutulur.
             -Mart 'ın son haftasındaki Cumartesi günü alınan yedeklemeler 10 yıl boyunca tutulur.
 
-           ![Retention example](./media/backup-configure-vault/retention-example.png)
+    ![Bekletme örneği](./media/backup-configure-vault/retention-example.png)
 
 11. İlk yedekleme **türünü seçin** bölümünde, ağ üzerinden ilk yedeklemeyi almak mi yoksa çevrimdışı yedekleme mi kullanmak istediğinize karar verin (çevrimdışı yedekleme hakkında daha fazla bilgi için bu [makaleye](backup-azure-backup-import-export.md)bakın). İlk yedeklemeyi ağ üzerinden almak için, **ağ üzerinden otomatik olarak** ' ı seçin ve **İleri**' ye tıklayın.
 
@@ -165,7 +165,7 @@ Dosya ve klasör yedeklemesini korumayı durdurmanın iki yolu vardır:
     Zamanlanmış bir yedeklemeyi değiştirmek veya durdurmak ![.](./media/backup-azure-manage-mars/mars-actions.png)
 1. **Ilke öğesi Seç** sayfasında **dosyalarınız ve klasörleriniz için bir yedekleme zamanlamasını değiştir** ' i seçin, **İleri**' ye tıklayın.
     Zamanlanmış bir yedeklemeyi değiştirmek veya durdurmak ![.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. **Zamanlanmış bir yedeklemeyi Değiştir veya Durdur** sayfasında, **Bu yedekleme zamanlamasını kullanmayı Durdur ' u seçin, ancak depolanan yedeklemeleri bir zamanlamanın yeniden etkinleştirildiğinden koruyun**. Sonra **İleri**’yi seçin.  
+1. **Zamanlanmış bir yedeklemeyi Değiştir veya Durdur** sayfasında, **Bu yedekleme zamanlamasını kullanmayı Durdur ' u seçin, ancak bir zamanlama yeniden etkinleştirilinceye kadar depolanan yedeklemeleri saklayın**. Sonra **İleri**’yi seçin.  
     Zamanlanmış bir yedeklemeyi değiştirmek veya durdurmak ![.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
 1. **Zamanlanan yedeklemeyi Duraklat** bölümünde bilgileri gözden geçirin ![zamanlanan bir yedeklemeyi değiştirmek veya durdurmak için **son** ' a tıklayın.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
 1. **yedekleme Işlemini Değiştir** ' de yedekleme duraklatma durumu başarısını denetleyip **son ' a** tıklayın.

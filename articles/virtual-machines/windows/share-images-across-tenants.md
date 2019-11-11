@@ -10,14 +10,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: cynthn
-ms.openlocfilehash: b921aabd8d71654d089c5f16aba27c286a1e91ec
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 6bf627b5456cbd878580d7b346536c98a513ca6a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305035"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903711"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure kiracılar genelinde Galeri VM görüntülerini paylaşma
+
+Paylaşılan görüntü galerileri, RBAC kullanarak görüntüleri paylaşmanıza olanak sağlar. RBAC kullanarak kiracınızdaki görüntüleri paylaşabilir ve hatta kiracınızın dışındaki bireyler ekleyebilirsiniz. Bu basit paylaşım seçeneği hakkında daha fazla bilgi için [Galeriyi paylaşma](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery)bölümüne bakın.
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -26,7 +28,6 @@ ms.locfileid: "68305035"
 > Başka bir Azure kiracısındaki görüntüden bir VM dağıtmak için portalını kullanamazsınız. Kiracılar arasında paylaşılan bir görüntüden VM oluşturmak için [Azure CLI](../linux/share-images-across-tenants.md) veya PowerShell kullanmanız gerekir.
 
 ## <a name="create-a-vm-using-powershell"></a>PowerShell kullanarak VM oluşturma
-
 
 Uygulama KIMLIĞI, gizli anahtar ve kiracı KIMLIĞINI kullanarak her iki kiracıda oturum açın. 
 

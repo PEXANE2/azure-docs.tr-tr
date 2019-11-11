@@ -1,7 +1,7 @@
 ---
 title: Modern Okuyucu SDK başvurusu
 titleSuffix: Azure Cognitive Services
-description: Modern Okuyucu SDK 'Sı için başvuru
+description: Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu Web uygulamanızla tümleştirmenize olanak tanıyan bir JavaScript kitaplığıdır.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ed9bd6f5932fdcb2d9124a000115a6f68cf21613
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 09244b634fa2603a7dc92af3c78d171f8d6bd9df
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889301"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903104"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Modern Okuyucu SDK 'Sı başvuru kılavuzu
 
@@ -52,7 +52,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 Derinlikli okuyucu yüklendiğinde çözümlenen bir `Promise<HTMLDivElement>`döndürür. `Promise`, yalnızca alt öğesi, tam ekran okuyucu sayfasını içeren bir `iframe` öğesi olan bir `div` öğesine çözümlenir.
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 
 Tam ekran okuyucu yüklenemezse, döndürülen `Promise` bir [`Error`](#error) nesnesiyle reddedilir. Daha fazla bilgi için bkz. [hata kodları](#error-codes).
 
@@ -84,7 +84,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | RenderButtons işlevinin belirli davranışlarını yapılandırmaya yönelik seçenekler. İsteğe bağlı. |
 
-## <a name="types"></a>Türü
+## <a name="types"></a>Türler
 
 ### <a name="content"></a>İçerik
 
@@ -114,7 +114,7 @@ Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
 | MIME türü | Açıklama |
 | --------- | ----------- |
 | metin/düz | Düz metin. |
-| metin/html | HTML içeriği. [Daha fazla bilgi](#html-support)|
+| metin/html | HTML içeriği. [Daha fazla bilgi edinin](#html-support)|
 | Application/MathML + XML | Matematik biçimlendirme dili (MathML). [Daha fazla bilgi edinin](https://developer.mozilla.org/en-US/docs/Web/MathML).
 | application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx biçim belgesi.
 

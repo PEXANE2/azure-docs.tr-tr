@@ -1,22 +1,22 @@
 ---
-title: Azure haritalar ile etkileşimli harita arama | Microsoft Docs
+title: 'Hızlı başlangıç: Azure Maps ile etkileşimli harita arama'
 description: Azure hızlı başlangıç-Azure haritaları kullanarak bir demo etkileşimli harita araması oluşturma
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/07/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 092da53c3179d939ebf0472219338b8d8392fda6
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1b9d8c98391e7e2bac3492dcf696f098f5c6cf57
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554298"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903172"
 ---
-# <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Azure haritalar 'ı kullanarak etkileşimli arama haritası oluşturma
+# <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Hızlı başlangıç: Azure haritalar kullanarak etkileşimli arama haritası oluşturma
 
 Bu makalede, Azure Haritalar’ın kullanıcılara etkileşimli arama deneyimi sunan bir harita oluşturmaya yönelik özellikler gösterilmektedir. Bu temel adımlarda size kılavuzluk eder:
 * Kendi Azure haritalar hesabınızı oluşturun.
@@ -26,7 +26,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’ında oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-an-account-and-get-your-key"></a>Hesap oluşturma ve anahtarınızı alma
 
@@ -49,7 +49,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) dosyasının içeriklerini indirin veya kopyalayın.
 2. Bu dosyanın içeriğini **AzureMapDemo. html**olarak yerel olarak kaydedin. Bir metin düzenleyicisinde açın.
-3. @No__t_0 dize için arama yapın. Önceki bölümdeki **birincil anahtar** değeriyle değiştirin.
+3. `<Your Azure Maps Key>`dize için arama yapın. Önceki bölümdeki **birincil anahtar** değeriyle değiştirin.
 
 ## <a name="open-the-application"></a>Uygulamayı açma
 

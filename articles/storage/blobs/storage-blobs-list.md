@@ -1,23 +1,25 @@
 ---
 title: .NET-Azure depolama ile Blobları listeleme
-description: .NET istemci kitaplığını kullanarak Azure Storage hesabınızdaki bir kapsayıcıdaki Blobları listeleyeceğinizi öğrenin.
+description: .NET istemci kitaplığını kullanarak Azure Storage hesabınızdaki bir kapsayıcıdaki Blobları listeleyeceğinizi öğrenin. Kod örnekleri, blob 'ların bir düz listede nasıl ekleneceğini ya da dizin veya klasörler halinde düzenlendikleri gibi Blobları hiyerarşik olarak nasıl listelemiş olduğunu gösterir.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bf9d2d59e993de3807a10a6c39f88b2063024bfc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4b6dc9d80cfe96e501e575d265b9fa383b1c4d2c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599935"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902012"
 ---
 # <a name="list-blobs-with-net"></a>.NET ile Blobları listeleme
 
-Kodlarınızdan blob 'ları listelürsünüz, sonuçların Azure depolama 'dan nasıl döndürüleceğini yönetmek için bir dizi seçenek belirtebilirsiniz. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage/client)kullanılarak Blobların nasıl listeyapılacağı gösterilmektedir.  
+Kodlarınızdan blob 'ları listelürsünüz, sonuçların Azure depolama 'dan nasıl döndürüleceğini yönetmek için bir dizi seçenek belirtebilirsiniz. Her bir sonuç kümesinde döndürülecek sonuç sayısını belirtebilir ve ardından sonraki kümeleri elde edebilirsiniz. Adları bu karakterle veya dizeyle başlayan Blobları döndürmek için bir ön ek belirtebilirsiniz. Blob 'ları düz bir liste yapısında veya hiyerarşik olarak listeleyebilirsiniz. Hiyerarşik bir liste Blobları klasörler halinde düzenlenmiş gibi döndürür. 
+
+Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage/client)kullanılarak Blobların nasıl listeyapılacağı gösterilmektedir.  
 
 ## <a name="understand-blob-listing-options"></a>Blob listeleme seçeneklerini anlama
 
@@ -53,7 +55,7 @@ Sonuçlara blob meta verileri döndürmek için [Bloblistingdetails](/dotnet/api
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Düz liste ve hiyerarşik listeye karşı
 
-Azure depolama 'daki Bloblar, hiyerarşik bir paradigma (klasik bir dosya sistemi gibi) yerine düz bir paradigma göre düzenlenir. Ancak, hiyerarşik bir paradigma benzemek için Blobları *sanal dizinlere* göre düzenleyebilirsiniz. Sanal dizin, sınırlayıcı karakter tarafından parçalanarak blob adının bir parçasıdır.
+Azure depolama 'daki Bloblar, hiyerarşik bir paradigma (klasik bir dosya sistemi gibi) yerine düz bir paradigma göre düzenlenir. Ancak, bir klasör yapısını benzemek için Blobları *sanal dizinlere* göre düzenleyebilirsiniz. Bir sanal dizin, blob adının bir parçasını oluşturur ve sınırlayıcı karakterle belirtilir.
 
 Blob 'ları sanal dizinlere göre düzenlemek için blob adında bir sınırlayıcı karakter kullanın. Varsayılan sınırlayıcı karakter eğik çizgidir (/), ancak sınırlayıcı olarak herhangi bir karakter belirtebilirsiniz.
 

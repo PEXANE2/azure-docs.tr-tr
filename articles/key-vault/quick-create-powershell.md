@@ -1,6 +1,6 @@
 ---
-title: "Azure Hızlı Başlangıç: PowerShell kullanarak Key Vault'tan gizli dizi ayarlama ve alma | Microsoft Docs"
-description: ''
+title: 'Hızlı başlangıç: PowerShell kullanarak Key Vault bir gizli anahtar alma & ayarlama'
+description: Bu hızlı başlangıçta, PowerShell kullanarak bir Azure anahtar kasasında gizli dizileri oluşturmayı, almayı ve silmeyi öğrenin
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -8,16 +8,16 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/03/2019
+ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5753384d12d31016dff7a33175899835c8bd1fec
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2d33d04bfaaccf3e7bcaefc7eec98b04a5ffc2e8
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259250"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901438"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Hızlı Başlangıç: PowerShell kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üzerini gerektirir. Sürümü `$PSVersionTable.PSVersion` bulmak için yazın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Login-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üzerini gerektirir. Sürümü bulmak için `$PSVersionTable.PSVersion` yazın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Login-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ```azurepowershell-interactive
 Login-AzAccount
@@ -57,8 +57,8 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 
 Bu cmdlet’in çıktısı, yeni oluşturulan anahtar kasasının özelliklerini gösterir. Aşağıda listelenen iki özelliği not edin:
 
-* **Kasa adı**: Örnek olarak **contoso-Vault2**. Bu adı diğer Anahtar Kasası cmdlet'leri için kullanacaksınız.
-* **Kasa URI 'si**: Bu örnekte https://contosokeyvault.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
+* **Kasa Adı**: Örnekte bu değer **Contoso-Vault2** şeklindedir. Bu adı diğer Anahtar Kasası cmdlet'leri için kullanacaksınız.
+* **Kasa URI’si**: Örnekte bu değer https://contosokeyvault.vault.azure.net/ şeklindedir. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
 Kasa oluşturma sonrasında Azure hesabınız bu yeni kasa üzerinde herhangi bir işlem yapmasına izin verilen tek hesaptır.
 
