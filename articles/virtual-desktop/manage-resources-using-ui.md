@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300906"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904904"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Öğretici: bir yönetim aracı dağıtın
 
@@ -56,15 +56,15 @@ Azure Kaynak Yönetimi şablonunu dağıtmak için aşağıdaki yönergeleri izl
     - ' Yi bir bulut çözümü sağlayıcısı aboneliğine dağıtıyorsanız, Azure 'a dağıtmak için aşağıdaki yönergeleri izleyin:
         1. Aşağı kaydırın ve **Azure 'A dağıt**' a sağ tıkladıktan sonra **bağlantı konumunu Kopyala**' yı seçin.
         2. Not Defteri gibi bir metin Düzenleyicisi açın ve bağlantıyı buraya yapıştırın.
-        3. @No__t-0 ' dan sonra ve diyez etiketinden (#) önce, bir at işareti (@) ve ardından kiracı etki alanı adını girin. Şöyle bir örnek: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        3. <https://portal.azure.com/> ve diyez etiketinden (#) önce, bir at işareti (@) ve ardından kiracı etki alanı adını girin. Şöyle bir örnek: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
         4. Bulut çözümü sağlayıcısı aboneliğine yönetici/katkıda bulunan izinleri olan bir kullanıcı olarak Azure portal oturum açın.
         5. Metin düzenleyicisine kopyaladığınız bağlantıyı adres çubuğuna yapıştırın.
 
 ### <a name="guidance-for-template-parameters"></a>Şablon parametreleri Kılavuzu
 Araç yapılandırmasına yönelik parametrelerin nasıl girilmesi aşağıda verilmiştir:
 
-- Bu, RD Aracısı URL 'sidir: https: \//rdbroker. WVD. Microsoft. com/
-- Bu kaynak URL 'sidir: https: \//Mrs-prod. Ame. GBL/Mrs-RDInfra-prod
+- Bu, RD Aracısı URL 'sidir: https:\//rdbroker.wvd.microsoft.com/
+- Bu, kaynak URL 'sidir: https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
 - Azure 'da oturum açmak için AAD kimlik bilgilerinizi MFA devre dışı olarak kullanın. [Azure Resource Manager şablonunu çalıştırmak Için gerekenler](#what-you-need-to-run-the-azure-resource-manager-template)bölümüne bakın.
 - Yönetim aracı için Azure Active Directory kaydedilecek uygulama için benzersiz bir ad kullanın; Örneğin, Apr3UX.
 
@@ -103,9 +103,14 @@ Aracı başlatmak için aşağıdaki yönergeleri izleyin:
 1. Şablonda belirttiğiniz adı taşıyan Azure App Services kaynağını seçin (örneğin, Apr3UX) ve onunla ilişkili URL 'ye gidin. Örneğin, <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Windows sanal masaüstü kimlik bilgilerinizi kullanarak oturum açın.
 3. Bir kiracı grubu seçmeniz istendiğinde, açılan listeden **varsayılan kiracı grubu** ' nu seçin.
+4. Varsayılan kiracı grubu ' nu seçtiğinizde, pencerenizin sağ tarafında bir menü görünür. Bu menüde, kiracı grubunuzun adını bulun ve seçin.
 
 > [!NOTE]
 > Özel bir kiracı grubunuz varsa, açılan listeden seçim yapmak yerine adı el ile girin.
+
+## <a name="report-issues"></a>Sorunları raporla
+
+Yönetim Aracı veya diğer Windows Sanal Masaüstü araçlarıyla ilgili herhangi bir sorunla karşılaşırsanız, GitHub 'da raporlamak için [Uzak Masaüstü Hizmetleri ARM şablonlarındaki](https://github.com/Azure/RDS-Templates/blob/master/README.md) yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
