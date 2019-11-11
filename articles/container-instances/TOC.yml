@@ -91,6 +91,8 @@
       items:
         - name: Canlılık yoklaması yapılandırma
           href: container-instances-liveness-probe.md
+        - name: Hazır olma yoklamalarını yapılandırma
+          href: container-instances-readiness-probe.md
         - name: Kapsayıcıları durdurma ve başlatma
           href: container-instances-stop-start.md
         - name: Çalışan kapsayıcıları güncelleştirme

@@ -241,6 +241,8 @@
                   href: migrate-android-adal-msal.md
                 - name: MSAL.iOS ve MacOS’a geçiş
                   href: migrate-objc-adal-msal.md
+                - name: MSAL Java’ya geçiş
+                  href: migrate-adal-msal-java.md
                 - name: ADAL.NET ve MSAL.NET’ten aracıları kullanarak Xamarin uygulamalarını geçirme
                   href: msal-net-migration-ios-broker.md
             - name: Desteklenen kimlik doğrulama akışları
@@ -390,6 +392,10 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: Uygulama yapılandırması
           items:
+            - name: Azure portalı uygulama kayıtları eğitim kılavuzu (eski)
+              href: app-registrations-training-guide-for-app-registrations-legacy-users.md
+            - name: Uygulama Kayıt Portalı uygulama kayıt kılavuzu
+              href: app-registration-portal-training-guide.md
             - name: Tek kiracılı bir uygulamayı çok kiracılı uygulamaya dönüştürme
               href: howto-convert-app-to-be-multi-tenant.md
             - name: Hizmet sorumlusu oluşturma
@@ -446,6 +452,12 @@
                   href: request-custom-claims.md
                 - name: Yeniden yönlendirme URI’si yapılandırması
                   href: redirect-uris-ios.md
+            - name: MSAL Java
+              items:
+                - name: Belirteç önbelleği serileştirme
+                  href: msal-java-token-cache-serialization.md
+                - name: Belirteç önbelleğinden hesap ekleme ve kaldırma
+                  href: msal-java-get-remove-accounts-token-cache.md
         - name: Visual Studio ile çalışma
           items:
             - name: Active Directory bağlı hizmetini kullanma
@@ -594,8 +606,6 @@
               href: reference-saml-tokens.md
         - name: Uygulama yapılandırması
           items:
-            - name: Uygulama kayıtları eğitim kılavuzu
-              href: app-registrations-training-guide.md
             - name: Uygulamalar ve hizmet sorumluları
               href: app-objects-and-service-principals.md
             - name: Azure AD'ye uygulamalar nasıl ve neden eklenir?

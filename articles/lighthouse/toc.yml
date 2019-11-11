@@ -13,10 +13,10 @@
 - name: Kavramlar
   items:
     - name: Azure tarafından atanan temsilcinin kaynak yönetimi
-      displayName: delegation
+      displayName: 'delegation, projection'
       href: ./concepts/azure-delegated-resource-management.md
     - name: Kiracılar arası yönetim deneyimleri
-      displayName: scenarios
+      displayName: 'scenarios, supported, enhanced, services, limitations, current'
       href: ./concepts/cross-tenant-management-experience.md
     - name: 'Kiracılar, roller ve kullanıcılar'
       displayName: 'Azure AD, Azure Active Directory'
@@ -39,16 +39,22 @@
       displayName: resource management
       href: ./how-to/onboard-customer.md
     - name: Yönetilen Hizmetler tekliflerini Azure Market’te yayımlama
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: 'managed services offer, azure marketplace, publish, marketplace'
       href: ./how-to/publish-managed-services-offers.md
     - name: Müşterileri görüntüleme ve yönetme
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: my customers
       href: ./how-to/view-manage-customers.md
     - name: Hizmet sağlayıcılarını görüntüleme ve yönetme
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: 'customer, update'
       href: ./how-to/view-manage-service-providers.md
-    - name: Düzeltilebilir bir ilke dağıtma
-      href: ./how-to/deploy-policy-remediation.md
+    - name: Azure İlkesi tümleştirmesi
+      items:
+        - name: İlkeyi uygun ölçekte dağıtma
+          displayName: storage
+          href: ./how-to/policy-at-scale.md
+        - name: Düzeltilebilir bir ilke dağıtma
+          displayName: 'deployIfNotExists, modify, managed identities, managed identity'
+          href: ./how-to/deploy-policy-remediation.md
 - name: Başvuru
   items:
     - name: Azure CLI

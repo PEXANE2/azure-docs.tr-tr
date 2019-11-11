@@ -326,7 +326,7 @@
               href: shared-images.md
             - name: Portal
               href: shared-images-portal.md
-            - name: Görüntüleri kiracılar arasında paylaşma
+            - name: Paylaşım için uygulama kaydı
               href: share-images-across-tenants.md
             - name: Paylaşılan görüntü sorunlarını giderme
               href: troubleshooting-shared-images.md

@@ -353,6 +353,10 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: Uygulama Ara Sunucusunda CORS sorunları
               href: application-proxy-understand-cors-issues.md
+    - name: Karma erişimi güvenli hale getirme (bulutta ve şirket içinde)
+      items:
+        - name: Uygulama teslim denetleyicileri veya ağlarla eski uygulamaları güvenli hale getirme
+          href: secure-hybrid-access.md
 - name: Başvuru
   items:
     - name: Uygulama sağlama (SCIM)

@@ -96,6 +96,8 @@
       href: troubleshoot-vm-configuration.md
     - name: Windows Sanal Masaüstü’nde Windows 7 sanal makinesiyle ilgili sorunları giderme
       href: troubleshoot-windows-7-vm.md
+    - name: Windows Sanal Masaüstü yönetim aracı sorunlarını giderme
+      href: troubleshoot-management-tool.md
     - name: Uzak Masaüstü istemcisi bağlantıları
       href: troubleshoot-client-connection.md
     - name: Windows Sanal Masaüstü PowerShell
