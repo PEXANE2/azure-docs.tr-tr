@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure IoT Central belgeleri
+title: Azure IoT Central belgeleri (önizleme özellikleri)
 summary: Azure IoT Central, IoT varlıklarınızı uygun ölçekte bağlamanızı, izlemenizi ve yönetmenizi kolaylaştıran, tamamen yönetilen bir SaaS (hizmet olarak yazılım) çözümüdür. Azure IoT Central, IoT çözümünüzün ilk kurulumunu basitleştirir ve yönetim yüklerini, operasyonel maliyetleri ve normal bir IoT projesinin ek yüklerini ortadan kaldırır. Hızlı başlangıç kılavuzlarımız ve öğreticilerimizden yararlanarak Azure IoT Central uygulamasını oluşturmayı, özelleştirmeyi, yönetmeyi ve kullanmayı öğrenin.
 metadata:
   title: Azure IoT Central belgeleri
@@ -10,14 +10,14 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: d769b906324c1022baffff198fea6e4e44821757
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: 90faa0b7422814011096a10164a6f2bdfceba4d5
+  ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73891814"
+  ms.lasthandoff: 11/12/2019
+  ms.locfileid: "73929855"
 landingContent:
-- title: Azure IoT Central hakkında
+- title: Azure IoT Central hakkında (önizleme özellikleri)
   linkLists:
   - linkListType: overview
     links:

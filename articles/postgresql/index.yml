@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: PostgreSQL için Azure Veritabanı belgeleri
-summary: 'PostgreSQL için Azure Veritabanı, açık kaynak Postgres veritabanı altyapısını temel alan ilişkisel bir veritabanı hizmetidir. Bu, kritik iş yüklerini işleyebilen, tahmin edilebilir performans, güvenlik, yüksek kullanılabilirlik ve dinamik ölçeklenebilirlik sunan, tam olarak yönetilen bir hizmet olarak veritabanıdır. İki dağıtım seçeneğiyle sağlanır: tek sunucu olarak ve Hiper Ölçek (Citus) kümesi olarak (önizleme). Hiper Ölçek (Citus) seçeneği, parçalamayı kullanarak sorguları birden çok makine arasında yatay olarak ölçeklendirir ve daha büyük ölçek ve performans gerektiren uygulamalara hizmet verir. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle, PostgreSQL için Azure Veritabanı’nı kullanmayı öğrenin.'
+summary: 'PostgreSQL için Azure Veritabanı, açık kaynak Postgres veritabanı altyapısını temel alan ilişkisel bir veritabanı hizmetidir. Bu, kritik iş yüklerini işleyebilen, tahmin edilebilir performans, güvenlik, yüksek kullanılabilirlik ve dinamik ölçeklenebilirlik sunan, tam olarak yönetilen bir hizmet olarak veritabanıdır. İki dağıtım seçeneğiyle sağlanır: tek sunucu olarak ve Hiper Ölçek (Citus) kümesi olarak. Hiper Ölçek (Citus) seçeneği, parçalamayı kullanarak sorguları birden çok makine arasında yatay olarak ölçeklendirir ve daha büyük ölçek ve performans gerektiren uygulamalara hizmet verir. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle, PostgreSQL için Azure Veritabanı’nı kullanmayı öğrenin.'
 metadata:
   description: PostgreSQL için Azure Veritabanı, açık kaynak PostgreSQL veritabanı altyapısını temel alan, Microsoft bulutunda geliştiriciler için oluşturulmuş ilişkisel bir veritabanı hizmetidir.
   author: rachel-msft
@@ -8,12 +8,12 @@ metadata:
   ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 70888f27f346c930d37652a3ddd02a0c4d5f65c1
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.openlocfilehash: 4deeec3686d2e3b0a150b74a222f7f1eab0a93fd
+  ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73499908"
+  ms.lasthandoff: 11/12/2019
+  ms.locfileid: "73932237"
 landingContent:
 - title: PostgreSQL için Azure Veritabanı hakkında
   linkLists:
