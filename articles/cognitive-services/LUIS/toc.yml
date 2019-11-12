@@ -39,12 +39,15 @@
           href: get-started-get-model-rest-apis.md
 - name: Öğreticiler
   items:
+    - name: Parçalanabilir uygulama oluşturma
+      items:
+        - name: 1. Kullanıcı amaçlarını belirleme
+          href: tutorial-intents-only.md
+        - name: 2. Kullanıcı verilerini ayıklama
+          href: tutorial-machine-learned-entity.md
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
     - name: Uygulama oluşturma
       items:
-        - name: Kullanıcı amaçlarını belirleme
-          href: tutorial-intents-only.md
-        - name: Önceden oluşturulmuş modellerle ortak kullanıcı verilerini belirleme
-          href: luis-tutorial-prebuilt-intents-entities.md
         - name: Kullanıcı sözlerinden yaklaşımı alma
           href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: Normal ifadelerle düzgün biçimlendirilmiş veriler alma

@@ -876,6 +876,8 @@
       href: service-fabric-common-questions.md
     - name: MSDN Forumu
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+    - name: Azure Resource Manager Dağıtım Korkulukları
+      href: service-fabric-azure-resource-manager-guardrails.md
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: Fiyatlandırma hesaplayıcı

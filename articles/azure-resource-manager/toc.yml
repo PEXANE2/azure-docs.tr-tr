@@ -138,6 +138,8 @@
           href: resource-group-create-multiple.md
         - name: Abonelik düzeyi kaynakları
           href: deploy-to-subscription.md
+        - name: Yönetim grubu düzeyi kaynakları
+          href: deploy-to-management-group.md
     - name: Şablon dağıtma
       items:
         - name: Dağıtma - portal

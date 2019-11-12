@@ -150,6 +150,8 @@
               href: check-cluster-health.md
         - name: Database
           items:
+            - name: Takipçi veritabanları
+              href: follower.md
             - name: Veritabanı izinlerini yönetme
               href: manage-database-permissions.md
             - name: İlkeler

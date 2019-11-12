@@ -39,6 +39,10 @@
           href: how-to-automatic-language-detection.md
         - name: Sıkıştırılmış ses giriş biçimlerini kullanma
           href: how-to-use-codec-compressed-audio-input-streams.md
+        - name: Sıkıştırılmış ses giriş biçimlerini kullanma (iOS)
+          href: how-to-use-codec-compressed-audio-input-streams-ios.md
+        - name: Sıkıştırılmış ses giriş biçimlerini kullanma (Android)
+          href: how-to-use-codec-compressed-audio-input-streams-android.md
         - name: Docker kapsayıcılarıyla konuşma tanıma özelliğini kullanma
           href: speech-container-howto.md?tabs=stt
     - name: Başvuru
@@ -200,11 +204,11 @@
     - name: Genel Bakış
       items:
         - name: Konuşma transkripsiyonu nedir?
-          href: conversation-transcription-service.md
+          href: conversation-transcription.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Gerçek zamanlı Konuşma Transkripsiyonu
-          href: how-to-use-conversation-transcription-service.md
+          href: how-to-use-conversation-transcription.md
         - name: Zaman uyumsuz Konuşma Transkripsiyonu
           href: how-to-async-conversation-transcription.md
     - name: Başvuru
@@ -330,6 +334,11 @@
 - name: Konuşma Hizmeti
   expanded: false
   items:
+    - name: Senaryolar
+      items:
+        - name: Çağrı merkezleri
+          href: get-started.md
+          displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Konuşma Hizmetini ücretsiz olarak deneme
