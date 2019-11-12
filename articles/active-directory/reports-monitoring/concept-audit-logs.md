@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2b30b6463ed3d58ec1565f3c49f98388ad09ed4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: a43c5849dcd037915a46de182064b3e630a663ec
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186279"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907177"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki denetim etkinliği raporları 
 
@@ -42,7 +42,7 @@ Bu makale, denetim raporuna genel bir bakış sağlar.
 ## <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 
 * **Güvenlik Yöneticisi**, **güvenlik okuyucu**, **rapor okuyucu** veya **genel yönetici** rollerinin kullanıcıları
-* Ayrıca, tüm kullanıcılar (yönetici olmayanlar) kendi denetim etkinliklerini görebilir
+* Ayrıca, tüm kullanıcılar (yönetici olmayanlar) kendi oturum açma etkinliklerini görebilir
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 
@@ -57,7 +57,7 @@ Denetim günlüklerinin aşağıdakileri gösteren bir varsayılan liste görün
 - etkinliğin kategorisi ve adı (*ne*) 
 - etkinliğin durumu (başarı veya başarısızlık)
 - Hedef
-- etkinliğin başlatıcısı/aktör (kim)
+- Etkinliğin başlatıcısı/aktör (kim)
 
 ![Denetim günlükleri](./media/concept-audit-logs/listview.png "Denetim günlükleri")
 
@@ -79,7 +79,7 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 
 - Hizmet
-- Category
+- Kategori
 - Etkinlik
 - Durum
 - Hedef
@@ -99,9 +99,9 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 - Koşullu Erişim
 - Çekirdek Dizin
 - Yetkilendirme Yönetimi
-- Identity Protection
+- Kimlik Koruması
 - Davetli Kullanıcılar
-- PIM
+- PıM
 - Self Servis Grup Yönetimi
 - Self Servis Parola Yönetimi
 - Kullanım Koşulları
@@ -111,11 +111,11 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 - Tümü
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
-- Authorization
-- İlgili kişi
+- Kimlik Doğrulaması
+- Yetkilendirme
+- İletişim
 - Cihaz
-- DeviceConfiguration
+- Na
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
@@ -127,7 +127,7 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 
 **Etkinlik** filtresi, yaptığınız kategori ve etkinlik kaynak türü seçimine dayalıdır. Görmek istediğiniz belirli bir etkinliği ya da tüm etkinlikleri seçebilirsiniz. 
 
-Graph API kullanarak tüm denetim etkinliklerinin listesini alabilirsiniz:`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
+Graph API kullanarak tüm denetim etkinliklerinin listesini alabilirsiniz: `https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 **Durum** filtresi, bir denetim işleminin durumuna göre filtrelemenize izin verir. Durum aşağıdakilerden biri olabilir:
 

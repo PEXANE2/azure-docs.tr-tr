@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 067293f76ac4894ca73f4e74cb01db65ae8d1fba
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 877467b65d346c871dd93f4b3f96b2c1664fa4b9
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876912"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906797"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>IoT Hub için ileti yönlendirmeyi ve Event Grid karşılaştırın
 
@@ -21,9 +21,9 @@ Azure IoT Hub, bağlı cihazlarınızdan verileri akışa almak ve bu verileri i
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-**[IoT Hub ileti yönlendirme](iot-hub-devguide-messages-d2c.md)** : Bu IoT Hub özelliği, kullanıcıların cihazdan buluta iletileri Azure depolama kapsayıcıları, Event Hubs, Service Bus kuyrukları ve Service Bus konuları gibi hizmet uç noktalarına yönlendirmesine olanak sağlar. Yönlendirme Ayrıca, verileri uç noktalara yönlendirmeden önce verilerin filtreleneceği bir sorgulama özelliği de sağlar. Cihaz telemetri verilerine ek olarak, eylemleri tetiklemek için kullanılabilecek [telemetri dışı olaylar](iot-hub-devguide-messages-d2c.md#non-telemetry-events) da gönderebilirsiniz. 
+**[IoT Hub ileti yönlendirme](iot-hub-devguide-messages-d2c.md)** : Bu IoT Hub özelliği, kullanıcıların cihazdan buluta Iletileri Azure depolama kapsayıcıları, Event Hubs, Service Bus kuyrukları ve Service Bus konuları gibi hizmet uç noktalarına yönlendirmesine olanak sağlar. Yönlendirme Ayrıca, verileri uç noktalara yönlendirmeden önce verilerin filtreleneceği bir sorgulama özelliği de sağlar. Cihaz telemetri verilerine ek olarak, eylemleri tetiklemek için kullanılabilecek [telemetri dışı olaylar](iot-hub-devguide-messages-d2c.md#non-telemetry-events) da gönderebilirsiniz. 
 
-**Event Grid ile tümleştirme IoT Hub**: Azure Event Grid, yayımlama-abonelik modeli kullanan tam olarak yönetilen bir olay yönlendirme hizmetidir. IoT Hub ve Event Grid, IoT Hub olaylarını neredeyse gerçek zamanlı olarak [Azure ve Azure dışı hizmetlere bütünleştirmek](iot-hub-event-grid.md)için birlikte çalışır. IoT Hub, genel olarak kullanılabilen [cihaz olaylarını](iot-hub-event-grid.md#event-types)yayınlar ve artık genel önizlemede olan telemetri olaylarını da yayımlar.
+**Event Grid ile tümleştirme IoT Hub**: Azure Event Grid, yayımlama-abonelik modeli kullanan tam olarak yönetilen bir olay yönlendirme hizmetidir. IoT Hub ve Event Grid, IoT Hub olaylarını neredeyse gerçek zamanlı olarak [Azure ve Azure dışı hizmetlere bütünleştirmek](iot-hub-event-grid.md)için birlikte çalışır. IoT Hub hem [cihaz olaylarını](iot-hub-event-grid.md#event-types) hem de telemetri olaylarını yayımlar.
 
 ## <a name="differences"></a>Fark
 
@@ -33,8 +33,8 @@ Azure IoT Hub, bağlı cihazlarınızdan verileri akışa almak ve bu verileri i
 | ------- | --------------- | ---------- |
 | **Cihaz iletileri ve olayları** | Evet, ileti yönlendirme telemetri verileri, rapor cihazı ikizi değişiklikleri, cihaz yaşam döngüsü olayları ve dijital ikizi değişiklik olayları ( [ıot Tak ve Kullan genel önizlemenin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası) için kullanılabilir. | Evet, Event Grid telemetri verileri için kullanılabilir, ancak cihazların oluşturulma, silinme, bağlanma ve bağlantısı kesildiğinde de rapor verebilir IoT Hub |
 | **Sıralama** | Evet, olayların sıralaması korunur.  | Hayır, olay sırası garanti edilmez. | 
-| **Filtreleme** | İleti uygulama özellikleri, ileti sistemi özellikleri, ileti gövdesi, cihaz ikizi etiketleri ve cihaz ikizi özellikleri üzerinde zengin filtreleme. Filtreleme, dijital ikizi değişiklik olaylarına uygulanmaz. Örnekler için bkz. [Ileti yönlendirme sorgusu sözdizimi](iot-hub-devguide-routing-query-syntax.md). | Her olaydaki olay türüne, konu türüne ve özniteliklere göre filtreleme. Örnekler için bkz. [Event Grid aboneliklerinde filtreleme olaylarını anlama](../event-grid/event-filtering.md). Telemetri olaylarına abone olurken, Event Grid yayımlamadan önce IoT Hub ileti özelliklerini, ileti gövdesini ve cihaz ikizi filtrelemek için verilere ek filtreler uygulayabilirsiniz. [Olayları filtreleme](../iot-hub/iot-hub-event-grid.md#filter-events)bölümüne bakın. |
-| **Noktalarının** | <ul><li>Event Hubs</li> <li>Azure Blob Depolama</li> <li>Service Bus kuyruğu</li> <li>Service Bus konu başlıkları</li></ul><br>Ücretli IoT Hub SKU 'Lar (S1, S2 ve S3), 10 özel uç nokta ile sınırlıdır. Her IoT Hub için 100 yol oluşturulabilir. | <ul><li>Azure İşlevleri</li> <li>Azure Otomasyonu</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Depolama Blobu</li> <li>Özel Konu Başlıkları</li> <li>Kuyruk Depolama</li> <li>Microsoft Flow</li> <li>Web kancaları aracılığıyla üçüncü taraf hizmetleri</li></ul><br>IoT Hub başına 500 uç noktası desteklenir. Uç noktaların en güncel listesi için bkz. [Event Grid olay işleyicileri](../event-grid/overview.md#event-handlers). |
+| **Menin** | İleti uygulama özellikleri, ileti sistemi özellikleri, ileti gövdesi, cihaz ikizi etiketleri ve cihaz ikizi özellikleri üzerinde zengin filtreleme. Filtreleme, dijital ikizi değişiklik olaylarına uygulanmaz. Örnekler için bkz. [Ileti yönlendirme sorgusu sözdizimi](iot-hub-devguide-routing-query-syntax.md). | Her olaydaki olay türüne, konu türüne ve özniteliklere göre filtreleme. Örnekler için bkz. [Event Grid aboneliklerinde filtreleme olaylarını anlama](../event-grid/event-filtering.md). Telemetri olaylarına abone olurken, Event Grid yayımlamadan önce IoT Hub ileti özelliklerini, ileti gövdesini ve cihaz ikizi filtrelemek için verilere ek filtreler uygulayabilirsiniz. [Olayları filtreleme](../iot-hub/iot-hub-event-grid.md#filter-events)bölümüne bakın. |
+| **Noktalarının** | <ul><li>Event Hubs</li> <li>Azure Blob Depolama</li> <li>Service Bus kuyruğu</li> <li>Hizmet Veri Yolu konuları</li></ul><br>Ücretli IoT Hub SKU 'Lar (S1, S2 ve S3), 10 özel uç nokta ile sınırlıdır. Her IoT Hub için 100 yol oluşturulabilir. | <ul><li>Azure İşlevleri</li> <li>Azure Otomasyonu</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Depolama Blobu</li> <li>Özel Konu Başlıkları</li> <li>Kuyruk Depolama</li> <li>Microsoft Flow</li> <li>Web kancaları aracılığıyla üçüncü taraf hizmetleri</li></ul><br>IoT Hub başına 500 uç noktası desteklenir. Uç noktaların en güncel listesi için bkz. [Event Grid olay işleyicileri](../event-grid/overview.md#event-handlers). |
 | **Maliyet** | İleti yönlendirme için ayrı ücret alınmaz. Yalnızca IoT Hub telemetri girişi ücretlendirilir. Örneğin, üç farklı uç noktaya yönlendirilmiş bir iletiniz varsa, yalnızca bir ileti için faturalandırılırsınız. | IoT Hub ücret alınmaz. Event Grid ayda ilk 100.000 işlemi ücretsiz olarak ve daha sonra yalnızca milyon işlem başına $0,60 ' i sunmaktadır. |
 
 ## <a name="similarities"></a>Benzerlikler
@@ -44,11 +44,11 @@ IoT Hub ileti yönlendirme ve Event Grid benzerlikler vardır ve bazıları aşa
 | Özellik | IoT Hub ileti yönlendirme | Event Grid ile tümleştirme IoT Hub |
 | ------- | --------------- | ---------- |
 | **En büyük ileti boyutu** | 256 KB, cihazdan buluta | 256 KB, cihazdan buluta |
-| **Güvenilirlik** | Geniş Her bir yol için her iletiyi en az bir kez uç noktaya teslim eder. Bir saat içinde teslim edilmemiş tüm iletiler zaman aşımına uğrar. | Geniş Her bir abonelik için her iletiyi en az bir kez Web kancasına gönderir. , 24 saat içinde teslim edilmemiş tüm olayları sona ermez. | 
-| **Ölçeklenebilirlik** | Geniş Milyarlarca ileti gönderen milyonlarca eşzamanlı bağlı cihazı desteklemek için iyileştirilmiştir. | Geniş Her bölge için saniyede 10.000.000 olay yönlendirme yeteneğine sahiptir. |
-| **Gecikme süresi** | Zayıf Neredeyse gerçek zamanlı. | Zayıf Neredeyse gerçek zamanlı. |
+| **Güvenilirlik** | Yüksek: her bir rota için her iletiyi en az bir kez uç noktaya teslim eder. Bir saat içinde teslim edilmemiş tüm iletiler zaman aşımına uğrar. | Yüksek: her bir abonelik için her iletiyi en az bir kez Web kancasına gönderir. , 24 saat içinde teslim edilmemiş tüm olayları sona ermez. | 
+| **Ölçeklenebilirlik** | Yüksek: milyarlarca ileti gönderen milyonlarca eşzamanlı bağlı cihazı desteklemek için Iyileştirildi. | Yüksek: bölge başına saniyede 10.000.000 olay yönlendirme özelliği vardır. |
+| **Gecikme süresi** | Düşük: neredeyse gerçek zamanlı. | Düşük: neredeyse gerçek zamanlı. |
 | **Birden çok uç noktaya gönder** | Evet, birden çok uç noktaya tek bir ileti gönderin. | Evet, birden çok uç noktaya tek bir ileti gönderin.  
-| **Güvenlik** | IoT Hub 'ı cihaz başına kimliği ve iptal edilebilir erişim denetimi sağlar. Daha fazla bilgi için [IoT Hub Access Control](iot-hub-devguide-security.md)bölümüne bakın. | Event Grid, üç noktada doğrulama sağlar: olay abonelikleri, olay yayımlama ve Web kancası olay teslimi. Daha fazla bilgi için [Event Grid güvenliğini ve kimlik doğrulaması](../event-grid/security-authentication.md). |
+| **Güvenlik** | IoT Hub 'ı cihaz başına kimliği ve iptal edilebilir erişim denetimi sağlar. Daha fazla bilgi için [IoT Hub Access Control](iot-hub-devguide-security.md)bölümüne bakın. | Event Grid, üç noktada doğrulama sağlar: olay abonelikleri, olay yayımlama ve Web kancası olay teslimi. Daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması Event Grid](../event-grid/security-authentication.md). |
 
 ## <a name="how-to-choose"></a>Seçim yapma
 

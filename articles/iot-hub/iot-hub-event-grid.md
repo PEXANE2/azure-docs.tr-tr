@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 7d5a232d92c37a94ff427a3bf203f6f20764060e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a2bb961989d5bb1cc879b197e45d25b566c56e83
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748588"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906770"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylara tepki verme
 
@@ -25,7 +25,7 @@ Azure IoT Hub, diğer hizmetlere olay bildirimleri gönderebilmek ve aşağı ak
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Event Grid tümleştirme, Event Grid desteklendiği bölgelerde bulunan IoT Hub 'lar için kullanılabilir. Cihaz telemetri olayları dışındaki tüm cihaz olayları genel kullanıma sunulmuştur. Cihaz telemetri olayı genel önizlemede bulunur ve Doğu ABD, Batı ABD, Batı Avrupa, [Azure Kamu](/azure/azure-government/documentation-government-welcome), [Azure Çin 21Vianet](/azure/china)ve [Azure Almanya](https://azure.microsoft.com/global-infrastructure/germany/)dışındaki tüm bölgelerde kullanılabilir. Bölgelerin en son listesi için bkz. [Azure Event Grid bir giriş](../event-grid/overview.md).
+Event Grid tümleştirme, Event Grid desteklendiği bölgelerde bulunan IoT Hub 'lar için kullanılabilir. Bölgelerin en son listesi için bkz. [Azure Event Grid bir giriş](../event-grid/overview.md).
 
 ## <a name="event-types"></a>Olay türleri
 

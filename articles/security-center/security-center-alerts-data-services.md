@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi 'nde veri Hizmetleri için tehdit algılama | Microsoft Docs
-description: Bu konuda, Azure Güvenlik Merkezi 'nde bulunan veri Hizmetleri uyarıları sunulmaktadır.
+description: Bu makalede, Azure Güvenlik Merkezi 'nde bulunan veri Hizmetleri uyarıları sunulmaktadır.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,19 +10,19 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: c69352b8ff11edfce8bd800a0d3aad4584557572
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d23d9d2712923f37b3ab9da5ae5369342cd82f5d
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621337"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907003"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde veri Hizmetleri için tehdit algılama
 
- Azure Güvenlik Merkezi, veri depolama hizmetlerinin günlüklerini analiz eder ve veri kaynaklarınız için bir tehdit algıladığında uyarıları tetikler. Bu konuda, güvenlik merkezi 'nin aşağıdaki hizmetler için oluşturduğu uyarılar listelenmektedir:
+ Azure Güvenlik Merkezi, veri depolama hizmetlerinin günlüklerini analiz eder ve veri kaynaklarınız için bir tehdit algıladığında uyarıları tetikler. Bu makalede, güvenlik merkezi 'nin aşağıdaki hizmetler için oluşturduğu uyarılar listelenmektedir:
 
 * [Azure SQL veritabanı ve Azure SQL veri ambarı](#data-sql)
-* [Azure Depolama](#azure-storage)
+* [Azure depolama alanı](#azure-storage)
 * [Azure Cosmos DB](#cosmos-db)
 
 ## SQL veritabanı ve SQL veri ambarı<a name="data-sql"></a>
@@ -53,7 +53,7 @@ Güvenlik Merkezi, tehditleri algılamak için blob depolamaya okuma, yazma ve s
 
 |Uyarı|Açıklama|
 |---|---|
-|**Olağan dışı konum erişim anomali**|Örneklenmiş ağ trafiği analizi, dağıtımınızdaki bir kaynaktan kaynaklanan anormal giden Uzak Masaüstü Protokolü (RDP) iletişimi algıladı. Bu etkinlik, bu ortam için anormal olarak kabul edilir. Bu, kaynağınızın güvenliğinin aşıldığını gösterebilir ve artık bir dış RDP uç noktası deneme yanılma saldırısı için kullanılır. Bu tür bir etkinlik, IP 'nizin dış varlıklar tarafından kötü amaçlı olarak işaretlenmesine neden olabilir.|
+|**Olağan dışı konumdan erişim**|Azure depolama hesabına erişim modelinde bir değişiklik olduğunu gösterir. Bu hesaba, son etkinlikle karşılaştırıldığında, bilmediğiniz bir IP adresinden erişen bir IP adresi. Bir saldırgan hesaba erişim elde etti ya da yasal bir Kullanıcı yeni veya olağan dışı bir coğrafi konumdan bağlandı. İkinci bir örnek, yeni bir uygulama veya geliştiriciden uzaktan bakım örneğidir.|
 |**Uygulama erişimi anomali**|Olağan dışı bir uygulamanın bu depolama hesabına eriştiği anlamına gelir. Olası bir neden, bir saldırganın yeni bir uygulama kullanarak depolama hesabınıza eriştiği bir nedendir.|
 |**Anonim erişim anomali**|Bir depolama hesabına erişim modelinde değişiklik olduğunu gösterir. Örneğin, hesaba bu hesapta son erişim düzeniyle karşılaştırıldığında beklenmeyen bir şekilde (herhangi bir kimlik doğrulaması olmadan) erişilebilir. Olası bir neden, saldırganın blob depolamayı tutan bir kapsayıcıya genel okuma erişiminin yararlanmasıdır.|
 |**Tor anomali**|Bu hesaba, Tor 'ın etkin çıkış düğümü olarak bilinen bir IP adresinden başarıyla erişildiğini belirtir (bir anonim proxy). Bu uyarının önem derecesi, kullanılan (varsa) kimlik doğrulaması türünü ve bu erişimin ilk olması durumunda olup olmadığını dikkate alır. Olası nedenler, Tor kullanarak depolama hesabınıza erişen bir saldırgan veya Tor kullanarak depolama hesabınıza erişen meşru bir kullanıcı olabilir.|

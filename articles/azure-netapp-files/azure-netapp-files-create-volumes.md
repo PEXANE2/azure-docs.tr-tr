@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 1a479b4928631f27d5453d462a59fe7fed09a88c
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 1f312e8a5034d238e4802e9323bc1b5ac5cdae21
+ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302768"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906245"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
 
@@ -27,14 +27,14 @@ Azure NetApp Files NFS (NFSv3 ve NFSv 4.1) ve SMBv3 birimlerini destekler. Birim
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 Zaten bir kapasite havuzu ayarlamış olmalısınız.   
-@No__t [Kapasite havuzu ayarlama](azure-netapp-files-set-up-capacity-pool.md)-1  
+[Kapasite havuzu ayarlama](azure-netapp-files-set-up-capacity-pool.md)   
 Azure NetApp Files için bir alt ağ atanmış olmalıdır.  
 [Azure NetApp Files için bir alt ağ temsilcisi seçme](azure-netapp-files-delegate-subnet.md)
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler 
 
 > [!IMPORTANT] 
-> NFSv 4.1 özelliğine erişim için beyaz liste gerekir.  Beyaz liste istemek için <anffeedback@microsoft.com> ' a bir istek gönderebilirsiniz. 
+> NFSv 4.1 özelliğine erişim için beyaz liste gerekir.  Beyaz liste istemek için <anffeedback@microsoft.com>bir istek gönderebilirsiniz. 
 
 * Hangi NFS sürümünün kullanılacağına karar verme  
   NFSv3, çok çeşitli kullanım durumlarını işleyebilir ve genellikle çoğu kurumsal uygulamalarda dağıtılır. Uygulamanızın gerektirdiği sürümü (NFSv3 veya NFSv 4.1) doğrulamanız ve uygun sürümü kullanarak biriminiz oluşturmanız gerekir. Örneğin, [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)kullanıyorsanız, NFSv 4.1 ile dosya kilitleme NFSv3 üzerinden önerilir. 
@@ -43,7 +43,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
   UNIX modu bitleri için destek (okuma, yazma ve yürütme) NFSv3 ve NFSv 4.1 için kullanılabilir. NFS istemcisinde NFS birimleri bağlamak için kök düzeyinde erişim gerekir.
 
 * NFSv 4.1 için yerel kullanıcı/grup ve LDAP desteği  
-  Şu anda NFSv 4.1 yalnızca birimlere kök erişimi destekler. 
+  Şu anda NFSv 4.1 yalnızca birimlere kök erişimi destekler. [Azure NetApp Files Için NFSv 4.1 varsayılan etki alanını yapılandırma](azure-netapp-files-configure-nfsv41-domain.md)konusuna bakın. 
 
 ## <a name="best-practice"></a>En iyi yöntem
 
@@ -115,7 +115,8 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
+* [Azure NetApp Files için NFSv 4.1 varsayılan etki alanını yapılandırın](azure-netapp-files-configure-nfsv41-domain.md)
 * [Windows veya Linux sanal makineleri için bir birimi bağlama veya çıkarma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [NFS Birimi için dışarı aktarma ilkesinin sorunlarını giderme ve çözme](azure-netapp-files-configure-export-policy.md)
+* [NFS birimine yönelik dışarı aktarma ilkesini yapılandırma](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)
 * [Azure hizmetleri için sanal ağ tümleştirmesi hakkında bilgi edinin](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

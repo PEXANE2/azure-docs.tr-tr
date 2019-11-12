@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 4ac6ac52d6d950d814a37e94ea2801c2ba8e4170
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521200"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906863"
 ---
 # <a name="working-with-security-policies"></a>Güvenlik ilkeleriyle çalışma
 
@@ -105,6 +105,10 @@ Varsayılan güvenlik ilkesi ortamınız için uygun olmayan bir öneri üretiyo
    > [!NOTE]
    > Bir yönetim grubunun ilkelerini aboneliklerine uygulayacağını unutmayın. Bu nedenle, bir aboneliğin ilkesini devre dışı bırakırsanız ve abonelik hala aynı ilkeyi kullanan bir yönetim grubuna aitse, ilke önerilerini almaya devam edersiniz. İlke hala yönetim düzeyinden uygulanır ve öneriler yine de oluşturulacaktır.
 
+1. **Geçerli Ilkeyi görüntüle**' ye tıklayın.
+
+   ![ilkeyi devre dışı bırak](./media/tutorial-security-policy/view-effective-policy.png)
+
 1. Atanan ilkeye tıklayın.
 
    ![ilkeyi devre dışı bırak](./media/tutorial-security-policy/security-policy.png)
@@ -113,7 +117,7 @@ Varsayılan güvenlik ilkesi ortamınız için uygun olmayan bir öneri üretiyo
 
    ![ilkeyi devre dışı bırak](./media/tutorial-security-policy/disable-policy.png)
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
    > [!NOTE]
    > İlke devre dışı bırakma değişikliklerinin etkili olması 12 saate kadar sürebilir.

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: vinigam
-ms.openlocfilehash: 831e75ba2d3f6af62496d437da3d1413dc612594
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 91fb4551f4651f44a1f7358951c5d4cc0ff70644
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686561"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907148"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -61,7 +61,7 @@ Trafik Analizi, ham NSG akış günlüklerini inceler ve aynı kaynak IP adresi,
 
 NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi birinde kullanabilirsiniz:
 
-* Orta Kanada
+* Kanada Orta
 * Batı Orta ABD
 * Doğu ABD
 * Doğu ABD 2
@@ -91,17 +91,21 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 ## <a name="supported-regions-log-analytics-workspaces"></a>Desteklenen bölgeler: Log Analytics çalışma alanları
 
 Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
-* Orta Kanada
+* Kanada Orta
 * Batı Orta ABD
 * Doğu ABD
 * Doğu ABD 2
+* Orta Kuzey ABD
 * Orta Güney ABD
+* Orta ABD
 * Batı ABD
 * Batı ABD 2
 * Orta ABD
 * Fransa Orta
-* Kuzey Avrupa
 * Batı Avrupa
+* Kuzey Avrupa
+* Güney Brezilya
+* Birleşik Krallık Batı
 * Birleşik Krallık Güney
 * Avustralya Doğu
 * Avustralya Güneydoğu
@@ -113,7 +117,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * ABD Devleti Virginia
 * Çin Doğu 2
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="user-access-requirements"></a>Kullanıcı erişimi gereksinimleri
 

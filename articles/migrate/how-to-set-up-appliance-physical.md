@@ -4,18 +4,21 @@ description: Azure geçişi sunucu değerlendirmesini kullanarak fiziksel sunucu
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 11/11/2019
 ms.author: raynew
-ms.openlocfilehash: ddd659e8cbcb54a36868848d0c6327f294d531b1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3212e4dac6856a5fd032c731d877453965584ae
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512632"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907170"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Fiziksel sunucular için bir gereç ayarlama
 
 Bu makalede, Azure geçişi: Sunucu değerlendirmesi aracı ile fiziksel sunucuları değerlendirmek için Azure geçişi gerecinin nasıl ayarlanacağı açıklanır.
+
+> [!NOTE]
+> Burada henüz Azure geçişi portalında görmeyeceğiniz Özellikler bahsedildiğinde, ' ı kapatın. Bu, sonraki hafta içinde görünürler.
 
 Azure geçişi gereci, aşağıdakileri yapmak için Azure geçişi sunucu değerlendirmesi tarafından kullanılan hafif bir gereç.
 
@@ -56,7 +59,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
   **Algoritma** | **Karma değeri**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775afd7f79
+  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
 
 
   

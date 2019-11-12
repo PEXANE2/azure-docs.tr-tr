@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 93e52b393db288f5b19afde4a31e08d0bb91b471
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571570"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907071"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure sanal makineler 'de SQL sunucuları için gelişmiş veri güvenliği (Önizleme)
 Azure sanal makineler 'deki SQL sunucuları için gelişmiş veri güvenliği, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir pakettir. Bu önizleme özelliği, olası veritabanı güvenlik açıklarını tanımlama ve azaltma ve veritabanınıza tehditler gösterebilen anormal etkinlikleri algılama işlevlerini içerir. 
@@ -54,7 +54,7 @@ Abonelik/çalışma alanı düzeyindeki sanal makinelerde SQL sunucuları için 
     Seçili çalışma alanına veya seçili aboneliğin varsayılan çalışma alanına bağlı tüm SQL Server 'Lar üzerinde SQL Server için gelişmiş veri güvenliği etkinleştirilecek.
 
     >[!NOTE]
-    > Çözüm, SQL Server ilk yeniden başlatıldıktan sonra etkin olacaktır. 
+    > Çözüm, SQL Server ilk yeniden başlatıldıktan sonra tam olarak etkin olacaktır. 
 
 Yeni bir çalışma alanı oluşturmak için [Log Analytics çalışma alanı oluşturma](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)bölümündeki yönergeleri izleyin.
 
@@ -72,7 +72,7 @@ Güvenlik Merkezi uyarıları oluşturulduğunda, bir e-posta bildirimi almak i�
 1. Ayarlar menüsünde **e-posta bildirimleri**' ne tıklayın. 
 1. **E-posta adresi** metin kutusuna bildirimleri alacak e-posta adreslerini girin. E-posta adreslerini virgülle ayırarak birden fazla e-posta adresi girebilirsiniz (,).  Örneğin admin1@mycompany.com,admin2@mycompany.com,admin3@mycompany.com
 
-      ![E-posta Ayarları](./media/security-center-advanced-iaas-data/email-settings.png)
+    ![E-posta Ayarları](./media/security-center-advanced-iaas-data/email-settings.png)
 
 1. **E-posta bildirimi** ayarları ' nda, aşağıdaki seçenekleri ayarlayın:
   
@@ -88,29 +88,27 @@ Güvenlik Merkezi uyarıları oluşturulduğunda, bir e-posta bildirimi almak i�
 
 Güvenlik açığı değerlendirme panosu, tüm veritabanlarınızdaki değerlendirme sonuçlarınıza genel bir bakış sağlar. Veritabanlarının SQL Server sürüme göre dağıtımını, veritabanlarının başarılı olup olmadığını ve risk dağıtımına göre başarısız olan denetimlerin genel özetini de görüntüleyebilirsiniz.
 
-Güvenlik açığı değerlendirme sonuçlarınızı ve raporlarınızı doğrudan Log Analytics görüntüleyebilirsiniz.
+Güvenlik açığı değerlendirme sonuçlarını doğrudan güvenlik merkezi 'nden görüntüleyebilirsiniz.
 
-1. Gelişmiş veri güvenliği çözümü ile Log Analytics çalışma alanınıza gidin.
-1. **Çözümler** ' e gidin ve **SQL güvenlik açığı değerlendirme** çözümünü seçin.
-1. **Özet** bölmesinde, **Özeti görüntüle** ' ye tıklayın ve **SQL güvenlik açığı değerlendirme raporunuzu**seçin.
+1. Güvenlik Merkezi 'nin kenar çubuğundan kaynak GÜVENLIĞI HYGIENE altında **veri & depolama**' yı seçin.
 
-    ![SQL Değerlendirmesi raporu](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
+1. **VM 'LERDEKI SQL veritabanlarınızdaki öneri güvenlik açıklarının düzeltilme (Önizleme)** seçeneğini belirleyin. Daha fazla bilgi için bkz. [Güvenlik Merkezi önerileri](security-center-recommendations.md). 
 
-    Rapor panosu yüklenir. Güvenlik açığı değerlendirme taramalarının, veritabanlarınızda yedi güne kadar bir kez sabit bir zamanlamaya göre çalıştırıldığı zaman penceresinin en az **son 7 güne** ayarlandığından emin olun.
+    [VM 'lerdeki SQL veritabanlarındaki ![* * güvenlik açıkları düzeltilmelidir (Önizleme) * * öneri](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
-    ![Son 7 günü ayarla](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
+    Bu öneriye ilişkin ayrıntılı görünüm görüntülenir.
 
-1. Daha ayrıntılı bilgi edinmek için Pano öğelerinden herhangi birine tıklayın. Örneğin:
+    [VM 'lerdeki SQL veritabanlarındaki * * güvenlik açıkları için ayrıntılı görünüm ![düzeltilmelidir (Önizleme) * * öneri](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
-   1. Tüm veritabanları genelinde bu denetim sonuçlarının bulunduğu bir Log Analytics tablosunu görüntülemek için, **başarısız denetimler Özeti** bölümünde bir güvenlik açığına tıklayın. Sonuçlara sahip olanlar önce listelenir.
+1. Daha ayrıntılı bilgi edinmek için:
 
-   1. Ardından, güvenlik açığı açıklaması ve etkisi, durumu, ilişkili risk ve bu veritabanındaki gerçek sonuçlar dahil olmak üzere her güvenlik açığıyla ilgili ayrıntıları görüntülemek için öğesine tıklayın. Ayrıca, bu denetimi gerçekleştirmek için çalıştırılan gerçek sorguyu ve bu güvenlik açığını çözümlemek için düzeltme bilgilerini görebilirsiniz.
+    * Taranan kaynaklara (veritabanlarına) ve test edilen güvenlik denetimlerinin listesine genel bakış için ilgilendiğiniz sunucuya tıklayın.
+    [SQL Server tarafından gruplanmış ![güvenlik açıkları](media/security-center-advanced-iaas-data/single-server-view.png)](media/security-center-advanced-iaas-data/single-server-view.png#lightbox)
 
-    ![Çalışma alanını seçme](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
+    * Belirli bir SQL veritabanı tarafından gruplanmış güvenlik açıklarına genel bir bakış için, ilgilendiğiniz veritabanına tıklayın.
+    [SQL Server tarafından gruplanmış ![güvenlik açıkları](media/security-center-advanced-iaas-data/single-database-view.png)](media/security-center-advanced-iaas-data/single-database-view.png#lightbox)
 
-    ![Çalışma alanını seçme](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
-
-1. Gereksinimlerinize göre verileri dilimleyip zaratmak için güvenlik açığı değerlendirme sonuçları verilerinizde Log Analytics sorguları çalıştırabilirsiniz.
+    Her görünümde güvenlik denetimleri **önem derecesine**göre sıralanır. Bir **Açıklama**içeren ayrıntı bölmesini, bunu nasıl **düzeltebileceğiniz** ve **etki** veya **kıyaslama**gibi diğer ilgili bilgileri görmek için belirli bir güvenlik denetimine tıklayın.
 
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Azure VM 'lerinde SQL sunucuları için Gelişmiş tehdit koruması
 Uyarılar, SQL Server 'Lar için olağandışı ve olası zararlı saldırılara göre oluşturulur. Bu olaylar aşağıdaki uyarıları tetikleyebilir:

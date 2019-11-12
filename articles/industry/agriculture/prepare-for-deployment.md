@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 10ff3cc940ac3d11154f1dec6c06ff3681328d38
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 55b59802116eb10d2e7eeb3b13ecb3da2d475c6d
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890931"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906981"
 ---
-# <a name="deploy-farmbeats"></a>Farmtts dağıtma
+# <a name="deploy-farmbeats"></a>FarmBeats'i dağıtma
 
 Bu makalede, Azure Farmtts 'nin nasıl ayarlanacağı açıklanır.
 
@@ -82,14 +82,13 @@ Azure Farmduytaları dağıtmak için aşağıdaki izinlere ihtiyacınız vardı
 Dağıtımı başlatmadan önce aşağıdakilerden emin olun:
 
 - Sentinel hesabı
-- Azure Active Directory (uygulama kaydı)
-- Azure Farmno 'Lar
+- Azure Active Directory (AD) uygulama kaydı
 
 ## <a name="create-a-sentinel-account"></a>Sentinel hesabı oluşturma    
 
 Sentinel 'e sahip bir hesap, resmi web sitesinden cihazınızdan, Sentinel uydu canlandırın 'yi yüklemenize yardımcı olur. Ücretsiz bir hesap oluşturmak için aşağıdaki adımları izleyin:
 
-1. https://scihub.copernicus.eu/dhus/#/self-registration kısmına gidin. Kayıt sayfasında, bir ad, soyadı, Kullanıcı adı, parola ve e-posta sağlayın.
+https://scihub.copernicus.eu/dhus/#/self-registration kısmına gidin. Kayıt sayfasında, bir ad, soyadı, Kullanıcı adı, parola ve e-posta sağlayın.
 Onay için kayıtlı e-posta adresine bir doğrulama e-postası gönderilir. Bağlantıyı seçin ve onaylayın. Kayıt işleminiz tamamlanmıştır.
 
 ## <a name="create-azure-ad-app-registration"></a>Azure AD uygulama kaydı oluşturma
@@ -103,7 +102,7 @@ Azure Farm, kimlik doğrulaması ve yetkilendirme için, aşağıdakileri içere
 
 Zaten bir aboneliğiniz varsa, doğrudan bir sonraki yordama taşıyabilirsiniz.
 
-**Durum 2**: aboneliğiniz dahilinde BIR Azure AD uygulama kaydı oluşturmak ve yapılandırmak için yeterli haklara sahip olmadığınız durumlarda bu yöntem tercih edilen adımdır. Yöneticinizin, BT yöneticisinin Azure portal Azure AD uygulama kaydını otomatik olarak oluşturup yapılandırmasına yardımcı olacak [özel betiği](https://aka.ms/FarmBeatsMarketplace)kullanmasını isteyin. PowerShell ortamını kullanarak bu özel betiği çalıştırmanın bir çıkışı olarak BT yöneticisinin sizinle bir Azure Active Directory Uygulama Istemci KIMLIĞI ve parola gizli anahtarı paylaşması gerekir. Bu değerleri bir yere unutmayın.
+**Durum 2**: aboneliğiniz dahilinde BIR Azure AD uygulama kaydı oluşturmak ve yapılandırmak için yeterli haklara sahip olmadığınız durumlarda bu yöntem tercih edilen adımdır. Yöneticinizin, BT yöneticisinin Azure portal Azure AD uygulama kaydını otomatik olarak oluşturup yapılandırmasına yardımcı olacak [özel betiği](https://aka.ms/FarmBeatsAADScript)kullanmasını isteyin. PowerShell ortamını kullanarak bu özel betiği çalıştırmanın bir çıkışı olarak BT yöneticisinin sizinle bir Azure Active Directory Uygulama Istemci KIMLIĞI ve parola gizli anahtarı paylaşması gerekir. Bu değerleri bir yere unutmayın.
 
 Azure AD uygulaması kayıt betiğini çalıştırmak için aşağıdaki adımları kullanın:
 
@@ -132,7 +131,7 @@ Azure AD uygulaması kayıt betiğini çalıştırmak için aşağıdaki adımla
 
 Yükleme kapsamında, aşağıdaki gibi bir input. JSON dosyası oluşturun:
 
-    ```json
+    ```
     {  
        "sku":"both",
        "subscriptionId":"da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx",
@@ -150,24 +149,22 @@ Yükleme kapsamında, aşağıdaki gibi bir input. JSON dosyası oluşturun:
 Bu dosya, Azure Cloud Shell ve yükleme sırasında değerleri kullanılan parametrelere sahip olan giriş dosyasıdır. JSON 'daki tüm parametrelerin uygun değerlerle değiştirilmeleri veya kaldırılması gerekir; kaldırılırsa, yükleyici yükleme sırasında sizden istemde yer alacak
 
 
-> [!NOTE]
-> Bu dosya Azure Cloud Shell için değerleri girdi.  Zaman kazanmak için, dağıtım sırasında bu dosyaya eklediğiniz parametreler istenmez. Eksik parametreler istenir.
-
 Dosyayı hazırlamadan önce parametreleri gözden geçirin.
 
 |Komut | Açıklama|
 |--- | ---|
-|İsteyin  | Azure Farmtts bileşenlerinin birini ya da her ikisini de indirmek için bir seçenek sağlar. Hangi bileşenlerin indirileceği belirtir. Yalnızca veri merkezini yüklemek için "onlydatabhub" kullanın. Veri merkezini ve hızlandırıcıyı yüklemek için "her ikisi de" kullanın|
-|SubscriptionID  | Farmtts yükleme aboneliğini belirtir|
-|"datahubResourceGroup"  | Veri merkezi kaynakları için kaynak grubu adı|
-|"Ivatorwebsitename"  |Veri merkezinizi adlandırmak için benzersiz URL öneki|
-|"Ivatorresourcegroup"  | Hızlandırıcı Web sitenizi adlandırmak için benzersiz URL ön eki.|
-|"datahubWebsiteName"  | Veri Merkezi Web sitenizi adlandırmak için Uıunique URL öneki. |
-|''sentinelUsername'' | oturum açmak için Kullanıcı adı: https://scihub.copernicus.eu/dhus/#/self-registration.|
-|"Notificationemapostaadresi"  | Veri merkezi içinde yapılandırdığınız tüm uyarılar için bildirimleri alacak e-posta adresi.|
-|"updateIfExists" "  |Seçim Yalnızca var olan bir Farmtts örneğini yükseltmek istiyorsanız Input. JSON içine dahil edilecek parametre. Yükseltme için diğer ayrıntılar örn. kaynak grubu adları, konumlar vb. aynı olmalıdır.|
-|"Aadappclientıd"  | [**Isteğe bağlı**] Yalnızca Azure AD uygulaması zaten varsa Input. JSON içine dahil edilecek parametre.  |
-|"aadAppClientSecret"   | [**Isteğe bağlı**] Yalnızca Azure AD uygulaması zaten varsa Input. JSON içine dahil edilecek parametre.|
+|isteyin  | Azure Farmtts bileşenlerinin birini ya da her ikisini de indirmek için bir seçenek sağlar. Hangi bileşenlerin indirileceği belirtir. Yalnızca veri merkezini yüklemek için "onlydatabhub" kullanın. Veri merkezini ve hızlandırıcıyı yüklemek için "her ikisi de" kullanın|
+|subscriptionId | Farmtts yükleme aboneliğini belirtir|
+|datahubResourceGroup| Veri merkezi kaynakları için kaynak grubu adı|
+|location |Kaynakları oluşturmak istediğiniz konum|
+|Ivatorwebsitename |Veri merkezinizi adlandırmak için benzersiz URL öneki|
+|Ivatorresourcegroup  | Hızlandırıcı Web sitenizi adlandırmak için benzersiz URL ön eki.|
+|datahubWebsiteName  | Veri Merkezi Web sitenizi adlandırmak için Uıunique URL öneki. |
+|sentinelUsername | oturum açmak için Kullanıcı adı: https://scihub.copernicus.eu/dhus/#/self-registration.|
+|Notificationemapostaadresi  | Veri merkezi içinde yapılandırdığınız tüm uyarılar için bildirimleri alacak e-posta adresi.|
+|updateIfExists|Seçim Yalnızca var olan bir Farmtts örneğini yükseltmek istiyorsanız Input. JSON içine dahil edilecek parametre. Yükseltme için diğer ayrıntılar örn. kaynak grubu adları, konumlar vb. aynı olmalıdır.|
+|Aadappclientıd | [**Isteğe bağlı**] Yalnızca Azure AD uygulaması zaten varsa Input. JSON içine dahil edilecek parametre.  |
+|aadAppClientSecret  | [**Isteğe bağlı**] Yalnızca Azure AD uygulaması zaten varsa Input. JSON içine dahil edilecek parametre.|
 
 ## <a name="deploy-within-cloud-shell-browser-based-command-line"></a>Cloud Shell tarayıcı tabanlı komut satırı içinde dağıtın
 
@@ -193,17 +190,15 @@ Yükleyici Azure AD Uygulaması kaydını (Yukarıdaki durum 1) oluşturur
     ```json
     {  
        "sku":"both", 
-       "subscriptionId": "da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx", 
-       "datahubResourceGroup": "dummy-test-dh1", 
-       "datahubLocation": "westus2", 
-       "datahubWebsiteName": "dummy-test-dh1", 
-       "acceleratorResourceGroup": "dummy-test-acc1", 
-       "acceleratorLocation": "westus2", 
-       "acceleratorWebsiteName": "dummy-test-acc1", 
-       "sentinelUsername": "dummy-dev", 
-       "farmbeatsAppId": "c3cb3xxx-27xx-4xxb-8xx6-3xxx2xxdxxx5c", 
-       "notificationEmailAddress": "dummy@microsoft.com", 
-       "updateIfExists": true
+       "subscriptionId":"da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx", 
+       "datahubResourceGroup":"dummy-test-dh1", 
+       "location":"eastus2", 
+       "datahubWebsiteName":"dummy-test-dh1", 
+       "acceleratorResourceGroup":" dummy-test-acc1",   
+       "acceleratorWebsiteName":" dummy-test-acc1", 
+       "sentinelUsername":"dummy-dev", 
+       "notificationEmailAddress":" dummy@microsoft.com", 
+       "updateIfExists":true 
     }
     ```
 
@@ -213,10 +208,10 @@ Yükleyici Azure AD Uygulaması kaydını (Yukarıdaki durum 1) oluşturur
     ![Proje grubu ları](./media/prepare-for-deployment/bash-2-1.png)
 
 4. Cloud Shell 'de Giriş dizininize gidin. Varsayılan olarak,/Home/<username>
-5. Aşağıdaki iki komutu Cloud Shell yazın veya yapıştırın. Girişin yolunu değiştirdiğinizden emin olun. JSON dosyası ve ENTER tuşuna basın.
+5. Aşağıdaki komutu Cloud Shell yazın veya yapıştırın. Girişin yolunu değiştirdiğinizden emin olun. JSON dosyası ve ENTER tuşuna basın.
 
       ```azurepowershell-interactive
-      wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScriptbash farmbeats-installer.sh /home/<username>/input.json
+      wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
      ```
      Yükleyici tüm bağımlılıkları otomatik olarak indirir ve dağıtıcıyı oluşturur. Azure Farmınts Son Kullanıcı Lisans Sözleşmesi 'ni (EULA) kabul etmeniz istenir.
 
@@ -269,10 +264,10 @@ Kalan adımları izleyin:
     ![Proje grubu ları](./media/prepare-for-deployment/bash-2-1.png)
 
 4. Cloud Shell 'de Giriş dizininize gidin. Varsayılan olarak,/Home/<username>
-5. Aşağıdaki iki komutu Cloud Shell yazın veya yapıştırın. Girişin yolunu değiştirdiğinizden emin olun. JSON dosyası ve ENTER tuşuna basın.
+5. Aşağıdaki komutu Cloud Shell yazın veya yapıştırın. Girişin yolunu değiştirdiğinizden emin olun. JSON dosyası ve ENTER tuşuna basın.
 
     ```azurepowershell-interactive
-    wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScriptbash farmbeats-installer.sh /home/<username>/input.json
+    wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 
 Ekrandaki yönergeleri izleyin.
@@ -314,11 +309,6 @@ Hızlandırıcı yüklemesi tamamlandıktan sonra, Şu biçimdeki Farmtts Kullan
 
 1. Hızlandırıcının oturumunu açmak için URL 'YI kopyalayıp tarayıcıya yapıştırın.
 2. Azure portal kimlik bilgileriyle oturum açın.
-3. İsteğe bağlı bir sağlamlık testi çalıştırın.
-
-    - Başarılı bir dağıtıma çıkış olarak aldığınız Hızlandırıcı bağlantısını kullanarak Hızlandırıcı portalında başarıyla oturum açabiliyor olup olmadığınızı denetleyin.
-    - **Grup Oluştur**' u seçin.
-    - "?" Simgesinin altında, **kullanmaya başlama** düğmesini kullanarak Farmtts kılavuzlarını açın.
 
 ## <a name="upgrade"></a>Yükseltme
 
@@ -335,7 +325,7 @@ Yükseltme adımları, ilk kez yüklemeye benzerdir. Şu adımları uygulayın:
 6. Aşağıdaki iki komutu Cloud Shell yazın veya yapıştırın. İnput. json dosyasının yolunu değiştirdiğinizden emin olun ve ENTER tuşuna basın.
 
     ```azurepowershell-interactive
-    wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScriptbash farmbeats-installer.sh /home/<username>/input.json
+    wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 Ekrandaki yönergeleri izleyin:
 
