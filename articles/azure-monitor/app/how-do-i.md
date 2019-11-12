@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/04/2017
-ms.openlocfilehash: 28881403e4938376cc1912227bdff51aa5f069cf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 61bd5898c494018a2bacbd894d4dc2aac97f53b4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817373"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928411"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights’ta nasıl ... yapabilirim?
 ## <a name="get-an-email-when-"></a>Şu durumlarda bir e-posta alın...
@@ -39,7 +39,7 @@ Belirli bir olay gerçekleştiğinde bir e-posta almak istediğinizi varsayalım
 
     telemetry.TrackMetric("Alarm", 10);
 
-veya
+Veya
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
@@ -72,12 +72,12 @@ Dikkat edilmesi gereken bazı noktalar:
 [PowerShell kullanarak yeni uyarılar oluşturma](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Application Insights yönetmek için PowerShell 'i kullanma
-* [Yeni kaynaklar oluşturma](../../azure-monitor/app/powershell-script-create-resource.md)
+* [Yeni kaynaklar oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [Yeni uyarılar oluşturma](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Farklı sürümlerden telemetri ayırın
 
-* Bir uygulamada birden çok rol: tek bir Application Insights kaynağı kullanın ve [cloud_Rolename](../../azure-monitor/app/app-map.md)üzerine filtre uygulayın.
+* Bir uygulamada birden çok rol: tek bir Application Insights kaynağı kullanın ve [cloud_Rolename](../../azure-monitor/app/app-map.md)filtreleyin.
 * Geliştirme, test ve yayın sürümlerini ayırma: farklı Application Insights kaynakları kullanın. Web. config dosyasından izleme anahtarlarını seçin. [Daha fazla bilgi](../../azure-monitor/app/separate-resources.md)
 * Derleme sürümlerini raporlama: telemetri başlatıcısı kullanarak özellik ekleme. [Daha fazla bilgi](../../azure-monitor/app/separate-resources.md)
 
@@ -114,12 +114,12 @@ Daha sonra şunları yapabilirsiniz:
 [Filtre](../../azure-monitor/app/api-filtering-sampling.md#filtering)oluşturun. Bu, Application Insights ' ye uygulamadan gönderilmeden önce Telemetriyi değiştirmenize veya filtrelemenize olanak tanır.
 
 ## <a name="list-specific-users-and-their-usage"></a>Belirli kullanıcıları ve bunların kullanımını listeleme
-Yalnızca [belirli kullanıcıları aramak](#search-specific-users)istiyorsanız [kimliği doğrulanmış kullanıcı kimliğini](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)ayarlayabilirsiniz.
+Yalnızca [belirli kullanıcıları aramak](#search-specific-users)istiyorsanız [KIMLIĞI doğrulanmış kullanıcı kimliğini](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)ayarlayabilirsiniz.
 
 Hangi sayfaların baktığınıza veya ne sıklıkla oturum açtıklarında, verileri içeren bir kullanıcı listesi istiyorsanız iki seçeneğiniz vardır:
 
 * [Kimliği doğrulanmış kullanıcı kimliğini ayarlayın](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users), [bir veritabanına aktarın](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) ve kullanıcı verilerinizi burada analiz etmek için uygun araçları kullanın.
-* Yalnızca az sayıda kullanıcınız varsa, ölçüm değeri veya olay adı olarak ilgilendiğiniz verileri kullanarak özel olayları ve ölçümleri gönderin, ve Kullanıcı kimliğini bir özellik olarak ayarlama. Sayfa görünümlerini çözümlemek için standart JavaScript trackPageView çağrısını değiştirin. Sunucu tarafı Telemetriyi çözümlemek için, Kullanıcı kimliğini tüm sunucu telemetrisine eklemek üzere bir telemetri başlatıcısı kullanın. Daha sonra Kullanıcı kimliğinde ölçümleri ve aramaları filtreleyebilir ve segmentleyebilirsiniz.
+* Yalnızca az sayıda kullanıcınız varsa, ölçüm değeri veya olay adı olarak ilgilendiğiniz verileri kullanarak özel olayları ve ölçümleri gönderin, ve kullanıcı KIMLIĞINI bir özellik olarak ayarlama. Sayfa görünümlerini çözümlemek için standart JavaScript trackPageView çağrısını değiştirin. Sunucu tarafı Telemetriyi çözümlemek için, kullanıcı KIMLIĞINI tüm sunucu telemetrisine eklemek üzere bir telemetri başlatıcısı kullanın. Daha sonra Kullanıcı KIMLIĞINDE ölçümleri ve aramaları filtreleyebilir ve segmentleyebilirsiniz.
 
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Uygulamamın trafiğini Application Insights için azaltma
 * [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)dosyasında, gerek olmayan tüm modülleri (performans sayacı toplayıcısı gibi) devre dışı bırakın.

@@ -1,5 +1,5 @@
 ---
-title: Özel bir Docker temel görüntüsü ile modeller dağıtma
+title: Özel Docker görüntüsü ile modeller dağıtma
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning modellerinizi dağıttığınızda özel bir Docker temel görüntüsünü nasıl kullanacağınızı öğrenin. Azure Machine Learning, sizin için varsayılan bir temel görüntü sağlar, ayrıca kendi temel görüntünüzü da kullanabilirsiniz.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 3f822e0089772f06245d80c1323cf1f5dfe10361
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b34ef305a6f1cf41c7b7bdcf415e1a91653ad878
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496928"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932112"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Özel bir Docker temel görüntüsü kullanarak model dağıtma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

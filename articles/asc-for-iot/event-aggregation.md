@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ca1d1a5761e62b2838a474dcb83f450987972998
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327311"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928967"
 ---
 # <a name="azure-security-center-for-iot-event-aggregation"></a>IoT olay toplaması için Azure Güvenlik Merkezi
 
@@ -44,7 +44,7 @@ Aracının bellekte zaten tutulmakta olan bir olay ile aynı olayı topladığı
 
 Olaylar yalnızca aşağıdaki koşullar karşılandığında özdeş olarak değerlendirilir: 
 
-* ProcessCreate olayları- **commandLine**, **çalıştırılabilir**, * * Kullanıcı adı ve **Kullanıcı kimliği** aynı olduğunda
+* ProcessCreate olayları- **commandLine**, **çalıştırılabilir**, **Kullanıcı adı**ve Kullanıcı **kimliği** aynı olduğunda
 * ConnectionCreate olayları- **commandLine**, **UserID**, **Direction**, **Yerel adres**, **uzak adres**, * * protokolü ve **hedef bağlantı noktası** aynı olduğunda
 * ProcessTerminate olayları- **yürütülebilir** ve **Çıkış durumu** aynı olduğunda
 
@@ -66,11 +66,11 @@ Her toplanmış olay, toplanan uyarıların 24 saatlik bir dönemini temsil eder
 
 | Yapılandırma adı | Olası değerler | Ayrıntılar | Açıklamalar |
 |:-----------|:---------------|:--------|:--------|
-| aggregationEnabledProcessCreate | boolean | İşlem oluşturma olayları için olay toplamayı etkinleştir/devre dışı bırak |
+| aggregationEnabledProcessCreate | boole | İşlem oluşturma olayları için olay toplamayı etkinleştir/devre dışı bırak |
 | Aggregationınterprocesscreate | ISO8601 TimeSpan dizesi | İşlem oluşturma olayları için toplama aralığı |
-| aggregationEnabledConnectionCreate | boolean| Bağlantı oluşturma olayları için olay toplamayı etkinleştir/devre dışı bırak |
+| aggregationEnabledConnectionCreate | boole| Bağlantı oluşturma olayları için olay toplamayı etkinleştir/devre dışı bırak |
 | Aggregationınterconnectioncreate | ISO8601 TimeSpan dizesi | Bağlantı oluşturma olayları için toplama aralığı |
-| aggregationEnabledProcessTerminate | boolean | İşlem sonlandırma olayları için olay toplamayı etkinleştir/devre dışı bırak | Yalnızca Windows|
+| aggregationEnabledProcessTerminate | boole | İşlem sonlandırma olayları için olay toplamayı etkinleştir/devre dışı bırak | Yalnızca Windows|
 | Aggregationınterınsterminate | ISO8601 TimeSpan dizesi | İşlem sonlandırma olayları için toplama aralığı | Yalnızca Windows|
 |
 

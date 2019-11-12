@@ -1,5 +1,5 @@
 ---
-title: Bir sanal ağ üzerinden Azure Container Registry 'ye erişimi kısıtlama
+title: Bir sanal ağla Azure Container Registry erişimi kısıtla
 description: Azure Container Registry 'ye yalnızca bir Azure sanal ağındaki veya genel IP adresi aralıklarından gelen kaynaklardan erişime izin verin.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5ba5c180def9539c486fb8727a0a78b4f98fa185
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619889"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931327"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure sanal ağını veya güvenlik duvarı kurallarını kullanarak bir Azure Container Registry 'ye erişimi kısıtlama
 
@@ -42,7 +42,7 @@ Bunun yerine, bir güvenlik duvarının arkasındaki bir kapsayıcı kayıt deft
 
 * Bu makalede Azure CLı adımlarını kullanmak için Azure CLı sürüm 2.0.58 veya üzeri gereklidir. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
 
-* Zaten bir kapsayıcı kayıt defteriniz yoksa, bir (Premium SKU gerekir) oluşturun ve Docker Hub 'dan gibi `hello-world` örnek bir görüntü gönderin. Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun. 
+* Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium SKU gerekir) ve Docker Hub 'ından `hello-world` gibi örnek bir görüntü gönderin. Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun. 
 
 * Farklı bir Azure aboneliğindeki bir sanal ağ kullanarak kayıt defteri erişimini kısıtlamak istiyorsanız, bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydetmeniz gerekir. Örneğin:
 
@@ -54,7 +54,7 @@ Bunun yerine, bir güvenlik duvarının arkasındaki bir kapsayıcı kayıt deft
 
 ## <a name="about-network-rules-for-a-container-registry"></a>Bir kapsayıcı kayıt defteri için ağ kuralları hakkında
 
-Azure Container Registry, varsayılan olarak herhangi bir ağdaki konaklardan internet üzerinden bağlantıları kabul eder. Bir sanal ağ ile, bir ağ sınırını taşımadan, kayıt defterine güvenli bir şekilde erişmek için yalnızca bir AKS kümesi veya Azure VM gibi Azure kaynaklarına izin verebilirsiniz. Ayrıca, belirli genel İnternet IP adresi aralıklarını beyaz listelemek için ağ güvenlik duvarı kurallarını yapılandırabilirsiniz. 
+Azure Container Registry, varsayılan olarak herhangi bir ağdaki konaklardan internet üzerinden bağlantıları kabul eder. Bir sanal ağ ile, bir ağ sınırını taşımadan, kayıt defterine güvenli bir şekilde erişmek için yalnızca bir AKS kümesi veya Azure VM gibi Azure kaynaklarına izin verebilirsiniz. Ayrıca, ağ güvenlik duvarı kurallarını yalnızca belirli genel İnternet IP adresi aralıklarına izin verecek şekilde yapılandırabilirsiniz. 
 
 Bir kayıt defterine erişimi sınırlandırmak için, önce tüm ağ bağlantılarını reddetmeye yönelik kayıt defteri varsayılan eylemini değiştirin. Ardından, ağ erişim kuralları ekleyin. Ağ kuralları aracılığıyla erişim izni verilen istemciler, [kapsayıcı kayıt defterinde kimlik doğrulamaya](https://docs.microsoft.com/azure/container-registry/container-registry-authentication) ve verilere erişme yetkisine sahip olmaya devam etmelidir.
 
@@ -62,7 +62,7 @@ Bir kayıt defterine erişimi sınırlandırmak için, önce tüm ağ bağlantı
 
 Sanal ağdaki bir alt ağdan erişime izin vermek için Azure Container Registry hizmeti için bir [hizmet uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md) eklemeniz gerekir. 
 
-Azure Container Registry gibi çok kiracılı hizmetler, tüm müşteriler için tek bir IP adresleri kümesi kullanır. Hizmet uç noktası bir kayıt defterine erişmek için bir uç nokta atar. Bu uç nokta, trafiğe Azure omurga ağı üzerinden en uygun yolu verir. Sanal ağ ve alt ağ kimlikleri, ayrıca her bir istekle aktarılır.
+Azure Container Registry gibi çok kiracılı hizmetler, tüm müşteriler için tek bir IP adresleri kümesi kullanır. Hizmet uç noktası bir kayıt defterine erişmek için bir uç nokta atar. Bu uç nokta, trafiğe Azure omurga ağı üzerinden en uygun yolu verir. Sanal ağın ve alt ağın kimlikleri de her istekle birlikte iletilir.
 
 ### <a name="firewall-rules"></a>Güvenlik duvarı kuralları
 
@@ -89,7 +89,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-VM’nin oluşturulması birkaç dakika sürer. Komut tamamlandığında, Azure CLI tarafından `publicIpAddress` görüntülendiğine göz atın. Bu adresi VM 'ye SSH bağlantısı kurmak ve isteğe bağlı olarak daha sonra güvenlik duvarı kuralları kurmak için kullanın.
+VM’nin oluşturulması birkaç dakika sürer. Komut tamamlandığında, Azure CLı tarafından gösterilecek `publicIpAddress` göz atın. Bu adresi VM 'ye SSH bağlantısı kurmak ve isteğe bağlı olarak daha sonra güvenlik duvarı kuralları kurmak için kullanın.
 
 ### <a name="install-docker-on-the-vm"></a>SANAL makineye Docker 'ı yükler
 
@@ -218,7 +218,7 @@ Varsayılan olarak, bir Azure Container Registry, herhangi bir ağdaki konaklard
 
 1. Portalda kapsayıcı Kayıt defterinize gidin.
 1. **Ayarlar**altında **güvenlik duvarı ve sanal ağlar**' ı seçin.
-1. Varsayılan olarak erişimi reddetmek için erişime izin verecek şekilde seçin: **seçili ağlar**. 
+1. Erişimi varsayılan olarak reddetmek için, **Seçili ağlardan**erişime izin ver ' i seçin. 
 1. **Var olan sanal ağı ekle**' yi seçin ve bir hizmet uç noktası ile yapılandırdığınız sanal ağı ve alt ağı seçin. **Add (Ekle)** seçeneğini belirleyin.
 1. **Kaydet**’i seçin.
 
@@ -310,7 +310,7 @@ Yapılandırmanın güncelleştirilmesi birkaç dakika bekledikten sonra, sanal 
 az acr login --name mycontainerregistry
 ```
 
-Kayıt defterinden örnek bir görüntü çekmek için çalıştırma `docker pull` gibi kayıt defteri işlemleri gerçekleştirebilirsiniz. Kayıt defteri oturum açma sunucusu adı (tümü küçük harf) önekini kullanarak kayıt defteriniz için uygun bir görüntü ve etiket değeri koyun:
+Kayıt defterinden örnek bir görüntü çekmek için `docker pull` Çalıştır gibi kayıt defteri işlemleri gerçekleştirebilirsiniz. Kayıt defteri oturum açma sunucusu adı (tümü küçük harf) önekini kullanarak kayıt defteriniz için uygun bir görüntü ve etiket değeri koyun:
 
 ```bash
 docker pull mycontainerregistry.azurecr.io/hello-world:v1
@@ -318,7 +318,7 @@ docker pull mycontainerregistry.azurecr.io/hello-world:v1
 
 Docker görüntüyü sanal makineye başarıyla çeker.
 
-Bu örnekte, özel kapsayıcı kayıt defterine ağ erişim kuralıyla erişebileceğiniz gösterilmektedir. Ancak, kayıt defterine, yapılandırılmış bir ağ erişim kuralına sahip olmayan farklı bir oturum açma konağından erişilemez. `az acr login` Komutunu veya`docker login` komutunu kullanarak başka bir ana bilgisayardan oturum açmaya çalışırsanız, çıkış aşağıdakine benzer:
+Bu örnekte, özel kapsayıcı kayıt defterine ağ erişim kuralıyla erişebileceğiniz gösterilmektedir. Ancak, kayıt defterine, yapılandırılmış bir ağ erişim kuralına sahip olmayan farklı bir oturum açma konağından erişilemez. `az acr login` komutunu veya `docker login` komutunu kullanarak başka bir konaktan oturum açmaya çalışırsanız, çıkış aşağıdakine benzer:
 
 ```Console
 Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ failed with status: 403 Forbidden

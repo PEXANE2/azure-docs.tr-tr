@@ -10,18 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 2c1e6ef84a472ccec5116b12e18ad80c92b68960
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d308623a323fecd39efa90639da71fb981936fe5
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681876"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930571"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Hızlı başlangıç: Python 'da uzun biçimli ses için zaman uyumsuz birleştirme (Önizleme)
 
 Bu hızlı başlangıçta, metin okumayı zaman uyumsuz olarak dönüştürmek ve hizmet tarafından sunulan bir URI 'den ses çıktısını almak için uzun ses API 'sini kullanacaksınız. Bu REST API, 10.000 karakterden büyük veya 50 paragrafından oluşan metin dosyalarını sentezleştirilmiş konuşmaya dönüştürmeli içerik sağlayıcıları için idealdir. Daha fazla bilgi için bkz. [uzun ses API 'si](../../long-audio-api.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!NOTE]
+> Uzun biçimli ses için zaman uyumsuz birleştirme yalnızca [özel sinir seslerle](../../how-to-custom-voice.md#custom-neural-voices)kullanılabilir.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 

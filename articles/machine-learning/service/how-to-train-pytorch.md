@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2c704e36f4353b34733ccc29b785c752b2a5c559
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a18949799b948b962a5b24ffdc7c735fc1380808
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822705"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931084"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Pytorch derin öğrenme modellerini Azure Machine Learning ölçeklendirirken eğitme
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Derin bir öğrenme PyTorch modelini baştan sona eğiyor veya mevcut bir modeli
 
 [Derin öğrenme ve makine öğrenimi](concept-deep-learning-vs-machine-learning.md)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 
@@ -174,6 +174,9 @@ Modeli eğittikten sonra, çalışma alanınıza kaydedebilirsiniz. Model kaydı
 ```Python
 model = run.register_model(model_name='pt-dnn', model_path='outputs/')
 ```
+
+> [!TIP]
+> Yeni kaydettiğiniz model, eğitim için kullandığınız tahmin aracı 'dan bağımsız olarak, Azure Machine Learning ' deki diğer tüm kayıtlı modellerle aynı şekilde dağıtılır. Dağıtım nasıl yapılır, model kaydettirme hakkında bir bölüm içerir, ancak zaten kayıtlı bir modeliniz olduğundan, dağıtım için doğrudan [bir işlem hedefi oluşturmaya](how-to-deploy-and-where.md#choose-a-compute-target) geçebilirsiniz.
 
 Ayrıca, Çalıştır nesnesini kullanarak modelin yerel bir kopyasını indirebilirsiniz. Eğitim betiğinde `pytorch_train.py`, PyTorch Save nesnesi modeli yerel bir klasöre (yerel olarak işlem hedefine) devam ettirir. Bir kopyasını indirmek için Run nesnesini kullanabilirsiniz.
 

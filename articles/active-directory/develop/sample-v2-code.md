@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01ed7383515a725816679acb405b2ff3b1dc8e92
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 84c94675ac5c69055cd2811df206f81af55d3c1e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817233"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927202"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform kodu örnekleri (v 2.0 uç noktası)
 
@@ -86,7 +86,7 @@ Aşağıdaki örneklerde, Microsoft Graph API 'sine kendi kimliğiyle (Kullanıc
 
 | İstemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph |
 | ------------------ | -------- | ---------- | -------------------- |
-| Console | ![Bu görüntüde .NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [İstemci kimlik bilgileri](msal-authentication-flows.md#client-credentials) | [dotnetcore-Daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
+| Konsol | ![Bu görüntüde .NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [İstemci kimlik bilgileri](msal-authentication-flows.md#client-credentials) | [dotnetcore-Daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
 | Web uygulaması | ![Bu görüntüde ASP.NET logosu gösterilmektedir](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [İstemci kimlik bilgileri](msal-authentication-flows.md#client-credentials) | [DotNet-Daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
 
 ## <a name="headless-applications"></a>Gözetimsiz uygulamalar
@@ -105,6 +105,18 @@ Aşağıdaki örneklerde, bir Web API 'sinin Microsoft Identity platform uç nok
 | -------- | ------------------- |
 | ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph) ASP.NET Core Web API (hizmeti)  |
 | ![Bu görüntüde ASP.NET logosu gösterilmektedir](media/sample-v2-code/logo_NET.png)</p>ASP.NET MVC | [MS-Identity-ASPNET-WebApi-OnBehalfOf](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) Web API (hizmeti) |
+
+## <a name="azure-functions-as-web-apis"></a>Web API 'Leri olarak Azure Işlevleri
+
+Aşağıdaki örneklerde HttpTrigger kullanılarak bir Azure Işlevinin nasıl korunacağı ve Microsoft Identity platform uç noktasıyla bir Web API 'sinin nasıl yapılacağı ve Web API 'sinden bir aşağı akış API 'sinin nasıl çağrılacağını gösterilmektedir.
+
+| Platform | Örnek |
+| -------- | ------------------- |
+| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | ASP.NET Core Web API (hizmet) Azure Işlevi [DotNet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
+| ![Bu görüntüde Node. js logosu gösterilmektedir](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | NodeJS ve Passport Web API (hizmeti) [-Azure-AD](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
+| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)</p>Python | [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) 'un Web API 'si (hizmeti) |
+| ![Bu görüntüde Node. js logosu gösterilmektedir](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | NodeJS ve Passport için Web API (hizmeti) [-Azure-AD 'nin adına using](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |
+
 
 ## <a name="other-microsoft-graph-samples"></a>Diğer Microsoft Graph örnekleri
 

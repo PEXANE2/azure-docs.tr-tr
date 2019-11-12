@@ -1,5 +1,5 @@
 ---
-title: Azure haritalar 'da Özellik bilgilerini görüntüleme Android SDK | Microsoft Docs
+title: Özellik bilgilerini Azure Maps Android SDK görüntüleyin | Microsoft Docs
 description: Özellik bilgilerini Azure Maps Android SDK görüntülemeyi öğrenin.
 author: rbrundritt
 ms.author: richbrun
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: dc72bb43752323576bed6e7991f33c4096ccabd4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 0dcabb0e5141a92394f2be38cbe7e71fa6e03d58
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977293"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928548"
 ---
 # <a name="display-feature-information"></a>Özellik bilgilerini görüntüleme
 
-Uzamsal veriler genellikle noktaları, çizgileri ve çokgenler kullanılarak temsil edilir. Bu verilere genellikle ilişkili meta veri bilgileri sahip olur. Örneğin, bir nokta bir deponun konumunu ve bu restoran hakkındaki meta verileri temsil eden ad, adres ve hizmet verdiği yiyecek türü olabilir. Bu meta veriler, kullanılarak `JsonObject`bu özelliklerin özellikleri olarak eklenebilir. Aşağıdaki kod, "Merhaba Dünya!" değerine sahip bir `title` özelliği olan basit bir nokta özelliği oluşturur
+Uzamsal veriler genellikle noktaları, çizgileri ve çokgenler kullanılarak temsil edilir. Bu verilere genellikle ilişkili meta veri bilgileri sahip olur. Örneğin, bir nokta bir deponun konumunu ve bu restoran hakkındaki meta verileri temsil eden ad, adres ve hizmet verdiği yiyecek türü olabilir. Bu meta veriler, bir `JsonObject`kullanılarak bu özelliklerin özellikleri olarak eklenebilir. Aşağıdaki kod, "Merhaba Dünya!" değerine sahip `title` bir özelliği olan basit bir nokta özelliği oluşturur
 
 ```java
 //Create a data source and add it to the map.
@@ -32,7 +32,7 @@ properties.addProperty("title", "Hello World!");
 dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64), properties));
 ```
 
-Kullanıcı haritada bir özellik ile etkileşime geçtiğinde, olaylar bu eylemlere tepki vermek için kullanılabilir. Yaygın bir senaryo, Kullanıcı tarafından etkileşim kurulan bir özelliğin meta veri özelliklerinden oluşan bir ileti görüntülemektir. `OnFeatureClick` Olay, kullanıcının haritadaki bir özelliği dokunduğunda tespit etmek için kullanılan ana olaydır. Ayrıca bir `OnLongFeatureClick` olay da vardır. `OnFeatureClick` Olayı haritaya eklerken, bir katmanın kimliğini ile sınırlamak için bir katman kimliğine geçerek tek bir katmanla sınırlı olabilir. Katman KIMLIĞI geçirilmemişse, hangi katmanda olduğuna bakılmaksızın haritadaki herhangi bir özelliğe dokunarak bu olayı tetiklersiniz. Aşağıdaki kod, haritada nokta verisi işlemek için bir sembol katmanı oluşturur, sonra bir `OnFeatureClick` olay ekler ve bu sembol katmanına kısıtlar.
+Kullanıcı haritada bir özellik ile etkileşime geçtiğinde, olaylar bu eylemlere tepki vermek için kullanılabilir. Yaygın bir senaryo, Kullanıcı tarafından etkileşim kurulan bir özelliğin meta veri özelliklerinden oluşan bir ileti görüntülemektir. `OnFeatureClick` olay, kullanıcının haritadaki bir özelliği dokunduğunda tespit etmek için kullanılan ana olaydır. Ayrıca `OnLongFeatureClick` bir olay da vardır. `OnFeatureClick` olayı haritaya eklenirken, bir katmanın kimliğini ile sınırlamak için bir katman kimliğine geçerek tek bir katmanla sınırlı olabilir. Katman KIMLIĞI geçirilmemişse, hangi katmanda olduğuna bakılmaksızın haritadaki herhangi bir özelliğe dokunarak bu olayı tetiklersiniz. Aşağıdaki kod, haritada nokta verisi işlemek için bir sembol katmanı oluşturur, sonra bir `OnFeatureClick` olayı ekler ve bu sembol katmanına kısıtlar.
 
 ```java
 //Create a symbol and add it to the map.
@@ -50,7 +50,7 @@ map.events.add((OnFeatureClick) (features) -> {
 
 ## <a name="display-a-toast-message"></a>Bildirim iletisi görüntüle
 
-Bildirim iletisi, kullanıcıya bilgi görüntülemenin en kolay yollarından biridir ve Android 'in tüm sürümlerinde kullanılabilir. Her tür Kullanıcı girişini desteklemez ve yalnızca kısa bir süre için görüntülenir. Kullanıcının ne dokundukları hakkında bir şey bilmesini hızlıca sağlamak istiyorsanız, bir bildirim iletisi iyi bir seçenek olabilir. Aşağıdaki kod, bir bildirim iletisinin `OnFeatureClick` olayla nasıl kullanılabileceğini gösterir.
+Bildirim iletisi, kullanıcıya bilgi görüntülemenin en kolay yollarından biridir ve Android 'in tüm sürümlerinde kullanılabilir. Her tür Kullanıcı girişini desteklemez ve yalnızca kısa bir süre için görüntülenir. Kullanıcının ne dokundukları hakkında bir şey bilmesini hızlıca sağlamak istiyorsanız, bir bildirim iletisi iyi bir seçenek olabilir. Aşağıdaki kod, `OnFeatureClick` olayla bir bildirim iletisinin nasıl kullanılabileceğini gösterir.
 
 ```java
 //Add a feature click event to the map.
@@ -65,7 +65,7 @@ map.events.add((OnFeatureClick) (features) -> {
 
 <center>
 
-![Dokunulmakta olan bir özelliğin animasyonu ve bir bildirim iletisi görüntüleniyor](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
+dokunmakta olan bir özelliğin animasyonunu ![ve bir bildirim iletisi görüntülendi](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
 
 Mesajların yanı sıra, bir özelliğin meta veri özelliklerini sunmak için birçok farklı yol vardır:
 

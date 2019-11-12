@@ -1,5 +1,5 @@
 ---
-title: SSL kullanarak güvenli hale getirme
+title: SSL kullanarak güvenli Web Hizmetleri
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetinin çok güvenli bir şekilde HTTPS 'yi nasıl etkinleştireceğinizi öğrenin.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1455ec17898e82ed0f39fea66c44d2e9b4f57280
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1021ad1983f78252d924a5d3cb674419732d66e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489546"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932052"
 ---
 # <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>Azure Machine Learning ile güvenli hale getirmek için SSL kullanma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -71,7 +71,7 @@ Bir sertifika istediğinizde, için kullanmayı planladığınız adresin FQDN '
 
 ## <a id="enable"></a>SSL 'yi etkinleştirme ve dağıtma
 
-SSL etkinken hizmeti dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini, *sertifika* dosyasının değerine ayarlayın. *Ssl_key* değerini *anahtar* dosyasının değerine ayarlayın.
+SSL etkinken hizmeti dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *Ssl_key* *anahtar* dosyasının değerine ayarlayın.
 
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>AKS ve Field üzerinde dağıtma-programlanabilir kapı dizisi (FPGA)
 
@@ -80,14 +80,14 @@ SSL etkinken hizmeti dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* p
 
 AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan bir küme ekleyebilirsiniz. Küme oluşturma veya ekleme hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmet kümesine model dağıtma](how-to-deploy-azure-kubernetes-service.md).
   
--  Yeni bir küme oluşturursanız, **[Akscompute. provisionining_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** kullanın.
-- Var olan bir kümeyi eklerseniz, **[Akscompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** kullanın. Her ikisi de **Enable_ssl** yöntemi olan bir yapılandırma nesnesi döndürür.
+-  Yeni bir küme oluşturursanız, **[Akscompute. provisionining_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** kullanılır.
+- Var olan bir kümeyi eklerseniz, **[Akscompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** kullanırsınız. Her ikisi de **Enable_ssl** yöntemi olan bir yapılandırma nesnesi döndürür.
 
 **Enable_ssl** yöntemi, Microsoft tarafından veya satın aldığınız bir sertifika tarafından sunulan bir sertifikayı kullanabilir.
 
-  * Microsoft 'tan bir sertifika kullandığınızda, *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "hizmetim" değeri "hizmetim\<altı-Random-karakterlik > bir etki alanı adı oluşturur.\<azureregion >. cloudapp. Azure. com ", burada \<azureregion >, hizmeti içeren bölgedir. İsteğe bağlı olarak, var olan *leaf_domain_label*üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
+  * Microsoft 'tan bir sertifika kullandığınızda *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "hizmetim" değeri "hizmetim\<altı-Random-karakterlik > bir etki alanı adı oluşturur.\<azureregion >. cloudapp. Azure. com ", burada \<azureregion >, hizmeti içeren bölgedir. İsteğe bağlı olarak, mevcut *leaf_domain_label*üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
 
-    SSL etkinken hizmeti dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini, *sertifika* dosyasının değerine ayarlayın. *Ssl_key* değerini *anahtar* dosyasının değerine ayarlayın.
+    SSL etkinken hizmeti dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *Ssl_key* *anahtar* dosyasının değerine ayarlayın.
 
     > [!IMPORTANT]
     > Microsoft 'tan bir sertifika kullandığınızda, kendi sertifikanızı veya etki alanı adınızı satın almanız gerekmez.
@@ -148,7 +148,7 @@ Sonra, DNS 'nizi ' a işaret etmek için güncelleştirmeniz gerekir.
 + **AKS için:**
 
   > [!WARNING]
-  > Hizmeti Microsoft 'un bir sertifikasını kullanarak oluşturmak için *leaf_domain_label* kullandıysanız, kümenin DNS değerini el ile güncelleştirin. Değer otomatik olarak ayarlanmalıdır.
+  > Hizmeti Microsoft 'un bir sertifikası kullanarak oluşturmak için *leaf_domain_label* kullandıysanız, kümenin DNS değerini el ile güncelleştirin. Değer otomatik olarak ayarlanmalıdır.
 
   Sol bölmedeki **Ayarlar** ' ın altındaki **yapılandırma** sekmesinde aks KÜMESININ genel IP adresinin DNS 'sini güncelleştirin. (Aşağıdaki resme bakın.) Genel IP adresi, AKS aracı düğümlerini ve diğer ağ kaynaklarını içeren kaynak grubu altında oluşturulan bir kaynak türüdür.
 
@@ -160,7 +160,7 @@ SSL sertifikalarının süre sonu ve yenilenmesi gerekiyor. Genellikle bu her y�
 
 ### <a name="update-a-microsoft-generated-certificate"></a>Microsoft tarafından oluşturulan bir sertifikayı güncelleştirme
 
-Sertifika ilk olarak Microsoft tarafından oluşturulduysa (hizmeti oluşturmak için *leaf_domain_label* kullanıldığında), sertifikayı güncelleştirmek için aşağıdaki örneklerden birini kullanın:
+Sertifika ilk olarak Microsoft tarafından oluşturulduysa (hizmeti oluşturmak için *leaf_domain_label* kullanılırken), sertifikayı güncelleştirmek için aşağıdaki örneklerden birini kullanın:
 
 **SDK 'Yı kullanma**
 

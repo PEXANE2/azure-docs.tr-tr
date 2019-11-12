@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
-ms.date: 10/15/2019
-ms.openlocfilehash: a98a0e75c7a03baa663ccb4215e918a87bcc5df7
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.date: 11/11/2019
+ms.openlocfilehash: 474a184b24ca3318a33adb89b25640939a814474
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821781"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929505"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>YAML 'de makine öğrenimi işlem hatlarını tanımlama
 
@@ -47,8 +47,6 @@ Aşağıdaki tabloda, YAML 'de bir işlem hattı tanımlarken ne olduğu ve şu 
 | `data_reference` | Verilerin bir çalıştırmada nasıl ve nerede kullanılabilir yapılacağını tanımlar. |
 | `default_compute` | İşlem hattının tüm adımlarının çalıştırıldığı varsayılan işlem hedefi. |
 | `steps` | İşlem hattında kullanılan adımlar. |
-
-Aşağıdaki YAML bir örnek ardışık düzen tanımıdır:
 
 ## <a name="parameters"></a>Parametreler
 
@@ -104,15 +102,15 @@ pipeline:
 
 ## <a name="steps"></a>Adımlar
 
-Adımlar, ortamda çalıştırılacak dosyalarla birlikte bir hesaplama ortamı tanımlar. YAML tanımı aşağıdaki adımları temsil eder:
+Adımlar, ortamda çalıştırılacak dosyalarla birlikte bir hesaplama ortamı tanımlar. Bir adımın türünü tanımlamak için `type` anahtarını kullanın:
 
-| YAML anahtarı | Açıklama |
+| Adım türü | Açıklama |
 | ----- | ----- |
-| `adla_step` | Azure Data Lake Analytics ile bir U-SQL betiği çalıştırır. [Adlastep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py) sınıfına karşılık gelir. |
-| `azurebatch_step` | İşleri Azure Batch kullanarak çalıştırır. [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py) sınıfına karşılık gelir. |
-| `databricks_step` | Bir Databricks Not defteri, Python betiği veya JAR ekler. [Databricksstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) sınıfına karşılık gelir. |
-| `data_transfer_step` | Verileri depolama seçenekleri arasında aktarır. [Datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) sınıfına karşılık gelir. |
-| `python_script_step` | Bir Python betiği çalıştırır. [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) sınıfına karşılık gelir. |
+| `AdlaStep` | Azure Data Lake Analytics ile bir U-SQL betiği çalıştırır. [Adlastep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py) sınıfına karşılık gelir. |
+| `AzureBatchStep` | İşleri Azure Batch kullanarak çalıştırır. [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py) sınıfına karşılık gelir. |
+| `DatabricsStep` | Bir Databricks Not defteri, Python betiği veya JAR ekler. [Databricksstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) sınıfına karşılık gelir. |
+| `DataTransferStep` | Verileri depolama seçenekleri arasında aktarır. [Datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) sınıfına karşılık gelir. |
+| `PythonScriptStep` | Bir Python betiği çalıştırır. [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) sınıfına karşılık gelir. |
 
 ### <a name="adla-step"></a>ADLA adımı
 
@@ -146,15 +144,15 @@ pipeline:
     default_compute: adlacomp
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            adla_step:
-                name: "AdlaStep"
-                script_name: "sample_script.usql"
-                source_directory: "helloworld"
+            type: "AdlaStep"
+            name: "MyAdlaStep"
+            script_name: "sample_script.usql"
+            source_directory: "D:\\scripts\\Adla"
             inputs:
                 employee_data:
                     source: employee_data
@@ -198,18 +196,18 @@ pipeline:
     default_compute: testbatch
     steps:
         Step1:
-            runconfig: "D:\\AzureMlCli\\cli_testing\\default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            azurebatch_step:
-                name: "AzureBatchStep"
-                pool_id: "MyPoolName"
-                create_pool: true
-                executable: "azurebatch.cmd"
-                source_directory: "D:\\AzureMlCli\\cli_testing"
-                allow_reuse: false
+            type: "AzureBatchStep"
+            name: "MyAzureBatchStep"
+            pool_id: "MyPoolName"
+            create_pool: true
+            executable: "azurebatch.cmd"
+            source_directory: "D:\\scripts\\AureBatch"
+            allow_reuse: false
             inputs:
                 input:
                     source: input
@@ -251,18 +249,18 @@ pipeline:
     default_compute: mydatabricks
     steps:
         Step1:
-            runconfig: "D:\\AzureMlCli\\cli_testing\\default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            databricks_step:
-                name: "Databrickstep"
-                run_name: "DatabrickRun"
-                python_script_name: "train-db-local.py"
-                source_directory: "D:\\AzureMlCli\\cli_testing\\databricks_train"
-                num_workers: 1
-                allow_reuse: true
+            type: "DatabricksStep"
+            name: "MyDatabrickStep"
+            run_name: "DatabricksRun"
+            python_script_name: "train-db-local.py"
+            source_directory: "D:\\scripts\\Databricks"
+            num_workers: 1
+            allow_reuse: true
             inputs:
                 blob_test_data:
                     source: blob_test_data
@@ -301,14 +299,14 @@ pipeline:
     default_compute: adftest
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            data_transfer_step:
-                name: "DataTransferStep"
-                adla_compute_name: adftest
+            type: "DataTransferStep"
+            name: "MyDataTransferStep"
+            adla_compute_name: adftest
             source_data_reference:
                 adls_test_data:
                     source: adls_test_data
@@ -345,16 +343,16 @@ pipeline:
     default_compute: cpu-cluster
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            python_script_step:
-                name: "PythonScriptStep"
-                script_name: "train.py"
-                allow_reuse: True
-                source_directory: "helloworld"
+            type: "PythonScriptStep"
+            name: "MyPythonScriptStep"
+            script_name: "train.py"
+            allow_reuse: True
+            source_directory: "D:\\scripts\\PythonScript"
             inputs:
                 InputData:
                     source: DataReference1
@@ -408,7 +406,7 @@ Schedule:
 | `time_zone` | Başlangıç saatinin saat dilimi. Saat dilimi sağlanmazsa UTC kullanılır. |
 | `hours` | `frequency` `"Day"` veya `"Week"`, işlem hattının çalışması gereken günün saatleri olarak, virgülle ayırarak 0 ile 23 arasında bir veya daha fazla tamsayı belirtebilirsiniz. Yalnızca `time_of_day` veya `hours` ve `minutes` kullanılabilir. |
 | `minutes` | `frequency` `"Day"` veya `"Week"`, işlem hattının çalışması gereken saatin dakikalarıyla virgülle ayırarak 0 ile 59 arasında bir veya daha fazla tamsayı belirtebilirsiniz. Yalnızca `time_of_day` veya `hours` ve `minutes` kullanılabilir. |
-| `time_of_day` | `frequency` `"Day"` veya `"Week"`, zamanlamanın çalıştırılacağı günün bir saatini belirtebilirsiniz. Değerin dize biçimi `hh:mm`. Yalnızca `time_of_day` veya `hours` ve `minutes` kullanılabilir. |ZZS
+| `time_of_day` | `frequency` `"Day"` veya `"Week"`, zamanlamanın çalıştırılacağı günün bir saatini belirtebilirsiniz. Değerin dize biçimi `hh:mm`. Yalnızca `time_of_day` veya `hours` ve `minutes` kullanılabilir. |
 | `week_days` | `frequency` `"Week"`, zamanlamanın çalışması gerektiği zaman virgülle ayırarak bir veya daha fazla gün belirtebilirsiniz. Geçerli değerler `"Monday"`, `"Tuesday"`, `"Wednesday"`, `"Thursday"`, `"Friday"`, `"Saturday"`ve `"Sunday"`. |
 
 Aşağıdaki örnek yinelenen bir zamanlamanın tanımını içerir:

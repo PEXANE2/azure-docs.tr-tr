@@ -1,7 +1,7 @@
 ---
-title: Machine Learning CLı uzantısı
+title: CLı uzantısı
 titleSuffix: Azure Machine Learning
-description: Azure CLı için Azure Machine Learning CLı uzantısı hakkında bilgi edinin. Azure CLı, Azure bulutundaki kaynaklarla çalışmanıza olanak sağlayan platformlar arası bir komut satırı yardımcı programıdır. Machine Learning uzantısı, Azure Machine Learning çalışmanıza olanak sağlar.
+description: Azure CLı için Azure Machine Learning CLı uzantısı hakkında bilgi edinin. Azure CLı, Azure bulutundaki kaynaklarla çalışmanıza olanak sağlayan platformlar arası bir komut satırı yardımcı programıdır. Machine Learning uzantısı, Azure Machine Learning çalışmanıza olanak sağlar. ML CLı, çalışma alanınız, veri depoları, veri kümeleri, işlem hatları, modeller ve dağıtımlarınız gibi kaynakları oluşturur ve yönetir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 20ff7d2cb6c185f574494871a986e1bce63536ba
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e775689da93b5197d1c2f7d130466c2afc8391e4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619950"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932070"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning için CLı uzantısını kullanın
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Azure Machine Learning CLı, Azure platformu için platformlar arası komut sat�
 
 CLı Azure Machine Learning SDK 'sının yerini almaz. Otomasyonuna uygun olan yüksek parametreli görevleri işlemek için optimize edilmiş, tamamlayıcı bir araçtır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * CLı 'yi kullanmak için bir Azure aboneliğinizin olması gerekir. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 

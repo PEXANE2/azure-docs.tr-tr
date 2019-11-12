@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: dd58ec08c6ec372cf53a79b75162748cfe336b23
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/11/2019
+ms.openlocfilehash: f2a33f96f77678e02c5b72c36563781e7d7ac334
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477135"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928289"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyicisini etkinleştirme
 
@@ -42,6 +42,13 @@ Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 * Prometheus ölçümleri varsayılan olarak toplanmaz. Aracıyı toplayacak şekilde [yapılandırmadan](container-insights-prometheus-integration.md) önce, neleri tanımlayabileceğinizi anlamak Için Prometheus [belgelerini](https://prometheus.io/) gözden geçirmeniz önemlidir.
+
+## <a name="supported-configurations"></a>Desteklenen konfigürasyonlar
+
+Kapsayıcılar için Azure Izleyici ile resmi olarak şunlar desteklenir.
+
+- Ortamlar: Azure 'da Kubernetes, AKS motoru ve Azure Stack. Daha fazla bilgi için bkz. [Azure Stack aks motoru](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+- Kubernetes ve destek ilkesi sürümleri [desteklenen aks](../../aks/supported-kubernetes-versions.md)sürümleriyle aynıdır. 
 
 ## <a name="network-firewall-requirements"></a>Ağ güvenlik duvarı gereksinimleri
 

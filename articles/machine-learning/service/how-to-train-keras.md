@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: c6a6af6d32e0664e66696523f53ac81cd921609e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a61b7e058e485121d87c5d3bb1050b4289e4ceed
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814863"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931063"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Azure Machine Learning ile keras sınıflandırma modelini eğitme ve kaydetme
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Sıfırdan bir keras modeli geliştirirken veya var olan bir modeli buluta getir
 
 Machine Learning ve derin öğrenme arasındaki farklar hakkında bilgi edinmek için [kavramsal makaleye](concept-deep-learning-vs-machine-learning.md) bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 
@@ -189,6 +189,9 @@ DNN modelini eğittikten sonra, çalışma alanınıza kaydedebilirsiniz. Model 
 ```Python
 model = run.register_model(model_name='keras-dnn-mnist', model_path='outputs/model')
 ```
+
+> [!TIP]
+> Yeni kaydettiğiniz model, eğitim için kullandığınız tahmin aracı 'dan bağımsız olarak, Azure Machine Learning ' deki diğer tüm kayıtlı modellerle aynı şekilde dağıtılır. Dağıtım nasıl yapılır, model kaydettirme hakkında bir bölüm içerir, ancak zaten kayıtlı bir modeliniz olduğundan, dağıtım için doğrudan [bir işlem hedefi oluşturmaya](how-to-deploy-and-where.md#choose-a-compute-target) geçebilirsiniz.
 
 Ayrıca modelin yerel bir kopyasını da indirebilirsiniz. Bu, ek model doğrulama işini yerel olarak gerçekleştirmek için yararlı olabilir. Eğitim betikindeki `mnist-keras.py`, bir TensorFlow koruyucu nesnesi modeli yerel bir klasöre (yerel olarak işlem hedefi) devam ettirir. Veri deposundan bir kopya indirmek için Run nesnesini kullanabilirsiniz.
 

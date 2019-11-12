@@ -1,6 +1,6 @@
 ---
 title: Azure portal Azure Container Registry depoları
-description: Azure portal Azure Container Registry depoları görüntüleme.
+description: Docker kapsayıcı görüntülerini ve desteklenen diğer yapıları barındıran Azure Container Registry depoları görüntülemek için Azure portal kullanın.
 services: container-registry
 author: cristy
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 22f84efee2b3996734e8e38c73d30ba891b745d9
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 793d8e82ca78c6055a6e956d4f41b7991d5fd700
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310574"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931523"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Azure portal kapsayıcı kayıt defteri depolarını Görüntüleme
 
@@ -22,14 +22,14 @@ Azure Container Registry, Docker kapsayıcı görüntülerini depolarda depolama
 ## <a name="prerequisites"></a>Önkoşullar
 
 * **Kapsayıcı kayıt defteri**: Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturun. Örneğin, [Azure Portal](container-registry-get-started-portal.md) veya [Azure CLI](container-registry-get-started-azure-cli.md)'yi kullanın.
-* **Docker CLI**: Size Docker komut satırı arabirimi sağlayan yerel makinenize [Docker][docker-install] 'yi yükleyebilirsiniz.
-* **Kapsayıcı görüntüsü**: Kapsayıcı Kayıt defterinize bir görüntü gönderin. Görüntü gönderme ve çekme hakkında yönergeler için bkz. [görüntü gönderme ve çekme](container-registry-get-started-docker-cli.md).
+* **DOCKER CLI**: size Docker komut satırı arabirimi sağlayan yerel makinenize [Docker][docker-install] 'yi yükler.
+* **Kapsayıcı görüntüsü**: kapsayıcı Kayıt defterinize bir görüntü gönderin. Görüntü gönderme ve çekme hakkında yönergeler için bkz. [görüntü gönderme ve çekme](container-registry-get-started-docker-cli.md).
 
 ## <a name="view-repositories-in-azure-portal"></a>Azure portal depoları görüntüle
 
 Görüntülerinizi barındıran depoların listesini ve Azure portal resim etiketlerini görebilirsiniz.
 
-[Gönderme ve görüntü çekme](container-registry-get-started-docker-cli.md) (daha sonra görüntüyü silme) içindeki adımları izlediyseniz, kapsayıcı kayıt defterinizde bir NGINX görüntüsü olmalıdır. Bu makaledeki yönergeler, görüntüyü bir ad alanı ile etiketleyerek, içindeki `/samples/nginx`"örnekler" olarak belirtilir. Yenileyici olarak, bu makalede belirtilen [Docker Push][docker-push] komutu:
+[Gönderme ve görüntü çekme](container-registry-get-started-docker-cli.md) (daha sonra görüntüyü silme) içindeki adımları izlediyseniz, kapsayıcı kayıt defterinizde bir NGINX görüntüsü olmalıdır. Bu makaledeki yönergeler, görüntüyü bir ad alanı ile etiketleyerek `/samples/nginx`' deki "örnekler" olarak belirtilir. Yenileyici olarak, bu makalede belirtilen [Docker Push][docker-push] komutu:
 
 ```Bash
 docker push myregistry.azurecr.io/samples/nginx

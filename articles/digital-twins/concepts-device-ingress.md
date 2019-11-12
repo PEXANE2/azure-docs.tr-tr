@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 723fe14db9089e1127f39eae3ed7b10bbddf70bf
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4e7a179980abb164754941f345d2ee9ae7f5c9de
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889723"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930401"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Cihaz bağlantısı ve telemetri sorunları
 
@@ -69,8 +69,8 @@ Cihazınızın ileti biçimi ve yükünü, çözümünüzün ihtiyaçlarına uya
 
 | Özellik adı | Değer | Gerekli | Açıklama |
 |---|---|---|---|
-| **DigitalTwins-telemetri** | 1.0 | Evet | Sisteme bir ileti tanımlayan sabit bir değer. |
-| **DigitalTwins-Sensorhardwareıd** | `string(72)` | Evet | **İletiyi**gönderen sensör için benzersiz bir tanımlayıcı. Bu değer, sistemin işlemesi için bir nesnenin **HardwareID** özelliği ile aynı olmalıdır. Örneğin, `00FF0643BE88-CO2`. |
+| **DigitalTwins-telemetri** | 1.0 | Yes | Sisteme bir ileti tanımlayan sabit bir değer. |
+| **DigitalTwins-Sensorhardwareıd** | `string(72)` | Yes | **İletiyi**gönderen sensör için benzersiz bir tanımlayıcı. Bu değer, sistemin işlemesi için bir nesnenin **HardwareID** özelliği ile aynı olmalıdır. Örneğin, `00FF0643BE88-CO2`. |
 | **CreationTimeUtc** | `string` | Hayır | Yükün örnekleme süresini tanımlayan [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) biçimli bir tarih dizesi. Örneğin, `2018-09-20T07:35:00.8587882-07:00`. |
 | **ID** | `string` | Hayır | Sistem genelinde olayları izlemek için kullanılan bir UUID. Örneğin, `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 

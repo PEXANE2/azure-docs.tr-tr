@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: 0969ee6dbc035ffa105dd54d34f3b4711d4915cf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e46d4f99075a0d3fa326c84e17792b8959e23517
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951217"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930231"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>SensorTile. Box cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -74,7 +74,7 @@ Bu bölümde, SensorTile. Box ' ı mobil uygulamaya bağlamayı ve mobil uygulam
 1. Bulut sağlayıcısı olarak **Azure IoT Central** ' yi seçin.
 1. Daha önce belirtilen cihaz KIMLIĞINI ve kapsam KIMLIĞINI ekleyin.
 
-    ![Kimlik bilgileri](media/howto-connect-sensortile/credentials.png)
+    ![Kimlik Bilgileri](media/howto-connect-sensortile/credentials.png)
 
 1. **Uygulama anahtarı** radyo düğmesini seçin.
 1. **Bağlan** ' a tıklayın ve karşıya yüklemek istediğiniz telemetri verilerini seçin.

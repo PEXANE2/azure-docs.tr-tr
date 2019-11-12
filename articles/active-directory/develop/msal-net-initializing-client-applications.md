@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f15f6480c2dc77fb1f6e229b62a0114f0f6fb735
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a8cf7b7004097ef5a4d915d8fdff60cc9606c5be
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802826"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927073"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>MSAL.NET kullanarak istemci uygulamalarını başlatma
 Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) kullanılarak ortak istemci ve gizli istemci uygulamalarının başlatılması açıklanmaktadır.  İstemci uygulama türleri ve uygulama yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için [genel bakış](msal-client-applications.md)makalesini okuyun.
@@ -101,7 +101,7 @@ Uygulama oluşturucularını kullanan kod parçacıkları içinde, bir dizi `.Wi
 
 Ortak bir istemcide veya gizli istemci uygulama tasarımcısında ayarlayabileceğiniz değiştiriciler şunlardır:
 
-|Parametre | Açıklama|
+|İcisi | Açıklama|
 |--------- | --------- |
 |`.WithAuthority()` 7 geçersiz kılmalar | Azure bulutu, hedef kitlesi, kiracı (kiracı KIMLIĞI veya etki alanı adı) veya doğrudan yetkili URI sağlama olasılığa sahip olan uygulama varsayılan yetkilisini bir Azure AD yetkilisine ayarlar.|
 |`.WithAdfsAuthority(string)` | Uygulamanın varsayılan yetkilisini bir ADFS yetkilisi olacak şekilde ayarlar.|
@@ -120,7 +120,7 @@ Ortak bir istemcide veya gizli istemci uygulama tasarımcısında ayarlayabilece
 
 Xamarin. iOS üzerinde ortak bir istemci uygulama Oluşturucusu üzerinde ayarlayabileceğiniz değiştiriciler şunlardır:
 
-|Parametre | Açıklama|
+|İcisi | Açıklama|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Yalnızca Xamarin. iOS**: iOS anahtar zinciri güvenlik grubunu ayarlar (önbellek kalıcılığı için).|
 
@@ -128,7 +128,7 @@ Xamarin. iOS üzerinde ortak bir istemci uygulama Oluşturucusu üzerinde ayarla
 
 Gizli bir istemci uygulama Oluşturucusu üzerinde ayarlayabileceğiniz değiştiriciler şunlardır:
 
-|Parametre | Açıklama|
+|İcisi | Açıklama|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Azure AD ile uygulamayı tanımlayan sertifikayı ayarlar.|
 |`.WithClientSecret(string clientSecret)` | Uygulamayı Azure AD ile tanımlayan istemci gizli anahtarını (uygulama parolası) ayarlar.|

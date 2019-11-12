@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: 33302f3760cc750bfc41386aaf17368abc15ba5d
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 18e03b6828922b3444d9461bef394b5c6682c238
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063281"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930344"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight 'ta dış meta veri depoları kullanma
 
@@ -57,6 +57,18 @@ HDInsight, üretim kümeleri için önerilen özel meta tasmres 'i de destekler:
 
 ![HDInsight Hive meta veri deposu kullanım örneği](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 
+### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Özel meta veri deposu için Azure SQL veritabanı oluşturma ve yapılandırma
+
+HDInsight kümesi için özel bir Hive meta veri deposu ayarlamadan önce mevcut bir Azure SQL veritabanı oluşturmanız veya sahip olmanız gerekir.  Daha fazla bilgi için bkz. [hızlı başlangıç: Azure SQL DB 'de tek bir veritabanı oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
+
+HDInsight kümenizin bağlı Azure SQL veritabanına erişebildiğinizden emin olmak için Azure SQL veritabanı güvenlik duvarı kurallarını Azure hizmetleri ve kaynaklarının sunucuya erişmesine izin verecek şekilde yapılandırın.
+
+**Sunucu güvenlik duvarını ayarla**' ya tıklayarak Azure Portal bu seçeneği etkinleştirebilir ve Azure SQL veritabanı sunucusu veya veritabanı için **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine izin ver ' e** tıklayabilirsiniz. Daha fazla bilgi için bkz. [IP güvenlik duvarı kuralları oluşturma ve yönetme](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+
+![Sunucu güvenlik duvarı 'nı ayarla düğmesi](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+
+![Azure hizmetlerine erişime izin ver](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Küme oluşturma sırasında özel bir meta veri deposu seçin
 
 Küme oluşturma sırasında kümenizi önceden oluşturulmuş bir Azure SQL veritabanına işaret edebilir veya küme oluşturulduktan sonra SQL veritabanını yapılandırabilirsiniz. Bu seçenek, Azure portal yeni bir Hadoop, Spark veya etkileşimli Hive kümesi oluştururken **depolama > meta veri ayarları** ile belirtilir.
@@ -95,7 +107,7 @@ Apache Oozie, Hadoop işlerini yöneten bir iş akışı koordinasyon sistemidir
 
 Azure SQL veritabanı ile bir Oozie meta oluşturma hakkında yönergeler için bkz. [iş akışları Için Apache Oozie kullanma](hdinsight-use-oozie-linux-mac.md).
 
-## <a name="custom-ambari-db"></a>Özel ambarı DB
+## <a name="custom-ambari-db"></a>Özel Ambari DB
 
 HDInsight 'ta Apache ambarı ile kendi dış veritabanınızı kullanmak için bkz. [özel Apache ambarı veritabanı](hdinsight-custom-ambari-db.md).
 

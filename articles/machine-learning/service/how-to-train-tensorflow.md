@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3d5a61b93175559bce92a17e27602a4f79d88ad
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4a055e039e8d7629f3ff1c20c6ce9e4f1533b6b9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603971"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931041"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning ile bir TensorFlow derin öğrenme modeli oluşturun
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Baştan sona akış modeli geliştirmenize veya [mevcut bir modeli](how-to-deplo
 
 [Derin öğrenme ve makine öğrenimi](concept-deep-learning-vs-machine-learning.md)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 
@@ -183,10 +183,17 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="register-or-download-a-model"></a>Bir modeli kaydetme veya indirme
 
-Modeli eğittikten sonra, çalışma alanınıza kaydedebilirsiniz. Model kaydı, [model yönetimi ve dağıtımını](concept-model-management-and-deployment.md)basitleştirmek için modellerinizi çalışma alanınızda depolamanızı ve sürümlerini oluşturmanıza imkan tanır.
+Modeli eğittikten sonra, çalışma alanınıza kaydedebilirsiniz. Model kaydı, [model yönetimi ve dağıtımını](concept-model-management-and-deployment.md)basitleştirmek için modellerinizi çalışma alanınızda depolamanızı ve sürümlerini oluşturmanıza imkan tanır. `model_framework`, `model_framework_version`ve `resource_configuration`parametreleri belirterek, hiçbir kod modeli dağıtımı kullanılabilir hale gelir. Bu, modelinizi kayıtlı modelden doğrudan bir Web hizmeti olarak dağıtmanızı sağlar ve `ResourceConfiguration` nesnesi Web hizmeti için işlem kaynağını tanımlar.
 
 ```Python
-model = run.register_model(model_name='tf-dnn-mnist', model_path='outputs/model')
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = run.register_model(model_name='tf-dnn-mnist', 
+                           model_path='outputs/model',
+                           model_framework=Model.Framework.TENSORFLOW,
+                           model_framework_version='1.13.0',
+                           resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
 Ayrıca, Çalıştır nesnesini kullanarak modelin yerel bir kopyasını indirebilirsiniz. Eğitim betiğinin `mnist-tf.py`, bir TensorFlow koruyucu nesnesi modeli yerel bir klasöre (yerel olarak işlem hedefine) devam ettirir. Bir kopyasını indirmek için Run nesnesini kullanabilirsiniz.
@@ -259,7 +266,7 @@ estimator= TensorFlow(source_directory=project_folder,
 run = exp.submit(tf_est)
 ```
 
-#### <a name="define-cluster-specifications-in-tf_config"></a>' TF_CONFIG ' içinde küme belirtimlerini tanımla
+#### <a name="define-cluster-specifications-in-tf_config"></a>' TF_CONFIG ' içinde küme belirtimlerini tanımlayın
 
 Ayrıca, [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec)kümenin ağ adresleri ve bağlantı noktaları da gerekir, Azure Machine Learning `TF_CONFIG` ortam değişkenini sizin için ayarlar.
 
@@ -292,13 +299,24 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
+## <a name="deployment"></a>Dağıtım
+
+Yeni Kaydolmakta olduğunuz model, eğitim için kullandığınız tahmin etmeksizin, Azure Machine Learning ' deki diğer tüm kayıtlı modellerle tamamen aynı şekilde dağıtılabilir. Dağıtım nasıl yapılır, model kaydettirme hakkında bir bölüm içerir, ancak zaten kayıtlı bir modeliniz olduğundan, dağıtım için doğrudan [bir işlem hedefi oluşturmaya](how-to-deploy-and-where.md#choose-a-compute-target) geçebilirsiniz.
+
+### <a name="preview-no-code-model-deployment"></a>Önizle Kod olmayan model dağıtımı
+
+Geleneksel dağıtım yolu yerine, TensorFlow için kod içermeyen dağıtım özelliğini (Önizleme) de kullanabilirsiniz. Modelinizi yukarıda gösterildiği gibi `model_framework`, `model_framework_version`ve `resource_configuration` parametreleriyle kaydederek, modelinizi dağıtmak için `deploy()` static işlevini kullanmanız yeterlidir.
+
+```python
+service = Model.deploy(ws, "tensorflow-web-service", [model])
+```
+
+Daha ayrıntılı Azure Machine Learning dağıtımı [nasıl](how-to-deploy-and-where.md) ele alır.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir TensorFlow modeli eğitildiniz ve kaydettiniz. GPU etkin bir kümeye model dağıtmayı öğrenmek için, GPU modeli dağıtım makalemize devam edin.
+Bu makalede, bir TensorFlow modeli eğitilmiş ve kaydettiniz ve dağıtım seçenekleri hakkında bilgi edindiniz. Azure Machine Learning hakkında daha fazla bilgi edinmek için bu makaleye bakın.
 
-> [!div class="nextstepaction"]
-> [Modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md)
 * [Eğitim sırasında çalıştırma ölçümlerini izleyin](how-to-track-experiments.md)
 * [Hiper parametreleri ayarla](how-to-tune-hyperparameters.md)
-* [Eğitilen model dağıtma](how-to-deploy-and-where.md)
 * [Azure 'da dağıtılmış derin öğrenme eğitimi için başvuru mimarisi](/azure/architecture/reference-architectures/ai/training-deep-learning)

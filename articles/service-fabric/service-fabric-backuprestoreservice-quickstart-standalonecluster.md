@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: efdb2f51058eca456d622afda390dee17fffea0b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b949a0edff7ed6341d10518bc1c38afe2f7efad0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819411"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929194"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric düzenli aralıklarla yedekleme ve geri yükleme
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 - Yedeklemeleri geçici olarak askıya al
 - Yedeklemelerin bekletme yönetimi (yakında)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Yapı sürümü 6,4 veya üzeri bir küme Service Fabric. Gerekli paketi indirme adımları için bu [makaleye](service-fabric-cluster-creation-for-windows-server.md) bakın.
 * Yedeklemeleri depolamak üzere depolamaya bağlanmak için gereken gizli dizileri şifrelemek için X. 509.440 sertifikası. Otomatik olarak imzalanan bir X. 509.440 sertifikası edinmeyi veya oluşturmayı öğrenmek için [makaleye](service-fabric-windows-cluster-x509-security.md) bakın.
 
@@ -117,19 +117,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 
 4. Küme yapılandırma dosyanızı önceki değişikliklerle güncelleştirdikten sonra, bunları uygulayın ve dağıtımın/yükseltmenin tamamlanmasını sağlayın. Tamamlandıktan sonra _yedekleme ve geri yükleme hizmeti_ kümenizde çalışmaya başlar. Bu hizmetin URI 'Si `fabric:/System/BackupRestoreService` ve hizmet, Service Fabric Gezgini 'ndeki sistem hizmeti bölümünde bulunabilir. 
 
-### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer kullanma
 
-1. Gelişmiş modun etkinleştirildiğinden emin olun.
-
-    ![Gelişmiş modu etkinleştir][2]
-
-2. Bir uygulama seçin ve eyleme geçin. Uygulama yedeklemesini etkinleştir/Güncelleştir ' e tıklayın.
-
-    ![Uygulama yedeklemesini etkinleştir][3] 
-
-3. Son olarak, istenen ilkeyi seçin ve yedeklemeyi etkinleştir ' e tıklayın.
-
-    ![Ilke seçin][4]
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Güvenilir durum bilgisi olan hizmet ve Reliable Actors için düzenli yedeklemeyi etkinleştirme
 Güvenilir durum bilgisi olan hizmet ve Reliable Actors için düzenli yedeklemeyi etkinleştirme adımlarını inceleyelim. Bu adımlarda varsayılmaktadır
@@ -207,6 +195,16 @@ $url = "http://localhost:19080/Applications/SampleApp/$/EnableBackup?api-version
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ``` 
+
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer kullanma
+
+1. Bir uygulama seçin ve eyleme geçin. Uygulama yedeklemesini etkinleştir/Güncelleştir ' e tıklayın.
+
+    ![Uygulama yedeklemesini etkinleştir][3] 
+
+2. Son olarak, istenen ilkeyi seçin ve yedeklemeyi etkinleştir ' e tıklayın.
+
+    ![Ilke seçin][4]
 
 ### <a name="verify-that-periodic-backups-are-working"></a>Düzenli yedeklemelerin çalıştığını doğrulama
 
@@ -292,8 +290,6 @@ Service Fabric Explorer yedeklemeleri görüntülemek için bir bölüme gidin v
 - [Yedekleme geri yükleme REST API başvurusu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event.png
-[2]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
 [4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
 [5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png
-

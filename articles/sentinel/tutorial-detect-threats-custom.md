@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5d4c549eaded78c69d3e7fa7173b5ad9b1d82f2f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9c4ba09c7e3eca4482ed56b0b337124aeec5b838
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333136"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928245"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Öğretici: şüpheli tehditleri algılamak için özel analitik kurallar oluşturma
 
-Veri kaynaklarınızı  Azure Sentinel 'e [bağladıktan](quickstart-onboard.md)sonra, ortamınızda belirli kriterleri arayabilmeniz ve ölçüt eşleştirildiği sırada olayları oluşturabilmeniz için özel kurallar oluşturabilirsiniz. Bu öğretici, Azure Sentinel ile tehditleri algılamak için özel kurallar oluşturmanıza yardımcı olur.
+Veri kaynaklarınızı Azure Sentinel 'e [bağladıktan](quickstart-onboard.md) sonra, ortamınızda belirli kriterleri arayabilmeniz ve ölçütler eşleştirildiği zaman bir olay oluşturarak bu kuralları araştırabilmeniz için özel kurallar oluşturabilirsiniz. Bu öğretici, Azure Sentinel ile tehditleri algılamak için özel kurallar oluşturmanıza yardımcı olur.
 
 Bu öğretici, Azure Sentinel ile tehditleri algılamanıza yardımcı olur.
 > [!div class="checklist"]
@@ -56,7 +56,7 @@ Ortamınızda şüpheli olan tehditler ve bozukluklar için arama yapmanıza yar
     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
    > [!NOTE]
-   > Sorgu uzunluğu 1 ila 1.000 karakter arasında olmalıdır ve "Search \*" veya "Union \*" içeremez.
+   > Sorgu uzunluğu 1 ila 10.000 karakter arasında olmalıdır ve "Search \*" veya "Union \*" içeremez.
 
     1. **Sorgu zamanlaması**' nın altında, aşağıdaki parametreleri ayarlayın:
 

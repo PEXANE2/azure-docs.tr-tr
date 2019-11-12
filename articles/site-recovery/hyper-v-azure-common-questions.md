@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: a6d38a9196d640ebc823b4f25e089cc04193212b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f9e5b5a70f7398483d5359a0489d5a6e6b241c6d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845742"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928199"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Sık sorulan sorular-Hyper-V-Azure olağanüstü durum kurtarma
 
@@ -83,11 +83,11 @@ Evet, hem [Azure 'da](https://docs.microsoft.com/azure/storage/storage-service-e
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Azure çoğaltma ile Hyper-V arasında ne yapabilirim?
 
-- **Olağanüstü durum kurtarma**: Tam olağanüstü durum kurtarma ayarlayabilirsiniz. Bu senaryoda, şirket içi Hyper-V VM 'lerini Azure depolama 'ya çoğaltmanız gerekir:
+- **Olağanüstü durum kurtarma**: tam olağanüstü durum kurtarma ayarlayabilirsiniz. Bu senaryoda, şirket içi Hyper-V VM 'lerini Azure depolama 'ya çoğaltmanız gerekir:
     - VM 'Leri Azure 'a çoğaltabilirsiniz. Şirket içi altyapınız kullanılamıyorsa Azure 'a yük devreolursunuz.
     - Yük devretmek için, çoğaltılan veriler kullanılarak Azure VM 'Leri oluşturulur. Azure VM 'lerinde uygulamalara ve iş yüklerine erişebilirsiniz.
     - Şirket içi veri merkeziniz yeniden kullanılabilir olduğunda, Azure 'dan şirket içi sitenize yeniden yük devredebilirler.
-- **Geçiş**: Şirket içi Hyper-V VM 'lerini Azure depolama 'ya geçirmek için Site Recovery kullanabilirsiniz. Ardından Şirket içinden Azure 'a yük devreolursunuz. Yük devretmeden sonra, uygulamalarınız ve iş yükleriniz Azure VM 'lerde kullanılabilir ve çalışır.
+- **Geçiş**: şirket içi Hyper-V VM 'lerini Azure depolama 'ya geçirmek için Site Recovery kullanabilirsiniz. Ardından Şirket içinden Azure 'a yük devreolursunuz. Yük devretmeden sonra, uygulamalarınız ve iş yükleriniz Azure VM 'lerde kullanılabilir ve çalışır.
 
 
 ### <a name="what-do-i-need-on-premises"></a>Şirket içinde ne yapmam gerekir?
@@ -99,7 +99,7 @@ Bir veya daha fazla tek başına veya kümelenmiş Hyper-V konağında çalışa
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>Hyper-V kümesinde bulunan VM 'Leri çoğaltabilir miyim?
 
-Evet, Site Recovery kümelenmiş Hyper-V konaklarının kullanılmasını destekler. Aşağıdakilere dikkat edin:
+Evet, Site Recovery kümelenmiş Hyper-V konaklarının kullanılmasını destekler. Şunlara dikkat edin:
 
 - Kümenin tüm düğümleri aynı kasaya kaydedilmelidir.
 - VMM kullanmıyorsanız, kümedeki tüm Hyper-V konakları aynı Hyper-V sitesine eklenmelidir.
@@ -147,16 +147,16 @@ Veriler Azure Storage 'a çoğaltılır. Yük devretme çalıştırdığınızda
 
 ### <a name="can-i-replicate-to-azure-with-a-site-to-site-vpn"></a>Siteden siteye VPN ile Azure 'a çoğaltma yapabilir miyim?
 
-Site Recovery, Şirket içindeki verileri ortak bir uç nokta üzerinden Azure depolama 'ya veya ExpressRoute ortak eşlemesini kullanarak çoğaltır. Siteden siteye VPN ağı üzerinden çoğaltma desteklenmez.
+Site Recovery, Şirket içindeki verileri ortak bir uç nokta üzerinden Azure depolama 'ya veya ExpressRoute Microsoft eşlemesi 'ni kullanarak çoğaltır. Siteden siteye VPN ağı üzerinden çoğaltma desteklenmez.
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>ExpressRoute ile Azure 'a çoğaltma yapabilir miyim?
 
-Evet, ExpressRoute, VM 'Leri Azure 'a çoğaltmak için kullanılabilir. Site Recovery, verileri bir Azure depolama hesabına ortak bir uç nokta üzerinden çoğaltır ve Site Recovery çoğaltma için [ortak eşleme](../expressroute/expressroute-circuit-peerings.md#publicpeering) ayarlamanız gerekir. VM 'Ler bir Azure sanal ağına yük devredikten sonra, [özel eşleme](../expressroute/expressroute-circuit-peerings.md#privatepeering)kullanarak bunlara erişebilirsiniz.
+Evet, ExpressRoute, VM 'Leri Azure 'a çoğaltmak için kullanılabilir. Site Recovery, verileri bir Azure depolama hesabına ortak bir uç nokta üzerinden çoğaltır ve Site Recovery çoğaltma için [Microsoft eşlemesi](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) ayarlamanız gerekir. VM 'Ler bir Azure sanal ağına yük devredikten sonra, [özel eşleme](../expressroute/expressroute-circuit-peerings.md#privatepeering)kullanarak bunlara erişebilirsiniz.
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Neden VPN üzerinden çoğaltılamam?
 
-Azure 'a çoğalttığınızda, çoğaltma trafiği bir Azure depolama hesabının genel uç noktalarına ulaşır. Bu nedenle, yalnızca ExpressRoute (genel eşleme) ile genel İnternet üzerinden çoğaltma yapabilir ve VPN çalışmaz. 
+Azure 'a çoğalttığınızda, çoğaltma trafiği bir Azure depolama hesabının genel uç noktalarına ulaşır. Bu nedenle, yalnızca ExpressRoute (Microsoft eşlemesi) ile genel İnternet üzerinden çoğaltma yapabilir ve VPN çalışmaz. 
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Çoğaltılan VM gereksinimleri nelerdir?
 
@@ -210,7 +210,7 @@ Site Recovery, çoğaltma için etkin Hyper-V VM 'lerine açık bir şekilde hi�
    
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Yük devretmeden sonra Azure VM 'lerine mi erişin Nasıl yaparım??
-Yük devretmeden sonra, bir siteden siteye VPN veya Azure ExpressRoute üzerinden Azure VM 'lerine güvenli bir Internet bağlantısı üzerinden erişebilirsiniz. Bağlanmak için bir dizi şey hazırlamanız gerekir. [Daha fazla bilgi edinin](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
+Yük devretmeden sonra, bir siteden siteye VPN veya Azure ExpressRoute üzerinden Azure VM 'lerine güvenli bir Internet bağlantısı üzerinden erişebilirsiniz. Bağlanmak için bir dizi şey hazırlamanız gerekir. [Daha fazla bilgi](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 
 ### <a name="is-failed-over-data-resilient"></a>Veri devredildi.
 Azure esneklik için tasarlanmıştır. Site Recovery, Azure SLA 'sına uygun olarak ikincil bir Azure veri merkezine yük devretme için tasarlanmıştır. Yük devretme gerçekleştiğinde, meta veri ve kasalarınızın kasanız için seçtiğiniz coğrafi bölge içinde kalmasını sağlarız.
@@ -224,8 +224,8 @@ Azure esneklik için tasarlanmıştır. Site Recovery, Azure SLA 'sına uygun ol
 
 1. Azure 'dan şirket içi siteye yapılan planlı bir yük devretmeyi, birkaç farklı seçenek kullanarak başlatın:
 
-    - Kapalı kalma süresini Küçült: Bu seçeneği kullanırsanız, yük devretmeden önce verileri eşitler Site Recovery. Değiştirilen veri bloklarını denetler ve Azure VM çalışmaya devam ederken, kapalı kalma süresini en aza indirirken bunları şirket içi siteye indirir. Yük devretmenin tamamlanması gerektiğini el ile belirttiğinizde, Azure VM kapanır, son Delta değişikliği kopyalanır ve yük devretme başlatılır.
-    - Tam indirme: Bu seçenekle ilgili veriler, yük devretme sırasında eşitlenir. Bu seçenek tüm diski indirir. Bir sağlama toplamı hesaplanmadığından daha hızlıdır, ancak daha fazla kapalı kalma süresi vardır. Çoğaltma Azure VM 'lerini bir süre çalıştırıyorsanız veya şirket içi VM silinmişse bu seçeneği kullanın.
+    - Kapalı kalma süresini en aza indir: Bu Site Recovery seçeneği kullanırsanız, yük devretme işleminden önce verileri eşitler. Değiştirilen veri bloklarını denetler ve Azure VM çalışmaya devam ederken, kapalı kalma süresini en aza indirirken bunları şirket içi siteye indirir. Yük devretmenin tamamlanması gerektiğini el ile belirttiğinizde, Azure VM kapanır, son Delta değişikliği kopyalanır ve yük devretme başlatılır.
+    - Tam indirme: Bu seçenek verileri, yük devretme sırasında eşitlenir. Bu seçenek tüm diski indirir. Bir sağlama toplamı hesaplanmadığından daha hızlıdır, ancak daha fazla kapalı kalma süresi vardır. Çoğaltma Azure VM 'lerini bir süre çalıştırıyorsanız veya şirket içi VM silinmişse bu seçeneği kullanın.
 
 2. Aynı VM 'ye veya alternatif bir VM 'ye yeniden yük devredeseçebilirsiniz. Zaten mevcut değilse Site Recovery VM 'nin oluşturulmasını belirtebilirsiniz.
 3. İlk eşitleme bittikten sonra, yük devretmeyi tamamlamayı seçersiniz. Tamamlandıktan sonra, her şeyin beklendiği gibi çalıştığını denetlemek için şirket içi VM 'de oturum açabilirsiniz. Azure portal, Azure VM 'lerinin durdurulmuş olduğunu görebilirsiniz.

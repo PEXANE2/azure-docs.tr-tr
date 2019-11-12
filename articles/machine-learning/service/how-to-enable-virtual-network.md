@@ -1,5 +1,5 @@
 ---
-title: Bir sanal ağda güvenli denemeleri ve çıkarım
+title: Sanal ağda güvenli denemeleri ve çıkarım
 titleSuffix: Azure Machine Learning
 description: bir Azure sanal ağı içindeki Azure Machine Learning deneme/eğitim işlerinin ve çıkarım/Puanlama işlerinin güvenliğini nasıl sağlayacağınızı öğrenin.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: e5dee838df2a60bf2038f2c7d2b1cc5958354d29
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 5ac741579562b41678c4aeb59bb5ebb425d8405c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796762"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932098"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Bu makalede, *Gelişmiş güvenlik ayarları*, temel veya Deneysel kullanım dur
 > [!WARNING]
 > Microsoft, bir sanal ağ içindeki kaynaklarla Azure Machine Learning tasarımcısını veya otomatik makine öğrenimini (Studio 'dan) kullanmayı desteklemez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Azure Machine Learning [çalışma alanı](how-to-manage-workspace.md).
 

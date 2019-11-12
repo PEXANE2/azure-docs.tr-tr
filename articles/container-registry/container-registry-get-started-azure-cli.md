@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-Azure 'da özel bir Docker kayıt defteri oluşturma-Azure CLı
+title: Hızlı başlangıç-kayıt defteri oluşturma-Azure CLı-Azure Container Registry
 description: Azure CLI ile hızlıca özel bir Docker kapsayıcısı kayıt defteri oluşturmayı öğrenin.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 6c511c56ab8df14cc6ea81363772ae0fd6d61272
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 562f8d41e1f91e408263809bdfc78905317912a1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68309525"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931591"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Hızlı Başlangıç: Azure CLı kullanarak özel kapsayıcı kayıt defteri oluşturma
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak özel kapsayıcı kayıt defteri oluşturma
 
 Azure Container Registry, özel Docker kapsayıcı görüntülerini depolamak için kullanılan bir yönetilen Docker kapsayıcı kayıt defteridir. Bu kılavuzda, Azure CLI kullanarak bir Azure Container Registry örneği oluşturma hakkındaki ayrıntılar yer alır. Ardından, Docker komutlarını kullanarak kayıt defterine bir kapsayıcı görüntüsü gönderin ve son olarak görüntüyü Kayıt defterinizden çekin ve çalıştırın.
 
@@ -69,7 +69,7 @@ Kayıt defteri oluşturulduğunda çıkış aşağıdakilere benzer:
 }
 ```
 
-Tam kayıt defteri `loginServer` adı (tümü küçük harf) olan çıktıda konusuna göz atın. Bu hızlı başlangıcın geri kalanında `<acrName>`, kapsayıcı kayıt defteri adı için bir yer tutucudur.
+Çıktıda, tam olarak nitelenmiş kayıt defteri adı (tümü küçük harf) olan `loginServer` bir göz atın. Bu hızlı başlangıcın geri kalanında `<acrName>`, kapsayıcı kayıt defteri adı için bir yer tutucudur.
 
 ## <a name="log-in-to-registry"></a>Kayıt defterinde oturum açma
 

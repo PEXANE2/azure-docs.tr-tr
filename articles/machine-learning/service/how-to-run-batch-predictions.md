@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
-ms.author: tracych
-author: tracych
+ms.reviewer: trbye, jmartens, larryfr, vaidyas
+ms.author: vaidyas
+author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 615536fbba38279a23516352c69461c19f9972ed
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 4e7ddf7fc7b18d57b8251d4fb8293ed2f6e83d17
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796721"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929566"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak büyük miktarlarda veri üzerinde toplu çıkarımı çalıştırın
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Bu nasıl yapılır bölümünde aşağıdaki görevleri öğrenirsiniz:
 > * Bir [makine öğrenme işlem hattı](concept-ml-pipelines.md) [oluşturun ve daha](https://publicdataset.azurewebsites.net/dataDetail/mnist/) önce eğitimli bir görüntü sınıflandırma modelini, veri kümesine göre kaydedin. 
 > * Azure Blob depolama hesabınızda bulunan örnek görüntülerde toplu çıkarımı çalıştırmak için modeli kullanın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -195,7 +195,7 @@ Betik iki işlev *içermelidir* :
 ```python
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
-# (https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/digit_identification.py)
+# (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
 import os
@@ -276,7 +276,7 @@ batch_env.spark.precache_packages = False
 - `process_count_per_node`: düğüm başına işlem sayısı.
 - `environment`: Python ortam tanımı. Bunu mevcut bir Python ortamını kullanacak şekilde yapılandırabilir veya deneme için geçici bir ortam ayarlayabilirsiniz. Tanım ayrıca gerekli uygulama bağımlılıklarını ayarlamaktan de sorumludur (isteğe bağlı).
 - `logging_level`: günlük ayrıntı düzeyi. Artan ayrıntı değerleri: `WARNING`, `INFO`ve `DEBUG`. Varsayılan değer `INFO` (isteğe bağlı).
-- `run_invocation_timeout`: saniye cinsinden `run()` yöntemi çağırma zaman aşımı. Varsayılan değer `60` ' dır.
+- `run_invocation_timeout`: saniye cinsinden `run()` yöntemi çağırma zaman aşımı. Varsayılan değer `60`.
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunConfig

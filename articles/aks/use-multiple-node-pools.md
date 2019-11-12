@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 3495d62c7447ba50d9ffe48e68b15dbe36867ac9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c8bae879c5e28914981eec34afb0759dd963004
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73662588"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928987"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -36,7 +36,7 @@ Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken
 * AKS kümesi birden çok düğüm havuzu kullanmak için standart SKU yük dengeleyiciyi kullanmalıdır, özellik temel SKU yük dengeleyicilerle desteklenmez.
 * AKS kümesinin düğümlerin sanal makine ölçek kümelerini kullanması gerekir.
 * Birçok işlem ile olduğu gibi mevcut bir Kaynak Yöneticisi şablonu kullanarak düğüm havuzları ekleyemez veya silemezsiniz. Bunun yerine, bir AKS kümesindeki düğüm havuzlarında değişiklik yapmak için [ayrı bir kaynak yöneticisi şablonu kullanın](#manage-node-pools-using-a-resource-manager-template) .
-* Düğüm havuzunun adı küçük harfle başlamalı ve yalnızca alfasayısal karakterler içerebilir. Linux düğüm havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır, Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
+* Düğüm havuzunun adı yalnızca küçük harfli alfasayısal karakterler içerebilir ve küçük harfle başlamalıdır. Linux düğüm havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır, Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
 * AKS kümesinde en fazla sekiz düğüm havuzu olabilir.
 * AKS kümesi, bu sekiz düğüm havuzunda en fazla 400 düğüme sahip olabilir.
 * Tüm düğüm havuzları aynı alt ağda bulunmalıdır.
@@ -46,7 +46,7 @@ Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken
 Başlamak için, tek düğümlü havuz ile bir AKS kümesi oluşturun. Aşağıdaki örnek, *eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturmak için [az Group Create][az-group-create] komutunu kullanır. *Myakscluster* adlı bir aks kümesi daha sonra [az aks Create][az-aks-create] komutu kullanılarak oluşturulur. Bir *--Kubernetes-* *1.13.10* , aşağıdaki adımlarda bir düğüm havuzunun nasıl güncelleştiğine göstermek için kullanılır. [Desteklenen Kubernetes sürümünü][supported-versions]belirtebilirsiniz.
 
 > [!NOTE]
-> Birden çok düğüm havuzu kullanılırken *temel* Load balanacer SKU 'su desteklenmez. Varsayılan olarak, AKS kümeleri, Azure CLı ve Azure portal *Standart* yük dengeleyici SKU 'su ile oluşturulur.
+> Birden çok düğüm havuzu kullanılırken *temel* yük dengeleyici SKU 'su **desteklenmez** . Varsayılan olarak, AKS kümeleri, Azure CLı ve Azure portal *Standart* yük dengeleyici SKU 'su ile oluşturulur.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -191,28 +191,34 @@ En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı K
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Birden çok düğümlü havuzlarla küme denetim düzlemi 'ni yükseltme
 
 > [!NOTE]
-> Kubernetes, standart [anlamsal sürüm](https://semver.org/) oluşturma düzenini kullanır. Sürüm numarası *x. y. z*olarak ifade edilir; burada *x* ana sürümdür, *y* ise ikincil sürümdür ve *z* , yama sürümüdür. Örneğin, sürüm *1.12.6*' de, 1 ana sürümdür, 12 ise ikincil sürümdür ve 6 Düzeltme Eki sürümüdür. Denetim düzleminin Kubernetes sürümü ve ilk düğüm havuzu küme oluşturma sırasında ayarlanır. Tüm ek düğüm havuzlarının, kümeye eklendiğinde Kubernetes sürümü ayarlanmış olmalıdır. Kubernetes sürümleri, düğüm havuzlarının yanı sıra düğüm havuzu ile denetim düzlemi arasında farklılık gösterebilir, ancak aşağıdaki kısıtlamalar geçerlidir:
-> 
-> * Düğüm havuzu sürümü, denetim düzlemi ile aynı ana sürüme sahip olmalıdır.
-> * Düğüm havuzu sürümü, denetim düzlemi sürümünden düşük bir alt sürüm olabilir.
-> * Düğüm havuzu sürümü, diğer iki kısıtlama izlendiği sürece herhangi bir yama sürümü olabilir.
+> Kubernetes, standart [anlamsal sürüm](https://semver.org/) oluşturma düzenini kullanır. Sürüm numarası *x. y. z*olarak ifade edilir; burada *x* ana sürümdür, *y* ise ikincil sürümdür ve *z* , yama sürümüdür. Örneğin, sürüm *1.12.6*' de, 1 ana sürümdür, 12 ise ikincil sürümdür ve 6 Düzeltme Eki sürümüdür. Denetim düzlemi ve ilk düğüm havuzunun Kubernetes sürümü küme oluşturma sırasında ayarlanır. Tüm ek düğüm havuzlarının, kümeye eklendiğinde Kubernetes sürümü ayarlanmış olmalıdır. Kubernetes sürümleri, düğüm havuzlarının yanı sıra düğüm havuzu ile denetim düzlemi arasında farklılık gösterebilir.
 
-AKS kümesi, Kubernetes sürümleriyle ilişkili iki küme kaynak nesnesine sahiptir. Birincisi, bir denetim düzlemi Kubernetes sürümüdür. İkincisi, Kubernetes sürümü olan bir aracı havuzudur. Denetim düzlemi bir veya daha fazla düğüm havuzlarıyla eşlenir. Bir yükseltme işleminin davranışı, hangi Azure CLı komutunun kullanıldığına bağlıdır.
+AKS kümesi, Kubernetes sürümleriyle ilişkili iki küme kaynak nesnesine sahiptir.
 
-* Denetim düzlemi 'nin yükseltilmesi için `az aks upgrade` kullanmanız gerekir
-   * Bu, denetim düzlemi sürümünü ve kümedeki tüm düğüm havuzlarını yükseltir
-   * `az aks upgrade` `--control-plane-only` bayrağıyla geçirerek yalnızca küme denetim düzlemi yükseltilir ve ilişkili düğüm havuzlarının hiçbiri değiştirilmez.
-* Tek tek düğüm havuzlarının yükseltilmesi için `az aks nodepool upgrade` kullanılması gerekir
-   * Bu, yalnızca belirtilen Kubernetes sürümü ile hedef düğüm havuzunu yükseltir
+1. Küme denetim düzlemi Kubernetes sürümü.
+2. Kubernetes sürümüne sahip bir düğüm Havuzu.
 
-Düğüm havuzlarının tuttuğu Kubernetes sürümleri arasındaki ilişki Ayrıca bir kural kümesine uymalıdır.
+Denetim düzlemi bir veya daha fazla düğüm havuzlarıyla eşlenir. Bir yükseltme işleminin davranışı, hangi Azure CLı komutunun kullanıldığına bağlıdır.
 
-* Denetim düzlemi veya düğüm havuzu Kubernetes sürümünü indirgeyemezsiniz.
-* Düğüm havuzu Kubernetes sürümü belirtilmemişse, davranış kullanılan istemciye bağlıdır. Kaynak Yöneticisi şablondaki bildirim için, düğüm havuzu için tanımlanan mevcut sürüm, hiçbir değer ayarlanmamışsa denetim düzlemi sürümü kullanılır.
-* Belirli bir zamanda bir denetim düzlemi veya düğüm havuzu yükseltebilir ya da ölçeklendirebilirsiniz, her iki işlemi de aynı anda gönderemezsiniz.
-* Düğüm havuzu Kubernetes sürümü, denetim düzlemi ile aynı ana sürüm olmalıdır.
-* Düğüm havuzu Kubernetes sürümü en fazla iki (2) alt sürüm olan denetim düzleden daha düşük, hiçbir zaman daha az olabilir.
-* Düğüm havuzu, hiçbir Kubernetes düzeltme eki veya denetim düzlemine eşit veya daha küçük olabilir.
+AKS denetim düzlemi 'nin yükseltilmesi için `az aks upgrade`kullanılması gerekir. Bu, denetim düzlemi sürümünü ve kümedeki tüm düğüm havuzlarını yükseltir. 
+
+`--control-plane-only` bayrağıyla `az aks upgrade` komutu verilmesi yalnızca küme denetim düzlemini yükseltir. Kümedeki ilişkili düğüm havuzlarının hiçbiri değiştirilmez.
+
+Tek tek düğüm havuzlarının yükseltilmesi için `az aks nodepool upgrade`kullanılması gerekir. Bu, yalnızca belirtilen Kubernetes sürümü ile hedef düğüm havuzunu yükseltir
+
+### <a name="validation-rules-for-upgrades"></a>Yükseltmeler için doğrulama kuralları
+
+Bir kümenin denetim düzlemi veya düğüm havuzları tarafından tutulan Kubernetes sürümlerinin geçerli yükseltmeleri, aşağıdaki kural kümeleri tarafından onaylanır.
+
+* Yükseltilecek geçerli sürümlerin kuralları:
+   * Düğüm havuzu sürümü, denetim düzlemi ile aynı *ana* sürüme sahip olmalıdır.
+   * Düğüm havuzu sürümü, denetim düzlemi sürümünden daha *az iki alt sürüm olabilir* .
+   * Düğüm havuzu sürümü, denetim düzlemi sürümünden daha az iki *yama* sürümü olabilir.
+
+* Yükseltme işlemi gönderme kuralları:
+   * Denetim düzlemi veya düğüm havuzu Kubernetes sürümü indirgeyemezsiniz.
+   * Düğüm havuzu Kubernetes sürümü belirtilmemişse, davranış kullanılan istemciye bağlıdır. Kaynak Yöneticisi şablonlarındaki bildirim, kullanılıyorsa düğüm havuzu için tanımlanan mevcut sürüme geri döner, yoksa, hiçbir değer ayarlanmamışsa denetim düzlemi sürümü kullanılır.
+   * Belirli bir zamanda bir denetim düzlemi veya düğüm havuzu yükseltebilir ya da ölçeklendirebilirsiniz, tek bir denetim düzlemine veya düğüm havuzu kaynağına aynı anda birden çok işlem gönderemezsiniz.
 
 ## <a name="scale-a-node-pool-manually"></a>Düğüm havuzunu el ile ölçeklendirme
 
@@ -320,7 +326,7 @@ Düğümlerin ve düğüm havuzunun silinmesi birkaç dakika sürer.
 
 Önceki örneklerde, bir düğüm havuzu oluşturmak için, kümede oluşturulan düğümler için varsayılan bir VM boyutu kullanıldı. Daha yaygın bir senaryo, farklı VM boyutları ve özellikleri olan düğüm havuzları oluşturmanıza yöneliktir. Örneğin, büyük miktarlarda CPU veya belleğe sahip düğümleri veya GPU desteği sağlayan bir düğüm havuzunu içeren düğüm havuzu oluşturabilirsiniz. Sonraki adımda, Kubernetes Scheduler 'a bu düğümlerde çalışabilecek düğüm erişimini nasıl sınırlayacağınızı bildirmek için [tatları ve toleransı kullanırsınız](#schedule-pods-using-taints-and-tolerations) .
 
-Aşağıdaki örnekte, *Standard_NC6* VM boyutunu kullanan bir GPU tabanlı düğüm havuzu oluşturun. Bu VM 'Ler NVıDıA Tesla K80 kartı tarafından desteklenir. Kullanılabilir VM boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da Linux sanal makineleri Için boyutlar][vm-sizes].
+Aşağıdaki örnekte, *Standard_NC6* VM boyutunu kullanan GPU tabanlı bir düğüm havuzu oluşturun. Bu VM 'Ler NVıDıA Tesla K80 kartı tarafından desteklenir. Kullanılabilir VM boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da Linux sanal makineleri Için boyutlar][vm-sizes].
 
 [Az aks düğüm havuzu Add][az-aks-nodepool-add] komutunu yeniden kullanarak bir düğüm havuzu oluşturun. Bu kez, *gpunodepool*adını belirtin ve *Standard_NC6* boyutunu belirtmek için `--node-vm-size` parametresini kullanın:
 
@@ -450,11 +456,11 @@ Yalnızca bu taınt uygulanmış olan bir düğüm, *gpunodepool*içindeki düğ
 
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak düğüm havuzlarını yönetme
 
-Kaynakları oluşturmak ve yönetmek için bir Azure Resource Manager şablonu kullandığınızda, genellikle şablonunuzda ayarları güncelleştirebilir ve kaynağı güncelleştirmek için yeniden dağıtabilirsiniz. AKS içindeki düğüm havuzlarıyla, AKS kümesi oluşturulduktan sonra ilk düğüm havuzu profili güncelleştirilemiyor. Bu davranış, mevcut bir Kaynak Yöneticisi şablonunu güncelleştiremeyeceğiniz, düğüm havuzlarında değişiklik yapamayacağı ve yeniden dağımeyeceğiniz anlamına gelir. Bunun yerine, yalnızca mevcut bir AKS kümesi için aracı havuzlarını güncelleştiren ayrı bir Kaynak Yöneticisi şablonu oluşturmanız gerekir.
+Kaynakları oluşturmak ve yönetmek için bir Azure Resource Manager şablonu kullandığınızda, genellikle şablonunuzda ayarları güncelleştirebilir ve kaynağı güncelleştirmek için yeniden dağıtabilirsiniz. AKS içindeki düğüm havuzlarıyla, AKS kümesi oluşturulduktan sonra ilk düğüm havuzu profili güncelleştirilemiyor. Bu davranış, mevcut bir Kaynak Yöneticisi şablonunu güncelleştiremeyeceğiniz, düğüm havuzlarında değişiklik yapamayacağı ve yeniden dağımeyeceğiniz anlamına gelir. Bunun yerine, yalnızca var olan bir AKS kümesi için düğüm havuzlarını güncelleştiren ayrı bir Kaynak Yöneticisi şablonu oluşturmanız gerekir.
 
 `aks-agentpools.json` gibi bir şablon oluşturun ve aşağıdaki örnek bildirimi yapıştırın. Bu örnek şablon aşağıdaki ayarları yapılandırır:
 
-* *Myagentpool* adlı *Linux* aracı havuzunu üç düğüm çalıştıracak şekilde güncelleştirir.
+* *Myagentpool* adlı *Linux* düğüm havuzunu üç düğüm çalıştıracak şekilde güncelleştirir.
 * Düğüm havuzundaki düğümleri Kubernetes sürüm *1.13.10*çalıştıracak şekilde ayarlar.
 * Düğüm boyutunu *Standard_DS2_v2*olarak tanımlar.
 

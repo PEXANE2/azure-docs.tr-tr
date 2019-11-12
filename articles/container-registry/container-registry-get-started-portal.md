@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlangıç-Azure 'da özel bir Docker kayıt defteri oluşturma-Azure portal
-description: Azure portalıyla hızlıca özel bir Docker kapsayıcısı kayıt defteri oluşturmayı öğrenin.
+title: Hızlı başlangıç-portalda kayıt defteri oluşturma-Azure Container Registry
+description: Azure portal Azure Container Registry içinde özel bir Docker kayıt defteri oluşturmayı hızlı bir şekilde öğrenin.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c9e8c7fe4d32a44e8c0831154f02eda1f82aaff3
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: bcf0874266aa83a4b4b932670557854c4688d400
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68309479"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931641"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak özel kapsayıcı kayıt defteri oluşturma
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel kapsayıcı kayıt defteri oluşturma
 
 Azure kapsayıcı kayıt defteri, Azure’da özel Docker kapsayıcısı görüntülerinizi depolayıp yönetebileceğiniz özel bir Docker kayıt defteridir. Bu hızlı başlangıçta, Azure portalıyla bir kapsayıcı kayıt defteri oluşturursunuz. Ardından, Docker komutlarını kullanarak kayıt defterine bir kapsayıcı görüntüsü gönderin ve son olarak görüntüyü Kayıt defterinizden çekin ve çalıştırın.
 
@@ -26,7 +26,7 @@ Ayrıca sisteminizde yerel olarak Docker yüklü olması gerekir. Docker, [Mac][
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
+https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
@@ -60,9 +60,9 @@ Bu komut tamamlandığında `Login Succeeded` döndürülür.
 
 ## <a name="list-container-images"></a>Kapsayıcı görüntülerini listeleme
 
-Kayıt defterinizin görüntülerini listelemek için portalda Kayıt defterinize gidin ve **depolar**' ı seçin, ardından ile `docker push`oluşturduğunuz depoyu seçin.
+Kayıt defterinizin görüntülerini listelemek için portalda Kayıt defterinize gidin ve **depolar**' ı seçin ve ardından `docker push`oluşturduğunuz depoyu seçin.
 
-Bu örnekte, **Merhaba-Dünya** deposunu seçtik ve `v1` **Etiketler**altında etiketli görüntüyü görebiliriz.
+Bu örnekte, **Merhaba-Dünya** deposunu seçtik ve **Etiketler**altında `v1`etiketli görüntüyü görebiliriz.
 
 ![Azure portal kapsayıcı görüntülerini listeleme][qs-portal-09]
 

@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: 178c60d82c8337987e9858a409fcdef7063c9559
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 743007d3636516a39dd36caf3d44d3edb650c030
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684902"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929534"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure Machine Learning izleme verileri başvurusu
 
@@ -30,7 +30,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | Özellik | Açıklama |
 |:--- |:---|
 | TimeGenerated | Günlük girişinin oluşturulduğu saat |
-| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Günlük olayı ile ilişkili işlemin adı |
+| ThrottledRequests | Günlük olayı ile ilişkili işlemin adı |
 | Kategori | Günlük olayının adı, AmlComputeClusterNodeEvent |
 | JobId | Gönderilen Işin KIMLIĞI |
 | ExperimentId | Deneme KIMLIĞI |
@@ -59,14 +59,14 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | Özellik | Açıklama |
 |:--- |:--- |
 | TimeGenerated | Günlük girişinin oluşturulduğu saat |
-| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Günlük olayı ile ilişkili işlemin adı |
+| ThrottledRequests | Günlük olayı ile ilişkili işlemin adı |
 | Kategori | Günlük olayının adı, AmlComputeClusterNodeEvent |
 | ProvisioningState | Kümenin sağlama durumu |
 | :/ | Kümenin adı |
-| clusterType | Kümenin türü |
+| ClusterType | Kümenin türü |
 | CreatedBy | Kümeyi oluşturan Kullanıcı |
 | CoreCount | Kümedeki çekirdekler sayısı |
-| vmSize | Kümenin VM boyutu |
+| VmSize | Kümenin VM boyutu |
 | VmPriority | Adanmış/LowPriority kümesi içinde oluşturulan düğümlerin önceliği |
 | ScalingType | El ile veya otomatik olarak küme ölçeklendirme türü |
 | Initialnodecount | Kümenin ilk düğüm sayısı |
@@ -102,11 +102,11 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | Özellik | Açıklama |
 |:--- |:--- |
 | TimeGenerated | Günlük girişinin oluşturulduğu saat |
-| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Günlük olayı ile ilişkili işlemin adı |
+| ThrottledRequests | Günlük olayı ile ilişkili işlemin adı |
 | Kategori | Günlük olayının adı, AmlComputeClusterNodeEvent |
 | :/ | Kümenin adı |
 | NodeId | Oluşturulan küme düğümünün KIMLIĞI |
-| vmSize | Düğümün VM boyutu |
+| VmSize | Düğümün VM boyutu |
 | VmFamilyName | Düğümün ait olduğu VM ailesi |
 | VmPriority | Oluşturulan düğümün önceliği/LowPriority |
 | Yayımcı | VM görüntüsünün yayımcısı, ör. Microsoft-dsvm |
@@ -128,7 +128,7 @@ Aşağıdaki tablolarda Azure Machine Learning tüm ölçümler için toplanan p
 
 **Modelinizi**
 
-| Model | Birim | Açıklama |
+| Ölçüm | Birim | Açıklama |
 | ----- | ----- | ----- |
 | Model dağıtılamadı | Sayı | Başarısız olan model dağıtımı sayısı. |
 | Model dağıtımı başlatıldı | Sayı | Başlatılan model dağıtımı sayısı. |

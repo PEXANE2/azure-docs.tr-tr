@@ -295,10 +295,10 @@
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: Toplu tahminleri çalıştırma
-          displayName: score scoring asynchronous consume pipeline
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions.md
         - name: Toplu tahminler için tasarımcıyı kullanma
-          displayName: score scoring asynchronous consume pipeline
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions-ui.md
     - name: Modelleri izleme
       items:

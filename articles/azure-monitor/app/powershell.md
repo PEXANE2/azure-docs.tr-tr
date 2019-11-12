@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 5ae043c356559b2e675f05af3eb7eb61973eb170
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 2f59b66bacbd0105e5a543b019a5c6646e010c48
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621945"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928528"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell kullanarak Application Insights kaynaklarını yönetme
 
@@ -595,7 +595,7 @@ Azure, kaynakları katı sırayla ayarlamalıdır. Bir kurulumun bir sonraki ba�
 ## <a name="next-steps"></a>Sonraki adımlar
 Diğer otomasyon makaleleri:
 
-* Şablon kullanmadan hızlı Yöntem [Application Insights oluşturun](powershell-script-create-resource.md) .
+* Şablon kullanmadan hızlı Yöntem [Application Insights oluşturun](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) .
 * [Uyarıları ayarlama](powershell-alerts.md)
 * [Web testleri oluştur](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Azure Tanılama verilerini Application Insights’a gönderme](powershell-azure-diagnostics.md)

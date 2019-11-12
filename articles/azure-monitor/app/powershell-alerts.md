@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/31/2016
-ms.openlocfilehash: 0771079eb338c2f22cb0b1f31c48b0b9f80a3ff5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: cf03fa0055710dde86a0f74cd58344575494faf1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819080"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928577"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Application Insights uyarıları ayarlamak için PowerShell kullanma
 
@@ -102,7 +102,7 @@ Aynı kural, TrackEvent veya trackPageView gibi başka bir izleme çağrısını
 | `clientPerformance.receiveRequest.value` |Yanıt süresini alma |Tarayıcı gönderme isteği ile yanıt almaya başlamak için geçen süre. |
 | `clientPerformance.sendRequest.value` |İstek gönderme süresi |İsteğin gönderilmesi için tarayıcıdan geçen süre. |
 | `clientPerformance.total.value` |Tarayıcı sayfa yükleme süresi |DOM, stil sayfaları, betikler ve görüntüler yükleninceye kadar Kullanıcı isteğinden geçen süre. |
-| `performanceCounter.available_bytes.value` |Kullanılabilir bellek |Fiziksel bellek bir işlem veya sistem kullanımı için hemen kullanılabilir. |
+| `performanceCounter.available_bytes.value` |Available memory |Fiziksel bellek bir işlem veya sistem kullanımı için hemen kullanılabilir. |
 | `performanceCounter.io_data_bytes_per_sec.value` |İşlem GÇ oranı |Dakikada, ağda ve cihazlarda okunan ve yazılan toplam bayt/saniye. |
 | `performanceCounter.number_of_exceps_thrown_per_sec.value` |Özel durum oranı |Saniye başına oluşturulan özel durumlar. |
 | `performanceCounter.percentage_processor_time.value` |İşlem CPU 'SU |İşlemci tarafından uygulama işleminin yönergelerini yürütmek için kullanılan tüm işlem iş parçacıklarının geçen sürenin yüzdesi. |
@@ -131,7 +131,7 @@ Aynı kural, TrackEvent veya trackPageView gibi başka bir izleme çağrısını
 [Bir uyarıya yanıtınızı otomatikleştirebilir](../../azure-monitor/platform/alerts-webhooks.md). Bir uyarı ortaya çıktığında Azure, seçtiğiniz bir Web adresini çağırır.
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Application Insights yapılandırılacak komut dosyası](powershell-script-create-resource.md)
+* [Application Insights yapılandırılacak komut dosyası](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [Şablonlardan Application Insights ve Web testi kaynakları oluşturma](powershell.md)
 * [Application Insights için kupMicrosoft Azure tanılama otomatikleştirin](powershell-azure-diagnostics.md)
 * [Bir uyarıya yanıtınızı otomatikleştirin](../../azure-monitor/platform/alerts-webhooks.md)

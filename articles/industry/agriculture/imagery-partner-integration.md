@@ -1,18 +1,18 @@
 ---
-title: Imagery iş ortağı tümleştirmesi
+title: Görüntüleme iş ortağı tümleştirmesi
 description: Imagery iş ortağı tümleştirmesini açıklar
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 2b15cc56cb4f804fac0b047819ccf166950e1cf3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 232ade55350ad1ac85612cf8c69117c19cb20d0c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890966"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927789"
 ---
-# <a name="imagery-partner-integration"></a>Imagery iş ortağı tümleştirmesi
+# <a name="imagery-partner-integration"></a>Görüntüleme iş ortağı tümleştirmesi
 
 Bu makalede, Azure Farmtts Translator bileşeninin, verileri Farmto 'a göndermek için nasıl kullanılacağı açıklanır. Agricultürey verileri, multispectral kameralar, uydu ve Drones dahil çeşitli kaynaklardan olabilir. Agricultürel iş ortakları, müşterilere grupları için özel olarak oluşturulan haritalar sağlamak üzere Farmtempts ile tümleştirilebilir.
 
@@ -97,7 +97,7 @@ REST API bir istek yapmak için HTTP yöntemini (GET/POST/PUT), API hizmetinin U
 
 Aşağıdaki örnek istek, cihazların listesini almak için gereklidir:
 
-```azurepowershell-interactive
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>”
@@ -108,7 +108,7 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 Aşağıdaki örnek istek bir cihaz oluşturmaktır (Bu, istek gövdesi ile bir JSON girişi olur).
 
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  
 "accept: application/json" -H  
 "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d
@@ -326,6 +326,7 @@ Sistem tarafından tanımlanan değerler aşağıda verilmiştir:
   ]
 }
 ```
+
 Bu, tek seferlik bir kurulum olur ve bu yeni bir manzara ETYPE kapsamı, Farmınts projesinin dağıtıldığı abonelikle sınırlıdır.
 
 Örnek:, manzara: "SlantRange" eklemek Için/ExtendedType 'un ID: "manzara \ kaynak" giriş yükü:

@@ -85,6 +85,8 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
 - name: Kaynaklar
   items:
+    - name: Sürüm Notları
+      href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'
     - name: Azure Karma Gerçeklik Kaynak Yönetimi REST API’si
       href: 'https://docs.microsoft.com/rest/api/mixedreality/'
     - name: SSS

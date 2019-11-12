@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlangıç-Azure 'da özel bir Docker kayıt defteri oluşturma-PowerShell
-description: PowerShell ile Azure’da hızlıca özel bir Docker kapsayıcısı kayıt defteri oluşturmayı öğrenin.
+title: Hızlı başlangıç-kayıt defteri oluşturma-PowerShell-Azure Container Registry
+description: PowerShell ile Azure Container Registry 'de özel bir Docker kayıt defteri oluşturmayı hızlı bir şekilde öğrenin
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f99b4ee6dd11a109d1c563c84debc2157cb03337
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b337c28efc3db7d4bec4408b5da1f8a5e1d87094
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68309488"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931620"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell kullanarak özel kapsayıcı kayıt defteri oluşturma
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak özel kapsayıcı kayıt defteri oluşturma
 
 Azure Container Registry, Docker kapsayıcı görüntülerini oluşturmak, depolamak ve sunmak için kullanılan özel bir yönetilen Docker kapsayıcı kayıt defteridir. Bu hızlı başlangıçta PowerShell kullanarak Azure Container Registry oluşturmayı öğreneceksiniz. Ardından, Docker komutlarını kullanarak kayıt defterine bir kapsayıcı görüntüsü gönderin ve son olarak görüntüyü Kayıt defterinizden çekin ve çalıştırın.
 
@@ -46,7 +46,7 @@ Azure ile kimlik doğrulaması yaptıktan sonra [New-AzResourceGroup][New-AzReso
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-container-registry"></a>Kapsayıcı kayıt defteri oluşturuluyor
+## <a name="create-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
 Ardından, yeni [-AzContainerRegistry][New-AzContainerRegistry] komutuyla yeni kaynak grubunuzda bir kapsayıcı kayıt defteri oluşturun.
 

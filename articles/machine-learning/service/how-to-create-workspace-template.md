@@ -1,5 +1,5 @@
 ---
-title: Bir çalışma alanı oluşturmak için Azure Resource Manager şablonu kullanma
+title: Azure Resource Manager şablonuyla çalışma alanı oluşturma
 titleSuffix: Azure Machine Learning
 description: Yeni bir Azure Machine Learning çalışma alanı oluşturmak için Azure Resource Manager şablonu kullanmayı öğrenin.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: f20c7955856e2e848d331d857d2564649c837bb0
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 8bcfb80d42e7cd1fad6ff4c04415bd8627a3293e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847468"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932137"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Resource Manager şablonları kullanarak Azure Machine Learni
 
 Daha fazla bilgi için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](../../azure-resource-manager/resource-group-template-deploy.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -179,7 +179,7 @@ Bu şablon aşağıdaki Azure hizmetlerini oluşturur:
 * Azure Depolama Hesabı
 * Azure Key Vault
 * Azure Application Insights
-* Azure Container Registry
+* Azure Container Kayıt Defteri
 * Azure Machine Learning çalışma alanı
 
 Kaynak grubu, Hizmetleri tutan kapsayıcıdır. Azure Machine Learning çalışma alanı için çeşitli hizmetler gereklidir.
@@ -217,7 +217,7 @@ Kaynak grubu, Hizmetleri tutan kapsayıcıdır. Azure Machine Learning çalışm
 
 Daha fazla bilgi için bkz. [özel şablondan kaynak dağıtma](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
-## <a name="use-azure-powershell"></a>Azure PowerShell’i kullanma
+## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
 
 Bu örnekte, şablonu geçerli dizinde `azuredeploy.json` adlı bir dosyaya kaydettiğiniz varsayılır:
 

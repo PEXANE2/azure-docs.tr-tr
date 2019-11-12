@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 7d8ed5ebde946134bc7e4779ec79c9ea853a6ef4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 178f518ed7ab24fc0d3678f77ae75933a7163b58
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895195"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930140"
 ---
-# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama
+# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama (Önizleme özellikleri)
 
 Bu makalede bir Mxyonga IoT DevKit (DevKit) cihazının bir Azure IoT Central uygulamasına nasıl bağlanacağı gösterilmektedir. Cihaz, IoT Central bağlantısını yapılandırmak için DevKit cihazı için sertifikalı IoT Tak ve Kullan modelini kullanır.
 
@@ -25,7 +25,7 @@ Bu nasıl yapılır makalesinde şunları yapabilirsiniz:
 - Cihazı hazırlayın ve IoT Central uygulamanıza bağlayın.
 - IoT Central cihaz telemetri ve özelliklerini görüntüleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 

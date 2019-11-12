@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 8ebcc863c1812081e6198ff9c684934642e1dc41
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904547"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931825"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve Azure CLı ile izleme
 
@@ -47,7 +47,7 @@ Cloud Shell başlatmak için:
     ![CLı ortamı seçin](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>İki CLı oturumu hazırlama
-Bu bölümde, iki Azure CLı oturumu hazırlarsınız. Cloud Shell, iki oturumu ayrı tarayıcı sekmelerinde çalıştıracaksınız. Yerel bir CLı istemcisinde iki ayrı CLı örneği çalıştıracaksınız. İlk oturumu bir sanal cihaz olarak, ikinci oturum ise iletileri izlemek ve göndermek için kullanacaksınız. Bir komut çalıştırmak için, bu hızlı başlangıçta bir kod bloğunu kopyalamak için **Kopyala** ' yı seçin, kabuk oturumunuza yapıştırın ve çalıştırın.
+Bu bölümde, iki Azure CLı oturumu hazırlarsınız. Cloud Shell kullanıyorsanız, iki oturumu ayrı tarayıcı sekmelerinde çalıştıracaksınız. Yerel bir CLı istemcisi kullanıyorsanız, iki ayrı CLı örneği çalıştıracaksınız. İlk oturumu bir sanal cihaz olarak, ikinci oturum ise iletileri izlemek ve göndermek için kullanacaksınız. Bir komut çalıştırmak için, bu hızlı başlangıçta bir kod bloğunu kopyalamak için **Kopyala** ' yı seçin, kabuk oturumunuza yapıştırın ve çalıştırın.
 
 Azure CLı, Azure hesabınızda oturum açmanızı gerektirir. Azure CLı kabuğu oturumunuz ile IoT Hub 'ınız arasındaki tüm iletişimin kimliği doğrulanır ve şifrelenir. Sonuç olarak, bu hızlı başlangıç, bağlantı dizesi gibi gerçek bir cihazla kullanacağınız ek kimlik doğrulamasına gerek kalmaz.
 
@@ -149,7 +149,7 @@ Azure portal, IoT Hub ve cihazlarınızın tüm yönlerini yönetmenizi sağlar.
 Azure portal ileti ölçümlerini görselleştirmek için:
 1. Portalın sol gezinti menüsünde **tüm kaynaklar**' ı seçin. Bu, oluşturduğunuz IoT Hub 'ı dahil olmak üzere aboneliğinizdeki tüm kaynakları listeler. 
 
-1. Oluşturduğunuz IoT Hub 'ında bulunan bağlantıya tıklayın. Portal, merkez için genel bakış sayfasını görüntüler.
+1. Oluşturduğunuz IoT Hub 'ında bağlantıyı seçin. Portal, merkez için genel bakış sayfasını görüntüler.
 
 1. IoT Hub sol bölmede **ölçümler** ' i seçin. 
 

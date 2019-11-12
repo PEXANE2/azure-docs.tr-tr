@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 59f2db8ec4dd8affe1c87ca2bb85a7ff7b8a4d7c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485382"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929538"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 'da Linux Veri Bilimi Sanal Makinesi veri bilimi
 
@@ -58,8 +58,8 @@ Sonra iki dosyayı birlikte birleştirin:
 
 Veri kümesinde her e-posta için çeşitli istatistik türleri vardır:
 
-* **Word\_freq\_* Word*** gibi sütunlar, e- *postadaki kelimeyle*eşleşen sözcüklerin yüzdesini gösterir. Örneğin, **word\_freq\_Make** **1**ise, e-postadaki tüm sözcüklerin %1 ' i *yapmıştı*.
-* **Char\_FREQ gibi sütunlar\_* char*** *char*olan e-postadaki tüm karakterlerin yüzdesini gösterir.
+* Word **\_freq\__Word_**  gibi sütunlar, e- *postadaki kelimeyle*eşleşen sözcüklerin yüzdesini gösterir. Örneğin, **word\_freq\_Make** **1**ise, e-postadaki tüm sözcüklerin %1 ' i *yapmıştı*.
+* Char **\_freq\__char_**  gibi sütunlar, e-postadaki *karakter olan tüm*karakterlerin yüzdesini belirtir.
 * **büyük\_çalıştırma\_uzunluğu en uzun\_** büyük harflerin bir dizisinin en uzun uzunluğudur.
 * **büyük\_çalıştırma\_uzunluğu\_ortalama** , büyük harflerin tüm dizilerinin ortalama uzunluğudur.
 * **büyük\_çalıştırma\_uzunluğu\_toplam** , büyük harflerin tüm dizileri için toplam uzunluktadır.

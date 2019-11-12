@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central uygulamalarınız için cihaz şablonu sürüm oluşturmayı anlama | Microsoft Docs
+title: Azure IoT Central uygulamaları için cihaz şablonu sürümü oluşturma | Microsoft Docs
 description: Yeni sürümler oluşturarak ve canlı bağlı cihazlarınızı etkilemeden cihaz şablonlarınızda yineleme yapın
 author: sandeeppujar
 ms.author: sandeepu
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8d4e3b304000113e7ecbf748767780a3fcf17bb3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: feaa8abcb6635573b3680b77befa5ccb462ec73a
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952608"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930117"
 ---
 # <a name="create-a-new-device-template-version"></a>Yeni bir cihaz şablonu sürümü oluştur
 

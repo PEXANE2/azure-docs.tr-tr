@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 4f0c8078a502d0332b02d95c0c46d9dbcc53a884
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 48c8390eff52466d11f781447c448d04ba567f31
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886857"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907131"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service bir SSL sertifikası Ekle
 
@@ -36,7 +36,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 | Özel bir sertifikayı karşıya yükle | Bir üçüncü taraf sağlayıcıdan zaten özel bir sertifikanız varsa, bu sertifikaya yükleyebilirsiniz. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
 | Ortak sertifikayı karşıya yükle | Ortak sertifikalar özel etki alanlarını güvenli hale getirmek için kullanılmaz, ancak uzak kaynaklara erişmesi gerekiyorsa bunları kodunuza yükleyebilirsiniz. |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
@@ -68,6 +68,10 @@ App Service yönetilen ücretsiz sertifika, App Service özel DNS adınızı gü
 - Joker sertifikaları desteklemez.
 - Çıplak etki alanlarını desteklemez.
 - Dışarı aktarılabilir değil.
+
+> [!NOTE]
+> Ücretsiz sertifika, DigiCert tarafından verilir. Bazı üst düzey etki alanları için, şu değere sahip bir [CAA etki alanı kaydı](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) oluşturarak bir sertifika veren olarak DigiCert 'e açıkça izin vermelisiniz: `0 issue digicert.com`.
+> 
 
 App Service yönetilen ücretsiz bir sertifika oluşturmak için:
 
@@ -193,7 +197,7 @@ Sertifikayı seçmenize yardımcı olması için aşağıdaki tabloyu kullanın.
 | Ayar | Açıklama |
 |-|-|
 | Abonelik | Key Vault ait olduğu abonelik. |
-| Anahtar Kasası | İçeri aktarmak istediğiniz sertifikayı içeren kasa. |
+| Key Vault | İçeri aktarmak istediğiniz sertifikayı içeren kasa. |
 | Sertifika | Kasadaki PKCS12 sertifikaları listesinden seçim yapın. Kasadaki tüm PKCS12 sertifikaları, parmak izleriyle birlikte listelenir, ancak App Service tümünde desteklenmez. |
 
 İşlem tamamlandığında, sertifikayı **özel anahtar sertifikaları** listesinde görürsünüz. İçeri aktarma işlemi bir hatayla başarısız olursa, sertifika [App Service gereksinimlerini](#private-certificate-requirements)karşılamıyor.

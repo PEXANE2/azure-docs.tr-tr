@@ -1,5 +1,5 @@
 ---
-title: Öğretici-kapsayıcı görüntü yapılarını otomatikleştirin-Azure Container Registry görevleri
+title: Öğretici-kod işlemede görüntü oluşturma-Azure Container Registry görevler
 description: Bu öğreticide, bir git deposuna kaynak kodu kaydederken buluttaki kapsayıcı görüntüsü yapılarını otomatik olarak tetiklemek üzere bir Azure Container Registry görevinin nasıl yapılandırılacağını öğreneceksiniz.
 services: container-registry
 author: dlepow
@@ -9,23 +9,23 @@ ms.topic: tutorial
 ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 25a0ef528d67deb5ea71720d2ff8e4d62b3b98a5
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: d01863979f4cf74d544ef2b1ff121022abb8d4f6
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744562"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931435"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Öğretici: Kaynak kodu kaydederken bulutta kapsayıcı görüntüsü derlemelerini otomatikleştirin
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Öğretici: kaynak kodu kaydederken bulutta kapsayıcı görüntüsü derlemelerini otomatikleştirin
 
 [Hızlı bir göreve](container-registry-tutorial-quick-task.md)ek olarak, ACR görevleri, kaynak kodu bir git deposuna kaydederken buluttaki otomatik Docker kapsayıcı görüntüsü derlemelerini destekler.
 
-Bu öğreticide, ACR göreviniz bir git deposuna kaynak kodu kaydederken bir Dockerfile içinde belirtilen tek bir kapsayıcı görüntüsü oluşturur ve gönderir. Kod işlemede birden çok kapsayıcıyı oluşturma, gönderme ve isteğe bağlı olarak test etme adımlarını tanımlamak üzere YAML dosyası kullanan [çok adımlı bir görev](container-registry-tasks-multi-step.md) oluşturmak için bkz [. Öğretici: Kaynak kodu](container-registry-tutorial-multistep-task.md)kaydederken bulutta çok adımlı bir kapsayıcı iş akışını çalıştırın. ACR görevlerine genel bakış için bkz. [ACR görevleri ile işletim sistemi ve çatı düzeltme ekini otomatikleştirme](container-registry-tasks-overview.md)
+Bu öğreticide, ACR göreviniz bir git deposuna kaynak kodu kaydederken bir Dockerfile içinde belirtilen tek bir kapsayıcı görüntüsü oluşturur ve gönderir. Kod işlemede birden çok kapsayıcıyı oluşturma, gönderme ve isteğe bağlı olarak test etme adımlarını tanımlamak üzere YAML dosyası kullanan [çok adımlı bir görev](container-registry-tasks-multi-step.md) oluşturmak için bkz. [öğretici: kaynak kodu kaydederken bulutta çok adımlı bir kapsayıcı iş akışını çalıştırma](container-registry-tutorial-multistep-task.md). ACR görevlerine genel bakış için bkz. [ACR görevleri ile işletim sistemi ve çatı düzeltme ekini otomatikleştirme](container-registry-tasks-overview.md)
 
 Bu öğreticide:
 
 > [!div class="checklist"]
-> * Bir görev oluşturun
+> * Görev oluşturma
 > * Görevi test etme
 > * Görev durumunu görüntüleme
 > * Kod işlemesi ile görevi tetikleme
@@ -65,7 +65,7 @@ az acr task create \
 > [!IMPORTANT]
 > Daha önce `az acr build-task` komutuyla önizleme sırasında görevler oluşturduysanız, bu görevlerin [az ACR Task][az-acr-task] komutu kullanılarak yeniden oluşturulması gerekir.
 
-Bu görev, `--context` ile belirtilen depodaki *ana* dala kod işlenen her durumda ACR Görevlerinin söz konusu daldaki koddan kapsayıcı görüntüsü derleyeceğini belirtir. Depo kökünden tarafından `--file` belirtilen dockerfile, görüntüyü oluşturmak için kullanılır. `--image` bağımsız değişkeni, görüntü etiketinin sürüm kısmı için parametreli `{{.Run.ID}}` değeri belirtir ve derlenen görüntünün belirli bir derleme ile ilişkili olmasını ve benzersiz şekilde etiketlenmesini sağlar.
+Bu görev, *ile belirtilen depodaki*ana`--context` dala kod işlenen her durumda ACR Görevlerinin söz konusu daldaki koddan kapsayıcı görüntüsü derleyeceğini belirtir. Depo kökünden `--file` tarafından belirtilen Dockerfile, görüntüyü oluşturmak için kullanılır. `--image` bağımsız değişkeni, görüntü etiketinin sürüm kısmı için parametreli `{{.Run.ID}}` değeri belirtir ve derlenen görüntünün belirli bir derleme ile ilişkili olmasını ve benzersiz şekilde etiketlenmesini sağlar.
 
 Başarılı bir [az ACR görev oluştur][az-acr-task-create] komutunun çıktısı aşağıdakine benzer:
 

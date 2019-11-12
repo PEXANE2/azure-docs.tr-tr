@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718376"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927108"
 ---
 # <a name="authentication-basics"></a>Kimlik doğrulaması temel bilgileri
 
@@ -74,7 +74,7 @@ Belirteç doğrulamak için, belirtecin oluşturulduğu uygulamaya, kullanıcın
 
 Belirteçler yalnızca sınırlı bir süre için geçerlidir. STS, genellikle bir dizi belirteç sağlar: uygulamaya veya korunan kaynağa erişmek için bir erişim belirteci ve erişim belirtecinin süresi dolmak üzere kapatıldığında erişim belirtecini yenilemek için kullanılan yenileme belirteci. 
 
-Erişim belirteçleri, `Authenticate` üst bilgisinde taşıyıcı belirteci olarak bir Web API 'sine geçirilir. Bir uygulama STS 'ye yenileme belirteci sağlayabilir ve uygulamaya yönelik kullanıcı erişimi iptal edilmediği takdirde, yeni bir erişim belirteci ve yeni bir yenileme belirteci geri alır. Bu, kuruluşa ayrılmaya yönelik senaryonun işlenme yönteminden oluşur. STS yenileme belirtecini aldığında, Kullanıcı artık yetkilendirilmezse başka bir geçerli erişim belirteci vermez.
+Erişim belirteçleri, `Authorization` üst bilgisinde taşıyıcı belirteci olarak bir Web API 'sine geçirilir. Bir uygulama STS 'ye yenileme belirteci sağlayabilir ve uygulamaya yönelik kullanıcı erişimi iptal edilmediği takdirde, yeni bir erişim belirteci ve yeni bir yenileme belirteci geri alır. Bu, kuruluşa ayrılmaya yönelik senaryonun işlenme yönteminden oluşur. STS yenileme belirtecini aldığında, Kullanıcı artık yetkilendirilmezse başka bir geçerli erişim belirteci vermez.
 
 ## <a name="application-model"></a>Uygulama modeli
 

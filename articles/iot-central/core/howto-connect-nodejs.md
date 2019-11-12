@@ -1,5 +1,5 @@
 ---
-title: Genel bir Node. js istemci uygulamasını Azure IoT Central bağlama | Microsoft Docs
+title: Genel bir Node. js istemci uygulamasını Azure 'a bağlama IoT Central | Microsoft Docs
 description: Bir cihaz geliştiricisi olarak, genel bir Node. js cihazını Azure IoT Central uygulamanıza bağlama.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 76ab6a229de14af1e3808326c62a7bdbbd188e81
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 87dbd7ab4d75150d09a8c26db50ce2e3b1a085db
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951373"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930235"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Genel bir istemci uygulamasını Azure IoT Central uygulamanıza bağlama (node. js)
 
@@ -26,7 +26,7 @@ Bu makalede, bir cihaz geliştiricisi olarak, Microsoft Azure IoT Central uygula
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
 - Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
-- [Node. js](https://nodejs.org/) sürüm 4.0.0 veya üzeri yüklü bir geliştirme makinesi. Sürümünüzü denetlemek için komut satırında `node --version` ' yı çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
+- [Node. js](https://nodejs.org/) sürüm 4.0.0 veya üzeri yüklü bir geliştirme makinesi. Sürümünüzü denetlemek için komut satırında `node --version` çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
 
 ## <a name="create-a-device-template"></a>Cihaz şablonu oluşturma
 
@@ -36,7 +36,7 @@ Azure IoT Central uygulamanızda, aşağıdaki ölçümler, cihaz özellikleri, 
 
 **Ölçümler** sayfasına aşağıdaki Telemetriyi ekleyin:
 
-| Görünen Ad | Alan Adı  | Birimler | Min | Maks. | Ondalık Basamak Sayısı |
+| Görünen Ad | Alan Adı  | Birimler | Min | Maks | Ondalık Basamak Sayısı |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
 | Sıcaklık  | sıcaklık | F     | 60  | 110 | 0              |
 | Nem oranı     | Nem oranı    | %     | 0   | 100 | 0              |
@@ -53,7 +53,7 @@ Alan adlarını tam olarak tabloda gösterildiği gibi, cihaz şablonunda girin.
 
 | Görünen Ad | Alan Adı  | Değer 1 | Görünen Ad | Değer 2 | Görünen Ad |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| Fan Modu     | fanmode     | 1       | Çalışıyor      | 0       | Durdurulan      |
+| Fan Modu     | fanmode     | 1       | Çalışıyor      | 0       | Durduruldu      |
 
 > [!NOTE]
 > Durum ölçüsünün veri türü dizedir.
@@ -64,7 +64,7 @@ Alan adlarını tam olarak tabloda gösterildiği gibi, cihaz şablonunda girin.
 
 **Ölçümler** sayfasına aşağıdaki olayı ekleyin:
 
-| Görünen Ad | Alan Adı  | Önem Derecesi |
+| Görünen Ad | Alan Adı  | Severity |
 | ------------ | ----------- | -------- |
 | Aşırı ısınmasını  | aşırı ısı    | Hata    |
 
@@ -98,7 +98,7 @@ Alan adlarını tam olarak tabloda gösterildiği gibi, cihaz şablonunda girin.
 
 **Ayarlar** sayfasına aşağıdaki **sayı** ayarlarını ekleyin:
 
-| Görünen Ad    | Alan Adı     | Birimler | ın | Min | Maks.  | Başlatma |
+| Görünen Ad    | Alan Adı     | Birimler | ın | Min | Maks  | Başlatma |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | Fan hızı       | Fanın hızı       | RPM   | 0        | 0   | 3000 | 0       |
 | Sıcaklığı Ayarla | setTemperature | F     | 0        | 20  | 200  | 80      |

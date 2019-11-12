@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 55b59802116eb10d2e7eeb3b13ecb3da2d475c6d
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: acc64486ac8bd15a9abab1f2010ea56b752a1e86
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906981"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927678"
 ---
 # <a name="deploy-farmbeats"></a>FarmBeats'i dağıtma
 
@@ -60,8 +60,8 @@ Market 'te bir Azure Farmırts teklifi oluşturmak için aşağıdaki adımları
 1. Azure portal oturum açın ve sağ üst köşedeki hesabınızı seçin ve Microsoft Azure Farmtts 'yi dağıtmak istediğiniz Azure AD kiracısına geçiş yapın.
 2. Azure Farmırts, Azure Marketi 'nde kullanılabilir. Market sayfasında "Şimdi al" seçeneğini belirleyin.
 3. Oluştur ' u seçin ve aşağıdaki bilgileri girin:
-  - Abonelik adı.
-  - Mevcut bir kaynak grubu adı (yalnızca boş kaynak grubu) veya Azure Farmtempts dağıtmak için yeni bir kaynak grubu oluşturun. Sonraki bölümlerde bu kaynak grubunu bir yere iade edin.
+    - Abonelik adı.
+    - Mevcut bir kaynak grubu adı (yalnızca boş kaynak grubu) veya Azure Farmtempts dağıtmak için yeni bir kaynak grubu oluşturun. Sonraki bölümlerde bu kaynak grubunu bir yere iade edin.
 4. Azure Farmtts 'yi yüklemek istediğiniz bölge. Şu anda şu bölgeleri aşağıda verilmiştir: Orta ABD, Batı Avrupa, Doğu ABD 2, Kuzey Avrupa, Batı ABD, Güneydoğu Asya, Doğu ABD, Avustralya Doğu, Batı ABD 2.
 5. **Tamam**’ı seçin.
 Kullanım koşulları sayfası görüntülenir. Standart Market şartlarını gözden geçirin veya kullanım koşullarını gözden geçirmek için köprüyü seçin.
@@ -131,7 +131,7 @@ Azure AD uygulaması kayıt betiğini çalıştırmak için aşağıdaki adımla
 
 Yükleme kapsamında, aşağıdaki gibi bir input. JSON dosyası oluşturun:
 
-    ```
+```json
     {  
        "sku":"both",
        "subscriptionId":"da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx",
@@ -144,7 +144,7 @@ Yükleme kapsamında, aşağıdaki gibi bir input. JSON dosyası oluşturun:
        "notificationEmailAddress":"dummy@yourorg.com",
        "updateIfExists":true
     }
-    ```
+```
 
 Bu dosya, Azure Cloud Shell ve yükleme sırasında değerleri kullanılan parametrelere sahip olan giriş dosyasıdır. JSON 'daki tüm parametrelerin uygun değerlerle değiştirilmeleri veya kaldırılması gerekir; kaldırılırsa, yükleyici yükleme sırasında sizden istemde yer alacak
 
@@ -210,9 +210,9 @@ Yükleyici Azure AD Uygulaması kaydını (Yukarıdaki durum 1) oluşturur
 4. Cloud Shell 'de Giriş dizininize gidin. Varsayılan olarak,/Home/<username>
 5. Aşağıdaki komutu Cloud Shell yazın veya yapıştırın. Girişin yolunu değiştirdiğinizden emin olun. JSON dosyası ve ENTER tuşuna basın.
 
-      ```azurepowershell-interactive
+   ```bash
       wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
-     ```
+    ```
      Yükleyici tüm bağımlılıkları otomatik olarak indirir ve dağıtıcıyı oluşturur. Azure Farmınts Son Kullanıcı Lisans Sözleşmesi 'ni (EULA) kabul etmeniz istenir.
 
      - Kabul ediyorsanız ' Y ' yazın ve sonraki adıma ilerlemeniz gerekir.
@@ -266,7 +266,7 @@ Kalan adımları izleyin:
 4. Cloud Shell 'de Giriş dizininize gidin. Varsayılan olarak,/Home/<username>
 5. Aşağıdaki komutu Cloud Shell yazın veya yapıştırın. Girişin yolunu değiştirdiğinizden emin olun. JSON dosyası ve ENTER tuşuna basın.
 
-    ```azurepowershell-interactive
+    ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 
@@ -324,7 +324,7 @@ Yükseltme adımları, ilk kez yüklemeye benzerdir. Şu adımları uygulayın:
 5. Input. json dosyasını Azure Cloud Shell karşıya yükleyin.
 6. Aşağıdaki iki komutu Cloud Shell yazın veya yapıştırın. İnput. json dosyasının yolunu değiştirdiğinizden emin olun ve ENTER tuşuna basın.
 
-    ```azurepowershell-interactive
+    ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 Ekrandaki yönergeleri izleyin:

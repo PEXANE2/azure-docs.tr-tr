@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e07136eed9c14eb4b6eda49ef635171aaf543445
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 21f1da8738946078cb625c76e11ce1bfd62d97ac
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809279"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927168"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft Identity platform için uygulama türleri
 
@@ -76,7 +76,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Microsoft Identity platform uç noktasında kullanılan farklı belirteç türlerinin diğer ayrıntıları, [erişim belirteci](access-tokens.md) başvurusu ve [id_token başvurusu](id-tokens.md) 'nda bulunabilir
+Microsoft Identity platform uç noktasında kullanılan farklı belirteç türlerinin diğer ayrıntıları, [erişim belirteci](access-tokens.md) başvurusunda ve [id_token başvurusuyla](id-tokens.md) kullanılabilir
 
 Web sunucusu uygulamalarında, oturum açma kimlik doğrulama akışı şu üst düzey adımları alır:
 
@@ -90,7 +90,7 @@ Basit oturum açma 'ya ek olarak, bir Web sunucusu uygulamasının bir REST API 
 
 ## <a name="web-apis"></a>Web API'leri
 
-Uygulamanızın daha fazla Web API 'SI gibi Web hizmetlerini güvenli hale getirmek için Microsoft Identity platform uç noktasını kullanabilirsiniz. Bir Web API 'si, KIMLIK belirteçleri ve oturum tanımlama bilgileri yerine, verilerini güvenli hale getirmek ve gelen isteklerin kimliğini doğrulamak için bir OAuth 2,0 erişim belirteci kullanır. Bir Web API 'SI çağıranı, bir HTTP isteğinin yetkilendirme üst bilgisine, şunun gibi bir erişim belirteci ekler:
+Uygulamanızın daha fazla Web API 'SI gibi Web hizmetlerini güvenli hale getirmek için Microsoft Identity platform uç noktasını kullanabilirsiniz. Web API 'Leri çeşitli platformlarda ve dillerde uygulanabilir. Bunlar, Azure Işlevleri 'nde HTTP Tetikleyicileri kullanılarak da uygulanabilir. Bir Web API 'si, KIMLIK belirteçleri ve oturum tanımlama bilgileri yerine, verilerini güvenli hale getirmek ve gelen isteklerin kimliğini doğrulamak için bir OAuth 2,0 erişim belirteci kullanır. Bir Web API 'SI çağıranı, bir HTTP isteğinin yetkilendirme üst bilgisine, şunun gibi bir erişim belirteci ekler:
 
 ```
 GET /api/items HTTP/1.1
@@ -100,7 +100,7 @@ Accept: application/json
 ...
 ```
 
-Web API 'SI, API çağıranın kimliğini doğrulamak ve erişim belirtecinde kodlanmış taleplerden arayan hakkında bilgi ayıklamak için erişim belirtecini kullanır. Microsoft Identity platform uç noktasında kullanılan farklı belirteç türlerinin diğer ayrıntıları, [erişim belirteci](access-tokens.md) başvurusu ve [id_token başvurusu](id-tokens.md) 'nda bulunabilir
+Web API 'SI, API çağıranın kimliğini doğrulamak ve erişim belirtecinde kodlanmış taleplerden arayan hakkında bilgi ayıklamak için erişim belirtecini kullanır. Microsoft Identity platform uç noktasında kullanılan farklı belirteç türlerinin diğer ayrıntıları, [erişim belirteci](access-tokens.md) başvurusunda ve [id_token başvurusuyla](id-tokens.md) kullanılabilir
 
 Bir Web API 'SI, kullanıcıların belirli işlevleri veya verileri kabul etmek veya devre dışı bırakmak için [kapsam](v2-permissions-and-consent.md)olarak da bilinen izinleri verebilir. Çağıran bir uygulamanın bir kapsama izin almaları için, Kullanıcı bir akış sırasında kapsamı kabul etmelidir. Microsoft Identity platform uç noktası kullanıcıdan izin ister ve sonra Web API 'sinin aldığı tüm erişim belirteçlerinde izinleri kaydeder. Web API 'SI her çağrıda aldığı erişim belirteçlerini doğrular ve yetkilendirme denetimleri gerçekleştirir.
 

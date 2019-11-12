@@ -1,6 +1,6 @@
 ---
 title: Azure Container Registry görevleri zamanlayın
-description: Zamanlayıcı, tanımlı bir zamanlamaya göre Azure Container Registry görevi çalıştıracak şekilde ayarlanır.
+description: Bir veya daha fazla Zamanlayıcı tetikleyicisi ayarlayarak tanımlı bir zamanlamaya göre Azure Container Registry görevinin nasıl çalıştırılacağını öğrenin
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: a4a1099d90b619be383d440067a692c51a2430ac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509065"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931458"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Tanımlı bir zamanlamaya göre bir ACR görevi çalıştırma
 
@@ -31,7 +31,7 @@ Bu makaledeki örnekleri çalıştırmak için Azure CLı 'nın Azure Cloud Shel
 
 * **Cron Ifadesiyle Tetikle** -bir görevin zamanlayıcı tetikleyicisi bir *cron ifadesi*kullanır. İfade, görevin tetiklenmesi için dakika, saat, gün, ay ve haftanın gününü belirten beş alanı olan bir dizedir. Dakikada bir defa kadar olan sıklık desteklenir.
 
-  Örneğin, ifade `"0 12 * * Mon-Fri"` her gün gece UTC tarihinde bir görevi tetikler. Bu makalenin ilerleyen kısımlarında [ayrıntılara](#cron-expressions) bakın.
+  Örneğin, ifade `"0 12 * * Mon-Fri"` her hafta içinde gece UTC tarihinde bir görevi tetikler. Bu makalenin ilerleyen kısımlarında [ayrıntılara](#cron-expressions) bakın.
 * **Birden çok süreölçer tetikleyicisi** -zamanlamalar farklı olduğu sürece bir göreve birden fazla Zamanlayıcı ekleme izni verilir.
     * Görevi oluştururken birden fazla Zamanlayıcı tetikleyicisi belirtin veya daha sonra ekleyin.
     * İsteğe bağlı olarak daha kolay yönetim için Tetikleyicileri adlandırın veya ACR görevleri varsayılan tetikleyici adlarını sağlar.
@@ -40,9 +40,9 @@ Bu makaledeki örnekleri çalıştırmak için Azure CLı 'nın Azure Cloud Shel
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>Zamanlayıcı tetikleyicisiyle görev oluşturma
 
-[Az ACR Task Create][az-acr-task-create] komutuyla bir görev oluşturduğunuzda, isteğe bağlı olarak bir Zamanlayıcı tetikleyicisi ekleyebilirsiniz. `--schedule` Parametresini ekleyin ve Zamanlayıcı için bir cron ifadesi geçirin.
+[Az ACR Task Create][az-acr-task-create] komutuyla bir görev oluşturduğunuzda, isteğe bağlı olarak bir Zamanlayıcı tetikleyicisi ekleyebilirsiniz. `--schedule` parametresini ekleyin ve Zamanlayıcı için bir cron ifadesi geçirin.
 
-Basit bir örnek olarak, aşağıdaki komut, `hello-world` görüntüyü Docker Hub 'dan her gün 21:00 UTC 'den çalıştırmayı tetikler. Görev, kaynak kodu bağlamı olmadan çalışır.
+Basit bir örnek olarak aşağıdaki komut, `hello-world` görüntüsünü Docker Hub 'dan her gün 21:00 UTC 'den çalıştırmayı tetikler. Görev, kaynak kodu bağlamı olmadan çalışır.
 
 ```azurecli
 az acr task create \
@@ -174,13 +174,13 @@ Cron ifadeleriyle kullanılan saat dilimi Eşgüdümlü Evrensel Saat (UTC). Saa
 
 Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
-|Type  |Örnek  |Tetiklendiğinde  |
+|Tür  |Örnek  |Tetiklendiğinde  |
 |---------|---------|---------|
 |Belirli bir değer |<nobr>`"5 * * * *"`</nobr>|saatte 5 dakikada bir saat geçti|
 |Tüm değerler (`*`)|<nobr>`"* 5 * * *"`</nobr>|saatin her dakikası, 5:00 UTC (günde 60 kez)|
-|Bir Aralık (`-` işleç)|<nobr>`"0 1-3 * * *"`</nobr>|gün başına 3 kez, 1:00, 2:00 ve 3:00 UTC|
-|Bir değerler kümesi (`,` işleç)|<nobr>`"20,30,40 * * * *"`</nobr>|saatte 3 kez, 20 dakika, 30 dakika ve 40 dakika geçmiş|
-|Bir Aralık değeri (`/` işleç)|<nobr>`"*/10 * * * *"`</nobr>|Saat başına 6 kez, 10 dakika, 20 dakika, vb. saat geçti
+|Bir Aralık (`-` işleci)|<nobr>`"0 1-3 * * *"`</nobr>|gün başına 3 kez, 1:00, 2:00 ve 3:00 UTC|
+|Bir değerler kümesi (`,` işleci)|<nobr>`"20,30,40 * * * *"`</nobr>|saatte 3 kez, 20 dakika, 30 dakika ve 40 dakika geçmiş|
+|Aralık değeri (`/` işleci)|<nobr>`"*/10 * * * *"`</nobr>|Saat başına 6 kez, 10 dakika, 20 dakika, vb. saat geçti
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 

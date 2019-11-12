@@ -16,12 +16,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38235e90ccf79cf1322ce0f26ed426d8c3a693cc
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 52e15aa62043ba394ae6e8cfe2cc7f27709c7d33
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847172"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927450"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -43,9 +43,18 @@ Gerekli izinler | Bir güncelleştirmeyi uygulamak için gereken izinler için b
 Bu işlemden sonra, yayının sürüm numarası, "1.3. X. 0" içinde olduğu gibi küçük Yayın numarası konumunda bir "X" ile gösterilir. bu belgedeki sürüm notlarının, "1,3." ile başlayan tüm sürümler için geçerli olduğunu gösterir. Yayın işlemini sonuçlandırdıktan hemen sonra yayın sürümü numarası en son yayınlanan sürüme güncelleştirilir ve yayın durumu "indirme ve otomatik yükseltme için yayımlandı" olarak güncelleştirilir.
 Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir hale getirilmeyecektir. Sürüm durumu, bir yayının otomatik yükseltme veya yalnızca indirme için kullanılabilir duruma getirilmeyeceğini gösterir. Azure AD Connect sunucunuzda otomatik yükseltme etkinleştirildiyse, bu sunucu otomatik olarak yükseltme için yayınlanan en son Azure AD Connect sürümüne yükseltilir. Azure AD Connect yapılandırmalarının tümünün otomatik yükseltme için uygun olmadığına unutmayın. [Otomatik yükseltme](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) hakkında daha fazla bilgi için lütfen bu bağlantıyı izleyin
 
+## <a name="14320"></a>1.4.32.0
+### <a name="release-status"></a>Yayın durumu
+08/11/2019: indirilmek üzere yayınlandı. Otomatik yükseltme için kullanılamaz
+
+>[!IMPORTANT]
+>Bu Azure AD Connect sürümünde bir iç şema değişikliği nedeniyle, MSOnline PowerShell kullanarak ADFS güven ilişkisi yapılandırma ayarlarını yönetiyorsanız, MSOnline PowerShell modülünüzü 1.1.183.57 veya üzeri sürümüne güncelleştirmeniz gerekir
+### <a name="fixed-issues"></a>Düzeltilen sorunlar
+
+Bu sürüm, mevcut karma Azure AD 'ye katılmış cihazlarda bir sorunu düzeltir. Bu sürüm, bu sorunu gideren yeni bir cihaz eşitleme kuralı içerir.
+Bu kural değişikliğinin, kullanılmayan cihazların Azure AD 'den silinmesine neden olabileceğini unutmayın. Bu cihaz nesneleri, koşullu erişim yetkilendirmesi sırasında Azure AD tarafından kullanılmadığından bu sorun için bir neden değildir. Bazı müşteriler için, bu kural değişikliği üzerinden silinecek cihaz sayısı, silme eşiğini aşabilir. Azure AD 'de cihaz nesneleri silme işlemini dışarı aktarma silme eşiğini aştıktan sonra, silme işlemlerinin devam eden bir şekilde tamamlanmasına izin verilmesi önerilir. [Silme eşiğini aştıklarında akışa silme izni verme](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes)
+
 ## <a name="14250"></a>1.4.25.0
-
-
 
 ### <a name="release-status"></a>Yayın durumu
 9/28/2019: kiracı seçmek için otomatik yükseltme için yayınlandı. İndirileceği için kullanılamaz.
@@ -810,7 +819,7 @@ CBool(
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Şunu seçin:|
     |CertKeyAlgorithmParams|CertHashString|Konum|
-    |||Avantaj ile|
+    |||With|
 
 * Müşterilerin, Grup nesneleri için sAMAccountName, Domainnetbıos ve domainFQDN 'leri ve Kullanıcı nesneleri için distinguishedName 'dir akışını sağlamak üzere özel eşitleme kuralları oluşturmalarına olanak tanımak için aşağıdaki şema değişiklikleri sunulmuştur:
 

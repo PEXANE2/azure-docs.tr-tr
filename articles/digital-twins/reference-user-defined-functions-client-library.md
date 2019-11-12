@@ -1,5 +1,5 @@
 ---
-title: Azure dijital TWINS Kullanıcı tanımlı işlevler istemci kitaplığı başvurusu | Microsoft Docs
+title: Azure dijital TWINS Kullanıcı tanımlı işlevler başvurusu | Microsoft Docs
 description: Azure dijital TWINS Kullanıcı tanımlı işlevler istemci kitaplığı başvurusu.
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: article
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36fb8a5588321426ccae7d6c6577fb4b48f3a4db
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: daab63067087267c12cef75178b5f974043e0fd9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948898"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931238"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Kullanıcı tanımlı işlevler istemci kitaplığı başvurusu
 
@@ -24,7 +24,7 @@ Bu belge, Azure Digital TWINS Kullanıcı tanımlı işlevler istemci kitaplığ
 
 İstemci kitaplığı, yaygın olarak kullanılan işlemler için yardımcı yöntemleri tanımlar.
 
-### <a name="getspacemetadataid--space"></a>getSpaceMetadata (ID) ⇒ `space`
+### <a name="getspacemetadataid--space"></a>getSpaceMetadata (kimlik) ⇒ `space`
 
 Alan tanımlayıcısı verildiğinde, bu işlev grafikten alanı alır.
 
@@ -32,7 +32,7 @@ Alan tanımlayıcısı verildiğinde, bu işlev grafikten alanı alır.
 
 | Parametre  | Tür                | Açıklama  |
 | ---------- | ------------------- | ------------ |
-| *id*  | `guid` | Boşluk tanımlayıcısı |
+| *numarasını*  | `guid` | Boşluk tanımlayıcısı |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (kimlik) ⇒ `sensor`
 
@@ -42,7 +42,7 @@ Bir algılayıcı tanımlayıcısı verildiğinde, bu işlev algılayıcıyı gr
 
 | Parametre  | Tür                | Açıklama  |
 | ---------- | ------------------- | ------------ |
-| *id*  | `guid` | Algılayıcı tanımlayıcısı |
+| *numarasını*  | `guid` | Algılayıcı tanımlayıcısı |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (kimlik) ⇒ `device`
 
@@ -52,7 +52,7 @@ Bir cihaz tanımlayıcısı verildiğinde, bu işlev cihazı grafikten alır.
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *id* | `guid` | Cihaz tanımlayıcısı |
+| *numarasını* | `guid` | Cihaz tanımlayıcısı |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (Sensorıd, dataType) ⇒ `value`
 
@@ -87,7 +87,7 @@ Bu işlev, bir algılayıcı tanımlayıcısı ve veri türü verildiğinde, bu 
 | *Sensorıd* | `guid` | Algılayıcı tanımlayıcısı |
 | *x* | `string` | Algılayıcı veri türü |
 
-### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>Getspaceıvalues değerleri (Spaceıd, dataType) ⇒ `value[]`
+### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>Getspaceıvalues değeri (Spaceıd, dataType) ⇒ `value[]`
 
 Alan tanımlayıcısı ve değer adı verildiğinde, bu işlev alandaki bu özelliğin geçmiş değerlerini alır.
 
@@ -243,7 +243,7 @@ Bu işlev, Kullanıcı tanımlı işlev içinde aşağıdaki iletiyi günlüğe 
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *message* | `string` | Günlüğe kaydedilecek ileti |
+| *İleti* | `string` | Günlüğe kaydedilecek ileti |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (Topologyobjectıd, topologyObjectType, yük)
 
@@ -261,7 +261,7 @@ Bu işlev, dağıtılması için özel bir bildirim gönderir.
 
 İstemci başvuru Yardımcısı yöntemlerinden döndürülen yanıt modelleri aşağıda açıklanmaktadır.
 
-### <a name="space"></a>Alan
+### <a name="space"></a>Uzay
 
 ```JSON
 {
@@ -408,7 +408,7 @@ Bu işlev, geçerli algılayıcı için Genişletilmiş özelliği ve değerini 
 
 Bu işlev, geçerli algılayıcının değerini döndürür.
 
-#### <a name="history--value"></a>Geçmiş () ⇒ `value[]`
+#### <a name="history--value"></a>History () ⇒ `value[]`
 
 Bu işlev, geçerli algılayıcının geçmiş değerlerini döndürür.
 

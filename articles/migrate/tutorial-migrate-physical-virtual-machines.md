@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ffa072f593a06a38e6e3d121fb76806e41bf568e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 28705ea8a552f4d2e6653857c69ebb8d5f87b962
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605542"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907118"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Fiziksel veya sanallaştırılmış sunucuları Azure 'a geçirme 
 
@@ -46,7 +46,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
@@ -123,7 +123,7 @@ Makinelerin Azure 'a geçiş gereksinimleriyle uyumlu olduğundan emin olun.
 > [!NOTE]
 > Azure geçişi sunucu geçişi ile aracı tabanlı geçiş, Azure Site Recovery hizmetinin özelliklerine dayalıdır. Bazı gereksinimler Site Recovery belgelerine bağlantı verebilir.
 
-1. VMware sunucusu gereksinimlerini [doğrulayın](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements).
+1. Sunucu gereksinimlerini [doğrulayın](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) .
 2. [Doğrula](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) Geçiş için VM desteği gereksinimleri.
 3. VM ayarlarını doğrulayın. Azure 'a çoğaltılan şirket içi VM 'Ler, [Azure VM gereksinimleriyle](migrate-support-matrix-vmware.md#azure-vm-requirements)uyumlu olmalıdır.
 
@@ -265,7 +265,7 @@ Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz ge
 
     ![Sanal makineleri çoğaltma](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
 
-2. **Çoğalt**, > **Kaynak ayarları** > **Makineleriniz sanallaştırıldı mı?** bölümünde **Evet, VMware vSphere** ile seçeneğini belirleyin.
+2. > **Kaynak ayarları** > , **makineleriniz sanallaştırılmış mı?** , **sanallaştırılmamış/diğer** **' i**seçin.
 3. **Şirket içi gereç**bölümünde, ayarladığınız Azure geçiş gerecinin adını seçin.
 4. **VCenter Server**'Da, VM 'Leri yöneten vCenter sunucusunun adını veya VM 'Lerin barındırıldığı vSphere sunucusunu belirtin.
 5. **Işlem sunucusu**' nda, çoğaltma gerecinin adını seçin.

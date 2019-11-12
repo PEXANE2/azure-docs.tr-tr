@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: helohr
-ms.openlocfilehash: cf344d6c551ecd3d301d79c29efe9e7adb7f8d83
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: dc93480807f34a79ee02f628f7b6f090c7efa428
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646884"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931716"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -59,7 +59,7 @@ ControlUp, BT ekiplerinin tek bir konsoldan gerçek zamanlı olarak şirket içi
 
 Windows sanal masaüstü ile kullanıldığında ControlUp, Windows sanal masaüstü ortamlarını ve son kullanıcı deneyimini iyileştirmek için ek yetenekler sağlar. Denetim konsolundan, performans sorunlarını etkili bir şekilde izlemek ve sorunlarını gidermek için Son Kullanıcı ortamı görünürlüğünü alır. Sezgisel bir Pano, sanal masaüstü dağıtımları için Öngörüler ve analizler ve topluluk kıyaslamalarıyla otomatik raporlama zenginleştirilmesi için seçenekler sağlar. Denetim, birden fazla veri kaynağını ve türünü yönetebilir ve işlem, depolama ve Windows sanal masaüstü altyapısı genelinde toplanan yüksek performanslı veri kümelerinde organize edilebilir ve tek bir cam bölmeden ayrıntılı görünürlük sağlar.
 
-- [Bkz. JOIN çözümü kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [İş ortağı Web sitesine gidin](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="devicetrust"></a>deviceTRUST

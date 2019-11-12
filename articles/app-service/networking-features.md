@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 102f3e131b20534dc2f192b6485a3fdc95070315
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 801692c53ef268f15edc60d31743aefa6a247a78
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470266"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928500"
 ---
 # <a name="app-service-networking-features"></a>App Service ağ özellikleri
 
@@ -91,7 +91,7 @@ Uygulama tarafından atanan bir adres kullandığınızda, trafiğiniz hala App 
 
 ### <a name="access-restrictions"></a>Erişim kısıtlamaları 
 
-Erişim kısıtlamaları özelliği, **gelen** istekleri, özgün IP adresine göre filtrelemenize olanak sağlar. Filtre eylemi, uygulamalarınızın çalıştırıldığı yerden yukarı akış olan ön uç rolleri üzerinde gerçekleşir. Ön uç rolleri çalışanlardan yukarı akış olduğundan, erişim kısıtlamaları özelliği uygulamalarınız için ağ düzeyinde koruma olarak kabul edilebilir. Özelliği, öncelik sırasına göre değerlendirilen izin verme ve reddetme adres bloklarının bir listesini oluşturmanızı sağlar. Azure ağı 'nda bulunan ağ güvenlik grubu (NSG) özelliğine benzer.  Bu özelliği bir ate veya çok kiracılı hizmette kullanabilirsiniz. ILB Ao ile birlikte kullanıldığında, erişimi özel adres bloklarından kısıtlayabilirsiniz.
+Erişim kısıtlamaları özelliği, **gelen** istekleri, özgün IP adresine göre filtrelemenize olanak sağlar. Filtreleme eylemi, uygulamalarınızın çalıştığı çalışan rollerden yukarı akış olan ön uç rollerde gerçekleşir. Ön uç rolleri çalışanlardan yukarı akış olduğundan, erişim kısıtlamaları özelliği uygulamalarınız için ağ düzeyinde koruma olarak kabul edilebilir. Özelliği, öncelik sırasına göre değerlendirilen izin verme ve reddetme adres bloklarının bir listesini oluşturmanızı sağlar. Azure ağı 'nda bulunan ağ güvenlik grubu (NSG) özelliğine benzer.  Bu özelliği bir ate veya çok kiracılı hizmette kullanabilirsiniz. ILB Ao ile birlikte kullanıldığında, erişimi özel adres bloklarından kısıtlayabilirsiniz.
 
 ![Erişim kısıtlamaları](media/networking-features/access-restrictions.png)
 

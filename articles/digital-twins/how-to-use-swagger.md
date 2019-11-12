@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 06cbdf6fbba89b6666e6fe3162fd591e93dffecd
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6a99693c3f88e94c093910da6ba4a305c26fe39d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958880"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931337"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure dijital TWINS Swagger başvuru belgeleri
 
@@ -36,7 +36,7 @@ Swagger, Azure Digital TWINS yönetim API 'Lerine yapılan geliştirme ve test �
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
-## <a name="reference-material"></a>Başvuru malzemeleri
+## <a name="reference-material"></a>Başvuru kaynakları
 
 Otomatik olarak oluşturulan Swagger başvuru malzemeleri, önemli kavramlara, kullanılabilir yönetim API uç noktalarına ve geliştirme ve test etmeye yardımcı olmak için her nesne modelinin açıklamasına yönelik hızlı bir genel bakış sağlar.
 
@@ -46,7 +46,7 @@ Kısa bir Özet API 'YI tanımlar.
 
 Yönetim API 'SI nesne modelleri de listelenir.
 
-[![Swagger modelleri](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[Swagger modellerini ![](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
 Anahtar özniteliklerinin daha ayrıntılı bir özeti için listelenen her nesne modelini seçebilirsiniz.
 
@@ -78,7 +78,7 @@ Belirli bir uç noktayı seçtikten sonra, **deneyin**seçeneğini görürsünü
 
 Gerekli ve isteğe bağlı her bir parametre için giriş alanlarını getirmek üzere bu bölümü genişletin. Doğru değerleri girip **Yürüt**' ü seçin.
 
-[![Swagger denendi](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[![Swagger çalıştı](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
 Testi yürütmeden sonra, yanıt verilerini doğrulayabilirsiniz.
 
@@ -95,14 +95,14 @@ Listelenen her uç nokta, geliştirme ve testlerinizi doğrulamak için yanıt g
 > [!NOTE]
 > * Azure dijital TWINS kaynağını oluşturan kullanıcı sorumlusunun bir alan Yöneticisi rol ataması olacak ve diğer kullanıcılar için ek rol atamaları oluşturabileceksiniz. Bu tür kullanıcılar ve rollerinin API 'Leri çağırma yetkisi bulunabilir.
 
-1. Bir Azure AD uygulaması oluşturmak ve yapılandırmak için [Bu hızlı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) başlangıçta bulunan adımları Izleyin veya [Azure dijital TWINS uygulamanızı eski Azure Active Directory kaydedin](./how-to-use-legacy-aad.md) . Alternatif olarak, var olan bir uygulama kaydını yeniden kullanabilirsiniz.
+1. Bir Azure AD uygulaması oluşturmak ve yapılandırmak için [Bu hızlı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) başlangıçta bulunan adımları izleyin. Alternatif olarak, var olan bir uygulama kaydını yeniden kullanabilirsiniz.
 
 1. Aşağıdaki yanıt URL 'sini uygulama kaydına ekleyin:
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Name  | Değiştir | Örnek |
+    | Ad  | Şununla değiştir | Örnek |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Portalda yönetim REST API belge URL 'SI bulundu  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
@@ -112,7 +112,7 @@ Azure Active Directory kaydını tamamladıktan sonra:
 
 1. Swagger sayfanızda **Yetkilendir** düğmesini seçin.
 
-    [![ Swagger Yetkilendir düğmesini seçin](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![Swagger Yetkilendir düğmesini seçin](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
 1. Uygulama KIMLIĞINI **client_id** alanına yapıştırın.
 

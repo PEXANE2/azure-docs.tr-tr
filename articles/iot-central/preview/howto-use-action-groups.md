@@ -8,20 +8,20 @@ ms.date: 10/21/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: b4dbf94d4b0063eadaa900a684a31e5288ff50f9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e51a2fc7e3af9a56b90a66935ef01ac907ebce3b
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895624"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929895"
 ---
-# <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Birden çok eylemi bir veya daha fazla kuralla çalışacak şekilde gruplandırma
+# <a name="group-multiple-actions-to-run-from-one-or-more-rules-preview-features"></a>Birden çok eylemi bir veya daha fazla kuralla çalışacak şekilde gruplandırma (Önizleme özellikleri)
 
 *Bu makale, oluşturucular ve yöneticiler için geçerlidir.*
 
 Azure IoT Central, bir koşul karşılandığında eylemleri çalıştırmak için kurallar oluşturursunuz. Kurallar cihaz telemetrisini veya olaylarını temel alır. Örneğin, bir cihazın sıcaklığı bir eşiği aştığında bir işlece bildirimde bulunabilir. Bu makalede, bir IoT Central kuralına birden çok eylem eklemek için [Azure izleyici](../../azure-monitor/overview.md) *eylem gruplarının* nasıl kullanılacağı açıklanır. Birden çok kurala bir eylem grubu ekleyebilirsiniz. Bir [eylem grubu](../../azure-monitor/platform/action-groups.md) , bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Kullandıkça Öde uygulaması
 - Azure Izleyici eylem grupları oluşturmak ve yönetmek için bir Azure hesabı ve aboneliği

@@ -7,14 +7,14 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: fe733b686f2b56beee26a6c33c4d6264d621e627
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516350"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931314"
 ---
-# <a name="deploy-a-trusted-security-partner-preview"></a>Güvenilen güvenlik iş ortağı dağıtma (Önizleme)
+# <a name="deploy-a-trusted-security-partner-preview"></a>Güvenilen güvenlik iş ortağı dağıtma (önizleme)
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
@@ -83,12 +83,11 @@ Sanal hub 'ın VPN Gateway tünellerini ayarlamak için, üçüncü taraf sağla
 
    > [!NOTE]
    > Daha ayrıntılı denetim için, erişimi yalnızca kaynak grubunuza göre sınırlayabilirsiniz.
-3. Aşağıdaki bağlantıdaki yönergeleri izleyin.
+3. [Zscaler: Microsoft Azure sanal WAN tümleştirme yönergelerini yapılandırmak](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration) için şu adımları izleyin:
 
-   - İş ortağı portalında oturum açmak ve güvenilen iş ortağına güvenli hub 'ınıza erişim sağlamak için kimlik bilgilerinizi eklemek için.
-   - Azure AD kimlik doğrulama kimlik bilgileriniz doğrulandıktan sonra, iş ortağı portalındaki sanal hub 'ları eşitlemek ve sanal hub 'a tünel ayarlamak için aşağıdaki yönergeleri kullanın.
-
-   [ZScaler: Microsoft Azure sanal WAN tümleştirmesi yapılandırma](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)
+   - İş ortağı portalında oturum açın ve güvenilen hub 'ınıza güvenilir iş ortağı erişimi sağlamak için kimlik bilgilerinizi ekleyin.
+   - İş ortağı portalındaki sanal hub 'ları eşitleyin ve sanal hub 'a tüneli ayarlayın. Azure AD kimlik doğrulama kimlik bilgileriniz doğrulandıktan sonra bunu yapabilirsiniz.
+   
 4. Azure 'da Azure sanal WAN portalındaki tünel oluşturma durumuna bakabilirsiniz. Tüneller hem Azure 'da hem de iş ortağı portalında **bağlı** olduktan sonra, hangi dalların ve sanal ağların Iş ortağına Internet trafiği gönderebilmelidir.
 
 ## <a name="configure-route-settings"></a>Yol ayarlarını yapılandırma

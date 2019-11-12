@@ -16,16 +16,16 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1c054bf354b5cdc5e0803ba6849af19fab40f3c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1fd72bba6e8c01644adebaa333c8fe588c35b8c7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174163"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927310"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi nedir?
 
-Azure Active Directory (Azure AD) yetkilendirme yönetimi, kuruluşların kimlik ve erişim yaşam döngüsünü ölçekteki yönetmesine olanak tanıyan bir [kimlik idare](identity-governance-overview.md) özelliğidir, böylece erişim isteği iş akışları, erişim atamaları, incelemeler ve dolmadan.
+Azure Active Directory (Azure AD) yetkilendirme yönetimi, kuruluşların kimlik ve erişim yaşam döngüsünü ölçekteki yönetmesine olanak tanıyan bir [kimlik idare](identity-governance-overview.md) özelliğidir. böylece, erişim isteği iş akışlarına, erişim atamalarına, incelemelerine ve süre sonuna erişin.
 
 Kuruluşlardaki çalışanların işlerini gerçekleştirmek için çeşitli gruplar, uygulamalar ve sitelere erişmesi gerekir. Gereksinimler değiştikçe bu erişimin yönetilmesi zorlayıcı bir şekilde, yeni uygulamalar eklendikçe veya kullanıcıların ek erişim haklarına ihtiyacı vardır.  Bu senaryo, dış kuruluşlar ile işbirliği yaptığınızda daha karmaşıktır. diğer kuruluşun kuruluşunuzun kaynaklarına erişmesi gerektiğini bilmiyor olabilirsiniz ve kuruluşunuzun hangi uygulamaları, grupları veya siteleri kullandığını bilmez.
 
@@ -38,7 +38,7 @@ Kurumsal kuruluşlar, çalışanların şu gibi kaynaklara erişimini yönetirke
 - Kullanıcılar sahip olmaları gereken erişimi bilmiyor olabilir ve olsalar bile, erişimleri onaylamak için doğru bireyleri bulmaya zorluk gösterebilir
 - Kullanıcılar bir kaynağa erişim bulup aldıktan sonra, iş amaçları için gerekenden daha uzun bir süre erişim için açık kalabilir
 
-Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından gelen harici kullanıcılar gibi başka bir kuruluştan erişmesi gereken kullanıcılar için bir bileşim oluşturur. Örnek:
+Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından gelen harici kullanıcılar gibi başka bir kuruluştan erişmesi gereken kullanıcılar için bir bileşim oluşturur. Örneğin:
 
 - Başka bir kişi, diğer kuruluşun dizinlerindeki tüm kişileri davet edemeyecek şekilde hiç kimse bilmez
 - Bu kullanıcılar davet edebilse bile, bu kuruluştan hiç kimse kullanıcının tüm erişimini tutarlı bir şekilde yönetmeyi anımsayabilir
@@ -71,7 +71,7 @@ Yetkilendirme Yönetimi, Azure AD 'ye bir *erişim paketi*kavramını tanıtır.
 - SaaS uygulamaları ve Federasyon/çoklu oturum açma ve/veya sağlamayı destekleyen özel tümleşik uygulamalar dahil olmak üzere Azure AD kurumsal uygulamalarına atama
 - SharePoint Online sitelerinin üyeliği
 
-Ayrıca, Azure AD güvenlik gruplarına veya Office 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örnek:
+Ayrıca, Azure AD güvenlik gruplarına veya Office 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örneğin:
 
 - Erişim paketindeki bir Azure AD güvenlik grubunu kullanarak ve bu grup için [grup tabanlı lisanslamayı](../users-groups-roles/licensing-groups-assign.md) yapılandırarak, Microsoft Office 365 için kullanıcılara lisans verebilirsiniz
 - Erişim paketindeki bir Azure AD güvenlik grubunu kullanarak ve bu grup için bir [Azure rol ataması](../../role-based-access-control/role-assignments-portal.md) oluşturarak kullanıcılara Azure kaynaklarını yönetmeye yönelik erişim izni verebilirsiniz.
@@ -149,4 +149,4 @@ Kullanıcılarınıza lisansları atama hakkında daha fazla bilgi için, bkz. [
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Öğretici: ilk erişim paketinizi oluşturma](entitlement-management-access-package-first.md)
-- [Genel senaryolar](entitlement-management-scenarios.md)
+- [Yaygın senaryolar](entitlement-management-scenarios.md)

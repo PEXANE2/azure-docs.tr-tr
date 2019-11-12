@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/04/2019
-ms.openlocfilehash: c1f4b3d60c0b8af96d851ce54c2aac57c76335a7
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: b44d624db419919823ec85bcb599007fb75c92b9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73633768"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929658"
 ---
 1. Azure aboneliğinizin kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
 
@@ -32,15 +32,15 @@ ms.locfileid: "73633768"
 
    Alan|Açıklama 
    ---|---
-   Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS**kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın.  
+   Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS**kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın. 
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
    Kaynak grubu | Aboneliğinizde var olan bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturmak için bir ad girin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML**kullanılır. 
    Konum | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.
-   Çalışma alanı sürümü | **Kurumsal**' i seçin.  Bu öğreticide Enterprise sürümünün kullanılması gerekir.  Enterprise Edition önizlemededir ve şu anda ek maliyet eklemez.  
+   Çalışma alanı sürümü | **Kurumsal**' i seçin. Bu öğreticide Enterprise sürümünün kullanılması gerekir. Enterprise Edition önizlemededir ve şu anda ek maliyet eklemez. 
 
 1. Çalışma alanını yapılandırmayı tamamladıktan sonra **Oluştur**' u seçin. 
 
-   > [!Warning] 
+   > [!WARNING] 
    > Çalışma alanınızı bulutta oluşturmak birkaç dakika sürebilir.
 
    İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. 

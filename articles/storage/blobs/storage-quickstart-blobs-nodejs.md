@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 28a75158b161e680f857b986bcb754f1f99e8fab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 90ef1be4366205b1f655a0b93619a897d6d1f25d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825315"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929489"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı V12
 
@@ -33,7 +33,7 @@ JavaScript için Azure Blob depolama istemci kitaplığı V12 ' nı kullanarak �
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -351,7 +351,7 @@ Bu hızlı başlangıçta, JavaScript kullanarak Blobları karşıya yükleme, i
 BLOB depolama örnek uygulamalarını görmek için devam edin:
 
 > [!div class="nextstepaction"]
-> [Azure Blob Storage SDK V12 JavaScript örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/azure-storage-blob/samples)
+> [Azure Blob Storage SDK V12 JavaScript örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
 * Daha fazla bilgi için bkz. [JavaScript Için Azure SDK](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/README.md).
 * Öğreticiler, örnekler, hızlı ve diğer belgeler için, [JavaScript Için Azure SDK belgelerini](/azure/javascript/)ziyaret edin.

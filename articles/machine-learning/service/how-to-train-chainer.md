@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: bfe44e552618dfbee13e8c85ef424f52d4b7ae5f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a7c19486fe6787c4548a77dcdd93a92a92c97d8c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814987"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931106"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning ile Chainer modellerini eğitme ve kaydetme
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Derin bir öğrenme Chainer modelini baştan sona eğiyor veya mevcut bir modeli
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 
@@ -193,7 +193,7 @@ model = run.register_model(model_name='chainer-dnn-mnist', model_path='outputs/m
 ```
 
 > [!TIP]
-> Modelin bulunamadığını belirten bir hata alırsanız bir dakika verin ve yeniden deneyin.  Bazen, eğitimin bitişi ile çıkış dizinindeki modelin kullanılabilirliği arasında küçük bir gecikme olur.
+> Yeni kaydettiğiniz model, eğitim için kullandığınız tahmin aracı 'dan bağımsız olarak, Azure Machine Learning ' deki diğer tüm kayıtlı modellerle aynı şekilde dağıtılır. Dağıtım nasıl yapılır, model kaydettirme hakkında bir bölüm içerir, ancak zaten kayıtlı bir modeliniz olduğundan, dağıtım için doğrudan [bir işlem hedefi oluşturmaya](how-to-deploy-and-where.md#choose-a-compute-target) geçebilirsiniz.
 
 Ayrıca modelin yerel bir kopyasını da indirebilirsiniz. Bu, ek model doğrulama işini yerel olarak gerçekleştirmek için yararlı olabilir. Eğitim betikindeki `chainer_mnist.py`, bir koruyucu nesnesi modeli yerel bir klasöre (yerel olarak işlem hedefine) devam ettirir. Veri deposundan bir kopya indirmek için Run nesnesini kullanabilirsiniz.
 

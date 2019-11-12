@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edb6d96dfdca63f1bacf45ab0af01d18aafcf302
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b4aa4fbff4e1b89b87dd05e0547db8e14ae5835
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667869"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927145"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft Identity platform uç noktasındaki izinler ve onay
 
@@ -89,9 +89,9 @@ Bir uygulama, [OpenID Connect](active-directory-v2-protocols.md)kullanarak oturu
 
 `email` kapsamı `openid` kapsamı ve diğerleri ile kullanılabilir. Uygulama, kullanıcının birincil e-posta adresine `email` talebi biçiminde erişim sağlar. `email` talebi, yalnızca bir e-posta adresi kullanıcı hesabıyla ilişkiliyse, her zaman durum olmayan bir belirtece dahil edilir. `email` kapsamını kullanıyorsa, uygulamanız `email` talebinin belirteçte olmadığı bir durumu işlemeye hazırlanmalıdır.
 
-### <a name="profile"></a>Profilinizi
+### <a name="profile"></a>profilinizi
 
-`profile` kapsamı `openid` kapsamı ve diğerleri ile kullanılabilir. Uygulamanın kullanıcı hakkındaki önemli miktarda bilgiye erişmesini sağlar. Erişebileceği bilgiler, kullanıcının verilen adı, soyadı, tercih edilen Kullanıcı adı ve nesne KIMLIĞINI içerir, ancak bunlarla sınırlı değildir. Belirli bir kullanıcı için id_tokens parametresinde kullanılabilir olan profil taleplerinin tüm listesi için [`id_tokens` başvurusuna](id-tokens.md)bakın.
+`profile` kapsamı `openid` kapsamı ve diğerleri ile kullanılabilir. Uygulamanın kullanıcı hakkındaki önemli miktarda bilgiye erişmesini sağlar. Erişebileceği bilgiler, kullanıcının verilen adı, soyadı, tercih edilen Kullanıcı adı ve nesne KIMLIĞINI içerir, ancak bunlarla sınırlı değildir. Belirli bir kullanıcı için id_tokens parametresinde kullanılabilir olan profil taleplerinin tüm listesi için, [`id_tokens` başvurusuna](id-tokens.md)bakın.
 
 ### <a name="offline_access"></a>offline_access
 
@@ -186,18 +186,18 @@ Kuruluşunuzun yöneticisinden izin istemek için hazırsanız, kullanıcıyı M
 
 ```
 // Line breaks are for legibility only.
-    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+  GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
   client_id=6731de76-14a6-49ae-97bc-6eba6914391e
   &state=12345
   &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://graph.microsoft.com/calendars.read 
-    https://graph.microsoft.com/mail.send
+  &scope=
+  https://graph.microsoft.com/calendars.read 
+  https://graph.microsoft.com/mail.send
 ```
 
 
 | Parametre     | Koşul     | Açıklama                                                                               |
-|--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
+|:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Gerekli | İzin istemek istediğiniz dizin kiracısı. , Örnekte görüldüğü gibi `common` GUID veya kolay ad biçiminde veya genel olarak başvuru yapılabilir. |
 | `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
 | `redirect_uri` | Gerekli |Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Uygulama kayıt portalı 'nda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
@@ -303,7 +303,7 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-Bu, tüm kayıtlı izinler için bir onay ekranı üretir (yukarıdaki izin ve `/.default`açıklamaları temel alınarak geçerliyse), bir erişim belirteci yerine bir id_token döndürür.  Bu davranış, ADAL 'den MSAL 'e taşınan bazı eski istemciler için ve Microsoft Identity platform uç noktasını hedefleyen yeni istemciler tarafından kullanılmamalıdır.  
+Bu, tüm kayıtlı izinler için bir onay ekranı üretir (yukarıdaki izin ve `/.default`açıklamaları temel alınarak geçerliyse), erişim belirteci yerine bir id_token döndürür.  Bu davranış, ADAL 'den MSAL 'e taşınan bazı eski istemciler için ve Microsoft Identity platform uç noktasını hedefleyen yeni istemciler tarafından kullanılmamalıdır.  
 
 ## <a name="troubleshooting-permissions-and-consent"></a>İzinler ve onay sorunlarını giderme
 

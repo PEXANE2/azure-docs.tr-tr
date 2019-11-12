@@ -1,5 +1,5 @@
 ---
-title: Azure Container Instances Azure Container Registry ile kimlik doğrulama
+title: Container Instances Azure Container Registry erişim
 description: Azure Active Directory hizmet sorumlusu kullanarak Azure Container Instances özel kapsayıcı kayıt defterinizde görüntülere nasıl erişim sağlayacağınızı öğrenin.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: b11f88cbb29016032cbf536a2c970573eda82152
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 53cdca72587dafd39abd3f13ad488dcb460bf622
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72262851"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931668"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Azure Container Instances Azure Container Registry ile kimlik doğrulama
 
@@ -33,7 +33,7 @@ Hizmet sorumluları, kayıt defteri [Yönetici kullanıcısı](container-registr
 
 ## <a name="authenticate-using-the-service-principal"></a>Hizmet sorumlusunu kullanarak kimlik doğrulama
 
-Hizmet sorumlusu kullanarak Azure Container Instances bir kapsayıcı başlatmak için, `--registry-username` için KIMLIĞINI ve `--registry-password` parolasını belirtin.
+Hizmet sorumlusu kullanarak Azure Container Instances bir kapsayıcı başlatmak için `--registry-username`KIMLIĞINI ve `--registry-password`parolasını belirtin.
 
 ```azurecli-interactive
 az container create \

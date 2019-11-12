@@ -1,5 +1,5 @@
 ---
-title: Öğretici-bulut Azure Container Registry görevlerinde kapsayıcı görüntüleri oluşturma
+title: Öğretici-hızlı kapsayıcı görüntüsü oluşturma-Azure Container Registry görevler
 description: Bu öğreticide, Azure’da Azure Container Registry Görevleri (ACR Görevleri) ile bir Docker kapsayıcı görüntüsü derleme, ardından bu görüntüyü Azure Container Instances’a dağıtma hakkında bilgi edineceksiniz.
 services: container-registry
 author: dlepow
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0b62ef1fa05138b1d5c0a3aacb570f5d577176fe
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057490"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931390"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Öğretici: Azure Container Registry görevlerle bulutta kapsayıcı görüntüleri oluşturun ve dağıtın
 
@@ -207,7 +207,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Yukarıdaki komutta bağımsız değişken hizmet sorumlusunu, BT 'nin kayıt defterine yalnızca çekme erişimi veren *acrpull* rolüyle yapılandırır. `--role` Hem itme hem de çekme erişimi sağlamak için `--role` bağımsız değişkenini *acrpush*olarak değiştirin.
+Yukarıdaki komutta `--role` bağımsız değişkeni, hizmet sorumlusunu, BT 'nin kayıt defterine yalnızca çekme erişimi veren *acrpull* rolüyle yapılandırır. Hem itme hem de çekme erişimi sağlamak için `--role` bağımsız değişkenini *acrpush*olarak değiştirin.
 
 Ardından, hizmet sorumlusunun *uygulama kimliğini* kasada depolayın. Bu değer, kimlik doğrulaması için Azure Container Registry’ye geçirdiğiniz **kullanıcı adıdır**:
 
@@ -221,8 +221,8 @@ az keyvault secret set \
 
 Bir Azure Anahtar Kasası oluşturdunuz ve içinde iki gizli dizi depoladınız:
 
-* `$ACR_NAME-pull-usr`: Kapsayıcı kayıt defteri **Kullanıcı adı**olarak kullanılacak HIZMET sorumlusu kimliği.
-* `$ACR_NAME-pull-pwd`: Kapsayıcı kayıt defteri **parolası**olarak kullanılmak üzere hizmet sorumlusu parolası.
+* `$ACR_NAME-pull-usr`: Kapsayıcı kayıt defterinin **kullanıcı adı** olarak kullanılacak hizmet sorumlusu kimliği.
+* `$ACR_NAME-pull-pwd`: Kapsayıcı kayıt defterinin **parolası** olarak kullanılacak hizmet sorumlusu parolası.
 
 Artık siz veya uygulamalarınız ve hizmetleriniz kayıt defterinden görüntüleri çektiğinde bu gizli dizilere ada göre başvurabilirsiniz.
 

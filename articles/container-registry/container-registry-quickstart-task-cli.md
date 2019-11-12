@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-Azure Container Registry bir kapsayıcı görüntüsü oluşturun ve çalıştırın
+title: Hızlı başlangıç-kapsayıcı görüntüsünü derleme & çalıştırma Azure Container Registry
 description: Bulutta bir kapsayıcı görüntüsü derlemek ve çalıştırmak için Azure Container Registry ile görevleri hızlıca çalıştırın.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: e5e02d8194f9164a03bb27d932df45d91486c518
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b97249aa61916975fa641d4620179be33e1d5276
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310639"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931547"
 ---
-# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Hızlı Başlangıç: Azure Container Registry görevleri kullanarak kapsayıcı görüntüsü oluşturma ve çalıştırma
+# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Hızlı başlangıç: Azure Container Registry görevleri kullanarak kapsayıcı görüntüsü oluşturma ve çalıştırma
 
 Bu hızlı başlangıçta, Azure 'da bir Docker kapsayıcı görüntüsünü hızlı bir şekilde oluşturmak, göndermek ve çalıştırmak için Azure Container Registry görev komutlarını kullanarak "iç döngü" geliştirme döngüsünün buluta nasıl boşalmasını istediğinizi gösterir. [ACR görevleri][container-registry-tasks-overview] kapsayıcı görüntülerini kapsayıcı yaşam döngüsü genelinde yönetmenize ve değiştirmenize yardımcı olmak üzere Azure Container Registry içindeki bir özellik paketidir. 
 
@@ -56,7 +56,7 @@ Bu örnek, Azure Container Registry hakkında bilgi edinmek için uygun maliyetl
 echo FROM hello-world > Dockerfile
 ```
 
-Görüntüyü derlemek için [az ACR Build][az-acr-build] komutunu çalıştırın. Başarıyla derlendiğinde, görüntü kayıt defterinize gönderilir. Aşağıdaki örnek `sample/hello-world:v1` görüntüyü iter. Komutun `.` sonundaki, dockerfile dosyasının konumunu, bu durumda geçerli dizin olarak belirler.
+Görüntüyü derlemek için [az ACR Build][az-acr-build] komutunu çalıştırın. Başarıyla derlendiğinde, görüntü kayıt defterinize gönderilir. Aşağıdaki örnek `sample/hello-world:v1` görüntüsünü iter. Komutun sonundaki `.`, bu durumda geçerli dizin olan Dockerfile konumunu ayarlar.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
@@ -118,14 +118,14 @@ Run ID: ca8 was successful after 10s
 
 Şimdi oluşturduğunuz ve Kayıt defterinize gönderdiğiniz görüntüyü hızlıca çalıştırın. Kapsayıcı geliştirme iş akışınızda bu, görüntüyü dağıtmadan önce bir doğrulama adımı olabilir.
 
-Tek bir adım için aşağıdaki içeriğe sahip bir yerel çalışma dizininde *Hızlı çalıştır. YAML* bir dosya oluşturun. *\<\>Acrloginserver*için kayıt defterinizin oturum açma sunucusu adını değiştirin. Oturum açma sunucusu adı  *\<kayıt defteri-\>adı. azurecr.io* (tümü küçük harf) biçimindedir (örneğin, *mycontainerregistry008.azurecr.io*). Bu örnekte, `sample/hello-world:v1` önceki bölümde görüntüsünü oluşturduğunuzu ve gönderdiniz varsayılmaktadır:
+Tek bir adım için aşağıdaki içeriğe sahip bir yerel çalışma dizininde *Hızlı çalıştır. YAML* bir dosya oluşturun. *\<acrLoginServer\>* için kayıt defterinizin oturum açma sunucusu adını değiştirin. Oturum açma sunucusu adı *\<kayıt defteri-adı\>. azurecr.io* (tümü küçük harf) biçimindedir (örneğin, *mycontainerregistry008.azurecr.io*). Bu örnekte, önceki bölümde `sample/hello-world:v1` görüntüsünü oluşturduğunuzu ve gönderdiniz varsayılmaktadır:
 
 ```yml
 steps:
   - cmd: <acrLoginServer>/sample/hello-world:v1
 ```
 
-Bu örnekteki `cmd` `docker run` `docker` adım kapsayıcıyı varsayılan yapılandırmasında çalıştırır, ancak ek parametreleri ve hatta diğer komutları destekler. `cmd`
+Bu örnekteki `cmd` adımı, kapsayıcıyı varsayılan yapılandırmasında çalıştırır, ancak `cmd` ek `docker run` parametreleri ve hatta diğer `docker` komutlarını destekler.
 
 Kapsayıcıyı aşağıdaki komutla çalıştırın:
 

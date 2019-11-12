@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4276a713e62f96cc5340fc7be0e8391939d32342
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5104e6e037341c41a032f80287c6d56d17361d4c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497313"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932191"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Bulutta otomatik makine öğrenimi ile modelleri eğitme
 
@@ -103,7 +103,7 @@ y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
 
 ## <a name="create-run-configuration"></a>Çalıştırma yapılandırması oluştur
 
-Get_Data. Kopyala betiğinin bağımlılıklarını kullanılabilir hale getirmek için tanımlı `CondaDependencies`sahip bir `RunConfiguration` nesnesi tanımlayın. Bu nesneyi `AutoMLConfig``run_configuration` parametresi için kullanın.
+Bağımlılıkları get_data. Kopyala betiği için kullanılabilir hale getirmek için, tanımlı `CondaDependencies`sahip bir `RunConfiguration` nesnesi tanımlayın. Bu nesneyi `AutoMLConfig``run_configuration` parametresi için kullanın.
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -148,24 +148,6 @@ automl_config = AutoMLConfig(task='classification',
                              X = X,
                              y = y,
                              **automl_settings,
-                             )
-```
-
-### <a name="enable-model-explanations"></a>Model açıklamalarını etkinleştir
-
-`AutoMLConfig` oluşturucusunda isteğe bağlı `model_explainability` parametresini ayarlayın. Ayrıca, model explainability özelliğini kullanmak için bir doğrulama veri çerçevesi nesnesi bir parametre olarak geçirilmelidir `X_valid`.
-
-```python
-automl_config = AutoMLConfig(task='classification',
-                             debug_log='automl_errors.log',
-                             path=project_folder,
-                             compute_target=compute_target,
-                             run_configuration=run_config,
-                             X = X,
-                             y = y,
-                             **automl_settings,
-                             model_explainability=True,
-                             X_valid=X_test
                              )
 ```
 
@@ -237,59 +219,13 @@ remote_run.get_portal_url()
 
 Çalışma alanınızda aynı bilgiler bulunur.  Bu sonuçlar hakkında daha fazla bilgi edinmek için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md).
 
-### <a name="view-logs"></a>Günlükleri görüntüleme
-
-DSVM 'de `/tmp/azureml_run/{iterationid}/azureml-logs`altında günlükleri bulun.
-
-## <a name="explain"></a>En iyi model açıklaması
-
-Model açıklama verilerinin alınması, arka uçta nelerin çalıştığını artırmak için modeller hakkındaki ayrıntılı bilgileri görmenizi sağlar. Bu örnekte, model açıklamalarını yalnızca en uygun model için çalıştırırsınız. İşlem hattındaki tüm modeller için çalıştırırsanız, bu önemli bir çalışma süresine neden olur. Model açıklama bilgileri şunları içerir:
-
-* shap_values: Shap lib tarafından oluşturulan açıklama bilgileri.
-* expected_values: X_train verisi kümesine uygulanan modelin beklenen değeri.
-* overall_summary: model düzeyi özellik önem değerleri azalan düzende sıralanır.
-* overall_imp: Özellik adları overall_summary ile aynı sırada sıralanır.
-* per_class_summary: sınıf düzeyi özellik önem değerleri azalan düzende sıralanır. Yalnızca sınıflandırma durumu için kullanılabilir.
-* per_class_imp: Özellik adları per_class_summary ile aynı sırada sıralanır. Yalnızca sınıflandırma durumu için kullanılabilir.
-
-Yinelemelerinizin en iyi işlem hattını seçmek için aşağıdaki kodu kullanın. `get_output` yöntemi, en iyi çalışmayı ve en son çağrıya yönelik olarak uygun modeli döndürür.
-
-```python
-best_run, fitted_model = remote_run.get_output()
-```
-
-`retrieve_model_explanation` işlevini içeri aktarın ve en iyi modelde çalıştırın.
-
-```python
-from azureml.train.automl.automlexplainer import retrieve_model_explanation
-
-shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-    retrieve_model_explanation(best_run)
-```
-
-Görüntülemek istediğiniz `best_run` açıklama değişkenlerinin sonuçlarını yazdırın.
-
-```python
-print(overall_summary)
-print(overall_imp)
-print(per_class_summary)
-print(per_class_imp)
-```
-
-`best_run` açıklaması Özet değişkenlerinin yazdırılması aşağıdaki çıkışa neden olur.
-
-![Model explainability konsol çıkışı](./media/how-to-auto-train-remote/expl-print.png)
-
-Ayrıca, özellik önemini pencere öğesi kullanıcı arabiriminden veya [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda görselleştirebilirsiniz. 
-
-![Model explainability Kullanıcı arabirimi](./media/how-to-auto-train-remote/model-exp.png)
-
 ## <a name="example"></a>Örnek
 
-[How-to-Use-azureml/Automated-Machine-Learning/Remote-amlcompute/Auto-ml-Remote-amlcompute. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) Not defteri, bu makaledeki kavramları gösterir.
+Aşağıdaki [Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) , bu makaledeki kavramları göstermektedir.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Otomatik eğitime yönelik ayarları yapılandırmayı](how-to-configure-auto-train.md)öğrenin.
+* [Otomatik eğitime yönelik ayarları yapılandırmayı](how-to-configure-auto-train.md)öğrenin.
+* Otomatik ML denemeleri ' de model yorumlu özelliklerinin [nasıl](how-to-machine-learning-interpretability-automl.md) etkinleştirilebilirliği bölümüne bakın.

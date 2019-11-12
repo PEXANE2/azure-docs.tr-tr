@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 057037807a75e50eb2305bfab19d1fcff7fe77ce
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: efd294910531509d736dbda274406bd7c801c124
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889603"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931211"
 ---
 # <a name="references"></a>Başvurular
 
@@ -36,14 +36,14 @@ Bu, Farmtts veri hub 'ında tüm nesnelerin/kaynakların bir özetidir:
 Çiftlik | Grup, Farmtts sistemi içinde ilgilendiğiniz fiziksel bir konuma karşılık gelir. Her grubun bir grup adı ve benzersiz bir grup KIMLIĞI vardır.
 --- | ---|
 Cihaz  | Cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir. Her cihazın benzersiz bir cihaz KIMLIĞI vardır. Cihaz genellikle Grup KIMLIĞI olan bir gruba sağlanır.
-deviceModel  | DeviceModel, Cihazın üreticisi, ağ geçidi ya da düğüm gibi verilerin meta verilerine karşılık gelir.
+DeviceModel  | DeviceModel, Cihazın üreticisi, ağ geçidi ya da düğüm gibi verilerin meta verilerine karşılık gelir.
 Algılayıcısı  | Algılayıcı, değerleri kaydeden fiziksel bir sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.
 SensorModel  | SensorModel, üreticinin üreticisi, bir algılayıcı türü olan analog veya dijital, ortam sıcaklığı, basınç vb. gibi sensörin meta verilerine karşılık gelir.
 Telemetri  | Telemetri, belirli bir algılayıcı ve zaman aralığı için telemetri iletilerini okuma yeteneği sağlar.
 İş  | İş, istenen çıktıyı almak için Farmtempts sisteminde yürütülen herhangi bir etkinlik iş akışına karşılık gelir. Her iş bir iş KIMLIĞI ve iş türü ile ilişkilendirilir.
 JobType  | JobType, sistem tarafından desteklenen farklı iş türlerine karşılık gelir. Bu, sistem tanımlı & Kullanıcı tanımlı iş türlerini içerir.
 ExtendedType  | ExtendedType, sistem & sistemdeki kullanıcı tanımlı türlerin listesine karşılık gelir. Bu, Farmcts sisteminde yeni bir algılayıcı veya sahne ya da manzara türü kurulumuna yardımcı olur.
-Partner  | İş ortağı, Farmfor için sensörler/Imagery tümleştirme ortağına karşılık gelir
+İş Ortağı  | İş ortağı, Farmfor için sensörler/Imagery tümleştirme ortağına karşılık gelir
 HC  | Sahne, bir grup bağlamında oluşturulan herhangi bir çıkışa karşılık gelir. Her sahnenin, onunla ilişkili bir sahne KIMLIĞI, sahne kaynağı, sahne türü ve Grup KIMLIĞI vardır. Her sahnenin KIMLIĞI, kendisiyle ilişkili birden fazla sahne dosyasına sahip olabilir.
 Manzara dosyası |Manzara, tek bir sahne için oluşturulan tüm dosyalara karşılık gelir. Tek bir sahne kimliği ile ilişkili birden fazla manzara kimliği olabilir.
 Kural  |Kural, gruba ilişkin verilerin bir uyarının tetiklenmesi için bir koşula karşılık gelir. Her kural grubun verileri bağlamında olacaktır.
@@ -85,7 +85,7 @@ API hizmetinin URL 'SI, veri hub URL 'SI https://\<yourdatahub-Web sitesi-adı >
 
 Aşağıdaki örnek istek, cihazların listesini almak için gereklidir:
 
-```azurepowershell-interactive
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
@@ -93,7 +93,7 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-T
 
 Aşağıdaki örnek istek bir cihaz oluşturmaktır (Bu, istek gövdesi ile bir JSON girişi olur).
 
-```json
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -120,25 +120,25 @@ Azure Farmtempts veri merkezi API 'SI, standart HTTP hatalarını döndürür. E
 
 Standart HTTP hatalarına ek olarak, Azure Farmtts veri merkezi API 'Leri de iç hataları aşağıdaki biçimde döndürür:
 
-    ```
+```json
     {
       "message": "<More information on the error>",
       "status": "<error code>”,
       "code": "<InternalErrorCode>",
       "moreInfo": "<Details of the error>"
     }
-    ```
+```
 
 Örnek: bir grup oluştururken, giriş yükünde zorunlu bir "Name" alanı belirtilmedi. Ortaya çıkan hata iletisi şöyle olacaktır:
 
-    ```json
+ ```json    
     {
       "message": "Model validation failed",
       "status": 400,
       "code": "ModelValidationFailed",
       "moreInfo": "[\"The Name field is required.\"]"
     }
-    ```
+  ```
 
 ## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Azure Active Directory kullanıcılara veya uygulama kayıtlarını ekleme
 

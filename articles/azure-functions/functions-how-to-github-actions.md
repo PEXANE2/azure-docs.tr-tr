@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 483ac9380fa8d58f294112cb6c80e0393fa01589
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 486033ef4120d721458add7f23cdf9b78a44a388
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028984"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928344"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub eylemini kullanarak sürekli teslim
 
@@ -33,6 +33,9 @@ Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır:
 | **Derlemeyi** | <ol><li>Ortamı ayarlayın.</li><li>İşlev uygulamasını oluşturun.</li></ol> |
 | **Dağıtma** | <ol><li>İşlev uygulamasını dağıtın.</li></ol>|
 
+> [!NOTE]
+> Kimlik doğrulaması için Yayımlama profili kullanmaya karar verirseniz bir hizmet sorumlusu oluşturmanız gerekmez.
+
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
 [Azure CLI](/cli/azure/)'de [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com) kullanarak veya **deneyin** düğmesini seçerek çalıştırabilirsiniz.
@@ -42,9 +45,6 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 ```
 
 Bu örnekte, kaynak içindeki yer tutucuları abonelik KIMLIĞINIZ, kaynak grubunuz ve işlev uygulaması adıyla değiştirin. Çıktı, işlev uygulamanıza erişim sağlayan rol atama kimlik bilgileridir. GitHub 'dan kimlik doğrulamak için kullanabileceğiniz bu JSON nesnesini kopyalayın.
-
-> [!NOTE]
-> Kimlik doğrulaması için Yayımlama profili kullanmaya karar verirseniz bir hizmet sorumlusu oluşturmanız gerekmez.
 
 > [!IMPORTANT]
 > En az erişim sağlamak her zaman iyi bir uygulamadır. Bu nedenle, önceki örnekteki kapsamın tüm kaynak grubu değil, belirli işlev uygulamasıyla sınırlı olması neden olur.
@@ -59,11 +59,11 @@ Dosyanın içeriğini kopyalayın.
 
 ## <a name="configure-the-github-secret"></a>GitHub gizliliğini yapılandırma
 
-1. [GitHub](https://github.com)'da deponuza gözatıp **ayarları** > **gizli**dizileri  >  ' ü seçerek**Yeni bir parola ekleyin**.
+1. [GitHub](https://github.com)'da deponuza gözatıp **Ayarlar** > **gizlilikler** ' ı seçin > **Yeni bir gizli dizi ekleyin**.
 
    ![Gizli dizi Ekle](media/functions-how-to-github-actions/add-secret.png)
 
-1. Daha sonra **gizli dizi Ekle**' yi seçerseniz, **ad** ve kopyalanmış komut **çıktısı için @no__t**-0 kullanın. Yayımlama profili kullanıyorsanız, **ad** için `SCM_CREDENTIALS` ve **değer**için dosya içeriği kullanın.
+1. **Ad** ve kopyalanmış komut **çıktısı için `AZURE_CREDENTIALS`** kullanın, daha sonra gizli dizi **Ekle**' yi seçin. Yayımlama profili kullanıyorsanız, **değerin** **adı** ve dosya içeriği için `SCM_CREDENTIALS` kullanın.
 
 GitHub artık Azure 'daki işlev uygulamanıza kimlik doğrulaması yapabilir.
 
@@ -206,7 +206,7 @@ Kodunuzu bir işlev uygulamasına dağıtmak için `Azure/functions-action` eyle
 |_**yuva adı**_ | Seçim Dağıtmak istediğiniz [dağıtım yuvasının](functions-deployment-slots.md) adı. Yuva, işlev uygulamanızda zaten tanımlanmış olmalıdır. |
 
 
-Aşağıdaki örnek @no__t 1 sürümünü kullanır-0:
+Aşağıdaki örnek `functions-action`1 sürümünü kullanır:
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -218,7 +218,7 @@ Aşağıdaki örnek @no__t 1 sürümünü kullanır-0:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tam bir Workflow. YAML 'yi görüntülemek için, adında `functionapp` olan [Azure GitHub Actions Workflow örnekleri](https://github.com/Azure/actions-workflow-samples) deposunda bulunan dosyalardan birine bakın. Bu örnekleri, iş akışınız için bir başlangıç noktası olarak kullanabilirsiniz.
+Tüm iş akışı. YAML 'yi görüntülemek için, ad içinde `functionapp` olan [Azure GitHub eylemleri iş akışı örnekleri](https://github.com/Azure/actions-workflow-samples) deposunda bulunan dosyalardan birine bakın. Bu örnekleri, iş akışınız için bir başlangıç noktası olarak kullanabilirsiniz.
 
 > [!div class="nextstepaction"]
 > [GitHub eylemleri hakkında daha fazla bilgi edinin](https://help.github.com/en/articles/about-github-actions)

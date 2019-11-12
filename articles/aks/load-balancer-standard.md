@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 8ebd91f8f02ad7eacd8440b34a31b78f5cac5741
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2d652b31c264d7b17fcf303564c327d09d416f9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472620"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929131"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde standart bir SKU yük dengeleyici kullanma
 
@@ -40,7 +40,7 @@ AKS küme hizmeti sorumlusu Ayrıca mevcut bir alt ağ veya kaynak grubu kullan�
 * AKS kümesinden giden trafiğe izin vermek için en az bir genel IP veya IP öneki gereklidir. Genel IP veya IP öneki Ayrıca, denetim düzlemi ve aracı düğümleri arasındaki bağlantıyı sürdürmek için ve önceki AKS sürümleriyle uyumluluğu sürdürmek için de gereklidir. *Standart* bir SKU yük dengeleyiciye sahip genel IP 'LERI veya IP öneklerini belirtmek için aşağıdaki seçenekleriniz vardır:
     * Kendi genel IP 'nizi sağlayın.
     * Kendi genel IP öneklerinizi sağlayın.
-    * AKS kümesinin, genellikle *Mc_* olarak adlandırılan aks kümesi olarak oluşturulan aynı kaynak grubunda bulunan çok sayıda *Standart* SKU genel IP 'sini oluşturmasına izin vermek için 100 kadar bir sayı belirtin. AKS, genel IP 'yi *Standart* SKU yük dengeleyicisine atar. Varsayılan olarak, genel IP, genel IP öneki veya IP sayısı belirtilmemişse, AKS kümesiyle aynı kaynak grubunda bir genel IP otomatik olarak oluşturulur. Ayrıca, genel adreslere izin vermeniz ve IP oluşturma ile ilgili herhangi bir Azure Ilkesinin oluşturulmasını önetmeniz gerekir.
+    * AKS kümesinin, genellikle başlangıçta *Mc_* olarak adlandırılan aks kümesi olarak oluşturulan aynı kaynak grubunda *Standart* SKU genel IP 'leri oluşturmasına izin vermek için en fazla 100 ' a kadar bir sayı belirtin. AKS, genel IP 'yi *Standart* SKU yük dengeleyicisine atar. Varsayılan olarak, genel IP, genel IP öneki veya IP sayısı belirtilmemişse, AKS kümesiyle aynı kaynak grubunda bir genel IP otomatik olarak oluşturulur. Ayrıca, genel adreslere izin vermeniz ve IP oluşturma ile ilgili herhangi bir Azure Ilkesinin oluşturulmasını önetmeniz gerekir.
 * Yük Dengeleyici için *Standart* SKU kullanırken, Kubernetes sürüm 1,13 veya üstünü kullanmanız gerekir.
 * Yük dengeleyici SKU 'SU tanımlama yalnızca bir AKS kümesi oluşturduğunuzda yapılabilir. Bir AKS kümesi oluşturulduktan sonra yük dengeleyici SKU 'sunu değiştiremezsiniz.
 * Tek bir kümede yalnızca bir yük dengeleyici SKU 'SU kullanabilirsiniz.
@@ -148,6 +148,25 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
+## <a name="show-the-outbound-rule-for-your-load-balancer"></a>Yük dengeleyiciniz için giden kuralı gösterme
+
+Yük dengeleyicide oluşturulan giden kuralı göstermek için [az Network lb Outbound-Rule listesini][az-network-lb-outbound-rule-list] kullanın ve aks kümenizin düğüm kaynak grubunu belirtin:
+
+```azurecli-interactive
+NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+az network lb outbound-rule list --resource-group $NODE_RG --lb-name kubernetes -o table
+```
+
+Önceki komutlarda yük dengeleyiciniz için giden kuralı listelenir, örneğin:
+
+```console
+AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name             Protocol    ProvisioningState    ResourceGroup
+------------------------  ----------------  ----------------------  ---------------  ----------  -------------------  -------------
+0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
+```
+
+Örnek çıktıda *AllocatedOutboundPorts* 0 ' dır. *AllocatedOutboundPorts* DEĞERI, SNAT bağlantı noktası ayırmanın arka uç havuz boyutuna göre otomatik atamaya geri dönmesi anlamına gelir. Daha fazla bilgi için bkz. Azure 'da [giden kuralları][azure-lb-outbound-rules] ve [giden bağlantıları][azure-lb-outbound-connections] Load Balancer.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Kubernetes Services [belgelerindeki][kubernetes-services]Kubernetes hizmetleri hakkında daha fazla bilgi edinin.
@@ -176,11 +195,14 @@ Kubernetes Services [belgelerindeki][kubernetes-services]Kubernetes hizmetleri h
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-group-create]: /cli/azure/group#az-group-create
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-list
 [az-network-public-ip-show]: /cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show
 [az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus
+[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
+[azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md

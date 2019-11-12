@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
-ms.openlocfilehash: bcf741e82e247a5b79a478ef1015a70cccb4d274
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c4d029de782ae408b83c265322a865db7b166c1e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899905"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928295"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Geliştirme, test ve üretimden telemetri ayırma
 
@@ -27,7 +27,7 @@ Web uygulamanız için Application Insights izlemeyi ayarlarken Microsoft Azure 
 Genellikle farklı senaryolarda ayrı kaynaklar veya tek bir paylaşılan kaynak kullanmayı tercih edersiniz:
 
 * Farklı, bağımsız uygulamalar-her uygulama için ayrı bir kaynak ve Ikey kullanın.
-* Birden çok bileşen veya bir iş uygulaması rolü-tüm bileşen uygulamaları için [tek bir paylaşılan kaynak](../../azure-monitor/app/app-map.md) kullanın. Telemetri, cloud_RoleName özelliğine göre filtrelenebilir veya bölümlenebilir.
+* Birden çok bileşen veya bir iş uygulaması rolü-tüm bileşen uygulamaları için [tek bir paylaşılan kaynak](../../azure-monitor/app/app-map.md) kullanın. Telemetri cloud_RoleName özelliğine göre filtrelenebilir veya kesimlenebilir.
 * Geliştirme, test ve yayın-' damga ' veya üretim aşamasında sistemin sürümleri için ayrı bir kaynak ve Ikey kullanın.
 * A | B testi-tek bir kaynak kullanın. Telemetrileri tanımlayan bir özelliği bir özellik eklemek için Telemetryınitializer oluşturun.
 
@@ -81,7 +81,7 @@ Farklı uygulama bileşenlerine veya aynı bileşenin farklı damgalar (gelişti
 
 Kaynağı oluşturmak birkaç saniye sürer. İşiniz bittiğinde bir uyarı görürsünüz.
 
-(Bir kaynağı otomatik olarak oluşturmak için bir [PowerShell betiği](../../azure-monitor/app/powershell-script-create-resource.md) yazabilirsiniz.)
+(Bir kaynağı otomatik olarak oluşturmak için bir [PowerShell betiği](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) yazabilirsiniz.)
 
 ### <a name="getting-the-instrumentation-key"></a>İzleme anahtarını alma
 İzleme anahtarı, oluşturduğunuz kaynağı tanımlar. 
@@ -134,7 +134,7 @@ Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
     MSBuild 'in sürüm numaraları oluşturmasına izin vermek için, AssemblyReference.cs içinde `1.0.*` gibi sürümü ayarlayın
 
 ## <a name="version-and-release-tracking"></a>Sürüm ve sürüm izleme
-Uygulama sürümünü izlemek için `buildinfo.config` dosyasının Microsoft Build Engine işleminiz tarafından oluşturulduğundan emin olun. .csproj dosyanızda şunları ekleyin:  
+Uygulama sürümünü izlemek için `buildinfo.config` dosyasının Microsoft Build Engine işleminiz tarafından oluşturulduğundan emin olun. `.csproj` dosyanızda şunu ekleyin:  
 
 ```XML
 
@@ -145,7 +145,7 @@ Uygulama sürümünü izlemek için `buildinfo.config` dosyasının Microsoft Bu
 
 Yapı bilgisi mevcut olduğunda Application Insights web modülü **Uygulama sürümünü** telemetrinin her bir öğesine bir özellik olarak ekler. Bu sayede, [tanılama aramaları](../../azure-monitor/app/diagnostic-search.md) gerçekleştirirken veya [ölçümleri keşfederken](../../azure-monitor/app/metrics-explorer.md) sürüme göre filtreleyebilirsiniz.
 
-Bununla birlikte, derleme sürüm numarasının Visual Studio’daki geliştirici derlemesi tarafından değil de yalnızca Microsoft Build Engine tarafından oluşturulduğunu fark edersiniz.
+Ancak, derleme sürüm numarasının Visual Studio 'daki geliştirici derlemesi tarafından değil, yalnızca Microsoft Build Engine tarafından oluşturulup oluşturulduğuna dikkat edin.
 
 ### <a name="release-annotations"></a>Sürüm ek açıklamaları
 Azure DevOps kullanıyorsanız, yeni bir sürüm yayınlayışınızda grafiklerinize [ek açıklama işaretleyicisi](../../azure-monitor/app/annotations.md) ekleyebilirsiniz. Aşağıdaki görüntüde bu işaretin nasıl göründüğü gösterilmiştir.

@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 203725ba109922a8704c0e31a6e61dc6eadf6bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 087f1d76aaab4b05425262e0c1fb87b168c99b95
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586638"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931229"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-linux"></a>Hızlı başlangıç: IoT Tak ve Kullan önizleme cihazı (Linux) oluşturmak için cihaz yetenek modeli kullanma
 
 Bir _cihaz yetenek modeli_ (DCM) IoT Tak ve kullan cihazının yeteneklerini açıklar. DCM, genellikle bir Ürün SKU 'SU ile ilişkilendirilir. DCM 'de tanımlanan yetenekler yeniden kullanılabilir arabirimler halinde düzenlenmiştir. Bir DCM 'den iskelet cihaz kodu oluşturabilirsiniz. Bu hızlı başlangıçta, DCM kullanarak IoT Tak ve Kullan cihazı oluşturmak için Ubuntu Linux VS Code nasıl kullanacağınızı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç, masaüstü ortamıyla Ubuntu Linux kullandığınızı varsayar. Bu öğreticideki adımlar Ubuntu 18,04 kullanılarak test edilmiştir.
 
@@ -57,11 +57,11 @@ Bir Microsoft iş veya okul hesabıyla oturum açtığınızda veya varsa Micros
 
 ## <a name="prepare-an-iot-hub"></a>IoT Hub 'ı hazırlama
 
-Bu hızlı başlangıcı tamamlayabilmeniz için Azure aboneliğinizde bir Azure IoT Hub 'ınız olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Ayrıca, bu hızlı başlangıcı tamamlayabilmeniz için Azure aboneliğinizde bir Azure IoT Hub 'ınız olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. IoT Hub 'ınız yoksa aşağıdan bir tane oluşturmak için adımlar olacaktır.
 
 Azure CLı 'yi yerel olarak kullanıyorsanız, `az` sürümü **2.0.75** veya üzeri olmalıdır ve Azure Cloud Shell en son sürümü kullanır. Makinenizde yüklü sürümü denetlemek için `az --version` komutunu kullanın.
 
-Azure CLı için Microsoft Azure IoT uzantısını ekleyin:
+Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -69,11 +69,11 @@ az extension add --name azure-cli-iot-ext
 
 Bu hızlı başlangıçtaki adımlar, uzantının **0.8.5** veya üzeri bir sürümünü gerektirir. Yüklediğiniz sürümü ve gerekirse güncelleştirilecek `az extension update` komutunu denetlemek için `az extension list` komutunu kullanın.
 
-IoT Hub 'ınız yoksa, aşağıdaki komutları kullanarak bir tane oluşturun ve `{YourIoTHubName}` istediğiniz benzersiz bir adla değiştirin. Bu komutları yerel olarak çalıştırıyorsanız, önce `az login`kullanarak Azure aboneliğinizde oturum açın. Bu komutları Azure Cloud Shell 'de çalıştırıyorsanız, otomatik olarak oturum açtınız:
+IoT Hub 'ınız yoksa, aşağıdaki komutları kullanarak bir tane oluşturun ve `<YourIoTHubName>` istediğiniz benzersiz bir adla değiştirin. Bu komutları yerel olarak çalıştırıyorsanız, önce `az login`kullanarak Azure aboneliğinizde oturum açın. Bu komutları Azure Cloud Shell 'de çalıştırıyorsanız, otomatik olarak oturum açtınız:
 
   ```azurecli-interactive
   az group create --name pnpquickstarts_rg --location centralus
-  az iot hub create --name {YourIoTHubName} \
+  az iot hub create --name <YourIoTHubName> \
     --resource-group pnpquickstarts_rg --sku S1
   ```
 
@@ -82,23 +82,23 @@ IoT Hub 'ınız yoksa, aşağıdaki komutları kullanarak bir tane oluşturun ve
 > [!IMPORTANT]
 > Genel Önizleme sırasında IoT Tak ve Kullan özellikleri yalnızca **Orta ABD**, **Kuzey Avrupa**ve **Japonya Doğu** bölgelerinde oluşturulan IoT Hub 'larında kullanılabilir.
 
-IoT Hub 'ınızda `mypnpdevice` adlı bir cihaz için bir cihaz kimliği oluşturmak üzere aşağıdaki komutu çalıştırın. `{YourIoTHubName}` yer tutucusunu IoT Hub 'ınızın adıyla değiştirin:
+IoT Hub 'ınızda bir cihaz kimliği oluşturmak için aşağıdaki komutu çalıştırın. **Youriothubname** ve **yourdevice** yer tutucuları gerçek adlarınızla değiştirin.
 
 ```azurecli-interactive
-az iot hub device-identity create --hub-name {YourIoTHubName} --device-id mypnpdevice
+az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
 ```
 
-Yeni kaydettiğiniz cihazın _Cihaz bağlantı dizesini_ almak için aşağıdaki komutları çalıştırın. Bu bağlantı dizesinin daha sonra bu hızlı başlangıçta olması gerekir:
+Yeni kaydettiğiniz cihazın _Cihaz bağlantı dizesini_ almak için aşağıdaki komutları çalıştırın.
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id mypnpdevice --output table
+az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
 ```
 
 ## <a name="author-your-model"></a>Modelinizi yazma
 
 Bu hızlı başlangıçta, var olan bir örnek cihaz yetenek modeli ve ilişkili arabirimleri kullanırsınız.
 
-1. Giriş dizininizde bir `pnp_app` dizini oluşturun. Bu klasörü cihaz modeli dosyaları ve cihaz kodu saplaması için kullanırsınız.
+1. Yerel sürücünüzde bir `pnp_app` dizini oluşturun. Bu klasörü cihaz modeli dosyaları ve cihaz kodu saplaması için kullanırsınız.
 
     ```bash
     cd ~
@@ -121,16 +121,16 @@ Bu hızlı başlangıçta, var olan bir örnek cihaz yetenek modeli ve ilişkili
 
 ## <a name="generate-the-c-code-stub"></a>C kodu saplaması oluşturma
 
-Artık bir DCM ve ilişkili arabirimlerinizin olduğu, modeli uygulayan Cihaz kodunu oluşturabilirsiniz. VS Code 'da C kodu saplaması oluşturmak için:
+Artık bir DCM ve ilişkili arabirimlerinizin olduğuna göre, modeli uygulayan Cihaz kodunu oluşturabilirsiniz. VS Code ' de C kodu saplaması oluşturmak için:
 
-1. VS Code 'da `pnp_app` klasörü açıkken, **CTRL + SHIFT + P** tuşlarına basarak komut paletini açın, **IoT Tak ve kullan**girin ve **cihaz kodu saplama oluştur**' u seçin.
+1. VS Code `pnp_app` klasörü açıkken, **Ctrl + Shift + P** tuşlarına basarak komut paletini açın, **IoT Tak ve kullan**girin ve **cihaz kodu saplama oluştur**' u seçin.
 
     > [!NOTE]
-    > IoT Tak ve Kullan kod Oluşturucu yardımcı programını ilk kez kullandığınızda, indirmesi birkaç saniye sürer.
+    > IoT Tak ve Kullan kod Oluşturucu yardımcı programını ilk kez kullandığınızda, otomatik olarak indirilip yüklenmesi birkaç saniye sürer.
 
 1. Cihaz kodu saplaması oluşturmak için kullanılacak **Sampledevice. capabilitymodel. JSON** dosyasını seçin.
 
-1. **Sample_device**proje adını girin, cihaz uygulamanızın adı olacaktır.
+1. **Sample_device**proje adını girin. Bu, cihaz uygulamanızın adı olacaktır.
 
 1. Diliniz olarak **ANSI C** 'yi seçin.
 
@@ -138,9 +138,9 @@ Artık bir DCM ve ilişkili arabirimlerinizin olduğu, modeli uygulayan Cihaz ko
 
 1. **Linux üzerinde CMake projesini** proje şablonunuz olarak seçin.
 
-1. SDK 'yı eklemenin yolu olarak **kaynak kodu aracılığıyla** seçeneğini belirleyin.
+1. Cihaz SDK 'sını dahil etmek için **kaynak kodu aracılığıyla** seçim yapın.
 
-1. VS Code, oluşturulan cihaz kodu saplama dosyaları ile yeni bir pencere açar.
+1. **Sample_device** adlı yeni bir klasör, DCM dosyasıyla aynı konumda oluşturulur ve içinde oluşturulan cihaz kodu saplama dosyalarıdır. VS Code, bunları göstermek için yeni bir pencere açar.
     ![cihaz kodu](media/quickstart-create-pnp-device-linux/device-code.png)
 
 ## <a name="build-and-run-the-code"></a>Kodu derleyin ve çalıştırın
@@ -154,7 +154,7 @@ Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK kaynak kodunu kul
     git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
     ```
 
-1. **Sample_device** uygulaması Için bir **CMake** derleme klasörü oluşturun:
+1. **Sample_device** uygulaması Için **CMake** derleme klasörü oluşturun:
 
     ```bash
     cd ~/pnp_app/sample_device
@@ -173,7 +173,7 @@ Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK kaynak kodunu kul
 
     ```sh
     cd ~/pnp_app/sample_device/cmake
-    ./sample_device "{IoT Hub device connection string}"
+    ./sample_device "<device connection string>"
     ```
 
 1. Cihaz uygulaması IoT Hub veri göndermeye başlar.
@@ -207,13 +207,13 @@ Cihaz istemcisi örneği başladıktan sonra, Azure CLı ile çalışıp çalı�
 Örnek cihazın gönderdiği Telemetriyi görüntülemek için aşağıdaki komutu kullanın. Çıktıda bir telemetri görmeniz için bir dakika veya iki dakika beklemeniz gerekebilir:
 
 ```azurecli-interactive
-az iot dt monitor-events --hub-name {your IoT hub} --device-id mypnpdevice
+az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDevice>
 ```
 
 Cihaz tarafından gönderilen tüm özellikleri görüntülemek için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
-az iot dt list-properties --device-id mypnpdevice --hub-name {Your IoT hub name} --source private --repo-login "{Your company model repository connection string}"
+az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<Your company model repository connection string>"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -223,4 +223,4 @@ Bu hızlı başlangıçta, DCM kullanarak IoT Tak ve Kullan cihazı oluşturmay�
 DCMs hakkında daha fazla bilgi edinmek ve kendi modellerinizi oluşturmak için öğreticiye geçin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Visual Studio Code kullanarak cihaz yetenek modeli testi oluşturma](tutorial-pnp-visual-studio-code.md)
+> [Öğretici: Visual Studio Code kullanarak cihaz yetenek modeli oluşturma ve test etme](tutorial-pnp-visual-studio-code.md)

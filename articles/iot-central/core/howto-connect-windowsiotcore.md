@@ -1,5 +1,5 @@
 ---
-title: Windows IoT çekirdek cihazını Azure IoT Central uygulamanıza bağlama | Microsoft Docs
+title: Windows IoT Core 'ı Azure IoT Central uygulamanıza bağlama | Microsoft Docs
 description: Bir cihaz geliştiricisi olarak, bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlamayı öğrenin.
 author: miriambrus
 ms.author: miriamb
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d880130e114b2bd3e4f978c2ae3fc7bacf0648c4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953908"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930202"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT çekirdek cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -29,7 +29,7 @@ Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
 - Windows 10 IoT Core işletim sistemini çalıştıran bir cihaz. Daha fazla bilgi için bkz. [Windows 10 IoT çekirdek cihazınızı ayarlama](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
-- [Node. js](https://nodejs.org/) sürüm 8.0.0 veya üzeri yüklü bir geliştirme makinesi. Sürümünüzü denetlemek için komut satırında `node --version` ' yı çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
+- [Node. js](https://nodejs.org/) sürüm 8.0.0 veya üzeri yüklü bir geliştirme makinesi. Sürümünüzü denetlemek için komut satırında `node --version` çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
 
 ## <a name="the-sample-devkits-application"></a>Örnek Devkits uygulaması
 
@@ -90,7 +90,7 @@ Birkaç dakika sonra, IoT Central uygulamanızda Telemetriyi izleyebilirsiniz.
 [Windows cihaz portalı](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) , cihazınızın sorunlarını gidermek için kullanabileceğiniz araçları içerir:
 
 - **Apps Manager** sayfası, cihazınızda çalışan uygulamaları denetlemenize olanak tanır.
-- Cihazınıza bağlı bir monitörünüz yoksa, cihazınızdaki ekran görüntülerini yakalamak için **cihaz ayarları** sayfasını kullanabilirsiniz. Örnek:
+- Cihazınıza bağlı bir monitörünüz yoksa, cihazınızdaki ekran görüntülerini yakalamak için **cihaz ayarları** sayfasını kullanabilirsiniz. Örneğin:
 
     ![Uygulama ekran görüntüsü](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
