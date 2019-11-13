@@ -307,8 +307,8 @@
               href: concepts-gating-overview.md
             - name: Sentetik teknoloji dağıtımı
               href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: Özel Ses için saydamlık notu
-              href: 'https://aka.ms/neural-tts-transparency-note'
+            - name: Seslendiren kişinin açıklaması
+              href: 'https://aka.ms/disclosure-voice-talent'
             - name: Tasarım yönergelerini açıklama
               href: concepts-disclosure-guidelines.md
             - name: Tasarım desenlerini açıklama
