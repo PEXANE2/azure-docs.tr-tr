@@ -35,6 +35,8 @@
       items:
         - name: HDInsight üzerindeki Apache Hadoop bileşenleri
           href: ./hdinsight-component-versioning.md
+        - name: Yüksek kullanılabilirlik bileşenleri
+          href: ./hdinsight-high-availability-components.md
         - name: HDInsight’ta makine öğrenimi
           href: ./hdinsight-machine-learning-overview.md
         - name: HDInsight’ta ölçeğe göre akış

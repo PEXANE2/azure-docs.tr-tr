@@ -1183,19 +1183,17 @@
               href: platform/autoscale-webhook-email.md
         - name: PowerShell
           items:
-            - name: Azure PowerShell örnekleri
+            - name: PowerShell ile yönetme
               href: platform/powershell-quickstart-samples.md
-            - name: PowerShell cmdlet'leri
+            - name: Uyarı oluşturma
+              href: app/powershell-alerts.md
+            - name: Log Analytics’i yönetme
               href: platform/powershell-workspace-configuration.md
-            - name: Uygulamalar
+            - name: Application Insights
               items:
-                - name: Create Application Insights kaynağı oluşturma
+                - name: Application Insights’ı yönetme
                   href: app/powershell.md
-                - name: Kaynak oluşturma
-                  href: app/powershell-script-create-resource.md
-                - name: Uyarı ayarlama
-                  href: app/powershell-alerts.md
-                - name: Azure tanılama verilerini alma
+                - name: Azure Cloud Services’ı yönetme
                   href: app/powershell-azure-diagnostics.md
         - name: Azure CLI örnekleri
           href: platform/cli-samples.md
