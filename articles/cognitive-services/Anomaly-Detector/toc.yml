@@ -62,6 +62,18 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
         - name: Node.js
           href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
+    - name: Teknik bloglar
+      items:
+        - name: Azure Anomali Algılayıcısı API’sine giriş
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
+        - name: SR-CNN algoritmasına genel bakış
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
+    - name: Tanıtım
+      items:
+        - name: Etkileşimli tanıtım
+          href: 'https://aka.ms/adDemo'
+        - name: Jupyter Notebook hakkında
+          href: 'https://aka.ms/adNotebook'
     - name: KDD 2019’daki SR-CNN ile ilgili makale
       href: 'https://arxiv.org/abs/1906.03821'
 - name: Kaynaklar

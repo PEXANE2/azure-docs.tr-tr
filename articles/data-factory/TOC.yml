@@ -165,8 +165,8 @@
               href: concepts-data-flow-monitoring.md
             - name: Veri akışı performansı
               href: concepts-data-flow-performance.md
-            - name: Düğümleri taşıma
-              href: concepts-data-flow-move-nodes.md
+            - name: Yönetim grafı
+              href: concepts-data-flow-manage-graph.md
             - name: İfade oluşturucusu
               href: concepts-data-flow-expression-builder.md
             - name: İfade dili
@@ -616,6 +616,8 @@
           href: connector-troubleshoot-guide.md
         - name: Azure-SSIS IR Yönetimi Sorunlarını Giderme
           href: ssis-integration-runtime-management-troubleshoot.md
+        - name: Şirket içinde barındırılan IR sorunlarını giderme
+          href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS IR’de Paket Yürütme Sorunlarını Giderme
           href: ssis-integration-runtime-ssis-activity-faq.md
         - name: Veri Akışı Sorunlarını Giderme
@@ -646,6 +648,8 @@
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: Başvuru
   items:
+    - name: Veri akışı betiği
+      href: data-flow-script.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactory
     - name: PowerShell

@@ -166,9 +166,7 @@
       items:
         - name: Amaç ekleme
           href: luis-how-to-add-intents.md
-        - name: İfadeye varlık ekleme
-          href: luis-how-to-add-example-utterances.md
-        - name: İfade olmadan varlık ekleme
+        - name: Verileri ayıklamak için varlık ekleme
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: Önceden oluşturulmuş modelleri kullanma
@@ -306,6 +304,8 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Özel varlık başvurusu
       items:
+        - name: Makine tarafından öğrenilen varlık
+          href: reference-entity-machine-learned-entity.md
         - name: Bileşik varlık
           href: reference-entity-composite.md
         - name: Liste varlığı
@@ -316,6 +316,8 @@
           href: reference-entity-regular-expression.md
         - name: Basit varlık
           href: reference-entity-simple.md
+    - name: Desen söz dizimi
+      href: reference-pattern-syntax.md
     - name: Yaklaşım
       href: luis-reference-prebuilt-sentiment.md
     - name: Geliştirici kaynakları

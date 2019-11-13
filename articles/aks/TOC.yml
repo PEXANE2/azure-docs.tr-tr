@@ -128,8 +128,6 @@
               href: virtual-nodes-cli.md
             - name: Azure portalı kullanma
               href: virtual-nodes-portal.md
-        - name: Sanal Kubelet kullanma
-          href: virtual-kubelet.md
         - name: Küme Otomatik Ölçeklendiricisi kullanma
           href: cluster-autoscaler.md
         - name: Kullanılabilirlik Alanlarını kullanma

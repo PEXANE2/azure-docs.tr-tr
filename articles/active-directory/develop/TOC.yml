@@ -392,9 +392,9 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: Uygulama yapılandırması
           items:
-            - name: Azure portalı uygulama kayıtları eğitim kılavuzu (eski)
+            - name: Uygulama kayıtları’ndan (Eski) Azure portaldaki yeni Uygulama kayıtları deneyimine geçiş yapma
               href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-            - name: Uygulama Kayıt Portalı uygulama kayıt kılavuzu
+            - name: Uygulama Kaydı Portalı’ndan Azure portaldaki yeni Uygulama kayıtları deneyimine geçiş yapma
               href: app-registration-portal-training-guide.md
             - name: Tek kiracılı bir uygulamayı çok kiracılı uygulamaya dönüştürme
               href: howto-convert-app-to-be-multi-tenant.md

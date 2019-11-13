@@ -320,6 +320,9 @@
           href: active-directory-b2c-devquickstarts-graph-dotnet.md
     - name: Denetim günlükleri
       href: active-directory-b2c-reference-audit-logs.md
+    - name: Kullanıcıları yönetme - Azure portalı
+      href: manage-users-portal.md
+      displayName: 'create users, add users, delete users'
     - name: Güvenli API Management API’si
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
