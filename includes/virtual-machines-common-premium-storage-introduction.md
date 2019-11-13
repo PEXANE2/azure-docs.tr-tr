@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b1287f9c7e946c7b4d035b2ad6301947ffad3cea
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 86d03e980a233a60e4f3a6541462264dae0862af
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73524101"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005573"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
-
 Bu makalede, Azure Premium depolama kullanan yüksek performanslı uygulamalar oluşturmaya yönelik yönergeler sağlanmaktadır. Bu belgede sunulan yönergeleri, uygulamanız tarafından kullanılan teknolojiler için geçerli olan performans en iyi uygulamalarıyla birlikte kullanabilirsiniz. Yönergeleri göstermek için, bu belgenin tamamında bir örnek olarak Premium depolamada çalışan SQL Server kullandık.
 
 Bu makaledeki depolama katmanının performans senaryolarını ele alırken uygulama katmanını iyileştirmeniz gerekecektir. Örneğin, Azure Premium depolamada bir SharePoint grubu barındırıyorsanız, veritabanı sunucusunu iyileştirmek için bu makaledeki SQL Server örnekleri kullanabilirsiniz. Ayrıca, en iyi performansı almak için SharePoint grubunun Web sunucusunu ve uygulama sunucusunu iyileştirin.

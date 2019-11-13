@@ -1,6 +1,6 @@
 ---
 title: Rol atamaları oluşturma ve yönetme-Azure dijital TWINS | Microsoft Docs
-description: Azure dijital TWINS 'de rol atamaları oluşturma ve yönetme hakkında bilgi edinin.
+description: Azure dijital TWINS 'te rol atamaları oluşturma ve yönetme hakkında bilgi edinin.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 68714a06f72a522df0245d9c044bb6ff6557d52f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949819"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013989"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure dijital TWINS 'de rol atamaları oluşturma ve yönetme
 
@@ -36,13 +36,13 @@ Her rol ataması aşağıdaki tanıma uyar:
 
 Aşağıdaki tabloda her bir öznitelik açıklanmaktadır:
 
-| Öznitelik | Name | Gerekli | Tür | Açıklama |
+| Öznitelik | Ad | Gerekli | Tür | Açıklama |
 | --- | --- | --- | --- | --- |
-| RoleID | Rol tanımı tanımlayıcısı | Evet | Dize | İstenen rol atamasının benzersiz KIMLIĞI. Aşağıdaki sistem API 'sini veya İnceleme tablosunu sorgulayarak rol tanımlarını ve bunların tanımlayıcılarını bulun. |
-| Uzantının | Nesne tanımlayıcısı | Evet | Dize | Azure Active Directory KIMLIĞI, hizmet sorumlusu nesne KIMLIĞI veya etki alanı adı. Rol atamasının atandığı durum. Rol ataması, ilişkili türüne göre biçimlendirilmelidir. @No__t-0 Objectıdtype için objectID, `“@”` karakteriyle başlamalıdır. |
-| Objectıdtype | Nesne tanımlayıcı türü | Evet | Dize | Kullanılan nesne tanımlayıcısı türü. Aşağıdaki **desteklenen Objectıdtypes** bölümüne bakın. |
-| yol | Boşluk yolu | Evet | Dize | @No__t-0 nesnesine yönelik tam erişim yolu. Örnek `/{Guid}/{Guid}` ' dır. Bir tanımlayıcının tüm grafik için rol ataması gerekiyorsa, `"/"` belirtin. Bu karakter kökü belirler, ancak kullanımı önerilmez. Her zaman en az ayrıcalık Ilkesini izleyin. |
-| Değerine | Kiracı tanımlayıcısı | Olmadığına | Dize | Çoğu durumda, bir Azure Active Directory kiracı KIMLIĞI. @No__t-0 ve `TenantId` Objectıdtypes için izin verilmiyor. @No__t-0 ve `ServicePrincipalId` Objectıdtypes için gereklidir. DomainName Objectıdtype için isteğe bağlı. |
+| RoleID | Rol tanımı tanımlayıcısı | Yes | Dize | İstenen rol atamasının benzersiz KIMLIĞI. Aşağıdaki sistem API 'sini veya İnceleme tablosunu sorgulayarak rol tanımlarını ve bunların tanımlayıcılarını bulun. |
+| objectId | Nesne tanımlayıcısı | Yes | Dize | Azure Active Directory KIMLIĞI, hizmet sorumlusu nesne KIMLIĞI veya etki alanı adı. Rol atamasının atandığı durum. Rol ataması, ilişkili türüne göre biçimlendirilmelidir. `DomainName` Objectıdtype için ObjectID `“@”` karakteriyle başlamalıdır. |
+| Objectıdtype | Nesne tanımlayıcı türü | Yes | Dize | Kullanılan nesne tanımlayıcısı türü. Aşağıdaki **desteklenen Objectıdtypes** bölümüne bakın. |
+| yol | Boşluk yolu | Yes | Dize | `Space` nesnesine yönelik tam erişim yolu. `/{Guid}/{Guid}` bunun bir örneğidir. Bir tanımlayıcının tüm grafik için rol ataması gerekiyorsa, `"/"`belirtin. Bu karakter kökü belirler, ancak kullanımı önerilmez. Her zaman en az ayrıcalık Ilkesini izleyin. |
+| tenantId | Kiracı tanımlayıcısı | Değişir | Dize | Çoğu durumda, bir Azure Active Directory kiracı KIMLIĞI. `DeviceId` ve `TenantId` Objectıdtypes için izin verilmedi. `UserId` ve `ServicePrincipalId` Objectıdtypes için gereklidir. DomainName Objectıdtype için isteğe bağlı. |
 
 ### <a name="supported-role-definition-identifiers"></a>Desteklenen rol tanımı tanımlayıcıları
 
@@ -60,7 +60,7 @@ Daha önce **Objectıdtype** özniteliği tanıtılmıştı.
 
 Azure Digital TWINS, rol atamaları için tam *oluşturma*, *okuma*ve *silme* işlemlerini destekler. *Güncelleştirme* işlemleri, rol atamaları eklenerek, rol atamaları kaldırılarak veya rol atamalarının erişim Izni veren [uzamsal zeka grafik](./concepts-objectmodel-spatialgraph.md) düğümlerinin değiştirilerek işlenir.
 
-[![ rol atama uç noktaları](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
+[![rol atama uç noktaları](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
 
 Sağlanan Swagger başvuru belgeleri, kullanılabilir tüm API uç noktaları, istek işlemleri ve tanımlar hakkında daha fazla bilgi içerir.
 
@@ -112,7 +112,7 @@ Aşağıdaki JSON gövdesiyle:
 
 ### <a name="retrieve-all-roles"></a>Tüm rolleri al
 
-[![Sistem rolleri](media/security-roles/system.png)](media/security-roles/system.png#lightbox)
+[![sistem rolleri](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
 
 Tüm kullanılabilir rolleri (rol tanımları) listelemek için, kimliği doğrulanmış bir HTTP GET isteği oluşturun:
 
@@ -161,14 +161,14 @@ Belirli bir rol atamasını denetlemek için, kimliği doğrulanmış bir HTTP G
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **Parametre değeri** | **Gerekli** |  **Türüyle** |  **Açıklama** |
+| **Parametre değeri** | **Gerekli** |  **Tür** |  **Açıklama** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  Doğru | Dize |   UserID Objectıdtype için ObjectID. |
-| YOUR_PATH | Doğru | Dize |   Erişimi denetlemek için seçilen yol. |
-| YOUR_ACCESS_TYPE |  Doğru | Dize |   *Okuma*, *oluşturma*, *güncelleştirme*veya *silme* |
-| YOUR_RESOURCE_TYPE | Doğru | Dize |  *Cihaz*, *deviceblobmetadata*, *deviceextendedproperty*, *extendedpropertykey*, *ExtendedType*, *uç nokta*, *keystore*, *Matcher*, *ontology*, *Report*,  *RoleDefinition*, *algılayıcı*, *sensorextendedproperty*, *Space*, *spaceblobmetadata*, *spaceextendedproperty*, *SpaceResource*, *spaceroleatama*, *sistem* , *Uerdefinedfunction*, *User*, *Userblobmetadata*veya *userextendedproperty* |
+| YOUR_USER_ID |  True | Dize |   UserID Objectıdtype için ObjectID. |
+| YOUR_PATH | True | Dize |   Erişimi denetlemek için seçilen yol. |
+| YOUR_ACCESS_TYPE |  True | Dize |   *Okuma*, *oluşturma*, *güncelleştirme*veya *silme* |
+| YOUR_RESOURCE_TYPE | True | Dize |  *Cihaz*, *deviceblobmetadata*, *deviceextendedproperty*, *extendedpropertykey*, *ExtendedType*, *uç nokta*, *keystore*, *Matcher*, *ontology*, *Report*, *roledefinition*, *algılayıcı*, *sensorextendedproperty*, *Space*, *spaceblobmetadata*, *spaceextendedproperty*, *SpaceResource*, *spaceroleatama*, *sistem*,  *UerDefinedFunction*, *User*, *Userblobmetadata*veya *userextendedproperty* |
 
-Başarılı bir istek, belirtilen yol ve kaynak için erişim türünün kullanıcıya atanıp atanmadığını göstermek için bir Boole `true` veya `false` döndürür.
+Başarılı bir istek, belirtilen yol ve kaynak için erişim türünün kullanıcıya atanıp atanmadığını belirten bir Boole `true` veya `false` döndürür.
 
 ### <a name="get-role-assignments-by-path"></a>Yola göre rol atamaları al
 
@@ -178,7 +178,7 @@ Bir yolun tüm rol atamalarını almak için, kimliği doğrulanmış bir HTTP G
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| Değer | Değiştir |
+| Değer | Şununla değiştir |
 | --- | --- |
 | YOUR_PATH | Alanın tam yolu |
 
@@ -204,7 +204,7 @@ Bir alıcıdan bir izni iptal etmek için, kimliği doğrulanmış bir HTTP SILM
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 ```
 
-| Parametre | Değiştir |
+| Parametre | Şununla değiştir |
 | --- | --- |
 | *YOUR_ROLE_ASSIGNMENT_ID* | Kaldırılacak rol atamasının **kimliği** |
 

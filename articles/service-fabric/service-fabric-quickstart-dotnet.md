@@ -1,5 +1,5 @@
 ---
-title: Azure'da Service Fabric üzerinde bir .NET uygulaması oluşturma | Microsoft Docs
+title: Azure 'da Service Fabric hızlı bir şekilde bir .NET uygulaması oluşturun
 description: Bu hızlı başlangıçta, Service Fabric güvenilir hizmetler örnek uygulaması kullanarak Azure için .NET uygulaması oluşturursunuz.
 services: service-fabric
 documentationcenter: .net
@@ -15,14 +15,14 @@ ms.workload: azure-vs
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 02c77d1a34a4dec8732b5fa2edb4d7a55e079c28
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: dfc8890d58763bd193f6a0b4137fc972d26beb9f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225187"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013211"
 ---
-# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Hızlı Başlangıç: Service Fabric için .NET güvenilir Hizmetler uygulaması dağıtma
+# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Hızlı başlangıç: Service Fabric'e bir .NET güvenilir hizmetler uygulaması dağıtma
 
 Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri ve kapsayıcıları dağıtmayı ve yönetmeyi sağlayan bir dağıtılmış sistemler platformudur.
 
@@ -98,7 +98,7 @@ Uygulamayı dağıtmak için **F5** tuşuna basın.
 > [!NOTE]
 > Visual Studio çıktı penceresinde, "Uygulama URL 'SI ayarlanmadı veya bir HTTP/HTTPS URL 'SI değil, bu nedenle tarayıcının uygulamaya açılmayacak" iletisini görürsünüz.  Bu ileti bir hataya işaret etmez ama tarayıcının otomatik olarak başlatılmayacağını belirtir.
 
-Dağıtım tamamlandığında, uygulamanın Web ön ucuna bakmak için bir tarayıcı `http://localhost:8080` başlatın ve açın.
+Dağıtım tamamlandığında, uygulamanın Web ön ucuna bakmak için bir tarayıcı başlatın ve `http://localhost:8080` açın.
 
 ![Uygulama ön ucu](./media/service-fabric-quickstart-dotnet/application-screenshot-new.png)
 
@@ -173,11 +173,11 @@ Uygulamayı yükseltmek için aşağıdakileri yapın:
 
     ![Yayımla İletişim Kutusu Yükseltme Ayarı](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 
-10. Tıklayın **yayımlama**.
+10. **Yayımla**’ta tıklayın.
 
     Yükseltme çalışırken, uygulamayı kullanmaya devam edebilirsiniz. Kümede hizmetin iki örneği çalıştığından, isteklerinizden bazıları uygulamanın yükseltilmiş sürümünü alırken, diğerleri eski sürümü almaya devam edebilir.
 
-11. Tarayıcınızı açın ve 19080 numaralı bağlantı noktasında Küme adresine gidin. Örneğin: `http://localhost:19080/`.
+11. Tarayıcınızı açın ve 19080 numaralı bağlantı noktasında Küme adresine gidin. Örneğin, `http://localhost:19080/`.
 12. Ağaç görünümünde **Uygulamalar** düğümüne tıklayın ve ardından sağ bölmede **Devam Eden Yükseltmeler**'e tıklayın. Güncelleştirmenin kümenizdeki yükseltme etki alanlarında nasıl ilerlediğini görür, bir sonrakine geçmeden önce her etki alanının iyi durumda olduğundan emin olursunuz. Durumu doğrulanan yükseltme etki alanı, ilerleme çubuğunda yeşil gösterilir.
     ![Service Fabric Explorer'da Yükseltme Görünümü](./media/service-fabric-quickstart-dotnet/upgrading.png)
 

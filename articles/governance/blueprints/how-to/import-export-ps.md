@@ -1,17 +1,14 @@
 ---
 title: Şema tanımlarını PowerShell ile içeri ve dışarı aktarma
 description: Şema tanımlarınız kodu olarak nasıl çalışacağınızı öğrenin. Dışarı aktarma ve içeri aktarma komutlarını kullanarak bunları paylaşabilirsiniz, kaynak denetimi yapın ve yönetin.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/03/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 30e734c99a87364acfba9a58d83fe9a377958607
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: ca756ed093d5d423f6f83e5ca3953a8ecfce7d5a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978452"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960379"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Şema tanımlarını PowerShell ile içeri ve dışarı aktarma
 
@@ -41,9 +38,9 @@ Zaten yüklü değilse, PowerShell Galerisi **az** . Blueprint modülünü yükl
 Şemaları dışarı ve içeri aktarmaya geçmeden önce, şema tanımını oluşturan dosyaların nasıl yapılandırıldığını inceleyelim. Şema tanımının kendi klasöründe depolanması gerekir.
 
 > [!IMPORTANT]
-> @No__t-1 cmdlet 'inin **Name** parametresine hiçbir değer geçirilmemişse, şema tanımının depolandığı klasörün adı kullanılır.
+> `Import-AzBlueprintWithArtifact` cmdlet 'inin **Name** parametresine hiçbir değer geçirilmemişse, şema tanımının depolandığı klasörün adı kullanılır.
 
-@No__t-0 olarak adlandırılması gereken şema tanımı ile birlikte, şema tanımının meydana gelen yapıtlardır. Her yapıt `artifacts` adlı alt klasörde olmalıdır.
+`blueprint.json`adlandırılması gereken şema tanımıyla birlikte, şema tanımının meydana gelen yapıtlardır. Her yapıt `artifacts`adlı alt klasörde olmalıdır.
 Birlikte yerleştirin, şema tanımınızın yapısı klasörlerde JSON dosyaları olarak aşağıdaki gibi görünmelidir:
 
 ```text
@@ -72,7 +69,7 @@ Birlikte yerleştirin, şema tanımınızın yapısı klasörlerde JSON dosyalar
 - **Sürüm** (isteğe bağlı)
   - **Blueprint** başvuru nesnesi birden fazla sürüme başvurular içeriyorsa, çıktının sürümünü belirtir.
 
-1. @No__t-0 olarak temsil edilen abonelikten dışarı aktarmak için şema tanımına bir başvuru alın:
+1. `{subId}`gösterilen abonelikten dışarı aktarmak için şema tanımına bir başvuru alın:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell

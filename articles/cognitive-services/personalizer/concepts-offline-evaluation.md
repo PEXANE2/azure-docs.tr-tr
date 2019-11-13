@@ -1,7 +1,7 @@
 ---
 title: Çevrimdışı değerlendirme yöntemini kullanma-kişiselleştirici
 titleSuffix: Azure Cognitive Services
-description: Bu C# hızlı başlangıçta kişiselleştirici hizmeti ile geri bildirim döngüsü oluşturun.
+description: Bu makalede, uygulamanızın verimliliğini ölçmek ve öğrenme döngünüzü çözümlemek için çevrimdışı değerlendirmeyi kullanma açıklanmaktadır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f382c07dea75cb534632061c986dd8044c4aafa9
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515572"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953084"
 ---
 # <a name="offline-evaluation"></a>Çevrimdışı değerlendirme
 
@@ -98,5 +98,5 @@ Bu, değerlendirmeler için kullanılan kavramsal işlemdir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kişiselleştirici yapılandırma](how-to-settings.md) 
+[Kişiselleştirici yapılandırma](how-to-settings.md)
 [çevrimdışı değerlendirmeler çalıştırma](how-to-offline-evaluation.md) , [kişiselleştirici 'in nasıl çalıştığını](how-personalizer-works.md) anlama

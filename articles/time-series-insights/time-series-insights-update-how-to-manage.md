@@ -1,6 +1,6 @@
 ---
-title: Azure zaman serisi önizlemesi sağlama ve yönetme | Microsoft Docs
-description: Azure Time Series Insights önizlemesini sağlamayı ve yönetmeyi anlama.
+title: Önizleme ortamı sağlama ve yönetme-Azure zaman serisi | Microsoft Docs
+description: Azure Time Series Insights önizleme ortamı sağlamayı ve yönetmeyi öğrenin.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 47c96cb14f2e466d02d57f73fb2e66bc1f44a311
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f66925c20f6767286eb98a7f5fab180845da4c33
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989919"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014791"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemeyi sağlayın ve yönetin
 
@@ -57,7 +57,7 @@ Azure Time Series Insights önizleme ortamı oluşturmak için:
 
 1. Bir depolama hesabı adı seçerek ve bir çoğaltma seçeneği belirleyerek bir Azure depolama hesabı oluşturun. Bunun yapılması, otomatik olarak bir Azure depolama genel amaçlı v1 hesabı oluşturur. Hesap, daha önce seçtiğiniz Azure Time Series Insights önizleme ortamıyla aynı bölgede oluşturulur.
 
-    [örneğiniz için bir Azure depolama hesabı oluşturun![](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
+    [örneğiniz için bir Azure depolama hesabı oluşturun ![](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
 
 1. **(Isteğe bağlı)** Ortamınızdaki en son veriler üzerinde daha hızlı ve sınırsız sorgu istiyorsanız ortamınız için ısınma mağazasını etkinleştirin. Ayrıca, bir Time Series Insights önizleme ortamı oluşturduktan sonra sol gezinti bölmesindeki **depolama yapılandırması** seçeneği aracılığıyla bir sıcak mağaza oluşturabilir veya silebilirsiniz.
 
@@ -91,7 +91,7 @@ Azure Time Series Insights önizleme ortamınızı Azure portal kullanarak yöne
 
 * Başvuru verileri Kullandıkça Öde ortamlarının parçası olmadığından, Azure portal **başvuru verileri** dikey penceresi Azure Time Series Insights önizlemede kaldırılır.
 
-[Azure portal![Time Series Insights önizleme ortamı](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
+[Azure portal ![Time Series Insights önizleme ortamı](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

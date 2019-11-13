@@ -1,17 +1,14 @@
 ---
 title: Kaynak kilitlemeyi anlama
 description: Şeması atarken kaynakları korumak için kilitleme seçenekleri hakkında bilgi edinin.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 5c62fdb698dddf293d339904fd0c854052d636eb
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 754b9d7f73c6111abf7505e222a1ca5a8712ae45
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981041"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960477"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
 
@@ -24,7 +21,7 @@ Ancak, kilitleme modları, şema dışında değiştirilemez.
 
 Şema atamasında yapıtlar tarafından oluşturulan kaynakların dört durumu vardır: **kilitli değil**, **salt okunurdur**, **düzenleme/silme yapılamaz** **veya silinemez**. Her yapıt türü **kilitli değil** durumunda olabilir. Aşağıdaki tablo bir kaynağın durumunu belirlemede kullanılabilir:
 
-|Mod|Yapıt kaynak türü|Eyalet|Açıklama|
+|Mod|Yapıt kaynak türü|Durum|Açıklama|
 |-|-|-|-|
 |Kilitleme|*|Kilitlenmedi|Kaynaklar, planlar tarafından korunmuyor. Bu durum, bir **salt okunurdur** veya bir şema atamasının dışında kaynak grubu yapıtı **silme** ' ya eklenen kaynaklar için de kullanılır.|
 |Salt Okunur|Kaynak grubu|Düzenleme/silme yapılamıyor|Kaynak grubu salt okunurdur ve kaynak grubundaki Etiketler değiştirilemez. **Kilitli** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
@@ -56,8 +53,8 @@ Her modun [reddetme atama özellikleri](../../../role-based-access-control/deny-
 
 |Mod |İzinler. eylemler |Permissions. NotActions |Sorumlular [i]. Türüyle |Excludesorumlularını [i]. Numarasını | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Salt Okunur |**\*** |**\*/okuma** |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
-|Silme |**\*/Sil** | |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
+|Salt Okunur |**\*** |**\*/Read** |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
+|Silme |**\*/Delete** | |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
 
 > [!IMPORTANT]
 > Azure Resource Manager, rol atama ayrıntılarını 30 dakikaya kadar önbelleğe alır. Sonuç olarak, şemayı reddetme, şema kaynaklarını reddetme eylemini reddetme işlemleri hemen etkili olmayabilir. Bu süre boyunca, BLUEPRINT kilitleri tarafından korunması amaçlanan bir kaynağı silmek mümkün olabilir.

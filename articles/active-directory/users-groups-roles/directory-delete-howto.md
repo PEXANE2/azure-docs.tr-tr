@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7993810343f6bd925afd54cc38a8302420d6aec
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439365"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961825"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Azure Active Directory bir dizini silme
 
@@ -67,7 +67,7 @@ Sağlaması kaldırıldı (devre dışı bırakılsa 30 gün) | Silinen veriler 
 
 Microsoft 365 Yönetim merkezini kullanarak, üç gün içinde silinmek üzere, **sağlaması kaldırılmış** duruma bir abonelik koyabilirsiniz.
 
-1. [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com) kuruluşunuzda genel yönetici olan bir hesapla oturum açın. İlk varsayılan etki alanı contoso.onmicrosoft.com olan "contoso" dizinini silmeye çalışıyorsanız, admin@contoso.onmicrosoft.com gibi bir UPN ile oturum açın.
+1. [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com) kuruluşunuzda genel yönetici olan bir hesapla oturum açın. İlk varsayılan etki alanı contoso.onmicrosoft.com olan "contoso" dizinini silmeye çalışıyorsanız, admin@contoso.onmicrosoft.comgibi bir UPN ile oturum açın.
 
 2. Yeni **yönetici merkezini dene** özelliğinin etkinleştirildiğinden emin olarak yeni Microsoft 365 Yönetim merkezini önizleyin.
 
@@ -97,7 +97,7 @@ Microsoft 365 Yönetim merkezini kullanarak, üç gün içinde silinmek üzere, 
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Silmeyi engelleyen bir deneme aboneliğine sahibim
 
-Microsoft Power BI, Rights Management Hizmetleri, Microsoft Power Apps veya Dynamics 365 gibi [self servis kaydolma ürünleri](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) vardır, bireysel kullanıcılar Office 365 aracılığıyla kaydolabilir ve bu da Azure AD dizininizde kimlik doğrulaması için bir Konuk kullanıcı oluşturur . Bu self servis ürünleri, veri kaybını önlemek için Dizin silmeleri, dizinden tamamen silinene kadar engeller. Yalnızca Azure AD yöneticisi tarafından, kullanıcının tek tek kaydolup kaydolmadığını veya ürünün atandığını de silinebilirler.
+Microsoft Power BI, Rights Management Hizmetleri, Microsoft Power Apps veya Dynamics 365 gibi [self servis kaydolma ürünleri](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) vardır, bireysel kullanıcılar Office 365 aracılığıyla kaydolabilir ve bu da Azure AD dizininizde kimlik doğrulaması için bir Konuk kullanıcı oluşturur. Bu self servis ürünleri, veri kaybını önlemek için Dizin silmeleri, dizinden tamamen silinene kadar engeller. Yalnızca Azure AD yöneticisi tarafından, kullanıcının tek tek kaydolup kaydolmadığını veya ürünün atandığını de silinebilirler.
 
 Nasıl atandıklarından bağımsız olarak iki tür self servis kaydolma ürünü vardır: 
 
@@ -108,24 +108,24 @@ Self Servis kaydolma ürününün silinmesine başladığınızda, eylem veriler
 
 Mevcut olan Self Servis kaydolma ürünleri ve hizmetleri hakkında daha fazla bilgi için bkz. [kullanılabilir self servis programları](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs).
 
-Deneme sürümü Office 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değildir), aşağıdaki tabloya bakın. Office 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. [office 365 for Business aboneliğim sona erdiğinde verilere ne olur?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)
+Deneme sürümü Office 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değildir), aşağıdaki tabloya bakın. Office 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. [office 365 for Business aboneliğim sona erdiğinde verilere ne olur?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)
 
 Ürün durumu | Veriler | Verilere erişim
 ------------- | ---- | --------------
 Etkin (deneme için 30 gün) | Tüm veriler erişilebilir | Kullanıcıların Self Servis kaydolma ürününe, dosyalarına veya uygulamalarına normal erişimi vardır<br>Yöneticilerin Microsoft 365 yönetim merkezine ve kaynaklarına normal erişimi vardır
-Silinen | Silinen veriler | Kullanıcılar self servis kaydolma ürününe, dosyalarına veya uygulamalarına erişemez<br>Yöneticiler Microsoft 365 yönetim merkezine erişerek diğer abonelikleri satın alabilir ve yönetebilir
+Silme | Silinen veriler | Kullanıcılar self servis kaydolma ürününe, dosyalarına veya uygulamalarına erişemez<br>Yöneticiler Microsoft 365 yönetim merkezine erişerek diğer abonelikleri satın alabilir ve yönetebilir
 
 ## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>Azure portal bir self servis kaydolma ürününü nasıl silebilirim?
 
 Azure AD portalında hemen silinmek üzere Microsoft Power BI veya Azure Rights Management hizmetleri gibi bir self servis kaydolma ürününü bir **silme** durumuna getirebilirsiniz.
 
-1. Kuruluşta genel yönetici olan bir hesapla [Azure AD Yönetim Merkezi](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)'nde  ile oturum açın. İlk varsayılan etki alanı contoso.onmicrosoft.com olan "contoso" dizinini silmeye çalışıyorsanız, admin@contoso.onmicrosoft.com gibi bir UPN ile oturum açın.
+1. Kuruluşunuzda genel yönetici olan bir hesapla [Azure AD Yönetim merkezinde](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oturum açın. İlk varsayılan etki alanı contoso.onmicrosoft.com olan "contoso" dizinini silmeye çalışıyorsanız, admin@contoso.onmicrosoft.comgibi bir UPN ile oturum açın.
 
-2. **Lisanslar**' ı seçin ve ardından **self servis kaydolma ürünleri**' ni seçin. Tüm self servis kaydolma ürünlerini, bilgisayar tabanlı aboneliklerden ayrı olarak görebilirsiniz. Kalıcı olarak silmek istediğiniz ürünü seçin. Microsoft Power BI 'de bir örnek aşağıda verilmiştir:
+2. **Lisanslar**' ı seçin ve ardından **self servis kaydolma ürünleri**' ni seçin. Tüm self servis kaydolma ürünlerini, bilgisayar tabanlı aboneliklerden ayrı olarak görebilirsiniz. Kalıcı olarak silmek istediğiniz ürünü seçin. Microsoft Power BI 'de bir örnek aşağıda verilmiştir:
 
     ![Kullanıcı adı yanlış yazılmış veya bulunamadı](./media/directory-delete-howto/licenses-page.png)
 
-3. Ürünü silmek için **sil** seçeneğini belirleyin ve verilerin hemen silindiği ve geri alınamayacak koşulları kabul edin. Bu silme eylemi, tüm kullanıcıları kaldırır ve ürüne kuruluşun erişimini kaldırır. Silme işlemiyle ilerlemek için Evet ' e tıklayın.  
+3. Ürünü silmek için **Sil** ' i seçin ve verilerin hemen silindiği ve geri alınamayacak koşulları kabul edin. Bu silme eylemi, tüm kullanıcıları kaldırır ve ürüne kuruluşun erişimini kaldırır. Silme işlemiyle ilerlemek için Evet ' e tıklayın.  
 
     ![Kullanıcı adı yanlış yazılmış veya bulunamadı](./media/directory-delete-howto/delete-product.png)
 

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 2f24f5cacb8b6e115d7fe91c6ef0a7a333676ae1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e68ce5a198165c4187cbad9e86ce61f67694a82d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472841"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961598"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) hakkında sık sorulan sorular
 
@@ -64,11 +64,11 @@ AKS, sanal makine ölçek kümeleri, sanal ağlar ve yönetilen diskler dahil ol
 Bu mimariyi etkinleştirmek için, her bir AKS dağıtımı iki kaynak grubuna yaymıştır:
 
 1. İlk kaynak grubunu oluşturursunuz. Bu grup yalnızca Kubernetes hizmet kaynağını içerir. AKS kaynak sağlayıcısı, dağıtım sırasında ikinci kaynak grubunu otomatik olarak oluşturur. İkinci kaynak grubuna bir örnek *MC_myResourceGroup_myAKSCluster_eastus*. Bu ikinci kaynak grubunun adını belirtme hakkında daha fazla bilgi için sonraki bölüme bakın.
-1. *Düğüm kaynak grubu*olarak bilinen ikinci kaynak grubu, kümeyle ilişkili tüm altyapı kaynaklarını içerir. Bu kaynaklar, Kubernetes düğümü VM 'Leri, sanal ağ ve depolamayı içerir. Varsayılan olarak, düğüm kaynak grubu *MC_myResourceGroup_myAKSCluster_eastus*gibi bir ada sahiptir. AKS, küme her silindiğinde düğüm kaynağını otomatik olarak siler, bu nedenle yalnızca kümenin yaşam döngüsünü paylaşan kaynaklar için kullanılmalıdır.
+1. *Düğüm kaynak grubu*olarak bilinen ikinci kaynak grubu, kümeyle ilişkili tüm altyapı kaynaklarını içerir. Bu kaynaklar, Kubernetes düğümü VM 'Leri, sanal ağ ve depolamayı içerir. Varsayılan olarak, düğüm kaynak grubunun *MC_myResourceGroup_myAKSCluster_eastus*gibi bir adı vardır. AKS, küme her silindiğinde düğüm kaynağını otomatik olarak siler, bu nedenle yalnızca kümenin yaşam döngüsünü paylaşan kaynaklar için kullanılmalıdır.
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>AKS düğümü kaynak grubu için kendi adını verebilir miyim?
 
-Evet. Varsayılan olarak, AKS düğüm grubu *MC_resourcegroupname_clustername_location*olarak ad verir, ancak kendi adınızı de sağlayabilirsiniz.
+Evet. Varsayılan olarak, AKS, düğüm kaynak grubunu *MC_resourcegroupname_clustername_location*olarak adlandırın, ancak kendi adınızı de sağlayabilirsiniz.
 
 Kendi kaynak grubu adınızı belirtmek için, [aks-Preview][aks-preview-cli] Azure CLI uzantısı sürüm *0.3.2* veya üstünü yüklemelisiniz. [Az aks Create][az-aks-create] komutunu kullanarak bir aks kümesi oluşturduğunuzda, *--node-Resource-Group* parametresini kullanın ve kaynak grubu için bir ad belirtin. AKS kümesi dağıtmak için [bir Azure Resource Manager şablonu kullanırsanız][aks-rm-template] , *Noderesourcegroup* özelliğini kullanarak kaynak grubu adını tanımlayabilirsiniz.
 
@@ -129,7 +129,7 @@ AKS 'de, Azure CLı ve Azure Resource Manager şablonlarını kullanarak kümeyi
 | Azure CNı | 30 | 250 |
 | Kubernetes kullanan | 30 | 110 |
 
-Aks yönetilen bir hizmet olduğundan, kümenin bir parçası olarak eklentiler ve pod 'leri dağıtıp yönettik. Geçmişte, kullanıcılar, yönetilen yığınların çalışması için gereken değerden daha düşük bir `maxPods` değeri tanımlayabilir (örneğin, 30). Aks şu formülü kullanarak en az sayıda Pod sayısını hesaplar: ((maxpods veya (maxpods * vm_count)) en düşük > yönetilen eklenti.
+Aks yönetilen bir hizmet olduğundan, kümenin bir parçası olarak eklentiler ve pod 'leri dağıtıp yönettik. Geçmişte, kullanıcılar, yönetilen yığınların çalışması için gereken değerden daha düşük bir `maxPods` değeri tanımlayabilir (örneğin, 30). Aks şu formülü kullanarak en az sayıda Pod sayısını hesaplar: ((maxpods veya (maxpods * vm_count)) > yönetilen eklenti en düşük.
 
 Kullanıcılar en düşük `maxPods` doğrulamasını geçersiz kılamaz.
 
@@ -194,7 +194,6 @@ Hiçbir AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklen
 [aks-regions]: ./quotas-skus-regions.md#region-availability
 [aks-upgrade]: ./upgrade-cluster.md
 [aks-cluster-autoscale]: ./autoscaler.md
-[virtual-kubelet]: virtual-kubelet.md
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md

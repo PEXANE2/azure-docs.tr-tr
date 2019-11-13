@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı Başlangıç C# : SDK sorgu tahmin uç noktası-lusıs'
 titleSuffix: Azure Cognitive Services
-description: Bir kullanıcıyı C# Luo 'ya göndermek ve tahmin almak için SDK 'yı kullanın.
+description: Bu makalede, Azure bilişsel hizmetler LUIN uygulamasına bir Kullanıcı alıp göndermek ve tahmin almak için C# SDK 'nın nasıl kullanılacağı gösterilir.
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: bd1fefa828aca71e3faa27f75a8c67a2f1539d52
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f4612f7b3f76cbbfc0deac98668770f92ff054bc
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837072"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953420"
 ---
 # <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>Hızlı başlangıç: .NET SDK ile C# v2 tahmin uç noktası sorgulama
 
@@ -23,7 +23,7 @@ Language Understanding (LUSıS) kullanıcısına bir Kullanıcı alıp gönderme
 
 Bu hızlı başlangıç, `turn on the bedroom light`gibi bir kullanıcıyı ortak Language Understanding uygulamasına gönderir ve tahmin alır ve en yüksek skor amacını `HomeAutomation.TurnOn` ve varlık içinde bulunan `HomeAutomation.Room` varlığı görüntüler. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Visual Studio Community 2017 sürümü](https://visualstudio.microsoft.com/vs/community/)
 * C# programlama dili (VS Community 2017 sürümünde bulunur)

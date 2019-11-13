@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub IoT Hub C SDK kullanarak kısıtlı cihazlar için geliştirme | Microsoft Docs
+title: Azure IoT Hub IoT Hub C SDK kullanarak kısıtlı cihazlar için geliştirme
 description: Geliştirici Kılavuzu-kısıtlı cihazlar için Azure IoT SDK 'larını kullanarak geliştirme hakkında rehberlik.
 author: robinsh
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: robinsh
-ms.openlocfilehash: d69fe6b845d3af04e42ee91daa9359dcb9a88fc5
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a1918a99efcdcc5764140093ad422f7887ca3c88
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880962"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954691"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Azure IoT C SDK kullanarak kısıtlı cihazlar için geliştirme
 
@@ -33,7 +33,7 @@ Geliştirme ortamınızı C SDK 'Sı oluşturmaya hazırlamak için bu [c SDK 's
 
 ### <a name="remove-additional-protocol-libraries"></a>Ek protokol kitaplıklarını kaldır
 
-C SDK 'Sı bugün beş protokolü destekler: MQTT, WebSocket üzerinden MQTT, AMQPs, AMQP üzerinde WebSocket ve HTTPS. Çoğu senaryo, bir istemcide çalışan bir veya iki protokolde olmasını gerektirir, bu nedenle, SDK 'dan kullanmadığınız protokol kitaplığını kaldırabilirsiniz. Senaryolarınız için uygun iletişim protokolünü seçme hakkında ek bilgiler, [bir IoT Hub iletişim protokolü seçin](iot-hub-devguide-protocols.md)bölümünde bulunabilir. Örneğin MQTT, kısıtlanmış cihazlara genellikle daha uygun olan hafif bir protokoldür.
+C SDK Şu anda beş protokolü destekler: MQTT, WebSocket üzerinden MQTT, AMQPs, AMQP, WebSocket üzerinden ve HTTPS. Çoğu senaryo, bir istemcide çalışan bir veya iki protokolde olmasını gerektirir, bu nedenle, SDK 'dan kullanmadığınız protokol kitaplığını kaldırabilirsiniz. Senaryolarınız için uygun iletişim protokolünü seçme hakkında ek bilgiler, [bir IoT Hub iletişim protokolü seçin](iot-hub-devguide-protocols.md)bölümünde bulunabilir. Örneğin MQTT, kısıtlanmış cihazlara genellikle daha uygun olan hafif bir protokoldür.
 
 AMQP ve HTTP kitaplıklarını aşağıdaki CMake komutunu kullanarak kaldırabilirsiniz:
 

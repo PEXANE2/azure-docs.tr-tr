@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery ile ikincil bir şirket içi siteye Hyper-V olağanüstü durum kurtarma mimarisi
+title: Mimari-Azure Site Recovery bir ikincil siteye Hyper-V olağanüstü durum kurtarma
 description: Bu makalede, şirket içi Hyper-V VM 'lerinin Azure Site Recovery olan ikincil bir System Center VMM sitesine olağanüstü durum kurtarma mimarisine genel bakış sunulmaktadır.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 98cc20ee8a6308350ffc142a13413bd26567a3e1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 716f8e053ad05ba701b3415946cd8d3a56044e62
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933515"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953989"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Mimari-ikincil siteye Hyper-V çoğaltma
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 0fbd8404e326ecc6fabef8c89991009809b1448b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820521"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007272"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory ile parolalar olmadan bir dünya
 
@@ -24,7 +24,7 @@ Kullanıcı hesaplarının güvenliğini sağlamak için yaygın olarak kullanı
 
 Bu makale, Microsoft 'un parolasız çözümlerini anlamanıza ve uygulamanıza yardımcı olan ve aşağıdaki seçeneklerden bir veya daha fazlası arasından seçim yapmanıza yardımcı olan yolculuğun başlangıcıdır:
 
-* **İş Için Windows Hello**. Windows 10 ' da, Iş için Windows Hello, bilgisayarlarda ve mobil cihazlarda güçlü iki öğeli kimlik doğrulama ile parolaları değiştirir. Bu kimlik doğrulaması, bir cihaza bağlı olan ve biyometrik ya da PIN kullanan yeni bir kullanıcı kimlik bilgisi türü içerir.
+* **İş Için Windows Hello**. Windows 10 ' da, Iş için Windows Hello, bilgisayarlarda ve mobil cihazlarda güçlü iki öğeli kimlik doğrulama ile parolaları değiştirir. Bu kimlik doğrulaması, bir cihaza bağlı yeni bir kullanıcı kimlik bilgisi türü içerir ve bir biyometrik tanıma veya PIN kullanır.
 
 * **Parolasız oturum açma Microsoft Authenticator**. Microsoft Authenticator uygulaması, bir Azure AD hesabında parola kullanılmadan oturum açmak için kullanılabilir. Iş için Windows Hello teknolojisine benzer şekilde, Microsoft Authenticator bir cihaza bağlı olan ve biyometrik ya da PIN kullanan kullanıcı kimlik bilgilerini etkinleştirmek için anahtar tabanlı kimlik doğrulaması kullanır.
 

@@ -1,5 +1,5 @@
 ---
-title: Azure dijital TWINS 'de Kullanıcı tanımlı işlevler oluşturma | Microsoft Docs
+title: Kullanıcı tanımlı işlevler oluşturma-Azure dijital TWINS 'te | Microsoft Docs
 description: Azure dijital TWINS 'de Kullanıcı tanımlı işlevler, eşleştiriciler ve rol atamaları oluşturma.
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5271b14ec008579d18a152a229b9768339927bb7
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4db6f0052c92d4532917a996eda82a27d97d3063
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888856"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009562"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Azure dijital TWINS 'de Kullanıcı tanımlı işlevler oluşturma
 
@@ -71,7 +71,7 @@ JSON gövdesi ile:
 
 | Değer | Şununla değiştir |
 | --- | --- |
-| YOUR_SPACE_IDENTIFIER | Örneğinizin barındırıldığı sunucu bölgesi |
+| YOUR_SPACE_IDENTIFIER | Örneğiniz üzerinde barındırılıyorsa hangi sunucu bölge |
 
 ## <a name="create-a-user-defined-function"></a>Kullanıcı tanımlı işlev oluşturma
 

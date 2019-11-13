@@ -1,17 +1,14 @@
 ---
 title: REST API ile bir şema oluşturma
 description: REST API kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları 'nı kullanın.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: quickstart
-ms.service: blueprints
-ms.openlocfilehash: 16540441aa8bc5d115606e1c5b3bdc2302ae2c20
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 9b711a6359ed9ecb45f25c460ece095af46ad8c3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978489"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960403"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Hızlı başlangıç: REST API Azure Blueprint tanımlama ve atama
 
@@ -54,7 +51,7 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-Aboneliğiniz hakkında bilgi almak için yukarıdaki **$restUri** değişkeni içinde yer alan `{subscriptionId}` öğesini değiştirin. $response değişkeni `Invoke-RestMethod` cmdlet'inin sonucunu tutar ve [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) gibi cmdlet'ler ile ayrıştırılabilir. REST API hizmet uç noktası bir **İstek Gövdesi** bekliyorsa `Invoke-RestMethod` öğesinin `-Body` parametresine JSON biçiminde bir değişken sağlayın.
+Aboneliğiniz hakkında bilgi almak için yukarıdaki `{subscriptionId}`$restUri**değişkeni içinde yer alan** öğesini değiştirin. $response değişkeni `Invoke-RestMethod` cmdlet'inin sonucunu tutar ve [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) gibi cmdlet'ler ile ayrıştırılabilir. REST API hizmet uç noktası bir **İstek Gövdesi** bekliyorsa `-Body` öğesinin `Invoke-RestMethod` parametresine JSON biçiminde bir değişken sağlayın.
 
 ## <a name="create-a-blueprint"></a>Şema oluşturma
 
@@ -130,7 +127,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      }
      ```
 
-1. Abonelikte rol ataması ekleyin. **İstek Gövdesi** yapıtın _türünü_ tanımlar, özellikler rol tanımı tanımlayıcısıyla eşlenir ve sorumlu kimlikleri değer dizisi olarak geçirilir. Aşağıdaki örnekte belirtilen rolün verildiği sorumlu kimlikleri, şema ataması sırasında ayarlanan bir parametreyle yapılandırılmıştır. Bu örnek, `b24988ac-6180-42a0-ab88-20f7382dd24c` GUID 'SI ile _katkıda_ bulunan yerleşik rolünü kullanır.
+1. Abonelikte rol ataması ekleyin. **İstek Gövdesi** yapıtın _türünü_ tanımlar, özellikler rol tanımı tanımlayıcısıyla eşlenir ve sorumlu kimlikleri değer dizisi olarak geçirilir. Aşağıdaki örnekte belirtilen rolün verildiği sorumlu kimlikleri, şema ataması sırasında ayarlanan bir parametreyle yapılandırılmıştır. Bu örnek, `b24988ac-6180-42a0-ab88-20f7382dd24c`bir GUID ile _katkıda_ bulunan yerleşik rolünü kullanır.
 
    - REST API URI'si
 
@@ -150,7 +147,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      }
      ```
 
-1. Abonelikte ilke ataması ekleyin. **İstek Gövdesi** yapıtın _türü_ ile bir ilke veya girişim tanımıyla eşleşen özellikleri tanımlar ve ilke atamasını şema ataması sırasında yapılandırılacak tanımlı şema parametrelerini kullanacak şekilde yapılandırır. Bu örnek, `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` GUID 'sine sahip _kaynak grupları yerleşik ilkesi Için Apply etiketi ve varsayılan değerini_ kullanır.
+1. Abonelikte ilke ataması ekleyin. **İstek Gövdesi** yapıtın _türü_ ile bir ilke veya girişim tanımıyla eşleşen özellikleri tanımlar ve ilke atamasını şema ataması sırasında yapılandırılacak tanımlı şema parametrelerini kullanacak şekilde yapılandırır. Bu örnek, `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`GUID 'SI ile _kaynak grupları yerleşik Ilkesine Uygula etiketi ve varsayılan değerini_ kullanır.
 
    - REST API URI'si
 
@@ -178,7 +175,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      }
      ```
 
-1. Abonelikte Depolama etiketi için (_storageAccountType_ parametresini yeniden kullanarak) başka bir ilke ataması ekleyin. Bu ek ilke ataması yapıtı, şemada tanımlanan bir parametrenin birden fazla yapıt tarafından kullanılabileceğini gösterir. Örnekte kaynak grubunda etiket ayarlamak için **storageAccountType** kullanılmıştır. Bu değer, bir sonraki adımda oluşturulan depolama hesabıyla ilgili bilgi sağlar. Bu örnek, `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` GUID 'sine sahip _kaynak grupları yerleşik ilkesi Için Apply etiketi ve varsayılan değerini_ kullanır.
+1. Abonelikte Depolama etiketi için (_storageAccountType_ parametresini yeniden kullanarak) başka bir ilke ataması ekleyin. Bu ek ilke ataması yapıtı, şemada tanımlanan bir parametrenin birden fazla yapıt tarafından kullanılabileceğini gösterir. Örnekte kaynak grubunda etiket ayarlamak için **storageAccountType** kullanılmıştır. Bu değer, bir sonraki adımda oluşturulan depolama hesabıyla ilgili bilgi sağlar. Bu örnek, `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`GUID 'SI ile _kaynak grupları yerleşik Ilkesine Uygula etiketi ve varsayılan değerini_ kullanır.
 
    - REST API URI'si
 
@@ -292,7 +289,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      }
      ```
 
-1. Rol atamasını kaynak grubuna ekleyin. Yukarıdaki rol ataması girişine benzer şekilde aşağıdaki örnekte de **Sahip** rolü için tanımlayıcı kullanılır ve şemadan farklı bir parametre sunulur. Bu örnek, `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` GUID 'SI ile _sahip_ yerleşik rolünü kullanır.
+1. Rol atamasını kaynak grubuna ekleyin. Yukarıdaki rol ataması girişine benzer şekilde aşağıdaki örnekte de **Sahip** rolü için tanımlayıcı kullanılır ve şemadan farklı bir parametre sunulur. Bu örnek, `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`GUID 'SI ile _sahip_ yerleşik rolünü kullanır.
 
    - REST API URI'si
 
@@ -396,7 +393,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
 
    - Kullanıcı tarafından atanan yönetilen kimlik
 
-     Bir şema ataması, [Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md)de kullanabilir. Bu durumda, istek gövdesinin **kimlik** kısmı aşağıdaki şekilde değişir.  @No__t-0 ve `{userIdentity}` ' i kaynak grubu adınızla ve Kullanıcı tarafından atanan yönetilen kimliğinizin adıyla değiştirin.
+     Bir şema ataması, [Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md)de kullanabilir. Bu durumda, istek gövdesinin **kimlik** kısmı aşağıdaki şekilde değişir.  `{yourRG}` ve `{userIdentity}`, kaynak grubu adınızla ve Kullanıcı tarafından atanan yönetilen kimliğinizin adıyla değiştirin.
 
      ```json
      "identity": {
@@ -413,7 +410,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      > [!IMPORTANT]
      > Planlar Kullanıcı tarafından atanan yönetilen kimliği yönetmez. Kullanıcılar yeterli rol ve izin atamaktan sorumludur ya da şema ataması başarısız olur.
 
-## <a name="unassign-a-blueprint"></a>Şemanın atamasını kaldırma
+## <a name="unassign-a-blueprint"></a>Şema atamasını kaldırma
 
 Bir şemayı abonelikten kaldırabilirsiniz. Kaldırma işlemi genellikle yapıt kaynaklarına ihtiyaç duyulmadığında gerçekleştirilir. Bir şema kaldırıldığında o şemanın bir parçası olarak atanan yapıtlar geride kalır. Bir şemanın atamasını kaldırmak için aşağıdaki REST API işlemini kullanın:
 
@@ -423,7 +420,7 @@ Bir şemayı abonelikten kaldırabilirsiniz. Kaldırma işlemi genellikle yapıt
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="delete-a-blueprint"></a>Şemayı silme
+## <a name="delete-a-blueprint"></a>Şema silme
 
 Bir şemanın kendisini kaldırmak için aşağıdaki REST API işlemini kullanın:
 

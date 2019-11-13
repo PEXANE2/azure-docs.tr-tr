@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 43ad6558b685d3959562be720f7494b3d2a7334e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c118a74e273e153746240465692b1c712bd25f47
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499436"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953615"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Öğretici: modelle serbest biçimli verileri ayıklama. herhangi bir varlık
 
@@ -24,7 +24,7 @@ Bu öğreticide konuşmaların iyi biçimlendirilmiş olduğu ve verilerin sonun
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 > [!div class="checklist"]
 > * Örnek uygulamayı içeri aktar
@@ -42,7 +42,7 @@ pattern.any varlığı, ifade nedeniyle varlığın sonunun konuşmanın geri ka
 
 Bu İnsan Kaynakları uygulaması, çalışanların şirket formlarını bulmasına yardımcı olmaktadır. 
 
-|İfade|
+|Konuşma|
 |--|
 |Where is **HRF-123456**? (HRF-123456 nerede?)|
 |Who authored **HRF-123234**? (HRF-123234'ü kim yazdı?)|
@@ -52,7 +52,7 @@ Ancak her formun hem bir biçimlendirilmiş adı (yukarıdaki tabloda kullanıla
 
 Formun kolay adı konuşmada şu şekilde olur:
 
-|İfade|
+|Konuşma|
 |--|
 |Where is **Request relocation from employee new to the company 2018 version 5**? (Yeni şirket çalışanı taşınma talep formu 2018 sürüm 5 nerede?)|
 |Who authored **"Request relocation from employee new to the company 2018 version 5"** ? (Yeni şirket çalışanı taşınma talep formu 2018 sürüm 5'i kim yazdı?)|
@@ -138,7 +138,7 @@ Pattern.any varlığı farklı uzunluklardaki varlıkları ayıklar. Desen varl�
 
 ## <a name="using-an-explicit-list"></a>Açık liste kullanma
 
-Pattern.any içerdiğinde deseninizin varlıkları yanlış ayıkladığını fark ederseniz bu sorunu gidermek için [açık liste](luis-concept-patterns.md#explicit-lists) kullanın.
+Pattern.any içerdiğinde deseninizin varlıkları yanlış ayıkladığını fark ederseniz bu sorunu gidermek için [açık liste](reference-pattern-syntax.md#explicit-lists) kullanın.
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

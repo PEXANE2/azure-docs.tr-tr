@@ -1,19 +1,19 @@
 ---
-title: Şirket içi Hyper-V VM 'Leri (VMM olmadan) Site Recovery ile Azure 'da olağanüstü durum kurtarma ayarlama | Microsoft Docs
+title: Azure Site Recovery kullanarak Hyper-V olağanüstü durum kurtarmayı ayarlama
 description: Site Recovery kullanarak şirket içi Hyper-V VM 'lerinin (VMM olmadan) Azure 'a olağanüstü durum kurtarmayı ayarlamayı öğrenin.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 446c870ba60d7931fafb9f9b1c7e8fc017f60e4d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2270cd8ace347992f6a5a1166986b878404fc7fe
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933860"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954028"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V sanal makineleri için Azure’da olağanüstü durum kurtarma ayarlama
 
@@ -144,7 +144,7 @@ Site Recovery, bir veya birden çok uyumlu Azure depolama hesabınızın ve ağ�
 4. Öğretici ayarları kullanıyorsanız, çoğaltılan veriler için önceki öğreticide oluşturulan **contosovmsacct1910171607** Storage hesabını seçin. Ayrıca, yük devretmeden sonra Azure VM 'lerinin bulunduğu **Contosoasrnet** ağını seçin.
 5. **Sanal makineler** > **seçin**' de, çoğaltmak istediğiniz VM 'yi seçin. Sonra **Tamam**’ı seçin.
 
-   **İşler** > **Site Recovery işleri** bölümünde **Korumayı Etkinleştir** eyleminin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi tamamlandıktan sonra, ilk çoğaltma TAMAMLANıR ve VM yük devretme için hazırlayın.
+   **İşler**Site Recovery işleri >  bölümünde **Korumayı Etkinleştir** eyleminin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi tamamlandıktan sonra, ilk çoğaltma TAMAMLANıR ve VM yük devretme için hazırlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

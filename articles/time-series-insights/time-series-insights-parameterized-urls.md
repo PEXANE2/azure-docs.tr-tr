@@ -1,6 +1,6 @@
 ---
-title: Parametreli URL'lerle Azure Time Series Insights özel görünümlerini paylaşma | Microsoft Docs
-description: Bu makalede, özelleştirilmiş görünümün kolayca paylaşılabilmesi için Azure Time Series Insights'ta parametreli URL'lerin nasıl geliştirileceği açıklanır.
+title: Parametreli URL 'lerle özel görünümleri paylaşma-Azure Time Series Insights | Microsoft Docs
+description: Özelleştirilmiş görünümleri kolayca paylaşmak için Azure Time Series Insights parametreli URL 'Lerin nasıl geliştirileceği hakkında bilgi edinin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: e62455a0c8412a579c0fab9d7fabd6016f47dbf3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 145af35f8c36d7f4659c3937209cb0d4d5b221a3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991106"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006384"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Parametreli URL'yi kullanarak özel görünümü paylaşma
 
@@ -69,7 +69,7 @@ Kabul edilen değerler Time Series Insights Explorer **hızlı zaman** menüsün
 
 | Parametre | URL öğesi | Açıklama |
 | --- | --- | --- |
-| **ada** | `\<string>` | *Dönem* adı. |
+| **name** | `\<string>` | *Dönem* adı. |
 | **Bölünmüş** | `\<string>` | *Bölme ölçütü* sütunun adı. |
 | **measureName** | `\<string>` | *Ölçü* sütununun adı. |
 | **koşulunda** | `\<string>` | Sunucu tarafı filtrelemesi için *where* yan tümcesi. |

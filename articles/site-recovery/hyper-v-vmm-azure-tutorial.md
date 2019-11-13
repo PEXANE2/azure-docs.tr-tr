@@ -1,18 +1,18 @@
 ---
-title: VMM bulutlarındaki şirket içi Hyper-V VM 'Leri için olağanüstü durum kurtarmayı ayarlayın Site Recovery
+title: Azure Site Recovery kullanarak Hyper-V (VMM ile) olağanüstü durum kurtarma ayarlama
 description: Site Recovery kullanarak, System Center VMM bulutlarındaki şirket içi Hyper-V VM 'lerinin olağanüstü durum kurtarma ayarlamayı öğrenin.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f686a02e363025daa5d0c3b3d4e53e07da636544
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fdf6d9674305ca13af51f3f7b97e0a40568738b6
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933830"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953964"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>VMM bulutlarındaki şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarma ayarlama
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir. Mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. Ayrıntılı yönergeler için [Site Recovery belgelerinin](https://docs.microsoft.com/azure/site-recovery) **nasıl yapılır kılavuzlarındaki** makaleleri gözden geçirin.
 
 > [!WARNING]
-> Lütfen SCVMM yapılandırması 'nın hesapta kullanılması için ASR desteğinin yakında kullanım dışı olacağını unutmayın. bu nedenle, devam etmeden önce [kullanımdan](scvmm-site-recovery-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
+> System Center VMM kullanarak Hyper-V VM 'lerinin olağanüstü durum kurtarma desteği yakın gelecekte kullanım dışı olacaktır. Devam etmeden önce [kullanımdan](scvmm-site-recovery-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
@@ -133,7 +133,7 @@ Site Recovery, bir veya birden çok uyumlu Azure depolama hesabınızın ve ağ�
 4. **Contosovmsacct1910171607** Storage hesabını ve **contosoasrnet** Azure ağını seçin.
 5. **Sanal makineler** > **seçin**' de, çoğaltmak istediğiniz VM 'yi seçin. Sonra **Tamam**’ı seçin.
 
-   **İşler** > **Site Recovery işleri** bölümünde **Korumayı Etkinleştir** eyleminin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi tamamlandıktan sonra, ilk çoğaltma TAMAMLANıR ve VM yük devretme için hazırlayın.
+   **İşler**Site Recovery işleri >  bölümünde **Korumayı Etkinleştir** eyleminin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi tamamlandıktan sonra, ilk çoğaltma TAMAMLANıR ve VM yük devretme için hazırlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

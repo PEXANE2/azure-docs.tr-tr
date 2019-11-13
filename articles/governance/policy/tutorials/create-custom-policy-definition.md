@@ -1,17 +1,14 @@
 ---
 title: Özel ilke tanımı oluşturma
 description: Özel iş kurallarını zorlamak için Azure Ilkesi için özel bir ilke tanımı oluşturun.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/23/2019
 ms.topic: tutorial
-ms.service: azure-policy
-ms.openlocfilehash: 240d0fa388fbdfdd3d29d735aed708a096440740
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 1a5be5a3e81dec6f4369e6b01dcda3d5de5f6dac
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980345"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959278"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Öğretici: özel bir ilke tanımı oluşturma
 
@@ -165,7 +162,7 @@ Bir Azure kaynağı için diğer adları belirlemenin birkaç yolu vardır. Bu �
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLı 'de `az provider` komut grubu, kaynak diğer adlarını aramak için kullanılır. Daha önce Azure kaynağı hakkında aldık ayrıntıları temel alarak **Microsoft. Storage** ad alanını filtreleyeceğiz.
+Azure CLı 'de, `az provider` komut grubu kaynak diğer adlarını aramak için kullanılır. Daha önce Azure kaynağı hakkında aldık ayrıntıları temel alarak **Microsoft. Storage** ad alanını filtreleyeceğiz.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -443,7 +440,7 @@ Bu deyimlerin her ikisinin de doğru olması gerektiğinden, **allof** [Logical 
 
 Tamamlanan tanım yeni bir ilke oluşturmak için kullanılabilir. Portal ve her SDK (Azure CLı, Azure PowerShell ve REST API) tanımı farklı yollarla kabul eder, bu nedenle doğru kullanımı doğrulamak için her birine yönelik komutları gözden geçirin. Daha sonra, depolama hesaplarınızın güvenliğini yönetmek için parametreli etkiyi kullanarak uygun kaynaklara göre atayın.
 
-## <a name="review"></a>Gözden Geçir
+## <a name="review"></a>Gözden geçirme
 
 Bu öğreticide, aşağıdaki görevleri başarıyla gerçekleştirdiniz:
 

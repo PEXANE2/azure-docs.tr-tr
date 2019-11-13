@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a79c95d627bbdec3a91a1d048a48ff061b308ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cb0f373000d09cb387fb73eec344997381fe45d1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489369"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961671"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Kubernetes hizmeti ve Azure Container Instances dağıtımı Azure Machine Learning sorunlarını giderme
 
@@ -24,31 +24,41 @@ Azure Machine Learning kullanarak Azure Container Instances (ACI) ve Azure Kuber
 
 Azure Machine Learning bir modeli dağıttığınızda, sistem bir dizi görevi gerçekleştirir. Dağıtım görevleri şunlardır:
 
-1. Modeli çalışma alanı modeli kayıt defterine kaydedin.
+1. Çalışma alanı model kayıt defterinde modeli kaydedin.
 
-2. Aşağıdakiler dahil olmak üzere bir Docker görüntüsü oluşturun:
-    1. Kayıtlı modeli kayıt defterinden indirin. 
-    2. Ortam YAML dosyasında belirttiğiniz bağımlılıklara dayalı bir Python ortamıyla bir dockerfile oluşturun.
-    3. Model dosyalarınızı ve sağladığınız Puanlama betiğini dockerfile içinde ekleyin.
-    4. Dockerfile dosyasını kullanarak yeni bir Docker görüntüsü oluşturun.
-    5. Docker görüntüsünü, çalışma alanıyla ilişkili Azure Container Registry kaydedin.
+2. Bir Docker görüntüsü oluşturun dahil olmak üzere:
+    1. Kayıt defterinden kayıtlı modeli indirin. 
+    2. Bir dockerfile ortam yaml dosyasında belirttiğiniz bağımlılıkları temel bir Python ortamı oluşturun.
+    3. Model dosyalarınızı ve sağladığınız Puanlama betiği dockerfile'da ekleyin.
+    4. Dockerfile'ı kullanarak yeni bir Docker görüntüsü oluşturun.
+    5. Çalışma alanı ile ilişkili Azure Container Registry ile Docker görüntü kaydedin.
 
     > [!IMPORTANT]
     > Kodunuza bağlı olarak, görüntü oluşturma, sizin giriş bilgileriniz olmadan otomatik olarak gerçekleşir.
 
-3. Docker görüntüsünü Azure Container Instance (ACI) hizmetine veya Azure Kubernetes hizmeti 'ne (AKS) dağıtın.
+3. Docker görüntüsünü Azure Container örneği (ACI) hizmetine veya Azure Kubernetes Service (AKS) dağıtın.
 
-4. ACI veya AKS içinde yeni bir kapsayıcı (veya kapsayıcılar) başlatın. 
+4. Yeni bir kapsayıcı (veya kapsayıcıları) ACI veya AKS başlatın. 
 
-[Model yönetimi](concept-model-management-and-deployment.md) giriş bölümünde bu işlem hakkında daha fazla bilgi edinin.
+Bu işlem hakkında daha fazla bilgi [Model Yönetimi](concept-model-management-and-deployment.md) giriş.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+* Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
+* [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md).
+* Yerel olarak hata ayıklamak için yerel sisteminizde çalışan bir Docker yüklemeniz olmalıdır.
+
+    Docker yüklemenizi doğrulamak için, bir Terminal veya komut isteminden `docker run hello-world` komutunu kullanın. Docker 'ı yükleme veya Docker hataları sorunlarını giderme hakkında bilgi için bkz. [Docker belgeleri](https://docs.docker.com/).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Herhangi bir sorunla karşılaşırsanız, ilk yapılacak şey, sorunu yalıtmak için dağıtım görevinin (önceki adı daha önce açıklanan) bireysel adımlara bölünmemaktır.
+Herhangi bir sorun çalıştırırsanız, yapılacak ilk şey dağıtım görevi bölmektir (önceki açıklanmıştır) sorunu ayırt etmek için tek tek adımlara.
 
-Bu işlevlerin her ikisi de tek bir eylem olarak bahsedilen adımları gerçekleştirirken, [Web hizmeti. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) API 'Si veya [WebService. deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) API 'sini kullanıyorsanız, görevleri görevlere bölmek yararlıdır. Genellikle bu API 'Ler kullanışlıdır, ancak bunları aşağıdaki API çağrılarına değiştirerek sorun gidermeye yönelik adımları kesmeniz yardımcı olur.
+Bu işlevlerin her ikisi de tek bir eylem olarak bahsedilen adımları gerçekleştirirken, [Web hizmeti. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) API veya [WebService. deploy_from_model (](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) Genellikle bu API 'Ler kullanışlıdır, ancak bunları aşağıdaki API çağrılarına değiştirerek sorun gidermeye yönelik adımları kesmeniz yardımcı olur.
 
-1. Modeli kaydedin. Örnek kod aşağıda verilmiştir:
+1. Modeli kaydedin. Bazı örnek kodlar aşağıda verilmiştir:
 
     ```python
     # register a model out of a run record
@@ -58,7 +68,7 @@ Bu işlevlerin her ikisi de tek bir eylem olarak bahsedilen adımları gerçekle
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. Görüntü oluşturun. Örnek kod aşağıda verilmiştir:
+2. Görüntü oluşturun. Bazı örnek kodlar aşağıda verilmiştir:
 
     ```python
     # configure the image
@@ -73,7 +83,7 @@ Bu işlevlerin her ikisi de tek bir eylem olarak bahsedilen adımları gerçekle
     image.wait_for_creation(show_output=True)
     ```
 
-3. Görüntüyü hizmet olarak dağıtın. Örnek kod aşağıda verilmiştir:
+3. Görüntü hizmeti olarak dağıtalım. Bazı örnek kodlar aşağıda verilmiştir:
 
     ```python
     # configure an ACI-based deployment
@@ -86,11 +96,11 @@ Bu işlevlerin her ikisi de tek bir eylem olarak bahsedilen adımları gerçekle
     aci_service.wait_for_deployment(show_output=True)    
     ```
 
-Dağıtım sürecini tek tek görevlere doldurduktan sonra, en yaygın hatalardan bazılarına bakabiliriz.
+Tek tek görevler dağıtım işlemine aşağı kıran sonra en yaygın hataların bazıları göz atabilirsiniz.
 
-## <a name="image-building-fails"></a>Görüntü oluşturma başarısız oluyor
+## <a name="image-building-fails"></a>Görüntü oluşturma başarısız
 
-Docker görüntüsü derlenemez, [Image. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) veya [Service. wait_for_deployment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) çağrısı bazı ipuçları sunabileceği bazı hata iletileriyle başarısız olur. Ayrıca, görüntü oluşturma günlüğünden hatalarla ilgili daha fazla ayrıntı bulabilirsiniz. Aşağıda, görüntü derleme günlüğü URI 'sini bulmayı gösteren bazı örnek kodlar verilmiştir.
+Docker görüntüsü derlenemez, [Image. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) veya [Service. wait_for_deployment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) çağrısı bazı ipuçları sunabileceği bazı hata iletileriyle başarısız olur. Görüntü oluşturma günlüğü hataları ile ilgili daha fazla ayrıntı bulabilirsiniz. Aşağıda bazı örnek kodlar görüntü derleme günlük URI'si bulma göstermez.
 
 ```python
 # if you already have the image object handy
@@ -104,7 +114,7 @@ for name, img in ws.images.items():
     print(img.name, img.version, img.image_build_log_uri)
 ```
 
-Görüntü günlüğü URI 'si, Azure Blob depolamada depolanan bir günlük dosyasına işaret eden bir SAS URL 'sidir. URI 'yi kopyalayıp bir tarayıcı penceresine yapıştırmanız yeterlidir ve günlük dosyasını indirebilir ve görüntüleyebilirsiniz.
+Görüntü günlük URI'si, Azure blob Depolama'nızda depolanan bir günlük dosyasına işaret eden bir SAS URL'si ' dir. Yalnızca kopyalama ve yapıştırma URI ve bir tarayıcı penceresi içinde indirin ve günlük dosyasını görüntüleyin.
 
 ### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault erişim ilkesi ve Azure Resource Manager şablonları
 
@@ -155,9 +165,6 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
 ## <a name="debug-locally"></a>Yerel olarak hata ayıkla
 
 Bir modeli ACG veya AKS 'e dağıtmaya yönelik sorunlarla karşılaşırsanız, bunu yerel olarak dağıtmaya çalışın. Yerel bir kullanmak, sorunları gidermenize daha kolay hale getirir. Modeli içeren Docker görüntüsü indirilip yerel sisteminizde başlatılır.
-
-> [!IMPORTANT]
-> Yerel dağıtımlar yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Yerel dağıtmadan önce Docker çalışıyor olmalıdır. Docker 'ı yükleme ve kullanma hakkında bilgi için bkz. [https://www.docker.com/](https://www.docker.com/).
 
 > [!WARNING]
 > Yerel dağıtımlar, üretim senaryolarında desteklenmez.
@@ -227,7 +234,7 @@ Hizmeti silmek için [Delete ()](https://docs.microsoft.com/python/api/azureml-c
 
 ### <a id="dockerlog"></a>Docker günlüğünü İnceleme
 
-Service nesnesinden ayrıntılı Docker motoru günlük iletilerini yazdırabilirsiniz. ACI, AKS ve yerel dağıtımlar için günlüğü görüntüleyebilirsiniz. Aşağıdaki örnek günlükleri nasıl yazdırabileceğinizi gösterir.
+Hizmet nesnesinden ayrıntılı Docker altyapısı günlük iletilerini yazdırabilirsiniz. ACI, AKS ve yerel dağıtımlar için günlüğü görüntüleyebilirsiniz. Aşağıdaki örnek günlükleri nasıl yazdırabileceğinizi gösterir.
 
 ```python
 # if you already have the service object handy
@@ -237,15 +244,15 @@ print(service.get_logs())
 print(ws.webservices['mysvc'].get_logs())
 ```
 
-## <a name="service-launch-fails"></a>Hizmet başlatılamadı
+## <a name="service-launch-fails"></a>Hizmet başlatma başarısız
 
-Görüntü başarıyla derlendikten sonra, sistem dağıtım yapılandırmanızı kullanarak bir kapsayıcı başlatmaya çalışır. Kapsayıcı başlatma işleminin bir parçası olarak, Puanlama betiğinizdeki `init()` işlevi sistem tarafından çağrılır. `init()` işlevinde yakalanamayan özel durumlar varsa, hata iletisinde **Crashloopgeri** alma hatası ' nı görebilirsiniz.
+Görüntü başarıyla derlendikten sonra, sistem dağıtım yapılandırmanızı kullanarak bir kapsayıcı başlatmaya çalışır. Kapsayıcı başlatma artırma işleminin bir parçası olarak `init()` işlevi Puanlama komut dosyanızdaki sistem tarafından çağrılır. İçinde yakalanmamış istisnalar varsa `init()` görebileceğiniz işlev **CrashLoopBackOff** hata hata iletisi.
 
 Günlükleri denetlemek için [Docker günlüğünü İnceleme](#dockerlog) bölümündeki bilgileri kullanın.
 
-## <a name="function-fails-get_model_path"></a>İşlev başarısız: get_model_path ()
+## <a name="function-fails-get_model_path"></a>İşlevi başarısız: get_model_path()
 
-Genellikle, Puanlama betiğinin `init()` işlevinde, model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için [model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) işlevi çağırılır. Model dosyası veya klasörü bulunamazsa, işlev başarısız olur. Bu hatada hata ayıklamanın en kolay yolu, kapsayıcı kabuğu 'nda aşağıdaki python kodunu çalıştırmalıdır:
+Genellikle, Puanlama betiğinin `init()` işlevinde, model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) işlevi çağırılır. Model dosyası veya klasörü bulunamazsa, işlev başarısız olur. Çalıştırmak için bu hata ayıklama için en kolay yolu olan Python kodu kapsayıcı Kabuğu'nda aşağıdaki:
 
 ```python
 from azureml.core.model import Model
@@ -254,13 +261,13 @@ logging.basicConfig(level=logging.DEBUG)
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-Bu örnek, Puanlama betiğinizin model dosyasını veya klasörünü bulmasını beklediği kapsayıcıda yerel yolu (`/var/azureml-app`göre) yazdırır. Dosya veya klasörün gerçekten beklenen yerde olduğunu doğrulayabilirsiniz.
+Bu örnek, Puanlama betiğinizin model dosyasını veya klasörünü bulmasını beklediği kapsayıcıda yerel yolu (`/var/azureml-app`göre) yazdırır. Ardından, dosya veya klasörün aslında burada olması beklenmektedir olup olmadığını doğrulayabilirsiniz.
 
 Günlüğe kaydetme düzeyinin hata ayıklama olarak ayarlanması ek bilgilerin günlüğe kaydedilmesine neden olabilir ve bu da hatayı belirlemek için yararlı olabilir.
 
-## <a name="function-fails-runinput_data"></a>İşlev başarısız oldu: Run (input_data)
+## <a name="function-fails-runinput_data"></a>İşlevi başarısız: run(input_data)
 
-Hizmet başarıyla dağıtılırsa, ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, `run(input_data)` işlevinize hata yakalama açıklaması ekleyebilirsiniz, böylece bunun yerine ayrıntılı hata iletisi döndürülür. Örneğin:
+Hizmet başarıyla dağıtıldı, ancak Puanlama uç noktası veri göndermek çöküyor deyiminde yakalama hata ekleyebilirsiniz, `run(input_data)` ayrıntılı hata iletisi yerine döndürür, böylece işlev. Örneğin:
 
 ```python
 def run(input_data):
@@ -275,7 +282,7 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Note**: `run(input_data)` çağrısından alınan hata iletilerinin döndürülmesi yalnızca hata ayıklama amacıyla yapılmalıdır. Güvenlik nedenleriyle, bir üretim ortamında bu şekilde hata iletileri döndürmemelisiniz.
+**Not**: hata iletilerini döndüren `run(input_data)` sadece hata ayıklama için çağrısı yapılmalıdır. Güvenlik nedenleriyle, bir üretim ortamında bu şekilde hata iletileri döndürmemelisiniz.
 
 ## <a name="http-status-code-503"></a>HTTP durum kodu 503
 
@@ -325,8 +332,8 @@ Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli o
 
 > [!IMPORTANT]
 > Bu hata ayıklama yöntemi, bir modeli yerel olarak dağıtmak için `Model.deploy()` ve `LocalWebservice.deploy_configuration` kullanılırken çalışmaz. Bunun yerine, [containerımage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) sınıfını kullanarak bir görüntü oluşturmanız gerekir. 
->
-> Yerel dağıtımlar yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Yerel dağıtmadan önce Docker çalışıyor olmalıdır. Docker 'ı yükleme ve kullanma hakkında bilgi için bkz. [https://www.docker.com/](https://www.docker.com/).
+
+Yerel dağıtımlar yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Docker kullanma hakkında daha fazla bilgi için [Docker belgelerine](https://docs.docker.com/)bakın.
 
 ### <a name="configure-development-environment"></a>Geliştirme ortamını yapılandırma
 
@@ -531,5 +538,5 @@ docker stop debug
 
 Dağıtım hakkında daha fazla bilgi edinin:
 
-* [Dağıtım ve nerede](how-to-deploy-and-where.md)
-* [Öğretici: eğitim & dağıtım modelleri](tutorial-train-models-with-aml.md)
+* [Nasıl dağıtılacağı ve nerede](how-to-deploy-and-where.md)
+* [Öğretici: Eğitme ve modelleri dağıtma](tutorial-train-models-with-aml.md)

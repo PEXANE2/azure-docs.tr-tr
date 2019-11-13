@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 9331f13bd85d9df0d47f8fa9d0964974764691f7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4cbc4044b5d1270cecd1a271d2a1db02801650dd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815110"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012763"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio bağlı hizmetler 'i kullanarak Web uygulamanıza Key Vault ekleme
 
@@ -22,7 +22,7 @@ Bu öğreticide, ASP.NET Core veya herhangi bir tür ASP.NET projesi kullanıp k
 
 Bağlı hizmetlerin projenizde Key Vault sağlamak üzere yaptığı değişikliklerle ilgili ayrıntılar için, bkz. [Key Vault bağlı hizmet-ASP.NET 4.7.1 projem 'A ne oldu](#how-your-aspnet-framework-project-is-modified) veya [Key Vault bağlı Service-ASP.NET Core projem Için ne oldu?](#how-your-aspnet-core-project-is-modified).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Bir Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
 - **Web geliştirme** iş yükü yüklüyken **Visual studio 2019 sürüm 16,3 Preview 1** veya üzeri ya da **Visual Studio 2017 sürüm 15,7** . [Şimdi indir](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
@@ -134,6 +134,21 @@ Artık gerekli değilse kaynak grubunu silin. Bu, Key Vault ve ilgili kaynaklar�
 1. Portalın üst kısmındaki Arama kutusuna kaynak grubunuzun adını girin. Bu hızlı başlangıçta kullanılan kaynak grubunu arama sonuçlarında gördüğünüzde seçin.
 2. **Kaynak grubunu sil**'i seçin.
 3. **Kaynak grubu adını yazın:** kutusuna kaynak grubunun adını girin ve **Sil**' i seçin.
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+Anahtar kasanızın, Visual Studio 'da oturum açtığınızdan farklı bir Microsoft hesabı çalışıyorsa (örneğin, Anahtar Kasası iş hesabınızda çalışıyorsa, ancak Visual Studio özel hesabınızı kullanıyorsa) Program.cs dosyanızda bir hata alırsınız , bu Visual Studio anahtar kasasına erişim alamıyor. Bu sorunu düzeltmek için:
+
+1. [Azure Portal](https://portal.azure.com) gidin ve Key Vault açın.
+
+1. **Erişim ilkeleri**' ni seçin, sonra **erişim ilkesi ekleyin**ve oturum açtığınız hesabı sorumlu olarak seçin.
+
+1. Visual Studio 'da **dosya** > **Hesap ayarları**' nı seçin.
+**Tüm hesap** bölümünden **Hesap Ekle** ' yi seçin. Erişim ilkenizin sorumlusu olarak seçtiğiniz hesapla oturum açın.
+
+1. **Araçlar** > **Seçenekler**' i seçin ve **Azure hizmeti kimlik doğrulaması**' nı arayın. Ardından, Visual Studio 'ya yeni eklediğiniz hesabı seçin.
+
+Artık uygulamanızda hata ayıklarken, Visual Studio anahtar kasanızın bulunduğu hesaba bağlanır.
 
 ## <a name="how-your-aspnet-core-project-is-modified"></a>ASP.NET Core projeniz nasıl değiştirilir
 

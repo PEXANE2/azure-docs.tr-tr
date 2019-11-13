@@ -1,6 +1,7 @@
 ---
-title: Uygulama kayıt portalı uygulama kaydı Eğitim Kılavuzu-Microsoft Identity platform | Mavisi
-description: Uygulama kayıt portalına alışkın olan kullanıcılar için Azure portal Uygulama kayıtları
+title: Uygulama kayıt portalından Azure portal yeni Uygulama kayıtları deneyimine geçme
+titleSuffix: Microsoft identity platform
+description: Azure portal yeni uygulama kayıt deneyimine giriş
 services: active-directory
 documentationcenter: ''
 author: archieag
@@ -17,14 +18,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1974616c0331203a803e4f13a19297940fb5d42e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0e9c09ce2d997c58e2725c411fff0b87a0f5071b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905478"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013019"
 ---
-# <a name="training-guide-using-app-registrations-in-the-azure-portal-instead-of-application-registration-portal"></a>Eğitim Kılavuzu: uygulama kayıt portalı yerine Azure portal Uygulama kayıtları kullanma
+# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Uygulama kayıt portalından Azure portal yeni Uygulama kayıtları deneyimine geçme
 
 Azure portal yeni [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminde birçok iyileştirme vardır. Eski deneyim olarak adlandırılan yakınsama uygulamalarını kaydetme veya yönetme ile ilgili uygulama kayıt portalı (apps.dev.microsoft.com) deneyimiyle daha fazla bilginiz varsa, bu eğitim kılavuzu yeni deneyimi kullanmaya başlamanızı sağlar.
 
@@ -83,17 +84,17 @@ Azure portal yeni deneyim, bu özellikleri ayrı sayfalarda temsil eder. Eşdeğ
 
 Yeni deneyimde, **uygulama gizli** dizileri **sertifikalarla &** yeniden adlandırıldı. Bunlara ek olarak, **ortak anahtarlar** **sertifika** ve **parolalar** **istemci gizli**dizileri olarak adlandırılır. Güvenlik nedenleriyle bu işlevselliği yeni deneyimde getirmemeyi seçtik, bu nedenle artık yeni bir anahtar çifti üretilemez.
 
-## <a name="platformsauthentication---reply-urlsredirect-uris"></a>Platformlar/kimlik doğrulama-yanıt URL 'Leri/yeniden yönlendirme URI 'Leri
+## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformlar/kimlik doğrulaması: yanıt URL 'Leri/yeniden yönlendirme URI 'leri
 Eski deneyimde bir uygulamada Web, yerel ve Web API 'SI için platformlar bölümü, yeniden yönlendirme URL 'Leri, oturum kapatma URL 'SI ve örtük akış yapılandırılması gerekir.
 
-Yeni deneyimde, yanıt URL 'Leri bir uygulama\'s kimlik doğrulama bölümünde bulunabilir. Bunlara ek olarak, yeniden yönlendirme URI 'Leri olarak adlandırılır ve yeniden yönlendirme URI 'Leri biçimi değişmiştir. Bunların bir uygulama türüyle ilişkilendirilmesi gerekir (Web veya genel istemci-mobil ve Masaüstü). [Daha fazla bilgi edinin](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+Yeni deneyimde, yanıt URL 'Leri bir uygulama\'s kimlik doğrulama bölümünde bulunabilir. Bunlara ek olarak, yeniden yönlendirme URI 'Leri olarak adlandırılır ve yeniden yönlendirme URI 'Leri biçimi değişmiştir. Bunların bir uygulama türüyle ilişkilendirilmesi gerekir (Web veya genel istemci-mobil ve Masaüstü). [Daha fazla bilgi](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
 Web API 'Leri bir API 'YI kullanıma sunma sayfasında yapılandırılır.
 
 > [!NOTE] 
-> Hedeflemek istediğiniz platforma veya cihaza göre uygulamanızın ayarlarını yapılandırabileceğiniz yeni kimlik doğrulama ayarları deneyimini deneyin. [Daha fazla bilgi edinin](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
+> Hedeflemek istediğiniz platforma veya cihaza göre uygulamanızın ayarlarını yapılandırabileceğiniz yeni kimlik doğrulama ayarları deneyimini deneyin. [Daha fazla bilgi](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
 
-## <a name="microsoft-graph-permissionsapi-permissions"></a>Microsoft Graph Izinleri/API izinleri
+## <a name="microsoft-graph-permissionsapi-permissions"></a>Microsoft Graph izinleri/API izinleri
 
 -   Eski deneyimde bir API seçerken yalnızca Microsoft Graph API 'Leri seçebilirsiniz. Yeni deneyimde Microsoft Graph, kuruluşunuzdaki ve API 'lerinizin API 'Leri gibi birçok Microsoft API arasından seçim yapabilirsiniz, bu üç sekmede sunulmaktadır: Microsoft API 'leri, Kuruluşumun kullandığı API 'ler veya API 'Lerim. API 'lerim üzerindeki arama çubuğu, Kiracıdaki hizmet sorumluları aracılığıyla sekme aramalarını kullanır.
     
@@ -111,7 +112,7 @@ Yeni deneyimde bildirim sayfası, uygulamanın özniteliklerini düzenlemenize v
 ## <a name="new-ui"></a>Yeni Kullanıcı arabirimi
 Daha önce yalnızca bildirim Düzenleyicisi veya API kullanılarak ayarlanan özellikler için yeni kullanıcı arabirimi var veya yok.
 
--   Örtük verme akışı (oauth2AllowImplicitFlow) kimlik doğrulama sayfasında bulunabilir. Eski deneyimden farklı olarak, erişim belirteçlerini veya kimlik belirteçlerini veya her ikisini de etkinleştirebilirsiniz.
+-   Örtük verme akışı (oauth2AllowImplicitFlow) kimlik doğrulama sayfasında bulunabilir. Eski deneyimden farklı olarak, erişim belirteçlerini veya KIMLIK belirteçlerini veya her ikisini de etkinleştirebilirsiniz.
 
 -   Bu API (oauth2Permissions) ve yetkili istemci uygulamaları (ön kimlik doğrulama) tarafından tanımlanan kapsamlar, bir API 'YI kullanıma sunma sayfasından yapılandırılabilir. Bir uygulamayı Web API 'SI olarak yapılandırma ve izinleri/kapsamları kullanıma sunma hakkında daha fazla bilgi için [Bu hızlı başlangıç](quickstart-configure-app-expose-web-apis.md)bölümüne bakın.
 

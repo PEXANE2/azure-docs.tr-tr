@@ -3,17 +3,17 @@ title: Azure IoT Central mimari kavramları | Microsoft Docs
 description: Bu makalede, Azure IoT Central mimarisiyle ilgili temel kavramlar tanıtılmaktadır
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/15/2019
+ms.date: 11/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cb2ca8fe227abd107daa60a0f7d31ba5dc4e7c1b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 66792d9d0a8b1cd72ef8f22481016a35f37a1597
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895338"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013898"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central mimarisi (Önizleme özellikleri)
 
@@ -33,6 +33,68 @@ Cihazlar, Azure IoT Central uygulamanızla verileri değiş tokuş. Bir cihaz ş
 Azure IoT Central, bir cihazın uygulamanızla değiş tokuş edebilir bir cihaz şablonunda belirtilir. Cihaz şablonları hakkında daha fazla bilgi için bkz. [metadata Management](#metadata-management).
 
 Cihazların Azure IoT Central uygulamanıza nasıl bağlanabileceği hakkında daha fazla bilgi edinmek için bkz. [cihaz bağlantısı](overview-iot-central-get-connected.md).
+
+## <a name="azure-iot-edge-devices"></a>Azure IOT Edge cihazları
+
+Ayrıca, [Azure IoT SDK 'ları](https://github.com/Azure/azure-iot-sdks)kullanılarak oluşturulan cihazların yanı sıra, [Azure IoT Edge cihazlarını](../../iot-edge/about-iot-edge.md) bir IoT Central uygulamasına da bağlayabilirsiniz. IoT Edge, IoT Central tarafından yönetilen IoT cihazlarında doğrudan bulut zekasını ve özel mantık çalıştırmanızı sağlar. IoT Edge çalışma zamanı şunları yapmanızı sağlar:
+
+- Cihaza iş yüklerini yükleyip güncelleştirin.
+- Cihazda IoT Edge güvenlik standartlarının bakımını yapın.
+- IoT Edge modüllerinin her zaman çalıştığından emin olun.
+- Uzaktan izleme için modül durumunu buluta bildirin.
+- Bir IoT Edge cihazdaki modüller arasında ve bir IoT Edge cihaz ile bulut arasında aşağı akış yaprak cihazları ve bir IoT Edge cihazı arasındaki iletişimi yönetin.
+
+![Azure IoT Edge ile Azure IoT Central](./media/concepts-architecture/iotedge.png)
+
+IoT Central, IoT Edge cihazlar için aşağıdaki özellikleri sağlar:
+
+- Bir IoT Edge cihazının özelliklerini betimleyen cihaz şablonları:
+  - Dağıtım bildirimi karşıya yükleme yeteneği, bu, bir veya bir cihaz için bir bildirimi yönetmenize yardımcı olur.
+  - IoT Edge cihazında çalışan modüller.
+  - Her modülün gönderdiği telemetri.
+  - Her modülün Özellikler rapor.
+  - Her modülün yanıt verdiği komutlar.
+  - IoT Edge ağ geçidi cihazı yetenek modeli ve aşağı akış cihazı yetenek modeli arasındaki ilişkiler.
+  - IoT Edge cihazında depolanmayan bulut özellikleri.
+  - IoT Central uygulamanızın parçası olan özelleştirmeler, panolar ve formlar.
+
+  Daha fazla bilgi için [IoT Edge cihaz şablonu oluşturma](./tutorial-define-edge-device-type.md) öğreticisine bakın.
+
+- Azure IoT cihaz sağlama hizmeti 'ni kullanarak ölçekli IoT Edge cihazları sağlama özelliği
+- Kurallar ve eylemler.
+- Özel panolar ve çözümlemeler.
+- IoT Edge cihazlarından Telemetriyi sürekli dışa aktarma.
+
+### <a name="iot-edge-device-types"></a>IoT Edge cihaz türleri
+
+IoT Central IoT Edge cihaz türlerini aşağıdaki şekilde sınıflandırır:
+
+- Yaprak cihazlar. Bir IoT Edge cihazın aşağı akış yaprak cihazları olabilir, ancak bu cihazlar IoT Central sağlanmadı.
+- Aşağı akış cihazları olan ağ geçidi cihazları. Ağ geçidi cihazı ve aşağı akış Cihazları IoT Central
+
+![IoT Edge genel bakış ile IoT Central](./media/concepts-architecture/gatewayedge.png)
+
+### <a name="iot-edge-patterns"></a>IoT Edge desenleri
+
+IoT Central aşağıdaki IoT Edge cihaz düzenlerini destekler:
+
+#### <a name="iot-edge-as-leaf-device"></a>Yaprak cihaz olarak IoT Edge
+
+![Yaprak cihaz olarak IoT Edge](./media/concepts-architecture/edgeasleafdevice.png)
+
+IoT Edge cihaz IoT Central sağlanır ve tüm aşağı akış cihazları ve telemetri IoT Edge cihazdan geldiği şekilde gösterilir. IoT Edge cihazına bağlı aşağı akış Cihazları IoT Central sağlanmadı.
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>Kimliği olan aşağı akış cihazlarına bağlı IoT Edge ağ geçidi cihazı
+
+![Aşağı akış cihaz kimliği ile IoT Edge](./media/concepts-architecture/edgewithdownstreamdeviceidentity.png)
+
+IoT Edge cihaz, IoT Edge cihaza bağlı olan aşağı akış cihazları ile birlikte IoT Central sağlanır. Ağ Geçidi üzerinden aşağı akış cihazları sağlamaya yönelik çalışma zamanı desteği şu anda desteklenmiyor.
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>IoT Edge Ağ Geçidi tarafından belirtilen kimliğe sahip aşağı akış cihazlarına bağlı IoT Edge ağ geçidi cihazı
+
+![Kimliği olmayan aşağı akış cihazından IoT Edge](./media/concepts-architecture/edgewithoutdownstreamdeviceidentity.png)
+
+IoT Edge cihaz, IoT Edge cihaza bağlı olan aşağı akış cihazları ile birlikte IoT Central sağlanır. Aşağı akış cihazlarına kimlik sağlayan ve aşağı akış cihazlarının sağlanması için ağ geçidinin çalışma zamanı desteği şu anda desteklenmemektedir. Kendi kimlik çeviri modülünüzü getiriniz IoT Central, bu düzene destek verebilir.
 
 ## <a name="cloud-gateway"></a>Bulut ağ geçidi
 

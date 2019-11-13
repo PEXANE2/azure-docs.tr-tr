@@ -1,18 +1,18 @@
 ---
-title: Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için şirket içi Hyper-V sunucuları hazırlama
-description: Azure Site Recovery hizmetiyle Azure 'a olağanüstü durum kurtarma için şirket içi Hyper-V VM 'lerini nasıl hazırlayacağınızı öğrenin.
+title: Azure Site Recovery ile Hyper-V VM 'lerini Azure 'a olağanüstü durum kurtarmaya hazırlanma
+description: Azure Site Recovery ile Azure 'a olağanüstü durum kurtarma için şirket içi Hyper-V VM 'lerini nasıl hazırlayacağınızı öğrenin.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b17e42378daf51543a2664315f2971d15c288611
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813718"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953998"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Azure 'a olağanüstü durum kurtarma için şirket içi Hyper-V sunucuları hazırlama
 
@@ -21,7 +21,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak Hyper-VM
 
 Bu, şirket içi Hyper-V VM 'Leri için Azure 'da olağanüstü durum kurtarmanın nasıl ayarlanacağını gösteren bir serinin ikinci öğreticisidir. İlk öğreticide, Hyper-V olağanüstü durum kurtarma için gereken [Azure bileşenlerini ayarladık](tutorial-prepare-azure.md) .
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Hyper-v konaklarınız System Center VMM tarafından yönetiliyorsa, Hyper-V gereksinimlerini ve VMM gereksinimlerini gözden geçirin.
@@ -85,7 +85,7 @@ Yük devretme senaryosu sırasında, çoğaltılan şirket içi ağınıza bağl
 Yük devretmeden sonra RDP kullanarak Windows VM 'lerine bağlanmak için aşağıdaki gibi erişime izin verin:
 
 1. İnternet üzerinden erişmek için, yük devretmeden önce şirket içi VM’de RDP’yi etkinleştirin. TCP ve UDP kurallarının **Ortak** profil için eklendiğinden ve tüm profillerde **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalar** içinde RDP’ye izin verildiğinden emin olun.
-2. Siteden siteye VPN üzerinden erişmek için, şirket içi makinede RDP’yi etkinleştirin. **Etki Alanı ve Özel** ağlar için **Windows Güvenlik Duvarı** -> **İzin verilen uygulama ve özellikler içinde** RDP’ye izin verilmelidir.
+2. Siteden siteye VPN üzerinden erişmek için, şirket içi makinede RDP’yi etkinleştirin. **Etki Alanı ve Özel** ağlar için  -> Windows Güvenlik Duvarı**İzin verilen uygulama ve özellikler içinde** RDP’ye izin verilmelidir.
    İşletim sisteminin SAN ilkesinin **OnlineAll** olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135). Bir yük devretme tetiklediğinizde VM’de bekleyen Windows güncelleştirmelerinin olmaması gerekir. Varsa, güncelleştirme tamamlanana kadar sanal makinede oturum açamazsınız.
 3. Yük devretmeden sonra Windows Azure VM’sinde, VM’nin bir ekran görüntüsünü görmek için **Önyükleme tanılaması**’nı kontrol edin. Bağlanamıyorsanız, VM’nin çalıştığından emin olun ve şu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) gözden geçirin.
 
@@ -94,5 +94,5 @@ Yük devretmeden sonra, çoğaltılan şirket içi VM ile aynı IP adresini veya
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Hyper-v VM 'leri](tutorial-hyper-v-to-azure.md)
-> için Azure 'da olağanüstü durum kurtarmayı ayarlama[VMM bulutlarındaki Hyper-v VM 'leri için Azure 'da olağanüstü durum kurtarmayı ayarlama](tutorial-hyper-v-vmm-to-azure.md)
+> [Hyper-v VM 'leri Için Azure 'da olağanüstü durum kurtarmayı ayarlama](tutorial-hyper-v-to-azure.md)
+> [VMM bulutlarındaki Hyper-v VM 'leri için olağanüstü durum kurtarmayı ayarlama](tutorial-hyper-v-vmm-to-azure.md)

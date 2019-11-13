@@ -3,7 +3,7 @@ title: Azure Active Directory’de adlandırılmış konumları yapılandırma |
 description: Adlandırılmış konumların nasıl yapılandırılacağını öğrenin.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1513dba19221e64d40551ffb13a5e9f33fd9858f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: df45ab0a7b1729ae6c1602c9769cd5b6da26f6ac
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127234"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014353"
 ---
-# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Hızlı Başlangıç: Azure Active Directory adlandırılmış konumları yapılandırma
+# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Hızlı Başlangıç: Azure Active Directory’de adlandırılmış konumları yapılandırma
 
 Adlandırılmış konumlar ile, kuruluşunuzda güvenilir IP adresi aralıklarını etiketleyebilirsiniz. Azure AD, aşağıdakileri yapmak için adlandırılmış konumları kullanır:
-- [Risk](concept-risk-events.md)Algılamalarda yanlış pozitif sonuçları algıla. Güvenilir bir konumdan oturum açılması, kullanıcının oturum açma riskini azaltır.   
+- [Risk Algılamalarda](concept-risk-events.md)yanlış pozitif sonuçları algıla. Güvenilir bir konumdan oturum açılması, kullanıcının oturum açma riskini azaltır.   
 - [Konum tabanlı koşullu erişimi](../conditional-access/location-condition.md)yapılandırın.
 
 Bu hızlı başlangıçta, ortamınızda adlandırılmış konumları nasıl yapılandıracağınızı öğreneceksiniz.
@@ -41,7 +41,7 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 ## <a name="configure-named-locations"></a>Adlandırılmış konumları yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Sol bölmede **Azure Active Directory**' yi seçin ve ardından **güvenlik** bölümünden **koşullu erişim** ' i seçin.
 
@@ -55,7 +55,7 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
    * **Ad** kutusuna, adlandırılmış konumunuz için bir ad girin.
    * **IP aralıkları** kutusuna CIDR biçiminde IP aralığını girin.  
-   * **Oluştur**'a tıklayın.
+   * **Oluştur**’ tıklayın.
     
      ![Yeni dikey pencere](./media/quickstart-configure-named-locations/61.png)
 

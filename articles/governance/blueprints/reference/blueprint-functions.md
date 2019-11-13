@@ -1,17 +1,14 @@
 ---
 title: Azure şemaları işlevleri
 description: Azure şemaları tanımları ve atamaları ile kullanım için işlevleri açıklar.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/15/2019
 ms.topic: reference
-ms.service: blueprints
-ms.openlocfilehash: a3021e79ddfb808db64896d79bb163d42236b295
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5f4948b55b8889094570574647b7a35ce08f5c12
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978394"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960302"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure şemaları ile kullanım için işlevler
 
@@ -19,14 +16,14 @@ Azure şemaları, bir şema tanımını daha dinamik hale getiren işlevler sağ
 
 Aşağıdaki işlevler desteklenir:
 
-- [Yapıt](#artifacts)
-- [Concat](#concat)
+- [artifacts](#artifacts)
+- [concat](#concat)
 - [parametreler](#parameters)
-- [Kaynak](#resourcegroup)
+- [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
 - [aboneliği](#subscription)
 
-## <a name="artifacts"></a>Yapıt
+## <a name="artifacts"></a>artifacts
 
 `artifacts(artifactName)`
 
@@ -34,7 +31,7 @@ Bu şema yapıtları çıkışları ile doldurulmuş özelliklerin bir nesnesini
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | artifactName |Yes |string |Şema yapıtı adı. |
 
@@ -108,7 +105,7 @@ _Mytemplateyapıt_ örneğinden veri almaya ilişkin bazı örnekler şunlardır
 
 | İfadeler | Tür | Değer |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Dizi | \[ "First", "Second" \] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Dizi | \["First", "Second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Dize | adı |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | Dize | "dize değeri" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Nesne | {"MyProperty": "My value", "anotherProperty": true} |
@@ -123,9 +120,9 @@ Birden çok dize değerini birleştirir ve birleştirilmiş dizeyi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| dize1 |Yes |string |Birleştirme için ilk değer. |
+| string1 |Yes |string |Birleştirme için ilk değer. |
 | ek bağımsız değişkenler |Hayır |string |Birleştirme için ek değerler sıralı sırada |
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -148,7 +145,7 @@ Bir şema parametre değeri döndürür. Belirtilen parametre adı, şema tanım
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | parameterName |Yes |string |Döndürülecek parametrenin adı. |
 
@@ -184,7 +181,7 @@ Azure Blueprint işlevi, Azure Resource Manager şablonu işlevinden farklıdır
 }
 ```
 
-Daha sonra, bir şema yapıtı içinde `parameters()` için bağımsız değişken olarak _Prenalid_ 'leri kullanın:
+Ardından, şema yapıtında `parameters()` için bağımsız değişken olarak _prenler_ kullanın:
 
 ```json
 {
@@ -218,9 +215,9 @@ Döndürülen nesne aşağıdaki biçimdedir:
 
 ### <a name="remarks"></a>Açıklamalar
 
-Azure Blueprint işlevi Azure Resource Manager şablonu işlevinden farklıdır. @No__t-0 işlevi, abonelik düzeyindeki yapıt veya şema tanımında kullanılamaz. Yalnızca bir kaynak grubu yapısının parçası olan şema yapıtları için kullanılabilir.
+Azure Blueprint işlevi Azure Resource Manager şablonu işlevinden farklıdır. `resourceGroup()` işlevi, abonelik düzeyindeki yapıt veya şema tanımında kullanılamaz. Yalnızca bir kaynak grubu yapısının parçası olan şema yapıtları için kullanılabilir.
 
-@No__t-0 işlevinin yaygın kullanımı, kaynak grubu yapıtı ile aynı konumda kaynak oluşturmaktır.
+`resourceGroup()` işlevinin yaygın kullanımı, kaynak grubu yapıtı ile aynı konumda kaynak oluşturmaktır.
 
 ### <a name="example"></a>Örnek
 
@@ -240,7 +237,7 @@ Kaynak grubunun konumunu kullanmak için, başka bir yapıtın konumu olarak, ş
 }
 ```
 
-Ardından, bir kaynak grubu yer tutucu nesnesini hedefleyen bir şema yapıtı bağlamında `resourceGroup()` işlevini kullanın. Bu örnekte, şablon yapıtı _Networkingplaceholder_ kaynak grubuna dağıtılır ve _networkingplaceholder_ kaynak grubu konumu ile dinamik olarak doldurulmuş bir parametre _ResourceLocation_ sağlar şablonlarını. _Networkingplaceholder_ kaynak grubunun konumu, şema tanımında statik olarak tanımlanmış veya atama sırasında dinamik olarak tanımlanmış olabilir. Her iki durumda da şablon yapıtı, bu bilgileri parametre olarak sağlar ve kaynakları doğru konuma dağıtmak için kullanır.
+Ardından, bir kaynak grubu yer tutucu nesnesini hedefleyen bir şema yapıtı bağlamında `resourceGroup()` işlevini kullanın. Bu örnekte, şablon yapıtı _Networkingplaceholder_ kaynak grubuna dağıtılır ve bu parametre _ResourceLocation_ ' ı dinamik olarak, bir şablon için _networkingplaceholder_ kaynak grubu konumuyla doldurulmuş olarak sunar. _Networkingplaceholder_ kaynak grubunun konumu, şema tanımında statik olarak tanımlanmış veya atama sırasında dinamik olarak tanımlanmış olabilir. Her iki durumda da şablon yapıtı, bu bilgileri parametre olarak sağlar ve kaynakları doğru konuma dağıtmak için kullanır.
 
 ```json
 {
@@ -265,11 +262,11 @@ Ardından, bir kaynak grubu yer tutucu nesnesini hedefleyen bir şema yapıtı b
 
 `resourceGroups(placeholderName)`
 
-Belirtilen kaynak grubu yapıtını temsil eden bir nesne döndürür. Yapıtın bağlamını gerektiren `resourceGroup()` ' dan farklı olarak, bu işlev ilgili kaynak grubu bağlamında olmayan belirli bir kaynak grubu yer tutucusunun özelliklerini almak için kullanılır.
+Belirtilen kaynak grubu yapıtını temsil eden bir nesne döndürür. Yapıtın bağlamını gerektiren `resourceGroup()`aksine bu işlev, kaynak grubunun bağlamında olmayan belirli bir kaynak grubu yer tutucusunun özelliklerini almak için kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | placeholderName |Yes |string |Döndürülecek kaynak grubu yapıtı için yer tutucu adı. |
 
@@ -302,7 +299,7 @@ Kaynak grubunun konumunu kullanmak için, başka bir yapıtın konumu olarak, ş
 }
 ```
 
-Ardından, kaynak grubu yer tutucu nesnesine bir başvuru almak için herhangi bir şema yapıtı bağlamından `resourceGroups()` işlevini kullanın. Bu örnekte, şablon yapıtı _Networkingplaceholder_ kaynak grubunun dışında dağıtılır ve şu şekilde _networkingplaceholder_ kaynak grubu konumu Ile dinamik olarak doldurulan _artifactlocation_ parametresi sağlar şablonlarını. _Networkingplaceholder_ kaynak grubunun konumu, şema tanımında statik olarak tanımlanmış veya atama sırasında dinamik olarak tanımlanmış olabilir. Her iki durumda da şablon yapıtı, bu bilgileri parametre olarak sağlar ve kaynakları doğru konuma dağıtmak için kullanır.
+Ardından, kaynak grubu yer tutucu nesnesine bir başvuru almak için herhangi bir şema yapıtı bağlamından `resourceGroups()` işlevini kullanın. Bu örnekte, şablon yapıtı _Networkingplaceholder_ kaynak grubunun dışında dağıtılır ve bir _artifactlocation_ parametresi ile _networkingplaceholder_ kaynak grubu konumu ile dinamik olarak doldurulmuş bir parametre sağlar. _Networkingplaceholder_ kaynak grubunun konumu, şema tanımında statik olarak tanımlanmış veya atama sırasında dinamik olarak tanımlanmış olabilir. Her iki durumda da şablon yapıtı, bu bilgileri parametre olarak sağlar ve kaynakları doğru konuma dağıtmak için kullanır.
 
 ```json
 {
@@ -344,7 +341,7 @@ Döndürülen nesne aşağıdaki biçimdedir:
 
 ### <a name="example"></a>Örnek
 
-Şablon yapıtına _resourceName_ parametresi olarak geçirilen bir adlandırma kuralı oluşturmak için aboneliğin görünen adını ve `concat()` işlevini kullanın.
+Şablon yapıtı için _resourceName_ parametresi olarak geçirilen bir adlandırma kuralı oluşturmak için aboneliğin görünen adını ve `concat()` işlevini kullanın.
 
 ```json
 {

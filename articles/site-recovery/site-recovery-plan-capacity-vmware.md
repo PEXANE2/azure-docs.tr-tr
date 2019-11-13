@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery kullanarak Azure 'da VMware olağanüstü durum kurtarma için kapasite ve ölçeklendirme planlayın | Microsoft Docs
+title: Azure Site Recovery ile VMware olağanüstü durum kurtarma için kapasite planlayın
 description: Bu makale, Azure Site Recovery kullanarak VMware VM 'lerinin olağanüstü durum kurtarmasını ayarlarken kapasiteyi ve ölçeklendirmeyi planlamaya yardımcı olabilir.
 author: nsoneji
 manager: garavd
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 0bf1b34295d827124198206e743bc21d5f7eb904
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747908"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961369"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure 'da VMware olağanüstü durum kurtarma için kapasiteyi ve ölçeklendirmeyi planlayın
 
@@ -24,7 +24,7 @@ Azure Site Recovery altyapı gereksinimleri hakkında bilgi edinmek için, VMwar
 
 Site Recovery Dağıtım Planlayıcısı, uyumlu ve uyumsuz VM 'Ler, VM başına disk ve disk başına veri dalgalanması hakkında tüm bilgileri içeren bir rapor sağlar. Araç ayrıca hedef RPO ve başarılı çoğaltma ve yük devretme testi için gereken Azure altyapısını karşılamak için ağ bant genişliği gereksinimlerini özetler.
 
-## <a name="capacity-considerations"></a>Kapasite Konuları
+## <a name="capacity-considerations"></a>Kapasite konuları
 
 Bileşen | Ayrıntılar
 --- | ---

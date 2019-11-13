@@ -3,7 +3,7 @@ title: Oturum açma hataları raporları sorunlarını giderme | Microsoft Docs
 description: Azure portal Azure Active Directory raporlarını kullanarak oturum açma hatalarıyla ilgili sorunları giderme hakkında bilgi edinin
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 692fd2034fb70feffe02320eea5cdb9a3d163475
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ec5fe7f62e8537a7f687202d365eb37d43b48b78
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819703"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008052"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Nasıl yapılır: Azure Active Directory raporlarını kullanarak oturum açma hatalarında sorun giderme
 

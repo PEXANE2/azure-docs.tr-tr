@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
-ms.date: 06/28/2019
-ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/08/2019
+ms.openlocfilehash: fc8159b3deba373948f513cb11540695362ecaf1
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574288"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954556"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard ve Azure Machine Learning deneme çalıştırmalarını ve ölçümlerini görselleştirin
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Azure Machine Learning denemeleri ile TensorBoard 'ı nasıl başladığınıza,
 > [!TIP]
 > Bu belgedeki bilgiler öncelikli olarak, model eğitimi sürecini izlemek isteyen veri bilimcileri ve geliştiricileri içindir. Kotalar, tamamlanan eğitim çalıştırmaları veya tamamlanmış model dağıtımları gibi Azure Machine Learning 'den kaynak kullanımını ve olayları izlemeyi ilgilenen bir yöneticiyseniz, bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * TensorBoard 'u başlatmak ve deneme çalışma geçmişlerinizi görüntülemek için, denemeleri ' nin, ölçümlerini ve performansını izlemek için daha önce günlüğe kaydetme özelliğinin etkinleştirilmesi gerekir.  
 
@@ -41,16 +41,18 @@ Azure Machine Learning denemeleri ile TensorBoard 'ı nasıl başladığınıza,
 
         * Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md) .
 
-        * Not defteri sunucusundaki örnekler klasöründe, bu dizine giderek iki tamamlanmış ve genişletilmiş Not defteri bulun: **kullanımı nasıl kullanılır-azureml > eğitimi-derin öğrenme**.
-        * dışarı aktarma-çalışma geçmişi-çalışma geçmişi. ipynb
-        * tensorboard. ipynb
+        * Not defteri sunucusundaki örnekler klasöründe, bu dizinlere giderek iki tamamlanmış ve genişletilmiş Not defteri bulun:
+            * **> > > nasıl yapılır---------------------by-by**
+
+            * **nasıl kullanılır-azureml > izleme ve izleme-denemeleri > tensorboard. ipynb**
 
     * Kendi Juptyer Not defteri sunucunuz
-          * `tensorboard` ek ile [Azure Machine Learning SDK 'Sını yükler](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
-          * [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md).  
-          * [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
+       * `tensorboard` ek ile [Azure Machine Learning SDK 'Sını yükler](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+        * [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md).  
+        * [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
   
 <a name="direct"></a>
+
 ## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Seçenek 1: çalışma geçmişini TensorBoard 'da doğrudan görüntüleme
 
 Bu seçenek, PyTorch, Chainer ve TensorFlow denemeleri gibi TensorBoard tarafından tüketilebilir olan günlük dosyalarını yerel olarak veren denemeleri için geçerlidir. Bu, denemenizin durumu değilse, bunun yerine [`export_to_tensorboard()` yöntemini](#export) kullanın.
@@ -85,7 +87,7 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-Mnist_with_summaries. Kopyala kod dosyasında, `tf.summary.scalar()`, `tf.summary.histogram()``tf.summary.FileWriter()` vb. çağıran satırlar olduğunu fark edeceksiniz. Bu yöntemler, denemeleri 'in çalıştırma geçmişine yönelik anahtar ölçümlerini gruplar, günlüğe kaydeder ve Etiketler. `tf.summary.FileWriter()`, özel olarak günlüğe kaydedilen deneme ölçümlerinden verileri serileştirerek, TensorBoard 'in onları kapamasını sağlar.
+Mnist_with_summaries. Kopyala, bu kod dosyası boyunca `tf.summary.scalar()`, `tf.summary.histogram()`, `tf.summary.FileWriter()` vb. çağıran satırlar olduğunu fark edeceksiniz. Bu yöntemler, denemeleri 'in çalıştırma geçmişine yönelik anahtar ölçümlerini gruplar, günlüğe kaydeder ve Etiketler. `tf.summary.FileWriter()`, özel olarak günlüğe kaydedilen deneme ölçümlerinden verileri serileştirerek, TensorBoard 'in onları kapamasını sağlar.
 
  ### <a name="configure-experiment"></a>Deneme yapılandırma
 

@@ -1,5 +1,5 @@
 ---
-title: VMware VM 'Leri ve fiziksel sunucuları Azure Site Recovery ile olağanüstü durum kurtarma için sunucularda Mobility aracısını yönetin | Microsoft Docs
+title: Azure Site Recovery ile VMware/fiziksel sunucuları için Mobility Aracısı 'nı yönetme
 description: Azure Site Recovery hizmetini kullanarak VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için Mobility hizmeti aracısını yönetin.
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0a8b3a8bcfc2aa8270d7be140a94e5b83973f3e5
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972122"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953640"
 ---
-# <a name="manage-mobility-agent-on-protected-machines"></a>Korumalı makinelerde Mobility aracısını yönetme
+# <a name="manage-the-mobility-agent"></a>Mobility aracısını yönetme 
 
 VMware VM 'lerini ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarması için Azure Site Recovery kullandığınızda Mobility Agent 'ı sunucunuzda ayarlarsınız. Mobility Aracısı, korumalı makineniz, yapılandırma sunucusu/genişleme işlem sunucusu arasındaki iletişimleri koordine eder ve veri çoğaltmasını yönetir. Bu makalede, Mobility aracısının dağıtıldıktan sonra yönetilmesi için ortak görevler özetlenmektedir.
 
@@ -53,8 +53,8 @@ Site Recovery dağıttığınızda, Mobility hizmetini göndererek yüklemeyi et
 
 Kullanıcı arabiriminden veya bir komut isteminden kaldırın.
 
-- **Kullanıcı arabiriminden**: Makinenin denetim masasında **Programlar**' ı seçin. **Mobility hizmeti/ana hedef sunucusu** > **kaldırma**Microsoft Azure Site Recovery seçin.
-- **Komut isteminden**: Makinede yönetici olarak bir komut istemi penceresi açın. Şu komutu çalıştırın: 
+- **Kullanıcı arabiriminden**: makinenin Denetim Masası 'Nda, **Programlar**' ı seçin. **Microsoft Azure Site Recovery Mobility hizmeti/ana hedef sunucusu** > **Kaldır**' ı seçin.
+- **Bir komut isteminden**: makinede yönetici olarak bir komut istemi penceresi açın. Şu komutu çalıştırın: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
     ```

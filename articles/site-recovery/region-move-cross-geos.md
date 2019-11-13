@@ -1,25 +1,24 @@
 ---
-title: Azure IaaS VM 'lerini Azure Kamu ve kamu bölgeleri arasında Azure Site Recovery hizmetiyle taşıyın | Microsoft Docs
-description: Azure IaaS VM 'lerini Azure Kamu & Kamu bölgeleri arasında taşımak için Azure Site Recovery kullanın.
-services: site-recovery
+title: Azure VM 'lerini kamu ve kamu bölgeleri arasında Azure Site Recovery ile taşıma
+description: Azure sanal makinelerini Azure Kamu ve kamu bölgeleri arasında taşımak için Azure Site Recovery kullanın.
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376135"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961404"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure Kamu ve ortak bölgeler arasında Azure VM 'lerini taşıma 
 
 Mevcut sanal makinelerinizin kullanılabilirliğini artırmak, yönetilebilirlik düzeyini artırmak veya idare nedenleriyle, [burada](azure-to-azure-move-overview.md)açıklandığı gibi, IaaS sanal makinelerinizi Azure Kamu ve kamu bölgeleri arasında taşımak isteyebilirsiniz.
 
-İş sürekliliği ve olağanüstü durum kurtarma (BCDR) amacıyla Şirket içi makinelerin ve Azure VM 'lerinin olağanüstü durum kurtarmayı yönetmek ve düzenlemek için [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanmanın yanı sıra, Azure 'u taşımayı yönetmek için de Site Recovery kullanabilirsiniz Bir ikincil bölgeye sanal makineler.       
+İş sürekliliği ve olağanüstü durum kurtarma (BCDR) amacıyla Şirket içi makinelerin ve Azure VM 'lerinin olağanüstü durum kurtarma işlemlerini yönetmek ve düzenlemek için [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanmanın yanı sıra, Azure sanal makinelerini ikincil bir bölgeye taşımayı yönetmek için Site Recovery de kullanabilirsiniz.       
 
 Bu öğreticide, Azure sanal makinelerini Azure Kamu ve ortak bölgeler arasında Azure Site Recovery kullanarak nasıl taşıyacağınız gösterilmektedir. Aynı coğrafi küme içinde olmayan bölge çiftleri arasında VM 'Leri taşımak için de aynı genişletilebilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -79,8 +78,8 @@ Bir [Azure depolama hesabı](../storage/common/storage-quickstart-create-account
 Mobility hizmeti, çoğaltmak istediğiniz her bir sunucuda yüklü olmalıdır. Site Recovery, sunucu için çoğaltmayı etkinleştirdiğinizde bu hizmeti otomatik olarak yüklüyor. Otomatik olarak yüklemek için Site Recovery sunucuya erişmek üzere kullanacağı bir hesap hazırlamanız gerekir.
 
 - Bir etki alanı veya yerel hesap kullanabilirsiniz
-- Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakın. Bunu yapmak için, **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**altına kaydet Içinde, **LocalAccountTokenFilterPolicy**DWORD girişini 1 değeri ile ekleyin.
-- Bir CLı 'dan ayarı devre dışı bırakmak üzere kayıt defteri girdisini eklemek için şunu yazın:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakın. Bunu yapmak için, Register **HKEY_LOCAL_MACHINE \Software\microsoft\windows\currentversion\ilkelersystem**altında, 1 değeriyle **LocalAccountTokenFilterPolicy**DWORD girişini ekleyin.
+- Bir CLı 'dan ayarı devre dışı bırakmak üzere kayıt defteri girdisini eklemek için şunu yazın: ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Linux için hesap, kaynak Linux sunucusunda kök olmalıdır.
 
 
@@ -108,26 +107,26 @@ Mobility hizmeti, çoğaltmak istediğiniz her bir sunucuda yüklü olmalıdır.
 ## <a name="copy-data-to-the-target-region"></a>Hedef bölgeye veri kopyalama
 Aşağıdaki adımlar, verileri hedef bölgeye kopyalamak için Azure Site Recovery nasıl kullanacağınızı yönlendirecektir.
 
-### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Kasayı, kaynak bölgesi dışında herhangi bir bölgede oluşturun.
+### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Kaynak bölgesi dışında herhangi bir bölgede kasayı oluşturun.
 
 1. [Azure Portal](https://portal.azure.com) > **Kurtarma Hizmetleri**’nde oturum açın.
-2. **Kaynak** > **yönetimi**araçlarıyedeklemesi > **ve Site Recovery**oluştur ' a tıklayın.
+2. **Yedekleme ve Site Recovery** > **Yönetim Araçları** > **kaynak oluştur ' a** tıklayın.
 3. **Ad** bölümünde **ContosoVMVault** kolay adını belirtin. Birden çok tane varsa. abonelik, uygun olanı seçin.
 4. Bir **ContosoRG** kaynak grubu oluşturun.
 5. Bir Azure bölgesi belirtin. Desteklenen bölgeleri kontrol etmek için [Azure Site Recovery Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/site-recovery/) bölümündeki coğrafi kullanılabilirlik kısmına bakın.
 6. Kurtarma Hizmetleri kasalarında **genel bakış** > **ConsotoVMVault** >  **+ Çoğalt** ' a tıklayın.
-7. **Azure** > için**sanallaştırılmamış/diğer**' i seçin.
+7. Azure > **sanallaştırılmamış/başka**bir **şekilde** seçin.
 
 ### <a name="set-up-the-configuration-server-to-discover-vms"></a>VM 'Leri bulacak yapılandırma sunucusunu ayarlayın.
 
 
 Yapılandırma sunucusunu ayarlayın, kasaya kaydedin ve VM 'Leri bulun.
 
-1.  > **Altyapı**kaynağıhazırlamaSiteRecovery > ' ye tıklayın.
+1. Altyapıyı > **kaynağı** **hazırlamak** > **Site Recovery** ' ye tıklayın.
 2. Bir yapılandırma sunucunuz yoksa **+ yapılandırma sunucusu**' na tıklayın.
 3. **Sunucu Ekle**' de, **sunucu türü**' nde **Configuration Server** ' ın göründüğünden emin olun.
 4. Site Recovery Birleşik kurulum yükleme dosyasını indirin.
-5. Kasa kayıt anahtarını indir Birleşik kurulumu çalıştırdığınızda buna ihtiyacınız vardır. Anahtar, oluşturulduktan sonra beş gün boyunca geçerlidir.
+5. Kasa kayıt anahtarını indirin. Birleşik kurulumu çalıştırdığınızda buna ihtiyacınız vardır. Anahtar, oluşturulduktan sonra beş gün boyunca geçerlidir.
 
    ![Kaynağı ayarlama](./media/physical-azure-disaster-recovery/source-environment.png)
 
@@ -154,7 +153,7 @@ Yapılandırma sunucusunu yüklemek için Birleşik kurulumu yerel yönetici ola
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Kayıt tamamlandıktan sonra, yapılandırma sunucusu kasadaki **Ayarlar** > **sunucular** sayfasında görüntülenir.
+Kayıt tamamlandıktan sonra, yapılandırma sunucusu kasadaki **ayarlar** > **sunucular** sayfasında görüntülenir.
 
 ### <a name="configure-target-settings-for-replication"></a>Çoğaltma için hedef ayarlarını yapılandırma
 
@@ -198,21 +197,21 @@ Hedef kaynaklarını seçin ve doğrulayın.
    > [!WARNING]
    > Taşımak istediğiniz Azure sanal makinesinin IP adresini girmeniz gerekir
 
-10. **Özellikler** > **yapılandırma özellikleri**' nde, Mobility hizmetini makineye otomatik olarak yüklemek için işlem sunucusu tarafından kullanılacak hesabı seçin.
+10. Özellikler ** > ** Özellikler **yapılandırma**' da, Mobility hizmetini makineye otomatik olarak yüklemek için işlem sunucusu tarafından kullanılacak hesabı seçin.
 11. **Çoğaltma ayarları** > **Çoğaltma ayarlarını yapılandırma** bölümünde doğru çoğaltma ilkesinin seçilip seçilmediğini doğrulayın. 
-12. **Çoğaltmayı Etkinleştir**’e tıklayın. **Ayarlar** > **İşler** > **Site Recovery İşleri** bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretme için hazırdır.
+12. **Çoğaltmayı Etkinleştir**’e tıklayın. **Ayarlar**İşler > Site Recovery İşleri >  bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretme için hazırdır.
 
 
-Eklediğiniz sunucuları izlemek için, **yapılandırma sunucuları** > **son iletişim**kutusunda bu süre için son keşfedilen zamanı kontrol edebilirsiniz. Zamanlanan bulma süresini beklemeden makineler eklemek için yapılandırma sunucusunu vurgulayın (tıklamayın) ve **Yenile**' ye tıklayın.
+Eklediğiniz sunucuları izlemek için, **yapılandırma sunucularındaki** son keşfedilen zamanı, en **son iletişim** > kontrol edebilirsiniz. Zamanlanan bulma süresini beklemeden makineler eklemek için yapılandırma sunucusunu vurgulayın (tıklamayın) ve **Yenile**' ye tıklayın.
 
 ## <a name="test-the-configuration"></a>Yapılandırmayı test etme
 
 
-1. Kasaya gidin, **Ayarlar** > **çoğaltılan öğeler**' de hedef bölgeye taşımak istediğiniz sanal makineye tıklayın, **+ Test yük devretmesi** simgesine tıklayın.
+1. Kasaya gidin, **ayarlar** > **çoğaltılan öğeler**' de hedef bölgeye taşımak istediğiniz sanal makineye tıklayın, **+ Test yük devretmesi** simgesine tıklayın.
 2. **Yük Devretme Testi** bölümünde, yük devretmede kullanılması için bir kurtarma noktası seçin:
 
-   - **En son işlenen**: VM 'yi, Site Recovery hizmeti tarafından işlenen en son kurtarma noktasına devreder. Zaman damgası gösterilir. Bu seçenekle veri işlemeye zaman harcanmadığından düşük RTO sağlanılır (Kurtarma Süresi Hedefi)
-   - **En son uygulamayla tutarlı**: Bu seçenek, tüm VM 'Lerin üzerinde en son uygulamayla tutarlı kurtarma noktasına devredildi. Zaman damgası gösterilir.
+   - **En son işlenen**: VM’nin yükünü, Site Recovery hizmeti tarafından işlenen en son kurtarma noktasına devreder. Zaman damgası gösterilir. Bu seçenekle veri işlemeye zaman harcanmadığından düşük RTO sağlanılır (Kurtarma Süresi Hedefi)
+   - **Uygulamayla tutarlı olan son**: Bu seçenek, tüm VM’lerin yükünü uygulamayla tutarlı olan en son kurtarma noktasına devreder. Zaman damgası gösterilir.
    - **Özel**: Herhangi bir kurtarma noktası seçin.
 
 3. Yapılandırmayı sınamak için Azure VM 'lerini taşımak istediğiniz hedef Azure sanal ağını seçin. 
@@ -220,15 +219,15 @@ Eklediğiniz sunucuları izlemek için, **yapılandırma sunucuları** > **son i
    > [!IMPORTANT]
    > Yük devretme testi için ayrı bir Azure VM ağı kullanmanızı öneririz. bu sayede, sanal makinelerinizi, çoğaltmayı etkinleştirdiğinizde ayarlanmış olan VM 'lerinizi taşımak istediğiniz üretim ağına göre değil.
 
-4. Taşımayı test etmeye başlamak için **Tamam**' a tıklayın. İlerleme durumunu izlemek için, VM’ye tıklayarak özelliklerini açın. Ya da kasa adı > **Ayarlar** > **İşler** > **Site Recovery işleri** bölümünde **Yük Devretme Testi** işine tıklayabilirsiniz.
+4. Taşımayı test etmeye başlamak için **Tamam**' a tıklayın. İlerleme durumunu izlemek için, VM’ye tıklayarak özelliklerini açın. Ya da kasa adı > **Ayarlar**İşler > Site Recovery işleri >  bölümünde **Yük Devretme Testi** işine tıklayabilirsiniz.
 5. Yük devretme bittikten sonra, çoğaltma Azure VM, Azure portalı > **Sanal Makineler** bölümünde görünür. VM’nin çalıştığından, uygun şekilde boyutlandırıldığından ve uygun ağa bağlı olduğundan emin olun.
 6. Taşımayı test etme işleminin bir parçası olarak oluşturulan VM 'yi silmek istiyorsanız, çoğaltılan öğede **Yük devretme testini temizle** ' ye tıklayın. **Notlar**' da, testle ilişkili tüm gözlemlerinizi kaydedin ve kaydedin.
 
 ## <a name="perform-the-move-to-the-target-region-and-confirm"></a>Hedef bölgeye taşıma işlemini gerçekleştirin ve onaylayın.
 
-1. Kasaya gidin, **Ayarlar** > **çoğaltılan öğeler**bölümünde, sanal makineye tıklayın ve ardından **Yük devretme**' ye tıklayın.
+1. Kasaya gidin, **ayarlar** > **çoğaltılan öğeler**' de sanal makineye tıklayın ve ardından **Yük devretme**' ye tıklayın.
 2. **Yük devretme** bölümünde **En geç** seçeneğini belirleyin. 
-3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak sanal makineyi kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz. 
+3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak sanal makineyi kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işlemini **İşler** sayfasında takip edebilirsiniz. 
 4. İş tamamlandıktan sonra, sanal makinenin hedef Azure bölgesinde beklenen şekilde göründüğünden emin olun.
 5. **Çoğaltılan öğeler** bölümünde VM’ye sağ tıklayıp **Yürüt**’e tıklayın. Bu, hedef bölgeye taşıma işlemini tamamlar. Tamamlama işi tamamlanana kadar bekleyin.
 

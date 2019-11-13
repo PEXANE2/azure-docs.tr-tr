@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: cb3561030cfd86137d7d668ca14db605cc365e86
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: d9c55773772b4f331de95bd98b1973225357c0cd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969020"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012783"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -30,7 +30,7 @@ MABS, System Center DPM 'yi temel alır ve birkaç farklılık ile benzer işlev
 - Azure, hem MABS hem de DPM için uzun süreli yedekleme depolama alanı sağlar. Ayrıca DPM, banttaki uzun süreli depolamaya yönelik verileri yedeklemenizi sağlar. MABS bu işlevselliği sağlamaz.
 - Birincil DPM sunucusunu ikincil bir DPM sunucusuyla yedekleyebilirsiniz. İkincil sunucu, birincil sunucu veritabanını ve birincil sunucuda depolanan veri kaynağı çoğaltmalarını korur. Birincil sunucu başarısız olursa, birincil sunucu yeniden kullanılabilir olana kadar ikincil sunucu, birincil sunucu tarafından korunan iş yüklerini korumaya devam edebilir.  MABS bu işlevselliği sağlamaz.
 
-MABS 'yi [Microsoft Indirme merkezi](https://www.microsoft.com/en-us/download/details.aspx?id=57520)' nden indirebilirsiniz. Şirket içinde veya bir Azure sanal makinesinde çalıştırılabilir.
+MABS 'yi [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=57520)' nden indirebilirsiniz. Şirket içinde veya bir Azure sanal makinesinde çalıştırılabilir.
 
 DPM ve MABS, çok çeşitli uygulamaları ve sunucu ve istemci işletim sistemlerini yedeklemeyi destekler. Birden çok yedekleme senaryosu sağlarlar:
 
@@ -84,7 +84,7 @@ Azure Backup, aşağıdaki işletim sistemlerinden herhangi birini çalıştıra
 **Konuda** | **Ayrıntılar**
 --- | ---
 **Yükleme** | Tek amaçlı bir makineye DPM/MABS 'yi yükler.<br/><br/> DPM/MABS 'yi bir etki alanı denetleyicisine, uygulama sunucusu rolü yüklemesine sahip bir makineye, Microsoft Exchange Server veya System Center Operations Manager çalıştıran bir makineye veya bir küme düğümüne yüklemeyin.<br/><br/> [Tüm DPM sistem gereksinimlerini gözden geçirin](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
-**Alanını** | DPM/MABS bir etki alanına katılmalıdır. Önce yüklemeyi, sonra DPM/MABS 'i bir etki alanına katın. Dağıtımdan sonra DPM/MABS 'yi yeni bir etki alanına taşıma desteklenmiyor.
+**Etki alanı** | DPM/MABS bir etki alanına katılmalıdır. Önce yüklemeyi, sonra DPM/MABS 'i bir etki alanına katın. Dağıtımdan sonra DPM/MABS 'yi yeni bir etki alanına taşıma desteklenmiyor.
 **Depolama** | Modern yedekleme depolaması (MB), DPM 2016/MABS v2 ve sonrasında desteklenir. MABS v1 için kullanılamaz.
 **MABS yükseltmesi** | Mabs v3 'i doğrudan yükleyebilir veya mabs v2 'den MABS v3 'e yükseltebilirsiniz. [Daha fazla bilgi edinin](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **MABS taşınıyor** | MB kullanıyorsanız, depolama alanını korurken MABS 'i yeni bir sunucuya taşımak desteklenir.<br/><br/> Sunucu orijinalde aynı ada sahip olmalıdır. Aynı depolama havuzunu korumak istiyorsanız adı değiştiremezsiniz ve veri kurtarma noktalarını depolamak için aynı MABS veritabanını kullanabilirsiniz.<br/><br/> Geri yüklemeniz gerekeceğinden, MABS veritabanının yedeğine ihtiyacınız olacaktır.
@@ -154,7 +154,7 @@ DPM 2016/MABS v2 'den (Windows Server 2016 ' de çalışan) ve sonraki sürümle
 
 Aşağıdaki tabloda, şirket içi makinelerden ve Azure VM 'lerinden MABS 'e nelerin yedeklenebileceği özetlenmektedir.
 
-**Backup** | **Ün** | **MABS** | **Ayrıntılar** |
+**Backup** | **Sürümleri** | **MABS** | **Ayrıntılar** |
 --- | --- | --- | --- |
 **Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32/64 bit) | MABS v3, v2 | Şirket içi. | Birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor.<br/><br/> Birimler en az 1 GB ve NTFS olmalıdır. |
 **Windows Server 2016 (Datacenter, Standard, nano değil)**<br/><br/> 64/32 bit | MABS v3, v2 | Şirket içi/Azure VM.| Birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor. |

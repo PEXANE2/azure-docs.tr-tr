@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery için Hyper-V olağanüstü durum kurtarma kapasitesi planlayın | Microsoft Docs
+title: Azure Site Recovery Hyper-V olağanüstü durum kurtarma için kapasite planlayın
 description: Azure Site Recovery hizmeti ile olağanüstü durum kurtarma ayarlanırken kapasiteyi tahmin etmek için bu makaleyi kullanın.
 author: rayne-wiselman
 manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 7501982f90cd145e0fc918bf976a840323a31127
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972566"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936039"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM olağanüstü durum kurtarma için kapasiteyi planlayın 
 
@@ -33,7 +33,7 @@ Kaynak ortamınızı ve iş yüklerinizi çözümlemek için Site Recovery Capac
 
 Aracı iki modda çalıştırabilirsiniz:
 
-* **Hızlı planlama**: Ağ ve sunucu projeksiyonlarını Ortalama sayıda VM, disk, depolama ve değişim oranı temelinde sağlar.
+* **Hızlı planlama**: ağ ve sunucu projeksiyonlarını Ortalama sayıda VM, disk, depolama ve değişim oranı temelinde sağlar.
 * **Ayrıntılı planlama**: VM düzeyinde her iş yükünün ayrıntılarını sağlar. VM uyumluluğunu çözümleyin ve ağ ve sunucu projeksiyonlarını alın.
 
 ## <a name="before-you-start"></a>Başlamadan önce
@@ -47,7 +47,7 @@ Aracı iki modda çalıştırabilirsiniz:
 
 2. **Planner türü seç** liste kutusunda **hızlı planlayıcısı**' nı seçin.
 
-   ![başlarken](./media/site-recovery-capacity-planner/getting-started.png)
+   ![Başlarken](./media/site-recovery-capacity-planner/getting-started.png)
 
 3. **Capacity Planner** çalışma sayfasında, gerekli bilgileri girin. Aşağıdaki ekran görüntüsünde, tüm alanları kırmızı renkte daire içine girin:
 
@@ -66,18 +66,18 @@ Aracı iki modda çalıştırabilirsiniz:
 4. Kaynak ortam için değerleri girdikten sonra, görünen çıktı şunları içerir:
 
    * **Delta çoğaltma için gereken bant genişliği (megabit/sn cinsinden)** : Delta çoğaltma için ağ bant genişliği, günlük ortalama veri değişim oranı üzerinden hesaplanır.
-   * **İlk çoğaltma için gereken bant genişliği (megabit/sn cinsinden)** : İlk çoğaltma için ağ bant genişliği, girdiğiniz ilk çoğaltma değerlerinde hesaplanır.
-   * **Depolama gerekli (GB cinsinden)** : Gereken toplam Azure depolama alanı.
-   * **Standart depolamada toplam IOPS**: Numara, toplam standart depolama hesaplarındaki 8K ıOPS birim boyutu temel alınarak hesaplanır. Hızlı Planner için, numara tüm kaynak VM disklerine ve günlük veri değişim hızına göre hesaplanır. Ayrıntılı Planner için, numara standart Azure VM 'lerine eşlenmiş toplam sanal makine sayısına ve bu VM 'lerde veri değişim hızına göre hesaplanır.
-   * **Gerekli standart depolama hesabı sayısı**: VM 'Leri korumak için gereken toplam standart depolama hesabı sayısı. Standart depolama hesabı, standart depolama alanındaki tüm VM 'lerde en fazla 20.000 ıOPS tutabilir. Disk başına en fazla 500 ıOPS desteklenir.
+   * **İlk çoğaltma için gereken bant genişliği (megabit/sn cinsinden)** : ilk çoğaltma için ağ bant genişliği, girdiğiniz ilk çoğaltma değerlerinde hesaplanır.
+   * **Depolama gerekli (GB cinsinden)** : gereken toplam Azure depolama alanı.
+   * **Standart depolamada toplam IOPS**: Bu sayı, toplam standart depolama HESAPLARıNDAKI 8k IOPS birim boyutu temel alınarak hesaplanır. Hızlı Planner için, numara tüm kaynak VM disklerine ve günlük veri değişim hızına göre hesaplanır. Ayrıntılı Planner için, numara standart Azure VM 'lerine eşlenmiş toplam sanal makine sayısına ve bu VM 'lerde veri değişim hızına göre hesaplanır.
+   * **Gerekli standart depolama hesabı sayısı**: VM 'leri korumak için gereken standart depolama hesaplarının toplam sayısı. Standart depolama hesabı, standart depolama alanındaki tüm VM 'lerde en fazla 20.000 ıOPS tutabilir. Disk başına en fazla 500 ıOPS desteklenir.
    * **Gereken blob disk sayısı**: Azure depolamada oluşturulan disk sayısı.
-   * **Gerekli Premium hesap sayısı**: VM 'Leri korumak için gereken toplam Premium depolama hesabı sayısı. Yüksek ıOPS (20.000 'den büyük) içeren bir kaynak VM, Premium depolama hesabına ihtiyaç duyuyor. Premium depolama hesabı en fazla 80.000 ıOPS tutabilir.
-   * **Premium depolamada toplam IOPS**: Bu sayı, toplam Premium Depolama hesaplarında 256K ıOPS birim boyutu temel alınarak hesaplanır. Hızlı Planner için, numara tüm kaynak VM disklerine ve günlük veri değişim hızına göre hesaplanır. Ayrıntılı Planner için sayı, Premium Azure VM 'lerine (DS ve GS serisi) eşlenmiş toplam sanal makine sayısına ve bu VM 'lerde veri değişim hızına göre hesaplanır.
-   * **Gerekli yapılandırma sunucusu sayısı**: Dağıtım için kaç yapılandırma sunucusu gerektiğini gösterir.
-   * **Gerekli ek Işlem sunucusu sayısı**: Yapılandırma sunucusunda varsayılan olarak çalışan işlem sunucusuna ek olarak, ek işlem sunucularının gerekli olup olmadığını gösterir.
-   * **kaynak üzerinde% 100 ek depolama alanı**: Kaynak konumda ek depolamanın gerekli olup olmadığını gösterir.
+   * **Gerekli Premium hesap sayısı**: VM 'leri korumak için gereken toplam Premium depolama hesabı sayısıdır. Yüksek ıOPS (20.000 'den büyük) içeren bir kaynak VM, Premium depolama hesabına ihtiyaç duyuyor. Premium depolama hesabı en fazla 80.000 ıOPS tutabilir.
+   * **Premium depolamada toplam IOPS**: sayı, toplam Premium Depolama HESAPLARıNDA 256k IOPS birimi boyutu temel alınarak hesaplanır. Hızlı Planner için, numara tüm kaynak VM disklerine ve günlük veri değişim hızına göre hesaplanır. Ayrıntılı Planner için sayı, Premium Azure VM 'lerine (DS ve GS serisi) eşlenmiş toplam sanal makine sayısına ve bu VM 'lerde veri değişim hızına göre hesaplanır.
+   * **Gerekli yapılandırma sunucusu sayısı**: dağıtım için kaç yapılandırma sunucusu gerektiğini gösterir.
+   * **Gerekli ek Işlem sunucusu sayısı**: yapılandırma sunucusunda varsayılan olarak çalışan işlem sunucusuna ek olarak, ek işlem sunucularının gerekli olup olmadığını gösterir.
+   * **kaynak üzerinde %100 ek depolama alanı**: kaynak konumda ek depolamanın gerekli olup olmadığını gösterir.
 
-      ![Output](./media/site-recovery-capacity-planner/output.png)
+      ![Çıktı](./media/site-recovery-capacity-planner/output.png)
 
 ## <a name="run-the-detailed-planner"></a>Ayrıntılı planlayıcısı çalıştırın
 

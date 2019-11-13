@@ -1,19 +1,19 @@
 ---
-title: Bir Azure IaaS VM’si için ikincil Azure bölgesine olağanüstü durum kurtarma ayarlama
-description: Bu hızlı başlangıçta Azure Site Recovery hizmetini kullanarak farklı Azure bölgeleri arasında Azure IaaS VM olağanüstü durum kurtarma gerçekleştirmek için gerekli adımlar gösterilmektedir.
+title: Azure VM olağanüstü durum kurtarmayı Azure Site Recovery ile ikincil bir bölgeye ayarlama
+description: Azure Site Recovery hizmetini kullanarak Azure VM için başka bir Azure bölgesine olağanüstü durum kurtarmayı hızlıca ayarlayın.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b06cae5bcb07831ba79b805802a7851c2b6ad2b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91674d6335ae95993bcdd59250658d562302b1dc
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467969"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954139"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Bir Azure VM’si için ikincil Azure bölgesine olağanüstü durum kurtarma ayarlama        
 
@@ -34,7 +34,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 1. Azure portal menüsünde, **sanal makineler**' i seçin veya herhangi bir sayfada *sanal makineler* arayın ve seçin. Çoğaltmak istediğiniz VM 'yi seçin.
 2. **İşlemler** menüsünden **Olağanüstü durum kurtarma** seçeneğini belirleyin.
-3. **Olağanüstü durum kurtarmayı yapılandır** > **Hedef bölge** bölümünde, çoğaltmak istediğiniz hedef bölgeyi seçin.
+3. **Olağanüstü durumdan kurtarma yapılandırma** > **Hedef bölge** bölümünde, çoğaltma yapacağınız hedef bölgeyi seçin.
 4. Bu Hızlı Başlangıç için, diğer varsayılan ayarları kabul edin.
 5. **Gözden geçir + çoğaltmayı Başlat**' ı seçin. Ardından, sanal makine için çoğaltmayı etkinleştirmek üzere bir iş başlatmak üzere **çoğaltmayı Başlat** ' ı seçin.
 

@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 8b74621f2c5a9c91ece58c8118cd2bc952c3a464
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 0dd6c410040eea9eb4039ab5da183cc0b6799493
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809706"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005757"
 ---
-# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Öğretici: Azure IoT Hub ileti zenginleştirme kullanma (Önizleme)
+# <a name="tutorial-using-azure-iot-hub-message-enrichments"></a>Öğretici: Azure IoT Hub ileti zenginleştirme kullanma
 
 *İleti zenginleştirmelerinin* iletileri belirlenen uç noktaya gönderilmeden önce ek bilgilerle iletileri *damgalamak* IoT Hub yeteneğidir. İleti zenginleştirmelerinin tek bir nedeni, aşağı akış işlemeyi basitleştirmek için kullanılabilecek verileri içermektir. Örneğin, cihaz ikizi etiketiyle cihaz telemetri iletileri zenginleştirilmesi, bu bilgilere yönelik cihaz ikizi API çağrıları yapmak için müşterilerin yükünü azaltabilir. Daha fazla bilgi için bkz. [iletinin Enzenginleştirmelerinin genel bakışı](iot-hub-message-enrichments-overview.md).
 
@@ -42,7 +42,7 @@ Bu öğreticiyi tamamlamak için gerçekleştireceğiniz görevler şunlardır:
 
 [IoT cihaz benzetimini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) indirin ve sıkıştırmayı açın. Bu depoda, IoT Hub 'ına ileti göndermek için kullanacağınız bir de dahil olmak üzere çeşitli uygulamalar vardır.
 
-Bu indirme, ileti zenginleştirmelerini test etmek için kullanılan kaynakları oluşturmaya yönelik betiği de içerir. Betik/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli. içinde Şimdilik, betiğe bakabilir ve onu kullanabilirsiniz. Ayrıca, komut dosyasını doğrudan makaleden kopyalayabilirsiniz.
+Bu indirme, ileti zenginleştirmelerini test etmek için kullanılan kaynakları oluşturmaya yönelik betiği de içerir. Betik/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli. azclı ' dir. Şimdilik, betiğe bakabilir ve onu kullanabilirsiniz. Ayrıca, komut dosyasını doğrudan makaleden kopyalayabilirsiniz.
 
 Teste başlamaya hazırsanız, IoT Hub 'ınıza ileti göndermek için bu indirden cihaz benzetimi uygulamasını kullanacaksınız.
 
@@ -69,11 +69,11 @@ Daha önce yapmadıysanız, bir [Cloud Shell penceresi](https://shell.azure.com)
 
 Komut dosyası tarafından oluşturulan kaynaklar aşağıda verilmiştir. **Zenginleştirme, kaynağın zenginleştirilmiş** iletiler için olduğu anlamına gelir. **Orijinal** , kaynağın zenginleştirilmiş iletiler için olduğu anlamına gelir.
 
-| Adı | Değer |
+| Ad | Değer |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
-| Kapsayıcı adı | Özgün  |
-| Kapsayıcı adı | zenginleştirilmiş  |
+| kapsayıcı adı | Özgün  |
+| kapsayıcı adı | zenginleştirilmiş  |
 | IoT cihaz adı | Contoso-test-cihaz |
 | IoT Hub adı | ContosoTestHubMsgEn |
 | depolama hesabı adı | contosostorage |
@@ -251,11 +251,11 @@ Bu noktada, kaynakların hepsi ayarlanır ve yönlendirme yapılandırılır. İ
 
 2. Bu değerleri ContosoStorageEndpointEnriched uç noktası için listeye ekleyin.
 
-   | Adı | Değer | Uç nokta (açılan liste) |
+   | Anahtar | Değer | Uç nokta (açılan liste) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | Azurestoraygecontainers > ContosoStorageEndpointEnriched |
-   | deviceLocation | $twin. Tags. Location | Azurestoraygecontainers > ContosoStorageEndpointEnriched |
-   |Ister | 6ce345b8-1e4a-411E-9398-d34587459a3a | Azurestoraygecontainers > ContosoStorageEndpointEnriched |
+   | deviceLocation | $twin.tags.location | Azurestoraygecontainers > ContosoStorageEndpointEnriched |
+   |Ister | 6ce345b8-1e4a-411e-9398-d34587459a3a | Azurestoraygecontainers > ContosoStorageEndpointEnriched |
 
    > [!NOTE]
    > Cihazınızda bir ikizi yoksa, buraya yerleştirdiğiniz değer ileti zenginlerinin değeri için bir dize olarak damgalanacaktır. Cihaz ikizi bilgilerini görmek için portalda hub 'ınıza gidip **IoT cihazları**' nı seçin, cihazınızı seçin ve ardından sayfanın en üstündeki **cihaz ikizi** ' yi seçin.

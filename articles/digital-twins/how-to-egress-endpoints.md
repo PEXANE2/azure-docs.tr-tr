@@ -1,6 +1,6 @@
 ---
-title: Azure dijital TWINS 'teki çıkış ve uç noktalar | Microsoft Docs
-description: Azure dijital TWINS ile uç noktalar oluşturma yönergeleri.
+title: Çıkış ve uç noktalar-Azure dijital TWINS | Microsoft Docs
+description: Azure dijital TWINS 'de olay uç noktaları oluşturmayı ve çıkış yapmayı öğrenin.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 33e8a6a281fbc6620a4608c7b0821b196043423e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822264"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010064"
 ---
-# <a name="egress-and-endpoints"></a>Çıkış ve uç noktalar
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure dijital TWINS 'teki çıkış ve uç noktalar
 
 Azure dijital TWINS *uç noktaları* , bir kullanıcının Azure aboneliğindeki bir iletiyi veya olay aracısını temsil eder. Olaylar ve iletiler Azure Event Hubs, Azure Event Grid ve Azure Service Bus konularına gönderilebilir.
 
@@ -50,9 +50,9 @@ Olaylar, Azure ileti ve olay aracıları tarafından işlenmek üzere IoT nesnel
 | Öznitelik | Tür | Açıklama |
 | --- | --- | --- |
 | id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| Konu | string | Olay konusunun yayımcı tanımlı yolu. |
-| verileri | object | Kaynak sağlayıcısına özel olay verileri. |
-| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| subject | string | Olay konusunun yayımcı tanımlı yolu. |
+| data | object | Kaynak sağlayıcısına özel olay verileri. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |

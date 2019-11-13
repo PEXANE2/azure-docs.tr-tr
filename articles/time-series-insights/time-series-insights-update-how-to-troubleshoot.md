@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights önizlemeyi tanılama ve sorun giderme | Microsoft Docs
-description: Azure Time Series Insights Preview ile tanılama ve sorun gidermeyi öğrenin.
+title: Önizleme ortamını tanılama ve sorunlarını giderme-Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights önizleme ortamını tanılamayı ve sorun gidermeyi öğrenin.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b65edbd808abd6ff660ef00a8a680b4d3f0846c
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989895"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014773"
 ---
-# <a name="diagnose-and-troubleshoot"></a>Tanılama ve sorun giderme
+# <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Önizleme ortamını tanılama ve sorunlarını giderme
 
 Bu makalede, Azure Time Series Insights önizleme ortamınızla çalışırken karşılaşabileceğiniz bazı yaygın sorunlar özetlenmektedir. Makalede ayrıca, her bir sorun için olası nedenler ve çözümler açıklanmaktadır.
 
@@ -39,7 +39,7 @@ Time Series Insights ortamına erişim izniniz yoksa bu sorun oluşabilir. Kulla
 
 - Olay kaynak verileriniz JSON biçiminde değil.
 
-    Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için bkz. [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
+    Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için bkz [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
 
 - Olay kaynak anahtarınıza gerekli bir izin eksik.
 
@@ -74,10 +74,10 @@ Zaman serisi KIMLIĞI olmadan veri gönderiyor olabilirsiniz.
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Sorun: olay kaynağınızın zaman damgası Özellik adı çalışmıyor
 
-Ad ve değerin aşağıdaki kurallara uygun olduğundan emin olun:
+Ad ve değer şu kurallara uyar emin olun:
 
 * Zaman damgası Özellik adı büyük/küçük harfe duyarlıdır.
-* Olay kaynağınızdan JSON dizesi olarak gelen zaman damgası özelliği değeri `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`biçimindedir. Bu tür bir dizeye örnek `“2008-04-12T12:53Z”`.
+* Olay kaynağınızdan JSON dizesi olarak gelen zaman damgası özelliği değeri `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`biçimindedir. Bu tür bir dize örneğidir `“2008-04-12T12:53Z”`.
 
 Zaman damgası özelliği adınızın yakalanıp düzgün şekilde çalışmasını sağlamanın en kolay yolu Time Series Insights önizleme Gezginini kullanmaktır. Time Series Insights önizleme Gezgini ' nde, zaman damgası özellik adını girdikten sonra bir süre seçmek için grafiği kullanın. Seçime sağ tıklayın ve **olayları keşfet** seçeneğini belirleyin. İlk sütun üst bilgisi, zaman damgası özellik adıdır. Bunun yerine `Timestamp`sözcüğünün yanında `($ts)` olmalıdır:
 

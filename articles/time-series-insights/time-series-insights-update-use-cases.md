@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights Önizleme kullanım örnekleri | Microsoft Docs
-description: Azure Time Series Insights Önizleme kullanım örneklerini anlayın.
+title: Önizleme kullanım durumları-Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights Önizleme kullanım örnekleri hakkında bilgi edinin.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: b2c1aec7f5b653824ab999da2706549e54d47e3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 175fbf598ae2224d1e1ee0e9c9a3f9ba446965c3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492061"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014681"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights Önizleme kullanım örnekleri
 
@@ -30,7 +30,7 @@ Bu makalede Azure Time Series Insights önizlemesi için bazı yaygın kullanım
 
 Bu kullanım senaryolarına genel bir bakış aşağıdaki bölümlerde açıklanmıştır.
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
 Azure Time Series Insights, uçtan uca, bir hizmet olarak platform sunumudur. Yüksek düzeyde tanımlı, zaman serisi iyileştirilmiş IoT ölçeğinde verileri toplamak, işlemek, depolamak, çözümlemek ve sorgulamak için kullanılır. Time Series Insights, geçici veri araştırması ve işletimsel analizler için idealdir. Time Series Insights, endüstriyel IoT dağıtımlarının geniş ihtiyaçlarını karşılayan benzersiz bir şekilde genişletilebilir, özelleştirilmiş bir hizmet sunumudur.
 
@@ -66,7 +66,7 @@ Time Series Insights depolanan verilerle etkileşimde bulunmak için üç temel 
 
 Donanımların sistem durumunu, kullanımını ve performansını ölçeklendirerek izlemek için Time Series Insights kullanın. Time Series Insights işlemsel verimliliği ölçmenin kolay bir yolunu sağlar. Time Series Insights, öngörülemeyen çeşitli IoT iş yüklerini, alma ve sorgu performansından ödün vermeden yönetmenize yardımcı olur.
 
-[![genel bakış](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![Genel bakış](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 İşlem işlemlerinden gelen verilerin akışını ve sürekli işlenmesi, doğru teknoloji veya çözümle birleştirilirse herhangi bir işi başarıyla dönüştürebilir. Bu çözümler genellikle birden çok sisteminin bir birleşimidir. Bunlar, özellikle IoT bölgesindeki, sürekli olarak değişen verilerin araştırmasını ve analizini etkinleştirir ve ortak bir model paylaşır.
 

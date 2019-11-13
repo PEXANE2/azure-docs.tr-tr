@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 62657134775d21ad6aabdf8f02a1e001de0a6094
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 55a9cbcfdb9766c6adc6d10f975fa4d074ec3aaf
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176837"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011660"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>API Management Azure 'da Azure Active Directory B2C kullanarak Geliştirici hesaplarını yetkilendirme
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Active Directory B2C, tüketiciye yönelik Web ve mobil uygulamalar için bir bulut kimlik yönetimi çözümüdür. Bunu, geliştirici portalınıza erişimi yönetmek için kullanabilirsiniz. Bu kılavuzda, Azure Active Directory B2C tümleştirilecek API Management hizmetinizde gereken yapılandırma gösterilmektedir. Klasik Azure Active Directory kullanarak Geliştirici portalına erişimi etkinleştirme hakkında daha fazla bilgi için, bkz. [Azure Active Directory kullanarak Geliştirici hesaplarını yetkilendirme].
+Azure Active Directory B2C, tüketicilere yönelik web ve mobil uygulamalar için bir bulut kimlik yönetimi çözümü ' dir. Bunu, geliştirici portalınıza erişimi yönetmek için kullanabilirsiniz. Bu kılavuzda, Azure Active Directory B2C tümleştirilecek API Management hizmetinizde gereken yapılandırma gösterilmektedir. Klasik Azure Active Directory kullanarak Geliştirici portalına erişimi etkinleştirme hakkında daha fazla bilgi için, bkz. [Azure Active Directory kullanarak Geliştirici hesaplarını yetkilendirme].
 
 > [!NOTE]
 > Bu kılavuzdaki adımları tamamlayabilmeniz için öncelikle ' de bir uygulama oluşturmak üzere bir Azure Active Directory B2C kiracısına sahip olmanız gerekir. Ayrıca kaydolma ve oturum açma ilkelerinizi hazırlayın. Daha fazla bilgi için bkz. [Azure Active Directory B2C genel bakış].
@@ -87,11 +87,11 @@ Azure Active Directory B2C, tüketiciye yönelik Web ve mobil uygulamalar için 
 
 ## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>Geliştirici portalı-Azure AD B2C hesabı kimlik doğrulaması ekleme
 
-Geliştirici Portalında AAD B2C oturum açmayı etkinleştirmek için, oturum açma formuna **OAuth düğmeleri** pencere öğesini eklemeniz gerekir.
+Geliştirici Portalında AAD B2C ile oturum açma, **OAuth düğmeleri** pencere öğesi ile mümkündür. Pencere öğesi, varsayılan geliştirici portalı içeriğinin oturum açma sayfasında zaten bulunur.
 
 ![AAD düğmeleri pencere öğesi](./media/api-management-howto-aad/portal-oauth-widget.png)
 
-Yeni bir Kullanıcı AAD B2C her oturum açtığında yeni bir hesap otomatik olarak oluşturulabilse de, kaydolma formuna aynı pencere öğesini eklemeyi göz önünde bulundurmanız gerekebilir.
+Yeni bir Kullanıcı AAD B2C her oturum açtığında yeni bir hesap otomatik olarak oluşturulabilse de, kaydolma sayfasına aynı pencere öğesini eklemeyi göz önünde bulundurmanız gerekebilir.
 
 ## <a name="legacy-developer-portal---how-to-sign-up-with-azure-ad-b2c"></a>Eski geliştirici portalı-Azure AD B2C ile kaydolma
 

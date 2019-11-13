@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery ile Hyper-V ile Azure olağanüstü durum kurtarma sorunlarını giderme | Microsoft Docs
+title: Azure Site Recovery ile Hyper-V olağanüstü durum kurtarma sorunlarını giderme
 description: Azure Site Recovery kullanarak Hyper-V ile Azure çoğaltma için olağanüstü durum kurtarma sorunlarını nasıl giderebileceğinizi açıklar
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 2cf43f8a235b112cfcf1fc6c9dba626a5a0c9b7e
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 0a3e5c922009353e4ba9ccab12cf70ea2b5992da
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828398"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961476"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V ' d e Azure çoğaltma ve yük devretme sorunlarını giderme
 
@@ -26,7 +26,7 @@ Hyper-V VM 'Leri için korumayı etkinleştirdiğinizde sorunlarla karşılaşı
 1. Hyper-V konaklarınızın ve sanal makinelerinizin tüm [gereksinimleri ve önkoşulları](hyper-v-azure-support-matrix.md)karşıladığından emin olun.
 2. Hyper-V sunucuları System Center Virtual Machine Manager (VMM) bulutlarında bulunuyorsa [VMM sunucusunu](hyper-v-prepare-on-premises-tutorial.md#prepare-vmm-optional)hazırladığınızı doğrulayın.
 3. Hyper-v sanal makine yönetimi hizmetinin Hyper-V konaklarında çalışıp çalışmadığını denetleyin.
-4. Hyper-V-VMMS\Admin oturum açma bölümünde görünen sorunları kontrol edin. Bu günlük, **uygulama ve hizmet günlükleri** > **Microsoft** > **Windows**'da bulunur.
+4. Hyper-V-VMMS\Admin oturum açma bölümünde görünen sorunları kontrol edin. Bu günlük, **Microsoft** > **Windows** > **uygulamalar ve hizmetler günlüklerinde** bulunur.
 5. Konuk VM 'de, WMI 'nın etkinleştirildiğini ve erişilebilir olduğunu doğrulayın.
    - Temel WMI testi [hakkında bilgi edinin](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) .
    - [Sorun giderme](https://aka.ms/WMiTshooting) 'Ya.
@@ -42,7 +42,7 @@ Hyper-V VM 'Leri için korumayı etkinleştirdiğinizde sorunlarla karşılaşı
 1. Site Recovery hizmetlerinin [en son sürümünü](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx) çalıştırdığınızdan emin olun.
 2. Çoğaltmanın duraklatılıp duraklatılmadığını doğrulayın:
    - Hyper-V Yöneticisi konsolundaki VM sistem durumunu kontrol edin.
-   - Kritik ise, **çoğaltma** > **görünümü çoğaltma durumu**> VM 'ye sağ tıklayın.
+   - Kritik bir öneme sahip ise, **çoğaltma > >** **çoğaltma durumunu görüntülemek**için VM 'ye sağ tıklayın.
    - Çoğaltma duraklatılmışsa **çoğaltmayı yeniden başlatma**' ya tıklayın.
 3. Gerekli hizmetlerin çalıştığından emin olun. Aksi takdirde, yeniden başlatın.
     - VMM olmadan Hyper-V ' d i çoğaltdıysanız, bu hizmetlerin Hyper-V konağında çalıştığından emin olun:
@@ -53,7 +53,7 @@ Hyper-V VM 'Leri için korumayı etkinleştirdiğinizde sorunlarla karşılaşı
     - Ortamda VMM ile çoğaltma yapıyorsanız, bu hizmetlerin çalıştığından emin olun:
         - Hyper-V konağında, sanal makine yönetimi hizmeti, Microsoft Azure Kurtarma Hizmetleri Aracısı ve WMI sağlayıcısı ana bilgisayar hizmetinin çalıştığından emin olun.
         - VMM sunucusunda, System Center Virtual Machine Manager hizmetinin çalıştığından emin olun.
-4. Hyper-V sunucusuyla Azure arasındaki bağlantıyı denetleyin. Bağlantıyı denetlemek için, Hyper V konağında Görev Yöneticisi 'ni açın. **Performans** sekmesinde **Kaynak İzleyicisi aç**' a tıklayın. Ağ sekmesinde **ağ etkinliği ile işlem**>, cbengine. exe ' nin büyük birimleri (MB) etkin bir şekilde gönderip göndermediğini denetleyin.
+4. Hyper-V sunucusuyla Azure arasındaki bağlantıyı denetleyin. Bağlantıyı denetlemek için, Hyper V konağında Görev Yöneticisi 'ni açın. **Performans** sekmesinde **Kaynak İzleyicisi aç**' a tıklayın. **Ağ sekmesinde** **ağ etkinliği ile işlem**>, cbengine. exe ' nin büyük birimleri (MB) etkin bir şekilde gönderip göndermediğini denetleyin.
 5. Hyper-V konaklarının Azure Depolama Blobu URL 'sine bağlanıp bağlanamadığını denetleyin. Ana bilgisayarların bağlanıp bağlanamadığını denetlemek için **cbengine. exe**' yi seçin ve denetleyin. Ana bilgisayardan Azure Storage blob 'una bağlantıyı doğrulamak için **TCP bağlantılarını** görüntüleyin.
 6. Aşağıda açıklandığı gibi performans sorunlarını kontrol edin.
     
@@ -67,7 +67,7 @@ Ağ bant genişliği sınırlamaları, çoğaltmayı etkileyebilir. Sorunları a
 4. [Veri dalgalanma sınırlamalarını](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)denetleyin. Bir sanal makinede yüksek veri dalgalanması görürseniz şunları yapın:
    - SANAL makinenizin yeniden eşitleme için işaretlenip işaretlenmediğini denetleyin.
    - Karmaşıklığın kaynağını araştırmak için [Bu adımları](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/) izleyin.
-   - HRL günlük dosyaları kullanılabilir disk alanının% 50 ' ü aştığında dalgalanma gerçekleşebilir. Sorun bu ise, sorunun gerçekleştiği tüm VM 'Ler için daha fazla depolama alanı sağlayın.
+   - HRL günlük dosyaları kullanılabilir disk alanının %50 ' ü aştığında dalgalanma gerçekleşebilir. Sorun bu ise, sorunun gerçekleştiği tüm VM 'Ler için daha fazla depolama alanı sağlayın.
    - Çoğaltmanın duraklatılmadığını denetleyin. Varsa, bu, daha fazla boyut katkıda bulunmak için HRL dosyasına değişiklikleri yazmaya devam eder.
  
 
@@ -80,7 +80,7 @@ Ağ bant genişliği sınırlamaları, çoğaltmayı etkileyebilir. Sorunları a
 
 2. Ayrıntıları görmek için **çoğaltma durumunu görüntüle** ' ye tıklayın:
 
-    - Çoğaltma duraklatıldığında, sanal makineye sağ tıklayın > **çoğaltma** > **çoğaltmayı sürdürür**.
+    - Çoğaltma duraklatılmışsa, **çoğaltmayı > sanal** makineye sağ tıklayın > **çoğaltmayı sürdürür**.
     - Site Recovery ' de yapılandırılmış bir Hyper-V ana bilgisayarındaki VM aynı kümedeki farklı bir Hyper-V konağına veya tek başına bir makineye geçerse, VM için çoğaltma etkilenmez. Yeni Hyper-V konağının tüm önkoşulları karşıladığını ve Site Recovery ' de yapılandırıldığını kontrol edin.
 
 ## <a name="app-consistent-snapshot-issues"></a>Uygulamayla tutarlı anlık görüntü sorunları
@@ -98,7 +98,7 @@ Uygulamayla tutarlı bir anlık görüntü, VM içindeki uygulama verilerinin za
    - Çıktıyı denetleyin. Yazarlar başarısız durumdaysa, şunları yapın:
        - VSS işlem hataları için VM 'deki uygulama olay günlüğünü denetleyin.
    - Başarısız yazıcı ile ilişkili bu hizmetleri yeniden başlatmayı deneyin:
-     - Birim Gölge Kopyası
+     - Birim gölge kopyası
        - VSS sağlayıcısı Azure Site Recovery
    - Bunu yaptıktan sonra, uygulamayla tutarlı anlık görüntülerin başarıyla oluşturulup Oluşturulanı görmek için birkaç saat bekleyin.
    - Son çare olarak VM 'yi yeniden başlatmayı deneyin. Bu durum yanıt vermeyen Hizmetleri çözümleyebilir.
@@ -107,14 +107,14 @@ Uygulamayla tutarlı bir anlık görüntü, VM içindeki uygulama verilerinin za
     ![Dinamik disk](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
     
 4. VM 'ye bağlı bir Iscsı diskine sahip olup olmadığınızı denetleyin. Bu özellik desteklenmez.
-5. Yedekleme hizmetinin etkin olup olmadığını denetleyin. **Hyper-V ayarları** > **Tümleştirme Hizmetleri**'nde etkin olduğunu doğrulayın.
+5. Yedekleme hizmetinin etkin olup olmadığını denetleyin. **Hyper-V ayarları** > **Tümleştirme Hizmetleri**' nde etkinleştirildiğini doğrulayın.
 6. VSS anlık görüntülerini alan uygulamalarla çakışma olmadığından emin olun. Aynı anda birden çok uygulama VSS anlık görüntüsü almaya çalışıyorsa, çakışmalar meydana gelebilir. Örneğin, bir yedekleme uygulaması, bir anlık görüntü almak için Site Recovery çoğaltma ilkenize zamanlandığında VSS anlık görüntülerini alıyorsa.   
 7. VM 'nin yüksek bir karmaşıklık oranı yaşıyor olup olmadığını denetleyin:
     - Hyper-V konağındaki performans sayaçlarını kullanarak Konuk VM 'Ler için günlük veri değişikliği oranını ölçebilirsiniz. Veri değişikliği oranını ölçmek için aşağıdaki sayacı etkinleştirin. VM dalgalanmasını almak için, VM disklerinde bu değerin bir örneğini 5-15 dakika boyunca toplayın.
-        - Alan "Hyper-V sanal depolama cihazı"
-        - Sayaç "Yazma bayt/sn"</br>
+        - Kategori: "Hyper-V sanal depolama cihazı"
+        - Sayaç: "yazılan bayt/sn"</br>
         - Bu veri değişim hızı, VM 'nin veya uygulamalarının ne kadar meşgul olduğuna bağlı olarak yüksek düzeyde artar veya kalır.
-        - Ortalama kaynak disk verileri karmaşıklığı Site Recovery için standart depolama için 2 MB/sn 'dir. [Daha fazla bilgi edinin](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
+        - Ortalama kaynak disk verileri karmaşıklığı Site Recovery için standart depolama için 2 MB/sn 'dir. [Daha fazla bilgi](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - Ayrıca, [depolama ölçeklenebilirliği hedeflerini doğrulayabilirsiniz](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
 8. [Dağıtım planlayıcısı](hyper-v-deployment-planner-run.md)çalıştırın.
 9. [Ağ](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) ve [depolama](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)önerilerini gözden geçirin.
@@ -123,29 +123,29 @@ Uygulamayla tutarlı bir anlık görüntü, VM içindeki uygulama verilerinin za
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>Hyper-V konağı içinde VSS başarısız oldu
 
 1. VSS hataları ve önerileri için olay günlüklerini denetleyin:
-    - Hyper-v ana bilgisayar sunucusunda, **Olay Görüntüleyicisi** > **uygulamalar ve hizmetler günlükleri** > **Microsoft** > **Windows** > **Hyper-v** 'daHyper-vyöneticiolaygünlüğünüaçın >  **Yönetici**.
+    - Hyper-V ana bilgisayar sunucusunda, **Olay Görüntüleyicisi** > **uygulama ve hizmet günlükleri** > **Microsoft** > **Windows** > **Hyper-v** > **admin**' de Hyper-v yönetici olay günlüğünü açın.
     - Uygulamayla tutarlı anlık görüntü başarısızlıklarını belirten herhangi bir olay olup olmadığını doğrulayın.
-    - Tipik bir hata: "Hyper-V, ' XYZ ' sanal makinesi için VSS anlık görüntü kümesi oluşturamadı: Yazıcı geçici olmayan bir hatayla karşılaştı. Hizmet yanıt vermezse VSS hizmetini yeniden başlatmak sorunları çözebilir. "
+    - Tipik bir hata: "Hyper-V, ' XYZ ' sanal makinesi için VSS anlık görüntü kümesi oluşturamadı: yazıcı geçici olmayan bir hatayla karşılaştı. Hizmet yanıt vermezse VSS hizmetini yeniden başlatmak sorunları çözebilir. "
 
 2. VM için VSS anlık görüntüleri oluşturmak için, Hyper-V tümleştirme hizmetlerinin VM 'de yüklü olduğundan ve yedekleme (VSS) tümleştirme hizmetinin etkin olduğundan emin olun.
     - Tümleştirme Hizmetleri VSS hizmeti/Daemon 'ları 'nin konukta çalıştığından ve bir **Tamam** durumunda olduğundan emin olun.
-    - Bunu, Hyper-V konağındaki, **Get-vmintegrationservice-VMName\<VMName >-name VSS** komutunu kullanarak, bu bilgileri de Konuk VM 'de oturum açarak alabilirsiniz. [Daha fazla bilgi edinin](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Bunu, **Get-VMIntegrationService-vmname\<vmname >-name VSS** komutunu kullanarak Hyper-V konağında yükseltilmiş bir PowerShell oturumundan kontrol edebilirsiniz. Ayrıca Konuk VM 'de oturum açarak bu bilgileri alabilirsiniz. [Daha fazla bilgi edinin](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - VM 'deki yedekleme/VSS tümleştirme hizmetlerinin çalıştığından ve sağlıklı durumda olduğundan emin olun. Aksi takdirde, bu hizmetleri ve Hyper-v ana bilgisayar sunucusunda Hyper-V Birim gölge kopyası istek sahibi hizmetini yeniden başlatın.
 
 ### <a name="common-errors"></a>Sık karşılaşılan hatalar
 
 **Hata kodu** | **İleti** | **Ayrıntılar**
 --- | --- | ---
-**0x800700EA** | "Hyper-V sanal makine için VSS anlık görüntü kümesini oluşturamadı: Daha fazla veri var. (0x800700EA). Yedekleme işlemi devam ediyorsa VSS anlık görüntü kümesi oluşturma işlemi başarısız olabilir.<br/><br/> Sanal makine için çoğaltma işlemi başarısız oldu: Daha fazla veri var. " | VM 'nizin etkin dinamik disk olup olmadığını denetleyin. Bu özellik desteklenmez.
+**0x800700EA** | "Hyper-V sanal makine için VSS anlık görüntü kümesini oluşturamadı: daha fazla veri var. (0x800700EA). Yedekleme işlemi devam ediyorsa VSS anlık görüntü kümesi oluşturma işlemi başarısız olabilir.<br/><br/> Sanal makine için çoğaltma işlemi başarısız oldu: daha fazla veri var. " | VM 'nizin etkin dinamik disk olup olmadığını denetleyin. Bu özellik desteklenmez.
 **0x80070032** | "Hyper-V Birim gölge kopyası Istek sahibi, Hyper-V tarafından beklenen sürümle eşleşmediğinden <./VMname > sanal makinesine bağlanamadı | En son Windows güncelleştirmelerinin yüklenip yüklenmediğini denetleyin.<br/><br/> Tümleştirme Hizmetleri 'nin en son sürümüne [yükseltin](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) .
 
 
 
 ## <a name="collect-replication-logs"></a>Çoğaltma günlüklerini topla
 
-Tüm Hyper-V çoğaltma olayları, **uygulama ve hizmet günlükleri** > **Microsoft** > **Windows**'ta bulunan Hyper-V-VMMS\Admin günlüğüne kaydedilir. Ayrıca, Hyper-V sanal makine yönetimi hizmeti için bir analitik günlüğü aşağıdaki şekilde etkinleştirebilirsiniz:
+Tüm Hyper-V çoğaltma olayları, **Microsoft** > **Windows** > **uygulamalar ve hizmetler günlüklerinde** bulunan Hyper-V-VMMS\Admin günlüğüne kaydedilir. Ayrıca, Hyper-V sanal makine yönetimi hizmeti için bir analitik günlüğü aşağıdaki şekilde etkinleştirebilirsiniz:
 
-1. Analitik ve hata ayıklama günlüklerini Olay Görüntüleyicisi görüntülenebilir yapın. Günlükleri kullanılabilir hale getirmek için, Olay Görüntüleyicisi **Görünüm** > **analitik ve hata ayıklama günlüklerini göster**' e tıklayın. Analitik günlük, **Hyper-V-VMMS**altında görünür.
+1. Analitik ve hata ayıklama günlüklerini Olay Görüntüleyicisi görüntülenebilir yapın. Günlükleri kullanılabilir hale getirmek için Olay Görüntüleyicisi **görüntüle** ' yi tıklatın > **analitik ve hata ayıklama günlüklerini göster.** .. Analitik günlük, **Hyper-V-VMMS**altında görünür.
 2. **Eylemler** bölmesinde **günlüğü etkinleştir**' e tıklayın. 
 
     ![Günlüğü etkinleştir](media/hyper-v-azure-troubleshoot/enable-log.png)
@@ -161,7 +161,7 @@ Tüm Hyper-V çoğaltma olayları, **uygulama ve hizmet günlükleri** > **Micro
 **Uygulamalar ve hizmet günlükleri/Microsoft/VirtualMachineManager/sunucu/yönetici** (VMM sunucusu) | VMM sorunlarını gidermek için günlüklere bakın.
 **Uygulamalar ve hizmet günlükleri/MicrosoftAzureRecoveryServices/çoğaltma** (Hyper-V konağı) | Microsoft Azure Kurtarma Hizmetleri aracı sorunlarını gidermek için günlüklere bakın. 
 **Uygulamalar ve hizmet günlükleri/Microsoft/Azure Site Recovery/sağlayıcı/işletimsel** (Hyper-V konağı)| Microsoft Azure Site Recovery hizmet sorunlarını gidermek için günlüklere bakın.
-**Uygulamalar ve hizmet günlükleri/Microsoft/Windows/Hyper-V-VMMS/admin** (Hyper-V konağı) | Hyper-V VM yönetimi sorunlarını gidermek için günlüklere bakın.
+**Uygulamalar ve hizmet günlükleri/Microsoft/Windows/Hyper-v-vmms/admin** (Hyper-v Konağı) | Hyper-V VM yönetimi sorunlarını gidermek için günlüklere bakın.
 
 ### <a name="log-collection-for-advanced-troubleshooting"></a>Gelişmiş sorun giderme için günlük koleksiyonu
 

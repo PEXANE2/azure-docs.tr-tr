@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 789cc1d835024babb2482b2601503dbaf7247fc2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5b1e417ecd41f93d7919b67ebdd3faf32521d8a4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747432"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012921"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -185,14 +185,14 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
 
     SSRS yapılandırması için aşağıdaki değerleri kullanın:
     * Hizmet hesabı: ' yerleşik hesabı kullan ' ağ hizmeti olmalıdır
-    * Web hizmeti URL 'SI: ' sanal dizin ' ReportServer_ olmalıdır<SQLInstanceName>
-    * Veritabanı: DatabaseName ReportServer $<SQLInstanceName> olmalıdır
-    * Web portalı URL 'SI: ' sanal dizin ' Reports_ olmalıdır<SQLInstanceName>
+    * Web hizmeti URL 'SI: ' sanal dizin ' ReportServer_\<SqlInstanceName olmalıdır >
+    * Veritabanı: DatabaseName ReportServer $\<SqlInstanceName olmalıdır >
+    * Web portalı URL 'SI: ' sanal dizin ' Reports_\<SqlInstanceName > olmalıdır
 
     SSRS yapılandırması hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) .
 
     > [!NOTE]
-    > MABS için veritabanı olarak kullanılan SQL Server Lisanslama, [Microsoft çevrimiçi hizmet koşulları](https://www.microsoft.com/en-us/licensing/product-licensing/products) (OST) tarafından yönetilir. OST 'ye göre, MABS ile paketlenmiş SQL Server yalnızca MABS için veritabanı olarak kullanılabilir.
+    > MABS için veritabanı olarak kullanılan SQL Server Lisanslama, [Microsoft çevrimiçi hizmet koşulları](https://www.microsoft.com/licensing/product-licensing/products) (OST) tarafından yönetilir. OST 'ye göre, MABS ile paketlenmiş SQL Server yalnızca MABS için veritabanı olarak kullanılabilir.
 
 4. Microsoft Azure Backup sunucusu dosyalarının yüklenmesi için bir konum belirtin ve **İleri**' ye tıklayın.
 
@@ -290,11 +290,11 @@ Azure bağlantısının ve Azure aboneliğinin durumunu öğrendikten sonra, sun
 
 | Bağlantı durumu | Azure Aboneliği | Azure 'a yedekleme | Diske Yedekle | Azure 'dan geri yükleme | Diskten geri yükleme |
 | --- | --- | --- | --- | --- | --- |
-| Bağlı |Etkin |İzin verilen |İzin verilen |İzin verilen |İzin verilen |
-| Bağlı |Süresi doldu |Durduruldu |Durduruldu |İzin verilen |İzin verilen |
+| Bağlı |Etkin |İzin Verildi |İzin Verildi |İzin Verildi |İzin Verildi |
+| Bağlı |Süresi doldu |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
 | Bağlı |Sağlaması kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
-| Kesilen bağlantı > 15 gün |Etkin |Durduruldu |Durduruldu |İzin verilen |İzin verilen |
-| Kesilen bağlantı > 15 gün |Süresi doldu |Durduruldu |Durduruldu |İzin verilen |İzin verilen |
+| Kesilen bağlantı > 15 gün |Etkin |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
+| Kesilen bağlantı > 15 gün |Süresi doldu |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
 | Kesilen bağlantı > 15 gün |Sağlaması kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Bağlantı kaybından kurtarma
@@ -304,8 +304,8 @@ Azure 'a erişimi engelleyen bir güvenlik duvarınız veya bir ara sunucu varsa
 * `http://www.msftncsi.com/ncsi.txt`
 * \*.Microsoft.com
 * \*.WindowsAzure.com
-* \*.microsoftonline.com
-* \*.windows.net
+* \*. microsoftonline.com
+* \*. windows.net
 
 Azure 'a bağlantı Azure Backup Sunucusu makineye geri yüklendikten sonra, gerçekleştirilebilecek işlemler Azure abonelik durumu tarafından belirlenir. Yukarıdaki tabloda, makine "bağlandı" olduktan sonra izin verilen işlemlerle ilgili ayrıntılar bulunur.
 
@@ -336,7 +336,7 @@ MABS 'yi yükseltmek için aşağıdaki adımları kullanın:
    >
    > SQL örneğiniz yükseltilirken çıkmayın, çıkılıyor SQL Raporlama örneğini kaldıracak ve bu nedenle MABS 'i yeniden yükseltme girişimi başarısız olur.
 
-   Dikkat edilmesi gereken önemli noktalar:
+
 
    > [!IMPORTANT]
    >

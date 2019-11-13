@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0e9f909aba11d35307e02a98a41ffa04e36e4db2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748376"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953116"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Autopilot modunda Azure Cosmos kapsayıcıları ve veritabanları oluşturma (Önizleme)
 
@@ -24,7 +24,7 @@ Aktarım hızını el ile sağlamaya ek olarak, artık Autopilot modundaki Azure
 
 Artık sağlanan üretilen işi el ile yönetmeniz veya hız sınırlandırma sorunlarını ele almanız gerekmez. Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları, iş yükünün kullanılabilirliğini, gecikmesini, verimini veya küresel olarak performansını etkilemeden iş yüküne anında ölçeklendirilebilir. Yüksek kullanım altında, Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları, devam eden işlemleri etkilemeden ölçeği artırılabilecek veya azaltılabilir.
 
-Autopilot modunda kapsayıcılar ve veritabanları yapılandırılırken, aşılmayacak `Tmax` en yüksek aktarım hızını belirtmeniz gerekir. Kapsayıcılar daha sonra `0.1*Tmax < T < Tmax` aralığında iş yükü ihtiyaçlarına göre anında ölçeklendirebilir. Diğer bir deyişle, kapsayıcılar ve veritabanları, yapılandırılan en yüksek aktarım hızı değerinin %10 ' u kadar ve yapılandırılan maksimum üretilen iş değerine kadar, iş yükü ihtiyaçlarına göre anında ölçeklenir. Autopilot veritabanı veya kapsayıcısındaki en fazla üretilen iş (Tmax) ayarını dilediğiniz zaman değiştirebilirsiniz.
+Autopilot modunda kapsayıcılar ve veritabanları yapılandırılırken, aşılmayacak `Tmax` en yüksek aktarım hızını belirtmeniz gerekir. Kapsayıcılar daha sonra `0.1*Tmax < T < Tmax` aralığında iş yükü ihtiyaçlarına göre anında ölçeklendirebilir. Diğer bir deyişle, kapsayıcılar ve veritabanları, yapılandırılan en yüksek aktarım hızı değerinin %10 ' u kadar ve yapılandırılan maksimum üretilen iş değerine kadar, iş yükü ihtiyaçlarına göre anında ölçeklenir. Autopilot veritabanı veya kapsayıcısındaki en fazla üretilen iş (Tmax) ayarını dilediğiniz zaman değiştirebilirsiniz. Autopilot seçeneğiyle, kapsayıcı veya veritabanı başına 400 RU/sn en düşük aktarım hızı artık geçerli değildir.
 
 Autopilot önizlemesi sırasında, kapsayıcıda veya veritabanında bulunan belirtilen en yüksek aktarım hızı için sistem, hesaplanan depolama sınırı içinde çalışmasına izin verir. Depolama sınırı aşılırsa, en yüksek aktarım hızı otomatik olarak daha yüksek bir değere ayarlanır. Autopilot modu ile veritabanı düzeyinde aktarım hızı kullanılırken, bir veritabanı içinde izin verilen kapsayıcıların sayısı şu şekilde hesaplanır: (0,001 * en fazla aktarım hızı). Örneğin, 20.000 Autopilot RU/s temin ediyorsanız, veritabanında 20 kapsayıcı olabilir.
 

@@ -3,7 +3,7 @@ title: Risk algılamalarını Azure Active Directory | Microsoft Docs
 description: Bu arku, risk algılamaları hakkında ayrıntılı bir genel bakış sunar.
 services: active-directory
 keywords: Azure Active Directory kimlik koruması, güvenlik, risk, risk düzeyi, güvenlik açığı, güvenlik ilkesi
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 523ae8e1ba31a4fe2c9683007f717149dfdc3bc6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127332"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014473"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Risk algılamalarını Azure Active Directory
 
@@ -108,19 +108,19 @@ Aşağıdaki tabloda, bir algılama türünün ilgili bir raporda görünmesi i�
 | Algılama türü | Raporlama gecikmesi |
 | --- | --- |
 | Gerçek zamanlı | 5 ila 10 dakika |
-| Çevrimdışı | 2-4 saat |
+| Offline | 2-4 saat |
 
 
 Azure Active Directory algıladığı risk algılama türleri için, algılama türleri şunlardır:
 
 | Risk algılama türü | Algılama türü |
 | :-- | --- | 
-| [Sızdırılan kimlik bilgilerine sahip kullanıcılar](#leaked-credentials) | Çevrimdışı |
+| [Sızdırılan kimlik bilgilerine sahip kullanıcılar](#leaked-credentials) | Offline |
 | [Anonim IP adreslerinden oturum açma işlemleri](#sign-ins-from-anonymous-ip-addresses) | Gerçek zamanlı |
-| [Atipik konumlara imkansız seyahat](#impossible-travel-to-atypical-locations) | Çevrimdışı |
+| [Atipik konumlara imkansız seyahat](#impossible-travel-to-atypical-locations) | Offline |
 | [Bilmediğiniz konumlardan oturum açma işlemleri](#sign-in-from-unfamiliar-locations) | Gerçek zamanlı |
-| [Virüslü cihazlardan oturum açma işlemleri](#sign-ins-from-infected-devices) | Çevrimdışı |
-| [Şüpheli etkinlikteki IP adreslerinden oturum açma işlemleri](#sign-ins-from-ip-addresses-with-suspicious-activity) | Çevrimdışı|
+| [Virüslü cihazlardan oturum açma işlemleri](#sign-ins-from-infected-devices) | Offline |
+| [Şüpheli etkinlikteki IP adreslerinden oturum açma işlemleri](#sign-ins-from-ip-addresses-with-suspicious-activity) | Offline|
 
 
 ## <a name="risk-level"></a>Risk düzeyi
@@ -131,11 +131,11 @@ Risk algılamanın önem derecesi, sinyalin bir kimlik uzlaşması olarak tahmin
 
 Örneğin, 
 
-* **Yüksek**: Yüksek güvenilirlikli ve yüksek öneme sahip risk algılama. Bu olaylar, Kullanıcı kimliğinin tehlikeye girdiği güçlü göstergeler ve etkilenen tüm Kullanıcı hesapları hemen düzeltilmelidir.
+* **Yüksek**: yüksek güvenilirlik ve yüksek öneme sahip risk algılama. Bu olaylar, Kullanıcı kimliğinin tehlikeye girdiği güçlü göstergeler ve etkilenen tüm Kullanıcı hesapları hemen düzeltilmelidir.
 
-* **Orta**: Yüksek önem derecesi, ancak daha düşük güvenilirlik riski algılama veya tam tersi. Bu olaylar riskli olabilir ve etkilenen tüm Kullanıcı hesapları düzeltilmelidir.
+* **Orta**: yüksek önem derecesi, ancak daha düşük güvenilirlik riski algılama veya tam tersi. Bu olaylar riskli olabilir ve etkilenen tüm Kullanıcı hesapları düzeltilmelidir.
 
-* **Düşük**: Düşük güvenilirlik ve düşük önem düzeyi risk algılama. Bu olay acil eylem gerektirmeyebilir, ancak diğer risk algılamaları ile birleştirildiğinde, kimliğin güvenliğinin aşıldığına yönelik güçlü bir gösterge sağlayabilir.
+* **Düşük**: düşük güvenilirlik ve düşük önem derecesi riski algılama. Bu olay acil eylem gerektirmeyebilir, ancak diğer risk algılamaları ile birleştirildiğinde, kimliğin güvenliğinin aşıldığına yönelik güçlü bir gösterge sağlayabilir.
 
 ![Risk düzeyi](./media/concept-risk-events/01.png)
 

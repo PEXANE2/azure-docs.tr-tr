@@ -1,23 +1,22 @@
 ---
-title: Azure Site Recovery ile ikincil bir siteye VMware/fiziksel sunucu olağanüstü durum kurtarma mimarisi | Microsoft Docs
+title: Mimari-Azure Site Recovery ile ikincil bir siteye VMware/fiziksel olağanüstü durum kurtarma
 description: Bu makalede, şirket içi VMware VM 'lerinin veya fiziksel Windows/Linux sunucularının, Azure Site Recovery ile ikincil bir VMware sitesine olağanüstü durum kurtarması sırasında kullanılan bileşenlere ve mimariye ilişkin genel bir bakış sunulmaktadır.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 0c00e26e6c12835db96c192400c3fe8652534dd4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972105"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954586"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>İkincil şirket içi siteye VMware/fiziksel sunucu çoğaltması için mimari
 
-Bu makalede, şirket içi VMware sanal makinelerinin (VM 'Ler) veya fiziksel Windows/Linux sunucularının Azure Site Recovery kullanarak ikincil bir VMware sitesine olağanüstü durum kurtarma çoğaltması, yük devretme ve kurtarma kurulumu sırasında kullanılan mimari ve süreçler açıklanmaktadır [ ](site-recovery-overview.md).
+Bu makalede, şirket içi VMware sanal makinelerinin (VM 'Ler) veya fiziksel Windows/Linux sunucularının [Azure Site Recovery](site-recovery-overview.md)kullanarak Ikincil bir VMware sitesine olağanüstü durum kurtarma çoğaltması, yük devretme ve kurtarma kurulumu sırasında kullanılan mimari ve süreçler açıklanmaktadır.
 
 
 ## <a name="architectural-components"></a>Mimari bileşenler
@@ -38,7 +37,7 @@ Bu makalede, şirket içi VMware sanal makinelerinin (VM 'Ler) veya fiziksel Win
 2. İlk çoğaltmanın ardından makinelerdeki aracılar çoğaltma değişimleri işlem sunucusuna gönderir.
 3. İşlem sunucusu verileri iyileştirir ve ikincil sitedeki ana hedef sunucusuna aktarır. Yapılandırma sunucusu çoğaltma sürecini yönetir.
 
-**Şekil 6: VMware 'den VMware 'e çoğaltma**
+**Şekil 6: VMware’den VMware’e çoğaltma**
 
 ![VMware'den VMware'e](./media/site-recovery-components/vmware-to-vmware.png)
 

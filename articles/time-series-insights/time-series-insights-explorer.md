@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights gezginini kullanarak verileri araştırma | Microsoft Docs
-description: Bu makalede, büyük verilerinizin genel görünümünü görmek ve IoT ortamınızı doğrulamak için Web tarayıcınızda Azure Time Series Insights Gezgini 'nin nasıl kullanılacağı açıklanır.
+title: Explorer-Azure Time Series Insights kullanarak verileri keşfet | Microsoft Docs
+description: IoT verilerinizi görüntülemek için Azure Time Series Insights Gezginini nasıl kullanacağınızı öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25f2c07678217b69699b881d53ee9d5f92f84be1
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: df895f99b64d30506bc9457fb5bdc54a2182b5fe
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990112"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012643"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Gezgini
 
 Bu makalede, Azure Time Series Insights [Explorer Web uygulaması](https://insights.timeseries.azure.com/)için genel kullanıma yönelik özellikler ve seçenekler açıklanmaktadır. Time Series Insights Gezgini, hizmet tarafından sunulan güçlü veri görselleştirme yeteneklerini gösterir ve kendi ortamınız dahilinde erişilebilir.
 
-Azure Zaman Serisi Öngörüleri, milyarlarca IoT olayını aynı anda keşfedip analiz etmeyi kolaylaştıran ve tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Verilerinize ilişkin genel bir görünüm sunar. bu sayede IoT çözümünüzü hızla doğrulamanıza ve görev açısından kritik cihazlara maliyetli kapalı kalma süresi yapmaktan kaçınabilirsiniz. Gizli eğilimleri bulabilir, anormallikleri tespit edebilir ve neredeyse gerçek zamanlı olarak kök neden analizleri gerçekleştirebilirsiniz. Time Series Insights Gezgini Şu anda genel önizlemededir.
+Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip analiz etmeyi kolaylaştıran ve tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Verilerinize ilişkin genel bir görünüm sunar. bu sayede IoT çözümünüzü hızla doğrulamanıza ve görev açısından kritik cihazlara maliyetli kapalı kalma süresi yapmaktan kaçınabilirsiniz. Gizli eğilimleri bulabilir, anormallikleri tespit edebilir ve neredeyse gerçek zamanlı olarak kök neden analizleri gerçekleştirebilirsiniz. Time Series Insights Gezgini Şu anda genel önizlemededir.
 
 > [!TIP]
 > Tanıtım ortamında kılavuzlu bir tur için [Azure Time Series Insights hızlı](time-series-quickstart.md)başlangıcı makalesini okuyun.
@@ -41,7 +41,7 @@ Azure Zaman Serisi Öngörüleri, milyarlarca IoT olayını aynı anda keşfedip
 
 Time Series Insights Gezginini kullanabilmeniz için şunları yapmanız gerekir:
 
-- Time Series Insights ortamı oluşturun. Daha fazla bilgi için bkz. [Time Series Insights kullanmaya başlama](./time-series-insights-get-started.md).
+- Zaman serisi görüşleri ortamı oluşturun. Daha fazla bilgi için bkz. [Time Series Insights kullanmaya başlama](./time-series-insights-get-started.md).
 - Ortamda hesabınıza [erişim sağlayın](time-series-insights-data-access.md) .
 - Bir [IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md) veya [Olay Hub](time-series-insights-how-to-add-an-event-source-eventhub.md) 'ı olay kaynağı ekleyin.
 
@@ -73,9 +73,9 @@ Olay kaynağınızı Time Series Insights ortamınıza bağlama sırasında, zam
 
          |İşlem  |Desteklenen türler  |Notlar  |
          |---------|---------|---------|
-         |`<`, `>`, `<=`, `>=`     |  Double, DateTime, TimeSpan       |         |
-         |`=`, `!=`, `<>`     | Dize, bool, Double, DateTime, TimeSpan, NULL        |         |
-         |IN     | Dize, bool, Double, DateTime, TimeSpan, NULL        |  Tüm işlenenler aynı türde veya NULL sabit olmalıdır.        |
+         |`<`, `>`, `<=`, `>=`     |  Çift, DateTime, zaman aralığı       |         |
+         |`=`, `!=`, `<>`     | Dize, Bool, Double, DateTime, zaman aralığı, NULL        |         |
+         |IN     | Dize, Bool, Double, DateTime, zaman aralığı, NULL        |  Tüm işlenenler aynı türde veya NULL sabiti olması.        |
          |SILINDI     | Dize        |  Sağ tarafta yalnızca sabit dize sabit değerlerine izin verilir. Boş dize ve NULL değerlerine izin verilmez.       |
 
       - **Sorgu örnekleri**

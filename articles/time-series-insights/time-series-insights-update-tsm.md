@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights Preview 'da zaman serisi modeli | Microsoft Docs
-description: Azure Time Series Insights zaman serisi modelini anlama.
+title: Zaman serisi modeli-Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights önizlemede zaman serisi modeli hakkında bilgi edinin.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c9bface359df020cea0bfff8f82e25e25efbc47
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a550643640afeefeb4cf79e35265f13557b6ffb0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585241"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014688"
 ---
-# <a name="time-series-model"></a>Zaman Serisi Modeli
+# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede zaman serisi modeli
 
 Bu makalede zaman serisi modeli, özellikleri ve Azure Time Series Insights önizleme ortamında kendi modellerinizi oluşturma ve güncelleştirme işlemlerinin nasıl başlatılacağı açıklanmaktadır.
 
@@ -223,7 +223,7 @@ Bunlar, belirtilen veri hiyerarşisine uygun olmadıkları için, *üst öğe ol
 
 Zaman serisi model *türleri* , hesaplamalar yapmak için değişkenler veya formüller tanımlamanıza yardımcı olur. Türler, belirli bir Time Series Insights örneğiyle ilişkilendirilir.
 
-Bir tür bir veya daha fazla değişkene sahip olabilir. Örneğin, bir zaman serisi model örneği, *Ortalama sıcaklık*, *en az sıcaklık*ve *en fazla sıcaklık*değişkenleriyle oluşan *sıcaklık algılayıcısı*türünde olabilir.
+Bir türü veya daha fazla değişken olabilir. Örneğin, bir zaman serisi model örneği, *Ortalama sıcaklık*, *en az sıcaklık*ve *en fazla sıcaklık*değişkenleriyle oluşan *sıcaklık algılayıcısı*türünde olabilir.
 
 [Contoso rüzgar grubu gösterimi](https://insights.timeseries.azure.com/preview/samples) , ilgili örneklerle Ilişkili çeşitli zaman serisi modeli türlerini görselleştirir.
 

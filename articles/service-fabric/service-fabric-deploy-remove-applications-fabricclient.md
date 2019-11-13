@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric uygulama dağıtımı | Microsoft Docs
+title: FabricClient ile Azure Service Fabric dağıtımı
 description: Service Fabric uygulamaları dağıtmak ve kaldırmak için FabricClient API 'Lerini kullanın.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: c04306b417c8e68f2e93c0e5e064f5873b00ddd5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cdb5ae4efbd4119422101eb8a05ce71e7b58d51f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599634"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013304"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>FabricClient kullanarak uygulama dağıtma ve kaldırma
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ FabricClient fabricClient = new FabricClient();
 ```
 
 ## <a name="upload-the-application-package"></a>Uygulama paketini karşıya yükle
-Visual Studio 'da *MyApplication* adlı bir uygulama oluşturup paketlediğinizi varsayalım. Varsayılan olarak, ApplicationManifest. xml dosyasında listelenen uygulama türü adı "MyApplicationType" dir.  Gerekli uygulama bildirimi, hizmet bildirimleri ve kod/yapılandırma/veri paketleri içeren uygulama paketi, *C:\Users\&lt; username&gt;\ist Studio 2019 \ Projects\MyApplication\ konumunda bulunur. MyApplication\pkg\Debug*.
+Visual Studio 'da *MyApplication* adlı bir uygulama oluşturup paketlediğinizi varsayalım. Varsayılan olarak, ApplicationManifest. xml dosyasında listelenen uygulama türü adı "MyApplicationType" dir.  Gerekli uygulama bildirimi, hizmet bildirimleri ve kod/yapılandırma/veri paketleri içeren uygulama paketi, *C:\Users\&lt; username&gt;\ist Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*konumunda bulunur.
 
 Uygulama paketini karşıya yüklemek, iç Service Fabric bileşenleri tarafından erişilebilen bir konuma koyar. Service Fabric uygulama paketinin kaydı sırasında uygulama paketini doğrular. Ancak, uygulama paketini yerel olarak doğrulamak istiyorsanız (diğer bir deyişle, karşıya yüklemeden önce), [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) cmdlet 'ini kullanın.
 
@@ -132,23 +132,23 @@ Imatoreconnectionstring, küme bildiriminde bulunur:
 Görüntü deposu ve görüntü deposu bağlantı dizesi hakkında ek bilgi için bkz. [görüntü deposu bağlantı dizesi](service-fabric-image-store-connection-string.md) .
 
 ### <a name="deploy-large-application-package"></a>Büyük uygulama paketini dağıtma
-Sorun: [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) Büyük bir uygulama paketi için API zaman aşımı (GB sırası).
+Sorun: büyük bir uygulama paketi (GB miktarı) için [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API zaman aşımına uğruyor.
 Deneyin:
-- [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) yöntemi `timeout` için parametresiyle daha büyük bir zaman aşımı belirtin. Varsayılan olarak, zaman aşımı 30 dakikadır.
+- [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) yöntemi için `timeout` parametresi ile daha büyük bir zaman aşımı belirtin. Varsayılan olarak, zaman aşımı 30 dakikadır.
 - Kaynak makineniz ve kümeniz arasındaki ağ bağlantısını kontrol edin. Bağlantı yavaşsa, daha iyi bir ağ bağlantısına sahip bir makine kullanmayı düşünün.
 İstemci makine kümeden başka bir bölgedeyse, kümeyle daha yakın bir bölgede bir istemci makine kullanmayı düşünün.
 - Dış azaltmayı vurarak göz atın. Örneğin, görüntü deposu Azure Storage 'ı kullanacak şekilde yapılandırıldığında karşıya yükleme kısıtlanmış olabilir.
 
-Sorun: Yükleme paketi başarıyla tamamlandı, ancak [Provisionapplicationasync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API zaman aşımına uğruyor. Deneyin:
+Sorun: yükleme paketi başarıyla tamamlandı, ancak [Provisionapplicationasync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API zaman aşımına uğruyor. Almaya
 - Görüntü deposuna kopyalamadan önce [paketi sıkıştırın](service-fabric-package-apps.md#compress-a-package) .
 Sıkıştırma, dosyanın boyutunu ve sayısını azaltır ve bu da Service Fabric olması gereken trafik miktarını ve çalışmayı azaltır. Karşıya yükleme işlemi daha yavaş olabilir (özellikle, sıkıştırma süresini dahil ediyorsanız), ancak uygulama türünün kaydını kaydedip kaydı daha hızlıdır.
-- [Provisionapplicationasync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 'si `timeout` için parametresiyle daha büyük bir zaman aşımı belirtin.
+- [Provisionapplicationasync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) apı için `timeout` parametresiyle daha büyük bir zaman aşımı belirtin.
 
 ### <a name="deploy-application-package-with-many-files"></a>Birçok dosya içeren uygulama paketini dağıtma
-Sorun: Çok sayıda dosya içeren bir uygulama paketi için [Provisionapplicationasync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) zaman aşımı süresi (binlerce sıra).
+Sorun: çok sayıda dosya (binlerce sırada) olan bir uygulama paketi için [Provisionapplicationasync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) zaman aşımına uğruyor.
 Deneyin:
 - Görüntü deposuna kopyalamadan önce [paketi sıkıştırın](service-fabric-package-apps.md#compress-a-package) . Sıkıştırma, dosya sayısını azaltır.
-- [Provisionapplicationasync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) `timeout` için parametresiyle daha büyük bir zaman aşımı belirtin.
+- [Provisionapplicationasync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) için `timeout` parametresiyle daha büyük bir zaman aşımı belirtin.
 
 ## <a name="code-example"></a>Kod örneği
 Aşağıdaki örnek, bir uygulama paketini görüntü deposuna kopyalar ve uygulama türünü hazırlar. Daha sonra örnek, bir uygulama örneği oluşturur ve bir hizmet örneği oluşturur. Son olarak, örnek uygulama örneğini kaldırır, uygulama türünün sağlamasını kaldırır ve görüntü deposundan uygulama paketini siler.

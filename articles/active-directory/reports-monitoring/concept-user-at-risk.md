@@ -2,7 +2,7 @@
 title: Azure Active Directory portalında risk güvenliği raporu için işaretlenmiş kullanıcılar | Microsoft Docs
 description: Azure Active Directory portalında risk güvenliği için işaretlenmiş kullanıcılar hakkında bilgi edinin
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/17/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e6b79c7d5c2ed9744dc00eb1588c35f8ea94a76
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 894d8dfb7f870ec4a2a11f1d75ee0376b25d8c7f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127646"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014460"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Azure portal risk için işaretlenen kullanıcılar raporu
 
@@ -61,7 +61,7 @@ Bir kullanıcının seçilmesi, oturum açma bilgilerini sağlar. Risk altındak
 Bu iletişim kutusu size şu seçeneği sunar:
 
 - Raporu indirme
-- Kullanıcı ara
+- Kullanıcılarda arama
 
     ![Riskli Oturum Açma İşlemleri](./media/concept-user-at-risk/16.png)
 
@@ -77,7 +77,7 @@ Azure AD Premium sürümlerinde risk için işaretlenmiş kullanıcılar raporu 
 
 - Raporu indirme seçeneği
 
-- [Kullanıcı riskini azaltma ilkesi](../identity-protection/howto-user-risk-policy.md) yapılandırma seçeneği  
+- Bir [kullanıcı riskini azaltma ilkesi](../identity-protection/howto-user-risk-policy.md) yapılandırabilirsiniz.  
 
 ![Riskli Oturum Açma İşlemleri](./media/concept-user-at-risk/71.png)
 
@@ -87,7 +87,7 @@ Bir kullanıcıyı seçtiğinizde bu kullanıcıya ilişkin, aşağıdakileri ge
 
 - Kullanıcının parolasını sıfırlayabilirsiniz.
 
-- Tüm olayları kapat
+- Tüm olayları kapatabilirsiniz.
 
 - Kullanıcı için bildirilen risk algılamalarını araştırın. 
 

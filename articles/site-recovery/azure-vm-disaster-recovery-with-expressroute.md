@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute hizmetini Azure Site Recovery hizmeti kullanarak Azure VM 'Leri için olağanüstü durum kurtarma ile tümleştirin | Microsoft Docs
+title: Azure ExpressRoute ile Azure VM olağanüstü durum kurtarma Azure Site Recovery tümleştirme
 description: Azure Site Recovery ve Azure ExpressRoute kullanarak Azure VM 'Leri için olağanüstü durum kurtarmanın nasıl ayarlanacağını açıklar.
 services: site-recovery
 author: mayurigupta13
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 0974e2ed78e557168357c51b5c77a94de2f56dc5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722112"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954094"
 ---
-# <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Azure sanal makineleri için olağanüstü durum kurtarma ile Azure ExpressRoute ile tümleştirme
+# <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>Azure VM 'lerinde ExpressRoute 'ı olağanüstü durum kurtarma ile tümleştirme
 
 
 Bu makalede, Azure sanal makineleri için ikincil bir Azure bölgesine olağanüstü durum kurtarmayı ayarlarken Azure ExpressRoute 'u [Azure Site Recovery](site-recovery-overview.md)ile tümleştirme açıklanır.
@@ -29,7 +29,7 @@ Site Recovery Azure VM verilerini Azure 'a çoğaltarak Azure VM 'Leri olağanü
 ExpressRoute, şirket içi ağları bir bağlantı sağlayıcısı tarafından kolaylaştırarak özel bir bağlantı üzerinden Microsoft Azure bulutuna genişletmenizi sağlar. ExpressRoute yapılandırdıysanız, Site Recovery aşağıdaki gibi tümleştirilir:
 
 - **Azure bölgeleri arasında çoğaltma sırasında**: Azure VM olağanüstü durum kurtarma için çoğaltma trafiği yalnızca Azure 'da bulunur ve ExpressRoute gerekli değildir veya çoğaltma için kullanılmaz. Ancak, şirket içi bir siteden birincil Azure sitesindeki Azure VM 'lerine bağlanıyorsanız, bu Azure VM 'Leri için olağanüstü durum kurtarmayı ayarlarken dikkat etmeniz gerekenler bir dizi sorun vardır.
-- **Azure bölgeleri arasında yük devretme**: Kesintiler gerçekleştiğinde, birincil ve ikincil Azure bölgesindeki Azure VM 'lerinden yük devreolursunuz. İkincil bir bölgeye yük devrettikten sonra, ExpressRoute kullanarak ikincil bölgedeki Azure VM 'lerine erişmek için gereken birkaç adım vardır.
+- **Azure bölgeleri arasında yük devretme**: kesintiler gerçekleştiğinde, birincil ve ikincil Azure bölgesindeki Azure VM 'lerinden yük devreolursunuz. İkincil bir bölgeye yük devrettikten sonra, ExpressRoute kullanarak ikincil bölgedeki Azure VM 'lerine erişmek için gereken birkaç adım vardır.
 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
@@ -90,7 +90,7 @@ Genellikle kurumsal dağıtımlar, internet ve şirket içi sitelere harici bağ
     - **Kaynak vNet1**: 10.1.0.0/24.
     - **Kaynak vNet2**: 10.2.0.0/24.
     - Her bir bağlı ağ sanal ağı **hub vNet**'e bağlanır.
-- **Hub vNet**. Hub vNet **kaynak hub sanal ağı**vardır: 10.10.10.0/24.
+- **Hub vNet**. Hub vNet **kaynak hub VNET**: 10.10.10.0/24.
   - Bu merkez sanal ağı ağ geçidi denetleyicisi gibi davranır.
   - Tüm alt ağlar arasındaki tüm iletişimler bu hub aracılığıyla gider.
     - **Hub vNet alt ağları**. Hub vNet 'in iki alt ağı vardır:
@@ -106,10 +106,10 @@ Genellikle kurumsal dağıtımlar, internet ve şirket içi sitelere harici bağ
 
 **Yön** | **Ayar** | **State**
 --- | --- | ---
-Uçtan merkeze | Sanal ağ adresine izin ver | Enabled
-Uçtan merkeze | Yönlendirilen trafiğe izin ver | Enabled
-Uçtan merkeze | Ağ geçidi aktarımına izin ver | Devre dışı
-Uçtan merkeze | Ağ geçitlerini kaldır 'ı kullan | Enabled
+Uçtan merkeze | Sanal ağ adresine izin ver | Etkin
+Uçtan merkeze | İletilen trafiğe izin ver | Etkin
+Uçtan merkeze | Ağ Geçidi aktarımına izin ver | Devre dışı
+Uçtan merkeze | Ağ geçitlerini kaldır 'ı kullan | Etkin
 
  ![Hub eşleme yapılandırmasına bağlı](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
@@ -117,9 +117,9 @@ Uçtan merkeze | Ağ geçitlerini kaldır 'ı kullan | Enabled
 
 **Yön** | **Ayar** | **State**
 --- | --- | ---
-Merkezden uca | Sanal ağ adresine izin ver | Enabled
-Merkezden uca | Yönlendirilen trafiğe izin ver | Enabled
-Merkezden uca | Ağ geçidi aktarımına izin ver | Enabled
+Merkezden uca | Sanal ağ adresine izin ver | Etkin
+Merkezden uca | İletilen trafiğe izin ver | Etkin
+Merkezden uca | Ağ Geçidi aktarımına izin ver | Etkin
 Merkezden uca | Ağ geçitlerini kaldır 'ı kullan | Devre dışı
 
  ![Hub 'dan bağlı bileşen eşleme yapılandırması](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)

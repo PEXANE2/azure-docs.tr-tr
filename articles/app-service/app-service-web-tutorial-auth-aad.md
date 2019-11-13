@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c82cad30fcc2aa80eea52ab13f60fc0c4da33cd1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55ba5a193e15ac4e8bd83ac046deeac1f12d61d0
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471330"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961949"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Öğretici: Azure App Service'te kullanıcıların kimliğini doğrulama ve kullanıcıları uçtan uca yetkilendirme
 
@@ -269,7 +269,7 @@ Her iki uygulamanızda da kimlik doğrulaması ve yetkilendirmeyi etkinleştirdi
 
 1. **Izin Ekle**' yi seçin ve ardından **apı 'lerim** > **arka uç uygulama adı >\<** .
 
-1. Arka uç uygulaması için **API Izinleri iste** sayfasında, **temsilci izinleri** ve **user_impersonation**' ı seçin ve ardından **izin Ekle**' yi seçin.
+1. Arka uç uygulaması için **API Izinleri iste** sayfasında, **temsilci izinleri** ve **User_impersonation**seçin ve ardından **izin Ekle**' yi seçin.
 
    ![Azure App Service'te çalışan ASP.NET Core API'si](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
 
@@ -401,7 +401,7 @@ $routeProvider.when("/Home", {
 }).otherwise({ redirectTo: "/Home" });
 ```
 
-Yeni değişiklik, `revolve` çağrısını yapıp erişim belirtecini ayarlayan `/.auth/me` eşlemesini ekler. `todoListCtrl` denetleyicisinin örneğini oluşturmadan önce erişim belirtecine sahip olduğunuzdan emin olur. Bu şekilde, denetleyicinin yaptığı tüm API çağrıları belirteci içerir.
+Yeni değişiklik, `resolve` çağrısını yapıp erişim belirtecini ayarlayan `/.auth/me` eşlemesini ekler. `todoListCtrl` denetleyicisinin örneğini oluşturmadan önce erişim belirtecine sahip olduğunuzdan emin olur. Bu şekilde, denetleyicinin yaptığı tüm API çağrıları belirteci içerir.
 
 ### <a name="deploy-updates-and-test"></a>Güncelleştirmeleri dağıtma ve test etme
 

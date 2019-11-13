@@ -1,5 +1,5 @@
 ---
-title: Dağıtılmış izleme ile IoT iletilerine bağıntı kimlikleri ekleme (Önizleme)
+title: IoT iletilerine bağıntı kimlikleri ekleme w/dağıtılmış izleme (öncesi)
 description: Çözümünüz tarafından kullanılan Azure hizmetleri genelinde IoT iletilerini izlemek için dağıtılmış izleme özelliğini nasıl kullanacağınızı öğrenin.
 author: jlian
 manager: briz
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: a6e7d2dc9b6274c07fda011bff8ec9dc59f74f95
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889437"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953146"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Dağıtılmış izleme (Önizleme) ile Azure IoT cihazdan buluta iletileri izleme
 
@@ -30,7 +30,7 @@ IoT Hub için dağıtılmış izlemeyi etkinleştirmek aşağıdakileri yapabilm
 
 Bu makalede, dağıtılmış izleme ile [C Için Azure IoT cihaz SDK 'sını](iot-hub-device-sdk-c-intro.md) kullanırsınız. Diğer SDK 'lar için dağıtılmış izleme desteği hala devam ediyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Dağıtılmış izlemenin önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'Lar için desteklenir:
 
@@ -197,7 +197,7 @@ Buluttan izlenecek ileti yüzdesini değiştirmek için cihaz ikizi güncelleşt
 
 1. %0 ile %100 arasında bir **örnekleme oranı** seçin.
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 1. Birkaç saniye bekleyin ve **yenileme**' ye basın, sonra cihaz tarafından başarıyla onaylandıysanız, onay işareti içeren bir eşitleme simgesi belirir.
 
@@ -242,8 +242,8 @@ Birden çok cihaz için dağıtılmış izleme örnekleme yapılandırmasını g
 
 | Öğe adı | Gerekli | Tür | Açıklama |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Evet | Tamsayı | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1` ve `2` kapalı. |
-| `sampling_rate` | Evet | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca `0` `100` (dahil) değerlerine izin verilir.  |
+| `sampling_mode` | Yes | Tamsayı | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1` ve `2` kapalı. |
+| `sampling_rate` | Yes | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca `0` `100` (dahil) değerlerine izin verilir.  |
 
 ## <a name="query-and-visualize"></a>Sorgulama ve görselleştirme
 
@@ -263,7 +263,7 @@ AzureDiagnostics
 
 Log Analytics gösterildiği gibi örnek Günlükler:
 
-| TimeGenerated | için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Kategori | Düzey | CorrelationId | Ort | Özellikler |
+| TimeGenerated | ThrottledRequests | Kategori | Düzey | CorrelationId | Ort | Özellikler |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"DeviceID": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
 | 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "Parentspanıd": "0144d2590aacd909"} |

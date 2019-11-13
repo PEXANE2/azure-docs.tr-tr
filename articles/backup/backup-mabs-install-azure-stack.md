@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7716fba7a16b393143ffb9c97e7203e15bc07d82
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747295"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012949"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 
@@ -35,9 +35,9 @@ Azure Backup Sunucusu aşağıdaki Azure Stack sanal makine iş yüklerini korur
 | Windows Server 2012 R2-Datacenter/Enterprise/Standard | Birimler, dosyalar, klasörler |
 | Windows Server 2012-Datacenter/Enterprise/Standard | Birimler, dosyalar, klasörler |
 | Windows Server 2008 R2-Datacenter/Enterprise/Standard | Birimler, dosyalar, klasörler |
-| SQL Server 2016 | Database |
-| SQL Server 2014 | Database |
-| SQL Server 2012 SP1 | Database |
+| SQL Server 2016 | Veritabanı |
+| SQL Server 2014 | Veritabanı |
+| SQL Server 2012 SP1 | Veritabanı |
 | SharePoint 2016 | Grup, veritabanı, ön uç, Web sunucusu |
 | SharePoint 2013 | Grup, veritabanı, ön uç, Web sunucusu |
 | SharePoint 2010 | Grup, veritabanı, ön uç, Web sunucusu |
@@ -124,7 +124,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
 ## <a name="download-azure-backup-server-installer"></a>Azure Backup Sunucusu yükleyiciyi indir
 
-Azure Backup Sunucusu yükleyicisini indirmenin iki yolu vardır. Azure Backup Sunucusu yükleyicisini [Microsoft Indirme merkezi](https://www.microsoft.com/en-us/download/details.aspx?id=55269)' nden indirebilirsiniz. Ayrıca, kurtarma hizmetleri kasasını yapılandırırken Azure Backup Sunucusu yükleyiciyi de indirebilirsiniz. Aşağıdaki adımlar, bir kurtarma hizmetleri kasasını yapılandırırken yükleyiciyi Azure portal karşıdan yükleme işleminde size kılavuzluk yapar.
+Azure Backup Sunucusu yükleyicisini indirmenin iki yolu vardır. Azure Backup Sunucusu yükleyicisini [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=55269)' nden indirebilirsiniz. Ayrıca, kurtarma hizmetleri kasasını yapılandırırken Azure Backup Sunucusu yükleyiciyi de indirebilirsiniz. Aşağıdaki adımlar, bir kurtarma hizmetleri kasasını yapılandırırken yükleyiciyi Azure portal karşıdan yükleme işleminde size kılavuzluk yapar.
 
 1. Azure Stack sanal makinenizden [Azure Portal Azure aboneliğinizde oturum açın](https://portal.azure.com/).
 2. Sol taraftaki menüden **tüm hizmetler**' i seçin.
@@ -332,11 +332,11 @@ Azure bağlantısının ve Azure aboneliğinin durumunu öğrendikten sonra, sun
 
 | Bağlantı durumu | Azure Aboneliği | Azure 'a yedekleme | Diske Yedekle | Azure 'dan geri yükleme | Diskten geri yükleme |
 | --- | --- | --- | --- | --- | --- |
-| Bağlı |Etkin |İzin verilen |İzin verilen |İzin verilen |İzin verilen |
-| Bağlı |Süresi doldu |Durduruldu |Durduruldu |İzin verilen |İzin verilen |
+| Bağlı |Etkin |İzin Verildi |İzin Verildi |İzin Verildi |İzin Verildi |
+| Bağlı |Süresi doldu |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
 | Bağlı |Sağlaması kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
-| Kesilen bağlantı > 15 gün |Etkin |Durduruldu |Durduruldu |İzin verilen |İzin verilen |
-| Kesilen bağlantı > 15 gün |Süresi doldu |Durduruldu |Durduruldu |İzin verilen |İzin verilen |
+| Kesilen bağlantı > 15 gün |Etkin |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
+| Kesilen bağlantı > 15 gün |Süresi doldu |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
 | Kesilen bağlantı > 15 gün |Sağlaması kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Bağlantı kaybından kurtarma
@@ -346,8 +346,8 @@ Bir güvenlik duvarı veya proxy Azure 'a erişimi engelliyorsa, güvenlik duvar
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com
 - \*.WindowsAzure.com
-- \*.microsoftonline.com
-- \*.windows.net
+- \*. microsoftonline.com
+- \*. windows.net
 
 Azure 'a bağlantı Azure Backup Sunucusu geri yüklendikten sonra, Azure abonelik durumu gerçekleştirilebileceği işlemleri belirler. Sunucu **bağlandıktan**sonra, kullanılabilir işlemleri görmek için [ağ bağlantısı](backup-mabs-install-azure-stack.md#network-connectivity) 'ndaki tabloyu kullanın.
 

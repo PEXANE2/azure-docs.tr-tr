@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 73dc95260e7beb306834d094957518f36106b0f4
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815732"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73945764"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory bir grup için lisans atama sorunlarını tanımla ve çözümle
 
@@ -29,11 +29,6 @@ Azure Active Directory (Azure AD) içindeki grup tabanlı lisanslama, Kullanıc�
 Lisansları, grup tabanlı lisanslama kullanmadan, bireysel kullanıcılara doğrudan atadığınızda, atama işlemi başarısız olabilir. Örneğin, bir kullanıcı sisteminde PowerShell cmdlet 'ini `Set-MsolUserLicense` yürüttüğünüzde, cmdlet 'i iş mantığı ile ilgili birçok nedenden dolayı başarısız olabilir. Örneğin, yeterli sayıda lisans veya aynı anda atanmayan iki hizmet planı arasında bir çakışma olabilir. Sorun hemen size geri bildirilir.
 
 Grup tabanlı lisanslama kullanırken aynı hatalar oluşabilir, ancak Azure AD hizmeti lisansları atarken arka planda gerçekleşirler. Bu nedenle, hatalar size anında iletilenmelidir. Bunun yerine, kullanıcı nesnesine kaydedilir ve sonra yönetim portalı aracılığıyla raporlanır. Kullanıcıya lisans vermek için özgün amaç hiçbir zaman kaybedilmez, ancak gelecekteki araştırma ve çözümleme için bir hata durumunda kaydedilir.
-
-## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>Denetim günlüklerinde LicenseAssignmentAttributeConcurrencyException
-
-**Sorun:** Kullanıcı, denetim günlüklerinde lisans ataması için LicenseAssignmentAttributeConcurrencyException sahiptir.
-Grup tabanlı lisanslama, bir kullanıcıya aynı lisansın eşzamanlı lisans atamasını işlemeye çalıştığında, bu özel durum kullanıcıya kaydedilir. Bu genellikle bir kullanıcı aynı atanmış lisansa sahip birden fazla grubun üyesi olduğunda gerçekleşir. AZure AD Kullanıcı lisansını işlemeyi yeniden deneyecek ve sorunu çözmeyecektir. Müşterinin bu sorunu çözmesi için gerekli bir işlem yoktur.
 
 ## <a name="find-license-assignment-errors"></a>Lisans atama hatalarını bulma
 
@@ -122,6 +117,11 @@ Etkilenen kullanıcılar için tüm proxy adres sorunlarını çözdükten sonra
 
 Bir kullanıcının lisans atamasını güncelleştirme, proxy adresi hesaplamasının tetiklenmesi ve bu da kullanıcı özniteliklerinin değişmesine neden olabilir. Değişikliğin tam nedenini anlamak ve sorunu çözmek için, [proxyAddresses özniteliğinin Azure AD 'de nasıl doldurulduğuna](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)ilişkin bu makaleye bakın.
 
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>Denetim günlüklerinde LicenseAssignmentAttributeConcurrencyException
+
+**Sorun:** Kullanıcı, denetim günlüklerinde lisans ataması için LicenseAssignmentAttributeConcurrencyException sahiptir.
+Grup tabanlı lisanslama, bir kullanıcıya aynı lisansın eşzamanlı lisans atamasını işlemeye çalıştığında, bu özel durum kullanıcıya kaydedilir. Bu genellikle bir kullanıcı aynı atanmış lisansa sahip birden fazla grubun üyesi olduğunda gerçekleşir. AZure AD Kullanıcı lisansını işlemeyi yeniden deneyecek ve sorunu çözmeyecektir. Müşterinin bu sorunu çözmesi için gerekli bir işlem yoktur.
+
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>Bir gruba birden fazla ürün lisansı atandı
 
 Bir gruba birden fazla ürün lisansı atayabilirsiniz. Örneğin, kullanıcılar için tüm dahil edilen hizmetleri kolayca etkinleştirmek üzere bir gruba Office 365 Kurumsal E3 ve Enterprise Mobility + Security atayabilirsiniz.
@@ -180,6 +180,6 @@ Gruplar aracılığıyla lisans yönetimine yönelik diğer senaryolar hakkında
 * [Azure Active Directory 'de grup tabanlı lisanslama nedir?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Azure Active Directory'de gruba lisans atama](licensing-groups-assign.md)
 * [Azure Active Directory'de tek tek lisanslı kullanıcıları grup tabanlı lisanslamaya geçirme](licensing-groups-migrate-users.md)
-* [Azure Active Directory 'de grup tabanlı lisanslama kullanarak kullanıcıları ürün lisansları arasında geçirme](licensing-groups-change-licenses.md)
+* [Kullanıcılar Azure Active Directory'de Grup tabanlı lisanslama kullanarak ürün lisansları arasında geçirme](licensing-groups-change-licenses.md)
 * [Azure Active Directory grup tabanlı lisanslamayla ilgili ek senaryolar](licensing-group-advanced.md)
-* [Azure Active Directory 'de grup tabanlı lisanslama için PowerShell örnekleri](licensing-ps-examples.md)
+* [Azure Active Directory'de Grup tabanlı lisanslama için PowerShell örnekleri](licensing-ps-examples.md)

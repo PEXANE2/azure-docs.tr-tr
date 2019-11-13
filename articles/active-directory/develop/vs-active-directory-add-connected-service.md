@@ -1,5 +1,5 @@
 ---
-title: Visual Studio 'da bağlı hizmetleri kullanarak Azure Active Directory ekleme | Mavisi
+title: Bağlı hizmetleri kullanarak bir Azure Active Directory ekleme | Mavisi
 description: Visual Studio bağlı hizmetler Ekle iletişim kutusunu kullanarak Azure Active Directory ekleme
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04c8b6bfeaabfa20b9b9b884584d40de7f09e9ac
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 36827401060e330d57b6afac3db0abbde0c27dc2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802479"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73941938"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio 'da bağlı hizmetleri kullanarak Azure Active Directory ekleme
 
@@ -65,7 +65,7 @@ Active Directory bağlı hizmet, ASP.NET Core uygulamalarını desteklemez.
 
 1. Ayrıca, [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)Active Directory etki alanını da görebilirsiniz.
 
-## <a name="how-your-project-is-modified"></a>Projenizin nasıl değiştirildiği
+## <a name="how-your-project-is-modified"></a>Projenizi nasıl değiştirilir
 
 Bağlı hizmeti sihirbaza eklediğinizde, Visual Studio projenize Azure Active Directory ve ilişkili başvuruları ekler. Projenizdeki yapılandırma dosyaları ve kod dosyaları da Azure AD desteği eklemek için değiştirilir. Visual Studio 'Nun yaptığı belirli değişiklikler proje türüne bağlıdır. Ayrıntılar için aşağıdaki makalelere bakın:
 

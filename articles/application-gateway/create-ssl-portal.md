@@ -1,18 +1,18 @@
 ---
-title: Öğretici-SSL sonlandırma ile uygulama ağ geçidi Yapılandırma-Azure portal
+title: 'Öğretici: portalda SSL sonlandırmasını Yapılandırma-Azure Application Gateway'
 description: Bu öğreticide, Azure portal kullanarak bir uygulama ağ geçidini yapılandırmayı ve SSL sonlandırma için bir sertifika eklemeyi öğreneceksiniz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/27/2019
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: afdb5d256c33042655c122e9c84a4ab07c94f14c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470042"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012318"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak SSL sonlandırmasına sahip bir uygulama ağ geçidi yapılandırma
 
@@ -69,7 +69,7 @@ Export-PfxCertificate `
   -Password $pwd
 ```
 
-## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturun
+## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
 1. Azure portal sol menüsünde **kaynak oluştur** ' u seçin. **Yeni** pencere görüntülenir.
 

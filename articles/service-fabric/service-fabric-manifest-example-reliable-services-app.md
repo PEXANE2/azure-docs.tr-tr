@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric güvenilir hizmetler uygulama bildirimi örnekleri | Microsoft Docs
+title: Azure Service Fabric güvenilir hizmetler uygulama bildirimi örnekleri
 description: Güvenilir hizmetler Service Fabric uygulaması için uygulama ve hizmet bildirimi ayarlarını yapılandırmayı öğrenin.
 services: service-fabric
 documentationcenter: na
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: a5678b4c4c0f7a9d8d3f3cf6e838580de2059a8f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 9cc79610b6dc9f9d2869a41e0b483168087368cc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035648"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013235"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Güvenilir hizmetler uygulaması ve hizmet bildirimi örnekleri
 Aşağıda, bir ASP.NET Core Web ön ucuna ve durum bilgisi olan arka uca sahip bir Service Fabric uygulaması için uygulama ve hizmet bildirimlerinin örnekleri verilmiştir. Bu örneklerin amacı, hangi ayarların kullanılabildiğini ve bunların nasıl kullanılacağını gösterir. Bu uygulama ve hizmet bildirimleri [Service Fabric .net hızlı başlangıç](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) bildirimlerini temel alır.
 
 Aşağıdaki özellikler gösteriliyor:
 
-|Bildirimi|Özellikler|
+|Bildirim|Özellikler|
 |---|---|
-|[Uygulama bildirimi](#application-manifest)| [kaynak](service-fabric-resource-governance.md)İdaresi, [bir hizmeti yerel yönetici hesabı olarak çalıştırma](service-fabric-application-runas-security.md), [tüm hizmet kodu paketlerine varsayılan bir ilke uygulama](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), [Kullanıcı ve grup sorumluları oluşturma](service-fabric-application-runas-security.md), hizmet örnekleri arasında bir veri paketi paylaşma, [hizmeti geçersiz kılma uç noktalar](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
+|[Uygulama bildirimi](#application-manifest)| [kaynak](service-fabric-resource-governance.md)İdaresi, [bir hizmeti yerel yönetici hesabı olarak çalıştırma](service-fabric-application-runas-security.md), [tüm hizmet kodu paketlerine varsayılan bir ilke uygulama](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), [Kullanıcı ve grup sorumluları oluşturma](service-fabric-application-runas-security.md), hizmet örnekleri arasında bir veri paketi paylaşma, [hizmet uç noktalarını geçersiz kılma](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
 |FrontEndService hizmet bildirimi| [Hizmet başlangıcında betik çalıştırma](service-fabric-run-script-at-service-startup.md), [bir HTTPS uç noktası tanımlama](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
 |BackEndService hizmeti bildirimi| Bir [yapılandırma paketi bildirme](service-fabric-application-and-service-manifests.md), [veri paketi bildirme](service-fabric-application-and-service-manifests.md), [uç nokta yapılandırma](service-fabric-service-manifest-resources.md)| 
 
@@ -399,7 +399,7 @@ Yürütülebilir dosya adı.  Örneğin, "MySetup. bat" veya "MyServiceHost. exe
  Daha fazla bilgi için bkz. [arguments öğesi](service-fabric-service-model-schema-elements.md#ArgumentsElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder öğesi
-Uygulamanın dağıtıldığı küme düğümündeki kod paketindeki işlemin çalışma dizini. Üç değer belirtebilirsiniz: Çalışma (varsayılan), CodePackage veya CodeBase. Kod temeli, çalışma dizininin, EXE 'nin kod paketinde tanımlandığı dizine ayarlandığını belirtir. CodePackage, çalışma dizinini, EXE 'nin kod paketi dizininde tanımlandığı yere bakılmaksızın kod paketinin kökü olacak şekilde ayarlar. Çalışma dizini, düğümde oluşturulan benzersiz bir klasöre ayarlanır.  Bu klasör tüm uygulama örneği için aynıdır. Varsayılan olarak, uygulamadaki tüm işlemlerin çalışma dizini, uygulama çalışma klasörüne ayarlanır. Bu, işlemlerin verileri yazabilmesi durumunda yer alabilir. Bu klasörler farklı uygulama örnekleri arasında paylaşılabilmesi ve silinemediğinden, kod paketine veya kod tabanına veri yazılması önerilmez. Daha fazla bilgi için bkz. [WorkingFolder öğesi](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+Uygulamanın dağıtıldığı küme düğümündeki kod paketindeki işlemin çalışma dizini. Üç değer belirtebilirsiniz: Iş (varsayılan), CodePackage veya CodeBase. Kod temeli, çalışma dizininin, EXE 'nin kod paketinde tanımlandığı dizine ayarlandığını belirtir. CodePackage, çalışma dizinini, EXE 'nin kod paketi dizininde tanımlandığı yere bakılmaksızın kod paketinin kökü olacak şekilde ayarlar. Çalışma dizini, düğümde oluşturulan benzersiz bir klasöre ayarlanır.  Bu klasör tüm uygulama örneği için aynıdır. Varsayılan olarak, uygulamadaki tüm işlemlerin çalışma dizini, uygulama çalışma klasörüne ayarlanır. Bu, işlemlerin verileri yazabilmesi durumunda yer alabilir. Bu klasörler farklı uygulama örnekleri arasında paylaşılabilmesi ve silinemediğinden, kod paketine veya kod tabanına veri yazılması önerilmez. Daha fazla bilgi için bkz. [WorkingFolder öğesi](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="consoleredirection-element"></a>ConsoleRedirection öğesi
 
@@ -449,7 +449,7 @@ Giriş noktası tarafından belirtilen yürütülebilir dosya genellikle uzun s�
 Yürütülebilir dosya adı.  Örneğin, "MySetup. bat" veya "MyServiceHost. exe". Daha fazla bilgi için bkz. [program öğesi](service-fabric-service-model-schema-elements.md#ProgramElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder öğesi
-Uygulamanın dağıtıldığı küme düğümündeki kod paketindeki işlemin çalışma dizini. Üç değer belirtebilirsiniz: Çalışma (varsayılan), CodePackage veya CodeBase. Kod temeli, çalışma dizininin, EXE 'nin kod paketinde tanımlandığı dizine ayarlandığını belirtir. CodePackage, çalışma dizinini, EXE 'nin kod paketi dizininde tanımlandığı yere bakılmaksızın kod paketinin kökü olacak şekilde ayarlar. Çalışma dizini, düğümde oluşturulan benzersiz bir klasöre ayarlanır.  Bu klasör tüm uygulama örneği için aynıdır. Varsayılan olarak, uygulamadaki tüm işlemlerin çalışma dizini, uygulama çalışma klasörüne ayarlanır. Bu, işlemlerin verileri yazabilmesi durumunda yer alabilir. Bu klasörler farklı uygulama örnekleri arasında paylaşılabilmesi ve silinemediğinden, kod paketine veya kod tabanına veri yazılması önerilmez. Daha fazla bilgi için bkz. [WorkingFolder öğesi](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+Uygulamanın dağıtıldığı küme düğümündeki kod paketindeki işlemin çalışma dizini. Üç değer belirtebilirsiniz: Iş (varsayılan), CodePackage veya CodeBase. Kod temeli, çalışma dizininin, EXE 'nin kod paketinde tanımlandığı dizine ayarlandığını belirtir. CodePackage, çalışma dizinini, EXE 'nin kod paketi dizininde tanımlandığı yere bakılmaksızın kod paketinin kökü olacak şekilde ayarlar. Çalışma dizini, düğümde oluşturulan benzersiz bir klasöre ayarlanır.  Bu klasör tüm uygulama örneği için aynıdır. Varsayılan olarak, uygulamadaki tüm işlemlerin çalışma dizini, uygulama çalışma klasörüne ayarlanır. Bu, işlemlerin verileri yazabilmesi durumunda yer alabilir. Bu klasörler farklı uygulama örnekleri arasında paylaşılabilmesi ve silinemediğinden, kod paketine veya kod tabanına veri yazılması önerilmez. Daha fazla bilgi için bkz. [WorkingFolder öğesi](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage öğesi
 Bir Settings. xml dosyası içeren PackageRoot altında Name özniteliğiyle adlandırılan bir klasörü bildirir. Bu dosya, işlemin çalışma zamanında okuyabildiği Kullanıcı tanımlı, anahtar-değer çifti ayarlarının bölümlerini içerir. Yükseltme sırasında, yalnızca ConfigPackage sürümü değiştiyse, çalışan işlem yeniden başlatılmaz. Bunun yerine, bir geri çağırma işlemi, dinamik olarak yeniden yüklenmesi için yapılandırma ayarlarının değiştiği süreci bilgilendirir. Daha fazla bilgi için bkz. [Configpackage öğesi](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)

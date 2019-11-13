@@ -4,14 +4,14 @@ description: Azure Cosmos DB oluşturmak ve yapılandırmak için Azure Resource
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 11/08/2019
 ms.author: thvankra
-ms.openlocfilehash: 7c508d736c7c04cc6df2b42e0a90a2906052adbc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7b08ca98f25b079d831033b9393effd4ee4b65e3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835511"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961848"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Resource Manager Şablonlar
 
@@ -29,8 +29,6 @@ Aşağıdaki tablolar Azure Cosmos DB için Azure Resource Manager şablonların
 |**Şablon**|**Açıklama**|
 |---| ---|
 |[Azure Cosmos hesabı, veritabanı, koleksiyon oluşturma](manage-mongodb-with-resource-manager.md#create-resource) | Bu şablon, çoklu yönetici özellikli iki bölgede MongoDB için Azure Cosmos DB API kullanarak bir hesap oluşturur. Azure Cosmos hesabının, veritabanı düzeyinde üretilen işi paylaşan iki kapsayıcısı olacaktır. |
-|[Bir veritabanı için güncelleştirme üretilen iş (RU/sn)](manage-mongodb-with-resource-manager.md#database-ru-update) | Bu şablon bir MongoDB API hesabındaki bir veritabanının aktarım hızını güncelleştirir. |
-|[Bir koleksiyon için güncelleştirme üretilen iş (RU/sn)](manage-mongodb-with-resource-manager.md#collection-ru-update) | Bu şablon bir MongoDB API hesabındaki bir kapsayıcının aktarım hızını güncelleştirir. |
 
 ## <a name="cassandra-api"></a>Cassandra API’si
 
@@ -43,17 +41,14 @@ Aşağıdaki tablolar Azure Cosmos DB için Azure Resource Manager şablonların
 |**Şablon**|**Açıklama**|
 |---| ---|
 |[Azure Cosmos hesabı, veritabanı, grafik oluşturma](manage-gremlin-with-resource-manager.md#create-resource) | Bu şablon, çoklu yönetici özellikli iki bölgede Gremlin API hesabı oluşturur. Azure Cosmos hesabında, veritabanı düzeyinde üretilen işi paylaşan iki grafik olacaktır. |
-|[Bir veritabanı için güncelleştirme üretilen iş (RU/sn)](manage-gremlin-with-resource-manager.md#database-ru-update) | Bu şablon Gremlin API hesabındaki bir veritabanının aktarım hızını güncelleştirir. |
-|[Grafik için üretilen iş (RU/s) güncelleştirme](manage-gremlin-with-resource-manager.md#graph-ru-update) | Bu şablon Gremlin API hesabındaki bir grafiğin aktarım hızını güncelleştirir. |
 
 ## <a name="table-api"></a>Tablo API’si
 
 |**Şablon**|**Açıklama**|
 |---| ---|
 |[Azure Cosmos hesabı, tablosu oluşturma](manage-table-with-resource-manager.md#create-resource) | Bu şablon, çoklu yönetici özellikli iki bölgede bir Tablo API'si hesabı oluşturur. Azure Cosmos hesabının tek bir tablosu olacaktır. |
-|[Bir tablo için üretilen iş (RU/s) güncelleştirme](manage-table-with-resource-manager.md#table-ru-update) | Bu şablon Tablo API'si hesabındaki bir tablo için üretilen işi güncelleştirir. |
 
 > [!TIP]
 > Tablo API'si kullanırken paylaşılan aktarım hızını etkinleştirmek için, Azure portalında hesap düzeyinde aktarım hızını etkinleştirin.
 
-Başvuru belgeleri için [Azure Cosmos DB sayfasına yönelik ARM başvurusuna](/azure/templates/microsoft.documentdb/allversions) bakın.
+Başvuru belgelerinin Azure Cosmos DB sayfasına yönelik [Azure Resource Manager başvuru](/azure/templates/microsoft.documentdb/allversions) bölümüne bakın.

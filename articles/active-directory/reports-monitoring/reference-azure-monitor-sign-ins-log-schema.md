@@ -3,7 +3,7 @@ title: Azure Izleyici 'de oturum açma günlüğü şeması | Microsoft Docs
 description: Azure Izleyici 'de kullanılmak üzere Azure AD oturum açma günlüğü şemasını açıkla
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4259a23778db175de2a0331e692e878df39d0a07
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 98157009b5a005d1d1f9efbe2f59bac1302cdb01
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895011"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014325"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Izleyici 'de Azure AD oturum açma günlüğü şemasını yorumlama
 
@@ -147,11 +147,11 @@ Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) oturum açma g
 |------------|-------------|
 | Zaman | Tarih ve saat, UTC olarak. |
 | ResourceId | Bu değer eşlenmemiş ve bu alanı güvenle yoksayabilirsiniz.  |
-| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Oturum açma işlemleri için bu değer her zaman *oturum açma etkinliğidir*. |
+| ThrottledRequests | Oturum açma işlemleri için bu değer her zaman *oturum açma etkinliğidir*. |
 | OperationVersion | İstemci tarafından istenen REST API sürümü. |
 | Kategori | Oturum açma işlemleri için bu değer her zaman *oturum*açadır. | 
 | Değerine | Günlüklerle ilişkili kiracı GUID 'SI. |
-| 'I | Oturum açma işleminin sonucu *başarılı* veya *başarısız*olabilir. | 
+| ResultType | Oturum açma işleminin sonucu *başarılı* veya *başarısız*olabilir. | 
 | ResultSignature | Varsa, oturum açma işlemi için hata kodunu içerir. |
 | ResultDescription | Oturum açma işlemi için hata açıklaması sağlar. |
 | riskDetail | riskDetail | Riskli bir kullanıcının, oturum açmanın veya risk algılamanın arkasındaki ' neden ' durumunu sağlar. Olası değerler şunlardır: `none`, `adminGeneratedTemporaryPassword`, `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset`, `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe`, `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser`, `adminConfirmedSigninCompromised`, `unknownFutureValue`. Değer `none`, bu ana kadar Kullanıcı veya oturum açma işlemleri üzerinde hiçbir işlem gerçekleştirilmediği anlamına gelir. <br>**Note:** Bu özelliğe ilişkin ayrıntılar Azure AD Premium P2 lisansı gerektirir. Diğer lisanslar `hidden`değer döndürür. |

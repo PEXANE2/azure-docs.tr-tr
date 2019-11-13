@@ -1,20 +1,20 @@
 ---
-title: VMware 'den Azure 'a olağanüstü durum kurtarma için Azure Site Recovery Dağıtım Planlayıcısı raporunu analiz edin | Microsoft Docs
-description: Bu makalede, Azure 'da VMware olağanüstü durum kurtarması için Azure Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan raporun nasıl çözümleneceği açıklanır.
+title: VMware olağanüstü durum kurtarma Dağıtım Planlayıcısı raporunu Azure Site Recovery ile çözümleyin
+description: Bu makalede, Azure Site Recovery kullanılarak Azure 'da VMware olağanüstü durum kurtarma için kurtarma Dağıtım Planlayıcısı tarafından oluşturulan raporun nasıl çözümleneceği açıklanır.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: 4240e17320cc62dc1a0e74db2f40a452a63f2982
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: b6ac10b47a8bbc987eb1e338991100ee17eacd61
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690719"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961372"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure 'da VMware olağanüstü durum kurtarma için Azure Site Recovery Dağıtım Planlayıcısı raporunu analiz etme
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure 'da VMware olağanüstü durum kurtarma için Dağıtım Planlayıcısı raporunu analiz etme
 
 Oluşturulan Microsoft Excel raporu şu sayfaları içerir:
 ## <a name="on-premises-summary"></a>Şirket içi özeti
@@ -178,7 +178,7 @@ Site Recovery çoğaltması için x MB/sn’den fazla bant genişliği ayarlayam
 
 **VM Adı**: Bir rapor oluşturulurken VMListFile içinde kullanılan VM adı veya IP adresi. Bu sütunda ayrıca sanal makinelere bağlanan diskler (VMDK) listelenir. Yinelenen adlara veya IP adreslerine sahip vCenter sanal makinelerini birbirinden ayırt etmek için, adlar ESXi ana bilgisayar adını içerir. Listelenen ESXi ana bilgisayarı, profil oluşturma sırasında araç keşfettiğinde VM’in yerleştirildiği yerdir.
 
-**VM Uyumluluğu**: Değerler **Evet** ve **Evet**\* şeklindedir. **Evet** \*, VM 'Nin [Premium SSD 'ler](../virtual-machines/windows/disks-types.md)için uygun olduğu örneklere yöneliktir. Burada, profili oluşturulmuş yüksek değişim sıklığı veya IOPS diski P20 ya da P30 kategorisine uyar, ancak diskin boyutu diskin bir P10 veya P20 ile eşlenmesine neden olur. Depolama hesabı, bir diskin boyutuna göre hangi premium depolama disk türüne eşleneceğine karar verir. Örnek:
+**VM Uyumluluğu**: Değerler **Evet** ve **Evet**\* şeklindedir. **Evet**\*, VM 'Nin [Premium SSD 'ler](../virtual-machines/windows/disks-types.md)için uygun olduğu örneklere yöneliktir. Burada, profili oluşturulmuş yüksek değişim sıklığı veya IOPS diski P20 ya da P30 kategorisine uyar, ancak diskin boyutu diskin bir P10 veya P20 ile eşlenmesine neden olur. Depolama hesabı, bir diskin boyutuna göre hangi premium depolama disk türüne eşleneceğine karar verir. Örneğin:
 * <128 GB bir P10’dur.
 * 128 GB ile 256 GB arası P15'tir
 * 256 GB ile 512 GB arası P20'dir.
@@ -232,8 +232,6 @@ Bir diskin iş yükü özellikleri diski P20 veya P30 kategorisine koyarken boyu
 * Kaynak IOPS, depolama IOPS için VM başına desteklenen 80.000 limitini aşıyor.
 
 * Ortalama veri dalgalanması, disk için Ortalama g/ç boyutu için desteklenen Site Recovery veri değişim sınırı olan 20 MB/sn 'yi aşıyor.
-
-* Ortalama veri değişim sıklığı, VM için ortalama G/Ç’ye yönelik 25 MB/sn’lik (tüm disk değişim sıklığının toplamı) Site Recovery veri değişim sıklığı limitini aşıyor.
 
 * Sanal makine üzerindeki tüm disklerde bulunan en yüksek veri değişim sıklığı, VM başına 54 MB/sn’lik desteklenen Site Recovery en yüksek veri değişim sıklığı sınırını aşıyor.
 

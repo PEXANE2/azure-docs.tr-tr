@@ -1,19 +1,19 @@
 ---
-title: Şirket içi VMware sunucularını VMware VM’lerinden Azure’a olağanüstü durum kurtarmaya hazırlama| Microsoft Docs
+title: Azure Site Recovery ile VMware VM olağanüstü durum kurtarma için hazırlanma
 description: Azure Site Recovery hizmetini kullanarak şirket içi VMware sunucularını Azure’a olağanüstü durum kurtarmaya hazırlamayı öğrenin.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0f62ee1a79126f456b993c7caf2de3741637f710
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: c82f8130340dfc3848159a6f88db0a304a3ab149
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147798"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953740"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Şirket içi VMware sunucularını Azure’a olağanüstü durum kurtarmaya hazırlama
 
@@ -68,8 +68,8 @@ Hesabı aşağıdaki gibi hazırlayın:
 
 VM üzerinde yükleme izinleri ile bir etki alanı veya yerel hesap hazırlayın.
 
-- **Windows VM 'leri**: Bir etki alanı hesabı kullanmıyorsanız Windows VM 'lerine yüklemek için yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakın. Bunu yapmak için kayıt defterinde > **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** altında **LocalAccountTokenFilterPolicy** adlı DWORD girişini 1 değeriyle ekleyin.
-- **Linux VM 'leri**: Linux VM üzerinde yüklemek için, kaynak Linux sunucusunda bir kök hesabı hazırlayın.
+- **Windows VM'leri**: Windows VM'lerine yüklemek için, bir etki alanı hesabı kullanmıyorsanız yerel makinede Uzak Kullanıcı Erişim denetimini devre dışı bırakın. Bunu yapmak için kayıt defterinde > **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** altında **LocalAccountTokenFilterPolicy** adlı DWORD girişini 1 değeriyle ekleyin.
+- **Linux VM'leri**: Linux VM'lerine yüklemek için, kaynak Linux sunucusunda bir kök hesabı hazırlayın.
 
 
 ## <a name="check-vmware-requirements"></a>VMware gereksinimlerini denetleme
@@ -93,7 +93,7 @@ Yük devretmeden sonra RDP kullanarak Windows VM’lerine bağlanmak için aşa�
 - **İnternet erişimi**. Yük devretmeden önce, yük devretmeden önce şirket içi VM’de RDP’yi etkinleştirin. TCP ve UDP kurallarının **Ortak** profil için eklendiğinden ve tüm profillerde **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalar** içinde RDP’ye izin verildiğinden emin olun.
 - **Konumdan konuma VPN erişimi**:
     - Yük devretmeden önce, şirket içi makinede RDP’yi etkinleştirin.
-    - **Etki Alanı ve Özel** ağlar için **Windows Güvenlik Duvarı** -> **İzin verilen uygulama ve özellikler içinde** RDP’ye izin verilmelidir.
+    - **Etki Alanı ve Özel** ağlar için  -> Windows Güvenlik Duvarı**İzin verilen uygulama ve özellikler içinde** RDP’ye izin verilmelidir.
     - İşletim sisteminin SAN ilkesinin **OnlineAll** olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135).
 - Bir yük devretme tetiklediğinizde VM’de bekleyen Windows güncelleştirmelerinin olmaması gerekir. Varsa, güncelleştirme tamamlanana kadar sanal makinede oturum açamazsınız.
 - Yük devretmeden sonra Windows Azure VM’sinde, VM’nin bir ekran görüntüsünü görmek için **Önyükleme tanılaması**’nı kontrol edin. Bağlanamıyorsanız, VM’nin çalıştığından emin olun ve şu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) gözden geçirin.
@@ -116,5 +116,5 @@ Yük devretmeden sonra SSH kullanarak Linux VM’lerine bağlanmak için aşağ�
 
 Olağanüstü durum kurtarmayı ayarlayın. Birden çok VM 'yi çoğaltırken kapasiteyi planlayın.
 > [!div class="nextstepaction"]
-> [VMware VM 'leri](vmware-azure-tutorial.md)
-> için Azure 'da olağanüstü durum kurtarmayı ayarlama[Kapasite planlaması gerçekleştirme](site-recovery-deployment-planner.md).
+> [VMware VM 'leri Için Azure 'da olağanüstü durum kurtarmayı ayarlayın](vmware-azure-tutorial.md)
+> [Kapasite planlaması yapın](site-recovery-deployment-planner.md).

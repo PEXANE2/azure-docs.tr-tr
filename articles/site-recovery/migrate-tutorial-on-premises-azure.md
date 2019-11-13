@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery ile şirket içi makineleri Azure 'a geçirme
+title: Azure Site Recovery ile şirket içi makineleri geçirme
 description: Bu makalede, Azure Site Recovery kullanarak şirket içi makineleri Azure’a geçirme işlemi açıklanmaktadır.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/29/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5fa0f05f37164c24ba6441d0c4cb2abc59f331d7
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 24015810a295ef88b7d3e63bfc464ddddef6b55f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053059"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73939628"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Şirket içi makineleri Azure’a geçirme
 
@@ -97,7 +97,7 @@ Hyper-V | [Çoğaltmayı etkinleştirme](hyper-v-azure-tutorial.md#enable-replic
 Her şeyin beklendiği gibi çalıştığından emin olmak için bir Azure’a [yük devretme testi](tutorial-dr-drill-azure.md) çalıştırın.
 
 
-## <a name="migrate-to-azure"></a>Azure'a geçiş yapma
+## <a name="migrate-to-azure"></a>Azure’a geçiş
 
 Geçirmek istediğiniz makineler için yük devretmeyi çalıştırın.
 
@@ -158,7 +158,7 @@ Bazı adımlar, [kurtarma planlarındaki](site-recovery-runbook-automation.md) y
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide şirket içi VM’leri Azure VM’lerine taşıdınız. sunuldu
+Bu öğreticide şirket içi VM’leri Azure VM’lerine taşıdınız. Sunuldu
 
 > [!div class="nextstepaction"]
 > Azure VM 'Leri için ikincil bir Azure bölgesine [olağanüstü durum kurtarmayı ayarlayın](azure-to-azure-replicate-after-migration.md) .

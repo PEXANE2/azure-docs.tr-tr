@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Azure Site Recovery kullanarak Azure 'da olağanüstü durum kurtarma ile ağ iletişimi hakkında | Microsoft Docs
+title: Azure Site Recovery ile Azure VM olağanüstü durum kurtarma 'da ağ iletişimi hakkında
 description: Azure Site Recovery kullanarak Azure VM 'lerinin çoğaltılmasına yönelik ağa genel bir bakış sağlar.
 services: site-recovery
 author: sujayt
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5c2cd96ccfa3a26a9009188ad424eefaaeb7ce48
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 09cd814ade25be438a17b83fb73e74b89c14e22f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906850"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954205"
 ---
-# <a name="about-networking-in-azure-to-azure-replication"></a>Azure 'dan Azure 'a çoğaltma hakkında ağ iletişimi hakkında
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da ağ iletişimi hakkında
 
 
 
@@ -60,8 +60,8 @@ Giden bağlantıyı denetlemek için IP tabanlı bir güvenlik duvarı ara sunuc
 - Kaynak bölgedeki depolama hesaplarına karşılık gelen tüm IP adresi aralıkları
     - Kaynak bölge için bir [depolama hizmeti etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun.
     - Bu adreslere, verilerin VM 'den önbellek depolama hesabına yazılabilmeleri için izin verin.
-- AAD 'ye karşılık gelen tüm IP adreslerine erişime izin vermek için [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturma
-    - Gelecekte Azure Active Directory (AAD) yeni adresler eklenirse, yeni NSG kuralları oluşturmanız gerekir.
+- Oluşturma bir [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) erişimi için AAD karşılık gelen tüm IP adreslerine izin vermek için NSG kural tabanlı
+    - Azure Active Directory (AAD) gelecekte yeni adresler eklenir, yeni NSG kuralları oluşturmak gerekir.
 - Hizmet uç noktası IP adreslerini Site Recovery-bir [XML dosyasında](https://aka.ms/site-recovery-public-ips) kullanılabilir ve hedef konumunuza göre değişir. 
 - Gerekli NSG kurallarını bir test NSG üzerinde oluşturmanızı ve bir üretim NSG 'de kuralları oluşturmadan önce hiçbir sorun olmadığını doğrulamanızı öneririz.
 
@@ -87,7 +87,7 @@ Site Recovery IP adresi aralıkları aşağıdaki gibidir:
    Güney Brezilya | 191.234.185.172 | 23.97.97.36
    Avustralya Doğu | 104.210.113.114 | 191.239.64.144
    Avustralya Güneydoğu | 13.70.159.158 | 191.239.160.45
-   Kanada Orta | 52.228.36.192 | 40.85.226.62
+   Orta Kanada | 52.228.36.192 | 40.85.226.62
    Doğu Kanada | 52.229.125.98 | 40.86.225.142
    Batı Orta ABD | 52.161.20.168 | 13.78.149.209
    Batı ABD 2 | 52.183.45.166 | 13.66.228.204

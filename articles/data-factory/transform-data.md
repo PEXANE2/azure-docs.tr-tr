@@ -11,15 +11,16 @@ ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 97077b9f72de8792e6aba1d72ff34b9185b2d998
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b91d22454d6023094f269b184c845047092b4fb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683802"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954278"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory verileri dönüştürme
 > [!div class="op_single_selector"]
+> * [Veri akışını eşleme](data-flow-create.md)
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
@@ -34,7 +35,7 @@ ms.locfileid: "73683802"
 > * [.NET özel](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede, ham verilerinizi tahmine dayalı ve Öngörüler halinde dönüştürmek ve işlerken kullanabileceğiniz Azure Data Factory veri dönüştürme etkinlikleri açıklanmaktadır. Bir dönüştürme etkinliği, Azure HDInsight kümesi veya bir Azure Batch gibi bir bilgi işlem ortamında yürütülür. Her bir dönüştürme etkinliği hakkında ayrıntılı bilgi içeren makalelere bağlantılar sağlar.
+Bu makalede, ham verilerinizi, ölçekteki tahminlere ve içgörüler halinde dönüştürmek ve uygulamak için kullanabileceğiniz Azure Data Factory veri dönüştürme etkinlikleri açıklanmaktadır. Bir dönüştürme etkinliği Azure Databricks veya Azure HDInsight gibi bir bilgi işlem ortamında yürütülür. Her bir dönüştürme etkinliği hakkında ayrıntılı bilgi içeren makalelere bağlantılar sağlar.
 
 Data Factory, işlem hatlarına tek tek veya başka bir etkinlikle zincirleme [olarak eklenebilen](concepts-pipelines-activities.md) aşağıdaki veri dönüştürme etkinliklerini destekler.
 
@@ -49,6 +50,8 @@ Veri akışlarını eşleme, Azure Data Factory ' de görsel olarak tasarlanan v
 Azure Data Factory ' deki wrangling veri akışları, bulut ölçeğinde kod içermeyen veri hazırlığı yapmanıza olanak sağlar. Denetimi veri akışları, [çevrimiçi Power Query](https://docs.microsoft.com/power-query/) ile tümleşir ve Spark yürütmesi aracılığıyla bulut ölçeğinde veriler için Power Query M işlevlerini kullanılabilir hale getirir. Daha fazla bilgi için bkz. [denetimi veri akışları](wrangling-data-flow-overview.md).
 
 ## <a name="external-transformations"></a>Dış dönüşümler
+
+İsteğe bağlı olarak, dönüştürmeleri kodlayabilirsiniz ve dış işlem ortamını kendiniz yönetebilirsiniz.
 
 ### <a name="hdinsight-hive-activity"></a>HDInsight Hive etkinliği
 Bir Data Factory işlem hattının HDInsight Hive etkinliği, kendi kendinize veya isteğe bağlı Windows/Linux tabanlı HDInsight kümenizde Hive sorguları yürütür. Bu etkinlik hakkındaki ayrıntılar için bkz. [Hive etkinliği](transform-data-using-hadoop-hive.md) makalesi. 

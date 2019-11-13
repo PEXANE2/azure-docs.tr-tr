@@ -1,7 +1,7 @@
 ---
 title: Uygulama ayarları-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Dil uygulamalarını anlamak için uygulama ayarlarını anlayın.
+description: Azure bilişsel hizmetler dil dilleri uygulamaları için uygulama ayarları, uygulama ve portalda depolanır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 6d516590b90efd937789fa0847b707d2521f6459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bae4f09b539e26ca8c0d4ce97999776dc0911601
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932587"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961784"
 ---
 # <a name="application-settings"></a>Uygulama ayarları
 
@@ -24,12 +24,12 @@ Bu uygulama ayarları, [dışarıya](https://westus.dev.cognitive.microsoft.com/
 
 |Ayar|Varsayılan değer|Notlar|
 |--|--|--|
-|Normalizenoktalama|Doğru|Noktalama işaretlerini kaldırır.|
-|NormalizeDiacritics|Doğru|Aksanları kaldırır.|
+|Normalizenoktalama|True|Noktalama işaretlerini kaldırır.|
+|NormalizeDiacritics|True|Aksanları kaldırır.|
 
 ## <a name="diacritics-normalization"></a>Aksanların normalleştirilmesi 
 
-`settings` Parametresindeki lusıs JSON uygulama dosyanıza Aksanlar için söylenişi normalleştirmesini açın.
+`settings` parametresindeki lusıs JSON uygulama dosyanıza Aksanlar için söylenişi normalleştirmesini açın.
 
 ```JSON
 "settings": [
@@ -64,7 +64,7 @@ Aşağıdaki söyleyenlerdeki aksanların normalleştirmeyi nasıl etkilediği g
 |`ú`|`u`| 
 |||
 
-#### <a name="dutch-nl-nl-diacritics"></a>Hollanda `nl-nl` vurgu işaretleri
+#### <a name="dutch-nl-nl-diacritics"></a>Felemenkçe `nl-nl` aksanlar
 
 |Aksanların değeri false olarak ayarlandı|Aksanların değeri true olarak ayarlandı|
 |-|-|
@@ -102,7 +102,7 @@ Bu hem Fransızca hem de Kanada alt kültürlerini içerir.
 |`ü`|`u`| 
 |`ÿ`|`y`| 
 
-#### <a name="german-de-de-diacritics"></a>Alman `de-de` vurguları
+#### <a name="german-de-de-diacritics"></a>Almanya `de-de` aksanlar
 
 |Aksanların değeri false olarak ayarlandı|Aksanların değeri true olarak ayarlandı|
 |--|--|
@@ -142,7 +142,7 @@ Buna hem İspanyolca hem de Kanada Meksika dahildir.
 
 ## <a name="punctuation-normalization"></a>Noktalama normalleştirmesi
 
-Noktalama işaretleri için, `settings` parametresindeki halin JSON uygulama dosyanıza noktalama işareti normalleştirmesini açın.
+Noktalama işaretleri için `settings` parametresindeki LUSıS JSON uygulama dosyanıza noktalama işareti normalleştirmesini açın.
 
 ```JSON
 "settings": [
@@ -150,16 +150,16 @@ Noktalama işaretleri için, `settings` parametresindeki halin JSON uygulama dos
 ] 
 ```
 
-Aşağıdaki söyleymalar, aksanların nasıl etkilediğini gösterir:
+Aşağıdaki noktalamalar, noktalama işaretlerinin nasıl etkilediğini göstermektedir:
 
-|Aksanların yanlış olarak ayarlandığı|Aksanların değeri true olarak ayarlandı|
+|Noktalama işareti yanlış olarak ayarlandı|Noktalama işareti doğru olarak ayarlandı|
 |--|--|
 |`Hmm..... I will take the cappuccino`|`Hmm I will take the cappuccino`|
 |||
 
 ### <a name="punctuation-removed"></a>Noktalama kaldırıldı
 
-Aşağıdaki noktalama işaretleri `NormalizePunctuation` true olarak ayarlanmıştır.
+Aşağıdaki noktalama işaretleri, `NormalizePunctuation` true olarak ayarlandığında kaldırılır.
 
 |Noktalama işaretleri|
 |--|

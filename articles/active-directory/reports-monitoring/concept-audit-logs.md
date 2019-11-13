@@ -3,7 +3,7 @@ title: Azure Active Directory portalındaki denetim etkinliği raporları | Micr
 description: Azure Active Directory portalındaki denetim etkinliği raporlarına giriş
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 07/17/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43c5849dcd037915a46de182064b3e630a663ec
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 8883e3ade7e5d52f3a62346bf8be51ac36042f82
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907177"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008534"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki denetim etkinliği raporları 
 
@@ -42,7 +42,6 @@ Bu makale, denetim raporuna genel bir bakış sağlar.
 ## <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 
 * **Güvenlik Yöneticisi**, **güvenlik okuyucu**, **rapor okuyucu** veya **genel yönetici** rollerinin kullanıcıları
-* Ayrıca, tüm kullanıcılar (yönetici olmayanlar) kendi oturum açma etkinliklerini görebilir
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 
@@ -115,7 +114,7 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 - Yetkilendirme
 - İletişim
 - Cihaz
-- Na
+- DeviceConfiguration
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement

@@ -1,19 +1,18 @@
 ---
-title: Sık sorulan sorular-Hyper-V ile Azure olağanüstü durum kurtarma Azure Site Recovery | Microsoft Docs
+title: Azure Site Recovery ile Hyper-V olağanüstü durum kurtarma için sık sorulan sorular
 description: Bu makalede, şirket içi Hyper-V sanal makineleri için Azure Site Recovery sitesini kullanarak Azure 'a olağanüstü durum kurtarma ayarlama hakkında sık sorulan sorular özetlenmektedir.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 08/07/2019
+ms.date: 11/12/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: f9e5b5a70f7398483d5359a0489d5a6e6b241c6d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8f3a04c70b88987fc91dbed3c186d04826b75726
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928199"
+ms.locfileid: "73954055"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Sık sorulan sorular-Hyper-V-Azure olağanüstü durum kurtarma
 
@@ -51,7 +50,7 @@ Hayır, VM'lerin desteklenen bir Windows sunucusu makinesinde çalışan Hyper-V
 
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Hyper-V 2.nesil sanal makinelerini Azure'a çoğaltabilir miyim?
-Evet. Site Recovery yük devretme sırasında 2. nesil 2. nesil 1 ' e dönüştürür. Yeniden çalışma sırasında makine 2. nesil 'e geri dönüştürüldü. [Daha fazla bilgi edinin](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
+Evet. Site Recovery yük devretme sırasında 2. nesil 2. nesil 1 ' e dönüştürür. Yeniden çalışma sırasında makine 2. nesil 'e geri dönüştürüldü. [Daha fazlasını okuyun](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
 
 
 ### <a name="can-i-deploy-site-recovery-with-vmm-if-i-only-have-one-vmm-server"></a>Tek bir VMM sunucusuna sahip olsam da Site Recovery'yi VMM ile dağıtabilir miyim?
@@ -99,7 +98,7 @@ Bir veya daha fazla tek başına veya kümelenmiş Hyper-V konağında çalışa
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>Hyper-V kümesinde bulunan VM 'Leri çoğaltabilir miyim?
 
-Evet, Site Recovery kümelenmiş Hyper-V konaklarının kullanılmasını destekler. Şunlara dikkat edin:
+Evet, Site Recovery kümelenmiş Hyper-V konaklarının kullanılmasını destekler. Aşağıdakilere dikkat edin:
 
 - Kümenin tüm düğümleri aynı kasaya kaydedilmelidir.
 - VMM kullanmıyorsanız, kümedeki tüm Hyper-V konakları aynı Hyper-V sitesine eklenmelidir.

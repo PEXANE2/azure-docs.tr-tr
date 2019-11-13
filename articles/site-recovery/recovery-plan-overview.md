@@ -1,19 +1,18 @@
 ---
-title: Azure Site Recovery ile olağanüstü durum kurtarma için kurtarma planlarını kullanma
+title: Azure Site Recovery 'de kurtarma planları hakkında
 description: Azure Site Recovery hizmetiyle olağanüstü durum kurtarma için kurtarma planlarını kullanma hakkında bilgi edinin.
 author: rayne-wiselman
 manager: carmonm
-services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9e45787e7ae39b62605f5d8a54afd4ad95c9cca7
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 640f7258821718c5d406dd581d1f9c503e0d41c2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331909"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953882"
 ---
 # <a name="about-recovery-plans"></a>Kurtarma planları hakkında
 
@@ -63,11 +62,11 @@ Bu özelleştirmeyle birlikte, kurtarma planında bir yük devretme çalıştır
 
 Büyük uygulamaları kurtarmak karmaşık bir görev olabilir. El ile yapılan adımlar işlemi hataya açıktır ve yük devretmeyi çalıştıran kişi tüm uygulama farkınmallarını bilmeyebilir. Azure 'da yük devretme için Azure Otomasyonu runbook 'larını kullanarak her adımda sipariş getirmek ve gereken eylemleri otomatikleştirmek için bir kurtarma planı kullanabilirsiniz. Otomatikleştirilen görevler için kurtarma planlarına el ile eylemler için duraklamalar ekleyebilirsiniz. Yapılandırabilmeniz için kullanabileceğiniz birkaç görev türü vardır:
 
-* **Yük devretmeden sonra Azure VM 'Deki görevler**: Azure 'a yük devrettikten sonra, yük DEVRETMEDEN sonra VM 'ye bağlanabilmeniz için genellikle eylemler gerçekleştirmeniz gerekir. Örnek: 
+* **Yük devretmeden sonra Azure VM 'Deki görevler**: Azure 'a yük devrettikten sonra, yük DEVRETMEDEN sonra VM 'ye bağlanabilmeniz için genellikle eylemler gerçekleştirmeniz gerekir. Örneğin: 
     * Azure VM 'de genel IP adresi oluşturun.
     * Azure VM 'nin ağ bağdaştırıcısına bir ağ güvenlik grubu atayın.
     * Bir kullanılabilirlik kümesine yük dengeleyici ekleyin.
-* **Yük devretme SONRASıNDA VM Içindeki görevler**: Bu görevler genellikle makinede çalışan uygulamayı yeniden yapılandırarak yeni ortamda düzgün çalışmaya devam eder. Örnek:
+* **Yük devretme SONRASıNDA VM Içindeki görevler**: Bu görevler genellikle makinede çalışan uygulamayı yeniden yapılandırarak yeni ortamda düzgün çalışmaya devam eder. Örneğin:
     * Makinenin içindeki veritabanı bağlantı dizesini değiştirin.
     * Web sunucusu yapılandırmasını veya kurallarını değiştirin.
 
@@ -84,7 +83,7 @@ Yük devretme testi tetiklemesi için bir kurtarma planı kullanabilirsiniz. Aş
 
     ![Site Recovery bir örnek test kurtarma planının ekran görüntüsü](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-the-video"></a>Videoyu izleyin
+## <a name="watch-the-video"></a>Videoyu izleme
 
 İki katmanlı bir WordPress uygulaması için bir tıklama yük devretmesinin gösterildiği hızlı örnek bir video izleyin.
     

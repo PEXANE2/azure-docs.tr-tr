@@ -1,18 +1,14 @@
 ---
 title: Kaynak değişikliklerini alma
 description: Bir kaynağın ne zaman değiştirildiğini bulmayı ve değiştirilen özelliklerin bir listesini almayı anlayın.
-services: resource-graph
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 44e7bbde40dbd4b79a6ce3735ab5a1ac81421d3b
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 25d900276518e51e80021d1fdb1ac80945eb2d5c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622568"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958754"
 ---
 # <a name="get-resource-changes"></a>Kaynak değişikliklerini alma
 

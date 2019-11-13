@@ -1,17 +1,14 @@
 ---
 title: Şema dağıtımının aşamaları
 description: Azure Blueprint hizmetlerinin dağıtım sırasında gittiği adımları öğrenin.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 4645edde5163f1c8bca787416f5465e5a8f2d355
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: d0d97ed01c4ae2ef96da151e1ab4ddc13a4b1d3e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978533"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960532"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Şema dağıtımının aşamaları
 
@@ -30,7 +27,7 @@ Bir şema dağıtıldığında, şema içinde tanımlanan kaynakları dağıtmak
 
 Azure planları hizmet sorumlusu, atanan aboneliğe veya aboneliklere sahip hakları verilir. Verilen rol, [sistem tarafından atanan yönetilen kimliği](../../../active-directory/managed-identities-azure-resources/overview.md), planların oluşturulmasına ve daha sonra iptal etmesine olanak tanır.
 
-Atama Portal üzerinden yapıldığında haklar otomatik olarak verilir. Ancak, atama REST API aracılığıyla yapılabiliyorsanız, hakların ayrı bir API çağrısıyla yapılması gerekir. Azure Blueprint AppID `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ' dır, ancak hizmet sorumlusu kiracıya göre farklılık gösterir. Hizmet sorumlusunu almak için [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) ve REST uç nokta [servicesorumlularını](/graph/api/resources/serviceprincipal) kullanın. Daha sonra Azure 'a [Portal](../../../role-based-access-control/role-assignments-portal.md), [azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md)veya [Kaynak Yöneticisi şablonu](../../../role-based-access-control/role-assignments-template.md)aracılığıyla _sahip_ rolünü verin.
+Atama Portal üzerinden yapıldığında haklar otomatik olarak verilir. Ancak, atama REST API aracılığıyla yapılabiliyorsanız, hakların ayrı bir API çağrısıyla yapılması gerekir. Azure Blueprint AppID `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ancak hizmet sorumlusu kiracıya göre değişir. Hizmet sorumlusunu almak için [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) ve REST uç nokta [servicesorumlularını](/graph/api/resources/serviceprincipal) kullanın. Daha sonra Azure 'a [Portal](../../../role-based-access-control/role-assignments-portal.md), [azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md)veya [Kaynak Yöneticisi şablonu](../../../role-based-access-control/role-assignments-template.md)aracılığıyla _sahip_ rolünü verin.
 
 Planlar hizmeti kaynakları doğrudan dağıtmaz.
 

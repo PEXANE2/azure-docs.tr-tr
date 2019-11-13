@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a2b73ab3570539a566f708ea8b1a41963d4e81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: eb8bf1891f5ce96507c20e196d20ae499f30fe34
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747312"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012122"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Sistem durumu yedeklemesi sorunlarını giderme
 
@@ -45,9 +45,9 @@ Sistem durumu yedeklemesine sorun gidermeye başlamadan önce aşağıdaki doğr
 - Sistem Durumu kurtarmayı kullanarak farklı donanımda kurtarma işlemi yapılması Microsoft tarafından önerilmez
 - Sistem durumu yedeklemesi Şu anda "Şirket içi" Windows sunucularını destekliyor, bu işlev Azure VM 'Leri için kullanılamaz.
 
-## <a name="pre-requisite"></a>Önkoşul
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure Backup ile sistem durumu yedeklemesine sorun gidermeye başlamadan önce, aşağıdaki önkoşulların denetimini gerçekleştirin.  
+Azure Backup ile sistem durumu yedeklemesine sorun gidermeye başlamadan önce, aşağıdaki önkoşul denetimini gerçekleştirin.  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Windows Server Yedekleme yüklendiğini doğrulama
 
@@ -87,7 +87,7 @@ Sunucu Yöneticisi kullanarak Windows Server Yedekleme yüklemek için aşağıd
 5. **Onay** sekmesinde, yükleme işlemini başlatmak için **yükleme** ' ye tıklayın.
 6. **Sonuçlar** sekmesinde, Windows Server yedekleme özelliği Windows sunucunuza başarıyla yüklendi.
 
-    ![kaynaklanan](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![Sonuç](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>Sistem birimi bilgileri izni
 
@@ -99,9 +99,9 @@ Aşağıdaki hizmetlerin çalışır durumda olduğundan emin olun:
 
 **Hizmet adı** | **Başlangıç türü**
 --- | ---
-Uzak yordam çağrısı (RPC) | Automatic
-COM+ olay sistemi (EventSystem) | Automatic
-Sistem olay bildirimi hizmeti (SENS) | Automatic
+Uzak yordam çağrısı (RPC) | Otomatik
+COM+ olay sistemi (EventSystem) | Otomatik
+Sistem olay bildirimi hizmeti (SENS) | Otomatik
 Birim gölge kopyası (VSS) | El ile
 Microsoft yazılım gölge kopyası sağlayıcısı (SWPRV) | El ile
 
@@ -134,19 +134,19 @@ Windows Server Yedekleme durumunu doğrulamak için aşağıdaki adımları ger�
 
 ### <a name="vss-writer-timeout-error"></a>VSS Yazıcı zaman aşımı hatası
 
-| Belirti | Nedeni | Çözünürlük
+| Belirti | Nedeni | Çözüm
 | -- | -- | --
 | -MARS Aracısı şu hata iletisiyle başarısız oluyor: "WSB işi VSS hatalarıyla başarısız oldu. Sorunu çözmek için VSS olay günlüklerine bakın "<br/><br/> -VSS uygulama olay günlüklerinde şu hata günlüğü var: "bir VSS yazıcı, 0x800423f2 hatası ile bir olayı reddetti. dondurma ve çözme olayları arasında yazıcının zaman aşımı süresi doldu."| Makinedeki CPU ve bellek kaynaklarının olmaması nedeniyle VSS yazıcısı zaman içinde tamamlanamadı <br/><br/> Başka bir yedekleme yazılımı zaten VSS yazıcısını kullanıyor, çünkü bu yedekleme için bir sonuç anlık görüntü işlemi tamamlanamadı | CPU/belleğin sistem üzerinde serbest olmasını bekleyin veya çok fazla bellek/CPU alan işlemleri iptal edin ve işlemi yeniden deneyin <br/><br/>  Devam eden yedeklemenin tamamlanmasını bekleyin ve makinede yedekleme olmadığında işlemi daha sonraki bir noktada deneyin
 
 ### <a name="insufficient-disk-space-to-grow-shadow-copies"></a>Gölge kopyaları büyütmek için yeterli disk alanı yok
 
-| Belirti | Çözünürlük
+| Belirti | Çözüm
 | -- | --
 | -MARS Aracısı şu hata iletisiyle başarısız oldu: gölge kopya birimi sistem dosyalarını içeren birimlerde yetersiz disk alanı nedeniyle büyümediği için yedekleme başarısız oldu <br/><br/> -Volsnap sistem olay günlüklerinde şu hata/uyarı günlüğü var: "c birimi üzerinde yeterli disk alanı yoktu: Bu hata nedeniyle c: biriminin gölge kopyalarının gölge kopya depolama alanını büyütmek için | -Yedekleme devam ederken gölge kopyaların büyümesine yetecek kadar alan olması için olay günlüğündeki vurgulanan birimde yer açın <br/><br/> -Gölge kopya alanı yapılandırılırken, gölge kopya için kullanılan alan miktarını kısıtlayabiliriz. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax) bakın
 
 ### <a name="efi-partition-locked"></a>EFı bölümü kilitli
 
-| Belirti | Çözünürlük
+| Belirti | Çözüm
 | -- | --
 | MARS Aracısı şu hata iletisiyle başarısız oluyor: "EFı sistem bölümü kilitli olduğu için sistem durumu yedeklemesi başarısız oldu. Bunun nedeni, üçüncü taraf bir güvenlik veya yedekleme yazılımı tarafından sistem bölümü erişiminin olması olabilir " | -Sorun bir üçüncü taraf güvenlik yazılımından kaynaklanıyorsa, bu durumda, MARS aracısına izin vermek için anti virüs satıcısına başvurmanız gerekir <br/><br/> -Bir üçüncü taraf yedekleme yazılımı çalışıyorsa işlemin bitmesini bekleyin ve sonra yedeklemeyi yeniden deneyin
 

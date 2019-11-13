@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 058cf516fd8d10cef1e1c93e5493f8c19bdc679d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3781b71237f97cfd004805846f7c30f8cfe9b9f5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607493"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013164"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -73,11 +73,9 @@ Aşağıdaki Işletim sistemleri için destek eklemeyi planlıyoruz; bu nedenle,
 Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere ihtiyaç duyuyor:
 
 * Bir [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
-* Bir Windows Server, Azure Active Directory eşitlenmiş Active Directory. Bu, aracılığıyla etkinleştirilebilir:
-  * Azure AD Connect
-  * Azure AD Etki Alanı Hizmetleri
-     >[!NOTE]
-     >Azure AD Domain Services kullanıyorsanız, kullanıcılarınız Azure Active Directory kaynağı olmalıdır. Windows Server AD 'den kaynaklanan kullanıcılarla Azure AD Domain Services kullanımı Şu anda desteklenmiyor.
+* Bir Windows Server, Azure Active Directory eşitlenmiş Active Directory. Bunu, aşağıdakilerden biriyle yapılandırabilirsiniz:
+  * Azure AD Connect (Hibrit kuruluşlar için)
+  * Azure AD Domain Services (karma veya bulut kurumları için)
 * Windows Server 'a bağlı olan veya içeren bir sanal ağ içeren bir Azure aboneliği Active Directory
   
 Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şekilde olmalıdır:
@@ -100,7 +98,7 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri aşağıd
 >[!NOTE]
 >Bu URL 'Leri açmak, güvenilir bir Windows sanal masaüstü dağıtımı için gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler. Bu URL 'Ler yalnızca Windows sanal masaüstü siteleri ve kaynaklarına karşılık gelir ve Azure AD gibi diğer hizmetlere yönelik URL 'LERI içermez.
 
-Windows sanal masaüstü, kullanıcılara ve Microsoft tarafından Azure 'da bir hizmet olarak barındırılan yönetim çözümüne ait olan Windows Masaüstü ve uygulamalarını içerir. Masaüstleri ve uygulamalar, herhangi bir Azure bölgesindeki sanal makinelerde (VM) dağıtılabilir ve bu VM 'Lerin yönetim çözümü ve verileri Birleşik Devletler (ABD Doğu 2 bölgesinde) yer alır. Bu, Birleşik Devletler veri aktarımına neden olabilir.
+Windows sanal masaüstü, kullanıcılara ve Microsoft tarafından Azure 'da bir hizmet olarak barındırılan yönetim çözümüne ait olan Windows Masaüstü ve uygulamalarını içerir. Masaüstleri ve uygulamalar, herhangi bir Azure bölgesindeki sanal makinelerde (VM) dağıtılabilir ve bu VM 'Lerin yönetim çözümü ve verileri Birleşik Devletler yer alır. Bu, Birleşik Devletler veri aktarımına neden olabilir.
 
 En iyi performans için, ağınızın aşağıdaki gereksinimleri karşıladığından emin olun:
 
@@ -117,7 +115,7 @@ Aşağıdaki uzak masaüstü istemcileri Windows sanal masaüstünü destekler:
 
 ## <a name="supported-virtual-machine-os-images"></a>Desteklenen sanal makine işletim sistemi görüntüleri
 
-Windows sanal masaüstü aşağıdaki işletim sistemi görüntülerini destekler:
+Windows sanal masaüstü aşağıdaki x64 işletim sistemi görüntülerini destekler:
 
 * Windows 10 Enterprise çoklu oturum
 * Windows 10 Enterprise
@@ -126,18 +124,20 @@ Windows sanal masaüstü aşağıdaki işletim sistemi görüntülerini destekle
 * Windows Server 2016
 * Windows Server 2012 R2
 
+Windows sanal masaüstü, x86 (32 bit) işletim sistemi görüntülerini desteklemez.
+
 Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda gösterildiği gibi, hangi işletim sistemi ve sürümü seçdiğinize bağlıdır: 
 
 |İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|Windows sanal masaüstü Aracısı güncelleştirmeleri|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 çoklu oturum, sürüm 1903|Evet|Evet|Evet|Evet|Automatic|
-|Windows 10 çoklu oturum, sürüm 1809|Evet|Evet|Hayır|Hayır|Automatic|
-|Windows 10 Enterprise, sürüm 1903|Evet|Evet|Evet|Evet|Automatic|
-|Windows 10 Enterprise, sürüm 1809|Evet|Evet|Hayır|Hayır|Automatic|
-|Windows 7 kurumsal|Evet|Evet|Hayır|Hayır|El ile|
-|Windows Server 2019|Evet|Evet|Hayır|Hayır|Automatic|
-|Windows Server 2016|Evet|Evet|Evet|Evet|Automatic|
-|Windows Server 2012 R2|Evet|Evet|Hayır|Hayır|Automatic|
+|Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|Otomatik|
+|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|Otomatik|
+|Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|Otomatik|
+|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|Otomatik|
+|Windows 7 kurumsal|Yes|Yes|Hayır|Hayır|El ile|
+|Windows Server 2019|Yes|Yes|Hayır|Hayır|Otomatik|
+|Windows Server 2016|Yes|Yes|Yes|Yes|Otomatik|
+|Windows Server 2012 R2|Yes|Yes|Hayır|Hayır|Otomatik|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

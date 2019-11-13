@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 1972a91e1ed8a39bcd467272108e0e772116344e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 26cd2ffc12dfb93f07c2e1755a0dc41cc90da252
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472885"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961627"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ölçeklendirme seçenekleri
 
@@ -81,7 +81,7 @@ AKS kümenizi hızlı bir şekilde ölçeklendirmek için Azure Container Instan
 
 ![Kubernetes veri bloğu ölçeklendirmeyi ACI 'ya](media/concepts-scale/burst-scaling.png)
 
-ACI ek altyapı yükü olmadan kapsayıcı örneklerini hızlı bir şekilde dağıtmanızı sağlar. AKS ile bağlandığınızda, AKS kümenizin güvenli, mantıksal bir uzantısı haline gelir. Sanal Kubelet bileşeni, sanal bir Kubernetes düğümü olarak ACI 'yi sunan AKS kümenize yüklenir. Kubernetes daha sonra sanal düğümler aracılığıyla aci örnekleri olarak çalışan ve VM düğümlerinde doğrudan aks kümenizdeki Pod olmayan bir düğüm zamanlayabilir. Sanal düğümler Şu anda AKS 'de önizlemededir.
+ACI ek altyapı yükü olmadan kapsayıcı örneklerini hızlı bir şekilde dağıtmanızı sağlar. AKS ile bağlandığınızda, AKS kümenizin güvenli, mantıksal bir uzantısı haline gelir. Sanal [Kubelet][virtual-kubelet]tabanlı [sanal düğümler][virtual-nodes-cli] bileşeni, sanal bir Kubernetes düğümü olarak acı 'yi sunan aks kümenize yüklenir. Kubernetes daha sonra sanal düğümler aracılığıyla aci örnekleri olarak çalışan ve VM düğümlerinde doğrudan aks kümenizdeki Pod olmayan bir düğüm zamanlayabilir. Sanal düğümler Şu anda AKS 'de önizlemededir.
 
 Uygulamanız sanal düğümleri kullanmak için değişiklik gerektirmez. Dağıtımlar aks ve acı genelinde ölçeklendirebilir ve küme otomatik Scaler, AKS kümenizde yeni düğümler dağıttığında gecikme yok.
 
@@ -104,6 +104,7 @@ Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdak
 - [Kubernetes/AKS depolaması][aks-concepts-storage]
 
 <!-- LINKS - external -->
+[virtual-kubelet]: https://virtual-kubelet.io/
 
 <!-- LINKS - internal -->
 [aks-quickstart]: kubernetes-walkthrough.md
@@ -117,3 +118,4 @@ Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdak
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-network]: concepts-network.md
+[virtual-nodes-cli]: virtual-nodes-cli.md

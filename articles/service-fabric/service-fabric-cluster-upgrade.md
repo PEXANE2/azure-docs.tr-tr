@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric kümesini yükseltme | Microsoft Docs
+title: Azure Service Fabric kümesini yükseltme
 description: Azure Service Fabric kümesinin sürümünü veya yapılandırmasını yükseltme hakkında bilgi edinin.  Bu makalede küme güncelleştirme modunu ayarlama, sertifika yükseltme, uygulama bağlantı noktaları ekleme, işletim sistemi düzeltme ekleri yapma ve yükseltmeler gerçekleştirildiğinde bekleyebileceğiniz özellikler açıklanmaktadır.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: atsenthi
-ms.openlocfilehash: 2c8465a3aba4a21efaa20a118807d739dd501b09
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 161c720fbcc9370aaf273b241e88a7184f47371b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599787"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013313"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Azure Service Fabric kümesini yükseltme ve güncelleştirme
 
@@ -36,7 +36,7 @@ Kümenizi, Microsoft tarafından yayımlandıklarında otomatik yapı yükseltme
 ## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>Otomatik yükseltmeler sırasında yapı yükseltme davranışı
 Microsoft, bir Azure kümesinde çalışan yapı kodunu ve yapılandırmayı korur. Yazılım için gerektiğinde otomatik olarak izlenen yükseltmeler gerçekleştiririz. Bu yükseltmeler kod, yapılandırma veya her ikisi olabilir. Bu yükseltmeler nedeniyle uygulamanızın hiçbir etkisi veya en az etkisi olmadığından emin olmak için, yükseltmeleri aşağıdaki aşamalarda gerçekleştirdik:
 
-### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>1\. Aşama: Tüm küme sistem durumu ilkeleri kullanılarak yükseltme gerçekleştirilir
+### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>1\. Aşama: bir yükseltme tüm küme sistem durumu ilkeleri kullanılarak gerçekleştirilir
 Bu aşamada, yükseltmeler tek seferde bir yükseltme etki alanına devam eder ve kümede çalışan uygulamalar herhangi bir kesinti olmadan çalışmaya devam eder. Küme sistem durumu ilkeleri (düğüm durumunun bir birleşimi ve kümede çalışan tüm uygulamaların sistem durumu), yükseltme sırasında öğesine dağıtılır.
 
 Küme sistem durumu ilkeleri karşılanmazsa, yükseltme geri alınır. Daha sonra aboneliğin sahibine bir e-posta gönderilir. E-postada aşağıdaki bilgiler bulunur:
@@ -49,7 +49,7 @@ Tüm yükseltmelerin altyapı nedenleriyle başarısız olması durumunda aynı 
 
 Küme sistem durumu ilkeleri karşılanıyorsa, yükseltme başarılı ve tamamlandı olarak kabul edilir. Bu, ilk yükseltme sırasında veya bu aşamada herhangi bir yükseltme yeniden tamamlandıktan kaynaklanabilir. Başarılı bir çalıştırmanın e-posta onayı yoktur. Bu, çok sayıda e-posta göndermekten kaçınmaktır. bir e-postanın alınması, normal için bir özel durum olarak görülenmelidir. Uygulama kullanılabilirliğini etkilemeden küme yükseltmelerinden çoğunun başarılı olmasını bekliyoruz.
 
-### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>2\. Aşama: Yalnızca varsayılan sistem durumu ilkeleri kullanılarak bir yükseltme gerçekleştirilir
+### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>2\. Aşama: bir yükseltme yalnızca varsayılan sistem durumu ilkeleri kullanılarak gerçekleştirilir
 Bu aşamadaki sistem durumu ilkeleri, yükseltmenin başlangıcında sağlıklı olan uygulamaların sayısı yükseltme işlemi süresince aynı kalır ve bu şekilde ayarlanır. 1\. aşamada, Aşama 2 yükseltmeleri tek seferde bir yükseltme etki alanına devam eder ve kümede çalışan uygulamalar herhangi bir kesinti olmadan çalışmaya devam eder. Küme sistem durumu ilkeleri (düğüm durumunun bir birleşimi ve kümede çalışan tüm uygulamaların sistem durumu), yükseltme süresince ' a dağıtılır.
 
 Etkin küme durumu ilkeleri karşılanmazsa, yükseltme geri alınır. Daha sonra aboneliğin sahibine bir e-posta gönderilir. E-postada aşağıdaki bilgiler bulunur:
@@ -62,7 +62,7 @@ Tüm yükseltmelerin altyapı nedenleriyle başarısız olması durumunda aynı 
 
 Küme sistem durumu ilkeleri karşılanıyorsa, yükseltme başarılı ve tamamlandı olarak kabul edilir. Bu, ilk yükseltme sırasında veya bu aşamada herhangi bir yükseltme yeniden tamamlandıktan kaynaklanabilir. Başarılı bir çalıştırmanın e-posta onayı yoktur.
 
-### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>3\. Aşama: Bir yükseltme, agresif sistem durumu ilkeleri kullanılarak gerçekleştirilir
+### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>3\. Aşama: bir yükseltme, agresif sistem durumu ilkeleri kullanılarak gerçekleştirilir
 Bu aşamadaki bu sistem durumu ilkeleri, uygulamaların sistem durumu yerine yükseltmenin tamamlanmasına yöneliktir. Bu aşamada birkaç küme yükseltmesi sona erdir. Kümeniz bu aşamayı alıyorsa, uygulamanız sağlıksız hale gelmiş ve/veya kullanılabilirliği yitiriyor olabilir.
 
 Diğer iki aşamaya benzer şekilde, aşama 3 yükseltmeleri aynı anda bir yükseltme etki alanı devam etsin.
@@ -104,7 +104,7 @@ Düzeltme Eki düzenleme uygulaması (POA), kapalı kalma süresi olmadan bir Se
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Service Fabric kümesi doku ayarlarından](service-fabric-cluster-fabric-settings.md) bazılarını özelleştirmeyi öğrenin
-* [Kümenizi ve dışarı ölçeklendirmeyi](service-fabric-cluster-scale-up-down.md) nasıl ölçeklentireceğinizi öğrenin
+* [Kümenizi ve dışarı ölçeklendirmeyi nasıl ölçeklentireceğinizi](service-fabric-cluster-scale-up-down.md) öğrenin
 * [Uygulama yükseltmeleri](service-fabric-application-upgrade.md) hakkında bilgi edinin
 
 <!--Image references-->

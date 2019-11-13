@@ -1,18 +1,18 @@
 ---
-title: Microsoft Azure Site Recovery sağlayıcısı yükseltme hatalarında sorun giderme | Microsoft Docs
-description: Anlayın ve
+title: Microsoft Azure Site Recovery sağlayıcısının yükseltilmesiyle ilgili sorunları giderme
+description: Microsoft Azure Site Recovery sağlayıcısını yükseltirken karşılaşılan sorunları çözümleyin
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 02/05/2019
+ms.date: 11/10/2019
 ms.author: raynew
-ms.openlocfilehash: 6bb8263e7291506be6af7d5af7eda5786274d73c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 73309103d422391aae3d72e3b0267d5d5a85515a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972601"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953762"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Microsoft Azure Site Recovery Sağlayıcısını yükseltme hatalarını giderme
 
@@ -30,7 +30,7 @@ Yükseltmek için aşağıdaki adımları kullanın:
    1. [Azure Site Recovery makalesindeki hizmet güncelleştirmelerinin](service-updates-how-to.md##links-to-currently-supported-update-rollups) "Şu anda desteklenen güncelleştirme paketlerinin bağlantıları" bölümünde, yükseltmekte olduğunuz sağlayıcıyı seçin.
    2. Toplama sayfasında, **güncelleştirme bilgileri** bölümünü bulun ve Site Recovery birleşik kurulum Microsoft Azure Için güncelleştirme paketini indirin.
 
-2. Bir komut istemi açın ve Birleşik kurulum dosyasını indirdiğiniz klasöre gidin. Şu komutu kullanarak kurulum dosyalarını MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt;folder yolunu ayıklayın (@ no__t-1 ayıklanan dosyalar için).
+2. Bir komut istemi açın ve Birleşik kurulum dosyasını indirdiğiniz klasöre gidin. Aşağıdaki komutu kullanarak kurulum dosyalarını indirden ayıklayın, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;ayıklanan dosyalar için klasör yolu&gt;.
     
     Örnek komut:
 
@@ -48,12 +48,12 @@ Yükseltmenin başarılı olması için 3. taraf klasörü yeniden adlandırılm
 
 Sorunu gidermek için.
 
-1. Kayıt Defteri Düzenleyicisi 'Ni (Regedit. exe) başlatın ve HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\yüklü Products\10 dalını açın.
-1. @No__t-0 anahtar değerini inceleyin. En son sürüme ayarlanırsa sürüm numarasını küçültün. Örneğin, en son sürüm 9,22. \* ve `Build_Version` anahtarı bu değere ayarlanmışsa, 9,21. \* ' ye küçültün.
+1. Kayıt Defteri Düzenleyicisi 'Ni (Regedit. exe) başlatın ve HKEY_LOCAL_MACHINE \Software\wow6432node\ınmage Systems\yüklü Products\10 dalını açın.
+1. `Build_Version` anahtar değerini inceleyin. En son sürüme ayarlanırsa sürüm numarasını küçültün. Örneğin, en son sürüm 9,22 ise.\* ve `Build_Version` anahtarı bu değere ayarlanır, sonra 9,21 olarak küçültün.\*.
 1. Birleşik kurulum Site Recovery en son Microsoft Azure indirin:
    1. [Azure Site Recovery makalesindeki hizmet güncelleştirmelerinin](service-updates-how-to.md##links-to-currently-supported-update-rollups) "Şu anda desteklenen güncelleştirme paketlerinin bağlantıları" bölümünde, yükseltmekte olduğunuz sağlayıcıyı seçin.
    2. Toplama sayfasında, **güncelleştirme bilgileri** bölümünü bulun ve Site Recovery birleşik kurulum Microsoft Azure Için güncelleştirme paketini indirin.
-1. Bir komut istemi açın ve Birleşik kurulum dosyasını indirdiğiniz klasöre gidin ve aşağıdaki komutu kullanarak kurulum dosyalarını indirmeden ayıklayın: MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt;klasör yolu ayıklanan dosyalar @ no__t-1.
+1. Bir komut istemi açın ve birleştirilmiş kurulum dosyasını indirdiğiniz klasöre gidin ve aşağıdaki komutu kullanarak kurulum dosyalarını indirmeden ayıklayın, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;ayıklanan dosyalar için klasör yolu&gt;.
 
     Örnek komut:
 

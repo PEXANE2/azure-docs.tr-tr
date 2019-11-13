@@ -7,18 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: c30b918be5e4185d6fb4fdd2fcfc47f8dd4d25ef
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: a77227aca70a48d625f9e20fff9c9fe7df87c000
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969159"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012150"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Dosya ve klasörleri yedekleme hakkında sık sorulan sorular
 
 Bu makalede, [Azure Backup](backup-overview.md) hizmetindeki MICROSOFT Azure kurtarma HIZMETLERI (mars) aracısıyla dosya ve klasörleri yedeklemeye yönelik yaygın soruların yanıtları bulunur.
-
-## <a name="general"></a>Genel
 
 ## <a name="configure-backups"></a>Yedeklemeleri yapılandırma
 
@@ -113,11 +111,11 @@ Bu uyarı, yerel sunucuda depolanan yedekleme zamanlaması ayarları, yedekleme 
 
 1. Yedekleme altyapısını durdurmak için bu komutu yükseltilmiş bir komut isteminde çalıştırın:
 
-    ```PS C:\> Net stop obengine```
+    ```Net stop obengine```
 
 2. Sistem durumu yedeklemesini yapılandırdıysanız, disk yönetimi 'ni açın ve `"CBSSBVol_<ID>"`biçimdeki disk (ler) i çıkarın.
 3. Dosyaları taşımayın. Bunun yerine, önbellek alanı klasörünü yeterli alana sahip farklı bir sürücüye kopyalayın.
-4. Aşağıdaki kayıt defteri girdilerini yeni önbellek klasörünün yoluyla güncelleştirin.<br/>
+4. Aşağıdaki kayıt defteri girdilerini yeni önbellek klasörünün yoluyla güncelleştirin.
 
     | Kayıt defteri yolu | Kayıt Defteri Anahtarı | Değer |
     | --- | --- | --- |
@@ -126,9 +124,11 @@ Bu uyarı, yerel sunucuda depolanan yedekleme zamanlaması ayarları, yedekleme 
 
 5. Yedekleme altyapısını yükseltilmiş bir komut isteminde yeniden başlatın:
 
-    ```PS C:\> Net stop obengine```
+  ```command
+  Net stop obengine
 
-    ```PS C:\> Net start obengine```
+  Net start obengine
+  ```
 
 6. Geçici yedekleme çalıştırın. Yedekleme işlemi yeni konumu kullanarak başarılı bir şekilde tamamlandıktan sonra özgün önbellek klasörünü kaldırabilirsiniz.
 

@@ -1,20 +1,19 @@
 ---
-title: Azure Site Recovery ile VMware ve fiziksel sunucu olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme | Microsoft Docs
-description: Bu makalede, Azure Site Recovery ile Azure 'da VMware VM 'Leri ve fiziksel sunucular için olağanüstü durum kurtarma için mevcut bir yapılandırma sunucusunun nasıl yönetileceği açıklanır.
+title: Yapılandırma sunucusunu Azure Site Recovery olağanüstü durum kurtarma için yönetme
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 42e1e283736d8a1e3d4ece33c861185df2d72da7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791829"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954355"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>VMware VM olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/fiziksel sunucu olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme
 
 VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarması için [Azure Site Recovery](site-recovery-overview.md) kullandığınızda bir şirket içi yapılandırma sunucusu ayarlarsınız. Yapılandırma sunucusu, şirket içi VMware ve Azure arasındaki iletişimleri koordine eder ve veri çoğaltmasını yönetir. Bu makalede, yapılandırma sunucusunu dağıtıldıktan sonra yönetmeye yönelik ortak görevler özetlenmektedir.
 
@@ -139,7 +138,7 @@ Gerekirse, yapılandırma sunucusunu aynı kasada yeniden kaydedebilirsiniz. Ek 
 
 ## <a name="upgrade-the-configuration-server"></a>Yapılandırma sunucusunu yükseltme
 
-Yapılandırma sunucusunu güncelleştirmek için güncelleştirme paketleri çalıştırırsınız. Güncelleştirmeler, en fazla N 4 sürüm için uygulanabilir. Örnek:
+Yapılandırma sunucusunu güncelleştirmek için güncelleştirme paketleri çalıştırırsınız. Güncelleştirmeler, en fazla N 4 sürüm için uygulanabilir. Örneğin:
 
 - 9,7, 9,8, 9,9 veya 9,10 çalıştırırsanız, doğrudan 9,11 'e yükseltebilirsiniz.
 - 9,6 veya daha önceki bir sürümü çalıştırırsanız ve 9,11 sürümüne yükseltmek istiyorsanız, önce sürüm 9,7 ' ye yükseltmeniz gerekir. 9,11 öncesi.
@@ -158,13 +157,13 @@ Sunucuyu aşağıdaki gibi yükseltin:
     ![Güncelleştirme](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Güncelleştirme yükleyicisi dosyasını yapılandırma sunucusuna indirin.
 
-    ![Güncelleştir](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Güncelleştirme](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Yükleyiciyi çalıştırmak için çift tıklayın.
 5. Yükleyici, makinede çalışan geçerli sürümü algılar. Yükseltmeyi başlatmak için **Evet** ' e tıklayın.
 6. Yükseltme işlemi tamamlandığında sunucu yapılandırması doğrular.
 
-    ![Güncelleştir](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Güncelleştirme](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Yükleyiciyi kapatmak için **son** ' a tıklayın.
 8. Site Recovery bileşenlerinin geri kalanını yükseltmek için [yükseltme kılavuzumuza](https://aka.ms/asr_vmware_upgrades)bakın.
@@ -189,19 +188,19 @@ Yükleme dosyasını aşağıdaki gibi çalıştırın:
 
 |Parametre Adı| Tür | Açıklama| Değerler|
 |-|-|-|-|
-| /ServerMode|Gereklidir|Hem yapılandırma hem de işlem sunucusunun mu yoksa yalnızca işlem sunucusunun mu yükleneceğini belirtir|CS<br>PS|
-|/InstallLocation|Gereklidir|Bileşenlerin yüklendiği klasör| Bilgisayardaki herhangi bir klasör|
-|/MySQLCredsFilePath|Gereklidir|MySQL sunucusu kimlik bilgilerinin depolandığı dosya yolu|Dosya aşağıda belirtilen biçimde olmalıdır|
-|/VaultCredsFilePath|Gereklidir|Kasa kimlik bilgileri dosyasının yolu|Geçerli dosya yolu|
-|/EnvType|Gereklidir|Korumak istediğiniz ortam türü |VMware<br>NonVMware|
-|/PSIP|Gereklidir|Çoğaltma veri aktarımı için kullanılacak NIC’nin IP adresi| Herhangi bir geçerli IP adresi|
-|/CSIP|Gereklidir|Yapılandırma sunucusunun dinleme yaptığı NIC’nin IP adresi| Herhangi bir geçerli IP adresi|
-|/PassphraseFilePath|Gereklidir|Parola dosyası konumunun tam yolu|Geçerli dosya yolu|
+| /ServerMode|Gerekli|Hem yapılandırma hem de işlem sunucusunun mu yoksa yalnızca işlem sunucusunun mu yükleneceğini belirtir|CS<br>PS|
+|/InstallLocation|Gerekli|Bileşenlerin yüklendiği klasör| Bilgisayardaki herhangi bir klasör|
+|/MySQLCredsFilePath|Gerekli|MySQL sunucusu kimlik bilgilerinin depolandığı dosya yolu|Dosya aşağıda belirtilen biçimde olmalıdır|
+|/VaultCredsFilePath|Gerekli|Kasa kimlik bilgileri dosyasının yolu|Geçerli dosya yolu|
+|/EnvType|Gerekli|Korumak istediğiniz ortam türü |VMware<br>NonVMware|
+|/PSIP|Gerekli|Çoğaltma veri aktarımı için kullanılacak NIC’nin IP adresi| Herhangi bir geçerli IP adresi|
+|/CSIP|Gerekli|Yapılandırma sunucusunun dinleme yaptığı NIC’nin IP adresi| Herhangi bir geçerli IP adresi|
+|/PassphraseFilePath|Gerekli|Parola dosyası konumunun tam yolu|Geçerli dosya yolu|
 |/BypassProxy|İsteğe Bağlı|Yapılandırma sunucusunun Azure'a bir ara sunucu olmadan bağlandığını belirtir|Yapmak için bu değeri Venu’den alın|
 |/ProxySettingsFilePath|İsteğe Bağlı|Ara sunucu ayarları (Varsayılan ara sunucu kimlik doğrulaması gerektirir ya da özel bir ara sunucu kullanılır)|Dosya aşağıda belirtilen biçimde olmalıdır|
 |DataTransferSecurePort|İsteğe Bağlı|Çoğaltma verileri için kullanılacak PSIP’deki bağlantı noktası numarası| Geçerli Bağlantı Noktası Numarası (varsayılan değer: 9433)|
 |/SkipSpaceCheck|İsteğe Bağlı|Önbellek diski için alan denetimini atlama| |
-|/AcceptThirdpartyEULA|Gereklidir|Bayrak, üçüncü taraf EULA'nın kabul edildiğini gösterir| |
+|/AcceptThirdpartyEULA|Gerekli|Bayrak, üçüncü taraf EULA'nın kabul edildiğini gösterir| |
 |/ShowThirdpartyEULA|İsteğe Bağlı|Üçüncü taraf EULA belgesini görüntüler. Giriş olarak sağlanırsa, diğer tüm parametreler yoksayılır| |
 
 

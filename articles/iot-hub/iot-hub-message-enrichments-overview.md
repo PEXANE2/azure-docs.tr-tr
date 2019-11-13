@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub ileti zenginleştirme 'ye Genel Bakış
-description: Azure IoT Hub iletileri için ileti zenginlerinin Özeti
+description: Bu makalede, iletiler belirlenen uç noktaya gönderilmeden önce iletileri daha fazla bilgi damgalama özelliğini IoT Hub veren ileti zenginleştirmelerinin gösterildiği gösterilmektedir.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 83114023eb35221bfa53e3ce4de8a861948c7a3a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177986"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005838"
 ---
-# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Cihazdan buluta IoT Hub iletileri için ileti zenginleştirmelerinin (Önizleme)
+# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Cihazdan buluta IoT Hub iletileri için ileti zenginleştirmelerinin
 
 *İleti zenginleştirmelerinin* iletileri belirlenen uç noktaya gönderilmeden önce ek bilgilerle iletileri *damgalamak* IoT Hub yeteneğidir. İleti zenginleştirmelerinin tek bir nedeni, aşağı akış işlemeyi basitleştirmek için kullanılabilecek verileri içermektir. Örneğin, cihaz ikizi etiketiyle cihaz telemetri iletileri zenginleştirilmesi, bu bilgilere yönelik cihaz ikizi API çağrıları yapmak için müşterilerin yükünü azaltabilir.
 
@@ -78,13 +78,9 @@ Enzenginler, uç nokta başına uygulanır. Belirli bir uç nokta için damgalı
 
 * İleti zenginleştirmelerinin dijital ikizi değişiklik olayları ( [ıot Tak ve Kullan genel önizlemenin](../iot-pnp/overview-iot-plug-and-play.md)parçası) için uygun değildir.
 
-## <a name="pricing"></a>Fiyat
+## <a name="pricing"></a>Fiyatlandırma
 
 İleti zenginleştirme, ek ücret ödemeden kullanılabilir. Şu anda bir IoT Hub ileti gönderdiğinizde ücretlendirilirsiniz. İleti birden çok uç noktaya gitse bile, bu ileti için yalnızca bir kez ücretlendirilirsiniz.
-
-## <a name="availability"></a>Sonrası
-
-Bu özellik Önizleme sürümünde kullanılabilir ve Doğu ABD, Batı ABD, Batı Avrupa, [Azure Kamu](/azure/azure-government/documentation-government-welcome), [Azure Çin 21Vianet](/azure/china)ve [Azure Almanya](https://azure.microsoft.com/global-infrastructure/germany/)dışındaki tüm bölgelerde kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

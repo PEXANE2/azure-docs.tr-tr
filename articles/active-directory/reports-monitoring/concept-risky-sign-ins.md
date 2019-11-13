@@ -2,7 +2,7 @@
 title: Portalda riskli oturum açma işlemleri raporu | Microsoft Docs
 description: Azure Active Directory portalındaki riskli oturum açma işlemleri raporu hakkında bilgi edinin
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 10/28/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bb0cd2c98d0133b0eaffce1730fb9f7cb74bf60
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043533"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008349"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki riskli oturum açma işlemleri raporu
 
@@ -81,7 +81,7 @@ Riskli oturum açma araştırmanıza bağlı olarak, aşağıdaki eylemleri ger�
 
 Bu rapor ayrıca şunları yapmak için bir seçenek sunar:
 
-- Kaynakları arayın
+- Kaynak arama
 - Rapor verilerini indir
 
 ![Riskli Oturum Açma İşlemleri](./media/concept-risky-sign-ins/93.png)
@@ -98,7 +98,7 @@ Azure AD Premium sürümlerindeki riskli oturum açma işlemleri raporu şunlar�
 
 Risk algılamayı seçtiğinizde, bu risk algılamasında şunları yapmanızı sağlayan ayrıntılı bir rapor görünümü alırsınız:
 
-- [Kullanıcı riskini azaltma ilkesi](../identity-protection/howto-user-risk-policy.md) yapılandırma seçeneği  
+- Bir [kullanıcı riskini azaltma ilkesi](../identity-protection/howto-user-risk-policy.md) yapılandırabilirsiniz.  
 
 - Risk algılama için algılama zaman çizelgesini gözden geçirin  
 

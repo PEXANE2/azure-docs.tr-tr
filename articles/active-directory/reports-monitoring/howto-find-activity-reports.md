@@ -3,7 +3,7 @@ title: Azure portal Kullanıcı etkinliği raporlarını bul | Microsoft Docs
 description: Azure Active Directory Kullanıcı etkinliği raporlarının nerede Azure portal olduğunu öğrenin.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7fdf8c17c8dcbdc8203cb46342c8474b3d9832f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820931"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008207"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure portal etkinlik raporlarını bulma
 
@@ -59,7 +59,7 @@ Kategoriler şunlardır:
 - Yetkilendirme
 - İletişim
 - Cihaz
-- Na
+- DeviceConfiguration
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
@@ -155,7 +155,7 @@ Etkinlik günlüklerini (denetim veya oturum açma) indirdim ve seçtiğim süre
 
 Etkinlik günlüklerini Azure portal indirdiğinizde, ölçeği 250000 kayıt olarak sınırlarız ve en son ilk olarak sıralanır. 
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
 Belirli bir noktadaki bir milyon kaydı getirmek için [Azure AD Raporlama API’lerini](concept-reporting-api.md) kullanabilirsiniz.
 
@@ -176,7 +176,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 | Dizin denetimi | &nbsp; | 2 dk. | 5 dk. |
 | Oturum açma etkinliği | &nbsp; | 2 dk. | 5 dk. | 
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
 15 dakika ile iki saat arasında bekleyin ve eylemlerin günlükte görüntülenip görüntülenmediğine bakın. İki saatten sonra da günlükler görünmüyorsa sorunla ilgilenebilmemiz için [destek bileti oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -197,7 +197,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 | Dizin denetimi | &nbsp; | 2 dk. | 5 dk. |
 | Oturum açma etkinliği | &nbsp; | 2 dk. | 5 dk. | 
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
 15 dakika ile iki saat arasında bekleyin ve eylemlerin günlükte görüntülenip görüntülenmediğine bakın. İki saatten sonra da günlükler görünmüyorsa sorunla ilgilenebilmemiz için [destek bileti oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -220,7 +220,7 @@ Lisansınıza bağlı olarak, etkinlik raporları Azure Active Directory Actions
 
 Daha fazla bilgi için bkz. [Azure Active Directory rapor bekletme ilkeleri](reference-reports-data-retention.md).  
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
 Verileri 30 günden daha uzun bir süre boyunca saklamak için iki seçeneğiniz vardır. [Azure AD Raporlama API'lerini](concept-reporting-api.md) kullanarak verileri program aracılığıyla alabilir ve bir veritabanında kaydedebilirsiniz. Alternatif olarak denetim günlüklerini Splunk veya SumoLogic gibi bir üçüncü taraf SIEM sistemiyle tümleştirebilirsiniz.
 

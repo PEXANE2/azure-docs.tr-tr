@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/12/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 178628db11b95fbd345e94111ebf15809da3fc35
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 55abdab6a427547ee8bd498500deee94b8f67453
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684292"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954736"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>ADF 'de Azure-SSIS IR için şirket içinde barındırılan IR 'yi bir ara sunucu olarak yapılandırma
 Bu makalede, proxy olarak yapılandırılan şirket içinde barındırılan IR ile Azure Data Factory (ADF) üzerinde Azure-SSIS Integration Runtime (IR) için SQL Server Integration Services (SSIS) paketlerinin nasıl çalıştırılacağı açıklanmaktadır.  Bu özellik, [Azure-SSIS IR bir sanal ağa katılmadan](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)Şirket içindeki verilere erişmenizi sağlar.  Bu, şirket ağınızda Azure-SSIS IR eklemek için aşırı karmaşık bir yapılandırma/kısıtlayıcı ilke olduğunda faydalıdır.
@@ -87,10 +87,10 @@ Azure-SSIS IR çalışan ikinci hazırlama görevleri ayrı olarak faturalandır
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
-- Şu anda yalnızca OLEDB/düz dosya bağlantı yöneticileri ve OLEDB/düz dosya kaynakları desteklenmektedir. 
+- Yalnızca ODBC/OLEDB/düz dosya bağlantı yöneticileri ve ODBC/OLEDB/düz dosya kaynakları olan veri akışı görevleri şu anda desteklenmektedir. 
 - Yalnızca **hesap anahtarı**/**SAS URI**/**hizmet sorumlusu** kimlik doğrulaması ile yapılandırılmış Azure Blob depolama bağlı hizmetleri şu anda destekleniyor.
 - Yalnızca Azure-SSIS IR sağlandığı aynı ADF altında sağlanan şirket içinde barındırılan IR, şu anda desteklenmektedir.
-- OLEDB/düz dosya kaynaklarının ve bağlantı yöneticilerinin özelliklerinde SSIS parametrelerinin/değişkenlerinin kullanılması desteklenmez.
+- ODBC/OLEDB/düz dosya kaynakları ve bağlantı yöneticilerinin özelliklerinde SSIS parametreleri/değişkenleri kullanılması şu anda desteklenmiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Şirket içinde barındırılan IR 'yi, Azure-SSIS IR için bir ara sunucu olarak yapılandırdıktan sonra, ADF işlem hatlarında SSIS paket etkinliklerini yürütme olarak SSIS paketlerini yürütme gibi paketleri dağıtabilir ve çalıştırabilirsiniz. ADF işlem hatları 'nda SSIS paketi [yürütme ](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

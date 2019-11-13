@@ -1,18 +1,18 @@
 ---
-title: VMware VM 'Leri ve fiziksel sunucular için olağanüstü durum kurtarma için kullanılan bir işlem sunucusunu Azure Site Recovery ile Azure 'da yönetme | Microsoft Docs
-description: Bu makalede, Azure Site Recovery kullanarak VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için ayarlanan bir işlem sunucusunu yönetme açıklanmaktadır.
+title: Azure Site Recovery 'de VMware VM 'Leri/fiziksel sunucu olağanüstü durum kurtarma için bir işlem sunucusunu yönetme
+description: Bu makalede, Azure Site Recovery kullanarak VMware VM 'lerinin/fiziksel sunucularının olağanüstü durum kurtarması için bir işlem sunucusu yönetimi açıklanmaktadır.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 509b9aed9f5daebb70a18336837da2152667a458
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242845"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954341"
 ---
 # <a name="manage-process-servers"></a>İşlem sunucularını yönetme
 
@@ -132,7 +132,7 @@ Ayarları kaydettikten sonra şunları yapın:
 Virüsten koruma yazılımı, genişleme işlem sunucusu (veya ana hedef sunucusu) üzerinde çalışıyorsa, virüsten koruma işlemlerinde aşağıdaki klasörleri hariç tutun:
 
 
-- C:\Program Files\Microsoft Azure kurtarma hizmetleri Aracısı
+- C:\Program Files\Microsoft Azure Recovery Services Agent
 - C:\ProgramData\ASR
 - C:\ProgramData\ASRLogs
 - C:\ProgramData\ASRSetupLogs

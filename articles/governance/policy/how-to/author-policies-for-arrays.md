@@ -1,17 +1,14 @@
 ---
 title: Kaynaklardaki dizi özellikleri için yazma ilkeleri
 description: Dizi parametreleri oluşturmayı, dizi dili ifadeleri için kurallar oluşturmayı, [*] diğer adını değerlendirmeyi ve mevcut bir diziye öğeleri Azure Ilke tanımı kuralları ile eklemeyi öğrenin.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 33607d790f564075623d6f61d1b7b8b70a119f98
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: f28cffcf928f9c4da6b2dae2a0811200397c1f0d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255817"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959708"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarında dizi özellikleri için yazma ilkeleri
 
@@ -19,7 +16,7 @@ Azure Resource Manager özellikler genellikle dizeler ve Boole değerleri olarak
 
 - Birden çok seçenek sağlamak için bir [tanım parametresinin](../concepts/definition-structure.md#parameters)türü
 - **Ya da** **notın** koşullarını kullanan bir [ilke kuralının](../concepts/definition-structure.md#policy-rule) bir parçası
-- [@No__t-1 @ no__t-2 @ no__t-3 diğer adını](../concepts/definition-structure.md#understanding-the--alias) değerlendiren, **none**, **Any**veya **All** gibi belirli senaryoları değerlendirmek için bir ilke kuralının parçası
+- **Yok**, **Any**veya **All** gibi belirli senaryoları değerlendirmek için [\[\*\] diğer adını](../concepts/definition-structure.md#understanding-the--alias) değerlendiren bir ilke kuralının parçası
 - Var olan bir diziyi değiştirmek veya eklemek için [ekleme efekti](../concepts/effects.md#append)
 
 Bu makalede Azure Ilkesi tarafından kullanılan her kullanım ele alınmaktadır ve birkaç örnek tanım sunulmaktadır.
@@ -104,7 +101,8 @@ Bu dizeyi her SDK ile kullanmak için aşağıdaki komutları kullanın:
 
 ### <a name="array-conditions"></a>Dizi koşulları
 
-_Dizi_@no__t **-2 parametresinin** birlikte kullanılabileceği ilke kuralı [koşulları](../concepts/definition-structure.md#conditions) `in` ve `notIn` ile sınırlıdır. Aşağıdaki ilke tanımını örnek olarak `equals` koşulu ile gerçekleştirin:
+_Dizi_
+parametre **türünün** birlikte kullanılabileceği ilke kuralı [Koşulları](../concepts/definition-structure.md#conditions) `in` ve `notIn`sınırlıdır. Aşağıdaki ilke tanımını örnek olarak `equals` koşulu ile gerçekleştirin:
 
 ```json
 {
@@ -136,14 +134,14 @@ Azure portal aracılığıyla bu ilke tanımını oluşturmaya çalışmak, bu h
 
 - "' {GUID} ' ilkesi doğrulama hataları nedeniyle parametreleştirimedi. İlke parametrelerinin doğru tanımlanıp tanımlanmadığından emin olun. ' [Parameters (' allowedLocations ')] ' dil ifadesinin değerlendirme sonucu, ' Array ' türü, beklenen tür ' String '. '. "
 
-@No__t-1 koşulunun beklenen **türü** _dize_. **Allowedlocations** **türü** _dizi_olarak tanımlandığından, ilke altyapısı dil ifadesini değerlendirir ve hata oluşturur. @No__t-0 ve `notIn` koşuluyla, ilke altyapısı dil ifadesinde **tür** _dizisini_ bekler. Bu hata iletisini çözümlemek için `equals` ' ı `in` veya `notIn` olarak değiştirin.
+Beklenen koşul **türü** `equals` _dizedir_. **Allowedlocations** **türü** _dizi_olarak tanımlandığından, ilke altyapısı dil ifadesini değerlendirir ve hata oluşturur. `in` ve `notIn` koşulu ile, ilke altyapısı dil ifadesinde **tür** _dizisini_ bekler. Bu hata iletisini çözümlemek için `equals` `in` veya `notIn`olarak değiştirin.
 
 ### <a name="evaluating-the--alias"></a>[*] Diğer adı değerlendiriliyor
 
-Adı **[\*]** olan diğer adlar, **türün** bir _dizi_olduğunu gösterir. Tüm dizinin değerini değerlendirmek yerine, **[\*]** dizinin her bir öğesini değerlendirmek mümkün hale getirir. Öğe değerlendirmesi başına bu üç senaryo vardır: None, any ve ALL.
+Adı **[\*]** olan diğer adlar **türün** bir _dizi_olduğunu gösterir. **[\*]** , tüm dizinin değerini değerlendirmek yerine dizinin her bir öğesini değerlendirmek mümkün hale getirir. Öğe değerlendirmesi başına bu üç senaryo vardır: None, any ve ALL.
 
 İlke altyapısı **, yalnızca** **IF** kuralı doğru olarak değerlendirildiğinde **etkisini** tetikler.
-Bu olgu, dizinin her bir öğesini değerlendiren **[\*]** yolunu anlamak için önemlidir.
+Bu olgu, dizi öğelerinin her birini değerlendiren **[\*]** yolunu anlamak için önemlidir.
 
 Aşağıdaki senaryo tablosu için örnek ilke kuralı:
 
@@ -179,24 +177,24 @@ Aşağıdaki senaryo tablosu için örnek ilke kuralı:
 ]
 ```
 
-Aşağıdaki her koşul örneği için `<field>` ' ı `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"` ile değiştirin.
+Aşağıdaki her bir koşul örneği için `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`ile değiştirin.
 
 Aşağıdaki sonuçlar, koşulun birleşiminin ve yukarıdaki mevcut değerlerden oluşan örnek ilke kuralının sonucudur:
 
 |Koşul |Sonuç |Açıklama |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Nothing |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir, bu nedenle **Not alalals** koşulu _false_ olur ve etki tetiklenmez. |
+|`{<field>,"notEquals":"127.0.0.1"}` |Yapma |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir, bu nedenle **Not alalals** koşulu _false_ olur ve etki tetiklenmez. |
 |`{<field>,"notEquals":"10.0.4.1"}` |İlke etkisi |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _true_ ve etki tetiklenir. |
 |`"not":{<field>,"Equals":"127.0.0.1"}` |İlke etkisi |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir ve bu nedenle **eşittir** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
 |`"not":{<field>,"Equals":"10.0.4.1"}` |İlke etkisi |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
 |`"not":{<field>,"notEquals":"127.0.0.1" }` |İlke etkisi |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir ve bu nedenle **Not al** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _doğrudur_. Mantıksal işleç yanlış olarak değerlendirilir ( _true_değil), bu nedenle etki**tetiklenmez** . |
-|`{<field>,"Equals":"127.0.0.1"}` |Nothing |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir; bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
-|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Yapma |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _doğrudur_. Mantıksal işleç yanlış olarak değerlendirilir ( _true_değil), bu nedenle etki**tetiklenmez** . |
+|`{<field>,"Equals":"127.0.0.1"}` |Yapma |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir; bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
+|`{<field>,"Equals":"10.0.4.1"}` |Yapma |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
 
 ## <a name="the-append-effect-and-arrays"></a>Ekleme efekti ve dizileri
 
-**Ayrıntılar. alanının** **[\*]** diğer adı olup olmadığı üzerine [ekleme efekti](../concepts/effects.md#append) farklı şekilde davranır.
+**Ayrıntılar. alanın** bir **[\*]** diğer adı olmasına bağlı olarak, [ekleme efekti](../concepts/effects.md#append) farklı şekilde davranır.
 
 - Bir **[\*]** diğer adı olmadığında, append değeri tüm diziyi **değer** özelliği ile değiştirir
 - Bir **[\*]** diğer adı olduğunda, append değeri, var olan diziye **değer** özelliğini ekler veya yeni diziyi oluşturur
@@ -206,8 +204,8 @@ Daha fazla bilgi için bkz. [append örnekleri](../concepts/effects.md#append-ex
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
-- [Azure ilke tanımı yapısını](../concepts/definition-structure.md)gözden geçirin.
-- [İlke efektlerini anlamak](../concepts/effects.md)için gözden geçirin.
+- [Azure İlkesi tanımı yapısını](../concepts/definition-structure.md) gözden geçirin.
+- [İlkenin etkilerini anlama](../concepts/effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](programmatically-create.md)anlayın.
 - [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

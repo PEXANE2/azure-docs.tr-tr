@@ -1,18 +1,17 @@
 ---
-title: Azure Site Recovery kullanarak VMware VM 'lerinden Azure 'a olağanüstü durum kurtarma hakkında | Microsoft Docs
+title: Azure Site Recovery ile VMware olağanüstü durum kurtarma
 description: Bu makalede, Azure Site Recovery hizmeti kullanılarak Azure 'a VMware VM 'lerinin olağanüstü durum kurtarma konusuna genel bakış sunulmaktadır.
-author: raynew
+author: rayne-wiselman
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 9/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: dca8174caabf4799c338d780a78ba58f1af5a2f1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814316"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954384"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>VMware VM 'lerinin Azure 'a olağanüstü durum kurtarması hakkında
 
@@ -88,8 +87,8 @@ Azure 'da şunları hazırlamanız gerekir:
 Azure ve şirket içi altyapınızı aldıktan sonra olağanüstü durum kurtarma ayarlayabilirsiniz.
 
 1. Dağıtmanız gereken bileşenleri anlamak için, [VMware 'Den Azure mimarisine](vmware-azure-architecture.md)ve [fizikselden Azure mimarisine](physical-azure-architecture.md)gözden geçirin. Birçok bileşen vardır. bu nedenle, bunların tümünün nasıl bir araya uyduğunu anlamak önemlidir.
-2. **Kaynak ortam**: Dağıtımda ilk adım olarak, çoğaltma kaynak ortamınızı ayarlarsınız. Ne çoğaltmak istediğinizi, ne de çoğaltmak istediğinizi belirtirsiniz.
-3. **Yapılandırma sunucusu**: Şirket içi kaynak ortamınızda bir yapılandırma sunucusu ayarlamanız gerekir:
+2. **Kaynak ortam**: dağıtımda ilk bir adım olarak, çoğaltma kaynak ortamınızı ayarlarsınız. Ne çoğaltmak istediğinizi, ne de çoğaltmak istediğinizi belirtirsiniz.
+3. **Yapılandırma sunucusu**: şirket içi kaynak ortamınızda bir yapılandırma sunucusu ayarlamanız gerekir:
     - Yapılandırma sunucusu, tek bir şirket içi makinedir. VMware olağanüstü durum kurtarma için, dosyayı indirilebilir bir OVF şablonundan dağıtılabilecek bir VMware VM olarak dağıtmanızı öneririz.
     - Yapılandırma sunucusu, şirket içi ve Azure arasındaki iletişimleri koordine eder
     - Yapılandırma sunucusu makinesinde çalışan birkaç bileşen vardır.
@@ -97,7 +96,7 @@ Azure ve şirket içi altyapınızı aldıktan sonra olağanüstü durum kurtarm
         - Ana hedef sunucu, Azure'dan yeniden çalışma sırasında çoğaltma verilerini işler.
     - Ayarla ayarı, kasadaki yapılandırma sunucusunu kaydetmek, MySQL Server ve VMware PowerCLI 'yi indirmek ve otomatik bulma ve Mobility hizmeti yüklemesi için oluşturulan hesapları belirtmek içerir.
 4. **Hedef ortam**: Azure aboneliğinizi ve ağ ayarlarınızı belirterek hedef Azure ortamınızı ayarlarsınız.
-5. **Çoğaltma İlkesi**: Çoğaltmanın nasıl gerçekleşmesi gerektiğini belirtirsiniz. Ayarlar, kurtarma noktalarının ne sıklıkta oluşturulup depolandığını ve uygulamayla tutarlı anlık görüntülerin oluşturulup oluşturulmayacağını içerir.
+5. **Çoğaltma İlkesi**: çoğaltmanın nasıl gerçekleşmesi gerektiğini belirtirsiniz. Ayarlar, kurtarma noktalarının ne sıklıkta oluşturulup depolandığını ve uygulamayla tutarlı anlık görüntülerin oluşturulup oluşturulmayacağını içerir.
 6. **Çoğaltmayı etkinleştirin**. Şirket içi makineler için çoğaltmayı etkinleştirirsiniz. Mobility hizmetini yüklemek için bir hesap oluşturduysanız, bir makine için çoğaltmayı etkinleştirdiğinizde yüklenir. 
 
 *Daha fazla yardım mı gerekiyor?*

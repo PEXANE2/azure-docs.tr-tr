@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2e91a888d0dc98a4f94b956e15336d75291f733e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795913"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957979"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>AKS kümeleri için Application Gateway on LetsEncrypt.org ile Sertifikalar kullanma
 
@@ -130,8 +130,12 @@ Mevcut AKS kümenize [CERT-Manager](https://docs.cert-manager.io) yüklemek içi
     Birkaç saniye sonra, otomatik olarak verilen **hazırlama** `Lets Encrypt` sertifikasını kullanarak Application Gateway https URL 'si aracılığıyla `guestbook` hizmetine erişebilirsiniz.
     Tarayıcınız size geçersiz bir sertifika yetkilisi tarafından uyarı verebilir. Hazırlama sertifikası `CN=Fake LE Intermediate X1`tarafından verilir. Bu, sistemin beklendiği gibi çalıştığı ve üretim sertifikanız için size hazırlandığının göstergesidir.
 
-4. Üretim sertifikası hazırlama sertifikanız başarıyla kurulduktan sonra bir üretim ACME sunucusuna geçiş yapabilirsiniz:
+4. Üretim sertifikası
+
+    Hazırlama sertifikanız başarıyla kurulduktan sonra bir üretim ACME sunucusuna geçiş yapabilirsiniz:
     1. Giriş kaynağınızın hazırlama ek açıklamasını şu ile değiştirin: `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
     1. Önceki adımda oluşturduğunuz mevcut hazırlama `ClusterIssuer` silin ve ACME sunucusunu yukarıdaki Clusterıssuer YAML 'den, `https://acme-v02.api.letsencrypt.org/directory` ile değiştirerek yeni bir tane oluşturun
 
-5. `Lets Encrypt` sertifikasının süresi dolmadan önce sertifika süre sonu ve yenileme `cert-manager`, Kubernetes gizli deposundaki sertifikayı otomatik olarak güncelleştirir. Bu noktada, Application Gateway giriş denetleyicisi, Application Gateway yapılandırmak için kullandığı giriş kaynaklarında başvurulan güncelleştirilmiş gizliliği uygular.
+5. Sertifika süre sonu ve yenileme
+
+    `Lets Encrypt` sertifikasının süresi dolmadan önce, `cert-manager` Kubernetes gizli deposundaki sertifikayı otomatik olarak güncelleştirir. Bu noktada, Application Gateway giriş denetleyicisi, Application Gateway yapılandırmak için kullandığı giriş kaynaklarında başvurulan güncelleştirilmiş gizliliği uygular.

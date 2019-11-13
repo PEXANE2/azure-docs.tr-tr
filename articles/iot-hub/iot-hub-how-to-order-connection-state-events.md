@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub cihaz bağlantısı olaylarını Azure Cosmos DB kullanarak sipariş edin | Microsoft Docs
+title: Cihaz bağlantısı olaylarını sıralama fr Azure IoT Hub w/Azure Cosmos DB
 description: Bu makalede, en son bağlantı durumunu korumak için Azure Cosmos DB kullanılarak cihaz bağlantı olaylarının Azure IoT Hub nasıl sipariş edileceğini ve kaydedilecek açıklanmaktadır
 services: iot-hub
 ms.service: iot-hub
@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: a020221d841682d1e18d2b728a732ec4dfc35ef3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 210c2e74305ba99b4ac3a12625d0b7f5fc47ba43
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67988293"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954262"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub cihaz bağlantısı olaylarını Azure Cosmos DB kullanarak sıralama
 
@@ -26,7 +26,7 @@ Sıra numarası, onaltılık bir sayının dize gösterimidir. Daha büyük say�
 
 * Etkin bir Azure Cosmos DB SQL API hesabı. Henüz bir tane oluşturmadıysanız, bkz. bir anlatım için [veritabanı hesabı oluşturma](../cosmos-db/create-sql-api-java.md#create-a-database-account) .
 
-* Veritabanınızdaki bir koleksiyon. İzlenecek yol için [koleksiyon ekleme](../cosmos-db/create-sql-api-java.md#add-a-container) bölümüne bakın. Koleksiyonunuzu oluştururken bölüm anahtarı için kullanın `/id` .
+* Veritabanınızdaki bir koleksiyon. İzlenecek yol için [koleksiyon ekleme](../cosmos-db/create-sql-api-java.md#add-a-container) bölümüne bakın. Koleksiyonunuzu oluştururken bölüm anahtarı için `/id` kullanın.
 
 * Azure'da bir IoT Hub'ı. Henüz oluşturmadıysanız, yönergeler için bkz. [IoT Hub'ı kullanmaya başlama](iot-hub-csharp-csharp-getstarted.md).
 
@@ -34,7 +34,7 @@ Sıra numarası, onaltılık bir sayının dize gösterimidir. Daha büyük say�
 
 İlk olarak, bir saklı yordam oluşturun ve bunu, gelen olayların sıra numaralarını karşılaştıran ve veritabanındaki cihaz başına en son olayı kaydeden bir mantığı çalıştıracak şekilde ayarlayın.
 
-1. Cosmos db SQL API 'niz ' nde **Veri Gezgini** > **öğeleri** > **Yeni saklı yordam**' i seçin.
+1. Cosmos DB SQL API 'niz ' nde, **Yeni saklı yordam** > **Veri Gezgini** > **öğeleri** ' ni seçin.
 
    ![Saklı yordam oluştur](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
@@ -133,7 +133,7 @@ Sıra numarası, onaltılık bir sayının dize gösterimidir. Daha büyük say�
 
 ## <a name="create-a-logic-app"></a>Mantıksal uygulama oluşturma
 
-İlk olarak, bir mantıksal uygulama oluşturun ve sanal makineniz için kaynak grubunu izleyen bir Event Grid tetikleyicisi ekleyin.
+İlk olarak, bir mantıksal uygulama oluşturun ve sanal makineniz için kaynak grubunu izleyen bir Olay kılavuzu tetikleyicisi ekleyin.
 
 ### <a name="create-a-logic-app-resource"></a>Mantıksal uygulama kaynağı oluşturma
 
@@ -200,7 +200,7 @@ Tetikleyici, mantıksal uygulamanızı başlatan belirli bir olaydır. Bu öğre
 
 Mantıksal uygulama iş akışınızda, koşullar belirli bir koşulu geçirdikten sonra belirli eylemleri çalıştırmaya yardımcı olur. Koşul karşılandığında, istenen bir eylem tanımlanabilir. Bu öğretici için koşul, eventType tarafından cihazın bağlı veya cihazın bağlantısının kesilmediğini denetledir. Bu eylem, saklı yordamı veritabanınızda yürütmek olacaktır.
 
-1. **+ Yeni adım** **' ı**seçin ve ardından **koşulu**bulun ve seçin. **Bir değer Seç** ' e tıklayın ve dinamik içerik ' i gösteren bir kutu açılır ve seçilebilir alanlar görüntülenir. Yalnızca cihaza bağlı ve cihaz bağlantısı kesik olayları için bunu yürütmek üzere alanları aşağıda gösterildiği gibi girin:
+1. **+ Yeni adım** **' ı seçin ve ardından** **koşulu**bulun ve seçin. **Bir değer Seç** ' e tıklayın ve dinamik içerik ' i gösteren bir kutu açılır ve seçilebilir alanlar görüntülenir. Yalnızca cihaza bağlı ve cihaz bağlantısı kesik olayları için bunu yürütmek üzere alanları aşağıda gösterildiği gibi girin:
 
    * Değer seçin: **EventType** --bu alana tıkladığınızda görüntülenen dinamik içerikte bulunan alanlardan bunu seçin.
    * **İle biten**"eşittir" olarak değiştirin.
@@ -220,9 +220,9 @@ Mantıksal uygulama iş akışınızda, koşullar belirli bir koşulu geçirdikt
 
    **VERITABANı kimliği**: ToDoList
 
-   **Koleksıyon kimliği**: Öğeler
+   **Koleksıyon kimliği**: öğeler
 
-   **Sproc kimliği**: LatestDeviceConnectionState
+   **Sproc kimliği**: latestdeviceconnectionstate
 
 5. **Yeni parametre Ekle**' yi seçin. Görüntülenen açılan menüde, **saklı yordamın** **bölüm anahtarı** ve parametreleri ' nin yanındaki kutuları işaretleyin ve ardından ekranda başka herhangi bir yere tıklayın. bölüm anahtarı değeri için bir alan ve saklı yordamın parametreleri için bir alan ekler.
 
@@ -264,7 +264,7 @@ Bu bölümde, IoT Hub'ınızı gerçekleşen olayları yayımlamak için yapıla
 
    ![Yeni olay aboneliği oluşturma](./media/iot-hub-how-to-order-connection-state-events/event-subscription.png)
 
-4. **Olay aboneliği ayrıntılarını**doldur: Açıklayıcı bir ad girip **Event Grid şeması**' nı seçin.
+4. **Olay aboneliği ayrıntılarını**doldur: açıklayıcı bir ad belirtin ve **Event Grid şeması**' nı seçin.
 
 5. **Olay türleri** alanlarını girin. Açılan listede, yalnızca **cihaz** bağlantısı ' nı seçin ve menüden **cihaz bağlantısı kesildi** ' ı seçin. Ekranda başka bir yere tıklayarak listeyi kapatın ve seçimlerinizi kaydedin.
 

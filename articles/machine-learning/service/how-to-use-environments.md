@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: f733e29fc5fbce764fef9a713747d6793d2ebd43
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 62f298e0efb5c54efdcd15cf470ed4640f720058
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489311"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957836"
 ---
-# <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Azure Machine Learning ile eğitim ve dağıtım için yeniden kullanılabilir ortamlar oluşturun ve yönetin.
+# <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Azure Machine Learning ile eğitim & dağıtımı için ortamları yeniden kullanın.
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Machine Learning [ortamları](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) oluşturma ve yönetme hakkında bilgi edinmek için projenizin yazılım bağımlılıklarını geliştikçe izleyip yeniden oluşturabilirsiniz.
@@ -41,7 +41,7 @@ Aşağıda, eğitim için çalışma yapılandırmanızda ve Web hizmeti dağıt
 
 ![Makine öğrenimi iş akışında ortam diyagramı](./media/how-to-use-environments/ml-environment.png)
 
-### <a name="types-of-environments"></a>Ortam türleri
+### <a name="types-of-environments"></a>Çeşitli ortamlarda
 
 Ortamlar, yaygın olarak üç kategoriye ayrılabilir: **seçkin**, **Kullanıcı tarafından yönetilen** ve **sistem tarafından yönetilen**.
 
@@ -225,7 +225,7 @@ restored_environment = Environment.get(workspace=ws,name="myenv",version="1")
 
 #### <a name="training-run-specific-environment"></a>Eğitim belirli bir ortamı Çalıştır
 
-Eğitim tamamlandıktan sonra belirli bir çalıştırma için kullanılan ortamı almak için Run sınıfında [get_environment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-environment--) yöntemini kullanın.
+Eğitim tamamlandıktan sonra belirli bir çalıştırma için kullanılan ortamı almak için, Run sınıfında [get_environment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-environment--) yöntemini kullanın.
 
 ```python
 from azureml.core import Run
@@ -259,7 +259,7 @@ Docker `enable`, hizmet bir Docker görüntüsü oluşturur ve bu Docker kapsay�
 myenv.docker.enabled = True
 ```
 
-Oluşturulduktan sonra Docker görüntüsü, varsayılan olarak çalışma alanıyla ilişkili Azure Container Registry görüntülenir.  Depo adının *azureml_\<uuıd\>'si* vardır. Benzersiz tanımlayıcı (*UUID*) bölümü, ortam yapılandırmasından hesaplanan bir karma öğesine karşılık gelir. Bu, hizmetin verilen ortama karşılık gelen bir görüntünün yeniden kullanım için zaten mevcut olup olmadığını belirlemesine izin verir.
+Oluşturulduktan sonra Docker görüntüsü, varsayılan olarak çalışma alanıyla ilişkili Azure Container Registry görüntülenir.  Depo adı, *azureml veya azureml_\<uuıd\>* . Benzersiz tanımlayıcı (*UUID*) bölümü, ortam yapılandırmasından hesaplanan bir karma öğesine karşılık gelir. Bu, hizmetin verilen ortama karşılık gelen bir görüntünün yeniden kullanım için zaten mevcut olup olmadığını belirlemesine izin verir.
 
 Ayrıca, hizmet Ubuntu Linux tabanlı [temel görüntülerden](https://github.com/Azure/AzureML-Containers)birini otomatik olarak kullanır ve belirtilen Python paketlerini de kurar. Temel görüntüde CPU ve GPU sürümleri vardır. Azure Machine Learning, hangi sürümün kullanılacağını otomatik olarak algılar.
 
@@ -305,7 +305,7 @@ run = exp.submit(runconfig)
 
 Çalışma yapılandırmanızda ortamı belirtmezseniz, çalıştırdığınız hizmet sizin için varsayılan bir ortam oluşturacaktır.
 
-### <a name="train-with-an-estimator"></a>Bir tahmin aracı ile eğitme
+### <a name="train-with-an-estimator"></a>Bir tahmin ile eğitme
 
 Eğitim için bir [tahmin aracı](how-to-train-ml-models.md) kullanıyorsanız, yalnızca ortamı ve işlem hedefini sarmalayan için tahmin aracı örneğini doğrudan gönderebilirsiniz.
 
@@ -359,7 +359,7 @@ service = Model.deploy(
     deployment_config = deployment_config)
 ```
 
-## <a name="example-notebooks"></a>Örnek Not defterleri
+## <a name="example-notebooks"></a>Örnek Not Defterleri
 
 Bu [örnek Not defteri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) , bu makalede gösterilen kavramların ve yöntemlerin üzerine genişletilir.
 

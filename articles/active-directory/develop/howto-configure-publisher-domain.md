@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26ef28be328e01f8edcf898f123db55f262f286c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 3558e589004e0488e5b96b0e39bd3f5ceea69658
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803337"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013054"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Nasıl yapılır: bir uygulamanın yayımcı etki alanını yapılandırma (Önizleme)
+# <a name="how-to-configure-an-applications-publisher-domain"></a>Nasıl yapılır: bir uygulamanın yayımcı etki alanını yapılandırma
 
 Uygulamanın yayımcı etki alanı, kullanıcıların bilgilerinin gönderildiği yeri bilmesini sağlamak için [uygulamanın onay isteminde](application-consent-experience.md) kullanıcılara görüntülenir. 21 Mayıs 2019 ' den sonra kaydedilen çok kiracılı uygulamalar, yayımcı etki alanı **doğrulanmamış**olarak görünür. Çok kiracılı uygulamalar, tek bir kuruluş dizini dışında hesapları destekleyen uygulamalardır; Örneğin, tüm Azure AD hesaplarını destekler veya tüm Azure AD hesaplarını ve kişisel Microsoft hesaplarını destekler.
 
@@ -146,7 +146,7 @@ Ancak, geliştirici kök etki alanını açıkça eklerse, birleşimine izin ver
 "https://app2.contoso.com",
 ```
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
 Aşağıdaki durumlar tek köklü etki alanı kısıtlamasına tabi değildir:
 

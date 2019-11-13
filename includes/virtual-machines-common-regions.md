@@ -8,14 +8,13 @@ ms.topic: include
 ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 6cd721fdd7841df279bbe24cab1057ea5e16e0e2
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 4b2dcf8f156f231041d7636d103eea59816ec65f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850476"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008433"
 ---
-# <a name="regions-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için bölgeler
 Sanal makinelerinizin (VM’ler) Azure’da nasıl ve hangi konumda çalıştığının yanı sıra performans, kullanılabilirlik ve yedekliliği artırmak için kullanabileceğiniz seçeneklerin de anlaşılması önemlidir. Bu makalede, Azure’un kullanılabilirlik ve yedeklilik özelliklerine genel bakış sunulmaktadır.
 
 
@@ -45,7 +44,7 @@ Bölge çiftlerinin örnekleri şunlardır:
 
 | Birincil | İkincil |
 |:--- |:--- |
-| Batı ABD |East US |
+| Batı ABD |Doğu ABD |
 | Kuzey Avrupa |Batı Avrupa |
 | Güneydoğu Asya |Doğu Asya |
 
@@ -75,8 +74,8 @@ Aşağıdaki tabloda, depolama çoğaltma türleri arasındaki farkları hızlı
 
 | Çoğaltma stratejisi | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Veriler birden çok tesis arasında çoğaltılır. |Hayır |Evet |Evet |Evet |
-| Veriler ikincil konumdan ve birincil konumdan okunabilir. |Hayır |Hayır |Hayır |Evet |
+| Veriler birden çok tesis arasında çoğaltılır. |Hayır |Yes |Yes |Yes |
+| Veriler ikincil konumdan ve birincil konumdan okunabilir. |Hayır |Hayır |Hayır |Yes |
 | Ayrı düğümlerde tutulan veri kopyası sayısı. |3 |3 |6 |6 |
 
 [Azure Depolama çoğaltma seçenekleri hakkında buradan](../articles/storage/common/storage-redundancy.md) daha fazla bilgi alabilirsiniz. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure Yönetilen Disklere genel bakış](../articles/virtual-machines/windows/managed-disks-overview.md).

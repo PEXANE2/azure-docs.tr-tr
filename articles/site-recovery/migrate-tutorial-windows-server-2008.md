@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery ile şirket içi Windows Server 2008 sunucuları Azure’a geçirme | Microsoft Docs
+title: Azure Site Recovery ile Windows Server 2008 sunucularını Azure 'a geçirme
 description: Bu makalede, Azure Site Recovery kullanarak şirket içi Windows Server 2008 sunucuları Azure’a geçirme işlemi açıklanmaktadır.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d0d5c482e2faf5e4a2c2918a64bd56e4aa814323
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814505"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936132"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 çalıştıran sunucuları Azure'a geçirme
 
@@ -36,7 +36,7 @@ Sınırlamalar ve bilinen sorunlar bölümünde bazı sınırlamalar Windows Ser
 ## <a name="supported-operating-systems-and-environments"></a>Desteklenen işletim sistemleri ve ortamlar
 
 
-|İşletim sistemi  | Şirket içi ortam  |
+|İşletim Sistemi  | Şirket içi ortam  |
 |---------|---------|
 |Windows Server 2008 SP2 - 32 bit ve 64 bit (IA-32 ve x86-64)</br>- Standard</br>- Enterprise</br>- Datacenter   |     VMware VM'leri, Hyper-V VM'leri ve Fiziksel Sunucular    |
 |Windows Server 2008 R2 SP1 - 64 bit</br>- Standard</br>- Enterprise</br>- Datacenter     |     VMware VM'leri, Hyper-V VM'leri ve Fiziksel Sunucular|
@@ -93,7 +93,7 @@ Azure aboneliğini ve şirket içi VMware/Fiziksel ortamı hazırlamak için aş
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
 1. [Azure Portal](https://portal.azure.com) > **Kurtarma Hizmetleri**’nde oturum açın.
-2. **Kaynak** > **yönetimi**araçlarıyedeklemesi > **ve Site Recovery**oluştur ' a tıklayın.
+2. **Yedekleme ve Site Recovery** > **Yönetim Araçları** > **kaynak oluştur ' a** tıklayın.
 3. **Ad** bölümünde **W2K8-migration** kolay adını belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 4. **w2k8migrate** adlı bir kaynak grubu oluşturun.
 5. Bir Azure bölgesi belirtin. Desteklenen bölgeleri kontrol etmek için [Azure Site Recovery Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/site-recovery/) bölümündeki coğrafi kullanılabilirlik kısmına bakın.
@@ -147,24 +147,24 @@ Geçirilen Windows Server 2008 SP2/Windows Server 2008 R2 SP1 sunucusu için [ç
 
 Her şeyin beklendiği gibi çalıştığından emin olmak için bir Azure’a [yük devretme testi](tutorial-dr-drill-azure.md) çalıştırın.
 
-   ![Test yük devretmesi](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![Yük devretme testi](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
-## <a name="migrate-to-azure"></a>Azure'a geçirme
+## <a name="migrate-to-azure"></a>Azure’a geçiş
 
 Geçirmek istediğiniz makineler için yük devretmeyi çalıştırın.
 
 1. **Ayarlar** > **Çoğaltılan öğeler** bölümünde makine > **Yük devretme**’ye tıklayın.
 2. **Yük devretme**’de yük devretmenin yapılacağı bir **Kurtarma Noktası** seçin. En son kurtarma noktasını seçin.
-3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce sunucuyu kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
+3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce sunucuyu kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işlemini **İşler** sayfasında takip edebilirsiniz.
 4. Azure VM’nin Azure’da beklendiği gibi görüntülenip görüntülenmediğini kontrol edin.
 5. **Çoğaltılan öğeler**' de, sunucuyu sağ tıklatın > **geçişi Tamam**' ı seçin. Bu, şunları yapar:
 
     - Geçiş işlemini sonlandırır, sunucu için çoğaltmayı durduruyor ve hizmeti için Site Recovery faturalandırmayı durduruyor.
     - Bu adım, çoğaltma verilerini temizler. Geçirilen VM 'Leri silmez.
 
-   ![Tam geçiş](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![Geçişi tamamlama](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]
-> **Devam eden bir yük devretme işlemini Iptal etmeyin**: Yük devretme başlamadan önce sunucu çoğaltması durdurulur. Devam eden bir yük devretme işlemini iptal ederseniz, yük devretme işlemi duraklar, ancak sunucu çoğaltılmaya devam eder.
+> **Devam eden bir yük devretme işlemini Iptal etmeyin**: yük devretme başlatılmadan önce sunucu çoğaltması durdurulur. Devam eden bir yük devretme işlemini iptal ederseniz, yük devretme işlemi duraklar, ancak sunucu çoğaltılmaya devam eder.

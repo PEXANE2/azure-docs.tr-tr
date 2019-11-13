@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights sorunları tanılama, sorun giderme ve çözme | Microsoft Docs
-description: Bu makalede Azure Time Series Insights ortamınızda karşılaşabileceğiniz yaygın sorunları tanılama, sorun giderme ve çözme işlemleri açıklanmaktadır.
+title: Sorunları tanılama, sorun giderme ve çözme-Azure Time Series Insights | Microsoft Docs
+description: Bu makalede Azure Time Series Insights ortamınızdaki yaygın sorunların nasıl tanılanacağı, giderileceği ve çözüleceği açıklanır.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c9dcdf43e819e20126f948fa08f4f8f476036ac
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: ca38ebb015552042591fb4cc6b7edfe99527e79f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991265"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007059"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Time Series Insights ortamınızdaki sorunları tanılayın ve çözün
 
@@ -34,7 +34,7 @@ Bu makalede Azure Time Series Insights ortamınızda karşılaşabileceğiniz ba
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Neden: olay kaynak verileri JSON biçiminde değil
 
-Azure Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için bkz. [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
+Azure Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için bkz [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Neden B: olay kaynak anahtarında gerekli bir izin eksik
 

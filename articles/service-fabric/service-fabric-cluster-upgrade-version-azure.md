@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric kümesini yükseltme | Microsoft Docs
+title: Bir kümenin Azure Service Fabric sürümünü yükseltme
 description: Küme güncelleştirme modunu ayarlama, sertifika yükseltme, uygulama bağlantı noktaları ekleme, işletim sistemi düzeltme ekleri yapma gibi bir Service Fabric kümesini çalıştıran Service Fabric kodu ve/veya yapılandırmayı yükseltin. Yükseltmeler gerçekleştirildiğinde ne bekleyebiliriz?
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: atsenthi
-ms.openlocfilehash: 03fd5f2950349f0dc76021d28845e383c0ba6a64
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 067bf654928240ffe9651d4acf1933a81e631146
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599823"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013352"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Bir kümenin Service Fabric sürümünü yükseltme
 
@@ -121,7 +121,7 @@ Output:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Service Fabric kümesi doku ayarlarından](service-fabric-cluster-fabric-settings.md) bazılarını özelleştirmeyi öğrenin
-* [Kümenizi ve dışarı ölçeklendirmeyi](service-fabric-cluster-scale-up-down.md) nasıl ölçeklentireceğinizi öğrenin
+* [Kümenizi ve dışarı ölçeklendirmeyi nasıl ölçeklentireceğinizi](service-fabric-cluster-scale-up-down.md) öğrenin
 * [Uygulama yükseltmeleri](service-fabric-application-upgrade.md) hakkında bilgi edinin
 
 <!--Image references-->

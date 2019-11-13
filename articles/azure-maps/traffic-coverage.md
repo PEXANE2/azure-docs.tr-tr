@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f9a3c4875f01c650485034fe46f53bb5aa1fd75b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: cb7ebe5d9519f1a3967a29f4c883c420a892817f
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722647"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958013"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure haritalar trafik kapsamı
 
 Azure Maps, trafik **akışı** ve **olayları**biçiminde zengin trafik bilgileri sağlar. Bu veriler, haritalar üzerinde görselleştirilir veya gerçek zamanlı koşullarda etken olan daha akıllı yollar oluşturmak için kullanılabilir.
 
-Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Aşağıdaki tabloda, her bir bölgeden isteyebilmeniz gereken trafik bilgileri türü hakkında bilgi verilmektedir: 
+Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Aşağıdaki tabloda, her ülke veya bölgeden isteyebilmeniz gereken trafik bilgileri türü hakkında bilgi verilmektedir: 
 
 ## <a name="americas"></a>Kuzey ve Güney Amerika
 
@@ -42,7 +42,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 |Ülke/Bölge   |Olaylara  |Akış  |
 |---------|:---------:|:---------:|
 |Avustralya     |✓         |✓        |
-|Brunei   |✓         |✓        |
+|Barış   |✓         |✓        |
 |Hong Kong SAR     |✓         |✓         |
 |Hindistan   |✓         |✓         |
 |Endonezya     |✓         |✓         |
@@ -64,7 +64,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 |Avusturya     |✓         |✓         |
 |Belarus    |✓         |✓         |
 |Belçika     |✓         |✓         |
-|Bosna - Hersek    |✓         |✓         |
+|Bosna Hersek    |✓         |✓         |
 |Bulgaristan     |✓         |✓         |
 |Hırvatistan     |✓         |✓         |
 |Çek Cumhuriyeti     |✓         |✓         |
@@ -82,8 +82,8 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 |İtalya     |✓         |✓        |
 |Kazakistan    |✓         |✓        |
 |Letonya     |✓         |✓         |
-|Lesotho     |✓         |✓         |
-|Liechtenstein      |✓         |✓         |
+|Lesoto     |✓         |✓         |
+|Lihtenştayn      |✓         |✓         |
 |Litvanya     |✓         |✓         |
 |Lüksemburg     |✓         |✓         |
 |Malta     |✓         |✓         |
@@ -111,7 +111,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 |\+ Gibraltar     |✓         |✓         |
 |\+ Guernsey & Jersey     |✓         |✓         |
 |\+ Man Adası     |✓         |✓         |
-|Vatikan Şehri   |✓         |✓         |
+|Vatikan şehri   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Orta Doğu ve Afrika

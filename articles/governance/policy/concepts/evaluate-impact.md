@@ -1,17 +1,14 @@
 ---
 title: Yeni bir Azure ilkesinin etkisini değerlendirin
 description: Azure ortamınıza yeni bir ilke oluştururken izlenecek işlemi anlayın.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 2aee31d3e874f709d5ec30ed4ddc0ba0445d4130
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 6c1a3ea764aedec7de5eab1f564176eaafead70b
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980755"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959840"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Yeni bir Azure ilkesinin etkisini değerlendirin
 
@@ -37,7 +34,7 @@ Bu nedenle, ilke tanımlarınız sıkı bir şekilde tanımlanmalıdır ve kayna
 ## <a name="audit-existing-resources"></a>Mevcut kaynakları denetleme
 
 Yeni veya güncelleştirilmiş kaynakları yeni ilke tanımınızda yönetmeyi aramadan önce, bir test kaynak grubu gibi var olan kaynakların sınırlı bir alt kümesini nasıl değerlendirdiği hakkında daha iyi bir seçenektir. Tetiklemenin veya etkinlik günlüğü girişlerinin oluşturulmasını engellemek için ilke atamasındaki [zorlama modunu](./assignment-structure.md#enforcement-mode)
-_devre dışı_ bırak ( [](./effects.md) donotenzorlamalı) kullanın.
+_devre dışı_ (donotenzorlamalı) kullanın. [](./effects.md)
 
 Bu adım, iş akışını etkilemeden mevcut kaynaklardaki yeni ilkenin uyumluluk sonuçlarını değerlendirmek için bir şans sağlar. Uyumlu olmayan bir kaynağın uyumsuz (_yanlış pozitif_) olarak işaretlenip işaretlenmediğini ve uyumlu olmadığını düşündüğünüz tüm kaynakların doğru şekilde işaretlendiğinden emin olun.
 Kaynakların ilk alt kümesi beklendiği gibi doğrulandıktan sonra, tüm mevcut kaynaklarla değerlendirmeyi yavaş genişletin.

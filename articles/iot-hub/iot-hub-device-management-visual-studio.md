@@ -1,5 +1,5 @@
 ---
-title: Visual Studio için Cloud Explorer ile Azure IoT cihaz yönetimi | Microsoft Docs
+title: Azure IoT cihaz yönetimi w/Visual Studio Cloud Explorer
 description: Doğrudan Yöntemler ve Ikizi 'ın istenen özellikler yönetim seçeneklerine sahip Azure için Visual Studio IoT Hub cihaz yönetimi için Cloud Explorer 'ı kullanın.
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: e05ba421a4535e6e424e65a1f2271d19f9d9abf4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048714"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953193"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Azure için Visual Studio IoT Hub cihaz yönetimi için Cloud Explorer 'ı kullanma
 
@@ -59,7 +59,7 @@ Visual Studio 2017 için Visual Studio Yükleyicisi bulut Gezgini bileşeni yaln
 
 ## <a name="sign-in-to-access-your-hub"></a>Hub 'ınıza erişmek için oturum açın
 
-1. Visual Studio 'da bulut Gezgini 'ni açmak için**bulut Gezginini** **görüntüle** > ' yi seçin.
+1. Visual Studio 'da bulut Gezgini 'ni açmak **için > ** **bulut Gezgini** ' ni seçin.
 
 1. Aboneliklerinizi göstermek için hesap yönetimi simgesini seçin.
 

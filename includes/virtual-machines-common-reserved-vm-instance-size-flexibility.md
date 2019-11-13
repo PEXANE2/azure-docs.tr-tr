@@ -4,16 +4,14 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
-ms.openlocfilehash: a98a941477fc83a104b55ed91f457c5a48f90d59
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 9a7de2b41c8016bdb7849cdef428d6f54a8ccf64
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69029878"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005437"
 ---
-# <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Ayrılmış VM örnekleriyle sanal makine boyutu esnekliği
-
-Örnek boyutu esnekliği için en iyi duruma getirilmiş ayrılmış bir sanal makine örneğiyle, satın aldığınız rezervasyon aynı örnek boyutu esneklik grubundaki sanal makineler (VM) boyutlarına uygulanabilir. Örneğin, DSv2 serisinde Standard_DS5_v2 gibi listelenen bir VM boyutu için bir ayırma satın alırsanız, rezervasyon iskontosu aynı örnek boyutu esneklik grubunda listelenen diğer dört boyuta de uygulanabilir:
+Örnek boyutu esnekliği için en iyi duruma getirilmiş ayrılmış bir sanal makine örneğiyle, satın aldığınız rezervasyon aynı örnek boyutu esneklik grubundaki sanal makineler (VM) boyutlarına uygulanabilir. Örneğin, Standard_DS5_v2 gibi DSv2 serisinde listelenen bir VM boyutu için bir ayırma satın alırsanız, rezervasyon iskontosu aynı örnek boyutu esneklik grubunda listelenen diğer dört boyuta de uygulanabilir:
 
 - Standard_DS1_v2
 - Standard_DS2_v2
@@ -28,11 +26,11 @@ Ancak bu rezervasyon indirimi, DSv2 serisi yüksek bellekteki SKU 'Lar gibi fark
 
 Aşağıdaki örnekler DSv2-Series tablosundaki boyutları ve oranları kullanır.
 
-Standard_DS4_v2 boyutu ile ayrılmış bir sanal makine örneği satın alabilirsiniz. Bu, söz konusu serideki diğer boyutlarla karşılaştırılan oran veya göreli bir parmak izi 8 ' dir.
+Bir ayrılmış sanal makine örneğini satın alarak, bu dizideki diğer boyutlarla karşılaştırılan oran veya göreli parmak izini içeren boyut Standard_DS4_v2 satın alabilirsiniz.
 
-- Senaryo 1: 1 oranına sahip sekiz Standard_DS1_v2 boyutlu VM çalıştırın. Rezervasyon indiriminiz bu VM 'lerin sekiz ' unun tamamına uygulanır.
-- Senaryo 2: İki Standard_DS2_v2 boyutlu sanal makineyi 2 oranında bir oranıyla çalıştırın. Ayrıca 4 oranında bir Standard_DS3_v2 boyutlu VM çalıştırın. Toplam parmak izi 2 + 2 + 4 = 8 ' dir. Böylece rezervasyon indiriminiz bu sanal makinelerin üçü için geçerlidir.
-- Senaryo 3: 16 oranında bir Standard_DS5_v2 çalıştırın. Rezervasyon indiriminiz, sanal makinenin işlem maliyetinin yarısı için geçerlidir.
+- Senaryo 1:1 oranına sahip sekiz Standard_DS1_v2 boyutlu VM çalıştırma. Rezervasyon indiriminiz bu VM 'lerin sekiz ' unun tamamına uygulanır.
+- 2\. Senaryo: iki Standard_DS2_v2 boyutlu sanal makineyi 2 ' nin oranıyla çalıştırın. Ayrıca 4 oranında bir Standard_DS3_v2 boyutlu bir VM çalıştırın. Toplam parmak izi 2 + 2 + 4 = 8 ' dir. Böylece rezervasyon indiriminiz bu sanal makinelerin üçü için geçerlidir.
+- Senaryo 3: bir Standard_DS5_v2 16 oranıyla çalıştırın. Rezervasyon indiriminiz, sanal makinenin işlem maliyetinin yarısı için geçerlidir.
 
 Aşağıdaki bölümlerde, örnek boyutu esnekliği için en iyi duruma getirilmiş ayrılmış bir VM örneğini satın aldığınızda, aynı boyut serisi grubundaki boyutlar gösterilmektedir.
 

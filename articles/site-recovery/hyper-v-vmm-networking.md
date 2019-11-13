@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery ile yük devretmeden sonra ikincil şirket içi bir siteye bağlanmak için IP adresi ayarlama
+title: Azure Site Recovery ile ikincil bir siteye yük devretmeden sonra IP adresleme ayarlama
 description: Azure Site Recovery ile olağanüstü durum kurtarma ve yük devretme işleminden sonra ikincil bir şirket içi sitede VM 'lere bağlanmak için IP adreslemesini nasıl ayarlayabileceğinizi açıklar.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: f158c6b71bb53d6b683577401e625e24808eb7eb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813689"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961436"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Yük devretmeden sonra ikincil şirket içi bir siteye bağlanmak için IP adresi ayarlama
 
@@ -22,8 +22,8 @@ System Center Virtual Machine Manager (VMM) bulutlarındaki Hyper-V VM 'lerinin 
 
 Yük devretmeden sonra çoğaltma VM 'Leri için IP adreslemesini işlemek için birkaç yol vardır: 
 
-- **Yük devretmeden sonra aynı IP adresini sakla**: Bu senaryoda, çoğaltılan VM Birincil VM ile aynı IP adresine sahiptir. Bu, yük devretmeden sonra ağla ilgili sorunları basitleştirir, ancak bazı altyapı çalışmaları gerektirir.
-- **Yük devretmeden sonra farklı bır IP adresi kullan**: Bu senaryoda VM, yük devretmeden sonra yeni bir IP adresi alır. 
+- **Yük devretmeden sonra aynı IP adresini sakla**: Bu senaryoda, çoğaltılan VM Birincil VM Ile aynı IP adresine sahiptir. Bu, yük devretmeden sonra ağla ilgili sorunları basitleştirir, ancak bazı altyapı çalışmaları gerektirir.
+- **Yük devretmeden sonra farklı bır IP adresi kullan**: Bu senaryoda VM yük devretmeden sonra yenı bir IP adresi alır. 
  
 
 ## <a name="retain-the-ip-address"></a>IP adresini sakla

@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights Preview ile şekil olayları | Microsoft Docs
-description: Azure Time Series Insights Preview ile olayları nasıl şekillendirebileceğinizi anlayın.
+title: Şekil olayları-Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights Preview ile olayları nasıl şekillendirileyeceğinizi öğrenin.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,39 +10,39 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b9dd10a4017d821794af037e502c784b10cd62f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: bd1b59ac2037669be021dfad3bf5032b794bef4a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585271"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006250"
 ---
-# <a name="shape-events-with-azure-time-series-insights-preview"></a>Azure Time Series Insights Preview ile şekil olayları
+# <a name="shape-events-with-azure-time-series-insights-preview"></a>Azure zaman serisi öngörüleri önizlemesi ile şekli olayları
 
 Bu makale, JSON dosyanızı alma için şekillendirmenize ve Azure Time Series Insights Preview sorgularınızın verimliliğini en üst düzeye çıkarmaya yardımcı olur.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Time Series Insights önizlemeye nasıl olay gönderileceğini düşünün. Yani, her zaman şunları yapmalısınız:
+Time Series Insights önizlemeye nasıl olay gönderileceğini düşünün. Yani, her zaman bir şunları yapmalısınız:
 
-* Verileri ağ üzerinden mümkün olduğunca verimli bir şekilde gönderin.
-* Verilerinizi, senaryonuza yönelik uygun şekilde daha fazla bilgi toplamanıza yardımcı olacak şekilde depolayın.
+* verileri ağ üzerinden mümkün olduğunca verimli bir şekilde gönderin.
+* Senaryonuz için daha uygun bir şekilde toplama yardımcı olacak şekilde, verilerinizi Store.
 
 En iyi sorgu performansı için aşağıdakileri yapın:
 
-* Gereksiz özellikler göndermeyin. Time Series Insights önizlemesi kullanımınıza sunuldu. Sorgulayabileceğiniz verilerin depolanması ve işlenmesi en iyisidir.
-* Statik veriler için örnek alanlarını kullanın. Bu uygulama, ağ üzerinden statik veri göndermekten kaçınmanıza yardımcı olur. Zaman serisi modelinin bir bileşeni olan örnek alanları, genel kullanıma sunulan Time Series Insights hizmetindeki başvuru verileri gibi çalışır. Örnek alanları hakkında daha fazla bilgi için bkz. [zaman serisi modeli](./time-series-insights-update-tsm.md).
-* Boyut özelliklerini iki veya daha fazla olay arasında paylaşabilirsiniz. Bu uygulama, verileri ağ üzerinden daha verimli bir şekilde göndermenize yardımcı olur.
-* Derin dizi iç içe geçme kullanmayın. Time Series Insights önizleme, nesneleri içeren iç içe geçmiş dizilerin en fazla iki düzeyini destekler. Önizleme Time Series Insights, iletilerde bulunan dizileri Özellik değeri çiftleriyle birden çok olaya düzleştirir.
-* Tüm olaylar için yalnızca birkaç ölçü mevcutsa, bu ölçüleri aynı nesne içinde ayrı özellikler olarak göndermek daha iyidir. Bunları ayrı olarak göndermek olayların sayısını azaltır ve daha az olay işlenmesi gerektiğinden sorgu performansını iyileştirebilirler.
+* Gereksiz özellikleri göndermeyin. Zaman serisi öngörüleri Önizleme, kullanımınıza düzenler. Depolamak ve işlemek, sorgulayacaksınız verileri idealdir.
+* Örnek alanları statik verileri için kullanın. Bu yöntem, ağ üzerinden statik veri göndermekten kaçınmanız yardımcı olur. Zaman serisi modelinin bir bileşeni olan örnek alanları, genel kullanıma sunulan Time Series Insights hizmetindeki başvuru verileri gibi çalışır. Örnek alanları hakkında daha fazla bilgi için bkz. [zaman serisi modeli](./time-series-insights-update-tsm.md).
+* İki veya daha fazla olay arasında boyut özellikleri paylaşır. Bu uygulama, verileri ağ üzerinden daha verimli bir şekilde göndermek yardımcı olur.
+* Kapsamlı bir dizi iç içe kullanmayın. Time Series Insights önizleme, nesneleri içeren iç içe geçmiş dizilerin en fazla iki düzeyini destekler. Zaman serisi öngörüleri Önizleme iletilerinde diziler özellik değeri çiftlerinin ile birden çok olaylara düzleştirir.
+* Yalnızca birkaç ölçüleri tüm veya çoğu olaylar için mevcut, bu ölçümleri ayrı Özellikler içinde aynı nesne olarak göndermek daha iyidir. Bunları ayrı olarak göndermek olayların sayısını azaltır ve daha az olay işlenmesi gerektiğinden sorgu performansını iyileştirebilirler.
 
 Alma sırasında, iç içe geçme içeren yük, sütun adı bir ayırıcıya sahip tek bir değer olacak şekilde düzleştirilir. Time Series Insights önizlemesi, kaldırma için alt çizgi kullanır. Bu, ürünün kullanıldığı dönem için GA sürümünden bir değişiklik olduğunu unutmayın. Önizleme sırasında, aşağıdaki ikinci örnekte gösterilen düzleştirme etrafında bir desteklenmediği uyarısıyla vardır.
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki örnek, iki veya daha fazla cihazın ölçüm veya sinyal gönderen bir senaryoya dayalıdır. Ölçümler veya sinyaller *Flow ücreti*, *altyapı yağ baskısı*, *sıcaklık*ve *nem*olabilir.
+Aşağıdaki örnek, burada iki veya daha fazla cihaz ölçümleri veya sinyaller göndermek bir senaryoya bağlıdır. Ölçümler veya sinyaller *Flow ücreti*, *altyapı yağ baskısı*, *sıcaklık*ve *nem*olabilir.
 
-Örnekte, dış dizinin ortak boyut değerlerinin paylaşılan bir bölümünü içerdiği tek bir Azure IoT Hub iletisi vardır. Dış dizi, iletinin verimliliğini artırmak için zaman serisi örnek verilerini kullanır. 
+Örnekte, dış dizinin ortak boyut değerlerinin paylaşılan bir bölümünü içerdiği tek bir Azure IoT Hub iletisi vardır. Dış dizi ileti verimliliğini artırmak için zaman serisi örnek verilerini kullanır. 
 
 Zaman serisi örneği, cihaz meta verilerini içerir. Bu meta veriler her olayla değişmez, ancak veri analizi için yararlı özellikler sağlıyor. Kablo üzerinden gönderilen baytlara kaydetmek ve iletiyi daha verimli hale getirmek için ortak boyut değerlerini toplu olarak oluşturmayı ve zaman serisi örnek meta verilerini kullanmayı düşünün.
 
@@ -80,7 +80,7 @@ Zaman serisi örneği, cihaz meta verilerini içerir. Bu meta veriler her olayla
 ### <a name="time-series-instance"></a>Zaman serisi örneği 
 
 > [!NOTE]
-> Zaman serisi KIMLIĞI *DeviceID*'dir.
+> Zaman serisi kimliği *DeviceID*.
 
 ```JSON
 [
@@ -115,24 +115,24 @@ Zaman serisi örneği, cihaz meta verilerini içerir. Bu meta veriler her olayla
 ]
 ```
 
-Time Series Insights önizlemesi, sorgu süresi boyunca bir tabloyu (düzleştirme sonrasında) birleştirir. Tablo, **türü**gibi ek sütunlar içerir. Aşağıdaki örnek, telemetri verilerinizi nasıl [şekillendirebileceğinizi](./time-series-insights-send-events.md#supported-json-shapes) göstermektedir.
+Zaman serisi öngörüleri Önizleme sırasında sorgu süresini (düzleştirme sonra) bir tablo birleştirir. Tabloyu gibi ek sütunlar içeren **türü**. Aşağıdaki örnek, telemetri verilerinizi nasıl [şekillendirebileceğinizi](./time-series-insights-send-events.md#supported-json-shapes) göstermektedir.
 
-| deviceId  | Tür | L1 | L2 | timestamp | series_Flow oranı ft3/sn | series_Engine petrol basıncı psi |
+| deviceId  | Tür | L1 | L2 | timestamp | series_Flow Rate ft3/sn | series_Engine yağ basıncı psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| `FXXX` | Default_Type | SIMÜLATÖR | Pil sistemi | 2018-01-17T01:17:00Z |   1.0172575712203979 |    34,7 |
-| `FXXX` | Default_Type | SIMÜLATÖR |   Pil sistemi |    2018-01-17T01:17:00Z | 2.445906400680542 |  49,2 |
-| `FYYY` | LINE_DATA ORTAK | SIMÜLATÖR |    Pil sistemi |    2018-01-17T01:18:00Z | 0.58015072345733643 |    22,2 |
+| `FXXX` | Default_Type | SİMÜLATÖR | Pil sistem | 2018-01-17T01:17:00Z |   1.0172575712203979 |    34.7 |
+| `FXXX` | Default_Type | SİMÜLATÖR |   Pil sistem |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
+| `FYYY` | ORTAK LINE_DATA | SİMÜLATÖR |    Pil sistem |    2018-01-17T01:18:00Z | 0.58015072345733643 |    22.2 |
 
-Yukarıdaki örnekte aşağıdaki noktalara göz önünde yer verilmiştir:
+Önceki örnekte, aşağıdaki noktalara dikkat edin:
 
-* Statik özellikler, ağ üzerinden gönderilen verileri iyileştirmek için Time Series Insights önizlemede depolanır.
+* Statik özellikler, ağ üzerinden gönderilen verilerin iyileştirmek için zaman serisi öngörüleri Önizleme depolanır.
 * Time Series Insights Önizleme verileri, örnekte tanımlanan zaman serisi KIMLIĞIYLE sorgu zamanına birleştirilir.
-* İki iç içe geçme katmanı kullanılır. Bu sayı Time Series Insights önizlemenin desteklediği en büyük sayıdır. Derin iç içe dizilerden kaçınmak önemlidir.
-* Birkaç ölçü olduğundan, bunlar aynı nesne içinde ayrı özellikler olarak gönderilirler. Örnekte, **Series_Flow Rate psi**, **series_Engine yağ basıncı psi**ve **series_Flow Rate ft3/s** benzersiz sütunlardır.
+* İki iç içe geçme katmanı kullanılır. Bu sayı Time Series Insights önizlemenin desteklediği en büyük sayıdır. İç içe dizi önlemek için önemlidir.
+* Bazı ölçüler olduğundan, ayrı Özellikler içinde aynı nesne olarak gönderildiniz. Örnekte, **Series_Flow değerlendirin**, **yağ basıncı Series_Engine**ve **series_Flow Rate ft3/s** benzersiz sütunlardır.
 
 >[!IMPORTANT]
 > Örnek alanları telemetri ile depolanmaz. Bunlar, zaman serisi modelinde meta verilerle birlikte depolanır.
-> Yukarıdaki tablo, sorgu görünümünü temsil eder.
+> Yukarıdaki tabloda, sorgu görünümü temsil eder.
 
 ### <a name="example-2"></a>Örnek 2:
 
@@ -156,5 +156,5 @@ Yukarıdaki örnekte, düzleştirilmiş `data_flow` özelliği `data_flow` özel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bu yönergeleri uygulamaya koymak için bkz. [Azure Time Series Insights Preview sorgu sözdizimi](./time-series-insights-query-data-csharp.md). Veri erişimi için Time Series Insights Preview REST API sorgu sözdizimi hakkında daha fazla bilgi edineceksiniz.
-- Desteklenen JSON şekilleri hakkında bilgi edinmek için bkz. [desteklenen JSON şekilleri](./time-series-insights-send-events.md#supported-json-shapes).
+- Bu yönergeleri uygulamaya koymak için bkz: [Azure zaman serisi öngörüleri önizlemesi sorgu söz dizimi](./time-series-insights-query-data-csharp.md). Veri erişimi için Time Series Insights Preview REST API sorgu sözdizimi hakkında daha fazla bilgi edineceksiniz.
+- Desteklenen JSON şekilleri hakkında bilgi edinmek için [desteklenen JSON şekilleri](./time-series-insights-send-events.md#supported-json-shapes).

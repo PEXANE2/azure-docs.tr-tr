@@ -1,5 +1,5 @@
 ---
-title: Azure dijital TWINS ile çok kiracılı uygulamaları etkinleştirme | Microsoft Docs
+title: Çok kiracılı uygulamaları etkinleştirme-Azure dijital TWINS | Microsoft Docs
 description: Azure dijital TWINS için çok kiracılı Azure Active Directory uygulamalarını yapılandırma.
 ms.author: alinast
 author: alinamstanciu
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 070b04b27982b84f101ee4d6f85f4e5b82760092
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6394d519b93b55358ef9d528f89978d5a3cf3007
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958776"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005912"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Azure dijital TWINS ile çok kiracılı uygulamaları etkinleştirme
 
@@ -61,7 +61,7 @@ Sorun:
 
   1. **Kaynak sağlayıcıları**' nı seçin.
   1. **Microsoft. ıotspaces**için arama yapın.
-  1. **Kaydol**' u seçin.
+  1. **Kaydol**’u seçin.
 
      [![Azure Active Directory kaynak sağlayıcıları](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   

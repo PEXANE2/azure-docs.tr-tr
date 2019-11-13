@@ -1,6 +1,6 @@
 ---
-title: Azure 'da verileri bir Windows Server veya Windows bilgisayara geri yükleme
-description: Azure 'da depolanan verileri bir Windows Server veya Windows bilgisayara geri yüklemeyi öğrenin.
+title: Azure 'da verileri bir Windows Server 'a geri yükleme-Azure Backup
+description: Bu makalede, Azure 'da depolanan verileri Microsoft Azure Kurtarma Hizmetleri (MARS) aracısına sahip bir Windows Server veya Windows bilgisayara geri yüklemeyi öğrenin.
 ms.reviewer: saurse
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.author: dacurwin
-ms.openlocfilehash: 4c0686fc72bfcafdfee650822aece15b8f3fb766
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 4d9ab47d83caadda9046481c15dfb6af18aee146
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210330"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012187"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager dağıtım modelini kullanarak dosyaları Windows 'a geri yükleme
 
@@ -25,7 +25,7 @@ Bu makalede, verileri bir yedekleme kasasından geri yükleme açıklanmaktadır
 Yazılabilir bir kurtarma noktası anlık görüntüsünü kurtarma birimi olarak bağlamak için anlık geri yükleme özelliğini kullanın. Daha sonra kurtarma birimini araştırabilir ve dosyaları yerel bir bilgisayara kopyalayabilir, böylece dosyaları seçmeli olarak geri yükleyebilirsiniz.
 
 > [!NOTE]
-> Verileri geri yüklemek için anlık geri yükleme kullanmak istiyorsanız [ocak 2017 Azure Backup güncelleştirme](https://support.microsoft.com/en-us/help/3216528?preview) gerekir. Ayrıca, yedekleme verileri destek makalesinde listelenen yerel ayarlarda kasaların korunması gerekir. Anında geri yüklemeyi destekleyen en son yerel ayar listesi için [2017 ocak Azure Backup güncelleştirmesine](https://support.microsoft.com/en-us/help/3216528?preview) bakın.
+> Verileri geri yüklemek için anlık geri yükleme kullanmak istiyorsanız [ocak 2017 Azure Backup güncelleştirme](https://support.microsoft.com/help/3216528?preview) gerekir. Ayrıca, yedekleme verileri destek makalesinde listelenen yerel ayarlarda kasaların korunması gerekir. Anında geri yüklemeyi destekleyen en son yerel ayar listesi için [2017 ocak Azure Backup güncelleştirmesine](https://support.microsoft.com/help/3216528?preview) bakın.
 >
 
 Azure portal kurtarma hizmetleri kasalarıyla anında geri yükleme kullanın. Yedekleme kasalarında veri depoladıysanız, bunlar kurtarma hizmetleri kasalarına dönüştürülüyordu. Anında geri yükleme kullanmak istiyorsanız, MARS güncelleştirmesini indirin ve anında geri yükleme ile ilgili yordamları izleyin.
@@ -44,16 +44,16 @@ Yanlışlıkla bir dosyayı silmiş ve aynı makineye geri yüklemek istiyorsan�
 
     ![Kurtarma verileri vurgulanmış olarak Azure Backup ekran görüntüsü](./media/backup-azure-restore-windows-server/recover.png)
 
-3. **Başlarken** sayfasında, verileri aynı sunucuya veya bilgisayara geri yüklemek için,**ardından** **Bu`<server name>`sunucuyu ()**  > seçin.
+3. **Başlarken** sayfasında, verileri aynı sunucuya veya bilgisayara geri yüklemek için **bu sunucuyu (`<server name>`)** **İleri** > seçin.
 
     ![Verileri Kurtarma Sihirbazı Başlarken sayfasının ekran görüntüsü](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. **Kurtarma modunu seç** sayfasında, **İleri**' yi **tek tek dosya ve klasörler** > ' i seçin.
+4. **Kurtarma modunu seç** sayfasında, **Ileri**' > **tek tek dosyalar ve klasörler** ' i seçin.
 
     ![Verileri kurtar sihirbazının kurtarma modunu seçin sayfasında ekran görüntüsü](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
    > Tek dosya ve klasörleri geri yükleme seçeneği .NET Framework 4.5.2 veya üstünü gerektirir. **Tek tek dosyalar ve klasörler** seçeneğini görmüyorsanız, .NET Framework sürüm 4.5.2 veya sonraki bir sürüme yükseltmeniz ve yeniden denemeniz gerekir.
-
+ 
    > [!TIP]
    > **Tek tek dosyalar ve klasörler** seçeneği, kurtarma noktası verilerine hızlı erişim sağlar. Boyut 80 GB 'tan fazla değil, tek tek dosyaları kurtarmak için uygundur ve kurtarma sırasında 5 MBps 'e kadar aktarım hızı veya kopyalama hızları sunar. **Birim** seçeneği, belirtilen birimdeki tüm yedeklenen verileri kurtarır. Bu seçenek, büyük ölçekli verileri veya tüm birimleri kurtarmak için ideal olan daha hızlı aktarım hızları (60 MB/sn 'ye kadar) sağlar.
 
@@ -67,34 +67,31 @@ Yanlışlıkla bir dosyayı silmiş ve aynı makineye geri yüklemek istiyorsan�
 
     Azure Backup, yerel kurtarma noktasını takar ve bunu bir kurtarma birimi olarak kullanır.
 
-7. **Dosyaları araştır ve kurtar** sayfasında, Windows Gezgini 'ni açmak ve istediğiniz dosya ve klasörleri bulmak için **Araştır** ' ı seçin.
+7. **Dosyaları araştır ve kurtar** sayfasında, Windows Gezgini 'ni açmak için **Araştır** ' ı seçin ve istediğiniz dosya ve klasörleri bulun.
 
     ![Veri Kurtarma Sihirbazı 'nın dosyaları tarama ve kurtarma sayfasında ekran görüntüsü](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
-
 
 8. Windows Gezgini 'nde, geri yüklemek istediğiniz dosya ve klasörleri kopyalayın ve bunları sunucuya veya bilgisayara yerel bir konuma yapıştırın. Dosyaları doğrudan kurtarma biriminden açabilir veya akışa alabilir ve doğru sürümleri kurtardığınızı doğrulayabilirsiniz.
 
     ![Kopya vurgulanmış şekilde Windows Gezgini 'nin ekran görüntüsü](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
-
-9. İşiniz bittiğinde, **dosyaları tarayın ve kurtar** sayfasında, çıkar ' ı seçin. Ardından, birimi çıkarmak istediğinizi onaylamak için **Evet** ' i seçin.
+9. İşiniz bittiğinde, **dosyaları tarayın ve kurtar** sayfasında, çıkar ' **ı seçin.** Ardından, birimi çıkarmak istediğinizi onaylamak için **Evet** ' i seçin.
 
     ![Veri Kurtarma Sihirbazı 'nın dosyaları tarama ve kurtarma sayfasında ekran görüntüsü](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Çıkar ' ı seçmezseniz kurtarmabirimi, bağlanalındığı zamandan itibaren 6 saat boyunca takılmış olarak kalır. Ancak, devam eden bir dosya kopyalama durumunda bağlama süresi en fazla 24 saate genişletilir. Birim bağlıyken hiçbir yedekleme işlemi çalıştırılmayacak. Birim bağlandığında, kurtarma birimi kaldırıldıktan sonra çalıştırılacak şekilde zamanlanan tüm yedekleme işlemleri çalıştırılır.
+    > Çıkar ' ı seçmezseniz kurtarma birimi, bağlanalındığı zamandan itibaren 6 saat boyunca **takılmış olarak kalır**. Ancak, devam eden bir dosya kopyalama durumunda bağlama süresi en fazla 24 saate genişletilir. Birim bağlıyken hiçbir yedekleme işlemi çalıştırılmayacak. Birim bağlandığında, kurtarma birimi kaldırıldıktan sonra çalıştırılacak şekilde zamanlanan tüm yedekleme işlemleri çalıştırılır.
     >
 
-
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>Verileri alternatif bir makineye geri yüklemek için anlık geri yüklemeyi kullanın
-Tüm sunucunuzun kaybolması durumunda Azure Backup verileri başka bir makineye de kurtarabilirsiniz. Aşağıdaki adımlarda iş akışı gösterilmektedir.
 
+Tüm sunucunuzun kaybolması durumunda Azure Backup verileri başka bir makineye de kurtarabilirsiniz. Aşağıdaki adımlarda iş akışı gösterilmektedir.
 
 Bu adımlar aşağıdaki terminolojiyi içerir:
 
 * *Kaynak makine* : yedeklemenin alındığı ve şu anda kullanılamayan özgün makine.
 * *Hedef makine* : verilerin kurtarıldığı makine.
-* *Örnek kasa* : kaynak makinenin ve hedef makinenin kaydedildiği kurtarma hizmetleri Kasası. <br/>
+* *Örnek kasa* : kaynak makinenin ve hedef makinenin kaydedildiği kurtarma hizmetleri Kasası.
 
 > [!NOTE]
 > Yedeklemeler, işletim sisteminin önceki bir sürümünü çalıştıran bir hedef makineye geri yüklenemez. Örneğin, bir Windows 7 bilgisayarından alınan bir yedekleme, Windows 7 (veya üzeri) bir bilgisayara geri yüklenebilir. Windows 8 bilgisayarından alınan bir yedek, Windows 7 bilgisayarına geri yüklenemez.
@@ -117,12 +114,11 @@ Bu adımlar aşağıdaki terminolojiyi içerir:
 
     Kasa kimlik bilgileri dosyası geçersiz (veya dolmuşsa), Azure portal örnek kasasından yeni bir kasa kimlik bilgileri dosyası indirin. Geçerli bir kasa kimlik bilgisi belirledikten sonra, karşılık gelen yedekleme kasasının adı görüntülenir.
 
-
 6. **Yedekleme sunucusunu seçin** sayfasında, görünen makineler listesinden kaynak makineyi seçin ve parolayı girin. Sonra **İleri**’yi seçin.
 
     ![Veri kurtarma sihirbazının yedek sunucu seçin sayfası ekran görüntüsü](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. **Kurtarma modunu seç** sayfasında, bir**sonraki** **dosyaları ve klasörleri** > seçin.
+7. **Kurtarma modunu seç** sayfasında, **Ileri**' > **tek tek dosyalar ve klasörler** ' i seçin.
 
     ![Verileri kurtar sihirbazının kurtarma modunu seçin sayfasında ekran görüntüsü](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
@@ -134,7 +130,7 @@ Bu adımlar aşağıdaki terminolojiyi içerir:
 
 9. Kurtarma noktasını hedef makinenize bir kurtarma birimi olarak bağlamak için **bağla** ' yı seçin.
 
-10. **Dosyaları araştır ve kurtar** sayfasında, Windows Gezgini 'ni açmak ve istediğiniz dosya ve klasörleri bulmak için **Araştır** ' ı seçin.
+10. **Dosyaları araştır ve kurtar** sayfasında, Windows Gezgini 'ni açmak için **Araştır** ' ı seçin ve istediğiniz dosya ve klasörleri bulun.
 
     ![Veri Kurtarma Sihirbazı 'nın dosyaları tarama ve kurtarma sayfasında ekran görüntüsü](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
 
@@ -142,13 +138,14 @@ Bu adımlar aşağıdaki terminolojiyi içerir:
 
     ![Kopya vurgulanmış şekilde Windows Gezgini 'nin ekran görüntüsü](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
-12. İşiniz bittiğinde, **dosyaları tarayın ve kurtar** sayfasında, çıkar ' ı seçin. Ardından, birimi çıkarmak istediğinizi onaylamak için **Evet** ' i seçin.
+12. İşiniz bittiğinde, **dosyaları tarayın ve kurtar** sayfasında, çıkar ' **ı seçin.** Ardından, birimi çıkarmak istediğinizi onaylamak için **Evet** ' i seçin.
 
     ![Veri Kurtarma Sihirbazı 'nın dosyaları tarama ve kurtarma sayfasında ekran görüntüsü](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Çıkar ' ı seçmezseniz kurtarmabirimi, bağlanalındığı zamandan itibaren 6 saat boyunca takılmış olarak kalır. Ancak, devam eden bir dosya kopyalama durumunda bağlama süresi en fazla 24 saate genişletilir. Birim bağlıyken hiçbir yedekleme işlemi çalıştırılmayacak. Birim bağlandığında, kurtarma birimi kaldırıldıktan sonra çalıştırılacak şekilde zamanlanan tüm yedekleme işlemleri çalıştırılır.
+    > Çıkar ' ı seçmezseniz kurtarma birimi, bağlanalındığı zamandan itibaren 6 saat boyunca **takılmış olarak kalır**. Ancak, devam eden bir dosya kopyalama durumunda bağlama süresi en fazla 24 saate genişletilir. Birim bağlıyken hiçbir yedekleme işlemi çalıştırılmayacak. Birim bağlandığında, kurtarma birimi kaldırıldıktan sonra çalıştırılacak şekilde zamanlanan tüm yedekleme işlemleri çalıştırılır.
     >
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Artık dosyalarınızı ve klasörlerinizi kurtardığınıza göre, [yedeklemelerinizi yönetebilirsiniz](backup-azure-manage-windows-server.md).

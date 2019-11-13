@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Azure Not defteri-kişiselleştirici'
 titleSuffix: Azure Cognitive Services
-description: Bu öğretici bir Azure not defterinde bir müşterinin sipariş etmesi gereken bir tür kahve öneren bir Azure Not defteri 'ndeki kişiselleştirici döngüsü _sisteminin benzetimini yapar. Kullanıcılar ve tercihleri bir kullanıcı veri kümesinde depolanır. Kahve hakkındaki bilgiler ayrıca bir kahve veri kümesinde bulunabilir ve saklanır.
+description: Bu öğretici bir Azure not defterinde bir müşterinin sipariş etmesi gereken bir tür kahve öneren bir kişiselleştirici döngüsü _system benzetir. Kullanıcılar ve tercihleri bir kullanıcı veri kümesinde depolanır. Kahve hakkındaki bilgiler ayrıca bir kahve veri kümesinde bulunabilir ve saklanır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 669ebbf595629e8093c51d76b0816edeb5f80f93
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467235"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007598"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Öğretici: Azure not defterinde kişiselleştirici kullanma
 
@@ -29,7 +29,7 @@ Not defteri rastgele bir Kullanıcı, günün saati ve veri kümesinden Hava dur
 
 |Müşteriler-bağlam özellikleri|Günün saati|Hava durumu türleri|
 |--|--|--|
-|'Ndaki<br>Olduğundan<br>Küçük harf<br>Dave|BAH<br>Öğleden sonra<br>Akşam|Güneşli<br>Rainy<br>Karlı| 
+|Alice<br>Bob<br>Küçük harf<br>Dave|BAH<br>Öğleden sonra<br>Akşam|Güneşli<br>Rainy<br>Karlı| 
 
 Kişiselleştiriciye, zaman içinde her kişi için doğru kahve seçimi hakkında bilgi sahibi olmak için, _sistem_ , kahve hakkındaki ayrıntıları da bilir.
 
@@ -589,7 +589,7 @@ Sıralama API 'sine verilerinize göre daha iyi bir öğrenme ilkesi bulmak içi
 1. Döngü değerlendirmesi için gerekli değerlendirme adı ve tarih aralığı verilerini girin. Tarih aralığı yalnızca değerlendirmenize odaklandığınız günleri içermelidir. 
     Azure portal ![, kişiselleştirici kaynağın değerlendirmeler sayfasını açın. Değerlendirme oluştur ' u seçin. Değerlendirme adını ve tarih aralığını girin.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
-    Bu çevrimdışı değerlendirmeyi çalıştırmanın amacı, bu döngüde kullanılan özellikler ve eylemler için daha iyi bir öğrenme ilkesi olup olmadığını belirlemektir. Daha iyi öğrenme ilkesini bulmak için **iyileştirme ilkesinin** açık olduğundan emin olun.
+    Bu çevrimdışı değerlendirmeyi çalıştırmanın amacı, bu döngüde kullanılan özellikler ve eylemler için daha iyi bir öğrenme ilkesi olup olmadığını belirlemektir. Daha iyi öğrenme ilkesini bulmak için **Iyileştirme bulmanın** açık olduğundan emin olun.
 
 1. Değerlendirmeyi başlatmak için **Tamam ' ı** seçin. 
 1. Bu **değerlendirmeler** sayfasında, yeni değerlendirme ve geçerli durumu listelenir. Sahip olduğunuz veri miktarına bağlı olarak, bu değerlendirme biraz zaman alabilir. Sonuçları görmek için birkaç dakika sonra bu sayfaya geri dönebilirsiniz. 

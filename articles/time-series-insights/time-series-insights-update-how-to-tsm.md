@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights Preview 'da veri modelleme | Microsoft Docs
-description: Azure Time Series Insights önizlemede veri modellemesini anlayın.
+title: Önizleme ortamlarında veri modelleme-Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights önizlemede veri modelleme hakkında bilgi edinin.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81c2c2af78f5f066e1b27e14fa774df04d7c5868
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: fb1bfb30d531f8b93489c8fc1dfbc6b8172339a3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063992"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006467"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri modelleme
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Time Series Insights önizlemede zaman serisi modeliyle nası
 
 Güncelleştirmeyi kullanma hakkında daha fazla bilgi edinmek için [Azure Time Series Insights önizleme Gezgini](./time-series-insights-update-explorer.md)' ni okuyun.
 
-## <a name="types"></a>Türü
+## <a name="types"></a>Türler
 
 ### <a name="create-a-single-type"></a>Tek bir tür oluşturma
 
@@ -58,7 +58,7 @@ Güncelleştirmeyi kullanma hakkında daha fazla bilgi edinmek için [Azure Time
 
     ["Sil" düğmesini ![](media/v2-update-how-to-tsm/portal-five.png)](media/v2-update-how-to-tsm/portal-five.png#lightbox)
 
-## <a name="hierarchies"></a>Hiyerarşileri
+## <a name="hierarchies"></a>Hiyerarşiler
 
 ### <a name="create-a-single-hierarchy"></a>Tek bir hiyerarşi oluşturma
 
@@ -76,7 +76,7 @@ Güncelleştirmeyi kullanma hakkında daha fazla bilgi edinmek için [Azure Time
 
 1. Hiyerarşi ayrıntılarını girip **Oluştur**' u seçin.
 
-    [![, ayrıntıları ve "Oluştur" düğmesi](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
+    [![hiyerarşi ayrıntıları ve "Oluştur" düğmesi](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-hierarchies"></a>Bir veya daha fazla hiyerarşiyi toplu karşıya yükleme
 

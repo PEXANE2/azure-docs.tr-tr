@@ -1,29 +1,26 @@
 ---
 title: İlke atama yapısının ayrıntıları
 description: Değerlendirme için kaynaklarla ilke tanımlarını ve parametreleri ilişkilendirmek üzere Azure Ilkesi tarafından kullanılan ilke atama tanımını açıklar.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: a75c64ebb6ba3eeffeccd98cf41365fe96218573
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 500e40b8d3a5943c7f64f5b190223cb1dc7b4c92
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255900"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960030"
 ---
-# <a name="azure-policy-assignment-structure"></a>Azure Ilke atama yapısı
+# <a name="azure-policy-assignment-structure"></a>Azure İlkesi atama yapısı
 
 İlke atamaları, ilkeler veya girişimler sırasında hangi kaynakların atandığını tanımlamak için Azure Ilkesi tarafından kullanılır. İlke ataması, atama zamanında bu kaynak grubu için parametrelerin değerlerini belirleyebilir ve aynı kaynak özelliklerini, uyumluluk için farklı ihtiyaçlarla ele alan ilke tanımlarının yeniden kullanılmasını mümkün kılar.
 
 Bir ilke ataması oluşturmak için JSON kullanırsınız. İlke ataması için öğeleri içerir:
 
-- görünen ad
+- Görünen ad
 - açıklama
 - meta veriler
 - zorlama modu
-- İlke tanımı
+- ilke tanımı
 - parametreler
 
 Örneğin, aşağıdaki JSON, _Donotenzorlama_ modunda dinamik parametrelerle bir ilke atamasını göstermektedir:
@@ -64,15 +61,15 @@ Bu özellik aşağıdaki değerlere sahiptir:
 
 |Mod |JSON değeri |Tür |El ile düzelt |Etkinlik günlüğü girişi |Açıklama |
 |-|-|-|-|-|-|
-|Etkin |Varsayılan |dize |Evet |Evet |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
-|Devre dışı |Donotenzorlamalı |dize |Evet |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
+|Etkin |Varsayılan |string |Yes |Yes |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
+|Devre dışı |Donotenzorlamalı |string |Yes |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
 
 İlke veya girişim tanımında **Enforcementmode** belirtilmemişse, _varsayılan_ değer kullanılır. **Enforcementmode** , _Donotenzorlamalı_olarak ayarlandığında bile, dağıtım [görevleri](../how-to/remediate-resources.md) [deployifnotexists](./effects.md#deployifnotexists) ilkeleri için başlatılabilir.
 
 ## <a name="policy-definition-id"></a>İlke tanımı KIMLIĞI
 
 Bu alan, bir ilke tanımının ya da bir girişim tanımının tam yol adı olmalıdır.
-`policyDefinitionId` bir diziyse dize değil. Bunun yerine bir [girişim](./definition-structure.md#initiatives) kullanmak için birden çok ilke genellikle birlikte atanırsa, bu önerilir.
+`policyDefinitionId` dize değil bir dizedir. Bunun yerine bir [girişim](./definition-structure.md#initiatives) kullanmak için birden çok ilke genellikle birlikte atanırsa, bu önerilir.
 
 ## <a name="parameters"></a>Parametreler
 
@@ -90,7 +87,7 @@ Bu tasarım, farklı kaynaklarla bir ilke veya girişim tanımını yeniden kull
 }
 ```
 
-Bu örnekte, ilke tanımında daha önce tanımlanan parametreler `prefix` ve `suffix` ' dir. Bu ilke ataması `prefix` ' dan **Deptası** ve `suffix` **-LC**' i belirler. Aynı ilke tanımı farklı bir departman için farklı bir parametre kümesiyle yeniden kullanılabilir, ancak esneklik sağlarken ilke tanımlarının çoğaltılmasını ve karmaşıklığını azaltır.
+Bu örnekte, daha önce ilke tanımında tanımlanan parametreler `prefix` ve `suffix`. Bu ilke ataması, `prefix` **Depta** ve `suffix` to **-LC**olarak ayarlanır. Aynı ilke tanımı farklı bir departman için farklı bir parametre kümesiyle yeniden kullanılabilir, ancak esneklik sağlarken ilke tanımlarının çoğaltılmasını ve karmaşıklığını azaltır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

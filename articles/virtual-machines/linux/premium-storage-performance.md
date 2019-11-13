@@ -7,13 +7,14 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 79bd41c08a566b55efb4a29084847848e001629f
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8314c3147321e7daa0e71be33c57405139294c1d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036037"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005567"
 ---
+# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
 
 > [!NOTE]
@@ -30,7 +31,7 @@ Başlamadan önce Premium Storage 'a yeni başladıysanız, önce [IaaS VM 'leri
 
 Diskinizin kıyaslanmaya bakıyorsanız, [bir diski sınama](disks-benchmarks.md)hakkındaki makalemize bakın.
 
-Kullanılabilir disk türleri hakkında daha fazla bilgi edinin: [Bir disk türü seçin](disks-types.md)  
+Kullanılabilir disk türleri hakkında daha fazla bilgi edinin: [bir disk türü seçin](disks-types.md)  
 
 SQL Server kullanıcılar için SQL Server performans En Iyi yöntemleri hakkında makaleleri okuyun:
 

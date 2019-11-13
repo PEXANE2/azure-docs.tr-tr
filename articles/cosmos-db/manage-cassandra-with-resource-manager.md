@@ -4,32 +4,32 @@ description: Azure Cosmos DB Cassandra API oluşturmak ve yapılandırmak için 
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: d71847da4b395be230bce5773a5ba7a472a412f4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f09ab6958eb768895a2d16f129354074cb6f00c8
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832696"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961878"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Cosmos DB Cassandra API kaynaklarını yönetme
 
-Bu makalede, Azure Resource Manager şablonları kullanarak Azure Cosmos DB hesaplarınızın, veritabanlarınızın ve kapsayıcılarınızın yönetimini otomatikleştirmek için farklı işlemlerin nasıl gerçekleştirileceği açıklanır. Bu makalede yalnızca SQL API hesapları için örnekler bulunur, diğer API türü hesaplara yönelik örnekler bulunur. bkz. [SQL](manage-sql-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md), [tablo](manage-table-with-resource-manager.md) makaleleri için Azure Cosmos DB API 'siyle Kaynak Yöneticisi şablonları kullanma.
+Bu makalede, Azure Resource Manager şablonları kullanarak Azure Cosmos DB hesaplarınızın, veritabanlarınızın ve kapsayıcılarınızın yönetimini otomatikleştirmek için farklı işlemlerin nasıl gerçekleştirileceği açıklanır. Bu makalede yalnızca SQL API hesapları için örnekler bulunur, diğer API türü hesaplara yönelik örnekler bulunur. bkz. [SQL](manage-sql-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md), [tablo](manage-table-with-resource-manager.md) makaleleri için Azure Cosmos DB API 'siyle Azure Resource Manager şablonları kullanma.
 
 ## Azure Cosmos hesabı, anahtar alanı ve tablo oluşturma<a id="create-resource"></a>
 
 Azure Resource Manager şablonu kullanarak Azure Cosmos DB kaynakları oluşturun. Bu şablon, anahtar alanı düzeyinde 400 RU/sn aktarım hızını paylaşan iki tabloyla Cassandra API için bir Azure Cosmos hesabı oluşturur. Şablonu kopyalayın ve aşağıda gösterildiği gibi dağıtın veya [Azure hızlı başlangıç Galerisi](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/) ' ni ziyaret edin ve Azure Portal dağıtın. Ayrıca, şablonu yerel bilgisayarınıza indirebilir veya yeni bir şablon oluşturup `--template-file` parametresiyle yerel yolu belirtebilirsiniz.
 
 > [!NOTE]
-> Hesap adları küçük harf ve < 44 karakter olmalıdır.
+> Hesap adları küçük ve 44 ya da daha az karakter olmalıdır.
 > RU/s 'yi güncelleştirmek için, şablonu güncelleştirilmiş işleme özelliği değerleriyle yeniden gönderin.
 
 [!code-json[create-cosmos-Cassandra](~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json)]
 
-## <a name="deploy-with-azure-cli"></a>Azure CLI ile dağıtma
+## <a name="deploy-with-the-azure-cli"></a>Azure CLı ile dağıtma
 
-Azure CLı kullanarak Kaynak Yöneticisi şablonunu dağıtmak için betiği **kopyalayın** ve Azure Cloud Shell 'i açmak için **deneyin** ' i seçin. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin:
+Azure CLı kullanarak Azure Resource Manager şablonunu dağıtmak için, betiği **kopyalayın** ve Azure Cloud Shell açmak için **dene** ' yi seçin. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin:
 
 ```azurecli-interactive
 
@@ -51,10 +51,10 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-`az cosmosdb show` komutu, yeni oluşturulan Azure Cosmos hesabını, sağlandıktan sonra gösterir. CloudShell kullanmak yerine yerel olarak yüklenmiş bir Azure CLı sürümü kullanmayı seçerseniz, bkz. [Azure komut satırı arabirimi (CLI)](/cli/azure/) makalesi.
+`az cosmosdb show` komutu, yeni oluşturulan Azure Cosmos hesabını, sağlandıktan sonra gösterir. Cloud Shell kullanmak yerine Azure CLı 'nın yerel olarak yüklü bir sürümünü kullanmayı tercih ederseniz, bkz. [Azure CLI](/cli/azure/) makalesi.
 
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 Bazı ek kaynaklar aşağıda verilmiştir:
 

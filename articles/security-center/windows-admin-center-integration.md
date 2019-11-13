@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 48bf2cc3feb9ea3983200a2ef778669b5cfe36fa
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 842c7c81e3bf9615eb56d50ee2d6fce794845b6e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521598"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960706"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Azure Güvenlik Merkezi 'Ni Windows Yönetim Merkezi ile tümleştirme
+# <a name="integrate-azure-security-center-with-windows-admin-center-preview"></a>Azure Güvenlik Merkezi 'Ni Windows Yönetim Merkezi ile tümleştirme (Önizleme)
 
 Windows Yönetim Merkezi, Windows sunucularınız için bir yönetim aracıdır. Sistem yöneticilerinin en sık kullanılan yönetim araçlarının çoğunluğuna erişebilmeleri için tek bir konumdur. Windows Yönetim Merkezi 'nin içinden, şirket içi sunucularınızı doğrudan Azure Güvenlik Merkezi 'ne ekleyebilirsiniz. Daha sonra, güvenlik önerilerinizi ve uyarılarınızı bir Özet olarak doğrudan Windows Yönetim Merkezi deneyimi ' nde görüntüleyebilirsiniz.
 

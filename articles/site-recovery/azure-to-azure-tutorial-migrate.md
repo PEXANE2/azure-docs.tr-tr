@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery hizmetini kullanarak Azure IaaS VM 'lerini başka bir Azure bölgesine taşıma | Microsoft Docs
+title: Azure Site Recovery ile Azure VM 'lerini başka bir bölgeye taşıma
 description: Azure IaaS VM 'lerini bir Azure bölgesinden diğerine taşımak için Azure Site Recovery kullanın.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: df64575039e08292da5aed5b611ac54d625634a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933890"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954097"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM’lerini başka bir bölgeye taşıma
 
@@ -51,7 +51,7 @@ Bu öğreticide şunları yapacaksınız:
 
 - En son kök sertifikaların, taşımak istediğiniz Azure sanal makinelerinde bulunduğundan emin olun. En son kök sertifikalar VM 'de değilse, güvenlik kısıtlamaları hedef bölgeye veri kopyalamayı engeller.
 
-- Windows VM'lerde, güvenilen kök sertifikaların tamamı makinede mevcut olacak şekilde, VM’ye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemlerini uygulayın.
+- Windows VM’ler için, güvenilir kök sertifikaların tamamı makinede mevcut olacak şekilde sanal makineye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemlerini uygulayın.
     
 - Linux sanal makineleri için, VM 'deki en son güvenilen kök sertifikaları ve sertifika iptal listesini almak için Linux dağıtıcısının sunduğu yönergeleri izleyin.
 - Taşımak istediğiniz VM 'Ler için ağ bağlantısını denetlemek üzere bir kimlik doğrulama proxy 'si kullanmadığınız emin olun.
@@ -77,7 +77,7 @@ Bu öğreticide şunları yapacaksınız:
 
 
 
-## <a name="prepare"></a>Hazırlanın
+## <a name="prepare"></a>Hazırlama
 Aşağıdaki adımlarda, bir çözüm olarak Azure Site Recovery kullanarak sanal makinenin taşıma için nasıl hazırlanacağı gösterilmektedir. 
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Kaynak bölgesi dışında herhangi bir bölgede kasa oluşturma
@@ -99,7 +99,7 @@ Site Recovery, abonelikle ve kaynak grubuyla ilişkili VM 'lerin listesini alır
 
 1. Sonraki adımda, taşımak istediğiniz VM 'yi seçin ve ardından **Tamam**' ı seçin.
 1. **Ayarlar**' da, **olağanüstü durum kurtarma**' yı seçin.
-1. **Olağanüstü durum kurtarma** > **Hedef bölgesini**Yapılandır bölümünde, çoğaltılacak hedef bölgeyi seçin.
+1. **Olağanüstü durumdan kurtarma yapılandırma** > **Hedef bölge** bölümünde, çoğaltma yapacağınız hedef bölgeyi seçin.
 1. Bu öğretici için diğer varsayılan ayarları kabul edin.
 1. **Çoğaltmayı etkinleştir** seçeneğini belirleyin. Bu adım VM için çoğaltmayı etkinleştirmek üzere bir iş başlatır.
 

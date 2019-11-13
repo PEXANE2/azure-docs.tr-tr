@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights ortamınıza başvuru veri kümesi ekleme | Microsoft Docs
+title: Ortamınıza başvuru veri kümesi ekleme-Azure Time Series Insights | Microsoft Docs
 description: Bu makalede, Azure Time Series Insights ortamınızdaki verileri artırmak için bir başvuru verileri kümesinin nasıl ekleneceği açıklanmaktadır.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3aca1f64d469ce228a4b2738c72c0b4bc1956051
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 31ae271a4ad6aa1370828640884a54eb2669804d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991284"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012717"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Time Series Insights ortamınız için Azure portal kullanarak bir başvuru veri kümesi oluşturun
 
@@ -34,7 +34,7 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
 ## <a name="add-a-reference-data-set"></a>Başvuru veri kümesi ekleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Mevcut Azure Time Series Insights ortamınızı bulun. Azure portal sol tarafındaki menüden **tüm kaynaklar** ' ı seçin. Zaman Serisi Görüşleri ortamınızı seçin.
 
@@ -66,7 +66,7 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
    Örneğin, JSON dizisi verilerini yapıştırın: [![JSON verilerini yapıştırma](media/add-reference-data-set/json-data-pasted.png)](media/add-reference-data-set/json-data-pasted.png#lightbox)
 
-   Veri değerlerini ayrıştırırken bir hata varsa, sayfanın alt kısmında `CSV parsing error, no rows extracted` gibi bir hata görünür.
+   Veri değerlerini ayrıştırırken bir hata varsa, sayfanın alt kısmında `CSV parsing error, no rows extracted`gibi, hata kırmızı renkte görünür.
 
 1. Veriler başarıyla ayrıştırıldıktan sonra, verileri temsil eden sütunları ve satırları gösteren bir veri kılavuzu gösterilir.  Doğruluk sağlamak için veri kılavuzunu gözden geçirin.
 
@@ -88,13 +88,13 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
 1. Veri kılavuzunun üstündeki açılan öğeyi seçerek veri kümesindeki **birincil anahtar** sütununu belirtin.
 
-    [anahtar sütun (ler) i![seçin.](media/add-reference-data-set/set-primary-key.png)](media/add-reference-data-set/set-primary-key.png#lightbox)
+    [anahtar sütun (ler) i ![seçin.](media/add-reference-data-set/set-primary-key.png)](media/add-reference-data-set/set-primary-key.png#lightbox)
 
     İsteğe bağlı olarak, bileşik birincil anahtar olarak ikincil anahtar sütunu eklemek için **+** düğmesini seçin. Seçimi geri almanız gerekiyorsa, ikincil anahtarı kaldırmak için açılan listeden boş değeri seçin.
 
 1. Verileri karşıya yüklemek için **satırları karşıya yükle** düğmesini seçin.
 
-    [Karşıya yükleme![](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
+    [Karşıya yükleme ![](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
 
     Sayfada tamamlanan karşıya yükleme onaylanır ve ileti **başarıyla karşıya yüklendi**iletisi görüntülenir.
 

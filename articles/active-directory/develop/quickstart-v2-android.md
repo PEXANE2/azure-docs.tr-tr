@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee30e52561a5560e572e33fb3bc7d191559bf5d6
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0c9a194dcd2ccb353f11aa939200213f0db1c2ea
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927123"
+ms.locfileid: "73942932"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Hızlı başlangıç: Android uygulamasından kullanıcıların oturum açma ve Microsoft Graph API'sini çağırma
 
@@ -159,7 +159,7 @@ Microsoft Identity platform 'un uygulamanızla belirteçleri paylaşabilmesi iç
 
 Kod, tek ve birden çok hesap MSAL uygulamasının nasıl yazılacağını gösteren parçalar halinde düzenlenir. Kod dosyaları aşağıdaki gibi düzenlenmiştir:
 
-| Dosya  | Leceğini  |
+| Dosya  | Gösteriler  |
 |---------|---------|
 | MainActivity | Kullanıcı arabirimini yönetir |
 | MSGraphRequestWrapper  | MSAL tarafından sunulan belirteci kullanarak Microsoft Graph API 'sini çağırır |
@@ -214,9 +214,9 @@ PublicClientApplication.createSingleAccountPublicClientApplication(getContext(),
             @Override
             public void onCreated(ISingleAccountPublicClientApplication application) {
                 /**
-                    * This test app assumes that the app is only going to support one account.
-                    * This requires "account_mode" : "SINGLE" in the config json file.
-                    **/
+                 * This test app assumes that the app is only going to support one account.
+                 * This requires "account_mode" : "SINGLE" in the config json file.
+                 **/
                 mSingleAccountApp = application;
                 loadAccount();
             }
@@ -283,7 +283,7 @@ Kullanıcıyı içerecek olan UI ile etkileşimli olarak bir belirteci almak iç
  *  - password change
  *  - the resource you're acquiring a token for has a stricter set of requirement than your Single Sign-On refresh token.
  *  - you're introducing a new scope which the user has never consented for.
- */
+ **/
 mSingleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
@@ -291,9 +291,9 @@ Kullanıcı zaten oturum açmışsa, `acquireTokenSilentAsync()` `initializeUI()
 
 ```java
 /**
-  * Once you've signed the user in,
-  * you can perform acquireTokenSilent to obtain resources without interrupting the user.
-  */
+ * Once you've signed the user in,
+ * you can perform acquireTokenSilent to obtain resources without interrupting the user.
+ **/
   mSingleAccountApp.acquireTokenSilentAsync(getScopes(), AUTHORITY, getAuthSilentCallback());
 ```
 
@@ -394,7 +394,7 @@ Birden çok hesap uygulamasına bir örnek, bir iş hesabı ve kişisel hesap gi
 `MultipleAccountModeFragment.java` dosyasında, `onCreateView()`, `auth_config_multiple_account.json file`depolanan yapılandırma bilgileri kullanılarak bir çoklu hesap uygulama nesnesi (`IMultipleAccountPublicClientApplication`) oluşturulur:
 
 ```java
-// Creates a PublicClientApplication object with res/raw/auth_config_single_account.json
+// Creates a PublicClientApplication object with res/raw/auth_config_multiple_account.json
 PublicClientApplication.createMultipleAccountPublicClientApplication(getContext(),
         R.raw.auth_config_multiple_account,
         new IPublicClientApplication.IMultipleAccountApplicationCreatedListener() {
@@ -419,8 +419,8 @@ Birden çok hesap uygulaması genellikle MSAL işlemleri için kullanılacak hes
 
 ```java
 /**
-     * Load currently signed-in accounts, if there's any.
-    */
+ * Load currently signed-in accounts, if there's any.
+ **/
 private void loadAccounts() {
     if (mMultipleAccountApp == null) {
         return;
@@ -466,7 +466,7 @@ Birden çok hesap uygulaması genellikle belirteçleri, kullanıcıyı içeren k
  *  - password change
  *  - the resource you're acquiring a token for has a stricter set of requirement than your SSO refresh token.
  *  - you're introducing a new scope which the user has never consented for.
- */
+ **/
 mMultipleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
@@ -487,12 +487,12 @@ mMultipleAccountApp.acquireTokenSilentAsync(getScopes(),
 
 #### <a name="remove-an-account"></a>Hesap kaldırma
 
-Hesabı kaldırma kodu ve hesabın önbelleğe alınmış belirteçleri, hesabı Kaldır düğmesinin işleyicisinde `initializeUI()` `MultipleAccountModeFragment.java` dosyasıdır. Bir hesabı kaldırabilmeniz için önce `getAccounts()` ve `acquireToken()`gibi MSAL işlevlerden elde ettiğiniz bir hesap nesnesi gerekir. Bir hesabı kaldırmak zaman uyumsuz bir işlem olduğundan, Kullanıcı arabirimini güncelleştirmek için `onRemoved` geri çağırma sağlanır.
+Hesabı kaldırma kodu ve hesabın önbelleğe alınmış belirteçleri, hesabı Kaldır düğmesinin işleyicisinde `initializeUI()` `MultipleAccountModeFragment.java` dosyasıdır. Bir hesabı kaldırabilmeniz için önce `getAccounts()` ve `acquireToken()`gibi MSAL metotlarından elde ettiğiniz bir hesap nesnesi gerekir. Bir hesabı kaldırmak zaman uyumsuz bir işlem olduğundan, Kullanıcı arabirimini güncelleştirmek için `onRemoved` geri çağırma sağlanır.
 
 ```java
 /**
-  * Removes the selected account and cached tokens from this app (or device, if the device is in shared mode).
-  */
+ * Removes the selected account and cached tokens from this app (or device, if the device is in shared mode).
+ **/
 mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelectedItemPosition()),
         new IMultipleAccountPublicClientApplication.RemoveAccountCallback() {
             @Override

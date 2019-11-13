@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 996006c60e754437f8f863c7e7a72c929ed77f2c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 0dc1c52e65090acd5f63d1b23d8da6f37e3cf567
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166201"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960737"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Uygulamanızı sanal makine ölçek kümelerine dağıtma
 
@@ -37,7 +37,7 @@ Yapılandırma yönetimini ve VM sağlama süresini azaltmak için, ölçek küm
 
 
 ## <a name="already-provisioned"></a>Özel Betik uzantısı ile uygulama yükler
-Özel Betik Uzantısı, Azure VM’lerinde betik indirir ve yürütür. Bu uzantı dağıtım sonrası yapılandırma, yazılım yükleme veya diğer yapılandırma/yönetim görevleri için kullanışlıdır. Betikler Azure depolama veya GitHub konumlarından indirilebilir ya da Azure portalına uzantı çalışma zamanında iletilebilir. Ölçek kümesiyle özel bir VM görüntüsü oluşturma ve kullanma hakkında daha fazla bilgi için aşağıdaki öğreticilere bakın:
+Özel Betik Uzantısı, Azure VM’lerinde betik indirir ve yürütür. Bu uzantı dağıtım sonrası yapılandırma, yazılım yükleme veya diğer yapılandırma/yönetim görevleri için kullanışlıdır. Betikler Azure depolama veya GitHub konumlarından indirilebilir ya da Azure portalına uzantı çalışma zamanında iletilebilir. Özel bir betik uzantısıyla bir uygulamanın nasıl yükleneceğine ilişkin daha fazla bilgi için aşağıdaki öğreticilere bakın:
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
@@ -45,11 +45,11 @@ Yapılandırma yönetimini ve VM sağlama süresini azaltmak için, ölçek küm
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>PowerShell DSC ile Windows VM 'ye uygulama yüklemek
-[PowerShell Istenen durum yapılandırması (DSC)](/powershell/scripting/dsc/overview/overview) , hedef makinelerin yapılandırmasını tanımlayan bir yönetim platformudur. DSC yapılandırması, bir makineye nelerin yükleneceğini ve konağın nasıl yapılandırılacağını tanımlar. Yerel bir Configuration Manager (LCM) altyapısı, gönderilen yapılandırmalara bağlı olarak istenen eylemleri işleyen her bir hedef düğümde çalışır.
+[PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) hedef makineler tanımlamak için bir yönetim platformu. DSC yapılandırmaları ne bir makineye yükleyin ve ana bilgisayar yapılandırma tanımlar. İstenen Eylemler gönderilen yapılandırmalarına göre işler her hedef düğümde yerel Configuration Manager'ı (LCM) altyapısı çalıştırır.
 
 PowerShell DSC Uzantısı, PowerShell ile bir ölçek kümesindeki sanal makine örneklerini özelleştirmenize olanak sağlar. Aşağıdaki örnek:
 
-- Sanal makine örneklerine GitHub- *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip* ' den bir DSC paketi indirmesini söyler
+- Sanal makine örneklerine GitHub 'dan bir DSC paketi indirmesini söyler *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - Uzantıyı bir Install betiği çalıştıracak şekilde ayarlar-`configure-http.ps1`
 - [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ile bir ölçek kümesi hakkında bilgi alır
 - Uzantıyı [Update-AzVmss](/powershell/module/az.compute/update-azvmss) ile sanal makine örneklerine uygular

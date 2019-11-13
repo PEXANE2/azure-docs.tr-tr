@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights sorgularında JSON şekillendirmeye yönelik en iyi uygulamalar | Microsoft Docs
-description: Azure Time Series Insights sorgu verimliliğinizi geliştirmeyi öğrenin.
+title: JSON Azure Time Series Insights sorguları şekillendirmeye yönelik en iyi uygulamalar | Microsoft Docs
+description: JSON 'yi şekillendirerek Azure Time Series Insights sorgu verimliliğini geliştirmeyi öğrenin.
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 09090354012d2cd3ba050ff9c94593947f27b006
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 386d10c8e4bd7d5f46d2081d5a26371fb37ff30f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990276"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006995"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Sorgu performansını en üst düzeye çıkarmak için JSON şekli 
 
@@ -30,7 +30,7 @@ Bu makalede, Azure Time Series Insights sorgularınızın verimliliğini en üst
 
 Time Series Insights için nasıl olay gönderileceğini düşünün. Yani, her zaman şunları yapabilirsiniz:
 
-1. Verileri ağ üzerinden mümkün olduğunca verimli bir şekilde gönderin.
+1. verileri ağ üzerinden mümkün olduğunca verimli bir şekilde gönderin.
 1. Senaryonuza uygun toplamaları gerçekleştirebilmeniz için verilerinizin bir şekilde depolandığından emin olun.
 1. En fazla Time Series Insights Özellik sınırlarına ulaşamadığınızdan emin olun:
    - S1 ortamları için 600 özellikleri (sütun).
@@ -42,11 +42,11 @@ Time Series Insights için nasıl olay gönderileceğini düşünün. Yani, her 
 Aşağıdaki kılavuz mümkün olan en iyi sorgu performansını sağlamanıza yardımcı olur:
 
 1. Bir etiket KIMLIĞI gibi dinamik özellikleri özellik adı olarak kullanmayın. Bu kullanım, en fazla özellik sınırına ulaşmak için katkıda bulunur.
-1. Gereksiz özellikler göndermeyin. Sorgu özelliği gerekmiyorsa, bunu göndermemek en iyisidir. Bu şekilde depolama sınırlamalarından kaçınabilirsiniz.
+1. Gereksiz özellikleri göndermeyin. Sorgu özelliği gerekmiyorsa, bunu göndermemek en iyisidir. Bu şekilde depolama sınırlamalarından kaçınabilirsiniz.
 1. Ağ üzerinden statik veri gönderilmesini önlemek için [başvuru verilerini](time-series-insights-add-reference-data-set.md) kullanın.
 1. Ağ üzerinden verileri daha verimli bir şekilde göndermek için birden çok olay arasında boyut özelliklerini paylaşabilirsiniz.
-1. Derin dizi iç içe geçme kullanmayın. Time Series Insights, nesneleri içeren iç içe geçmiş dizilerin en fazla iki düzeyini destekler. Time Series Insights, iletilerdeki dizileri Özellik değeri çiftleriyle birden çok olaya düzleştirir.
-1. Tüm olaylar için yalnızca birkaç ölçü mevcutsa, bu ölçüleri aynı nesne içinde ayrı özellikler olarak göndermek daha iyidir. Bunları ayrı olarak göndermek olayların sayısını azaltır ve daha az olay işlenmesi gerektiğinden sorgu performansını iyileştirebilirler. Birkaç ölçü olduğunda, tek bir özellikte değer olarak göndermek, en fazla özellik sınırına ulaşma olasılığını en aza indirir.
+1. Kapsamlı bir dizi iç içe kullanmayın. Time Series Insights, nesneleri içeren iç içe geçmiş dizilerin en fazla iki düzeyini destekler. Time Series Insights, iletilerdeki dizileri Özellik değeri çiftleriyle birden çok olaya düzleştirir.
+1. Yalnızca birkaç ölçüleri tüm veya çoğu olaylar için mevcut, bu ölçümleri ayrı Özellikler içinde aynı nesne olarak göndermek daha iyidir. Bunları ayrı olarak göndermek olayların sayısını azaltır ve daha az olay işlenmesi gerektiğinden sorgu performansını iyileştirebilirler. Birkaç ölçü olduğunda, tek bir özellikte değer olarak göndermek, en fazla özellik sınırına ulaşma olasılığını en aza indirir.
 
 ## <a name="example-overview"></a>Örneğe genel bakış
 
@@ -97,22 +97,22 @@ Azure buluta gönderildiğinde JSON 'a serileştirilmiş bir [IoT cihaz iletisi 
 
    | deviceId | Ileti | deviceLocation |
    | --- | --- | --- |
-   | FXXX | SATıR\_VERILERI | AV |
-   | FYYY | SATıR\_VERILERI | US |
+   | FXXX | LINE\_DATA | AV |
+   | FYYY | LINE\_DATA | US |
 
 * Time Series Insights olay tablosu, düzleştirme sonrasında:
 
-   | deviceId | Ileti | deviceLocation | timestamp | ilerindeki. Akış oranı ft3/sn | ilerindeki. Motor yağ basıncı psi |
+   | deviceId | Ileti | deviceLocation | timestamp | dizi. Akış hızı ft3/sn | dizi. Petrol baskısı PSI altyapısı |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | SATıR\_VERILERI | AV | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | SATıR\_VERILERI | AV | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | SATıR\_VERILERI | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
+   | FXXX | LINE\_DATA | AV | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
+   | FXXX | LINE\_DATA | AV | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
+   | FYYY | LINE\_DATA | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 > [!NOTE]
 > - **DeviceID** sütunu, bir Fleet içindeki çeşitli cihazlar için sütun üst bilgisi görevi görür. **DeviceID** değerinin kendi özellik adı, diğer beş sütunlu ile toplam cihazları 595 (S1 ortamları için) veya 795 (S2 ortamları için) olarak sınırlar.
 > - Gereksiz özellikler engellenir (örneğin, oluşturma ve model bilgisi). Özellikler gelecekte sorgulanmayacak, bunları ortadan kaldıran daha iyi ağ ve depolama verimliliği sağlanır.
 > - Başvuru verileri, ağ üzerinden aktarılan bayt sayısını azaltmak için kullanılır. **MessageID** ve **devicelocation** iki öznitelik, **DeviceID**anahtar özelliği kullanılarak birleştirilir. Bu veriler, giriş zamanında telemetri verileriyle birleştirilir ve daha sonra sorgulamak için Time Series Insights depolanır.
-> - Time Series Insights tarafından desteklenen en yüksek iç içe geçme miktarı olan iki iç içe geçme katmanı kullanılır. Derin iç içe dizilerden kaçınmak önemlidir.
+> - Time Series Insights tarafından desteklenen en yüksek iç içe geçme miktarı olan iki iç içe geçme katmanı kullanılır. İç içe dizi önlemek için önemlidir.
 > - Ölçüler, birkaç ölçü olduğundan aynı nesne içinde ayrı özellikler olarak gönderilir. Burada, **serisi. Akış hızı psi** ve **serisi. Motor yağ basıncı ft3/s** , benzersiz sütunlardır.
 
 ## <a name="scenario-two-several-measures-exist"></a>Senaryo iki: birkaç ölçü mevcuttur
@@ -167,21 +167,21 @@ Azure buluta gönderildiğinde JSON 'a serileştirilmiş bir [IoT cihaz iletisi 
 
    | deviceId | Series. TagId | Ileti | deviceLocation | type | birim |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | porate oranı | SATıR\_VERILERI | AV | Akış hızı | ft3/s |
-   | FXXX | Oilbasınç | SATıR\_VERILERI | AV | Motor yağ basıncı | psi |
-   | FYYY | porate oranı | SATıR\_VERILERI | US | Akış hızı | ft3/s |
-   | FYYY | Oilbasınç | SATıR\_VERILERI | US | Motor yağ basıncı | psi |
+   | FXXX | porate oranı | LINE\_DATA | AV | Akış hızı | ft3/s |
+   | FXXX | Oilbasınç | LINE\_DATA | AV | Motor yağ basıncı | psi |
+   | FYYY | porate oranı | LINE\_DATA | US | Akış hızı | ft3/s |
+   | FYYY | Oilbasınç | LINE\_DATA | US | Motor yağ basıncı | psi |
 
 * Time Series Insights olay tablosu, düzleştirme sonrasında:
 
    | deviceId | Series. TagId | Ileti | deviceLocation | type | birim | timestamp | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | porate oranı | SATıR\_VERILERI | AV | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | Oilbasınç | SATıR\_VERILERI | AV | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | porate oranı | SATıR\_VERILERI | AV | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | Oilbasınç | SATıR\_VERILERI | AV | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 49,2 |
-   | FYYY | porate oranı | SATıR\_VERILERI | US | Akış hızı | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | Oilbasınç | SATıR\_VERILERI | US | Motor yağ basıncı | psi | 2018-01-17T01:18:00Z | 22,2 |
+   | FXXX | porate oranı | LINE\_DATA | AV | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | Oilbasınç | LINE\_DATA | AV | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 34.7 |
+   | FXXX | porate oranı | LINE\_DATA | AV | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | Oilbasınç | LINE\_DATA | AV | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 49.2 |
+   | FYYY | porate oranı | LINE\_DATA | US | Akış hızı | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | Oilbasınç | LINE\_DATA | US | Motor yağ basıncı | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 > [!NOTE]
 > - **DeviceID** ve **Series. TagId** sütunları, bir Fleet içindeki çeşitli cihazlar ve Etiketler için sütun üst bilgileri olarak görev yapar. Her birinin kendi özniteliği olarak kullanılması, sorguyu 594 (S1 ortamları için) veya 794 (S2 ortamları için) ile diğer altı sütunlu toplam cihaz sayısını sınırlar.

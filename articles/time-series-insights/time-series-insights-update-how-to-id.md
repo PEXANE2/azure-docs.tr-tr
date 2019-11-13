@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights önizlemede bir zaman serisi KIMLIĞI seçmeye yönelik en iyi uygulamalar | Microsoft Docs
-description: Azure Time Series Insights önizlemede bir zaman serisi KIMLIĞI seçtiğinizde en iyi uygulamaları anlama.
+title: Zaman serisi KIMLIĞI seçmek için en iyi uygulamalar-Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights önizlemede zaman serisi KIMLIĞI seçerken en iyi yöntemler hakkında bilgi edinin.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,20 +10,20 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 48f1fb542f5e28c7b8130d03cd86442390a8ad56
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: cf826c47c61e3714a05dd81fe3eea4e6ee0b03f4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989932"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012504"
 ---
-# <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman serisi KIMLIĞI seçmek için en iyi uygulamalar
+# <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman serisi kimliği seçmeye yönelik en iyi uygulamalar
 
 Bu makale, Azure Time Series Insights önizleme ortamınız için zaman serisi KIMLIĞININ önemini ve bir tane seçmek için en iyi yöntemleri özetler.
 
 ## <a name="choose-a-time-series-id"></a>Zaman Serisi Kimliği
 
-Bir zaman serisi KIMLIĞI seçilmesi, bir veritabanı için bölüm anahtarı seçmeye benzer. Time Series Insights önizleme ortamı oluştururken seçilmesi gerekir. Bu, *sabit* bir özelliktir. Diğer bir deyişle, zaman serisi KIMLIĞIYLE bir Time Series Insights önizleme ortamı oluşturduktan sonra bu ortam için değiştiremezsiniz. 
+Zaman serisi kimliği seçerek bir veritabanı için bir bölüm anahtarı seçme gibi olur. Time Series Insights önizleme ortamı oluştururken seçilmesi gerekir. Bu, *sabit* bir özelliktir. Diğer bir deyişle, zaman serisi KIMLIĞIYLE bir Time Series Insights önizleme ortamı oluşturduktan sonra bu ortam için değiştiremezsiniz. 
 
 > [!IMPORTANT]
 > Zaman serisi KIMLIĞI büyük/küçük harfe duyarlıdır.
@@ -31,7 +31,7 @@ Bir zaman serisi KIMLIĞI seçilmesi, bir veritabanı için bölüm anahtarı se
 Uygun bir zaman serisi KIMLIĞINI seçmek kritik öneme sahiptir. İzleyebileceğiniz en iyi uygulamalardan bazıları şunlardır:
 
 * Birçok farklı değere sahip bir bölüm anahtarı seçin (örneğin, yüzlerce veya binlerce). Çoğu durumda bu, JSON 'unuzdaki cihaz KIMLIĞI, algılayıcı KIMLIĞI veya etiket KIMLIĞI olabilir.
-* Zaman serisi KIMLIĞI, [zaman serisi modelinizin](./time-series-insights-update-tsm.md)yaprak düğüm düzeyinde benzersiz olmalıdır.
+* Zaman serisi kimliği yaprak düğümü düzeyinde benzersiz olmalıdır, [zaman serisi modeli](./time-series-insights-update-tsm.md).
 * Olay kaynağınız bir IoT Hub ise, zaman serisi KIMLIĞINIZ büyük olasılıkla *ıothub-Connection-Device-ID*olacaktır.
 * Zaman serisi KIMLIĞININ Özellik adı dizesinin karakter sınırı 128 ' dir. Zaman serisi KIMLIĞININ Özellik değeri için, karakter sınırı 1.024 ' dir.
 * Zaman serisi KIMLIĞI için benzersiz bir özellik değeri eksikse, null değer olarak değerlendirilir ve Benzersizlik kısıtlamasının aynı kuralına uyar.
@@ -51,7 +51,7 @@ Aşağıdaki senaryolar, zaman serisi KIMLIĞINIZ olarak birden fazla anahtar ö
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>Örnek 2: bileşik bir anahtarla zaman serisi KIMLIĞI
 
-* Birden çok özelliği, varlıkların aynı yakıt kapsamında benzersiz olmasını gerektirir. 
+* Birden çok özellik varlıklar aynı filosundan içinde benzersiz olması gerekir. 
 * Her odada akıllı binalar ve sensörler dağıtımı sunuyoruz. Her odada, genellikle **Sensorıd**için aynı değerlere sahip olursunuz. Örnekler şunlardır **sensor1**, **Sensor2**ve **SENSOR3**.
 * Binasında, **Flrrm**özelliğindeki sitelerde zemin ve oda numaraları çakışıyor. Bu sayıların **1a**, **2B**ve **3A**gibi değerleri vardır.
 * **Redmond**, **Barselona**ve **Tokyo**gibi değerleri içeren bir özellik, **konum**vardır. Benzersizlik oluşturmak için aşağıdaki üç özelliği zaman serisi KIMLIK anahtarlarınız olarak belirlersiniz: **Sensorıd**, **flrrm**ve **Location**.

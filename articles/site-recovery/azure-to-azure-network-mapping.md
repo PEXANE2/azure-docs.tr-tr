@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery iki Azure bölgesi arasında sanal ağları eşleme | Microsoft Docs
-description: Azure Site Recovery sanal makinelerin ve fiziksel sunucuların çoğaltma, yük devretme ve kurtarmasını koordine eder. Azure 'a veya ikincil veri merkezine yük devretme hakkında bilgi edinin.
+title: Azure Site Recovery iki bölge arasında sanal ağları eşleme
+description: Azure Site Recovery ile Azure VM olağanüstü durum kurtarma için iki Azure bölgesi arasında sanal ağları eşleme hakkında bilgi edinin.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
-ms.openlocfilehash: 687c21170c0397b89270e9c3a6af1e994c758179
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331102"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954148"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNET 'ler için Ağ eşlemesini ve IP adresini ayarlama
 

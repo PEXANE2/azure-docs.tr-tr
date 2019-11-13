@@ -1,20 +1,19 @@
 ---
-title: Azure Site Recovery ile Azure VM’leri için ikincil Azure bölgesine olağanüstü durum kurtarma ayarlama
+title: Azure Site Recovery ile Azure VM olağanüstü durum kurtarmayı ayarlama
 description: Azure Site Recovery (Önizleme) ile Azure VM’leri için ikincil Azure bölgesine olağanüstü durum kurtarmanın nasıl ayarlanacağını öğrenin.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e46bc9e4fbb2b573338b8be43c38e658ebde05a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 502f71365d78bd8fd949d17fe8907817394586b2
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468043"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961489"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM 'Leri için olağanüstü durum kurtarmayı ayarlama
 
@@ -92,8 +91,8 @@ NSG kullanıyorsanız, kaynak bölge için bir depolama hizmeti etiketi NSG kura
 
 Çoğaltmak istediğiniz VM 'Lerin en son kök sertifikalara sahip olup olmadığını denetleyin. Bunlar, güvenlik kısıtlamaları nedeniyle Site Recovery sanal makine tarafından kaydedilmemişse.
 
-- Windows VM'lerde, güvenilen kök sertifikaların tamamı makinede mevcut olacak şekilde, VM’ye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemlerini uygulayın.
-- Linux VM'lerde, VM’deki en son güvenilen kök sertifikalarını ve sertifika iptal listesini almak için Linux dağıtıcınız tarafından sağlanan yönergeleri uygulayın.
+- Windows VM’ler için, güvenilir kök sertifikaların tamamı makinede mevcut olacak şekilde sanal makineye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemlerini uygulayın.
+- Linux VM’ler için, sanal makinedeki en son güvenilir kök sertifikaları ve sertifika iptal listesini almak için Linux dağıtıcınız tarafından sağlanan yönergeleri izleyin.
 
 ## <a name="set-permissions-on-the-account"></a>Hesapta izinleri ayarlama
 
@@ -124,7 +123,7 @@ Azure Site Recovery, Site Recovery yönetim işlemlerini denetlemek için üç y
 Site Recovery, abonelik ve kaynak grup/bulut hizmeti ile ilişkili VM’lerin listesini alır.
 
 1. **Sanal Makineler** bölümünde çoğaltmak istediğiniz VM’leri seçin.
-2. **Tamam** düğmesine tıklayın.
+2. **OK (Tamam)** düğmesine tıklayın.
 
 ### <a name="configure-replication-settings"></a>Çoğaltma ayarlarını yapılandırma
 

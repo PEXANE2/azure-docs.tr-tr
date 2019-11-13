@@ -7,20 +7,30 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 11/12/2019
 ms.custom: include file
-ms.openlocfilehash: 92b9a4754769566feb3658e07081e9fdae78fcfc
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4ed5be09d952d4d64c269e3eaf698ad7a74fffdd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903968"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014070"
 ---
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Giriş sayfasından **+ kaynak oluştur**' u seçin. **Dijital TWINS**araması yapın ve **dijital TWINS**' i seçin. Dağıtım işlemini başlatmak için **Oluştur**’u seçin.
+1. Giriş yan çubuğunu seçin ve ardından **kaynak oluştur ' a**tıklayın. 
+
+   [![giriş yan çubuğunu genişletip + kaynak oluştur ' u seçin.](./media/create-digital-twins-portal/create-a-resource.png)](./media/create-digital-twins-portal/create-a-resource.png#lightbox)
+
+1. **Dijital TWINS**araması yapın ve **dijital TWINS**' i seçin. 
 
    [Yeni bir dijital TWINS örneği oluşturmak için ![seçimleri](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+
+   Alternatif olarak, **nesnelerin interneti**öğesini seçin ve **dijital TWINS (Önizleme)** öğesini seçin.
+
+1. Dağıtım işlemini başlatmak için **Oluştur**’u seçin.
+
+   [![kaynağın dağıtımını oluşturma ve onaylama](./media/create-digital-twins-portal/create-and-confirm-resource.png)](./media/create-digital-twins-portal/create-and-confirm-resource.png#lightbox)
 
 1. **Digital Twins** bölmesine şu bilgileri girin:
    * **Kaynak Adı**: Digital Twins örneğiniz için benzersiz bir ad oluşturun.
@@ -32,10 +42,18 @@ ms.locfileid: "73903968"
 
 1. Dijital TWINS bilgilerinizi gözden geçirin ve ardından **Oluştur**' u seçin. Dijital TWINS örneğinizin oluşturulması birkaç dakika sürebilir. İlerleme durumunu **Bildirimler** bölmesinden izleyebilirsiniz.
 
-1. Digital Twins örneğinizin **Genel Bakış** bölmesini açın. **Yönetim API 'si**altındaki bağlantıyı aklınızda edin.
+1. Digital Twins örneğinizin **Genel Bakış** bölmesini açın. **Yönetim API 'si**altındaki bağlantıyı aklınızda edin. **YÖNETIM API** URL 'si şöyle biçimlendirilir: 
+   
+   ```URL
+   https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger
+   ```
+   
+   Bu URL, örneğiniz için geçerli olan Azure Digital Twins REST API belgesini açar. Bu API belgelerini okumayı ve kullanmayı öğrenmek için bkz. [Azure Digital Twins Swagger'ı kullanma](../articles/digital-twins/how-to-use-swagger.md). **YÖNETIM API** 'si URL 'sini şu biçimde kopyalayın ve değiştirin: 
+    
+   ```URL
+   https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/
+   ```
+    
+   Uygulamanız, değiştirilen URL'yi örneğinize erişmek için temel URL olarak kullanır. Değiştirdiğiniz URL'yi geçici bir dosyaya kopyalayın. Bu, sonraki bölümde gerekecektir.
 
-   **YÖNETIM API** URL 'si `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger`olarak biçimlendirilir. Bu URL, örneğiniz için geçerli olan Azure Digital Twins REST API belgesini açar. Bu API belgelerini okumayı ve kullanmayı öğrenmek için bkz. [Azure Digital Twins Swagger'ı kullanma](../articles/digital-twins/how-to-use-swagger.md).
-
-    **YÖNETIM API** 'si URL 'sini şu biçimde kopyalayın ve değiştirin: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Uygulamanız, değiştirilen URL'yi örneğinize erişmek için temel URL olarak kullanır. Değiştirdiğiniz URL'yi geçici bir dosyaya kopyalayın. Bu, sonraki bölümde gerekecektir.
-
-    [![yönetim API 'SI](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)
+   [![yönetim API 'sine genel bakış](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)

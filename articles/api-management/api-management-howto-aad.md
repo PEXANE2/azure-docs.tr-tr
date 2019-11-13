@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1def431bd24019c5f7d15cf7ac0e7550b85d17c4
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 5d2b43599c1e1f95f505d7987675e5fd40810fa4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176716"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012958"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure 'da Azure Active Directory kullanarak Geliştirici hesaplarını yetkilendirme API Management
 
@@ -32,8 +32,8 @@ Bu makalede, kullanıcıların Azure Active Directory (Azure AD) aracılığıyl
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Azure AD 'yi kullanarak Geliştirici hesaplarını yetkilendirme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
-2. Seçin ![oku seçin](./media/api-management-howto-aad/arrow.png).
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
+2. Seçim ![oku seçin](./media/api-management-howto-aad/arrow.png).
 3. Arama kutusuna **API** yazın.
 4. **API Management Hizmetleri**' ni seçin.
 5. API Management hizmet örneğinizi seçin.
@@ -59,7 +59,7 @@ Bu makalede, kullanıcıların Azure Active Directory (Azure AD) aracılığıyl
 
 14.  Uygulama kaydedildikten sonra, **genel bakış** sayfasından **uygulama (istemci) kimliğini** kopyalayın. 
 15. API Management örneğinize geri dönün. **Kimlik sağlayıcısı ekle** penceresinde, **uygulama (istemci) KIMLIĞI** değerini **istemci kimliği** kutusuna yapıştırın.
-16. Azure AD yapılandırmasına dönün, **Yönet**altında **Sertifikalar & gizlilikler** ' ı seçin. **Yeni istemci parolası** düğmesini seçin. **Açıklama**değerinde bir değer girin, **süre sonu** için herhangi bir seçenek belirleyin ve **Ekle**' yi seçin. Sayfadan çıkmadan önce istemci gizli değerini kopyalayın. Bunlar sonraki adımda gerekecektir. 
+16. Azure AD yapılandırmasına dönün, **Yönet**altında **Sertifikalar & gizlilikler** ' ı seçin. **Yeni istemci parolası** düğmesini seçin. **Açıklama**değerinde bir değer girin, **süre sonu** için herhangi bir seçenek belirleyin ve **Ekle**' yi seçin. Sayfadan çıkmadan önce istemci gizli değerini kopyalayın. Bu sonraki adımda gerekecektir. 
 17. **Yönet**altında **kimlik doğrulaması** ' nı seçin ve ardından **örtülü izin** altında **Kimlik belirteçleri** ' ni seçin
 18. API Management örneğine geri dönün, gizli anahtarı **istemci gizli** kutusuna yapıştırın.
 
@@ -73,7 +73,7 @@ Bu makalede, kullanıcıların Azure Active Directory (Azure AD) aracılığıyl
 > [!NOTE]
 > **Izin verilen kiracılar** bölümünde birden çok etki alanı belirtebilirsiniz. Herhangi bir Kullanıcı, uygulamanın kaydedildiği orijinal etki alanından farklı bir etki alanından oturum açmadan önce, farklı bir etki alanının genel yöneticisinin uygulamanın dizin verilerine erişmesi için izin vermesi gerekir. İzin vermek için genel yönetici: a. `https://<URL of your developer portal>/aadadminconsent` gidin (örneğin, https://contoso.portal.azure-api.net/aadadminconsent).
 > b. Erişim vermek istedikleri Azure AD kiracının etki alanı adını yazın.
-> c. **Gönder**' i seçin. 
+> c. Seçin **gönderme**. 
 
 20.  İstenen yapılandırmayı belirttikten sonra **Ekle**' yi seçin.
 
@@ -88,7 +88,7 @@ Bir Azure AD örneğindeki kullanıcılar için erişimi etkinleştirdikten sonr
 
 API Management örneğinizin **gruplar** sekmesinden dış Azure AD grupları eklersiniz.
 
-1. **Groups (Gruplar)** sekmesini seçin.
+1. **Gruplar** sekmesini seçin.
 2. **AAD grubu Ekle** düğmesini seçin.
    "AAD grubu Ekle" düğmesi ![](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. Eklemek istediğiniz grubu seçin.
@@ -100,11 +100,11 @@ Yapılandırılmış Azure AD örneğindeki kullanıcılar artık Geliştirici P
 
 ## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> geliştirici portalı-Azure AD hesabı kimlik doğrulaması ekleme
 
-Geliştirici Portalında AAD ile oturum açmayı etkinleştirmek için, oturum açma formuna **OAuth düğmeleri** pencere öğesini eklemeniz gerekir.
+Geliştirici portalında, **OAuth düğmeleri** pencere Öğesı ile AAD ile oturum açma mümkündür. Pencere öğesi, varsayılan geliştirici portalı içeriğinin oturum açma sayfasında zaten bulunur.
 
 ![AAD düğmeleri pencere öğesi](./media/api-management-howto-aad/portal-oauth-widget.png)
 
-Yeni bir Kullanıcı AAD ile oturum açtığında yeni bir hesap otomatik olarak oluşturulabilse de, kaydolma formuna aynı pencere öğesini eklemeyi göz önünde bulundurmanız gerekebilir.
+Yeni bir Kullanıcı AAD ile oturum açtığında yeni bir hesap otomatik olarak oluşturulabilse de, kaydolma sayfasına aynı pencere öğesini eklemeyi göz önünde bulundurmanız gerekebilir.
 
 ## <a name="legacy-developer-portal---how-to-sign-in-with-azure-ad"></a>Eski geliştirici portalı-Azure AD ile oturum açma
 

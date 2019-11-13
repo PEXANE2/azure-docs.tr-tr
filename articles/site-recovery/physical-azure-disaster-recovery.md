@@ -1,23 +1,22 @@
 ---
-title: Azure Site Recovery ile fiziksel şirket içi sunucular için Azure 'da olağanüstü durum kurtarmayı ayarlama
+title: Azure Site Recovery ile fiziksel şirket içi sunucular için olağanüstü durum kurtarmayı ayarlama
 description: Azure Site Recovery hizmeti ile şirket içi Windows ve Linux sunucuları için Azure 'da olağanüstü durum kurtarmayı ayarlamayı öğrenin.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 55b375c1e98518a6c3bc2926030cfe072963216c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a298505779def353834c294f7b5a406720fdd46c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814546"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936178"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Şirket içi fiziksel sunucular için Azure 'da olağanüstü durum kurtarmayı ayarlama
 
-[Azure Site Recovery](site-recovery-overview.md) hizmeti, şirket içi makinelerin ve Azure sanal makinelerinin (VM) çoğaltma, yük devretme ve yeniden çalışma işlemlerini yöneterek ve düzenleyerek olağanüstü durum kurtarma stratejinize katkı sağlar.
+[Azure Site Recovery](site-recovery-overview.md) hizmeti, şirket içi makinelerin ve Azure sanal makinelerinin çoğaltma, yük devretme ve geri döndürme işlemlerini yönetip düzenleyerek, olağanüstü durum kurtarma stratejinize katkıda bulunur.
 
 Bu öğreticide, şirket içi fiziksel Windows ve Linux sunucularının Azure 'a olağanüstü durum kurtarma işlemlerinin nasıl ayarlanacağı gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -85,8 +84,8 @@ Bir [Azure depolama hesabı](../storage/common/storage-quickstart-create-account
 Mobility hizmeti, çoğaltmak istediğiniz her bir sunucuda yüklü olmalıdır. Site Recovery, sunucu için çoğaltmayı etkinleştirdiğinizde bu hizmeti otomatik olarak yüklüyor. Otomatik olarak yüklemek için Site Recovery sunucuya erişmek üzere kullanacağı bir hesap hazırlamanız gerekir.
 
 - Bir etki alanı veya yerel hesap kullanabilirsiniz
-- Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakın. Bunu yapmak için, **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**altına kaydet Içinde, **LocalAccountTokenFilterPolicy**DWORD girişini 1 değeri ile ekleyin.
-- Bir CLı 'dan ayarı devre dışı bırakmak üzere kayıt defteri girdisini eklemek için şunu yazın:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakın. Bunu yapmak için, Register **HKEY_LOCAL_MACHINE \Software\microsoft\windows\currentversion\ilkelersystem**altında, 1 değeriyle **LocalAccountTokenFilterPolicy**DWORD girişini ekleyin.
+- Bir CLı 'dan ayarı devre dışı bırakmak üzere kayıt defteri girdisini eklemek için şunu yazın: ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Linux için hesap, kaynak Linux sunucusunda kök olmalıdır.
 
 
@@ -106,11 +105,11 @@ Mobility hizmeti, çoğaltmak istediğiniz her bir sunucuda yüklü olmalıdır.
 
 Yapılandırma sunucusunu ayarlayın, kasaya kaydedin ve VM 'Leri bulun.
 
-1.  > **Altyapı**kaynağıhazırlamaSiteRecovery > ' ye tıklayın.
+1. Altyapıyı > **kaynağı** **hazırlamak** > **Site Recovery** ' ye tıklayın.
 2. Bir yapılandırma sunucunuz yoksa **+ yapılandırma sunucusu**' na tıklayın.
 3. **Sunucu Ekle**' de, **sunucu türü**' nde **Configuration Server** ' ın göründüğünden emin olun.
 4. Site Recovery Birleşik kurulum yükleme dosyasını indirin.
-5. Kasa kayıt anahtarını indir Birleşik kurulumu çalıştırdığınızda buna ihtiyacınız vardır. Anahtar, oluşturulduktan sonra beş gün boyunca geçerlidir.
+5. Kasa kayıt anahtarını indirin. Birleşik kurulumu çalıştırdığınızda buna ihtiyacınız vardır. Anahtar, oluşturulduktan sonra beş gün boyunca geçerlidir.
 
    ![Kaynağı ayarlama](./media/physical-azure-disaster-recovery/source-environment.png)
 
@@ -137,7 +136,7 @@ Yapılandırma sunucusunu yüklemek için Birleşik kurulumu yerel yönetici ola
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Kayıt tamamlandıktan sonra, yapılandırma sunucusu kasadaki **Ayarlar** > **sunucular** sayfasında görüntülenir.
+Kayıt tamamlandıktan sonra, yapılandırma sunucusu kasadaki **ayarlar** > **sunucular** sayfasında görüntülenir.
 
 ## <a name="set-up-the-target-environment"></a>Hedef ortamı ayarlama
 
@@ -179,12 +178,12 @@ Her sunucu için çoğaltmayı etkinleştirin.
 7. Yük devretme sonrasında oluşturulan Azure VM'lerinin bağlanacağı Azure ağını ve alt ağını seçin.
 8. Koruma için seçtiğiniz tüm makinelere ağ ayarını uygulamak için **Seçili makineler için şimdi yapılandır**’ı seçin. Makineler için Azure ağını ayrı ayrı seçmek için **Daha sonra yapılandır**'ı seçin. 
 9. **Fiziksel makinelerde**ve **+ fiziksel makine**' ye tıklayın. Adı ve IP adresini belirtin. Çoğaltmak istediğiniz makinenin işletim sistemini seçin. Sunucuların bulunması ve listelenmesi birkaç dakika sürer. 
-10. **Özellikler** > **yapılandırma özellikleri**' nde, Mobility hizmetini makineye otomatik olarak yüklemek için işlem sunucusu tarafından kullanılacak hesabı seçin.
+10. Özellikler ** > ** Özellikler **yapılandırma**' da, Mobility hizmetini makineye otomatik olarak yüklemek için işlem sunucusu tarafından kullanılacak hesabı seçin.
 11. **Çoğaltma ayarları** > **Çoğaltma ayarlarını yapılandırma** bölümünde doğru çoğaltma ilkesinin seçilip seçilmediğini doğrulayın. 
-12. **Çoğaltmayı Etkinleştir**’e tıklayın. **Ayarlar** > **İşler** > **Site Recovery İşleri** bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretme için hazırdır.
+12. **Çoğaltmayı Etkinleştir**’e tıklayın. **Ayarlar**İşler > Site Recovery İşleri >  bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretme için hazırdır.
 
 
-Eklediğiniz sunucuları izlemek için, **yapılandırma sunucuları** > **son iletişim**kutusunda bu süre için son keşfedilen zamanı kontrol edebilirsiniz. Zamanlanan bulma süresini beklemeden makineler eklemek için yapılandırma sunucusunu vurgulayın (tıklamayın) ve **Yenile**' ye tıklayın.
+Eklediğiniz sunucuları izlemek için, **yapılandırma sunucularındaki** son keşfedilen zamanı, en **son iletişim** > kontrol edebilirsiniz. Zamanlanan bulma süresini beklemeden makineler eklemek için yapılandırma sunucusunu vurgulayın (tıklamayın) ve **Yenile**' ye tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

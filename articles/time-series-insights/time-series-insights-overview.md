@@ -1,5 +1,5 @@
 ---
-title: 'Genel Bakış: ne Azure Time Series Insights? | Microsoft Docs'
+title: 'Genel Bakış: ne Azure Time Series Insights? -Azure Time Series Insights | Microsoft Docs'
 description: Zaman serisi verilerinin analizi ve IoT çözümleri için yeni bir hizmet olan Azure Time Series Insights'a giriş.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 15674d995036d11e1b4ec0ceda5aa4bbf4952906
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: aa15e9c50cb5cd694a7a6adad352459536292b85
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990020"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012584"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights nedir?
 
@@ -65,7 +65,7 @@ Azure Time Series Insights her yeni olayı bir satır olarak yakalar ve depolar 
 
    Time Series Insights, zaman serisi verilerini kullanan uygulamalar oluşturmak için kullanabileceğiniz REST sorgu API 'Lerini kullanıma sunar.
 
-## <a name="capabilities"></a>Yetenekler
+## <a name="capabilities"></a>Özellikler
 
 - **Hızlıca kullanmaya**başlayın: Azure Time Series Insights ön veri hazırlığı gerektirmez, bu sayede IoT Hub 'ınızda veya Olay Hub 'ınızdaki milyonlarca olaya hızlıca bağlanabilirsiniz. Bağlandıktan sonra, IoT çözümlerinizi hızla doğrulamak için sensör verilerini görselleştirin ve bunlarla etkileşim kurabilirsiniz. Kod yazmadan verilerinizle etkileşim kurabilir ve yeni bir dil öğrenmeniz gerekmez. Time Series Insights, ileri düzey kullanıcılar için ayrıntılı, serbest metin bir sorgu yüzeyi sağlar ve sonra araştırmayı işaret edin.
 
@@ -75,7 +75,7 @@ Azure Time Series Insights her yeni olayı bir satır olarak yakalar ve depolar 
 
 - **Ölçeklenebilirlik**: Zaman Serisi Görüşleri, ölçekli olarak IoT'yi destekleyecek şekilde tasarlanmıştır. Günde 1 milyon ile 100 milyon arası olay alabilir ve varsayılan saklama süresi 31 gündür. Canlı veri akışlarını, geçmiş verilerin yanı sıra neredeyse gerçek zamanlı olarak görselleştirebilir ve çözümleyebilirsiniz.
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>Başlarken
 
 Başlamak için aşağıdaki adımları izleyin.
 

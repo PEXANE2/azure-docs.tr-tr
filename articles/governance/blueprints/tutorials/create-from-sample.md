@@ -1,17 +1,14 @@
 ---
 title: Şema örneğinden ortam oluşturma
 description: İki kaynak grubu ayarlayan ve her biri için bir rol ataması yapılandıran bir şema tanımı oluşturmak için bir şema örneği kullanın.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/05/2019
 ms.topic: tutorial
-ms.service: blueprints
-ms.openlocfilehash: f3250052a7e26b5d8ef7cb1d411f9d9252089875
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: d23e9b7242c58e4da5fcfe5ef4d29d9f9df6f754
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980704"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960281"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Öğretici: bir şema örneğinden ortam oluşturma
 
@@ -99,14 +96,14 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Yayımlandıkt
 
    - Yapıt parametreleri
 
-     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Her yapıt için, parametre değerini **değer** sütununda tanımlananla ayarlayın. @No__t-0 için Azure kullanıcı hesabınızı seçin.
+     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Her yapıt için, parametre değerini **değer** sütununda tanımlananla ayarlayın. `{Your ID}`için Azure kullanıcı hesabınızı seçin.
 
      |Yapıt adı|Yapıt türü|Parametre adı|Değer|Açıklama|
      |-|-|-|-|-|
-     |ProdRG kaynak grubu|Kaynak grubu|Adı|Üretim RG|İlk kaynak grubunun adını tanımlar.|
+     |ProdRG kaynak grubu|Kaynak grubu|Ad|Üretim RG|İlk kaynak grubunun adını tanımlar.|
      |ProdRG kaynak grubu|Kaynak grubu|Konum|Batı ABD 2|İlk kaynak grubunun konumunu ayarlar.|
      |Katılımcı|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İlk kaynak grubu içinde _katkıda_ bulunan rol atamasını hangi kullanıcı veya gruba veririm tanımlar.|
-     |PreProdRG kaynak grubu|Kaynak grubu|Adı|Ön üretim RG|İkinci kaynak grubunun adını tanımlar.|
+     |PreProdRG kaynak grubu|Kaynak grubu|Ad|Ön üretim RG|İkinci kaynak grubunun adını tanımlar.|
      |PreProdRG kaynak grubu|Kaynak grubu|Konum|Batı ABD|İkinci kaynak grubunun konumunu ayarlar.|
      |Sahip|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İkinci kaynak grubu içinde _sahip_ rolü atamasını hangi kullanıcı veya gruba veririm tanımlar.|
      |Okuyucular|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İkinci kaynak grubu içinde _Okuyucular_ rolü atamasını hangi kullanıcı veya gruba veririm tanımlar.|

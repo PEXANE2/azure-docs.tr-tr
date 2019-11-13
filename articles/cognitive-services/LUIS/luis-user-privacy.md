@@ -1,7 +1,7 @@
 ---
 title: Dışarı aktarma & verileri silme-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Gizlilik ve uyumluluk sağlamak için müşteri verilerini silin.
+description: Verilerini görüntüleme, dışarı aktarma ve silme üzerinde tam denetime sahip olursunuz. Gizlilik ve uyumluluk sağlamak için müşteri verilerini silin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: e234f88d6e735f33be253cacb373baef63c605c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 061f019fe36e4d5495a41fc81e56d9673ad595fc
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559998"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953451"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Language Understanding (LUIS) Bilişsel hizmetler, müşteri verilerini silebilir ve dışarı aktarma
 
@@ -56,7 +56,7 @@ LUıS kullanıcıları portalda verileri görüntülemek için tam denetime sahi
 
 * [Avrupa](#europe)
 * [Avustralya](#australia)
-* [Amerika Birleşik Devletleri](#united-states)
+* [Birleşik Devletler](#united-states)
 
 Etkin öğrenme verileri (aşağıda ayrıntılı) dışında, Lua, [Bölgesel hizmetler için veri depolama uygulamalarına](https://azuredatacentermap.azurewebsites.net/)uyar. 
 

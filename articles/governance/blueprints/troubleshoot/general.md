@@ -1,17 +1,14 @@
 ---
 title: Sık karşılaşılan hataları giderme
 description: Şemaları oluşturma, atama ve kaldırma ile ilgili sorunların nasıl giderileceği hakkında bilgi edinin.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
-ms.service: blueprints
-ms.openlocfilehash: b99e94bfdcbf12e82a094f14995b6b93aa3354ed
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b6f1d6c40f7268e90f09457e680a3ef33996c341
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978220"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960284"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure şemaları 'nı kullanarak hatalarda sorun giderme
 
@@ -46,7 +43,7 @@ Bir ilke, birkaç nedenden dolayı dağıtımla çakışabilir:
 - Oluşturulan kaynak ilkeyle kısıtlıdır (genellikle SKU veya konum kısıtlamaları)
 - Dağıtım, ilke tarafından yapılandırılan alanları ayarlıyor (etiketlerle ortak)
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
 Şema, hata ayrıntılarında ilkelerle çakışmayacak şekilde değiştirin. Bu değişiklik mümkün değilse, ilke atamasının kapsamının, şema ile çakışmadan, artık ilkeyle çakışmamasını sağlamak için alternatif bir seçenek bulunur.
 
@@ -58,11 +55,11 @@ Bir ilke, birkaç nedenden dolayı dağıtımla çakışabilir:
 
 #### <a name="cause"></a>Nedeni
 
-Bir yapıya `[resourceGroup().tags.myTag]` gibi bir işlevi kullanan bir şema parametresi geçirmek, dinamik işlev yerine yapıtın üzerinde ayarlanan işlevin işlenmiş sonucuna neden olur.
+Bir yapıya `[resourceGroup().tags.myTag]`gibi bir işlevi kullanan bir şema parametresinin geçirilmesi, dinamik işlev yerine yapıtın üzerinde ayarlanan işlevin işlenmiş sonucuna neden olur.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-Bir işlevi parametre olarak kullanarak geçirmek için, `[` ile tüm dizeyi, şema parametresinin `[[resourceGroup().tags.myTag]` gibi görünmesini sağlar. Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar, işlevin beklenen şekilde dinamik olmasını sağlayan yapıtı üzerine koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/template-expressions.md).
+Bir işlevi parametre olarak kullanarak geçirmek için, `[` tüm dizeyi, şema parametresinin `[[resourceGroup().tags.myTag]`gibi görünmesini sağlar. Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar, işlevin beklenen şekilde dinamik olmasını sağlayan yapıtı üzerine koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/template-expressions.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

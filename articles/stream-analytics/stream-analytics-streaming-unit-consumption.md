@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: d9c4169176707f98181f2a479e470cf89ff2e04f
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 25105847b7134b7119252a66ac7e8502771ce5db
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988245"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961271"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Akış birimlerini anlama ve ayarlama
 
@@ -62,10 +62,10 @@ Karmaşık sorgu mantığı olan bir işin, sürekli olarak giriş olayları alm
 
 % SU kullanımı, beklenen düzeylere geri dönebilmeniz için aniden kısa bir süre boyunca 0 ' a düşürüyordur. Bu, geçici hatalar veya sistem tarafından başlatılan yükseltmeler nedeniyle oluşur. Sorgu [tam olarak paralel](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)değilse, bir iş için akış birimlerinin sayısının ARTıRıLMASı% su kullanımını azaltmayabilir.
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Zamana bağlı öğelerde durum bilgisi olan sorgu mantığı
-Azure Stream Analytics işin benzersiz özelliğinden biri, pencereli toplamalar, zamana bağlı birleşimler ve zamana bağlı analitik işlevler gibi durum bilgisi olmayan bir işlem gerçekleştirmesinin bir özelliğidir. Bu işleçlerin her biri durum bilgilerini tutar. Bu sorgu öğeleri için en büyük pencere boyutu yedi gündür. 
+## <a name="stateful-query-logicin-temporal-elements"></a>Durum bilgisi olan sorgu mantığının zamana bağlı öğeleri
+Azure Stream Analytics işi benzersiz yeteneğinin, pencereli toplamlar, zamana bağlı birleştirmeler ve geçici analiz işlevleri gibi durum bilgisi olan işlem gerçekleştirmektir. Bu işleçlerin her biri durum bilgilerini tutar. Bu sorgu öğeleri için en büyük pencere boyutu yedi gündür. 
 
-Zamana bağlı pencere kavramı çeşitli Stream Analytics sorgu öğelerinde görünür:
+Geçici pencere kavramı çeşitli Stream Analytics sorgu öğelerin görünür:
 1. Pencereli toplamalar: Içe geçmiş, atlamalı ve kayan pencereler tarafından gruplama
 
 2. Zamana bağlı birleşimler: DATEDıFF işleviyle BIrLEŞTIr
@@ -86,7 +86,7 @@ Bir pencereli toplama için tüketilen bellek (durum boyutu), pencere boyutuyla 
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Önceki sorgudaki yüksek kardinalite nedeniyle oluşan herhangi bir sorunu gidermek için, `clusterid`tarafından bölümlenen Olay Hub 'ına olay gönderebilir ve sistemin, her giriş bölümünü, belirtilen şekilde **bölüm** kullanarak her giriş bölümünü ayrı olarak işlemesini sağlar Aşağıdaki örnekte:
+Önceki sorgudaki yüksek kardinalite nedeniyle oluşan herhangi bir sorunu azaltmak için, `clusterid`tarafından bölümlenen Olay Hub 'ına olay gönderebilir ve aşağıdaki örnekte gösterildiği gibi sistemin her giriş bölümünü **bölüm** kullanarak ayrı olarak işlemesini sağlayarak sorguyu ölçeklendirebilirsiniz:
 
    ```sql
    SELECT count(*) 
@@ -99,7 +99,7 @@ Sorgu bölümlere ayrıldıktan sonra birden çok düğüme dağıtılır. Sonu�
 Azaltma adımının gereksinimini ortadan kaldırmak için, Olay Hub 'ı bölümlerinin gruplandırma anahtarına göre bölümlenmesi gerekir. Daha fazla bilgi için bkz. [Event Hubs genel bakış](../event-hubs/event-hubs-what-is-event-hubs.md). 
 
 ## <a name="temporal-joins"></a>Zamana bağlı birleşimler
-Zamana bağlı bir birleştirmenin tüketilen bellek (durum boyutu), birleştirmenin, bir olay girişi oranının, wiwıon Oda boyutuyla çarpılacağı, bu, birleştirmenin, her zaman içindeki olayların sayısıyla orantılıdır. Diğer bir deyişle, birleştirmeler tarafından tüketilen bellek, DATEDIFF zaman aralığı ortalama olay oranıyla çarpılarak orantılıdır.
+Zamana bağlı bir birleştirmenin tüketilen bellek (durum boyutu), birleştirmenin, bir olay girişi oranının, Won Oda boyutuyla çarpıldığı, birleştirmenin zamana bağlı olarak, bu, bir girdinin, bu şekilde olan, bu durumda bulunan olayların sayısıyla orantılıdır. Diğer bir deyişle, birleştirmeler tarafından tüketilen bellek, DATEDIFF zaman aralığı ortalama olay oranıyla çarpılarak orantılıdır.
 
 Birleşimdeki eşleşmeyen olay sayısı sorgunun bellek kullanımını etkiler. Aşağıdaki sorgu, tıklama oluşturan reklam görüntüleme sayısını bulmayı amaçlamaktadır:
 

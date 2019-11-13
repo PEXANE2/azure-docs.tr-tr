@@ -1,49 +1,74 @@
 ---
 title: Liste varlık türü-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Liste varlıkları, sabit ve kapalı bir ilgili sözcük kümesini eş anlamlılarıyla birlikte temsil eder. LUSıS, liste varlıkları için ek değerler bulamaz. Geçerli listeye göre yeni kelimelerin önerilerini görmek için öner özelliğini kullanın.
+description: Liste varlıkları, sabit ve kapalı bir ilgili sözcük kümesini eş anlamlılarıyla birlikte temsil eder. LUIS, liste varlıkları için ek değerler bulmaz. Geçerli listeye göre yeni kelimelerin önerilerini görmek için öner özelliğini kullanın.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 1757faf8ab2be0b62956b6939ee068929f9275a4
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 1307e6cfca0debe7623eb775c69527a74584033d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695249"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011983"
 ---
-# <a name="list-entity"></a>Varlık listeleme 
+# <a name="list-entity"></a>Liste varlığı 
 
-Liste varlıkları, sabit ve kapalı bir ilgili sözcük kümesini eş anlamlılarıyla birlikte temsil eder. LUSıS, liste varlıkları için ek değerler bulamaz. Geçerli listeye göre yeni kelimelerin önerilerini görmek için **öner** özelliğini kullanın. Aynı değere sahip birden fazla liste varlığı varsa, her bir varlık uç nokta sorgusunda döndürülür. 
+Liste varlıkları, sabit ve kapalı bir ilgili sözcük kümesini eş anlamlılarıyla birlikte temsil eder. LUIS, liste varlıkları için ek değerler bulmaz. Kullanım **önerilir** yeni sözcükleri sunabileceği önerileri görmek için özellik geçerli listede bağlı. Birden fazla liste varlığı ile aynı değeri varsa, her varlık uç nokta sorguda döndürülür. 
 
-Bir liste varlığı makine tarafından öğrenilen değildir. Tam metin eşleşmesi. LUO, yanıtta bir varlık olarak herhangi bir listedeki öğeyle eşleşen herhangi bir eşleşmeyi işaretler. 
+Bir liste varlığı makine tarafından öğrenilen değildir. Tam metin bir eşleşmedir. LUIS, herhangi bir listede bir öğe için herhangi bir eşleşme yanıtta bir varlık olarak işaretler. 
 
 **Varlık, metin verileri olduğunda iyi bir uyum:**
 
 * Bilinen bir küme.
 * Genellikle değişmez. Listeyi sık olarak değiştirmeniz veya listenin kendi kendine genişlemesine ihtiyaç duyuyorsanız, tümcecik listesi ile birlikte bulunan basit bir varlık daha iyi bir seçimdir. 
-* Küme, bu varlık türü için en fazla LUO [sınırlarını](luis-boundaries.md) aşamaz.
-* Söylenişi 'teki metin, eş anlamlı veya kurallı bir adla tam bir eşleşmedir. LUSıS, tam metin eşleştirmelerinin ötesinde listeyi kullanmaz. Belirsiz eşleştirme, büyük/küçük harfe duyarlı, sözcük kökü oluşturma, plurals ve diğer çeşitlemeler bir liste varlığıyla çözümlenmez. Çeşitlemeleri yönetmek için, isteğe bağlı metin söz dizimine sahip bir [model](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) kullanmayı düşünün.
+* Küme, bu varlık türü için maksimum LUIS [sınırlarını](luis-boundaries.md) aşmaz.
+* Konuşmadaki metin bir eşanlamlı sözcük veya kurallı ad ile tam olarak eşleşiyor. LUSıS, tam metin eşleştirmelerinin ötesinde listeyi kullanmaz. Belirsiz eşleştirme, büyük/küçük harfe duyarlı, sözcük kökü oluşturma, plurals ve diğer çeşitlemeler bir liste varlığıyla çözümlenmez. Çeşitlemeleri yönetmek için, isteğe bağlı metin söz dizimine sahip bir [model](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) kullanmayı düşünün.
 
-![Varlık listeleme](./media/luis-concept-entities/list-entity.png)
+![Liste varlığı](./media/luis-concept-entities/list-entity.png)
 
-## <a name="example-json"></a>Örnek JSON
+## <a name="example-json-to-import-into-list-entity"></a>Liste varlığına içeri aktarılacak örnek. JSON
 
-Uygulamanın, Havaalanı (deniz-Tac), Havaalanı Kodu (SEA), posta posta kodu (98101) ve telefon alanı kodu (206) dahil olmak üzere şehir adlarının çeşitlemelerine izin veren `Cities` adlı bir liste olduğunu varsayalım.
+  Aşağıdaki. JSON biçimini kullanarak, mevcut bir liste varlığına değerleri içeri aktarabilirsiniz:
 
-|Liste öğesi|Öğe eş anlamlılar|
+  ```JSON
+  [
+      {
+          "canonicalForm": "Blue",
+          "list": [
+              "navy",
+              "royal",
+              "baby"
+          ]
+      },
+      {
+          "canonicalForm": "Green",
+          "list": [
+              "kelly",
+              "forest",
+              "avacado"
+          ]
+      }
+  ]  
+  ```
+
+## <a name="example-json-response"></a>Örnek JSON yanıtı
+
+Adlı bir listesi uygulamanın olduğu varsayalım `Cities`, şehir adları havaalanı (tac Sea), havaalanı kodu (SEA), posta kodu (98101) ve telefon alan kodunu (206) bulunduğu şehir de dahil olmak üzere çeşitleri için izin verme.
+
+|Liste öğesi|Öğe eş anlamlı sözcükler|
 |---|---|
 |`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
 |`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
 
 `book 2 tickets to paris`
 
-Önceki bir deyişle, `paris` sözcüğü `Cities` liste varlığının bir parçası olarak Paris öğesiyle eşlenir. Liste varlığı hem öğenin normalleştirilmiş adının hem de öğe eş anlamlısını eşleştirir.
+Önceki utterance, sözcük içinde `paris` paris öğesine bir parçası olarak eşleştirilir `Cities` varlık listesi. Liste varlığı hem normalleştirilmiş öğenin adı, hem de öğe eş anlamlılar eşleşir.
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
@@ -66,7 +91,7 @@ Uygulamanın, Havaalanı (deniz-Tac), Havaalanı Kodu (SEA), posta posta kodu (9
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 
-Sorgu dizesinde `verbose=false` ayarlanmışsa bu JSON olur:
+Bu, sorgu dizesinde `verbose=false` ayarlandıysa JSON olur:
 
 ```json
 "entities": {
@@ -78,7 +103,7 @@ Sorgu dizesinde `verbose=false` ayarlanmışsa bu JSON olur:
 }
 ```
 
-Sorgu dizesinde `verbose=true` ayarlanmışsa bu JSON olur:
+Bu, sorgu dizesinde `verbose=true` ayarlandıysa JSON olur:
 
 ```json
 "entities": {

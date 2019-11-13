@@ -8,20 +8,18 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca55d49721f9c22f35ba79e819efa354a660d92a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9332079cd77c4dcc972059071165ba0631135b5c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302361"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012521"
 ---
-# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS diskleri için yedekleme ve olağanüstü durum kurtarma
-
 Bu makalede, Azure 'da IaaS sanal makineleri (VM) ve disklerinin yedekleme ve olağanüstü durum kurtarma (DR) için nasıl planlanacağı açıklanmaktadır. Bu belgede hem yönetilen hem de yönetilmeyen diskler ele alınmaktadır.
 
 İlk olarak, Azure platformunda yerel hatalara karşı koruma sağlamaya yardımcı olan yerleşik hata toleransı yeteneklerini ele aldık. Daha sonra yerleşik özellikleri tam olarak ele almayan olağanüstü durum senaryolarını tartıştık. Farklı yedekleme ve DR önemli noktaları 'nın uygulayabileceği çeşitli iş yükü senaryolarına örnek de göstereceğiz. Daha sonra IaaS disklerinin DR için olası çözümleri gözden geçiririz.
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
 Azure platformu, müşterilerin yerelleştirilmiş donanım arızalarına karşı korunmasına yardımcı olmak için yedekleme ve hata toleransı için çeşitli yöntemler kullanır. Yerel hatalarda, bir sanal disk için verilerin bir kısmını veya o sunucudaki SSD veya HDD başarısızlıklarını depolayan bir Azure Storage Server makinesi ile ilgili sorunlar bulunabilir. Bu tür yalıtılmış donanım bileşeni hatalarının normal işlemler sırasında meydana gelebilirler.
 
@@ -112,7 +110,7 @@ Yönetilmeyen diskler için, IaaS diskleri için yerel olarak yedekli depolama t
 | Senaryo | Otomatik çoğaltma | DR çözümü |
 | --- | --- | --- |
 | Premium SSD diskler | Yerel ([yerel olarak yedekli depolama](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| Yönetilen Diskler | Yerel ([yerel olarak yedekli depolama](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Yönetilen diskler | Yerel ([yerel olarak yedekli depolama](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Yönetilmeyen yerel olarak yedekli depolama diskleri | Yerel ([yerel olarak yedekli depolama](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Yönetilmeyen coğrafi olarak yedekli depolama diskleri | Çapraz bölge ([coğrafi olarak yedekli depolama](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Tutarlı anlık görüntüler](#alternative-solution-consistent-snapshots) |
 | Yönetilmeyen Okuma Erişimli Coğrafi olarak yedekli depolama diskleri | Çapraz bölge ([Okuma Erişimli Coğrafi olarak yedekli depolama](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Tutarlı anlık görüntüler](#alternative-solution-consistent-snapshots) |
@@ -123,7 +121,7 @@ Uygulama veya altyapı seviyeleri için yüksek kullanılabilirlik, yedekleme ve
 
 | Düzey |   Yüksek kullanılabilirlik   | Yedekleme veya DR |
 | --- | --- | --- |
-| Uygulama | SQL Server AlwaysOn | Azure Yedekleme |
+| Uygulama | SQL Server AlwaysOn | Azure Backup |
 | Altyapı    | Kullanılabilirlik kümesi  | Tutarlı anlık görüntülerle coğrafi olarak yedekli depolama |
 
 ### <a name="using-azure-backup"></a>Azure Backup kullanma 
@@ -148,7 +146,7 @@ Geri yüklemek için, kullanılabilir yedeklemeleri Azure Backup aracılığıyl
 
     b. **Kurtarma Hizmetleri kasaları** menüsünde, **Ekle** ' ye tıklayın ve VM ile aynı bölgede yeni bir kasa oluşturmak için adımları izleyin. Örneğin, VM 'niz Batı ABD bölgedeyse, kasa için Batı ABD seçin.
 
-1.  Yeni oluşturulan kasa için depolama çoğaltmasını doğrulayın. **Kurtarma Hizmetleri kasaları** bölümünde kasaya erişin ve **Özellikler** > **yedekleme yapılandırması** > **güncelleştirme**bölümüne gidin. Coğrafi olarak **yedekli depolama** seçeneğinin varsayılan olarak seçildiğinden emin olun. Bu seçenek, kasalarınızın otomatik olarak ikincil bir veri merkezine çoğaltılmasını sağlar. Örneğin, Batı ABD içinde kasanızın otomatik olarak Doğu ABD olarak çoğaltılır.
+1.  Yeni oluşturulan kasa için depolama çoğaltmasını doğrulayın. **Kurtarma Hizmetleri kasaları** bölümünde kasaya erişin ve **Özellikler** > **yedekleme yapılandırması** > **Güncelleştir**' e gidin. Coğrafi olarak **yedekli depolama** seçeneğinin varsayılan olarak seçildiğinden emin olun. Bu seçenek, kasalarınızın otomatik olarak ikincil bir veri merkezine çoğaltılmasını sağlar. Örneğin, Batı ABD içinde kasanızın otomatik olarak Doğu ABD olarak çoğaltılır.
 
 1.  Yedekleme ilkesini yapılandırın ve aynı kullanıcı arabiriminden VM 'yi seçin.
 

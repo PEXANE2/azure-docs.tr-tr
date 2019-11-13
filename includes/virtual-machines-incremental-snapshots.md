@@ -8,110 +8,109 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188355"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014542"
 ---
-# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Artımlı anlık görüntülerle Azure yönetilmeyen VM disklerini yedekleme
 ## <a name="overview"></a>Genel Bakış
-Azure depolama blobları anlık olanağı sağlar. Anlık görüntüler, o noktasında blob durumu yakalar. Bu makalede, anlık görüntüler kullanılarak sanal makine disklerinin yedeklerini bakımını bir senaryo açıklanmaktadır. Azure yedekleme ve kurtarma hizmeti kullanmamayı seçin ve sanal makine diskleriniz için özel bir yedekleme stratejisi oluşturmak istiyorsanız bu yöntemi kullanabilirsiniz.
+Azure depolama, Blobların anlık görüntülerini alma özelliğini sağlar. Anlık görüntüler blob durumunu zaman içinde yakalar. Bu makalede, anlık görüntüleri kullanarak sanal makine disklerinin yedeklerini koruyabilmeniz için bir senaryo açıklanır. Azure Backup ve kurtarma hizmeti 'ni kullanmayı ve sanal makine diskleriniz için özel bir yedekleme stratejisi oluşturmayı tercih ettiğinizde bu yöntemi kullanabilirsiniz.
 
-Azure sanal makine diskleri sayfa blobları Azure Depolama'da depolanır. Biz bu makalede sanal makine diskleri için bir yedekleme stratejisi açıklayan olduğundan, sayfa blobları bağlamında anlık görüntüleri diyoruz. Anlık görüntüleri hakkında daha fazla bilgi için bkz [bir blobun anlık görüntüsünü oluşturma](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
+Azure sanal makine diskleri, Azure depolama 'da sayfa Blobları olarak depolanır. Bu makaledeki sanal makine diskleri için bir yedekleme stratejisi açıkladık, sayfa Blobları bağlamında anlık görüntülere başvurduk. Anlık görüntüler hakkında daha fazla bilgi edinmek için [bir Blobun anlık görüntüsünü oluşturma](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)konusuna bakın.
 
 ## <a name="what-is-a-snapshot"></a>Anlık görüntü nedir?
-Blob anlık görüntüsü, bir noktada sürede yakalanan bir blobun salt okunur bir sürümüdür. Anlık görüntü oluşturulduktan sonra okunabildiğini, kopyalanan, veya silinmiş, ancak değiştirilmedi. Anlık görüntüler, zaman içinde bir anda göründüğü gibi bir blob yedeklemek için bir yol sağlar. REST sürümü 2015-04-05 kadar tam bir anlık görüntü kopyalama özelliği vardı. Sürüm 2015-07-08 REST ve üstü ile siz de artımlı anlık kopyalayabilirsiniz.
+Blob anlık görüntüsü, bir Blobun zaman içinde yakalanan salt okunurdur. Anlık görüntü oluşturulduktan sonra okunabilir, kopyalanabilir veya silinebilir, ancak değiştirilmez. Anlık görüntüler, bir blobu zaman içinde göründüğü şekilde yedeklemenin bir yolunu sağlar. REST sürüm 2015-04-05 ' e kadar tam anlık görüntüleri kopyalama imkanına sahip olursunuz. REST sürüm 2015-07-08 ve üzeri ile Artımlı anlık görüntüleri de kopyalayabilirsiniz.
 
-## <a name="full-snapshot-copy"></a>Tam bir anlık görüntü kopyalama
-Anlık görüntüler, başka bir depolama hesabına temel blob yedeklerini tutmak için bir blob kopyalanabilir. Blob önceki bir sürüme geri yükleme gibi olan kendi temel blob üzerinde anlık görüntü de kopyalayabilirsiniz. Anlık görüntü bir depolama hesabından diğerine kopyalandığında temel sayfa blobu olarak aynı kaplar. Bu nedenle, tüm anlık görüntüler bir depolama hesabından diğerine kopyalama yavaş ve kadar alan hedef depolama hesabı kullanır.
+## <a name="full-snapshot-copy"></a>Tam anlık görüntü kopyası
+Anlık görüntüler, temel Blobun yedeklerini tutmak için bir blob olarak başka bir depolama hesabına kopyalanabilir. Ayrıca, bir anlık görüntüyü, blob 'u önceki bir sürüme geri yüklemek gibi temel blobunun üzerine kopyalayabilirsiniz. Bir anlık görüntü, bir depolama hesabından diğerine kopyalandığında, taban Sayfa Blobu ile aynı alanı kaplar. Bu nedenle, tüm anlık görüntülerin bir depolama hesabından diğerine kopyalanması yavaştır ve hedef depolama hesabında çok fazla alan tüketir.
 
 > [!NOTE]
-> Başka bir hedef için temel bir blobu kopyalarsanız, BLOB anlık görüntüleri onunla birlikte kopyalanmaz. Benzer şekilde, temel bir blobu bir kopyasının üzerine, temel blob ile ilişkili anlık görüntüleri etkilenmez ve temel blob adla değişmeden kalır.
+> Temel blobu başka bir hedefe kopyalarsanız, Blobun anlık görüntüleri onunla birlikte kopyalanmaz. Benzer şekilde, bir temel Blobun kopyası ile üzerine yazmış olursunuz, temel blob ile ilişkili anlık görüntüler etkilenmez ve temel blob adı altında bozulmaz.
 > 
 > 
 
-### <a name="back-up-disks-using-snapshots"></a>Anlık görüntülerini kullanarak diskleri yedekleme
-Sanal makine diskleriniz için bir yedekleme stratejisi disk veya sayfa blob düzenli anlık görüntülerini alabilir ve bunları başka bir depolama hesabı kullanarak kopyalama araçları gibi [kopya blob'u](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) işlemi veya [AzCopy](../articles/storage/common/storage-use-azcopy.md). Farklı bir ada sahip bir hedef sayfa blobu için anlık görüntü kopyalayabilirsiniz. Sonuçta elde edilen hedef sayfa blob'u yazılabilir sayfa blobu ve değil bir anlık görüntü ' dir. Bu makalede, biz anlık görüntülerini kullanarak sanal makine disklerinin yedeklerini atılması gereken adımlar açıklanmaktadır.
+### <a name="back-up-disks-using-snapshots"></a>Anlık görüntüleri kullanarak diskleri yedekleme
+Sanal makine diskleriniz için bir yedekleme stratejisi olarak, disk veya sayfa blobunun düzenli anlık görüntülerini alabilir ve [BLOB Işlemini Kopyala](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) veya [AzCopy](../articles/storage/common/storage-use-azcopy.md)gibi araçları kullanarak bunları başka bir depolama hesabına kopyalayabilirsiniz. Bir anlık görüntüyü, bir hedef sayfa blobuna farklı bir adla kopyalayabilirsiniz. Elde edilen hedef Sayfa Blobu anlık görüntü değil yazılabilir bir sayfa blobuna sahiptir. Bu makalenin ilerleyen kısımlarında, anlık görüntüleri kullanarak sanal makine disklerinin yedeklerini alma adımlarını açıklıyoruz.
 
-### <a name="restore-disks-using-snapshots"></a>Anlık görüntüleri kullanarak diskleri geri yükle
-Yedekleme anlık görüntülerinin birinde önceden yakalanmış olan ve kararlı bir sürüm diskinizi geri yüklemek için zaman olduğunda, bir anlık görüntü üzerinde temel sayfa blob'u kopyalayabilirsiniz. Taban sayfası için anlık görüntü yükseltildikten sonra blob anlık görüntüsü kalır ancak kaynağı hem okunabilir ve yazılabilir bir kopya ile yazılır. Bu makalenin sonraki bölümlerinde, biz diskinizi önceki bir sürümünü, anlık görüntüden geri yüklemek için adımları açıklar.
+### <a name="restore-disks-using-snapshots"></a>Anlık görüntüleri kullanarak diskleri geri yükleme
+Diskinizin daha önce yedekleme anlık görüntülerinden birinde yakalanan kararlı bir sürüme geri yüklenmesi zaman aldığında, temel sayfa blobunun üzerine bir anlık görüntü kopyalayabilirsiniz. Anlık görüntü temel sayfa blobuna yükseltildikten sonra, anlık görüntü kalır, ancak kaynağı hem okunabilir hem de yazılabilir bir kopya ile üzerine yazılır. Bu makalenin ilerleyen kısımlarında, diskinizin önceki bir sürümünü anlık görüntüsünden geri yükleme adımları anlatılmaktadır.
 
-### <a name="implementing-full-snapshot-copy"></a>Uygulama tam anlık görüntü kopyalama
-Aşağıdakileri yaparak bir tam anlık görüntü kopyalama uygulayabilirsiniz.
+### <a name="implementing-full-snapshot-copy"></a>Tam anlık görüntü kopyası uygulama
+Aşağıdakileri yaparak tam bir anlık görüntü kopyası uygulayabilirsiniz.
 
-* İlk olarak kullanarak temel blob anlık görüntüsünü alma [anlık görüntü Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) işlemi.
-* Ardından, hedef depolama hesabı kullanarak bir anlık görüntü kopyalama [kopya blob'u](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob).
-* Temel blobunuza yedekleme kopyalarını bulundurmak için bu işlemi yineleyin.
+* İlk olarak, [anlık görüntü blobu](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) işlemini kullanarak temel Blobun anlık görüntüsünü alın.
+* Ardından, [kopya blobu](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob)kullanarak anlık görüntüyü bir hedef depolama hesabına kopyalayın.
+* Temel Blobun yedek kopyalarını sürdürmek için bu işlemi tekrarlayın.
 
-## <a name="incremental-snapshot-copy"></a>Artımlı anlık görüntü kopyalama
-Yeni özelliği [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) API anlık görüntüler, sayfa BLOB'ları veya diskleri yedeklemek için çok daha iyi bir yol sağlar. API değişikliklerin listesini temel blob anlık görüntüleri arasında yedekleme hesapta kullanılan depolama alanı miktarını azaltan döndürür. API, standart depolama yanı sıra Premium depolama üzerinde sayfa bloblarını destekler. Bu API'yi kullanarak Azure Vm'leri için daha hızlı ve daha verimli yedekleme çözümleri oluşturabilirsiniz. Bu API ile REST sürümü 2015-07-08 kullanılabilir ve daha yüksek olacaktır.
+## <a name="incremental-snapshot-copy"></a>Artımlı anlık görüntü kopyası
+[Getpageranges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) API 'sindeki yeni özellik, sayfa bloblarınızın veya disklerinizin anlık görüntülerini yedeklemek için çok daha iyi bir yol sağlar. API, temel blob ve anlık görüntüler arasındaki değişikliklerin listesini, yedekleme hesabında kullanılan depolama alanı miktarını azaltır. API, Premium depolamada bulunan sayfa bloblarını ve standart depolamayı destekler. Bu API 'yi kullanarak Azure VM 'Ler için daha hızlı ve daha verimli yedekleme çözümleri oluşturabilirsiniz. Bu API, REST sürüm 2015-07-08 ve üzeri ile kullanılabilir olacaktır.
 
-Artımlı anlık görüntü kopyalama bir depolama hesabından diğerine arasındaki farkı kopyalamanıza olanak sağlayan,
+Artımlı anlık görüntü kopyası, bir depolama hesabından diğerine, arasındaki farka göre kopyalama yapmanıza olanak sağlar
 
-* Temel blob ve kendi anlık görüntü veya
-* Herhangi iki temel blob anlık görüntüsü
+* Temel blob ve anlık görüntüsü veya
+* Temel Blobun iki anlık görüntüsü
 
-Aşağıdaki koşulların karşılandığından emin sağlanan
+Aşağıdaki koşullar sağlandığında,
 
-* Blob, Oca 1 2016 veya sonraki sürümlerde oluşturuldu.
-* Blob ile yazıldı değil [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) veya [kopya blob'u](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) iki anlık görüntü arasındaki.
+* Blob, Oca-1-2016 veya üzeri sürümlerde oluşturulmuştur.
+* Blob, [Putpage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) veya iki anlık görüntü arasındaki [kopya blobu](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) ile üzerine yazılmadı.
 
-**Not**: Bu özellik, Premium ve standart Azure sayfa Blobları için kullanılabilir.
+**Note**: Bu özellik Premium ve standart Azure sayfa Blobları için kullanılabilir.
 
-Anlık görüntülerini kullanarak özel bir yedekleme stratejisi sahip olduğunuzda, anlık görüntüler bir depolama hesabından diğerine kopyalama başka bir yavaş olabilir ve kadar depolama alanı kullanabilir. Tüm anlık görüntü bir yedekleme depolama hesabına kopyalamak yerine, bir yedekleme sayfa blobu için ardışık anlık görüntü arasındaki farkı yazabilirsiniz. Bu şekilde, kopyalama ve yedeklemeleri depolamak için alanı süresini önemli ölçüde azaltılır.
+Anlık görüntüler kullanarak özel bir Yedekleme stratejiniz varsa, anlık görüntüleri bir depolama hesabından diğerine kopyalamak yavaş olabilir ve çok fazla depolama alanı tüketebilir. Anlık görüntünün tamamını bir yedekleme depolama hesabına kopyalamak yerine, bir yedekleme sayfası blobuna ardışık anlık görüntüler arasındaki farkı yazabilirsiniz. Bu şekilde, kopyalanacak zaman ve yedeklemelerin depolandığı alan önemli ölçüde azaltılır.
 
-### <a name="implementing-incremental-snapshot-copy"></a>Uygulama artımlı anlık görüntü kopyalama
-Aşağıdakileri yaparak artımlı anlık görüntü kopyalama uygulayabilirsiniz.
+### <a name="implementing-incremental-snapshot-copy"></a>Artımlı anlık görüntü kopyası uygulama
+Aşağıdakileri yaparak Artımlı anlık görüntü kopyası uygulayabilirsiniz.
 
-* Kullanarak temel blob anlık [anlık görüntü Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob).
-* Aynı veya herhangi bir Azure bölgesine diğer kullanarak hedef yedekleme depolama hesabı için anlık görüntü kopyalama [kopya blob'u](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob). Yedekleme sayfa blob'u budur. Yedekleme sayfa blobu anlık görüntüsünü alın ve yedekleme hesabında depolayın.
-* Anlık görüntü blobu kullanarak temel blob başka bir anlık görüntüsünü alın.
-* Temel blob kullanarak ilk ve ikinci anlık görüntü arasındaki fark alma [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges). Yeni bir parametre kullanın **prevsnapshot**, istediğiniz fark almak için anlık görüntü tarih/saat değeri belirtin. Bu parametre, mevcut olduğunda, REST yanıtı hedef anlık görüntü ve NET sayfaları dahil olmak üzere önceki anlık görüntüye arasında değiştirilmiş sayfaları içerir.
-* Kullanım [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) yedekleme sayfa blob'u için bu değişiklikleri uygulamak için.
-* Son olarak, yedekleme sayfa blobu anlık görüntüsünü alın ve yedekleme depolama hesabında depolayın.
+* [Anlık görüntü blobu](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob)kullanarak temel Blobun anlık görüntüsünü alın.
+* Anlık görüntüyü, [kopya blobu](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob)kullanarak aynı veya başka bir Azure bölgesindeki hedef yedekleme depolama hesabına kopyalayın. Bu, yedekleme sayfası blobudur. Yedekleme sayfası blobunun anlık görüntüsünü alın ve yedekleme hesabında saklayın.
+* Anlık görüntü blobu kullanarak temel Blobun başka bir anlık görüntüsünü alın.
+* [Getpageranges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges)kullanarak temel Blobun birinci ve ikinci anlık görüntüleri arasındaki farkı alın. Farkı almak istediğiniz anlık görüntünün tarih saat değerini belirtmek için **prevsnapshot**New parametresini kullanın. Bu parametre mevcut olduğunda REST yanıtı yalnızca hedef anlık görüntü ve Temizleme sayfaları dahil olmak üzere önceki anlık görüntü arasında değiştirilen sayfaları içerir.
+* Bu değişiklikleri yedekleme sayfası blobuna uygulamak için [putpage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) kullanın.
+* Son olarak, yedekleme sayfası blobunun anlık görüntüsünü alın ve yedekleme depolama hesabında saklayın.
 
-Sonraki bölümde, size daha ayrıntılı olarak, artımlı anlık görüntü kopyalama kullanarak disklerinin yedeklerini nasıl koruyabilirsiniz açıklanmıştır
+Sonraki bölümde, artımlı anlık görüntü kopyası kullanarak disklerin yedeklerini nasıl koruyabilmeniz gerektiğini daha ayrıntılı bir şekilde anlatmaktadır
 
 ## <a name="scenario"></a>Senaryo
-Bu bölümde, biz anlık görüntülerini kullanarak sanal makine diskleri için özel bir yedekleme stratejisi içeren bir senaryo açıklanmaktadır.
+Bu bölümde, anlık görüntüler kullanılarak sanal makine diskleri için özel bir yedekleme stratejisi içeren bir senaryo açıklanır.
 
-DS serisi Azure VM bağlı bir premium depolama P30 disk ile göz önünde bulundurun. P30 diski de denen *mypremiumdisk* adlı bir premium depolama hesabında depolanan *mypremiumaccount*. Adlı bir standart depolama hesabı *mybackupstdaccount* yedeğini depolamak için kullanılan *mypremiumdisk*. Bir anlık görüntüsünü tutmak istiyoruz *mypremiumdisk* her 12 saatte bir.
+Premium Storage P30 disk ekli olan DS serisi bir Azure VM 'yi düşünün. *Mypremıumdisk* adlı P30 diski, *mypremıumaccount*adlı bir Premium Depolama hesabında depolanır. *Mypremıumdisk*yedeklemesini depolamak için *mybackupstdaccount* adlı standart bir depolama hesabı kullanılır. Her 12 saatte bir *mypremıumdisk* anlık görüntüsünü tutmak istiyoruz.
 
-Bir depolama hesabı oluşturma hakkında bilgi edinmek için [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+Depolama hesabı oluşturma hakkında bilgi edinmek için bkz. [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
 
-Azure VM'lerin yedeklenmesi hakkında bilgi edinmek için bkz [planlama Azure VM yedeklemeleri](../articles/backup/backup-azure-vms-introduction.md).
+Azure VM 'lerini yedekleme hakkında bilgi edinmek için bkz. [Azure VM yedeklemelerini planlayın](../articles/backup/backup-azure-vms-introduction.md).
 
-## <a name="steps-to-maintain-backups-of-a-disk-using-incremental-snapshots"></a>Artımlı anlık görüntüleri kullanarak bir diski yedeklerini korumak için adımlar
-Aşağıdaki adımları anlık açıklanır *mypremiumdisk* yedeklemelerinizi ve koruyabilir *mybackupstdaccount*. Yedekleme adlı bir standart sayfa blobudur *mybackupstdpageblob*. Yedekleme sayfa blobu, her zaman son anlık görüntüsünü aynı duruma yansıtır *mypremiumdisk*.
+## <a name="steps-to-maintain-backups-of-a-disk-using-incremental-snapshots"></a>Artımlı anlık görüntü kullanarak bir diskin yedeklerini sürdürme adımları
+Aşağıdaki adımlarda *mypremıumdisk* anlık görüntülerinin nasıl alınacağını ve *mybackupstdaccount*içinde yedeklemeleri nasıl korutabileceğiniz açıklanır. Yedekleme, *mybackupstdpageblob*adlı standart bir sayfa blobuna sahiptir. Yedekleme sayfası blobu her zaman *mypremıumdisk*'in son anlık görüntüsüyle aynı durumu yansıtır.
 
-1. Yedekleme sayfa blob'u, premium depolama disk için anlık görüntüsünü alarak oluşturma *mypremiumdisk* adlı *mypremiumdisk_ss1*.
-2. Bu anlık görüntü için mybackupstdaccount adlı bir sayfa blobu kopyalama *mybackupstdpageblob*.
-3. Anlık *mybackupstdpageblob* adlı *mybackupstdpageblob_ss1*kullanarak [anlık görüntü Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) ve depoladığınız *mybackupstdaccount*.
-4. Yedekleme penceresi sırasında başka bir anlık görüntüsünü oluşturmak *mypremiumdisk*, örneğin *mypremiumdisk_ss2*ve depoladığınız *mypremiumaccount*.
-5. İki anlık görüntü arasındaki artımlı değişikliklerin *mypremiumdisk_ss2* ve *mypremiumdisk_ss1*kullanarak [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) üzerinde *mypremiumdisk_ ss2* ile **prevsnapshot** parametre için zaman damgası *mypremiumdisk_ss1*. Bu artımlı değişiklikler için yedekleme sayfa blobu yazma *mybackupstdpageblob* içinde *mybackupstdaccount*. Artımlı değişiklikleri silinen aralıkları varsa, yedekleme sayfa blobu temizlenmelidir. Kullanım [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) artımlı değişiklikler için yedekleme sayfa blobu yazma için.
-6. Yedekleme sayfa blobu anlık *mybackupstdpageblob*adlı *mybackupstdpageblob_ss2*. Önceki anlık görüntüyü silmek *mypremiumdisk_ss1* premium depolama hesabı.
-7. Her yedekleme penceresi 4-6. adımları tekrarlayın. Bu şekilde, yedeklerini koruyabilirsiniz *mypremiumdisk* standart depolama hesabı içinde.
+1. *Mypremiumdisk_ss1*adlı *mypremıumdisk* anlık görüntüsünü alarak Premium Depolama diskiniz için yedekleme sayfası blobu oluşturun.
+2. Bu anlık görüntüyü *mybackupstdpageblob*adlı bir Sayfa Blobu olarak mybackupstdaccount öğesine kopyalayın.
+3. [Anlık görüntü blobu](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) kullanarak *mybackupstdpageblob_ss1*adlı *mybackupstdpageblob* 'un anlık görüntüsünü alın ve *mybackupstdaccount*içinde saklayın.
+4. Yedekleme penceresi sırasında *mypremıumdisk*' in başka bir anlık görüntüsünü oluşturun, *mypremiumdisk_ss2*söyleyin ve *mypremıumaccount*içinde saklayın.
+5. *Mypremiumdisk_ss2* ve *mypremiumdisk_ss1*iki **anlık görüntü arasında** artımlı değişiklikler alın, bu, *mypremiumdisk_ss2* üzerinde [getpageranges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) kullanarak *mypremiumdisk_ss1*zaman damgasına ayarlanır. Bu artımlı değişiklikleri *mybackupstdaccount*içindeki *mybackupstdpageblob* yedekleme sayfasına yazın. Artımlı değişiklikler içinde silinen aralıklar varsa, bunların yedekleme sayfası blobundan temizlenmesi gerekir. Yedekleme sayfası blobuna artımlı değişiklikler yazmak için [putpage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) kullanın.
+6. *Mybackupstdpageblob_ss2*adlı yedekleme sayfası blob *'backupstdpageblob*' un bir anlık görüntüsünü alın. Önceki anlık görüntü *mypremiumdisk_ss1* Premium Depolama hesabından silin.
+7. Her yedekleme penceresinde 4-6 arasındaki adımları yineleyin. Bu şekilde, *mypremıumdisk* yedeklemelerini standart bir depolama hesabında koruyabilirsiniz.
 
-![Artımlı anlık görüntülerini kullanarak disk yedekleme](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-1.png)
+![Artımlı anlık görüntü kullanarak diski yedekleme](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-1.png)
 
-## <a name="steps-to-restore-a-disk-from-snapshots"></a>Bir disk anlık görüntülerden geri yüklemek için adımları
-Aşağıdaki adımlar, premium disk geri yükleme açıklar *mypremiumdisk* önceki bir anlık görüntüye yedekleme depolama hesabından *mybackupstdaccount*.
+## <a name="steps-to-restore-a-disk-from-snapshots"></a>Bir diski anlık görüntülerden geri yükleme adımları
+Aşağıdaki adımlarda, *mybackupstdaccount*yedekleme depolama hesabından Premium disk, *mypremıumdisk* 'in daha önceki bir anlık görüntüye nasıl geri yükleneceği anlatılmaktadır.
 
-1. Premium diske geri yüklemek istediğiniz zaman noktası belirleyin. Anlık görüntü olduğunu düşünelim *mybackupstdpageblob_ss2*, yedekleme depolama hesabında depolanan *mybackupstdaccount*.
-2. Anlık görüntüyü mybackupstdaccount içinde yükseltme *mybackupstdpageblob_ss2* yeni yedekleme temel sayfa blobu olarak *mybackupstdpageblobrestored*.
-3. Olarak adlandırılan bu geri yüklenen yedekleme sayfa blob anlık *mybackupstdpageblobrestored_ss1*.
-4. Geri yüklenen sayfa blobu Kopyala *mybackupstdpageblobrestored* gelen *mybackupstdaccount* için *mypremiumaccount* yeni premium disk olarak  *mypremiumdiskrestored*.
-5. Anlık *mypremiumdiskrestored*adlı *mypremiumdiskrestored_ss1* ileride artımlı yedekleme yapmak için.
-6. DS serisi VM için geri yüklenen diski işaret *mypremiumdiskrestored* ve eski ayırma *mypremiumdisk* VM'den.
-7. Geri yüklenen diski için önceki bölümde açıklanan yedekleme işlemine başlamak *mypremiumdiskrestored*kullanarak *mybackupstdpageblobrestored* yedekleme sayfa blobu olarak.
+1. Premium diski geri yüklemek istediğiniz zaman noktasını belirler. Bunun, *mybackupstdaccount*yedekleme depolama hesabında depolanan anlık görüntü *mybackupstdpageblob_ss2*olduğunu varsayalım.
+2. Mybackupstdaccount içinde, anlık görüntü *mybackupstdpageblob_ss2* yeni yedekleme temel sayfası blobu *mybackupstdpageblobrestore*olarak yükseltin.
+3. *Mybackupstdpageblobrestored_ss1*adlı geri yüklenen bu yedekleme sayfası blobunun anlık görüntüsünü alın.
+4. Yeni Premium disk *mypremıumdiskgeri yüklendiği*için *mybackupstdaccount* öğesinden *mypremıumaccount* 'a geri yüklenen *mybackupstdpageblobrestore adlı* geri yüklenen sayfa blobunu kopyalayın.
+5. Daha sonra artımlı yedeklemeler yapmak için *mypremiumdiskrestored_ss1* adlı *mypremıumdiskgeri yüklenmiş*bir anlık görüntü alın.
+6. DS serisi VM 'yi geri yüklenen disk *mypremıumdiskgeri yüklendi* diskine getirin ve eski *MYPREMıUMDISK* 'yi VM 'den ayırın.
+7. Yedekleme sayfası blobu olarak *geri yüklenen mybackupstdpageblobı* kullanılarak geri yüklenen disk *mypremıumdiskrestore*Için önceki bölümde açıklanan Yedekleme sürecini başlatın.
 
-![Disk anlık görüntülerden geri yükleme](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-2.png)
+![Diski anlık görüntülerden geri yükle](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-2.png)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Bir blobun anlık görüntülerini oluşturma ve sanal makine yedekleme altyapınızı planlama hakkında daha fazla bilgi için aşağıdaki bağlantıları kullanın.
+Bir Blobun anlık görüntülerini oluşturma ve VM yedekleme altyapınızı planlama hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın.
 
-* [Bir blobun anlık görüntüsünü oluşturma](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)
-* [VM yedekleme altyapınızı planlama](../articles/backup/backup-azure-vms-introduction.md)
+* [Blob 'un anlık görüntüsünü oluşturma](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)
+* [VM yedekleme altyapınızı planlayın](../articles/backup/backup-azure-vms-introduction.md)
 

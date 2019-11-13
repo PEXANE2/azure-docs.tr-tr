@@ -1,21 +1,18 @@
 ---
 title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: c448ab889ad263f4f8b6c9a59048551ca761d69a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c345f96ef5176c4afb3d46aaca2e9903c7911fb1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464041"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959899"
 ---
-# <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
+# <a name="understand-azure-policy-effects"></a>Azure İlkesi etkilerini anlama
 
-Azure Ilkesindeki her ilke tanımının tek bir etkisi vardır. Bu efekt, ilke kuralı eşleşecek şekilde değerlendirildiğinde ne olacağını belirler. Yeni bir kaynak, güncelleştirilmiş bir kaynak veya mevcut bir kaynak için olmaları durumunda etkiler farklı davranır.
+Azure İlkesi her ilke tanımında, tek bir etkiye sahiptir. Bu etkiyi ilke kuralı eşleşecek şekilde değerlendirildiğinde ne olacağını belirler. Yeni bir kaynak, güncelleştirilmiş bir kaynak veya mevcut bir kaynak için olmaları durumunda etkileri farklı davranır.
 
 Bu efektler Şu anda bir ilke tanımında destekleniyor:
 
@@ -33,40 +30,40 @@ Bu efektler Şu anda bir ilke tanımında destekleniyor:
 
 Azure Resource Manager aracılığıyla kaynak oluşturma veya güncelleştirme istekleri, önce Azure Ilkesi tarafından değerlendirilir. Azure Ilkesi, kaynak için uygulanan tüm atamaların bir listesini oluşturur ve ardından kaynağı her bir tanıma karşı değerlendirir. Azure Ilkesi, isteği uygun kaynak sağlayıcısına teslim etmeden önce çeşitli etkileri işler. Bunun yapılması, bir kaynak Azure Ilkesinin tasarlanan idare denetimlerini karşılamıyorsa kaynak sağlayıcısı tarafından gereksiz işlemeyi önler.
 
-- İlke kuralının değerlendirilmemesi gerekip gerekmediğini belirlemekte önce **devre dışı bırakıldı** .
+- **Devre dışı bırakılmış** önce ilke kuralı değerlendirileceğini belirlemek için denetlenir.
 - **Ekleme** ve **değiştirme** daha sonra değerlendirilir. Bu, isteği değiştiremediği için bir değişiklik, bir denetim veya reddetme efektinin tetiklemesini engelleyebilir.
-- **Reddet** daha sonra değerlendirilir. Denetimi yapılandırmadan önce değerlendirerek, istenmeyen bir kaynağın çift günlüğü engellenir.
-- Sonra **Denetim** , Istek kaynak sağlayıcısına geçmeden önce değerlendirilir.
+- **Reddetme** ardından değerlendirilir. Değerlendirerek reddetme denetim önce istenmeyen bir kaynağın çift günlük kaydı engellenir.
+- **Denetim** giden kaynak sağlayıcıya isteği önce değerlendirilir.
 
-Kaynak sağlayıcı bir başarı kodu döndürdüğünde, **Auditınotexists** ve **deployifnotexists** , ek uyumluluk günlüğü veya eyleminin gerekip gerekmediğini belirleme işlemini değerlendirir.
+Kaynak sağlayıcı bir başarı kodu döndürür sonra **AuditIfNotExists** ve **Deployıfnotexists** ek uyumluluk günlük kaydı veya eylem gerekli olup olmadığını belirlemek için değerlendirin.
 
 Şu anda **Enforceopaconstraint** veya **Enforceregopolicy** etkileri için herhangi bir değerlendirme sırası yoktur.
 
 ## <a name="disabled"></a>Devre dışı
 
-Bu efekt, durumları test etmek veya ilke tanımının etkiyi ne zaman parametreleştirildiği için faydalıdır. Bu esneklik, bu ilkenin atamalarının tümünü devre dışı bırakmak yerine tek bir atamayı devre dışı bırakmayı mümkün kılar.
+Bu etkiyi durumlarda test etmek veya ne zaman ilke tanımı etkisi parametreli için kullanışlıdır. Bu esneklik, bu ilkenin atamalarının tümünü devre dışı bırakmak yerine tek bir atama devre dışı bırakmak mümkün kılar.
 
 Devre dışı bırakılmış etkine bir alternatif, ilke atamasında ayarlanan **Enforcementmode** ' dır.
 **Enforcementmode** _devre dışı bırakıldığında_, kaynaklar yine de değerlendirilir. Etkinlik günlükleri ve ilke efekti gibi günlüğe kaydetme gerçekleşmez. Daha fazla bilgi için bkz. [ilke atama-zorlama modu](./assignment-structure.md#enforcement-mode).
 
 ## <a name="append"></a>Ekle
 
-Ekleme veya güncelleştirme sırasında istenen kaynağa ek alanlar eklemek için ekleme kullanılır. Ortak bir örnek, bir depolama kaynağı için izin verilen IP 'Leri belirtmektir.
+Append oluşturma veya güncelleştirme sırasında istenen kaynak için ek alanlar eklemek için kullanılır. Ortak bir örnek, bir depolama kaynağı için izin verilen IP 'Leri belirtmektir.
 
 > [!IMPORTANT]
 > Append etiketi olmayan özelliklerle kullanılmak üzere tasarlanmıştır. Append, oluşturma veya güncelleştirme isteği sırasında bir kaynağa etiket ekleyese de, bunun yerine Etiketler için [değiştirme](#modify) efektini kullanmanız önerilir.
 
 ### <a name="append-evaluation"></a>Değerlendirme Ekle
 
-Append, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında istek bir kaynak sağlayıcısı tarafından işlenmeden önce değerlendirilir. Append, ilke kuralının **IF** koşulu karşılandığında alanları kaynağa ekler. Ekleme efekti, özgün istekteki bir değeri farklı bir değerle geçersiz kılabilir, bu durumda bir reddetme efekti görevi görür ve isteği reddeder. Varolan bir diziye yeni bir değer eklemek için diğer adın **[\*]** sürümünü kullanın.
+Ekleme isteği, oluşturma veya bir kaynağın güncelleştirilmesi sırasında bir kaynak sağlayıcısı tarafından işlenen önce değerlendirilir. Append kaynağa alanları ekler, **varsa** ilke kuralının koşul karşılanıyorsa. Append etkili bir değer özgün istek farklı bir değerle geçersiz kılarsınız, reddetme etkisi davranır ve isteği reddeder. Varolan bir diziye yeni bir değer eklemek için diğer adın **[\*]** sürümünü kullanın.
 
-Ekleme efektini kullanan bir ilke tanımı, değerlendirme döngüsünün bir parçası olarak çalıştırıldığında, zaten mevcut olan kaynaklarda değişiklik yapmaz. Bunun yerine, **IF** koşulunu uyumlu değil olarak karşılayan herhangi bir kaynağı işaretler.
+Append efekt kullanarak bir ilke tanımı bir değerlendirme döngüsü bir parçası olarak çalıştırdığınızda, zaten mevcut olan kaynakları değişiklik yapmaz. Bunun yerine, bunu karşılayan herhangi bir kaynağa işaretler **varsa** uyumsuz olarak koşul.
 
-### <a name="append-properties"></a>Ekleme özellikleri
+### <a name="append-properties"></a>Özellikler ekleme
 
-Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **Ayrıntılar** bir dizi olduğundan, tek bir **alan/değer** çifti ya da katları alabilir. Kabul edilebilir alanların listesi için [tanım yapısına](definition-structure.md#fields) bakın.
+Bir ekleme yalnızca etkisi bir **ayrıntıları** gerekli olan bir dizi. Olarak **ayrıntıları** bir dizi ya da tek bir sürebilir **alan/değer** bölümleri veya katları çifti. Başvurmak [tanım yapısı](definition-structure.md#fields) için kabul edilebilir alanların listesi.
 
-### <a name="append-examples"></a>Ekleme örnekleri
+### <a name="append-examples"></a>Append örnekleri
 
 Örnek 1: bir depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** olan **[\*]** olmayan bir [diğer ad](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[\*]** olmayan diğer ad bir dizi olduğunda, efekt **değeri** tüm dizi olarak ekler. Dizi zaten varsa, çakışmadan bir reddetme olayı oluşur.
 
@@ -109,14 +106,14 @@ Değişiklik, oluşturma veya güncelleştirme sırasında bir kaynağa etiket e
 
 Değişiklik, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında istek bir kaynak sağlayıcısı tarafından işlenmeden önce değerlendirilir. İlke kuralının **IF** koşulu karşılandığında, bir kaynaktaki ekleme veya güncelleştirme etiketlerini değiştirme.
 
-Değişiklik efektini kullanan bir ilke tanımı, değerlendirme döngüsünün bir parçası olarak çalıştırıldığında, zaten mevcut olan kaynaklarda değişiklik yapmaz. Bunun yerine, **IF** koşulunu uyumlu değil olarak karşılayan herhangi bir kaynağı işaretler.
+Değişiklik efektini kullanan bir ilke tanımı, değerlendirme döngüsünün bir parçası olarak çalıştırıldığında, zaten mevcut olan kaynaklarda değişiklik yapmaz. Bunun yerine, bunu karşılayan herhangi bir kaynağa işaretler **varsa** uyumsuz olarak koşul.
 
 ### <a name="modify-properties"></a>Özellikleri Değiştir
 
 Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izinleri ve etiket değerlerini eklemek, güncelleştirmek veya kaldırmak için kullanılan **işlemleri** tanımlayan tüm alt özellikleri içerir.
 
-- **Roledefinitionıds** [gerekli]
-  - Bu özellik, abonelik tarafından erişilebilen rol tabanlı erişim denetimi rol KIMLIĞIYLE eşleşen bir dize dizisi içermelidir. Daha fazla bilgi için bkz. [Düzeltme-ilke tanımını yapılandırma](../how-to/remediate-resources.md#configure-policy-definition).
+- **roleDefinitionIds** [gerekli]
+  - Bu özellik, rol tabanlı erişim denetimine rol kimliği erişilebilir tarafından eşleşen bir dize dizisi içermesi gerekir. Daha fazla bilgi için [düzeltme - ilke tanımı yapılandırma](../how-to/remediate-resources.md#configure-policy-definition).
   - Tanımlanan rol, [katkıda bulunan](../../../role-based-access-control/built-in-roles.md#contributor) rolüne verilen tüm işlemleri içermelidir.
 - **işlemler** [gerekli]
   - Eşleşen kaynaklarda tamamlanacak tüm etiket işlemlerinin dizisi.
@@ -215,21 +212,21 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 ## <a name="deny"></a>Reddet
 
-Reddetme, bir ilke tanımı aracılığıyla tanımlı standartlarla eşleşmeyen bir kaynak isteğini engellemek için kullanılır ve istekte başarısız olur.
+Reddetme istek başarısız olur ve bir ilke tanımı ile tanımlanan standartları eşleşmiyor kaynak isteğiyle önlemek için kullanılır.
 
-### <a name="deny-evaluation"></a>Değerlendirmeyi Reddet
+### <a name="deny-evaluation"></a>Değerlendirme Reddet
 
-Eşleşen bir kaynağı oluştururken veya güncelleştirirken reddetme, isteği kaynak sağlayıcısına gönderilmeden önce engeller. İstek bir `403 (Forbidden)`olarak döndürülür. Portalda, ilke ataması tarafından engellenmiş olan dağıtımda durum olarak yasak görüntülenir.
+Ne zaman oluşturulurken veya güncelleştirilirken bir eşleşen kaynak Reddet isteği kaynak sağlayıcıya gönderilmeden önce engeller. İstek olarak döndürülen bir `403 (Forbidden)`. Portalda, Yasak bir ilke ataması tarafından engellendi dağıtım durumu olarak görüntülenebilir.
 
-Mevcut kaynakların değerlendirmesi sırasında, bir reddetme ilke tanımıyla eşleşen kaynaklar uyumlu değil olarak işaretlenir.
+Var olan kaynakların değerlendirmesi sırasında bir reddetme ilke tanımı eşleşen kaynak uyumlu değil olarak işaretlenir.
 
-### <a name="deny-properties"></a>Reddetme özellikleri
+### <a name="deny-properties"></a>Özellikleri Reddet
 
-Reddetme etkisi, ilke tanımının **daha sonra** koşulunda kullanılmak üzere ek özellikler içermez.
+Ek özellikleri kullanmak için reddetme etkisinin yok **ardından** ilke tanımının koşul.
 
-### <a name="deny-example"></a>Reddetme örneği
+### <a name="deny-example"></a>Örnek Reddet
 
-Örnek: reddetme efektini kullanma.
+Örnek: reddetme etkisinin kullanma.
 
 ```json
 "then": {
@@ -239,19 +236,19 @@ Reddetme etkisi, ilke tanımının **daha sonra** koşulunda kullanılmak üzere
 
 ## <a name="audit"></a>Denetim
 
-Denetim, uyumlu olmayan bir kaynağı değerlendirirken etkinlik günlüğünde bir uyarı olayı oluşturmak için kullanılır, ancak isteği durdurmaz.
+Denetim etkinlik günlüğünde, uyumlu olmayan bir kaynak değerlendirirken uyarı olayı oluşturmak için kullanılır, ancak istek bitmez.
 
-### <a name="audit-evaluation"></a>Denetim değerlendirmesi
+### <a name="audit-evaluation"></a>Denetim değerlendirme
 
-Denetim, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında Azure Ilkesi tarafından denetlenen son etkiye sahiptir. Daha sonra Azure Ilkesi kaynağı kaynak sağlayıcısına gönderir. Denetim, bir kaynak isteği ve bir değerlendirme çevrimi için aynı şekilde çalışmaktadır. Azure Ilkesi, etkinlik günlüğüne bir `Microsoft.Authorization/policies/audit/action` işlemi ekler ve kaynağı uyumlu değil olarak işaretler.
+Denetim, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında Azure Ilkesi tarafından denetlenen son etkiye sahiptir. Daha sonra Azure Ilkesi kaynağı kaynak sağlayıcısına gönderir. Denetim için kaynak isteğiyle ve değerlendirme döngüsü aynı şekilde çalışır. Azure Ilkesi, etkinlik günlüğüne bir `Microsoft.Authorization/policies/audit/action` işlemi ekler ve kaynağı uyumlu değil olarak işaretler.
 
 ### <a name="audit-properties"></a>Denetim Özellikleri
 
-Denetim efektinin, ilke tanımının **daha sonra** koşulunda kullanılmak üzere ek özellikleri yoktur.
+Ek özellikleri kullanmak için bir denetim etkisi yoktur **ardından** ilke tanımının koşul.
 
 ### <a name="audit-example"></a>Denetim örneği
 
-Örnek: denetim efektini kullanma.
+Örnek: denetim etkisiyle kullanma.
 
 ```json
 "then": {
@@ -259,45 +256,45 @@ Denetim efektinin, ilke tanımının **daha sonra** koşulunda kullanılmak üze
 }
 ```
 
-## <a name="auditifnotexists"></a>Auditınotexists
+## <a name="auditifnotexists"></a>AuditIfNotExists
 
-Auditınotexists, **IF** koşuluyla eşleşen kaynaklarda denetim imkanı sunar, ancak **daha sonra** koşulun **ayrıntılarında** belirtilen bileşenleri yoktur.
+AuditIfNotExists sağlayan eşleşen kaynak denetim **varsa** koşulu, belirtilen bileşenleri yok ancak **ayrıntıları** , **ardından** koşul.
 
-### <a name="auditifnotexists-evaluation"></a>Auditınotexists değerlendirmesi
+### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists değerlendirme
 
-Bir kaynak sağlayıcısı bir oluşturma veya güncelleştirme kaynak isteği tamamladıktan ve başarı durum kodu döndürdüğünden Auditınotexists çalışır. İlgili kaynaklar yoksa veya **ExistenceCondition** tarafından tanımlanan kaynaklar true olarak değerlendirilmiyorsa denetim gerçekleşir. Azure Ilkesi, denetim efektine benzer bir şekilde etkinlik günlüğüne bir `Microsoft.Authorization/policies/audit/action` işlemi ekler. Tetiklendiğinde **, durum durumunu karşılayan** kaynak, uyumlu değil olarak işaretlenen kaynaktır.
+Bir kaynak sağlayıcısı oluşturma veya güncelleştirme kaynak isteğiyle işlediği ve bir başarı durum kodu döndürdü sonra AuditIfNotExists çalıştırır. Hiçbir ilgili kaynaklar varsa veya kaynaklar tarafından tanımlanan denetim gerçekleşir **ExistenceCondition** doğru olarak değerlendirilebilmesi yok. Azure Ilkesi, denetim efektine benzer bir şekilde etkinlik günlüğüne bir `Microsoft.Authorization/policies/audit/action` işlemi ekler. Tetiklendiğinde, memnun kaynak **varsa** ile uyumsuz olarak işaretlenmiş kaynak bir durumdur.
 
-### <a name="auditifnotexists-properties"></a>Auditınotexists özellikleri
+### <a name="auditifnotexists-properties"></a>AuditIfNotExists özellikleri
 
-Auditınotexists etkilerinin **Details** özelliği, eşleştirilecek ilgili kaynakları tanımlayan tüm alt özellikleri içerir.
+**Ayrıntıları** eşleştirmek için ilgili kaynakları tanımlayan tüm alt AuditIfNotExists etkileri özelliğine sahiptir.
 
 - **Tür** [gerekli]
-  - Eşleştirilecek ilgili kaynağın türünü belirtir.
+  - Eşleştirmek için ilgili kaynak türünü belirtir.
   - **Ayrıntılar. Type** , **IF** koşulu kaynağı altında bir kaynak türü ise, ilke değerlendirilen kaynağın kapsamındaki bu **türden** kaynakları sorgular. Aksi takdirde, ilke, değerlendirilen kaynakla aynı kaynak grubu içinde sorgular.
 - **Ad** (isteğe bağlı)
-  - Eşleştirilecek kaynağın tam adını belirtir ve ilkenin belirtilen türdeki tüm kaynaklar yerine belirli bir kaynağı almasına neden olur.
+  - Eşleştirilecek kaynak tam adını belirtir ve belirli bir kaynak belirtilen türdeki tüm kaynakları yerine getirmek ilke neden olur.
   - **IF. Field. Type** ve **then. details. Type** ile ilgili koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve `[field('name')]`olmalıdır. Ancak, bunun yerine bir [Denetim](#audit) etkisi göz önünde bulundurulmalıdır.
-- **Resourcegroupname** (isteğe bağlı)
-  - İlgili kaynağın eşleştirmesinin farklı bir kaynak grubundan gelmesini sağlar.
-  - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
-  - Varsayılan değer **IF** koşulu kaynağının kaynak grubudur.
-- **Mevcut Tencescope** (isteğe bağlı)
-  - İzin verilen değerler, _abonelik_ ve _ResourceGroup_.
-  - İle eşleşecek ilgili kaynağı nereden getirecek yerin kapsamını ayarlar.
-  - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
-  - _ResourceGroup_Için, **resourcegroupname**içinde belirtilen **IF** koşulu kaynağının kaynak grubu veya kaynak grubu ile sınırlı olur.
-  - _Abonelik_için, ilgili kaynak için tüm aboneliği sorgular.
-  - Varsayılan _kaynak grubu_.
+- **ResourceGroupName** (isteğe bağlı)
+  - İlişkili kaynağın farklı bir kaynak grubundan gelen eşleşen sağlar.
+  - Varsa geçerli değildir **türü** altında olan bir kaynağın **varsa** koşul kaynağı.
+  - Varsayılan değer **varsa** kaynağın kaynak grubu koşul.
+- **ExistenceScope** (isteğe bağlı)
+  - İzin verilen değerler _abonelik_ ve _ResourceGroup_.
+  - Gelen eşleştirmek için ilgili kaynak almak nereye kapsamını belirler.
+  - Varsa geçerli değildir **türü** altında olan bir kaynağın **varsa** koşul kaynağı.
+  - İçin _ResourceGroup_, için sınırlar **varsa** koşul kaynağın kaynak grubu veya belirtilen kaynak grubu **ResourceGroupName**.
+  - İçin _abonelik_, ilgili kaynak için tüm abonelik sorgular.
+  - Varsayılan değer _ResourceGroup_.
 - **ExistenceCondition** (isteğe bağlı)
-  - Belirtilmemişse, **türdeki** ilgili kaynaklar etkiyi karşılar ve denetimi tetiklemez.
-  - , **IF** koşulunun ilke kuralıyla aynı dili kullanır, ancak ilgili her kaynağa ayrı ayrı değerlendirilir.
-  - Eşleşen ilgili herhangi bir kaynak true olarak değerlendirilirse, efekt karşılanır ve denetimi tetiklemez.
-  - **IF** koşulunda değerlerle denklik denetlemek için [Field ()] kullanabilirsiniz.
-  - Örneğin, üst kaynağın ( **IF** koşulunda) eşleşen ilgili kaynakla aynı kaynak konumunda olduğunu doğrulamak için kullanılabilir.
+  - Belirtilmezse, kaynağın ilgili **türü** etkisi karşılar ve denetim tetiklemediğini.
+  - Aynı dil için ilke kuralı olarak kullandığı **varsa** koşul, ancak her bir ilgili kaynak karşı ayrı ayrı değerlendirilir.
+  - Eşleşen tüm ilgili kaynakları true olarak değerlendirilirse, efekt sağlandığında ve denetim tetiklemediğini.
+  - [Field()] değerlerle denklik denetlenecek kullanabilirsiniz **varsa** koşul.
+  - Örneğin, doğrulamak için kullanılabilir üst kaynak (içinde **varsa** koşul) eşleşen ilgili kaynak ile aynı kaynak konumda olduğundan.
 
-### <a name="auditifnotexists-example"></a>Auditınotexists örneği
+### <a name="auditifnotexists-example"></a>AuditIfNotExists örneği
 
-Örnek: kötü amaçlı yazılımdan koruma uzantısının mevcut olup olmadığını belirlemesi için sanal makineleri değerlendirir ve ne zaman yoksa denetler.
+Örnek: kötü amaçlı yazılımdan koruma uzantısını var, ardından eksik olduğunda denetimleri belirlemek için sanal makineleri değerlendirir.
 
 ```json
 {
@@ -325,63 +322,63 @@ Auditınotexists etkilerinin **Details** özelliği, eşleştirilecek ilgili kay
 }
 ```
 
-## <a name="deployifnotexists"></a>DeployIfNotExists
+## <a name="deployifnotexists"></a>Deployıfnotexists
 
 Bir DeployIfNotExists öğesine benzer şekilde, bir DeployIfNotExists ilke tanımı, koşul karşılandığında bir şablon dağıtımı yürütür.
 
 > [!NOTE]
-> [Iç içe şablonlar](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template) **Deployifnotexists**ile desteklenir, ancak [bağlantılı şablonlar](../../../azure-resource-manager/resource-group-linked-templates.md) Şu anda desteklenmiyor.
+> [İç içe şablonlar](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template) ile desteklenen **Deployıfnotexists**, ancak [bağlı şablonları](../../../azure-resource-manager/resource-group-linked-templates.md) şu anda desteklenmiyor.
 
-### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists değerlendirmesi
+### <a name="deployifnotexists-evaluation"></a>Deployıfnotexists değerlendirme
 
-DeployIfNotExists, bir kaynak sağlayıcısı bir oluşturma veya güncelleştirme kaynağı isteği tamamladıktan sonra ve başarı durum kodu döndürdüğünden çalışır. İlişkili kaynaklar yoksa veya **ExistenceCondition** tarafından tanımlanan kaynaklar true olarak değerlendirilmiyorsa, şablon dağıtımı oluşur.
+Bir kaynak sağlayıcısı oluşturma veya güncelleştirme kaynak isteğiyle işlediği ve bir başarı durum kodu döndürdü sonra Deployıfnotexists çalıştırır. Hiçbir ilgili kaynaklar varsa veya kaynaklar tarafından tanımlanan bir şablon dağıtımı gerçekleşir **ExistenceCondition** doğru olarak değerlendirilebilmesi yok.
 
-Bir değerlendirme çevrimi sırasında, kaynaklarla eşleşen bir DeployIfNotExists etkisi olan ilke tanımları uyumlu değil olarak işaretlenir, ancak bu kaynakta hiçbir işlem yapılmaz.
+Bir değerlendirme döngüsü sırasında kaynaklarla eşleşen ilke tanımları Deployıfnotexists etkisi ile uyumlu değil olarak işaretlenir ancak bu kaynak üzerinde hiçbir işlem yapılmaz.
 
-### <a name="deployifnotexists-properties"></a>DeployIfNotExists özellikleri
+### <a name="deployifnotexists-properties"></a>Deployıfnotexists özellikleri
 
 DeployIfNotExists efektinin **Details** özelliği, eşleştirilecek ilgili kaynakları ve yürütülecek şablon dağıtımını tanımlayan tüm alt özellikleri içerir.
 
 - **Tür** [gerekli]
-  - Eşleştirilecek ilgili kaynağın türünü belirtir.
-  - , **IF** koşulu kaynağı altında bir kaynağı getirmeye çalışırken başlar ve sonra, **IF** koşulu kaynağıyla aynı kaynak grubu içinde sorgular.
+  - Eşleştirmek için ilgili kaynak türünü belirtir.
+  - Başlar altında bir kaynak getirilmeye çalışılırken tarafından **varsa** koşul kaynağı, ardından aynı kaynak grubunda sorgulara **varsa** koşul kaynağı.
 - **Ad** (isteğe bağlı)
-  - Eşleştirilecek kaynağın tam adını belirtir ve ilkenin belirtilen türdeki tüm kaynaklar yerine belirli bir kaynağı almasına neden olur.
+  - Eşleştirilecek kaynak tam adını belirtir ve belirli bir kaynak belirtilen türdeki tüm kaynakları yerine getirmek ilke neden olur.
   - **IF. Field. Type** ve **then. details. Type** ile ilgili koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve `[field('name')]`olmalıdır.
-- **Resourcegroupname** (isteğe bağlı)
-  - İlgili kaynağın eşleştirmesinin farklı bir kaynak grubundan gelmesini sağlar.
-  - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
-  - Varsayılan değer **IF** koşulu kaynağının kaynak grubudur.
-  - Bir şablon dağıtımı yürütülürse, bu değerin kaynak grubunda dağıtılır.
-- **Mevcut Tencescope** (isteğe bağlı)
-  - İzin verilen değerler, _abonelik_ ve _ResourceGroup_.
-  - İle eşleşecek ilgili kaynağı nereden getirecek yerin kapsamını ayarlar.
-  - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
-  - _ResourceGroup_Için, **resourcegroupname**içinde belirtilen **IF** koşulu kaynağının kaynak grubu veya kaynak grubu ile sınırlı olur.
-  - _Abonelik_için, ilgili kaynak için tüm aboneliği sorgular.
-  - Varsayılan _kaynak grubu_.
+- **ResourceGroupName** (isteğe bağlı)
+  - İlişkili kaynağın farklı bir kaynak grubundan gelen eşleşen sağlar.
+  - Varsa geçerli değildir **türü** altında olan bir kaynağın **varsa** koşul kaynağı.
+  - Varsayılan değer **varsa** kaynağın kaynak grubu koşul.
+  - Şablon dağıtımı yürütülürse, bu değer kaynak grubunda dağıtılır.
+- **ExistenceScope** (isteğe bağlı)
+  - İzin verilen değerler _abonelik_ ve _ResourceGroup_.
+  - Gelen eşleştirmek için ilgili kaynak almak nereye kapsamını belirler.
+  - Varsa geçerli değildir **türü** altında olan bir kaynağın **varsa** koşul kaynağı.
+  - İçin _ResourceGroup_, için sınırlar **varsa** koşul kaynağın kaynak grubu veya belirtilen kaynak grubu **ResourceGroupName**.
+  - İçin _abonelik_, ilgili kaynak için tüm abonelik sorgular.
+  - Varsayılan değer _ResourceGroup_.
 - **ExistenceCondition** (isteğe bağlı)
-  - Belirtilmemişse, **türü** ilgili herhangi bir kaynak etkiyi karşılar ve dağıtımı tetiklemez.
-  - , **IF** koşulunun ilke kuralıyla aynı dili kullanır, ancak ilgili her kaynağa ayrı ayrı değerlendirilir.
-  - Eşleşen ilgili herhangi bir kaynak true olarak değerlendirilirse, efekt karşılanır ve dağıtımı tetiklemez.
-  - **IF** koşulunda değerlerle denklik denetlemek için [Field ()] kullanabilirsiniz.
-  - Örneğin, üst kaynağın ( **IF** koşulunda) eşleşen ilgili kaynakla aynı kaynak konumunda olduğunu doğrulamak için kullanılabilir.
-- **Roledefinitionıds** [gerekli]
-  - Bu özellik, abonelik tarafından erişilebilen rol tabanlı erişim denetimi rol KIMLIĞIYLE eşleşen bir dize dizisi içermelidir. Daha fazla bilgi için bkz. [Düzeltme-ilke tanımını yapılandırma](../how-to/remediate-resources.md#configure-policy-definition).
+  - Belirtilmezse, kaynağın ilgili **türü** etkisi karşılar ve dağıtımı tetikleyecek değil.
+  - Aynı dil için ilke kuralı olarak kullandığı **varsa** koşul, ancak her bir ilgili kaynak karşı ayrı ayrı değerlendirilir.
+  - Eşleşen tüm ilgili kaynakları true olarak değerlendirilirse, efekt sağlandığında ve dağıtımı tetikleyecek değil.
+  - [Field()] değerlerle denklik denetlenecek kullanabilirsiniz **varsa** koşul.
+  - Örneğin, doğrulamak için kullanılabilir üst kaynak (içinde **varsa** koşul) eşleşen ilgili kaynak ile aynı kaynak konumda olduğundan.
+- **roleDefinitionIds** [gerekli]
+  - Bu özellik, rol tabanlı erişim denetimine rol kimliği erişilebilir tarafından eşleşen bir dize dizisi içermesi gerekir. Daha fazla bilgi için [düzeltme - ilke tanımı yapılandırma](../how-to/remediate-resources.md#configure-policy-definition).
 - **Deploymentscope** (isteğe bağlı)
-  - İzin verilen değerler, _abonelik_ ve _ResourceGroup_.
+  - İzin verilen değerler _abonelik_ ve _ResourceGroup_.
   - Tetiklenecek dağıtımın türünü ayarlar. _Abonelik_ , [abonelik düzeyinde bir dağıtımı](../../../azure-resource-manager/deploy-to-subscription.md)gösterir, _ResourceGroup_ bir kaynak grubuna yönelik bir dağıtımı gösterir.
   - Abonelik düzeyinde dağıtımlar kullanılırken _dağıtımda_ bir _konum_ özelliği belirtilmelidir.
-  - Varsayılan _kaynak grubu_.
+  - Varsayılan değer _ResourceGroup_.
 - **Dağıtım** [gerekli]
-  - Bu özellik, `Microsoft.Resources/deployments` PUT API 'sine geçirilecek şekilde tam şablon dağıtımını içermelidir. Daha fazla bilgi için bkz. [dağıtımlar REST API](/rest/api/resources/deployments).
+  - Bu özellik için geçirilir gibi tam şablon dağıtımı içermelidir `Microsoft.Resources/deployments` API yerleştirin. Daha fazla bilgi için [dağıtımları REST API](/rest/api/resources/deployments).
 
   > [!NOTE]
-  > **Dağıtım** özelliğinin içindeki tüm işlevler, ilke değil, şablonun bileşenleri olarak değerlendirilir. Özel durum, ilkeden şablona değer geçiren **Parameters** özelliğidir. Bu bölümdeki **değer** bir şablon parametresi adı altında bu değer geçişini gerçekleştirmek için kullanılır (Deployıfnotexists örneğinde bkz. _fulldbname_ ).
+  > Tüm işlevler içinde **dağıtım** özelliği, ilke şablonu bileşenleri olarak değerlendirilir. Özel durum **parametreleri** şablona ilkeden değerleri geçirir özelliği. **Değer** bu bölümünde bir şablon parametre adı geçirerek bu değer gerçekleştirmek için kullanılır (bkz _fullDbName_ Deployıfnotexists örnekte).
 
-### <a name="deployifnotexists-example"></a>DeployIfNotExists örneği
+### <a name="deployifnotexists-example"></a>Deployıfnotexists örneği
 
-Örnek: transparentDataEncryption etkinleştirilip etkinleştirilmediğini belirlemede SQL Server veritabanlarını değerlendirir. Aksi takdirde, etkinleştirilecek bir dağıtım yürütülür.
+Örnek: SQL Server veritabanlarını transparentDataEncryption etkin olup olmadığını belirlemek için değerlendirir. Aksi takdirde, etkinleştirilecek bir dağıtım yürütülür.
 
 ```json
 "if": {
@@ -540,34 +537,34 @@ EnforceRegoPolicy efektinin **Details** özelliği, Gatekeeper v2 giriş denetim
 }
 ```
 
-## <a name="layering-policies"></a>İlkeleri katmanlama
+## <a name="layering-policies"></a>Katmanlama ilkeleri
 
-Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örneğin:
+Bir kaynak tarafından birkaç atamaları etkilenebilir. Bu atamaları, aynı kapsamda veya farklı kapsamlardaki olabilir. Her biri bu atamaları da tanımlanan farklı bir etkiye sahip olma olasılığı yüksektir. Her ilke için geçerli ve koşul bağımsız olarak değerlendirilir. Örneğin:
 
 - İlke 1
-  - Kaynak konumunu ' westus ' olarak kısıtlar
-  - A aboneliğine atandı
+  - Kaynak konumu 'westus' için sınırlar
+  - Bir abonelik için atanan
   - Reddetme etkisi
 - İlke 2
-  - Kaynak konumunu ' eastus ' olarak kısıtlar
-  - A aboneliği içindeki kaynak grubu B 'ye atandı
+  - 'Myresourcegroup' kaynak konumuna kısıtlar
+  - Bir Abonelikteki kaynak grubu B atanan
   - Denetim etkisi
   
-Bu kurulum aşağıdaki sonuca neden olur:
+Bu kurulum, aşağıdaki sonucu neden olur:
 
-- ' Eastus ' içindeki kaynak grubu B 'de bulunan herhangi bir kaynak, ilke 2 ile uyumlu ve ilke 1 ile uyumlu değil
-- Kaynak grubu B 'de ' eastus ' içinde olmayan herhangi bir kaynak, ilke 2 ile uyumlu değil ve ' westus ' içinde değilse ilke 1 ile uyumlu değil
-- ' Westus ' içinde olmayan abonelikte bulunan yeni kaynaklar ilke 1 tarafından reddedildi
-- A aboneliği ve ' westus ' içindeki kaynak grubu B 'deki tüm yeni kaynaklar, ilke 2 ' de oluşturulur ve uyumlu değildir
+- 'Myresourcegroup' kaynak grubunda B zaten bulunan herhangi bir kaynağa uyumlu İlkesi 2 ve 1 ilkeyle uyumlu olmayan
+- 2 ilkeyle uyumlu olmayan ve 1 değilse 'westus' ilkeye uyumlu olmayan herhangi bir kaynak zaten kaynak grubundaki B 'eastus' içinde değil
+- Yeni bir kaynak değil 'westus', abonelik a 1 ilke tarafından reddedildi
+- Oluşturulan ve 2 ilkesindeki uyumlu olmayan yeni bir kaynak bir aboneliği ve 'westus' kaynak grubunda B
 
-İlke 1 ve ilke 2 ' nin reddetme etkisi varsa, durum şu şekilde değişir:
+Hem ilke 1 ve 2 İlkesi vardı efekt, durum değişikliklerini reddet:
 
-- Kaynak grubu B 'de ' eastus ' içinde olmayan herhangi bir kaynak, ilke 2 ile uyumlu değil
-- Kaynak grubu B 'de ' westus ' içinde olmayan herhangi bir kaynak, ilke 1 ile uyumlu değil
-- ' Westus ' içinde olmayan abonelikte bulunan yeni kaynaklar ilke 1 tarafından reddedildi
-- A aboneliğinin B kaynak grubundaki tüm yeni kaynaklar reddedildi
+- Kaynak grubu B 'eastus' de bulunan herhangi bir kaynak İlkesi 2 uyumlu değil
+- Kaynak grubu B 'westus' de bulunan herhangi bir kaynak İlkesi 1 uyumlu değil
+- Yeni bir kaynak değil 'westus', abonelik a 1 ilke tarafından reddedildi
+- Abonelik a B kaynak grubundaki yeni bir kaynak engellendi
 
-Her atama tek tek değerlendirilir. Bu nedenle, bir kaynağın kapsamdaki farklılıklar arasından bir boşluk ile bir kaynak için bir fırsat yoktur. Katman ilkelerinin veya ilke çakışmasayısının net sonucu, **en çok kısıtlayıcı**olarak kabul edilir. Örnek olarak, hem ilke 1 hem de 2 bir reddetme efekti içeriyorsa, çakışan ve çakışan ilkeler tarafından bir kaynak engellenir. Hala hedef kapsamda oluşturulacak kaynak gerekiyorsa, doğru ilkelerin doğru kapsamları etkilediğini doğrulamak için her atamadaki dışlamaları gözden geçirin.
+Her atama ayrı ayrı değerlendirilir. Bu nedenle, hiç bir kaynak için bir fırsat boşluk aracılığıyla irsaliyesi için kapsam farklarını öğesinden. Sonucunda katmanlama ilkeleri veya ilke çakışma olarak kabul edilir **toplu en kısıtlayıcı**. Örnek olarak, her iki ilke 1 ve 2 reddetme etkisinin aksine olsaydı çakışan ve çakışan ilkeleri tarafından kaynak engellenebilir. Kaynağın yine de gerekliyse, gözden geçirme hedef kapsamda oluşturulan doğru kapsamlar doğru ilkelerini doğrulamak için her atamada Dışlamalar etkiliyor olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

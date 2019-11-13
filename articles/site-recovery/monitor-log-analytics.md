@@ -1,18 +1,18 @@
 ---
-title: Azure Izleyici günlükleri ile Azure Site Recovery izleme (Log Analytics) | Microsoft Docs
+title: Azure Izleyici günlükleriyle Azure Site Recovery izleme
 description: Azure Izleyici günlükleriyle Azure Site Recovery izlemeyi öğrenin (Log Analytics)
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/13/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b5bf568e03d4949b8798dd2e0f4c2d8cbcbbe0c7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331930"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936084"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure İzleyici Günlükleriyle Site Recovery’yi izleme
 
@@ -42,7 +42,7 @@ Başlamadan önce [yaygın izleme sorularını](monitoring-common-questions.md) 
 
 ## <a name="configure-site-recovery-to-send-logs"></a>Günlükleri göndermek için Site Recovery yapılandırma
 
-1. Kasada, **Tanılama ayarları** > **Tanılama ayarı Ekle**' ye tıklayın.
+1. Kasada, tanılama **ayarları** > **Tanılama ayarı Ekle**' ye tıklayın.
 
     ![Tanılama günlüğünü seçin](./media/monitoring-log-analytics/add-diagnostic.png)
 
@@ -61,7 +61,7 @@ Site Recovery Günlükler seçili çalışma alanındaki bir tabloya (**AzureDia
 [Kusto sorgu diliyle](../azure-monitor/log-query/get-started-queries.md)yazılmış günlük sorgularını kullanarak günlüklerden veri alırsınız. Bu bölümde, Site Recovery izlemek için kullanabileceğiniz yaygın sorgulara yönelik birkaç örnek verilmiştir.
 
 > [!NOTE]
-> Bazı örneklerde **replicationProviderName_s** , **A2A**olarak ayarlanır. Bu, Site Recovery kullanılarak ikincil bir Azure bölgesine çoğaltılan Azure VM 'lerini alır. Bu örneklerde, Site Recovery kullanarak Azure 'a çoğaltılan şirket içi VMware VM 'lerini veya fiziksel sunucuları almak istiyorsanız **A2A** ile **InMageAzureV2**değiştirebilirsiniz.
+> Örneklerden bazıları **A2A**olarak ayarlanmış **replicationProviderName_s** kullanır. Bu, Site Recovery kullanılarak ikincil bir Azure bölgesine çoğaltılan Azure VM 'lerini alır. Bu örneklerde, Site Recovery kullanarak Azure 'a çoğaltılan şirket içi VMware VM 'lerini veya fiziksel sunucuları almak istiyorsanız **A2A** ile **InMageAzureV2**değiştirebilirsiniz.
 
 
 ### <a name="query-replication-health"></a>Sorgu çoğaltma durumu
@@ -223,7 +223,7 @@ AzureDiagnostics 
 Azure Izleyici verilerine göre Site Recovery uyarıları ayarlayabilirsiniz. Günlük uyarılarını ayarlama hakkında [daha fazla bilgi edinin](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) . 
 
 > [!NOTE]
-> Bazı örneklerde **replicationProviderName_s** , **A2A**olarak ayarlanır. Bu, ikincil bir Azure bölgesine çoğaltılan Azure VM 'Leri için uyarıları ayarlar. Bu örneklerde, Azure 'a çoğaltılan şirket içi VMware VM 'Leri veya fiziksel sunucular için uyarılar ayarlamak istiyorsanız **A2A** ile **InMageAzureV2** değiştirebilirsiniz.
+> Örneklerden bazıları **A2A**olarak ayarlanmış **replicationProviderName_s** kullanır. Bu, ikincil bir Azure bölgesine çoğaltılan Azure VM 'Leri için uyarıları ayarlar. Bu örneklerde, Azure 'a çoğaltılan şirket içi VMware VM 'Leri veya fiziksel sunucular için uyarılar ayarlamak istiyorsanız **A2A** ile **InMageAzureV2** değiştirebilirsiniz.
 
 ### <a name="multiple-machines-in-a-critical-state"></a>Kritik durumdaki birden çok makine
 

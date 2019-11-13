@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights önizlemeye erişmek ve bunları yönetmek için güvenliği yapılandırma | Microsoft Docs
-description: Bu makalede, Azure Time Series Insights önizlemenin güvenliğini sağlamak için yönetim erişim ilkeleri ve veri erişim ilkeleri olarak güvenlik ve izinlerin nasıl yapılandırılacağı açıklanır.
+title: Veri erişimi sağlamak için güvenliği Yapılandırma-Azure Time Series Insights önizlemesi | Microsoft Docs
+description: Azure Time Series Insights önizleme ortamınızda güvenlik, izinleri yapılandırma ve veri erişimi ilkelerini yönetme hakkında bilgi edinin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d835916ab1a9d99149800a50690876080a8c5fd
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f49567b8060be2bf2a9ca2b8a1bdee23f58fdd6b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990162"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012678"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Bir ortama veri erişimi verme
 
@@ -24,7 +24,7 @@ Bu makalede, Azure Time Series Insights önizleme erişim ilkelerinin iki türü
 
 ## <a name="sign-in-to-time-series-insights"></a>Time Series Insights oturum açın
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Time Series Insights ortamınızı bulun. **Arama** kutusuna `Time Series` girin. Arama sonuçlarında **zaman serisi ortamını** seçin.
 1. Listeden Zaman Serisi Görüşleri ortamınızı seçin.
 

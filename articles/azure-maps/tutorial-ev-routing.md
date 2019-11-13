@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9cc7fc1ba8c7f55700505ea8fca0dea4f836e333
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9628e34b752abc8d77225a612f9f6daaf02fcbf7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243296"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011111"
 ---
 # <a name="route-electric-vehicles-by-using-azure-notebooks-python"></a>Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 
@@ -24,7 +24,7 @@ Azure haritalar REST API 'Leri, Jeo-uzamsal veri analizi ve makine öğrenimi se
 
 Bu öğreticide, elektrik araç pili ücretlendirmesi düşük olan bir sürücünün, aracın konumundaki sürücü zamanına bağlı olarak en yakın olası ücretlendirme istasyonunu bulmak için bir senaryoya kılavuzluk eder.
 
-Bu öğreticide şunları yapmanız gerekir:
+Bu öğreticide şunları yapacaksınız:
 
 > [!div class="checklist"]
 > * Bulutta [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) bir Jupyter Not defteri oluşturun ve çalıştırın.
@@ -35,19 +35,19 @@ Bu öğreticide şunları yapmanız gerekir:
 > * Sürücü zamanına göre en yakın elektrik araç doldurma istasyonuna bir yol bulun ve görselleştirin.
 
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu öğreticiyi tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. 
 
 S1 fiyatlandırma katmanında bir Azure Maps hesabı aboneliği oluşturmak için [Azure haritalar hesabınızı yönetme](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)bölümündeki yönergeleri izleyin. 
 
-Hesabınız için birincil abonelik anahtarını almak için [Azure haritalar 'ı kullanarak yakın ilgi çekici noktaları ara](./tutorial-search-location.md#getkey) bölümündeki yönergeleri izleyin.
+Hesabınız için birincil abonelik anahtarını almak için [Hesap oluşturma ve anahtarınızı edinme](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key)bölümündeki yönergeleri izleyin.
 
 ## <a name="create-an-azure-notebook"></a>Azure Not defteri oluşturma
 
 Bu öğreticiyle birlikte izlemek için bir Azure Not defteri projesi oluşturmanız ve Jupyter Not defteri dosyasını indirmeniz ve çalıştırmanız gerekir. Not defteri dosyası, bu öğreticide senaryoyu uygulayan Python kodunu içerir. Bir Azure Not defteri projesi oluşturmak ve Jupyter Not Defteri belgesini buna yüklemek için aşağıdakileri yapın:
 
-1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. Daha fazla bilgi için bkz. [hızlı başlangıç: oturum açın ve bir kullanıcı kimliği ayarlayın](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
+1. Git [Azure not defterleri](https://notebooks.azure.com) ve oturum açın. Daha fazla bilgi için bkz. [hızlı başlangıç: oturum açın ve bir kullanıcı kimliği ayarlayın](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. Ortak profil sayfanızın en üstünde **Projelerim**' nı seçin.
 
     ![Projelerim düğmesi](./media/tutorial-ev-routing/myproject.png)
@@ -60,7 +60,7 @@ Bu öğreticiyle birlikte izlemek için bir Azure Not defteri projesi oluşturma
  
     ![Yeni proje oluştur bölmesi](./media/tutorial-ev-routing/create-project-window.png)
 
-1. **Oluştur**' u seçin.
+1. **Oluştur**'u seçin.
 
 1. Projeniz oluşturulduktan sonra, [Azure Maps Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) [Jupyter Not defteri belge dosyasını](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) indirin. 
 
@@ -76,20 +76,20 @@ Not Defteri dosyasında uygulanan işlevselliği daha iyi anlamanıza yardımcı
 
   ![Çalıştır düğmesi](./media/tutorial-ev-routing/run.png)
 
-## <a name="install-project-level-packages"></a>Proje düzeyi paketleri 'ni yükler
+## <a name="install-project-level-packages"></a>Proje düzeyi paketleri yükleme
 
 Kodu Not defterinde çalıştırmak için, aşağıdaki işlemleri yaparak paketleri proje düzeyine yüklersiniz:
 
 1. [Azure Maps Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) [*requirements. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) dosyasını indirin ve ardından projenize yükleyin.
-1. Proje panosunda **proje ayarları**' nı seçin. 
+1. Proje Panosu üzerinde seçin **proje ayarları**. 
 1. **Proje ayarları** bölmesinde **ortam** sekmesini seçin ve ardından **Ekle**' yi seçin.
 1. **Ortam kurulum adımları**altında aşağıdakileri yapın:   
     a. İlk açılan listede, **requirements. txt**' yi seçin.  
     b. İkinci açılan listede, *requirements. txt* dosyanızı seçin.  
-    ,. Üçüncü açılan listede sürüm olarak **Python sürüm 3,6** ' ı seçin.
-1. **Kaydet**' i seçin.
+    c. Üçüncü açılan listede sürüm olarak **Python sürüm 3,6** ' ı seçin.
+1. **Kaydet**’i seçin.
 
-    ![Paketleri yükler](./media/tutorial-ev-routing/install-packages.png)
+    ![Paketleri yükleme](./media/tutorial-ev-routing/install-packages.png)
 
 ## <a name="load-the-required-modules-and-frameworks"></a>Gerekli modülleri ve çerçeveleri yükleme
 
@@ -281,7 +281,7 @@ display(Image(poiRangeMap))
 
 Erişilebilir aralıktaki tüm olası ücretlendirme istasyonlarını belirledikten sonra, en az bir süre içinde bunlardan hangilerinin ulaşılabileceğini bilmeniz gerekir. 
 
-Aşağıdaki betik, belirtilen araç konumu için döndürülen Azure Maps [matris YÖNLENDIRME API](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)'sini çağırır. Bu, her bir ücretlendirme istasyonuna seyahat süresini ve uzaklığını döndürür. Sonraki hücredeki betik, zaman açısından en yakın erişilebilir doldurma istasyonunu bulma yanıtını ayrıştırır.
+Aşağıdaki betik, belirtilen araç konumu için döndürülen Azure Maps [matris YÖNLENDIRME API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)'sini çağırır. Bu, her bir ücretlendirme istasyonuna seyahat süresini ve uzaklığını döndürür. Sonraki hücredeki betik, zaman açısından en yakın erişilebilir doldurma istasyonunu bulma yanıtını ayrıştırır.
 
 En az sürede erişilebilecek en yakın erişilebilir doldurma istasyonunu bulmak için betiği aşağıdaki hücrede çalıştırın:
 
@@ -395,7 +395,7 @@ Bu öğreticide kullanılan Azure Maps API 'Lerini araştırmak için, bkz.:
 * [Geometri Içinde arama sonrası](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
 * [Karşıya veri yükleme](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
 * [Render-harita görüntüsünü al](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Rota sonrası matrisi](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)
+* [Rota sonrası matrisi](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Rota yönlerini al](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
 Azure haritalar REST API 'lerinin tüm listesi için bkz. [Azure Maps REST API 'leri](https://docs.microsoft.com/azure/azure-maps/#reference).

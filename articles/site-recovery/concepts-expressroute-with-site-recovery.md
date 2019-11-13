@@ -1,5 +1,5 @@
 ---
-title: Olağanüstü durum kurtarma ve geçiş için Azure Site Recovery Azure ExpressRoute kullanma hakkında | Microsoft Docs
+title: Azure Site Recovery ile ExpressRoute kullanma hakkında
 description: Olağanüstü durum kurtarma ve geçiş için Azure Site Recovery hizmetiyle Azure ExpressRoute 'un nasıl kullanılacağını açıklar.
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 97aea824fac60f8bed71971a416f12e8df0e5e64
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: dcc5105fcf2ad7b6a9f0695b3086dc2956a76a50
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333059"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954063"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure Site Recovery ile Azure ExpressRoute
 
@@ -23,7 +23,7 @@ Bu makalede, olağanüstü durum kurtarma ve geçiş için Azure Site Recovery A
 
 ## <a name="expressroute-circuits"></a>ExpressRoute devreleri
 
-ExpressRoute devresi, bir bağlantı sağlayıcısı aracılığıyla şirket içi altyapınız ile Microsoft bulut hizmetleri arasındaki mantıksal bir bağlantıyı temsil eder. Birden fazla ExpressRoute devresine sipariş edebilirsiniz. Her devre aynı veya farklı bölgelerde olabilir ve farklı bağlantı sağlayıcıları aracılığıyla şirket içi olarak bağlanabilir. ExpressRoute devreleri hakkında [buradan](../expressroute/expressroute-circuit-peerings.md)daha fazla bilgi edinin.
+Bir ExpressRoute bağlantı hattı, şirket içi altyapınızı ve bağlantı sağlayıcı üzerinden Microsoft bulut hizmetleri arasında mantıksal bağlantıyı temsil eder. Birden çok ExpressRoute bağlantı hattına sipariş edebilirsiniz. Her bağlantı hattı aynı veya farklı bölgelerde olabilir ve farklı bağlantı sağlayıcıları aracılığıyla şirket içinde bağlanabilir. ExpressRoute devreleri hakkında [buradan](../expressroute/expressroute-circuit-peerings.md)daha fazla bilgi edinin.
 
 ExpressRoute bağlantı hattının ilişkili birden çok yönlendirme etki alanı vardır. Daha fazla bilgi edinin ve ExpressRoute yönlendirme etki alanlarını [burada](../expressroute/expressroute-circuit-peerings.md#peeringcompare)karşılaştırın.
 
@@ -46,7 +46,7 @@ Bu, iletişim proxy üzerinden ilerleirken yalnızca çoğaltma trafiğinin Expr
 
 Sanal makineler veya sunucular bir Azure sanal ağına yük devreden sonra, [özel eşleme](../expressroute/expressroute-circuit-peerings.md#privatepeering)kullanarak bunlara erişebilirsiniz. 
 
-Birleşik senaryo şu diyagramda temsil edilir: ExpressRoute @ no__t-1 ile şirket içi @no__t-on-Azure arası
+Birleşik senaryo şu diyagramda temsil edilir: ExpressRoute ile Şirket içinden Azure 'a ![](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>ExpressRoute ile Azure 'dan Azure 'a çoğaltma
 

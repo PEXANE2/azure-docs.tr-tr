@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 21600036302050aeea3e2ea989d86e18b208c087
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470101"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958028"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -26,7 +26,7 @@ Azure, [App Service bir uygulamada](overview.md)hata ayıklamaya yardımcı olma
 Bu makalede tanılama günlükleri ile çalışmak için [Azure Portal](https://portal.azure.com) ve Azure CLI kullanılmaktadır. Visual Studio kullanarak tanılama günlükleri ile çalışma hakkında daha fazla bilgi için bkz. [Visual Studio 'Da Azure sorunlarını giderme](troubleshoot-dotnet-visual-studio.md).
 
 > [!NOTE]
-> Bu makaledeki günlüğe kaydetme yönergelerine ek olarak, Azure Izleme ile yeni ve tümleşik günlüğe kaydetme özelliği de mevcuttur. Bu özelliği [Günlükler sayfasında ve Tanılama ayarları (Önizleme) sayfasında](https://aka.ms/appsvcblog-azmon)bulabilirsiniz. 
+> Bu makaledeki günlüğe kaydetme yönergelerine ek olarak, Azure Izleme ile yeni ve tümleşik günlüğe kaydetme özelliği de mevcuttur. Bu özellikten daha fazla bilgi edinmek [için günlükleri Azure Izleyicisine gönder (Önizleme) bölümüne bakın](#send-logs-to-azure-monitor-preview) . 
 >
 >
 
@@ -67,8 +67,8 @@ Günlüğe kaydedilecek ayrıntı düzeyini veya **düzeyi**seçin. Aşağıdaki
 | Düzey | Dahil edilen Kategoriler |
 |-|-|
 |**Devre dışı** | None |
-|**Hatayla** | Hata, kritik |
-|**Warning** | Uyarı, hata, kritik|
+|**Hata:** | Hata, kritik |
+|**Uyarı** | Uyarı, hata, kritik|
 |**Bilgi** | Bilgi, uyarı, hata, kritik|
 |**Seçeneini** | Trace, Debug, Info, uyarı, hata, kritik (tüm kategoriler) |
 
@@ -178,7 +178,28 @@ Windows uygulamaları için, ZIP dosyası App Service dosya sistemindeki *D:\hom
 | **Web sunucusu günlükleri** | */LogFiles/http/RawLogs/* | [W3C Genişletilmiş günlük dosyası biçimi](/windows/desktop/Http/w3c-logging)kullanılarak biçimlendirilen metin dosyalarını içerir. Bu bilgiler, bir metin düzenleyici veya [günlük ayrıştırıcısı](https://go.microsoft.com/fwlink/?LinkId=246619)gibi bir yardımcı program kullanılarak okunabilir.<br/>App Service, `s-computername`, `s-ip`veya `cs-version` alanlarını desteklemez. |
 | **Dağıtım günlükleri** | */LogFiles/git/* ve */Deployments/* | Ayrıca, iç dağıtım işlemlerine ve git dağıtımları günlüklerine göre oluşturulan günlükleri içerir. |
 
+## <a name="send-logs-to-azure-monitor-preview"></a>Günlükleri Azure Izleyici 'ye gönderme (Önizleme)
+
+Yeni [Azure izleyici tümleştirmesiyle](https://aka.ms/appsvcblog-azmon), günlükleri depolama hesaplarına, Event Hubs ve Log Analytics göndermek Için [Tanılama ayarları (Önizleme) oluşturabilirsiniz](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting) . 
+
+> [!div class="mx-imgBorder"]
+> ![Tanılama ayarları (Önizleme)](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
+
+### <a name="supported-log-types"></a>Desteklenen günlük türleri
+
+Aşağıdaki tabloda desteklenen günlük türleri ve açıklamaları gösterilmektedir: 
+
+| Günlük türü | Windows desteği | Linux desteği | Açıklama |
+|-|-|-|
+| AppServiceConsoleLogs | TBA dili | Yes | Standart çıkış ve standart hata |
+| AppServiceHTTPLogs | Yes | Yes | Web sunucusu günlükleri |
+| AppServiceEnvironmentPlatformLogs | Yes | Yes | App Service Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
+| AppServiceAuditLogs | Yes | Yes | FTP ve kudu aracılığıyla oturum açma etkinliği |
+| AppServiceFileAuditLogs | TBA dili | TBA dili | FTP ve kudu aracılığıyla dosya değişiklikleri |
+| AppServiceAppLogs | TBA dili | Java & & Tomcat | Uygulama günlükleri |
+
 ## <a name="nextsteps"></a> Sonraki adımlar
+* [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)
 * [Azure App Service Izleme](web-sites-monitor.md)
 * [Visual Studio 'da Azure App Service sorunlarını giderme](troubleshoot-dotnet-visual-studio.md)
 * [HDInsight 'ta uygulama günlüklerini çözümleme](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

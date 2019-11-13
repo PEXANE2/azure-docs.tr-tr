@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 09/05/2019
 ms.author: aahi
-ms.openlocfilehash: 3bd60ff1e732940bbb13c2e224084cf7e331266b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 706bd9c141b191632acee1c04745d64baaf50ee5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934871"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012052"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomali Algılayıcısı API'si nedir?
 
@@ -53,7 +53,7 @@ Not defterini çalıştırmak için aşağıdaki adımları gerçekleştirin:
 1. **Ücretsiz işlem sırasında Çalıştır 'a** tıklayın
 1. Not defterlerinden birini seçin.
 1. Geçerli anomali algılayıcısı API abonelik anahtarınızı `subscription_key` değişkenine ekleyin. 
-1. `endpoint` Değişkeni bitiş noktanızla değiştirin. Örneğin, `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
+1. `endpoint` değişkenini uç noktanızla değiştirin. Örneğin, `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. Üstteki menü çubuğunda **hücre**' ya ve ardından **Tümünü Çalıştır**' ı tıklatın.
 
 ## <a name="workflow"></a>İş akışı
@@ -72,18 +72,18 @@ Kaydolduktan sonra:
 
 ## <a name="algorithms"></a>Algoritmalar
 
-* Lütfen söz konusu algoritmaların altındaki algoritmalar hakkında [Azure anomali ALGıLAYıCıSı API 'Sine giriş](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) başlıklı teknik blog bölümüne bakın.
+* Lütfen [Azure anomali algılayıcısı API 'sine](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) başvuran teknik bloglara ve [Azure anomali ALGıLAYıCıSı ' nda on 'un](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798) altındaki algoritmalarla ilgili genel bakışlara bakın.
 * Microsoft tarafından geliştirilen son teknoloji tabanlı SR-CNN algoritmaları için lütfen [Microsoft 'ta bu kağıt zaman serisi anomali algılama hizmeti](https://arxiv.org/abs/1906.03821) (kdd 2019 tarafından kabul edilir) bölümüne bakın.
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 
-## <a name="join-the-anomaly-detector-community"></a>Anomali algılayıcı topluluğuna katılarak
+## <a name="join-the-anomaly-detector-community"></a>Anomali Algılayıcısı topluluğuna katılın
 
 * [Microsoft ekiplerinde anomali algılayıcı danışmanları grubuna](https://aka.ms/AdAdvisorsJoin) katılarak
 * Seçilen [Kullanıcı tarafından oluşturulan içeriğe](user-generated-content.md) bakın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hızlı Başlangıç: Anomali algılayıcısı 'nı kullanarak zaman serisi verilerinizde bozukluklar olup REST API](quickstarts/detect-data-anomalies-csharp.md)
+* [Hızlı başlangıç: anomali algılayıcısının kullanıldığı zaman serisi verilerinizde bozukluklar Algıla REST API](quickstarts/detect-data-anomalies-csharp.md)
 * Anomali algılayıcı API 'SI [çevrimiçi tanıtımı](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
 * Anomali algılayıcısı [REST API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)

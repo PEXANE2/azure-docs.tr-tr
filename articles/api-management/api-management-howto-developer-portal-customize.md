@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c8aa3fb124420c933e17b0e9f7e52b7f114a7f61
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620430"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012899"
 ---
 # <a name="access-and-customize-developer-portal"></a>Geliştirici portalına erişme ve özelleştirme
 
@@ -38,9 +38,9 @@ Geliştirici Portalında daha fazla ayrıntı için [Azure API Management geliş
 
 > [!WARNING]
 > Geliştirici portalı şu anda API Management Hizmetleri 'ne alındı.
-> Hizmetiniz yeni oluşturulmuşsa veya bir geliştirici katmanı hizmeti ise, en son sürüme sahip olmanız gerekir. Aksi takdirde sorunlarla karşılaşabilirsiniz (örneğin, yayımlama işlevselliğiyle). Özellik dağıtımı Pazartesi 11 Kasım 2019 ' de tamamlanır. 
+> Hizmetiniz yeni oluşturulmuşsa veya bir geliştirici katmanı hizmeti ise, en son sürüme sahip olmanız gerekir. Aksi takdirde sorunlarla karşılaşabilirsiniz (örneğin, yayımlama işlevselliğiyle). Özellik dağıtımı, 22nd, 2019 Cuma günü tamamlanmalıdır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 - Azure API Management örneğini içeri aktarın ve yayımlayın. Daha fazla bilgi için bkz. [Içeri aktarma ve yayımlama](import-and-publish.md)
@@ -101,7 +101,7 @@ Portalınızı ziyaretçi tarafından kullanılabilir yapmadan önce, otomatik o
 
 Varsayılan **giriş** sayfası, kukla içerikle doldurulmuştur. Tüm bölümleri içeriğe göre kaldırabilir ya da yapıyı tutabilir ve öğeleri tek tek düzenleyebilirsiniz. Oluşturulan metin ve görüntüleri kendi kendinize değiştirin ve bağlantıların istenen konumlara işaret ettiğinizden emin olun.
 
-### <a name="layouts"></a>Geçtiğinizde
+### <a name="layouts"></a>Düzenler
 
 Gezinti çubuğundaki otomatik olarak oluşturulan logoyu kendi görüntünüz ile değiştirin.
 

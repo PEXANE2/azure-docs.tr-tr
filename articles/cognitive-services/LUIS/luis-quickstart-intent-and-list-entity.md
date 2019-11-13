@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a8021885bf51ab6d44bc8576b9fdd69f1bdd270a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492714"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953679"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Öğretici: tam metin ile eşleşen verileri bir utterde alın
 
@@ -24,7 +24,7 @@ Bu öğreticide, önceden tanımlanmış bir öğe listesiyle eşleşen varlık 
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -49,7 +49,7 @@ Liste varlığı bu veri türü için iyi bir seçimdir:
 
 * Veri değerleri bilinen bir kümedir.
 * Küme, bu varlık türü için maksimum LUIS [sınırlarını](luis-boundaries.md) aşmaz.
-* Konuşmadaki metin bir eşanlamlı sözcük veya kurallı ad ile tam olarak eşleşiyor. LUSıS, tam metin eşleştirmelerinin ötesinde listeyi kullanmaz. Sözcük kökü, plurals ve diğer çeşitlemeler yalnızca bir liste varlığıyla çözümlenmez. Çeşitlemeleri yönetmek için, isteğe bağlı metin söz dizimine sahip bir [model](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) kullanmayı düşünün. 
+* Konuşmadaki metin bir eşanlamlı sözcük veya kurallı ad ile tam olarak eşleşiyor. LUSıS, tam metin eşleştirmelerinin ötesinde listeyi kullanmaz. Sözcük kökü, plurals ve diğer çeşitlemeler yalnızca bir liste varlığıyla çözümlenmez. Çeşitlemeleri yönetmek için, isteğe bağlı metin söz dizimine sahip bir [model](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) kullanmayı düşünün. 
 
 ## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
 
@@ -92,7 +92,7 @@ Her öğenin birincil, _kurallı_adı departman adıdır. Her bir kurallı adın
 
 |Kurallı ad|Eş anlamlılar|
 |--|--|
-|Muhasebe|\<br>aci<br>3456|
+|Muhasebe|acct<br>aci<br>3456|
 |Geliştirme Işlemleri|DevOps<br>4949|
 |Mühendislik|ing<br>altyapısındaki<br>4567|
 |Finans|ın<br>2020|

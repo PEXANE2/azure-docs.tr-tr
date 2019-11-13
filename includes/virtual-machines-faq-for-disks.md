@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 95fe5471789b66c253aa21d73433f5192cd01e6b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612202"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008591"
 ---
-# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ve yönetilen ve yönetilmeyen Premium diskler hakkında sık sorulan sorular
-
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
 ## <a name="managed-disks"></a>Yönetilen Diskler
@@ -301,7 +299,7 @@ Hayır. Yönetilen disklere sahip VM 'Ler için Azure 'dan Azure 'a koruma Azure
 
 **VM 'Leri, yönetilen disklere daha önce şifrelenmiş olan veya daha önce şifrelenen depolama hesaplarında bulunan yönetilmeyen disklere geçirebilir miyim?**
 
-Evet
+Yes
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Yönetilen diskler ve Depolama Hizmeti Şifrelemesi
 
@@ -342,25 +340,13 @@ Evet. 9 Haziran 2017 ' den sonra oluşturulan tüm yönetilen anlık görüntül
 
 **VM 'Leri daha önce yönetilen disklere şifrelenmiş depolama hesaplarında bulunan yönetilmeyen disklere dönüştürebilir miyim?**
 
-Evet
+Yes
 
 **Yönetilen bir diskten ya da bir anlık görüntüden dışarıya aktarılmış bir VHD mi olacak?**
 
 Hayır. Ancak, şifrelenen bir yönetilen diskten veya anlık görüntüsünden bir VHD 'yi şifrelenmiş bir depolama hesabına dışa aktardığınızda, bu durumda şifrelenir. 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Premium diskler: yönetilen ve yönetilmeyen
-
-**Hangi bölgeler geçerli Premium SSD disk boyutu için ne kadar fazla özelliği destekler?**
-
-Patlama özelliği şu anda Azure Orta Batı ABD 'da desteklenmektedir.
-
-**Hangi bölgeler 4/8/16 GiB yönetilen disk boyutlarına (P1/P2/P3, E1/E2/E3) destekleniyor?**
-
-Bu yeni disk boyutları şu anda Azure Orta Batı ABD 'da desteklenmektedir.
-
-**, Yönetilmeyen diskler veya sayfa Blobları için P1/P2/P3 disk boyutları desteklenir mi?**
-
-Hayır, yalnızca Premium SSD yönetilen disklerde desteklenir. 
 
 **Bir VM, DSv2 gibi Premium SSD diskleri destekleyen bir boyut serisi kullanıyorsa hem Premium hem de standart veri disklerini ekleyebilir miyim?** 
 
@@ -391,6 +377,22 @@ Yerel SSD, yönetilen diskler VM 'ye dahil olan geçici bir depodır. Bu geçici
 Azure disklerinde, Premium veya Standart diskler üzerinde KıRPMA kullanmanın bir alt tarafı yoktur.
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>Yeni disk boyutları: yönetilen ve yönetilmeyen
+
+**Hangi bölgeler geçerli Premium SSD disk boyutu için ne kadar fazla özelliği destekler?**
+
+Patlama özelliği şu anda Azure Orta Batı ABD 'da desteklenmektedir.
+
+**Hangi bölgeler 4/8/16 GiB yönetilen disk boyutlarına (P1/P2/P3, E1/E2/E3) destekleniyor?**
+
+Bu yeni disk boyutları şu anda Azure Orta Batı ABD 'da desteklenmektedir.
+
+**, Yönetilmeyen diskler veya sayfa Blobları için P1/P2/P3 disk boyutları desteklenir mi?**
+
+Hayır, yalnızca Premium SSD tarafından yönetilen disklerde desteklenir. 
+
+**E1/E2/E3 disk boyutları, yönetilmeyen diskler veya sayfa Blobları için destekleniyor mu?**
+
+Hayır, her boyuttaki standart SSD yönetilen diskleri, yönetilmeyen disklerle veya sayfa Blobları ile kullanılamaz.
 
 **İşletim sistemi ve veri diskleri için desteklenen en büyük yönetilen disk boyutu nedir?**
 

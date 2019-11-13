@@ -1,5 +1,5 @@
 ---
-title: VMware VM 'Leri ve fiziksel sunucuları olağanüstü durum kurtarma sırasında Azure 'dan şirket içi bir siteye yeniden koruma | Microsoft Docs
+title: VMware VM 'lerini/fiziksel sunucuları Azure Site Recovery ile şirket içi bir siteye yeniden koruma
 description: VMware VM 'Leri ve fiziksel sunucular için olağanüstü durum kurtarma sırasında Azure 'a yük devretmeden sonra, Azure 'dan şirket içi siteye geri dönme işlemini öğrenin.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3d5f38d940b99c6a74d784f174c91d4127353dc
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791813"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961339"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Azure 'a yük devretmeden sonra makineleri şirket içi bir siteye yeniden koruma ve geri dönme
 
@@ -81,7 +81,7 @@ Ana hedef sunucu oluşturduktan sonra, aşağıdaki görevleri yapın:
     - Linux için varsayılan saklama birimi/mnt/retention
 - Mevcut bir işlem sunucusu/yapılandırma sunucusu makinesi veya bir ölçek veya işlem sunucusu/ana hedef sunucu makinesi kullanıyorsanız yeni bir sürücü eklemeniz gerekir. Yeni sürücünün önceki gereksinimleri karşılaması gerekir. Bekletme sürücüsü yoksa, portalda seçim açılan listesinde görünmez. Şirket içi ana hedefe bir sürücü ekledikten sonra, sürücünün portalda seçimde görünmesi 15 dakika kadar sürer. Ayrıca, sürücü 15 dakikadan sonra görünmezse yapılandırma sunucusunu yenileyebilirsiniz.
 - Ana hedef sunucuda VMware araçları veya açık VM araçları 'nı yükler. Araçlar olmadan ana hedefin ESXi ana bilgisayarındaki veri depoları algılanamıyor.
-- VMware 'de ana hedef sanal makinesinin yapılandırma parametrelerinde `disk.EnableUUID=true` ayarını ayarlayın. Bu satır yoksa, ekleyin. Bu ayar, doğru bir şekilde takılabilmesi için VMDK için tutarlı bir UUID sağlamak üzere gereklidir.
+- VMware 'de ana hedef sanal makinesinin yapılandırma parametrelerindeki `disk.EnableUUID=true` ayarını belirleyin. Bu satır yoksa, ekleyin. Bu ayar, doğru bir şekilde takılabilmesi için VMDK için tutarlı bir UUID sağlamak üzere gereklidir.
 - Ana hedefin oluşturulduğu ESX konağına, en az bir sanal makine dosya sistemi (VMFS) veri deposu eklenmiş olmalıdır. Hiçbir VMFS veri deposu iliştirilmişse, yeniden koru sayfasındaki **veri deposu** girişi boştur ve devam edemezsiniz.
 - Ana hedef sunucu, disklerde anlık görüntülere sahip olamaz. Anlık görüntüler varsa, yeniden koruma ve yeniden çalışma başarısız olur.
 - Ana hedefin bir Paravirtual SCSI denetleyicisi olamaz. Denetleyici yalnızca bir LSI Logic Controller olabilir. Bir LSI Logic Controller olmadan yeniden koruma başarısız olur.

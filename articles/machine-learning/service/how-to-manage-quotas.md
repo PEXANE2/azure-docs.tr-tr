@@ -10,69 +10,69 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 11/04/2019
-ms.openlocfilehash: 2206afc45c7ea35c41f51839b66dca33982939ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d44fb94978c450808c8a1c0852d4c771a100857e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489820"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961711"
 ---
-# <a name="manage-and-request-quotas-for-azure-resources"></a>Azure kaynakları için kotaları yönetme ve isteme
+# <a name="manage-and-request-quotas-for-azure-resources"></a>Yönetme ve Azure kaynakları için kota isteği
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, aboneliğiniz için Azure kaynaklarında önceden yapılandırılmış sınırlara ilişkin ayrıntılar sağlanmaktadır. Ayrıca, her bir kaynak türü için kota iyileştirmeleri isteme yönergeleri de mevcuttur. Bu sınırlar, sahtekarlık nedeniyle yapılan bütçeyi önlemek ve Azure kapasite kısıtlamalarını kabul etmek için yerinde konur.
+Bu makalede, aboneliğiniz için Azure kaynaklarında önceden yapılandırılmış sınırlara ilişkin ayrıntılar sağlanmaktadır. Ayrıca, her bir kaynak türü için kota iyileştirmeleri isteme yönergeleri de mevcuttur. Bu sınırlar, bütçe taşmaları nedeniyle sahtekarlığı önlemek ve Azure kapasitesi kısıtlamaları uymanız yerinde yerleştirilir.
 
 Diğer Azure hizmetlerinde olduğu gibi, Azure Machine Learning ilişkili belirli kaynaklarda sınırlamalar vardır. Bu sınırlar, model eğitimi veya çıkarım/Puanlama için kullanılan gerçek temeldeki işlem üzerinde sınırlara kadar çalışma alanı sayısı üst sınırından aralığıdır. 
 
-Azure Machine Learning kaynaklarınızı üretim iş yükleri için tasarlayıp ölçeklendirerek, bu sınırları göz önünde bulundurun. Örneğin, kümeniz hedef düğüm sayısına ulaşmazsa, aboneliğiniz için bir Azure Machine Learning Işlem çekirdeği sınırına ulaşmış olabilirsiniz. Sınırı veya kotayı varsayılan sınırın üzerinde yükseltmek istiyorsanız, ücretsiz bir çevrimiçi müşteri destek isteği açın. Limitler, Azure kapasite kısıtlamaları nedeniyle aşağıdaki tablolarda gösterilen en büyük sınır değerinin üzerinde yer alınamıyor. En fazla limit sütunu yoksa, kaynak ayarlanabilir sınırlara sahip olmaz.
+Azure Machine Learning kaynaklarınızı üretim iş yükleri için tasarlayıp ölçeklendirerek, bu sınırları göz önünde bulundurun. Örneğin, kümeniz hedef düğüm sayısına ulaşmazsa, aboneliğiniz için bir Azure Machine Learning Işlem çekirdeği sınırına ulaşmış olabilirsiniz. Sınırı veya kota varsayılan sınırı artırmak istiyorsanız, ücretsiz bir çevrimiçi müşteri destek isteği açın. Azure kapasitesi kısıtlamaları nedeniyle aşağıdaki tablolarda gösterilen üst sınırı değerini yukarıda sınırları yükseltilemez. Üst sınır sütun yok ise, kaynak sınırları ayarlanabilir sahip değil.
 
-## <a name="special-considerations"></a>Özel Konular
+## <a name="special-considerations"></a>Özel durumlar
 
-+ Kota, kapasite garantisi değil, kredi limiti olur. Büyük ölçekli kapasite gereksinimleriniz varsa Azure desteği 'ne başvurun.
++ Kota kapasitesini garanti bir kredi sınırına ' dir. Büyük ölçekli kapasite gereksinimleriniz varsa, Azure desteğine başvurun.
 
-+ Kotayı Azure Machine Learning dahil olmak üzere aboneliklerinizde bulunan tüm hizmetler arasında paylaşılır. Tek özel durum, çekirdek işlem kotasından ayrı bir kota içeren Azure Machine Learning işlem amaçlıdır. Kapasite ihtiyaçlarınızı değerlendirirken tüm hizmetler genelinde kota kullanımını hesapladığınızdan emin olun.
++ Kotayı Azure Machine Learning dahil olmak üzere aboneliklerinizde bulunan tüm hizmetler arasında paylaşılır. Tek özel durum, çekirdek işlem kotasından ayrı bir kota içeren Azure Machine Learning işlem amaçlıdır. Kota kullanımını tüm hizmetler arasında kapasite gereksinimlerinizi değerlendirirken hesaplamak emin olun.
 
 + Varsayılan sınırlar, ücretsiz deneme, Kullandıkça öde ve dv2, F, G gibi bir VM Serisi gibi teklif kategorisi türüne göre farklılık gösterir.
 
 ## <a name="default-resource-quotas"></a>Varsayılan kaynak kotaları
 
-Azure aboneliğinizdeki çeşitli kaynak türlerine göre kota sınırlarının bir dökümü aşağıda verilmiştir.
+Azure aboneliğiniz içindeki çeşitli kaynak türleri göre kota sınırları bir dökümü aşağıda verilmiştir.
 
 > [!Important]
-> Sınırlar değişikliğe tabidir. En son, her zaman Azure için hizmet düzeyi kota [belgesinde](https://docs.microsoft.com/azure/azure-subscription-service-limits/) bulunabilir.
+> Limitlerdir değiştirilebilir. Her zaman en son hizmet düzeyi kotanın bulunabilir [belge](https://docs.microsoft.com/azure/azure-subscription-service-limits/) tüm Azure için.
 
 ### <a name="virtual-machines"></a>Sanal makineler
-Her Azure aboneliği için, hizmetleriniz veya tek başına sahip olduğunuz sanal makine sayısı için bir sınır vardır. Bu sınır, hem toplam çekirdekte hem de her aile temelinde bölge düzeyidir.
+Her Azure aboneliği için, hizmetleriniz veya tek başına sahip olduğunuz sanal makine sayısı için bir sınır vardır. Toplam çekirdek üzerinde hem de başına ailesi temelinde bölge düzeyinde bu sınırdır.
 
 Sanal makine çekirdekleri, her ikisi de ayrı olarak zorlanan bölgesel toplam sınıra ve her ikisi de her ikisi de uygulanan boyut serisi (dv2, F, vb.) sınırına sahiptir. Örneğin, Doğu ABD toplam VM çekirdek limiti 30, A serisi çekirdek limiti 30 ve D serisi çekirdek limiti 30 olan bir abonelik düşünün. Bu aboneliğin 30 adet A1 sanal makinesi veya 30 adet D1 sanal makinesi ya da ikisinin toplamda 30 çekirdeği geçmeyecek bir birleşimini (örneğin, 10 adet A1 sanal makinesi ve 20 adet D1 sanal makinesi) dağıtmasına izin verilir.
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-Kota sınırlarının daha ayrıntılı ve güncel listesi için [buradaki](https://docs.microsoft.com/azure/azure-subscription-service-limits)Azure genelinde kota makalesini inceleyin.
+Kota sınırları daha ayrıntılı ve güncel listesi için Azure genelinde kota makale onay [burada](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
-### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Işlem
-Azure Machine Learning Işlem için, hem çekirdek sayısı hem de bir abonelikte bölge başına izin verilen benzersiz işlem kaynakları sayısı için varsayılan bir kota sınırı vardır. Bu kota, yukarıdaki VM çekirdeği kotasından ayrıdır ve AmlCompute, kaynakları barındırılan bir modelde, kaynak dağıtan bir yönetilen hizmet olduğundan, çekirdek sınırları iki kaynak türü arasında paylaşılmaz.
+### <a name="azure-machine-learning-compute"></a>Azure Machine Learning işlem
+Azure Machine Learning işlemi için çekirdek sayısı ve bir abonelikte bölge başına izin verilen benzersiz işlem kaynaklarının sayısını varsayılan bir kota sınırı yoktur. Bu kota, yukarıdaki VM çekirdeği kotasından ayrıdır ve AmlCompute, kaynakları barındırılan bir modelde, kaynak dağıtan bir yönetilen hizmet olduğundan, çekirdek sınırları iki kaynak türü arasında paylaşılmaz.
 
 Kullanılabilir kaynaklar:
 + Bölge başına adanmış çekirdekler, EA ve CSP teklif türleri için daha yüksek varsayılan değerlere sahip abonelik teklif türüne bağlı olarak varsayılan 24-300 sınırına sahiptir.  Abonelik başına adanmış çekirdek sayısı artırılabilir ve her bir VM ailesi için farklı olabilir. NCv2, NCv3 veya ND serisi gibi bazı özelleştirilmiş sanal makine aileleri, varsayılan sıfır çekirdekilerle başlar. Artış seçeneklerini tartışmak üzere bir kota isteği oluşturarak Azure desteği 'ne başvurun.
 
-+ Bölge başına düşük öncelikli çekirdekler, EA ve CSP teklif türleri için daha yüksek varsayılan değerlere sahip abonelik teklifi türüne bağlı olarak varsayılan 100-3000 sınırına sahiptir. Abonelik başına düşük öncelikli çekirdek sayısı artırılabilir ve VM aileleri arasında tek bir değer olabilir. Artış seçeneklerini tartışmak için Azure desteğine başvurun.
++ Bölge başına düşük öncelikli çekirdekler, EA ve CSP teklif türleri için daha yüksek varsayılan değerlere sahip abonelik teklifi türüne bağlı olarak varsayılan 100-3000 sınırına sahiptir. Abonelik başına düşük öncelikli çekirdek sayısı artırılabilir ve VM aileleri arasında tek bir değer olabilir. Artırma seçeneklerini görüşmek için Azure desteğine başvurun.
 
-+ Bölge başına kümelerin varsayılan 200 limiti vardır. Bunlar, bir eğitim kümesi ve bir işlem örneği (Kota amaçları için tek düğümlü bir küme olarak kabul edilir) arasında paylaşılır. Bu sınırın ötesinde bir artış istemek istiyorsanız Azure desteği 'ne başvurun.
++ Bölge başına kümelerin varsayılan 200 limiti vardır. Bunlar, bir eğitim kümesi ve bir işlem örneği (Kota amaçları için tek düğümlü bir küme olarak kabul edilir) arasında paylaşılır. Bu sınırı aşan bir artırım talebinde bulunmak isterseniz Azure desteğine başvurun.
 
 + \* * Bir kez daha fazla aşılmayacak diğer katı sınırlar vardır.
 
-| **Kaynak** | **Maksimum sınır** |
+| **Kaynak** | **Üst sınırı** |
 | --- | --- |
-| Kaynak grubu başına en fazla çalışma alanı | 800 |
-| Tek bir Azure Machine Learning Işlem (AmlCompute) kaynağındaki en fazla düğüm | 100 düğümleri |
-| Düğüm başına maksimum GPU MPı işlemi | 1-4 |
-| Düğüm başına maksimum GPU çalışanı | 1-4 |
-| En yüksek iş ömrü | 90 gün<sup>1</sup> |
+| Kaynak grubu başına en fazla çalışma alanları | 800 |
+| Azure Machine Learning işlem (AmlCompute) tek bir kaynak en fazla düğüm | 100 düğüm |
+| Düğüm başına en fazla GPU MPI işler | 1-4 |
+| Düğüm başına en fazla GPU çalışanları | 1-4 |
+| En fazla iş yaşam süresi | 90 gün<sup>1</sup> |
 | Düşük öncelikli bir düğümdeki maksimum iş ömrü | 7 gün<sup>2</sup> |
-| Düğüm başına en fazla parametre sunucusu | 1 |
+| Düğüm başına en fazla parametre sunucuları | 1 |
 
-<sup>1</sup> en fazla yaşam süresi, bir çalıştırmanın başlayacağı ve bittiği zaman için geçen süreyi ifade eder. Tamamlanan çalıştırmalar süresiz olarak devam ederse; Maksimum yaşam süresi içinde tamamlanmayan çalışma verilerine erişilemiyor.
+<sup>1</sup> maksimum ömrü çalıştırma başlatılması ve bittiğinde saati gösterir. Tamamlanan çalıştırmalar süresiz olarak kalır; Veri maksimum yaşam süresi içinde tamamlanmamış çalıştırmalar için erişilebilir değil.
 <sup>2</sup> düşük öncelikli bir düğümdeki işler bir kapasite kısıtlaması olduğunda bu şekilde geçersiz hale gelebilir. İşinize işaret eden bir işaret uygulamanızı uygulamanızı öneririz.
 
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları
@@ -85,14 +85,14 @@ Azure Machine Learning işlem hatları için, bir işlem hattındaki adım sayı
 
 ### <a name="container-instances"></a>Kapsayıcı örnekleri
 
-Ayrıca, belirli bir süre içinde (kapsamdaki saatlik) veya tüm aboneliğiniz üzerinde dönebileceğinizi kapsayıcı örnekleri sayısında bir sınır vardır.
+(Saatlik kapsamlı) belirli bir süre içinde veya genelinde tüm aboneliğinizi ayarlama çalıştırabileceğinizi container Instances, sayısına bir sınır yoktur.
 
 [!INCLUDE [container-instances-limits](../../../includes/container-instances-limits.md)]
 
-Kota sınırlarının daha ayrıntılı ve güncel listesi için [buradaki](https://docs.microsoft.com/azure/azure-subscription-service-limits#container-instances-limits)Azure genelinde kota makalesini inceleyin.
+Kota sınırları daha ayrıntılı ve güncel listesi için Azure genelinde kota makale onay [burada](https://docs.microsoft.com/azure/azure-subscription-service-limits#container-instances-limits).
 
 ### <a name="storage"></a>Depolama
-Belirli bir abonelikte her bölge için depolama hesabı sayısı sınırı vardır. Varsayılan sınır 200 ' dir ve hem standart hem de Premium Depolama hesaplarını içerir. Belirli bir bölgede 200 'den fazla depolama hesabına ihtiyacınız varsa, [Azure desteği](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)aracılığıyla bir istek yapın. Azure depolama ekibi, iş kasalarınızı inceleyerek, belirli bir bölge için 250 depolama hesabını onaylayabilir.
+Depolama hesabı da belirli bir abonelikte bölge başına sayısına bir sınır yoktur. Varsayılan sınır 250 ' dir ve hem standart hem de Premium Depolama hesaplarını içerir. Belirli bir bölgede 250 'den fazla depolama hesabına ihtiyacınız varsa, [Azure desteği](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)aracılığıyla bir istek yapın. Azure depolama ekibi, işinizin durumunu inceler ve 250 depolama hesapları için belirli bir bölgeye kadar onaylayabilir.
 
 
 ## <a name="workspace-level-quota"></a>Çalışma alanı düzeyi kotası
@@ -113,32 +113,32 @@ Belirli bir abonelikte her bölge için depolama hesabı sayısı sınırı vard
 
 ## <a name="view-your-usage-and-quotas"></a>Kullanımınızı ve kotaları görüntüleme
 
-Sanal makineler, depolama, ağ gibi çeşitli kaynaklarda kotayı görüntülemek Azure portal kolaydır.
+Sanal makineler, depolama, ağ, gibi çeşitli kaynaklar için kota görüntüleme Azure portalı üzerinden kolay bir işlemdir.
 
 1. Sol bölmede, **tüm hizmetler** ' i seçin ve genel kategorisi altında **abonelikler** ' i seçin.
 
-1. Abonelikler listesinden, kotasını Aradığınız aboneliği seçin.
+1. Abonelikler listesinden kota aradığınız aboneliği seçin.
 
-   Özellikle Azure Machine Learning Işlem kotasını görüntülemek için **bir desteklenmediği uyarısıyla vardır**. Yukarıda belirtildiği gibi, bu kota, aboneliğinizdeki işlem kotasından ayrıdır.
+   **Bir uyarı yok**, özellikle Azure Machine Learning işlem kotası görüntülemek için. Yukarıda belirtildiği gibi kota aboneliğinizde işlem kotası ayrıdır.
 
 1. Sol bölmede **Machine Learning hizmet** ' i seçin ve gösterilen listeden herhangi bir çalışma alanı seçin
 
-1. Sonraki dikey pencerede, **destek + sorun giderme bölümü** altında, geçerli kota limitlerinizi ve kullanımınızı görüntülemek için **kullanım + kotalar** ' i seçin.
+1. Sonraki dikey penceresinde, altında **destek + sorun giderme bölümüne** seçin **kullanım ve kotalar** geçerli kotası ve kullanımı görüntülemek için.
 
-1. Kota sınırlarını görüntülemek için bir abonelik seçin. İlgilendiğiniz bölgeye filtre getirmeyi unutmayın.
+1. Kota sınırları görüntülemek için bir abonelik seçin. İlgilendiğiniz bölgeye filtre unutmayın.
 
 1. Artık bir abonelik düzeyi görünümü ve çalışma alanı düzeyi görünümü arasında geçiş yapabilirsiniz:
-    + **Abonelik görünümü:** Bu, çekirdek kota kullanımınızı VM ailesi ile görüntülemenizi, çalışma alanına göre genişletmeyi ve gerçek küme adlarına göre genişletmeyi görmenizi sağlar. Bu görünüm, belirli bir VM ailesi için temel kullanımların ayrıntılarını hızla almak ve bu çalışma alanlarının her biri için temel alınan kümeler tarafından daha fazla bilgi almak için idealdir. Bu görünümdeki genel kural (kullanım/kota) olduğundan, kullanım, en güncel ölçekli çekirdek sayısı ve kota, kaynağın ölçeklendirebileceği mantıksal maksimum çekirdek sayısıdır. Her **çalışma alanı**için kota, belırlı bir VM ailesi için ölçeklenebileceğinizi en fazla çekirdek sayısını gösteren çalışma alanı düzeyi kotası (yukarıda açıklandığı gibi) olacaktır. Benzer şekilde, kota **aslında kümenin max_nodes** özelliği tarafından tanımlanan en fazla düğüm sayısına karşılık gelen çekirdekler olur.
+    + **Abonelik görünümü:** Bu, çekirdek kota kullanımınızı VM ailesi ile görüntülemenizi, çalışma alanına göre genişletmeyi ve gerçek küme adlarına göre genişletmeyi görmenizi sağlar. Bu görünüm, belirli bir VM ailesi için temel kullanımların ayrıntılarını hızla almak ve bu çalışma alanlarının her biri için temel alınan kümeler tarafından daha fazla bilgi almak için idealdir. Bu görünümdeki genel kural (kullanım/kota) olduğundan, kullanım, en güncel ölçekli çekirdek sayısı ve kota, kaynağın ölçeklendirebileceği mantıksal maksimum çekirdek sayısıdır. Her **çalışma alanı**için kota, belırlı bir VM ailesi için ölçeklenebileceğinizi en fazla çekirdek sayısını gösteren çalışma alanı düzeyi kotası (yukarıda açıklandığı gibi) olacaktır. Benzer şekilde, kota **, kümenin max_nodes** özelliği tarafından tanımlanan en fazla düğüm sayısına göre ölçeklenebilen çekirdeklerdir.
 
     + **Çalışma alanı görünümü:** Bu, çalışma alanına göre çekirdek kotasının kullanımını görüntülemenize, VM ailesine göre genişleterek ve gerçek küme adlarına göre daha fazla genişleetmenize olanak tanır. Bu görünüm, belirli bir çalışma alanının ana kullanımının ayrıntılarını hızla almak ve bu ailelerin her biri için temel alınan kümeler tarafından daha fazla bilgi almak için idealdir.
 
-## <a name="request-quota-increases"></a>İstek kotası arttıkça
+## <a name="request-quota-increases"></a>Kota artırımlarına iste
 
 Sınırı veya kotayı varsayılan sınırın üzerinde yükseltmek istiyorsanız, ücretsiz [bir çevrimiçi müşteri destek isteği açın](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) .
 
-Sınırlar, tablolarda gösterilen en büyük sınır değerinin üzerinde olamaz. Maksimum sınır yoksa, kaynak ayarlanabilir sınırlara sahip olmaz. [Bu](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) makale, kota artışı sürecini daha ayrıntılı bir şekilde ele alır.
+Sınırlar, tablolarda gösterilen en büyük sınır değerinin üzerinde olamaz. Maksimum sınır yoksa, kaynak ayarlanabilir sınırlara sahip olmaz. [Bu](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) makalede kota artışı işlem daha ayrıntılı ele alınmıştır.
 
-Kota artışı istediğinizde, kotayı artırmak için istediğiniz hizmeti seçmeniz gerekir, bu, Machine Learning hizmet kotası, kapsayıcı örnekleri veya depolama kotası gibi hizmetler olabilir. Azure Machine Learning Işlem için ek olarak, yukarıdaki adımları izleyerek kotayı görüntülerken kota **iste** düğmesine tıklayabilirsiniz.
+Kota artışı isteğinde bulunurken, Machine Learning hizmeti kotası, Container Instances veya depolama kotası gibi hizmetleri olabilir, kotaya Yükselt isteyen hizmet seçmeniz gerekir. Azure Machine Learning Işlem için ek olarak, yukarıdaki adımları izleyerek kotayı görüntülerken kota **iste** düğmesine tıklayabilirsiniz.
 
 > [!NOTE]
-> [Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. [Ücretsiz bir deneme aboneliğiniz](https://azure.microsoft.com/offers/ms-azr-0044p)varsa, bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) aboneliğine yükseltebilirsiniz. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme sürümünü Kullandıkça Öde](../../billing/billing-upgrade-azure-subscription.md) ve [ücretsiz deneme aboneliği hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
+> [Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınırı veya kota artırma işlemleri için uygun değildir. Varsa bir [ücretsiz deneme aboneliği](https://azure.microsoft.com/offers/ms-azr-0044p), Yükseltme yapabileceğiniz bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) abonelik. Daha fazla bilgi için [yükseltme Azure ücretsiz denemesini Kullandıkça Öde aboneliğine](../../billing/billing-upgrade-azure-subscription.md) ve [ücretsiz deneme aboneliği SSS](https://azure.microsoft.com/free/free-account-faq).

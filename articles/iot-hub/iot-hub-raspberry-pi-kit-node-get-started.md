@@ -1,5 +1,5 @@
 ---
-title: Raspberry Pi-buluta (node. js)-Raspberry Pi 'yi Azure 'a bağlama IoT Hub | Microsoft Docs
+title: Raspberry PI 'yi Bulutta Azure IoT Hub bağlama (node. js)
 description: Bu öğreticide Azure Cloud Platform 'a veri göndermek üzere Raspberry PI 'yi ayarlamayı ve Azure IoT Hub için Azure 'a bağlamayı öğrenin.
 author: wesmc7777
 manager: philmea
@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: 79e565668db661d02833d22d2ef619fc67708115
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 28897ca6f80632210032b7f800404fc921143adf
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266145"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954552"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry PI 'yi Azure IoT Hub 'ye bağlama (node. js)
 
@@ -116,9 +116,9 @@ Raspbian görüntüsünü yüklemek için mikro SD kartını hazırlayın.
 
 1. PI 'yi monitöre, klavyeye ve fareye bağlayın.
 
-2. PI 'yi başlatın ve Kullanıcı adı ve `pi` `raspberry` parola olarak kullanarak Raspbian 'de oturum açın.
+2. PI 'yi başlatın ve Kullanıcı adı olarak `pi` ve parola olarak `raspberry` kullanarak Raspbian 'de oturum açın.
 
-3. **Preferences** > **Raspberry PI Configuration**> Raspberry simgesine tıklayın.
+3. **Tercihler** > **Raspberry PI Configuration**> Raspberry simgesine tıklayın.
 
    ![Raspbian Tercihler menüsü](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
@@ -179,10 +179,10 @@ Mikro USB kablosunu ve güç kaynağını kullanarak PI 'yi açın. PI 'yi kablo
 
    **Mac ve Ubuntu kullanıcıları**
 
-   Ubuntu veya macOS üzerinde yerleşik SSH istemcisini kullanın. PI 'yi SSH aracılığıyla bağlamak `ssh pi@<ip address of pi>` için çalıştırmanız gerekebilir.
+   Ubuntu veya macOS üzerinde yerleşik SSH istemcisini kullanın. PI 'yi SSH aracılığıyla bağlamak için `ssh pi@<ip address of pi>` çalıştırmanız gerekebilir.
 
    > [!NOTE]
-   > Varsayılan Kullanıcı adı `pi` ve `raspberry`parola ' dır.
+   > Varsayılan Kullanıcı adı `pi` ve parola `raspberry`.
 
 2. Node. js ve NPM 'yi PI 'nize yükler.
 
@@ -225,11 +225,11 @@ Mikro USB kablosunu ve güç kaynağını kullanarak PI 'yi açın. PI 'yi kablo
 
    ![Yapılandırma dosyası](./media/iot-hub-raspberry-pi-kit-node-get-started/6-config-file.png)
 
-   Bu dosyada yapılandırabileceğiniz iki öğe vardır. Birincisi, buluta gönderilen `interval`iletiler arasındaki zaman aralığını (milisaniye olarak) tanımlayan bir değer. İkinci bir `simulatedData`değer, sanal algılayıcı verilerinin kullanılıp kullanılmayacağını belirten bir Boole değeridir.
+   Bu dosyada yapılandırabileceğiniz iki öğe vardır. Birincisi, buluta gönderilen iletiler arasındaki zaman aralığını (milisaniye olarak) tanımlayan `interval`. İkinci tane, sanal algılayıcı verilerinin kullanılıp kullanılmayacağını belirten bir Boole değeri olan `simulatedData`.
 
-   **Sensöre sahip**değilseniz, örnek uygulamanın benzetimli `simulatedData` algılayıcı verileri `true` oluşturması ve kullanması için değerini olarak ayarlayın.
+   **Sensöre sahip**değilseniz, örnek uygulamanın benzetimli algılayıcı verilerini oluşturup kullanmasını sağlamak için `simulatedData` değerini `true` olarak ayarlayın.
 
-   *Not: Bu öğreticide kullanılan I2C adresi varsayılan olarak 0x77 ' dir. Yapılandırmanıza bağlı olarak, 0x76 de olabilir: bir I2C hatasıyla karşılaşırsanız, değeri 118 olarak değiştirmeyi deneyin ve bunun daha iyi çalışıp çalışmadığını görüntüleyin. Sensörizin tarafından kullanılan adresi görmek için Raspberry Pi üzerinde `sudo i2cdetect -y 1` bir kabukta çalıştırın*
+   *Note: Bu öğreticide kullanılan I2C adresi varsayılan olarak 0x77 ' dir. Yapılandırmanıza bağlı olarak, 0x76 de olabilir: bir I2C hatasıyla karşılaşırsanız, değeri 118 olarak değiştirmeyi deneyin ve bunun daha iyi çalışıp çalışmadığını görüntüleyin. Sensörizin tarafından kullanılan adresi görmek için, Raspberry Pi üzerinde bir kabukta `sudo i2cdetect -y 1` çalıştırın*
 
 2. Control-O > yazarak kaydedip çıkış yapın ve > Control-X yazın.
 

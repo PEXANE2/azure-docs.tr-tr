@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 1059dd463529f4c357038225f2f9ef11d0092802
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679597"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953943"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows sanal masaüstü için grafik işleme birimi (GPU) hızlandırmasını yapılandırma
 
@@ -31,12 +31,9 @@ Seçtiğiniz boyuttaki bir VM 'yi kullanarak yeni bir konak havuzu oluşturun. Y
 Windows sanal masaüstü, aşağıdaki işletim sistemlerinde GPU hızlandırmalı işleme ve kodlamayı destekler:
 
 * Windows 10 sürüm 1511 veya daha yenisi
-* Windows Server 2016 veya üzeri
+* Windows Server 2016 veya daha yenisi
 
 Ayrıca, yeni bir konak havuzu oluştururken otomatik olarak oluşturulan varsayılan masaüstü uygulama grubunu ("Masaüstü uygulama grubu" adlı) kullanmanız gerekir. Yönergeler için bkz. [öğretici: Windows sanal masaüstü için uygulama gruplarını yönetme](/azure/virtual-desktop/manage-app-groups).
-
->[!NOTE]
->Windows sanal masaüstü yalnızca GPU özellikli konak havuzları için "Masaüstü" uygulama grubu türünü destekler. "RemoteApp" türündeki uygulama grupları GPU özellikli konak havuzları için desteklenmez.
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Sanal makinenize desteklenen grafik sürücülerini yükler
 
@@ -52,7 +49,7 @@ Varsayılan olarak, çoklu oturum yapılandırmalarında çalışan uygulamalar 
 
 1. Yerel yönetici ayrıcalıklarına sahip bir hesap kullanarak VM 'nin masaüstüne bağlanın.
 2. Başlat menüsünü açın ve grup ilkesi düzenleyicisini açmak için "gpedit. msc" yazın.
-3. Ağaçta **bilgisayar yapılandırmasına** > **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri** > **Uzak Masaüstü oturumu ana bilgisayarı** > **uzak Oturum ortamı**.
+3.  >  > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri** ** > Uzak Masaüstü Oturumu Ana Bilgisayarı** > **uzak oturum ortamı** **Yönetim Şablonları** **bilgisayar yapılandırması** ' na gidin.
 4. İlke ' yi seçin **tüm Uzak Masaüstü Hizmetleri oturumları için donanım varsayılan grafik bağdaştırıcısını kullanın** ve bu ilkeyi, uzak oturumda GPU oluşturmayı etkinleştirmek için **etkin** olarak ayarlayın.
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU hızlandırmalı çerçeve kodlamasını yapılandırma
@@ -85,7 +82,7 @@ Uygulamaların işleme için GPU 'YU kullandığını doğrulamak için aşağı
 Uzak Masaüstü 'Nün GPU hızlandırmalı kodlama kullandığını doğrulamak için:
 
 1. Windows sanal masaüstü istemcisi 'ni kullanarak VM 'nin masaüstüne bağlanın.
-2. Olay Görüntüleyicisi başlatın ve şu düğüme gidin: **uygulamalar ve hizmetler günlükleri** > **Microsoft** > **Windows** > **remotedesktopservices-rdpcorets** > **işletimsel**
+2. Olay Görüntüleyicisi başlatın ve şu düğüme gidin: **uygulama ve hizmet günlükleri** > **Microsoft** > **Windows** > **remotedesktopservices-rdpcorets** > **işletimsel**
 3. GPU hızlandırmalı kodlamanın kullanıldığını anlamak için, olay KIMLIĞI 170 ' i arayın. "AVC donanım Kodlayıcısı etkin: 1" görürseniz, GPU kodlaması kullanılır.
 4. AVC 444 modunun kullanıldığını anlamak için, olay KIMLIĞI 162 ' yi arayın. "AVC kullanılabilir: 1 başlangıç profili: 2048" görürseniz, AVC 444 kullanılır.
 

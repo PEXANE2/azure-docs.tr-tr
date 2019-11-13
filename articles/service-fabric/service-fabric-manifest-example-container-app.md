@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric kapsayıcısı uygulama bildirimi örnekleri | Microsoft Docs
+title: Azure Service Fabric kapsayıcısı uygulama bildirimi örnekleri
 description: Çok Kapsayıcılı Service Fabric bir uygulama için uygulama ve hizmet bildirimi ayarlarını yapılandırmayı öğrenin.
 services: service-fabric
 documentationcenter: na
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: ece0b763a2dbe501b0f46d026c59e1294a448c59
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2d79f7dbf492b9473bcff147891df308674a8cf0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650618"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013240"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Birden çok kapsayıcılı uygulama ve hizmet bildirimi örnekleri
 Aşağıda, çok Kapsayıcılı Service Fabric bir uygulama için uygulama ve hizmet bildirimlerinin örnekleri verilmiştir. Bu örneklerin amacı, hangi ayarların kullanılabildiğini ve bunların nasıl kullanılacağını gösterir. Bu uygulama ve hizmet bildirimleri [Windows Server 2016 kapsayıcı örnek](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) bildirimlerini temel alır.
 
 Aşağıdaki özellikler gösteriliyor:
 
-|Bildirimi|Özellikler|
+|Bildirim|Özellikler|
 |---|---|
-|[Uygulama bildirimi](#application-manifest)| [ortam değişkenlerini geçersiz kılma](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [kapsayıcı bağlantı noktasından konağa eşleme](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery), [kapsayıcı kayıt defteri kimlik doğrulamasını yapılandırma](service-fabric-get-started-containers.md#configure-container-repository-authentication), [kaynak](service-fabric-resource-governance.md)yönetimi, [yalıtım modunu ayarlama](service-fabric-get-started-containers.md#configure-isolation-mode), [işletim sistemi oluşturmaya özgü kapsayıcı belirtme görüntüler](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
+|[Uygulama bildirimi](#application-manifest)| [ortam değişkenlerini geçersiz kılma](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [kapsayıcı bağlantı noktasından konağa eşleme](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery), [kapsayıcı kayıt defteri kimlik doğrulamasını yapılandırma](service-fabric-get-started-containers.md#configure-container-repository-authentication), [kaynak](service-fabric-resource-governance.md)yönetimi, [yalıtım modunu](service-fabric-get-started-containers.md#configure-isolation-mode)yapılandırma, [işletim sistemi oluşturmaya özgü kapsayıcı görüntülerini belirleme](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
 |[FrontEndService hizmet bildirimi](#frontendservice-service-manifest)| [ortam değişkenlerini ayarlama](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [uç nokta yapılandırma](service-fabric-get-started-containers.md#configure-communication), kapsayıcıya komut geçirme, bir [sertifikayı kapsayıcıya aktarma](service-fabric-securing-containers.md)| 
 |[BackEndService hizmeti bildirimi](#backendservice-service-manifest)|[ortam değişkenlerini ayarlama](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [uç nokta yapılandırma](service-fabric-get-started-containers.md#configure-communication), [birim sürücüsünü yapılandırma](service-fabric-containers-volume-logging-drivers.md)| 
 
@@ -319,7 +319,7 @@ Ortam değişkeni. Daha fazla bilgi için bkz. [Environmentvariable öğesi](ser
 ### <a name="certificateref-element"></a>CertificateRef öğesi
 Kapsayıcı ortamına sunulacak bir x509 sertifikası hakkındaki bilgileri belirtir. Sertifika, tüm küme düğümlerinin LocalMachine deposunda yüklü olmalıdır.
 Uygulama başlatıldığında, çalışma zamanı sertifikayı okur ve bir PFX dosyası ve parola (Windows üzerinde) veya ped dosyası (Linux üzerinde) oluşturur.
-PFX dosyası ve parolaya Certificates_ServicePackageName_CodePackageName_CertName_PFX ve Certificates_ServicePackageName_CodePackageName_CertName_Password ortam değişkenleri kullanılarak kapsayıcıda erişilebilir. PED dosyasına Certificates_ServicePackageName_CodePackageName_CertName_PEM ve Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey ortam değişkenleri kullanılarak kapsayıcıda erişilebilir. Daha fazla bilgi için bkz. [CertificateRef öğesi](service-fabric-service-model-schema-elements.md#CertificateRefElementContainerCertificateTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
+PFX dosya ve parolaya Certificates_ServicePackageName_CodePackageName_CertName_PFX ve Certificates_ServicePackageName_CodePackageName_CertName_Password ortam değişkenleri kullanılarak kapsayıcıda erişilebilir. PED dosyasına Certificates_ServicePackageName_CodePackageName_CertName_PEM ve Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey ortam değişkenleri kullanılarak kapsayıcıda erişilebilir. Daha fazla bilgi için bkz. [CertificateRef öğesi](service-fabric-service-model-schema-elements.md#CertificateRefElementContainerCertificateTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
 ### <a name="defaultservices-element"></a>DefaultServices öğesi
 Bu uygulama türüne karşı her uygulama oluşturulduğunda otomatik olarak oluşturulan hizmet örneklerini bildirir. Daha fazla bilgi için bkz. [DefaultServices öğesi](service-fabric-service-model-schema-elements.md#DefaultServicesElementDefaultServicesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInApplicationInstanceTypecomplexType)
@@ -351,7 +351,7 @@ Giriş noktası tarafından belirtilen yürütülebilir dosya genellikle uzun s�
  Daha fazla bilgi için bkz. [Containerhost öğesi](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>GörüntüAdı öğesi
-https://hub.docker.com Veya Azure Container Registry için depo ve görüntü. Daha fazla bilgi için bkz. [GörüntüAdı öğesi](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+https://hub.docker.com veya Azure Container Registry üzerindeki depo ve görüntü. Daha fazla bilgi için bkz. [GörüntüAdı öğesi](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables öğesi
 Ortam değişkenlerini kapsayıcısına veya exe 'ye geçirin.  Daha fazla bilgi için bkz. [EnvironmentVariables öğesi](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -395,7 +395,7 @@ Giriş noktası tarafından belirtilen yürütülebilir dosya genellikle uzun s�
 Daha fazla bilgi için bkz. [Containerhost öğesi](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>GörüntüAdı öğesi
-https://hub.docker.com Veya Azure Container Registry için depo ve görüntü. Daha fazla bilgi için bkz. [GörüntüAdı öğesi](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+https://hub.docker.com veya Azure Container Registry üzerindeki depo ve görüntü. Daha fazla bilgi için bkz. [GörüntüAdı öğesi](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Commands öğesi
 Kapsayıcıya virgülle ayrılmış komutların bir listesini geçirin. Daha fazla bilgi için bkz. [Commands öğesi](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)

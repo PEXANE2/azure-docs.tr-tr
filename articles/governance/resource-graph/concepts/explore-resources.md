@@ -1,17 +1,14 @@
 ---
 title: Azure kaynaklarınızı inceleme
 description: Kaynak grafik sorgu dilini kullanarak kaynaklarınızı keşfetme ve bunların nasıl bağlandığını bulma hakkında bilgi edinin.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e489a4eafdbbd838c4850d67fcd8ec40f76f290c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622677"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959232"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Kaynak Grafiği ile Azure kaynaklarınızı keşfedin
 
@@ -168,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Premium yönetilen disklere bağlı sanal makineler
 
-Bu **Standard_B2s** sanal makinelerine eklenmiş Premium yönetilen disklerin ayrıntılarını almak istiyorsam, bu yönetilen DISKLERIN kaynak kimliğini vermek için sorguyu genişletebiliriz.
+Bu **Standard_B2s** sanal makinelere eklenmiş Premium yönetilen disklerin ayrıntılarını almak istiyorsam, bu yönetilen DISKLERIN kaynak kimliğini sağlamak için sorguyu genişletebilirsiniz.
 
 ```kusto
 Resources

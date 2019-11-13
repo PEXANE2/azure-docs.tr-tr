@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: fadbcf04f1cd474cf2d23963e88016d240272263
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71279896"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "74005077"
 ---
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı oluşturma-hiper ölçek (Citus)
 
 PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları uygulayın:
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
 2. **Yeni** sayfasından **Veritabanları**’nı seçin ve **Veritabanları** sayfasından **PostgreSQL için Azure Veritabanı**’nı seçin.
-3. Dağıtım seçeneği için, **Hyperscale (Citus) sunucu grubu-Önizleme** altında **Oluştur** düğmesine tıklayın.
+3. Dağıtım seçeneği için, **Hyperscale (Citus) sunucu grubu** altında **Oluştur** düğmesine tıklayın.
 4. Yeni sunucu ayrıntıları formunu aşağıdaki bilgilerle doldurun:
    - Kaynak grubu: Bu alan için metin kutusunun altındaki **Yeni oluştur** bağlantısına tıklayın. **Myresourcegroup**gibi bir ad girin.
    - Sunucu grubu adı: sunucu alt etki alanı için de kullanılacak yeni sunucu grubu için benzersiz bir ad girin.
@@ -38,15 +38,15 @@ PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları uy
    > Burada belirttiğiniz sunucu yöneticisi parolası, sunucuda ve veritabanlarında oturum açmak için gereklidir. Bu bilgileri daha sonra kullanmak üzere aklınızda tutun veya kaydedin.
 
 5. **Sunucu grubunu yapılandır**öğesine tıklayın. Bu bölümdeki ayarları değiştirmeden bırakın ve **Kaydet**' e tıklayın.
-6. **İleri: Ağ,** ekranın alt kısmında >.
+6. Ileri ' ye tıklayın, ekranın alt kısmındaki **ağ >** .
 
 7. **Ağ** sekmesinde, **genel uç nokta** radyo düğmesine tıklayın.
-   ![Ortak uç nokta seçildi](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
+   ![ortak uç nokta seçildi](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
 8. Bağlantı **+ geçerli ISTEMCI IP adresini ekle**' ye tıklayın.
-   ![Eklenen istemci IP 'si](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
+   ![eklenen istemci IP](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
 
    > [!NOTE]
-   > Azure PostgreSQL sunucusu, 5432 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 5432 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda BT departmanınız 5432 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız.
+   > Azure PostgreSQL sunucusu, 5432 numaralı bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 5432 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda BT departmanınız 5432 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız.
    >
 
 9. Sunucuyu sağlamak için **gözden geçir + oluştur** ' a ve ardından **Oluştur** ' a tıklayın. Sağlama birkaç dakika sürer.

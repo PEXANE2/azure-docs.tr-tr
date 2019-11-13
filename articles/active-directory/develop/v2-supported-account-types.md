@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3cd612200dc33fe37036146b00f52073403ecc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 929479f2816ef979edb26ba5aa00cf449c49b70a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852034"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73942164"
 ---
 # <a name="supported-account-types"></a>Desteklenen hesap türleri
 
@@ -41,7 +41,7 @@ Microsoft Azure genel bulutta, çoğu uygulama türü kullanıcılara herhangi b
   - İş veya okul veya kişisel Microsoft hesabı.
   - Yalnızca kişisel Microsoft hesabı.
     > [!NOTE]
-    > Şu anda Microsoft Identity platformu kişisel Microsoft hesaplarını yalnızca **iş veya okul veya Microsoft kişisel hesapları**için bir uygulama kaydederek destekler ve ardından BIR Azure AD yetkilisi belirterek uygulamanın kodundaki oturum açma erişimlerini kısıtlar, uygulamayı oluştururken gibi `https://login.onmicrosoftonline.com/consumers`.
+    > Şu anda Microsoft Identity platformu kişisel Microsoft hesaplarını yalnızca **iş veya okul veya Microsoft kişisel hesapları**için bir uygulama kaydederek destekler ve sonra, uygulamayı oluştururken `https://login.microsoftonline.com/consumers`gibi BIR Azure AD yetkilisi belirterek uygulamanın kodunda oturum açmasını kısıtlar.
 
 - Bir işletmeyi tüketiciler uygulamasına yazıyorsanız, kullanıcılar Azure AD B2C kullanarak sosyal kimlikleri ile de oturum açabilirsiniz.
 

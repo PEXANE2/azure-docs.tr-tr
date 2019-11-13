@@ -1,17 +1,14 @@
 ---
 title: Azure CLı kullanarak ilk sorgunuzu çalıştırma
 description: Bu makale, Azure CLI için Kaynak Grafiği uzantısını etkinleştirmek ve ilk sorgunuzu çalıştırmak için gereken adımları incelemenizi sağlar.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: quickstart
-ms.service: resource-graph
-ms.openlocfilehash: 0136b101de870ce669e89e67679719e233343330
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: b74e4314a7755bb067831f955ca02d62485abe4f
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622576"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958962"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 

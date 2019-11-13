@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 9e1fe0e5bae462715a8cb2950cca100f0f409325
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fa930d4ab420708e6abfdf1765703afbe20fa25e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718735"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958271"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway için arka uç sistem durumu ve tanılama günlükleri
 
@@ -33,7 +33,7 @@ Application Gateway, Portal, PowerShell ve komut satırı arabirimi (CLı) arac�
 Arka uç sistem durumu raporu, Application Gateway sistem durumu araştırmasının çıkışını arka uç örneklerine yansıtır. Yoklama başarılı olduğunda ve arka uç trafik alabileceği zaman sağlıklı olarak kabul edilir. Aksi takdirde, sağlıksız olarak kabul edilir.
 
 > [!IMPORTANT]
-> Bir Application Gateway alt ağında ağ güvenlik grubu (NSG) varsa, gelen trafik için Application Gateway alt ağında 65503-65534 numaralı bağlantı noktasını açın. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bunlar Azure sertifikaları tarafından korunur (kilitlenir). Uygun sertifikalar olmadan, bu ağ geçitlerinin müşterileri de dahil olmak üzere dış varlıklar bu uç noktalar üzerinde herhangi bir değişiklik başlatamaz.
+> Bir Application Gateway alt ağında ağ güvenlik grubu (NSG) varsa, v1 SKU 'Ları için 65503-65534 bağlantı noktası aralıklarını ve gelen trafik için Application Gateway alt ağında v2 SKU 'Ları için 65200-65535 ' u açın. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bunlar Azure sertifikaları tarafından korunur (kilitlenir). Uygun sertifikalar olmadan, bu ağ geçitlerinin müşterileri de dahil olmak üzere dış varlıklar bu uç noktalar üzerinde herhangi bir değişiklik başlatamaz.
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>Portal aracılığıyla arka uç durumunu görüntüleme
@@ -172,7 +172,7 @@ Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, he
 |sentBytes| Bayt cinsinden gönderilen paket boyutu.|
 |timeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
 |sslEnabled| Arka uç havuzlarıyla iletişimin SSL kullanıp kullanmadığını belirtir. Geçerli değerler açık ve kapalı.|
-|Konağının| İsteğin arka uç sunucusuna gönderildiği ana bilgisayar adı. Arka uç ana bilgisayar adı geçersiz kılınırsa, bu ad bu adı yansıtır.|
+|host| İsteğin arka uç sunucusuna gönderildiği ana bilgisayar adı. Arka uç ana bilgisayar adı geçersiz kılınırsa, bu ad bu adı yansıtır.|
 |originalHost| İstemciden Application Gateway tarafından isteğin alındığı ana bilgisayar adı.|
 ```json
 {
@@ -220,7 +220,7 @@ Application Gateway ve WAF v2 için Günlükler biraz daha fazla bilgi gösterir
 |Sunucu yönlendirmeli| Application Gateway 'in isteği yönlendiren arka uç sunucusu.|
 |serverStatus| Arka uç sunucusunun HTTP durum kodu.|
 |serverResponseLatency| Arka uç sunucusundan gelen yanıtın gecikmesi.|
-|Konağının| İsteğin ana bilgisayar üstbilgisinde listelenen adres.|
+|host| İsteğin ana bilgisayar üstbilgisinde listelenen adres.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -304,13 +304,13 @@ Güvenlik duvarı günlüğü, önceki adımlarda açıklandığı şekilde, yal
 |message     | Tetikleme olayı için Kullanıcı dostu ileti. Ayrıntılar bölümünde daha fazla ayrıntı sağlanır.        |
 |action     |  İstek üzerinde gerçekleştirilen eylem. Kullanılabilir değerler engellendi ve Izin verilir.      |
 |bölgesi     | Günlüğün oluşturulduğu site. Şu anda, kurallar genel olduğundan yalnızca küresel olarak listelenir.|
-|Bilgileri     | Tetikleme olayının ayrıntıları.        |
+|details     | Tetikleme olayının ayrıntıları.        |
 |Ayrıntılar. ileti     | Kuralın açıklaması.        |
 |details. Data     | Kuralla eşleşen istekte belirli veriler bulundu.         |
 |Ayrıntılar. dosya     | Kuralın bulunduğu yapılandırma dosyası.        |
 |details. Line     | Olayı tetikleyen yapılandırma dosyasındaki satır numarası.       |
 |Konak   | Application Gateway ana bilgisayar adı veya IP adresi.    |
-|TransactionId  | Aynı istek içinde oluşan birden çok kural ihlallerinin gruplandırbir şekilde yapılmasına yardımcı olan belirli bir işlemin benzersiz KIMLIĞI.   |
+|transactionId  | Aynı istek içinde oluşan birden çok kural ihlallerinin gruplandırbir şekilde yapılmasına yardımcı olan belirli bir işlemin benzersiz KIMLIĞI.   |
 
 ```json
 {

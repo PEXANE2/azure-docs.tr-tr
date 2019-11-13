@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: gezgin Azure Time Series Insights | Microsoft Docs'
-description: Bu hızlı başlangıçta, çok sayıda IoT verilerini görselleştirmek için Web tarayıcınızda Azure Time Series Insights Gezginini kullanmaya nasıl başlacağınız gösterilmektedir. Bir tanıtım ortamında temel özelliklere göz atın.
+title: 'Hızlı başlangıç: Azure Time Series Insights Explorer-Azure Time Series Insights | Microsoft Docs'
+description: Azure Time Series Insights Gezginini kullanmaya nasıl başlaleyeceğinizi öğrenin. Büyük hacimli IoT verilerini görselleştirin ve ortamınızın önemli özelliklerini görselleştirin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/23/2019
-ms.openlocfilehash: 156e95c88bc3c66890ba9c8baf9b281330b60186
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0253a46cd73679c7c2f50a1e37d26d67578e342e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990917"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006428"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Hızlı Başlangıç: Azure Time Series Insights’ı Keşfedin
 
@@ -48,13 +48,13 @@ Bu Time Series Insights gezgin hızlı başlangıcı, genel kullanıma sunulan �
 
 1. Bir zaman dilimi seçin ve bölgeye sürükleyin. Ardından **Ara**' yı seçin.
 
-   [zaman dilimi![seçin](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
+   [zaman dilimi ![seçin](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
 
    Time Series Insights, belirttiğiniz zaman aralığı için bir grafik görselleştirmesi görüntüler. Çizgi grafik içinde çeşitli eylemler gerçekleştirebilirsiniz. Örneğin, filtreleyebilir, sabitleyebilir, sıralayabilir ve yığın oluşturabilirsiniz.
 
    **Zaman seçimi paneline**dönmek için gösterilen aşağı oku seçin:
 
-   [Grafik![](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
+   [Grafik ![](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
 
 1. Yeni bir arama terimi eklemek için **terimler panelinde** **Ekle** ' yi seçin.
 
@@ -62,7 +62,7 @@ Bu Time Series Insights gezgin hızlı başlangıcı, genel kullanıma sunulan �
 
 1. Grafikte bir bölgeyi seçip bölgeye sağ tıklayabilir ve **Olayları Keşfet**’i seçebilirsiniz.
 
-   [Olayları araştırmak![](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+   [Olayları araştırmak ![](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
 
    Ham verilerinizin bir Kılavuzu, araştırırken bulunan bölgeden görüntülenir.
 
@@ -72,7 +72,7 @@ Bu Time Series Insights gezgin hızlı başlangıcı, genel kullanıma sunulan �
 
 1. Grafikteki değerleri değiştirmek için koşullarınızı düzenleyin. Farklı değer türlerini çapraz ilişkilendirmek için başka bir terim ekleyin.
 
-   [Terim eklemek![](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
+   [Terim eklemek ![](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
 
 1. İmprovised serisi filtreleme için **filtre serisi** kutusuna bir filtre terimi girin. Bu hızlı başlangıçta, bir istasyona ait sıcaklığı ve basıncı karşılıklı olarak ilişkilendirmek için **Station5** terimini girin.
 

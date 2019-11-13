@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 229d960f7851b5fab8504b6c2a109bece6c7b31f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 34a8b27442fc3f755cbe33f61857aa13d3be700b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969103"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012829"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerinde SQL veritabanlarını yedekleme ve geri yükleme
 
@@ -24,6 +24,7 @@ Bu makalede, [Azure Backup](backup-overview.md) kurtarma hizmetleri kasasını k
 Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
 
 > [!div class="checklist"]
+>
 > * PowerShell 'i ayarlayın ve Azure kurtarma hizmetleri sağlayıcısını kaydedin.
 > * Kurtarma Hizmetleri kasası oluşturun.
 > * Azure VM 'de SQL DB için yedeklemeyi yapılandırın.
@@ -270,10 +271,10 @@ Oto Koruma amacı verildiğinde, yeni eklenen veritabanlarını getirmek için m
 
 Azure Backup, Azure VM 'lerinde çalışan SQL Server veritabanlarını şu şekilde geri yükleyebilir:
 
-1. İşlem günlüğü yedeklerini kullanarak belirli bir tarih veya saate (ikinci olarak) geri yükleyin. Azure Backup, uygun tam değişiklik yedeklemesini ve seçilen saate göre geri yüklemek için gereken günlük yedeklemeleri zincirini otomatik olarak belirler.
-2. Belirli bir kurtarma noktasına geri yüklemek için belirli bir tam veya değişiklik yedeklemesini geri yükleyin.
+* İşlem günlüğü yedeklerini kullanarak belirli bir tarih veya saate (ikinci olarak) geri yükleyin. Azure Backup, uygun tam değişiklik yedeklemesini ve seçilen saate göre geri yüklemek için gereken günlük yedeklemeleri zincirini otomatik olarak belirler.
+* Belirli bir kurtarma noktasına geri yüklemek için belirli bir tam veya değişiklik yedeklemesini geri yükleyin.
 
-SQL DB 'yi geri yüklemeden önce [burada](restore-sql-database-azure-vm.md#prerequisites) bahsedilen önkoşulları denetleyin.
+SQL DBs 'yi geri yüklemeden önce [burada](restore-sql-database-azure-vm.md#prerequisites) bahsedilen önkoşulları denetleyin.
 
 İlk olarak [Get-Azrecoveryservicesbackupıtem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS cmdlet 'ini kullanarak ılgılı yedeklenen SQL DB 'yi getirin.
 
@@ -335,9 +336,9 @@ Yukarıdaki çıktı, kullanıcının görüntülenen başlangıç saati ve biti
 
 SQL DB geri yükleme durumunda aşağıdaki geri yükleme senaryoları desteklenir.
 
-1. Yedeklenen SQL DB 'yi başka bir kurtarma noktasındaki verilerle geçersiz kılma-Originalworkloadresstore
-2. SQL DB 'yi aynı SQL örneğine yeni bir VERITABANı olarak geri yükleme-Alternateworkloadresstore
-3. SQL DB 'yi başka bir SQL VM 'deki başka bir SQL örneğine yeni bir VERITABANı olarak geri yükleme-Alternateworkloadresstore
+* Yedeklenen SQL DB 'yi başka bir kurtarma noktasındaki verilerle geçersiz kılma-Originalworkloadresstore
+* SQL DB 'yi aynı SQL örneğine yeni bir VERITABANı olarak geri yükleme-Alternateworkloadresstore
+* SQL DB 'yi başka bir SQL VM 'deki başka bir SQL örneğine yeni bir VERITABANı olarak geri yükleme-Alternateworkloadresstore
 
 İlgili kurtarma noktasını (farklı veya günlük zaman) geçirdikten sonra, kurtarma yapılandırma nesnesini istenen kurtarma planına göre getirmek için [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS cmdlet 'ini kullanın.
 
@@ -560,12 +561,12 @@ SQL Always on kullanılabilirlik grupları için, kullanılabilirlik grubunun (A
 
 Örneğin, bir SQL AG 'nin iki düğüm olduğunu varsayalım: ' SQL-Server-0 ' ve ' SQL-Server-1 ' ve 1 SQL AG DB. Her iki düğüm de kaydedildikten sonra, Kullanıcı [korunabilir öğeleri listelerse](#fetching-sql-dbs), aşağıdaki bileşenleri listeler
 
-1. SQLAvailabilityGroup olarak bir SQL AG nesnesi-korunabilir öğe türü
-2. SQLDatabase olarak SQL AG DB korumalı tablo öğesi türü
-3. SQL-Server-0-korunabilir öğe türü SQLInstance olarak
-4. SQL-Server-1-korunabilir öğe türü SQLInstance olarak
-5. SQL-Server-0-korunabilir öğe türü altındaki varsayılan SQL DBs (Master, model, msdb), SQLDatabase olarak
-6. SQL-Server-1-korunabilir öğe türü altındaki herhangi bir varsayılan SQL DBs (Master, model, msdb), SQLDatabase olarak
+* SQLAvailabilityGroup olarak bir SQL AG nesnesi-korunabilir öğe türü
+* SQLDatabase olarak SQL AG DB korumalı tablo öğesi türü
+* SQL-Server-0-korunabilir öğe türü SQLInstance olarak
+* SQL-Server-1-korunabilir öğe türü SQLInstance olarak
+* SQL-Server-0-korunabilir öğe türü altındaki varsayılan SQL DBs (Master, model, msdb), SQLDatabase olarak
+* SQL-Server-1-korunabilir öğe türü altındaki herhangi bir varsayılan SQL DBs (Master, model, msdb), SQLDatabase olarak
 
 [yedekleme kapsayıcıları listelendiğinde](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)SQL-Server-0, SQL-Server-1 da "AzureVMAppContainer" olarak listelenecektir.
 

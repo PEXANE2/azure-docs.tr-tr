@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 7a0cce6b72240b95943fbece08cfbf61eaee3524
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891702"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013141"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
@@ -101,28 +101,6 @@ Windows 10 bilgisayarları için bir başlangıç düzeni belirtmek üzere bu ko
 
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
-```
-
-### <a name="configure-session-timeout-policies"></a>Oturum zaman aşımı ilkelerini yapılandırma
-
-Bir konak havuzundaki tüm VM 'Ler aynı güvenlik grubunun parçası olduğundan, uzak oturum ilkeleri grup ilkesi düzeyinde zorlanabilir.
-
-Uzak oturum ilkelerini yapılandırmak için:
-
-1. **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri** ** > ** **oturum zaman sınırlarını**Uzak Masaüstü oturumu ana bilgisayarı. > 
-2. Sağ taraftaki bölmede, **etkin ancak boşta Uzak Masaüstü Hizmetleri oturumlar ilkesi için zaman sınırını ayarla** ilkesini seçin.
-3. Kalıcı pencere göründükten sonra ilkeyi **etkinleştirmek için ilke** seçeneğini **Yapılandırılmadı** olarak değiştirin.
-4. İlke seçeneğinin altındaki açılan menüde, zaman miktarını **3 saate**ayarlayın.
-
-Uzak oturum ilkelerini aşağıdaki komutları çalıştırarak el ile de yapılandırabilirsiniz:
-
-```batch
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fResetBroken /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 10800000 /f
 ```
 
 ### <a name="set-up-time-zone-redirection"></a>Saat dilimi yeniden yönlendirmeyi ayarlama

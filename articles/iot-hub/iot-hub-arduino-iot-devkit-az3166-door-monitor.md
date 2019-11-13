@@ -1,22 +1,21 @@
 ---
-title: Kapıya SendGrid hizmeti ve Azure Işlevleri kullanılarak açıldığında bir e-posta alın | Microsoft Docs
+title: Azure Işlevleri kullanılarak kapı açıldığında e-posta gönder
 description: Bir kapısının açılıp açılmadığını algılamak için manyetik algılayıcıyı izleyin ve bir e-posta bildirimi göndermek için Azure Işlevlerini kullanın.
 author: liydu
-manager: jeffya
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 6cbf3f906b511d9d76319f57f5508a2c584213cb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 23607b52f866bb7b0be760e49be7d62d1732d43c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484058"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954746"
 ---
-# <a name="door-monitor"></a>Kapı Izleyicisi          
+# <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Kapı Izleyicisi--Azure Işlevleri ve SendGrid kullanarak bir kapı açıldığında e-posta gönderin           
 
 Mxyongaıot DevKit yerleşik bir manyetik algılayıcı içeriyor. Bu projede, yakın bir güçlü manyetik alanın varlığını veya yokluğunu tespit edersiniz. Bu durumda, küçük ve kalıcı bir mıknatıs 'den geliyor.
 

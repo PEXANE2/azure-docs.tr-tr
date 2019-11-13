@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights daraltma nasıl izlenir ve azaltıyor | Microsoft Docs
-description: Bu makalede, Azure Time Series Insights gecikme süresi ve azaltmasına neden olan performans sorunlarını izleme, tanılama ve azaltma işlemlerinin nasıl yapılacağı açıklanır.
+title: Azaltmayı izleme ve azaltma-Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights gecikme süresi ve azaltmasına neden olan performans sorunlarını izleme, tanılama ve azaltma hakkında bilgi edinin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4e82cdf43f568b6415cb7cb00ce0244654559b7d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 7ea98baa9cb202e2584c18998c5ab96d1c1f9e5a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990139"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012650"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights gecikme süresini azaltmak için azaltmayı izleyin ve azaltır
 
@@ -48,11 +48,11 @@ Uyarılar, ortamınızın neden olduğu gecikme sorunlarını tanılamanıza ve 
 
 1. **Kural oluştur** paneli görüntülenir. **Koşul**altında **Ekle** ' yi seçin.
 
-   [uyarı eklemek![](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [uyarı eklemek ![](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
 1. Sonra, sinyal mantığı için tam koşulları yapılandırın.
 
-   [sinyal mantığını yapılandırma![](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [sinyal mantığını yapılandırma ![](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
    Buradan, aşağıdaki koşullardan bazılarını kullanarak uyarılar yapılandırabilirsiniz:
 
@@ -63,7 +63,7 @@ Uyarılar, ortamınızın neden olduğu gecikme sorunlarını tanılamanıza ve 
    |**Giriş alınan Iletiler**   | Tüm Event Hubs veya IoT Hub 'Ları olay kaynaklarından okunan ileti sayısı.        |
    |**Giriş depolanan baytlar**     | Sorgu için depolanan ve kullanılabilir olayların toplam boyutu. Boyut yalnızca özellik değeri üzerinde hesaplanır.        |
    |Giriş **saklı olayları**     |   Depolanan ve sorgu için kullanılabilir düzleştirilmiş olay sayısı.      |
-   |**Alınan Ileti zaman gecikmesi**    |  İleti olay kaynağında sıraya alındığı zaman ve giriş sırasında işlendiği zaman arasındaki saniye cinsinden fark.      |
+   |**Alınan Ileti zaman gecikmesi alındı**    |  İleti olay kaynağında sıraya alındığı zaman ve giriş sırasında işlendiği zaman arasındaki saniye cinsinden fark.      |
    |Giriş **alınan Ileti sayısı gecikme**    |  Olay kaynak bölümünde en son sıraya alınan iletinin sıra numarası ve giriş olarak işlenen iletinin sıra numarası arasındaki fark.      |
 
    **Done** (Bitti) öğesini seçin.
@@ -74,7 +74,7 @@ Uyarılar, ortamınızın neden olduğu gecikme sorunlarını tanılamanıza ve 
 
 ## <a name="throttling-and-ingress-management"></a>Daraltma ve giriş yönetimi
 
-* Kısıtladıysanız, *alınan Ileti zaman gecikmesi*için bir değer görürsünüz. Bu, zaman serisi öngörülerinin gerisinde kaç saniye sonra iletinin olay kaynağına (Dizin oluşturma saati hariç) rastlamadığını bildiren bir değer görürsünüz. Appx. 30-60 saniye).  
+* Kısıtladıysanız, *alınan Ileti zaman gecikmesi*için bir değer görürsünüz ve bu, zaman serisi öngörülerinin arkasındaki sürenin gerçek zamandan (Appx dizin oluşturma süresi dışında) ne kadar süreyle olduğunu size bildiren bir ileti alırsınız. 30-60 saniye).  
 
   *Alınan Ileti sayısı gecikmesi* de bir değer içermelidir, bu da arkasında kaç ileti olduğunu belirlemenizi sağlar.  En kolay şekilde, ortamınızın kapasitesini, farkı aşmanızı sağlayacak bir boyuta artırmanız gerekir.  
 

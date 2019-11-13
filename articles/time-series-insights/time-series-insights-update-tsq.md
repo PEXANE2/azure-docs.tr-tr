@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights Preview verilerini sorgulama | Microsoft Docs
-description: Azure Time Series Insights Preview verilerini sorgulama.
+title: Önizlemede veri sorgulama-Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights Preview veri sorgulama hakkında bilgi edinin.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: e660db5db3d1afc14a3c895e6786d1b6a8b82c13
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f44aa5c0a412dc53f4b1a5f127887257a1b0b550
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832418"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006304"
 ---
-# <a name="data-querying"></a>Veri sorgulama
+# <a name="data-querying-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri sorgulama
 
 Azure Time Series Insights önizleme, genel yüzey API 'Leri aracılığıyla ortamda depolanan olaylar ve meta veriler üzerinde veri sorgulama imkanı sunar. Bu API 'Ler [Time Series Insights önizleme Gezgininde](./time-series-insights-update-explorer.md)de kullanılır.
 

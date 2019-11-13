@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights ortamınızı ölçeklendirme | Microsoft Docs
-description: Bu makalede Azure Time Series Insights ortamınızın nasıl ölçeklendiriyapılacağı açıklanır. Fiyatlandırma SKU 'sunda kapasite eklemek veya çıkarmak için Azure portal kullanın.
+title: Ortamınızı ölçeklendirme-Azure Time Series Insights | Microsoft Docs
+description: Azure portal kullanarak Azure Time Series Insights ortamınızı ölçeklendirmeyi öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f03f5ed75c720c9b0daf30d721ef4d2aee9749c
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: b17cdb2ec27676d5d20d6f12bad309368fe32aa3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991148"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006797"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights ortamınızı ölçeklendirme
 

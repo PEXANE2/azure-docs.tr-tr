@@ -1,6 +1,6 @@
 ---
-title: Azure dijital TWINS için Postman yapılandırma | Microsoft Docs
-description: Azure dijital TWINS için Postman 'ı yapılandırma.
+title: Postman Yapılandırma-Azure dijital TWINS | Microsoft Docs
+description: Azure dijital TWINS API 'Lerini test etmek için Postman yapılandırma ve kullanma hakkında bilgi edinin.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 14e6a52f86586eaae019d9658c2f813a15fc3474
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 5a357a246f2ba6c294b107e447218f386623f5c5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949203"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014190"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure dijital TWINS için Postman 'ı yapılandırma
 
@@ -39,31 +39,31 @@ Azure Active Directory uygulamanızı OAuth 2,0 örtük izin akışını kullana
     
     1. `Azure Digital Twins`. **Azure dijital TWINS** API 'sini seçin.
 
-        [![Search API veya Azure dijital TWINS](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
+        [![arama API 'SI veya Azure dijital TWINS](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
-    1. Alternatif olarak, `Azure Smart Spaces Service` ' ı arayın. **Azure akıllı boşluklar hizmeti** API 'sini seçin.
+    1. Alternatif olarak, `Azure Smart Spaces Service`için arama yapın. **Azure akıllı boşluklar hizmeti** API 'sini seçin.
 
-        [![ Azure akıllı boşluklar için API arama](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
+        [Azure akıllı alanları için Search API ![](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
 
     > [!IMPORTANT]
     > Görüntülenecek Azure AD API adı ve KIMLIĞI, kiracınıza bağlı olarak değişir:
-    > * Test kiracısı ve müşteri hesaplarının `Azure Digital Twins` araması gerekir.
-    > * Diğer Microsoft hesaplarının `Azure Smart Spaces Service` araması gerekir.
+    > * Test kiracının ve müşteri hesaplarının `Azure Digital Twins`araması gerekir.
+    > * Diğer Microsoft hesaplarının `Azure Smart Spaces Service`araması gerekir.
 
 1. Seçilen API, aynı **istek API 'si izinleri** bölmesinde **Azure dijital TWINS** olarak gösterilir. **Oku (1)** açılır öğesini seçin ve ardından **oku. yazma** onay kutusunu seçin. **Izin Ekle** düğmesini seçin.
 
-    [![Apı izinleri ekleme](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+    [![API izinleri ekleme](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
 1. Kuruluşunuzun ayarlarına bağlı olarak, bu API 'ye yönetici erişimi sağlamak için ek adımlar gerçekleştirmeniz gerekebilir. Daha fazla bilgi için yöneticinize başvurun. Yönetici erişimi onaylandıktan sonra **API izinleri** BÖLMESINDEKI **yönetici onayı gerekli** sütunu, API 'leriniz için aşağıdakine benzer şekilde görünür:
 
-    [![Apı izinleri ekleme](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [Yönetici onay onayını ![](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
 
-1. Uygulamanızın uygulama bildirimini açmak için **bildirim** ' ı seçin. *Oauth2AllowImplicitFlow* `true` olarak ayarlayın.
+1. Uygulamanızın uygulama bildirimini açmak için **bildirim** ' ı seçin. `true`için *oauth2AllowImplicitFlow* ayarlayın.
 
     [![Azure Active Directory örtük akış](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
 
-1. @No__t-1 için bir **yanıt URL 'si** yapılandırın.
+1. `https://www.getpostman.com/oauth2/callback`için bir **yanıt URL 'si** yapılandırın.
 
     [![Azure Active Directory yanıt URL 'SI](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
 
@@ -85,7 +85,7 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Name  | Değiştir | Örnek |
+    | Ad  | Şununla değiştir | Örnek |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | Kiracınızın veya kuruluşunuzun adı | `microsoft` |
 
@@ -96,7 +96,7 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
     | Verme türü | `Implicit` |
     | Geri çağırma URL 'SI | `https://www.getpostman.com/oauth2/callback` |
     | Kimlik doğrulama URL 'SI | **2. adımdaki** **yetkilendirme URL 'sini** kullanın |
-    | İstemci KIMLIĞI | Önceki bölümden oluşturulmuş veya yeniden kullanılan Azure Active Directory uygulamasının **uygulama kimliğini** kullanın |
+    | İstemci Kimliği | Önceki bölümden oluşturulmuş veya yeniden kullanılan Azure Active Directory uygulamasının **uygulama kimliğini** kullanın |
     | Kapsam | Boş bırakın |
     | Durum | Boş bırakın |
     | İstemci kimlik doğrulaması | `Send as Basic Auth header` |
@@ -117,13 +117,13 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
 
 Önceki adımları tamamladıktan sonra, kimliği doğrulanmış bir HTTP çok parçalı GÖNDERI isteği oluşturmak için Postman 'ı yapılandırın:
 
-1. **Üst bilgi** sekmesinde, `multipart/mixed` değerine sahıp bir http istek üst bilgisi anahtarı **içerik türü** ekleyin.
+1. **Üstbilgi** sekmesi ALTıNA bir http istek üst bilgisi anahtarı **Content-Type** değerini `multipart/mixed`ekleyin.
 
-   [![Içerik türü Multipart/Mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
+   [![Içerik türü parçalı/karışık](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Metin olmayan verileri dosyalara serileştirme. JSON verileri bir JSON dosyası olarak kaydedilir.
-1. **Gövde** sekmesinde `form-data` ' i seçin. 
-1. Her dosyayı bir **anahtar** adı atayarak ekleyin, `file` ' i seçin.
+1. **Gövde** sekmesinde `form-data`' yi seçin. 
+1. Her dosyayı bir **anahtar** adı atayarak ekleyin, `file`öğesini seçin.
 1. Sonra, **Dosya Seç** düğmesini kullanarak her bir dosyayı seçin.
 
    [![Postman istemci örneği](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
@@ -131,7 +131,7 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
    >[!NOTE]
    > * Postman istemcisi, çok parçalı öbeklerin el ile atanmış bir **Içerik türü** veya **Content-Disposition**olmasını gerektirmez.
    > * Her bölüm için bu üst bilgileri belirtmeniz gerekmez.
-   > * Tüm istek için `multipart/mixed` veya başka bir uygun **Içerik türü** seçmeniz gerekir.
+   > * Tüm istek için `multipart/mixed` veya başka bir uygun **Içerik türü** seçmelisiniz.
 
 1. Son olarak, çok parçalı HTTP POST isteğinizi göndermek için **Gönder** ' i seçin.
 

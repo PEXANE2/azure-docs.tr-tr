@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery yapılandırma, işlem ve ana hedef sunucuları hakkında | Microsoft Docs
+title: Azure Site Recovery yapılandırma/işlem/ana hedef sunucuları hakkında
 description: Bu makalede, Azure Site Recovery ile şirket içi VMware VM 'lerinin olağanüstü durum kurtarması ayarlanırken yapılandırma, süreç ve ana hedef sunuculara genel bir bakış sunulmaktadır
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a70400a1d0c710b939b4dd6d157cb06e729f53cb
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ad816f39dd4182dfa41fca975c99824a5d77f860
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747809"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961317"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Site Recovery bileşenleri (yapılandırma, işlem, ana hedef) hakkında
 

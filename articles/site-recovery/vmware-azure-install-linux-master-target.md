@@ -1,5 +1,5 @@
 ---
-title: Şirket içi siteye yeniden çalışma için bir Linux ana hedef sunucusu yükler | Microsoft Docs
+title: Azure Site Recovery ile Linux sanal makinesi için bir ana hedef sunucu yüklemesi
 description: Azure Site Recovery kullanarak, VMware VM 'lerinin olağanüstü durum kurtarması sırasında bir Linux ana hedef sunucusunu şirket içi siteye yeniden çalışma için ayarlamayı öğrenin.
 author: mayurigupta13
 services: site-recovery
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904407"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954369"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Yeniden çalışma için bir Linux ana hedef sunucusu yükler
 Sanal makinelerinizin yükünü Azure 'a devretmek için sanal makineleri şirket içi siteye geri alabilirsiniz. Yeniden yük devretmek için sanal makineyi Azure 'dan şirket içi siteye yeniden korumanız gerekir. Bu işlem için, trafiği almak için bir şirket içi ana hedef sunucusuna ihtiyacınız vardır. 
@@ -67,7 +67,7 @@ DVD sürücüsünde Ubuntu 16.04.2 minimal 64 bit ISO tutun ve sistemi başlatı
 
 1.  Tercih ettiğiniz dil olarak **İngilizce** ' yi seçin ve ardından **ENTER**' u seçin.
     
-    ![Dil seç](./media/vmware-azure-install-linux-master-target/image1.png)
+    ![Dil Seçin](./media/vmware-azure-install-linux-master-target/image1.png)
 1. **Ubuntu sunucusunu yükleyip** **ENTER**' u seçin.
 
     ![Ubuntu sunucusu yüklemeyi seçin](./media/vmware-azure-install-linux-master-target/image2.png)
@@ -91,7 +91,7 @@ DVD sürücüsünde Ubuntu 16.04.2 minimal 64 bit ISO tutun ve sistemi başlatı
 
 1. Bir kullanıcı hesabı oluşturmak için Kullanıcı adını girip **devam**' ı seçin.
 
-      ![Bir kullanıcı hesabı oluşturun](./media/vmware-azure-install-linux-master-target/image9.png)
+      ![Kullanıcı hesabı oluşturma](./media/vmware-azure-install-linux-master-target/image9.png)
 
 1. Yeni Kullanıcı hesabının parolasını girip **devam**' ı seçin.
 
@@ -160,7 +160,7 @@ Bir Linux sanal makinesindeki her SCSI sabit diskinin KIMLIĞINI almak için **d
 
 3. **Seçenekler** sekmesini seçin.
 
-4. Sol bölmede **Gelişmiş** > **genel**' i seçin ve ardından ekranın sağ alt kısmındaki **yapılandırma parametreleri** düğmesini seçin.
+4. Sol bölmede **gelişmiş** > **genel**' i seçin ve ardından ekranın sağ alt kısmındaki **yapılandırma parametreleri** düğmesini seçin.
 
     ![Yapılandırma parametresini aç](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
@@ -261,7 +261,7 @@ Bir saklama diski oluşturmak için aşağıdaki adımları kullanın:
     
     Dosyayı düzenlemeyle başlamak için **Ekle** ' yi seçin. Yeni bir satır oluşturun ve ardından aşağıdaki metni ekleyin. Önceki komuttan vurgulanan çok yollu KIMLIĞE göre disk çok yollu KIMLIĞINI düzenleyin.
 
-    **/dev/mapper/\<bekletme diskleri çok yollu kimlik >/mnt/bekletme ext4 RW 0 0**
+    **/dev/mapper/\<saklama diskleri çok yollu kimliği >/mnt/bekletme ext4 RW 0 0**
 
     **ESC**' yi seçin ve ardından düzenleyici penceresini kapatmak için **WQ** (yazma ve çıkış) yazın.
 
@@ -342,7 +342,7 @@ Yükleyiciyi çalıştırın. Aracının ana hedefte yüklü olduğunu otomatik 
 
 **Sürüm** alanının ana hedefin sürüm numarasını sunabilme durumunu görürsünüz.
 
-## <a name="common-issues"></a>Sık karşılaşılan sorunlar
+## <a name="common-issues"></a>Genel sorunlar
 
 * Ana hedef gibi yönetim bileşenlerinde Depolama vMotion 'ı etkinleştirdiğinizden emin olun. Ana hedef başarılı bir şekilde yeniden korunduktan sonra taşınırsa, sanal makine diskleri (VMDK) ayrılamıyor. Bu durumda yeniden çalışma başarısız olur.
 

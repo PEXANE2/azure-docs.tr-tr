@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e075091461949639fc36ffb9feab69ac5399ae61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0196e6fb4b2cd52fd66a26e07e8d4ce71983bc16
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491977"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013201"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturmak için bölge yedekli depolama (ZRS)
 
@@ -24,7 +24,7 @@ ms.locfileid: "73491977"
 
 ZRS Şu anda standart genel amaçlı v2 ve FileStorage depolama hesabı türlerini desteklemektedir. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md).
 
-ZRS, blok Blobları, disk olmayan sayfa Blobları, dosyalar, tablolar ve kuyruklar için kullanılabilir.
+ZRS, blok Blobları, disk olmayan sayfa Blobları, standart dosya paylaşımları, tablolar ve kuyruklar için kullanılabilir.
 
 Genel amaçlı v2 hesaplarında, ZRS aşağıdaki bölgelerde genel kullanıma sunulmuştur:
 
@@ -32,14 +32,14 @@ Genel amaçlı v2 hesaplarında, ZRS aşağıdaki bölgelerde genel kullanıma s
 - Batı Avrupa
 - Kuzey Avrupa
 - Fransa Orta
-- Doğu Japonya
+- Japonya Doğu
 - Birleşik Krallık Güney
 - ABD Orta
 - ABD Doğu
 - ABD Doğu 2
 - ABD Batı 2
 
-FileStorage hesaplarında, ZRS aşağıdaki bölgelerde genel kullanıma sunulmuştur:
+FileStorage hesapları için (Premium dosya paylaşımları), ZRS aşağıdaki bölgelerde genel kullanıma sunulmuştur:
 
 - Batı Avrupa
 - ABD Doğu
@@ -145,7 +145,7 @@ Verilerinizi kaynak hesabın bölgesinden farklı bir bölgede bulunan bir ZRS h
 
 ZRS klasik, verileri bir veya iki bölge içindeki veri merkezlerinde zaman uyumsuz olarak çoğaltır. Microsoft ikinciye yük devretmeyi başlatmadığı müddetçe çoğaltılan veriler kullanılamayabilir. ZRS klasik hesabı LRS, GRS veya RA-GRS ' y e veya bu bilgisayarlardan dönüştürülemez. ZRS klasik hesapları, ölçümleri veya günlüğe kaydetmeyi de desteklemez.
 
-ZRS klasik, yalnızca genel amaçlı v1 (GPv1) depolama hesaplarında **blok Bloblar** için kullanılabilir. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md).
+ZRS klasik, yalnızca genel amaçlı v1 (GPv1) depolama hesaplarında **blok Bloblar** için kullanılabilir. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure Depolama hesabına genel bakış](storage-account-overview.md).
 
 ZRS hesabı verilerini LRS, ZRS klasik, GRS veya RA-GRS hesabına el ile geçirmek için şu araçlardan birini kullanın: AzCopy, Azure Depolama Gezgini, Azure PowerShell veya Azure CLı. Ayrıca, Azure depolama istemci kitaplıklarından biriyle kendi geçiş çözümünüzü oluşturabilirsiniz.
 

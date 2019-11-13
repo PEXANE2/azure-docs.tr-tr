@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: 59c888b1f18b1c9f700e1b79c4786a466f2c55fb
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ba49fc72fe07378d702b8c12fcdf77d5cebee9bb
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72822046"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013107"
 ---
-# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda yönetilen diskleri kullanma
-
 Bu belge, sanal makineler sağlamak için Azure Resource Manager şablonları kullanırken yönetilen ve yönetilmeyen diskler arasındaki farklılıkları gösterir. Örnekler, yönetilmeyen diskleri kullanan mevcut şablonları yönetilen disklere güncelleştirmenize yardımcı olur. Başvuru için, bir kılavuz olarak [101-VM-Simple-Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) şablonunu kullanıyoruz. Hem [yönetilen diskleri](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) hem de doğrudan karşılaştırmak istiyorsanız [yönetilmeyen diskleri](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) kullanarak bir önceki sürümü kullanarak şablonu görebilirsiniz.
 
 ## <a name="unmanaged-disks-template-formatting"></a>Yönetilmeyen diskler şablon biçimlendirmesi
@@ -96,7 +94,7 @@ Azure yönetilen diskler ile disk, üst düzey bir kaynak haline gelir ve artık
 
 ### <a name="default-managed-disk-settings"></a>Varsayılan yönetilen disk ayarları
 
-Yönetilen disklerle bir VM oluşturmak için artık depolama hesabı kaynağını oluşturmanız gerekmez ve sanal makine kaynağınızı aşağıdaki şekilde güncelleştirebilirsiniz. Özellikle, `apiVersion` `2017-03-30` ve `osDisk` ve `dataDisks` artık VHD için belirli bir URI 'ye başvurmadığını unutmayın. Ek özellikler belirtmeden dağıtım yaparken, disk, sanal makinenin boyutuna bağlı olarak bir depolama türü kullanır. Örneğin, Standard_D2s_v3 gibi adında bir Premium özellikli VM boyutu ("s" ile boyutlar) kullanıyorsanız, sistem Premium_LRS depolama alanını kullanır. Bir depolama türü belirtmek için diskin SKU ayarını kullanın. Ad belirtilmemişse, işletim sistemi diski için `<VMName>_OsDisk_1_<randomstring>` biçimini ve her bir veri diski için `<VMName>_disk<#>_<randomstring>` boyutunu alır. Varsayılan olarak, Azure disk şifrelemesi devre dışıdır; önbelleğe alma, işletim sistemi diski için okuma/yazma ve veri diskleri için yok. Aşağıdaki örnekte, hala bir depolama hesabı bağımlılığı olduğunu fark edebilirsiniz, ancak bu yalnızca tanılama depolaması içindir ve disk depolaması için gerekli değildir.
+Yönetilen disklerle bir VM oluşturmak için artık depolama hesabı kaynağını oluşturmanız gerekmez ve sanal makine kaynağınızı aşağıdaki şekilde güncelleştirebilirsiniz. Özellikle, `apiVersion` `2017-03-30` ve `osDisk` ve `dataDisks` artık VHD için belirli bir URI 'ye başvurmadığını unutmayın. Ek özellikler belirtmeden dağıtım yaparken, disk, sanal makinenin boyutuna bağlı olarak bir depolama türü kullanır. Örneğin, Standard_D2s_v3 gibi adında Premium özellikli bir VM boyutu ("s" ile boyutlar) kullanıyorsanız, sistem Premium_LRS depolama alanını kullanır. Bir depolama türü belirtmek için diskin SKU ayarını kullanın. Ad belirtilmemişse, işletim sistemi diski için `<VMName>_OsDisk_1_<randomstring>` biçimini ve her bir veri diski için `<VMName>_disk<#>_<randomstring>` boyutunu alır. Varsayılan olarak, Azure disk şifrelemesi devre dışıdır; önbelleğe alma, işletim sistemi diski için okuma/yazma ve veri diskleri için yok. Aşağıdaki örnekte, hala bir depolama hesabı bağımlılığı olduğunu fark edebilirsiniz, ancak bu yalnızca tanılama depolaması içindir ve disk depolaması için gerekli değildir.
 
 ```json
 {

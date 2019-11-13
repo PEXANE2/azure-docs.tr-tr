@@ -1,17 +1,14 @@
 ---
 title: Dağıtım sırası sırasını anlayın
 description: Bir şema tanımının ilerme yaşam döngüsü ve her aşama hakkındaki ayrıntılar hakkında bilgi edinin.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: bda7a6caea931a993a6ddd6731688792bf0b3948
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 87eff48f977f0308fea563090a44ff0b301909a9
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981010"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960445"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure 'de dağıtım sırasını anlayın
 
@@ -47,7 +44,7 @@ Her **kaynak grubu** yapıtları içinde, bu kaynak grubu içinde yapıların ol
 
 Büyük şema tanımları oluştururken kaynakların belirli bir sırada oluşturulması gerekebilir. Bu senaryonun en yaygın kullanım deseninin, bir şema tanımının birçok Azure Resource Manager şablonu içermesi durumunda olur. Planlar sıralama düzeninin tanımlanmasına izin vererek bu düzeni işler.
 
-Sıralama, JSON içinde bir `dependsOn` özelliği tanımlayarak gerçekleştirilir. Kaynak grupları ve yapıt nesneleri için şema tanımı bu özelliği destekler. `dependsOn`, belirli bir yapıtın oluşturulmadan önce oluşturulması gereken yapıt adlarından oluşan bir dize dizisidir.
+Sıralama, JSON içinde bir `dependsOn` özelliği tanımlayarak gerçekleştirilir. Kaynak grupları ve yapıt nesneleri için şema tanımı bu özelliği destekler. `dependsOn`, belirli yapıtın oluşturulmadan önce oluşturulması gereken yapıt adlarından oluşan bir dize dizisidir.
 
 > [!NOTE]
 > Şema nesneleri oluştururken, her yapıt kaynağı, [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)kullanıyorsanız veya [REST API](/rest/api/blueprints/artifacts/createorupdate)kullanılıyorsa URL uç noktası olan adı dosya adıyla alır.
@@ -55,7 +52,7 @@ Sıralama, JSON içinde bir `dependsOn` özelliği tanımlayarak gerçekleştiri
 
 ### <a name="example---ordered-resource-group"></a>Örnek-sıralı kaynak grubu
 
-Bu örnek şema tanımında, bir standart kaynak grubuyla birlikte `dependsOn` için bir değer bildirerek özel bir sıralama düzeni tanımlamış bir kaynak grubu vardır. Bu durumda, **atamaadı** adlı yapıt, **sıralı-RG** kaynak grubundan önce işlenir.
+Bu örnek şeması, bir standart kaynak grubuyla birlikte `dependsOn`için bir değer bildirerek özel bir sıralama düzeni tanımlamış bir kaynak grubuna sahiptir. Bu durumda, **atamaadı** adlı yapıt, **sıralı-RG** kaynak grubundan önce işlenir.
 **Standart-RG** , varsayılan sıralama düzeni başına işlenir.
 
 ```json

@@ -1,6 +1,6 @@
 ---
-title: 'Genel Bakış: Azure Time Series Insights Önizleme | Microsoft Docs'
-description: Azure Time Series Insights önizlemeye genel bakış.
+title: 'Genel Bakış: Azure Time Series Insights önizlemesi nedir? -Azure Time Series Insights | Microsoft Docs'
+description: Azure Time Series Insights önizlemede önemli iyileştirmeler hakkında bilgi edinin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05f4c64adad184e761e2b5a01b8c033c024dbc49
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cde846152ff183db857b8a0549fafd24700ffff9
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585264"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014738"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Azure Time Series Insights Önizleme nedir?
 
@@ -45,7 +45,7 @@ Aşağıdaki görüntüde tipik bir IoT veri akışı gösterilmektedir.
 
 [![IoT veri akışı](media/v2-update-overview/overview-one.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-## <a name="azure-time-series-insights-for-industrial-iot"></a>Endüstriyel IoT için Azure Time Series Insights
+## <a name="azure-time-series-insights-for-industrial-iot"></a>Endüstriyel IOT için Azure Time Series Insights
 
 IoT yatay, üretim, oto ve enerji, yardımcı programlar, akıllı binalar ve danışmanlık gibi çeşitli sektör segmentlerini kapsayan müşterilerle aynıdır. Büyük ölçekli IoT verilerine hedeflenmiş kapsamlı analizler sağlayan, bulut tabanlı bu çok sayıda endüstriyel IoT Market genelinde gelişmeye devam etmektedir. 
 
@@ -83,7 +83,7 @@ Bu temel Endüstriyel IoT özelliklerine giriş ile Time Series Insights, aşağ
 | Diğer veri çözümleriyle sorunsuz ve sürekli tümleştirme | Time Series Insights soğuk depodaki veriler, açık kaynaklı Apache Parquet dosyalarında [depolanır](./time-series-insights-update-storage-ingress.md) . Bu, iş zekası, gelişmiş makine öğrenimi ve tahmine dayalı analiz gibi senaryolar için diğer veri çözümleri, 1 veya 3. taraf ile veri tümleştirmeyi sağlar. |
 | Neredeyse gerçek zamanlı veri araştırması | [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md) Kullanıcı deneyimi, alma işlem hattı aracılığıyla tüm veri akışı için görselleştirme sağlar. Bir olay kaynağını bağlandıktan sonra olay verilerini görüntüleyebilir, keşfedebilir ve sorgulayabilirsiniz. Bu şekilde, bir cihazın verileri beklendiği gibi yayıp yaymadığını doğrulayabilirsiniz. Ayrıca, bir IoT varlığını sistem durumu, üretkenlik ve genel verimlilik için izleyebilirsiniz. | 
 | Genişletilebilirlik ve Tümleştirme | Azure Time Series Insights Power BI bağlayıcı tümleştirmesi, **dışa aktarma** seçeneği aracılığıyla doğrudan zaman serisi Gezgini kullanıcı deneyiminde kullanılabilir ve müşterilerin Kullanıcı deneyimimizde oluşturdukları zaman serisi sorgularını doğrudan dışarı aktarmalarına izin verir. Power BI masaüstüne ekleyin ve zaman serisi grafiklerini diğer bı analizlerinin yanı sıra görüntüleyin. Bu, IoT zaman serisi dahil çeşitli veri kaynaklarından analizler üzerinde tek bir cam bölmesi sunarak Power BI yatırım yapan endüstriyel IoT kuruluşları için bir yeni senaryolar sınıfına açar. | 
-| Time Series Insights platformunda oluşturulan özel uygulamalar | Time Series Insights [JavaScript SDK 'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)destekler. SDK, sorgulara zengin denetimler ve Basitleştirilmiş erişim sağlar. İş gereksinimlerinize uyacak şekilde Time Series Insights en üstünde özel IoT uygulamaları oluşturmak için SDK 'Yı kullanın. Ayrıca, verileri özel IoT uygulamalarına yönlendirmek için doğrudan Time Series Insights [sorgu API 'lerini](./time-series-insights-update-tsq.md) de kullanabilirsiniz. |
+| Time Series Insights platformunda oluşturulan özel uygulamalar | Time Series Insights [JavaScript SDK 'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)destekler. SDK, zengin denetimleri ve sorguları yönelik Basitleştirilmiş erişim sağlar. İş gereksinimlerinize uyacak şekilde Time Series Insights en üstünde özel IoT uygulamaları oluşturmak için SDK 'Yı kullanın. Ayrıca, verileri özel IoT uygulamalarına yönlendirmek için doğrudan Time Series Insights [sorgu API 'lerini](./time-series-insights-update-tsq.md) de kullanabilirsiniz. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
