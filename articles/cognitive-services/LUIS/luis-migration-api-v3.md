@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 7c2866441c7439008fad27ced9b9b1dddea848ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bb2255a9a68a499ff3e77c1fbd35081a2474cf1d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492826"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961945"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 için tahmin uç noktası değişiklikleri
 
@@ -73,7 +73,7 @@ Bot çerçevesinin V 4.7 'i serbest bırakılana kadar v2 API tahmini uç noktas
 
 ## <a name="v2-api-deprecation"></a>V2 API 'sinin kullanımdan kaldırılması 
 
-V2 tahmin API 'SI, v3 önizlemesi, 8 Haziran 2020 ' den sonra en az 9 ay boyunca kullanım dışı olmayacaktır. 
+V2 tahmin API 'SI v3 önizlemesi sonrasında 8 Haziran 2020 ' den sonra en az 9 ay boyunca kullanım dışı olmayacaktır. 
 
 ## <a name="endpoint-url-changes"></a>Uç nokta URL 'SI değişiklikleri 
 
@@ -85,10 +85,10 @@ Sürümüne göre sorgulamak istiyorsanız, önce `"directVersionPublish":true`i
 
 |TAHMIN APı SÜRÜMÜ|YÖNTEMIDIR|URL'si|
 |--|--|--|
-|Yüklemesinde|GET|https://<b>{REGION}</b>. api.cognitive.microsoft.com/luis/<b>tahmin</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-adı}</b>/tahmin? sorgu =<b>{Query}</b>|
-|Yüklemesinde|Yayınla|https://<b>{REGION}</b>. api.cognitive.microsoft.com/luis/<b>tahmin</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{yuva-adı}</b>/tahmin|
+|V3|GET|https://<b>{REGION}</b>. api.cognitive.microsoft.com/luis/<b>tahmin</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-adı}</b>/tahmin? sorgu =<b>{Query}</b>|
+|V3|POST|https://<b>{REGION}</b>. api.cognitive.microsoft.com/luis/<b>tahmin</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{yuva-adı}</b>/tahmin|
 |V2|GET|https://<b>{REGION}</b><b>. api.Cognitive.Microsoft.com/Luis/tahmine</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{sürüm-kimliği}</b>/tahmin? sorgu =<b>{Query}</b>|
-|V2|Yayınla|https://<b>{REGION}</b>. api.Cognitive.Microsoft.com/Luis/<b>Tahmini</b><b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{sürüm-kimliği}</b>/tahmin|
+|V2|POST|https://<b>{REGION}</b>. api.Cognitive.Microsoft.com/Luis/<b>Tahmini</b><b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{sürüm-kimliği}</b>/tahmin|
 
 |`SLOT-NAME` için geçerli değerler|
 |--|
@@ -103,12 +103,12 @@ V3 API 'sinde farklı sorgu dizesi parametreleri vardır.
 
 |Param adı|Tür|Sürüm|Varsayılan|Amaç|
 |--|--|--|--|--|
-|`log`|boole|V2 & v3|false|Sorguyu günlük dosyasında sakla. Varsayılan değer false 'dur.| 
+|`log`|boole|V2 & v3|yanlış|Sorguyu günlük dosyasında sakla. Varsayılan değer false 'dur.| 
 |`query`|string|Yalnızca v3|Varsayılan değer yok-GET isteğinde gerekli|**V2 'de**, tahmin edilecek olan söylik `q` parametredir. <br><br>**V3 'de**, işlev `query` parametresine geçirilir.|
-|`show-all-intents`|boole|Yalnızca v3|false|**Tahmin. amaçlar** nesnesindeki karşılık gelen puanı içeren tüm hedefleri döndürün. Amaçlar bir üst `intents` nesnesinde nesneler olarak döndürülür. Bu, bir dizide amacı bulmaya gerek kalmadan programlı erişime izin verir: `prediction.intents.give`. V2 'de, bunlar bir dizide döndürülür. |
-|`verbose`|boole|V2 & v3|false|**V2 sürümünde**, true olarak ayarlandığında, tüm tahmin edilen amaçlar döndürülür. Tahmin edilen tüm amaçlar için gerekiyorsa `show-all-intents`v3 param ' ı kullanın.<br><br>**V3 'de**, bu parametre yalnızca varlık tahmini varlık meta veri ayrıntılarını sağlar.  |
+|`show-all-intents`|boole|Yalnızca v3|yanlış|**Tahmin. amaçlar** nesnesindeki karşılık gelen puanı içeren tüm hedefleri döndürün. Amaçlar bir üst `intents` nesnesinde nesneler olarak döndürülür. Bu, bir dizide amacı bulmaya gerek kalmadan programlı erişime izin verir: `prediction.intents.give`. V2 'de, bunlar bir dizide döndürülür. |
+|`verbose`|boole|V2 & v3|yanlış|**V2 sürümünde**, true olarak ayarlandığında, tüm tahmin edilen amaçlar döndürülür. Tahmin edilen tüm amaçlar için gerekiyorsa `show-all-intents`v3 param ' ı kullanın.<br><br>**V3 'de**, bu parametre yalnızca varlık tahmini varlık meta veri ayrıntılarını sağlar.  |
 |`timezoneOffset`|string|V2|-|DatetimeV2 varlıklara uygulanan saat dilimi.|
-|`datetimeReference`|string|Yüklemesinde|-|DatetimeV2 varlıklara uygulanan [saat dilimi](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) . V2 'deki `timezoneOffset` değiştirir.|
+|`datetimeReference`|string|V3|-|DatetimeV2 varlıklara uygulanan [saat dilimi](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) . V2 'deki `timezoneOffset` değiştirir.|
 
 
 ### <a name="v3-post-body"></a>V3 posta gövdesi
@@ -130,7 +130,7 @@ V3 API 'sinde farklı sorgu dizesi parametreleri vardır.
 |`dynamicLists`|array|Yalnızca v3|Gerekli değildir.|[Dinamik listeler](#dynamic-lists-passed-in-at-prediction-time) , zaten lusıs uygulamasında var olan eğitilen ve yayımlanmış bir liste varlığını genişletmenizi sağlar.|
 |`externalEntities`|array|Yalnızca v3|Gerekli değildir.|[Dış varlıklar](#external-entities-passed-in-at-prediction-time) , lusıs uygulamasına çalışma zamanı sırasında varlıkları tanımlayabilir ve etiketleyebilir, bu da mevcut varlıkların özellikleri olarak kullanılabilir. |
 |`options.datetimeReference`|string|Yalnızca v3|Varsayılan değer yok|[DatetimeV2 sapmasını](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)belirlemede kullanılır. DatetimeReference biçimi [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601)' dir.|
-|`options.preferExternalEntities`|boole|Yalnızca v3|false|Kullanıcının [dış varlığının (var olan varlıkla aynı ada sahip)](#override-existing-model-predictions) kullanıldığını veya modeldeki mevcut varlığın tahmin için kullanıldığını belirtir. |
+|`options.preferExternalEntities`|boole|Yalnızca v3|yanlış|Kullanıcının [dış varlığının (var olan varlıkla aynı ada sahip)](#override-existing-model-predictions) kullanıldığını veya modeldeki mevcut varlığın tahmin için kullanıldığını belirtir. |
 |`query`|string|Yalnızca v3|Gereklidir.|**V2 'de**, tahmin edilecek olan söylik `q` parametredir. <br><br>**V3 'de**, işlev `query` parametresine geçirilir.|
 
 
@@ -408,7 +408,7 @@ Kullanıcı dış varlığı gönderirse:
 
 
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
 _İsteğe bağlı_ `resolution` özelliği, bir tahmine yanıt vererek, dış varlıkla ilişkili meta verileri geçirmenize ve ardından yanıtta geri almaya izin verir. 
 

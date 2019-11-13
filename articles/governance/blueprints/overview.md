@@ -1,17 +1,14 @@
 ---
 title: Azure Blueprints’e genel bakış
 description: Azure şemaları hizmetinin Azure ortamınızda yapıt oluşturmanıza, tanımlamanıza ve dağıtmanıza nasıl olanak sağladığını anlayın.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: overview
-ms.service: blueprints
-ms.openlocfilehash: 86f58594ce1af91b19f70cbdb1114a90180e3b4f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 3005bf171c5297048978d090d0f253a8690242cd
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981704"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960316"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Azure şemaları hizmetine genel bakış
 
@@ -125,10 +122,10 @@ Belirli alanlar için aşağıdaki sınırlamalar mevcuttur:
 
 |Nesne|Alan|İzin verilen karakterler|En çok, Uzunluk|
 |-|-|-|-|
-|Şema|Adı|harfler, rakamlar, tireler ve noktalar|48|
+|Şema|Ad|harfler, rakamlar, tireler ve noktalar|48|
 |Şema|Sürüm|harfler, rakamlar, tireler ve noktalar|20|
-|Şema ataması|Adı|harfler, rakamlar, tireler ve noktalar|90|
-|Blueprint yapıtı|Adı|harfler, rakamlar, tireler ve noktalar|48|
+|Şema ataması|Ad|harfler, rakamlar, tireler ve noktalar|90|
+|Blueprint yapıtı|Ad|harfler, rakamlar, tireler ve noktalar|48|
 
 ## <a name="video-overview"></a>Videoya genel bakış
 

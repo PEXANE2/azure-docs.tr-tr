@@ -1,6 +1,6 @@
 ---
-title: Azure Zaman Serisi Görüşleri ortamı oluşturma | Microsoft Docs
-description: Bu makalede yeni bir Time Series Insights ortamı oluşturmak için Azure portal nasıl kullanılacağı açıklanır.
+title: Ortam oluşturma-Azure Time Series Insights | Microsoft Docs
+description: Yeni bir Time Series Insights ortamı oluşturmak için Azure portal nasıl kullanacağınızı öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1b51931385eb7e2e0bf2a1baf5cc4c3379eab2df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: fc3f21c95ad6f4bb033336018dddb9e966e9cc9a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991224"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006911"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Azure Portal’da yeni Zaman Serisi Görüşleri ortamı oluşturma
 
@@ -28,7 +28,7 @@ Time Series Insights, Azure IoT Hub 'Larına veri akışını görselleştirmeni
 
 Ortam oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. **+ Kaynak oluştur** düğmesini seçin.
 
@@ -55,13 +55,13 @@ Ortam oluşturmak için aşağıdaki adımları izleyin:
 
 1. Dağıtım sürecini izlemek için **Bildirimler** simgesini (zil simgesi) seçin.
 
-   [bildirimleri![Izleyin](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
+   [bildirimleri ![Izleyin](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
 
     Dağıtım başarılı olduğunda diğer özellikleri yapılandırmak için **Kaynağa Git** ' i seçebilir, veri erişim ilkeleriyle güvenliği ayarlayabilir, olay kaynaklarını ekleyebilir ve diğer eylemleri yapabilirsiniz.
 
 1. Kaynak **genel**görünümünde, gelecekte Time Series Insights ortamınıza kolayca erişmek için sağ üst köşedeki **sabitleme simgesini** seçin.
 
-   [panoya Time Series Insights PIN![oluşturma](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
+   [panoya Time Series Insights PIN ![oluşturma](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -69,6 +69,6 @@ Ortam oluşturmak için aşağıdaki adımları izleyin:
 
 * Azure Time Series Insights ortamınıza [bir olay hub 'ı olay kaynağı ekleyin](time-series-insights-how-to-add-an-event-source-eventhub.md) .
 
-* [Olayları](time-series-insights-send-events.md) olay kaynağına gönderin.
+* [Olayları gönderme](time-series-insights-send-events.md) olay kaynağına.
 
 * [Time Series Insights Explorer](https://insights.timeseries.azure.com)'da ortamınızı görüntüleyin.

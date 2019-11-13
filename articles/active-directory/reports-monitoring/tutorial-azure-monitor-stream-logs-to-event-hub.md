@@ -3,7 +3,7 @@ title: Öğretici-Azure Olay Hub 'ına Günlükler akışı | Microsoft Docs
 description: Azure Active Directory günlüklerini bir olay hub 'ına göndermek için Azure Tanılama ayarlamayı öğrenin
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5a790358b0b5c5f301cd53f0cd564a36f66049b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817513"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007648"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Öğretici: Azure Olay Hub 'ına akış Azure Active Directory günlükleri
 
@@ -39,9 +39,9 @@ Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
 ## <a name="stream-logs-to-an-event-hub"></a>Günlükleri bir olay hub 'ına akış
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 
-2. **Azure Active Directory** > **izleme** > **Denetim günlüklerini**seçin. 
+2. **Denetim günlüklerini** > **Azure Active Directory** > **izleme** ' yi seçin. 
 
 3. **Dışarı Aktarma Ayarları**'nı seçin.  
     

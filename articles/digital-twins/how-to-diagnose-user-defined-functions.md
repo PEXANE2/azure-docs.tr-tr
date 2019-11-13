@@ -1,6 +1,6 @@
 ---
-title: Azure dijital TWINS 'te UDF 'Leri hata ayıklama | Microsoft Docs
-description: Azure dijital TWINS 'te UDF 'Leri hata ayıklama hakkında kılavuz.
+title: UDF 'ler hata ayıklama-Azure dijital TWINS | Microsoft Docs
+description: Azure dijital TWINS 'de Kullanıcı tanımlı işlevlerde hata ayıklama için önerilen yaklaşımlar hakkında bilgi edinin.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 130250156f0fae3e6c40742278479b5d4612657b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949895"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005929"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure dijital TWINS 'de Kullanıcı tanımlı işlevlerde hata ayıklama
 
@@ -35,7 +35,7 @@ Azure dijital TWINS, sağlam günlük kaydı, izleme ve analiz desteği. Çözü
 
 * Azure dijital TWINS 'e özgü günlüğe kaydetme yapılandırması için, [izleme ve günlüğe kaydetmeyi yapılandırma](./how-to-configure-monitoring.md)makalesini okuyun.
 * Azure Izleyici ile etkin olan güçlü günlük ayarları hakkında bilgi edinmek için [Azure izleyicisine](../azure-monitor/overview.md) genel bakış bölümüne başvurun.
-* Azure Portal, Azure CLı veya PowerShell aracılığıyla Azure dijital TWINS 'te tanılama günlüğü ayarlarını yapılandırmak için [Azure kaynaklarınızdaki günlük verilerini toplama ve](../azure-monitor/platform/resource-logs-overview.md) kullanma makalesini inceleyin.
+* Azure dijital TWINS 'de Azure portal, Azure CLı veya PowerShell aracılığıyla tanılama günlüğü ayarlarını yapılandırmak için [Azure kaynaklarınızdaki günlük verilerini toplama ve](../azure-monitor/platform/resource-logs-overview.md) kullanma makalesini inceleyin.
 
 Yapılandırıldıktan sonra tüm günlük kategorilerini, ölçümleri seçebilir ve güçlü Azure Izleyici Log Analytics çalışma alanlarını kullanarak hata ayıklama çabalarınızı destekleyebilirsiniz.
 
@@ -52,7 +52,7 @@ AzureDiagnostics
 | where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| Sorgu değeri | Değiştir |
+| Sorgu değeri | Şununla değiştir |
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | Olay verilerinde belirtilen bağıntı KIMLIĞI |
 
@@ -63,7 +63,7 @@ AzureDiagnostics
 | order by CorrelationId desc
 ```
 
-Kullanıcı tanımlı işleviniz için günlük kaydını etkinleştirirseniz, bu Günlükler Log Analytics örneğiniz `UserDefinedFunction` kategorisiyle görüntülenir. Bunları almak için Log Analytics 'te aşağıdaki sorgu koşulunu girin:
+Kullanıcı tanımlı işleviniz için günlük kaydını etkinleştirirseniz, bu Günlükler Log Analytics Örneğinizde kategori `UserDefinedFunction`görüntülenir. Bunları almak için Log Analytics 'te aşağıdaki sorgu koşulunu girin:
 
 ```Kusto
 AzureDiagnostics
@@ -88,7 +88,7 @@ Yönetim API 'niz aracılığıyla Kullanıcı tanımlı işleviniz için bir ro
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Parametre değeri | Değiştir |
+| Parametre değeri | Şununla değiştir |
 | --- | --- |
 | YOUR_USER_DEFINED_FUNCTION_ID | Rol atamalarını almak için Kullanıcı tanımlı işlevin KIMLIĞI|
 
@@ -102,12 +102,12 @@ Azure Digital TWINS örneklerinizin yönetim API 'sine karşı aşağıdaki ça�
 GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
-| Parametre | Değiştir |
+| Parametre | Şununla değiştir |
 | --- | --- |
 | *YOUR_MATCHER_IDENTIFIER* | Değerlendirmek istediğiniz eşleştirici KIMLIĞI |
 | *YOUR_SENSOR_IDENTIFIER* | Değerlendirmek istediğiniz sensör KIMLIĞI |
 
-Yanıtıyla
+Yanıt:
 
 ```JavaScript
 {
@@ -126,11 +126,11 @@ Azure dijital TWINS yönetim API 'Lerine yönelik aşağıdaki çağrı sayesind
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 
-| Parametre | Değiştir |
+| Parametre | Şununla değiştir |
 | --- | --- |
 | *YOUR_SENSOR_IDENTIFIER* | Telemetri göndermek için sensör KIMLIĞI |
 
-Yanıtıyla
+Yanıt:
 
 ```JavaScript
 [
@@ -173,7 +173,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-Bu senaryo, kullanılan tanımlayıcı bir sensöre başvurduğundan, belirtilen topoloji nesne türü `Space` olduğunda ortaya çıkar.
+Bu senaryo, kullanılan tanımlayıcı bir sensöre başvurduğundan, belirtilen topoloji nesne türü `Space`olduğu için ortaya çıkar.
 
 **Doğru** Örneğinde
 
@@ -185,7 +185,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-Bu sorunu çözmek için en kolay yol, meta veri nesnesi üzerinde `Notify` yöntemini kullanmaktır.
+Bu sorunu çözmek için en kolay yol, meta veri nesnesi üzerinde `Notify` yöntemi kullanmaktır.
 
 Örnek:
 

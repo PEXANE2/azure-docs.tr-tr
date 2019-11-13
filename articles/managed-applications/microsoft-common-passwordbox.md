@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4a8b760d113e29efb0efacbd41dcaa7432ecdcfd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 083b0be20d4e9ad7769a9c673139a361fb7b70d4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332797"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009181"
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft. Common. PasswordBox Kullanıcı arabirimi öğesi
 Bir parolayı sağlamak ve onaylamak için kullanılabilen bir denetim.
@@ -38,8 +38,8 @@ Bir parolayı sağlamak ve onaylamak için kullanılabilen bir denetim.
   "toolTip": "",
   "constraints": {
     "required": true,
-    "regex": "",
-    "validationMessage": ""
+    "regex": "^[a-zA-Z0-9]{8,}$",
+    "validationMessage": "Password must be at least 8 characters long, contain only numbers and letters"
   },
   "options": {
     "hideConfirmation": false
@@ -50,8 +50,8 @@ Bir parolayı sağlamak ve onaylamak için kullanılabilen bir denetim.
 
 ## <a name="remarks"></a>Açıklamalar
 - Bu öğe `defaultValue` özelliğini desteklemiyor.
-- @No__t-0 ' ın uygulama ayrıntıları için bkz. [Microsoft. Common. TextBox](microsoft-common-textbox.md).
-- @No__t-0 **değeri true**olarak ayarlanırsa, kullanıcının parolasını onaylamak için ikinci metin kutusu gizlenir. Varsayılan değer **false**'dur.
+- `constraints`uygulama ayrıntıları için bkz. [Microsoft. Common. TextBox](microsoft-common-textbox.md).
+- `options.hideConfirmation` **true**olarak ayarlanırsa, kullanıcının parolasını onaylamak için ikinci metin kutusu gizlenir. Varsayılan değer **false**.
 
 ## <a name="sample-output"></a>Örnek çıktı
 ```json

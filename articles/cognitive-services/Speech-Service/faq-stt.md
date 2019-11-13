@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2d0a05c763b21b0cf22a724f9a5faa9d70b5b557
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579690"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010655"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -63,7 +63,7 @@ Eski veri kümesi ve yeni veri kümesi tek bir. zip dosyasında (akustik veriler
 
 **A**: dağıtımlar otomatik olarak güncellenmeyecektir.
 
-Temel V 1.0 içeren bir model uyardıysanız ve dağıttıysanız, bu dağıtım olduğu gibi kalır. Müşteriler dağıtılan modelin yetkisini alabilir, taban çizgisinin daha yeni sürümünü kullanarak yeniden uyarlayabilirsiniz ve yeniden dağıtabilir.
+Temel V 1.0 içeren bir model uyardıysanız ve dağıttıysanız, bu dağıtım olduğu gibi kalır. Müşteriler, dağıtılan modelin yetkisini alabilir, ana hat 'in daha yeni bir sürümünü kullanarak readapt ve yeniden dağıtın.
 
 **S: dağıtılan modelimde portalda sunulmadan daha fazla eşzamanlılık almam gerekir mi?**
 
@@ -71,26 +71,31 @@ Y **: modelinizi**20 eşzamanlı istek artışlarına göre ölçeklendirebilirs
 
 Daha yüksek bir ölçeğe ihtiyacınız varsa [konuşma desteğiyle](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) iletişim kurun.
 
-Özel bir modelin Eşzamanlılığını artırmak için aşağıdaki bilgilere ihtiyacımız vardır:
+***Özel bir modelin***Eşzamanlılığını artırmak için aşağıdaki bilgilere ihtiyacımız vardır:
 
-- Modelin dağıtıldığı bölge.
-- Dağıtılan modelin uç nokta KIMLIĞI.
+- Modelin dağıtıldığı bölge,
+- dağıtılan modelin uç nokta KIMLIĞI:
+  - [Özel konuşma tanıma portalına](https://aka.ms/customspeech)alındı,
+  - oturum aç (gerekliyse),
+  - projenizi ve dağıtımınızı seçin,
+  - Eşzamanlılık artışı için gereken uç noktayı seçin,
+  - `Endpoint ID`kopyalayın.
 
-Bir temel modellerin eşzamanlılık düzeyini artırmak için aşağıdaki bilgilere ihtiyacımız vardır:
+Bir ***temel modelin***eşzamanlılık düzeyini artırmak için aşağıdaki bilgilere ihtiyacımız vardır:
 
 - Hizmetinizin bölgesi,
 
 ya da
 
-- sizin için bir erişim belirteci ( [buraya](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)bakın)
+- aboneliğiniz için bir erişim belirteci ( [buraya](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)bakın),
 
-or
+veya
 
-- aboneliğiniz için kaynak KIMLIĞI:
-  - https://portal.azure.comgidin,
+- aboneliğinizin kaynak KIMLIĞI:
+  - [Azure Portal](https://portal.azure.com)gidin,
   - Arama kutusunda `Cognitive Services` ' yi seçin,
   - görüntülenmiş hizmetlerden, eşzamanlılık artışı istediğiniz konuşma hizmetini seçin,
-  - Bu hizmetin özelliklerini görüntüle,
+  - Bu hizmet için `Properties` görüntüleyin,
   - `Resource ID`tamamını kopyalayın.
 
 **S: modelimi indirebilir ve yerel olarak çalıştırabilir miyim?**
@@ -107,7 +112,7 @@ Y **: REST API**, istekleri 5 saniyede 25 ' e sınırlandırır. Ayrıntılar, [
 
 **S: çift kanallı ses için nasıl ücretlendirilirim?**
 
-Y **: her**kanalı ayrı ayrı gönderirseniz (her kanal kendi dosyasında), her bir dosyanın süresine göre ücretlendirilirsiniz. Her bir kanalla çoğullanmış tek bir dosya gönderirseniz, tek dosya süresince ücretlendirilirsiniz.
+Y **: her**kanalı ayrı ayrı gönderirseniz (her kanal kendi dosyasında), dosya süresi başına ücretlendirilirsiniz. Her bir kanalla çoğullanmış tek bir dosya gönderirseniz, tek dosya süresince ücretlendirilirsiniz.
 
 > [!IMPORTANT]
 > Özel konuşma hizmetini kullanmanızı engelleyen başka gizlilik endişeleriniz varsa, destek kanallarından birine başvurun.
@@ -184,8 +189,8 @@ Y **:** Kiracı modeli, kuruluşunuzdaki herkes tarafından görülemeyen [ortak
  
 **S: kiracı modeli tarafından hangi konuşma deneyimleri geliştirildi?**
 
-Y **:** Kiracı modeli etkinleştirildiğinde, oluşturulup yayımlandığında, konuşma hizmeti kullanılarak oluşturulan tüm kurumsal uygulamalarda tanımayı geliştirmek için kullanılır; Bu Ayrıca, kuruluşa üyelik belirten bir Kullanıcı AAD belirteci de iletir. 
- 
+Y **:** Kiracı modeli etkinleştirildiğinde, oluşturulduğunda ve yayımlandığında, konuşma hizmeti kullanılarak oluşturulan tüm kurumsal uygulamalarda tanımayı geliştirmek için kullanılır; Bu Ayrıca, kuruluşa üyelik belirten bir Kullanıcı AAD belirteci de geçirir.
+
 Konuşma hizmeti uygulamalarınız için bir kiracı modeli oluşturduğunuzda, dikte ve PowerPoint resim yazısı gibi Office 365 ' de yerleşik konuşma deneyimleri değiştirilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 6e42911d05f387ea47b56b913e9a1868100c1b3c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821372"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009095"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Azure SQL veritabanı 'nda el ile ayarlama sorgusu performansı
 
@@ -253,7 +253,7 @@ Azure SQL veritabanında bir genişleme mimarisi kullanıyorsanız, bir uygulama
 
 Yüksek hacimli, sık sık, geçici sorgulama kullanarak verilere erişen uygulamalar için, uygulama katmanı ve Azure SQL veritabanı katmanı arasındaki ağ iletişiminde önemli miktarda yanıt süresi harcanmıştır. Hem uygulama hem de Azure SQL veritabanı aynı veri merkezinde olsa bile, ikisi arasındaki ağ gecikmesi çok sayıda veri erişim işlemi ile büyütülebilir. Veri erişimi işlemlerine yönelik ağ gidiş dönüşlerini azaltmak için, geçici sorguları toplu olarak toplu olarak veya saklı yordamlar olarak derlemek için seçeneğini kullanmayı düşünün. Geçici sorguları toplu olarak oluşturursanız, Azure SQL veritabanı 'na tek bir yolculuğa çok büyük bir toplu iş olarak birden fazla sorgu gönderebilirsiniz. Saklı yordamda geçici sorgular derlerseniz, bu sonuçları toplu olarak elde edebilirsiniz. Saklı yordamın kullanılması, Azure SQL veritabanı 'nda sorgu planlarını önbelleğe alma olasılığını arttırmaya yönelik olarak, saklı yordamı yeniden kullanabilmeniz için de size yararlanır.
 
-Bazı uygulamalar yazma yoğunluğu vardır. Bazen bir veritabanındaki toplam GÇ yükünü, toplu olarak nasıl bir araya yazabileceğini göz önünde bulundurarak azaltabilirsiniz. Genellikle bu, saklı yordamlarda ve geçici toplu işlemlerde işlemleri otomatik olarak yürütmek yerine açık işlemler kullanmanın en kolay bir işlemdir. Kullanabileceğiniz farklı tekniklerin değerlendirmesi için bkz. [Azure 'DA SQL veritabanı uygulamaları Için toplu işlem teknikleri](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Toplu işleme yönelik doğru modeli bulmak için kendi iş yükünüzü deneyin. Bir modelin biraz farklı işlem tutarlılığı garantisi olabileceğini anladığınızdan emin olun. Kaynak kullanımını en aza indiren doğru iş yükünü bulmak için tutarlılık ve performans dengelerinin doğru birleşimini bulmanız gerekir.
+Bazı uygulamalar yazma yoğunluğu vardır. Bazen bir veritabanındaki toplam GÇ yükünü, toplu olarak nasıl bir araya yazabileceğini göz önünde bulundurarak azaltabilirsiniz. Genellikle bu, saklı yordamlarda ve geçici toplu işlemlerde işlemleri otomatik olarak yürütmek yerine açık işlemler kullanmanın en kolay bir işlemdir. Kullanabileceğiniz farklı tekniklerin değerlendirmesi için bkz. [Azure 'DA SQL veritabanı uygulamaları Için toplu işlem teknikleri](sql-database-use-batching-to-improve-performance.md). Toplu işleme yönelik doğru modeli bulmak için kendi iş yükünüzü deneyin. Bir modelin biraz farklı işlem tutarlılığı garantisi olabileceğini anladığınızdan emin olun. Kaynak kullanımını en aza indiren doğru iş yükünü bulmak için tutarlılık ve performans dengelerinin doğru birleşimini bulmanız gerekir.
 
 ### <a name="application-tier-caching"></a>Uygulama katmanı önbelleğe alma
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: c6b49e794011d915f8cd7b29e6317e80391f2675
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 13481788bce22876fa13080d0be34db29e2a72cb
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747376"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961580"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -186,6 +186,7 @@ Aşağıdaki tabloda sunucu ve bilgisayar işletim sistemleri arasındaki uyumlu
 
 |Sunucu işletim sistemi | Uyumlu istemci işletim sistemi  |
 | --------------- | ---- |
+| Windows Server 2019    | Windows 10 |
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
@@ -215,7 +216,7 @@ Betik Ayrıca, Python ve Bash bileşenlerinin kurtarma noktasına güvenli bir �
 |Bileşen | Sürüm  |
 | --------------- | ---- |
 | Bash | 4 ve üzeri |
-| python | 2.6.6 ve üzeri  |
+| Python | 2.6.6 ve üzeri  |
 | IOCTL | 1,2 desteklenmelidir  |
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Büyük disklere sahip sanal makine yedeklemelerinden dosya kurtarma
