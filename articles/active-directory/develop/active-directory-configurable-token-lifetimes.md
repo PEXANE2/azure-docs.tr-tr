@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23cdf7887d6d0812a9e991580e2095b603a4b4df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 021d0c19ecc4bf63861bf95d99b6ba6b8e910220
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473948"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046564"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 'de yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -53,11 +53,11 @@ Yenileme belirteçleri, erişim belirteçleri, SAML belirteçleri, oturum belirt
 
 ### <a name="saml-tokens"></a>SAML belirteçleri
 
-SAML belirteçleri birçok Web tabanlı SAAS uygulaması tarafından kullanılır ve Azure Active Directory SAML2 protokol uç noktası kullanılarak elde edilir.  Bunlar, WS-Federation kullanan uygulamalar tarafından da kullanılır.    Belirtecin varsayılan yaşam süresi 1 saattir. Ve uygulamalar perspektifinden sonra, belirtecin geçerlilik süresi < koşulların NotOnOrAfter değeri tarafından belirtilir... belirteçteki > öğesi.  Belirteç geçerlilik süresinden sonra, istemcinin yeni bir kimlik doğrulama isteği başlatması gerekir. Bu, genellikle çoklu oturum açma (SSO) oturum belirtecinin bir sonucu olarak etkileşimli oturum açmadan önce karşılanacaktır.
+SAML belirteçleri birçok Web tabanlı SAAS uygulaması tarafından kullanılır ve Azure Active Directory SAML2 protokol uç noktası kullanılarak elde edilir. Bunlar, WS-Federation kullanan uygulamalar tarafından da kullanılır. Belirtecin varsayılan yaşam süresi 1 saattir. Bir uygulamanın perspektifinden, belirtecin geçerlilik süresi, belirteçteki `<conditions …>` öğesinin NotOnOrAfter değeri tarafından belirtilir. Belirtecin geçerlilik süresi sona erdikten sonra, istemcinin yeni bir kimlik doğrulama isteği başlatması gerekir. Bu, genellikle çoklu oturum açma (SSO) oturum belirtecinin bir sonucu olarak etkileşimli oturum açmadan memnun olur.
 
-NotOnOrAfter değeri bir TokenLifetimePolicy içindeki AccessTokenLifetime parametresi kullanılarak değiştirilebilir.  Varsa, ilkede yapılandırılan yaşam süresine ayarlanır ve beş dakikalık bir saat eğriltme faktörü olur.
+NotOnOrAfter değeri bir `TokenLifetimePolicy``AccessTokenLifetime` parametresi kullanılarak değiştirilebilir. Varsa, ilkede yapılandırılan yaşam süresine ayarlanır ve beş dakikalık bir saat eğriltme faktörü olur.
 
-<SubjectConfirmationData> öğesinde belirtilen konu onayı NotOnOrAfter, belirteç ömür yapılandırmasından etkilenmediğini unutmayın. 
+`<SubjectConfirmationData>` öğesinde belirtilen konu onayı NotOnOrAfter, belirteç ömür yapılandırmasından etkilenmediğini unutmayın. 
 
 ### <a name="refresh-tokens"></a>Belirteçleri Yenile
 
@@ -228,7 +228,7 @@ Başlamak için aşağıdaki adımları uygulayın:
     Connect-AzureAD -Confirm
     ```
 
-3. Kuruluşunuzda oluşturulan tüm ilkeleri görmek için aşağıdaki komutu çalıştırın. Aşağıdaki senaryolarda işlemlerden en çok sonra bu komutu çalıştırın. Komutu çalıştırmak, ilkeleriniz için * * * * * * * * * * * * * *.
+3. Kuruluşunuzda oluşturulan tüm ilkeleri görmek için aşağıdaki komutu çalıştırın. Aşağıdaki senaryolarda işlemlerden en çok sonra bu komutu çalıştırın. Komutu çalıştırmak, ** ** ilkeleriniz için .
 
     ```powershell
     Get-AzureADPolicy
@@ -523,7 +523,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectI
 
 </br></br>
 
-#### <a name="get-azureadserviceprincipalpolicy"></a>Get-Azureadservicesprincipalpolicy
+#### <a name="get-azureadserviceprincipalpolicy"></a>Get-AzureADServicePrincipalPolicy
 Belirtilen hizmet sorumlusuna bağlı herhangi bir ilkeyi alır.
 
 ```powershell

@@ -1,10 +1,11 @@
 ---
-title: Acil durum erişimi yönetici hesaplarını yönetme-Azure Active Directory | Microsoft Docs
+title: Acil durum erişimi yönetici hesaplarını yönetme-Azure AD | Microsoft Docs
 description: Bu makalede, acil durum erişim hesaplarının Azure Active Directory (Azure AD) kuruluşunuzdan yanlışlıkla kilitlenmesini önlemeye yardımcı olmak için nasıl kullanılacağı açıklanır.
 services: active-directory
 author: markwahl-msft
+manager: daveba
 ms.author: curtand
-ms.date: 09/09/2019
+ms.date: 11/08/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -12,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04016df86a9bed06f2cbb79d459b10486a9b7d67
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772400"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028140"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD 'de acil durum erişim hesaplarını yönetme
 
@@ -38,7 +39,7 @@ Bir kuruluşun bir acil durum erişim hesabını aşağıdaki durumlarda kullanm
 
 ## <a name="create-emergency-access-accounts"></a>Acil durum erişim hesapları oluşturma
 
-İki veya daha fazla acil durum erişim hesabı oluşturun. Bu hesaplar, \*. onmicrosoft.com etki alanını kullanan ve şirket içi bir ortamdan Federasyon veya eşitlenmemiş olan yalnızca bulut hesapları olmalıdır.
+İki veya daha fazla acil durum erişim hesabı oluşturun. Bu hesaplar yalnızca bulut hesabı olmalıdır \*. onmicrosoft.com etki alanını kullanan ve şirket içi bir ortamdan federe olmayan veya eşitlenmemiş.
 
 Bu hesapları yapılandırırken, aşağıdaki gereksinimlerin karşılanması gerekir:
 
@@ -51,7 +52,7 @@ Bu hesapları yapılandırırken, aşağıdaki gereksinimlerin karşılanması g
 
 Güvenliği aşılmış bir paroladan kaynaklanan bir saldırının riskini azaltmak için, Azure AD tüm bireysel kullanıcılar için Multi-Factor Authentication gerektirmenizi önerir. Bu grup, güvenliği aşılan hesabı önemli bir etkiye sahip olan yöneticileri ve diğer tüm diğer (örneğin, finans Officers) içerir.
 
-Ancak, acil durum erişim hesaplarınızdan en az birinin, diğer acil olmayan hesaplarınızla aynı Multi-Factor Authentication mekanizmasına sahip olmaması gerekir. Bu, üçüncü taraf Multi-Factor Authentication çözümlerini içerir. Azure AD ve diğer bağlı hizmet olarak yazılım (SaaS) uygulamaları için [her yönetici için çok faktörlü kimlik doğrulaması](../authentication/howto-mfa-userstates.md) gerektiren bir koşullu erişim ilkeniz varsa, bu gereksinimden acil durum erişim hesaplarını dışlamayacaksınız ve Bunun yerine farklı bir mekanizma. Ayrıca, hesapların Kullanıcı başına Multi-Factor Authentication ilkesi olmadığından emin olun.
+Ancak, acil durum erişim hesaplarınızdan en az birinin, diğer acil olmayan hesaplarınızla aynı Multi-Factor Authentication mekanizmasına sahip olmaması gerekir. Bu, üçüncü taraf Multi-Factor Authentication çözümlerini içerir. Azure AD ve diğer bağlı hizmet olarak yazılım (SaaS) uygulamaları için [her yönetici için çok faktörlü kimlik doğrulaması](../authentication/howto-mfa-userstates.md) gerektiren bir koşullu erişim ilkeniz varsa, acil durum erişim hesaplarını bu gereksinimden dışlamayacaksınız ve bunun yerine farklı bir mekanizma yapılandırmalısınız. Ayrıca, hesapların Kullanıcı başına Multi-Factor Authentication ilkesi olmadığından emin olun.
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Koşullu erişim ilkelerinden en az bir hesabı hariç tut
 
@@ -88,7 +89,7 @@ Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkin
 1. Azure Izleyici 'de Izleme katılımcısı rolüne atanan bir hesapla [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Tüm hizmetler**' i seçin, ara ' ya "Log Analytics" yazın ve **Log Analytics çalışma alanları**' nı seçin.
 1. Bir çalışma alanı seçin.
-1. Çalışma alanınızda **Uyarılar** > **Yeni uyarı kuralı**' nı seçin.
+1. Çalışma alanınızda, **Yeni uyarı kuralı** > **Uyarılar** ' ı seçin.
     1. **Kaynak**altında, aboneliğin uyarı kuralını ilişkilendirmek istediğiniz bir tane olduğunu doğrulayın.
     1. **Koşul**altında **Ekle**' yi seçin.
     1. **Sinyal adı**altında **özel günlük araması** ' nı seçin.
@@ -100,8 +101,8 @@ Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkin
 
     1. **Uyarı mantığı**altına şunu girin:
 
-        - Temel: Sonuç sayısı
-        - İşlecinde Büyüktür
+        - Temel: sonuç sayısı
+        - İşleç: büyüktür
         - Eşik değeri: 0
 
     1. **Temelinde değerlendirilen**' ın altında, sorgunun ne kadar süre içinde çalışmasını Istediğinize ilişkin **süreyi (dakika cinsinden)** ve sorgunun ne sıklıkta çalıştırılmasını istediğinizi gösteren **sıklığı (dakika cinsinden** ) seçin. Sıklık, dönemden küçük veya bu değere eşit olmalıdır.

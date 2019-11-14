@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f095c962f08ab0207ffc51d1c898570d9be7ea9a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "68825782"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047231"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Salesforce yapılandırma
 
@@ -72,7 +72,7 @@ Bu bölümün amacı, Salesforce 'a Active Directory Kullanıcı hesaplarının 
 
 4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
-    ![Alınıyor](./media/salesforce-provisioning-tutorial/provisioning.png)
+    ![alınıyor](./media/salesforce-provisioning-tutorial/provisioning.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde aşağıdaki yapılandırma ayarlarını sağlayın:
 
@@ -96,7 +96,7 @@ Bu bölümün amacı, Salesforce 'a Active Directory Kullanıcı hesaplarının 
 
 10. Belirteci kopyalayın, Azure AD pencerenize gidin ve **gizli belirteç** alanına yapıştırın.
 
-11. Salesforce örneği Salesforce kamu bulutunda ise **kiracı URL 'si** girilmelidir. Aksi takdirde, isteğe bağlıdır. "Https://\<your-instance \>. my.salesforce.com" biçimini kullanarak kiracı URL 'sini girin, "\<your \> örneğini Salesforce örneğinizin adıyla değiştirin.
+11. Salesforce örneği Salesforce kamu bulutunda ise **kiracı URL 'si** girilmelidir. Aksi takdirde, isteğe bağlıdır. "Https://\<-instance\>. my.salesforce.com" biçimini kullanarak kiracı URL 'sini girin. Örneğin, "örneğini \<\>, Salesforce örneğinizin adıyla değiştirin.
 
 12. Azure portal, Azure AD 'nin Salesforce uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın.
 
@@ -106,7 +106,7 @@ Bu bölümün amacı, Salesforce 'a Active Directory Kullanıcı hesaplarının 
 
 15. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları Salesforce** ' a eşitler ' ı seçin.
 
-16. **Öznitelik eşlemeleri** bölümünde, Azure AD 'den Salesforce 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşlenen** özellikler olarak seçilen özniteliklerin, güncelleştirme Işlemleri için Salesforce 'daki Kullanıcı hesaplarıyla eşleşecek şekilde kullanıldığını unutmayın. Değişiklikleri uygulamak için Kaydet düğmesini seçin.
+16. **Öznitelik eşlemeleri** bölümünde, Azure AD 'den Salesforce 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşlenen** özellikler olarak seçilen özniteliklerin, güncelleştirme Işlemleri için Salesforce 'daki Kullanıcı hesaplarıyla eşleşecek şekilde kullanıldığını unutmayın. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
 
 17. Salesforce için Azure AD sağlama hizmetini etkinleştirmek üzere ayarlar bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
@@ -117,7 +117,10 @@ Bu bölümün amacı, Salesforce 'a Active Directory Kullanıcı hesaplarının 
 
 Bu, kullanıcılar ve Gruplar bölümünde Salesforce 'a atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir gerçekleşen sonraki eşitlemeler yerine gerçekleştirilmesini daha uzun sürdüğüne unutmayın. İlerleme durumunu izlemek ve Salesforce uygulamanızdaki sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="common-issues"></a>Genel sorunlar
+* Salesforce 'a sağlama için varsayılan öznitelik eşlemesi, Salesforce 'a Kullanıcı rolleri sağlamak için Singleapprotaatamalar ifadesini içerir. Öznitelik eşlemesi yalnızca bir rol sağlamayı desteklediğinden, kullanıcıların uygulamada kendisine atanmış birden çok rolü olmadığından emin olun. 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

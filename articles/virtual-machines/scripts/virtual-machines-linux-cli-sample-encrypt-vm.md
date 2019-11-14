@@ -1,5 +1,5 @@
 ---
-title: Azure CLI Betik Örneği - Linux VM Şifreleme | Microsoft Docs
+title: Azure CLI Betik Örneği - Linux VM Şifreleme
 description: Azure CLI Betik Örneği - Linux VM Şifreleme
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 16bbd4031c851a950af0f3c0fe98ebdd24b183df
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 26d453adb4ded59de162fda0ae62322399fa4d9a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709428"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040283"
 ---
 # <a name="encrypt-a-linux-virtual-machine-in-azure"></a>Azure'da bir Linux sanal makinesi şifreleme
 

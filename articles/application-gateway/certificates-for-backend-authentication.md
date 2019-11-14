@@ -1,18 +1,19 @@
 ---
-title: Azure 'da beyaz listeye ekleme için gereken sertifikalar Application Gateway
-description: Bu makalede, bir SSL sertifikasının Azure Application Gateway arka uç örnekleri için gerekli olan kimlik doğrulama sertifikasına ve güvenilen kök sertifikaya nasıl dönüştürülebileceği hakkında örnekler verilmektedir.
+title: Arka uç sunucularına izin vermek için gerekli sertifikalar
+titleSuffix: Azure Application Gateway
+description: Bu makalede, bir SSL sertifikasının Azure Application Gateway arka uç örneklerine izin vermek için gerekli olan kimlik doğrulama sertifikasına ve güvenilen kök sertifikaya nasıl dönüştürülebileceği hakkında örnekler verilmektedir
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: ae1ac3df3da4e5c25e5538f0e8cc4cd12f9186c6
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 48944c513bd075e3859503fdadc4001261dc8c4a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774784"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048163"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway arka uca izin vermek için sertifikalar oluşturma
 
@@ -53,11 +54,11 @@ SSL sertifikaınızdan ortak anahtar. cer dosyasını (özel anahtarı değil) d
 
 5. **Dışarı aktarılacak dosya**için, sertifikayı dışarı aktarmak istediğiniz konuma **gidin** . **Dosya adı** alanına, sertifika dosyası için bir ad girin. Ardından **İleri**'ye tıklayın.
 
-   ![Gözat](./media/certificates-for-backend-authentication/browse.png)
+   ![Göz at](./media/certificates-for-backend-authentication/browse.png)
 
 6. Sertifikayı dışarı aktarmak için **Son**'a tıklayın.
 
-   ![Bitir](./media/certificates-for-backend-authentication/finish.png)
+   ![Son](./media/certificates-for-backend-authentication/finish.png)
 
 7. Sertifikanız başarıyla verildi.
 
@@ -65,7 +66,7 @@ SSL sertifikaınızdan ortak anahtar. cer dosyasını (özel anahtarı değil) d
 
    Verdiğiniz sertifika şuna benzer:
 
-   ![Dışa Aktarıldı](./media/certificates-for-backend-authentication/exported.png)
+   ![Verildiğinde](./media/certificates-for-backend-authentication/exported.png)
 
 8. Not defteri 'Ni kullanarak, dışarıya aktarılmış sertifikayı açarsanız, bu örneğe benzer bir şey görürsünüz. Blue bölümünde Application Gateway 'e yüklenen bilgiler yer alır. Sertifikanızı Not defteri ile açarsanız ve bu şuna benzemezse genellikle bu, temel-64 kodlu X. 509.440 (. CER) biçiminde. Ayrıca, farklı bir metin Düzenleyicisi kullanmak istiyorsanız, bazı düzenleyicilerin arka planda istenmeden biçimlendirme getirebileceğini anlayın. Bu, metni Bu sertifikadan Azure 'a yüklerken sorun oluşturabilir.
 

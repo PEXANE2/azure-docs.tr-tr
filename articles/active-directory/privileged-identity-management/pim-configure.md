@@ -1,5 +1,5 @@
 ---
-title: Privileged Identity Management nedir? -Azure Active Directory | Microsoft Docs
+title: Privileged Identity Management nedir? -Azure AD | Microsoft Docs
 description: Azure AD Privileged Identity Management (PıM) için genel bir bakış sağlar.
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 04/09/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ae9429920a4d3a6bac8830d6add2782276850d7
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 578f45a7bc870874319a8238c7c8c50bf7a37998
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595352"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023016"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management nedir?
 
@@ -82,13 +82,13 @@ Privileged Identity Management aşağıdaki senaryoları destekler:
 
 Privileged Identity Management ve belgelerini daha iyi anlamak için aşağıdaki koşulları gözden geçirmeniz gerekir.
 
-| Terim veya kavram | Rol atama kategorisi | Açıklama |
+| Kavram veya sözleşme | Rol atama kategorisi | Açıklama |
 | --- | --- | --- |
 | lebilecek | Tür | Bir kullanıcının rolü kullanmak için bir veya daha fazla eylem gerçekleştirmesini gerektiren bir rol ataması. Bir Kullanıcı bir rol için uygun hale getirildiğinde, ayrıcalıklı görevleri gerçekleştirmeleri gerektiğinde rolü etkinleştirebilecekleri anlamına gelir. Kalıcı ve uygun bir rol atamasına karşılık gelen bir kişiye verilen erişimde fark yoktur. Tek fark, bazı kişilerin her zaman erişim gereksinimi yoktur. |
-| Bkz | Tür | Rolü kullanmak için bir kullanıcının herhangi bir eylem gerçekleştirmesini gerektirmeyen bir rol ataması. Etkin olarak atanan kullanıcılara role atanmış ayrıcalıklar vardır. |
+| etkin | Tür | Rolü kullanmak için bir kullanıcının herhangi bir eylem gerçekleştirmesini gerektirmeyen bir rol ataması. Etkin olarak atanan kullanıcılara role atanmış ayrıcalıklar vardır. |
 | etkinleştirme |  | Kullanıcının uygun olduğu bir rolü kullanmak için bir veya daha fazla eylem gerçekleştirme işlemi. Eylemler, bir Multi-Factor Authentication (MFA) denetimi gerçekleştirmeye, iş gerekçesinin sağlanmasından veya belirlenen onaylayanlardan onay isteğinde bulunabilir. |
-| atanan | Eyalet | Etkin rol ataması olan bir kullanıcı. |
-| etkinleştirilemediğini | Eyalet | Uygun rol atamasına sahip bir Kullanıcı, rolü etkinleştirmek için eylemleri gerçekleştirmiştir ve artık etkindir.  Etkinleştirildikten sonra, Kullanıcı yeniden etkinleştirilmeleri için önceden yapılandırılmış bir süre için rolü kullanabilir. |
+| atanan | Durum | Etkin rol ataması olan bir kullanıcı. |
+| etkinleştirilemediğini | Durum | Uygun rol atamasına sahip bir Kullanıcı, rolü etkinleştirmek için eylemleri gerçekleştirmiştir ve artık etkindir.  Etkinleştirildikten sonra, Kullanıcı yeniden etkinleştirilmeleri için önceden yapılandırılmış bir süre için rolü kullanabilir. |
 | kalıcı uygun | Süre | Kullanıcının her zaman rolü etkinleştirmesine uygun olduğu rol ataması. |
 | kalıcı etkin | Süre | Bir kullanıcının herhangi bir eylem yapmadan her zaman rol kullanabileceği rol ataması. |
 | kullanım süresi uygun | Süre | Bir kullanıcının belirtilen başlangıç ve bitiş tarihi içinde rolü etkinleştirmesine uygun olduğu rol ataması. |

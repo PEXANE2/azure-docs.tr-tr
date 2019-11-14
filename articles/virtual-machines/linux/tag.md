@@ -1,5 +1,5 @@
 ---
-title: Azure Linux sanal makinesini etiketleme | Microsoft Docs
+title: Azure Linux sanal makinesini etiketleme
 description: Kaynak Yöneticisi dağıtım modelini kullanarak Azure 'da oluşturulan bir Azure Linux sanal makinesini etiketleme hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: c232fc80ea63cd2e1d37bc380fb09c512bb7a517
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cabebee7b10ef86486fb8296df44845429d7ebbe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081908"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034720"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Azure 'da Linux sanal makinesini etiketleme
 Bu makalede, Azure 'daki bir Linux sanal makinesini Kaynak Yöneticisi dağıtım modeliyle etiketlemek için farklı yollar açıklanmaktadır. Etiketler, doğrudan bir kaynağa veya bir kaynak grubuna yerleştirilebilecek Kullanıcı tanımlı anahtar/değer çiftleridir. Azure Şu anda kaynak ve kaynak grubu başına en fazla 15 etiket desteklemektedir. Etiketler, oluşturma sırasında veya var olan bir kaynağa eklenen bir kaynağa yerleştirilebilir. Lütfen, Etiketler yalnızca Kaynak Yöneticisi dağıtım modeli aracılığıyla oluşturulan kaynaklar için desteklenir.
@@ -36,7 +36,7 @@ Bu komutu kullanarak belirli bir sanal makine için Etiketler dahil olmak üzere
 az vm show --resource-group MyResourceGroup --name MyTestVM
 ```
 
-Azure CLI aracılığıyla yeni bir VM etiketi eklemek için `azure vm update` komutunu, **--set**etiketi parametresiyle birlikte kullanabilirsiniz:
+Azure CLı aracılığıyla yeni bir VM etiketi eklemek için, **--set**etiketi parametresiyle birlikte `azure vm update` komutunu kullanabilirsiniz:
 
 ```azurecli
 az vm update \
@@ -45,7 +45,7 @@ az vm update \
     --set tags.myNewTagName1=myNewTagValue1 tags.myNewTagName2=myNewTagValue2
 ```
 
-Etiketleri kaldırmak için, `azure vm update` komutuyla **--Remove** parametresini kullanabilirsiniz.
+Etiketleri kaldırmak için `azure vm update` komutunda **--Remove** parametresini kullanabilirsiniz.
 
 ```azurecli
 az vm update --resource-group MyResourceGroup --name MyTestVM --remove tags.myNewTagName1

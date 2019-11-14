@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 59844c5989abb03bbe5134c83c9653290c17d0a9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b2434102e0355d5c26c501588c360f74eb98404d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582487"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049133"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Öğretici: Python SDK ile ilk ML denemenizi oluşturmaya başlama
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -81,7 +81,7 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
 
 1. Üstteki çubukta, Not defterini çalıştırmak için kullanılacak bir not defteri sanal makinesi seçin. Bu VM 'Ler Azure Machine Learning çalıştırmanız gereken her şey ile önceden yapılandırılmıştır. Çalışma alanınızın herhangi bir kullanıcısı tarafından oluşturulan bir VM 'yi seçebilirsiniz. 
 
-1. VM bulunamazsa, sanal makineyi oluşturmak için **+ Işlem Ekle** ' yi seçin.
+1. VM bulunamazsa, sanal makineyi oluşturmak için **+ VM Ekle** ' yi seçin. 
 
     1. Bir VM oluşturduğunuzda, bir ad sağlayın.  Ad, 2 ila 16 karakter arasında olmalıdır. Geçerli karakterler harfler, rakamlar ve-karakterdir ve ayrıca Azure aboneliğinizde benzersiz olmalıdır.
 

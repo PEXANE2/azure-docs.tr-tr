@@ -1,25 +1,22 @@
 ---
-title: SSL sonlandırma - Azure CLI ile bir uygulama ağ geçidi oluşturma | Microsoft Docs
+title: CLı kullanarak SSL sonlandırması-Azure Application Gateway
 description: Azure CLI kullanarak uygulama ağ geçidi oluşturma ve SSL sonlandırma sertifikası eklemeyi öğrenin.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 188c252064028ccecc0fd4fe231cda190d2b4c08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d1decdda096fb902ff605205d7193e1264e5170
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135183"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048009"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Azure CLI kullanarak SSL sonlandırma ile bir uygulama ağ geçidi oluşturma
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Azure CLı kullanarak SSL sonlandırmasına sahip bir uygulama ağ geçidi oluşturma
 
-Azure CLI’yı arka uç sunucuları için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanan bir [SSL sonlandırma](application-gateway-backend-ssl.md) sertifikası bulunan bir [uygulama ağ geçidi](application-gateway-introduction.md) oluşturmak için kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir.
+Azure CLI’yı arka uç sunucuları için bir [sanal makine ölçek kümesi](application-gateway-introduction.md) kullanan bir [SSL sonlandırma](application-gateway-backend-ssl.md) sertifikası bulunan bir [uygulama ağ geçidi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) oluşturmak için kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -63,7 +60,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 
-[az network vnet create](/cli/azure/network/vnet) komutunu kullanarak *myVNet* adlı sanal ağı ve *myAGSubnet* adlı alt ağı oluşturun. Daha sonra [az network vnet subnet create](/cli/azure/network/vnet/subnet) kullanan arka uç sunucularının gerek duyduğu *myBackendSubnet* adlı alt ağı ekleyebilirsiniz. [az network public-ip create](/cli/azure/network/public-ip) komutunu kullanarak *myAGPublicIPAddress* adlı genel IP adresini oluşturun.
+*az network vnet create* komutunu kullanarak *myVNet* adlı sanal ağı ve [myAGSubnet](/cli/azure/network/vnet) adlı alt ağı oluşturun. Daha sonra *az network vnet subnet create* kullanan arka uç sunucularının gerek duyduğu [myBackendSubnet](/cli/azure/network/vnet/subnet) adlı alt ağı ekleyebilirsiniz. *az network public-ip create* komutunu kullanarak [myAGPublicIPAddress](/cli/azure/network/public-ip) adlı genel IP adresini oluşturun.
 
 ```azurecli-interactive
 az network vnet create \
@@ -110,7 +107,7 @@ az network application-gateway create \
 
  Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ geçidi oluşturulduktan sonra şu yeni özellikleri görürsünüz:
 
-- *appGatewayBackendPool* -bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
+- *appGatewayBackendPool*: Bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
 - *appGatewayBackendHttpSettings*: İletişim için 80 numaralı bağlantı noktasının ve HTTP protokolünün kullanıldığını belirtir.
 - *appGatewayHttpListener*: *appGatewayBackendPool* ile ilişkili varsayılan dinleyicidir.
 - *appGatewayFrontendIP*: *appGatewayHttpListener*’a *myAGPublicIPAddress*’i atar.
@@ -177,4 +174,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Sertifikalı bir uygulama ağ geçidi oluşturma
 > * Varsayılan arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
 
-Uygulama ağ geçitleri ve bunların ilişkili kaynakları hakkında daha fazla bilgi edinmek için nasıl yapılır makaleleriyle devam edin.
+Uygulama ağ geçitleri ve bunlarla ilişkili kaynaklar hakkında daha fazla bilgi edinmek için nasıl yapılır makalelerine devam edin.

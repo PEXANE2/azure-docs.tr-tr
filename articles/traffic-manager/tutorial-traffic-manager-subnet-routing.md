@@ -1,5 +1,5 @@
 ---
-title: Alt ağ trafiği yönlendirmeyi Yapılandırma-Azure Traffic Manager
+title: 'Öğretici: alt ağ trafiği yönlendirmeyi Yapılandırma-Azure Traffic Manager'
 description: Bu makalede Traffic Manager'ı kullanıcı alt ağlarından gelen trafiği belirli uç noktalara yönlendirecek şekilde yapılandırma adımları anlatılmaktadır.
 services: traffic-manager
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: allensu
-ms.openlocfilehash: 79a8712dbe54446214f3c094a1377efea4defcce
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c2fbb4a85347c8ee68376069474add865cc06c43
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014580"
+ms.locfileid: "74048819"
 ---
-# <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Traffic Manager'ı kullanarak trafiği kullanıcı alt ağına göre belirli uç noktalara yönlendirme
+# <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Öğretici: Traffic Manager kullanarak Kullanıcı alt ağına dayalı belirli uç noktalara trafik yönlendirin
 
 Bu makalede alt ağ trafiği yönlendirme yöntemini yapılandırma adımları anlatılmaktadır. **Alt ağ** trafik yönlendirme yöntemi, bir IP adresi kümesini belirli uç noktalarla eşlemenizi sağlar. Traffic Manager'a bir istek geldiğinde kaynak IP adresi incelenir ve bu adresle ilişkilendirilmiş uç nokta döndürülür.
 

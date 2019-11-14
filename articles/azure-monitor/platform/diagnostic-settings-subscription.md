@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 10/31/2019
-ms.openlocfilehash: 9f8783dc6d3c14b086364639b60273dbae626cee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6104a8b01cc9fca5ff8de973e7fc2af77cda8515
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587985"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048200"
 ---
 # <a name="collect-azure-activity-log-with-diagnostic-settings-preview"></a>Tanılama ayarlarıyla Azure etkinlik günlüğü toplama (Önizleme)
 [Azure etkinlik günlüğü](activity-logs-overview.md) , Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform günlüğliğidir](platform-logs-overview.md) . Bu aşamada, etkinlik günlüğü girdilerini bir [Olay Hub 'ına veya depolama hesabına](activity-log-export.md) göndermek için bir günlük profili oluşturdunuz ve bir [Log Analytics çalışma alanına](activity-log-collect.md)toplamak için bağlayıcı kullandınız.
@@ -22,6 +22,8 @@ Artık, [kaynak günlüklerini](resource-logs-overview.md)toplamak için kullan�
 - Tüm platform günlüklerini toplamak için tutarlı yöntem.
 - Birden çok abonelik ve kiracılar arasında etkinlik günlüğü toplayın.
 - Koleksiyonu yalnızca belirli kategoriler için günlükleri toplayacak şekilde filtreleyin.
+- Tüm etkinlik günlüğü kategorilerini toplayın. Bazı kategoriler önceki yöntem kullanılarak toplanmaz.
+- Günlük alımı için daha hızlı gecikme. Tanılama ayarları yalnızca yaklaşık 1 dakika eklediğinde önceki yöntemde yaklaşık 15 dakikalık gecikme vardır.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Bu özelliği etkinleştirmeden önce tanılama ayarlarını kullanarak etkinlik günlüğü koleksiyonunun aşağıdaki ayrıntılarını göz önünde bulundurun.
@@ -57,7 +59,7 @@ Aşağıdaki özellikler kaldırılmıştır:
 
 - ActivityStatus
 - Etkinlik alt durumu
-- için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir
+- ThrottledRequests
 - ResourceProvider 
 
 Aşağıdaki özellikler eklendi:

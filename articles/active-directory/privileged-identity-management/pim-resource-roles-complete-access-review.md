@@ -1,26 +1,26 @@
 ---
-title: Privileged Identity Management-Azure Active Directory | Azure Kaynak rolleri için erişim gözden geçirmesi tamamlamayı doldurun | Microsoft Docs
-description: Azure AD Privileged Identity Management (PıM) içindeki Azure Kaynak rollerinin erişim incelemesini tamamlamayı öğrenin.
+title: PıM-Azure AD 'de Azure Kaynak rollerinin erişim incelemesini tamamlama | Microsoft Docs
+description: Azure Active Directory Privileged Identity Management Azure Kaynak rolleri 'nin erişim incelemesini nasıl tamamlayacağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6761d1d6aea796e0cca708676f69c47328642cc2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 9e45249245aaab97070b7e774d4b6bab6827bdc9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895807"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021991"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri için erişim gözden geçirmesini doldurun
 
@@ -30,7 +30,7 @@ Erişim gözden geçirme süresi bittikten sonra veya tüm kullanıcılar kendi 
 
 ## <a name="manage-access-reviews"></a>Erişim incelemelerini yönetme
 
-1. [Azure Portal](https://portal.azure.com/) gidin. Panoda **Azure kaynakları** hizmetini seçin.
+1. [Azure portalına](https://portal.azure.com/) gidin. Panoda **Azure kaynakları** hizmetini seçin.
 
 2. Kaynağınızı seçin.
 
@@ -50,9 +50,9 @@ Tüm erişim incelemelerinin bitiş tarihi vardır. Erken bitmek için **Durdur*
 
 ### <a name="reset"></a>Sıfırla
 
-Bir erişim incelemesini, üzerinde yapılan tüm kararları kaldırmak için sıfırlayabilirsiniz. Erişim gözden geçirmesini sıfırladıktan sonra, tüm kullanıcılar geri gözden geçirilmedi olarak işaretlenir.
+Bir erişim incelemesini, üzerinde yapılan tüm kararları kaldırmak için sıfırlayabilirsiniz. Erişim gözden geçirmesini sıfırladıktan sonra, tüm kullanıcılar yeniden gözden geçirilmedi olarak işaretlenir.
 
-### <a name="apply"></a>Başvurun
+### <a name="apply"></a>Uygula
 
 Erişim incelemesi tamamlandıktan sonra, gözden geçirmeyi sonucunu uygulamak için **Uygula** ' yı seçin. Gözden geçirme sırasında bir kullanıcının erişimi reddedildiyse, bu adım rol atamasını kaldırır.  
 

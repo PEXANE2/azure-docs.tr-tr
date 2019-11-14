@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 4a0736267ca00b67f35abc7cf263e7cf19543d81
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6ab01cf42dac280e64470355f7ea5804cad669d7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932121"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048795"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -194,7 +194,7 @@ Betik, modeli yükleyen ve çalıştıran iki işlev içerir:
 
 * `init()`: Bu işlev genellikle modeli genel bir nesneye yükler. Bu işlev, Web hizmetiniz için Docker kapsayıcısı başlatıldığında yalnızca bir kez çalıştırılır.
 
-* `run(input_data)`: Bu işlev, giriş verilerine göre bir değeri tahmin etmek için modeli kullanır. Çalıştırmanın giriş ve çıkışları genellikle serileştirme ve seri durumundan çıkarma için JSON kullanır. Ham ikili verilerle de çalışabilirsiniz. Verileri modele göndermeden önce veya istemciye döndürmeden önce dönüştürebilirsiniz.
+* `run(input_data)`: Bu işlev, giriş verileri temel alan bir değer tahmin modelini kullanır. Çalıştırmanın giriş ve çıkışları genellikle serileştirme ve seri durumundan çıkarma için JSON kullanır. Ham ikili verilerle de çalışabilirsiniz. Verileri modele göndermeden önce veya istemciye döndürmeden önce dönüştürebilirsiniz.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Giriş betiğinizdeki model dosyalarını bulun
 
@@ -233,7 +233,7 @@ Bir modeli kaydettiğinizde, kayıt defterinde modeli yönetmek için kullanıla
 Bir modeli kaydettiğinizde, buna bir ad verirsiniz. Ad, modelin yerel olarak ya da hizmet dağıtımı sırasında yerleştirildiği yere karşılık gelir.
 
 > [!IMPORTANT]
-> Bir modeli eğitebilmeniz için otomatik makine öğrenimi kullandıysanız, model adı olarak `model_id` bir değer kullanılır. Otomatik makine öğrenimi ile eğitilen bir modeli kaydetme ve dağıtmayla ilgili bir örnek için bkz. GitHub 'da [Azure/Machinelearningnot defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment) .
+> Bir modeli eğitebilmeniz için otomatik makine öğrenimi kullandıysanız, model adı olarak `model_id` bir değer kullanılır. Otomatik makine öğrenimi ile eğitilen bir modeli kaydetme ve dağıtmayla ilgili bir örnek için bkz. GitHub 'da [Azure/Machinelearningnot defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features) .
 
 Aşağıdaki örnek, `sklearn_mnist_model.pkl` adlı tek bir dosyanın yolunu döndürür (`sklearn_mnist`adı ile kaydedilir):
 
@@ -375,8 +375,8 @@ def run(data):
 
 Daha fazla örnek için aşağıdaki betiklerine bakın:
 
-* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
-* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
+* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
+* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
 * [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
 
@@ -572,7 +572,7 @@ CLı 'dan profil oluşturmayı kullanma hakkında daha fazla bilgi için, bkz. [
 Daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [profil ()](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
+* [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
 * [Çıkarım yapılandırma dosyası şeması](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Hedefe dağıt
@@ -584,7 +584,7 @@ Dağıtım, modelleri dağıtmak için çıkarım yapılandırma dağıtımı ya
 Bir modeli yerel olarak dağıtmak için, yerel makinenizde Docker yüklü olmalıdır.
 
 #### <a name="using-the-sdk"></a>SDK’yı kullanarak
-
+ZZS
 ```python
 from azureml.core.webservice import LocalWebservice, Webservice
 
@@ -1137,8 +1137,8 @@ NOTE: Bu bağımlılıklar önceden oluşturulmuş sköğren çıkarımı kapsay
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Dağıtılan bir Web hizmetini silmek için `service.delete()`kullanın.
-Kayıtlı bir modeli silmek için `model.delete()`kullanın.
+Dağıtılmış bir web hizmetini silmek için kullanın `service.delete()`.
+Kayıtlı bir model silmek için kullanın `model.delete()`.
 
 Daha fazla bilgi için bkz. [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) ve [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)belgeleri.
 
@@ -1146,7 +1146,7 @@ Daha fazla bilgi için bkz. [WebService. Delete ()](https://docs.microsoft.com/p
 
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md)
-* [SSL ile güvenli Azure Machine Learning Web Hizmetleri](how-to-secure-web-service.md)
+* [Azure Machine Learning web hizmetleri SSL ile güvenli hale getirme](how-to-secure-web-service.md)
 * [Web hizmeti olarak dağıtılan bir Azure Machine Learning modeli kullanma](how-to-consume-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)

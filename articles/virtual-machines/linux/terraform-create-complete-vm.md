@@ -1,5 +1,5 @@
 ---
-title: Terrayform kullanarak Azure 'da tamamen bir Linux VM oluşturun | Microsoft Docs
+title: Terrayform kullanarak Azure 'da tamamen bir Linux sanal makinesi oluşturun
 description: Azure 'da tüm Linux sanal makine ortamı oluşturmak ve yönetmek için Terrayform kullanmayı öğrenin
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: bb4628477719d0aa2f176c466047531b42d7cfc3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b97d9563f0bddcc2b3bf82807f41af68f3abbff1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924882"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034711"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Terrayform ile Azure 'da tamamen bir Linux sanal makine altyapısı oluşturma
 
@@ -30,7 +30,7 @@ Terrayform, Azure 'da tüm altyapı dağıtımlarını tanımlamanızı ve oluş
 
 Bir Terrayform şablonunun her bir bölümünü inceleyelim. Ayrıca, kopyalayabilir ve yapıştırabileceğiniz [Terrayform şablonunun](#complete-terraform-script) tam sürümünü de görebilirsiniz.
 
-`provider` bölümü, Teraform 'un bir Azure sağlayıcısı kullanmasını söyler. *Subscription_id*, *client_id*, *client_secret*ve *Tenant_id*değerlerini almak için bkz. [terrayform 'u yükleyip yapılandırma](terraform-install-configure.md). 
+`provider` bölümü, Teraform 'un bir Azure sağlayıcısı kullanmasını söyler. *Subscription_id*, *client_id*, *client_secret*ve *Tenant_id*değerlerini almak için bkz. [terrayform 'u yüklemek ve yapılandırmak](terraform-install-configure.md). 
 
 > [!TIP]
 > Değerler için ortam değişkenleri oluşturursanız veya [Azure Cloud Shell Bash deneyimini](/azure/cloud-shell/overview) kullanıyorsanız, bu bölüme değişken bildirimleri eklemeniz gerekmez.
@@ -241,7 +241,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 
 ## <a name="complete-terraform-script"></a>Terrayform betiğini doldurun
 
-Bu bölümlerin tümünü bir araya getirmek ve Terrampaform 'da görmek için *terraform_azure. tf* adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
+Bu bölümlerin tümünü bir araya getirmek ve Terrampaform 'u görmek için *terraform_azure. tf* adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
 
 ```hcl
 # Configure the Microsoft Azure Provider

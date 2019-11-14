@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fa7ee6663aae24451af195de4a8225c7a6b351e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 24b9b120240ffc6f7dd2252d12c9f8af2bcfafbc
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647140"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049166"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Veri kümelerinde veri kayması (Önizleme) Algıla
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Azure Machine Learning veri kümesi izleyicilerinde şunları yapabilirsiniz:
 > [!Important]
 > Bkz. SDK ile izleme verileri, tüm sürümlerde kullanılabilir, ancak Web üzerindeki Studio üzerinden izleme verileri, yalnızca Enterprise Edition.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Veri kümesi izleyicileri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
@@ -75,7 +75,7 @@ Azure Machine Learning kullanarak veri kümeleri veri kümeleri aracılığıyla
 
 Hedef veri kümesinin, verilerdeki bir sütundan veya dosyaların yol düzeninden türetilmiş bir sanal sütunda zaman damgası sütununu belirterek, üzerinde `timeseries` nitelik ayarlanmış olması gerekir. Bu, Python SDK veya Azure Machine Learning Studio aracılığıyla yapılabilir. Veri kümesine `timeseries` nitelik eklemek için "ince gren" zaman damgasını temsil eden bir sütun belirtilmelidir. Verileriniz ' {yyyy/aa/gg} ' gibi zaman bilgileriyle klasör yapısına bölünmemişse, zaman serisi işlevinin önemini artırmak için yol deseninin ayarı aracılığıyla bir sanal sütun oluşturabilir ve bunu "kaba bir" zaman damgası olarak ayarlayabilirsiniz. 
 
-#### <a name="python-sdk"></a>Python SDK
+#### <a name="python-sdk"></a>Python SDK'sı
 
 [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) class ' [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) yöntemi veri kümesi için zaman damgası sütununu tanımlar. 
 
@@ -135,8 +135,8 @@ Bu tablo, veri kümesi İzleyicisi için kullanılan temel ayarları içerir.
 | Taban çizgisi veri kümesi | Zaman içinde hedef veri kümesinin karşılaştırılması için temel olarak kullanılacak tablo veri kümesi. | Temel veri kümesi, hedef veri kümesiyle ortak olan özelliklere sahip olmalıdır. Genellikle, taban çizgisinin bir modelin eğitim veri kümesine veya hedef veri kümesinin dilimine ayarlanmış olması gerekir. | Hayır |
 | Hedef veri kümesi | Veri kayması için analiz edilecek zaman damgası sütunuyla belirtilen tablo veri kümesi | Hedef veri kümesinde, temel veri kümesiyle ortak olan özellikler olmalıdır ve yeni verilerin eklendiği bir `timeseries` veri kümesi olmalıdır. Hedef veri kümesindeki geçmiş verileri analiz edilebilir veya yeni veriler izlenebilir. | Hayır | 
 | Frequency | Bu, ardışık düzen işini zamanlamak ve geri doldurma çalıştırıyorsa geçmiş verileri çözümlemek için kullanılacak sıklığıdır. Seçenekler günlük, haftalık veya aylık olarak verilebilir. | Bu ayarı, taban çizgisine benzer bir veri boyutu içerecek şekilde ayarlayın. | Hayır | 
-| Özellikler | Zaman içinde veri kayması için analiz edilecek özelliklerin listesi | Bir modelin, kavram SLA 'ları ölçmek için çıkış özelliklerine ayarlayın. Zamana göre (ay, yıl, Dizin vb.) bir zaman içinde olan özellikleri eklemeyin. Özellik listesini ayarladıktan sonra, var olan veri kayması izleyicisini geri doldurabilir. | Evet | 
-| İşlem hedefi | Veri kümesi izleyici işlerini çalıştırmak için işlem hedefini Azure Machine Learning. | | Evet | 
+| Özellikler | Zaman içinde veri kayması için analiz edilecek özelliklerin listesi | Bir modelin, kavram SLA 'ları ölçmek için çıkış özelliklerine ayarlayın. Zamana göre (ay, yıl, Dizin vb.) bir zaman içinde olan özellikleri eklemeyin. Özellik listesini ayarladıktan sonra, var olan veri kayması izleyicisini geri doldurabilir. | Yes | 
+| İşlem hedefi | Veri kümesi izleyici işlerini çalıştırmak için işlem hedefini Azure Machine Learning. | | Yes | 
 
 ### <a name="monitor-settings"></a>İzleme ayarları
 
@@ -144,10 +144,10 @@ Bu ayarlar, oluşturulacak zamanlanmış veri kümesi İzleyicisi işlem hattı 
 
 | Ayar | Açıklama | İpuçları | Değiştirilebilir | 
 | ------- | ----------- | ---- | ------- |
-| Etkinleştirme | Veri kümesi izleyici ardışık düzeninde zamanlamayı etkinleştirme veya devre dışı bırakma | Geri doldurma ayarıyla geçmiş verileri çözümlemek için bunu devre dışı bırakın. Veri kümesi İzleyicisi oluşturulduktan sonra etkinleştirilebilir. | Evet | 
+| Etkinleştir | Veri kümesi izleyici ardışık düzeninde zamanlamayı etkinleştirme veya devre dışı bırakma | Geri doldurma ayarıyla geçmiş verileri çözümlemek için bunu devre dışı bırakın. Veri kümesi İzleyicisi oluşturulduktan sonra etkinleştirilebilir. | Yes | 
 | Gecikme süresi | Saat olarak, verilerin veri kümesine gelmesi için zaman alır. Örneğin, verilerin SQL DB My DataSet 'e ulaşması üç gün sürüyorsa, gecikme süresini 72 olarak ayarlayın. | Veri kümesi İzleyicisi oluşturulduktan sonra değiştirilemez | Hayır | 
-| E-posta adresleri | Veri DRIP yüzdesi eşiğini ihlal eden uyarı için e-posta adresleri. | E-postalar Azure Izleyici aracılığıyla gönderilir. | Evet | 
-| Eşiği | E-posta uyarısı için veri kayması yüzdesi eşiği. | Daha fazla uyarı ve olay, çalışma alanının ilişkili Application Insights kaynağındaki diğer birçok ölçümde ayarlanabilir. | Evet | 
+| E-posta adresleri | Veri DRIP yüzdesi eşiğini ihlal eden uyarı için e-posta adresleri. | E-postalar Azure Izleyici aracılığıyla gönderilir. | Yes | 
+| Eşik | E-posta uyarısı için veri kayması yüzdesi eşiği. | Daha fazla uyarı ve olay, çalışma alanının ilişkili Application Insights kaynağındaki diğer birçok ölçümde ayarlanabilir. | Yes | 
 
 ### <a name="backfill-settings"></a>Geri doldurma ayarları
 
@@ -173,13 +173,13 @@ Veri kümesi izleyicinizdeki uyarıları ayarlamak için, bir izleyici oluşturm
 
 **+ Izleyici oluştur** düğmesine tıklayın ve **İleri**' ye tıklayarak sihirbaza devam edin.
 
-![Ekleme](media/how-to-monitor-datasets/wizard.png)
+![Sihirbazı](media/how-to-monitor-datasets/wizard.png)
 
 Elde edilen veri kümesi İzleyicisi listede görüntülenir. Bu izleyicinin ayrıntılar sayfasına gitmek için seçin.
 
 ### <a name="from-python-sdk"></a>Python SDK 'dan
 
-Tüm ayrıntılar için [veri üzerinde Python SDK başvuru belgelerine](https://aka.ms/datadriftapi) bakın. 
+Tüm ayrıntılar için [veri üzerinde Python SDK başvuru belgelerine](/python/api/azureml-datadrift/azureml.datadrift) bakın. 
 
 Aşağıda, Python SDK kullanılarak veri kümesi izleyicisinin oluşturulmasına ilişkin bir örnek verilmiştir
 

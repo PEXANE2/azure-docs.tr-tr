@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 747fe891bf4d6bd042e689107cd87680795eb82b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3ac4db3a2d98e761183360c268d23efcc313cf09
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959338"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048492"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS özel bölgeler senaryoları
 
@@ -31,7 +31,7 @@ Bu senaryo, özel bir bölgeyi birden çok sanal ağla ilişkilendirmeniz gereke
 
 Aşağıdaki diyagramda, bu senaryonun yalnızca iki sanal ağı (A ve B) bulunduğu basit bir sürümü gösterilmektedir. Bir kayıt sanal ağı olarak atanır ve B bir çözümleme sanal ağı olarak atanır. Amaç, her iki sanal ağın da ortak bir bölge contoso.com paylaşmasına yöneliktir. Bölge oluşturulduğunda ve çözümleme ve kayıt sanal ağları bölgeye bağlandığında, Azure VM 'Ler (VNETA-VM1 ve VNETA-VM2) için DNS kayıtlarını A sanal ağından otomatik olarak kaydeder. Ayrıca, çözümleme sanal ağı B 'deki VM 'Ler için DNS kayıtlarını bölgeye el ile ekleyebilirsiniz. Bu kurulumla, ileri ve ters DNS sorguları için aşağıdaki davranışı gözlemleyeceksiniz:
 * VNETA-VM1.contoso.com için çözümleme sanal ağı 'ndaki VNETB-VM1 ' t a bir DNS sorgusu, VNETA-VM1 özel IP 'sini içeren bir DNS yanıtı alacaktır.
-* 10.1.0.1 için sanal ağ B 'deki VNETB-VM2 ' y a ters DNS (PTR) sorgusu, için, FQDN VNETB-VM1.contoso.com içeren bir DNS yanıtı alacaktır. Bunun nedeni, ters DNS sorgularının aynı sanal ağın kapsamına alınır. 
+* 10.1.0.1 için sanal ağ B 'deki VNETB-VM2 ' y a ters DNS (PTR) sorgusu, için, FQDN VNETB-VM1.contoso.com içeren bir DNS yanıtı alacaktır.  
 * Sanal ağ B 'deki VNETB-VM3 öğesinden bir ters DNS (PTR) sorgusu, 10.0.0.1 için, NXDOMAIN alır. Bunun nedeni, ters DNS sorgularının yalnızca aynı sanal ağın kapsamına alınır. 
 
 
@@ -48,11 +48,11 @@ Artık bir İnternet istemcisi VNETA-VM1.contoso.com aramak için bir DNS sorgus
 ![Brian çözümlemeyi Böl](./media/private-dns-scenarios/split-brain-resolution.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Özel DNS bölgeleri hakkında daha fazla bilgi için bkz. [özel etki alanları için Azure DNS kullanma](private-dns-overview.md).
+Özel DNS bölgeleri hakkında daha fazla bilgi için bkz. [Özel etki alanları için Azure DNS'i kullanma](private-dns-overview.md).
 
 Azure DNS [Özel BIR DNS bölgesi oluşturmayı](./private-dns-getstarted-powershell.md) öğrenin.
 
 Ziyaret ederek DNS bölgeleri ve kayıtları hakkında bilgi edinin: [DNS bölgeleri ve kayıtlarına genel bakış](dns-zones-records.md).
 
-Azure 'un diğer önemli [ağ özellikleri](../networking/networking-overview.md) hakkında bilgi edinin.
+Azure'un diğer önemli [ağ özelliklerinden](../networking/networking-overview.md) bazıları hakkında bilgi edinin.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 003cc54a07455118969a2dd497e9b963c03f68f2
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: fb36387764efbdaa1ad3d164ba419bee49770871
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099502"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048996"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services V2 'den v3 'e geçmek için geçiş kılavuzu
 
@@ -38,7 +38,7 @@ Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview
 *  v3, Azure Resource Manager'da yerleşik olan yönetim ve işlem işlevselliğini kullanıma sunan, birleşik bir API yüzeyini temel alır. Azure Resource Manager şablonlar, dönüşümler, akış uç noktaları, canlı olaylar ve daha fazlasını oluşturmak ve dağıtmak için kullanılabilir.
 * [Openapı belirtimi (eski adı Swagger)](https://aka.ms/ams-v3-rest-sdk) belgesi.
     Dosya tabanlı kodlama da dahil olmak üzere tüm hizmet bileşenleri için şemayı gösterir.
-* [.Net](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node. js](https://aka.ms/ams-v3-nodejs-ref), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref)ve Ruby için kullanılabilir SDK 'lar.
+* [.Net](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node. js](/javascript/api/overview/azure/mediaservices/management), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref)ve Ruby için kullanılabilir SDK 'lar.
 * Basit betik desteği için [Azure CLI](https://aka.ms/ams-v3-cli-ref) tümleştirmesi.
 
 ### <a name="new-features"></a>Yeni özellikler
@@ -87,7 +87,7 @@ V3 API 'si, v2 API 'sine göre aşağıdaki özellik boşluklarını içerir. Bo
 * V2 API 'lerinde [Media Encoder Standard gelişmiş özelliklerin](../previous/media-services-advanced-encoding-with-mes.md) birçoğu şu anda v3 'de bulunmamaktadır:
   
     * Kıymetlerin dikiş
-    * Kaplayan
+    * Yer paylaşımları
     * Manın
     * Küçük resim Sprites
     * Girişte ses olmadığında sessiz ses izi ekleme

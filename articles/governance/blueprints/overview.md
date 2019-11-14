@@ -3,12 +3,12 @@ title: Azure Blueprints’e genel bakış
 description: Azure şemaları hizmetinin Azure ortamınızda yapıt oluşturmanıza, tanımlamanıza ve dağıtmanıza nasıl olanak sağladığını anlayın.
 ms.date: 08/26/2019
 ms.topic: overview
-ms.openlocfilehash: 3005bf171c5297048978d090d0f253a8690242cd
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: dadb7568a720d23f58d23896e84b3155ed2f12f4
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960316"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048282"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Azure şemaları hizmetine genel bakış
 
@@ -51,7 +51,7 @@ Bir ilke, şema tanımındaki birçok _yapıtlardan_ biri olarak eklenebilir. Ş
 |Kaynak  | Hiyerarşi seçenekleri| Açıklama  |
 |---------|---------|---------|
 |Kaynak Grupları | Abonelik | Şema içindeki diğer yapıtlar tarafından kullanılacak yeni bir kaynak grubu oluşturur.  Bu yer tutucu kaynak grupları, kaynakları tam olarak istediğiniz yapıda düzenlemenizi sağlar ve dahil olan ilke ve rol ataması yapıtlarına ek olarak Azure Resource Manager şablonları için kapsam sınırlayıcı olarak görev yapar. |
-|Azure Resource Manager şablonu | Abonelik, Kaynak Grubu | Şablonlar, karmaşık ortamlar oluşturmak için kullanılır. Örnek ortamlar: SharePoint grubu, Azure Otomasyonu Durum Yapılandırması veya Log Analytics çalışma alanı. |
+|Azure Resource Manager şablonu | Abonelik, Kaynak Grubu | İç içe ve bağlı şablonlar dahil olmak üzere şablonlar, karmaşık ortamları oluşturmak için kullanılır. Örnek ortamlar: SharePoint grubu, Azure Otomasyonu Durum Yapılandırması veya Log Analytics çalışma alanı. |
 |İlke Ataması | Abonelik, Kaynak Grubu | Bir ilkenin veya girişimin, şemanın atanmış olduğu aboneliğe atanmasını sağlar. İlke veya girişim, şema tanım konumunun kapsamında olmalıdır. İlke veya girişimde parametre varsa bu parametreler şema oluşturma veya şema ataması sırasında atanır. |
 |Rol Ataması | Abonelik, Kaynak Grubu | Kaynaklarınıza her zaman doğru kişilerin doğru şekilde erişmesini sağlamak için var olan bir kullanıcıyı veya grubu yerleşik role ekleyin. Rol atamaları aboneliğin tamamı için tanımlanabilir veya şemada bulunan belirli bir kaynak grubuna yerleştirilebilir. |
 
@@ -114,7 +114,7 @@ Aşağıdaki yerleşik roller kullanılabilir:
 Bu yerleşik roller güvenlik gereksinimlerinize uygun değilse [özel rol](../../role-based-access-control/custom-roles.md) oluşturabilirsiniz.
 
 > [!NOTE]
-> Sistem tarafından atanan yönetilen kimlik kullanılıyorsa, Azure şemaları için hizmet sorumlusu, dağıtımı etkinleştirmek için atanan abonelikte **sahip** rolünü gerektirir. Portalı kullanıyorsanız bu rol dağıtım için otomatik olarak verilir ve iptal edilir. REST API kullanıyorsanız bu rolün el ile verilmesi gerekir ancak dağıtım tamamlandıktan sonra iptal işlemi otomatik olarak gerçekleştirilir. Kullanıcı tarafından atanan yönetilen kimlik kullanılıyorsa, yalnızca şema atamasını oluşturan kullanıcının **sahip** izinlerine ihtiyacı vardır.
+> Sistem tarafından atanan yönetilen kimlik kullanılıyorsa, Azure şemaları için hizmet sorumlusu, dağıtımı etkinleştirmek için atanan abonelikte **sahip** rolünü gerektirir. Portalı kullanıyorsanız bu rol dağıtım için otomatik olarak verilir ve iptal edilir. REST API kullanıyorsanız bu rolün el ile verilmesi gerekir ancak dağıtım tamamlandıktan sonra iptal işlemi otomatik olarak gerçekleştirilir. Kullanıcı tarafından atanan yönetilen kimlik kullanılıyorsa, yalnızca şema atamasını oluşturan kullanıcının hem **sahip** hem de şema **operatörü** yerleşik rollerinde bulunan `Microsoft.Blueprint/blueprintAssignments/write` izni vardır.
 
 ## <a name="naming-limits"></a>Adlandırma sınırları
 

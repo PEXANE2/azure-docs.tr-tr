@@ -1,5 +1,5 @@
 ---
-title: Azure sanal makinesinde SQL Server için her zaman açık kullanılabilirlik grubu yapılandırmak üzere Azure CLı 'yi kullanma
+title: Kullanılabilirlik grubu yapılandırma (Azure CLı)
 description: Windows Yük devretme kümesi, kullanılabilirlik grubu dinleyicisi ve Azure 'daki bir SQL Server VM iç yük dengeleyici oluşturmak için Azure CLı 'yi kullanın.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 58174704051709a720950ac51591a1d53b9d01bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a6600af353daf2bfa7b49196f48ba5b60e6c45fb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100559"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022360"
 ---
 # <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure sanal makinesinde SQL Server için her zaman açık kullanılabilirlik grubu yapılandırmak üzere Azure CLı 'yi kullanma
 Bu makalede, [Azure CLI](/cli/azure/sql/vm?view=azure-cli-latest/) kullanarak bir Windows Yük devretme kümesi dağıtma, kümeye SQL Server VM ekleme, her zaman açık kullanılabilirlik grubu için iç yük dengeleyici ve dinleyici oluşturma işlemlerinin nasıl yapılacağı açıklanır. Always on kullanılabilirlik grubunun dağıtımı SQL Server Management Studio (SSMS) üzerinden el ile yapılır. 
@@ -37,7 +38,7 @@ Azure CLı kullanarak Always on kullanılabilirlik grubunu yapılandırmak için
 - Etki alanında **bilgisayar nesnesi oluşturma** iznine sahip olan mevcut bir etki alanı kullanıcı hesabı. Örneğin, bir etki alanı yönetici hesabı genellikle yeterli izne sahiptir (örneğin: account@domain.com). _Bu hesap, kümeyi oluşturmak için her VM 'de yerel yönetici grubunun da bir parçası olmalıdır._
 - SQL Server hizmetini denetleyen etki alanı kullanıcı hesabı. 
  
-## <a name="step-1-create-a-storage-account-as-a-cloud-witness"></a>1\. adım: Bulut tanığı olarak bir depolama hesabı oluşturma
+## <a name="step-1-create-a-storage-account-as-a-cloud-witness"></a>1\. Adım: bulut tanığı olarak depolama hesabı oluşturma
 Kümenin bulut tanığı olarak davranması için bir depolama hesabı olması gerekir. Mevcut bir depolama hesabını kullanabilir veya yeni bir depolama hesabı oluşturabilirsiniz. Mevcut bir depolama hesabını kullanmak istiyorsanız, sonraki bölüme atlayın. 
 
 Aşağıdaki kod parçacığı depolama hesabını oluşturur: 
@@ -51,9 +52,9 @@ az storage account create -n <name> -g <resource group name> -l <region ex:eastu
 ```
 
 >[!TIP]
-> Azure CLI 'nın eski bir `az sql: 'vm' is not in the 'az sql' command group` sürümünü kullanıyorsanız bu hatayı görebilirsiniz. Bu hatayı almak için [Azure CLI 'nın en son sürümünü](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) indirin.
+> Azure CLı 'nın eski bir sürümünü kullanıyorsanız hata `az sql: 'vm' is not in the 'az sql' command group` görebilirsiniz. Bu hatayı almak için [Azure CLI 'nın en son sürümünü](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) indirin.
 
-## <a name="step-2-define-windows-failover-cluster-metadata"></a>2\. adım: Windows Yük devretme kümesi meta verilerini tanımlama
+## <a name="step-2-define-windows-failover-cluster-metadata"></a>2\. Adım: Windows Yük devretme kümesi meta verilerini tanımlama
 Azure CLı [az SQL VM Group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) komut grubu, kullanılabilirlik grubunu barındıran Windows Server yük devretme KÜMESI (wsfc) hizmetinin meta verilerini yönetir. Küme meta verileri Active Directory etki alanını, küme hesaplarını, bulut tanığı olarak kullanılacak depolama hesaplarını ve SQL Server sürümünü içerir. İlk SQL Server VM eklendiğinde kümenin tanımlandığı şekilde oluşturulması için WSFC meta verilerini tanımlamak için [az SQL VM Group Create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) kullanın. 
 
 Aşağıdaki kod parçacığı, küme için meta verileri tanımlar:
@@ -73,8 +74,8 @@ az sql vm group create -n <cluster name> -l <region ex:eastus> -g <resource grou
   --storage-account '<ex:https://cloudwitness.blob.core.windows.net/>'
 ```
 
-## <a name="step-3-add-sql-server-vms-to-the-cluster"></a>3\. adım: Kümeye SQL Server VM ekleme
-Kümeye ilk SQL Server VM eklendiğinde küme oluşturulur. [Az SQL VM Add-Group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) komutu, kümeyi daha önce verilen adla oluşturur, küme rolünü SQL Server VM 'lerine ekler ve kümeye ekler. `az sql vm add-to-group` Komutun sonraki kullanımları yeni oluşturulan kümeye daha fazla SQL Server VM ekler. 
+## <a name="step-3-add-sql-server-vms-to-the-cluster"></a>3\. Adım: kümeye SQL Server VM ekleme
+Kümeye ilk SQL Server VM eklendiğinde küme oluşturulur. [Az SQL VM Add-Group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) komutu, kümeyi daha önce verilen adla oluşturur, küme rolünü SQL Server VM 'lerine ekler ve kümeye ekler. `az sql vm add-to-group` komutunun sonraki kullanımları yeni oluşturulan kümeye daha fazla SQL Server VM ekler. 
 
 Aşağıdaki kod parçacığı kümeyi oluşturur ve ilk SQL Server VM buna ekler: 
 
@@ -90,15 +91,15 @@ az sql vm add-to-group -n <VM1 Name> -g <Resource Group Name> --sqlvm-group <clu
 az sql vm add-to-group -n <VM2 Name> -g <Resource Group Name> --sqlvm-group <cluster name> `
   -b <bootstrap account password> -p <operator account password> -s <service account password>
 ```
-Kümeye diğer SQL Server VM 'Leri eklemek için bu komutu kullanın. Yalnızca SQL Server VM adı `-n` için parametreyi değiştirin. 
+Kümeye diğer SQL Server VM 'Leri eklemek için bu komutu kullanın. Yalnızca SQL Server VM adı için `-n` parametresini değiştirin. 
 
-## <a name="step-4-create-the-availability-group"></a>4\. Adım: Kullanılabilirlik grubunu oluşturma
+## <a name="step-4-create-the-availability-group"></a>4\. Adım: kullanılabilirlik grubunu oluşturma
 Kullanılabilirlik grubunu, [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)veya [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql)kullanarak normal şekilde yaptığınız şekilde el ile oluşturun. 
 
 >[!IMPORTANT]
-> Aşağıdaki bölümlerde Azure CLI üzerinden yapıldığından, şu anda bir dinleyici oluşturmayın.  
+> Aşağıdaki bölümlerde Azure CLı üzerinden yapıldığından, şu anda bir *dinleyici oluşturmayın.*  
 
-## <a name="step-5-create-the-internal-load-balancer"></a>5\. Adım: İç yük dengeleyici oluşturma
+## <a name="step-5-create-the-internal-load-balancer"></a>5\. Adım: iç yük dengeleyici oluşturma
 
 Always on kullanılabilirlik grubu dinleyicisi bir Azure Load Balancer iç örneğini gerektirir. İç yük dengeleyici, daha hızlı yük devretme ve yeniden bağlantı sağlayan kullanılabilirlik grubu dinleyicisi için "kayan" bir IP adresi sağlar. Bir kullanılabilirlik grubundaki SQL Server VM 'Ler aynı Kullanılabilirlik kümesinin parçasıysa, temel bir yük dengeleyici kullanabilirsiniz. Aksi takdirde, standart yük dengeleyici kullanmanız gerekir.  
 
@@ -119,17 +120,17 @@ az network lb create --name sqlILB -g <resource group name> --sku Standard `
 >[!IMPORTANT]
 > Her bir SQL Server VM genel IP kaynağının standart yük dengeleyiciye uyumlu olması için standart bir SKU 'SU olmalıdır. SANAL makinenizin genel IP kaynağının SKU 'sunu belirlemek için, **kaynak grubu**' na gidin, istediğiniz SQL Server VM IÇIN **genel IP adresi** kaynağınızı seçin ve **genel bakış** bölmesinde **SKU** altındaki değeri bulun.  
 
-## <a name="step-6-create-the-availability-group-listener"></a>6\. Adım: Kullanılabilirlik grubu dinleyicisini oluşturma
+## <a name="step-6-create-the-availability-group-listener"></a>6\. Adım: kullanılabilirlik grubu dinleyicisini oluşturma
 Kullanılabilirlik grubunu el ile oluşturduktan sonra [az SQL VM AG-Listener](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create)kullanarak dinleyiciyi oluşturabilirsiniz. 
 
-*Alt ağ kaynak kimliği* , sanal ağ kaynağının `/subnets/<subnetname>` kaynak kimliğine eklenen değerdir. Alt ağ kaynak KIMLIĞINI belirlemek için:
+*Alt ağ kaynak kimliği* , sanal ağ KAYNAĞıNıN kaynak kimliğine eklenen `/subnets/<subnetname>` değeridir. Alt ağ kaynak KIMLIĞINI belirlemek için:
    1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin. 
    1. Sanal ağ kaynağını seçin. 
    1. **Ayarlar** bölmesinde **Özellikler** ' i seçin. 
-   1. Sanal ağın kaynak Kimliğini belirleyip alt ağ kaynak kimliği oluşturmak `/subnets/<subnetname>` için sonuna ekleyin. Örneğin:
-      - Sanal ağ kaynak KIMLIĞINIZ:`/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
-      - Alt ağ adınız:`default`
-      - Bu nedenle, alt ağ kaynak KIMLIĞINIZ:`/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`
+   1. Sanal ağın kaynak KIMLIĞINI belirleyip alt ağ kaynak KIMLIĞINI oluşturmak için `/subnets/<subnetname>` sonuna ekleyin. Örneğin:
+      - Sanal ağ kaynak KIMLIĞINIZ: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
+      - Alt ağ adınız: `default`
+      - Bu nedenle, alt ağ kaynak KIMLIĞINIZ: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`
 
 
 Aşağıdaki kod parçacığı, kullanılabilirlik grubu dinleyicisini oluşturur:

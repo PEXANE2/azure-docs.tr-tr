@@ -1,11 +1,11 @@
 ---
 title: Bölgesel olarak yedekli ön uç Azure portal Load Balancer oluşturma
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Azure portalı ile bölgesel olarak yedekli genel IP adresi ön uç ile genel bir Standard Load Balancer oluşturma konusunda bilgi edinin
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: allensu
-ms.openlocfilehash: a875fc3446944b8a39f43b29440ab1d7179b847d
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4896030b1980defc79ff7a7ccd24ee22202ce167
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275076"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049080"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Azure portalını kullanarak bölgesel olarak yedekli ön uç ile standart yük dengeleyici oluşturma
 
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma 
 
-[https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
+https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-zone-redundant-load-balancer"></a>Bölge yedekli yük dengeleyici oluşturma
 

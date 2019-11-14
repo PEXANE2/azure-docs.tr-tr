@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 058506110a8ac4b11f272406a854f72062a1c90d
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: e7998ea0753ba7ab5d97142c34dc9e333f8b4f5d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514712"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034071"
 ---
 # <a name="azcopy-login"></a>azcopy oturum açma
 
@@ -35,6 +35,13 @@ Daha fazla bilgi için lütfen örneklere bakın.
 ```azcopy
 azcopy login [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
+
+- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Örnekler
 
@@ -74,13 +81,13 @@ Bir VM 'nin Kullanıcı tarafından atanan kimliğini ve hizmet kimliğinin kayn
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
 ```
 
-İstemci parolasını kullanarak hizmet sorumlusu olarak oturum açın. AZCOPY_SPA_CLIENT_SECRET ortam değişkenini gizli tabanlı hizmet sorumlusu kimlik doğrulaması için istemci parolası olarak ayarlayın.
+İstemci parolasını kullanarak hizmet sorumlusu olarak oturum açın. Ortam değişkenini gizli tabanlı hizmet sorumlusu kimlik doğrulaması için istemci parolası AZCOPY_SPA_CLIENT_SECRET ayarlayın.
 
 ```azcopy
 azcopy login --service-principal
 ```
 
-Bir sertifika ve parola kullanarak hizmet sorumlusu olarak oturum açın. AZCOPY_SPA_CERT_PASSWORD ortam değişkenini, sertifika tabanlı hizmet sorumlusu yetkilendirmesi için sertifikanın parolasıyla ayarlayın.
+Bir sertifika ve parola kullanarak hizmet sorumlusu olarak oturum açın. Ortam değişkenini sertifika tabanlı hizmet sorumlusu yetkilendirmesi için sertifikanın parolasıyla AZCOPY_SPA_CERT_PASSWORD ayarlayın.
 
 ```azcopy
 azcopy login --service-principal --certificate-path /path/to/my/cert

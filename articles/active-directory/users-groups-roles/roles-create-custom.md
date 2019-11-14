@@ -1,24 +1,24 @@
 ---
-title: Azure AD rol tabanlı erişim denetiminde özel bir rol oluşturma ve atama-Azure Active Directory | Microsoft Docs
+title: Azure AD rol tabanlı erişim denetiminde özel roller oluşturma | Microsoft Docs
 description: Azure Active Directory kaynaklarda kaynak kapsamıyla özel Azure AD rolleri oluşturun ve atayın.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1a5aee1be7580956c32947e9bda7e2928a006c3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026406"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025285"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory özel rol oluşturma ve atama
 
@@ -30,8 +30,8 @@ Bu makalede, Azure Active Directory (Azure AD) içinde yeni özel roller oluştu
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Uygulama kayıtlarını yönetmek için erişim izni vermek üzere yeni bir özel rol oluşturun
 
-1. Azure AD kuruluşunda, ayrıcalıklı rol yöneticisi veya genel yönetici izinlerine sahip [Azure AD Yönetim merkezi](https://aad.portal.azure.com)  ' de oturum açın.
-1. **Azure Active Directory** > **rol ve yönetici** > **Yeni özel rol**seçin.
+1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezi](https://aad.portal.azure.com) oturum açın.
+1. **Azure Active Directory** > **rolleri ve yöneticileri** **Yeni özel rol** > seçin.
 
    ![Roller ve yöneticiler sayfasından roller oluşturma veya düzenleme](./media/roles-create-custom/new-custom-role.png)
 
@@ -116,7 +116,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
     Özel bir rol tanımı oluşturmak için HTTP isteği.
 
-    Yayınla
+    POST
 
     ``` HTTP
     https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
@@ -145,7 +145,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
     Özel bir rol tanımı oluşturmak için HTTP isteği.
 
-    Yayınla
+    POST
 
     ``` HTTP
     https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments

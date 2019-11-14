@@ -1,25 +1,25 @@
 ---
-title: SaaS uygulamalarına erişimi yönetmek için bir grup kullanma-Azure Active Directory | Microsoft Docs
+title: SaaS uygulamalarına erişimi yönetmek için bir grup kullanma-Azure AD | Microsoft Docs
 description: Azure Active Directory ile tümleştirilmiş SaaS uygulamalarına erişim atamak için Azure Active Directory içindeki grupları kullanma.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75fdd0fcd4ceeeb0f680b2cbdb743d30d236c93d
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 51375f057543c86fe021822eb9722ffd1be16804
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736515"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026847"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>SaaS uygulamalarına erişimi yönetmek için grup kullanma
 

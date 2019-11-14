@@ -1,5 +1,5 @@
 ---
-title: Azure VM 'de SQL Server sürümünün yerinde yükseltmesini gerçekleştirme | Microsoft Docs
+title: SQL Server Edition 'ın yerinde yükseltmesi
 description: Azure 'da SQL Server VM sürümünü değiştirmeyi öğrenin.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/26/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eec2e588b1c2b03e9880dad0848b8213bf5fa449
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1db45097b0416b680571cb47ec1d9b52f9275c43
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100519"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022211"
 ---
 # <a name="perform-an-in-place-upgrade-of-a-sql-server-edition-on-an-azure-vm"></a>Azure VM 'de SQL Server sürümünün yerinde yükseltmesini gerçekleştirme
 
@@ -28,7 +29,7 @@ SQL Server sürümü ürün anahtarı tarafından belirlenir ve yükleme işlemi
 
 SQL VM kaynak sağlayıcısına kaydolduktan sonra yükleme medyasını kullanarak SQL Server sürümünü güncelleştirdiyseniz, Azure Faturalandırma 'yi uygun şekilde güncelleştirmek için, SQL VM kaynağının SQL Server sürümü özelliğini aşağıdaki gibi ayarlamanız gerekir:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. SQL Server sanal makine kaynağına gidin. 
 1. **Ayarlar**altında **Yapılandır**' ı seçin. Ardından, **Sürüm**' ün altındaki açılan listeden istediğiniz SQL Server sürümünüzü seçin. 
 

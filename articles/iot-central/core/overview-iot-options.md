@@ -9,22 +9,22 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: f57d36f6f24aab44d13ea07d8706bf40b7dcf552
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2ec6e1d00d331a7bb8dd7182dd4b0c91dd3d25a7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958164"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049084"
 ---
 # <a name="compare-azure-iot-central-and-azure-iot-options"></a>Azure IoT Central ile Azure IoT seçeneklerini karşılaştırma
 
 Microsoft Azure IoT Central ve Azure IoT, IoT çözümü oluşturmak için çeşitli seçenekler sunar. Bu seçenekler, farklı müşteri gereksinimleri kümesi için uygundur:
 
-* [Azure IoT Central](overview-iot-central.md) , bulut çözümü geliştirmede uzmanlığa gerek duymadan kurumsal düzeyde IoT çözümleri oluşturmanıza yardımcı olmak için model tabanlı bir yaklaşım kullanan bir hizmet olarak yazılım (SaaS) çözümüdür.
+* [Azure IoT Central](overview-iot-central.md) , bulut çözümü geliştirmede uzmanlığa gerek duymadan kurumsal düzeyde IoT çözümleri oluşturmanıza yardımcı olmak için model tabanlı bir yaklaşım kullanan IoT uygulama platformudur.
 
 * [Azure IoT Çözüm Hızlandırıcıları](https://docs.microsoft.com/azure/iot-accelerators/) , özel IoT çözümlerinin geliştirilmesini hızlandırmanıza yardımcı olan bir hizmet olarak Azure platformu (PaaS) üzerinde oluşturulmuş [çözüm hızlandırıcılarına](../../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) yönelik kurumsal düzeyde bir koleksiyondur.
 
-## <a name="azure-iot-hub"></a>Azure IoT Hub
+## <a name="azure-iot-hub"></a>Azure IoT Hub’ı
 
 Azure IoT Hub, hem Azure IoT Central hem de Azure IoT çözüm hızlandırıcılarının kullandığı temel Azure PaaS çözümüdür. IoT Hub Milyonlarca IoT cihazı ve bir bulut çözümü arasında güvenilir ve güvenli çift yönlü iletişimleri destekler. IoT Hub, şunun gibi IoT uygulama sorunlarını karşılamanıza yardımcı olur:
 
@@ -42,7 +42,7 @@ Aşağıdaki tabloda, gereksinimleriniz için doğru ürünü seçmenize yardım
 |     | Azure IoT Central | Azure IoT çözüm hızlandırıcıları |
 | --- | ----------- | --------- |
 | Birincil kullanım                      | Ayrıntılı hizmet özelleştirmesi gerektirmeyen basit IoT çözümleri için pazarlama süresini kısaltma.                                                    | En üst düzeyde esneklik gerektiren özel bir IoT çözümünün geliştirilmesini hızlandırma.                                                                                                                             |
-| Temel alınan PaaS hizmetlerine erişim | SaaS. Tam olarak yönetilen bir çözüm olduğundan, temel alınan hizmetler gösterilmez.                                                                                            | Temel alınan Azure hizmetlerini yönetmek veya gerektiğinde değiştirmek için bu hizmetlere erişebilirsiniz.                                                                                                                    |
+| Temel alınan PaaS hizmetlerine erişim | Tam olarak yönetilen bir çözüm olduğundan, temel alınan hizmetler gösterilmez.                                                                                            | Temel alınan Azure hizmetlerini yönetmek veya gerektiğinde değiştirmek için bu hizmetlere erişebilirsiniz.                                                                                                                    |
 | Esneklik                        | Orta. Yerleşik tarayıcı tabanlı kullanıcı deneyimini kullanarak çözüm modelini ve kullanıcı arabirimini farklı yönlerini özelleştirebilirsiniz. Farklı bileşenler gösterilmediğinden altyapı özelleştirilemez. | Yüksek. Mikro hizmetlerin kodu açık kaynaktır ve uygun gördüğünüz herhangi bir şekilde değiştirebilirsiniz. Ayrıca, dağıtım altyapısını özelleştirebilirsiniz.                                               |
 | Beceri düzeyi                        | Düşük. Çözümü özelleştirmek için modelleme becerileri gerekir. Hiçbir kodlama becerisi gerekli değildir.                                                                          | Orta yüksek. Çözümün arka ucunun özelleştirilmesi için Java veya .NET becerileri gerekir. Görselleştirmeyi özelleştirmek için JavaScript becerileri gerekir.                                                                       |
 | Başlangıç deneyimi             | Uygulama şablonları ve cihaz şablonları önceden oluşturulmuş modeller sağlar. Birkaç dakika içinde dağıtılabilir.                                                                                                  | Önceden yapılandırılmış çözümler yaygın IOT senaryolarını uygular. Birkaç dakika içinde dağıtılabilir.                                                                                                                            |

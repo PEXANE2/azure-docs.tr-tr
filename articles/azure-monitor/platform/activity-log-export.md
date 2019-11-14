@@ -8,14 +8,18 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 68bf455bbdfb6d2d45c5eccc60c3ad8ce40d3247
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 33302d7252c56badfed1dc7adea6a4f7cbf961b6
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515792"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048261"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure etkinlik günlüğünü depolamaya veya Azure Event Hubs dışarı aktarma
+
+> [!NOTE]
+> Artık, kaynak günlüklerini topladığınıza benzer bir tanılama ayarı kullanarak, etkinlik günlüğünü bir Log Analytics çalışma alanında toplayabilirsiniz. Bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplayın ve çözümleyin](activity-log-collect.md).
+
 [Azure etkinlik günlüğü](activity-logs-overview.md) , Azure aboneliğinizde oluşan abonelik düzeyi olaylar hakkında öngörüler sağlar. Etkinlik günlüğünü Azure portal görüntülemeye veya Azure Izleyici tarafından toplanan diğer verilerle çözümlenebileceği bir Log Analytics çalışma alanına kopyalamaya ek olarak, etkinlik günlüğü 'nü bir Azure depolama hesabına arşivlemek veya bir  Olay Hub 'ı.
 
 ## <a name="archive-activity-log"></a>Etkinlik günlüğünü Arşivle
@@ -55,9 +59,9 @@ Günlük profili aşağıdakileri tanımlar.
 
 **Hangi bölgeler (konumlar) içe aktarılmalıdır.** Etkinlik günlüğündeki çok sayıda olay genel olaylar olduğundan tüm konumları dahil etmelisiniz.
 
-**Etkinlik günlüğünün bir depolama hesabında tutulacağı süre.** Sıfır günlük bir bekletme, günlüklerin süresiz olarak saklanacağı anlamına gelir. Aksi takdirde, değer 1 ile 365 arasında herhangi bir sayıda gün olabilir.
+**Etkinlik günlüğünün bir depolama hesabında tutulacağı süre.** Bekletme günü sayısının sıfır günlükler süresiz olarak tutulur anlamına gelir. Aksi takdirde, değer 1 ile 365 arasında herhangi bir sayıda gün olabilir.
 
-Bekletme ilkeleri ayarlandıysa, ancak günlükleri bir depolama hesabında depolamak devre dışıysa, bekletme ilkelerinin hiçbir etkisi olmaz. Bekletme ilkeleri günde bir uygulanır. bu nedenle, günün sonunda, bekletme ilkesinin ötesinde gün içindeki Günlükler silinir. Örneğin, bir gün bekletme ilkeniz varsa, günün başlangıcında, bugünden önce günün günlükleri silinir. Silme işlemi gece yarısı UTC tarihinde başlar, ancak günlüklerin depolama hesabınızdan silinmesi 24 saate kadar sürebilir.
+Bekletme ilkeleri ayarlandıysa, ancak günlükleri bir depolama hesabında depolamak devre dışıysa, bekletme ilkelerinin hiçbir etkisi olmaz. Bekletme ilkeleri uygulanan günlük, olduğundan, bir günün (UTC), şu anda sonra saklama günü günlüklerinden sonunda İlkesi silindi. Örneğin, bir günlük bir bekletme ilkesi olsaydı, bugün günün başında dünden önceki gün kayıtları silinir. Gece yarısı UTC, ancak bu günlükleri depolama hesabınızdan silinecek 24 saate kadar sürebilir not silme işlemi başlar.
 
 
 > [!IMPORTANT]
@@ -107,14 +111,14 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmalı v
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Özellik | Gereklidir | Açıklama |
+    | Özellik | Gerekli | Açıklama |
     | --- | --- | --- |
-    | Adı |Yes |Günlük profilinizin adı. |
-    | Storageaccountıd |Hayır |Etkinlik günlüğünün kaydedilmesi gereken depolama hesabının kaynak KIMLIĞI. |
-    | Servicebusruleıd |Hayır |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimdeki bir dizedir: `{service bus resource ID}/authorizationrules/{key name}`. |
+    | Ad |Yes |Günlük profilinizin adı. |
+    | StorageAccountId |Hayır |Etkinlik günlüğünün kaydedilmesi gereken depolama hesabının kaynak KIMLIĞI. |
+    | serviceBusRuleId |Hayır |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimdeki bir dizedir: `{service bus resource ID}/authorizationrules/{key name}`. |
     | Konum |Yes |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin virgülle ayrılmış listesi. |
     | Retentionındays |Yes |Depolama hesabında olayların saklanacağı gün sayısı (1 ile 365 arasında). Sıfır değeri, günlükleri süresiz olarak depolar. |
-    | Kategori |Hayır |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _yazma_, _silme_ve _eylem_. |
+    | Kategori |Hayır |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _Write_, _Delete_, and _Action_. |
 
 ### <a name="example-script"></a>Örnek betik
 Aşağıda, etkinlik günlüğünü hem depolama hesabına hem de Olay Hub 'ına yazan bir günlük profili oluşturmak için örnek bir PowerShell betiği verilmiştir.
@@ -150,13 +154,13 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmanız 
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Özellik | Gereklidir | Açıklama |
+    | Özellik | Gerekli | Açıklama |
     | --- | --- | --- |
     | ad |Yes |Günlük profilinizin adı. |
-    | depolama hesabı-kimliği |Yes |Etkinlik günlüklerinin kaydedileceği depolama hesabının kaynak KIMLIĞI. |
-    | yerlerini |Yes |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin boşlukla ayrılmış listesi. @No__t_0 kullanarak aboneliğiniz için tüm bölgelerin bir listesini görüntüleyebilirsiniz. |
-    | miş |Yes |Olayların saklanacağı gün sayısı, 1 ile 365 arasında. Sıfır değeri günlükleri süresiz olarak depolar (süresiz).  Sıfır ise, etkin parametre false olarak ayarlanmalıdır. |
-    |etkinletir | Yes |True veya false.  Bekletme ilkesini etkinleştirmek veya devre dışı bırakmak için kullanılır.  True ise Days parametresi 0 ' dan büyük bir değer olmalıdır.
+    | storage-account-id |Yes |Etkinlik günlüklerinin kaydedileceği depolama hesabının kaynak KIMLIĞI. |
+    | locations |Yes |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin boşlukla ayrılmış listesi. `az account list-locations --query [].name`kullanarak aboneliğiniz için tüm bölgelerin bir listesini görüntüleyebilirsiniz. |
+    | days |Yes |Olayların saklanacağı gün sayısı, 1 ile 365 arasında. Sıfır değeri günlükleri süresiz olarak depolar (süresiz).  Sıfır ise, etkin parametre false olarak ayarlanmalıdır. |
+    |enabled | Yes |TRUE veya False.  Bekletme ilkesini etkinleştirmek veya devre dışı bırakmak için kullanılır.  True ise Days parametresi 0 ' dan büyük bir değer olmalıdır.
     | kategoriler |Yes |Toplanması gereken olay kategorilerinin boşlukla ayrılmış listesi. Olası değerler yazma, silme ve eylem. |
 
 
@@ -232,12 +236,12 @@ Bu JSON 'daki öğeler aşağıdaki tabloda açıklanmıştır.
 | category |Eylemin kategorisi, örn. Yazma, okuma, eylem. |
 | resultType |Sonucun türü, örn. Başarılı, başarısız, başlangıç |
 | resultSignature |Kaynak türüne bağlıdır. |
-| durationMs |İşlem süresi (milisaniye) |
+| durationMs |Milisaniye cinsinden işlem süresi |
 | callerIpAddress |Kullanılabilirliği temel alarak işlemi, UPN talebini veya SPN talebini gerçekleştiren kullanıcının IP adresi. |
 | correlationId |Genellikle dize biçimindeki bir GUID. Bir CorrelationId 'yi paylaşan olaylar aynı Uber eylemine aittir. |
-| kimlik |Yetkilendirmeyi ve talepleri açıklayan JSON blobu. |
-| Yetkisi |Etkinliğin RBAC özelliklerinin blobu. Genellikle "Action", "role" ve "scope" özelliklerini içerir. |
-| düzeyde |Etkinliğin düzeyi. Şu değerlerden biri: _kritik_, _hata_, _Uyarı_, _bilgilendirici_ve _ayrıntılı_ |
+| identity |Yetkilendirmeyi ve talepleri açıklayan JSON blobu. |
+| authorization |Etkinliğin RBAC özelliklerinin blobu. Genellikle "Action", "role" ve "scope" özelliklerini içerir. |
+| düzey |Etkinliğin düzeyi. Şu değerlerden biri: _kritik_, _hata_, _Uyarı_, _bilgilendirici_ve _ayrıntılı_ |
 | location |Konumun gerçekleştiği bölge (veya genel). |
 | properties |Olayın ayrıntılarını açıklayan `<Key, Value>` çiftleri (yani sözlük) kümesi. |
 

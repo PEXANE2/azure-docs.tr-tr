@@ -1,6 +1,6 @@
 ---
-title: Bölgesel olarak yedekli ön uç Azure PowerShell Load Balancer oluşturma
-titlesuffix: Azure Load Balancer
+title: Bölgesel olarak yedekli ön uç Azure PowerShell yük dengeleyici oluşturma
+titleSuffix: Azure Load Balancer
 description: PowerShell kullanarak bölge yedekli genel IP adresi ön ucu ile Genel Standart Load Balancer oluşturma hakkında bilgi edinin
 services: load-balancer
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 3ce14a0d9d5b9d5ef7ca7be34faad3fa60795ab9
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4f7cf5c7600a057a913be28ff4b2a44b241e6be5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275099"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049199"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>Azure PowerShell ile bölgesel olarak yedekli ön uç ile standart yük dengeleyici oluşturma
 

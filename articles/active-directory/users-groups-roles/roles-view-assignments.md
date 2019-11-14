@@ -1,24 +1,24 @@
 ---
-title: Yönetim merkezinde yönetici rolü izinlerini görüntüleme-Azure Active Directory | Microsoft Docs
+title: Azure AD portalındaki özel rol atamalarını görüntüleme | Microsoft Docs
 description: Artık Azure AD Yönetim merkezinde bir Azure AD yönetici rolünün üyelerini görebilir ve yönetebilirsiniz.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbe3b0218b73649d40f27d17ee2c7de2853c6b7c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d989a515a1a3c1dc12ca357a3ab2126e78800ffa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025542"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024429"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Azure Active Directory özel rol atamalarını görüntüleme
 
@@ -31,7 +31,7 @@ Bu makalede, Azure Active Directory (Azure AD) ' de atadığınız özel rolleri
 
 Bu yordam, bir rolün kurumsal çapta kapsama sahip atamalarını görüntülemeyi açıklar.
 
-1. Azure AD kuruluşunda, ayrıcalıklı rol yöneticisi veya genel yönetici izinlerine sahip [Azure AD Yönetim merkezi](https://aad.portal.azure.com)  ' de oturum açın.
+1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezi](https://aad.portal.azure.com) oturum açın.
 1. **Azure Active Directory**seçin, **Roller ve yöneticiler**' i seçin ve ardından bu rolü açmak ve özelliklerini görüntülemek için bir rol seçin.
 1. Rolün atamalarını görüntülemek için **atamalar** ' ı seçin.
 
@@ -104,7 +104,7 @@ HTTP/1.1 200 OK
 
 Bu bölümde, tek uygulama kapsamıyla bir rolün atamalarının görüntülenmesi açıklanmaktadır. Bu özellik şu anda genel önizleme aşamasındadır.
 
-1. Azure AD kuruluşunda, ayrıcalıklı rol yöneticisi veya genel yönetici izinlerine sahip [Azure AD Yönetim merkezi](https://aad.portal.azure.com)  ' de oturum açın.
+1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezi](https://aad.portal.azure.com) oturum açın.
 1. **Uygulama kayıtları**' yi seçin ve ardından özelliklerini görüntülemek için uygulama kaydını seçin. Azure AD kuruluşunuzda uygulama kayıtlarının tüm listesini görmek için **tüm uygulamalar** ' ı seçmeniz gerekebilir.
 
     ![Uygulama kayıtları sayfasından uygulama kayıtları oluşturma veya düzenleme](./media/roles-create-custom/appreg-all-apps.png)

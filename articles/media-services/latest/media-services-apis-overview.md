@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 0c263e1353a07ca388ea9a7fb48ebcf99be07fc1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 79f1bd95451709485f92050a882c790f9e281eb5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820630"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049024"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Media Services v3 API 'Leri ile geliştirme
 
@@ -112,7 +112,7 @@ Uzun bir işlemin başarıyla gönderilmesi için bir ' 202 kabul edildi ' ve d�
 
 Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzun süreli bir işlem desteklenir. Başlatıldıktan sonra, uzun süre çalışan bir işlem, aynı LiveEvent veya ilgili canlı çıkışlar üzerinde sonraki uzun süreli bir işlem başlatmadan önce tamamlanmalıdır. Birden çok canlı çıkışı olan canlı olaylar için, başka bir canlı çıkışta uzun süre çalışan bir işlemi tetiklemeden önce, bir canlı çıkışta uzun süre çalışan bir işlemin tamamlanmasını beklemiş olmanız gerekir. 
 
-## <a name="sdks"></a>SDK'lar
+## <a name="sdks"></a>SDK’lar
 
 > [!NOTE]
 > Azure Media Services v3 SDK 'larının iş parçacığı açısından güvenli olması garanti edilmez. Çok iş parçacıklı bir uygulama geliştirirken, istemciyi korumak için kendi iş parçacığı eşitleme mantığınızı eklemeniz veya iş parçacığı başına yeni bir Azudüzeltici Istemci nesnesi kullanmanız gerekir. Ayrıca, kodunuzun istemciye (.NET 'teki bir HttpClient örneği gibi) sağlanan isteğe bağlı nesneler tarafından sunulan çoklu iş parçacığı oluşturma sorunlarından de dikkatli olmanız gerekir.
@@ -122,7 +122,7 @@ Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzu
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET başvurusu](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java başvurusu](https://aka.ms/ams-v3-java-ref)|
 |[Python SDK'sı](https://aka.ms/ams-v3-python-sdk)|[Python başvurusu](https://aka.ms/ams-v3-python-ref)|
-|[Node.js SDK’sı](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js başvurusu](https://aka.ms/ams-v3-nodejs-ref)| 
+|[Node.js SDK’sı](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js başvurusu](/javascript/api/overview/azure/mediaservices/management)| 
 |[Go SDK'sı](https://aka.ms/ams-v3-go-sdk) |[Go başvurusu](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 

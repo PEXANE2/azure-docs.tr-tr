@@ -8,20 +8,22 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: 17252f6544ee56647315dc44ace4db3e3abe9726
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/13/2019
+ms.openlocfilehash: 4aab699ff0141b648066fae0de445c4467be7509
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821883"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048386"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure Hibrit Avantajı
 
-Sanal çekirdek tabanlı satın alma modelinin sağlanan işlem katmanında, [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak SQL veritabanı 'nda indirimli ücretler için mevcut lisanslarınızı Exchange 'e dönüştürebilirsiniz. Bu Azure avantajı, Yazılım Güvencesi kapsamındaki şirket içi SQL Server lisanslarınızı kullanarak Azure SQL veritabanında yüzde 30 ' a varan tasarruf etmenize olanak tanır.
+Sanal çekirdek tabanlı satın alma modelinin sağlanan işlem katmanında, [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak SQL veritabanı 'nda indirimli ücretler için mevcut lisanslarınızı Exchange 'e dönüştürebilirsiniz. Bu Azure avantajı, Yazılım Güvencesi kapsamındaki şirket içi SQL Server lisanslarınızı kullanarak Azure SQL veritabanında yüzde 30 ' a varan tasarruf etmenize olanak tanır. 
+
+> [!NOTE]
+> Azure Hibrit Avantajı değiştirmek için kapalı kalma süresi gerekmez.
 
 ![Fiyat](./media/sql-database-service-tiers/pricing.png)
-
 
 ## <a name="choose-a-license-model"></a>Bir lisans modeli seçin
 
@@ -49,8 +51,6 @@ Azure portal kullanarak veya aşağıdaki API 'lerden birini kullanarak lisansla
   - [Veritabanları-Güncelleştir](https://docs.microsoft.com/rest/api/sql/databases/update)
   - [Yönetilen örnekler-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
   - [Yönetilen örnekler-güncelleştirme](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

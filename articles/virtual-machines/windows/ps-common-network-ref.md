@@ -1,5 +1,5 @@
 ---
-title: Azure sanal ağları için ortak PowerShell komutları | Microsoft Docs
+title: Azure sanal ağları için ortak PowerShell komutları
 description: VM 'Ler için bir sanal ağ ve ilişkili kaynakları oluşturmaya başlamanızı sağlamak için ortak PowerShell komutları.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: d7ab705291b8705994aed96f1d270f792e4b2fb0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3abde706ddff297094c7fbb1579b534894b349d2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102533"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032925"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure sanal ağları için ortak PowerShell komutları
 
@@ -45,7 +45,7 @@ Bazı değişkenler, bu makaledeki komutlardan birden fazlasını çalıştırı
 | Araştırma oluşturma |$healthProbe = [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) -Name "myaraştırması"-RequestPath ' healtharaştırması. aspx '-protokol http-port 80-ıntervalınseconds 15-probecount 2<BR><BR>Arka uç adres havuzundaki sanal makine örneklerinin kullanılabilirliğini kontrol etmek için kullanılan durum araştırmalarını içerir. |
 | Yük Dengeleme kuralı oluşturma |$lbRule = [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) -Name http-Frontendıpconfiguration $FrontendIP-BackendAddressPool $BeAddressPool-araştırma $HealthProbe-protokol TCP-frontendport 80-BackendPort 80<BR><BR>Yük dengeleyicide, arka uç adres havuzundaki bir bağlantı noktasına ortak bir bağlantı noktası atayan kuralları içerir. |
 | Gelen NAT kuralı oluşturma |$inboundNATRule = [New-Azloadbalancerınboundnatrutaconfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) -Name "myInboundRule1"-Frontendıpconfiguration $FrontendIP-protokol TCP-frontendport 3441-BackendPort 3389<BR><BR>Yük dengeleyicideki genel bağlantı noktasını arka uç adres havuzundaki belirli bir sanal makineye yönelik bağlantı noktasına eşleyen kuralları içerir. |
-| Yük dengeleyici oluşturma |$loadBalancer = [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) -resourcegroupname $MyResourceGroup-adı "myloadbalancer"-Location $Location-Frontendıconfiguration $FrontendIP-ınboundnatrule $InboundNATRule-LoadBalancingRule $LbRule-Backendadddresspool $ beAddressPool-araştırma $healthProbe |
+| Yük dengeleyici oluşturma |$loadBalancer = [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) -resourcegroupname $MyResourceGroup-adı "myloadbalancer"-Location $Location-Frontendıconfiguration $FrontendIP-ınboundnatrule $InboundNATRule-LoadBalancingRule $LbRule-BackendAddressPool $BeAddressPool-araştırma $healthProbe |
 | Ağ arabirimi oluşturma |$nic 1 = [New-Aznetworkınterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) -resourcegroupname $MyResourceGroup-Name "MYNIC"-Location $Location-PRIVATEıPADDRESS xx. X. X. X-subnet $subnet 2-Loadbalancerbackendadddresspool $loadBalancer. Backennabir $loadBalancer. ınboundnatrules [0]<BR><BR>Daha önce oluşturduğunuz genel IP adresini ve sanal ağ alt ağını kullanarak bir ağ arabirimi oluşturun. |
 
 ## <a name="get-information-about-network-resources"></a>Ağ kaynakları hakkında bilgi alın

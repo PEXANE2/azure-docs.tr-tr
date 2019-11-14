@@ -7,18 +7,21 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 02/06/2019
-ms.openlocfilehash: 98e256dbdc6993ee1aeb8e2ac26809ef849edb91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b11671f20a7e3e6053f90a884777b31196232a38
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932904"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048301"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants"></a>Azure etkinlik günlüklerini Azure Active Directory kiracılar genelinde Azure Izleyici 'ye toplayın
 
+> [!NOTE]
+> Artık, kaynak günlüklerini topladığınıza benzer bir tanılama ayarı kullanarak, etkinlik günlüğünü bir Log Analytics çalışma alanında toplayabilirsiniz. Bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplayın ve çözümleyin](activity-log-collect.md).
+
 Bu makalede, Logic Apps için Azure Log Analytics veri toplayıcı Bağlayıcısı 'nı kullanarak Azure Izleyici 'deki bir Log Analytics çalışma alanında Azure etkinlik günlüklerini toplamak için bir yöntem adımları açıklanır. Farklı bir Azure Active Directory kiracısındaki bir çalışma alanına Günlükler göndermeniz gerektiğinde bu makaledeki işlemi kullanın. Örneğin yönetilen bir servis sağlayıcısıysanız, müşterinin aboneliğinden etkinlik günlüklerini toplamak ve bunları kendi aboneliğinizdeki bir Log Analytics çalışma alanında depolamak isteyebilirsiniz.
 
-Log Analytics çalışma alanı aynı Azure aboneliğinde veya farklı bir abonelikte, ancak aynı Azure Active Directory, Azure 'u toplamak için Azure [izleyici 'de Azure etkinlik Log Analytics günlüklerini toplayın ve çözümleyin](activity-log-collect.md) bölümündeki adımları kullanın Etkinlik günlükleri.
+Log Analytics çalışma alanı aynı Azure aboneliğinde veya farklı bir abonelikte ancak aynı Azure Active Directory, Azure etkinlik günlüklerini toplamak için Azure [izleyici 'de Azure etkinlik Log Analytics günlüklerini toplayın ve çözümleyin](activity-log-collect.md) bölümündeki adımları kullanın.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -52,7 +55,7 @@ Aşağıda bu senaryoda kullanılan Azure kaynaklarıyla ilgili gereksinimler ve
 
    ![Market yeni olay hub'ı](media/collect-activity-logs-subscriptions/marketplace-new-event-hub.png)
 
-3. **Ad alanı oluştur**'un altında, yeni ad alanı girin veya mevcut bir ad alanını seçin. Adın kullanılabilirliği sistem tarafından hemen denetlenir.
+3. **Ad alanı oluştur**'un altında, yeni ad alanı girin veya mevcut bir ad alanını seçin. Adın kullanılabilirliği sistem tarafından hemen kontrol edilir.
 
    ![olay hub'ı oluştur iletişim kutusunun resmi](media/collect-activity-logs-subscriptions/create-event-hub1.png)
 
@@ -123,7 +126,7 @@ Olay Hub'ı adını ve bağlantı dizesini almak için, [Event Hubs ad alanı iz
 
    |Ayar | Açıklama  |
    |:---|:---|
-   | Adı           | Mantıksal uygulamanın benzersiz adı. |
+   | Ad           | Mantıksal uygulamanın benzersiz adı. |
    | Abonelik   | Mantıksal uygulamayı içerecek olan Azure aboneliğini seçin. |
    | Kaynak Grubu | Mantıksal uygulama için var olan bir Azure kaynak grubunu seçin veya yeni grup oluşturun. |
    | Konum       | Mantıksal uygulamanızın dağıtılacağı veri merkezi bölgesini seçin. |
@@ -288,7 +291,7 @@ Olay Hub'ından gelen çıkış bir JSON yükü ve bir kayıt dizisi içerir. [J
 
    ![logic apps'e log analytics veri gönder eylemini ekleme](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. Bağlantınız için bir ad girin ve Log Analytics çalışma alanınızın **Çalışma Alanı Kimliği**'ni ve **Çalışma Alanı Anahtarı**'nı yapıştırın.  **Oluştur**’a tıklayın.
+3. Bağlantınız için bir ad girin ve Log Analytics çalışma alanınızın **Çalışma Alanı Kimliği**'ni ve **Çalışma Alanı Anahtarı**'nı yapıştırın.  **Oluştur**’ tıklayın.
 
    ![logic apps'e log analytics bağlantısını ekleme](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 

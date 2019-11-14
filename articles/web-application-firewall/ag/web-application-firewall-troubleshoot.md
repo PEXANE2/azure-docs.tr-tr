@@ -1,18 +1,18 @@
 ---
-title: Azure Application Gateway Web uygulaması güvenlik duvarı sorunlarını giderme
+title: Sorun giderme-Azure Web uygulaması güvenlik duvarı
 description: Bu makalede, Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) için sorun giderme bilgileri sağlanmaktadır
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/22/2019
+ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: fff50417bd7944e125ce1d7c1e1ae52ec22f806f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516571"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046186"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) sorunlarını giderme
 
@@ -148,7 +148,7 @@ Yanlış olumlu işleme hakkında bilinçli bir karar vermek için, uygulamanız
 
 Dışlama listesi kullanmanın bir avantajı, isteğin yalnızca belirli bir bölümünün devre dışı bırakılmakta olmasından biridir. Bununla birlikte, bu, belirli bir dışlamanın, bir genel ayar olduğu için WAF 'niz üzerinden geçen tüm trafik için geçerli olduğu anlamına gelir. Örneğin, bu, *1 = 1* ' in gövdede belirli bir uygulama için geçerli bir istek olması, ancak diğerleri için değil, bir soruna neden olabilir. Bu, tüm isteği dışlamamak yerine belirli bir koşul karşılanırsa, gövde, üst bilgiler ve tanımlama bilgileri arasında seçim yapabileceğiniz bir avantajdır.
 
-Bazen, belirli parametrelerin WAF 'ye, sezgisel olmayan bir şekilde geçirilme durumları vardır. Örneğin, Azure Active Directory kullanılarak kimlik doğrulanırken geçirilen bir belirteç vardır. Bu belirteç, *__Requestdoğrulamaları ıationtoken*, genellikle Istek tanımlama bilgisi olarak geçirilir. Ancak, tanımlama bilgilerinin devre dışı bırakıldığı bazı durumlarda, bu belirteç istek özniteliği veya "arg" olarak da geçirilir. Bu durumda, *__Requestdoğrulamaları Icationtoken* öğesinin dışlama listesine bir **istek özniteliği adı** olarak eklendiğinden emin olmanız gerekir.
+Bazen, belirli parametrelerin WAF 'ye, sezgisel olmayan bir şekilde geçirilme durumları vardır. Örneğin, Azure Active Directory kullanılarak kimlik doğrulanırken geçirilen bir belirteç vardır. Bu belirteç *__RequestVerificationToken*, genellikle Istek tanımlama bilgisi olarak geçirilir. Ancak, tanımlama bilgilerinin devre dışı bırakıldığı bazı durumlarda, bu belirteç istek özniteliği veya "arg" olarak da geçirilir. Bu durumda, *__RequestVerificationToken* dışlama listesine bir **istek özniteliği adı** olarak da eklendiğinden emin olmanız gerekir.
 
 ![İstisnalar](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 

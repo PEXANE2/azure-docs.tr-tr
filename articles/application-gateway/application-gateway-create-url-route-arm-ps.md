@@ -1,18 +1,19 @@
 ---
-title: URL yolu tabanlı yönlendirme kurallarıyla uygulama ağ geçidi oluşturma-Azure PowerShell | Microsoft Docs
+title: PowerShell kullanarak URL yolu tabanlı yönlendirme kuralları
+titleSuffix: Azure Application Gateway
 description: Azure PowerShell kullanarak bir uygulama ağ geçidi ve sanal makine ölçek kümesi için URL yol tabanlı yönlendirme kuralları oluşturma hakkında bilgi edinin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ebe09e2c10bed1779d9189755f66bbea9bca1d43
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: e7934ba0b33bff7ffb8e89e7b56c5b998a232289
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306264"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048045"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Azure PowerShell kullanarak URL yol tabanlı yönlendirme kuralları ile uygulama ağ geçidi oluşturma
 
@@ -255,7 +256,7 @@ Add-AzApplicationGatewayRequestRoutingRule `
 Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Sanal makine ölçek kümelerini oluşturma
+## <a name="create-virtual-machine-scale-sets"></a>Sanal makine ölçek kümesi oluşturma
 
 Bu örnekte, oluşturduğunuz üç arka uç havuzunu destekleyen üç sanal makine ölçek kümesi oluşturacaksınız. Oluşturduğunuz ölçek kümeleri *myvmss1*, *myvmss2* ve *myvmss3* olarak adlandırılır. Her bir ölçek kümesi IIS yükleyeceğiniz iki sanal makine örneği içerir. IP ayarlarını yapılandırırken ölçek kümesini arka uç havuzuna atayın.
 
@@ -345,7 +346,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanabilirsiniz. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. ,,, Veya`http://52.168.55.24:8080/video/test.htm`gibi. `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm`
+Uygulama ağ geçidinin genel IP adresini almak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanabilirsiniz. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Örneğin, `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`veya `http://52.168.55.24:8080/video/test.htm`.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -353,11 +354,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Temel URL’yi uygulama ağ geçidinde test etme](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-URL 'sini olarak `http://<ip-address>:8080/video/test.htm`değiştirin, IP `<ip-address>`adresinizi yerine, aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+URL 'YI, `<ip-address>`için IP adresiniz yerine `http://<ip-address>:8080/video/test.htm`olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
 ![Görüntü URL’sini uygulama ağ geçidinde test etme](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
-URL 'yi olarak `http://<ip-address>:8080/video/test.htm` değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+URL 'YI `http://<ip-address>:8080/video/test.htm` değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
 ![Video URL’sini uygulama ağ geçidinde test etme](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 

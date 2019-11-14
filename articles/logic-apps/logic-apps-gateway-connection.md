@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 356eab6122272162f20e1516a9ef7f4ea0127084
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796261"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049061"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps şirket içi veri kaynaklarına bağlanma
 
@@ -28,7 +28,7 @@ Bu makalede, [yerel bilgisayarınızda daha önce yüklenmiş bir ağ geçidi](.
 Ağ geçidini diğer hizmetlerle kullanma hakkında daha fazla bilgi için şu makalelere bakın:
 
 * [Microsoft Power BI şirket içi veri ağ geçidi](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Şirket içi veri ağ geçidini güç otomatikleştirme](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Şirket içi veri ağ geçidini güç otomatikleştirme](/power-automate/gateway-reference)
 * [Microsoft Power Apps şirket içi veri ağ geçidi](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Şirket içi veri ağ geçidini Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
 
@@ -53,7 +53,7 @@ Azure Logic Apps, şirket içi veri ağ geçidi, bu veri kaynakları için şirk
 
 Azure Logic Apps, veri ağ geçidi aracılığıyla okuma ve yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)vardır. Ağ geçidinin kendisi ek maliyet gerçekleştirmese de, [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) bu bağlayıcılar ve Azure Logic Apps diğer işlemler için geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Şirket [içi veri ağ geçidini zaten yerel bir bilgisayara yüklediniz](../logic-apps/logic-apps-gateway-install.md).
 

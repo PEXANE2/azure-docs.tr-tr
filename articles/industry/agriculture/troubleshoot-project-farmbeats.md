@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ab0d3aac6944e331223d91eb98b50b3308be12c3
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 567110b2e0429930720abf6af5f2727e4ad9d3bb
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797640"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048269"
 ---
 # <a name="troubleshooting"></a>Sorun giderme
 
@@ -84,7 +84,7 @@ Bir cihaz silinirken yaygın olarak karşılaşılan hata senaryolarından bazı
 
 ## <a name="accelerator-troubleshooting"></a>Hızlandırıcı sorunlarını giderme
 
-### <a name="access-control"></a>Access Control
+### <a name="access-control"></a>Erişim Denetimi
 
 **Rol ataması eklenirken hata oluştu**
 
@@ -251,7 +251,7 @@ Kaynak grubu panosunda (datahublogs....) depolama hesabı ' nı arayın. Örneğ
 
 **Anlamı**: Azure AD uygulama kayıt yapılandırması düzgün şekilde gerçekleşmedi.  
 
-**Düzeltici eylem**: Azure AD uygulama kaydı oluşturma işlemini oluşturmak için kendi [betiğimizi](https://aka.ms/PPCreateAADappregistration) kullanmak üzere BT yöneticinize (kiracı okuma erişimi olan) sorun. Bu komut dosyası yapılandırma adımlarında da otomatik olarak ele alınacaktır. gerektiği  
+**Düzeltici eylem**: Azure AD uygulama kaydı oluşturma işlemini oluşturmak için kendi [betiğimizi](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) kullanmak üzere BT yöneticinize (kiracı okuma erişimi olan) sorun. Bu komut dosyası yapılandırma adımlarında da otomatik olarak ele alınacaktır.
 
 **Hata**: yeni Active Directory "Dummyname" uygulaması bu kiracıda oluşturulamıyor: özellik tanımlayıcısı URI 'leri için aynı değere sahip başka bir nesne zaten var
 

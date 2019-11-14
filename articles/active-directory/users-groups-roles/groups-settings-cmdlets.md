@@ -1,34 +1,34 @@
 ---
-title: PowerShell kullanarak Grup ayarlarını yapılandırma-Azure Active Directory | Microsoft Docs
+title: PowerShell kullanarak Grup ayarlarını yapılandırma-Azure AD | Microsoft Docs
 description: Azure Active Directory cmdlet 'lerini kullanarak grupların ayarlarını yönetme
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18fbaad8ce15ab4eb9a08d5edc273098e7fb372e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 6a1b900d4a67390ae867d770c3b984c43fd501b5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263969"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026749"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri
-Bu makale, grupları oluşturmak ve güncelleştirmek için Azure Active Directory (Azure AD) PowerShell cmdlet 'lerini kullanmaya yönelik yönergeler içerir. Bu içerik yalnızca Office 365 grupları için geçerlidir (bazen birleştirilmiş gruplar olarak adlandırılır). 
+
+Bu makale, grupları oluşturmak ve güncelleştirmek için Azure Active Directory (Azure AD) PowerShell cmdlet 'lerini kullanmaya yönelik yönergeler içerir. Bu içerik yalnızca Office 365 grupları için geçerlidir (bazen birleştirilmiş gruplar olarak adlandırılır).
 
 > [!IMPORTANT]
 > Bazı ayarlarda Azure Active Directory Premium P1 lisansı gerekir. Daha fazla bilgi için [şablon ayarları](#template-settings) tablosuna bakın.
 
-Yönetici olmayan kullanıcıların güvenlik grupları oluşturmasını engelleme hakkında daha fazla bilgi için, [set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)bölümünde açıklandığı gibi @ no__t-0 ayarını yapın.
+Yönetici olmayan kullanıcıların güvenlik grupları oluşturmasını engelleme hakkında daha fazla bilgi için, [set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)bölümünde açıklandığı gibi `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` ayarlayın.
 
 Office 365 grupları ayarları, bir ayarlar nesnesi ve bir SettingsTemplate nesnesi kullanılarak yapılandırılır. İlk olarak, dizininiz varsayılan ayarlarla yapılandırıldığından, dizininizde herhangi bir ayar nesnesi görmezsiniz. Varsayılan ayarları değiştirmek için, bir ayarlar şablonu kullanarak yeni bir ayar nesnesi oluşturmanız gerekir. Ayarlar şablonları Microsoft tarafından tanımlanır. Birçok farklı ayar şablonu vardır. Dizininizde Office 365 grup ayarlarını yapılandırmak için "Group. Unified" adlı şablonu kullanın. Tek bir grupta Office 365 grup ayarlarını yapılandırmak için, "Group. Unified. Guest" adlı şablonu kullanın. Bu şablon, bir Office 365 grubuna konuk erişimini yönetmek için kullanılır. 
 
@@ -113,14 +113,14 @@ Burada, Group. Unified SettingsTemplate içinde tanımlanan ayarlar verilmiştir
 
 | **Ayar** | **Açıklama** |
 | --- | --- |
-|  <ul><li>Enablegroupoluşturma<li>Tür: Boolean<li>Varsayılan: true |Yönetici olmayan kullanıcılar tarafından, dizinde Office 365 Grup oluşturmaya izin verilip verilmeyeceğini belirten bayrak. Bu ayar Azure Active Directory Premium P1 lisansı gerektirmez.|
-|  <ul><li>Groupcreationallowedgroupıd<li>Türü: Dize<li>Varsayılan: "" |Enablegroupcreate = = false olduğunda bile üyelerin Office 365 grupları oluşturmalarına izin verilen güvenlik grubunun GUID 'SI. |
+|  <ul><li>EnableGroupCreation<li>Tür: Boolean<li>Varsayılan: true |Yönetici olmayan kullanıcılar tarafından, dizinde Office 365 Grup oluşturmaya izin verilip verilmeyeceğini belirten bayrak. Bu ayar Azure Active Directory Premium P1 lisansı gerektirmez.|
+|  <ul><li>GroupCreationAllowedGroupId<li>Türü: Dize<li>Varsayılan: "" |Enablegroupcreate = = false olduğunda bile üyelerin Office 365 grupları oluşturmalarına izin verilen güvenlik grubunun GUID 'SI. |
 |  <ul><li>Usagekılavuz Linesurl 'Si<li>Türü: Dize<li>Varsayılan: "" |Grup kullanım yönergelerine bir bağlantı. |
 |  <ul><li>ClassificationDescriptions<li>Türü: Dize<li>Varsayılan: "" | Sınıflandırma açıklamalarının virgülle ayrılmış listesi. ClassificationDescriptions değeri yalnızca bu biçimde geçerlidir:<br>$setting ["ClassificationDescriptions"] = "sınıflandırma: Açıklama, sınıflandırma: Açıklama"<br>Burada sınıflandırma, ClassificationList dizeler ile eşleşir.|
 |  <ul><li>DefaultClassification<li>Türü: Dize<li>Varsayılan: "" | Hiçbiri belirtilmemişse, bir grup için varsayılan sınıflandırma olarak kullanılacak sınıflandırma.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Türü: Dize<li>Varsayılan: "" | Office 365 grupları için yapılandırılmış adlandırma kuralını tanımlayan en fazla 64 karakter uzunluğunda bir dize. Daha fazla bilgi için bkz. [Office 365 grupları için adlandırma Ilkesi zorlama](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Türü: Dize<li>Varsayılan: "" | Kullanıcıların Grup adlarında veya diğer adlarla kullanmasına izin verilmeyen, virgülle ayrılmış deyimlerin dizesi. Daha fazla bilgi için bkz. [Office 365 grupları için adlandırma Ilkesi zorlama](groups-naming-policy.md). |
-| <ul><li>EnableMSStandardBlockedWords<li>Tür: Boolean<li>Varsayılan: "false" | Kullanma
+| <ul><li>EnableMSStandardBlockedWords<li>Tür: Boolean<li>Varsayılan: "false" | Kullanmayın
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Tür: Boolean<li>Varsayılan: false | Konuk kullanıcının grupların sahibi olup olmayacağını gösteren Boolean. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Tür: Boolean<li>Varsayılan: true | Konuk kullanıcının Office 365 grupları içeriğine erişip erişemeyeceğini gösteren Boolean.  Bu ayar Azure Active Directory Premium P1 lisansı gerektirmez.|
 |  <ul><li>Guestusagekılavuz Linesurl 'Si<li>Türü: Dize<li>Varsayılan: "" | Konuk kullanım yönergelerine bir bağlantının URL 'si. |

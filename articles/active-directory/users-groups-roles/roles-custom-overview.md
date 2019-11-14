@@ -1,24 +1,24 @@
 ---
-title: Özelleştirilebilir izinlerle Azure yönetici rollerini önizleyin-Azure Active Directory | Microsoft Docs
+title: Azure Active Directory 'de özel yönetici rolleri | Microsoft Docs
 description: Kimlik yönetimi temsilcisi seçme için özel Azure AD rollerini önizleyin. Azure portal, PowerShell veya Graph API Azure rollerini yönetin.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26e77fdf6e10e53f5acc0271986700c98fa690d
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e5c7919dcc89e34831cb4cae7921b60b35eb4c69
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772544"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024958"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory 'de özel yönetici rolleri (Önizleme)
 
@@ -34,7 +34,7 @@ Azure AD rol tabanlı erişim denetimi, Azure AD 'nin genel önizleme özelliği
 
 Rol tanımınızı oluşturduktan sonra bir rol ataması oluşturarak bunu bir kullanıcıya atayabilirsiniz. Rol ataması, kullanıcıya belirtilen kapsamdaki bir rol tanımında izinleri verir. Bu iki adımlı işlem, tek bir rol tanımı oluşturmanızı ve farklı kapsamlarda birçok kez atamanızı sağlar. Kapsam, rol üyesinin erişimi olan Azure AD kaynakları kümesini tanımlar. En yaygın kapsam, kuruluş genelinde (kuruluş genelinde) kapsamındadır. Özel bir rol kuruluş genelinde bir kapsamda atanabilir, Yani rol üyesi kuruluştaki tüm kaynaklar üzerinde rol izinlerine sahiptir. Özel bir rol, bir nesne kapsamına da atanabilir. Bir nesne kapsamına bir örnek, tek bir uygulama olabilir. Aynı rol, kuruluştaki tüm uygulamalarda bir kullanıcıya ve sonra yalnızca contoso gider raporları uygulamasının kapsamına sahip başka bir kullanıcıya atanabilir.  
 
-Azure AD yerleşik ve özel rolleri, [Azure rol tabanlı erişim denetimine](../../role-based-access-control/overview.md)benzer kavramlar üzerinde çalışır. [Bu iki rol tabanlı erişim denetimi sistemi arasındaki fark](../../role-based-access-control/rbac-and-directory-admin-roles.md) , Azure RBAC 'Nin Azure Kaynak Yönetimi 'ni kullanarak sanal makineler veya depolama gibi Azure kaynaklarına erişimini denetliyorsa ve Azure AD kaynaklarına erişimi denetler. Graph API kullanma. Her iki sistem de rol tanımları ve rol atamaları kavramından faydalanır.
+Azure AD yerleşik ve özel rolleri, [Azure rol tabanlı erişim denetimine](../../role-based-access-control/overview.md)benzer kavramlar üzerinde çalışır. [Bu iki rol tabanlı erişim denetimi sistemi arasındaki fark](../../role-based-access-control/rbac-and-directory-admin-roles.md) , Azure RBAC 'Nin Azure Kaynak Yönetimi 'ni kullanarak sanal makineler veya depolama gibi Azure kaynaklarına erişimi denetlemesini ve Azure AD özel rollerinin Graph API kullanarak Azure AD kaynaklarına erişimini denetlerleridir. Her iki sistem de rol tanımları ve rol atamaları kavramından faydalanır.
 
 ### <a name="role-assignments"></a>Rol atamaları
 
@@ -54,14 +54,14 @@ Aşağıdaki diyagramda rol ataması örneği gösterilmektedir. Bu örnekte, Ch
 
 Güvenlik sorumlusu, Azure AD kaynaklarına erişim atanacak kullanıcıyı temsil eder. *Kullanıcı* , Azure Active Directory bir kullanıcı profiline sahip kişidir.
 
-### <a name="role"></a>Role
+### <a name="role"></a>Rol
 
 Rol tanımı veya rol, izin koleksiyonudur. Rol tanımı, oluşturma, okuma, güncelleştirme ve silme gibi Azure AD kaynaklarında gerçekleştirilebilecek işlemleri listeler. Azure AD 'de iki tür rol vardır:
 
 - Microsoft tarafından oluşturulan ve değiştirilemeyen yerleşik roller.
 - Kuruluşunuz tarafından oluşturulan ve yönetilen özel roller.
 
-### <a name="scope"></a>`Scope`
+### <a name="scope"></a>Kapsam
 
 Kapsam, rol atamasının bir parçası olarak belirli bir Azure AD kaynağına izin verilen eylemlerin kısıtlamasıdır. Bir rol atadığınızda, yöneticinin belirli bir kaynağa erişimini sınırlayan bir kapsam belirtebilirsiniz. Örneğin, bir geliştiriciye özel bir rol vermek istiyorsanız, ancak yalnızca belirli bir uygulama kaydını yönetmek için, belirli uygulama kaydını rol atamasında kapsam olarak dahil edebilirsiniz.
 

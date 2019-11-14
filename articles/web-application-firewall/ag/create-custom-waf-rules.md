@@ -1,18 +1,19 @@
 ---
-title: Azure Web uygulaması güvenlik duvarı (WAF) v2 özel kurallarını oluşturma ve kullanma
+title: V2 özel kuralları oluşturma ve kullanma
+titleSuffix: Azure Web Application Firewall
 description: Bu makalede, Azure Application Gateway 'de Web uygulaması güvenlik duvarı (WAF) v2 özel kuralları oluşturma hakkında bilgi sağlanır.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d8ba105e15a825b6b53d941ed2f3847fa597d538
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4efa60a48a540efdd835b106afa5872057ae3d53
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516662"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046426"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Web uygulaması güvenlik duvarı v2 özel kurallarını oluşturma ve kullanma Application Gateway
 

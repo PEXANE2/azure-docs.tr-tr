@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a16ad3c571086a73a2aae192fb2d00bce4d5f9
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 9e12fe38ba69f6ac8f27130e01baff0c358aa409
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808163"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021770"
 ---
 # <a name="how-to-configure-password-writeback"></a>Nasıl yapılır: parola geri yazmayı yapılandırma
 
@@ -99,7 +99,7 @@ Parola geri yazma işleminin gerçekleşmesi için uygun izinleri ayarlamak içi
     * **PwdLastSet yazma**
 9. Değişiklikleri uygulamak ve açık iletişim kutularından çıkmak için **Uygula/Tamam** ' ı seçin.
 
-Yetkilinin kaynağı şirket içinde olduğundan, parola karmaşıklığı ilkeleri aynı bağlı veri kaynağından geçerlidir. "Minimum parola uzunluğu" için mevcut grup ilkelerini değiştirdiğinizden emin olun. Grup İlkesi 1 olarak ayarlanmamalıdır, bu, bir parolanın güncelleştirilebilmesi için en az bir gün daha eski olması gerektiği anlamına gelir. 0 olarak ayarlandığından emin olmanız gerekir. Bu ayarlar, **Windows ayarları > güvenlik ayarları > hesap ilkeleri > bilgisayar yapılandırması > ilkeleri**altındaki `gpmc.msc` bulunabilir. Değişikliğin geçerli olduğundan emin olmak için `gpupdate /force` çalıştırın. 
+Yetkilinin kaynağı şirket içinde olduğundan, parola karmaşıklığı ilkeleri aynı bağlı veri kaynağından geçerlidir. "Minimum parola yaşı" için mevcut grup ilkelerini değiştirdiğinizden emin olun. Grup İlkesi 1 olarak ayarlanmamalıdır, bu, bir parolanın güncelleştirilebilmesi için en az bir gün daha eski olması gerektiği anlamına gelir. 0 olarak ayarlandığından emin olmanız gerekir. Bu ayarlar, **Windows ayarları > güvenlik ayarları > hesap ilkeleri > bilgisayar yapılandırması > ilkeleri**altındaki `gpmc.msc` bulunabilir. Değişikliğin geçerli olduğundan emin olmak için `gpupdate /force` çalıştırın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

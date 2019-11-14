@@ -1,26 +1,26 @@
 ---
-title: Azure Kaynak rollerimi PıM-Azure Active Directory 'de etkinleştir | Microsoft Docs
+title: PıM-Azure AD 'de Azure Kaynak rollerini etkinleştirme | Microsoft Docs
 description: Azure Kaynak rollerinizi Azure AD Privileged Identity Management (PıM) ' de nasıl etkinleştireceğinizi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e2062ece84676e0af37c79cf25d8662f186ab0a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d35c81f7bb478d91bd207327ea37c80aa1778142
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808987"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023144"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Azure Kaynak rollerimi Privileged Identity Management etkinleştir
 
@@ -32,7 +32,7 @@ Bu makale, Privileged Identity Management ' de Azure Kaynak rolünü etkinleşti
 
 Bir Azure Kaynak rolünü gerçekleştirmeniz gerektiğinde, Privileged Identity Management ' de **rollerim** gezinti seçeneğini kullanarak etkinleştirme isteğinde bulunabilir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın. Privileged Identity Management kutucuğunu panonuza ekleme hakkında daha fazla bilgi için bkz. [Privileged Identity Management kullanmaya başlama](pim-getting-started.md).
 

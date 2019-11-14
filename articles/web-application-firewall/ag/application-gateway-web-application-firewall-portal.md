@@ -1,18 +1,18 @@
 ---
-title: Öğretici-bir Web uygulaması güvenlik duvarı ile uygulama ağ geçidi oluşturma-Azure portal
+title: 'Öğretici: Portal kullanarak oluşturma-Web uygulaması güvenlik duvarı'
 description: Bu öğreticide, Azure portal kullanarak bir Web uygulaması güvenlik duvarı ile uygulama ağ geçidi oluşturmayı öğreneceksiniz.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d439703f1637282c73cd960923733460502c55bc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501711"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049230"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir Web uygulaması güvenlik duvarı ile uygulama ağ geçidi oluşturma
 
@@ -38,7 +38,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
-## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturun
+## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
 Azure 'un kaynaklar arasında iletişim kurması için bir sanal ağa ihtiyacı vardır. Yeni bir sanal ağ oluşturabilir veya var olan bir ağı kullanabilirsiniz. Bu örnekte, yeni bir sanal ağ oluşturursunuz. Uygulama ağ geçidini oluştururken aynı zamanda bir sanal makine oluşturabilirsiniz. Application Gateway örnekleri ayrı alt ağlarda oluşturulur. Bu örnekte iki alt ağ oluşturursunuz: bir tane uygulama ağ geçidi ve arka uç sunucuları için bir diğeri.
 
@@ -218,7 +218,7 @@ Bu makalede, uygulama ağ geçidi, algılama ve önleme amaçlarıyla verileri d
 1. *Kaynak grubu*için kaynak grubu için **myResourceGroupAG** öğesini seçin.
 1. Depolama hesabının adı için *myagstore1* yazın.
 1. Diğer ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin.
-1. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
+1. Ayarları gözden geçirin ve ardından **Oluştur**.
 
 ### <a name="configure-diagnostics"></a>Tanılama yapılandırma
 

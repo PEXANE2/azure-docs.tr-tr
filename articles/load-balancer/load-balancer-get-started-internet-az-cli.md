@@ -1,11 +1,11 @@
 ---
-title: Bölge yedekli ön uç ile Load Balancer oluşturma-Azure CLı
-titlesuffix: Azure Load Balancer
+title: Bölgeye yedekli ön uç ile yük dengeleyici oluşturma-Azure CLı
+titleSuffix: Azure Load Balancer
 description: Azure CLı kullanarak bölge yedekli genel IP adresi ön ucu ile Genel Standart Load Balancer oluşturma hakkında bilgi edinin
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: allensu
-ms.openlocfilehash: 2dcd7d2cffa567307e1d6eb4326a379bc2d409be
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d5dd2dc04f4307c810fdc673286505f6001491ec
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275165"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048364"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-cli"></a>Azure CLI ile bölgesel olarak yedekli ön uç ile standart yük dengeleyici oluşturma
 

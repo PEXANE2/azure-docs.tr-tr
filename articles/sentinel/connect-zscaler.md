@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe7ba0f6daec0b85ec73611ba4e48d72f16146e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45351cc29b2b7028863aff06ab5a511674604d6f
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515141"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048950"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Zscaler Internet erişimini Azure Sentinel 'e bağlama
 
@@ -30,7 +30,7 @@ ms.locfileid: "73515141"
 Bu makalede, Zscaler Internet erişim gerecinizi Azure Sentinel 'e nasıl bağlayabileceğiniz açıklanır. Zscaler veri Bağlayıcısı, Azure Sentinel ile Zscaler Internet erişimi (ZIA) günlüklerinizi kolayca bağlamanıza, panoları görüntülemenize, özel uyarılar oluşturmaya ve araştırmaya olanak tanır. Azure Sentinel 'de Zscaler 'ın kullanılması, kuruluşunuzun Internet kullanımı hakkında daha fazla öngörü sağlar ve güvenlik işlemi yeteneklerini geliştirir. 
 
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
 Zscaler Internet erişimi ile Azure Sentinel arasındaki iletişimi desteklemek için adanmış bir Linux makinesine (VM veya şirket içi) bir aracı dağıtmanız gerekir. Aşağıdaki diyagramda, Azure 'daki bir Linux sanal makinesi olayında kurulum açıklanmaktadır.
 
@@ -106,7 +106,7 @@ Bu adımda, Azure Sentinel ve güvenlik çözümünüz arasında proxy görevi g
     - Bağlantı noktası = 514
     - Biçim = CEF
     - IP adresi-CEF iletilerini bu amaçla ayrıldığınızdan sanal makinenin IP adresine gönderdiğinizden emin olun.
- Daha fazla bilgi için bkz. [Zscaler Azure Sentinel tümleştirme Kılavuzu](https://aka.ms/ZscalerCEFInstructions).
+ Daha fazla bilgi için bkz. [Zscaler ve Azure Sentinel dağıtım kılavuzu](https://aka.ms/ZscalerCEFInstructions).
  
    > [!NOTE]
    > Bu çözüm Syslog RFC 3164 veya RFC 5424 ' ü destekler.

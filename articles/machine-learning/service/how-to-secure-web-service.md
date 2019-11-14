@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1021ad1983f78252d924a5d3cb674419732d66e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 00731d3520c98c3fd770dc411f6c5c940555fbe5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932052"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048597"
 ---
 # <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>Azure Machine Learning ile güvenli hale getirmek için SSL kullanma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ TLS ve SSL her ikisi de şifreleme ve kimlik doğrulamaya yardımcı olan *dijit
 
 Bu, güvenliğini sağlamak için genel bir işlemdir:
 
-1. Bir etki alanı adı alın.
+1. Bir etki alanı adını alın.
 
 2. Dijital bir sertifika alın.
 
@@ -50,16 +50,16 @@ Bu, güvenliğini sağlamak için genel bir işlemdir:
 
 [Dağıtım hedefleri](how-to-deploy-and-where.md)genelinde güvenli hale getirilçalışırken küçük farklılıklar vardır.
 
-## <a name="get-a-domain-name"></a>Etki alanı adı Al
+## <a name="get-a-domain-name"></a>Bir etki alanı adı
 
 Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde*bir tane satın alın. İşlem ve fiyat kayıt şirketlerinde arasında farklılık gösterir. Kaydedici, etki alanı adını yönetmek için araçlar sağlar. Tam etki alanı adını (FQDN) (örneğin, www\.contoso.com), ' i barındıran IP adresine eşlemek için bu araçları kullanabilirsiniz.
 
-## <a name="get-an-ssl-certificate"></a>SSL sertifikası al
+## <a name="get-an-ssl-certificate"></a>Bir SSL sertifikası alma
 
 SSL sertifikası almanın pek çok yolu vardır (dijital sertifika). En yaygın olarak, bir *sertifika yetkilisinden* (CA) bir sertifika satın alımdır. Sertifikayı nereden alacağınız bağımsız olarak, aşağıdaki dosyalar gereklidir:
 
-* Bir **sertifika**. Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
-* Bir **anahtar**. Anahtar Ayrıca pek kodlu olmalıdır.
+* A **sertifika**. Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
+* A **anahtar**. Anahtar Ayrıca pek kodlu olmalıdır.
 
 Bir sertifika istediğinizde, için kullanmayı planladığınız adresin FQDN 'sini sağlamanız gerekir (örneğin, www\.contoso.com). Sertifikaya atılabilecek adres ve istemcilerin kullandığı adres, kimliğini doğrulamak için karşılaştırılır. Bu adresler eşleşmezse istemci bir hata iletisi alır.
 
@@ -67,7 +67,7 @@ Bir sertifika istediğinizde, için kullanmayı planladığınız adresin FQDN '
 > Sertifika yetkilisi sertifikayı ve anahtarı pek kodlu dosyalar olarak sağlayamıyorum, biçimi değiştirmek için [OpenSSL](https://www.openssl.org/) gibi bir yardımcı program kullanabilirsiniz.
 
 > [!WARNING]
-> *Otomatik olarak imzalanan* sertifikaları yalnızca geliştirme amacıyla kullanın. Bunları üretim ortamlarında kullanmayın. Otomatik olarak imzalanan sertifikalar, istemci uygulamalarınızda sorunlara yol açabilir. Daha fazla bilgi için, istemci uygulamanızın kullandığı ağ kitaplıklarının belgelerine bakın.
+> *Otomatik olarak imzalanan* sertifikaları yalnızca geliştirme amacıyla kullanın. Bunları üretim ortamlarında kullanmayın. Otomatik olarak imzalanan sertifikaları, uygulamaları istemcinizde sorunlara neden olabilir. Daha fazla bilgi için, istemci uygulamanızın kullandığı ağ kitaplıklarının belgelerine bakın.
 
 ## <a id="enable"></a>SSL 'yi etkinleştirme ve dağıtma
 
@@ -85,7 +85,7 @@ AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan b
 
 **Enable_ssl** yöntemi, Microsoft tarafından veya satın aldığınız bir sertifika tarafından sunulan bir sertifikayı kullanabilir.
 
-  * Microsoft 'tan bir sertifika kullandığınızda *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "hizmetim" değeri "hizmetim\<altı-Random-karakterlik > bir etki alanı adı oluşturur.\<azureregion >. cloudapp. Azure. com ", burada \<azureregion >, hizmeti içeren bölgedir. İsteğe bağlı olarak, mevcut *leaf_domain_label*üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
+  * Microsoft 'tan bir sertifika kullandığınızda *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "contoso" değeri bir etki alanı adı "contoso\<altı-rastgele-karakter > oluşturur.\<azureregion >. cloudapp. Azure. com ", burada \<azureregion >, hizmeti içeren bölgedir. İsteğe bağlı olarak, mevcut *leaf_domain_label*üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
 
     SSL etkinken hizmeti dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *Ssl_key* *anahtar* dosyasının değerine ayarlayın.
 
@@ -98,11 +98,19 @@ AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan b
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
     provisioning_config = AksCompute.provisioning_configuration()
-    provisioning_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
-    attach_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
   * *Satın aldığınız bir sertifikayı*kullandığınızda *ssl_cert_pem_file*, *ssl_key_pem_file*ve *ssl_cname* parametrelerini kullanırsınız. Aşağıdaki örnek, satın aldığınız bir SSL sertifikası kullanan bir yapılandırma oluşturmak için *. pek* dosyalarının nasıl kullanılacağını gösterir:
@@ -135,7 +143,7 @@ aci_config = AciWebservice.deploy_configuration(
 
 Daha fazla bilgi için bkz. [Aciwebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-).
 
-## <a name="update-your-dns"></a>DNS 'nizi güncelleştirme
+## <a name="update-your-dns"></a>Güncelleştirin
 
 Sonra, DNS 'nizi ' a işaret etmek için güncelleştirmeniz gerekir.
 

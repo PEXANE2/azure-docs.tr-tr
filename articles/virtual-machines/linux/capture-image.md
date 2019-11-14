@@ -1,5 +1,5 @@
 ---
-title: Azure CLı kullanarak Azure 'da Linux VM 'nin bir görüntüsünü yakalama | Microsoft Docs
+title: Azure CLı kullanarak Azure 'da Linux VM 'nin bir görüntüsünü yakalama
 description: Azure CLı kullanarak toplu dağıtımlar için kullanmak üzere Azure VM 'nin bir görüntüsünü yakalayın.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 0767031ff6eee59de6cf447464328f66c50ef71a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ed7d45fb9148bd441a3798c48be8b25e1da2b8c1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552802"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036915"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Bir sanal makinenin veya VHD 'nin görüntüsünü oluşturma
 
@@ -53,7 +53,7 @@ Bu makalenin basitleştirilmiş bir sürümü ve Azure 'da VM 'Ler hakkında sı
     sudo waagent -deprovision+user
     ```
    > [!NOTE]
-   > Bu komutu yalnızca görüntü olarak yakaladığınız bir VM üzerinde çalıştırın. Bu komut görüntünün tüm hassas bilgilerin temizlenme veya yeniden dağıtım için uygun olduğunu garanti etmez. @No__t_0 parametresi, sağlanan son kullanıcı hesabını da kaldırır. Kullanıcı hesabı kimlik bilgilerini VM 'de tutmak için yalnızca `-deprovision` kullanın.
+   > Bu komutu yalnızca görüntü olarak yakaladığınız bir VM üzerinde çalıştırın. Bu komut görüntünün tüm hassas bilgilerin temizlenme veya yeniden dağıtım için uygun olduğunu garanti etmez. `+user` parametresi, sağlanan son kullanıcı hesabını da kaldırır. Kullanıcı hesabı kimlik bilgilerini VM 'de tutmak için yalnızca `-deprovision`kullanın.
  
 3. Devam etmek için **y** girin. Bu onay adımını önlemek için `-force` parametresini ekleyebilirsiniz.
 4. Komut tamamlandıktan sonra SSH istemcisini kapatmak için **Çıkış** ' ı girin.  VM hala bu noktada çalışmaya devam edecektir.

@@ -1,25 +1,25 @@
 ---
-title: PıM-Azure Active Directory 'de Azure AD rollerinin erişim incelemesini tamamlar | Microsoft Docs
+title: PıM-Azure AD 'de Azure AD rollerinin erişim incelemesini tamamlama | Microsoft Docs
 description: Azure AD Privileged Identity Management (PıM) içinde Azure AD rollerinin erişim incelemesini tamamlamayı ve sonuçları görüntülemeyi öğrenin
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 197abc0642d6abf1278a75c2101c195cafeb53b2
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: fe2d85d605b9ee418a5709ddcdb448c56be1d918
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809134"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022274"
 ---
 # <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rollerinin erişim incelemesini tamamlar
 
@@ -45,11 +45,11 @@ Kullanıcıların kendilerini gözden geçirmesi için bir erişim incelemesi ay
 
 Tüm erişim incelemelerinin bitiş tarihi vardır, ancak daha önce bitirmek için **Durdur** düğmesini kullanabilirsiniz. Herhangi bir Kullanıcı bu süre içinde incelenmediyse, gözden geçirmeyi durdurduktan sonra bu kullanıcılara izin vermez. Bir gözden geçirmeyi durdurduktan sonra yeniden başlatmazsanız.
 
-### <a name="apply"></a>Başvurun
+### <a name="apply"></a>Uygula
 
 Bir erişim incelemesi tamamlandıktan sonra, bitiş tarihine ulaştığınızdan veya el ile durdurduğundan, **Uygula** düğmesi gözden geçirme sonucunu uygular. Gözden geçirme sırasında bir kullanıcının erişimi reddedildiyse, bu adım rol atamasını kaldıracak olan adımdır.  
 
-### <a name="export"></a>Dışarı Aktar
+### <a name="export"></a>Dışarı Aktarma
 
 Erişim gözden geçirmesi sonuçlarını el ile uygulamak istiyorsanız, incelemeyi dışarı aktarabilirsiniz. **Dışarı aktar** DÜĞMESI bir CSV dosyasını indirmeye başlayacaktır. Sonuçları Excel veya CSV dosyalarını açan diğer programlarda yönetebilirsiniz.
 

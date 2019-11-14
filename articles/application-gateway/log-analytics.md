@@ -1,43 +1,44 @@
 ---
-title: Application Gateway Web uygulaması güvenlik duvarı günlüklerini incelemek için Azure Log Analytics'i kullanma
-description: Bu makalede, Azure Log Analytics Application Gateway Web uygulaması güvenlik duvarı günlüklerini incelemek için nasıl kullanabileceğinizi gösterir.
+title: Azure Log Analytics kullanarak WAF günlüklerini inceleyin
+titleSuffix: Azure Application Gateway
+description: Bu makalede, Application Gateway Web uygulaması güvenlik duvarı günlüklerini incelemek için Azure Log Analytics nasıl kullanabileceğiniz gösterilmektedir
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 7/10/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: aa867e33ef0faa96b6a66a9075a3a5b8b0b0bca4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9fe4462a71852e5f66268f798f6f0418f2dd39c4
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712182"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048118"
 ---
-# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Application Gateway Web uygulaması güvenlik duvarı günlüklerini incelemek için log Analytics'i kullanma
+# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Log Analytics kullanarak Application Gateway Web Uygulaması Güvenlik Duvarı Günlüklerini inceleme
 
-Application Gateway WAF, operasyonel hale geldikten sonra her bir istekle neler olduğunu denetlemek günlükleri etkinleştirebilirsiniz. Güvenlik duvarı günlükleri verin Insight hangi WAF için değerlendirme, eşleşen engelleme ve. Log Analytics ile hatta daha fazla öngörü vermek için güvenlik duvarı günlükleri içindeki verileri inceleyebilirsiniz. Bir Log Analytics çalışma alanı oluşturma hakkında daha fazla bilgi için bkz. [Azure portalında Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md). Günlük sorguları hakkında daha fazla bilgi için bkz: [günlüğüne genel bakış, Azure İzleyicisi'nde sorgular](../azure-monitor/log-query/log-query-overview.md).
+Application Gateway WAF çalışmaya başladıktan sonra, her istekte ne olduğunu incelemek için günlükleri etkinleştirebilirsiniz. Güvenlik Duvarı günlükleri WAF 'nin değerlendirme, eşleştirme ve engelleme hakkında fikir verir. Log Analytics sayesinde, daha da fazla öngörü sağlamak için güvenlik duvarı günlüklerinin içindeki verileri inceleyebilirsiniz. Log Analytics çalışma alanı oluşturma hakkında daha fazla bilgi için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md). Günlük sorguları hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="import-waf-logs"></a>WAF günlükleri içeri aktarma
+## <a name="import-waf-logs"></a>WAF günlüklerini içeri aktar
 
-Log Analytics'e, güvenlik duvarı günlükleri almak için bkz [arka uç sistem durumu, tanılama günlükleri ve ölçümler için Application Gateway](application-gateway-diagnostics.md#diagnostic-logging). Güvenlik duvarı günlükleri Log Analytics çalışma alanınızda varsa, verileri görüntülemek, sorguları yazma, görselleştirmeler oluşturun ve bunları portal panonuza ekleyebilirsiniz.
+Güvenlik Duvarı günlüklerinizi Log Analytics içine aktarmak için [arka uç sistem durumu, tanılama günlükleri ve Application Gateway ölçümler](application-gateway-diagnostics.md#diagnostic-logging)bölümüne bakın. Log Analytics çalışma alanınızda güvenlik duvarı günlüklerine sahip olduğunuzda, verileri görüntüleyebilir, sorguları yazabilir, görselleştirmeler oluşturabilir ve bunları Portal panonuza ekleyebilirsiniz.
 
-## <a name="explore-data-with-examples"></a>Örnek verilerle keşfedin
+## <a name="explore-data-with-examples"></a>Örneklerle verileri araştırma
 
-Güvenlik Duvarı günlüğünde ham verileri görüntülemek için şu sorguyu çalıştırabilirsiniz:
+Güvenlik Duvarı günlüğündeki ham verileri görüntülemek için aşağıdaki sorguyu çalıştırabilirsiniz:
 
 ```
 AzureDiagnostics 
 | where ResourceProvider == "MICROSOFT.NETWORK" and Category == "ApplicationGatewayFirewallLog"
 ```
 
-Bu, aşağıdaki sorguyu benzer görünecektir:
+Bu, aşağıdaki sorguya benzer şekilde görünür:
 
-![Log Analytics sorgusu](media/log-analytics/log-query.png)
+![Log Analytics sorgu](media/log-analytics/log-query.png)
 
-Verileri, detaya gitme ve grafik çizim veya buradan görselleştirmeler oluşturun. Aşağıdaki sorgularda, başlangıç noktası olarak bakın:
+Verilerin detayına gidebilir, grafikleri çizdirebilirsiniz veya buradan görselleştirme oluşturabilirsiniz. Başlangıç noktası olarak aşağıdaki sorgulara bakın:
 
-### <a name="matchedblocked-requests-by-ip"></a>IP eşleşen bloke istekleri
+### <a name="matchedblocked-requests-by-ip"></a>IP ile eşleşen/Engellenen istekler
 
 ```
 AzureDiagnostics
@@ -46,7 +47,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="matchedblocked-requests-by-uri"></a>URI ile eşleşen bloke istekleri
+### <a name="matchedblocked-requests-by-uri"></a>URI 'ye göre eşleşen/Engellenen istekler
 
 ```
 AzureDiagnostics
@@ -55,7 +56,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-matched-rules"></a>En iyi eşleşen kuralları
+### <a name="top-matched-rules"></a>En çok eşleşen kurallar
 
 ```
 AzureDiagnostics
@@ -77,10 +78,10 @@ AzureDiagnostics
 
 ## <a name="add-to-your-dashboard"></a>Panonuza ekleme
 
-Bir sorgu oluşturduğunuzda, bunu panonuza ekleyebilirsiniz.  Seçin **panoya Sabitle** üst sağında log analytics çalışma alanı. Önceki dört sorguları bir örnek panoya sabitlenmiş bu verileri bir bakışta görebilirsiniz.
+Bir sorgu oluşturduktan sonra panonuza ekleyebilirsiniz.  Log Analytics çalışma alanının sağ üst kısmında **panoya sabitle ' yi** seçin. Önceki dört sorgu, örnek bir panoya sabitlenmişse, bir bakışta görebileceğiniz veriler şunlardır:
 
 ![Pano](media/log-analytics/dashboard.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Arka uç sistem durumu, tanılama günlükleri ve ölçümler için Application Gateway](application-gateway-diagnostics.md)
+[Application Gateway için arka uç sistem durumu, tanılama günlükleri ve ölçümler](application-gateway-diagnostics.md)

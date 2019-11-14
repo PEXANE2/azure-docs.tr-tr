@@ -3,20 +3,20 @@ title: Azure Veri Gezgini verilerini sorgulamak ve görselleştirmek için Power
 description: Bu makalede, Azure Veri Gezgini verilerini sorgulamak ve görselleştirmek için Power BI kullanmaya yönelik en iyi yöntemleri öğreneceksiniz.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 39fab02ebc3a80e0aae34a86a1a6b7f3f46c96f3
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286757"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024026"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Azure Veri Gezgini verilerini sorgulamak ve görselleştirmek için Power BI kullanmaya yönelik en iyi uygulamalar
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. [Power BI](https://docs.microsoft.com/power-bi/) , verilerinizi görselleştirmenizi ve sonuçları kuruluşunuz genelinde paylaşmanızı sağlayan bir iş analizi çözümüdür. Azure Veri Gezgini Power BI verilere bağlanmak için üç seçenek sunar. [Yerleşik bağlayıcıyı](power-bi-connector.md)kullanın, [Azure Veri Gezgini bir sorguyu Power BI içine aktarın](power-bi-imported-query.md)veya bir [SQL sorgusu](power-bi-sql-query.md)kullanın. Bu makale, Azure Veri Gezgini verilerinizi Power BI ile sorgulama ve görselleştirme için ipuçları sağlar. 
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. [Power BI](https://docs.microsoft.com/power-bi/) , verilerinizi görselleştirmenizi ve sonuçları kuruluşunuz genelinde paylaşmanızı sağlayan bir iş analizi çözümüdür. Azure Veri Gezgini Power BI verilere bağlanmak için üç seçenek sunar. [Yerleşik bağlayıcıyı](power-bi-connector.md)kullanın, [Azure Veri Gezgini bir sorguyu Power BI içine aktarın](power-bi-imported-query.md)veya bir [SQL sorgusu](power-bi-sql-query.md)kullanın. Bu makale, Azure Veri Gezgini verilerinizi Power BI ile sorgulama ve görselleştirme için ipuçları sağlar. 
 
 ## <a name="best-practices-for-using-power-bi"></a>Power BI kullanmak için en iyi uygulamalar 
 
@@ -46,14 +46,14 @@ Aşağıdaki bölümde, Power BI ile kusto sorgu dilini kullanmaya yönelik ipu�
 
 ### <a name="complex-queries-in-power-bi"></a>Power BI 'de karmaşık sorgular
 
-Karmaşık sorgular, kusto içinde Power Query kıyasla daha kolay bir şekilde ifade edilir. [Kusto işlevleri](/azure/kusto/query/functions)olarak uygulanmalıdır ve Power BI çağrılır. Bu yöntem, kusto sorgunuzda `let` deyimleriyle **DirectQuery** kullanılırken gereklidir. Power BI iki sorguyu birleştiğinden ve `let` deyimleri `join` işleciyle birlikte kullanılamaz, söz dizimi hataları oluşabilir. Bu nedenle, birleştirmenin her bölümünü bir kusto işlevi olarak kaydedin ve Power BI bu iki işlevi birlikte katılmasına izin verin.
+Karmaşık sorgular, kusto içinde Power Query kıyasla daha kolay bir şekilde ifade edilir. [Kusto işlevleri](/azure/kusto/query/functions)olarak uygulanmalıdır ve Power BI çağrılır. Kusto sorgunuzda **DirectQuery** `let` deyimleri kullanılırken bu yöntem gereklidir. Power BI iki sorguyu birleştiğinden ve `let` deyimleri `join` işleciyle birlikte kullanılamaz, söz dizimi hataları oluşabilir. Bu nedenle, birleştirmenin her bölümünü bir kusto işlevi olarak kaydedin ve Power BI bu iki işlevi birlikte katılmasına izin verin.
 
 ### <a name="how-to-simulate-a-relative-date-time-operator"></a>Göreli tarih-saat işlecinin benzetimini yapma
 
-Power BI, `ago()` gibi *göreli* bir tarih-saat işleci içermez.
-@No__t benzetimini yapmak için, `DateTime.FixedLocalNow()` ve `#duration` Power BI işlevlerinin birleşimini kullanın.
+Power BI, `ago()`gibi *göreli* bir tarih-saat işleci içermez.
+`ago()`benzetimini yapmak için `DateTime.FixedLocalNow()` ve `#duration` Power BI işlevlerinin birleşimini kullanın.
 
-@No__t-0 işleci kullanılarak bu sorgu yerine:
+`ago()` işlecini kullanarak bu sorgu yerine:
 
 ```kusto
     StormEvents | where StartTime > (now()-5d)
@@ -78,9 +78,9 @@ Kusto sorguları, [sorgu sınırları](/azure/kusto/concepts/querylimits)bölüm
 
 Bu seçenekler, varsayılan sorgu sınırlarını değiştirmek için Sorgunuzla birlikte [set deyimlerini](/azure/kusto/query/setstatement) sorun.
 
-  * **Limit sorgu sonucu kayıt numarası** @no__t oluşturur-1
-  * **Bayt cinsinden limit sorgu sonucu veri boyutu** bir @no__t oluşturur-1
-  * **Sonuç kümesi kesilmesini devre dışı bırak** -1 @no__t üretir
+  * **Limit sorgu sonucu kayıt numarası** bir `set truncationmaxrecords` oluşturur
+  * **Bayt cinsinden limit sorgu sonucu veri boyutu** bir `set truncationmaxsize` oluşturur
+  * **Sonuç kümesi kesilmesini devre dışı bırakma** bir `set notruncation` oluşturur
 
 ### <a name="using-query-parameters"></a>Sorgu parametrelerini kullanma
 
@@ -90,7 +90,7 @@ Sorgunuzu dinamik olarak değiştirmek için [sorgu parametrelerini](/azure/kust
 
 Sorgudaki bilgileri filtrelemek ve sorgu performansını iyileştirmek için bir sorgu parametresi kullanın.
  
-**Sorguları Düzenle** penceresinde, **ana** > **Gelişmiş Düzenleyici**
+**Sorguları Düzenle** penceresinde, **giriş** > **Gelişmiş Düzenleyici**
 
 1. Sorgunun aşağıdaki bölümünü bulun:
 
@@ -98,7 +98,7 @@ Sorgudaki bilgileri filtrelemek ve sorgu performansını iyileştirmek için bir
     Source = Kusto.Contents("<Cluster>", "<Database>", "<Query>", [])
     ```
    
-   Örnek:
+   Örneğin:
 
     ```powerquery-m
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
@@ -106,7 +106,7 @@ Sorgudaki bilgileri filtrelemek ve sorgu performansını iyileştirmek için bir
 
 1. Sorgunun ilgili bölümünü parametrenizle değiştirin. Sorguyu birden çok parçaya ayırın ve parametresi ile birlikte bir ve işareti (&) kullanarak tekrar birleştirin.
 
-   Örneğin, Yukarıdaki sorguda, `State == 'ALABAMA'` bölümünü alacağız ve: `State == '` ve `'` ' ye bölecektir. `State` parametresini bunlar arasında yerleştireceğiz:
+   Örneğin, Yukarıdaki sorguda `State == 'ALABAMA'` parçasını ele alacağız ve: `State == '` ve `'` `State` ' ye bölecektir:
    
     ```kusto
     "StormEvents | where State == '" & State & "' | take 100"
@@ -140,7 +140,7 @@ Sorgu parametresini, destekleyen herhangi bir sorgu adımında kullanabilirsiniz
 
 Power BI, düzenli aralıklarla bir veri kaynağına yönelik sorgular veren bir veri yenileme Zamanlayıcısı içerir. Power BI, tüm sorguların salt okunurdur olduğunu varsaydığından, denetim komutlarının kusto olarak zamanlanmasında bu mekanizma kullanılmamalıdır.
 
-### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI, kusto 'e yalnızca Short (&lt;2000 karakter) sorguları gönderebilir
+### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI, kusto 'e yalnızca kısa (&lt;2000 karakter) sorgular gönderebilir
 
 Power BI ' de bir sorgu çalıştırırsanız, şu hata oluşur: _"DataSource. Error: Web. Contents öğesinden içerikleri alamadı..."_ sorgu muhtemelen 2000 karakterden daha uzun. Power BI, sorguyu alınmakta olan URI 'nin bir parçası olarak kodlayan bir HTTP GET isteği vererek kusto sorgulamak için **powerquery** 'yi kullanır. Bu nedenle, Power BI tarafından verilen kusto sorguları bir istek URI 'SI (2000 karakter, eksi küçük fark) uzunluk üst sınırı ile sınırlıdır. Geçici bir çözüm olarak, kusto içinde [saklı bir işlev](/azure/kusto/query/schema-entities/stored-functions) tanımlayabilir ve bu işlevi Sorguda Power BI kullanabilirsiniz.
 

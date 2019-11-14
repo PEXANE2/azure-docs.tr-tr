@@ -1,23 +1,19 @@
 ---
-title: Birden çok site barındırma ile uygulama ağ geçidi oluşturma-Azure PowerShell | Microsoft Docs
+title: PowerShell kullanarak birden çok site barındırma
+titleSuffix: Azure Application Gateway
 description: Azure PowerShell kullanarak birden çok siteyi barındıran bir uygulama ağ geçidi oluşturmayı öğrenin.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: e96579d52752f75b864c430ea0334a544606998c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 449095c92c30638b25836a2c7803176f7f0512e5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835586"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048074"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-azure-powershell"></a>Azure PowerShell kullanarak birden çok site barındırma ile uygulama ağ geçidi oluşturma
 
@@ -27,7 +23,7 @@ Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ağı ayarlama
-> * Uygulama ağ geçidi oluşturun
+> * Uygulama ağ geçidi oluşturma
 > * Dinleyicileri ve yönlendirme kurallarını oluşturma
 > * Arka uç havuzları ile sanal makine ölçek kümeleri oluşturma
 > * Etki alanınızda bir CNAME kaydı oluşturma
@@ -74,7 +70,7 @@ $pip = New-AzPublicIpAddress `
   -AllocationMethod Dynamic
 ```
 
-## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturun
+## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP yapılandırmaları ve ön uç bağlantı noktası oluşturma
 
@@ -274,7 +270,7 @@ Bu makalede, şu şekilde nasıl yapılacağını öğrendiniz:
 
 > [!div class="checklist"]
 > * Ağı ayarlama
-> * Uygulama ağ geçidi oluşturun
+> * Uygulama ağ geçidi oluşturma
 > * Dinleyicileri ve yönlendirme kurallarını oluşturma
 > * Arka uç havuzları ile sanal makine ölçek kümeleri oluşturma
 > * Etki alanınızda bir CNAME kaydı oluşturma

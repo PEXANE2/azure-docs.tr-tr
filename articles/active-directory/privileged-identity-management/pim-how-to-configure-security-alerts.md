@@ -1,25 +1,25 @@
 ---
-title: PıM-Azure Active Directory 'de Azure AD rolleri için güvenlik uyarılarını yapılandırma | Microsoft Docs
-description: Azure AD Privileged Identity Management (PıM) içinde Azure AD rolleri için güvenlik uyarılarını yapılandırma hakkında bilgi edinin.
+title: PıM-Azure AD 'de Azure AD rolleri için güvenlik uyarıları | Microsoft Docs
+description: Azure Active Directory Privileged Identity Management Azure AD rolleri için güvenlik uyarılarını yapılandırın.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e188ef651f6fe539932cf1670f914e8b57564567
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: e05502b40f7f917526b2514d83dcc58636ac06f3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809094"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023051"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri için güvenlik uyarılarını yapılandırma
 
@@ -57,12 +57,12 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 | **Önlem** | Her rol için [MFA gerektir](pim-how-to-change-default-settings.md) .  |
 | **Portalın risk azaltma eylemi** | Ayrıcalıklı rolün etkinleştirilmesi için çok faktörlü kimlik doğrulamasını zorunlu kılar. |
 
-### <a name="the-tenant-doesnt-have-azure-ad-premium-p2"></a>Kiracının Azure AD Premium P2 yok
+### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>Kuruluşun Azure AD Premium P2 yok
 
 | | |
 | --- | --- |
 | **İnin** | Düşük |
-| **Bu uyarıyı neden alıyorum?** | Geçerli kiracının Azure AD Premium P2 yok. |
+| **Bu uyarıyı neden alıyorum?** | Geçerli Azure AD kuruluşunda Azure AD Premium P2 yok. |
 | **Nasıl düzeltilir?** | [Azure AD sürümleri](../fundamentals/active-directory-whatis.md)hakkındaki bilgileri gözden geçirin. Azure AD Premium P2 ' ye yükseltin. |
 
 ### <a name="potential-stale-accounts-in-a-privileged-role"></a>Ayrıcalıklı bir roldeki olası eski hesaplar

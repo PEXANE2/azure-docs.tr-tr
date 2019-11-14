@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central nedir? | Microsoft Docs
-description: Azure IoT Central, özel IoT çözümünüzü derlemek ve yönetmek için kullanabileceğiniz bir uçtan uca SaaS çözümüdür. Bu makalede Azure IoT Central’ın özelliklerine genel bir bakış sunulmaktadır.
+description: Azure IoT Central, IoT çözümlerinin oluşturulmasını kolaylaştıran ve IoT yönetim işlemlerinin ve geliştirmenin yükünü ve maliyetini azaltmaya yardımcı olan bir IoT uygulama platformudur. Bu makalede Azure IoT Central’ın özelliklerine genel bir bakış sunulmaktadır.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 597f9a80cad435bb24b38852065124ad292cd51b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5e84b8777fc7671a19b6d8974f1309eb5af35bd3
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005846"
+ms.locfileid: "74048024"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Azure IoT Central (Önizleme özellikleri) nedir?
 

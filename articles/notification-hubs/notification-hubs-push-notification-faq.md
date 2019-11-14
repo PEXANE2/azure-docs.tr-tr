@@ -1,5 +1,5 @@
 ---
-title: 'Azure Notification Hubs: Sık sorulan sorular (SSS) | Microsoft Docs'
+title: 'Azure Notification Hubs: sık sorulan sorular (SSS) | Microsoft Docs'
 description: Notification Hubs çözümleri tasarlama/uygulama hakkında SSS
 services: notification-hubs
 documentationcenter: mobile
@@ -13,18 +13,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 5de8c9523e05411a4751766c836b8e99ebb977c1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 11/13/2019
+ms.openlocfilehash: ee1bd413894ff5c12883279ccd8a9e9eac3c1790
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213140"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048777"
 ---
-# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs anında iletme bildirimleri: Sık sorulan sorular
+# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs ile anında iletme bildirimleri: sık sorulan sorular
 
 ## <a name="general"></a>Genel
 
@@ -44,10 +44,10 @@ En son fiyatlandırma ayrıntıları [Notification Hubs fiyatlandırması] sayfa
 
 Standart katman özellikleri:
 
-* **Zengin telemetri**: Hata ayıklama için herhangi bir anında iletme isteğini ve Platform Bildirim Sistemi geri bildirimini izlemek üzere Ileti başına telemetri Notification Hubs kullanabilirsiniz.
-* **Çoklu kiracı**: Ad alanı düzeyinde Platform Bildirim Sistemi kimlik bilgileriyle çalışabilirsiniz. Bu seçenek, kiracıları aynı ad alanı içinde kolayca hub 'lara bölmenizin olanaklı olmasına olanak sağlar.
-* **Zamanlanmış gönderim**: Her zaman gönderilmek üzere bildirimleri zamanlayabilirsiniz.
-* **Toplu işlemler**: Kayıt verme [Kayıt verme/Içeri aktarma] aktarma belgesinde açıklandığı gibi kayıt verme/içeri aktarma işlevlerini sunar.
+* **Zengin telemetri**: herhangi bir anında iletme isteğini izlemek platform bildirim sistemi ve hata ayıklama Için geri bildirimde bulunmak Için Ileti telemetri başına Notification Hubs kullanabilirsiniz.
+* **Çoklu Kiralama**: ad alanı düzeyinde platform bildirim sistemi kimlik bilgileriyle çalışabilirsiniz. Bu seçenek, kiracıları aynı ad alanı içinde kolayca hub 'lara bölmenizin olanaklı olmasına olanak sağlar.
+* **Zamanlanmış gönderim**: her zaman gönderilmek üzere bildirimler zamanlayabilirsiniz.
+* **Toplu işlemler**: kayıtları [Kayıt verme/Içeri aktarma] aktarma belgesinde açıklandığı gibi dışarı aktarma/içeri aktarma işlevlerini sunar.
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Notification Hubs SLA nedir?
 
@@ -58,7 +58,7 @@ Temel ve Standart Notification Hubs katmanlarında, düzgün şekilde yapıland�
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Hub veya ad alanını farklı bir katmana yükseltmek veya alçaltma Nasıl yaparım? mı?
 
-**[Azure Portal]**  > **Notification Hubs ad alanlarına** veya **Notification Hubs**gidin. Güncelleştirmek istediğiniz kaynağı seçin ve **fiyatlandırma katmanına**gidin. Aşağıdaki gereksinimleri dikkate alın:
+**[Azure portal]**  > **Notification Hubs ad alanları** veya **Notification Hubs**gidin. Güncelleştirmek istediğiniz kaynağı seçin ve **fiyatlandırma katmanına**gidin. Aşağıdaki gereksinimleri dikkate alın:
 
 * Güncelleştirilmiş fiyatlandırma katmanı, üzerinde çalıştığınız ad alanındaki *Tüm* hub 'lara uygulanır.
 * Cihazınızın sayısı, eski sürümü düşürüyoruz katman sınırını aşarsa, ' ı indirgemeden önce cihazları silmeniz gerekir.
@@ -107,7 +107,7 @@ Tahmini teslimat süresi boyunca hizmet, hedefleri her platform için hesaplar v
 PNS, bildirim teslim etmek için herhangi bir SLA garantisi vermez. Ancak, çoğu anında iletme bildirimi, hedef cihazlara, birkaç dakika içinde (genellikle 10 dakika içinde), Notification Hubs gönderilen süreden dağıtılır. Birkaç bildirim daha zaman alabilir.
 
 > [!NOTE]
-> Azure Notification Hubs,% 30 dakika içinde PNS 'ye teslim edilmemiş anında iletme bildirimlerini bırakmaya yönelik bir ilkeye sahiptir. Bu gecikme birkaç nedenden kaynaklanabilir, ancak en yaygın olarak PNS uygulamanızı azaltıyordur.
+> Azure Notification Hubs, %30 dakika içinde PNS 'ye teslim edilmemiş anında iletme bildirimlerini bırakmaya yönelik bir ilkeye sahiptir. Bu gecikme birkaç nedenden kaynaklanabilir, ancak en yaygın olarak PNS uygulamanızı azaltıyordur.
 
 ### <a name="is-there-any-latency-guarantee"></a>Gecikme garantisi var mı?
 
@@ -165,7 +165,7 @@ Gizli yükleri göndermek için güvenli bir gönderme deseninin kullanılması 
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Olağanüstü durum kurtarma için hangi destek sağlanır?
 
-Son derece (Notification Hubs adı, bağlantı dizesi ve diğer kritik bilgiler) için meta veri olağanüstü durum kurtarma kapsamı sağlıyoruz. Bir olağanüstü durum kurtarma senaryosu tetiklendiğinde, kayıt verileri kaybolan Notification Hubs altyapısının *tek kesimdir* . Bu verileri yeni hub 'ınız kurtarmadan yeniden doldurmak için bir çözüm uygulamanız gerekir:
+Son derece (Notification Hubs adı, bağlantı dizesi ve diğer kritik bilgiler) için meta veri olağanüstü durum kurtarma kapsamı sağlıyoruz. Bir olağanüstü durum kurtarma senaryosu tetiklendiğinde, kayıt verileri kaybolan Notification Hubs altyapısının *tek kesimdir* . Bu verileri yeni hub-kurtarmayla yeniden doldurmak için bir çözüm uygulamalısınız:
 
 1. Farklı bir veri merkezinde ikincil bildirimler hub 'ı oluşturun. Yönetim olanaklarınızı etkileyebilecek bir olağanüstü durum kurtarma olayından sizi en başından korumak için baştan başlayarak oluşturmanız önerilir. Olağanüstü durum kurtarma olayı sırasında da bir tane oluşturabilirsiniz.
 
@@ -182,6 +182,10 @@ Uygulama arka uçları için iki önerimiz var:
 Arka ucunuz yoksa, uygulama hedef cihazlarda başladığında, ikincil Bildirim Hub 'ında yeni bir kayıt gerçekleştirir. Son olarak, ikincil Bildirim Hub 'ının tüm etkin cihazları kaydedilir.
 
 Açık olmayan uygulamalar içeren cihazlarda bildirim olmadığında bir zaman aralığı olacaktır.
+
+### <a name="is-all-of-my-data-stored-in-encrypted-form"></a>Tüm verilerim şifrelenmiş biçimde depolanıyor mu?
+
+Azure Notification Hubs, bekleyen tüm müşteri verilerini kayıt etiketleri hariç olacak şekilde şifreler. Bu nedenle, etiketleri kullanarak kişisel veya gizli verileri depolamamalısınız.
 
 ### <a name="is-there-audit-log-capability"></a>Denetim günlüğü özelliği var mı?
 
@@ -207,7 +211,7 @@ Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine
 > [!NOTE]
 > Başarılı bildirimler, anında iletme bildirimlerinin dış PNS 'ye teslim edildiğini (örneğin, Apple için APNS veya Google için FCM) ifade anlamına gelir. Hedef cihazlara bildirimleri teslim etmek için PNS 'nin sorumluluğundadır. Genellikle, PNS, teslim ölçümlerini üçüncü taraflara sunmaz.  
 
-[Azure portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [Notification Hubs fiyatlandırması]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [REST API 'Leri Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
@@ -220,7 +224,7 @@ Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine
 [Notification Hubs sorunlarını giderme]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs ölçümleri]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Kayıt verme/Içeri aktarma]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
-[Azure portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
 [App Service Fiyatlandırması]: https://azure.microsoft.com/pricing/details/app-service/

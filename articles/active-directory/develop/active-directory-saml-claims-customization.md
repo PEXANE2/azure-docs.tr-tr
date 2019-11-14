@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4307c9036db45145a7c0e95cb5e55a667c6851eb
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1490a25e69ff22fde1f5c870868f20ea6f9a1cf7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893375"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046979"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
@@ -31,7 +31,7 @@ Günümüzde Azure Active Directory (Azure AD), Azure AD uygulama galerisinde ve
 
 Bir *talep* , bir kimlik sağlayıcısının bu kullanıcı için çalıştıkları belirtecin içindeki bir kullanıcı hakkında bilgi veren bir sorundur. [SAML belirtecinde](https://en.wikipedia.org/wiki/SAML_2.0), bu VERILER genellikle SAML Attribute ifadesinde bulunur. Kullanıcının benzersiz KIMLIĞI, genellikle ad tanımlayıcısı olarak da bilinen SAML konusu içinde temsil edilir.
 
-Varsayılan olarak, Azure AD, Azure AD 'de kullanıcının Kullanıcı adının (Kullanıcı asıl adı olarak da bilinir) bir değeri olan `NameIdentifier` talebi içeren bir SAML belirteci verir. Bu, kullanıcıyı benzersiz şekilde tanımlayabilirler. SAML belirteci ayrıca kullanıcının e-posta adresini, adını ve soyadını içeren ek talepler içerir.
+Azure AD, varsayılan olarak, Azure AD 'de kullanıcının Kullanıcı adı (Kullanıcı asıl adı olarak da bilinir) değerine sahip `NameIdentifier` bir talep içeren bir SAML belirteci verir. Bu, kullanıcıyı benzersiz şekilde tanımlayabilirler. SAML belirteci ayrıca kullanıcının e-posta adresini, adını ve soyadını içeren ek talepler içerir.
 
 SAML belirtecinde verilen talepleri uygulamaya görüntülemek veya düzenlemek için Azure portal içinde uygulamayı açın. Ardından **Kullanıcı öznitelikleri & talepler** bölümünü açın.
 
@@ -65,6 +65,7 @@ SAML isteği Nameıdpolicy için bir öğe içermiyorsa Azure AD, belirttiğiniz
 | **RESERVATION** | Azure AD, NameID biçimi olarak kalıcı kullanacaktır. |
 | **EmailAddress** | Azure AD, NameID biçimi olarak Emapostaadı kullanacaktır. |
 | **Memesi** | Azure AD, NameID biçimi olarak belirtilmemiş kullanır. |
+| **Windows etki alanı nitelikli adı** | Azure AD, NameID biçimi olarak WindowsDomainQualifiedName kullanır. |
 
 Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tarafında yapılandırılamaz. Nameıdpolicy özniteliği hakkında daha fazla bilgi edinmek için bkz. [Çoklu oturum açma SAML Protokolü](single-sign-on-saml-protocol.md).
 
@@ -72,13 +73,13 @@ Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tar
 
 `NameIdentifier` (veya NameID) talebi için istenen kaynağı seçin. Aşağıdaki seçeneklerden seçim yapabilirsiniz.
 
-| Adı | Açıklama |
+| Ad | Açıklama |
 |------|-------------|
-| E-posta | Kullanıcının e-posta adresi |
+| Email | Kullanıcının e-posta adresi |
 | userprincipalName | Kullanıcının Kullanıcı asıl adı (UPN) |
 | onpremisessamaccount | Şirket içi Azure AD 'den eşitlenmiş SAM hesap adı |
 | uzantının | Azure AD 'de kullanıcının ObjectID |
-| çalışan | Kullanıcının çalışan KIMLIĞI |
+| EmployeeID | Kullanıcının çalışan KIMLIĞI |
 | Dizin genişletmeleri | [Azure AD Connect eşitleme kullanılarak şirket içi Active Directory eşitlenen](../hybrid/how-to-connect-sync-feature-directory-extensions.md) Dizin uzantıları |
 | Uzantı öznitelikleri 1-15 | Azure AD şemasını genişletmek için kullanılan şirket içi uzantı öznitelikleri |
 
@@ -104,7 +105,7 @@ Talep dönüştürmeleri işlevlerini de kullanabilirsiniz.
 
 | İşlev | Açıklama |
 |----------|-------------|
-| **ExtractMailPrefix ()** | Etki alanı sonekini e-posta adresinden veya Kullanıcı asıl adından kaldırır. Bu, yalnızca Kullanıcı adının geçirildiği ilk kısmını ayıklar (örneğin, joe_smith@contoso.comyerine "joe_smith"). |
+| **ExtractMailPrefix()** | Etki alanı sonekini e-posta adresinden veya Kullanıcı asıl adından kaldırır. Bu, yalnızca Kullanıcı adının geçirildiği ilk kısmını ayıklar (örneğin, joe_smith@contoso.comyerine "joe_smith"). |
 | **JOIN ()** | Doğrulanmış bir etki alanıyla bir özniteliği birleştirir. Seçilen Kullanıcı tanımlayıcı değeri bir etki alanına sahipse, seçilen doğrulanmış etki alanını eklemek için Kullanıcı adını ayıklar. Örneğin, Kullanıcı tanımlayıcı değeri olarak e-postayı (joe_smith@contoso.com) seçip doğrulanmış etki alanı olarak contoso.onmicrosoft.com ' i seçerseniz, bu, joe_smith@contoso.onmicrosoft.comsonuçlanır. |
 | **ToLower ()** | Seçili özniteliğin karakterlerini küçük harfli karakterlere dönüştürür. |
 | **ToUpper ()** | Seçili özniteliğin karakterlerini büyük harfli karakterlere dönüştürür. |
@@ -131,7 +132,7 @@ Talepleri dönüştürmek için aşağıdaki işlevleri kullanabilirsiniz.
 
 | İşlev | Açıklama |
 |----------|-------------|
-| **ExtractMailPrefix ()** | Etki alanı sonekini e-posta adresinden veya Kullanıcı asıl adından kaldırır. Bu, yalnızca Kullanıcı adının geçirildiği ilk kısmını ayıklar (örneğin, joe_smith@contoso.comyerine "joe_smith"). |
+| **ExtractMailPrefix()** | Etki alanı sonekini e-posta adresinden veya Kullanıcı asıl adından kaldırır. Bu, yalnızca Kullanıcı adının geçirildiği ilk kısmını ayıklar (örneğin, joe_smith@contoso.comyerine "joe_smith"). |
 | **JOIN ()** | İki özniteliği birleştirerek yeni bir değer oluşturur. İsteğe bağlı olarak, iki öznitelik arasında bir ayırıcı kullanabilirsiniz. NameID talep dönüştürmesi için, JOIN doğrulanmış bir etki alanıyla kısıtlıdır. Seçilen Kullanıcı tanımlayıcı değeri bir etki alanına sahipse, seçilen doğrulanmış etki alanını eklemek için Kullanıcı adını ayıklar. Örneğin, Kullanıcı tanımlayıcı değeri olarak e-postayı (joe_smith@contoso.com) seçip doğrulanmış etki alanı olarak contoso.onmicrosoft.com ' i seçerseniz, bu, joe_smith@contoso.onmicrosoft.comsonuçlanır. |
 | **ToLower ()** | Seçili özniteliğin karakterlerini küçük harfli karakterlere dönüştürür. |
 | **ToUpper ()** | Seçili özniteliğin karakterlerini büyük harfli karakterlere dönüştürür. |

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
-ms.date: 12/19/2018
-ms.openlocfilehash: fb7ba90724a98a34adf4aa279eefc8e3d7a63bf3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/12/2019
+ms.openlocfilehash: a113ea3fd4828a498d1f53ea7604df7bc8588eb5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811379"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048401"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL veritabanı için performans önerileri
 
@@ -25,6 +25,17 @@ Azure SQL veritabanı öğrenir ve uygulamanızla uyum sağlar. SQL veritabanlar
 > [!TIP]
 > [Otomatik ayarlama](sql-database-automatic-tuning.md) , en yaygın veritabanı performans sorunlarından bazılarını otomatik olarak ayarlamak için önerilen yöntemdir. [Sorgu performansı öngörüleri](sql-database-query-performance.md) , temel Azure SQL veritabanı performans izleme ihtiyaçları için önerilen yöntemdir. [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) , otomatik performans sorunlarını gidermeye yönelik yerleşik zeka ile veritabanı performansının ölçekteki gelişmiş izlenmesi için önerilen yöntemdir.
 >
+
+## <a name="performance-recommendations-options"></a>Performans önerileri seçenekleri
+
+Performans önerisi seçenekleri kullanılabilir Azure SQL veritabanı:
+
+| Performans önerisi | Tek veritabanı ve havuza alınmış veritabanı desteği | Örnek veritabanı desteği |
+| :----------------------------- | ----- | ----- |
+| **Dizin önerileri oluşturma** -iş yükünüzün performansını iyileştirebilecek dizinlerin oluşturulmasını önerir. | Yes | Hayır | 
+| **Dizin önerilerini bırakma** -benzersiz dizinler ve uzun süredir kullanılmamış dizinler dışında, yedekli ve yinelenen dizinlerin her gün kaldırılmasını önerir (> 90 gün). Bu seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez. | Yes | Hayır |
+| **Sorgu önerilerini Parametreleştirme (Önizleme)** -sürekli olarak yeniden derlenen ancak aynı sorgu yürütme planına sahip bir veya daha fazla sorgunuz olduğunda zorlamalı parametrization önerilir. | Yes | Hayır |
+| **Şema sorunları önerilerini düzeltme (Önizleme)** -SQL veritabanı HIZMETI, SQL veritabanınızda oluşan şema Ile ilgili SQL hatalarının sayısında bir anomali fark edildiğinde şema düzeltme için öneriler görüntülenir. Microsoft şu anda "şema sorununu çözme" önerilerini kullanımdan kaldıramamaktadır. | Yes | Hayır |
 
 ## <a name="create-index-recommendations"></a>Dizin önerileri oluşturma
 SQL veritabanı, çalıştıran sorguları sürekli izler ve performansı iyileştirebilecek dizinleri tanımlar. Belirli bir dizinin eksik olduğu güvenden sonra yeni bir **Dizin oluşturma** önerisi oluşturulur.
@@ -50,8 +61,7 @@ Eksik dizinlerin algılanmasının yanı sıra SQL veritabanı, mevcut dizinleri
 
 Bırakma dizini önerileri, Ayrıca, uygulamadan sonra doğrulama aracılığıyla da gider. Performans artdığı takdirde, etki raporu kullanılabilir. Performans düşer ise, öneri geri döndürülür.
 
-
-## <a name="parameterize-queries-recommendations"></a>Sorgu önerilerini Parametreleştirme
+## <a name="parameterize-queries-recommendations-preview"></a>Sorgu önerilerini Parametreleştirme (Önizleme)
 *Parametreli* sorgu önerileri, sürekli olarak yeniden derlenmesi gereken ancak aynı sorgu yürütme planıyla biten bir veya daha fazla sorgunuz olduğunda görünür. Bu koşul zorunlu Parametreleştirme uygulamak için bir fırsat oluşturur. Zorunlu Parametreleştirme, daha sonra sorgu planlarının önbelleğe alınıp daha sonra yeniden kullanılmasını sağlar ve bu da performansı artırır ve kaynak kullanımını azaltır. 
 
 Başlangıçta SQL Server karşı verilen her sorgunun bir yürütme planı oluşturmak için derlenmesi gerekir. Oluşturulan her plan plan önbelleğine eklenir. Aynı sorgunun sonraki yürütmeleri bu planı önbellekten yeniden kullanabilir ve bu da ek derleme ihtiyacını ortadan kaldırır. 

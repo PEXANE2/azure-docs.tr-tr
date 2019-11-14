@@ -1,20 +1,21 @@
 ---
-title: Azure Application Gateway Web uygulaması güvenlik duvarı kurallarını özelleştirme-PowerShell
+title: PowerShell kullanarak kuralları özelleştirme
+titleSuffix: Azure Web Application Firewall
 description: Bu makalede, PowerShell ile Application Gateway Web uygulaması güvenlik duvarı kurallarını özelleştirme hakkında bilgi sağlanır.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 2930204cd322f3a8ba25eb6f3455a51f1d3d2ee9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55eea15da8c3a10b0421ff1576082d6b42fc7c56
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516961"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048519"
 ---
-# <a name="customize-web-application-firewall-rules-through-powershell"></a>Web uygulaması güvenlik duvarı kurallarını PowerShell aracılığıyla özelleştirme
+# <a name="customize-web-application-firewall-rules-using-powershell"></a>PowerShell kullanarak Web uygulaması güvenlik duvarı kurallarını özelleştirme
 
 Azure Application Gateway Web uygulaması güvenlik duvarı (WAF), Web uygulamaları için koruma sağlar. Bu korumalar, Open Web Application Security Project (OWASP) çekirdek kural kümesi (CCR) tarafından sağlanır. Bazı kurallar yanlış pozitif sonuçlar oluşmasına neden olabilir ve gerçek trafiği engelleyebilir. Bu nedenle, Application Gateway kural gruplarını ve kuralları özelleştirme yeteneği sağlar. Belirli kural grupları ve kuralları hakkında daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı liste grupları ve kuralları listesi](application-gateway-crs-rulegroups-rules.md).
 

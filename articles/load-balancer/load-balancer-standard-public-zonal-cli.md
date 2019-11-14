@@ -1,6 +1,6 @@
 ---
-title: Azure CLI kullanarak bölgesel ön ucu ile standart Load Balancer oluşturma
-titlesuffix: Azure Load Balancer
+title: Bölgesel ön ucu ile standart Load Balancer-Azure CLI
+titleSuffix: Azure Load Balancer
 description: Azure CLı kullanarak genel IP adresi ön ucu ile Genel Standart Load Balancer oluşturma hakkında bilgi edinin
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 7da41456a4f4bb88d402d27b42b31f6d4adfa7f6
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 5e6dd06cf43b0eb5389597dcedbc323f4c035333
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274310"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048335"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Azure CLI kullanarak bölgesel ön ucu ile standart Load Balancer oluşturma
 
@@ -95,7 +95,7 @@ az network lb probe create \
 ```
 
 ## <a name="create-load-balancer-rule-for-port-80"></a>80 numaralı bağlantı noktası için yük dengeleyici kuralı oluşturma
-Yük dengeleyici kuralı, gerekli kaynak ve hedef bağlantı noktalarının yanı sıra gelen trafik için ön uç IP yapılandırmasını ve trafiği almak için arka uç IP havuzunu tanımlar. *myFrontEndPool* ön uç havuzunda 80 numaralı bağlantı noktasını dinlemek ve yine 80 numaralı bağlantı noktasını kullanarak *myBackEndPool* arka uç adres havuzuna yük dengelemesi yapılmış ağ trafiğini göndermek için [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) ile *myLoadBalancerRuleWeb* yük dengeleyici kuralı oluşturun.
+Yük dengeleyici kuralı, gerekli kaynak ve hedef bağlantı noktalarının yanı sıra gelen trafik için ön uç IP yapılandırmasını ve trafiği almak için arka uç IP havuzunu tanımlar. *myFrontEndPool* ön uç havuzunda 80 numaralı bağlantı noktasını dinlemek ve yine 80 numaralı bağlantı noktasını kullanarak [myBackEndPool](/cli/azure/network/lb/rule#az-network-lb-rule-create) arka uç adres havuzuna yük dengelemesi yapılmış ağ trafiğini göndermek için *az network lb rule create* ile *myLoadBalancerRuleWeb* yük dengeleyici kuralı oluşturun.
 
 ```azurecli-interactive
 az network lb rule create \
@@ -115,7 +115,7 @@ VM’leri dağıtmadan ve dengeleyicinizi test etmeden önce yardımcı sanal a�
 
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-MyResourceGroup adlı bir alt ağ ile Myvnet adlı bir  sanal ağ oluşturun [az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create)komutunu kullanın.
+MyResourceGroup *adlı bir* alt ağ Ile *myvnet* adlı bir sanal ağ oluşturun [az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create)komutunu kullanın.
 
 
 ```azurecli-interactive

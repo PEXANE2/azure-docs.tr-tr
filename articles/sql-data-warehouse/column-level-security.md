@@ -11,16 +11,16 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 34172e313b537d59287a424683ea1555cbba9b99
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693092"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049152"
 ---
 # <a name="column-level-security"></a>Sütun düzeyinde güvenlik
 Sütun düzeyinde güvenlik (CLS), müşterilerin, Kullanıcı yürütme bağlamına veya grup üyeliğine göre veritabanı tablo sütunlarına erişimi denetlemesine olanak sağlar.
-
+Aşağıdaki videoya Güncelleştir-Bu videonun gönderildiği [satır düzeyi güvenlik](https://docs.microsoft.com/en-us/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) , SQL Data Warehouse 'da da kullanılabilir. 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
 CLS, uygulamanızdaki güvenliğin tasarımını ve kodlamasını basitleştirir. CLS, hassas verileri korumak için sütun erişimiyle ilgili kısıtlamalar uygulamanıza olanak sağlar. Örneğin, belirli kullanıcıların departmanıyla ilgili bir tablonun yalnızca belirli sütunlarına erişebilmesini sağlama. Erişim kısıtlama mantığı, başka bir uygulama katmanındaki verilerden uzakta değil, veritabanı katmanında bulunur. Veri erişimi herhangi bir katmandan her denendiğinde, veritabanı erişim kısıtlamalarını uygular. Bu kısıtlama, genel güvenlik sisteminizin yüzey alanını azaltarak güvenlik sisteminizi daha güvenilir ve sağlam hale getirir. Ayrıca, CLS, kullanıcıların erişim kısıtlamalarını kullanıcılara sağlamak için sütunları filtrelemeye yönelik görüntüleme gereksinimini ortadan kaldırır.

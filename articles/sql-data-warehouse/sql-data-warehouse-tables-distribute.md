@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685470"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049124"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda dağıtılmış tablo tasarlamaya yönelik kılavuz
 Azure SQL veri ambarı 'nda karma dağıtılan ve hepsini bir kez deneme dağıtılmış tablolar tasarlamaya yönelik öneriler.
@@ -60,7 +60,7 @@ Aşağıdaki senaryolarda tablonuz için hepsini bir kez deneme dağılımı kul
 
 - Varsayılan değer olduğundan, basit bir başlangıç noktası olarak Başlarken
 - Belirgin bir katılım anahtarı yoksa
-- Karma için tablo dağıtmak için iyi aday sütun yoksa
+- Karma için tablo dağıtmak üzere iyi bir aday sütunu yoksa
 - Tablo, diğer tablolarla ortak bir JOIN anahtarını paylaşmaz
 - Birleştirme, sorgudaki diğer birleşimlerden daha az önemse
 - Tablo geçici bir hazırlama tablosu olduğunda
@@ -127,7 +127,7 @@ Karma olarak dağıtılan bir tablo tasarladıktan sonra, sonraki adım tabloya 
 Veriler karma olarak dağıtılmış bir tabloya yüklendikten sonra, satırların 60 dağıtımları arasında ne kadar eşit dağıtıldığını görmek için işaretleyin. Dağıtım başına satır sayısı, performans üzerinde belirgin bir etki olmadan %10 ' a kadar farklılık gösterebilir. 
 
 ### <a name="determine-if-the-table-has-data-skew"></a>Tabloda veri eğriliği olup olmadığını belirleme
-Veri eğriliğini denetlemeye yönelik hızlı bir yol [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)kullanmaktır. Aşağıdaki SQL kodu, 60 dağıtımların her birinde depolanan tablo satırı sayısını döndürür. Dengeli performans için, dağıtılmış tablodaki satırların tüm dağıtımlarla eşit olarak yayılmalıdır.
+Veri eğriliğini denetlemeye yönelik hızlı bir yol, [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)kullanmaktır. Aşağıdaki SQL kodu, 60 dağıtımların her birinde depolanan tablo satırı sayısını döndürür. Dengeli performans için, dağıtılmış tablodaki satırların tüm dağıtımlarla eşit olarak yayılmalıdır.
 
 ```sql
 -- Find data skew for a distributed table

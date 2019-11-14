@@ -1,25 +1,25 @@
 ---
-title: Dağıtım Privileged Identity Management (PıM)-Azure Active Directory | Microsoft Docs
+title: Privileged Identity Management dağıtma (PıM)-Azure AD | Microsoft Docs
 description: Azure AD Privileged Identity Management (PıM) dağıtımının nasıl planlanacağını açıklar.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/08/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1263d494ff26ff6ab87d39bc864271f14457b3
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: eef096322c8a8cfbf1618447529d46f6fbfd13b1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756275"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021862"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management dağıtma (PıM)
 
@@ -44,7 +44,7 @@ Azure AD Privileged Identity Management, Azure AD, Azure kaynakları ve diğer M
 
 **Maliyetleri azaltın** -Privileged Identity Management doğru dağıtarak verimsizlikleri, insan hatası ve güvenlik sorunlarını ortadan kaldırarak maliyetleri düşürün. Net sonuç, yüksek maliyetli ve kurtarılması zor olan ayrıcalıklı kimliklerle ilişkili siber suçlar 'in bir azalmasıyla sonuçlanır. Privileged Identity Management, kuruluşunuzun yönetmelikleri ve standartları ile uyumlu hale geldiğinde denetim erişim bilgileriyle ilişkili maliyeti azaltmasına de yardımcı olur.
 
-Daha fazla bilgi için bkz. [Azure AD Privileged Identity Management nedir?](pim-configure.md).
+Daha fazla bilgi için [Azure AD Privileged Identity Management nedir?](pim-configure.md).
 
 ### <a name="licensing-requirements"></a>Lisanslama gereksinimleri
 
@@ -58,7 +58,7 @@ Daha fazla bilgi için bkz. [Privileged Identity Management kullanılacak lisans
 
 ### <a name="key-terminology"></a>Anahtar terminolojisi
 
-| Terim veya kavram | Açıklama |
+| Kavram veya sözleşme | Açıklama |
 | --- | --- |
 | lebilecek | Bir kullanıcının rolü kullanmak için bir veya daha fazla eylem gerçekleştirmesini gerektiren bir rol ataması. Bir Kullanıcı bir rol için uygun hale getirildiğinde, ayrıcalıklı görevleri gerçekleştirmeleri gerektiğinde rolü etkinleştirebilecekleri anlamına gelir. Kalıcı ve uygun bir rol atamasına karşılık gelen bir kişiye verilen erişimde fark yoktur. Tek fark, bazı kişilerin her zaman erişim gereksinimi yoktur. |
 | etkinleştirme | Kullanıcının uygun olduğu bir rolü kullanmak için bir veya daha fazla eylem gerçekleştirme işlemi. Eylemler, bir Multi-Factor Authentication (MFA) denetimi gerçekleştirmeye, iş gerekçesinin sağlanmasından veya belirlenen onaylayanlardan onay isteğinde bulunabilir. |
@@ -75,7 +75,7 @@ Daha fazla bilgi için bkz. [terminoloji](pim-configure.md#terminology).
 1. Kullanıcı rolünü başarıyla etkinleştirdikten sonra, önceden yapılandırılmış bir zaman aralığı için rol alırlar.
 1. Yöneticiler denetim günlüğündeki tüm Privileged Identity Management etkinliklerinin geçmişini görüntüleyebilir. Ayrıca, Azure AD kuruluşlarını daha da güvenli hale getirirler ve erişim gözden geçirmeleri ve uyarıları gibi Privileged Identity Management özelliklerini kullanarak uyumluluk sağlayabilir.
 
-Daha fazla bilgi için bkz. [Azure AD Privileged Identity Management nedir?](pim-configure.md).
+Daha fazla bilgi için [Azure AD Privileged Identity Management nedir?](pim-configure.md).
 
 ### <a name="roles-that-can-be-managed-by-privileged-identity-management"></a>Privileged Identity Management tarafından yönetilebilecek roller
 
@@ -85,7 +85,7 @@ Daha fazla bilgi için bkz. [Azure AD Privileged Identity Management nedir?](pim
 
 Daha fazla bilgi için, [Privileged Identity Management içinde yönetiyoruz roller](pim-roles.md)konusuna bakın.
 
-## <a name="plan-your-deployment"></a>Dağıtımınızı planlayın
+## <a name="plan-your-deployment"></a>Dağıtımınızı planlama
 
 Bu bölümde, kuruluşunuzda Privileged Identity Management dağıtılmadan önce yapmanız gerekenler ele alınmaktadır. Bu bölümde, kuruluşunuzun ayrıcalıklı kimlikleri için uygun olan en iyi planı oluşturmak için size kılavuzluk edecek şekilde yönergeler izlemeniz ve bu bölümdeki kavramların anlaşılması önemlidir.
 
@@ -99,7 +99,7 @@ Aşağıdaki bölümde, projede yer alan tüm paydaşların belirlenmesi ve otur
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Paydaşlar: Azure AD rolleri Için Privileged Identity Management
 
-| Adı | Rol | Eylem |
+| Ad | Rol | Eylem |
 | --- | --- | --- |
 | Ad ve e-posta | **Kimlik mimarı veya Azure genel Yöneticisi**<br/>Kimlik Yönetimi ekibinin, bu değişikliğin kuruluşunuzdaki temel kimlik yönetimi altyapısına nasıl hizalanacağını tanımlamaya yönelik bir temsilcisidir. | SO/R/ı |
 | Ad ve e-posta | **Hizmet sahibi/satır Yöneticisi**<br/>Bir hizmetin veya bir hizmet grubunun BT sahiplerine bir temsilci. Bunlar, kararlar verirken ve takımlarında Privileged Identity Management almaya yardımcı olan bir anahtarlardır. | SO/R/ı |
@@ -109,7 +109,7 @@ Aşağıdaki bölümde, projede yer alan tüm paydaşların belirlenmesi ve otur
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Paydaşlar: Azure Kaynak rolleri Için Privileged Identity Management
 
-| Adı | Rol | Eylem |
+| Ad | Rol | Eylem |
 | --- | --- | --- |
 | Ad ve e-posta | **Abonelik/kaynak sahibi**<br/>Privileged Identity Management dağıtmak istediğiniz her abonelik veya kaynağın BT sahiplerine bir temsilci | SO/R/ı |
 | Ad ve e-posta | **Güvenlik sahibi**<br/>Güvenlik ekibinden, planın kuruluşunuzun güvenlik gereksinimlerini karşıladığı oturumu kapatan bir temsilcisidir. | SO/R |
@@ -189,7 +189,7 @@ En fazla izin sayısı olan Azure AD rollerinin korunmasını önceliklendirmek 
 1. Skype Kurumsal Yöneticisi
 
 > [!TIP]
-> : heavy_check_mark: **Microsoft** , güvenliği tehlikeye atıldığında en çok zararlı olanların yapabilecekleri bir ilk adım olarak Privileged Identity Management kullanarak tüm genel yöneticileri ve güvenlik yöneticilerini yönetmenizi önerir.
+> : heavy_check_mark: **Microsoft** , güvenliği tehlikeye atıldığında en çok zararlı olanların yapabilecekleri bir ilk adım olarak Privileged Identity Management kullanarak tüm genel yönetici ve güvenlik yöneticilerinizi yönetmenizi önerir.
 
 Kuruluşunuz için en önemli verileri ve izinleri göz önünde bulundurmanız önemlidir. Örnek olarak, bazı kuruluşlar, verilere erişme ve/veya çekirdek iş akışlarını değiştirme yeteneğine sahip olduklarından Power BI yönetici rollerini veya takımlar yönetici rollerini Privileged Identity Management kullanarak korumak isteyebilir.
 
@@ -210,21 +210,21 @@ Azure kaynağı için Privileged Identity Management kullanılarak hangi rol ata
 Genel bir yöneticiyseniz, hangi aboneliklerin/kaynakların en önemli olduğuna karar verirken, her abonelik tarafından yönetilen kaynakların bir listesini toplamak için kuruluşunuzdaki abonelik sahiplerine ulaşmanız gerekir. Daha sonra, kaynakları tehlikeye çıkarak önem düzeyine göre gruplamak için abonelik sahipleriyle birlikte çalışmanız gerekir (düşük, orta, yüksek). Bu önem düzeyine göre Privileged Identity Management ile kaynakları yönetmeyi önceliklendirmelisiniz.
 
 > [!TIP]
-> : heavy_check_mark: **Microsoft** , hassas abonelikler/kaynaklar içindeki tüm roller için Privileged Identity Management iş akışı ayarlamak üzere kritik hizmetlerin abonelik/kaynak sahipleri ile çalışmanızı önerir.
+> : heavy_check_mark: **Microsoft** , hassas abonelikler/kaynaklar içindeki tüm roller için Privileged Identity Management iş akışını ayarlamak üzere kritik hizmetlerin abonelik/kaynak sahipleri ile çalışmanızı önerir.
 
 Azure kaynakları için Privileged Identity Management zamana sınırlı hizmet hesaplarını destekler. Hizmet hesaplarını, normal bir kullanıcı hesabını nasıl değerlendikiyle tam olarak aynı şekilde ele almanız gerekir.
 
 Kritik olmayan abonelikler/kaynaklar için, tüm roller için Privileged Identity Management ayarlamanız gerekmez. Ancak, sahip ve Kullanıcı erişimi yönetici rollerini Privileged Identity Management ile korumanız hala gerekir.
 
 > [!TIP]
-> : heavy_check_mark: **Microsoft** , tüm aboneliklerin/kaynakların Privileged Identity Management kullanarak sahip rollerini ve Kullanıcı erişimi yönetici rollerini yönetmenizi önerir.
+> : heavy_check_mark: **Microsoft** , tüm aboneliklerdeki/kaynakların sahip rollerini ve Kullanıcı erişimi yönetici rollerini Privileged Identity Management kullanarak yönetmenizi önerir.
 
 ### <a name="decide-which-role-assignments-should-be-permanent-or-eligible"></a>Hangi rol atamalarının kalıcı veya uygun olacağını belirleyin
 
 Privileged Identity Management tarafından yönetilecek rol listesine karar verdikten sonra, hangi kullanıcıların uygun rolü ve kalıcı olarak etkin rolü alması gerektiğine karar vermelisiniz. Uygun roller yalnızca Privileged Identity Management atanabileceği için, Azure Active Directory ve Azure kaynakları aracılığıyla atanan normal roller kalıcı olarak etkindir.
 
 > [!TIP]
-> : heavy_check_mark: **Microsoft** , Azure AD rolleri ve Azure Kaynak rolleri için, kalıcı olarak olması gereken, önerilen [iki kesme camı acil durum erişim hesabı](../users-groups-roles/directory-emergency-access.md)dışında sıfır kalıcı etkin atama yapmanızı önerir. Genel yönetici rolü.
+> : heavy_check_mark: **Microsoft** , hem Azure AD rolleri hem de Azure Kaynak rolleri için, kalıcı genel yönetici rolüne sahip olması gereken, önerilen [iki kesme camı acil durum erişim hesabı](../users-groups-roles/directory-emergency-access.md)dışında sıfır kalıcı etkin atama yapmanızı önerir.
 
 Yöneticinin azalmasına izin verdiğimiz halde, kuruluşların bu hakkı elde etmelerini bazen zorlaştırıyor. Bu kararı verirken göz önünde bulundurmanız gereken noktalar şunlardır:
 
@@ -243,27 +243,27 @@ Privileged Identity Management çözümünüzü uygulamadan önce, kuruluşunuzu
 | Rol | MFA gerektirme | Bildirim | Olay bileti | Onay gerektir | Kişi | Etkinleştirme süresi | Kalıcı yönetici |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Genel Yönetici | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Diğer genel Yöneticiler | 1 Saat | Acil durum erişim hesapları |
-| Exchange Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | sayı | Hiçbiri | 2 saat | Hiçbiri |
-| Yardım Masası Yöneticisi | sayı | sayı | :heavy_check_mark: | sayı | Hiçbiri | 8 saat | Hiçbiri |
+| Exchange Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | sayı | None | 2 saat | None |
+| Yardım Masası Yöneticisi | sayı | sayı | :heavy_check_mark: | sayı | None | 8 saat | None |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Azure Kaynak rolleri için Privileged Identity Management ayarları
 
 | Rol | MFA gerektirme | Bildirim | Onay gerektir | Kişi | Etkinleştirme süresi | Etkin yönetici | Etkin süre sonu | Uygun süre sonu |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Kritik aboneliklerin sahibi | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Aboneliğin diğer sahipleri | 1 Saat | Hiçbiri | Yok | 3 ay |
-| Daha az kritik aboneliğin Kullanıcı erişimi Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | Hiçbiri | 1 Saat | Hiçbiri | Yok | 3 ay |
-| Sanal makine Katılımcısı | sayı | :heavy_check_mark: | sayı | Hiçbiri | 3 saat | Hiçbiri | Yok | 6 ay |
+| Kritik aboneliklerin sahibi | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Aboneliğin diğer sahipleri | 1 Saat | None | yok | 3 ay |
+| Daha az kritik aboneliğin Kullanıcı erişimi Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | None | 1 Saat | None | yok | 3 ay |
+| Sanal makine Katılımcısı | sayı | :heavy_check_mark: | sayı | None | 3 saat | None | yok | 6 ay |
 
 Aşağıdaki tabloda ayarların her biri açıklanmaktadır.
 
 | Ayar | Açıklama |
 | --- | --- |
 | Rol | Ayarlarını tanımladığınız rolün adı. |
-| MFA gerektirme | Rolü etkinleştirmeden önce uygun kullanıcının MFA gerçekleştirmesi gerekip gerekmediği.<br/><br/> : heavy_check_mark: Microsoft, özellikle rollerin Konuk kullanıcıları varsa tüm yönetici rolleri için MFA 'yı zorunlu **kılmanızı önerir** . |
+| MFA gerektirme | Rolü etkinleştirmeden önce uygun kullanıcının MFA gerçekleştirmesi gerekip gerekmediği.<br/><br/> : heavy_check_mark: Microsoft, özellikle rollerin Konuk kullanıcıları varsa, tüm yönetici rolleri için MFA 'yı zorunlu **kılmanızı önerir** . |
 | Bildirim | True olarak ayarlanırsa, genel yönetici, ayrıcalıklı rol yöneticisi ve uygun bir kullanıcı rolü etkinleştirdiğinde kuruluştaki Güvenlik Yöneticisi bir e-posta bildirimi alır.<br/><br/>**Note:** Bazı kuruluşların yönetici hesaplarına bağlı bir e-posta adresi yoksa, bu e-posta bildirimlerini almak için, yöneticilerin bu e-postaları alabilmesi için alternatif bir e-posta adresi ayarlamanız gerekir. |
 | Olay bileti | Uygun kullanıcının rolünü etkinleştirirken bir olay bileti numarası kaydetmesi gerekip gerekmediği. Bu ayar, istenmeyen etkinleştirmeleri azaltmak için bir kuruluşun iç olay numarasıyla her bir etkinleştirmeyi belirlemesine yardımcı olur.<br/><br/> : heavy_check_mark: Microsoft, Privileged Identity Management iç sisteminize bağlamak için olay bilet numaralarının avantajlarından **faydalanmanızı önerir** . Bu, özellikle etkinleştirme için bağlam gerektiren onaylayanlar için yararlıdır. |
 | Onay gerektir | Rolü etkinleştirmek için uygun kullanıcının onay alması gerekip gerekmediği.<br/><br/> : heavy_check_mark: **Microsoft** , en fazla izne sahip roller için onay ayarlamanızı önerir. Tüm Privileged Identity Management müşterilerin, genel yöneticinin, Kullanıcı yöneticisinin, Exchange yöneticisinin, güvenlik yöneticisinin ve parola yöneticisinin kullanım düzenlerini temel alan, onay kurulumu ile en yaygın rollerdir. |
-| Kişi | Uygun rolü etkinleştirmek için onay gerekiyorsa, isteği onaylaması gereken kişileri listeleyin. Varsayılan olarak, Privileged Identity Management, onaylayanı kalıcı veya uygun olup olmadıklarında ayrıcalıklı rol yöneticisi olan tüm kullanıcılar olarak ayarlar.<br/><br/>**Note:** Bir kullanıcı hem bir Azure AD rolüne hem de rolün bir onaylayana uygun ise kendilerini onaylayamaz.<br/><br/> : heavy_check_mark: **Microsoft** , onaylayanları, genel yönetici yerine belirli bir rol ve sık kullananlar hakkında bilgi sahibi olacak şekilde seçmenizi önerir. |
+| Kişi | Uygun rolü etkinleştirmek için onay gerekiyorsa, isteği onaylaması gereken kişileri listeleyin. Varsayılan olarak, Privileged Identity Management, onaylayanı kalıcı veya uygun olup olmadıklarında ayrıcalıklı rol yöneticisi olan tüm kullanıcılar olarak ayarlar.<br/><br/>**Note:** Bir kullanıcı hem bir Azure AD rolüne hem de rolün bir onaylayana uygun ise kendilerini onaylayamaz.<br/><br/> : heavy_check_mark: **Microsoft** , belirli bir rol ve genel yönetici yerine sık kullananlar hakkında bilgi sahibi olan onaylayanlar seçmenizi önerir. |
 | Etkinleştirme süresi | Kullanıcı, süresi dolmadan önce rolde etkinleştirilecek zaman uzunluğu. |
 | Kalıcı yönetici | Rol için kalıcı yönetici olacak (hiçbir şekilde etkinleştirmesi gerekmez) kullanıcıların listesi.<br/><br/> : heavy_check_mark: **Microsoft** , genel Yöneticiler hariç tüm roller için sıfır sistem yöneticisi olmasını önerir. BT hakkında daha fazla bilgi edinmek isteyen kişiler ve bu planın kalıcı olarak etkin olması gerekir. |
 | Etkin yönetici | Azure kaynakları için etkin yönetici, rolünü kullanmak için hiçbir şekilde etkinleştirmesi gereken kullanıcıların listesidir. Bu, kullanıcının bu rolü kaybedeceğinizi için bir sona erme saati ayarlayabildiğinden Azure AD rollerinde olduğu gibi kalıcı yönetici olarak kabul edilmez. |
@@ -279,18 +279,18 @@ Uygun planlama temeli, Azure Active Directory ile bir uygulamayı başarıyla da
 Bu bölümü, uygulamayı doğrulamak üzere bir grup kullanıcıyı ve kullanıcı grubunu belirlemek için kullanın. Planlama bölümünde seçtiğiniz ayarlara bağlı olarak, her bir rol için test etmek istediğiniz kullanıcıları belirlersiniz.
 
 > [!TIP]
-> : heavy_check_mark: **Microsoft** , her BIR Azure AD rolünün hizmet sahiplerini test kullanıcıları olacak şekilde yapmanızı önerir ve bu sayede işleme yönelik bir iç advocator haline gelir.
+> : heavy_check_mark: **Microsoft** , her BIR Azure AD rolünün hizmet sahiplerini test kullanıcıları olarak yapmanızı önerir ve bu sayede işleme yönelik bir iç advocator haline gelir.
 
 Bu tabloda, her bir rolün ayarlarının çalıştığını doğrulayan test kullanıcılarını tanımla.
 
 | Rol adı | Test kullanıcıları |
 | --- | --- |
-| &lt;Role adı &gt; | rolü test etmek için &lt;Users &gt; |
-| &lt;Role adı &gt; | rolü test etmek için &lt;Users &gt; |
+| &lt;rol adı&gt; | Kullanıcıların rolü test etmek için &lt;&gt; |
+| &lt;rol adı&gt; | Kullanıcıların rolü test etmek için &lt;&gt; |
 
 ### <a name="test-implementation"></a>Test uygulama
 
-Test kullanıcılarını tanımladığınıza göre, test kullanıcılarınız için Privileged Identity Management yapılandırmak üzere bu adımı kullanın. Kuruluşunuz Azure portal Privileged Identity Management kullanmak yerine kendi iç uygulamanıza Privileged Identity Management iş akışı eklemek isterse, Privileged Identity Management içindeki tüm işlemler de desteklenir [grafik API 'si](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-root)ile.
+Test kullanıcılarını tanımladığınıza göre, test kullanıcılarınız için Privileged Identity Management yapılandırmak üzere bu adımı kullanın. Kuruluşunuz Azure portal Privileged Identity Management kullanmak yerine kendi iç uygulamanıza Privileged Identity Management iş akışını eklemek isterse, Privileged Identity Management içindeki tüm işlemler [Graph API 'si](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-root)aracılığıyla da desteklenir.
 
 #### <a name="configure-privileged-identity-management-for-azure-ad-roles"></a>Azure AD rolleri için Privileged Identity Management yapılandırma
 
@@ -338,7 +338,7 @@ Privileged Identity Management dağıtmak, ayrıcalıklı rol kullanıcıları i
 - PıM ile ilgili herhangi bir sorun için iletişim bilgileri veya Yardım Masası bağlantısı
 
 > [!TIP]
-> : heavy_check_mark: **Microsoft** , yardım masasına/destek ekibinize, Privileged Identity Management iş akışı aracılığıyla (kuruluşunuzun BIR dahili BT destek ekibi varsa) kılavuzluk etmek için zaman ayarlamanızı önerir. Bunlara uygun belge ve iletişim bilgilerinizi sağlayın.
+> : heavy_check_mark: **Microsoft** , yardım masasına/destek ekibinize, bunları Privileged Identity Management iş akışı (kuruluşunuzun BIR dahili BT destek ekibi varsa) üzerinden kılavuzluk etmek için zaman ayarlamanızı önerir. Bunlara uygun belge ve iletişim bilgilerinizi sağlayın.
 
 ### <a name="move-to-production"></a>Üretime taşıma
 
@@ -350,7 +350,7 @@ Privileged Identity Management, üretim ortamında istendiği şekilde çalış�
 
 #### <a name="azure-ad-roles"></a>Azure AD rolleri
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. **Azure AD Privileged Identity Management**açın.
 1. **Azure AD rolleri** ' ne tıklayın ve ardından **Roller**' e tıklayın.
 1. Yapılandırdığınız her bir rol için uygun atamaya sahip tüm kullanıcılar için üç nokta ( **...** ) simgesine tıklayın.
@@ -358,7 +358,7 @@ Privileged Identity Management, üretim ortamında istendiği şekilde çalış�
 
 #### <a name="azure-resource-roles"></a>Azure kaynağı rolleri
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. **Azure AD Privileged Identity Management**açın.
 1. **Azure kaynakları** ' na tıklayın ve ardından geri almak istediğiniz bir aboneliğe veya kaynağa tıklayın.
 1. **Roller**' e tıklayın.
@@ -373,7 +373,7 @@ Privileged Identity Management, üretim ortamında istendiği şekilde çalış�
 
 Kiracınızı daha iyi korumak için Privileged Identity Management yerleşik uyarı işlevini kullanmanız gerekir. Daha fazla bilgi için bkz. [güvenlik uyarıları](pim-how-to-configure-security-alerts.md#security-alerts). Bu uyarılar şunları içerir: Yöneticiler ayrıcalıklı roller kullanmıyor, roller Privileged Identity Management dışında atanıyor, roller çok sık ve daha fazla etkinleştiriliyor. Kuruluşunuzu tam olarak korumak için, uyarı listenizde düzenli olarak gidip sorunları düzelmelisiniz. Uyarılarınızı aşağıdaki şekilde görüntüleyebilir ve çözebilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. **Azure AD Privileged Identity Management**açın.
 1. **Azure AD rolleri** ' ne tıklayın ve ardından **Uyarılar**' a tıklayın.
 
@@ -387,7 +387,7 @@ Belirli uyarılardan herhangi biri yararlı değilse veya kuruluşunuz için uyg
 Erişim gözden geçirmeleri, kullanıcıların ayrıcalıklı rollere veya belirli gözden geçirenlere atanmasını, her kullanıcının ayrıcalıklı kimliğe ihtiyacı olup olmadığını sormanız için en iyi yoldur. Saldırı yüzeyini azaltmak ve uyumlu kalmak istiyorsanız erişim gözden geçirmeleri harika. Erişim gözden geçirmesi başlatma hakkında daha fazla bilgi için bkz. [Azure AD rolleri erişim İncelemeleri](pim-how-to-start-security-review.md) ve [Azure Kaynak rolleri erişim İncelemeleri](pim-resource-roles-start-access-review.md). Bazı kuruluşlarda, bazı kuruluşlar için düzenli erişim incelemesi gerçekleştirmek gerekir, çünkü diğer bir deyişle, diğer bir deyişle, diğer bir deyişle, kuruluşunuz genelinde en az ayrıcalık sorumlusunu zorlamak için en iyi yoldur.
 
 > [!TIP]
-> : heavy_check_mark: **Microsoft** , tüm Azure AD ve Azure Kaynak rolleriniz için üç aylık erişim gözden geçirmeleri ayarlamanıza önerilir.
+> : heavy_check_mark: **Microsoft** , tüm Azure AD ve Azure Kaynak rolleriniz için üç aylık erişim gözden geçirmeleri ayarlamanızı önerir.
 
 Çoğu durumda, Azure AD rolleri için gözden geçiren, Azure Kaynak rolleri gözden geçireni, rolün bulunduğu aboneliğin sahibidir. Ancak, çoğu zaman şirketlerin belirli bir kişinin e-posta adresiyle bağlantılı olmayan ayrıcalıklı hesaplara sahip olduğu durumdur. Bu durumlarda, hiç kimse okuma ve erişimi İnceleme.
 

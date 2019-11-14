@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Standart Load Balancer oluşturma-Azure PowerShell'
-titlesuffix: Azure Load Balancer
-description: Bu hızlı başlangıçta, PowerShell kullanarak bir Standart Load Balancer’ın nasıl oluşturulacağı gösterilmektedir
+title: 'Hızlı başlangıç: Standart Load Balancer oluşturma-Azure PowerShell'
+titleSuffix: Azure Load Balancer
+description: Bu hızlı başlangıçta Azure PowerShell kullanarak Standart Load Balancer oluşturma gösterilmektedir
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 0e00728e091a7d7d96cb624135519b17524d2227
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b387df5049fff2cb17e8d0758f1cf5fd8f0d0853
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274101"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049104"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell kullanarak Standart Load Balancer oluşturma
+# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Standart Load Balancer oluşturma
 
 Bu hızlı başlangıçta, Azure PowerShell kullanarak bir Standart Load Balancer’ın nasıl oluşturulacağı gösterilmektedir. Yük dengeleyiciyi test etmek için, Windows Server çalıştıran üç sanal makine (VM) ve VM 'Ler arasında bir Web uygulamasının yükünü dengeleyebilirsiniz. Standart Load Balancer hakkında daha fazla bilgi için bkz. [Standart Load Balancer nedir](load-balancer-standard-overview.md).
 
@@ -79,7 +79,7 @@ $bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
 ### <a name="create-a-health-probe"></a>Durum araştırması oluşturma
 Yük dengeleyicinin uygulamanızın durumunu izlemesine izin vermek için durum araştırması kullanabilirsiniz. Durum yoklaması, durum denetimlerine verdikleri yanıtlara göre VM’leri dinamik olarak yük dengeleyici rotasyonuna ekler ve kaldırır. VM, 15 saniyelik aralıklarda art arda iki kez başarısız olursa varsayılan olarak yük dengeleyici dağıtımından kaldırılır. Bir protokolü temel alan bir durum araştırması veya uygulamanız için belirli bir sistem durumu denetim sayfası oluşturun.
 
-Aşağıdaki örnek bir TCP araştırması oluşturur. Ayrıca daha ayrıntılı sistem durumu denetimleri için özel HTTP araştırmaları oluşturabilirsiniz. Özel bir HTTP yoklaması kullanırken *healthcheck.aspx* gibi bir durum denetimi sayfası oluşturmanız gerekir. Yük dengeleyicinin konağı rotasyonda tutması için yoklamanın **HTTP 200 OK** yanıtını döndürmesi gerekir.
+Aşağıdaki örnek bir TCP araştırması oluşturur. Ayrıca daha ayrıntılı sistem durumu denetimleri için özel HTTP araştırmaları oluşturabilirsiniz. Özel bir HTTP araştırması kullandığınızda *healthcheck.aspx* gibi bir sistem durumu denetimi sayfası oluşturmanız gerekir. Konağı dönüşüm içinde tutmak üzere araştırmanın yük dengeleyici için bir **HTTP 200 OK** yanıtı döndürmesi gerekir.
 
 Bir TCP sistem durumu araştırması oluşturmak için [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig)komutunu kullanın. Aşağıdaki örnek her VM’yi *80* numaralı *HTTP* bağlantı noktasında izleyen *myHealthProbe* adında bir durum yoklaması oluşturur:
 
@@ -93,7 +93,7 @@ $probe = New-AzLoadBalancerProbeConfig `
 ### <a name="create-a-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 Trafiğin VM’lere dağıtımını tanımlamak için bir yük dengeleyici kuralı kullanılır. Gerekli kaynak ve hedef bağlantı noktalarının yanı sıra gelen trafik için ön uç IP yapılandırması ve trafiği almak için arka uç IP havuzu tanımlamanız gerekir. Yalnızca durumu iyi olan VM’lerin trafik almasını sağlamak için kullanılacak durum araştırmasını da tanımlamanız gerekir.
 
-[Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig)ile bir yük dengeleyici kuralı oluşturun. Aşağıdaki örnek, *myLoadBalancerRule* adlı bir yük dengeleyici kuralı oluşturur ve *80* numaralı *TCP* bağlantı noktasında trafiği dengeler:
+[Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig)ile bir yük dengeleyici kuralı oluşturun. Aşağıdaki örnek, *myLoadBalancerRule* adlı bir yük dengeleyici kuralı oluşturur ve *TCP*’de *80* numaralı bağlantı noktasında trafiği dengeler:
 
 ```azurepowershell
 $rule = New-AzLoadBalancerRuleConfig `
@@ -298,7 +298,7 @@ $vm3 = New-AzVM -ResourceGroupName $rgName -Zone 3 -Location $location -VM $vmCo
 
 IIS 'yi her iki arka uç VM 'de aşağıdaki gibi özel bir Web sayfasıyla birlikte yüklemelisiniz:
 
-1. Kullanarak `Get-AzPublicIPAddress`üç VM 'nin genel IP adreslerini alın.
+1. `Get-AzPublicIPAddress`kullanarak üç VM 'nin genel IP adreslerini alın.
 
    ```azurepowershell
      $vm1_rdp_ip = (Get-AzPublicIPAddress -ResourceGroupName $rgName -Name "RdpPublicIP_1").IpAddress
@@ -331,7 +331,7 @@ IIS 'yi her iki arka uç VM 'de aşağıdaki gibi özel bir Web sayfasıyla birl
 5. *MyVM1*, *myVM2*ve *myVM3*ile RDP bağlantılarını kapatın.
 
 
-## <a name="test-load-balancer"></a>Yük dengeleyiciyi test etme
+## <a name="test-load-balancer"></a>Yük dengeleyiciyi sınama
 [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress)ile yük dengeleyicinizin genel IP adresini alın. Aşağıdaki örnek, daha önce oluşturulan *myPublicIP* için IP adresini alır:
 
 ```azurepowershell
@@ -342,9 +342,9 @@ Get-AzPublicIPAddress `
 
 Sonra da genel IP adresini bir web tarayıcısına girebilirsiniz. Aşağıdaki örnekteki gibi yük dengeleyicinin trafiği dağıttığı VM’nin ana bilgisayar adının dahil olduğu web sitesi görüntülenir:
 
-![Yük dengeleyiciyi test etme](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
+![Yük dengeleyiciyi sınama](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
 
-Yük dengeleyicinin trafiği, uygulamanızı çalıştıran üç VM’ye dağıtmasını görmek için web tarayıcınızı yenilemeye zorlayabilirsiniz. 
+Yük dengeleyicinin trafiği, uygulamanızı çalıştıran üç VM’ye dağıtma işlemini görmek için web tarayıcınızı yenilemeye zorlayabilirsiniz. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

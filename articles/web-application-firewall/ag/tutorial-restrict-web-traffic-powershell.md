@@ -1,18 +1,19 @@
 ---
-title: Web uygulaması güvenlik duvarı ile Web trafiğini kısıtlama-Azure PowerShell
+title: PowerShell kullanarak Web trafiğini kısıtlama
+titleSuffix: Azure Web Application Firewall
 description: Azure PowerShell kullanarak bir uygulama ağ geçidinde Web uygulaması güvenlik duvarıyla Web trafiğini kısıtlamayı öğrenin.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: b96065b6551f604cfd817a00e6a39cec37c71377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.topic: conceptual
+ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502285"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046287"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Azure PowerShell kullanarak Web uygulaması güvenlik duvarını etkinleştirme
 
@@ -36,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell Module sürümü 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure ile bağlantı oluşturmak için `Login-AzAccount` çalıştırmanız da gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell Module sürümü 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız, aynı zamanda çalıştırmak ihtiyacınız `Login-AzAccount` Azure ile bir bağlantı oluşturmak için.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -74,7 +75,7 @@ $pip = New-AzPublicIpAddress `
   -Sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturun
+## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
 Bu bölümde, uygulama ağ geçidini destekleyen kaynaklar oluşturup son olarak onu ve bir WAF oluşturun. Şu kaynakları oluşturacaksınız:
 

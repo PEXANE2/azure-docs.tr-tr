@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 2ab620ec456610029d699952bb9625abfe4c21dc
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 5361a820da0caa336ccc95ae657407889443268c
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307877"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048429"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API-Node. js ' ye bağlanma
 
@@ -130,5 +130,5 @@ node index.js
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Media Services [Node. js başvuru](https://aka.ms/ams-v3-nodejs-ref) belgelerini inceleyin ve Node. js ile Media Services API 'sinin nasıl kullanılacağını gösteren [örneklere](https://github.com/Azure-Samples/media-services-v3-node-tutorials) göz atın.
+Media Services [Node. js başvuru](/javascript/api/overview/azure/mediaservices/management) belgelerini inceleyin ve Node. js ile Media Services API 'sinin nasıl kullanılacağını gösteren [örneklere](https://github.com/Azure-Samples/media-services-v3-node-tutorials) göz atın.
 

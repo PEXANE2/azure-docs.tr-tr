@@ -1,18 +1,14 @@
 ---
 title: Kanada Federal pbmm şema örnek-dağıtım adımları
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere Kanada Federal pbmm şema örneği için adımları dağıtın.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/05/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 22806f497283c1885446eadd5f444dacf3769c12
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 788c52ee9a2bf9a0a2c506c2a34d221ff08bd0af
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163329"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038409"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Kanada Federal pbmm şema örneklerini dağıtma
 
@@ -97,10 +93,10 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
 Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|\[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma |İlke ataması |Linux VM 'Ler için Log Analytics çalışma alanı |Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
-|\[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi |Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: `[]` |
-|\[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi |Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: `[]` |
-|\[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma |İlke ataması |Windows VM 'Leri için Log Analytics çalışma alanı |Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
+|\[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı |İlke ataması |Linux VM 'Ler için Log Analytics çalışma alanı |Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
+|\[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi |Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: `[]` |
+|\[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi |Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: `[]` |
+|\[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı |İlke ataması |Windows VM 'Leri için Log Analytics çalışma alanı |Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
 |\[önizleme\]: denetim gereksinimlerini desteklemek için Kanada Federal PBMM denetimlerini denetleme ve belirli VM uzantılarını dağıtma |İlke ataması |VM 'Lerin yapılandırılması gereken Log Analytics çalışma alanı KIMLIĞI |Bu, VM 'Lerin için yapılandırılması gereken Log Analytics çalışma alanının KIMLIĞIDIR (GUID). |
 |\[önizleme\]: denetim gereksinimlerini desteklemek için Kanada Federal PBMM denetimlerini denetleme ve belirli VM uzantılarını dağıtma |İlke ataması |Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi |Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)bulunabilir. |
 |\[önizleme\]: denetim gereksinimlerini desteklemek için Kanada Federal PBMM denetimlerini denetleme ve belirli VM uzantılarını dağıtma |İlke ataması |Yöneticiler grubu |Grubu. Örnek: `Administrator; myUser1; myUser2` |
@@ -116,10 +112,10 @@ Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 Kanada Federal PBMM örneğini dağıtma adımlarını gözden geçirdiğinize göre, genel bakış ve denetim eşlemesi hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Kanada Federal pbmm şemaları-genel bakış](./index.md)
-> [Kanada Federal Pbmm şemaları-denetim eşlemesi](./control-mapping.md)
+> [Kanada Federal PBMM şemaları-genel bakış](./index.md)
+> [Kanada Federal Pbmm şemaları-denetim eşleme](./control-mapping.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

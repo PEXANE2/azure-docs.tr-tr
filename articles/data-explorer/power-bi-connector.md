@@ -3,16 +3,16 @@ title: Power BI için Azure Veri Gezgini bağlayıcısını kullanarak verileri 
 description: 'Bu makalede, Power BI verileri görselleştirmeye yönelik üç seçenekten birini nasıl kullanacağınızı öğrenirsiniz: Azure Veri Gezgini için Power BI Bağlayıcısı.'
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a2ec179321c5d9cb6e9627e397fcb6ae09dc82ed
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349147"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024223"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Power BI için Azure Veri Gezgini bağlayıcısını kullanarak verileri görselleştirin
 
@@ -44,10 +44,10 @@ Bu makaleyi tamamlayabilmeniz için aşağıdakiler gerekir:
 
     **Ayar** | **Değer** | **Alan açıklaması**
     |---|---|---|
-    | Küme | *https://help.kusto.windows.net* | Yardım kümesinin URL 'SI. Diğer kümeler için, URL *https://\<ClusterName @ no__t-2. @no__t -3Region\>.kusto.windows.net*biçiminde olur. |
-    | Database | Boş bırakın | Bağlanmakta olduğunuz kümede barındırılan bir veritabanı. Daha sonraki bir adımda bunu seçeceğiz. |
-    | Tablo adı | Boş bırakın | Veritabanındaki tablolardan biri veya <code>StormEvents \| take 1000</code> gibi bir sorgu. Daha sonraki bir adımda bunu seçeceğiz. |
-    | Gelişmiş seçenekler | Boş bırakın | Sorgunuz için sonuç kümesi boyutu gibi seçenekler. |
+    | Küme | *https://help.kusto.windows.net* | Yardım kümesinin URL 'SI. Diğer kümeler için URL, *https://\<ClusterName\>.\<bölgesi\>. kusto.Windows.net*biçimindedir. |
+    | Veritabanı | Boş bırakın | Bağlanmakta olduğunuz kümede barındırılan bir veritabanı. Daha sonraki bir adımda bunu seçeceğiz. |
+    | Tablo adı | Boş bırakın | Veritabanındaki tablolardan biri veya <code>StormEvents \| take 1000</code>gibi bir sorgu. Daha sonraki bir adımda bunu seçeceğiz. |
+    | Gelişmiş Seçenekler | Boş bırakın | Sorgunuz için sonuç kümesi boyutu gibi seçenekler. |
     | Veri bağlantısı modu | *DirectQuery* | Power BI verileri içeri aktarmalarını veya doğrudan veri kaynağına bağlanıp bağlanmadığını belirler. Bu bağlayıcı ile her iki seçeneği de kullanabilirsiniz. |
     | | | |
     
@@ -69,7 +69,7 @@ Bu makaleyi tamamlayabilmeniz için aşağıdakiler gerekir:
 
 1. **Gezgin** ekranında, **örnekler** veritabanını genişletin, **stormevents** ' i seçin ve **Düzenle**' yi seçin.
 
-    ![Tablo seçin](media/power-bi-connector/select-table.png)
+    ![Tablo Seç](media/power-bi-connector/select-table.png)
 
     Tablo, Power Query Düzenleyicisi'nde açılır ve burada verileri içeri aktarmadan önce satırları ve sütunları düzenleyebilirsiniz.
 

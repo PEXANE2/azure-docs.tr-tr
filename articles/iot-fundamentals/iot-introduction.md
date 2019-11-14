@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2f46ebcabd98c7a8c3376157c72da9ec5ed424a4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce82a2cc4cc936d2e0a7a8b82cbc0ed7e5c6eb52
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935222"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048641"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure Nesnelerin İnterneti (IoT) nedir?
 
@@ -20,7 +20,7 @@ Azure Nesnelerin İnterneti (IoT), Microsoft tarafından yönetilen ve milyarlar
 
 Bu makalede IoT 'nin temelleri açıklanmakta, kullanım durumları hakkında konuşuyor ve kullanılabilir sekiz ayrı hizmet açıklanır. Nelerin kullanılabilir olduğunu anlayarak, senaryonuzu tasarlamaya yardımcı olmaya ne kadar yakından bakmak istediğinizi anlayabilirsiniz.
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
 IoT çözümünün ana kısımları şunlardır: cihazlar, arka uç hizmetleri ve ikisi arasındaki iletişim. 
 
@@ -105,7 +105,7 @@ Bu IoT çözümünü uygulamak, şirketin ineklerin 'yi hızlı bir şekilde den
 
 Azure 'da çok sayıda IoT ile ilgili hizmet vardır ve bunlardan hangisini kullanmak istediğinizi anlamak kafa karıştırıcı olabilir. Bazıları IoT Central ve IoT Çözüm Hızlandırıcıları gibi, kendi çözümünüzü oluşturmanıza ve hızlıca çalışmaya başlamanıza yardımcı olacak şablonlar sağlar. Ayrıca, kullanılabilir diğer hizmetleri kullanarak kendi çözümlerinizi tamamen geliştirebilirsiniz; hepsi, ne kadar yardım istediğinize ve ne kadar denetime bağlıdır. Burada, kullanılabilir hizmetlerin yanı sıra bunları için kullanabileceğiniz bir listesi verilmiştir.
 
-1. [**IoT Central**](../iot-central/core/overview-iot-central.md): Bu, IoT cihazlarınızı bağlamanıza, izlemenize ve yönetmenize yardımcı olan bir SaaS çözümüdür. Başlamak için, cihaz türü için bir şablon seçin ve cihaz işleçlerinin kullanacağı temel bir IoT Central uygulaması oluşturun ve test edin. IoT Central uygulama aynı zamanda cihazları izlemenizi ve yeni cihazlar sağlamanıza olanak sağlar. Bu hizmet, derin hizmet özelleştirmesi gerektirmeyen kolay çözümler içindir. 
+1. [**IoT Central**](../iot-central/core/overview-iot-central.md): Bu, IoT çözümlerinin oluşturulmasını kolaylaştıran ve IoT yönetim işlemlerinin ve geliştirmenin yükünü ve maliyetini azaltmaya yardımcı olan bir IoT uygulama platformudur. Başlamak için, cihaz türü için bir şablon seçin ve cihaz işleçlerinin kullanacağı temel bir IoT Central uygulaması oluşturun ve test edin. IoT Central uygulama aynı zamanda cihazları izlemenizi ve yeni cihazlar sağlamanıza olanak sağlar. Bu hizmet, derin hizmet özelleştirmesi gerektirmeyen kolay çözümler içindir.
 
 2. [**IoT Çözüm Hızlandırıcıları**](/azure/iot-suite): Bu, IoT çözümünün geliştirilmesini hızlandırmak Için kullanabileceğiniz PaaS çözümlerinin bir koleksiyonudur. Bir sunulan IoT çözümüyle başlayıp bu çözümü gereksinimlerinize göre tamamen özelleştirebilirsiniz. Görselleştirmeyi özelleştirmek için arka ucu ve JavaScript yeteneklerini özelleştirmek üzere Java veya .NET becerileri gerekir. 
 

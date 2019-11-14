@@ -1,10 +1,10 @@
 ---
-title: Privileged Identity Management-Azure Active Directory | Azure Kaynak rol atamalarını genişletme veya yenileme | Microsoft Docs
+title: PıM-Azure AD 'de Azure Kaynak rolü atamalarını yenileme | Microsoft Docs
 description: Azure AD Privileged Identity Management (PıM) içinde Azure Kaynak rol atamalarını genişletmeyi veya yenilemeyi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edfe6a545aa9acae8045e9c9756fc2711504d75d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 577c028582bc3b23d13e71522bb83db558065ee2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895564"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022907"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rol atamalarını genişletme veya yenileme
 
@@ -43,7 +43,7 @@ Aşağıdaki adımlarda bir rol atamasının uzantısı veya yenilenmesini istem
 
 ### <a name="self-extend-expiring-assignments"></a>Süresi dolan atamaları kendi kendine uzat
 
-Bir role atanan kullanıcılar veya gruplar, süresi dolan rol atamalarını bir kaynağın **rollerim** sayfasındaki **uygun** veya **etkin** sekmesinden veya Privileged Identity Management portalının en üst düzey **rollerim** sayfasından genişletebilirler . Kullanıcılar veya gruplar, sonraki 14 gün içinde süresi dolan uygun ve etkin (atanan) rolleri genişletmeyi isteyebilir.
+Bir role atanan kullanıcılar veya gruplar, süresi dolan rol atamalarını bir kaynağın **rollerim** sayfasındaki **uygun** veya **etkin** sekmesinden veya Privileged Identity Management portalının en üst düzey **Roller** sayfasından genişletebilir. Kullanıcılar veya gruplar, sonraki 14 gün içinde süresi dolan uygun ve etkin (atanan) rolleri genişletmeyi isteyebilir.
 
 ![Azure kaynakları-rollerim sayfası bir eylem sütunuyla uygun rolleri listeleme](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
 

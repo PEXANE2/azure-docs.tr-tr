@@ -1,27 +1,27 @@
 ---
-title: Kullanıcılar ve gruplar için lisans atamalarını değiştirme-Azure Active Directory | Microsoft Docs
-description: Grup lisanslama kullanarak bir grup içindeki kullanıcıları farklı hizmet lisanslarına (Office 365 Enterprise E1 ve E3) geçirme için önerilen işlemi açıklar
+title: Kullanıcılar ve gruplar için lisans planlarını değiştirme-Azure AD | Microsoft Docs
+description: Azure Active Directory 'de grup lisanslama kullanarak bir grup içindeki kullanıcıları farklı hizmet planlarına geçirme
 services: active-directory
 keywords: Azure AD lisanslama
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/27/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7212983470e71ff6d7c1c33de142767ecf38d1f
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034040"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025899"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Azure Active Directory bir kullanıcı veya grup için lisans atamalarını değiştirme
 
@@ -29,7 +29,7 @@ Bu makalede, Azure Active Directory (Azure AD) içinde hizmet lisans planları a
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Lisans atamalarını güncelleştirmeden önce, tüm Kullanıcı veya grupların güncelleştirilmesi için bazı varsayımlar doğru olduğundan emin olmak önemlidir. Varsayımlar bir gruptaki tüm kullanıcılar için doğru değilse, bazı durumlarda geçiş başarısız olabilir. Sonuç olarak, bazı kullanıcılar hizmetlere veya verilere erişimi kaybedebilir. Aşağıdakileri doğrulayın:
+Lisans atamalarını güncelleştirmeden önce, tüm Kullanıcı veya grupların güncelleştirilmesi için bazı varsayımlar doğru olduğundan emin olmak önemlidir. Varsayımlar bir gruptaki tüm kullanıcılar için doğru değilse, bazı durumlarda geçiş başarısız olabilir. Sonuç olarak, bazı kullanıcılar hizmetlere veya verilere erişimi kaybedebilir. Emin olun:
 
 - Kullanıcılar, bir gruba atanan ve Kullanıcı tarafından devralınan ve doğrudan atanmayan geçerli lisans planına (Bu durumda, Office 365 E1) sahiptir.
 
@@ -46,7 +46,7 @@ Lisans atamalarını güncelleştirmeden önce, tüm Kullanıcı veya grupların
 **Lisans atamalarını Güncelleştir** sayfasında, bazı onay kutularının kullanılamadığını görürseniz, bir grup lisansından devralındıklarından değiştirilemeyen Hizmetleri gösterir.
 
 1. Azure AD kuruluşunuzda bir lisans yöneticisi hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
-1. **Azure Active Directory**@no__t **-1 '** i seçin ve ardından bir kullanıcının **profil** sayfasını açın.
+1. **Azure Active Directory** > **kullanıcıları**' nı seçin ve ardından bir kullanıcının **profil** sayfasını açın.
 1. **Lisansları**seçin.
 1. Kullanıcı veya grup için lisans atamasını düzenlemek üzere **atamalar** ' ı seçin. **Atamalar** sayfası, lisans atama çakışmalarını çözebileceğiniz yerdir.
 1. Office 366 E3 onay kutusunu işaretleyin ve kullanıcıya atanmış tüm E1 hizmetlerinin en azından seçili olduğundan emin olun.
@@ -61,7 +61,7 @@ Azure AD, yeni lisansları uygular ve hizmet devamlılığını sağlamak için 
 ## <a name="change-group-license-assignments"></a>Grup lisansı atamalarını değiştirme
 
 1. Azure AD kuruluşunuzda bir lisans yöneticisi hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
-1. **Azure Active Directory** > **gruplar**' ı seçin ve ardından bir grup için **genel bakış** sayfasını açın.
+1. **Azure Active Directory** > **grupları**' nı seçin ve ardından bir grup için **genel bakış** sayfasını açın.
 1. **Lisansları**seçin.
 1. Kullanıcı veya grup için lisans atamasını düzenlemek üzere **atamalar** komutunu seçin.
 1. Office 366 E3 onay kutusunu seçin. Hizmetin sürekliliği devam etmek için, kullanıcıya zaten atanmış olan E1 hizmetlerini seçtiğinizden emin olun.
