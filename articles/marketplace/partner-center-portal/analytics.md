@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 2b1d3167828f2c2c49bb22580222fbd0e54d31d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 53d7cb125f59491190aadb07755954ade78356fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813185"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075518"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market için analiz
 
-Satışları izlemek, performansı değerlendirmek ve Market 'teki tekliflerinizi iyileştirmek için Microsoft Iş Ortağı Merkezi 'ndeki analitik raporlara nasıl erişebileceğinizi öğrenin. İş ortağı olarak, Iş Ortağı Merkezi tarafından desteklenen veri görselleştirme ve Öngörüler grafiklerini kullanarak teklif listelerinizi izleyebilir ve satışlarınızı en üst düzeye çıkarmak için kullanabileceğiniz yolları bulabilirsiniz. Geliştirilmiş analiz araçları, performans sonuçları üzerinde işlem yapma ve müşterilerinizle ve satıcılarınızla daha iyi ilişkiler elde etme olanağı sağlar. 
+Satışları izlemek, performansı değerlendirmek ve Market 'teki tekliflerinizi iyileştirmek için Microsoft Iş Ortağı Merkezi 'ndeki analitik raporlara nasıl erişebileceğinizi öğrenin. İş ortağı olarak, Iş Ortağı Merkezi tarafından desteklenen veri görselleştirme ve Öngörüler grafiklerini kullanarak teklif listelerinizi izleyebilir ve satışlarınızı en üst düzeye çıkarmak için kullanabileceğiniz yolları bulabilirsiniz. Geliştirilmiş analiz araçları, performans sonuçları üzerinde işlem yapma ve müşterilerinizle ve satıcılarınızla daha iyi ilişkiler elde etme olanağı sağlar.
 
 Iş ortağı merkezi analiz araçlarına erişmek için, ticari Market altında **[analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
 
@@ -141,7 +141,7 @@ Coğrafya ısı haritasını **tarafından siparişler** , bir dünya haritasın
 - **Azure üzerinden faturalandırılır**: Bu lisans türüyle [Microsoft aracılığıyla teklifinizi satmayı](./create-new-saas-offer.md#sell-through-microsoft) seçtiğinizde Microsoft, müşterileri sizin adınıza faturalar. Ödeme türleri, kredi kartı veya kurumsal faturalandırma aracılığıyla Kullandıkça Öde 'yi içerir.
 - **Kendi lisansınızı getir**: Microsoft, müşterileri bu tür Market teklifinin kullanımı için faturalandırmaz. Market 'te **[Şimdi al (ücretsiz)](./create-new-saas-offer.md#get-it-now-free)** olarak listelenir.
 - **Ücretsiz**: Microsoft, müşterileri bu tür Market teklifinin kullanımı için faturalandırmaz. Market 'te **[ücretsiz deneme](./create-new-saas-offer.md##free-trial-listing)** olarak listelenir.
-- **Satıcı olarak Microsoft**: **[bulut çözümü sağlayıcısı (CSP) programının](./create-new-saas-offer.md#csp-program-opt-in)** bir parçası olarak Microsoft satıcıları tarafından satılan teklifleri temsil eder.
+- **Satıcı olarak Microsoft**: **[bulut çözümü sağlayıcısı (CSP) programının](./create-new-saas-offer.md)** bir parçası olarak Microsoft satıcıları tarafından satılan teklifleri temsil eder.
 
 ![İş Ortağı Merkezi, siparişleri lisans türüne göre analiz eder](./media/analyze-license-type.png)
 
@@ -234,7 +234,7 @@ Coğrafya ısı haritasını **tarafından siparişler** , bir dünya haritasın
 
 ### <a name="dictionary-of-data-terms"></a>Veri koşullarının sözlüğü
 
-| Öznitelik adı | Reports | Tanım|
+| Öznitelik adı | Raporlar | Tanım|
 |---|---|---|
 | Azure lisans türü | Müşteri, sipariş | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. Kanal olarak da bilinen |
 | Azure lisans türü: bulut çözümü sağlayıcısı | Müşteri, sipariş | Azure ve Market procures son müşterisi, bulut çözümü sağlayıcısı aracılığıyla satıcıya göre davranan bir tekliftir.|
@@ -244,20 +244,20 @@ Coğrafya ısı haritasını **tarafından siparişler** , bir dünya haritasın
 | Bulut örneği adı| Sipariş verme| Bir VM dağıtımının gerçekleştiği Microsoft Bulut.||
 | Bulut örneği adı: Azure genel| Sipariş verme| Genel genel Microsoft bulutu.|| |
 | Bulut örneği adı: Azure Kamu | Sipariş verme| Aşağıdaki hükümetlerden biri için kamu 'ya özgü Microsoft bulutları: Çin, Almanya veya Amerika Birleşik Devletler.| |
-| Müşteri şehri| Müşterisi| Müşteri tarafından sunulan şehir adı. Şehir, müşterinin Azure aboneliğindeki şehirden farklı olabilir.||
-| Müşteri Iletişim dili  | Müşterisi| İletişim için müşterinin tercih ettiği dil.||
+| Müşteri şehri| Müşteri| Müşteri tarafından sunulan şehir adı. Şehir, müşterinin Azure aboneliğindeki şehirden farklı olabilir.||
+| Müşteri Iletişim dili  | Müşteri| İletişim için müşterinin tercih ettiği dil.||
 | Müşteri şirket adı | Müşteri, sipariş | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki şehirden farklı olabilir.|  |
 | Müşteri ülkesi | Müşteri, sipariş | Müşterinin sunduğu ülke adı. Ülke, müşterinin Azure aboneliğindeki ülkeden farklı olabilir.|  |
-| Müşteri e-postası| Müşterisi| Son müşteri tarafından sunulan e-posta adresi. E-posta, müşterinin Azure aboneliğindeki e-posta adresinden farklı olabilir.||
-| Müşteri adı| Müşterisi| Müşterinin verdiği ad. Ad, müşterinin Azure aboneliğinde belirtilen ad ile farklı olabilir.| |
+| Müşteri e-postası| Müşteri| Son müşteri tarafından sunulan e-posta adresi. E-posta, müşterinin Azure aboneliğindeki e-posta adresinden farklı olabilir.||
+| Müşteri adı| Müşteri| Müşterinin verdiği ad. Ad, müşterinin Azure aboneliğinde belirtilen ad ile farklı olabilir.| |
 | Müşteri KIMLIĞI | Müşteri, sipariş | Müşteriye atanan benzersiz tanımlayıcı. Müşterinin sıfır veya daha fazla Azure Market aboneliği olabilir.|  |
-| Müşteri posta kodu  | Müşterisi| Müşteri tarafından sunulan posta kodu. Kod, müşterinin Azure aboneliğinde girilen posta kodundan farklı olabilir.| |
-| Müşteri durumu| Müşterisi| Müşteri tarafından sunulan eyalet (adres). Durum, müşterinin Azure aboneliğinde belirtilen durumdan farklı olabilir.| |
-| Alınma tarihi| Müşterisi| Müşterinin sizin tarafınızdan yayınlanan teklifi satın aldığı ilk tarih.| |
-| Kayıp tarihi| Müşterisi| Müşterinin daha önce satın alınan tüm tekliflerden son iptal ettiği son tarih.||
+| Müşteri posta kodu  | Müşteri| Müşteri tarafından sunulan posta kodu. Kod, müşterinin Azure aboneliğinde girilen posta kodundan farklı olabilir.| |
+| Müşteri durumu| Müşteri| Müşteri tarafından sunulan eyalet (adres). Durum, müşterinin Azure aboneliğinde belirtilen durumdan farklı olabilir.| |
+| Alınma tarihi| Müşteri| Müşterinin sizin tarafınızdan yayınlanan teklifi satın aldığı ilk tarih.| |
+| Kayıp tarihi| Müşteri| Müşterinin daha önce satın alınan tüm tekliflerden son iptal ettiği son tarih.||
 | Yeni müşteri  | Sipariş verme| Bu değer, yeni bir müşteriyi, bir veya daha fazla teklifinizden ilk kez (veya değil) edinirsiniz. "Tarihi alındı" için aynı takvim ayı içinde değer "Evet" olacaktır. Müşteri tekliflerinizin herhangi birini bildirilen takvim ayına göre satın alıyorsa değer "Hayır" olacaktır. |
 | Önizleme SKU 'SU| Sipariş verme| Bu değer, SKU 'YU "Önizleme" olarak etiketlediyseniz size bilgi verir. SKU buna uygun şekilde etiketlenmişse değer "Evet" olur ve yalnızca sizin tarafından yetkilendirilen Azure abonelikleri bu görüntüyü dağıtabilir ve kullanabilir. SKU "Önizleme" olarak tanımlanmamışsa, değer "Hayır" olacaktır.  |
-| Promosyon ekibine katılım kabul ediyor| Müşterisi| Bu değer, müşterinin yayımcılardan promosyon kişisini önceden kabul eder olduğunu bilmenizi sağlar. Şu anda, bu seçeneği müşterilere sunuyoruz, bu nedenle Pano genelinde "Hayır" belirtiyoruz. Bu özellik dağıtıldıktan sonra, güncelleştirmeye uygun olarak başlayacağız.|
+| Promosyon ekibine katılım kabul ediyor| Müşteri| Bu değer, müşterinin yayımcılardan promosyon kişisini önceden kabul eder olduğunu bilmenizi sağlar. Şu anda, bu seçeneği müşterilere sunuyoruz, bu nedenle Pano genelinde "Hayır" belirtiyoruz. Bu özellik dağıtıldıktan sonra, güncelleştirmeye uygun olarak başlayacağız.|
 | Market lisans türü| Sipariş verme| Market teklifinin faturalandırma yöntemi.||
 | Market lisans türü: Azure üzerinden faturalandırılır| Sipariş verme| Microsoft bu Market 'e yönelik aracısıdır ve sizin adınıza müşteri reçeteleri sunun. (PAYG kredi kartı ya da kurumsal fatura)||
 | Market lisans türü: kendi lisansınızı getirin | Sipariş verme| VM, dağıtım için müşterinin sunduğu bir lisans anahtarı gerektirir. Microsoft, tekliflerini Market aracılığıyla bu şekilde listelemek için müşterileri faturalandırmaz.||
@@ -283,8 +283,8 @@ Coğrafya ısı haritasını **tarafından siparişler** , bir dünya haritasın
 | Sipariş durumu| Sipariş verme| Verilerin son yenilenme sırasında Market siparişi durumu.|     |
 | Sipariş durumu: etkin  | Sipariş verme| Müşterinin siparişi satın almış ve siparişi iptal edilmemiş.|         |
 | Sipariş durumu: iptal edildi | Sipariş verme| Müşteri daha önce bir siparişi satın almış ve ardından sıralarını iptal etti.||
-| Sağlayıcı e-postası| Müşterisi| Sağlayıcının Microsoft ile son müşteri arasındaki ilişkiye dahil olan e-posta adresi. Müşteri, satıcı üzerinden bir kurumsal ise, bu satıcı olacaktır. Bir bulut çözümü sağlayıcısı (CSP) dahil edilmişse, bu CSP olacaktır.|
-| Sağlayıcı adı| Müşterisi| Microsoft ile son müşteri arasındaki ilişkiye katılan sağlayıcının adı. Müşteri, satıcı üzerinden bir kurumsal ise, bu satıcı olacaktır. Bir bulut çözümü sağlayıcısı (CSP) dahil edilmişse, bu CSP olacaktır.|
+| Sağlayıcı e-postası| Müşteri| Sağlayıcının Microsoft ile son müşteri arasındaki ilişkiye dahil olan e-posta adresi. Müşteri, satıcı üzerinden bir kurumsal ise, bu satıcı olacaktır. Bir bulut çözümü sağlayıcısı (CSP) dahil edilmişse, bu CSP olacaktır.|
+| Sağlayıcı adı| Müşteri| Microsoft ile son müşteri arasındaki ilişkiye katılan sağlayıcının adı. Müşteri, satıcı üzerinden bir kurumsal ise, bu satıcı olacaktır. Bir bulut çözümü sağlayıcısı (CSP) dahil edilmişse, bu CSP olacaktır.|
 | SKU| Sipariş verme| Yayımlama sırasında tanımlanan SKU adı. Bir teklifin birçok SKU 'su olabilir, ancak bir SKU yalnızca tek bir teklifle ilişkilendirilebilir.||
 | Deneme bitiş tarihi| Sipariş verme| Bu sipariş için deneme döneminin sona erdiği veya sonlandırmış olacağı tarih.||
 

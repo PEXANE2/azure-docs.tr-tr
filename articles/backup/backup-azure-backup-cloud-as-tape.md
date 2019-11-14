@@ -7,14 +7,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/30/2017
 ms.author: dacurwin
-ms.openlocfilehash: 3be3a2e3355793a8d0b4fcaf0e7f62668f78f0c8
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d646cd40312765b11c711f4c63c0943c9e8555
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954888"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074335"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Uzun vadeli depolama alanınızı teypten Azure bulutuna taşıma
+
 Azure Backup ve System Center Data Protection Manager müşteriler şunları yapabilir:
 
 * Kurumsal ihtiyaçlarına en uygun olan zamanlamaya göre verileri yedekleyin.
@@ -24,6 +25,7 @@ Azure Backup ve System Center Data Protection Manager müşteriler şunları yap
 Bu makalede, müşterilerin yedekleme ve bekletme ilkelerini nasıl etkinleştirebileceği açıklanmaktadır. Uzun süreli bekletme ihtiyaçlarını karşılamak için bantları kullanan müşterilerin artık bu özelliğin kullanılabilirliğine yönelik güçlü ve uygun bir alternatifi vardır. Özellik, Azure Backup en son sürümünde etkinleştirilir ( [burada](https://aka.ms/azurebackup_agent)kullanılabilir). System Center DPM müşterilerinin, Azure Backup hizmetiyle DPM 'yi kullanmadan önce, en azından DPM 2012 R2 UR5 ' ye güncelleştirilmesi gerekir.
 
 ## <a name="what-is-the-backup-schedule"></a>Yedekleme zamanlaması nedir?
+
 Yedekleme zamanlaması, yedekleme işleminin sıklığını gösterir. Örneğin, aşağıdaki ekran ayarları, yedeklemelerin her gün 18:00 ve gece yarısı alınacağını belirtir.
 
 ![Günlük zamanlama](./media/backup-azure-backup-cloud-as-tape/dailybackupschedule.png)
@@ -33,19 +35,21 @@ Müşteriler ayrıca haftalık bir yedekleme zamanlayabilir. Örneğin, aşağı
 ![Haftalık zamanlama](./media/backup-azure-backup-cloud-as-tape/weeklybackupschedule.png)
 
 ## <a name="what-is-the-retention-policy"></a>Bekletme Ilkesi nedir?
+
 Bekletme ilkesi, yedeklemenin depolanması gereken süreyi belirtir. Tüm yedekleme noktaları için yalnızca bir "düz ilke" belirtmek yerine, müşteriler yedeklemenin ne zaman yapılacağını temel alan farklı bekletme ilkeleri belirtebilir. Örneğin, her gün gerçekleştirilen yedekleme noktası, işlemsel kurtarma noktası olarak işlev gören 90 gün boyunca korunur. Denetim amaçları için her bir çeyreğin sonunda gerçekleştirilen yedekleme noktası, daha uzun bir süre boyunca korunur.
 
-![Bekletme İlkesi](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
+![Saklama İlkesi](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
 
 Bu ilkede belirtilen toplam "bekletme noktası" sayısı 90 (günlük puntolar) + 40 (10 yıl boyunca her üç ayda bir) = 130.
 
 ## <a name="example--putting-both-together"></a>Örnek: her ikisini birlikte yerleştirme
+
 ![Örnek ekran](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
-1. **Günlük bekletme ilkesi**: Günlük alınan yedeklemeler yedi gün boyunca depolanır.
-2. **Haftalık bekletme ilkesi**: Her gün gece yarısı ve 18:00 Cumartesi günleri dört hafta boyunca korunur
-3. **Aylık bekletme ilkesi**: Her ayın son Cumartesi günü gece yarısı ve 18:00 'de alınan yedeklemeler 12 ay boyunca korunur
-4. **Yıllık bekletme ilkesi**: Her Mart 'ın son Cumartesi günü gece yarısı alınan yedeklemeler 10 yıl boyunca korunur
+1. **Günlük bekletme ilkesi**: günlük alınan yedeklemeler yedi gün boyunca depolanır.
+2. **Haftalık bekletme ilkesi**: gece yarısı ve 18:00 Cumartesi günleri her gün alınan yedeklemeler dört hafta boyunca korunur
+3. **Aylık bekletme ilkesi**: her ayın son Cumartesi günü gece yarısı ve 18:00 'de alınan yedeklemeler 12 ay boyunca korunur
+4. **Yıllık bekletme ilkesi**: her Mart 'ın son Cumartesi günü gece yarısından alınan yedeklemeler 10 yıl boyunca korunur
 
 Önceki diyagramda bulunan toplam "bekletme noktası" (bir müşterinin verileri geri yükleme) sayısı aşağıdaki şekilde hesaplanır:
 
@@ -61,11 +65,13 @@ Toplam kurtarma noktası sayısı 56 ' dir.
 >
 
 ## <a name="advanced-configuration"></a>Gelişmiş yapılandırma
+
 Önceki ekranda **Değiştir** 'e tıkladığınızda müşteriler bekletme zamanlamalarını belirtirken daha fazla esneklik sağlar.
 
 ![Değiştir](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
+
 Azure Backup hakkında daha fazla bilgi için bkz.:
 
 * [Azure Backup'a giriş](backup-introduction-to-azure-backup.md)

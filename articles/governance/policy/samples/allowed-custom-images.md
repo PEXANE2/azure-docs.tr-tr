@@ -1,17 +1,14 @@
 ---
 title: Örnek onaylı VM görüntüleri
 description: Bu örnek ilke tanımı, ortamınızda yalnızca onaylanan özel görüntülerin dağıtılmasını gerektirir.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/26/2019
-ms.author: dacoulte
-ms.openlocfilehash: 34a3cf54879dcf6fc25fab50bcbabde28fff653a
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: f8b5911cfa7700ef14dfac610ab4533c57f22e76
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980837"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076468"
 ---
 # <a name="sample---approved-virtual-machine-images"></a>Örnek tarafından onaylanan sanal makine görüntüleri
 
@@ -51,7 +48,7 @@ Azure CLI ve Azure PowerShell tarafından kullanılan, ilke parametrelerini tan�
 
 ## <a name="parameters"></a>Parametreler
 
-|Adı |Tür |Alan |Açıklama |
+|Ad |Tür |Alan |Açıklama |
 |---|---|---|---|
 |imageIds |Dizi |Microsoft.Compute/imageIds |Onaylı VM görüntülerinin listesi|
 
@@ -71,9 +68,10 @@ Bu örnek parametrede yalnızca _YourResourceGroup_ içindeki _ContosoStdImage_ 
 }
 ```
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portalında
 
-[![ ilke örneğini azure @no__t dağıtma](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)-2[![Ilke örneğini Azure gov 'ye dağıtma](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
+[![](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json) ilke örneğini Azure
+dağıtma [![Ilke örneğini Azure gov 'ye dağıtma](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -163,9 +161,9 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 ## <a name="rest-api"></a>REST API
 
-[ARMClient](https://github.com/projectkudu/ARMClient) veya PowerShell gibi Resource Manager REST API'si ile etkileşim kurmak için kullanılabilecek birçok araç vardır. PowerShell'den REST API'sini çağırma örneği, [İlke tanımı yapısı](../concepts/definition-structure.md#aliases) bölümünün **Diğer Adlar** kısmında bulunabilir.
+[ARMClient](https://github.com/projectkudu/ARMClient) veya PowerShell gibi Resource Manager REST API'si ile etkileşim kurmak için kullanılabilecek birçok araç vardır. PowerShell'den REST API'sini çağırma örneği, **İlke tanımı yapısı** bölümünün [Diğer Adlar](../concepts/definition-structure.md#aliases) kısmında bulunabilir.
 
-### <a name="deploy-with-rest-api"></a>REST API ile dağıtma
+### <a name="deploy-with-rest-api"></a>REST API'si ile dağıtma
 
 - İlke Tanımını (Abonelik kapsamı) oluşturun. İstek Gövdesi için [ilke tanımı](#policy-definition) JSON kodunu kullanın.
 

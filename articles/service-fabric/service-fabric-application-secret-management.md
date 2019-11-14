@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: b05473fd9868821285853b089fe711aa48f347fc
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: a24f670314d2f6679e37b438a74421e0e84604e2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973429"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075495"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Service Fabric uygulamalarında şifreli gizli dizileri yönetme
 Bu kılavuz, Service Fabric uygulamasında gizli dizileri yönetme adımlarında size yol gösterir. Gizlilikler, depolama bağlantı dizeleri, parolalar veya düz metin olarak işlenmemelidir diğer değerler gibi herhangi bir hassas bilgi olabilir.
@@ -37,7 +37,7 @@ Service Fabric uygulamasında şifrelenmiş gizli dizileri kullanmak üç adımd
 ## <a name="specify-encrypted-secrets-in-an-application"></a>Bir uygulamada şifrelenmiş gizli dizileri belirtme
 Önceki adımda, bir sertifika ile gizli dizi şifrelemesini ve bir uygulamada kullanılmak üzere bir Base-64 kodlu dizeyi oluşturmayı açıklar. Bu Base-64 kodlu dize, bir hizmetin Settings. xml dosyasında şifrelenmiş bir [parametre][parameters-link] olarak veya bir hizmetin servicemanifest. xml dosyasında şifrelenmiş bir [ortam değişkeni][environment-variables-link] olarak belirtilebilir.
 
-Hizmetinizin Settings. xml yapılandırma dosyasında, `IsEncrypted` özniteliğiyle `true` olarak ayarlanan şifreli bir [parametre][parameters-link] belirtin:
+Hizmetinizin Settings. xml yapılandırma dosyasında, `IsEncrypted` özniteliği `true`olarak ayarlanan şifreli bir [parametre][parameters-link] belirtin:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -47,7 +47,7 @@ Hizmetinizin Settings. xml yapılandırma dosyasında, `IsEncrypted` özniteliğ
   </Section>
 </Settings>
 ```
-Hizmetinizin ServiceManifest. xml dosyasında `Type` özniteliği `Encrypted` olarak ayarlanmış bir şifreli [ortam değişkeni][environment-variables-link] belirtin:
+Hizmetinizin ServiceManifest. xml dosyasında `Type` özniteliği `Encrypted`olarak ayarlanan bir şifrelenmiş [ortam değişkeni][environment-variables-link] belirtin:
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -105,13 +105,13 @@ Settings. xml ' deki değerleri geçersiz kılmak için, ApplicationManifest. xm
 
 Şimdi, uygulamanın bir örneği oluşturulurken değer bir *uygulama parametresi* olarak belirtilebilir. Bir yapı sürecinde kolay tümleştirme için, bir uygulama örneğinin oluşturulması PowerShell kullanılarak C#betiklenebilir veya içinde yazılabilir.
 
-PowerShell kullanarak parametresi, [karma tablo](https://technet.microsoft.com/library/ee692803.aspx)olarak `New-ServiceFabricApplication` komutuna sağlanır:
+PowerShell kullanarak, parametresi `New-ServiceFabricApplication` komutuna [karma tablo](https://technet.microsoft.com/library/ee692803.aspx)olarak sağlanır:
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-Kullanarak C#, uygulama parametreleri `ApplicationDescription` ' de `NameValueCollection` olarak belirtilir:
+Kullanarak C#, uygulama parametreleri bir `ApplicationDescription` `NameValueCollection`olarak belirtilir:
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -147,10 +147,12 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Uygulama ve hizmet güvenliği](service-fabric-application-and-service-security.md) hakkında daha fazla bilgi edinin
+* Service Fabric [gizli dizi deposu](service-fabric-application-secret-store.md) 
+* [Uygulama ve hizmet güvenliği](service-fabric-application-and-service-security.md) hakkında daha fazla bilgi edinin
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md
 [environment-variables-link]: service-fabric-how-to-specify-environment-variables.md
 [secret-management-windows-specific-link]: service-fabric-application-secret-management-windows.md
 [secret-management-linux-specific-link]: service-fabric-application-secret-management-linux.md
+[service fabric secrets store]: service-fabric-application-secret-store.md

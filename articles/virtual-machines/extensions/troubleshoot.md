@@ -1,5 +1,5 @@
 ---
-title: Windows VM Uzantısı hatalarında sorun giderme | Microsoft Docs
+title: Windows VM Uzantısı hatalarında sorun giderme
 description: Azure Windows VM Uzantısı hatalarında sorun giderme hakkında bilgi edinin
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 6108b3c8d4f4c5c93bc2543042294bc8167d4dd9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bc99a9c9e9ff985730ec97dbacd1d7c1de06a45e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084284"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073647"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM Uzantısı hatalarında sorun giderme
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -61,7 +61,7 @@ Azure PowerShell:
 ## <a name="troubleshooting-extension-failures"></a>Uzantı hatalarında sorun giderme
 ### <a name="rerun-the-extension-on-the-vm"></a>Uzantıyı VM 'de yeniden çalıştırın
 Özel Betik uzantısı kullanarak VM 'de komut dosyaları çalıştırıyorsanız, bazen VM 'nin başarıyla oluşturulduğu ancak betiğin başarısız olduğu bir hata ile çalışabilir. Bu koşullar altında, bu hatayı kurtarmak için önerilen yol, uzantıyı kaldırmak ve şablonu yeniden çalıştıramaktır.
-Not: Gelecekte, bu işlev, uzantıyı kaldırma gereksinimini ortadan kaldıracak şekilde geliştirilir.
+Note: gelecekte, uzantıyı kaldırma gereksinimini ortadan kaldırmak için bu işlev geliştirilir.
 
 #### <a name="remove-the-extension-from-azure-powershell"></a>Uzantıyı Azure PowerShell kaldır
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"

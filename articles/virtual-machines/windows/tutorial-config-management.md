@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure 'da Windows sanal makine yapılandırmasını yönetme | Microsoft Docs
+title: Öğretici-Azure 'da Windows sanal makine yapılandırmasını yönetme
 description: Bu öğreticide, bir Windows sanal makinesinde değişiklikleri belirlemeyi ve paket güncelleştirmelerini yönetmeyi öğreneceksiniz
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 13a9534920f936287109a451b542c81a007c3a4c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027891"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064792"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Öğretici: Azure 'da değişiklikleri Izleme ve Windows sanal makinesini güncelleştirme
 
@@ -40,7 +40,7 @@ Cloud Shell herhangi bir kod bloğunu açmak için, bu kod bloğunun sağ üst k
 
 Ayrıca, [https://shell.azure.com/powershell](https://shell.azure.com/powershell)giderek ayrı bir tarayıcı sekmesinde Cloud Shell açabilirsiniz. Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell sekmesine yapıştırın ve kodu çalıştırmak için Enter tuşunu seçin.
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
 Bu öğreticide Azure izlemesi ve güncelleştirme yönetimini yapılandırmak için, Azure'da bir Windows VM'sine ihtiyacınız vardır.
 
@@ -94,7 +94,7 @@ Doğrulama işlemi ayrıca VM 'nin Microsoft Monitoring Agent (MMA) ve otomasyon
 Ekleme sırasında eksik olan aşağıdaki önkoşulların herhangi biri otomatik olarak eklenir:
 
 * [Log Analytics](../../log-analytics/log-analytics-overview.md) çalışma alanı
-* [Automation](../../automation/automation-offering-get-started.md)
+* [Otomasyon](../../automation/automation-offering-get-started.md)
 * VM 'de etkin olan [karma Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
 
 Çözüm etkinleştirildikten sonra, **güncelleştirme yönetimi** penceresi açılır. Kullanılacak konumu, Log Analytics çalışma alanını ve otomasyon hesabını yapılandırın ve ardından **Etkinleştir**' i seçin. Bu seçenekler soluk görünüyorsa, VM için başka bir otomasyon çözümü etkinleştirilir ve bu çözümün çalışma alanının ve otomasyon hesabının kullanılması gerekir.

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 1d2888c12cb9d17f1b144f539c312b8bc29f203a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c290e44d8bfecfbf57be8f8e1c596a294f077229
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014245"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074703"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme
 
@@ -88,7 +88,7 @@ Bu öğreticide Azure VM 'yi etkinleştirmek ve yedeklemek için aşağıdakiler
 
 1. [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)ile yedekleme verilerinizi tutan kasada bir kapsayıcı belirtin.
 2. Yedekleme için her VM bir öğedir. Bir yedekleme işi başlatmak için [Get-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem)ile VM hakkında bilgi edinebilirsiniz.
-3. [Backup-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem)ile geçici yedekleme çalıştırın.
+3. [Backup-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem)ile isteğe bağlı bir yedekleme çalıştırın.
     * İlk ilk yedekleme işi tam kurtarma noktası oluşturur.
     * İlk yedeklemeden sonra her bir yedekleme işi artımlı kurtarma noktaları oluşturur.
     * Yalnızca son yedekleme sonrasında yapılan değişiklikleri aktardığından artımlı kurtarma noktaları depolama alanı ve süre açısından verimlilik sağlar.

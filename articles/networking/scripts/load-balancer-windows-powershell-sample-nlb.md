@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell betik örneği-yüksek kullanılabilirlik için VM 'lere trafik yükünü dengeleme | Microsoft Docs
+title: HA-Azure PowerShell için VM 'lere Yük Dengeleme trafiği
 description: Azure PowerShell betik örneği-yüksek kullanılabilirlik için VM 'lere trafik yükünü dengeleme
 services: load-balancer
 documentationcenter: load-balancer
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: allensu
-ms.openlocfilehash: 73fe1b57f3f1d8bef388901f19438daff4110469
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1f0ff6cad90a4e5578a4f0c578a7da5cbbb75457
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890272"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067079"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>Yüksek kullanılabilirlik için VM 'lere Yük Dengeleme trafiği
 

@@ -1,19 +1,20 @@
 ---
-title: Hızlı başlangıç-Azure Application Gateway ile uçtan uca SSL şifrelemesini Yapılandırma-Azure portal | Microsoft Docs
+title: Portalı kullanarak uçtan uca SSL şifrelemesini yapılandırma
+titleSuffix: Azure Application Gateway
 description: Uçtan uca SSL şifrelemesi ile uygulama ağ geçidi oluşturmak için Azure portal nasıl kullanacağınızı öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: ba31b5ebf83edcd08060a2acc3b5639a521e2729
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a878b966266bdd326db35d266bc14b2f81161e92
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243661"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075135"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>Portal ile Application Gateway kullanarak uçtan uca SSL 'yi yapılandırma
 
@@ -50,7 +51,7 @@ Daha fazla bilgi edinmek için bkz. [Yeni bir uygulama ağ geçidi oluştururken
 
 4. **Protokol**altında **https**' yi seçin. **Arka uç kimlik doğrulama sertifikaları veya güvenilen kök sertifikaların** bölmesi görüntülenir.
 
-5. **Yeni oluştur**' u seçin.
+5. **Yeni oluştur**’u seçin.
 
 6. **Ad** alanına uygun bir ad girin.
 
@@ -58,15 +59,15 @@ Daha fazla bilgi edinmek için bkz. [Yeni bir uygulama ağ geçidi oluştururken
 
    Standart ve WAF (v1) uygulama ağ geçitleri için arka uç sunucu sertifikanızın ortak anahtarını. cer biçiminde yüklemeniz gerekir.
 
-   ![Sertifika ekle](./media/end-to-end-ssl-portal/addcert.png)
+   ![Sertifika ekleme](./media/end-to-end-ssl-portal/addcert.png)
 
-   Standard_v2 ve WAF_v2 uygulama ağ geçitleri için arka uç sunucu sertifikasının kök sertifikasını. cer biçiminde yüklemeniz gerekir. Arka uç sertifikası iyi bilinen bir sertifika yetkilisi (CA) tarafından verildiyse, **Iyi BILINEN CA sertifikasını kullan** onay kutusunu seçebilir ve ardından bir sertifikayı karşıya yüklemeniz gerekmez.
+   Standard_v2 ve WAF_v2 uygulama ağ geçitleri için, arka uç sunucu sertifikasının kök sertifikasını. cer biçiminde yüklemeniz gerekir. Arka uç sertifikası iyi bilinen bir sertifika yetkilisi (CA) tarafından verildiyse, **Iyi BILINEN CA sertifikasını kullan** onay kutusunu seçebilir ve ardından bir sertifikayı karşıya yüklemeniz gerekmez.
 
    ![Güvenilen kök sertifika ekle](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
    ![Kök sertifika](./media/end-to-end-ssl-portal/trustedrootcert.png)
 
-8. **Kaydet**' i seçin.
+8. **Kaydet**’i seçin.
 
 ## <a name="enable-end-to-end-ssl-for-an-existing-application-gateway"></a>Mevcut uygulama ağ geçidi için uçtan uca SSL 'yi etkinleştirme
 
@@ -92,7 +93,7 @@ SSL sonlandırmasını etkinleştirmek için HTTPS protokolü ve bir sertifika i
 
 6. Gereksinimlerinize bağlı olarak, **dinleyici**için gereken diğer ayarları ekleyin.
 
-7. Kaydetmek için **Tamam ' ı** seçin.
+7. Kaydetmek için **Tamam**’ı seçin.
 
 ### <a name="add-authenticationtrusted-root-certificates-of-back-end-servers"></a>Arka uç sunucularının kimlik doğrulaması/güvenilen kök sertifikalarını ekleyin
 
@@ -104,7 +105,7 @@ SSL sonlandırmasını etkinleştirmek için HTTPS protokolü ve bir sertifika i
 
 4. **Protokol**altında **https**' yi seçin. **Arka uç kimlik doğrulama sertifikaları veya güvenilen kök sertifikaların** bölmesi görüntülenir. 
 
-5. **Yeni oluştur**' u seçin.
+5. **Yeni oluştur**’u seçin.
 
 6. **Ad** alanına uygun bir ad girin.
 
@@ -112,15 +113,15 @@ SSL sonlandırmasını etkinleştirmek için HTTPS protokolü ve bir sertifika i
 
    Standart ve WAF (v1) uygulama ağ geçitleri için arka uç sunucu sertifikanızın ortak anahtarını. cer biçiminde yüklemeniz gerekir.
 
-   ![Sertifika ekle](./media/end-to-end-ssl-portal/addcert.png)
+   ![Sertifika ekleme](./media/end-to-end-ssl-portal/addcert.png)
 
-   Standard_v2 ve WAF_v2 uygulama ağ geçitleri için arka uç sunucu sertifikasının kök sertifikasını. cer biçiminde yüklemeniz gerekir. Arka uç sertifikası iyi bilinen bir CA tarafından verildiyse, **Iyi BILINEN CA sertifikasını kullan** onay kutusunu seçebilirsiniz ve ardından bir sertifikayı karşıya yüklemeniz gerekmez.
+   Standard_v2 ve WAF_v2 uygulama ağ geçitleri için, arka uç sunucu sertifikasının kök sertifikasını. cer biçiminde yüklemeniz gerekir. Arka uç sertifikası iyi bilinen bir CA tarafından verildiyse, **Iyi BILINEN CA sertifikasını kullan** onay kutusunu seçebilirsiniz ve ardından bir sertifikayı karşıya yüklemeniz gerekmez.
 
    ![Güvenilen kök sertifika ekle](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
-8. **Kaydet**' i seçin.
+8. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure CLı kullanarak bir uygulama ağ geçidi ile Web trafiğini yönetme](./tutorial-manage-web-traffic-cli.md)
+> [Azure CLI kullanarak bir uygulama ağ geçidi ile web trafiğini yönetme](./tutorial-manage-web-traffic-cli.md)

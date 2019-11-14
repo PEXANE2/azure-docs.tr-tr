@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 1ea7ec0444ba80d3494afba77ad9d7fdabd5f982
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dd5a4d9d869c879ed402c5450690f0a691e1d2c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086417"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074395"
 ---
 # <a name="using-the-azure-function-return-value"></a>Azure Işlevi dönüş değerini kullanma
 
@@ -23,21 +23,13 @@ Bu makalede, dönüş değerlerinin bir işlev içinde nasıl çalıştığı a�
 Dönüş değerine sahip dillerde bir işlev [Çıkış bağlamasını](./functions-triggers-bindings.md#binding-direction) bir dönüş değerine bağlayabilirsiniz:
 
 * Bir C# sınıf kitaplığında, çıkış bağlama özniteliğini yöntem dönüş değerine uygulayın.
-* Diğer dillerde, `name` *function. JSON* içindeki özelliğini olarak `$return`ayarlayın.
+* Diğer dillerde, *function. JSON* içindeki `name` özelliğini `$return`olarak ayarlayın.
 
 Birden çok çıkış bağlaması varsa, bunlardan yalnızca biri için dönüş değerini kullanın.
 
-Ve C# C# betikte, bir `out` çıkış bağlamasına veri göndermenin alternatif yolları parametreler ve [toplayıcı nesneleridir](functions-reference-csharp.md#writing-multiple-output-values).
+Ve C# C# betikte, bir çıkış bağlamasına veri göndermenin alternatif yolları `out` parametreler ve [toplayıcı nesneleridir](functions-reference-csharp.md#writing-multiple-output-values).
 
-Döndürülen değerin kullanımını gösteren dile özgü örneğe bakın:
-
-* [C#](#c-example)
-* [C# betiği (.csx)](#c-script-example)
-* [F#](#f-example)
-* [JavaScript](#javascript-example)
-* [Python](#python-example)
-
-## <a name="c-example"></a>C#örneğinde
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Aşağıda, C# bir çıkış bağlaması için dönüş değerini kullanan ve ardından zaman uyumsuz bir örnek olan kod verilmiştir:
 
@@ -63,7 +55,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-## <a name="c-script-example"></a>C#betik örneği
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
 Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 
@@ -96,7 +88,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-## <a name="f-example"></a>F#örneğinde
+# <a name="ftabfsharp"></a>[F#](#tab/fsharp)
 
 Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 
@@ -118,7 +110,7 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-## <a name="javascript-example"></a>JavaScript örneği
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 
@@ -131,7 +123,7 @@ Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 }
 ```
 
-JavaScript 'te, dönüş değeri için `context.done`ikinci parametreye gider:
+JavaScript 'te, dönüş değeri `context.done`ikinci parametresine gider:
 
 ```javascript
 module.exports = function (context, input) {
@@ -141,7 +133,7 @@ module.exports = function (context, input) {
 }
 ```
 
-## <a name="python-example"></a>Python örneği
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 
@@ -163,6 +155,8 @@ def main(input: azure.functions.InputStream) -> str:
         'content': input.read().decode('utf-8')
     })
 ```
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

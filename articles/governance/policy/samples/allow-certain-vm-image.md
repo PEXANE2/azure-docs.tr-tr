@@ -1,17 +1,14 @@
 ---
 title: Örnek-yalnızca belirli bir VM platformu görüntüsüne izin ver
 description: Bu örnek ilke tanımı, sanal makinelerin UbuntuServer 'in belirli bir sürümünü kullanmasını gerektirir.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 5999594f81d66be8eb98257f7f1554038583db89
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 1826940bf878141d09812d72a66d076e42d4fe9a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977858"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076560"
 ---
 # <a name="sample---only-allow-a-certain-vm-platform-image"></a>Örnek-yalnızca belirli bir VM platformu görüntüsüne izin ver
 
@@ -27,7 +24,7 @@ Sanal makinelerin belirli bir UbuntuServer sürümü kullanmasını gerektirir.
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![ Ilke örneğini Azure 'a dağıtın](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fplatform-image-policy%2Fazurepolicy.json)
+[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fplatform-image-policy%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

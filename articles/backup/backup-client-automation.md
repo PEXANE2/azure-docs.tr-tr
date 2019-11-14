@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 78b83eb725da09dc98df05865ba4d41c505f0f4c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: bf79957bec4b330ca9acce3f8b92aab1a0944440
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747253"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074868"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell kullanarak Windows Server/Windows İstemcisi için Azure’a yedekleme dağıtma ve yönetme
 
@@ -119,8 +119,8 @@ Mevcut seçenekler şunlardır:
 | Seçenek | Ayrıntılar | Varsayılan |
 | --- | --- | --- |
 | anahtarın |Sessiz yükleme |- |
-| /p: "konum" |Azure Backup aracısının yükleme klasörünün yolu. |C:\Program Files\Microsoft Azure kurtarma hizmetleri Aracısı |
-| /s: "konum" |Azure Backup aracısına ait önbellek klasörünün yolu. |C:\Program Files\Microsoft Azure kurtarma hizmetleri, çalışma |
+| /p: "konum" |Azure Backup aracısının yükleme klasörünün yolu. |C:\Program Files\Microsoft Azure Recovery Services Agent |
+| /s: "konum" |Azure Backup aracısına ait önbellek klasörünün yolu. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |Microsoft Update için kabul etme |- |
 | /nu |Yükleme tamamlandıktan sonra güncelleştirmeleri denetleme |- |
 | belirtilmediyse |Microsoft Azure Kurtarma Hizmetleri Aracısı 'nı kaldırır |- |
@@ -547,9 +547,9 @@ IsExclude : True
 IsRecursive : True
 ```
 
-### <a name="performing-an-ad-hoc-backup"></a>Geçici yedekleme gerçekleştirme
+### <a name="performing-an-on-demand-backup"></a>İsteğe bağlı yedekleme gerçekleştirme
 
-Yedekleme ilkesi ayarlandıktan sonra, her zamanlama için yedeklemeler gerçekleşir. [Start-obbackup](https://technet.microsoft.com/library/hh770426) cmdlet 'i kullanılarak geçici yedeklemenin tetiklenmesi de mümkündür:
+Yedekleme ilkesi ayarlandıktan sonra, her zamanlama için yedeklemeler gerçekleşir. İsteğe bağlı bir yedeklemenin tetiklenmesi, [Start-OBBackup](https://technet.microsoft.com/library/hh770426) cmdlet 'i kullanılarak da mümkündür:
 
 ```powershell
 Get-OBPolicy | Start-OBBackup

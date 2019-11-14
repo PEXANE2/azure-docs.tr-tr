@@ -1,5 +1,5 @@
 ---
-title: Genelleştirilmiş şirket içi bir VHD 'den yönetilen bir Azure VM oluşturun | Microsoft Docs
+title: Genelleştirilmiş şirket içi bir VHD 'den yönetilen bir Azure VM oluşturma
 description: Genelleştirilmiş bir VHD 'yi Azure 'a yükleyin ve Kaynak Yöneticisi dağıtım modelinde yeni VM 'Ler oluşturmak için kullanın.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: ead44c321ffb7afb69295d1bf8c0e1acd26cb9ce
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d0995fed61d169cc173ca01767c2e48f4f798b0d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749079"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067429"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Genelleştirilmiş bir VHD 'YI karşıya yükleyin ve Azure 'da yeni VM 'Ler oluşturmak için kullanın
 

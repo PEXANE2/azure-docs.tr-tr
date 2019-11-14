@@ -1,5 +1,5 @@
 ---
-title: VM Uzantısı yüklemesini kısıtlamak için Azure Ilkesini kullanma | Microsoft Docs
+title: VM Uzantısı yüklemesini kısıtlamak için Azure Ilkesini kullanma
 description: VM Uzantısı dağıtımlarını kısıtlamak için Azure Ilkesini kullanın.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 20099bb32a1984be0bfbbaaa4e7bc6cd4481a806
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 113736198f40510981c80909c862282fa07ac68d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174018"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073767"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Linux VM 'lerinde uzantıları yüklemeyi kısıtlamak için Azure Ilkesini kullanma
 
@@ -30,7 +30,7 @@ Bu öğretici, en son sürüme sürekli olarak güncellenen Azure Cloud Shell i�
 
 Hangi uzantıların yüklenebileceğini kısıtlamak için, uzantıyı belirlemek için mantığı sağlamak üzere bir [kuralınız](../../governance/policy/concepts/definition-structure.md#policy-rule) olması gerekir.
 
-Bu örnekte, Azure Cloud Shell ' de bir kural dosyası oluşturarak ' Microsoft. OSTCExtensions ' tarafından yayımlanan uzantıların yüklenmesini reddetme gösterilmektedir, ancak CLı 'de yerel olarak çalışıyorsanız, yerel bir dosya oluşturabilir ve yolu (~/CloudDrive) yolu ile değiştirebilirsiniz makinenizde yerel dosya.
+Bu örnekte, Azure Cloud Shell ' de bir kural dosyası oluşturarak ' Microsoft. OSTCExtensions ' tarafından yayımlanan uzantıların yüklenmesini reddetme gösterilmektedir, ancak CLı 'de yerel olarak çalışıyorsanız, yerel bir dosya oluşturabilir ve yolu (~/CloudDrive), makinenizde yerel dosyanın yoluyla değiştirebilirsiniz.
 
 [Bash Cloud Shell](https://shell.azure.com/bash)şunu yazın:
 

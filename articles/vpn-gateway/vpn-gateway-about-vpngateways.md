@@ -1,19 +1,19 @@
 ---
-title: Azure VPN Gateway | Microsoft Docs
+title: Azure VPN Gateway hakkında
 description: Bir VPN ağ geçidinin ne olduğunu ve Azure sanal ağlarına bağlanmak için VPN ağ geçidini nasıl kullanacağınızı öğrenin. IPsec/IKE Siteden Siteye şirketler arası ve Sanal Ağlar arası çözümlerin yanı sıra Noktadan Siteye VPN dahil.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 10/31/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 82e9003036f67ecd3b3ecd7d8ab6cd434fcfc438
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58a92536510d2f434154169cbefff60487a422fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495700"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075462"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN Ağ Geçidi nedir?
 
@@ -53,7 +53,10 @@ Aşağıdaki tablo çözümünüz için en iyi bağlantı seçeneğine karar ver
 
 ## <a name="gwsku"></a>Ağ Geçidi SKU'ları
 
-Bir sanal ağ geçidi oluşturduğunuzda, kullanmak istediğiniz ağ geçidi SKU’sunu belirtmelisiniz. İş yükü, aktarım hızı, özellik ve SLA türlerine bağlı olarak gereksinimlerinize uyan SKU’ları seçin. Desteklenen özellikler, üretim ve geliştirme-test ve yapılandırma adımları dahil ağ geçidi SKU 'Ları hakkında daha fazla bilgi için [VPN Gateway ayarları-ağ geçidi SKU 'ları](vpn-gateway-about-vpn-gateway-settings.md#gwsku) makalesine bakın. Eski SKU bilgileri için bkz. [eski SKU 'lar Ile çalışma](vpn-gateway-about-skus-legacy.md).
+Bir sanal ağ geçidi oluşturduğunuzda, kullanmak istediğiniz ağ geçidi SKU’sunu belirtmelisiniz. İş yükü, aktarım hızı, özellik ve SLA türlerine bağlı olarak gereksinimlerinize uyan SKU’ları seçin.
+
+* Desteklenen özellikler, üretim ve geliştirme-test ve yapılandırma adımları dahil ağ geçidi SKU 'Ları hakkında daha fazla bilgi için [VPN Gateway ayarları-ağ geçidi SKU 'ları](vpn-gateway-about-vpn-gateway-settings.md#gwsku) makalesine bakın.
+* Eski SKU bilgileri için bkz. [eski SKU 'lar Ile çalışma](vpn-gateway-about-skus-legacy.md).
 
 ### <a name="benchmark"></a>Tünele, bağlantıya ve performansa göre Ağ Geçidi SKU’ları
 
@@ -92,7 +95,6 @@ Bu türden bir bağlantı, Siteden Siteye bağlantının bir çeşididir. Sanal 
 Noktadan Siteye (P2S) VPN ağ geçidi bağlantısı, ayrı bir istemci bilgisayardan sanal ağınıza güvenli bir bağlantı oluşturmanıza olanak sağlar. P2S bağlantısı, istemci bilgisayardan başlatılarak oluşturulur. Bu çözüm, Azure sanal ağlarına uzak bir konumdan (örneğin, evden veya bir konferanstan) bağlanmak isteyen uzaktan çalışan kişiler için kullanışlıdır. P2S VPN ayrıca, bir sanal ağa bağlanması gereken yalnızca birkaç istemciniz olduğunda S2S VPN yerine kullanabileceğiniz yararlı bir çözümüdür.
 
 S2S bağlantılarının aksine, P2S bağlantıları için şirket içi genel kullanıma yönelik IP adresi veya VPN cihazı gerekmez. Her iki bağlantı için tüm yapılandırma gereksinimlerinin uyumlu olması şartıyla P2S bağlantıları aynı VPN ağ geçidi üzerinden S2S bağlantılarıyla birlikte kullanılabilir. Noktadan Siteye bağlantılar hakkında daha fazla bilgi edinmek için bkz. [Noktadan Siteye VPN hakkında](point-to-site-about.md).
-
 
 ![Azure VPN Gateway Noktadan Siteye bağlantı örneği](./media/vpn-gateway-about-vpngateways/point-to-site.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 'da bir şablondan Windows sanal makinesi oluşturma | Microsoft Docs
+title: Azure 'da bir şablondan Windows sanal makinesi oluşturma
 description: Yeni bir Windows sanal makinesini kolayca oluşturmak için bir Kaynak Yöneticisi şablonu ve PowerShell kullanın.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e1f50753f155d1583de3a1e8426975e1b0d6aee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 99e292930414ae027c9cbbf3a901d550041899d2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102513"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065544"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Kaynak Yöneticisi şablonundan Windows sanal makinesi oluşturma
 
@@ -60,7 +60,7 @@ New-AzResourceGroupDeployment `
 
 PowerShell 'i Azure Cloud Shell yerine yerel olarak yükleyip kullanmayı tercih ederseniz, bu öğretici Azure PowerShell modülünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız, aynı zamanda çalıştırmak ihtiyacınız `Connect-AzAccount` Azure ile bir bağlantı oluşturmak için.
 
-Önceki örnekte, GitHub 'da depolanan bir şablon belirttiniz. Ayrıca, `--template-file` bir şablon indirebilir veya oluşturabilir ve parametresi ile yerel yolu belirtebilirsiniz.
+Önceki örnekte, GitHub 'da depolanan bir şablon belirttiniz. Ayrıca, bir şablon indirebilir veya oluşturabilir ve `--template-file` parametresiyle yerel yolu belirtebilirsiniz.
 
 Bazı ek kaynaklar aşağıda verilmiştir:
 

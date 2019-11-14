@@ -7,18 +7,21 @@ ms.author: dacurwin
 ms.date: 08/20/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 1182c7d4ac9a103e752a8cd0c392c5e57f1eebd0
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a6914fadcc69db534bb8476bbd8c89aa716a8bcb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637577"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074686"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Azure Dosya Paylaşımlarını yedekleme sorunlarını giderme
+
 Aşağıdaki tablolarda listelenen bilgilerle Azure Dosya Paylaşımları yedeklemesi kullanılırken karşılaşılan sorunları ve hataları giderebilirsiniz.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Önizleme sırasında Azure dosya paylaşımı yedeklemesine yönelik sınırlamalar
+
 Azure Dosya paylaşımları için yedekleme, Önizleme aşamasındadır. Hem genel amaçlı v1 hem de genel amaçlı v2 depolama hesaplarında Azure dosya paylaşımları desteklenir. Aşağıdaki yedekleme senaryoları, Azure dosya paylaşımları için desteklenmemektedir:
+
 - Azure Backup kullanarak Azure dosyalarını korumak için kullanılabilir CLı yoktur.
 - Günlük zamanlanan maksimum yedekleme sayısı birdir.
 - Günlük zamanlanan maksimum istek üzerine yedekleme sayısı dörttür.
@@ -29,17 +32,17 @@ Azure Dosya paylaşımları için yedekleme, Önizleme aşamasındadır. Hem gen
 [Bölge yedekli depolama](../storage/common/storage-redundancy-zrs.md) (ZRS) çoğaltması Ile depolama hesaplarında Azure dosya paylaşımları için yedekleme şu anda yalnızca Orta ABD (cu düzeyinde kapsanır), Doğu ABD (EUS), Doğu ABD 2 (EUS2), Kuzey Avrupa (ne), Güneydoğu Asya (SEA), Batı Avrupa (we) ve Batı ABD 2 (WUS2) ' de kullanılabilir.
 
 ## <a name="configuring-backup"></a>Yedeklemeyi yapılandırma
+
 Aşağıdaki tablo, yedeklemenin yapılandırılmasına yöneliktir:
 
 | Hata iletileri | Geçici çözüm veya çözümleme ipuçları |
 | ------------------ | ----------------------------- |
-| Azure dosya paylaşımına yönelik yedeklemeyi yapılandırmak için Depolama Hesabımı bulamıyorum | <ul><li>Bulma işlemi tamamlanana kadar bekleyin. <li>Depolama hesabından herhangi bir Dosya paylaşımının zaten başka bir Kurtarma Hizmetleri kasası ile korunup korunmadığını denetleyin. **Not**: Bir depolama hesabındaki tüm dosya paylaşımları yalnızca bir kurtarma hizmetleri Kasası altında korunabilir. <li>Desteklenmeyen herhangi bir Depolama Hesabında Dosya paylaşımının mevcut olmadığından emin olun.|
+| Azure dosya paylaşımına yönelik yedeklemeyi yapılandırmak için Depolama Hesabımı bulamıyorum | <ul><li>Bulma işlemi tamamlanana kadar bekleyin. <li>Depolama hesabından herhangi bir Dosya paylaşımının zaten başka bir Kurtarma Hizmetleri kasası ile korunup korunmadığını denetleyin. **Not**: Bir Depolama Hesabındaki tüm dosya paylaşımları tek bir Kurtarma Hizmetleri kasası kapsamında korunabilir. <li>Desteklenmeyen herhangi bir Depolama Hesabında Dosya paylaşımının mevcut olmadığından emin olun.|
 | Portal durumlarında hata oluştu. Depolama hesaplarını bulma işlemi başarısız oldu. | Aboneliğiniz iş ortağı hesabıysa (CSP etkin) hatayı yoksayın. Aboneliğinizde CSP etkin değilse ve depolama hesaplarınız bulunamıyorsa desteğe başvurun.|
 | Seçilen Depolama Hesabı doğrulaması veya kaydı başarısız oldu.| İşlemi yeniden deneyin, sorun devam ederse desteğe başvurun.|
 | Seçilen Depolama Hesabında Dosya paylaşımları listelenemedi veya bulunamadı. | <ul><li> Kaynak Grubunda Depolama Hesabının mevcut olduğundan (ve silinmediğinden veya kasadaki son doğrulamadan/kayıttan sonra taşınmadığından) emin olun.<li>Korumak istediğiniz Dosya paylaşımının silinmemiş olduğundan emin olun. <li>Depolama Hesabının, Dosya paylaşımı yedeklemesi için desteklenen bir depolama hesabı olduğundan emin olun.<li>Dosya paylaşımının, aynı Kurtarma Hizmetleri kasasında zaten korumalı olup olmadığını denetleyin.|
 | Yedekleme Dosyası paylaşım yapılandırması (veya koruma ilkesi yapılandırması) başarısız oluyor. | <ul><li>Sorunun devam edip etmediğini görmek için işlemi yeniden deneyin. <li> Korumak istediğiniz Dosya paylaşımının silinmemiş olduğundan emin olun. <li> Aynı anda birden çok Dosya paylaşımını korumaya çalışıyorsanız ve dosya paylaşımlarının bir kısmı başarısız oluyorsa başarısız Dosya paylaşımları için yedeklemeyi yapılandırmayı tekrar deneyin. |
 | Bir Dosya paylaşımının koruması kaldırıldıktan sonra Kurtarma Hizmetleri kasası silinemiyor. | Azure portalında, Kasa > **Yedekleme Altyapısı** > **Depolama hesapları**’nı açın ve Kurtarma Hizmetleri kasasından depolama hesabını kaldırmak için **Kaydı Kaldır**’a tıklayın.|
-
 
 ## <a name="error-messages-for-backup-or-restore-job-failures"></a>Başarısız Yedekleme veya Geri Yükleme işlemleri için hata iletileri
 
@@ -59,15 +62,16 @@ Aşağıdaki tablo, yedeklemenin yapılandırılmasına yöneliktir:
 | Hedef dosya paylaşımı ile ilişkili Dosya Eşitleme Hizmeti kaynaklarında geri yükleme öncesi işlemler gerçekleştirilirken bir hata oluştuğundan geri yükleme işlemi başarısız oldu. | Lütfen daha sonra yeniden deneyin, sorun devam ederse lütfen Microsoft desteğine başvurun. |
 | Bir veya daha fazla dosyayı kurtarma başarısız oldu. Daha fazla bilgi için, yukarıda verilen yoldaki başarısız dosya listesini kontrol edin. | <ul> <li> Kurtarma hatasının nedenleri dosyada listelenmektedir (yol, İş ayrıntılarında belirtilir), nedenleri giderin ve yalnızca başarısız dosyalar için geri yükleme işlemini yeniden deneyin. <li> Dosya geri yükleme hatalarının sık karşılaşılan nedenleri şunlardır: <br/> - Başarısız dosyaların o sırada kullanımda olması. <br/> - Üst dizinde başarısız dosyalarla aynı ada sahip bir dizinin mevcut olması. |
 
-
 ## <a name="modify-policy"></a>Ilkeyi Değiştir
+
 | Hata iletileri | Geçici çözüm veya çözümleme ipuçları |
 | ------------------ | ----------------------------- |
-| Bu öğe için başka bir yapılandırma koruması devam ediyor. | Lütfen önceki değiştirme ilkesi işleminin bitmesini bekleyin ve bir süre sonra yeniden deneyin.|
+| Bu öğe için başka bir yapılandırma koruması işlemi devam ediyor. | Lütfen önceki değiştirme ilkesi işleminin bitmesini bekleyin ve bir süre sonra yeniden deneyin.|
 | Seçilen öğede başka bir işlem devam ediyor. | Lütfen devam eden diğer işlemin tamamlanmasını bekleyin ve bir süre sonra yeniden deneyin |
 
+## <a name="next-steps"></a>Sonraki adımlar
 
-## <a name="see-also"></a>Ayrıca Bkz.
-Azure dosya paylaşımlarının yedeklenmesi hakkında daha fazla bilgi için bkz.:
+Azure dosya paylaşımlarını yedekleme hakkında daha fazla bilgi için bkz.:
+
 - [Azure dosya paylaşımlarını yedekleme](backup-azure-files.md)
 - [Azure dosya paylaşımlarını yedekleme ile ilgili SSS](backup-azure-files-faq.md)

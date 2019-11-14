@@ -1,18 +1,19 @@
 ---
-title: Azure Application Gateway için Azure Resource Manager şablonları
+title: Azure Resource Manager şablonları
+titleSuffix: Azure Application Gateway
 description: Azure Application Gateway için Azure Resource Manager şablonları
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: sample
-ms.date: 08/13/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 4f147e67789349b489674af33d7f04041662660e
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 7353601ac6b624b2adf216d17638fe7b6198eec4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990675"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074496"
 ---
 # <a name="azure-resource-manager-templates-for-azure-application-gateway"></a>Azure Application Gateway için Azure Resource Manager şablonları
 

@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure’da Windows VM’ler için yüksek oranda kullanılabilirlik | Microsoft Docs
+title: Öğretici-Azure 'da Windows VM 'Leri için yüksek kullanılabilirlik
 description: Bu öğreticide, Kullanılabilirlik Kümelerinde yüksek oranda kullanılabilir sanal makineler dağıtmak için Azure PowerShell kullanmayı öğreneceksiniz
 documentationcenter: ''
 services: virtual-machines-windows
@@ -15,21 +15,21 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b943a4476a6b0d639353816337deea96eb14fe24
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0f94f4d312cefec80a0f294e256ee1ad908b903c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101696"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068127"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Öğretici: Azure PowerShell ile yüksek oranda kullanılabilir sanal makineler oluşturun ve dağıtın
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Öğretici: Azure PowerShell ile yüksek oranda kullanılabilir sanal makineler oluşturma ve dağıtma
 
 Bu öğreticide, kullanılabilirlik kümelerini kullanarak sanal makinelerinizin (VM) kullanılabilirliğini ve güvenilirliğini nasıl artıracağınızı öğreneceksiniz. Kullanılabilirlik kümeleri, Azure 'da dağıttığınız VM 'Lerin bir kümede birden çok, yalıtılmış donanım düğümüne dağıtıldığından emin olun. 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Kullanılabilirlik kümesi oluştur
+> * Kullanılabilirlik kümesi oluşturma
 > * Kullanılabilirlik kümesinde sanal makine oluşturma
 > * Kullanılabilir sanal makine boyutlarını denetleme
 > * Azure Danışmanı’nı denetleme
@@ -49,7 +49,7 @@ Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabilece�
 
 Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. İsterseniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) adresine giderek Cloud Shell'i ayrı bir tarayıcı sekmesinde de başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
-## <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluştur
+## <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
 
 Konumdaki donanım, birden çok etki alanına ve hata etki alanına bölünmüştür. **Güncelleştirme etki alanı**, aynı anda yeniden başlatılabilen bir VM grubu ve temel alınan fiziksel donanımdır. Aynı **hata etki alanında** bulunan VM’ler, ortak güç kaynağı ve ağ anahtarıyla birlikte ortak depolama alanını paylaşır.  
 
@@ -63,7 +63,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-`-sku aligned` Parametresiyle [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) kullanarak yönetilen bir kullanılabilirlik kümesi oluşturun.
+`-sku aligned` parametresiyle [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) kullanarak yönetilen bir kullanılabilirlik kümesi oluşturun.
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -79,7 +79,7 @@ New-AzAvailabilitySet `
 Donanım genelinde doğru şekilde dağıtıldığından emin olmak için VM 'Lerin kullanılabilirlik kümesi içinde oluşturulması gerekir. Mevcut bir VM oluşturulduktan sonra bir kullanılabilirlik kümesine ekleyemezsiniz. 
 
 
-[New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile bir VM oluşturduğunuzda, kullanılabilirlik kümesinin adını belirtmek için `-AvailabilitySetName` parametresini kullanın.
+[New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)Ile bir VM oluşturduğunuzda, kullanılabilirlik kümesinin adını belirtmek için `-AvailabilitySetName` parametresini kullanırsınız.
 
 İlk olarak, VM için [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
@@ -107,7 +107,7 @@ for ($i=1; $i -le 2; $i++)
 
 İki VM’yi de oluşturup yapılandırmak birkaç dakika sürer. Tamamlandığında, temel alınan donanım arasında dağıtılmış iki sanal makineye sahip olursunuz. 
 
-**MyResourceGroupAvailability** > myAvailabilitySet > kaynak gruplarına giderek portaldaki kullanılabilirlik kümesine baktığınızda, VM 'lerin iki hata ve güncelleştirme arasında nasıl dağıtıldığını görmeniz gerekir etki alanları.
+**MyResourceGroupAvailability** > **MyAvailabilitySet** > **kaynak gruplarına** giderek portaldaki kullanılabilirlik kümesine bakarsanız, VM 'lerin iki hata ve güncelleştirme etki alanı arasında nasıl dağıtıldığını görmeniz gerekir.
 
 ![Portaldaki kullanılabilirlik kümesi](./media/tutorial-availability-sets/fd-ud.png)
 
@@ -133,7 +133,7 @@ Ayrıca, sanal makinelerinizin kullanılabilirliğini geliştirme hakkında daha
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Kullanılabilirlik kümesi oluştur
+> * Kullanılabilirlik kümesi oluşturma
 > * Kullanılabilirlik kümesinde sanal makine oluşturma
 > * Kullanılabilir sanal makine boyutlarını denetleme
 > * Azure Danışmanı’nı denetleme

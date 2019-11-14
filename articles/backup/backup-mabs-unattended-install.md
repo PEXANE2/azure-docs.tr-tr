@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3777aecea5e25b33a7010ad90887829406e491ae
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: a02d9f42242b9a762c58ef65a798ff6ab8f53914
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210159"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074789"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Katılımsız Azure Backup Sunucusu yüklemesi çalıştırma
 
@@ -24,7 +24,7 @@ Azure Backup Sunucusu v1 yüklüyorsanız bu adımlar uygulanmaz.
 
 1. Azure Backup Sunucusu v2 veya üstünü barındıran sunucuda bir metin dosyası oluşturun. (Dosyayı Not defteri 'nde veya başka bir metin düzenleyicisinde oluşturabilirsiniz.) Dosyayı MABSSetup. ini olarak kaydedin.
 
-2. Aşağıdaki kodu MABSSetup. ini dosyasına yapıştırın. Köşeli ayracın içindeki metni (\< \>), ortamınızdaki değerlerle değiştirin. Aşağıdaki metin bir örnektir:
+2. Aşağıdaki kodu MABSSetup. ini dosyasına yapıştırın. Köşeli ayracın içindeki metni (\< \>) ortamınızdaki değerlerle değiştirin. Aşağıdaki metin bir örnektir:
 
    ```text
    [OPTIONS]
@@ -55,11 +55,12 @@ Azure Backup Sunucusu v1 yüklüyorsanız bu adımlar uygulanmaz.
 
 Yükleme için bu bayrakları kullanabilirsiniz:</br>
 **/f**:. ini dosya yolu</br>
-**/l**: Günlük yolu</br>
-**/i**: Yükleme yolu</br>
-**/x**: Kaldırma yolu</br>
+**/l**: günlük yolu</br>
+**/i**: yükleme yolu</br>
+**/x**: yolu kaldır</br>
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Yedekleme sunucusunu yükledikten sonra, sunucunuzu nasıl hazırlayacağınızı veya bir iş yükünü korumaya nasıl başlayacağınızı öğrenin.
 
 - [Yedekleme sunucusu iş yüklerini hazırlama](backup-azure-microsoft-azure-backup.md)

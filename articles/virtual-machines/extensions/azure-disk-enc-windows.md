@@ -1,5 +1,5 @@
 ---
-title: Windows için Azure disk şifrelemesi | Microsoft Docs
+title: Windows için Azure disk şifrelemesi
 description: Bir sanal makine uzantısı kullanarak bir Windows sanal makinesine Azure disk şifrelemesi dağıtır.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 056bd1293e0593a7fb7f9909cfd85043577686c4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8435663dcf92e2617ea2fe9218649e94243272d2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901345"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073218"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows için Azure disk şifrelemesi (Microsoft. Azure. Security. AzureDiskEncryption)
 
@@ -134,32 +134,32 @@ V 2.2 şeması tüm yeni VM 'Lerde önerilir ve Azure Active Directory özellik 
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek | Veri Türü |
+| Ad | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| 'ın | Microsoft. Azure. Security | string |
+| publisher | Microsoft.Azure.Security | string |
 | type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 1,1, 2,2 | string |
-| (1,1 şeması) Aadclientıd | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | 'ini | 
+| (1,1 şeması) Aadclientıd | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (1,1 şeması) AADClientSecret | password | string |
-| (1,1 şeması) AADClientCertificate | #c0 | string |
+| (1,1 şeması) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path": "", "ad": "", "file_system": ""} | JSON sözlüğü |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | ' RSA-OAEP ', ' RSA-OAEP-256 ', ' RSA1_5 ' | string |
-| keyEncryptionKeyURL 'Si | url | string |
-| keyVaultURL | url | string |
+| KeyEncryptionKeyURL 'Si | url | string |
+| KeyVaultURL | url | string |
 | seçim Deyimi | password | string | 
-| sequenceVersion | benzersiz tanımlayıcı | string |
+| SequenceVersion | uniqueidentifier | string |
 | Birimtürü | İşletim sistemi, veri, tümü | string |
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 Şablon dağıtımı örneği için, bkz. [Galeri görüntüsünden yeni bir şifrelenmiş WINDOWS VM oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).
 
-## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
+## <a name="azure-cli-deployment"></a>Azure CLI dağıtım
 
 Yönergeleri en son [Azure CLI belgelerinde](/cli/azure/vm/encryption?view=azure-cli-latest)bulabilirsiniz. 
 
-## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
+## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
@@ -167,7 +167,7 @@ Yönergeleri en son [Azure CLI belgelerinde](/cli/azure/vm/encryption?view=azure
 
 ### <a name="support"></a>Destek
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/community/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
+Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/community/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Uzantılar hakkında daha fazla bilgi için bkz. [Windows Için sanal makine uzantıları ve özellikleri](features-windows.md).

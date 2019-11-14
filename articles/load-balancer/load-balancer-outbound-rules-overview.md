@@ -1,7 +1,6 @@
 ---
-title: Azure Load Balancer giden kuralları
-titlesuffix: Azure Load Balancer
-description: Giden ağ adresi çevirileri tanımlamak için giden kurallarını kullanma
+title: Giden kuralları-Azure Load Balancer
+description: Bu öğrenme yoluyla giden ağ adresi çevirileri tanımlamak için giden kurallarını kullanmaya başlayın.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,41 +12,41 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: d1874d610feb041545e1675ad5b40a1b5e753b67
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 316b28faa458b03431cb48f02a8087116415b061
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497979"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075899"
 ---
-# <a name="load-balancer-outbound-rules"></a>Giden kuralları Load Balancer
+# <a name="load-balancer-outbound-rules"></a>Yük Dengeleyici giden kuralları
 
-Azure Load Balancer, gelen öğesine ek olarak bir sanal ağdan giden bağlantı sağlar.  Giden kuralları, genel [Standart Load Balancer](load-balancer-standard-overview.md)giden ağ adresi çevirisini yapılandırmayı basitleştirir.  Bu özelliği özel gereksinimlerinize göre ölçeklendirmeye ve ayarlamaya yönelik giden bağlantı üzerinde tam bildirime dayalı denetiminiz vardır.
+Azure yük dengeleyici, gelen ek bir sanal ağdan giden bağlantı sağlar.  Giden kuralları, yapılandırma basit genel hale [Standard Load Balancer](load-balancer-standard-overview.md)'s giden ağ adresi çevirisi.  Ölçeklendirme ve kendi özel gereksinimlerinize göre bu özelliği ayarlamak için giden bağlantı üzerinde tam bildirim temelli denetiminiz vardır.
 
-![Giden kuralları Load Balancer](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
+![Yük Dengeleyici giden kuralları](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
 
-Giden kuralları ile Load Balancer şu şekilde kullanabilirsiniz: 
-- giden NAT 'yi sıfırdan tanımlayın.
-- Varolan giden NAT 'nin davranışını ölçeklendirin ve ayarlayın. 
+Giden kuralları ile yük dengeleyiciye kullanabilirsiniz: 
+- Giden NAT sıfırdan tanımlayın.
+- ölçeklendirme ve giden NAT'ın mevcut davranışını ayarlama 
 
-Giden kuralları denetlemenize izin verir:
-- Hangi sanal makinelerin genel IP adreslerine çevrilmesi gerekir. 
-- [gıden SNAT bağlantı noktalarının](load-balancer-outbound-connections.md#snat) ayrılması gerekir.
-- için giden çeviri sağlayacak olan protokoller.
+Giden kuralları denetimine izin ver:
+- genel IP adresleri, hangi sanal makinelerin çevrilmesi gerekir. 
+- nasıl [giden SNAT bağlantı noktaları](load-balancer-outbound-connections.md#snat) ayrılmalıdır.
+- Giden çeviri sağlamak için hangi protokollerin.
 - giden bağlantı boşta kalma zaman aşımı (4-120 dakika) için kullanılacak süre.
-- boşta kalma zaman aşımı durumunda (genel önizlemede) bir TCP sıfırlaması gönderileceğini belirtir. 
+- boşta kalma zaman aşımı (genel Önizleme) üzerinde bir TCP Sıfırla'ı gönderilip gönderilmeyeceğini belirtir. 
 
-Giden kuralları, [giden bağlantılar](load-balancer-outbound-connections.md) makalesinde açıklanan [Senaryo 2](load-balancer-outbound-connections.md#lb) ' yi genişleterek senaryo önceliği olduğu gibi kalır.
+Giden kuralları genişletin [Senaryo 2](load-balancer-outbound-connections.md#lb) içinde açıklanan [giden bağlantılar](load-balancer-outbound-connections.md) olarak kalır makale ve senaryo öncelik-olduğu.
 
 ## <a name="outbound-rule"></a>Giden kuralı
 
-Tüm Load Balancer kuralları gibi giden kurallar da yük dengeleme ve gelen NAT kuralları ile aynı tanıdık sözdizimini izler:
+Tüm yük dengeleyici kuralları gibi giden kuralları, Yük Dengeleme ve gelen NAT kuralları aynı tanıdık söz izleyin:
 
-**ön uç** + **parametreleri** **arka uç havuzu** + 
+**ön uç** + **parametreleri** + **arka uç havuzu**
 
-Giden bir kural _, arka uç havuzu tarafından belirtilen tüm sanal makineler_ IÇIN giden NAT 'yi _ön_uca çevrilecek şekilde yapılandırır.  Ve _Parametreler_ giden NAT algoritması üzerinde ek ayrıntılı denetim sağlar.
+Giden NAT için bir giden kuralı yapılandırır _arka uç havuzu tarafından tanımlanan tüm sanal makineler_ için çevrilemeyen _ön uç_.  Ve _parametreleri_ giden NAT algoritması üzerinde ek ayrıntılı denetim sağlar.
 
-API sürümü "2018-07-01", aşağıdaki gibi yapılandırılmış bir giden kural tanımına izin verir:
+API sürümü "2018-07-01", şu şekilde yapılandırılmış bir giden kuralı tanımı izin verir:
 
 ```json
       "outboundRules": [
@@ -63,70 +62,70 @@ API sürümü "2018-07-01", aşağıdaki gibi yapılandırılmış bir giden kur
 ```
 
 >[!NOTE]
->Etkin giden NAT yapılandırması, tüm giden kuralların ve yük dengeleme kurallarının bir bileşiği olur. Giden kuralları Yük Dengeleme kurallarına göre artımlıdır. Bir VM için birden çok kural geçerli olduğunda, etkin giden NAT çevirisini yönetmek üzere [bir yük dengeleme kuralı için gıden NAT 'yi devre dışı bırakmayı](#disablesnat) gözden geçirin. Yük Dengeleme kuralıyla aynı genel IP adresini kullanan bir giden kuralı tanımlarken [gıden SNAT 'yi devre dışı bırakmanız](#disablesnat) gerekir.
+>Etkin giden NAT bileşik tüm giden kuralları ve Yük Dengeleme kuralları bir yapılandırmadır. Giden kuralları, Yük Dengeleme kuralları artımlı. Gözden geçirme [giden NAT için Yük Dengeleme kuralı devre dışı bırakma](#disablesnat) bir VM'ye birden çok kural geçerli olduğunda, etkin giden NAT çeviri yönetmek için. Yapmanız gerekenler [giden SNAT devre dışı](#disablesnat) aynı genel IP adresini bir Yük Dengeleme kuralı kullanan bir giden kuralı tanımlarken.
 
-### <a name="scale"></a>Birden çok IP adresiyle giden NAT 'yi ölçeklendirme
+### <a name="scale"></a> Birden çok IP adresi ile ölçek giden NAT
 
-Giden kuralı yalnızca tek bir genel IP adresiyle kullanılabilir ancak giden kuralları, giden NAT ölçeklendirme için yapılandırma yükünü kolaylaştırır. Büyük ölçekli senaryoları planlamak için birden çok IP adresi kullanabilir ve giden kurallarını, [SNAT tükenmesi](load-balancer-outbound-connections.md#snatexhaust) açısından yüksek desenleri azaltmak için kullanabilirsiniz.  
+Yalnızca tek bir genel IP adresi ile bir giden kuralı kullanılabilse giden kuralları için giden NAT'ın ölçeklendirme yapılandırma yükünü Büyük ölçekli senaryolar için plan için birden çok IP adresi kullanabilirsiniz ve giden kuralları azaltmak için kullanabileceğiniz [SNAT tükenmesi](load-balancer-outbound-connections.md#snatexhaust) saldırıya desenleri.  
 
-Ön uç tarafından sağlanan her ek IP adresi, Load Balancer SNAT bağlantı noktası olarak kullanılacak olan 64.000 kısa ömürlü bağlantı noktaları sağlar. Yük Dengeleme veya gelen NAT kurallarında tek bir ön uç olduğunda, giden kuralı ön uç kavramını genişletir ve kural başına birden fazla ön uç sağlar.  Kural başına birden çok ön uç ile, kullanılabilir SNAT bağlantı noktalarının miktarı her genel IP adresi ile çarpılır ve büyük senaryolar desteklenir.
+Ön uç tarafından sağlanan her ek IP adresi, Load Balancer SNAT bağlantı noktası olarak kullanılacak olan 64.000 kısa ömürlü bağlantı noktaları sağlar. Gelen NAT kuralları Yük Dengeleme veya tek bir ön uç olsa da, giden kuralı ön uç kavramımız genişletir ve Kural başına birden çok ön uç sağlar.  Kural başına birden çok ön uç, kullanılabilir SNAT bağlantı noktaları miktarı her genel IP adresi ile çarpılır ve büyük senaryolar desteklenir.
 
-Ayrıca, [Genel BIR IP önekini](https://aka.ms/lbpublicipprefix) doğrudan giden bir kuralla kullanabilirsiniz.  Genel IP önekini kullanmak, Azure dağıtımından kaynaklanan akışların daha kolay ölçeklendirilmesi ve Basitleştirilmiş listesini sağlar. Load Balancer kaynağı içinde bir ön uç IP yapılandırmasını doğrudan genel IP adresi ön ekine başvuracak şekilde yapılandırabilirsiniz.  Bu, genel IP öneki üzerinde özel olarak denetim Load Balancer sağlar ve giden kuralı, giden bağlantılar için genel IP ön eki içinde bulunan tüm genel IP adreslerini otomatik olarak kullanır.  Genel IP öneki aralığı içindeki IP adreslerinden her biri, Load Balancer SNAT bağlantı noktası olarak kullanılacak IP adresi başına 64.000 kısa ömürlü bağlantı noktaları sağlar.   
+Ayrıca, kullanabileceğiniz bir [genel IP öneki](https://aka.ms/lbpublicipprefix) bir giden kuralı ile doğrudan.  Genel IP'si kullanan, kolay ölçeklendirme ve Azure dağıtımınızı kaynaklanan akış Basitleştirilmiş güvenilir listeye için ön ek sağlar. Genel bir IP adresi ön eki doğrudan başvurmak için yük dengeleyici kaynak içinde bir ön uç IP yapılandırması yapılandırabilirsiniz.  Bu yük dengeleyicinin genel IP öneki özel denetime sağlar ve giden kuralı, giden bağlantılar için genel IP öneki içinde yer alan tüm genel IP adresleri otomatik olarak kullanacak.  Genel IP öneki aralığı içindeki IP adreslerinden her biri, Load Balancer SNAT bağlantı noktası olarak kullanılacak IP adresi başına 64.000 kısa ömürlü bağlantı noktaları sağlar.   
 
-Giden kuralı genel IP ön ekinin tamamen denetimine sahip olması gerektiği için, bu seçeneği kullandığınızda genel IP önekinden tek tek genel IP adresi kaynakları oluşturulabilir.  Daha ayrıntılı denetime ihtiyacınız varsa genel IP önekinden tek başına genel IP adresi kaynağı oluşturabilir ve bir giden kuralının ön ucunda tek tek genel IP adresleri atayabilirsiniz.
+Genel IP önekten giden kuralı genel IP öneki tam denetimi olmalıdır gibi bu seçeneği tercih edildiğinde oluşturulan genel IP adresi kaynakların sahip olamaz.  Daha iyi tanecikli denetim gerekiyorsa, genel IP önekten ayrı genel IP adresi kaynağı oluşturma ve birden çok genel IP adresleri ayrı ayrı bir giden kuralı ön uç için atayın.
 
-### <a name="snatports"></a>SNAT bağlantı noktası ayırmasını ayarla
+### <a name="snatports"></a> Bağlantı noktası ayırma SNAT ayarlama
 
-[Arka uç havuzu boyutuna göre OTOMATIK SNAT bağlantı noktası ayırmayı](load-balancer-outbound-connections.md#preallocatedports) ayarlamak ve otomatik SNAT bağlantı noktası ayırmanın sağladığı daha fazla veya daha az ayırmak için giden kurallarını kullanabilirsiniz.
+Giden kuralları ayarlamak için kullanılabileceğiniz [otomatik SNAT bağlantı noktası ayırma arka uç havuz boyutunu temel alarak](load-balancer-outbound-connections.md#preallocatedports) ve otomatik SNAT bağlantı noktası ayırma sağladığından daha fazla veya az ayırın.
 
-VM başına 10.000 SNAT bağlantı noktası (NIC IP yapılandırması) ayırmak için aşağıdaki parametreyi kullanın.
+Bağlantı noktalarını VM (NIC IP yapılandırması) başına 10.000 SNAT ayırmak için aşağıdaki parametreyi kullanın.
  
 
           "allocatedOutboundPorts": 10000
 
-Giden bir kuralın tüm ön uçlarından gelen her genel IP adresi, SNAT bağlantı noktaları olarak kullanılmak üzere 64.000 kısa ömürlü bağlantı noktasına kadar katkıda bulunur.  Load Balancer SNAT bağlantı noktalarını 8 ' in katları halinde ayırır. 8 ' den bölünemez bir değer sağlarsanız, yapılandırma işlemi reddedilir.  Genel IP adresi sayısına göre kullanılabilir olandan daha fazla SNAT bağlantı noktası ayırmaya çalışırsanız, yapılandırma işlemi reddedilir.  Örneğin, VM başına 10.000 bağlantı noktası ve arka uç havuzunda 7 VM 'Ler ayırırsanız tek bir genel IP adresi paylaşabilir, yapılandırma reddedilir (7 x 10.000 SNAT bağlantı noktaları > 64.000 SNAT bağlantı noktaları).  Senaryoyu etkinleştirmek için giden kuralının ön ucunda daha fazla genel IP adresi ekleyebilirsiniz.
+Giden bir kuralın tüm ön uçlarından gelen her genel IP adresi, SNAT bağlantı noktaları olarak kullanılmak üzere 64.000 kısa ömürlü bağlantı noktasına kadar katkıda bulunur.  Yük Dengeleyici SNAT katları 8 bağlantı noktası ayırır. 8 katı olmayan bir değer sağlarsanız, yapılandırma işlemi reddedilir.  Genel IP adresleri sayısına göre bulunandan daha fazla SNAT bağlantı noktaları ayırmak çalışırsanız, yapılandırma işlemi reddedilir.  Örneğin, VM başına 10.000 bağlantı noktası ve arka uç havuzunda 7 VM 'Ler ayırırsanız tek bir genel IP adresi paylaşabilir, yapılandırma reddedilir (7 x 10.000 SNAT bağlantı noktaları > 64.000 SNAT bağlantı noktaları).  Daha fazla genel IP adresleri ön uç senaryoyu etkinleştirmek için bir giden kuralı ekleyebilirsiniz.
 
-Bağlantı noktası sayısı için 0 belirterek, [arka uç havuzu boyutuna bağlı olarak OTOMATIK SNAT bağlantı noktası ayırmaya](load-balancer-outbound-connections.md#preallocatedports) geri dönebilirsiniz. Bu durumda, ilk 50 sanal makine örnekleri 1024 bağlantı noktalarını alacak şekilde, 51-100 sanal makine örnekleri tabloya göre 512 ve bu şekilde devam eder.
+Geri döndürebilirsiniz [otomatik SNAT bağlantı noktası ayırma arka uç havuz boyutunu temel alarak](load-balancer-outbound-connections.md#preallocatedports) 0 bağlantı noktası numarası belirterek. Bu durumda, ilk 50 sanal makine örnekleri 1024 bağlantı noktalarını alacak şekilde, 51-100 sanal makine örnekleri tabloya göre 512 ve bu şekilde devam eder.
 
-### <a name="idletimeout"></a>Denetim giden akış boşta kalma zaman aşımı
+### <a name="idletimeout"></a> Denetim giden akış boşta kalma zaman aşımı
 
-Giden kuralları, giden akış boşta kalma zaman aşımını denetlemek ve uygulamanızın gereksinimleriyle eşleştirmek için bir yapılandırma parametresi sağlar.  Çıkış boşta kalma zaman aşımları varsayılan olarak 4 dakikadır.  Parametresi, belirli bir kuralla eşleşen akışlar için boşta kalma zaman aşımı için dakika sayısı kadar olan 4 ila 120 arasında bir değer kabul eder.
+Giden kuralları giden akış boşta kalma zaman aşımını denetleme ve uygulamanızın ihtiyaçlarını eşleştirmek için bir yapılandırma parametresi sağlayın.  4 dakikalık varsayılan giden boşta kalma zaman aşımı.  Parametresi, belirli bir kuralla eşleşen akışlar için boşta kalma zaman aşımı için dakika sayısı kadar olan 4 ila 120 arasında bir değer kabul eder.
 
-Giden boşta kalma zaman aşımını 1 saate ayarlamak için aşağıdaki parametreyi kullanın:
+Giden boşta kalma zaman aşımı 1 saate ayarlamak için aşağıdaki parametresini kullanın:
 
           "idleTimeoutInMinutes": 60
 
-### <a name="tcprst"></a><a name="tcpreset"></a> Boşta kalma zaman AŞıMı durumunda TCP sıfırlamayı etkinleştir (Önizleme)
+### <a name="tcprst"></a> <a name="tcpreset"></a> Sıfırlama TCP boşta kalma zaman aşımı (Önizleme) etkinleştirme
 
-Load Balancer varsayılan davranışı, giden boşta kalma zaman aşımı ile erişildiğinde akışı sessizce düşürülemiyor.  Enabletcönayar parametresi ile, daha öngörülebilir bir uygulama davranışını etkinleştirebilir ve giden boşta kalma zaman aşımı süresi dolduğunda çift yönlü TCP sıfırlaması (TCP RST) göndermek isteyip istemediğinizi kontrol edebilirsiniz. 
+Load Balancer'ın varsayılan davranışı, giden boşta kalma zaman aşımı ulaşıldığında akışı sessizce bırak sağlamaktır.  EnableTCPReset parametresiyle daha öngörülebilir bir uygulama davranışını etkinleştirmek ve gönderilip gönderilmeyeceğini denetleyen çift TCP Reset (TCP k) yönlü, zaman aşımı giden boşta kalma zaman aşımı. 
 
-Giden kuralda TCP sıfırlamayı etkinleştirmek için aşağıdaki parametreyi kullanın:
+TCP sıfırlama bir giden kuralı etkinleştirmek için aşağıdaki parametresini kullanın:
 
            "enableTcpReset": true
 
-Bölge kullanılabilirliği dahil Ayrıntılar için [boşta kalma zaman aşımı (Önizleme) üzerinde TCP sıfırlamayı](https://aka.ms/lbtcpreset) gözden geçirin.
+Gözden geçirme [sıfırlama TCP boşta kalma zaman aşımı (Önizleme) üzerinde](https://aka.ms/lbtcpreset) bölge kullanılabilirliği gibi ayrıntıları.
 
-### <a name="proto"></a>Tek bir kuralla hem TCP hem de UDP aktarım protokollerini destekler
+### <a name="proto"></a> Tek bir kural ile TCP ve UDP aktarım protokolünü destekler
 
-Büyük olasılıkla giden kuralın Aktarım Protokolü için "tümü" ni kullanmak isteyeceksiniz, ancak aynı zamanda giden kuralını belirli bir aktarım protokolüne de uygulayabilirsiniz.
+Büyük olasılıkla "All" giden kuralı Aktarım Protokolü için kullanmak istersiniz, ancak bunu yapmak için bir gereksinimi varsa giden kuralı da belirli bir aktarım protokolü için de uygulayabilirsiniz.
 
-Protokolü TCP ve UDP olarak ayarlamak için aşağıdaki parametreyi kullanın:
+TCP ve UDP protokolünü ayarlamak için aşağıdaki parametresini kullanın:
 
           "protocol": "All"
 
-### <a name="disablesnat"></a>Yük Dengeleme kuralı için giden NAT 'yi devre dışı bırakma
+### <a name="disablesnat"></a> Giden NAT için Yük Dengeleme kuralı devre dışı bırak
 
-Daha önce belirtildiği gibi, Yük Dengeleme kuralları giden NAT 'nin otomatik olarak programlamayı sağlar. Ancak, bazı senaryolar, davranışı denetlemenize veya iyileştirmenize olanak tanımak için, Yük Dengeleme kuralı tarafından giden NAT otomatik programlamayı devre dışı bırakmanızı veya zorunlu kılmanızı gerektirir.  Giden kurallarında, otomatik giden NAT programlamayı durdurmak için önemli olan senaryolar bulunur.
+Daha önce belirtildiği gibi Yük Dengeleme kuralları, giden NAT'ın otomatik programlamasını sağlayın. Ancak, bazı senaryolarda avantaj ya da Yük Dengeleme davranışını denetlemek için izin veya kuralı tarafından otomatik programlama giden NAT'ın devre dışı bırakmak ihtiyacınız.  Giden kuralları, otomatik giden NAT programlama durdurmak önemli olduğu senaryolar vardır.
 
-Bu parametreyi iki şekilde kullanabilirsiniz:
-- Giden NAT için gelen IP adresinin kullanılması için isteğe bağlı gizleme.  Giden kuralları Yük Dengeleme kurallarına ve bu parametre kümesiyle artımlı olarak, giden kuralı denetimde olur.
+Bu parametre iki şekilde kullanabilir:
+- Giden NAT için gelen bir IP adresi kullanarak isteğe bağlı gizleme  Giden kuralları, Yük Dengeleme kuralları artımlı ve bu parametre kümesi ile giden denetiminde kuralıdır.
   
-- Gelen ve giden için aynı anda kullanılan bir IP adresinin giden NAT parametrelerini ayarlayın.  Giden bir kuralın denetim geçirmesine izin vermek için otomatik giden NAT programlaması devre dışı bırakılmalıdır.  Örneğin, gelen için de kullanılan bir adresin SNAT bağlantı noktası ayırmasını değiştirmek için bu parametrenin true olarak ayarlanması gerekir.  Gelen bir IP adresinin parametrelerini yeniden tanımlamak için bir giden kuralı kullanmayı denerseniz ve yük dengeleme kuralının giden NAT programlamayı yayımlamadıysanız, bir giden kuralı yapılandırma işlemi başarısız olur.
+- Gelen ve giden için eşzamanlı olarak kullanılan bir IP adresine giden NAT parametrelerini ayarlayın.  Otomatik giden NAT programlama denetimini almak bir giden kuralı izin vermek için devre dışı bırakılmalıdır.  Örneğin, bir adresin SNAT bağlantı noktası ayırma da değiştirmek için kullanılan için gelen, bu parametre ayarlanmalıdır true.  Yeniden tanımlanacak bir giden kuralı kullanmayı denerseniz, bir IP adresi için de kullanılan parametreleri gelen ve giden NAT programlamasını Yük Dengeleme kuralını yayımlamadık, bir giden kuralı yapılandırma işlemi başarısız olur.
 
 >[!IMPORTANT]
-> Bu parametreyi true olarak ayarlarsanız ve giden bağlantıyı tanımlamak için bir giden kuralı (veya [örnek düzeyi genel IP senaryosu](load-balancer-outbound-connections.md#ilpip) ) yoksa, sanal makineniz giden bağlantıya sahip olmayacaktır.  VM 'nizin veya uygulamanızın bazı işlemleri giden bağlantıya sahip olmaya bağlı olabilir. Senaryonuzun bağımlılıklarını anladığınızdan ve bu değişikliği yapmanın etkileri olduğuna emin olun.
+> Bu parametre true olarak ayarlayın ve bir giden kuralına sahip olmaması durumunda, sanal makinenizin giden bağlantı olmaz (veya [örnek düzeyi genel IP senaryo](load-balancer-outbound-connections.md#ilpip) giden bağlantıyı tanımlamak için.  Sanal makinenizin veya uygulamanızı bazı işlemler, giden bağlantı kullanılabilir olması bağlı olabilir. Senaryonuz bağımlılıkları anlamak ve bu değişiklik etkisini göz önünde bulundurduğunuzdan emin olun.
 
-Yük Dengeleme kuralında bu yapılandırma parametresiyle giden SNAT 'yi devre dışı bırakabilirsiniz:
+Yük Dengeleme kuralı bu yapılandırma parametresi ile giden SNAT devre dışı bırakabilirsiniz:
 
 ```json
       "loadBalancingRules": [
@@ -136,83 +135,83 @@ Yük Dengeleme kuralında bu yapılandırma parametresiyle giden SNAT 'yi devre 
       ]
 ```
 
-DisableOutboundSNAT parametresi false olarak ayarlanır; Bu, Yük Dengeleme kuralının Yük Dengeleme **kuralı yapılandırmasının** bir yansıtma görüntüsü olarak OTOMATIK giden NAT sağladığı anlamına gelir.  
+DisableOutboundSNAT parametresi varsayılan olarak, Yük Dengeleme kuralını gösterir. false olarak **mu** otomatik giden NAT kuralı yapılandırması yük dengelemeyi bir Ayna görüntüsünü sağlayın.  
 
-Yük Dengeleme kuralında disableOutboundSnat değerini true olarak ayarlarsanız, Yük Dengeleme kuralı, aksi halde otomatik giden NAT programlamanın denetimini yayınlar.  Yük Dengeleme kuralının bir sonucu olarak giden SNAT devre dışı bırakıldı.
+Yük Dengeleme kuralını disableOutboundSnat Yük Dengeleme kuralı true olarak ayarlayın, aksi takdirde otomatik giden NAT programlama denetimin serbest bırakır.  Yük Dengeleme kuralı sonucunda giden SNAT devre dışı bırakıldı.
 
-### <a name="reuse-existing-or-define-new-backend-pools"></a>Varolanı yeniden kullan veya yeni arka uç havuzlarını tanımla
+### <a name="reuse-existing-or-define-new-backend-pools"></a>Varolan yeniden kullanabilir veya yeni bir arka uç havuzlarını tanımlayın
 
-Giden kuralları, kuralın uygulanacağı VM grubunu tanımlamaya yönelik yeni bir kavram sunmaz.  Bunun yerine, Yük Dengeleme kuralları için de kullanılan bir arka uç havuzu kavramını kullanır. Bunu, var olan bir arka uç havuzu tanımını yeniden kullanıp veya bir giden kuralı için özel olarak oluşturarak yapılandırmayı basitleştirmek için kullanabilirsiniz.
+Giden kuralları, sanal makinelerin bir kuralın uygulanacağı grup tanımlamak için yeni bir kavramın İstemediğimiz.  Bunun yerine, aynı zamanda Yük Dengeleme kuralları için kullanılan bir arka uç havuzu kavramını yeniden. Bu, var olan bir arka uç havuzu tanımı yeniden veya özellikle bir giden kuralı için oluşturma yapılandırmasını basitleştirmek için kullanabilirsiniz.
 
 ## <a name="scenarios"></a>Senaryolar
 
-### <a name="groom"></a>Belirli bir genel IP adresi kümesine giden bağlantılar
+### <a name="groom"></a> Giden bağlantılar belirli bir genel IP adresleri kümesini Temizle
 
-Giden bağlantıların, belirli bir genel IP adresi kümesinden kaynaklanacak şekilde görüntülenmesini sağlamak için bir giden kuralı kullanabilirsiniz.  Bu kaynak genel IP adresi bir yük dengeleme kuralı veya bir yük dengeleme kuralı tarafından kullanılandan farklı bir genel IP adresi kümesi tarafından kullanılan ile aynı olabilir.  
+Bilgisayar bir genel IP adreslerini beyaz listeye ekleme senaryoları kolaylaştırmak için belirli kümesinden kaynaklanacak şekilde görünmesini giden bağlantılar bakımını yapmak için bir giden kuralı kullanabilirsiniz.  Yük Dengeleme kuralı tarafından eskisinden farklı bir genel IP adresleri veya bu kaynak genel IP adresi Yük Dengeleme kuralı tarafından kullanılanla aynı olabilir.  
 
-1. [Genel IP öneki](https://aka.ms/lbpublicipprefix) (veya genel IP önekinden genel IP adresleri) oluştur
+1. Oluşturma [genel IP öneki](https://aka.ms/lbpublicipprefix) (veya ortak IP adreslerini genel IP ön ek)
 2. Genel bir Standart Yük Dengeleyici oluşturma
-3. Kullanmak istediğiniz genel IP önekine (veya genel IP adreslerine) başvuran ön uçlar oluşturun
-4. Arka uç havuzunu yeniden kullanma veya arka uç havuzu oluşturma ve VM 'Leri genel Load Balancer arka uç havuzuna yerleştirme
-5. Ön uçların kullanıldığı bu VM 'Ler için genel Load Balancer giden NAT programlamak için bir giden kuralı yapılandırın
+3. Ön uçlar genel başvuran oluşturma IP önekini (veya genel IP adresleri) kullanmak istediğiniz
+4. Arka uç havuzu yeniden veya bir arka uç havuzu oluşturun ve Vm'leri genel Load Balancer arka uç havuzu yerleştirin
+5. Ön uçlar kullanarak bu VM'ler için giden NAT programlamak için genel yük dengeleyici üzerindeki bir giden kuralı yapılandırma
    
-Yük Dengeleme kuralının giden için kullanılmasını istemiyorsanız, Yük Dengeleme kuralında [gıden SNAT 'yi devre dışı bırakmanız](#disablesnat) gerekir.
+Kullanılacak Yük Dengeleme kuralı için istemiyorsanız için gereken giden [giden SNAT devre dışı](#disablesnat) Yük Dengeleme kuralı.
 
-### <a name="modifysnat"></a>SNAT bağlantı noktası ayırmayı Değiştir
+### <a name="modifysnat"></a> SNAT bağlantı noktası ayırmayı Değiştir
 
-[Arka uç havuzu boyutuna göre OTOMATIK SNAT bağlantı noktası ayırmayı](load-balancer-outbound-connections.md#preallocatedports)ayarlamak için giden kurallarını kullanabilirsiniz.
+Giden kuralları ayarlamak için kullanılabileceğiniz [otomatik SNAT bağlantı noktası ayırma arka uç havuz boyutunu temel alarak](load-balancer-outbound-connections.md#preallocatedports).
 
-Örneğin, giden NAT için tek bir genel IP adresi paylaşan iki sanal makineniz varsa, varsayılan 1024 bağlantı noktasından ayrılan SNAT bağlantı noktası sayısını, SNAT tükenmesi ile karşılaşıyorsanız yükseltmek isteyebilirsiniz. Her genel IP adresi en fazla 64.000 kısa ömürlü bağlantı noktasına katkıda bulunabilir.  Tek bir genel IP adresi ön ucuna sahip bir giden kuralı yapılandırırsanız, arka uç havuzundaki sanal makinelere Toplam 64.000 SNAT bağlantı noktası dağıtabilirsiniz.  İki VM için, en fazla 32.000 SNAT bağlantı noktası bir giden kuralla ayrılabilir (2x 32.000 = 64.000).
+Örneğin, tek bir genel IP adresi için giden NAT paylaşımı iki sanal makine varsa, varsayılan 1024 bağlantı noktalarından SNAT tükenmesi yaşıyorsanız ayrılan SNAT bağlantı noktası sayısını artırmak isteyebilirsiniz. Her genel IP adresi en fazla 64.000 kısa ömürlü bağlantı noktasına katkıda bulunabilir.  Tek bir genel IP adresi ön ucuna sahip bir giden kuralı yapılandırırsanız, arka uç havuzundaki sanal makinelere Toplam 64.000 SNAT bağlantı noktası dağıtabilirsiniz.  İki VM için, en fazla 32.000 SNAT bağlantı noktası bir giden kuralla ayrılabilir (2x 32.000 = 64.000).
 
-[Giden bağlantıları](load-balancer-outbound-connections.md) ve [SNAT](load-balancer-outbound-connections.md#snat) bağlantı noktalarının nasıl ayrıldığı ve kullanıldığı hakkındaki ayrıntıları gözden geçirin.
+Gözden geçirme [giden bağlantılar](load-balancer-outbound-connections.md) hakkında bilgi [SNAT](load-balancer-outbound-connections.md#snat) bağlantı noktalarını ayrılan ve kullanılır.
 
-### <a name="outboundonly"></a>Yalnızca giden trafiği etkinleştir
+### <a name="outboundonly"></a> Yalnızca giden etkinleştir
 
-Bir VM grubu için giden NAT sağlamak üzere ortak bir Standart Load Balancer kullanabilirsiniz. Bu senaryoda, herhangi bir ek kurala gerek duymadan bir giden kuralını kendisi kullanabilirsiniz.
+Giden NAT VM için bir grubu sağlamak için genel bir Standard Load Balancer'ı kullanabilirsiniz. Bu senaryoda, bir giden kuralı kendisi tarafından herhangi bir ek kuralın gerek kalmadan kullanabilirsiniz.
 
-#### <a name="outbound-nat-for-vms-only-no-inbound"></a>Yalnızca VM 'Ler için giden NAT (gelen)
+#### <a name="outbound-nat-for-vms-only-no-inbound"></a>Yalnızca VM'ler için giden NAT (Giriş yok)
 
-Ortak bir Standart Load Balancer tanımlayın, sanal makineleri arka uç havuzuna yerleştirin ve giden NAT 'yi programlamak ve giden bağlantıları belirli bir genel IP adresinden kaynaklanacak şekilde yapılandırın. Ayrıca, giden bağlantıların kaynağını bir arada listelemek için genel bir IP öneki de kullanabilirsiniz.
+Genel bir Standard Load Balancer tanımlamak, VM'ler arka uç havuzuna yerleştirin ve giden NAT program ve giden bağlantılar belirli bir genel IP adresi kaynağı için Temizleme için bir giden kuralı yapılandırın. Bir genel IP öneki de kullanabilirsiniz güvenilir listeye giden bağlantılar kaynağını basitleştirin.
 
-1. Ortak Standart Load Balancer oluşturun.
-2. Bir arka uç havuzu oluşturun ve VM 'Leri genel Load Balancer arka uç havuzuna yerleştirin.
-3. Bu VM 'Ler için giden NAT programlamak için genel Load Balancer giden bir kural yapılandırın.
+1. Genel bir Standard Load Balancer oluşturun.
+2. Arka uç havuzu oluşturabilir ve Vm'leri genel Load Balancer arka uç havuzu halinde yerleştirin.
+3. Bu VM'ler için giden NAT programlamak için genel yük dengeleyici üzerindeki bir giden kuralı yapılandırın.
 
-#### <a name="outbound-nat-for-internal-standard-load-balancer-scenarios"></a>İç Standart Load Balancer senaryolar için giden NAT
+#### <a name="outbound-nat-for-internal-standard-load-balancer-scenarios"></a>Giden NAT için iç Load Balancer standart senaryoları
 
-Dahili bir Standart Load Balancer kullanılırken, giden bağlantı açıkça bildirildiği sürece giden NAT kullanılamaz. Bir iç Standart Load Balancer arkasındaki VM 'Ler için giden bağlantıyı aşağıdaki adımlarla oluşturmak üzere giden bağlantı kuralı kullanarak giden bağlantıyı tanımlayabilirsiniz:
+Giden bağlantı açıkça bildirilen kadar iç bir Standard Load Balancer kullanırken, giden NAT kullanılamaz. Bu adımlarla iç standart yük dengeleyici arkasındaki VM'ler için giden bağlantı oluşturmak için bir giden kuralı kullanarak giden bağlantıyı tanımlayabilirsiniz:
 
-1. Ortak Standart Load Balancer oluşturun.
-2. Bir arka uç havuzu oluşturun ve VM 'Leri iç Load Balancer ek olarak ortak Load Balancer arka uç havuzuna yerleştirin.
-3. Bu VM 'Ler için giden NAT programlamak için genel Load Balancer giden bir kural yapılandırın.
+1. Genel bir Standard Load Balancer oluşturun.
+2. Arka uç havuzu oluşturabilir ve Vm'leri iç Load Balancer yanı sıra genel Load Balancer arka uç havuzu yerleştirin.
+3. Bu VM'ler için giden NAT programlamak için genel yük dengeleyici üzerindeki bir giden kuralı yapılandırın.
 
-#### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a>Giden NAT için hem TCP & UDP protokollerini ortak bir Standart Load Balancer etkinleştirin
+#### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a>Genel bir Standard Load Balancer ile giden NAT için hem TCP ve UDP protokolleri etkinleştir
 
-- Ortak bir Standart Load Balancer kullanıldığında, belirtilen otomatik giden NAT programlama, Yük Dengeleme kuralının Aktarım Protokolü ile eşleşir.  
+- Genel standart yük dengeleyici kullanıldığında, sağlanan otomatik giden NAT programlama Yük Dengeleme kuralını Aktarım Protokolü ile eşleşir.  
 
-   1. Yük Dengeleme kuralında giden SNAT 'yi devre dışı bırakın.
-   2. Aynı Load Balancer bir giden kuralı yapılandırın.
-   3. VM 'niz tarafından zaten kullanılan arka uç havuzunu yeniden kullanın.
-   4. Giden kuralının bir parçası olarak "protokol": "tümü" ni belirtin.
+   1. Yük Dengeleme kuralı giden SNAT devre dışı bırakın.
+   2. Aynı yük Dengeleyicide bir giden kuralı yapılandırın.
+   3. Sanal makineleriniz tarafından zaten kullanılan arka uç havuzu yeniden kullanın.
+   4. Belirtin "protokol": "All" giden kuralı bir parçası olarak.
 
-- Yalnızca gelen NAT kuralları kullanıldığında, giden NAT sağlanmaz.
+- Yalnızca gelen NAT kuralları kullanıldığında, giden NAT sağlanır.
 
-   1. VM 'Leri bir arka uç havuzuna yerleştirin.
-   2. Genel IP adresleri veya genel IP önekiyle bir veya daha fazla ön uç IP yapılandırması tanımlayın.
-   3. Aynı Load Balancer bir giden kuralı yapılandırın.
-   4. Giden kuralının bir parçası olarak "Protocol": "All" belirtin
+   1. Vm'leri bir arka uç havuzuna yerleştirin.
+   2. Genel IP adresleri veya ortak IP öneki ile bir veya daha fazla ön uç IP yapılandırmaları tanımlar.
+   3. Aynı yük Dengeleyicide bir giden kuralı yapılandırın.
+   4. "Protokol" belirtin: giden kuralı bir parçası olarak "Tüm"
 
 ## <a name="limitations"></a>Sınırlamalar
 
 - Ön uç IP adresi başına kullanılabilir en fazla kısa ömürlü bağlantı noktası sayısı 64.000 ' dir.
 - Yapılandırılabilir giden boşta kalma zaman aşımı aralığı 4 ila 120 dakikadır (240 ila 7200 saniye).
-- Load Balancer giden NAT için ıCMP 'yi desteklemez.
-- Portal giden kuralları yapılandırmak veya görüntülemek için kullanılamaz.  Bunun yerine şablonlar, REST API, az CLı 2,0 veya PowerShell kullanın.
+- Yük Dengeleyici giden NAT için ICMP desteklemiyor
+- Portal, yapılandırma veya giden kuralları görüntülemek için kullanılamaz.  Bunun yerine şablonları, REST API, Az CLI 2. 0'ı veya PowerShell kullanın.
 - Giden kuralları, yalnızca bir NIC 'in birincil IP yapılandırmasına uygulanabilir.  Birden çok NIC desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Giden bağlantılar için Load Balancer](load-balancer-outbound-connections.md)kullanma hakkında bilgi edinin.
-- [Standart Load Balancer](load-balancer-standard-overview.md)hakkında bilgi edinin.
-- [Boşta kalma zaman aşımı durumunda çift yönlü TCP sıfırlaması](load-balancer-tcp-reset.md)hakkında bilgi edinin.
-- [Azure clı 2,0 ile giden kurallarını yapılandırın](configure-load-balancer-outbound-cli.md).
+- Kullanma hakkında bilgi edinin [giden bağlantılar için yük dengeleyici](load-balancer-outbound-connections.md).
+- Hakkında bilgi edinin [standart Load Balancer](load-balancer-standard-overview.md).
+- Hakkında bilgi edinin [çift TCP sıfırlama yönlü boşta kalma zaman aşımı üzerinde](load-balancer-tcp-reset.md).
+- [Azure CLI 2.0 ile giden kuralları yapılandırma](configure-load-balancer-outbound-cli.md).

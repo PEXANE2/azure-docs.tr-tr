@@ -5,7 +5,7 @@ metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
   title: 'Bing Resim Arama API’si Belgeleri - Öğreticiler, hızlı başlangıçlar, API başvuruları'
   titleSuffix: Azure Cognitive Services
-  description: Web'de görüntü aramak için Bing Resim Arama API'sinin nasıl kullanılacağını öğrenin.
+  description: Bing Resim Arama API'si Bing'in resim arama özelliklerini uygulamalarınızla tümleştirmenize olanak tanır.
   services: cognitive-services
   author: nitinme
   manager: nitinme

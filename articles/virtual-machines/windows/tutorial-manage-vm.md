@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure PowerShell ile Windows VM’leri oluşturma ve yönetme | Microsoft Docs
+title: Öğretici-Azure PowerShell ile Windows VM 'Leri oluşturma ve yönetme
 description: Bu öğreticide, Azure PowerShell kullanarak Azure’da Windows VM’leri oluşturup yönetmeyi öğrenirsiniz
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c60cd335e9d280d59fd872d1d0724f2eabd3afb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c48d5e514d854568043d001a22411b6a67f79e6a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101585"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067804"
 ---
-# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Öğretici: Azure PowerShell ile Windows VM 'Leri oluşturma ve yönetme
+# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Öğretici: Azure PowerShell ile Windows VM’leri Oluşturma ve Yönetme
 
 Azure sanal makineleri tam olarak yapılandırılabilir ve esnek bir bilgi işlem ortamı sağlar. Bu öğretici sanal makine (VM) boyutu seçme, VM görüntüsü seçme ve VM dağıtma gibi temel Azure sanal makine dağıtımı görevlerini kapsar. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -180,7 +180,7 @@ VM boyutu, sanal makine için kullanılabilir hale getirilen CPU, GPU ve bellek 
 
 Aşağıdaki tabloda boyutlar kullanım durumlarına göre kategorilere ayrılmaktadır.  
 
-| Type                     | Ortak boyutlar           |    Açıklama       |
+| Tür                     | Ortak boyutlar           |    Açıklama       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Genel amaçlı](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Dengeli CPU/bellek. Küçük ve orta ölçekli uygulama ve veri çözümlerini geliştirmek/test etmek için idealdir.  |
 | [İşlem için iyileştirilmiş](sizes-compute.md)   | Fsv2          | Yüksek CPU/bellek. Orta düzey trafiğe sahip uygulamalar, ağ gereçleri ve toplu işlemler için idealdir.        |
@@ -241,7 +241,7 @@ Start-AzVM `
 Bir Azure VM’si birçok güç durumuna sahip olabilir. 
 
 
-| Güç durumu | Açıklama
+| Güç Durumu | Açıklama
 |----|----|
 | Başlatılıyor | Sanal makine başlatılıyor. |
 | Çalışıyor | Sanal makine çalışıyor. |
@@ -293,7 +293,7 @@ Start-AzVM `
    -Name "myVM"
 ```
 
-### <a name="delete-resource-group"></a>Kaynak grubunu sil
+### <a name="delete-resource-group"></a>Kaynak grubunu silme
 
 Kaynak grubunu sildiğinizde, kaynak grubunun içindeki her şey silinir.
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: e4683547a7c305da3d3a3bc7a7d6a50f21ad46f2
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: e600fdb882294d14bb9f9216ac8d621ba5254170
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614391"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074725"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -31,7 +31,7 @@ Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için
 
 | Severity | Açıklama | Olası nedenler | Önerilen eylem |
 |---|---|---|---|
-| Uyarı | Bu veritabanının geçerli ayarları, ilişkili ilkede mevcut olan bazı yedekleme türlerini desteklemiyor. | <li>Ana veritabanında yalnızca tam bir veritabanı yedekleme işlemi yapılabilir. Değişiklik yedeklemesi veya işlem günlüğü yedeklemesi de mümkün değildir. </li> <li>Basit kurtarma modelindeki tüm veritabanları, işlem günlüklerinin yedeklenme izin vermez.</li> | İlkedeki tüm yedekleme türlerinin desteklendiği şekilde veritabanı ayarlarını değiştirin. Ya da, geçerli ilkeyi yalnızca desteklenen Yedekleme türlerini içerecek şekilde değiştirin. Aksi takdirde, desteklenmeyen yedekleme türleri zamanlanmış yedekleme sırasında atlanır veya yedekleme işi geçici yedekleme için başarısız olur.
+| Uyarı | Bu veritabanının geçerli ayarları, ilişkili ilkede mevcut olan bazı yedekleme türlerini desteklemiyor. | <li>Ana veritabanında yalnızca tam bir veritabanı yedekleme işlemi yapılabilir. Değişiklik yedeklemesi veya işlem günlüğü yedeklemesi de mümkün değildir. </li> <li>Basit kurtarma modelindeki tüm veritabanları, işlem günlüklerinin yedeklenme izin vermez.</li> | İlkedeki tüm yedekleme türlerinin desteklendiği şekilde veritabanı ayarlarını değiştirin. Ya da, geçerli ilkeyi yalnızca desteklenen Yedekleme türlerini içerecek şekilde değiştirin. Aksi takdirde, desteklenmeyen yedekleme türleri zamanlanmış yedekleme sırasında atlanır veya isteğe bağlı yedekleme için yedekleme işi başarısız olur.
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -50,7 +50,7 @@ Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-| Günlük zinciri bozuk. | Veritabanı veya VM, günlük zincirini kesen başka bir yedekleme çözümüyle yedeklenir.|<ul><li>Başka bir yedekleme çözümünün veya betiğin kullanımda olup olmadığını denetleyin. Bu durumda, diğer yedekleme çözümünü durdurun. </li><li>Yedekleme, geçici bir günlük yedeğiydi, yeni bir günlük zinciri başlatmak için tam yedekleme tetikleyin. Zamanlanan günlük yedeklemeleri için, Azure Backup hizmeti bu sorunu giderecek bir tam yedeklemeyi otomatik olarak tetikleyeceği için herhangi bir eylem gerekmez.</li>|
+| Günlük zinciri bozuk. | Veritabanı veya VM, günlük zincirini kesen başka bir yedekleme çözümüyle yedeklenir.|<ul><li>Başka bir yedekleme çözümünün veya betiğin kullanımda olup olmadığını denetleyin. Bu durumda, diğer yedekleme çözümünü durdurun. </li><li>Yedekleme isteğe bağlı bir günlük yedeğiydi, yeni bir günlük zinciri başlatmak için tam yedekleme tetikleyin. Zamanlanan günlük yedeklemeleri için, Azure Backup hizmeti bu sorunu giderecek bir tam yedeklemeyi otomatik olarak tetikleyeceği için herhangi bir eylem gerekmez.</li>|
 
 ### <a name="usererroropeningsqlconnection"></a>UserErrorOpeningSQLConnection
 
@@ -62,7 +62,7 @@ Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-| Bu veri kaynağı için ilk tam yedekleme eksik. | Veritabanı için tam yedekleme eksik. Günlük ve değişiklik yedeklemeleri üst bir tam yedekleme için, fark veya günlük yedeklemelerini tetiklemeden önce tam yedeklemeler aldığınızdan emin olun. | Geçici bir tam yedekleme tetikleyin.   |
+| Bu veri kaynağı için ilk tam yedekleme eksik. | Veritabanı için tam yedekleme eksik. Günlük ve değişiklik yedeklemeleri üst bir tam yedekleme için, fark veya günlük yedeklemelerini tetiklemeden önce tam yedeklemeler aldığınızdan emin olun. | İsteğe bağlı bir tam yedekleme tetikleyin.   |
 
 ### <a name="usererrorbackupfailedastransactionlogisfull"></a>UserErrorBackupFailedAsTransactionLogIsFull
 

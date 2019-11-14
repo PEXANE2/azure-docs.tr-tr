@@ -1,7 +1,7 @@
 ---
 title: Bing Otomatik Öneri API'si ile arama koşullarını önerme
 titleSuffix: Azure Cognitive Services
-description: Bing Otomatik Öneri API’sini kullanmayı öğrenin.
+description: Bu makalede, Bing Otomatik Öneri API'si kullanarak sorgu koşullarını önerme kavramı ve sorgu uzunluğunun ilgi açısından etkisi ele alınmaktadır.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: cee4f68b734f0c2bec9fd629986ba7f6559f207e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 060dbd29ee4ddb78e8ae9b2ed4e7814da3c4eebf
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882439"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072884"
 ---
 # <a name="suggesting-query-terms"></a>Sorgu terimi önerme
 
-Genellikle, bir kullanıcının uygulamanızın arama kutusuna yeni bir karakter her yazdığında Bing Otomatik Öneri API'si çağırır. Sorgu dizesinin eksiksiz olması, API’nin döndürdüğü önerilen sorgu terimlerinin alakasını etkiler. Sorgu dizesi ne kadar eksiksizse, önerilen sorgu terimlerinin listesi de o kadar alakalıdır. Örneğin, API 'nin döndürebilecek `s` önerilerin, `sailing dinghies`döndürdüğü sorgulardan daha az ilgili olması olasıdır.
+Genellikle, bir kullanıcının uygulamanızın arama kutusuna yeni bir karakter her yazdığında Bing Otomatik Öneri API'si çağırır. Sorgu dizesinin eksiksiz olması, API’nin döndürdüğü önerilen sorgu terimlerinin alakasını etkiler. Sorgu dizesi ne kadar eksiksizse, önerilen sorgu terimlerinin listesi de o kadar alakalıdır. Örneğin, `s` için API 'nin döndürebilecek önerilerin, `sailing dinghies`döndürdüğü sorgulardan daha az ilgili olması olasıdır.
 
 ## <a name="example-request"></a>Örnek istek
 

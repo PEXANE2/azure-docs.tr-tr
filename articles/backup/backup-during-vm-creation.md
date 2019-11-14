@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 90f69371457bbfe37789b12971343f738ff35e8e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e873980ce7aab1c5454a28e88df24bdb189c4860
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639724"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074842"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
 
@@ -52,11 +52,8 @@ Hesabınızda zaten oturum açmadıysanız [Azure Portal](https://portal.azure.c
 
       ![Varsayılan yedekleme ilkesi](./media/backup-during-vm-creation/daily-policy.png)
 
-
 > [!NOTE]
-> Azure Backup hizmeti, anlık görüntünün depolanması için (VM kaynak grubu dışında), adlandırma biçimi **AzureBackupRG_geography_number** (örnek: AzureBackupRG_northeurope_1). Bu kaynak grubundaki veriler, Azure sanal makine yedekleme ilkesinin *anlık kurtarma anlık görüntüsünü sakla* bölümünde belirtildiği gibi süre boyunca saklanacaktır.  Bu kaynak grubuna bir kilit uygulandığında yedekleme hatalara neden olabilir.<br>
-Bu kaynak grubu, bir kısıtlama ilkesi herhangi bir ad/etiket kısıtlamalarından dışlanmalıdır, çünkü bu durum, bir kısıtlama ilkesi üzerinde kaynak noktası koleksiyonlarının oluşturulmasını engeller.
-
+> Azure Backup hizmet, anlık görüntüyü depolamak için (örneğin: AzureBackupRG_northeurope_1) **AzureBackupRG_geography_number** , farklı bir kaynak grubu (VM kaynak grubu dışında) oluşturur. Bu kaynak grubundaki veriler, Azure sanal makine yedekleme ilkesinin *anlık kurtarma anlık görüntüsünü sakla* bölümünde belirtildiği gibi süre boyunca saklanacaktır.  Bu kaynak grubuna bir kilit uygulandığında yedekleme hatalara neden olabilir. <br> Bu kaynak grubu, bir kısıtlama ilkesi herhangi bir ad/etiket kısıtlamalarından dışlanmalıdır, çünkü bu durum, bir kısıtlama ilkesi üzerinde kaynak noktası koleksiyonlarının oluşturulmasını engeller.
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>VM oluşturduktan sonra bir yedekleme başlatma
 
@@ -72,8 +69,6 @@ VM oluşturulduktan sonra şunları yapın:
 ## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Korunan bir VM dağıtmak için Kaynak Yöneticisi şablonu kullanma
 
 Önceki adımlarda, bir sanal makine oluşturmak ve bir kurtarma hizmetleri kasasında korumak için Azure portal nasıl kullanılacağı açıklanmaktadır. Bir veya daha fazla VM 'yi hızlıca dağıtmak ve bir kurtarma hizmetleri kasasında korumak için, [bir Windows sanal makinesi dağıtma ve yedeklemeyi etkinleştirme](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)şablonuna bakın.
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

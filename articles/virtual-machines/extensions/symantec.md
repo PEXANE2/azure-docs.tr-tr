@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Windows VM 'ye Symantec Endpoint Protection 'yi yükler | Microsoft Docs
+title: Azure 'da Windows VM 'ye Symantec Endpoint Protection 'yi yükler
 description: Symantec Endpoint Protection güvenlik uzantısını, klasik dağıtım modeliyle oluşturulan yeni veya mevcut bir Azure VM 'ye yüklemeyi ve yapılandırmayı öğrenin.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
-ms.openlocfilehash: 315cb5f22a3667db93c2421b924ac0d988e56164
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 143a697e509b96787ad3f52567f5a70fb7e5f4a4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168856"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072955"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Bir Windows VM’de Symantec Uç Nokta Koruması yükleme ve yapılandırma
 > [!IMPORTANT] 
@@ -32,7 +32,7 @@ Symantec 'ten şirket içi bir çözüm için mevcut bir aboneliğiniz varsa, Az
 ## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>Mevcut bir VM 'ye Symantec Endpoint Protection 'yi yükler
 Başlamadan önce aşağıdakilere ihtiyacınız vardır:
 
-* İş bilgisayarınızdaki Azure PowerShell modülü, sürüm 0.8.2 veya üzeri. Yüklediğiniz Azure PowerShell sürümünü **Get-Module Azure | biçim-tablo sürümü** komutuyla kontrol edebilirsiniz. Yönergeler ve en son sürüme bağlantı için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır][PS]. Kullanarak `Add-AzureAccount`Azure aboneliğinizde oturum açın.
+* İş bilgisayarınızdaki Azure PowerShell modülü, sürüm 0.8.2 veya üzeri. Yüklediğiniz Azure PowerShell sürümünü **Get-Module Azure | biçim-tablo sürümü** komutuyla kontrol edebilirsiniz. Yönergeler ve en son sürüme bağlantı için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır][PS]. `Add-AzureAccount`kullanarak Azure aboneliğinizde oturum açın.
 * Azure sanal makinesinde çalışan VM Aracısı.
 
 İlk olarak, VM aracısının sanal makinede zaten yüklü olduğunu doğrulayın. Bulut hizmeti adını ve sanal makine adını doldurup yönetici düzeyinde bir Azure PowerShell komut isteminde aşağıdaki komutları çalıştırın. < Ve > karakterler dahil olmak üzere tırnak içindeki her şeyi değiştirin.

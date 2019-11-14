@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: ec21c26c705dab94b15c1f76be5e62207b9f206f
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 6fc17f08db5951a3d693c7a5e3d5556d848d2efb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815680"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075056"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için sanal ağ desteğini yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. VNet, buluttaki özel bir ağ. Redsıs örneği için bir Azure önbelleği bir sanal ağ ile yapılandırıldığında, bu, genel olarak adreslenebilir değildir ve yalnızca VNet içindeki sanal makineler ve uygulamalardan erişilebilir. Bu makalede, Redsıs örneği için Premium bir Azure önbelleği için sanal ağ desteğinin nasıl yapılandırılacağı açıklanır.
@@ -39,7 +39,7 @@ Sanal ağ (VNet) desteği, önbellek oluşturma sırasında **redsıs dikey penc
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Premium fiyatlandırma katmanını seçtikten sonra önbelleğiniz ile aynı abonelikte ve konumda bulunan bir VNet seçerek Redsıs VNet tümleştirmesini yapılandırabilirsiniz. Yeni bir VNet kullanmak için, [Azure Portal kullanarak sanal ağ oluşturma](../virtual-network/manage-virtual-network.md#create-a-virtual-network) veya [Azure Portal bir sanal ağ oluşturma (klasik)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) içindeki adımları izleyerek ve ardından oluşturmak üzere **Redsıs dikey penceresinde yeni Azure önbelleğine** geri dönüp oluşturun. Premium önbelleğinizi yapılandırın.
+Premium fiyatlandırma katmanını seçtikten sonra önbelleğiniz ile aynı abonelikte ve konumda bulunan bir VNet seçerek Redsıs VNet tümleştirmesini yapılandırabilirsiniz. Yeni bir VNet kullanmak için, [Azure Portal kullanarak sanal ağ oluşturma](../virtual-network/manage-virtual-network.md#create-a-virtual-network) veya [Azure Portal bir sanal ağ oluşturma (klasik)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) içindeki adımları izleyerek oluşturun ve ardından Premium önbelleğinizi oluşturmak ve yapılandırmak üzere **Redsıs dikey penceresinde yeni Azure önbelleğine** geri dönün.
 
 VNet 'i yeni önbelleğiniz için yapılandırmak için, **yeni Azure önbelleğinde redin** dikey penceresinde **sanal ağ ' a** tıklayın ve açılan listeden istediğiniz VNET ' i seçin.
 
@@ -104,7 +104,7 @@ Redin için Azure önbelleği bir sanal ağda barındırılıyorsa, aşağıdaki
 
 #### <a name="outbound-port-requirements"></a>Giden bağlantı noktası gereksinimleri
 
-Yedi giden bağlantı noktası gereksinimi vardır.
+Dokuz giden bağlantı noktası gereksinimi vardır.
 
 - İnternet 'e giden tüm bağlantılar, bir istemcinin şirket içi denetim cihazından yapılabilir.
 - Bağlantı noktası sayısı, Azure depolama ve Azure DNS hizmet verme ile trafiği Azure uç noktalarına yönlendirmekte.
@@ -113,7 +113,8 @@ Yedi giden bağlantı noktası gereksinimi vardır.
 | Bağlantı noktaları | Yön | Aktarım Protokolü | Amaç | Yerel IP | Uzak IP |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Giden |TCP |Azure depolama/PKI (Internet) üzerinde redsıs bağımlılıkları | (Redsıs alt ağı) |* |
-| 53 |Giden |TCP/UDP |DNS 'de redsıs bağımlılıkları (Internet/VNet) | (Redsıs alt ağı) | 168.63.129.16 ve 169.254.169.254 <sup>1</sup> ve alt ağ <sup>3</sup> için özel DNS sunucusu |
+| 443 | Giden | TCP | Azure Key Vault redsıs bağımlılığı | (Redsıs alt ağı) | AzureKeyVault <sup>1</sup> |
+| 53 |Giden |TCP/UDP |DNS 'de redsıs bağımlılıkları (Internet/VNet) | (Redsıs alt ağı) | 168.63.129.16 ve 169.254.169.254 <sup>2</sup> ve alt ağ <sup>3</sup> için özel DNS sunucusu |
 | 8443 |Giden |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) | (Redsıs alt ağı) |
 | 10221-10231 |Giden |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) | (Redsıs alt ağı) |
 | 20226 |Giden |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
@@ -121,7 +122,9 @@ Yedi giden bağlantı noktası gereksinimi vardır.
 | 15000-15999 |Giden |TCP |Redsıs ve coğrafi çoğaltma için dahili iletişimler | (Redsıs alt ağı) |(Redsıs alt ağı) (Coğrafi çoğaltma eş alt ağı) |
 | 6379-6380 |Giden |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
 
-<sup>1</sup> Microsoft 'un sahip olduğu bu IP adresleri, Azure DNS hizmet veren ana bilgisayar VM 'sini ele almak için kullanılır.
+<sup>1</sup> ' AzureKeyVault ' hizmet etiketini Kaynak Yöneticisi ağ güvenlik grupları ile birlikte kullanabilirsiniz.
+
+<sup>2</sup> Microsoft 'un sahip olduğu bu IP adresleri, Azure DNS hizmet veren ana bilgisayar VM 'sini ele almak için kullanılır.
 
 özel DNS sunucusu olmayan alt ağlar için <sup>3</sup> veya özel DNS 'yi yoksayarak daha yeni redsıs önbellekler gerekmez.
 
@@ -135,7 +138,7 @@ Sekiz gelen bağlantı noktası aralığı gereksinimi vardır. Bu aralıklardak
 
 | Bağlantı noktaları | Yön | Aktarım Protokolü | Amaç | Yerel IP | Uzak IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Gelen |TCP |Redsıs ile istemci iletişimi, Azure Yük Dengeleme | (Redsıs alt ağı) | (Redsıs alt ağı), sanal ağ, Azure Load Balancer <sup>2</sup> |
+| 6379, 6380 |Gelen |TCP |Redsıs ile istemci iletişimi, Azure Yük Dengeleme | (Redsıs alt ağı) | (Redsıs alt ağı), sanal ağ, Azure Load Balancer <sup>1</sup> |
 | 8443 |Gelen |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
 | 8500 |Gelen |TCP/UDP |Azure Yük Dengelemesi | (Redsıs alt ağı) |Azure Load Balancer |
 | 10221-10231 |Gelen |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı), Azure Load Balancer |
@@ -144,7 +147,7 @@ Sekiz gelen bağlantı noktası aralığı gereksinimi vardır. Bu aralıklardak
 | 16001 |Gelen |TCP/UDP |Azure Yük Dengelemesi | (Redsıs alt ağı) |Azure Load Balancer |
 | 20226 |Gelen |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
 
-<sup>2</sup> NSG kurallarını yazmak Için ' AzureLoadBalancer ' (Kaynak Yöneticisi) hizmet etiketini (veya klasik IÇIN ' AZURE_LOADBALANCER ') kullanabilirsiniz.
+<sup>1</sup> NSG kurallarını yazmak Için ' AzureLoadBalancer ' (Kaynak Yöneticisi) hizmet etiketini (veya klasik için ' AZURE_LOADBALANCER ') kullanabilirsiniz.
 
 #### <a name="additional-vnet-network-connectivity-requirements"></a>Ek VNET ağ bağlantısı gereksinimleri
 
@@ -166,11 +169,11 @@ Bağlantı noktası gereksinimleri önceki bölümde açıklandığı gibi yapı
 
 - Tüm önbellek düğümlerini [yeniden başlatın](cache-administration.md#reboot) . Tüm gerekli önbellek bağımlılıklarına ulaşılamadığından ( [gelen bağlantı noktası gereksinimleri](cache-how-to-premium-vnet.md#inbound-port-requirements) ve [giden bağlantı noktası gereksinimleri](cache-how-to-premium-vnet.md#outbound-port-requirements)bölümünde belirtildiği gibi), önbellek başarıyla yeniden başlatılabilir.
 - Önbellek düğümleri yeniden başlatıldıktan sonra (Azure portal önbellek durumu tarafından raporlanarak), aşağıdaki testleri gerçekleştirebilirsiniz:
-  - [tcpıng](https://www.elifulkerson.com/projects/tcping.php)kullanarak önbellek uç noktasına (6380 numaralı bağlantı noktasını kullanarak) önbellek ile aynı VNET içinde olan bir makineden ping gönderin. Örnek:
+  - [tcpıng](https://www.elifulkerson.com/projects/tcping.php)kullanarak önbellek uç noktasına (6380 numaralı bağlantı noktasını kullanarak) önbellek ile aynı VNET içinde olan bir makineden ping gönderin. Örneğin:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
-    @No__t-0 aracı bağlantı noktasının açık olduğunu bildirirse, önbellek, VNET 'teki istemcilerden bağlantı için kullanılabilir.
+    `tcping` aracı bağlantı noktasının açık olduğunu bildirirse, önbellek, VNET 'teki istemcilerden bağlantı için kullanılabilir.
 
   - Test etmenin başka bir yolu da, önbelleğe bağlanan ve önbellekten bazı öğeleri ekleyen ve alan bir test önbelleği istemcisi (StackExchange. Redsıs kullanan basit bir konsol uygulaması olabilir) oluşturmaktır. Örnek istemci uygulamasını, önbellek ile aynı VNET 'teki bir sanal makineye yükler ve önbelleğe bağlantıyı doğrulamak için çalıştırın.
 
@@ -189,7 +192,7 @@ Aşağıdaki bağlantı dizesine benzer IP adresini kullanmaktan kaçının:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-DNS adını çözemezseniz, bazı istemci kitaplıkları, StackExchange. Redsıs istemcisi tarafından belirtilen `sslHost` gibi yapılandırma seçeneklerini içerir. Bu, sertifika doğrulama için kullanılan ana bilgisayar adını geçersiz kılmanızı sağlar. Örnek:
+DNS adını çözemezseniz, bazı istemci kitaplıkları StackExchange. Redsıs istemcisi tarafından belirtilen `sslHost` gibi yapılandırma seçeneklerini içerir. Bu, sertifika doğrulama için kullanılan ana bilgisayar adını geçersiz kılmanızı sağlar. Örneğin:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 
@@ -254,4 +257,3 @@ Daha fazla Premium önbellek özelliği kullanmayı öğrenin.
 [redis-cache-vnet-ip]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-ip.png
 
 [redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
-

@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 16a8eb4eea4e5e1e3bb49049c49d73adb99eef55
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: c56ddf04b98cc2b38e023714fcb0ffc5452236f2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688631"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074906"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup’ta dosya ve klasörlerin yavaş yedekleme sorunlarını giderme
+
 Bu makalede, Azure Backup kullanırken dosyalar ve klasörler için yavaş yedekleme performansının Nedenini tanılamanıza yardımcı olacak sorun giderme kılavuzu sağlanmıştır. Dosyaları yedeklemek için Azure Backup Aracısı 'nı kullandığınızda, yedekleme işlemi beklenenden uzun sürebilir. Bu gecikmeye aşağıdakilerden biri veya birkaçı neden olmuş olabilir:
 
 * [Yedeklenmekte olan bilgisayarda performans sorunları var.](#cause1)
@@ -31,7 +32,8 @@ Ayrıca, yaygın yapılandırma sorunlarından biriyle karşılaşmadığınızd
 
 <a id="cause1"></a>
 
-## <a name="cause-performance-bottlenecks-on-the-computer"></a>Neden: Bilgisayardaki performans sorunları
+## <a name="cause-performance-bottlenecks-on-the-computer"></a>Neden: bilgisayardaki performans sorunları
+
 Yedeklenen bilgisayardaki performans sorunları gecikmelere neden olabilir. Örneğin, bilgisayarın disk okuma veya diske yazma veya ağ üzerinden veri göndermek için kullanılabilir bant genişliği gibi performans sorunlarına neden olabilir.
 
 Windows, bu darboğazları algılamak için [Performans İzleyicisi](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (PerfMon) adlı yerleşik bir araç sağlar.
@@ -40,13 +42,13 @@ En iyi yedeklemeler için performans sorunlarını tanılamaya yardımcı olabil
 
 | Sayaç | Durum |
 | --- | --- |
-| Mantıksal disk (fiziksel disk)--% boşta |•% 100 boşta =% 50 boşta = sağlıklı</br>•% 49 boşta =% 20 boşta = uyarı ya da Izleyici</br>•% 19 boşta,% 0 boşta = kritik veya spec dışı |
+| Mantıksal disk (fiziksel disk)--% boşta |• %100 boşta = %50 boşta = sağlıklı</br>• %49 boşta = %20 boşta = uyarı ya da Izleyici</br>• %19 boşta, %0 boşta = kritik veya spec dışı |
 | Mantıksal disk (fiziksel disk)--% ort. Disk sn okuma veya yazma |• 0,001 MS-0,015 MS = sağlıklı</br>• 0,015 MS-0,025 MS = uyarı veya Izleyici</br>• 0,026 MS veya daha uzun = kritik veya spec dışı |
 | Mantıksal disk (fiziksel disk)--geçerli disk sırası uzunluğu (tüm örnekler için) |6 dakikadan uzun süre 80 istek |
-| Bellek--Sayfalamayan baytlar |• Kullanılan havuzun% 60 ' inden az olması = sağlıklı<br>•% 61, kullanılan havuzun% 80 ' i = uyarı veya Izleyici</br>•% 80 daha fazla kullanılan havuz = kritik veya spec dışı |
-| Bellek--havuzda disk belleğine alınan baytlar |• Kullanılan havuzun% 60 ' inden az olması = sağlıklı</br>•% 61, kullanılan havuzun% 80 ' i = uyarı veya Izleyici</br>•% 80 daha fazla kullanılan havuz = kritik veya spec dışı |
-| Bellek--kullanılabilir megabayt |•% 50 boş bellek kullanılabilir veya daha fazla = sağlıklı</br>• boş belleğin% 25 ' i kullanılabilir = Izleyici</br>• kullanılabilir boş belleğin% 10 ' ü = uyarı</br>• 100 MB 'tan az veya kullanılabilir boş belleğin% 5 ' inden az olması = kritik veya spec dışı |
-| İşlemci--\%işlemci zamanı (tüm örnekler) |•% 60 daha az tüketilen = sağlıklı</br>•% 61-90% tüketilen = Izleyici veya uyarı</br>•% 91-100% tüketilen = kritik |
+| Bellek--Sayfalamayan baytlar |• Kullanılan havuzun %60 ' inden az olması = sağlıklı<br>• %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br>• %80 daha fazla kullanılan havuz = kritik veya spec dışı |
+| Bellek--havuzda disk belleğine alınan baytlar |• Kullanılan havuzun %60 ' inden az olması = sağlıklı</br>• %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br>• %80 daha fazla kullanılan havuz = kritik veya spec dışı |
+| Bellek--kullanılabilir megabayt |• %50 boş bellek kullanılabilir veya daha fazla = sağlıklı</br>• boş belleğin %25 ' i kullanılabilir = Izleyici</br>• kullanılabilir boş belleğin %10 ' ü = uyarı</br>• 100 MB 'tan az veya kullanılabilir boş belleğin %5 ' inden az olması = kritik veya spec dışı |
+| İşlemci--\%Işlemci zamanı (tüm örnekler) |• %60 daha az tüketilen = sağlıklı</br>• %61-90% tüketilen = Izleyici veya uyarı</br>• %91-100% tüketilen = kritik |
 
 > [!NOTE]
 > Altyapının külün olduğunu belirlerseniz, daha iyi performans için diskleri düzenli olarak birleştirmeniz önerilir.
@@ -55,7 +57,8 @@ En iyi yedeklemeler için performans sorunlarını tanılamaya yardımcı olabil
 
 <a id="cause2"></a>
 
-## <a name="cause-another-process-or-antivirus-software-interfering-with-azure-backup"></a>Neden: Azure Backup kesintiye uğramadan başka bir işlem veya virüsten koruma yazılımı
+## <a name="cause-another-process-or-antivirus-software-interfering-with-azure-backup"></a>Neden: başka bir işlem veya virüsten koruma yazılımı Azure Backup engelliyor
+
 Windows sistemindeki diğer işlemlerin Azure Backup Aracısı işleminin performansını olumsuz yönde etkilediği birkaç örnek gördük. Örneğin, verileri yedeklemek için hem Azure Backup Aracısı hem de başka bir program kullanıyorsanız veya virüsten koruma yazılımı çalışıyorsa ve yedeklenmek üzere dosyalar üzerinde bir kilit varsa, dosyalardaki birden fazla kilit çekişmeye neden olabilir. Bu durumda, yedekleme başarısız olabilir veya iş beklenenden uzun sürebilir.
 
 Bu senaryodaki en iyi öneri, Azure Backup Aracısı için yedekleme saatinin değişmediğini görmek üzere diğer Yedekleme programını kapatmmsudur. Genellikle, birden çok yedekleme işinin aynı anda çalışmadığı ve birbirini etkilemelerini engellemek için yeterli olduğundan emin olun.
@@ -68,12 +71,14 @@ Virüsten koruma programları için aşağıdaki dosyaları ve konumları dışl
 
 <a id="cause3"></a>
 
-## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>Neden: Azure sanal makinesinde çalışan yedekleme Aracısı
+## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>Neden: bir Azure sanal makinesinde çalışan yedekleme Aracısı
+
 Yedekleme aracısını bir VM üzerinde çalıştırıyorsanız, performans fiziksel bir makinede çalıştırılırken daha yavaş olur. Bu, ıOPS sınırlamaları nedeniyle beklenmektedir.  Ancak, Azure Premium depolamaya yedeklenmekte olan veri sürücülerine geçerek performansı iyileştirebilirsiniz. Bu sorunu düzeltmek için çalışıyoruz ve düzeltme gelecekteki bir sürümde kullanıma sunulacaktır.
 
 <a id="cause4"></a>
 
-## <a name="cause-backing-up-a-large-number-millions-of-files"></a>Neden: Büyük sayıda (milyonlarca) dosyayı yedekleme
+## <a name="cause-backing-up-a-large-number-millions-of-files"></a>Neden: çok sayıda (milyonlarca) dosyayı yedekleme
+
 Büyük hacimli verilerin taşınması, daha küçük bir veri hacmi taşımadan daha uzun sürer. Bazı durumlarda, yedekleme zamanı yalnızca verilerin boyutuyla ve ayrıca dosya veya klasör sayısıyla ilgilidir. Bu özellikle, milyonlarca küçük dosya (birkaç kilobayt kadar bayt) yedeklendiğinde geçerlidir.
 
 Bu davranış, verileri yedeklemekte ve Azure 'a taşırken, Azure 'un aynı anda dosyalarınızı kataloglarken meydana gelir. Nadir bazı senaryolarda, Katalog işlemi beklenenden uzun sürebilir.

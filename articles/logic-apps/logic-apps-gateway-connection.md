@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 356eab6122272162f20e1516a9ef7f4ea0127084
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 20cdcfdd3795a7614c054ed96b82cc99fc2c5894
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049061"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068903"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps şirket içi veri kaynaklarına bağlanma
 
@@ -27,9 +27,9 @@ Bu makalede, [yerel bilgisayarınızda daha önce yüklenmiş bir ağ geçidi](.
 
 Ağ geçidini diğer hizmetlerle kullanma hakkında daha fazla bilgi için şu makalelere bakın:
 
-* [Microsoft Power BI şirket içi veri ağ geçidi](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Şirket içi veri ağ geçidini güç otomatikleştirme](/power-automate/gateway-reference)
-* [Microsoft Power Apps şirket içi veri ağ geçidi](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Microsoft Power otomatikleştirir şirket içi veri ağ geçidi](/power-automate/gateway-reference)
+* [Microsoft Power BI şirket içi veri ağ geçidi](/power-bi/service-gateway-onprem)
+* [Microsoft Power Apps şirket içi veri ağ geçidi](/powerapps/maker/canvas-apps/gateway-reference)
 * [Şirket içi veri ağ geçidini Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
 
 <a name="supported-connections"></a>

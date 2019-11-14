@@ -1,5 +1,5 @@
 ---
-title: Windows için Azure Izleyici sanal makine uzantısı | Microsoft Docs
+title: Windows için Azure Izleyici sanal makine uzantısı
 description: Log Analytics aracısını bir sanal makine uzantısı kullanarak Windows sanal makinesine dağıtın.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2019
 ms.author: akjosh
-ms.openlocfilehash: fe8bafcb63c1a27b905bdc339c07d30c9f0a5982
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c9fd62e57d131fb21e657c53914f9cd5349107ec
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168918"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073671"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Windows için Azure Izleyici sanal makine uzantısı
 
@@ -38,8 +38,8 @@ Aşağıdaki tabloda, Microsoft Azure Izleyici VM uzantısının sürümü ve he
 
 | Log Analytics Windows Agent paketi sürümü | Azure Izleyici Windows VM Uzantısı sürümü | Yayınlanma Tarihi | Sürüm Notları |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18011 | 1.0.18011 | 2019 Temmuz | <ul><li> Küçük hata düzeltmeleri ve sabitleştirme iyileştirmeleri </li><li> Artan MaxExpressionDepth 10000 </li></ul> |
-| 10.20.18001 | 1.0.18001 | Haziran 2019 | <ul><li> Küçük hata düzeltmeleri ve sabitleştirme iyileştirmeleri </li><li> Proxy bağlantısı kurulurken varsayılan kimlik bilgilerini devre dışı bırakma özelliği (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH için destek) </li></ul>|
+| 10.20.18011 | 1.0.18011 | Temmuz 2019 | <ul><li> Küçük hata düzeltmeleri ve sabitleştirme iyileştirmeleri </li><li> Artan MaxExpressionDepth 10000 </li></ul> |
+| 10.20.18001 | 1.0.18001 | Haziran 2019 | <ul><li> Küçük hata düzeltmeleri ve sabitleştirme iyileştirmeleri </li><li> Ara sunucu bağlantısı kurulurken varsayılan kimlik bilgilerini devre dışı bırakma özelliği eklendi (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH için destek) </li></ul>|
 | 10.19.13515 | 1.0.13515 | Mart 2019 | <ul><li>Küçük sabitleştirme düzeltmeleri </li></ul> |
 | 10.19.10006 | yok | Dec 2018 | <ul><li> Küçük sabitleştirme düzeltmeleri </li></ul> | 
 | 8.0.11136 | yok | Eyl 2018 |  <ul><li> VM taşıma üzerinde kaynak KIMLIĞI değişikliğini algılama desteği eklendi </li><li> Uzantı dışı yüklemesi kullanılırken raporlama kaynak KIMLIĞI desteği eklendi </li></ul>| 
@@ -93,7 +93,7 @@ Aşağıdaki JSON Log Analytics aracı uzantısının şemasını gösterir. Uza
 | workspaceId (örn.)* | 6f680a37-00c6-41C7-a93f-1437e3462574 |
 | workspaceKey (örn.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
-\*Çalışma alanı kimliği, Log Analytics API 'sinde ConsumerID olarak adlandırılır.
+\* çalışma alanı kimliği, Log Analytics API 'sindeki ConsumerID olarak adlandırılır.
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
@@ -159,7 +159,7 @@ Uzantı JSON şablonu kökünde yerleştirilirken, kaynak adı üst sanal makine
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı
 
-Komut `Set-AzVMExtension` , Log Analytics Aracısı sanal makinesi uzantısını var olan bir sanal makineye dağıtmak için kullanılabilir. Komutu çalıştırmadan önce, ortak ve özel yapılandırmaların bir PowerShell karma tablosunda depolanması gerekir. 
+`Set-AzVMExtension` komutu, var olan bir sanal makineye Log Analytics Aracısı sanal makinesi uzantısını dağıtmak için kullanılabilir. Komutu çalıştırmadan önce, ortak ve özel yapılandırmaların bir PowerShell karma tablosunda depolanması gerekir. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}

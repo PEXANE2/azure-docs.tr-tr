@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: e519df8c116244b0c74be6b189d99599d89dee77
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7605bbc1824e2e859cc94296834daf4e4e0907b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582835"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072357"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB rol tabanlı erişim denetimi
 
@@ -23,7 +23,7 @@ Azure Cosmos DB tarafından desteklenen yerleşik roller aşağıda verilmiştir
 
 |**Yerleşik rol**  |**Açıklama**  |
 |---------|---------|
-|[DocumentDB hesaplarının Katılımcısı](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|, Azure Cosmos DB hesaplarını yönetebilir.|
+|[DocumentDB hesabı Katılımcısı](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|, Azure Cosmos DB hesaplarını yönetebilir.|
 |[Cosmos DB hesabı okuyucusu](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB hesabı verilerini okuyabilir.|
 |[Cosmos yedekleme Işletmeni](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|, Bir Azure Cosmos veritabanı veya kapsayıcısı için geri yükleme isteği gönderebilir.|
 |[Cosmos DB Işleci](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Azure Cosmos hesaplarını, veritabanlarını ve kapsayıcıları sağlayabilir, ancak verilere erişmek için gereken anahtarlara erişemez.|

@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb0f373000d09cb387fb73eec344997381fe45d1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: dab79f1d63a20e12f148766db5fcc3fc313a1f3a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961671"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076904"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Kubernetes hizmeti ve Azure Container Instances dağıtımı Azure Machine Learning sorunlarını giderme
 
@@ -164,12 +164,12 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
 
 ## <a name="debug-locally"></a>Yerel olarak hata ayıkla
 
-Bir modeli ACG veya AKS 'e dağıtmaya yönelik sorunlarla karşılaşırsanız, bunu yerel olarak dağıtmaya çalışın. Yerel bir kullanmak, sorunları gidermenize daha kolay hale getirir. Modeli içeren Docker görüntüsü indirilip yerel sisteminizde başlatılır.
+Bir modeli ACG veya AKS 'e dağıtmaya yönelik sorunlarla karşılaşırsanız, yerel bir Web hizmeti olarak dağıtımı deneyin. Yerel bir Web hizmeti kullanmak, sorunları gidermenize daha kolay hale getirir. Modeli içeren Docker görüntüsü indirilip yerel sisteminizde başlatılır.
 
 > [!WARNING]
-> Yerel dağıtımlar, üretim senaryolarında desteklenmez.
+> Yerel Web hizmeti dağıtımları, üretim senaryolarında desteklenmez.
 
-Yerel olarak dağıtmak için kodunuzu bir dağıtım yapılandırması oluşturmak üzere `LocalWebservice.deploy_configuration()` kullanmak üzere değiştirin. Ardından, hizmeti dağıtmak için `Model.deploy()` kullanın. Aşağıdaki örnek, bir modeli (`model` değişkeninde yer alan) yerel olarak dağıtır:
+Yerel olarak dağıtmak için kodunuzu bir dağıtım yapılandırması oluşturmak üzere `LocalWebservice.deploy_configuration()` kullanmak üzere değiştirin. Ardından, hizmeti dağıtmak için `Model.deploy()` kullanın. Aşağıdaki örnek, bir modeli (`model` değişkeninde yer alan) yerel bir Web hizmeti olarak dağıtır:
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -180,14 +180,14 @@ inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
                                    conda_file="myenv.yml")
 
-# Create a local deployment, using port 8890 for the  endpoint
+# Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
 service = Model.deploy(
     ws, "mymodel", [model], inference_config, deployment_config)
 # Wait for the deployment to complete
 service.wait_for_deployment(True)
-# Display the port that the  is available on
+# Display the port that the web service is available on
 print(service.port)
 ```
 
@@ -297,7 +297,7 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
     > [!IMPORTANT]
     > Bu değişiklik çoğaltmaların *daha hızlı*oluşturulmasına neden olmaz. Bunun yerine, daha düşük bir kullanım eşiğine göre oluşturulur. Hizmetin %70 olması beklenene kadar beklemek yerine %30 kullanım gerçekleştiğinde, çoğaltmanın oluşturulmasına neden olur.
     
-    Zaten geçerli en fazla çoğaltmaları kullanıyorsa ve 503 durum kodu görmeye devam ediyorsanız, en fazla çoğaltma sayısını artırmak için `autoscale_max_replicas` değerini artırın.
+    Web hizmeti zaten geçerli en fazla çoğaltmaları kullanıyorsa ve 503 durum kodu görmeye devam ediyorsanız, en fazla çoğaltma sayısını artırmak için `autoscale_max_replicas` değerini artırın.
 
 * En az çoğaltma sayısını değiştirin. En düşük çoğaltmaları artırmak, gelen ani artışları işlemek için daha büyük bir havuz sağlar.
 
@@ -333,7 +333,7 @@ Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli o
 > [!IMPORTANT]
 > Bu hata ayıklama yöntemi, bir modeli yerel olarak dağıtmak için `Model.deploy()` ve `LocalWebservice.deploy_configuration` kullanılırken çalışmaz. Bunun yerine, [containerımage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) sınıfını kullanarak bir görüntü oluşturmanız gerekir. 
 
-Yerel dağıtımlar yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Docker kullanma hakkında daha fazla bilgi için [Docker belgelerine](https://docs.docker.com/)bakın.
+Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Docker kullanma hakkında daha fazla bilgi için [Docker belgelerine](https://docs.docker.com/)bakın.
 
 ### <a name="configure-development-environment"></a>Geliştirme ortamını yapılandırma
 

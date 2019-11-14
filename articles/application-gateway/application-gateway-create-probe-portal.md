@@ -1,31 +1,24 @@
 ---
-title: Özel bir araştırma oluşturma-Azure Application Gateway-Azure portal | Microsoft Docs
+title: Portalı kullanarak özel bir araştırma oluşturma
+titleSuffix: Azure Application Gateway
 description: Portalı kullanarak Application Gateway için özel bir araştırma oluşturmayı öğrenin
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 33fd5564-43a7-4c54-a9ec-b1235f661f97
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/14/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 18799d928f7239eea311aa39159bfa0b5416ca1a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 15daf47a1cb44635932311e60b3690af9ff58677
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821110"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074601"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Portalı kullanarak Application Gateway için özel bir araştırma oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalda](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Klasik PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -41,7 +34,7 @@ Yoklamalar, Portal üzerinden iki adımlı bir işlemde yapılandırılır. İlk
 
 ### <a name="createprobe"></a>Araştırma özelliklerini girin
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümü](https://azure.microsoft.com/free) için kaydolabilirsiniz
+1. [Azure portalında](https://portal.azure.com) oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümü](https://azure.microsoft.com/free) için kaydolabilirsiniz
 
 2. Azure portal sık kullanılanlar bölmesinde, tüm kaynaklar ' a tıklayın. Tüm kaynaklar dikey penceresinde uygulama ağ geçidine tıklayın. Seçtiğiniz abonelikte zaten çeşitli kaynaklar varsa, ada göre filtrele... partners.contoso.net girebilirsiniz. girebilirsiniz.
 
@@ -54,7 +47,7 @@ Yoklamalar, Portal üzerinden iki adımlı bir işlemde yapılandırılır. İlk
    |**Ayar** | **Değer** | **Ayrıntılar**|
    |---|---|---|
    |**Adı**|Customaraştırması|Bu değer, portalda erişilebilen araştırmayı verilen kolay bir addır.|
-   |**Protokol**|HTTP veya HTTPS | Sistem durumu araştırmasının kullandığı protokol. |
+   |**Protokolü**|HTTP veya HTTPS | Sistem durumu araştırmasının kullandığı protokol. |
    |**Ana Bilgisayar**|Yani contoso.com|Bu değer, uygulama sunucusunda çalışan sanal ana bilgisayarın (VM ana bilgisayar adından farklı) adıdır. Araştırma, (protokol)://(ana bilgisayar adı):(bağlantı noktası httpsetting)/Urlpath' e gönderilir.  Bu, Application Gateway üzerinde birden çok site yapılandırıldığında geçerlidir. Application Gateway tek bir site için yapılandırıldıysa, ' 127.0.0.1 ' girin.|
    |**Arka uç HTTP ayarlarından konak adı Seç**|Evet veya Hayır|Araştırmanın *konak* üstbilgisini, bu ARAŞTıRMANıN Ilişkilendirildiği http ayarıyla ilişkili arka uç havuzundaki arka uç kaynağının ana bilgisayar adına ayarlar. Azure App Service gibi çok kiracılı arka uçlar söz konusu olduğunda özel olarak gereklidir. [Daha fazla bilgi](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
    |**Path**|/veya başka bir yol|Özel araştırma için tam URL 'nin geri kalanı. Geçerli bir yol '/' ile başlar. Varsayılan http:\//contoso.com yalnızca Use '/' yolu için |
@@ -90,7 +83,7 @@ Yoklamalar, Portal üzerinden iki adımlı bir işlemde yapılandırılır. İlk
 
 ### <a name="createprobe"></a>Araştırma oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümü](https://azure.microsoft.com/free) için kaydolabilirsiniz
+1. [Azure portalında](https://portal.azure.com) oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümü](https://azure.microsoft.com/free) için kaydolabilirsiniz
 
 2. Azure portal sık kullanılanlar bölmesinde, **tüm kaynaklar**' ı seçin. **Tüm kaynaklar** sayfasında uygulama ağ geçidini seçin. Seçtiğiniz abonelikte zaten çeşitli kaynaklar varsa, ada göre filtrele... partners.contoso.net girebilirsiniz. girebilirsiniz.
 
@@ -103,7 +96,7 @@ Yoklamalar, Portal üzerinden iki adımlı bir işlemde yapılandırılır. İlk
    |**Ayar** | **Değer** | **Ayrıntılar**|
    |---|---|---|
    |**Adı**|Customaraştırması|Bu değer, portalda erişilebilen araştırmayı verilen kolay bir addır.|
-   |**Protokol**|HTTP veya HTTPS | Sistem durumu araştırmasının kullandığı protokol. |
+   |**Protokolü**|HTTP veya HTTPS | Sistem durumu araştırmasının kullandığı protokol. |
    |**Ana Bilgisayar**|Yani contoso.com|Bu değer, uygulama sunucusunda çalışan sanal ana bilgisayarın (VM ana bilgisayar adından farklı) adıdır. Araştırma, (protokol)://(ana bilgisayar adı):(bağlantı noktası httpsetting)/Urlpath' e gönderilir.  Bu, Application Gateway üzerinde birden çok site yapılandırıldığında geçerlidir. Application Gateway tek bir site için yapılandırıldıysa, ' 127.0.0.1 ' girin.|
    |**Arka uç HTTP ayarlarından konak adı Seç**|Evet veya Hayır|Araştırmanın *konak* üstbilgisini, bu ARAŞTıRMANıN Ilişkilendirildiği http ayarıyla ilişkili arka uç havuzundaki arka uç kaynağının ana bilgisayar adına ayarlar. Azure App Service gibi çok kiracılı arka uçlar söz konusu olduğunda özel olarak gereklidir. [Daha fazla bilgi](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
    |**Path**|/veya başka bir yol|Özel araştırma için tam URL 'nin geri kalanı. Geçerli bir yol '/' ile başlar. Varsayılan http:\//contoso.com yalnızca Use '/' yolu için |

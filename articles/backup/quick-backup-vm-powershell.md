@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 268cac453ed68903c73b597ffeff2569c13e9db7
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 741c6c1f937988dcce41603417a1bc7dc95091cb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747090"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073972"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>PowerShell ile Azure'daki bir sanal makineyi yedekleme
 
@@ -106,18 +106,18 @@ Yedeklemeyi şu şekilde etkinleştirin:
 
 ## <a name="start-a-backup-job"></a>Bir yedekleme işi başlatma
 
-Yedeklemeler, yedekleme ilkesinde belirtilen zamanlamaya uygun olarak çalışır. Ayrıca, geçici yedekleme de çalıştırabilirsiniz:
+Yedeklemeler, yedekleme ilkesinde belirtilen zamanlamaya göre çalışır. İsteğe bağlı yedekleme de çalıştırabilirsiniz:
 
 - İlk ilk yedekleme işi tam kurtarma noktası oluşturur.
 - İlk yedeklemeden sonra her bir yedekleme işi artımlı kurtarma noktaları oluşturur.
 - Yalnızca son yedekleme sonrasında yapılan değişiklikleri aktardığından artımlı kurtarma noktaları depolama alanı ve süre açısından verimlilik sağlar.
 
-Geçici yedekleme çalıştırmak için [Backup-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem)komutunu kullanın.
+İsteğe bağlı yedekleme çalıştırmak için [Backup-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem)komutunu kullanın.
 
 - Kasada, [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer)ile yedekleme verilerinizi tutan bir kapsayıcı belirtirsiniz.
 - Yedeklenecek her sanal makine ayrı bir öğe olarak ele alınır. Bir yedekleme işi başlatmak için [Get-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem)ile VM hakkında bilgi edinebilirsiniz.
 
-Geçici yedekleme işini aşağıdaki şekilde çalıştırın:
+İsteğe bağlı yedekleme işini aşağıdaki şekilde çalıştırın:
 
 1. Kapsayıcıyı belirtin, VM bilgilerini alın ve yedeklemeyi çalıştırın.
 

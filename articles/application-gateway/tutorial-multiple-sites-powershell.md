@@ -1,23 +1,24 @@
 ---
-title: Birden çok web sitesi barındıran bir uygulama ağ geçidi oluşturma - Azure PowerShell
+title: PowerShell kullanarak birden çok Web sitesi barındırma
+titleSuffix: Azure Application Gateway
 description: Azure PowerShell kullanarak, birden çok web sitesi barındıran bir uygulama ağ geçidi oluşturmayı öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 7/31/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: db2582cada453d95faa91eeeec8dd20b9a82ae6c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3bc69f8bd946fa50ba272c287047aae7981af4e3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688222"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074457"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Azure PowerShell kullanarak birden çok web sitesi barındıran bir uygulama ağ geçidi oluşturma
 
-Bir [uygulama ağ geçidi](overview.md) oluştururken Azure PowerShell’i [birden çok web sitesi barındırmayı yapılandırmak](multiple-site-overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzları tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www.contoso.com* ve *www.fabrikam.com* örneklerini kullanan varsayılmaktadır.
+Bir [uygulama ağ geçidi](multiple-site-overview.md) oluştururken Azure PowerShell’i [birden çok web sitesi barındırmayı yapılandırmak](overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzları tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www.contoso.com* ve *www.fabrikam.com* örneklerini kullanan varsayılmaktadır.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -179,7 +180,7 @@ $appgw = New-AzApplicationGateway `
   -Sku $sku
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Sanal makine ölçek kümelerini oluşturma
+## <a name="create-virtual-machine-scale-sets"></a>Sanal makine ölçek kümesi oluşturma
 
 Bu örnekte, oluşturduğunuz iki arka uç havuzunu destekleyen iki sanal makine ölçek kümesi oluşturacaksınız. Oluşturduğunuz ölçek kümeleri *myvmss1* ve *myvmss2* olarak adlandırılır. Her bir ölçek kümesi IIS yükleyeceğiniz iki sanal makine örneği içerir. IP ayarlarını yapılandırırken ölçek kümesini arka uç havuzuna atayın.
 

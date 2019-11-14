@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2b951c6660143b1bd2f6502a5441aec3ba8d71e1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e8f162b9dc84b863c54d92313307ef4abca76ebb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792851"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074229"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak ölçeğe göre izleme
 
@@ -209,7 +209,7 @@ Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için 
 Kasadaki Tanılama verileri, bazı gecikmeye sahip Log Analytics çalışma alanına potılmış olur. Her olay, kurtarma hizmetleri kasasından gönderdikten sonra, Log Analytics çalışma alanına *20 ila 30 dakika* sonra ulaşır. Gecikme hakkında daha fazla ayrıntı aşağıda verilmiştir:
 
 - Tüm çözümlerde, yedekleme hizmetinin yerleşik uyarıları, oluşturulduktan hemen sonra gönderilir. Bu nedenle, genellikle 20 ila 30 dakika sonra Log Analytics çalışma alanında görünürler.
-- Tüm çözümlerde, geçici yedekleme işleri ve geri yükleme işleri, *tamamlanır*almaz gönderilir.
+- Tüm çözümlerde, isteğe bağlı yedekleme işleri ve geri yükleme işleri, *tamamlanır*almaz gönderilir.
 - SQL yedekleme dışındaki tüm çözümler için, zamanlanmış yedekleme işleri, *tamamlanır*almaz gönderilir.
 - SQL yedekleme için, günlük yedeklemeleri 15 dakikada bir gerçekleşebildiğinden, günlükler de dahil olmak üzere tamamlanan tüm zamanlanmış yedekleme işlerinin bilgileri toplu olarak oluşturulur ve her 6 saatte bir gönderilir.
 - Tüm çözümlerde yedekleme öğesi, ilke, kurtarma noktaları, depolama vb. gibi diğer bilgiler günde en az *bir kez gönderilir.*

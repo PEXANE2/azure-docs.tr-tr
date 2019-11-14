@@ -1,5 +1,5 @@
 ---
-title: Linux için Azure disk şifrelemesi | Microsoft Docs
+title: Linux için Azure disk şifrelemesi
 description: Linux için Azure disk şifrelemesini, sanal makine uzantısı kullanarak bir sanal makineye dağıtır.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 1801ca8bd59153de81ef680253da229e2bd4a338
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4fa7f7d1419a8cd1006a632ba67587ab3434bf5a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597864"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073802"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux için Azure disk şifrelemesi (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
 
@@ -67,9 +67,9 @@ V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
 
 ### <a name="schema-v01-with-aad"></a>Şema v 0.1: AAD ile 
 
-0,1 şeması `aadClientID` ve `aadClientSecret` ya da `AADClientCertificate` gerektirir.
+0,1 şeması `aadClientID` ve `aadClientSecret` ya da `AADClientCertificate`gerektirir.
 
-@No__t_0 kullanma:
+`aadClientSecret`kullanma:
 
 ```json
 {
@@ -99,7 +99,7 @@ V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
 }
 ```
 
-@No__t_0 kullanma:
+`AADClientCertificate`kullanma:
 
 ```json
 {
@@ -132,33 +132,33 @@ V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek | Veri Türü |
+| Ad | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| 'ın | Microsoft. Azure. Security | string |
+| publisher | Microsoft.Azure.Security | string |
 | type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0,1, 1,1 | int |
-| (0,1 şeması) Aadclientıd | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | 'ini | 
+| typeHandlerVersion | 0.1, 1.1 | int |
+| (0.1 Şeması) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (0,1 şeması) AADClientSecret | password | string |
-| (0,1 şeması) AADClientCertificate | #c0 | string |
+| (0,1 şeması) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path": "", "ad": "", "file_system": ""} | JSON sözlüğü |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | ' RSA-OAEP ', ' RSA-OAEP-256 ', ' RSA1_5 ' | string |
-| keyEncryptionKeyURL 'Si | url | string |
+| KeyEncryptionKeyURL 'Si | url | string |
 | seçim KeyVaultURL | url | string |
-| Deyimi | password | string | 
-| sequenceVersion | benzersiz tanımlayıcı | string |
+| Passphrase | password | string | 
+| SequenceVersion | uniqueidentifier | string |
 | Birimtürü | İşletim sistemi, veri, tümü | string |
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
 Şablon dağıtımı örneği için bkz. [çalışan bir LINUX VM 'de şifrelemeyi etkinleştirme](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm).
 
-## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
+## <a name="azure-cli-deployment"></a>Azure CLI dağıtım
 
 Yönergeleri en son [Azure CLI belgelerinde](/cli/azure/vm/encryption?view=azure-cli-latest)bulabilirsiniz. 
 
-## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
+## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
@@ -166,7 +166,7 @@ Sorun giderme için, [Azure disk şifrelemesi sorun giderme kılavuzu](../../sec
 
 ### <a name="support"></a>Destek
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/community/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
+Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/community/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

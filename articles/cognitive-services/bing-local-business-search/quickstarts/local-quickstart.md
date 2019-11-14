@@ -1,7 +1,7 @@
 ---
 title: Hızlı başlangıç-içindeki Bing yerel Iş Arama API 'sine bir sorgu gönderinC#
 titleSuffix: Azure Cognitive Services
-description: "' De C#Bing yerel Iş Arama API 'sini kullanmaya başlamak için bu makaleyi kullanın."
+description: Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 04/26/2019
 ms.author: rosh
-ms.openlocfilehash: 163a85a7fb7521054ebec58fb9ac86373963f2b9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: d14e9dd8d02db7ca0131927682804fe81b750d97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906305"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072335"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Hızlı Başlangıç: İçindeki Bing yerel Iş Arama API 'sine bir sorgu gönderinC#
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Hızlı başlangıç: içindeki Bing yerel Iş Arama API 'sine bir sorgu gönderinC#
 
 Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu basit uygulama ' de C#YAZıLDıĞı sırada API, http istekleri yapma ve JSON 'u ayrıştırma yeteneğine sahip olan herhangi bir programlama diliyle uyumlu olan bir yeniden takip eden Web hizmetidir.
 

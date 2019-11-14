@@ -1,17 +1,14 @@
 ---
 title: Visual Studio Code için Azure Ilke uzantısı
 description: Visual Studio Code için Azure Ilke uzantısı 'nı kullanarak Kaynak Yöneticisi diğer adları arama hakkında bilgi edinin.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 20af29c40ec13add90294e28d64f0166acc95319
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cbc0e14ed70fbacc297126aef58cd722d2235a3d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514816"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072048"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code için Azure Ilke uzantısı 'nı kullanın
 
@@ -77,7 +74,7 @@ Kaynakları ve arama diğer adlarını değerlendirmek için Azure hesabınıza 
 
 1. Azure 'da oturum açmak için oturum açma yönergelerini izleyin. Bağlandıktan sonra, Azure hesabınızın adı Visual Studio Code penceresinin altındaki durum çubuğunda gösterilir.
 
-## <a name="select-subscriptions"></a>Abonelikleri Seç
+## <a name="select-subscriptions"></a>Abonelikleri seçin
 
 İlk kez oturum açtığınızda, Azure Ilke uzantısı tarafından yalnızca varsayılan abonelik kaynakları ve ilkeleri yüklenir. Kaynakları ve ilkeleri görüntülemeye yönelik abonelikler eklemek veya kaldırmak için şu adımları izleyin:
 

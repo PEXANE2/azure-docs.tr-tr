@@ -1,5 +1,5 @@
 ---
-title: Azure Linux aracısını GitHub 'dan güncelleştirme | Microsoft Docs
+title: GitHub 'dan Azure Linux aracısını güncelleştirme
 description: Azure 'da Linux VM 'niz için Azure Linux aracısını güncelleştirme hakkında bilgi edinin
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: akjosh
-ms.openlocfilehash: 1ae3c3a74d1a46a98fa6676e18ffe71a4d6937a1
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 2215136c02d9cf967e0184af7588ce8d48362009
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168762"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072947"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Bir VM 'de Azure Linux aracısını güncelleştirme
 
@@ -351,7 +351,7 @@ sudo systemctl restart waagent.service
 
 ## <a name="oracle-6-and-7"></a>Oracle 6 ve 7
 
-Oracle Linux için `Addons` deponun etkinleştirildiğinden emin olun. Dosyayı `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) veya `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux) düzenleyerek satırı `enabled=0` bu dosyada **[ol6_addons]** veya **[ol7_addons]** altında olacak şekilde `enabled=1` değiştirin.
+Oracle Linux için `Addons` deposunun etkinleştirildiğinden emin olun. `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) veya `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux) dosyasını düzenlemeyi seçin ve satır `enabled=0` bu dosyadaki **[`enabled=1`]** veya **[ol6_addons]** altındaki ol7_addons olarak değiştirin.
 
 Ardından, Azure Linux aracısının en son sürümünü yüklemek için şunu yazın:
 
@@ -394,10 +394,10 @@ Genellikle bu tek ihtiyacınız vardır ancak bazı nedenlerle https://github.co
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>Dağıtım için bir aracı paketi yoksa Linux aracısını Güncelleştir
 
-Wget 'i (Red hat, CentOS ve Oracle Linux sürüm 6,4 ve 6,5) komut satırına yazarak `sudo yum install wget` , bu uygulamayı varsayılan olarak yüklemek.
+Wget 'i (Red hat, CentOS ve Oracle Linux sürüm 6,4 ve 6,5), komut satırına `sudo yum install wget` yazarak, bu uygulamayı varsayılan olarak yüklemek.
 
-### <a name="1-download-the-latest-version"></a>1. En son sürümü indirin
-[GitHub 'Da Azure Linux aracısının](https://github.com/Azure/WALinuxAgent/releases) sürümünü bir Web sayfasında açın ve en son sürüm numarasını bulun. (Yazarak `waagent --version`geçerli sürümünüzü bulabilirsiniz.)
+### <a name="1-download-the-latest-version"></a>1. en son sürümü indirin
+[GitHub 'Da Azure Linux aracısının](https://github.com/Azure/WALinuxAgent/releases) sürümünü bir Web sayfasında açın ve en son sürüm numarasını bulun. (`waagent --version`yazarak geçerli sürümünüzü bulabilirsiniz.)
 
 #### <a name="for-version-22x-or-later-type"></a>2\.2. x veya üzeri sürümler için şunu yazın:
 ```bash
@@ -444,7 +444,7 @@ AutoUpdate.Enabled=y
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="3-restart-the-waagent-service"></a>3. Waagent hizmetini yeniden başlatın
+### <a name="3-restart-the-waagent-service"></a>3. waagent hizmetini yeniden başlatın
 Çoğu Linux distros için:
 
 ```bash

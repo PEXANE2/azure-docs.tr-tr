@@ -1,5 +1,5 @@
 ---
-title: Hızlı Başlangıç - Azure PowerShell ile Windows VM Oluşturma | Microsoft Docs
+title: Hızlı başlangıç-Azure PowerShell bir Windows sanal makinesi oluşturma
 description: Bu hızlı başlangıçta Azure PowerShell’i kullanarak Windows sanal makinesi oluşturmayı öğrenirsiniz
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0a8e6ab04cbb1c5a3ef9be299a08380912aad7ef
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 607ad17af42b88737d8ca4ebc379504d9b0b40df
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088789"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073451"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Hızlı Başlangıç: Azure 'da PowerShell ile Windows sanal makinesi oluşturma
+# <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Hızlı Başlangıç: PowerShell ile Azure'da Windows sanal makinesi oluşturma
 
 Azure PowerShell modülü, PowerShell komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta Azure PowerShell modülü kullanarak Azure’da Windows Server 2016 çalıştıran bir sanal makinenin (VM) nasıl dağıtılacağı gösterilir. Ayrıca VM 'ye yönelik RDP ve IIS Web sunucusunu yükleyerek VM 'nin eylemde görünmesini sağlayabilirsiniz.
 
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-[New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)Ile bir VM oluşturun. Her bir kaynak için ad sağlayın ve cmdlet henüz `New-AzVM` yoksa, oluşturur.
+[New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)Ile bir VM oluşturun. Her bir kaynak için ad sağlayın ve `New-AzVM` cmdlet 'i zaten yoksa oluşturur.
 
 İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir Kullanıcı adı ve parola girin:
 
@@ -81,7 +81,7 @@ mstsc /v:publicIpAddress
 
 Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bağlantıyı oluşturmak için **Evet** veya **Devam**’a tıklayın
 
-## <a name="install-web-server"></a>Web sunucusunu yükleyin
+## <a name="install-web-server"></a>Web sunucusunu yükleme
 
 Sanal makinenizin çalıştığını görmek için IIS web sunucusunu yükleyin. VM’de bir PowerShell istemi açın ve şu komutu çalıştırın:
 

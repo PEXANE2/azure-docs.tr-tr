@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 28a804a57a4113b22efd5274ad00b3a216b700aa
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 96a9940826570bd687fdef5726bdc103139f9902
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747037"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074655"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Azure VM 'de SQL Server veritabanını yedekleme
 
@@ -23,9 +23,9 @@ Bu öğreticide, bir Azure VM üzerinde çalışan SQL Server bir veritabanını
 > * Kasa oluşturun ve yapılandırın.
 > * Veritabanlarını bulun ve yedeklemeleri ayarlayın.
 > * Veritabanları için otomatik korumayı ayarlayın.
-> * Geçici yedekleme çalıştırın.
+> * İsteğe bağlı yedekleme çalıştırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server veritabanınızı yedeklemebilmeniz için aşağıdaki koşulları kontrol edin:
 
@@ -102,7 +102,7 @@ VM üzerinde çalışan veritabanlarını bulur.
 
     ![Dağıtım başarılı iletisi](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-8. Azure Backup VM 'deki tüm SQL Server veritabanlarını bulur. Bulma işlemi sırasında arka planda aşağıdakiler gerçekleşir:
+8. Azure Backup VM 'deki tüm SQL Server veritabanlarını bulur. Bulma sırasında arka planda aşağıdakiler gerçekleşir:
 
     * Azure Backup, VM 'yi iş yükü yedeklemesi için kasaya kaydedin. Kayıtlı VM 'deki tüm veritabanları yalnızca bu kasaya yedeklenebilir.
     * Azure Backup, **AzureBackupWindowsWorkload** uzantısını VM 'ye yüklenir. SQL veritabanında hiçbir aracı yüklü değil.
@@ -215,7 +215,7 @@ Bir yedekleme ilkesi oluşturmak için:
 
 14. Yedekleme ilkesinde yapılan düzenlemeleri tamamladıktan sonra **Tamam**' ı seçin.
 
-## <a name="run-an-ad-hoc-backup"></a>Geçici yedekleme çalıştırma
+## <a name="run-an-on-demand-backup"></a>İsteğe bağlı yedekleme çalıştırma
 
 1. Kurtarma Hizmetleri kasasında yedekleme öğeleri ' ni seçin.
 2. "Azure VM 'de SQL" seçeneğine tıklayın.
@@ -233,7 +233,7 @@ Bu öğreticide, Azure portalı kullanarak şu işlemleri gerçekleştirdiniz:
 > * Kasa oluşturun ve yapılandırın.
 > * Veritabanlarını bulun ve yedeklemeleri ayarlayın.
 > * Veritabanları için otomatik korumayı ayarlayın.
-> * Geçici yedekleme çalıştırın.
+> * İsteğe bağlı yedekleme çalıştırın.
 
 Bir Azure sanal makinesini diskten geri yüklemek için sonraki öğreticiye devam edin.
 

@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Azure Dev Spaces hakkında bazı yaygın soruların yanıtlarını bulun
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 317a942f94f3852cc11b8c0f004ed55097d05bc6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 1f25ccd26aed832c068c04198486e769ec980380
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014215"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072209"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces hakkında sık sorulan sorular
 
@@ -44,7 +44,7 @@ Evet, ağ için CNı kullanan bir AKS kümesinde Azure Dev Spaces kullanabilirsi
 
 Şu anda Azure Dev Spaces yalnızca Linux düğüm ve düğümleri üzerinde çalışmak üzere tasarlanmıştır, ancak [mevcut Windows kapsayıcılarıyla][windows-containers]bir aks kümesinde Azure dev Spaces çalıştırabilirsiniz.
 
-### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>API sunucusu yetkilendirilmiş IP adresi aralıkları etkin olan AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
+## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>API sunucusu yetkilendirilmiş IP adresi aralıkları etkin olan AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
 
 Evet, [API sunucusu YETKILENDIRILMIŞ IP adresi aralıkları][aks-auth-range] etkin olan aks kümelerinde Azure dev Spaces kullanabilirsiniz. Kümenizi [oluştururken][aks-auth-range-create] , [bölgeniz temelinde ek aralıklara izin vermeniz][aks-auth-range-ranges]gerekir. Ayrıca, bu ek aralıklara izin vermek için var olan kümeyi [güncelleştirebilir][aks-auth-range-update] .
 

@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure 'da Windows sanal makinelerini Izleme | Microsoft Docs
+title: Öğretici-Azure 'da Windows sanal makinelerini Izleme
 description: Bu öğreticide, Windows sanal makinelerinizde çalışan performansı ve keşfedilen uygulama bileşenlerini izlemeyi öğreneceksiniz.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,42 +15,42 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: a2f4083841c801db3edf1b2838b8d3271b700731
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 13e5cc9ee45cf230668ef7a7cbe85b6437044643
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71680067"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064766"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Öğretici: Azure 'da bir Windows sanal makinesini Izleme
 
 Azure izleme, Azure VM 'lerinden önyükleme ve performans verilerini toplamak, bu verileri Azure depolama 'da depolamak ve Portal, Azure PowerShell modülü ve Azure CLı aracılığıyla erişilebilir hale getirmek için aracıları kullanır. Gelişmiş izleme, performans ölçümleri toplayarak, VM 'de yüklü olan uygulama bileşenlerini keşfeterek ve performans grafiklerini ve bağımlılık eşlemesini içerdiğinden VM'ler için Azure İzleyici ile birlikte sunulur.
 
-Bu öğreticide şunların nasıl yapıladığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * VM 'de önyükleme tanılamayı etkinleştirme
-> * Önyükleme tanılamayı görüntüle
+> * VM’de önyükleme tanılamalarını etkinleştirme
+> * Önyükleme tanılamasını görüntüleme
 > * VM konak ölçümlerini görüntüleme
 > * VM'ler için Azure İzleyici etkinleştir
 > * VM performans ölçümlerini görüntüleme
 > * Uyarı oluşturma
 
-## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell Başlat
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
-Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış ortak Azure araçları vardır. 
+Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell açmak için, yalnızca bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Cloud Shell, [https://shell.azure.com/powershell](https://shell.azure.com/powershell)' e giderek ayrı bir tarayıcı sekmesinde da başlatabilirsiniz. Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve ENTER tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. İsterseniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) adresine giderek Cloud Shell'i ayrı bir tarayıcı sekmesinde de başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
-## <a name="create-virtual-machine"></a>Sanal makine oluştur
+## <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-Bu öğreticide Azure izleme ve güncelleştirme yönetimini yapılandırmak için Azure 'da bir Windows sanal makinesi gereklidir. İlk olarak, VM için [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential)ile bir Yönetici Kullanıcı adı ve parola ayarlayın:
+Bu öğreticide Azure izlemesi ve güncelleştirme yönetimini yapılandırmak için, Azure'da bir Windows VM'sine ihtiyacınız vardır. İlk olarak, VM için [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Şimdi [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile VM 'yi oluşturun. Aşağıdaki örnek *EastUS* konumunda *myvm* adlı bir VM oluşturur. Henüz yoksa, *Myresourcegroupmonitormonitor* ve destekleyici ağ kaynaklarını kaynak grubu oluşturulur:
+Şimdi [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile VM 'yi oluşturun. Aşağıdaki örnekte *EastUS* konumunda *myVM* adlı bir VM oluşturulur. Henüz yoksa, *myResourceGroupMonitorMonitor* kaynak grubu ve destekleyici ağ kaynakları oluşturulur:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -62,11 +62,11 @@ New-AzVm `
 
 Kaynakların ve sanal makinenin oluşturulması birkaç dakika sürer.
 
-## <a name="view-boot-diagnostics"></a>Önyükleme tanılamayı görüntüle
+## <a name="view-boot-diagnostics"></a>Önyükleme tanılamasını görüntüleme
 
-Windows sanal makineleri önyüklendikten sonra, önyükleme tanılama Aracısı, sorun giderme amacıyla kullanılabilecek ekran çıktısını yakalar. Bu özellik varsayılan olarak etkindir. Yakalanan ekran görüntüleri, varsayılan olarak da oluşturulan bir Azure depolama hesabında depolanır.
+Windows sanal makinelerinin önyüklemesi yapıldığında, önyükleme tanılama aracısı sorun giderme amacıyla kullanılabilecek bir ekran çıktısı yakalar. Bu özellik varsayılan olarak etkindir. Yakalanan ekran görüntüleri, varsayılan olarak da oluşturulan bir Azure depolama hesabında depolanır.
 
-[Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata) komutuyla önyükleme tanılama verilerini alabilirsiniz. Aşağıdaki örnekte, önyükleme tanılaması * c: \* sürücüsünün köküne indirilir.
+Önyükleme tanılama verilerini [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata) komutuyla alırsınız. Aşağıdaki örnekte, önyükleme tanılamaları *c:\* sürücüsünün kök dizinine indirilir.
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
@@ -74,10 +74,10 @@ Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "m
 
 ## <a name="view-host-metrics"></a>Konak ölçümlerini görüntüleme
 
-Bir Windows VM 'nin, Azure 'da etkileşimde bulunduğu adanmış bir konak VM 'si vardır. Ölçümler, ana bilgisayar için otomatik olarak toplanır ve Azure portal görüntülenebilir.
+Windows VM’sinin, Azure’da etkileşimde bulunduğu ayrılmış bir Konak VM'si vardır. Konağa ait ölçümler otomatik olarak toplanır ve Azure portalında görüntülenebilir.
 
-1. Azure portal, **kaynak grupları**' na tıklayın, **Myresourcegroupmonitor**' ı seçin ve ardından kaynak listesinden **myvm** ' yi seçin.
-2. VM dikey penceresinde **ölçümler** ' e tıklayın ve ardından konak VM 'nin nasıl çalıştığını görmek için **kullanılabilir ölçümler** altında konak ölçümlerinden birini seçin.
+1. Azure portalında **Kaynak Grupları**’na tıklayın, önce **myResourceGroupMonitor** seçeneğini belirleyin ve ardından kaynak listesinden **myVM**’yi seçin.
+2. Konak VM’nin performansını görmek için VM dikey penceresinde **Ölçümler**’e tıklayın ve ardından **Kullanılabilen ölçümler** bölümünden herhangi bir Konak ölçümünü seçin.
 
     ![Konak ölçümlerini görüntüleme](./media/tutorial-monitoring/tutorial-monitor-host-metrics.png)
 
@@ -85,15 +85,15 @@ Bir Windows VM 'nin, Azure 'da etkileşimde bulunduğu adanmış bir konak VM 's
 
 Azure VM 'nizi VM'ler için Azure İzleyici izlemeyi etkinleştirmek için:
 
-1. Azure portal, **kaynak grupları**' na tıklayın, **Myresourcegroupmonitor**' ı seçin ve ardından kaynak listesinden **myvm** ' yi seçin.
+1. Azure portalında **Kaynak Grupları**’na tıklayın, önce **myResourceGroupMonitor** seçeneğini belirleyin ve ardından kaynak listesinden **myVM**’yi seçin.
 
-2. VM sayfasında, **izleme** bölümünde Öngörüler ' i **(Önizleme)** seçin.
+2. VM sayfasında içinde **izleme** bölümünden **Insights (Önizleme)** .
 
-3. **Öngörüler (Önizleme)** sayfasında **Şimdi dene**' yi seçin.
+3. Üzerinde **Insights (Önizleme)** sayfasında **şimdi deneyin**.
 
-    ![VM için VM'ler için Azure İzleyici etkinleştirme](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Bir VM için sanal makineler için Azure İzleyici etkinleştir](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
 
-4. **Azure Izleyici öngörüleri ekleme** sayfasında, aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, açılır listeden seçin.  
+4. Üzerinde **Azure İzleyici İçgörüler ekleme** sayfasında mevcut bir Log Analytics varsa, aynı abonelikte çalışma alanı, aşağı açılan listeden seçin.  
 
     Liste, varsayılan çalışma alanını ve VM 'nin abonelikte dağıtıldığı konumu önceden seçer. 
 
@@ -102,15 +102,15 @@ Azure VM 'nizi VM'ler için Azure İzleyici izlemeyi etkinleştirmek için:
 
 İzlemeyi etkinleştirdikten sonra, VM 'nin performans ölçümlerini görüntüleyebilmeniz için birkaç dakika beklemeniz gerekebilir.
 
-![Dağıtım işlemeyi VM'ler için Azure İzleyici izlemeyi etkinleştir](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Dağıtım işlemi izlemeyi VM'ler için Azure İzleyicisi'ni etkinleştirme](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>VM performans ölçümlerini görüntüleme
 
 VM'ler için Azure İzleyici, bir sanal makinenin ne kadar iyi performans gösterdiğini belirlemenize yardımcı olmak üzere birkaç ana performans göstergelerini (KPI) hedefleyen bir performans grafikleri kümesi içerir. Sanal makinenize erişmek için aşağıdaki adımları uygulayın.
 
-1. Azure portal, **kaynak grupları**' na tıklayın, **Myresourcegroupmonitor**' ı seçin ve ardından kaynak listesinden **myvm** ' yi seçin.
+1. Azure portalında **Kaynak Grupları**’na tıklayın, önce **myResourceGroupMonitor** seçeneğini belirleyin ve ardından kaynak listesinden **myVM**’yi seçin.
 
-2. VM sayfasında, **izleme** bölümünde Öngörüler ' i **(Önizleme)** seçin.
+2. VM sayfasında içinde **izleme** bölümünden **Insights (Önizleme)** .
 
 3. **Performans** sekmesini seçin.
 
@@ -118,19 +118,19 @@ Bu sayfa yalnızca performans kullanım grafiklerini içermez, aynı zamanda bul
 
 ## <a name="create-alerts"></a>Uyarı oluşturma
 
-Belirli performans ölçümlerine göre uyarılar oluşturabilirsiniz. Bu uyarılar, ortalama CPU kullanımı belirli bir eşiği aştığında veya kullanılabilir boş disk alanı belirli bir miktarın altına düştüğünde size bildirimde bulunabilir. Uyarılar Azure portal görüntülenir veya e-posta yoluyla gönderilebilir. Ayrıca, oluşturulan uyarılara yanıt olarak Azure Otomasyonu runbook 'larını veya Azure Logic Apps tetikleyebilirsiniz.
+Belirli performans ölçümlerine bağlı uyarılar oluşturabilirsiniz. Uyarılar, ortalama CPU kullanımı belirli bir eşiği aştığında veya mevcut boş disk alanı belirli bir miktarın altına düştüğünde bildirim almak için kullanılabilir. Uyarılar Azure portalında görüntülenebilir veya e-posta ile gönderilebilir. Ayrıca oluşturulan uyarılara yanıt olarak Azure Otomasyonu runbook’larını veya Azure Logic Apps’i tetikleyebilirsiniz.
 
-Aşağıdaki örnek ortalama CPU kullanımı için bir uyarı oluşturur.
+Aşağıdaki örnek, ortalama CPU kullanımı için bir uyarı oluşturur.
 
-1. Azure portal, **kaynak grupları**' na tıklayın, **Myresourcegroupmonitor**' ı seçin ve ardından kaynak listesinden **myvm** ' yi seçin.
+1. Azure portalında **Kaynak Grupları**’na tıklayın, önce **myResourceGroupMonitor** seçeneğini belirleyin ve ardından kaynak listesinden **myVM**’yi seçin.
 
-2. VM dikey penceresinde **Uyarı kuralları** ' na tıklayın ve ardından uyarılar dikey penceresinin üst kısmında **ölçüm uyarısı Ekle** ' ye tıklayın.
+2. Önce VM dikey penceresinde **Uyarı kuralları**’na ve ardından uyarılar dikey penceresinin üstündeki **Ölçüm uyarısı ekle** seçeneğine tıklayın.
 
-3. Uyarınız için *Myalertrule* gibi bir **ad** sağlayın
+3. Uyarınız için **myAlertRule** gibi bir *Ad* girin
 
-4. CPU yüzdesi beş dakika boyunca 1,0 aştığında bir uyarı tetiklemek için, diğer tüm varsayılanları seçili bırakın.
+4. CPU yüzdesi beş dakika boyunca 1,0’ı aştığında bir uyarı tetiklemek için diğer varsayılan ayarların tümünü seçili bırakın.
 
-5. İsteğe bağlı olarak, e-posta bildirimi göndermek için *e-posta sahipleri, katkıda bulunanlar ve okuyucular* kutusunu işaretleyin. Varsayılan eylem, portalda bir bildirim sunmanız.
+5. İsteğe bağlı olarak e-posta bildirimi göndermek için *E-posta sahipleri, katkıda bulunanlar ve okuyucular* kutusunu işaretleyebilirsiniz. Varsayılan eylem olarak portalda bir bildirim sunulur.
 
 6. **Tamam** düğmesine tıklayın.
 
@@ -139,15 +139,15 @@ Aşağıdaki örnek ortalama CPU kullanımı için bir uyarı oluşturur.
 Bu öğreticide VM 'nizin performansını yapılandırmış ve görüntülediyseniz. Şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * Kaynak grubu ve VM oluşturma
-> * VM 'de önyükleme tanılamayı etkinleştirme
-> * Önyükleme tanılamayı görüntüle
+> * Kaynak grubu ve sanal makine oluşturma
+> * VM’de önyükleme tanılamalarını etkinleştirme
+> * Önyükleme tanılamasını görüntüleme
 > * Konak ölçümlerini görüntüleme
 > * VM'ler için Azure İzleyici etkinleştir
 > * VM ölçümlerini görüntüleme
 > * Uyarı oluşturma
 
-Azure Güvenlik Merkezi hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
+Azure Güvenlik Merkezi hakkında daha fazla bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [VM güvenliğini yönetme](../../security/fundamentals/overview.md)

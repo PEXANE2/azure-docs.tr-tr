@@ -1,5 +1,5 @@
 ---
-title: Azure 'da birden çok VM oluşturmak için bir generalize VHD yükleyin | Microsoft Docs
+title: Azure 'da birden çok VM oluşturmak için bir generalize VHD yükleyin
 description: Kaynak Yöneticisi dağıtım modeliyle kullanmak üzere bir Windows sanal makinesi oluşturmak için bir Azure depolama hesabına genelleştirilmiş bir VHD yükleyin.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 24ed7b75dfa8cb09c530a3f4a896aa9ff9aa92b5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 933b648f15418c4838d3da1ea8379267765c784b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749183"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073339"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Yeni bir VM oluşturmak için genelleştirilmiş bir VHD 'yi Azure 'a yükleyin
 
@@ -53,7 +53,7 @@ Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emi
 2. Yönetici olarak Komut İstemi penceresini açın. Dizini **%windir%\system32\sysprep**olarak değiştirip `sysprep.exe`çalıştırın.
 3. **Sistem Hazırlama Aracı** iletişim kutusunda  **Sistem İlk Çalıştırma Deneyimi (OOBE) Moduna Gir**'i seçin ve **Genelleştir** onay kutusunun seçili olduğundan emin olun.
 4. **Kapalı seçenekleri**' nde, **kapatır**' ı seçin.
-5. **Tamam** düğmesine tıklayın.
+5. **OK (Tamam)** düğmesine tıklayın.
    
     ![Sysprep 'ı Başlat](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep tamamlandığında, sanal makineyi kapatır. 

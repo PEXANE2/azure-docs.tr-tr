@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Sistem durumunu bir Windows sunucusuna geri yükleme'
+title: "Azure Backup: sistem durumunu bir Windows Server 'a geri yükleme"
 description: Windows Server sistem durumunu Azure 'daki bir yedekten geri yüklemek için adım adım açıklama.
 ms.reviewer: saurse
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: dacurwin
-ms.openlocfilehash: beac49585239a1ecc15588a6c8160bc34c84c6ad
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 5fc9eb5a85b5ce834060f3f35e89ebc2acea2244
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210321"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074221"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Sistem durumunu Windows Server 'a geri yükleme
 
@@ -25,8 +25,8 @@ Bu makalede, Windows Server sistem durumu yedeklemelerinin bir Azure kurtarma hi
 
 2. Geri yüklenen sistem durumu dosyalarını bir Windows Server 'a uygulayın.
 
-
 ## <a name="recover-system-state-files-to-the-same-server"></a>Sistem durumu dosyalarını aynı sunucuya kurtar
+
 Aşağıdaki adımlarda, Windows Server yapılandırmanızın önceki bir duruma nasıl geri alınacağı açıklanmaktadır. Sunucu yapılandırmanızın bilinen, kararlı bir duruma geri alınması son derece değerlidir. Aşağıdaki adımlar, bir kurtarma hizmetleri kasasından sunucunun sistem durumunu geri yükler.
 
 1. **Microsoft Azure Backup** ek bileşenini açın. Ek bileşenin nerede yüklü olduğunu bilmiyorsanız, bilgisayarı veya sunucuyu **Microsoft Azure Backup**arayın.
@@ -37,7 +37,7 @@ Aşağıdaki adımlarda, Windows Server yapılandırmanızın önceki bir duruma
 
     ![Verileri kurtar](./media/backup-azure-restore-windows-server/recover.png)
 
-3. **Başlarken** bölmesinde, verileri aynı sunucuya veya bilgisayara geri yüklemek için, **Bu sunucuyu`<server name>`()** seçin ve **İleri**' ye tıklayın.
+3. **Başlarken** bölmesinde, verileri aynı sunucuya veya bilgisayara geri yüklemek Için, **bu sunucuyu (`<server name>`)** seçin ve **İleri**' ye tıklayın.
 
     ![Verileri aynı makineye geri yüklemek için bu sunucu seçeneğini belirleyin](./media/backup-azure-restore-system-state/samemachine.png)
 
@@ -73,9 +73,9 @@ Windows Server bozuksa veya erişilemezse ve Windows Server sistem durumunu kurt
 
 Bu adımlarda kullanılan terminoloji şunları içerir:
 
-- *Kaynak makine* : yedeklemenin alındığı ve şu anda kullanılamayan özgün makine.
-- *Hedef makine* : verilerin kurtarıldığı makine.
-- *Örnek kasa* : *kaynak makinenin* ve *hedef makinenin* kaydedildiği kurtarma hizmetleri Kasası. <br/>
+* *Kaynak makine* : yedeklemenin alındığı ve şu anda kullanılamayan özgün makine.
+* *Hedef makine* : verilerin kurtarıldığı makine.
+* *Örnek kasa* : *kaynak makinenin* ve *hedef makinenin* kaydedildiği kurtarma hizmetleri Kasası. <br/>
 
 > [!NOTE]
 > Bir makineden alınan yedeklemeler, işletim sisteminin önceki bir sürümünü çalıştıran bir makineye geri yüklenemez. Örneğin, bir Windows Server 2016 makinesinden alınan yedeklemeler Windows Server 2012 R2 'ye geri yüklenemez. Ancak ters bir değer mümkündür. Windows Server 2016 ' ü geri yüklemek için Windows Server 2012 R2 'deki yedeklemeleri kullanabilirsiniz.
@@ -93,7 +93,7 @@ Bu adımlarda kullanılan terminoloji şunları içerir:
 6. Yedekleme sunucusunu seçin bölmesinde, görünen makineler listesinden *kaynak makineyi* seçin.
 7. Kurtarma modunu seçin bölmesinde **sistem durumu** ' nu seçin ve **İleri**' ye tıklayın.
 
-    ![Ara](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. **Birim ve tarih seçin** bölmesinde takvimde, bir kurtarma noktası seçin. Herhangi bir kurtarma noktasından dilediğiniz zaman geri yükleyebilirsiniz. **Kalın yazı** tarihi, en az bir kurtarma noktasının kullanılabilirliğini gösterir. Bir tarih seçtiğinizde, birden fazla kurtarma noktası varsa, **zaman** açılan menüsünde belirli bir kurtarma noktasını seçin.
 
@@ -114,9 +114,6 @@ Bu adımlarda kullanılan terminoloji şunları içerir:
 12. *WindowsImageBackup* dizinini sunucunun kritik olmayan bir birimine kopyalayın (örneğin, D:\). Genellikle, Windows işletim sistemi birimi kritik birimdir.
 
 13. Kurtarma işlemini gerçekleştirmek için, [geri yüklenen sistem durumu dosyalarını bir Windows Server 'a uygulamak](#apply-restored-system-state-on-a-windows-server)için aşağıdaki bölümü kullanın.
-
-
-
 
 ## <a name="apply-restored-system-state-on-a-windows-server"></a>Windows Server 'da geri yüklenen sistem durumunu Uygula
 
@@ -147,7 +144,7 @@ Azure kurtarma hizmetleri Aracısı 'nı kullanarak sistem durumunu dosyalar ola
 
     ![Yerel sunucu veya başka bir sunucudan kurtarma yapılıp yapılmayacağını seçin](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
-7. *WindowsImageBackup* dizininin yolunu girin veya bu dizini içeren yerel sürücüyü (örneğin, d:\windowsımagebackup) seçin, Azure kurtarma hizmetleri Aracısı 'Nı kullanarak sistem durumu dosyalarının kurtarmasının bir parçası olarak kurtarıldı ve ileri ' ye tıklayın..
+7. *WindowsImageBackup* dizininin yolunu girin veya bu dizini içeren yerel sürücüyü (örneğin, D:\windowsımagebackup) seçin, Azure kurtarma hizmetleri Aracısı 'Nı kullanarak sistem durumu dosyalarının kurtarmasının bir parçası olarak kurtarıldı ve **İleri**' ye tıklayın.
 
     ![paylaşılan dosyanın yolu](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
 
@@ -167,7 +164,6 @@ Sistem durumu yedeklemesi Active Directory verileri içerir. Active Directory Et
 
 1. Dizin Hizmetleri geri yükleme modu 'nda (DSRM) etki alanı denetleyicisini yeniden başlatın.
 2. AD DS kurtarmak için Windows Server Yedekleme cmdlet 'lerini kullanmak için [buradaki](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) adımları izleyin.
-
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Hatalı sistem durumu geri yükleme sorunlarını giderme
 
@@ -192,6 +188,7 @@ Sistem durumunu uygulamaya yönelik önceki işlem başarıyla tamamlanmazsa, Wi
     ```cmd
     Wbadmin get versions -backuptarget:<Volume where WindowsImageBackup folder is copied>:
     ```
+
     ![Sistem durumu yedekleme sürümlerini al](./media/backup-azure-restore-system-state/winre-4.png)
 
 6. Yedeklemede kullanılabilir tüm birimleri almak için aşağıdaki komutu çalıştırın.
@@ -207,9 +204,9 @@ Sistem durumunu uygulamaya yönelik önceki işlem başarıyla tamamlanmazsa, Wi
     ```cmd
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
+
      ![Sistem durumu yedekleme sürümlerini al](./media/backup-azure-restore-system-state/winre-6.png)
 
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * Artık dosyalarınızı ve klasörlerinizi kurtardığınıza göre, [yedeklemelerinizi yönetebilirsiniz](backup-azure-manage-windows-server.md).

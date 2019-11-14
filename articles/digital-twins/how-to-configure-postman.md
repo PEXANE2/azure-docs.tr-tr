@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 5a357a246f2ba6c294b107e447218f386623f5c5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/13/2019
+ms.openlocfilehash: 8967b61115d2e2e644dea93cb236f8a7cdfcfcbd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014190"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072245"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure dijital TWINS için Postman 'ı yapılandırma
 
@@ -58,14 +58,9 @@ Azure Active Directory uygulamanızı OAuth 2,0 örtük izin akışını kullana
 
     [Yönetici onay onayını ![](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
+1. İkinci bir **yeniden yönlendirme URI 'sini** `https://www.getpostman.com/oauth2/callback`için yapılandırın.
 
-1. Uygulamanızın uygulama bildirimini açmak için **bildirim** ' ı seçin. `true`için *oauth2AllowImplicitFlow* ayarlayın.
-
-    [![Azure Active Directory örtük akış](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
-
-1. `https://www.getpostman.com/oauth2/callback`için bir **yanıt URL 'si** yapılandırın.
-
-    [![Azure Active Directory yanıt URL 'SI](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
+    [![Postman yeniden yönlendirme URI 'SI Ekle](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
 1. Azure Active Directory uygulamanızın **uygulama kimliğini** kopyalayın ve saklayın. Bu, izleyen adımlarda kullanılır.
 
@@ -106,10 +101,6 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
     [![Postman istemci örneği](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. **Istek belirtecini**seçin.
-
-    >[!TIP]
-    >"OAuth 2 tamamlanamadı" hata iletisini alırsanız şunları deneyin:
-    > * Postman 'ı kapatın ve yeniden açın ve tekrar deneyin.
   
 1. Aşağı kaydırın ve **belirteci kullan**' ı seçin.
 
@@ -117,13 +108,13 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
 
 Önceki adımları tamamladıktan sonra, kimliği doğrulanmış bir HTTP çok parçalı GÖNDERI isteği oluşturmak için Postman 'ı yapılandırın:
 
-1. **Üstbilgi** sekmesi ALTıNA bir http istek üst bilgisi anahtarı **Content-Type** değerini `multipart/mixed`ekleyin.
+1. **Üst bilgiler** sekmesi ALTıNA bir http istek üst bilgisi anahtarı **Content-Type** değeri `multipart/mixed`ekleyin.
 
    [![Içerik türü parçalı/karışık](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Metin olmayan verileri dosyalara serileştirme. JSON verileri bir JSON dosyası olarak kaydedilir.
 1. **Gövde** sekmesinde `form-data`' yi seçin. 
-1. Her dosyayı bir **anahtar** adı atayarak ekleyin, `file`öğesini seçin.
+1. Her dosyayı bir **anahtar** adı atayarak ekleyin, `File`öğesini seçin.
 1. Sonra, **Dosya Seç** düğmesini kullanarak her bir dosyayı seçin.
 
    [![Postman istemci örneği](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
@@ -133,7 +124,7 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
    > * Her bölüm için bu üst bilgileri belirtmeniz gerekmez.
    > * Tüm istek için `multipart/mixed` veya başka bir uygun **Içerik türü** seçmelisiniz.
 
-1. Son olarak, çok parçalı HTTP POST isteğinizi göndermek için **Gönder** ' i seçin.
+1. Son olarak, çok parçalı HTTP POST isteğinizi göndermek için **Gönder** ' i seçin. `200` veya `201` durum kodu başarılı bir isteği gösterir. Ayrıca ilgili yanıt iletisini görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

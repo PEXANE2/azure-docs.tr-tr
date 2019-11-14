@@ -1,5 +1,5 @@
 ---
-title: Azure VM 'Leri için Chef uzantısı | Microsoft Docs
+title: Azure VM 'Leri için Chef uzantısı
 description: Chef Istemcisini bir sanal makineye Chef VM uzantısını kullanarak dağıtın.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: e82a5fefcc7f582df65d945735d9840fc3e49829
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169134"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073198"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Linux ve Windows için Chef VM Uzantısı
 
@@ -36,7 +36,7 @@ Chef VM uzantısı, içerik teslim ağından (CDN) Chef Istemci yükünü almak 
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON, Chef VM uzantısının şemasını gösterir. Uzantı en az Chef sunucu URL 'SI, doğrulama Istemci adı ve Chef sunucusu için doğrulama anahtarı gerektirir; Bu değerler, `knife.rb` [Chef otomatikleştir](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) veya tek başına [Chef sunucusu](https://downloads.chef.io/chef-server)yüklediğinizde indirilen Starter-Kit. zip dosyasındaki dosyada bulunabilir. Doğrulama anahtarı gizli veriler olarak değerlendirilmelidir, ancak bu, yalnızca hedef sanal makinede şifresi çözülebilecek olan **Protectedsettings** öğesi altında yapılandırılmalıdır.
+Aşağıdaki JSON, Chef VM uzantısının şemasını gösterir. Uzantı en az Chef sunucu URL 'SI, doğrulama Istemci adı ve Chef sunucusu için doğrulama anahtarı gerektirir; Bu değerler, [Chef otomatikleştir](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) veya tek başına [Chef sunucusu](https://downloads.chef.io/chef-server)yüklediğinizde indirilen starter-kit. zip dosyasındaki `knife.rb` dosyasında bulunabilir. Doğrulama anahtarı gizli veriler olarak değerlendirilmelidir, ancak bu, yalnızca hedef sanal makinede şifresi çözülebilecek olan **Protectedsettings** öğesi altında yapılandırılmalıdır.
 
 ```json
 {
@@ -67,26 +67,26 @@ Aşağıdaki JSON, Chef VM uzantısının şemasını gösterir. Uzantı en az C
 
 ### <a name="core-property-values"></a>Çekirdek özellik değerleri
 
-| Name | Değer / örnek | Veri Türü
+| Ad | Değer / örnek | Veri Türü
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | dize |
-| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | dize |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Ayarlar
 
-| Name | Değer / örnek | Veri Türü | Gerekli mi?
+| Ad | Değer / örnek | Veri Türü | Gerekli mi?
 | ---- | ---- | ---- | ----
-| Settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | E |
-| Settings/bootstrap_options/validation_client_name | `myorg-validator` | dize | E |
-| settings/runlist | `recipe[mycookbook::default]` | dize | E |
+| ayarlar/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | E |
+| ayarlar/bootstrap_options/validation_client_name | `myorg-validator` | string | E |
+| settings/runlist | `recipe[mycookbook::default]` | string | E |
 
 ### <a name="protected-settings"></a>Korumalı ayarlar
 
-| Name | Örnek | Veri Türü | Gerekli mi?
+| Ad | Örnek | Veri Türü | Gerekli mi?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | dize | E |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | E |
 
 <!--
 ### Linux-specific settings
@@ -110,7 +110,7 @@ Sanal makine uzantısı için JSON yapılandırma içinde sanal makine kaynağı
 
 ## <a name="azure-cli-deployment"></a>Azure CLI dağıtım
 
-Azure CLı, Chef VM uzantısını mevcut bir VM 'ye dağıtmak için kullanılabilir. **Validation_key** değerini doğrulama anahtarınızın içeriğiyle değiştirin (Bu dosya bir `.pem` uzantı olarak).  **Validation_client_name**, **chef_server_url** ve **run_list** değerlerini, başlatıcı seinizdeki `knife.rb` dosyadaki değerlerle değiştirin.
+Azure CLı, Chef VM uzantısını mevcut bir VM 'ye dağıtmak için kullanılabilir. **Validation_key** , doğrulama anahtarınızın içeriğiyle değiştirin (bu dosya `.pem` uzantısı olarak).  **Validation_client_name**, **chef_server_url** ve **Run_list** yerine bu değerleri, başlangıç seinizdeki `knife.rb` dosyasından değiştirin.
 
 ```azurecli
 az vm extension set \

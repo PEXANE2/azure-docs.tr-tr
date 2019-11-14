@@ -1,5 +1,5 @@
 ---
-title: Azure Stack VM 'lerde dosyaları yedekleme
+title: Azure Stack VM 'lerde dosyaları yedekleme-Azure Backup
 description: Azure Stack dosyalarını ve uygulamaları Azure Stack ortamınıza yedeklemek ve kurtarmak için Azure Backup kullanın.
 ms.reviewer: adigan
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: d9e7aaca99e551e17e8b4be5ef6146a19e44355f
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: dc498e08509280b0dcd19cb1556a3c5a152f6d97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210220"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074102"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Azure Stack üzerinde dosya ve uygulama yedekleme
 
@@ -29,7 +29,7 @@ Bu makale, Azure Stack ortamında Azure Backup Sunucusu yüklenmesini kapsamaz. 
 
 Azure Stack sanal makinelerdeki dosyaları korumak üzere Azure Backup Sunucusu yapılandırmak için Azure Backup Sunucusu konsolunu açın. Koruma gruplarını yapılandırmak ve sanal makinelerinizdeki verileri korumak için konsolunu kullanırsınız.
 
-1. Azure Backup Sunucusu konsolunda, **koruma** ' ya tıklayın ve araç çubuğunda Yeni ' ye tıklayarak **yeni koruma grubu oluşturma** Sihirbazı ' nı açın.
+1. Azure Backup Sunucusu konsolunda, **koruma** ' ya tıklayın ve araç çubuğunda Yeni ' ye tıklayarak **yeni koruma grubu oluşturma** **Sihirbazı ' nı** açın.
 
    ![Azure Backup Sunucusu konsolunda korumayı yapılandırma](./media/backup-mabs-files-applications-azure-stack/1-mabs-menu-create-protection-group.png)
 
@@ -45,22 +45,22 @@ Azure Stack sanal makinelerdeki dosyaları korumak üzere Azure Backup Sunucusu 
 
     ![Yeni Koruma Grubu Sihirbazı açılır](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. **Grup üyelerini seçin** ekranında, alt öğeleri listesini **+** genişletmek için tıklayın. Korumak istediğiniz tüm öğeler için onay kutusunu işaretleyin. Tüm öğeler seçildikten sonra **İleri**' ye tıklayın.
+3. **Grup üyelerini seçin** ekranında, alt öğeleri listesini genişletmek için **+** ' a tıklayın. Korumak istediğiniz tüm öğeler için onay kutusunu işaretleyin. Tüm öğeler seçildikten sonra **İleri**' ye tıklayın.
 
     ![Yeni Koruma Grubu Sihirbazı açılır](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
     Microsoft, bir koruma ilkesini paylaşacak tüm verilerin tek bir koruma grubuna yerleştirilmesini önerir. Koruma gruplarını planlama ve dağıtma hakkında ayrıntılı bilgi için bkz. System Center DPM makalesi, [koruma gruplarını dağıtma](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
 
-4. **Veri koruma yöntemini seçin** ekranında, koruma grubu için bir ad yazın. **Kullanarak kısa vadeli koruma** istiyorum onay kutusunu seçin ve **çevrimiçi koruma**istiyorum ' u seçin. **İleri**'ye tıklayın.
+4. **Veri koruma yöntemini seçin** ekranında, koruma grubu için bir ad yazın. **Kullanarak kısa vadeli koruma** istiyorum onay kutusunu seçin ve **çevrimiçi koruma**istiyorum ' u seçin. **İleri**’ye tıklayın.
 
     ![Yeni Koruma Grubu Sihirbazı açılır](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    **Çevrimiçi koruma**istiyorum ' u seçmek için öncelikle **kısa vadeli koruma istiyorum** ' u seçmeniz gerekir: Dis. Azure Backup Sunucusu banda korumaz, bu yüzden disk kısa süreli koruma için tek seçenektir.
+    **Çevrimiçi koruma**istiyorum ' u seçmek için, önce: disk **kullanarak kısa vadeli koruma istiyorum** ' u seçmeniz gerekir. Azure Backup Sunucusu banda korumaz, bu yüzden disk kısa süreli koruma için tek seçenektir.
 
-5. **Kısa dönem hedeflerini belirtin** ekranında, diske kaydedilen kurtarma noktalarının ne kadar süreyle saklanacağını ve artımlı yedeklemelerin ne zaman kaydedileceğini seçin. **İleri**'ye tıklayın.
+5. **Kısa dönem hedeflerini belirtin** ekranında, diske kaydedilen kurtarma noktalarının ne kadar süreyle saklanacağını ve artımlı yedeklemelerin ne zaman kaydedileceğini seçin. **İleri**’ye tıklayın.
 
     > [!IMPORTANT]
-    > Beş günden uzun bir süre boyunca Azure Backup sunucusu bağlı disklerde işlemsel kurtarma (yedekleme) verilerini saklamamalıdır.
+    > Beş günden uzun bir süre boyunca Azure Backup Sunucusu bağlı disklerde işlemsel kurtarma (yedekleme) **verilerini saklamamalıdır** .
     >
 
     ![Yeni Koruma Grubu Sihirbazı açılır](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)

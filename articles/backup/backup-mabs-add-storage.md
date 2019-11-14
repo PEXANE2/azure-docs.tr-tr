@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 48d58ac303a843c627067c9a0287628c35b65f66
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 15bf955d6055ed91b486d34cf9d805de34e9f8f5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019064"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074821"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Sunucusu’na depolama alanı ekleme
 
-Azure Backup Sunucusu v2 ve üzeri,% 50 depolama tasarrufu sağlayan Modern Yedekleme Alanı destekler ve üç kez daha hızlı yedeklemeler ve daha verimli depolama alanı sağlar. Ayrıca iş yükü kullanan depolama alanı sunar.
+Azure Backup Sunucusu v2 ve üzeri, %50 depolama tasarrufu sağlayan Modern Yedekleme Alanı destekler ve üç kez daha hızlı yedeklemeler ve daha verimli depolama alanı sağlar. Ayrıca iş yükü kullanan depolama alanı sunar.
 
 > [!NOTE]
 > Modern Yedekleme Alanı kullanmak için Windows Server 2019 üzerinde Windows Server 2016 veya v3 üzerinde Backup Server v2 veya v3 ' i çalıştırmanız gerekir.
@@ -27,19 +27,19 @@ Azure Backup Sunucusu v2 ve üzeri,% 50 depolama tasarrufu sağlayan Modern Yede
 
 Backup Server v2 veya üzeri, depolama birimlerini kabul eder. Bir birim eklediğinizde, Backup Server, birimi gereken Modern Yedekleme Alanı dayanıklı dosya sistemi (ReFS) olarak biçimlendirir. Bir birim eklemek ve daha sonra gerekirse genişletmek için, bu iş akışını kullanmanızı öneririz:
 
-1.  VM 'de yedekleme sunucusu ayarlayın.
-2.  Depolama havuzundaki bir sanal disk üzerinde birim oluşturma:
-    1.  Depolama havuzuna bir disk ekleyin ve basit düzene sahip bir sanal disk oluşturun.
-    2.  Ek diskler ekleyin ve sanal diski genişletin.
-    3.  Sanal diskte birimler oluşturun.
-3.  Birimleri yedek sunucuya ekleyin.
-4.  İş yükü kullanan depolamayı yapılandırma.
+1. VM 'de yedekleme sunucusu ayarlayın.
+2. Depolama havuzundaki bir sanal disk üzerinde birim oluşturma:
+    1. Depolama havuzuna bir disk ekleyin ve basit düzene sahip bir sanal disk oluşturun.
+    2. Ek diskler ekleyin ve sanal diski genişletin.
+    3. Sanal diskte birimler oluşturun.
+3. Birimleri yedek sunucuya ekleyin.
+4. İş yükü kullanan depolamayı yapılandırma.
 
 ## <a name="create-a-volume-for-modern-backup-storage"></a>Modern Yedekleme Alanı için birim oluşturma
 
 Disk depolaması, yedekleme sunucusu v2 veya sonraki sürümleri birimler ile kullanmak, depolama üzerinde denetimi korumanıza yardımcı olabilir. Birim tek bir disk olabilir. Ancak, daha sonra depolamayı genişletmek istiyorsanız, depolama alanları kullanılarak oluşturulan bir diskten bir birim oluşturun. Bu, yedekleme depolaması için birimi genişletmek istediğinizde yardımcı olabilir. Bu bölümde, bu kurulumla bir birim oluşturmak için en iyi yöntemler sunulmaktadır.
 
-1. Sunucu Yöneticisi, **dosya ve depolama hizmetleri** > **birimleri** > **depolama havuzları**' nı seçin. **FIZIKSEL diskler**altında **Yeni depolama havuzu**' nu seçin.
+1. Sunucu Yöneticisi ' de, **depolama havuzları** > **dosya ve depolama hizmetleri** > **birimler** ' i seçin. **FIZIKSEL diskler**altında **Yeni depolama havuzu**' nu seçin.
 
     ![Yeni bir depolama havuzu oluştur](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
@@ -75,7 +75,7 @@ Yedekleme sunucusuna bir birim eklemek için, **Yönetim** bölmesinde, depolama
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Bir Azure Backup Sunucusu depolama havuzundaki bir birimin özelliklerini güncelleştiren-DPMDiskStorage PowerShell cmdlet 'ini kullanarak iş yüküne duyarlı depolamayı ayarlayabilirsiniz. 
+Bir Azure Backup Sunucusu depolama havuzundaki bir birimin özelliklerini güncelleştiren-DPMDiskStorage PowerShell cmdlet 'ini kullanarak iş yüküne duyarlı depolamayı ayarlayabilirsiniz.
 
 Sözdizimi
 
@@ -84,6 +84,7 @@ Sözdizimi
 ```powershell
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
+
 Aşağıdaki ekran görüntüsünde, PowerShell penceresinde Update-DPMDiskStorage cmdlet 'i gösterilmektedir.
 
 ![PowerShell penceresinde Update-DPMDiskStorage komutu](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
@@ -92,8 +93,8 @@ PowerShell kullanarak yaptığınız değişiklikler yedekleme sunucusuna Yönet
 
 ![Yönetici Konsolu diskler ve birimler](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
 
-
 ## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>Eski depolamayı Modern Yedekleme Alanı geçir
+
 Yedekleme sunucusu v2 'ye yükselttikten veya yükledikten sonra işletim sistemini Windows Server 2016 ' e yükselttikten sonra, Modern Yedekleme Alanı kullanmak için koruma gruplarınızı güncelleştirin. Varsayılan olarak, koruma grupları değiştirilmez. Bunlar, başlangıçta ayarlandığı gibi çalışmaya devam eder.
 
 Koruma gruplarının Modern Yedekleme Alanı kullanmak için güncelleştirilmesi isteğe bağlıdır. Koruma grubunu güncelleştirmek için verileri sakla seçeneğini kullanarak tüm veri kaynaklarının korumasını durdurun. Ardından, veri kaynaklarını yeni bir koruma grubuna ekleyin.
@@ -102,7 +103,7 @@ Koruma gruplarının Modern Yedekleme Alanı kullanmak için güncelleştirilmes
 
    ![Üyenin korumasını durdur](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. **Gruptan Kaldır** iletişim kutusunda, depolama havuzu için kullanılan disk alanını ve kullanılabilir boş alanı gözden geçirin. Varsayılan değer, kurtarma noktalarını diskte bırakmaları ve bunların ilişkili bekletme ilkesi başına dolmasına izin vererecektir.           **Tamam**'ı tıklatın.
+2. **Gruptan Kaldır** iletişim kutusunda, depolama havuzu için kullanılan disk alanını ve kullanılabilir boş alanı gözden geçirin. Varsayılan değer, kurtarma noktalarını diskte bırakmaları ve bunların ilişkili bekletme ilkesi başına dolmasına izin vererecektir. **OK (Tamam)** düğmesine tıklayın.
 
    Kullanılan disk alanını hemen boş depolama havuzuna döndürmek istiyorsanız, bu üyeyle ilişkili yedekleme verilerini (ve kurtarma noktalarını) silmek için **diskte çoğaltmayı Sil** onay kutusunu seçin.
 
@@ -116,15 +117,16 @@ Yedekleme sunucusu ile eski depolamayı kullanmak istiyorsanız, eski depolamay�
 
 Disk depolaması eklemek için:
 
-1. Yönetici Konsolu **Yönetim** > disk depolamaEkle > ' yi seçin.
+1. Yönetici Konsolu **yönetim** >  > **disk depolama** **Ekle**' yi seçin.
 
     ![Disk Depolama iletişim kutusu Ekle](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
-4. **Disk depolama Ekle** iletişim kutusunda, **Disk Ekle**' yi seçin.
+2. **Disk depolama Ekle** iletişim kutusunda, **Disk Ekle**' yi seçin.
 
-5. Kullanılabilir diskler listesinde, eklemek istediğiniz diskleri seçin, **Ekle**' yi seçin ve ardından **Tamam**' ı seçin.
+3. Kullanılabilir diskler listesinde, eklemek istediğiniz diskleri seçin, **Ekle**' yi seçin ve ardından **Tamam**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Yedekleme sunucusunu yükledikten sonra, sunucunuzu nasıl hazırlayacağınızı veya bir iş yükünü korumaya nasıl başlayacağınızı öğrenin.
 
 - [Yedekleme sunucusu iş yüklerini hazırlama](backup-azure-microsoft-azure-backup.md)

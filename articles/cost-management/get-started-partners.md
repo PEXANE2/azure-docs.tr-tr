@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 611b3e608d9b0de9423c861ec70e9fc2e7ad67d5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: cd3efbea7b194da54bc1d9bebd1cc77987bd9dea
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720760"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072346"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure maliyet yönetimi 'ni kullanmaya başlama
 
-Azure maliyet yönetimi, müşterilerinin Microsoft Müşteri anlaşmasıyla eklendi olan iş ortakları için yerel olarak kullanılabilir. Bu makalede, iş ortaklarının [Azure maliyet yönetimi](https://docs.microsoft.com/azure/cost-management/) özelliklerini nasıl kullanacağı açıklanır. Ayrıca, iş ortaklarının müşterileri için maliyet yönetimi erişimini nasıl etkinleştireceğinizi açıklar. Müşteriler, CSP iş ortakları tarafından etkinleştirildiğinde maliyet yönetimi özelliklerini kullanabilir.
+Azure maliyet yönetimi, müşterileri Microsoft Müşteri anlaşmasıyla eklendi ve bir Azure planı satın almış olan iş ortakları için yerel olarak kullanılabilir. Bu makalede, iş ortaklarının [Azure maliyet yönetimi](https://docs.microsoft.com/azure/cost-management/) özelliklerini nasıl kullanacağı açıklanır. Ayrıca, iş ortaklarının müşterileri için maliyet yönetimi erişimini nasıl etkinleştireceğinizi açıklar. Müşteriler, CSP iş ortakları tarafından etkinleştirildiğinde maliyet yönetimi özelliklerini kullanabilir.
 
 CSP iş ortakları maliyet yönetimini şu şekilde kullanır:
 
@@ -37,7 +37,7 @@ tek bir müşterinin maliyetlerini gösteren örnek ![](./media/get-started-part
 
 Azure maliyet yönetimi 'nde kullanılabilen tüm işlevler REST API 'Leri ile de kullanılabilir. Maliyet yönetimi görevlerini otomatikleştirmek için API 'Leri kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure maliyet yönetimi, faturalandırma hesabınıza veya aboneliğine yönelik okuma erişimi gerektirir. Verileriniz üzerinde, faturalama hesabından veya bir yönetim grubundan, uygulamalarınızı yönettiğiniz tek tek kaynak gruplarına kadar erişim verilebilir. Bir faturalandırma hesabı için Azure maliyet yönetimine erişimi etkinleştirme ve atama hakkında daha fazla bilgi için bkz. [Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview). **Genel yönetici** ve **yönetici Aracısı** rolleri bir faturalandırma hesabının maliyetlerini yönetebilir.
 
@@ -83,7 +83,7 @@ Faturalandırma profilleri, bir faturaya dahil edilen abonelikleri tanımlar. Fa
 İş ortakları, faturalara mutabık kılmak için kapsamı kullanabilir. Ayrıca, aşağıdaki öğeler için faturalandırma para birimindeki bütçeleri ayarlamak için kapsamı kullanırlar:
 
 - Belirli filtrelenmiş fatura
-- Müşterisi
+- Müşteri
 - Abonelik
 - Kaynak grubu
 - Kaynak

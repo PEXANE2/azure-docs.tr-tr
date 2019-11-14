@@ -1,24 +1,25 @@
 ---
-title: Azure Application Gateway-portal ile App Service Web Apps gibi çok kiracılı uygulamalardaki trafiği yönetme
+title: Portalı kullanarak çok kiracılı uygulamalardaki trafiği yönetme
+titleSuffix: Azure Application Gateway
 description: Bu makalede, Azure App Service Web Apps 'i var olan veya yeni bir uygulama ağ geçidinde arka uç havuzunda üye olarak yapılandırma hakkında rehberlik sunulmaktadır.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: dee4859c57172a703517848510a31b70ff1f24cd
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 0ec417b3c7a025d2d05bdd74ec683a2891c3b0de
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "68370419"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075171"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Application Gateway ile App Service yapılandırma
 
 App Service, bir dizi dağıtım yerine çok kiracılı bir hizmet olduğundan, isteği doğru App Service uç noktasına çözümlemek için gelen istekte ana bilgisayar üst bilgisini kullanır. Genellikle uygulamanın DNS adı, App Service 'i kapsayan uygulama ağ geçidi ile ilişkili DNS adıdır, arka uç App Service 'in etki alanı adından farklıdır. Bu nedenle, uygulama ağ geçidi tarafından alınan özgün istekteki ana bilgisayar üst bilgisi, arka uç hizmetinin ana bilgisayar adıyla aynı değildir. Bu nedenle, uygulama ağ geçidindeki istekteki ana bilgisayar üst bilgisi arka uç hizmetinin ana bilgisayar adına değiştirilmediği için, çok kiracılı arka uçlar isteği doğru uç noktaya çözemeyebilir.
 
-Application Gateway, istek Application Gateway arka `Pick host name from backend address` uca yönlendirilmesinde isteğin ana bilgisayar adıyla birlikte istekteki konak üstbilgisini geçersiz kılan bir anahtar sağlar. Bu özellik, Azure App Service ve API Management gibi çok kiracılı arka uçlar için destek sunar. 
+Application Gateway, istek Application Gateway arka uca yönlendirildiğini isteğin ana bilgisayar adıyla birlikte istekteki konak üstbilgisini geçersiz kılan `Pick host name from backend address` adlı bir anahtar sağlar. Bu özellik, Azure App Service ve API Management gibi çok kiracılı arka uçlar için destek sunar. 
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -29,8 +30,8 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Uygulama ağ geçidi: Mevcut bir uygulama ağ geçidiniz yoksa bkz. [uygulama ağ geçidi oluşturma](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-- App Service: Mevcut bir App Service yoksa [App Service belgeleri](https://docs.microsoft.com/azure/app-service/)bölümüne bakın.
+- Application Gateway: mevcut bir uygulama ağ geçidiniz yoksa bkz. [uygulama ağ geçidi oluşturma](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+- App Service: mevcut bir App Service yoksa [App Service belgeleri](https://docs.microsoft.com/azure/app-service/)bölümüne bakın.
 
 ## <a name="add-app-service-as-backend-pool"></a>App Service 'i arka uç havuzu olarak ekle
 
@@ -47,7 +48,7 @@ Bu makalede şunları öğreneceksiniz:
    ![App Service arka ucu](./media/configure-web-app-portal/backendpool.png)
    
    > [!NOTE]
-   > Açılan menü yalnızca Application Gateway aynı abonelikte olan uygulama hizmetlerini doldurur. Application Gateway olduğu sunucudan farklı bir abonelikte bulunan bir App Service kullanmak istiyorsanız, **hedefler** açılan menüsünde **uygulama hizmetleri** ' ni seçmek yerine, **IP adresi veya ana bilgisayar adı** seçeneğini belirleyin ve Ana bilgisayar adı (örnek. azurewebsites.net).
+   > Açılan menü yalnızca Application Gateway aynı abonelikte olan uygulama hizmetlerini doldurur. Application Gateway olduğu sunucudan farklı bir abonelikte bulunan bir App Service kullanmak istiyorsanız, **hedefler** açılan menüsünde **uygulama hizmetleri** ' ni seçmek yerine, **IP adresi veya ana bilgisayar adı** seçeneğini belirleyin ve ana bilgisayar adını (örneğin,) girin. azurewebsites.net).
 
 ## <a name="create-http-settings-for-app-service"></a>App Service için HTTP ayarları oluşturma
 
@@ -60,11 +61,11 @@ Bu makalede şunları öğreneceksiniz:
    > [!NOTE]
    > HTTPS ' yi seçerseniz, App Service 'ın güvenilen bir Azure hizmeti olduğundan, uygulama hizmeti arka ucunu beyaz listeye almak için herhangi bir kimlik doğrulama sertifikası veya güvenilen kök sertifikası yüklemeniz gerekmez.
 
-4. **App Service Için kullanım** kutusunu işaretleyin. Anahtarların `Create a probe with pick host name from backend address` ve`Pick host name from backend address` otomatik olarak etkinleştirildiğini unutmayın.`Pick host name from backend address` istek Application Gateway arka uca yönlendirildiğini, istekteki konak üstbilgisini arka ucun ana bilgisayar adıyla geçersiz kılar.  
+4. **App Service Için kullanım** kutusunu işaretleyin. `Create a probe with pick host name from backend address` ve `Pick host name from backend address` anahtarlarının otomatik olarak etkin olacağını unutmayın.`Pick host name from backend address` istek Application Gateway arka uca yönlendirildiğini, istekteki konak üstbilgisini arka ucun ana bilgisayar adıyla geçersiz kılar.  
 
-   `Create a probe with pick host name from backend address`otomatik olarak bir durum araştırması oluşturur ve bu HTTP ayarıyla ilişkilendirir. Bu HTTP ayarı için başka bir sistem durumu araştırması oluşturmanız gerekmez. Bu ada <HTTP Setting name> <Unique GUID> sahip yeni bir araştırmanın sistem durumu araştırmaları listesine eklendiğini ve bu anahtarın zaten anahtara `Pick host name from backend http settings enabled`sahip olduğunu kontrol edebilirsiniz.
+   `Create a probe with pick host name from backend address` otomatik olarak bir durum araştırması oluşturacak ve bu HTTP ayarıyla ilişkilendilecektir. Bu HTTP ayarı için başka bir sistem durumu araştırması oluşturmanız gerekmez. <HTTP Setting name><Unique GUID> adlı yeni bir araştırmanın sistem durumu araştırmaları listesine eklendiğini ve bu anahtarın zaten anahtar `Pick host name from backend http settings enabled`olduğunu kontrol edebilirsiniz.
 
-   App Service için kullanılmakta olan bir veya daha fazla http ayarı zaten varsa ve bu http ayarları, oluşturmakta olduğunuz bir protokol ile aynı protokolü kullanıyorsa, `Create a probe with pick host name from backend address` anahtar yerine, c 'den birini seçmek üzere bir açılan menü alacaksınız. Özel yoklamalar. Bunun nedeni, App Service ile bir HTTP ayarı zaten var olduğundan, bu nedenle anahtara `Pick host name from backend http settings enabled` sahip bir sistem durumu araştırması de var. Açılan listeden özel araştırmayı seçin.
+   App Service için kullanılmakta olan bir veya daha fazla HTTP ayarı zaten varsa ve bu HTTP ayarları, oluşturmakta olduğunuz bir hizmet ile aynı protokolü kullanıyorsa, `Create a probe with pick host name from backend address` anahtarı yerine, özel araştırmaların birini seçmek için bir açılır liste alacaksınız. Bunun nedeni, App Service ile bir HTTP ayarı zaten var olduğundan, anahtarı `Pick host name from backend http settings enabled` olan bir sistem durumu araştırması de var. Açılan listeden özel araştırmayı seçin.
 
 5. HTTP ayarını oluşturmak için **Tamam** ' ı tıklatın.
 
@@ -90,7 +91,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>App Service 'in göreli yoluna yeniden yönlendirme durumunda ek yapılandırma
 
-App Service, göreli yoluna (örneğin, contoso.azurewebsites.net/path1 öğesinden contoso.azurewebsites.net/path2 'ye yeniden yönlendirme) yeniden yönlendirmek üzere istemciye yeniden yönlendirme yanıtı gönderdiğinde, yanıtının konum üstbilgisinde aynı ana bilgisayar adını kullanır uygulama ağ geçidinden aldığı istek. Bu nedenle, istemci, uygulama ağ geçidi (contoso.com/path2) boyunca değil, isteği doğrudan contoso.azurewebsites.net/path2 'a yapar. Application Gateway 'i atlamak istenmez.
+App Service, göreli yoluna (örneğin, contoso.azurewebsites.net/path1 öğesinden contoso.azurewebsites.net/path2 'ye yeniden yönlendirme) yeniden yönlendirmek üzere istemciye bir yeniden yönlendirme yanıtı gönderdiğinde, uygulama ağ geçidinden aldığı istekte olduğu gibi yanıtının konum üstbilgisinde aynı ana bilgisayar adını kullanır. Bu nedenle, istemci, uygulama ağ geçidi (contoso.com/path2) boyunca değil, isteği doğrudan contoso.azurewebsites.net/path2 'a yapar. Application Gateway 'i atlamak istenmez.
 
 Kullanım durumunda, App Service 'in istemciye yeniden yönlendirme yanıtı gönderebilmesi gereken senaryolar vardır, [konum başlığını yeniden yazmak için ek adımları](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration)gerçekleştirin.
 

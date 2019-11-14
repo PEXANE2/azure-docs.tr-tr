@@ -1,5 +1,5 @@
 ---
-title: Azure Linux VM aracısına genel bakış | Microsoft Docs
+title: Azure Linux VM aracısına genel bakış
 description: Linux aracısının (waagent) nasıl yükleneceğini ve yapılandırılacağını, sanal makinenizin Azure Fabric denetleyicisiyle etkileşimini yönetme hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8bc28c7454296f32dda09894ad3dca2f4fae99b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169154"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073866"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux aracısını anlama ve kullanma
 
@@ -60,7 +60,7 @@ Microsoft Azure Linux Aracısı (waagent) Linux & FreeBSD sağlamasını ve Azur
 * **VM Uzantısı**
   
   * Yazılım ve yapılandırma Otomasyonu 'nu etkinleştirmek için Microsoft ve Iş ortakları tarafından Linux VM 'ye (IaaS) yazılan bileşen ekleme
-  * VM uzantısı başvuru uygulama açık[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions) VM uzantısı başvuru uygulama
 
 ## <a name="communication"></a>İletişim
 Platformdan aracıya bilgi akışı iki kanal aracılığıyla gerçekleşir:
@@ -72,7 +72,7 @@ Platformdan aracıya bilgi akışı iki kanal aracılığıyla gerçekleşir:
 Aşağıdaki sistemler test edilmiştir ve Azure Linux aracısıyla birlikte çalışmak üzere bilinmektedir:
 
 > [!NOTE]
-> Bu liste, burada açıklandığı gibi Microsoft Azure platformundaki desteklenen sistemlerin resmi listesinden farklı olabilir:[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Bu liste, burada açıklandığı gibi Microsoft Azure platformundaki desteklenen sistemlerin resmi listesinden farklı olabilir: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -107,12 +107,12 @@ Kaynaktan veya özel konumlara veya öneklere yükleme gibi gelişmiş yükleme 
 
 ## <a name="command-line-options"></a>Komut satırı seçenekleri
 ### <a name="flags"></a>bayrakları
-* seçeneini Belirtilen komutun ayrıntı düzeyini artır
-* zorla Bazı komutların etkileşimli onayını atla
+* verbose: belirtilen komutun ayrıntı düzeyini artır
+* zorla: Bazı komutların etkileşimli onayını atlayın
 
 ### <a name="commands"></a>Komutlar
-* Yardım: Desteklenen komutları ve bayrakları listeler.
-* sağlamayı kaldırma Sistemi temizlemeye çalışır ve yeniden sağlama için uygun hale getirin. Aşağıdaki işlem şunları siler:
+* Yardım: desteklenen komutları ve bayrakları listeler.
+* sağlamayı kaldırma: sistemi temizlemeyi deneyin ve yeniden sağlama için uygun hale getirin. Aşağıdaki işlem şunları siler:
   
   * Tüm SSH ana bilgisayar anahtarları (sağlama. RegenerateSshHostKeyPair, yapılandırma dosyasında ' y ' ise)
   * /Etc/resolv.exe içindeki nameserver yapılandırması
@@ -125,11 +125,11 @@ Kaynaktan veya özel konumlara veya öneklere yükleme gibi gelişmiş yükleme 
 > 
 > 
 
-* sağlamayı kaldırma + Kullanıcı: Her şeyi dedeme (yukarıdaki) olarak gerçekleştirir ve ayrıca, sağlanan son kullanıcı hesabını (/var/lib/waagent 'ten alınan) ve ilişkili verileri de siler. Bu parametre, önceden Azure üzerinde daha önce temin edilen bir görüntünün sağlanması ve yeniden kullanılması olabilir.
-* Sürüm: Waagent sürümünü görüntüler
-* seri konsol: TtyS0 (ilk seri bağlantı noktası) önyükleme konsolu olarak işaretlemek için GRUB 'yi yapılandırır. Bu, çekirdek önyükleme günlüklerinin seri bağlantı noktasına gönderilmesini ve hata ayıklama için kullanılabilir hale gelmesini sağlar.
-* inin Platformla etkileşimi yönetmek için waagent 'ı bir daemon olarak çalıştırın. Bu bağımsız değişken waagent Init betiğine waagent için belirtilir.
-* başından Waagent 'ı arka plan işlemi olarak çalıştır
+* sağlamayı kaldırma + Kullanıcı: her şeyi dedeme (yukarıdaki) gerçekleştirir ve ayrıca, sağlanan son kullanıcı hesabını (/var/lib/waagent 'tan alınan) ve ilişkili verileri de siler. Bu parametre, önceden Azure üzerinde daha önce temin edilen bir görüntünün sağlanması ve yeniden kullanılması olabilir.
+* Sürüm: waagent sürümünü görüntüler
+* serialconsole: ttyS0 (ilk seri bağlantı noktası) önyükleme konsolu olarak işaretlemesi için GRUB 'yi yapılandırır. Bu, çekirdek önyükleme günlüklerinin seri bağlantı noktasına gönderilmesini ve hata ayıklama için kullanılabilir hale gelmesini sağlar.
+* Daemon: platformla etkileşimi yönetmek için waagent 'ı bir daemon olarak çalıştırın. Bu bağımsız değişken waagent Init betiğine waagent için belirtilir.
+* Başlat: waagent 'ı arka plan işlemi olarak çalıştır
 
 ## <a name="configuration"></a>Yapılandırma
 Yapılandırma dosyası (/etc/waagent.exe) waagent 'un eylemlerini denetler. Aşağıda örnek bir yapılandırma dosyası gösterilmektedir:
@@ -170,7 +170,7 @@ Default: y
 Bu, kullanıcının aracıdaki sağlama işlevini etkinleştirmesine veya devre dışı bırakmasına olanak sağlar. Geçerli değerler şunlardır "y" veya "n". Sağlama devre dışıysa, görüntüdeki SSH ana bilgisayarı ve Kullanıcı anahtarları korunur ve Azure sağlama API 'sinde belirtilen yapılandırma yok sayılır.
 
 > [!NOTE]
-> Parametresi `Provisioning.Enabled` , sağlama için Cloud-init kullanan Ubuntu bulut görüntülerinde varsayılan olarak "n" değerine sahiptir.
+> `Provisioning.Enabled` parametresi, sağlama için Cloud-init kullanan Ubuntu bulut görüntülerinde varsayılan olarak "n" değerine sahiptir.
 > 
 > 
 
@@ -343,6 +343,6 @@ Ubuntu bulut görüntüleri, aksi takdirde Azure Linux Aracısı tarafından yö
 
 * Daha fazla bilgi için, kaynak diski bağlama noktasını yapılandırmak ve sağlama sırasında Ubuntu bulut görüntülerinde alanı değiştirmek için aşağıdaki kaynaklara bakın:
   
-  * [Ubuntu wiki: Takas bölümlerini yapılandırma](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu wiki: takas bölümlerini yapılandırma](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Özel verileri bir Azure sanal makinesine ekleme](../windows/classic/inject-custom-data.md)
 

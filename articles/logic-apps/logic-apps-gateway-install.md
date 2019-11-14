@@ -9,20 +9,20 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 6daf9351e48603824aa6cec30adb4a6b82349784
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ef46fce8609119777ef73cbe189d7a8ace662c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049034"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076930"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidini yükler
 
 [Azure Logic Apps 'den şirket içi veri kaynaklarına bağlanabilmeniz için](../logic-apps/logic-apps-gateway-connection.md), Şirket [içi veri ağ geçidini](https://aka.ms/on-premises-data-gateway-installer) yerel bir bilgisayara indirip yükleyin. Ağ Geçidi, şirket içi ve mantıksal uygulamalarınızın veri kaynakları arasında hızlı veri aktarımı ve şifreleme sağlayan bir köprü olarak çalışmaktadır. Aynı ağ geçidi yüklemesini Power BI, güç otomatikleştirme, Power Apps ve Azure Analysis Services gibi diğer bulut hizmetleriyle kullanabilirsiniz. Bu hizmetlerle ağ geçidini kullanma hakkında daha fazla bilgi için şu makalelere bakın:
 
-* [Microsoft Power BI şirket içi veri ağ geçidi](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Microsoft Power Apps şirket içi veri ağ geçidi](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Şirket içi veri ağ geçidini güç otomatikleştirme](/power-automate/gateway-reference)
+* [Microsoft Power otomatikleştirir şirket içi veri ağ geçidi](/power-automate/gateway-reference)
+* [Microsoft Power BI şirket içi veri ağ geçidi](/power-bi/service-gateway-onprem)
+* [Microsoft Power Apps şirket içi veri ağ geçidi](/powerapps/maker/canvas-apps/gateway-reference)
 * [Şirket içi veri ağ geçidini Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
 
 Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işlemlerinin yanı sıra Azure Logic Apps ' dan şirket içi veri kaynaklarına erişebilirsiniz. Bu konunun ilerleyen kısımlarında [Data Gateway 'in nasıl çalıştığı](#gateway-cloud-service) hakkında daha fazla bilgi edinebilirsiniz. Ağ Geçidi hakkında daha fazla bilgi için bkz. [Şirket içi ağ geçidi](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)nedir?

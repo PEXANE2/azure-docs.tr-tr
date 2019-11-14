@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 5cf4689534a813d778c25a7a712b983aafe6f5a9
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 41e1228d127ddbbf0749036fc6f0129da1208bc7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881594"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077129"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -32,7 +32,7 @@ Yaşam döngüsünün erken aşamaları sırasında, ancak iki hafta sonra zaman
 
 ## <a name="storage-account-support"></a>Depolama hesabı desteği
 
-Yaşam döngüsü yönetimi ilkesi Genel Amaçlı v2 (GPv2) hesapları, BLOB depolama hesapları ve Premium Blok Blob depolama hesapları ile kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).  
+Yaşam döngüsü yönetimi ilkesi Genel Amaçlı v2 (GPv2) hesapları, BLOB depolama hesapları ve Premium Blok Blob depolama hesapları ile kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure Depolama hesabına genel bakış](../common/storage-account-overview.md).  
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -46,7 +46,7 @@ Yaşam döngüsü yönetimi özelliği tüm Azure bölgelerinde kullanılabilir.
 
 Aşağıdaki yöntemlerden birini kullanarak bir ilkeyi ekleyebilir, düzenleyebilir veya kaldırabilirsiniz:
 
-* [Azure portalda](https://portal.azure.com)
+* [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [REST API'leri](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
@@ -65,7 +65,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 
 #### <a name="azure-portal-list-view"></a>Azure portal liste görünümü
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **Tüm kaynaklar** ' ı seçin ve ardından depolama hesabınızı seçin.
 
@@ -86,7 +86,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 9. Yeni ilkeyi eklemek için **Ekle** ' yi seçin.
 
 #### <a name="azure-portal-code-view"></a>Azure portal kod görünümü
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **Tüm kaynaklar** ' ı seçin ve ardından depolama hesabınızı seçin.
 
@@ -230,12 +230,12 @@ Yaşam döngüsü yönetimi ilkesi, bir JSON belgesindeki kuralların koleksiyon
 
 İlke içindeki her bir kural birkaç parametreye sahiptir:
 
-| Parametre adı | Parametre türü | Notlar | Gereklidir |
+| Parametre adı | Parametre türü | Notlar | Gerekli |
 |----------------|----------------|-------|----------|
-| `name`         | Dize |Bir kural adı en fazla 256 alfasayısal karakter içerebilir. Kural adı büyük/küçük harfe duyarlıdır.  Bir ilke içinde benzersiz olmalıdır. | Doğru |
-| `enabled`      | Boole | Bir kuralın geçici olarak devre dışı bırakılması için isteğe bağlı bir Boole değeri. Ayarlanmamışsa varsayılan değer true 'dur. | Yanlış | 
-| `type`         | Sabit listesi değeri | Geçerli geçerli tür `Lifecycle`. | Doğru |
-| `definition`   | Yaşam döngüsü kuralını tanımlayan bir nesne | Her tanım bir filtre kümesinden ve bir eylem kümesinden oluşur. | Doğru |
+| `name`         | Dize |Bir kural adı en fazla 256 alfasayısal karakter içerebilir. Kural adı büyük/küçük harfe duyarlıdır.  Bir ilke içinde benzersiz olmalıdır. | True |
+| `enabled`      | Boole | Bir kuralın geçici olarak devre dışı bırakılması için isteğe bağlı bir Boole değeri. Ayarlanmamışsa varsayılan değer true 'dur. | False | 
+| `type`         | Sabit listesi değeri | Geçerli geçerli tür `Lifecycle`. | True |
+| `definition`   | Yaşam döngüsü kuralını tanımlayan bir nesne | Her tanım bir filtre kümesinden ve bir eylem kümesinden oluşur. | True |
 
 ## <a name="rules"></a>Kurallar
 
@@ -299,7 +299,7 @@ Yaşam döngüsü yönetimi, Blobları ve silme işlemini ve BLOB anlık görün
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Şu anda sık erişimli bir katmanda blob 'ları destekle         | Desteklenmiyor |
 | tierToArchive | Şu anda sık erişimli veya seyrek erişimli bir katmanda blob 'ları destekleme | Desteklenmiyor |
-| delete        | Desteklenen                                   | Desteklenen     |
+| delete        | Destekleniyor                                   | Destekleniyor     |
 
 >[!NOTE]
 >Aynı blob üzerinde birden fazla eylem tanımlarsanız, yaşam döngüsü yönetimi Blobun en az maliyetli eylemi uygular. Örneğin eylem `delete`, eylem `tierToArchive`göre daha ucuz. Eylem `tierToArchive` `tierToCool`eylem.
@@ -431,6 +431,9 @@ Düzenli aralıklarla değiştirilen ve erişilen veriler için, anlık görünt
 
 **Yeni bir ilke oluşturdum, neden eylemler hemen çalıştırılmadı?**  
 Platform yaşam döngüsü ilkesini günde bir kez çalıştırır. Bir ilkeyi yapılandırdıktan sonra, bazı eylemlerin ilk kez çalışması 24 saate kadar sürebilir.  
+
+**Mevcut bir ilkeyi güncelleştirdiğimde, eylemlerin çalışması ne kadar sürer?**  
+Güncelleştirilmiş ilkenin etkili olması 24 saate kadar sürer. İlke etkin olduktan sonra, eylemlerin çalışması 24 saate kadar sürebilir. Bu nedenle, ilkenin yürütülmesi 48 saat kadar sürebilir.   
 
 **Arşivlenmiş bir blobu el ile yeniden aldım, bunun arşiv katmanına geçici olarak geri taşınmasını nasıl önleyebilirim?**  
 Bir blob bir erişim katmanından diğerine taşındığında, son değiştirilme zamanı değişmez. Arşivlenmiş bir blobu sık erişimli katmana el ile yeniden alırsanız, yaşam döngüsü yönetim altyapısı tarafından arşiv katmanına geri taşınır. Yeniden arşivlenmesini engellemek için bu blobu geçici olarak etkileyen kuralı devre dışı bırakın. Blob güvenli bir şekilde arşiv katmanına geri taşınabileceği zaman kuralı yeniden etkinleştirin. Blob 'u, etkin veya seyrek erişimli katmanda kalıcı olarak kalması gerekiyorsa başka bir konuma da kopyalayabilirsiniz.

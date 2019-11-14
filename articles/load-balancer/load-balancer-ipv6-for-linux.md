@@ -1,7 +1,7 @@
 ---
 title: Linux Vm'leri için DHCPv6'ı yapılandırma
 titlesuffix: Azure Load Balancer
-description: Linux Vm'leri için DHCPv6 yapılandırma
+description: Bu makalede, Linux VM 'Leri için DHCPv6 yapılandırma hakkında bilgi edinin.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: 3e987b6718ead6b7014ec302d1a186dabef11126
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1eea6d71b06bac47dcc4fdca9302ee937e0fd54d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274923"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077042"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Linux Vm'leri için DHCPv6'ı yapılandırma
 
@@ -64,7 +64,7 @@ Lütfen yapılandırmanızda her Ethernet arabirimi için bir *dhcp6: true* ifad
             eno1:
               dhcp6: true
 
-Erken önyükleme sırasında, Netplan "ağ Oluşturucusu", bir yandan, NETPLAN https://netplan.io/reference ile Ilgili başvuru bilgileri için belirtilen ağ Daemon 'e cihazların denetimini bırakma
+Erken önyükleme sırasında, Netplan "ağ Oluşturucu", bir yandan, NETPLAN ile ilgili başvuru bilgileri Için belirtilen ağ Daemon 'a cihaz denetimini el ile almak için yapılandırmayı bir şekilde yazar. https://netplan.io/reference.
  
 ## <a name="debian"></a>Debian
 

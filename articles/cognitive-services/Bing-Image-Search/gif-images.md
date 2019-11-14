@@ -1,7 +1,7 @@
 ---
 title: Bing Resim Arama API'si kullanarak GIF görüntülerini arama
 titleSuffix: Azure Cognitive Services
-description: Web genelinde. gif görüntülerini aramak için Bing Resim Arama API'si kullanın.
+description: Bing Resim Arama API'si, en ilgili. gif görüntülerinin tüm web genelinde arama yapmanızı sağlar.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a8c9afa618df468e038c80f72713b12c7f6ee226
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ad33b5a28728a8e7f9c0a70ff81ea5a9e65624bd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882285"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072651"
 ---
 # <a name="search-for-gif-images"></a>GIF görüntülerini arama 
 
@@ -26,7 +26,7 @@ Aşağıdaki URL, animasyonlu. gif görüntüleri için bir sorgudur.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 ```
-[Q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) parametresi arama koşullarını belirtir.  Önceki sorgu, `animatedGif` [ImageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) filtre parametresini kullanmayı da belirtir.
+[Q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) parametresi arama koşullarını belirtir.  Önceki sorgu de [ImageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) filtre parametresini kullanarak `animatedGif` belirtir.
 
 Sonuçların örneklerini görmek için, bing.com aramak için aşağıdaki URL 'YI kullanın.
 ```
@@ -42,7 +42,7 @@ Sorgu parametreleri ve seçenekleri hakkında daha fazla bilgi için [resım ara
 - [MaxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) ve [minfilesize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) parametrelerini belirtebilirsiniz. Dizinimizde bulunan GIF sayısının çoğunluğunun 2 MB 'ın altında olduğundan, maxFileSize = 2000000 ayarlamayı öneririz.  Bu ayrıca bant genişliği sorun olduğunda (örneğin, mobil hücresel senaryolarda) veri boyutunu denetlemeye yardımcı olur.
 - Algılanan performansı artırmaya yardımcı olmak için, kaynak URL yüklemeden önce küçük resmi yükleyin.  
 - Henüz bir Kullanıcı sorgunuz olmayan ilk çalıştırma veya giriş sayfası deneyiminde, [popüler RESIMLER API](trending-images.md)'sinden yardım almak için popüler GIF aramalarımızı kullanmayı deneyin.
-- [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) parametresinin üç ayarı vardır.  `strict` Seçeneği yetişkinlere yönelik içeriği engeller.
+- [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) parametresinin üç ayarı vardır.  `strict` seçeneği yetişkinlere yönelik içeriği engeller.
 - Desteklenen dillerin ve konumların tam listesi için bkz. [Mkt](supported-countries-markets.md) .
 - *Animatedgıhttps* yalnızca bir https adresinden gelen animasyonlu GIF görüntülerini döndürür. Güvenlik için birçok uygulamanın HTTPS üzerinden dış Web bağlantılarına bağlantısı olması gerekir. Örneğin, Apple App Store, iletim sırasında kullanıcı verilerini güvenli şekilde şifreleyen HTTPS üzerinden Web hizmetlerine bağlantı gerektirir.
 
@@ -50,7 +50,7 @@ Sorgu parametreleri ve seçenekleri hakkında daha fazla bilgi için [resım ara
 
 ## <a name="example-search-for-animated-gif-using-java"></a>Java kullanarak animasyonlu GIF için örnek arama
 
-Aşağıdaki URL, animasyonlu. gif görüntülerini arar:`q=interesting`
+Aşağıdaki URL animasyonlu. gif görüntülerini arar: `q=interesting`
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 

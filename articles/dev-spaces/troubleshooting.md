@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 0afdc0ac246e4cacbd4f45cca36c3c57b1c26e02
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5d327dd1041172bc546b2e0cb5ec3a140f401d84
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005985"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072202"
 ---
 # <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
 
@@ -94,9 +94,13 @@ azure-cli                         2.0.60 *
 
 Bu sorunu onarmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) yüklemenizi 2.0.63 veya üzeri bir sürüme güncelleştirin. Bu güncelleştirme, `az aks use-dev-spaces`çalıştırılırken aldığınız hata mesajını çözmeyecektir. Alternatif olarak, geçerli Azure CLı sürümünüzü ve Azure Dev Spaces CLı 'yi kullanmaya devam edebilirsiniz.
 
-### <a name="aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>API sunucusu yetkilendirilmiş IP adresi aralıkları etkin olan AKS kümeleri
+### <a name="error-unable-to-reach-kube-apiserver"></a>Hata "Kuto-apiserver 'e ulaşılamıyor"
 
-AKS kümeniz için etkinleştirilmiş [API sunucusu YETKILENDIRILMIŞ IP adresi aralıkları](../aks/api-server-authorized-ip-ranges.md) varsa, [bölgeniz temelinde ek aralıklara izin vermek](https://github.com/Azure/dev-spaces/tree/master/public-ips)için kümenizi [oluşturmanız](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) ya da [güncelleştirmeniz](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) gerekir.
+Azure Dev Spaces AKS kümenizin API sunucusuna bağlanamadığınızda bu hatayla karşılaşabilirsiniz. 
+
+AKS kümesi API sunucunuza erişim kilitliyse veya AKS kümeniz için etkinleştirilmiş [API sunucusu YETKILENDIRILMIŞ IP adresi aralıklarına](../aks/api-server-authorized-ip-ranges.md) sahipseniz, [bölgeniz temelinde ek aralıklara izin vermek](https://github.com/Azure/dev-spaces/tree/master/public-ips)için kümenizi [oluşturmanız](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) veya [güncelleştirmeniz](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) gerekir.
+
+Kubectl komutlarını çalıştırarak API sunucusunun kullanılabilir olduğundan emin olun. API sunucusu kullanılamıyorsa, lütfen AKS desteğiyle iletişim kurun ve API sunucusu çalışırken yeniden deneyin.
 
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Projenizi Azure Dev Spaces hazırlarken yaygın sorunlar
 

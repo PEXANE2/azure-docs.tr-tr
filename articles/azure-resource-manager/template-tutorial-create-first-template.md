@@ -1,28 +1,28 @@
 ---
-title: Öğretici-ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma
-description: İlk Azure Resource Manager şablonunuzu oluşturma adımlarını açıklar. Şablon dosyası söz dizimi ve depolama hesabının nasıl dağıtılacağı hakkında bilgi edinirsiniz.
+title: Öğretici-Azure Resource Manager şablonu oluşturma & dağıtma
+description: İlk Azure Resource Manager şablonunuzu oluşturun. Öğreticide, şablon dosyası söz dizimi ve depolama hesabı dağıtma hakkında bilgi edineceksiniz.
 author: mumian
 manager: carmonmills
 ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e84c3bfa5a5f43ec652f12d70718ab63bd7a19e5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 463f9a54648a9e6950f839bd856ccf42bc66dca0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029543"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074366"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma
 
-Bu öğreticide, Kaynak Yöneticisi şablonlar sunulmaktadır. Bu, bir başlangıç şablonu oluşturma ve Azure 'a dağıtma işlemlerinin nasıl yapılacağını gösterir. Şablon ve şablonlar ile çalışmak için gereken araçların yapısı hakkında bilgi edineceksiniz. Bu öğreticiyi tamamlamaya yönelik **12 dakika** sürer, ancak gerçek süre, yüklemeniz gereken araç sayısına göre değişir.
+Bu öğreticide, Azure Resource Manager şablonlar sunulmaktadır. Bu, bir başlangıç şablonu oluşturma ve Azure 'a dağıtma işlemlerinin nasıl yapılacağını gösterir. Şablon ve şablonlar ile çalışmak için gereken araçların yapısı hakkında bilgi edineceksiniz. Bu öğreticiyi tamamlamaya yönelik **12 dakika** sürer, ancak gerçek süre, yüklemeniz gereken araç sayısına göre değişir.
 
 Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, bir Kaynak Yöneticisi şablonunun tüm temel parçalarını araştırana kadar başlangıç şablonunu adım adım değiştirirsiniz. Bu öğeler çok daha karmaşık şablonlar için yapı taşlarıdır. Kendi şablonlarınızı oluşturduğunuz ve dağıtımlarınızı şablonlarla otomatik hale getirmeye hazırlamış olduğunuz serinin sonunu umuyoruz.
 
 Şablon kullanmanın avantajları hakkında bilgi edinmek istiyorsanız ve şablonları ile dağıtımı otomatikleştirmeniz gerekiyorsa, bkz. [Azure Resource Manager şablonları](template-deployment-overview.md).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="get-tools"></a>Araçları al
 
@@ -77,7 +77,7 @@ Tamam, şablonlar hakkında öğrenmeye başlamaya hazırsınız.
 
 Tebrikler, ilk şablonunuzu oluşturdunuz.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Azure PowerShell/Azure CLı ile çalışmaya başlamak için Azure kimlik bilgilerinizle oturum açın.
 
@@ -142,7 +142,7 @@ az group deployment create \
 
 ---
 
-Dağıtım komutu sonuçları döndürür. Dağıtımın başarılı olup olmadığını görmek için `ProvisioningState` ' a bakın.
+Dağıtım komutu sonuçları döndürür. Dağıtımın başarılı olup olmadığını görmek için `ProvisioningState` bakın.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -158,7 +158,7 @@ Dağıtım komutu sonuçları döndürür. Dağıtımın başarılı olup olmad�
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Sol menüden **kaynak grupları**' nı seçin.
 

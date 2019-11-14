@@ -1,5 +1,5 @@
 ---
-title: Azure 'da genelleştirilmiş bir VM 'nin yönetilmeyen görüntüsünü oluşturma | Microsoft Docs
+title: Azure 'da genelleştirilmiş bir VM 'nin yönetilmeyen görüntüsünü oluşturma
 description: Azure 'da bir VM 'nin birden çok kopyasını oluşturmak için kullanılan genelleştirilmiş bir Windows sanal makinesinin yönetilmeyen bir görüntüsünü oluşturun.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: b0277e07f67b3f9124dc0e27b20e3d49e0d2f6e9
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f25968fb74f0f10b1d498866c036dd04d4d5d134
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749203"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073387"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Azure VM 'den yönetilmeyen VM görüntüsü oluşturma
 
@@ -47,7 +47,7 @@ Ayrıca, `sudo waagent -deprovision+user` kullanarak bir Linux sanal makinesini 
 2. Yönetici olarak Komut İstemi penceresini açın. Dizini **%windir%\system32\sysprep**olarak değiştirip `sysprep.exe`çalıştırın.
 3. **Sistem Hazırlama Aracı** iletişim kutusunda  **Sistem İlk Çalıştırma Deneyimi (OOBE) Moduna Gir**'i seçin ve **Genelleştir** onay kutusunun seçili olduğundan emin olun.
 4. **Kapalı seçenekleri**' nde, **kapatır**' ı seçin.
-5. **Tamam** düğmesine tıklayın.
+5. **OK (Tamam)** düğmesine tıklayın.
    
     ![Sysprep 'ı Başlat](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep tamamlandığında, sanal makineyi kapatır. 

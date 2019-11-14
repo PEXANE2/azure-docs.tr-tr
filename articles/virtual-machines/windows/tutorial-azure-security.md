@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure’da Windows VM’ler için Azure Güvenlik Merkezi’ni kullanma | Microsoft Docs
+title: Öğretici-Azure 'da Windows VM 'Leri için Azure Güvenlik Merkezi 'Ni kullanma
 description: Bu öğreticide, Azure’da Windows sanal makinelerinizi korumaya ve güvenliğini sağlamaya yardımcı olmak için Azure Güvenlik Merkezi özelliklerini öğreneceksiniz.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e65e9670facdfcbf9d1aac04fa25ee53996a9c4b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6b763d08dc898566bfe0d7a28bf6471d4edf4c59
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100303"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064947"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Öğretici: Windows sanal makinelerini izlemek için Azure Güvenlik Merkezi 'ni kullanma
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Öğretici: Windows sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
 
 Azure Güvenlik Merkezi, Azure kaynak güvenliği uygulamalarınıza yönelik görünürlük elde etmenize yardımcı olabilir. Güvenlik Merkezi, tümleşik güvenlik izleme işlevi sunar. Gözden kaçabilecek tehditleri algılayabilir. Bu öğreticide, Azure Güvenlik Merkezi hakkında bilgi edinecek ve aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
