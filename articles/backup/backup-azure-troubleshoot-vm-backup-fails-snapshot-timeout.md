@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: b344af71eac04cc355ba157e18d9de9d84a9cc63
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 50db82206bbc0b98dcc80bd504022799011697d4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969077"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074129"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -29,7 +29,7 @@ Bu makalede, VM Aracısı ve uzantısıyla iletişim ile ilgili Azure Backup hat
 
 Azure VM Aracısı durdurulmuş, süresi geçmiş, tutarsız durumda veya yüklü değil ve Azure Backup hizmetinin anlık görüntüleri tetiklemesine engel olabilir.  
 
-- VM Aracısı durdurulmuşsa veya tutarsız bir durumdaysa **aracıyı yeniden başlatın** ve yedekleme işlemini yeniden deneyin (geçici yedeklemeyi deneyin). Aracıyı yeniden başlatma adımları için bkz. [Windows VM 'leri](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) veya [Linux VM 'leri](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).
+- VM Aracısı durdurulmuşsa veya tutarsız bir durumdaysa **aracıyı yeniden başlatın** ve yedekleme işlemini yeniden deneyin (isteğe bağlı yedeklemeyi deneyin). Aracıyı yeniden başlatma adımları için bkz. [Windows VM'leri](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) veya [Linux VM'leri](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).
 - VM Aracısı yüklü değilse veya güncel değilse, VM aracısını yükleyip güncelleştirin ve yedekleme işlemini yeniden deneyin. Aracıyı yüklemeye/güncelleştirmeye yönelik adımlar için bkz. [Windows VM 'leri](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) veya [Linux VM 'leri](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError-anlık görüntü durumu için VM aracısıyla iletişim kurulamadı
@@ -58,7 +58,7 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 Önerilen eylem:<br>
 Bu sorunu çözmek için VM 'nin kaynak grubundaki kilidi kaldırın ve temizleme işlemini tetiklemek için işlemi yeniden deneyin.
 > [!NOTE]
-> Yedekleme hizmeti, geri yükleme noktası koleksiyonunu depolamak için VM 'nin kaynak grubundan farklı bir kaynak grubu oluşturur. Müşteriler, yedekleme hizmeti tarafından kullanılmak üzere oluşturulan kaynak grubunu kilitlemez. Yedekleme hizmeti tarafından oluşturulan kaynak grubunun adlandırma biçimi: AzureBackupRG_`<Geo>`_`<number>` örn: AzureBackupRG_northeurope_1
+> Yedekleme hizmeti, geri yükleme noktası koleksiyonunu depolamak için VM 'nin kaynak grubundan farklı bir kaynak grubu oluşturur. Müşteriler, yedekleme hizmeti tarafından kullanılmak üzere oluşturulan kaynak grubunu kilitlemez. Yedekleme hizmeti tarafından oluşturulan kaynak grubunun adlandırma biçimi: AzureBackupRG_`<Geo>`_`<number>` örn. AzureBackupRG_northeurope_1
 
 **1. Adım: [kilidi geri yükleme noktası kaynak grubundan kaldırma](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **2. Adım: [geri yükleme noktası koleksiyonunu Temizleme](#clean_up_restore_point_collection)**<br>
@@ -213,7 +213,7 @@ VMSnapshot uzantısını yeniden yüklemeye zorlamak için uzantıyı kaldırın
 Uzantıyı kaldırmak için:
 
 1. [Azure Portal](https://portal.azure.com/), yedekleme hatası yaşayan VM 'ye gidin.
-2. **Ayarlar**' ı seçin.
+2. Seçin **ayarları**.
 3. **Uzantılar**'ı seçin.
 4. **VMSnapshot uzantısını**seçin.
 5. **Kaldır**' ı seçin.
@@ -224,7 +224,7 @@ Bu adımların tamamlanması, uzantının bir sonraki yedekleme sırasında yeni
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Kurtarma noktası kaynak grubundan kilidi kaldır
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Tüm kaynaklar seçeneğine**gidin, aşağıdaki biçimdeki geri yükleme noktası koleksiyonu kaynak grubunu seçin AzureBackupRG_`<Geo>`_`<number>`.
 3. **Ayarlar** bölümünde, kilitleri göstermek için **kilitler** ' ı seçin.
 4. Kilidi kaldırmak için üç noktayı seçin ve **Sil**' e tıklayın.
@@ -239,22 +239,22 @@ VM 'nin veya VM 'nin kaynak grubunu silerseniz, yönetilen disklerin anlık geri
 
 Geri yükleme noktalarını temizlemek için yöntemlerden birini izleyin:<br>
 
-- [Geçici yedekleme çalıştırarak geri yükleme noktası koleksiyonunu temizle](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+- [İsteğe bağlı yedekleme çalıştırarak geri yükleme noktası koleksiyonunu Temizleme](#clean-up-restore-point-collection-by-running-on-demand-backup)<br>
 - [Geri yükleme noktası koleksiyonunu Azure portal temizle](#clean-up-restore-point-collection-from-azure-portal)<br>
 
-#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Geçici yedekleme çalıştırarak geri yükleme noktası koleksiyonunu temizle
+#### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>İsteğe bağlı yedekleme çalıştırarak geri yükleme noktası koleksiyonunu Temizleme
 
-Kilidi kaldırdıktan sonra, geçici/el ile yedekleme tetikleyin. Bu, geri yükleme noktalarının otomatik olarak temizlendiğinden emin olur. Bu geçici/el ile işlemin ilk kez başarısız olmasını bekler; Ancak, geri yükleme noktalarını el ile silmek yerine otomatik temizlemeyi sağlayacaktır. Temizleme sonrasında bir sonraki zamanlanmış yedeklemeniz başarılı olmalıdır.
+Kilidi kaldırdıktan sonra isteğe bağlı yedekleme tetikleyin. Bu, geri yükleme noktalarının otomatik olarak temizlendiğinden emin olur. Bu isteğe bağlı işlemin ilk kez başarısız olmasını bekler; Ancak, geri yükleme noktalarını el ile silmek yerine otomatik temizlemeyi sağlayacaktır. Temizleme sonrasında bir sonraki zamanlanmış yedeklemeniz başarılı olmalıdır.
 
 > [!NOTE]
-> Otomatik Temizleme, geçici/el ile yedeklemenin tetiklenmesi için birkaç saat sonra gerçekleşecektir. Zamanlanmış yedeğiniz hala başarısız olursa, [burada](#clean-up-restore-point-collection-from-azure-portal)listelenen adımları kullanarak geri yükleme noktası koleksiyonunu el ile silmeyi deneyin.
+> İsteğe bağlı yedeklemeyi tetiklemenin birkaç saati sonrasında otomatik temizleme gerçekleşecektir. Zamanlanmış yedeğiniz hala başarısız olursa, [burada](#clean-up-restore-point-collection-from-azure-portal)listelenen adımları kullanarak geri yükleme noktası koleksiyonunu el ile silmeyi deneyin.
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Geri yükleme noktası koleksiyonunu Azure portal temizle <br>
 
 Kaynak grubundaki kilit nedeniyle temizlenmemiş geri yükleme noktaları koleksiyonunu el ile temizlemek için aşağıdaki adımları deneyin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
-2. **Hub** menüsünde, **tüm kaynaklar**' a tıklayın, kaynak grubunu aşağıdaki biçimde seçin AzureBackupRG_`<Geo>`_`<number>` ve sanal makinenizin bulunduğu yer.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+2. **Hub** menüsünde **tüm kaynaklar**' a tıklayın, aşağıdaki biçime sahip kaynak grubunu seçin AZUREBACKUPRG_`<Geo>`_`<number>` sanal makinenizin bulunduğu yer.
 
     ![Kilidi Sil](./media/backup-azure-arm-vms-prepare/resource-group.png)
 

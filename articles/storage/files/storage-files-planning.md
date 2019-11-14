@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 33fa474d719ec8a20142f35f56cc697c11e03e86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0dd2ca35453859dcc16ef78ef4845a4198aad95
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926625"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066354"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
-[Azure dosyaları](storage-files-introduction.md) , bulutta ENDÜSTRI standardı SMB protokolü aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosyaları tam olarak yönetildiğinden, üretim senaryolarında dağıtmak bir dosya sunucusu veya NAS cihazını dağıtmaktan ve yönetmekten çok daha kolaydır. Bu makalede, kuruluşunuzda üretim kullanımı için bir Azure dosya paylaşımının dağıtılmasında dikkate alınması gereken konular ele alınmaktadır.
+[Azure dosyaları](storage-files-introduction.md) tam olarak yönetilen dosya paylaşımları endüstri standardı SMB protokolünü erişilebilen bulutta sunar. Azure dosyaları tam olarak yönetildiğinden, üretim senaryolarında dağıtmak bir dosya sunucusu veya NAS cihazını dağıtmaktan ve yönetmekten çok daha kolaydır. Bu makalede, kuruluşunuzda üretim kullanımı için bir Azure dosya paylaşımının dağıtılmasında dikkate alınması gereken konular ele alınmaktadır.
 
 ## <a name="management-concepts"></a>Yönetim kavramları
 
@@ -124,7 +124,7 @@ Aşağıdaki tabloda sağlanan paylaşma boyutları için bu formüle birkaç ö
 |---------|---------|---------|---------|---------|
 |100         | 100     | 300 kadar     | 66   | 44   |
 |500         | 500     | 1\.500 kadar   | 90   | 60   |
-|1\.024       | 1\.024   | 3\.072 kadar   | 122   | 81   |
+|1,024       | 1,024   | 3\.072 kadar   | 122   | 81   |
 |5\.120       | 5\.120   | 15.360 kadar  | 368   | 245   |
 |10.240      | 10.240  | 30.720 kadar  | 675 | 450   |
 |33.792      | 33.792  | 100.000 kadar | 2\.088 | 1\.392   |
@@ -169,7 +169,7 @@ Aşağıdaki bölümlerde, farklı artıklık seçenekleri arasındaki farklar a
 
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
-### <a name="geo-redundant-storage"></a>Coğrafi Olarak Yedekli Depolama
+### <a name="geo-redundant-storage"></a>Coğrafi olarak yedekli depolama
 
 > [!Warning]  
 > Azure dosya paylaşımınızı bir GRS depolama hesabında bulut uç noktası olarak kullanıyorsanız, depolama hesabı yük devretmesini başlatmamanız gerekir. Bunun yapılması eşitlemenin durmasına neden olur ve yeni katmanlı dosyalar söz konusu olduğunda beklenmedik veri kaybına neden olabilir. Azure bölgesinin kaybedilmesi durumunda, Microsoft, depolama hesabı yük devretmesini Azure Dosya Eşitleme ile uyumlu bir şekilde tetikleyecektir.
@@ -205,17 +205,21 @@ Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir
 
 |Bölge |Desteklenen artıklık |
 |-------|---------|
-|Doğu Avustralya |LRS     |
-|Güneydoğu Avustralya|LRS |
-|Kanada Orta  |LRS     |
+|Avustralya Doğu |LRS     |
+|Avustralya Güneydoğu|LRS |
+|Orta Kanada  |LRS     |
+|Doğu Kanada     |LRS     |
 |Orta Hindistan  |LRS     |
+|Orta ABD *   |LRS     |
 |Doğu Asya      |LRS     |
 |Doğu ABD *        |LRS     |
+|Doğu ABD 2 *      |LRS     |
 |Fransa Orta |LRS, ZRS|
 |Fransa Güney   |LRS     |
+|Kuzey Avrupa   |LRS     |
 |Güney Hindistan    |LRS     |
 |Güneydoğu Asya |LRS, ZRS|
-|Orta Batı ABD|LRS     |
+|Batı Orta ABD|LRS     |
 |Batı Avrupa *    |LRS, ZRS|
 |Batı ABD *        |LRS     |
 |Batı ABD 2      |LRS, ZRS|

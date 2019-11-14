@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Windows VM 'leriniz için zamanlanmış olayları izleme | Microsoft Docs
+title: Azure 'da Windows VM 'leriniz için zamanlanmış olayları izleme
 description: Zamanlanan olaylar için Azure sanal makinelerinizi izlemeyi öğrenin.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: d090fb52beb266f006e69688c09f66412f1fe8c2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1cda07c18e4f5ef2a8c00b6a275f22ecc0935751
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376207"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073306"
 ---
 # <a name="monitoring-scheduled-events"></a>İzleme Zamanlanan Olaylar
 
@@ -61,7 +61,7 @@ New-AzVm `
 
 [GitHub](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip)'dan projenin yükleme. zip dosyasını indirin.
 
-**Mycollectorvm** ' ye bağlanın ve. zip dosyasını sanal makineye kopyalayın ve tüm dosyaları ayıklayın. VM 'niz üzerinde bir PowerShell istemi açın. İsteminizi `SchService.ps1` içeren klasöre taşıyın, örneğin: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>` ve hizmeti ayarlayın.
+**Mycollectorvm** ' ye bağlanın ve. zip dosyasını sanal makineye kopyalayın ve tüm dosyaları ayıklayın. VM 'niz üzerinde bir PowerShell istemi açın. İsteminizi `SchService.ps1`içeren klasöre taşıyın, örneğin: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`ve hizmeti ayarlayın.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -81,7 +81,7 @@ Hizmet durumunu doğrulayın ve çalıştığından emin olun.
 .\SchService.ps1 -status  
 ```
 
-Bu `Running` döndürmelidir.
+Bu, `Running`döndürmelidir.
 
 Hizmet artık zamanlanan tüm olaylar için her 10 saniyede bir yoklama başlatacak ve bakımı hızlandırmak için olayları onaylacaktır.  Dondurma, yeniden başlatma, yeniden dağıtma ve preempt, zamanlama olayları tarafından yakalanan olaylardır. Olayı onaylamadan önce bazı azaltmaları tetiklemek için betiği genişletebilirsiniz.
 
@@ -98,7 +98,7 @@ Olaylar zamanlama olay hizmeti tarafından yakalandıktan sonra, olay durumu, ol
 >
 > Ayarladığımızda Windows 'u seçtik, ancak Linux 'ta benzer bir çözüm tasarlayabilirsiniz.
 
-Herhangi bir noktada, `–stop` ve `–remove` anahtarlarını kullanarak zamanlanmış olay hizmetini durdurabilir/kaldırabilirsiniz.
+Herhangi bir noktada, `–stop` ve `–remove`anahtarlarını kullanarak zamanlanmış olay hizmetini durdurabilir/kaldırabilirsiniz.
 
 ## <a name="connect-to-the-workspace"></a>Çalışma alanına bağlan
 
@@ -157,9 +157,9 @@ Olaylar Log Analytics gönderildikten sonra, zamanlama olaylarını aramak için
 
     ![Sorguyu Kaydet](./media/notifications/save-query.png)
 
-1. **Yeni uyarı kuralı**' nı seçin. 
-1. **Kural oluştur** sayfasında, **kaynak**olarak `collectorworkspace` ' i bırakın.
-1. **Koşul**' ın altında, *müşteri günlük araması <login undefined> olduğunda*girişi seçin. **Sinyal mantığını Yapılandır** sayfası açılır.
+1. **Yeni uyarı kuralı**’nı seçin. 
+1. **Kural oluştur** sayfasında, **kaynak**olarak `collectorworkspace` bırakın.
+1. **Koşul**' ın altında, *müşteri günlük araması <login undefined>her seferinde* girişi seçin. **Sinyal mantığını Yapılandır** sayfası açılır.
 1. **Eşik değeri**altında *0* girin ve **bitti**' yi seçin.
 1. **Eylemler**altında **eylem grubu oluştur**' u seçin. **Eylem grubu Ekle** sayfası açılır.
 1. **Eylem grubu adı**' nda, *Myactiongroup*yazın.

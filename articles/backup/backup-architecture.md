@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: e072923c2c8b1d8e5bb281a5bcff992b25289b4d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d914c2988b5f28940021de24dcfe1183c68b15cc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888498"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074359"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -98,10 +98,10 @@ Aşağıdaki tabloda farklı yedekleme türleri için desteklenen özellikler ö
 
 **Özellik** | **Şirket içi Windows Server makineleri (doğrudan)** | **Azure VM 'Leri** | **DPM/MABS ile makineler veya uygulamalar**
 --- | --- | --- | ---
-Kasaya yedekleme | ![Evet][green] | ![Evet][green] | ![Evet][green]
-DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Evet][green]
-Yedekleme için gönderilen verileri sıkıştır | ![Evet][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Evet][green]
-Artımlı yedekleme Çalıştır |![Evet][green] |![Evet][green] |![Evet][green]
+Kasaya yedekleme | ![Yes][green] | ![Yes][green] | ![Yes][green]
+DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Yes][green]
+Yedekleme için gönderilen verileri sıkıştır | ![Yes][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Yes][green]
+Artımlı yedekleme Çalıştır |![Yes][green] |![Yes][green] |![Yes][green]
 Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br/> Yalnızca şirket içinde dağıtılan DPM/MABS sunucuları için.
 
 ![Tablo anahtarı](./media/backup-architecture/table-key.png)
@@ -134,7 +134,7 @@ Azure VM 'lerinin denetim komutlarına internet erişimi olması gerekir. VM iç
     - MARS Aracısı, anlık görüntüyü yakalamak için yalnızca Windows sistem yazma işlemini kullanır.
     - Aracı herhangi bir uygulama VSS yazıcısını kullanmadığından, uygulamayla tutarlı anlık görüntüleri yakalamaz.
 1. VSS ile anlık görüntüyü aldıktan sonra, MARS Aracısı, yedeklemeyi yapılandırdığınız sırada belirttiğiniz önbellek klasöründe bir sanal sabit disk (VHD) oluşturur. Aracı Ayrıca her veri bloğu için sağlama toplamlarını depolar.
-1. Artımlı yedeklemeler, bir geçici yedekleme çalıştırmadığınız takdirde belirttiğiniz zamanlamaya göre çalışır.
+1. Artımlı yedeklemeler, isteğe bağlı yedekleme çalıştırmadığınız takdirde belirttiğiniz zamanlamaya göre çalışır.
 1. Artımlı yedeklemelerde değiştirilen dosyalar tanımlanır ve yeni bir VHD oluşturulur. VHD sıkıştırılır ve şifrelenir ve ardından kasaya gönderilir.
 1. Artımlı yedekleme bittikten sonra, yeni VHD ilk çoğaltmadan sonra oluşturulan VHD ile birleştirilir. Bu birleştirilmiş VHD, devam eden yedekleme için kullanılmak üzere en son durumu sağlar.
 
@@ -148,7 +148,7 @@ Azure VM 'lerinin denetim komutlarına internet erişimi olması gerekir. VM iç
     - DPM/MABS ile yedekleme birimlerini, paylaşımları, dosyaları ve klasörleri koruyabilirsiniz. Ayrıca, bir makinenin sistem durumunu koruyabilir (çıplak) ve uygulama kullanan yedekleme ayarlarıyla belirli uygulamaları koruyabilirsiniz.
 1. DPM/MABS içindeki bir makine ya da uygulama için koruma ayarlarken, kısa vadeli depolama için MABS/DPM yerel diskine ve çevrimiçi koruma için Azure 'a yedeklemeyi seçersiniz. Ayrıca yerel DPM/MABS depolaması için yedeklemenin ne zaman çalışacağını ve Azure 'a çevrimiçi yedeklemenin ne zaman çalışacağını de belirtirsiniz.
 1. Korunan iş yükünün diski, belirttiğiniz zamanlamaya göre yerel MABS/DPM disklerine yedeklenir.
-4. DPM/MABS diskleri, DPM/MABS sunucusunda çalışan MARS Aracısı tarafından kasaya yedeklenir.
+1. DPM/MABS diskleri, DPM/MABS sunucusunda çalışan MARS Aracısı tarafından kasaya yedeklenir.
 
 ![DPM veya MABS tarafından korunan makinelerin ve iş yüklerinin yedeklenmesi](./media/backup-architecture/architecture-dpm-mabs.png)
 

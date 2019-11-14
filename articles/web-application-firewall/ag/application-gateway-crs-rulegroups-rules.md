@@ -1,18 +1,19 @@
 ---
-title: Azure Application Gateway Web uygulaması güvenlik duvarı tüm kural grupları ve kuralları
+title: Yukarı, kural grupları ve kuralları
+titleSuffix: Azure Web Application Firewall
 description: Bu sayfa, Web uygulaması güvenlik duvarı ile ilgili bilgi grupları ve kuralları hakkında bilgiler sağlar.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/31/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 59e4203ca219802a95a09761b90c00a039b47631
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516974"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075368"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web uygulaması güvenlik duvarı, kural grupları ve kuralları
 
@@ -296,7 +297,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 |942251|İçlerini algılar|
 |942260|Temel SQL kimlik doğrulaması atlama girişimlerini algılar 2/3|
 |942270|Temel SQL ekleme için aranıyor. MySQL Oracle ve diğerleri için ortak saldırı dizesi|
-|942280|Postgres pg_sleep ekleme, waitfor gecikme saldırıları ve veritabanı kapatması girişimlerini algılar|
+|942280|Postgres pg_sleep ekleme, waitfor gecikme ve veritabanı kapatması girişimlerini algılar|
 |942290|Temel MongoDB SQL ekleme girişimlerini bulur|
 |942300|MySQL açıklamalarını, koşullarını ve ch (a) r eklemelerini algılar|
 |942310|Zincirleme SQL ekleme girişimlerini algılar 2/2|

@@ -1,7 +1,7 @@
 ---
-title: Azure 'da Load Balancer TCP boşta kalma zaman aşımını yapılandırma
-titlesuffix: Azure Load Balancer
-description: Load Balancer TCP boşta kalma zaman aşımını yapılandırma
+title: Azure 'da yük dengeleyici TCP boşta kalma zaman aşımını yapılandırma
+titleSuffix: Azure Load Balancer
+description: Bu makalede, Azure Load Balancer TCP boşta kalma zaman aşımını nasıl yapılandıracağınızı öğrenin.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: b3df1ead7a3164ffd9a4b4acf8820d0f5b82cee3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 530bfbe85a564b3dd517e14df819586dee332a78
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274177"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076976"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Azure Load Balancer için TCP boşta kalma zaman aşımı ayarlarını yapılandırma
 
@@ -26,7 +26,7 @@ ms.locfileid: "68274177"
 
 Varsayılan yapılandırmasında Azure Load Balancer, 4 dakikalık bir boşta kalma zaman aşımı ayarına sahiptir. İşlem yapılmayan bir süre, zaman aşımı değerinden uzunsa, TCP veya HTTP oturumunun istemci ile bulut hizmetiniz arasında korunduğundan emin olmaz.
 
-Bağlantı kapatıldığında, istemci uygulamanız aşağıdaki hata iletisini alabilir: "Temel alınan bağlantı kapatıldı: Etkin tutulması beklenen bir bağlantı sunucu tarafından kapatıldı. "
+Bağlantı kapalıyken, istemci uygulamanız şu hata iletisini alabilir: "temel alınan bağlantı kapatıldı: etkin tutulması beklenen bir bağlantı sunucu tarafından kapatıldı."
 
 Ortak bir uygulama, TCP etkin tutma özelliğini kullanmaktır. Bu uygulama, bağlantının daha uzun bir süre için etkin kalmasını önler. Daha fazla bilgi için, bkz. bu [.NET örnekleri](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Etkin tut özelliği etkinken, paketler bağlantı üzerinde işlem yapılmayan dönemler sırasında gönderilir. Bu etkin tutma paketleri, boşta kalma zaman aşımı değerine ulaşılmamasını ve bağlantının uzun bir süre boyunca korunmasını güvence altına aldığından emin olur.
 
@@ -113,7 +113,7 @@ Genel IP 'lerde zaman aşımı ayarı için. cscfg değişiklikleri şunlardır:
 
 ## <a name="rest-api-example"></a>REST API örneği
 
-Hizmet yönetimi API 'sini kullanarak TCP boşta kalma zaman aşımını yapılandırabilirsiniz. `x-ms-version` Üstbilginin sürüm veya sonraki bir sürüme `2014-06-01` ayarlandığından emin olun. Bir dağıtımdaki tüm sanal makinelerde, belirtilen yük dengeli giriş uç noktalarının yapılandırmasını güncelleştirin.
+Hizmet yönetimi API 'sini kullanarak TCP boşta kalma zaman aşımını yapılandırabilirsiniz. `x-ms-version` üstbilgisinin sürüm `2014-06-01` veya üzeri olarak ayarlandığından emin olun. Bir dağıtımdaki tüm sanal makinelerde, belirtilen yük dengeli giriş uç noktalarının yapılandırmasını güncelleştirin.
 
 ### <a name="request"></a>İstek
 

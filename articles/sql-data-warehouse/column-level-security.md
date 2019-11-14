@@ -11,16 +11,16 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 34172e313b537d59287a424683ea1555cbba9b99
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 85f705022a0ff5970d30c61206d4f2631254b7ce
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049152"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077099"
 ---
 # <a name="column-level-security"></a>Sütun düzeyinde güvenlik
 Sütun düzeyinde güvenlik (CLS), müşterilerin, Kullanıcı yürütme bağlamına veya grup üyeliğine göre veritabanı tablo sütunlarına erişimi denetlemesine olanak sağlar.
-Aşağıdaki videoya Güncelleştir-Bu videonun gönderildiği [satır düzeyi güvenlik](https://docs.microsoft.com/en-us/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) , SQL Data Warehouse 'da da kullanılabilir. 
+Aşağıdaki videoya Güncelleştir-Bu videonun gönderildiği [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) , SQL Data Warehouse 'da da kullanılabilir. 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
 CLS, uygulamanızdaki güvenliğin tasarımını ve kodlamasını basitleştirir. CLS, hassas verileri korumak için sütun erişimiyle ilgili kısıtlamalar uygulamanıza olanak sağlar. Örneğin, belirli kullanıcıların departmanıyla ilgili bir tablonun yalnızca belirli sütunlarına erişebilmesini sağlama. Erişim kısıtlama mantığı, başka bir uygulama katmanındaki verilerden uzakta değil, veritabanı katmanında bulunur. Veri erişimi herhangi bir katmandan her denendiğinde, veritabanı erişim kısıtlamalarını uygular. Bu kısıtlama, genel güvenlik sisteminizin yüzey alanını azaltarak güvenlik sisteminizi daha güvenilir ve sağlam hale getirir. Ayrıca, CLS, kullanıcıların erişim kısıtlamalarını kullanıcılara sağlamak için sütunları filtrelemeye yönelik görüntüleme gereksinimini ortadan kaldırır.

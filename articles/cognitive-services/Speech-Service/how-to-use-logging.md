@@ -1,7 +1,7 @@
 ---
 title: Konuşma SDK günlüğü-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK 'sında günlüğe kaydetmeyi etkinleştirin.
+description: Konuşma SDK 'sında (C++, C#, Python, amaç-C, Java) günlüğe kaydetmenin nasıl etkinleştirileceği hakkında bilgi edinin.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 31ff21e33860f75d91d01e80e3ee77bd7192f780
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 58f6c97ac819947f84735bc0bc4c125b43db58dc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559484"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075794"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Konuşma SDK 'sında günlüğü etkinleştirme
 
-Dosyaya günlük kaydı, konuşma SDK 'Sı için isteğe bağlı bir özelliktir. Geliştirme günlüğü sırasında, konuşma SDK 'sının temel bileşenlerinden ek bilgi ve Tanılamalar sağlar. Bir konuşma yapılandırma nesnesi üzerindeki özelliği `Speech_LogFilename` günlük dosyasının konumu ve adı olarak ayarlanarak etkinleştirilebilir. Bu yapılandırmadan bir tanıyıcı oluşturulduktan sonra günlüğe kaydetme işlemi Global olarak etkinleştirilir ve daha sonra devre dışı bırakılamaz. Çalışan bir günlüğe kaydetme oturumu sırasında bir günlük dosyasının adını değiştiremezsiniz.
+Dosyaya günlük kaydı, konuşma SDK 'Sı için isteğe bağlı bir özelliktir. Geliştirme günlüğü sırasında, konuşma SDK 'sının temel bileşenlerinden ek bilgi ve Tanılamalar sağlar. Konuşma yapılandırma nesnesindeki `Speech_LogFilename` özellik, günlük dosyasının konumu ve adı olarak ayarlanarak etkinleştirilebilir. Bu yapılandırmadan bir tanıyıcı oluşturulduktan sonra günlüğe kaydetme işlemi Global olarak etkinleştirilir ve daha sonra devre dışı bırakılamaz. Çalışan bir günlüğe kaydetme oturumu sırasında bir günlük dosyasının adını değiştiremezsiniz.
 
 > [!NOTE]
 > JavaScript dışında, desteklenen tüm konuşma SDK 'Sı programlama dillerinde konuşma SDK sürümü 1.4.0 bu yana günlüğe kaydetme kullanılabilir.
 
 ## <a name="sample"></a>Örnek
 
-Günlük dosyası adı bir yapılandırma nesnesi üzerinde belirtilir. Örnek olarak alma ve adında `config`bir örnek oluşturduğunuzu kabul eden: `SpeechConfig`
+Günlük dosyası adı bir yapılandırma nesnesi üzerinde belirtilir. `SpeechConfig` örnek olarak alma ve `config`adında bir örnek oluşturduğunuzu kabul etmek için:
 
 ```csharp
 config.SetProperty(PropertyId.Speech_LogFilename, "LogfilePathAndName");
@@ -51,7 +51,7 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 Config nesnesinden bir tanıyıcı oluşturabilirsiniz. Bu, tüm tanıyıcılar için günlüğe kaydetmeyi etkinleştirir.
 
 > [!NOTE]
-> Yapılandırma nesnesinden bir `SpeechSynthesizer` oluşturursanız, günlük kaydını etkinleştirmez. Ancak günlüğe kaydetme etkinse, ' dan `SpeechSynthesizer`tanılama da alacaksınız.
+> Yapılandırma nesnesinden bir `SpeechSynthesizer` oluşturursanız, günlüğe kaydetme etkinleştirilmeyecektir. Ancak günlüğe kaydetme etkinleştirilirse, `SpeechSynthesizer`tanılamayı da alacaksınız.
 
 ## <a name="create-a-log-file-on-different-platforms"></a>Farklı platformlarda günlük dosyası oluşturma
 
@@ -79,9 +79,9 @@ File logFile = new File(dir, "logfile.txt");
 config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 ```
 
-Yukarıdaki kod, bir günlük dosyasını uygulamaya özgü bir dizinin kökündeki dış depolamaya kaydeder. Bir Kullanıcı Dosya Yöneticisi ile dosyaya erişebilir (genellikle içinde `Android/data/ApplicationName/logfile.txt`). Uygulama kaldırıldığında dosya silinir.
+Yukarıdaki kod, bir günlük dosyasını uygulamaya özgü bir dizinin kökündeki dış depolamaya kaydeder. Bir Kullanıcı Dosya Yöneticisi ile dosyaya erişebilir (genellikle `Android/data/ApplicationName/logfile.txt`). Uygulama kaldırıldığında dosya silinir.
 
-Bildirim dosyasında da izin istemeniz `WRITE_EXTERNAL_STORAGE` gerekir:
+Ayrıca, bildirim dosyasında `WRITE_EXTERNAL_STORAGE` izin istemeniz gerekir:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="...">
@@ -104,7 +104,7 @@ NSString *filePath = [
 [speechConfig setPropertyTo:filePath byId:SPXSpeechLogFilename];
 ```
 
-Oluşturulan bir dosyaya erişmek için, uygulamanın `Info.plist` özellik listesine aşağıdaki özellikleri ekleyin:
+Oluşturulan bir dosyaya erişmek için aşağıdaki özellikleri uygulamanın `Info.plist` özellik listesine ekleyin:
 
 ```xml
 <key>UIFileSharingEnabled</key>

@@ -1,5 +1,5 @@
 ---
-title: Stackbelirt Azure Linux Aracısı uzantısını yeniden Izleme | Microsoft Docs
+title: Yeniden Izleme Azure Linux aracı uzantısını stackbelirt
 description: Bir Linux sanal makinesine Stackbelirt yeniden Izleme Linux Aracısı dağıtın.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
-ms.openlocfilehash: 2278f1bef3a72408b097f9a2d676931fd07369f4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173967"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073633"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Yeniden Izleme Linux Aracısı uzantısını stackbelirt
 
@@ -43,7 +43,7 @@ Bu uzantı, yeniden Izleme için Linux Aracısı için bir install yolu sağlar.
 
 Retrace Aracısı bu Linux dağıtımlarına karşı çalıştırılabilir
 
-| Dağıtım | Version |
+| Dağıtım | Sürüm |
 |---|---|
 | Ubuntu | 16,04 LTS, 14,04 LTS, 16,10 ve 17,04 |
 | Debian | 7.9 + ve 8.2 +, 9 |
@@ -54,14 +54,14 @@ Retrace Aracısı bu Linux dağıtımlarına karşı çalıştırılabilir
 
 Linux için Stacktarget aracı uzantısı, hedef sanal makinenin Internet 'e bağlı olmasını gerektirir. 
 
-Stackbir bağlantı kurulmasına izin vermek için ağ yapılandırmanızı ayarlamanız gerekebilir, bkz https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
+Stackbir bağlantı kurulmasına izin vermek için ağ yapılandırmanızı ayarlamanız gerekebilir, bkz. https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
 
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
 ---
 
-Aşağıdaki JSON, Stackbelirt retrace aracı uzantısının şemasını gösterir. Uzantı, `environment` ve `activationKey`gerektirir.
+Aşağıdaki JSON, Stackbelirt retrace aracı uzantısının şemasını gösterir. Uzantı `environment` ve `activationKey`gerektirir.
 
 ```json
     {
@@ -95,7 +95,7 @@ Bir sanal makine uzantısı için JSON, sanal makine kaynağının içinde iç i
 
 Aşağıdaki örnek, Stackbir retrace Linux uzantısının sanal makine kaynağının içinde iç içe olduğunu varsayar. Uzantı kaynağını yuvalama sırasında JSON, sanal makinenin "resources": [] nesnesine yerleştirilir.
 
-Uzantı, `environment` ve `activationKey`gerektirir.
+Uzantı `environment` ve `activationKey`gerektirir.
 
 ```json
     {
@@ -150,9 +150,9 @@ Uzantı JSON şablonu kökünde yerleştirilirken, kaynak adı üst sanal makine
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı
 
-`Set-AzVMExtension` Komut, mevcut bir sanal makineye stackbelirt yeniden izleme Linux Aracısı sanal makinesi uzantısını dağıtmak için kullanılabilir. Komutu çalıştırmadan önce, ortak ve özel yapılandırmaların bir PowerShell karma tablosunda depolanması gerekir.
+`Set-AzVMExtension` komutu, Stackbir retrace Linux Aracısı sanal makinesi uzantısını mevcut bir sanal makineye dağıtmak için kullanılabilir. Komutu çalıştırmadan önce, ortak ve özel yapılandırmaların bir PowerShell karma tablosunda depolanması gerekir.
 
-Uzantı, `environment` ve `activationKey`gerektirir.
+Uzantı `environment` ve `activationKey`gerektirir.
 
 ```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
@@ -173,7 +173,7 @@ Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
 
 Azure CLı Aracı, Stackbir retrace Linux Aracısı sanal makinesi uzantısını var olan bir sanal makineye dağıtmak için kullanılabilir.  
 
-Uzantı, `environment` ve `activationKey`gerektirir.
+Uzantı `environment` ve `activationKey`gerektirir.
 
 ```azurecli
 az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --name 'StackifyLinuxAgentExtension' --protected-settings '{"activationKey":"myActivationKey"}' --settings '{"environment":"myEnvironment"}'  --resource-group 'myResourceGroup' --vm-name 'myVmName'
@@ -198,4 +198,4 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 110 | Hatayı devre dışı bırak | Hizmet kaldırılamadı |
 | 120 | Kaldırma hatası | Hizmet durdurulamadı |
 
-Daha fazla yardıma ihtiyacınız varsa, ' de https://support.stackify.com stackbelirt desteğine başvurabilirsiniz.
+Daha fazla yardıma ihtiyacınız varsa https://support.stackify.com' de Stackbelirt desteğiyle iletişim sağlayabilirsiniz.

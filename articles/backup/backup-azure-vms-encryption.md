@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5968a675c3f0f9a2c6426ed73d06e2d116a8ff3b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 004f15a1af11e3ed27f792e245888671b94fbb1a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827398"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074921"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Şifrelenmiş Azure VM 'yi yedekleme ve geri yükleme
 
@@ -38,18 +38,13 @@ Azure Backup, aşağıdaki tabloda özetlenen Azure AD uygulaması olmadan ve il
 - [Ade](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md)ve [Keks](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/)hakkında daha fazla bilgi edinin.
 - Azure VM disk şifrelemesi [hakkında SSS](../security/azure-security-disk-encryption-faq.md) makalesini okuyun.
 
-
-
 ### <a name="limitations"></a>Sınırlamalar
 
 - Şifrelenmiş VM 'Leri aynı abonelik ve bölge içinde yedekleyebilir ve geri yükleyebilirsiniz.
-- Azure Backup, tek başına anahtarlar kullanılarak şifrelenmiş VM 'Leri destekler. Bir sanal makineyi şifrelemek için kullanılan bir sertifikanın parçası olan her anahtar şu anda desteklenmemektedir.
+- Azure Backup, tek başına anahtarlar kullanılarak şifrelenmiş VM 'Leri destekler. Bir sanal makineyi şifrelemek için kullanılan bir sertifikanın parçası olan herhangi bir anahtar şu anda desteklenmemektedir.
 - Kurtarma Hizmetleri yedekleme kasası ile aynı abonelik ve bölge içinde şifrelenmiş VM 'Leri yedekleyebilir ve geri yükleyebilirsiniz.
 - Şifrelenmiş VM 'Ler dosya/klasör düzeyinde kurtarılamaz. Dosya ve klasörleri geri yüklemek için tüm VM 'yi kurtarmanız gerekir.
 - Bir VM 'yi geri yüklerken, şifrelenen VM 'Ler için [mevcut VM 'yi Değiştir](backup-azure-arm-restore-vms.md#restore-options) seçeneğini kullanamazsınız. Bu seçenek yalnızca şifrelenmemiş yönetilen diskler için desteklenir.
-
-
-
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -65,8 +60,6 @@ Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
 - VM **ARACıSıNı VM 'ye yükleme**: Azure Backup makinede çalışan Azure VM aracısına bir uzantı yükleyerek Azure VM 'lerini yedekler. VM 'niz bir Azure Marketi görüntüsünden oluşturulduysa, aracı yüklenir ve çalışır. Özel bir VM oluşturursanız veya şirket içi bir makineyi geçirirseniz, [aracıyı el ile yüklemeniz](backup-azure-arm-vms-prepare.md#install-the-vm-agent)gerekebilir.
 - **Giden erişime açıkça izin ver**: genel olarak, Azure Backup ile iletişim kurması Için BIR Azure VM 'ye giden ağ erişimine açıkça izin vermeniz gerekmez. Ancak, bazı VM 'Ler bağlantı sorunlarıyla karşılaşabilir ve bağlanmaya çalışırken **Extensionsnapshotfailednonetwork** hatası gösterir. Bu durumda, Azure Backup uzantısı yedekleme trafiği için Azure genel IP adresleriyle iletişim kurabildiğinden, [giden erişime açık bir şekilde izin vermeniz](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access)gerekir.
 
-
-
 ## <a name="configure-a-backup-policy"></a>Yedekleme ilkesi yapılandırma
 
 1. Henüz bir kurtarma hizmetleri Yedekleme Kasası oluşturmadıysanız, [Bu yönergeleri](backup-azure-arm-vms-prepare.md#create-a-vault) izleyin
@@ -74,19 +67,18 @@ Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
 
     ![Yedekleme dikey penceresi](./media/backup-azure-vms-encryption/select-backup.png)
 
-3. **Yedekleme hedefi**@no__t-**Iş yükünüz nerede çalışıyor?** **Azure**' u seçin.
-4. **Neleri yedeklemek istiyorsunuz?** @no__t **sanal makine**seçin-2**Tamam**.
+3. **Yedekleme hedefi** 'nde > **Iş yükünüz nerede çalışıyor?** **Azure**' u seçin.
+4. **Neleri yedeklemek istiyorsunuz?** **sanal makine** > **Tamam ' ı**seçin.
 
       ![Senaryo dikey penceresi](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-5. **Yedekleme ilkesi** > **yedekleme ilkesi seçin**, kasa ile ilişkilendirmek istediğiniz ilkeyi seçin. Daha sonra, **Tamam**'a tıklayın.
+5. **Yedekleme ilkesi** > **yedekleme Ilkesi**' ni seçin, kasa ile ilişkilendirmek istediğiniz ilkeyi seçin. Daha sonra, **Tamam**'a tıklayın.
     - Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle depolandığını belirtir.
     - Varsayılan ilkenin ayrıntıları, açılan menü altında listelenir.
 
     ![Senaryo dikey penceresini açma](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
 6. Varsayılan ilkeyi kullanmak istemiyorsanız, **Yeni oluştur**' u seçin ve [özel bir ilke oluşturun](backup-azure-arm-vms-prepare.md#create-a-custom-policy).
-
 
 7. Seçme ilkesini kullanarak yedeklemek istediğiniz şifrelenmiş VM 'Leri seçin ve **Tamam**' ı seçin.
 
@@ -104,18 +96,16 @@ Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
 
 9. Yedekleme ilkesini kasada dağıtmak için **yedeklemeyi etkinleştir** ' e tıklayın ve seçili VM 'ler için yedeklemeyi etkinleştirin.
 
-
 ## <a name="trigger-a-backup-job"></a>Bir yedekleme işi tetikleyin
 
 İlk yedekleme zamanlamaya uygun olarak çalışır, ancak bunu hemen aşağıdaki gibi çalıştırabilirsiniz:
 
 1. Kasa menüsünde, **yedekleme öğeleri**' ne tıklayın.
-2. **Yedekleme öğeleri** ' nde **Azure sanal makine**' ye tıklayın.
+2. **Yedekleme öğeleri**' nde **Azure sanal makine**' ye tıklayın.
 3. **Yedekleme öğeleri** listesinde üç noktaya (...) tıklayın.
 4. **Şimdi Yedekle**'ye tıklayın.
 5. **Şimdi Yedekle**' de, kurtarma noktasının tutulacağı son günü seçmek için Takvim denetimini kullanın. Daha sonra, **Tamam**'a tıklayın.
 6. Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz > **yedekleme işleri** > **devam**ediyor. VM’nizin boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
-
 
 ## <a name="provide-permissions"></a>İzinleri sağla
 
@@ -128,23 +118,23 @@ Azure VM, anahtar ve gizli dizileri, ilişkili VM 'lerle birlikte yedeklemek iç
 
 1. Azure portal, **tüm hizmetler**' i seçin ve **anahtar**kasalarını arayın.
 2. Yedeklemekte olduğunuz şifrelenmiş VM ile ilişkili anahtar kasasını seçin.
-3. @No__t **erişim ilkeleri**' ni seçin-1**Yeni Ekle**.
+3. **Yeni ekle** > **erişim ilkeleri** ' ni seçin.
 4. **Asıl seçin**' i seçin ve ardından **yedekleme yönetimi**yazın.
-5. **Yedekleme yönetimi hizmeti**@no__t seçin-1**seçim**.
+5. **Yedekleme yönetimi hizmetini** seçin > **seçin**.
 
     ![Yedekleme hizmeti seçimi](./media/backup-azure-vms-encryption/select-backup-service.png)
 
-6. @No__t **erişim Ilkesi Ekle**' de**şablondan yapılandırma (isteğe bağlı)** **Azure Backup**' i seçin.
+6. Şablondan yapılandırma > **erişim Ilkesi Ekle** **(isteğe bağlı)** bölümünde **Azure Backup**' i seçin.
     - **Anahtar izinleri** ve **gizli izinler**için gerekli izinler önceden doldurulur.
     - VM 'niz **yalnızca bek**kullanılarak şifrelendiyse, yalnızca gizli dizi izinlerine ihtiyaç duyduğundan bu yana **Anahtar izinlerinin** seçimini kaldırın.
 
     ![Azure Backup seçimi](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-6. **Tamam**’a tıklayın. **Yedekleme yönetimi hizmeti** **erişim ilkelerine**eklenir.
+7. **OK (Tamam)** düğmesine tıklayın. **Yedekleme yönetimi hizmeti** **erişim ilkelerine**eklenir.
 
     ![Erişim ilkeleri](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
-7. İzinlerle Azure Backup sağlamak için **Kaydet** ' e tıklayın.
+8. İzinlerle Azure Backup sağlamak için **Kaydet** ' e tıklayın.
 
 ## <a name="restore-an-encrypted-vm"></a>Şifrelenmiş bir VM 'yi geri yükleme
 
@@ -154,7 +144,7 @@ Azure VM, anahtar ve gizli dizileri, ilişkili VM 'lerle birlikte yedeklemek iç
 2. Ardından aşağıdakilerden birini yapın:
     - VM ayarlarını özelleştirmek için geri yükleme işlemi sırasında oluşturulan şablonu kullanın ve VM dağıtımını tetikleyin. [Daha fazla bilgi edinin](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
     - PowerShell kullanarak geri yüklenen disklerden yeni bir VM oluşturun. [Daha fazla bilgi edinin](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
-    - Linux VM 'Ler için, veri disklerinin açık ve bağlanmış olması için ADE uzantısını sıfırlayın. 
+    - Linux VM 'Ler için, veri disklerinin açık ve bağlanmış olması için ADE uzantısını sıfırlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

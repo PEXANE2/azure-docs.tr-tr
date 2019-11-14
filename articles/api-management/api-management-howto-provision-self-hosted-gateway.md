@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: ee9594e7aa3b55f7eb6fc7ba41783708555bd15e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d33c5f75234ad7165a9062ecc3bb2a00d502f8c3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513776"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075282"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Azure API Management şirket içinde barındırılan ağ geçidi sağlama
 
@@ -32,13 +32,14 @@ Azure API Management Örneğinizde bir ağ geçidi kaynağı sağlama, şirket i
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="provision-a-self-hosted-gateway"></a>Şirket içinde barındırılan ağ geçidi sağlama
+## <a name="provision-a-self-hosted-gateway"></a>Şirket içinde barındırılan ağ geçidini sağlama
 
 1. **Ayarlar**altında **ağ geçitlerini** seçin.
 2. **+ Ekle**'ye tıklayın.
 3. Ağ geçidinin **adını** ve **bölgesini** girin.
 > [!TIP]
 > **Bölge** , bu ağ geçidi kaynağıyla ilişkilendirilecek ağ geçidi düğümlerinin amaçlanan konumunu belirtir. Bu, herhangi bir Azure kaynağıyla ilişkili benzer bir özelliğe anlam olarak eşdeğerdir, ancak rastgele bir dize değeri atanabilir.
+
 4. İsteğe bağlı olarak, ağ geçidi kaynağı için bir **Açıklama** girin.
 5. İsteğe bağlı olarak, bu ağ geçidi kaynağıyla bir veya daha fazla API ilişkilendirmek için **API 'ler** altında **+** seçin.
 > [!TIP]
@@ -46,6 +47,7 @@ Azure API Management Örneğinizde bir ağ geçidi kaynağı sağlama, şirket i
 
 > [!IMPORTANT]
 > Varsayılan olarak, mevcut API 'lerden hiçbiri yeni ağ geçidi kaynağıyla ilişkilendirilecektir. Bu nedenle, bunları yeni ağ geçidi aracılığıyla çağırma girişimleri `404 Resource Not Found` yanıtlara neden olur.
+
 6. **Ekle**'ye tıklayın.
 
 Ağ Geçidi kaynağı artık API Management örneğiniz tarafından sağlandı. Ağ geçidini dağıtmaya devam edebilirsiniz.

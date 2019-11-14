@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure PowerShell ile Azure disklerini yönetme | Microsoft Docs
+title: Öğretici - Azure PowerShell ile Azure disklerini yönetme
 description: Bu öğreticide, Azure CLI PowerShell kullanarak sanal makineler için Azure diskleri oluşturup yönetmeyi öğrenirsiniz
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: f44ea76ed22ab4feacc6ee37b165bbc33f7ddafc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c68299e4df187b1e9006d9ee1f2f70a13df3c52
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101605"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064779"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Öğretici - Azure PowerShell ile Azure disklerini yönetme
 
@@ -63,7 +63,7 @@ Azure iki disk türü sağlar.
 ### <a name="premium-disk-performance"></a>Premium disk performansı
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-Yukarıdaki tabloda, disk başına maksimum IOPS tanımlanmış olsa da birden çok veri diski bölümlenerek daha yüksek performansa ulaşılabilir. Örneğin, Standard_GS5 VM’ye 64 veri diski eklenebilir. Bu disklerin her biri P30 olarak boyutlandırılırsa, en fazla 80.000 IOPS’ye ulaşılabilir. VM başına maksimum IOPS hakkında ayrıntılı bilgi için bkz. [VM türleri ve boyutları](./sizes.md).
+Yukarıdaki tablo, disk başına maksimum IOPS tanımlamış olsa da, daha yüksek düzeyde performansa birden çok veri diskini bölümleyerek ulaşılabilir. Örneğin, Standard_GS5 VM’ye 64 veri diski eklenebilir. Bu disklerin her biri P30 olarak boyutlandırılırsa, en fazla 80.000 IOPS’ye ulaşılabilir. VM başına maksimum IOPS hakkında ayrıntılı bilgi için bkz. [VM türleri ve boyutları](./sizes.md).
 
 ## <a name="create-and-attach-disks"></a>Disk oluşturma ve ekleme
 
@@ -144,7 +144,7 @@ Get-Disk | Where partitionstyle -eq 'raw' |
 
 ## <a name="verify-the-data-disk"></a>Veri diskini doğrulama
 
-Veri diskinin eklendiğini doğrulamak amacıyla, eklenen `DataDisks` için `StorageProfile` öğesini görüntüleyin.
+Veri diskinin eklendiğini doğrulamak amacıyla, eklenen `StorageProfile` için `DataDisks` öğesini görüntüleyin.
 
 ```azurepowershell-interactive
 $vm.StorageProfile.DataDisks
@@ -165,7 +165,7 @@ VirtualHardDisk :
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide aşağıdaki VM disk konularını öğrendiniz:
+Bu öğreticide, şunun gibi VM disk konularını öğrendiniz:
 
 > [!div class="checklist"]
 > * İşletim sistemi diskleri ve geçici diskler
@@ -174,7 +174,7 @@ Bu öğreticide aşağıdaki VM disk konularını öğrendiniz:
 > * Disk performansı
 > * Veri disklerini ekleme ve hazırlama
 
-VM yapılandırmasını otomatikleştirme hakkında bilgi edinmek için sonraki öğreticiye geçin.
+VM yapılandırmasını otomatikleştirme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
 > [VM yapılandırmasını otomatikleştirme](./tutorial-automate-vm-deployment.md)

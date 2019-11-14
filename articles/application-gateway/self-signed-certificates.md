@@ -1,5 +1,6 @@
 ---
-title: Özel kök CA ile otomatik olarak imzalanan bir Azure Application Gateway sertifikası oluşturma
+title: Özel kök CA ile otomatik olarak imzalanan sertifika oluşturma
+titleSuffix: Azure Application Gateway
 description: Özel bir kök CA ile Azure Application Gateway otomatik olarak imzalanan sertifika oluşturmayı öğrenin
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 84a46e66bb6c36950a84fbeb2dacc3a8d6bcc241
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fb3d2e70d9485c63d6de156abe9d192afa818814
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833361"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075081"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Özel kök CA ile otomatik olarak imzalanan bir Azure Application Gateway sertifikası oluşturma
 
@@ -23,13 +24,13 @@ Application Gateway, iyi bilinen bir CA tarafından imzalanmışsa (örneğin, G
 > [!NOTE]
 > Otomatik olarak imzalanan sertifikalara varsayılan olarak güvenilmez ve bunların bakımını yapmak zor olabilir. Ayrıca, süresi geçmiş karma ve şifre paketlerinin kullanımı güçlü olmayabilir. Daha iyi güvenlik için, iyi bilinen bir sertifika yetkilisi tarafından imzalanmış bir sertifika satın alın.
 
-Bu makalede şunları yapmayı öğreneceksiniz:
+Bu makalede, öğreneceksiniz nasıl yapılır:
 
 - Kendi özel sertifika yetkilinizi oluşturma
 - Özel sertifika YETKILINIZ tarafından imzalanan kendinden imzalı bir sertifika oluşturma
 - Arka uç sunucusunun kimliğini doğrulamak için bir Application Gateway otomatik olarak imzalanan kök sertifika yükleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Windows veya Linux çalıştıran bir bilgisayarda [OpenSSL](https://www.openssl.org/)** 
 
@@ -178,7 +179,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 Application Gateway sertifikayı karşıya yüklemek için. CRT sertifikasını. cer biçiminde bir temel-64 kodlanmış olarak dışarı aktarmanız gerekir. . CRT zaten Base-64 kodlu biçimde ortak anahtarı içerdiğinden, dosya uzantısını. CRT 'den. cer 'e yeniden adlandırmanız yeterlidir. 
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalında
 
 Portaldan güvenilen kök sertifikayı karşıya yüklemek için **http ayarları** ' nı seçin ve **https** protokolünü seçin.
 

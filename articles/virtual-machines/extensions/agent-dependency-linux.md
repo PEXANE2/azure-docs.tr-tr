@@ -1,5 +1,5 @@
 ---
-title: Linux için Azure Izleyici bağımlılığı sanal makine uzantısı | Microsoft Docs
+title: Linux için Azure Izleyici bağımlılığı sanal makine uzantısı
 description: Bir sanal makine uzantısı kullanarak Linux sanal makinesine Azure Izleyici bağımlılık aracısını dağıtın.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 416b0c89105f97514efdfcc859a630d78f7ba7f5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 46b0ddeeb70e263723b657ef3150dc5548fcc742
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084842"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073881"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Linux için Azure Izleyici bağımlılığı sanal makine uzantısı
 
@@ -73,7 +73,7 @@ Aşağıdaki JSON, Azure Linux VM 'de Azure VM bağımlılık Aracısı uzantıs
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek |
+| Ad | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |

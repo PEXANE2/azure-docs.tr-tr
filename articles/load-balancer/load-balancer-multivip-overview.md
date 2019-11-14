@@ -1,10 +1,9 @@
 ---
-title: Azure Load Balancer için birden çok ön uç
-titlesuffix: Azure Load Balancer
-description: Azure Load Balancer birden çok ön uçlara genel bakış
+title: Birden çok ön uçlar-Azure Load Balancer
+description: Bu öğrenme yoluyla, Azure Load Balancer çoklu ön uçlara genel bakış ile çalışmaya başlayın
 services: load-balancer
 documentationcenter: na
-author: chkuhtz
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
-ms.author: chkuhtz
-ms.openlocfilehash: b109e87a8fcbef0bfca356c83716509ebc6cecd4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: allensu
+ms.openlocfilehash: 58309133a46e32f409a0414be71791de73db9bed
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884204"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075943"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer için birden çok ön uç
 
@@ -30,9 +29,9 @@ Bir Azure Load Balancer tanımladığınızda, ön uç ve arka uç havuzu yapıl
 
 Aşağıdaki tabloda bazı örnek ön uç yapılandırması yer almaktadır:
 
-| Ön uç | IP adresi | protocol | port |
+| Uçta | IP adresi | protocol | port |
 | --- | --- | --- | --- |
-| 1\. |65.52.0.1 |TCP |80 |
+| 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
 | 3 |65.52.0.1 |*UDP* |80 |
 | 4 |*65.52.0.2* |TCP |80 |
@@ -48,15 +47,15 @@ Azure Load Balancer, her iki kural türünü de aynı yük dengeleyici yapıland
 
 Varsayılan davranışla başlayarak bu senaryoları daha ayrıntılı bir şekilde araştırıyoruz.
 
-## <a name="rule-type-1-no-backend-port-reuse"></a>Kural türü #1: Arka uç bağlantı noktası yeniden kullanımı
+## <a name="rule-type-1-no-backend-port-reuse"></a>Kural türü #1: arka uç bağlantı noktası yeniden kullanım yok
 
 ![Yeşil ve mor ön uçta birden çok ön uç çizimi](./media/load-balancer-multivip-overview/load-balancer-multivip.png)
 
 Bu senaryoda ön uçlar aşağıdaki gibi yapılandırılır:
 
-| Ön uç | IP adresi | protocol | port |
+| Uçta | IP adresi | protocol | port |
 | --- | --- | --- | --- |
-| ![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1\. |65.52.0.1 |TCP |80 |
+| ![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![Mor ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
 DIP, gelen akışın hedefi. Arka uç havuzunda, her VM istenen hizmeti bir DIP üzerindeki benzersiz bir bağlantı noktasında kullanıma sunar. Bu hizmet, ön uçta bir kural tanımıyla ilişkilendirilir.
@@ -65,14 +64,14 @@ DIP, gelen akışın hedefi. Arka uç havuzunda, her VM istenen hizmeti bir DIP 
 
 | Kural | Ön uç eşleme | Arka uç havuzuna |
 | --- | --- | --- |
-| 1\. |![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 1 |![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![IP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Azure Load Balancer ' deki tüm eşleme artık şu şekildedir:
 
 | Kural | Ön uç IP adresi | protocol | port | Hedef | port |
 | --- | --- | --- | --- | --- | --- |
-| ![yeşil kural](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1\. |65.52.0.1 |TCP |80 |DIP IP adresi |80 |
+| ![yeşil kural](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP adresi |80 |
 | ![Mor kural](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP adresi |81 |
 
 Her kural, hedef IP adresi ve hedef bağlantı noktasının benzersiz bir birleşimini içeren bir akış üretmelidir. Akışın hedef bağlantı noktasını değiştirerek birden çok kural, farklı bağlantı noktalarında aynı DIP 'e akış sunabilir.
@@ -104,23 +103,23 @@ Bu senaryo için, arka uç havuzundaki her sanal makinenin üç ağ arabirimi va
 
 Önceki senaryodaki ile aynı ön uç yapılandırmasını varsayalım:
 
-| Ön uç | IP adresi | protocol | port |
+| Uçta | IP adresi | protocol | port |
 | --- | --- | --- | --- |
-| ![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1\. |65.52.0.1 |TCP |80 |
+| ![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![Mor ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
 İki kural tanımlanıyoruz:
 
-| Kural | Ön uç | Arka uç havuzuna eşle |
+| Kural | Uçta | Arka uç havuzuna eşle |
 | --- | --- | --- |
-| 1\. |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 (VM1 ve VM2) |
+| 1 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 (VM1 ve VM2) |
 | 2 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 (VM1 ve VM2) |
 
 Aşağıdaki tabloda yük dengeleyicideki bütün eşleme gösterilmektedir:
 
 | Kural | Ön uç IP adresi | protocol | port | Hedef | port |
 | --- | --- | --- | --- | --- | --- |
-| ![yeşil kural](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1\. |65.52.0.1 |TCP |80 |ön uç ile aynı (65.52.0.1) |ön uç ile aynı (80) |
+| ![yeşil kural](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |ön uç ile aynı (65.52.0.1) |ön uç ile aynı (80) |
 | ![Mor kural](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |ön uç ile aynı (65.52.0.2) |ön uç ile aynı (80) |
 
 Gelen akışın hedefi, VM 'deki geri döngü arabirimindeki ön uç IP adresidir. Her kural, hedef IP adresi ve hedef bağlantı noktasının benzersiz bir birleşimini içeren bir akış üretmelidir. Akışın hedef IP adresini değiştirerek, aynı VM 'de bağlantı noktası yeniden kullanımı mümkündür. Hizmetiniz, ilgili geri döngü arabiriminin ön uç IP adresine ve bağlantı noktasına bağlayarak yük dengeleyiciye açıktır.

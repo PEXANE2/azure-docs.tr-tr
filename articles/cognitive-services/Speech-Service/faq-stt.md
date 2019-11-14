@@ -1,7 +1,7 @@
 ---
 title: Azure 'da konuşmayı metne dönüştürme hakkında sık sorulan sorular
 titleSuffix: Azure Cognitive Services
-description: Konuşmayı metin hizmetiyle ilgili en popüler soruların yanıtlarını alın.
+description: Konuşmayı metin hizmeti hakkında sık sorulan soruların yanıtlarını alın.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 2d0a05c763b21b0cf22a724f9a5faa9d70b5b557
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f03a937aff17c6ee622f3b5ab6045f912b51bbf2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010655"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072572"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -25,7 +25,7 @@ Bu SSS 'de sorularınıza yanıt bulamazsanız, [diğer destek seçeneklerine](s
 
 **S: bir taban çizgisi modeliyle özel bir konuşma ve metin modeli arasındaki fark nedir?**
 
-Y **: temel bir model**, Microsoft 'a ait veriler kullanılarak eğitilmiştir ve bulutta zaten dağıtılır.  Bir modeli, belirli çevresel gürültü veya dile sahip belirli bir ortama daha iyi uyacak şekilde uyarlamak için özel bir model kullanabilirsiniz. Fabrika zeminleri, otomobiller veya gürültülü Streets bir uyarlanan model gerektirir. Bioloji, fizik, radiolojisi, ürün adları ve özel kısaltmalar gibi konular, bir uyarlanan dil modeli gerektirir.
+Y **: temel bir model**, Microsoft 'a ait veriler kullanılarak eğitilmiştir ve bulutta zaten dağıtılır. Bir modeli, belirli çevresel gürültü veya dile sahip belirli bir ortama daha iyi uyacak şekilde uyarlamak için özel bir model kullanabilirsiniz. Fabrika zeminleri, otomobiller veya gürültülü Streets bir uyarlanan model gerektirir. Bioloji, fizik, radiolojisi, ürün adları ve özel kısaltmalar gibi konular, bir uyarlanan dil modeli gerektirir.
 
 **S: bir temel modeli kullanmak istersem nereden başlayabilirim?**
 
@@ -123,13 +123,13 @@ Y **: her**kanalı ayrı ayrı gönderirseniz (her kanal kendi dosyasında), dos
 
 **A**: bir veri kümesi için geçerli sınır 2 GB 'dir. Sınır, HTTP karşıya yüklemesi için bir dosyanın boyutu kısıtlamasından kaynaklanır.
 
-**S: daha büyük bir metin dosyasını karşıya yükleyebilmem için metin dosyalarımı ZIP yapabilir miyim?** 
+**S: daha büyük bir metin dosyasını karşıya yükleyebilmem için metin dosyalarımı ZIP yapabilir miyim?**
 
 Y **: Hayır**. Şu anda yalnızca sıkıştırılmamış metin dosyalarına izin verilir.
 
 **S: veri raporu, başarısız olan bildirimler olduğunu söylüyor. Sorun nedir?**
 
-**A**: bir dosyadaki çıkışların yüzde 100 ' unun karşıya yüklenememesi bir sorun değildir. Bir akustik veya dil veri kümesindeki (örneğin, yüzde 95 ' den fazla) en büyük çoğunluğunun başarıyla içeri aktarılmışsa, veri kümesi kullanılabilir olabilir. Ancak, neden başarısız olduğunu anlamaya ve sorunları nasıl giderebileceğinizi öneririz. Biçimlendirme hataları gibi yaygın sorunların çoğu düzeltilme kolaydır. 
+**A**: bir dosyadaki çıkışların yüzde 100 ' unun karşıya yüklenememesi bir sorun değildir. Bir akustik veya dil veri kümesindeki (örneğin, yüzde 95 ' den fazla) en büyük çoğunluğunun başarıyla içeri aktarılmışsa, veri kümesi kullanılabilir olabilir. Ancak, neden başarısız olduğunu anlamaya ve sorunları nasıl giderebileceğinizi öneririz. Biçimlendirme hataları gibi yaygın sorunların çoğu düzeltilme kolaydır.
 
 ## <a name="creating-an-acoustic-model"></a>Akustik model oluşturma
 
@@ -139,11 +139,11 @@ Y **: 30**dakika ile bir saat ve akustik veri arasında başlangıç yapmanız �
 
 **S: hangi verileri toplamalıyım?**
 
-Y **: uygulama**senaryosuna yakın olan verileri toplayın ve mümkün olduğunca büyük küçük harf kullanın. Veri toplama, hedef uygulamayla ve kullanıcılarla cihaz ya da cihaz, ortam ve tür hoparlörleriyle eşleşmelidir. Genel olarak, verileri mümkün olduğunca geniş bir hoparlörden toplayabilirsiniz. 
+Y **: uygulama**senaryosuna yakın olan verileri toplayın ve mümkün olduğunca büyük küçük harf kullanın. Veri toplama, hedef uygulamayla ve kullanıcılarla cihaz ya da cihaz, ortam ve tür hoparlörleriyle eşleşmelidir. Genel olarak, verileri mümkün olduğunca geniş bir hoparlörden toplayabilirsiniz.
 
 **S: akustik verileri nasıl toplamalıyım?**
 
-Y **: tek başına bir veri**toplama uygulaması oluşturabilir veya raf dışı ses kaydı yazılımını kullanabilirsiniz. Ayrıca, uygulamanızın ses verilerini günlüğe kaydettiği ve ardından verileri kullandığı bir sürümünü de oluşturabilirsiniz. 
+Y **: tek başına bir veri**toplama uygulaması oluşturabilir veya raf dışı ses kaydı yazılımını kullanabilirsiniz. Ayrıca, uygulamanızın ses verilerini günlüğe kaydettiği ve ardından verileri kullandığı bir sürümünü de oluşturabilirsiniz.
 
 **S: verileri kendi kendinize uyarlama konusunda bir işlem yapmam gerekir mi?**
 
@@ -167,7 +167,7 @@ Y **: wer**, konuşma tanıma için değerlendirme ölçümdür. WER, ekleme, si
 
 Y **: sonuçlar**, taban çizgisi modeliyle özelleştirdiğiniz model arasında bir karşılaştırma gösterir. Özelleştirmeyi bir süre için temel modeli oluşturmak üzere hedefleyebilirsiniz.
 
-**S: bir geliştirme olup olmadığını görmek için bir temel modelin WER özelliğini Nasıl yaparım?.** 
+**S: bir geliştirme olup olmadığını görmek için bir temel modelin WER özelliğini Nasıl yaparım?.**
 
 Y **: çevrimdışı**test sonuçları özel modelin taban çizgisi doğruluğunu ve taban çizgisinin iyileştirmesini gösterir.
 
@@ -179,21 +179,21 @@ Y **: uygulamanızda**kullanılan sözlük ve tümceciklerin başlangıç dili m
 
 **S: yalnızca bir sözcük listesini karşıya yükleyebilir miyim?**
 
-Y **: sözcüklerin bir listesini**karşıya yüklemek, sözcükleri sözlüğüne ekler, ancak sözcüklerin tipik olarak nasıl kullanıldığını sisteme öğretmez. Tam veya kısmi bir şekilde (kullanıcıların söyledikleri nesnelerin cümleler veya tümceleri), dil modelinin yeni kelimeleri ve nasıl kullanıldığını öğrenebilirsiniz. Özel dil modeli yalnızca sisteme yeni sözcükler eklemek için değil, aynı zamanda uygulamanız için bilinen sözcüklerin olasılığını ayarlamak için de uygundur. Tam dıklarýn sağlanması sistemin daha iyi öğrenilmesine yardımcı olur. 
+Y **: sözcüklerin bir listesini**karşıya yüklemek, sözcükleri sözlüğüne ekler, ancak sözcüklerin tipik olarak nasıl kullanıldığını sisteme öğretmez. Tam veya kısmi bir şekilde (kullanıcıların söyledikleri nesnelerin cümleler veya tümceleri), dil modelinin yeni kelimeleri ve nasıl kullanıldığını öğrenebilirsiniz. Özel dil modeli yalnızca sisteme yeni sözcükler eklemek için değil, aynı zamanda uygulamanız için bilinen sözcüklerin olasılığını ayarlamak için de uygundur. Tam dıklarýn sağlanması sistemin daha iyi öğrenilmesine yardımcı olur.
 
 ## <a name="tenant-model-custom-speech-with-office-365-data"></a>Kiracı modeli (Office 365 verileriyle Özel Konuşma Tanıma)
 
 **S: kiracı modeline hangi bilgiler dahildir ve nasıl oluşturulur?**
 
-Y **:** Kiracı modeli, kuruluşunuzdaki herkes tarafından görülemeyen [ortak grup](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) e-postaları ve belgeleri kullanılarak oluşturulmuştur. 
- 
+Y **:** Kiracı modeli, kuruluşunuzdaki herkes tarafından görülemeyen [ortak grup](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) e-postaları ve belgeleri kullanılarak oluşturulmuştur.
+
 **S: kiracı modeli tarafından hangi konuşma deneyimleri geliştirildi?**
 
-Y **:** Kiracı modeli etkinleştirildiğinde, oluşturulduğunda ve yayımlandığında, konuşma hizmeti kullanılarak oluşturulan tüm kurumsal uygulamalarda tanımayı geliştirmek için kullanılır; Bu Ayrıca, kuruluşa üyelik belirten bir Kullanıcı AAD belirteci de geçirir.
+Y **:** Kiracı modeli etkinleştirildiğinde, oluşturulup yayımlandığında, konuşma hizmeti kullanılarak oluşturulan tüm kurumsal uygulamalarda tanımayı geliştirmek için kullanılır; Bu Ayrıca, kuruluşa üyelik belirten bir Kullanıcı AAD belirteci de iletir.
 
 Konuşma hizmeti uygulamalarınız için bir kiracı modeli oluşturduğunuzda, dikte ve PowerPoint resim yazısı gibi Office 365 ' de yerleşik konuşma deneyimleri değiştirilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Sorun giderme](troubleshooting.md)
-* [Sürüm notları](releasenotes.md)
+- [Sorun giderme](troubleshooting.md)
+- [Sürüm notları](releasenotes.md)

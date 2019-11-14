@@ -1,7 +1,7 @@
 ---
 title: Özel otomatik öneri önerileri tanımlayın-Bing Özel Arama
 titleSuffix: Azure Cognitive Services
-description: Özel önerilerle özel otomatik öneri yapılandırmayı açıklar
+description: Özel otomatik öneri, arama deneyiminiz ile ilgili önerilen arama sorgu dizelerinin bir listesini döndürür.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: b08eb49b0c4f9655326d2ab09ce39210205e28a9
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405111"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072796"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Özel otomatik öneri deneyiminizi yapılandırın
 
@@ -36,7 +36,7 @@ Bing önerilerini etkinleştirmek için **Otomatik Bing öneriler** kaydırıcı
 
 ## <a name="add-your-own-suggestions"></a>Kendi önerilerinizi ekleyin
 
-Kendi sorgu dizesi önerilerinizi eklemek için onları **Kullanıcı tanımlı öneriler**altında listeye ekleyin. Listeye bir öneri ekledikten sonra ENTER tuşuna basın veya **+** simgeye tıklayın. Öneriyi dilediğiniz dilde belirtebilirsiniz. En fazla 5.000 sorgu dizesi önerisi ekleyebilirsiniz.
+Kendi sorgu dizesi önerilerinizi eklemek için onları **Kullanıcı tanımlı öneriler**altında listeye ekleyin. Listeye bir öneri ekledikten sonra ENTER tuşuna basın veya **+** simgesine tıklayın. Öneriyi dilediğiniz dilde belirtebilirsiniz. En fazla 5.000 sorgu dizesi önerisi ekleyebilirsiniz.
 
 ## <a name="upload-suggestions"></a>Yükleme önerileri
 
@@ -48,7 +48,7 @@ Bir sorgu dizesi önerisini kaldırmak için kaldırmak istediğiniz önerinin y
 
 ## <a name="block-suggestions"></a>Engelleme önerileri
 
-Bing önerilerini eklerseniz, Bing 'in döndürmesini istemediğiniz bir arama sorgu dizeleri listesi ekleyebilirsiniz. Engellenen sorgu dizeleri eklemek için **Engellenen önerileri göster**' e tıklayın. Sorgu dizesini listeye ekleyin ve ENTER tuşuna basın veya **+** simgeye tıklayın. En fazla 50 engellenen sorgu dizesi ekleyebilirsiniz.
+Bing önerilerini eklerseniz, Bing 'in döndürmesini istemediğiniz bir arama sorgu dizeleri listesi ekleyebilirsiniz. Engellenen sorgu dizeleri eklemek için **Engellenen önerileri göster**' e tıklayın. Sorgu dizesini listeye ekleyin ve ENTER tuşuna basın veya **+** simgesine tıklayın. En fazla 50 engellenen sorgu dizesi ekleyebilirsiniz.
 
 
 
@@ -65,13 +65,13 @@ Barındırılan Kullanıcı arabiriminiz için sorgu dizesi önerilerini etkinle
 
 ## <a name="calling-the-autosuggest-api"></a>Otomatik öneri API 'sini çağırma
 
-Bing özel arama API'si kullanarak önerilen Sorgu dizelerini almak için aşağıdaki uç noktaya bir `GET` istek gönderin.
+Bing Özel Arama API'si kullanarak önerilen Sorgu dizelerini almak için aşağıdaki uç noktaya `GET` bir istek gönderin.
 
 ```
 GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions 
 ```
 
-Yanıt, önerilen Sorgu dizelerini içeren `SearchAction` nesnelerin bir listesini içerir.
+Yanıt, önerilen Sorgu dizelerini içeren `SearchAction` nesnelerinin bir listesini içerir.
 
 ```
         {  
@@ -81,9 +81,9 @@ Yanıt, önerilen Sorgu dizelerini içeren `SearchAction` nesnelerin bir listesi
         },  
 ```
 
-Her öneri bir `displayText` ve `query` alanı içerir. Alan `displayText` , arama kutusunun açılan listesini doldurmak için kullandığınız önerilen sorgu dizesini içerir.
+Her öneri bir `displayText` ve `query` alanı içerir. `displayText` alanı, arama kutusunun açılan listesini doldurmak için kullandığınız önerilen sorgu dizesini içerir.
 
-Kullanıcı, açılan listeden önerilen bir sorgu dizesi seçerse, `query` [Bing özel arama API'si](overview.md)çağırırken alanın sorgu dizesini kullanın.
+Kullanıcı açılan listeden önerilen bir sorgu dizesi seçerse, [Bing özel arama API'si](overview.md)çağrılırken `query` alanındaki sorgu dizesini kullanın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

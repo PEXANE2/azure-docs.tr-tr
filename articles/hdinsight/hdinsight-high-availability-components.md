@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 8aeef72c23f3ed40a7f187c976c67c2ae117189a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958489"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069620"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight tarafından desteklenen yüksek kullanılabilirlik Hizmetleri
 
@@ -123,7 +123,7 @@ Apache Hadoop 2,0 veya üzeri bir sürüme göre HDInsight kümeleri, süs Yot y
 
 Apache Hadoop 2,4 veya üzeri bir sürüme göre HDInsight kümeleri, YARN ResourceManager yüksek kullanılabilirliğini destekler. RM1 ve RM2, sırasıyla, 1. ve 1. baş düğümüne üzerinde çalışan iki ResourceManager vardır. Ayrıca, süs Yot gibi YARN ResourceManager otomatik yük devretme için de yapılandırılır. Geçerli etkin ResourceManager kaldığında veya yanıt vermediğinde, başka bir ResourceManager otomatik olarak etkin olacak şekilde seçilir.
 
-YARN ResourceManager, kendi katıştırılmış *ActiveStandbyElector* bir hata algılayıcısı ve öncü Elector olarak kullanır. Bu,,,, YARN ResourceManager 'dan farklı bir ZKFC cini gerektirmez. Etkin ResourceManager, durumlarını Apache Zookeeper 'a yazar.
+YARN ResourceManager, kendi katıştırılmış *ActiveStandbyElector* bir hata algılayıcısı ve öncü Elector olarak kullanır. Bu, YARN ResourceManager 'un aksine, ayrı bir ZKFC cini gerekmez. Etkin ResourceManager, durumlarını Apache Zookeeper 'a yazar.
 
 YARN ResourceManager 'nun yüksek kullanılabilirliği, süs Yot ve diğer HDInsight HA hizmetlerinden bağımsızdır. Etkin ResourceManager, etkin bir başlık düğümünde veya etkin bir süs ODE 'ın çalıştığı headdüğümünde çalışmayabilir. YARN ResourceManager yüksek kullanılabilirliği hakkında daha fazla bilgi için bkz. [ResourceManager yüksek kullanılabilirlik](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html).
 

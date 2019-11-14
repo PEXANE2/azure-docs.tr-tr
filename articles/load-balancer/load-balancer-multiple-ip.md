@@ -1,7 +1,7 @@
 ---
 title: Birden çok IP yapılandırmasında Yük Dengeleme-Azure portal
-titlesuffix: Azure Load Balancer
-description: Birincil ve ikincil IP yapılandırmalarında yük dengeleme.
+titleSuffix: Azure Load Balancer
+description: Bu makalede, Azure portal kullanarak birincil ve ikincil IP yapılandırmalarında yük dengeleme hakkında bilgi edinin.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: dbf8cdd326d3e1c8f32f6dc2bd3486146993e06b
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4bf74986462ecb2659505f8a1261b9b24aba3fee
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274728"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076998"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Azure portal kullanarak birden çok IP yapılandırmasında Yük Dengeleme
 
@@ -58,7 +58,7 @@ Birden çok NIC ile VM oluşturma hakkında daha fazla bilgi için bkz. [PowerSh
 
 Bu makalede özetlenen senaryoya ulaşmak için aşağıdaki adımları izleyin.
 
-### <a name="step-1-configure-the-secondary-nics"></a>1\. adım: İkincil NIC 'Leri yapılandırma
+### <a name="step-1-configure-the-secondary-nics"></a>1\. Adım: ikincil NIC 'Leri yapılandırma
 
 Sanal ağınızdaki her VM için, ikincil NIC için IP yapılandırmasını ekleyin:  
 
@@ -82,13 +82,13 @@ Sanal ağınızdaki her VM için, ikincil NIC için IP yapılandırmasını ekle
 
 İkincil NIC için ikinci IP yapılandırması tamamlandıktan sonra, söz konusu NIC için **IP yapılandırmaları** ayarları altında görüntülenir.
 
-### <a name="step-2-create-the-load-balancer"></a>2\. adım: Yük dengeleyiciyi oluşturma
+### <a name="step-2-create-the-load-balancer"></a>2\. Adım: Yük dengeleyiciyi oluşturun
 
 Yapılandırma için yük dengeleyiciyi oluşturun:
 
 1. Azure portal gidin: https://portal.azure.com. Azure hesabınızla oturum açın.
 
-2. Ekranın sol üst kısmında, **kaynak** > oluştur**ağ** > **Load Balancer**' ı seçin. Sonra **Oluştur**' u seçin.
+2. Ekranın sol üst kısmında, **ağ** > **Load Balancer** > **kaynak oluştur** ' u seçin. Sonra **Oluştur**' u seçin.
 
 3. **Yük dengeleyici oluştur**altında yük dengeleyiciniz için bir ad yazın. Bu senaryoda, **mylb**adını kullanacağız.
 
@@ -98,7 +98,7 @@ Yapılandırma için yük dengeleyiciyi oluşturun:
 
 Yük dengeleyici dağıtmaya başlar. Dağıtımın başarıyla tamamlanması birkaç dakika sürebilir. Dağıtım tamamlandıktan sonra, yük dengeleyici kaynak grubunuzda bir kaynak olarak görüntülenir.
 
-### <a name="step-3-configure-the-front-end-ip-pool"></a>3\. adım: Ön uç IP havuzunu yapılandırma
+### <a name="step-3-configure-the-front-end-ip-pool"></a>3\. Adım: ön uç IP havuzunu yapılandırma
 
 Her Web sitesi için (contoso.com ve fabrikam.com), yük dengeleyicinizdeki ön uç IP havuzunu yapılandırın:
 
@@ -130,7 +130,7 @@ Her Web sitesi için (contoso.com ve fabrikam.com), yük dengeleyicinizdeki ön 
 
 Ön uç havuzu yapılandırıldıktan sonra, IP adresleri yük dengeleyici **ön uç IP yapılandırması** ayarlarının altında görüntülenir. 
     
-### <a name="step-4-configure-the-back-end-pool"></a>4\. Adım: Arka uç havuzunu yapılandırma
+### <a name="step-4-configure-the-back-end-pool"></a>4\. Adım: arka uç havuzunu yapılandırma
 
 Her Web sitesi için (contoso.com ve fabrikam.com), yük dengeleyicinizdeki arka uç adres havuzunu yapılandırın:
         
@@ -156,7 +156,7 @@ Her Web sitesi için (contoso.com ve fabrikam.com), yük dengeleyicinizdeki arka
 
 Arka uç havuzu yapılandırıldıktan sonra, adresler yük dengeleyici **arka uç havuzu** ayarlarınızın altında görüntülenir.
 
-### <a name="step-5-configure-the-health-probe"></a>5\. Adım: Sistem durumu araştırmasını yapılandırma
+### <a name="step-5-configure-the-health-probe"></a>5\. Adım: sistem durumu araştırmasını yapılandırma
 
 Yük dengeleyiciniz için bir sistem durumu araştırması yapılandırın:
 
@@ -168,7 +168,7 @@ Yük dengeleyiciniz için bir sistem durumu araştırması yapılandırın:
 
 4. Durum araştırması için bir ad yazın (örneğin, **http**). **Tamam**’ı seçin.
 
-### <a name="step-6-configure-load-balancing-rules"></a>6\. Adım: Yük dengeleme kurallarını yapılandırma
+### <a name="step-6-configure-load-balancing-rules"></a>6\. Adım: Yük Dengeleme kurallarını yapılandırma
 
 Her Web sitesi için (contoso.com ve fabrikam.com), Yük Dengeleme kurallarını yapılandırın:
     

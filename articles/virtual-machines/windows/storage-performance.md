@@ -1,5 +1,5 @@
 ---
-title: Azure Lsv2-Series sanal makinelerinde performansı iyileştirme-depolama | Microsoft Docs
+title: Azure Lsv2-Series sanal makinelerinde performansı iyileştirme-depolama
 description: Lsv2 serisi sanal makinelerde çözümünüz için performansı en uygun hale getirmeyi öğrenin.
 services: virtual-machines-windows
 author: laurenhughes
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 5728afe8195a8f25e5aafcb815b0c61558b32547
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a14e38cd93e7d6273282e209db8ce83ec99f16db
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101793"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068173"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 serisi sanal makinelerde performansı iyileştirin
 
@@ -39,7 +39,7 @@ Lsv2 serisi VM 'Ler, Zen mikro mimarisine bağlı olarak AMD EYPC™ sunucu işl
 
 * Lsv2 kullanıcılar, uygulamalarına yönelik NUMA benzeşimini belirlemek üzere veri sürücüleri için VM içinden bildirilen cihaz NUMA bilgilerine (tümü 0) güvenmemelidir. Daha iyi performans için önerilen yol, mümkünse iş yüklerini CPU 'larda yaymasıdır. 
 
-* Lsv2 VM NVMe cihazı için g/ç sıra çifti başına desteklenen en yüksek sıra derinliği 1024 (vs. Amazon i3 QD 32 limiti). Lsv2 kullanıcılar, (yapay) bir değerlendirme iş yüklerini sıra derinliği 1024 veya daha düşük olarak sınırlandırmalıdır ve bu da performansı düşürebilir.
+* Lsv2 VM NVMe cihazı için g/ç sıra çifti başına desteklenen en fazla sıra derinliği 1024 (vs. Amazon i3 QD 32 limit). Lsv2 kullanıcılar, (yapay) bir değerlendirme iş yüklerini sıra derinliği 1024 veya daha düşük olarak sınırlandırmalıdır ve bu da performansı düşürebilir.
 
 ## <a name="utilizing-local-nvme-storage"></a>Yerel NVMe Storage kullanma
 

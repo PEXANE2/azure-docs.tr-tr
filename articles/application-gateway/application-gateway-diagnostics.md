@@ -1,22 +1,23 @@
 ---
-title: Azure Application Gateway erişim günlüklerini, performans günlüklerini, arka uç sistem durumunu ve ölçümleri izleyin
+title: Arka uç sistem durumu ve tanılama günlükleri
+titleSuffix: Azure Application Gateway
 description: Azure Application Gateway erişim günlüklerini ve performans günlüklerini etkinleştirme ve yönetme hakkında bilgi edinin
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: fa930d4ab420708e6abfdf1765703afbe20fa25e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 448e5bf798f5b1c3006888f846722e54fec46ef8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958271"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075308"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway için arka uç sistem durumu ve tanılama günlükleri
 
-Azure Application Gateway kullanarak, kaynakları aşağıdaki yollarla izleyebilirsiniz:
+Azure Application Gateway kaynaklarını aşağıdaki yollarla izleyebilirsiniz:
 
 * [Arka uç sistem durumu](#back-end-health): Application Gateway, arka uç havuzlarındaki sunucuların sistem durumunu Azure Portal ve PowerShell aracılığıyla izleme yeteneği sağlar. Ayrıca, arka uç havuzlarının sistem durumunu performans tanılama günlükleri aracılığıyla bulabilirsiniz.
 
@@ -263,7 +264,7 @@ Performans günlüğü, yalnızca, önceki adımlarda açıklandığı gibi her 
 |Istek sayısı     | Hizmet verilen istek sayısı.        |
 |dönemlerinde | Örneğinden istekleri sunan arka uca yapılan isteklerin ortalama gecikme süresi (milisaniye cinsinden). |
 |failedRequestCount| Başarısız istek sayısı.|
-|Aktarım hızı| Son günlüğün bu yana saniye başına bayt cinsinden ölçülen ortalama aktarım hızı.|
+|throughput| Son günlüğün bu yana saniye başına bayt cinsinden ölçülen ortalama aktarım hızı.|
 
 ```json
 {

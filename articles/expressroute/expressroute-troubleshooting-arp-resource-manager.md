@@ -1,5 +1,5 @@
 ---
-title: 'Azure ExpressRoute: ARP tablolarını edinme-sorun giderme'
+title: 'Azure ExpressRoute: ARP tabloları-sorun giderme'
 description: Bu sayfa, bir ExpressRoute devresine ait ARP tablolarını alma hakkında yönergeler sağlar
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 2410465052bd9ff83090c6f7122ffab2855af1d0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4f1bd064dbc0909be3deba9180be1d8b3c066fd4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033429"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076573"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Kaynak Yöneticisi dağıtım modelinde ARP tabloları alma
 > [!div class="op_single_selector"]

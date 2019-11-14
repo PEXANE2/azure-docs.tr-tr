@@ -1,5 +1,5 @@
 ---
-title: Python kullanarak Azure 'da Windows VM oluşturma ve yönetme | Microsoft Docs
+title: Python kullanarak Azure 'da Windows VM oluşturma ve yönetme
 description: Azure 'da bir Windows sanal makinesi oluşturmak ve yönetmek için Python kullanmayı öğrenin.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: fcbf4e054359534f924b401f2f42e1d4c33890be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1686e86600fb28165ae44e7ca6c0c406dfa26d72
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102490"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065591"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -29,7 +29,7 @@ ms.locfileid: "70102490"
 > * Visual Studio projesi oluşturma
 > * Paketleri yükleme
 > * Kimlik bilgileri oluştur
-> * Kaynak oluştur
+> * Kaynak oluşturma
 > * Yönetim görevlerini gerçekleştirme
 > * Kaynakları silme
 > * Uygulamayı çalıştırma
@@ -39,8 +39,8 @@ Bu adımların uygulanması yaklaşık 20 dakika sürer.
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
 1. Henüz yapmadıysanız, [Visual Studio 'yu](https://docs.microsoft.com/visualstudio/install/install-visual-studio)yükleyemezsiniz. Iş yükleri sayfasında **Python geliştirme** ' yi seçin ve ardından **yükler**' i tıklatın. Özette, **Python 3 64-bit (3.6.0)** ' in sizin için otomatik olarak seçili olduğunu görebilirsiniz. Visual Studio 'Yu önceden yüklediyseniz, Visual Studio başlatıcısı 'nı kullanarak Python iş yükünü ekleyebilirsiniz.
-2. Visual Studio 'yu yükleyip başlattıktan sonra **Dosya** > **Yeni** > **Proje**' ye tıklayın.
-3. **Şablonlar**Python python uygulaması ' na tıklayın, projenin adı için mypyıthonproject girin, projenin konumunu seçin ve ardından Tamam ' a tıklayın. >  > 
+2. Visual Studio 'Yu yükleyip başlattıktan sonra **dosya** > **Yeni** > **projesi**' ne tıklayın.
+3. **Şablonlar** > **Python** > **Python uygulaması**' na tıklayın, projenin adı Için *mypyıthonproject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
 
 ## <a name="install-packages"></a>Paketleri yükleme
 
@@ -102,7 +102,7 @@ Bu adıma başlamadan önce bir [Active Directory Hizmet sorumlusuna](../../acti
     credentials = get_credentials()
     ```
 
-## <a name="create-resources"></a>Kaynak oluştur
+## <a name="create-resources"></a>Kaynak oluşturma
  
 ### <a name="initialize-management-clients"></a>Yönetim istemcilerini Başlat
 
@@ -439,7 +439,7 @@ Bir sanal makineyi durdurabilir ve tüm ayarlarını tutabilir, ancak ücretlend
         compute_client.virtual_machines.power_off(GROUP_NAME, VM_NAME)
     ```
 
-    Sanal makineyi serbest bırakmak istiyorsanız power_off çağrısını şu kodla değiştirin:
+    Sanal makineyi serbest bırakmak istiyorsanız power_off çağrısı bu kodla değiştirin:
 
     ```python
     compute_client.virtual_machines.deallocate(GROUP_NAME, VM_NAME)

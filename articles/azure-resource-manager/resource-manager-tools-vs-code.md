@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
-ms.openlocfilehash: 8d2b818846eeae44ffe05b4546a333510c638621
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4c0fd0968ce52e50a9171eecb3dfaebd1e2a4c46
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196159"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075009"
 ---
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Azure Resource Manager şablonları oluşturmak için Visual Studio Code kullanma
 
@@ -24,7 +24,7 @@ Visual Studio Code MacOS, Windows ve Linux 'u destekler.  [Visual Studio Code](h
 ## <a name="install-resource-manager-tools-extension"></a>Kaynak Yöneticisi Araçları uzantısını yükler
 
 1. Visual Studio Code'u açın.
-1. Sol menüden **Uzantılar** ' ı seçin. Ya da **Görünüm** menüsünde Uzantılar ' ı seçerek uzantılar bölmesini açın.
+1. Sol menüden **Uzantılar** ' ı seçin. Ya da **Görünüm** **menüsünde Uzantılar ' ı seçerek uzantılar** bölmesini açın.
 
     ![Visual Studio Code Kaynak Yöneticisi Araçları uzantısı 'nı yükler](./media/resource-manager-tools-vs-code/resource-manager-visual-studio-code-tools-extension.png)
 1. **Kaynak Yöneticisi**arayın.
@@ -70,7 +70,7 @@ IntelliSense Ayrıca, abonelik () özellikleriyle ve nesneler olan değişkenler
 
 ### <a name="go-to-definition-for-variable-and-parameter-references"></a>Değişken ve parametre başvuruları için tanıma git
 
-**CTRL + tıklama**ile tanıma geçebilirsiniz veya ekran görüntüsünde gösterildiği gibi bağlam menüsünü kullanarak: ![Visual Studio Code Kaynak Yöneticisi Araçları uzantıları tanıma git](./media/resource-manager-tools-vs-code/resource-manager-tools-extension-context-menu.png)
+**CTRL + tıklama**ile tanıma geçebilirsiniz veya ekran görüntüsünde gösterildiği gibi bağlam menüsünü kullanabilirsiniz: ![Visual Studio Code Kaynak Yöneticisi Araçlar uzantıları tanıma git](./media/resource-manager-tools-vs-code/resource-manager-tools-extension-context-menu.png)
 
 Tanımı, **Ctrl + Alt + tıklama**ile yan yana açabilirsiniz.
 
@@ -121,5 +121,5 @@ Uyarılar şunları içerir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kaynak Yöneticisi ve Kaynak Yöneticisi şablonları hakkında daha fazla bilgi edinmek için bkz. [Azure Resource Manager genel bakış](./resource-group-overview.md).
-- Visual Studio Code kullanarak hızlı başlangıç üzerinden gezinmek için bkz [. hızlı başlangıç: Visual Studio Code kullanarak Azure Resource Manager şablonları oluşturma](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)
+- Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma](template-tutorial-create-first-template.md).
+- Visual Studio Code kullanarak bir hızlı başlangıç üzerinden gezinmek için bkz [. hızlı başlangıç: Visual Studio Code kullanarak Azure Resource Manager şablonları oluşturma](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)

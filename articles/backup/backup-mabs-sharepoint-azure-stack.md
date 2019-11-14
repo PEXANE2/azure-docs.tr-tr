@@ -8,55 +8,65 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: 8200bfb4e99d7847dc1661a4258b2171f24a9aed
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1394ea03874db5e05831100ef7bfec5187f3f4e4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210259"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074143"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Azure Stack bir SharePoint grubunu yedekleme
+
 Azure Stack bir SharePoint grubunu, diğer veri kaynaklarını yedekleyeceğiniz gibi Microsoft Azure Backup sunucusu (MABS) kullanarak Microsoft Azure bir şekilde yedekleyerek. Azure Backup günlük, haftalık, aylık veya yıllık yedekleme noktaları oluşturmak için yedekleme zamanlamasında esneklik sağlar ve çeşitli yedekleme noktaları için bekletme ilkesi seçenekleri sunar. Ayrıca, hızlı kurtarma zamanı hedeflerine (RTO) yönelik yerel disk kopyalarını depolama ve ekonomik, uzun süreli saklama için Azure 'a kopya depolama yeteneği sağlar.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint desteklenen sürümleri ve ilgili koruma senaryoları
+
 MABS için Azure Backup aşağıdaki senaryoları destekler:
 
-| İş yükü | Version | SharePoint dağıtımı | Koruma ve kurtarma |
+| İş yükü | Sürüm | SharePoint dağıtımı | Koruma ve kurtarma |
 | --- | --- | --- | --- |
-| SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010 |Azure Stack sanal makine olarak dağıtılan SharePoint <br> -------------- <br> SQL AlwaysOn | SharePoint grubu kurtarma seçeneklerini koruyun: Disk kurtarma noktalarından kurtarma grubu, veritabanı ve dosya ya da liste öğesi.  Azure kurtarma noktalarından grup ve veritabanı kurtarma. |
+| SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010 |Azure Stack sanal makine olarak dağıtılan SharePoint <br> -------------- <br> SQL AlwaysOn | SharePoint grubu kurtarma seçeneklerini koruyun: kurtarma grubu, veritabanı ve disk kurtarma noktalarından dosya veya liste öğesi.  Azure kurtarma noktalarından grup ve veritabanı kurtarma. |
 
 ## <a name="before-you-start"></a>Başlamadan önce
+
 Bir SharePoint grubunu Azure 'a yedeklemebilmeniz için öncelikle onaylamanız gereken birkaç nokta vardır.
 
 ### <a name="prerequisites"></a>Önkoşullar
+
 Devam etmeden önce, iş yüklerini korumak için [Azure Backup sunucusu yüklediğinizden ve hazırlandığından](backup-mabs-install-azure-stack.md) emin olun.
 
 ### <a name="protection-agent"></a>Koruma Aracısı
+
 Azure Backup Aracısı, SharePoint çalıştıran sunucuda, SQL Server çalıştıran sunucular ve SharePoint grubunun parçası olan diğer tüm sunucular üzerinde yüklü olmalıdır. Koruma aracısının nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [Kurulum koruma Aracısı](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Tek istisna, aracıyı yalnızca tek bir Web ön ucu (WFE) sunucusuna yüklemektir. Azure Backup Sunucusu, yalnızca bir WFE sunucusunda, koruma için giriş noktası olarak kullanılacak şekilde aracı gerektirir.
 
 ### <a name="sharepoint-farm"></a>SharePoint grubu
+
 Gruptaki her 10.000.000 öğe için, MABS klasörünün bulunduğu birimde en az 2 GB alan olması gerekir. Bu alan Katalog oluşturma için gereklidir. MABS 'Lerin belirli öğeleri (site koleksiyonları, siteler, listeler, belge kitaplıkları, klasörler, tek belgeler ve liste öğeleri) kurtarması için, Katalog oluşturma her bir içerik veritabanında bulunan URL 'lerin bir listesini oluşturur. URL 'lerin listesini, MABS Yönetici Konsolu **Kurtarma** görev alanındaki kurtarılabilir öğe bölmesinde görüntüleyebilirsiniz.
 
 ### <a name="sql-server"></a>SQL Server
+
 Azure Backup Sunucusu, LocalSystem hesabı olarak çalışır. SQL Server veritabanlarını yedeklemek için, MABS 'nin, SQL Server çalıştıran sunucu için ilgili hesapta sysadmin ayrıcalıklarına ihtiyacı vardır. Yedekleme yapmadan önce SQL Server çalıştıran sunucuda NT AUTHORITY\SYSTEM ' i *sysadmin* olarak ayarlayın.
 
 SharePoint grubu SQL Server diğer adlarla yapılandırılmış SQL Server veritabanlarına sahipse, SQL Server istemci bileşenlerini MABS 'nin koruduğu ön uç Web sunucusuna yükler.
 
 ### <a name="whats-not-supported"></a>Desteklenmeyen durumlar
+
 * Bir SharePoint grubunu koruyan MABS, arama dizinlerini veya uygulama hizmeti veritabanlarını korumaz. Bu veritabanlarının korumasını ayrı olarak yapılandırmanız gerekecektir.
 * MABS, genişleme dosya sunucusu (SOFS) paylaşımlarında barındırılan SharePoint SQL Server veritabanlarının yedeklemesini sağlamaz.
 
 ## <a name="configure-sharepoint-protection"></a>SharePoint korumasını yapılandırma
+
 SharePoint 'i korumak üzere MABS kullanabilmeniz için, **ConfigureSharePoint. exe**kullanarak SharePoint VSS Yazıcı HIZMETINI (WSS Yazıcı hizmeti) yapılandırmanız gerekir.
 
 **ConfigureSharePoint. exe** ' yi ön uç Web sunucusundaki [Mabs yükleme yolu] \Bin klasöründe bulabilirsiniz. Bu araç, koruma aracısına SharePoint grubu için kimlik bilgilerini sağlar. Tek bir WFE sunucusunda çalıştırırsınız. Birden çok WFE sunucunuz varsa, bir koruma grubu yapılandırdığınızda yalnızca bir tane seçin.
 
 ### <a name="to-configure-the-sharepoint-vss-writer-service"></a>SharePoint VSS Yazıcı hizmetini yapılandırmak için
+
 1. WFE sunucusunda, bir komut isteminde [MABS yükleme konumu] \Bin\ adresine gidin.
 2. ConfigureSharePoint-EnableSharePointProtection girin.
 3. Grup Yöneticisi kimlik bilgilerini girin. Bu hesap, WFE sunucusunda yerel yönetici grubunun bir üyesi olmalıdır. Grup Yöneticisi yerel bir yönetici değilse WFE sunucusunda aşağıdaki izinleri verin:
    * DPM klasörüne (% Program Files%\Microsoft Azure Backup\DPM) WSS_Admin_WPG grubuna Tam Denetim izni verin.
-   * DPM kayıt defteri anahtarına (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager) WSS_Admin_WPG grubuna Okuma erişimi verin.
+   * DPM kayıt defteri anahtarına WSS_Admin_WPG grubuna Okuma erişimi verin (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager).
 
 > [!NOTE]
 > SharePoint grubu yönetici kimlik bilgilerinde bir değişiklik olduğunda ConfigureSharePoint. exe ' yi yeniden çalıştırmanız gerekir.
@@ -64,11 +74,13 @@ SharePoint 'i korumak üzere MABS kullanabilmeniz için, **ConfigureSharePoint. 
 >
 
 ## <a name="back-up-a-sharepoint-farm-by-using-mabs"></a>MABS kullanarak bir SharePoint grubunu yedekleme
+
 Daha önce açıklandığı gibi MABS 'ları ve SharePoint grubunu yapılandırdıktan sonra, SharePoint MABS tarafından korunabilir.
 
 ### <a name="to-protect-a-sharepoint-farm"></a>SharePoint grubunu korumak için
+
 1. MABS Yönetici Konsolu **koruma** sekmesinde **Yeni**' ye tıklayın.
-    ![Yeni koruma sekmesi](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
+    Yeni Koruma sekmesini ![](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
 2. **Yeni koruma grubu oluşturma** Sihirbazı ' nın **koruma grubu türünü seçin** sayfasında **sunucular**' ı seçin ve ardından **İleri**' ye tıklayın.
 
     ![Koruma grubu türünü seçin](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
@@ -80,7 +92,7 @@ Daha önce açıklandığı gibi MABS 'ları ve SharePoint grubunu yapılandırd
    > Koruma Aracısı yüklü olduğunda, sihirbazda sunucusunu görebilirsiniz. MABS de yapısını gösterir. ConfigureSharePoint. exe ' yi çalıştırdığınız için MABS, SharePoint VSS Yazıcı hizmeti ve buna karşılık gelen SQL Server veritabanları ile iletişim kurar ve SharePoint grup yapısını, ilişkili içerik veritabanlarını ve ilgili tüm öğeleri tanır.
    >
    >
-4. **Veri koruma yöntemini seçin** sayfasında, **koruma grubunun**adını girin ve tercih ettiğiniz *koruma yöntemlerinizi*seçin. **İleri**'ye tıklayın.
+4. **Veri koruma yöntemini seçin** sayfasında, **koruma grubunun**adını girin ve tercih ettiğiniz *koruma yöntemlerinizi*seçin. **İleri**’ye tıklayın.
 
     ![Veri koruma yöntemini seçin](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
@@ -88,7 +100,7 @@ Daha önce açıklandığı gibi MABS 'ları ve SharePoint grubunu yapılandırd
    > Disk koruma yöntemi, kısa kurtarma süresi hedeflerini karşılamasına yardımcı olur.
    >
    >
-5. **Kısa dönem hedeflerini belirtin** sayfasında, tercih ettiğiniz **bekletme aralığını** seçin ve yedeklemelerin ne zaman gerçekleşmesini istediğinizi belirleyin.
+5. **Kısa dönem hedeflerini belirtin** sayfasında, tercih ettiğiniz **bekletme aralığını**seçin ve yedeklemelerin ne zaman gerçekleşeceğini belirleyin.
 
     ![Kısa vadeli hedefleri belirtin](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
 
@@ -135,6 +147,7 @@ Daha önce açıklandığı gibi MABS 'ları ve SharePoint grubunu yapılandırd
     ![Özet](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>MABS kullanarak bir SharePoint öğesini diskten geri yükleme
+
 Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve kurtarılması gerekiyor.
 ![MABS SharePoint Protection4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
@@ -151,7 +164,7 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
 5. Ayrıca, çeşitli kurtarma noktalarına göz atabilir ve kurtarılacak bir veritabanı veya öğe seçebilirsiniz. **Tarih > kurtarma zamanı**' nı seçin ve ardından **> SharePoint grubu > kurtarma noktası > öğesi doğru veritabanını**seçin.
 
     ![MABS SharePoint Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Öğeye sağ tıklayın ve ardından **Kurtarma Sihirbazı**'nı açmak için **kurtar** ' ı seçin. **İleri**'ye tıklayın.
+6. Öğeye sağ tıklayın ve ardından **Kurtarma Sihirbazı**'nı açmak için **kurtar** ' ı seçin. **İleri**’ye tıklayın.
 
     ![Kurtarma seçimini İncele](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. Gerçekleştirmek istediğiniz kurtarma türünü seçin ve ardından **İleri**' ye tıklayın.
@@ -175,7 +188,7 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
     MABS, SharePoint öğesini barındıran içerik veritabanını geçici SQL Server örneğine iliştirir. İçerik veritabanından, öğeyi kurtarır ve MABS üzerindeki hazırlama dosyası konumuna koyar. Hazırlama konumunda bulunan kurtarılan öğenin artık SharePoint grubundaki hazırlama konumuna aktarılması gerekir.
 
     ![Hazırlama Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. **Kurtarma seçeneklerini belirtin**' i seçin ve güvenlik ayarlarını SharePoint grubuna uygulayın veya kurtarma noktasının güvenlik ayarlarını uygulayın. **İleri**'ye tıklayın.
+10. **Kurtarma seçeneklerini belirtin**' i seçin ve güvenlik ayarlarını SharePoint grubuna uygulayın veya kurtarma noktasının güvenlik ayarlarını uygulayın. **İleri**’ye tıklayın.
 
     ![Kurtarma seçenekleri](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -196,6 +209,7 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
     >
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>DPM kullanarak bir SharePoint veritabanını Azure 'dan geri yükleme
+
 1. Bir SharePoint içerik veritabanını kurtarmak için, çeşitli kurtarma noktalarına göz atarak (daha önce gösterildiği gibi) ve geri yüklemek istediğiniz kurtarma noktasını seçin.
 
     ![MABS SharePoint Protection8](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection9.png)
@@ -222,10 +236,11 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
 5. Bu noktada, bir SharePoint içerik veritabanını diskten kurtarmak için bu makalenin önceki kısımlarında yer alarak kurtarma adımlarını izleyin.
 
 ## <a name="faqs"></a>SSS
+
 S: SharePoint, SQL AlwaysOn (diskte koruma ile) kullanılarak yapılandırıldıysa bir SharePoint öğesini özgün konuma kurtarabilir miyim?<br>
 Y: Evet, öğe özgün SharePoint sitesine kurtarılabilir.
 
-S: SharePoint, SQL AlwaysOn kullanılarak yapılandırıldıysa bir SharePoint veritabanını özgün konuma kurtarabilir miyim?<br>
+S: SharePoint SQL AlwaysOn kullanılarak yapılandırıldıysa bir SharePoint veritabanını özgün konuma kurtarabilir miyim?<br>
 Y: SharePoint veritabanları SQL AlwaysOn 'da yapılandırıldığı için, kullanılabilirlik grubu kaldırılmadığı takdirde bunlar değiştirilemez. Sonuç olarak, MABS bir veritabanını özgün konumuna geri yükleyemezsiniz. SQL Server bir veritabanını başka bir SQL Server örneğine kurtarabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar

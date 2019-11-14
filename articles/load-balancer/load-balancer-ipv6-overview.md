@@ -1,7 +1,6 @@
 ---
-title: Azure Load Balancer için IPv6 'ya genel bakış
-titlesuffix: Azure Load Balancer
-description: Azure Load Balancer ve yük dengeli VM 'Ler için IPv6 desteğini anlama.
+title: IPv6-Azure Load Balancer genel bakış
+description: Bu öğrenme yoluyla, Azure Load Balancer ve yük dengeli VM 'Ler için IPv6 desteği ile çalışmaya başlayın.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: b4c1fcd6a719f341dcebfd9f4efc4423241ca3dd
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 07dd3ee507f31099e32f18143d2beedf76e83c36
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147337"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077017"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer için IPv6 'ya genel bakış
 
 
 >[!NOTE] 
->Azure Load Balancer iki farklı türü destekler: Temel ve Standart. Bu makalede Temel Yük Dengeleyici anlatılmaktadır. Standart Load Balancer hakkında daha fazla bilgi için bkz. [Standart Load Balancer genel bakış](load-balancer-standard-overview.md).
+>Azure Load Balancer iki farklı türü destekler: Temel ve Standart. Bu makalede Temel Yük Dengeleyici anlatılmaktadır. Standard Load Balancer hakkında daha fazla bilgi için bkz. [Standard Load Balancer’a genel bakış](load-balancer-standard-overview.md).
 
 Temel SKU Internet 'e yönelik yük dengeleyiciler bir IPv6 adresi ile dağıtılabilir. IPv4 bağlantısına ek olarak, bu özellik aşağıdaki özellikleri sağlar:
 

@@ -1,7 +1,6 @@
 ---
 title: Azure Load Balancer sorunlarını giderme
-titlesuffix: Azure Load Balancer
-description: Azure Load Balancer ile ilgili bilinen sorunları giderme
+description: Azure Load Balancer ile ilgili bilinen sorunları nasıl giderebileceğinizi öğrenin.
 services: load-balancer
 documentationcenter: na
 author: chadmath
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 4e0e3cf6067467947bcb799a915a93d1bb342ea1
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: d1c10fa8267131f13d3148ace6c97218a18fd494
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154916"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076917"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer sorunlarını giderme
 
@@ -29,7 +28,7 @@ Bu sayfa, yaygın Azure Load Balancer sorularıyla ilgili sorun giderme bilgiler
 - Load Balancer arkasındaki VM 'Ler sistem durumu araştırmalara yanıt vermiyor 
 - Load Balancer arkasındaki VM 'Ler yapılandırılmış bağlantı noktasındaki trafiğe yanıt vermiyor
 
-## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Ye Load Balancer arkasındaki VM 'Ler sistem durumu araştırmalara yanıt vermiyor
+## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Belirti: Load Balancer arkasındaki VM 'Ler sistem durumu araştırmalara yanıt vermiyor
 Arka uç sunucularının yük dengeleyici kümesine katılması için, araştırma denetimini geçmesi gerekir. Sistem durumu araştırmaları hakkında daha fazla bilgi için bkz. [Load Balancer araştırmalarını anlama](load-balancer-custom-probe-overview.md). 
 
 Load Balancer arka uç havuzu VM 'Leri aşağıdaki nedenlerden biri nedeniyle yoklamalara yanıt vermiyor olabilir: 
@@ -38,7 +37,7 @@ Load Balancer arka uç havuzu VM 'Leri aşağıdaki nedenlerden biri nedeniyle y
 - Güvenlik duvarı veya bir ağ güvenlik grubu Load Balancer arka uç havuzu VM 'lerinde bağlantı noktasını engelliyor 
 - Load Balancer diğer yapılandırma hataları
 
-### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>Neden 1: Load Balancer arka uç havuzu VM 'si uygun değil 
+### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>Neden 1: Load Balancer arka uç havuzu VM 'si sağlıksız 
 
 **Doğrulama ve çözümleme**
 
@@ -55,7 +54,7 @@ VM sağlıklı, ancak araştırmasına yanıt vermiyorsa, olası bir neden araş
 3. Bağlantı noktası durumu **dinleyen**olarak listelenmiyorsa, doğru bağlantı noktasını yapılandırın. 
 4. Alternatif olarak, **dinleme**olarak listelenen başka bir bağlantı noktasını seçin ve yük dengeleyici yapılandırmasını buna göre güncelleştirin.              
 
-### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Neden 3: Güvenlik duvarı veya ağ güvenlik grubu yük dengeleyici arka uç havuzu VM 'lerinde bağlantı noktasını engelliyor  
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Neden 3: güvenlik duvarı veya ağ güvenlik grubu yük dengeleyici arka uç havuzu VM 'lerinde bağlantı noktasını engelliyor  
 VM 'deki güvenlik duvarı araştırma bağlantı noktasını engelliyorsa veya alt ağda veya VM 'de yapılandırılmış bir veya daha fazla ağ güvenlik grubu varsa, araştırmanın bağlantı noktasına erişmesine izin vermez, VM sistem durumu araştırmasına yanıt veremez.          
 
 **Doğrulama ve çözümleme**
@@ -81,7 +80,7 @@ Yukarıdaki tüm nedenler doğru şekilde doğrulanıp çözümlenirse ve arka u
     - Yük dengeleyiciye ulaşmadan önce araştırma paketlerinin başka bir hedefe (muhtemelen UDR aracılığıyla) zorlandığından emin olun. Bu, trafiğin arka uç VM 'ye hiçbir şekilde ulaşmasına neden olabilir. 
 * Araştırma türünü (örneğin, HTTP-TCP) değiştirin ve ağ güvenlik grupları ACL 'lerinde ve güvenlik duvarında karşılık gelen bağlantı noktasını, sorunun araştırma yanıtı yapılandırmasıyla olup olmadığını doğrulayacak şekilde yapılandırın. Durum araştırma yapılandırması hakkında daha fazla bilgi için bkz. [Endpoint Yük Dengeleme sistem durumu araştırma yapılandırması](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
 
-## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Ye Load Balancer arkasındaki VM 'Ler yapılandırılan veri bağlantı noktasındaki trafiğe yanıt vermiyor
+## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Belirti: Load Balancer arkasındaki VM 'Ler, yapılandırılan veri bağlantı noktasındaki trafiğe yanıt vermiyor
 
 Bir arka uç havuzu VM 'si sağlıklı olarak listeleniyorsa ve sistem durumu araştırmasına yanıt verirse, ancak hala yük dengelemeye katılmadığında veya veri trafiğine yanıt vermiyorsa, bunun nedeni aşağıdakilerden biri olabilir: 
 * Load Balancer arka uç havuzu VM 'si, veri bağlantı noktasında dinlemiyor 
@@ -89,7 +88,7 @@ Bir arka uç havuzu VM 'si sağlıklı olarak listeleniyorsa ve sistem durumu ar
 * Aynı VM ve NIC 'den Load Balancer erişme 
 * Katılan Load Balancer arka uç havuzu VM 'sinden Internet Load Balancer ön ucuna erişme 
 
-### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>Neden 1: Load Balancer arka uç havuzu VM 'si, veri bağlantı noktasında dinlemiyor 
+### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>Neden 1: Load Balancer arka uç havuzu VM 'si veri bağlantı noktasında dinlemiyor 
 Bir VM veri trafiğine yanıt vermezse, bunun nedeni hedef bağlantı noktasının katılan VM 'de açık olmaması veya VM 'nin Bu bağlantı noktasını dinlemiyor olması olabilir. 
 
 **Doğrulama ve çözümleme**
@@ -99,7 +98,7 @@ Bir VM veri trafiğine yanıt vermezse, bunun nedeni hedef bağlantı noktasın�
 3. Bağlantı noktası "dınleme" durumu ile listelenmiyorsa, doğru dinleyici bağlantı noktasını yapılandırın 
 4. Bağlantı noktası dinleme olarak işaretlenmişse, olası sorunlar için bu bağlantı noktasındaki hedef uygulamayı kontrol edin. 
 
-### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Neden 2: Ağ güvenlik grubu Load Balancer arka uç havuzu VM 'sinin bağlantı noktasını engelliyor  
+### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Neden 2: ağ güvenlik grubu Load Balancer arka uç havuzu sanal makinesi üzerindeki bağlantı noktasını engelliyor  
 
 Alt ağda veya VM 'de yapılandırılmış bir veya daha fazla ağ güvenlik grubu kaynak IP veya bağlantı noktasını engelliyorsa, VM yanıt veremez.
 
@@ -110,7 +109,7 @@ Alt ağda veya VM 'de yapılandırılmış bir veya daha fazla ağ güvenlik gru
 * Kurallardan herhangi biri trafiği engelliyorsa, veri trafiğine izin vermek için bu kuralları kaldırın ve yeniden yapılandırın.  
 * VM şimdi durum araştırmalara yanıt vermeye başlamışsa test edin.
 
-### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Neden 3: Aynı VM ve ağ arabiriminden Load Balancer erişme 
+### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Neden 3: aynı VM ve ağ arabiriminden Load Balancer erişme 
 
 Bir Load Balancer arka uç VM 'sinde barındırılan uygulamanız aynı ağ arabirimi üzerinden aynı arka uç VM 'sinde barındırılan başka bir uygulamaya erişmeye çalışıyorsa, desteklenmeyen bir senaryodur ve başarısız olur. 
 
@@ -118,7 +117,7 @@ Bir Load Balancer arka uç VM 'sinde barındırılan uygulamanız aynı ağ arab
 * Uygulama başına ayrı arka uç havuzu VM 'lerini yapılandırın. 
 * Her uygulamanın kendi ağ arabirimini ve IP adresini kullanmasını sağlamak için, iki NIC sanal makinelerinde uygulamayı yapılandırın. 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Neden 4: Katılan Load Balancer arka uç havuzu VM 'sinden iç Load Balancer ön ucuna erişme
+### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Neden 4: katılan Load Balancer arka uç havuzu VM 'sinden iç Load Balancer ön uca erişme
 
 Bir sanal ağ içinde bir iç Load Balancer yapılandırıldıysa ve katılımcı arka uç VM 'lerinden biri iç Load Balancer ön uca erişmeye çalışıyorsa, akış kaynak VM 'ye eşlendiğinde sorunlar oluşabilir. Bu senaryo desteklenmez. Ayrıntılı bir tartışma için [sınırlamaları](load-balancer-overview.md#limitations) gözden geçirin.
 

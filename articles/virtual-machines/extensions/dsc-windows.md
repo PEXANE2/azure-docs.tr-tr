@@ -1,5 +1,5 @@
 ---
-title: Azure Istenen durum yapılandırma uzantısı Işleyicisi | Microsoft Docs
+title: Azure Istenen durum yapılandırma uzantısı Işleyicisi
 description: DSC uzantısını kullanarak bir Azure VM 'de PowerShell DSC yapılandırmasını karşıya yükleme ve uygulama
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: ee5a6c732bcb48cd347b8d87b95d2896d7230a08
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092369"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073798"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC Uzantısı
 
@@ -106,21 +106,21 @@ Aşağıdaki JSON, bir Azure Resource Manager şablonunda DSC uzantısının Aya
 
 ### <a name="settings-property-values"></a>Ayarlar özellik değerleri
 
-| Name | Veri Türü | Açıklama
+| Ad | Veri Türü | Açıklama
 | ---- | ---- | ---- |
 | Settings. wmfVersion | string | Sanal makinenize yüklenmesi gereken Windows Management Framework sürümünü belirtir. Bu özelliğin ' en son ' olarak ayarlanması, WMF 'nin en güncel sürümünü yükler. Bu özellik için geçerli olası değerler şunlardır. ' 4,0 ', ' 5,0 ' ve ' Latest '. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer ' Latest '. |
 | Settings. Configuration. URL | string | DSC yapılandırma ZIP dosyanızın indirileceği URL konumunu belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, protectedSettings. configurationUrlSasToken özelliğini SAS belirtecinizin değerine ayarlamanız gerekir. Settings. Configuration. Script ve/veya Settings. Configuration. Function tanımlanmışsa bu özellik gereklidir.
 | Settings. Configuration. Script | string | DSC yapılandırmanızın tanımını içeren betiğin dosya adını belirtir. Bu betik, Configuration. URL özelliği tarafından belirtilen URL 'den indirilen ZIP dosyasının kök klasöründe olmalıdır. Settings. Configuration. URL ve/veya Settings. Configuration. Script tanımlanmışsa bu özellik gereklidir.
 | Settings. Configuration. Function | string | DSC yapılandırmanızın adını belirtir. Adlı yapılandırma, Configuration. Script tarafından tanımlanan betikte bulunmalıdır. Settings. Configuration. URL ve/veya Settings. Configuration. Function tanımlanmışsa bu özellik gereklidir.
-| Settings. configurationArguments | Collection | DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenmeyecektir.
+| Settings. configurationArguments | Koleksiyon | DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenmeyecektir.
 | Settings. configurationData. URL | string | DSC yapılandırmanız için giriş olarak kullanılacak yapılandırma verileri (. pds1) dosyanızın indirileceği URL 'YI belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, protectedSettings. configurationDataUrlSasToken özelliğini SAS belirtecinizin değerine ayarlamanız gerekir.
 | Settings. privacy. dataEnabled | string | Telemetri toplamayı etkinleştirilir veya devre dışı bırakır. Bu özellik için olası tek değerler ' Enable ', ' Disable ', "veya $null. Bu özelliğin boş veya null bırakılması telemetri sağlayacak
-| Settings. Advancedoçen. forcePullAndApply | Bool | Bu ayar, Azure Automation DSC ile düğümleri kaydetmek için uzantı ile çalışma deneyimini iyileştirmek üzere tasarlanmıştır.  Değer ise `$true`, uzantı başarı/başarısızlık döndürmeden önce yapılandırmanın ilk kez çalıştırılmasını bekler.  Değer $false olarak ayarlandıysa, uzantının döndürdüğü durum yalnızca düğümün Azure Otomasyonu durum yapılandırması 'na başarıyla kaydedilip kaydedilmediği ve düğüm yapılandırmasının kayıt sırasında çalıştırılmayacağı anlamına olur.
-| Settings. Advancedoçen. downloadMappings | Collection | WMF ve .NET gibi bağımlılıkları indirmek için alternatif konumlar tanımlar
+| Settings. Advancedoçen. forcePullAndApply | Bool | Bu ayar, Azure Automation DSC ile düğümleri kaydetmek için uzantı ile çalışma deneyimini iyileştirmek üzere tasarlanmıştır.  Değer `$true`ise, uzantı başarı/başarısızlık döndürmeden önce yapılandırmanın ilk kez çalıştırılmasını bekler.  Değer $false olarak ayarlandıysa, uzantının döndürdüğü durum yalnızca düğümün Azure Otomasyonu durum yapılandırması 'na başarıyla kaydedilip kaydedilmediği ve düğüm yapılandırmasının kayıt sırasında çalıştırılmayacağı anlamına olur.
+| Settings. Advancedoçen. downloadMappings | Koleksiyon | WMF ve .NET gibi bağımlılıkları indirmek için alternatif konumlar tanımlar
 
 ### <a name="protected-settings-property-values"></a>Korumalı ayarlar özellik değerleri
 
-| Name | Veri Türü | Açıklama
+| Ad | Veri Türü | Açıklama
 | ---- | ---- | ---- |
 | protectedSettings. configurationArguments | string | DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenir. |
 | protectedSettings.configurationUrlSasToken | string | Configuration. URL tarafından tanımlanan URL 'ye erişmek için SAS belirtecini belirtir. Bu özellik şifrelenir. |
@@ -167,7 +167,7 @@ C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
 | 52 | Uzantı yüklemesi hatası | Bu hatanın iletisi belirli özel durum tarafından sağlanır |
 | 1002 | WMF yüklemesi hatası | WMF yüklenirken hata oluştu. |
 | 1004 | Geçersiz zip paketi | Geçersiz zip; ZIP açılırken hata oluştu |
-| 1100 | Bağımsız Değişken Hatası | Kullanıcı tarafından belirtilen girişte bir sorun olduğunu gösterir. Hatanın iletisi belirli özel durum tarafından sağlanır|
+| 1100 | Bağımsız değişken hatası | Kullanıcı tarafından belirtilen girişte bir sorun olduğunu gösterir. Hatanın iletisi belirli özel durum tarafından sağlanır|
 
 
 ### <a name="support"></a>Destek

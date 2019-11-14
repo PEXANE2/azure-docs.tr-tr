@@ -1,5 +1,6 @@
 ---
-title: Öğretici-Azure portal kullanarak birden çok Web sitesini barındıran bir uygulama ağ geçidi oluşturma
+title: 'Öğretici: Azure portal kullanarak birden çok Web sitesini barındırır'
+titleSuffix: Azure Application Gateway
 description: Bu öğreticide, Azure portal kullanarak birden çok Web sitesini barındıran bir uygulama ağ geçidi oluşturmayı öğreneceksiniz.
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: victorh
-ms.openlocfilehash: 3b6818d68b62b574e49817b574450625c231506c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833566"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075145"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak birden çok Web sitesini barındırmak için bir uygulama ağ geçidi oluşturma ve yapılandırma
 
@@ -21,7 +22,7 @@ ms.locfileid: "73833566"
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Uygulama ağ geçidi oluşturun
+> * Uygulama ağ geçidi oluşturma
 > * Arka uç sunucuları için sanal makineler oluşturma
 > * Arka uç sunucularıyla arka uç havuzları oluşturma
 > * Arka uç dinleyicileri oluşturma
@@ -36,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
-## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturun
+## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
 1. Azure portal sol menüsünde **kaynak oluştur** ' u seçin. **Yeni** pencere görüntülenir.
 

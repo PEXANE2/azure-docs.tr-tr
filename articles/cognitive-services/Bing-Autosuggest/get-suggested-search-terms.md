@@ -1,7 +1,7 @@
 ---
 title: Bing Otomatik Öneri nedir?
 titleSuffix: Azure Cognitive Services
-description: Bing Otomatik Öneri API’sini kullanmayı öğrenin.
+description: Bing Otomatik Öneri API'si, arama kutusundaki kısmi sorgu dizesine göre önerilen sorguların bir listesini döndürür.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 13606fa5a58106575648a39e5074507f5d3bf471
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5b1e4cc8dfc89d6dcc5d29a368e089402b284352
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405377"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072865"
 ---
 # <a name="what-is-bing-autosuggest"></a>Bing Otomatik Öneri nedir?
 
@@ -35,7 +35,7 @@ Bing Otomatik Öneri API'si, HTTP istekleri yapan ve JSON 'u ayrıştırabilen h
 2. Her kullanıcı uygulamanızın arama kutusuna yeni bir karakter yazdığında, bu API 'ye bir istek gönderin.
 3. Döndürülen JSON iletisini ayrıştırarak API yanıtını işleyin.
 
-Genellikle, kullanıcı uygulamanızın arama kutusuna her yeni bir karakter yazdığında bu API 'YI çağırın. Daha fazla karakter girildiğinde, API daha ilgili önerilen arama sorgularını geri döndürür. Örneğin, API 'nin tek başına `s` döndürebilecek öneriler, ' den `sail`daha az ilgili olabilir.
+Genellikle, kullanıcı uygulamanızın arama kutusuna her yeni bir karakter yazdığında bu API 'YI çağırın. Daha fazla karakter girildiğinde, API daha ilgili önerilen arama sorgularını geri döndürür. Örneğin, API 'nin tek bir `s` döndürebileceğinden öneriler, `sail`ait olanlardan daha az ilgili olabilir.
 
 Aşağıdaki örnek, Bing Otomatik Öneri API'si önerilen sorgu koşullarına sahip bir açılan arama kutusunu gösterir.
 

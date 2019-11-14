@@ -1,5 +1,5 @@
 ---
-title: Azure sanal makinesine izleme & tanılaması ekleme | Microsoft Docs
+title: Azure sanal makinesine izleme & tanılaması ekleme
 description: Azure tanılama Uzantısı ile yeni bir Windows sanal makinesi oluşturmak için bir Azure Resource Manager şablonu kullanın.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ba8fdba3b7283185920432b5b096b80b2e32021
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2490c3de60e0deac6a1a4ddc5abc95cb46e240b2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092537"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073837"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanma
 Azure Tanılama uzantısı, Windows tabanlı bir Azure sanal makinesinde izleme ve tanılama özellikleri sağlar. Uzantıyı Azure Resource Manager şablonun bir parçası olarak ekleyerek sanal makinede bu özellikleri etkinleştirebilirsiniz. Bir sanal makine şablonunun parçası olarak herhangi bir uzantı ekleme hakkında daha fazla bilgi için bkz. [VM uzantılarına sahip Azure Resource Manager şablonları yazma](../windows/template-description.md#extensions) . Bu makalede, Azure Tanılama uzantısını bir Windows sanal makine şablonuna nasıl ekleyebileceğiniz açıklanır.  
@@ -77,7 +77,7 @@ Sanal Makine Ölçek Kümeleri için, uzantı yapılandırması *Virtualmachinep
 
 *Ad* özelliğinin değeri, kaynak grubundaki uzantıya başvurmak için kullanılabilir. Bunu özellikle **Microsoft. Insights. VMDiagnosticsSettings** olarak ayarlamak, izleme grafiklerinin Azure Portal doğru görünmesini sağlamak için Azure Portal tarafından kolayca tanımlanmasını sağlar.
 
-*Typehandlerversion* , kullanmak istediğiniz uzantının sürümünü belirtir. *Oto Upgrademinorversion* alt sürümünün **true** olarak ayarlanması, mevcut uzantının en son ikincil sürümünü almanızı sağlar. Her zaman yeni özellikler ve hata düzeltmeleriyle birlikte kullanılabilir en son tanılama uzantısını kullanmak için her zaman her zaman **true** olarak ayarlamanız önerilir. 
+*Typehandlerversion* , kullanmak istediğiniz uzantının sürümünü belirtir. *Oto Upgrademinorversion* alt sürümünün **true** olarak ayarlanması, mevcut uzantının en son ikincil sürümünü almanızı sağlar. Her zaman yeni özellikler ve hata düzeltmeleriyle birlikte kullanılabilir en son tanılama uzantısını kullanmak için her zaman her zaman **true** *olarak ayarlamanız önerilir* . 
 
 *Settings* öğesi, uzantıya (bazen genel yapılandırma olarak adlandırılır) ayarlanabilir ve geri okuyabilen yapılandırma özelliklerini içerir. *Xmlcfg* özelliği, tanılama Aracısı tarafından toplanan tanılama günlükleri, performans sayaçları ve XML tabanlı yapılandırmayı içerir. XML şemasının kendisi hakkında daha fazla bilgi için bkz. [Tanılama yapılandırma şeması](https://msdn.microsoft.com/library/azure/dn782207.aspx) . Ortak bir uygulama, gerçek xml yapılandırmasını Azure Resource Manager şablonunda bir değişken olarak depolayıp, sonra *xmlcfg*için değer ayarlamak üzere bunları birleştirir ve Base64 olarak kodlayayöneliktir. XML 'i değişkenlerde nasıl depolayacağınızı öğrenmek için [Tanılama yapılandırma değişkenleri](#diagnostics-configuration-variables) bölümüne bakın. *Storageaccount* özelliği, tanılama verilerinin aktarıldığı depolama hesabının adını belirtir. 
 
@@ -157,24 +157,24 @@ Bir döngüde birden çok sanal makine oluşturuyorsanız, her bir sanal MAKINEY
 ## <a name="wadmetrics-tables-in-storage"></a>Depolama alanındaki Wadölçümler tabloları
 Yukarıdaki ölçüm yapılandırması, tanılama depolama hesabınızda aşağıdaki adlandırma kurallarıyla tablo oluşturur:
 
-* **Wadölçümler**: Tüm Wadmetrik tabloları için standart ön ek
-* **PT1H** veya **PT1M**: Tablonun 1 saat veya 1 dakikalık toplam verileri içerdiğini belirtir
-* **P10D**: Tablonun veri toplamaya başladığı zaman 10 günlük verileri içereceği anlamına gelir
-* **V2S**: Dize sabiti
-* **YYYYMMDD**: Tablonun veri toplamaya başladığı tarih
+* **Wadölçümler**: tüm wadmetrik tabloları için Standart önek
+* **PT1H** veya **PT1M**: tablonun 1 saat veya 1 dakikalık toplam verileri içerdiğini belirtir
+* **P10D**: tablonun veri toplamaya başladığı zaman 10 günlük verileri içereceği anlamına gelir
+* **V2S**: dize sabiti
+* **YYYYMMDD**: tablonun veri toplamaya başladığı tarih
 
-Örnek: *WADMetricsPT1HP10DV2S20151108* , 11-kas-2015 tarihinden itibaren 10 gün boyunca toplanan ölçüm verilerini içerir    
+Örnek: *WADMetricsPT1HP10DV2S20151108* 11-kas-2015 tarihinden itibaren 10 gün boyunca toplanan ölçüm verilerini içerir    
 
 Her Wadölçümler tablosu şu sütunları içerir:
 
-* **Partitionkey**: Bölüm anahtarı, VM kaynağını benzersiz şekilde tanımlamak için *RESOURCEID* değeri temel alınarak oluşturulur. Örneğin, `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **Rowkey**: Biçimi `<Descending time tick>:<Performance Counter Name>`izler. Azalan zaman değeri hesaplaması, en fazla zaman aralığı toplama döneminin başlangıcının süresinin çıkarılmasıyla elde edilir. Örneğin, 10-Kas-2015 ve 00:00Saat UTC 'de örnek dönem başlatılırsa, hesaplama şöyle olacaktır: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. Kullanılabilir bellek baytları performans sayacı için satır anahtarı şöyle görünür:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
-* **CounterName**: , Performans sayacının adıdır. Bu, XML yapılandırmasında tanımlanan *sayaç belirticisiyle* eşleşir.
-* **En fazla**: Toplama dönemi boyunca performans sayacının maksimum değeri.
-* **En az**: Toplama dönemi boyunca performans sayacının minimum değeri.
-* **Toplam**: Toplama dönemi boyunca raporlanan performans sayacı değerlerinin toplam değeri.
-* **Sayı**: Performans sayacı için raporlanan toplam değer sayısı.
-* **Ortalama**: Toplama dönemi boyunca performans sayacının ortalama (Toplam/sayı) değeri.
+* **Partitionkey**: bölüm anahtarı, VM kaynağını benzersiz şekilde tanımlamak için *RESOURCEID* değeri temel alınarak oluşturulur. Örneğin, `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
+* **Rowkey**: `<Descending time tick>:<Performance Counter Name>`biçimini izler. Azalan zaman değeri hesaplaması, en fazla zaman aralığı toplama döneminin başlangıcının süresinin çıkarılmasıyla elde edilir. Örneğin, 10-Kas-2015 ve 00:00Saat UTC 'de örnek dönem başlatılırsa, hesaplama şöyle olacaktır: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. Kullanılabilir bellek baytları performans sayacı için satır anahtarı şöyle görünür: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **CounterName**: performans sayacının adıdır. Bu, XML yapılandırmasında tanımlanan *sayaç belirticisiyle* eşleşir.
+* **Maksimum**: toplama dönemi boyunca performans sayacının maksimum değeri.
+* **Minimum**: toplama dönemi boyunca performans sayacının minimum değeri.
+* **Toplam**: toplama dönemi boyunca raporlanan performans sayacının tüm değerlerinin toplamı.
+* **Sayı**: performans sayacı için raporlanan toplam değer sayısı.
+* **Average**: toplama dönemi boyunca performans sayacının ortalama (Toplam/sayı) değeri.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * Tanılama uzantısına sahip bir Windows sanal makinesinin tam örnek şablonu için bkz. [201-VM-Monitoring-Diagnostics-Extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   

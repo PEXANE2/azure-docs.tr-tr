@@ -1,18 +1,19 @@
 ---
-title: Azure Application Gateway Azure App Service gibi çok kiracılı arka uçlarına genel bakış
+title: Çok kiracılı arka uçlar
+titleSuffix: Azure Application Gateway
 description: Bu sayfada, Application Gateway’in çok kiracılı arka uç desteği için genel bir bakış sunulmuştur.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 66e4a578e3f443f4cbc3f6e5467cf9a86adf05fe
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: efa2885ce0534c5d78bb08bbf24da59850f6ea22
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297057"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075186"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>App Service gibi çok kiracılı arka uçlar için Application Gateway desteği
 

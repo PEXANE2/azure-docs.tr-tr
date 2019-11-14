@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 049b09f7927da2cc841130a0adeaa90768037db8
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 756fd720b468681b8ea31dc867cfdb6e44c0bb0a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903197"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074991"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri Agent yedeklemelerini yönetme
 
@@ -209,4 +209,4 @@ Verileri korurken korumayı durdurduysanız ve korumayı sürdürmeye karar verd
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Desteklenen senaryolar ve sınırlamalar hakkında daha fazla bilgi için, [Mars Için destek matrisine](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)bakın.
-- Geçici [yedekleme ilkesi saklama davranışı](backup-configure-vault.md#ad-hoc-backup-policy-retention-behavior)hakkında daha fazla bilgi edinin.
+- [İsteğe bağlı yedekleme ilkesi saklama davranışı](backup-configure-vault.md#on-demand-backup-policy-retention-behavior)hakkında daha fazla bilgi edinin.

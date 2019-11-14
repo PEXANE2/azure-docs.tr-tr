@@ -1,19 +1,19 @@
 ---
-title: Azure Application Gateway SSL ilkesini yapılandırma-PowerShell
+title: PowerShell kullanarak SSL ilkesini yapılandırma
+titleSuffix: Azure Application Gateway
 description: Bu makalede, Azure Application Gateway SSL Ilkesini yapılandırma yönergeleri sağlanır
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 12/3/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 5c881a42cdd6fd76c591cf12b341fd777d18baea
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 105b0b3e40e6e9433ee456914cd5babc1d17d036
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018258"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075242"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway SSL ilkesi sürümlerini ve şifre paketlerini yapılandırma
 
@@ -23,7 +23,7 @@ Application Gateway üzerindeki SSL ilkesi sürümlerinin ve şifre paketlerinin
 
 ## <a name="get-available-ssl-options"></a>Kullanılabilir SSL seçeneklerini al
 
-`Get-AzApplicationGatewayAvailableSslOptions` Cmdlet 'i, yapılandırılabilen kullanılabilir önceden tanımlanmış ilkelerin, kullanılabilir şifre paketlerinin ve protokol sürümlerinin bir listesini sağlar. Aşağıdaki örnekte cmdlet 'ini çalıştırmanın örnek bir çıkışı gösterilmektedir.
+`Get-AzApplicationGatewayAvailableSslOptions` cmdlet 'i, yapılandırılabilen kullanılabilir önceden tanımlanmış ilkelerin, kullanılabilir şifre paketlerinin ve protokol sürümlerinin bir listesini sağlar. Aşağıdaki örnekte cmdlet 'ini çalıştırmanın örnek bir çıkışı gösterilmektedir.
 
 ```
 DefaultPolicy: AppGwSslPolicy20150501
@@ -73,9 +73,9 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-ssl-policies"></a>Önceden tanımlanmış SSL Ilkelerini listeleyin
 
-Application Gateway, kullanılabilecek üç önceden tanımlı ilke ile gelir. `Get-AzApplicationGatewaySslPredefinedPolicy` Cmdlet 'i bu ilkeleri alır. Her ilkenin farklı protokol sürümleri ve şifre paketleri etkinleştirilmiştir. Önceden tanımlanmış bu ilkeler, uygulama Ağ geçidinizde bir SSL ilkesini hızlıca yapılandırmak için kullanılabilir. Varsayılan olarak, belirli bir SSL ilkesi tanımlanmamışsa **AppGwSslPolicy20150501** seçilidir.
+Application Gateway, kullanılabilecek üç önceden tanımlı ilke ile gelir. `Get-AzApplicationGatewaySslPredefinedPolicy` cmdlet 'i bu ilkeleri alır. Her ilkenin farklı protokol sürümleri ve şifre paketleri etkinleştirilmiştir. Önceden tanımlanmış bu ilkeler, uygulama Ağ geçidinizde bir SSL ilkesini hızlıca yapılandırmak için kullanılabilir. Varsayılan olarak, belirli bir SSL ilkesi tanımlanmamışsa **AppGwSslPolicy20150501** seçilidir.
 
-Aşağıdaki çıktı, çalıştırmaya `Get-AzApplicationGatewaySslPredefinedPolicy`bir örnektir.
+Aşağıdaki çıktı `Get-AzApplicationGatewaySslPredefinedPolicy`çalıştırmanın bir örneğidir.
 
 ```
 Name: AppGwSslPolicy20150501
@@ -108,9 +108,9 @@ CipherSuites:
 
 ## <a name="configure-a-custom-ssl-policy"></a>Özel bir SSL ilkesi yapılandırma
 
-Özel bir SSL ilkesi yapılandırırken, aşağıdaki parametreleri geçirirsiniz: PolicyType, MinProtocolVersion, CipherSuite ve ApplicationGateway. Diğer parametreleri geçirmeye çalışırsanız, Application Gateway oluştururken veya güncelleştirirken bir hata alırsınız. 
+Özel bir SSL ilkesi yapılandırılırken şu parametreleri geçirirsiniz: PolicyType, MinProtocolVersion, CipherSuite ve ApplicationGateway. Diğer parametreleri geçirmeye çalışırsanız, Application Gateway oluştururken veya güncelleştirirken bir hata alırsınız. 
 
-Aşağıdaki örnek, bir uygulama ağ geçidinde özel bir SSL ilkesi ayarlıyor. En düşük protokol sürümünü olarak `TLSv1_1` ayarlar ve aşağıdaki şifre paketlerini sağlar:
+Aşağıdaki örnek, bir uygulama ağ geçidinde özel bir SSL ilkesi ayarlıyor. En düşük protokol sürümünü `TLSv1_1` olarak ayarlar ve aşağıdaki şifre paketlerini sağlar:
 
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -134,7 +134,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>Önceden tanımlanmış SSL ilkesiyle bir uygulama ağ geçidi oluşturma
 
-Önceden tanımlanmış bir SSL ilkesi yapılandırırken, aşağıdaki parametreleri geçirirsiniz: PolicyType, PolicyName ve ApplicationGateway. Diğer parametreleri geçirmeye çalışırsanız, Application Gateway oluştururken veya güncelleştirirken bir hata alırsınız.
+Önceden tanımlanmış bir SSL ilkesi yapılandırılırken şu parametreleri geçirirsiniz: PolicyType, PolicyName ve ApplicationGateway. Diğer parametreleri geçirmeye çalışırsanız, Application Gateway oluştururken veya güncelleştirirken bir hata alırsınız.
 
 Aşağıdaki örnek, önceden tanımlanmış bir SSL ilkesiyle yeni bir uygulama ağ geçidi oluşturur.
 
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>Mevcut bir uygulama ağ geçidini önceden tanımlanmış SSL ilkesiyle güncelleştirme
 
-Özel bir SSL ilkesi ayarlamak için aşağıdaki parametreleri geçirin: **PolicyType**, **MinProtocolVersion**, **ciphersuite**ve **applicationgateway**. Önceden tanımlanmış bir SSL ilkesi ayarlamak için aşağıdaki parametreleri geçirin: **PolicyType**, **PolicyName**ve **applicationgateway**. Diğer parametreleri geçirmeye çalışırsanız, Application Gateway oluştururken veya güncelleştirirken bir hata alırsınız.
+Özel bir SSL ilkesi ayarlamak için şu parametreleri geçirin: **PolicyType**, **MinProtocolVersion**, **ciphersuite**ve **applicationgateway**. Önceden tanımlanmış bir SSL ilkesi ayarlamak için şu parametreleri geçirin: **PolicyType**, **PolicyName**ve **applicationgateway**. Diğer parametreleri geçirmeye çalışırsanız, Application Gateway oluştururken veya güncelleştirirken bir hata alırsınız.
 
 Aşağıdaki örnekte, hem özel Ilke hem de önceden tanımlanmış Ilke için kod örnekleri mevcuttur. Kullanmak istediğiniz ilkenin açıklamasını kaldırın.
 

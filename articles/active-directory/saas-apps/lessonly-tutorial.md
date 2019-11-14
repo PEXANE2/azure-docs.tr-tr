@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 10/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b038eca3d4e6beb6b1d226a4a7b1e20bfe3bb55a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: fa22b46dabcc5c8b2db5997ffc9b2f2480846d6f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121426"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074648"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>Öğretici: Lesson.ly ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -65,10 +65,10 @@ Lesson.ly tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden 
 Azure AD SSO 'yu Lesson.ly ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[LESSON.ly SSO 'Yu yapılandırın](#configure-lessonly-sso)** .
-    1. Kullanıcının Azure AD gösterimine bağlı olan Lesson.ly 'de B. Simon 'ya karşılık gelen bir **[Lesson.ly test kullanıcısı oluşturun](#create-lessonly-test-user)** .
+    * Kullanıcının Azure AD gösterimine bağlı olan Lesson.ly 'de B. Simon 'ya karşılık gelen bir **[Lesson.ly test kullanıcısı oluşturun](#create-lessonly-test-user)** .
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
@@ -83,15 +83,28 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.lessonly.com/signin`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<companyname>.lessonly.com/signin`
 
     > [!NOTE]
     > Genel bir ada başvururken, **CompanyName** 'in gerçek bir adla değiştirilmesini gerektirir.
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.lessonly.com/auth/saml/metadata`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<companyname>.lessonly.com/auth/saml/metadata`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Lessonly.com istemci destek ekibine](mailto:support@lessonly.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+
+1. Lesson.ly uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+
+    ![image](common/default-attributes.png)
+
+1. Lesson.ly uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+
+    | Ad | Kaynak özniteliği|
+    | ---------------  | ----------------|
+    | urn:oid:2.5.4.42 | Kullanıcı. |
+    | urn:oid:2.5.4.4  | User. soyadı |
+    | urn:oid:0.9.2342.19200300.100.1.3 | Kullanıcı. Mail |
+    | urn: OID: 1.3.6.1.4.1.5923.1.1.1.10 | User. ObjectID |
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -109,9 +122,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**’ tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -137,7 +150,7 @@ Bu bölümde, Lesson.ly 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 ### <a name="create-lessonly-test-user"></a>Lesson.ly test kullanıcısı oluştur
 
-Bu bölümün amacı, Lessonly.com ' de Britta Simon adlı bir Kullanıcı oluşturmaktır. Lessonly.com, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler.
+Bu bölümün amacı, Lessonly.com içinde B. Simon adlı bir Kullanıcı oluşturmaktır. Lessonly.com, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler.
 
 Bu bölümde sizin için herhangi bir eylem öğesi yok. Henüz mevcut değilse, Lessonly.com erişme denemesi sırasında yeni bir Kullanıcı oluşturulacaktır.
 

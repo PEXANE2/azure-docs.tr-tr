@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 03998d214c1fb977741976eca7b878d0c6b577aa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160381"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074079"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Öğretici: MyWorkDrive 'ı Azure Active Directory ile tümleştirme
 
@@ -54,7 +54,7 @@ MyWorkDrive 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galerid
 1. **Galeriden Ekle** bölümünde, arama kutusuna **myworkdrive** yazın.
 1. Sonuçlar panelinden **Myworkdrive** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
 
 **Britta Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu MyWorkDrive ile yapılandırın ve test edin. SSO 'nun çalışması için, MyWorkDrive içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -62,8 +62,8 @@ Azure AD SSO 'yu MyWorkDrive ile yapılandırmak ve test etmek için aşağıdak
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
 2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[MyWorkDrive SSO 'Yu yapılandırın](#configure-myworkdrive-sso)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
+4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
 5. Kullanıcının Azure AD gösterimine bağlı olan MyWorkDrive 'da Britta Simon 'un bir karşılığı olacak şekilde **[myworkdrive test kullanıcısı oluşturun](#create-myworkdrive-test-user)** .
 6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
@@ -100,9 +100,17 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 ### <a name="configure-myworkdrive-sso"></a>MyWorkDrive SSO 'yu yapılandırma
 
-1. Farklı bir Web tarayıcısı penceresinde, bir güvenlik yöneticisi olarak MyWorkDrive ' da oturum açın.
+1. MyWorkDrive içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
 
-2. Yönetim panelindeki MyWorkDrive sunucusunda **kuruluş** ' a tıklayın ve aşağıdaki adımları uygulayın:
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+1. Tarayıcıya Uzantı eklendikten sonra, **Setup MyWorkDrive** öğesine tıkladığınızda sizi myworkdrive uygulamasına yönlendirirsiniz. Buradan, MyWorkDrive 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-4 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+1. MyWorkDrive 'ı el ile ayarlamak istiyorsanız, farklı bir Web tarayıcısı penceresinde, bir güvenlik yöneticisi olarak MyWorkDrive ' da oturum açın.
+
+1. Yönetim panelindeki MyWorkDrive sunucusunda **kuruluş** ' a tıklayın ve aşağıdaki adımları uygulayın:
 
     ![Yönetici](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 
@@ -117,19 +125,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Daha fazla bilgi için, [Myworkdrive Azure AD desteği makalesini](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/)inceleyin.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `BrittaSimon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**’ tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
 Bu bölümde, MyWorkDrive 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştireceksiniz.
 
@@ -137,7 +145,7 @@ Bu bölümde, MyWorkDrive 'a erişim vererek Azure çoklu oturum açma özelliğ
 1. Uygulamalar listesinde, **Myworkdrive**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -149,7 +157,7 @@ Bu bölümde, MyWorkDrive 'a erişim vererek Azure çoklu oturum açma özelliğ
 
 ### <a name="create-myworkdrive-test-user"></a>MyWorkDrive test kullanıcısı oluştur
 
-Bu bölümde, MyWorkDrive 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Myworkdrive platformunda kullanıcıları eklemek için [myworkdrive destek ekibi](mailto:support@myworkdrive.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, MyWorkDrive 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Myworkdrive platformunda kullanıcıları eklemek için [myworkdrive destek ekibi](mailto:support@myworkdrive.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
 ### <a name="test-sso"></a>Test SSO 'SU
 
@@ -157,7 +165,7 @@ Erişim panelinde MyWorkDrive kutucuğunu seçtiğinizde, SSO 'yu ayarladığın
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

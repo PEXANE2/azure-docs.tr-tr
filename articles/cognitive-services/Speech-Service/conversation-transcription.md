@@ -1,7 +1,7 @@
 ---
 title: Konuşma dökümü nedir (Önizleme)-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma dökümü, konuşma tanımayı, konuşmacı tanımayı ve her konuşmacının gerçek zamanlı ve/veya zaman uyumsuz bir şekilde dökümünü sağlamak üzere her konuşmacı (de bilinen olarak da bilinir) birleştiren bir konuşmaya metin çözümüdür. görül. Konuşma dökümü, engelliler ve işitme güçlüğü çeken katılımcılar gibi herkese açık hale getirir.
+description: Konuşma dökümü, konuşma tanımayı, konuşmacı tanımayı ve her konuşmacının gerçek zamanlı ve/veya zaman uyumsuz bir şekilde dökümünü sağlamak üzere her konuşmacı (de bilinen olarak da bilinir) birleştiren bir konuşmaya metin çözümüdür. görül.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: f4b7591d5ddb138db0abbdb673cadc6afd71f315
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0c15b053028bd707159a632c98faaea8b9954a9b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608035"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075841"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>Konuşma dökümü nedir (Önizleme)?
 

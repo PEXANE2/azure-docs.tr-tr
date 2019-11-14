@@ -1,19 +1,19 @@
 ---
-title: Azure Resource Manager şablonları
-description: Kaynakların dağıtımı için Azure Resource Manager şablonlarının nasıl kullanılacağını açıklar.
+title: Azure Resource Manager şablonlarına genel bakış
+description: Kaynak dağıtımı için Azure Resource Manager şablonları kullanma avantajlarını açıklar.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 956450e5a47e4d0e16de44b6bc72c6cb24d05889
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71300147"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074377"
 ---
-# <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
+# <a name="azure-resource-manager-templates-overview"></a>Azure Resource Manager şablonlarına genel bakış
 
 Buluta geçiş sayesinde, birçok ekip çevik geliştirme yöntemlerini benimsemiştir. Bu takımlar hızla yineleyebilir. Çözümlerini buluta sürekli olarak dağıtmaları ve altyapısının güvenilir bir durumda olduğunu bilmeniz gerekir. Altyapı yinelemeli işlemin bir parçası haline geldiği için, işlemler ve geliştirme arasındaki bölme kayboldu. Ekiplerin, Birleşik bir işlem aracılığıyla altyapıyı ve uygulama kodunu yönetmesi gerekir.
 
@@ -125,5 +125,6 @@ Katmanlarınızın farklı yaşam döngülerine sahip olacağını düşünüyor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için bkz. [öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma](template-tutorial-create-first-template.md).
 * Şablon dosyalarındaki özellikler hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](resource-group-authoring-templates.md).
 * Şablonları dışarı aktarma hakkında bilgi edinmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](./resource-manager-quickstart-create-templates-use-the-portal.md).

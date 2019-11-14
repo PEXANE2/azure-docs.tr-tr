@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7440859748a613f7d6af751974e07289175ed7ac
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: b9a292d06ce68d211b5c758e287f2935411c6f12
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968362"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074773"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Yedeklenen SQL Server veritabanlarını yönetme ve izleme
 
@@ -42,7 +42,7 @@ Günlük yedeklemeleri her 15 dakikada bir gerçekleştiğinden, izleme yedeklem
 
 Veritabanı yedekleme uyarılarını izlemek için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Kasa panosunda **Uyarılar ve olaylar**' ı seçin.
 
@@ -117,7 +117,7 @@ Bir SQL veritabanı için korumayı sürdürmesini sağlamak için:
 - Değişiklik yedeği
 - Günlük yedekleme
 
-Yalnızca kopya tam yedekleme için saklama süresini belirtmeniz gerektiğinde, geçici tam yedekleme için bekletme aralığı otomatik olarak geçerli zamandan 45 gün olarak ayarlanır.
+Yalnızca kopya tam yedekleme için saklama süresini belirtmeniz gerektiğinde, isteğe bağlı tam yedekleme için bekletme aralığı otomatik olarak geçerli zamandan 45 gün olarak ayarlanır.
 
 Daha fazla bilgi için bkz. [SQL Server yedekleme türleri](backup-architecture.md#sql-server-backup-types).
 
