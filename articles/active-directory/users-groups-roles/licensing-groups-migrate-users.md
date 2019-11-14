@@ -1,31 +1,31 @@
 ---
-title: Tek tek lisanslı kullanıcıları grup tabanlı lisansa ekleme-Azure Active Directory | Microsoft Docs
+title: Grup lisanslama 'ye doğrudan lisanslı kullanıcılar ekleme-Azure AD | Microsoft Docs
 description: Azure Active Directory kullanarak bireysel kullanıcı lisanlarından grup tabanlı lisansa geçiş yapma
 services: active-directory
 keywords: Azure AD lisanslama
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/26/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ec9c05a7e7d594c64a450fe64e5bb0e0d1b7d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6c06d81f2f3f6cee781889d05ae08a1fd125df52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034773"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025674"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Lisanslama için kullanıcıları bireysel lisanslarla geçirme
 
-Kuruluşlarda "doğrudan atama" aracılığıyla kullanıcılara dağıtılmış mevcut lisanslarınız olabilir; diğer bir deyişle, bireysel kullanıcı lisansları atamak için PowerShell betikleri veya diğer araçları kullanma. Kuruluşunuzdaki lisansları yönetmek için grup tabanlı lisanslama kullanmaya başlamadan önce, bu geçiş planını kullanarak var olan çözümlerin grup tabanlı lisanslamayla sorunsuz bir şekilde değiştirilmesini sağlayabilirsiniz.
+Kuruluşlardaki kullanıcılara doğrudan atama aracılığıyla dağıtılmış mevcut lisanslarınız olabilir; diğer bir deyişle, bireysel kullanıcı lisansları atamak için PowerShell betikleri veya diğer araçları kullanma. Kuruluşunuzdaki lisansları yönetmek için grup tabanlı lisanslama kullanmaya başlamadan önce, bu geçiş planını kullanarak var olan çözümlerin grup tabanlı lisanslamayla sorunsuz bir şekilde değiştirilmesini sağlayabilirsiniz.
 
 Göz önünde bulundurmanız gereken en önemli şey, grup tabanlı lisanslama 'e geçiş yapmak için kullanıcılara Şu anda atanmış lisansların geçici olarak kaybolmasına neden olacak bir durum yapmaktan kaçınmaktır. Lisansların kaldırılmasına neden olabilecek herhangi bir işlem, kullanıcıların hizmetlere ve verilerine erişimi kaybetme riskini ortadan kaldırmaya kaçınılmalıdır.
 
@@ -84,6 +84,6 @@ Grup lisans yönetimi için diğer senaryolar hakkında daha fazla bilgi edinin:
 - [Azure Active Directory 'de grup tabanlı lisanslama nedir?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 - [Azure Active Directory'de gruba lisans atama](licensing-groups-assign.md)
 - [Azure Active Directory'de grubun lisans sorunlarını tanımlama ve çözme](licensing-groups-resolve-problems.md)
-- [Azure Active Directory 'de grup tabanlı lisanslama kullanarak kullanıcıları ürün lisansları arasında geçirme](licensing-groups-change-licenses.md)
+- [Kullanıcılar Azure Active Directory'de Grup tabanlı lisanslama kullanarak ürün lisansları arasında geçirme](licensing-groups-change-licenses.md)
 - [Azure Active Directory grup tabanlı lisanslamayla ilgili ek senaryolar](licensing-group-advanced.md)
-- [Azure Active Directory 'de grup tabanlı lisanslama için PowerShell örnekleri](licensing-ps-examples.md)
+- [Azure Active Directory'de Grup tabanlı lisanslama için PowerShell örnekleri](licensing-ps-examples.md)

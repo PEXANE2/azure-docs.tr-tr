@@ -1,5 +1,5 @@
 ---
-title: Always on kullanılabilirlik grubu dinleyicilerini yapılandırma – Microsoft Azure | Microsoft Docs
+title: Kullanılabilirlik grubu dinleyicilerini & yük dengeleyiciyi yapılandırma (PowerShell)
 description: Bir veya daha fazla IP adresi olan bir iç yük dengeleyici kullanarak Azure Resource Manager modelinde kullanılabilirlik grubu dinleyicilerini yapılandırın.
 services: virtual-machines
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 7d6427e88960ec3ff550affb1624dd82e561a6bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 83910c2209b5d3d3d67578ae41afb902bc885171
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102186"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037468"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Bir veya daha fazla Always on kullanılabilirlik grubu dinleyicisi yapılandırma-Kaynak Yöneticisi
 Bu konuda nasıl yapılacağı gösterilmektedir:
@@ -57,28 +58,28 @@ Azure ağ güvenlik grubuyla erişimi kısıtladığınız takdirde, izin ver ku
 
 ## <a name="determine-the-load-balancer-sku-required"></a>Gerekli yük dengeleyici SKU 'sunu belirleme
 
-[Azure yük dengeleyici](../../../load-balancer/load-balancer-overview.md) 2 SKU 'da kullanılabilir: Temel & standart. Standart yük dengeleyici önerilir. Sanal makineler bir kullanılabilirlik kümesinde ise, temel yük dengeleyiciye izin verilir. Standart yük dengeleyici, tüm VM IP adreslerinin standart IP adreslerini kullanmasını gerektirir.
+[Azure yük dengeleyici](../../../load-balancer/load-balancer-overview.md) , 2 SKU 'da kullanılabilir: temel & standart. Standart yük dengeleyici önerilir. Sanal makineler bir kullanılabilirlik kümesinde ise, temel yük dengeleyiciye izin verilir. Standart yük dengeleyici, tüm VM IP adreslerinin standart IP adreslerini kullanmasını gerektirir.
 
 Bir kullanılabilirlik grubu için geçerli [Microsoft şablonu](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) , temel IP adresleriyle temel bir yük dengeleyici kullanır.
 
-Bu makaledeki örneklerde standart yük dengeleyici verilmiştir. Örneklerde, komut dosyası içerir `-sku Standard`.
+Bu makaledeki örneklerde standart yük dengeleyici verilmiştir. Örneklerde, komut dosyası `-sku Standard`içerir.
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
-Temel yük dengeleyici oluşturmak için yük dengeleyiciyi `-sku Standard` oluşturan satırdan kaldırın. Örneğin:
+Temel bir yük dengeleyici oluşturmak için yük dengeleyiciyi oluşturan satırdan `-sku Standard` kaldırın. Örneğin:
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
 ```
 
-## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Örnek komut dosyası: PowerShell ile iç yük dengeleyici oluşturma
+## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Örnek betik: PowerShell ile iç yük dengeleyici oluşturma
 
 > [!NOTE]
 > Kullanılabilirlik grubunuzu [Microsoft şablonuyla](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)oluşturduysanız, iç yük dengeleyici zaten oluşturulmuştur.
 
-Aşağıdaki PowerShell betiği, bir iç yük dengeleyici oluşturur, Yük Dengeleme kurallarını yapılandırır ve yük dengeleyici için bir IP adresi ayarlar. Betiği çalıştırmak için Windows PowerShell ISE açın ve betiği Betik bölmesine yapıştırın. PowerShell `Connect-AzAccount` 'de oturum açmak için kullanın. Birden çok Azure aboneliğiniz varsa, aboneliği ayarlamak `Select-AzSubscription` için kullanın. 
+Aşağıdaki PowerShell betiği, bir iç yük dengeleyici oluşturur, Yük Dengeleme kurallarını yapılandırır ve yük dengeleyici için bir IP adresi ayarlar. Betiği çalıştırmak için Windows PowerShell ISE açın ve betiği Betik bölmesine yapıştırın. PowerShell 'de oturum açmak için `Connect-AzAccount` kullanın. Birden çok Azure aboneliğiniz varsa, aboneliği ayarlamak için `Select-AzSubscription` kullanın. 
 
 ```powershell
 # Connect-AzAccount
@@ -128,7 +129,7 @@ foreach($VMName in $VMNames)
     }
 ```
 
-## <a name="Add-IP"></a>Örnek komut dosyası: PowerShell ile mevcut yük dengeleyiciye bir IP adresi ekleme
+## <a name="Add-IP"></a>Örnek betik: PowerShell ile mevcut yük dengeleyicisine bir IP adresi ekleme
 Birden fazla kullanılabilirlik grubu kullanmak için yük dengeleyicisine ek bir IP adresi ekleyin. Her IP adresi kendi yük dengeleme kuralını, araştırma bağlantı noktasını ve ön bağlantı noktasını gerektirir.
 
 Ön uç bağlantı noktası, uygulamaların SQL Server örneğine bağlanmak için kullandığı bağlantı noktasıdır. Farklı kullanılabilirlik gruplarının IP adresleri aynı ön uç bağlantı noktasını kullanabilir.
@@ -188,7 +189,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. SQL Server Management Studio başlatın ve birincil çoğaltmaya bağlanın.
 
-1. **AlwaysOn yüksek kullanılabilirlik** | **kullanılabilirlik grupları** | **kullanılabilirlik grubu dinleyicileri**' ne gidin. 
+1. **Kullanılabilirlik grubu dinleyicilerine** | **AlwaysOn yüksek kullanılabilirlik** | **kullanılabilirlik grupları** ' na gidin. 
 
 1. Artık Yük Devretme Kümesi Yöneticisi oluşturduğunuz dinleyici adını görmeniz gerekir. Dinleyici adına sağ tıklayın ve **Özellikler**' e tıklayın.
 

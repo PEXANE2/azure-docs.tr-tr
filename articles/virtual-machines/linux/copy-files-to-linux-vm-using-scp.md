@@ -1,5 +1,5 @@
 ---
-title: SCP ile Azure Linux VM 'lerine/dosyalarından dosya taşıma | Microsoft Docs
+title: SCP ile Azure Linux VM 'lerine/dosyalarından dosya taşıma
 description: SCP 'yi ve SSH anahtar çiftini kullanarak Azure 'da Linux VM 'ye ve bu sanal makineye dosyaları güvenle taşıyın.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 56b264b61976607a3afdaa7a6ec7dc5da2091aba
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d78a8e59a55718048df2022cec75c7a2b56f1a6b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173944"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036593"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>SCP kullanarak bir Linux VM 'ye veya buradan dosya taşıma
 
@@ -48,9 +48,9 @@ scp azureuser@azurehost:directory/file targetfile
 
 ## <a name="ssh-key-pair-authentication"></a>SSH anahtar çifti kimlik doğrulaması
 
-SCP, aktarım katmanı için SSH kullanır. SSH, hedef konaktaki kimlik doğrulamasını işler ve dosyayı SSH ile varsayılan olarak belirtilen şifrelenmiş bir tünelde alır. SSH kimlik doğrulaması için, Kullanıcı adları ve parolalar kullanılabilir. Ancak, SSH ortak ve özel anahtar kimlik doğrulaması, en iyi güvenlik uygulaması olarak önerilir. SSH bağlantıyı doğrulandıktan sonra, SCP dosyayı kopyalamaya başlar. Düzgün şekilde yapılandırılmış `~/.ssh/config` ve SSH ortak ve özel anahtarları kullanarak, yalnızca bir sunucu adı (veya IP adresi) kullanılarak SCP bağlantısı oluşturulabilir. Yalnızca bir SSH anahtarınız varsa, SCP `~/.ssh/` dizinde arar ve sanal makinede oturum açmak için varsayılan olarak kullanır.
+SCP, aktarım katmanı için SSH kullanır. SSH, hedef konaktaki kimlik doğrulamasını işler ve dosyayı SSH ile varsayılan olarak belirtilen şifrelenmiş bir tünelde alır. SSH kimlik doğrulaması için, Kullanıcı adları ve parolalar kullanılabilir. Ancak, SSH ortak ve özel anahtar kimlik doğrulaması, en iyi güvenlik uygulaması olarak önerilir. SSH bağlantıyı doğrulandıktan sonra, SCP dosyayı kopyalamaya başlar. Düzgün yapılandırılmış bir `~/.ssh/config` ve SSH ortak ve özel anahtarları kullanarak, yalnızca bir sunucu adı (veya IP adresi) kullanılarak SCP bağlantısı oluşturulabilir. Yalnızca bir SSH anahtarınız varsa, SCP onu `~/.ssh/` dizininde arar ve varsayılan olarak VM 'de oturum açmak için kullanır.
 
-`~/.ssh/config` Ve SSH ortak ve özel anahtarlarınızı yapılandırma hakkında daha fazla bilgi için bkz. [SSH anahtarları oluşturma](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+`~/.ssh/config` ve SSH ortak ve özel anahtarlarınızı yapılandırma hakkında daha fazla bilgi için bkz. [SSH anahtarları oluşturma](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="scp-a-file-to-a-linux-vm"></a>SCP 'yi Linux sanal makinesine bir dosya
 
@@ -72,7 +72,7 @@ Aşağıdaki komut, Azure VM 'deki */Home/azureuser/logs/* dizinindeki dosyalar�
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-`-r` CLI bayrağı, SCP 'nin dosyaları ve dizinleri komutta listelenen dizin noktasından yinelemeli olarak kopyalamasını ister.  Ayrıca, komut satırı sözdiziminin bir `cp` kopyalama komutuna benzer olduğuna dikkat edin.
+`-r` CLI bayrağı, SCP 'nin dosyaları ve dizinleri komutta listelenen dizin noktasından yinelemeli olarak kopyalamasını ister.  Ayrıca, komut satırı sözdiziminin `cp` Copy komutuna benzer olduğuna dikkat edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

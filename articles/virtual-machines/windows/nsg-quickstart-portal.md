@@ -1,5 +1,5 @@
 ---
-title: Azure portal kullanarak bir VM 'ye bağlantı noktası açma | Microsoft Docs
+title: Azure portal kullanarak bir VM 'ye bağlantı noktalarını açma
 description: Azure portalındaki Resource Manager dağıtım modelini kullanarak bir bağlantı noktasını açmayı veya Windows VM 'nize bir uç nokta oluşturmayı öğrenin
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: f9edee7a0ff19a536d0ea719ede6d0cd2e9d6ac7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe9b0f590dbb728a54ac66fcaa49bf3d00417e41
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102642"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033101"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure portal bir sanal makineye bağlantı noktaları açma
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
-[https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
+https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
 1. VM için kaynak grubunu arayıp seçin, **Ekle**' yi seçin ve **ağ güvenlik grubu**' nu arayıp seçin.
 
-2. **Oluştur**’u seçin.
+2. **Oluştur**'u seçin.
 
     **Ağ güvenlik grubu oluştur** penceresi açılır.
 

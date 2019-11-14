@@ -1,5 +1,5 @@
 ---
-title: Klasik ' e Azure Resource Manager geçiş sırasında sık karşılaşılan hatalar | Microsoft Docs
+title: Klasik modelden Azure Resource Manager’a geçiş sırasında sık karşılaşılan hatalar
 description: Bu makalede, IaaS kaynaklarının Azure Service Management 'tan Azure Resource Manager yığınına geçirilmesi sırasında en yaygın hatalar ve azaltmaları kataloglanır.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 40c6e85dc9976a2304cfbb29cee7f575d7aaecf1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e448559bbf0179cc6d5003d89f3f9b108f8ebb2d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005743"
+ms.locfileid: "74033284"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Klasik modelden Azure Resource Manager’a geçiş sırasında sık karşılaşılan hatalar
 [!INCLUDE [virtual-machines-common-migration-errors](../../../includes/virtual-machines-common-classic-resource-manager-migration-common-errors.md)]

@@ -1,5 +1,5 @@
 ---
-title: Ve Kaynak Yöneticisi şablonu kullanarak C# VM dağıtma | Microsoft Docs
+title: Ve Kaynak Yöneticisi şablonu kullanarak C# VM dağıtma
 description: Azure VM dağıtmak için ve C# Kaynak Yöneticisi şablonu kullanmayı öğrenin.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 65ce7711786e15a5455d91ce829a3bc0bdf4317d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c88b060104a4c17e3edad2e23cfb23a54661b969
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103239"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033809"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Bir Azure sanal makinesini ve Kaynak Yöneticisi C# şablonu kullanarak dağıtma
 
@@ -35,7 +35,7 @@ Bu adımda, Visual Studio 'nun yüklü olduğundan ve şablonu dağıtmak için 
 
 1. Henüz yapmadıysanız, [Visual Studio 'yu](https://docs.microsoft.com/visualstudio/install/install-visual-studio)yükleyemezsiniz. Iş yükleri sayfasında **.net masaüstü geliştirme** ' yi seçin ve ardından **yükler**' i tıklatın. Özet içinde, **.NET Framework 4-4,6 geliştirme araçlarının** sizin için otomatik olarak seçili olduğunu görebilirsiniz. Visual Studio 'Yu önceden yüklediyseniz, Visual Studio başlatıcısı 'nı kullanarak .NET iş yükünü ekleyebilirsiniz.
 2. Visual Studio’da, **Dosya** > **Yeni** > **Proje**’ye tıklayın.
-3. Şablonlar > **görseli C#** ' nde **konsol uygulaması (.NET Framework)** seçeneğini belirleyin, projenin adı için *myDotnetProject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
+3. **Visual C#**  > **Şablonlar** ' da **konsol uygulaması (.NET Framework)** seçeneğini belirleyin, projenin adı için *myDotnetProject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
 
 ## <a name="install-the-packages"></a>Paketleri yükler
 
@@ -55,7 +55,7 @@ Bu adımda, şablona parametre değerleri sağlayan bir şablon dosyası ve bir 
 
 ### <a name="create-the-template-file"></a>Şablon dosyası oluşturma
 
-1. Çözüm Gezgini ' de, *myDotnetProject* > **Yeni öğe** **Ekle** > ' ye sağ tıklayın ve ardından *görsel C# öğelerde* **metin dosyası** ' nı seçin. *Createvmtemplate. JSON*dosyasını adlandırın ve ardından **Ekle**' ye tıklayın.
+1. Çözüm Gezgini ' de, > *myDotnetProject* ' ye sağ tıklayıp **Yeni > öğe** **Ekle** ' ye sağ tıklayın ve *ardından C# görsel öğelerde* **metin dosyası** seçin. *Createvmtemplate. JSON*dosyasını adlandırın ve ardından **Ekle**' ye tıklayın.
 2. Bu JSON kodunu oluşturduğunuz dosyaya ekleyin:
 
     ```json
@@ -167,7 +167,7 @@ Bu adımda, şablona parametre değerleri sağlayan bir şablon dosyası ve bir 
 
 Şablondaki kaynak parametrelerinin değerlerini belirtmek için değerleri içeren bir parametre dosyası oluşturursunuz.
 
-1. Çözüm Gezgini ' de, *myDotnetProject* > **Yeni öğe** **Ekle** > ' ye sağ tıklayın ve ardından *görsel C# öğelerde* **metin dosyası** ' nı seçin. *Parameters. JSON*dosyasını adlandırın ve ardından **Ekle**' ye tıklayın.
+1. Çözüm Gezgini ' de, > *myDotnetProject* ' ye sağ tıklayıp **Yeni > öğe** **Ekle** ' ye sağ tıklayın ve *ardından C# görsel öğelerde* **metin dosyası** seçin. *Parameters. JSON*dosyasını adlandırın ve ardından **Ekle**' ye tıklayın.
 2. Bu JSON kodunu oluşturduğunuz dosyaya ekleyin:
 
     ```json
@@ -187,7 +187,7 @@ Bu adımda, şablona parametre değerleri sağlayan bir şablon dosyası ve bir 
 
 Bir şablonu dağıtabilmeniz için önce bir [Active Directory Hizmet sorumlusuna](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)erişiminizin olduğundan emin olun. Hizmet sorumlusu ' ndan Azure Resource Manager kimlik doğrulaması için bir belirteç elde edersiniz. Ayrıca, yetkilendirme dosyasında ihtiyaç duyduğunuz uygulama KIMLIĞI, kimlik doğrulama anahtarı ve kiracı KIMLIĞINI de kaydetmeniz gerekir.
 
-1. Çözüm Gezgini ' de, *myDotnetProject* > **Yeni öğe** **Ekle** > ' ye sağ tıklayın ve ardından *görsel C# öğelerde* **metin dosyası** ' nı seçin. Dosyayı *azureauth. Properties*olarak adlandırın ve **Ekle**' ye tıklayın.
+1. Çözüm Gezgini ' de, > *myDotnetProject* ' ye sağ tıklayıp **Yeni > öğe** **Ekle** ' ye sağ tıklayın ve *ardından C# görsel öğelerde* **metin dosyası** seçin. Dosyayı *azureauth. Properties*olarak adlandırın ve **Ekle**' ye tıklayın.
 2. Şu yetkilendirme özelliklerini ekleyin:
 
     ```
@@ -201,7 +201,7 @@ Bir şablonu dağıtabilmeniz için önce bir [Active Directory Hizmet sorumlusu
     graphURL=https://graph.windows.net/
     ```
 
-    Abonelik **&lt;&gt;** tanımınızla, **uygulamakimliği&gt; Active Directory uygulama tanımlayıcısı, kimlik doğrulama anahtarı ile abonelik kimliğini değiştirin &lt;** **&lt; uygulama&gt;** anahtarı ve kiracı kimliğiyle kiracı **kimliği&gt;. &lt;**
+    **&lt;abonelik kimliği&gt;** abonelik tanımınızla değiştirin, **uygulama kimliği&gt;** Active Directory uygulama tanımlayıcısı ile&lt;,&lt;**kimlik doğrulama anahtarı** ile uygulama anahtarı ve&gt;**Kiracı kimliği**&lt;kiracı tanımlayıcısı ile&gt;.
 
 3. Azureauth. Properties dosyasını kaydedin.
 4. Windows adlandırılmış AZURE_AUTH_LOCATION içinde, oluşturduğunuz yetkilendirme dosyasının tam yolu ile bir ortam değişkeni ayarlayın, örneğin, aşağıdaki PowerShell komutunu kullanabilirsiniz:

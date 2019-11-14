@@ -1,5 +1,5 @@
 ---
-title: SQL Server IaaS aracı uzantısını kullanarak Azure sanal makinelerinde yönetim görevlerini otomatikleştirme | Microsoft Docs
+title: IaaS Aracısı Uzantısı ile yönetim görevlerini otomatikleştirme
 description: Bu makalede, belirli SQL Server yönetim görevlerini otomatikleştiren SQL Server IaaS aracı uzantısının nasıl yönetileceği açıklanır. Bunlar otomatik yedekleme, otomatik düzeltme eki uygulama ve Azure Key Vault tümleştirmeyi içerir.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,12 +16,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3240bb689447c16de8c62e9e8118b0b0df2b1ea3
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 9aae386e21df6711fc4984a7abfd34f418399f76
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259418"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034191"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Aracısı uzantısını kullanarak Azure sanal makinelerinde yönetim görevlerini otomatikleştirme
 > [!div class="op_single_selector"]
@@ -120,7 +121,7 @@ Uzantının yüklendiğini doğrulamak için bir yol, Azure portal aracı durumu
     $sqlext.AutoBackupSettings
    ```
 
-## <a name="removal"></a>Çıkarma
+## <a name="removal"></a>Kaldırılmasını
 Azure portal, sanal makine özelliklerinin **Uzantılar** penceresinde üç nokta simgesini seçerek uzantıyı kaldırabilirsiniz. Ardından **Sil**’i seçin.
 
 ![Azure portal IaaS Aracısı uzantısı SQL Server kaldırılıyor](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)

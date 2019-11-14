@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Windows VM görüntülerini seçin | Microsoft Docs
+title: Azure 'da Windows VM görüntülerini seçme
 description: Market VM görüntüleri için yayımcı, teklif, SKU ve sürümü öğrenmek için Azure PowerShell kullanın.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 32264fc6c58dd1cb6c1514af1c07391ab0e9193d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2388b51c8103b6bcbae0c32d3c4d78a176caf282
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749593"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039530"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Azure Market 'te Azure PowerShell ile Windows VM görüntülerini bulma
 

@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure’da Linux VM’ler için Azure Güvenlik Merkezi’ni kullanma | Microsoft Docs
+title: Öğretici-Azure 'da Linux sanal makineleri için Azure Güvenlik Merkezi 'Ni kullanma
 description: Bu öğreticide, Azure’da Linux sanal makinelerinizi korumaya ve güvenliğini sağlamaya yardımcı olmak için Azure Güvenlik Merkezi özelliklerini öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ac5c95fa51ca5032f5d3e057af2064f872ea15c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4046aac5e8362bf315eca11d9cd96a6e862e2c55
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081703"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034598"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Öğretici: Linux sanal makinelerini izlemek için Azure Güvenlik Merkezi 'ni kullanma
+# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Öğretici: Linux sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
 
 Azure Güvenlik Merkezi, Azure kaynak güvenliği uygulamalarınıza yönelik görünürlük elde etmenize yardımcı olabilir. Güvenlik Merkezi, tümleşik güvenlik izleme işlevi sunar. Gözden kaçabilecek tehditleri algılayabilir. Bu öğreticide, Azure Güvenlik Merkezi hakkında bilgi edinecek ve aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
  

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2270cd8ace347992f6a5a1166986b878404fc7fe
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 741d4718b5e6140f4ddd2bb22e1a2ec830763176
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954028"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74029941"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V sanal makineleri için Azure’da olağanüstü durum kurtarma ayarlama
 
@@ -32,8 +32,6 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!NOTE]
 > Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir. Mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. Ayrıntılı yönergeler için [Site Recovery belgelerinin](https://docs.microsoft.com/azure/site-recovery) **nasıl yapılır kılavuzlarındaki** makaleleri gözden geçirin.
 
-> [!WARNING]
-> Lütfen SCVMM yapılandırması 'nın hesapta kullanılması için ASR desteğinin yakında kullanım dışı olacağını unutmayın. bu nedenle, devam etmeden önce [kullanımdan](scvmm-site-recovery-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
 
 
 ## <a name="before-you-begin"></a>Başlamadan önce

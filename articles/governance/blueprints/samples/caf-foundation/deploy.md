@@ -1,18 +1,14 @@
 ---
 title: CAF Foundation şema örnek dağıtma adımları
 description: CAF Foundation şema örneğinin adımlarını dağıtın.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
-ms.service: blueprints
-ms.custom: fasttrack-new
-ms.openlocfilehash: a7daf460e65c294b464f9a5deb5d9676b762c5f7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ad5d7ce2fb895032f9ae5d19ee6d2978830ccc89
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163580"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038474"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Azure Foundation şema örneği için Microsoft bulut benimseme çerçevesini dağıtma
 
@@ -109,7 +105,7 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |İzin verilen depolama hesabı SKU'ları|İlke ataması|Policy_Allowed-StorageAccount-SKU 'Lar|Tanılama günlük depolama hesaplarında kullanılan SKU|
 |İzin verilen sanal makine SKU 'Ları|İlke ataması|Policy_Allowed-VM-SKU 'Lar|İzin verilen sanal makine SKU 'Ları|
 |Kaynak gruplarına CostCenter etıketı Ekle|İlke ataması|Policy_CostCenter_Tag|Maliyetmerkezi etıketını ve değerini kaynak grubundan ekleyin|
-|Ortamınızda izin vermek istemediğiniz kaynak türleri|İlke ataması|İlke _Izin verilen-kaynak türleri|Ortamınızda izin vermek istediğiniz Azure kaynakları|
+|Ortamınızda izin vermek istemediğiniz kaynak türleri|İlke ataması|İlke _Allowed-kaynak türleri|Ortamınızda izin vermek istediğiniz Azure kaynakları|
 |Key Vault dağıt|Resource Manager şablonu|KV-AccessPolicy|**Kilitli** -Azure AD grubu veya kullanıcı <Object ID> Key Vault içindeki izinleri vermek için|
 |Log Analytics dağıt|Resource Manager şablonu|LogAnalytics_DataRetention|**Kilitli** -Log Analytics verilerin tutulacağı gün sayısı|
 |Log Analytics dağıt|Resource Manager şablonu|LogAnalytics_Location|Çalışma alanı oluşturulurken kullanılan **kilitli** bölge|
@@ -121,7 +117,7 @@ CAF Foundation şema örneğini dağıtma adımlarını gözden geçirdiğinize 
 > [!div class="nextstepaction"]
 > [CAF Foundation şema-genel bakış](./index.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

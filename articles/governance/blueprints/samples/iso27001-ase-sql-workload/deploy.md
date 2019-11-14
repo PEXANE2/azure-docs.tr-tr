@@ -1,17 +1,14 @@
 ---
 title: ISO 27001 Ao/SQL iş yükü şeması örnek-dağıtım adımları
 description: ISO 27001 App Service ortamı/SQL veritabanı iş yükü şeması 'nın, şema yapıt parametresi ayrıntıları dahil olmak üzere adımlarını dağıtın.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 4836287f5308ffb11bf145b715dfd6f73672c038
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: edcf9920f3a65c182240da735b1883b3d67da650
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163468"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032133"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 App Service Ortamı/SQL veritabanı iş yükü şeması örneğini dağıtma
 
@@ -114,12 +111,12 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|Log Analytics kaynak grubu|Kaynak grubu|Adı|**Kilitli** -kaynak grubunu benzersiz hale getirmek için **kuruluş adını** `-workload-log-rg` ile birleştirir.|
+|Log Analytics kaynak grubu|Kaynak grubu|Ad|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-workload-log-rg` ile **kuruluş adını** art arda ekler.|
 |Log Analytics kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Log Analytics şablonu|Resource Manager şablonu|Hizmet katmanı|Log Analytics çalışma alanının katmanını ayarlar. Varsayılan değer _PerNode_değeridir.|
 |Log Analytics şablonu|Resource Manager şablonu|Günlük tutma gün sayısı|Gün cinsinden veri saklama. Varsayılan değer _365_' dir.|
 |Log Analytics şablonu|Resource Manager şablonu|Konum|Log Analytics çalışma alanını oluşturmak için kullanılan bölge. Varsayılan değer _Batı ABD 2_.|
-|Ağ kaynak grubu|Kaynak grubu|Adı|**Kilitli** -kaynak grubunu benzersiz hale getirmek için **kuruluş adını** `-workload-net-rg` ile birleştirir.|
+|Ağ kaynak grubu|Kaynak grubu|Ad|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-workload-net-rg` ile **kuruluş adını** art arda ekler.|
 |Ağ kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Ağ güvenlik grubu şablonu|Resource Manager şablonu|Günlük tutma gün sayısı|Gün cinsinden veri saklama. Varsayılan değer _365_' dir.|
 |Sanal ağ ve yol tablosu şablonu|Resource Manager şablonu|Azure Güvenlik Duvarı özel IP 'si|[Azure Güvenlik duvarının](../../../../firewall/overview.md)özel IP 'sini yapılandırır. _Iso 27001: paylaşılan hizmetler_ yapıt parametresi **Azure Güvenlik Duvarı alt ağ adresi ön eki**' nde tanımlanan CIDR gösteriminin bir parçası olmalıdır. Varsayılan değer _10.0.4.4_' dir.|
@@ -127,21 +124,21 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |Sanal ağ ve yol tablosu şablonu|Resource Manager şablonu|Sanal ağ adresi ön eki|Sanal ağın CıDR gösterimi. Varsayılan değer _10.1.0.0/16_' dır.|
 |Sanal ağ ve yol tablosu şablonu|Resource Manager şablonu|Varsayılan alt ağ adresi ön eki|Sanal ağ varsayılan alt ağının CıDR gösterimi. Varsayılan değer _10.1.0.0/16_' dır.|
 |Sanal ağ ve yol tablosu şablonu|Resource Manager şablonu|IP adresi ekler|İlk VM 'yi ekleyen IP adresi. Bu değer özel VNET DNS olarak kullanılır.|
-|Key Vault kaynak grubu|Kaynak grubu|Adı|**Kilitli** -kaynak grubunu benzersiz hale getirmek için **kuruluş adını** `-workload-kv-rg` ile birleştirir.|
+|Key Vault kaynak grubu|Kaynak grubu|Ad|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-workload-kv-rg` ile **kuruluş adını** art arda ekler.|
 |Key Vault kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Key Vault şablonu|Resource Manager şablonu|AAD nesne KIMLIĞI|Key Vault örneğine erişim gerektiren hesabın AAD nesne tanımlayıcısı. Varsayılan değer olmadığından boş bırakılamaz. Azure portal bu değeri bulmak için, _Hizmetler_altında "kullanıcılar" ı arayın ve seçin. Hesap adını filtrelemek için _ad_ kutusunu kullanın ve bu hesabı seçin. _Kullanıcı profili_ sayfasında, _nesne kimliğinin_yanındaki "kopyalamak için tıklayın" simgesini seçin.|
 |Key Vault şablonu|Resource Manager şablonu|Günlük tutma gün sayısı|Gün cinsinden veri saklama. Varsayılan değer _365_' dir.|
 |Key Vault şablonu|Resource Manager şablonu|Key Vault SKU 'SU|Oluşturulan Key Vault SKU 'sunu belirtir. Varsayılan değer _Premium_' dur.|
 |Key Vault şablonu|Resource Manager şablonu|Azure SQL Server Yönetici Kullanıcı adı|Azure SQL Server erişmek için kullanılan Kullanıcı adı. **Azure SQL veritabanı şablonundaki**aynı özellik değeriyle eşleşmelidir. Varsayılan değer _SQL-admin-User_değeridir.|
-|Azure SQL veritabanı kaynak grubu|Kaynak grubu|Adı|**Kilitli** -kaynak grubunu benzersiz hale getirmek için **kuruluş adını** `-workload-azsql-rg` ile birleştirir.|
+|Azure SQL veritabanı kaynak grubu|Kaynak grubu|Ad|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-workload-azsql-rg` ile **kuruluş adını** art arda ekler.|
 |Azure SQL veritabanı kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Azure SQL veritabanı şablonu|Resource Manager şablonu|Azure SQL Server Yönetici Kullanıcı adı|Azure SQL Server için Kullanıcı adı. **Key Vault şablonunda**aynı özellik değeriyle eşleşmelidir. Varsayılan değer _SQL-admin-User_değeridir.|
-|Azure SQL veritabanı şablonu|Resource Manager şablonu|Azure SQL Server yönetici parolası (Key Vault kaynak KIMLIĞI)|Key Vault kaynak KIMLIĞI. "/Subscription/{SubscriptionID}/resourceGroups/{orgName}-Workload-kV/Providers/Microsoft.KeyVault/Vaults/{orgName}-Workload-kV" kullanın ve `{subscriptionId}` ' yı abonelik kimliğinizle ve `{orgName}` ' i **Şirket adı** şema ile değiştirin parametresinin.|
+|Azure SQL veritabanı şablonu|Resource Manager şablonu|Azure SQL Server yönetici parolası (Key Vault kaynak KIMLIĞI)|Key Vault kaynak KIMLIĞI. "/Subscription/{SubscriptionID}/resourceGroups/{orgName}-Workload-kV/Providers/Microsoft.KeyVault/Vaults/{orgName}-Workload-kV" kullanın ve `{subscriptionId}` abonelik kimliğinizle ve `{orgName}` **kuruluş adı** şema parametresiyle değiştirin.|
 |Azure SQL veritabanı şablonu|Resource Manager şablonu|Azure SQL Server yönetici parolası (Key Vault gizli dizi adı)|SQL Server yöneticisinin Kullanıcı adı. **Azure SQL Server Yönetici Kullanıcı adı** **Key Vault şablon** özelliğindeki değerle eşleşmesi gerekir.|
 |Azure SQL veritabanı şablonu|Resource Manager şablonu|Günlük tutma gün sayısı|Gün cinsinden veri saklama. Varsayılan değer _365_' dir.|
 |Azure SQL veritabanı şablonu|Resource Manager şablonu|AAD yönetim nesnesi KIMLIĞI|Active Directory yöneticisi olarak atanacak kullanıcının AAD nesne KIMLIĞI. Varsayılan değer olmadığından boş bırakılamaz. Azure portal bu değeri bulmak için, _Hizmetler_altında "kullanıcılar" ı arayın ve seçin. Hesap adını filtrelemek için _ad_ kutusunu kullanın ve bu hesabı seçin. _Kullanıcı profili_ sayfasında, _nesne kimliğinin_yanındaki "kopyalamak için tıklayın" simgesini seçin.|
 |Azure SQL veritabanı şablonu|Resource Manager şablonu|AAD yönetici oturumu açma|Şu anda Microsoft hesapları (örneğin live.com veya outlook.com) yönetici olarak ayarlanamaz. Yalnızca kuruluşunuzdaki kullanıcılar ve güvenlik grupları yönetici olarak ayarlanabilir. Varsayılan değer olmadığından boş bırakılamaz. Azure portal bu değeri bulmak için, _Hizmetler_altında "kullanıcılar" ı arayın ve seçin. Hesap adını filtrelemek için _ad_ kutusunu kullanın ve bu hesabı seçin. _Kullanıcı profili_ sayfasında, _Kullanıcı adını_kopyalayın.|
-|App Service Ortamı kaynak grubu|Kaynak grubu|Adı|**Kilitli** -kaynak grubunu benzersiz hale getirmek için **kuruluş adını** `-workload-ase-rg` ile birleştirir.|
+|App Service Ortamı kaynak grubu|Kaynak grubu|Ad|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-workload-ase-rg` ile **kuruluş adını** art arda ekler.|
 |App Service Ortamı kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |App Service Ortamı şablonu|Resource Manager şablonu|Etki alanı adı|Örnek tarafından oluşturulan Active Directory adı. Varsayılan değer _contoso.com_' dir.|
 |App Service Ortamı şablonu|Resource Manager şablonu|Ao konumu|App Service Ortamı konumu. Varsayılan değer _Batı ABD 2_.|
@@ -152,10 +149,10 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 Artık ISO 27001 App Service Ortamı/SQL veritabanı iş yükü şeması örneğini dağıtma adımlarını gözden geçirdiğinize göre, mimari ve denetim eşlemesi hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Iso 27001 App Service ortamı/SQL veritabanı iş yükü şeması-genel bakış](./index.md)
-> [ISO 27001 App Service ortamı/SQL veritabanı iş yükü şeması-denetim eşleme](./control-mapping.md)
+> [ISO 27001 App Service ortamı/SQL veritabanı iş yükü şeması-genel bakış](./index.md)
+> [ISO 27001 App Service ortamı/SQL veritabanı iş yükü şema-Control Mapping](./control-mapping.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

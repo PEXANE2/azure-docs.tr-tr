@@ -1,5 +1,5 @@
 ---
-title: Linux VM 'Leri için Azure Key Vault ayarlama | Microsoft Docs
+title: Linux sanal makineleri için Azure Key Vault ayarlama
 description: Azure CLı ile Azure Resource Manager sanal makinesiyle kullanılmak üzere Key Vault ayarlama.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: kasing
-ms.openlocfilehash: cbc8b6be09fcf4232636b580dc0c62482b83bd60
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 25ef1d43af9d37cebde4a28479010776cc148b6d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002155"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035945"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Azure CLı ile sanal makineler için Key Vault ayarlama
 
@@ -29,21 +29,21 @@ Azure Resource Manager yığınında, gizlilikler/sertifikalar, Key Vault taraf�
 Bu adımları gerçekleştirmek için, en son [Azure CLI](/cli/azure/install-az-cli2) 'nın yüklü olması ve [az oturum açma](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açmış olması gerekir.
 
 ## <a name="create-a-key-vault"></a>Anahtar kasası oluşturma
-Bir Anahtar Kasası oluşturun ve [az keykasacreate](/cli/azure/keyvault)ile dağıtım ilkesini atayın. Aşağıdaki örnek, `myKeyVault` `myResourceGroup` kaynak grubunda adlı bir Anahtar Kasası oluşturur:
+Bir Anahtar Kasası oluşturun ve [az keykasacreate](/cli/azure/keyvault)ile dağıtım ilkesini atayın. Aşağıdaki örnek, `myResourceGroup` kaynak grubunda `myKeyVault` adlı bir Anahtar Kasası oluşturur:
 
 ```azurecli
 az keyvault create -l westus -n myKeyVault -g myResourceGroup --enabled-for-deployment true
 ```
 
 ## <a name="update-a-key-vault-for-use-with-vms"></a>Key Vault VM 'lerle kullanmak üzere güncelleştirme
-[Az keykasa Update](/cli/azure/keyvault)ile mevcut bir anahtar kasasında dağıtım ilkesini ayarlayın. Aşağıdaki, `myKeyVault` `myResourceGroup` kaynak grubunda adlı anahtar kasasını güncelleştirir:
+[Az keykasa Update](/cli/azure/keyvault)ile mevcut bir anahtar kasasında dağıtım ilkesini ayarlayın. Aşağıdaki `myResourceGroup` kaynak grubunda `myKeyVault` adlı anahtar kasasını güncelleştirir:
 
 ```azurecli
 az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForDeployment=true
 ```
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Şablonları kullanarak Key Vault ayarlama
-Bir şablon kullandığınızda, `enabledForDeployment` `true` özelliği Key Vault kaynağı için aşağıdaki şekilde ayarlamanız gerekir:
+Bir şablon kullandığınızda, `enabledForDeployment` özelliğini aşağıdaki gibi Key Vault kaynağı için `true` olarak ayarlamanız gerekir:
 
 ```json
 {

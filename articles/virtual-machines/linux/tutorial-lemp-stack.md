@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure’daki bir Linux sanal makinesinde LEMP dağıtma | Microsoft Docs
+title: Öğretici-Azure 'da bir Linux sanal makinesinde ELMP dağıtma
 description: Bu öğreticide, Azure’daki bir Linux sanal makinesinde LEMP yığını yüklemeyi öğrenirsiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 06a009978d85f2ba0f10030aeb1344a1b84bf3c3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1de2e70ccafbbde49e764437bfe8ce94602747b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299378"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034447"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure’da bir Linux sanal makinesine bir LEMP web sunucusu yükleme
 
@@ -107,7 +107,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_ba
 sudo sensible-editor /etc/nginx/sites-available/default
 ```
 
-Düzenleyicide, `/etc/nginx/sites-available/default` içeriklerini aşağıdakilerle değiştirin. Ayarların açıklaması için yorumlara bakın. SANAL makinenizin genel IP adresini, *Yourpublicıpaddress*için değiştirin, `fastcgi_pass` ' deki PHP sürümünü onaylayın ve geri kalan ayarları bırakın. Ardından dosyayı kaydedin.
+Düzenleyicide, `/etc/nginx/sites-available/default` içeriklerini aşağıdakilerle değiştirin. Ayarların açıklaması için yorumlara bakın. SANAL makinenizin genel IP adresini, *Yourpublicıpaddress*için değiştirin, `fastcgi_pass`PHP sürümünü onaylayın ve kalan ayarları bırakın. Ardından dosyayı kaydedin.
 
 ```
 server {

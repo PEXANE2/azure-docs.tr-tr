@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure’da Linux sanal makinelerinde yük dengeleme | Microsoft Docs
+title: Öğretici-Azure 'da Linux sanal makinelerinin yükünü dengeleyin
 description: Bu öğreticide, üç Linux sanal makinesi arasında yüksek kullanılabilirliğe sahip ve güvenli uygulama için bir yük dengeleyici oluşturmak üzere Azure CLI kullanmayı öğreneceksiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d5bfe25499bc2c4e7dc4c07d9811fa0227d347d7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: daad74ae5f046edb1b4bf6eef547c963e52593f5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300826"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034427"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Öğretici: Azure CLI ile yüksek oranda kullanılabilir bir uygulama oluşturmak için Azure’da Linux sanal makinelerinde yük dengeleme
 
@@ -243,7 +243,7 @@ for i in `seq 1 3`; do
 done
 ```
 
-Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. `--no-wait` parametresi tüm görevlerin tamamlanmasını beklemez. Uygulamaya erişmeniz birkaç dakika daha sürebilir. Yük dengeleyici durum araştırması, uygulamanın her bir VM üzerinde ne zaman çalıştığını otomatik olarak algılar. Uygulama çalıştıktan sonra yük dengeleyici kuralı trafiği dağıtmaya başlar.
+Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. `--no-wait` parametresi tüm görevlerin tamamlanmasını beklemez. Uygulamaya erişmeniz birkaç dakika sürebilir. Yük dengeleyici durum araştırması, uygulamanın her bir VM üzerinde ne zaman çalıştığını otomatik olarak algılar. Uygulama çalıştıktan sonra yük dengeleyici kuralı trafiği dağıtmaya başlar.
 
 
 ## <a name="test-load-balancer"></a>Yük dengeleyiciyi sınama
@@ -257,7 +257,7 @@ az network public-ip show \
     --output tsv
 ```
 
-Daha sonra genel IP adresini bir web tarayıcısına girebilirsiniz. Yük dengeleyicinin VM’lere trafik dağıtmaya başlamadan önce VM’lerin hazır olması için birkaç dakika geçmesi gerektiğini unutmayın. Uygulama, yük dengeleyicinin trafiği dağıttığı VM’nin ana bilgisayar adı ile aşağıdaki gibi görüntülenir:
+Sonra da genel IP adresini bir web tarayıcısına girebilirsiniz. Yük dengeleyicinin VM’lere trafik dağıtmaya başlamadan önce VM’lerin hazır olması için birkaç dakika geçmesi gerektiğini unutmayın. Uygulama, yük dengeleyicinin trafiği dağıttığı VM’nin ana bilgisayar adı ile aşağıdaki gibi görüntülenir:
 
 ![Node.js uygulaması çalıştırma](./media/tutorial-load-balancer/running-nodejs-app.png)
 

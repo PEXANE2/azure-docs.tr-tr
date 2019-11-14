@@ -1,26 +1,26 @@
 ---
-title: Bir grup için lisans atama sorunlarını çözme-Azure Active Directory | Microsoft Docs
+title: Grup lisansı atama sorunlarını giderme-Azure Active Directory | Microsoft Docs
 description: Azure Active Directory grup tabanlı lisanslama kullanırken lisans atama sorunlarını belirleme ve çözme
 services: active-directory
 keywords: Azure AD lisanslama
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 09/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73dc95260e7beb306834d094957518f36106b0f4
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73945764"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025688"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory bir grup için lisans atama sorunlarını tanımla ve çözümle
 

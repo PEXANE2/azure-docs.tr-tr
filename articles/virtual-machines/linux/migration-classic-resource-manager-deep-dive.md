@@ -1,5 +1,5 @@
 ---
-title: Klasik 'ten Azure Resource Manager 'e yönelik olarak desteklenen platforma yönelik teknik kapsamlı bakış | Microsoft Docs
+title: Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış
 description: Bu makale, platformdan desteklenen kaynakların klasik sürümüne geçişini ve Azure Resource Manager
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 523671e19c7262a09f605d9b76f2ebbeaa0e0ae2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bf077758b24da4d4a80f1fed7eab2a0711d201ef
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082841"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035791"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış
 
-Azure klasik dağıtım modelinden Azure Resource Manager dağıtım modeline geçiş konusunda ayrıntılı bilgi alalım. Azure platformunun kaynakları iki dağıtım modeli arasında nasıl geçirdiğini anlamanıza yardımcı olması için kaynak ve özellik düzeyindeki kaynaklara göz atacağız. Daha fazla bilgi için lütfen hizmet duyurusu makalesini okuyun: [, IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Azure klasik dağıtım modelinden Azure Resource Manager dağıtım modeline geçiş konusunda ayrıntılı bilgi alalım. Azure platformunun kaynakları iki dağıtım modeli arasında nasıl geçirdiğini anlamanıza yardımcı olması için kaynak ve özellik düzeyindeki kaynaklara göz atacağız. Daha fazla bilgi için lütfen bkz. hizmet duyurusu makalesi: [IaaS kaynaklarının klasik sürümünden Azure Resource Manager geçişi](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-migration-deep-dive](../../../includes/virtual-machines-common-classic-resource-manager-migration-deep-dive.md)]
 

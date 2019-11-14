@@ -1,5 +1,5 @@
 ---
-title: 'Bir sanal makinenin D: sürücüsünü veri diski yapın | Microsoft Docs'
+title: 'Bir sanal makinenin D: sürücüsünü veri diski yapın '
 description: 'D: sürücüsünü veri sürücüsü olarak kullanabilmeniz için bir Windows sanal makinesi için sürücü harflerinin nasıl değiştirileceğini açıklar.'
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 846bb7a5ea6c3f363a2811cf3feb30e37ff30504
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 491e7b7be084017cc370fe431c3175ac5b2673f9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079868"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033646"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>D: sürücüsünü Windows VM 'de veri sürücüsü olarak kullanma
 Uygulamanızın verileri depolamak için D sürücüsünü kullanması gerekiyorsa, geçici disk için farklı bir sürücü harfi kullanmak üzere bu yönergeleri uygulayın. Saklamanız gereken verileri depolamak için hiçbir şekilde geçici diski kullanmayın.
@@ -58,7 +58,7 @@ Azure 'un geçici diski nasıl kullandığı hakkında daha fazla bilgi için bk
 4. **Gelişmiş** sekmesini seçin.
 5. **Sanal bellek** bölümünde **Değiştir**' i seçin.
 6. **C** OS sürücüsünü seçin ve **disk belleği dosyası yok** ' a tıkladıktan sonra **Ayarla**' ya tıklayın.
-7. Geçici depolama sürücüsünü seçin ve ardından **Sistem Yönetimli boyut** ' a ve **Ayarla**' ya tıklayın.
+7. Geçici **depolama sürücüsünü seçin** ve ardından **Sistem Yönetimli boyut** ' a ve **Ayarla**' ya tıklayın.
 8. **Uygula**'ya tıklayın. Değişikliklerin etkili olması için bilgisayarın yeniden başlatılması gerektiğini belirten bir uyarı alacaksınız.
 9. Sanal makineyi yeniden başlatın.
 

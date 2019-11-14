@@ -1,25 +1,25 @@
 ---
-title: Dinamik grup oluşturma ve durumu denetleme-Azure Active Directory | Microsoft Docs
+title: Dinamik grup oluşturma ve durumu denetleme-Azure AD | Microsoft Docs
 description: Azure portal bir grup üyeliği kuralı oluşturma, durumu denetleme.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343acce228c38e38152fc2ea9d8fe0a59d8254d4
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193938"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027238"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Dinamik grup oluşturma ve durumu denetleme
 
@@ -35,7 +35,7 @@ Aşağıda, metin kutusunu kullanarak oluşturmanızı önerdiğimiz gelişmiş 
 - Beşten fazla ifadeye sahip kural
 - Doğrudan raporlar kuralı
 - [İşleç önceliğini](groups-dynamic-membership.md#operator-precedence) ayarlama
-- [Karmaşık Ifadelerle kurallar](groups-dynamic-membership.md#rules-with-complex-expressions); Örneğin`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Karmaşık Ifadelerle kurallar](groups-dynamic-membership.md#rules-with-complex-expressions); Örneğin `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > Kural Oluşturucu, metin kutusunda oluşturulan bazı kuralları görüntüleyemeyebilir. Kural Oluşturucu kuralı görüntüleyebilmediğinden bir ileti görebilirsiniz. Kural Oluşturucu, desteklenen sözdizimini, doğrulamayı veya dinamik grup kurallarının işlenmesini herhangi bir şekilde değiştirmez.
@@ -76,17 +76,17 @@ Grubun **genel bakış** sayfasında Üyelik işleme durumu ve son güncelleşti
 
 **Üyelik işleme** durumu için aşağıdaki durum iletileri görüntülenebilir:
 
-- **Değerlendiriliyor**:  Grup değişikliği alındı ve güncelleştirmeler değerlendiriliyor.
-- **İşleme**: Güncelleştirmeler işleniyor.
-- **Güncelleştirme Tamam**: İşlem tamamlandı ve geçerli tüm güncelleştirmeler yapıldı.
-- **İşlem hatası**:  Üyelik kuralı değerlendirilirken bir hata nedeniyle işlem tamamlanamadı.
-- **Güncelleştirme duraklatıldı**: Dinamik üyelik kuralı güncelleştirmeleri yönetici tarafından duraklatıldı. MembershipRuleProcessingState, "duraklatıldı" olarak ayarlandı.
+- **Değerlendiriliyor**: Grup değişikliği alındı ve güncelleştirmeler değerlendiriliyor.
+- **İşleniyor**: güncelleştirmeler işleniyor.
+- **Güncelleştirme tamamlandı**: işleme tamamlandı ve geçerli tüm güncelleştirmeler yapıldı.
+- **İşlem hatası**: üyelik kuralını değerlendirirken bir hata nedeniyle işlem tamamlanamadı.
+- **Güncelleştirme duraklatıldı**: dinamik üyelik kuralı güncelleştirmeleri yönetici tarafından duraklatıldı. MembershipRuleProcessingState, "duraklatıldı" olarak ayarlandı.
 
 **Üyelik son güncelleştirilme** durumu için aşağıdaki durum iletileri görüntülenebilir:
 
-- &lt;**Tarih ve saat**&gt;: Üyeliğin güncelleştirildiği son zaman.
-- **Devam ediyor**: Güncelleştirmeler Şu anda devam ediyor.
-- **Bilinmiyor**: Son güncelleştirme saati alınamıyor. Grup yeni olabilir.
+- &lt;**Tarih ve saat**&gt;: üyeliğin en son güncelleştirildiği zaman.
+- **Devam**ediyor: Şu anda güncelleştirmeler devam ediyor.
+- **Bilinmiyor**: son güncelleştirme saati alınamıyor. Grup yeni olabilir.
 
 Belirli bir grup için üyelik kuralı işlenirken bir hata oluşursa, grubun **Genel Bakış sayfasının** üst kısmında bir uyarı gösterilir. Kiracıdaki tüm gruplar için bekleyen dinamik üyelik güncelleştirmeleri, daha sonra 24 saat boyunca işlenemezse, **tüm grupların**en üstünde bir uyarı gösterilir.
 

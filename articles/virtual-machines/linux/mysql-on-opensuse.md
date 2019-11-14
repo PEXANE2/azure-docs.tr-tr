@@ -1,5 +1,5 @@
 ---
-title: Azure 'da bir OpenSUSE VM 'ye MySQL 'i yükler | Microsoft Docs
+title: Azure 'da bir OpenSUSE VM 'ye MySQL 'i yükler
 description: Azure 'da bir OpenSUSE Linux sanal makinesine MySQL yüklemeyi öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 223a5a5b77ded9eb26a5cf3f0003bc9d393615db
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d5f2ef2d82cbcced6202ad2c09f23dd734d373b3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300864"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035592"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Azure'da OpenSUSE Linux çalıştıran bir sanal makineye MySQL yükleme
 
@@ -36,7 +36,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLI 2.0 veya so
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-VM 'yi oluşturun. Bu örnekte, VM *Myvm* olarak ADLANDıRıLıR ve VM boyutu *Standard_D2s_v3*olur, ancak iş yükünüz için en uygun olduğunu düşündüğünüz [VM boyutunu](sizes.md) seçmeniz gerekir.
+VM 'yi oluşturun. Bu örnekte, sanal makinenin adı *Myvm* , VM boyutu ise *Standard_D2s_v3*, ancak iş yükünüz için en uygun olduğunu düşündüğünüz [VM boyutunu](sizes.md) seçmeniz gerekir.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -102,7 +102,7 @@ sudo reboot
 
 ## <a name="mysql-password"></a>MySQL parolası
 
-Yüklemeden sonra MySQL kök parolası varsayılan olarak boştur. MySQL 'i güvenli hale getirmek için **MySQL @ no__t-1secure @ no__t-2ınstallation** betiğini çalıştırın. Betik, MySQL kök parolasını değiştirmenizi, anonim kullanıcı hesaplarını kaldırmanızı, uzak kök oturum açmayı devre dışı bırakmayı, test veritabanlarını kaldırmanızı ve ayrıcalıklar tablosunu yeniden yüklemenizi ister. 
+Yüklemeden sonra MySQL kök parolası varsayılan olarak boştur. MySQL 'i güvenli hale getirmek için **mysql\_güvenli\_yükleme** betiği çalıştırın. Betik, MySQL kök parolasını değiştirmenizi, anonim kullanıcı hesaplarını kaldırmanızı, uzak kök oturum açmayı devre dışı bırakmayı, test veritabanlarını kaldırmanızı ve ayrıcalıklar tablosunu yeniden yüklemenizi ister. 
 
 Sunucu yeniden başlatıldıktan sonra, sanal makineye SSH tekrar.
 
@@ -134,10 +134,10 @@ CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 Noktalı virgül (;) satırın sonunda, komutu sonlandırmak için çok önemlidir.
 
 
-## <a name="create-a-database"></a>Veritabanı oluşturun
+## <a name="create-a-database"></a>Veritabanı oluşturma
 
 
-Bir veritabanı oluşturun ve `mysqluser` Kullanıcı izinleri verin.
+Bir veritabanı oluşturun ve `mysqluser` Kullanıcı izinlerini verin.
 
 ```sql
 CREATE DATABASE testdatabase;

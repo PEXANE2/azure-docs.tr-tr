@@ -9,63 +9,63 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3b24da4d988554da240baba2984df44ff4744aaf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 480c4c65f1bc0abe81114a2b898696e6d6b153fe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464091"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039643"
 ---
-# <a name="how-to-receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Nasıl yapılır: Azure Event Grid ile Anahtar Kasası bildirimleri alma ve yanıtlama (Önizleme)
+# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Azure Event Grid ile Anahtar Kasası bildirimlerini alma ve yanıtlama (Önizleme)
 
-Şu anda önizleme aşamasında olan Azure Event Grid tümleştirmesi Key Vault, Anahtar Kasası 'nda depolanan bir gizli dizi durumu değiştiğinde kullanıcılara bildirim gönderilmesini sağlar. Özelliğine genel bakış için bkz. [Azure Event Grid Ile izleme Key Vault](event-grid-overview.md).
+Azure Event Grid ile Azure Key Vault Tümleştirme (Şu anda önizlemede), bir anahtar kasasında depolanan bir gizli dizi durumu değiştiğinde Kullanıcı bildirimine izin vermez. Bu özelliğe genel bir bakış için bkz. [Event Grid Ile izleme Key Vault](event-grid-overview.md).
 
-Bu kılavuzda, Azure Event Grid üzerinden Key Vault bildirimi alma ve Azure Otomasyonu ile durum değişikliklerine yanıt verme adımları gösterilmektedir.
+Bu kılavuzda, Event Grid aracılığıyla Key Vault bildirimlerinin nasıl alınacağı ve Azure Otomasyonu aracılığıyla durum değişikliklerine nasıl yanıt verileceği açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-- Azure aboneliğinizdeki bir Anahtar Kasası. [Azure CLI kullanarak Azure Key Vault bir gizli anahtarı ayarlama ve alma](quick-create-cli.md) bölümündeki adımları izleyerek hızlı bir şekilde yeni bir Anahtar Kasası oluşturabilirsiniz
+- Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+- Azure aboneliğinizdeki bir Anahtar Kasası. [Azure CLI kullanarak Azure Key Vault bir gizli anahtarı ayarlama ve alma](quick-create-cli.md)bölümündeki adımları izleyerek hızlı bir şekilde yeni bir Anahtar Kasası oluşturabilirsiniz.
 
 ## <a name="concepts"></a>Kavramlar
 
-Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu kılavuzda, Anahtar Kasası olaylarına abone olacak ve olayları Azure Otomasyonu 'na yönlendirirsiniz. Anahtar kasasındaki parolalardan biri sona ermek üzereyken, Event Grid durum değişikliği bildirilir ve uç noktada bir HTTP GÖNDERISI yapar. Daha sonra bir Web kancası, PowerShell betiğinin Azure Otomasyonu yürütmesini tetikler.
+Event Grid, bulut için bir olay hizmetidir. Bu kılavuzdaki adımları izleyerek Key Vault olaylara abone olur ve etkinlikleri Otomasyon 'a yönlendirin. Anahtar kasasındaki parolalardan biri sona ermek üzereyken, Event Grid durum değişikliği bildirilir ve uç noktada bir HTTP GÖNDERISI yapar. Bir Web kancası daha sonra bir PowerShell betiğinin Otomasyon yürütmesini tetikler.
 
-![image](media/image1.png)
+![HTTP akış çizelgesi](media/image1.png)
 
-## <a name="create-an-azure-automation-account"></a>Azure Otomasyonu hesabı oluşturma
+## <a name="create-an-automation-account"></a>Otomasyon hesabı oluşturma
 
-[Azure Portal](https://portal.azure.com)aracılığıyla bir Azure Otomasyonu hesabı oluşturun.
+[Azure Portal](https://portal.azure.com)aracılığıyla bir Otomasyon hesabı oluşturun:
 
 1.  Portal.azure.com adresine gidin ve aboneliğinizde oturum açın.
 
-1.  Arama kutusuna "Otomasyon hesapları" yazın.
+1.  Arama kutusuna **Otomasyon hesapları**girin.
 
-1.  Arama çubuğundan açılan "Hizmetler" bölümünde "Otomasyon hesapları" nı seçin.
+1.  Arama çubuğundaki aşağı açılan listenin **Hizmetler** bölümünde **Otomasyon hesapları**' nı seçin.
 
-1.  Ekle'ye tıklayın.
+1.  **Add (Ekle)** seçeneğini belirleyin.
 
-    ![](media/image2.png)
+    ![Otomasyon hesapları bölmesi](media/image2.png)
 
-1.  "Otomasyon hesabı ekle" dikey penceresinde gerekli bilgileri doldurup "Oluştur" ' u seçin.
+1.  **Otomasyon hesabı ekle** bölmesine gerekli bilgileri girip **Oluştur**' u seçin.
 
 ## <a name="create-a-runbook"></a>Runbook oluşturma
 
-Azure Otomasyonu hesabınız hazırlandıktan sonra bir runbook oluşturun.
+Otomasyon hesabınız hazırlandıktan sonra bir runbook oluşturun.
 
-![](media/image3.png)
+![Runbook Kullanıcı arabirimi oluşturma](media/image3.png)
 
 1.  Yeni oluşturduğunuz Otomasyon hesabını seçin.
 
-1.  Işlem Otomasyonu bölümünde "runbook 'Lar" ı seçin.
+1.  **Işlem Otomasyonu**altında **runbook 'ları** seçin.
 
-1.  "Runbook oluştur" a tıklayın.
+1.  **Runbook oluştur**' u seçin.
 
-1.  Runbook 'unuzu adlandırın ve Runbook türü olarak "PowerShell" i seçin.
+1.  Runbook 'unuzu adlandırın ve Runbook türü olarak **PowerShell** ' i seçin.
 
-1.  Oluşturduğunuz runbook 'a tıklayın ve "Düzenle" düğmesini seçin.
+1.  Oluşturduğunuz runbook 'u seçin ve ardından **Düzenle** düğmesini seçin.
 
-1.  Aşağıdaki kodu girin (test amaçlı olarak) ve "Yayımla" düğmesine tıklayın. Bu, alınan POST isteğinin sonucunu ortaya çıkar.
+1.  Aşağıdaki kodu girin (test amaçları için) ve **Yayınla** düğmesini seçin. Bu eylem, alınan POST isteğinin sonucunu döndürür.
 
 ```azurepowershell
 param
@@ -91,108 +91,106 @@ write-Error "No input data found."
 }
 ```
 
-![](media/image4.png)
+![Runbook 'u Yayımla Kullanıcı arabirimi](media/image4.png)
 
 ## <a name="create-a-webhook"></a>Web kancası oluşturma
 
-Şimdi yeni oluşturduğunuz runbook 'u tetiklemek için bir Web kancası oluşturun.
+Yeni oluşturduğunuz runbook 'u tetiklemek için bir Web kancası oluşturun.
 
-1.  Yeni yayımladığınız runbook 'un Kaynaklar bölümünden "Web kancaları" nı seçin.
+1.  Yeni yayımladığınız runbook 'un **kaynaklar** bölümünden **Web kancaları** ' nı seçin.
 
-1.  "Web kancası Ekle" ye tıklayın.
+1.  **Web kancası Ekle**' yi seçin.
 
-    ![](media/image5.png)
+    ![Web kancası Ekle düğmesi](media/image5.png)
 
-1.  "Yeni Web kancası oluştur" öğesini seçin.
+1.  **Yeni Web kancası oluştur**' u seçin.
 
-1. Web kancasını adlandırın, bir sona erme tarihi ayarlayın ve **URL 'yi kopyalayın**.
+1. Web kancasını adlandırın, bir sona erme tarihi ayarlayın ve URL 'YI kopyalayın.
 
     > [!IMPORTANT] 
-    > URL 'YI oluşturduktan sonra görüntüleyemezsiniz. Bir kopyayı bu kılavuzun geri kalanı için erişebileceğiniz güvenli bir konuma kaydettiğinizden emin olun.
+    > URL 'YI oluşturduktan sonra görüntüleyemezsiniz. Bir kopyayı bu kılavuzun geri kalanı için erişebileceğiniz güvenli bir konumda kaydettiğinizden emin olun.
 
-1. "Parametreler ve çalıştırma ayarları" na tıklayın ve "Tamam" ı seçin. Herhangi bir parametre girmeyin. Bu, "Oluştur" düğmesini etkinleştirir.
+1. **Parametreler ' i seçin ve ayarları çalıştırın** ve **Tamam**' ı seçin. Herhangi bir parametre girmeyin. Bu işlem **Oluştur** düğmesini etkinleştirir.
 
-1. "Tamam" ı seçin ve "Oluştur" öğesini seçin.
+1. **Tamam** ' ı ve ardından **Oluştur**' u seçin.
 
-    ![](media/image6.png)
+    ![Yeni Web kancası Kullanıcı arabirimi oluşturma](media/image6.png)
 
 ## <a name="create-an-event-grid-subscription"></a>Event Grid aboneliği oluşturma
 
 [Azure Portal](https://portal.azure.com)üzerinden Event Grid bir abonelik oluşturun.
 
-1.  Aşağıdaki bağlantıyı kullanarak Azure portal açın: https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true
+1.  [Azure portalı](https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true) açın.
 
-1.  Anahtar kasanıza gidin ve "olaylar" sekmesini seçin. Olaylar sekmesini göremiyorsanız [portalın önizleme sürümünü](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)kullandığınızdan emin olun.
+1.  Anahtar kasanıza gidin ve **Olaylar** sekmesini seçin. Bunu göremiyorsanız [portalın önizleme sürümünü](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)kullandığınızdan emin olun.
 
-    ![](media/image7.png)
+    ![Azure portal olaylar sekmesi](media/image7.png)
 
-1.  "+ Olay aboneliği" düğmesine tıklayın.
+1.  **Olay aboneliği** düğmesini seçin.
 
 1.  Abonelik için açıklayıcı bir ad oluşturun.
 
-1.  "Event Grid şeması" nı seçin.
+1.  **Event Grid şeması**' nı seçin.
 
-1.  "Konu kaynağı" durum değişikliklerini izlemek istediğiniz Anahtar Kasası olmalıdır.
+1.  **Konu kaynağı** , durum değişikliklerini izlemek istediğiniz Anahtar Kasası olmalıdır.
 
-1.  "Olay türlerine filtrele" için, tümünü checked ("9 seçili") olarak bırakın.
+1.  **Olay türlerine filtre uygulamak**için tüm seçenekleri seçili bırakın (**9 seçili**).
 
-1.  "Uç nokta türü" için "Web kancası" öğesini seçin.
+1.  **Uç Noktası Türü** için **Web kancası**'nı seçin.
 
-1.  "Bir uç nokta seç" i seçin. Yeni bağlam bölmesinde Web kancası URL 'sini [bir Web kancası oluştur](#create-a-webhook) adımından "abone uç noktası" alanına yapıştırın.
+1.  **Uç nokta seç ' i**seçin. Yeni bağlam bölmesinde Web kancası URL 'sini [bir Web kancası oluştur](#create-a-webhook) adımından **abone uç noktası** alanına yapıştırın.
 
-1.  Bağlam bölmesinde "seçimi onayla" yı seçin.
+1.  Bağlam bölmesinde **Seçimi Onayla** ' yı seçin.
 
-1.  "Oluştur" u seçin.
+1.  **Oluştur**'u seçin.
 
-    ![](media/image8.png)
+    ![Olay aboneliği oluştur](media/image8.png)
 
 ## <a name="test-and-verify"></a>Test ve doğrulama
 
-Event Grid aboneliğinizin Özellik yapılandırıldığını doğrulayın.  Bu test, [bir Event Grid abonelik oluşturma](#create-an-event-grid-subscription)' da "gizli yeni sürüm oluşturuldu" bildirimine abone olduğunuzu ve bir anahtar kasasında gizli dizi yeni bir sürümünü oluşturmak için gerekli ayrıcalıklara sahip olduğunuzu varsayar.
+Event Grid aboneliğinizin düzgün yapılandırıldığını doğrulayın. Bu test, [Event Grid abonelik oluşturma](#create-an-event-grid-subscription)' daki "gizli yeni sürüm oluşturuldu" bildirimine abone olduğunuzu ve bir anahtar kasasında gizli dizi yeni bir sürümünü oluşturmak için gerekli izinlere sahip olduğunuzu varsayar.
 
-![](media/image9.png)
+![Event Grid aboneliğinin test yapılandırması](media/image9.png)
 
-![](media/image10.png)
+![Gizli anahtar oluştur bölmesi](media/image10.png)
 
-1.  Azure portal, anahtar kasanıza gidin
+1.  Azure portal, anahtar kasanıza gidin.
 
-1.  Yeni bir gizli dizi oluşturun. Sınama amacıyla bitiş tarihi 'ni bir sonraki güne ayarlayın.
+1.  Yeni bir gizli dizi oluşturun. Sınama amacıyla, süre sonu tarihini bir sonraki güne ayarlayın.
 
-1.  Anahtar kasasındaki olaylar sekmesine gidin.
+1.  Anahtar kasanızın **Olaylar** sekmesinde, oluşturduğunuz Event Grid aboneliğini seçin.
 
-1.  Oluşturduğunuz olay Kılavuzu aboneliğini seçin.
+1.  **Ölçümler**altında bir olayın yakalanıp yakalanmadığını denetleyin. İki olay bekleniyor: SecretNewVersion ve Secretasyncresult süre sonu. Bu olaylar, anahtar kasasındaki gizli dizinin durum değişikliğini Event Grid başarıyla yakalayacağını doğrular.
 
-1.  Ölçümler altında, bkz. bir olay yakalandıysa. İki olay bekleniyor: SecretNewVersion ve Secretasyncresult süre sonu. Bu, olay kılavuzunun Anahtar Kasanızda gizli dizi durum değişikliğini başarıyla yakadığını doğrular.
+    ![Ölçümler bölmesi: yakalanan olayları denetle](media/image11.png)
 
-    ![](media/image11.png)
+1.  Otomasyon hesabınıza gidin.
 
-1.  Azure Otomasyonu hesabınıza gidin.
+1.  **Runbook 'lar** sekmesini seçin ve ardından oluşturduğunuz runbook 'u seçin.
 
-1.  "Runbook 'Lar" sekmesini seçin ve oluşturduğunuz runbook 'u seçin.
+1.  **Web kancaları** sekmesini seçin ve yeni parolayı oluştururken "son tetiklenen" zaman damgasının 60 saniye içinde olduğunu onaylayın. Bu sonuç Event Grid, Web kancasına, Anahtar Kasanızda durum değişikliğinin olay ayrıntılarıyla ve Web kancasının tetiklendiğine ilişkin bir GÖNDERI yaptığını onaylar.
 
-1.  "Web kancaları" sekmesini seçin ve yeni parolayı oluştururken "son tetiklenen" zaman damgasının 60 saniye içinde olduğunu onaylayın.  Bu Event Grid, Anahtar Kasanızda durum değişikliğinin olay ayrıntılarıyla Web kancasına bir GÖNDERI yaptığını ve Web kancası tetiklendiğini onaylar.
+    ![Web kancaları sekmesi, son tetiklenen zaman damgası](media/image12.png)
 
-    ![](media/image12.png)
+1. Runbook 'una dönün ve **genel bakış** sekmesini seçin.
 
-1. Runbook 'Una dönün ve "genel bakış" sekmesini seçin.
+1. **Son işler** listesine bakın. Bir işin oluşturulduğunu ve durumunun tamamlandığını görmeniz gerekir. Bu, Web kancası runbook 'un betiğini yürütmeye başlamasını bildiren runbook 'u tetiklediğini onaylar.
 
-1. Son Işler listesine bakın. Bir işin oluşturulduğunu ve durumunun tamamlandığını görmeniz gerekir.  Bu, Web kancası runbook 'un betiğini yürütmeye başlamasını bildiren runbook 'u tetiklediğini onaylar.
+    ![Web kancası son Işleri listesi](media/image13.png)
 
-    ![](media/image13.png)
-
-1. En son işi seçin ve olay kılavuzlarından Web kancasına gönderilen POST isteğine bakın. JSON 'ı inceleyin ve anahtar kasası ve olay türü parametrelerinin doğru olduğundan emin olun. JSON nesnesindeki "olay türü" parametresi, anahtar kasasında oluşan olayla eşleşiyorsa (Bu örnekte, Microsoft. Keykasası. Secretyaklaştığında süre sonu) test başarılı oldu.
+1. Son işi seçin ve Event Grid 'dan Web kancasına gönderilen POST isteğine bakın. JSON 'ı inceleyin ve anahtar kasası ve olay türü parametrelerinin doğru olduğundan emin olun. JSON nesnesindeki "olay türü" parametresi, anahtar kasasında oluşan olayla eşleşiyorsa (Bu örnekte, Microsoft. Keykasası. Secretyaklaştığında süre sonu), test başarılı oldu.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-### <a name="unable-to-create-event-subscription"></a>Olay aboneliği oluşturulamıyor
+### <a name="you-cant-create-an-event-subscription"></a>Olay aboneliği oluşturamazsınız
 
-Azure abonelik kaynak sağlayıcılarınızda Event Grid ve Key Vault sağlayıcıyı yeniden kaydettirin. Bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/resource-manager-supported-services.md).
+Azure abonelik kaynak sağlayıcılarınızda Event Grid ve Anahtar Kasası sağlayıcısını yeniden kaydettirin. Bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/resource-manager-supported-services.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tebrikler! Yukarıdaki tüm adımları izlediyseniz, artık Anahtar Kasanızda depolanan gizli dizi değişiklikleri için programlı olarak yanıt vermeye hazırsınız demektir.
+Tebrikler! Bu adımların tümünü doğru şekilde izlediyseniz, artık Anahtar Kasanızda depolanan gizli dizi değişiklikleri için programlı olarak yanıt vermeye hazırsınız demektir.
 
-Anahtar kasalarınızda gizli dizi durum değişikliklerini aramak için yoklama tabanlı bir sistem kullanıyorsanız, bu bildirim özelliğini kullanarak ' a geçiş yapın. Ayrıca, kullanım süreleri dolduğunda sırlarınızı programlı bir şekilde yenilemek için Runbook 'inizdeki test betiğini kodla de değiştirebilirsiniz.
+Anahtar kasalarınızda gizli dizi durum değişikliklerini aramak için yoklama tabanlı bir sistem kullanıyorsanız, artık bu bildirim özelliğini kullanmaya başlayabilirsiniz. Ayrıca, kullanım süreleri dolduğunda sırlarınızı programlı bir şekilde yenilemek için Runbook 'inizdeki test betiğini kodla de değiştirebilirsiniz.
 
 Daha fazla bilgi edinin:
 

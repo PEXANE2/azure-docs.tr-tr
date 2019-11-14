@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure’da Linux VM’ler için yüksek oranda kullanılabilirlik | Microsoft Docs
+title: Öğretici-Azure 'da Linux sanal makineleri için yüksek kullanılabilirlik
 description: Bu öğreticide, Kullanılabilirlik Kümelerinde yüksek oranda kullanılabilir sanal makineler dağıtmak için Azure CLI kullanmayı öğreneceksiniz
 documentationcenter: ''
 services: virtual-machines-linux
@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 10458e3c5f1e4dc9034206470fdfec19e13417fb
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: cd0366a0029ccc4816308e280ac93b7c724bb82a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299441"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034620"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Öğretici: Azure CLI ile yüksek oranda kullanılabilir sanal makineler oluşturma ve dağıtma
 
-Bu öğreticide, Kullanılabilirlik Kümeleri adlı bir özellik kullanarak Azure’da Sanal Makine çözümlerinizin kullanılabilirlik ve güvenilirliğini nasıl artıracağınızı öğreneceksiniz. Kullanılabilirlik kümeleri, Azure’da dağıttığınız VM’lerin birden fazla yalıtılmış donanım kümesi arasında dağıtılmasını sağlar. Böylece, Azure’da bir donanım veya yazılım hatası oluşursa yalnızca sanal makinelerinizin bir alt kümesinin etkilenmesi ve genel çözümünüzün kullanılabilir ve çalışır durumda kalması sağlanır.
+Bu öğreticide, Kullanılabilirlik Kümeleri adlı bir yetenek kullanarak Azure’da Sanal Makine çözümlerinizin kullanılabilirlik ve güvenilirliğini nasıl artıracağınızı öğreneceksiniz. Kullanılabilirlik kümeleri, Azure’da dağıttığınız VM’lerin birden fazla yalıtılmış donanım kümesi arasında dağıtılmasını sağlar. Böylece, Azure’da bir donanım veya yazılım hatası oluşursa yalnızca sanal makinelerinizin bir alt kümesinin etkilenmesi ve genel çözümünüzün kullanılabilir ve çalışır durumda kalması sağlanır.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 

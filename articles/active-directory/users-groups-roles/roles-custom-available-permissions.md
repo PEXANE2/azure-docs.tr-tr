@@ -1,24 +1,24 @@
 ---
-title: Uygulama kayıt yönetimi için özel yönetici rolü izinleri-Azure Active Directory | Microsoft Docs
+title: Kullanılabilir özel yönetici rolü izinleri-Azure AD | Microsoft Docs
 description: Kimlik yönetimi temsilcisi için özel yönetici rolü izinleri.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ebffbc1c451404d93383a483eecdd4a25acf6b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928609"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025157"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kaydı alt türleri ve izinleri
 
@@ -91,7 +91,7 @@ Standart uygulama kaydı özelliklerini okuma erişimi verir. Bu, uygulama kayı
 
 Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/Applications/standart/Read gibi aynı izinleri verir.
 
-### <a name="update"></a>Güncelleştir
+### <a name="update"></a>Güncelleştirme
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>Microsoft. Directory/uygulamalar/allProperties/Update
 

@@ -1,5 +1,5 @@
 ---
-title: CLı kullanarak bir Azure VM için işletim sistemi diskini değiştirme | Microsoft Docs '
+title: CLı kullanarak bir Azure VM için işletim sistemi diskini değiştirme
 description: CLı kullanarak bir Azure sanal makinesi tarafından kullanılan işletim sistemi diskini değiştirin.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 7b5f8a47b2b9c3692698b2ec6a7e5bc470b86a18
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bfbe47fb68ffe7cee1ee2f9f7b94b418d8da2a1d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091663"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035340"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>CLı kullanarak bir Azure VM tarafından kullanılan işletim sistemi diskini değiştirme
 
@@ -52,7 +52,7 @@ az vm stop \
 ```
 
 
-`--osdisk` Parametresi için yeni diskin tam kaynak kimliğiyle [az VM Update](/cli/azure/vm#az-vm-update) kullanın 
+`--osdisk` parametresi için yeni diskin tam kaynak KIMLIĞIYLE [az VM Update](/cli/azure/vm#az-vm-update) kullanın 
 
 ```azurecli-interactive 
 az vm update \

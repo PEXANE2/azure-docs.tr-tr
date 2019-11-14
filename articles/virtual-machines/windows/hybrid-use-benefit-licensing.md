@@ -1,5 +1,5 @@
 ---
-title: Windows Server için Azure Hibrit Avantajı | Microsoft Docs
+title: Windows Server için Azure Hibrit Teklifi
 description: Azure 'a şirket içi lisanslar getirmek için Windows yazılım güvencesi avantajlarınızı nasıl en üst düzeye çıkaracağınızı öğrenin
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 1c16ebe1f0b07e5ee5ef73dc3dd4781161f934b6
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 40697925d399962399da499e0469198a0e997f66
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749375"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038637"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Teklifi
 Yazılım güvencesi olan müşteriler için, Windows Server Azure Hibrit Avantajı, şirket içi Windows Server lisanslarınızı kullanmanıza ve Azure 'da Windows sanal makinelerini daha düşük bir maliyetle çalıştırmanıza olanak sağlar. Windows işletim sistemi ile yeni sanal makineler dağıtmak için Windows Server Azure Hibrit Avantajı kullanabilirsiniz. Bu makalede, Windows Server için Azure Hibrit Avantajı ile yeni VM 'Leri dağıtma ve var olan çalışan VM 'Leri güncelleştirme adımları ele alınarak devam edebilir. Windows Server Lisanslama ve maliyet tasarrufları için Azure Hibrit Avantajı hakkında daha fazla bilgi için, bkz. [Windows Server Lisanslama için Azure hibrit avantajı sayfası](https://azure.microsoft.com/pricing/hybrid-use-benefit/).

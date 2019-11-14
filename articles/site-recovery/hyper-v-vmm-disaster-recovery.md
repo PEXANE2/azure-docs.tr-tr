@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0fa4dbc336067ee3e3b2baa49ec872f65a3154b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d3fe578444b99cc7f8c762ae9e96766ca10aa305
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933524"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039665"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Hyper-V VM'leri için ikincil bir şirket içi siteye olağanüstü durum kurtarma ayarlama
 
@@ -30,7 +30,7 @@ Bu makalede System Center Virtual Machine Manager (VMM) bulutlarında yönetilen
 > * Sanal makine için çoğaltmayı etkinleştirme
 
 > [!WARNING]
-> Lütfen SCVMM yapılandırması 'nın hesapta kullanılması için ASR desteğinin yakında kullanım dışı olacağını unutmayın. bu nedenle, devam etmeden önce [kullanımdan](scvmm-site-recovery-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
+> Lütfen SCVMM yapılandırması 'nın hesapta kullanılması için ASR desteğinin yakında kullanım dışı olacağını unutmayın. bu nedenle, devam etmeden önce [kullanımdan](site-to-site-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,7 +41,7 @@ Bu senaryoyu tamamlamak için:
 - Çoğaltmak istediğiniz VM'lerin [çoğaltılan makine desteği](hyper-v-vmm-secondary-support-matrix.md#replicated-vm-support) için uygun olup olmadığını denetleyin.
 - VMM sunucularını ağ eşlemesi için hazırlayın.
 
-### <a name="prepare-for-network-mapping"></a>Ağ eşlemeye hazırlama
+### <a name="prepare-for-network-mapping"></a>Ağ eşlemesi için hazırlanma
 
 [Ağ eşlemesi](hyper-v-vmm-network-mapping.md), kaynak ve hedef bulutlardaki şirket içi VMM VM ağlarını eşler. Eşleme sürecinde şu işlemler gerçekleştirilir:
 
@@ -118,7 +118,7 @@ Hedef VMM sunucusunu ve bulutu seçin:
 1. **Altyapıyı hazırla** > **Hedef**'e tıklayın ve hedef VMM sunucusunu seçin.
 2. Site Recovery ile eşitlenmiş olana VMM bulutları görüntülenir. Hedef bulutu seçin.
 
-   ![Hedefleyin](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Hedef](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Çoğaltma ilkesi ayarlama
@@ -154,7 +154,7 @@ Başlamadan önce ilkeyi kullanan tüm konakların aynı işletim sistemine sahi
 4. **Sanal makineler** bölümündeki listeden korumak istediğiniz VM'leri seçin.
 
 
-**İşler** > **Site Recovery işleri** bölümünde **Korumayı Etkinleştir** eyleminin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi tamamlandıktan sonra ilk çoğaltma tamamlanır ve VM yük devretme için hazır olur.
+**İşler**Site Recovery işleri >  bölümünde **Korumayı Etkinleştir** eyleminin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi tamamlandıktan sonra ilk çoğaltma tamamlanır ve VM yük devretme için hazır olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: Yönetilen bir veri diski bir Windows VM - Azure | Microsoft Docs
+title: Bir Windows VM 'ye yönetilen veri diski iliştirme-Azure
 description: Azure portalını kullanarak bir Windows VM'ye yönetilen bir veri diski ekleme yapma.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ece7cbe76cd744302362b8c59f100e23f1b74dff
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: d98fdab6dcd0abb70967d1e17d138a860a31da5f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699831"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039313"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Azure portalını kullanarak bir Windows VM'ye yönetilen bir veri diski ekleme
 

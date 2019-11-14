@@ -4,23 +4,23 @@ description: Azure AD Privileged Identity Management (PıM) içindeki Azure Kayn
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f191eac841bd9f79844a09cd25725de7ea8b154
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f0b938dc808d9b02ad4105d85a5b3125135c51d6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895786"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023080"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri için güvenlik uyarılarını yapılandırma
 
@@ -36,13 +36,13 @@ Uyarıyı tetikleyen Kullanıcı veya rolleri, düzeltme kılavuzlarıyla birlik
 
 ## <a name="alerts"></a>Uyarılar
 
-| Uyarı | Önem Derecesi | Tetikleyici | Öneri |
+| Uyarı | Severity | Tetikleyici | Öneri |
 | --- | --- | --- | --- |
 | **Bir kaynağa çok fazla sahip atandı** |Orta |Çok fazla kullanıcı sahip rolüne sahip. |Listedeki kullanıcıları gözden geçirin ve bazılarını daha az ayrıcalıklı rollere yeniden atayın. |
 | **Bir kaynağa çok fazla sayıda kalıcı sahip atandı** |Orta |Rol için çok fazla sayıda kullanıcı kalıcı olarak atandı. |Listedeki kullanıcıları gözden geçirin ve rol kullanımı için etkinleştirmeyi gerektirmek üzere bazılarını yeniden atayın. |
 | **Yinelenen rol oluşturuldu** |Orta |Birden çok rol aynı ölçütlere sahiptir. |Bu rollerden yalnızca birini kullanın. |
 
-### <a name="severity"></a>Önem Derecesi
+### <a name="severity"></a>Severity
 
 - **Yüksek**: bir ilke ihlali nedeniyle hemen eyleme gerek duyar. 
 - **Orta**: anında eyleme gerek yoktur, ancak olası bir ilke ihlaline işaret eder.

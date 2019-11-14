@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure CLI ile Linux VM’leri oluşturma ve yönetme | Microsoft Docs
+title: Öğretici-Azure CLı ile Linux VM 'Leri oluşturma ve yönetme
 description: Bu öğreticide, Azure CLI kullanarak Azure’da Linux VM’leri oluşturup yönetmeyi öğrenirsiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 11c12058229a2eadfdc3834d311c085c2365b17d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b7660d2bcb6f2bb8b738ed92401937c0b988fef2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300783"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034409"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Öğretici: Azure CLI ile Linux VM’leri Oluşturma ve Yönetme
 
@@ -140,7 +140,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20160309     
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207       6.5.20170207
 ```
 
-Belirli bir görüntü kullanarak bir sanal makineyi dağıtmak için, görüntüyü [tanımlamak](cli-ps-findimage.md#terminology) amacıyla *Urn* sütunundaki yayımcı, teklif, SKU ve isteğe bağlı olarak sürüm numarasından oluşan değeri not edin. Görüntüyü belirtirken, görüntü sürümü sayısı “en yeni” ile değiştirilerek dağıtımın en yeni sürümü seçilebilir. Bu örnekte, bir CentOS 6.5 görüntüsünün son sürümünü belirtmek için `--image` bağımsız değişkeni kullanılmıştır.  
+Belirli bir görüntü kullanarak bir sanal makineyi dağıtmak için, görüntüyü *tanımlamak* amacıyla [Urn](cli-ps-findimage.md#terminology) sütunundaki yayımcı, teklif, SKU ve isteğe bağlı olarak sürüm numarasından oluşan değeri not edin. Görüntüyü belirtirken, görüntü sürümü sayısı “en yeni” ile değiştirilerek dağıtımın en yeni sürümü seçilebilir. Bu örnekte, bir CentOS 6.5 görüntüsünün son sürümünü belirtmek için `--image` bağımsız değişkeni kullanılmıştır.  
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
@@ -158,7 +158,7 @@ Aşağıdaki tabloda boyutlar kullanım durumlarına göre kategorilere ayrılma
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Genel amaçlı](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Dengeli CPU/bellek. Küçük ve orta ölçekli uygulama ve veri çözümlerini geliştirmek/test etmek için idealdir.  |
 | [İşlem için iyileştirilmiş](sizes-compute.md)   | Fsv2          | Yüksek CPU/bellek. Orta düzey trafiğe sahip uygulamalar, ağ gereçleri ve toplu işlemler için idealdir.        |
-| [Bellek için iyileştirilmiş](sizes-memory.md)    | Esv3, Ev3, d, DSv2, Dv2  | Yüksek bellek/çekirdek. İlişkisel veritabanı, orta veya büyük boyutlu önbellekler ve bellek içi analiz için idealdir.                 |
+| [Bellek için iyileştirilmiş](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Yüksek bellek/çekirdek. İlişkisel veritabanı, orta veya büyük boyutlu önbellekler ve bellek içi analiz için idealdir.                 |
 | [Depolama için iyileştirilmiş](sizes-storage.md)      | Lsv2, ls              | Yüksek disk aktarım hızı ve GÇ. Büyük Veri, SQL ve NoSQL veritabanları için ideal.                                                         |
 | [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Ağır grafik işlemleri ile video düzenleme işlemleri için özel olarak hedeflenen VM’ler.       |
 | [Yüksek performans](sizes-hpc.md) | H        | İşleme düzeyi yüksek olan isteğe bağlı ağ arabirimleri (RDMA) içeren VM’lerimiz, şimdiye kadarki en güçlü CPU ile sunuluyor. |
@@ -253,10 +253,10 @@ Bir Azure VM’si birçok güç durumuna sahip olabilir. Bu durum VM’nin hiper
 
 | Güç Durumu | Açıklama
 |----|----|
-| Başlangıç | Sanal makinenin başlatıldığını gösterir. |
+| Başlatılıyor | Sanal makinenin başlatıldığını gösterir. |
 | Çalışıyor | Sanal makinenin çalıştığını gösterir. |
 | Durduruluyor | Sanal makinenin durdurulmakta olduğunu gösterir. | 
-| Durdurulan | Sanal makinenin durdurulduğunu gösterir. Durduruldu durumundaki sanal makinelere bilgi işlem ücretleri uygulanmaya devam eder.  |
+| Durduruldu | Sanal makinenin durdurulduğunu gösterir. Durduruldu durumundaki sanal makinelere bilgi işlem ücretleri uygulanmaya devam eder.  |
 | Serbest bırakılıyor | Sanal makinenin serbest bırakılmakta olduğunu gösterir. |
 | Serbest bırakıldı | Sanal makinenin hiper yöneticiden kaldırıldığını ancak denetim masasında hala kullanılabilir olduğunu gösterir. Serbest bırakıldı durumundaki sanal makinelere bilgi işlem ücretleri uygulanmaz. |
 | - | Sanal makinenin güç durumunun bilinmediğini gösterir. |

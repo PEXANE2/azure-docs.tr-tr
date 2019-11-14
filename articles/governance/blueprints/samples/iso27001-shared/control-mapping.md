@@ -1,17 +1,14 @@
 ---
 title: ISO 27001 paylaşılan hizmetleri şema örnek denetimi eşlemesi
 description: ISO 27001 paylaşılan hizmetleri şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: c43b2d2cf1eac4e8254fee78e8979bb163b3a9a4
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e3bba30ddffe85a067d091a328ae4cc4de7258df
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162071"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037367"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 paylaşılan hizmetleri şema örneğinin denetim eşlemesi
 
@@ -50,7 +47,7 @@ Bu ilkeleri ihlal eden kaynakları anlamak, Azure kaynaklarının yetkili kullan
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A. 9.2.3 ayrıcalıklı erişim haklarının yönetimi
 
-Bu şema, sahibi ve/veya yazma izinleri ile dış hesapları ve/veya yazma izinlerini ve/veya yazma izinlerine sahip olmayan hesapları denetlemek için dört [Azure ilke](../../../policy/overview.md) tanımı atayarak ayrıcalıklı erişim haklarını kısıtlayıp denetlemenize yardımcı olur. Multi-Factor Authentication etkinleştirildi. Azure, Azure kaynaklarına kimlerin erişebileceğini yönetmek için rol tabanlı erişim denetimi (RBAC) uygular. Bu şema Ayrıca, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulaması kullanımını denetlemek üzere üç Azure ilke tanımı da atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir. Bu şema ayrıca özel RBAC kurallarının kullanımını denetlemek için bir Azure ilke tanımı atar. Özel RBAC kurallarının hangi noktada uygulanacağını anlamak, özel RBAC kuralları hata durumunda olduğundan, gereksinimi ve uygun uygulamayı doğrulamanıza yardımcı olabilir.
+Bu şema, sahip ve/veya yazma izinleri ve çok faktörlü kimlik doğrulaması etkinleştirilmemiş olan sahip ve/veya yazma izinlerine sahip olan dış hesapları denetlemek için dört [Azure ilke](../../../policy/overview.md) tanımı atayarak ayrıcalıklı erişim haklarını kısıtlayıp denetlemenize yardımcı olur. Azure, Azure kaynaklarına kimlerin erişebileceğini yönetmek için rol tabanlı erişim denetimi (RBAC) uygular. Bu şema Ayrıca, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulaması kullanımını denetlemek üzere üç Azure ilke tanımı da atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir. Bu şema ayrıca özel RBAC kurallarının kullanımını denetlemek için bir Azure ilke tanımı atar. Özel RBAC kurallarının hangi noktada uygulanacağını anlamak, özel RBAC kuralları hata durumunda olduğundan, gereksinimi ve uygun uygulamayı doğrulamanıza yardımcı olabilir.
 
 - \[Preview\]: bir abonelikte MFA etkinleştirilmemiş olan sahip izinlerine sahip olan denetim hesapları
 - \[Preview\]: bir abonelikte MFA etkinleştirilmemiş olan yazma izinleri olan hesapları denetleme
@@ -173,7 +170,7 @@ Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nin Azure 'da bulunan sa
 
 ## <a name="a1261-management-of-technical-vulnerabilities"></a>A. 12.6.1 teknik güvenlik açıklarının yönetimi
 
-Bu şema, içinde eksik sistem güncelleştirmelerini, işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen beş [Azure ilke](../../../policy/overview.md) tanımı atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Azure Güvenlik Merkezi. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar.
+Bu şema, Azure Güvenlik Merkezi 'nde eksik sistem güncelleştirmelerini, işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen beş [Azure ilke](../../../policy/overview.md) tanımı atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar.
 
 - \[Preview\]: Azure Güvenlik Merkezi 'nde eksik Endpoint Protection Izleme
 - \[Preview\]: Azure Güvenlik Merkezi 'nde eksik sistem güncelleştirmelerini Izleme
@@ -208,10 +205,10 @@ Bu şema, ağ güvenlik gruplarını, izin veren kurallarla izleyen bir [Azure i
 Artık ISO 27001 paylaşılan hizmetler şeması 'nın denetim eşlemesini gözden geçirdiğinize göre, mimari ve bu örneğin nasıl dağıtılacağı hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Iso 27001 paylaşılan hizmetler şeması-genel bakış](./index.md)
-> [ISO 27001 paylaşılan hizmetler şeması-dağıt adımları](./deploy.md)
+> [ISO 27001 paylaşılan hizmetler şeması-genel bakış](./index.md)
+> [ISO 27001 paylaşılan hizmetler şema-Deploy adımları](./deploy.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

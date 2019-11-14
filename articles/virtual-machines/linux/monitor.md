@@ -1,6 +1,6 @@
 ---
-title: Azure'da Linux Vm'lerinizi izleme | Microsoft Docs
-description: Azure'da Linux sanal makineleri için seçenekleri izleme hakkında bilgi edinin.
+title: Azure 'da Linux VM 'lerinizi izleme
+description: Azure 'da Linux sanal makineleri için izleme seçenekleri hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 08/14/2017
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: f37967073c78b34d21d24c81e41b7f32184bc1e6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a23a6f88a5194e42d543e35e783db206e768a919
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667324"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035670"
 ---
-# <a name="how-to-monitor-virtual-machines-in-azure"></a>Azure'da sanal makineleri izleme
+# <a name="how-to-monitor-virtual-machines-in-azure"></a>Azure 'da sanal makineleri izleme
 
 [!INCLUDE [virtual-machines-monitor](../../../includes/virtual-machines-monitor.md)]

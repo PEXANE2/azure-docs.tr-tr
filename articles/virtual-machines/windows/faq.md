@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Windows VM 'Leri hakkında SSS | Microsoft Docs
+title: Azure 'da Windows VM 'Leri hakkında SSS
 description: Kaynak Yöneticisi modeliyle oluşturulan Windows sanal makineler ile ilgili bazı yaygın soruların yanıtlarını sağlar.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 95b7644ab8e0254a53eb4a0872a5af98a0894aec
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0ebf4049827a4abd9cfcb2eda354d0c796cbdbdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839230"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039181"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows Sanal Makineleri hakkında sık sorulan sorular
 Bu makalede, Azure 'da Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan Windows sanal makineleri hakkında bazı yaygın soruların ele alınmaktadır. Bu konunun Linux sürümü için bkz. [Linux sanal makineleri hakkında sık sorulan sorular](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -116,12 +116,12 @@ Aşağıdaki parolalara izin verilmiyor:
     <tr>
         <td>abc@123</td>
         <td>o kadar!</td>
-        <td>P @ $ $w 0rd</td>
+        <td>P@$$w0rd</td>
         <td>P@ssw0rd</td>
         <td>P@ssword123</td>
     </tr>
     <tr>
-        <td>PA $ $word</td>
+        <td>Pa$$word</td>
         <td>pass@word1</td>
         <td>Parolayı!</td>
         <td>Parola1</td>

@@ -1,5 +1,5 @@
 ---
-title: Red Hat Update Infrastructure | Microsoft Docs
+title: Red Hat Güncelleştirme Altyapısı
 description: Microsoft azure'da isteğe bağlı Red Hat Enterprise Linux örnekleri için Red Hat Update Infrastructure hakkında bilgi edinin
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: 6b332af53f421230b3fb5401e525bd77c5e87ed9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b19ccad5254418092446aaf781d49fa7edf0e4f4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081380"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034316"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure'da isteğe bağlı Red Hat Enterprise Linux VM'ler için Red Hat güncelleştirme altyapısı
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) gibi Red Hat barındırılan depo içeriğini yansıtmak için özel depolar ile Azure özgü içerik oluşturmak ve son kullanıcı VM'ler için kullanılabilir hale getirmek amacıyla bulut sağlayıcıları sağlar.
@@ -40,13 +40,13 @@ Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat 
 
 ## <a name="image-update-behavior"></a>Görüntü güncelleştirme davranışı
 
-2019 Nisan itibariyle Azure, genişletilmiş güncelleştirme desteği (EUS) depolarına bağlı olan RHEL görüntülerini varsayılan olarak normal (EUS olmayan) depolara bağlı olan RHEL görüntülerini sağlar. RHEL EUS hakkında daha fazla ayrıntı, Red Hat 'in [Sürüm yaşam döngüsü belgelerinde](https://access.redhat.com/support/policy/updates/errata) ve [EUS belgelerinde](https://access.redhat.com/articles/rhel-eus)bulunabilir. Varsayılan davranışı, farklı `sudo yum update` depolara farklı görüntüler bağlı olduğundan, hangi RHEL görüntüsüne sahip olduğunuza bağlı olarak değişir.
+2019 Nisan itibariyle Azure, genişletilmiş güncelleştirme desteği (EUS) depolarına bağlı olan RHEL görüntülerini varsayılan olarak normal (EUS olmayan) depolara bağlı olan RHEL görüntülerini sağlar. RHEL EUS hakkında daha fazla ayrıntı, Red Hat 'in [Sürüm yaşam döngüsü belgelerinde](https://access.redhat.com/support/policy/updates/errata) ve [EUS belgelerinde](https://access.redhat.com/articles/rhel-eus)bulunabilir. `sudo yum update` varsayılan davranışı, farklı depolara farklı görüntüler bağlı olduğundan, hangi RHEL görüntüsüne sahip olduğunuza bağlı olarak değişir.
 
-Tam görüntü listesi için Azure CLI kullanarak `az vm image list --publisher redhat --all` çalıştırın.
+Tam görüntü listesi için Azure CLı kullanarak `az vm image list --publisher redhat --all` çalıştırın.
 
 ### <a name="images-connected-to-non-eus-repositories"></a>DUYMSUZ depolara bağlı görüntüler
 
-Bir RHEL görüntüsünden sanal olmayan depolara bağlı bir VM sağlarsanız, çalıştırdığınızda `sudo yum update`en son RHEL alt sürümüne yükseltilecektir. Örneğin, bir RHEL 7,4 PAYG görüntüsünden bir VM sağlarsanız ve çalıştırırsanız `sudo yum update`, bir RHEL 7,7 sanal makinesi (RHEL7 ailesinden en son ikincil sürüm) ile biter.
+Bir RHEL görüntüsünden, EUS depolarından bağlanan bir sanal makine sağlarsanız, `sudo yum update`çalıştırdığınızda en son RHEL alt sürümüne yükseltilir. Örneğin, bir RHEL 7,4 PAYG görüntüsünden bir VM sağlayıp `sudo yum update`çalıştırırsanız, bir RHEL 7,7 sanal makinesi (RHEL7 ailesinden en son ikincil sürüm) ile biter.
 
 EUS depolarından bağlantılı olan görüntüler SKU 'da küçük bir sürüm numarası içermez. SKU, URN 'deki üçüncü öğedir (görüntünün tam adı). Örneğin, aşağıdaki tüm görüntüler EUS depolarından ekli olarak sunulur:
 
@@ -63,7 +63,7 @@ SKU 'Ların 7-LVM ya da 7-RAW olduğunu unutmayın. İkincil sürüm, bu görün
 
 ### <a name="images-connected-to-eus-repositories"></a>EUS depolarıyla bağlantılı görüntüler
 
-Bir RHEL görüntüsünden, EUS depolarında bağlı bir VM sağlarsanız, çalıştırdığınızda `sudo yum update`en son RHEL alt sürümüne yükseltmeyecektir. Bunun nedeni, EUS depolarına bağlı görüntülerin aynı zamanda belirli alt sürümlerine de sürüm kilitleneceğini sağlamalarıdır.
+Bir RHEL görüntüsünden, EUS depolarına bağlı bir VM sağlarsanız, `sudo yum update`çalıştırdığınızda en son RHEL alt sürümüne yükseltmeyecektir. Bunun nedeni, EUS depolarına bağlı görüntülerin aynı zamanda belirli alt sürümlerine de sürüm kilitleneceğini sağlamalarıdır.
 
 EUS depolarıyla bağlantılı görüntüler SKU 'da küçük bir sürüm numarası içerecektir. Örneğin, aşağıdaki resimlerin hepsi, EUS depolarında ekli olarak sunulur:
 
@@ -167,15 +167,15 @@ Daha fazla RHEL PAYG Vm'lerden erişimi kısıtlamak için bir ağ yapılandırm
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Bir VM üzerinde süresi dolmuş RHUI istemci sertifikasını güncelleştir
 
-Daha eski bir RHEL VM görüntüsü kullanıyorsanız (örneğin, RHEL 7,4 (görüntü urn: `RedHat:RHEL:7.4:7.4.2018010506`), artık süresi dolan bir SSL istemci sertifikası nedeniyle rhuı ile bağlantı sorunlarıyla karşılaşırsınız. Gördüğünüz hata _"SSL eşi sertifikanızın geçerliliği reddedildi"_ veya _"hata" gibi görünebilir. Depo meta verileri (repomd. xml) depo için alınamıyor:... Lütfen yolunu doğrulayıp yeniden deneyin "_ . Bu sorunu çözmek için lütfen aşağıdaki komutu kullanarak VM 'deki RHUı istemci paketini güncelleştirin:
+Daha eski bir RHEL VM görüntüsü kullanıyorsanız (örneğin, RHEL 7,4 (görüntü URN: `RedHat:RHEL:7.4:7.4.2018010506`), süresi dolan bir SSL istemci sertifikası nedeniyle RHUı ile ilgili bağlantı sorunlarıyla karşılaşırsınız. Gördüğünüz hata _"SSL eşi sertifikanıza süre geçmiş olarak reddedildi"_ veya _"hata: depo meta verileri (repomd. xml) depo için alınamıyor:... Lütfen yolunu doğrulayıp yeniden deneyin "_ . Bu sorunu çözmek için lütfen aşağıdaki komutu kullanarak VM 'deki RHUı istemci paketini güncelleştirin:
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 ```
 
-Alternatif olarak, `sudo yum update` aynı zamanda diğer depolar için göreceğiniz "zaman aşımına uğradı SSL sertifikası" hatalarına rağmen, çalışan istemci sertifika paketini (RHEL sürümünüze bağlı olarak) güncelleştirebilir. Bu güncelleştirme başarılı olursa diğer rhuı depolarıyla normal bağlantı geri yüklenmelidir, bu nedenle başarıyla çalıştırabileceksiniz `sudo yum update` .
+Alternatif olarak, `sudo yum update` çalıştırmak, diğer depolarda "zaman aşımına uğradı SSL sertifikası" hatalarına rağmen istemci sertifika paketini de (RHEL sürümünüze bağlı olarak) güncelleştirebilir. Bu güncelleştirme başarılı olursa diğer RHUı depolarıyla normal bağlantı geri yüklenmelidir, bu nedenle `sudo yum update` başarıyla çalıştırabileceksiniz.
 
-Çalıştıran bir `yum update`404 hatasıyla çalıştırırsanız, yum önbelleğinizi yenilemek için aşağıdakileri deneyin:
+`yum update`çalıştırırken 404 hatasıyla çalıştırırsanız, yum önbelleğinizi yenilemek için aşağıdakileri deneyin:
 ```bash
 sudo yum clean all;
 sudo yum makecache

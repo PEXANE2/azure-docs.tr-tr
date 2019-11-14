@@ -1,5 +1,5 @@
 ---
-title: SQL Server kullanılabilirlik grupları-Azure sanal makineleri-öğretici | Microsoft Docs
+title: 'Öğretici: kullanılabilirlik grubunu yapılandırma'
 description: Bu öğreticide, Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu oluşturma gösterilmektedir.
 services: virtual-machines
 documentationCenter: na
@@ -9,20 +9,20 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.custom: na
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 6485b7c102977f4fb6963418084f4da050c68558
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 5c4eb5241cc5e50c11c05cac6909e37557ba106d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036522"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037506"
 ---
-# <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Öğretici: Azure VM 'de Always on kullanılabilirlik grubunu el ile yapılandırma
+# <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Öğretici: Azure SQL Server VM kullanılabilirlik grubunu el ile yapılandırma
 
 Bu öğreticide, Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu oluşturma gösterilmektedir. Tüm öğreticide, iki SQL sunucusunda veritabanı çoğaltmasına sahip bir kullanılabilirlik grubu oluşturulur.
 
@@ -44,7 +44,7 @@ Aşağıdaki tabloda, Bu öğreticiye başlamadan önce gerçekleştirmeniz gere
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Küme tanığı için dosya paylaşma |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server hizmet hesabı | Etki alanı hesabı |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server Agent hizmet hesabı | Etki alanı hesabı |  
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Güvenlik Duvarı bağlantı noktaları açık | -SQL Server: Varsayılan örnek için **1433** <br/> -Veritabanı yansıtma uç noktası: **5022** veya kullanılabilir herhangi bir bağlantı noktası <br/> -Kullanılabilirlik grubu yük dengeleyici IP adresi durumu araştırması: **59999** veya kullanılabilir herhangi bir bağlantı noktası <br/> -Küme çekirdeği yük dengeleyici IP adresi durumu araştırması: **58888** veya kullanılabilir herhangi bir bağlantı noktası |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Güvenlik Duvarı bağlantı noktaları açık | -SQL Server: varsayılan örnek için **1433** <br/> -Veritabanı yansıtma uç noktası: **5022** veya kullanılabilir herhangi bir bağlantı noktası <br/> -Kullanılabilirlik grubu yük dengeleyici IP adresi durum araştırması: **59999** veya kullanılabilir herhangi bir bağlantı noktası <br/> -Küme çekirdeği yük dengeleyici IP adresi durum araştırması: **58888** veya kullanılabilir herhangi bir bağlantı noktası |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Yük Devretme Kümelemesi özelliği Ekle | Her iki SQL Server için de bu özellik gerekir |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Yükleme etki alanı hesabı | -Her SQL Server yerel yönetici <br/> -SQL Server her bir örneği için SQL Server sysadmin sabit sunucu rolü üyesi  |
 
@@ -69,21 +69,21 @@ Aşağıdaki tabloda, Bu öğreticiye başlamadan önce gerçekleştirmeniz gere
 
 2. **Sunucu Yöneticisi** panosunda **Araçlar**' ı seçin ve ardından **Yük devretme kümesi Yöneticisi**' e tıklayın.
 3. Sol bölmede **Yük devretme kümesi Yöneticisi**' a sağ tıklayın ve ardından **Küme Oluştur ' a**tıklayın.
-   ![Küme Oluştur](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
+   Küme oluşturma ![](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
 4. Küme oluşturma Sihirbazı 'nda, aşağıdaki tabloda bulunan ayarlarla sayfaları düzenleyerek tek düğümlü bir küme oluşturun:
 
    | Sayfa | Ayarlar |
    | --- | --- |
-   | Başlamadan önce |Varsayılanları kullan |
+   | Başlamadan önce |Varsayılanları Kullan |
    | Sunucuları seçin |**Sunucu adını girin** alanına ilk SQL Server adını yazın ve **Ekle**' ye tıklayın. |
-   | Doğrulama uyarısı |Hayır **'ı seçin. bu küme için Microsoft desteği gerekmiyor ve bu nedenle doğrulama testlerini çalıştırmak istemiyor. Ileri 'yi tıkladığımda kümeyi**oluşturmaya devam edin. |
+   | Doğrulama uyarısı |**Hayır 'ı seçin. bu küme Için Microsoft desteği gerekmiyor ve bu nedenle doğrulama testlerini çalıştırmak istemiyor. Ileri 'yi tıkladığımda Kümeyi oluşturmaya devam**edin. |
    | Kümeyi yönetmek için erişim noktası |**Küme adı alanına bir**küme adı yazın, örneğin **SQLAGCluster1** .|
    | Onay |Depolama alanları kullanmadığınız takdirde Varsayılanları kullanın. Bu tablodan sonraki nota bakın. |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Windows Server yük devretme kümesi IP adresini ayarlama
 
   > [!NOTE]
-  > Windows Server 2019 ' de küme, **küme ağ adı**yerine bir **dağıtılmış sunucu adı** oluşturur. Windows Server 2019 kullanıyorsanız, bu öğreticide küme çekirdeği adına başvuran adımları atlayın. [PowerShell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019)kullanarak bir küme ağ adı oluşturabilirsiniz. Blog [yük devretme kümesini gözden geçirin: Daha fazla bilgi](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) için küme ağ nesnesi. 
+  > Windows Server 2019 ' de küme, **küme ağ adı**yerine bir **dağıtılmış sunucu adı** oluşturur. Windows Server 2019 kullanıyorsanız, bu öğreticide küme çekirdeği adına başvuran adımları atlayın. [PowerShell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019)kullanarak bir küme ağ adı oluşturabilirsiniz. Daha fazla bilgi için blog [Yük devretme kümesini gözden geçirin: küme ağ nesnesi](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) . 
 
 1. **Yük devretme kümesi Yöneticisi**' de, **küme çekirdeği kaynakları** ' na kaydırın ve küme ayrıntılarını genişletin. **Başarısız** durumunda hem **adı** hem de **IP adresi** kaynaklarını görmeniz gerekir. Küme, makinenin kendisi ile aynı IP adresine atandığından ve bu nedenle yinelenen bir adres olduğundan, IP adresi kaynağı çevrimiçi duruma getirilemiyor.
 
@@ -114,7 +114,7 @@ Diğer SQL Server kümeye ekleyin.
     >[!WARNING]
    >Depolama alanları 'nı kullanıyorsanız ve **tüm uygun depolama alanını kümeye ekle**seçeneğinin işaretini kaldırırsanız, Windows, kümeleme işlemi sırasında sanal diskleri ayırır. Sonuç olarak, depolama alanları kümeden kaldırılana ve PowerShell kullanılarak yeniden iliştirene kadar disk Yöneticisi veya Explorer 'da görünmez. Depolama alanları, depolama havuzlarında birden çok diski gruplandırır. Daha fazla bilgi için bkz. [depolama alanları](https://technet.microsoft.com/library/hh831739).
 
-1. **İleri**'ye tıklayın.
+1. **İleri**’ye tıklayın.
 
 1. **Son**'a tıklayın.
 
@@ -138,9 +138,9 @@ Bu örnekte, Windows kümesi bir küme çekirdeği oluşturmak için bir dosya p
 
    Paylaşım oluşturmak için **paylaşılan klasör oluşturma Sihirbazı 'nı** kullanın.
 
-1. **Klasör yolu**sayfasında, **Araştır** ' a tıklayın ve paylaşılan klasör için bir yol bulun veya oluşturun. **İleri**'ye tıklayın.
+1. **Klasör yolu**sayfasında, **Araştır** ' a tıklayın ve paylaşılan klasör için bir yol bulun veya oluşturun. **İleri**’ye tıklayın.
 
-1. **Ad, açıklama ve ayarlar** ' da, paylaşımın adını ve yolunu doğrulayın. **İleri**'ye tıklayın.
+1. **Ad, açıklama ve ayarlar** ' da, paylaşımın adını ve yolunu doğrulayın. **İleri**’ye tıklayın.
 
 1. **Paylaşılan klasör izinleri** ayarlar **izinleri Özelleştir**. **Özel...** öğesine tıklayın.
 
@@ -150,7 +150,7 @@ Bu örnekte, Windows kümesi bir küme çekirdeği oluşturmak için bir dosya p
 
    ![Yeni paylaşma](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/50-filesharepermissions.png)
 
-1. **Tamam**'ı tıklatın.
+1. **OK (Tamam)** düğmesine tıklayın.
 
 1. **Paylaşılan klasör izinleri**' nde **son**' a tıklayın. Yeniden **son** ' a tıklayın.  
 
@@ -175,9 +175,9 @@ Sonra, küme çekirdeğini ayarlayın.
    >[!TIP]
    >Windows Server 2016, bulut tanığını destekler. Bu tür bir tanık seçerseniz, dosya paylaşma tanığına gerek yoktur. Daha fazla bilgi için bkz. [Yük devretme kümesi için bulut tanığı dağıtma](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). Bu öğretici, önceki işletim sistemleri tarafından desteklenen bir dosya paylaşma tanığı kullanır.
 
-1. **Dosya paylaşma tanığını Yapılandır**sayfasında, oluşturduğunuz paylaşımın yolunu yazın. **İleri**'ye tıklayın.
+1. **Dosya paylaşma tanığını Yapılandır**sayfasında, oluşturduğunuz paylaşımın yolunu yazın. **İleri**’ye tıklayın.
 
-1. **Onaylamada**ayarları doğrulayın. **İleri**'ye tıklayın.
+1. **Onaylamada**ayarları doğrulayın. **İleri**’ye tıklayın.
 
 1. **Son**'a tıklayın.
 
@@ -240,9 +240,9 @@ Repeat these steps on the second SQL Server.
 
    Paylaşım oluşturmak için **paylaşılan klasör oluşturma Sihirbazı 'nı** kullanın.
 
-1. **Klasör yolu**sayfasında, **Araştır** ' a tıklayın ve veritabanı yedeklemesi paylaşılan klasörü için bir yol bulun veya oluşturun. **İleri**'ye tıklayın.
+1. **Klasör yolu**sayfasında, **Araştır** ' a tıklayın ve veritabanı yedeklemesi paylaşılan klasörü için bir yol bulun veya oluşturun. **İleri**’ye tıklayın.
 
-1. **Ad, açıklama ve ayarlar** ' da, paylaşımın adını ve yolunu doğrulayın. **İleri**'ye tıklayın.
+1. **Ad, açıklama ve ayarlar** ' da, paylaşımın adını ve yolunu doğrulayın. **İleri**’ye tıklayın.
 
 1. **Paylaşılan klasör izinleri** ayarlar **izinleri Özelleştir**. **Özel...** öğesine tıklayın.
 
@@ -252,7 +252,7 @@ Repeat these steps on the second SQL Server.
 
    ![Yeni paylaşma](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/68-backupsharepermission.png)
 
-1. **Tamam**'ı tıklatın.
+1. **OK (Tamam)** düğmesine tıklayın.
 
 1. **Paylaşılan klasör izinleri**' nde **son**' a tıklayın. Yeniden **son** ' a tıklayın.  
 
@@ -278,7 +278,7 @@ Artık aşağıdaki adımları kullanarak bir kullanılabilirlik grubu yapıland
 
     ![Yeni kullanılabilirlik grubu Başlatma Sihirbazı](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/56-newagwiz.png)
 
-2. **Giriş** sayfasında **İleri**' ye tıklayın. Kullanılabilirlik grubu **adını belirtin** sayfasında, kullanılabilirlik grubu için bir ad yazın, örneğin **AG1**, **kullanılabilirlik grubu adı**. **İleri**'ye tıklayın.
+2. **Giriş** sayfasında **İleri**' ye tıklayın. Kullanılabilirlik grubu **adını belirtin** sayfasında, kullanılabilirlik grubu için bir ad yazın, örneğin **AG1**, **kullanılabilirlik grubu adı**. **İleri**’ye tıklayın.
 
     ![Yeni AG Sihirbazı, AG adını belirtin](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/58-newagname.png)
 
@@ -301,10 +301,10 @@ Artık aşağıdaki adımları kullanarak bir kullanılabilirlik grubu yapıland
 
     ![Yeni AG Sihirbazı, Ilk veri eşitlemesini seçin](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. **Ilk veri eşitlemesini Seç** sayfasında **tam** ' ı seçin ve paylaşılan bir ağ konumu belirtin. Konum için, [oluşturduğunuz yedekleme payını](#backupshare)kullanın. Bu örnekte,  **\\ \\önce\Backup\\SQL Server\>. \<** **İleri**'ye tıklayın.
+8. **Ilk veri eşitlemesini Seç** sayfasında **tam** ' ı seçin ve paylaşılan bir ağ konumu belirtin. Konum için, [oluşturduğunuz yedekleme payını](#backupshare)kullanın. Bu örnekte, **ilk SQL Server\>\Backup\\\<\\\\** . **İleri**’ye tıklayın.
 
    >[!NOTE]
-   >Tam eşitleme, SQL Server ilk örneğindeki veritabanının tam yedeklemesini alır ve ikinci örneğe geri yükler. Büyük veritabanları için tam eşitleme, uzun sürebileceğinden önerilmez. Bu süreyi, veritabanının bir yedeklemesini el ile alarak ve ile `NO RECOVERY`geri yükleyerek azaltabilirsiniz. Veritabanı, kullanılabilirlik grubunu yapılandırmadan önce ikinci `NO RECOVERY` SQL Server ile zaten geri yüklenirse, **yalnızca Birleştir**' i seçin. Kullanılabilirlik grubunu yapılandırdıktan sonra yedeklemeyi almak istiyorsanız **ilk veri eşitlemesini atla**' yı seçin.
+   >Tam eşitleme, SQL Server ilk örneğindeki veritabanının tam yedeklemesini alır ve ikinci örneğe geri yükler. Büyük veritabanları için tam eşitleme, uzun sürebileceğinden önerilmez. Bu süreyi, veritabanının bir yedeklemesini el ile alarak ve `NO RECOVERY`geri yükleyerek azaltabilirsiniz. Veritabanı, kullanılabilirlik grubunu yapılandırmadan önce ikinci SQL Server `NO RECOVERY` ile zaten geri yüklenmişse **yalnızca Birleştir**' i seçin. Kullanılabilirlik grubunu yapılandırdıktan sonra yedeklemeyi almak istiyorsanız **ilk veri eşitlemesini atla**' yı seçin.
 
     ![Yeni AG Sihirbazı, Ilk veri eşitlemesini seçin](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/70-datasynchronization.png)
 
@@ -355,19 +355,19 @@ Azure Load Balancer bir Standart Load Balancer ya da temel Load Balancer olabili
 
    ![Yük Devretme Kümesi Yöneticisi AG](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’ tıklayın.
 1. Yük Dengeleyici için aşağıdaki parametreleri yapılandırın.
 
    | Ayar | Alan |
    | --- | --- |
-   | **Name** |Yük Dengeleyici için bir metin adı kullanın, örneğin **Sqllb**. |
+   | **Adı** |Yük Dengeleyici için bir metin adı kullanın, örneğin **Sqllb**. |
    | **Tür** |İç |
    | **Sanal ağ** |Azure sanal ağının adını kullanın. |
    | **Alt ağ** |Sanal makinenin bulunduğu alt ağın adını kullanın.  |
    | **IP adresi ataması** |Statik |
    | **IP adresi** |Alt ağdan kullanılabilir bir adres kullanın. Kullanılabilirlik grubu dinleyiciniz için bu adresi kullanın. Bu, küme IP adresinizden farklı olduğunu unutmayın.  |
    | **Abonelik** |Sanal makineyle aynı aboneliği kullanın. |
-   | **Location** |Sanal makineyle aynı konumu kullanın. |
+   | **Konum** |Sanal makineyle aynı konumu kullanın. |
 
    Azure portal dikey penceresi şöyle görünmelidir:
 
@@ -404,7 +404,7 @@ Yük dengeleyiciyi yapılandırmak için bir arka uç havuzu, bir araştırma ol
 
    | Ayar | Açıklama | Örnek
    | --- | --- |---
-   | **Name** | Text | SQLAlwaysOnEndPointProbe |
+   | **Adı** | Metin | SQLAlwaysOnEndPointProbe |
    | **Protokolü** | TCP seçin | TCP |
    | **Bağlantı Noktası** | Kullanılmayan tüm bağlantı noktaları | 59999 |
    | **Aralık**  | Saniye cinsinden yoklama denemeleri arasındaki süre miktarı |5 |
@@ -420,15 +420,15 @@ Yük dengeleyiciyi yapılandırmak için bir arka uç havuzu, bir araştırma ol
 
    | Ayar | Açıklama | Örnek
    | --- | --- |---
-   | **Name** | Text | SQLAlwaysOnEndPointListener |
-   | **Ön uç IP adresi** | Adres seçin |Yük dengeleyiciyi oluştururken oluşturduğunuz adresi kullanın. |
+   | **Adı** | Metin | SQLAlwaysOnEndPointListener |
+   | **Ön uç IP adresi** | Bir adres seçin |Yük dengeleyiciyi oluştururken oluşturduğunuz adresi kullanın. |
    | **Protokolü** | TCP seçin |TCP |
    | **Bağlantı Noktası** | Kullanılabilirlik grubu dinleyicisi için bağlantı noktasını kullan | 1433 |
    | **Arka uç bağlantı noktası** | Bu alan, kayan IP doğrudan sunucu dönüşü için ayarlandığında kullanılmaz | 1433 |
    | **Yokla** |Araştırma için belirttiğiniz ad | SQLAlwaysOnEndPointProbe |
    | **Oturum kalıcılığı** | Açılan liste | **Yok.** |
    | **Boşta kalma zaman aşımı** | TCP bağlantısının açık tutulması için dakika sayısı | 4 |
-   | **Kayan IP (doğrudan sunucu dönüşü)** | |Enabled |
+   | **Kayan IP (doğrudan sunucu dönüşü)** | |Etkin |
 
    > [!WARNING]
    > Doğrudan sunucu dönüşü oluşturma sırasında ayarlanır. Bu değer değiştirilemez.
@@ -447,7 +447,7 @@ WSFC IP adresinin Ayrıca yük dengeleyicide olması gerekir.
 
    | Ayar | Açıklama | Örnek
    | --- | --- |---
-   | **Name** | Text | Wsfcendpointaraştırması |
+   | **Adı** | Metin | Wsfcendpointaraştırması |
    | **Protokolü** | TCP seçin | TCP |
    | **Bağlantı Noktası** | Kullanılmayan tüm bağlantı noktaları | 58888 |
    | **Aralık**  | Saniye cinsinden yoklama denemeleri arasındaki süre miktarı |5 |
@@ -461,15 +461,15 @@ WSFC IP adresinin Ayrıca yük dengeleyicide olması gerekir.
 
    | Ayar | Açıklama | Örnek
    | --- | --- |---
-   | **Name** | Text | WSFCEndPoint |
-   | **Ön uç IP adresi** | Adres seçin |WSFC IP adresini yapılandırdığınızda oluşturduğunuz adresi kullanın. Bu, dinleyici IP adresinden farklıdır |
+   | **Adı** | Metin | WSFCEndPoint |
+   | **Ön uç IP adresi** | Bir adres seçin |WSFC IP adresini yapılandırdığınızda oluşturduğunuz adresi kullanın. Bu, dinleyici IP adresinden farklıdır |
    | **Protokolü** | TCP seçin |TCP |
    | **Bağlantı Noktası** | Küme IP adresi için bağlantı noktasını kullanın. Bu, dinleyici araştırma bağlantı noktası için kullanılmayan kullanılabilir bir bağlantı noktasıdır. | 58888 |
    | **Arka uç bağlantı noktası** | Bu alan, kayan IP doğrudan sunucu dönüşü için ayarlandığında kullanılmaz | 58888 |
    | **Yokla** |Araştırma için belirttiğiniz ad | Wsfcendpointaraştırması |
    | **Oturum kalıcılığı** | Açılan liste | **Yok.** |
    | **Boşta kalma zaman aşımı** | TCP bağlantısının açık tutulması için dakika sayısı | 4 |
-   | **Kayan IP (doğrudan sunucu dönüşü)** | |Enabled |
+   | **Kayan IP (doğrudan sunucu dönüşü)** | |Etkin |
 
    > [!WARNING]
    > Doğrudan sunucu dönüşü oluşturma sırasında ayarlanır. Bu değer değiştirilemez.
@@ -493,7 +493,7 @@ SQL Server Management Studio, dinleyici bağlantı noktasını ayarlayın.
 
 1. SQL Server Management Studio başlatın ve birincil çoğaltmaya bağlanın.
 
-1. **AlwaysOn yüksek kullanılabilirlik** | **kullanılabilirlik grupları** | **kullanılabilirlik grubu dinleyicileri**' ne gidin.
+1. **Kullanılabilirlik grubu dinleyicilerine** | **AlwaysOn yüksek kullanılabilirlik** | **kullanılabilirlik grupları** ' na gidin.
 
 1. Artık Yük Devretme Kümesi Yöneticisi oluşturduğunuz dinleyici adını görmeniz gerekir. Dinleyici adına sağ tıklayın ve **Özellikler**' e tıklayın.
 

@@ -1,5 +1,5 @@
 ---
-title: Linux VM 'Ler için yönetilen disk Azure Disk Depolama genel bakış | Microsoft Docs
+title: Linux VM 'Ler için yönetilen diske genel bakış Azure Disk Depolama
 description: Linux VM 'lerini kullanırken depolama hesaplarını işleyen Azure yönetilen disklere genel bakış
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: de6ac88d5619266d049f0dc5bd4b54d674f00df7
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 7e9a5e1b1e1b0c879a1264573e7073e70a1e95fc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796285"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035857"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure yönetilen disklere giriş
 

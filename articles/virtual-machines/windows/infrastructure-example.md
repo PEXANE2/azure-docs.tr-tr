@@ -1,5 +1,5 @@
 ---
-title: Örnek Azure altyapı Kılavuzu | Microsoft Docs
+title: Örnek Azure altyapısına ilişkin Izlenecek yol
 description: Azure 'da örnek bir altyapı dağıtmaya yönelik anahtar tasarımı ve uygulama yönergeleri hakkında bilgi edinin.
 documentationcenter: ''
 services: virtual-machines-windows
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4191015ee4dc7eb753c70f23be242f2ca88dcc3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ab6f304d78357e261c68ebbcfcb3746844edce8a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079398"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038558"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Windows VM 'Leri için örnek Azure altyapı Kılavuzu
 Bu makalede, örnek bir uygulama altyapısı oluşturma işlemi adım adım açıklanmaktadır. Adlandırma kuralları, kullanılabilirlik kümeleri, sanal ağlar ve yük dengeleyiciler ve aslında sanal makinelerinizi (VM 'Ler) dağıtmak için tüm kılavuzları ve kararları bir araya getiren basit bir çevrimiçi mağaza için bir altyapı tasarlama ayrıntımız yaptık.
@@ -44,7 +44,7 @@ Elde edilen tasarımın şunu içermesi gerekir:
 
 * Bir Azure aboneliği ve hesabı
 * Tek bir kaynak grubu
-* Azure Yönetilen Diskler
+* Azure Yönetilen Diskleri
 * İki alt ağa sahip bir sanal ağ
 * Benzer role sahip VM 'Ler için kullanılabilirlik kümeleri
 * Sanal makineler
@@ -72,13 +72,13 @@ Sanal ağın Adventure Iş döngüleri şirket içi ağı üzerinde devam eden b
 Azure portal kullanarak aşağıdaki ayarlarla yalnızca bir bulut sanal ağı oluşturmuşlar:
 
 * Ad: AZOS-USE-VN01
-* Konumuna Doğu ABD 2
+* Konum: Doğu ABD 2
 * Sanal ağ adres alanı: 10.0.0.0/8
 * İlk alt ağ:
-  * Ad: FrontEnd
+  * Ad: ön uç
   * Adres alanı: 10.0.1.0/24
 * İkinci alt ağ:
-  * Ad: BackEnd
+  * Ad: arka uç
   * Adres alanı: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Kullanılabilirlik kümeleri

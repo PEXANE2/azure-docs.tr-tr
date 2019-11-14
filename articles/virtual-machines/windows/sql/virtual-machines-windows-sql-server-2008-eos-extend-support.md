@@ -1,6 +1,6 @@
 ---
-title: Azure ile SQL Server 2008 ve SQL Server 2008 R2 desteğini genişletme
-description: SQL Server örneğinizi Azure 'a geçirerek ve örnekleri şirket içinde tutmak için genişletilmiş destek satın alarak SQL Server 2008 ve SQL Server 2008 R2 desteğinin nasıl genişletileceğini öğrenin.
+title: SQL Server 2008 & 2008 R2 desteğini uzat
+description: SQL Server örneğinizi Azure 'a geçirerek ve örnekleri şirket içinde tutmak için genişletilmiş destek satın alarak SQL Server 2008 ve SQL Server 2008 R2 desteğini genişletin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 93e0032cd283eda034519ca29a0e1cf501b5cde6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d1b3961b61d45718e726b31ec406445b202a0adf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100461"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034186"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure ile SQL Server 2008 ve SQL Server 2008 R2 desteğini genişletme
 
@@ -37,7 +38,7 @@ SQL Server 2008 ' de olan müşterilerin, SQL Server 2008 R2 'ye kendi kendine y
 Azure Marketi aracılığıyla dağıtılan görüntüler SQL IaaS uzantısı önceden yüklenmiş olarak gelir. SQL IaaS uzantısı, esnek lisanslama ve otomatik düzeltme eki uygulama gereksinimidir. Otomatik olarak yüklenen VM 'Leri dağıtan müşterilerin SQL IaaS uzantısını el ile yüklemesi gerekir. SQL IaaS uzantısı Windows Server 2008 ' de desteklenmez.
 
 > [!NOTE]
-> Dikey pencere **oluşturma** ve **yönetme** SQL Server, Azure Portal SQL Server 2008 R2 görüntüsüyle çalışır, ancak aşağıdaki özellikler _desteklenmez_: Otomatik yedeklemeler, Azure Key Vault tümleştirme, R Hizmetleri ve depolama yapılandırması.
+> Dikey pencere **oluşturma** ve **yönetme** SQL Server, Azure Portal SQL Server 2008 R2 görüntüsüyle çalışacak olsa da, aşağıdaki özellikler _desteklenmez_: otomatik yedeklemeler, Azure Key Vault tümleştirme, R Hizmetleri ve depolama yapılandırması.
 
 ## <a name="licensing"></a>Lisanslama
 Kullandıkça Öde SQL Server 2008 R2 dağıtımları [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)'e dönüştürülebilir.
@@ -63,9 +64,9 @@ SQL Server, kurtarmayı güvence altına almak için uygulamayla tutarlı Azure 
 
 Azure VM 'de EOS SQL Server için olağanüstü durum kurtarma çözümleri şunlardır:
 
-- **Yedeklemeleri SQL Server**: EOS SQL Server fidye, yanlışlıkla silme ve bozulmalara karşı korumaya yardımcı olmak için Azure Backup kullanın. Çözüm şu anda EOS SQL Server için önizlemededir ve Windows 2008 R2 SP1 üzerinde çalışan SQL Server 2008 ve 2008 R2 'yi destekler. Daha ayrıntılı bilgi için [Bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2)bakın.
+- **Yedeklemeleri SQL Server**: Azure Backup kullanarak eos SQL Server fidye, yanlışlıkla silme ve bozulmalara karşı korumanıza yardımcı olur. Çözüm şu anda EOS SQL Server için önizlemededir ve Windows 2008 R2 SP1 üzerinde çalışan SQL Server 2008 ve 2008 R2 'yi destekler. Daha ayrıntılı bilgi için [Bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2)bakın.
 - **Günlük aktarma**: RTO 'ı azaltmak için sürekli geri yüklemeler içeren başka bir bölgede veya Azure bölgesinde bir günlük aktarma çoğaltması oluşturabilirsiniz. Günlük dağıtımını el ile yapılandırmanız gerekir.
-- **Azure Site Recovery**: Azure Site Recovery çoğaltma aracılığıyla sanal makinenizin bölgeler ve bölgeler arasında çoğaltılmasını sağlayabilirsiniz. SQL Server, olağanüstü bir durum oluşması durumunda kurtarma sağlamak için uygulamayla tutarlı anlık görüntüler gerektirir. Azure Site Recovery, EOS SQL Server olağanüstü durum kurtarma için en az 1 saatlik RPO ve 2 saat (artı SQL Server kurtarma süresi) sağlar.
+- **Azure Site Recovery**: sanal makinenizin Azure Site Recovery çoğaltma aracılığıyla bölgeler ve bölgeler arasında çoğaltılmasını sağlayabilirsiniz. SQL Server, olağanüstü bir durum oluşması durumunda kurtarma sağlamak için uygulamayla tutarlı anlık görüntüler gerektirir. Azure Site Recovery, EOS SQL Server olağanüstü durum kurtarma için en az 1 saatlik RPO ve 2 saat (artı SQL Server kurtarma süresi) sağlar.
 
 ## <a name="security-patching"></a>Güvenlik Düzeltme eki uygulama
 SQL Server VM 'Ler için genişletilmiş güvenlik güncelleştirmeleri, SQL Server VM SQL VM [kaynak sağlayıcısına](virtual-machines-windows-sql-register-with-resource-provider.md)kaydedildikten sonra Microsoft Update kanalları aracılığıyla dağıtılır. Düzeltme ekleri el ile veya otomatik olarak indirilebilir.

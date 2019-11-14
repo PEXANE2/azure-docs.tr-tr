@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0772446b0259b12d3f76b2020eeed4c9c2de1119
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882214"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038081"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -24,6 +24,13 @@ AzCopy, Azure depolama 'ya ve dışına veri taşınan bir komut satırı aracı
 Komutların genel biçimi: `azcopy [command] [arguments] --[flag-name]=[flag-value]`.
 
 Sorunları bildirmek veya araç hakkında daha fazla bilgi edinmek için bkz. [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy).
+
+## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
+
+- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Seçenekler
 

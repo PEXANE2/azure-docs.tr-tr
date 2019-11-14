@@ -1,5 +1,5 @@
 ---
-title: Linux VM 'de takas bölümü yapılandırmak için Cloud-init kullanma | Microsoft Docs
+title: Linux VM 'de takas bölümü yapılandırmak için Cloud-init kullanma
 description: Azure CLı ile oluşturma sırasında bir Linux sanal makinesinde takas bölümü yapılandırmak için Cloud-init kullanma
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: d8ce12b931b6a30fa375588b73a1140ed4697c2f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fad73a7dbed9351d684ef2464cf2fa6fa3489290
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640764"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036766"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Linux VM 'de takas bölümü yapılandırmak için Cloud-init kullanma
 Bu makalede, [Cloud-init](https://cloudinit.readthedocs.io) kullanarak çeşitli Linux dağıtımlarına takas bölümünü nasıl yapılandırabileceğiniz gösterilmektedir. Değiştirme bölümü geleneksel olarak Linux Aracısı (WALA) tarafından hangi dağıtımların gerekli olduğunu temel alan bir şekilde yapılandırılmıştır.  Bu belge, Cloud-init ' i kullanarak sağlama süresi boyunca değiştirme bölümünü isteğe bağlı olarak oluşturma sürecini özetler.  Cloud-init 'in Azure 'da ve desteklenen Linux korumalar 'daki yerel olarak nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Cloud-init Overview](using-cloud-init.md)
@@ -54,7 +54,7 @@ Bu görüntüyü dağıtılmadan önce [az Group Create](/cli/azure/group) komut
 az group create --name myResourceGroup --location eastus
 ```
 
-Şimdi [az VM Create](/cli/azure/vm) ile bir VM oluşturun ve Cloud-init dosyasını `--custom-data cloud_init_swappart.txt` aşağıdaki gibi belirtin:
+Şimdi [az VM Create](/cli/azure/vm) Ile bir VM oluşturun ve Cloud-init dosyasını `--custom-data cloud_init_swappart.txt` ile aşağıdaki gibi belirtin:
 
 ```azurecli-interactive 
 az vm create \

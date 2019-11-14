@@ -1,5 +1,5 @@
 ---
-title: Azure VM için şablon indirme | Microsoft Docs
+title: Azure VM için şablon indirme
 description: Kaynak Yöneticisi dağıtım modelindeki dağıtımların otomatikleştirilmesine yardımcı olmak için bir VM için Template'i indirin
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 39abe054869bf68a254b9305a680ecc892359300
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c73026515f0d7fde4e2f82838696700b1bb17c77
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898879"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033558"
 ---
 # <a name="download-the-template-for-a-vm"></a>VM için şablon indirme
 Portal veya PowerShell kullanarak Azure 'da bir VM oluşturduğunuzda, sizin için otomatik olarak bir Kaynak Yöneticisi şablonu oluşturulur. Bu şablonu, bir dağıtımı hızlı bir şekilde yinelemek için kullanabilirsiniz. Şablon, bir kaynak grubundaki tüm kaynaklarla ilgili bilgiler içerir. Bu, bir sanal makine için, şablonda ağ kaynakları dahil olmak üzere o kaynak grubundaki VM 'nin desteğiyle oluşturulan her şeyi içerdiği anlamına gelir.

@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 0c21271eb19a8fd69cb42e30c6a45bd3af9a5600
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1f5f5f2064baa4b2821ccb7b9a2237e6aeeb86f5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820489"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048769"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL veritabanı 'nda yönetilen bir örnek için bağlantı mimarisi
 
@@ -98,19 +98,19 @@ Yönetilen bir örneği sanal ağın içindeki ayrılmış bir alt ağda dağıt
 
 | Ad       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |Herhangi biri              |Mı ALT AĞı  |Allow |
-|mi_subnet   |Herhangi biri                         |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |Allow |
-|health_probe|Herhangi biri                         |Herhangi biri     |AzureLoadBalancer|Mı ALT AĞı  |Allow |
+|yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |Herhangi biri              |Mı ALT AĞı  |İzin Ver |
+|mi_subnet   |Herhangi biri                         |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
+|health_probe|Herhangi biri                         |Herhangi biri     |AzureLoadBalancer|Mı ALT AĞı  |İzin Ver |
 
 ### <a name="mandatory-outbound-security-rules"></a>Zorunlu giden güvenlik kuralları
 
 | Ad       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
 |------------|--------------|--------|-----------------|-----------|------|
-|yönetim  |443, 12000    |TCP     |Mı ALT AĞı        |AzureCloud |Allow |
-|mi_subnet   |Herhangi biri           |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |Allow |
+|yönetim  |443, 12000    |TCP     |Mı ALT AĞı        |AzureCloud |İzin Ver |
+|mi_subnet   |Herhangi biri           |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
 
 > [!IMPORTANT]
-> 9000, 9003, 1438, 1440, 1452 ve bağlantı noktaları 80, 443, 12000 için tek bir gelen kuralı olduğundan emin olun. Her bağlantı noktası için gelen ve giden kuralları ayrı olarak yapılandırılırsa Azure Resource Manager dağıtımlar aracılığıyla yönetilen örnek sağlama başarısız olur. Bu bağlantı noktaları ayrı kurallarda ise, dağıtım hata kodu ile başarısız olur `VnetSubnetConflictWithIntendedPolicy`
+> Bağlantı noktaları için 9000, 9003, 1438, 1440, 1452 ve bir giden kuralı için yalnızca bir gelen kuralı olduğundan emin olun 443, 12000. Her bağlantı noktası için gelen ve giden kuralları ayrı olarak yapılandırılırsa Azure Resource Manager dağıtımlar aracılığıyla yönetilen örnek sağlama başarısız olur. Bu bağlantı noktaları ayrı kurallarda ise, dağıtım hata kodu ile başarısız olur `VnetSubnetConflictWithIntendedPolicy`
 
 \* mı alt ağı, 10. x. x. x/y biçimindeki alt ağın IP adresi aralığını ifade eder. Bu bilgileri, Azure portal alt ağ özelliklerinde bulabilirsiniz.
 
@@ -253,18 +253,18 @@ Yönetilen bir örneği sanal ağın içindeki ayrılmış bir alt ağda dağıt
 
 | Ad       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |Mı ALT AĞı  |Allow |
-|            |9000, 9003                  |TCP     |Corpnetgördünüz       |Mı ALT AĞı  |Allow |
-|            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16|Mı ALT AĞı  |Allow |
-|mi_subnet   |Herhangi biri                         |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |Allow |
-|health_probe|Herhangi biri                         |Herhangi biri     |AzureLoadBalancer|Mı ALT AĞı  |Allow |
+|yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |Mı ALT AĞı  |İzin Ver |
+|            |9000, 9003                  |TCP     |Corpnetgördünüz       |Mı ALT AĞı  |İzin Ver |
+|            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16|Mı ALT AĞı  |İzin Ver |
+|mi_subnet   |Herhangi biri                         |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
+|health_probe|Herhangi biri                         |Herhangi biri     |AzureLoadBalancer|Mı ALT AĞı  |İzin Ver |
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması ile zorunlu giden güvenlik kuralları 
 
 | Ad       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
 |------------|--------------|--------|-----------------|-----------|------|
-|yönetim  |443, 12000    |TCP     |Mı ALT AĞı        |AzureCloud |Allow |
-|mi_subnet   |Herhangi biri           |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |Allow |
+|yönetim  |443, 12000    |TCP     |Mı ALT AĞı        |AzureCloud |İzin Ver |
+|mi_subnet   |Herhangi biri           |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırmasıyla Kullanıcı tanımlı rotalar 
 

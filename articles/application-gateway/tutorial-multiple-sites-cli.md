@@ -1,23 +1,24 @@
 ---
-title: Birden çok web sitesi barındıran bir uygulama ağ geçidi oluşturma - Azure CLI
+title: CLı kullanarak birden çok Web sitesi barındırma
+titleSuffix: Azure Application Gateway
 description: Azure CLI kullanarak, birden çok web sitesi barındıran bir uygulama ağ geçidi oluşturmayı öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: eceb380112002ef951d6d5e74998d944da01bd7a
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0a92d0f7d17f6bb83efbe94434c25072975dbe57
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688227"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047350"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLı kullanarak birden çok Web sitesini barındıran bir uygulama ağ geçidi oluşturma
 
-Bir [uygulama ağ geçidi](overview.md) oluştururken Azure CLI’sini [birden çok web sitesi barındırmayı yapılandırmak](multiple-site-overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzları tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www\.contoso.com* ve *www\.fabrikam.com*örneklerini kullanan varsayılmaktadır.
+Bir [uygulama ağ geçidi](multiple-site-overview.md) oluştururken Azure CLI’sini [birden çok web sitesi barındırmayı yapılandırmak](overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzları tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www\.contoso.com* ve *www\.fabrikam.com*örneklerini kullanan varsayılmaktadır.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -51,7 +52,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 
-[az network vnet create](/cli/azure/network/vnet) komutunu kullanarak adlı sanal ağı ve *myAGSubnet* adlı alt ağı oluşturun. Daha sonra [az network vnet subnet create](/cli/azure/network/vnet/subnet) kullanan arka uç sunucularının gerek duyduğu alt ağı ekleyebilirsiniz. [az network public-ip create](/cli/azure/network/public-ip) komutunu kullanarak *myAGPublicIPAddress* adlı genel IP adresini oluşturun.
+*az network vnet create* komutunu kullanarak adlı sanal ağı ve [myAGSubnet](/cli/azure/network/vnet) adlı alt ağı oluşturun. Daha sonra [az network vnet subnet create](/cli/azure/network/vnet/subnet) kullanan arka uç sunucularının gerek duyduğu alt ağı ekleyebilirsiniz. *az network public-ip create* komutunu kullanarak [myAGPublicIPAddress](/cli/azure/network/public-ip) adlı genel IP adresini oluşturun.
 
 ```azurecli-interactive
 az network vnet create \
@@ -97,11 +98,11 @@ az network application-gateway create \
 
 Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ geçidi oluşturulduktan sonra şu yeni özellikleri görürsünüz:
 
-- *appGatewayBackendPool* -bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
+- *appGatewayBackendPool*: Bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
 - *appGatewayBackendHttpSettings*: İletişim için 80 numaralı bağlantı noktasının ve HTTP protokolünün kullanıldığını belirtir.
 - *appGatewayHttpListener*: *appGatewayBackendPool* ile ilişkili varsayılan dinleyicidir.
 - *appGatewayFrontendIP*: *appGatewayHttpListener*’a *myAGPublicIPAddress*’i atar.
-- *kural 1* - *appGatewayHttpListener* ile ilişkili varsayılan yönlendirme kuralıdır.
+- *kural 1*: *appGatewayHttpListener* ile ilişkili varsayılan yönlendirme kuralıdır.
 
 ### <a name="add-the-backend-pools"></a>Arka uç havuzlarını ekleme
 

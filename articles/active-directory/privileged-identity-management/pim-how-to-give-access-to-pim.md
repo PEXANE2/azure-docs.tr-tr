@@ -1,25 +1,25 @@
 ---
-title: PıM-Azure Active Directory yönetmek için diğer yöneticilere erişim verme | Microsoft Docs
+title: PıM-Azure Active Directory 'yi yönetmek için erişim izni ver | Microsoft Docs
 description: Azure AD Privileged Identity Management (PıM) yönetmek için diğer yönetimlere nasıl erişim sağlayacağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60c0e1bfd457137ddfb8f3ae81fc9044098c1f8d
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7424e92f8520d13137b6ac8787523095058a005f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809061"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022122"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>Privileged Identity Management yönetmek için diğer yöneticilere erişim izni verin
 
@@ -32,7 +32,7 @@ Bir kullanıcının kilitli olması veya hesaplarının silinmesi durumunda, ayr
 
 ## <a name="grant-access-to-manage-pim"></a>PıM 'yi yönetmek için erişim izni verme
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Azure AD 'de **Privileged Identity Management**açın.
 
@@ -70,7 +70,7 @@ Bir kullanıcının kilitli olması veya hesaplarının silinmesi durumunda, ayr
 
 Ayrıcalıklı rol Yöneticisi rolünden birini kaldırmadan önce, en az iki kullanıcı atanmış olduğundan emin olun.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın.
 

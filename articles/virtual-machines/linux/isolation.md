@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Linux VM 'Leri için yalıtım | Microsoft Docs
+title: Azure 'da Linux VM 'Leri için yalıtım
 description: Azure 'da VM yalıtımının çalışması hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
 ms.author: ayshak
-ms.openlocfilehash: 1448e982458e022535307484e2a056c145b75616
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 320c07b4168825100eec93f43f1282518ba38c4a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123960"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035958"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Azure 'da sanal makine yalıtımı
 

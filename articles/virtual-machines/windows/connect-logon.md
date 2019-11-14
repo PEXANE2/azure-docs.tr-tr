@@ -1,5 +1,5 @@
 ---
-title: Windows Server VM’ye bağlanma | Microsoft Belgeleri
+title: Windows Server VM 'ye bağlanma
 description: Azure portal ve Kaynak Yöneticisi dağıtım modelini kullanarak bir Windows VM 'ye bağlanmayı ve oturum açmayı öğrenin.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 6566ce4b9cec9ff09666e734625f15033c85127b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 43b6d541cfb3d2e5bd583223d9d93921982c65e0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749560"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039451"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum açma
 Bir Windows masaüstü bilgisayarından Uzak Masaüstü (RDP) oturumu başlatmak için Azure portalında **Bağlan** düğmesini kullanırsınız. Önce sanal makineye bağlanın ve ardından oturum açın.

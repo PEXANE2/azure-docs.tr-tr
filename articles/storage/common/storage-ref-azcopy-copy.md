@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 78482b5d7013ffa3bbb0a34dd04c8c48626dc77a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0c1b09fbc425a80fe1f8d075c5a83455167073c3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926660"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74029992"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -33,6 +33,13 @@ Kaynak verileri bir hedef konuma kopyalar. Desteklenen yönergeler şunlardır:
   - AWS S3 (erişim anahtarı)-> Azure Blok Blobu (SAS veya OAuth kimlik doğrulaması)
 
 Daha fazla bilgi için lütfen örneklere bakın.
+
+## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
+
+- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="advanced"></a>Gelişmiş
 
@@ -74,7 +81,7 @@ Bir SAS belirteci kullanarak tüm dizini karşıya yükleyin:
   
 - AzCopy CP "/Path/to/dir" "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
 
-or
+veya
 
 - AzCopy CP "/Path/to/dir" "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true--put-MD5
 
@@ -140,25 +147,25 @@ Bir SAS belirteci kullanarak tüm blob kapsayıcılarını, dizinleri ve bloblar
 
 Bir erişim anahtarı ve SAS belirteci kullanarak Amazon Web Services (AWS) S3 ' den blob depolamaya tek bir nesne kopyalama. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
   
-- AzCopy CP "https://s3.amazonaws.com/ [Bucket]/[nesne]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "
+- AzCopy CP "https://s3.amazonaws.com/[Bucket]/[nesne]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak AWS S3 'ten bir dizinin tamamını blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3.amazonaws.com/ [Bucket]/[klasör]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3.amazonaws.com/[Bucket]/[klasör]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
 
 [Folder] yer tutucusunu daha iyi anlamak için lütfen https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html başvurun.
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak tüm demetleri Amazon Web Services (AWS) ' den blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3.amazonaws.com/ " "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak, tüm demetleri bir Amazon Web Services (AWS) bölgesinden blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3- [Bölge]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3-[Bölge]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
 
 Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt kümesini kopyalayın. Önceki örneklerde olduğu gibi, bir erişim anahtarına ve SAS belirtecine ihtiyacınız olacaktır. AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarladığınızdan emin olun.
 
-- AzCopy CP "https://s3.amazonaws.com/ [Bucket * ad]/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3.amazonaws.com/[Bucket * ad]/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
 
 ## <a name="options"></a>Seçenekler
 

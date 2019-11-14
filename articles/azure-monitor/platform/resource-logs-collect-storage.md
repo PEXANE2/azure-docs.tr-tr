@@ -8,18 +8,23 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 8a1802f0f24ba5ccad3ec1c45f3baa29dfe6909f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 306f6cb0b50b7befcbf51e6164a5da887d35616e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262563"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030885"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure Kaynak günlüklerini depolama hesabına arşivleme
 Azure 'da [kaynak günlükleri](resource-logs-overview.md) , bir Azure kaynağının iç işlemi hakkında zengin, sık veriler sağlar. Bu makalede, verilerin arşivlenmek üzere tutulması için bir Azure depolama hesabına kaynak günlüklerinin toplanması açıklanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 Henüz yoksa bir [Azure depolama hesabı oluşturmanız](../../storage/common/storage-quickstart-create-account.md) gerekir. Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olması koşuluyla, depolama hesabının, kaynak gönderme günlükleri ile aynı abonelikte olması gerekmez.
+
+
+> [!IMPORTANT]
+> Azure Data Lake Storage 2. hesapları, Azure portal geçerli bir seçenek olarak listelenseler bile, şu anda Tanılama ayarları için hedef olarak desteklenmemektedir.
+
 
 İzleme verilerine erişimi daha iyi denetleyebilmeniz için, içinde depolanan diğer, izleme olmayan verileri olan mevcut bir depolama hesabını kullanmamalısınız. Ayrıca, [etkinlik günlüğünü](activity-logs-overview.md) de bir depolama hesabına arşivlerken, tüm izleme verilerini merkezi bir konumda tutmak için aynı depolama hesabını kullanmayı tercih edebilirsiniz.
 

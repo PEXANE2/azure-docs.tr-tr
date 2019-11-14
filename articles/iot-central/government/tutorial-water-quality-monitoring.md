@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central bir su kalitesi izleme uygulaması oluşturma
-description: Azure IoT Central uygulama şablonlarını kullanarak su kalite izleme uygulaması oluşturmayı öğrenin.
+title: Azure IoT Central su kalitesinde izleme uygulaması oluşturma
+description: Azure IoT Central uygulama şablonlarını kullanarak su kalitesi izleme uygulaması oluşturmayı öğrenin.
 author: miriambrus
 ms.author: miriamb
 ms.date: 10/23/2019
@@ -8,261 +8,250 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 51c84410de39516312d2058eeda575023dbe32ab
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bfa5234d17db32c459b5ff1d0252a65a5ba99a72
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890777"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039523"
 ---
-# <a name="tutorial-create-a-water-quality-monitoring-application-in-iot-central"></a>Öğretici: IoT Central bir su kalite izleme uygulaması oluşturma
+# <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Öğretici: Azure IoT Central su kalitesinde izleme uygulaması oluşturma
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Bu öğretici, IoT Central su kalitesi Izleme uygulaması şablonundan bir Azure IoT Central su kalitesi izleme uygulaması oluşturmanıza kılavuzluk eder. 
+Bu öğretici, Azure IoT Central bir su kalite izleme uygulamasının oluşturulmasında size rehberlik eder. Uygulamayı Azure IoT Central **su kalitesi izleme** uygulaması şablonundan oluşturursunuz.
 
-Bu öğreticide şunları öğreneceksiniz: 
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Su kalite izleme uygulamanızı oluşturmak için Azure IoT Central **su kalitesi izleme** şablonunu kullanın
-> * Operatör panosunu keşfet ve özelleştirme 
-> * Su kalitesi izleyici cihaz şablonunu keşfet
-> * Sanal cihazları keşfet
-> * Kuralları keşfet ve yapılandırma
-> * İşleri yapılandırma
-> * Beyaz etiketleme kullanarak uygulama markanızı özelleştirme
+> * Su kalitesinde izleme uygulaması oluşturmak için **su kalitesi izleme** şablonunu kullanın.
+> * Operatör panosunu keşfet ve özelleştirme.
+> * Su kalitesi izleme cihaz şablonunu keşfet.
+> * Sanal cihazları keşfet.
+> * Kuralları keşfet ve yapılandırın.
+> * İşleri yapılandırma.
+> * Beyaz etiketleme kullanarak uygulama markalamasını özelleştirin.
 
+## <a name="prerequisites"></a>Önkoşullar
 
-## <a name="prerequisites"></a>Ön koşullar
+Bu öğreticiyi tamamlayabilmeniz için bir Azure aboneliğinizin olması önerilir. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
 
-Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
--  Bir Azure aboneliği önerilir. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
+## <a name="create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Azure IoT Central su kalitesinde izleme uygulaması oluşturma
 
+Bu bölümde, su kalite izleme uygulaması oluşturmak için Azure IoT Central **su kalitesi izleme** şablonunu kullanırsınız.
 
-## <a name="create-water-quality-monitoring-app-in-iot-central"></a>IoT Central su kalitesinde Izleme uygulaması oluşturma
+1. [Azure IoT Central giriş sayfasına](https://aka.ms/iotcentral)gidin.
 
-Bu bölümde, su kalitesi izleme uygulamanızı IoT Central oluşturmak için Azure IoT Central **su kalitesi izleme şablonunu** kullanacağız.
+    Azure aboneliğiniz varsa, ona erişmek için kullandığınız kimlik bilgileriyle oturum açın. Aksi takdirde, bir Microsoft hesabı oturum açın:
 
+    ![Kuruluş hesabınızda oturum açın](./media/tutorial-waterqualitymonitoring/sign-in.png)
 
-Yeni bir Azure IoT Central su kalite izleme uygulaması oluşturmak için:  
+1. Azure IoT Central sol üst bölmesinde **Oluştur** ' u seçin ve **kamu** sekmesini seçin. Kamu bölmesinde çeşitli kamu uygulaması şablonları gösterilmektedir.
 
-1. [Azure IoT Central giriş sayfası](https://aka.ms/iotcentral) Web sitesine gidin.
+    ![Kamu uygulaması şablonları](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
 
-      Azure aboneliğiniz varsa, ona erişmek için kullandığınız kimlik bilgileriyle oturum açın, aksi takdirde Microsoft hesabı kullanarak oturum açın:
+1. **Su kalitesi izleme** uygulaması şablonunu seçin. Bu uygulama şablonu, su kalitesinde bir cihaz şablonu, sanal cihazlar, bir operatör panosu ve önceden yapılandırılmış izleme kuralları içerir.
 
-    ![Kuruluş hesabınızı girin](./media/tutorial-waterqualitymonitoring/sign-in.png)
+1. **Uygulama oluştur**' u seçin. **Yeni uygulama** bölmesi açılır ve aşağıdaki öğeleri gösterir:
 
-2. Sol bölmeden **Oluştur** ' a tıklayın ve **kamu** sekmesini seçin. Kamu sayfasında çeşitli kamu uygulaması şablonları görüntülenir.
+    * **Uygulama adı**: varsayılan olarak, uygulama adı **su kalite izleme** ' dir ve sonrasında Azure IoT Central 'nın oluşturduğu benzersiz bir kimlik dizesidir. İsterseniz, bir görünen ad girebilir veya uygulama adını daha sonra değiştirebilirsiniz.
+    * **URL**: istediğiniz URL 'yi gırebılır veya URL değerini daha sonra değiştirebilirsiniz.
+    * Azure aboneliğiniz varsa **Dizin**, **Azure aboneliği**ve **bölge**değerlerini girin. Aboneliğiniz yoksa **7 günlük ücretsiz denemeyi** açabilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.
 
-    ![Kamu uygulaması şablonları oluşturun](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
+    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [uygulama oluşturma](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) hızlı başlangıcı.
 
+1. Sayfanın sol alt kısmında **Oluştur** düğmesini seçin.
 
-1. **Su kalitesi izleme** uygulaması şablonunu seçin. Bu şablon örnek su kalitesi cihaz şablonu, sanal cihaz, operatör panosu ve önceden yapılandırılmış izleme kurallarını içerir.    
+    ![Azure IoT Central yeni uygulama sayfası](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
 
-2. Aşağıdaki alanlarla **Yeni uygulama** oluşturma formunu açacak **uygulama oluştur**' a tıklayın:
-    * **Uygulama adı**. Varsayılan olarak, uygulama *su kalitesi izlemeyi* kullanır ve ardından IoT Central üreten BENZERSIZ bir kimlik dizesidir. İsteğe bağlı olarak, kolay bir uygulama adı seçin. Uygulama adını daha sonra değiştirebilirsiniz.
-    * **URL** : isteğe bağlı olarak, istediğiniz URL 'yi seçebilirsiniz. URL 'YI daha sonra değiştirebilirsiniz. 
-    * Azure aboneliğiniz varsa *dizininizi, Azure aboneliğinizi ve bölgenizi*girin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
+Artık Azure IoT Central **su kalitesi izleme** şablonunu kullanarak bir su kalite izleme uygulaması oluşturdunuz.
 
-    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../preview/quick-deploy-iot-central.md).
+Yeni uygulamanız önceden yapılandırılmış bu bileşenlerle birlikte gelir:
 
-5. Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın. 
+* İşleç panoları
+* Su kalitesi izleme cihaz şablonları
+* Sanal su kalitesi izleme cihazları
+* Kurallar ve işler
+* Beyaz etiketleme kullanan marka
 
-    ![Azure IoT Central Uygulama Oluştur sayfası](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
+Uygulamanızı dilediğiniz zaman değiştirebilirsiniz.
 
+Ardından, uygulamayı araştırıp bazı özelleştirmeler yapın.
 
-6. Artık Azure IoT Central **su kalitesi izleme şablonunu**kullanarak bir su kalite izleme uygulaması oluşturdunuz. 
+## <a name="explore-and-customize-the-operator-dashboard"></a>Operatör panosunu keşfet ve özelleştirme
 
-Yeni oluşturduğunuz uygulamanız önceden yapılandırılmış olarak gelir:
-* Örnek işleç panoları
-* Örnek önceden tanımlanmış su kalitesi izleyici cihaz şablonları
-* Sanal su kalitesi izleyici cihazları
-* Önceden yapılandırılmış kurallar ve işler
-* Beyaz etiketleme kullanarak örnek marka 
+Uygulamayı oluşturduktan sonra **geniş dünya su kalitesi panosu** bölmesi açılır.
 
-Bu sizin uygulamanız ve dilediğiniz zaman değiştirebilirsiniz. Şimdi uygulamayı araştırıp bazı özelleştirmeler yapalim.  
+   ![Su kalitesi izleme panosu](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-dashboard1.png)
 
+Bir Oluşturucu olarak, panolar tarafından kullanılmak üzere panoda görünümler oluşturabilir ve özelleştirebilirsiniz. Ancak özelleştirmeyi denemeden önce, önce Panoyu araştırın.
 
-## <a name="explore-and-customize-operator-dashboard"></a>Operatör panosunu keşfet ve özelleştirme 
-Uygulamayı oluşturduktan sonra **geniş su sınır kalitesi izleme panosuna**olursunuz.
+Panoda gösterilen tüm veriler, sonraki bölümde açıklanan sanal cihaz verilerini temel alır.
 
+Pano aşağıdaki kutucuk türlerini içerir:
 
-   ![Su kalitesi Izleme panosu](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-dashboard1.png)
+* **Geniş dünya su yardımcı programı resim kutucuğu**: panonun sol üst köşesindeki Ilk kutucuk Wide World adlı kurgusal yardımcı programı gösteren bir görüntüdür. Kutucuğu kendi görüntünüzü kullanacak şekilde özelleştirebilir veya kutucuğu kaldırabilirsiniz.
 
-Bir Oluşturucu olarak, işleçler için panoda görünümler oluşturabilir ve özelleştirebilirsiniz. Özelleştirmeyi denemeden önce Panoyu keşfedelim. 
+* **Ortalama pH KPI kutucukları**: **son 30 dakika içinde ortalama pH** gibi KPI kutucukları Pano bölmesinin en üstünde bulunur. KPI kutucukları özelleştirebilir ve her biri farklı bir tür ve zaman aralığına ayarlanabilir.
 
-Panoda görünen tüm veriler, sonraki bölümde araştırılan sanal cihaz verilerini temel alır. 
+* **Su izleme alanı Haritası**: Azure IoT Central, uygulamanızın cihaz konumunu gösterecek şekilde doğrudan ayarlayabileceği Azure Maps kullanır. Ayrıca, uygulamanızdaki konum bilgilerini cihazınıza de eşleyebilir ve ardından Azure haritalar 'ı kullanarak bir haritadaki bilgileri gösterebilirsiniz. Haritanın üzerine gelin ve denetimleri deneyin.
 
-Pano farklı kutucuk türlerinden oluşur:
+* **Ortalama pH dağıtımı ısı haritası grafik**: cihaz telemetrisini uygulamanız için en uygun şekilde göstermek üzere farklı görselleştirme grafikleri seçebilirsiniz.
 
-* **Geniş dünya su yardımcı programı resim kutucuğu**: panodaki ilk kutucuk, kurgusal bir su yardımcı programının "geniş dünya su" resim kutucuğudur. Kutucuğu özelleştirebilir ve kendi görüntünüzü yerleştirebilir veya kaldırabilirsiniz. 
+* **Kritik kalite göstergeleri çizgi grafik**: bir zaman aralığında çizgi grafik olarak çizilen cihaz telemetrisini görselleştirebilirsiniz.  
 
-* **Ortalama pH KPI kutucuğu**: en üstte, **son 30 dakika içinde ortalama pH**gibi KPI kutucukları olduğunu görebilirsiniz. KPI kutucuklarını özelleştirebilir ve farklı bir tür ve zaman aralığına ayarlayabilirsiniz.
+* **Kimyasal aracılar çubuk grafiğinin yoğunluğu**: cihaz telemetrisini bir çubuk grafiğinde görselleştirebilirsiniz.
 
-*  **Su izleme alanı Haritası**: IoT Central, uygulamanızda doğrudan ayarlayabileceğiniz ve cihaz konumunu görüntüleyebilen Azure haritalar 'ı kullanır. Ayrıca, konum bilgilerini uygulamadan aygıtınızla eşleştirebilirsiniz ve Azure haritalar 'ı kullanarak bir haritada görüntüleyebilirsiniz. Haritanın üzerine geldiğinizde denetimleri deneyin. 
+* **Eylem düğmesi**: Pano, bir işlecin doğrudan izleme panosundan başlatabileceği eylemler için bir kutucuk içerir. Bir cihazın özelliklerini sıfırlamak, bu eylemlere bir örnektir.
 
-* **Ortalama pH dağıtım heatmap grafiği**: cihaz telemetri verilerini uygulamanıza en uygun şekilde göstermek için farklı görselleştirme grafikleri seçebilirsiniz. Isı haritasını 
+* **Özellik listesi kutucukları**: panoda eşik bilgilerini, cihaz sistem durumu bilgilerini ve bakım bilgilerini temsil eden birden çok özellik kutucuğu vardır.
 
-* **Kritik kalite göstergeleri çizgi grafik**: istenen bir zaman aralığında çizgi grafik olarak çizilen bir veya daha fazla cihaz Telemetriler görselleştirebilirsiniz.  
+### <a name="customize-the-dashboard"></a>Panoyu özelleştirme
 
-* **Kimyasal aracılar çubuk grafiğinin yoğunluğu**: bir çubuk grafiğinde bir veya birden çok cihaz telemetri verilerini örnekteki gibi görselleştirebilirsiniz. 
+Bir Oluşturucu olarak, panodaki görünümleri işleçler tarafından kullanılmak üzere özelleştirebilirsiniz.
 
-* **Eylem düğmesi**: Pano, bir işlecin cihaz özelliklerini sıfırlamaya yönelik bir eylem başlatma gibi doğrudan izleme panosundan başlatabileceği bir eylem kutucuğu örneği içerir. 
+1. **Geniş dünya su kalitesi Pano** bölmesini özelleştirmek için **Düzenle** ' yi seçin. **Düzenle** menüsünde komutlar ' a tıklayarak panoyu özelleştirebilirsiniz. Pano düzenleme modundayken, yeni kutucuklar ekleyebilir veya mevcut dosyaları yapılandırabilirsiniz.
 
-* **Özellikler listesi kutucukları**: panoda eşik bilgilerini, cihaz sistem durumu bilgilerini ve bakım bilgilerini temsil eden birden çok özellik kutucuğu vardır. 
+    ![Panonuzu düzenleme](./media/tutorial-waterqualitymonitoring/edit-dashboard.png)
 
+1. Yapılandırabileceğiniz yeni bir pano oluşturmak için **+ Yeni** ' yi seçin. Birden çok panonuz olabilir ve Pano menüsünden bunlar arasında gezinebilirsiniz.
 
-### <a name="customize-dashboard"></a>Panoyu özelleştirme 
+## <a name="explore-a-water-quality-monitoring-device-template"></a>Su kalitesi izleme cihaz şablonunu keşfet
 
-Oluşturucu olarak, işleçler için panodaki görünümleri özelleştirebilirsiniz. 
-1. **Geniş dünya su kalitesi izleme panosunu**özelleştirmek için **Düzenle** ' ye tıklayın. **Düzen** menüsüne tıklayarak panoyu özelleştirebilirsiniz. Pano **düzenleme** modundayken, yeni kutucuk ekleyebilir veya
+Azure IoT Central bir cihaz şablonu, bir cihazın yeteneklerini tanımlar. Kullanılabilir özellikler telemetri, Özellikler ve komutlardır. Bir Oluşturucu olarak, Azure IoT Central bağlı cihazların yeteneklerini temsil eden cihaz şablonları tanımlayabilirsiniz. Ayrıca, cihaz şablonunuzu ve uygulamanızı test etmek için sanal cihazlar da oluşturabilirsiniz.
 
-    ![Panoyu Düzenle](./media/tutorial-waterqualitymonitoring/edit-dashboard.png)
-
-2. Yeni Pano oluşturmak ve sıfırdan yapılandırmak için **+ Yeni** seçeneğine tıklayın. Birden çok panonuz olabilir ve Pano menüsünden panolarınız arasında gezinebilirsiniz.
-
-## <a name="explore-water-quality-monitor-device-template"></a>Su kalitesi izleyici cihaz şablonunu keşfet
-Azure IoT Central bir cihaz şablonu, telemetri, Özellikler ve komutlar içerebilen bir cihazın yeteneklerini tanımlar. Bir Oluşturucu olarak, bağlı olacak cihazların yeteneklerini temsil eden IoT Central cihaz şablonlarını tanımlayabilirsiniz. IoT Central, cihaz şablonunuzu ve uygulamanızı test etmek için sanal aygıtlar da oluşturabilirsiniz. 
- 
-
-Uygulama şablonundan oluşturduğunuz **su kalitesinde izleme** uygulaması, bir başvuru su kalitesi izleyici cihaz şablonuyla birlikte gelir.
+Oluşturduğunuz su kalitesinde izleme uygulaması, su kalite izleme cihaz şablonuyla birlikte gelir.
 
 Cihaz şablonunu görüntülemek için:
 
-1.  IoT Central ' de uygulamanızın sol gezinti bölmesinden **cihaz şablonları** ' na tıklayın. 
-2. Cihaz şablonları listesinde **su kalitesi izleyicisini**görürsünüz. Ada tıklayarak açın.
+1. Azure IoT Central 'de uygulamanızın en sol bölmesinde **cihaz şablonları** ' nı seçin.
+1. Cihaz şablonları listesinden **su kalitesi İzleyicisi**' ni seçin. Bu cihaz şablonu açılır.
 
     ![Cihaz şablonu](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate.png)
 
-### <a name="customizing-the-device-template"></a>Cihaz şablonunu özelleştirme
+### <a name="customize-the-device-template"></a>Cihaz şablonunu özelleştirme
 
-Aşağıdakileri özelleştirmeyi deneyin:
-1. Cihaz şablonu menüsünden **Özelleştir** 'e gidin
-2. `Temperature` telemetri türünü bulun
-3. `Temperature` **görünen adını** `Reported temperature` olarak güncelleştir
-4. Ölçüm birimini Güncelleştir veya *En düşük değer* ve *en büyük değeri* ayarla
-5. Değişiklikleri **Kaydet** 
+Aşağıdaki cihaz şablonu ayarlarını özelleştirme alıştırması:
 
-#### <a name="add-a-cloud-property"></a>Bulut özelliği Ekle 
-1. Cihaz şablonu menüsünden **Cloud özelliğine** gidin
-2. **+ Bulut özelliği Ekle**' ye tıklayarak yeni bir bulut özelliği ekleyin. IoT Central, cihazla ilgili olan ancak cihaz tarafından gönderilmesi beklenmediği bir özelliği ekleyebilirsiniz. Örnek olarak, bir bulut özelliği yükleme alanına, varlık bilgilerine veya bakım bilgilerine özgü bir uyarı eşiğine sahip olabilir. 
-3. Değişiklikleri **Kaydet** 
- 
-### <a name="views"></a>Görünümler 
-Su kalitesi izleyici cihaz şablonu önceden tanımlanmış görünümlerle gelir. Görünümleri keşfedebilir ve güncelleştirme yapabilirsiniz. Görünümler, operatörlerin cihaz verilerini nasıl göre, ancak bulut özelliklerinin de nasıl görüntüleneceğini tanımlar. 
+1. Cihaz şablonu menüsünde **Özelleştir**' i seçin.
+1. **Sıcaklık** telemetri türüne gidin.
+1. **Görünen ad** değerini **bildirilen sıcaklık**olarak değiştirin.
+1. Ölçüm birimini değiştirin veya **En düşük değer** ve **en büyük değeri**ayarlayın.
+1. **Kaydet**’i seçin.
+
+#### <a name="add-a-cloud-property"></a>Bulut özelliği Ekle
+
+1. Cihaz şablonu menüsünde, **bulut özelliği**' ni seçin.
+1. Yeni bir bulut özelliği eklemek için **+ bulut özelliği Ekle**' yi seçin. Azure IoT Central 'de, bir cihazla ilgili olan ancak cihaz tarafından gönderilmesi beklenmez bir özellik ekleyebilirsiniz. Bu tür bir özelliğin bir örneği, yükleme alanına, varlık bilgilerine veya bakım bilgilerine özgü bir uyarı eşiğinden biridir.
+1. **Kaydet**’i seçin.
+
+### <a name="explore-views"></a>Görünümleri keşfet
+
+Su kalitesi izleme cihaz şablonu önceden tanımlanmış görünümlerle gelir. Görünümler, işleçlerin cihaz verilerini nasıl gördiğine ve bulut özelliklerinin nasıl ayarlanacağını tanımlar. Görünümleri keşfedebilir ve değişiklikleri yapın.
 
   ![Cihaz şablonu görünümleri](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate-views.png)
 
-### <a name="publish"></a>Yayımlama 
+### <a name="publish-the-device-template"></a>Cihaz şablonunu yayımlama
 
-Herhangi bir değişiklik yaptıysanız, cihaz şablonunu **yayımlamayı** unutmayın. 
+Herhangi bir değişiklik yaparsanız, cihaz şablonunu yayımlamak için **Yayımla** ' yı seçtiğinizden emin olun.
 
+### <a name="create-a-new-device-template"></a>Yeni cihaz şablonu oluşturma
 
-### <a name="create-a-new-device-template"></a>Yeni cihaz şablonu oluşturma 
-1. Yeni bir cihaz şablonu oluşturmak ve oluşturma işlemini izlemek için **+ Yeni** ' yi seçin. 
-2. Sıfırdan özel bir cihaz şablonu oluşturun veya Azure cihaz kataloğundan bir cihaz şablonu seçebilirsiniz. 
-
+1. Yeni bir cihaz şablonu oluşturmak ve oluşturma işlemini izlemek için **+ Yeni** ' yi seçin.
+1. Özel bir cihaz şablonu oluşturun veya Azure IoT cihaz kataloğundan bir cihaz şablonu seçin.
 
 ## <a name="explore-simulated-devices"></a>Sanal cihazları keşfet
 
-Uygulama şablonundan oluşturduğunuz **su kalitesinde izleme** uygulamasının, su kalite İzleyicisi cihaz şablonuyla eşlenmiş iki sanal cihaz vardır. 
+Uygulama şablonundan oluşturduğunuz su kalitesinde izleme uygulamasının iki sanal cihazı vardır. Bu cihazlar su kalitesi izleme cihaz şablonuyla eşlenir.
 
-### <a name="to-view-the-devices"></a>Cihazları görüntülemek için:
-1. IoT Central sol gezinti bölmesinden **cihaz** ' a gidin. 
+### <a name="view-the-devices"></a>Cihazları görüntüleme
+
+1. Uygulamanızın en sol bölmesinde bulunan **cihazlar** ' ı seçin.
 
    ![Cihazlar](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devices.png)
 
+1. Tek bir sanal cihaz seçin.
 
-2. Sanal bir cihaza seçin ve tıklayın 
+    ![Cihaz 1 ' i seçin](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
 
-    ![Cihaz 1](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
-
-3. **Bulut özellikleri** sekmesinden `8` `Acidity (pH) Threshold` değerini `9`olarak güncelleştirmeyi deneyin. 
-4. **Cihaz özellikleri** sekmesini ve **cihaz panosu** sekmesini bulun. 
+1. **Bulut özellikleri** sekmesinde, **acidity (pH) eşik** değerini **8** ' den **9**' a değiştirin.
+1. **Cihaz özellikleri** sekmesini ve **cihaz panosu** sekmesini bulun.
 
 > [!NOTE]
-> Tüm sekmelerin **cihaz şablonu görünümlerinden**yapılandırıldığını unutmayın.
-
+> Tüm sekmeler **cihaz şablonu görünümlerinden**yapılandırıldı.
 
 ### <a name="add-new-devices"></a>Yeni cihaz ekle
-**Cihazlar** sekmesinde **+ Yeni** ' ye tıklayarak yeni cihazlar ekleyebilirsiniz. 
 
+Yeni bir cihaz eklemek için **cihazlar** sekmesinde **+ Yeni** ' yi seçin.
 
 ## <a name="explore-and-configure-rules"></a>Kuralları keşfet ve yapılandırma
 
-Azure IoT Central cihaz Telemetriyi otomatik olarak izlemek için kurallar oluşturabilir ve bir veya daha fazla koşul karşılandığında bir eylem tetikleyebilirsiniz. Eylemler e-posta bildirimleri göndermeyi veya diğer hizmetlere veri göndermek için bir Microsoft Flow eylemi veya Web kancası eylemini tetiklemesini içerebilir.
+Azure IoT Central, cihaz telemetrisini otomatik olarak izleyen kurallar oluşturabilirsiniz. Bu kurallar, koşullarından herhangi biri karşılandığında bir eylemi tetikler. Olası bir işlem e-posta bildirimleri göndermektir. Diğer olasılıklar, diğer hizmetlere veri göndermek için bir Microsoft Flow eylemi veya Web kancası eylemi içerir.
 
-Oluşturduğunuz **su kalitesinde izleme** uygulamasının önceden yapılandırılmış iki kuralı vardır.
+Oluşturduğunuz su kalitesinde izleme uygulamasının önceden yapılandırılmış iki kuralı vardır.
 
-### <a name="to-view-rules"></a>Kuralları görüntülemek için:
-1. IoT Central sol gezinti bölmesinden **kurallar** ' a gidin. 
+### <a name="view-rules"></a>Kuralları görüntüle
+
+1. Uygulamanızın en sol bölmesinde bulunan **kurallar** ' ı seçin.
 
    ![Kurallar](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-rules.png)
 
+1. Uygulamanın önceden yapılandırılmış kurallarından biri olan **yüksek pH uyarısı**' nı seçin.
 
-2. Uygulamanın önceden yapılandırılmış kurallarından biri olan **yüksek pH uyarısı** ' nı seçin ve tıklayın. 
+   ![Yüksek pH uyarı kuralı](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-highphalert.png)
 
-     ![Yüksek pH uyarısı](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-highphalert.png)
+   **Yüksek pH uyarı** kuralı, acidity (pH) öğesinin 8 ' den büyük olduğunu denetlemek için yapılandırılır.
 
-    `High pH alert` kuralı, `Acidity (pH) is greater than 8`koşula göre denetlenecek şekilde yapılandırılır.
+Sonra, kurala bir e-posta eylemi ekleyin:
 
-Şimdi bir e-posta eylemi oluşturalım.
+1. **+ E-posta**seçeneğini belirleyin.
+1. **Görünen ad** kutusunda, **yüksek pH uyarısı**' nı girin.
+1. **To** kutusuna Azure IoT Central hesabınızla ilişkili e-posta adresini girin.
+1. İsteğe bağlı olarak, e-posta metnine dahil etmek için bir Note girin.
+1. Eylemi gerçekleştirmek için **bitti** ' yi seçin.
+1. Yeni kuralı kaydetmek ve etkinleştirmek için **Kaydet** ' i seçin.
 
-Kurala bir eylem eklemek için:
-
-1. **+ E-posta**seçeneğini belirleyin. 
-2.  Eylem için kolay **görünen ad** olarak *yüksek pH uyarısı* girin.
-3. **' Deki**IoT Central hesabınızla ilişkili e-posta adresini girin. 
-4. İsteğe bağlı olarak, e-posta metnine dahil etmek için bir Note girin.
-5. Eylemi gerçekleştirmek için **bitti** ' yi seçin.
-6. Yeni kuralı kaydetmek ve etkinleştirmek için **Kaydet** ' i seçin. 
-
-Birkaç dakika içinde, yapılandırılan **koşul** karşılandığında e-posta almalısınız.
+Birkaç dakika içinde, yapılandırılan koşul karşılandığında e-posta almalısınız.
 
 > [!NOTE]
-> Bir koşul her karşılandığında uygulama e-posta gönderir. Otomatik kuraldan e-posta almayı durdurma kuralını **devre dışı bırakın** . 
+> Uygulama, her koşul karşılandığında e-posta gönderir. Bu kuraldan otomatik e-posta almayı durdurmak için kural için **devre dışı bırak** ' ı seçin.
   
-Yeni bir kural oluşturmak için: 
-1. Sol gezinti bölmesindeki **kurallarda** **+ Yeni** ' yi seçin.
+Yeni bir kural oluşturmak için uygulamanızın en sol bölmesinde bulunan **kurallar** ' ı seçin ve sonra **+ Yeni**' yi seçin.
 
-## <a name="configure-jobs"></a>Işleri yapılandırma
+## <a name="configure-jobs"></a>İşleri yapılandırma
 
-IoT Central, işler cihaz veya bulut özellikleri güncelleştirmelerini birden çok cihazda tetiklemeniz sağlar. Özelliklere ek olarak, birden çok cihazda cihaz komutlarını tetiklemek için işleri de kullanabilirsiniz. IoT Central, iş akışını sizin için otomatikleştirecektir. 
+Azure IoT Central işleri sayesinde, güncelleştirmeleri cihaz veya bulut özelliklerine birden çok cihazda tetikleyebilirsiniz. Ayrıca, birden çok cihazda cihaz komutlarını tetiklemek için işleri de kullanabilirsiniz. Azure IoT Central, iş akışını sizin için otomatikleştirir.
 
-1. Sol gezinti bölmesindeki **işler** ' e gidin. 
-2. **+ Yeni** ' ye tıklayın ve bir veya daha fazla iş yapılandırın. 
+1. Uygulamanızın en sol bölmesinde bulunan **işler** ' i seçin.
+1. **+ Yeni** ' yi seçin ve bir veya daha fazla iş yapılandırın.
 
+## <a name="customize-your-application"></a>Uygulamanızı özelleştirme
 
-## <a name="customize-your-application"></a>Uygulamanızı özelleştirme 
 Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek için çeşitli ayarları değiştirebilirsiniz.
 
-1. **Uygulamanızı özelleştirmek > yönetim**' i seçin.
-2. **Uygulama logosu**olarak karşıya yüklenecek bir görüntü seçmek için **Değiştir** düğmesini kullanın.
-3.  Tarayıcı sekmelerinde görünecek bir **tarayıcı simgesi** görüntüsü seçmek için **Değiştir** düğmesini kullanın.
-4. Varsayılan **tarayıcı renklerini** , HTML onaltılık renk kodları ekleyerek de değiştirebilirsiniz.
-5. Ayrıca, künyesi üzerindeki **ayarlara** tıklayarak **Temayı** değiştirin.
+1. **Uygulamanızı özelleştirmek** > **Yönetim** ' i seçin.
+1. **Uygulama logosu**altında, logo olarak karşıya yüklenecek görüntüyü seçmek için **Değiştir** ' i seçin.
+1. Tarayıcı **simgesinde**, tarayıcı sekmelerinde görüntülenen görüntüyü seçmek için **Değiştir** ' i seçin.
+1. **Tarayıcı renkleri**altında, varsayılan değerleri HTML onaltılık renk kodlarıyla değiştirebilirsiniz.
+1. **Temanın**değerini değiştirmek için **Ayarlar** ' ı seçin.
 
-   ![Azure IoT Central uygulamanızı özelleştirme](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
+   ![Uygulamanızı özelleştirme](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
 
-### <a name="to-update-the-application-image"></a>Uygulama görüntüsünü güncelleştirmek için:
+### <a name="update-the-application-image"></a>Uygulama görüntüsünü güncelleştirme
 
-6.  **Yönetim > uygulama ayarları**' nı seçin.
+1. **Yönetim** > **uygulama ayarları**' nı seçin.
 
-7. Uygulama görüntüsü olarak karşıya yüklenecek bir görüntü seçmek için **Görüntü Seç** düğmesini kullanın. 
+1. Uygulama görüntüsü olarak karşıya yüklenecek bir görüntü seçmek için **Görüntü Seç** düğmesini kullanın.
 
-
-  
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla uygulamanızı silin:
+Uygulamanızı kullanmaya devam etmeyecekecekseniz, uygulamayı aşağıdaki adımlarla silin:
 
-1. IoT Central uygulamanızın sol bölmesindeki Yönetim sekmesini açın.
-2. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın.
+1. Uygulamanızın en sol bölmesinde bulunan **Yönetim** sekmesini açın.
+1. **Uygulama ayarları** ' nı seçin ve **Sil** düğmesini seçin.
 
-    ![Uygulamayı silme](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)        
-
-
+    ![Uygulamanızı silme](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Su kalitesi izleme kavramları](./concepts-waterqualitymonitoring-architecture.md) hakkında daha fazla bilgi edinin
+* [Su kalitesi izleme kavramları](./concepts-waterqualitymonitoring-architecture.md)hakkında daha fazla bilgi edinin.

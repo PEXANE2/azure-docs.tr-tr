@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Openshıft kapsayıcı platformu 3,11 dağıtımında sorun giderme | Microsoft Docs
+title: Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtımında sorun giderme
 description: Azure 'da Openshıft kapsayıcı platformu 3,11 dağıtımında sorun giderin.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 4301d81a4d14c36c34d29a54bc146bc8985dfc00
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 1915cce1878b9b7ec058c13167e03c3c318f3668
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392767"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035484"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtımında sorun giderme
 
@@ -41,7 +41,7 @@ Anerişilebilir PlayBook konağına SSH. OKD şablonu (sürüm 3,9 ve önceki s�
 
 ## <a name="log-files"></a>Günlük dosyaları
 
-Konak hazırlama betikleri için günlük dosyaları (stderr ve STDOUT) tüm konaklarda `/var/lib/waagent/custom-script/download/0` ' da bulunur. Konağın hazırlanması sırasında bir hata oluştuysa, hatayı öğrenmek için bu günlük dosyalarını görüntüleyin.
+Konak hazırlama betikleri için günlük dosyaları (stderr ve STDOUT) tüm konaklarda `/var/lib/waagent/custom-script/download/0` bulunur. Konağın hazırlanması sırasında bir hata oluştuysa, hatayı öğrenmek için bu günlük dosyalarını görüntüleyin.
 
 Hazırlama betikleri başarıyla çalıştırılmışsa, anlabilen PlayBook konağının `/var/lib/waagent/custom-script/download/1` dizinindeki günlük dosyalarının incelenmesi gerekir. OpenShift 'in gerçek yüklemesi sırasında hata oluştuysa, stdout dosyasında hata görüntülenir. Daha fazla yardım için desteğe başvurmak üzere bu bilgileri kullanın.
 
@@ -96,7 +96,7 @@ SSH için iznin reddedildiğini belirten bir hata görürsünüz. Özel anahtard
 
 ### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Özel anahtarla Anahtar Kasası gizli anahtarı doğru bir şekilde oluşturulmadı
 
-Özel anahtar, anerişilebilir PlayBook ana bilgisayarına kopyalanır-~/. ssh/id_rsa. Bu dosyanın doğru olduğundan emin olun. Anerişilebilir PlayBook ana bilgisayarındaki küme düğümlerinden birine bir SSH oturumu açarak test edin.
+Özel anahtar, anerişilebilir PlayBook konağına kopyalanır-~/. ssh/id_rsa. Bu dosyanın doğru olduğundan emin olun. Anerişilebilir PlayBook ana bilgisayarındaki küme düğümlerinden birine bir SSH oturumu açarak test edin.
 
 ### <a name="service-principal-credentials-were-entered-incorrectly"></a>Hizmet sorumlusu kimlik bilgileri yanlış girildi
 
@@ -118,5 +118,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 Bazı hatalarda, daha fazla bilgi edinmek için aşağıdaki komutları da kullanabilirsiniz:
 
-1. systemctl durum \<service >
+1. systemctl durum \<Hizmeti >
 2. journalctl-XE

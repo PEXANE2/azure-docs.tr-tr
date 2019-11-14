@@ -1,5 +1,5 @@
 ---
-title: IaaS kaynaklarının klasik sürümüne geçişine genel bakış-Azure Resource Manager | Microsoft Docs
+title: IaaS kaynaklarının klasik ile Azure Resource Manager geçişine genel bakış
 description: Bu makalede, klasik kaynaktan Azure Resource Manager için desteklenen platform geçişi adım adım açıklanmaktadır.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: kasing
-ms.openlocfilehash: 7fe5f849b67faf375304984eb7ef87af4031468b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b909854ebfeb404fc3aba902cad37a815440aa17
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013675"
+ms.locfileid: "74035732"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>, IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir
 [!INCLUDE [virtual-machines-common-migration-faq](../../../includes/virtual-machines-common-classic-resource-manager-migration-overview.md)]

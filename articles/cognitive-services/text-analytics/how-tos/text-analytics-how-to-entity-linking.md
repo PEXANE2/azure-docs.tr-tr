@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 11/12/2019
 ms.author: aahi
-ms.openlocfilehash: b139f473bb20dbecde75c3b08dd92371849f096e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835659"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031436"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -33,7 +33,7 @@ Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme 
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>Adlandırılmış varlık tanıma v3 genel önizlemesi
 
-[Adlandırılmış varlık tanımanın bir sonraki sürümü](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console) artık genel önizlemeye sunuldu. Hem varlık bağlama hem de adlandırılmış varlık tanıma için güncelleştirmeler sağlar. 
+[Adlandırılmış varlık tanımanın bir sonraki sürümü]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) artık genel önizlemeye sunuldu. Hem varlık bağlama hem de adlandırılmış varlık tanıma için güncelleştirmeler sağlar. 
 
 :::row:::
     :::column span="":::

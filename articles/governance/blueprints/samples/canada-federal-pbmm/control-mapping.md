@@ -1,17 +1,14 @@
 ---
 title: Kanada Federal pbmm şema örnek denetimi eşleme
 description: Kanada Federal pbmm şema örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: e74d3328e1ed41a7184569d30cc46ae7cd29a5ba
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0be73497de36ac3c11637b80a492ab0a8558206d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163519"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039702"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Kanada Federal pbmm şema örneğinin denetim eşlemesi
 
@@ -93,7 +90,7 @@ Bu şema, Azure App Service uygulaması için uzaktan hata ayıklamanın kapalı
 - Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - API uygulaması için uzaktan hata ayıklama kapatılmalıdır
 - İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır
-- Web uygulaması için uzaktan hata ayıklama kapatılmalıdır
+- Uzaktan hata ayıklama için Web uygulaması kapalı olmaları
 
 ## <a name="au-3-2-content-of-audit-records"></a>AU-3 (2) denetim kayıtlarının Içeriği
 
@@ -101,9 +98,9 @@ Azure Izleyici tarafından toplanan günlük verileri, merkezi yapılandırma ve
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
-- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
-- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
+- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
+- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-denetim Işleme hatalarının 5 yanıtı
 
@@ -120,9 +117,9 @@ Azure Izleyici tarafından toplanan günlük verileri, merkezi raporlama ve anal
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
-- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
-- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
+- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
+- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
 
 ## <a name="au-12-audit-generation"></a>AU-12 denetim oluşturma
 
@@ -130,9 +127,9 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
-- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
-- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
+- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
+- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
 - Tanılama ayarını denetle
 - SQL Server Level denetim ayarlarını denetleme
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
@@ -244,7 +241,7 @@ Bu şema, iletişim protokolleri için uygulanan şifreleme mekanizmasını izle
 - API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetleme
 - Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetlemek için gereksinimleri dağıtma
-- İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir
 - Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir
@@ -294,9 +291,9 @@ Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyere
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
-- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
-- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
+- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
+- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
 - SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
@@ -316,7 +313,7 @@ Kanada Federal pbmm şema örneğinin denetim eşlemesini gözden geçirdiniz. D
 > [Kanada Federal pbmm şema-genel bakış](./control-mapping.md)
 > [Kanada Federal pbmm şema-Deploy adımları](./deploy.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

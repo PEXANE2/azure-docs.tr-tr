@@ -1,5 +1,5 @@
 ---
-title: Azure adanmış Konakları Azure PowerShell kullanarak dağıtma | Microsoft Docs
+title: Azure adanmış Konakları Azure PowerShell kullanarak dağıtma
 description: Azure PowerShell kullanarak VM 'Leri adanmış ana bilgisayarlara dağıtın.
 services: virtual-machines-windows
 author: cynthn
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261704"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033364"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Önizleme: Azure PowerShell kullanarak VM 'Leri adanmış konaklara dağıtma
 
 Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış ana bilgisayar](dedicated-hosts.md) oluşturma konusunda size kılavuzluk eder. 
 
-Azure PowerShell sürüm 2.4.2 sections veya üstünü yüklediğinizden ve ' de `Connect-AzAccount`bir Azure hesabında oturum açtığınızdan emin olun. Sürüm 2.4.2 sections yüklemek için bir PowerShell komut istemi açın ve şunu yazın:
+Azure PowerShell sürüm 2.4.2 sections veya sonraki bir sürümü yüklediğinizden emin olun ve içinde `Connect-AzAccount`bir Azure hesabında oturum açtığınızdan emin olun. Sürüm 2.4.2 sections yüklemek için bir PowerShell komut istemi açın ve şunu yazın:
 
 ```powershell
 Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
@@ -42,7 +42,7 @@ Install-Module -Name PowerShellGet -Repository PSGallery -Force
 >
 > **Bilinen önizleme sınırlamaları**
 > - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-> - Önizleme ilk sürümü aşağıdaki VM serisini destekler: DSv3 ve ESv3. 
+> - Önizleme ilk sürümü şu VM serisini destekler: DSv3 ve ESv3. 
 
 
 
@@ -72,7 +72,7 @@ $hostGroup = New-AzHostGroup `
 
 ## <a name="create-a-host"></a>Konak Oluşturma
 
-Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.  Önizleme sırasında aşağıdaki ana bilgisayar SKU değerlerini destekliyoruz: DSv3_Type1 ve ESv3_Type1.
+Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.  Önizleme sırasında, aşağıdaki konak SKU değerlerini destekliyoruz: DSv3_Type1 ve ESv3_Type1.
 
 
 Konak SKU 'Ları ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması](https://aka.ms/ADHPricing).
@@ -115,7 +115,7 @@ New-AzVM `
 
 ## <a name="check-the-status-of-the-host"></a>Konağın durumunu denetleme
 
-Ana bilgisayar sistem durumunu ve [GetAzHost](/powershell/module/az.compute/get-azhost) `-InstanceView` kullanarak yine de konağa ne kadar sanal makine dağıtacağınızı kontrol edebilirsiniz.
+Ana bilgisayar sistem durumunu ve `-InstanceView` parametresi ile [GetAzHost](/powershell/module/az.compute/get-azhost) kullanarak konağa ne kadar sanal makine dağıtacağınızı kontrol edebilirsiniz.
 
 ```
 Get-AzHost `

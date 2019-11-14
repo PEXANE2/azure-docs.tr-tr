@@ -1,5 +1,5 @@
 ---
-title: CLı kullanarak Azure adanmış Konakları dağıtma | Microsoft Docs
+title: CLı kullanarak Azure adanmış Konakları dağıtma
 description: Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtın.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 0c060e2ab94c0a57d4d4dc897702e115cfabd9a0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ece9967321cfca44b102d78722f0df3d8f980bdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827299"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036412"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Önizleme: Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtma
  
 
 Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış ana bilgisayar](dedicated-hosts.md) oluşturma konusunda size kılavuzluk eder. 
 
-Azure CLı sürüm 2.0.70 veya üstünü yüklediğinizden ve kullanarak `az login`bir Azure hesabında oturum açtığınızdan emin olun. 
+Azure CLı sürüm 2.0.70 veya üstünü yüklediğinizden ve `az login`kullanarak bir Azure hesabında oturum açtığınızdan emin olun. 
 
 > [!IMPORTANT]
 > Azure ayrılmış Konakları Şu anda genel önizlemededir.
@@ -33,7 +33,7 @@ Azure CLı sürüm 2.0.70 veya üstünü yüklediğinizden ve kullanarak `az log
 >
 > **Bilinen önizleme sınırlamaları**
 > - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-> - Önizleme ilk sürümü aşağıdaki VM serisini destekler: DSv3 ve ESv3. 
+> - Önizleme ilk sürümü şu VM serisini destekler: DSv3 ve ESv3. 
  
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma 
@@ -86,7 +86,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Konak Oluşturma 
 
-Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.  Önizleme sırasında aşağıdaki ana bilgisayar SKU değerlerini destekliyoruz: DSv3_Type1 ve ESv3_Type1.
+Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.  Önizleme sırasında, aşağıdaki konak SKU değerlerini destekliyoruz: DSv3_Type1 ve ESv3_Type1.
 
 
 Konak SKU 'Ları ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması](https://aka.ms/ADHPricing).
@@ -239,7 +239,7 @@ Artık aynı parametrelerle veya bununla eşleşen bir üretim ortamıyla ek bir
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
-Bu komut, `myDHResourceGroup.json` geçerli çalışma dizininizde dosyayı oluşturur. Bu şablondan bir ortam oluşturduğunuzda, sizden tüm kaynak adları istenir. `--include-parameter-default-value` Komutuna parametresini`az group export` ekleyerek, bu adları şablon dosyanızda doldurabilirsiniz. Kaynak adlarını belirtmek için JSON şablonunuzu düzenleyin veya kaynak adlarını belirten Parameters. JSON dosyası oluşturun.
+Bu komut, geçerli çalışma dizininizde `myDHResourceGroup.json` dosyasını oluşturur. Bu şablondan bir ortam oluşturduğunuzda, sizden tüm kaynak adları istenir. `az group export` komutuna `--include-parameter-default-value` parametresini ekleyerek, bu adları şablon dosyanızda doldurabilirsiniz. Kaynak adlarını belirtmek için JSON şablonunuzu düzenleyin veya kaynak adlarını belirten Parameters. JSON dosyası oluşturun.
  
 Şablonunuzda bir ortam oluşturmak için [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create)kullanın.
 

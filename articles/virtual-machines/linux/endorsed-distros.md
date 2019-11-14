@@ -1,5 +1,5 @@
 ---
-title: Azure 'da desteklenen Linux dağıtımları | Microsoft Docs
+title: Azure’da desteklenen Linux dağıtımları
 description: Ubuntu, CentOS, Oracle ve SUSE için yönergeler de dahil olmak üzere, Azure tarafından onaylanan dağıtımlara yönelik Linux hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: szark
-ms.openlocfilehash: c9537ec39e58d5703ed3bc1774520a12b25147b0
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 66717222b505b7dd91f7f270cab27ec4ca97038e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615591"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036226"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 'da desteklenen Linux dağıtımları
 İş ortakları, Azure Marketi 'nde Linux görüntüleri sağlar. Çeşitli Linux topluluklarıyla birlikte çalışarak, onaylı dağıtım listesine daha da fazla bilgi ekleyebilirsiniz. Bu sırada, Market 'ten kullanılamayan dağıtımlar için, [Linux işletim sistemini içeren bir sanal sabit disk oluşturma ve karşıya yükleme](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)konusundaki yönergeleri Izleyerek kendi Linux 'u her zaman getirebilirsiniz.
@@ -35,9 +35,9 @@ Azure Linux Aracısı, Azure Marketi görüntülerinde önceden yüklenmiş olur
 | Dağıtım | Sürüm | Sürücüler | Aracı |
 | --- | --- | --- | --- |
 | CentOS |CentOS 6.3 +, 7.0 +, 8.0 + |CentOS 6,3: [LIS Download](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: çekirdekte |Paket: "Walınuxagent" altında [Depo](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0 + |Çekirdekte |Kaynak kodu: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
+| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |Çekirdekte |Kaynak kodu: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |DE7.9 +, 8.2 +, 9, 10 |Çekirdekte |Paket: "waagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Oracle Linux |6.4 +, 7.0 + |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Oracle Linux |6.4+, 7.0+ |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | Red Hat Enterprise Linux |RHEL 6.7 +, 7.1 +, 8.0 + |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise |SLES/SLES for SAP<br>11 SP4<br>12 SP1 +<br>15|Çekirdekte |Paket:<p> Bulutta 11 için [: Araçlar](https://build.opensuse.org/project/show/Cloud:Tools) deposu<br>"genel bulut" modülünde "Python-Azure-Agent" altında bulunan 12 için<br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE artık 42.2 + |Çekirdekte |Paket: [bulutta:](https://build.opensuse.org/project/show/Cloud:Tools) "Python-Azure-Agent" ın altındaki araçlar deposu <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
@@ -73,7 +73,7 @@ CoreOS Web sitesinden:
 
 *CoreOS güvenlik, tutarlılık ve güvenilirlik için tasarlanmıştır. CoreOS, VUM veya apt aracılığıyla paket yüklemek yerine, hizmetlerinizi daha yüksek bir soyutlama düzeyinde yönetmek için Linux kapsayıcıları kullanır. Tek bir hizmetin kodu ve tüm bağımlılıkları, bir veya daha fazla CoreOS makinesi üzerinde çalıştırılabilen bir kapsayıcı içinde paketlenmiştir.*
 
-### <a name="credativ"></a>credavtiv
+### <a name="credativ"></a>credativ
 [https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
 Credadtiv, ücretsiz yazılım kullanarak profesyonel çözümlerin geliştirilmesi ve uygulanması konusunda uzmanlaşmış bağımsız bir danışmanlık ve hizmetler şirketidir. Önde gelen açık kaynaklı uzmanlar olarak, Crefetiv, desteğini kullanan pek çok BT departmanının kullanıldığı Uluslararası tanıma sahiptir. Credadtiv, Microsoft ile birlikte, şu anda Demallik 8 (Jesan) ve 7 ' den önce (Wheezy) ilgili Dekamu görüntülerini hazırlıyor. Her iki görüntü de Azure 'da çalışmak üzere özel olarak tasarlanmıştır ve platform aracılığıyla kolayca yönetilebilir. Credavtiv Ayrıca, Azure için açık kaynak destek merkezleri aracılığıyla uzun süreli bakım ve güncelleştirme görüntülerinin güncelleştirilmesini de destekleyecektir.

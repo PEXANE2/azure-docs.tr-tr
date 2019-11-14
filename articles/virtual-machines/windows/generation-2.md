@@ -1,5 +1,5 @@
 ---
-title: 2\. nesil VM 'Ler için Azure desteği | Microsoft Docs
+title: 2\. nesil VM 'Ler için Azure desteği
 description: 2\. nesil sanal makineler için Azure desteğine genel bakış
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: 4cb6d684171ac6e7e9e1cb7da556250f857cf2af
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f17ec7179413bebb8260089abc46856412b78ab5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891477"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038644"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -103,7 +103,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 Azure portal veya Azure CLı 'de, UEFı önyüklemesini destekleyen bir market görüntüsünden 2. nesil VM 'Ler oluşturabilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalında
 
 Windows ve SLES için 2. nesil görüntüler, Gen1 görüntülerle aynı sunucu teklifine dahildir. Flow perspektifinden bu şekilde, VM 'niz için portaldan teklif ve SKU 'YU seçersiniz. SKU hem 1. kuşak hem de 2. nesil görüntüleri destekliyorsa, VM oluşturma akışındaki *Gelişmiş* sekmesinden 2. nesıl bir VM oluşturmayı seçebilirsiniz.
 

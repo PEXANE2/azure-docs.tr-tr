@@ -1,5 +1,5 @@
 ---
-title: Linux VM 'den bir veri diskini ayırma-Azure | Microsoft Docs
+title: Linux VM 'den bir veri diskini ayırma-Azure
 description: Azure CLı veya Azure portal kullanarak Azure 'daki bir sanal makineden bir veri diskini kullanımdan çıkarmayı öğrenin.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e026617db4da58c12a454000f6d97f8b6843e95d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695875"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036380"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Bir Linux sanal makinesinden veri diski ayırma
 
@@ -82,7 +82,7 @@ Bu örnekte, */etc/fstab* dosyasından aşağıdaki satırın silinmesi gerekir:
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-Diski `umount` çıkarmak için kullanın. Aşağıdaki örnek */datadrive* bağlama noktasından */dev/sdc1* bölümünü çıkarır:
+Diski çıkarmak için `umount` kullanın. Aşağıdaki örnek */datadrive* bağlama noktasından */dev/sdc1* bölümünü çıkarır:
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
@@ -109,7 +109,7 @@ Disk depolamada kalır, ancak artık bir sanal makineye bağlı değildir.
 2. Ayırmak istediğiniz veri diskine sahip sanal makineyi seçin ve VM 'yi serbest bırakmak için **Durdur** ' a tıklayın.
 3. Sanal makine bölmesinde, **diskler**' i seçin.
 4. **Diskler** bölmesinin üst kısmında **Düzenle**' yi seçin.
-5. **Diskler** bölmesinde, ayırmak istediğiniz veri diskinin en sağına doğru ![ayır düğmesine tıklayın resmi](./media/detach-disk/detach.png) ayır düğmesine tıklayın.
+5. **Diskler** bölmesinde, ayırmak istediğiniz veri diskinin en sağında yer alan ![ayır düğme görüntüsünü](./media/detach-disk/detach.png) ayır düğmesine tıklayın.
 5. Disk kaldırıldıktan sonra bölmenin en üstünde yer alan Kaydet ' e tıklayın.
 6. Sanal makine bölmesinde **genel bakış** ' a tıklayın ve ardından sanal makineyi yeniden başlatmak için bölmenin üst kısmındaki **Başlat** düğmesine tıklayın.
 

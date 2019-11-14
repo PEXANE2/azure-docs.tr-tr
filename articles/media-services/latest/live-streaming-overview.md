@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: bac784ea3050111184e2908fe5656a1d16545a99
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 8d7db428d7f71383abf5425d7cc1ddbbab3b7a52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231024"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037861"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 ile canlı akış
 
@@ -41,7 +41,7 @@ Media Services ile, canlı akışlarınızı, hizmet 'e gönderilen katkı akı�
 
 ## <a name="dynamic-encryption"></a>Dinamik şifreleme
 
-Dinamik şifreleme; AES-128 veya üç ana dijital hak yönetimi (DRM) sistemlerinden herhangi biriyle canlı veya isteğe bağlı içeriğinizi dinamik olarak şifrelemenize olanak sağlar: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Media Services de AES anahtarları ve DRM sunmaya yönelik bir hizmet sağlar (PlayReady, Widevine ve FairPlay) lisansları yetkili istemcilere. Daha fazla bilgi için bkz. [dinamik şifreleme](content-protection-overview.md).
+Dinamik şifreleme, etkin veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak yönetimi (DRM) sisteminden dinamik olarak şifrelemenize olanak sağlar: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Media Services de AES anahtarları ve DRM sunmaya yönelik bir hizmet sağlar (PlayReady, Widevine ve FairPlay) lisansları yetkili istemcilere. Daha fazla bilgi için bkz. [dinamik şifreleme](content-protection-overview.md).
 
 ## <a name="dynamic-manifest"></a>Dinamik bildirim
 
@@ -61,7 +61,14 @@ Geçiş **canlı olayını**kullanırken, çoklu bit hızı video akışı oluş
 
 ![gerçek zamanlı kodlama](./media/live-streaming/live-encoding.svg)
 
-Media Services ile bulut kodlaması kullanırken, şirket içi Live Encoder ' ı canlı olaya (RTMP veya parçalanmış-MP4 giriş protokolünü kullanarak) katkı akışı (en fazla 32Mbps toplama) olarak tek bir bit hızlı video gönderecek şekilde yapılandırırsınız. Canlı olay aktarıcı, gelen tek bit hızı akışını, her zaman hızlı bir şekilde ve MPEG-DASH, Apple gibi endüstri standardı protokoller aracılığıyla kayıttan yürütme cihazlarına teslim etmek üzere çeşitli çözünürlüklerde [çoklu bit hızı video akışlarına](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) dönüştürür. HTTP Canlı Akışı (HLS) ve Microsoft Kesintisiz Akış. 
+Media Services ile bulut kodlaması kullanırken, şirket içi Live Encoder ' ı canlı olaya (RTMP veya parçalanmış-MP4 giriş protokolünü kullanarak) katkı akışı (en fazla 32Mbps toplama) olarak tek bir bit hızlı video gönderecek şekilde yapılandırırsınız. Canlı olay aktarıcı, gelen tek [bit hızı akışını, her zaman](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) hızlı bir şekılde ve MPEG-Dash, Apple http canlı akışı (HLS) ve Microsoft kesintisiz akış gibi endüstri standardı protokoller aracılığıyla oynatma için kullanılabilir hale getirir. 
+
+### <a name="live-transcription"></a>Canlı döküm
+
+Canlı döküm, doğrudan geçiş ya da canlı kodlama olan canlı olaylarla kullanabileceğiniz bir özelliktir. Daha fazla bilgi için bkz. [canlı](live-transcription.md)döküm. Bu özellik etkinleştirildiğinde, hizmet bilişsel hizmetler 'in [konuşmadan metne](../../cognitive-services/speech-service/speech-to-text.md) özelliğini kullanarak gelen seslerdeki konuşulan kelimeleri metne dönüştürür. Bu metin daha sonra MPEG-DASH ve HLS protokollerinde video ve ses ile birlikte teslim için kullanılabilir hale getirilir.
+
+> [!NOTE]
+> Şu anda, canlı döküm Batı ABD 2 ' de önizleme özelliği olarak sunulmaktadır.
 
 ## <a name="live-streaming-workflow"></a>Canlı akış iş akışı
 

@@ -1,18 +1,14 @@
 ---
 title: PCI-DSS v 3.2.1 şema örnek denetimi eşlemesi
 description: Ödeme kartı sektör verileri güvenliği standart v 3.2.1 şema örneğinin Azure ilkesi ve RBAC 'ye eşlenmesini denetleme.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: c1e04cb2bfd5ae532b556ed53d585aae90c312e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d3e72f923ea3d752d829731d1f741bda090ae9fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163052"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037276"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğinin denetim eşlemesi
 
@@ -34,7 +30,7 @@ Bu şema, ağ güvenlik gruplarını, izin veren kurallarla izleyen [Azure ilke]
 
 Bu şema, belirli bir cryptograph denetimi ve zayıf şifreleme ayarları kullanımını zorlayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak, ilkenizi cryptograph denetimleri ile zorlamanıza yardımcı olur. Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmalarının nerede olabileceğini anlamak, kaynakların bilgi güvenliği ilkenize uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemler almanıza yardımcı olabilir. Özellikle, bu şema tarafından atanan ilkeler SQL veritabanlarında saydam veri şifrelemesi gerektirir; depolama hesaplarında eksik şifrelemeyi denetleyin ve Otomasyon hesabı değişkenleri. Ayrıca, depolama hesaplarına, Işlev uygulamalarına, WebApp, API Apps ve Redis Cache güvenli olmayan bağlantıları denetlemeye yönelik ilkeler de vardır ve şifrelenmemiş Service Fabric iletişimini denetleyebilir.
 
-- İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
@@ -48,7 +44,7 @@ Bu şema, belirli bir cryptograph denetimi ve zayıf şifreleme ayarları kullan
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 ve 11.2.1 güvenlik açığı taraması ve sistem güncelleştirmeleri
 
-Bu şema, Azure 'da eksik sistem güncelleştirmelerini, işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur Güvenlik Merkezi. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar.
+Bu şema, Azure Güvenlik Merkezi 'nde eksik sistem güncelleştirmelerini, işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar.
 
 - Azure Güvenlik Merkezi 'nde eksik Endpoint Protection izleme
 - Windows Server için varsayılan Microsoft ıaasantimalware uzantısını dağıt
@@ -67,7 +63,7 @@ Yalnızca bir Azure aboneliğinin sahibi, yönetici artıklığına izin vermez.
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3,2, 7.2.1, 8.3.1. a ve 8.3.1. b ayrıcalıklı erişim haklarının yönetimi
 
-Bu şema, sahip olmayan dış hesapları, yazma ve/veya Okuma izinlerini ve şirket hesaplarını ve/veya yazma izinlerini içeren çalışan hesaplarını denetlemek için [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ayrıcalıklı erişim haklarını kısıtlayıp denetlemenize yardımcı olur. Multi-Factor Authentication etkinleştirildi. Azure, Azure kaynaklarına kimlerin erişebileceğini yönetmek için rol tabanlı erişim denetimi (RBAC) uygular. Özel RBAC kurallarının hangi noktada uygulanacağını anlamak, özel RBAC kuralları hata durumunda olduğundan, gereksinimi ve uygun uygulamayı doğrulamanıza yardımcı olabilir. Bu şema Ayrıca, SQL sunucuları için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, izin yönetimini basitleştirir ve veritabanı kullanıcılarının ve diğer Microsoft kimlik yönetimini merkezileştirir  
+Bu şema, sahip olan dış hesapları, sahip ve/veya Okuma izinlerini ve/veya çok faktörlü kimlik doğrulaması etkinleştirilmemiş yazma izinleri ile çalışan hesaplarını denetlemek için [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ayrıcalıklı erişim haklarını kısıtlayıp denetlemenize yardımcı olur. Azure, Azure kaynaklarına kimlerin erişebileceğini yönetmek için rol tabanlı erişim denetimi (RBAC) uygular. Özel RBAC kurallarının hangi noktada uygulanacağını anlamak, özel RBAC kuralları hata durumunda olduğundan, gereksinimi ve uygun uygulamayı doğrulamanıza yardımcı olabilir. Bu şema Ayrıca, SQL sunucuları için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, izin yönetimini basitleştirir ve veritabanı kullanıcılarının ve diğer Microsoft kimlik yönetimini merkezileştirir  
 servislere.
  
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
@@ -134,7 +130,7 @@ PCI-DSS v 3.2.1 Blueprint denetim eşlemesini gözden geçirdiğinize göre, gen
 > [PCI-DSS v 3.2.1 şema-genel bakış](./index.md)
 > [PCI-DSS v 3.2.1 şema-Deploy adımları](./deploy.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

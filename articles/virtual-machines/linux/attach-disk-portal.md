@@ -1,5 +1,5 @@
 ---
-title: Linux VM 'ye veri diski iliştirme | Microsoft Docs
+title: Linux VM 'ye veri diski iliştirme
 description: Bir Linux sanal makinesine yeni veya mevcut veri diski eklemek için portalını kullanın.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f63648f63d6154b89f641cdc4d2657e0396a8c66
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 78604a4f6fd5a6bcd21d0adc80c1c60278068836
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036370"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037058"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Bir Linux VM 'sine veri diski eklemek için portalı kullanma 
 Bu makalede, Azure portal aracılığıyla bir Linux sanal makinesine hem yeni hem de mevcut diskleri nasıl ekleyebileceğiniz gösterilmektedir. Ayrıca [, Azure Portal bir WINDOWS sanal makinesine veri diski ekleyebilirsiniz](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -33,7 +33,7 @@ VM 'nize disk iliştirmadan önce şu ipuçlarını gözden geçirin:
 
 
 ## <a name="find-the-virtual-machine"></a>Sanal makineyi bul
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Sol taraftaki menüden **sanal makineler**' e tıklayın.
 3. Listeden sanal makineyi seçin.
 4. Sanal makineler sayfasında, **temel**bileşenler ' de **diskler**' e tıklayın.
@@ -79,7 +79,7 @@ Linux sanal makinenizin kullanabilmesi için yeni diskinizi bölümlemek, biçim
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-Sanal makinenize bağlandıktan sonra bir disk eklemeye hazırsınız demektir. İlk olarak, kullanarak `dmesg` diski bulun (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, *SCSI* disklerinde filtrelemek için dmesg kullanır:
+Sanal makinenize bağlandıktan sonra bir disk eklemeye hazırsınız demektir. İlk olarak, `dmesg` kullanarak diski bulun (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, *SCSI* disklerinde filtrelemek için dmesg kullanır:
 
 ```bash
 dmesg | grep SCSI
@@ -103,13 +103,13 @@ Veri içeren mevcut bir disk kullanıyorsanız, diski bağlamak için atlayın. 
 > [!NOTE]
 > Kendi oluşturduğunuz en son Fdisk sürümlerini kullanmanız veya uygulamanız için uygun olması önerilir.
 
-`fdisk` ile diski bölümlendirin. Disk boyutu 2 tebibayt (Tib) veya daha büyükse GPT bölümlendirme kullanmanız gerekir, bu durumda GPT bölümlendirme gerçekleştirmek için kullanabilirsiniz `parted` . Disk boyutu 2TiB altındaysa, MBR veya GPT bölümlemesini kullanabilirsiniz. Bölüm 1 ' de bir birincil disk oluşturun ve diğer varsayılanları kabul edin. Aşağıdaki örnek, */dev/SDC*üzerinde `fdisk` işlemi başlatır:
+`fdisk` ile diski bölümlendirin. Disk boyutu 2 tebibayt (Tib) veya daha büyükse GPT bölümlendirme kullanmanız gerekir, GPT bölümlendirme gerçekleştirmek için `parted` kullanabilirsiniz. Disk boyutu 2TiB altındaysa, MBR veya GPT bölümlemesini kullanabilirsiniz. Bölüm 1 ' de bir birincil disk oluşturun ve diğer varsayılanları kabul edin. Aşağıdaki örnek */dev/SDC*üzerinde `fdisk` işlemini başlatır:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Yeni bir bölüm eklemek için komutunukullanın.`n` Bu örnekte, birincil bölüm için de `p` seçim yaptık ve varsayılan değerlerin geri kalanını kabul ediyoruz. Çıktı aşağıdaki örneğe benzer olacaktır:
+Yeni bir bölüm eklemek için `n` komutunu kullanın. Bu örnekte, birincil bölüm için `p` ve varsayılan değerlerin geri kalanını kabul ediyoruz. Çıktı aşağıdaki örneğe benzer olacaktır:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -131,7 +131,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Bölüm tablosunu yazarak `p` ve ardından tabloyu diske yazmak ve `w` çıkmak için kullanarak yazdırın. Çıktı aşağıdaki örneğe benzer şekilde görünmelidir:
+Bölüm tablosunu `p` yazarak yazdırın ve sonra `w` kullanarak tabloyu diske yazın ve çıkın. Çıktı aşağıdaki örneğe benzer şekilde görünmelidir:
 
 ```bash
 Command (m for help): p
@@ -153,7 +153,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-Şimdi, `mkfs` komutunu kullanarak bölüme bir dosya sistemi yazın. Dosya sistemi türünü ve cihaz adını belirtin. Aşağıdaki örnek, önceki adımlarda oluşturulan */dev/sdc1* bölümünde bir *ext4* FileSystem oluşturur:
+Şimdi, `mkfs` komutuyla bölüme bir dosya sistemi yazın. Dosya sistemi türünü ve cihaz adını belirtin. Aşağıdaki örnek, önceki adımlarda oluşturulan */dev/sdc1* bölümünde bir *ext4* FileSystem oluşturur:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -184,13 +184,13 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 ### <a name="mount-the-disk"></a>Diski bağlama
-Kullanarak `mkdir`dosya sistemini bağlamak için bir dizin oluşturun. Aşağıdaki örnek, */datadrive*dizininde bir dizin oluşturur:
+`mkdir`kullanarak dosya sistemini bağlamak için bir dizin oluşturun. Aşağıdaki örnek, */datadrive*dizininde bir dizin oluşturur:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Daha `mount` sonra dosya sistemini bağlamak için kullanın. Aşağıdaki örnek */dev/sdc1* bölümünü */datadrive* bağlama noktasına bağlar:
+Dosya sistemini bağlamak için `mount` kullanın. Aşağıdaki örnek */dev/sdc1* bölümünü */datadrive* bağlama noktasına bağlar:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
@@ -235,12 +235,12 @@ Bazı Linux çekirdekler, diskteki kullanılmayan blokları atmak için kesme/e�
 
 Linux sanal makinenizde KıRPMA desteğini etkinleştirmenin iki yolu vardır. Her zamanki gibi, önerilen yaklaşım için dağıtıma başvurun:
 
-* `discard` */Etc/fstab*içindeki bağlama seçeneğini kullanın, örneğin:
+* */Etc/fstab*' de `discard` bağlama seçeneğini kullanın, örneğin:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* Bazı durumlarda, `discard` seçeneğinde performans olumsuz etkileri olabilir. Alternatif olarak, komut satırından `fstrim` komutu el ile çalıştırabilir veya bunları düzenli olarak çalıştırmak için crontab 'ize ekleyebilirsiniz:
+* Bazı durumlarda `discard` seçeneğinde performans etkileri olabilir. Alternatif olarak, komut satırından `fstrim` komutunu el ile çalıştırabilir veya bunları düzenli olarak çalıştırmak için crontab 'ize ekleyebilirsiniz:
   
     **Ubuntu**
   

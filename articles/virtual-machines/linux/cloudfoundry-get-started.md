@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Cloud Foundry kullanmaya başlama | Microsoft Docs
+title: Microsoft Azure Cloud Foundry kullanmaya başlama
 description: Microsoft Azure Cloud Foundry OSS veya özetleme 'yi çalıştırın
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: d91ad0bea7f79dd67edd4f0bb9e06a37a0f86bea
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 447550d2f6bca570869c9fa93724e4dbaba02132
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091932"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036816"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure’da Cloud Foundry
 
@@ -47,7 +47,7 @@ Microsoft, aşağıdaki topluluk kanalları aracılığıyla OSS CF için en iyi
 
 Özet Cloud Foundry, bir özel yönetim araçları ve kurumsal destek kümesiyle birlikte, OSS dağıtımı ile aynı çekirdek platformunu içerir. Azure 'da PCF 'yi çalıştırmak için, özetten bir lisans edinmeniz gerekir. Azure Marketi 'nden PCF teklifi 90 günlük bir deneme lisansı içerir.
 
-Araçlar, bir Cloud Foundry Foundation 'ın dağıtımını ve yönetimini kolaylaştıran bir Web uygulaması ve Kullanıcı ve uygulamaları yönetmeye yönelik bir Web [](https://docs.pivotal.io/pivotalcf/console/)uygulaması olan özette [Operations Manager](https://docs.pivotal.io/pivotalcf/customizing/)içerir.
+Araçlar, bir Cloud Foundry Foundation 'ın dağıtımını ve yönetimini kolaylaştıran bir Web uygulaması ve Kullanıcı ve uygulamaları yönetmeye yönelik bir Web uygulaması [olan özette](https://docs.pivotal.io/pivotalcf/console/) [Operations Manager](https://docs.pivotal.io/pivotalcf/customizing/)içerir.
 
 Yukarıdaki OSS CF için listelenen destek kanallarına ek olarak, bir PCF lisansı, destek için özette iletişim kurmanız sahibine. Microsoft ve Özette, yardım için her iki tarafın da iletişim kurabilmesini sağlayan destek iş akışlarını da etkinleştirdi ve bu da sorunun nerede olduğuna bağlı olarak, sorgunuz uygun şekilde yönlendirilsin.
 

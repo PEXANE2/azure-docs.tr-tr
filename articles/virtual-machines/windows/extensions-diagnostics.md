@@ -1,5 +1,5 @@
 ---
-title: Windows için Azure Tanılama uzantısı | Microsoft Docs
+title: Windows için Azure Tanılama uzantısı
 description: Azure Tanılama uzantısını kullanarak Azure Windows sanal makinelerini izleme
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 4230e2aac8d386c759a403b9008029d68049569c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3fcdcd4565ed0512b3efcf9b23ca349a3bbf3a6c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749398"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033488"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM 'Leri için Azure Tanılama uzantısı
 
@@ -25,7 +25,7 @@ ms.locfileid: "73749398"
 
 Azure Tanılama VM uzantısı, Windows VM 'nizden performans sayaçları ve olay günlükleri gibi izleme verilerini toplamanıza olanak sağlar. Toplamak istediğiniz verileri ve bir Azure depolama hesabı ya da Azure Olay Hub 'ı gibi verilerin nereye gitmesini istediğinizi belirleyebilirsiniz. Bu verileri, Azure portal grafik oluşturmak veya ölçüm uyarıları oluşturmak için de kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -41,9 +41,9 @@ Azure Tanılama uzantısı, hedef sanal makinenin Internet 'e bağlı olmasını
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
-Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. Önceki bölümde ayrıntılı JSON şeması, bir Azure Resource Manager şablon dağıtımı sırasında Azure Tanılama uzantısını çalıştırmak için bir Azure Resource Manager şablonunda kullanılabilir. Bkz. [WINDOWS VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanma](extensions-diagnostics-template.md).
+Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Önceki bölümde ayrıntılı JSON şeması, bir Azure Resource Manager şablon dağıtımı sırasında Azure Tanılama uzantısını çalıştırmak için bir Azure Resource Manager şablonunda kullanılabilir. Bkz. [WINDOWS VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanma](extensions-diagnostics-template.md).
 
-## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
+## <a name="azure-cli-deployment"></a>Azure CLI dağıtım
 
 Azure CLı, Azure Tanılama uzantısını var olan bir sanal makineye dağıtmak için kullanılabilir. Korumalı ayarlar ve ayarlar özelliklerini yukarıdaki uzantı şemasından geçerli bir JSON ile değiştirin. 
 
@@ -74,11 +74,11 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
   -DiagnosticsConfigurationPath $diagnosticsconfig_path
 ```
 
-## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
+## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Uzantı dağıtımlarının durumu hakkındaki veriler Azure portal ve Azure CLı kullanılarak alınabilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için, Azure CLı 'yı kullanarak aşağıdaki komutu çalıştırın.
+Uzantı dağıtım durumuyla ilgili veriler, Azure portalından ve Azure CLI kullanılarak alınabilir. Belirli bir VM'nin için uzantıları dağıtım durumunu görmek için Azure CLI kullanarak aşağıdaki komutu çalıştırın.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
@@ -88,7 +88,7 @@ Azure Tanılama uzantısı için daha kapsamlı bir sorun giderme kılavuzu içi
 
 ### <a name="support"></a>Destek
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
+Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/forums/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * [Azure Tanılama uzantısı hakkında daha fazla bilgi edinin](../../azure-monitor/platform/diagnostics-extension-overview.md)

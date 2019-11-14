@@ -1,5 +1,5 @@
 ---
-title: 'Bağlantıyı doğrulama-ExpressRoute sorun giderme kılavuzu: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: bağlantıyı doğrulama-sorun giderme kılavuzu'
 description: Bu sayfa, bir ExpressRoute devresine yönelik uçtan uca bağlantıyı gidermeye ve doğrulamaya ilişkin yönergeler sağlar.
 services: expressroute
 author: rambk
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: c5001e884047fc6078faf3a8de0e45b7e30e1038
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580312"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033783"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute bağlantısını doğrulama
 Bu makale, ExpressRoute bağlantısını doğrulamanıza ve sorunlarını gidermenize yardımcı olur. ExpressRoute, bir bağlantı sağlayıcısı tarafından yaygın olarak kullanılan özel bir bağlantı üzerinden şirket içi bir ağı Microsoft bulutuna genişletir. ExpressRoute bağlantısı, geleneksel olarak üç farklı ağ bölgesi içerir ve aşağıdaki gibi:
@@ -289,7 +289,7 @@ Mevcut olmayan bir eşleme için komutun örnek çıktısı:
     StatusCode: 400
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Daha fazla bilgi veya yardım için aşağıdaki bağlantıları inceleyin:
+Daha fazla bilgi veya Yardım için aşağıdaki bağlantıları kontrol edin:
 
 - [Microsoft Desteği][Support]
 - [ExpressRoute bağlantı hattı oluşturma ve değiştirme][CreateCircuit]

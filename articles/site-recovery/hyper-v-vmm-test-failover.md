@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 444868f1716ae55f1851e50c057b172f5e3eb3d1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4a1b5f804986d2bda85980d01cdaaa130d86b50d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961389"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039745"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>İkincil siteye Hyper-V VM 'Leri için bir DR ayrıntısı çalıştırın
 
@@ -22,7 +22,7 @@ Bu makalede, System Center Virtual Machine Manager V (MM) bulutlarında yönetil
 Çoğaltma stratejinizi doğrulamak için bir yük devretme testi çalıştırırsınız ve veri kaybı veya kapalı kalma süresi olmadan bir DR detayına sahip olursunuz. Yük devretme testi, devam eden çoğaltma üzerinde veya üretim ortamınızda herhangi bir etkiye sahip değildir. 
 
 > [!WARNING]
-> Lütfen SCVMM yapılandırması 'nın hesapta kullanılması için ASR desteğinin yakında kullanım dışı olacağını unutmayın. bu nedenle, devam etmeden önce [kullanımdan](scvmm-site-recovery-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
+> Lütfen SCVMM yapılandırması 'nın hesapta kullanılması için ASR desteğinin yakında kullanım dışı olacağını unutmayın. bu nedenle, devam etmeden önce [kullanımdan](site-to-site-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
 
 
 ## <a name="how-do-test-failovers-work"></a>Yük devretme testi nasıl çalışır?
@@ -47,7 +47,7 @@ Birincil siteden ikincil siteye yük devretme testi çalıştırırsınız. Yaln
 
 Yük devretme testi çalıştırdığınızda, tabloda özetlenen test çoğaltma makineleri için ağ ayarları ' nı seçmeniz istenir.
 
-| **Seçeneği** | **Ayrıntılar** | |
+| **Seçenek** | **Ayrıntılar** | |
 | --- | --- | --- |
 | **Yok.** | Test VM 'si, çoğaltma sanal makinesinin bulunduğu konakta oluşturulur. Buluta eklenmez ve herhangi bir ağa bağlı değildir.<br/><br/> Oluşturulduktan sonra makinenin bir VM ağına bağlanmasını sağlayabilirsiniz.| |
 | **Mevcut olanı kullan** | Test VM 'si, çoğaltma sanal makinesinin bulunduğu konakta oluşturulur. Buluta eklenmez.<br/><br/>Üretim ağınızdan yalıtılmış bir VM ağı oluşturun.<br/><br/>VLAN tabanlı bir ağ kullanıyorsanız, bu amaçla VMM 'de ayrı bir mantıksal ağ (üretimde kullanılmamış) oluşturmanızı öneririz. Bu mantıksal ağ yük devretme testi için VM ağları oluşturmak için kullanılır.<br/><br/>Mantıksal ağ, sanal makineleri barındıran tüm Hyper-V sunucularının en az bir ağ bağdaştırıcısı ile ilişkilendirilmelidir.<br/><br/>VLAN mantıksal ağları için, mantıksal ağa eklediğiniz ağ siteleri yalıtılmalıdır.<br/><br/>Windows ağ sanallaştırma tabanlı bir mantıksal ağ kullanıyorsanız, Azure Site Recovery otomatik olarak yalıtılmış VM ağları oluşturur. | |

@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure CLI ile Azure sanal makinelerini yönetme | Microsoft Docs
+title: Öğretici-Azure CLı ile Azure sanal makinelerini yönetme
 description: Bu öğreticide, RBAC, ilkeler, kilitler ve etiketler uygulayarak Azure sanal makinelerini yönetmek üzere Azure CLI kullanmayı öğrenirsiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 5fa14ef30d45a9a28cc690761ec33b5bfaaac6a7
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e9475f4226a65ad06d45170e0ab802c6cdb79d8f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676512"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034535"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Öğretici: Azure CLI ile Linux sanal makine yönetimi hakkında bilgi edinin
 
@@ -64,7 +64,7 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Ana @no__t belirten bir hata alırsanız **-1guıd > dizinde yoksa**, yeni grup Azure Active Directory genelinde yayılmaz. Komutu tekrar çalıştırmayı deneyin.
+**Asıl \<guıd > dizinde mevcut olmadığı**belirten bir hata alırsanız, yeni grup Azure Active Directory genelinde yayılmaz. Komutu tekrar çalıştırmayı deneyin.
 
 Genellikle, kullanıcıların dağıtılmış kaynakları yönetmek için atandığından emin olmak üzere *Ağ Katılımcısı* ve *Depolama Hesabı Katılımcısı* için işlemi yinelemeniz gerekir. Bu makalede, söz konusu adımları atlayabilirsiniz.
 

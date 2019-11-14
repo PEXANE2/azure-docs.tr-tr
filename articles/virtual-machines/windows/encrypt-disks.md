@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Windows VM 'de diskleri şifreleme | Microsoft Docs
+title: Azure 'da Windows VM 'de diskleri şifreleme
 description: Azure PowerShell kullanarak gelişmiş güvenlik için Windows VM 'de sanal diskleri şifreleme
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 73f38760153a6e1db5621801282c71216b3e8560
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 096fe779c077424b01df3ead5965cb799866a03b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749425"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033539"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Windows VM 'de sanal diskleri şifreleme
 Gelişmiş sanal makine (VM) güvenliği ve uyumluluğu için, Azure 'daki sanal diskler şifrelenebilir. Diskler, bir Azure Key Vault güvenli hale getirilmiş şifreleme anahtarları kullanılarak şifrelenir. Bu şifreleme anahtarlarını kontrol edersiniz ve kullanımlarını denetleyebilir. Bu makalede, Azure PowerShell kullanarak bir Windows VM 'de sanal disklerin nasıl şifreleneceği açıklanır. Ayrıca, [Linux sanal makinelerini şifreleyebilirsiniz](../linux/disk-encryption-overview.md).

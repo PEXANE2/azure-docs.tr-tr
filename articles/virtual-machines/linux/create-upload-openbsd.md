@@ -1,5 +1,5 @@
 ---
-title: OpenBSD VM görüntüsünü oluşturma ve Azure 'a yükleme | Microsoft Docs
+title: OpenBSD VM görüntüsünü oluşturma ve Azure 'a yükleme
 description: Azure CLı aracılığıyla bir Azure sanal makinesi oluşturmak için OpenBSD işletim sistemini içeren bir sanal sabit disk (VHD) oluşturmayı ve yüklemeyi öğrenin
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 53acab4128d01c92c54c8c01a5e611d313e617d4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ee15836906eef0b9205691f9a6003cea0b9fae80
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083554"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036461"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD disk görüntüsünü Azure 'a oluşturma ve yükleme
 Bu makalede, OpenBSD işletim sistemini içeren bir sanal sabit disk (VHD) oluşturma ve karşıya yükleme işleminin nasıl yapılacağı gösterilir. Karşıya yükledikten sonra, Azure CLı aracılığıyla Azure 'da bir sanal makine (VM) oluşturmak için kendi görüntünüz olarak kullanabilirsiniz.
@@ -55,7 +55,7 @@ Hyper-V desteği eklenen OpenBSD işletim sistemi 6,1 ' i yüklediğiniz VM 'de 
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. Varsayılan olarak, `root` Kullanıcı Azure 'daki sanal makinelerde devre dışıdır. Kullanıcılar, `doas` OpenBSD VM üzerindeki komutunu kullanarak yükseltilmiş ayrıcalıklarla komutları çalıştırabilir. Doas varsayılan olarak etkindir. Daha fazla bilgi için bkz. [doas. conf](https://man.openbsd.org/doas.conf.5). 
+4. Varsayılan olarak, `root` Kullanıcı Azure 'daki sanal makinelerde devre dışıdır. Kullanıcılar, OpenBSD VM 'deki `doas` komutunu kullanarak yükseltilmiş ayrıcalıklarla komutlar çalıştırabilir. Doas varsayılan olarak etkindir. Daha fazla bilgi için bkz. [doas. conf](https://man.openbsd.org/doas.conf.5). 
 
 5. Azure Aracısı için önkoşulları aşağıdaki gibi yükleyip yapılandırın:
 
@@ -148,7 +148,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>VHD 'nizden VM oluşturma
-[Örnek](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) bir betikle veya doğrudan [az VM Create](/cli/azure/vm)ile bir VM oluşturabilirsiniz. Karşıya yüklediğiniz OpenBSD VHD 'sini belirtmek için `--image` parametresini aşağıdaki gibi kullanın:
+[Örnek bir betikle](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) veya doğrudan [az VM Create](/cli/azure/vm)ile bir VM oluşturabilirsiniz. Karşıya yüklediğiniz OpenBSD VHD 'sini belirtmek için `--image` parametresini aşağıdaki gibi kullanın:
 
 ```azurecli
 az vm create \

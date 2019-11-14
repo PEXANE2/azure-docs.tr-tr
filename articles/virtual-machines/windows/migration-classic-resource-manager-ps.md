@@ -1,5 +1,5 @@
 ---
-title: PowerShell ile Kaynak Yöneticisi geçirin | Microsoft Docs
+title: PowerShell ile Kaynak Yöneticisi 'e geçiş
 description: Bu makalede, Azure PowerShell komutlarını kullanarak, sanal makineler (VM 'Ler), sanal ağlar (VNet) ve Azure Resource Manager Klasik depolama hesapları gibi IaaS kaynaklarının platform tarafından desteklenen geçişi (ARM) gösterilmektedir
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 01d5670add82291cb91264ab41fcd312a338840c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 99650b090a84fd417fca5bbeb1ce3f58d32729bb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749332"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033205"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>IaaS kaynaklarını klasik 'dan Azure Resource Manager Azure PowerShell kullanarak geçirme
 Bu adımlarda, klasik dağıtım modelinden bir hizmet olarak altyapı (IaaS) kaynaklarını Azure Resource Manager dağıtım modeline geçirmek için Azure PowerShell komutlarının nasıl kullanılacağı gösterilmektedir.

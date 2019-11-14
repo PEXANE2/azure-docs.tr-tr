@@ -1,5 +1,5 @@
 ---
-title: Azure için vCPU kotaları | Microsoft Docs
+title: Azure için vCPU kotaları
 description: Azure için vCPU kotaları hakkında bilgi edinin.
 keywords: ''
 services: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: add0170c016b1a8226424ccf9b25cfde3a4c196f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 04ab96058650e6165a745b48f4c0fc213c2f9412
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091431"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035180"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Sanal makine vCPU kotaları
 
@@ -62,7 +62,7 @@ Premium Storage Managed Disks                  5    10000
 ```
 
 ## <a name="reserved-vm-instances"></a>Ayrılmış VM Örnekleri
-VM boyutu esnekliği olmayan tek bir aboneliğin kapsamına alınmış ayrılmış VM örnekleri, vCPU kotaları için yeni bir boyut ekler. Bu değerler, belirtilen boyutun abonelikte dağıtılabilir olması gereken örneklerinin sayısını anlatır. Kota sisteminde Azure ayırmalarının abonelikte yer aldığından emin olmak için kotanın ayrılmış olduğundan emin olmak için kota sisteminde bir yer tutucu olarak çalışırlar. Örneğin, belirli bir abonelikte 10 Standard_D1 ayırması varsa Standard_D1 ayırmaları için kullanım sınırı 10 olur. Bu, Azure 'un, Standard_D1 örnekleri için kullanılacak toplam bölgesel vCPU kotasında her zaman en az 10 vCPU olduğundan ve Standard_D1 örnekleri için kullanılacak standart D ailesi vCPU kotasında en az 10 vCPU olduğundan emin olmasına neden olur.
+VM boyutu esnekliği olmayan tek bir aboneliğin kapsamına alınmış ayrılmış VM örnekleri, vCPU kotaları için yeni bir boyut ekler. Bu değerler, belirtilen boyutun abonelikte dağıtılabilir olması gereken örneklerinin sayısını anlatır. Kota sisteminde Azure ayırmalarının abonelikte yer aldığından emin olmak için kotanın ayrılmış olduğundan emin olmak için kota sisteminde bir yer tutucu olarak çalışırlar. Örneğin, belirli bir aboneliğin 10 Standard_D1 ayırması varsa Standard_D1 ayırmaları için kullanım limiti 10 olur. Bu, Azure 'un, Standard_D1 örnekleri için kullanılmak üzere toplam bölgesel vCPU kotasında her zaman en az 10 vCPU olduğundan ve Standard_D1 örnekleri için kullanılacak standart D ailesi vCPU kotasında en az 10 vCPU olduğundan emin olmasına neden olur.
 
 Tek bir aboneliği satın almak için kota artışı gerekiyorsa, aboneliğinizde [bir kota artışı isteyebilirsiniz](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) .
 

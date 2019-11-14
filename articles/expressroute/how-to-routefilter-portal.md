@@ -1,5 +1,5 @@
 ---
-title: 'Microsoft eşlemesi için rota filtrelerini yapılandırın: Azure ExpressRoute-Portal | Microsoft Docs'
+title: 'ExpressRoute: yönlendirme filtreleri-Microsoft eşlemesi: Azure portal'
 description: Bu makalede, Azure portalını kullanarak Microsoft eşlemesi için rota filtreleri yapılandırma açıklanır.
 services: expressroute
 author: ganesr
@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: c49b1fa1e2e8421146f5d5012de983c14934c23c
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 0b8e06ad5688374e5ab4aaa72d8485e6da797afe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122931"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037450"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft eşlemesi için rota filtrelerini yapılandırın: Azure portal
+# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft eşlemesi için rota filtreleri yapılandırma: Azure portalı
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
@@ -71,21 +71,21 @@ Yapılandırmaya başlamadan önce aşağıdaki ölçütleri karşıladığında
  - Etkin bir Microsoft eşlemesi olması gerekir. Konumundaki yönergeleri [oluştur ve eşleme yapılandırmasını değiştirme](expressroute-howto-routing-portal-resource-manager.md)
 
 
-## <a name="prefixes"></a>1. Adım: Ön eklerin ve BGP topluluk değerlerinin bir listesini alın
+## <a name="prefixes"></a>1. adım: bir ön ek listesini ve BGP topluluk değerlerini alma
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. BGP topluluk değerlerini bir listesini alın
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. BGP topluluk değerlerinin bir listesini alın
 
 Microsoft eşlemesi aracılığıyla erişilebilen hizmetler ile ilişkili BGP topluluk değerlerini kullanılabilir [ExpressRoute yönlendirme gereksinimleri](expressroute-routing.md) sayfası.
 
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Kullanmak istediğiniz değerleri listesi olun
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. kullanmak istediğiniz değerlerin bir listesini oluşturun
 
 Yol filtresinde kullanmak istediğiniz [BGP topluluk değerlerinin](expressroute-routing.md#bgp) bir listesini oluşturun. 
 
-## <a name="filter"></a>2. Adım: Yol filtresi ve filtre kuralı oluşturma
+## <a name="filter"></a>2. adım: bir yol filtresi ve bir filtre kuralı oluşturma
 
 Bir rota filtresinde yalnızca bir kuralınız olabilir ve kural 'İzin ver' türünde olmalıdır. Bu kural, kendisiyle ilişkili BGP topluluk değerlerini listesi olabilir.
 
-### <a name="1-create-a-route-filter"></a>1. Rota filtresi oluşturma
+### <a name="1-create-a-route-filter"></a>1. yol filtresi oluşturma
 Yeni bir kaynak oluşturma seçeneğini belirleyerek bir rota filtresi oluşturabilirsiniz. Tıklayın **kaynak Oluştur** > **ağ** > **RouteFilter**, aşağıdaki görüntüde gösterildiği gibi:
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
@@ -94,7 +94,7 @@ Rota filtresi bir kaynak grubunda yerleştirmeniz gerekir.
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
-### <a name="2-create-a-filter-rule"></a>2. Bir filtre kuralı oluşturma
+### <a name="2-create-a-filter-rule"></a>2. filtre kuralı oluşturma
 
 Ekleyebilir ve kuralları, rota filtresi Yönet kural sekmesini seçerek güncelleştirin.
 
@@ -106,7 +106,7 @@ Açılan listeden bağlanmak istediğiniz hizmetleri seçebilir ve tamamlandığ
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
-## <a name="attach"></a>Adım 3: Yol filtresini bir ExpressRoute devresine iliştirme
+## <a name="attach"></a>3. adım: bir ExpressRoute bağlantı hattı için rota filtresi ekleme
 
 "Devre Ekle" düğmesini seçerek ve açılan listeden ExpressRoute bağlantı hattını seçerek yol filtresini bir devreye ekleyebilirsiniz.
 

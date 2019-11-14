@@ -1,5 +1,5 @@
 ---
-title: Klasik Azure Resource Manager geçişe yönelik sık sorulan sorular | Microsoft Docs
+title: Azure Resource Manager geçişe klasik ile ilgili sık sorulan sorular
 description: Azure Resource Manager geçişe klasik ile ilgili sık sorulan sorular
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: f8b17b64458ccfc56435982eeaf85b70d66f3172
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 0f6cd0fc3601575c75e060013ef965054679e8e2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005418"
+ms.locfileid: "74033292"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Klasik modelden Azure Resource Manager’a geçişle ilgili sık sorulan sorular
 [!INCLUDE [virtual-machines-common-migration-faq](../../../includes/virtual-machines-common-classic-resource-manager-migration-faq.md)]

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: a930a22472dd4329c555539704747af9a2359c33
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f7a62d1d2b695726421ba990d0f118eb3ae199da
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837160"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031455"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Örnek: Metin Analizi ile yaklaşımı Algıla
 
@@ -36,7 +36,7 @@ Metindeki belirli bir varlık için yaklaşımı ayıklamanın tersine yaklaşı
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>Yaklaşım Analizi v3 genel önizleme
 
-[Yaklaşım Analizi sonraki sürümü](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c9) artık genel önizlemeye sunuldu. API 'nin metin kategorisi ve Puanlama açısından doğruluk ve ayrıntı açısından önemli geliştirmeler sağlar.
+[Yaklaşım Analizi sonraki sürümü](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) artık genel önizlemeye sunuldu. API 'nin metin kategorisi ve Puanlama açısından doğruluk ve ayrıntı açısından önemli geliştirmeler sağlar.
 
 > [!NOTE]
 > * Yaklaşım Analizi v3 istek biçimi ve [veri sınırları](../overview.md#data-limits) , önceki sürümle aynıdır.

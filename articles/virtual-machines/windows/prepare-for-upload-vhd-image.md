@@ -1,5 +1,5 @@
 ---
-title: Bir Windows VHD 'yi Azure 'a yüklemek üzere hazırlama | Microsoft Docs
+title: Bir Windows VHD 'yi Azure 'a yüklemek üzere hazırlama
 description: Bir Windows VHD veya VHDX 'i Azure 'a yüklemek için nasıl hazırlayacağınızı öğrenin
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: d184201c21c31336e31dcba9884d84f6cc224ff8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4b6fea63cd56ddee7eaeaed50a74a01cc8549f0a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924830"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032938"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure 'a yüklemek için bir Windows VHD veya VHDX hazırlama
 
@@ -55,8 +55,8 @@ Diski dönüştürdükten sonra, diski kullanan bir VM oluşturun. Karşıya yü
 1. Hyper-V Yöneticisi 'Ni açın ve sol tarafta yerel bilgisayarınızı seçin. Bilgisayar listesinin üzerindeki menüde, **disk düzenle** > **eylem** ' i seçin.
 2. **Sanal sabit diski bul** sayfasında, sanal diskinizi seçin.
 3. **Eylem Seç** sayfasında, **İleri** > **Dönüştür** ' ü seçin.
-4. VHDX 'ten dönüştürmeniz gerekiyorsa,**daha sonra** **VHD** >  ' i seçin.
-5. Dinamik olarak genişleyen bir diskten dönüştürmeniz gerekiyorsa,**sonra** **sabit boyut** >  ' i seçin.
+4. VHDX 'ten dönüştürmeniz gerekiyorsa, **daha sonra** **VHD** > ' yi seçin.
+5. Dinamik olarak genişleyen bir diskten dönüştürmeniz gerekiyorsa, **İleri**' > **sabit boyut** ' u seçin.
 6. Yeni VHD dosyasını kaydetmek için bir yol bulun ve seçin.
 7. **Son**’u seçin.
 
@@ -72,7 +72,7 @@ Aşağıdaki örnek komut, diski VHDX 'ten VHD 'ye dönüştürür. Bu komut Ayr
 Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd -VHDType Fixed
 ```
 
-Bu komutta, `-Path` değerini dönüştürmek istediğiniz sanal sabit disk yoluyla değiştirin. `-DestinationPath` değerini, dönüştürülmüş diskin yeni yolu ve adıyla değiştirin.
+Bu komutta `-Path` değerini, dönüştürmek istediğiniz sanal sabit disk yoluyla değiştirin. `-DestinationPath` değerini, dönüştürülmüş diskin yeni yolu ve adıyla değiştirin.
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>VMware VMDK disk biçiminden Dönüştür
 [VMDK dosya biçiminde](https://en.wikipedia.org/wiki/VMDK)bir Windows sanal makine görüntünüz varsa, vhd biçimine dönüştürmek Için [Microsoft Virtual Machine dönüştürücüsünü](https://www.microsoft.com/download/details.aspx?id=42497) kullanın. Daha fazla bilgi için bkz. [bir VMware VMDK 'Yi Hyper-V VHD 'ye dönüştürme](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
@@ -112,7 +112,7 @@ Azure 'a yüklemeyi planladığınız sanal makinede, [yükseltilmiş bir komut 
     exit   
     ```
 
-4. Windows için Eşgüdümlü Evrensel Saat (UTC) süresini ayarlayın. Ayrıca, Windows Saat hizmeti 'nin (`w32time`) başlangıç türünü `Automatic` olarak ayarlayın:
+4. Windows için Eşgüdümlü Evrensel Saat (UTC) süresini ayarlayın. Ayrıca, Windows Saat hizmeti 'nin (`w32time`) başlangıç türünü `Automatic`olarak ayarlayın:
    
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -Name "RealTimeIsUniversal" -Value 1 -Type DWord -Force
@@ -312,7 +312,7 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
     ```
     Depo bozuksa, bkz. [WMI: depo bozulması veya Not](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
 
-5. 3389 numaralı bağlantı noktasını kullanan başka bir uygulama olmadığından emin olun. Bu bağlantı noktası, Azure 'daki RDP hizmeti için kullanılır. VM 'de hangi bağlantı noktalarının kullanıldığını görmek için `netstat -anob` ' ı çalıştırın:
+5. 3389 numaralı bağlantı noktasını kullanan başka bir uygulama olmadığından emin olun. Bu bağlantı noktası, Azure 'daki RDP hizmeti için kullanılır. VM 'de hangi bağlantı noktalarının kullanıldığını görmek için `netstat -anob`çalıştırın:
 
     ```PowerShell
     netstat -anob
@@ -358,7 +358,7 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 ### <a name="install-windows-updates"></a>Windows güncelleştirmelerini yükler
 İdeal olarak, makineyi *Düzeltme Eki düzeyinde*güncel tutmanız gerekir. Bu mümkün değilse, aşağıdaki güncelleştirmelerin yüklü olduğundan emin olun:
 
-| Bileşen               | ý         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
+| Bileşen               | İkili         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Depolama                 | disk. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | Storport. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
@@ -373,7 +373,7 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 |                         | MSDSM. sys      | 6.1.7601.23403 - KB3125574                | 6.2.9200.21474 - KB3046101                  | 6.3.9600.18592 - KB4022726         | -                                                       | -                          | -                                               | -                                               |
 |                         | MPIO. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.21190 - KB3046101                  | 6.3.9600.18616 - KB4022726         | 10.0.14393.1198 - KB4022715                             | -                          | -                                               | -                                               |
 |                         | vmstorfl. sys   | 6.3.9600.18907 - KB4072650                | 6.3.9600.18080 - KB3063109                  | 6.3.9600.18907 - KB4072650         | 10.0.14393.2007 - KB4345418                             | 10.0.15063.850 - KB4345419 | 10.0.16299.371 - KB4345420                      | -                                               |
-|                         | Fveapi. dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614         | 10.0.14393.576 - KB4022715                              | -                          | -                                               | -                                               |
+|                         | Fveapi.dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614         | 10.0.14393.576 - KB4022715                              | -                          | -                                               | -                                               |
 |                         | Fveapibase. dll | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614         | 10.0.14393.206 - KB4022715                              | -                          | -                                               | -                                               |
 | Ağ                 | netvsc. sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
 |                         | Mrxsmb10. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.22108 - KB4022724                  | 6.3.9600.18603 - KB4022726         | 10.0.14393.479 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
@@ -382,12 +382,12 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 |                         | Tcpip. sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
 |                         | http. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | VmSwitch. sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
-| Çekirdek                    | Ntoskrnl. exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
+| Çekirdek                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
 | Uzak Masaüstü Hizmetleri | rdpcorets. dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
 |                         | termsrv. dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415-KB3000850         | 10.0.14393.0-KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
 |                         | TermDD. sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | tıklarında     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726         | 10.0.14393.594 - KB4022715                              | -                          | -                                               | -                                               |
-|                         | Rdpdd. dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
+|                         | rdpdd.dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | rdpwd. sys      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 | Güvenlik                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                          | KB4012606                                               | KB4012606                  | -                                               | -                                               |
 |                         |                |                                           | KB4012216                                   |                                    | KB4013198                                               | KB4013198                  | -                                               | -                                               |

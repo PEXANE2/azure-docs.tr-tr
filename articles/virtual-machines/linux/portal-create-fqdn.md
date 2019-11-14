@@ -1,5 +1,5 @@
 ---
-title: Azure portal bir Linux sanal makinesi için FQDN oluşturun | Microsoft Docs
+title: Azure portal bir Linux sanal makinesi için FQDN oluşturma
 description: Azure portal Kaynak Yöneticisi tabanlı bir sanal makine için tam etki alanı adı veya FQDN oluşturma hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7309f4be43c6b653f261e5de5fbe3e638e83294
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3d30f5a60bf19e9185d992b973414f58942f9954
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082435"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035303"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Linux VM için Azure portal tam etki alanı adı oluşturma
 
@@ -31,7 +31,7 @@ Bu makalede, zaten bir VM oluşturmuş olduğunuz varsayılmaktadır. Gerekirse,
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-Artık, ile `ssh azureuser@mydns.westus.cloudapp.azure.com`gibi bu DNS adını kullanarak VM 'ye uzaktan bağlanabilirsiniz.
+Artık `ssh azureuser@mydns.westus.cloudapp.azure.com`gibi bu DNS adını kullanarak VM 'ye uzaktan bağlanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık VM 'nizin genel IP ve DNS adı olduğuna göre, yaygın uygulama çerçevelerini veya NGINX, MongoDB, Docker gibi Hizmetleri dağıtabilirsiniz.

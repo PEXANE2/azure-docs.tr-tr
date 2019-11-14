@@ -1,5 +1,5 @@
 ---
-title: Azure 'da görüntüleri Red Hat Enterprise Linux | Microsoft Docs
+title: Azure 'da görüntüleri Red Hat Enterprise Linux
 description: Microsoft Azure Red Hat Enterprise Linux görüntüleri hakkında bilgi edinin
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: eaabe9da20c22dd3e4d924887adcbc7081857e91
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764311"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035112"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure 'da görüntüleri Red Hat Enterprise Linux
 Bu makalede, Azure Marketi 'ndeki kullanılabilir Red Hat Enterprise Linux (RHEL) görüntüleri, adlandırma ve bekletme ilkelerine göre birlikte açıklanmaktadır.
@@ -52,7 +52,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:7.6
 ### <a name="the-latest-moniker"></a>"En son" bilinen ad
 Azure REST API, belirli sürümü yerine sürüm için "en son" adının kullanılmasına izin verir. "En son" kullanımı, belirtilen Yayımcı, teklif ve SKU için kullanılabilir en son görüntüyü sağlar.
 
-Örneğin, `RedHat:RHEL:7-RAW:latest` kullanılabilir en son RHEL 7 ailesi ham bölümlenmiş görüntüsünü ifade eder.
+Örneğin `RedHat:RHEL:7-RAW:latest`, kullanılabilir en son RHEL 7 ailesi ham bölümlenmiş görüntüsünü ifade eder.
 
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:latest --no-wait
@@ -64,7 +64,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 ### <a name="current-naming-convention"></a>Geçerli adlandırma kuralı
 Şu anda yayınlanmış olan tüm RHEL görüntüleri, Kullandıkça Öde modelini kullanır ve [Azure 'Da Red Hat güncelleştirme altyapısına (rhuı)](https://aka.ms/rhui-update)bağlanır. Disk bölümleme şemasının (ham, LVM) sürüm yerine SKU 'da belirtildiği RHEL 7 ailesi görüntüleri için yeni bir adlandırma kuralı benimsenmiştir. RHEL görüntü sürümü 7 ham veya 7-LVM içermelidir. RHEL 6 aile adlandırması Şu anda değiştirilmedi.
 
-Bu adlandırma kuralı 'nda 2 tür RHEL 7 görüntü SKU 'su olacaktır: İkincil sürümü ve olmayan SKU 'ları listeeden SKU 'Lar. 7 ham veya 7-LVM SKU 'SU kullanmak istiyorsanız, sürümde dağıtmak istediğiniz RHEL ikincil sürümünü belirtebilirsiniz. "En son" sürümü seçerseniz, RHEL 'nin en son küçük sürümü hazırlanacaktır.
+Bu adlandırma kuralı 'nda 2 tür RHEL 7 görüntü SKU 'su bulunur: ikincil sürümü ve olmayan SKU 'ları listelerler. 7 ham veya 7-LVM SKU 'SU kullanmak istiyorsanız, sürümde dağıtmak istediğiniz RHEL ikincil sürümünü belirtebilirsiniz. "En son" sürümü seçerseniz, RHEL 'nin en son küçük sürümü hazırlanacaktır.
 
 >[!NOTE]
 > RHEL for SAP Image kümesinde RHEL sürümü düzeltilmeye devam eder. Bu nedenle, adlandırma kuralları SKU 'daki belirli bir sürümü içerir.
@@ -88,7 +88,7 @@ EUS depolarına eklenmiş olan görüntüleri kullanmak isteyen müşteriler, SK
 RedHat:RHEL:7-RAW:7.4.2018010506
 RedHat:RHEL:7.4:7.4.2019041718
 ```
-Bu durumda, `RedHat:RHEL:7.4:7.4.2019041718` varsayılan olarak EUS depolarına eklenecektir ve `RedHat:RHEL:7-RAW:7.4.2018010506` varsayılan olarak EABD olmayan depolara eklenecektir.
+Bu durumda `RedHat:RHEL:7.4:7.4.2019041718`, varsayılan olarak EUS depolarına eklenecektir `RedHat:RHEL:7-RAW:7.4.2018010506` ve varsayılan olarak EUS olmayan depolara eklenecektir.
 
 ### <a name="for-customers-that-dont-want-to-use-eus-images"></a>EUS görüntülerini kullanmak istemediğiniz müşteriler için:
 Varsayılan olarak, EUS 'ye bağlı bir görüntü kullanmak istemiyorsanız, SKU 'da küçük bir sürüm numarası içermeyen bir görüntü kullanarak dağıtın.
@@ -116,7 +116,7 @@ Sunduğu| SKU | Bölümleme | Sağlama | Notlar
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 7-HAM    | RAW    | Linux Aracısı | RHEL 7. x resim ailesi. <br> Varsayılan olarak, EUS depolarına eklenmemiş.
 |             | 7-LVM    | LVM    | Linux Aracısı | RHEL 7. x resim ailesi. <br> Varsayılan olarak, EUS depolarına eklenmemiş.
-|             | 7-RAW-CI | HAM-CI | Cloud-init  | RHEL 7. x resim ailesi. <br> Varsayılan olarak, EUS depolarına eklenmemiş.
+|             | 7-RAW-CI | HAM-Cı | Cloud-init  | RHEL 7. x resim ailesi. <br> Varsayılan olarak, EUS depolarına eklenmemiş.
 |             | 6.7      | RAW    | Linux Aracısı |
 |             | 6.8      | RAW    | Linux Aracısı |
 |             | 6.9      | RAW    | Linux Aracısı |

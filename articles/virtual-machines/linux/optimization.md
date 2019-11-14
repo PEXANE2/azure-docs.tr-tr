@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Linux VM 'nizi iyileştirin | Microsoft Docs
+title: Azure’da Linux VM’nizi iyileştirme
 description: Azure 'da en iyi performansı elde etmek için Linux VM 'nizi ayarladığınızdan emin olmak için bazı iyileştirme ipuçlarını öğrenin
 keywords: Linux sanal makinesi, sanal makine Linux, Ubuntu sanal makinesi
 services: virtual-machines-linux
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: eb5ef067d4c9be4debd1bdc98ac4eb57a89d1100
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ea0d284b8220e4f8bc7bc1b91684654b32da7065
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091694"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035381"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure’da Linux VM’nizi iyileştirme
 Bir Linux sanal makinesi (VM) oluşturmak, komut satırından veya portaldan kolayca yapılır. Bu öğreticide, Microsoft Azure platformunda performansını en iyi duruma getirecek şekilde ayarlamış olduğunuzdan emin olmanız gösterilmektedir. Bu konu, Ubuntu sunucu sanal makinesini kullanır, ancak aynı zamanda [kendi görüntülerinizi şablon olarak](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)kullanarak Linux sanal makinesi de oluşturabilirsiniz.  
@@ -37,9 +37,9 @@ VM boyutuna bağlı olarak, bir G serisi makinede 32 bir D serisi ve 64 diskte 1
 
 Önbellek ayarlarının **ReadOnly** veya **none**olarak ayarlandığı Premium Depolama disklerinde en yüksek IOPS 'yi başarmak Için, dosya sistemini Linux 'a bağlama sırasında **engelleri** devre dışı bırakmanız gerekir. Premium Depolama ile desteklenen disklere yazma işlemleri bu önbellek ayarları için dayanıklı olduğundan, engelleri gerekmez.
 
-* **Reıfs**kullanıyorsanız, bağlama seçeneğini `barrier=none` kullanarak engelleri devre dışı bırakın (engelleri etkinleştirmek için kullanın) `barrier=flush`
-* **Ext3/ext4**kullanırsanız, bağlama seçeneğini `barrier=0` kullanarak engelleri devre dışı bırakın (engelleri etkinleştirmek için, kullanın) `barrier=1`
-* **XFS**kullanıyorsanız, bağlama seçeneğini `nobarrier` kullanarak engelleri devre dışı bırakın (engelleri etkinleştirmek için seçeneğini `barrier`kullanın)
+* **Reıfs**kullanıyorsanız, bağlama seçeneği `barrier=none` kullanarak engelleri devre dışı bırakın (engelleri etkinleştirmek için `barrier=flush`kullanın)
+* **Ext3/ext4**kullanırsanız, bağlama seçeneği `barrier=0` kullanarak engelleri devre dışı bırakın (engelleri etkinleştirmek için `barrier=1`kullanın)
+* **XFS**kullanıyorsanız, bağlama seçeneği `nobarrier` kullanarak engelleri devre dışı bırakın (engelleri etkinleştirmek için `barrier`seçeneğini kullanın)
 
 ## <a name="unmanaged-storage-account-considerations"></a>Yönetilmeyen depolama hesabı konuları
 Azure CLı ile bir VM oluşturduğunuzda varsayılan eylem, Azure yönetilen disklerini kullanmaktır.  Bu diskler Azure platformu tarafından işlenir ve bunları depolamak için herhangi bir hazırlık veya konum gerektirmez.  Yönetilmeyen diskler için bir depolama hesabı gerekir ve bazı ek performans konuları vardır.  Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure Yönetilen Disklere genel bakış](../windows/managed-disks-overview.md).  Aşağıdaki bölümde, yalnızca yönetilmeyen diskleri kullandığınızda performans konuları özetlenmektedir.  Yine, varsayılan ve önerilen depolama çözümü yönetilen diskleri kullanmaktır.
@@ -50,7 +50,7 @@ Yüksek IOPS iş yükleri ile ilgilenirken ve diskleriniz için standart depolam
  
 
 ## <a name="your-vm-temporary-drive"></a>VM geçici sürücünüz
-Varsayılan olarak, bir VM oluşturduğunuzda, Azure size bir işletim sistemi diski ( **/dev/sda**) ve geçici bir disk ( **/dev/sdb**) sağlar.  Eklediğiniz tüm ek diskler **/dev/SDC**, **/dev/sdd**, **/dev/SDE** vb. olarak gösterilir. Geçici diskinizdeki tüm veriler ( **/dev/sdb**) dayanıklı değildir ve VM yeniden boyutlandırma, yeniden dağıtma veya bakım gibi belırlı olaylar sanal makinenizin yeniden başlatılmasını zorlarsa kaybolabilir.  Geçici diskinizin boyutu ve türü, dağıtım zamanında seçtiğiniz VM boyutuyla ilgilidir. Tüm Premium boyut sanal makineleri (DS, G ve DS_V2 serisi) geçici sürücü, 48k IOPS 'ye kadar ek performans için yerel bir SSD tarafından desteklenir. 
+Varsayılan olarak, bir VM oluşturduğunuzda, Azure size bir işletim sistemi diski ( **/dev/sda**) ve geçici bir disk ( **/dev/sdb**) sağlar.  Eklediğiniz tüm ek diskler **/dev/SDC**, **/dev/sdd**, **/dev/SDE** vb. olarak gösterilir. Geçici diskinizdeki tüm veriler ( **/dev/sdb**) dayanıklı değildir ve VM yeniden boyutlandırma, yeniden dağıtma veya bakım gibi belırlı olaylar sanal makinenizin yeniden başlatılmasını zorlarsa kaybolabilir.  Geçici diskinizin boyutu ve türü, dağıtım zamanında seçtiğiniz VM boyutuyla ilgilidir. Tüm Premium boyut sanal makineleri (DS, G ve DS_V2 serisi) geçici sürücü, 48k IOPS 'nin ek performansı için yerel bir SSD tarafından desteklenir. 
 
 ## <a name="linux-swap-partition"></a>Linux takas bölümü
 Azure VM 'niz bir Ubuntu veya CoreOS görüntüsünden ise, CustomData kullanarak Cloud-init ' e Cloud-config gönderebilirsiniz. Cloud-init kullanan [özel bir Linux görüntüsünü karşıya](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) yüklediyseniz, Cloud-init kullanarak takas bölümlerini de yapılandırırsınız.
@@ -59,14 +59,14 @@ Ubuntu bulut görüntülerinde, takas bölümünü yapılandırmak için Cloud-i
 
 Cloud-init desteği olmayan görüntüler için, Azure Marketi 'nden dağıtılan VM görüntülerinin IŞLETIM sistemiyle tümleştirilmiş bir VM Linux Aracısı vardır. Bu aracı, sanal makinenin çeşitli Azure hizmetleriyle etkileşime geçmesini sağlar. Azure Marketi 'nden standart bir görüntü dağıttığınız varsayılarak, Linux takas dosyası ayarlarınızı doğru şekilde yapılandırmak için aşağıdakileri yapmanız gerekir:
 
-**/Etc/waagent.exe** dosyasındaki iki girişi bulun ve değiştirin. Özel bir takas dosyasının ve takas dosyasının boyutunun varlığını denetler. Doğrulamanız gereken parametreler şunlardır `ResourceDisk.EnableSwap` ve`ResourceDisk.SwapSizeMB` 
+**/Etc/waagent.exe** dosyasındaki iki girişi bulun ve değiştirin. Özel bir takas dosyasının ve takas dosyasının boyutunun varlığını denetler. Doğrulamanız gereken parametreler `ResourceDisk.EnableSwap` ve `ResourceDisk.SwapSizeMB` 
 
 Düzgün şekilde etkinleştirilmiş bir diski ve bağlı takas dosyasını etkinleştirmek için, parametrelerin aşağıdaki ayarlara sahip olduğundan emin olun:
 
 * ResourceDisk. EnableSwap = Y
 * ResourceDisk. SwapSizeMB = {gereksinimlerinizi karşılayacak şekilde MB olarak boyut} 
 
-Değişikliği yaptıktan sonra, bu değişiklikleri yansıtmak için waagent 'ı yeniden başlatmanız veya Linux VM 'nizi yeniden başlatmanız gerekir.  Bu değişikliklerin uygulandığını ve boş alanı görüntülemek için `free` komutunu kullandığınızda bir takas dosyası oluşturulduğunu bilirsiniz. Aşağıdaki örnekte, **waagent. conf** dosyasını değiştirmenin sonucu olarak bir 512MB takas dosyası oluşturuldu:
+Değişikliği yaptıktan sonra, bu değişiklikleri yansıtmak için waagent 'ı yeniden başlatmanız veya Linux VM 'nizi yeniden başlatmanız gerekir.  Boş alanı görüntülemek için `free` komutunu kullandığınızda değişikliklerin uygulandığını ve bir takas dosyası oluşturulduğunu bilirsiniz. Aşağıdaki örnekte, **waagent. conf** dosyasını değiştirmenin sonucu olarak bir 512MB takas dosyası oluşturuldu:
 
 ```bash
 azuseruser@myVM:~$ free

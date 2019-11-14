@@ -3,12 +3,12 @@ title: Kısıtlanan istekler için yönergeler
 description: Azure Kaynak Grafının kısıtlanmasını önlemek için daha iyi sorgular oluşturmayı öğrenin.
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 46af11bfea47e37b97fa9492f71be8b5fe1817e3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 651a5daa9e7e19a5dc157ba0cfa17da2c8abe3db
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959217"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038321"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Kaynak grafiğinde kısıtlanmış isteklere yönelik kılavuz
 
@@ -215,11 +215,11 @@ Azure Kaynak Graph tek bir sorgu yanıtında en fazla 1000 girişi döndürdüğ
   Azure CLı veya Azure PowerShell kullanırken, Azure Kaynak grafiğine yönelik sorgular, en fazla 5000 girişi getirecek şekilde otomatik olarak sayfalandırılır. Sorgu sonuçları, tüm sayfalandırılmış çağrılardaki girişlerin birleştirilmiş bir listesini döndürür. Bu durumda, sorgu sonucundaki giriş sayısına bağlı olarak, tek bir sayfalandırılmış sorgu birden fazla sorgu kotası tüketebilir. Örneğin, aşağıdaki örnekte, bir sorgunun tek bir çalıştırması en fazla beş sorgu kotası tüketebilir:
 
   ```azurecli-interactive
-  az graph query -q 'Resources | project id, name, type' -top 5000
+  az graph query -q 'Resources | project id, name, type' --first 5000
   ```
 
   ```azurepowershell-interactive
-  Search-AzGraph -Query 'Resources | project id, name, type' -Top 5000
+  Search-AzGraph -Query 'Resources | project id, name, type' -First 5000
   ```
 
 ## <a name="still-get-throttled"></a>Hala kısıtlanıyor musunuz?

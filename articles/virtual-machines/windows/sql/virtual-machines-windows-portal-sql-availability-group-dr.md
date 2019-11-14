@@ -1,5 +1,5 @@
 ---
-title: SQL Server kullanılabilirlik grupları-Azure sanal makineleri-olağanüstü durum kurtarma | Microsoft Docs
+title: Kullanılabilirlik grubunu farklı bölgelerde yapılandırma
 description: Bu makalede, Azure sanal makinelerinde farklı bir bölgedeki bir çoğaltmayla SQL Server kullanılabilirlik grubunun nasıl yapılandırılacağı açıklanmaktadır.
 services: virtual-machines
 documentationCenter: na
@@ -9,20 +9,20 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
-ms.custom: na
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 9949c389ad0511c3ed5923e0451bc96e7063621f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159733"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037547"
 ---
-# <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Farklı bölgelerde Azure sanal makinelerinde her zaman açık kullanılabilirlik grubu yapılandırma
+# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Farklı bölgelerde Azure SQL Server sanal makinelerde bir kullanılabilirlik grubu yapılandırma
 
 Bu makalede, uzak bir Azure konumundaki Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu çoğaltmasının nasıl yapılandırılacağı açıklanmaktadır. Olağanüstü durum kurtarmayı desteklemek için bu yapılandırmayı kullanın.
 
@@ -166,9 +166,9 @@ Bağlantıyı test ettikten sonra birincil çoğaltmayı birincil veri merkezini
 
 | Konum | Sunucu örneği | Rol | Kullanılabilirlik modu | Yük devretme modu
 | ----- | ----- | ----- | ----- | -----
-| Birincil veri merkezi | SQL-1 | Birincil | K | Automatic
-| Birincil veri merkezi | SQL-2 | İkincil | K | Automatic
-| İkincil veya uzak veri merkezi | SQL-3 | İkincil | En | Manual
+| Birincil veri merkezi | SQL-1 | Birincil | K | Otomatik
+| Birincil veri merkezi | SQL-2 | İkincil | K | Otomatik
+| İkincil veya uzak veri merkezi | SQL-3 | İkincil | En | El ile
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>Planlı ve zorlamalı el ile yük devretme hakkında daha fazla bilgi

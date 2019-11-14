@@ -1,5 +1,5 @@
 ---
-title: IaaS kaynaklarının klasik konumundan Azure Resource Manager geçişine yönelik planlama | Microsoft Docs
+title: IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 description: IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 3cf262f2c2f14ea66a40facfd5b32139fc648e47
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 8dc1ee85b9d17824898de80562ea5bfb251a2c41
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165320"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035709"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 Azure Resource Manager harika özellikler sunurken, işlerin sorunsuz şekilde çalıştığından emin olmak için geçiş yolculuğunun planlanmaları çok önemlidir. Planlamada harcama süresi, geçiş etkinliklerini yürütürken sorunlarla karşılaşmamanız gerekir. 
@@ -31,7 +31,7 @@ Geçiş yolculuğunun dört genel aşaması vardır:
 
 ![Geçiş aşamaları](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plan
+## <a name="plan"></a>Planlama
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Teknik hususlar ve avantajları
 
@@ -87,14 +87,14 @@ Başarılı müşteriler, önceki soruların ele alındığı, belgelendiği ve 
 
 Daha büyük geçişlerde bulunan sorunlar aşağıda verilmiştir. Bu kapsamlı bir liste değildir ve daha fazla ayrıntı için [Desteklenmeyen özelliklere ve yapılandırmalara](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unsupported-features-and-configurations) başvurmalısınız. Bu teknik sorunlarla karşılaşmanız veya karşılaşmamanız, ancak geçiş girişiminden önce bunları çözmenizde daha sorunsuz bir deneyim sağlamaktır.
 
-- **Doğrulama/hazırlama/durdurma kuru çalıştırma** -bu, büyük olasılıkla Azure Resource Manager geçiş başarısını sağlamak için en önemli adımdır. Geçiş API 'sinin üç ana adımı vardır: Doğrulayın, hazırlayın ve Işleyin. Doğrulama, klasik ortamınızın durumunu okur ve tüm sorunların sonucunu döndürür. Ancak, Azure Resource Manager yığınında bazı sorunlar mevcut olabileceğinden, doğrulama her şeyi yakalayamaz. Geçiş sürecinde bir sonraki adım, hazırlama bu sorunları ortaya çıkarmak için yardımcı olacaktır. Hazırlama, meta verileri klasik 'dan Azure Resource Manager taşıyacaktır, ancak taşıma işlemine uygulanmaz ve klasik taraftaki herhangi bir şeyi kaldırmaz veya değiştirmeyecektir. Kuru çalıştırma, geçişin hazırlanması ve iptal etme (yürütme**değil**) geçişinin hazırlanması ile ilgilidir. Doğrula/hazırla/durdur kuru çalıştırmasının hedefi, Azure Resource Manager yığındaki tüm meta verileri görmektir, bunu inceler (*Program aracılığıyla veya portalda*) ve her şeyin doğru şekilde geçirildiğini ve teknik sorunlardan çalıştığını doğrular.  Ayrıca, kapalı kalma süresini uygun şekilde planlayabilmeniz için geçiş süresi hakkında fikir verir.  Doğrulama/hazırlama/durdurma, herhangi bir kullanıcının kapalı kalma süresine neden olmaz; Bu nedenle, uygulama kullanımı kesintiye uğramamış olabilir.
+- **Doğrulama/hazırlama/durdurma kuru çalıştırma** -bu, büyük olasılıkla Azure Resource Manager geçiş başarısını sağlamak için en önemli adımdır. Geçiş API 'sinin üç ana adımı vardır: doğrulama, hazırlama ve tamamlama. Doğrulama, klasik ortamınızın durumunu okur ve tüm sorunların sonucunu döndürür. Ancak, Azure Resource Manager yığınında bazı sorunlar mevcut olabileceğinden, doğrulama her şeyi yakalayamaz. Geçiş sürecinde bir sonraki adım, hazırlama bu sorunları ortaya çıkarmak için yardımcı olacaktır. Hazırlama, meta verileri klasik 'dan Azure Resource Manager taşıyacaktır, ancak taşıma işlemine uygulanmaz ve klasik taraftaki herhangi bir şeyi kaldırmaz veya değiştirmeyecektir. Kuru çalıştırma, geçişin hazırlanması ve iptal etme (yürütme**değil**) geçişinin hazırlanması ile ilgilidir. Doğrula/hazırla/durdur kuru çalıştırmasının hedefi, Azure Resource Manager yığındaki tüm meta verileri görmektir, bunu inceler (*Program aracılığıyla veya portalda*) ve her şeyin doğru şekilde geçirildiğini ve teknik sorunlardan çalıştığını doğrular.  Ayrıca, kapalı kalma süresini uygun şekilde planlayabilmeniz için geçiş süresi hakkında fikir verir.  Doğrulama/hazırlama/durdurma, herhangi bir kullanıcının kapalı kalma süresine neden olmaz; Bu nedenle, uygulama kullanımı kesintiye uğramamış olabilir.
   - Aşağıdaki öğelerin, Kuru çalıştırmadan önce çözülmesi gerekir, ancak bir kuru çalıştırma testi, kaçırıldıklarında bu hazırlık adımlarını güvenle da temizler. Kurumsal geçiş sırasında, geçiş hazırlığını sağlamak için kuru çalıştırmayı güvenli ve değerli bir yol olarak bulduk.
   - Hazırlama çalışırken, tüm sanal ağ için denetim düzlemi (Azure yönetim işlemleri) kilitlenir, bu nedenle doğrulama/hazırlama/durdurma sırasında VM meta verilerinde hiçbir değişiklik yapılamaz.  Ancak, herhangi bir uygulama işlevi (RD, VM kullanımı vb.) etkilenmeyecektir.  VM kullanıcıları kuru çalıştırmanın yürütüldüğünü bilmez.
 
 - **Express Route devreleri ve VPN**. Halen yetkilendirme bağlantıları olan hızlı rota ağ geçitleri kapalı kalma süresi olmadan geçirilemez. Geçici çözüm için bkz. [ExpressRoute devreleri ve ilişkili sanal ağları klasik 'dan Kaynak Yöneticisi dağıtım modeline geçirme](../../expressroute/expressroute-migration-classic-resource-manager.md).
 
 - **VM uzantıları** -sanal makine uzantıları, çalışan VM 'leri geçirmeye yönelik en büyük yol bloklarından biridir. VM uzantılarının düzeltilmesi 1-2 güne kadar sürer ve bu nedenle plana göre plan yapın.  Çalışan VM 'lerin sanal makine uzantı durumunu raporlamak için çalışan bir Azure Aracısı gerekir. Durum, çalışan bir VM için bozuk olarak geri dönerse, bu işlem geçişi durdurur. Geçişin etkinleştirilmesi için aracının kendisi çalışma sırasında olması gerekmez, ancak sanal makinede uzantılar varsa, geçişin ileri ilerlemek için hem çalışan bir aracı hem de giden internet bağlantısı (DNS ile) gerekir.
-  - Geçiş sırasında bir DNS sunucusuyla bağlantı kaybolursa, BgInfo v1 hariç tüm VM uzantıları. \* önce geçiş hazırlanmadan önce her VM 'den kaldırılmalı, ardından Azure Resource Manager geçişten sonra sanal makineye yeniden eklenmeleri gerekir.  **Bu yalnızca çalıştıran VM 'Ler içindir.**  VM 'Ler serbest bırakılmış olarak durdurulmuşsa, VM uzantılarının kaldırılması gerekmez. **Not:** Azure tanılama ve Güvenlik Merkezi izleme gibi birçok uzantı, geçişten sonra kendilerini yeniden yükleyerek bir sorun değildir.
+  - Geçiş sırasında bir DNS sunucusuyla bağlantı kaybolursa, BgInfo v1 hariç tüm VM uzantıları.\*, geçiş hazırlanmadan önce her VM 'den kaldırılması gerekir ve ardından Azure Resource Manager geçişten sonra sanal makineye yeniden eklenir.  **Bu yalnızca çalıştıran VM 'Ler içindir.**  VM 'Ler serbest bırakılmış olarak durdurulmuşsa, VM uzantılarının kaldırılması gerekmez. **Note:** Azure tanılama ve Güvenlik Merkezi izleme gibi birçok uzantı, geçişten sonra kendilerini yeniden yükleyerek bir sorun değildir.
   - Ayrıca, ağ güvenlik gruplarının giden Internet erişimini kısıtmadığından emin olun. Bu durum bazı ağ güvenlik grupları yapılandırmalarında gerçekleşebilir. VM uzantılarının Azure Resource Manager 'ye geçirilmesi için giden internet erişimi (ve DNS) gereklidir. 
   - BgInfo uzantısının iki sürümü vardır: v1 ve v2.  VM, Azure portal veya PowerShell kullanılarak oluşturulduysa VM 'nin üzerinde v1 uzantısı olur. Bu uzantının kaldırılması gerekmez ve geçiş API 'SI tarafından atlanacak (geçirilmez). Ancak, klasik VM yeni Azure portal oluşturulduysa, bu durum büyük olasılıkla, bu, aracının çalıştığı ve giden internet erişimi 'ne (ve DNS) sahip olan Azure Resource Manager 'ye geçirilebilen, BgInfo 'un JSON tabanlı v2 sürümüne sahip olacaktır. 
   - **Düzeltme seçeneği 1**. Sanal makinelerinizin giden internet erişimi, çalışan bir DNS hizmeti ve VM 'lerde çalışan Azure aracıları olmadığını biliyorsanız, hazırlama işleminden önce geçiş işlemi kapsamında tüm VM uzantılarını kaldırın ve ardından geçişten sonra VM uzantılarını yeniden yükleyin. 
@@ -115,7 +115,7 @@ Daha büyük geçişlerde bulunan sorunlar aşağıda verilmiştir. Bu kapsamlı
 
   - Ağ Arabirimleri
   - Yük Dengeleyiciler
-  - Ortak IP'ler
+  - Genel IP'ler
   - Statik genel IP 'Ler
   - Çekirdek
   - Ağ Güvenlik Grupları
@@ -123,19 +123,19 @@ Daha büyük geçişlerde bulunan sorunlar aşağıda verilmiştir. Bu kapsamlı
 
     Azure CLı 'nin en son sürümüyle aşağıdaki komutları kullanarak geçerli Azure Resource Manager kotalarınızı kontrol edebilirsiniz.
 
-    **İşlem** *(Çekirdek, kullanılabilirlik kümeleri)*
+    **İşlem** *(çekirdek, kullanılabilirlik kümeleri)*
 
     ```bash
     az vm list-usage -l <azure-region> -o jsonc 
     ```
 
-    **Ağ** *(Sanal ağlar, statik genel IP 'ler, genel IP 'ler, ağ güvenlik grupları, ağ arabirimleri, yük dengeleyiciler, rota tabloları)*
+    **Ağ** *(sanal ağlar, statik genel IP 'Ler, genel IP 'Ler, ağ güvenlik grupları, ağ arabirimleri, yük dengeleyiciler, rota tabloları)*
     
     ```bash
     az network list-usages -l <azure-region> -o jsonc
     ```
 
-    **Depolama alanı** *(Depolama hesabı)*
+    **Depolama** *(depolama hesabı)*
     
     ```bash
     az storage account show-usage
@@ -147,7 +147,7 @@ Daha büyük geçişlerde bulunan sorunlar aşağıda verilmiştir. Bu kapsamlı
 
 - **Rolestateunknown VM durumu** -geçiş bir **rol durumu bilinmeyen** hata iletisi nedeniyle durursa, portalı kullanarak VM 'yi inceleyin ve çalıştığından emin olun. Bu hata genellikle birkaç dakika sonra kendi kendine geçer (düzeltme gerekmez) ve genellikle bir sanal makine **başlatma**, **durdurma**, **yeniden başlatma** işlemleri sırasında görülen geçici bir tür olur. **Önerilen uygulama:** birkaç dakika sonra geçişi yeniden deneyin. 
 
-- **Yapı kümesi yok** ; bazı durumlarda bazı sanal makineler çeşitli tek nedenlerle geçirilemez. Bu bilinen durumlardan biri VM 'nin kısa süre önce oluşturulması (son hafta içinde veya bu nedenle) ve Azure Resource Manager iş yükleri için henüz donatılmış bir Azure kümesini aratadır.  **Yapı kümesinin mevcut olmadığını** ve VM 'nin geçirilemeyeceğini belirten bir hata alırsınız. Küme yakında Azure Resource Manager etkin olacak şekilde, birkaç günün beklenmesi genellikle bu sorunu çözer. Bununla birlikte, bir acil geçici çözüm `stop-deallocate` VM 'ye, sonra geçiş ile devam eder ve geçişten sonra Azure Resource Manager VM yedeklemesini başlatır.
+- **Yapı kümesi yok** ; bazı durumlarda bazı sanal makineler çeşitli tek nedenlerle geçirilemez. Bu bilinen durumlardan biri VM 'nin kısa süre önce oluşturulması (son hafta içinde veya bu nedenle) ve Azure Resource Manager iş yükleri için henüz donatılmış bir Azure kümesini aratadır.  **Yapı kümesinin mevcut olmadığını** ve VM 'nin geçirilemeyeceğini belirten bir hata alırsınız. Küme yakında Azure Resource Manager etkin olacak şekilde, birkaç günün beklenmesi genellikle bu sorunu çözer. Bununla birlikte, bir acil geçici çözüm VM `stop-deallocate`, ardından geçişe devam etmek ve geçiş işleminden sonra Azure Resource Manager sanal makineyi yeniden başlatmak için kullanılır.
 
 ### <a name="pitfalls-to-avoid"></a>Kaçınmak için
 

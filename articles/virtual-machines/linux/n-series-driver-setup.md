@@ -1,5 +1,5 @@
 ---
-title: Linux için Azure N serisi GPU sürücü kurulumu | Microsoft Docs
+title: Linux için Azure N serisi GPU sürücü kurulumu
 description: Azure 'da Linux çalıştıran N serisi VM 'Ler için NVıDıA GPU sürücülerini ayarlama
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3abc221295a90dfbf7e46e3bd5bff1c8c0937162
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6ebc991d54ef902eb653cf2d99b2f74f18551568
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035010"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035620"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux çalıştıran N serisi VM 'Lere NVıDıA GPU sürücülerini yükler
 
@@ -98,7 +98,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS veya Red Hat Enterprise Linux
 
-1. Çekirdeği güncelleştirin (önerilir). Çekirdeği güncelleştirmeme seçeneğini belirlerseniz `kernel-devel` ve `dkms` sürümlerinin, çekirdekte uygun olduğundan emin olun.
+1. Çekirdeği güncelleştirin (önerilir). Çekirdeği güncelleştirmeme seçeneğini belirlerseniz, `kernel-devel` ve `dkms` sürümlerinin çekirdeğe uygun olduğundan emin olun.
 
    ```
    sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -151,7 +151,7 @@ sudo reboot
 
 GPU cihaz durumunu sorgulamak için VM 'ye SSH yapın ve sürücüyle birlikte yüklenen [NVIDIA-SMI](https://developer.nvidia.com/nvidia-system-management-interface) komut satırı yardımcı programını çalıştırın. 
 
-Sürücü yüklüyse aşağıdakine benzer bir çıktı görürsünüz. Şu anda VM 'de bir GPU iş yükü çalıştırmadığınız takdirde **GPU-Util** 'in% 0 gösterdiğini unutmayın. Sürücü sürümünüz ve GPU ayrıntılarınız gösterilenlerden farklı olabilir.
+Sürücü yüklüyse aşağıdakine benzer bir çıktı görürsünüz. Şu anda VM 'de bir GPU iş yükü çalıştırmadığınız takdirde **GPU-Util** 'in %0 gösterdiğini unutmayın. Sürücü sürümünüz ve GPU ayrıntılarınız gösterilenlerden farklı olabilir.
 
 ![NVıDıA cihaz durumu](./media/n-series-driver-setup/smi.png)
 
@@ -190,7 +190,7 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
    
    sudo apt-get install linux-azure -y
    ```
-3. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NVv2 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, aşağıdaki içeriklerle `/etc/modprobe.d` adlı `nouveau.conf` adında bir dosya oluşturun:
+3. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NVv2 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, `/etc/modprobe.d` adlı `nouveau.conf` aşağıdaki içeriklerle bir dosya oluşturun:
 
    ```
    blacklist nouveau
@@ -223,14 +223,14 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
 
-8. @No__t-0 ' a aşağıdakileri ekleyin:
+8. Aşağıdakileri `/etc/nvidia/gridd.conf`ekleyin:
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE
    ```
    
-9. Varsa `/etc/nvidia/gridd.conf` ' dan kaldırın:
+9. Varsa `/etc/nvidia/gridd.conf` aşağıdakileri kaldırın:
  
    ```
    FeatureType=0
@@ -240,7 +240,7 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS veya Red Hat Enterprise Linux 
 
-1. Kernel ve DKMS 'yi güncelleştirin (önerilir). Çekirdeği güncelleştirmeme seçeneğini belirlerseniz `kernel-devel` ve `dkms` sürümlerinin, çekirdekte uygun olduğundan emin olun.
+1. Kernel ve DKMS 'yi güncelleştirin (önerilir). Çekirdeği güncelleştirmeme seçeneğini belirlerseniz, `kernel-devel` ve `dkms` sürümlerinin çekirdeğe uygun olduğundan emin olun.
  
    ```bash  
    sudo yum update
@@ -254,7 +254,7 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
    sudo yum install hyperv-daemons
    ```
 
-2. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NV2 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, aşağıdaki içeriklerle `/etc/modprobe.d` adlı `nouveau.conf` adında bir dosya oluşturun:
+2. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NV2 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, `/etc/modprobe.d` adlı `nouveau.conf` aşağıdaki içeriklerle bir dosya oluşturun:
 
    ```
    blacklist nouveau
@@ -296,13 +296,13 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
   
-8. @No__t-0 ' a aşağıdakileri ekleyin:
+8. Aşağıdakileri `/etc/nvidia/gridd.conf`ekleyin:
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE 
    ```
-9. Varsa `/etc/nvidia/gridd.conf` ' dan kaldırın:
+9. Varsa `/etc/nvidia/gridd.conf` aşağıdakileri kaldırın:
  
    ```
    FeatureType=0
@@ -315,7 +315,7 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
 
 GPU cihaz durumunu sorgulamak için VM 'ye SSH yapın ve sürücüyle birlikte yüklenen [NVIDIA-SMI](https://developer.nvidia.com/nvidia-system-management-interface) komut satırı yardımcı programını çalıştırın. 
 
-Sürücü yüklüyse aşağıdakine benzer bir çıktı görürsünüz. Şu anda VM 'de bir GPU iş yükü çalıştırmadığınız takdirde **GPU-Util** 'in% 0 gösterdiğini unutmayın. Sürücü sürümünüz ve GPU ayrıntılarınız gösterilenlerden farklı olabilir.
+Sürücü yüklüyse aşağıdakine benzer bir çıktı görürsünüz. Şu anda VM 'de bir GPU iş yükü çalıştırmadığınız takdirde **GPU-Util** 'in %0 gösterdiğini unutmayın. Sürücü sürümünüz ve GPU ayrıntılarınız gösterilenlerden farklı olabilir.
 
 ![NVıDıA cihaz durumu](./media/n-series-driver-setup/smi-nv.png)
  
@@ -357,11 +357,11 @@ else
 fi
 ```
 
-Daha sonra, `/etc/rc.d/rc3.d` ' da güncelleştirme betiği için bir giriş oluşturun, bu nedenle betik önyüklemede kök olarak çağırılır.
+Daha sonra, betik önyüklemede kök olarak çağrılması için `/etc/rc.d/rc3.d` ' de güncelleştirme komut dosyası için bir giriş oluşturun.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-* @No__t-0 kullanarak Kalıcılık modu ayarlayabilirsiniz. böylece, kartları sorgulamak için komutun çıktısının daha hızlı olması gerekir. Kalıcılık modunu ayarlamak için `nvidia-smi -pm 1` yürütün. VM yeniden başlatılırsa mod ayarının dışarıda olacağını unutmayın. Başlatma sırasında her zaman Mod ayarını çalıştırmak için komut dosyası oluşturabilirsiniz.
+* `nvidia-smi` kullanarak Kalıcılık modu ayarlayabilirsiniz. böylece, kartları sorgulamak için komutun çıktısının daha hızlı olması gerekir. Kalıcılık modunu ayarlamak için `nvidia-smi -pm 1`yürütün. VM yeniden başlatılırsa mod ayarının dışarıda olacağını unutmayın. Başlatma sırasında her zaman Mod ayarını çalıştırmak için komut dosyası oluşturabilirsiniz.
 * NVıDıA CUDA sürücülerini en son sürüme güncelleştirdiyseniz ve RDMA connectivcity bulma işlemi artık çalışmıyorsa, bu bağlantıyı yeniden kurmak için [RDMA sürücülerini yeniden yükleyin](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) . 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,18 +1,14 @@
 ---
 title: UK resmi & UK NHS şema örnekleri-dağıtım adımları
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere Birleşik Krallık resmi ve UK NHS şeması örnekleri için adımları dağıtın.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 1898820276d1906a49a95bc513a6689fce177f7d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1905e5fee894575d5ee85ce1bffb536813d34287
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162944"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037746"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK resmi ve UK NHS şema örneklerini dağıtın
 
@@ -98,8 +94,8 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
 |UK RESMI veya UK NHS için Blueprint girişimi|İlke ataması |Tanılama günlüklerini denetlemeye yönelik kaynak türleri (Ilke: Birleşik Krallık RESMI veya UK NHS için Blueprint girişimi) |Tanılama günlük ayarı 'nın etkin olup olmadığını denetlemek için kaynak türlerinin listesi.  Kabul edilebilir değerler için bkz. [Azure tanılama günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
-|\[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi (Ilke: \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma) |Seçim Varsayılan değer _none_' dır. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
-|\[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi (Ilke: \[önizleme\]: Windows VM 'Leri için Log Analytics aracısı dağıtma) |Seçim Varsayılan değer _none_' dır. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
+|\[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi (Ilke: \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma) |Seçim Varsayılan değer _none_' dır. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
+|\[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi (Ilke: \[önizleme\]: Windows VM 'Leri için Log Analytics aracısı dağıtma) |Seçim Varsayılan değer _none_' dır. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -107,9 +103,9 @@ UK RESMI ve UK NHS şeması örneklerini dağıtmaya yönelik adımları gözden
 
 > [!div class="nextstepaction"]
 > [UK resmi ve UK NHS şemaları-genel bakış](./index.md)
-> [Birleşik KRALLıK resmi ve UK NHS şemaları-denetim eşlemesi](./control-mapping.md)
+> [UK resmi ve UK NHS şemaları-denetim eşleme](./control-mapping.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

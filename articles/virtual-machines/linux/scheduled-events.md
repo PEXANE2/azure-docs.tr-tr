@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Linux sanal makineleri için Zamanlanan Olaylar | Microsoft Docs
+title: Azure 'da Linux sanal makineleri için Zamanlanan Olaylar
 description: Linux sanal makineleriniz için Azure Metadata Service kullanarak olayları zamanlayın.
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: d427544ab9396211e4cbb247527a0eb848f42926
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e348adc06a970fcd7222ce612c13f0ff3e01585
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091292"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035097"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux sanal makineleri için Zamanlanan Olaylar
 
@@ -45,16 +45,16 @@ Zamanlanan Olaylar, uygulamanız bakımın ne zaman yapılacağını bulabilir v
 
 Zamanlanan Olaylar aşağıdaki kullanım durumlarında Olaylar sağlar:
 
-- [Platform tarafından başlatılan bakım](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (örneğin, VM yeniden başlatma, dinamik geçiş veya konak için güncelleştirmeleri koruma)
+- [Platform tarafından başlatılan bakım](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (ÖRNEĞIN, VM yeniden başlatma, dinamik geçiş veya konak için güncelleştirmeleri koruma)
 - Azaltılmış donanım
 - Kullanıcı tarafından başlatılan bakım (örneğin, bir Kullanıcı bir VM 'yi yeniden başlatır veya yeniden dağıtır)
 - Ölçek kümelerinde [düşük öncelıklı VM çıkarma](https://azure.microsoft.com/blog/low-priority-scale-sets)
 
-## <a name="the-basics"></a>Temeller  
+## <a name="the-basics"></a>Temel bilgileri  
 
   Metadata Service VM 'nin içinden erişilebilen bir REST uç noktası kullanarak VM çalıştırma hakkında bilgi sunar. Bilgiler, sanal makinenin dışında kullanıma sunulmaması için yönlendirilemeyen bir IP aracılığıyla kullanılabilir.
 
-### <a name="scope"></a>`Scope`
+### <a name="scope"></a>Kapsam
 Zamanlanan olaylar şu şekilde dağıtılır:
 
 - Tek başına sanal makineler.
@@ -62,10 +62,10 @@ Zamanlanan olaylar şu şekilde dağıtılır:
 - Bir kullanılabilirlik kümesindeki tüm VM 'Ler.
 - Ölçek kümesi yerleştirme grubundaki tüm VM 'Ler. 
 
-Sonuç olarak, hangi VM 'lerin `Resources` etkilendiğini belirlemek için olaydaki alanı kontrol edin.
+Sonuç olarak, hangi VM 'Lerin etkilendiğini belirlemek için olaydaki `Resources` alanını kontrol edin.
 
 ### <a name="endpoint-discovery"></a>Uç nokta bulma
-VNET etkin VM 'Ler için Metadata Service statik olmayan statik bir IP `169.254.169.254`'den kullanılabilir. Zamanlanan Olaylar en son sürümü için tam uç nokta şunlardır: 
+VNET etkin VM 'Ler için, Metadata Service statik olarak yönlendirilemeyen bir IP `169.254.169.254`kullanılabilir. Zamanlanan Olaylar en son sürümü için tam uç nokta şunlardır: 
 
  > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
 
@@ -74,7 +74,7 @@ VM bir sanal ağ içinde oluşturulmadıysa, bulut hizmetleri ve klasik VM 'Ler 
 ### <a name="version-and-region-availability"></a>Sürüm ve bölge kullanılabilirliği
 Zamanlanan Olaylar hizmeti sürümlenmiş. Sürümler zorunludur; geçerli sürüm `2017-11-01`.
 
-| Version | Yayın türü | Regions | Sürüm Notları | 
+| Sürüm | Yayın türü | Bölgeler | Sürüm Notları | 
 | - | - | - | - | 
 | 2017-11-01 | Genel Erişilebilirlik | Tümü | <li> Düşük öncelikli VM çıkarma EventType ' preempt ' desteği eklendi<br> | 
 | 2017-08-01 | Genel Erişilebilirlik | Tümü | <li> IaaS VM 'lerinin kaynak adlarından eklenmiş alt çizgi kaldırıldı<br><li>Tüm istekler için meta veri üst bilgisi gereksinimi zorlandı | 
@@ -92,12 +92,12 @@ Zamanlanan Olaylar, ilk kez olay isteği yaptığınızda hizmetiniz için etkin
 ### <a name="user-initiated-maintenance"></a>Kullanıcı tarafından başlatılan bakım
 Azure portal, API, CLı veya PowerShell aracılığıyla Kullanıcı tarafından başlatılan VM Bakımı zamanlanmış bir olayda sonuçlanır. Daha sonra uygulamanızdaki bakım hazırlama mantığını test edebilir ve uygulamanız kullanıcı tarafından başlatılan bakım için hazırlanabilirsiniz.
 
-Bir VM 'yi yeniden başlatırsanız, türüne `Reboot` sahip bir olay zamanlanır. Bir VM 'yi yeniden dağıtırsanız, türüne `Redeploy` sahip bir olay zamanlanır.
+Bir VM 'yi yeniden başlatırsanız, `Reboot` türünde bir olay zamanlanır. Bir VM 'yi yeniden dağıtıyorsanız, `Redeploy` türünde bir olay zamanlanır.
 
 ## <a name="use-the-api"></a>API’yi kullanma
 
 ### <a name="headers"></a>Üst bilgiler
-Metadata Service sorgulayıp, isteğin istem dışı olarak yeniden yönlendirilmemesini sağlamak için üst bilgiyi `Metadata:true` sağlamanız gerekir. `Metadata:true` Üst bilgi tüm zamanlanmış olaylar istekleri için gereklidir. Üst bilgiyi istek içine ekleme hatası, Metadata Service ' den gelen bir "Hatalı Istek" yanıtı ile sonuçlanır.
+Metadata Service sorgulayıp, isteğin istem dışı olarak yeniden yönlendirilmemesini sağlamak için üst bilgi `Metadata:true` sağlamanız gerekir. `Metadata:true` üstbilgisi tüm zamanlanmış olaylar istekleri için gereklidir. Üst bilgiyi istek içine ekleme hatası, Metadata Service ' den gelen bir "Hatalı Istek" yanıtı ile sonuçlanır.
 
 ### <a name="query-for-events"></a>Olayları sorgula
 Aşağıdaki çağrıyı yaparak Zamanlanmış olaylar için sorgulama yapabilirsiniz:
@@ -129,27 +129,27 @@ Zamanlanan olayların olduğu durumlarda, yanıt bir olay dizisi içerir.
 |Özellik  |  Açıklama |
 | - | - |
 | EventID | Bu olay için genel benzersiz tanımlayıcı. <br><br> Örnek: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Bu olay nedenlerini etkiler. <br><br> Deðerler <br><ul><li> `Freeze`: Sanal makine birkaç saniye duraklamak üzere zamanlandı. CPU ve ağ bağlantısı askıya alınabilir, ancak bellekte veya açık dosyalarda bir etkisi yoktur.<li>`Reboot`: Sanal makine yeniden başlatma için zamanlandı (kalıcı olmayan bellek kaybolur). <li>`Redeploy`: Sanal makine başka bir düğüme geçmek üzere zamanlandı (kısa ömürlü diskler kaybedilir). <li>`Preempt`: Düşük öncelikli sanal makine siliniyor (kısa ömürlü diskler kaybolur).|
-| KaynakTürü | Bu olayın etkilediği kaynak türü. <br><br> Deðerler <ul><li>`VirtualMachine`|
+| Türü | Bu olay nedenlerini etkiler. <br><br> Değerler: <br><ul><li> `Freeze`: sanal makine birkaç saniye duraklamak üzere zamanlandı. CPU ve ağ bağlantısı askıya alınabilir, ancak bellekte veya açık dosyalarda bir etkisi yoktur.<li>`Reboot`: sanal makine yeniden başlatma için zamanlandı (kalıcı olmayan bellek kaybolur). <li>`Redeploy`: sanal makine başka bir düğüme ilerlemek üzere zamanlandı (kısa ömürlü diskler kaybedilir). <li>`Preempt`: düşük öncelikli sanal makine siliniyor (kısa ömürlü diskler kaybolur).|
+| ResourceType | Bu olayın etkilediği kaynak türü. <br><br> Değerler: <ul><li>`VirtualMachine`|
 | Kaynaklar| Bu olayın etkilediği kaynakların listesi. Listenin, en çok bir [güncelleştirme etki](manage-availability.md)alanından makineler içermesi garanti edilir, ancak bu, ud 'deki tüm makineleri içermeyebilir. <br><br> Örnek: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| EventStatus | Bu olayın durumu. <br><br> Deðerler <ul><li>`Scheduled`: Bu olay, `NotBefore` özellikte belirtilen süreden sonra başlaması için zamanlanır.<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmamıştır. Olay tamamlandığında olay artık döndürülmez.
+| EventStatus | Bu olayın durumu. <br><br> Değerler: <ul><li>`Scheduled`: Bu olay, `NotBefore` özelliğinde belirtilen süreden sonra başlayacak şekilde zamanlandı.<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmaz. Olay tamamlandığında olay artık döndürülmez.
 | NotBefore| Bu olayın başlayabileceği zaman. <br><br> Örnek: <br><ul><li> Mon, 19 Eyl 2016 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>Olay zamanlaması
-Her olay, gelecekte olay türüne göre en az bir süre zamanlanır. Bu zaman, bir olayın `NotBefore` özelliğinde yansıtılır. 
+Her olay, gelecekte olay türüne göre en az bir süre zamanlanır. Bu zaman, bir olayın `NotBefore` özelliğine yansıtılır. 
 
-|EventType  | En düşük bildirim |
+|Türü  | En düşük bildirim |
 | - | - |
 | Amazsınız| 15 dakika |
-| Yeniden başlat | 15 dakika |
-| Yeniden dağıtın | 10 dakika |
+| Yeniden başlatma | 15 dakika |
+| Yeniden dağıtım | 10 dakika |
 | Preempt | 30 saniye |
 
 ### <a name="start-an-event"></a>Olay başlatma 
 
-Yaklaşan bir olayı öğrendikten ve düzgün kapanma için mantığınızı tamamladıktan sonra, ile `POST` `EventId`Metadata Service çağrısı yaparak bekleyen olayı onaylayabilirsiniz. Bu çağrı, Azure 'a, en düşük bildirim süresini (mümkün olduğunda) kısaltıp kısaltamayacağını gösterir. 
+Yaklaşan bir olayı öğrendikten ve düzgün kapanma için mantığınızı tamamladıktan sonra, `EventId`ile Metadata Service için `POST` çağrısı yaparak bekleyen olayı onaylayabilirsiniz. Bu çağrı, Azure 'a, en düşük bildirim süresini (mümkün olduğunda) kısaltıp kısaltamayacağını gösterir. 
 
-`POST` İstek gövdesinde aşağıdaki JSON örneği bekleniyor. İstek bir listesi `StartRequests`içermelidir. Her `StartRequest` biri `EventId` , hızlandırmak istediğiniz olay için içerir:
+`POST` istek gövdesinde aşağıdaki JSON örneği bekleniyor. İstek bir `StartRequests`listesi içermelidir. Her `StartRequest`, hızlandırmak istediğiniz olay için `EventId` içerir:
 ```
 {
     "StartRequests" : [
@@ -166,7 +166,7 @@ curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-
 ```
 
 > [!NOTE] 
-> Bir olayı ele almak, olayın yalnızca olayı kabul eden VM `Resources` değil, olaydaki her şey için devam etmesine olanak tanır. Bu nedenle, onayı koordine etmek için bir öncü seçebilirsiniz ve bu, `Resources` alandaki ilk makine kadar kolay olabilir.
+> Bir olayı ele almak, olayın yalnızca olayı kabul eden VM değil, olaydaki tüm `Resources` devam etmesine olanak tanır. Bu nedenle, onayı koordine etmek için bir öncü seçebilirsiniz ve bu, `Resources` alanındaki ilk makine kadar kolay olabilir.
 
 ## <a name="python-sample"></a>Python örneği 
 

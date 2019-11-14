@@ -1,5 +1,5 @@
 ---
-title: Azure Lsv2-Series sanal makinelerinde performansı iyileştirme-depolama | Microsoft Docs
+title: Azure Lsv2-Series sanal makinelerinde performansı iyileştirme-depolama
 description: Lsv2 serisi sanal makinelerde çözümünüz için performansı en uygun hale getirmeyi öğrenin.
 services: virtual-machines-linux
 author: laurenhughes
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: ea64a4274eda947aebf0f693657c17a120bec560
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8d99f63ae084b4f1dae3c0125420eaecf5655e2d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081795"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034765"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 serisi sanal makinelerde performansı iyileştirin
 
@@ -27,7 +27,7 @@ Lsv2 serisi sanal makinelerin (VM 'Ler) tasarımı, işlemci, bellek, NVMe cihaz
 - Ubuntu 16.04
 - RHEL 8,0
 - Debian 9
-- De, 10
+- Debian 10
 
 Bu makalede, iş yüklerinizin ve uygulamalarınızın VM 'Lerde tasarlanan maksimum performansı elde etmelerini sağlamak için ipuçları ve öneriler sağlanmaktadır. Bu sayfadaki bilgiler, Azure Market 'e daha fazla Lsv2 iyileştirilmiş görüntü eklendikçe sürekli olarak güncelleştirilir.
 
@@ -45,7 +45,7 @@ Lsv2 serisi VM 'Ler, Zen mikro mimarisine bağlı olarak AMD EYPC™ sunucu işl
 
 * Lsv2 kullanıcılar, uygulamalarına yönelik NUMA benzeşimini belirlemek üzere veri sürücüleri için VM içinden bildirilen cihaz NUMA bilgilerine (tümü 0) güvenmemelidir. Daha iyi performans için önerilen yol, mümkünse iş yüklerini CPU 'larda yaymasıdır.
 
-* Lsv2 VM NVMe cihazı için g/ç sıra çifti başına desteklenen en yüksek sıra derinliği 1024 (vs. Amazon i3 QD 32 limiti). Lsv2 kullanıcılar, (yapay) bir değerlendirme iş yüklerini sıra derinliği 1024 veya daha düşük olarak sınırlandırmalıdır ve bu da performansı düşürebilir.
+* Lsv2 VM NVMe cihazı için g/ç sıra çifti başına desteklenen en fazla sıra derinliği 1024 (vs. Amazon i3 QD 32 limit). Lsv2 kullanıcılar, (yapay) bir değerlendirme iş yüklerini sıra derinliği 1024 veya daha düşük olarak sınırlandırmalıdır ve bu da performansı düşürebilir.
 
 ## <a name="utilizing-local-nvme-storage"></a>Yerel NVMe Storage kullanma
 
@@ -93,11 +93,11 @@ Yerel depolamada verileri yedekleme seçenekleri hakkında daha fazla bilgi edin
 * **Tek bir NVMe disk hatası, konaktaki tüm VM 'Lerin başarısız olmasına neden olur mu?**  
    Donanım düğümünde bir disk hatası algılanırsa, donanım başarısız durumunda olur. Bu gerçekleştiğinde, düğümdeki tüm VM 'Ler otomatik olarak ayrılır ve sağlıklı bir düğüme taşınır. Lsv2 serisi VM 'Ler için bu, müşterinin hatalı düğümdeki verilerin da güvenli bir şekilde silineceği ve yeni düğümdeki müşteri tarafından yeniden oluşturulması gereken anlamına gelir. Belirtildiği gibi, dinamik geçiş Lsv2 ' de kullanılabilir hale gelmeden önce, hatalı düğümdeki veriler, başka bir düğüme aktarıldıklarından, bu VM 'Ler için uygun şekilde taşınabilir.
 
-* **Performans için rq_affinity üzerinde herhangi bir ayarlama yapmam gerekir mi?**  
-   Rq_affinity ayarı, saniye başına mutlak giriş/çıkış işlemi (ıOPS) kullanılırken küçük bir ayarlamadır. Diğer her şey iyi çalışır duruma getirildikten sonra bir fark olup olmadığını görmek için rq_affinity 'i 0 olarak ayarlamayı deneyin.
+* **Performans için rq_affinity ayarlamalar yapmam gerekiyor mu?**  
+   Rq_affinity ayar, saniye başına en fazla giriş/çıkış işlemi (ıOPS) kullanılırken küçük bir ayarlamadır. Diğer her şey iyi çalışır duruma getirildikten sonra, fark olup olmadığını görmek için rq_affinity 0 olarak ayarlamayı deneyin.
 
 * **Blk_mq ayarlarını değiştirmem gerekiyor mu?**  
-   RHEL/CentOS 7. x, NVMe cihazları için otomatik olarak blk-MQ kullanır. Yapılandırma değişikliği veya ayarları gerekli değildir. Scsi_mod. Use _blk_mq ayarı yalnızca SCSI içindir ve NVMe cihazları, Konuk VM 'lerde SCSI cihazları olarak göründüğünden, Lsv2 Preview sırasında kullanılır. Şu anda NVMe cihazları NVMe cihazları olarak görülebilir, bu nedenle SCSI blk-MQ ayarı ilgisiz olur.
+   RHEL/CentOS 7. x, NVMe cihazları için otomatik olarak blk-MQ kullanır. Yapılandırma değişikliği veya ayarları gerekli değildir. Scsi_mod. use_blk_mq ayarı yalnızca SCSI içindir ve NVMe cihazları Konuk VM 'lerde SCSI cihazları olarak göründüğünden, Lsv2 Preview sırasında kullanılmıştır. Şu anda NVMe cihazları NVMe cihazları olarak görülebilir, bu nedenle SCSI blk-MQ ayarı ilgisiz olur.
 
 * **"Fio" öğesini değiştirmem gerekiyor mu?**  
    L64v2 ve L80v2 VM boyutlarında ' Fio ' gibi bir performans ölçme aracıyla maksimum ıOPS 'yi almak için, her bir NVMe cihazında "rq_affinity" öğesini 0 olarak ayarlayın.  Örneğin, bu komut satırı, bir L80v2 VM 'deki tüm 10 NVMe cihazları için "rq_affinity" değerini sıfıra ayarlar:
@@ -106,7 +106,7 @@ Yerel depolamada verileri yedekleme seçenekleri hakkında daha fazla bilgi edin
    for i in `seq 0 9`; do echo 0 >/sys/block/nvme${i}n1/queue/rq_affinity; done
    ```
 
-   Ayrıca, g/ç, bölümleme olmadan, hiçbir dosya sistemi, RAID 0 yapılandırma vb. olmayan ham NVMe cihazlarının her birine doğrudan yapıldığında en iyi performansı elde edin. Bir test oturumuna başlamadan önce, her NVMe cihazlarından birini çalıştırarak `blkdiscard` yapılandırmanın bilinen bir yeni/temiz durumunda olduğundan emin olun.
+   Ayrıca, g/ç, bölümleme olmadan, hiçbir dosya sistemi, RAID 0 yapılandırma vb. olmayan ham NVMe cihazlarının her birine doğrudan yapıldığında en iyi performansı elde edin. Bir test oturumuna başlamadan önce, NVMe cihazlarının her birinde `blkdiscard` çalıştırarak yapılandırmanın bilinen bir yeni/temiz durumda olduğundan emin olun.
    
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: SMB kullanarak Linux VM 'lerinde Azure dosya depolamayı bağlama | Microsoft Docs
+title: SMB kullanarak Linux VM 'lerinde Azure dosya depolamayı bağlama
 description: Azure CLı ile SMB kullanarak Linux VM 'lerinde Azure dosya depolama 'yı bağlama
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: effe1169fb531abd3fe8a206f2baf83380fcd28f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0918cfda81be93982c1ca6eccce0c116ac65ca28
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828390"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035651"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB kullanarak Linux VM 'lerinde Azure dosya depolamayı bağlama
 
@@ -28,7 +28,7 @@ Dosya depolama, bulutta standart SMB protokolünü kullanan dosya paylaşımlar�
 
 Dosyaları bir VM 'den dosya depolamada barındırılan SMB bağlamasına taşımak, günlükleri hata ayıklamanın harika bir yoludur. Aynı SMB paylaşımının Mac, Linux veya Windows iş istasyonunuza yerel olarak bağlanması gerekir. SMB protokolü, bu tür ağır günlüğe kaydetme görevlerini işleyecek şekilde oluşturulmadığından, SMB, Linux veya uygulama günlüklerinin gerçek zamanlı olarak akışını sağlamak için en iyi çözümdür. Floentd gibi adanmış, Birleşik bir günlüğe kaydetme katmanı aracı, Linux ve uygulama günlüğü çıkışının toplanması için SMB 'den daha iyi bir seçimdir.
 
-Bu kılavuzda, Azure CLı sürüm 2.0.4 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için **az--Version** ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli). 
+Bu kılavuzda, Azure CLı sürüm 2.0.4 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için **az --version** komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
@@ -41,7 +41,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-[Az Storage Account Create](/cli/azure/storage/account)kullanılarak oluşturduğunuz kaynak grubu içinde yeni bir depolama hesabı oluşturun. Bu örnek, *Mystorageacct @ no__t-1random sayı >* adlı bir depolama hesabı oluşturur ve bu depolama hesabının adını **storageacct**değişkenine koyar. Depolama hesabı adları benzersiz olmalıdır, @no__t 0 ' ı kullanarak sonuna bir sayı ekler ve benzersiz hale gelir.
+[Az Storage Account Create](/cli/azure/storage/account)kullanılarak oluşturduğunuz kaynak grubu içinde yeni bir depolama hesabı oluşturun. Bu örnek, *Mystorageacct\<rastgele sayı >* adlı bir depolama hesabı oluşturur ve bu depolama hesabının adını **storageacct**değişkenine koyar. Depolama hesabı adları benzersiz olmalıdır, `$RANDOM` kullanarak sonuna bir sayı ekler ve benzersiz hale gelir.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -65,11 +65,11 @@ STORAGEKEY=$(az storage account keys list \
     --query "[0].value" | tr -d '"')
 ```
 
-## <a name="create-a-file-share"></a>Dosya paylaşma oluşturma
+## <a name="create-a-file-share"></a>Dosya paylaşımı oluşturma
 
 [Az Storage Share Create](/cli/azure/storage/share)kullanarak dosya depolama payını oluşturun. 
 
-Paylaşma adları, küçük harf, sayı ve tek kısa çizgilerden oluşmalıdır, ancak kısa çizgi ile başlayamaz. Dosya paylaşımlarını ve dosyaları adlandırma hakkında tüm ayrıntılar için bkz. [adlandırma ve başvuru paylaşımları, dizinler, dosyalar ve meta veriler](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Paylaşma adları, küçük harf, sayı ve tek kısa çizgilerden oluşmalıdır, ancak kısa çizgi ile başlayamaz. Dosya paylaşımlarının ve dosyaların adlandırılması hakkında tüm ayrıntılara ulaşmak için bkz. [Paylaşımları, Dizinleri, Dosyaları ve Meta Verileri Adlandırma ve Bunlara Başvuruda Bulunma](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)
 
 Bu örnek, 10-GiB kotası ile *myshare* adlı bir paylaşma oluşturur. 
 
@@ -99,7 +99,7 @@ Azure dosya paylaşımından yerel dizine bağlayın.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Yukarıdaki komut, [CIFS](https://linux.die.net/man/8/mount.cifs)'ye özgü Azure dosya paylaşımından ve seçeneklerini bağlamak için [Mount](https://linux.die.net/man/8/mount) komutunu kullanır. Özellikle, file_mode ve dir_mode seçenekleri dosya ve dizinleri @no__t izin olarak ayarlar-0. @No__t-0 izni tüm kullanıcılara okuma, yazma ve yürütme izinleri verir. Değerleri diğer [chmod izinleriyle](https://en.wikipedia.org/wiki/Chmod)değiştirerek bu izinleri değiştirebilirsiniz. Ayrıca GID veya Uid gibi diğer [CIFS](https://linux.die.net/man/8/mount.cifs) seçeneklerini de kullanabilirsiniz. 
+Yukarıdaki komut, [CIFS](https://linux.die.net/man/8/mount.cifs)'ye özgü Azure dosya paylaşımından ve seçeneklerini bağlamak için [Mount](https://linux.die.net/man/8/mount) komutunu kullanır. Özellikle, file_mode ve dir_mode seçenekleri dosya ve dizinleri `0777`izin olarak ayarlar. `0777` izni, tüm kullanıcılara okuma, yazma ve yürütme izinleri verir. Değerleri diğer [chmod izinleriyle](https://en.wikipedia.org/wiki/Chmod)değiştirerek bu izinleri değiştirebilirsiniz. Ayrıca GID veya Uid gibi diğer [CIFS](https://linux.die.net/man/8/mount.cifs) seçeneklerini de kullanabilirsiniz. 
 
 
 ## <a name="persist-the-mount"></a>Bağlama devam ettir
@@ -114,6 +114,6 @@ Linux VM 'yi yeniden başlattığınızda, bağlı SMB paylaşımının kapalı 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Oluşturma sırasında bir Linux sanal makinesini özelleştirmek için Cloud-init kullanma](using-cloud-init.md)
-- [Linux VM 'ye disk ekleme](add-disk.md)
+- [Linux VM’ye disk ekleme](add-disk.md)
 - [Linux sanal makineleri için Azure disk şifrelemesi](disk-encryption-overview.md)
 

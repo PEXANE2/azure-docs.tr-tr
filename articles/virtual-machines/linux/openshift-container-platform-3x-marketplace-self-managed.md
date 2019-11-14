@@ -1,5 +1,5 @@
 ---
-title: Azure 'da OpenShift kapsayıcı platformu 3,11 otomatik olarak yönetilen Market teklifi dağıtma | Microsoft Docs
+title: Azure 'da OpenShift kapsayıcı platformu 3,11 otomatik yönetilen Market teklifi dağıtma
 description: Azure 'da OpenShift kapsayıcı platformu 3,11 kendinden yönetilen Market Teklifini dağıtın.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d5028ff6378fec5939aee3218071fe6f4eb1e843
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791626"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035514"
 ---
 # <a name="configure-prerequisites"></a>Önkoşulları yapılandırma
 
@@ -89,7 +89,7 @@ Giriş parametrelerinin değerlerini girin ve **Tamam**' a tıklayın.
 | Yeni veya var olan sanal ağ | Yeni vNet oluştur (varsayılan) veya var olan bir sanal ağı kullan |
 | Varsayılan CıDR ayarlarını seçin veya IP aralığını (CıDR) özelleştirin | Varsayılan CıDR aralıklarını kabul edin veya **özel IP aralığı** ' nı seçin ve özel CIDR bilgilerini girin.  Varsayılan ayarlar, 10.0.0.0/14 CıDR, 10.1.0.0/16 ile ana alt ağ, 10.2.0.0/16 ve bilgi işlem ve CNS subnet with 10.3.0.0/16 olan sanal ağ oluşturur |
 | Key Vault kaynak grubu adı | Key Vault içeren kaynak grubunun adı |
-| Key Vault adı | SSH özel anahtarıyla gizli dizi içeren Key Vault adı.  Yalnızca alfasayısal karakterlere ve tirelere izin verilir ve 3 ila 24 karakter arasında olmalıdır |
+| Key Vault Adı | SSH özel anahtarıyla gizli dizi içeren Key Vault adı.  Yalnızca alfasayısal karakterlere ve tirelere izin verilir ve 3 ila 24 karakter arasında olmalıdır |
 | Gizli dizi adı | SSH özel anahtarını içeren gizli dizinin adı.  Yalnızca alfasayısal karakterlere ve tirelere izin verilir |
 
    ![Teklif altyapısı dikey penceresi](media/openshift-marketplace-self-managed/ocp-inframain.png)  

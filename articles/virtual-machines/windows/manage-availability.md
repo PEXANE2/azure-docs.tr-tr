@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Windows VM 'lerinin kullanılabilirliğini yönetme | Microsoft Docs
+title: Azure 'da Windows VM 'lerinin kullanılabilirliğini yönetme
 description: Azure 'da Windows uygulamanız için yüksek kullanılabilirlik sağlamak üzere birden çok sanal makine kullanmayı öğrenin
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c7de139c83128f92c9c28fbdb002246f6dbbf0ec
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 44db2b0b42175f7968852ad9a0f7769b05e2c008
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079239"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038171"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Azure 'da Windows sanal makinelerinin kullanılabilirliğini yönetme 
 

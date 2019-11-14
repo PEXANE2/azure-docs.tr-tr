@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Linux VM 'de sanal sabit diskler ' i genişletme | Microsoft Docs
+title: Azure 'da Linux VM 'de sanal sabit diskler genişletme
 description: Azure CLı ile Linux VM üzerinde sanal sabit diskler genişletmeyi öğrenin
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 19e1a5f1534d09246ca85029f45ee918ec57e51f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3bd85048cf12760d5918544ed6aac803e9fe120a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828420"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036201"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLı ile Linux VM 'de sanal sabit diskler genişletme
 
@@ -35,7 +35,7 @@ Aşağıdaki örneklerde, *Myresourcegroup* ve *myvm* gibi örnek parametre adla
     ```
 
     > [!NOTE]
-    > Sanal sabit diski genişletmek için VM 'nin serbest bırakılmış olması gerekir. VM 'nin `az vm stop` ile durdurulması, işlem kaynaklarını serbest bırakmaz. İşlem kaynaklarını serbest bırakmak için `az vm deallocate` kullanın.
+    > Sanal sabit diski genişletmek için VM 'nin serbest bırakılmış olması gerekir. VM 'nin `az vm stop` ile durdurulması, işlem kaynaklarını serbest bırakmaz. İşlem kaynaklarını serbest bırakmak için `az vm deallocate`kullanın.
 
 1. [Az disk List](/cli/azure/disk#az-disk-list)komutuyla bir kaynak grubundaki yönetilen disklerin listesini görüntüleyin. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubundaki yönetilen disklerin listesini görüntüler:
 
@@ -88,7 +88,7 @@ Genişletilmiş bir disk kullanmak için temeldeki bölümü ve dosya sistemini 
     sudo parted /dev/sdc
     ```
 
-    @No__t-0 ile mevcut bölüm düzeni hakkındaki bilgileri görüntüleyin. Çıktı, temeldeki diskin 215 GB olduğunu gösteren aşağıdaki örneğe benzer:
+    `print`ile mevcut bölüm düzeni hakkındaki bilgileri görüntüleyin. Çıktı, temeldeki diskin 215 GB olduğunu gösteren aşağıdaki örneğe benzer:
 
     ```bash
     GNU Parted 3.2
@@ -105,7 +105,7 @@ Genişletilmiş bir disk kullanmak için temeldeki bölümü ve dosya sistemini 
         1      0.00B  107GB  107GB  ext4
     ```
 
-    ,. @No__t-0 ile bölümü genişletin. Bölüm numarasını, *1*ve yeni bölüm için bir boyut girin:
+    c. `resizepart`bölümü genişletin. Bölüm numarasını, *1*ve yeni bölüm için bir boyut girin:
 
     ```bash
     (parted) resizepart
@@ -113,27 +113,27 @@ Genişletilmiş bir disk kullanmak için temeldeki bölümü ve dosya sistemini 
     End?  [107GB]? 215GB
     ```
 
-    TID. Çıkmak için `quit` girin.
+    d. Çıkmak için `quit`girin.
 
-1. Bölüm yeniden boyutlandırılırken, Bölüm tutarlılığını `e2fsck` ile doğrulayın:
+1. Bölüm yeniden boyutlandırılırken, Bölüm tutarlılığını `e2fsck`ile doğrulayın:
 
     ```bash
     sudo e2fsck -f /dev/sdc1
     ```
 
-1. Dosya sistemini @no__t yeniden boyutlandırın-0:
+1. Dosya sistemini `resize2fs`yeniden boyutlandırın:
 
     ```bash
     sudo resize2fs /dev/sdc1
     ```
 
-1. Bölümü istenen konuma bağlama, örneğin `/datadrive`:
+1. Bölümü istenen konuma bağlayın, örneğin `/datadrive`:
 
     ```bash
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. Veri diskinin yeniden boyutlandırıldığından emin olmak için `df -h` kullanın. Aşağıdaki örnek çıktı, */dev/sdc1* veri sürücüsünü artık 200 GB olarak göstermektedir:
+1. Veri diskinin yeniden boyutlandırıldığından emin olmak için `df -h`kullanın. Aşağıdaki örnek çıktı, */dev/sdc1* veri sürücüsünü artık 200 GB olarak göstermektedir:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on

@@ -1,31 +1,31 @@
 ---
-title: Grupları yönetmeye yönelik PowerShell örnekleri ve şirket içi Azure Active Directory için Grup geri yazma Microsoft Docs
+title: Grupları yönetmek için PowerShell V2 örnekleri-Azure AD | Microsoft Docs
 description: Bu sayfa, Azure Active Directory ' de gruplarınızı yönetmenize yardımcı olacak PowerShell örnekleri sağlar
 keywords: Azure AD, Azure Active Directory, PowerShell, gruplar, Grup Yönetimi
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e22baabda901a34f624cf27c25037ff3ba94e90
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1aa696ccaecc24df700315962c1f01f3a298c56c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381851"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026703"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Grup yönetimi için sürüm 2 cmdlet 'leri Azure Active Directory
 
 > [!div class="op_single_selector"]
-> * [Azure portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
-> * [PowerShell](groups-settings-v2-cmdlets.md)
+> - [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
 
@@ -60,7 +60,7 @@ Azure AD PowerShell cmdlet 'lerini kullanarak grupları yönetmeye başlayabilme
     PS C:\Windows\system32> Connect-AzureAD
 ```
 
-Cmdlet 'i, dizininize erişmek için kullanmak istediğiniz kimlik bilgilerini ister. Bu örnekte, tanıtım dizinine erişmek karen@drumkit.onmicrosoft.com için kullanıyoruz. Cmdlet, oturumun başarıyla bağlanıp bağlandığına ilişkin bir onay döndürür:
+Cmdlet 'i, dizininize erişmek için kullanmak istediğiniz kimlik bilgilerini ister. Bu örnekte, tanıtım dizinine erişmek için karen@drumkit.onmicrosoft.com kullanıyoruz. Cmdlet, oturumun başarıyla bağlanıp bağlandığına ilişkin bir onay döndürür:
 
 ```powershell
     Account                       Environment Tenant
@@ -199,9 +199,9 @@ Dizininizden grupları silmek için Remove-AzureADGroup cmdlet 'ini aşağıdaki
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
 ```
 
-## <a name="manage-group-membership"></a>Grup üyeliğini yönet
+## <a name="manage-group-membership"></a>Grup üyeliğini Yönet
 
-### <a name="add-members"></a>Üye ekle
+### <a name="add-members"></a>Üye Ekle
 
 Bir gruba yeni üyeler eklemek için Add-AzureADGroupMember cmdlet 'ini kullanın. Bu komut, önceki örnekte kullandığımız Intune yöneticileri grubuna bir üye ekler:
 
@@ -270,7 +270,7 @@ Yönetici olmayan kullanıcılar için Grup oluşturmayı devre dışı bırakma
    PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
    ```
   
-2. Döndürürse `UsersPermissionToCreateGroupsEnabled : True`yönetici olmayan kullanıcılar grupları oluşturabilir. Bu özelliği devre dışı bırakmak için:
+2. `UsersPermissionToCreateGroupsEnabled : True`döndürürse yönetici olmayan kullanıcılar grupları oluşturabilir. Bu özelliği devre dışı bırakmak için:
   
    ```powershell 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
@@ -312,7 +312,7 @@ Bir grup oluşturulduğunda, belirli uç noktalar, son kullanıcının grubun e-
   
 * uygunsuz
 * yöneticileri
-* yönetici
+* danışın
 * HOSTMASTER
 * Majordomo
 * postmaster

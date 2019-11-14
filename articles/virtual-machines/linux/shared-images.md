@@ -1,5 +1,5 @@
 ---
-title: Azure CLı ile paylaşılan görüntü galerileri oluşturma | Microsoft Docs
+title: Azure CLı ile paylaşılan görüntü galerileri oluşturma
 description: Bu makalede Azure CLı 'yı kullanarak Azure 'da bir sanal makinenin paylaşılan görüntüsünü oluşturma hakkında bilgi edineceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.date: 05/06/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: ea884b80698fb257106ef68d293f350b2f55dc06
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: de1afa2367afcb78e8ca68e518acc93e33f61c43
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103549"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034958"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>Azure CLı ile paylaşılan görüntü galerisi oluşturma
 
@@ -33,7 +33,7 @@ Galeri, tam rol tabanlı erişim denetimi (RBAC) sağlayan en üst düzey bir ka
 
 Paylaşılan görüntü Galerisi özelliğinin birden çok kaynak türü vardır. Bunları bu makalede kullanacağız veya oluşturacağız:
 
-| Resource | Açıklama|
+| Kaynak | Açıklama|
 |----------|------------|
 | **Yönetilen görüntü** | Bu, tek başına kullanılabilen veya bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılan temel bir görüntüdür. Yönetilen görüntüler Genelleştirilmiş VM 'lerden oluşturulur. Yönetilen görüntü, birden çok VM oluşturmak için kullanılabilen ve artık paylaşılan görüntü sürümleri oluşturmak için kullanılabilen özel bir VHD türüdür. |
 | **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |
@@ -56,7 +56,7 @@ az vm create\
    --generate-ssh-keys
 ```
 
-Ayrıca, `--image` parametresi için görüntü sürümü kimliğini kullanarak belirli bir sürümü kullanabilirsiniz. Örneğin, görüntü sürümü *1.0.0* türünü kullanmak için: `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`.
+Ayrıca, `--image` parametresi için görüntü sürümü KIMLIĞINI kullanarak belirli bir sürümü de kullanabilirsiniz. Örneğin, görüntü sürümü *1.0.0* türünü kullanmak için: `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`.
 
 [!INCLUDE [virtual-machines-common-gallery-list-cli](../../../includes/virtual-machines-common-gallery-list-cli.md)]
 

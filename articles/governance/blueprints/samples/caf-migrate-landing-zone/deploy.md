@@ -1,18 +1,14 @@
 ---
 title: CAF geçiş giriş bölgesi şeması örnek-dağıtma adımları
 description: CAF geçiş giriş bölgesi şeması, şema yapıt parametresi ayrıntıları dahil olmak üzere adımları dağıtın.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
-ms.service: blueprints
-ms.custom: fasttrack-new
-ms.openlocfilehash: 4693959a2b4f0638caea57fb97796faf62aba9a0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 67dabde6afe2dbc17a5ca2bd32534108b8008a8a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163572"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038454"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Azure geçişi giriş bölgesi şeması örneği için Microsoft Bulut benimseme çerçevesini dağıtma
 
@@ -120,7 +116,7 @@ CAF geçiş giriş bölgesi şeması örneğini dağıtma adımlarını gözden 
 > [!div class="nextstepaction"]
 > [CAF geçiş giriş bölgesi şeması-genel bakış](./index.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

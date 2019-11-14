@@ -1,10 +1,9 @@
 ---
-title: Azure sanal makinelerinde SQL Server için maliyetleri etkili bir şekilde yönetin | Microsoft Docs
+title: Fiyat Kılavuzu & maliyetleri yönetme
 description: ', Doğru SQL Server sanal makine fiyatlandırma modelini seçmek için en iyi yöntemleri sağlar.'
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -15,14 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 076d6fc387aaee85a1cd407fa48e7347ff185ef4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028633"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038871"
 ---
-# <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 'Leri için fiyatlandırma Kılavuzu
+# <a name="pricing-guidance-for-azure-sql-server-vms"></a>Azure SQL Server VM 'Leri için fiyatlandırma Kılavuzu
 
 Bu makalede, Azure 'da [SQL Server sanal makineler](virtual-machines-windows-sql-server-iaas-overview.md) için fiyatlandırma Kılavuzu sunulmaktadır. Maliyeti etkileyen çeşitli seçenekler vardır ve maliyetleri iş gereksinimleriyle dengeleyen doğru görüntüyü seçmek önemlidir.
 
@@ -58,7 +58,7 @@ Hafif olmayan bir üretim iş yükünüz varsa, aşağıdaki SQL Server sürüml
 |-----|-----|
 | Web | Küçük Web siteleri |
 | Standart | Küçük ve orta ölçekli iş yükleri |
-| Kurumsal | Büyük veya görev açısından kritik iş yükleri|
+| Enterprise | Büyük veya görev açısından kritik iş yükleri|
 
 Bu sürümler için SQL Server Lisanslama için ödeme yapmak üzere iki seçeneğiniz vardır: *kullanım başına ödeme* *yapın veya kendi LISANSıNıZı getirin (KLG)* .
 
@@ -113,7 +113,7 @@ Bir SQL Server VM ile KLG kullanmak için, bazı toplu lisanslama programları v
 
 | KLG avantajı | Açıklama |
 |-----|-----|
-| **Maliyet tasarrufları** | [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) % 55 tasarruf sağlar. Daha fazla bilgi için bkz. [Lisans modelini değiştirme](virtual-machines-windows-sql-ahb.md) |
+| **Maliyet tasarrufları** | [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) %55 tasarruf sağlar. Daha fazla bilgi için bkz. [Lisans modelini değiştirme](virtual-machines-windows-sql-ahb.md) |
 | **Ücretsiz pasif ikincil çoğaltma** | Kendi lisansınızı kullanmanın bir diğer avantajı da, yüksek kullanılabilirlik amaçlarıyla SQL Server başına [bir pasif ikincil çoğaltmanın ücretsiz lisanslaması](https://azure.microsoft.com/pricing/licensing-faq/) olur. Bu, yüksek oranda kullanılabilir SQL Server dağıtımının lisanslama maliyetinin yarısını keser (örneğin, Always on kullanılabilirlik grupları kullanılarak). Pasif ikincil çalıştırma hakları, yük devretme sunucuları yazılım güvencesi avantajı üzerinden sağlanır. |
 
 Kendi lisans yansımalarından biriyle bir SQL Server 2017 Azure VM oluşturmak için, "{KLG}" önekli VM 'Lere bakın:
@@ -139,19 +139,19 @@ SQL Server Lisanslama ücreti, vCPU sayısıyla doğrudan ilgilidir. CPU, bellek
 
 Belirli türdeki SQL Server iş yükleriyle iyi çalışan yeni makine boyutları vardır. Bu makine boyutları, yüksek düzeyde bellek, depolama ve g/ç bant genişliğini korur, ancak daha düşük bir sanallaştırılmış çekirdek sayısına sahiptir. Örneğin, aşağıdaki örneği göz önünde bulundurun:
 
-| VM Boyutu | vCPU | Hafıza | En fazla disk | En fazla g/ç performansı | SQL lisanslama maliyetleri | Toplam maliyet (Işlem + lisanslama) |
+| VM Boyutu | vCPU | Bellek | En fazla disk | En fazla g/ç performansı | SQL lisanslama maliyetleri | Toplam maliyet (Işlem + lisanslama) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51.200 ıOPS veya 768 MB/s | | |
-| **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51.200 ıOPS veya 768 MB/s | % 75 daha düşük | % 57 daha düşük |
+| **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51.200 ıOPS veya 768 MB/s | %75 daha düşük | %57 daha düşük |
 
 > [!IMPORTANT]
 > Bu bir zaman noktası örneğidir. En son belirtimlerde, [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) ve [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)için makine boyutları makalelerine ve Azure fiyatlandırma sayfasına bakın.
 
-Önceki örnekte, **Standard_DS14v2** ve **Standard_DS14-4V2** belirtimlerinin vCPU 'lar hariç özdeş olduğunu görebilirsiniz. **Standard_DS14-4v2** makine boyutunun sonundaki son ek **4v2** , etkin vCPU sayısını gösterir. SQL Server lisanslama maliyetleri vCPU sayısına bağlı olduğundan, bu, ek vCPU 'ların gerekli olmadığı senaryolarda VM 'nin maliyetini önemli ölçüde azaltır. Bu bir örnektir ve bu sonek düzeniyle tanımlanan kısıtlanmış vCPU 'Lara sahip çok sayıda makine boyutu vardır. Daha fazla bilgi için [daha fazla maliyetli veritabanı çalışması için yeni Azure VM boyutlarını duyuran](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)blog gönderisine bakın.
+Önceki örnekte, **Standard_DS14v2** ve **Standard_DS14-4V2** belirtimlerinin vCPU 'lar hariç özdeş olduğunu görebilirsiniz. **Standard_DS14-4v2** makine boyutunun sonundaki son ek **-4v2** , etkin vCPU sayısını gösterir. SQL Server lisanslama maliyetleri vCPU sayısına bağlı olduğundan, bu, ek vCPU 'ların gerekli olmadığı senaryolarda VM 'nin maliyetini önemli ölçüde azaltır. Bu bir örnektir ve bu sonek düzeniyle tanımlanan kısıtlanmış vCPU 'Lara sahip çok sayıda makine boyutu vardır. Daha fazla bilgi için [daha fazla maliyetli veritabanı çalışması için yeni Azure VM boyutlarını duyuran](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)blog gönderisine bakın.
 
 ### <a name="shut-down-your-vm-when-possible"></a>Mümkün olduğunda sanal makineyi kapatın
 
-Sürekli çalıştırmayan iş yüklerini kullanıyorsanız, etkin olmayan dönemler sırasında sanal makineyi kapatmayı göz önünde bulundurun. Yalnızca kullandığınız kadar ödersiniz.
+Sürekli çalıştırmayan iş yüklerini kullanıyorsanız, etkin olmayan dönemler sırasında sanal makineyi kapatmayı göz önünde bulundurun. Sadece kullandığınız kadar ödersiniz.
 
 Örneğin, yalnızca bir Azure VM üzerinde SQL Server deniyorsanız, yanlışlıkla hafta boyunca çalışır durumda bırakarak ücretlendirmeye tabi olmak istemezsiniz. Tek bir çözüm [otomatik kapatılma özelliğini](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)kullanmaktır.
 

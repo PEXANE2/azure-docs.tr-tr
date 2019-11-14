@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-Azure CLı kullanarak uygulamalar için yüksek kullanılabilirlik için bir Traffic Manager profili oluşturma
+title: 'Hızlı başlangıç: uygulamalar için bir profil oluşturma-Azure CLı-Azure Traffic Manager'
 description: Bu hızlı başlangıç makalesinde, yüksek oranda kullanılabilir bir Web uygulaması oluşturmak için bir Traffic Manager profili oluşturma açıklanmaktadır.
 services: traffic-manager
 author: asudbring
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: allensu
-ms.openlocfilehash: dc7e555eb95cf88ecf57a6df4999672bb721b8cf
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 8b8880e10f9b920a2ec077d4cc4c2239e6ea7438
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620593"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034213"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Hızlı Başlangıç: Azure CLı kullanarak yüksek oranda kullanılabilir bir Web uygulaması için Traffic Manager profili oluşturma
+# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak yüksek oranda kullanılabilir bir Web uygulaması için Traffic Manager profili oluşturma
 
 Bu hızlı başlangıçta, Web uygulamanız için yüksek kullanılabilirlik sunan bir Traffic Manager profilinin nasıl oluşturulacağı açıklanmaktadır.
 
@@ -91,7 +91,7 @@ az appservice plan create \
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>App Service planında bir Web uygulaması oluşturma
 *Doğu ABD* ve Azure bölgelerindeki *Batı Avrupa* App Service planlarında [az WebApp Create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) kullanarak Web uygulaması için iki örnek oluşturun.
 
-Aşağıdaki örnekte, **< app1name_eastus >** ve **< app2name_westeurope >** benzersiz bir uygulama adıyla değiştirin ve **< appspname_eastus >** ve **< appspname_westeurope >** öğesini oluşturmak için kullanılan adla değiştirin. önceki bölümde App Service planları.
+Aşağıdaki örnekte, **< app1name_eastus >** ve **< app2name_westeurope** > benzersiz bir uygulama adıyla değiştirin ve **<** appspname_eastus > ve **<** appspname_westeurope >, önceki bölümde App Service planlarını oluşturmak için kullanılan adla değiştirin.
 
 ```azurecli-interactive
 
@@ -115,7 +115,7 @@ Aşağıdaki şekilde, [az Network Traffic-Manager uç noktası oluştur ' a](ht
 
 Birincil uç nokta kullanılamadığında, trafik otomatik olarak yük devretme uç noktasına yönlendirir.
 
-Aşağıdaki örnekte, **< app1name_eastus >** ve **< app2name_westeurope >** , önceki bölümdeki her bölge için oluşturulan uygulama adlarıyla değiştirin, **< appspname_eastus >** ve **< appspname_** önceki bölümde App Service planlarını oluşturmak için kullanılan ada sahip > ve **< profile_name >** önceki bölümde kullanılan profil adıyla değiştirin. 
+Aşağıdaki örnekte, **< app1name_eastus >** ve **< app2name_westeurope** > önceki bölümde yer alan her bir bölge için oluşturulan uygulama adlarıyla değiştirin, **<** appspname_eastus > ve **<** appspname_westeurope > önceki bölümde App Service planlarını oluşturmak için kullanılan adla değiştirin ve **<** profile_name > önceki bölümde kullanılan profil adıyla değiştirin. 
 
 **Doğu ABD uç noktası**
 
@@ -170,7 +170,7 @@ az network traffic-manager endpoint create \
 
 Bu bölümde, Traffic Manager profilinizin etki alanı adını kontrol edeceksiniz. Ayrıca birincil uç noktayı kullanılamaz olarak yapılandıracaksınız. Son olarak, Web uygulamasının hala kullanılabilir olduğunu görmeniz gerekir. Bunun nedeni, trafiği yük devretme uç noktasına gönderiyor Traffic Manager.
 
-Aşağıdaki örnekte, **< app1name_eastus >** ve **< app2name_westeurope >** , önceki bölümdeki her bölge için oluşturulan uygulama adlarıyla değiştirin, **< appspname_eastus >** ve **< appspname_** önceki bölümde App Service planlarını oluşturmak için kullanılan ada sahip > ve **< profile_name >** önceki bölümde kullanılan profil adıyla değiştirin.
+Aşağıdaki örnekte, **< app1name_eastus >** ve **< app2name_westeurope** > önceki bölümde yer alan her bir bölge için oluşturulan uygulama adlarıyla değiştirin, **<** appspname_eastus > ve **<** appspname_westeurope > önceki bölümde App Service planlarını oluşturmak için kullanılan adla değiştirin ve **<** profile_name > önceki bölümde kullanılan profil adıyla değiştirin.
 
 ### <a name="determine-the-dns-name"></a>DNS adını belirleme
 

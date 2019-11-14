@@ -1,5 +1,5 @@
 ---
-title: Hızlı Başlangıç - Azure PowerShell ile Linux VM Oluşturma | Microsoft Docs
+title: Hızlı başlangıç-Azure PowerShell bir Linux sanal makinesi oluşturma
 description: Bu hızlı başlangıçta Azure PowerShell’i kullanarak Linux sanal makinesi oluşturmayı öğrenirsiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 88d028f48b75238e2123d939a832e3fa70fc0056
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1e336ad05d70341365b63d806b249740113724d3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300874"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035200"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Hızlı Başlangıç: PowerShell ile Azure'da Linux sanal makinesi oluşturma
+# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Hızlı başlangıç: PowerShell ile Azure'da Linux sanal makinesi oluşturma
 
 Azure PowerShell modülü, PowerShell komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta Azure PowerShell modülünü kullanarak Azure’da bir Linux sanal makinesinin (VM) nasıl dağıtılacağı gösterilir. Bu hızlı başlangıç Canonical’daki Ubuntu 16.04 LTS market görüntüsünü kullanmaktadır. Ayrıca VM'nizin çalıştığını görmek için SSH ile VM bağlantısı kurup NGINX web sunucusunu da yükleyeceksiniz.
 
@@ -131,7 +131,7 @@ $nic = New-AzNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id
 ```
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
 PowerShell’de bir VM oluşturmak için kullanılacak görüntü, boyut ve kimlik doğrulaması seçenekleri gibi ayarların olduğu bir yapılandırma oluşturursunuz. Ardından bu yapılandırma VM’yi derlemek için kullanılır.
 
@@ -206,7 +206,7 @@ sudo apt-get -y install nginx
 İşlemi tamamladığınızda `exit` yazarak SSH oturumunu kapatın.
 
 
-## <a name="view-the-web-server-in-action"></a>Web sunucusunun çalıştığını görme
+## <a name="view-the-web-server-in-action"></a>Web sunucusunu iş başında görün
 
 İstediğiniz web tarayıcısını kullanarak varsayılan NGINX karşılama sayfasını görüntüleyin. VM'nin genel IP adresini web adresi olarak girin. Genel IP adresini VM genel bakış sayfasında veya önceden kullandığınız SSH bağlantı dizesinde bulabilirsiniz.
 

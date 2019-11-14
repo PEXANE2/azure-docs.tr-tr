@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: ecec237eab42cf434ab8627ebdf9b1e34f3ab3f1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fb9f986c2711e0cbc8ac3facd073f1a72f46043d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838122"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039122"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps 'den özel API 'lere güvenli çağrılar
 
@@ -202,11 +202,11 @@ Mantıksal uygulama tanımınızı kod görünümünde açın, **http** eylem ta
 
 | Özellik | Gerekli | Açıklama | 
 | -------- | -------- | ----------- | 
-| Kiracı | Evet | Azure AD kiracısı için GUID | 
-| grubu | Evet | Web uygulamanız veya API uygulamanız için uygulama kimliğinden istemci KIMLIĞI olan, erişmek istediğiniz hedef kaynak için GUID | 
-| ClientID | Evet | Mantıksal uygulamanızın uygulama kimliğinden istemci KIMLIĞI olan, erişim isteyen istemcinin GUID 'SI | 
-| gizli dizi | Evet | Erişim belirtecini isteyen istemcinin uygulama kimliğinden anahtar veya parola | 
-| type | Evet | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth`. | 
+| tenant | Yes | Azure AD kiracısı için GUID | 
+| audience | Yes | Web uygulamanız veya API uygulamanız için uygulama kimliğinden istemci KIMLIĞI olan, erişmek istediğiniz hedef kaynak için GUID | 
+| clientId | Yes | Mantıksal uygulamanızın uygulama kimliğinden istemci KIMLIĞI olan, erişim isteyen istemcinin GUID 'SI | 
+| gizli dizi | Yes | Erişim belirtecini isteyen istemcinin uygulama kimliğinden anahtar veya parola | 
+| type | Yes | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth`. | 
 |||| 
 
 Örneğin:
@@ -251,12 +251,12 @@ Mantıksal uygulamanızdan gelen istekleri Web uygulamanıza veya API uygulaman�
 } 
 ```
 
-| Özellik | Gerekli | Açıklama | 
-| -------- | -------- | ----------- | 
-| type | Evet | Kimlik doğrulama türü. SSL istemci sertifikaları için değerin `ClientCertificate`olması gerekir. | 
-| password | Evet | İstemci sertifikasına (PFX dosyası) erişim parolası | 
-| Türk | Evet | İstemci sertifikasının Base64 ile kodlanmış içeriği (PFX dosyası) | 
-|||| 
+| Özellik | Gerekli | Açıklama |
+| -------- | -------- | ----------- |
+| `type` | Yes | Kimlik doğrulama türü. SSL istemci sertifikaları için değerin `ClientCertificate`olması gerekir. |
+| `password` | Hayır | İstemci sertifikasına (PFX dosyası) erişim parolası |
+| `pfx` | Yes | İstemci sertifikasının Base64 ile kodlanmış içeriği (PFX dosyası) |
+||||
 
 <a name="basic"></a>
 
@@ -276,9 +276,9 @@ Mantıksal uygulamanızdan Web uygulamanıza veya API uygulamanıza gelen istekl
 
 | Özellik | Gerekli | Açıklama | 
 | -------- | -------- | ----------- | 
-| type | Evet | Kullanmak istediğiniz kimlik doğrulama türü. Temel kimlik doğrulaması için değer `Basic`olmalıdır. | 
-| kullanıcı adı | Evet | Kimlik doğrulaması için kullanmak istediğiniz Kullanıcı adı | 
-| password | Evet | Kimlik doğrulaması için kullanmak istediğiniz parola | 
+| type | Yes | Kullanmak istediğiniz kimlik doğrulama türü. Temel kimlik doğrulaması için değer `Basic`olmalıdır. | 
+| kullanıcı adı | Yes | Kimlik doğrulaması için kullanmak istediğiniz Kullanıcı adı | 
+| password | Yes | Kimlik doğrulaması için kullanmak istediğiniz parola | 
 |||| 
 
 <a name="azure-ad-code"></a>

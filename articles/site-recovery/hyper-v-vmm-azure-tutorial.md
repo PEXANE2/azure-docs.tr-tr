@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fdf6d9674305ca13af51f3f7b97e0a40568738b6
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 0c570702e4c3899ef2847883e6fc8649e603a787
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953964"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039682"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>VMM bulutlarındaki şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarma ayarlama
 
@@ -32,8 +32,6 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!NOTE]
 > Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir. Mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. Ayrıntılı yönergeler için [Site Recovery belgelerinin](https://docs.microsoft.com/azure/site-recovery) **nasıl yapılır kılavuzlarındaki** makaleleri gözden geçirin.
 
-> [!WARNING]
-> System Center VMM kullanarak Hyper-V VM 'lerinin olağanüstü durum kurtarma desteği yakın gelecekte kullanım dışı olacaktır. Devam etmeden önce [kullanımdan](scvmm-site-recovery-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
 
 
 ## <a name="before-you-begin"></a>Başlamadan önce

@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Linux VM’ler için Azure sanal ağları oluşturma ve yönetme | Microsoft Docs
+title: Öğretici-Linux VM 'Ler için Azure sanal ağları oluşturma ve yönetme
 description: Bu öğreticide, Azure CLI kullanarak Linux sanal makineleri için Azure sanal ağları oluşturup yönetmeyi öğrenirsiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b2255e75843f4ddadd44e7780054de4fc45e6449
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d6624b9d5d77a8552584049463b63738bbf17627
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300721"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034341"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Öğretici: Azure CLI ile Linux sanal makineleri için Azure sanal ağlarını yönetme
 
@@ -30,7 +30,7 @@ Azure sanal makineleri, iç ve dış ağ iletişimi için Azure ağını kullan�
 > * Sanal ağ ve alt ağ oluşturma
 > * Genel IP adresi oluşturma
 > * Ön uç VM’si oluşturma
-> * Ağ trafiğinin güvenliğini sağlayın
+> * Ağ trafiğinin güvenliğini sağlama
 > * Arka uç VM’si oluşturma
 
 Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
@@ -146,7 +146,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-## <a name="secure-network-traffic"></a>Ağ trafiğinin güvenliğini sağlayın
+## <a name="secure-network-traffic"></a>Ağ trafiğinin güvenliğini sağlama
 
 Ağ güvenlik grubu (NSG), Azure Sanal Ağlara (VNet) bağlı kaynaklara ağ trafiğine izin veren veya reddeden güvenlik kurallarının listesini içerir. NSG’ler alt ağlarla veya tek tek ağ arabirimleriyle ilişkilendirilebilir. Bir NSG ağ arabirimiyle ilişkilendirildiğinde, yalnızca ilişkili VM için geçerli olur. Bir NSG bir alt ağ ile ilişkilendirildiğinde kurallar alt ağa bağlı tüm kaynaklar için geçerli olur. 
 
@@ -190,7 +190,7 @@ az network vnet subnet update \
 
 Ön uç VM’si oluşturulduğunda 22 numaralı bağlantı noktasından gelen trafiğe izin veren bir NSG kuralı oluşturulur. Bu kural, VM ile SSH bağlantısı kurulmasına izin verir. Bu örnekte aynı zamanda *80* numaralı bağlantı noktasındaki trafiğe de izin verilmelidir. Bu yapılandırma VM’den web uygulamasına erişilmesine izin verir.
 
-*80* numaralı bağlantı noktası için bir kural oluşturmak üzere [az network nsg rule create](/cli/azure/network/nsg/rule) komutunu kullanın.
+[80](/cli/azure/network/nsg/rule) numaralı bağlantı noktası için bir kural oluşturmak üzere *az network nsg rule create* komutunu kullanın.
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -298,7 +298,7 @@ Bu öğreticide sanal makinelerle ilgili Azure ağlarını oluşturup ve güvenl
 > * Sanal ağ ve alt ağ oluşturma
 > * Genel IP adresi oluşturma
 > * Ön uç VM’si oluşturma
-> * Ağ trafiğinin güvenliğini sağlayın
+> * Ağ trafiğinin güvenliğini sağlama
 > * Arka uç VM’si oluşturma
 
 Azure Backup kullanarak sanal makinelerdeki verilerin güvenliğini sağlamayı öğrenmek için sonraki öğreticiye geçin. 

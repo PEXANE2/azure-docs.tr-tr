@@ -1,5 +1,5 @@
 ---
-title: VM kullanılabilirlik kümesini değiştirme | Microsoft Docs
+title: VM kullanılabilirlik kümesini değiştirme
 description: Azure PowerShell ve Kaynak Yöneticisi dağıtım modelini kullanarak sanal makineleriniz için kullanılabilirlik kümesini değiştirmeyi öğrenin.
 keywords: ''
 services: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 5390643723f2907301554e69a1142cef181deb13
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7d03d684edfded1450043b943fc188c7aa07dc16
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749599"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039564"
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>Windows VM için kullanılabilirlik kümesini değiştirme
 Aşağıdaki adımlarda, Azure PowerShell kullanarak bir VM 'nin kullanılabilirlik kümesinin nasıl değiştirileceği açıklanır. VM, bir kullanılabilirlik kümesine yalnızca oluşturulduğunda eklenebilir. Kullanılabilirlik kümesini değiştirmek için sanal makineyi silip yeniden oluşturmanız gerekir. 
