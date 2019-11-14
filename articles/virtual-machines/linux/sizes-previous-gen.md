@@ -1,5 +1,5 @@
 ---
-title: Azure Linux VM boyutları-önceki nesiller | Microsoft Docs
+title: Azure Linux VM boyutları-önceki nesiller
 description: Azure 'da Linux sanal makineleri için kullanılabilen önceki boyut türlerini listeler. Bu serideki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: e56fb938ca8d45a148700a0a6b91e22a4f9034c3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fc64e5d15175e015f782e905d8a3135e4a0413bc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100859"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034852"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Önceki nesil sanal makine boyutları
 

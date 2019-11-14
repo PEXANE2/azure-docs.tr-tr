@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f782c5abe611086baae5d2ad71bc38516039a231
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 3470e27f64a672db0165b0132996db91a1447c08
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796048"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033975"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage çoklu protokol erişimi
 
@@ -47,10 +47,11 @@ BLOB depolama özellikleri için destek genişlemeye devam ettiğinden, bu tablo
 
 |BLOB depolama özelliği | Destek düzeyi |
 |---|---|
-|[Seyrek Erişimli erişim katmanı](storage-blob-storage-tiers.md)|Genel olarak kullanılabilir|
-|Blob SDK 'Ları |Genel olarak kullanılabilir|
-|[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Genel olarak kullanılabilir|
-|[CLI](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Genel olarak kullanılabilir|
+|[Seyrek Erişimli erişim katmanı](storage-blob-storage-tiers.md)|Genel kullanıma sunuldu|
+|Blob SDK 'Ları |Genel kullanıma sunuldu|
+|Blob REST API 'Leri|Genel olarak kullanılabilir|
+|[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Genel kullanıma sunuldu|
+|[CLI](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Genel kullanıma sunuldu|
 |[Tanılama günlükleri](../common/storage-analytics-logging.md)| Önizleme|
 |[Yaşam döngüsü yönetim ilkeleri](storage-lifecycle-management-concepts.md)| Önizleme|
 |[Azure Event Grid aracılığıyla bildirimler](data-lake-storage-events.md)|Önizleme|
@@ -74,11 +75,11 @@ Desteklenen BLOB depolama özelliklerinin listesi gibi, bu tabloda görünen ö�
 
 |Azure hizmeti | Destek düzeyi |
 |---|---|
-|[Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|Genel olarak kullanılabilir|
-|[Azure Event Hubs yakalama](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|Genel olarak kullanılabilir|
-|[Azure Akış Analizi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|Genel olarak kullanılabilir|
-|[IoT Hub’ı](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|Genel olarak kullanılabilir|
-|[Logic Apps](https://azure.microsoft.com/services/logic-apps/)|Genel olarak kullanılabilir|
+|[Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|Genel kullanıma sunuldu|
+|[Azure Event Hubs yakalama](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|Genel kullanıma sunuldu|
+|[Azure Akış Analizi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|Genel kullanıma sunuldu|
+|[IoT Hub’ı](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|Genel kullanıma sunuldu|
+|[Logic Apps](https://azure.microsoft.com/services/logic-apps/)|Genel kullanıma sunuldu|
 |[Azure Bilişsel Arama](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|Önizleme|
 
 Data Lake Storage 2. için Azure ekosistem desteğinin tüm listesi için bkz. [Azure hizmetleriyle Azure Data Lake Storage tümleştirme](data-lake-storage-integrate-with-azure-services.md).

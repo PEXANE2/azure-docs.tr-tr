@@ -1,26 +1,25 @@
 ---
-title: Yönetilmeyen Dizin Azure Active Directory Yöneticisi Microsoft Docs
-description: Azure Active Directory ' de yönetilmeyen bir dizinde (gölge kiracı) bir DNS etki alanı adı alma.
+title: Yönetilmeyen bir dizinin Yöneticisi-Azure AD | Microsoft Docs
+description: Yönetilmeyen bir Azure AD kuruluşunda (gölge kiracı) bir DNS etki alanı adı alma.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 08/01/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44276c911768f588064245c37a1284adeda8138f
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 7a0697e151c50b9722fef908eeb2c7498503b8c0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315716"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027382"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory yönetilmeyen bir dizinden yönetici olarak yararlanın
 
@@ -58,13 +57,13 @@ Yukarıdaki adımları tamamladığınızda, artık Office 365 ' de dördüncü 
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Azure AD 'de yönetilen bir kiracıya etki alanı adı ekleme
 
 1. [Microsoft 365 Yönetim merkezini](https://admin.microsoft.com)açın.
-2. **Kullanıcılar** sekmesini seçin ve özel etki alanı adı kullanmayan *user\@fourthcoffeexyz.onmicrosoft.com* gibi bir ada sahip yeni bir kullanıcı hesabı oluşturun. 
+2. **Kullanıcılar** sekmesini seçin ve özel etki alanı adı kullanmayan *Kullanıcı\@fourthcoffeexyz.onmicrosoft.com* gibi bir ada sahip yeni bir kullanıcı hesabı oluşturun. 
 3. Yeni Kullanıcı hesabının Azure AD kiracısı için genel yönetici ayrıcalıklarına sahip olduğundan emin olun.
 4. Microsoft 365 Yönetim merkezinde **etki alanları** sekmesini açın, etki alanı adını seçin ve **Kaldır**' ı seçin. 
   
    ![etki alanı adını Office 365 ' dan kaldırma](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Office 365 ' de kaldırılan etki alanı adına başvuran herhangi bir kullanıcı veya grup varsa,. onmicrosoft.com etki alanına yeniden adlandırılması gerekir. Etki alanı adını silmeye zorlarsanız, bu örnekte *user\@fourthcoffeexyz.onmicrosoft.com*olarak tüm kullanıcılar otomatik olarak yeniden adlandırılır.
+5. Office 365 ' de kaldırılan etki alanı adına başvuran herhangi bir kullanıcı veya grup varsa,. onmicrosoft.com etki alanına yeniden adlandırılması gerekir. Etki alanı adını silmeye zorlarsanız, bu örnekte *kullanıcı\@fourthcoffeexyz.onmicrosoft.com*için tüm kullanıcılar otomatik olarak yeniden adlandırılır.
   
 6. Azure AD kiracısı için genel yönetici olan bir hesapla [Azure AD Yönetim merkezinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oturum açın.
   
@@ -73,7 +72,7 @@ Yukarıdaki adımları tamamladığınızda, artık Office 365 ' de dördüncü 
    ![Azure AD 'ye eklenen etki alanı doğrulandı](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Office 365 kiracısında atanmış lisanslarına sahip Power BI veya Azure Rights Management hizmeti kullanıcılarının, etki alanı adı kaldırılırsa panoları kaydetmesi gerekir. Kullanıcı *\@fourthcoffeexyz.onmicrosoft.com* *gibiKullanıcıadıileoturumaçmasıgerekir,yaniKullanıcı,mathcoffee.xyz.\@*
+> Office 365 kiracısında atanmış lisanslarına sahip Power BI veya Azure Rights Management hizmeti kullanıcılarının, etki alanı adı kaldırılırsa panoları kaydetmesi gerekir. Kullanıcı *\@fourthcoffeexyz.onmicrosoft.com* gibi kullanıcı adıyla oturum açması gerekir, *mathcoffee. xyz Kullanıcı\@*
 
 ## <a name="external-admin-takeover"></a>Dış yönetici
 
@@ -105,7 +104,7 @@ Dış yönetici, SharePoint, OneDrive veya Skype Kurumsal içeren hizmet planlar
 
 #### <a name="more-information-about-rms-for-individuals"></a>Bireyler için RMS hakkında daha fazla bilgi
 
-[Bireyler Için RMS](/azure/information-protection/rms-for-individuals), yönetilmeyen kiracı sahip olduğunuz kiracı ile aynı bölgedeyse, otomatik olarak oluşturulan [Azure Information Protection kiracı anahtarı](/azure/information-protection/plan-implement-tenant-key) ve [varsayılan koruma şablonları](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) ile üzerine taşınır etki alanı adı.
+[Kişiler Için RMS](/azure/information-protection/rms-for-individuals), yönetilmeyen kiracı sahip olduğunuz kiracı ile aynı bölgedeyse, otomatik olarak oluşturulan [Azure Information Protection kiracı anahtarı](/azure/information-protection/plan-implement-tenant-key) ve [varsayılan koruma şablonları](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) da etki alanı adıyla birlikte taşınır.
 
 Yönetilmeyen kiracı farklı bir bölgedeyse, anahtar ve şablonlar üzerinden taşınmaz. Örneğin, yönetilmeyen kiracı Avrupa 'daysa ve sahip olduğunuz kuruluş Kuzey Amerika.
 
@@ -114,7 +113,7 @@ Bireyler için RMS, korunan içeriği açmak üzere Azure AD kimlik doğrulamas�
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>ForceTakeover seçeneği için Azure AD PowerShell cmdlet 'leri
 [PowerShell örneğinde](#powershell-example)kullanılan bu cmdlet 'leri görebilirsiniz.
 
-Cmdlet | Kullanım
+cmdlet | Kullanım
 ------- | -------
 `connect-msolservice` | İstendiğinde, yönetilen kiracınızda oturum açın.
 `get-msoldomain` | Geçerli kiracı ile ilişkili etki alanı adlarınızı gösterir.
@@ -172,7 +171,7 @@ Başarılı bir sınama sizi hata olmadan isteme geri döndürür.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure AD 'ye özel etki alanı adı ekleme](../fundamentals/add-custom-domain.md)
-* [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview)
+* [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure Cmdlet Başvurusu](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)

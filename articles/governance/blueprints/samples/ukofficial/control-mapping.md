@@ -1,18 +1,14 @@
 ---
 title: UK resmi & UK NHS şema örnekleri-denetim eşleme
 description: UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: e86c7040e94553b032b565e282639047a1ed8750
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5ba7cf481276b236c9299e660acb9668feeea683
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162945"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037762"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi
 
@@ -48,7 +44,7 @@ Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmaların�
 
 ## <a name="52-vulnerability-management"></a>5,2 güvenlik açığı yönetimi
 
-Bu şema, eksik Endpoint Protection, eksik sistem güncelleştirmeleri, işletim sistemi güvenlik açıkları, SQL güvenlik açıkları ve sanal olan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Makine güvenlik açıkları. Bu Öngörüler, dağıtılan kaynaklarınızın güvenlik durumu hakkında gerçek zamanlı bilgiler sağlar ve düzeltme eylemlerinin önceliklerini belirlemenize yardımcı olabilir.
+Bu şema, eksik Endpoint Protection, eksik sistem güncelleştirmeleri, işletim sistemi güvenlik açıkları, SQL güvenlik açıkları ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Bu Öngörüler, dağıtılan kaynaklarınızın güvenlik durumu hakkında gerçek zamanlı bilgiler sağlar ve düzeltme eylemlerinin önceliklerini belirlemenize yardımcı olabilir.
 
 - Azure Güvenlik Merkezi 'nde eksik Endpoint Protection izleme
 - Sistem güncelleştirmelerinin makinelerinizde yüklü olması gerekir
@@ -67,7 +63,7 @@ Bu şema, Kısıtlanmamış erişim, beyaz liste etkinliği ve tehditler üzerin
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 güvenli Kullanıcı Yönetimi/10 kimliği ve kimlik doğrulaması
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, sahip ve/veya okuma/yazma izinleri ile dış hesapları denetlemek için [Azure ilke](../../../policy/overview.md) tanımları ve çok faktörlü sahip olmayan okuma ve/veya yazma izinlerine sahip olan hesapları denetleyerek erişim haklarını kısıtlayıp denetlemenize yardımcı olur kimlik doğrulama etkinleştirildi.
+Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, sahip ve/veya okuma/yazma izinlerine sahip olan dış hesapları, çok faktörlü kimlik doğrulamasının etkin olmadığı okuma ve/veya yazma izinlerine göre denetlemek için [Azure ilke](../../../policy/overview.md) tanımları atayarak erişim haklarını kısıtlayıp denetlemenize yardımcı olur.
 
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
 - MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
@@ -124,7 +120,7 @@ Uygun güvenli Kullanıcı yönetimi için 25 ' ten fazla ilke kullanmaktan baş
 
 ## <a name="12-secure-service-administration"></a>12 güvenli hizmet yönetimi
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, sahip ve/veya yazma izinlerine sahip olan dış hesapları ve/veya sahip olmayan yazma izinlerini denetlemek için beş [Azure ilke](../../../policy/overview.md) tanımı atayarak ayrıcalıklı erişim haklarını kısıtlayıp denetlemenize yardımcı olur. Multi-Factor Authentication etkinleştirildi.
+Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, sahip ve/veya yazma izinlerine sahip olan dış hesapları ve/veya Multi-Factor Authentication etkinleştirilmemiş yazma izinlerini denetlemek için beş [Azure ilke](../../../policy/overview.md) tanımı atayarak ayrıcalıklı erişim haklarını kısıtlayıp denetlemenize yardımcı olur.
 
 Bulut hizmetini yönetmek için kullanılan sistemler bu hizmete yüksek ayrıcalıklı erişime sahip olur. Güvenlik denetimlerini atlama ve büyük hacimlere yönelik verileri çalmaya veya düzenlemeye yönelik araçlar da dahil olmak üzere bunun tehlikeye düşmesi önemli ölçüde etkiler. Hizmet sağlayıcısının yöneticileri tarafından işletimsel hizmeti yönetmek için kullanılan yöntemler, hizmetin güvenliğine daha fazla yararlanabilecek herhangi bir risk düzeyini azaltmak için tasarlanmalıdır. Bu ilke uygulanmadıysa, bir saldırgan güvenlik denetimlerini atlama ve büyük hacimlere veri çalmak veya işlemek için bir yol açabilir.
 
@@ -156,8 +152,8 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../
 - SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 - Tanılama ayarını denetle
 - SQL Server Level denetim ayarlarını denetleme
-- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
-- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
+- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
 - Sanal ağlar oluşturulduğunda Ağ İzleyicisi dağıt
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -166,9 +162,9 @@ UK RESMI ve UK NHS şemaları denetim eşlemesini gözden geçirdiğinize göre,
 
 > [!div class="nextstepaction"]
 > [UK resmi ve UK NHS şemaları-genel bakış](./index.md)
-> [Birleşik KRALLıK resmi ve UK NHS şemaları-dağıtım adımları](./deploy.md)
+> [UK resmi ve UK NHS şemaları-dağıtım adımları](./deploy.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

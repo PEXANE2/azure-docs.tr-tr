@@ -1,5 +1,5 @@
 ---
-title: Azure 'da OKD dağıtma | Microsoft Docs
+title: Azure 'da OKD dağıtma
 description: Azure 'da OKD 'yi dağıtın.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: 66d17fb2a96bbb5b1dcb51151242f014b4116b86
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 6ecae09b0efbc0e35e591b31dbb54fb49ce101b3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390540"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035395"
 ---
 # <a name="deploy-okd-in-azure"></a>Azure 'da OKD dağıtma
 
@@ -143,11 +143,11 @@ Dağıtım, dağıtılan toplam düğüm sayısına bağlı olarak en az 30 daki
 }
 ```
 
-Dağıtımın tamamlanmasını bekleyen komut satırını bağlamak istemiyorsanız, grup dağıtımı seçeneklerinden biri olarak `--no-wait` ' ı ekleyin. Dağıtımdan alınan çıkış, kaynak grubunun dağıtım bölümündeki Azure portal alabilir.
+Dağıtımın tamamlanmasını bekleyen komut satırını bağlamak istemiyorsanız, grup dağıtımı seçeneklerinden biri olarak `--no-wait` ekleyin. Dağıtımdan alınan çıkış, kaynak grubunun dağıtım bölümündeki Azure portal alabilir.
 
 ## <a name="connect-to-the-okd-cluster"></a>OKD kümesine bağlanma
 
-Dağıtım tamamlandığında, `OpenShift Console Url` ' ı kullanarak, OpenShift konsoluna tarayıcınızla bağlanın. Alternatif olarak, OKD ana için SSH kullanabilirsiniz. Dağıtımdan alınan çıktıyı kullanan bir örnek aşağıda verilmiştir:
+Dağıtım tamamlandığında, `OpenShift Console Url`kullanarak tarayıcınızla OpenShift konsoluna bağlanın. Alternatif olarak, OKD ana için SSH kullanabilirsiniz. Dağıtımdan alınan çıktıyı kullanan bir örnek aşağıda verilmiştir:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com

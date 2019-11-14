@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cijothomas
 ms.author: cithomas
 ms.date: 09/15/2019
-ms.openlocfilehash: 8dd46d8224567e1883fd2a397d5ba2b00a0fd43d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a599a7cbb1ceff165d7bde77ba4bf797d66b5026
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887290"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048242"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar)
 
@@ -24,7 +24,7 @@ Yeni SDK hiçbir telemetri koleksiyonunu kendisi yapmaz. Bunun yerine, [Dependen
 
 [Çalışan hizmeti için APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , her ne kadar veya nasıl çalıştırıldıklarından BAĞıMSıZ olarak http olmayan uygulamalar için idealdir. Uygulamanız çalışıyorsa ve Azure ile ağ bağlantısı varsa telemetri toplanabilir. Application Insights izleme .NET Core 'un desteklendiği her yerde desteklenir. Bu paket, yeni sunulan [.NET Core 3,0 Worker hizmetinde](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [ASP.NET Core 2.1/2.2 'de arka plan görevlerinde](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2), konsol uygulamalarında (.NET Core/.NET Framework) vb. kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
 
@@ -308,7 +308,7 @@ Aşağıda, Application Insights tarafından otomatik olarak toplanan tüm telem
 
 Önem derecesi `Warning` veya daha büyük `ILogger` ile oluşturulan Günlükler otomatik olarak yakalanır. Application Insights tarafından yakalanan günlük düzeylerini özelleştirmek için [ILogger belgelerini](ilogger.md#control-logging-level) izleyin.
 
-### <a name="dependencies"></a>Bağımlılıklar
+### <a name="dependencies"></a>Bağımlılıkları
 
 Bağımlılık koleksiyonu varsayılan olarak etkindir. [Bu](asp-net-dependencies.md#automatically-tracked-dependencies) makalede otomatik olarak toplanan bağımlılıklar açıklanmakta ve ayrıca el ile izleme yapmak için adımlar yer verilmektedir.
 
@@ -355,12 +355,12 @@ Bu SDK 'daki `ApplicationInsightsServiceOptions`, ASP.NET Core SDK 'daki `Micros
 
 |Ayar | Açıklama | Varsayılan
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | Liveölçümlerini etkinleştir/devre dışı bırak özelliği | doğru
-|Enableadaptiveörnekleme | Uyarlamalı örneklemeyi etkinleştir/devre dışı bırak | doğru
-|Enablesinyal | Düzenli aralıklarla (15 dakikalık varsayılan), .NET sürümü, Azure ortam bilgileri, varsa vb. gibi çalışma zamanı hakkında bilgi içeren "HeartBeatState" adlı özel bir ölçüm göndererek, sinyalleri etkinleştir/devre dışı bırak özelliği. | doğru
-|Addadutocollectedmetricextractor | Örnekleme gerçekleşmeden önce Istekler/bağımlılıklar hakkında önceden toplanmış ölçümler gönderen bir TelemetryProcessor olan otomatik Collectedölçümler ayıklayıcısı 'nı etkinleştirin/devre dışı bırakın. | doğru
+|EnableQuickPulseMetricStream | Liveölçümlerini etkinleştir/devre dışı bırak özelliği | true
+|Enableadaptiveörnekleme | Uyarlamalı örneklemeyi etkinleştir/devre dışı bırak | true
+|Enablesinyal | Düzenli aralıklarla (15 dakikalık varsayılan), .NET sürümü, Azure ortam bilgileri, varsa vb. gibi çalışma zamanı hakkında bilgi içeren "HeartBeatState" adlı özel bir ölçüm göndererek, sinyalleri etkinleştir/devre dışı bırak özelliği. | true
+|Addadutocollectedmetricextractor | Örnekleme gerçekleşmeden önce Istekler/bağımlılıklar hakkında önceden toplanmış ölçümler gönderen bir TelemetryProcessor olan otomatik Collectedölçümler ayıklayıcısı 'nı etkinleştirin/devre dışı bırakın. | true
 
-En güncel liste için [`ApplicationInsightsServiceOptions`yapılandırılabilir ayarları](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) inceleyin.
+En güncel liste için [`ApplicationInsightsServiceOptions`yapılandırılabilir ayarları](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) inceleyin.
 
 ### <a name="sampling"></a>Örnekleme
 

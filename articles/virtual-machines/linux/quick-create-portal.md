@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç - Azure portalında Linux sanal makinesi oluşturma | Microsoft Docs
+title: Hızlı başlangıç-Azure portal bir Linux sanal makinesi oluşturma
 description: Bu hızlı başlangıçta, bir Linux sanal makinesi oluşturmak için Azure portal kullanmayı öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8dbe8e43122fb7fa00129dec0d9961bd70e5a784
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 894fa2f3cda798a409db3ee8e9761c1702baf955
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693350"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035211"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalında Linux sanal makinesi oluşturma
 
@@ -111,7 +111,7 @@ sudo apt-get -y install nginx
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında kaynak grubunu, sanal makineyi ve tüm ilişkili kaynakları silebilirsiniz. Bunu yapmak için, sanal makinenin kaynak grubunu ve **Sil**’i seçin, ardından silinecek kaynak grubunun adını onaylayın.
+Artık gerekli olmadığında kaynak grubunu, sanal makineyi ve tüm ilişkili kaynakları silebilirsiniz. Bunu yapmak için sanal makinenin kaynak grubunu ve **Sil**’i seçip silinecek kaynak grubunun adını onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

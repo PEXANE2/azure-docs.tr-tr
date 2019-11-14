@@ -1,25 +1,25 @@
 ---
-title: Lisans grupları için PowerShell ve grafik örnekleri-Azure Active Directory | Microsoft Docs
+title: Grup lisanslama için PowerShell ve Graph örnekleri-Azure AD | Microsoft Docs
 description: Azure Active Directory grup tabanlı lisanslama için PowerShell + Graph örnekleri ve senaryoları
 services: active-directory
 keywords: Azure AD lisanslama
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8965f4872ac88601a4a77dc48ba430c2f419250f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 52a741fd0616fc17ed133309ea6200dca43a83b7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160565"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025572"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 'de grup tabanlı lisanslama için PowerShell ve Graph örnekleri
 
@@ -627,6 +627,6 @@ Gruplar aracılığıyla lisans yönetimi için özellik kümesi hakkında daha 
 * [Azure Active Directory'de gruba lisans atama](licensing-groups-assign.md)
 * [Azure Active Directory'de grubun lisans sorunlarını tanımlama ve çözme](licensing-groups-resolve-problems.md)
 * [Azure Active Directory'de tek tek lisanslı kullanıcıları grup tabanlı lisanslamaya geçirme](licensing-groups-migrate-users.md)
-* [Azure Active Directory 'de grup tabanlı lisanslama kullanarak kullanıcıları ürün lisansları arasında geçirme](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Kullanıcılar Azure Active Directory'de Grup tabanlı lisanslama kullanarak ürün lisansları arasında geçirme](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Azure Active Directory grup tabanlı lisanslamayla ilgili ek senaryolar](licensing-group-advanced.md)
-* [Azure Active Directory 'de grup tabanlı lisanslama için PowerShell örnekleri](../users-groups-roles/licensing-ps-examples.md)
+* [Azure Active Directory'de Grup tabanlı lisanslama için PowerShell örnekleri](../users-groups-roles/licensing-ps-examples.md)

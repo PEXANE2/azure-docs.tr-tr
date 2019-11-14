@@ -1,10 +1,10 @@
 ---
-title: PıM-Azure Active Directory 'de Azure AD rollerinin denetim geçmişini görüntüleme | Microsoft Docs
+title: PıM-Azure AD 'de Azure AD rolleri için denetim raporunu görüntüleme | Microsoft Docs
 description: Azure AD Privileged Identity Management (PıM) içinde Azure AD rollerinin denetim geçmişini görüntülemeyi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aa1c5121c723148884584ca3f00522c1c459859
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7c4a157d8d5bcd281ca9fee488e58c455034e898
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809009"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022057"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>PıM 'de Azure AD rollerinin denetim geçmişini görüntüleme
 

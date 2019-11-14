@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 05/25/2017
+ms.date: 11/12/2019
 tags: active-directory
 ms.author: mimart
 author: v-miegge
@@ -15,12 +15,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6449644f98280d75363f737be11f8e8b824cab36
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6aee049f91aaa071595ab42e9bb4d6b2f5e8616d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795193"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021835"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>B2B işbirliği Azure Active Directory sorunlarını giderme
 
@@ -46,7 +46,7 @@ Son zamanlarda bu ayarları değiştirdiyseniz veya konuk davet eden rolünü bi
 
 ## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>Davet etdiğim Kullanıcı, kullanım sırasında bir hata alıyor
 
-Yaygın hatalar şunlardır:
+Sık karşılaşılan hatalar şunlardır:
 
 ### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Davetli kullanıcının yöneticisinin kiracısında, Emaildoğrulanan kullanıcıların oluşturulmasını izin vermemiş
 
@@ -94,6 +94,10 @@ Bu sorunu çözmek için, bırakılan kiracıyı devralmalısınız. [Azure Acti
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Tam zamanında veya "viral" kiracısına sahip bir Konuk Kullanıcı parolasını sıfırlayamaz
 
 Kimlik kiracısı tam zamanında (JıT) veya viral kiracınız (yani ayrı, yönetilmeyen bir Azure kiracısı) ise, yalnızca Konuk Kullanıcı parolasını sıfırlayabilir. Bazen bir kuruluş, çalışanlar hizmetlere kaydolmak için iş e-posta adreslerini kullandıklarında oluşturulan [viral kiracılarının yönetimini ele geçirebilir](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) . Kuruluş bir viral kiracısı gerçekleştirdikten sonra, yalnızca o kuruluştaki bir yönetici kullanıcı parolasını sıfırlayabilir veya SSPR 'yi etkinleştirebilir. Gerekirse, kuruluş olarak, Konuk Kullanıcı hesabını dizininizden kaldırabilir ve bir daveti yeniden gönderebilirsiniz.
+
+## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>Konuk Kullanıcı AzureAD PowerShell v1 modülünü kullanamıyor
+
+18 Kasım 2019 itibariyle, dizininizde bulunan Konuk kullanıcılar ( **UserType** özelliğinin **Konuk**olduğu Kullanıcı hesapları olarak tanımlanır), azuread PowerShell v1 modülünü kullanmak için engellenir. İleri giderek, bir kullanıcının üye Kullanıcı ( **UserType** eşittir **üyesi**) olması veya azuread PowerShell V2 modülünü kullanması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

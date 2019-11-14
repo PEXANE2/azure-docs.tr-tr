@@ -9,14 +9,14 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 11/11/2019
-ms.openlocfilehash: 938286f0dafdeb11473bef1b88f876d7918e76ca
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 21577936f2487313683ac763b0c6c661c6c1f958
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012749"
+ms.locfileid: "74039328"
 ---
-# <a name="algorithm--module-reference"></a>Algoritma ve modül başvurusu
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı için algoritma & modül başvurusu
 
 Bu başvuru içeriği, Azure Machine Learning tasarımcısında bulunan her makine öğrenimi algoritması ve modülleriyle ilgili teknik arka plan sağlar (Önizleme).
 
@@ -25,7 +25,7 @@ Her modül, gerekli girişler verildiğinde bağımsız olarak çalışabilen ve
 > [!TIP]
 > Tasarımcıda herhangi bir işlem hattında, belirli bir modülle ilgili bilgi edinebilirsiniz. Modülünü seçin ve ardından **hızlı yardım** bölmesinde **daha fazla yardım** bağlantısını seçin.
 
-## <a name="modules"></a>Modüller
+## <a name="modules"></a>Modules
 
 Modüller işlevlere göre düzenlenmiştir:
 

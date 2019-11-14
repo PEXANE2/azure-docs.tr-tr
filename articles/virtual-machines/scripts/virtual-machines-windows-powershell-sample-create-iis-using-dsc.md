@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell Betiği Örneği - DSC ile IIS | Microsoft Docs
+title: Azure PowerShell Betiği Örneği - DSC ile IIS
 description: Azure PowerShell Betiği Örneği - DSC ile IIS
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
-ms.openlocfilehash: d9da17bc35afc3de4b0deac8ebc90faca94f5026
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3b8ab8c14935554e74c562346e0bd88eb5e3ad49
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749816"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037190"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>PowerShell ile IIS sanal makinesi oluşturma
 

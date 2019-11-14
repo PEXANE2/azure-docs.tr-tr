@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure’daki bir Linux sanal makinesinde LAMP dağıtma | Microsoft Docs
+title: Öğretici-Azure 'da Linux sanal makinesinde lamba dağıtma
 description: Bu öğreticide, Azure’daki bir Linux sanal makinesinde LAMP yığını yüklemeyi öğrenirsiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 893fba20af12bbbeeab2f0393177cd6f0daa6452
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3b1f4ef9d4e36c35cc72716125392aaff05eab6d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299422"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034464"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure’da bir Linux sanal makinesine bir LAMP web sunucusu yükleme
 

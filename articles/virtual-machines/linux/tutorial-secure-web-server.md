@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure’da SSL sertifikalarıyla Linux web sunucusunun güvenliğini sağlama | Microsoft Docs
+title: Öğretici-Azure 'da SSL sertifikalarıyla bir Linux Web sunucusunun güvenliğini sağlama
 description: Bu öğreticide, Azure Key Vault’ta depolanan SSL sertifikaları ile NGINX web sunucusunda çalışan bir Linux sanal makinesinin güvenliğini sağlamak için Azure CLI kullanmayı öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 39ffdbab61e1371c6660fe08c5a59ba1ced16fc8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: dc327abae7210d5432896fe1f0688cc405ddade6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300773"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034326"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Öğretici: Azure’da Linux sanal makinesi üzerinde Key Vault’ta depolanan SSL sertifikalarını kullanarak bir web sunucusunun güvenliğini sağlama
 Web sunucularının güvenliğini sağlamak için, web trafiğini şifrelemek üzere Güvenli Yuva Katmanı (SSL) sertifikası kullanılabilir. SSL sertifikaları Azure Key Vault’ta depolanabilir ve sertifikaların Azure’daki Linux sanal makinelerine (VM’ler) güvenli bir şekilde dağıtılabilmesini sağlar. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
@@ -136,7 +136,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>Güvenli web uygulamasını sınama
-Artık bir Web tarayıcısı açabilir ve adres çubuğuna *https: \/ @ no__t-2 @ no__t-3Publicıpaddress >* yazabilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
+Artık bir Web tarayıcısı açıp adres çubuğuna *https:\/\/\<publicıpaddress >* girebilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
 
 ![Web tarayıcısı güvenlik uyarısını kabul edin](./media/tutorial-secure-web-server/browser-warning.png)
 

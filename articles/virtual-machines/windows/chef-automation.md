@@ -1,5 +1,5 @@
 ---
-title: Chef ile Azure sanal makine dağıtımı | Microsoft Docs
+title: Chef ile Azure sanal makine dağıtımı
 description: Chef kullanarak Microsoft Azure otomatik sanal makine dağıtımı ve yapılandırması yapma hakkında bilgi edinin
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 5cbf53da5a0af0a511350b9f30153e2fefe72dcf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 58642cdbf164523390d5e4925290b43f6c05549b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080063"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039555"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Chef ile Azure sanal makine dağıtımını otomatikleştirme
 
@@ -36,7 +36,7 @@ Aşağıdaki diyagramda, üst düzey Chef mimarisi gösterilmektedir.
 
 ![][2]
 
-Chef 'in üç ana mimari bileşeni vardır: Chef sunucusu, Chef Istemcisi (node) ve Chef Iş Istasyonu.
+Chef 'in üç ana mimari bileşeni vardır: Chef Server, Chef Client (node) ve Chef Workstation.
 
 Chef sunucusu yönetim noktasıdır ve Chef sunucusu için iki seçenek vardır: barındırılan bir çözüm veya şirket içi bir çözüm.
 
@@ -97,9 +97,9 @@ Kuruluşunuz oluşturulduktan sonra, başlangıç paketini indirin.
 > Anahtarlarınızın sıfırlandığını bildiren bir uyarı alırsanız, henüz var olan bir altyapı yapılandırıldığımızda devam etmeniz normaldir.
 >
 
-Bu başlatıcı seti ZIP dosyası, `.chef` dizindeki kuruluş yapılandırma dosyalarını ve Kullanıcı anahtarınızı içerir.
+Bu başlatıcı seti ZIP dosyası `.chef` dizinindeki kuruluş yapılandırma dosyalarınızı ve Kullanıcı anahtarınızı içerir.
 
-Özel anahtar olduğu ve özel anahtarların Chef sunucusunda depolanmamalıdır olması nedeniyle ayrı olarak indirilmelidir.`organization-validator.pem` [Chef Yönet](https://manage.chef.io/)'ten Yönetim bölümüne gidin ve ayrı olarak indirmeniz için bir dosya sağlayan "doğrulama anahtarını Sıfırla" yı seçin. Dosyayı c:\chefdizinine kaydedin.
+`organization-validator.pem`, özel bir anahtar olduğu ve özel anahtarların Chef sunucusunda depolanmamalıdır olması nedeniyle ayrı olarak indirilmelidir. [Chef Yönet](https://manage.chef.io/)'ten Yönetim bölümüne gidin ve ayrı olarak indirmeniz için bir dosya sağlayan "doğrulama anahtarını Sıfırla" yı seçin. Dosyayı c:\chefdizinine kaydedin.
 
 ### <a name="configuring-your-chef-workstation"></a>Chef iş istasyonunuzu yapılandırma
 
@@ -107,7 +107,7 @@ Chef-Starter. zip içeriğini c:\chefdizinine ayıklayın.
 
 Chef-starter\chef-repo\.Chef altındaki tüm dosyaları c:\chef dizininize kopyalayın.
 
-C:\downloads klasörüne kaydedilirse dosyayı c:\chef dizinine kopyalayın `organization-validator.pem`
+C:\Downloads klasörüne kaydedilirse `organization-validator.pem` dosyasını c:\chef dizinine kopyalayın
 
 Dizininiz artık aşağıdaki örneğe benzer şekilde görünmelidir.
 
@@ -193,9 +193,9 @@ knife[:azure_client_secret] = "#1234p$wdchef19"
 Sonra Chef Iş Istasyonunu [indirip yükleyin](https://downloads.chef.io/chef-workstation/) .
 Chef Iş Istasyonunu varsayılan konum olarak yükler. Bu yükleme birkaç dakika sürebilir.
 
-Masaüstünde, Chef ürünleriyle etkileşimde bulunmak için ihtiyacınız olan araçla yüklenmiş bir ortam olan "CW PowerShell" i görürsünüz. FA PowerShell, gibi yeni geçici komutlar `chef-run` ve gibi geleneksel Chef CLI komutları `chef`sağlar. Yüklü Chef Iş Istasyonu ve Chef araçları `chef -v`sürümüne bakın. Ayrıca, Chef Iş Istasyonu uygulamasındaki "Chef Workstation" seçeneğini belirleyerek Iş Istasyonu sürümünüzü kontrol edebilirsiniz.
+Masaüstünde, Chef ürünleriyle etkileşimde bulunmak için ihtiyacınız olan araçla yüklenmiş bir ortam olan "CW PowerShell" i görürsünüz. FA PowerShell, `chef`gibi geleneksel Chef CLı komutlarının yanı sıra `chef-run` gibi yeni geçici komutlar sağlar. Yüklü Chef Iş Istasyonu sürümünüzü ve `chef -v`ile Chef araçlarını inceleyin. Ayrıca, Chef Iş Istasyonu uygulamasındaki "Chef Workstation" seçeneğini belirleyerek Iş Istasyonu sürümünüzü kontrol edebilirsiniz.
 
-`chef --version`şöyle bir şey döndürmelidir:
+`chef --version` şöyle bir şey döndürmelidir:
 
 ```
 Chef Workstation: 0.4.2
@@ -277,7 +277,7 @@ Bu adımda, varsayılan. html sayfası olarak kullanılacak bir şablon dosyası
 
     chef generate template webserver Default.htm
 
-`C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` Dosyasına gidin. Daha basit bir "Merhaba Dünya" HTML kodu ekleyerek dosyayı düzenleyin ve ardından dosyayı kaydedin.
+`C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` dosyasına gidin. Daha basit bir "Merhaba Dünya" HTML kodu ekleyerek dosyayı düzenleyin ve ardından dosyayı kaydedin.
 
 ## <a name="upload-the-cookbook-to-the-chef-server"></a>Tanıtım rehberini Chef sunucusuna yükleme
 Bu adımda, yerel makinede oluşturduğunuz tanıtım rehberinin bir kopyasını oluşturursunuz ve bu dosyayı Chef barındırılan sunucusuna yüklersiniz. Karşıya yüklendikten sonra, tanımlama kitabı **ilke** sekmesinin altında görüntülenir.
@@ -309,7 +309,7 @@ Sonraki bir komutun örneği görüntülenir.
     -r "recipe[webserver]"
 
 
-Yukarıdaki örnekte, Batı ABD bölgesinde Windows Server 2016 yüklü bir Standard_DS2_v2 sanal makinesi oluşturulur. Belirli değişkenlerinizi değiştirin ve çalıştırın.
+Yukarıdaki örnekte, Batı ABD bölgesinde Windows Server 2016 yüklü Standard_DS2_v2 bir sanal makine oluşturulur. Belirli değişkenlerinizi değiştirin ve çalıştırın.
 
 > [!NOTE]
 > Komut satırı ile, – TCP-endpoints parametresini kullanarak uç nokta ağı filtre kurallarınızı otomatikleştirdim. Web sayfası ve RDP oturumuna erişim sağlamak için 80 ve 3389 bağlantı noktalarını açdım.

@@ -8,14 +8,14 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 82c399580322334e67c0c9c2b88d1edf6f175e0c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ba403c8d823b7ead0414521ebd51dc6f6601ccd8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518297"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034167"
 ---
-# <a name="azcopy-jobs-remove"></a>AzCopy işleri kaldır
+# <a name="azcopy-jobs-remove"></a>azcopy işleri kaldırma
 
 Verilen iş KIMLIĞIYLE ilişkili tüm dosyaları kaldırın.
 
@@ -25,6 +25,13 @@ Verilen iş KIMLIĞIYLE ilişkili tüm dosyaları kaldırın.
 ```
 azcopy jobs remove [jobID] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
+
+- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Örnekler
 

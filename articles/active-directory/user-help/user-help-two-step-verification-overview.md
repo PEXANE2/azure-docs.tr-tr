@@ -1,5 +1,5 @@
 ---
-title: İki öğeli doğrulama ve iş veya okul hesabınız için genel bakış-Azure Active Directory | Microsoft Docs
+title: İş veya okul hesabınız & güvenlik doğrulaması-Azure AD
 description: Güvenlik doğrulama yöntemlerinizi, iş veya okul hesabınızla iki öğeli doğrulama kullanacak şekilde ayarlama hakkında bilgi edinin.
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.date: 08/05/2019
 ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10f3b272978ea24b515e39a8a8cc1fd0bea73a4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e8cda4b04a4555ed7747bb9444c2a5ec2e266573
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615991"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028461"
 ---
-# <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>İki öğeli doğrulama ve iş veya okul hesabınız için genel bakış
+# <a name="two-factor-verification-and-your-work-or-school-account"></a>İki öğeli doğrulama ve iş veya okul hesabınız
 
 BT ekibinizden veya patronunuzdan kuruluşunuzun hesabınıza ek bir güvenlik doğrulaması eklediğine dair bir e-posta aldınız. Bu ne anlama geliyor? Bu durum kuruluşunuzun oturum açma sırasında gerçekten söylediğiniz kişi olduğunuzdan emin olmak için ek adımları uygulamaya aldığını göstermektedir. İki öğeli doğrulama olarak da bilinen bu ek doğrulama, Kullanıcı adınızın, parolanızın ve bir mobil cihazın veya telefonunuzun bir birleşimi aracılığıyla yapılır.
 
@@ -29,7 +29,7 @@ BT ekibinizden veya patronunuzdan kuruluşunuzun hesabınıza ek bir güvenlik d
 >[!Important]
 >Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, Azure Active Directory (Azure AD) ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi için [Azure Active Directory Belgelerine](https://docs.microsoft.com/azure/active-directory) bakabilirsiniz.
 >
->Bu içerik, yalnızca kuruluşunuz tarafından sağlanmış olan hesap (örneğin, alain@contoso.com) için iş veya okul hesabınızla birlikte kullanılmak üzere tasarlanmıştır. İki öğeli doğrulamayla ilgili sorun yaşıyorsanız ve kişisel Microsoft hesabı, kendiniz için ayarladığınız hesap (örneğin, danielle@outlook.com), [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
+>Bu içerik, yalnızca kuruluşunuz tarafından sağlanmış olan hesap (örneğin, alain@contoso.com) için yalnızca iş veya okul hesabınızla birlikte kullanılmak üzere tasarlanmıştır. İki öğeli doğrulamayla ilgili sorun yaşıyorsanız ve kişisel Microsoft hesabı, kendiniz için ayarladığınız hesap (örneğin, danielle@outlook.com), [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
 
 ## <a name="who-decides-if-you-use-this-feature"></a>Bu özelliği kullanıp kullanmayacağına karar veriyor musunuz?
 

@@ -1,5 +1,5 @@
 ---
-title: Azure CLı ile özel bir Linux VM yükleme veya kopyalama | Microsoft Docs
+title: Azure CLı ile özel bir Linux VM yükleme veya kopyalama
 description: Kaynak Yöneticisi dağıtım modelini ve Azure CLı 'yi kullanarak özelleştirilmiş bir sanal makineyi karşıya yükleme veya kopyalama
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 6cc01266bb6e7f122868257e8a5b9e88e78dddea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 95486208f52b2faa2fbb3db5bf1ef968c330dab6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553490"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034297"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Azure CLı ile özel diskten bir Linux VM oluşturma
 
@@ -31,7 +31,7 @@ Bu makalede, özelleştirilmiş bir sanal sabit diskin (VHD) nasıl karşıya y�
 Özelleştirilmiş diskinizden birden çok VM oluşturmak için önce VM 'niz veya VHD 'nizden bir görüntü oluşturun. Daha fazla bilgi için bkz. [CLI kullanarak Azure VM 'nin özel bir görüntüsünü oluşturma](tutorial-custom-images.md).
 
 Özel bir disk oluşturmak için iki seçeneğiniz vardır:
-* Bir VHD’yi karşıya yükleme
+* VHD’yi karşıya yükleme
 * Mevcut bir Azure VM 'yi kopyalama
 
 
@@ -40,7 +40,7 @@ Aşağıdaki adımları tamamlayabilmeniz için şunlar gerekir:
 
 - Azure 'da kullanılmak üzere hazırlanan bir Linux sanal makinesi. Bu makalenin [VM 'Yi hazırla](#prepare-the-vm) bölümünde, SSH Ile bir VM 'ye bağlanmanız Için gereken Azure Linux Aracısı 'nı (waagent) yükleme konusunda nasıl özel bilgiler bulacağınızı ele alınmaktadır.
 - Mevcut bir [Azure tarafından onaylanan Linux dağılımınızdan](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VHD dosyası (veya [onaylı olmayan dağıtımlar için BILGILERE](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bakın) VHD biçimindeki bir sanal diske. VM ve VHD oluşturmak için birden çok araç mevcuttur:
-  - Kemu veya [](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) [KVM](https://www.linux-kvm.org/page/RunningKVM)'yi yükleyip yapılandırarak, görüntü biçimi olarak VHD 'yi kullanmaya özen gösterin. Gerekirse, [bir görüntüyü `qemu-img convert` dönüştürebilirsiniz](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) .
+  - Kemu veya [](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) [KVM](https://www.linux-kvm.org/page/RunningKVM)'yi yükleyip yapılandırarak, görüntü biçimi olarak VHD 'yi kullanmaya özen gösterin. Gerekirse, [bir görüntüyü `qemu-img convert`dönüştürebilirsiniz](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) .
   - Hyper-V ' d i [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) veya [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx)üzerinde de kullanabilirsiniz.
 
 > [!NOTE]
@@ -51,7 +51,7 @@ Aşağıdaki adımları tamamlayabilmeniz için şunlar gerekir:
 
 - En son [Azure CLI](/cli/azure/install-az-cli2) 'nın yüklü olduğundan ve [az oturum açma](/cli/azure/reference-index#az-login)ile bir Azure hesabında oturum açtığınızdan emin olun.
 
-Aşağıdaki örneklerde, örnek parametre adlarını `myResourceGroup`, `mystorageaccount` ve `mydisks` gibi kendi değerlerinizle değiştirin.
+Aşağıdaki örneklerde, örnek parametre adlarını `myResourceGroup`, `mystorageaccount`ve `mydisks`gibi kendi değerlerinizle değiştirin.
 
 <a id="prepimage"> </a>
 

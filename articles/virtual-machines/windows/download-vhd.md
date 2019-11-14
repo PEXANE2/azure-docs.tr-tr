@@ -1,5 +1,5 @@
 ---
-title: Azure 'dan bir Windows VHD indirin | Microsoft Docs
+title: Azure 'dan bir Windows VHD indirin
 description: Azure portal kullanarak bir Windows VHD 'YI indirin.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: c1c09382102045dd248b6771d8d0ea1ef090b6eb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c5891d7ea2b53ab3524cfff267e71b4f05779cfc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079614"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033601"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Azure 'dan bir Windows VHD indirin
 
@@ -35,7 +35,7 @@ VHD 'YI başka VM 'Ler oluşturmak üzere bir görüntü olarak kullanmak için 
 2.  [VM 'ye bağlanın](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 3.  VM 'de yönetici olarak komut Istemi penceresini açın.
 4.  Dizini *%windir%\system32\sysprep* olarak değiştirin ve Sysprep. exe ' yi çalıştırın.
-5.  Sistem Hazırlama Aracı iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve genelleştirilemedi ' ın seçili olduğundan emin olun .
+5.  Sistem Hazırlama Aracı iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **genelleştirilemedi** ' ın seçili olduğundan emin olun.
 6.  Kapalı Seçenekler ' de, **kapatın**' i seçin ve ardından **Tamam**' a tıklayın. 
 
 VHD 'YI, var olan bir VM veya veri diskinin yeni bir örneği için disk olarak kullanmak üzere aşağıdaki adımları izleyin:
@@ -55,7 +55,7 @@ VHD dosyasını indirmek için, [paylaşılan erişim imzası (SAS)](../../stora
 3.  URL 'nin süre sonu saatini *36000*olarak ayarlayın.
 4.  **URL Oluştur**' a tıklayın.
 
-    ![URL oluştur](./media/download-vhd/export-generate-new.png)
+    ![URL Oluştur](./media/download-vhd/export-generate-new.png)
 
 > [!NOTE]
 > Son kullanma süresi, Windows Server işletim sistemi için büyük VHD dosyasını indirmek üzere yeterli zaman sağlamak üzere varsayılan değer olarak artar. Windows Server işletim sistemini içeren bir VHD dosyasının, bağlantınıza bağlı olarak birkaç saat sürer. Bir veri diski için VHD 'yi İndiriyor olmanız durumunda varsayılan süre yeterlidir. 

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9e8dbbd40259c7a71f252d0d6e93dd6f135973de
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 3ee7879475801660b5200dddca88a0a81b2b6b9b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513532"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034153"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy işleri sürdürme
 
@@ -24,6 +24,13 @@ Verilen iş KIMLIĞI ile mevcut işi sürdürür.
 ```azcopy
 azcopy jobs resume [jobID] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
+
+- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Seçenekler
 

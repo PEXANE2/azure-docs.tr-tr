@@ -1,5 +1,5 @@
 ---
-title: Eklenmemiş Azure yönetilen ve yönetilmeyen disklerini bulma ve silme | Microsoft Docs
+title: Eklenmemiş Azure tarafından yönetilen ve yönetilmeyen diskleri bulma ve silme
 description: Azure CLı kullanarak eklenmemiş Azure yönetilen ve yönetilmeyen (VHD/sayfa Blobları) disklerini bulma ve silme.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e17292b3cf6edf851415efb83430331c54fbf610
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e475fcc5812177366b8c27ae2cca6b45d6c00709
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695527"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036147"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Eklenmemiş Azure tarafından yönetilen ve yönetilmeyen diskleri bulma ve silme
 Azure 'da bir sanal makineyi (VM) sildiğinizde, varsayılan olarak, VM 'ye bağlı olan tüm diskler silinmez. Bu özellik, VM 'lerin istenmeden silinmesinden dolayı veri kaybını önlemeye yardımcı olur. Bir VM silindikten sonra, eklenmemiş diskler için ödeme yapmaya devam edersiniz. Bu makalede, eklenmemiş disklerin nasıl bulunacağını ve silineceğini ve gereksiz maliyetlerin nasıl azaltalacağı gösterilmektedir. 
 
 
-## <a name="managed-disks-find-and-delete-unattached-disks"></a>Yönetilen diskler: Eklenmemiş diskleri bulma ve silme 
+## <a name="managed-disks-find-and-delete-unattached-disks"></a>Yönetilen diskler: eklenmemiş diskleri bulma ve silme 
 
 Aşağıdaki betik, **ManagedBy** özelliğinin değerini inceleyerek eklenmemiş [yönetilen diskleri](managed-disks-overview.md) arar. Yönetilen bir disk bir sanal makineye eklendiğinde, **ManagedBy** özelliği sanal makınenın kaynak kimliğini içerir. Yönetilen bir disk eklendiği zaman, **ManagedBy** özelliği null olur. Betik, bir Azure aboneliğindeki tüm yönetilen diskleri inceler. Betik, **ManagedBy** özelliği null olarak ayarlanmış bir yönetilen disk bulduktan sonra, komut dosyası diskin eklenmemiş olduğunu belirler.
 
@@ -50,7 +50,7 @@ do
 done
 ```
 
-## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Yönetilmeyen diskler: Eklenmemiş diskleri bulma ve silme 
+## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Yönetilmeyen diskler: eklenmemiş diskleri bulma ve silme 
 
 Yönetilmeyen diskler, [Azure depolama hesaplarında](../../storage/common/storage-create-storage-account.md) [sayfa BLOBLARı](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) olarak depolanan VHD dosyalarıdır. Aşağıdaki betik, **Leasestatus** özelliğinin değerini inceleyerek eklenmemiş yönetilmeyen diskleri (sayfa Blobları) arar. Bir sanal makineye yönetilmeyen bir disk eklendiğinde, **Leasestatus** özelliği **kilitli**olarak ayarlanır. Yönetilmeyen bir disk bağlı değilken, **Leasestatus** özelliği **kilitlenmemiş**olarak ayarlanır. Betik, bir Azure aboneliğindeki tüm Azure depolama hesaplarında yönetilmeyen tüm diskleri inceler. Betik, **Leasestatus** özelliği **kilitlenmemiş**olarak ayarlanmış bir yönetilmeyen disk bulduktan sonra, komut dosyası diskin eklenmemiş olduğunu belirler.
 

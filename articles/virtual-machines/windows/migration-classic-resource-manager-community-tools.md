@@ -1,5 +1,5 @@
 ---
-title: Topluluk araçları-klasik kaynakları Azure Resource Manager taşıyın | Microsoft Docs
+title: Topluluk araçları-klasik kaynakları Azure Resource Manager taşıyın
 description: Bu makalede, IaaS kaynaklarını klasik ' ten Azure Resource Manager dağıtım modeline geçirmeye yardımcı olmak üzere topluluk tarafından sağlanan araçlar kataloglandırır.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 2b5d218812878db6fb110c043afffd2f9a2d344d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a4a7ed6d57e72deb7f49895935e522e65e18f7d9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102671"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033309"
 ---
 # <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS kaynaklarını klasik modelden Azure Resource Manager’a geçirmeye yönelik topluluk araçları
 Bu makalede, IaaS kaynaklarının klasik Azure Resource Manager dağıtım modeline geçişine yardımcı olmak üzere topluluk tarafından sunulan araçlar kataloglandırır.
@@ -41,7 +41,7 @@ Bu, Azure hizmet yönetimi 'ndeki kurumsal geçişlerde Azure Resource Manager o
 [Araç belgelerine bağlantı](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
 ## <a name="migaz"></a>migAz
-migAz, tüm klasik IaaS kaynaklarını IaaS kaynaklarına Azure Resource Manager geçirmek için ek bir seçenektir. Geçiş, aynı abonelik içinde veya farklı abonelikler ve Abonelik türleri arasında gerçekleşebilir (örn: CSP abonelikleri).
+migAz, tüm klasik IaaS kaynaklarını IaaS kaynaklarına Azure Resource Manager geçirmek için ek bir seçenektir. Geçiş, aynı abonelik içinde veya farklı abonelikler ve Abonelik türleri (örn: CSP abonelikleri) arasında gerçekleşebilir.
 
 [Araç belgelerine bağlantı](https://github.com/Azure/migAz)
 

@@ -6,21 +6,21 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
-ms.date: 08/06/2018
+ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 44f45c53a12c7ac73c3de3f2734f024cb9bc6dd5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fa1179e55a4826450d30351be0a905efb059780b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899995"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031025"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler kullanarak bir Azure sanal makinesinde veya bir sanal makine ölçek kümesinde çalışan Web uygulamaları profili oluşturma
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Ayrıca, bu hizmetlerde Azure Application Insights Profiler dağıtabilirsiniz:
-* [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Uygulama Hizmeti](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
@@ -89,15 +89,15 @@ Application Insights Profiler havuzunu portaldan ayarlamak için henüz bir yol 
 
     ![WAD uzantısının yüklenip yüklenmediğini denetle][wadextension]
 
-1. VM 'niz için VM tanılama uzantısını bulun. Kaynak grubunuzu, Microsoft. COMPUTE virtualMachines, sanal makine adı ve uzantıları ' nı genişletin.  
+2. VM 'niz için VM tanılama uzantısını bulun. [https://resources.azure.com](https://resources.azure.com) kısmına gidin. Kaynak grubunuzu, Microsoft. COMPUTE virtualMachines, sanal makine adı ve uzantıları ' nı genişletin.  
 
     ![Azure Kaynak Gezgini 'de WAD config 'e gidin][azureresourceexplorer]
 
-1. WadCfg altındaki SinksConfig düğümüne Application Insights Profiler havuzunu ekleyin. Önceden bir SinksConfig bölümü yoksa, bir tane eklemeniz gerekebilir. Ayarlarınızda uygun Application Insights iKey değerini belirttiğinizden emin olun. Araştırıcılar modunu sağ üst köşeye okumak/yazmak ve mavi ' Düzenle ' düğmesine basmanız gerekir.
+3. WadCfg altındaki SinksConfig düğümüne Application Insights Profiler havuzunu ekleyin. Önceden bir SinksConfig bölümü yoksa, bir tane eklemeniz gerekebilir. Ayarlarınızda uygun Application Insights iKey değerini belirttiğinizden emin olun. Araştırıcılar modunu sağ üst köşeye okumak/yazmak ve mavi ' Düzenle ' düğmesine basmanız gerekir.
 
     ![Application Insights Profiler Havuzu Ekle][resourceexplorersinksconfig]
 
-1. Yapılandırmayı düzenledikten sonra ' Put ' düğmesine basın. Put başarılı olursa, ekranın ortasında yeşil bir onay işareti görünür.
+4. Yapılandırmayı düzenledikten sonra ' Put ' düğmesine basın. Put başarılı olursa, ekranın ortasında yeşil bir onay işareti görünür.
 
     ![Değişiklikleri uygulamak için PUT isteği gönder][resourceexplorerput]
 

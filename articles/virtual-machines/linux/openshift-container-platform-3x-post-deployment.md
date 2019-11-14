@@ -1,5 +1,5 @@
 ---
-title: Azure dağıtım sonrası görevlerinde OpenShift kapsayıcı platformu 3,11 | Microsoft Docs
+title: Azure dağıtım sonrası görevlerinde OpenShift kapsayıcı platformu 3,11
 description: OpenShift kapsayıcı platformu 3,11 kümesi dağıtıldıktan sonra için ek görevler.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: c1e04f048c081da4777045e5bee43991c95b4625
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d3008e2e2d720b67fcf0846c27d2fed1ef7db307
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392780"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035502"
 ---
 # <a name="post-deployment-tasks"></a>Dağıtım sonrası görevler
 
-Bir OpenShift kümesi dağıttıktan sonra ek öğeleri yapılandırabilirsiniz. Bu makalede şunları ele alınmaktadır:
+Bir OpenShift kümesi dağıttıktan sonra ek öğeleri yapılandırabilirsiniz. Bu makalede ele alınmıştır:
 
 - Azure Active Directory kullanarak çoklu oturum açmayı yapılandırma (Azure AD)
 - OpenShift 'i izlemek için Azure Izleyici günlüklerini yapılandırma
@@ -41,7 +41,7 @@ Bu adımlar, uygulama kaydını oluşturmak için Azure CLı ve izinleri ayarlam
 - Görünen ad: uygulama kaydı adı (örneğin, OCPAzureAD)
 - Giriş sayfası: OpenShift konsol URL 'SI (örneğin, https://masterdns343khhde.westus.cloudapp.azure.com/console)
 - Tanımlayıcı URI: OpenShift konsol URL 'SI (örneğin, https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Yanıt URL 'SI: Ana ortak URL ve uygulama kaydı adı (örneğin, https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- Yanıt URL 'SI: Ana genel URL ve uygulama kaydı adı (örneğin, https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
 - Parola: güvenli parola (güçlü bir parola kullanın)
 
 Aşağıdaki örnek, önceki bilgileri kullanarak bir uygulama kaydı oluşturur:

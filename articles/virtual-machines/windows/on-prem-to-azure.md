@@ -1,5 +1,5 @@
 ---
-title: AWS ve diğer platformlardan Azure 'da yönetilen disklere geçiş | Microsoft Docs
+title: AWS ve diğer platformlardan Azure 'da yönetilen disklere geçiş
 description: AWS veya diğer sanallaştırma platformları gibi diğer bulutlardan karşıya yüklenen VHD 'Leri kullanarak Azure 'da VM 'Ler oluşturun ve Azure yönetilen disklerden yararlanın.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4611efa8767094ea8f92dac584a5610811947620
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102584"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033057"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Azure 'da Amazon Web Services (AWS) ve diğer platformlardan yönetilen disklere geçirme
 
@@ -54,7 +54,7 @@ Bu bölüm, VM ve disk türleri üzerinde en iyi kararı vermenize yardımcı ol
 
 Yönetilmeyen disklerden yönetilen disklere geçiş yapmak için planlama yapıyorsanız, [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) rolüne sahip olan kullanıcıların VM boyutunu değiştiremeyeceği (ön dönüştürme işlemleri gibi) fark etmeniz gerekir. Bunun nedeni, yönetilen diskleri olan VM 'Lerin, kullanıcının işletim sistemi disklerinde Microsoft. COMPUTE/diskler/Write iznine sahip olmasını gerektirir.
 
-### <a name="location"></a>Location
+### <a name="location"></a>Konum
 
 Azure yönetilen disklerinin kullanılabildiği bir konum seçin. Premium yönetilen disklere geçiş yapıyorsanız Premium depolamanın, geçirmeyi planladığınız bölgede kullanılabilir olduğundan da emin olun. Kullanılabilir konumlara ilişkin güncel bilgiler için bkz. [bölgeye göre Azure hizmetleri](https://azure.microsoft.com/regions/#services) .
 

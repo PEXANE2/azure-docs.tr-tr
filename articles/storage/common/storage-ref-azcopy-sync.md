@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8b4ab0e44f2432056c9c94061c59c99c89a6407d
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9bfe88c34c78d18f2f5aefb8ae6946b9786030ad
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513427"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023506"
 ---
 # <a name="azcopy-sync"></a>azcopy eşitleme
 
@@ -35,6 +35,13 @@ Eşitle komutu kopyalama komutundan farklı yollarla farklılık gösterir:
 2. Sanal dizinler arasında eşitleme yaparken, bir sanal dizinle aynı ada sahip bir blob varsa yola bir sondaki eğik çizgi ekleyin (örneklere bakın).
 3. ' DeleteDestination ' bayrağı true ya da Prompt olarak ayarlandıysa, eşitleme, hedefteki dosyaları ve Blobları kaynakta mevcut olmayan şekilde siler.
 
+## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
+
+- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
+
 ### <a name="advanced"></a>Gelişmiş
 
 Bir dosya uzantısı belirtmezseniz, AzCopy dosya uzantısına veya içeriğe (uzantı belirtilmediyse) göre yerel diskten karşıya yüklenirken dosyaların içerik türünü otomatik olarak algılar.
@@ -48,7 +55,7 @@ Yerleşik arama tablosu küçüktür, ancak UNIX üzerinde, bu adlardan biri vey
 Windows 'da MIME türleri kayıt defterinden ayıklanır.
 
 ```azcopy
-azcopy sync [flags]
+azcopy sync <source> <destination> [flags]
 ```
 
 ## <a name="examples"></a>Örnekler
@@ -71,7 +78,7 @@ Tüm dizini alt dizinleriyle birlikte eşitleyin (özyinelemeli, varsayılan ola
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
 ```
 
-or
+veya
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5

@@ -1,5 +1,5 @@
 ---
-title: Java kullanarak bir Azure sanal makinesi oluşturma ve yönetme | Microsoft Docs
+title: Java kullanarak bir Azure sanal makinesi oluşturma ve yönetme
 description: Bir sanal makineyi ve tüm destekleyici kaynaklarını dağıtmak için Java ve Azure Resource Manager kullanın.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: fa6c5115663d770f561764356129448af878668b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bf0f2928bd7cbac08a2a887481f19b3acb99f6fa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103032"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039714"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -29,7 +29,7 @@ ms.locfileid: "70103032"
 > * Maven projesi oluşturma
 > * Bağımlılık Ekle
 > * Kimlik bilgileri oluştur
-> * Kaynak oluştur
+> * Kaynak oluşturma
 > * Yönetim görevlerini gerçekleştirme
 > * Kaynakları silme
 > * Uygulamayı çalıştırma
@@ -51,7 +51,7 @@ Bu adımların uygulanması yaklaşık 20 dakika sürer.
 
 ## <a name="add-dependencies"></a>Bağımlılık Ekle
 
-1. Uygulamanızın yapısını etkinleştirmek için `pom.xml` &lt;&gt; klasörü açın ve derleme yapılandırması ' nı projeye ekleyin: `testAzureApp`
+1. `testAzureApp` klasörü altında `pom.xml` dosyasını açın ve uygulamanızın oluşturulmasına olanak tanımak için derleme yapılandırmasını &lt;proje&gt; ekleyin:
 
     ```xml
     <build>
@@ -120,7 +120,7 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
 
 ### <a name="create-the-authorization-file"></a>Yetkilendirme dosyasını oluşturma
 
-1. Adlı `azureauth.properties` bir dosya oluşturun ve bu özellikleri buna ekleyin:
+1. `azureauth.properties` adlı bir dosya oluşturun ve bu özellikleri buna ekleyin:
 
     ```
     subscription=<subscription-id>
@@ -133,14 +133,14 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
     graphURL=https://graph.windows.net/
     ```
 
-    Abonelik **&lt;&gt;** tanımınızla, **uygulamakimliği&gt; Active Directory uygulama tanımlayıcısı, kimlik doğrulama anahtarı ile abonelik kimliğini değiştirin &lt;** **&lt; uygulama&gt;** anahtarı ve kiracı kimliğiyle kiracı **kimliği&gt;. &lt;**
+    **&lt;abonelik kimliği&gt;** abonelik tanımınızla değiştirin, **uygulama kimliği&gt;** Active Directory uygulama tanımlayıcısı ile&lt;,&lt;**kimlik doğrulama anahtarı** ile uygulama anahtarı ve&gt;**Kiracı kimliği**&lt;kiracı tanımlayıcısı ile&gt;.
 
 2. Dosyayı kaydedin.
 3. Kimlik doğrulama dosyasının tam yolu ile kabukta AZURE_AUTH_LOCATION adlı bir ortam değişkeni ayarlayın.
 
 ### <a name="create-the-management-client"></a>Yönetim istemcisi oluşturma
 
-1. `App.java` Altında`src\main\java\com\fabrikam` dosyayı açın ve bu paket ifadesinin en üstte olduğundan emin olun:
+1. `src\main\java\com\fabrikam` altında `App.java` dosyasını açın ve bu Package ifadesinin en üstte olduğundan emin olun:
 
     ```java
     package com.fabrikam.testAzureApp;
@@ -184,7 +184,7 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
 
     ```
 
-## <a name="create-resources"></a>Kaynak oluştur
+## <a name="create-resources"></a>Kaynak oluşturma
 
 ### <a name="create-the-resource-group"></a>Kaynak grubunu oluşturma
 

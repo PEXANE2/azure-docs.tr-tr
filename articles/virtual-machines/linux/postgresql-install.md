@@ -1,5 +1,5 @@
 ---
-title: Linux VM 'de PostgreSQL ayarlama | Microsoft Docs
+title: Linux VM üzerinde PostgreSQL ayarlama
 description: Azure 'daki bir Linux sanal makinesine PostgreSQL yükleme ve yapılandırma hakkında bilgi edinin
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 7fc8cb7c07dd27cd42dc4c6a7e0a576f0efe04e0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f6d521c7003583228990c80a90c1454821f584d3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091713"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035259"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Azure’da PostgreSQL yükleme ve yapılandırma
 PostgreSQL, Oracle ve DB2 ile benzer gelişmiş bir açık kaynaklı veritabanıdır. Tam ACID uyumluluğu, güvenilir işlem işleme ve çok sürümlü eşzamanlılık denetimi gibi kurumsal özellikli özellikler içerir. Ayrıca, ANSI SQL ve SQL/MED gibi standartları destekler (Oracle, MySQL, MongoDB için yabancı veri sarmalayıcıları dahil) ve diğer birçok kişi). 12 yordamsal diller, GıN ve GiST dizinleri, uzamsal veri desteği ve JSON ya da anahtar-değer tabanlı uygulamalar için birden çok NoSQL benzeri Özellik desteğiyle yüksek düzeyde genişletilebilir.
@@ -91,7 +91,7 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
    > PostgreSQL, güvenlik nedenleriyle veritabanını başlatmak, başlatmak veya kapatmak için kök olmayan bir Kullanıcı kullanır.
    > 
    > 
-4. Aşağıdaki komutları girerek *bash_profile* dosyasını düzenleyin. Bu satırlar *bash_profile* dosyasının sonuna eklenecektir:
+4. *Bash_profile* dosyasını aşağıdaki komutları girerek düzenleyin. Bu satırlar *bash_profile* dosyasının sonuna eklenecektir:
    
         cat >> ~/.bash_profile <<EOF
         export PGPORT=1999
@@ -136,7 +136,7 @@ Aşağıdaki komutları çalıştırın:
 
     # cp linux /etc/init.d/postgresql
 
-/Etc/ınitve d/PostgreSQL dosyasındaki iki değişkeni değiştirin. Ön ek PostgreSQL yükleme yoluna ayarlanır: **/seçenek/pgsql**. PGDATA, PostgreSQL için veri depolama yoluna ayarlanır: **/opt/pgsql_data**.
+/Etc/ınitve d/PostgreSQL dosyasındaki iki değişkeni değiştirin. Ön ek PostgreSQL yükleme yoluna ayarlanır: **/seçenek/pgsql**. PGDATA, PostgreSQL: **/seçenek/pgsql_data**veri depolama yoluna ayarlanır.
 
     # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 

@@ -1,6 +1,6 @@
 ---
-title: Bir şablondan Azure'da bir Linux VM oluşturma | Microsoft Docs
-description: Resource Manager şablonundan bir Linux VM oluşturmak için Azure CLI kullanma
+title: Bir şablondan Azure 'da bir Linux VM oluşturma
+description: Azure CLı kullanarak Kaynak Yöneticisi şablondan bir Linux sanal makinesi oluşturma
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -16,33 +16,33 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f12bfaa09b74bf2d9004044dbedb8d7bb15965c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 3e32e9f17b5c48e18453724eb683ba2e86dd0cdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671585"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036495"
 ---
-# <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonları ile Linux sanal makinesi oluşturma
+# <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla Linux sanal makinesi oluşturma
 
-Bir Azure Resource Manager şablonu ve Azure Cloud shell'den Azure CLI kullanarak bir Linux sanal makinesini (VM) oluşturmayı öğrenin. Bir Windows sanal makine oluşturmak için bkz: [bir Resource Manager şablonundan bir Windows sanal makine oluşturma](../windows/ps-template.md).
+Azure Cloud Shell 'den bir Azure Resource Manager şablonu ve Azure CLı kullanarak bir Linux sanal makinesi (VM) oluşturmayı öğrenin. Bir Windows sanal makinesi oluşturmak için, bkz. [Kaynak Yöneticisi şablondan Windows sanal makinesi oluşturma](../windows/ps-template.md).
 
 ## <a name="templates-overview"></a>Şablonlara genel bakış
 
-Azure Resource Manager şablonları altyapı ve Azure çözümünüzü yapılandırmasını tanımlayan JSON dosyalarıdır. Bir şablon kullanarak çözümünü yaşam döngüsü boyunca defalarca dağıtabilir ve kaynaklarınızın tutarlı bir durumda dağıtıldığından emin olabilirsiniz. Biçimi şablon ve nasıl oluşturulacağı hakkında daha fazla bilgi için bkz: [hızlı başlangıç: Oluşturma ve Azure portalını kullanarak Azure Resource Manager şablonlarını dağıtma](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md). Kaynak türleri için JSON söz dizimini görüntülemek üzere bkz. [Azure Resource Manager şablonlarında kaynak tanımlama](/azure/templates/microsoft.compute/allversions).
+Azure Resource Manager şablonlar, Azure çözümünüzün altyapısını ve yapılandırmasını tanımlayan JSON dosyalarıdır. Bir şablon kullanarak çözümünü yaşam döngüsü boyunca defalarca dağıtabilir ve kaynaklarınızın tutarlı bir durumda dağıtıldığından emin olabilirsiniz. Şablon biçimi ve nasıl oluşturacağınız hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md). Kaynak türleri için JSON söz dizimini görüntülemek üzere bkz. [Azure Resource Manager şablonlarında kaynak tanımlama](/azure/templates/microsoft.compute/allversions).
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-Bir Azure sanal makinesi oluşturma genellikle iki adımları içerir:
+Azure sanal makinesi oluşturma genellikle iki adım içerir:
 
 1. Bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bir sanal makineden önce bir kaynak grubu oluşturulmalıdır.
 1. Sanal makine oluşturur.
 
-Aşağıdaki örnek, bir VM oluşturur. bir [Azure Hızlı Başlangıç şablonu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json). Yalnızca SSH kimlik doğrulaması, bu dağıtım için izin verilir. İstendiğinde içeriğini gibi kendi SSH ortak anahtarı değerini girin *~/.ssh/id_rsa.pub*. SSH anahtar çifti oluşturmak için ihtiyacınız varsa bkz [oluşturmak ve azure'da Linux VM'ler için SSH anahtar çifti kullanma](mac-create-ssh-keys.md). Şablonun bir kopyasını şu şekildedir:
+Aşağıdaki örnek bir [Azure hızlı başlangıç şablonundan](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json)bir VM oluşturur. Bu dağıtım için yalnızca SSH kimlik doğrulamasına izin veriliyor. İstendiğinde,, *~/. ssh/id_rsa. pub*içeriği gıbı kendi SSH ortak anahtarınızın değerini sağlayın. Bir SSH anahtar çifti oluşturmanız gerekiyorsa bkz. [Azure 'Da Linux VM 'ler IÇIN SSH anahtar çifti oluşturma ve kullanma](mac-create-ssh-keys.md). Şablonun bir kopyası aşağıda verilmiştir:
 
 [!code-json[create-linux-vm](~/quickstart-templates/101-vm-sshkey/azuredeploy.json)]
 
-CLI betiği çalıştırmak için seçin **deneyin** Azure Cloud Shell'i açmak için. Betik yapıştırmak için kabuk sağ tıklayın ve ardından **yapıştırın**:
+CLı betiğini çalıştırmak için, Azure Cloud Shell 'i açmak üzere **deneyin** ' i seçin. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -60,19 +60,19 @@ az group deployment create --resource-group $resourceGroupName --template-uri ht
 az vm show --resource-group $resourceGroupName --name "$projectName-vm" --show-details --query publicIps --output tsv
 ```
 
-Son Azure CLI komutu yeni oluşturulan VM'nin genel IP adresini gösterir. Sanal makineye bağlanmak için genel IP adresi gereklidir. Bu makalenin sonraki bölüme bakın.
+Son Azure CLı komutu, yeni oluşturulan VM 'nin genel IP adresini gösterir. Sanal makineye bağlanmak için genel IP adresine ihtiyacınız vardır. Bu makalenin sonraki bölümüne bakın.
 
-Önceki örnekte, Github'da depolanmış bir şablon belirtildi. Ayrıca indirin veya bir şablon oluşturmak ve ile yerel bir yol belirtin `--template-file` parametresi.
+Önceki örnekte, GitHub 'da depolanan bir şablon belirttiniz. Ayrıca, bir şablon indirebilir veya oluşturabilir ve `--template-file` parametresiyle yerel yolu belirtebilirsiniz.
 
 Bazı ek kaynaklar aşağıda verilmiştir:
 
-- Resource Manager şablonları geliştirme hakkında bilgi edinmek için [Azure Resource Manager belgelerini](/azure/azure-resource-manager/).
-- Azure sanal makine şemaları görmek için bkz: [Azure şablon başvurusu](/azure/templates/microsoft.compute/allversions).
-- Daha fazla sanal makine şablonu örnekleri görmek için bkz: [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
+- Kaynak Yöneticisi şablonlarının nasıl geliştirileceği hakkında bilgi edinmek için bkz. [Azure Resource Manager belgeleri](/azure/azure-resource-manager/).
+- Azure sanal makine şemalarını görmek için bkz. [Azure şablon başvurusu](/azure/templates/microsoft.compute/allversions).
+- Daha fazla sanal makine şablonu örneği görmek için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
 
 ## <a name="connect-to-virtual-machine"></a>Sanal makineye bağlanma
 
-Normal olarak sanal makinenize yönelik SSH kullanabilirsiniz. Önceki komutta kendi genel IP adresi sağlayın:
+Daha sonra sanal makinenize normal olarak SSH ekleyebilirsiniz. Yukarıdaki komuttan kendi genel IP adresinizi sağlayın:
 
 ```bash
 ssh <adminUsername>@<ipAddress>
@@ -80,12 +80,12 @@ ssh <adminUsername>@<ipAddress>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu örnekte, temel bir Linux VM oluşturdunuz. Daha karmaşık ortamları oluşturun ya da uygulama çerçeveleri içeren daha fazla için Resource Manager şablonları, Gözat [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
+Bu örnekte, temel bir Linux sanal makinesi oluşturdunuz. Uygulama çerçeveleri içeren veya daha karmaşık ortamlar oluşturan daha fazla Kaynak Yöneticisi şablonları için [Azure hızlı başlangıç şablonlarına](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)gözatamazsınız.
 
-Şablonları oluşturma hakkında daha fazla bilgi için JSON söz dizimi ve dağıttığınız kaynak türleri için özellikleri görüntüleyin:
+Şablon oluşturma hakkında daha fazla bilgi edinmek için, dağıttığınız kaynak türlerinin JSON sözdizimini ve özelliklerini görüntüleyin:
 
-- [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
-- [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-- [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-- [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
+- [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+- [Microsoft. Network/Publicıpaddresses](/azure/templates/microsoft.network/publicipaddresses)
+- [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+- [Microsoft. Network/NetworkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+- [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

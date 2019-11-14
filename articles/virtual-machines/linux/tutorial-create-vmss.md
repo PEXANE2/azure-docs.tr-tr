@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure’da Linux için sanal makine ölçek kümesi oluşturma | Microsoft Docs
+title: Öğretici-Azure 'da Linux için sanal makine ölçek kümesi oluşturma
 description: Bu öğreticide, bir sanal makine ölçek kümesini kullanarak Linux VM'leri üzerinde yüksek oranda kullanılabilir bir uygulama oluşturmak ve dağıtmak için Azure CLI kullanmayı öğreneceksiniz
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3887e32aba625e6aaca01f1a8f743e50ff580d9e
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b9368da24af3b0fe08045ed869c752eefe3912fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300849"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034526"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesi oluşturma ve Linux üzerinde yüksek oranda kullanılabilir bir uygulama dağıtma
 
@@ -117,7 +117,7 @@ az vmss create \
   --generate-ssh-keys
 ```
 
-Tüm ölçek kümesi kaynaklarının ve VM'lerin oluşturulup yapılandırılması birkaç dakika sürer. Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. Uygulamaya erişmeniz birkaç dakika daha sürebilir.
+Tüm ölçek kümesi kaynaklarının ve VM'lerin oluşturulup yapılandırılması birkaç dakika sürer. Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. Uygulamaya erişmeniz birkaç dakika sürebilir.
 
 
 ## <a name="allow-web-traffic"></a>Web trafiğine izin verme
@@ -212,7 +212,7 @@ az vmss list-instance-connection-info \
 Veri diskleri oluşturup ölçek kümeleri ile kullanabilirsiniz. Daha önceki bir öğreticide [Azure disklerini yönetmeyi](tutorial-manage-disks.md) öğrenirken işletim sistemi diski yerine veri diskleri üzerinde uygulama oluşturmaya yönelik en iyi yöntemleri ve performans geliştirmelerini genel hatlarıyla gördünüz.
 
 ### <a name="create-scale-set-with-data-disks"></a>Veri diskleri ile ölçek kümesi oluşturma
-Ölçek kümesi oluşturup veri diskleri eklemek için [az vmss create](/cli/azure/vmss#az-vmss-create) komutuna `--data-disk-sizes-gb` parametresini ekleyin. Aşağıdaki örnek, her bir örneğe *50* GB’lık bir veri diski eklenmiş şekilde bir ölçek kümesi oluşturur:
+Ölçek kümesi oluşturup veri diskleri eklemek için `--data-disk-sizes-gb`az vmss create[ komutuna ](/cli/azure/vmss#az-vmss-create) parametresini ekleyin. Aşağıdaki örnek, her bir örneğe *50* GB’lık bir veri diski eklenmiş şekilde bir ölçek kümesi oluşturur:
 
 ```azurecli-interactive
 az vmss create \

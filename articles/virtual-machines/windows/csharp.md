@@ -1,5 +1,5 @@
 ---
-title: Kullanarak C# bir Azure sanal makinesi oluşturma ve yönetme | Microsoft Docs
+title: Kullanarak bir Azure sanal makinesi oluşturma ve yönetmeC#
 description: Bir C# sanal makineyi ve tüm destekleyici kaynaklarını dağıtmak için ve Azure Resource Manager kullanın.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: c6d092889deec934f1db1f1c93c06aa0dc217df5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe838ade7a65161efaeb60b9e4d8de17a7080da1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079603"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032780"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetmeC# #
 
@@ -29,7 +29,7 @@ ms.locfileid: "70079603"
 > * Visual Studio projesi oluşturma
 > * Paketi yükler
 > * Kimlik bilgileri oluştur
-> * Kaynak oluştur
+> * Kaynak oluşturma
 > * Yönetim görevlerini gerçekleştirme
 > * Kaynakları silme
 > * Uygulamayı çalıştırma
@@ -40,7 +40,7 @@ Bu adımların uygulanması yaklaşık 20 dakika sürer.
 
 1. Henüz yapmadıysanız, [Visual Studio 'yu](https://docs.microsoft.com/visualstudio/install/install-visual-studio)yükleyemezsiniz. Iş yükleri sayfasında **.net masaüstü geliştirme** ' yi seçin ve ardından **yükler**' i tıklatın. Özet içinde, **.NET Framework 4-4,6 geliştirme araçlarının** sizin için otomatik olarak seçili olduğunu görebilirsiniz. Visual Studio 'Yu önceden yüklediyseniz, Visual Studio başlatıcısı 'nı kullanarak .NET iş yükünü ekleyebilirsiniz.
 2. Visual Studio’da, **Dosya** > **Yeni** > **Proje**’ye tıklayın.
-3. Şablonlar > **görseli C#** ' nde **konsol uygulaması (.NET Framework)** seçeneğini belirleyin, projenin adı için *myDotnetProject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
+3. **Visual C#**  > **Şablonlar** ' da **konsol uygulaması (.NET Framework)** seçeneğini belirleyin, projenin adı için *myDotnetProject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
 
 ## <a name="install-the-package"></a>Paketi yükler
 
@@ -59,7 +59,7 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
 
 ### <a name="create-the-authorization-file"></a>Yetkilendirme dosyasını oluşturma
 
-1. Çözüm Gezgini ' de, *myDotnetProject* > **Yeni öğe** **Ekle** > ' ye sağ tıklayın ve ardından *görsel C# öğelerde* **metin dosyası** ' nı seçin. Dosyayı *azureauth. Properties*olarak adlandırın ve **Ekle**' ye tıklayın.
+1. Çözüm Gezgini ' de, > *myDotnetProject* ' ye sağ tıklayıp **Yeni > öğe** **Ekle** ' ye sağ tıklayın ve *ardından C# görsel öğelerde* **metin dosyası** seçin. Dosyayı *azureauth. Properties*olarak adlandırın ve **Ekle**' ye tıklayın.
 2. Şu yetkilendirme özelliklerini ekleyin:
 
     ```
@@ -73,7 +73,7 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
     graphURL=https://graph.windows.net/
     ```
 
-    Abonelik **&lt;&gt;** tanımınızla, **uygulamakimliği&gt; Active Directory uygulama tanımlayıcısı, kimlik doğrulama anahtarı ile abonelik kimliğini değiştirin &lt;** **&lt; uygulama&gt;** anahtarı ve kiracı kimliğiyle kiracı **kimliği&gt;. &lt;**
+    **&lt;abonelik kimliği&gt;** abonelik tanımınızla değiştirin, **uygulama kimliği&gt;** Active Directory uygulama tanımlayıcısı ile&lt;,&lt;**kimlik doğrulama anahtarı** ile uygulama anahtarı ve&gt;**Kiracı kimliği**&lt;kiracı tanımlayıcısı ile&gt;.
 
 3. Azureauth. Properties dosyasını kaydedin. 
 4. Windows adlandırılmış AZURE_AUTH_LOCATION içinde, oluşturduğunuz yetkilendirme dosyasının tam yolu ile bir ortam değişkeni ayarlayın. Örneğin, aşağıdaki PowerShell komutu kullanılabilir:
@@ -107,7 +107,7 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
         .WithDefaultSubscription();
     ```
 
-## <a name="create-resources"></a>Kaynak oluştur
+## <a name="create-resources"></a>Kaynak oluşturma
 
 ### <a name="create-the-resource-group"></a>Kaynak grubunu oluşturma
 

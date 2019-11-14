@@ -1,5 +1,5 @@
 ---
-title: Azure Linux VM boyutları-hızlandırılmış işlem | Microsoft Docs
+title: Azure Linux VM boyutları-hızlandırılmış işlem
 description: Azure 'da Linux sanal makineleri için kullanılabilen farklı GPU iyileştirilmiş boyutları listeler. Bu serideki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: ed8af91701a5ed77636bb86e8798981f37546f23
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 983e85dc0ebefb27804c0f3a794360def6050ba9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082125"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034917"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU iyileştirilmiş sanal makine boyutları
 
@@ -37,7 +37,7 @@ NVıDıA GPU sürücülerini el ile yüklemeyi tercih ederseniz desteklenen dağ
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* X Server 'ı veya Ubuntu NC VM 'lerinde `Nouveau` sürücüyü kullanan başka sistemleri yüklememelisiniz. NVIDIA GPU sürücülerini yüklemeden önce `Nouveau` sürücüyü devre dışı bırakmanız gerekir.  
+* Ubuntu NC VM 'lerinde `Nouveau` sürücüsünü kullanan X Server veya diğer sistemleri yüklememelisiniz. NVıDıA GPU sürücülerini yüklemeden önce `Nouveau` sürücüsünü devre dışı bırakmanız gerekir.  
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 - [Genel amaçlı](sizes-general.md)

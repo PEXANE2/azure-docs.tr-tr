@@ -1,17 +1,14 @@
 ---
 title: CIS Microsoft Azure temel geçişleri kıyaslama şeması örnek önerisi eşleme
 description: CIS, kıyaslama şeması örneğini Azure Ilkesine göre Microsoft Azure.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 6549cf030772d805b063510b9931968027639511
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7974a5f9e5ccca41cdaa838cf05e3861dbae1b8d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583132"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038437"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure temel kıyaslama kıyaslama şeması örneği
 
@@ -252,7 +249,7 @@ Bu şema, PostgreSQL veritabanı sunucularının SSL bağlantılarını zorlayab
 
 - PostgreSQL veritabanı sunucuları için SSL bağlantısını zorla etkinleştirilmelidir
 
-## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4,17 PostgreSQL veritabanı sunucusu için ' connection_throttling ' sunucu parametresinin ' ON ' olarak ayarlandığından emin olun
+## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4,17 ' connection_throttling ' sunucu parametresinin PostgreSQL veritabanı sunucusu için ' ON ' olarak ayarlandığından emin olun
 
 Bu şema, PostgreSQL veritabanı sunucularındaki deneme yanılma saldırılarını azaltmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
@@ -362,7 +359,7 @@ Artık CIS Microsoft Azure temel alan Kıyaslanmaların denetim eşlemesini göz
 > [CIS Microsoft Azure temel kıyaslanmaları kıyaslama şeması-genel bakış](./index.md)
 > [CIS Microsoft Azure temel geçişleri kıyaslama şema-Deploy adımları](./deploy.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

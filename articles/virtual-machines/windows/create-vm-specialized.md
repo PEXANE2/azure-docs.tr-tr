@@ -1,5 +1,5 @@
 ---
-title: Azure 'da özelleştirilmiş bir VHD 'den Windows sanal makinesi oluşturma | Microsoft Docs
+title: Azure 'da özelleştirilmiş bir VHD 'den Windows sanal makinesi oluşturma
 description: Kaynak Yöneticisi dağıtım modelini kullanarak işletim sistemi diski olarak özelleştirilmiş bir yönetilen disk ekleyerek yeni bir Windows sanal makinesi oluşturun.
 services: virtual-machines-windows
 author: cynthn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: be773779b25a32a5904012ae31950b18c33341dc
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ac18056f9bfdf22c55b5effac810b8c24ab4d81d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553420"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033850"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell kullanarak özel bir diskten Windows sanal makinesi oluşturma
 
@@ -267,7 +267,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>VM 'nin oluşturulduğunu doğrulama
-Yeni oluşturulan VM 'yi,  > **sanal makinelere** **gözatarak** [Azure Portal](https://portal.azure.com) veya aşağıdaki PowerShell komutlarını kullanarak görmeniz gerekir.
+Yeni oluşturulan VM 'yi, > **sanal makinelere** **gözatarak** [Azure Portal](https://portal.azure.com) veya aşağıdaki PowerShell komutlarını kullanarak görmeniz gerekir.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

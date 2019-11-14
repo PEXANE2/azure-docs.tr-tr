@@ -1,5 +1,5 @@
 ---
-title: Sanal makinelerde MATLAB kümeleri | Microsoft Docs
+title: Sanal makinelerde MATLAB kümeleri
 description: İşlem yoğunluklu paralel MATLAB iş yüklerinizi çalıştırmak için kümelerdeki dağıtılmış bilgi Işlem sunucusu kümeleri oluşturmak üzere Microsoft Azure sanal makineler kullanın
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: d57d9bfa964759e639c2cf40d86bd603b1900ce7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a2fb2479f5544b869b51e796085fcb4d0b76121a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103004"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038136"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure VM 'lerinde MATLAB dağıtılmış bilgi Işlem sunucusu kümeleri oluşturma
 İşlem yoğunluğu olan paralel MATLAB iş yüklerinizi çalıştırmak için bir veya daha fazla MATLAB dağıtılmış bilgi Işlem sunucusu kümesi oluşturmak üzere sanal makineleri Microsoft Azure kullanın. Kümelerinizi dağıtılmış bilgi Işlem sunucusu yazılımınızı, temel görüntü olarak kullanılacak bir VM 'ye yükler ve kümeyi dağıtmak ve yönetmek için bir Azure hızlı başlangıç şablonu veya Azure PowerShell betiği ( [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)' da kullanılabilir) kullanın. Dağıtımdan sonra, iş yüklerinizi çalıştırmak için kümeye bağlanın.

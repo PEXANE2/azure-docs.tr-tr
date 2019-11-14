@@ -1,17 +1,14 @@
 ---
 title: NIST SP 800-53 R4 şema örnek-Deploy adımları
 description: ', Şema yapıt parametresi ayrıntıları dahil NIST SP 800-53 R4 şema örneği için adımları dağıtın.'
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 0cd13ab0c7bfa25911eaa4c0b0441ca0936b1e08
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9923e2923c57224cadfa471753d8c90b98855607
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163094"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037307"
 ---
 # <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 şema örneğini dağıtma
 
@@ -102,12 +99,12 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |\[Preview\]: denetim gereksinimlerini desteklemek için NıST SP 800-53 R4 denetimlerini denetleme ve belirli VM uzantılarını dağıtma|İlke ataması|Windows VM yöneticileri grubuna dahil edilecek kullanıcıların listesi|Yöneticiler yerel grubuna dahil edilecek üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
 |\[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|Linux VM Ölçek Kümeleri için Log Analytics çalışma alanı (VMSS)|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
 |\[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: \[\]|
-|\[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma|İlke ataması|Linux VM 'Ler için Log Analytics çalışma alanı|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
-|\[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: \[\]|
+|\[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı|İlke ataması|Linux VM 'Ler için Log Analytics çalışma alanı|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
+|\[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: \[\]|
 |\[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|Windows VM Ölçek Kümeleri için Log Analytics çalışma alanı (VMSS)|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
 |\[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: \[\]|
-|\[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma|İlke ataması|Windows VM 'Leri için Log Analytics çalışma alanı|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
-|\[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: \[\]|
+|\[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı|İlke ataması|Windows VM 'Leri için Log Analytics çalışma alanı|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
+|\[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: \[\]|
 |Depolama hesaplarında Gelişmiş tehdit koruması dağıtma|İlke ataması|Etki|İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md)|
 |SQL Server 'lar üzerinde denetim dağıtma|İlke ataması|Bekletme döneminin gün cinsinden değer (0 sınırsız saklama anlamına gelir)|Bekletme günleri (belirtilmemişse, 180 gün)|
 |SQL Server 'lar üzerinde denetim dağıtma|İlke ataması|SQL Server denetimi için depolama hesabının kaynak grubu adı|Denetim, veritabanı olaylarını Azure Depolama hesabınızdaki bir denetim günlüğüne yazar (bir depolama hesabı, bu bölgedeki tüm sunucular tarafından paylaşılacak bir SQL Server oluşturulduğu her bölgede oluşturulur). Önemli-denetimin düzgün çalışması için kaynak grubunu veya depolama hesaplarını silmeyin veya yeniden adlandırmayın.|
@@ -122,7 +119,7 @@ NIST SP 800-53 R4 şema örneğini dağıtma adımlarını gözden geçirdiğini
 > [NIST SP 800-53 R4 şema-Overview](./index.md)
 > [NIST SP 800-53 R4 şema-Control Mapping](./control-mapping.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

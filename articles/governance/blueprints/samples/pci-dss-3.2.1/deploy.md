@@ -1,18 +1,14 @@
 ---
 title: PCI-DSS v 3.2.1 şema örnek-Deploy adımları
 description: Ödeme kartı sektör verileri güvenliği standart v 3.2.1 şema örneği için adımları dağıtın ve şema yapıtı parametresi ayrıntıları dahil.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: b765782adfa5fd63bc270ad28b74cf3bd1ca1d4a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b29a1a66b7407558769e506deed5e65f7ecb064c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163038"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037250"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğini dağıtma
 
@@ -99,7 +95,7 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |-|-|-|-|
 |\[Preview\] denetim PCI v 3.2.1:2018 denetimleri ve belirli VM uzantılarını, denetim gereksinimlerini destekleyecek şekilde dağıtın|İlke Ataması|Kaynak türleri listesi | Seçili kaynak türleri için tanılama ayarını denetleyin. Varsayılan değer tüm kaynaklar seçilidir| 
 |İzin verilen konumlar|İlke Ataması|Izin verilen konumların listesi|Herhangi bir kaynağın dağıtılması için izin verilen veri merkezi konumları listesi. Bu liste, istenen Azure konumlarına küresel olarak özelleştirilebilir. İzin vermek istediğiniz konumları seçin.| 
-|Kaynak grupları için izin verilen konumlar|İlke Ataması |İzin verilen konum |Bu ilke, kuruluşunuzun içinde kaynak grupları oluşturabileceğiniz konumları kısıtlamanıza olanak sağlar. Coğrafi uyumluluk gereksinimlerinizi zorlamak için kullanın.| 
+|Kaynak grupları için izin verilen konumlar|İlke Ataması |İzin verilen konum |Bu ilke, kuruluşunuzun içinde kaynak grupları oluşturabileceğiniz konumları kısıtlamanıza olanak sağlar. Coğrafi uyumluluk gereksinimlerinizi zorunlu kılmak için kullanabilirsiniz.| 
 |SQL Server 'lar üzerinde denetim dağıtma|İlke Ataması|Bekletme günleri|Gün sayısı cinsinden veri saklama. Varsayılan değer 180, ancak PCI 365 gerektirir.| 
 |SQL Server 'lar üzerinde denetim dağıtma|İlke Ataması|Depolama hesabı için kaynak grubu adı|Denetim, veritabanı olaylarını Azure Depolama hesabınızdaki bir denetim günlüğüne yazar (bir depolama hesabı, bu bölgedeki tüm sunucular tarafından paylaşılacak bir SQL Server oluşturulduğu her bölgede oluşturulur).| 
 
@@ -111,7 +107,7 @@ Bu aşamada, PCI-DSS v 3.2.1 şema örneğini dağıtma adımlarını gözden ge
 > [PCI-DSS v 3.2.1 şema-genel bakış](./index.md)
 > [PCI-DSS v 3.2.1 şema-Control Mapping](./control-mapping.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

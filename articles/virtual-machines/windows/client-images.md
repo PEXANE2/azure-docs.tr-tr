@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Windows istemci görüntülerini kullanma | Microsoft Docs
+title: Azure 'da Windows istemci görüntülerini kullanma
 description: Azure 'da geliştirme ve test senaryoları için Windows 7, Windows 8 veya Windows 10 dağıtmak üzere Visual Studio abonelik avantajlarını kullanma
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: dbb771351ee774a7fea33e5aaad3ae4d0c70f8b1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 812e6d251943d4418666f221ad8b5d2b6e501736
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079914"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039492"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Geliştirme ve test senaryoları için Azure 'da Windows istemcisini kullanın
 Azure 'da, uygun bir Visual Studio (eski adıyla MSDN) aboneliğine sahip olduğunuz geliştirme ve test senaryoları için Windows 7, Windows 8 veya Windows 10 Enterprise (x64) kullanabilirsiniz. Bu makalede, Azure 'da Windows 7, Windows 8.1, Windows 10 Enterprise ve aşağıdaki Azure Galeri görüntülerinin kullanımıyla ilgili uygunluk gereksinimleri özetlenmektedir.
@@ -26,8 +26,8 @@ Azure 'da, uygun bir Visual Studio (eski adıyla MSDN) aboneliğine sahip olduğ
 ![Azure portal görüntü ayrıntıları](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> Azure Galerisi 'nde Windows 10 Pro ve Windows 10 Pro N görüntüsü için lütfen Azure Portal [Azure 'da çok kiracılı barındırma hakları](windows-desktop-multitenant-hosting-deployment.md)
->![Pro görüntü ayrıntıları ile Windows 10 ' u Dağıtma bölümüne bakın](./media/client-images/windows-client-pro-images.png) 
+> Azure Galerisi 'nde Windows 10 Pro ve Windows 10 Pro N görüntüsü için, Azure portal Pro görüntü ayrıntıları ![
+>[Azure 'Da çok kiracılı barındırma haklarıyla Windows 10](windows-desktop-multitenant-hosting-deployment.md) ' u Dağıtma bölümüne bakın](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>Abonelik uygunluğu

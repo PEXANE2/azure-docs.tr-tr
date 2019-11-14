@@ -1,5 +1,5 @@
 ---
-title: Windows için Azure N serisi GPU sürücü kurulumu | Microsoft Docs
+title: Windows için Azure N serisi GPU sürücü kurulumu
 description: Azure 'da Windows Server veya Windows çalıştıran N serisi VM 'Ler için NVıDıA GPU sürücülerini ayarlama
 services: virtual-machines-windows
 author: cynthn
@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92ebd34c20e3733971593344925dcb566a1bf912
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 9f6286f0a9c15b8089ff5ce9d6f3879b40aceaef
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207358"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033156"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM 'Lere NVıDıA GPU sürücülerini yükler 
 
@@ -51,7 +51,7 @@ GPU cihaz durumunu sorgulamak için, sürücüyle birlikte yüklenen [NVIDIA-SMI
 
 1. Bir komut istemi açın ve **C:\Program Files\nvıdıa Corporation\NVSMI** dizinine geçin.
 
-2. `nvidia-smi` öğesini çalıştırın. Sürücü yüklüyse aşağıdakine benzer bir çıktı görürsünüz. VM 'de Şu anda bir GPU iş yükü çalıştırmadığınız takdirde **GPU-Util** , **% 0** gösterir. Sürücü sürümünüz ve GPU ayrıntılarınız gösterilenlerden farklı olabilir.
+2. `nvidia-smi` öğesini çalıştırın. Sürücü yüklüyse aşağıdakine benzer bir çıktı görürsünüz. VM 'de Şu anda bir GPU iş yükü çalıştırmadığınız takdirde **GPU-Util** , **%0** gösterir. Sürücü sürümünüz ve GPU ayrıntılarınız gösterilenlerden farklı olabilir.
 
 ![NVıDıA cihaz durumu](./media/n-series-driver-setup/smi.png)  
 

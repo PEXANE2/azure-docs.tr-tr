@@ -1,5 +1,5 @@
 ---
-title: IaaS kaynaklarının klasik konumundan Azure Resource Manager geçişine yönelik planlama | Microsoft Docs
+title: IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 description: IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 840d7b9534124a4fcc93962e8329dc6ce2bdf1a4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2c0f4924c41b36c306d4e6b9286105662744c4da
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749351"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033235"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 Azure Resource Manager çok sayıda harika özellik sunurken, işlerin sorunsuz şekilde çalıştığından emin olmak için geçiş yolculuğunun planlanmaları önemlidir. Planlamada harcama süresi, geçiş etkinliklerini yürütürken sorunlarla karşılaşmamanız gerekir.

@@ -1,6 +1,6 @@
 ---
-title: "Bir sanal ağı devre dışı bir ExpressRoute 'a bağlama: Azure portal | Microsoft Docs"
-description: Bir sanal ağ için Azure ExpressRoute bağlantı hattına bağlayın. Nasıl yapılır adımları.
+title: 'ExpressRoute: sanal ağı bir devreye bağlama: Azure portal'
+description: VNet 'i Azure ExpressRoute bağlantı hattına bağlayın. Nasıl yapılır adımları.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6185540340bba4299eb9307432480c91d531779a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088910"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022202"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Portalı kullanarak bir ExpressRoute bağlantı hattına bir sanal ağı bağlama
 > [!div class="op_single_selector"]
-> * [Azure portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video - Azure portalı](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -71,7 +71,7 @@ Bir ExpressRoute bağlantı hattı birden çok farklı abonelikler arasında pay
 
 - Her küçük bulutların büyük bulut içinde bir kuruluştaki farklı departmanlara ait abonelikleri temsil etmek için kullanılır.
 - Her kuruluş içindeki bölümlerin hizmetlerini dağıtmak için kendi aboneliği kullanabilirsiniz ancak, şirket içi ağınıza bağlanmak için tek bir ExpressRoute bağlantı hattı paylaşabilirler.
-- Tek bir departman (Bu örnekte: It), ExpressRoute devresine sahip olabilir. Kuruluştaki diğer Aboneliklerdeki ilişkili diğer Azure Active Directory kiracıları ve Kurumsal Anlaşma kayıtları bağlantılı abonelikleri de dahil olmak üzere, bağlantı hattı için yetkilendirme ve ExpressRoute bağlantı hattı kullanabilirsiniz.
+- Tek bir bölüm (Bu örnekte: BT) ExpressRoute bağlantı hattına sahip olabilir. Kuruluştaki diğer Aboneliklerdeki ilişkili diğer Azure Active Directory kiracıları ve Kurumsal Anlaşma kayıtları bağlantılı abonelikleri de dahil olmak üzere, bağlantı hattı için yetkilendirme ve ExpressRoute bağlantı hattı kullanabilirsiniz.
 
   > [!NOTE]
   > ExpressRoute bağlantı hattı sahibinden için adanmış bir bağlantı hattı için bağlantı ve bant genişliği ücretleri uygulanır. Tüm sanal ağları, aynı bant genişliğini paylaşır.
@@ -122,7 +122,7 @@ Bağlantı hattı kullanıcısı, kaynak Kimliğini ve bağlantı hattı sahibin
 
    ![Temel bilgileri sayfası](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. İçinde **ayarları** seçin sayfasında **sanal ağ geçidi** ve **yetkilendirmeyi kullanma** onay kutusu.
-6. Girin **yetkilendirme anahtarını** ve **eş devre URI'si** ve bağlantı bir ad verin. **Tamam**'ı tıklatın. **Eş devre URI 'si** , ExpressRoute bağlantı HATTıNıN kaynak kimliğidir (ExpressRoute devresinin Özellikler ayar bölmesinde bulabilirsiniz).
+6. Girin **yetkilendirme anahtarını** ve **eş devre URI'si** ve bağlantı bir ad verin. **OK (Tamam)** düğmesine tıklayın. **Eş devre URI 'si** , ExpressRoute bağlantı HATTıNıN kaynak kimliğidir (ExpressRoute devresinin Özellikler ayar bölmesinde bulabilirsiniz).
 
    ![Ayarlar sayfası](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Bilgileri gözden **özeti** sayfasında ve tıklayın **Tamam**.

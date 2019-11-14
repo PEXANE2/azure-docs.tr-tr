@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage 2. ile ilgili bilinen sorunlar | Microsoft Docs
-description: Azure Data Lake Storage 2. sınırlamalar ve bilinen sorunlar hakkında bilgi edinin
+title: Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar | Microsoft Docs
+description: Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar ve sınırlamalar hakkında bilgi edinin
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 95f2dbdbb34ff349d14be430b4e5a4fa84df0f5a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78693dceaac119279b1c1d06a6c3a18cc4fdb485
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581481"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033933"
 ---
-# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
+# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar
 
 Bu makalede henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Data Lake Storage 2.) olan depolama hesaplarıyla kısmen desteklenen özellikler ve araçlar listelenmektedir.
 
@@ -57,7 +57,7 @@ Aşağıdaki tabloda henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Dat
 | **Azure Blob depolama yaşam döngüsü yönetim ilkeleri** | Tüm erişim katmanları desteklenir. Arşiv erişim katmanı Şu anda önizleme aşamasındadır. Blob anlık görüntülerini silme henüz desteklenmiyor. |
 | **Azure Content Delivery Network (CDN)** | Henüz desteklenmiyor|
 | **Azure Arama** |Desteklenir (Önizleme)|
-| **Azure Depolama Gezgini** | Sürüme özgü destek <br><br>Yalnızca sürüm `1.6.0` veya üstünü kullanın. <br>Sürüm `1.6.0` [ücretsiz bir indirme](https://azure.microsoft.com/features/storage-explorer/)olarak sunulmaktadır.|
+| **Azure Depolama Gezgini** | Sürüme özgü destek <br><br>Yalnızca `1.10.0``1.6.0` sürümleri kullanın. <br> Sürüm `1.10.0` [ücretsiz bir indirme](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)olarak sunulmaktadır. Sürüm `1.11.0` henüz desteklenmiyor.|
 | **Blob kapsayıcı ACL 'Leri** |Henüz desteklenmiyor|
 | **Blobsigortası** |Henüz desteklenmiyor|
 | **Özel etki alanları** |Henüz desteklenmiyor|

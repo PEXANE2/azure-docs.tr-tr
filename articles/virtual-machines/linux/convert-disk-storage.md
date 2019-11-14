@@ -1,5 +1,5 @@
 ---
-title: Azure yönetilen diskler depolamayı standart 'ten Premium veya Premium 'a standart olarak dönüştürme | Microsoft Docs
+title: Azure yönetilen diskler depolamasını standart 'ten Premium veya Premium 'a standart olarak dönüştürme
 description: Azure yönetilen diskler depolama alanını standart iken Premium veya Premium 'a Azure CLı kullanarak dönüştürme.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 59293ac300b6774b55d3909773b110f14bb43119
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: abd3c7112a70850d137f77d28e83c60916a96ea3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696087"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036631"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure yönetilen diskler depolamasını standart 'ten Premium veya Premium 'a standart olarak dönüştürme
 
-Azure tarafından yönetilen disklerin dört disk türü vardır: Azure Ultra SSDs (Önizleme), Premium SSD, standart SSD ve standart HDD. Performans gereksinimlerinize göre üç GA disk türü (Premium SSD, standart SSD ve standart HDD) arasında geçiş yapabilirsiniz. Ya da bir ultra SSD 'ye geçiş yapamazsınız, yeni bir tane dağıtmanız gerekir.
+Azure yönetilen disklerinin dört disk türü vardır: Azure Ultra SSDs (Önizleme), Premium SSD, standart SSD ve standart HDD. Performans gereksinimlerinize göre üç GA disk türü (Premium SSD, standart SSD ve standart HDD) arasında geçiş yapabilirsiniz. Ya da bir ultra SSD 'ye geçiş yapamazsınız, yeni bir tane dağıtmanız gerekir.
 
 Bu işlev, yönetilmeyen diskler için desteklenmez. Ancak, disk türleri arasında geçiş yapabilmesi için, [yönetilmeyen bir diski yönetilen bir diske kolayca dönüştürebilirsiniz](convert-unmanaged-to-managed-disks.md) .
 
@@ -131,7 +131,7 @@ az vm start --ids $vmId
 
 Şu adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Sanal makineler**listesinden VM 'yi seçin.
 3. VM durdurulmamışsa, VM **'ye genel bakış** bölmesinin üst kısmında **Durdur** ' u seçin ve VM 'nin durdurulmasını bekleyin.
 4. VM 'nin bölmesinde, menüden **diskler** ' i seçin.

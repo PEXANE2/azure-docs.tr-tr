@@ -1,17 +1,14 @@
 ---
 title: Fedrampa orta şeması örnek denetimi eşleme
 description: Fedrampa orta şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/31/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 35b2e524298b1b34bae3903c842577b1683b9a93
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1bf87ef1b5116b086797b8521268bd4575970925
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581380"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032335"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>Fedrampa orta şema örneğinin denetim eşlemesi
 
@@ -73,7 +70,7 @@ Bu şema, Azure App Service uygulaması için uzaktan hata ayıklamanın kapalı
 - Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - API uygulaması için uzaktan hata ayıklama kapatılmalıdır
 - İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır
-- Web uygulaması için uzaktan hata ayıklama kapatılmalıdır
+- Uzaktan hata ayıklama için Web uygulaması kapalı olmaları
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-denetim Işleme hatalarının 5 yanıtı
 
@@ -90,11 +87,11 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
+- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
+- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
+- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
 - Tanılama ayarını denetle
 - SQL Server üzerinde denetim etkinleştirilmelidir
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
@@ -215,7 +212,7 @@ Bu şema, iletişim protokolleri için uygulanan şifreleme mekanizmasını izle
 - API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetleme
 - Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetlemek için gereksinimleri dağıtma
-- İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir
 - Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir
 - Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
@@ -265,11 +262,11 @@ Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyere
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
+- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
+- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
+- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
 - SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
@@ -289,7 +286,7 @@ Fedrata orta şema öğesinin denetim eşlemesini inceledikten sonra, şema ve b
 > [Fedrampa orta şema-genel bakış](./index.md)
 > [fodramp orta şema-Deploy adımları](./deploy.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991903"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037236"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. erişim denetimi
 
@@ -25,7 +25,7 @@ Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (RBAC) hem de
 
 RBAC, *güvenlik sorumlularına*izin kümelerini etkili bir şekilde uygulamak için rol atamaları kullanır. *Güvenlik sorumlusu* , Azure kaynaklarına erişim isteyen Azure ACTIVE DIRECTORY (ad) ' de tanımlanan bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliği temsil eden bir nesnedir.
 
-Genellikle, bu Azure kaynakları en üst düzey kaynaklarla sınırlıdır (örneğin: Azure depolama hesapları). Azure depolama söz konusu olduğunda ve sonuç olarak Azure Data Lake Storage 2., bu mekanizma kapsayıcı (dosya sistemi) kaynağına genişletilir.
+Genellikle, bu Azure kaynakları en üst düzey kaynaklarla sınırlıdır (örneğin, Azure depolama hesapları). Azure depolama söz konusu olduğunda ve sonuç olarak Azure Data Lake Storage 2., bu mekanizma kapsayıcı (dosya sistemi) kaynağına genişletilir.
 
 Depolama hesabınızın kapsamındaki güvenlik sorumlularına roller atamayı öğrenmek için bkz. [Azure Portal Azure Blob 'a erişim verme ve VERILERI RBAC ile sıraya](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)alma.
 
@@ -36,7 +36,7 @@ RBAC rol atamalarının kullanılması, erişim izinlerini denetlemek için gü�
 Bir güvenlik sorumlusu [yerleşik bir rol](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)aracılığıyla veya özel bir rol aracılığıyla RBAC veri izinleri verildiğinde, bu izinler bir isteğin yetkilendirilmesine göre önce değerlendirilir. İstenen işlem güvenlik sorumlusunun RBAC atamaları tarafından yetkilendirildiyse, yetkilendirme anında çözülür ve ek ACL denetimleri gerçekleştirilmez. Alternatif olarak, güvenlik sorumlusunun bir RBAC ataması yoksa veya isteğin işlemi atanan izinle eşleşmezse, güvenlik sorumlusunun istenen işlemi gerçekleştirme yetkisine sahip olup olmadığını belirlemesi için ACL denetimleri gerçekleştirilir.
 
 > [!NOTE]
-> Güvenlik sorumlusu, Depolama Blobu veri sahibi yerleşik rol ataması ' na atanmışsa, güvenlik sorumlusu bir *Süper Kullanıcı* olarak değerlendirilir ve bir dizinin sahibini ayarlama da dahil olmak üzere tüm işlemler için tam erişim verilir. dosya ve dizinleri ve dosyaları için sahip olmadıkları ACL 'Ler. Süper Kullanıcı erişimi, bir kaynağın sahibini değiştirmek için tek yetkilendirilmiştir.
+> Güvenlik sorumlusu, Depolama Blobu veri sahibi yerleşik rol ataması ' na atanmışsa, güvenlik sorumlusu bir *Süper Kullanıcı* olarak değerlendirilir ve bir dizin ya da dosyanın sahibini ayarlamanın yanı sıra, sahip olmadıkları dizinler ve dosyalar Için ACL 'ler dahil olmak üzere tüm değiştirici işlemlere tam erişim verilir. Süper Kullanıcı erişimi, bir kaynağın sahibini değiştirmek için tek yetkilendirilmiştir.
 
 ## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Paylaşılan anahtar ve paylaşılan erişim Imzası (SAS) kimlik doğrulaması
 
@@ -60,11 +60,11 @@ Dosya ve dizin düzeyindeki izinleri ayarlamak için aşağıdaki makalelerden b
 
 |Bu aracı kullanmak istiyorsanız:    |Şu makaleye bakın:    |
 |--------|-----------|
-|Azure Depolama Gezgini    |[Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanarak dosya ve Dizin düzeyi izinleri ayarlama](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
+|Azure Storage Gezgini    |[Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanarak dosya ve Dizin düzeyi izinleri ayarlama](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
 |REST API    |[Yol-Güncelleştir](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
-> Güvenlik sorumlusu bir *hizmet* sorumlusu ise, ilgili uygulama KAYDıNıN nesne kimliğini değil, hizmet sorumlusunun nesne kimliğini kullanmak önemlidir. Hizmet sorumlusunun nesne KIMLIĞINI almak için Azure CLı 'yı açın ve ardından şu komutu kullanın: `az ad sp show --id <Your App ID> --query objectId`. yer tutucusunu, `<Your App ID>` uygulama kaydlarınızın uygulama kimliğiyle değiştirdiğinizden emin olun.
+> Güvenlik sorumlusu bir *hizmet* sorumlusu ise, ilgili uygulama KAYDıNıN nesne kimliğini değil, hizmet sorumlusunun nesne kimliğini kullanmak önemlidir. Hizmet sorumlusunun nesne KIMLIĞINI almak için Azure CLı 'yı açın ve ardından şu komutu kullanın: `az ad sp show --id <Your App ID> --query objectId`. `<Your App ID>` yer tutucusunu, uygulama kaydlarınızın uygulama KIMLIĞIYLE değiştirdiğinizden emin olun.
 
 ### <a name="types-of-access-control-lists"></a>Erişim denetim listelerinin türleri
 
@@ -90,7 +90,7 @@ Bir kapsayıcı nesnesindeki izinler **okuma**, **yazma**ve **yürütme**, aşa�
 | **Yürütme (X)** | Data Lake Storage 2. bağlamında hiçbir şey anlamına gelmez | Bir dizinin alt öğelerinin çapraz geçişini yapmak için gereklidir |
 
 > [!NOTE]
-> Yalnızca ACL 'Leri kullanarak (RBAC olmadan) izin veriyorsanız ve bir hizmet sorumlusu bir dosyaya okuma veya yazma erişimi vermek için, hizmet sorumlusu için kapsayıcıya ve klasör hiyerarşisindeki her bir klasöre hizmet sorumlusu **yürütme** izinleri vermeniz gerekir. dosyaya yol açabilir.
+> Yalnızca ACL 'Leri kullanarak (RBAC olmadan) izin veriyorsanız, bir güvenlik sorumlusu için bir dosyaya okuma veya yazma erişimi vermek istiyorsanız, kapsayıcıya güvenlik sorumlusu **yürütme** izinleri vermeniz ve dosyaya yol açabilecek klasörler hiyerarşisindeki her bir klasöre sahip olmanız gerekir.
 
 #### <a name="short-forms-for-permissions"></a>İzinlerin kısaltmaları
 
@@ -111,7 +111,7 @@ Data Lake Storage 2. tarafından kullanılan POSIX stili modelde bir öğe için
 
 Aşağıdaki tabloda, bir depolama hesabında belirli işlemleri gerçekleştirmek için hangi izinlerin gerekli olduğunu anlamanıza yardımcı olacak bazı yaygın senaryolar listelenmektedir.
 
-|    Çalışma             |    /    | 'Daki | Portland / | Data.txt     |
+|    İşlem             |    /    | 'Daki | Portland / | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
 | Data. txt dosyasını oku            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Data. txt dosyasına Ekle       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
@@ -146,7 +146,7 @@ Kullanıcıların ve grupların kimlikleri, Azure Active Directory (Azure AD) ki
 * Sahip olan kullanıcı aynı zamanda hedef grubun bir üyesi oldukça, sahip olunan bir dosyanın sahibi olan grubunu değiştirme.
 
 > [!NOTE]
-> Sahip olan Kullanıcı , bir dosyanın veya dizinin sahibi olan kullanıcısını değiştiremiyor. Yalnızca süper kullanıcılar bir dosyanın veya dizinin sahibi olan kullanıcısını değiştirebilir.
+> Sahip olan Kullanıcı, bir dosyanın veya dizinin sahibi olan *kullanıcısını değiştiremiyor.* Yalnızca süper kullanıcılar bir dosyanın veya dizinin sahibi olan kullanıcısını değiştirebilir.
 
 #### <a name="the-owning-group"></a>Sahip olan grup
 
@@ -154,8 +154,8 @@ POSIX ACL 'lerinde, her Kullanıcı bir *birincil grupla*ilişkilendirilir. Örn
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Yeni bir dosya veya dizin için sahip olan grup atanıyor
 
-* **Durum 1**: Kök dizin "/". Bu dizin Data Lake Storage 2. bir kapsayıcı oluşturulduğunda oluşturulur. Bu durumda sahip olan Grup, OAuth kullanılarak yapıldıysa kapsayıcıyı oluşturan kullanıcıya ayarlanır. Kapsayıcı paylaşılan anahtar, bir hesap SAS veya hizmet SAS kullanılarak oluşturulduysa, sahip ve sahip grubu **$superuser**olarak ayarlanır.
-* **Durum 2** (Diğer her durum): Yeni bir öğe oluşturulduğunda sahip olan grup üst dizinden kopyalanır.
+* **Durum 1**: kök dizin "/". Bu dizin Data Lake Storage 2. bir kapsayıcı oluşturulduğunda oluşturulur. Bu durumda sahip olan Grup, OAuth kullanılarak yapıldıysa kapsayıcıyı oluşturan kullanıcıya ayarlanır. Kapsayıcı paylaşılan anahtar, bir hesap SAS veya hizmet SAS kullanılarak oluşturulduysa, sahip ve sahip grubu **$superuser**olarak ayarlanır.
+* **Durum 2** (diğer her durum): yeni bir öğe oluşturulduğunda, sahip olan grup üst dizinden kopyalanır.
 
 ##### <a name="changing-the-owning-group"></a>Sahip olan grubu değiştirme
 
@@ -281,7 +281,7 @@ Her zaman ACL 'lerdeki atanan sorumlu olarak Azure AD güvenlik gruplarını kul
 
 - Çağıranın ' Süper Kullanıcı ' izinleri vardır,
 
-Or
+Veya
 
 - Üst dizinin yazma + yürütme izinlerine sahip olması gerekir.
 - Silinecek dizin ve içindeki her dizin, okuma + yazma + yürütme izinlerini gerektirir.
@@ -309,7 +309,7 @@ Giriş bir kullanıcıyı temsil ediyorsa ve bu kullanıcı artık Azure AD 'de 
 
 Hizmet sorumluları için ACL 'Leri tanımladığınızda, oluşturduğunuz uygulama kaydı için *hizmet sorumlusunun* nesne KIMLIĞI (OID) kullanılması önemlidir. Kayıtlı uygulamaların, belirli Azure AD kiracısında ayrı bir hizmet sorumlusu olduğunu unutmayın. Kayıtlı uygulamalar Azure portal görünen bir OID 'ye sahiptir, ancak *hizmet sorumlusu* başka bir (farklı) OID 'ye sahiptir.
 
-Uygulama kaydına karşılık gelen hizmet sorumlusu için OID 'yi almak için `az ad sp show` komutunu kullanabilirsiniz. Uygulama KIMLIĞINI parametre olarak belirtin. İşte uygulama KIMLIĞI = 18218b12-1895-43e9-ad80-6e8fc1ea88ce olan uygulama kaydına karşılık gelen hizmet sorumlusu için OID 'yi edinme örneği. Azure CLı 'de aşağıdaki komutu çalıştırın:
+Uygulama kaydına karşılık gelen hizmet sorumlusu için OID 'yi almak üzere `az ad sp show` komutunu kullanabilirsiniz. Uygulama KIMLIĞINI parametre olarak belirtin. İşte uygulama KIMLIĞI = 18218b12-1895-43e9-ad80-6e8fc1ea88ce olan uygulama kaydına karşılık gelen hizmet sorumlusu için OID 'yi edinme örneği. Azure CLı 'de aşağıdaki komutu çalıştırın:
 
 ```
 $ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId

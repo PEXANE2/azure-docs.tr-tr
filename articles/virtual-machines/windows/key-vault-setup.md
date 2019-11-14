@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager 'de Windows VM 'Leri için Key Vault ayarlama | Microsoft Docs
+title: Azure Resource Manager 'de Windows VM 'Leri için Key Vault ayarlama
 description: Azure Resource Manager bir sanal makine ile kullanmak için Key Vault ayarlama.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: 225ce9fcbb18aa374f413e8e237c911c85cc77a6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a64163da1dee2bceb567436dc18ba0fa5274cfcb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999362"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038202"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager sanal makineler için Key Vault ayarlama
 
@@ -56,7 +56,7 @@ Daha sonra Key Vault şablon dağıtımıyla kullanmak üzere etkinleştirmek i�
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Şablonları kullanarak Key Vault ayarlama
-Şablon kullanırken, Key Vault kaynağı için `enabledForDeployment` özelliğini olarak `true` ayarlamanız gerekir.
+Şablon kullanırken, Key Vault kaynağı için `enabledForDeployment` özelliğini `true` olarak ayarlamanız gerekir.
 
     {
       "type": "Microsoft.KeyVault/vaults",

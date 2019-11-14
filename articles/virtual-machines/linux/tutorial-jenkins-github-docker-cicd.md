@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Jenkins ile Azure’da bir geliştirme işlem hattı oluşturma | Microsoft Docs
+title: Öğretici-Jenkins ile Azure 'da bir geliştirme işlem hattı oluşturma
 description: Bu öğreticide, Azure’da işlenen her kodu GitHub’dan çeken ve uygulamanızı çalıştırmak için yeni bir Docker kapsayıcısı oluşturan bir Jenkins sanal makinesi oluşturmayı öğrenirsiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 875285b6a168d9aa9820d660d9c366a36545d319
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6b755ac015095e537134f1ff5c076c23a432ec91
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299413"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034480"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Öğretici: Azure’da Jenkins, GitHub ve Docker ile bir Linux sanal makinesi üzerinde geliştirme altyapısı oluşturma
 
@@ -87,7 +87,7 @@ az vm create --resource-group myResourceGroupJenkins \
 
 Sanal makinenin oluşturulup yapılandırılması birkaç dakika sürer.
 
-Web trafiğinin sanal makinenize ulaşmasına izin vermek üzere [az vm open-port](/cli/azure/vm) komutunu kullanarak Jenkins trafiği için *8080* bağlantı noktasını, örnek uygulama çalıştırmak amacıyla kullanılacak Node.js uygulaması için de *1337* bağlantı noktasını açın:
+VM’nize web trafiğinin ulaşmasına izin vermek için [az vm open-port](/cli/azure/vm) komutunu kullanarak Jenkins trafiği için *8080* bağlantı noktasını, Node.js uygulaması için örnek uygulama çalıştırmaya yönelik *1337* bağlantı noktasını açın:
 
 ```azurecli-interactive 
 az vm open-port --resource-group myResourceGroupJenkins --name myVM --port 8080 --priority 1001
@@ -108,7 +108,7 @@ Güvenlik nedeniyle, Jenkins yüklemesini başlatmak için VM’nizde bir metin 
 ssh azureuser@<publicIps>
 ```
 
-@No__t-0 komutunu kullanarak Jenkins 'nin çalıştığını doğrulayın:
+`service` komutunu kullanarak Jenkins 'nin çalıştığını doğrulayın:
 
 ```bash
 $ service jenkins status
@@ -143,13 +143,13 @@ Dosya henüz kullanılamıyorsa cloud-init tarafından Jenkins ve Docker yüklem
 
 
 ## <a name="create-github-webhook"></a>GitHub web kancası oluşturma
-GitHub tümleştirmesini yapılandırmak için Azure örnek deposundan [Node.js Hello World örnek uygulamasını](https://github.com/Azure-Samples/nodejs-docs-hello-world) açın. Depo için GitHub hesabınızda çatal oluşturmak üzere sağ üst köşedeki **Fork** (Çatal Oluştur) düğmesini seçin.
+GitHub tümleştirmesini yapılandırmak için Azure örnek deposundan [Node.js Hello World örnek uygulamasını](https://github.com/Azure-Samples/nodejs-docs-hello-world) açın. Depoyu kendi GitHub hesabınızla çatallamak için sağ üst köşedeki **Çatal Oluştur** düğmesini seçin.
 
 Oluşturduğunuz çatalın içinde bir web kancası oluşturun:
 
 - **Ayarlar**' ı seçin ve ardından sol taraftaki **Web kancaları** ' nı seçin.
 - **Web kancası Ekle**' yi seçin ve ardından, filtre kutusuna *Jenkins* yazın.
-- **Yük URL 'si**için `http://<publicIps>:8080/github-webhook/` girin. Sondaki / karakterini eklemeyi unutmayın
+- **Yük URL 'si**için `http://<publicIps>:8080/github-webhook/`girin. Sondaki / karakterini eklemeyi unutmayın
 - **İçerik türü**için *Application/x-www-form-urlencoded*öğesini seçin.
 - **Bu Web kancasını tetiklemek istediğiniz olayları seçin?** *yalnızca anında iletme olayını seçin.*
 - **Etkin** olarak işaretlendi olarak ayarlayın.

@@ -1,6 +1,6 @@
 ---
-title: Güvenli ve, azure'daki Linux vm'lerinde ilkelerini kullanma | Microsoft Docs
-description: Linux ve azure'da sanal makineler için güvenlik ve ilkeleri hakkında bilgi edinin.
+title: Azure 'da Linux sanal makinelerinizdeki ilkeleri güvenli hale getirin ve kullanın
+description: Azure 'da Linux ve sanal makineler için güvenlik ve ilkeler hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 6f884d46db34dda5f3812efb3418bffdf3165941
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9cd31d39d2881aebf83d5b40aa826433de5d0993
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708321"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035069"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Güvenli ve Azure içindeki sanal makinelerde ilkelerini kullanma
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure 'da sanal makinelerde ilkeleri güvenli hale getirme ve kullanma
 
 [!INCLUDE [virtual-machines-security-policy](../../../includes/virtual-machines-security-policy.md)]
 

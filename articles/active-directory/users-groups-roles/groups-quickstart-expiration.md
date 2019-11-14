@@ -1,25 +1,25 @@
 ---
-title: Office 365 grupları için sona erme ilkesi hızlı başlangıcı-Azure Active Directory | Microsoft Docs
+title: Grup süre sonu ilkesi hızlı başlangıç-Azure AD | Microsoft Docs
 description: Office 365 grupları için süre sonu - Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 10/24/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d98dd0f4f9cdc506b8807932a255d14d3022d49
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 16b6e4f521568c89e415e6e9fa621175052cf34d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024621"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026892"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory'de Office 365 grupları için süre sonu ayarlama
 
@@ -35,7 +35,7 @@ Süre sonu ilkesi oldukça basittir:
 > [!NOTE]
 > Gruplar artık, son kullanımda olup olmadığına göre otomatik olarak yenilenmekte olan Azure AD zekasını kullanır. Bu yenileme kararı Outlook, SharePoint, takımlar, Yammer ve diğerleri gibi Office 365 Hizmetleri içindeki gruplardaki Kullanıcı etkinliklerini temel alır.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisite"></a>Önkoşul
 

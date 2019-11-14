@@ -1,32 +1,32 @@
 ---
 title: Grafana kullanarak Azure Veri Gezgini verileri görselleştirme
-description: Bu nasıl yapılır, Grafana için bir veri kaynağı olarak Azure Veri Gezgini ayarlamayı ve sonra bir örnek kümeden verileri görselleştirmeyi öğrenirsiniz.
+description: Bu makalede, Grafana için bir veri kaynağı olarak Azure Veri Gezgini ayarlamayı ve sonra örnek bir kümeden verileri görselleştirmeyi öğreneceksiniz.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 6/30/2019
-ms.openlocfilehash: f1eb9fb0d81d1e9cdf3dd8628a6d7ad1f0ccce92
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/13/2019
+ms.openlocfilehash: a1c52007ea86ca0812c4a73a92ce81db6ddadc7b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581909"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037995"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Grafana 'de Azure Veri Gezgini verileri görselleştirme
 
-Grafana, verileri sorgulamanıza ve görselleştirmenize, sonra görselleştirmelerinizle ilgili panoları oluşturmanıza ve paylaşmanıza olanak tanıyan bir analiz platformudur. Grafana, Azure Veri Gezgini 'a bağlanmanızı ve verileri görselleştirmenizi sağlayan bir Azure Veri Gezgini *eklentisi*sağlar. Bu makalede, Grafana için bir veri kaynağı olarak Azure Veri Gezgini ayarlamayı ve sonra bir örnek kümeden verileri görselleştirmeyi öğreneceksiniz.
+Grafana, verileri sorgulamanıza ve görselleştirmenize, sonra görselleştirmelerinizle ilgili panoları oluşturmanıza ve paylaşmanıza olanak tanıyan bir analiz platformudur. Grafana, Azure Veri Gezgini 'a bağlanmanızı ve verileri görselleştirmenizi sağlayan bir Azure Veri Gezgini *eklentisi*sağlar. Bu makalede, Grafana için bir veri kaynağı olarak Azure Veri Gezgini ayarlamayı ve sonra örnek bir kümeden verileri görselleştirmeyi öğreneceksiniz.
 
-Aşağıdaki videoyu kullanarak Grafana 'in Azure Veri Gezgini eklentisini kullanmayı, Azure Veri Gezgini Grafana için bir veri kaynağı olarak ayarlamayı ve sonra verileri görselleştirmeyi öğrenebilirsiniz. 
+Grafana 'in Azure Veri Gezgini eklentisini kullanmayı, Azure Veri Gezgini Grafana için bir veri kaynağı olarak ayarlamayı ve sonra verileri görselleştirmeyi öğrenmek için aşağıdaki videoyu kullanın. 
 
 > [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
 
 Alternatif olarak, aşağıdaki makalede açıklandığı gibi [veri kaynağını yapılandırabilir](#configure-the-data-source) ve [verileri görselleştirebilirsiniz](#visualize-data) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Şunları yapmak için şunlar gerekir:
+Bu makaleyi tamamlayabilmeniz için aşağıdakiler gerekir:
 
 * İşletim sisteminiz için [Grafana sürüm 5.3.0 veya üzeri](https://docs.grafana.org/installation/)
 
@@ -56,17 +56,17 @@ Alternatif olarak, aşağıdaki makalede açıklandığı gibi [veri kaynağın�
 
     ![Bağlantı özellikleri](media/grafana/connection-properties.png)
 
-    | Grafana Kullanıcı arabirimi | Azure portal | Azure CLI |
+    | Grafana UI | Azure portalında | Azure CLI |
     | --- | --- | --- |
-    | Abonelik kimliği | ABONELIK KIMLIĞI | SubscriptionId |
-    | Kiracı kimliği | Dizin KIMLIĞI | Kiracı |
+    | Abonelik Kimliği | ABONELIK KIMLIĞI | SubscriptionId |
+    | Kiracı kimliği | Dizin KIMLIĞI | tenant |
     | İstemci kimliği | Uygulama Kimliği | appId |
     | Gizli anahtar | Parola | password |
     | | | |
 
 1. **& testini kaydet**' i seçin.
 
-    Test başarılı olursa, sonraki bölüme gidin. Herhangi bir sorunla karşılaşırsanız, Grafana içinde belirttiğiniz değerleri kontrol edin ve önceki adımları gözden geçirin.
+    Test başarılı olursa, sonraki bölüme gidin. Herhangi bir sorunla karşılaşırsanız, Grafana ' de belirttiğiniz değerleri kontrol edin ve önceki adımları gözden geçirin.
 
 ## <a name="visualize-data"></a>Verileri görselleştirme
 
@@ -111,8 +111,26 @@ Azure Veri Gezgini 'yi Grafana için bir veri kaynağı olarak yapılandırmayı
 
 1. Üstteki menüden Kaydet simgesini seçin: ![Kaydet simgesi](media/grafana/save-icon.png).
 
+## <a name="create-alerts"></a>Uyarı oluşturma
+
+1. Giriş panosu ' nda, **bildirim kanalları** ** > uyarı** ' nı seçerek yeni bir bildirim kanalı oluşturun
+
+    ![bildirim kanalı oluştur](media/grafana/create-notification-channel.png)
+
+1. Yeni bir **bildirim kanalı**oluşturun ve **kaydedin**.
+
+    ![Yeni bildirim kanalı oluştur](media/grafana/new-notification-channel-adx.png)
+
+1. **Panoda**, açılan listeden **Düzenle** ' yi seçin.
+
+    ![Panoda Düzenle ' yi seçin](media/grafana/edit-panel-4-alert.png)
+
+1. **Uyarı bölmesini açmak** için uyarı zil simgesini seçin. **Uyarı oluştur**' u seçin. **Uyarı** bölmesinde aşağıdaki özellikleri doldurun.
+
+    ![Uyarı özellikleri](media/grafana/alert-properties.png)
+
+1. Değişikliklerinizi kaydetmek için **panoyu kaydet** simgesini seçin.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Veri Gezgini için sorgu yazma](write-queries.md)
-
-* [Öğretici: Power BI içindeki Azure Veri Gezgini verileri görselleştirme](visualize-power-bi.md)

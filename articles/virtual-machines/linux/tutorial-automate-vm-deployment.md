@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure’da cloud-init ile bir Linux VM’si yapılandırma | Microsoft Docs
+title: Öğretici-Azure 'da Cloud-init ile Linux VM Özelleştirme
 description: Bu öğreticide, Cloud-init ve Key Vault kullanarak Azure 'da ilk kez önyükleme yaparken Linux VM 'lerini nasıl özelleştireceğinizi öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8bc396611f2e6f611de5a41de9525ba71287b363
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 27c7e32f081003ac236c6d1405eb3512f6c4433c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595115"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034632"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Öğretici - Azure’da ilk önyüklemede bir Linux sanal makinesini özelleştirmek için cloud-init kullanma
 
@@ -42,7 +42,7 @@ Cloud-init, dağıtımlar arasında da çalışır. Örneğin, bir paket yüklem
 
 Azure’a sağladıkları görüntülere cloud-init’in dahil edilmesini ve bu görüntülerde çalışmasını sağlamak için iş ortaklarımızla çalışıyoruz. Aşağıdaki tabloda, Azure platform görüntülerindeki geçerli cloud-init kullanılabilirliği açıklanmaktadır:
 
-| Yayımcı | Teklif | SKU | Sürüm | Cloud-init Ready |
+| Yayımcı | Sunduğu | SKU | Sürüm | cloud-init hazır |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18.04-LTS |latest |evet | 
 |Canonical |UbuntuServer |16.04-LTS |latest |evet | 
@@ -121,7 +121,7 @@ az vm create \
     --custom-data cloud-init.txt
 ```
 
-VM’nin oluşturulması, paketlerin yüklenmesi ve uygulamanın başlatılması birkaç dakika sürebilir. Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. Uygulamaya erişmeniz birkaç dakika daha sürebilir. VM oluşturulduktan sonra, Azure CLI tarafından görüntülenen `publicIpAddress` değerini not edin. Bu adres, web tarayıcısı aracılığıyla Node.js uygulamasına erişmek için kullanılır.
+VM’nin oluşturulması, paketlerin yüklenmesi ve uygulamanın başlatılması birkaç dakika sürebilir. Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. Uygulamaya erişmeniz birkaç dakika sürebilir. VM oluşturulduktan sonra, Azure CLI tarafından görüntülenen `publicIpAddress` değerini not edin. Bu adres, web tarayıcısı aracılığıyla Node.js uygulamasına erişmek için kullanılır.
 
 Web trafiğinin VM’nize erişmesine izin vermek için, [az vm open-port](/cli/azure/vm#az-vm-open-port) komutuyla İnternet’te 80 numaralı bağlantı noktasını açın:
 
@@ -130,7 +130,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>Web uygulamasını test etme
-Artık bir Web tarayıcısı açabilir ve adres çubuğuna *http: \/ \/ \<publicIpAddress >* girebilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Node.js uygulamanız, aşağıdaki örnekte olduğu gibi görüntülenir:
+Artık bir Web tarayıcısı açıp adres çubuğuna *http:\/\/\<publicıpaddress >* girebilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Node.js uygulamanız, aşağıdaki örnekte olduğu gibi görüntülenir:
 
 ![Çalışan NGINX sitesini görüntüleme](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -249,7 +249,7 @@ az vm create \
     --secrets "$vm_secret"
 ```
 
-VM’nin oluşturulması, paketlerin yüklenmesi ve uygulamanın başlatılması birkaç dakika sürebilir. Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. Uygulamaya erişmeniz birkaç dakika daha sürebilir. VM oluşturulduktan sonra, Azure CLI tarafından görüntülenen `publicIpAddress` değerini not edin. Bu adres, web tarayıcısı aracılığıyla Node.js uygulamasına erişmek için kullanılır.
+VM’nin oluşturulması, paketlerin yüklenmesi ve uygulamanın başlatılması birkaç dakika sürebilir. Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. Uygulamaya erişmeniz birkaç dakika sürebilir. VM oluşturulduktan sonra, Azure CLI tarafından görüntülenen `publicIpAddress` değerini not edin. Bu adres, web tarayıcısı aracılığıyla Node.js uygulamasına erişmek için kullanılır.
 
 Güvenli web trafiğinin VM’nize erişmesine izin vermek için, [az vm open-port](/cli/azure/vm#az-vm-open-port) komutuyla internette 443 numaralı bağlantı noktasını açın:
 
@@ -261,7 +261,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>Güvenli web uygulamasını test etme
-Artık bir Web tarayıcısı açabilir ve adres çubuğuna *https: \/ \/ \<publicIpAddress >* girebilirsiniz. Önceki VM oluşturma işleminin çıkışında gösterildiği gibi kendi genel IP adresinizi girin. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
+Artık bir Web tarayıcısı açıp adres çubuğuna *https:\/\/\<publicıpaddress >* girebilirsiniz. Önceki VM oluşturma işleminin çıkışında gösterildiği gibi kendi genel IP adresinizi girin. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
 
 ![Web tarayıcısı güvenlik uyarısını kabul edin](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

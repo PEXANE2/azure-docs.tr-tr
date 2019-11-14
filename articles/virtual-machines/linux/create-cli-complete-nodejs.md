@@ -1,5 +1,5 @@
 ---
-title: Klasik Azure CLı ile tüm Linux ortamı oluşturma | Microsoft Docs
+title: Klasik Azure CLı ile tüm Linux ortamı oluşturma
 description: Azure klasik CLı kullanarak sıfırdan depolama, Linux VM, sanal ağ ve alt ağ, yük dengeleyici, NIC, genel IP ve ağ güvenlik grubu oluşturun.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: aaf91aa81be5fc4c5944dde804798a61ceffc5a6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1ee89ce18600685f3f82bfb49d4d8ecbaf192b04
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083709"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036520"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Klasik Azure CLı ile tüm Linux ortamı oluşturma
 Bu makalede, bir yük dengeleyiciye ve geliştirme ve basit bilgi işlem için yararlı olan bir sanal makine çiftinden oluşan basit bir ağ oluşturacağız. Internet 'te herhangi bir yerden bağlantı kurmak için iki adet çalışan, güvenli Linux VM 'ye sahip olana kadar Process komutuyla komut aracılığıyla ilerliyoruz. Daha sonra, daha karmaşık ağlara ve ortamlara geçebilirsiniz.
@@ -51,9 +51,9 @@ Görevi hızlı bir şekilde gerçekleştirmeniz gerekirse, aşağıdaki bölüm
 azure config mode arm
 ```
 
-Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları, `myResourceGroup` `mystorageaccount`, ve `myVM`içerir.
+Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları `myResourceGroup`, `mystorageaccount`ve `myVM`içerir.
 
-Kaynak grubunu oluşturun. Aşağıdaki örnek `westeurope` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur:
+Kaynak grubunu oluşturun. Aşağıdaki örnek `myResourceGroup` konumunda `westeurope` adlı bir kaynak grubu oluşturur:
 
 ```azurecli
 azure group create -n myResourceGroup -l westeurope
@@ -65,7 +65,7 @@ JSON ayrıştırıcısı kullanarak kaynak grubunu doğrulayın:
 azure group show myResourceGroup --json | jq '.'
 ```
 
-Depolama hesabı oluşturun. Aşağıdaki örnek adlı `mystorageaccount`bir depolama hesabı oluşturur. (Depolama hesabı adının benzersiz olması gerekir, bu nedenle kendi benzersiz adınızı sağlayın.)
+Depolama hesabı oluşturun. Aşağıdaki örnek, `mystorageaccount`adlı bir depolama hesabı oluşturur. (Depolama hesabı adının benzersiz olması gerekir, bu nedenle kendi benzersiz adınızı sağlayın.)
 
 ```azurecli
 azure storage account create -g myResourceGroup -l westeurope \
@@ -78,14 +78,14 @@ JSON ayrıştırıcısı kullanarak depolama hesabını doğrulayın:
 azure storage account show -g myResourceGroup mystorageaccount --json | jq '.'
 ```
 
-Sanal ağı oluşturun. Aşağıdaki örnek adlı `myVnet`bir sanal ağ oluşturur:
+Sanal ağı oluşturun. Aşağıdaki örnek, `myVnet`adlı bir sanal ağ oluşturur:
 
 ```azurecli
 azure network vnet create -g myResourceGroup -l westeurope\
   -n myVnet -a 192.168.0.0/16
 ```
 
-Bir alt ağ oluşturun. Aşağıdaki örnek adlı `mySubnet`bir alt ağ oluşturur:
+Bir alt ağ oluşturun. Aşağıdaki örnek, `mySubnet`adlı bir alt ağ oluşturur:
 
 ```azurecli
 azure network vnet subnet create -g myResourceGroup \
@@ -98,34 +98,34 @@ JSON ayrıştırıcısı kullanarak sanal ağı ve alt ağı doğrulayın:
 azure network vnet show myResourceGroup myVnet --json | jq '.'
 ```
 
-Genel IP oluşturun. Aşağıdaki örnek, DNS `myPublicIP` `mypublicdns`adı ile adlı bir genel IP oluşturur. (DNS adı benzersiz olmalıdır, bu nedenle kendi benzersiz adınızı sağlayın.)
+Genel IP oluşturun. Aşağıdaki örnek, `mypublicdns`DNS adıyla `myPublicIP` adlı bir genel IP oluşturur. (DNS adı benzersiz olmalıdır, bu nedenle kendi benzersiz adınızı sağlayın.)
 
 ```azurecli
 azure network public-ip create -g myResourceGroup -l westeurope \
   -n myPublicIP  -d mypublicdns -a static -i 4
 ```
 
-Yük dengeleyiciyi oluşturun. Aşağıdaki örnek adlı `myLoadBalancer`bir yük dengeleyici oluşturur:
+Yük dengeleyiciyi oluşturun. Aşağıdaki örnek, `myLoadBalancer`adlı bir yük dengeleyici oluşturur:
 
 ```azurecli
 azure network lb create -g myResourceGroup -l westeurope -n myLoadBalancer
 ```
 
-Yük Dengeleyici için bir ön uç IP havuzu oluşturun ve genel IP 'yi ilişkilendirin. Aşağıdaki örnek adında `mySubnetPool`BIR ön uç IP havuzu oluşturur:
+Yük Dengeleyici için bir ön uç IP havuzu oluşturun ve genel IP 'yi ilişkilendirin. Aşağıdaki örnek, `mySubnetPool`adlı bir ön uç IP havuzu oluşturur:
 
 ```azurecli
 azure network lb frontend-ip create -g myResourceGroup -l myLoadBalancer \
   -i myPublicIP -n myFrontEndPool
 ```
 
-Yük Dengeleyici için arka uç IP havuzu oluşturun. Aşağıdaki örnek adlı `myBackEndPool`BIR arka uç IP havuzu oluşturur:
+Yük Dengeleyici için arka uç IP havuzu oluşturun. Aşağıdaki örnek, `myBackEndPool`adlı bir arka uç IP havuzu oluşturur:
 
 ```azurecli
 azure network lb address-pool create -g myResourceGroup -l myLoadBalancer \
   -n myBackEndPool
 ```
 
-Yük Dengeleyici için SSH gelen ağ adresi çevirisi (NAT) kuralları oluşturun. Aşağıdaki örnek iki yük dengeleyici kuralı `myLoadBalancerRuleSSH1` oluşturur ve: `myLoadBalancerRuleSSH2`
+Yük Dengeleyici için SSH gelen ağ adresi çevirisi (NAT) kuralları oluşturun. Aşağıdaki örnek, `myLoadBalancerRuleSSH1` ve `myLoadBalancerRuleSSH2`iki yük dengeleyici kuralı oluşturur:
 
 ```azurecli
 azure network lb inbound-nat-rule create -g myResourceGroup -l myLoadBalancer \
@@ -134,7 +134,7 @@ azure network lb inbound-nat-rule create -g myResourceGroup -l myLoadBalancer \
   -n myLoadBalancerRuleSSH2 -p tcp -f 4223 -b 22
 ```
 
-Yük Dengeleyici için Web gelen NAT kurallarını oluşturun. Aşağıdaki örnek adlı `myLoadBalancerRuleWeb`bir yük dengeleyici kuralı oluşturur:
+Yük Dengeleyici için Web gelen NAT kurallarını oluşturun. Aşağıdaki örnek, `myLoadBalancerRuleWeb`adlı bir yük dengeleyici kuralı oluşturur:
 
 ```azurecli
 azure network lb rule create -g myResourceGroup -l myLoadBalancer \
@@ -142,7 +142,7 @@ azure network lb rule create -g myResourceGroup -l myLoadBalancer \
   -t myFrontEndPool -o myBackEndPool
 ```
 
-Yük dengeleyici durum araştırması oluşturun. Aşağıdaki örnek adlı `myHealthProbe`bir TCP araştırması oluşturur:
+Yük dengeleyici durum araştırması oluşturun. Aşağıdaki örnek, `myHealthProbe`adlı bir TCP araştırması oluşturur:
 
 ```azurecli
 azure network lb probe create -g myResourceGroup -l myLoadBalancer \
@@ -155,9 +155,9 @@ JSON ayrıştırıcısı kullanarak yük dengeleyiciyi, IP havuzlarını ve NAT 
 azure network lb show -g myResourceGroup -n myLoadBalancer --json | jq '.'
 ```
 
-İlk ağ arabirim kartını (NIC) oluşturun. `#####-###-###` Bölümleri kendi Azure abonelik Kimliğinizle değiştirin. Oluşturduğunuz kaynakları incelerken, abonelik KIMLIĞINIZ **JQ** çıktısında belirtilmiştir. Ayrıca, abonelik KIMLIĞINIZI ile `azure account list`görüntüleyebilirsiniz.
+İlk ağ arabirim kartını (NIC) oluşturun. `#####-###-###` bölümlerini kendi Azure abonelik KIMLIĞINIZLE değiştirin. Oluşturduğunuz kaynakları incelerken, abonelik KIMLIĞINIZ **JQ** çıktısında belirtilmiştir. Ayrıca, abonelik KIMLIĞINIZI `azure account list`görüntüleyebilirsiniz.
 
-Aşağıdaki örnek adlı `myNic1`bir NIC oluşturur:
+Aşağıdaki örnek, `myNic1`adlı bir NIC oluşturur:
 
 ```azurecli
 azure network nic create -g myResourceGroup -l westeurope \
@@ -166,7 +166,7 @@ azure network nic create -g myResourceGroup -l westeurope \
   -e "/subscriptions/########-####-####-####-############/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/inboundNatRules/myLoadBalancerRuleSSH1"
 ```
 
-İkinci NIC 'yi oluşturun. Aşağıdaki örnek adlı `myNic2`bir NIC oluşturur:
+İkinci NIC 'yi oluşturun. Aşağıdaki örnek, `myNic2`adlı bir NIC oluşturur:
 
 ```azurecli
 azure network nic create -g myResourceGroup -l westeurope \
@@ -182,14 +182,14 @@ azure network nic show myResourceGroup myNic1 --json | jq '.'
 azure network nic show myResourceGroup myNic2 --json | jq '.'
 ```
 
-Ağ güvenlik grubunu oluşturun. Aşağıdaki örnek adlı `myNetworkSecurityGroup`bir ağ güvenlik grubu oluşturur:
+Ağ güvenlik grubunu oluşturun. Aşağıdaki örnek, `myNetworkSecurityGroup`adlı bir ağ güvenlik grubu oluşturur:
 
 ```azurecli
 azure network nsg create -g myResourceGroup -l westeurope \
   -n myNetworkSecurityGroup
 ```
 
-Ağ güvenlik grubu için iki gelen kuralı ekleyin. Aşağıdaki örnek iki kural `myNetworkSecurityGroupRuleSSH` `myNetworkSecurityGroupRuleHTTP`oluşturur:
+Ağ güvenlik grubu için iki gelen kuralı ekleyin. Aşağıdaki örnek, `myNetworkSecurityGroupRuleSSH` ve `myNetworkSecurityGroupRuleHTTP`iki kural oluşturur:
 
 ```azurecli
 azure network nsg rule create -p tcp -r inbound -y 1000 -u 22 -c allow \
@@ -211,13 +211,13 @@ azure network nic set -g myResourceGroup -o myNetworkSecurityGroup -n myNic1
 azure network nic set -g myResourceGroup -o myNetworkSecurityGroup -n myNic2
 ```
 
-Kullanılabilirlik kümesi oluşturun. Aşağıdaki örnek adlı `myAvailabilitySet`bir kullanılabilirlik kümesi oluşturur:
+Kullanılabilirlik kümesi oluşturun. Aşağıdaki örnek, `myAvailabilitySet`adlı bir kullanılabilirlik kümesi oluşturur:
 
 ```azurecli
 azure availset create -g myResourceGroup -l westeurope -n myAvailabilitySet
 ```
 
-İlk Linux VM 'yi oluşturun. Aşağıdaki örnekte adlı `myVM1`bir VM oluşturulur:
+İlk Linux VM 'yi oluşturun. Aşağıdaki örnek, `myVM1`adlı bir sanal makine oluşturur:
 
 ```azurecli
 azure vm create \
@@ -235,7 +235,7 @@ azure vm create \
     --admin-username azureuser
 ```
 
-İkinci Linux VM 'yi oluşturun. Aşağıdaki örnekte adlı `myVM2`bir VM oluşturulur:
+İkinci Linux VM 'yi oluşturun. Aşağıdaki örnek, `myVM2`adlı bir sanal makine oluşturur:
 
 ```azurecli
 azure vm create \
@@ -275,10 +275,10 @@ Aşağıdaki ayrıntılı adımlarda, ortamınızı oluştururken her komutun ne
 azure config mode arm
 ```
 
-Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları, `myResourceGroup` `mystorageaccount`, ve `myVM`içerir.
+Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları `myResourceGroup`, `mystorageaccount`ve `myVM`içerir.
 
 ## <a name="create-resource-groups-and-choose-deployment-locations"></a>Kaynak grupları oluşturma ve dağıtım konumlarını seçme
-Azure Kaynak grupları, kaynak dağıtımlarının mantıksal yönetimini etkinleştirmek için yapılandırma bilgilerini ve meta verileri içeren mantıksal dağıtım varlıklarıdır. Aşağıdaki örnek `westeurope` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur:
+Azure Kaynak grupları, kaynak dağıtımlarının mantıksal yönetimini etkinleştirmek için yapılandırma bilgilerini ve meta verileri içeren mantıksal dağıtım varlıklarıdır. Aşağıdaki örnek `myResourceGroup` konumunda `westeurope` adlı bir kaynak grubu oluşturur:
 
 ```azurecli
 azure group create --name myResourceGroup --location westeurope
@@ -303,7 +303,7 @@ info:    group create command OK
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 VM diskleriniz ve eklemek istediğiniz tüm ek veri diskleri için depolama hesaplarına ihtiyacınız vardır. Kaynak grupları oluşturduktan hemen sonra depolama hesapları oluşturursunuz.
 
-Burada, hesap konumunu `azure storage account create` , onu denetleyen kaynak grubunu ve istediğiniz depolama desteğinin türünü geçirerek komutunu kullanırız. Aşağıdaki örnek adlı `mystorageaccount`bir depolama hesabı oluşturur:
+Burada, hesap konumunu, onu denetleyen kaynak grubunu ve istediğiniz depolama desteğinin türünü geçirerek `azure storage account create` komutunu kullanırız. Aşağıdaki örnek, `mystorageaccount`adlı bir depolama hesabı oluşturur:
 
 ```azurecli
 azure storage account create \  
@@ -321,7 +321,7 @@ info:    Executing command storage account create
 info:    storage account create command OK
 ```
 
-`azure group show` Komutunu kullanarak kaynak grubumuzu incelemek için, `--json` Azure CLI seçeneğiyle birlikte [JQ](https://stedolan.github.io/jq/) aracını kullanalım. ( **Jsawk** veya JSON 'ı ayrıştırmayı tercih ettiğiniz herhangi bir dil kitaplığını kullanabilirsiniz.)
+Kaynak grubumuzu `azure group show` komutunu kullanarak incelemek için, [JQ](https://stedolan.github.io/jq/) aracını `--json` Azure CLI seçeneğiyle birlikte kullanalım. ( **Jsawk** veya JSON 'ı ayrıştırmayı tercih ettiğiniz herhangi bir dil kitaplığını kullanabilirsiniz.)
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -383,7 +383,7 @@ info:    storage container list command OK
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Sanal ağ ve alt ağ oluşturma
-Ardından, Azure 'da çalışan bir sanal ağ ve VM 'lerinizi oluşturabileceğiniz bir alt ağ oluşturmanız gerekir. Aşağıdaki örnek, `192.168.0.0/16` adres ön ekine sahip adlı `myVnet` bir sanal ağ oluşturur:
+Ardından, Azure 'da çalışan bir sanal ağ ve VM 'lerinizi oluşturabileceğiniz bir alt ağ oluşturmanız gerekir. Aşağıdaki örnek, `192.168.0.0/16` adresi önekiyle `myVnet` adlı bir sanal ağ oluşturur:
 
 ```azurecli
 azure network vnet create --resource-group myResourceGroup --location westeurope \
@@ -407,7 +407,7 @@ data:      192.168.0.0/16
 info:    network vnet create command OK
 ```
 
-Yine, kaynaklarımızı nasıl oluşturduğumuzu görmek için ve `azure group show` `jq` ' nin--JSON seçeneğini kullanalım. Artık bir `storageAccounts` kaynak `virtualNetworks` ve kaynaktır.  
+Ayrıca, kaynaklarımızı nasıl oluşturduğumuzu görmek için `azure group show` ve `jq` ' nin--JSON seçeneğini kullanalım. Artık bir `storageAccounts` kaynağı ve bir `virtualNetworks` kaynağıdır.  
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -452,7 +452,7 @@ azure group show myResourceGroup --json | jq '.'
 }
 ```
 
-Şimdi `myVnet` sanal ağda VM 'lerin dağıtıldığı bir alt ağ oluşturalım. `azure network vnet subnet create` Komutunu, zaten oluşturduğumuz kaynaklarla birlikte kullanıyoruz `myResourceGroup` : kaynak grubu ve `myVnet` sanal ağ. Aşağıdaki örnekte, öğesinin `mySubnet` `192.168.1.0/24`alt ağ adresi ön eki olan adlı alt ağı ekleyeceğiz:
+Şimdi VM 'Lerin dağıtıldığı `myVnet` sanal ağında bir alt ağ oluşturalım. `azure network vnet subnet create` komutunu, zaten oluşturduğumuz kaynaklarla birlikte kullanıyoruz: `myResourceGroup` kaynak grubu ve `myVnet` sanal ağı. Aşağıdaki örnekte, `192.168.1.0/24`alt ağ adresi ön ekine sahip `mySubnet` adlı alt ağı ekleyeceğiz:
 
 ```azurecli
 azure network vnet subnet create --resource-group myResourceGroup \
@@ -475,7 +475,7 @@ data:
 info:    network vnet subnet create command OK
 ```
 
-Alt ağ sanal ağ içinde mantıksal olarak olduğundan, alt ağ bilgilerine biraz farklı bir komutla bakacağız. Kullandığımız `azure network vnet show`komut, ancak kullanarak `jq`JSON çıkışını incelemenize devam ediyoruz.
+Alt ağ sanal ağ içinde mantıksal olarak olduğundan, alt ağ bilgilerine biraz farklı bir komutla bakacağız. Kullandığımız komut `azure network vnet show`, ancak `jq`kullanarak JSON çıkışını incelemenize devam ediyoruz.
 
 ```azurecli
 azure network vnet show myResourceGroup myVnet --json | jq '.'
@@ -513,7 +513,7 @@ azure network vnet show myResourceGroup myVnet --json | jq '.'
 ```
 
 ## <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
-Şimdi yük dengeleyicisine atadığımız genel IP adresini (PıP) oluşturalım. Bu, `azure network public-ip create` komutunu kullanarak sanal makinelerinize Internet 'ten bağlanmanızı sağlar. Varsayılan Adres dinamik olduğundan, **cloudapp.Azure.com** etki alanında `--domain-name-label` seçeneğini kullanarak adlandırılmış bir DNS girişi oluşturacağız. Aşağıdaki örnek, DNS `myPublicIP` `mypublicdns`adı ile adlı bir genel IP oluşturur. DNS adının benzersiz olması gerektiğinden, kendi benzersiz DNS adınızı sağlarsınız:
+Şimdi yük dengeleyicisine atadığımız genel IP adresini (PıP) oluşturalım. `azure network public-ip create` komutunu kullanarak, Internet 'ten sanal makinelerinize bağlanmanızı sağlar. Varsayılan Adres dinamik olduğundan, **cloudapp.Azure.com** etki alanında `--domain-name-label` seçeneğini kullanarak adlandırılmış bir DNS girişi oluşturacağız. Aşağıdaki örnek, `mypublicdns`DNS adıyla `myPublicIP` adlı bir genel IP oluşturur. DNS adının benzersiz olması gerektiğinden, kendi benzersiz DNS adınızı sağlarsınız:
 
 ```azurecli
 azure network public-ip create --resource-group myResourceGroup \
@@ -539,7 +539,7 @@ data:    FQDN                            : mypublicdns.westeurope.cloudapp.azure
 info:    network public-ip create command OK
 ```
 
-Genel IP adresi de bir üst düzey kaynaktır ve bunu ile `azure group show`görebilirsiniz.
+Genel IP adresi de bir üst düzey kaynaktır, bu sayede `azure group show`görebilirsiniz.
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -591,7 +591,7 @@ azure group show myResourceGroup --json | jq '.'
 }
 ```
 
-Tam `azure network public-ip show` komutunu kullanarak, alt etki alanının tam etki alanı adı (FQDN) dahil olmak üzere daha fazla kaynak ayrıntısı inceleyebilirsiniz. Genel IP adresi kaynağı mantıksal olarak ayrıldı, ancak belirli bir adres henüz atanmadı. Bir IP adresi almak için, henüz oluşturduğum bir yük dengeleyiciye ihtiyacınız vardır.
+Tam `azure network public-ip show` komutunu kullanarak alt etki alanının tam etki alanı adı (FQDN) dahil olmak üzere daha fazla kaynak ayrıntısı inceleyebilirsiniz. Genel IP adresi kaynağı mantıksal olarak ayrıldı, ancak belirli bir adres henüz atanmadı. Bir IP adresi almak için, henüz oluşturduğum bir yük dengeleyiciye ihtiyacınız vardır.
 
 ```azurecli
 azure network public-ip show myResourceGroup myPublicIP --json | jq '.'
@@ -617,7 +617,7 @@ azure network public-ip show myResourceGroup myPublicIP --json | jq '.'
 ```
 
 ## <a name="create-a-load-balancer-and-ip-pools"></a>Yük dengeleyici ve IP havuzları oluşturma
-Yük dengeleyici oluşturduğunuzda, trafiği birden çok VM arasında dağıtmanıza olanak sağlar. Ayrıca bakım veya ağır yük durumunda Kullanıcı isteklerine yanıt veren birden çok VM çalıştırarak uygulamanıza yedeklilik sağlar. Aşağıdaki örnek adlı `myLoadBalancer`bir yük dengeleyici oluşturur:
+Yük dengeleyici oluşturduğunuzda, trafiği birden çok VM arasında dağıtmanıza olanak sağlar. Ayrıca bakım veya ağır yük durumunda Kullanıcı isteklerine yanıt veren birden çok VM çalıştırarak uygulamanıza yedeklilik sağlar. Aşağıdaki örnek, `myLoadBalancer`adlı bir yük dengeleyici oluşturur:
 
 ```azurecli
 azure network lb create --resource-group myResourceGroup --location westeurope \
@@ -640,7 +640,7 @@ info:    network lb create command OK
 
 Yük dengeleyicimiz oldukça boş olduğundan bazı IP havuzları oluşturalım. Biri ön uç ve diğeri arka uç için olmak üzere yük dengeleyicimiz için iki IP havuzu oluşturmak istiyoruz. Ön uç IP havuzu herkese açık bir şekilde görünür. Ayrıca, daha önce oluşturduğumuz PıP 'yi atadığımızda yer vardır. Sonra, bağlantı kurmak için sanal makinelerimiz için arka uç havuzunu bir konum olarak kullanırız. Bu şekilde trafik, yük dengeleyiciden VM 'lere akabilir.
 
-İlk olarak, ön uç IP havuzumuzu oluşturalım. Aşağıdaki örnek adında `myFrontEndPool`bir ön uç havuzu oluşturur:
+İlk olarak, ön uç IP havuzumuzu oluşturalım. Aşağıdaki örnek, `myFrontEndPool`adında bir ön uç havuzu oluşturur:
 
 ```azurecli
 azure network lb frontend-ip create --resource-group myResourceGroup \
@@ -662,9 +662,9 @@ data:    Public IP address id            : /subscriptions/guid/resourceGroups/my
 info:    network lb mySubnet-ip create command OK
 ```
 
-Daha önce oluşturduğumuz `myPublicIP` ' `--public-ip-name` de geçiş yapmak için anahtarını nasıl kullandığımızda unutmayın. Genel IP adresini yük dengeleyiciye atamak, sanal makinelerinize Internet üzerinden ulaşmanıza olanak sağlar.
+Daha önce oluşturduğumuz `myPublicIP` geçirmek için `--public-ip-name` anahtarını nasıl kullandığımızda unutmayın. Genel IP adresini yük dengeleyiciye atamak, sanal makinelerinize Internet üzerinden ulaşmanıza olanak sağlar.
 
-Ardından, ikinci IP havuzumuzu bu kez arka uç trafiğiniz için oluşturalım. Aşağıdaki örnek adlı `myBackEndPool`bir arka uç havuzu oluşturur:
+Ardından, ikinci IP havuzumuzu bu kez arka uç trafiğiniz için oluşturalım. Aşağıdaki örnek, `myBackEndPool`adlı bir arka uç havuzu oluşturur:
 
 ```azurecli
 azure network lb address-pool create --resource-group myResourceGroup \
@@ -682,7 +682,7 @@ data:    Provisioning state              : Succeeded
 info:    network lb address-pool create command OK
 ```
 
-JSON çıkışını inceleyerek `azure network lb show` ve inceleyerek yük dengeleyicimizin nasıl yaptığını görebiliriz:
+Yük dengeleyicimizin yaptığı `azure network lb show` ve JSON çıkışını inceleyerek, bu işlemi nasıl yaptığını görebiliriz:
 
 ```azurecli
 azure network lb show myResourceGroup myLoadBalancer --json | jq '.'
@@ -728,7 +728,7 @@ azure network lb show myResourceGroup myLoadBalancer --json | jq '.'
 ```
 
 ## <a name="create-load-balancer-nat-rules"></a>Yük dengeleyici NAT kuralları oluşturma
-Yük dengeleyicimizde trafik akışını almak için gelen veya giden eylemleri belirten ağ adresi çevirisi (NAT) kuralları oluşturmamız gerekir. Kullanılacak protokolü belirtebilir, sonra dış bağlantı noktalarını iç bağlantı noktalarına istediğiniz şekilde eşleyebilirsiniz. Ortamımızda, sanal makinelerimize yük dengeleyicimiz aracılığıyla SSH 'ye izin veren bazı kurallar oluşturalım. 4222 ve 4223 numaralı TCP bağlantı noktalarını sanal makinelerimizde (daha sonra oluşturduğumuz) TCP bağlantı noktası 22 ' ye yönlendirmek için ayarladık. Aşağıdaki örnek, TCP bağlantı noktası 4222 `myLoadBalancerRuleSSH1` ' i 22 numaralı bağlantı noktasına eşlemek için adlı bir kural oluşturur:
+Yük dengeleyicimizde trafik akışını almak için gelen veya giden eylemleri belirten ağ adresi çevirisi (NAT) kuralları oluşturmamız gerekir. Kullanılacak protokolü belirtebilir, sonra dış bağlantı noktalarını iç bağlantı noktalarına istediğiniz şekilde eşleyebilirsiniz. Ortamımızda, sanal makinelerimize yük dengeleyicimiz aracılığıyla SSH 'ye izin veren bazı kurallar oluşturalım. 4222 ve 4223 numaralı TCP bağlantı noktalarını sanal makinelerimizde (daha sonra oluşturduğumuz) TCP bağlantı noktası 22 ' ye yönlendirmek için ayarladık. Aşağıdaki örnek, TCP bağlantı noktası 4222 ' i 22 numaralı bağlantı noktasına eşlemek için `myLoadBalancerRuleSSH1` adlı bir kural oluşturur:
 
 ```azurecli
 azure network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -756,7 +756,7 @@ data:    mySubnet IP configuration id    : /subscriptions/guid/resourceGroups/my
 info:    network lb inbound-nat-rule create command OK
 ```
 
-SSH için ikinci NAT kuralınız yordamını tekrarlayın. Aşağıdaki örnek, TCP bağlantı noktası 4223 `myLoadBalancerRuleSSH2` ' i 22 numaralı bağlantı noktasına eşlemek için adlı bir kural oluşturur:
+SSH için ikinci NAT kuralınız yordamını tekrarlayın. Aşağıdaki örnek, TCP bağlantı noktası 4223 ' i 22 numaralı bağlantı noktasına eşlemek için `myLoadBalancerRuleSSH2` adlı bir kural oluşturur:
 
 ```azurecli
 azure network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -764,7 +764,7 @@ azure network lb inbound-nat-rule create --resource-group myResourceGroup \
   --frontend-port 4223 --backend-port 22
 ```
 
-Ayrıca, Web trafiği için TCP bağlantı noktası 80 için bir NAT kuralı oluşturalım ve kuralı IP havuzlarımıza kadar denetlemenizi sağlar. Kuralı, sanal makinelerimize tek tek bağlamak yerine bir IP havuzuna yedekliyoruz, VM 'Leri IP havuzuna ekleyip kaldırabiliriz. Yük dengeleyici trafik akışını otomatik olarak ayarlar. Aşağıdaki örnek, 80 numaralı bağlantı 80 `myLoadBalancerRuleWeb` noktasına numaralı TCP bağlantı noktasını eşlemek için adlı bir kural oluşturur:
+Ayrıca, Web trafiği için TCP bağlantı noktası 80 için bir NAT kuralı oluşturalım ve kuralı IP havuzlarımıza kadar denetlemenizi sağlar. Kuralı, sanal makinelerimize tek tek bağlamak yerine bir IP havuzuna yedekliyoruz, VM 'Leri IP havuzuna ekleyip kaldırabiliriz. Yük dengeleyici trafik akışını otomatik olarak ayarlar. Aşağıdaki örnek, 80 numaralı bağlantı 80 noktasına numaralı TCP bağlantı noktasını eşlemek için `myLoadBalancerRuleWeb` adlı bir kural oluşturur:
 
 ```azurecli
 azure network lb rule create --resource-group myResourceGroup \
@@ -796,7 +796,7 @@ info:    network lb rule create command OK
 ```
 
 ## <a name="create-a-load-balancer-health-probe"></a>Yük dengeleyici durum yoklaması oluşturma
-Bir sistem durumu araştırması, yük dengeleyicimize ait VM 'Leri düzenli olarak denetler. Aksi takdirde, kullanıcıların bunlara yönlendirilmediğinden emin olmak için bu işlemler işlemden kaldırılır. Sistem durumu araştırması için aralıklar ve zaman aşımı değerleriyle birlikte özel denetimler tanımlayabilirsiniz. Sistem durumu araştırmaları hakkında daha fazla bilgi için bkz. [Load Balancer araştırmaları](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Aşağıdaki örnek, adlı `myHealthProbe`bir TCP sistem durumu oluşturur:
+Bir sistem durumu araştırması, yük dengeleyicimize ait VM 'Leri düzenli olarak denetler. Aksi takdirde, kullanıcıların bunlara yönlendirilmediğinden emin olmak için bu işlemler işlemden kaldırılır. Sistem durumu araştırması için aralıklar ve zaman aşımı değerleriyle birlikte özel denetimler tanımlayabilirsiniz. Sistem durumu araştırmaları hakkında daha fazla bilgi için bkz. [Load Balancer araştırmaları](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Aşağıdaki örnek, `myHealthProbe`adlı bir TCP sistem durumu oluşturur:
 
 ```azurecli
 azure network lb probe create --resource-group myResourceGroup \
@@ -955,11 +955,11 @@ azure network lb show --resource-group myResourceGroup \
 ```
 
 ## <a name="create-an-nic-to-use-with-the-linux-vm"></a>Linux VM ile kullanılacak bir NIC oluşturma
-Kullanılabilir kuralları kendi kullanımına uygulayabileceğiniz için NIC 'ler programlı bir şekilde kullanılabilir. Ayrıca birden fazla tane olabilir. Aşağıdaki `azure network nic create` komutta NIC 'yi yük arka uç IP havuzuna yedeklemeli ve SSH trafiğine izin vermek için NAT kuralıyla ilişkilendirirsiniz.
+Kullanılabilir kuralları kendi kullanımına uygulayabileceğiniz için NIC 'ler programlı bir şekilde kullanılabilir. Ayrıca birden fazla tane olabilir. Aşağıdaki `azure network nic create` komutunda NIC 'yi yük arka uç IP havuzuna yedekler ve SSH trafiğine izin vermek için NAT kuralıyla ilişkilendirebilirsiniz.
 
-`#####-###-###` Bölümleri kendi Azure abonelik Kimliğinizle değiştirin. Oluşturduğunuz kaynakları incelerken abonelik kimliğiniz çıkış `jq` bölümünde belirtilmiştir. Ayrıca, abonelik KIMLIĞINIZI ile `azure account list`görüntüleyebilirsiniz.
+`#####-###-###` bölümlerini kendi Azure abonelik KIMLIĞINIZLE değiştirin. Oluşturduğunuz kaynakları incelerken abonelik KIMLIĞINIZ `jq` çıktısında belirtilmiştir. Ayrıca, abonelik KIMLIĞINIZI `azure account list`görüntüleyebilirsiniz.
 
-Aşağıdaki örnek adlı `myNic1`bir NIC oluşturur:
+Aşağıdaki örnek, `myNic1`adlı bir NIC oluşturur:
 
 ```azurecli
 azure network nic create --resource-group myResourceGroup --location westeurope \
@@ -995,7 +995,7 @@ data:
 info:    network nic create command OK
 ```
 
-Kaynağı doğrudan inceleyerek ayrıntıları görebilirsiniz. Şu `azure network nic show` komutu kullanarak kaynağı inceleyebilirsiniz:
+Kaynağı doğrudan inceleyerek ayrıntıları görebilirsiniz. `azure network nic show` komutunu kullanarak kaynağı inceleyebilirsiniz:
 
 ```azurecli
 azure network nic show myResourceGroup myNic1 --json | jq '.'
@@ -1043,7 +1043,7 @@ azure network nic show myResourceGroup myNic1 --json | jq '.'
 }
 ```
 
-Şimdi, arka uç IP havuzumuza yeniden bağlandığımız ikinci NIC 'yi oluşturacağız. Bu kez ikinci NAT kuralı SSH trafiğine izin verir. Aşağıdaki örnek adlı `myNic2`bir NIC oluşturur:
+Şimdi, arka uç IP havuzumuza yeniden bağlandığımız ikinci NIC 'yi oluşturacağız. Bu kez ikinci NAT kuralı SSH trafiğine izin verir. Aşağıdaki örnek, `myNic2`adlı bir NIC oluşturur:
 
 ```azurecli
 azure network nic create --resource-group myResourceGroup --location westeurope \
@@ -1053,14 +1053,14 @@ azure network nic create --resource-group myResourceGroup --location westeurope 
 ```
 
 ## <a name="create-a-network-security-group-and-rules"></a>Ağ güvenlik grubu ve kuralları oluşturma
-Şimdi, NIC 'ye erişimi yöneten bir ağ güvenlik grubu ve gelen kuralları oluşturacağız. Bir ağ güvenlik grubu, bir NIC veya alt ağa uygulanabilir. Sanal makinelerinizin içindeki ve içindeki trafik akışını denetlemek için kurallar tanımlarsınız. Aşağıdaki örnek adlı `myNetworkSecurityGroup`bir ağ güvenlik grubu oluşturur:
+Şimdi, NIC 'ye erişimi yöneten bir ağ güvenlik grubu ve gelen kuralları oluşturacağız. Bir ağ güvenlik grubu, bir NIC veya alt ağa uygulanabilir. Sanal makinelerinizin içindeki ve içindeki trafik akışını denetlemek için kurallar tanımlarsınız. Aşağıdaki örnek, `myNetworkSecurityGroup`adlı bir ağ güvenlik grubu oluşturur:
 
 ```azurecli
 azure network nsg create --resource-group myResourceGroup --location westeurope \
   --name myNetworkSecurityGroup
 ```
 
-Bkz. bağlantı noktası 22 ' de gelen bağlantılara izin vermek için NSG için gelen kuralı ekleyelim (SSH 'yi desteklemek için). Aşağıdaki örnek, bağlantı noktası 22 ' `myNetworkSecurityGroupRuleSSH` de TCP 'ye izin vermek için adlı bir kural oluşturur:
+Bkz. bağlantı noktası 22 ' de gelen bağlantılara izin vermek için NSG için gelen kuralı ekleyelim (SSH 'yi desteklemek için). Aşağıdaki örnek, bağlantı noktası 22 ' de TCP 'ye izin vermek için `myNetworkSecurityGroupRuleSSH` adlı bir kural oluşturur:
 
 ```azurecli
 azure network nsg rule create --resource-group myResourceGroup \
@@ -1069,7 +1069,7 @@ azure network nsg rule create --resource-group myResourceGroup \
   --name myNetworkSecurityGroupRuleSSH
 ```
 
-Şimdi NSG bağlantı noktası 80 ' de gelen bağlantılara izin verecek şekilde (Web trafiğini desteklemek için) NSG için gelen kuralı ekleyelim. Aşağıdaki örnek, 80 numaralı bağlantı noktasında `myNetworkSecurityGroupRuleHTTP` TCP 'ye izin vermek için adlı bir kural oluşturur:
+Şimdi NSG bağlantı noktası 80 ' de gelen bağlantılara izin verecek şekilde (Web trafiğini desteklemek için) NSG için gelen kuralı ekleyelim. Aşağıdaki örnek, 80 numaralı bağlantı noktasında TCP 'ye izin vermek için `myNetworkSecurityGroupRuleHTTP` adlı bir kural oluşturur:
 
 ```azurecli
 azure network nsg rule create --resource-group myResourceGroup \
@@ -1079,7 +1079,7 @@ azure network nsg rule create --resource-group myResourceGroup \
 ```
 
 > [!NOTE]
-> Gelen kuralı, gelen ağ bağlantıları için bir filtredir. Bu örnekte, NSG 'yi VM 'Ler sanal NIC 'sine bağladık, bu da 22 numaralı bağlantı noktasına gönderilen tüm istekler sanal makinemizdeki NIC 'ye geçirilir. Bu gelen kural, klasik dağıtımlarda olduğu gibi bir uç nokta hakkında değil, bir ağ bağlantısıyla ilgilidir. Bir bağlantı noktasını açmak için, istenen bağlantı noktasından `--source-port-range` gelen istekleri kabul\*etmek için ' ' (varsayılan değer) olarak ayarlanmış olarak bırakmalısınız. Bağlantı noktaları genellikle dinamiktir.
+> Gelen kuralı, gelen ağ bağlantıları için bir filtredir. Bu örnekte, NSG 'yi VM 'Ler sanal NIC 'sine bağladık, bu da 22 numaralı bağlantı noktasına gönderilen tüm istekler sanal makinemizdeki NIC 'ye geçirilir. Bu gelen kural, klasik dağıtımlarda olduğu gibi bir uç nokta hakkında değil, bir ağ bağlantısıyla ilgilidir. Bir bağlantı noktasını açmak için **, istenen bağlantı noktasından gelen** istekleri kabul etmek üzere `--source-port-range` '\*' (varsayılan değer) olarak bırakmanız gerekir. Bağlantı noktaları genellikle dinamiktir.
 >
 >
 
@@ -1096,8 +1096,8 @@ azure network nic set --resource-group myResourceGroup --name myNic2 \
   --network-security-group-name myNetworkSecurityGroup
 ```
 
-## <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluştur
-Kullanılabilirlik kümeleri, VM 'lerinizi hata etki alanları ve yükseltme etki alanlarında yaymaya yardımcı olur. VM 'niz için bir kullanılabilirlik kümesi oluşturalım. Aşağıdaki örnek adlı `myAvailabilitySet`bir kullanılabilirlik kümesi oluşturur:
+## <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
+Kullanılabilirlik kümeleri, VM 'lerinizi hata etki alanları ve yükseltme etki alanlarında yaymaya yardımcı olur. VM 'niz için bir kullanılabilirlik kümesi oluşturalım. Aşağıdaki örnek, `myAvailabilitySet`adlı bir kullanılabilirlik kümesi oluşturur:
 
 ```azurecli
 azure availset create --resource-group myResourceGroup --location westeurope
@@ -1111,18 +1111,18 @@ Yükseltme etki alanları, sanal makine gruplarını ve aynı anda yeniden başl
 [VM 'lerin kullanılabilirliğini yönetme](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)hakkında daha fazla bilgi edinin.
 
 ## <a name="create-the-linux-vms"></a>Linux VM 'lerini oluşturma
-Internet erişimli VM 'Leri desteklemek için depolama ve ağ kaynakları oluşturdunuz. Şimdi bu VM 'Leri oluşturalım ve parola olmayan bir SSH anahtarıyla güvenli hale getirmeye izin verin. Bu durumda, en son LTS 'yi temel alan bir Ubuntu VM oluşturacağız. [Azure VM görüntülerini bulma](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bölümünde açıklandığı gibi `azure vm image list`, bu görüntü bilgilerini kullanarak bulduk.
+Internet erişimli VM 'Leri desteklemek için depolama ve ağ kaynakları oluşturdunuz. Şimdi bu VM 'Leri oluşturalım ve parola olmayan bir SSH anahtarıyla güvenli hale getirmeye izin verin. Bu durumda, en son LTS 'yi temel alan bir Ubuntu VM oluşturacağız. [Azure VM görüntülerini bulma](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bölümünde açıklandığı gibi, bu görüntü bilgilerini `azure vm image list`kullanarak bulduk.
 
-Komutunu `azure vm image list westeurope canonical | grep LTS`kullanarak bir görüntü seçtik. Bu durumda, `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`kullanırız. Son alan için, gelecekte en son `latest` derlemeyi her zaman edindiğimiz için geçiyoruz. (Kullandığımız `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`dize).
+Komut `azure vm image list westeurope canonical | grep LTS`kullanarak bir görüntü seçtik. Bu durumda `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`kullanırız. Son alan için `latest`, gelecekte her zaman en son derlemeyi edinmemiz için geçiririz. (Kullandığımız dize `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`).
 
-Bu sonraki adım, Linux veya Mac 'te **SSH-keygen-t RSA-b 2048**kullanarak zaten ssh rsa ortak ve özel anahtar çifti oluşturmuş olan herkese tanıdık gelecektir. `~/.ssh` Dizininizde herhangi bir sertifika anahtarı çifti yoksa, bunları oluşturabilirsiniz:
+Bu sonraki adım, Linux veya Mac 'te **SSH-keygen-t RSA-b 2048**kullanarak zaten ssh rsa ortak ve özel anahtar çifti oluşturmuş olan herkese tanıdık gelecektir. `~/.ssh` dizininizde hiç sertifika anahtarı çifti yoksa, bunları oluşturabilirsiniz:
 
-* `azure vm create --generate-ssh-keys` Seçeneğini kullanarak otomatik olarak.
+* `azure vm create --generate-ssh-keys` seçeneği kullanılarak otomatik olarak.
 * [Kendiniz oluşturmak için yönergeleri](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)kullanarak el ile.
 
-Alternatif olarak, sanal makine oluşturulduktan `--admin-password` sonra SSH bağlantılarınızın kimliğini doğrulamak için yöntemini de kullanabilirsiniz. Bu yöntem genellikle daha az güvenlidir.
+Alternatif olarak, VM oluşturulduktan sonra SSH bağlantılarınızın kimliğini doğrulamak için `--admin-password` yöntemini kullanabilirsiniz. Bu yöntem genellikle daha az güvenlidir.
 
-Tüm kaynaklarımızı ve bilgilerinizi `azure vm create` komutuyla birlikte kullanarak VM 'yi oluşturacağız:
+Tüm kaynaklarımızı ve bilgilerinizi `azure vm create` komutuyla birlikte yaparak VM 'yi oluşturacağız:
 
 ```azurecli
 azure vm create \
@@ -1205,7 +1205,7 @@ azure vm create \
   --admin-username azureuser
 ```
 
-Şimdi de, `azure vm show myResourceGroup myVM1` oluşturduğunuz öğeleri incelemek için komutunu kullanabilirsiniz. Bu noktada, yalnızca SSH anahtar çiftinizle oturum açabilmeniz (parolalar devre dışı bırakıldığı için) Azure 'da bir yük dengeleyicinin arkasındaki Ubuntu sanal makinelerinizi çalıştırıyorsunuz. NGINX veya httpd 'yi yükleyebilir, bir Web uygulaması dağıtabilir ve her iki VM 'ye yük dengeleyici aracılığıyla trafik akışını görebilirsiniz.
+Şimdi de `azure vm show myResourceGroup myVM1` komutunu kullanarak ne oluşturduğunuz inceleyebilirsiniz. Bu noktada, yalnızca SSH anahtar çiftinizle oturum açabilmeniz (parolalar devre dışı bırakıldığı için) Azure 'da bir yük dengeleyicinin arkasındaki Ubuntu sanal makinelerinizi çalıştırıyorsunuz. NGINX veya httpd 'yi yükleyebilir, bir Web uygulaması dağıtabilir ve her iki VM 'ye yük dengeleyici aracılığıyla trafik akışını görebilirsiniz.
 
 ```azurecli
 azure vm show --resource-group myResourceGroup --name myVM1
@@ -1276,7 +1276,7 @@ Bu ortamı oluşturduğunuza göre, aynı parametrelerle veya bununla eşleşen 
 azure group export --name myResourceGroup
 ```
 
-Bu komut, `myResourceGroup.json` geçerli çalışma dizininizde dosyayı oluşturur. Bu şablondan bir ortam oluşturduğunuzda, yük dengeleyici, ağ arabirimleri veya VM 'Ler için adlar da dahil olmak üzere tüm kaynak adlarını girmeniz istenir. Daha önce gösterilen `-p` `azure group export` komuta veya `--includeParameterDefaultValue` parametresini ekleyerek, bu adları şablon dosyanızda doldurabilirsiniz. Kaynak adlarını belirtmek için JSON şablonunuzu düzenleyin veya kaynak adlarını belirten [Parameters. JSON dosyası oluşturun](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+Bu komut, geçerli çalışma dizininizde `myResourceGroup.json` dosyasını oluşturur. Bu şablondan bir ortam oluşturduğunuzda, yük dengeleyici, ağ arabirimleri veya VM 'Ler için adlar da dahil olmak üzere tüm kaynak adlarını girmeniz istenir. Daha önce gösterilen `azure group export` komutuna `-p` veya `--includeParameterDefaultValue` parametresini ekleyerek, bu adları şablon dosyanızda doldurabilirsiniz. Kaynak adlarını belirtmek için JSON şablonunuzu düzenleyin veya kaynak adlarını belirten [Parameters. JSON dosyası oluşturun](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 Şablonunuzda bir ortam oluşturmak için:
 

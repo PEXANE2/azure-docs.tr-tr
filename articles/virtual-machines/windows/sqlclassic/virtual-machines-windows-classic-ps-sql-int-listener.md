@@ -1,27 +1,28 @@
 ---
-title: Azure 'da Always on kullanılabilirlik grupları için bir ıLB dinleyicisi yapılandırma | Microsoft Docs
-description: Bu öğretici, klasik dağıtım modeliyle oluşturulan kaynakları kullanır ve Azure 'da iç yük dengeleyici kullanan her zaman açık kullanılabilirlik grubu dinleyicisi oluşturur.
+title: Kullanılabilirlik grupları için bir ıLB dinleyicisi yapılandırma (klasik)
+description: Bu öğretici, klasik dağıtım modeliyle oluşturulan kaynakları kullanır ve Azure 'da iç yük dengeleyici kullanan bir SQL Server VM için her zaman açık kullanılabilirlik grubu dinleyicisi oluşturur.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
-ms.assetid: 291288a0-740b-4cfa-af62-053218beba77
+ms.assetid: 291288a0-740b-4cfa-af62-053218beba77j
 ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: ca8adf4f9ce221533240e6c797f1fb01dacf6e8d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 29aaedeafb3995cc09e221d2e049dd538808904a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101900"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032667"
 ---
-# <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Azure 'da Always on kullanılabilirlik grupları için bir ıLB dinleyicisi yapılandırma
+# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Azure SQL Server VM 'lerinde kullanılabilirlik grupları için bir ıLB dinleyicisi yapılandırma
 > [!div class="op_single_selector"]
 > * [İç dinleyici](../classic/ps-sql-int-listener.md)
 > * [Dış dinleyici](../classic/ps-sql-ext-listener.md)
@@ -66,7 +67,7 @@ Azure çoğaltması barındıran her VM için yük dengeli bir uç nokta oluştu
 
 6. `Get-AzurePublishSettingsFile` öğesini çalıştırın. Bu cmdlet, bir yayımlama ayarları dosyasını yerel bir dizine indirmek için sizi bir tarayıcıya yönlendirir. Azure aboneliğiniz için oturum açma kimlik bilgileriniz istenebilir.
 
-7. İndirdiğiniz yayımlama ayarları `Import-AzurePublishSettingsFile` dosyasının yoluyla aşağıdaki komutu çalıştırın:
+7. Aşağıdaki `Import-AzurePublishSettingsFile` komutunu, indirdiğiniz yayımlama ayarları dosyasının yoluyla çalıştırın:
 
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
 
@@ -77,7 +78,7 @@ Azure çoğaltması barındıran her VM için yük dengeli bir uç nokta oluştu
         (Get-AzureVNetConfig).XMLConfiguration
 9. Çoğaltmaları barındıran VM 'Leri içeren alt ağın *alt ağ* adını unutmayın. Bu ad, betikteki $SubnetName parametresinde kullanılır.
 
-10. Çoğaltmaları barındıran VM 'Leri içeren alt ağ için *Virtualnetworksite* adı ve başlangıç *adresispredüzeltmesini* unutmayın. Her iki değeri `Test-AzureStaticVNetIP` de komuta geçirerek ve *availableaddresses*inceleyerek kullanılabilir bir IP adresi arayın. Örneğin, sanal ağın adı *Myvnet* ise ve *172.16.0.128*adresinde başlayan bir alt ağ adres aralığı varsa, aşağıdaki komut kullanılabilir adresleri listeler:
+10. Çoğaltmaları barındıran VM 'Leri içeren alt ağ için *Virtualnetworksite* adı ve başlangıç *adresispredüzeltmesini* unutmayın. Her iki değeri `Test-AzureStaticVNetIP` komutuna geçirerek ve *Availableaddresses*inceleyerek KULLANILABILIR bir IP adresi arayın. Örneğin, sanal ağın adı *Myvnet* ise ve *172.16.0.128*adresinde başlayan bir alt ağ adres aralığı varsa, aşağıdaki komut kullanılabilir adresleri listeler:
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 11. Kullanılabilir adreslerden birini seçin ve sonraki adımda betiğin $ILBStaticIP parametresinde kullanın.
@@ -104,7 +105,7 @@ Azure çoğaltması barındıran her VM için yük dengeli bir uç nokta oluştu
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Değişkenleri ayarladıktan sonra dosyayı çalıştırmak için metin düzenleyicisinden betiği PowerShell oturumunuza kopyalayın. İstem hala gösteriyorsa **>>** , betiğin çalışmaya başlamasını sağlamak için yeniden ENTER tuşuna basın.
+13. Değişkenleri ayarladıktan sonra dosyayı çalıştırmak için metin düzenleyicisinden betiği PowerShell oturumunuza kopyalayın. İstem hala **>>** gösteriyorsa, betiğin çalışmaya başlamasını sağlamak Için yeniden ENTER tuşuna basın.
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Gerekirse KB2854082 yüklendiğini doğrulayın
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -150,7 +151,7 @@ Kullanılabilirlik grubu dinleyicisini iki adımda oluşturun. İlk olarak, iste
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Değişkenleri ayarladıktan sonra, yükseltilmiş bir Windows PowerShell penceresi açın ve betiği çalıştırmak için metin düzenleyicisinden komut dosyasını PowerShell oturumunuza yapıştırın. İstem hala gösteriyorsa **>>** , betiğin çalışmaya devam ettiğinden emin olmak için ENTER tuşuna basın.
+3. Değişkenleri ayarladıktan sonra, yükseltilmiş bir Windows PowerShell penceresi açın ve betiği çalıştırmak için metin düzenleyicisinden komut dosyasını PowerShell oturumunuza yapıştırın. İstem hala **>>** gösteriyorsa, betiğin çalışmaya başlamasını sağlamak Için yeniden ENTER tuşuna basın.
 
 4. Her VM için önceki adımları tekrarlayın.  
     Bu betik, IP adresi kaynağını bulut hizmetinin IP adresiyle yapılandırır ve araştırma bağlantı noktası gibi diğer parametreleri ayarlar. IP adresi kaynağı çevrimiçi duruma getirildiğinde, daha önce oluşturduğunuz yük dengeli uç noktadan yoklama bağlantı noktasındaki yoklamaya yanıt verebilir.

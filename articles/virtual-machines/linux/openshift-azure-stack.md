@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 'de OpenShift dağıtma | Microsoft Docs
+title: Azure Stack 'de OpenShift dağıtma
 description: Azure Stack 'de OpenShift dağıtın.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 97529118d420813cf638f211bdd5559068802c95
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d6c73b8cd33aa85793a2ce839410065e03b97be7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390643"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035542"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Azure Stack 'de OpenShift kapsayıcı platformunu veya OKD 'yi dağıtma
 
@@ -45,7 +45,7 @@ Kaynak Yöneticisi şablonu kullanılıyorsa doğru dalı seçin (azurestack-Rel
 ```
 
 Tüm seçenekler için, Red Hat aboneliği gerekir. Dağıtım sırasında Red Hat Enterprise Linux örneği Red Hat aboneliğine kaydedilir ve OpenShift kapsayıcı platformu için yetkilendirmeleri içeren havuz KIMLIĞINE eklenir.
-Geçerli bir Red Hat abonelik Yöneticisi (RHSM) Kullanıcı adı, parola ve havuz KIMLIĞINIZ olduğundan emin olun. Alternatif olarak, bir etkinleştirme anahtarı, kuruluş KIMLIĞI ve havuz KIMLIĞI de kullanabilirsiniz.  @No__t-0 ' da oturum açarak bu bilgileri doğrulayabilirsiniz.
+Geçerli bir Red Hat abonelik Yöneticisi (RHSM) Kullanıcı adı, parola ve havuz KIMLIĞINIZ olduğundan emin olun. Alternatif olarak, bir etkinleştirme anahtarı, kuruluş KIMLIĞI ve havuz KIMLIĞI de kullanabilirsiniz.  https://access.redhat.com' de oturum açarak bu bilgileri doğrulayabilirsiniz.
 
 ## <a name="azure-stack-prerequisites"></a>Azure Stack önkoşulları
 

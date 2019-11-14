@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Linux VM 'Leri için zaman eşitleme | Microsoft Docs
+title: Azure 'da Linux VM 'Leri için zaman eşitleme
 description: Linux sanal makineleri için zaman eşitleme.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7e23b71edd05154f3c19a097ebf92c690426c777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e5d68a31db3797f9919d044eed284d0d09052390
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100776"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034656"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 'da Linux VM 'Leri için zaman eşitleme
 
@@ -87,7 +87,7 @@ Zaman eşitleme yapılandırmanızı denetlemek için bazı temel komutlar vard�
 
 ### <a name="integration-services"></a>Tümleştirme Hizmetleri
 
-Integration Service 'in (hv_utils) yüklü olup olmadığını denetleyin.
+Tümleştirme hizmetinin (hv_utils) yüklü olup olmadığını denetleyin.
 
 ```bash
 lsmod | grep hv_utils

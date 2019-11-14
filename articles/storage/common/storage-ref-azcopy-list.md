@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b7348e3790166e1a1aecab422e571b8f2fc7cd5f
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: f02c1afadf18a7d3170eb178696487464e4a0bd3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513527"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034087"
 ---
 # <a name="azcopy-list"></a>azcopy listesi
 
@@ -26,6 +26,13 @@ Geçerli sürümde yalnızca blob kapsayıcıları desteklenir.
 ```azcopy
 azcopy list [containerURL] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
+
+- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Örnekler
 

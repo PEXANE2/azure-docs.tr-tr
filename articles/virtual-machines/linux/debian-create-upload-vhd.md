@@ -1,5 +1,5 @@
 ---
-title: Azure 'da bir debir Linux VHD hazırlama | Microsoft Docs
+title: Azure 'da bir debir Linux VHD hazırlama
 description: Azure 'da dağıtım için deni VHD görüntüleri oluşturmayı öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: szark
-ms.openlocfilehash: 009918a95ca1ff6189553d502fd06773fcd0d402
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7f371e2681ecc2b3bb4bcb3e1a8b642061dc2449
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083461"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036468"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Azure için Debian VHD hazırlama
 ## <a name="prerequisites"></a>Önkoşullar
@@ -33,7 +33,7 @@ Bu bölümde, [de, Web sitesinden](https://www.debian.org/distrib/) bir sanal sa
 * Azure 'daki tüm VHD 'ler, 1 MB 'a hizalanmış bir sanal boyuta sahip olmalıdır. Bir ham diskten VHD 'ye dönüştürme yaparken,, dönüştürmeden önce ham disk boyutunun 1 MB 'ın katı olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes).
 
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>Azure-Manage kullanarak detem VHD 'leri oluşturun
-Azure için Azure-Manage betikleri, [Credadtiv](https://www.credativ.com/)içindeki [Azure-Manage](https://github.com/credativ/azure-manage) betikleri gibi araçlar oluşturmaya yönelik araçlar mevcuttur. Bu, sıfırdan bir görüntü oluşturulmasına karşı önerilen yaklaşımdır. Örneğin, bir debir 8 VHD oluşturmak için, `azure-manage` yardımcı programı (ve bağımlılıkları) indirmek ve `azure_build_image` betiği çalıştırmak için aşağıdaki komutları çalıştırın:
+Azure için Azure-Manage betikleri, [Credadtiv](https://www.credativ.com/)içindeki [Azure-Manage](https://github.com/credativ/azure-manage) betikleri gibi araçlar oluşturmaya yönelik araçlar mevcuttur. Bu, sıfırdan bir görüntü oluşturulmasına karşı önerilen yaklaşımdır. Örneğin, bir debir 8 VHD oluşturmak için, `azure-manage` yardımcı programını (ve bağımlılıklarını) indirmek ve `azure_build_image` betiğini çalıştırmak için aşağıdaki komutları çalıştırın:
 
     # sudo apt-get update
     # sudo apt-get install git qemu-utils mbr kpartx debootstrap
@@ -50,9 +50,9 @@ Azure için Azure-Manage betikleri, [Credadtiv](https://www.credativ.com/)içind
 ## <a name="manually-prepare-a-debian-vhd"></a>Bir deni VHD 'YI el ile hazırlama
 1. Hyper-V Yöneticisi 'nde sanal makineyi seçin.
 2. **Bağlan** ' a tıklayarak sanal makine için bir konsol penceresi açın.
-3. İşletim sistemini bir ISO kullanarak yüklediyseniz içindeki`deb cdrom` `/etc/apt/source.list`"" ile ilgili herhangi bir satırı açıklama olarak yapın.
+3. İşletim sistemini bir ISO kullanarak yüklediyseniz `/etc/apt/source.list`"`deb cdrom`" ile ilgili herhangi bir satırı açıklama olarak ekleyin.
 
-4. Dosyayı düzenleyin ve Azure için ek çekirdek parametrelerini dahil etmek üzere GRUB_CMDLINE_LINUX parametresini aşağıdaki şekilde değiştirin. `/etc/default/grub`
+4. `/etc/default/grub` dosyasını düzenleyin ve Azure için ek çekirdek parametreleri eklemek üzere **GRUB_CMDLINE_LINUX** parametresini aşağıdaki şekilde değiştirin.
    
         GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
 

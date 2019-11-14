@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure 'da Linux sanal makinelerini Izleme | Microsoft Docs
+title: Öğretici-Azure 'da Linux sanal makinelerini Izleme
 description: Bu öğreticide, Linux sanal makinelerinizde çalışan performansı ve keşfedilen uygulama bileşenlerini izlemeyi öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 9c6458eea2b1352e7d13ea6691eac4498182ecd3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: eb3f73f3ceb27bec05d4e2e88877ea398de7cdf5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "71680081"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034360"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure 'da Linux sanal makinesini Izleme
 
@@ -42,7 +42,7 @@ Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabilece�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-vm"></a>VM oluşturma
 
@@ -119,7 +119,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
 Linux VM’si, Azure’da etkileşimde bulunduğu ayrılmış bir konağa sahiptir. Konağa ait ölçümler otomatik olarak toplanır ve Azure portalında şu şekilde görüntülenebilir:
 
 1. Azure portalında **Kaynak Grupları**’nı seçin, önce **myResourceGroupMonitor** seçeneğini belirtin ve ardından kaynak listesinden **myVM**’yi seçin.
-1. Konak VM’nin performansını görüntülemek için VM penceresinde **Ölçümler**’i seçin ve ardından **Kullanılabilen ölçümler** bölümünden herhangi bir *[Konak]* ölçümünü seçin.
+1. Konak VM’nin performansını görüntülemek için VM penceresinde **Ölçümler**’i seçin ve ardından *Kullanılabilen ölçümler* bölümünden herhangi bir **[Konak]** ölçümünü seçin.
 
     ![Konak ölçümlerini görüntüleme](./media/tutorial-monitoring/monitor-host-metrics.png)
 
@@ -129,13 +129,13 @@ Azure VM 'nizi VM'ler için Azure İzleyici izlemeyi etkinleştirmek için:
 
 1. Azure portalında **Kaynak Grupları**’na tıklayın, önce **myResourceGroupMonitor** seçeneğini belirleyin ve ardından kaynak listesinden **myVM**’yi seçin.
 
-2. VM sayfasında, **izleme** bölümünde Öngörüler ' i **(Önizleme)** seçin.
+2. VM sayfasında içinde **izleme** bölümünden **Insights (Önizleme)** .
 
-3. **Öngörüler (Önizleme)** sayfasında **Şimdi dene**' yi seçin.
+3. Üzerinde **Insights (Önizleme)** sayfasında **şimdi deneyin**.
 
-    ![VM için VM'ler için Azure İzleyici etkinleştirme](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Bir VM için sanal makineler için Azure İzleyici etkinleştir](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
 
-4. **Azure Izleyici öngörüleri ekleme** sayfasında, aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, açılır listeden seçin.  
+4. Üzerinde **Azure İzleyici İçgörüler ekleme** sayfasında mevcut bir Log Analytics varsa, aynı abonelikte çalışma alanı, aşağı açılan listeden seçin.  
 
     Liste, varsayılan çalışma alanını ve VM 'nin abonelikte dağıtıldığı konumu önceden seçer. 
 
@@ -144,7 +144,7 @@ Azure VM 'nizi VM'ler için Azure İzleyici izlemeyi etkinleştirmek için:
 
 İzlemeyi etkinleştirdikten sonra, VM 'nin performans ölçümlerini görüntüleyebilmeniz için birkaç dakika beklemeniz gerekebilir.
 
-![Dağıtım işlemeyi VM'ler için Azure İzleyici izlemeyi etkinleştir](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Dağıtım işlemi izlemeyi VM'ler için Azure İzleyicisi'ni etkinleştirme](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>VM performans ölçümlerini görüntüleme
 
@@ -152,7 +152,7 @@ VM'ler için Azure İzleyici, bir sanal makinenin ne kadar iyi performans göste
 
 1. Azure portalında **Kaynak Grupları**’na tıklayın, önce **myResourceGroupMonitor** seçeneğini belirleyin ve ardından kaynak listesinden **myVM**’yi seçin.
 
-2. VM sayfasında, **izleme** bölümünde Öngörüler ' i **(Önizleme)** seçin.
+2. VM sayfasında içinde **izleme** bölümünden **Insights (Önizleme)** .
 
 3. **Performans** sekmesini seçin.
 
@@ -168,7 +168,7 @@ Aşağıdaki örnek, ortalama CPU kullanımı için bir uyarı oluşturur.
 
 2. Önce VM dikey penceresinde **Uyarı kuralları**’na ve ardından uyarılar dikey penceresinin üstündeki **Ölçüm uyarısı ekle** seçeneğine tıklayın.
 
-3. Uyarınız için *myAlertRule* gibi bir **Ad** girin
+3. Uyarınız için **myAlertRule** gibi bir *Ad* girin
 
 4. CPU yüzdesi beş dakika boyunca 1,0’ı aştığında bir uyarı tetiklemek için diğer varsayılan ayarların tümünü seçili bırakın.
 

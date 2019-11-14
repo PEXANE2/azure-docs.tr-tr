@@ -1,5 +1,5 @@
 ---
-title: Azure kaynaklarını sağlamak için Terrayform 'u yükleyip yapılandırma | Microsoft Docs
+title: Azure kaynaklarını sağlamak için Terrayform 'u yükleyip yapılandırın
 description: Azure kaynakları oluşturmak için Terrayform 'u yüklemeyi ve yapılandırmayı öğrenin
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: cd3c8d7d862788f626356b4cfcdccccca36227b3
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: efba440448ac912b7656eeab017eef947ab25e95
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168740"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034697"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Azure kaynaklarını sağlamak için Terrayform 'u yükleyip yapılandırın
  
@@ -35,7 +35,7 @@ Terrayform, [Cloud Shell](/azure/terraform/terraform-cloud-shell)varsayılan ola
 
 Terrayform 'u yüklemek için, işletim sisteminiz için uygun paketi ayrı bir yükleme dizinine [indirin](https://www.terraform.io/downloads.html) . İndirme, bir genel yol tanımlamanız gereken tek bir yürütülebilir dosya içerir. Linux ve Mac 'te yolun nasıl ayarlanacağı hakkında yönergeler için [Bu Web sayfasına](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux)gidin. Windows 'da yolun nasıl ayarlanacağı hakkında yönergeler için [Bu Web sayfasına](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows)gidin.
 
-`terraform` Komut ile yol yapılandırmanızı doğrulayın. Aşağıdaki örnek çıktıda olduğu gibi, kullanılabilir Terrayform seçeneklerinin bir listesi gösterilir:
+`terraform` komutuyla yol yapılandırmanızı doğrulayın. Aşağıdaki örnek çıktıda olduğu gibi, kullanılabilir Terrayform seçeneklerinin bir listesi gösterilir:
 
 ```console
 azureuser@Azure:~$ terraform
@@ -52,7 +52,7 @@ Birden çok Azure aboneliğiniz varsa, ilk olarak hesabınızı [az Account List
 az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
-Seçili bir aboneliği kullanmak için, bu oturum için aboneliği [az Account set](/cli/azure/account#az-account-set)ile ayarlayın. Ortam değişkenini, kullanmak istediğiniz aboneliğin döndürülen `id` alanın değerini tutacak şekilde ayarlayın: `SUBSCRIPTION_ID`
+Seçili bir aboneliği kullanmak için, bu oturum için aboneliği [az Account set](/cli/azure/account#az-account-set)ile ayarlayın. `SUBSCRIPTION_ID` ortam değişkenini, kullanmak istediğiniz aboneliğin döndürülen `id` alanının değerini tutacak şekilde ayarlayın:
 
 ```azurecli-interactive
 az account set --subscription="${SUBSCRIPTION_ID}"
@@ -64,7 +64,7 @@ Artık Terrayform ile kullanmak üzere bir hizmet sorumlusu oluşturabilirsiniz.
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
 
-,, `appId` Ve`tenant` 'niz döndürülür. `password` `sp_name` `appId` Ve '`password`ni bir yere unutmayın.
+`appId`, `password`, `sp_name`ve `tenant` döndürülür. `appId` ve `password`bir kopyasını alın.
 
 ## <a name="configure-terraform-environment-variables"></a>Terrayform ortam değişkenlerini yapılandırma
 
@@ -92,7 +92,7 @@ export ARM_ENVIRONMENT=public
 
 ## <a name="run-a-sample-script"></a>Örnek komut dosyası çalıştırma
 
-Boş bir dizinde `test.tf` dosya oluşturun ve aşağıdaki komut dosyasına yapıştırın.
+Boş bir dizinde `test.tf` bir dosya oluşturun ve aşağıdaki komut dosyasına yapıştırın.
 
 ```hcl
 provider "azurerm" {
@@ -117,7 +117,7 @@ terraform init
 Terraform has been successfully initialized!
 ```
 
-İle `terraform plan`terrayform betiği tarafından tamamlanacak eylemlerin önizlemesini yapabilirsiniz. Kaynak grubunu oluşturmaya hazırsanız, Terrayform planınızı aşağıdaki gibi uygulayın:
+`terraform plan`olan Terrayform betiği tarafından tamamlanacak eylemlerin önizlemesini yapabilirsiniz. Kaynak grubunu oluşturmaya hazırsanız, Terrayform planınızı aşağıdaki gibi uygulayın:
 
 ```bash
 terraform apply

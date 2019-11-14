@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b11d831be847716d4edfac4f9a0725e07a60c52a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d071517377053e8f4f22ad00966e2be688b0d486
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513860"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74029867"
 ---
 # <a name="azcopy-doc"></a>azcopy belge
 
@@ -28,6 +28,13 @@ Varsayılan olarak, dosyalar geçerli dizinin içinde ' Doc ' adlı bir klasörd
 ```azcopy
 azcopy doc [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
+
+- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Seçenekler
 

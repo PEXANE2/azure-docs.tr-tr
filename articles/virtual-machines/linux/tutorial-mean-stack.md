@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure’daki bir Linux sanal makinesinde MEAN yığını oluşturma | Microsoft Docs
+title: Öğretici-Azure 'da Linux sanal makinesinde ortalama bir yığın oluşturma
 description: Bu öğreticide, Azure’da bir Linux sanal makinesi üzerinde nasıl MongoDB, Express, AngularJS ve Node.js (MEAN) yığını oluşturulacağını öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5a1d1f738d8f32777bc4a6ea7d04fb0abf2accf7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300812"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034395"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure’da bir Linux sanal makinesi üzerinde MongoDB, Express, AngularJS ve Node.js (MEAN) yığını oluşturma
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure’da bir Linux sanal makinesi (VM) üzerinde MongoDB, Exp
 
 > [!div class="checklist"]
 > * Linux VM oluşturma
-> * Node.js’yi yükleme
+> * Node.js yükleme
 > * MongoDB yükleme ve sunucuyu ayarlama
 > * Express’i yükleme ve sunucuya rotalar ayarlama
 > * AngularJS ile rotalara erişme
@@ -79,7 +79,7 @@ Sanal makine ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın
 ssh azureuser@13.72.77.9
 ```
 
-## <a name="install-nodejs"></a>Node.js’yi yükleme
+## <a name="install-nodejs"></a>Node.js yükleme
 
 [Node.js](https://nodejs.org/en/), Chrome’un V8 JavaScript altyapısında derlenen bir JavaScript çalışma zamanıdır. Express rotalarını ve AngularJS denetleyicilerini ayarlamak için bu öğreticide Node.js kullanılmaktadır.
 
@@ -323,11 +323,11 @@ sudo apt-get install -y nodejs
     nodejs server.js
     ```
 
-2. Bir web tarayıcısında, sanal makine için kaydettiğiniz adresi açın. Örneğin, *http: \//13.72.77.9:3300*. Aşağıdaki sayfaya benzer bir şey görmeniz gerekir:
+2. Bir web tarayıcısında, sanal makine için kaydettiğiniz adresi açın. Örneğin, *http:\//13.72.77.9:3300*. Aşağıdaki sayfaya benzer bir şey görmeniz gerekir:
 
     ![Kitap kaydı](media/tutorial-mean/meanstack-init.png)
 
-3. Metin kutularına veri girin ve **Ekle**’ye tıklayın. Örnek:
+3. Metin kutularına veri girin ve **Ekle**’ye tıklayın. Örneğin:
 
     ![Kitap kaydı ekleme](media/tutorial-mean/meanstack-add.png)
 
@@ -343,7 +343,7 @@ Bu öğreticide, Linux sanal makinesi üzerinde MEAN yığınını kullanarak ki
 
 > [!div class="checklist"]
 > * Linux VM oluşturma
-> * Node.js’yi yükleme
+> * Node.js yükleme
 > * MongoDB yükleme ve sunucuyu ayarlama
 > * Express’i yükleme ve sunucuya rotalar ayarlama
 > * AngularJS ile rotalara erişme

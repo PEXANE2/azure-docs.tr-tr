@@ -7,20 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 594534f64c984f4afb986d3366f388e412bde27c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9c0ed5a28f865d5dd53b01f22eb69c7d1b332ecf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961459"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030106"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 
 
 Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak şirket içi Hyper-V VM 'lerinin olağanüstü durum kurtarma için desteklenen bileşenleri ve ayarları özetlenmektedir.
 
-> [!WARNING]
-> Lütfen SCVMM yapılandırması 'nın hesapta kullanılması için ASR desteğinin yakında kullanım dışı olacağını unutmayın. bu nedenle, devam etmeden önce [kullanımdan](scvmm-site-recovery-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
 
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
@@ -141,7 +139,7 @@ Depolama hesabını değiştir | Hayır. Hedef Azure depolama hesabı, çoğaltm
 
 ## <a name="azure-compute-features"></a>Azure işlem özellikleri
 
-**Özelliği** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
+**Özellik** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---
 Kullanılabilirlik kümeleri | Yes | Yes
 HUB | Yes | Yes  

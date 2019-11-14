@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: c1b7f81c62217d9e113f3293a8f351d908a6a576
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b90e5ccf38e95d33c4b5b6f3b8da0e91a4facb5a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887279"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023733"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluştur
 Azure 'daki [Platform günlükleri](resource-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. Bu makalede, farklı hedeflere platform günlüklerini toplamak için tanılama ayarlarını oluşturma ve yapılandırma hakkında ayrıntılı bilgi verilmektedir.
@@ -42,7 +42,8 @@ Platform günlükleri aşağıdaki tablodaki hedeflere gönderilebilir. Her bir 
 | [Azure depolama hesabı](resource-logs-collect-storage.md) | Günlükleri bir Azure depolama hesabına arşivleme, denetim, statik analiz veya yedekleme için faydalıdır. |
 
 
-
+> [!IMPORTANT]
+> Azure Data Lake Storage 2. hesapları, Azure portal geçerli bir seçenek olarak listelenseler bile, şu anda Tanılama ayarları için hedef olarak desteklenmemektedir.
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Azure portal Tanılama ayarları oluşturma
 Azure portal tanılama ayarlarını Azure Izleyici menüsünden ya da kaynak menüsünden yapılandırabilirsiniz.
@@ -55,13 +56,13 @@ Azure portal tanılama ayarlarını Azure Izleyici menüsünden ya da kaynak men
 
     ![Tanılama ayarları](media/diagnostic-settings/menu-resource.png)
 
-2. Seçtiğiniz kaynakta hiçbir ayar yoksa, bir ayar oluşturmanız istenir. **Tanılamayı aç**’a tıklayın.
+2. Hiçbir ayar kaynağı varsa, istenen bir ayar oluşturmak için seçtiğiniz. **Tanılamayı aç**’a tıklayın.
 
-   ![Tanılama ayarı Ekle-mevcut ayar yok](media/diagnostic-settings/add-setting.png)
+   ![Tanılama ayarını - mevcut hiçbir ayar Ekle](media/diagnostic-settings/add-setting.png)
 
    Kaynakta mevcut ayarlar varsa, önceden yapılandırılmış ayarların bir listesini görürsünüz. Varolan bir ayarı düzenlemek için yeni bir ayar veya **düzenleme ayarı** eklemek için **Tanılama ayarı Ekle** ' ye tıklayın. Her bir ayarın hedef türlerin her biri birden fazla olamaz.
 
-   ![Tanılama ayarı ekleme-var olan ayarlar](media/diagnostic-settings/edit-setting.png)
+   ![Tanılama ayarını - var olan ayarları Ekle](media/diagnostic-settings/edit-setting.png)
 
 3. Ayarınız yoksa, bir ad verin.
 4. Günlükleri göndermek için her bir hedefin kutusunu işaretleyin. Ayarlarını aşağıdaki tabloda açıklandığı gibi belirtmek için **Yapılandır** ' a tıklayın.
@@ -72,9 +73,9 @@ Azure portal tanılama ayarlarını Azure Izleyici menüsünden ya da kaynak men
     | Depolama hesabı | Depolama hesabının adı. |
     | Olay hub’ı ad alanı | Olay Hub 'ının oluşturulduğu ad alanı (Bu, ilk zaman akış günlükleriniz ise) veya akışa (Bu ad alanına ait günlük kategorisini akışa alınmış kaynaklar varsa).
     | Olay hub'ı adı | İsteğe bağlı olarak, ayarda tüm verileri göndermek için bir olay hub 'ı adı belirtin. Bir ad belirtmezseniz, her günlük kategorisi için bir olay hub 'ı oluşturulur. Birden çok kategori gönderiyorsanız, oluşturulan olay hub 'larının sayısını sınırlandırmak için bir ad belirtmek isteyebilirsiniz. Ayrıntılar için bkz. [Azure Event Hubs kotaları ve limitleri](../../event-hubs/event-hubs-quotas.md) . |
-    | Olay Hub 'ı ilke adı | Akış mekanizmanın sahip olduğu izinleri tanımlar. |
+    | Olay hub'ı ilke adı | Akış mekanizmanın sahip olduğu izinleri tanımlar. |
 
-    ![Tanılama ayarı ekleme-var olan ayarlar](media/diagnostic-settings/setting-details.png)
+    ![Tanılama ayarını - var olan ayarları Ekle](media/diagnostic-settings/setting-details.png)
 
 5. Belirtilen hedeflere gönderilecek veri kategorilerinin her birinin kutusunu işaretleyin. **Bir depolama hesabına arşivleme**seçeneğini belirlediyseniz, [saklama süresini](resource-logs-collect-storage.md#data-retention)de belirtmeniz gerekecektir.
 
@@ -85,7 +86,7 @@ Azure portal tanılama ayarlarını Azure Izleyici menüsünden ya da kaynak men
 >
 > *Örneğin*: Bir Olay Hub'ındaki 'Gelen İletiler' ölçümü, kuyruk düzeyi temelinde araştırılıp grafiği oluşturulabilir. Ancak, tanılama ayarları aracılığıyla dışarı aktarılan ölçüm, Olay Hub’ındaki tüm kuyruklarda tüm gelen iletiler halinde ifade edilir.
 
-4. **Kaydet** düğmesine tıklayın.
+4. **Save (Kaydet)** düğmesine tıklayın.
 
 Birkaç dakika sonra, yeni ayar bu kaynak için ayarlar listenizde görünür ve yeni olay verileri oluşturulmasıyla Günlükler belirtilen hedeflere akışla kaydedilir. Bir olayın ne zaman yayınlandığına ve [bir Log Analytics çalışma alanında göründüğünde](data-ingestion-time.md)on beş dakika sürebilir.
 

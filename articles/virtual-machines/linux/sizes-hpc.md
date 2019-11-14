@@ -1,5 +1,5 @@
 ---
-title: Azure Linux VM boyutları-HPC | Microsoft Docs
+title: Azure Linux VM boyutları-HPC
 description: Azure 'da Linux yüksek performanslı bilgi işlem sanal makineleri için kullanılabilen farklı boyutları listeler. Bu serideki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: ee99869c2b7a7b3ab38fdd9eae0687862ea53819
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 214ab48b6b0dca37eff3b3f155aaa92afc7fee16
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100872"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034885"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Yüksek performanslı işlem sanal makine boyutları
 
@@ -30,7 +30,7 @@ ms.locfileid: "70100872"
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
 
-### <a name="mpi"></a>MPI 
+### <a name="mpi"></a>MPı 
 
 Azure 'daki SR-ıOV özellikli VM boyutları, neredeyse her türlü MPı kullanılmasına izin verir.
 SR-ıOV etkin olmayan VM 'lerde yalnızca Intel MPı 5. x sürümleri desteklenir. Intel MPı çalışma zamanı kitaplığı 'nın sonraki sürümleri (2017, 2018), Azure Linux RDMA sürücüleriyle uyumlu olmayabilir veya olmayabilir.
@@ -79,7 +79,7 @@ Azure Marketi 'nde RDMA bağlantısını destekleyen birçok Linux dağıtımı 
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]  
 
-  InfiniBand 'yi etkinleştirme hakkında daha fazla ayrıntı için MPı 'yi ayarlama bölümüne [](../workloads/hpc/enable-infiniband.md)bakın.
+  InfiniBand 'yi etkinleştirme hakkında daha fazla ayrıntı için MPı 'yi [ayarlama bölümüne bakın](../workloads/hpc/enable-infiniband.md).
 
 
 ### <a name="cluster-configuration-options"></a>Küme yapılandırma seçenekleri
@@ -88,7 +88,7 @@ Azure, RDMA ağını kullanarak iletişim kurabilen Linux HPC VM kümeleri oluş
 
 * **Sanal makineler** -RDMA özellikli HPC VM 'lerini aynı Kullanılabilirlik kümesinde dağıtın (Azure Resource Manager dağıtım modelini kullandığınızda). Klasik dağıtım modelini kullanıyorsanız, VM 'Leri aynı bulut hizmetinde dağıtın. 
 
-* **Sanal Makine Ölçek Kümeleri** -sanal makine ölçek kümesinde dağıtımı tek bir yerleştirme grubuyla sınırlandırtığınızdan emin olun. Örneğin, bir kaynak yöneticisi şablonunda, `singlePlacementGroup` özelliğini olarak `true`ayarlayın. 
+* **Sanal Makine Ölçek Kümeleri** -sanal makine ölçek kümesinde dağıtımı tek bir yerleştirme grubuyla sınırlandırtığınızdan emin olun. Örneğin, bir Kaynak Yöneticisi şablonunda, `singlePlacementGroup` özelliğini `true`olarak ayarlayın. 
 
 * **Sanal makineler arasında MPI** -sanal makineler (VM 'ler) arasında gerekliyse MPI iletişimi varsa, VM 'lerin aynı Kullanılabilirlik kümesinde veya sanal makinede aynı ölçek kümesinde olduğundan emin olun.
 
@@ -96,7 +96,7 @@ Azure, RDMA ağını kullanarak iletişim kurabilen Linux HPC VM kümeleri oluş
 
 * **Azure Batch** -Linux işlem düğümlerinde MPI iş yüklerini çalıştırmak için bir [Azure Batch](/azure/batch/) havuzu oluşturun. Daha fazla bilgi için bkz. [Batch havuzlarında RDMA özellikli veya GPU özellikli örnekler kullanma](../../batch/batch-pool-compute-intensive-sizes.md). Toplu iş üzerinde kapsayıcı tabanlı iş yüklerini çalıştırmak için [Batch Shipbahçe](https://github.com/Azure/batch-shipyard) projesine de bakın.
 
-* **Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) , bir Windows Server baş düğümü tarafından yönetilen, RDMA özellikli Azure VM 'lerinde dağıtılan işlem düğümlerinde çalışacak birkaç Linux dağıtımlarını destekler. Örnek bir dağıtım için bkz. [Azure 'DA HPC Pack LINUX RDMA kümesi oluşturma](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+* **MICROSOFT HPC pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) , RDMA özellikli Azure VM 'Lerinde dağıtılan ve bir Windows Server baş düğümü tarafından yönetilen Işlem düğümlerinde çalışacak birkaç Linux dağıtımını destekler. Örnek bir dağıtım için bkz. [Azure 'DA HPC Pack LINUX RDMA kümesi oluşturma](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
 
 ### <a name="network-considerations"></a>Ağ konuları

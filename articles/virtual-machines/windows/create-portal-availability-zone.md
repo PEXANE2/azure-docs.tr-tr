@@ -1,5 +1,5 @@
 ---
-title: Azure portal ile bölge Windows VM oluşturma | Microsoft Docs
+title: Azure portal ile bölge Windows VM oluşturma
 description: Azure portal ile bir kullanılabilirlik alanında Windows VM oluşturma
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 90c6f7106cbc885c513d47bf80a7b1ec218d8c6c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c6f843693ccfa16f9b31027ba370242e0462b138
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168563"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033886"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Azure portal ile bir kullanılabilirlik alanında Windows sanal makinesi oluşturma
 
@@ -30,7 +30,7 @@ Kullanılabilirlik alanı kullanmak için, [desteklenen bir Azure bölgesinde](.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma 
 
-[https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
+https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
@@ -46,7 +46,7 @@ Kullanılabilirlik alanı kullanmak için, [desteklenen bir Azure bölgesinde](.
 
     ![VM boyutu seçin](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. Ayarlar > **yüksek kullanılabilirlik**bölümünde, **kullanılabilirlik bölgesi** açılan listesinden numaralandırılmış bölgelerden birini seçin, kalan varsayılan ayarları tutun ve **Tamam**' a tıklayın.
+5. **Ayarlar** > **yüksek kullanılabilirlik**altında, **kullanılabilirlik bölgesi** açılan listesinden numaralandırılmış bölgelerden birini seçin, kalan varsayılan ayarları tutun ve **Tamam**' a tıklayın.
 
     ![Bir kullanılabilirlik bölgesi seçin](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 

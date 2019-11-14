@@ -1,5 +1,5 @@
 ---
-title: SQL Server VM Azure Site Recovery Services ile Azure içindeki başka bir bölgeye taşıyın | Microsoft Docs
+title: Sanal makineyi başka bir bölgeye taşı (Azure Site Recovery)
 description: SQL Server sanal makinenizi Azure 'da bir bölgeden diğerine nasıl geçirebileceğinizi öğrenin.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,22 +14,23 @@ ms.workload: iaas-sql-server
 ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 063876316c92780d061388283a55c7f50dd3d78a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3b84119cdcc1bb7e8603de64e3d23c69dac70cc3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100535"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022302"
 ---
 # <a name="move-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery-services"></a>SQL Server VM Azure Site Recovery hizmetleriyle Azure 'daki başka bir bölgeye taşıma
 
 Bu makalede, SQL Server sanal makinenizi (VM) Azure 'da bir bölgeden diğerine geçirmek için Azure Site Recovery kullanma öğretilir. 
 
 SQL Server VM farklı bir bölgeye taşımak şunları gerektirir:
-1. [**Hazırlanıyor**](#prepare-to-move): Kaynak SQL Server VM ve hedef bölgenizin taşıma için yeterli hazır olduğunu onaylayın. 
-1. [**Yapılandırma**](#configure-azure-site-recovery-vault): SQL Server VM taşınmasının Azure Site Recovery kasasında çoğaltılan bir nesne olması gerekir. SQL Server VM Azure Site Recovery kasasına eklemeniz gerekir. 
-1. [**Test etme**](#test-move-process): SQL Server VM geçişi, kaynak bölgeden çoğaltılan hedef bölgeye yük devretmesini gerektirir. Taşıma işleminin başarılı olduğundan emin olmak için öncelikle SQL Server VM hedef bölgeye başarıyla yük devredebileceğinizi test etmeniz gerekir. Bu, tüm sorunları ortaya çıkaran ve gerçek taşıma gerçekleştirirken bunları önlemenize yardımcı olur. 
-1. [**Taşıma**](#move-the-sql-server-vm): Test yük devretmesi başarılı olduktan sonra, SQL Server VM geçirmek için güvenli olduğunuzu öğrendikten sonra sanal makinenin hedef bölgeye taşınmasını sağlayabilirsiniz. 
+1. [**Hazırlanıyor**](#prepare-to-move): hem kaynak SQL Server VM hem de hedef bölgenizin taşıma için yeterli hazır olduğunu onaylayın. 
+1. [**Yapılandırma**](#configure-azure-site-recovery-vault): SQL Server VM taşımak, Azure Site Recovery kasasında çoğaltılan bir nesne olmasını gerektirir. SQL Server VM Azure Site Recovery kasasına eklemeniz gerekir. 
+1. [**Test**](#test-move-process): SQL Server VM geçişi, kaynak bölgeden çoğaltılan hedef bölgeye yük devretmesini gerektirir. Taşıma işleminin başarılı olduğundan emin olmak için öncelikle SQL Server VM hedef bölgeye başarıyla yük devredebileceğinizi test etmeniz gerekir. Bu, tüm sorunları ortaya çıkaran ve gerçek taşıma gerçekleştirirken bunları önlemenize yardımcı olur. 
+1. [**Taşıma**](#move-the-sql-server-vm): test yük devretmesi başarılı olduktan sonra, SQL Server VM geçirmek için güvenli olduğunuzu öğrendikten sonra sanal makinenin hedef bölgeye taşınmasını sağlayabilirsiniz. 
 1. [**Temizleniyor**](#clean-up-source-resources): Faturalandırma ücretlerinden kaçınmak için, kasadan SQL Server VM ve kaynak grubunda kalan gereksiz kaynakları kaldırın. 
 
 ## <a name="verify-prerequisites"></a>Önkoşulları doğrulama 
@@ -72,13 +73,13 @@ Taşıma için hem kaynak SQL Server VM hem de hedef bölgeyi hazırlayın.
 
 Aşağıdaki adımlarda, verileri hedef bölgeye kopyalamak için Azure Site Recovery nasıl kullanılacağı gösterilmektedir. Kurtarma Hizmetleri kasasını kaynak bölgesi dışında herhangi bir bölgede oluşturun. 
 
-1. [Azure portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. Gezinti bölmesinin sol üst köşesinden **bir kaynak oluşturmayı** seçin. 
 1. **Yönetim araçları &** seçin ve ardından **Yedekle ve Site Recovery '** ı seçin. 
 1. **Temel bilgiler** sekmesinde, **proje ayrıntıları**' nın altında, hedef bölgede yeni bir kaynak grubu oluşturun veya hedef bölgede var olan bir kaynak grubunu seçin. 
 1. **Örnek ayrıntıları**' nın altında, kasanızın adını belirtin ve ardından açılan listeden hedef **bölgenizi** seçin. 
 1. Kurtarma Hizmetleri kasanızı oluşturmak için **gözden geçir + oluştur** ' u seçin. 
-1. Gezinti bölmesinin sol üst köşesindeki **tüm hizmetler** ' i seçin ve arama kutusuna yazın `recovery services`. 
+1. Gezinti bölmesinin sol üst köşesindeki **tüm hizmetler** ' i seçin ve arama kutusuna `recovery services`yazın. 
 1. I **Kurtarma Hizmetleri kasaları** ' nın yanındaki yıldızı seçerek hızlı gezinti çubuğunuza ekleyin. 
 1. **Kurtarma Hizmetleri kasaları** ' nı seçin ve ardından oluşturduğunuz kurtarma hizmetleri kasasını seçin. 
 1. **Genel bakış** bölmesinde **Çoğalt**' ı seçin. 
@@ -113,7 +114,7 @@ Aşağıdaki adımlarda, taşıma işlemini test etmek için Azure Site Recovery
    ![Yük devretme testi ilerlemesini izleme](media/virtual-machines-windows-sql-move-to-new-region/monitor-failover-test-job.png)
 
 1. Test tamamlandıktan sonra portalda **sanal makineler** ' e gidin ve yeni oluşturulan sanal makineyi gözden geçirin. SQL Server VM çalıştığından ve uygun ağa bağlı olduğundan emin olun. 
-1. Yük devretme testi kaynakları temizlenene kadar **Yük devretme** seçeneği gri olacağı için testin bir parçası olarak oluşturulan VM 'yi silin. Kasaya geri dönün, **çoğaltılan öğeler**' i seçin, SQL Server VM seçin ve sonra **Test yük devretmesini temizle**' yi seçin. **Notlar** bölümündeki sınamalarla ilişkili tüm gözlemlerinizi kaydedin ve kaydedin ve **test et ' in yanındaki onay kutusunu seçin. Yük devretme testi sanal makinelerini**silin. Testten sonra kaynakları temizlemek için **Tamam ' ı** seçin. 
+1. Yük devretme testi kaynakları temizlenene kadar **Yük devretme** seçeneği gri olacağı için testin bir parçası olarak oluşturulan VM 'yi silin. Kasaya geri dönün, **çoğaltılan öğeler**' i seçin, SQL Server VM seçin ve sonra **Test yük devretmesini temizle**' yi seçin. **Notlar** bölümündeki sınamalarla ilişkili tüm gözlemlerinizi kaydedin ve kaydedin ve test et ' in yanındaki onay kutusunu seçin **. Yük devretme testi sanal makinelerini silin**. Testten sonra kaynakları temizlemek için **Tamam ' ı** seçin. 
 
    ![Yük devretme testinin ardından öğeleri Temizle](media/virtual-machines-windows-sql-move-to-new-region/cleanup-test-items.png)
 
@@ -122,7 +123,7 @@ Aşağıdaki adımlarda SQL Server VM kaynak bölgeinizden hedef bölgenize nas�
 
 1. **Kurtarma Hizmetleri** kasasına gidin, **çoğaltılan öğeler**' i seçin, VM ' yi seçin ve ardından **Yük devretme**' yı seçin. 
 
-   ![Yük devretmeyi başlat](media/virtual-machines-windows-sql-move-to-new-region/initiate-failover.png)
+   ![Yük devretmeyi Başlat](media/virtual-machines-windows-sql-move-to-new-region/initiate-failover.png)
 
 1. **Kurtarma noktası**altında **uygulamayla tutarlı en son** kurtarma noktasını seçin. 
 1. **Yük devretmeye başlamadan önce makineyi kapat**' ın yanındaki onay kutusunu işaretleyin. Site Recovery yük devretmeyi tetiklemeden önce kaynak VM 'yi kapatmayı deneyecek. Kapatma başarısız olsa bile yük devretme devam eder. 

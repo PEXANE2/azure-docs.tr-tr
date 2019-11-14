@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory kimlik bilgileriyle Linux VM 'de oturum açma | Microsoft Docs
+title: Azure Active Directory kimlik bilgileriyle Linux VM 'de oturum açma
 description: Azure Active Directory kimlik doğrulaması kullanarak oturum açmak için bir Linux VM oluşturma ve yapılandırma hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a67d3a9fb74b1a4f07fc4995c268bb40a84834f7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327088"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035935"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
 
@@ -48,7 +48,7 @@ Azure AD kimlik doğrulamasını kullanarak Azure 'da Linux VM 'lerinde oturum a
 
 Şu Linux dağıtımları Şu anda bu özelliğin önizlemesi sırasında desteklenmektedir:
 
-| Dağıtım | Version |
+| Dağıtım | Sürüm |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -139,17 +139,17 @@ Ayrıca, belirli bir kullanıcının Linux sanal makinesinde oturum açması iç
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Azure AD kimlik bilgilerinizi kullanarak Azure Linux sanal makinesinde oturum açın. Parametresi `-l` , kendi Azure AD hesap adresinizi belirtmenize olanak tanır. Örnek hesabı kendi ile değiştirin. Hesap adresleri tümüyle küçük harfle girilmelidir. Örnek IP adresini önceki komuttan VM 'nizin genel IP adresi ile değiştirin.
+Azure AD kimlik bilgilerinizi kullanarak Azure Linux sanal makinesinde oturum açın. `-l` parametresi, kendi Azure AD hesap adresinizi belirtmenize olanak tanır. Örnek hesabı kendi ile değiştirin. Hesap adresleri tümüyle küçük harfle girilmelidir. Örnek IP adresini önceki komuttan VM 'nizin genel IP adresi ile değiştirin.
 
 ```azurecli-interactive
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-Azure AD 'de, bir kerelik kullanım koduyla [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)oturum açmanız istenir. Bir kerelik kullanım kodunu kopyalayıp cihaz oturum açma sayfasına yapıştırın.
+Azure AD 'de [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)' de bir kerelik kullanım kodu ile oturum açmanız istenir. Bir kerelik kullanım kodunu kopyalayıp cihaz oturum açma sayfasına yapıştırın.
 
 İstendiğinde, oturum açma sayfasında Azure AD oturum açma kimlik bilgilerinizi girin. 
 
-Kimliği başarıyla doğrulandığında, Web tarayıcısında aşağıdaki ileti görüntülenir:`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
+Kimliği başarıyla doğrulandığında, Web tarayıcısında aşağıdaki ileti gösterilir: `You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
 Tarayıcı penceresini kapatın, SSH istemine geri dönün ve **ENTER** tuşuna basın. 
 
@@ -190,9 +190,9 @@ Access denied
 
 Bir Web tarayıcısında kimlik doğrulama adımını başarıyla tamamlayadıysanız, yeni bir kodla hemen oturum açmanız istenebilir. Bu hata genellikle, SSH isteminde belirttiğiniz oturum açma adı ile Azure AD 'de oturum açtığınız hesap arasında bir uyumsuzluk oluşur. Bu sorunu düzeltmek için:
 
-- SSH isteminde belirttiğiniz oturum açma adının doğru olduğunu doğrulayın. Oturum açma adındaki bir yazım hatası, SSH isteminde belirttiğiniz oturum açma adı ile Azure AD 'de oturum açtığınız hesap arasında uyuşmazlık oluşmasına neden olabilir. Örneğin *,azureuser\@contoso.onmicrosoft.com*yerine *azuresuer\@contoso.onmicrosoft.com* yazdınız.
+- SSH isteminde belirttiğiniz oturum açma adının doğru olduğunu doğrulayın. Oturum açma adındaki bir yazım hatası, SSH isteminde belirttiğiniz oturum açma adı ile Azure AD 'de oturum açtığınız hesap arasında uyuşmazlık oluşmasına neden olabilir. Örneğin, *azureuser\@contoso.onmicrosoft.com*yerine *azuresuer\@contoso.onmicrosoft.com* yazdınız.
 - Birden çok Kullanıcı hesabınız varsa, Azure AD 'de oturum açarken tarayıcı penceresinde farklı bir kullanıcı hesabı sağlamadığınızdan emin olun.
-- Linux, büyük/küçük harfe duyarlı bir işletim sistemidir. 'Azureuser@contoso.onmicrosoft.com' Ve 'azureuser@contoso.onmicrosoft.com' arasında bir farklılık var ve bu bir uyumsuzluğa neden olabilir. SSH isteminde doğru büyük/küçük harf duyarlılığı ile UPN 'yi belirttiğinizden emin olun.
+- Linux, büyük/küçük harfe duyarlı bir işletim sistemidir. 'Azureuser@contoso.onmicrosoft.com' ve 'azureuser@contoso.onmicrosoft.com' arasında bir farklılık var ve bu da uyuşmazlığa neden olabilir. SSH isteminde doğru büyük/küçük harf duyarlılığı ile UPN 'yi belirttiğinizden emin olun.
 
 ## <a name="preview-feedback"></a>Önizleme geri bildirimi
 

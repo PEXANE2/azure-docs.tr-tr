@@ -1,26 +1,26 @@
 ---
-title: Grup tabanlı lisanslama ek senaryolar-Azure Active Directory | Microsoft Docs
+title: Grup tabanlı lisanslama ek senaryolar-Azure AD | Microsoft Docs
 description: Azure Active Directory grup tabanlı lisanslama için daha fazla senaryo
 services: active-directory
 keywords: Azure AD lisanslama
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/27/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cfdb8b979d20b77bcbf2f6b0d17855dfa0ac817
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034107"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025957"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory 'de lisanslamayı yönetmek için grupları kullanarak senaryolar, sınırlamalar ve bilinen sorunlar
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) grup tabanlı lisanslama hakkında daha geliş
 
 ## <a name="usage-location"></a>Kullanım konumu
 
-Bazı Microsoft hizmetleri tüm konumlarda kullanılamaz. Bir lisansın bir kullanıcıya atanabilmesi için önce yönetici kullanıcı üzerinde **Kullanım konumu** özelliğini belirtmelidir. [Azure Portal](https://portal.azure.com), **Kullanıcı** &gt; **profil** &gt; **ayarlarında**kullanım konumu belirtebilirsiniz.
+Bazı Microsoft hizmetleri tüm konumlarda kullanılamaz. Bir lisansın bir kullanıcıya atanabilmesi için önce yönetici kullanıcı üzerinde **Kullanım konumu** özelliğini belirtmelidir. [Azure Portal](https://portal.azure.com), **kullanıcı** &gt; **profil** &gt; **ayarları**' nda kullanım konumu belirtebilirsiniz.
 
 Grup lisansı ataması için, kullanım konumu belirtilmemiş tüm kullanıcılar dizinin konumunu alır. Birden çok konumdaki kullanıcılarınız varsa, lisanslarına Kullanıcı eklemeden önce Kullanıcı kaynaklarınıza doğru şekilde yansıtıdığınızdan emin olun.
 
@@ -57,7 +57,7 @@ Kullanıcılar bir lisansa sahip olsa da bir lisansa gerek duyar veya her ikisin
 
 ![Enterprise Mobility + Security lisanslı kullanıcıların ekran görüntüsü](./media/licensing-group-advanced/o365-e5-licensed-users.png)
 
-Bu örnekte, kullanıcının her iki lisansa de sahip olmasını istiyorsanız, bir kullanıcıyı değiştirin ve extensionAttribute1 değerini `EMS;E5_baseservices;` olarak ayarlayın. Bu değişikliği şirket içinde yapabilirsiniz. Değişiklik bulutla eşitlendikten sonra, Kullanıcı her iki gruba da otomatik olarak eklenir ve lisanslar atanır.
+Bu örnekte, kullanıcının her iki lisansa de sahip olmasını istiyorsanız, bir kullanıcıyı değiştirin ve extensionAttribute1 değerini `EMS;E5_baseservices;` değerine ayarlayın. Bu değişikliği şirket içinde yapabilirsiniz. Değişiklik bulutla eşitlendikten sonra, Kullanıcı her iki gruba da otomatik olarak eklenir ve lisanslar atanır.
 
 ![Kullanıcının extensionAttribute1 nasıl ayarlanacağını gösteren ekran görüntüsü](./media/licensing-group-advanced/user-set-extensionAttribute1.png)
 
@@ -130,7 +130,7 @@ Kullanıcıların doğrudan atanmış veya gruptan devralınan bir lisansa sahip
 
 1. Kimlik doğrulaması yapmak ve kiracınızda bağlantı kurmak için `connect-msolservice` cmdlet 'ini çalıştırın.
 
-2. `Get-MsolAccountSku`, Kiracıdaki tüm sağlanan Ürün lisanslarını keşfetmesi için kullanılabilir.
+2. `Get-MsolAccountSku`, Kiracıdaki tüm sağlanan Ürün lisanslarını saptamak için kullanılabilir.
 
    ![Get-Msolaccountsku cmdlet 'inin ekran görüntüsü](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -193,7 +193,7 @@ Bu örnek çıktı, işleme başlangıcını, tüm ortaya çıkan Kullanıcı de
 
 Etkin bir lisansın atandığı bir grubu silmek mümkün değildir. Bir yönetici, lisansların kullanıcılardan kaldırılmasına neden olacağını belirten bir grubu silebilir. bu nedenle, silinmeden önce herhangi bir lisansın önce gruptan kaldırılmasını gerektiririz.
 
-Azure portal bir grubu silmeye çalışırken şöyle bir hata bildirimi görebilirsiniz: ![Ekran görüntüsü grubu silme başarısız @ no__t-1
+Azure portal bir grubu silmeye çalışırken şu şekilde bir hata bildirimi görebilirsiniz: ![ekran görüntüsü grubu silme başarısız](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Gruptaki **lisanslar** sekmesine gidin ve atanmış herhangi bir lisans olup olmadığını görün. Yanıt Evet ise, bu lisansları kaldırın ve grubu silmeyi yeniden deneyin.
 
@@ -227,5 +227,5 @@ Grup tabanlı lisanslama aracılığıyla lisans yönetimine yönelik diğer sen
 * [Azure Active Directory'de gruba lisans atama](licensing-groups-assign.md)
 * [Azure Active Directory'de grubun lisans sorunlarını tanımlama ve çözme](licensing-groups-resolve-problems.md)
 * [Azure Active Directory'de tek tek lisanslı kullanıcıları grup tabanlı lisanslamaya geçirme](licensing-groups-migrate-users.md)
-* [Azure Active Directory 'de grup tabanlı lisanslama kullanarak kullanıcıları ürün lisansları arasında geçirme](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Azure Active Directory 'de grup tabanlı lisanslama için PowerShell örnekleri](../users-groups-roles/licensing-ps-examples.md)
+* [Kullanıcılar Azure Active Directory'de Grup tabanlı lisanslama kullanarak ürün lisansları arasında geçirme](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Azure Active Directory'de Grup tabanlı lisanslama için PowerShell örnekleri](../users-groups-roles/licensing-ps-examples.md)

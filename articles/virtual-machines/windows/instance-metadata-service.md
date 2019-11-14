@@ -1,5 +1,5 @@
 ---
-title: Azure Instance Metadata Service | Microsoft Docs
+title: Azure Instance Metadata Service
 description: Windows VM 'nin işlem, ağ ve yaklaşan bakım olayları hakkında bilgi almak için yeniden oluşturma arabirimi.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 658830e37a453075100cd3aaf132bb1d3aedfaea
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 4e411d986ffe88c0cf498262688afd2ecc71e51c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240384"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038537"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -27,7 +27,7 @@ Azure Instance Metadata Service, sanal makinelerinizi yönetmek ve yapılandırm
 Bu, SKU, ağ yapılandırması ve yaklaşan bakım olayları gibi bilgileri içerir. Hangi tür bilgilerin kullanılabildiği hakkında daha fazla bilgi için bkz. [metadata API 'leri](#metadata-apis).
 
 Azure Instance Metadata Service, [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/)kullanılarak oluşturulan tüm IaaS VM 'lerine ERIŞILEBILEN bir REST uç noktasıdır.
-Uç nokta, yalnızca VM içinden erişilebilen, iyi bilinen, yönlendirilemeyen bir IP`169.254.169.254`adresi () ile kullanılabilir.
+Uç nokta, yalnızca VM içinden erişilebilen, iyi bilinen yönlendirilebilir olmayan IP adresinde (`169.254.169.254`) kullanılabilir.
 
 > [!IMPORTANT]
 > Bu hizmet, tüm Azure bölgelerinde **genel kullanıma sunulmuştur** .  Sanal makine örnekleri hakkında yeni bilgileri kullanıma sunmak için düzenli olarak güncelleştirmeleri alır. Bu sayfa, kullanılabilir olan güncel [meta veri API 'lerini](#metadata-apis) yansıtır.
@@ -36,7 +36,7 @@ Uç nokta, yalnızca VM içinden erişilebilen, iyi bilinen, yönlendirilemeyen 
 
 Hizmet genel kullanıma sunulan Azure bölgelerinde kullanılabilir. Tüm API sürümleri tüm Azure bölgelerinde kullanılabilir olmayabilir.
 
-Regions                                        | Sonrası?                                 | Desteklenen Sürümler
+Bölgeler                                        | Sonrası?                                 | Desteklenen Sürümler
 -----------------------------------------------|-----------------------------------------------|-----------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
@@ -83,7 +83,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance"
 
 ### <a name="using-headers"></a>Üst bilgileri kullanma
 
-Instance Metadata Service sorgulayıp, isteğin istem dışı olarak yeniden yönlendirilmediğinden `Metadata: true` emin olmak için üstbilgiyi sağlamanız gerekir.
+Instance Metadata Service sorgulayıp, isteğin istem dışı yönlendirilmediğinden emin olmak için üst bilgi `Metadata: true` sağlamanız gerekir.
 
 ### <a name="retrieving-metadata"></a>Meta veriler alınıyor
 
@@ -98,14 +98,14 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 
 ### <a name="data-output"></a>Veri çıkışı
 
-Varsayılan olarak, Instance Metadata Service JSON biçimindeki (`Content-Type: application/json`) verileri döndürür. Ancak, farklı API 'Ler isteniyorsa verileri farklı biçimlerde döndürür.
+Varsayılan olarak, Instance Metadata Service JSON biçiminde (`Content-Type: application/json`) verileri döndürür. Ancak, farklı API 'Ler isteniyorsa verileri farklı biçimlerde döndürür.
 Aşağıdaki tablo, API 'Lerin destekleyebileceği diğer veri biçimlerinin bir başvurusudur.
 
 API | Varsayılan veri biçimi | Diğer biçimler
 --------|---------------------|--------------
-/Instance | json | text
-/scheduledevents | json | yok
-/attested | json | yok
+/Instance | nesnesinde | metin
+/scheduledevents | nesnesinde | yok
+/attested | nesnesinde | yok
 
 Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örneğin:
 
@@ -114,23 +114,23 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 ```
 
 > [!NOTE]
-> Yaprak düğümler `format=json` için çalışmaz. Varsayılan biçim JSON `format=text` ise bu sorguların açıkça belirtilmesi gerekir.
+> `format=json` çalışmıyor yaprak düğümler için. Varsayılan biçim JSON ise, bu sorgular için `format=text` açıkça belirtilmesi gerekir.
 
 ### <a name="security"></a>Güvenlik
 
-Instance Metadata Service uç noktasına yalnızca, yönlendirilemeyen bir IP adresi üzerinde çalışan sanal makine örneği içinden erişilebilir. Ayrıca, üst bilgiyle bir `X-Forwarded-For` istek hizmet tarafından reddedilir.
-Ayrıca, gerçek isteğin istenmeden `Metadata: true` yeniden yönlendirmenin bir parçası olmamasını sağlamak için istekler bir üst bilgi içermelidir.
+Instance Metadata Service uç noktasına yalnızca, yönlendirilemeyen bir IP adresi üzerinde çalışan sanal makine örneği içinden erişilebilir. Ayrıca, `X-Forwarded-For` üst bilgisine sahip herhangi bir istek hizmet tarafından reddedilir.
+Ayrıca, gerçek isteğin istenmeden yeniden yönlendirmenin bir parçası olmamasını sağlamak için istekler bir `Metadata: true` üst bilgisi içermelidir.
 
 ### <a name="error"></a>Hata
 
 Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örneğin:
 
-HTTP durum kodu | Reason
+HTTP durum kodu | Neden
 ----------------|-------
 200 TAMAM |
-400 Hatalı Istek | Bir `Metadata: true` yaprak düğümü sorgularken başlık eksik veya biçim eksik
+400 Hatalı Istek | `Metadata: true` üstbilgisi eksik veya bir yaprak düğüm sorgulanırken biçim eksik
 404 Bulunamadı | İstenen öğe yok
-405 yöntemine Izin verilmiyor | Yalnızca `GET` ve`POST` istekleri desteklenir
+405 yöntemine Izin verilmiyor | Yalnızca `GET` ve `POST` istekleri destekleniyor
 429 çok fazla Istek | API Şu anda saniyede en çok 5 sorgu destekliyor
 500 hizmet hatası     | Bir süre sonra yeniden dene
 
@@ -261,13 +261,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 
 **İstek**
 
-Örnek meta verileri `curl` program aracılığıyla Windows 'da alınabilir:
+Örnek meta verileri Windows 'da `curl` programı aracılığıyla alınabilir:
 
 ```powershell
 curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-03-11 | select -ExpandProperty Content
 ```
 
-Ya da `Invoke-RestMethod` PowerShell cmdlet 'i aracılığıyla:
+Veya `Invoke-RestMethod` PowerShell cmdlet 'i aracılığıyla:
 
 ```powershell
 
@@ -341,7 +341,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 #### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>Meta veri uç noktası aracılığıyla aşağıdaki API 'Ler mevcuttur:
 
-Data | Açıklama | Sunulan sürüm
+Veriler | Açıklama | Sunulan sürüm
 -----|-------------|-----------------------
 kanıtlamak | Bkz. [Atsınanan veriler](#attested-data) | 2018-10-01
 identity | Azure kaynakları için Yönetilen kimlikler. Bkz. [erişim belirteci alma](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
@@ -354,26 +354,26 @@ scheduledevents | Bkz. [zamanlanan olaylar](scheduled-events.md) | 2017-08-01
 > [!NOTE]
 > Meta veri uç noktası aracılığıyla, örnek/işlem aracılığıyla aşağıdaki kategorilere erişilir
 
-Data | Açıklama | Sunulan sürüm
+Veriler | Açıklama | Sunulan sürüm
 -----|-------------|-----------------------
 azEnvironment | VM 'nin çalıştığı Azure ortamı | 2018-10-01
 customData | [Özel verileri](#custom-data) gör | 2019-02-01
 location | VM 'nin çalıştığı Azure bölgesi | 2017-04-02
-name | VM adı | 2017-04-02
+ad | VM adı | 2017-04-02
 teklif | VM görüntüsü için teklif bilgileri ve yalnızca Azure görüntü Galerisi 'nden dağıtılan görüntülerde bulunur | 2017-04-02
 osType | Linux veya Windows | 2017-04-02
 placementGroupId | Sanal makine ölçek kümesinin [yerleştirme grubu](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 plan | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren bir [plan planlayın](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
 platformUpdateDomain |  VM 'nin çalıştığı [etki alanını güncelleştirme](manage-availability.md) | 2017-04-02
 platformFaultDomain | VM 'nin çalıştığı [hata etki alanı](manage-availability.md) | 2017-04-02
-sağlayıcı | VM sağlayıcısı | 2018-10-01
+sağlayıcısını | VM sağlayıcısı | 2018-10-01
 publicKeys | VM ve yollara atanan [ortak anahtarların koleksiyonu](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 publisher | VM görüntüsünün yayımcısı | 2017-04-02
 resourceGroupName | Sanal makineniz için [kaynak grubu](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 resourceId | Kaynağın [tam](https://docs.microsoft.com/rest/api/resources/resources/getbyid) kimliği | 2019-03-11
-sku | VM görüntüsü için belirli SKU | 2017-04-02
+isteyin | VM görüntüsü için belirli SKU | 2017-04-02
 subscriptionId | Sanal makine için Azure aboneliği | 2017-08-01
-tags | Sanal makineniz için [Etiketler](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
+etiketler | Sanal makineniz için [Etiketler](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
 tagsList | Daha kolay programlı ayrıştırma için JSON dizisi olarak biçimlendirilen Etiketler  | 2019-06-04
 version | VM görüntüsünün sürümü | 2017-04-02
 vmId | VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
@@ -386,7 +386,7 @@ bölge | Sanal makinenizin [kullanılabilirlik bölgesi](../../availability-zone
 > [!NOTE]
 > Meta veri uç noktası aracılığıyla, örnek/ağ/arabirim aracılığıyla aşağıdaki kategorilere erişilir
 
-Data | Açıklama | Sunulan sürüm
+Veriler | Açıklama | Sunulan sürüm
 -----|-------------|-----------------------
 IPv4/Privateıpaddress | VM 'nin yerel IPv4 adresi | 2017-04-02
 IPv4/Publicıpaddress | VM 'nin genel IPv4 adresi | 2017-04-02
@@ -431,7 +431,7 @@ Nonce, belirtilen isteğe bağlı 10 basamaklı bir dizedir. Nonce, isteği izle
 
  **İstek**
 
-Örnek meta verileri PowerShell yardımcı programı `curl`aracılığıyla Windows 'da alınabilir:
+Örnek meta verileri, Windows 'da PowerShell yardımcı programı aracılığıyla alınabilir `curl`:
 
  ```bash
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
@@ -464,7 +464,7 @@ Nonce, belirtilen isteğe bağlı 10 basamaklı bir dizedir. Nonce, isteği izle
 
 ### <a name="tracking-vm-running-on-azure"></a>Azure üzerinde çalıştırılan VM'yi izleme
 
-Hizmet sağlayıcı olarak, yazılımınızı çalıştıran VM 'lerin sayısını izlemeniz veya VM 'nin benzersizliği izlemesi gereken aracılardan sahip olmanız gerekebilir. Bir VM 'nin benzersiz kimliğini alabilmesi için Instance Metadata Service `vmId` alanı kullanın.
+Hizmet sağlayıcı olarak, yazılımınızı çalıştıran VM 'lerin sayısını izlemeniz veya VM 'nin benzersizliği izlemesi gereken aracılardan sahip olmanız gerekebilir. Bir VM 'nin benzersiz KIMLIĞINI alabilmesi için Instance Metadata Service `vmId` alanı kullanın.
 
 **İstek**
 
@@ -480,7 +480,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 
 ### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Hata/güncelleştirme etki alanı temelinde kapsayıcıların, veri bölümlerinin yerleşimi 
 
-Bazı senaryolarda, farklı veri çoğaltmalarının yerleştirilmesi önemli öneme sahiptir. Örneğin, bir [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) aracılığıyla yapılan `platformFaultDomain` [çoğaltma yerleşimi](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) veya kapsayıcı yerleştirmesi, ve `platformUpdateDomain` VM 'nin üzerinde çalışıp çalışmadığını bilmeniz gerekebilir.
+Bazı senaryolarda, farklı veri çoğaltmalarının yerleştirilmesi önemli öneme sahiptir. Örneğin, bir [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) aracılığıyla yapılan [çoğaltma yerleştirmesi](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) veya kapsayıcı YERLEŞTIRMESI `platformFaultDomain` bilmeniz ve VM 'nin üzerinde çalıştığı `platformUpdateDomain` gerekir.
 Bu kararları vermek için örneklerin [kullanılabilirlik alanları](../../availability-zones/az-overview.md) de kullanabilirsiniz.
 Bu verileri doğrudan Instance Metadata Service aracılığıyla sorgulayabilirsiniz.
 
@@ -545,7 +545,7 @@ AzurePublicCloud
 
 Azure ortamının bölgeleri ve değerleri aşağıda listelenmiştir.
 
- Regions | Azure ortamı
+ Bölgeler | Azure ortamı
 ---------|-----------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
@@ -568,7 +568,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-`tags` Alan, etiketleri noktalı virgülle ayrılmış bir dizedir. Etiketlerde noktalı virgül kullanılırsa bu bir sorun olabilir. Etiketleri programlı olarak ayıklamak üzere yazılmışsa, `tagsList` sınırlandırıcı olmayan bir JSON dizisi olan alana ve sonuç olarak ayrıştırılmaya daha kolay.
+`tags` alan etiketleri noktalı virgülle ayırarak bir dizedir. Etiketlerde noktalı virgül kullanılırsa bu bir sorun olabilir. Etiketleri programlı olarak ayıklamak üzere yazılmışsa, sınırlandırıcı olmayan bir JSON dizisi olan `tagsList` alana ve sonuç olarak ayrıştırılmaya daha kolay.
 
 **İstek**
 
@@ -641,14 +641,14 @@ Verification successful
 }
 ```
 
-Data | Açıklama
+Veriler | Açıklama
 -----|------------
 nonce | Kullanıcı istek ile isteğe bağlı dize sağladı. İstekte hiçbir nonce sağlanmazsa, geçerli UTC zaman damgası döndürülür
 plan | Azure Market görüntüsündeki bir VM için [plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) yapın, ad, ürün ve yayımcı içerir
 zaman damgası/createdOn | İlk imzalı belgenin oluşturulduğu zaman damgası
 zaman damgası/expiresOn | İmzalanan belgenin süresi dolan zaman damgası
 vmId |  VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
-subscriptionId | Üzerinde sunulan sanal makine için Azure aboneliği`2019-04-30`
+subscriptionId | `2019-04-30` tanıtılan Sanal makine için Azure aboneliği
 
 #### <a name="verifying-the-signature"></a>İmza doğrulanıyor
 
@@ -719,7 +719,7 @@ Network Destination        Netmask          Gateway       Interface  Metric
   255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
 ```
 
-1. Aşağıdaki komutu çalıştırın ve bu örnekte (`0.0.0.0``10.0.1.10`) olan ağ hedefi () arabiriminin adresini kullanın.
+1. Aşağıdaki komutu çalıştırın ve bu örnekte (`10.0.1.10`) ağ hedefi için arabirimin adresini (`0.0.0.0`) kullanın.
 
 ```bat
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
@@ -761,7 +761,7 @@ My custom data.
 Dil | Örnek
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Git  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Başlayın  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
@@ -775,18 +775,18 @@ Puppet | https://github.com/keirans/azuremetadata
 
 ## <a name="faq"></a>SSS
 
-1. Hatayı `400 Bad Request, Required metadata header not specified`alıyorum. Bu ne anlama geliyor?
-   * Instance Metadata Service, üstbilginin `Metadata: true` isteğe geçirilmesini istiyor. Bu üstbilginin REST çağrısına geçirilmesi Instance Metadata Service erişim sağlar.
+1. Hata `400 Bad Request, Required metadata header not specified`alıyorum. Bu ne anlama geliyor?
+   * Instance Metadata Service, üst bilgi `Metadata: true` istekte geçirilmesini gerektirir. Bu üstbilginin REST çağrısına geçirilmesi Instance Metadata Service erişim sağlar.
 2. Neden Sanal makinem için işlem bilgilerini alamıyorum?
    * Şu anda Instance Metadata Service yalnızca Azure Resource Manager oluşturulan örnekleri destekliyor. Gelecekte, bulut hizmeti VM 'Leri için destek eklenebilir.
 3. Sanal makinmi Azure Resource Manager bir sırada oluşturdum. İşlem meta veri bilgilerini neden göremiyorum?
    * Sep 2016 ' den sonra oluşturulan tüm VM 'Ler için, işlem meta verilerini görmeye başlamak üzere bir [etiket](../../azure-resource-manager/resource-group-using-tags.md) ekleyin. Eski VM 'Ler için (2016. sürümden önce oluşturulan) meta verileri yenilemek için VM 'lere uzantıları veya veri diskleri ekleyin/kaldırın.
 4. Yeni sürüm için doldurulmuş tüm verileri görmüyorum
    * Sep 2016 ' den sonra oluşturulan tüm VM 'Ler için, işlem meta verilerini görmeye başlamak üzere bir [etiket](../../azure-resource-manager/resource-group-using-tags.md) ekleyin. Eski VM 'Ler için (2016. sürümden önce oluşturulan) meta verileri yenilemek için VM 'lere uzantıları veya veri diskleri ekleyin/kaldırın.
-5. Hatayı `500 Internal Server Error`neden alıyorum?
+5. Hata `500 Internal Server Error`neden alıyorum?
    * İsteğinizi üstel geri dönüş sistemine göre yeniden deneyin. Sorun devam ederse Azure desteği ile iletişime geçin.
 6. Ek soruları/açıklamaları nerede paylaşabilirim?
-   * Yorumlarınızı üzerine https://feedback.azure.com gönderin.
+   * https://feedback.azure.comyorumlarınızı gönderin.
 7. Bu, sanal makine ölçek kümesi örneği için mi çalışıyor?
    * Evet meta veri hizmeti ölçek kümesi örnekleri için kullanılabilir.
 8. Nasıl yaparım? hizmet için destek almak mı istiyorsunuz?

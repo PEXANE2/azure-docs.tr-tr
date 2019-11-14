@@ -1,26 +1,25 @@
 ---
-title: Office 365 gruplarında grup adlandırma ilkesini zorla-Azure Active Directory | Microsoft Docs
+title: Azure Active Directory | grup adlandırma ilkesini zorla | Microsoft Docs
 description: Azure Active Directory 'de Office 365 grupları için adlandırma ilkesi ayarlama
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12bb01abadaf5bc9e7e1b221763ae38890922145
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: b3a9300148f4ac2adf6b95ef0afb500af5bc9284
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013425"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027047"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Azure Active Directory 'de Office 365 gruplarında bir adlandırma ilkesi zorlaması
 
@@ -35,23 +34,23 @@ Adlandırma ilkesi, iş yükleri genelinde oluşturulan grupları oluşturmaya v
 
 Gruplar için adlandırma ilkesini iki farklı şekilde zorunlu kılabilirsiniz:
 
-- **Ön ek-sonek adlandırma ilkesi** Gruplandırmada bir adlandırma kuralını zorlamak için otomatik olarak eklenen ön ekleri veya sonekleri tanımlayabilir (örneğin, "\_GRP Japonya\_My Group\_Engineering" Grup adında, GRP\_Japonya\_ ön ek ve \_mühendislik, sonektir. 
+- **Ön ek-sonek adlandırma ilkesi** Gruplandırmada bir adlandırma kuralını zorlamak için otomatik olarak eklenen ön ekleri veya son ekleri tanımlayabilir (örneğin, Grup adı "GRP\_Japonya\_grupum\_Mühendisliği", GRP\_Japonya\_ önek ve \_Mühendisliği sonektir). 
 
 - **Özel engellenen sözcükler** Kullanıcılar tarafından oluşturulan gruplarda engellenecek bir engellenen sözcük kümesini (örneğin, "CEO, bordro, HR") karşıya yükleyebilirsiniz.
 
 ### <a name="prefix-suffix-naming-policy"></a>Ön ek-sonek adlandırma ilkesi
 
-Adlandırma kuralının genel yapısı ' prefix [GroupName] sonekidir '. Birden çok önek ve sonek tanımlayabilmeniz sırasında, ayarında yalnızca bir [GroupName] örneği olabilir. Ön ekler veya sonekler, grubu oluşturan kullanıcıya göre değiştirilen sabit dizeler ya da \[departman\] gibi Kullanıcı öznitelikleri olabilir. Önek ve sonek dizeleriniz için izin verilen toplam karakter sayısı 53 karakterdir. 
+Adlandırma kuralının genel yapısı ' prefix [GroupName] sonekidir '. Birden çok önek ve sonek tanımlayabilmeniz sırasında, ayarında yalnızca bir [GroupName] örneği olabilir. Ön ekler veya sonekler, grubu oluşturan kullanıcıya göre değiştirilen \[departmanı\] gibi sabit dizeler ya da Kullanıcı öznitelikleri olabilir. Önek ve sonek dizeleriniz için izin verilen toplam karakter sayısı 53 karakterdir. 
 
 Ön ekler ve sonekler, Grup adı ve grup diğer adında desteklenen özel karakterler içerebilir. Önek veya Sonekte, grup diğer adında desteklenmeyen herhangi bir karakter hala Grup adında uygulanır, ancak grup diğer adından kaldırılır. Bu kısıtlama nedeniyle, Grup adına uygulanan ön ekler ve sonekler, grup diğer adına uygulandıklarından farklı olabilir. 
 
 #### <a name="fixed-strings"></a>Sabit dizeler
 
-Genel adres listesinde ve grup iş yüklerinin sol gezinti bağlantılarında grupları taramayı ve ayırt edilmesini kolaylaştırmak için dizeleri kullanabilirsiniz. Ortak öneklerden bazıları ' GRP\_Name ', '\#Name ', '\_Name ' gibi anahtar kelimelerdir
+Genel adres listesinde ve grup iş yüklerinin sol gezinti bağlantılarında grupları taramayı ve ayırt edilmesini kolaylaştırmak için dizeleri kullanabilirsiniz. Ortak öneklerden bazıları ' GRP\_adı ', '\#adı ', '\_Name ' gibi anahtar kelimelerdir
 
 #### <a name="user-attributes"></a>Kullanıcı öznitelikleri
 
-Kullanıcılarınızın, grubun oluşturulduğu departmanı, ofisi veya coğrafi bölgeyi belirlemesine yardımcı olabilecek öznitelikleri kullanabilirsiniz. Örneğin, Adlandırma ilkenizi ve `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"` `User’s department = Engineering`olarak tanımlarsanız, bir grup adı "GRP My Group Mühendisliği" olabilir. Desteklenen Azure AD öznitelikleri \[; departman\], \[Şirket\], \[ofis\], stateoril,CountryorRegion\[\] \[ \] ,\[Başlık.\] Desteklenmeyen Kullanıcı öznitelikleri sabit dizeler olarak kabul edilir; Örneğin, "\[PostaKodu\]". Uzantı öznitelikleri ve özel öznitelikler desteklenmez.
+Kullanıcılarınızın, grubun oluşturulduğu departmanı, ofisi veya coğrafi bölgeyi belirlemesine yardımcı olabilecek öznitelikleri kullanabilirsiniz. Örneğin, Adlandırma ilkenizi `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"`olarak tanımlayabilir ve `User’s department = Engineering`, bir grup adı "GRP My Group Mühendisliği" olabilir. Desteklenen Azure AD öznitelikleri \[departman\], \[şirket\], \[Office\], \[Stateoril\], \[CountryOrRegion\]\[başlık\]. Desteklenmeyen Kullanıcı öznitelikleri sabit dizeler olarak kabul edilir; Örneğin, "\[PostaKodu\]". Uzantı öznitelikleri ve özel öznitelikler desteklenmez.
 
 Kuruluşunuzdaki tüm kullanıcılar için doldurulmuş değerleri olan öznitelikleri kullanmanızı ve uzun değerleri olan öznitelikleri kullanmemenizi öneririz.
 
@@ -73,8 +72,8 @@ Seçili Yöneticiler, tüm grup iş yükleri ve uç noktalarında bu ilkelerden 
 - Genel yönetici
 - İş ortağı katman 1 desteği
 - İş ortağı katman 2 desteği
-- Kullanıcı yöneticisi
-- Dizin yazıcıları
+- Kullanıcı Yöneticisi
+- Dizin yazarları
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Azure portal adlandırma ilkesini yapılandırma
 
@@ -233,7 +232,7 @@ Azure AD 'de bir grup adlandırma ilkesi ayarladıktan sonra, bir Kullanıcı Of
 İş yükü | Uyumluluk
 ----------- | -------------------------------
 Azure Active Directory portalları | Azure AD portalı ve erişim paneli portalı, Kullanıcı bir grup oluştururken veya düzenlenirken bir grup adı yazdığında adlandırma ilkesi Zorlanmış adı gösterir. Kullanıcı özel engellenen bir sözcüğe girdiğinde, kullanıcının kaldırabilmesi için engellenen sözcüğe sahip bir hata mesajı görüntülenir.
-Outlook Web Access (OWA) | Kullanıcı bir grup adı veya grup diğer adı yazdığında Outlook Web Erişimi adlandırma ilkesi tarafından zorlanan adı gösterir. Bir kullanıcı özel engellenen bir sözcüğe girdiğinde, Kullanıcı arabirimini kaldırabilmesi için engellenen sözcükle birlikte Kullanıcı arabiriminde bir hata iletisi gösterilir.
+Outlook Web Erişimi (OWA) | Kullanıcı bir grup adı veya grup diğer adı yazdığında Outlook Web Erişimi adlandırma ilkesi tarafından zorlanan adı gösterir. Bir kullanıcı özel engellenen bir sözcüğe girdiğinde, Kullanıcı arabirimini kaldırabilmesi için engellenen sözcükle birlikte Kullanıcı arabiriminde bir hata iletisi gösterilir.
 Outlook masaüstü | Outlook masaüstünde oluşturulan gruplar, adlandırma ilkesi ayarlarıyla uyumludur. Outlook masaüstü uygulaması henüz zorlanan grup adının önizlemesini göstermez ve Kullanıcı Grup adına girdiğinde özel engellenen Word hatalarını döndürmez. Ancak, bir grup oluştururken veya düzenlenirken adlandırma ilkesi otomatik olarak uygulanır ve Grup adında veya diğer adda özel engellenen sözcükler varsa, kullanıcılar hata iletileri görür.
 Microsoft Teams | Kullanıcı bir takım adı girdiğinde Microsoft ekipleri grup adlandırma ilkesi 'nin zorunlu kılınan adını gösterir. Kullanıcı özel engellenen bir sözcüğe girdiğinde, engellenen sözcükle birlikte kullanıcının kaldırabilmesi için bir hata iletisi gösterilir.
 SharePoint  |  Kullanıcı bir site adı veya Grup e-posta adresi yazdığında, SharePoint adlandırma ilkesi tarafından zorlanan adı gösterir. Kullanıcı özel engellenen bir sözcüğe girdiğinde, engellenen sözcükle birlikte kullanıcının kaldırabilmesi için bir hata iletisi gösterilir.
