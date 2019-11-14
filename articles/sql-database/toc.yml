@@ -367,8 +367,6 @@
               href: sql-database-temporal-tables-retention-policy.md
             - name: Uygulamanın kimliğini doğrulama
               href: sql-database-client-id-keys.md
-            - name: Hata iletileri
-              href: sql-database-develop-error-messages.md
             - name: Performans için işlem grubu oluşturma
               href: sql-database-use-batching-to-improve-performance.md
             - name: Bağlantı kılavuzu
@@ -835,8 +833,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Genel veri kümeleri
       href: sql-database-public-data-sets.md
-    - name: Bağlantı sorunlarını giderme
-      href: 'https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/sql-database/'
     - name: MSDN forumu

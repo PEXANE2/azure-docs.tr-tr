@@ -856,11 +856,20 @@
             - name: İzleme’ye genel bakış
               href: /azure/databricks/applications/mlflow/tracking
               maintainContext: true
-            - name: MLflow izleme örnekleri
-              href: /azure/databricks/applications/mlflow/  tracking-examples
+            - name: Bir scikit-learn modeli eğitime
+              href: /azure/databricks/applications/mlflow/tracking-ex-scikit
+              maintainContext: true
+            - name: PyTorch modelini eğitme
+              href: /azure/databricks/applications/mlflow/tracking-ex-pytorch
+              maintainContext: true
+            - name: PySpark modelini eğitme ve MLeap biçimlerinde kaydetme
+              href: /azure/databricks/applications/mlflow/tracking-ex-pyspark
+              maintainContext: true
+            - name: Delta Lake ile ML modeli eğitim verilerini izleme
+              href: /azure/databricks/applications/mlflow/tracking-ex-delta
               maintainContext: true
             - name: İzlemeye dışarıdan erişme
-              href: /azure/databricks/applications/mlflow/  access-hosted-tracking-server
+              href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
               maintainContext: true
         - name: 'Modelleri kaydetme, yükleme ve dağıtma'
           items:
@@ -911,6 +920,9 @@
             - name: Tumor/Normal işlem hattı
               href: /azure/databricks/applications/genomics/secondary/tumor-normal-pipeline
               maintainContext: true
+            - name: Pipe Tansformer kullanılarak varyant ek açıklaması ekleme
+              href: /azure/databricks/applications/genomics/secondary/variant-annotation-pipe
+              maintainContext: true
             - name: Değişken ek açıklama yöntemleri
               href: /azure/databricks/applications/genomics/secondary/annotate-variants
               maintainContext: true
@@ -920,26 +932,6 @@
             - name: Vep işlem hattı
               href: /azure/databricks/applications/genomics/secondary/vep-pipeline
               maintainContext: true
-        - name: ETL
-          items:
-            - name: Genomics ETL'ye genel bakış
-              href: /azure/databricks/applications/genomics/etl/index
-              maintainContext: true
-            - name: Apache Spark SQL ile Değişken GÇ
-              href: /azure/databricks/applications/genomics/etl/variant-data
-              maintainContext: true
-            - name: Geomics Delta Lake oluşturma
-              href: /azure/databricks/applications/genomics/etl/vcf2delta
-              maintainContext: true
-            - name: Değişken kalite kontrolü
-              href: /azure/databricks/applications/genomics/etl/variant-qc
-              maintainContext: true
-            - name: Örnek kalite kontrolü
-              href: /azure/databricks/applications/genomics/etl/sample-qc
-              maintainContext: true
-            - name: Lift over
-              href: /azure/databricks/applications/genomics/etl/lift-over
-              maintainContext: true
         - name: Üçüncül analiz
           items:
             - name: Üçüncül analize genel bakış
@@ -947,18 +939,6 @@
               maintainContext: true
             - name: Birleşik genetik tipleme işlem hattı
               href: /azure/databricks/applications/genomics/tertiary/joint-genotyping-pipeline
-              maintainContext: true
-            - name: Komut satırı araçlarını Pipe Transformer ile paralelleştirme
-              href: /azure/databricks/applications/genomics/tertiary/pipe-transformer
-              maintainContext: true
-            - name: Değişken normalleştirme
-              href: /azure/databricks/applications/genomics/tertiary/variant-normalization
-              maintainContext: true
-            - name: Regresyon testleri
-              href: /azure/databricks/applications/genomics/tertiary/regression-tests
-              maintainContext: true
-            - name: Python istatistik kitaplıkları
-              href: /azure/databricks/applications/genomics/tertiary/pandas-udf
               maintainContext: true
             - name: SAIGE
               href: /azure/databricks/applications/genomics/tertiary/saige
@@ -1228,7 +1208,10 @@
               maintainContext: true
             - name: JSON'da kodlama algılama hatası
               href: /azure/databricks/kb/data-sources/json-unicode
-              maintainContext: true j
+              maintainContext: true
+            - name: WASB’de dosya okunamıyor
+              href: /azure/databricks/kb/data-sources/wasb-check-blob-types
+              maintainContext: true
         - name: DBFS
           items:
             - name: DBFS kökünde depolanan nesneler okunamıyor
@@ -1550,6 +1533,9 @@
           items:
             - name: Platform sürüm notları
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: Kasım 2019
+              href: /azure/databricks/release-notes/product/2019/november
               maintainContext: true
             - name: Ekim 2019
               href: /azure/databricks/release-notes/product/2019/october

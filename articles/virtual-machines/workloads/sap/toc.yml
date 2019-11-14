@@ -166,6 +166,8 @@
               href: sap-high-availability-guide-wsfc-shared-disk.md
             - name: (A)SCS Örneği için OFS Dosya Paylaşımıyla Windows üzerinde HA
               href: sap-high-availability-guide-wsfc-file-share.md
+            - name: Azure NetApp Files (SMB) ile Windows üzerinde SAP NetWeaver için HA
+              href: high-availability-guide-windows-netapp-files-smb.md
             - name: (A)SCS Örneği için SUSE Linux üzerinde HA
               href: high-availability-guide-suse.md
             - name: Azure NetApp Files ile (A)SCS Örneği için SUSE Linux üzerinde HA

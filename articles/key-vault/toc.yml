@@ -114,6 +114,8 @@
           href: key-vault-group-permissions-for-apps.md
     - name: Event Grid ile anahtar kasası bildirimlerini yönlendirme
       href: event-grid-tutorial.md
+    - name: Azure İlkesi ile tümleştirme
+      href: azure-policy.md
     - name: Azure Key Vault günlüğü
       href: key-vault-logging.md
     - name: Güvenlik duvarı arkasına erişme
