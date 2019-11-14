@@ -1,7 +1,7 @@
 ---
 title: Azure Standart Load Balancer nedir?
 titlesuffix: Azure Load Balancer
-description: Azure Standart Load Balancer özelliklerine genel bakış
+description: Bu öğrenme yoluyla Azure Standart Load Balancer özelliklerine genel bir bakış ile çalışmaya başlayın.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: allensu
-ms.openlocfilehash: 8eb8134452685add53b9dc339437ac262ecc8a9f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c14cf572410d02892aa8a2b3e9f0f42fce46d411
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274390"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068774"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure Standart Load Balancer genel bakış
 
@@ -68,7 +68,7 @@ Arka uç havuzunuzu nasıl tasarlayabileceğinizi düşünürken, yönetim işle
   
 Standart Load Balancer, https uygulamalarınızı doğru şekilde izlemek için [https durum araştırmaları](load-balancer-custom-probe-overview.md#httpprobe) (Aktarım katmanı GÜVENLIĞI (TLS) sarmalayıcısı ile http araştırması) için destek ekler.  
 
-Ayrıca, arka uç havuzunun tamamı araştırdığınızda [](load-balancer-custom-probe-overview.md#probedown), standart Load Balancer tüm kurulu TCP bağlantılarının devam etmesine izin verir. (Temel Load Balancer, tüm örneklere tüm TCP bağlantılarını sonlandırır).
+Ayrıca, arka uç havuzunun tamamı [araştırdığınızda](load-balancer-custom-probe-overview.md#probedown), standart Load Balancer tüm kurulu TCP bağlantılarının devam etmesine izin verir. (Temel Load Balancer, tüm örneklere tüm TCP bağlantılarını sonlandırır).
 
 Ayrıntılar için [Load Balancer sistem durumu araştırmalarını](load-balancer-custom-probe-overview.md) gözden geçirin.
 
@@ -228,8 +228,8 @@ Standart Load Balancer fiyatlandırma bilgileri için [Load Balancer fiyatlandı
 - Load Balancer kuralı iki sanal ağı yayamaz.  Ön uçlar ve ilgili arka uç örnekleri aynı sanal ağda bulunmalıdır.  
 - [Abonelik taşıma Işlemleri](../azure-resource-manager/resource-group-move-resources.md) standart SKU lb ve PIP kaynakları için desteklenmez.
 - VNet ve diğer Microsoft Platformu Hizmetleri olmayan Web çalışanı rolleri, ön VNet Hizmetleri ve diğer platform hizmetleri işlevinin yan etkisi nedeniyle yalnızca bir iç Standart Load Balancer kullanıldığında erişilebilir. İlgili hizmetin kendisi veya temeldeki platformun hiçbir bildirimde bulunulmadan değişiklik yapabilmediği için bu bunu temel almalısınız. Yalnızca dahili Standart Load Balancer kullandığınızda istenirse, açıkça [giden bağlantı](load-balancer-outbound-connections.md) oluşturmanız gerektiğini varsaymanız gerekir.
-- Load Balancer, TCP veya UDP IP protokolleri için yük dengeleme ve bağlantı noktası iletme özellikleri sunan bir üründür.  Yük dengeleme kuralları ve gelen NAT kuralları, TCP ve UDP için desteklenir ancak ICMP dahil olmak üzere diğer IP protokolleri için desteklenmez. Load Balancer, UDP veya TCP akışlarının yüklerini sonlandırmaz, yanıtlamaz veya başka bir şekilde etkileşim kurmaz. Bir ara sunucu değildir. Ön uca bağlantı doğrulamanın başarılı olması, Yük Dengeleme veya gelen NAT kuralında (TCP veya _UDP) aynı_ protokolle veya sanal makinelerinizden en az birinin bir istemciye yanıt oluşturması için bir yanıt üretmelidir. ön uç.  Load Balancer ön uca bir bant içi yanıt alınamayacak sanal makinelerin yanıt veremediğini belirtir.  Bir sanal makine yanıt veremeden bir Load Balancer ön ucuna etkileşimde bulunmak mümkün değildir.  Bu durum [port masquerade SNAT](load-balancer-outbound-connections.md#snat) öğesinin yalnızca TCP ve UDP için desteklendiği giden bağlantılar için de geçerlidir. ICMP de dahil olmak üzere diğer bağlantılar başarısız olacaktır.  Azaltmak için bir örnek düzeyinde Genel IP adresi atayın.
-- Sanal ağ içindeki özel IP adreslerinden ortak IP adreslerine geçiş yaparken [giden bağlantılar](load-balancer-outbound-connections.md) sağlayan genel yük dengeleyiciler aksine, Iç yük dengeleyiciler giden kaynaklı bağlantıları ön uca çevirmez iç Load Balancer her ikisi de özel IP adres alanıdır.  Bu, çevirinin gerekli olmadığı benzersiz iç IP adresi alanı içinde SNAT tükenmesi olasılığını ortadan kaldırır.  Yan etkisi, arka uç havuzundaki bir VM 'den giden bir akışın, bulunduğu _ve_ kendisine geri eşlendiği iç Load Balancer ön uca akmasını denediğinde akışın her iki tarafının da eşleşmediğine ve akışın başarısız olmasına neden olur.  Akış ön uca akışı oluşturan arka uç havuzundaki aynı VM 'ye geri eşlenmediyseniz, akış başarılı olur.   Akış kendisine geri eşleniyorsa giden akış VM 'den ön uca, buna karşılık gelen gelen akış ise VM 'den kendisine doğru şekilde görünür. Konuk işletim sisteminin açısından bakıldığında aynı akışın gelen ve giden bölümleri sanal makine ile eşleşmez. Kaynak ve hedef eşleşmediğinden TCP yığını aynı akışın iki yarısını aynı akışa ait gibi görmez.  Akış, arka uç havuzundaki diğer herhangi bir sanal makineye eşleniyorsa, akışın kilitlenme eşleşir ve VM akışa başarıyla yanıt verebilir.  Bu senaryonun belirtisi aralıklı bağlantı zaman aşımları. Bu senaryoyu güvenilir bir şekilde sağlamak için birkaç yaygın geçici çözüm vardır (bir arka uç havuzundan, iç yükün arkasındaki bir üçüncü taraf proxy 'nin eklenmesini içeren arka uç havuzlarından Load Balancer gelen akışlar). Dengeleyici veya [DSR stil kurallarını kullanma](load-balancer-multivip-overview.md).  Karmaşıklığı azaltmak için genel Load Balancer kullanabilirsiniz ancak elde edeceğiniz senaryo [SNAT tükenmesi](load-balancer-outbound-connections.md#snat) olasılığına sahip olur ve dikkatli bir şekilde yönetilmediği sürece kaçınılmalıdır.
+- Load Balancer, TCP veya UDP IP protokolleri için yük dengeleme ve bağlantı noktası iletme özellikleri sunan bir üründür.  Yük dengeleme kuralları ve gelen NAT kuralları, TCP ve UDP için desteklenir ancak ICMP dahil olmak üzere diğer IP protokolleri için desteklenmez. Load Balancer, UDP veya TCP akışlarının yüklerini sonlandırmaz, yanıtlamaz veya başka bir şekilde etkileşim kurmaz. Bir ara sunucu değildir. Ön uca bağlantının başarıyla doğrulanması, Yük Dengeleme veya gelen NAT kuralında (TCP veya UDP) aynı protokolle aynı protokol ile bant içinde yer almalıdır _ve_ sanal makinelerinizden en az birinin bir istemcinin ön ucundan yanıt görmesini sağlamak için bir yanıt oluşturması gerekir.  Load Balancer ön uca bir bant içi yanıt alınamayacak sanal makinelerin yanıt veremediğini belirtir.  Bir sanal makine yanıt veremeden bir Load Balancer ön ucuna etkileşimde bulunmak mümkün değildir.  Bu durum [port masquerade SNAT](load-balancer-outbound-connections.md#snat) öğesinin yalnızca TCP ve UDP için desteklendiği giden bağlantılar için de geçerlidir. ICMP de dahil olmak üzere diğer bağlantılar başarısız olacaktır.  Azaltmak için bir örnek düzeyinde Genel IP adresi atayın.
+- Sanal ağ içindeki özel IP adreslerinden ortak IP adreslerine geçiş yaparken [giden bağlantılar](load-balancer-outbound-connections.md) sağlayan genel yük dengeleyiciler farklı olarak, Iç yük dengeleyiciler giden kaynaklı bağlantıları, her ikisi de özel IP adresi alanında olan bir iç Load Balancer ön ucuna çevirmez.  Bu, çevirinin gerekli olmadığı benzersiz iç IP adresi alanı içinde SNAT tükenmesi olasılığını ortadan kaldırır.  Yan etkisi, arka uç havuzundaki bir VM 'den giden bir akışın, bulunduğu _ve_ kendisine geri eşlendiği iç Load Balancer ön uca akmasını denediğinde akışın her iki tarafının da eşleşmediğine ve akışın başarısız olmasına neden olur.  Akış ön uca akışı oluşturan arka uç havuzundaki aynı VM 'ye geri eşlenmediyseniz, akış başarılı olur.   Akış kendisine geri eşleniyorsa giden akış VM 'den ön uca, buna karşılık gelen gelen akış ise VM 'den kendisine doğru şekilde görünür. Konuk işletim sisteminin açısından bakıldığında aynı akışın gelen ve giden bölümleri sanal makine ile eşleşmez. Kaynak ve hedef eşleşmediğinden TCP yığını aynı akışın iki yarısını aynı akışa ait gibi görmez.  Akış, arka uç havuzundaki diğer herhangi bir sanal makineye eşleniyorsa, akışın kilitlenme eşleşir ve VM akışa başarıyla yanıt verebilir.  Bu senaryonun belirtisi aralıklı bağlantı zaman aşımları. Bu senaryoyu güvenilir bir şekilde sağlamak için birkaç yaygın geçici çözüm vardır (bir arka uç havuzundan, iç Load Balancer veya [DSR stil kurallarını kullanarak](load-balancer-multivip-overview.md)bir üçüncü taraf proxy 'nin eklenmesini içeren arka uç Load Balancer havuzlarına giden akışlar).  Karmaşıklığı azaltmak için genel Load Balancer kullanabilirsiniz ancak elde edeceğiniz senaryo [SNAT tükenmesi](load-balancer-outbound-connections.md#snat) olasılığına sahip olur ve dikkatli bir şekilde yönetilmediği sürece kaçınılmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

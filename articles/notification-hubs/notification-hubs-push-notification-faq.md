@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: ee1bd413894ff5c12883279ccd8a9e9eac3c1790
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048777"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066870"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs ile anında iletme bildirimleri: sık sorulan sorular
 
@@ -30,9 +30,7 @@ ms.locfileid: "74048777"
 
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>Notification Hubs kaynak yapısı nedir?
 
-Azure Notification Hubs iki kaynak düzeyine sahiptir: hub 'lar ve ad alanları. Hub, bir uygulamanın platformlar arası anında iletme bilgilerini tutabilecek tek bir itme kaynağıdır. Ad alanı, bir bölgedeki hub 'ların koleksiyonudur.
-
-Önerilen eşleme bir uygulamayla bir ad alanıyla eşleşir. Bir ad alanı içinde, üretim uygulamanızla birlikte çalışarak test uygulamanız ile birlikte çalışarak test hub 'ı ve benzeri bir üretim hub 'ına sahip olabilirsiniz.
+Azure Notification Hubs iki kaynak düzeyine sahiptir: hub 'lar ve ad alanları. Hub, bir uygulamanın platformlar arası anında iletme bilgilerini tutabilecek tek bir itme kaynağıdır. Ad alanı, bir bölgedeki hub 'ların koleksiyonudur. Önerilen eşleme bir uygulamayla bir ad alanıyla eşleşir. Bir ad alanı içinde, üretim uygulamanızla birlikte çalışarak test uygulamanız ile birlikte çalışarak test hub 'ı ve benzeri bir üretim hub 'ına sahip olabilirsiniz.
 
 ### <a name="what-is-the-price-model-for-notification-hubs"></a>Notification Hubs için fiyat modeli nedir?
 
@@ -45,7 +43,7 @@ En son fiyatlandırma ayrıntıları [Notification Hubs fiyatlandırması] sayfa
 Standart katman özellikleri:
 
 * **Zengin telemetri**: herhangi bir anında iletme isteğini izlemek platform bildirim sistemi ve hata ayıklama Için geri bildirimde bulunmak Için Ileti telemetri başına Notification Hubs kullanabilirsiniz.
-* **Çoklu Kiralama**: ad alanı düzeyinde platform bildirim sistemi kimlik bilgileriyle çalışabilirsiniz. Bu seçenek, kiracıları aynı ad alanı içinde kolayca hub 'lara bölmenizin olanaklı olmasına olanak sağlar.
+* **Çoklu kiracı**: ad alanı düzeyinde platform bildirim sistemi kimlik bilgileriyle çalışabilirsiniz. Bu seçenek, kiracıları aynı ad alanı içinde kolayca hub 'lara bölmenizin olanaklı olmasına olanak sağlar.
 * **Zamanlanmış gönderim**: her zaman gönderilmek üzere bildirimler zamanlayabilirsiniz.
 * **Toplu işlemler**: kayıtları [Kayıt verme/Içeri aktarma] aktarma belgesinde açıklandığı gibi dışarı aktarma/içeri aktarma işlevlerini sunar.
 
@@ -54,7 +52,7 @@ Standart katman özellikleri:
 Temel ve Standart Notification Hubs katmanlarında, düzgün şekilde yapılandırılmış uygulamalar anında iletme bildirimleri gönderebilir veya en az yüzde 99,9 ' luk bir kayıt yönetimi işlemi gerçekleştirebilir. SLA hakkında daha fazla bilgi edinmek için [NOTIFICATION HUBS SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) sayfasına gidin.
 
 > [!NOTE]
-> Anında iletme bildirimleri, üçüncü taraf platform bildirim sistemlerine (Apple APNS ve Google FCM gibi) bağlı olduğundan, bu iletilerin teslim edilmesi için SLA garantisi yoktur. Notification Hubs, toplu işlemleri platform bildirim sistemlerine (SLA garantisi) gönderdikten sonra, bu, gönderimleri teslim etmek için platform bildirim sistemlerinin sorumluluğundadır (SLA garantisi yoktur).
+> Anında iletme bildirimleri Apple Anında Iletilen bildirim hizmeti (APNs) ve Google 'ın Firebase Cloud Messaging (FCM) gibi üçüncü taraf platform bildirim sistemlerine bağlı olduğundan, bu iletilerin teslim edilmesi için SLA garantisi yoktur. Notification Hubs, toplu işlemleri platform bildirim sistemlerine (SLA garantisi) gönderdikten sonra, bu, gönderimleri teslim etmek için platform bildirim sistemlerinin sorumluluğundadır (SLA garantisi yoktur).
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Hub veya ad alanını farklı bir katmana yükseltmek veya alçaltma Nasıl yaparım? mı?
 
@@ -75,13 +73,7 @@ Anında iletme bildirimleri [iOS](notification-hubs-ios-apple-push-notification-
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>SMS mesajı, e-posta veya Web bildirimlerini destekliyor musunuz?
 
-Notification Hubs, öncelikle mobil uygulamalara bildirim göndermek üzere tasarlanmıştır. E-posta veya kısa mesaj işlevleri sağlamaz. Ancak, bu özellikleri sağlayan üçüncü taraf platformları, [Mobile Apps]kullanılarak yerel anında iletme bildirimleri göndermek için Notification Hubs ile tümleştirilebilir.
-
-Notification Hubs Ayrıca, kutudan çıkan bir tarayıcı içi anında iletme bildirimi teslim hizmeti sağlamaz. Müşteriler, desteklenen sunucu tarafı platformlarının üzerinde SignalR kullanarak bu özelliği uygulayabilir. 
-
-### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>Mobile Apps ve Azure Notification Hubs ile ilgili nasıl ve ne zaman kullanabilirim?
-
-Mevcut bir mobil uygulama arka ucunuz varsa ve yalnızca anında iletme bildirimleri gönderme özelliğini eklemek istiyorsanız Azure Notification Hubs kullanabilirsiniz. Mobil uygulama arka ucunuzu sıfırdan ayarlamak istiyorsanız Azure App Service Mobile Apps özelliğini kullanmayı düşünün. Mobil uygulama, mobil uygulama arka ucundan kolayca anında iletme bildirimleri gönderebilmeniz için bir Bildirim Hub 'ını otomatik olarak sağlar. Mobile Apps fiyatlandırması, bir Bildirim Hub 'ına ait temel ücretleri içerir. Yalnızca dahil edilen gönderimleri aşarsanız ödeyin. Maliyetler hakkında daha fazla ayrıntı için [App Service Fiyatlandırması] sayfasına gidin.
+Notification Hubs, mobil uygulamaları çalıştıran cihazlara bildirim gönderir. E-posta veya kısa mesaj işlevleri sağlamaz. Notification Hubs Ayrıca, kutudan çıkan bir tarayıcı içi anında iletme bildirimi teslim hizmeti sağlamaz. Müşteriler, desteklenen sunucu tarafı platformlarının üzerinde SignalR kullanarak bu özelliği uygulayabilir. 
 
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>Notification Hubs aracılığıyla anında iletme bildirimleri gönderdiğimde, kaç cihaz destekleyebilirim?
 
@@ -94,7 +86,7 @@ Desteklenen cihaz sayısıyla ilgili ayrıntılı bilgi için [Notification Hubs
 Azure Notification Hubs, seçilen katmana bağlı olarak, sistem üzerinden akan bildirim sayısına göre otomatik olarak ölçeklendirilir.
 
 > [!NOTE]
-> Genel kullanım maliyeti, sunulan anında iletme bildirimlerinin sayısına göre artabilir. [Notification Hubs fiyatlandırması] sayfasında özetlenen katman limitlerinin farkında olduğunuzdan emin olun.
+> Genel kullanım maliyeti, gönderilen anında iletme bildirimlerinin sayısına göre artabilir. [Notification Hubs fiyatlandırması] sayfasında özetlenen katman limitlerinin farkında olduğunuzdan emin olun.
 
 Müşterilerimiz, günlük milyonlarca anında iletme bildirimi göndermek için Notification Hubs kullanır. Azure Notification Hubs kullandığınız sürece anında iletme bildirimlerinizin ulaşmasını ölçeklendirmek için özel bir şey yapmanız gerekmez.
 
@@ -135,7 +127,7 @@ Ad alanları, dağıtım gruplandırması için kullanılabilir. Aynı uygulamad
 
 #### <a name="geo-distribution"></a>Coğrafi dağıtım
 
-Çekme bildirimi senaryolarında coğrafi dağıtım her zaman önemli değildir. Cihazlara anında iletme bildirimleri sağlayan çeşitli PNSes (örneğin, APNS veya FCM) eşit olarak dağıtılmaz.
+Çekme bildirimi senaryolarında coğrafi dağıtım her zaman önemli değildir. Cihazlara anında iletme bildirimleri sağlayan çeşitli PNSes (örneğin, APNs veya FCM) eşit olarak dağıtılmaz.
 
 Küresel olarak kullanılan bir uygulamanız varsa, dünyanın dört bir yanındaki farklı Azure bölgelerindeki Notification Hubs hizmetini kullanarak farklı ad alanlarında hub 'lar oluşturabilirsiniz.
 
@@ -157,7 +149,7 @@ Tüm bildirimler, platformun PNS 'leri tarafından hedef cihazlara dağıtılır
 Gönderenin Azure Notification Hubs 'den PNS 'ye kadar olan tüm bağlantılar HTTPS kullanır.
 
 > [!NOTE]
-> Azure Notification Hubs, iletilerin yükünü herhangi bir şekilde günlüğe eklemez.
+> Azure Notification Hubs iletilerin yükünü günlüğe eklemez.
 
 Gizli yükleri göndermek için güvenli bir gönderme deseninin kullanılması önerilir. Gönderen, hassas yük olmadan cihaza ileti tanımlayıcısı ile bir ping bildirimi sunar. Cihazdaki uygulama yükü aldığında, uygulama ileti ayrıntılarını getirmek için doğrudan güvenli bir API çağırır. Bu düzenin nasıl uygulanacağı hakkında bir kılavuz için, [Notification Hubs güvenli anında iletme öğreticisi] sayfasına gidin.
 
@@ -207,9 +199,8 @@ Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine
 - [Bir kaynak için ölçümleri ve etkinlik günlüklerini alma](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
 - [Azure Izleme REST API izlenecek yol](../azure-monitor/platform/rest-api-walkthrough.md)
 
-
 > [!NOTE]
-> Başarılı bildirimler, anında iletme bildirimlerinin dış PNS 'ye teslim edildiğini (örneğin, Apple için APNS veya Google için FCM) ifade anlamına gelir. Hedef cihazlara bildirimleri teslim etmek için PNS 'nin sorumluluğundadır. Genellikle, PNS, teslim ölçümlerini üçüncü taraflara sunmaz.  
+> Başarılı bildirimler, anında iletme bildirimlerinin dış PNS 'ye teslim edildiğini (örneğin, iOS ve macOS için APNs ve Android cihazlar için FCM) sağlar. Hedef cihazlara bildirimleri teslim etmek için PNS 'nin sorumluluğundadır. Genellikle, PNS, teslim ölçümlerini üçüncü taraflara sunmaz.  
 
 [Azure Portal]: https://portal.azure.com
 [Notification Hubs fiyatlandırması]: https://azure.microsoft.com/pricing/details/notification-hubs/
@@ -226,5 +217,4 @@ Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine
 [Kayıt verme/Içeri aktarma]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
-[Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
-[App Service Fiyatlandırması]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

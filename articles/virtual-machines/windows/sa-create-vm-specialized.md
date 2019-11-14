@@ -1,5 +1,5 @@
 ---
-title: Azure 'da özel bir diskten VM oluşturma | Microsoft Docs
+title: Azure 'da özel bir diskten VM oluşturma
 description: Kaynak Yöneticisi dağıtım modelinde özelleştirilmiş bir yönetilmeyen disk ekleyerek yeni bir VM oluşturun.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cdbf55aae52cec9df1ba34cbeb34c67b8e5fc5d0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d887ef2ef74bb433d6e8ae7f53cd0b77f5948303
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749192"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073343"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Depolama hesabındaki özelleştirilmiş bir VHD 'den VM oluşturma
 
