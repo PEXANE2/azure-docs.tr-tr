@@ -138,6 +138,8 @@
         - name: Zaman kaydırma ve canlı VOD
           displayName: 'archive, dvr'
           href: live-event-cloud-dvr.md
+        - name: Canlı iş transkripsiyonu
+          href: live-transcription.md
         - name: Özellik karşılaştırması
           href: live-event-types-comparison.md
         - name: Durumlar ve faturalandırma

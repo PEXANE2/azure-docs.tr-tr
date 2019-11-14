@@ -361,8 +361,8 @@
               href: hyper-v-azure-failback.md
         - name: Yönetme
           items:
-            - name: ASR'de SCVMM yapılandırmalarına yönelik desteğin yaklaşan kullanım dışı bırakma ayrıntıları
-              href: scvmm-site-recovery-deprecation.md
+            - name: Müşterinin sahip olduğu siteler arasından DR kaldırma
+              href: site-to-site-deprecation.md
             - name: Site Recovery ile yapılandırılmış Windows Sunucularını yükseltme
               href: upgrade-2012R2-to-2016.md
             - name: Sunucuları kaldırma ve korumayı devre dışı bırakma
