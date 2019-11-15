@@ -496,7 +496,7 @@
           href: sql-database-active-geo-replication-portal.md
         - name: Azure SQL Data Sync’i ayarlama
           href: sql-database-get-started-sql-data-sync.md
-        - name: Yük devretme grubuna elastik havuz ekleme
+        - name: Yük devretme grubuna bir elastik havuz ekleme
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Güvenliği yapılandırma
           href: sql-database-security-tutorial.md

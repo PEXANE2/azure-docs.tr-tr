@@ -24,6 +24,8 @@
 - name: Kavramlar
   expanded: true
   items:
+    - name: Uygulama yönetimi için en iyi yöntemler
+      href: application-management-fundamentals.md
     - name: Bulut uygulamaları ve çoklu oturum açma
       items:
         - name: Bulut uygulaması tümleştirmesi planlama

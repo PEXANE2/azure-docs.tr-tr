@@ -5,7 +5,7 @@ metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
   title: 'Bing Görsel Arama API’si Belgeleri - Öğreticiler, hızlı başlangıçlar, API başvuruları'
   titleSuffix: Azure Cognitive Services
-  description: Bir resim hakkında içgörüler elde etmek için Bing Görsel Arama API’sini kullanmayı öğrenin.
+  description: 'Bir görüntü karşıya yüklendiğinde veya görüntü URL''si sağlandığında, API bu görüntü hakkında çeşitli ayrıntılarını tanımlayabilir. Bunlar arasında görsel olarak benzer görüntüler, satın alma kaynakları ve web sayfaları vardır.'
   services: cognitive-services
   author: swhite-msft
   manager: nitinme

@@ -145,6 +145,8 @@
       href: how-to-send-additional-data.md
     - name: Sorun giderme
       href: how-to-troubleshoot-dps.md
+    - name: MQTT protokolünü kullanarak DPS ile iletişim kurma
+      href: iot-dps-mqtt-support.md
 - name: Başvuru
   items:
     - name: REST API

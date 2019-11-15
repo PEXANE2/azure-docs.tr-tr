@@ -15,6 +15,10 @@
   items:
     - name: Video Indexer API'sini kullanma
       href: video-indexer-use-apis.md
+- name: Örnekler
+  items:
+    - name: Canlı akış analizi
+      href: live-stream-analysis.md
 - name: Kavramlar
   items:
     - name: Genel Bakış

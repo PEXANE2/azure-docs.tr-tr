@@ -27,6 +27,7 @@ sections:
           - html: <a href="/azure/spatial-anchors/concepts/anchor-relationships-way-finding">Sabit nokta ilişkileri ve yol bulma.</a>
           - html: <a href="/azure/spatial-anchors/concepts/guidelines-effective-anchor-experiences">Deneyim yönergeleri.</a>
           - html: <a href="/azure/spatial-anchors/concepts/logging-diagnostics">Günlüğe kaydetme ve tanılama.</a>
+          - html: <a href="/azure/spatial-anchors/concepts/coarse-reloc">Kaba yeniden yerelleştirme.</a>
   - title: 5 Dakikalık Hızlı Başlangıçlar
     items:
       - type: paragraph
