@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 60ef89308eceeb8ae74caba7230f1dc9c6940f47
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 72abfef1f86fe47eb7817241a674741f56817f24
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469085"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082717"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -113,11 +113,11 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
 
 1. Aşağıda listelenen uygun Linux sürümü dizelerinden biri için `/etc/apt/sources.list.d/dotnetdev.list` dosyasını denetleyin:
 
-    | Linux dağıtımı | Sürüm |
+    | Linux dağıtım | Sürüm |
     | --------------- | ----------- |
     | Debian 10 | `buster` |
-    | Borçlu 9 | `stretch` |
-    | Desek8 | `jessie` |
+    | Debian 9 | `stretch` |
+    | Debian 8 | `jessie` |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
@@ -137,7 +137,7 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
 
 1. [Uzantı demeti]kullanmayı planlamıyorsanız, [Linux için .NET Core 2. x SDK](https://www.microsoft.com/net/download/linux)'yı yükleyebilirsiniz.
 
-## <a name="create-a-local-functions-project"></a>Yerel Işlevler projesi oluşturma
+## <a name="create-a-local-functions-project"></a>Bir yerel işlevler projesi oluşturma
 
 Bir işlevler proje dizini, [Host. JSON](functions-host-json.md) ve [Local. Settings. JSON](#local-settings-file)dosyalarını, tek tek işlevlerin kodunu içeren alt klasörlerle birlikte içerir. Bu dizin, Azure 'daki bir işlev uygulamasının eşdeğeridir. Işlevler klasör yapısı hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Geliştirici Kılavuzu](functions-reference.md#folder-structure).
 
@@ -177,12 +177,19 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
-| **`--csx`** | Bir C# betik (. CSX) projesi başlatır. Sonraki komutlarda `--csx` belirtmelisiniz. |
+| **`--csharp`**<br/> **`--dotnet`** | Bir [ C# sınıf kitaplığı (. cs) projesi](functions-dotnet-class-library.md)başlatır. |
+| **`--csx`** | Bir [ C# betik (. CSX) projesi](functions-reference-csharp.md)başlatır. Sonraki komutlarda `--csx` belirtmelisiniz. |
 | **`--docker`** | Seçilen `--worker-runtime`temel bir görüntü kullanarak kapsayıcı için bir Dockerfile oluşturun. Özel bir Linux kapsayıcısına yayımlamayı planlarken bu seçeneği kullanın. |
+| **`--docker-only`** |  Mevcut bir projeye Dockerfile ekler. Belirtilmemişse veya Local. Settings. JSON içinde ayarlanmamışsa çalışan çalışma zamanı için sorar. Mevcut bir projeyi özel bir Linux kapsayıcısına yayımlamayı planlarken bu seçeneği kullanın. |
 | **`--force`** | Projede var olan dosyalar olduğunda bile projeyi başlatın. Bu ayar aynı ada sahip varolan dosyaların üzerine yazar. Proje klasöründeki diğer dosyalar etkilenmez. |
-| **`--no-source-control -n`** | 1\. x sürümünde bir git deposunun varsayılan oluşturulmasını engeller. Sürüm 2. x içinde git deposu varsayılan olarak oluşturulmaz. |
+| **`--java`**  | Bir [Java projesi](functions-reference-java.md)başlatır. |
+| **`--javascript`**<br/>**`--node`**  | Bir [JavaScript projesi](functions-reference-node.md)başlatır. |
+| **`--no-source-control`**<br/>**`-n`** | 1\. x sürümünde bir git deposunun varsayılan oluşturulmasını engeller. Sürüm 2. x içinde git deposu varsayılan olarak oluşturulmaz. |
+| **`--powershell`**  | Bir [PowerShell projesi](functions-reference-powershell.md)başlatır. |
+| **`--python`**  | Bir [Python projesi](functions-reference-python.md)başlatır. |
 | **`--source-control`** | Git deposunun oluşturulup oluşturulmayacağını denetler. Varsayılan olarak, bir depo oluşturulmaz. `true`, bir depo oluşturulur. |
-| **`--worker-runtime`** | Projenin dil çalışma zamanını ayarlar. Desteklenen değerler `dotnet`, `node` (JavaScript), `java`ve `python`. Ayarlanmaması durumunda, başlatma sırasında çalışma zamanını seçmeniz istenir. |
+| **`--typescript`**  | Bir [TypeScript projesi](functions-reference-node.md#typescript)başlatır. |
+| **`--worker-runtime`** | Projenin dil çalışma zamanını ayarlar. Desteklenen değerler şunlardır: `csharp`, `dotnet`, `java`, `javascript`,`node` (JavaScript), `powershell`, `python`ve `typescript`. Ayarlanmaması durumunda, başlatma sırasında çalışma zamanını seçmeniz istenir. |
 
 > [!IMPORTANT]
 > Varsayılan olarak, temel araçların sürüm 2. x 'i, .NET çalışma zamanına yönelik işlev uygulaması projelerini [ C# sınıf projeleri](functions-dotnet-class-library.md) (. csproj) olarak oluşturur. Visual C# Studio veya Visual Studio Code ile kullanılabilen bu projeler, test sırasında ve Azure 'a yayımlarken derlenir. Bunun yerine, 1. x sürümünde oluşturulan aynı C# komut dosyası (. CSX) dosyalarını oluşturmak ve bunlarla çalışmak istiyorsanız, işlevleri oluştururken ve dağıtırken`--csx`parametresini eklemeniz gerekir.
@@ -196,7 +203,7 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 İşlev uygulaması ayarları değerleri, kodunuzda ortam değişkenleri olarak da okunabilir. Daha fazla bilgi için, bu dile özgü başvuru konularının ortam değişkenleri bölümüne bakın:
 
 * [C#derlemesi](functions-dotnet-class-library.md#environment-variables)
-* [C#betik (. CSX)](functions-reference-csharp.md#environment-variables)
+* [C# betiği (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -465,11 +472,11 @@ Aşağıdaki yayımlama seçenekleri yalnızca sürüm 2. x içinde desteklenir:
 | **`--list-included-files`** | Yayımlanan dosyaların bir listesini görüntüler, bu,. funcignore dosyasını temel alır. |
 | **`--nozip`** | Varsayılan `Run-From-Package` modunu kapatır. |
 | **`--build-native-deps`** | Python işlev uygulamaları yayımlanırken. tekerlek klasörü oluşturmayı atlar. |
-| **`--build [-b]`** | Bir Linux işlev uygulamasına dağıtım yaparken derleme eylemi gerçekleştirir. (kabul eder: uzak, yerel) |
+| **`--build`**<br/>**`-b`** | Bir Linux işlev uygulamasına dağıtım yaparken derleme eylemi gerçekleştirir. Kabul eder: `remote` ve `local`. |
 | **`--additional-packages`** | Yerel bağımlılıklar oluşturulurken yüklenecek paketlerin listesi. Örneğin: `python3-dev libevent-dev`. |
 | **`--force`** | Belirli senaryolarda yayımlama öncesi doğrulamayı yoksayın. |
 | **`--csx`** | Bir C# betik (. CSX) projesi yayımlayın. |
-| **`--no-build`** | DotNet işlevlerini oluşturmayı atlayın. |
+| **`--no-build`** | .NET sınıf kitaplığı işlevleri oluşturmayın. |
 | **`--dotnet-cli-params`** | Derlenen C# (. csproj) işlevleri yayımlandığında, temel Araçlar ' DotNet Build--output bin/Publish ' yöntemini çağırır. Buna geçirilen parametreler komut satırına eklenecektir. |
 
 ### <a name="deployment-custom-container"></a>Dağıtım (özel kapsayıcı)

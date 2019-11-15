@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: e0b7154e3c4d6a6f493aac93ffcbcc424a67c300
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d855e7a65b7e1ad24dcfc4fe6a6d5e02f9004bb0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932306"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089554"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Bakım veya sorun giderme için SSH ile Azure Kubernetes Service (AKS) küme düğümlerine bağlanma
 
@@ -28,7 +28,7 @@ Varsayılan olarak, SSH anahtarları alınır veya oluşturulur, ardından bir A
 
 Bu makalede ayrıca bir SSH anahtarınız olduğunu varsaymaktadır. [MacOS veya Linux][ssh-nix] veya [WINDOWS][ssh-windows]kullanarak bir SSH anahtarı oluşturabilirsiniz. Anahtar çiftini oluşturmak için PuTTY gen kullanırsanız, anahtar çiftini varsayılan PuTTy özel anahtar biçimi (. PPK dosyası) yerine bir OpenSSH biçiminde kaydedin.
 
-Ayrıca Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>SSH erişimi için sanal makine ölçek kümesi tabanlı AKS kümelerini yapılandırma
 
@@ -37,14 +37,16 @@ Sanal makine ölçek kümenizi SSH erişimi için yapılandırmak üzere, kümen
 AKS kümenizin kaynak grubu adını almak için [az aks Show][az-aks-show] komutunu, sonra da ölçek kümenizin adını almak için [az VMSS List][az-vmss-list] komutunu kullanın.
 
 ```azurecli-interactive
-$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-Yukarıdaki örnek, *Myresourcegroup* Içindeki *Myakscluster* için küme kaynak grubunun adını *CLUSTER_RESOURCE_GROUP*olarak atar. Örnek daha sonra ölçek kümesi adını listelemek ve *SCALE_SET_NAME*'e atamak için *CLUSTER_RESOURCE_GROUP* kullanır.  
+Yukarıdaki örnek, *Myresourcegroup* Içindeki *Myakscluster* için küme kaynak grubunun adını *CLUSTER_RESOURCE_GROUP*olarak atar. Örnek daha sonra ölçek kümesi adını listelemek ve *SCALE_SET_NAME*atamak için *CLUSTER_RESOURCE_GROUP* kullanır.  
 
-> [!NOTE]
-> SSH anahtarları, şu anda yalnızca Azure CLı kullanılarak Linux düğümlerine eklenebilir. SSH kullanarak bir Windows Server düğümüne bağlanmak istiyorsanız, AKS kümesini oluştururken sağlanmış SSH anahtarlarını kullanın ve SSH ortak anahtarınızı eklemek için bir sonraki komut kümesini atlayın. Bu bölümün son komutunda gösterilen, sorun gidermek istediğiniz düğümün IP adresine de ihtiyacınız olacaktır. Alternatif olarak, SSH kullanmak yerine [Uzak Masaüstü Protokolü (RDP) bağlantılarını kullanarak Windows Server düğümlerine bağlanabilirsiniz][aks-windows-rdp] .
+> [!IMPORTANT]
+> Şu anda, Azure CLı kullanarak sanal makine ölçek kümesi tabanlı AKS kümeleriniz için yalnızca SSH anahtarlarınızı güncelleştirmeniz gerekir.
+> 
+> Linux düğümlerinde, SSH anahtarları şu anda yalnızca Azure CLı kullanılarak eklenebilir. SSH kullanarak bir Windows Server düğümüne bağlanmak istiyorsanız, AKS kümesini oluştururken sağlanmış SSH anahtarlarını kullanın ve SSH ortak anahtarınızı eklemek için bir sonraki komut kümesini atlayın. Bu bölümün son komutunda gösterilen, sorun gidermek istediğiniz düğümün IP adresine de ihtiyacınız olacaktır. Alternatif olarak, SSH kullanmak yerine [Uzak Masaüstü Protokolü (RDP) bağlantılarını kullanarak Windows Server düğümlerine bağlanabilirsiniz][aks-windows-rdp] .
 
 SSH anahtarlarınızı bir sanal makine ölçek kümesindeki düğümlere eklemek için [az VMSS Extension set][az-vmss-extension-set] ve [az VMSS Update-Instances][az-vmss-update-instances] komutlarını kullanın.
 
@@ -62,7 +64,7 @@ az vmss update-instances --instance-ids '*' \
     --name $SCALE_SET_NAME
 ```
 
-Yukarıdaki örnek, önceki komutlardan *CLUSTER_RESOURCE_GROUP* ve *SCALE_SET_NAME* değişkenlerini kullanır. Yukarıdaki örnek, SSH ortak anahtarınızın konumu olarak *~/. ssh/id_rsa.exe. pub* öğesini de kullanır.
+Yukarıdaki örnek, önceki komutlardan *CLUSTER_RESOURCE_GROUP* ve *SCALE_SET_NAME* değişkenlerini kullanır. Yukarıdaki örnek, SSH ortak anahtarınızın konumu olarak *~/. ssh/id_rsa. pub* öğesini de kullanır.
 
 > [!NOTE]
 > Varsayılan olarak, AKS düğümlerinin Kullanıcı adı *azureuser*' dir.
@@ -94,7 +96,7 @@ Sanal makine kullanılabilirlik kümesi tabanlı AKS kümenizi SSH erişimi içi
 AKS kümenizin kaynak grubu adını almak için [az aks Show][az-aks-show] komutunu, sonra da kümenizin Linux düğümünün sanal makine adını listelemek için [az VM List][az-vm-list] komutunu kullanın.
 
 ```azurecli-interactive
-$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
@@ -116,7 +118,7 @@ az vm user update \
     --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-Yukarıdaki örnekte, önceki komutlardan *CLUSTER_RESOURCE_GROUP* değişkeni ve düğüm sanal makine adı kullanılmaktadır. Yukarıdaki örnek, SSH ortak anahtarınızın konumu olarak *~/. ssh/id_rsa.exe. pub* öğesini de kullanır. Bir yol belirtmek yerine SSH ortak anahtarınızın içeriğini de kullanabilirsiniz.
+Yukarıdaki örnekte, önceki komutlardan *CLUSTER_RESOURCE_GROUP* değişkeni ve düğüm sanal makine adı kullanılmaktadır. Yukarıdaki örnek, SSH ortak anahtarınızın konumu olarak *~/. ssh/id_rsa. pub* öğesini de kullanır. Bir yol belirtmek yerine SSH ortak anahtarınızın içeriğini de kullanabilirsiniz.
 
 > [!NOTE]
 > Varsayılan olarak, AKS düğümlerinin Kullanıcı adı *azureuser*' dir.
@@ -127,7 +129,7 @@ SSH ortak anahtarınızı düğüm sanal makinesine ekledikten sonra, IP adresin
 az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-Yukarıdaki örnekte, önceki komutlarda *CLUSTER_RESOURCE_GROUP* değişken kümesi kullanılmıştır. Aşağıdaki örnek çıktı, AKS düğümlerinin özel IP adreslerini göstermektedir:
+Yukarıdaki örnek, önceki komutlarda ayarlanan *CLUSTER_RESOURCE_GROUP* değişkenini kullanır. Aşağıdaki örnek çıktı, AKS düğümlerinin özel IP adreslerini göstermektedir:
 
 ```
 VirtualMachine            PrivateIPAddresses
@@ -139,7 +141,7 @@ aks-nodepool1-79590246-0  10.240.0.4
 
 AKS düğümüne bir SSH bağlantısı oluşturmak için AKS kümenizde bir yardımcı Pod çalıştırın. Bu yardımcı Pod, kümeye SSH erişimi ve daha sonra ek SSH düğüm erişimi sağlar. Bu yardımcı Pod öğesini oluşturmak ve kullanmak için aşağıdaki adımları izleyin:
 
-1. Bir `debian` kapsayıcı görüntüsü çalıştırın ve buna bir terminal oturumu ekleyin. Bu kapsayıcı, AKS kümesinde herhangi bir düğümle bir SSH oturumu oluşturmak için kullanılabilir:
+1. `debian` kapsayıcı görüntüsü çalıştırın ve buna bir terminal oturumu ekleyin. Bu kapsayıcı, AKS kümesinde herhangi bir düğümle bir SSH oturumu oluşturmak için kullanılabilir:
 
     ```console
     kubectl run -it --rm aks-ssh --image=debian
@@ -150,7 +152,7 @@ AKS düğümüne bir SSH bağlantısı oluşturmak için AKS kümenizde bir yard
     >
     > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
-1. Terminal oturumu kapsayıcıya bağlandıktan sonra, şunu kullanarak `apt-get`bir SSH istemcisi yüklersiniz:
+1. Terminal oturumu kapsayıcıya bağlandıktan sonra `apt-get`kullanarak bir SSH istemcisi yüklersiniz:
 
     ```console
     apt-get update && apt-get install openssh-client -y
@@ -167,13 +169,13 @@ AKS düğümüne bir SSH bağlantısı oluşturmak için AKS kümenizde bir yard
 
 1. Önceki bir adımda, Genel SSH anahtarınızı sorun gidermek istediğiniz AKS düğümüne eklediniz. Şimdi, özel SSH anahtarınızı yardımcı Pod 'a kopyalayın. Bu özel anahtar, AKS düğümüne SSH oluşturmak için kullanılır.
 
-    Önceki adımda elde edilen *aks-SSH* Pod adınızı sağlayın. Gerekirse, *~/PST ssh/id_rsa* ÖĞESINI özel SSH anahtarınızın konumuna değiştirin:
+    Önceki adımda elde edilen *aks-SSH* Pod adınızı sağlayın. Gerekirse, *~/. ssh/id_rsa* ÖĞESINI özel SSH anahtarınızın konumuyla değiştirin:
 
     ```console
     kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
     ```
 
-1. Kapsayıcıya terminal oturumuna geri dönün, kopyalanmış `id_rsa` özel SSH anahtarındaki izinleri Kullanıcı salt okunurdur olacak şekilde güncelleştirin:
+1. Kapsayıcıya terminal oturumuna dönün, kopyalanmış `id_rsa` özel SSH anahtarındaki izinleri Kullanıcı salt okunurdur olacak şekilde güncelleştirin:
 
     ```console
     chmod 0600 id_rsa
@@ -204,7 +206,7 @@ AKS düğümüne bir SSH bağlantısı oluşturmak için AKS kümenizde bir yard
 
 ## <a name="remove-ssh-access"></a>SSH erişimini kaldırma
 
-İşiniz bittiğinde, `exit` SSH oturumu ve ardından `exit` etkileşimli kapsayıcı oturumu. Bu kapsayıcı oturumu kapandığında, AKS kümesinden SSH erişimi için kullanılan Pod silinir.
+İşiniz bittiğinde, SSH oturumunu `exit` ve ardından etkileşimli kapsayıcı oturumu `exit`. Bu kapsayıcı oturumu kapandığında, AKS kümesinden SSH erişimi için kullanılan Pod silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

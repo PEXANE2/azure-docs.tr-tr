@@ -1,33 +1,33 @@
 ---
 title: Öğretici-Terrayform kullanarak Azure 'da hub sanal ağı oluşturma
-description: Azure 'da diğer ağlar arasında ortak bağlantı noktası görevi gören bir hub VNet oluşturmayı gösteren öğretici
+description: Azure 'da diğer ağlar arasında ortak bağlantı noktası görevi gören bir hub sanal ağı oluşturmayı gösteren öğretici
 ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 231f8c6b98db785f3ef155af271be7e354998d54
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 25c4d6fa881f7ec6c96dd5ea7c935544374bc57d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969417"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077694"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-in-azure-using-terraform"></a>Öğretici: Terrayform kullanarak Azure 'da hub sanal ağı oluşturma
+# <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Öğretici: Terrayform kullanarak Azure 'da hub sanal ağı oluşturma
 
-Hub sanal ağı (VNet), şirket içi ağa merkezi bağlantı noktası görevi görür. VNet, bağlı olan sanal ağlarda barındırılan iş yükleri tarafından tüketilen paylaşılan hizmetleri barındırır. Tanıtım amacıyla, bu öğreticide hiçbir paylaşılan hizmet uygulanmaz.
+Hub sanal ağı, şirket içi ağa merkezi bağlantı noktası görevi görür. Sanal ağ, bağlı olan sanal ağlarda barındırılan iş yükleri tarafından tüketilen paylaşılan hizmetleri barındırır. Tanıtım amacıyla, bu öğreticide hiçbir paylaşılan hizmet uygulanmaz.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
-> * Hub-ışınsal-uç topolojisinde hub VNet 'i uygulamak için HCL (HashiCorp Language) kullanın
-> * Terrayform kullanarak Merkez geçiş kutusu sanal makinesi oluşturma
-> * Terrayform kullanarak hub sanal özel ağ geçidi oluşturma
-> * Terrayform kullanarak hub ve şirket Içi ağ geçidi bağlantıları oluşturun
+> * Hub ve bağlı bileşen topolojisinde hub sanal ağını uygulamak için HashiCorp yapılandırma dilini (HCL) kullanın.
+> * Bir hub sıçrama kutusu sanal makinesi oluşturmak için terrayform 'u kullanın.
+> * Bir hub sanal özel ağ geçidi oluşturmak için Terrayform 'u kullanın.
+> * Hub ve şirket içi ağ geçidi bağlantıları oluşturmak için Terrayform 'u kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-1. [Azure 'Da Terrayform ile bir hub ve bağlı bileşen karma ağ topolojisi oluşturun](./terraform-hub-spoke-introduction.md).
+1. [Azure 'Da Terrayform ile hub ve bağlı bileşen karma ağ topolojisi oluşturun](./terraform-hub-spoke-introduction.md).
 1. [Azure 'Da Terrayform ile şirket içi sanal ağ oluşturun](./terraform-hub-spoke-on-prem.md).
 
 ## <a name="create-the-directory-structure"></a>Dizin yapısını oluşturma
@@ -52,13 +52,13 @@ Aşağıdaki Terrayform yapılandırma dosyası kaynakları tanımlar:
     cd clouddrive
     ```
 
-1. Dizinleri yeni dizinle değiştirin:
+1. Dizinleri yeni dizinle değiştirin.
 
     ```bash
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-vnet"></a>Hub VNet 'i bildirme
+## <a name="declare-the-hub-virtual-network"></a>Hub sanal ağını bildirme
 
 Hub sanal ağını bildiren Terrayform yapılandırma dosyasını oluşturun.
 
@@ -226,9 +226,9 @@ Hub sanal ağını bildiren Terrayform yapılandırma dosyasını oluşturun.
     }
     ```
     
-1. Dosyayı kaydedin ve düzenleyiciden çıkın.
+3. Dosyayı kaydedin ve düzenleyiciden çıkın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure 'Da Terrayform ile bir hub sanal ağ gereci oluşturma](./terraform-hub-spoke-hub-nva.md)
+> [Azure 'da Terrayform ile bir hub sanal ağ gereci oluşturma](./terraform-hub-spoke-hub-nva.md)

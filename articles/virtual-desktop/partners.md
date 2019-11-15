@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 11/14/2019
 ms.author: helohr
-ms.openlocfilehash: dc93480807f34a79ee02f628f7b6f090c7efa428
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c482291e665656bf16f28cd114a9cb8141ae77c3
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931716"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084025"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -133,6 +133,16 @@ Nerdio, Azure kaynaklarını sağlamayı ve dağıtımı kolaylaştırmayı kola
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [İş ortağı Web sitesine gidin](https://getnerdio.com/windows-virtual-desktop/).
 
+## <a name="numecent"></a>Numesan
+
+![Numesent logosu](./media/partners/numecent.png)
+
+Numesent, Windows sanal masaüstü ortamlarında karmaşık veya uyumsuz Windows uygulamalarının hızlı bir şekilde eklenmesi ve geçirilmesi ile toplam işletim maliyetlerini önemli ölçüde azaltan bir Windows sanal masaüstü katma hizmet sağlayıcıdır. Numesent, kullanıcıların yapması gereken yapılandırma miktarını da en aza indirir, uygulama güncelleştirmelerini azaltır ve karmaşık işlemleri basitleştirir. Numesent Cloudsayfalama, diğer uygulama teslim araçlarından daha sorunsuz uygulamalar desteklediğinden, farklı uygulamalar kümesine sahip ortamlarda zaman ve BT iş yüklerini azaltır. 
+
+Windows sanal masaüstü ile kullanıldığında Cloudpaging, dağıtım, ölçüm ve uygulamaları kaldırma için dağıtımdan yazılım varlık yaşam döngüsünü tamamlayarak maliyetleri azaltır. Cloudsayfalama, Windows sanal masaüstü dağıtımlarına gerçek zamanlı olarak uygulamaları gerektiği şekilde dinamik olarak sağlayarak görüntü yönetimini basitleştirir. Cloudsayfalama, uygulamaların düzenli Windows 10 güncelleştirmeleri aracılığıyla yönetimi veya müdahalesi olmadan çalışmasına yardımcı olur. Cloudsayfalama Ayrıca, bu uygulamaların daha verimli bir şekilde dağıtılmasını ve kullanımını etkinleştirerek pahalı uygulamaların lisanslama maliyetini azaltır. 
+
+- [İş ortağı Web sitesine gidin](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+
 ## <a name="policypak"></a>PolicyPak
 
 ![PolicyPak logosu](./media/partners/policypak.png)
@@ -147,21 +157,22 @@ PolicyPak için en iyi kullanım örnekleri, yerel yönetici haklarını kaldır
 
 ![PrinterLogic logosu](./media/partners/printerlogic.png)
 
-PrinterLogic, BT uzmanlarına tüm yazdırma sunucularını ortadan kaldırmaya ve yüksek oranda kullanılabilir bir sunucusuz yazdırma Altyapısı sunmaya yönelik bir Windows sanal masaüstü katma değeri olan hizmet sağlayıcı platformudur. PrinterLogic, merkezi olarak yönetmeyi ve yazıcı nesnelerini herhangi bir yazıcıya veya uç nokta işletim sistemine dağıtmayı kolaylaştırarak Windows sanal masaüstü ve Azure 'un değerini genişletir.   
+PrinterLogic, BT uzmanlarına tüm yazdırma sunucularını ortadan kaldırmaya ve yüksek oranda kullanılabilir bir sunucusuz yazdırma Altyapısı sunmaya yönelik bir Windows sanal masaüstü katma değeri olan hizmet sağlayıcı platformudur. PrinterLogic, merkezi olarak yönetmeyi ve yazıcı nesnelerini herhangi bir yazıcıya veya uç nokta işletim sistemine dağıtmayı kolaylaştırarak Windows sanal masaüstü ve Azure 'un değerini genişletir. 
 
-Kendi özel bulutunuzda SaaS veya bir Web yığını olarak kullanılabilir, PrinterLogic platform, kullanıcıların Kullanıcı KIMLIĞINE, cihaz adına veya konuma göre sanal oturumlarında gerek duydukları doğru yazıcılara her zaman sahip olmasını sağlar. Bu işlevsellik, yazdırma izleme ve raporlama, mobil yazdırma ve güvenli rozet yayını yazdırma gibi Kurumsal Yazdırma Yönetimi özelliklerinin eksiksiz bir paketi tarafından tamamlanmakta. 
+Kendi özel bulutunuzda SaaS veya bir Web yığını olarak kullanılabilir, PrinterLogic platform, kullanıcıların Kullanıcı KIMLIĞINE, cihaz adına veya konuma göre sanal oturumlarında gerek duydukları doğru yazıcılara her zaman sahip olmasını sağlar. Bu işlevsellik, yazdırma izleme ve raporlama, mobil yazdırma ve güvenli rozet yayını yazdırma gibi Kurumsal Yazdırma Yönetimi özelliklerinin eksiksiz bir paketi tarafından tamamlanmakta. 
 
 - [İş ortağı Web sitesine gidin](https://www.printerlogic.com).
 
-## <a name="numecent"></a>Numesan
+## <a name="printix"></a>Printix
 
-![Numesent logosu](./media/partners/numecent.png)
+![Printix logosu](./media/partners/printix.png)
 
-Numesent, Windows sanal masaüstü ortamlarında karmaşık veya uyumsuz Windows uygulamalarının hızlı bir şekilde eklenmesi ve geçirilmesi ile toplam işletim maliyetlerini önemli ölçüde azaltan bir Windows sanal masaüstü katma hizmet sağlayıcıdır. Numesent, kullanıcıların yapması gereken yapılandırma miktarını da en aza indirir, uygulama güncelleştirmelerini azaltır ve karmaşık işlemleri basitleştirir. Numesent Cloudsayfalama, diğer uygulama teslim araçlarından daha sorunsuz uygulamalar desteklediğinden, farklı uygulamalar kümesine sahip ortamlarda zaman ve BT iş yüklerini azaltır. 
+Printix, Office yazdırma kaynaklarına Kullanıcı bağlantısını otomatikleştiren bir Windows sanal masaüstü katma değer hizmeti sağlayıcıdır. Müşteri Azure geçişinizdeki kayıp parça olarak, Printix, konumdan bağımsız olarak her kullanıcı için yazdırma iş akışını destekleme ve iyileştirme ile ilişkili altyapı ve BT görevlerini kaldırmak için kullanılabilen en düşük maliyetli hizmettir.
 
-Windows sanal masaüstü ile kullanıldığında Cloudpaging, dağıtım, ölçüm ve uygulamaları kaldırma için dağıtımdan yazılım varlık yaşam döngüsünü tamamlayarak maliyetleri azaltır. Cloudsayfalama, Windows sanal masaüstü dağıtımlarına gerçek zamanlı olarak uygulamaları gerektiği şekilde dinamik olarak sağlayarak görüntü yönetimini basitleştirir. Cloudsayfalama, uygulamaların düzenli Windows 10 güncelleştirmeleri aracılığıyla yönetimi veya müdahalesi olmadan çalışmasına yardımcı olur. Cloudsayfalama Ayrıca, bu uygulamaların daha verimli bir şekilde dağıtılmasını ve kullanımını etkinleştirerek pahalı uygulamaların lisanslama maliyetini azaltır. 
+Yazdırma işlemi, yalnızca her ofis ve küçük işletme ortamıyla ilgili temel bir görevdir. Windows sanal masaüstü 'nden tam olarak yararlanabilmek ve harika bir kullanıcı deneyimi sunabilmeniz için, kullanıcılarınızın en düşük çabaya ve en yüksek güvenilirliğe sahip yazıcılara bağlanabilmelerini sağlamak gereklidir. Printix ile, tek oturum açma (SSO), sessiz yapılandırma, düzenli güncelleştirmeler ve yazdırma ortamınızın sürekli izlenmesini kullanarak Windows sanal masaüstünden en iyi şekilde yararlanın.
 
-- [İş ortağı Web sitesine gidin](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+- [Birleşik çözüme bakın kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
+- [İş ortağı Web sitesine gidin](https://www.printix.net/printix-for-windows-virtual-desktop)
 
 ## <a name="rdpsoft"></a>RDPSoft
 

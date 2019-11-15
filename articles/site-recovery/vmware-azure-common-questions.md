@@ -1,19 +1,18 @@
 ---
-title: VMware ile Azure olağanüstü durum kurtarma ile ilgili sık sorulan sorular Azure Site Recovery
+title: Azure Site Recovery ile VMware olağanüstü durum kurtarma hakkında sık sorulan sorular
 description: Azure Site Recovery kullanarak şirket içi VMware VM 'lerinin olağanüstü durum kurtarma hakkında sık sorulan soruların yanıtlarını alın.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
-ms.date: 10/29/2019
+ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: f09acb0110f436e7af936d79da9db1bab4ea23a9
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 508fa7e33cd8572d70b7ebf261edba67fd40dd93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053692"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084157"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware 'den Azure 'a çoğaltma hakkında sık sorulan sorular
 
@@ -104,7 +103,7 @@ Yükleyiciler yapılandırma sunucusundaki%ProgramData%\asr\home\svsystems\push�
 - Kullanıcı arabiriminden veya PowerShell 'ten [el ile yükleme](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui)
 - [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) gibi bir dağıtım aracı kullanarak dağıtım
 
-## <a name="managed-disks"></a>Yönetilen Diskler
+## <a name="managed-disks"></a>Yönetilen diskler
 
 ### <a name="where-does-site-recovery-replicate-data-to"></a>Site Recovery verileri nerede çoğaltır?
 

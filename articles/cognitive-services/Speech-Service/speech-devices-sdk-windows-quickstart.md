@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: b1f23ffac26cb48493f013290654189162861a27
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e59cfaa1260cd33c8912437d56bbbb2ace2f43ed
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468745"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090445"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Hızlı başlangıç: Windows 'ta konuşma cihazları SDK örnek uygulamasını çalıştırma
 
-Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](conversation-transcription-service.md) cihazı olarak kullanmak için Windows Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz. Şu anda yalnızca [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) destekleniyor.
+Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](conversation-transcription-service.md) cihazı olarak kullanmak için Windows Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz. Konuşma için yalnızca [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) desteklenir. Diğer konuşma için, bir Microphone dizi geometrisi sağlayan doğrusal mik dizileri kullanın.
 
 Uygulama, konuşma SDK paketiyle oluşturulmuştur ve 64 bit Windows üzerinde Java IDE tutulma (v4). 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
 
 Bu kılavuzda, bir konuşma Hizmetleri kaynağına sahip bir Azure bilişsel [Hizmetler](get-started.md) hesabı gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 
-[Örnek uygulamanın](https://aka.ms/sdsdk-download-JRE) kaynak kodu, konuşma cihazları SDK 'sına dahildir. [GitHub 'da da kullanılabilir](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+[Örnek uygulamanın](https://aka.ms/sdsdk-download-JRE) kaynak kodu, konuşma cihazları SDK 'sına dahildir. Ayrıca [github'da](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
 * İşletim sistemi: 64-bit Windows
-* [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
+* [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) gibi bir mikrofon dizisi
 * [Tutulma Java IDE](https://www.eclipse.org/downloads/)
 * Yalnızca [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) veya [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) .
 * [Microsoft Visual C++ Yeniden Dağıtılabilir](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
@@ -65,11 +65,34 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
    ![Paket gezgininin ekran görüntüsü](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
+1. Pod. xml dosyasını açın ve düzenleyin.
+
+    Dosyanın sonunda, kapatma etiketiyle `</project>`önce, burada gösterildiği gibi `repositories` ve `dependencies` öğeleri oluşturun ve `version` geçerli sürümünüzle eşleştiğinden emin olun:
+    ```xml    
+    <repositories>
+         <repository>
+             <id>maven-cognitiveservices-speech</id>
+             <name>Microsoft Cognitive Services Speech Maven Repository</name>
+             <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
+         </repository>
+    </repositories>
+ 
+    <dependencies>
+        <dependency>
+             <groupId>com.microsoft.cognitiveservices.speech</groupId>
+             <artifactId>client-sdk</artifactId>
+             <version>1.7.0</version>
+        </dependency>
+    </dependencies>
+   ```
+
+1. **Windows-x64** Içeriğini Java proje konumuna kopyalayın, örneğin **C:\sdsdk\jre-Sample-Release**
+
 1. `kws.table`, `participants.properties` ve `Microsoft.CognitiveServices.Speech.extension.pma.dll` proje klasörüne kopyalayın **target\classes**
 
 ## <a name="configure-the-sample-application"></a>Örnek uygulamayı yapılandırma
 
-1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanımayı denemek istiyorsanız, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarınızı ve uygulama kimliğinizi da ekleyin.
+1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanıma denemek istiyorsanız, ayrıca ekleyin, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarı ve uygulama kimliği
 
    Konuşma ve LUSıS için, bilgileriniz `FunctionsList.java`'ye gider:
 
@@ -94,15 +117,14 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
    > [!TIP]
    > Ayrıca, [özel bir anahtar sözcük oluşturabilirsiniz](speech-devices-sdk-create-kws.md).
 
-    Yeni bir anahtar sözcük kullanmak için `FunctionsList.java`aşağıdaki iki satırı güncelleştirin ve anahtar sözcük paketini uygulamanıza kopyalayın. Örneğin, anahtar sözcük paketinden ' MACHINE ' anahtar sözcüğünü kullanmak için `kws-machine.zip`:
+    Yeni bir anahtar sözcük kullanmak için `FunctionsList.java`aşağıdaki satırı güncelleştirin ve anahtar sözcüğünü uygulamanıza kopyalayın. Örneğin, anahtar sözcük paketinden ' MACHINE ' anahtar sözcüğünü kullanmak için `machine.zip`:
 
-   * Anahtar sözcük paketini proje klasörü **hedefi/sınıfları**içine kopyalayın.
+   * `kws.table` dosyasını ZIP paketinden proje klasörü **hedefi/sınıfları**içine kopyalayın.
 
-   * `FunctionsList.java` anahtar sözcüğüyle ve paket adıyla güncelleştirin:
+   * `FunctionsList.java` anahtar sözcük adıyla güncelleştirin:
 
      ```java
      private static final String Keyword = "Machine";
-     private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Örnek uygulamayı tutulma 'dan çalıştırma
@@ -111,9 +133,9 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
    ![Java uygulaması Seç ekranının ekran görüntüsü](media/speech-devices-sdk/eclipse-run-sample.png)
 
-1. Konuşma cihazları SDK örnek uygulaması başlatılır ve aşağıdaki seçenekleri görüntüler:
+1. Konuşma cihaz SDK'sı örnek bir uygulama başlar ve şu seçeneklerini gösterir:
 
-   ![Örnek konuşma cihazları SDK örnek uygulama ve Seçenekler](media/speech-devices-sdk/java-sample-app-windows.png)
+   ![Örnek konuşma cihaz SDK'sı örnek uygulama ve seçenekleri](media/speech-devices-sdk/java-sample-app-windows.png)
 
 1. Yeni **konuşma dökümü** tanıtımı ' nı deneyin. **Oturum** > kullanmaya **başlayın**. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa proje klasörü **hedefi/sınıfları**içindeki bir dosyaya `participants.properties` yerleştirebilirsiniz. Ses imzasını oluşturmak için, [konuşmalar (SDK)](how-to-use-conversation-transcription-service.md)konusuna bakın.
 
@@ -121,7 +143,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 ## <a name="create-and-run-a-standalone-application"></a>Tek başına uygulama oluşturma ve çalıştırma
 
-1. **Paket Gezgini**' nde projenize sağ tıklayın. **Dışarı aktar**' ı seçin. 
+1. **Paket Gezgini**' nde projenize sağ tıklayın. Seçin **dışarı**. 
 
 1. **Dışarı aktarma** penceresi görüntülenir. **Java** ' yı genişletin ve **Runiçin jar dosyasını** seçin ve ardından **İleri**' yi seçin.
 

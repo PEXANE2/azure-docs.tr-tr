@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 5c881551648e8fc6078405e34fa3280723009b20
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18b96e9afbf2a83b917d6848b419fb76518035de
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490973"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090437"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Hızlı başlangıç: Linux 'ta konuşma cihazları SDK örnek uygulamasını çalıştırma
 
@@ -25,9 +25,9 @@ Uygulama, konuşma SDK paketiyle oluşturulmuştur ve 64 bitlik Linux (Ubuntu 16
 
 Bu kılavuzda, bir konuşma Hizmetleri kaynağına sahip bir Azure bilişsel [Hizmetler](get-started.md) hesabı gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 
-[Örnek uygulamanın](https://aka.ms/sdsdk-download-JRE) kaynak kodu, konuşma cihazları SDK 'sına dahildir. [GitHub 'da da kullanılabilir](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+[Örnek uygulamanın](https://aka.ms/sdsdk-download-JRE) kaynak kodu, konuşma cihazları SDK 'sına dahildir. Ayrıca [github'da](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
@@ -80,11 +80,34 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
    ![Paket gezgininin ekran görüntüsü](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
+1. Pod. xml dosyasını açın ve düzenleyin.
+
+    Dosyanın sonunda, kapatma etiketiyle `</project>`önce, burada gösterildiği gibi `repositories` ve `dependencies` öğeleri oluşturun ve `version` geçerli sürümünüzle eşleştiğinden emin olun:
+    ```xml    
+    <repositories>
+         <repository>
+             <id>maven-cognitiveservices-speech</id>
+             <name>Microsoft Cognitive Services Speech Maven Repository</name>
+             <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
+         </repository>
+    </repositories>
+ 
+    <dependencies>
+        <dependency>
+             <groupId>com.microsoft.cognitiveservices.speech</groupId>
+             <artifactId>client-sdk</artifactId>
+             <version>1.7.0</version>
+        </dependency>
+    </dependencies>
+   ```
+
 1. **Paket Gezgini**' nde projenize sağ tıklayın. **Özellikler**' i seçin, sonra yeni > **hata ayıklama ayarları** ' nı çalıştırın **...****Java uygulaması** > . 
 
 1. **Yapılandırma düzenleme** penceresi görüntülenir. **Ad** alanına **Main**girin ve **com. Microsoft. biliveservices. Speech. Samples. functionslist**öğesini bulmak ve seçmek için **ana sınıf** için **aramayı** kullanın.
 
    ![Düzenleme başlatma yapılandırması ekran görüntüsü](media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
+
+1. **Linux ARM** veya **Linux-x64**sürümünden hedef mimariniz için ses ikili dosyalarını, EG **/Home/wcaltest/JRE-Sample-Release** konumuna kopyalayın
 
 1. Ayrıca **yapılandırma düzenleme** penceresinde ortam sayfasını ve **Yeni**' **yi** seçin. **Yeni ortam değişkeni** penceresi görüntülenir. **Ad** alanına **LD_LIBRARY_PATH** girin ve **değer** alanına *. so dosyalarını içeren klasörü girin, örneğin **/Home/wcaltest/JRE-Sample-Release**
 
@@ -93,7 +116,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 ## <a name="configure-the-sample-application"></a>Örnek uygulamayı yapılandırma
 
-1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanımayı denemek istiyorsanız, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarınızı ve uygulama kimliğinizi da ekleyin.
+1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanıma denemek istiyorsanız, ayrıca ekleyin, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarı ve uygulama kimliği
 
    Konuşma ve LUSıS için, bilgileriniz `FunctionsList.java`'ye gider:
 
@@ -118,24 +141,23 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
    > [!TIP]
    > Ayrıca, [özel bir anahtar sözcük oluşturabilirsiniz](speech-devices-sdk-create-kws.md).
 
-    Yeni bir anahtar sözcük kullanmak için `FunctionsList.java`aşağıdaki iki satırı güncelleştirin ve anahtar sözcük paketini uygulamanıza kopyalayın. Örneğin, anahtar sözcük paketinden ' MACHINE ' anahtar sözcüğünü kullanmak için `kws-machine.zip`:
+    Yeni bir anahtar sözcük kullanmak için `FunctionsList.java`aşağıdaki satırı güncelleştirin ve anahtar sözcüğünü uygulamanıza kopyalayın. Örneğin, anahtar sözcük paketinden ' MACHINE ' anahtar sözcüğünü kullanmak için `machine.zip`:
 
-   * Anahtar sözcük paketini proje klasörü **hedefi/sınıfları**içine kopyalayın.
+   * `kws.table` dosyasını ZIP paketinden proje klasörü **hedefi/sınıfları**içine kopyalayın.
 
-   * `FunctionsList.java` anahtar sözcüğüyle ve paket adıyla güncelleştirin:
+   * `FunctionsList.java` anahtar sözcük adıyla güncelleştirin:
 
      ```java
      private static final String Keyword = "Machine";
-     private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Örnek uygulamayı tutulma 'dan çalıştırma
 
 1. Çakışan Küreler menü çubuğundan > **Çalıştır** ' ı **çalıştırın** 
 
-1. Konuşma cihazları SDK örnek uygulaması başlatılır ve aşağıdaki seçenekleri görüntüler:
+1. Konuşma cihaz SDK'sı örnek bir uygulama başlar ve şu seçeneklerini gösterir:
 
-   ![Örnek konuşma cihazları SDK örnek uygulama ve Seçenekler](media/speech-devices-sdk/java-sample-app-linux.png)
+   ![Örnek konuşma cihaz SDK'sı örnek uygulama ve seçenekleri](media/speech-devices-sdk/java-sample-app-linux.png)
 
 1. Yeni **konuşma dökümü** tanıtımı ' nı deneyin. **Oturum** > kullanmaya **başlayın**. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa proje klasörü **hedefi/sınıfları**içine `participants.properties` yerleştirebilirsiniz. Ses imzasını oluşturmak için, [konuşmalar (SDK)](how-to-use-conversation-transcription-service.md)konusuna bakın.
 
@@ -143,7 +165,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 ## <a name="create-and-run-standalone-the-application"></a>Uygulamayı tek başına oluşturma ve çalıştırma
 
-1. **Paket Gezgini**' nde projenize sağ tıklayın. **Dışarı aktar**' ı seçin. 
+1. **Paket Gezgini**' nde projenize sağ tıklayın. Seçin **dışarı**. 
 1. **Dışarı aktarma** penceresi görüntülenir. **Java** ' yı genişletin ve **Runiçin jar dosyasını** seçin ve ardından **İleri**' yi seçin.
 
    ![Dışarı aktarma penceresinin ekran görüntüsü](media/speech-devices-sdk/eclipse-export-linux.png) 
@@ -154,7 +176,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 1. Lütfen uygulama tarafından bu dosyalar gerektiği için `kws.table` ve `participants.properties` yukarıda seçilen hedef klasöre koyun.
 
-1. LD_LIBRARY_LIB, *. so dosyalarını içeren klasöre ayarlayın
+1. LD_LIBRARY_LIB *. so dosyalarını içeren klasöre ayarlayın
 
      ```bash
      export LD_LIBRARY_PATH=/home/wcaltest/JRE-Sample-Release

@@ -14,17 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 48b5136505c3d0cb5e2e2027f832655e4b3445bf
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 11f897852ce820e666d7403f42735b2ee3bdd73b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881736"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084816"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Video dosyalarındaki metin içeriğini dijital metne dönüştürmek için Azure Media Analytics kullanın  
-
-> [!IMPORTANT]
-> Bazı medya işlemcilerinin [kullanımdan kaldırma planlarını](media-services-analytics-overview.md#retirement-plans) gözden geçirin.
 
 ## <a name="overview"></a>Genel Bakış
 Video dosyalarınızda metin içeriğini ayıklamanız ve düzenlenebilir, aranabilir bir dijital metin oluşturmanız gerekiyorsa Azure Media Analytics OCR (optik karakter tanıma) kullanmanız gerekir. Bu Azure Medya Işlemcisi, video dosyalarınızda metin içeriğini algılar ve kullanım için metin dosyaları oluşturur. OCR, medyanızın video sinyalinden anlamlı meta verilerin ayıklanmasını otomatik hale getirmenizi sağlar.
@@ -48,7 +45,7 @@ Görev yapılandırması (ön ayar). **Azure MEDIA OCR**ile bir görev oluşturu
 ### <a name="attribute-descriptions"></a>Öznitelik açıklamaları
 | Öznitelik adı | Açıklama |
 | --- | --- |
-|AdvancedOutput| AdvancedOutput değerini true olarak ayarlarsanız, JSON çıktısı her bir sözcüğe ait konumsal verileri (tümceciklere ve bölgelere ek olarak) içerir. Bu ayrıntıları görmek istemiyorsanız, bayrağını false olarak ayarlayın. Varsayılan değer false 'dur. Daha fazla bilgi için [Bu bloga](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)bakın.|
+|AdvancedOutput| AdvancedOutput değerini true olarak ayarlarsanız, JSON çıktısı her bir sözcüğe ait konumsal verileri (tümceciklere ve bölgelere ek olarak) içerir. Bu ayrıntıları görmek istemiyorsanız, bayrağını false olarak ayarlayın. Varsayılan değer false'tur. Daha fazla bilgi için [bu bloga](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/) bakın.|
 | Dil |(isteğe bağlı) aranacak metnin dilini açıklar. Aşağıdakilerden biri: otomatik algıla (varsayılan), Arapça, Chinesebasitleştirilmiş, Chinesetradi, Çekçe Danca, Felemenkçe, Ingilizce, Fince, Fransızca, Almanca, Yunanca, Macarca, Italyanca, Japonca, Korece, Norveççe, Lehçe, Portekizce, Rumence, Rusça, SerbianCyrillic, SerbianLatin, Slovakça, Ispanyolca, Isveççe, Türkçe. |
 | TextOrientation |(isteğe bağlı) aranacak metnin yönünü açıklar.  "Sol", tüm harflerin sol tarafına doğru işaret ettiği anlamına gelir.  Varsayılan metin (bir kitapta bulunılabilecek gibi), "yukarı" yönelimli olarak adlandırılır.  Aşağıdakilerden biri: otomatik algıla (varsayılan), yukarı, sağ, aşağı, sol. |
 | TimeInterval |(isteğe bağlı) örnekleme oranını açıklar.  Varsayılan değer her 1/2 saniyedir.<br/>JSON biçimi – HH: mm: ss. SSS (varsayılan 00:00:00.500)<br/>XML biçimi – W3C XSD Duration temel (varsayılan PT 0,5) |
@@ -116,7 +113,7 @@ Video OCR çıktısı, videonuzda bulunan karakterlere göre zamana göre kesiml
 | Yükseklik |Videonun piksel cinsinden yüksekliği |
 | Fragments |meta verilerin öbekli olduğu, zaman tabanlı video öbeklerinin dizisi |
 | start |"ticks" içindeki bir parçanın başlangıç saati |
-| sürenin |"ticks" içindeki bir parçanın uzunluğu |
+| duration |"ticks" içindeki bir parçanın uzunluğu |
 | interval |verilen parça içindeki her bir olayın aralığı |
 | etkinlikler |bölgeleri içeren dizi |
 | bölgesinde kullanılamıyor |algılanan kelimeleri veya tümceleri temsil eden nesne |
@@ -366,10 +363,10 @@ namespace OCR
 }
 ```
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar
