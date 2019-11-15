@@ -1,5 +1,5 @@
 ---
-title: 'QoS gereksinimleri-ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: QoS gereksinimleri'
 description: Bu sayfa, yapılandırma ve hizmet kalitesi yönetmeye yönelik ayrıntılı gereksinimler sağlanmıştır. Skype kurumsal iş/ses Hizmetleri ele alınmıştır.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: eed6113442b4080341ff08b3983880f3afe66c00
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: debc5d91478d0a5c3cc16c7b09f5713ba09b467e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385129"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080094"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS gereksinimleri
 Skype Kurumsal’da farklı QoS davranışları gerektiren çeşitli iş yükleri vardır. ExpressRoute aracılığıyla ses hizmetleri kullanmayı planlıyorsanız, aşağıda açıklanan gereksinimlere uymanız gerekir.

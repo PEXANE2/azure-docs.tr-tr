@@ -1,5 +1,5 @@
 ---
-title: IoT Hub verileri içeren Azure Machine Learning kullanarak hava durumu tahmini | Microsoft Docs
+title: IoT Hub verilerle Azure Machine Learning kullanarak hava durumu tahmini
 description: IoT Hub 'ınızın bir sensörden topladığı sıcaklık ve nem verilerine bağlı olarak yağmur olma olasılığını tahmin etmek için Azure Machine Learning kullanın.
 author: robinsh
 manager: philmea
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: d7b71a6aa17e8eeae55fd6c8c6e9a5aa9e0ce524
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e7114febe85af4acaf94ef7fe64fe47988fd6321
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498879"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74079259"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning 'daki IoT Hub 'ından gelen algılayıcı verilerini kullanarak hava durumu tahmini
 
@@ -89,7 +89,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
 
    ![Azure 'da Stream Analytics işi oluşturma](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’ tıklayın.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics işine giriş ekleme
 
@@ -105,7 +105,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
 
    ![Azure 'da Stream Analytics işine bir giriş ekleme](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’ tıklayın.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics işine çıkış ekleme
 
@@ -124,7 +124,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
 
    ![Azure 'da Stream Analytics işine bir çıktı ekleyin](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’ tıklayın.
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Dağıttığınız Web hizmetini çağırmak için Stream Analytics işine bir işlev ekleyin
 
@@ -143,7 +143,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
 
    ![Azure 'da Stream Analytics işine bir işlev ekleme](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’ tıklayın.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics işinin sorgusunu yapılandırma
 
@@ -163,7 +163,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
 
    `[YourOutputAlias]` değerini işin çıkış diğer adıyla değiştirin.
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Kaydet**’e tıklayın.
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics işini çalıştırma
 

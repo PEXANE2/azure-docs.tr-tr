@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: e0e649045e3efe488804fd37c030fe01991ad232
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 01d8560ee2752f21eb52c00f4c337d1dca59b8fb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803618"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082691"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -87,10 +87,10 @@ Function *. JSON* dosyasında `scriptFile` ve `entryPoint` özelliklerini belirt
 
 ## <a name="folder-structure"></a>Klasör yapısı
 
-Python Işlevleri projesinin klasör yapısı aşağıdaki örneğe benzer şekilde görünür:
+Python Işlevleri projesi için önerilen klasör yapısı aşağıdaki örneğe benzer şekilde görünür:
 
 ```
- FunctionApp
+ __app__
  | - MyFirstFunction
  | | - __init__.py
  | | - function.json
@@ -103,23 +103,31 @@ Python Işlevleri projesinin klasör yapısı aşağıdaki örneğe benzer şeki
  | | - mySecondHelperFunction.py
  | - host.json
  | - requirements.txt
+ tests
 ```
+Ana proje klasörü (\_\_App\_\_) aşağıdaki dosyaları içerebilir:
 
-İşlev uygulamasını yapılandırmak için kullanılabilen, paylaşılan bir [Host. JSON](functions-host-json.md) dosyası. Her işlevin kendi kod dosyası ve bağlama yapılandırma dosyası (Function. JSON) vardır. 
+* *Local. Settings. JSON*: yerel olarak çalışırken uygulama ayarlarını ve bağlantı dizelerini depolamak için kullanılır. Bu dosya Azure 'da yayınlanmıyor. Daha fazla bilgi için bkz. [Local. Settings. File](functions-run-local.md#local-settings-file).
+* *requirements. txt*: sistemin Azure 'a yayımlarken yüklediği paketlerin listesini içerir.
+* *Host. JSON*: bir işlev uygulamasındaki tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu dosya Azure 'da yayımlanır. Yerel olarak çalışırken tüm seçenekler desteklenmez. Daha fazla bilgi için bkz. [Host. JSON](functions-host-json.md).
+* *funcignore*: (isteğe bağlı) Azure 'a yayımlanmaması gereken dosyaları bildirir.
+* *gitignore*: (isteğe bağlı) yerel. Settings. JSON gibi bir git deposundan dışlanan dosyaları bildirir.
 
-Paylaşılan kod ayrı bir klasörde tutulmalıdır. SharedCode klasöründeki modüllere başvurmak için aşağıdaki sözdizimini kullanabilirsiniz:
+Her işlevin kendi kod dosyası ve bağlama yapılandırma dosyası (Function. JSON) vardır. 
 
-```
+Paylaşılan kod, \_\_App\_\_ayrı bir klasörde tutulmalıdır. SharedCode klasöründeki modüllere başvurmak için aşağıdaki sözdizimini kullanabilirsiniz:
+
+```python
 from __app__.SharedCode import myFirstHelperFunction
 ```
 
 Yerel modüllerle bir işleve başvurmak için göreli içeri aktarma sözdizimini aşağıdaki şekilde kullanabilirsiniz:
 
-```
+```python
 from . import example
 ```
 
-Azure 'da işlev uygulamanıza bir Işlev projesi dağıttığınızda, *functionapp* klasörünün tüm içeriği pakete dahil edilmelidir, ancak klasörün kendisi değil.
+Projenizi Azure 'daki bir işlev uygulamasına dağıttığınızda, *functionapp* klasörünün tüm içeriği pakete dahil edilmelidir, ancak klasörün kendisi değil. Testlerinizi proje klasöründen ayrı bir klasörde tutmanızı öneririz, bu örnekte `tests`. Bu, uygulamanıza test kodu dağıtmanızı önler. Daha fazla bilgi için bkz. [birim testi](#unit-testing).
 
 ## <a name="triggers-and-inputs"></a>Tetikleyiciler ve girişler
 
@@ -378,11 +386,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 Yerel geliştirme için, uygulama ayarları [yerel. Settings. json dosyasında tutulur](functions-run-local.md#local-settings-file).  
 
-## <a name="python-version-and-package-management"></a>Python sürümü ve paket yönetimi
+## <a name="python-version"></a>Python sürümü 
 
-Şu anda Azure Işlevleri yalnızca Python 3.6. x 'i destekliyor (resmi Cpyıthon dağılımı).
+Şu anda Azure Işlevleri hem Python 3.6. x hem de 3.7. x (resmi cpi dağıtımlarını) destekler. Yerel olarak çalıştırılırken, çalışma zamanı kullanılabilir Python sürümünü kullanır. Azure 'da işlev uygulamanızı oluştururken belirli bir Python sürümü istemek için [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) komutunun `--runtime-version` seçeneğini kullanın.  
 
-Azure Functions Core Tools veya Visual Studio Code kullanarak yerel olarak geliştirilirken, gerekli paketlerin adlarını ve sürümlerini `requirements.txt` dosyasına ekleyin ve `pip`kullanarak bunları yüklemek.
+## <a name="package-management"></a>Paket yönetimi
+
+Azure Functions Core Tools veya Visual Studio Code kullanarak yerel olarak geliştirilirken, gerekli paketlerin adlarını ve sürümlerini `requirements.txt` dosyasına ekleyin ve `pip`kullanarak bunları yüklemek. 
 
 Örneğin, PyPI 'den `requests` paketini yüklemek için aşağıdaki gereksinimler dosyası ve PIP komutu kullanılabilir.
 
@@ -396,35 +406,67 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Azure 'da yayımlama
 
-Yayımlamaya hazırsanız, tüm bağımlılıklarınızın proje dizininizin kökünde bulunan *requirements. txt* dosyasında listelendiğinden emin olun. Azure Işlevleri bu bağımlılıkları [Uzaktan](functions-deployment-technologies.md#remote-build) oluşturabilir.
+Yayımlamaya hazır olduğunuzda, tüm genel kullanıma açık bağımlılıklarınızın, proje dizininizin kökünde bulunan requirements. txt dosyasında listelendiğinden emin olun. 
 
-Sanal ortam klasörü de dahil olmak üzere, yayımlamanın dışında tutulan proje dosyaları ve klasörler. funcignore dosyasında listelenir. 
+Sanal ortam klasörü de dahil olmak üzere, yayımlamanın dışında tutulan proje dosyaları ve klasörler. funcignore dosyasında listelenir.
 
-VS Code için hem [Azure Functions Core Tools](functions-run-local.md#v2) hem de [Azure işlevleri uzantısı](functions-create-first-function-vs-code.md#publish-the-project-to-azure) , varsayılan olarak uzak bir derleme gerçekleştirir. Örneğin, aşağıdaki komutu kullanın:
+Python projenizi Azure 'da yayımlamak için desteklenen üç derleme eylemi vardır:
+
++ Uzak derleme: bağımlılıklar, requirements. txt dosyasının içeriğine göre uzaktan alınır. [Uzaktan derleme](functions-deployment-technologies.md#remote-build) önerilen derleme yöntemidir. Uzak Ayrıca Azure Araçları 'nın varsayılan derleme seçeneğidir. 
++ Yerel derleme: bağımlılıklar, requirements. txt dosyasının içeriğine göre yerel olarak alınır. 
++ Özel bağımlılıklar: projeniz, araçlarımız için herkese açık olarak kullanılamayan paketler kullanır. (Docker gerektirir.)
+
+Bağımlılıklarınızı derlemek ve sürekli teslim (CD) sistemi kullanarak yayımlamak için [Azure Pipelines kullanın](functions-how-to-azure-devops.md).
+
+### <a name="remote-build"></a>Uzak derleme
+
+Varsayılan olarak, Python projenizi Azure 'da yayımlamak için aşağıdaki [Func Azure functionapp Publish](functions-run-local.md#publish) komutunu kullandığınızda Azure Functions Core Tools uzak bir derlemeyi ister. 
 
 ```bash
-func azure functionapp publish <app name>
+func azure functionapp publish <APP_NAME>
 ```
 
-Uygulamanızı Azure 'da değil yerel olarak derlemek istiyorsanız, yerel makinenize [Docker 'ı yükleyip](https://docs.docker.com/install/) [Azure Functions Core Tools](functions-run-local.md#v2) (Func) kullanarak yayımlamak için aşağıdaki komutu çalıştırın. `<app name>` Azure 'daki işlev uygulamanızın adıyla değiştirmeyi unutmayın. 
+`<APP_NAME>` Azure 'daki işlev uygulamanızın adıyla değiştirmeyi unutmayın.
 
-```bash
-func azure functionapp publish <app name> --build-native-deps
+[Visual Studio Code Için Azure Işlevleri uzantısı](functions-create-first-function-vs-code.md#publish-the-project-to-azure) Ayrıca uzak bir derlemeyi varsayılan olarak ister. 
+
+### <a name="local-build"></a>Yerel derleme
+
+Bir yerel derleme ile yayımlamak için aşağıdaki [Func Azure functionapp Publish](functions-run-local.md#publish) komutunu kullanarak uzak bir derlemeyi engelleyebilirsiniz. 
+
+```command
+func azure functionapp publish <APP_NAME> --build local
 ```
 
-Temel araçlar, [MCR.Microsoft.com/Azure-Functions/Python](https://hub.docker.com/r/microsoft/azure-functions/) görüntüsünü yerel makinenizde bir kapsayıcı olarak çalıştırmak için Docker 'ı kullanır. Bu ortamı kullanarak, Azure 'a son dağıtım için paketlemeden önce, kaynak dağıtımından gerekli modülleri oluşturup yükler.
+`<APP_NAME>` Azure 'daki işlev uygulamanızın adıyla değiştirmeyi unutmayın. 
 
-Bağımlılıklarınızı derlemek ve sürekli teslim (CD) sistemi kullanarak yayımlamak için [Azure Pipelines kullanın](functions-how-to-azure-devops.md). 
+`--build local` seçeneğini kullanarak, Proje bağımlılıkları requirements. txt dosyasından okur ve bu bağımlı paketler yerel olarak indirilir ve yüklenir. Proje dosyaları ve bağımlılıklar yerel bilgisayarınızdan Azure 'a dağıtılır. Bu, daha büyük bir dağıtım paketinin Azure 'a yüklenmasına neden olur. Bir nedenden dolayı, requirements. txt dosyanızdaki bağımlılıklar temel araçlar tarafından alınamadığından, yayımlamak için özel bağımlılıklar seçeneğini kullanmanız gerekir. 
 
-## <a name="unit-testing"></a>Birim testi
+### <a name="custom-dependencies"></a>Özel bağımlılıklar
 
-Python 'da yazılan işlevler, standart test çerçeveleri kullanılarak diğer Python kodu gibi test edilebilir. Çoğu bağlamanın, `azure.functions` paketinden uygun bir sınıfın örneğini oluşturarak bir sahte giriş nesnesi oluşturmak mümkündür. [`azure.functions`](https://pypi.org/project/azure-functions/) paketi hemen kullanılamadığından, yukarıdaki [Python sürümü ve paket yönetimi](#python-version-and-package-management) bölümünde açıklandığı gibi `requirements.txt` dosyanız aracılığıyla yüklemeyi unutmayın.
+Projeniz araçlarımızda herkese açık değil paketleri kullanıyorsa, bu dosyaları \_\_App\_\_/. python_packages dizinine yerleştirerek uygulamanız için kullanılabilir hale getirebilirsiniz. Yayımlamadan önce, bağımlılıkları yerel olarak yüklemek için aşağıdaki komutu çalıştırın:
+
+```command
+pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
+```
+
+Özel bağımlılıklar kullanırken, bağımlılıkları zaten yüklemiş olduğunuz için `--no-build` yayımlama seçeneğini kullanmanız gerekir.  
+
+```command
+func azure functionapp publish <APP_NAME> --no-build
+```
+
+`<APP_NAME>` Azure 'daki işlev uygulamanızın adıyla değiştirmeyi unutmayın.
+
+## <a name="unit-testing"></a>Birim Testi
+
+Python 'da yazılan işlevler, standart test çerçeveleri kullanılarak diğer Python kodu gibi test edilebilir. Çoğu bağlamanın, `azure.functions` paketinden uygun bir sınıfın örneğini oluşturarak bir sahte giriş nesnesi oluşturmak mümkündür. [`azure.functions`](https://pypi.org/project/azure-functions/) paketi hemen kullanılamadığından, yukarıdaki [Paket Yönetimi](#package-management) bölümünde açıklandığı gibi `requirements.txt` dosyanız aracılığıyla yüklemeyi unutmayın. 
 
 Örneğin, bir HTTP ile tetiklenen bir işlevin sahte testi aşağıdadır:
 
 ```json
 {
-  "scriptFile": "httpfunc.py",
+  "scriptFile": "__init__.py",
   "entryPoint": "my_function",
   "bindings": [
     {
@@ -447,7 +489,7 @@ Python 'da yazılan işlevler, standart test çerçeveleri kullanılarak diğer 
 ```
 
 ```python
-# myapp/httpfunc.py
+# __app__/HttpTrigger/__init__.py
 import azure.functions as func
 import logging
 
@@ -473,12 +515,11 @@ def my_function(req: func.HttpRequest) -> func.HttpResponse:
 ```
 
 ```python
-# myapp/test_httpfunc.py
+# tests/test_httptrigger.py
 import unittest
 
 import azure.functions as func
-from httpfunc import my_function
-
+from __app__.HttpTrigger import my_function
 
 class TestFunction(unittest.TestCase):
     def test_my_function(self):
@@ -501,22 +542,36 @@ class TestFunction(unittest.TestCase):
 
 Sıra tarafından tetiklenen bir işlev içeren başka bir örnek aşağıda verilmiştir:
 
-```python
-# myapp/__init__.py
-import azure.functions as func
+```json
+{
+  "scriptFile": "__init__.py",
+  "entryPoint": "my_function",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "python-queue-items",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
+```
 
+```python
+# __app__/QueueTrigger/__init__.py
+import azure.functions as func
 
 def my_function(msg: func.QueueMessage) -> str:
     return f'msg body: {msg.get_body().decode()}'
 ```
 
 ```python
-# myapp/test_func.py
+# tests/test_queuetrigger.py
 import unittest
 
 import azure.functions as func
-from . import my_function
-
+from __app__.QueueTrigger import my_function
 
 class TestFunction(unittest.TestCase):
     def test_my_function(self):
@@ -554,6 +609,8 @@ from os import listdir
    fp.write(b'Hello world!')              
    filesDirListInTemp = listdir(tempFilePath)     
 ```   
+
+Testlerinizi proje klasöründen ayrı bir klasörde tutmanızı öneririz. Bu, uygulamanıza test kodu dağıtmanızı önler. 
 
 ## <a name="known-issues-and-faq"></a>Bilinen sorunlar ve SSS
 

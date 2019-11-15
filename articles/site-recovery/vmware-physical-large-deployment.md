@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery ile çok sayıda VMware VM veya fiziksel sunucu için Azure 'da olağanüstü durum kurtarmayı ayarlama | Microsoft Docs
+title: Azure Site Recovery VMware/fiziksel olağanüstü durum kurtarmayı ölçeklendirin
 description: Çok sayıda şirket içi VMware VM veya Azure Site Recovery ile fiziksel sunucu için Azure 'da olağanüstü durum kurtarmayı ayarlamayı öğrenin.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 7ef4a9d5f63282736b010e67b467f82474bcf409
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: e08c7d5f794611a92688e931f35da7482c04407f
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782668"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082214"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM 'Leri/fiziksel sunucular için ölçekte olağanüstü durum kurtarmayı ayarlama
 
@@ -30,12 +30,12 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanar
 
 Büyük ölçekli olağanüstü durum kurtarma için bazı genel en iyi uygulamalar. Bu en iyi uygulamalar, belgenin sonraki bölümlerinde daha ayrıntılı bir şekilde ele alınmıştır.
 
-- **Hedef gereksinimleri tanımla**: Olağanüstü durum kurtarmayı ayarlamadan önce Azure 'da kapasite ve kaynak gereksinimlerini tahmin edin.
-- **Site Recovery bileşenleri Için plan**yapın: Tahmini kapasitenizi karşılamak için gereken Site Recovery bileşenlerini (yapılandırma sunucusu, işlem sunucuları) öğrenin.
-- **Bir veya daha fazla genişleme işlem sunucusu ayarlayın**: Yapılandırma sunucusunda varsayılan olarak çalışan işlem sunucusunu kullanmayın. 
-- **En son güncelleştirmeleri çalıştırın**: Site Recovery Team Site Recovery bileşenlerinin yeni sürümlerini düzenli olarak yayınlar ve en son sürümleri çalıştırdığınızdan emin olun. Bu konuda size yardımcı olmak için güncelleştirmeler için [yenilikleri](site-recovery-whats-new.md) izleyin ve güncelleştirmeleri yayınlarlar [ve yükler](service-updates-how-to.md) .
-- Proaktif **izleme**: Olağanüstü durum kurtarma 'yı ve çalışır duruma geldiğinizde, çoğaltılan makinelerin durumunu ve durumunu ve altyapı kaynaklarını önceden izlemeniz gerekir.
-- **Olağanüstü durum kurtarma detaylar**: Olağanüstü durum kurtarma detaylarını düzenli olarak çalıştırmalısınız. Bu, üretim ortamınızda etkilenmez, ancak Azure 'a yük devretmenin gerektiğinde beklendiği gibi çalışmasını sağlamaya yardımcı olur.
+- **Hedef gereksinimleri belirleme**: olağanüstü durum kurtarmayı ayarlamadan önce Azure 'da kapasite ve kaynak gereksinimlerini tahmin edin.
+- **Site Recovery bileşenleri Için plan**yapın: tahmini kapasitenizi karşılamak için gereken Site Recovery bileşenlerini (yapılandırma sunucusu, işlem sunucuları) öğrenin.
+- **Bir veya daha fazla genişleme işlem sunucusu ayarlama**: yapılandırma sunucusunda varsayılan olarak çalışan işlem sunucusunu kullanmayın. 
+- **En son güncelleştirmeleri çalıştırın**: Site Recovery Team Site Recovery bileşenlerinin düzenli olarak yeni sürümlerini yayınlar ve en son sürümleri çalıştırdığınızdan emin olun. Bu konuda size yardımcı olmak için güncelleştirmeler için [yenilikleri](site-recovery-whats-new.md) izleyin ve güncelleştirmeleri yayınlarlar [ve yükler](service-updates-how-to.md) .
+- **İzleme**proaktif: olağanüstü durum kurtarma 'yı ve çalışır duruma getirmek için, çoğaltılan makinelerin durumunu ve sağlığını ve altyapı kaynaklarını önceden izlemeniz gerekir.
+- **Olağanüstü durum kurtarma ayrıntılarında**: olağanüstü durum kurtarma detaylarını düzenli olarak çalıştırmalısınız. Bu, üretim ortamınızda etkilenmez, ancak Azure 'a yük devretmenin gerektiğinde beklendiği gibi çalışmasını sağlamaya yardımcı olur.
 
 
 
@@ -70,12 +70,12 @@ Ardından, planlayıcısı aşağıdaki gibi çalıştırın:
 
 Toplanan tahminleri ve önerileri kullanarak hedef kaynakları ve kapasiteyi planlayabilirsiniz. VMware VM 'Leri için Dağıtım Planlayıcısı çalıştırdıysanız, size yardımcı olmak için bir dizi [rapor önerisi](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) kullanabilirsiniz.
 
-- **Uyumlu VM 'ler**: Azure 'a olağanüstü durum kurtarmaya yönelik VM sayısını belirlemek için bu sayıyı kullanın. Ağ bant genişliği ve Azure çekirdekleri ile ilgili öneriler bu sayıyı temel alır.
-- **Gerekli ağ bant genişliği**: Uyumlu VM 'lerin Delta çoğaltması için gereken bant genişliğine göz önünde olabilirsiniz. 
-    - Planlayıcısı çalıştırdığınızda, istenen RPO süresini dakikalar içinde belirtirsiniz. Öneriler, bu RPO% 100 ve zamanın% 90 ' ünü karşılamak için gereken bant genişliğini gösterir. 
+- **Uyumlu VM 'ler**: Azure 'a olağanüstü durum kurtarmaya yönelik VM 'lerin sayısını belirlemek için bu numarayı kullanın. Ağ bant genişliği ve Azure çekirdekleri ile ilgili öneriler bu sayıyı temel alır.
+- **Gerekli ağ bant genişliği**: uyumlu VM 'lerin Delta çoğaltması için gereken bant genişliğini aklınızda bulabilirsiniz. 
+    - Planlayıcısı çalıştırdığınızda, istenen RPO süresini dakikalar içinde belirtirsiniz. Öneriler, bu RPO %100 ve zamanın %90 ' ünü karşılamak için gereken bant genişliğini gösterir. 
     - Ağ bant genişliği önerileri, planlayıcıda önerilen toplam yapılandırma sunucusu ve işlem sunucusu sayısı için gereken bant genişliğini dikkate alır.
-- **Gerekli Azure çekirdekleri**: Uyumlu sanal makinelerin sayısına bağlı olarak, hedef Azure bölgesinde gereken çekirdek sayısını göz önünde bulabilirsiniz. Yeterli çekirdekler yoksa, yük devretme Site Recovery, gerekli Azure sanal makinelerini oluşturamayacak.
-- **ÖNERILEN VM toplu iş boyutu**: Önerilen toplu iş boyutu, toplu işlemin ilk çoğaltmasını 72 saat içinde varsayılan olarak bitirebilme,% 100 ' ü bir RPO 'ya göre değil. Saat değeri değiştirilebilir.
+- **Gerekli Azure çekirdekleri**: uyumlu sanal makinelerin sayısına bağlı olarak, hedef Azure bölgesinde ihtiyacınız olan çekirdek sayısını göz önünde bulabilirsiniz. Yeterli çekirdekler yoksa, yük devretme Site Recovery, gerekli Azure sanal makinelerini oluşturamayacak.
+- **ÖNERILEN VM toplu iş boyutu**: önerilen toplu iş boyutu, toplu işlemin ilk çoğaltmasını 72 saat içinde varsayılan olarak bitirebilme, %100 ' i bir RPO 'ya göre değil. Saat değeri değiştirilebilir.
 
 Azure kaynakları, ağ bant genişliği ve VM toplu işlem planlaması için bu önerileri kullanabilirsiniz.
 
@@ -100,7 +100,7 @@ Uyumluluk ne anlama geliyor? Azure VM 'yi başlatmak için, Azure 'un önyüklem
 
 **Makine Azure ile uyumlu mı?** | **Azure VM sınırları (yönetilen disk yük devretmesi)**
 --- | --- 
-Evet | 2000
+Yes | 2000
 Hayır | 1000
 
 - Sınırlar, aboneliğin hedef bölgesinde en az diğer işlerin devam ettiğini varsayar.
@@ -212,7 +212,7 @@ Büyük ölçekli yük devretme çalıştırmak için şunları öneririz:
 1. İş yükü yük devretmesi için kurtarma planları oluşturun.
     - Her kurtarma planı, 50 adede kadar makinenin yük devretmesini tetikleyebilir.
     - Kurtarma planları hakkında [daha fazla bilgi edinin](recovery-plan-overview.md) .
-2. Azure 'daki tüm el ile görevleri otomatikleştirmek için kurtarma planlarına Azure Otomasyonu runbook betikleri ekleyin. Tipik görevler yük dengeleyicileri yapılandırmayı, DNS 'yi güncellemeyi içerir. [Daha fazla bilgi edinin](site-recovery-runbook-automation.md)
+2. Azure 'daki tüm el ile görevleri otomatikleştirmek için kurtarma planlarına Azure Otomasyonu runbook betikleri ekleyin. Tipik görevler yük dengeleyicileri yapılandırmayı, DNS 'yi güncellemeyi içerir. [Daha fazla bilgi](site-recovery-runbook-automation.md)
 2. Yük devretmeden önce, Windows makinelerini Azure ortamıyla uyumlu olacak şekilde hazırlayın. Uyumlu olan makineler için [Yük devretme limitleri](#plan-azure-subscriptions-and-quotas) daha yüksektir. Runbook 'lar hakkında [daha fazla bilgi edinin](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) .
 4.  Bir kurtarma planıyla birlikte [Start-AzRecoveryServicesAsrPlannedFailoverJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) PowerShell cmdlet 'i ile yük devretmeyi tetikleyin.
 

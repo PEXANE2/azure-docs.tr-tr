@@ -1,18 +1,18 @@
 ---
-title: Hyper-V VM (VMM ile) ile Azure 'a olağanüstü durum kurtarma için ağ eşleme hakkında Site Recovery
+title: Site Recovery ile Hyper-V (VMM ile) ağ eşlemesi hakkında
 description: Hyper-V VM 'lerinin (VMM bulutlarında yönetilen) olağanüstü durum kurtarma için ağ eşlemesinin, Azure Site Recovery ile Azure 'a nasıl ayarlanacağını açıklar.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 637f327b40341ac04f37baf9e43f136a0315b17f
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813663"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082570"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Azure 'da Hyper-V VM olağanüstü durum kurtarma için ağ eşlemeyi hazırlama
 
@@ -53,7 +53,7 @@ Ağ eşleme aşağıdaki gibi çalışmaktadır:
 
 Bu mekanizmayı gösteren bir örnek aşağıda verilmiştir. Yeni York ve Chicago 'da iki konum içeren bir kuruluş alalım.
 
-**Location** | **VMM sunucusu** | **VM ağları** | **Eşlendi**
+**Konum** | **VMM sunucusu** | **VM ağları** | **Eşlendi**
 ---|---|---|---
 New York | VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicago ile eşlendi
  |  | VMNetwork2-NewYork | Eşlenmedi
@@ -78,7 +78,7 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 
 ### <a name="logical-and-vm-network-settings"></a>Mantıksal ve VM ağ ayarları
 
-**Location** | **Mantıksal ağ** | **İlişkili VM ağı**
+**Konum** | **Mantıksal ağ** | **İlişkili VM ağı**
 ---|---|---
 New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
@@ -92,7 +92,7 @@ Bu ayarlara bağlı olarak, hedef VM ağını seçtiğinizde, aşağıdaki tablo
 ---|---|---|---
 VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | Kullanılabilir
  | GoldCloud1 | GoldCloud2 | Kullanılabilir
-VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Yok
+VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Kullanılamaz
  | GoldCloud1 | GoldCloud2 | Kullanılabilir
 
 
@@ -104,7 +104,7 @@ Hedef ağın birden çok alt ağı varsa ve bu alt ağlardan biri kaynak sanal m
 Yeniden çalışma durumunda neler olduğunu görmek için (tersine çoğaltma), VMNetwork1-NewYork 'un aşağıdaki ayarlarla VMNetwork1-Chicago ile eşlendiğini varsayın.
 
 
-**'NIN** | **VM ağına bağlanıldı**
+**'Nın** | **VM ağına bağlanıldı**
 ---|---
 VM1 | VMNetwork1-ağ
 VM2 (VM1 çoğaltması) | VMNetwork1-Chicago

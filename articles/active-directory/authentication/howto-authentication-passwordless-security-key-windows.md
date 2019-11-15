@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b57fe9241a6a29e6f5ce12b7a1412455df4a001
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7b3aa2add128cfc11a638fe6c7e03cfb25189afc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603466"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081551"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Windows 10 cihazlarında passwordless güvenlik anahtarı oturum açma özelliğini etkinleştir (Önizleme)
 
@@ -29,7 +29,7 @@ Bu belge, Windows 10 cihazlarıyla, FIDO2 güvenlik anahtarı tabanlı passwordl
 
 ## <a name="requirements"></a>Gereksinimler
 
-- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Azure çok faktörlü kimlik doğrulaması](howto-mfa-getstarted.md)
 - [Birleşik güvenlik bilgileri kayıt önizlemesi](concept-registration-mfa-sspr-combined.md)
 - Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN, Windows 10 sürüm 1809 veya üstünü gerektirir
@@ -88,7 +88,7 @@ Kimlik bilgisi sağlayıcısını etkinleştirmek üzere belirli cihaz grupları
 
 ### <a name="enable-with-a-provisioning-package"></a>Sağlama paketiyle etkinleştir
 
-Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek üzere bir sağlama paketi yükleyebilirsiniz. Windows yapılandırma Tasarımcısı uygulaması [Microsoft Store](https://www.microsoft.com/store/apps/9nblggh4tx22)yüklenebilir.
+Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek üzere bir sağlama paketi yükleyebilirsiniz. Windows yapılandırma Tasarımcısı uygulaması [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22)yüklenebilir.
 
 1. Windows yapılandırma Tasarımcısı 'nı başlatın.
 1. **Dosya** > **Yeni proje**' yi seçin.

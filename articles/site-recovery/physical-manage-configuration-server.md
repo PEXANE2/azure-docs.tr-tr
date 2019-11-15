@@ -1,5 +1,5 @@
 ---
-title: Şirket içi fiziksel sunucuların olağanüstü durum kurtarması için yapılandırma sunucusunu Azure Site Recovery ile Azure 'a yönetme | Microsoft Docs '
+title: Azure Site Recovery ' deki fiziksel sunucular için yapılandırma sunucusunu yönetme
 description: Bu makalede, Azure 'da fiziksel sunucu olağanüstü durum kurtarma için Azure Site Recovery yapılandırma sunucusunun nasıl yönetileceği açıklanır.
 services: site-recovery
 author: mayurigupta13
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: f87210cd14570687eebae88896830bb3ee00b74e
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242986"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084607"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fiziksel sunucu olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme
 
@@ -20,7 +20,7 @@ Fiziksel sunucuların olağanüstü durum kurtarması için Azure 'a [Azure Site
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Tablo, şirket içi yapılandırma sunucusu makinesini dağıtmaya yönelik önkoşulları özetler.
 
@@ -39,7 +39,7 @@ Tablo, şirket içi yapılandırma sunucusu makinesini dağıtmaya yönelik önk
 | IIS | -Önceden var olan varsayılan Web sitesi yok <br> - [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştir  <br> -Var olan bir Web sitesi/uygulama dinleme 443 bağlantı noktasında dinleniyor<br>|
 | NIC türü | VMXNET3 (bir VMware sanal makinesi olarak dağıtıldığında) |
 | IP adresi türü | Statik |
-| İnternet erişimi | Sunucunun bu URL 'Lere erişmesi gerekir: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (genişleme Işlem sunucuları için gerekli değildir) <br> - time.nist.gov <br> - time.windows.com |
+| İnternet erişimi | Sunucunun bu URL 'Lere erişmesi gerekir: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (genişleme Işlem sunucuları için gerekli değildir) <br> - time.nist.gov <br> - time.windows.com |
 | Bağlantı Noktaları | 443 (Denetim kanalı düzenleme)<br>9443 (Veri aktarımı)|
 
 ## <a name="download-the-latest-installation-file"></a>En son yükleme dosyasını indirin
@@ -71,7 +71,7 @@ Yapılandırma sunucusu yükleme dosyasının en son sürümü Site Recovery por
      ![Güvenlik duvarı](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. **Önkoşul Denetimi** menüsünde Kurulum, yüklemenin çalışabildiğinden emin olmak üzere bir denetim gerçekleştirir. **Genel saat eşitleme denetimi** hakkında bir uyarı görünürse, sistem saatindeki zamanın (**Tarih ve Saat** ayarları) saat dilimiyle aynı olduğunu doğrulayın.
 
-    ![Önkoşullar](./media/physical-manage-configuration-server/combined-wiz5.png)
+    ![Ön koşullar](./media/physical-manage-configuration-server/combined-wiz5.png)
 7. **MySQL Yapılandırması** menüsünde, yüklü MySQL sunucu örneğinde oturum açmak için kimlik bilgileri oluşturun.
 
     ![MySQL](./media/physical-manage-configuration-server/combined-wiz6.png)
@@ -110,20 +110,20 @@ Yükleme dosyasını aşağıdaki gibi çalıştırın:
 
 |Parametre Adı| Tür | Açıklama| Değerler|
 |-|-|-|-|
-| /ServerMode|Gereklidir|Hem yapılandırma hem de işlem sunucusunun mu yoksa yalnızca işlem sunucusunun mu yükleneceğini belirtir|CS<br>PS|
-|/InstallLocation|Gereklidir|Bileşenlerin yüklendiği klasör| Bilgisayardaki herhangi bir klasör|
-|/MySQLCredsFilePath|Gereklidir|MySQL sunucusu kimlik bilgilerinin depolandığı dosya yolu|Dosya aşağıda belirtilen biçimde olmalıdır|
-|/VaultCredsFilePath|Gereklidir|Kasa kimlik bilgileri dosyasının yolu|Geçerli dosya yolu|
-|/EnvType|Gereklidir|Korumak istediğiniz ortam türü |VMware<br>NonVMware|
-|/PSIP|Gereklidir|Çoğaltma veri aktarımı için kullanılacak NIC’nin IP adresi| Herhangi bir geçerli IP adresi|
-|/CSIP|Gereklidir|Yapılandırma sunucusunun dinleme yaptığı NIC’nin IP adresi| Herhangi bir geçerli IP adresi|
-|/PassphraseFilePath|Gereklidir|Parola dosyası konumunun tam yolu|Geçerli dosya yolu|
-|/BypassProxy|İsteğe Bağlı|Yapılandırma sunucusunun Azure'a bir ara sunucu olmadan bağlandığını belirtir|Yapmak için bu değeri Venu’den alın|
-|/ProxySettingsFilePath|İsteğe Bağlı|Ara sunucu ayarları (Varsayılan ara sunucu kimlik doğrulaması gerektirir ya da özel bir ara sunucu kullanılır)|Dosya aşağıda belirtilen biçimde olmalıdır|
-|DataTransferSecurePort|İsteğe Bağlı|Çoğaltma verileri için kullanılacak PSIP’deki bağlantı noktası numarası| Geçerli Bağlantı Noktası Numarası (varsayılan değer: 9433)|
-|/SkipSpaceCheck|İsteğe Bağlı|Önbellek diski için alan denetimini atlama| |
-|/AcceptThirdpartyEULA|Gereklidir|Bayrak, üçüncü taraf EULA'nın kabul edildiğini gösterir| |
-|/ShowThirdpartyEULA|İsteğe Bağlı|Üçüncü taraf EULA belgesini görüntüler. Giriş olarak sağlanırsa, diğer tüm parametreler yoksayılır| |
+| /ServerMode|Gerekli|Hem yapılandırma hem de işlem sunucusunun mu yoksa yalnızca işlem sunucusunun mu yükleneceğini belirtir|CS<br>PS|
+|/InstallLocation|Gerekli|Bileşenlerin yüklendiği klasör| Bilgisayardaki herhangi bir klasör|
+|/MySQLCredsFilePath|Gerekli|MySQL sunucusu kimlik bilgilerinin depolandığı dosya yolu|Dosya aşağıda belirtilen biçimde olmalıdır|
+|/VaultCredsFilePath|Gerekli|Kasa kimlik bilgileri dosyasının yolu|Geçerli dosya yolu|
+|/EnvType|Gerekli|Korumak istediğiniz ortam türü |VMware<br>NonVMware|
+|/PSIP|Gerekli|Çoğaltma veri aktarımı için kullanılacak NIC’nin IP adresi| Herhangi bir geçerli IP adresi|
+|/CSIP|Gerekli|Yapılandırma sunucusunun dinleme yaptığı NIC’nin IP adresi| Herhangi bir geçerli IP adresi|
+|/PassphraseFilePath|Gerekli|Parola dosyası konumunun tam yolu|Geçerli dosya yolu|
+|/BypassProxy|İsteğe bağlı|Yapılandırma sunucusunun Azure'a bir ara sunucu olmadan bağlandığını belirtir|Yapmak için bu değeri Venu’den alın|
+|/ProxySettingsFilePath|İsteğe bağlı|Ara sunucu ayarları (Varsayılan ara sunucu kimlik doğrulaması gerektirir ya da özel bir ara sunucu kullanılır)|Dosya aşağıda belirtilen biçimde olmalıdır|
+|DataTransferSecurePort|İsteğe bağlı|Çoğaltma verileri için kullanılacak PSIP’deki bağlantı noktası numarası| Geçerli Bağlantı Noktası Numarası (varsayılan değer: 9433)|
+|/SkipSpaceCheck|İsteğe bağlı|Önbellek diski için alan denetimini atlama| |
+|/AcceptThirdpartyEULA|Gerekli|Bayrak, üçüncü taraf EULA'nın kabul edildiğini gösterir| |
+|/ShowThirdpartyEULA|İsteğe bağlı|Üçüncü taraf EULA belgesini görüntüler. Giriş olarak sağlanırsa, diğer tüm parametreler yoksayılır| |
 
 
 
@@ -175,7 +175,7 @@ Yapılandırma sunucusu makinesi için proxy ayarlarını aşağıdaki gibi değ
 2. Masaüstünüzdeki kısayolu kullanarak Cspsconfigtool. exe ' yi başlatın.
 3. **Kasa kaydı** sekmesine tıklayın.
 4. Portaldan yeni bir kayıt dosyası indirin ve araca giriş olarak sağlayın.
-      ![Register-Configuration-Server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+      ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Proxy sunucusu ayrıntılarını girip **Kaydet** düğmesine tıklayın.  
 6. Yönetici PowerShell komut penceresini açın.
 7. Aşağıdaki komutu çalıştırın
@@ -217,7 +217,7 @@ Yapılandırma sunucusu makinesi için proxy ayarlarını aşağıdaki gibi değ
 
 ## <a name="upgrade-a-configuration-server"></a>Yapılandırma sunucusunu yükseltme
 
-Yapılandırma sunucusunu güncelleştirmek için güncelleştirme paketleri çalıştırırsınız. Güncelleştirmeler, en fazla N 4 sürüm için uygulanabilir. Örnek:
+Yapılandırma sunucusunu güncelleştirmek için güncelleştirme paketleri çalıştırırsınız. Güncelleştirmeler, en fazla N 4 sürüm için uygulanabilir. Örneğin:
 
 - 9,7, 9,8, 9,9 veya 9,10 çalıştırıyorsanız, doğrudan 9,11 'e yükseltebilirsiniz.
 - 9,6 veya önceki bir sürümünü çalıştırıyorsanız ve 9,11 sürümüne yükseltmek istiyorsanız, önce sürüm 9,7 ' ye yükseltmeniz gerekir. 9,11 öncesi.

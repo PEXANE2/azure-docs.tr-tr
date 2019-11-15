@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 5fc9463d5f5ea15f08378d4a0245174a366fa2b9
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6f1a793432fa6403639726dbe4340bae6804fb9f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747472"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091086"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Azure dosya paylaşımlarını yedekleme ve geri yükleme
 
@@ -28,7 +28,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 > * Azure Dosyaları üzerindeki korumayı durdurma
 > * Yedekleme verilerinizi silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure dosya paylaşımını yedekleyebilmeniz için önce [desteklenen Depolama Hesabı türlerinden](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview) birinde yer aldığından emin olmalısınız. Bunu doğruladıktan sonra dosya paylaşımlarınızı koruyabilirsiniz.
 
@@ -201,7 +201,7 @@ Yedeklemeyi durdurma işi sırasında veya korumayı durdurduktan sonra bir dosy
 
 Aşağıdaki yordamda sanal makine için Yedekleme işinin durdurulmuş olduğu varsayılır. Yedekleme işi durdurulduktan sonra, Yedekleme öğesi panosunda Yedeklemeyi Sürdür ve Yedekleme Verilerini Sil seçenekleri sağlanır. Yedekleme Verilerini Sil'e tıklayın ve silme işlemini onaylamak için Dosya paylaşımının adını yazın. İsteğe bağlı olarak, silmek için bir Neden veya Açıklama sağlayın.
 
-## <a name="see-also"></a>Ayrıca Bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 Azure dosya paylaşımları hakkında daha fazla bilgi için bkz.
 

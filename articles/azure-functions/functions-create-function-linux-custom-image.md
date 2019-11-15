@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: d4a72edbe762afd2a94962c1440357ce3ad46862
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b8d82868788d831d4db68a35c032d3f81b545417
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329557"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082841"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Linux üzerinde özel görüntü kullanarak bir işlev oluşturma
 
@@ -57,7 +57,7 @@ Bu örneği çalıştırmadan önce aşağıdakilere sahip olmanız gerekir:
 
 ## <a name="create-the-local-project"></a>Yerel projeyi oluşturma
 
-Geçerli yerel dizinin `MyFunctionProj` klasöründe bir işlev uygulaması projesi oluşturmak için komut satırından aşağıdaki komutu çalıştırın. Bir Python projesi için [sanal ortamda çalıştırıyor olmanız gerekir](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional).
+Geçerli yerel dizinin `MyFunctionProj` klasöründe bir işlev uygulaması projesi oluşturmak için komut satırından aşağıdaki komutu çalıştırın. Bir Python projesi için [sanal ortamda çalıştırıyor olmanız gerekir](functions-create-first-function-python.md#create-and-activate-a-virtual-environment).
 
 ```bash
 func init MyFunctionProj --docker
@@ -117,7 +117,7 @@ docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 ![İşlev uygulamasını yerel olarak çalıştırın.](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
 > [!NOTE]
-> Bu noktada, belirli HTTP işlevinizi çağırmaya çalıştığınızda bir HTTP 401 hata yanıtı alırsınız. Bunun nedeni, işlevinizin Azure 'da olduğu gibi yerel kapsayıcıda çalıştığı, işlev anahtarının gerekli olduğu anlamına gelir. Kapsayıcı henüz bir işlev uygulamasında yayımlanmadığı için kullanılabilir bir işlev anahtarı yok. Daha sonra, kapsayıcınızı yayımlamak için temel araçları kullandığınızda, işlev tuşlarının size gösterildiğini göreceksiniz. Yerel kapsayıcıda çalışan işlevinizi test etmek istiyorsanız, [Yetkilendirme anahtarını](functions-bindings-http-webhook.md#authorization-keys) `anonymous` olarak değiştirebilirsiniz. 
+> Bu noktada, belirli HTTP işlevinizi çağırmaya çalıştığınızda bir HTTP 401 hata yanıtı alırsınız. Bunun nedeni, işlevinizin Azure 'da olduğu gibi yerel kapsayıcıda çalıştığı, işlev anahtarının gerekli olduğu anlamına gelir. Kapsayıcı henüz bir işlev uygulamasında yayımlanmadığı için kullanılabilir bir işlev anahtarı yok. Daha sonra, kapsayıcınızı yayımlamak için temel araçları kullandığınızda, işlev tuşlarının size gösterildiğini göreceksiniz. Yerel kapsayıcıda çalışan işlevinizi test etmek istiyorsanız, [Yetkilendirme anahtarını](functions-bindings-http-webhook.md#authorization-keys) `anonymous`olarak değiştirebilirsiniz. 
 
 Kapsayıcıda işlev uygulamasını doğruladıktan sonra, yürütmeyi durdurun. Şimdi, özel görüntüyü Docker Hub hesabınıza gönderebilirsiniz.
 
@@ -195,14 +195,14 @@ AzureWebJobsStorage=$storageConnectionString
 
 <!-- we should replace this with a CLI or API-based approach, when we get something better than REST -->
 
-Oluşturduğunuz HTTP ile tetiklenen işlev, uç nokta çağrılırken bir [işlev anahtarı](functions-bindings-http-webhook.md#authorization-keys) gerektirir. Şu anda, anahtar dahil olmak üzere işlev URL 'nizi almanın en kolay yolu [Azure portalda]. 
+Oluşturduğunuz HTTP ile tetiklenen işlev, uç nokta çağrılırken bir [işlev anahtarı](functions-bindings-http-webhook.md#authorization-keys) gerektirir. Şu anda, anahtar dahil olmak üzere işlev URL 'nizi almanın en kolay yolu [Azure Portal]. 
 
 > [!TIP]
 > Ayrıca, [kimlik doğrulaması için bir taşıyıcı belirteci](/cli/azure/account#az-account-get-access-token)sunmanıza gerek duyan [anahtar yönetim API 'lerini](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)kullanarak işlev anahtarlarınızı elde edebilirsiniz.
 
-Yeni işlev uygulamanızı, sayfanın üst kısmındaki **arama** kutusuna işlev uygulamanızın adını yazarak [Azure portalda] ve **App Service** kaynağını seçerek bulun.
+Yeni işlev uygulamanızı, sayfanın üst kısmındaki **arama** kutusuna işlev uygulamanızın adını yazarak [Azure Portal] ve **App Service** kaynağını seçerek bulun.
 
-**Myhttptrigger** işlevini seçin **</> Işlev URL 'sini al** > **varsayılan (işlev anahtarı)**  > **kopyasını**seçin.
+**Myhttptrigger** işlevini seçin **</> Işlev URL 'sini al** > **varsayılan (işlev anahtarı)**  > **Kopyala**' yı seçin.
 
 ![Azure portalından işlev URL’sini kopyalama](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)
 
@@ -231,7 +231,7 @@ az functionapp deployment container config --enable-cd \
 
 Bu komut, sürekli dağıtım etkinleştirildikten sonra dağıtım Web kancası URL 'sini döndürür. Bu URL 'YI döndürmek için [az functionapp Deployment Container show-CD-URL](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) komutunu da kullanabilirsiniz. 
 
-Dağıtım URL 'sini kopyalayın ve DockerHub deponuza gidin, **Web kancaları** sekmesini seçin, Web kancası Için bir **Web kancası adı** yazın, URL 'nizi **Web kancası URL 'sine**yapıştırın ve artı işaretini ( **+** ) seçin.
+Dağıtım URL 'sini kopyalayın ve DockerHub deponuza gidin, **Web kancaları** sekmesini seçin, Web kancası Için bir **Web kancası adı** yazın, URL 'nizi **Web kancası URL 'sine**yapıştırın ve ardından artı işaretini ( **+** ) seçin.
 
 ![Web kancasını DockerHub depoya ekleme](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
@@ -243,7 +243,7 @@ SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. SSH et
 
 ### <a name="change-the-base-image"></a>Temel görüntüyü değiştirme
 
-Dockerfile 'da, `-appservice` dizesini `FROM` yönergenizle temel görüntüye ekleyin, bu, JavaScript projesi için aşağıdaki gibi görünür.
+Dockerfile 'da, bir JavaScript projesi için aşağıdaki gibi görünen `FROM` yönergesindeki `-appservice` dize öğesini temel görüntüye ekleyin.
 
 ```docker
 FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
@@ -253,7 +253,7 @@ FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
 
 ### <a name="rebuild-and-redeploy-the-image"></a>Görüntüyü yeniden oluşturma ve yeniden dağıtma
 
-Kök klasörde, daha önce olduğu gibi [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) komutunu tekrar çalıştırın, `<docker-id>` ' i Docker Hub hesabı Kimliğinizle değiştirin. 
+Kök klasörde, [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) komutunu yeniden çalıştırın, daha önce olduğu gibi `<docker-id>` Docker Hub hesabı Kimliğinizle değiştirin. 
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
@@ -269,7 +269,7 @@ Güncelleştirilmiş görüntü, işlev uygulamanıza yeniden dağıtılır.
 
 ### <a name="connect-to-your-container-in-azure"></a>Azure 'da kapsayıcınıza bağlanma
 
-Tarayıcıda, işlev uygulaması Kapsayıcınız için aşağıdaki gelişmiş araçlar (kudu) `scm.` uç noktasına gidin ve `<app_name>` ' i işlev uygulamanızın adıyla değiştirin.
+Tarayıcıda, işlev uygulaması Kapsayıcınız için aşağıdaki gelişmiş araçlar (kudu) `scm.` uç noktasına gidin ve `<app_name>` işlev uygulamanızın adıyla değiştirin.
 
 ```
 https://<app_name>.scm.azurewebsites.net/
@@ -317,7 +317,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ### <a name="add-an-output-binding"></a>Çıktı bağlaması ekleme
 
-Işlevlerde, her bağlama türü, function. json dosyasında tanımlanacak bir `direction`, `type` ve benzersiz bir `name` gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
+Işlevlerde, her bağlama türü, function. json dosyasında tanımlanması için `direction`, `type`ve benzersiz bir `name` gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
 
 # <a name="javascript--pythontabnodejspython"></a>[JavaScript/Python](#tab/nodejs+python)
 
@@ -331,7 +331,7 @@ Işlevlerde, her bağlama türü, function. json dosyasında tanımlanacak bir `
 
 ### <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlaması kullanan kod ekleme
 
-Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişmek için bağlamanın `name` ' ı kullanabilirsiniz. Bir çıkış bağlaması kullanarak kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
+Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişmek için bağlamanın `name` kullanabilirsiniz. Bir çıkış bağlaması kullanarak kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -349,7 +349,7 @@ Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişme
 
 ### <a name="update-the-hosted-container"></a>Barındırılan kapsayıcıyı güncelleştirme
 
-Kök klasörde [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) komutunu tekrar çalıştırın ve bu kez etiketteki sürümü `v1.0.2` olarak güncelleştirin. Daha önce olduğu gibi, Docker Hub hesabı KIMLIĞINIZLE `<docker-id>` ' ı değiştirin. 
+Kök klasörde [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) komutunu tekrar çalıştırın ve bu kez etiketteki sürümü `v1.0.2`olarak güncelleştirin. Daha önce olduğu gibi `<docker-id>` Docker Hub hesabı KIMLIĞINIZLE değiştirin. 
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
@@ -379,4 +379,4 @@ docker push <docker-id>/mydockerimage:v1.0.0
 + [Ölçek ve barındırma seçenekleri](functions-scale.md)
 + [Kubernetes tabanlı sunucusuz barındırma](functions-kubernetes-keda.md)
 
-[Azure portalda]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

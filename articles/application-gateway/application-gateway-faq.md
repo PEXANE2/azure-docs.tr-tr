@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f2cf69b456aeccd6da5ac393b88171fb3bb03cf2
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470079"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082542"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -91,7 +91,7 @@ Bkz. [Application Gateway alt ağ boyutu konuları](https://docs.microsoft.com/a
 
 Evet. Belirli bir Application Gateway dağıtımının birden çok örneğine ek olarak, farklı bir Application Gateway kaynağı içeren mevcut bir alt ağa başka bir benzersiz Application Gateway kaynağı sağlayabilirsiniz.
 
-Tek bir alt ağ, hem Standard_v2 hem de standart Application Gateway birlikte destekleyemez.
+Tek bir alt ağ hem Standard_v2 hem de standart Application Gateway birlikte destekleyemez.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Üst bilgiler için x-iletilmiş Application Gateway destekler mi?
 
@@ -290,10 +290,6 @@ Hayır,. pfx dosya parolanda yalnızca alfasayısal karakterler kullanın.
 
 Evet. WAF, standart SKU 'daki tüm özellikleri destekler.
 
-### <a name="which-crs-versions-does-application-gateway-support"></a>Hangi yukarı sürüm Application Gateway destekler?
-
-Application Gateway, [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) ve yukarı [3,0](application-gateway-crs-rulegroups-rules.md#owasp30)'ler destekler.
-
 ### <a name="how-do-i-monitor-waf"></a>Nasıl yaparım? İzleyicisi WAF mi?
 
 Tanılama günlük kaydı ile WAF 'yi izleyin. Daha fazla bilgi için bkz. [Application Gateway Için tanılama günlüğü ve ölçümleri](application-gateway-diagnostics.md).
@@ -308,7 +304,7 @@ Evet. Daha fazla bilgi için bkz. [WAF kural gruplarını ve kurallarını özel
 
 ### <a name="what-rules-are-currently-available-for-waf"></a>WAF için şu anda hangi kurallar kullanılabilir?
 
-WAF Şu anda, [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) ve [3,0](application-gateway-crs-rulegroups-rules.md#owasp30)' i desteklemektedir. Bu kurallar, Web uygulaması güvenlik projesini (OWASP) açan en yüksek 10 güvenlik açığına karşı temel güvenlik sağlar: 
+WAF Şu anda sp_configure [2.2.9](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp229), [3,0](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp30)ve [3,1](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp31)' i desteklemektedir. Bu kurallar, Web uygulaması güvenlik projesini (OWASP) açan en yüksek 10 güvenlik açığına karşı temel güvenlik sağlar: 
 
 * SQL ekleme koruması
 * Siteler arası betik koruması

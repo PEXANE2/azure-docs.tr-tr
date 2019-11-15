@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery işlem sunucusunu izleme
-description: Bu makalede Azure Site Recovery işlem sunucusunun nasıl izleneceği açıklanır.
+description: Bu makalede, VMware VM/fiziksel sunucu olağanüstü durum kurtarma için kullanılan Azure Site Recovery işlem sunucusunun nasıl izleneceği açıklanır
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383200"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082238"
 ---
 # <a name="monitor-the-process-server"></a>İşlem sunucusunu izleme
 
@@ -24,7 +24,7 @@ Bu makalede [Site Recovery](site-recovery-overview.md) işlem sunucusunun nasıl
 
 İşlem sunucularının rolü ve dağıtımı hakkında [daha fazla bilgi edinin](vmware-physical-azure-config-process-server-overview.md) .
 
-## <a name="monitoring-overview"></a>İzleme görünümü
+## <a name="monitoring-overview"></a>İzlemeye genel bakış
 
 İşlem sunucusu bu kadar çok rol içerdiğinden, özellikle çoğaltılan verileri önbelleğe alma, sıkıştırma ve Azure 'a aktarma işlemlerinin devam ettiğinden, işlem sunucusu durumunun sürekli olarak izlenmesi önemlidir.
 
@@ -54,14 +54,14 @@ Bu sorunların tümü, VM 'lerin kurtarma noktası hedefini (RPO) etkileyebilir.
 **Uyarı türü** | **Ayrıntılar**
 --- | ---
 ![Sorunsuz][green] | İşlem sunucusu bağlandı ve sağlıklı.
-![Uyarı][yellow] | Son 15 dakika boyunca% 80 > CPU kullanımı
-![Uyarı][yellow] | Son 15 dakika boyunca bellek kullanımı >% 80
-![Uyarı][yellow] | Son 15 dakika boyunca% 30 < önbellek klasörü boş alanı
+![Uyarı][yellow] | Son 15 dakika boyunca %80 > CPU kullanımı
+![Uyarı][yellow] | Son 15 dakika boyunca bellek kullanımı > %80
+![Uyarı][yellow] | Son 15 dakika boyunca %30 < önbellek klasörü boş alanı
 ![Uyarı][yellow] | Her beş dakikada bir bekleyen/giden verileri izler Site Recovery ve işlem sunucusu önbelleğindeki verilerin 30 dakika içinde Azure 'a yüklenemediğini tahmin eder.
 ![Uyarı][yellow] | İşlem sunucusu Hizmetleri son 15 dakika boyunca çalışmıyor
-![Kritik][red] | Son 15 dakika boyunca% 95 > CPU kullanımı
-![Kritik][red] | Son 15 dakika boyunca bellek kullanımı >% 95
-![Kritik][red] | Son 15 dakika boyunca% 25 < önbellek klasörü boş alanı
+![Kritik][red] | Son 15 dakika boyunca %95 > CPU kullanımı
+![Kritik][red] | Son 15 dakika boyunca bellek kullanımı > %95
+![Kritik][red] | Son 15 dakika boyunca %25 < önbellek klasörü boş alanı
 ![Kritik][red] | Her beş dakikada bir bekleyen/giden verileri izler Site Recovery ve işlem sunucusu önbelleğindeki verilerin 45 dakika içinde Azure 'a yüklenemediğini tahmin eder.
 ![Kritik][red] | 15 dakika boyunca işlem sunucusundan sinyal alınmadı.
 

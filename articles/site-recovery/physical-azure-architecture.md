@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery kullanarak Azure 'da fiziksel sunucu olağanüstü durum kurtarma mimarisi | Microsoft Docs
+title: Azure Site Recovery 'de fiziksel sunucu olağanüstü durum kurtarma mimarisi
 description: Bu makalede, şirket içi fiziksel sunucuların olağanüstü durum kurtarması sırasında Azure Site Recovery hizmetiyle Azure 'da kullanılan bileşenlere ve mimariye ilişkin bir genel bakış sunulmaktadır.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: a5d3dfe6457c4b70f0b23c2d8aa7ac5e58e68dc7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 23e8e4f9a092e871e62da27c8bf0c58a3bb8eb5b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814475"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084681"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fiziksel sunucudan Azure olağanüstü durum kurtarma mimarisi
 
@@ -54,7 +54,7 @@ Aşağıdaki tablo ve grafik, Azure 'a fiziksel sunucu çoğaltması için kulla
 
 ## <a name="failover-and-failback-process"></a>Yük devretme ve yeniden çalışma işlemi
 
-Çoğaltma kurulduktan sonra ve her şeyin beklendiği gibi çalıştığından emin olmak için bir olağanüstü durum kurtarma detayına (yük devretme testi) çalıştırmanızın ardından, gerektiğinde yük devretme ve yeniden çalışma işlemi gerçekleştirebilirsiniz. Aşağıdakilere dikkat edin:
+Çoğaltma kurulduktan sonra ve her şeyin beklendiği gibi çalıştığından emin olmak için bir olağanüstü durum kurtarma detayına (yük devretme testi) çalıştırmanızın ardından, gerektiğinde yük devretme ve yeniden çalışma işlemi gerçekleştirebilirsiniz. Şunlara dikkat edin:
 
 - Planlanan yük devretme desteklenmez.
 - Şirket içi bir VMware VM 'sine yeniden yük devredebilmeniz gerekir. Bu, şirket içi fiziksel sunucuları Azure 'a çoğalttığınızda bile, şirket içi bir VMware altyapısına ihtiyacınız olduğu anlamına gelir.
@@ -63,15 +63,15 @@ Aşağıdaki tablo ve grafik, Azure 'a fiziksel sunucu çoğaltması için kulla
 - İlk yük devretmeyi tetikledikten sonra, Azure VM 'den iş yüküne erişmeye başlamak için bunu işleyin.
 - Birincil şirket içi siteniz yeniden kullanılabilir olduğunda siteyi yeniden çalıştırabilirsiniz.
 - Aşağıdakiler dahil olmak üzere bir yeniden çalışma altyapısı ayarlamanız gerekir:
-    - **Azure 'Da geçici işlem sunucusu**: Azure 'dan yeniden yük devretmek için bir Azure VM 'yi, Azure 'dan çoğaltmayı işleyecek bir işlem sunucusu görevi görecek şekilde ayarlarsınız. Yeniden çalışma sona erdikten sonra bu VM'yi silebilirsiniz.
-    - **VPN bağlantısı**: Yeniden yük devretmek için, Azure ağından şirket içi siteye bir VPN bağlantısına (veya Azure ExpressRoute) sahip olmanız gerekir.
-    - **Ayrı ana hedef sunucusu**: Varsayılan olarak, şirket içi VMware VM 'de yapılandırma sunucusu ile yüklenen ana hedef sunucu yeniden çalışmayı işler. Ancak, büyük hacimli trafiği yeniden açmanız gerekiyorsa, bu amaçla ayrı bir şirket içi ana hedef sunucusu ayarlamanız gerekir.
-    - Yeniden **çalışma ilkesi**: Şirket içi sitenize geri yinelemek için bir yeniden çalışma ilkesi gerekir. Bu, Şirket içinden Azure 'a çoğaltma ilkenizi oluşturduğunuzda otomatik olarak oluşturulmuştur.
-    - **VMware altyapısı**: Yeniden çalışma için bir VMware altyapısına ihtiyacınız vardır. Bir fiziksel sunucuda yeniden çalışamazsınız.
+    - **Azure 'Da geçici işlem sunucusu**: Azure 'dan yeniden yük devretmek Için BIR Azure VM 'yi işlem sunucusu olarak davranacak şekilde ayarlayarak Azure 'dan çoğaltmayı işleyebilirsiniz. Yeniden çalışma sona erdikten sonra bu VM'yi silebilirsiniz.
+    - **VPN bağlantısı**: geri dönmek Için, Azure ağından şirket içi sıteye bir VPN bağlantısına (veya Azure ExpressRoute) sahip olmanız gerekir.
+    - **Ayrı ana hedef sunucusu**: varsayılan olarak, şirket ıçı VMware VM 'de yapılandırma sunucusu ile yüklenen ana hedef sunucu, yeniden çalışmayı işler. Ancak, büyük hacimli trafiği yeniden açmanız gerekiyorsa, bu amaçla ayrı bir şirket içi ana hedef sunucusu ayarlamanız gerekir.
+    - **Yeniden çalışma ilkesi**: Şirket içi sitenize geri çoğaltmak için bir yeniden çalışma ilkeniz olmalıdır. Bu, Şirket içinden Azure 'a çoğaltma ilkenizi oluşturduğunuzda otomatik olarak oluşturulmuştur.
+    - **VMware altyapısı**: yeniden çalışma Için bir VMware altyapısına ihtiyacınız vardır. Bir fiziksel sunucuda yeniden çalışamazsınız.
 - Bileşenler oluşturulduktan sonra, yeniden çalışma üç aşamada gerçekleşir:
     - 1\. Aşama: Azure 'dan şirket içi VMware VM 'lerine geri çoğaltılbilmeleri için Azure VM 'lerini yeniden koruyun.
-    - 2\. Aşama: Şirket içi sitede bir yük devretme çalıştırın.
-    - 3\. Aşama: İş yükleri yeniden başarısız olduktan sonra çoğaltmayı yeniden etkinleştirin.
+    - 2\. Aşama: şirket içi sitede yük devretme çalıştırın.
+    - 3\. Aşama: iş yükleri yeniden başlatıldıktan sonra çoğaltmayı yeniden etkinleştirin.
 
 **Azure 'dan VMware yeniden çalışma**
 

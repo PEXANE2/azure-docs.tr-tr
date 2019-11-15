@@ -1,5 +1,5 @@
 ---
-title: Şirket içinden Azure 'a yük devretmeden sonra Azure Site Recovery Azure VM 'lerine bağlanma
+title: Azure Site Recovery ile Azure VM 'lerini şirket içi yük devretmeye bağlama
 description: Şirket içinden Azure 'a yük devretmeden sonra Azure Site Recovery kullanarak Azure VM 'lerine nasıl bağlanabileceğinizi açıklar
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f535a681ac3508aafc2823bcc9b9ae7f22cc2d8e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333042"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084258"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Şirket içinden yük devretmeden sonra Azure VM 'lerine bağlanma 
 
@@ -96,7 +96,7 @@ IP adreslerini koruma aşağıdaki adımları gerektirir:
 
 ### <a name="failover-example"></a>Yük devretme örneği
 
-Bir örneğe bakalım.
+Bir örneğe göz atalım.
 
 - Kurgusal şirket Woodgrove Bank, mobil uygulamalarını Azure 'da barındırdıkları kurumsal uygulamaları barındırır.
 - Şirket içinden siteden siteye VPN üzerinden Azure 'a bağlanır. 

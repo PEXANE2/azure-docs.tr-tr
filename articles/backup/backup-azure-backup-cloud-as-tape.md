@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/30/2017
 ms.author: dacurwin
-ms.openlocfilehash: 82d646cd40312765b11c711f4c63c0943c9e8555
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2850fab3a5639673008a7433db48911ced832401
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074335"
+ms.locfileid: "74091112"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Uzun vadeli depolama alanınızı teypten Azure bulutuna taşıma
 
@@ -38,7 +38,7 @@ Müşteriler ayrıca haftalık bir yedekleme zamanlayabilir. Örneğin, aşağı
 
 Bekletme ilkesi, yedeklemenin depolanması gereken süreyi belirtir. Tüm yedekleme noktaları için yalnızca bir "düz ilke" belirtmek yerine, müşteriler yedeklemenin ne zaman yapılacağını temel alan farklı bekletme ilkeleri belirtebilir. Örneğin, her gün gerçekleştirilen yedekleme noktası, işlemsel kurtarma noktası olarak işlev gören 90 gün boyunca korunur. Denetim amaçları için her bir çeyreğin sonunda gerçekleştirilen yedekleme noktası, daha uzun bir süre boyunca korunur.
 
-![Saklama İlkesi](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
+![Bekletme İlkesi](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
 
 Bu ilkede belirtilen toplam "bekletme noktası" sayısı 90 (günlük puntolar) + 40 (10 yıl boyunca her üç ayda bir) = 130.
 
@@ -70,7 +70,7 @@ Toplam kurtarma noktası sayısı 56 ' dir.
 
 ![Değiştir](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Backup hakkında daha fazla bilgi için bkz.:
 

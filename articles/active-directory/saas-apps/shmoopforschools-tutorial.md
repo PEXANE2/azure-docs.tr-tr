@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Okullar Için Shmoop ile tümleştirme Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: okullar Için Shmoop ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Okulların Azure Active Directory ve Shmoop arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c88457653d73931600c37f5e332cc4327dc7957a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 06ce2e51f72b9b4f709bf26ce6d92ad3861d36db
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102894"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081638"
 ---
-# <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile okulların Shmoop 'ı tümleştirin
+# <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile okullara Shmoop tümleştirme
 
 Bu öğreticide, Azure Active Directory (Azure AD) ile okulların Shmoop 'ı nasıl tümleştirileceğini öğreneceksiniz. Azure AD ile okullar Için Shmoop 'ı tümleştirdiğinizde şunları yapabilirsiniz:
 
@@ -58,7 +58,6 @@ Okulların Shmoop 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, g
 1. **Galeriden Ekle** bölümünde, arama kutusuna **okullar Için shmoop** yazın.
 1. Sonuçlar panelinden **okullar Için Shmoop** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-shmoop-for-schools"></a>Okullar Için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak okulların Shmoop Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve okullar Için Shmoop içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
@@ -66,10 +65,10 @@ Okulların Shmoop 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, g
 Azure AD SSO 'yu okullar Için Shmoop ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[okullar SSO 'Su Için Shmoop 'ı yapılandırın](#configure-shmoop-for-schools-sso)** .
-    1. Kullanıcının Azure AD gösterimine bağlı olan okullar Için Shmoop 'da B. Simon 'a sahip olmak için **[Shmoop 'ı oluşturun](#create-shmoop-for-schools-test-user)** .
+    * Kullanıcının Azure AD gösterimine bağlı olan okullar Için Shmoop 'da B. Simon 'a sahip olmak için **[Shmoop 'ı oluşturun](#create-shmoop-for-schools-test-user)** .
 3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
@@ -84,45 +83,27 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://schools.shmoop.com/<uniqueid>`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://schools.shmoop.com/<uniqueid>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [okullar Için Shmoop istemci destek ekibine](mailto:support@shmoop.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. Okullar Için shmoop uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. **Kullanıcı öznitelikleri** iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+1. Okullar Için shmoop uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
     > [!NOTE]
-    > Okul için shmoop, kullanıcılar için iki rolü destekler: **Öğretmen** ve **öğrenci**. Kullanıcılara uygun roller atanabilmeleri için Azure AD 'de bu rolleri ayarlayın. Azure AD 'de rolleri nasıl yapılandıracağınızı anlamak için [buraya](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)bakın.
+    > Okul için shmoop, kullanıcılar için iki rolü destekler: **öğretmen** ve **öğrenci**. Kullanıcılara uygun roller atanabilmeleri için Azure AD 'de bu rolleri ayarlayın. Azure AD 'de rolleri nasıl yapılandıracağınızı anlamak için [buraya](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)bakın.
 
-6. Yukarıdakilerin yanı sıra, okullar Için Shmoop, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin: 
+1. Yukarıdakine ek olarak, okullar Için Shmoop, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Name |  Kaynak özniteliği|
+    | Ad |  Kaynak özniteliği|
     | --------- | --------------- |
     | role      | Kullanıcı. atandroles |
 
-    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
-
-    c. **Ad alanını** boş bırakın.
-
-    d. **Öznitelik**olarak kaynak seçin.
-
-    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
-
-    f. Tıklayın **Tamam**
-
-    g. **Kaydet**’e tıklayın.
-
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
@@ -134,9 +115,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
     1. **Ad** alanına `B.Simon` girin.  
-    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
     1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-    1. **Oluştur**'a tıklayın.
+    1. **Oluştur**’ tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -167,7 +148,7 @@ Bu bölümde, okullar Için Shmoop 'da B. Simon adlı bir Kullanıcı oluşturul
 > [!NOTE]
 > El ile bir kullanıcı oluşturmanız gerekiyorsa, [okullar Için Shmoop destek ekibine](mailto:support@shmoop.com)başvurun.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
@@ -181,3 +162,4 @@ Erişim panelinde okullar Için Shmoop kutucuğuna tıkladığınızda, SSO 'yu 
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Azure AD ile okullar Için Shmoop 'ı deneyin](https://aad.portal.azure.com/)

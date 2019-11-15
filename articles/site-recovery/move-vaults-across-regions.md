@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery yapılandırmasını başka bir Azure bölgesine taşıma | Microsoft Docs
-description: Site Recovery yapılandırmasını başka bir Azure bölgesine taşımaya yönelik kılavuz
+title: Azure Site Recovery kasasını başka bir bölgeye taşıma
+description: Kurtarma Hizmetleri kasasının (Azure Site Recovery) başka bir Azure bölgesine nasıl taşınacağını açıklar
 services: site-recovery
 author: rajani-janaki-ram
 ms.service: site-recovery
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 2cf06a0c4e35d22cbad260201183516db2f07436
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 32dff9a165125ab1949560ce36438ae266cd3036
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013456"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090307"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Kurtarma Hizmetleri kasasını ve Azure Site Recovery yapılandırmasını başka bir Azure bölgesine taşıma
 
@@ -45,7 +45,7 @@ Bu belgede şunları yapmanız gerekir:
 ## <a name="identify-the-resources-that-were-used-by-azure-site-recovery"></a>Azure Site Recovery tarafından kullanılan kaynakları belirler
 Bir sonraki adıma geçmeden önce bu adımı yapmanızı öneririz. VM 'Ler çoğaltılırken ilgili kaynakları belirlemek daha kolay.
 
-Çoğaltılan her bir Azure VM için, **korumalı öğeler** > **çoğaltılan öğeler** > **özelliklerine** gidin ve aşağıdaki kaynakları tanımla:
+Çoğaltılan her bir Azure sanal makinesi için, **korunan** öğeler > **çoğaltılan öğeler** > **Özellikler** ' e gidin ve aşağıdaki kaynakları tanımla:
 
 - Hedef kaynak grubu
 - Önbellek depolama hesabı
@@ -56,7 +56,7 @@ Bir sonraki adıma geçmeden önce bu adımı yapmanızı öneririz. VM 'Ler ço
 ## <a name="disable-the-existing-disaster-recovery-configuration"></a>Mevcut olağanüstü durum kurtarma yapılandırmasını devre dışı bırak
 
 1. Kurtarma Hizmetleri kasasına gidin.
-2. **Korunan öğeler** > **çoğaltılan öğeler**bölümünde makineye sağ tıklayın ve **çoğaltmayı devre dışı bırak**' ı seçin.
+2. **Yinelenen öğeler** > **korunan öğeler** ' de makineye sağ tıklayın ve **çoğaltmayı devre dışı bırak**' ı seçin.
 3. Taşımak istediğiniz tüm VM 'Ler için bu adımı tekrarlayın.
 
 > [!NOTE]

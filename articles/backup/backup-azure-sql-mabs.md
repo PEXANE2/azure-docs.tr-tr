@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: e1e1c7f30066197c6420956368a09de69e87e466
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: bd16cefff66c727ad9de6331a311796cf9521192
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747340"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091057"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Azure Backup Sunucusu Ile Azure 'a yedekleme SQL Server
 
@@ -95,7 +95,7 @@ Başlamadan önce [Azure Backup sunucusu yüklediğinizden ve hazırlandığın�
 
 13. Bekletme ilkesi zamanlaması ' nı seçin. Bekletme ilkesinin nasıl çalıştığı hakkındaki ayrıntılar, [bant altyapısı makalenizi değiştirmek için Azure Backup kullanılıyor](backup-azure-backup-cloud-as-tape.md)olarak sunulmaktadır.
 
-    ![Saklama İlkesi](./media/backup-azure-backup-sql/pg-retentionschedule.png)
+    ![Bekletme İlkesi](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
     Bu örnekte:
 
@@ -154,6 +154,6 @@ Korunan bir varlığı (SQL Server veritabanı) Azure 'dan kurtarmak için aşa�
 
     Kurtarma işlemi tamamlandıktan sonra, geri yüklenen veritabanı uygulamayla tutarlı olur.
 
-### <a name="next-steps"></a>Sonraki Adımlar
+### <a name="next-steps"></a>Sonraki adımlar
 
-• [Azure Backup SSS](backup-azure-backup-faq.md)
+* [Azure Backup SSS](backup-azure-backup-faq.md)

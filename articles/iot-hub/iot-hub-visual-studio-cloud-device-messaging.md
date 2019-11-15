@@ -1,5 +1,5 @@
 ---
-title: Visual Studio için Cloud Explorer ile Azure IoT Hub bulut cihaz iletilerini yönetme | Microsoft Docs
+title: Azure IoT Hub cihaz iletilerini yönetmek için VS Cloud Explorer 'ı kullanma
 description: Visual Studio için Cloud Explorer 'ı kullanarak cihazı bulut iletilerine izleme ve Azure IoT Hub cihaz iletilerine bulut gönderme hakkında bilgi edinin.
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: b8ea705b55c1485cab2e1478d2d455f1d4a427d3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050198"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74079487"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Cihazınız ve IoT Hub arasında ileti göndermek ve almak için Visual Studio için Cloud Explorer 'ı kullanın
 
@@ -54,7 +54,7 @@ Visual Studio 2017 için Visual Studio Yükleyicisi bulut Gezgini bileşeni yaln
 
 Hub 'ınıza erişmek için şu adımları izleyin:
 
-1. Visual Studio 'da bulut Gezgini 'ni açmak için**bulut Gezginini** **görüntüle** > ' yi seçin.
+1. Visual Studio 'da bulut Gezgini 'ni açmak **için > ** **bulut Gezgini** ' ni seçin.
 
 1. Aboneliklerinizi göstermek için hesap yönetimi simgesini seçin.
 
@@ -66,7 +66,7 @@ Hub 'ınıza erişmek için şu adımları izleyin:
 
 1. Aboneliğinizi genişlettikten sonra **IoT Hub 'ları**' nı genişletin.  Her hub 'ın altında bu hub için cihazlarınızı görebilirsiniz.
 
-    ![Cihaz Listesi](media/iot-hub-visual-studio-cloud-device-messaging/hub-device-list.png)
+    ![Cihaz listesi](media/iot-hub-visual-studio-cloud-device-messaging/hub-device-list.png)
 
 ## <a name="monitor-device-to-cloud-messages"></a>Cihazdan buluta iletileri izleme
 

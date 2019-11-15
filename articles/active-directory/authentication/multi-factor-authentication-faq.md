@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea174de04d0e75bc996c6f692edd474a9396346a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9ae7390afead843fa0784454f7e0374bedf735ad
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474273"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081542"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication hakkında sık sorulan sorular
 
@@ -61,7 +61,7 @@ Kanada 'daki Microsoft, aşağıdaki SMS kısa kodlarını kullanır:
 
 Microsoft, tutarlı SMS veya sesli tabanlı Multi-Factor Authentication istemi teslimini aynı numarayla garanti etmez. Kullanıcılarımız konusunda, Microsoft, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için, her zaman kısa kodlar ekleyebilir veya kaldırabilir. Microsoft, Birleşik Devletler ve Kanada yanı sıra ülkeler/bölgeler için kısa kodları desteklemez.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Çoğu faturalandırma sorusu, [Multi-Factor Authentication fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) veya [Azure Multi-Factor Authentication alma](concept-mfa-licensing.md)hakkında belgelere başvurarak cevaplanır.
 
@@ -219,7 +219,7 @@ Bu hata için geçici bir çözüm, yönetici ile ilgili ve yönetici olmayan i�
 
 Sorunuz burada yanıtlanmazsa, lütfen sayfanın altındaki açıklamalarda bırakın. Veya yardım almak için bazı ek seçenekler aşağıda verilmiştir:
 
-* [Microsoft desteği bilgi bankasında](https://www.microsoft.com/en-us/search?form=mssupport&q=phonefactor&rtc=1) , yaygın teknik sorunların çözümlerini arayın.
+* [Microsoft desteği bilgi bankasında](https://support.microsoft.com) , yaygın teknik sorunların çözümlerini arayın.
 * Topluluk aracılığıyla teknik sorular ve yanıtlar arayın ve bunları inceleyin veya [Azure Active Directory forumlarında](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)kendi sorunuzu sorun.
 * Eski bir PhoneFactor müşterisiyseniz ve sorularınız varsa veya bir parolayı sıfırlamanıza yardımcı olması gerekiyorsa, bir destek talebi açmak için [parola sıfırlama](mailto:phonefactorsupport@microsoft.com) bağlantısını kullanın.
 * [Azure Multi-Factor Authentication sunucusu (PhoneFactor) desteğiyle](https://support.microsoft.com/oas/default.aspx?prid=14947)destek uzmanıyla iletişim kurun. Bizimle iletişim kurarken, sorun hakkında mümkün olduğunca fazla bilgi dahil edebiliyorsanız bu yararlı olur. Sağlayabileceğiniz bilgiler, hatayı gördüğünüz sayfayı, belirli hata kodunu, belirli oturum KIMLIĞINI ve hatayı seçen kullanıcının KIMLIĞINI içerir.

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 8f6fb9737d3d8dad93a95f31d566f7cc4706ded3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e63d8f03b26c9039fe4093cf15b13522dbb49af9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886041"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081481"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için bir Linux Java uygulaması yapılandırma
 
@@ -239,9 +239,9 @@ Var olan bir SSL sertifikasını karşıya yüklemek ve uygulamanızın etki ala
 
 Bu gizli dizileri Spring veya Tomcat yapılandırma dosyasına eklemek için ortam değişkeni ekleme söz dizimini (`${MY_ENV_VAR}`) kullanın. Spring yapılandırma dosyaları için lütfen [externalized yapılandırmalarında](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)bu belgelere bakın.
 
-## <a name="using-the-java-key-store"></a>Java anahtar deposunu kullanma
+### <a name="using-the-java-key-store"></a>Java anahtar deposunu kullanma
 
-Varsayılan olarak, [App Service Linux 'a yüklenen](../configure-ssl-certificate.md) tüm ortak veya özel sertifikalar, kapsayıcı başladığında Java anahtar deposuna yüklenir. Bu, giden TLS bağlantıları yaparken karşıya yüklenen sertifikaların bağlantı bağlamında kullanılabileceği anlamına gelir.
+Varsayılan olarak, [App Service Linux 'a yüklenen](../configure-ssl-certificate.md) tüm ortak veya özel sertifikalar, kapsayıcı başladığında Java anahtar deposuna yüklenir. Bu, giden TLS bağlantıları yaparken karşıya yüklenen sertifikaların bağlantı bağlamında kullanılabileceği anlamına gelir. Sertifikanızı karşıya yükledikten sonra, Java anahtar deposuna yüklenmek üzere App Service yeniden başlatmanız gerekir.
 
 App Service [BIR SSH bağlantısı açıp](app-service-linux-ssh-support.md) komut `keytool`çalıştırarak Java anahtar aracında etkileşim kurabilir veya hata ayıklayabilirsiniz. Komutların listesi için bkz. [anahtar araç belgeleri](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) . Sertifikalar, Java 'nın varsayılan anahtar deposu dosya konumunda depolanır `$JAVA_HOME/jre/lib/security/cacerts`.
 
@@ -251,7 +251,7 @@ JDBC bağlantınızı şifrelemek için ek yapılandırma gerekebilir. Lütfen s
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 
-### <a name="manually-initialize-and-load-the-key-store"></a>Anahtar deposunu el ile başlatma ve yükleme
+#### <a name="manually-initialize-and-load-the-key-store"></a>Anahtar deposunu el ile başlatma ve yükleme
 
 Anahtar deposunu başlatabilir ve sertifikaları el ile ekleyebilirsiniz. App Service sertifikaları anahtar deposuna otomatik olarak yüklemesini devre dışı bırakmak için `1` değeri ile `SKIP_JAVA_KEYSTORE_LOAD`bir uygulama ayarı oluşturun. Azure Portal üzerinden App Service yüklenen tüm genel sertifikalar `/var/ssl/certs/`altında depolanır. Özel sertifikalar `/var/ssl/private/`altında depolanır.
 

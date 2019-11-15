@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 15bf955d6055ed91b486d34cf9d805de34e9f8f5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 92717e704fb3f9e79b364fcf47bbcc096c5dd1d0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074821"
+ms.locfileid: "74090751"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Sunucusu’na depolama alanı ekleme
 
@@ -22,6 +22,8 @@ Azure Backup Sunucusu v2 ve üzeri, %50 depolama tasarrufu sağlayan Modern Yede
 > [!NOTE]
 > Modern Yedekleme Alanı kullanmak için Windows Server 2019 üzerinde Windows Server 2016 veya v3 üzerinde Backup Server v2 veya v3 ' i çalıştırmanız gerekir.
 > Yedekleme sunucusu v2 'yi Windows Server 'ın önceki bir sürümünde çalıştırırsanız, Azure Backup Sunucusu Modern Yedekleme Alanı avantajlarından yararlanabilir. Bunun yerine, yedekleme sunucusu v1 ile çalıştığı için iş yüklerini korur. Daha fazla bilgi için yedekleme sunucusu sürüm [koruması matrisine](backup-mabs-protection-matrix.md)bakın.
+>
+> Gelişmiş yedekleme performanslarını elde etmek için Windows Server 2019 ' de katmanlı depolama ile MABS v3 'i dağıtmanız önerilir. Katmanlı depolamayı yapılandırma adımları için lütfen "[katmanlı depolama Ile MB ayarlama" ADLı](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)DPM makalesine başvurun.
 
 ## <a name="volumes-in-backup-server"></a>Yedekleme sunucusundaki birimler
 
@@ -64,6 +66,11 @@ Disk depolaması, yedekleme sunucusu v2 veya sonraki sürümleri birimler ile ku
     ![Sunucu ve diski seçin](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 
 ## <a name="add-volumes-to-backup-server-disk-storage"></a>Yedekleme sunucusuna birim ekleme disk depolama
+
+> [!NOTE]
+>
+> - Sütun sayısını 1 olarak tutmak için havuza yalnızca bir disk ekleyin. Daha sonra gerektikçe daha sonra disk ekleyebilirsiniz.
+> - Bir go 'da depolama havuzuna birden çok disk eklerseniz, disk sayısı sütun sayısı olarak depolanır. Daha fazla disk eklendiğinde, bu sütunlar yalnızca sütun sayısının birden fazla olması olabilir.
 
 Yedekleme sunucusuna bir birim eklemek için, **Yönetim** bölmesinde, depolamayı yeniden tarayın ve **Ekle**' yi seçin. Yedekleme sunucusu depolaması için eklenebilecek tüm birimlerin listesi görüntülenir. Kullanılabilir birimler seçili birimler listesine eklendikten sonra, bunları yönetmenize yardımcı olacak kolay bir ad verebilirsiniz. Yedekleme sunucusunun Modern Yedekleme Alanı avantajlarını kullanabilmesi için bu birimleri ReFS 'e biçimlendirmek için **Tamam**' ı seçin.
 

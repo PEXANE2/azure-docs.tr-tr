@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 72874e7b96e2ec8909a325b5ae598b900ebe8079
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.custom: fasttrack-edit
+ms.openlocfilehash: ff2dac5d27cfffb92922038c1d1c67cd5118557a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791891"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082389"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Karma Bağlantılar #
 
@@ -28,7 +28,7 @@ Karma Bağlantılar hem Azure 'daki bir hizmettir hem de Azure App Service bir �
 App Service içinde Karma Bağlantılar, diğer ağlardaki uygulama kaynaklarına erişmek için kullanılabilir. Uygulamadan bir uygulama uç noktasına erişim sağlar. Uygulamanıza erişmek için alternatif bir özellik etkinleştirmez. App Service için kullanıldığında, her karma bağlantı tek bir TCP ana bilgisayarı ve bağlantı noktası bileşimiyle söz konusu. Bu, karma bağlantı uç noktasının bir TCP dinleme bağlantı noktasına eriştiğiniz herhangi bir işletim sisteminde ve herhangi bir uygulamada olabileceği anlamına gelir. Karma Bağlantılar özelliği, uygulama protokolünün ne olduğunu veya ne erişeceğimizi bilmez veya ilgilenmez. Yalnızca ağ erişimi sağlar.  
 
 
-## <a name="how-it-works"></a>Nasıl çalışır ##
+## <a name="how-it-works"></a>Nasıl çalışır? ##
 Karma Bağlantılar özelliği Azure Service Bus geçişine yönelik iki giden çağrının oluşur. Uygulamanızın App Service çalıştığı konaktaki bir kitaplıktan bağlantı vardır. Ayrıca, Karma Bağlantı Yöneticisi (HCM) ile Service Bus geçişine bir bağlantı vardır. HCM, erişmeye çalıştığınız kaynağı barındıran ağ içinde dağıttığınız bir geçiş hizmetidir. 
 
 İki Birleşik bağlantıyla, uygulamanızın bir sabit ana bilgisayara TCP tüneli vardır: HCM 'nin diğer tarafındaki bağlantı noktası birleşimi. Bağlantı, kimlik doğrulama ve yetkilendirme için güvenlik ve paylaşılan erişim imzası (SAS) anahtarları için TLS 1,2 kullanır.    
@@ -162,7 +162,7 @@ Artık eklediğiniz Karma Bağlantılar görebilirsiniz. Ayrıca, ayrıntıları
 > Azure Relay bağlantı için Web soketlerine bağımlıdır. Bu özellik yalnızca Windows Server 2012 veya üzeri sürümlerde kullanılabilir. Bu nedenle, HCM Windows Server 2012 ' den önceki bir şeye göre desteklenmez.
 >
 
-### <a name="redundancy"></a>Yedekleme ###
+### <a name="redundancy"></a>Yedeklilik ###
 
 Her HCM birden çok Karma Bağlantılar destekleyebilir. Ayrıca, belirli karma bağlantılar birden çok HCMs tarafından desteklenebilir. Varsayılan davranış, trafiği, belirli bir uç nokta için yapılandırılmış HCMs genelinde yönlendirmenize yöneliktir. Karma Bağlantılar ağınızdan yüksek kullanılabilirlik istiyorsanız, ayrı makinelerde birden çok HCMs çalıştırın. Trafiği HCMs 'ye dağıtmak için geçiş hizmeti tarafından kullanılan yük dağıtım algoritması rastgele atamadır. 
 
@@ -172,7 +172,7 @@ Aboneliğiniz dışındaki birinin belirli bir karma bağlantı için bir HCM ö
 
 ![Karma bağlantı el ile ekleme][11]
 
-### <a name="upgrade"></a>Yükseltin ###
+### <a name="upgrade"></a>Yükseltme ###
 
 Sorunları gidermek veya iyileştirmeler sağlamak için Karma Bağlantı Yöneticisi düzenli güncelleştirmeler vardır. Yükseltmeler yayınlandığında, HCM Kullanıcı arabiriminde bir açılan pencere görünür. Yükseltmenin uygulanması değişiklikleri uygular ve HCM 'yi yeniden başlatır. 
 
@@ -220,6 +220,12 @@ Bu API 'yi kullanmak için anahtar gönder ve geçiş kaynak KIMLIĞI gereklidir
 
     armclient login
     armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
+
+## <a name="secure-your-hybrid-connections"></a>Karma Bağlantılar güvenli hale getirin ##
+
+Mevcut bir karma bağlantı, temel Azure Service Bus geçişi üzerinde yeterli izinlere sahip herhangi bir kullanıcı tarafından diğer App Service Web Apps eklenebilir. Bu, başkalarının aynı karma bağlantıyı yeniden kullanmasını engellemeniz gerekiyorsa (örneğin, hedef kaynak yetkisiz erişimi engellemek için ek güvenlik önlemleri olmayan bir hizmettir), Azure 'a erişimi kilitlemeniz gerekir Service Bus geçişi.
+
+Geçişe `Reader` erişimi olan herkes, Azure portalında Web uygulamasına eklemeye çalışırken karma bağlantıyı _görebilir_ , ancak geçiş bağlantısını kurmak için kullanılan bağlantı dizesini alma izinlerine sahip olmadıkları sürece bu bağlantı noktası _ekleyemeyecektir_ . Karma bağlantıyı başarıyla eklemek için, `listKeys` iznine sahip olmaları gerekir (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`). `Contributor` rolü veya geçiş üzerinde bu izni içeren başka herhangi bir rol, kullanıcıların karma bağlantıyı kullanmasına ve kendi Web Apps eklemesine izin verir.
 
 ## <a name="troubleshooting"></a>Sorun giderme ##
 

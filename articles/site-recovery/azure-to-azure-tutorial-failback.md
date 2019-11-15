@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery hizmeti ile olağanüstü durum kurtarma için ikincil bir Azure bölgesine çoğaltılan Azure VM 'Leri geri devretmek.
-description: Azure Site Recovery hizmeti ile Azure VM 'lerini nasıl geri yükleyeceğinizi öğrenin.
+title: Azure VM 'lerini Azure Site Recovery hizmeti ile bir birincil bölgeye geri devretmek.
+description: Azure VM 'lerinin Azure Site Recovery hizmeti ile birincil bölgeye nasıl geri yükleneceğini açıklar.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 57f37808f3f90863079ba73f7899f142d32951d3
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242958"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091356"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure bölgeleri arasında Azure VM geri dönme
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 4635fe92f4ffa72d7a759b852f4d54264aa66279
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5742aaebe0a1314b229a2a0d33b1de51d5b6d4f4
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012202"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091151"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Sunucusu’ndan veri kurtarma
 
@@ -81,7 +81,7 @@ Azure Backup Sunucusu verileri kurtarmak için:
 
     ![Dış DPM 'yi Temizleme](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 
-## <a name="troubleshooting-error-messages"></a>Hata Iletilerinde sorun giderme
+## <a name="troubleshooting-error-messages"></a>Hata iletilerinde sorun giderme
 
 | Hayır. | Hata İletisi | Sorun giderme adımları |
 |:---:|:--- |:--- |

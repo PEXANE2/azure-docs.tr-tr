@@ -15,19 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 6fa2495ee580bb8e74a0d026533fa90f20743510
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: b6cbca454d1463ffe6e73d7021ea563e7121b7be
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881759"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084633"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics ile yüz ve duygu algılama
 
-> [!IMPORTANT]
-> Bazı medya işlemcilerinin [kullanımdan kaldırma planlarını](media-services-analytics-overview.md#retirement-plans) gözden geçirin.
-
 ## <a name="overview"></a>Genel Bakış
+
 **Azure Media Face Detector** medya IŞLEMCISI (MP), yüz ifadeleriyle hareket etmenizi, hareketleri izlemenizi ve hatta ölçek katılımı ve yeniden eylemini izlemenize olanak sağlar. Bu hizmet iki özellik içerir: 
 
 * **Yüz algılama**
@@ -166,8 +164,8 @@ Toplam pencere ve Aralık ayarları için önerilen değerler aşağıda verilmi
 
 || Varsayılanlar | En fazla (s) | En az (s) |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0,5 |2 |0,25|
-| Aggregateemotionınterlationms |0,5 |1 |0,25|
+| AggregateEmotionWindowMs |0,5 |2 |0.25|
+| Aggregateemotionınterlationms |0,5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON çıkışı
 Toplam duygu tanıma için JSON çıktısı (kesilmiş):
@@ -518,10 +516,10 @@ namespace FaceDetection
 }
 ```
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

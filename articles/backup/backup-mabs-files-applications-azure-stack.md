@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: dc498e08509280b0dcd19cb1556a3c5a152f6d97
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 70da426f1dff843f1e2515052431f54f8ea83780
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074102"
+ms.locfileid: "74091575"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Azure Stack üzerinde dosya ve uygulama yedekleme
 
@@ -134,7 +134,7 @@ Azure portal Azure Backup Sunucusu varlıkları görüntülemek için aşağıda
 2. Yedekleme Altyapısı ' na tıklayın.
 3. Yedekleme yönetim sunucularını görüntüleyin.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 Diğer iş yüklerini korumak için Azure Backup Sunucusu kullanma hakkında daha fazla bilgi için aşağıdaki makalelerden birine bakın:
 

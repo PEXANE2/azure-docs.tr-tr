@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 18c85995c545e1b603333fd6788b70cd863865ce
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4d64d556c96d29556ee36179623ff8cc24532b48
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904998"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74085283"
 ---
 Paylaşılan görüntü Galerisi, yönetilen görüntülerinizin etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
@@ -94,15 +94,15 @@ Kaynak bölgeler aşağıdaki tabloda listelenmiştir. Tüm ortak bölgeler hede
 | Kaynak bölgeler        |                   |                    |                    |
 | --------------------- | ----------------- | ------------------ | ------------------ |
 | Avustralya Orta     | Çin Doğu        | Güney Hindistan        | Batı Avrupa        |
-| Avustralya Orta 2   | Çin Doğu 2      | Güneydoğu Asya     | Birleşik Krallık, Güney           |
-| Doğu Avustralya        | Çin Kuzey       | Japonya Doğu         | Birleşik Krallık Batı            |
+| Avustralya Orta 2   | Çin Doğu 2      | Güneydoğu Asya     | Birleşik Krallık Güney           |
+| Avustralya Doğu        | Çin Kuzey       | Japonya Doğu         | Birleşik Krallık Batı            |
 | Avustralya Güneydoğu   | Çin Kuzey 2     | Japonya Batı         | US DoD Orta     |
 | Güney Brezilya          | Doğu Asya         | Kore Orta      | US DoD Doğu        |
-| Kanada Orta        | Doğu ABD           | Kore Güney        | ABD Devleti Arizona     |
+| Orta Kanada        | Doğu ABD           | Kore Güney        | ABD Devleti Arizona     |
 | Doğu Kanada           | Doğu ABD 2         | Orta Kuzey ABD   | ABD Devleti Texas       |
 | Orta Hindistan         | EUAP Doğu ABD 2    | Kuzey Avrupa       | ABD Devleti Virginia    |
 | Orta ABD            | Fransa Orta    | Orta Güney ABD   | Batı Hindistan         |
-| EUAP Orta ABD       | Fransa Güney      | Orta Batı ABD    | Batı ABD            |
+| EUAP Orta ABD       | Fransa Güney      | Batı Orta ABD    | Batı ABD            |
 |                       |                   |                    | Batı ABD 2          |
 
 
@@ -143,7 +143,7 @@ Paylaşılan görüntü sürümünün çoğaltılacağı bölgeler, oluşturma z
 
 ![Görüntüleri nasıl çoğaltacağınızı gösteren grafik](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Erişim
+## <a name="access"></a>Access
 
 Paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü tüm kaynaklar olduğundan, yerleşik yerel Azure RBAC denetimleri kullanılarak paylaşılabilir. RBAC kullanarak bu kaynakları diğer kullanıcılar, hizmet sorumluları ve gruplar ile paylaşabilirsiniz. Hatta, içinde oluşturuldukları kiracı dışındaki bireylere erişim de paylaşabilirsiniz. Bir kullanıcının paylaşılan görüntü sürümüne erişimi olduktan sonra, bir VM veya bir sanal makine ölçek kümesi dağıtabilirler.  Kullanıcının ne erişimi olduğunu anlamanıza yardımcı olan paylaşım matrisi aşağıda verilmiştir:
 
@@ -186,7 +186,7 @@ Aşağıdaki SDK 'lar paylaşılan görüntü galerileri oluşturmayı destekler
 
 - [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-- [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
+- [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
 - [Go](https://docs.microsoft.com/azure/go/)
 
@@ -221,7 +221,7 @@ Aşağıdaki SDK 'lar paylaşılan görüntü galerileri oluşturmayı destekler
 
 Azure portal erişiminiz olan aboneliklerdeki tüm paylaşılan görüntü Galerisi kaynaklarını listelemek için aşağıdaki adımları izleyin:
 
-1. [Azure portalını](https://portal.azure.com) açın.
+1. [Azure portalı](https://portal.azure.com) açın.
 1. **Tüm kaynaklara**gidin.
 1. Tüm kaynakları listelemek istediğiniz tüm abonelikleri seçin.
 1. **Özel Galeri**türündeki kaynakları arayın.

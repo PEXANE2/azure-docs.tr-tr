@@ -1,5 +1,5 @@
 ---
-title: Hızlandırılmış ağ ile bir Azure sanal makinesi oluşturma | Microsoft Docs
+title: Hızlandırılmış ağ ile Azure VM oluşturma-Azure PowerShell
 description: Hızlandırılmış ağ ile Linux sanal makinesi oluşturmayı öğrenin.
 services: virtual-network
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: f8f4f55f2c2aa4a0f9cce08e10c9f12f81a54dba
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678008"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083697"
 ---
-# <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Hızlandırılmış ağ ile Windows sanal makinesi oluşturma
+# <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell kullanarak hızlandırılmış ağlarla Windows sanal makinesi oluşturma
 
 Bu öğreticide, hızlandırılmış ağ ile bir Windows sanal makinesi (VM) oluşturmayı öğreneceksiniz. Hızlandırılmış ağ ile bir Linux VM oluşturmak için bkz. [hızlandırılmış ağ Ile LINUX VM oluşturma](create-vm-accelerated-networking-cli.md). Hızlandırılmış ağ, bir VM 'ye tek köklü g/ç Sanallaştırması (SR-ıOV) sağlar ve ağ performansını büyük ölçüde geliştirir. Bu yüksek performanslı yol, desteklenen VM türlerinde en zorlu ağ iş yükleri ile kullanım için, gecikme süresi, değişim ve CPU kullanımını azaltan ana bilgisayarı veri yolundan atlar. Aşağıdaki resimde, hızlandırılmış ağ ile ve olmadan iki VM arasındaki iletişim gösterilmektedir:
 
@@ -70,11 +70,11 @@ Bu makalede, Azure PowerShell kullanarak hızlandırılmış ağ içeren bir san
 Sanal makine oluşturulduktan sonra, hızlandırılmış ağ oluşturma özelliğinin etkinleştirildiğini onaylama ' daki yönergeleri izleyerek hızlandırılmış ağın etkinleştirildiğini doğrulayabilirsiniz.
 
 ## <a name="powershell-creation"></a>PowerShell oluşturma
-## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/install-az-ps) sürüm 1.0.0 veya üstünü yükler. Yüklü olan sürümünüzü bulmak için `Get-Module -ListAvailable Az` ' ı çalıştırın. Yüklemeniz veya yükseltmeniz gerekiyorsa, [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az)az modülünün en son sürümünü yüklemeniz gerekir. PowerShell oturumunda [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount)komutunu kullanarak bir Azure hesabında oturum açın.
+[Azure PowerShell](/powershell/azure/install-az-ps) sürüm 1.0.0 veya üstünü yükler. Yüklü olan sürümünüzü bulmak için `Get-Module -ListAvailable Az`çalıştırın. Yüklemeniz veya yükseltmeniz gerekiyorsa, [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az)az modülünün en son sürümünü yüklemeniz gerekir. PowerShell oturumunda [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount)komutunu kullanarak bir Azure hesabında oturum açın.
 
 Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup*, *MYNIC*ve *myvm*dahil olmak üzere örnek parametre adları.
 
@@ -165,7 +165,7 @@ $nic = New-AzNetworkInterface `
 
 ## <a name="create-the-virtual-machine"></a>Sanal makineyi oluşturma
 
-VM kimlik bilgilerinizi [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)kullanarak `$cred` değişkenine ayarlayın:
+VM kimlik bilgilerinizi, [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)kullanarak `$cred` değişkenine ayarlayın:
 
 ```powershell
 $cred = Get-Credential

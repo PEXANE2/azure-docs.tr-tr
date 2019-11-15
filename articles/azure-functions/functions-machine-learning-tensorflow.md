@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: dbf2b4b5113598fee742c3864bede782a624773c
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 491adb2719dc7c05a2943634e83027376c9327c3
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817449"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082739"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Öğretici: Python ve TensorFlow ile Azure Işlevleri 'nde makine öğrenimi modellerini uygulama
 
@@ -100,7 +100,7 @@ Bir işlev uygulaması, bir veya daha fazla Azure Işlevi içerebilir. Bir düze
 
 - [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): yerel geliştirme için kullanılan uygulama ayarlarını içerir
 - [*Host. JSON*](functions-host-json.md): Azure işlevleri Konağı ve uzantıları için ayarları içerir
-- [*requirements. txt*](functions-reference-python.md#python-version-and-package-management): Bu uygulama Için gereken Python paketlerini içerir
+- [*requirements. txt*](functions-reference-python.md#package-management): Bu uygulama Için gereken Python paketlerini içerir
 
 ## <a name="create-an-http-function"></a>HTTP işlevi oluşturma
 
@@ -140,7 +140,7 @@ Azure Özel Görüntü İşleme Hizmeti ile eğitilen ve verilen önceden oluşt
 > [!NOTE]
 > Özel Görüntü İşleme Hizmeti ücretsiz katmanını kullanarak kendinizinkini derlemek isterseniz, [örnek proje deposundaki yönergeleri](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)izleyebilirsiniz.
 
-Model, *< REPOSITORY_ROOT >/Resources/model* klasöründeki iki dosyadan oluşur: *model. PB* ve *labels. txt*. Onları *sınıflandır* işlevinin klasörüne kopyalayın.
+Model, *< REPOSITORY_ROOT >/Resources/model* klasöründe bulunan iki dosyadan oluşur: *model. PB* ve *labels. txt*. Onları *sınıflandır* işlevinin klasörüne kopyalayın.
 
 #### <a name="linux-and-macos"></a>Linux ve macOS:
 
@@ -223,7 +223,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 Değişikliklerinizi kaydettiğinizden emin olun.
 
-Bu işlev, `img` adlı bir sorgu dizesi parametresinde bir görüntü URL 'SI alır. Görüntüyü indirir ve TensorFlow modelini kullanarak bir tahmin döndüren yardımcı kitaplığından `predict_image_from_url` çağırır. İşlev daha sonra sonuçlarıyla bir HTTP yanıtı döndürür.
+Bu işlev, `img`adlı bir sorgu dizesi parametresinde bir görüntü URL 'SI alır. Görüntüyü indirir ve TensorFlow modelini kullanarak bir tahmin döndüren yardımcı kitaplığından `predict_image_from_url` çağırır. İşlev daha sonra sonuçlarıyla bir HTTP yanıtı döndürür.
 
 HTTP uç noktası, başka bir etki alanında barındırılan bir Web sayfası tarafından çağrıldığından, HTTP yanıtı tarayıcının çıkış noktaları arası kaynak paylaşımı (CORS) gereksinimlerini karşılamak için bir `Access-Control-Allow-Origin` üst bilgisi içerir.
 

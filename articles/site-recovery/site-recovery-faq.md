@@ -1,27 +1,26 @@
 ---
-title: Azure Site Recovery-sık sorulan sorular
-description: Bu makalede Azure Site Recovery hakkındaki popüler sorular ele alınmaktadır.
-services: site-recovery
+title: Azure Site Recovery hizmetiyle ilgili genel sorular
+description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular ele alınmaktadır.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 9ab2466a201662cfde4655aedd12f9fd1b21c964
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: fb88d28ea47495dcbdb0844901a03ee7efa4e4eb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053718"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078532"
 ---
-# <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: sık sorulan sorular (SSS)
-Bu makalede Azure Site Recovery hakkında sık sorulan sorular özetlenmektedir.</br>
-Farklı ASR senaryolarında belirli sorgular için lütfen senaryoya özgü SSS bölümüne başvurun.<br>
+# <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
 
-- [Azure 'da Azure VM olağanüstü durum kurtarma](azure-to-azure-common-questions.md)
-- [Azure 'da VMware VM olağanüstü durum kurtarma](vmware-azure-common-questions.md)
-- [Azure 'da Hyper-V VM olağanüstü durum kurtarma](hyper-v-azure-common-questions.md)
+Bu makalede Azure Site Recovery hakkında sık sorulan sorular özetlenmektedir. Belirli senaryolar için bu makaleleri gözden geçirin
+
+- [Azure 'da Azure VM olağanüstü durum kurtarma ile ilgili sorular](azure-to-azure-common-questions.md)
+- [Azure 'a VMware VM olağanüstü durum kurtarma ile ilgili sorular](vmware-azure-common-questions.md)
+- [Azure 'da Hyper-V VM olağanüstü durum kurtarma ile ilgili sorular](hyper-v-azure-common-questions.md)
  
 ## <a name="general"></a>Genel
 
@@ -195,7 +194,7 @@ Evet. Aşağıdaki makalelerde azaltma bant genişliği hakkında daha fazla bil
 
 
 
-## <a name="failover"></a>Yük Devretme
+## <a name="failover"></a>Yük devretme
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Azure 'a yük devretdiğimde yük devretmeden sonra Azure VM 'lerine nasıl erişebilirim?
 
 Azure VM'lerine güvenli bir İnternet bağlantısı, siteden siteye VPN veya Azure ExpressRoute üzerinden erişebilirsiniz. Bağlanmak için bir dizi şey hazırlamanız gerekir. [Daha fazla bilgi edinin](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).

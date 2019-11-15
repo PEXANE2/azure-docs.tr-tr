@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddbb233bb9d0970169f040e3040b44a0b75aa1f8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 8f8d1c9f53d08d017c6c07abf8e00ab77e6879e3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477169"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091407"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory'de uygulamalar için çoklu oturum açma
 
@@ -97,6 +97,8 @@ Parola tabanlı çoklu oturum açma bir HTML tabanlı oturum açma sayfası olan
    > Internet Explorer sınırlı desteğe sahiptir ve artık yeni yazılım güncelleştirmeleri almaz. Microsoft Edge önerilen tarayıcıdır.
 
 - Windows 10 yıldönümü sürümü veya sonraki sürümlerde Microsoft Edge
+- İOS ve Android için Microsoft Edge
+- Intune Managed Browser
 - Chrome Windows 7 ve daha sonra ve MacOS x veya sonrası
 - Firefox 26,0 veya daha sonra Windows XP SP2 veya üzeri ve Mac OS X 10.6 üzerinde veya üzeri
 
@@ -187,10 +189,10 @@ Bu senaryo Azure AD ve PingAccess arasındaki bir iş ortaklığı aracılığı
 
 Daha fazla bilgi için bkz. [Azure Active Directory sürümleri](../fundamentals/active-directory-whatis.md).
 
-## <a name="related-articles"></a>İlgili makaleler
-* [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler](../saas-apps/tutorial-list.md)
+## <a name="related-articles"></a>İlgili makaleler:
+* [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](../saas-apps/tutorial-list.md)
 * [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md)
 * [Parola tabanlı çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md)
 * [Bağlı oturum açmayı yapılandırma](configure-linked-sign-on.md)
 * [Uygulamalara erişimi yönetme giriş](what-is-access-management.md)
-* İndirme bağlantısı: [Çoklu oturum açma dağıtım planı](https://aka.ms/SSODeploymentPlan).
+* İndirme bağlantısı: [tek oturum açma dağıtım planı](https://aka.ms/SSODeploymentPlan).

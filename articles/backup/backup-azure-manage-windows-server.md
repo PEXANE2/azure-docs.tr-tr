@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: a86af57f49b91615cc453946b0b5d51d22f2d163
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9e5103fad517e695198602a182574de964a9c504
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747451"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091119"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Kurtarma Hizmetleri kasalarını izleme ve yönetme
 
@@ -100,7 +100,7 @@ Varsayılan olarak, **en son oluşum süresi**dışında tüm ayrıntılar rapor
 * Korumalı sunucu
 * Severity
 * Süre
-* Oluşturulma Zamanı
+* Oluşturma zamanı
 * Durum
 * En son oluşum zamanı
 
@@ -258,7 +258,7 @@ Panodaki yedekleme depolama kutucuğu, Azure 'da tüketilen depolamayı gösteri
 * Kasayla ilişkili bulut LRS depolama kullanımı
 * Kasayla ilişkili bulut GRS depolama alanı kullanımı
 
-## <a name="troubleshooting-monitoring-issues"></a>Izleme sorunlarını giderme
+## <a name="troubleshooting-monitoring-issues"></a>İzleme sorunlarını giderme
 
 **Sorun:** Azure Backup aracısındaki işler ve/veya uyarılar portalda görünmez.
 

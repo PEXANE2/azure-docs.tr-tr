@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 78de85cede228f4b1c6ff01388fd7a08f78aa74f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0be9973aed1aaf5074c3b61d6249b95e8fd45a64
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747180"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090900"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -50,7 +50,7 @@ Hata iletisi: yedeklenen verileri kasadan kopyalama zaman aşımına uğradı
 
 Bu durum, geçici depolama hatalarından veya yedekleme hizmeti için yetersiz depolama hesabı ıOPS 'nin zaman aşımı süresi içinde kasaya veri aktarmasına neden olmuş olabilir. Bu [en iyi yöntemleri](backup-azure-vms-introduction.md#best-practices) kullanarak VM yedeklemesini yapılandırın ve yedekleme işlemini yeniden deneyin.
 
-## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>Usererrorvmnotındehablestate-VM, yedeklemelere izin veren bir durumda değil.
+## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>Usererrorvmnotındesıralaması-VM, yedeklemelere izin veren bir durumda değil
 
 Hata kodu: Usererrorvmnotındesıralaması <br/>
 Hata iletisi: VM, yedeklemelere izin veren bir durumda değil.<br/>
@@ -161,7 +161,7 @@ Anlık görüntü sınırı, eklenen bazı diskler için aşıldığı için ba�
   * **İsanysnapshotfailed** değerinin/etc/Azure/vmbackup.conf içinde false olarak ayarlandığından emin olun
   * Azure Site Recovery, yedekleme işlemini çakışmayacak şekilde farklı bir zamanda zamanlayın.
 
-## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>Extensionfailedtimeoutvmnetworktimeout-yetersiz VM kaynakları nedeniyle anlık görüntü işlemi başarısız oldu.
+## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>Extensionfailedtimeoutvmnetworktimeout-yetersiz VM kaynakları nedeniyle anlık görüntü işlemi başarısız oldu
 
 Hata kodu: Extensionfailedtimeoutvmnetworkyanıt vermiyor<br/>
 Hata iletisi: yetersiz VM kaynakları nedeniyle anlık görüntü işlemi başarısız oldu.
@@ -187,7 +187,7 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 
 | Hata Ayrıntıları | Geçici çözüm |
 | ------ | --- |
-| **Hata kodu**: 320001, ResourceNotFound <br/> **Hata iletisi**: VM artık mevcut olmadığından işlem gerçekleştirilemedi. <br/> <br/> **Hata kodu**: 400094, BCMV2VMNotFound <br/> **Hata iletisi**: sanal makine yok <br/> <br/>  Azure sanal makinesi bulunamadı.  |Birincil VM silindiğinde bu hata oluşur, ancak yedekleme ilkesi hala bir VM 'yi yedekleyecek şekilde arar. Bu hatayı onarmak için aşağıdaki adımları uygulayın: <ol><li> Aynı ada ve aynı kaynak grubu adına sahip sanal makineyi yeniden oluşturun, **bulut hizmeti adı**,<br>**veya**</li><li> Yedekleme verilerini silmeden sanal makineyi korumayı durdurun. Daha fazla bilgi için bkz. [sanal makineleri korumayı durdurma](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
+| **Hata kodu**: 320001, ResourceNotFound <br/> **Hata iletisi**: VM artık mevcut olmadığından işlem gerçekleştirilemedi. <br/> <br/> **Hata kodu**: 400094, BCMV2VMNotFound <br/> **Hata iletisi**: sanal makine yok <br/> <br/>  Azure sanal makinesi bulunamadı.  |Birincil VM silindiğinde bu hata oluşur, ancak yedekleme ilkesi hala bir VM 'yi yedekleyecek şekilde arar. Bu hatayı onarmak için aşağıdaki adımları uygulayın: <ol><li> Aynı ada ve aynı kaynak grubu adına sahip sanal makineyi yeniden oluşturun, **bulut hizmeti adı**,<br>**or**</li><li> Yedekleme verilerini silmeden sanal makineyi korumayı durdurun. Daha fazla bilgi için bkz. [sanal makineleri korumayı durdurma](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
 | **Hata kodu**: usererrorvmprovisioningstatefailed<br/> **Hata iletisi**: VM başarısız sağlama durumunda: <br>VM 'yi yeniden başlatın ve VM 'nin çalıştığından veya kapatıldığından emin olun. | Bu hata, uzantı hatalarından biri VM 'yi başarısız sağlama durumuna geçirir oluşur. Uzantılar listesine gidin, başarısız bir uzantı olup olmadığını denetleyin, kaldırın ve sanal makineyi yeniden başlatmayı deneyin. Tüm uzantılar çalışır durumdaysa, VM Aracısı hizmetinin çalışıp çalışmadığını denetleyin. Aksi takdirde, VM Aracısı hizmetini yeniden başlatın. |
 |**Hata kodu**: usererrorbcmpremıumstoragequotaerror<br/> **Hata iletisi**: depolama hesabında yeterli boş alan olmadığından sanal makinenin anlık görüntüsü kopyalanamadı | VM yedekleme yığını v1 'deki Premium VM 'Ler için, anlık görüntüyü depolama hesabına kopyalayacağız. Bu adım, anlık görüntüde kullanılan yedekleme yönetimi trafiğinin Premium diskler kullanılarak uygulama için kullanılabilir ıOPS sayısını sınırlandırmaz olmasını sağlar. <br><br>Toplam depolama hesabı alanını yalnızca yüzde 50, 17,5 TB olarak ayırmanız önerilir. Ardından Azure Backup hizmeti, anlık görüntüyü depolama hesabına kopyalayabilir ve depolama hesabındaki bu kopyalanmış konumdan kasaya veri aktarabilir. |
 | **Hata kodu**: 380008, AzureVmOffline <br/> **Hata iletisi**: sanal makine çalışmadığı Için Microsoft Kurtarma Hizmetleri Uzantısı yüklenemedi | VM Aracısı, Azure Kurtarma Hizmetleri uzantısı için bir önkoşuldur. Azure sanal makine aracısını yükleyip kayıt işlemini yeniden başlatın. <br> <ol> <li>VM aracısının doğru yüklenip yüklenmediğini denetleyin. <li>VM yapılandırması üzerindeki bayrağın doğru ayarlandığından emin olun.</ol> VM aracısını yükleme ve VM Aracısı yüklemesinin nasıl doğrulanacağı hakkında daha fazla bilgi edinin. |
@@ -202,7 +202,7 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 | Hata Ayrıntıları | Geçici çözüm |
 | --- | --- |
 | Bu iş türü için iptal desteklenmez: <br>İş bitene kadar bekleyin. |None |
-| İş iptal edilebilen durumunda değil: <br>İş bitene kadar bekleyin. <br>**veya**<br> Seçilen iş iptal edilebilen bir durumda değil: <br>İşin bitmesini bekleyin. |İşin neredeyse tamamlanmış olması olasıdır. İş tamamlanana kadar bekleyin.|
+| İş iptal edilebilen durumunda değil: <br>İş bitene kadar bekleyin. <br>**or**<br> Seçilen iş iptal edilebilen bir durumda değil: <br>İşin bitmesini bekleyin. |İşin neredeyse tamamlanmış olması olasıdır. İş tamamlanana kadar bekleyin.|
 | Yedekleme, devam ettiğinden işi iptal edemiyor: <br>İptal etme işlemi yalnızca devam eden işler için desteklenir. Devam eden bir işi iptal etmeyi deneyin. |Bu hata, geçici bir durum nedeniyle oluşur. Bir dakika bekleyip iptal işlemini yeniden deneyin. |
 | Yedekleme işi iptal edemedi: <br>İş bitene kadar bekleyin. |None |
 

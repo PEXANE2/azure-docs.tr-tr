@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute bağlantı hattı oluşturma ve değiştirme-Portal: Azure | Microsoft Docs'
+title: 'ExpressRoute: devre oluşturma ve değiştirme: Azure portal'
 description: Oluşturma, sağlama, doğrulayın, güncelleştirme, silme ve bir ExpressRoute bağlantı hattının sağlamasını Kaldır.
 services: expressroute
 author: cherylmc
@@ -7,19 +7,17 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc
-ms.reviewer: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: 25821f60f47b1279e70cba2574901cd5df3d327f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 42fe0a91261453251d56f1c556083e93f5c76bec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846594"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083559"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute devre oluşturma ve değiştirme
 
 > [!div class="op_single_selector"]
-> * [Azure portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager şablonu](expressroute-howto-circuit-resource-manager-template.md)
@@ -38,11 +36,11 @@ Bu makalede Azure portalı ve Azure Resource Manager dağıtım modeli kullanara
 
 ## <a name="create"></a>Oluşturma ve bir ExpressRoute bağlantı hattı sağlama
 
-### <a name="1-sign-in-to-the-azure-portal"></a>1. Azure portalında oturum açın
+### <a name="1-sign-in-to-the-azure-portal"></a>1. Azure portal oturum açın
 
 Bir tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve Azure hesabınızla oturum açın.
 
-### <a name="2-create-a-new-expressroute-circuit"></a>2. Yeni bir ExpressRoute bağlantı hattı oluşturma
+### <a name="2-create-a-new-expressroute-circuit"></a>2. yeni bir ExpressRoute devresi oluşturun
 
 > [!IMPORTANT]
 > ExpressRoute bağlantı hattı, bir hizmet anahtarı verildiğinde andan itibaren faturalandırılır. Bağlantı sağlayıcısı devreyi sağlamak hazır olduğunda bu işlem bir şekilde gerçekleştirdiğinizden emin olun.
@@ -65,7 +63,7 @@ Bir tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve Azure he
      > [!IMPORTANT]
      > Eşleme konumu gösteren [fiziksel konum](expressroute-locations.md) nerede sizin eşlemeyi Microsoft ile. Bu **değil** başvuran Azure ağ kaynak sağlayıcısı bulunduğu coğrafi konum "Location" özelliğine bağlı. Bunlar ilişkili değildir, ancak bir ağ kaynağı sağlayıcı eşleme konumu bağlantı hattının coğrafi olarak yakın seçmek için iyi bir uygulamadır.
 
-### <a name="3-view-the-circuits-and-properties"></a>3. Devreler ve özelliklerini görüntüleyin
+### <a name="3-view-the-circuits-and-properties"></a>3. devreleri ve özellikleri görüntüleyin
 
 **Tüm devreler görüntüleyin**
 
@@ -79,41 +77,41 @@ Bağlantı hattı özelliklerini seçerek görüntüleyebilirsiniz. Üzerinde **
 
 ![Özellikleri görüntüle](./media/expressroute-howto-circuit-portal-resource-manager/servicekey1.png)
 
-### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. Hizmet anahtarı sağlamak için bağlantı sağlayıcınıza gönderin.
+### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. sağlama için hizmet anahtarını bağlantı sağlayıcınıza gönderin
 
 Bu sayfada **sağlayıcısı durumu** hizmet sağlayıcı tarafında sağlama geçerli durumu hakkında bilgi sağlar. **Bağlantı hattı durumu** Microsoft tarafında durumu sağlar. Bağlantı hattı sağlama durumları hakkında daha fazla bilgi için bkz. [iş akışları](expressroute-workflows.md#expressroute-circuit-provisioning-states) makalesi.
 
 Yeni bir ExpressRoute bağlantı hattı'ı oluşturduğunuzda, bağlantı hattı şu durumda olur:
 
-Sağlayıcı durumu: Sağlanmadı<BR>
-Devre durumu: Enabled
+Sağlayıcı Durumu: sağlanmadı<BR>
+Bağlantı hattı durumu: etkin
 
 ![Sağlama işlemini başlatın](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 Bağlantı sağlayıcısı, etkinleştirmeden sürecinde olduğunda bağlantı hattının aşağıdaki duruma değiştirir:
 
-Sağlayıcı durumu: Sağlama<BR>
-Devre durumu: Enabled
+Sağlayıcı Durumu: sağlama<BR>
+Bağlantı hattı durumu: etkin
 
 Bir ExpressRoute bağlantı hattı kullanabilmek için şu durumda olmalıdır:
 
-Sağlayıcı durumu: Sağlanan<BR>
-Devre durumu: Enabled
+Sağlayıcı Durumu: sağlanan<BR>
+Bağlantı hattı durumu: etkin
 
-### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Durum ve bağlantı hattı tuşunun durumunu düzenli aralıklarla denetleyin
+### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. devre anahtarının durumunu ve durumunu düzenli olarak kontrol edin
 
 Siz de seçerek ilginizi çeken bağlantı hattı özelliklerini görüntüleyebilirsiniz. Denetleme **sağlayıcısı durumu** ve azure'a taşındı olun **sağlanan** devam etmeden önce.
 
 ![Bağlantı hattı ve sağlayıcısı durumu](./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png)
 
-### <a name="6-create-your-routing-configuration"></a>6. Kullanarak yönlendirme yapılandırması oluşturma
+### <a name="6-create-your-routing-configuration"></a>6. yönlendirme yapılandırmanızı oluşturun
 
 Adım adım yönergeler için başvurmak [ExpressRoute bağlantı hattı yönlendirme yapılandırması](expressroute-howto-routing-portal-resource-manager.md) makale oluşturma ve değiştirme devre eşlemeleri.
 
 > [!IMPORTANT]
 > Bu yönergeler yalnızca Katman 2 bağlantı hizmetleri sunan hizmet sağlayıcıları ile oluşturulan bağlantı hatları için geçerlidir. Yönetilen sunan bir hizmet sağlayıcısı kullanıyorsanız, Katman 3 Hizmetleri (genellikle bir IP VPN, MPLS gibi), bağlantı sağlayıcınız yapılandırır ve yönlendirmeyi sizin için yönetir.
 
-### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. ExpressRoute bağlantı hattına bir sanal ağı bağlama
+### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. bir ExpressRoute devresine sanal ağ bağlama
 
 Ardından, bir sanal ağ, ExpressRoute bağlantı hattına bağlayın. Kullanım [sanal ağları ExpressRoute devresine bağlama](expressroute-howto-linkvnet-arm.md) makale Resource Manager dağıtım modeliyle çalışırken.
 

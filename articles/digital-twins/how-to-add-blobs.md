@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 11/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a6629db50d0cec13d866d28a0823ccd3ed43f42
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6ab9d0ae07978e69bebb0fc24c8965cce971cfd5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014205"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082324"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Azure dijital TWINS 'de nesnelere blob ekleme
 
@@ -181,8 +181,6 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 Son olarak [, kullanıcılar](https://curl.haxx.se/) çok parçalı form isteklerini aynı şekilde yapabilirler:
 
-[![kıvrımlı örneği](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
-
 ```bash
 curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
  -H "Authorization: Bearer YOUR_TOKEN" \
@@ -198,7 +196,9 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
 | YOUR_SPACE_ID | Blobun ilişkilendirileceği alanın KIMLIĞI |
 | PATH_TO_FILE | Metin dosyanızın yolu |
 
-Başarılı bir GÖNDERI, yeni Blobun KIMLIĞINI döndürür (daha önce kırmızı renkle vurgulanır).
+[![kıvrımlı örneği](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
+
+Başarılı bir GÖNDERI, yeni Blobun KIMLIĞINI döndürür.
 
 ## <a name="api-endpoints"></a>API uç noktaları
 

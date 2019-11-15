@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager şablonu kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırma | Microsoft Docs
+title: Azure Resource Manager şablonu kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırma
 description: Azure Resource Manager şablonu kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırma
 author: robinsh
 manager: philmeagit st
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: ef73aed577645af5af82c439abb57022b389d040
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809714"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084400"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Öğretici: IoT Hub ileti yönlendirmeyi yapılandırmak için Azure Resource Manager şablonu kullanma
 
@@ -44,7 +44,7 @@ Aşağıdaki bölümde kullanılan parametreler açıklanmaktadır.
 
 ### <a name="parameters"></a>Parametreler
 
-Bu parametrelerin çoğu varsayılan değerlere sahiptir. **_İçinde** biten olanlar, genel olarak benzersiz hale getirilmesi Için *rastgele değer* ile birleştirilir. 
+Bu parametrelerin çoğu varsayılan değerlere sahiptir. **_İn** ile biten olanlar, genel olarak benzersiz hale getirilmesi Için *rasgeledeğer* ile birleştirilir. 
 
 **rasgelevalue**: Bu değer, şablonu dağıtırken geçerli tarih/saat içinden oluşturulur. Bu alan, şablonda oluşturulduğu gibi parametreler dosyasında değildir.
 
@@ -54,11 +54,11 @@ Bu parametrelerin çoğu varsayılan değerlere sahiptir. **_İçinde** biten ol
 
 **konum**: Bu alan, "westus" gibi dağıttığınız Azure bölgesidir.
 
-**consumer_group**: Bu alan, yönlendirme uç noktasından gelen iletiler için ayarlanan tüketici grubudur. Azure Stream Analytics sonuçları filtrelemek için kullanılır. Örneğin, her şeyi alacağınız tüm akış, veya consumer_group ile **contoso**olarak ayarlanan verilerle birlikte geliyorsa, yalnızca bu girişleri göstermek için bir Azure Stream Analytics akışı (ve Power BI raporu) ayarlayabilirsiniz. Bu alan, Bu öğreticinin 2. bölümünde kullanılır.
+**consumer_group**: Bu alan, yönlendirme uç noktasından gelen iletiler için bir tüketici grubu kümesidir. Azure Stream Analytics sonuçları filtrelemek için kullanılır. Örneğin, her şeyi alacağınız tüm akış, veya consumer_group **contoso**olarak ayarlanan verilerle birlikte geliyorsa, yalnızca bu girişleri göstermek için bir Azure Stream Analytics akışı (ve Power BI raporu) ayarlayabilirsiniz. Bu alan, Bu öğreticinin 2. bölümünde kullanılır.
 
-**sku_name**: bu alan IoT Hub ölçeklendiriliyor. Bu değer S1 veya üzeri olmalıdır; Bu öğreticide, birden çok uç noktaya izin verilmediğinden ücretsiz bir katman çalışmıyor.
+**sku_name**: Bu alan, IoT Hub için ölçeklendiriliyor. Bu değer S1 veya üzeri olmalıdır; Bu öğreticide, birden çok uç noktaya izin verilmediğinden ücretsiz bir katman çalışmıyor.
 
-**sku_units**: Bu alan, **sku_name**ile gider ve kullanılabilecek IoT Hub birimlerinin sayısıdır.
+**sku_units**: bu alan **sku_name**ve kullanılabilecek IoT Hub birimi sayısıdır.
 
 **d2c_partitions**: Bu alan, olay akışı için kullanılan bölüm sayısıdır.
 
@@ -86,7 +86,7 @@ Bu değerler şablonda kullanılır ve genellikle parametrelerden türetilir.
 
 **service_bus_namespace**: Bu alan, rasgelevalue eklenmiş olduktan sonra ad alanıdır.
 
-**service_bus_queue**: Bu alan, rasgelevalue değeri eklenmiş olduktan sonra Service Bus kuyruk adıdır.
+**service_bus_queue**: Bu alan, rasgelevalue eklenmiş olduktan sonra Service Bus kuyruk adıdır.
 
 **Sbversion**: kullanılacak Service Bus API sürümü. Bu durumda, "2017-04-01" olur.
 

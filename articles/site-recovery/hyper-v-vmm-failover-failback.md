@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery ile olağanüstü durum kurtarma sırasında yük devretme ve Hyper-V VM 'lerini ikincil bir veri merkezine çoğaltılan yük devretme Microsoft Docs
+title: Azure Site Recovery ile ikincil Hyper-V sitesine yük devretme/yeniden çalışma ayarlama
 description: Hyper-V VM 'lerini ikincil şirket içi sitenize yük devretme ve Azure Site Recovery olağanüstü durum kurtarma sırasında birincil siteye geri dönme hakkında bilgi edinin.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f93c9bd679272f76665a6c8e4a0c611327699839
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813710"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082595"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>İkincil şirket içi sitenize çoğaltılan Hyper-V VM 'lerinin yükünü devreder ve geri devreder
 
@@ -30,8 +30,8 @@ Bu makalede, bir System Center Virtual Machine Manager (VMM) bulutunda yönetile
 
 Yük devretme ve yeniden çalışma üç aşamaya sahiptir:
 
-1. **İkincil siteye yük devret**: Birincil siteden ikincil makineye yük devreder.
-2. **İkincil siteden geri**dönme: VM 'Leri ikinciden birinciye çoğaltın ve geri yük devretmek için planlanmış bir yük devretme çalıştırın.
+1. **İkincil siteye yük devretme**: birincil siteden ikincil makineye yük devreder.
+2. **İkincil siteden geri yük devretmek**: VM 'leri ikinciden birinciye çoğaltın ve geri yük devretmek için planlanmış bir yük devretme çalıştırın.
 3. Planlı Yük devretmenin ardından, isteğe bağlı olarak birincil siteden ikincil konuma çoğaltmayı yeniden başlatın.
 
 
@@ -53,12 +53,12 @@ Hyper-V VM 'Leri için düzenli veya planlı yük devretme çalıştırabilirsin
 
 
 1. **Ayarlar** > **Çoğaltılan öğeler** bölümünde VM > **Yük devretme**’ye tıklayın.
-1. Yük devretmeyi tetiklemeden önce Site Recovery kaynak VM 'Leri kapatmayı denemek istiyorsanız, **yük devretmeye başlamadan önce makineyi Kapat ' ı** seçin. Site Recovery, yük devretmeyi tetiklemeden önce ikincil siteye gönderilmemiş olan şirket içi verileri de eşitlemeye çalışacaktır. Yük devretme işleminin başarısız olması durumunda bile devam ettiğini unutmayın. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
+1. Yük devretmeyi tetiklemeden önce Site Recovery kaynak VM 'Leri kapatmayı denemek istiyorsanız, **yük devretmeye başlamadan önce makineyi Kapat ' ı** seçin. Site Recovery, yük devretmeyi tetiklemeden önce ikincil siteye gönderilmemiş olan şirket içi verileri de eşitlemeye çalışacaktır. Yük devretme işleminin başarısız olması durumunda bile devam ettiğini unutmayın. Yük devretme işlemini **İşler** sayfasında takip edebilirsiniz.
 2. Artık ikincil VMM bulutunda VM 'yi görebilmelisiniz.
 3. VM 'yi doğruladıktan sonra, yük devretmeyi **yürütün** . Bu, tüm kullanılabilir kurtarma noktalarını siler.
 
 > [!WARNING]
-> **Devam eden bir yük devretme işlemini Iptal etmeyin**: Yük devretme başlatılmadan önce VM çoğaltması durdurulur. Devam eden bir yük devretme işlemini iptal ederseniz yük devretme durdurulur, ancak VM yeniden çoğaltılmaz.  
+> **Devam eden yük devretme işlemini iptal etmeyin**: Yük devretme başlatılmadan önce VM çoğaltma durdurulur. Devam eden bir yük devretme işlemini iptal ederseniz yük devretme durdurulur, ancak VM yeniden çoğaltılamaz.  
 
 
 ## <a name="reverse-replicate-and-failover"></a>Çoğaltmayı tersine çevirme ve yük devretme

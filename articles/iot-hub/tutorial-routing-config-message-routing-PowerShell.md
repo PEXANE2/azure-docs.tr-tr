@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırma | Microsoft Docs
+title: Azure PowerShell ile Azure IoT Hub için ileti yönlendirmeyi yapılandırma
 description: Azure PowerShell kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırın. İletideki özelliklere bağlı olarak, bir depolama hesabına veya Service Bus kuyruğuna yönlendirin.
 author: robinsh
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: a0a64d694429bddf040deeeb901c776adc8ec595
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 68338c56419316e561bb072c1a0555e89d3de85b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888772"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084432"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Öğretici: IoT Hub ileti yönlendirmeyi yapılandırmak için Azure PowerShell kullanma
 

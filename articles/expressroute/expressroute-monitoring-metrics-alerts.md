@@ -1,5 +1,5 @@
 ---
-title: İzleme, Ölçümler ve uyarılar - Azure ExpressRoute | Microsoft Docs
+title: 'Azure ExpressRoute: Izleme, ölçümler ve uyarılar'
 description: Bu sayfa ExpressRoute izleme hakkında bilgi sağlar.
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 40e5561c9a55595340568ec660cbc6dd6e1eab51
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 95083809f8fcfe42ae76faa0af507c7ce4acd709
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672111"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083425"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute izleme, ölçümler ve uyarılar
 
@@ -40,8 +39,8 @@ Bu makalede izleme, Ölçümler ve uyarılar Azure İzleyicisi'ni kullanarak Exp
 |GlobalReachBitsOutPerSecond|Trafik|<ui><li>Eşlenen devre Skey (hizmet anahtarı)</ui></li>|Global Erişim|
 |AdminState|Fiziksel bağlantı|Bağlantı|ExpressRoute Direct|
 |LineProtocol|Fiziksel bağlantı|Bağlantı|ExpressRoute Direct|
-|RxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantısının</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantısının</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantı</ui></li><ui><li>Kulvar</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantı</ui></li><ui><li>Kulvar</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >*GlobalGlobalReachBitsInPerSecond* ve *GlobalGlobalReachBitsOutPerSecond* kullanımı yalnızca en az bir Global Reach bağlantısı kurulduysa görünür olur.
 >
@@ -116,7 +115,7 @@ Her bağlantı noktası için, TX ışık düzeyini (ExpressRoute doğrudan bağ
 
 2. Tıklayın **+ seçin hedef** ve ExpressRoute ağ geçidi bağlantı kaynağı seçin.
 
-   ![hedef]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. Uyarı ayrıntılarını tanımlayın.
 
    ![eylem grubu](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)

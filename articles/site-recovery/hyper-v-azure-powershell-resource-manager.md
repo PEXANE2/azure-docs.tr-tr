@@ -1,5 +1,5 @@
 ---
-title: PowerShell ve Azure Resource Manager kullanarak Hyper-V VM 'Leri için Azure 'da olağanüstü durum kurtarmayı ayarlama | Microsoft Docs
+title: Azure Site Recovery ve PowerShell kullanarak Hyper-V VM olağanüstü durum kurtarma
 description: PowerShell ve Azure Resource Manager kullanarak Hyper-V VM 'lerinin olağanüstü durum kurtarma işlemini Azure Site Recovery hizmetiyle Azure 'a otomatikleştirin.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1779a33e4ac021c1807ce10dc224e0b8c8c53ebb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200524"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082689"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell ve Azure Resource Manager kullanarak Hyper-V VM 'Leri için Azure 'da olağanüstü durum kurtarmayı ayarlama
 
@@ -45,9 +45,9 @@ Ayrıca, bu makalede açıklanan belirli örnek aşağıdaki önkoşullara sahip
 * Bir veya daha fazla VM içeren Windows Server 2012 R2 veya Microsoft Hyper-V Server 2012 R2 çalıştıran Hyper-V konağı. Hyper-V sunucuları doğrudan veya bir ara sunucu üzerinden Internet 'e bağlanmalıdır.
 * Çoğaltmak istediğiniz VM 'Ler [Bu önkoşullara](hyper-v-azure-support-matrix.md#replicated-vms)uymalıdır.
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>1\. adım: Azure hesabınızda oturum açma
+## <a name="step-1-sign-in-to-your-azure-account"></a>1\. Adım: Azure hesabınızda oturum açın
 
-1. Bir PowerShell konsolu açın ve Azure hesabınızda oturum açmak için bu komutu çalıştırın. Cmdlet 'i bir Web sayfası getirir, sizden hesap kimlik bilgilerinizi ister: **Connect-AzAccount**.
+1. Bir PowerShell konsolu açın ve Azure hesabınızda oturum açmak için bu komutu çalıştırın. Cmdlet 'i bir Web sayfası getirir hesap kimlik bilgilerinizi ister: **Connect-AzAccount**.
     - Alternatif olarak, **-Credential** parametresini kullanarak, hesap kimlik bilgilerinizi **Connect-azaccount** cmdlet 'ine bir parametre olarak dahil edebilirsiniz.
     - CSP iş ortağı olarak bir kiracı adına çalışıyorsanız, istemci Tenantıd veya kiracı birincil etki alanı adını kullanarak müşteriyi kiracı olarak belirtin. Örneğin: **Connect-AzAccount-Tenant "fabrikam.com"**
 2. Hesap birden çok aboneliğe sahip olduğundan, hesapla birlikte kullanmak istediğiniz aboneliği ilişkilendirin:
@@ -66,7 +66,7 @@ Ayrıca, bu makalede açıklanan belirli örnek aşağıdaki önkoşullara sahip
 
     `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
-## <a name="step-2-set-up-the-vault"></a>2\. adım: Kasayı ayarlama
+## <a name="step-2-set-up-the-vault"></a>2\. Adım: kasayı ayarlama
 
 1. Kasanın oluşturulacağı bir Azure Resource Manager kaynak grubu oluşturun veya var olan bir kaynak grubunu kullanın. Yeni bir kaynak grubunu aşağıda gösterildiği gibi oluşturun. $ResourceGroupName değişkeni, oluşturmak istediğiniz kaynak grubunun adını içerir ve $Geo değişkeni, kaynak grubunun oluşturulacağı Azure bölgesini içerir (örneğin, "Brezilya Güney").
 
@@ -80,7 +80,7 @@ Ayrıca, bu makalede açıklanan belirli örnek aşağıdaki önkoşullara sahip
     **Get-Azrecoveryserviceskasa** cmdlet 'ini kullanarak mevcut kasaların bir listesini alabilirsiniz.
 
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>3\. adım: Kurtarma Hizmetleri Kasası bağlamını ayarla
+## <a name="step-3-set-the-recovery-services-vault-context"></a>3\. Adım: kurtarma hizmetleri Kasası bağlamını ayarlama
 
 Kasa bağlamını aşağıdaki şekilde ayarlayın:
 
@@ -104,7 +104,7 @@ Kasa bağlamını aşağıdaki şekilde ayarlayın:
 
 5. İndirilen anahtarı Hyper-V konağına kopyalayın. Hyper-V konağını siteye kaydetmek için anahtar gereklidir.
 
-## <a name="step-5-install-the-provider-and-agent"></a>5\. Adım: Sağlayıcıyı ve aracıyı yükler
+## <a name="step-5-install-the-provider-and-agent"></a>5\. Adım: sağlayıcıyı ve aracıyı yükler
 
 1. [Microsoft](https://aka.ms/downloaddra)'tan sağlayıcının en son sürümüne yönelik yükleyiciyi indirin.
 2. Yükleyiciyi Hyper-V konağında çalıştırın.
@@ -115,15 +115,15 @@ Kasa bağlamını aşağıdaki şekilde ayarlayın:
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
 Hyper-V çekirdek sunucusu çalıştırıyorsanız, kurulum dosyasını indirin ve şu adımları izleyin:
-1. Şu komutu çalıştırarak dosyaları AzureSiteRecoveryProvider. exe ' den yerel bir dizine ayıklayın:```AzureSiteRecoveryProvider.exe /x:. /q```
-2. Çalıştırma ```.\setupdr.exe /i``` sonuçları,%ProgramData%\asrlogs\drasetupwizard.log günlüğüne kaydedilir.
+1. Şu komutu çalıştırarak dosyaları AzureSiteRecoveryProvider. exe ' den yerel bir dizine ayıklayın: ```AzureSiteRecoveryProvider.exe /x:. /q```
+2. Çalıştırma ```.\setupdr.exe /i``` sonuçları%ProgramData%\asrlogs\drasetupwizard.log günlüğüne kaydedilir.
 
 3. Şu komutu çalıştırarak sunucuyu kaydedin:
 
     ```cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"```
 
 
-## <a name="step-6-create-a-replication-policy"></a>6\. Adım: Çoğaltma ilkesi oluşturma
+## <a name="step-6-create-a-replication-policy"></a>6\. Adım: çoğaltma ilkesi oluşturma
 
 Başlamadan önce, belirtilen depolama hesabının kasa ile aynı Azure bölgesinde olması gerektiğini ve coğrafi çoğaltmanın etkin olması gerektiğini unutmayın.
 
@@ -190,7 +190,7 @@ Başlamadan önce, belirtilen depolama hesabının kasa ile aynı Azure bölgesi
 
 
 
-## <a name="step-8-run-a-test-failover"></a>8\. Adım: Yük devretme testi çalıştırma
+## <a name="step-8-run-a-test-failover"></a>8\. Adım: yük devretme testi çalıştırma
 1. Yük devretme testini aşağıdaki şekilde çalıştırın:
 
         $nw = Get-AzVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group

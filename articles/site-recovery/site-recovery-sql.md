@@ -1,5 +1,5 @@
 ---
-title: SQL Server ve Azure Site Recovery ile SQL Server için olağanüstü durum kurtarma ayarlama | Microsoft Docs
+title: Azure Site Recovery SQL Server için olağanüstü durum kurtarma ayarlama
 description: Bu makalede SQL Server ve Azure Site Recovery kullanarak SQL Server için olağanüstü durum kurtarma ayarlama açıklanmaktadır.
 services: site-recovery
 author: sujayt
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 79428520eed95e6e79f29e1676e2711e6ee24087
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 429f46156da728bbc24108090eac8c04f68da71c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934830"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084751"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server için olağanüstü durum kurtarmayı ayarlama
 
@@ -54,18 +54,18 @@ Site Recovery, kurtarma planlarının yardımıyla tüm uygulamanızın yük dev
 
 Kurtarma planınızın gereksinimlerinize göre tamamen özelleştirildiğinden emin olmak için bazı Önkoşullar vardır. Herhangi bir SQL Server dağıtımı genellikle bir Active Directory dağıtımına ihtiyaç duyuyor. Ayrıca uygulama katmanınız için bağlantı gerekir.
 
-### <a name="step-1-set-up-active-directory"></a>1\. adım: Active Directory'yi ayarlama
+### <a name="step-1-set-up-active-directory"></a>1\. Adım: Active Directory ayarlama
 
 SQL Server düzgün çalışması için ikincil kurtarma sitesinde Active Directory ayarlayın.
 
-* **Küçük kuruluş**: Şirket içi site için az sayıda uygulama ve tek bir etki alanı denetleyiciniz vardır. Tüm sitenin yükünü devretmek istiyorsanız Site Recovery çoğaltma kullanın. Bu hizmet, etki alanı denetleyicisini ikincil veri merkezine veya Azure 'a çoğaltır.
-* **Orta-büyük kurumsal**: Ek etki alanı denetleyicileri ayarlamanız gerekebilir.
+* **Küçük kurumsal**: şirket içi site için az sayıda uygulama ve tek bir etki alanı denetleyiciniz vardır. Tüm sitenin yükünü devretmek istiyorsanız Site Recovery çoğaltma kullanın. Bu hizmet, etki alanı denetleyicisini ikincil veri merkezine veya Azure 'a çoğaltır.
+* **Orta ila büyük kurumsal**: ek etki alanı denetleyicileri ayarlamanız gerekebilir.
   - Çok sayıda uygulamanız varsa, bir Active Directory ormanına sahipseniz ve uygulamanın veya iş yükünün yükünü devretmek istiyorsanız, ikincil veri merkezinde veya Azure 'da başka bir etki alanı denetleyicisi ayarlayın.
   -  Uzak bir siteye kurtarmak için Always on kullanılabilirlik grupları kullanıyorsanız, ikincil sitede veya Azure 'da başka bir etki alanı denetleyicisi ayarlayın. Bu etki alanı denetleyicisi kurtarılmış SQL Server örneği için kullanılır.
 
 Bu makaledeki yönergeler, bir etki alanı denetleyicisinin ikincil konumda kullanılabilir olduğunu varsayar. Daha fazla bilgi edinmek için [Site Recovery Active Directory korumaya yardımcı olma](site-recovery-active-directory.md)yordamlarına bakın.
 
-### <a name="step-2-ensure-connectivity-with-other-tiers"></a>2\. adım: Diğer katmanlardan bağlantı sağlayın
+### <a name="step-2-ensure-connectivity-with-other-tiers"></a>2\. Adım: diğer katmanlardan bağlantı sağlayın
 
 Hedef Azure bölgesinde veritabanı katmanı çalıştıktan sonra uygulama ve Web katmanlarıyla bağlantınız olduğundan emin olun. Sınama yük devretmesi ile bağlantıyı doğrulamak için gerekli adımları önceden yapın.
 
@@ -74,7 +74,7 @@ Bağlantı hususları için uygulamaları nasıl tasarlayabileceğinizi anlamak 
 * [Bulut olağanüstü durum kurtarma için uygulama tasarlama](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 * [Elastik havuz olağanüstü durum kurtarma stratejileri](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 
-### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>3\. adım: Her zaman açık, etkin coğrafi çoğaltma ve otomatik yük devretme gruplarıyla birlikte çalışır
+### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>3\. Adım: her zaman açık, etkin coğrafi çoğaltma ve otomatik yük devretme gruplarıyla birlikte çalışma
 
 BCDR teknolojileri her zaman açık, etkin coğrafi çoğaltma ve otomatik yük devretme gruplarında, hedef Azure bölgesinde çalışan SQL Server ikincil çoğaltmaları vardır. Uygulamanızın yük devretmesinin ilk adımı, bu çoğaltmayı birincil olarak belirtmektir. Bu adım, ikincil üzerinde zaten bir etki alanı denetleyiciniz olduğunu varsayar. Otomatik yük devretmeyi tercih ederseniz adım gerekli olmayabilir. Web ve uygulama katmanlarınızın yükünü yalnızca veritabanı yük devretme işlemi tamamlandıktan sonra devreder.
 
@@ -85,13 +85,13 @@ Uygulama ve Web katmanı sanal makineleriyle [bir kurtarma planı oluşturun](si
 
 1. Hem [Kaynak Yöneticisi sanal makinede](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) hem de [klasık sanal makinede](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)SQL kullanılabilirlik grubu 'nun yükünü devretmek için betikleri içeri aktarın. Betikleri Azure Otomasyonu hesabınıza aktarın.
 
-    [!["Azure 'a dağıt" logosu görüntüsü](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    ["Azure 'a dağıt" logosunun ![görüntüsü](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. ASR-SQL-FailoverAG betiğini kurtarma planının ilk grubunun ön eylemi olarak ekleyin.
 
 1. Otomasyon değişkeni oluşturmak için betikte bulunan yönergeleri izleyin. Bu değişken, kullanılabilirlik gruplarının adını sağlar.
 
-### <a name="step-4-conduct-a-test-failover"></a>4\. Adım: Yük devretme testi gerçekleştir
+### <a name="step-4-conduct-a-test-failover"></a>4\. Adım: yük devretme testi yürütme
 
 SQL her zaman açık gibi bazı BCDR teknolojileri, yük devretme testini yerel olarak desteklemez. *Yalnızca bu tür teknolojiler kullanılırken*aşağıdaki yaklaşımı öneririz.
 

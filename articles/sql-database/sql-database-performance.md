@@ -9,29 +9,28 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: f7e5f698a822cd68d8319102e1b8bddbbfa8ad70
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c710e2b7c4376fc1725032c86cd02d9a6c8cafac
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821334"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090342"
 ---
 # <a name="monitor-and-improve-performance"></a>Performansı izleme ve iyileştirme
 
 Azure SQL veritabanı, veritabanınızdaki olası sorunları tanımlar ve akıllı ayarlama eylemleri ve önerileri sağlayarak iş yükünüzün performansını iyileştirebilecek eylemler önerir.
 
-Veritabanı performansınızı gözden geçirmek için genel bakış sayfasındaki **performans** kutucuğunu kullanın veya "destek + sorun giderme" bölümüne gidin:
+## <a name="performance-tuning-options"></a>Performans ayarlama seçenekleri
 
-   ![Performansı görüntüle](./media/sql-database-performance/entries.png)
+Performans ayarlama seçenekleri kullanılabilir Azure SQL veritabanı, "akıllı performans" altındaki veritabanı gezinti menüsünde bulunabilir:
 
-"Destek + sorun giderme" bölümünde aşağıdaki sayfaları kullanabilirsiniz:
-
-
-1. Veritabanınızın performansını izlemeye yönelik [performansa genel bakış](#performance-overview) . 
-2. İş yükünüzün performansını iyileştirebilecek performans önerilerini bulmak için [performans önerileri](#performance-recommendations) .
-3. En üstteki kaynak kullanan sorguları bulmak için [sorgu performansı içgörüleri](#query-performance-insight) .
-4. Azure SQL veritabanının veritabanınızı otomatik olarak iyileştirmelerine izin vermek için [otomatik ayarlama](#automatic-tuning) .
+| Performans ayarlama seçeneği | Tek veritabanı ve havuza alınmış veritabanı desteği | Örnek veritabanı desteği |
+| :----------------------------- | ----- | ----- |
+| **[Performansa genel bakış](#performance-overview)** -veritabanınız için tüm performans etkinliklerini izleyin. | Yes | Hayır | 
+| **[Performans önerileri](#performance-recommendations)** -iş yükünüzün performansını iyileştirebilecek performans önerilerini gösterir. | Yes | Hayır | 
+| **[Sorgu performansı içgörüleri](#query-performance-insight)** -veritabanında en çok kullanılan sorguların performansını gösterir. | Yes | Hayır | 
+| **[Otomatik ayarlama](#automatic-tuning)** -veritabanı performansınızı otomatik olarak Iyileştirmek IÇIN Azure SQL veritabanı 'nı kullanın. | Yes | Hayır | 
 
 ## <a name="performance-overview"></a>Performansa genel bakış
 
@@ -58,10 +57,6 @@ Geçmişte uygulanan ayarlama eylemlerinin tamamlanma geçmişini de bulabilirsi
 
 [Performans önerilerini bul ve Uygula](sql-database-advisor-portal.md) makalesindeki performans önerilerini nasıl bulacağınızı öğrenin.
 
-## <a name="automatic-tuning"></a>Otomatik ayarlama
-
-Azure SQL veritabanları, [performans önerileri](sql-database-advisor.md)uygulayarak veritabanı performansını otomatik olarak ayarlayabilir. Daha fazla bilgi edinmek için [otomatik ayarlama makalesini](sql-database-automatic-tuning.md)okuyun. Etkinleştirmek için [otomatik ayarlamayı etkinleştirme](sql-database-automatic-tuning-enable.md)konusunu okuyun.
-
 ## <a name="query-performance-insight"></a>Sorgu Performansı İçgörüleri
 
 [Sorgu performansı içgörüleri](sql-database-query-performance.md) , aşağıdakileri sağlayarak veritabanı performansını sorun gidermeye daha az zaman harcamanızı sağlar:
@@ -74,8 +69,11 @@ Azure SQL veritabanları, [performans önerileri](sql-database-advisor.md)uygula
 
 Bu sayfa hakkında daha fazla bilgi edinmek **[için sorgu performansı içgörüleri kullanma makalesine gidin](sql-database-query-performance.md)** .
 
+## <a name="automatic-tuning"></a>Otomatik ayarlama
+
+Azure SQL veritabanları, [performans önerileri](sql-database-advisor.md)uygulayarak veritabanı performansını otomatik olarak ayarlayabilir. Daha fazla bilgi edinmek için [otomatik ayarlama makalesini](sql-database-automatic-tuning.md)okuyun. Etkinleştirmek için [otomatik ayarlamayı etkinleştirme](sql-database-automatic-tuning-enable.md)konusunu okuyun.
+
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Tek veritabanları için Azure SQL veritabanı performans Kılavuzu](sql-database-performance-guidance.md)
 * [Elastik havuz ne zaman kullanılmalıdır?](sql-database-elastic-pool-guidance.md)
-

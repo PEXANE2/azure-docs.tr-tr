@@ -7,12 +7,12 @@ ms.author: dacurwin
 ms.date: 08/20/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: a6914fadcc69db534bb8476bbd8c89aa716a8bcb
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c589cba1386433e13318dabbd2873f789ee42df3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074686"
+ms.locfileid: "74091502"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Azure Dosya Paylaşımlarını yedekleme sorunlarını giderme
 
@@ -44,7 +44,7 @@ Aşağıdaki tablo, yedeklemenin yapılandırılmasına yöneliktir:
 | Yedekleme Dosyası paylaşım yapılandırması (veya koruma ilkesi yapılandırması) başarısız oluyor. | <ul><li>Sorunun devam edip etmediğini görmek için işlemi yeniden deneyin. <li> Korumak istediğiniz Dosya paylaşımının silinmemiş olduğundan emin olun. <li> Aynı anda birden çok Dosya paylaşımını korumaya çalışıyorsanız ve dosya paylaşımlarının bir kısmı başarısız oluyorsa başarısız Dosya paylaşımları için yedeklemeyi yapılandırmayı tekrar deneyin. |
 | Bir Dosya paylaşımının koruması kaldırıldıktan sonra Kurtarma Hizmetleri kasası silinemiyor. | Azure portalında, Kasa > **Yedekleme Altyapısı** > **Depolama hesapları**’nı açın ve Kurtarma Hizmetleri kasasından depolama hesabını kaldırmak için **Kaydı Kaldır**’a tıklayın.|
 
-## <a name="error-messages-for-backup-or-restore-job-failures"></a>Başarısız Yedekleme veya Geri Yükleme işlemleri için hata iletileri
+## <a name="error-messages-for-backup-or-restore-job-failures"></a>Yedekleme veya geri yükleme işi hataları için hata iletileri
 
 | Hata iletileri | Geçici çözüm veya çözümleme ipuçları |
 | -------------- | ----------------------------- |
@@ -62,7 +62,7 @@ Aşağıdaki tablo, yedeklemenin yapılandırılmasına yöneliktir:
 | Hedef dosya paylaşımı ile ilişkili Dosya Eşitleme Hizmeti kaynaklarında geri yükleme öncesi işlemler gerçekleştirilirken bir hata oluştuğundan geri yükleme işlemi başarısız oldu. | Lütfen daha sonra yeniden deneyin, sorun devam ederse lütfen Microsoft desteğine başvurun. |
 | Bir veya daha fazla dosyayı kurtarma başarısız oldu. Daha fazla bilgi için, yukarıda verilen yoldaki başarısız dosya listesini kontrol edin. | <ul> <li> Kurtarma hatasının nedenleri dosyada listelenmektedir (yol, İş ayrıntılarında belirtilir), nedenleri giderin ve yalnızca başarısız dosyalar için geri yükleme işlemini yeniden deneyin. <li> Dosya geri yükleme hatalarının sık karşılaşılan nedenleri şunlardır: <br/> - Başarısız dosyaların o sırada kullanımda olması. <br/> - Üst dizinde başarısız dosyalarla aynı ada sahip bir dizinin mevcut olması. |
 
-## <a name="modify-policy"></a>Ilkeyi Değiştir
+## <a name="modify-policy"></a>İlkeyi Değiştir
 
 | Hata iletileri | Geçici çözüm veya çözümleme ipuçları |
 | ------------------ | ----------------------------- |

@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma | Microsoft Docs
+title: Azure IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
 description: Azure IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlamayı ve kullanmayı öğrenin. Bu, hub 'ınızın sahip olabileceği sorunları tanılamanıza yardımcı olması için analiz edilecek verileri sağlar.
 author: robinsh
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 3bda78a54b0914465a50d664ab0323444203a387
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 88101aacab8b4745ce6bc9180521e66500086edd
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890355"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084371"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Öğretici: IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
 
@@ -34,7 +34,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > * Uyarılar çalışmaya başlamadan önce uygulamayı çalıştırın. 
 > * Ölçüm sonuçlarını görüntüleyin ve tanılama günlüklerini denetleyin. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -179,7 +179,7 @@ Artık iletilerin hub 'a ne zaman gönderileceğini izlemek için bazı ölçüm
 
    **Panoya sabitle**' ye tıklayın. Bu işlem, yeniden erişebilmek için Azure portal panoya sabitleyebilir. Panoya sabitleyemez, ayarlarınız korunmaz.
 
-## <a name="set-up-alerts"></a>Uyarıları ayarlama
+## <a name="set-up-alerts"></a>Uyarılar ayarlayın
 
 Portalda hub 'a gidin. **Kaynak grupları**' na tıklayın, *contosoresources*' i ve sonra IoT Hub *ContosoTestHub*' yi seçin 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/1/2019
 ms.author: raiye
-ms.openlocfilehash: e1d27563d2181a8e094e00295f9506d88e694513
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22e833a1d555057c7e6a2ce46e7a1bb136260851
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500258"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888302"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
@@ -64,11 +64,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4512574]: https://support.microsoft.com/kb/4512574
 [4512577]: https://support.microsoft.com/kb/4512577
 
-[6,12]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,36]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,71]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,78]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,91]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,12]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,36]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,71]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,91]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="september-2019-guest-os"></a>Eylül 2019 Konuk işletim sistemi
@@ -106,11 +106,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4512488]: https://support.microsoft.com/kb/4512488
 [4512518]: https://support.microsoft.com/kb/4512518
 [4512506]: https://support.microsoft.com/kb/4512506
-[6,11]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,35]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,70]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,77]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,90]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,11]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,35]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,70]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,90]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="august-2019-guest-os"></a>Ağustos 2019 Konuk işletim sistemi
@@ -163,11 +163,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4507001]: https://support.microsoft.com/kb/4507001
 [4507704]: https://support.microsoft.com/kb/4507704
 
-[6,1]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,34]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,69]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,76]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,89]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,1]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,34]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,69]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="july-2019-guest-os"></a>Temmuz 2019 Konuk işletim sistemi
@@ -621,18 +621,18 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-08 | [4343887] | Windows 10 güvenliği | 5,22 | 14 Ağustos 2018 |
-| Rel 18-08 | [4343899] | Yalnızca Windows güvenliği | 2,77 | 14 Ağustos 2018 |
+| Rel 18-08 | [4343899] | Yalnızca Windows güvenliği | 2.77 | 14 Ağustos 2018 |
 | Rel 18-08 | [4343896] | Yalnızca Windows güvenliği | 3,64 | 14 Ağustos 2018 |
 | Rel 18-08 | [4343888] | Yalnızca Windows güvenliği | 4,57 | 14 Ağustos 2018 |
-| Rel 18-08 | [4344177], [4344173] | .NET 3,5, 4,5 güvenlik | 2,77 | 14 Ağustos 2018 |
+| Rel 18-08 | [4344177], [4344173] | .NET 3,5, 4,5 güvenlik | 2.77 | 14 Ağustos 2018 |
 | Rel 18-08 | [4344175], [4344172] | .NET 3,5, 4. x güvenliği | 3,64 | 14 Ağustos 2018 |
 | Rel 18-08 | [4344178], [4344171] | .NET 3,5, 4. x güvenliği | 4,57 | 14 Ağustos 2018 |
 | Rel 18-08 | [4346742], [4346739] | .NET 3,5, 4. x OOB sürümü | 3,64 | 30 Temmuz 2018 |
 | Rel 18-08 | [4346745], [4346408] | .NET 3,5, 4. x OOB sürümü | 4,57 | 30 Temmuz 2018 |
 | Rel 18-08 | [4343902] | In | 3,64, 4,57, 5,22 | 14 Ağustos 2018 |
 | Rel 18-08 | [4343205] | Internet Explorer | 2,77, 3,64, 4,57 | 14 Ağustos 2018 |
-| Yok | [4338818] |Güvenlik dışı toplaması Temmuz |2,77 | 10 Temmuz 2018 |
-| Yok | [4019990] |.NET için D3D derleyicisi güncelleştirmesi |2,77 | 10 Temmuz 2018 |
+| Yok | [4338818] |Güvenlik dışı toplaması Temmuz |2.77 | 10 Temmuz 2018 |
+| Yok | [4019990] |.NET için D3D derleyicisi güncelleştirmesi |2.77 | 10 Temmuz 2018 |
 | Yok | [4338830] |Güvenlik dışı toplaması Temmuz |3,64 | 10 Temmuz 2018 |
 | Yok | [4338421] |Güvenlikle uyumlu olmayan .NET 3,5 toplaması |3,64 | 10 Temmuz 2018 |
 | Yok | [4338416] |Güvenlikle uyumlu olmayan .NET 4X toplaması |3,64 | 10 Temmuz 2018 |

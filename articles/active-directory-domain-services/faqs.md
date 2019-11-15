@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: iainfou
-ms.openlocfilehash: e8e6eb9be65b038780fa6e21cf20f4c5dda27a31
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 61c9d887f1b193258161cd96ccfa3618e8371890
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991451"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081016"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Sık sorulan sorular (SSS)
 
@@ -62,7 +62,7 @@ Hizmetin kendisi bu senaryoyu doğrudan desteklemez. Yönetilen etki alanınız 
 Evet. Daha fazla bilgi için bkz. [PowerShell kullanarak Azure AD Domain Services etkinleştirme](powershell-create-instance.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure AD Domain Services etkinleştirebilir miyim?
-Hayır, şu anda Azure AD Domain Services şablon kullanarak etkinleştirmek mümkün değildir. Betikleştirilmiş bir yaklaşım için bkz. [PowerShell kullanarak Azure AD Domain Services etkinleştirme](powershell-create-instance.md).
+Evet, Kaynak Yöneticisi şablonu kullanarak Azure AD Domain Services yönetilen bir etki alanı oluşturabilirsiniz. Şablon dağıtılmadan önce Azure portal veya Azure PowerShell kullanılarak yönetim için bir hizmet sorumlusu ve Azure AD grubu oluşturulmalıdır. Azure portal Azure AD Domain Services yönetilen bir etki alanı oluşturduğunuzda, şablonu ek dağıtımlar ile kullanılmak üzere dışarı aktarma seçeneği vardır. Ayrıca [GitHub şablonları örnek deposunda örnek bir şablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-AAD-DomainServices)de vardır.
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanına etki alanı denetleyicileri ekleyebilir miyim?
 Hayır. Azure AD Domain Services tarafından belirtilen etki alanı, yönetilen bir etki alanıdır. Bu etki alanı için etki alanı denetleyicileri sağlamanız, yapılandırmanız veya başka bir şekilde yönetmeniz gerekmez. Bu yönetim etkinlikleri, Microsoft tarafından bir hizmet olarak sağlanır. Bu nedenle, yönetilen etki alanı için ek etki alanı denetleyicileri (salt okuma-yazma veya salt okuma) ekleyemezsiniz.

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: EPlatform ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: ePlatform ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve ePlatform arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 10/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a822f1f5d781576102d874f33b31b698f4907a7d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b9dd7781263887a21597f32c74bd51854cc0dcfc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121558"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081924"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eplatform"></a>Öğretici: EPlatform ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eplatform"></a>Öğretici: ePlatform ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, ePlatform 'u Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. EPlatform 'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
@@ -67,10 +67,10 @@ EPlatform tümleştirmesini Azure AD ile yapılandırmak için, Galeriden, yöne
 Azure AD SSO 'yu ePlatform ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[ePlatform SSO 'Yu yapılandırın](#configure-eplatform-sso)** .
-    1. **[Eplatform test kullanıcısı oluşturun](#create-eplatform-test-user)** -kullanıcının Azure AD gösterimine bağlı olan eplatform 'da B. Simon 'a karşılık gelen bir karşılığı vardır.
+    * **[Eplatform test kullanıcısı oluşturun](#create-eplatform-test-user)** -kullanıcının Azure AD gösterimine bağlı olan eplatform 'da B. Simon 'a karşılık gelen bir karşılığı vardır.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
@@ -84,6 +84,16 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, uygulama önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
+
+1. ePlatform uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+
+    ![image](common/default-attributes.png)
+
+1. Daha fazlasına ek olarak, ePlatform uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+
+    | Ad | Kaynak özniteliği |
+    | ---------------| --------------- |
+    | upn | User. UserPrincipalName |
 
 1. **SAML Imzalama sertifikası** bölümünde, **SAML imzalama sertifikası** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
@@ -105,9 +115,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**’ tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -135,7 +145,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak ePlatform 'a eri
 
 Bu bölümde, ePlatform 'da B. Simon adlı bir Kullanıcı oluşturacaksınız. Eplatform platformunda kullanıcıları eklemek için [eplatform destek ekibi](https://help.eplatform.co/hc/en-us) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 

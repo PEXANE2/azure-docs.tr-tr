@@ -12,13 +12,13 @@ author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/14/2019
-ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826807"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082489"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL veritabanı bağlantı sorunlarıyla ve geçici hatalarla çalışma
 
@@ -30,7 +30,7 @@ Bu makalede, bağlantı hatalarının ve istemci uygulamanızın Azure SQL verit
 
 Geçici hata olarak da bilinen geçici bir hata, kendisini en kısa sürede çözümleyen bir hataya sahiptir. Geçici hataların geçici bir nedeni, Azure sisteminin çeşitli iş yüklerinin daha iyi yük dengelenmesi için donanım kaynaklarını hızlı bir şekilde kaydırır. Bu yeniden yapılandırma olaylarının çoğu 60 saniyeden az bir süre içinde tamamlanır. Bu yeniden yapılandırma sırasında zaman dilimi sırasında SQL veritabanı 'na bağlantı sorunlarıyla karşılaşabilirsiniz. SQL veritabanına bağlanan uygulamalar bu geçici hataların beklenildiği için oluşturulmalıdır. Bunları işlemek için, kullanıcıların uygulama hataları olarak kullanıcılara sunulmasını sağlamak yerine, yeniden deneme mantığını uygulayın.
 
-İstemci programınız ADO.NET kullanıyorsa, programınız **SqlException**throw tarafından geçici hata ile bildirilir. **Number** özelliğini [SQL veritabanı Istemci uygulamaları için SQL hata kodlarının](sql-database-develop-error-messages.md)makalenin üst kısmında bulunan geçici hatalar listesiyle karşılaştırın.
+İstemci programınız ADO.NET kullanıyorsa, programınız **SqlException**throw tarafından geçici hata ile bildirilir. 
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 

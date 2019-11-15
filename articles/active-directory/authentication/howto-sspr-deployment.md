@@ -11,14 +11,17 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: b648d6f914b5e3004ea3b62019bbec33e5a4871d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743236"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081531"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Azure AD self servis parola sıfırlamayı dağıtma
+
+> [!NOTE]
+> Bu kılavuzda, self servis parola sıfırlama ve nasıl dağıtılacağı açıklanmaktadır. Hesabınıza geri dönmek için self servis parola sıfırlama aracı 'nı arıyorsanız [https://aka.ms/sspr](https://aka.ms/sspr)gidin. 
 
 Self servis parola sıfırlama (SSPR), çalışanların BT personeline başvurmanız gerekmeden parolalarını sıfırlamalarını sağlayan bir Azure Active Directory özelliğidir. Çalışanlar, hizmet kullanılmadan önce self servis parola sıfırlama için kaydolmalıdır veya kaydolmalıdır. Kayıt sırasında çalışan, kuruluşu tarafından etkinleştirilen bir veya daha fazla kimlik doğrulama yöntemi seçer.
 
@@ -53,19 +56,19 @@ Birleşik kayıt deneyimi, kuruluşların hem SSPR hem de Azure Multi-Factor Aut
 
 SSPR 'yi önerilen değerlerle birlikte etkinleştirmek için aşağıdaki ayarlar gereklidir.
 
-| Alan | Ayar | Value |
+| Alan | Ayar | Değer |
 | --- | --- | --- |
 | **SSPR özellikleri** | Self servis parola sıfırlama etkin | Pilot için **Seçili** grup ve **üretim için** |
 | **Kimlik doğrulama yöntemleri** | Kaydolmak için gereken kimlik doğrulama yöntemleri | Sıfırlama için her zaman 1 daha fazla |
 |   | Sıfırlamak için gereken kimlik doğrulama yöntemleri | Bir veya iki |
-| **Kayıt** | Kullanıcılardan oturum açarken kaydolmalarını iste | Evet |
+| **Kayıt** | Kullanıcılardan oturum açarken kaydolmalarını iste | Yes |
 |   | Kullanıcılardan kimlik doğrulama bilgilerini yeniden onaylamasını istemeden önce geçen gün sayısı | 90 – 180 gün |
-| **Bildirimleri** | Parola sıfırlamayı kullanıcılara bildir | Evet |
-|   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Evet |
-| **Liş** | Yardım masası bağlantısını özelleştir | Evet |
-|   | Özel yardım masası e-postası veya URL'si | Destek sitesi veya e-posta adresi |
-| **Şirket içi tümleştirme** | Parolaları şirket içi AD 'ye geri yazma | Evet |
-|   | Kullanıcıların, parolayı sıfırlamadan hesabın kilidini açma izni ver | Evet |
+| **Bildirimler** | Parola sıfırlamayı kullanıcılara bildir | Yes |
+|   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Yes |
+| **Liş** | Yardım masası bağlantısını Özelleştir | Yes |
+|   | Özel yardım masası e-postası veya URL 'SI | Destek sitesi veya e-posta adresi |
+| **Şirket içi tümleştirme** | Parolaları şirket içi AD 'ye geri yazma | Yes |
+|   | Kullanıcıların, parolayı sıfırlamadan hesabın kilidini açma izni ver | Yes |
 
 ### <a name="sspr-properties-recommendations"></a>SSPR özellikleri önerileri
 
@@ -206,7 +209,7 @@ Azure AD 'ye katılmış veya hibrit Azure AD 'ye katılmış Windows 10 1803 ci
 
 ### <a name="configure-password-writeback"></a>Parola geri yazmayı yapılandırma
 
-Kuruluşunuz için parola geri yazma özelliğini yapılandırma adımları makalede [nasıl yapılır: Parola geri yazma](howto-sspr-writeback.md)özelliğini yapılandırın.
+Kuruluşunuz için parola geri yazma özelliğini yapılandırma adımları makalede [nasıl yapılır: parola geri yazma 'Yı yapılandırma](howto-sspr-writeback.md)makalesinde bulabilirsiniz.
 
 ## <a name="manage-sspr"></a>SSPR 'yi Yönet
 
@@ -214,8 +217,8 @@ Self servis parola sıfırlama ile ilişkili özellikleri yönetmek için gerekl
 
 | İş rolü/kişi | Azure AD rolü (gerekirse) |
 | :---: | :---: |
-| Düzey 1 yardım masası | Parola yöneticisi |
-| Düzey 2 yardım masası | Kullanıcı yöneticisi |
+| Düzey 1 yardım masası | Parola Yöneticisi |
+| Düzey 2 yardım masası | Kullanıcı Yöneticisi |
 | SSPR Yöneticisi | Genel yönetici |
 
 ### <a name="support-scenarios"></a>Destek senaryoları

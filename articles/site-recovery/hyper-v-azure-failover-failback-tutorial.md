@@ -1,20 +1,19 @@
 ---
-title: Azure Site Recovery ile olağanüstü durum kurtarma sırasında Hyper-V VM'lerinde yük devretme ve yeniden çalışma | Microsoft Docs
+title: Azure Site Recovery 'de Hyper-V VM 'Leri için yük devretme ve yeniden çalışma ayarlama
 description: Azure Site Recovery hizmetini kullanarak olağanüstü durum kurtarma sırasında Hyper-V VM'lerinde yük devretme ve yeniden çalışma gerçekleştirmeyi öğrenin.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4b9680b00905126d261562d7bec64bb931c1cda3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a8c197c2f0875bb31d091fb5839730ee1568b471
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845716"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082644"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Azure'da çoğaltılan Hyper-V VM'lerinde yük devretme ve yeniden çalışma
 
@@ -39,9 +38,9 @@ VM'de anlık görüntü olmadığından ve şirket içi VM'nin yeniden çalışm
 
 Yük devretme ve yeniden çalışma üç aşamalıdır:
 
-1. **Azure 'A yük devretme**: Hyper-V VM 'lerini şirket içi siteden Azure 'a devretmek.
-2. **Şirket içine yeniden çalışma**: Şirket içi site kullanılabilir olduğunda Azure sanal makinelerini şirket içi sitenizde yük devretme. Azure'daki veriler şirket içi siteyle eşitlenmeye başlar ve tamamlandığında şirket içindeki VM'ler açılır.  
-3. **Şirket Içi VM 'Leri ters çoğaltma**: Şirket içi olarak yeniden başlatıldıktan sonra, şirket içi VM 'Leri Azure 'a Çoğaltmaya başlamak için ters çevirin.
+1. **Azure'a yük devretme**: Şirket içi Hyper-V VM'lerinden Azure'a yük devretme gerçekleştirin.
+2. **Şirket içinde yeniden çalışma**: Şirket içi site kullanılabilir duruma geldiğinde Azure VM'lerinden şirket içine yük devretme gerçekleştirin. Azure'daki veriler şirket içi siteyle eşitlenmeye başlar ve tamamlandığında şirket içindeki VM'ler açılır.  
+3. **Şirket içi VM'lerde tersine çoğaltma**: Şirket içinde yeniden çalışma süreci tamamlandıktan sonra şirket içindeki VM'leri Azure'da çoğaltmaya başlamak için tersine çoğaltma gerçekleştirin.
 
 ## <a name="verify-vm-properties"></a>VM özelliklerini doğrulama
 
@@ -61,11 +60,11 @@ Yük devretme öncesinde VM özelliklerini doğrulayın ve VM’nin [Azure gerek
 
 1. **Ayarlar** > **Çoğaltılan öğeler** bölümünde VM > **Yük devretme**’ye tıklayın.
 2. **Yük devretme** bölümünde **En son** kurtarma noktasını seçin. 
-3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak VM'leri kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
+3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak VM'leri kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işlemini **İşler** sayfasında takip edebilirsiniz.
 4. Yük devretmeyi doğruladıktan sonra **Yürüt**'e tıklayın. Bu işlem tüm kullanılabilir kurtarma noktalarını siler.
 
 > [!WARNING]
-> **Devam eden bir yük devretme işlemini Iptal etmeyin**: Devam ederseniz, yük devretme işlemi duraklar, ancak VM yeniden çoğaltılmaz.
+> **Devam eden bir yük devretme işlemini iptal etmeyin**: Devam eden bir işlemi iptal ederseniz yük devretme durdurulur ancak VM yeniden çoğaltılmaz.
 
 ## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>Azure VM'yi şirket içinde yeniden çalıştırma ve şirket içi VM'yi tersine çoğaltma
 

@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 9427b72faf36106602cb59dc271d72402453e81e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 66edbc872fe5f1d4320107aa21ed2792bdd4fecc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821425"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083881"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Services platformunda Media Analytics 
 
@@ -33,11 +33,7 @@ ms.locfileid: "72821425"
 |---|---|
 |[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 1 Ocak 2020|Bu medya işlemcisi [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)ile değiştirilmeyecektir. Daha fazla bilgi için, bkz. [Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md).|
 |[Azure Media Indexer](media-services-index-content.md)|1 Ekim 2020|Bu medya işlemcisi [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)ile değiştirilmeyecektir. Daha fazla bilgi için bkz. [Azure Media Indexer 'den Azure Media Services 'ye geçirme video Indexer](migrate-indexer-v1-v2.md)
-|[Azure Media Face Detector](media-services-face-and-emotion-detection.md)|1 Şubat 2020|Bu Media Analytics önizleme işlemcisi kullanımdan kaldırılacak ve genel kullanıma taşınmayacak. Gelecekteki yatırımların senaryolarını ve müşterilerle birlikte kullanım durumlarını değerlendireceğiz.|
-|[Azure Media Motion Detector](media-services-motion-detection.md)|1 Şubat 2020|Bu Media Analytics önizleme işlemcisi kullanımdan kaldırılacak ve genel kullanıma taşınmayacak. Gelecekteki yatırımların senaryolarını ve müşterilerle birlikte kullanım durumlarını değerlendireceğiz.|
-|[Azure Medya OCR](media-services-video-optical-character-recognition.md)|1 Şubat 2020|Bu medya işlemcisi, [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ve [Azure Media Services v3 API video Çözümleyicisi önceden ayarlı](../latest/analyzing-video-audio-files-concept.md)olacak şekilde değiştirilmelidir.|
-|[Azure Media Video Thumbnails](media-services-video-summarization.md)|1 Şubat 2020|Bu medya işlemcisi, [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ve [Azure Media Services v3 API video Çözümleyicisi önceden ayarlı](../latest/analyzing-video-audio-files-concept.md)olacak şekilde değiştirilmelidir.|
-
+ 
 ## <a name="overview"></a>Genel Bakış
 
 Daha fazla kuruluş, çalışanları eğitme, müşterilerine katılım ve iş işlevlerini belgelemek için tercih edilen ortam olarak videoyu kullanıyor. Bulut bilgi işlem, bu büyük medya dosyalarını depolamak, akışa almak ve bunlara erişmek için bir yol sağlar. Ancak, bir şirketin video içeriği kitaplığı büyüdükçe içerikten içgörüler elde etmek için eşit derecede etkili bir yöntem gerekir. 
@@ -140,10 +136,10 @@ Yanıt:
 ## <a name="demos"></a>Demolar
 Bkz. [Azure Media Analytics gösterileri](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 Bkz. [Media Services Analytics duyurusu](https://azure.microsoft.com/blog/introducing-azure-media-analytics/).
 
 <!-- Images -->

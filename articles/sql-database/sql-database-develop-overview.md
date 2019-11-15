@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
-ms.date: 02/07/2019
-ms.openlocfilehash: af657d28bc3052ebefe25ea54891b8d3555692c9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825831"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082443"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL veritabanı uygulaması geliştirmeye genel bakış
 
@@ -48,7 +48,7 @@ Herhangi bir altyapı veya bağlantı hatası işlemi geri alabileceğinden uzun
 
 ## <a name="resiliency"></a>Dayanıklılık
 
-Azure SQL veritabanı, temeldeki altyapıda veya bulut varlıkları arasındaki iletişimde gerçekleşen geçici hataları beklebileceğiniz bir bulut hizmetidir. Azure SQL veritabanı geçişli altyapı hatalarında dayanıklı olsa da, bu arızalar bağlantınızı etkileyebilir. SQL veritabanına bağlanırken geçici bir hata oluştuğunda, kodunuzun [çağrıyı yeniden denemesi](sql-database-connectivity-issues.md)gerekir. Yeniden deneme mantığının SQL Veritabanını aynı anda yeniden deneme yapan birden fazla istemciyle boğmaması için geri alma mantığını kullanmasını öneririz. Yeniden deneme mantığı, [SQL veritabanı istemci programlarının hata iletilerine](sql-database-develop-error-messages.md)bağlıdır.
+Azure SQL veritabanı, temeldeki altyapıda veya bulut varlıkları arasındaki iletişimde gerçekleşen geçici hataları beklebileceğiniz bir bulut hizmetidir. Azure SQL veritabanı geçişli altyapı hatalarında dayanıklı olsa da, bu arızalar bağlantınızı etkileyebilir. SQL veritabanına bağlanırken geçici bir hata oluştuğunda, kodunuzun [çağrıyı yeniden denemesi](sql-database-connectivity-issues.md)gerekir. Yeniden deneme mantığının SQL Veritabanını aynı anda yeniden deneme yapan birden fazla istemciyle boğmaması için geri alma mantığını kullanmasını öneririz. Yeniden deneme mantığı, [SQL veritabanı istemci programlarının hata iletilerine](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)bağlıdır.
 
 Azure SQL veritabanınızda planlı bakım olaylarına hazırlanma hakkında daha fazla bilgi için bkz. Azure [SQL veritabanı 'Nda Azure bakım olaylarını planlama](sql-database-planned-maintenance.md).
 

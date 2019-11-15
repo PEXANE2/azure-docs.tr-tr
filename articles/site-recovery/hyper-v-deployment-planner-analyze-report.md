@@ -1,5 +1,5 @@
 ---
-title: Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarma için Azure Site Recovery Dağıtım Planlayıcısı raporunu analiz edin | Microsoft Docs
+title: Azure Site Recovery 'de Hyper-V Dağıtım Planlayıcısı raporunu analiz etme
 description: Bu makalede, Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için Azure Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan bir raporun nasıl analiz edileceği açıklanır.
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: aafeeb59446ac914bba25874f74871fc5f189498
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693579"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084956"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Dağıtım Planlayıcısı raporunu analiz etme
 Bu makalede, Hyper-V’den Azure’a dağıtım senaryosu için Azure Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporunda bulunan sayfalar ele alınmaktadır.
@@ -179,7 +179,7 @@ Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporu, 
 
 **VM Adı**: Rapor oluşturulurken VMListFile içinde kullanılan VM adı. Bu sütunda ayrıca sanal makinelere bağlanan diskler de (VHD) listelenir. Adlar, profil oluşturma sırasında aracın sanal makineleri bulduğu Hyper-V konak adlarını içerir.
 
-**VM Uyumluluğu**: Değerler **Evet** ve **Evet**\* şeklindedir. **Evet** \*, VM 'Nin [Premium SSD 'ler](../virtual-machines/windows/disks-types.md)için uygun olduğu örneklere yöneliktir. Burada, profili oluşturulan yüksek değişim sıklığı veya IOPS diski, diske eşlenen boyuttan daha büyük bir premium disk boyutuna sığar. Depolama hesabı, bir diskin boyutuna göre hangi premium depolama disk türüne eşleneceğine karar verir: 
+**VM Uyumluluğu**: Değerler **Evet** ve **Evet**\* şeklindedir. **Evet**\*, VM 'Nin [Premium SSD 'ler](../virtual-machines/windows/disks-types.md)için uygun olduğu örneklere yöneliktir. Burada, profili oluşturulan yüksek değişim sıklığı veya IOPS diski, diske eşlenen boyuttan daha büyük bir premium disk boyutuna sığar. Depolama hesabı, bir diskin boyutuna göre hangi premium depolama disk türüne eşleneceğine karar verir: 
 * <128 GB bir P10’dur.
 * 128 GB ile 256 GB arası P15’tir.
 * 256 GB ile 512 GB arası P20'dir.

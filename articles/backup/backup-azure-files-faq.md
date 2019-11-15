@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9cb5d3ae02cb0d4a6e293207a736dced56ed8538
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: be6eb6f13d7abf80537d155472a4072f7d08c06c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747464"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091611"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
 
@@ -109,7 +109,7 @@ Evet. Korumayı durdurduğunuzda **Yedekleme Verilerini Koru** seçeneğini beli
 
 Devam eden bir geri yükleme işi iptal edilirse, geri yükleme işlemi duraklar ve iptalden önce geri yüklenen tüm dosyalar, geri alma işlemleri yapılmadan yapılandırılmış hedefte (orijinal veya alternatif konum) kalır.
 
-## <a name="manage-backup"></a>Yedeklemeyi Yönetme
+## <a name="manage-backup"></a>Yedeklemeyi Yönet
 
 ### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>PowerShell 'i Azure dosya paylaşımlarının yedeklerini yapılandırmak/yönetmek/geri yüklemek için kullanabilir miyim?
 
@@ -119,7 +119,7 @@ Evet. Lütfen [buradaki](backup-azure-afs-automation.md) ayrıntılı belgelere 
 
 Azure Backup tarafından alınan tüm Anlık Görüntülere, portaldaki, PowerShell veya CLI’daki Anlık Görüntüler Görüntülenerek erişilebilir. Azure Dosyaları paylaşım anlık görüntüleri hakkında daha fazla bilgi edinmek için bkz. [Azure Dosyaları için paylaşım anlık görüntülerine genel bakış (önizleme)](../storage/files/storage-snapshots-files.md).
 
-### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Yedeklemeler için yapılandırabileceğim en yüksek bekletme süresi nedir?
+### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Yedeklemeler için yapılandırabildiğim maksimum bekletme nedir?
 
 Azure dosya paylaşımları için yedekleme, 180 güne kadar bekletme ilkesi yapılandırma olanağı sunar. Ancak, [PowerShell 'de "isteğe bağlı yedekleme" seçeneğini](backup-azure-afs-automation.md#trigger-an-on-demand-backup)kullanarak, 10 yıl boyunca bir kurtarma noktası tutabilirsiniz.
 
@@ -127,9 +127,9 @@ Azure dosya paylaşımları için yedekleme, 180 güne kadar bekletme ilkesi yap
 
 Dosya paylaşımlarında yeni bir ilke uygulandığında yeni ilkenin zamanlama ve bekletmesi geçerli olur. Bekletme süresi uzatıldıysa, yeni ilkeye göre tutulması için mevcut kurtarma noktaları işaretlenir. Bekletme süresi kısaltıldıysa, bunlar sonraki temizleme işleminde kesilmek üzere işaretlenir ve sonra silinir.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
-Bu bilgiler yalnızca Azure Dosyalarının yedeklenmesiyle ilgilidir. Azure Backup’ın diğer yönleri hakkında daha fazla bilgi edinmek için Yedekleme ile ilgili diğer sık kullanılan sorulara bakın:
+Azure Backup diğer alanlarıyla ilgili daha fazla bilgi edinmek için, bu diğer yedekleme hakkında SSS bölümüne bakın:
 
 - [Kurtarma Hizmetleri kasası hakkında SSS](backup-azure-backup-faq.md)
 - [Azure VM yedeklemesi hakkında SSS](backup-azure-vm-backup-faq.md)

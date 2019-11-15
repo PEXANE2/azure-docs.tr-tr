@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: b9a292d06ce68d211b5c758e287f2935411c6f12
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1aba8777a5b0f5851922e292004a74d74065eabf
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074773"
+ms.locfileid: "74090526"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Yedeklenen SQL Server veritabanlarını yönetme ve izleme
 
@@ -154,7 +154,7 @@ Kasa panosunda > **yedekleme Ilkelerini** **Yönet** ' e gidin ve düzenlemek is
 
 İlke değişikliği, ilişkili tüm yedekleme öğelerini etkiler ve ilgili **yapılandırma koruma** işlerini tetikler.
 
-### <a name="inconsistent-policy"></a>Tutarsız Ilke
+### <a name="inconsistent-policy"></a>Tutarsız ilke
 
 Bazen bir ilke değiştirme işlemi bazı yedekleme öğeleri için **tutarsız** bir ilke sürümüne yol açabilir. Bu durum, bir ilkeyi değiştir işlemi tetiklendikten sonra ilgili **yapılandırma koruma** işi yedekleme öğesi için başarısız olduğunda gerçekleşir. Yedekleme öğesi görünümünde şu şekilde görünür:
 

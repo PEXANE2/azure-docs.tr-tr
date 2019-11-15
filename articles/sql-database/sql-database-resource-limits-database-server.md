@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 04/18/2019
-ms.openlocfilehash: 907fc89c0d9af01865037f650c407edd97e96645
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 52e7a3408c231ba8a38fdc22c2fcac65ee26bb82
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821149"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082517"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL veritabanı sunucusu için SQL veritabanı kaynak sınırları
 
@@ -32,7 +32,7 @@ Bu makalede, tek veritabanlarını ve elastik havuzları yöneten bir SQL verita
 | Sunucu başına veritabanları | 5000 |
 | Herhangi bir bölgedeki abonelik başına varsayılan sunucu sayısı | 20 |
 | Herhangi bir bölgedeki abonelik başına en fazla sunucu sayısı | 200 |  
-| Sunucu başına DTU/eDTU kotası | 54.000 |  
+| Sunucu başına DTU/eDTU kotası | 54,000 |  
 | sunucu/örnek başına sanal çekirdek kotası | 540 |
 | Sunucu başına en fazla havuz | DTU sayısıyla veya sanal çekirdekler ile sınırlıdır. Örneğin, her havuz 1000 DTU ise, bir sunucu 54 havuzlarını destekleyebilir.|
 |||
@@ -41,11 +41,13 @@ Bu makalede, tek veritabanlarını ve elastik havuzları yöneten bir SQL verita
 > Varsayılan miktardan daha fazla DTU/eDTU kotası, vCore kotası veya daha fazla sunucu almak için, "Quota" sorun türüyle abonelik için Azure portal yeni bir destek isteği gönderilebilir. Sunucu başına DTU/eDTU kotası ve veritabanı sınırı, sunucu başına elastik havuz sayısını kısıtlar.
 > [!IMPORTANT]
 > Veritabanlarının sayısı SQL veritabanı sunucusu başına sınıra yaklaşırsa, şunlar meydana gelebilir:
+>
 > - Ana veritabanına karşı sorguları çalıştırırken gecikme süresini artırma.  Bu, sys. resource_stats gibi kaynak kullanımı istatistiklerinin görünümlerini içerir.
 > - Sunucuda veritabanlarının listesini oluşturmayı içeren Yönetim işlemlerinde ve işleme portalı görüntüleme noktalarında gecikme süresini artırma.
 
 ### <a name="storage-size"></a>Depolama boyutu
-- Tek veritabanları için lütfen fiyatlandırma katmanı başına depolama boyutu sınırları için [DTU tabanlı kaynak sınırlarına](sql-database-dtu-resource-limits-single-databases.md) veya [sanal çekirdek tabanlı kaynak sınırlarına](sql-database-vcore-resource-limits-single-databases.md) bakın.
+
+- Tek veritabanı kaynak depolama boyutları için, fiyatlandırma katmanı başına depolama boyutu sınırları için [DTU tabanlı kaynak sınırlarına](sql-database-dtu-resource-limits-single-databases.md) veya [sanal çekirdek tabanlı kaynak sınırlarına](sql-database-vcore-resource-limits-single-databases.md) bakın.
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Veritabanı kaynak sınırlarına ulaşıldığında ne olur?
 
@@ -59,7 +61,7 @@ Yüksek işlem kullanımı ile karşılaşıldığında, risk azaltma seçenekle
 
 ### <a name="storage"></a>Depolama
 
-Kullanılan veritabanı alanı en büyük boyut sınırına ulaştığında, veri boyutunu artıran veritabanı eklemeleri ve güncelleştirmeleri [hata iletisi](sql-database-develop-error-messages.md)alır. Veritabanı SEÇILIR ve sıler, başarılı olmaya devam eder.
+Kullanılan veritabanı alanı en büyük boyut sınırına ulaştığında, veri boyutunu artıran veritabanı eklemeleri ve güncelleştirmeleri [hata iletisi](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)alır. Veritabanı SEÇILIR ve sıler, başarılı olmaya devam eder.
 
 Yüksek alan kullanımıyla karşılaşdığınızda, risk azaltma seçenekleri şunlardır:
 
@@ -76,17 +78,18 @@ Yüksek oturum veya çalışan kullanımı ile karşılaşıldığında, risk az
 - Veritabanı veya elastik havuzun hizmet katmanını veya işlem boyutunu artırma. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](sql-database-single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](sql-database-elastic-pool-scale.md).
 - Artan çalışan kullanımının nedeni, işlem kaynakları için çekişme nedeniyle, her bir sorgunun kaynak kullanımını azaltmak için sorguları en iyi duruma getirme. Daha fazla bilgi için bkz. [sorgu ayarlama/Ipuçcu](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-## <a name="transaction-log-rate-governance"></a>İşlem günlüğü oranı Idare 
-İşlem günlüğü oranı yönetimi, toplu ekleme, seçme ve dizin oluşturma gibi iş yüklerinin yüksek alım tarifelerinin sınırlandırılmasına yönelik Azure SQL veritabanı 'nda kullanılan bir işlemdir. Bu sınırlar, veri dosyalarına göre kaç IOs yayımlandığına bakılmaksızın iş üretimini sınırlayan, alt ikinci düzeyde günlük kaydı oluşturma hızına göre izlenir ve zorlanır.  İşlem günlüğü oluşturma ücretleri Şu anda, sanal çekirdek satın alma modeliyle maksimum günlük hızı 96 MB/sn olmasına izin verilen donanıma bağlı bir noktaya kadar ölçeklenebilir. 
+## <a name="transaction-log-rate-governance"></a>İşlem günlüğü oranı Idare
+
+İşlem günlüğü oranı yönetimi, toplu ekleme, seçme ve dizin oluşturma gibi iş yüklerinin yüksek alım tarifelerinin sınırlandırılmasına yönelik Azure SQL veritabanı 'nda kullanılan bir işlemdir. Bu sınırlar, veri dosyalarına göre kaç IOs yayımlanabileceğine bakılmaksızın iş verimini sınırlayan, alt ikinci düzeyde günlük kaydı oluşturma hızına göre izlenir ve zorlanır.  İşlem günlüğü oluşturma ücretleri Şu anda, sanal çekirdek satın alma modeliyle maksimum günlük hızı 96 MB/sn olmasına izin verilen, donanıma bağımlı olan bir noktaya göre ölçeklendirilmeye göre ölçeklenebilir.
 
 > [!NOTE]
-> Gerçek fiziksel IOs işlem günlüğü dosyalarına yönetilmez veya sınırlı değildir. 
+> Gerçek fiziksel IOs işlem günlüğü dosyalarına yönetilmez veya sınırlı değildir.
 
 Günlük ücretleri, çeşitli senaryolarda elde edilebilecekleri ve sürekli olarak kullanılabilir, ancak genel sistem kendi işlevlerini Kullanıcı yüküne en aza indirilerek koruyabileceğinden bu şekilde ayarlanır. Günlük hızı yönetimi, işlem günlüğü yedeklemelerinin yayımlanan kurtarmalar içinde kalmasını sağlar.  Bu idare, ikincil çoğaltmalarda aşırı biriktirme listesini de önler.
 
 Günlük kayıtları üretildiğinden, her işlem değerlendirilir ve en fazla istenen günlük hızının (saniyede MB/s) korunması için geciktirilmesi gerekip gerekmediğini değerlendirirler. Günlük kayıtları depoya boşaltıldığınızda gecikmeler eklenmez, bunun yerine günlük hızı oluşturma sırasında günlük hızı Yönetimi uygulanır.
 
-Çalışma zamanında uygulanan gerçek günlük oluşturma ücretleri ayrıca, geri bildirim mekanizmalarından etkilenerek, sistemin sabitlenebilmesi için izin verilen günlük hızlarını geçici olarak azaltabilirsiniz. Günlük dosyası alanı yönetimi, oturum açma alanı koşullarını ve kullanılabilirlik grubu çoğaltma mekanizmalarını çalıştırmanın genel sistem sınırlarını geçici olarak azalmasını önleme. 
+Çalışma zamanında uygulanan gerçek günlük oluşturma ücretleri ayrıca, geri bildirim mekanizmalarından etkilenerek, sistemin sabitlenebilmesi için izin verilen günlük hızlarını geçici olarak azaltabilirsiniz. Günlük dosyası alanı yönetimi, oturum açma alanı koşullarını ve kullanılabilirlik grubu çoğaltma mekanizmalarını çalıştırmanın genel sistem sınırlarını geçici olarak azalmasını önleme.
 
 Günlük hızı idarecisi trafik şekillendirme, aşağıdaki bekleme türleri aracılığıyla ortaya çıkarılır ( [sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV içinde gösterilir):
 
@@ -100,9 +103,10 @@ Günlük hızı idarecisi trafik şekillendirme, aşağıdaki bekleme türleri a
 |||
 
 İstenen ölçeklenebilirliği gösteren bir günlük hızı sınırı ile karşılaşıldığında, aşağıdaki seçenekleri göz önünde bulundurun:
-- Maksimum 96 MB/sn günlük hızını almak için ölçeği daha büyük bir katmana ölçeklendirin. 
-- Yüklenen veriler geçicidir, yani bir ETL işleminde veri hazırlama işlemi, tempdb 'ye yüklenebilir (en az bir şekilde günlüğe kaydedilir). 
-- Analitik senaryolar için, kümelenmiş bir columnstore kapsamına alınmış bir tabloya yükleyin. Bu, sıkıştırma nedeniyle gerekli günlük oranını azaltır. Bu teknik, CPU kullanımını artırır ve yalnızca kümelenmiş columnstore dizinlerinden faydalan veri kümelerine uygulanabilir. 
+
+- Maksimum 96 MB/sn günlük hızını almak için ölçeği daha büyük bir katmana ölçeklendirin.
+- Yüklenen veriler geçicidir, yani bir ETL işleminde veri hazırlama işlemi, tempdb 'ye yüklenebilir (en az bir şekilde günlüğe kaydedilir).
+- Analitik senaryolar için, kümelenmiş bir columnstore kapsamına alınmış bir tabloya yükleyin. Bu, sıkıştırma nedeniyle gerekli günlük oranını azaltır. Bu teknik, CPU kullanımını artırır ve yalnızca kümelenmiş columnstore dizinlerinden faydalan veri kümelerine uygulanabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

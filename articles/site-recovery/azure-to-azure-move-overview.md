@@ -1,33 +1,23 @@
 ---
-title: Azure Site Recovery ile Azure MS 'yi başka bir bölgeye taşıma
-description: Azure IaaS VM 'lerini bir Azure bölgesinden diğerine taşımak için Azure Site Recovery kullanın.
+title: Azure Site Recovery ile Azure VM 'lerini başka bir bölgeye taşıma
+description: Azure VM 'lerini bir Azure bölgesinden diğerine taşımak için Azure Site Recovery kullanma.
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: e3a3db66b4833a8ba21dc9d3c1938f645919221c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954179"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091948"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Azure VM’lerini başka bir bölgeye taşıma
+# <a name="moving-azure-vms-to-another-azure-region"></a>Azure VM 'lerini başka bir Azure bölgesine taşıma
 
-Azure, müşteri tabanıyla birlikte büyür ve artan taleplerle hızlanması için yeni bölgeler için destek ekler. Ayrıca, hizmetler arasında aylık yeni yetenekler de eklenmiştir. Kullanılabilirliği artırmak için sanal makinelerinizi (VM) farklı bir bölgeye veya Kullanılabilirlik Alanları içine taşımak isteyebilirsiniz.
+Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak Azure VM 'lerini başka bir Azure bölgesine taşımaya yönelik nedenler ve adımlarla ilgili bir genel bakış sunulmaktadır. 
 
-Bu öğreticide, sanal makinelerinizi taşımak istediğiniz farklı senaryolar açıklanmaktadır. Ayrıca, daha yüksek kullanılabilirlik elde etmek için hedef bölgedeki mimarinin nasıl yapılandırılacağını açıklar. 
-
-Bu öğreticide şunları öğreneceksiniz:
-
-> [!div class="checklist"]
-> 
-> * VM 'Leri taşıma nedenleri
-> * Tipik mimariler
-> * VM 'Leri bir hedef bölgeye taşıma
-> * Kullanılabilirliği artırmak için VM 'Leri taşıma
 
 ## <a name="reasons-to-move-azure-vms"></a>Azure VM 'lerini taşıma nedenleri
 

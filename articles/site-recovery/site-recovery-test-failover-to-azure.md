@@ -1,20 +1,20 @@
 ---
-title: Azure Site Recovery kullanarak Azure 'da olağanüstü durum kurtarma ayrıntısı çalıştırma
-description: Azure Site Recovery hizmetini kullanarak şirket içinden Azure 'a olağanüstü durum kurtarma ayrıntısı çalıştırma hakkında bilgi edinin.
+title: Azure Site Recovery 'de Azure 'a yük devretme testi (olağanüstü durum kurtarma detayına) çalıştırın
+description: Azure Site Recovery hizmetini kullanarak şirket içinden Azure 'a yük devretme testi çalıştırma hakkında bilgi edinin.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 8342f60d8a0f91cc4807d25307510c1cbe7ee5c8
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814361"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091735"
 ---
-# <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure’da olağanüstü durum kurtarma tatbikatı çalıştırma 
+# <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Azure 'a yük devretme testi (olağanüstü durum kurtarma detayına) çalıştırma 
 
 
 Bu makalede, bir Site Recovery yük devretme testi kullanarak Azure 'da olağanüstü durum kurtarma detayının nasıl çalıştırılacağı açıklanmaktadır.  
@@ -28,14 +28,14 @@ Bu yordam, bir kurtarma planı için yük devretme testi çalıştırma işlemin
 ![Test Yük Devretmesi](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
-1. Azure Portal Site Recovery, **kurtarma planları** > *recoveryplan_name* > **Yük devretme testi**' ne tıklayın.
-2. Yük devredilecek bir **Kurtarma noktası** seçin. Şu seçeneklerden birini kullanabilirsiniz:
-    - **En son işlenen**: Bu seçenek, plandaki tüm VM 'Leri Site Recovery tarafından işlenen en son kurtarma noktasına devreder. Belirli bir sanal makine için en son kurtarma noktasını görmek üzere VM ayarlarındaki **en son kurtarma noktalarını** kontrol edin. İşlenmemiş verileri işlemek için zaman harcanmadığından bu seçenekte düşük bir RTO (Kurtarma Süresi Hedefi) sağlanır.
-    - **En son uygulamayla tutarlı**: Bu seçenek, plandaki tüm VM 'Leri, Site Recovery tarafından işlenen en son uygulamayla tutarlı kurtarma noktasına devreder. Belirli bir sanal makine için en son kurtarma noktasını görmek üzere VM ayarlarındaki **en son kurtarma noktalarını** kontrol edin.
+1. Azure portal Site Recovery > **Yük devretme testi** > *recoveryplan_name* **kurtarma planları** ' na tıklayın.
+2. Yük devredilecek bir **Kurtarma noktası** seçin. Aşağıdaki seçeneklerden birini kullanabilirsiniz:
+    - **En son işlenen**: Bu seçenek, plandaki tüm vm 'leri Site Recovery tarafından işlenen en son kurtarma noktasına devreder. Belirli bir sanal makine için en son kurtarma noktasını görmek üzere VM ayarlarındaki **en son kurtarma noktalarını** kontrol edin. İşlenmemiş verileri işlemek için zaman harcanmadığından bu seçenekte düşük bir RTO (Kurtarma Süresi Hedefi) sağlanır.
+    - **En son uygulamayla tutarlı**: Bu seçenek, plandaki tüm VM 'leri, Site Recovery tarafından işlenen en son uygulamayla tutarlı kurtarma noktasına devreder. Belirli bir sanal makine için en son kurtarma noktasını görmek üzere VM ayarlarındaki **en son kurtarma noktalarını** kontrol edin.
     - **En son**: Bu seçenek ilk olarak Site Recovery hizmetine gönderilen tüm verileri işleyerek, yük devretmadan önce her VM için bir kurtarma noktası oluşturur. Yük devretmeden sonra oluşturulan VM 'nin, yük devretme tetiklendiğinde Site Recovery için tüm verileri çoğaltılacağı için, bu seçenek en düşük RPO (kurtarma noktası hedefi) sağlar.
     - **Işlenen en son çoklu VM**: Bu seçenek, çoklu VM tutarlılığı etkinleştirilmiş bir veya daha fazla VM 'ye sahip kurtarma planlarında kullanılabilir. Ayarı etkin olan VM 'Ler, en son ortak çoklu VM tutarlı kurtarma noktasına yük devreder. Diğer VM 'Ler, işlenen en son kurtarma noktasına yük devreder.  
-    - **En son çoklu VM uygulaması-tutarlı**: Bu seçenek, çoklu VM tutarlılığı etkinleştirilmiş bir veya daha fazla VM 'ye sahip kurtarma planlarında kullanılabilir. Bir çoğaltma grubunun parçası olan VM 'Ler, en son ortak çoklu VM uygulamayla tutarlı kurtarma noktasına yük devreder. Diğer VM 'Ler, uygulamayla tutarlı en son kurtarma noktasına yük devreder.
-    - **Özel**: Belirli bir VM 'nin yükünü belirli bir kurtarma noktasına devretmek için bu seçeneği kullanın.
+    - **En son çoklu VM ile uygulamayla tutarlı**: Bu seçenek, çoklu VM tutarlılığı etkinleştirilmiş bir veya daha fazla VM 'ye sahip kurtarma planları için kullanılabilir. Bir çoğaltma grubunun parçası olan VM 'Ler, en son ortak çoklu VM uygulamayla tutarlı kurtarma noktasına yük devreder. Diğer VM 'Ler, uygulamayla tutarlı en son kurtarma noktasına yük devreder.
+    - **Özel**: belırlı bir VM 'nin yükünü belirli bir kurtarma noktasına devretmek için bu seçeneği kullanın.
 3. Test VM 'lerinin oluşturulacağı bir Azure sanal ağı seçin.
 
     - Site Recovery, VM 'nin **işlem ve ağ** ayarlarında belirtilen aynı ada ve aynı IP adresine sahip bir alt ağda test VM 'leri oluşturmaya çalışır.
@@ -52,9 +52,9 @@ Bu yordam, bir kurtarma planı için yük devretme testi çalıştırma işlemin
 
 Yük devretme testi tetiklendiğinde aşağıdakiler gerçekleşir:
 
-1. **Önkoşullar**: Önkoşul denetimi, yük devretme için gereken tüm koşulların karşılandığından emin olmak için çalışır.
-2. **Yük devretme**: Yük devretme işlemi ve verileri hazırlama, böylece bir Azure VM 'den oluşturulabilir.
-3. **En son**: En son kurtarma noktasını seçtiyseniz, hizmete gönderilen verilerden bir kurtarma noktası oluşturulur.
+1. **Önkoşullar**: yük devretme için gereken tüm koşulların karşılandığından emin olmak için bir önkoşul denetimi çalıştırılır.
+2. **Yük devretme**: yük devretme işlemi, verileri BIR Azure VM 'nin oluşturulabilmesi için işler ve hazırlandı.
+3. **En son**: en son kurtarma noktasını seçtiyseniz, hizmete gönderilen verilerden bir kurtarma noktası oluşturulur.
 4. **Başlangıç**: Bu adım, önceki adımda işlenen verileri kullanarak bir Azure sanal makinesi oluşturur.
 
 ### <a name="failover-timing"></a>Yük devretme zamanlaması
@@ -103,9 +103,9 @@ Uygulama testi için yük devretme testi çalıştırmak için, test ortamınız
 
 Yük devretmeden sonra RDP/SSH kullanarak Azure VM 'lerine bağlanmak istiyorsanız, tabloda özetlenen gereksinimleri izleyin.
 
-**Yük devretme** | **Location** | **Eylemler**
+**Yük devretme** | **Konum** | **Eylemler**
 --- | --- | ---
-**Windows çalıştıran Azure VM** | Yük devretmeden önce şirket içi makine | Azure VM 'ye internet üzerinden erişmek için, RDP 'yi etkinleştirin ve TCP ve UDP kurallarının **genel**'e eklendiğinden emin olun ve **Windows Güvenlik Duvarı** > **izin verilen uygulamalar**'daki tüm profiller için RDP 'ye izin verildiğinden emin olun.<br/><br/> Azure VM 'ye siteden siteye bağlantı üzerinden erişmek için makinede RDP 'yi etkinleştirin ve **etki alanı ve özel** ağlar için **Windows Güvenlik Duvarı** -> **izin verilen uygulamalar ve Özellikler**'de RDP 'ye izin verildiğinden emin olun.<br/><br/>  İşletim sistemi SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135).<br/><br/> Yük devretme tetiklemeniz sırasında VM 'de bekleyen bir Windows güncelleştirmesi olmadığından emin olun. Yük devretmek için Windows Update başlayabilir ve güncelleştirme tamamlanana kadar VM 'de oturum açamazsınız.
+**Windows çalıştıran Azure VM** | Yük devretmeden önce şirket içi makine | Azure VM 'ye internet üzerinden erişmek için RDP 'yi etkinleştirin ve TCP ve UDP kurallarının **genel**'e eklendiğinden emin olun ve **Windows Güvenlik Duvarı** 'nda **izin verilen uygulamalar** > tüm profiller için RDP 'ye izin verildiğinden emin olun.<br/><br/> Azure VM 'ye siteden siteye bağlantı üzerinden erişmek için makinede RDP 'yi etkinleştirin ve **Windows Güvenlik Duvarı** 'Nda **etki alanı ve özel** ağlar için **izin VERILEN uygulamalar ve Özellikler** -> RDP 'ye izin verildiğinden emin olun.<br/><br/>  İşletim sistemi SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135).<br/><br/> Yük devretme tetiklemeniz sırasında VM 'de bekleyen bir Windows güncelleştirmesi olmadığından emin olun. Yük devretmek için Windows Update başlayabilir ve güncelleştirme tamamlanana kadar VM 'de oturum açamazsınız.
 **Windows çalıştıran Azure VM** | Yük devretmeden sonra Azure VM |  VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının, RDP bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM 'nin ekran görüntüsünü doğrulamak için **önyükleme tanılamalarını** denetleyin.<br/><br/> Bağlanamıyorsanız, sanal makinenin çalıştığından emin olun ve bu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)gözden geçirin.
 **Linux çalıştıran Azure VM** | Yük devretmeden önce şirket içi makine | VM 'deki Secure Shell hizmetinin sistem önyüklemesi üzerinde otomatik olarak başlayacak şekilde ayarlandığından emin olun.<br/><br/> Güvenlik duvarı kurallarının gerçekleştirilecek SSH bağlantısına izin verdiğinden emin olun.
 **Linux çalıştıran Azure VM** | Yük devretmeden sonra Azure VM | Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının SSH bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> VM 'nin ekran görüntüsü için **önyükleme tanılamayı** denetleyin.<br/><br/>

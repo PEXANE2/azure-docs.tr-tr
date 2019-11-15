@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: 28d4ad1a94cea6f21d1fe75483357d8788524b88
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 397de7d1de9acc657fa0fd0cb93bd6e26e5606e2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747229"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090883"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack SQL Server yedekleme
 
@@ -99,7 +99,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
 12. Bekletme ilkesi zamanlaması ' nı seçin. Bekletme ilkesinin nasıl çalıştığı hakkındaki ayrıntılar, [bant altyapısı makalenizi değiştirmek için Azure Backup kullanılıyor](backup-azure-backup-cloud-as-tape.md)olarak sunulmaktadır.
 
-    ![Saklama İlkesi](./media/backup-azure-backup-sql/pg-retentionschedule.png)
+    ![Bekletme İlkesi](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
     Bu örnekte:
 
@@ -156,7 +156,7 @@ Korunan bir varlığı (SQL Server veritabanı) Azure 'dan kurtarmak için aşa�
 
     Kurtarma işlemi tamamlandıktan sonra, geri yüklenen veritabanı uygulamayla tutarlı olur.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 Bkz. [yedekleme dosyaları ve uygulama](backup-mabs-files-applications-azure-stack.md) makalesi.
 Bkz. [SharePoint 'Te yedekleme Azure Stack](backup-mabs-sharepoint-azure-stack.md) makalesi.

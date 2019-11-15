@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: a46cf78d902ec8391d7dc3667a6d66daa78927ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2306b6cbdd347e3be9921b196ae06385ef5ca90a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828571"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083186"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Azure Veri Gezgini veritabanlarını eklemek için izleyici veritabanını kullanma
 
@@ -26,9 +26,9 @@ ms.locfileid: "73828571"
 * Tek bir küme, birden çok öncü kümeden veritabanlarını izleyebilir. 
 * Bir küme, hem izleyici veritabanlarını hem de öncü veritabanlarını içerebilir
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 1. Öncü ve izleme için [küme ve DB oluşturun](/azure/data-explorer/create-cluster-database-portal) .
 1. Alım [bölümünde ele](/azure/data-explorer/ingest-data-overview)alınan çeşitli yöntemlerden birini kullanarak [verileri](/azure/data-explorer/ingest-sample-data) öncü veritabanına alma.
 
@@ -181,7 +181,7 @@ Veritabanının başarıyla eklendiğinden emin olmak için, [Azure Portal](http
 
     ![Salt okuma izleyici veritabanı](media/follower/read-only-follower-database.png)
 
-Kopyalamaktır
+Alternatif olarak:
 
 1. Öncü kümesine gidin ve **veritabanlarını** seçin
 2. İlgili veritabanlarının **başkalarıyla paylaşılan** olarak işaretlendiğinden emin olun > **Evet**
@@ -242,15 +242,15 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 
 ### <a name="manage-principals"></a>Sorumluları yönetme
 
-Bir veritabanı eklenirken, **varsayılan asıl adlar değişiklik türünü**belirtin. Varsayılan değer, [yetkili sorumlular](/azure/kusto/management/access-control/index.md#authorization) için öncü veritabanı koleksiyonunu tutuyor
+Bir veritabanı eklenirken, **varsayılan asıl adlar değişiklik türünü**belirtin. Varsayılan değer, [yetkili sorumlular](/azure/kusto/management/access-control/index#authorization) için öncü veritabanı koleksiyonunu tutuyor
 
 |**Denetlenmesi** |**Açıklama**  |
 |---------|---------|
 |**Birleşim**     |   Ekli veritabanı sorumluları her zaman özgün veritabanı sorumlularını ek olarak, yeni asıl sorumluları da izleyici veritabanına ekler.      |
-|**Değiştirin**   |    Asıl veritabanından asıl öğeler devralınmaz. Eklenen veritabanı için yeni sorumlular oluşturulmalıdır. Birincil devralmayı engellemek için en az bir sorumlunun eklenmesi gerekir.     |
-|**Seçim**   |   Ekli veritabanı sorumluları yalnızca, ek asıl olmayan özgün veritabanının sorumlularını içerir.      |
+|**Değiştir**   |    Asıl veritabanından asıl öğeler devralınmaz. Eklenen veritabanı için yeni sorumlular oluşturulmalıdır. Birincil devralmayı engellemek için en az bir sorumlunun eklenmesi gerekir.     |
+|**Yok.**   |   Ekli veritabanı sorumluları yalnızca, ek asıl olmayan özgün veritabanının sorumlularını içerir.      |
 
-Yetkili sorumlularını yapılandırmak üzere denetim komutlarını kullanma hakkında daha fazla bilgi için bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower.md).
+Yetkili sorumlularını yapılandırmak üzere denetim komutlarını kullanma hakkında daha fazla bilgi için bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower).
 
 ### <a name="manage-permissions"></a>İzinleri Yönet
 
@@ -258,7 +258,7 @@ Salt okunurdur veritabanını yönetme izni tüm veritabanı türleriyle aynıd�
 
 ### <a name="configure-caching-policy"></a>Önbelleğe alma ilkesini yapılandırma
 
-İzleyici veritabanı yöneticisi, bağlı veritabanının veya barındırma kümesindeki tablolarının herhangi birinin [önbellek ilkesini](/azure/kusto/management/cache-policy) değiştirebilir. Varsayılan değer veritabanı ve tablo düzeyinde önbelleğe alma ilkelerinin öncü veritabanı koleksiyonunu tutuyor. Örneğin, aylık raporlama çalıştırmak için öncü veritabanında 30 günlük önbelleğe alma ilkesine ve sorun giderme için yalnızca son verileri sorgulamak üzere izleyici veritabanında üç günlük önbelleğe alma ilkesine sahip olabilirsiniz. İzleyici veritabanı veya tablosunda önbelleğe alma ilkesini yapılandırmak üzere denetim komutlarını kullanma hakkında daha fazla bilgi için, bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower.md).
+İzleyici veritabanı yöneticisi, bağlı veritabanının veya barındırma kümesindeki tablolarının herhangi birinin [önbellek ilkesini](/azure/kusto/management/cache-policy) değiştirebilir. Varsayılan değer veritabanı ve tablo düzeyinde önbelleğe alma ilkelerinin öncü veritabanı koleksiyonunu tutuyor. Örneğin, aylık raporlama çalıştırmak için öncü veritabanında 30 günlük önbelleğe alma ilkesine ve sorun giderme için yalnızca son verileri sorgulamak üzere izleyici veritabanında üç günlük önbelleğe alma ilkesine sahip olabilirsiniz. İzleyici veritabanı veya tablosunda önbelleğe alma ilkesini yapılandırmak üzere denetim komutlarını kullanma hakkında daha fazla bilgi için, bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower).
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -270,4 +270,4 @@ Salt okunurdur veritabanını yönetme izni tüm veritabanı türleriyle aynıd�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* İzleme kümesi yapılandırma hakkında daha fazla bilgi için bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower.md).
+* İzleme kümesi yapılandırma hakkında daha fazla bilgi için bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower).

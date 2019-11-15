@@ -1,5 +1,5 @@
 ---
-title: 'Devre-ExpressRoute için eşlemeyi yapılandırma: Azure: klasik | Microsoft Docs'
+title: 'Azure ExpressRoute: eşlemeyi yapılandırma: klasik'
 description: Bu makalede, bir ExpressRoute bağlantı hattı için özel, ortak ve Microsoft eşlemesinin nasıl oluşturulduğu ve sağlandığı adım adım anlatılmaktadır. Bu makalede ayrıca bağlantı hattınızın durumunu denetleme, bağlantı hattını güncelleştirme veya silme işlemlerinin nasıl yapıldığı da anlatılmaktadır.
 services: expressroute
 author: cherylmc
@@ -7,28 +7,27 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 01ec721fb7e7dea0e4e31e0c3052cc4246cf14b0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 814a73900b05b66d1bacc946b9f994135d3fc9f6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748183"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083452"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>ExpressRoute devresi için eşleme oluşturma ve değiştirme (klasik)
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [Video-özel eşleme](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video-genel eşleme](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [Video-Microsoft eşlemesi](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
+> * [Video - özel eşdüzey hizmet sağlama](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Video - genel eşdüzey hizmet sağlama](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Video - Microsoft eşdüzey hizmet sağlama](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klasik)](expressroute-howto-routing-classic.md)
 > 
 
-Bu makale, PowerShell ve klasik dağıtım modeli kullanarak bir ExpressRoute bağlantı hattı için eşleme/Yönlendirme yapılandırması oluşturma ve yönetme adımlarında size yol gösterir. Aşağıdaki adımlarda ayrıca bir ExpressRoute bağlantı hattının durumunu denetleme, güncelleştirme veya bağlantı hattını silme ve eşlemelerin sağlamasını kaldırma işlemleri de anlatılmaktadır. Bir ExpressRoute bağlantı hattı için bir, iki veya üç eş (Azure Private, Azure genel ve Microsoft) yapılandırabilirsiniz. Eşlemeleri seçtiğiniz herhangi bir sırayla yapılandırabilirsiniz. Ancak, her eşlemenin yapılandırmasını birer birer tamamladığınızdan emin olmanız gerekir. 
+Bu makale, PowerShell ve klasik dağıtım modeli kullanarak bir ExpressRoute bağlantı hattı için eşleme/Yönlendirme yapılandırması oluşturma ve yönetme adımlarında size yol gösterir. Aşağıdaki adımlarda ayrıca bir ExpressRoute bağlantı hattının durumunu denetleme, güncelleştirme veya bağlantı hattını silme ve eşlemelerin sağlamasını kaldırma işlemleri de anlatılmaktadır. Bir, iki veya üç eşlemenin tamamını (Azure özel, Azure genel ve Microsoft) bir ExpressRoute bağlantı hattı için yapılandırabilirsiniz. Eşlemeleri seçtiğiniz herhangi bir sırayla yapılandırabilirsiniz. Ancak, her eşlemenin yapılandırmasını birer birer tamamladığınızdan emin olmanız gerekir. 
 
-Bu yönergeler yalnızca, katman 2 bağlantı hizmetleri sunan hizmet sağlayıcılarıyla oluşturulan devrelere uygulanır. Yönetilen katman 3 Hizmetleri (genellikle MPLS gibi bir ıPVPN) sunan bir hizmet sağlayıcısı kullanıyorsanız, bağlantı sağlayıcınız yönlendirmeyi sizin için yapılandırıp yönetecektir.
+Bu yönergeler yalnızca, katman 2 bağlantı hizmetleri sunan hizmet sağlayıcılarıyla oluşturulan devrelere uygulanır. Yönetilen sunan bir hizmet sağlayıcısı kullanıyorsanız, Katman 3 Hizmetleri (genellikle gibi bir IPVPN MPLS), bağlantı sağlayıcınız yapılandıracak ve yönlendirmeyi sizin için yönetme.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -43,7 +42,7 @@ Bu yönergeler yalnızca, katman 2 bağlantı hizmetleri sunan hizmet sağlayıc
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>En son PowerShell cmdlet 'lerini indirin
 
-Azure hizmet yönetimi (SM) PowerShell modüllerinin ve ExpressRoute modülünün en son sürümlerini yükler. Aşağıdaki örneği kullanırken, cmdlet 'lerin daha yeni sürümleri yayınlandığından sürüm numarasının (Bu örnekte 5.1.1) değişebileceğini unutmayın.
+Azure Hizmet Yönetimi (SM) PowerShell modüllerine ve ExpressRoute modülünün en son sürümlerini yükleyin. Aşağıdaki örnek kullanırken, cmdlet'leri daha yeni sürümleri çıktıkça sürüm numarasını (Bu örnekte, 5.1.1) değişeceğini unutmayın.
 
 ```powershell
 Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
@@ -72,7 +71,7 @@ Azure hesabınızda oturum açmak için aşağıdaki örnekleri kullanın:
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
-4. Ardından, klasik dağıtım modeli için Azure aboneliğinizi PowerShell 'e eklemek üzere aşağıdaki cmdlet 'i kullanın.
+4. Ardından, Azure aboneliğiniz için PowerShell Klasik dağıtım modeli için eklemek için aşağıdaki cmdlet'i kullanın.
 
    ```powershell
    Add-AzureAccount
@@ -274,7 +273,7 @@ VlanId                         : 200
 
 ### <a name="to-update-azure-public-peering-configuration"></a>Azure ortak eşleme yapılandırmasını güncelleştirmek için
 
-Aşağıdaki cmdlet'i kullanarak yapılandırmanın herhangi bir bölümünü güncelleştirebilirsiniz. Bu örnekte, devrenin VLAN KIMLIĞI 200 ' den 600 ' e güncelleştiriliyor.
+Aşağıdaki cmdlet'i kullanarak yapılandırmanın herhangi bir bölümünü güncelleştirebilirsiniz. Bu örnekte, bağlantı hattının VLAN kimliği 200'den 600 olarak güncelleştiriliyor.
 
 ```powershell
 Set-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 600 -SharedKey "A1B2C3D4"
@@ -283,7 +282,7 @@ Set-AzureBGPPeering -AccessType Public -ServiceKey "****************************
 Devre dışı seçeneğinin sağlandığını ve etkinleştirildiğini doğrulayın. 
 ### <a name="to-delete-azure-public-peering"></a>Azure ortak eşlemesini silmek için
 
-Aşağıdaki cmdlet 'i çalıştırarak eşleme yapılandırmanızı kaldırabilirsiniz:
+Aşağıdaki cmdlet'i çalıştırarak eşleme yapılandırmanızı kaldırabilirsiniz:
 
 ```powershell
 Remove-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
@@ -333,10 +332,10 @@ Bu bölümde bir ExpressRoute bağlantı hattı için Microsoft eşleme yapılan
    * İkincil bağlantı için bir /30 alt ağı. Bu size ait ve bir RIR / IRR içinde kayıtlı bir geçerli ortak IPv4 ön eki olmalıdır.
    * Bu eşlemenin kurulacak geçerli bir VLAN kimliği. Devre içindeki başka bir eşlemenin aynı VLAN KIMLIĞINI kullanmadığını doğrulayın.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz.
-   * Tanıtılan önekler: BGP oturumunda tanıtmayı planladığınız tüm öneklerin bir listesini sağlamanız gerekir. Yalnızca genel IP adresi önekleri kabul edilir. Bir önek kümesi göndermek için plan yaparsanız, virgülle ayrılmış bir liste gönderebilirsiniz. Bu ön ekler size bir RIR / IRR içinde kaydedilmiş olmalıdır.
+   * Tanıtılan önekler: BGP oturumunda tanıtmayı planladığınız tüm öneklerin bir listesini sağlamanız gerekir. Yalnızca ortak IP adresi ön ekleri kabul edilir. Bir önek kümesi göndermek için plan yaparsanız, virgülle ayrılmış bir liste gönderebilirsiniz. Bu ön ekler size bir RIR / IRR içinde kaydedilmiş olmalıdır.
    * Müşteri ASN’si: Eşleme AS numarasına kayıtlı olmayan önekler tanıtıyorsanız, kayıtlı oldukları AS numarasını belirtebilirsiniz. **İsteğe bağlı**.
    * Yönlendirme Kayıt Defteri Adı: AS numarası ve öneklerinin kaydedildiği RIR / IRR’yi belirtebilirsiniz.
-   * Kullanmayı seçerseniz bir MD5 karma değeri. **Seçim.**
+   * Kullanmayı seçerseniz bir MD5 karma değeri. **İsteğe bağlı.**
      
    Devreniz için Microsoft eşlemesini yapılandırmak üzere aşağıdaki cmdlet 'i çalıştırın:
  
@@ -378,7 +377,7 @@ Set-AzureBGPPeering -AccessType Microsoft -ServiceKey "*************************
 
 ### <a name="to-delete-microsoft-peering"></a>Microsoft eşlemesini silmek için
 
-Aşağıdaki cmdlet 'i çalıştırarak eşleme yapılandırmanızı kaldırabilirsiniz:
+Aşağıdaki cmdlet'i çalıştırarak eşleme yapılandırmanızı kaldırabilirsiniz:
 
 ```powershell
 Remove-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"

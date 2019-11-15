@@ -1,5 +1,5 @@
 ---
-title: VMware VM için Azure 'da bir işlem sunucusu ve Azure Site Recovery ile fiziksel sunucu yeniden çalışma ayarlama | Microsoft Docs
+title: Azure Site Recovery bir işlem sunucusu VMware/fiziksel yeniden çalışmayı ayarlama
 description: Bu makalede, Azure 'da Azure VM 'Leri VMware 'e yeniden çalışma için bir işlem sunucusunun nasıl ayarlanacağı açıklanır.
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
-ms.openlocfilehash: 080edfc86848bb6c6579c177c72d3fbd3214a06a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968848"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083962"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Azure 'da yeniden çalışma için bir işlem sunucusu ayarlayın
 
@@ -37,7 +37,7 @@ ms.locfileid: "72968848"
 
 4. **Sunucu adı**, **Kullanıcı adı**ve **parola**' da, işlem sunucusu için bir ad ve sunucuda yönetici izinleri atanacak kimlik bilgileri belirtin.
 5. Sunucu VM diskleri için kullanılacak bir depolama hesabı, işlem sunucusu VM 'sinin bulunduğu alt ağ ve VM başlatıldığında atanacak sunucu IP adresi belirtin.
-6. İşlem sunucusu VM 'sini dağıtmaya başlamak için **Tamam** düğmesine tıklayın. İşlem sunucusu Standard_A8_v2 SKU 'sunda dağıtılacak. Bu VM SKU 'sunun aboneliğiniz için kullanılabilir olduğundan emin olun.
+6. İşlem sunucusu VM 'sini dağıtmaya başlamak için **Tamam** düğmesine tıklayın. İşlem sunucusu Standard_A8_v2 SKU 'suna dağıtılır. Bu VM SKU 'sunun aboneliğiniz için kullanılabilir olduğundan emin olun.
 
 >
 

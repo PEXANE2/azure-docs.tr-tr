@@ -1,5 +1,5 @@
 ---
-title: Hyper-v VM 'lerinin olağanüstü durum sırasında Azure 'dan şirket içine yeniden çalışma çalıştırın | Microsoft Docs
+title: Azure 'dan Hyper-v VM 'lerini Azure Site Recovery ile yeniden çalıştırma
 description: Azure Site Recovery hizmetiyle Azure 'a olağanüstü durum kurtarma sırasında Hyper-V sanal makinelerini şirket içi bir siteye nasıl geri yükleyeceğinizi öğrenin.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,18 +8,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
-ms.openlocfilehash: 07ecc8547ab155600bccfd1ad8f1ecbb58a18fa3
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b924c1424a309fb61f690c21e5665a70356c7a62
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931837"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084223"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Hyper-V VM 'Leri için yeniden çalışma çalıştırma
 
 Bu makalede, Site Recovery tarafından korunan Hyper-V sanal makinelerinin nasıl başarısız olduğu açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Farklı yeniden çalışma türleri](concepts-types-of-failback.md) ve ilgili uyarılar hakkındaki ayrıntıları okuduğunuzdan emin olun.
 - Birincil site VMM sunucusunun veya Hyper-V ana bilgisayar sunucusunun Azure 'a bağlı olduğundan emin olun.
@@ -28,12 +28,12 @@ Bu makalede, Site Recovery tarafından korunan Hyper-V sanal makinelerinin nası
 
 ## <a name="perform-failback"></a>Yeniden çalışma gerçekleştir
 Birincil sunucudan ikincil konuma yük devretmeden sonra, çoğaltılan sanal makineler Site Recovery tarafından korunmaz ve ikincil konum artık etkin konum olarak davranır. Bir kurtarma planında VM 'Leri yeniden devretmek için, ikincil siteden birincil bir yük devretmeyi aşağıdaki gibi çalıştırın. 
-1. **Kurtarma planlarını** > *recoveryplan_name*seçin. **Yük** > devretme**Planlı Yük**devretme seçeneğine tıklayın.
+1. *Recoveryplan_name* > **Kurtarma planlarını** seçin. **Planlı Yük devretme** > **Yük devretme** ' ya tıklayın.
 2. **Planlı Yük devretmeyi Onayla** sayfasında, kaynak ve hedef konumları seçin. Yük devretme yönünü aklınızda edin. Birincil konumdaki yük devretme beklenen şekilde çalışmışsa ve tüm sanal makineler ikincil konumsa bu yalnızca bilgi amaçlıdır.
 3. Azure 'dan geri yük devretmek için **veri eşitleme**' de ayarları seçin:
     - **Yük devretme işleminden önce verileri eşitleme (yalnızca Delta değişikliklerini eşitleme)** — Bu seçenek, sanal makinelerin kapanmadan eşitlendiği kapalı kalma süresini en aza indirir. Aşağıdaki adımları yapar:
         - 1\. Aşama: Azure 'da sanal makinenin anlık görüntüsünü alır ve şirket içi Hyper-V konağına kopyalar. Makine Azure 'da çalışmaya devam ediyor.
-        - 2\. Aşama: Azure 'daki sanal makineyi kapatır, böylece hiçbir yeni değişiklik gerçekleşmez. Son Delta değişikliği kümesi şirket içi sunucuya aktarılır ve şirket içi sanal makine başlatılır.
+        - 2\. Aşama: Azure 'da sanal makineyi kapatır, bu sayede hiçbir yeni değişiklik gerçekleşmez. Son Delta değişikliği kümesi şirket içi sunucuya aktarılır ve şirket içi sanal makine başlatılır.
 
     - **Yalnızca yük devretme sırasında (tam indirme) verileri eşitler**— Bu seçenek daha hızlıdır.
         - Diskin çoğunu değiştirdiğimiz ve sağlama toplamı hesaplamasında zaman harcamasını istediğimizden Bu seçenek daha hızlıdır. Diskin indirilmesini gerçekleştirir. Ayrıca, şirket içi sanal makine silindiğinde de yararlı olur.
@@ -56,16 +56,16 @@ Bir [Hyper-V sitesi Ile Azure](site-recovery-hyper-v-site-to-azure.md) arasında
 
 1. Yeni donanım ayarlıyorsanız, Windows Server 2012 R2 'yi ve sunucuda Hyper-V rolünü yükleyebilirsiniz.
 2. Özgün sunucuda sahip olduğunuz adla aynı ada sahip bir sanal ağ anahtarı oluşturun.
-3. **Korumalı öğeler** -> **koruma grubu** ->  \<' nu seçin protectiongroupname >-> virtualmachinename > yeniden devretmek ve planlı yük devretme ' yı seçmeniz gerekir.\<
+3. **Korunan öğeler** -> **koruma grubu** -> \<protectiongroupname >-> \<virtualmachinename > yeniden devretmek ve **Planlı Yük devretme**seçeneğini belirleyin.
 4. **Planlı Yük devretmeyi Onayla** bölümünde, **yoksa Şirket Içi sanal makine oluştur**' u seçin.
 5. Ana bilgisayar adı ' nda, * * sanal makineyi yerleştirmek istediğiniz yeni Hyper-V ana bilgisayar sunucusunu seçin.
 6. Veri eşitleme ' de, yük devretmeden önce verileri eşitleme seçeneğini seçmenizi öneririz. Bu, sanal makinelerin kapanmadan eşitlendiği kapalı kalma süresini en aza indirir. Şunları yapar:
 
     - 1\. Aşama: Azure 'da sanal makinenin anlık görüntüsünü alır ve şirket içi Hyper-V konağına kopyalar. Makine Azure 'da çalışmaya devam ediyor.
-    - 2\. Aşama: Azure 'daki sanal makineyi kapatır, böylece hiçbir yeni değişiklik gerçekleşmez. Son değişiklik kümesi şirket içi sunucuya aktarılır ve şirket içi sanal makine başlatılır.
+    - 2\. Aşama: Azure 'da sanal makineyi kapatır, bu sayede hiçbir yeni değişiklik gerçekleşmez. Son değişiklik kümesi şirket içi sunucuya aktarılır ve şirket içi sanal makine başlatılır.
     
 7. Yük devretmeye (yeniden çalışma) başlamak için onay işaretine tıklayın.
-8. İlk eşitleme bittikten ve Azure 'da sanal makineyi kapatmaya hazırsanız, **Yük devretmeyi tamamlamaya**> >\< **işleri** > planlı yük devretme işi ' ne tıklayın. Bu, Azure makinesini kapatır, en son değişiklikleri şirket içi sanal makineye aktarır ve başlatır.
+8. İlk eşitleme bittikten ve Azure 'da sanal makineyi kapatmaya hazırsanız Işler > planlı yük devretme işi \<> > **Yük devretmeyi tamamladıktan**sonra **işler** ' e tıklayın. Bu, Azure makinesini kapatır, en son değişiklikleri şirket içi sanal makineye aktarır ve başlatır.
 9. Her şeyin beklendiği gibi çalıştığını doğrulamak için şirket içi sanal makinede oturum açabilirsiniz. Ardından, yük devretmeyi tamamlamak için **Yürüt** ' e tıklayın. Yürüt, Azure sanal makinesini ve disklerini siler ve VM 'yi yeniden korunacak şekilde hazırlar.
 10. Şirket içi sanal makineyi korumaya başlamak için **tersine Çoğalt** ' a tıklayın.
 

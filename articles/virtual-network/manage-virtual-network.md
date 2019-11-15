@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 242cdcc07821151503dc6765f820187c0c3dfc53
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2c2994c310369a0a6fe26ccc2c1e2e5de6680349
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515555"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084707"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Sanal ağ oluşturma, değiştirme veya silme
 
@@ -30,16 +30,16 @@ Var olan bir sanal ağ için sanal ağ oluşturma ve silme ve DNS sunucuları ve
 Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıdaki görevleri doldurun:
 
 - Henüz bir Azure hesabınız yoksa [ücretsiz deneme hesabı](https://azure.microsoft.com/free)için kaydolun.
-- Portalı kullanıyorsanız, https://portal.azure.com ' ı açın ve Azure hesabınızla oturum açın.
+- Portalı kullanıyorsanız, https://portal.azure.comaçın ve Azure hesabınızla oturum açın.
 - Bu makaledeki görevleri tamamlamaya yönelik PowerShell komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/powershell)komutları çalıştırın veya PowerShell 'i bilgisayarınızdan çalıştırarak çalıştırın. Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
-- Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu öğretici, Azure CLı sürüm 2.0.31 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure ile bağlantı oluşturmak için `az login` ' ı çalıştırmanız gerekir.
+- Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu öğretici, Azure CLı sürüm 2.0.31 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure ile bağlantı oluşturmak için `az login` çalıştırmanız da gerekir.
 - Oturum açtığınızda veya Azure 'a bağlanmak için kullandığınız hesap, [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya [izinlerde](#permissions)listelenen uygun eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanmalıdır.
 
-## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-1. **Sanal ağ** > **ağ**  >  **kaynak oluştur** ' u seçin.
+1. **Sanal ağ** > **ağ** > **kaynak oluştur** ' u seçin.
 2. Aşağıdaki ayarlara ait değerleri girin veya seçin ve ardından **Oluştur**' u seçin:
-   - **Ad**: ad, içinde sanal ağı oluşturmak için seçtiğiniz [kaynak grubunda](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) benzersiz olmalıdır. Sanal ağ oluşturulduktan sonra adı değiştiremezsiniz. Zaman içinde birden çok sanal ağ oluşturabilirsiniz. Adlandırma önerileri için bkz. [adlandırma kuralları](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming). Bir adlandırma kuralını takip etmek, birden çok sanal ağı yönetmeyi kolaylaştırır.
+   - **Ad**: ad, içinde sanal ağı oluşturmak için seçtiğiniz [kaynak grubunda](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) benzersiz olmalıdır. Sanal ağ oluşturulduktan sonra adı değiştiremezsiniz. Zaman içinde birden çok sanal ağ oluşturabilirsiniz. Adlandırma önerileri için bkz. [adlandırma kuralları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources). Bir adlandırma kuralını takip etmek, birden çok sanal ağı yönetmeyi kolaylaştırır.
    - **Adres alanı**: bir sanal ağın adres alanı, CIDR gösteriminde belirtilen bir veya daha fazla çakışmayan adres aralığından oluşur. Tanımladığınız adres aralığı ortak veya özel olabilir (RFC 1918). Adres aralığını genel veya özel olarak tanımladığınıza göre, adres aralığına yalnızca sanal ağ içinden, birbirine bağlı sanal ağlardan ve sanal ağa bağladığınız şirket içi ağlardan erişilebilir. Aşağıdaki adres aralıklarını ekleyemezsiniz:
      - 224.0.0.0/4 (çok noktaya yayın)
      - 255.255.255.255/32 (yayın)
@@ -137,7 +137,7 @@ Sanal ağa bağlı tüm VM 'Ler, sanal ağ için belirttiğiniz DNS sunucularıy
 1. Portalın üst kısmındaki arama kutusuna, arama kutusuna *sanal ağlar* girin. Arama sonuçlarında **sanal ağlar** görüntülendiğinde, bunu seçin.
 2. Sanal ağlar listesinden, DNS sunucularını değiştirmek istediğiniz sanal ağı seçin.
 3. **Ayarlar**altında **DNS sunucuları**' nı seçin.
-4. Aşağıdaki seçeneklerden birini belirleyin:
+4. Aşağıdaki seçeneklerden birini seçin:
    - **Varsayılan (Azure tarafından sağlanmış)** : tüm kaynak adları ve özel ıp adresleri Azure DNS sunucularına otomatik olarak kaydedilir. Aynı sanal ağa bağlı herhangi bir kaynak arasındaki adları çözebilirsiniz. Bu seçeneği, sanal ağlardaki adları çözümlemek için kullanamazsınız. Sanal ağlarda adları çözümlemek için özel bir DNS sunucusu kullanmanız gerekir.
    - **Özel**: bir sanal ağ için Azure sınırına kadar bir veya daha fazla sunucu ekleyebilirsiniz. DNS sunucusu limitleri hakkında daha fazla bilgi edinmek için bkz. [Azure Limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Aşağıdaki seçenekleriniz vardır:
    - **Adres ekleyin**: sunucuyu sanal ağ DNS sunucuları listenize ekler. Bu seçenek ayrıca DNS sunucusunu Azure 'a kaydeder. Azure ile bir DNS sunucusu zaten kaydolduysanız, listeden bu DNS sunucusunu seçebilirsiniz.
@@ -171,7 +171,7 @@ Bir sanal ağı, yalnızca bağlı kaynak yoksa silebilirsiniz. Sanal ağ içind
 
 Sanal ağlarda görevleri gerçekleştirmek için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                  |   Adı                                |
+| Eylem                                  |   Ad                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft. Network/virtualNetworks/Read   |   Sanal ağ okuma              |
 |Microsoft. Network/virtualNetworks/Write  |   Sanal ağ oluşturma veya güncelleştirme  |

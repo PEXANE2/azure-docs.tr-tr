@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: ba961547bc46b0746997ea95ddd14f1a6d1d8a23
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1c8717614ec59ef210c7340f70ddedd7f7f86f88
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821220"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091958"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Otomatik veritabanı yedeklemeleri kullanarak bir Azure SQL veritabanını kurtarma
 
@@ -108,11 +108,13 @@ Silinen veritabanlarını sunucu ve örnek kaynağından Azure portal geri yükl
 
 Azure portal kullanarak tek veya havuza alınmış silinen bir veritabanını kurtarmak için, sunucuya genel bakış sayfasını açın ve **silinen veritabanları**' nı seçin. Geri yüklemek istediğiniz silinen bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
 
-  ![Silinen veritabanları seçeneklerinin ekran görüntüsü](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
+  ![Silinen Azure SQL veritabanı 'nı geri yükleme ekran görüntüsü](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
 #### <a name="managed-instance-database"></a>Yönetilen örnek veritabanı
 
-Yönetilen bir örnekteki silinen bir veritabanını geri yüklemek için Azure portal kullanamazsınız. Bu amaçla PowerShell kullanabilirsiniz. 
+Azure portal kullanarak yönetilen bir veritabanını kurtarmak için, yönetilen örneğe genel bakış sayfasını açın ve **silinen veritabanları**' nı seçin. Geri yüklemek istediğiniz silinen bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
+
+  ![Silinen Azure SQL örneği veritabanını geri yükleme ekran görüntüsü](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
 ### <a name="deleted-database-restore-by-using-powershell"></a>PowerShell kullanarak veritabanı geri yükleme silindi
 

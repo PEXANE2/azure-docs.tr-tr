@@ -6,32 +6,32 @@ author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 080fda3077a10d0605f061aca5226783457348f9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7d2813a51e63d86b56712bb6d07efc2f65ec65a0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837534"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077825"
 ---
-# <a name="tutorial-create-azure-virtual-machine-scale-set-from-a-packer-custom-image-using-terraform"></a>Öğretici: Terrayform kullanarak Packer özel görüntüsünden Azure sanal makine ölçek kümesi oluşturma
+# <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>Öğretici: Teroyform kullanarak Packer özel görüntüsünden Azure sanal makine ölçek kümesi oluşturma
 
-Bu öğreticide [Terraform](https://www.terraform.io/)'u kullanarak [Packer](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) ile ve [HashiCorp Yapılandırma Dili](https://www.packer.io/intro/index.html) (HCL) kullanılarak oluşturulmuş yönetilen disklerle oluşturulmuş olan özel bir görüntüyü kullanarak [Azure sanal makine ölçek kümesi](https://www.terraform.io/docs/configuration/syntax.html) oluşturacak ve dağıtacaksınız.  
+Bu öğreticide [Terrayform](https://www.terraform.io/) kullanarak, [HashiCorp yapılandırma dilini](https://www.terraform.io/docs/configuration/syntax.html) (HCL) kullanan yönetilen disklerle birlikte [Packer](https://www.packer.io/intro/index.html) kullanılarak oluşturulan özel bir görüntüyle oluşturulmuş bir [Azure sanal makine ölçek kümesi](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) oluşturun ve dağıtın. 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Terraform dağıtımınızı ayarlama
-> * Terraform dağıtımı için değişkenleri ve çıkışları kullanma 
-> * Ağ altyapısı oluşturma ve dağıtma
-> * Packer kullanarak özel sanal makine görüntüsü oluşturma
-> * Özel görüntüyü kullanarak sanal makine ölçek kümesi oluşturma ve dağıtma
-> * Sıçrama kutusu oluşturma ve dağıtma 
+> * Terrayform dağıtımınızı ayarlayın.
+> * Terrayform dağıtımı için değişkenleri ve çıkışları kullanın.
+> * Ağ altyapısı oluşturun ve dağıtın.
+> * Packer kullanarak özel bir sanal makine görüntüsü oluşturun.
+> * Özel görüntüyü kullanarak bir sanal makine ölçek kümesi oluşturun ve dağıtın.
+> * Bir JumpBox oluşturun ve dağıtın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- **Terrayform**: [terrayform 'U yükler ve Azure 'a erişimi yapılandırın](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terrayform**: [terrayform 'U yükler ve Azure 'a erişimi yapılandırır](/azure/virtual-machines/linux/terraform-install-configure).
 - **SSH anahtar çifti**: [SSH anahtar çifti oluşturun](/azure/virtual-machines/linux/mac-create-ssh-keys).
 - **Packer**: [Packer 'ı yükler](https://www.packer.io/docs/install/index.html).
 
@@ -63,11 +63,11 @@ variable "resource_group_name" {
 ```
 
 > [!NOTE]
-> resource_group_name değişkeninin varsayılan değerinin yerine kendi değerinizi tanımlayın.
+> Resource_group_name değişkeninin varsayılan değeri unset. Kendi değerini tanımlayın.
 
 Dosyayı kaydedin.
 
-Terraform şablonunu dağıttığınızda uygulamaya erişmek için kullanılan tam etki alanı adını almanız gerekir. Terraform'un `output` kaynak türünü kullanın ve kaynağın `fqdn` özelliğini alın. 
+Terkform şablonunuzu dağıttığınızda, uygulamaya erişmek için kullanılan tam etki alanı adını almak istersiniz. Terraform'un `output` kaynak türünü kullanın ve kaynağın `fqdn` özelliğini alın. 
 
 `output.tf` dosyasını düzenleyin ve aşağıdaki kodu kopyalayarak tam etki alanı adını sanal makinelerin kullanımına açın. 
 
@@ -80,9 +80,9 @@ output "vmss_public_ip" {
 ## <a name="define-the-network-infrastructure-in-a-template"></a>Şablonda ağ altyapısını tanımlama 
 
 Bu adımda yeni bir Azure kaynak grubunda aşağıdaki ağ altyapısını oluşturacaksınız: 
-  - 10.0.0.0/16 adres alanına sahip bir sanal ağ 
-  - 10.0.2.0/24 adres alanına sahip bir alt ağ
-  - İki genel IP adresi. Biri sanal makine ölçek kümesi yük dengeleyici tarafından, diğeri ise SSH sıçrama kutusuna bağlanmak için kullanılır
+  - 10.0.0.0/16 adres alanına sahip bir sanal ağ.
+  - Adres alanı 10.0.2.0/24 olan bir alt ağ.
+  - İki genel IP adresi. Bunlardan biri, sanal makine ölçek kümesi yük dengeleyici tarafından kullanılır. Diğer bir deyişle SSH atlama kutusuna bağlanmak için kullanılır.
 
 Ayrıca tüm kaynakların oluşturulacağı bir kaynak grubu da oluşturmanız gerekir. 
 
@@ -132,7 +132,7 @@ resource "azurerm_public_ip" "vmss" {
 ``` 
 
 > [!NOTE]
-> İleride daha kolay ayırt etmek için Azure'a dağıtılan kaynakları etiketlemenizi öneririz.
+> Daha sonra tanımlanmasını kolaylaştırmak için Azure 'da dağıtılan kaynakları etiketleyerek.
 
 ## <a name="create-the-network-infrastructure"></a>Ağ altyapısını oluşturma
 
@@ -152,31 +152,31 @@ terraform apply
 
 Genel IP adresinin tam etki alanı adının yapılandırmanıza gittiğinden emin olun.
 
-![Genel IP adresi için Terraform sanal makine ölçek kümesi tam etki alanı adı](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-fqdn.png)
+![Genel IP adresi için sanal makine ölçek kümesi Terkform tam etki alanı adı](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-fqdn.png)
 
 Kaynak grubu aşağıdaki kaynakları kapsar:
 
 ![Sanal makine ölçek kümesi Terraform ağ kaynakları](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-rg.png)
 
 
-## <a name="create-an-azure-image-using-packer"></a>Packer'ı kullanarak Azure görüntüsü oluşturma
-[Packer'ı kullanarak Azure'da Linux sanal makine görüntüleri oluşturma](/azure/virtual-machines/linux/build-image-with-packer) öğreticisindeki adımları kullanarak özel bir Linux görüntüsü oluşturun.
+## <a name="create-an-azure-image-by-using-packer"></a>Packer kullanarak Azure görüntüsü oluşturma
+[Azure 'Da Linux sanal makine görüntüleri oluşturmak Için Packer kullanma](/azure/virtual-machines/linux/build-image-with-packer)öğreticisindeki adımları izleyerek özel bir Linux görüntüsü oluşturun.
  
-NGINX yüklü ve sağlaması kaldırılmış bir Ubuntu görüntüsü oluşturma öğreticisindeki adımları izleyin.
+NGINX yüklü olarak önceden sağlanmış bir Ubuntu görüntüsü oluşturmak için öğreticiyi izleyin.
 
-![Packer görüntüsünü oluşturduktan sonra bir görüntü elde edersiniz](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/packerimagecreated.png)
+![Packer görüntüsünü oluşturduktan sonra bir görüntünüz vardır](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/packerimagecreated.png)
 
 > [!NOTE]
-> Bu öğreticide Packer görüntüsünde nginx yüklemek için bir komut çalıştırılır. Oluşturma sırasında kendi betiğinizi de çalıştırabilirsiniz.
+> Bu öğreticinin amaçları doğrultusunda, Packer görüntüsünde, NGINX yüklemek için bir komut çalıştırılır. Oluşturma sırasında kendi betiğinizi de çalıştırabilirsiniz.
 
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>Altyapıyı düzenleyerek sanal makine ölçek kümesini ekleme
 
 Bu adımda önceden dağıttığınız ağ üzerinde aşağıdaki kaynakları oluşturacaksınız:
-- Uygulamayı sunacak ve daha önce dağıtılan genel IP adresine ekleyecek Azure yük dengeleyici.
-- Uygulamayı sunmak ve önceden yapılandırılan genel IP adresine eklemek için bir Azure yük dengeleyici ve kurallar.
-- Azure arka uç adres havuzu ve yük dengeleyiciye atayın.
+- Uygulamayı sunacak bir Azure yük dengeleyici. Daha önce dağıtılan genel IP adresine iliştirin.
+- Uygulamayı sunacak bir Azure yük dengeleyici ve kuralları. Daha önce yapılandırılmış genel IP adresine iliştirin.
+- Bir Azure arka uç Adres Havuzu. Yük dengeleyiciye atayın.
 - Uygulama tarafından kullanılan ve yük dengeleyicide yapılandırılan bir sistem durumu araştırması bağlantı noktası.
-- Daha önce dağıtılan VNET üzerinde çalışan yük dengeleyicinin arkasında çalışan bir sanal makine ölçek kümesi.
+- Yük dengeleyicinin arkasında yer alan ve daha önce dağıtılan sanal ağ üzerinde çalışan bir sanal makine ölçek kümesi.
 - Özel görüntüden yüklenen sanal makine ölçeğinin düğümlerinde [NGINX](https://nginx.org/) .
 
 
@@ -342,7 +342,7 @@ Bir tarayıcı penceresi açın ve komutun döndürdüğü tam etki alanı adın
 Bu isteğe bağlı adım, sıçrama kutusu kullanarak sanal makine ölçek kümesi örneklerine SSH erişimi sunar.
 
 Var olan dağıtımınıza aşağıdaki kaynakları ekleyin:
-- Sanal makine ölçek kümesiyle aynı alt ağa bağlı olan bir ağ arabirimi
+- Sanal makine ölçek kümesi ile aynı alt ağa bağlı bir ağ arabirimi
 - Bu ağ arabirimine sahip bir sanal makine
 
 `vmss.tf` dosyasının sonuna aşağıdaki kodu ekleyin:
@@ -419,7 +419,7 @@ resource "azurerm_virtual_machine" "jumpbox" {
 }
 ```
 
-`outputs.tf` dosyasını düzenleyerek dağıtım tamamlandığında sıçrama kutusunun ana bilgisayar adını gösteren aşağıdaki kodu ekleyin:
+Dağıtım tamamlandığında sıçrama kutusu ana bilgisayar adını görüntüleyen aşağıdaki kodu eklemek için `outputs.tf` düzenleyin:
 
 ```
 output "jumpbox_public_ip" {
@@ -435,12 +435,12 @@ Sıçrama kutusu dağıtın.
 terraform apply 
 ```
 
-Dağıtım tamamlandıktan sonra kaynak grubunun içeriği şu görüntüye benzer olacaktır:
+Dağıtım tamamlandıktan sonra, kaynak grubunun içeriği aşağıdaki görüntüye benzer şekilde görünür:
 
 ![Terraform sanal makine ölçek kümesi kaynak grubu](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-create-vmss-step8.png)
 
 > [!NOTE]
-> Dağıttığınız sıçrama kutusunda ve sanal makine ölçek kümesinde devre dışı bırakılmış olan bir parolayla oturum açın. VM'lere erişmek için SSH ile oturum açın.
+> Parola ile oturum açma, sıçrama kutusu ve dağıttığınız sanal makine ölçek kümesi üzerinde devre dışıdır. VM 'Lere erişmek için SSH ile oturum açın.
 
 ## <a name="clean-up-the-environment"></a>Ortamı temizleme
 
@@ -450,7 +450,7 @@ Aşağıdaki komutlar bu öğreticide oluşturulan kaynakları siler:
 terraform destroy
 ```
 
-Kaynakların silinmesini onaylamanız istendiğinde `yes` yazın. Yok etme işleminin tamamlanması birkaç dakika sürebilir.
+Kaynakları silme işlemini onaylamanız istendiğinde *Evet* yazın. Yok etme işleminin tamamlanması birkaç dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

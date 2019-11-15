@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: fb6a1022308ee26aa8a4f2ac39c58fce26243419
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 2d740c8d078770267669a0be749ca8d5d210bb72
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903585"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083175"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure'daki bir sanal makineyi yedekleme
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıç belgesi var olan bir Azure VM'de yedeklemeyi etkinleşti
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-<https://portal.azure.com> Azure portal oturum açın
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="select-a-vm-to-back-up"></a>Yedeklenecek sanal makineyi seçme
 

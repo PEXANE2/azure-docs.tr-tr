@@ -1,5 +1,5 @@
 ---
-title: 'Yönlendirmeyi iyileştirme-ExpressRoute devreleri: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: yönlendirmeyi Iyileştirme'
 description: Bu sayfa, Microsoft ve şirket ağınız arasında bağlanan birden fazla ExpressRoute devresine sahip olduğunda yönlendirmenin nasıl iyileştirileceği hakkında ayrıntılı bilgi sağlar.
 services: expressroute
 author: charwen
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
-ms.custom: seodec18
-ms.openlocfilehash: 4a20318a4779b06e60d849dea0774d717d87e48e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141861"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080129"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute Yönlendirmeyi En iyi Duruma Getirme
 Birden çok ExpressRoute bağlantı hattına sahip olduğunuzda, Microsoft'a bağlanmak için birden fazla yolunuz vardır. Sonuç olarak, yetersiz yönlendirme olabilir, diğer bir deyişle, trafiğinizin Microsoft’a ulaşması ve Microsoft’un ağınıza ulaşması daha uzun bir yol alabilir. Ne kadar uzun ağ yolu, o kadar yüksek gecikme. Gecikmenin uygulama performansı ve kullanıcı deneyimi üzerinde doğrudan etkisi vardır. Bu makale, bu sorunu gösterir ve standart yönlendirme teknolojilerini kullanarak yönlendirmenin nasıl iyileştirileceğini açıklar.
@@ -55,7 +54,7 @@ Bir örnekle yönlendirme problemine daha yakından bir bakalım. Biri Los Angel
 ![ExpressRoute Vaka 1 sorunu: Müşteriden Microsoft’a yetersiz yönlendirme](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
 
 ### <a name="solution-use-bgp-communities"></a>Çözüm: BGP Toplulukları’nı kullanın
-Her iki ofis kullanıcıları için yönlendirmeyi en iyi hale getirmek için, hangi önekin Azure Batı ABD ve Azure Doğu ABD olduğunu bilmeniz gerekir. Bu bilgileri [BGP Topluluğu değerlerini](expressroute-routing.md) kullanarak kodlarız. Her bir Azure bölgesine benzersiz bir BGP Topluluğu değeri atadık, örneğin Doğu ABD için "12076:51004", Batı ABD için "12076:51006". Artık hangi önekin hangi Azure bölgesinden olduğunu bildiğinize göre, tercih edilmesi gereken ExpressRoute bağlantı hattını yapılandırabilirsiniz. Yönlendirme bilgilerinin değişimi için BGP kullandığımızdan, yönlendirmeyi etkilemek için BGP'nin Yerel Tercihini kullanabilirsiniz. Bizim örneğimizde, ABD Batı’daki 13.100.0.0/16 için ABD Doğu’dan daha yüksek bir yerel tercih değeri atayabilir ve benzer şekilde, ABD Doğu’daki 23.100.0.0/16 için ABD Batı’dan daha yüksek bir yerel tercih değeri atayabilirsiniz. Bu yapılandırma her iki Microsoft yolunun da kullanılabilir olduğunda, New York’taki kullanıcılarınız ABD Doğu’dan Azure ABD Doğu’ya ExpressRoute bağlantı hattını kullanırken Los Angeles’taki kullanıcılarınızın Azure ABD Batı’ya bağlanması için ABD Batı’daki ExpressRoute bağlantı hattının kullanıldığından emin olacaktır. Her iki tarafta da yönlendirme en iyi duruma getirilmiştir. 
+Her iki ofis kullanıcıları için yönlendirmeyi en iyi hale getirmek için, hangi önekin Azure Batı ABD ve Azure Doğu ABD olduğunu bilmeniz gerekir. Bu bilgileri [BGP Topluluğu değerlerini](expressroute-routing.md) kullanarak kodlarız. Her bir Azure bölgesine benzersiz bir BGP topluluk değeri atadık. Örneğin, ABD Batı için "12076:51004", "12076:51006" ABD Doğu. Artık hangi önekin hangi Azure bölgesinden olduğunu bildiğinize göre, tercih edilmesi gereken ExpressRoute bağlantı hattını yapılandırabilirsiniz. Yönlendirme bilgilerinin değişimi için BGP kullandığımızdan, yönlendirmeyi etkilemek için BGP'nin Yerel Tercihini kullanabilirsiniz. Bizim örneğimizde, ABD Batı’daki 13.100.0.0/16 için ABD Doğu’dan daha yüksek bir yerel tercih değeri atayabilir ve benzer şekilde, ABD Doğu’daki 23.100.0.0/16 için ABD Batı’dan daha yüksek bir yerel tercih değeri atayabilirsiniz. Bu yapılandırma her iki Microsoft yolunun da kullanılabilir olduğunda, New York’taki kullanıcılarınız ABD Doğu’dan Azure ABD Doğu’ya ExpressRoute bağlantı hattını kullanırken Los Angeles’taki kullanıcılarınızın Azure ABD Batı’ya bağlanması için ABD Batı’daki ExpressRoute bağlantı hattının kullanıldığından emin olacaktır. Her iki tarafta da yönlendirme en iyi duruma getirilmiştir. 
 
 ![ExpressRoute Vaka 1 çözümü: BGP Toplulukları’nı kullanın](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
 

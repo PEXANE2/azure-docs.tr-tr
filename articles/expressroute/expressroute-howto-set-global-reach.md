@@ -1,23 +1,22 @@
 ---
-title: 'Global Reach yapılandırma-ExpressRoute: Azure | Microsoft Docs'
-description: Bu makale, ExpressRoute bağlantı devresine, şirket içi ağlarınızla özel bir ağ oluşturmak ve Global Reach etkinleştirmek için bir araya yönlendirmenize yardımcı olur.
+title: 'Azure ExpressRoute: Global Reach yapılandırma'
+description: Bu makalede, yardımcı birlikte özel ağ arasında şirket içi ağlarınız ve Global erişim etkinleştirme yapmak için ExpressRoute bağlantı hattına bağlayın.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 64abf820a502db0ee0033ce52ed148bae6b8ffc2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 76de7a8854a58deb924cbbe3177ad5a7b5fd57a2
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748176"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083461"
 ---
 # <a name="configure-expressroute-global-reach"></a>ExpressRoute Global Reach’i yapılandırma
 
-Bu makale, PowerShell kullanarak ExpressRoute Global Reach yapılandırmanıza yardımcı olur. Daha fazla bilgi için bkz. [ExpressRouteRoute Global Reach](expressroute-global-reach.md).
+Bu makalede PowerShell kullanarak ExpressRoute Global erişim yapılandırmanıza yardımcı olur. Daha fazla bilgi için [ExpressRouteRoute Global erişim](expressroute-global-reach.md).
 
  ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -28,7 +27,7 @@ Yapılandırmaya başlamadan önce, aşağıdakileri onaylayın:
 * Azure özel eşlemesi, ExpressRoute devrelerinizi yapılandırılmış.
 * PowerShell 'i yerel olarak çalıştırmak istiyorsanız, Azure PowerShell en son sürümünün bilgisayarınızda yüklü olduğunu doğrulayın.
 
-### <a name="working-with-azure-powershell"></a>Azure PowerShell çalışma
+### <a name="working-with-azure-powershell"></a>Azure PowerShell ile çalışma
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
@@ -50,7 +49,7 @@ Yapılandırmaya başlamadan önce, aşağıdakileri onaylayın:
 
 ### <a name="expressroute-circuits-in-the-same-azure-subscription"></a>Aynı Azure aboneliğindeki ExpressRoute devreleri
 
-1. Devre 1 ve devre 2 ' i almak için aşağıdaki komutları kullanın. İki devre aynı abonelikte bulunur.
+1. Bağlantı hattı 1 ve 2 bağlantı hattı almak için aşağıdaki komutları kullanın. İki bağlantı hatları, aynı abonelikte yer alan.
 
    ```azurepowershell-interactive
    $ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
@@ -76,11 +75,11 @@ Yapılandırmaya başlamadan önce, aşağıdakileri onaylayın:
 
 Önceki işlem tamamlandığında, iki ExpressRoute devreniz aracılığıyla şirket içi ağlarınızla her iki tarafa da bağlantınız olur.
 
-### <a name="expressroute-circuits-in-different-azure-subscriptions"></a>Farklı Azure aboneliklerinde ExpressRoute devreleri
+### <a name="expressroute-circuits-in-different-azure-subscriptions"></a>Farklı Azure aboneliklerinde ExpressRoute işlem hatları
 
 İki devrede aynı Azure aboneliğinde yoksa, yetkilendirme yapmanız gerekir. Aşağıdaki yapılandırmada, yetkilendirme devre 2 aboneliğinde oluşturulur ve yetkilendirme anahtarı devre 1 ' e geçirilir.
 
-1. Yetkilendirme anahtarı oluşturun.
+1. Bir yetkilendirme anahtar oluşturun.
 
    ```azurepowershell-interactive
    $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
@@ -89,7 +88,7 @@ Yapılandırmaya başlamadan önce, aşağıdakileri onaylayın:
    ```
 
    Devre 2 ' nin özel eşleme KIMLIĞINI ve yetkilendirme anahtarını bir yere unutmayın.
-2. Devre 1 ' de aşağıdaki komutu çalıştırın. Devre 2 ' nin özel eşleme KIMLIĞINI ve yetkilendirme anahtarını geçirin.
+2. 1 bağlantı hattı karşı aşağıdaki komutu çalıştırın. Devre 2 ' nin özel eşleme KIMLIĞINI ve yetkilendirme anahtarını geçirin.
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering "circuit_2_private_peering_id" -AddressPrefix '__.__.__.__/29' -AuthorizationKey '########-####-####-####-############'
@@ -121,11 +120,11 @@ Remove-AzExpressRouteCircuitConnectionConfig -Name "Your_connection_name" -Expre
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```
 
-Durumu doğrulamak için Get işlemini çalıştırabilirsiniz.
+Durumu doğrulamak için alma işlemini çalıştırabilirsiniz.
 
 Önceki işlem tamamlandıktan sonra, ExpressRoute devrelerinizi kullanarak şirket içi ağınız arasında artık bağlantı kuramadınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-1. [ExpressRoute Global Reach hakkında daha fazla bilgi edinin](expressroute-global-reach.md)
+1. [ExpressRoute Global erişim hakkında daha fazla bilgi edinin](expressroute-global-reach.md)
 2. [ExpressRoute bağlantısını doğrulama](expressroute-troubleshooting-expressroute-overview.md)
 3. [Azure sanal ağına bir ExpressRoute bağlantı hattı bağlama](expressroute-howto-linkvnet-arm.md)

@@ -1,40 +1,39 @@
 ---
-title: ExpressRoute üzerinden BFD 'yi Yapılandırma-Azure | Microsoft Docs
-description: Bu makale, bir ExpressRoute devresine ait özel eşleme üzerinde BFD (çift yönlü Iletim algılama) yapılandırma hakkında yönergeler sağlar.
+title: "Azure ExpressRoute: BFD 'yi yapılandırma"
+description: Bu makalede, özel eşleme üzerinden ExpressRoute bağlantı hattının BFD (iletme çift yönlü algılama) yapılandırma hakkında yönergeler sağlar.
 services: expressroute
 author: rambk
 ms.service: expressroute
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: rambala
-ms.custom: seodec18
-ms.openlocfilehash: a24e021c34fe1ad315ca7f75f9bfdb29d94b253a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 608b5e0011d4ed656ff61fec84a23f2fb22373b3
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495002"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080791"
 ---
-# <a name="configure-bfd-over-expressroute"></a>ExpressRoute üzerinde BFD 'yi yapılandırma
+# <a name="configure-bfd-over-expressroute"></a>ExpressRoute üzerinden BFD yapılandırın
 
-ExpressRoute, hem özel hem de Microsoft eşlemesi üzerinden çift yönlü Iletme algılamayı (BFD) destekler. ExpressRoute üzerinde BFD 'yi etkinleştirerek, Microsoft Enterprise Edge (MSEE) cihazları ile ExpressRoute devresini (CE/PE) sonlandıran yönlendiriciler arasında bağlantı hatası algılamayı yönlendirebilirsiniz. ExpressRoute 'u, müşteri Edge yönlendirme cihazları veya Iş ortağı Edge yönlendirme cihazları üzerinden sonlandırabilirsiniz (yönetilen katman 3 bağlantı hizmeti ile karşılaşırsanız). Bu belge BFD gereksinimi boyunca size yol gösterir ve ExpressRoute üzerinde BFD 'yi nasıl etkinleştireceğinizi açıklar.
+ExpressRoute, hem özel hem de Microsoft eşlemesi üzerinden çift yönlü Iletme algılamayı (BFD) destekler. ExpressRoute üzerinde BFD 'yi etkinleştirerek, Microsoft Enterprise Edge (MSEE) cihazları ile ExpressRoute devresini (CE/PE) sonlandıran yönlendiriciler arasında bağlantı hatası algılamayı yönlendirebilirsiniz. (Yönetilen Katman 3 bağlantısı hizmetiyle gittiyse) müşteri Edge'i yönlendirme cihazları veya iş ortağı uç yönlendirme cihazları üzerinden ExpressRoute sonlandırabilirsiniz. Bu belge ihtiyacını BFD ve ExpressRoute üzerinden BFD etkinleştirme konusunda size kılavuzluk eder.
 
-## <a name="need-for-bfd"></a>BFD gereksinimi
+## <a name="need-for-bfd"></a>BFD gereksinimini
 
-Aşağıdaki diyagramda, ExpressRoute bağlantı hattı üzerinde BFD 'yi etkinleştirme avantajı gösterilmektedir: [![1]][1]
+ExpressRoute bağlantı hattı üzerinden BFD etkinleştirme avantajı Aşağıdaki diyagramda gösterilmiştir: [ ![1]][1]
 
-ExpressRoute devresini katman 2 bağlantıları veya yönetilen katman 3 bağlantılarıyla etkinleştirebilirsiniz. Her iki durumda da ExpressRoute bağlantı yolunda bir veya daha fazla katman 2 cihaz varsa, yoldaki bağlantı hatalarının algılanmasının sorumluluğu, çok sayıda BGP ile sonuçlanır.
+Yönetilen Katman 3 bağlantılarını veya ExpressRoute bağlantı hattı Katman 2 bağlantıları ya da etkinleştirebilirsiniz. ExpressRoute bağlantı yolunda bir veya daha fazla katman 2 cihazlar varsa her iki durumda da, üstteki BGP ile bağlantı hataları algılama yolu sorumluluğunu arasındadır.
 
-MSEE cihazlarında, BGP KeepAlive ve tutma zamanı genellikle sırasıyla 60 ve 180 saniye olarak yapılandırılır. Bu nedenle, bir bağlantı hatasının ardından bağlantı başarısızlığının algılanması ve trafiği alternatif bağlantıya geçirmek üç dakika sürer.
+MSEE cihazlarda BGP keepalive ve durma süresini genellikle 60-180 saniye sırasıyla yapılandırılır. Bu nedenle, en fazla götürecek bir bağlantı hatası algılamak için üç dakika bağlantı hatası ve alternatif bağlantı trafiğini geçin.
 
-İstemci Edge eşleme cihazında daha düşük BGP canlı tutmayı ve bekleme süresini yapılandırarak BGP zamanlayıcılarını kontrol edebilirsiniz. BGP zamanlayıcıları iki eşleme cihazı arasında uyuşmdaysanız, eşler arasındaki BGP oturumu düşük Zamanlayıcı değerini kullanacaktır. BGP KeepAlive, en az üç saniye, en fazla saniye cinsinden bir bekleme süresi olarak ayarlanabilir. Ancak, protokol işlem yoğun olduğundan BGP zamanlayıcıları kararlılığı daha az tercih edilir.
+Müşteri sınır eşleme cihazı daha düşük BGP keepalive ve durma süresini yapılandırarak BGP zamanlayıcılar kontrol edebilirsiniz. İki eşleme cihazlar arasında BGP zamanlayıcılar eşleşirse, eşler arasında BGP oturumu alt zamanlayıcı değeri kullanırsınız. BGP keepalive üç saniye ve onlarca saniye sırasına göre Durma süresini olabildiğince düşük olarak ayarlanabilir. Ancak, protokol işlem yoğun olduğundan BGP zamanlayıcıları kararlılığı daha az tercih edilir.
 
-Bu senaryoda BFD yardımcı olabilir. BFD, alt/saniye bir zaman aralığında düşük ek yük hata algılaması sağlar. 
+Bu senaryoda BFD yardımcı olabilir. BFD subsecond zaman aralığındaki düşük ek yük bağlantı hatası algılama sağlar. 
 
 
-## <a name="enabling-bfd"></a>BFD 'yi etkinleştirme
+## <a name="enabling-bfd"></a>BFD etkinleştirme
 
-BFD, tüm yeni oluşturulan ExpressRoute özel eşleme arabirimlerini MSEE altında varsayılan olarak yapılandırılır. Bu nedenle BFD 'yi etkinleştirmek için, her ikisi de her ikisi de (hem birincil hem de ikincil cihazlarınızda) BFD 'yi yapılandırmanız gerekir. BFD 'nin yapılandırması iki adımlı bir işlemdir: arabirimdeki BFD 'yi yapılandırmanız ve ardından BGP oturumuna bağlamanız gerekir.
+Varsayılan olarak tüm yeni oluşturulan ExpressRoute özel eşlemesi arabirimlerde Msee'ler altında BFD yapılandırılır. Bu nedenle BFD 'yi etkinleştirmek için, her ikisi de her ikisi de (hem birincil hem de ikincil cihazlarınızda) BFD 'yi yapılandırmanız gerekir. BFD 'nin yapılandırması iki adımlı bir işlemdir: arabirimdeki BFD 'yi yapılandırmanız ve ardından BGP oturumuna bağlamanız gerekir.
 
 Örnek bir CE/PE (Cisco IOS XE kullanılarak) yapılandırma aşağıda gösterilmiştir. 
 
@@ -56,12 +55,12 @@ BFD, tüm yeni oluşturulan ExpressRoute özel eşleme arabirimlerini MSEE altı
       exit-address-family
 
 >[!NOTE]
->Zaten var olan bir özel eşleme altında BFD 'yi etkinleştirmek için; eşlemeyi sıfırlamanız gerekir. Bkz. [ExpressRoute eşayarlarını sıfırlama][ResetPeering]
+>Bir mevcut özel eşdüzey hizmet sağlama altında BFD etkinleştirmek için; eşleme sıfırlamak gerekir. Bkz. [ExpressRoute eşayarlarını sıfırlama][ResetPeering]
 >
 
 ## <a name="bfd-timer-negotiation"></a>BFD Zamanlayıcı anlaşması
 
-BFD eşleri arasında iki eşin daha yavaş olması iletim hızını belirlemektir. MSEE BFD iletim/alma aralıkları 300 milisaniyeye ayarlanır. Belirli senaryolarda, Aralık 750 milisaniyelik daha yüksek bir değerde ayarlanabilir. Daha yüksek değerleri yapılandırarak, bu aralıkları daha uzun olacak şekilde zorlayabilirsiniz; Ancak, daha kısa değildir.
+BFD eşleri arasında iki eş daha yavaş aktarım hızını belirler. Msee BFD aktarım/alma aralıkları 300 milisaniye olarak ayarlanır. Belirli senaryolarda aralığı 750 milisaniye olarak daha yüksek bir değer ayarlanabilir. Yüksek değerler yapılandırarak, daha uzun olacak şekilde Bu aralıklar zorunlu kılabilirsiniz; Ancak, daha kısa değil.
 
 >[!NOTE]
 >Coğrafi olarak yedekli ExpressRoute devreleri yapılandırdıysanız veya yedekleme olarak siteden siteye IPSec VPN bağlantısı kullanıyorsanız; BFD 'nin etkinleştirilmesi ExpressRoute bağlantı hatasından sonra hızlı bir şekilde yük devretmeye yardımcı olur. 
@@ -69,13 +68,13 @@ BFD eşleri arasında iki eşin daha yavaş olması iletim hızını belirlemekt
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Daha fazla bilgi veya yardım için aşağıdaki bağlantıları inceleyin:
+Daha fazla bilgi veya Yardım için aşağıdaki bağlantıları kontrol edin:
 
 - [ExpressRoute bağlantı hattı oluşturma ve değiştirme][CreateCircuit]
 - [ExpressRoute devresi için yönlendirme oluşturma ve değiştirme][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-bfd/BFD_Need.png "BFD bağlantı hatası kesinti süresi"
+[1]: ./media/expressroute-bfd/BFD_Need.png "BFD hızlandıran bağlantı hatası kesinti süresi"
 
 <!--Link References-->
 [CreateCircuit]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager 

@@ -1,5 +1,5 @@
 ---
-title: ExpressRoute doğrudan - Azure hakkında | Microsoft Docs
+title: Azure ExpressRoute Direct hakkında
 description: Bu sayfada ExpressRoute Direct 'e genel bakış sunulmaktadır
 services: expressroute
 author: jaredr80
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 916175401cd993392094b2bb16f8fc8746a4d2a8
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123393"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083598"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct hakkında
 
@@ -22,7 +21,7 @@ ExpressRoute doğrudan, Microsoft'un küresel ağı dünya genelindeki stratejik
 ExpressRoute doğrudan sağlayan önemli özellikler dahil ancak bunlarla sınırlı değildir:
 
 * Depolama ve Cosmos DB gibi hizmetler için Büyük Veri Alımı özelliği
-* Düzenlenmiş ve şunun gibi adanmış ve yalıtılmış bağlantı gerektiren sektörlerin fiziksel yalıtımı: Bankacılık, kamu ve perakende
+* Fiziksel yalıtım düzenlenen ve gerektiren sektörler için adanmış ve yalıtılmış gibi bağlantı: bankacılık, kamu ve perakende
 * Bağlantı hattı dağıtımının iş birimine dayalı detaylı denetimi
 
 ## <a name="onboard-to-expressroute-direct"></a>ExpressRoute Direct 'e ekleme
@@ -31,7 +30,7 @@ ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydet
 
 * Senaryo ile gerçekleştirmek için aradığınız **ExpressRoute doğrudan**
 * Konum bkz - [iş ortakları ve eşleme konumları](expressroute-locations-providers.md) tüm konumlara tam listesi için
-* Uygulama zaman çizelgesi
+* Uygulama için zaman çizelgesi
 * Diğer sorular
 
 ## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>ExpressRoute hizmet sağlayıcısı ve ExpressRoute doğrudan kullanma
@@ -73,7 +72,7 @@ ExpressRoute doğrudan Azure depolama ve diğer büyük veri hizmetlerle büyük
     * EtherType = 0x8100
     * Microsoft tarafından belirtilen VLAN KIMLIğINE bağlı olarak dış VLAN etiketi (STAG) eklenmelidir ve *yalnızca QinQ üzerinde geçerlidir*
     * Bağlantı noktası ve cihaz başına birden çok BGP oturumu (VLAN) desteklemelidir
-    * IPv4 ve IPv6 bağlantısı. *IPv6 için ek bir alt arabirim oluşturulmaz. IPv6 adresi var olan alt arabirime*eklenecektir. 
+    * IPv4 ve IPv6 bağlantısı. *IPv6 için ek bir alt arabirim oluşturulmaz. IPv6 adresi var olan alt arabirime eklenecektir*. 
     * İsteğe bağlı: ExpressRoute devrelerinde tüm özel eşlemelerde varsayılan olarak yapılandırılan [çift yönlü Iletme algılaması (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) desteği
 
 ## <a name="vlan-tagging"></a>VLAN etiketleme
@@ -86,7 +85,7 @@ ExpressRoute doğrudan QinQ hem Dot1Q VLAN etiketleme destekler.
 
 ## <a name="workflow"></a>İş akışı
 
-[![akışıyla](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+[![iş akışı](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>SLA
 

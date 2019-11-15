@@ -7,12 +7,12 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 57e8eab6413efa25eb03c48a968ca2b671b8c8d6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162125"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090542"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -58,7 +58,7 @@ Konum değişiklikleri | Yedekleme altyapısını (`net stop bengine`) durdurup 
 
 MARS aracısının bu URL 'Lere erişmesi gerekir:
 
-- http://www.msftncsi.com/ncsi.txt
+- <http://www.msftncsi.com/ncsi.txt>
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *. MicrosoftOnline.com
@@ -66,12 +66,15 @@ MARS aracısının bu URL 'Lere erişmesi gerekir:
 
 ### <a name="throttling-support"></a>Daraltma desteği
 
-**Özellik** | **Ayrıntılar**
+**Özelliği** | **Ayrıntılar**
 --- | ---
 Bant genişliği denetimi | Destekleniyor. MARS aracısında, bant genişliğini ayarlamak için **Özellikleri Değiştir** ' i kullanın.
 Ağ azaltma | Windows Server 2008 R2, Windows Server 2008 SP2 veya Windows 7 çalıştıran yedeklenen makinelerde kullanılamaz.
 
 ## <a name="support-for-direct-backups"></a>Doğrudan yedeklemeler için destek
+
+>[!NOTE]
+> MARS Aracısı Windows Server Core SKU 'Larını desteklemez.
 
 MARS aracısını, şirket içi makinelerde ve Azure VM 'lerde çalışan bazı işletim sistemlerinde doğrudan Azure 'a yedeklemek için kullanabilirsiniz. İşletim sistemleri 64 bit olmalıdır ve en son hizmet paketlerini ve güncelleştirmelerini çalıştırıyor olmalıdır. Aşağıdaki tabloda bu işletim sistemleri özetlenmektedir:
 
@@ -128,7 +131,7 @@ Ağ paylaşma| Desteklenmiyor |Birimin sunucuda yerel olması gerekir.
 BitLocker korumalı birimler| Desteklenmiyor |Yedekleme başlamadan önce birimin kilidi açılmış olmalıdır.
 Dosya sistemi kimliği| Desteklenmiyor |Yalnızca NTFS desteklenir.
 Çıkarılabilir medya| Desteklenmiyor |Tüm yedekleme öğesi kaynakları *sabit* bir duruma sahip olmalıdır.
-Yinelenenleri kaldırılmış sürücüler | Desteklenen | Azure Backup yinelenenleri kaldırılmış verileri normal verilere dönüştürür. Verileri en iyi duruma getirir, şifreler, depolar ve verileri kasaya gönderir.
+Yinelenenleri kaldırılmış sürücüler | Destekleniyor | Azure Backup yinelenenleri kaldırılmış verileri normal verilere dönüştürür. Verileri en iyi duruma getirir, şifreler, depolar ve verileri kasaya gönderir.
 
 ## <a name="support-for-initial-offline-backup"></a>İlk çevrimdışı yedekleme desteği
 

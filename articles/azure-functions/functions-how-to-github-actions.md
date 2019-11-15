@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 8decf4622c4043cbac0f2e2f6e2ad59f1b5baaae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 681d7a5eab3306a4067ea49bcf8a038e8627f60e
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074006"
+ms.locfileid: "74091375"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub eylemini kullanarak sürekli teslim
 
@@ -215,7 +215,7 @@ Aşağıdaki örnek `functions-action`1 sürümünü kullanır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tüm iş akışı. YAML 'yi görüntülemek için, ad içinde `functionapp` olan [Azure GitHub eylemleri iş akışı örnekleri](https://github.com/Azure/actions-workflow-samples) deposunda bulunan dosyalardan birine bakın. Bu örnekleri, iş akışınız için bir başlangıç noktası olarak kullanabilirsiniz.
+Tüm iş akışı. YAML 'yi görüntülemek için, ad içinde `functionapp` olan [Azure GitHub eylemleri iş akışı örnekleri](https://aka.ms/functions-actions-samples) deposunda bulunan dosyalardan birine bakın. Bu örnekleri, iş akışınız için bir başlangıç noktası olarak kullanabilirsiniz.
 
 > [!div class="nextstepaction"]
 > [GitHub eylemleri hakkında daha fazla bilgi edinin](https://help.github.com/en/articles/about-github-actions)

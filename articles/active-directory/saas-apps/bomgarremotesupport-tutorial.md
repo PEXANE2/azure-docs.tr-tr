@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Bomgar uzaktan desteğiyle Azure Active Directory tümleştirme | Microsoft Docs'
-description: Azure Active Directory ve Bomgar uzak desteği arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici Azure Active Directory: BeyondTrust uzaktan destek ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
+description: Azure Active Directory ve BeyondTrust uzaktan desteği arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,193 +13,193 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/07/2019
+ms.date: 10/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93ea2fb15c426da1198c655efb38c9a298a998d0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8ff21c3ee7721c82232e668ddb9645895080cf79
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158810"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081995"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bomgar-remote-support"></a>Öğretici: Bomgar uzak desteğiyle tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Öğretici: BeyondTrust uzak desteğiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide Bomgar uzaktan desteğini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Bomgar uzaktan desteğini Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, BeyondTrust uzaktan desteğini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. BeyondTrust uzaktan desteğini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Bomgar uzak desteğine erişimi olan Azure AD 'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Bomgar uzaktan desteğine (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* Azure AD 'de, BeyondTrust uzaktan desteğe erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla uzak desteğe güvenmesini sağlamak için kullanıcılarınızın otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bomgar uzak desteğiyle Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Bomgar uzaktan çoklu oturum açma etkin aboneliğini destekler
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* BeyondTrust, uzaktan çoklu oturum açma (SSO) özellikli aboneliği destekler.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Bomgar uzak desteği **SP** tarafından başlatılan SSO 'yu destekler
-* Bomgar uzak desteği **, tam zamanında** Kullanıcı sağlamayı destekler
+* BeyondTrust uzaktan destek, **SP** tarafından başlatılan SSO 'yu destekler
+* BeyondTrust uzak destek **, tam zamanında** Kullanıcı sağlamayı destekler
 
-## <a name="adding-bomgar-remote-support-from-the-gallery"></a>Galeriden Bomgar uzak desteği ekleme
+## <a name="adding-beyondtrust-remote-support-from-the-gallery"></a>Galeriden BeyondTrust uzaktan desteği ekleme
 
-Bomgar uzak desteğinin Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden Bomgar uzaktan desteğini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Azure AD 'de BeyondTrust uzaktan destek tümleştirmesini yapılandırmak için, Galeriden BeyondTrust uzaktan desteğini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden Bomgar uzak desteği eklemek için aşağıdaki adımları uygulayın:**
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Beyondtrust uzak desteği** yazın.
+1. Sonuçlar panelinden **Beyondtrust uzaktan desteği** ' ni seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-beyondtrust-remote-support"></a>BeyondTrust uzak destek için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu BeyondTrust uzak desteğiyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve BeyondTrust uzaktan destek içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+Azure AD SSO 'yu, BeyondTrust uzak desteğiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[BeyondTrust uzaktan destek SSO 'Yu yapılandırın](#configure-beyondtrust-remote-support-sso)** .
+    * **[Beyondtrust uzak destek testi kullanıcısına](#create-beyondtrust-remote-support-test-user)** , kullanıcının Azure AD gösterimine bağlı olan BeyondTrust uzak destek ile Ilgili olarak B. Simon 'ın bir karşılığı olacak şekilde bir bağlantı oluşturun.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-4. Arama kutusuna **Bomgar remote support**yazın, sonuç panelinden **Bomgar uzaktan desteği** ' ni seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+1. [Azure Portal](https://portal.azure.com/), **Beyondtrust uzaktan destek** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-     ![Sonuç listesinde bomgar uzak desteği](common/search-new-app.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı Bomgar uzak DESTEĞIYLE Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve Bomgar uzak destek içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<HOSTNAME>.bomgar.com/saml`
 
-Bomgar uzak desteğiyle Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+    b. **Tanımlayıcı** kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<HOSTNAME>.bomgar.com`
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Bomgar uzaktan desteğini yapılandırma](#configure-bomgar-remote-support-single-sign-on)** çoklu oturum açma ayarlarını uygulama tarafında yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. **[Bomgar uzaktan destek test kullanıcısı oluşturma](#create-bomgar-remote-support-test-user)** -kullanıcının Azure AD gösterimine bağlı Bomgar uzak desteğiyle Britta Simon 'un bir karşılığı olacak şekilde.
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Bomgar uzak desteğiyle Azure AD çoklu oturum açma 'yı yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/) **Bomgar uzaktan destek** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
-
-    ![Bomgar uzaktan etki alanı ve URL 'Ler çoklu oturum açma bilgilerini destekler](common/sp-identifier.png)
-
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.trafficmanager.net/saml`
-
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.trafficmanager.net`
+    c. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<HOSTNAME>.bomgar.com/saml/sso`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Bomgar uzaktan destek istemci desteği ekibine](https://www.bomgar.com/docs/index.htm#support) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri öğreticide ilerleyen kısımlarında bulabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+1. BeyondTrust uzaktan destek uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+
+    ![image](common/default-attributes.png)
+
+1. Yukarıdaki ' a ek olarak, BeyondTrust uzaktan destek uygulaması, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+
+    | Ad |  Kaynak özniteliği|
+    | ---------------| ----------|
+    | givenName | Kullanıcı. |
+    | EmailAddress | Kullanıcı. Mail |
+    | Ad | User. UserPrincipalName |
+    | Kullanıcı adı | User. UserPrincipalName |
+    | Gruplar | Kullanıcı. gruplar |
+    | Benzersiz kullanıcı tanımlayıcısı | User. UserPrincipalName |
+
+    > [!NOTE]
+    > BeyondTrust uzaktan destek uygulaması için Azure AD grupları atarken, ' talepte döndürülen gruplar ' seçeneğinde, None iken SecurityGroup olarak değiştirilmesi gerekir. Gruplar, nesne kimlikleri olarak uygulamaya aktarılır. Azure AD grubunun nesne KIMLIĞI, Azure Active Directory arabirimindeki Özellikler denetlenerek bulunabilir. Bu işlem, Azure AD gruplarının doğru grup ilkelerine başvurması ve atanması için gerekli olacaktır.
+
+1. Benzersiz kullanıcı tanımlayıcısı ayarlanırken, bu değerin NameID-Format: **persistent**olarak ayarlanması gerekir. Bu, izinleri için kullanıcıyı doğru bir şekilde tanımlamak ve doğru grup ilkeleriyle ilişkilendirmek üzere kalıcı bir tanımlayıcı olmasını gerektiririz. Benzersiz kullanıcı tanımlayıcı değerini düzenlemek için **Kullanıcı öznitelikleri & talepler** iletişim kutusunu açmak için Düzenle simgesine tıklayın.
+
+1. **Talebi Yönet** bölümünde **ad tanımlayıcı biçimini Seç** ' e tıklayın ve değeri **kalıcı** olarak ayarlayın ve **Kaydet**' e tıklayın.
+
+    ![Kullanıcı öznitelikleri ve talepler](./media/bomgarremotesupport-tutorial/attribute-unique-user-identifier.png)
+
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-6. **Bomgar uzaktan desteğini ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
+1. **BeyondTrust uzaktan desteğe ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum açma URL 'SI
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-    b. Azure AD tanımlayıcısı
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-    c. Oturum kapatma URL 'SI
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’ tıklayın.
 
-### <a name="configure-bomgar-remote-support-single-sign-on"></a>Bomgar uzaktan desteği çoklu oturum açmayı yapılandırma
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-**Bomgar uzaktan destek** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini ve Azure Portal ' den [bomgar uzaktan destek destek ekibine](https://www.bomgar.com/docs/index.htm#support)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+Bu bölümde, BeyondTrust uzak destek 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Beyondtrust uzak desteği**' ni seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+## <a name="configure-beyondtrust-remote-support-sso"></a>BeyondTrust uzaktan destek SSO 'yu yapılandırma
 
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
+1. Farklı bir Web tarayıcısı penceresinde, bir yönetici olarak BeyondTrust uzaktan destek ' te oturum açın.
 
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
+1. **Durum** menüsüne tıklayın ve **tanımlayıcıyı**kopyalayın, URL 'YI **yanıtlayın** ve **url 'ye oturum açın** ve bu değerleri Azure Portal **temel SAML yapılandırması** bölümünde kullanın.
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
-    Örneğin, BrittaSimon@contoso.com
+    ![BeyondTrust uzaktan desteğini yapılandırma](./media/bomgarremotesupport-tutorial/config-url-values.png)
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+1. **Support.example.com** 'in gerecinizin birincil ana bilgisayar adı olduğu ve yönetici kimlik bilgilerinizi kullanarak kimlik doğrulayan `https://support.example.com/login` BeyondTrust Remote Support/Login arabirimine gidin.
 
-    d. **Oluştur**’a tıklayın.
+1. **Kullanıcılar & güvenlik** > **güvenlik sağlayıcıları**' na gidin.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+1. Açılan menüden **SAML** ' yi seçin ve **sağlayıcı oluştur** düğmesine tıklayın.
 
-Bu bölümde Bomgar uzaktan destek 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+1. Kimlik sağlayıcısı ayarları bölümünde, kimlik sağlayıcısı meta verilerini karşıya yükleme seçeneği vardır. Azure portal indirdiğiniz meta veri XML dosyasını bulun ve **karşıya yükle** düğmesine tıklayın. **VARLıK kimliği**, **Çoklu oturum açma hizmeti URL 'si** ve sertifika otomatik olarak karşıya yüklenecek ve **protokol bağlamasının** **http post**olarak değiştirilmesi gerekir. Aşağıdaki ekran görüntüsüne bakın:
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra **bomgar uzak desteği**' ni seçin.
+    ![BeyondTrust uzaktan desteğini yapılandırma](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+### <a name="create-beyondtrust-remote-support-test-user"></a>BeyondTrust uzaktan destek testi kullanıcısı oluşturma
 
-2. Uygulamalar listesinde **Bomgar uzak desteği**' ni seçin.
+Kullanıcı sağlama ayarlarını burada yapılandıracağız. Bu bölümde kullanılan değerlere, Azure portal **Kullanıcı öznitelikleri & talepleri** bölümünden başvurulur. Bu değeri, oluşturma sırasında zaten içeri aktarılmış olan varsayılan değerler olarak yapılandırdık, ancak gerekirse değer özelleştirilebilir.
 
-    ![Uygulamalar listesinde Bomgar uzaktan destek bağlantısı](common/all-applications.png)
+![Kullanıcı oluşturuluyor](./media/bomgarremotesupport-tutorial/config-user1.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+> [!NOTE]
+> Bu uygulama için gruplar ve e-posta özniteliği gerekli değildir. Azure AD grupları 'nı kullandıysanız ve izinler için BeyondTrust uzak destek grubu Ilkelerine atarken, grubun nesne KIMLIĞININ Azure portal özellikleri aracılığıyla başvurulması ve ' kullanılabilir gruplar ' bölümüne yerleştirilmesi gerekir. Bu işlem tamamlandıktan sonra, nesne KIMLIĞI/AD grubu artık izinler için bir Grup ilkesine atanmak üzere kullanılabilir.
 
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+![Kullanıcı oluşturuluyor](./media/bomgarremotesupport-tutorial/config-user2.png)
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+![Kullanıcı oluşturuluyor](./media/bomgarremotesupport-tutorial/config-user3.png)
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+> [!NOTE]
+> Alternatif olarak, SAML2 güvenlik sağlayıcısı üzerinde varsayılan bir grup ilkesi ayarlanabilir. Bu seçeneği tanımlayarak, bu, SAML aracılığıyla kimlik doğrulayan tüm kullanıcıları Grup İlkesi içinde belirtilen izinler olarak atar. Genel Üyeler ilkesi, kimlik doğrulamasını test etmek ve doğru ilkelere Kullanıcı atamak için kullanılabilen sınırlı izinlerle, BeyondTrust uzak destek/ayrıcalıklı uzaktan erişim içinde bulunur. Kullanıcılar, ilk başarılı kimlik doğrulama girişimine kadar güvenlik & > Kullanıcı aracılığıyla SAML2 Users listesine doldurmaz. Grup ilkeleriyle ilgili ek bilgiler aşağıdaki bağlantıda bulunabilir: `https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+## <a name="test-sso"></a>Test SSO 'SU
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+Erişim panelinde BeyondTrust uzak destek kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız BeyondTrust uzak desteğiniz için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-### <a name="create-bomgar-remote-support-test-user"></a>Bomgar uzaktan destek testi kullanıcısı oluştur
-
-Bu bölümde Bomgar uzaktan destek 'te Britta Simon adlı bir Kullanıcı oluşturulur. Bomgar uzak desteği, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bomgar uzak destede bir kullanıcı zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
-
-> [!Note]
-> El ile bir kullanıcı oluşturmanız gerekiyorsa [Bomgar remote support destek ekibine](https://www.bomgar.com/docs/index.htm#support)başvurun.
-
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
-
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
-
-Erişim paneli 'nde Bomgar uzak destek kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Bomgar uzak desteğiyle otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
-
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="additional-resources"></a>Ek kaynaklar
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile birlikte uzak destek için BeyondTrust 'ı deneyin](https://aad.portal.azure.com/)

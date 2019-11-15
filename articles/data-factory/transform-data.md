@@ -11,12 +11,12 @@ ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 0b91d22454d6023094f269b184c845047092b4fb
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 268c1e66010720d1da052183165ce1cea50a1095
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954278"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092005"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory verileri dönüştürme
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "73954278"
 > * [.NET özel](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede, ham verilerinizi, ölçekteki tahminlere ve içgörüler halinde dönüştürmek ve uygulamak için kullanabileceğiniz Azure Data Factory veri dönüştürme etkinlikleri açıklanmaktadır. Bir dönüştürme etkinliği Azure Databricks veya Azure HDInsight gibi bir bilgi işlem ortamında yürütülür. Her bir dönüştürme etkinliği hakkında ayrıntılı bilgi içeren makalelere bağlantılar sağlar.
+Bu makalede, ham verilerinizi ölçek ve Öngörüler halinde dönüştürmek ve işlemek için kullanabileceğiniz Azure Data Factory veri dönüştürme etkinlikleri açıklanır. Bir dönüştürme etkinliği Azure Databricks veya Azure HDInsight gibi bir bilgi işlem ortamında yürütülür. Her bir dönüştürme etkinliği hakkında ayrıntılı bilgi içeren makalelere bağlantılar sağlar.
 
 Data Factory, işlem hatlarına tek tek veya başka bir etkinlikle zincirleme [olarak eklenebilen](concepts-pipelines-activities.md) aşağıdaki veri dönüştürme etkinliklerini destekler.
 

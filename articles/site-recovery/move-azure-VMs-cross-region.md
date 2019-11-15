@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: e0d55b3661e7dbff1519691bd396a30b8c527010
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936065"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092177"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Azure VM’lerini başka bir bölgeye taşıma
+# <a name="move-azure-vms-to-another-azure-region"></a>Azure VM 'lerini başka bir Azure bölgesine taşıma
 
 Güvenilirliği, kullanılabilirliği, yönetimi veya idare arttırmak için bir bölgeden diğerine Azure altyapı (IaaS) sanal makineleri taşımak isteyebilirsiniz. Bu öğreticide, Azure Site Recovery kullanarak sanal makineleri başka bir bölgeye nasıl taşıyacağınız gösterilmektedir. Şunları öğrenirsiniz:
 

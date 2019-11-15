@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 690df14e4e09b4a35589446029468a7d757d2732
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 72ab2717cea479de6150f435398f164c7c9d5937
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888609"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092273"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile ilk modelinizi eğitim ve dağıtma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Yükleme yönergelerini](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) izleyerek şunları yapın:
     + Anaconda 'yı yükler
@@ -108,7 +108,7 @@ experiment_name <- "accident-logreg"
 exp <- experiment(ws, experiment_name)
 ```
 
-### <a name="create-a-compute-target"></a>İşlem hedefi oluştur
+### <a name="create-a-compute-target"></a>İşlem hedefi oluşturmak
 Yönetilen bir hizmet olan Azure Machine Learning Işlem (AmlCompute) kullanarak, veri bilimcileri, Azure sanal makinelerinin kümelerinde makine öğrenimi modellerini eğitebilir. Örnek olarak GPU desteği olan VM 'Ler sayılabilir. Bu öğreticide, eğitim ortamınız olarak tek düğümlü bir AmlCompute kümesi oluşturacaksınız. Aşağıdaki kod, çalışma alanınızda zaten mevcut değilse işlem kümesini sizin için oluşturur.
 
 Zaten mevcut değilse, işlem kümenizin sağlanması için birkaç dakika beklemeniz gerekebilir.
@@ -271,7 +271,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 Modelinize göre, çakışmadan ölüm tehlikini tahmin edebilirsiniz. Azure ML 'yi kullanarak modelinizi bir tahmin hizmeti olarak dağıtın. Bu öğreticide, Web hizmetini [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (aci) ' de dağıtacaksınız.
 
-### <a name="register-the-model"></a>Modeli Kaydet
+### <a name="register-the-model"></a>Modeli kaydedin
 
 İlk olarak, [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html)çalışma alanınıza indirdiğiniz modeli kaydedin. Kayıtlı bir model herhangi bir dosya koleksiyonu olabilir, ancak bu durumda R model nesnesi yeterlidir. Azure ML, dağıtım için kayıtlı modeli kullanır.
 
@@ -353,17 +353,17 @@ aci_service$scoring_uri
 Artık ihtiyaç kalmadığında kaynakları silin. Hala kullanmayı planladığınız herhangi bir kaynağı silmeyin. 
 
 Web hizmetini silin:
-```{r delete_service, eval=FALSE}
+```R
 delete_webservice(aci_service)
 ```
 
 Kayıtlı modeli Sil:
-```{r delete_model, eval=FALSE}
+```R
 delete_model(model)
 ```
 
 Hesaplama kümesini silme:
-```{r delete_compute, eval=FALSE}
+```R
 delete_compute(compute)
 ```
 

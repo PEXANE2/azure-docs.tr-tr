@@ -1,21 +1,21 @@
 ---
-title: Rol tabanlı erişim denetimi (RBAC) ile Azure Site Recovery erişimini yönetme | Microsoft Docs
+title: Azure Site Recovery 'de Azure rol tabanlı erişim denetimini yönetme
 description: Bu makalede, Azure Site Recovery erişimini yönetmek için rol tabanlı erişim denetimi 'nin (RBAC) nasıl uygulanacağı açıklanır.
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 51c0d832a6d6d9b1cd148f765e68cb77c4679819
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929211"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083772"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Rol tabanlı erişim denetimi (RBAC) ile Site Recovery erişimini yönetme
 
-Azure Rol Tabanlı Erişim Denetimi (RBAC), Azure için ayrıntılı erişim yönetimi sağlar. RBAC kullanarak, takımlarınızın içindeki sorumlulukları ayırabilirsiniz ve belirli işleri gerçekleştirmek için gerektiğinde kullanıcılara yalnızca belirli erişim izinleri verebilirsiniz.
+Azure rol tabanlı erişim denetimi (RBAC), Azure için ayrıntılı erişim yönetimine izin vermez. RBAC kullanarak, takımlarınızın içindeki sorumlulukları ayırabilirsiniz ve belirli işleri gerçekleştirmek için gerektiğinde kullanıcılara yalnızca belirli erişim izinleri verebilirsiniz.
 
 Azure Site Recovery, Site Recovery yönetim işlemlerini denetlemek için 3 yerleşik rol sağlar. [Azure RBAC yerleşik rolleri](../role-based-access-control/built-in-roles.md) hakkında daha fazla bilgi edinin
 
@@ -43,7 +43,7 @@ Bir kullanıcının yeni bir sanal makinenin çoğaltmasını tamamlaması için
 
 | **Kaynak Türü** | **Dağıtım modeli** | **Yetkisi** |
 | --- | --- | --- |
-| İşlem | Kaynak Yöneticisi | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/Read |
+| Bilgi İşlem | Resource Manager | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/Read |
 |  |  | Microsoft. COMPUTE/virtualMachines/okuma |
 |  |  | Microsoft. COMPUTE/virtualMachines/Write |
 |  |  | Microsoft. COMPUTE/virtualMachines/Delete |
@@ -53,20 +53,20 @@ Bir kullanıcının yeni bir sanal makinenin çoğaltmasını tamamlaması için
 |  |  | Microsoft. ClassicCompute/virtualMachines/okuma |
 |  |  | Microsoft. ClassicCompute/virtualMachines/Write |
 |  |  | Microsoft. ClassicCompute/virtualMachines/Delete |
-| Ağ | Kaynak Yöneticisi | Microsoft. Network/NetworkInterfaces/Read |
-|  |  | Microsoft. Network/NetworkInterfaces/Write |
+| Ağ | Resource Manager | Microsoft. Network/NetworkInterfaces/Read |
+|  |  | Microsoft.Network/networkInterfaces/write |
 |  |  | Microsoft. Network/NetworkInterfaces/Delete |
-|  |  | Microsoft. Network/NetworkInterfaces/JOIN/Action |
+|  |  | Microsoft.Network/networkInterfaces/join/action |
 |  |  | Microsoft. Network/virtualNetworks/Read |
 |  |  | Microsoft. Network/virtualNetworks/alt ağlar/okuma |
 |  |  | Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action |
 |  | Klasik | Microsoft. ClassicNetwork/virtualNetworks/Read |
-|  |  | Microsoft. ClassicNetwork/virtualNetworks/JOIN/Action |
-| Depolama | Kaynak Yöneticisi | Microsoft. Storage/storageAccounts/Read |
+|  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
+| Depolama | Resource Manager | Microsoft. Storage/storageAccounts/Read |
 |  |  | Microsoft. Storage/storageAccounts/ListKeys/Action |
-|  | Klasik | Microsoft. ClassicStorage/storageAccounts/Read |
-|  |  | Microsoft. ClassicStorage/storageAccounts/listKeys/Action |
-| Kaynak Grubu | Kaynak Yöneticisi | Microsoft. resources/dağıtımlar/* |
+|  | Klasik | Microsoft.ClassicStorage/storageAccounts/read |
+|  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
+| Kaynak Grubu | Resource Manager | Microsoft. resources/dağıtımlar/* |
 |  |  | Microsoft. resources/abonelikler/resourceGroups/Read |
 
 Sırasıyla Kaynak Yöneticisi ve klasik dağıtım modelleriyle ilgili ' sanal makine katılımcısı ' ve ' klasik sanal makine katılımcısı ' [yerleşik rollerini](../role-based-access-control/built-in-roles.md) kullanmayı göz önünde bulundurun.

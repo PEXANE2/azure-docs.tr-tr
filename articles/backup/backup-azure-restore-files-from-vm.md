@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 13481788bce22876fa13080d0be34db29e2a72cb
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 07ec5b76756b462e03e9349edd2daff96933588c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961580"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091640"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -66,17 +66,13 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
     Betiği kısıtlı erişimi olan bir bilgisayarda çalıştırırsanız, erişimi olduğundan emin olun:
 
     - download.microsoft.com
-    - Kurtarma Hizmeti URL 'Leri (coğrafi ad, kurtarma hizmeti kasasının bulunduğu bölgeyi ifade eder)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (Azure genel geos Için)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (Azure Çin 21Vianet Için)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (Azure ABD kamu Için)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (Azure Almanya Için)
+    - Kurtarma Hizmeti URL 'Leri (coğrafi ad, kurtarma hizmeti kasasının bulunduğu bölgeyi ifade eder) - <https://pod01-rec2.geo-name.backup.windowsazure.com> (Azure genel geos için) - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (Azure Çin 21Vianet için) - <https://pod01-rec2.geo-name.backup.windowsazure.us> (Azure ABD kamu Için) - <https://pod01-rec2.geo-name.backup.windowsazure.de> (Azure Almanya Için)
     - giden bağlantı noktası 3260
 
 > [!Note]
 >
-> - İndirilen betik dosyası adı URL 'de doldurulacak **coğrafi ada** sahip olacaktır. Örneğin: indirilen betik adı,\'.... gibi \'VMname\'\_\'geoname\'_\'GUID ContosoVM_wcus_12345678 ile başlar.<br><br>
-> - URL "https:\//pod01-rec2.wcus.backup.windowsazure.com" olur
+> - İndirilen betik dosyası adı URL 'de doldurulacak **coğrafi ada** sahip olacaktır. Örneğin: indirilen betik adı \'VMname\'\_\'geoname\'_\'GUID\'ile başlar ContosoVM_wcus_12345678
+> - URL <https://pod01-rec2.wcus.backup.windowsazure.com>"
 
    Linux için, betik ' Open-iSCSI ' ve ' lshw ' bileşenlerinin kurtarma noktasına bağlanmasını gerektirir. Bileşenler, betiğin çalıştırıldığı bilgisayarda yoksa, komut dosyası bileşenleri yüklemek için izin ister. Gerekli bileşenleri yüklemeye izin verin.
 
@@ -141,21 +137,21 @@ Fiziksel birim altındaki birim grubu adlarını listelemek için.
 
 ```bash
 #!/bin/bash
-$ pvs <volume name as shown above in the script output>
+pvs <volume name as shown above in the script output>
 ```
 
 Tüm mantıksal birimleri, adları ve bunların yollarını bir birim grubunda listelemek için.
 
 ```bash
 #!/bin/bash
-$ lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command’s results>
 ```
 
 Mantıksal birimleri tercih ettiğiniz yola bağlamak için.
 
 ```bash
 #!/bin/bash
-$ mount <LV path> </mountpath>
+mount <LV path> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>RAID dizileri için
@@ -164,7 +160,7 @@ Aşağıdaki komut tüm RAID disklerinin ayrıntılarını görüntüler.
 
 ```bash
 #!/bin/bash
-$ mdadm –detail –scan
+mdadm –detail –scan
 ```
 
  İlgili RAID diski `/dev/mdm/<RAID array name in the protected VM>` olarak görüntülenir
@@ -173,7 +169,7 @@ RAID diskinde fiziksel birimler varsa bağlama komutunu kullanın.
 
 ```bash
 #!/bin/bash
-$ mount [RAID Disk Path] [/mountpath]
+mount [RAID Disk Path] [/mountpath]
 ```
 
 RAID diskinde yapılandırılmış başka bir LVM varsa, LVM bölümleri için önceki yordamı kullanın, ancak RAID disk adı yerine birim adını kullanın

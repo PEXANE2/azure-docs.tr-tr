@@ -1,5 +1,5 @@
 ---
-title: 'MACsec yapılandırma-ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: MACsec yapılandırma'
 description: Bu makale, kenar yönlendiricileriniz ile Microsoft 'un uç yönlendiricileri arasındaki bağlantıları güvenli hale getirmek için MACsec 'i yapılandırmanıza yardımcı olur.
 services: expressroute
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 081c448ff09148668dbe5e244e80421a47d77152
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 626302845dfb4b19deb921675601818b35ab8edb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748280"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083541"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>ExpressRoute doğrudan bağlantı noktalarında MACsec yapılandırma
 
@@ -26,7 +26,7 @@ Yapılandırmaya başlamadan önce, aşağıdakileri onaylayın:
 * [ExpressRoute doğrudan bağlantı noktası kaynağı](expressroute-howto-erdirect.md)oluşturdunuz.
 * PowerShell 'i yerel olarak çalıştırmak istiyorsanız, Azure PowerShell en son sürümünün bilgisayarınızda yüklü olduğunu doğrulayın.
 
-### <a name="working-with-azure-powershell"></a>Azure PowerShell çalışma
+### <a name="working-with-azure-powershell"></a>Azure PowerShell ile çalışma
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 

@@ -1,17 +1,17 @@
 ---
-title: Azure Site Recovery kullanarak VMware VM 'lerini Azure 'a olağanüstü durum kurtarma için VMware vCenter Server 'ı yönetme | Microsoft Docs '
+title: Azure Site Recovery VMware vCenter sunucularını yönetme
 description: Bu makalede, Azure Site Recovery ile Azure 'a VMware VM 'lerinin olağanüstü durum kurtarması için VMware vCenter 'ın nasıl ekleneceği ve yönetileceği açıklanmaktadır.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 59088d8351bf89c859312774e3e9e396be8dd532
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8f339103f67f37d10999ef43fa57a6eb27b60f37
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904247"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083970"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter Server 'ı yönetme
 
@@ -42,7 +42,7 @@ Hesap bilgilerinin Site Recovery hizmetiyle eşitlenmesi yaklaşık 15 dakika s�
 
 ## <a name="add-vmware-server-to-the-vault"></a>VMware sunucusunu kasaya ekleme
 
-1. Azure Portal, kasa > **Site Recovery altyapı** > **yapılandırma mühürlerinizi**açın ve yapılandırma sunucusunu açın.
+1. Azure portal, > **altyapınızı Site Recovery altyapıyı** > **yapılandırma mühürlerinizi**açın ve yapılandırma sunucusunu açın.
 2. **Ayrıntılar** sayfasında **+ vCenter**' a tıklayın.
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
@@ -56,7 +56,7 @@ VCenter sunucusuna veya ESXi konağına bağlanmak için kullanılan kimlik bilg
 
    ![Hesap Ekle](./media/vmware-azure-manage-vcenter/addaccount.png)
 3. Yeni hesap ayrıntılarını girip **Tamam** ' a tıklayarak ekleyin. Hesabın [yukarıda](#account-permissions)listelenen ayrıcalıklara sahip olması gerekir.
-4. Azure Portal, **altyapı** > **yapılandırması**Site Recovery Kasası ' nı > açın ve yapılandırma sunucusunu açın.
+4. Azure portal, altyapı > **yapılandırma**ve yapılandırma sunucusunu açmak için kasa > **Site Recovery** açın.
 5. **Ayrıntılar** sayfasında, **sunucuyu Yenile**' ye tıklayın.
 6. Sunucuyu Yenile işi tamamlandıktan sonra, vCenter **Özet** sayfasını açmak için vCenter Server seçin.
 7. **VCenter Server/vSphere konak hesabı** alanında yeni eklenen hesabı seçin ve **Kaydet**' e tıklayın.
@@ -65,7 +65,7 @@ VCenter sunucusuna veya ESXi konağına bağlanmak için kullanılan kimlik bilg
 
 ## <a name="delete-a-vcenter-server"></a>VCenter sunucusunu silme
 
-1. Azure Portal, kasa > **Site Recovery altyapı** > **yapılandırma mühürlerinizi**açın ve yapılandırma sunucusunu açın.
+1. Azure portal, > **altyapınızı Site Recovery altyapıyı** > **yapılandırma mühürlerinizi**açın ve yapılandırma sunucusunu açın.
 2. **Ayrıntılar** sayfasında vCenter Server ' ı seçin.
 3. **Sil** düğmesine tıklayın.
 
@@ -74,7 +74,7 @@ VCenter sunucusuna veya ESXi konağına bağlanmak için kullanılan kimlik bilg
 ## <a name="modify-the-vcenter-ip-address-and-port"></a>VCenter IP adresini ve bağlantı noktasını değiştirme
 
 1. Azure Portal’da oturum açın.
-2. **Kurtarma Hizmetleri Kasası** > **Site Recovery altyapı** > **yapılandırma sunucuları**' na gidin.
+2. **Kurtarma Hizmetleri kasası** > **Site Recovery altyapı** > **yapılandırma sunucularına**gidin.
 3. VCenter 'ın atandığı yapılandırma sunucusuna tıklayın.
 4. **VCenter Servers** bölümünde, değiştirmek istediğiniz vCenter 'a tıklayın.
 5. VCenter Summary sayfasında, ilgili alanlarda vCenter 'un IP adresini ve bağlantı noktasını güncelleştirin ve ardından değişikliklerinizi kaydedin.
@@ -88,7 +88,7 @@ VCenter sunucusuna veya ESXi konağına bağlanmak için kullanılan kimlik bilg
 Tüm sanal makineleri yeni vCenter 'a geçirmek için başka bir vCenter hesabı eklemeyin. Bu, yinelenen girişlere yol açabilir. Yalnızca yeni vCenter 'un IP adresini güncelleştirin:
 
 1. Azure Portal’da oturum açın.
-2. **Kurtarma Hizmetleri Kasası** > **Site Recovery altyapı** > **yapılandırma sunucuları**' na gidin.
+2. **Kurtarma Hizmetleri kasası** > **Site Recovery altyapı** > **yapılandırma sunucularına**gidin.
 3. Eski vCenter 'ın atandığı yapılandırma sunucusuna tıklayın.
 4. **VCenter Servers** bölümünde, geçiş yapmak istediğiniz vCenter 'a tıklayın.
 5. VCenter Summary sayfasında, **vCenter Server/vSphere konak adı veya IP adresi**alanındaki yeni vCenter 'un IP adresini güncelleştirin. Yaptığınız değişiklikleri kaydedin.

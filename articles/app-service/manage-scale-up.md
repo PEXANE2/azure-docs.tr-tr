@@ -13,20 +13,20 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d2c3b09277963781b90f65705e03f936f81b14ee
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 91a6681c2ef4a6d0ac01889e6e92e752975e90a5
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232369"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089468"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Azure App Service bir uygulamayı büyütme
 
 Bu makalede uygulamanızın Azure App Service nasıl ölçeklenmesi gösterilmektedir. Ölçeklendirme, ölçek artırma ve genişleme için iki iş akışı bulunur ve bu makalede ölçeği artırma iş akışı açıklanmaktadır.
 
-* [Ölçeği artırma](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Ayrılmış sanal makineler (VM), özel etki alanları ve sertifikalar, hazırlama yuvaları, otomatik ölçeklendirme ve daha fazlası gibi daha fazla CPU, bellek, disk alanı ve ek özellik sağlayın. Uygulamanızın ait olduğu App Service planının fiyatlandırma katmanını değiştirerek ölçeği değiştirmiş olursunuz.
-* [Ölçeği genişletme](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Uygulamanızı çalıştıran VM örneği sayısını artırın.
-  Fiyatlandırma katmanınıza bağlı olarak 20 örneğe kadar ölçeği değiştirebilirsiniz. **Yalıtılmış** katmandaki [App Service ortamlar](environment/intro.md) , ölçek genişletme sayınızı 100 örneğe daha da artırır. Ölçeği genişletme hakkında daha fazla bilgi için bkz. [örnek sayısını el ile veya otomatik olarak ölçeklendirme](../monitoring-and-diagnostics/insights-how-to-scale.md). Burada, otomatik ölçeklendirmeyi kullanarak, önceden tanımlanmış kurallara ve zamanlamalara göre örnek sayısını otomatik olarak ölçeklendirmeye yönelik bir bilgi edinebilirsiniz.
+* [Ölçeği artırma](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): daha fazla CPU, bellek, disk alanı ve adanmış sanal makineler (VM), özel etki alanları ve sertifikalar, hazırlama yuvaları, otomatik ölçeklendirme ve daha fazlası gibi ek özellikler alın. Uygulamanızın ait olduğu App Service planının fiyatlandırma katmanını değiştirerek ölçeği değiştirmiş olursunuz.
+* [Ölçeği genişletme](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): UYGULAMANıZı çalıştıran VM örneği sayısını artırın.
+  Fiyatlandırma katmanınıza bağlı olarak 30 örneğe kadar ölçeği değiştirebilirsiniz. **Yalıtılmış** katmandaki [App Service ortamlar](environment/intro.md) , ölçek genişletme sayınızı 100 örneğe daha da artırır. Ölçeği genişletme hakkında daha fazla bilgi için bkz. [örnek sayısını el ile veya otomatik olarak ölçeklendirme](../monitoring-and-diagnostics/insights-how-to-scale.md). Burada, otomatik ölçeklendirmeyi kullanarak, önceden tanımlanmış kurallara ve zamanlamalara göre örnek sayısını otomatik olarak ölçeklendirmeye yönelik bir bilgi edinebilirsiniz.
 
 Ölçek ayarları, [App Service planınızdaki](../app-service/overview-hosting-plans.md)tüm uygulamaları uygulamak ve etkilemek için yalnızca saniyeler sürer.
 Kodunuzun değiştirilmesini veya uygulamanızı yeniden dağıtmanıza gerek kalmaz.
@@ -83,7 +83,7 @@ Hizmet sınırları, Kotalar ve kısıtlamalar tablosu ve her katmandaki destekl
 
 <a name="Next Steps"></a>
 
-## <a name="more-resources"></a>Daha fazla kaynak
+## <a name="more-resources"></a>Diğer kaynaklar
 
 [Örnek sayısını el ile veya otomatik olarak ölçeklendirme](../monitoring-and-diagnostics/insights-how-to-scale.md)  
 [App Service için PremiumV2 katmanını yapılandırma](app-service-configure-premium-tier.md)

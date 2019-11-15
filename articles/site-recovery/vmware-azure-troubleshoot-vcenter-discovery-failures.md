@@ -1,20 +1,20 @@
 ---
-title: Azure Site Recovery ile Azure 'a VMware VM olağanüstü durum kurtarma sırasında şirket içi yeniden çalışma sorunlarını giderme
-description: Bu makalede, Azure Site Recovery ile Azure 'a VMware VM olağanüstü durum kurtarma sırasında yeniden çalışma ve yeniden koruma sorunlarını gidermeye yönelik yollar açıklanmaktadır.
+title: Azure Site Recovery 'de VMware vCenter bulma hatalarıyla ilgili sorunları giderme
+description: Bu makalede Azure Site Recovery 'de VMware vCenter bulma hatalarının nasıl giderileceği açıklanır.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: e9213637f45a4761af60de9dfac7add6324f6b96
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053862"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091248"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>VCenter bulma sorunlarını giderme
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server bulma hatalarıyla ilgili sorunları giderme
 
 Bu makale, VMware vCenter bulma hataları nedeniyle oluşan sorunları gidermenize yardımcı olur.
 

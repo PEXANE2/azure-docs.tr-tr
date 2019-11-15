@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 70673dc7d42a0c7d9b60f3c3f877c1985dac3c98
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 238afdf9e50eaccba51d996ce6e9cfd06ea36899
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097803"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091989"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Dosyaları'nı Linux ile kullanma
 [Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, [SMB çekirdek istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımları ile bağlanabilir. Bu makalede bir Azure dosya paylaşımının bağlanması için iki yol gösterilmektedir: `/etc/fstab`bir giriş oluşturarak `mount` komutuyla isteğe bağlı ve önyükleme.
@@ -22,9 +22,9 @@ Linux 'ta bir Azure dosya paylaşımının bağlanması için önerilen yol, SMB
 | | SMB 2.1 <br>(Aynı Azure bölgesindeki VM 'lerde takar) | SMB 3.0 <br>(Şirket içi ve çapraz bölge 'den takar) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04 + | 16.04 + |
-| Red Hat Enterprise Linux (RHEL) | 7 + | 7,5 + |
-| CentOS | 7 + |  7,5 + |
-| Debian | 8 + | 10 + |
+| Red Hat Enterprise Linux (RHEL) | 7 + | 7.5+ |
+| CentOS | 7 + |  7.5+ |
+| Debian | 8+ | 10+ |
 | openSUSE | 13.2 + | 42.3 + |
 | SUSE Linux Enterprise Server | 12 + | 12 SP3 + |
 
@@ -53,7 +53,7 @@ uname -r
     sudo dnf install cifs-utils
     ```
 
-    **Red Hat Enterprise Linux** ve **CentOS**'ın eski sürümlerinde, `dnf` paket yöneticisini kullanın:
+    **Red Hat Enterprise Linux** ve **CentOS**'ın eski sürümlerinde, `yum` paket yöneticisini kullanın:
 
     ```bash
     sudo yum install cifs-utils 
@@ -173,7 +173,7 @@ Azure dosya paylaşımını tamamladığınızda, paylaşımını çıkarmak iç
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. Aşağıdaki **satırı `/etc/fstab`sonuna eklemek için aşağıdaki komutu kullanın** : aşağıdaki örnekte, yerel Linux dosya ve klasör izinleri varsayılan 0755 olur. Bu, sahip için okuma, yazma ve yürütme (dosya/dizin Linux sahibine göre), okuma ve sahip grubundaki kullanıcılar için yürütün ve sistemdeki diğerleri için okuma ve yürütme. Bağlama için kullanıcı KIMLIĞINI ve grup KIMLIĞINI ayarlamak üzere `uid` ve `gid` bağlama seçeneklerini kullanabilirsiniz. Ayrıca, istediğiniz gibi özel izinleri ayarlamak için `dir_mode` ve `file_mode` kullanabilirsiniz. İzinlerin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. Vikipde [UNIX sayısal gösterimi](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) .
+1. Aşağıdaki **satırı `/etc/fstab`eklemek için aşağıdaki komutu kullanın** : aşağıdaki örnekte, yerel Linux dosyası ve klasörü izinleri varsayılan 0755 olur. Bu, sahip için okuma, yazma ve yürütme (dosya/dizin Linux sahibine göre), sahip grubundaki kullanıcılar için okuma ve yürütme ve sistemdeki diğerleri için okuma ve yürütme anlamına gelir. Bağlama için kullanıcı KIMLIĞINI ve grup KIMLIĞINI ayarlamak üzere `uid` ve `gid` bağlama seçeneklerini kullanabilirsiniz. Ayrıca, istediğiniz gibi özel izinleri ayarlamak için `dir_mode` ve `file_mode` kullanabilirsiniz. İzinlerin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. Vikipde [UNIX sayısal gösterimi](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) .
 
     ```bash
     httpEndpoint=$(az storage account show \

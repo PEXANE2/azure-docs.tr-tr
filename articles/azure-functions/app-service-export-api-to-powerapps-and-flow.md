@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: 2ed154d15176ed6706a69f0a6be4c60159d478c2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b12d1fec9b7852835d3d5b5346d64868d2ee8c46
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087687"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082859"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure 'da barındırılan bir API 'yi PowerApps ve Microsoft Flow dışa aktarma
 
@@ -30,7 +30,7 @@ Benzer şekilde, API 'Lerini bir kuruluşta daha geniş hale getirmek isteyen ge
 Bir API 'yi dışarı aktarmadan önce, bir Openapı tanımı (eski adıyla [Swagger](https://swagger.io/) dosyası) kullanarak API 'yi tanımlamalısınız. Bu tanım, bir API’de hangi işlemlerin kullanılabildiğinin yanı sıra API için istek ve yanıt verilerinin nasıl yapılandırılması gerektiğiyle ilgili bilgileri içerir. PowerApps ve Microsoft Flow, tüm Openapı 2,0 tanımları için özel bağlayıcılar oluşturabilir. Azure Işlevleri ve Azure App Service, Openapı tanımlarını oluşturmak, barındırmak ve yönetmek için yerleşik desteğe sahiptir. Daha fazla bilgi için bkz. [Azure App Service IÇINDE CORS Ile Restuz API barındırma](../app-service/app-service-web-tutorial-rest-api.md).
 
 > [!NOTE]
-> Ayrıca, bir Openapı tanımı kullanmadan PowerApps ve Microsoft Flow Kullanıcı arabiriminde özel bağlayıcılar da oluşturabilirsiniz. Daha fazla bilgi için bkz. [özel bağlayıcı (PowerApps) kaydetme ve kullanma](https://powerapps.microsoft.com/tutorials/register-custom-api/) ve [özel bağlayıcı kaydetme ve kullanma (Microsoft Flow)](https://flow.microsoft.com/documentation/register-custom-api/).
+> Ayrıca, bir Openapı tanımı kullanmadan PowerApps ve Microsoft Flow Kullanıcı arabiriminde özel bağlayıcılar da oluşturabilirsiniz. Daha fazla bilgi için bkz. [özel bağlayıcı (PowerApps) kaydetme ve kullanma](https://powerapps.microsoft.com/tutorials/register-custom-api/) ve [özel bağlayıcı kaydetme ve kullanma (Microsoft Flow)](/power-automate/developer/register-custom-api).
 
 API tanımını dışarı aktarmak için şu adımları izleyin:
 
@@ -76,7 +76,7 @@ Dışarı aktarmayı **hızlı** modda gerçekleştirmek için şu adımları iz
  
     ![PowerApps ve Microsoft Flow Express dışa aktarma](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. **Tamam**'ı tıklatın. Özel bağlayıcı artık kurulmuştur ve belirlediğiniz ortama eklenir.
+3. **OK (Tamam)** düğmesine tıklayın. Özel bağlayıcı artık kurulmuştur ve belirlediğiniz ortama eklenir.
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>El ile dışarı aktarma kullan
@@ -113,7 +113,7 @@ API tanımını PowerApps ve Microsoft Flow aktarmak için şu adımları izleyi
 
 4. **Genel** sekmesinde, openapı tanımından gelen bilgileri gözden geçirin.
 
-5. **Güvenlik** sekmesinde, kimlik doğrulama ayrıntılarını sağlamanız istenirse, kimlik doğrulama türü için uygun değerleri girin. **Devam**'a tıklayın.
+5. **Güvenlik** sekmesinde, kimlik doğrulama ayrıntılarını sağlamanız istenirse, kimlik doğrulama türü için uygun değerleri girin. **Devam**’a tıklayın.
 
     ![Güvenlik sekmesi](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 
@@ -123,11 +123,11 @@ API tanımını PowerApps ve Microsoft Flow aktarmak için şu adımları izleyi
 
     ![Tanımlar sekmesi](media/app-service-export-api-to-powerapps-and-flow/tab-definitions.png)
 
-    Bu örnekte adlı `CalculateCosts`bir işlem vardır. **Description**gibi metaveri, openapı dosyasından gelir.
+    Bu örnekte `CalculateCosts`adlı bir işlem vardır. **Description**gibi metaveri, openapı dosyasından gelir.
 
 7. Sayfanın üst kısmındaki **bağlayıcı oluştur** ' a tıklayın.
 
-Artık PowerApps ve Microsoft Flow içindeki özel bağlayıcıya bağlanabilirsiniz. PowerApps ve Microsoft Flow portallarında bağlayıcı oluşturma hakkında daha fazla bilgi için bkz. [özel bağlayıcınızı kaydetme (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) ve [özel bağlayıcınızı kaydetme (Microsoft Flow)](https://flow.microsoft.com/documentation/register-custom-api/#register-your-custom-connector).
+Artık PowerApps ve Microsoft Flow içindeki özel bağlayıcıya bağlanabilirsiniz. PowerApps ve Microsoft Flow portallarında bağlayıcı oluşturma hakkında daha fazla bilgi için bkz. [özel bağlayıcınızı kaydetme (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) ve [özel bağlayıcınızı kaydetme (Microsoft Flow)](/power-automate/get-started-flow-dev#create-a-custom-connector).
 
 <a name="auth"></a>
 ## <a name="specify-authentication-type"></a>Kimlik doğrulaması türünü belirtme
@@ -146,24 +146,24 @@ PowerApps ve Microsoft Flow, özel bağlayıcılar için kimlik doğrulaması sa
 ``` 
 Dışa aktarma sırasında, PowerApps ve Microsoft Flow kullanıcıların kimliğini doğrulamak için izin veren yapılandırma değerleri sağlarsınız.
 
-Bu bölüm, **Express** modunda desteklenen kimlik doğrulama türlerini içerir: API anahtarı, Azure Active Directory ve genel OAuth 2,0. PowerApps ve Microsoft Flow Dropbox, Facebook ve SalesForce gibi belirli hizmetler için de temel kimlik doğrulamasını ve OAuth 2,0 'yi destekler.
+Bu bölüm **Express** modunda desteklenen kimlik doğrulama türlerini, Azure Active Directory ve genel OAuth 2,0 ' i içerir. PowerApps ve Microsoft Flow Dropbox, Facebook ve SalesForce gibi belirli hizmetler için de temel kimlik doğrulamasını ve OAuth 2,0 'yi destekler.
 
 ### <a name="api-key"></a>API anahtarı
-Bir API anahtarı kullanırken, bağlayıcınızın kullanıcılarına bir bağlantı oluşturduklarında anahtarı sağlaması istenir. Hangi anahtarın gerekli olduğunu anlamalarına yardımcı olmak için bir API anahtarı adı belirtirsiniz. Önceki örnekte, bu adı `API Key (contact meganb@contoso.com)` , insanların API anahtarı hakkında nereden bilgi alınacağını bilmesi için kullanırız. Azure Işlevleri için anahtar, genellikle işlev uygulaması içindeki çeşitli işlevleri kapsayan ana bilgisayar anahtarlarından biridir.
+Bir API anahtarı kullanırken, bağlayıcınızın kullanıcılarına bir bağlantı oluşturduklarında anahtarı sağlaması istenir. Hangi anahtarın gerekli olduğunu anlamalarına yardımcı olmak için bir API anahtarı adı belirtirsiniz. Önceki örnekte, ad `API Key (contact meganb@contoso.com)` kullandığımızda API anahtarı hakkında bilgilerin nereden alınacağını öğreniyoruz. Azure Işlevleri için anahtar, genellikle işlev uygulaması içindeki çeşitli işlevleri kapsayan ana bilgisayar anahtarlarından biridir.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 Azure AD kullanırken iki Azure AD uygulama kaydı gerekir: biri API kendisi için ve diğeri özel bağlayıcı için:
 
 - API 'nin kaydını yapılandırmak için [App Service kimlik doğrulaması/yetkilendirme](../app-service/configure-authentication-provider-aad.md) özelliğini kullanın.
 
-- Bağlayıcının kaydını yapılandırmak için, [Azure AD uygulaması ekleme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)bölümündeki adımları izleyin. Kayıt, API 'nize atanmış erişime ve yanıt URL `https://msmanaged-na.consent.azure-apim.net/redirect`'sine sahip olmalıdır. 
+- Bağlayıcının kaydını yapılandırmak için, [Azure AD uygulaması ekleme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)bölümündeki adımları izleyin. Kayıt, API 'nize temsilci erişimi ve `https://msmanaged-na.consent.azure-apim.net/redirect`yanıt URL 'sine sahip olmalıdır. 
 
-Daha fazla bilgi için bkz. [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) IÇIN Azure AD kayıt örnekleri ve [Microsoft Flow](https://flow.microsoft.com/documentation/customapi-azure-resource-manager-tutorial/). Bu örnekler, API olarak Azure Resource Manager kullanır; adımları izlerseniz API 'nizi değiştirin.
+Daha fazla bilgi için bkz. [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) IÇIN Azure AD kayıt örnekleri ve [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication). Bu örnekler, API olarak Azure Resource Manager kullanır; adımları izlerseniz API 'nizi değiştirin.
 
 Aşağıdaki yapılandırma değerleri gereklidir:
 - **ISTEMCI kimliği** -bağlayıcınızın Istemci KIMLIĞI Azure ad kaydı
 - **İstemci gizli anahtarı** -bağlayıcınızın Istemci sırrı Azure ad kaydı
-- **Oturum açma URL 'si** -Azure AD 'nin temel URL 'si. Azure 'da bu genellikle `https://login.windows.net`olur.
+- **Oturum açma URL 'si** -Azure AD 'nin temel URL 'si. Azure 'da bu genellikle `https://login.windows.net`.
 - **KIRACı kimliği** -oturum açma için kullanılacak KIRACıNıN kimliği. Bu, "ortak" ya da bağlayıcının oluşturulduğu kiracının KIMLIĞI olmalıdır.
 - **Kaynak URL 'si** -API 'Niz IÇIN Azure ad kaydı 'nın kaynak URL 'si
 

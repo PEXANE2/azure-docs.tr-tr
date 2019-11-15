@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a7cd61854176dc702f213211b14c2361b3e433ad
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5196dbbfb52ce75031a53764b371d6d34b43fba7
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825354"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091411"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>Hızlı başlangıç: Java için Azure Blob depolama istemci kitaplığı V12
 
@@ -33,7 +33,7 @@ Java için Azure Blob depolama istemci kitaplığı V12 ' nı şu şekilde kulla
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üstü
 * [Apache Maven](https://maven.apache.org/download.cgi)
@@ -128,7 +128,7 @@ Proje dizininden:
 1. `System.out.println("Hello world!");` ifadesini silme
 1. `import` yönergeleri ekleme
 
-Kod şu şekildedir:
+Kod aşağıdaki gibidir:
 
 ```java
 package com.blobs.quickstart;
@@ -201,11 +201,11 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
 Şu kaynaklarla etkileşim kurmak için aşağıdaki Java sınıflarını kullanın:
 
-* [BlobServiceClient](/java/api/com.azure.storage.blob.blobserviceclient): `BlobServiceClient` sınıfı, Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize izin verir. Depolama hesabı, blob hizmeti için en üst düzey ad alanını sağlar.
-* [BlobServiceClientBuilder](/java/api/com.azure.storage.blob.blobserviceclientbuilder): `BlobServiceClientBuilder` sınıfı, `BlobServiceClient` nesnelerin yapılandırmasına ve örneklemesine yardımcı olmak için akıcı bir Oluşturucu API 'si sağlar.
-* [Blobcontainerclient](/java/api/com.azure.storage.blob.blobcontainerclient): `BlobContainerClient` sınıfı, Azure depolama kapsayıcılarını ve bunların bloblarını değiştirmenize olanak sağlar.
-* [Blobclient](/java/api/com.azure.storage.blob.blobclient): `BlobClient` sınıfı, Azure depolama bloblarını değiştirmenize izin verir.
-* [Blobitem](/java/api/com.azure.storage.blob.blobitem): `BlobItem` sınıfı, `listBlobsFlat`çağrısından döndürülen ayrı blob 'ları temsil eder.
+* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): `BlobServiceClient` sınıfı, Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize izin verir. Depolama hesabı, blob hizmeti için en üst düzey ad alanını sağlar.
+* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html): `BlobServiceClientBuilder` sınıfı, `BlobServiceClient` nesnelerin yapılandırmasına ve örneklemesine yardımcı olmak için akıcı bir Oluşturucu API 'si sağlar.
+* [Blobcontainerclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): `BlobContainerClient` sınıfı, Azure depolama kapsayıcılarını ve bunların bloblarını değiştirmenize olanak sağlar.
+* [Blobclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): `BlobClient` sınıfı, Azure depolama bloblarını değiştirmenize izin verir.
+* [Blobitem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): `BlobItem` sınıfı, `listBlobsFlat`çağrısından döndürülen ayrı blob 'ları temsil eder.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -243,7 +243,7 @@ Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğunda
 > [!IMPORTANT]
 > Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcıları ve blobları adlandırma hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-Ardından, [Blobcontainerclient](/java/api/com.azure.storage.blob.blobcontainerclient) sınıfının bir örneğini oluşturun ve ardından depolama hesabınızda kapsayıcıyı gerçekten oluşturmak için [Create](/java/api/com.azure.storage.blob.blobcontainerclient.create) yöntemini çağırın.
+Ardından, [Blobcontainerclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) sınıfının bir örneğini oluşturun ve ardından depolama hesabınızda kapsayıcıyı gerçekten oluşturmak için [Create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) yöntemini çağırın.
 
 `Main` yönteminin sonuna bu kodu ekleyin:
 
@@ -263,8 +263,8 @@ BlobContainerClient containerClient = blobServiceClient.createBlobContainer(cont
 Aşağıdaki kod parçacığı:
 
 1. Yerel *veri* dizininde bir metin dosyası oluşturur.
-1. Kapsayıcı [oluşturma](#create-a-container) bölümünde, kapsayıcıda [getblobclient](/java/api/com.azure.storage.blob.blobcontainerclient.getblobclient) yöntemini çağırarak bir [blobclient](/java/api/com.azure.storage.blob.blobclient) nesnesine bir başvuru alır.
-1. [Uploadfromfile](/java/api/com.azure.storage.blob.blobclient.uploadfromfile) yöntemini çağırarak yerel metin dosyasını bloba yükler. Bu yöntem, daha önce oluşturulmadıysa bir blob oluşturur, aksi takdirde üzerine yazar.
+1. Kapsayıcı [oluşturma](#create-a-container) bölümünde, kapsayıcıda [getblobclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) yöntemini çağırarak bir [blobclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) nesnesine bir başvuru alır.
+1. [Uploadfromfile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) yöntemini çağırarak yerel metin dosyasını bloba yükler. Bu yöntem, zaten mevcut değilse blobu oluşturur, ancak varsa üzerine yazmaz.
 
 `Main` yönteminin sonuna bu kodu ekleyin:
 
@@ -290,7 +290,7 @@ blobClient.uploadFromFile(localPath + fileName);
 
 ### <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
 
-[Listblobsflat](/java/api/com.azure.storage.blob.blobcontainerclient.listblobsflat) yöntemini çağırarak kapsayıcıdaki Blobları listeleyin. Bu durumda, kapsayıcıya yalnızca bir blob eklenmiş, bu nedenle listeleme işlemi yalnızca bir BLOB döndürüyor.
+[Listbloblar](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) metodunu çağırarak kapsayıcıdaki Blobları listeleyin. Bu durumda, kapsayıcıya yalnızca bir blob eklenmiş, bu nedenle listeleme işlemi yalnızca bir BLOB döndürüyor.
 
 `Main` yönteminin sonuna bu kodu ekleyin:
 
@@ -305,7 +305,7 @@ for (BlobItem blobItem : containerClient.listBlobs()) {
 
 ### <a name="download-blobs"></a>Blob’ları indirme
 
-[DownloadToFile](/java/api/com.azure.storage.blob.blobclient.downloadtofile) yöntemini çağırarak önceden oluşturulmuş blobu indirin. Örnek kod, yerel dosya sisteminde her iki dosyayı da görebilmeniz için dosya adına "ındır" adlı bir sonek ekler.
+[DownloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) yöntemini çağırarak önceden oluşturulmuş blobu indirin. Örnek kod, yerel dosya sisteminde her iki dosyayı da görebilmeniz için dosya adına "ındır" adlı bir sonek ekler.
 
 `Main` yönteminin sonuna bu kodu ekleyin:
 
@@ -322,7 +322,7 @@ blobClient.downloadToFile(localPath + downloadFileName);
 
 ### <a name="delete-a-container"></a>Kapsayıcı silme
 
-Aşağıdaki kod, [Delete](/java/api/com.azure.storage.blob.blobcontainerclient.delete) yöntemi kullanılarak kapsayıcının tamamını kaldırarak uygulamanın oluşturduğu kaynakları temizler. Ayrıca, uygulama tarafından oluşturulan yerel dosyaları da siler.
+Aşağıdaki kod, [Delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) yöntemi kullanılarak kapsayıcının tamamını kaldırarak uygulamanın oluşturduğu kaynakları temizler. Ayrıca, uygulama tarafından oluşturulan yerel dosyaları da siler.
 
 Uygulama, blob, kapsayıcı ve yerel dosyaları silmeden önce `System.console().readLine()` çağırarak kullanıcı girişi için duraklatılır. Bu, kaynakların silinmeden önce gerçekten doğru şekilde oluşturulduğunu doğrulamak iyi bir şansınız olur.
 

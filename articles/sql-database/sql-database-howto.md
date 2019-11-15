@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 5773ea37585bb5c63736aaa4432243dc1d41f7bc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: e45baba74d7bf752718e5e36a148a91987cd3ffb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811187"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082424"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanma
 
@@ -48,7 +48,7 @@ Bu bölümde, Azure SQL veritabanınızı yönetmenize ve yapılandırmanıza ya
 - [Akıllı İçgörüler tanılama günlüğünü kullanın](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Bellek Içi OLTP alanını izleme](sql-database-in-memory-oltp-monitoring.md)
 
-### <a name="extended-events"></a>Genişletilmiş etkinlikler
+### <a name="extended-events"></a>Genişletilmiş olaylar
 
 - [Genişletilmiş olaylar](sql-database-xevent-db-diff-from-svr.md)
 - [Genişletilmiş olayları olay dosyasına depola](sql-database-xevent-code-event-file.md)
@@ -72,7 +72,6 @@ Bu bölümde, Azure SQL veritabanınızı yönetmenize ve yapılandırmanıza ya
 - [Bağlantı](sql-database-libraries.md)
 - [Spark bağlayıcısını kullanma](sql-database-spark-connector.md)
 - [Uygulamanın kimliğini doğrulama](sql-database-client-id-keys.md)
-- [Hata iletileri](sql-database-develop-error-messages.md)
 - [Daha iyi performans için toplu işlem kullanma](sql-database-use-batching-to-improve-performance.md)
 - [Bağlantı kılavuzu](sql-database-connectivity-issues.md)
 - [DNS diğer adları](dns-alias-overview.md)

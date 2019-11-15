@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 85d6b9e00798926bee2d5050767ba47512fc9e86
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2622fc9b7b7bc5caedc560af64a5d6b2971b814f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074107"
+ms.locfileid: "74090942"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerinde SQL veritabanlarını yedekleme ve geri yükleme
 
@@ -342,7 +342,7 @@ SQL DB geri yükleme durumunda aşağıdaki geri yükleme senaryoları desteklen
 
 İlgili kurtarma noktasını (farklı veya günlük zaman) geçirdikten sonra, kurtarma yapılandırma nesnesini istenen kurtarma planına göre getirmek için [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS cmdlet 'ini kullanın.
 
-#### <a name="original-workload-restore"></a>Özgün Iş yükü geri yükleme
+#### <a name="original-workload-restore"></a>Özgün iş yükü geri yükleme
 
 Yedeklenen VERITABANıNı kurtarma noktasındaki verilerle geçersiz kılmak için, aşağıdaki örnekte gösterildiği gibi doğru bayrağı ve ilgili kurtarma noktasını belirtmeniz yeterlidir.
 
@@ -358,7 +358,7 @@ $OverwriteWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -R
 $OverwriteWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -Item $bkpItem  -OriginalWorkloadRestore -VaultId $targetVault.ID
 ```
 
-#### <a name="alternate-workload-restore"></a>Alternatif Iş yükü geri yükleme
+#### <a name="alternate-workload-restore"></a>Alternatif iş yükü geri yükleme
 
 > [!IMPORTANT]
 > Yedeklenen SQL DB, yeni bir VERITABANı olarak yalnızca başka bir SQLInstance 'a geri yüklenebilir ve bu kasaya bir Azure VM ' kaydı ' kaydedilir.
@@ -537,7 +537,7 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
  Unregister-AzRecoveryServicesBackupContainer -Container $SQLContainer -VaultId $targetvault.ID
 ````
 
-### <a name="track-azure-backup-jobs"></a>Azure Backup Işleri izleme
+### <a name="track-azure-backup-jobs"></a>Azure Backup işleri izleme
 
 Azure Backup yalnızca SQL Backup 'daki Kullanıcı tarafından tetiklenen işleri izlediğine dikkat edin. Zamanlanan yedeklemeler (günlük yedeklemeleri dahil) portalda/PowerShell 'de görünmez. Ancak, herhangi bir zamanlanan iş başarısız olursa, portalda bir [yedekleme uyarısı](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) oluşturulur ve gösterilir. Tüm zamanlanmış işleri ve ilgili diğer bilgileri izlemek için [Azure izleyici 'Yi kullanın](backup-azure-monitoring-use-azuremonitor.md) .
 

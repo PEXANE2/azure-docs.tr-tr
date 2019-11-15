@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub cihaz akışları SSH ve RDP için Node. js hızlı başlangıcı (Önizleme) | Microsoft Docs
+title: Azure IoT Hub cihaz akışları SSH ve RDP için Node. js hızlı başlangıç
 description: Bu hızlı başlangıçta, IoT Hub cihaz akışları üzerinden SSH ve RDP senaryolarını etkinleştirmek için proxy görevi gören örnek bir Node. js uygulaması çalıştırırsınız.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 676b05b94fad506fba7c5bd2bd00061ae8a0426b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7f2b98f196a0889406e7821c60db7066a21b9178
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900755"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084279"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Hızlı başlangıç: node. js proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
@@ -63,7 +63,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Daha önce yapmadıysanız, [örnek Node. js projesini indirin](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip) ve ZIP arşivini ayıklayın.
 
-## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 Önceki [Hızlı Başlangıç: Bir cihazdan IoT hub’a telemetri gönderme](quickstart-send-telemetry-node.md) öğreticisini tamamladıysanız bu adımı atlayabilirsiniz.
 

@@ -7,12 +7,12 @@ ms.date: 10/02/2019
 ms.topic: quickstart
 ms.service: azure-functions
 manager: gwallace
-ms.openlocfilehash: 2307a296453247a5deee082aadb474f3641cce88
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da3fb604bfb65f67e50d56a4520620cabc292b93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329725"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082814"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python işleviniz için bir Azure depolama kuyruğu bağlama ekleme
 
@@ -20,7 +20,7 @@ ms.locfileid: "72329725"
 
 Bu makalede, [önceki hızlı başlangıç makalesinde](functions-create-first-function-python.md) oluşturduğunuz Işlevi bir Azure depolama kuyruğu ile tümleştirme işlemi gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, verileri bir HTTP isteğinden kuyruktaki bir iletiye yazar.
 
-Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Bu bağlantıyı daha kolay hale getirmek için, işlev uygulamanızla oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten `AzureWebJobsStorage` adlı bir uygulama ayarında depolanıyor.  
+Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Bu bağlantıyı daha kolay hale getirmek için, işlev uygulamanızla oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten `AzureWebJobsStorage`adlı bir uygulama ayarında depolanıyor.  
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,7 +40,7 @@ Artık, depolama çıkış bağlamasını projenize ekleyebilirsiniz.
 
 ## <a name="add-an-output-binding"></a>Çıktı bağlaması ekleme
 
-Işlevlerde, her bağlama türü, function. json dosyasında tanımlanacak bir `direction`, `type` ve benzersiz bir `name` gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
+Işlevlerde, her bağlama türü, function. json dosyasında tanımlanması için `direction`, `type`ve benzersiz bir `name` gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -61,7 +61,7 @@ func host start
 > [!NOTE]  
 > Host. JSON içindeki uzantı paketlerini etkinleştirdiyseniz, [depolama bağlama uzantısı](functions-bindings-storage-blob.md#packages---functions-2x) diğer Microsoft bağlama uzantılarıyla birlikte başlangıç sırasında sizin için indirilir ve yüklenir.
 
-Çalışma zamanı çıktısından `HttpTrigger` işlevinizin URL’sini kopyalayın ve tarayıcınızın adres çubuğuna yapıştırın. @No__t-0 sorgu dizesini bu URL 'ye ekleyin ve isteği çalıştırın. Önceki makalede yaptığınız gibi tarayıcıda aynı yanıtı görmeniz gerekir.
+Çalışma zamanı çıktısından `HttpTrigger` işlevinizin URL’sini kopyalayın ve tarayıcınızın adres çubuğuna yapıştırın. Sorgu dizesini bu URL 'ye `?name=<yourname>` ekleyin ve isteği çalıştırın. Önceki makalede yaptığınız gibi tarayıcıda aynı yanıtı görmeniz gerekir.
 
 Bu kez, çıkış bağlama aynı zamanda depolama hesabınızda `outqueue` adlı bir kuyruk oluşturur ve bu dizeyi içeren bir ileti ekler.
 
@@ -73,13 +73,13 @@ Ardından, yeni kuyruğu görüntülemek ve bir iletinin eklendiğini doğrulama
 
 ### <a name="redeploy-the-project"></a>Projeyi yeniden dağıtın 
 
-Yayınlanan uygulamanızı güncelleştirmek için [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) çekirdek araçları komutunu kullanarak proje kodunuzu Azure 'a dağıtın. Bu örnekte, `<APP_NAME>` değerini uygulamanızın adıyla değiştirin.
+Yayınlanan uygulamanızı güncelleştirmek için [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) çekirdek araçları komutunu kullanarak proje kodunuzu Azure 'a dağıtın. Bu örnekte `<APP_NAME>` değerini uygulamanızın adıyla değiştirin.
 
 ```command
 func azure functionapp publish <APP_NAME> --build remote
 ```
 
-Yine, dağıtılan işlevi test etmek için kıvrımlı veya tarayıcı kullanabilirsiniz. Daha önce olduğu gibi, aşağıdaki örnekte olduğu gibi `&name=<yourname>` sorgu dizesini URL 'ye ekleyin:
+Yine, dağıtılan işlevi test etmek için kıvrımlı veya tarayıcı kullanabilirsiniz. Daha önce olduğu gibi, aşağıdaki örnekte olduğu gibi sorgu dizesini URL 'ye `&name=<yourname>` ekleyin:
 
 ```bash
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
@@ -91,7 +91,7 @@ curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow54
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için güncelleştirdiniz. Python ile Azure Işlevleri geliştirme hakkında daha fazla bilgi için bkz. [Azure Işlevleri Python Geliştirici Kılavuzu](functions-reference-python.md) ve [Azure işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md). Python 'da tüm Işlev projelerinin örnekleri için bkz. [Python işlevleri örnekleri](/samples/browse/?products=azure-functions&languages=python). 
+HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için güncelleştirdiniz. Python ile Azure Işlevleri geliştirme hakkında daha fazla bilgi için bkz. [Azure Işlevleri Python Geliştirici Kılavuzu](functions-reference-python.md) ve [Azure işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md). Python 'da tüm Işlev projelerinin örnekleri için bkz. [Python işlevleri örnekleri](/samples/browse/?products=azure-functions&languages=python). Fiyatlandırma hakkında daha fazla bilgi edinmek için bkz. [işlevler fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/) ve [Tüketim planı maliyetlerini tahmin](functions-consumption-costs.md) etme makalesi.
 
 Sonra, işlev uygulamanız için Application Insights izlemeyi etkinleştirmelisiniz:
 
