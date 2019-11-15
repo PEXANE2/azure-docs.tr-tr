@@ -5,18 +5,18 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499249"
+ms.locfileid: "73580086"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
-Azure Ayrılmış Sanal Makine Örnekleri sayesinde sanal makine, SQL Veritabanı işlem kapasitesi, Azure Cosmos DB aktarım hızı ve diğer Azure kaynakları için bir yıldan üç yıla kadar taahhütte bulunarak indirimlerden faydalanabilirsiniz. Taahhütte bulunarak kullandığınız kaynakları indirimli satın alabilirsiniz. Rezervasyonlar sanal makine, SQL veritabanı işlem, Azure Cosmos DB veya diğer kaynak maliyetlerinizi kullandıkça öde fiyatlarına göre %72'ye varan oranlarda düşürebilir. Rezervasyonlar bir faturalandırma indirimi sağlar ve kaynaklarınızın çalışma zamanı durumunu etkilemez.
+Azure Ayrılmış Sanal Makine Örnekleri sayesinde sanal makine, Azure Blob depolama veya Azure Data Lake Storage 2. Nesil, SQL Veritabanı işlem kapasitesi, Azure Cosmos DB aktarım hızı ve diğer Azure kaynakları için bir yıldan üç yıla kadar taahhütte bulunarak indirimlerden faydalanabilirsiniz. Taahhütte bulunarak kullandığınız kaynakları indirimli satın alabilirsiniz. Rezervasyonlar, kaynak maliyetlerinizi kullandıkça öde fiyatlarına kıyasla %72'ye varan oranda azaltabilir. Rezervasyonlar bir faturalandırma indirimi sağlar ve kaynaklarınızın çalışma zamanı durumunu etkilemez.
 
 Bir rezervasyonun ödemesini peşin veya aylık olarak yapabilirsiniz. Peşin ve aylık rezervasyonların toplam maliyeti aynıdır ve aylık ödemeyi seçtiğinizde ekstra ücret ödemezsiniz. Aylık ödeme, üçüncü taraf ürünleri değil, Azure rezervasyonları için kullanılabilir.
 
@@ -24,13 +24,14 @@ Bir rezervasyonun ödemesini peşin veya aylık olarak yapabilirsiniz. Peşin ve
 
 ## <a name="why-buy-a-reservation"></a>Neden rezervasyon satın almalıyım?
 
-Uzun süreler boyunca çalışan sanal makineleriniz, Azure Cosmos DB veya SQL veritabanlarınız varsa, rezervasyon satın almak size en uygun maliyetli seçeneği sağlar. Örneğin, bir hizmetin dört örneğini rezervasyon olmadan sürekli olarak çalıştırdığınızda kullandıkça öde tarifesine göre ücretlendirilirsiniz. Bu kaynaklar için bir rezervasyon satın aldığınız anda rezervasyon indirimini elde edersiniz. Kaynaklar artık kullandıkça öde tarifelerine göre ücretlendirilmez.
+Önemli miktarda kapasite veya aktarım hızı kullanan ya da uzun süreler boyunca çalışan sanal makineleriniz, Blob depolama verileriniz, Azure Cosmos DB veya SQL veritabanlarınız varsa, rezervasyon satın almak size en uygun maliyetli seçeneği sağlar. Örneğin, bir hizmetin dört örneğini rezervasyon olmadan sürekli olarak çalıştırdığınızda kullandıkça öde tarifesine göre ücretlendirilirsiniz. Bu kaynaklar için bir rezervasyon satın aldığınız anda rezervasyon indirimini elde edersiniz. Kaynaklar artık kullandıkça öde tarifelerine göre ücretlendirilmez.
 
 ## <a name="charges-covered-by-reservation"></a>Rezervasyon kapsamındaki ücretler
 
 Hizmet planları:
 
 - **Ayrılmış Sanal Makine Örneği** - Bir rezervasyon yalnızca sanal makine işlem maliyetlerini içerir. Ek yazılım, ağ veya depolama ücretlerini kapsamaz.
+- **Azure Depolama ayrılmış kapasitesi** - Bir rezervasyon, Blob depolama veya Azure Data Lake 2. Nesil depolama için standart depolama hesaplarının depolama kapasitesini kapsar. Rezervasyon, bant genişliğini veya işlem oranlarını kapsamaz.
 - **Azure Cosmos DB ayrılmış kapasitesi** - Rezervasyon yalnızca kaynaklarınız için sağlanan aktarım hızını kapsar. Depolama ve ağ ücretlerini kapsamaz.
 - **SQL veritabanı ayrılmış sanal çekirdeği** - Rezervasyona yalnızca işlem maliyetleri dahildir. Lisans ayrı olarak faturalandırılır.
 - **SQL Veri Ambarı** - Rezervasyon cDWU kullanımını kapsar. SQL Veri Ambarı’nın kullanımıyla ilişkili depolama ve ağ ücretlerini kapsamaz.
@@ -134,6 +135,7 @@ Bir rezervasyon satın aldığınızda, indirim aynı boyut grubundaki özniteli
 Hizmet planları:
 
 - Ayrılmış VM Örnekleri: Rezervasyonu satın alırken **Örnek boyutu esnekliği için iyileştirilmiş**'i seçerseniz, indirim kapsamı seçtiğiniz VM boyutuna bağlı olur. Rezervasyon aynı boyut serisi grubundaki sanal makine (VM) boyutlarına uygulanır. Daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- Azure Depolama ayrılmış kapasitesi: Standart Azure Depolama hesapları için aylık 100 TiB veya 1 PiB boyutlu birimler halinde ayrılmış kapasite satın alabilirsiniz. Azure Depolama ayrılmış kapasitesi tüm bölgeler, tüm erişim katmanları (sık erişimli, seyrek erişimli veya arşiv) ve tüm çoğaltma seçenekleri (LRS, GRS veya ZRS) ile kullanılabilir.
 - SQL Veritabanı ayrılmış kapasitesi: İndirim kapsamı, seçtiğiniz performans katmanına bağlıdır. Daha fazla bilgi için bkz. [Azure rezervasyonu indiriminin nasıl uygulandığını anlama](billing-understand-reservation-charges.md).
 - Azure Cosmos DB ayrılmış kapasitesi: İndirim kapsamı, sağlanan aktarım hızına göre değişir. Daha fazla bilgi için bkz. [Azure Cosmos DB rezervasyon indiriminin nasıl uygulandığını anlama](billing-understand-cosmosdb-reservation-charges.md).
 
