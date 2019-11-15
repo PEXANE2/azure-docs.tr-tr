@@ -1,19 +1,19 @@
 ---
 title: C#sonuçları sipariş etme öğreticisi
 titleSuffix: Azure Cognitive Search
-description: Bu öğretici, arama sonuçlarının sıralamasını eklemek için "arama sonuçları sayfalandırma-Azure Bilişsel Arama" projesinde oluşturulur. Sonuçları birincil bir özelliğe göre nasıl sıraleyeceğinizi ve aynı birincil özelliğe sahip olan sonuçlar için, sonuçları ikincil bir özellik üzerinde nasıl sıraleyeceğinizi öğrenin. Son olarak, bir Puanlama profiline göre sonuçları nasıl sıraleyeceğinizi öğrenin.
+description: Bu öğreticide, arama sonuçlarının nasıl sipariş yapılacağı gösterilmektedir. Önceki bir oteller projesinde, birincil özelliğe göre sıralama, ikincil özellik ve yükseltme ölçütü eklemek için bir Puanlama profili içerir.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794045"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112676"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#Öğretici: sonuçları sıralama-Azure Bilişsel Arama
 
@@ -114,7 +114,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
     ```
 
     >[!Tip]
-    >Tarayıcılar genellikle CSS dosyalarını önbelleğe alabilir ve bu, eski bir CSS dosyasının kullanılmasına yol açabilir ve düzenlemeleriniz yok sayılır. Bunun iyi bir yolu, bağlantıya sürüm parametresi olan bir sorgu dizesi eklemektir. Örnek:
+    >Tarayıcılar genellikle CSS dosyalarını önbelleğe alabilir ve bu, eski bir CSS dosyasının kullanılmasına yol açabilir ve düzenlemeleriniz yok sayılır. Bunun iyi bir yolu, bağlantıya sürüm parametresi olan bir sorgu dizesi eklemektir. Örneğin:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />

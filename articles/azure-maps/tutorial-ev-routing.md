@@ -1,22 +1,22 @@
 ---
-title: Azure Notebooks kullanarak elektrik ve yönlendirme (Python) | Microsoft Docs
-description: Azure haritalar yönlendirme API 'Leri ve Azure Notebooks kullanarak elektrik Araçlar yönlendirin.
+title: 'Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme'
+description: "Öğretici: Azure haritalar yönlendirme API 'Leri ve Azure Notebooks kullanarak elektrik Araçlar yönlendirin."
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/01/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9628e34b752abc8d77225a612f9f6daaf02fcbf7
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011111"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109610"
 ---
-# <a name="route-electric-vehicles-by-using-azure-notebooks-python"></a>Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
+# <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 
 Azure Maps, Azure ile yerel olarak tümleştirilmiş Jeo-uzamsal hizmet API 'Lerinin bir portföyüdür. Bu API 'Ler, geliştiriciler, kuruluşlar ve ISV 'Ler, konum duyarlı uygulamalar ve IoT, Mobility, lojistik ve varlık izleme çözümleri oluşturabilir. 
 

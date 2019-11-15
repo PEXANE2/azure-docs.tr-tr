@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: e1534a562c81fc92fdf0c21452458c51b10f0bc9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074232"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108109"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>SOAP API'sini içeri aktarma ve REST’e dönüştürme
 
@@ -32,7 +32,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Aşağıdaki hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
+Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -49,9 +49,9 @@ Aşağıdaki hızlı başlangıcı doldurun: [Azure API Management örneği olu�
 
 5. Sekme tuşuna basın.
 
-    Aşağıdaki alanlar SOAP API 'sinin bilgileriyle doldurulmuştur: Görünen ad, ad, açıklama.
-6. API URL'si soneki ekleyin. Sonek, bu belirli API’yi bu APIM örneğinde tanımlayan bir addır. Son ekin bu APIM örneğinde benzersiz olması gerekir.
-9. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda, "*Sınırsız*" ürünü kullanılır.  API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız, bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
+    Şu alanlar, SOAP API’sinde bulunan bilgilerle doldurulur: Görünen ad, Ad, Açıklama.
+6. API URL'si soneki ekleyin. Son ek, bu APIM örneğinde özel olarak bu API’yi tanımlayan bir addır. Son ekin bu APIM örneğinde benzersiz olması gerekir.
+9. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda, "*Sınırsız*" ürünü kullanılır.  API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız API’yi bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
 
     Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması gerekir. Abone olduklarında, ilgili üründeki tüm API’ler için geçerli olan bir abonelik anahtarı edinirler. APIM örneğini siz oluşturduysanız zaten bir yöneticisinizdir ve varsayılan olarak tüm ürünlere abone olmuşsunuz demektir.
 
@@ -59,9 +59,9 @@ Aşağıdaki hızlı başlangıcı doldurun: [Azure API Management örneği olu�
 
     * **Başlangıç**
     * **Sınırsız**   
-10. **Oluştur**’u seçin.
+10. **Oluştur**'u seçin.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure portalında yeni APIM API’sini test etme
+## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portal yeni API 'YI test etme
 
 İşlemler doğrudan bir API’nin işlemlerini görüntülemek ve test etmek için kullanışlı bir yol sağlayan Azure portalından çağrılabilir.  
 
@@ -73,21 +73,6 @@ Aşağıdaki hızlı başlangıcı doldurun: [Azure API Management örneği olu�
 1. **Gönder**’e basın.
 
     Arka uç, **200 OK** ve bazı verilerle yanıt verir.
-
-## <a name="call-operation"> </a>Geliştirici portalından işlem çağırma
-
-API’leri test etmek için **Geliştirici portalından** da işlemler çağrılabilir. 
-
-1. "Arka uç API’sini içeri aktarma ve yayımlama" adımında oluşturduğunuz API’yi seçin.
-2. **Geliştirici portalı** düğmesine basın.
-
-    "Geliştirici portalı" sitesi açılır.
-3. Oluşturduğunuz **API**’yi seçin.
-4. Test etmek istediğiniz işleme tıklayın.
-5. **Deneyin**’e basın.
-6. **Gönder**’e basın.
-    
-    Bir işlem çağrıldıktan sonra, geliştirici portalı **Yanıt durumu**, **Yanıt üst ilgileri** ve tüm **Yanıt içeriğini** gösterir.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

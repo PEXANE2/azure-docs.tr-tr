@@ -1,20 +1,20 @@
 ---
-title: Azure IoT Central’da kural ve eylem yapılandırma | Microsoft Docs
+title: 'Öğretici: Azure IoT Central kuralları ve eylemleri yapılandırma'
 description: Bu öğreticide, bir oluşturucu olarak Azure IoT Central uygulamanızda telemetri tabanlı kural ve eylemleri nasıl yapılandıracağınız gösterilir.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 06/09/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 5358563de9f35d2cef74a32cb1794de418066810
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9c2c8c1bacf4abfa775747a03d2a4a6121b67714
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955798"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106584"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Öğretici: Azure IoT Central’da cihazınız için kurallar ve eylemler yapılandırma
 
@@ -52,10 +52,10 @@ Başlamadan önce, [Uygulamanızda yeni bir cihaz türü tanımlama](tutorial-de
 
     | Ayar                                      | Değer                             |
     | -------------------------------------------- | ------------------------------    |
-    | Adı                                         | Klima sıcaklığı uyarısı |
+    | Ad                                         | Klima sıcaklığı uyarısı |
     | Bu şablonun tüm cihazları için kuralı etkinleştir | Açık                                |
     | Koşul                                    | Sıcaklık 90’dan fazla    |
-    | Toplama                                  | Hiçbiri                              |
+    | Toplama                                  | None                              |
 
     ![Sıcaklık kural koşulu](media/tutorial-configure-rules/temperaturerule.png)
 
@@ -73,7 +73,7 @@ Bir kural tanımladığınızda, kural koşulları yerine getirildiği zaman ça
 
     | Ayar   | Değer                          |
     | --------- | ------------------------------ |
-    | Bitiş        | E-posta adresiniz             |
+    | Alıcı        | E-posta adresiniz             |
     | Notlar     | Klima sıcaklığı eşiği aştı. |
 
     > [!NOTE]

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: eb3f73f3ceb27bec05d4e2e88877ea398de7cdf5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4d338708b143c88f8f416185e351531e74963bba
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034360"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111996"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure 'da Linux sanal makinesini Izleme
 
@@ -133,7 +133,7 @@ Azure VM 'nizi VM'ler için Azure İzleyici izlemeyi etkinleştirmek için:
 
 3. Üzerinde **Insights (Önizleme)** sayfasında **şimdi deneyin**.
 
-    ![Bir VM için sanal makineler için Azure İzleyici etkinleştir](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Bir VM için sanal makineler için Azure İzleyici etkinleştir](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 4. Üzerinde **Azure İzleyici İçgörüler ekleme** sayfasında mevcut bir Log Analytics varsa, aynı abonelikte çalışma alanı, aşağı açılan listeden seçin.  
 

@@ -1,19 +1,19 @@
 ---
-title: Machine Learning ortamı ayarlama-Azure IoT Edge | Microsoft Docs
-description: Ortamınızdaki makine öğrenimi için modüllerin geliştirilmesi ve dağıtımına yönelik ortamınızı hazırlayın.
+title: 'Öğretici: Azure IoT Edge Machine Learning ortamı ayarlama'
+description: 'Öğretici: ortamınızı, uçtan makine öğrenimi için geliştirme ve modüllerin dağıtımı için hazırlayın.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1db94e683a0dfb3b60b12bc5ac205c766d405d0a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 2ea4248ebaedd318e4112e41169f72bc80b1120f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299836"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114062"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Öğretici: IoT Edge makine öğrenimi için bir ortam ayarlama
 
@@ -58,7 +58,7 @@ Sanal makineyi oluşturmak ve yapılandırmak yaklaşık 30 dakika sürer.
 
 DevVM dizini, bu öğreticiyi tamamlamak için uygun bir Azure sanal makinesi oluşturmak için gereken dosyaları içerir.
 
-1. PowerShell 'i yönetici olarak açın ve kodu indirdiğiniz dizine gidin. Kaynağınız için kök dizine başvuracağız `<srcdir>`.
+1. PowerShell 'i yönetici olarak açın ve kodu indirdiğiniz dizine gidin. `<srcdir>`olarak kaynağınız için kök dizine başvuracağız.
 
     ```powershell
     cd <srcdir>\IoTEdgeAndMlSample\DevVM
@@ -77,17 +77,17 @@ DevVM dizini, bu öğreticiyi tamamlamak için uygun bir Azure sanal makinesi ol
     ```
 
     * İstendiğinde, aşağıdaki bilgileri sağlayın:
-      * **Azure ABONELIK kimliği**: Abonelik KIMLIĞINIZ, Azure portal bulunabilir
+      * **Azure ABONELIK kimliği**: Azure Portal bulunan abonelik kimliğiniz
       * **Kaynak grubu adı**: Azure 'da yeni veya var olan bir kaynak grubunun adı
-      * **Konum**: Sanal makinenin oluşturulacağı bir Azure konumu seçin. Örneğin, westus2 veya northeurope. Daha fazla bilgi için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).
-      * **AdminUserName**: Oluşturmak ve sanal makinede kullanmak istediğiniz yönetici hesabı için hatırlayabileceğiniz bir ad sağlayın.
-      * **AdminPassword**: Sanal makinede yönetici hesabı için bir parola ayarlayın.
+      * **Konum**: sanal makinenin oluşturulacağı Azure konumunu seçin. Örneğin, westus2 veya northeurope. Daha fazla bilgi için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).
+      * **AdminUserName**: sanal makinede oluşturmak ve kullanmak istediğiniz yönetici hesabı için hatırlayabileceğiniz bir ad sağlayın.
+      * **AdminPassword**: sanal makinede yönetici hesabı için bir parola ayarlayın.
 
     * Azure PowerShell yüklü değilse, betik [Azure PowerShell az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0) yükler
 
     * Azure'da oturum açmanız istenir.
 
-    * Betik, sanal makinenizin oluşturulmasına ilişkin bilgileri onaylar. Devam `y` etmek `Enter` için veya tuşuna basın.
+    * Betik, sanal makinenizin oluşturulmasına ilişkin bilgileri onaylar. Devam etmek için `y` veya `Enter` tuşuna basın.
 
 Komut dosyası aşağıdaki adımları yürüttüğünde birkaç dakika çalışır:
 
@@ -102,7 +102,7 @@ Komut dosyası aşağıdaki adımları yürüttüğünde birkaç dakika çalış
 
 Maliyeti azaltmaya yardımcı olmak için VM, 1900 PST olarak ayarlanan bir otomatik kapatılma zamanlaması ile oluşturulmuştur. Konumunuza ve zamanlamanıza bağlı olarak bu zamanlamayı güncelleştirmeniz gerekebilir. Kapalı zamanlamayı güncelleştirmek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Önceki bölümde belirttiğiniz kaynak grubundaki sanal makinenize gidin.
 
@@ -118,7 +118,7 @@ Bir VM oluşturduğumuz artık öğreticiyi tamamlamaya yönelik gereken yazıl�
 
 1. VM oluşturma betiği masaüstünüzde bir RDP dosyası oluşturdu.
 
-2. **\<Azure VM Name\>. rdp**adlı dosyaya çift tıklayın.
+2. **\<Azure VM adı\>. rdp**adlı dosyaya çift tıklayın.
 
 3. Uzak bağlantı yayımcısının bilinmediğini belirten bir iletişim kutusu görüntülenir. **Bu bilgisayara bağlantı için bana bir daha sorma** onay kutusuna tıklayın ve ardından **Bağlan**' ı seçin.
 
@@ -130,7 +130,7 @@ Bir VM oluşturduğumuz artık öğreticiyi tamamlamaya yönelik gereken yazıl�
 
 Geliştirme makinesine bağlandığınıza göre, geliştirme deneyimini kolaylaştırmak için Visual Studio Code bazı yararlı uzantılar ekleyin.
 
-1. Bir PowerShell penceresinde **C\\: Source\\\\ıotedgeandmlsample devvm dizinine**gidin.
+1. Bir PowerShell penceresinde, **C:\\source\\ıotedgeandmlsample\\DevVM dizinine**gidin.
 
 2. Yazarak sanal makinede betiklerin yürütülmesine izin verin.
 
@@ -182,7 +182,7 @@ Bu bölümde, bir Azure IoT Hub 'ı ve bir Azure depolama hesabı oluşturmak i�
     ```
 
     * Azure'da oturum açmanız istenir.
-    * Betik, hub ve depolama hesabınızın oluşturulmasına ilişkin bilgileri onaylar. Devam `y` etmek `Enter` için veya tuşuna basın.
+    * Betik, hub ve depolama hesabınızın oluşturulmasına ilişkin bilgileri onaylar. Devam etmek için `y` veya `Enter` tuşuna basın.
 
 Betiğin çalıştırılması iki dakika sürer. Komut dosyası tamamlandıktan sonra hub ve depolama hesabı adını verir.
 
@@ -202,7 +202,7 @@ IoT Hub 'ı oluşturmanın bir parçası olarak, önceki bölümde çalıştık 
 
 1. **BLOB depolama**altında, **Turbofandevicesstorage**' ı seçin.
 
-1. Bu uç noktanın, **\<ıotedgeandml benzersiz\>soneki**olarak adlandırılan son adımda oluşturulan depolama hesabındaki **devicedata** adlı bir blob kapsayıcısını işaret ettiğini unutmayın.
+1. Bu uç noktanın, **ıotedgeandml\<benzersiz sonek\>** olarak adlandırılan son adımda oluşturulan depolama hesabındaki **devicedata** adlı bir blob kapsayıcısını işaret ettiğini unutmayın.
 
 1. Ayrıca, **BLOB dosya adı biçiminin** varsayılan biçimden olarak değiştirildiğini, bunun yerine bölümü ada göre son öğe olarak yerleştirmeniz gerektiğini de aklınızda bulabilirsiniz. Bu biçimi, öğreticide daha sonra Azure Notebooks yapacağız dosya işlemleri için daha uygun olduğunu bulduk.
 

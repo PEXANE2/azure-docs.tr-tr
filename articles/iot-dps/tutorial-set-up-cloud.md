@@ -1,21 +1,21 @@
 ---
-title: Portalda Azure IoT Hub Cihazı Sağlama Hizmeti için bulutu ayarlama | Microsoft Docs
-description: IoT Hub cihaz sağlama hizmeti 'ni (DPS) kullanarak [Azure Portal](https://portal.azure.com) cihaz sağlama için bulut kaynaklarını ayarlama
+title: 'Öğretici: portalda Azure IoT Hub cihaz sağlama hizmeti için bulut ayarlama'
+description: "Öğretici: IoT Hub cihaz sağlama hizmeti 'ni (DPS) kullanarak [Azure Portal](https://portal.azure.com) cihaz sağlama için bulut kaynakları ayarlama"
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f0e61f264ac0e6a4a2306bc94234811b38941bb5
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e91627f934357cd67965ea8880db37ff9bfb3fb2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888765"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112801"
 ---
-# <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>IoT Hub Cihazı Sağlama Hizmeti ile cihaz sağlama için bulut kaynaklarını yapılandırma
+# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Öğretici: IoT Hub cihaz sağlama hizmeti ile cihaz sağlama için bulut kaynaklarını yapılandırma
 
 Bu öğretici, IoT Hub Cihazı Sağlama Hizmeti kullanılarak otomatik cihaz sağlama için bulutun nasıl ayarlanacağını gösterir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -45,7 +45,7 @@ Yeni bir Cihaz Sağlama Hizmeti örneği oluşturmak için şu adımları izleyi
     
    | Ayar       | Önerilen değer | Açıklama | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **Ad** | Herhangi bir benzersiz ad | -- | 
+   | **Adı** | Herhangi bir benzersiz ad | -- | 
    | **Abonelik** | Aboneliğiniz  | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
    | **Kaynak grubu** | myResourceGroup | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
    | **Konum** | Geçerli bir konum | Bölgeler hakkında bilgi için bkz. [Azure Bölgeleri](https://azure.microsoft.com/regions/). |   

@@ -1,5 +1,5 @@
 ---
-title: 'REST öğreticisi: JSON Bloblarından metin ve yapı ayıklamak için bir AI zenginleştirme işlem hattı oluşturma'
+title: 'Öğretici: JSON Bloblarından metin ve yapıyı ayıklama'
 titleSuffix: Azure Cognitive Search
 description: Postman ve Azure Bilişsel Arama REST API 'Lerini kullanarak JSON Bloblarındaki içerikler üzerinde metin ayıklama ve doğal dil işleme örneğinde adım adım ilerleyin.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: cb05d85c32d7eaed002d3e3bacbe7fdbd17310eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790185"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113664"
 ---
-# <a name="tutorial-add-structure-to-unstructured-content-with-ai-enrichment"></a>Öğretici: AI zenginleştirme ile "yapılandırılmamış içerik" yapısına yapı ekleme
+# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Öğretici: REST API 'Leri kullanarak Azure 'da JSON Bloblarından metin ve yapı ayıklama (Azure Bilişsel Arama)
 
-Yapılandırılmamış metin veya görüntü içeriğiniz varsa, bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) , tam metin arama veya bilgi araştırma senaryoları için faydalı olan bilgileri ayıklamanızı ve yeni içerik oluşturmanıza yardımcı olabilir. İşlem hattı görüntü dosyalarını (JPG, PNG, TIFF) işleyebilse de, bu öğretici Word tabanlı içeriğe odaklanmasına karşın sorgularda, modellerde ve filtrelerde kullanabileceğiniz yeni alanlar ve bilgiler oluşturmak için dil algılamayı ve metin analizlerini uygular.
+Azure Blob depolamada yapılandırılmamış metin veya görüntü içeriğiniz varsa, bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) , tam metin arama veya bilgi araştırma senaryoları için faydalı olan bilgileri ayıklamanızı ve yeni içerik oluşturmanıza yardımcı olabilir. İşlem hattı görüntü dosyalarını (JPG, PNG, TIFF) işleyebilse de, bu öğretici Word tabanlı içeriğe odaklanmasına karşın sorgularda, modellerde ve filtrelerde kullanabileceğiniz yeni alanlar ve bilgiler oluşturmak için dil algılamayı ve metin analizlerini uygular.
 
 > [!div class="checklist"]
 > * Azure Blob depolamada PDF, MD, DOCX ve PPTX gibi tüm belgeler (yapılandırılmamış metin) ile başlayın.
@@ -84,7 +84,7 @@ Bu kılavuzda, verileri sağlamak üzere dizin oluşturma ve sorgular, AI zengin
 
 1. Bağlantı dizesini Not defteri 'ne kaydedin. Daha sonra veri kaynağı bağlantısını ayarlarken gerekecektir.
 
-### <a name="cognitive-services"></a>Cognitive Services
+### <a name="cognitive-services"></a>Bilişsel Hizmetler
 
 AI zenginleştirme, doğal dil ve görüntü işleme için Metin Analizi ve Görüntü İşleme dahil bilişsel hizmetler tarafından desteklenir. Amacınız gerçek bir prototipi veya projeyi tamamlayacaksa, bu noktada bilişsel hizmetler sağlama (Azure Bilişsel Arama ile aynı bölgede), böylece dizin oluşturma işlemlerine iliştirebilirsiniz.
 
@@ -167,9 +167,9 @@ Bir 403 veya 404 hatası aldıysanız, istek yapısını denetleyin: `api-versio
    | İmde                 | Açıklama    |
    |-----------------------|----------------|
    | [Varlık tanıma](cognitive-search-skill-entity-recognition.md) | Kişilerin, kuruluşların ve konumların adlarını blob kapsayıcısındaki içerikten ayıklar. |
-   | [Dil Algılama](cognitive-search-skill-language-detection.md) | İçeriğin dilini algılar. |
+   | [Dil algılama](cognitive-search-skill-language-detection.md) | İçeriğin dilini algılar. |
    | [Metin bölme](cognitive-search-skill-textsplit.md)  | Anahtar tümceciği ayıklama becerisi çağrılmadan önce büyük içeriği daha küçük parçalara ayırır. Anahtar tümcecik ayıklama, 50.000 veya daha az karakterden oluşan girişi kabul eder. Bu sınıra uymak için örnek dosyaların birkaç tanesinin bölünmesi gerekir. |
-   | [Anahtar İfade Ayıklama](cognitive-search-skill-keyphrases.md) | En üstteki anahtar tümceleri çeker. |
+   | [Anahtar ifade ayıklama](cognitive-search-skill-keyphrases.md) | En üstteki anahtar tümceleri çeker. |
 
    Her beceri, belge içeriğinde yürütülür. İşlem sırasında Azure Bilişsel Arama, farklı dosya biçimlerinden içerik okumak için her belgeyi ister. Kaynak dosyadan gelen, bulunan metin, oluşturulan ```content``` alanına her belge için birer birer yerleştirilir. Bu nedenle, giriş ```"/document/content"```olur.
 

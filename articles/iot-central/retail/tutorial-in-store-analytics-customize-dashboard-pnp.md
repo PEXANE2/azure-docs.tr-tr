@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central operatör panosunu özelleştirme | Microsoft Docs
+title: 'Öğretici: Azure IoT Central operatör panosunu özelleştirme'
 description: Bu öğreticide, bir IoT Central uygulamasında operatör panosunun nasıl özelleştirileceği ve cihazların yönetilmesi gösterilmektedir.
 services: iot-central
 ms.service: iot-central
@@ -10,13 +10,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: timlt
 author: timlt
-ms.date: 10/03/2019
-ms.openlocfilehash: cb43facfc6b838a6e29a1b08e50648abf0f04911
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.date: 11/12/2019
+ms.openlocfilehash: 0dcabada522bf8189d163936551ea94cb4dd2657
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615292"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112908"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Öğretici: işletmen panosunu özelleştirme ve Azure IoT Central cihazları yönetme
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Cihaz ayrıntılarını göstermek için özellik kutucukları ekleyin
 > * Çalıştır komutlarına komut kutucukları ekleyin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, Oluşturucu Azure IoT Central mağaza 'da analiz uygulaması oluşturmak ve cihaz eklemek için ilk öğreticiyi tamamlaması gerekir:
 

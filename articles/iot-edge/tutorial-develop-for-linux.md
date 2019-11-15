@@ -1,20 +1,20 @@
 ---
-title: Linux cihazları için modül geliştirme-Azure IoT Edge | Microsoft Docs
+title: 'Öğretici: Linux cihazları için modül geliştirme-Azure IoT Edge'
 description: Bu öğretici, Linux cihazları için Linux kapsayıcıları kullanarak IoT Edge modülleri geliştirmek üzere geliştirme makinenizi ve bulut kaynaklarınızı ayarlamayı adım adım göstermektedir
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a523028fb312f030bc453692daceb0f254f844b6
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 01ca118348b3a084c97182338bf656da83d52cb4
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240958"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114045"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Öğretici: Linux cihazları için IoT Edge modülleri geliştirme
 
@@ -98,19 +98,19 @@ IoT Edge modülleri geliştirmek için Visual Studio Code için IoT uzantıları
 
 1. Geliştirme makinenize [Visual Studio Code](https://code.visualstudio.com/) 'yi yükler. 
 
-2. Yükleme tamamlandıktan sonra**uzantıları** **görüntüle** > ' yi seçin. 
+2. Yükleme tamamlandıktan sonra, > **uzantıları** **görüntüle** ' yi seçin. 
 
 3. Aslında IoT Hub ve IoT cihazlarıyla etkileşime başlamanıza yardımcı olan ve IoT Edge modülleri geliştiren bir uzantı koleksiyonu olan **Azure IoT araçları**' nı arayın. 
 
 4. **Yükle**’yi seçin. Dahil edilen her uzantı tek tek yüklenir. 
 
-5. Uzantılar yükleme tamamlandığında, komut paletini **görüntüle** > ' yi seçerek komut paleti ' ni**açın.** 
+5. Uzantılar yükleme tamamlandığında, komut paleti ' ni **görüntüle** > **komut paleti**' ni seçerek açın. 
 
-6. Komut paletinde Azure 'u arayıp seçin **: Oturum açın**. Azure hesabınızda oturum açmak için yönergeleri izleyin. 
+6. Komut paletinde **Azure: oturum aç**' ı arayıp seçin. Azure hesabınızda oturum açmak için yönergeleri izleyin. 
 
-7. Komut paletinde, Azure IoT Hub arayın ve seçin **: IoT Hub**seçin. Azure aboneliğinizi ve IoT Hub 'ınızı seçmek için istemleri izleyin. 
+7. Komut paletinde, **Azure IoT Hub arayıp seçin: IoT Hub ' i seçin**. Azure aboneliğinizi ve IoT Hub 'ınızı seçmek için istemleri izleyin. 
 
-7. Sol taraftaki etkinlik çubuğundaki simgeyi seçerek veya **Görünüm** > **Gezgini**' ni seçerek Visual Studio Code gezgin bölümünü açın. 
+7. Sol taraftaki etkinlik çubuğundaki simgeyi seçerek veya **görünüm** > **Gezgini**' ni seçerek Visual Studio Code gezgin bölümünü açın. 
 
 8. Gezgin bölümünün en altında, daraltılan **Azure IoT Hub cihazları** menüsünü genişletin. Komut paleti aracılığıyla seçtiğiniz IoT Hub 'ı ile ilişkili cihazları ve IoT Edge cihazları görmeniz gerekir. 
 
@@ -126,7 +126,7 @@ Bu öğreticide, en sık kullanılan C# şablon olduğu için modül şablonunu 
 
 ### <a name="create-a-project-template"></a>Proje şablonu oluşturma
 
-Visual Studio Code komut paletinde arama yapın ve Azure IoT Edge seçin **: Yeni IoT Edge çözümü**. Çözümünüzü oluşturmak için istemleri izleyin ve aşağıdaki değerleri kullanın: 
+Visual Studio Code komut paletinde arama yapın ve **Azure IoT Edge: yeni IoT Edge çözüm**' i seçin. Çözümünüzü oluşturmak için istemleri izleyin ve aşağıdaki değerleri kullanın: 
 
    | Alan | Değer |
    | ----- | ----- |
@@ -134,7 +134,7 @@ Visual Studio Code komut paletinde arama yapın ve Azure IoT Edge seçin **: Yen
    | Çözüm adı sağlayın | Çözümünüz için açıklayıcı bir ad girin veya varsayılan değerleri kabul **EdgeSolution**. |
    | Modül şablonunu seçin | Seçin  **C# Modülü**. |
    | Modül adı sağlayın | Varsayılan **sampleModule**'ü kabul edin. |
-   | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz, son adımda verdiğiniz adından önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br> Son görüntü deposu, kayıt defteri \<adı\>. azurecr.io/sampleModule gibi görünür. |
+   | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz, son adımda verdiğiniz adından önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br> Son görüntü deposu, \<kayıt defteri adı\>. azurecr.io/samplemodule gibi görünüyor. |
  
    ![Docker görüntü deposunu sağlama](./media/tutorial-develop-for-linux/image-repository.png)
 
@@ -162,7 +162,7 @@ IoT Edge uzantısı, Azure 'dan kapsayıcı kayıt defteri kimlik bilgilerinizi 
 
 Şu anda Visual Studio Code Linux AMD64 C# ve ARM32v7 cihazları için modüller geliştirebilir. Kapsayıcının nasıl oluşturulduğunu ve çalıştığını etkilediğinden, her çözümle hedeflediğiniz mimariyi seçmeniz gerekir. Linux AMD64 varsayılandır. 
 
-1. Komut paletini açın ve **Azure IoT Edge arayın: Edge çözümü**için varsayılan hedef platformunu ayarlayın veya pencerenin altındaki yan çubukta kısayol simgesini seçin. 
+1. Komut paleti ' ni açın ve Azure IoT Edge için arama yapın **: Edge çözümü Için varsayılan hedef platformunu ayarla**veya pencerenin altındaki yan çubukta kısayol simgesini seçin. 
 
    ![Yan çubukta mimari simgesini seçin](./media/tutorial-develop-for-linux/select-architecture.png)
 
@@ -198,7 +198,7 @@ Proje şablonuyla C# birlikte gelen örnek kod, .net için IoT Hub SDK 'Sının 
 
 7. Dosyanın en altında, **$edgeHub** modülü için istenen özellikleri bulun. 
 
-   IoT Edge hub modülünün işlevlerinden biri, iletileri bir dağıtımdaki tüm modüller arasında yönlendirmekte. **Rotalar** özelliğindeki değerleri gözden geçirin. İlk yol olan **SampleModuleToIoTHub**, sampleModule modülündeki herhangi bir çıkış **\*** kuyruğuna gelen herhangi bir iletiyi göstermek için joker karakteri () kullanır. Bu iletiler, IoT Hub belirten ayrılmış bir ad olan *$upstream*' a gider. İkinci yol olan sensorToSampleModule, SimulatedTemperatureSensor modülünden gelen iletileri alır ve bunları SampleModule kodunda gördüğünüz *input1* giriş kuyruğuna yönlendirir. 
+   IoT Edge hub modülünün işlevlerinden biri, iletileri bir dağıtımdaki tüm modüller arasında yönlendirmekte. **Rotalar** özelliğindeki değerleri gözden geçirin. İlk yol olan **SampleModuleToIoTHub**, sampleModule modülündeki herhangi bir çıkış kuyruğuna gelen herhangi bir iletiyi göstermek için bir joker karakter ( **\*** ) kullanır. Bu iletiler, IoT Hub belirten ayrılmış bir ad olan *$upstream*' a gider. İkinci yol olan sensorToSampleModule, SimulatedTemperatureSensor modülünden gelen iletileri alır ve bunları SampleModule kodunda gördüğünüz *input1* giriş kuyruğuna yönlendirir. 
 
    ![Dağıtım. Template. JSON içindeki yolları gözden geçirin](./media/tutorial-develop-for-linux/deployment-routes.png)
 
@@ -210,7 +210,7 @@ Bazı önemli dağıtım kavramlarını anlamak için modül kodunu ve Dağıtı
 
 Kapsayıcı görüntünüzü kayıt defterinde depolanacak şekilde gönderebilmesi için kapsayıcı kayıt defteri kimlik bilgilerinizi Docker 'a sağlayın. 
 
-1. **Görünüm** > **terminali**' i seçerek Visual Studio Code tümleşik Terminal ' i açın.
+1. Visual Studio Code > **terminali**' i seçerek tümleşik Terminal ' i açın.
 
 2. Kayıt defterini oluşturduktan sonra kaydettiğiniz Azure Container Registry kimlik bilgileriyle Docker 'da oturum açın. 
 
@@ -218,7 +218,7 @@ Kapsayıcı görüntünüzü kayıt defterinde depolanacak şekilde gönderebilm
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Kullanımını öneren bir güvenlik uyarısı alabilirsiniz `--password-stdin`. Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
+   `--password-stdin`kullanımını öneren bir güvenlik uyarısı alabilirsiniz. Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
 
 ### <a name="build-and-push"></a>Derleme ve gönderme 
 
@@ -228,7 +228,7 @@ Visual Studio Code artık kapsayıcı Kayıt defterinize erişebilir, bu nedenle
 
    ![IoT Edge modülleri oluşturun ve gönderin](./media/tutorial-develop-for-linux/build-and-push-modules.png)
 
-   Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi dışında, tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkincisi, hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için çalışır `docker build` . Ardından, görüntü deposunu `docker push` kapsayıcı Kayıt defterinize göndermek için çalışır. 
+   Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi dışında, tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkinci olarak, hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için `docker build` çalıştırır. Sonra, görüntü deposunu kapsayıcı Kayıt defterinize göndermek için `docker push` çalıştırır. 
 
    Bu işlem ilk kez birkaç dakika sürebilir, ancak komutları bir sonraki çalıştırışınızda daha hızlıdır. 
 
@@ -261,8 +261,8 @@ Visual Studio Code artık kapsayıcı Kayıt defterinize erişebilir, bu nedenle
 
 Modül görüntünüzü oluştururken ve gönderirken hatalarla karşılaşırsanız, genellikle geliştirme makinenizde Docker yapılandırması gerekir. Yapılandırmanızı gözden geçirmek için aşağıdaki denetimleri kullanın: 
 
-* Komutu, `docker login` kapsayıcı Kayıt defterinizden kopyaladığınız kimlik bilgilerini kullanarak çalıştırdınız mı? Bu kimlik bilgileri, Azure 'da oturum açmak için kullandığınız olanlardan farklıdır. 
-* Kapsayıcı deponuz doğru mu? Doğru kapsayıcı kayıt defteri adı ve doğru modülünüzün adı mı var? Denetlemek için SampleModule klasöründeki **Module. JSON** dosyasını açın. Depo değeri,  **\<kayıt defteri adı\>. azurecr.io/sampleModule**gibi görünmelidir. 
+* Kapsayıcı kayıt defterinden kopyaladığınız kimlik bilgilerini kullanarak `docker login` komutunu çalıştırdınız mı? Bu kimlik bilgileri, Azure 'da oturum açmak için kullandığınız olanlardan farklıdır. 
+* Kapsayıcı deponuz doğru mu? Doğru kapsayıcı kayıt defteri adı ve doğru modülünüzün adı mı var? Denetlemek için SampleModule klasöründeki **Module. JSON** dosyasını açın. Depo değeri, **\<\>. azurecr.io/sampleModule kayıt defteri adı**gibi görünmelidir. 
 * Modülünüzün **örnek modülünden** farklı bir ad kullandıysanız, bu ad çözüm genelinde tutarlıdır mi?
 * Makineniz, oluşturmakta olduğunuz kapsayıcı türünü çalıştırıyor mu? Bu öğretici Linux IoT Edge cihazları için olduğundan Visual Studio Code, yan çubukta **AMD64** veya **Arm32v7** deyin ve Docker Desktop 'ın Linux kapsayıcılarını çalıştırması gerekir.  
 

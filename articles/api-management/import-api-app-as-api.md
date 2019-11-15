@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 484621668b582953d49c366336a49970d82c3fbf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073258"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108494"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API Uygulamasını bir API olarak içeri aktarma
 
@@ -32,7 +32,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-+ Aşağıdaki hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
++ Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 + Aboneliğinizde bir API Uygulaması olduğundan emin olun. Daha fazla bilgi için bkz. [App Service belgeleri](https://docs.microsoft.com/azure/app-service/)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
@@ -47,8 +47,8 @@ Bu makalede şunları öğreneceksiniz:
 4. Uygulamayı seçin. APIM, seçili uygulamayla ilişkili swagger’ı bulur, getirir ve içeri aktarır. 
 
     APIM’in swagger bulmaması durumunda, API’yi bir “geçiş” API’si olarak sunar. 
-5. API URL'si soneki ekleyin. Sonek, bu belirli API’yi bu APIM örneğinde tanımlayan bir addır. Son ekin bu APIM örneğinde benzersiz olması gerekir.
-6. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda, "*Sınırsız*" ürünü kullanılır.  API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız, bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
+5. API URL'si soneki ekleyin. Son ek, bu APIM örneğinde özel olarak bu API’yi tanımlayan bir addır. Son ekin bu APIM örneğinde benzersiz olması gerekir.
+6. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda, "*Sınırsız*" ürünü kullanılır.  API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız API’yi bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
 
     Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması gerekir. Abone olduklarında, ilgili üründeki tüm API’ler için geçerli olan bir abonelik anahtarı edinirler. APIM örneğini siz oluşturduysanız zaten bir yöneticisinizdir ve varsayılan olarak tüm ürünlere abone olmuşsunuz demektir.
 
@@ -56,9 +56,9 @@ Bu makalede şunları öğreneceksiniz:
 
     * **Başlangıç**
     * **Sınırsız**   
-7. **Oluştur**’u seçin.
+7. **Oluştur**'u seçin.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure portalında yeni APIM API’sini test etme
+## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portal yeni API 'YI test etme
 
 İşlemler doğrudan bir API’nin işlemlerini görüntülemek ve test etmek için kullanışlı bir yol sağlayan Azure portalından çağrılabilir.  
 
@@ -70,21 +70,6 @@ Bu makalede şunları öğreneceksiniz:
 1. **Gönder**’e basın.
 
     Arka uç, **200 OK** ve bazı verilerle yanıt verir.
-
-## <a name="call-operation"> </a>Geliştirici portalından işlem çağırma
-
-API’leri test etmek için **Geliştirici portalından** da işlemler çağrılabilir. 
-
-1. "Arka uç API’sini içeri aktarma ve yayımlama" adımında oluşturduğunuz API’yi seçin.
-2. **Geliştirici portalı** düğmesine basın.
-
-    "Geliştirici portalı" sitesi açılır.
-3. Oluşturduğunuz **API**’yi seçin.
-4. Test etmek istediğiniz işleme tıklayın.
-5. **Deneyin**’e basın.
-6. **Gönder**’e basın.
-    
-    Bir işlem çağrıldıktan sonra, geliştirici portalı **Yanıt durumu**, **Yanıt üst ilgileri** ve tüm **Yanıt içeriğini** gösterir.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

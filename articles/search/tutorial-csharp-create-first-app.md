@@ -1,19 +1,19 @@
 ---
 title: C#ilk uygulamanızı oluşturma öğreticisi
 titleSuffix: Azure Cognitive Search
-description: Adım adım ilk arama uygulamanızı nasıl oluşturacağınızı öğrenin. Öğretici, GitHub 'da çalışan bir uygulamanın bağlantısını ve uygulamayı sıfırdan oluşturmak için tüm işlemleri sağlar. Azure Bilişsel Arama 'nin temel bileşenleri hakkında bilgi edinin.
+description: İlk C# arama uygulamanızı nasıl oluşturacağınızı öğrenin adım adım. Öğretici, GitHub 'da çalışan bir uygulamanın bağlantısını ve uygulamayı sıfırdan oluşturmak için tüm işlemleri sağlar. Azure Bilişsel Arama 'nin temel bileşenleri hakkında bilgi edinin.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 3f234a11aeaf7af4e47fb0cf6310ecd68d35e4da
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc3d9d52ca6eb3d35138323908c73eb0d09cf519
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794142"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112236"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C#Öğretici: ilk uygulamanızı oluşturma-Azure Bilişsel Arama
 
@@ -25,7 +25,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Model veri yapıları
 > * Web sayfası oluşturma
 > * Yöntemleri tanımlama
-> * Uygulamayı test edin
+> * Uygulamayı test etme
 
 Ayrıca, bir arama çağrısının ne olduğunu de öğreneceksiniz. Geliştirileceği koddaki anahtar deyimler aşağıdaki birkaç satırda kapsüllenir.
 
@@ -502,11 +502,11 @@ Azure Bilişsel Arama çağrısı **Runqueryasync** yöntemi içinde kapsülleni
 
     Bu yöntemde, önce Azure yapılandırmanızın başlatılmış olduğundan emin olun, sonra bazı arama parametrelerini ayarlayın. **Select** parametresindeki alanların adları, **otel** sınıfındaki Özellik adlarıyla tamamen eşleşir. **Select** parametresini bırakmak mümkündür, bu durumda tüm özellikler döndürülür. Ancak, yalnızca verilerin bir alt kümesiyle ilgileniyorsanız, hiçbir **Select** parametresi ayarı verimsiz değildir. İlgilendiğiniz özellikleri belirterek, yalnızca bu özellikler döndürülür.
 
-    Arama için zaman uyumsuz çağrı (**model. resultList = await _ındexclient. Documents. SearchAsync&lt;otel&gt;(model. searchText, Parameters);** ), bu öğretici ve uygulamanın hepsi hakkında. **Documentsearchresult** sınıfı ilginç bir fikirdir ve iyi bir fikir (uygulama çalışırken) burada bir kesme noktası ayarlamak ve **model. resultlist**içeriğini incelemek için bir hata ayıklayıcı kullanmaktır. Bunun sezgisel olduğunu, daha fazla bilgi edinmek istediğiniz verileri sağlar.
+    Arama için zaman uyumsuz çağrı (**model. resultList = await _indexClient. Documents. SearchAsync&lt;otel&gt;(model. searchText, Parameters);** ), bu öğretici ve uygulamanın her şeyi sağlar. **Documentsearchresult** sınıfı ilginç bir fikirdir ve iyi bir fikir (uygulama çalışırken) burada bir kesme noktası ayarlamak ve **model. resultlist**içeriğini incelemek için bir hata ayıklayıcı kullanmaktır. Bunun sezgisel olduğunu, daha fazla bilgi edinmek istediğiniz verileri sağlar.
 
 Şimdi gerçeği.
 
-### <a name="test-the-app"></a>Uygulamayı test edin
+### <a name="test-the-app"></a>Uygulamayı test etme
 
 Şimdi uygulamanın doğru şekilde çalıştığını kontrol edelim.
 

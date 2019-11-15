@@ -1,18 +1,18 @@
 ---
-title: Azure IoT Central bağlı bir çöp yönetimi uygulaması oluşturun | Microsoft Docs
-description: Azure IoT Central uygulama şablonlarını kullanarak bağlı bir çöp yönetimi uygulaması oluşturma oluşturmayı öğrenin.
+title: 'Öğretici: Azure IoT Central bağlı bir çöp yönetimi uygulaması oluşturma'
+description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak bağlı bir çöp yönetimi uygulaması oluşturma oluşturmayı öğrenin.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: fa2ea8cdf5148d27b025c62fbeec512ceac0943e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 38da444779a56f39d4119f3797ddb5bd2f31aeae
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890817"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112650"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Öğretici: IoT Central bağlı bir çöp yönetimi uygulaması oluşturma
 
@@ -31,7 +31,7 @@ Bu öğretici, IoT Central **bağlı çöp yönetimi** uygulama şablonundan Azu
 > * İşleri yapılandırma
 > * Beyaz etiketleme kullanarak uygulama markanızı özelleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 -  Bir Azure aboneliği önerilir. İsteğe bağlı olarak 7 günlük ücretsiz deneme kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.

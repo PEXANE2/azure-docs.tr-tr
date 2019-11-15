@@ -1,19 +1,19 @@
 ---
 title: C#otomatik tamamlama ve önerilerle ilgili öğretici
 titleSuffix: Azure Cognitive Search
-description: Bu öğretici, otomatik tamamlama ve öneriler eklemek için "arama sonuçları sayfalandırma-Azure Bilişsel Arama" projesinde oluşturulur. Amaç daha zengin bir kullanıcı deneyimidir. Satır içi otomatik tamamlama ile bir aşağı açılan öneri listesini birleştirmeyi öğrenin.
+description: Bu öğreticide, açılan liste kullanarak kullanıcılardan arama terimi girişini toplamanın bir yolu olarak otomatik tamamlama ve öneriler gösterilmektedir. Mevcut bir oteller projesi üzerinde oluşturur.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 959ae749f9ab8a025ec9c78d75640e2108868372
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b542476ac1c9b6d4368d97eb4db76518eb2dba03
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786498"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114571"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C#Öğretici: otomatik tamamlama ve öneriler ekleme-Azure Bilişsel Arama
 
@@ -80,7 +80,7 @@ Yukarıdaki betikte çağrılan otomatik tamamlama işlevi, jQuery kitaplığı 
     </head>
     ```
 
-2. Ayrıca, _Layout. cshtml dosyasında jQuery 'e başvuruda bulunan bir satırı ( **Görünümler/paylaşılan** klasöründe) da kaldırdık ya da bir yorum çıkardık. Aşağıdaki satırları bulun ve gösterildiği gibi ilk komut satırını açıklama olarak belirleyin. Bu değişiklik jQuery 'e yapılan başvuruları önler.
+2. Ayrıca, _Layout. cshtml dosyasında jQuery 'e başvuruda bulunan bir satırı ( **Görünümler/paylaşılan** klasörde) da kaldırmanız veya bir açıklama olarak belirlemeniz gerekir. Aşağıdaki satırları bulun ve gösterildiği gibi ilk komut satırını açıklama olarak belirleyin. Bu değişiklik jQuery 'e yapılan başvuruları önler.
 
     ```html
     <environment include="Development">
@@ -311,7 +311,7 @@ Bu işlevi sunan kitaplıklar vardır-genellikle "satır içi otomatik tamamlama
 
     **Sonuçlar** listesinin en üstünde bir otomatik tamamlama seçeneği döndürülür ve tüm öneriler gelir.
 
-2. Görünümde ilk olarak, açık gri otomatik tamamlama sözcüğünün Kullanıcı tarafından girilen beski metin altında oluşturulması için bir el uyguladık. HTML, bu amaçla Göreli konumlandırmayı içerir. **TextBoxFor** deyimini (ve çevreleyen &lt;div&gt; deyimlerini) aşağıdaki şekilde değiştirin. bu arama kutusu 39 piksel **kapalı olduğunda,** bu arama kutusunu normal arama kutusumuzdan doğru olarak tanımlanan ikinci bir arama kutusu aşağıda verilmiştir varsayılan konumu!
+2. Görünümde ilk olarak, açık gri otomatik tamamlama sözcüğünün Kullanıcı tarafından girilen beski metin altında oluşturulması için bir el uyguladık. HTML, bu amaçla Göreli konumlandırmayı içerir. **TextBoxFor** deyimini (ve çevreleyen &lt;div&gt; deyimlerini) aşağıdaki şekilde değiştirin. bu arama kutusu 39 piksel olan bu arama kutusunu çekerek normal arama kutusumuzda doğru olarak tanımlanan ikinci bir arama kutusu **aşağıda verilmiştir!**
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">
@@ -433,7 +433,7 @@ Bu işlevi sunan kitaplıklar vardır-genellikle "satır içi otomatik tamamlama
     </script>
     ```
 
-    Yalnızca kullanıcının yazmasıyla aynı durumu (büyük veya daha düşük) ("PA" ile "PA", "PA", "PA", "PA" ile eşleştirirken) ve Kullanıcı yazarken aynı durumu (büyük veya daha düşük) ayarlamak için **Interval** işlevinin zekice kullanımına dikkat edin. , böylece kaplama metni nede olur.
+    Aralık işlevinin, kullanıcının yazmasıyla aynı büyük/küçük harf (büyük veya daha düşük) ve Kullanıcı yazarken ("PA" ile "PA", "PA", "PA", arama sırasında "PA" ile eşleşir), ancak çakışan metnin nede olduğu şekilde ("PA" ile) aynı durumu (büyük veya küçük) belirlemek için **Interval** işlevinin zekice kullanımına dikkat edin.
 
     Daha fazla bilgi edinmek için betikteki açıklamaları okuyun.
 

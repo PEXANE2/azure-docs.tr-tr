@@ -1,19 +1,19 @@
 ---
-title: IoT Central bir akıllı ölçüm analizi uygulaması oluşturun | Microsoft Docs
-description: Azure IoT Central uygulama şablonlarını kullanarak akıllı ölçüm izleme uygulaması oluşturmayı öğrenin.
+title: 'Öğretici: IoT Central ile akıllı ölçüm analizi uygulaması oluşturma'
+description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak akıllı ölçüm izleme uygulaması oluşturmayı öğrenin.'
 author: op-ravi
 ms.author: omravi
-ms.date: 10/23/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c7bb35e7de6400a0fad13845a3faa38ad21b6de7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a73f4d75811a384eb822d1f8594a22506509d560
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581249"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112545"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Öğretici: akıllı ölçüm izleme uygulaması şablonunu oluşturma ve adım adım izleme 
 
@@ -29,11 +29,11 @@ Bu öğretici, benzetimli verilerle örnek bir cihaz modeli içeren akıllı öl
 
 Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - None
 - Azure aboneliği önerilir, ancak denemek için gerekli değildir
 
-## <a name="create-a-smart-meter-monitoring-app"></a>Akıllı ölçüm izleme uygulaması oluşturma 
+## <a name="create-a-smart-meter-monitoring-app"></a>Akıllı sayaç izleme uygulaması oluşturma 
 
 Bu uygulamayı üç basit adımda oluşturabilirsiniz:
 

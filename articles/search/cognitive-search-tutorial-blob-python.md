@@ -1,5 +1,5 @@
 ---
-title: 'Python öğreticisi: bir AI zenginleştirme ardışık düzeninde bilişsel hizmetler çağırma'
+title: "Öğretici: REST API 'Leri kullanarak Python 'da beceri oluşturma"
 titleSuffix: Azure Cognitive Search
 description: Bir Jupyter Python Not defteri kullanarak Azure Bilişsel Arama veri ayıklama, doğal dil ve görüntü AI işleme örneğini adım adım yapın. Ayıklanan veriler, sorgu tarafından dizine alınır ve kolayca erişilir.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: bb36ae551c48fc53756933e78ff0212f8ec1cdeb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1e404998c8f49852248a754e7134f439dcdf5b04
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790216"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113686"
 ---
-# <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-cognitive-search-enrichment-pipeline"></a>Python öğreticisi: Azure Bilişsel Arama enzenginleştirme ardışık düzeninde Bilişsel Hizmetler API'si çağırma
+# <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Öğretici: REST ve Python kullanarak bir AI zenginleştirme işlem hattı oluşturma
 
 Bu öğreticide, bilişsel *becerileri*kullanarak Azure bilişsel arama veri zenginleştirmesini programlama mekanizması öğrenirsiniz. Yetenekler, bilişsel hizmetler 'de doğal dil işleme (NLP) ve görüntü analizi özellikleri tarafından desteklenir. Beceri kompozisyonu ve yapılandırması aracılığıyla bir görüntünün veya taranan belge dosyasının metin ve metin gösterimlerini ayıklayabilirsiniz. Ayrıca dili, varlıkları, anahtar tümcecikleri ve daha fazlasını tespit edebilirsiniz. Sonuç, bir dizin oluşturma işlem hattında AI zenginleştirmelerinin oluşturulduğu bir arama dizininde zengin ek içeriğe sahiptir. 
 
@@ -270,7 +270,7 @@ Beceri kümesinin grafiksel gösterimi aşağıda gösterilmektedir.
 
 Beceri kümesi temelleri hakkında daha fazla bilgi için bkz. [Beceri kümesini tanımlama](cognitive-search-defining-skillset.md).
 
-## <a name="create-an-index"></a>Dizin oluşturun
+## <a name="create-an-index"></a>Dizin oluşturma
 
 Bu bölümde, aranabilir dizine dahil edilecek alanları belirterek ve her bir alan için arama özniteliklerini ayarlayarak Dizin şemasını tanımlarsınız. Alanlar bir türe sahiptir ve alanın nasıl kullanıldığını (aranabilir, sıralanabilir vb.) belirleyen öznitelikleri alabilir. Bir dizindeki alan adlarının, kaynaktaki alan adlarıyla tamamen aynı olması gerekmez. Sonraki bir adımda, kaynak-hedef alanlarını bağlamak için dizin oluşturucuda alan eşlemeleri eklersiniz. Bu adım için, arama uygulamanızla ilgili alan adlandırma kurallarını kullanarak dizini tanımlayın.
 
@@ -456,7 +456,7 @@ Sonuçlar aşağıdaki örneğe benzer görünmelidir. Ekran görüntüsü yaln�
 
 Çıktı, her bir alanın adını, türünü ve özniteliklerini içeren dizin şemasıdır.
 
-`organizations` gibi tek bir alanın tüm içeriklerini döndürmek için ikinci bir `"*"` sorgusu gönderin.
+`"*"` gibi tek bir alanın tüm içeriklerini döndürmek için ikinci bir `organizations` sorgusu gönderin.
 
 ```python
 # Query the index to return the contents of organizations

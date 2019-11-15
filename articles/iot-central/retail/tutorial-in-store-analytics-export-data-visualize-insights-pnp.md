@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central verileri dışarı aktarın ve öngörüleri görselleştirin | Microsoft Docs
+title: 'Öğretici: Azure IoT Central verileri dışarı aktarın ve öngörüleri görselleştirin'
 description: Bu öğreticide, IoT Central verileri dışarı aktarmayı ve Power BI panosunda öngörüleri görselleştirmeyi öğrenin.
 services: iot-central
 ms.service: iot-central
@@ -10,13 +10,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: dobett
 author: dominicbetts
-ms.date: 10/22/2019
-ms.openlocfilehash: 0cf1c6e926b2406d960762a9d597b28a17f6c316
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.date: 11/12/2019
+ms.openlocfilehash: ce775f207eaa5df05900ea2e5b6d9fbeab4dc878
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615277"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112883"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Öğretici: Azure IoT Central verileri dışarı aktarın ve öngörüleri Power BI görselleştirin
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Bir olay hub 'ından Power BI akış veri kümesine veri göndermek için Logic Apps kullanın.
 > * Akış veri kümesindeki verileri görselleştirmek için Power BI panosu oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -58,7 +58,7 @@ Perakende izleme uygulamasını telemetri dışa aktarmaya yapılandırmadan ön
 
 1. Azure portal, ekranın sol üst kısmında bulunan **kaynak oluştur** ' u seçin.
 1. **Market 'Te ara**' te _Event Hubs_girin ve ardından **ENTER**tuşuna basın.
-1. **Event Hubs** sayfasında **Oluştur**' u seçin.
+1. Üzerinde **Event Hubs** sayfasında **Oluştur**.
 1. **Ad alanı oluştur** sayfasında, aşağıdaki adımları uygulayın:
     * Ad alanı için adınız _-Retail-Store-Analysis_gibi benzersiz bir ad girin. Sistem, bu adın kullanılabilir olup olmadığını denetler.
     * **Temel** fiyatlandırma katmanını seçin.
@@ -384,7 +384,7 @@ Mantıksal uygulama tasarımınıza mantığı eklemek için **kod görünümü*
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
     * **Nem** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Sonra **nem**' ı seçin.
     * **Sıcaklık** alanını seçin ve ardından **Telemetriyi ayrıştırmak**için **daha fazla göster** ' i seçin. Sonra **sıcaklık**' ı seçin.
-    * Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin. **Bölge 1 ortamı** eylemi aşağıdaki ekran görüntüsüne benzer şekilde görünür: ![Bölge 1 ortamı](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-1-action.png)
+    * Seçin **Kaydet** yaptığınız değişiklikleri kaydedin. **Bölge 1 ortamı** eylemi aşağıdaki ekran görüntüsüne benzer şekilde görünür: ![Bölge 1 ortamı](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-1-action.png)
 1. **Bölge 2 ortamı** eylemini seçin ve **Eylem Ekle**' yi seçin.
 1. **Ara bağlayıcılar ve eylemler**' de **Power BI**girin ve ardından **ENTER**tuşuna basın.
 1. **Veri kümesine satır ekle (Önizleme)** eylemini seçin.
@@ -396,7 +396,7 @@ Mantıksal uygulama tasarımınıza mantığı eklemek için **kod görünümü*
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
     * **Nem** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Sonra **nem**' ı seçin.
     * **Sıcaklık** alanını seçin ve ardından **Telemetriyi ayrıştırmak**için **daha fazla göster** ' i seçin. Sonra **sıcaklık**' ı seçin.
-    Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.  **Bölge 2 ortamı** eylemi aşağıdaki ekran görüntüsüne benzer şekilde görünür: ![Bölge 2 ortamı](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-2-action.png)
+    Seçin **Kaydet** yaptığınız değişiklikleri kaydedin.  **Bölge 2 ortamı** eylemi aşağıdaki ekran görüntüsüne benzer şekilde görünür: ![Bölge 2 ortamı](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-2-action.png)
 1. **Sahiplik** eylemini seçin ve ardından **arabirim kimliğiyle anahtar** eylemini seçin.
 1. **Iyi zaman arabirimi** eylemini seçin ve **Eylem Ekle**' yi seçin.
 1. **Ara bağlayıcılar ve eylemler**' de **Power BI**girin ve ardından **ENTER**tuşuna basın.
@@ -409,7 +409,7 @@ Mantıksal uygulama tasarımınıza mantığı eklemek için **kod görünümü*
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
     * **Iyi saat 1** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Ardından **DwellTime1**öğesini seçin.
     * **Diyi zaman 2** alanını seçin ve ardından **Telemetriyi ayrıştırmak**için **daha fazla bilgi** 'yi seçin. Ardından **DwellTime2**öğesini seçin.
-    * Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin. **Iyi zaman arabirimi** eylemi şu ekran görüntüsüne benzer şekilde görünür: ![sahiplik eylemi](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-1.png)
+    * Seçin **Kaydet** yaptığınız değişiklikleri kaydedin. **Iyi zaman arabirimi** eylemi şu ekran görüntüsüne benzer şekilde görünür: ![sahiplik eylemi](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-1.png)
 1. **Kişi sayısı arabirim** eylemini seçin ve **Eylem Ekle**' yi seçin.
 1. **Ara bağlayıcılar ve eylemler**' de **Power BI**girin ve ardından **ENTER**tuşuna basın.
 1. **Veri kümesine satır ekle (Önizleme)** eylemini seçin.
@@ -421,7 +421,7 @@ Mantıksal uygulama tasarımınıza mantığı eklemek için **kod görünümü*
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
     * **Sıra uzunluğu 1** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Ardından **count1**öğesini seçin.
     * **Sıra uzunluğu 2** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Ardından **count2**öğesini seçin.
-    * Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin. **Kişi sayısı arabirim** eylemi şu ekran görüntüsüne benzer şekilde görünür: ![sahiplik eylemi](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-2.png)
+    * Seçin **Kaydet** yaptığınız değişiklikleri kaydedin. **Kişi sayısı arabirim** eylemi şu ekran görüntüsüne benzer şekilde görünür: ![sahiplik eylemi](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-2.png)
 
 Mantıksal uygulama otomatik olarak çalışır. Her çalıştırmanın durumunu görmek için Azure portal mantıksal uygulamanın **genel bakış** sayfasına gidin:
 
@@ -484,11 +484,11 @@ Depodaki iki kullanıma alma için sıra uzunluğu ve diyi zamanı göstermek ü
 
 Panodaki kutucukları yeniden boyutlandırabilir ve yeniden düzenleyin aşağıdaki ekran görüntüsüne benzer şekilde görünür:
 
-![Power BI panosu](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard.png)
+![Power BI Panosu](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard.png)
 
 Panoyu daha fazla özelleştirmek için bazı ek grafik kaynakları ekleyebilirsiniz:
 
-![Power BI panosu](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard-graphics.png)
+![Power BI Panosu](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard-graphics.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

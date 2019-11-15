@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 57965b0326171f37d33aeae02080c8887c3acf23
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4077187fe04e3be914a6f7fba84c03df1b79d06a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072068"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108399"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Mantıksal Uygulamayı API olarak içeri aktarma
 
@@ -33,7 +33,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
--   Aşağıdaki hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
+-   Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 -   Aboneliğinizde bir HTTP uç noktası sunan bir mantıksal uygulama olduğundan emin olun. Daha fazla bilgi için, [http uç noktaları ile iş akışlarını tetikleme](../logic-apps/logic-apps-http-endpoint.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
@@ -48,7 +48,7 @@ Bu makalede şunları öğreneceksiniz:
 3. Aboneliğinizde HTTP tetikleyicisiyle Logic Apps listesini görmek için, **Araştır** ' a basın. (HTTP tetikleyicisi olmayan Logic Apps listede görünmeyecektir.)
 4. Uygulamayı seçin. API Management seçilen uygulamayla ilişkili Swagger 'yi bulur, getirir ve içeri aktarır.
 5. API URL'si soneki ekleyin. Sonek, bu belirli API’yi bu API Management örneğinde tanımlayan bir addır. Bu API Management örneğinde benzersiz olmalıdır.
-6. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda, "_Sınırsız_" ürünü kullanılır. API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız, bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
+6. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda, "_Sınırsız_" ürünü kullanılır. API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız API’yi bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
 
     Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması gerekir. Abone olduklarında, ilgili üründeki tüm API’ler için geçerli olan bir abonelik anahtarı edinirler. API Management örneğini oluşturduysanız, zaten bir yöneticiyseniz, varsayılan olarak her ürüne abone olursunuz.
 
@@ -57,9 +57,9 @@ Bu makalede şunları öğreneceksiniz:
     - **Başlangıç**
     - **Sınırsız**
 
-7. **Oluştur**’u seçin.
+7. **Oluştur**'u seçin.
 
-## <a name="test-the-imported-api-in-the-azure-portal"></a>Azure portal içeri aktarılan API 'YI test etme
+## <a name="test-the-api-in-the-azure-portal"></a>Azure portalında API’yi test etme
 
 İşlemler doğrudan bir API’nin işlemlerini görüntülemek ve test etmek için kullanışlı bir yol sağlayan Azure portalından çağrılabilir.
 
@@ -72,22 +72,6 @@ Bu makalede şunları öğreneceksiniz:
 4. **Gönder**’e basın.
 
     Arka uç, **200 OK** ve bazı verilerle yanıt verir.
-
-## <a name="call-operation"> </a>Geliştirici portalından işlem çağırma
-
-API’leri test etmek için **Geliştirici portalından** da işlemler çağrılabilir.
-
-1. "Arka uç API’sini içeri aktarma ve yayımlama" adımında oluşturduğunuz API’yi seçin.
-2. **Geliştirici portalı** düğmesine basın.
-
-    "Geliştirici portalı" sitesi açılır.
-
-3. Oluşturduğunuz **API**’yi seçin.
-4. Test etmek istediğiniz işleme tıklayın.
-5. **Deneyin**’e basın.
-6. **Gönder**’e basın.
-
-    Bir işlem çağrıldıktan sonra, geliştirici portalı **Yanıt durumu**, **Yanıt üst ilgileri** ve tüm **Yanıt içeriğini** gösterir.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

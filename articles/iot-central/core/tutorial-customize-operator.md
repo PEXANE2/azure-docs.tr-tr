@@ -1,19 +1,19 @@
 ---
-title: Azure IoT Central’da operatör görünümlerini özelleştirme | Microsoft Docs
-description: Oluşturucu olarak, Azure IoT Central uygulamanızda operatör görünümlerini özelleştirin.
+title: 'Öğretici: işlecin Azure IoT Central görünümlerini özelleştirme'
+description: 'Öğretici: Oluşturucu olarak, Azure IoT Central uygulamanızda işlecin görünümlerini özelleştirin.'
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 07/09/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 60e76a1a1d48aaafa8b9aa6b581e8634b1e47836
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d835ce5a1cbdcbd9741c775c4e9bd2eea7c803d7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956960"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112330"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Öğretici: Azure IoT Central operatör görünümünü özelleştirme
 
@@ -58,7 +58,7 @@ Oluşturucu olarak, bir cihaz panosunda hangi bilgilerin gösterileceğini tanı
 
     | Ayar     | Değer |
     | ----------- | ----- |
-    | Adı        | En fazla sıcaklık |
+    | Ad        | En fazla sıcaklık |
     | Zaman aralığı  | Geçen 1 hafta |
     | Ölçüm türü | Telemetri |
     | Ölçüm | sıcaklık |

@@ -1,20 +1,20 @@
 ---
-title: Stream Analytics uç Azure IoT Edge | Microsoft Docs
+title: 'Öğretici: Stream Analytics uç Azure IoT Edge'
 description: Bu öğreticide, Azure Stream Analytics bir IoT Edge cihazına modül olarak dağıtırsınız
 author: kgremban
 ms.author: kgremban
-ms.date: 08/07/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 0128574ff0ef9db1c5a4326e3ebce25fbba0c2e7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fcb272a6161ecae99f969fbf6689944ea85a1384
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845143"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114013"
 ---
-# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Öğretici: IoT Edge modül olarak Azure Stream Analytics dağıtma
+# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Öğretici: Azure Stream Analytics IoT Edge modülü olarak dağıtma
 
 Birçok IoT çözümü, IoT cihazlarından buluta ulaşan veriler hakkında bilgi edinmek için analiz hizmetlerini kullanır. Azure IoT Edge ile [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) mantığını alıp cihazın kendisine aktarabilirsiniz. Telemetri akışlarını uç cihazlarda işleyerek yüklenen veri miktarını ve eyleme dönüştürülebilir içgörülere tepki verme süresini azaltabilirsiniz.
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 <center>
 
-![Diyagram-öğretici mimarisi, aşama ve dağıtım işi](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
+![diyagram-öğretici mimarisi, aşama ve dağıtım işi](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
 
@@ -61,13 +61,13 @@ Bu bölümde, aşağıdaki adımları sağlayacak bir Azure Stream Analytics iş
 
 IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analytics işinin cihazdan çağrılabilecek bir şekilde depolanması gerekir. Mevcut bir Azure depolama hesabını kullanabilir veya yeni bir hesap oluşturabilirsiniz. 
 
-1. Azure Portal, **kaynak** > **depolama** > **depolama hesabı**oluştur ' a gidin. 
+1. Azure portal **kaynak oluşturma** > **depolama** > **depolama hesabı**' na gidin. 
 
 1. Depolama hesabınızı oluşturmak için aşağıdaki değerleri girin:
 
-   | Alan | Value |
+   | Alan | Değer |
    | ----- | ----- |
-   | Subscription | IoT hub'ınızla aynı aboneliği seçin. |
+   | Abonelik | IoT hub'ınızla aynı aboneliği seçin. |
    | Kaynak grubu | IoT Edge hızlı başlangıçlarında ve öğreticilerinde oluşturduğunuz tüm test kaynakları için aynı kaynak grubunu kullanmanızı öneririz. Örneğin, **IoTEdgeResources**. |
    | Ad | Depolama hesabınıza benzersiz bir ad verin. | 
    | Konum | Size yakın bir konum seçin. |
@@ -79,7 +79,7 @@ IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analyti
 
 ### <a name="create-a-new-job"></a>Yeni bir iş oluşturma
 
-1. Azure Portal **kaynak** > oluşturma**nesnelerin interneti** > **Stream Analytics işi**' ne gidin.
+1. Azure portal > **Nesnelerin İnterneti** > **kaynak oluştur ' a** gidin **Stream Analytics işi**.
 
 1. İşinizi oluşturmak için aşağıdaki değerleri girin:
 
@@ -91,7 +91,7 @@ IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analyti
    | Konum | Size yakın bir konum seçin. | 
    | Barındırma ortamı | **Kenar**'ı seçin. |
  
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 ### <a name="configure-your-job"></a>İşinizi yapılandırma
 

@@ -1,19 +1,19 @@
 ---
-title: Azure IoT Edge için özel modüller oluşturma ve dağıtma-Machine Learning | Microsoft Docs
-description: Bir Machine Learning modeli aracılığıyla yaprak cihazlardan verileri işleyen IoT Edge modülleri oluşturup dağıtın ve ardından öngörüleri IoT Hub gönderin.
+title: 'Öğretici: Azure IoT Edge üzerinde özel modüller oluşturma ve dağıtma-Machine Learning'
+description: 'Öğretici: bir makine öğrenimi modeli aracılığıyla yaprak cihazlardan verileri işleyen IoT Edge modülleri oluşturun ve dağıtın ve ardından öngörüleri IoT Hub gönderin.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 731abdde2160c16123ed648b5e552e9e62378438
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7bfe620510d5ff88a20c518be1f4dd1fb422daa2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493998"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106556"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Öğretici: özel IoT Edge modüller oluşturma ve dağıtma
 
@@ -22,7 +22,7 @@ ms.locfileid: "73493998"
 
 Bu makalede, yaprak cihazlardan ileti alan üç IoT Edge modülü oluşturacağız, verileri Machine Learning modelinize aracılığıyla çalıştırır ve ardından öngörüleri IoT Hub iletebilirsiniz.
 
-IoT Edge hub, modülü modül iletişimine kolaylaştırır. IoT Edge hub 'ı bir ileti Aracısı olarak kullanmak, modülleri birbirinden bağımsız olarak tutar. Modüller yalnızca iletileri kabul ettikleri girişleri ve ileti yazdıkları çıkışları belirtmeleri gerekir.
+IoT Edge hub, modülü modül iletişimine kolaylaştırır. IoT Edge hub 'ı bir ileti Aracısı olarak kullanmak, modülleri birbirinden bağımsız olarak tutar. Modüller yalnızca üzerinde iletileri ve bunlar iletileri yazma çıkışları kabul girişleri belirtmeniz gerekir.
 
 IoT Edge cihazının bizimle ilgili dört şeyi yerine getirebilmemiz istiyoruz:
 
@@ -639,7 +639,7 @@ Yönlendirici ve sınıflandırıcıda, yalnızca cihaz KIMLIĞI ve cihaz için 
 
 13. **Test rotası**seçin. Sınama başarılı olursa "ileti sorguyla eşleşti." iletisini görürsünüz.
 
-14. **Kaydet** düğmesine tıklayın.
+14. **Kaydet**’e tıklayın.
 
 #### <a name="update-turbofandevicetostorage-route"></a>TurbofanDeviceToStorage yolunu Güncelleştir
 

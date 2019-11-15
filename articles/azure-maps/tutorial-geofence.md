@@ -1,22 +1,22 @@
 ---
-title: Azure haritalar 'ı kullanarak bölge bölge oluşturma | Microsoft Docs
-description: Azure haritalar 'ı kullanarak bölge sınırlaması ayarlayın.
+title: 'Öğretici: Azure haritalar kullanarak bölge oluşturma'
+description: "Öğretici: Azure haritalar 'ı kullanarak bölge düzeni ayarlayın."
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694919"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107106"
 ---
-# <a name="set-up-a-geofence-by-using-azure-maps"></a>Azure haritalar 'ı kullanarak bölge kümesi oluşturma
+# <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak bölge bölge ayarlama
 
 Bu öğretici, Azure haritalar 'ı kullanarak bölge sınırlaması ayarlama konusunda size kılavuzluk eder. Bu öğreticide adresdığımız senaryo, site yöneticilerinin, belirlenen oluşturma alanlarının ötesine geçen potansiyel tehlikeli donanımları izlemesine yardımcı olur. Bir inşaat sitesi pahalı ekipman ve düzenlemeler içerir. Genellikle, ekipmanın yapım sitesinin içinde kalmasını ve izin olmadan ayrılmamaya gerek yoktur.
 
@@ -154,13 +154,13 @@ Postman uygulamasını açın ve Azure Maps, veri yükleme API 'sini kullanarak 
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Durum URI 'nizi kopyalayın ve bu değere `subscription-key` parametresini ekleyerek Azure Maps hesabı abonelik anahtarınız olur. Durum URI biçimi aşağıdaki gibi olmalıdır:
+6. Durum URI 'nizi kopyalayın ve bu değere bir `subscription-key` parametresi ekleyerek Azure Maps hesabı abonelik anahtarınız olacak şekilde ekleyin. Durum URI biçimi aşağıdaki gibi olmalıdır:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-7. ' I almak için, `udId` Postman uygulamasında yeni bir sekme açın ve Oluşturucu sekmesinde HTTP yöntemi Al ' ı seçin ve durum URI 'sinde bir GET isteği yapın. Karşıya veri yükleme işlemi başarılı olduysa yanıt gövdesinde bir UDID alırsınız. Uıdıd ' i daha sonra kullanmak üzere kopyalayın.
+7. `udId` ' ı almak için, Postman uygulamasında yeni bir sekme açın ve Oluşturucu sekmesinde HTTP yöntemi Al ' ı seçin ve durum URI 'sinde bir GET isteği yapın. Karşıya veri yükleme işlemi başarılı olduysa yanıt gövdesinde bir UDID alırsınız. Uıdıd ' i daha sonra kullanmak üzere kopyalayın.
 
    ```JSON
    {
@@ -257,7 +257,7 @@ Aşağıda, donanımların kronolojik sırada gözlemlendiği gibi farklı ilgil
   
    ![Geofence sorgu 4](./media/tutorial-geofence/geofence-query4.png)
 
-   Karşılık gelen yanıtı dikkatle gözlemleyerek, ekipman alt site bölge değerinden çıksa bile burada hiçbir olay yayımlanmadığını unutmayın. Kullanıcının GET isteğinde belirtilen zamanına bakarsanız, alt site bölge kullanım süresinin bu saate göre dolduğunu ve ekipmanın hala ana bölge yolunda olduğunu görebilirsiniz. Bunun yanı sıra, yanıt gövdesinde `expiredGeofenceGeometryId` altında bulunan alt sitenin bölge numarasını da görebilirsiniz.
+   Karşılık gelen yanıtı dikkatle gözlemleyerek, ekipman alt site bölge değerinden çıksa bile burada hiçbir olay yayımlanmadığını unutmayın. Kullanıcının GET isteğinde belirtilen zamanına bakarsanız, alt site bölge kullanım süresinin bu saate göre dolduğunu ve ekipmanın hala ana bölge yolunda olduğunu görebilirsiniz. Yanıt gövdesinde `expiredGeofenceGeometryId` alt sitenin bölge bölge numarasını da görebilirsiniz.
 
 
 5. Konum 5:

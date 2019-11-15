@@ -27,9 +27,9 @@
         - name: PHP'yi kullanma
           href: quickstarts/php.md
         - name: Go kullanma
-          href: quickstarts/php.md
+          href: quickstarts/go.md
         - name: Ruby'yi kullanma
-          href: quickstarts/php.md
+          href: quickstarts/ruby.md
 - name: Öğreticiler
   items:
     - name: Müşteri geri bildirimini analiz etmek için Power BI’ı tümleştirme

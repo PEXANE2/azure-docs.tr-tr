@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d83db424ee6e9a009353ca568232b38260883a4c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4e8097eeb07420bee4ba30eb0fedbe5d4db2db9d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793616"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113316"
 ---
-# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#Öğretici: Azure Bilişsel Arama Dizinleyicileri kullanarak Azure SQL veritabanı 'nda gezinme
+# <a name="c-tutorial-import-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#Öğretici: Azure Bilişsel Arama Dizinleyicileri kullanarak Azure SQL veritabanını Içeri aktarma
 
 Örnek bir Azure SQL veritabanından aranabilir verileri ayıklamak için dizin oluşturucunun nasıl yapılandırılacağını öğrenin. [Dizin oluşturucular](search-indexer-overview.md) , dış veri kaynaklarını gösteren ve bir [Arama dizinini](search-what-is-an-index.md) içerikle dolduran Azure bilişsel arama bileşenidir. Tüm Dizin oluşturucular, Azure SQL veritabanı için Dizin Oluşturucu en yaygın kullanılan veritabanıdır. 
 

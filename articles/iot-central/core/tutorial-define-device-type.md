@@ -1,20 +1,20 @@
 ---
-title: Azure IoT Central'da yeni bir cihaz türü tanımlama | Microsoft Docs
+title: 'Öğretici: Azure IoT Central yeni bir cihaz türü tanımlama'
 description: Bu öğreticide, bir oluşturucu olarak Azure IoT Central uygulamanızda yeni bir cihaz türünü nasıl tanımlayacağınız gösterilir. Türü için telemetri, durum, özellik ve ayarları tanımlarsınız.
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/07/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: ee1f461f14a46031e3fa9d62a6dceae55d892613
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3d79e710f2c71d96179ab8774ee89c90cb462ca4
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955574"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112358"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama
 
@@ -112,7 +112,7 @@ Aşağıdaki adımlar, uygulamanıza sıcaklık telemetrisi gönderen cihazlar i
      | Alan Adı           | sıcaklık   |
      | Birimler                | F             |
      | Min                  | 60            |
-     | Maks.                  | 110           |
+     | Maks                  | 110           |
      | Ondalık basamak sayısı       | 0             |
 
      Telemetri görüntüsü için renk de seçebilirsiniz. Telemetri tanımını kaydetmek için **Kaydet**' i seçin:
@@ -152,7 +152,7 @@ Bir hata veya bileşen hatası gibi bir olay olduğunda cihazın gönderdiği za
      | -------------------- | -----------       |
      | Görünen Ad         | Fan Motoru Hatası   |
      | Alan Adı           | fanmotorerr       |
-     | Önem Derecesi             | Hata             |
+     | Severity             | Hata             |
 
      Olay tanımını kaydetmek için **Kaydet**' i seçin:
 
@@ -193,7 +193,7 @@ Durumu kullanarak cihazın veya bileşenin durumunu bir süre içinde tanımlaya
      | Değer                | 1                 |
      | Görünen etiket        | İşletim         |
      | Değer                | 0                 |
-     | Görünen etiket        | Durdurulan           |
+     | Görünen etiket        | Durduruldu           |
 
      Durum ölçümü tanımını kaydetmek için **Kaydet**' i seçin:
 
@@ -411,7 +411,7 @@ Artık **bağlı hava koşullayıcı** cihaz şablonunuzu tanımladınız, kendi
 
 1. Artık panodaki bağlantılı hava koşullarınız için sanal verileri görebilirsiniz. Pano için kutucukları ve düzeni düzenleyebilirsiniz:
 
-    ![Panoyu görüntüleyin](./media/tutorial-define-device-type/dashboard.png)
+    ![Panoyu görüntüleme](./media/tutorial-define-device-type/dashboard.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,22 +1,22 @@
 ---
-title: Azure haritalar 'ı kullanarak bir mağaza Bulucu oluşturma | Microsoft Docs
-description: Azure haritalar 'ı kullanarak bir mağaza Bulucu oluşturun.
+title: 'Öğretici: Azure haritalar kullanarak bir mağaza Bulucu oluşturma'
+description: 'Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturun.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/15/2018
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 52deb1cf872176b69975d550dd89d870b34d9bf0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933062"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107077"
 ---
-# <a name="create-a-store-locator-by-using-azure-maps"></a>Azure haritalar 'ı kullanarak bir mağaza Bulucu oluşturma
+# <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturma
 
 Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıcı oluşturma sürecinde size rehberlik eder. Mağaza bulleyicileri ortaktır. Bu tür uygulamalarda kullanılan kavramların birçoğu, diğer birçok uygulama türü için geçerlidir. Müşterilere bir mağaza bulucunun teklif etmek, doğrudan tüketicilere satış yapan işletmelerin bir sunudur. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     
@@ -44,14 +44,14 @@ Koda geçmeden önce tasarım ile başlamak iyi bir fikirdir. Mağaza konumları
 <br/>
 <center>
 
-![Contoso kahve için bir mağaza bulucunun tel kafes mağaza konumları](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+Contoso Coffee kahve dükkanı için mağaza bulucunun ![tel kafes](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Bu mağaza bulucunun kullanışlılığını en üst düzeye çıkarmak için, bir kullanıcının ekran genişliği 700 pikselden daha küçük olduğunda ayarlayan bir yanıt veren düzen ekledik. Hızlı yanıt veren bir düzen, mağaza bulucunun bir mobil cihazda olduğu gibi küçük bir ekranda kullanılmasını kolaylaştırır. Küçük ekran düzeninin tel kafesi aşağıda verilmiştir:  
 
 <br/>
 <center>
 
-![Bir mobil cihazda contoso kahve Mağazası bulucunun tel kafes 'i](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+bir mobil cihazda contoso kahve Mağazası bulucunun ![tel kafes](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
 Wireframes oldukça basittir bir uygulama gösterir. Uygulamanın bir arama kutusu, yakındaki mağazaların listesi, bazı işaretçileri olan bir eşlem (semboller) ve Kullanıcı bir işaretleyici seçtiğinde ek bilgi görüntüleyen bir açılır pencere. Daha ayrıntılı bilgi için, bu öğreticide bu mağaza bulucusunu geliştirdiğimiz özellikler şunlardır:
 
@@ -60,7 +60,7 @@ Wireframes oldukça basittir bir uygulama gösterir. Uygulamanın bir arama kutu
 * Sayfa düzeni, cihaz ekranının genişliğine göre ayarlanır.  
 * Bir üst bilgi mağaza logosunu gösterir.  
 * Kullanıcı, adres, posta kodu veya şehir gibi bir konum aramak için bir arama kutusu ve arama düğmesi kullanabilir. 
-* Arama `keypress` kutusuna eklenen bir olay, Kullanıcı ENTER tuşuna bastığında aramayı tetikler. Bu işlevsellik genellikle daha fazla bakmış olsa da daha iyi bir kullanıcı deneyimi oluşturur.
+* Arama kutusuna eklenen `keypress` bir olay, Kullanıcı ENTER tuşuna bastığında aramayı tetikler. Bu işlevsellik genellikle daha fazla bakmış olsa da daha iyi bir kullanıcı deneyimi oluşturur.
 * Harita taşırken, eşlemenin merkezinden her konum için uzaklık hesaplanır. Sonuçlar listesi haritanın en üstündeki konumları görüntüleyecek şekilde güncelleştirilir.  
 * Sonuçlar listesinde bir sonuç seçtiğinizde, eşleme seçilen konumun üzerine ortalanır ve konum hakkındaki bilgiler açılır pencerede görüntülenir.  
 * Haritada belirli bir konumun seçilmesi bir açılır pencereyi de tetikler.
@@ -76,7 +76,7 @@ Bir mağaza Bulucu uygulaması geliştirmeden önce, haritada göstermek istedi�
 <br/>
 <center>
 
-![Bir Excel çalışma kitabındaki depo Konumlandırıcı verilerinin ekran görüntüsü](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
+bir Excel çalışma kitabındaki mağaza Konumlandırıcı verilerinin ekran görüntüsünü ![](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
 
 [Excel çalışma kitabını indirebilirsiniz](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). 
 
@@ -98,14 +98,14 @@ Başka bir yaklaşım, bu veri kümesini tarayıcının kolayca ayrıştırabile
 <br/>
 <center>
 
-![Farklı Kaydet tür iletişim kutusunun ekran görüntüsü](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
+Farklı Kaydet tür iletişim kutusunun ekran görüntüsünü ![](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
 
 Metin dosyasını Not defteri 'nde açarsanız, aşağıdaki şekle benzer şekilde görünür:
 
 <br/>
 <center>
 
-![Sekmeyle ayrılmış bir veri kümesi gösteren bir not defteri dosyasının ekran görüntüsü](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
+sekmeyle ayrılmış bir veri kümesi gösteren bir not defteri dosyasının ekran görüntüsünü ![](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
 
 
 ## <a name="set-up-the-project"></a>Projeyi ayarlama
@@ -115,13 +115,13 @@ Projeyi oluşturmak için, [Visual Studio 'yu](https://visualstudio.microsoft.co
 <br/>
 <center>
 
-![Basit depo Konumlandırıcı proje klasörünün ekran görüntüsü](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
+Basit depo Konumlandırıcı proje klasörünün ekran görüntüsünü ![](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
 
 ## <a name="create-the-user-interface"></a>Kullanıcı arabirimini oluşturma
 
 Kullanıcı arabirimini oluşturmak için *index. html*dosyasına kod ekleyin:
 
-1. Aşağıdaki `meta` etiketleri *index. html* `head` dosyasına ekleyin. Etiketler, (UTF-8) karakter kümesini tanımlar, Internet Explorer ve Microsoft Edge 'in en son tarayıcı sürümlerini kullanmasını söyler ve yanıt veren düzenler için iyi bir görünüm penceresi belirtir.
+1. Aşağıdaki `meta` etiketlerini *index. html*`head` ekleyin. Etiketler, (UTF-8) karakter kümesini tanımlar, Internet Explorer ve Microsoft Edge 'in en son tarayıcı sürümlerini kullanmasını söyler ve yanıt veren düzenler için iyi bir görünüm penceresi belirtir.
 
     ```HTML
     <meta charset="utf-8">
@@ -149,7 +149,7 @@ Kullanıcı arabirimini oluşturmak için *index. html*dosyasına kod ekleyin:
     <script src="index.js"></script>
     ```
 
-1. Belge gövdesinde bir `header` etiket ekleyin. `header` Etiket içinde, logo ve şirket adını ekleyin.
+1. Belge gövdesinde bir `header` etiketi ekleyin. `header` etiketinin içinde, logo ve şirket adını ekleyin.
 
     ```HTML
     <header>
@@ -158,7 +158,7 @@ Kullanıcı arabirimini oluşturmak için *index. html*dosyasına kod ekleyin:
     </header>
     ```
 
-1. `main` Bir etiket ekleyin ve metin kutusu ve arama düğmesine sahip bir arama bölmesi oluşturun. Ayrıca, harita `div` , liste paneli ve konumumu GPS için başvurular ekleyin.
+1. Bir `main` etiketi ekleyin ve metin kutusu ve arama düğmesine sahip bir arama paneli oluşturun. Ayrıca, harita, liste paneli ve Konumum, GPS için `div` başvurular ekleyin.
 
     ```HTML
     <main>
@@ -176,7 +176,7 @@ Kullanıcı arabirimini oluşturmak için *index. html*dosyasına kod ekleyin:
 
 İşiniz bittiğinde *index. html* [Bu örnek index. html dosyası](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)gibi görünmelidir.
 
-Sonraki adım CSS stillerini tanımlamaktır. CSS stilleri, uygulama bileşenlerinin nasıl düzenlendiğini ve uygulamanın görünümünü tanımlar. *İndex. css* ' ye açın ve aşağıdaki kodu ekleyin. `@media` Stil, ekran genişliği 700 pikselden küçük olduğunda kullanılacak alternatif stil seçeneklerini tanımlar.  
+Sonraki adım CSS stillerini tanımlamaktır. CSS stilleri, uygulama bileşenlerinin nasıl düzenlendiğini ve uygulamanın görünümünü tanımlar. *İndex. css* ' ye açın ve aşağıdaki kodu ekleyin. `@media` stili, ekran genişliği 700 pikselden küçük olduğunda kullanılacak alternatif stil seçeneklerini tanımlar.  
 
    ```CSS
     html, body {
@@ -403,12 +403,12 @@ Bu noktada, her şey Kullanıcı arabiriminde ayarlanır. Şimdi, verileri yükl
 
 1. *İndex. js*' ye kod ekleyin. Aşağıdaki kod eşlemeyi başlatır, sayfa yüklemeyi bitirene kadar bekleyen bir [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) ekler, haritanın yüklenmesini izlemek için olayları kablolendirir ve arama düğmesini ve konumumu kapatır düğmesini güçlendirir.
 
-   Kullanıcı arama düğmesini seçtiğinde veya arama kutusuna bir konum girdikten sonra Kullanıcı ENTER tuşuna bastığında, kullanıcının sorgusuna yönelik belirsiz bir arama başlatılır. Arama sonuçlarını bu ülkelere/bölgelerle sınırlamak için bir Country ISO `countrySet` 2 değerleri dizisi geçirin. Ülkeleri/bölgeleri arama yapılacak şekilde sınırlamak, döndürülen sonuçların doğruluğunu artırmaya yardımcı olur. 
+   Kullanıcı arama düğmesini seçtiğinde veya arama kutusuna bir konum girdikten sonra Kullanıcı ENTER tuşuna bastığında, kullanıcının sorgusuna yönelik belirsiz bir arama başlatılır. Arama sonuçlarını bu ülkelere/bölgelerle sınırlamak için `countrySet` seçeneğine bir Country ISO 2 değerleri dizisi geçirin. Ülkeleri/bölgeleri arama yapılacak şekilde sınırlamak, döndürülen sonuçların doğruluğunu artırmaya yardımcı olur. 
   
    Arama tamamlandığında, ilk sonucu alın ve harita kamerayı bu alana ayarlayın. Kullanıcı konumumu seçtiğinde, kullanıcının konumunu almak ve Haritayı konumlarına göre ortalamak için tarayıcıda yerleşik HTML5 coğrafi konum API 'sini kullanın.  
 
    > [!Tip]
-   > Açılır pencereleri kullanırken, tek `Popup` bir örnek oluşturmak ve içeriğini ve konumunu güncelleştirerek örneği yeniden kullanmak en iyisidir. Kodunuza eklediğiniz `Popup`her örnek için, sayfaya birden fazla DOM öğesi eklenir. Sayfada daha fazla DOM öğesi varsa, tarayıcıda izlemek için gereken daha fazla şey vardır. Çok fazla öğe varsa tarayıcı yavaş kalabilir.
+   > Açılır pencereleri kullanırken, tek bir `Popup` örneği oluşturmak ve içeriğini ve konumunu güncelleştirerek örneği yeniden kullanmak en iyisidir. Kodunuza eklediğiniz her `Popup`örneği için, sayfaya birden fazla DOM öğesi eklenir. Sayfada daha fazla DOM öğesi varsa, tarayıcıda izlemek için gereken daha fazla şey vardır. Çok fazla öğe varsa tarayıcı yavaş kalabilir.
 
     ```JavaScript
     function initialize() {
@@ -550,7 +550,7 @@ Bu noktada, her şey Kullanıcı arabiriminde ayarlanır. Şimdi, verileri yükl
 
 1. Veri kümesini haritanın `ready` olay dinleyicisine yükledikten sonra, verileri işlemek için bir katman kümesi tanımlayın. Bir kabarcık katmanı, kümelenmiş veri noktalarını işlemek için kullanılır. Balon katmanının üzerindeki her kümedeki noktaların sayısını işlemek için bir sembol katmanı kullanılır. İkinci bir sembol katmanı, haritadaki ayrı konumlar için özel bir simge oluşturur.
 
-   Kullanıcı haritada bir kümenin veya simgenin üzerine geldiğinde fare imlecini değiştirmek için kabarcık ve simge katmanlarına `mouseover` olayekleyin.`mouseout` Küme kabarcık `click` katmanına bir olay ekleyin. Bu `click` olay Haritayı iki düzeyde büyütür ve Kullanıcı herhangi bir kümeyi seçtiğinde Haritayı bir küme üzerine ortalar. Simge katmanına `click` bir olay ekleyin. Bu `click` olay, Kullanıcı tek bir konum simgesi seçtiğinde bir kafeterin ayrıntılarını gösteren bir açılır pencere görüntüler. Haritanın taşınması tamamlandığında izlemek üzere haritaya bir olay ekleyin. Bu olay tetiklendiğinde, liste panelindeki öğeleri güncelleştirin.  
+   Kullanıcı haritada bir küme veya simgenin üzerine geldiğinde fare imlecini değiştirmek için kabarcık ve simge katmanlarına `mouseover` ve `mouseout` olaylar ekleyin. Küme kabarcık katmanına `click` bir olay ekleyin. Bu `click` olay, Haritayı iki düzeyde büyütür ve Kullanıcı herhangi bir kümeyi seçtiğinde Haritayı bir küme üzerine ortalar. Simge katmanına `click` bir olay ekleyin. Bu `click` olay, Kullanıcı tek bir konum simgesi seçtiğinde bir kafeterin ayrıntılarını gösteren bir açılır pencere görüntüler. Haritanın taşınması tamamlandığında izlemek üzere haritaya bir olay ekleyin. Bu olay tetiklendiğinde, liste panelindeki öğeleri güncelleştirin.  
 
     ```JavaScript
     //Create a bubble layer to render clustered data points.
@@ -933,21 +933,21 @@ Kullanıcı konumumu ilk kez seçtiğinde tarayıcı, kullanıcının konumuna e
 <br/>
 <center>
 
-![Tarayıcının kullanıcının konumuna erişim isteğinin ekran görüntüsü](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
+tarayıcının kullanıcının konumuna erişim isteğinin ekran görüntüsünü ![](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
 Kahve dükterleri bulunan bir alanda yeterince yakından yakınlaştırdığınızda, kümeler tek tek konumlara ayrılır. Haritadaki simgelerden birini seçin veya yan bölmede bir öğe seçerek söz konusu konumun bilgilerini gösteren bir açılır pencere görüntüleyin.
 
 <br/>
 <center>
 
-![Tamamlanan mağaza bulucunun ekran görüntüsü](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
+tamamlanmış mağaza bulucunun ekran görüntüsünü ![](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
 
 Tarayıcı penceresini 700 piksel genişliğinde veya uygulamayı bir mobil cihazda açmak için yeniden boyutlandırırsanız, düzen daha küçük ekranlarda daha uygun olacak şekilde değişir. 
 
 <br/>
 <center>
 
-![Mağaza Konumlandırıcı 'nın küçük ekran sürümünün ekran görüntüsü](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
+Mağaza Konumlandırıcı 'nın küçük ekran sürümünün ekran görüntüsünü ![](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

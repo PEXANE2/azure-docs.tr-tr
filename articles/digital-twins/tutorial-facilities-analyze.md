@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: olayları çözümleme-Azure dijital TWINS | Microsoft Docs'
+title: 'Öğretici: Azure Digital TWINS kurulumundan olayları çözümleme'
 description: Bu öğreticideki adımları kullanarak, Azure dijital TWINS boşluklarınızın Azure Time Series Insights ile olayları görselleştirmeyi ve çözümlemeyi öğrenin.
 services: digital-twins
 ms.author: alinast
@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 09/23/2019
-ms.openlocfilehash: b082de36b954f1ed387782c3eefdc2b01cf09a90
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/12/2019
+ms.openlocfilehash: 3df0fa448e320cba6dd3aaba1bb1be09c1a8b49b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014020"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107672"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Öğretici: Time Series Insights kullanarak Azure dijital TWINS 'deki olayları görselleştirin ve çözümleyin
 

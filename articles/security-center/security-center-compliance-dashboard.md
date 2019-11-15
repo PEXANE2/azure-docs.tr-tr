@@ -1,5 +1,5 @@
 ---
-title: Mevzuat uyumluluk denetimleri-Azure Güvenlik Merkezi
+title: 'Öğretici: mevzuat uyumluluk denetimleri-Azure Güvenlik Merkezi'
 description: "Öğretici: Azure Güvenlik Merkezi 'ni kullanarak mevzuata uyumluluğunuzu geliştirmeyi öğrenin."
 services: security-center
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: c448697339948b30d73e88c183211e7a1154fe77
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 01c0f1199ab8c376fe5bb5e864f81a2730879ed1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686432"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112323"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Öğretici: mevzuata uyumluluğunuzu geliştirme
 ---
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide ele alınan özellikler arasında ilerlemek için Güvenlik Merkezi 'nin standart fiyatlandırma katmanına sahip olmanız gerekir. Güvenlik Merkezi Standart 'ı ücretsiz olarak deneyebilirsiniz.
 Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](https://docs.microsoft.com/azure/security-center/security-center-get-started) başlıklı hızlı başlangıçta Standart katmanına nasıl yükseltebileceğiniz adım adım açıklanmıştır.
@@ -62,7 +62,7 @@ Ekranın üst kısmında, desteklenen uyumluluk düzenlemeleri kümesiyle uyumlu
 
     Rapor, güvenlik merkezi değerlendirme verilerine dayanarak seçili standart için uyumluluk durumunuzu üst düzey bir Özet sağlar ve söz konusu standart denetimlere göre düzenlenmiştir. Rapor ilgili hissedarlarla paylaşılabilir ve iç ve dış denetçiler için kanıt sağlamaya yönelik olabilir.
 
-    ![İndirme](./media/security-center-compliance-dashboard/download-report.png)
+    ![indirme](./media/security-center-compliance-dashboard/download-report.png)
 
 ## <a name="improve-your-compliance-posture"></a>Uyumluluk durunuzu geliştirme
 
@@ -76,7 +76,7 @@ Yasal uyumluluk panosundaki bilgiler verildiğinde, önerileri doğrudan pano i�
 
 1. Öneri bilgilerine tıklayıp sağlıksız bir kaynağı seçtiğinizde, Azure portal içinde **güvenli depolama aktarımını** etkinleştirme deneyimine doğrudan yol açar.
 
-    Önerilerin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde güvenlik önerilerini uygulama](security-center-recommendations.md).
+    Önerileri uygulama hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi'nde güvenlik önerilerini uygulama](security-center-recommendations.md).
 
     ![Uyumluluk önerisi](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 

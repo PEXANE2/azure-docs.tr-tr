@@ -1,19 +1,19 @@
 ---
 title: C#Arama sonuçları sayfalandırmasına ilişkin öğretici
 titleSuffix: Azure Cognitive Search
-description: Bu öğretici, "ilk uygulamanızı oluşturma-Azure Bilişsel Arama" projenizi, iki tür sayfalama seçimi ile oluşturur. İlki, ilk, sonraki, önceki ve son sayfa düğmelerinin yanı sıra sayfa numarası düğmelerinin bir aralığını kullanır. İkinci disk belleği sistemi, dikey bir kaydırma çubuğunu alt sınırına taşıyarak tetiklenen, sonsuz kaydırma kullanır.
+description: Bu öğreticide arama sonuçlarının sayfalama gösterilmektedir. İlk, sonraki, önceki, son ve numaralandırılmış düğmelere göre disk belleğine sahip mevcut bir oteller projesi üzerinde oluşturulur. İkinci bir disk belleği sistemi, dikey bir kaydırma çubuğunu alt sınırına taşıyarak tetiklenen, sonsuz kaydırma kullanır.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 935e6d43cf77d94b485d55eb4bc5eb517bf802a0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793995"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113756"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#Öğretici: arama sonuçları sayfalandırma-Azure Bilişsel Arama
 
@@ -471,7 +471,7 @@ Sonsuz kaydırma uygulamak için, sayfa numarası kaydırma öğelerinden herhan
 
 ### <a name="handle-the-next-action"></a>Sonraki eylemi işle
 
-Denetleyiciye gönderilmesi gereken üç eylem vardır: uygulamanın ilk kez çalıştırıldığı, **Dizin ()** öğesini çağıran, Kullanıcı tarafından ilk arama, **Dizin (model)** ve ardından **İleri (model** ) ile daha fazla sonuç için çağrılar .
+Denetleyiciye gönderilmesi gereken üç eylem vardır: uygulamanın ilk çalıştırılması ( **Dizin ()** , dizin ( **model)** ve ardından **İleri (model**) ile daha fazla sonuç için çağrı yapan, Kullanıcı tarafından yapılan ilk arama.
 
 1. Ana denetleyici dosyasını açın ve özgün öğreticiden **Runqueryasync** yöntemini silin.
 

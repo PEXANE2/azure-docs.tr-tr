@@ -1,19 +1,19 @@
 ---
-title: Azure IoT Central su tüketim izleme uygulaması oluşturma | Microsoft Docs
-description: Azure IoT Central uygulama şablonlarını kullanarak su tüketim izleme uygulaması oluşturmayı öğrenin.
+title: 'Öğretici: Azure IoT Central su tüketim izleme uygulaması oluşturma'
+description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak su tüketim izleme uygulaması oluşturmayı öğrenin.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 09/24/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d79c4585d9764e2cc5cebd679372a97946479396
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889146"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112630"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Öğretici: IoT Central bir su tüketim izleme uygulaması oluşturma
 
@@ -32,7 +32,7 @@ Bu öğretici, IoT Central su tüketim Izleme uygulaması şablonundan bir Azure
 > * İşleri yapılandırma
 > * Beyaz etiketleme kullanarak uygulama markanızı özelleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 -  Bir Azure aboneliği önerilir. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.

@@ -1,20 +1,20 @@
 ---
-title: Azure IoT Central uygulamasına gerçek bir cihaz ekleme | Microsoft Docs
-description: Azure IoT Central uygulamanıza gerçek bir cihaz ekleme ve yapılandırma hakkında bilgi edinin. Ayrıca, gerçek cihazınızdaki kod hakkında bilgi edinebilirsiniz.
+title: 'Öğretici: Azure IoT Central uygulamasına gerçek bir cihaz ekleme'
+description: 'Öğretici: Azure IoT Central uygulamanıza gerçek bir cihaz ekleme ve yapılandırma hakkında bilgi edinin. Ayrıca, gerçek cihazınızdaki kod hakkında bilgi edinebilirsiniz.'
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 08/23/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: fce5be4d059d7b3698f1e76a4ec6ff46c4ce3c0b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5234c371cc4a7238148915f4dcca1faac564f608
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824619"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108964"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanıza gerçek bir cihaz ekleme
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * İstemci kodunun uygulamaya nasıl eşlendiğini anlama
 > * Gerçek cihaz için istemci kodu yapılandırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, oluşturucunun Azure IoT Central uygulamasını oluşturmak için en azından ilk Oluşturucu öğreticisini tamamlaması gerekir: [Yeni bir cihaz türü tanımlama](tutorial-define-device-type.md) (gerekli)
 

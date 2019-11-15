@@ -1,22 +1,22 @@
 ---
-title: Yük dengeli IoT Hub'larında cihazları sağlamak için Azure IoT Hub Cihazı Sağlama Hizmeti'ni kullanma | Microsoft Docs
-description: Azure Portal'da yük dengeli IoT Hub'larında Cihaz Sağlama Hizmeti ile otomatik cihaz sağlama
+title: "Öğretici: yük dengeli IoT Hub 'larda cihaz sağlamak için Azure IoT Hub cihaz sağlama hizmeti 'Ni kullanma"
+description: "Öğretici: cihaz sağlama hizmeti Azure portalındaki yük dengeli IoT Hub 'ları genelinde otomatik cihaz sağlama"
 author: sethmanheim
 ms.author: sethm
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8ed1b128fc2663cfc09c40f001bd0b14663a728e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6cd5dcb1fd96ac0fda75bf89dcf7259695cf971d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486011"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112771"
 ---
-# <a name="provision-devices-across-load-balanced-iot-hubs"></a>Yük dengeli IoT Hub'larında cihazları sağlama
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Öğretici: yük dengeli IoT Hub 'larda cihaz sağlama
 
 Bu öğreticide, Cihaz Sağlama Hizmeti kullanılarak birden çok yük dengeli IoT Hub'ı için cihazları sağlama işlemi gösterilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -56,7 +56,7 @@ Ayırma ilkesini ayarlamak için şu adımları izleyin:
 
 1. Ayırma ilkesini ayarlamak için Cihaz Sağlama Hizmeti sayfasında **Ayırma ilkesini yönetme** seçeneğine tıklayın.
 2. Ayırma ilkesi olarak **Eşit ağırlıklı dağılım**'ı ayarlayın.
-3. **Kaydet** düğmesine tıklayın.
+3. **Kaydet**’e tıklayın.
 
 ## <a name="link-the-new-iot-hub-to-the-device-provisioning-service"></a>Yeni IoT hub’ı Cihaz Sağlama Hizmeti’ne bağlama
 
@@ -66,7 +66,7 @@ Cihaz Sağlama Hizmetini ve IoT hub'ını, Cihaz Sağlama Hizmeti bu hub'a kaydo
 2. Cihaz Sağlama Hizmeti sayfasında **Bağlı IoT hub’lar** seçeneğine tıklayın.
 3. **Ekle**'ye tıklayın.
 4. **IoT hub'a bağlantı ekleme** sayfasında, bağlı IoT hub’ın geçerli abonelikte mi yoksa farklı bir abonelikte mi bulunduğunu belirtmek için radyo düğmelerini kullanın. Sonra **IoT hub** kutusunda IoT hub’ın adını seçin.
-5. **Kaydet** düğmesine tıklayın.
+5. **Kaydet**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
