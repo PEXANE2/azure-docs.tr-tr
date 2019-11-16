@@ -103,7 +103,7 @@
             - name: Kullanıcıları ve rolleri yönetme
               href: how-to-assign-roles.md
             - name: Sanal ağları kullanma
-              displayName: vnet
+              displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
             - name: SSL ile web hizmetlerinin güvenliğini sağlama
               href: how-to-secure-web-service.md
