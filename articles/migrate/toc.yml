@@ -32,10 +32,16 @@
           href: tutorial-migrate-hyper-v.md
     - name: Fiziksel sunucuları değerlendirme ve geçirme
       items:
-        - name: Fiziksel sunucuları geçiş için hazırlama
+        - name: Fiziksel sunucuları değerlendirme ve geçiş için hazırlama
           href: tutorial-prepare-physical.md
+        - name: Fiziksel sunucuları değerlendirme
+          href: tutorial-assess-physical.md
         - name: Fiziksel sunucuları geçirme
           href: tutorial-migrate-physical-virtual-machines.md
+    - name: İçeri aktarılan sunucuları geçiş için değerlendirme
+      items:
+        - name: İçeri aktarılan sunucuları geçiş için değerlendirme
+          href: tutorial-assess-import.md
 - name: Kavramlar
   items:
     - name: Sık sorulan sorular
@@ -74,6 +80,8 @@
       href: how-to-set-up-appliance-hyper-v.md
     - name: Fiziksel sunucu aleti dağıtma
       href: how-to-set-up-appliance-physical.md
+    - name: Uygulamaları/rolleri/özellikleri bulma
+      href: how-to-discover-applications.md
     - name: İlk kez araç ekleme
       href: how-to-add-tool-first-time.md
     - name: Değerlendirme araçları ekleme
@@ -82,6 +90,8 @@
       href: how-to-create-a-group.md
     - name: Bağımlılık görselleştirmesi kullanan grup makineleri
       href: how-to-create-group-machine-dependencies.md
+    - name: Aracısız bağımlılık görselleştirmesi kullanan grup makineleri
+      href: how-to-create-group-machine-dependencies-agentless.md
     - name: Değerlendirme oluşturma
       href: how-to-create-assessment.md
     - name: SQL Server veritabanını değerlendirme
