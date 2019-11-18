@@ -1,5 +1,6 @@
 ---
-title: 'S2S VPN veya VNet-VNet bağlantıları için IPSec/ıKE ilkesini yapılandırma: Azure Resource Manager: PowerShell | Microsoft Docs'
+title: Sanal ağdan sanal ağa bağlantılar & S2S VPN için IPSec/ıKE ilkesi
+titleSuffix: Azure VPN Gateway
 description: Azure Resource Manager ve PowerShell kullanarak Azure VPN ağ geçitleriyle S2S veya VNet-VNet bağlantıları için IPSec/ıKE ilkesi yapılandırın.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: a4a0431a8d40f7905805e0a7d902988b7eb26208
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b0dabf0ee3370abab3d0f9d6f1bf26dd622862cf
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035053"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151790"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN veya VNet-VNet bağlantıları için IPSec/ıKE ilkesini yapılandırma
 
@@ -93,7 +94,7 @@ Aşağıdaki tabloda, müşteriler tarafından yapılandırılabilen desteklenen
 >    * DH grubu ana modda veya 1. aşamada kullanılan Diffie-Hellmence grubunu belirtir
 >    * PFS Grubu, Hızlı modda veya Aşama 2 ' de kullanılan Diffie-Hellmence grubunu belirtti
 > 4. Azure VPN ağ geçitlerinde IKEv2 Ana Modu SA yaşam süresi 28.800 saniye olarak sabitlenmiştir
-> 5. "UsePolicyBasedTrafficSelectors" bağlantısının bir bağlantıda $True olarak ayarlanması, Azure VPN ağ geçidini şirket içi ilke tabanlı VPN güvenlik duvarına bağlanacak şekilde yapılandırır. PolicyBasedTrafficSelectors etkinleştirirseniz, VPN cihazınızın, şirket içi ağ (yerel ağ geçidi) öneklerinizin tüm birleşimleri ile, Azure sanal ağ öneklerine/ herhangi bir-herhangi bir. Örneğin, şirket içi ağınızın ön ekleri 10.1.0.0/16 ve 10.2.0.0/16; sanal ağınızın ön ekleriyse 192.168.0.0/16 ve 172.16.0.0/16 şeklindeyse, aşağıdaki trafik seçicileri belirtmeniz gerekir:
+> 5. "UsePolicyBasedTrafficSelectors" bağlantısının bir bağlantıda $True olarak ayarlanması, Azure VPN ağ geçidini şirket içi ilke tabanlı VPN güvenlik duvarına bağlanacak şekilde yapılandırır. PolicyBasedTrafficSelectors ' ı etkinleştirirseniz, VPN cihazınızın, şirket içi ağ (yerel ağ geçidi) öneklerinizin tüm birleşimleri ile, Azure sanal ağ öneklerinden herhangi birine ve bunlardan herhangi birine kadar tanımlanmış olan eşleşen trafik seçicileri olduğundan emin olmanız gerekir. Örneğin, şirket içi ağınızın ön ekleri 10.1.0.0/16 ve 10.2.0.0/16; sanal ağınızın ön ekleriyse 192.168.0.0/16 ve 172.16.0.0/16 şeklindeyse, aşağıdaki trafik seçicileri belirtmeniz gerekir:
 >    * 10.1.0.0/16 <====> 192.168.0.0/16
 >    * 10.1.0.0/16 <====> 172.16.0.0/16
 >    * 10.2.0.0/16 <====> 192.168.0.0/16

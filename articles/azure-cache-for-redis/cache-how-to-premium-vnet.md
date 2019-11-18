@@ -1,25 +1,17 @@
 ---
-title: Redsıs için Premium Azure önbelleği için bir sanal ağ yapılandırma | Microsoft Docs
+title: Redsıs için Premium Azure önbelleği için bir sanal ağ yapılandırma
 description: Redsıs örnekleri için Premium katman Azure önbelleğiniz için sanal ağ desteği oluşturma ve yönetme hakkında bilgi edinin
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 8b1e43a0-a70e-41e6-8994-0ac246d8bf7f
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: 6fc17f08db5951a3d693c7a5e3d5556d848d2efb
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b2ddac9439183321691104d4eedccb0c971d19c9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075056"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129406"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için sanal ağ desteğini yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. VNet, buluttaki özel bir ağ. Redsıs örneği için bir Azure önbelleği bir sanal ağ ile yapılandırıldığında, bu, genel olarak adreslenebilir değildir ve yalnızca VNet içindeki sanal makineler ve uygulamalardan erişilebilir. Bu makalede, Redsıs örneği için Premium bir Azure önbelleği için sanal ağ desteğinin nasıl yapılandırılacağı açıklanır.
@@ -161,7 +153,7 @@ Redsıs için Azure önbelleği için bir sanal ağda karşılanmamış olabilec
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Önbelleğim VNET 'te çalıştığını nasıl doğrulayabilirim?
 
 >[!IMPORTANT]
->VNET 'te barındırılan Redsıs örneği için bir Azure önbelleğine bağlanırken, önbellek istemcileriniz aynı VNET 'te veya VNET eşlemesi etkin olan bir VNET 'te olmalıdır. Buna tüm test uygulamaları veya tanılama ile ping araçları dahildir. İstemci uygulamasının nerede barındırıldığından bağımsız olarak, ağ güvenlik gruplarının, istemcinin ağ trafiğinin Redsıs örneğine erişmesine izin verilecek şekilde yapılandırılması gerekir.
+>VNET 'te barındırılan Redsıs örneği için bir Azure önbelleğine bağlanırken, önbellek istemcileriniz aynı VNET 'te veya aynı Azure bölgesinde sanal VNET eşlemesi etkinleştirilmiş bir sanal ağda olmalıdır. Genel Sanal Ağ Eşleme Şu anda desteklenmiyor. Buna tüm test uygulamaları veya tanılama ile ping araçları dahildir. İstemci uygulamasının nerede barındırıldığından bağımsız olarak, ağ güvenlik gruplarının, istemcinin ağ trafiğinin Redsıs örneğine erişmesine izin verilecek şekilde yapılandırılması gerekir.
 >
 >
 

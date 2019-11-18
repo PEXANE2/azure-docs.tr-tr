@@ -2,13 +2,13 @@
 title: Azure yönetimine genel bakış-Azure Idare
 description: Yönetimi için Azure uygulamalarınızın ve kaynaklarınızın Azure Yönetim Araçları içeriği için bağlantılarla birlikte alanlarından genel bakış.
 ms.date: 12/06/2018
-ms.topic: article
-ms.openlocfilehash: e85d5162146fb716ed9f846dc5a828d83c669627
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.topic: overview
+ms.openlocfilehash: f91e439a5fb7c330fb29d300e83779083641875b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013917"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132832"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure 'da Yönetim Hizmetleri 'ne genel bakış
 
@@ -42,7 +42,7 @@ Azure’da İdare, temelde iki hizmet ile uygulanır. [Azure İlkesi](./policy/o
 
 Kaynakları ve veri güvenliğini yönetin. Bir güvenlik programı, uygulamalarınızın ve kaynaklarınızın uyumluluk yanı sıra veri toplayıp analiz eden tehditleri değerlendirme içerir. Güvenlik İzleme ve tehdit analizi tarafından sağlanan [Azure Güvenlik Merkezi](../security-center/security-center-intro.md), içeren birleşik güvenlik yönetimi ve Gelişmiş tehdit koruması hibrit bulut iş yüklerinde. Bkz: [Azure güvenliğine giriş](../security/fundamentals/overview.md) kapsamlı bilgi ve Azure kaynaklarının güvenliğini sağlama konusunda yönergeler.
 
-## <a name="protect"></a>Koruma
+## <a name="protect"></a>koruma
 
 Koruma, uygulamalarınızın ve verilerinizin kullanılabilir, hatta denetiminiz dışında kesintiler tutulması ifade eder. Azure’da Koruma, iki hizmetle sağlanır. [Azure Backup](../backup/backup-introduction-to-azure-backup.md), hem buluttaki hem de şirket içindeki verilerinize yönelik yedekleme ve kurtarma sağlar. [Azure Site Recovery](../site-recovery/site-recovery-overview.md) bir olağanüstü durum sırasında iş sürekliliği ve anında kurtarma sağlar.
 

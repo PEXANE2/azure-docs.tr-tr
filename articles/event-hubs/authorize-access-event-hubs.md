@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: f01758c70e52f96fcd22a94e9b83f910cbf200c9
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: b5a037eaf310aa28c76d831dc9fe56eefaddbe56
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035880"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123472"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Azure Event Hubs'a erişimi yetkilendirme
 Bir olay hub 'ından olayları/verileri her yayımladığınızda veya kullandığınızda, istemciniz Event Hubs kaynaklara erişmeye çalışıyor. Güvenli bir kaynağa yönelik her isteğin, hizmetin verileri yayımlamak/kullanmak için gerekli izinlere sahip olduğundan emin olmak için yetkilendirilmiş olması gerekir. 
@@ -28,7 +28,7 @@ Azure AD ile kimlik doğrulama hakkında daha fazla bilgi için aşağıdaki mak
 - [Azure Active Directory kullanarak Azure Event Hubs istek kimliklerini doğrulama](authenticate-application.md)
 - [Azure Active Directory kullanarak Event Hubs kaynaklarına erişim yetkisi verin](authorize-access-azure-active-directory.md).
 
-## <a name="share-access-signatures"></a>Erişim imzalarını paylaşma 
+## <a name="shared-access-signatures"></a>Paylaşılan erişim imzaları 
 Event Hubs kaynakları için paylaşılan erişim imzaları (SAS), Event Hubs kaynaklara sınırlı bir temsilci erişimi sağlar. İmzanın geçerli olduğu veya izin verdiği izinlerde zaman aralığındaki kısıtlamalar, kaynakları yönetirken esneklik sağlar. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak kimlik doğrulama](authenticate-shared-access-signature.md). 
 
 Azure AD tarafından döndürülen bir OAuth 2,0 belirtecini kullanarak kullanıcıları veya uygulamaları yetkilendirmek, paylaşılan erişim imzaları (SAS) üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Azure AD ile, erişim belirteçlerini kodunuza depolamanız ve potansiyel güvenlik açıklarına karşı risk uygulamanız gerekmez. Event Hubs kaynaklarına ayrıntılı erişim sağlamak için paylaşılan erişim imzaları (SAS) kullanmaya devam edebilirsiniz, ancak Azure AD, SAS belirteçlerini yönetmeye gerek olmadan veya güvenliği aşılmış bir SAS iptal etme konusunda endişelenmeden benzer yetenekler sunmaktadır. 

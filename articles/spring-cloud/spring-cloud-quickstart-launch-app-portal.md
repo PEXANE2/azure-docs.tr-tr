@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: bc8b834e0dd128457910c46cc1a62382bbc28ee1
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 39a249fb75249505189e2af4872c3a3f61ebe2af
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721576"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133231"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Spring Cloud uygulaması başlatın
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğrenecek
 > * Her mikro hizmeti dağıtma
 > * Uygulamanız için genel uç nokta atama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 >[!Note]
 > Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizleme sırasında destek hakkında daha fazla bilgi için lütfen [SSS](https://azure.microsoft.com/support/faq/) veya dosya dosyası [destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) inceleyerek daha fazla bilgi edinebilirsiniz.
@@ -56,14 +56,16 @@ az extension add --name spring-cloud
 
 1. Bir Web tarayıcısında, [Azure Portal Azure Spring Cloud bağlantısını](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)açın.
 
-1. Genel Bakış sayfasına gitmek için **Azure yay bulutu** ' nı seçin. Başlamak için **Oluştur** düğmesini seçin.
-
-1. Aşağıdaki yönergeleri göz önünde bulundurarak formu doldurun:
+1. Azure yay bulutu **Oluştur** sayfasında formu doldurun.  Aşağıdaki yönergeleri göz önünde bulundurun:
     - Hizmet adı: hizmet örneğinizin adını belirtin.  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir.  Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.
     - Abonelik: Bu kaynak için faturalandırılması istediğiniz aboneliği seçin.  Bu aboneliğin Azure yay bulutu için izin verilenler listenize eklendiğinden emin olun.
     - Kaynak grubu: yeni kaynaklar için yeni kaynak grupları oluşturmak en iyi uygulamadır.
     - Konum: hizmet örneğinizin konumunu seçin. Şu anda desteklenen konumlar Doğu ABD, Batı ABD 2, Batı Avrupa ve Güneydoğu Asya 'yı içerir.
-    
+
+1. **Gözden geçir ve oluştur**' a tıklayın.
+
+1. Belirtimlerinizi doğrulayıp **Oluştur**' a tıklayın.
+
 Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **genel bakış** sayfası, dağıtıldıktan sonra görüntülenir.
 
 ## <a name="set-up-your-configuration-server"></a>Yapılandırma sunucunuzu ayarlama
@@ -72,7 +74,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. **Varsayılan depo** bölümünde, **URI** 'yi "https\://GitHub.com/Azure-Samples/piggymetrics" olarak ayarlayın, **etiketi** "config" olarak ayarlayın ve değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
 
-    ![ASC portalının ekran görüntüsü](media/spring-cloud-tutorial-config-server/portal-config-server.png)
+    ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Mikro hizmet uygulamaları oluşturma ve dağıtma
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9c0ed5a28f865d5dd53b01f22eb69c7d1b332ecf
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: db334b873358fdab6671877dd66e7f49c334ac44
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030106"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133021"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 
@@ -25,7 +25,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak şirket 
 
 **Senaryo** | **Ayrıntılar**
 --- | ---
-Virtual Machine Manager ile Hyper-V <br> **Bu senaryo kullanımdan kaldırma yolunda bulunur.** <br>| System Center Virtual Machine Manager dokusunda yönetilen Hyper-V konaklarında çalışan VM 'Ler için Azure 'da olağanüstü durum kurtarma gerçekleştirebilirsiniz.<br/><br/> Bu senaryoyu Azure portal veya PowerShell kullanarak dağıtabilirsiniz.<br/><br/> Hyper-V konakları Virtual Machine Manager tarafından yönetildiğinde, ikincil şirket içi bir siteye olağanüstü durum kurtarma işlemi de yapabilirsiniz. Bu senaryo hakkında daha fazla bilgi edinmek için [Bu öğreticiyi](hyper-v-vmm-disaster-recovery.md)okuyun.
+Virtual Machine Manager ile Hyper-V <br> <br>| System Center Virtual Machine Manager dokusunda yönetilen Hyper-V konaklarında çalışan VM 'Ler için Azure 'da olağanüstü durum kurtarma gerçekleştirebilirsiniz.<br/><br/> Bu senaryoyu Azure portal veya PowerShell kullanarak dağıtabilirsiniz.<br/><br/> Hyper-V konakları Virtual Machine Manager tarafından yönetildiğinde, ikincil şirket içi bir siteye olağanüstü durum kurtarma işlemi de yapabilirsiniz. Bu senaryo hakkında daha fazla bilgi edinmek için [Bu öğreticiyi](hyper-v-vmm-disaster-recovery.md)okuyun.
 Virtual Machine Manager olmadan Hyper-V | Virtual Machine Manager tarafından yönetilmeyen Hyper-V konaklarında çalışan VM 'Ler için Azure 'da olağanüstü durum kurtarma gerçekleştirebilirsiniz.<br/><br/> Bu senaryoyu Azure portal veya PowerShell kullanarak dağıtabilirsiniz.
 
 ## <a name="on-premises-servers"></a>Şirket içi sunucular
@@ -91,7 +91,7 @@ Hızlandırılmış Ağ | Hayır | Hayır
 
 **Depolama** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | --- 
-NFS | NA | NA
+NFS | Yok | Yok
 SMB 3.0 | Yes | Yes
 SAN (ISCSı) | Yes | Yes
 Çoklu yol (MPIO). Test edilen:<br></br> Microsoft DSM, EMC PowerPath 5,7 SP4, Clariiyon için EMC PowerPath DSM | Yes | Yes
@@ -100,15 +100,15 @@ SAN (ISCSı) | Yes | Yes
 
 **Depolama** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---
-VMDK | NA | NA
+VMDK | Yok | Yok
 VHD/VHDX | Yes | Yes
 2\. nesil VM | Yes | Yes
 EFı/UEFı<br></br>Azure 'daki geçirilmiş VM otomatik olarak bir BIOS önyükleme VM 'sine dönüştürülür. VM yalnızca Windows Server 2012 ve üstünü çalıştırmalıdır. İşletim sistemi diski en fazla beş bölüm veya daha az olmalıdır ve işletim sistemi diskinin boyutu 300 GB 'tan az olmalıdır.| Yes | Yes
 Paylaşılan küme diski | Hayır | Hayır
 Şifrelenmiş disk | Hayır | Hayır
-NFS | NA | NA
+NFS | Yok | Yok
 SMB 3.0 | Hayır | Hayır
-RDM | NA | NA
+RDM | Yok | Yok
 Disk > 1 TB | Evet, 4.095 GB 'a kadar | Evet, 4.095 GB 'a kadar
 Disk: 4K mantıksal ve fiziksel kesim | Desteklenmez: Gen 1/Gen 2 | Desteklenmez: Gen 1/Gen 2
 Disk: 4K mantıksal ve 512 bayt fiziksel kesim | Yes |  Yes
@@ -139,7 +139,7 @@ Depolama hesabını değiştir | Hayır. Hedef Azure depolama hesabı, çoğaltm
 
 ## <a name="azure-compute-features"></a>Azure işlem özellikleri
 
-**Özellik** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
+**Özelliği** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---
 Kullanılabilirlik kümeleri | Yes | Yes
 HUB | Yes | Yes  

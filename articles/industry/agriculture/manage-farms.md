@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c83ac8a42a91c9db06726e917ed142e20995b987
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 929672dceabc7d9b591f05ef3f4f716f2117e09c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797978"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128682"
 ---
-# <a name="manage-farms"></a>Grupları Yönet
+# <a name="manage-farms"></a>Grupları yönetme
 
 Grupları Azure Farmtempts 'de yönetebilirsiniz. Bu makalede, grupları nasıl oluşturacağınız, grupların nasıl yükleneceğine ilişkin bilgiler, bir veya daha fazla cihaz, sensörler ve gruplar hakkında bilgi sağlanır.
 
@@ -58,7 +58,7 @@ Grup listesi sayfası oluşturulan grupların bir listesini görüntüler. Liste
 **Gruplar** sayfası oluşturulan grupların bir listesini görüntüler.
 
 1.  Grubu görüntülemek ve düzenlemek için bir grup seçin.
-2.  Grup bilgilerini düzenlemek için **grubu Düzenle** ' yi seçin. **Grup ayrıntıları** penceresinde **adı**, **Kırpı**, **adresi**ve **Grup sınır** alanlarını düzenleyebilirsiniz.
+2.  Grup bilgilerini düzenlemek için **grubu Düzenle** ' yi seçin. **Grup ayrıntıları** penceresinde **adı**düzenleyebilir, **kırpıyor**, **adreslenecek**ve **Grup sınır** alanlarını tanımlayabilir.
 
     ![Proje grubu ları](./media/create-farms/edit-farm-1.png)
 

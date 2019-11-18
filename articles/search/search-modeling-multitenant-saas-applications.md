@@ -1,5 +1,5 @@
 ---
-title: Tek bir hizmette içerik yalıtımı için çok kiracılı Modellendirme
+title: Çok kiracılı ve içerik yalıtımı
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama kullanırken çok kiracılı SaaS uygulamaları için ortak tasarım desenleri hakkında bilgi edinin.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0332443997fbc58781f99e3b4e6d9776dd23926b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793526"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113264"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Çok kiracılı SaaS uygulamaları ve Azure Bilişsel Arama için tasarım desenleri
 Çok kiracılı bir uygulama, başka bir kiracının verilerini görebilen veya paylaşabilen birçok kiracı için aynı hizmetleri ve özellikleri sağlayan bir uygulamadır. Bu belgede, Azure Bilişsel Arama ile oluşturulan çok kiracılı uygulamalar için kiracı yalıtımı stratejileri ele alınmaktadır.
@@ -125,7 +125,7 @@ Bu yöntem ayrı kullanıcı hesaplarının işlevselliğini, farklı izin düze
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Bilişsel Arama birçok uygulama için etkileyici bir seçimdir. Çok kiracılı uygulamalar için çeşitli tasarım düzenlerini değerlendirirken, [çeşitli fiyatlandırma katmanlarını](https://azure.microsoft.com/pricing/details/search/) ve ilgili [hizmet sınırlarını](search-limits-quotas-capacity.md) göz önünde bulundurun ve Azure bilişsel arama en iyi şekilde her boyuttaki uygulama iş yüklerini ve mimarilerine uyacak şekilde uyarlayabilirsiniz .
+Azure Bilişsel Arama birçok uygulama için etkileyici bir seçimdir. Çok kiracılı uygulamalar için çeşitli tasarım düzenlerini değerlendirirken, Azure Bilişsel Arama en iyi şekilde her boyuttaki uygulama iş yüklerine ve mimarilerine sığması için [çeşitli fiyatlandırma katmanlarını](https://azure.microsoft.com/pricing/details/search/) ve ilgili [hizmet sınırlarını](search-limits-quotas-capacity.md) göz önünde bulundurun.
 
 Azure Bilişsel Arama ve çok kiracılı senaryolar hakkında sorular azuresearch_contact@microsoft.comyönlendirilebilir.
 

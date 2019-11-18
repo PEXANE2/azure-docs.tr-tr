@@ -1,14 +1,14 @@
 ---
-title: Portal ile kaynakları denetlemek için ilke oluşturma-Azure Ilkesi
+title: Portal ile kaynakları denetlemek için ilke oluşturma
 description: Bu makalede, uyumlu olmayan kaynakları belirlemek üzere bir ilke tanımı oluşturma adımlarında size yol gösterilir.
 ms.date: 12/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: e517173c74cd3fd37b50d327d32b668422428315
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: ef89ea43ff3179877c0ac636083ed68946b6cc91
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960165"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128921"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Hızlı başlangıç: uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 

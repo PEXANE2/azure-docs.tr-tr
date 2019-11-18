@@ -1,6 +1,6 @@
 ---
 title: Sorun giderme Azure Container Instances
-description: Azure Container Instances sorunları nasıl giderebileceğinizi öğrenin
+description: Dağıtım, çalıştırma veya yönetme Azure Container Instances sık karşılaşılan sorunları giderme hakkında bilgi edinin
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 14745f79955a98727d6f55da4189212f2f18d9c0
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 8b102f31fe25b9c45d85a2dae269fce64be10a5d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904409"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147847"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances genel sorunları giderme
 
@@ -232,7 +232,7 @@ Azure Container Instances Container Image 'da yapılandırdığınız bağlantı
 Kapsayıcılarınızın hatalarını ayıklamanıza yardımcı olmak için [kapsayıcı günlüklerini ve olaylarını nasıl alacağınızı](container-instances-get-logs.md) öğrenin.
 
 <!-- LINKS - External -->
-[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming
+[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore

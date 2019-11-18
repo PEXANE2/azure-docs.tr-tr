@@ -1,19 +1,19 @@
 ---
 title: Apache Hive ve Apache Pig ile Python UDF-Azure HDInsight
 description: Azure 'da Apache Hadoop teknoloji yığını olan HDInsight 'ta Apache Hive ve Apache Pig 'tan Python Kullanıcı tanımlı Işlevleri (UDF) kullanmayı öğrenin.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/15/2019
+ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: de738461776be7bdfd1abc45dde24dc1202d3a3c
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 201bb40e5024442587f5508886da7e844f35be40
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180759"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148397"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 'ta Apache Hive ve Apache Pig ile Python Kullanıcı tanımlı Işlevleri (UDF) kullanma
 
@@ -29,31 +29,32 @@ HDInsight Ayrıca, Java 'da yazılmış bir Python uygulama olan Jyıthon ' u de
 
 * **HDInsight üzerinde bir Hadoop kümesi**. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md).
 * **Bir SSH istemcisi**. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
-* Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu, Azure Data Lake Storage 1. için Azure Data Lake Storage 2. veya adl:// `abfs://` için Azure Storage 'a yöneliktir.`wasb://` Azure depolama için güvenli aktarım etkinleştirilirse, URI wasbs://olur.  Ayrıca bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
-* **Depolama yapılandırmasında olası değişiklik.**  Depolama hesabı türü `BlobStorage`kullanılıyorsa [depolama yapılandırması](#storage-configuration) bölümüne bakın.
-* İsteğe bağlı.  PowerShell 'i kullanmayı planlıyorsanız, [az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) yüklü olmalıdır.
+* Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu, Azure depolama için `wasb://`, Azure Data Lake Storage 1. için Azure Data Lake Storage 2. veya adl://için `abfs://`. Azure depolama için güvenli aktarım etkinleştirilirse, URI wasbs://olur.  Ayrıca bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
+* **Depolama yapılandırmasında olası değişiklik.**  Depolama hesabı türü `BlobStorage`kullanıyorsanız [depolama yapılandırması](#storage-configuration) bölümüne bakın.
+* İsteğe bağlı.  PowerShell 'i kullanmayı planlıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) yüklü olmalıdır.
 
 > [!NOTE]  
-> Bu makalede kullanılan depolama hesabı, [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md) özellikli Azure depolama idi ve bu nedenle `wasbs` makale genelinde kullanılır.
+> Bu makalede kullanılan depolama hesabı, [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md) özellikli Azure depolama ve bu nedenle `wasbs` makale genelinde kullanılır.
 
-## <a name="storage-configuration"></a>Depolama alanı yapılandırması
-Kullanılan depolama hesabı tür `Storage (general purpose v1)` veya `StorageV2 (general purpose v2)`ise herhangi bir eylem gerekmez.  Bu makaledeki işlem en az `/tezstaging`çıkış oluşturacak.  Varsayılan `/tezstaging` bir Hadoop yapılandırması, `fs.azure.page.blob.dir` hizmet `HDFS`için içindeki `core-site.xml` yapılandırma değişkeninde bulunur.  Bu yapılandırma, Dizin çıkışının, depolama hesabı türü `BlobStorage`için desteklenmeyen sayfa Blobları olmasına neden olur.  Bu makalede `BlobStorage` kullanmak için `fs.azure.page.blob.dir` yapılandırma değişkeninden kaldırın `/tezstaging` .  Bu yapılandırmaya, [ambarı kullanıcı arabiriminden](../hdinsight-hadoop-manage-ambari.md)erişilebilir.  Aksi takdirde, şu hata iletisini alırsınız:`Page blob is not supported for this account type.`
+## <a name="storage-configuration"></a>Depolama yapılandırması
+
+Kullanılan depolama hesabı `Storage (general purpose v1)` veya `StorageV2 (general purpose v2)`tür ise hiçbir eylem gerekmez.  Bu makaledeki işlem, en az `/tezstaging`çıktı üretir.  Varsayılan bir Hadoop yapılandırması, hizmet `HDFS`için `core-site.xml` `fs.azure.page.blob.dir` yapılandırma değişkeninde `/tezstaging` içerir.  Bu yapılandırma, Dizin çıkışının `BlobStorage`depolama hesabı türü için desteklenmeyen sayfa Blobları olmasına neden olur.  Bu makale için `BlobStorage` kullanmak için `fs.azure.page.blob.dir` yapılandırma değişkeninden `/tezstaging` kaldırın.  Bu yapılandırmaya, [ambarı kullanıcı arabiriminden](../hdinsight-hadoop-manage-ambari.md)erişilebilir.  Aksi takdirde, şu hata iletisini alırsınız: `Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > Bu belgedeki adımlarda aşağıdaki varsayımlar yapılır:  
 >
 > * Yerel geliştirme ortamınızda Python betikleri oluşturun.
-> * Komutları veya belirtilen PowerShell betiğini kullanarak `scp` , betikleri HDInsight 'a yüklersiniz.
+> * `scp` komutunu veya belirtilen PowerShell betiğini kullanarak betikleri HDInsight 'a yüklersiniz.
 >
 > HDInsight ile çalışmak için [Azure Cloud Shell (Bash)](https://docs.microsoft.com/azure/cloud-shell/overview) kullanmak istiyorsanız şunları yapmanız gerekir:
 >
 > * Cloud Shell ortamı içinde betikleri oluşturun.
-> * Dosyaları `scp` Cloud Shell 'den HDInsight 'a yüklemek için kullanın.
-> * Cloud `ssh` Shell 'den kullanarak HDInsight 'a bağlanın ve örnekleri çalıştırın.
+> * Dosyaları Cloud Shell 'den HDInsight 'a yüklemek için `scp` kullanın.
+> * HDInsight 'a bağlanmak ve örnekleri çalıştırmak için Cloud Shell 'den `ssh` kullanın.
 
 ## <a name="hivepython"></a>Apache Hive UDF
 
-Python, hiveql `TRANSFORM` ifadesiyle Hive 'den bir UDF olarak kullanılabilir. Örneğin, aşağıdaki hiveql, küme için varsayılan `hiveudf.py` Azure depolama hesabında depolanan dosyayı çağırır.
+Python, HiveQL `TRANSFORM` ifadesiyle Hive 'den UDF olarak kullanılabilir. Örneğin, aşağıdaki HiveQL, küme için varsayılan Azure depolama hesabında depolanan `hiveudf.py` dosyasını çağırır.
 
 ```hiveql
 add file wasbs:///hiveudf.py;
@@ -67,15 +68,15 @@ ORDER BY clientid LIMIT 50;
 
 İşte bu örnek:
 
-1. `hiveudf.py` Dosyanın başındaki `add file` ifade dosyayı dağıtılmış önbelleğe ekler, bu nedenle kümedeki tüm düğümler tarafından erişilebilir.
-2. `SELECT TRANSFORM ... USING` İfade ,`hivesampletable`öğesinden veri seçer. Ayrıca, ClientID, devicemake ve devicemodel değerlerini `hiveudf.py` betiğe geçirir.
-3. Yan tümcesi, öğesinden `hiveudf.py`döndürülen alanları açıklar. `AS`
+1. Dosyanın başındaki `add file` deyimleri, `hiveudf.py` dosyasını dağıtılmış önbelleğe ekler, bu nedenle kümedeki tüm düğümler tarafından erişilebilir.
+2. `SELECT TRANSFORM ... USING` ifade `hivesampletable`verileri seçer. Ayrıca, ClientID, devicemake ve devicemodel değerlerini `hiveudf.py` betiğe geçirir.
+3. `AS` yan tümcesi `hiveudf.py`döndürülen alanları açıklar.
 
 <a name="streamingpy"></a>
 
 ### <a name="create-file"></a>Dosya oluştur
 
-Geliştirme ortamınızda adlı `hiveudf.py`bir metin dosyası oluşturun. Aşağıdaki kodu dosyanın içeriğiyle kullanın:
+Geliştirme ortamınızda `hiveudf.py`adlı bir metin dosyası oluşturun. Aşağıdaki kodu dosyanın içeriğiyle kullanın:
 
 ```python
 #!/usr/bin/env python
@@ -97,17 +98,18 @@ while True:
 Bu betik aşağıdaki eylemleri gerçekleştirir:
 
 1. STDIN 'den bir veri satırı okur.
-2. Son yeni satır karakteri kullanılarak `string.strip(line, "\n ")`kaldırılır.
-3. Akış işleme yaparken, tek bir satır her bir değer arasında sekme karakteri olan tüm değerleri içerir. Bu `string.split(line, "\t")` nedenle, her sekmedeki girişi ayırmak için yalnızca alanları döndürerek kullanılabilir.
+2. Sondaki yeni satır karakteri `string.strip(line, "\n ")`kullanılarak kaldırılır.
+3. Akış işleme yaparken, tek bir satır her bir değer arasında sekme karakteri olan tüm değerleri içerir. `string.split(line, "\t")`, her sekmedeki girişi ayırmak için yalnızca alanları döndürerek kullanılabilir.
 4. İşlem tamamlandığında, her bir alan arasında sekme ile, çıktının STDOUT 'a tek bir çizgi olarak yazılması gerekir. Örneğin, `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
-5. Döngü `while` , hiç `line` okununcaya kadar yinelenir.
+5. `while` döngüsü, `line` okunana kadar yinelenir.
 
-Komut dosyası çıkışı, ve `devicemake` `devicemodel`için giriş değerlerinin ve birleştirilmiş değerin bir karmasından oluşan bir bitiştirilir.
+Betik çıktısı, `devicemake` ve `devicemodel`için giriş değerlerinin ve birleştirilmiş değerin bir karmasından oluşan bir bitiştirilir.
 
 ### <a name="upload-file-shell"></a>Dosyayı karşıya yükle (Shell)
-Aşağıdaki komutlarda, farklı ise gerçek `sshuser` Kullanıcı adıyla değiştirin.  Gerçek `mycluster` küme adıyla değiştirin.  Çalışma dizininizin dosyanın bulunduğu yer olduğundan emin olun.
 
-1. Dosyaları `scp` HDInsight kümenize kopyalamak için kullanın. Aşağıdaki komutu düzenleyin ve girin:
+Aşağıdaki komutlarda, farklı olursa `sshuser` gerçek kullanıcı adıyla değiştirin.  `mycluster` gerçek küme adıyla değiştirin.  Çalışma dizininizin dosyanın bulunduğu yer olduğundan emin olun.
+
+1. Dosyaları HDInsight kümenize kopyalamak için `scp` kullanın. Aşağıdaki komutu düzenleyin ve girin:
 
     ```cmd
     scp hiveudf.py sshuser@mycluster-ssh.azurehdinsight.net:
@@ -135,7 +137,7 @@ Aşağıdaki komutlarda, farklı ise gerçek `sshuser` Kullanıcı adıyla deği
 
     Bu komut, Beeline istemcisini başlatır.
 
-2. `0: jdbc:hive2://headnodehost:10001/>` Komut istemine aşağıdaki sorguyu girin:
+2. `0: jdbc:hive2://headnodehost:10001/>` istemine aşağıdaki sorguyu girin:
 
    ```hive
    add file wasbs:///hiveudf.py;
@@ -162,7 +164,7 @@ Aşağıdaki komutlarda, farklı ise gerçek `sshuser` Kullanıcı adıyla deği
 
 ### <a name="upload-file-powershell"></a>Dosyayı karşıya yükle (PowerShell)
 
-Ayrıca, PowerShell, Hive sorgularını uzaktan çalıştırmak için de kullanılabilir. Çalışma dizininizin bulunduğu `hiveudf.py` yer olduğundan emin olun.  `hiveudf.py` Komut dosyasını kullanan bir Hive sorgusu çalıştırmak için aşağıdaki PowerShell betiğini kullanın:
+Ayrıca, PowerShell, Hive sorgularını uzaktan çalıştırmak için de kullanılabilir. Çalışma dizininizin `hiveudf.py` yer aldığından emin olun.  `hiveudf.py` betiği kullanan bir Hive sorgusu çalıştırmak için aşağıdaki PowerShell betiğini kullanın:
 
 ```PowerShell
 # Login to your Azure subscription
@@ -172,6 +174,9 @@ if(-not($sub))
 {
     Connect-AzAccount
 }
+
+# If you have multiple subscriptions, set the one to use
+# Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
 
 # Revise file path as needed
 $pathToStreamingFile = ".\hiveudf.py"
@@ -202,9 +207,7 @@ Set-AzStorageBlobContent `
 > [!NOTE]  
 > Dosyaları karşıya yükleme hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop işleri için verileri karşıya yükleme](../hdinsight-upload-data.md) .
 
-
 #### <a name="use-hive-udf"></a>Hive UDF kullanma
-
 
 ```PowerShell
 # Script should stop on failures
@@ -217,6 +220,9 @@ if(-not($sub))
 {
     Connect-AzAccount
 }
+
+# If you have multiple subscriptions, set the one to use
+# Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
 
 # Get cluster info
 $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
@@ -281,21 +287,20 @@ Get-AzHDInsightJobOutput `
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
-
 ## <a name="pigpython"></a>Apache Pig UDF
 
-Python betiği, `GENERATE` Pig öğesinden bir UDF aracılığıyla kullanılabilir. Betiği Jyıthon veya C Python kullanarak çalıştırabilirsiniz.
+Python betiği, `GENERATE` ifadesiyle Pig 'den UDF olarak kullanılabilir. Betiği Jyıthon veya C Python kullanarak çalıştırabilirsiniz.
 
 * Jyıthon, JVM üzerinde çalışır ve Pig adresinden yerel olarak çağrılabilir.
 * C Python bir dış işlemdir, bu nedenle JVM üzerindeki Pig verileri bir Python işleminde çalışan betiğe gönderilir. Python betiğinin çıktısı Pig 'e geri gönderilir.
 
-Python yorumlayıcı 'yı belirtmek için Python betiğine başvururken kullanın `register` . Aşağıdaki örnekler betikleri Pig `myfuncs`ile kaydeder:
+Python yorumlayıcı 'yı belirtmek için Python betiğine başvururken `register` kullanın. Aşağıdaki örnekler, komut dosyalarını Pig `myfuncs`olarak kaydeder:
 
-* **Jython kullanmak için**:`register '/path/to/pigudf.py' using jython as myfuncs;`
-* **C Python kullanmak için**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Jython 'ı kullanmak için**: `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **C Python kullanmak için**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
-> Jyıthon kullanırken, pig_jython dosyasının yolu bir yerel yol veya WASBS://yolu olabilir. Ancak, C Python kullanırken, Pig işini göndermek için kullandığınız düğümün yerel dosya sistemindeki bir dosyaya başvurmanız gerekir.
+> Jyıthon kullanırken pig_jython dosyanın yolu bir yerel yol veya bir WASBS://yolu olabilir. Ancak, C Python kullanırken, Pig işini göndermek için kullandığınız düğümün yerel dosya sistemindeki bir dosyaya başvurmanız gerekir.
 
 Kayıt sonrasında, bu örnek için Pig Latin her ikisi için de aynıdır:
 
@@ -308,14 +313,14 @@ DUMP DETAILS;
 
 İşte bu örnek:
 
-1. İlk satır, `sample.log` örnek veri dosyasını içine `LOGS`yükler. Ayrıca, her bir kaydı bir `chararray`olarak tanımlar.
-2. Sonraki satır, işlemin sonucunu içine `LOG`depolayarak null değerlerini filtreler.
-3. Daha sonra, `LOG` ' deki kayıtları yineler ve olarak `myfuncs`yüklenen `GENERATE` Python/jyıthon betikte bulunan `create_structure` yöntemi çağırmak için kullanır. `LINE`, geçerli kaydı işleve geçirmek için kullanılır.
-4. Son olarak, çıktılar `DUMP` komutu kullanılarak stdout 'a dökülür. Bu komut, işlem tamamlandıktan sonra sonuçları görüntüler.
+1. İlk satır, örnek veri dosyasını `LOGS``sample.log` yükler. Ayrıca, her kaydı bir `chararray`olarak tanımlar.
+2. Sonraki satır, işlemin sonucunu `LOG`olarak depolayarak null değerleri filtreler.
+3. Sonra, `LOG` kayıtları üzerinde dolaşır ve `myfuncs`olarak yüklenen Python/Jyıthon betikte bulunan `create_structure` yöntemini çağırmak için `GENERATE` kullanır. `LINE`, geçerli kaydı işleve geçirmek için kullanılır.
+4. Son olarak, çıktılar `DUMP` komutu kullanılarak STDOUT 'a dökülür. Bu komut, işlem tamamlandıktan sonra sonuçları görüntüler.
 
 ### <a name="create-file"></a>Dosya oluştur
 
-Geliştirme ortamınızda adlı `pigudf.py`bir metin dosyası oluşturun. Aşağıdaki kodu dosyanın içeriğiyle kullanın:
+Geliştirme ortamınızda `pigudf.py`adlı bir metin dosyası oluşturun. Aşağıdaki kodu dosyanın içeriğiyle kullanın:
 
 <a name="streamingpy"></a>
 
@@ -332,9 +337,9 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-Giriş için tutarlı bir şema olmadığından, `LINE` Pig Latin örneğinde, giriş bir CharArray olarak tanımlanır. Python betiği, verileri çıkış için tutarlı bir şemaya dönüştürür.
+Pig Latin örneğinde, giriş için tutarlı bir şema olmadığından `LINE` girişi bir CharArray olarak tanımlanmıştır. Python betiği, verileri çıkış için tutarlı bir şemaya dönüştürür.
 
-1. `@outputSchema` İfade, Pig 'e döndürülen verilerin biçimini tanımlar. Bu durumda, Pig veri türü olan bir **veri torbudur**. Paket, hepsi CharArray (dizeler) olan aşağıdaki alanları içerir:
+1. `@outputSchema` ifade, Pig 'e döndürülen verilerin biçimini tanımlar. Bu durumda, Pig veri türü olan bir **veri torbudur**. Paket, hepsi CharArray (dizeler) olan aşağıdaki alanları içerir:
 
    * Tarih-günlük girişinin oluşturulduğu tarih
    * zaman-günlük girişinin oluşturulduğu saat
@@ -342,23 +347,21 @@ Giriş için tutarlı bir şema olmadığından, `LINE` Pig Latin örneğinde, g
    * düzey-günlük düzeyi
    * ayrıntı-günlük girdisi için ayrıntılı Ayrıntılar
 
-2. Sonra, Pig tarafından satır öğelerini geçiren işlevi tanımlar.`def create_structure(input)`
+2. Ardından `def create_structure(input)`, Pig tarafından satır öğelerini geçiren işlevi tanımlar.
 
-3. Örnek veriler `sample.log`, genellikle Date, Time, ClassName, Level ve Detail şemasına uyar. Ancak, ile `*java.lang.Exception*`başlayan birkaç satır içerir. Bu satırların şemayla eşleşecek şekilde değiştirilmesi gerekir. İfade, bunları denetler, ardından `*java.lang.Exception*` dizeyi sona erdirmek için giriş verilerini mastine, verileri de beklenen çıkış şemasıyla hareket etiyorlar. `if`
+3. Örnek veri `sample.log`, genellikle Date, Time, ClassName, Level ve Detail şemasına uyar. Ancak, `*java.lang.Exception*`ile başlayan birkaç satır içerir. Bu satırların şemayla eşleşecek şekilde değiştirilmesi gerekir. `if` deyimlerini denetler ve sonra, verileri satır içinde beklenen çıkış şemasıyla getirecek şekilde, `*java.lang.Exception*` dizeyi sonuna taşımak için giriş verilerini iletileri.
 
-4. Ardından `split` komut, verileri ilk dört alan karakteri içine ayırmak için kullanılır. Çıktı,,, ve `date` `time` `classname` `level`içine atanır`detail`.
+4. Ardından `split` komutu, verileri ilk dört alan karakterinden ayırmak için kullanılır. Çıktı `date`, `time`, `classname`, `level`ve `detail`olarak atanır.
 
 5. Son olarak, değerler Pig olarak döndürülür.
 
-Veriler Pig 'e döndürüldüğünde, `@outputSchema` bildiriminde tanımlandığı gibi tutarlı bir şemaya sahip olur.
-
-
+Veriler Pig 'e döndürüldüğünde, `@outputSchema` bildiriminde tanımlanan tutarlı bir şemaya sahiptir.
 
 ### <a name="upload-file-shell"></a>Dosyayı karşıya yükle (Shell)
 
-Aşağıdaki komutlarda, farklı ise gerçek `sshuser` Kullanıcı adıyla değiştirin.  Gerçek `mycluster` küme adıyla değiştirin.  Çalışma dizininizin dosyanın bulunduğu yer olduğundan emin olun.
+Aşağıdaki komutlarda, farklı olursa `sshuser` gerçek kullanıcı adıyla değiştirin.  `mycluster` gerçek küme adıyla değiştirin.  Çalışma dizininizin dosyanın bulunduğu yer olduğundan emin olun.
 
-1. Dosyaları `scp` HDInsight kümenize kopyalamak için kullanın. Aşağıdaki komutu düzenleyin ve girin:
+1. Dosyaları HDInsight kümenize kopyalamak için `scp` kullanın. Aşağıdaki komutu düzenleyin ve girin:
 
     ```cmd
     scp pigudf.py sshuser@mycluster-ssh.azurehdinsight.net:
@@ -376,7 +379,6 @@ Aşağıdaki komutlarda, farklı ise gerçek `sshuser` Kullanıcı adıyla deği
     hdfs dfs -put pigudf.py /pigudf.py
     ```
 
-
 ### <a name="use-pig-udf-shell"></a>Pig UDF (Shell) kullanma
 
 1. Pig 'e bağlanmak için, Open SSH oturumunınızdan aşağıdaki komutu kullanın:
@@ -385,11 +387,11 @@ Aşağıdaki komutlarda, farklı ise gerçek `sshuser` Kullanıcı adıyla deği
     pig
     ```
 
-2. `grunt>` Komut istemine aşağıdaki deyimleri girin:
+2. `grunt>` istemine aşağıdaki deyimleri girin:
 
    ```pig
    Register wasbs:///pigudf.py using jython as myfuncs;
-   LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
+   LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
    LOG = FILTER LOGS by LINE is not null;
    DETAILS = foreach LOG generate myfuncs.create_structure(LINE);
    DUMP DETAILS;
@@ -403,13 +405,13 @@ Aşağıdaki komutlarda, farklı ise gerçek `sshuser` Kullanıcı adıyla deği
         ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
         ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-4. Grupshell 'den çıkmak için kullanın `quit` ve ardından yerel dosya sisteminde pigudf.py dosyasını düzenlemek için aşağıdakileri kullanın:
+4. Grupshell 'ten çıkmak için `quit` kullanın ve ardından yerel dosya sisteminde pigudf.py dosyasını düzenlemek için aşağıdakileri kullanın:
 
     ```bash
     nano pigudf.py
     ```
 
-5. Düzenleyiciden bir kez, satırın başından itibaren `#` karakteri kaldırarak aşağıdaki satırın açıklamasını kaldırın:
+5. Düzenleyicide bir kez, `#` karakterini satırın başından kaldırarak aşağıdaki satırı kaldırın:
 
     ```bash
     #from pig_util import outputSchema
@@ -417,7 +419,7 @@ Aşağıdaki komutlarda, farklı ise gerçek `sshuser` Kullanıcı adıyla deği
 
     Bu satır, Python betiğini Jyıthon yerine C Python ile çalışacak şekilde değiştirir. Değişiklik yapıldıktan sonra, düzenleyiciden çıkmak için **CTRL + X** tuşlarını kullanın. **Y**' yi seçin ve ardından değişiklikleri kaydetmek için **girin** .
 
-6. Kabuğu yeniden başlatmak için komutunukullanın.`pig` `grunt>` İstemde olduktan sonra, C Python yorumlayıcı kullanarak Python betiğini çalıştırmak için aşağıdakileri kullanın.
+6. Kabuğu yeniden başlatmak için `pig` komutunu kullanın. `grunt>` istemden sonra, C Python yorumlayıcı kullanarak Python betiğini çalıştırmak için aşağıdakileri kullanın.
 
    ```pig
    Register 'pigudf.py' using streaming_python as myfuncs;
@@ -429,10 +431,9 @@ Aşağıdaki komutlarda, farklı ise gerçek `sshuser` Kullanıcı adıyla deği
 
     Bu iş tamamlandıktan sonra, daha önce Jyıthon kullanarak betiği çalıştırdığındaki çıktıyı görmeniz gerekir.
 
-
 ### <a name="upload-file-powershell"></a>Dosyayı karşıya yükle (PowerShell)
 
-Ayrıca, PowerShell, Hive sorgularını uzaktan çalıştırmak için de kullanılabilir. Çalışma dizininizin bulunduğu `pigudf.py` yer olduğundan emin olun.  `pigudf.py` Komut dosyasını kullanan bir Hive sorgusu çalıştırmak için aşağıdaki PowerShell betiğini kullanın:
+Ayrıca, PowerShell, Hive sorgularını uzaktan çalıştırmak için de kullanılabilir. Çalışma dizininizin `pigudf.py` yer aldığından emin olun.  `pigudf.py` betiği kullanan bir Hive sorgusu çalıştırmak için aşağıdaki PowerShell betiğini kullanın:
 
 ```PowerShell
 # Login to your Azure subscription
@@ -442,6 +443,9 @@ if(-not($sub))
 {
     Connect-AzAccount
 }
+
+# If you have multiple subscriptions, set the one to use
+# Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
 
 # Revise file path as needed
 $pathToJythonFile = ".\pigudf.py"
@@ -475,7 +479,7 @@ Set-AzStorageBlobContent `
 > [!NOTE]  
 > PowerShell kullanarak bir işi uzaktan gönderirken, yorumlayıcı olarak C Python kullanılması mümkün değildir.
 
-PowerShell, Pig Latin işleri çalıştırmak için de kullanılabilir. `pigudf.py` Betiği kullanan bir Pig Latin işini çalıştırmak için aşağıdaki PowerShell betiğini kullanın:
+PowerShell, Pig Latin işleri çalıştırmak için de kullanılabilir. `pigudf.py` betiği kullanan bir Pig Latin işini çalıştırmak için aşağıdaki PowerShell betiğini kullanın:
 
 ```PowerShell
 # Script should stop on failures
@@ -585,5 +589,4 @@ Varsayılan olarak sağlanmayan Python modüllerini yüklemeniz gerekiyorsa bkz.
 Pig, Hive kullanmanın diğer yolları ve MapReduce kullanma hakkında bilgi edinmek için aşağıdaki belgelere bakın:
 
 * [HDInsight ile Apache Hive kullanma](hdinsight-use-hive.md)
-* [HDInsight ile Apache Pig kullanma](hdinsight-use-pig.md)
 * [HDInsight ile MapReduce kullanma](hdinsight-use-mapreduce.md)

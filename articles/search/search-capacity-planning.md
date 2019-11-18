@@ -1,5 +1,5 @@
 ---
-title: Sorgu ve Dizin iş yükleri için kapasite eklemek üzere bölümleri ve çoğaltmaları ölçeklendirin
+title: Sorgu ve Dizin iş yükleri için ölçek kapasitesi
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'de, her kaynağın faturalandırılabilir arama birimlerinde fiyatlandırıldıkları bölüm ve çoğaltma bilgisayar kaynaklarını ayarlayın.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8613ddc668df338c4f96a9d37f32120718513925
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4020a40b87c32bdbd07e390a0d04769cb3d47f7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792497"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112135"
 ---
 # <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Azure Bilişsel Arama sorgu ve Dizin iş yükleri için kapasite eklemek üzere bölümleri ve çoğaltmaları ölçeklendirin
 

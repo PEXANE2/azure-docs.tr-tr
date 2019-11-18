@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: 04dcdbe6854a386f7edaa04aa9c2912789122a31
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8e04369e3e070054c5095abde29ecca99d071cb8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827451"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144450"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
 
@@ -35,12 +35,6 @@ Uyarı Logic log Manager, güvenlik çözümlemesi ve bekletme için VM, uygulam
 AppDynamics uygulama performansı yönetimi (APM), uygulama sahiplerinin performans sorunlarını hızla gidermelerini ve Azure ortamında çalışan uygulamalarının performansını en üst düzeye çıkarmalarını sağlar. Azure Cloud Services (PaaS), Web & çalışan rolleri, sanal makineler (IaaS), uzak hizmet algılama (Microsoft Azure Service Bus), Microsoft Azure kuyruğu, Microsoft Azure uzak Hizmetleri (Azure blob), Azure kuyruğu (Microsoft Service Bus), veri Depolama ve Microsoft Azure Blob depolama. AppDynamics APM, Azure Marketi 'nde kullanılabilir.
 
 [Belgelere gidin.][appdynamics-doc]
-
-## <a name="microfocus-arcsight"></a>Microfocus Arcgörüş
-
-Arcizte Azure Izleyici Olay Hub 'ları için akıllı bağlayıcı bulunur.
-
-[Daha fazla bilgi edinin.][arcsight-doc]
 
 ## <a name="atlassian-jira"></a>Atlasme JIRA
 
@@ -69,7 +63,7 @@ Circonus, şirket içi veya SaaS dağıtımı için oluşturulmuş bir mikro hiz
 
 Zaman ve para tasarrufu için oluşturulmuş bir platforma sahip bulutunuzu oluşturup otomatikleştirin. CloudHealth, bulut yönetimi için görünürlük, sezgisel iyileştirme ve Rock-Solid idare uygulamaları sağlar. CloudHealth platformu, kuruluşların ve MSPs 'nin bulut yatırımlarına dönüşü en üst düzeye çıkarmasına olanak sağlar. Maliyet, kullanım, performans ve güvenlik konusunda kendinize yönelik kararlar alın.
 
-[Daha Fazla Bilgi Edinin.][cloudhealth-doc]
+[Daha fazla bilgi edinin][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>Cloudmonitorx
 
@@ -127,6 +121,31 @@ Etkileyen etkili XData, DevOps ve IoT uygulamalarına yönelik ölçüm ve olayl
 LogicMonitor®, karmaşık BT altyapısı için önde gelen SaaS tabanlı, performans izleme platformudur. LogicMonitor, binlerce teknolojinin kapsamı sayesinde altyapı ve uygulama performansına ayrıntılı görünürlük sağlar. LM bulutu 'nın kapsamlı Azure izlemesi, kullanıcıların Azure bulut, şirket içi ve karma bulut kaynakları performansını tek bir platformdan ilişkilendirmesine olanak sağlar. Otomatik kaynak bulma, yerleşik izleme şablonları, önceden yapılandırılmış uyarı eşikleri ve özelleştirilebilir panolar, bu işlemi başarılı olmak için gereken hız, esneklik ve görünürlüğü sağlamak üzere birleştirir.
 
 [Belgelere gidin.][logicmonitor-doc]
+
+## <a name="logrhythm"></a>Logrhythd
+
+![Logrhythd logosu](./media/partners/logrhythm.png)
+
+NextGen SıEM 'te lider olan LogRhythm, karma tehditleri hızlı bir şekilde algılayıp, yanıtlayarak ve kararlayarak riski azaltmak için altı kıtadaki kuruluşları güçlendiriler. Logrhytha 'nın tehdit yaşam döngüsü yönetimi (TLM) iş akışı, güvenlik işlemleri merkezlerinin temelini oluşturacak ve müşterilerin BT ve OT ortamları için bulut, fiziksel ve sanal altyapılarını güvenli hale getirmeye yardımcı olur. Logrhythe müşterisi iseniz ve Azure yolculuğuna başlamaya hazırsanız, Logrhythd açık toplayıcı ve EventHub tümleştirmesini yüklemeniz ve yapılandırmanız gerekir. Azure Izleyicisini ve açık toplayıcıyı yapılandırmanın belgeleri de dahil olmak üzere daha fazla ayrıntı [burada](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)bulunabilir. 
+
+
+
+## <a name="microfocus"></a>Mikro odak
+
+![Mikro odak logosu](./media/partners/microfocus.png)     
+
+Mikro odak **Arcizlemesinde** , Azure izleyici Olay Hub 'ları için akıllı bağlayıcı bulunur.
+
+[Daha fazla bilgi edinin](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Arcgörüş belgeleri.")
+
+Mikro odak **Işlemleri Köprüsü** , her türlü cihaz, işletim sistemi, veritabanı, uygulama ya da hizmet olan tüm karma BT kaynaklarını otomatik olarak izler ve tüm veri türleri – olaylar, ölçümler, Günlükler ve bağımlılıklar Için aıops uygular. Kapsamlı uygulama sistem durumu analizi ile bağlanmış, hizmet izleme kalitesi 'nin benzersiz bir birleşimini sağlar ve Microsoft Azure hizmetleri için kapsamlı performans ve kullanılabilirlik izleme içerir. İşlemler Köprüsü, müşterilerin hem iş hem de BT paydaşlarının anlayabilmesi için, tarayıcıyla her cihazda kullanılabilen tek bir cam bölmesi sağlamasına olanak sağlar.
+
+Daha fazla bilgi edinin
+- [OB Suite 'e genel bakış](https://www.microfocus.com/products/operations-bridge-suite/overview)
+- [İndir](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
+- [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -Sitescope, Işlemler köprü paketindeki bir bileşendir.
+
+
 
 ## <a name="moogsoft"></a>Moogsoft
 
@@ -243,7 +262,6 @@ Turbonomic, performansı, maliyeti ve uyumluluğu gerçek zamanlı bir şekilde 
 <!--Partner Documentation-->
 [alertlogic-doc]: https://legacy.docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic belgeleri."
 [appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics belgeleri."
-[arcsight-doc]: https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Arcgörüş belgeleri."
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric tanıtımı."
 [circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 

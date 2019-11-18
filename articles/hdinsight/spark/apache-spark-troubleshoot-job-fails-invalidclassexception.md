@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: ad9ec8e97827fb6158476165a610c9d69b12a528
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 124d5586180258589c5db17454b8fbf1e465fc24
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241188"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106493"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Apache Spark iş, Azure HDInsight 'ta ınvalidclassexception, sınıf sürümü uyuşmazlığı ile başarısız oluyor
 
@@ -34,9 +34,12 @@ org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream c
 
 ## <a name="cause"></a>Nedeni
 
-Bu hata, farklı bir `commons-lang3` paketi sürümü içeren ve bir sınıf uyumsuzluğu sunan bir "gölgeli" jar olan `spark.yarn.jars` config 'e ek bir jar eklenerek oluşabilir. Varsayılan olarak, Spark 2.1/2/3 `commons-lang3`sürüm 3,5 ' ü kullanır.
+Bu hata, `spark.yarn.jars` config 'e ek bir jar eklenerek, özellikle de `commons-lang3` paketinin farklı bir sürümünü içeren ve bir sınıf uyumsuzluğu sunan bir gölgeli jar 'nin oluşmasına neden olabilir. Varsayılan olarak, Spark 2.1/2/3 `commons-lang3`sürüm 3,5 ' ü kullanır.
 
-## <a name="resolution"></a>Çözünürlük
+> [!TIP]
+> Bir kitaplığı gölgelendirmek için, içeriğini kendi jar 'ınızla yerleştirmekte ve paketini değiştirmiş olmanız gerekir. Bu, kitaplığı paketlemeden ve yeniden paketlemeden kitaplığı kendi jar 'nize yerleştirmekten farklıdır.
+
+## <a name="resolution"></a>Çözüm
 
 Jar 'yi kaldırın veya özelleştirilmiş jar 'yi (AzureLogAppender) yeniden derleyin ve sınıfları yeniden konumlandırmak için [Maven-gölge-Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/class-relocation.html) kullanın.
 
@@ -48,4 +51,4 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) sayfasını inceleyin. Abonelik Yönetimi’ne ve faturalandırma desteğine erişim Microsoft Azure aboneliğinize dahildir, Teknik Destek ise herhangi bir [Azure Destek Planı](https://azure.microsoft.com/support/plans/) üzerinden sağlanır.

@@ -2,18 +2,18 @@
 title: Paylaşılan erişim Imzalarını kullanarak erişimi kısıtlama-Azure HDInsight
 description: Azure Storage Bloblarında depolanan verilere HDInsight erişimini kısıtlamak için paylaşılan erişim Imzalarını nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 031498119eb4f9feb92046d7d7a86cfd77f8f368
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/13/2019
+ms.openlocfilehash: 725bdfd4efe3be600c993e568f1a5c7edccc6952
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498124"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148231"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>HDInsight 'taki verilere erişimi kısıtlamak için Azure depolama paylaşılan erişim Imzalarını kullanma
 
@@ -33,7 +33,7 @@ HDInsight, kümeyle ilişkili Azure depolama hesaplarında bulunan verilere tam 
 
 * Var olan bir [depolama kapsayıcısı](../storage/blobs/storage-quickstart-blobs-portal.md).  
 
-* PowerShell kullanıyorsanız, [az Module](https://docs.microsoft.com/powershell/azure/overview)gerekecektir.
+* PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/overview)gerekecektir.
 
 * Azure CLı 'yi kullanmak istiyorsanız ve henüz yüklemediyseniz, bkz. [Azure CLI 'Yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -207,7 +207,7 @@ Bu bölümdeki değişkenlerin kullanımı bir Windows ortamını temel alır. B
 
 ### <a name="using-c"></a>C# kullanma
 
-1. Visual Studio 'da çözümü açın.
+1. Visual Studio içinde çözümü açın.
 
 2. Çözüm Gezgini ' de, **Sasexbol** projesine sağ tıklayın ve **Özellikler**' i seçin.
 
@@ -234,7 +234,6 @@ Bir kapsayıcıya erişimi sınırlandırmak üzere bir paylaşılan erişim Imz
 `CLUSTERNAME`, `RESOURCEGROUP`, `DEFAULTSTORAGEACCOUNT`, `STORAGECONTAINER`, `STORAGEACCOUNT`ve `TOKEN` uygun değerlerle değiştirin. PowerShell komutlarını girin:
 
 ```powershell
-
 $clusterName = 'CLUSTERNAME'
 $resourceGroupName = 'RESOURCEGROUP'
 
@@ -285,11 +284,10 @@ $defaultStorageContext = New-AzStorageContext `
                                 -StorageAccountName $defaultStorageAccountName `
                                 -StorageAccountKey $defaultStorageAccountKey
 
-
 # Create a blob container. This holds the default data store for the cluster.
 New-AzStorageContainer `
     -Name $clusterName `
-    -Context $defaultStorageContext 
+    -Context $defaultStorageContext
 
 # Cluster login is used to secure HTTPS services hosted on the cluster
 $httpCredential = Get-Credential `
@@ -302,9 +300,9 @@ $sshCredential = Get-Credential `
     -UserName "sshuser"
 
 # Create the configuration for the cluster
-$config = New-AzHDInsightClusterConfig 
+$config = New-AzHDInsightClusterConfig
 
-$config = $config | Add-AzHDInsightConfigValues `
+$config = $config | Add-AzHDInsightConfigValue `
     -Spark2Defaults @{} `
     -Core @{"fs.azure.sas.$SASContainerName.$SASStorageAccountName.blob.core.windows.net"=$SASToken}
 
@@ -358,29 +356,29 @@ Mevcut bir kümeniz varsa, aşağıdaki adımları kullanarak SAS 'yi **çekirde
 
 1. Kümeniz için ambarı Web Kullanıcı arabirimini açın. Bu sayfanın adresi `https://YOURCLUSTERNAME.azurehdinsight.net`. İstendiğinde, kümeyi oluştururken kullandığınız yönetici adı (yönetici) ve parolayı kullanarak kümede kimlik doğrulaması yapın.
 
-2. Ambarı Web Kullanıcı arabiriminin sol tarafından, "öğesini seçin **ve ardından** sayfanın ortasındaki yapılandırma sekmesini seçin.
+1. **Gelişmiş** > **özel çekirdek sitesine** >  > **config** 'ler ' **e gidin.**
 
-3. **Gelişmiş** sekmesini seçin ve ardından **özel çekirdek-site** bölümünü bulana kadar ilerleyin.
+1. **Özel çekirdek-site** bölümünü genişletin, sonuna ilerleyin ve sonra **Özellik Ekle...** seçeneğini belirleyin. **Anahtar** ve **değer**için aşağıdaki değerleri kullanın:
 
-4. **Özel çekirdek-site** bölümünü genişletin, ardından sonuna kaydırın ve **Özellik Ekle...** bağlantısını seçin. **Anahtar** ve **değer** alanları için aşağıdaki değerleri kullanın:
+    * **Anahtar**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Değer**: daha önce yürütülen yöntemlerin biri tarafından döndürülen sas.
 
-   * **Anahtar**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-   * **Değer**: daha önce yürütülen yöntemlerin biri tarafından döndürülen sas.
+    `CONTAINERNAME`, C# veya SAS uygulamasıyla kullandığınız kapsayıcı adıyla değiştirin. `STORAGEACCOUNTNAME`, kullandığınız depolama hesabı adıyla değiştirin.
 
-     `CONTAINERNAME`, C# veya SAS uygulamasıyla kullandığınız kapsayıcı adıyla değiştirin. `STORAGEACCOUNTNAME`, kullandığınız depolama hesabı adıyla değiştirin.
+    Bu anahtarı ve değeri kaydetmek için **Ekle** 'yi seçin
 
-5. Bu anahtarı ve değeri kaydetmek için **Ekle** düğmesine tıklayın ve sonra yapılandırma değişikliklerini kaydetmek için **Kaydet** düğmesine tıklayın. İstendiğinde, değişikliğin açıklamasını ekleyin (örneğin, "SAS depolama erişimi ekleme") ve ardından **Kaydet**' e tıklayın.
+1. Yapılandırma değişikliklerini kaydetmek için **Kaydet** düğmesini seçin. İstendiğinde, değişikliğin açıklamasını ekleyin (örneğin, "SAS depolama erişimi ekleme") ve ardından **Kaydet**' i seçin.
 
-    Değişiklikler tamamlandığında **Tamam** ' a tıklayın.
+    Değişiklikler tamamlandığında **Tamam ' ı** seçin.
 
    > [!IMPORTANT]  
    > Değişiklik yürürlüğe girmeden önce birkaç hizmeti yeniden başlatmanız gerekir.
 
-6. Ambarı Web Kullanıcı arabiriminde, sol taraftaki listeden işlemler ' i seçin ve ardından sağdaki **hizmet eylemleri** açılan listesinden **etkilenen tümünü yeniden Başlat** ' **ı seçin.** İstendiğinde, __Tümünü Yeniden Başlat__' ı seçin.
+1. **Yeniden başlatma** açılan listesi görüntülenir. Açılan listeden **etkilenen tümünü yeniden Başlat** ' ı seçin ve ardından __Tümünü Yeniden Başlat__' ı onaylayın.
 
-    MapReduce2 ve YARN için bu işlemi tekrarlayın.
+    **MapReduce2** ve **Yarn**için bu işlemi tekrarlayın.
 
-7. Hizmetler yeniden başlatıldıktan sonra, **hizmet eylemleri** açılan listesinden her birini seçin ve bakım modunu devre dışı bırakın.
+1. Hizmetler yeniden başlatıldıktan sonra, **hizmet eylemleri** açılan listesinden her birini seçin ve bakım modunu devre dışı bırakın.
 
 ## <a name="test-restricted-access"></a>Kısıtlı erişimi test etme
 
@@ -405,7 +403,7 @@ Yalnızca SAS depolama hesabındaki öğeleri okuyabildiğinizi ve listebildiği
 3. Dosyanın içeriğini okuyabildiğinizi doğrulamak için aşağıdaki komutu kullanın. `SASCONTAINER` ve `SASACCOUNTNAME` önceki adımda olduğu gibi değiştirin. `sample.log`, önceki komutta gösterildiği dosyanın adıyla değiştirin:
 
     ```bash
-    hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
+    hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
     ```
 
     Bu komut, dosyanın içeriğini listeler.
@@ -441,6 +439,4 @@ Yalnızca SAS depolama hesabındaki öğeleri okuyabildiğinizi ve listebildiği
 Artık HDInsight kümenize sınırlı erişimli depolama ekleme hakkında bilgi edindiğinize göre, kümenizde verilerle çalışmanın diğer yollarını öğrenin:
 
 * [HDInsight ile Apache Hive kullanma](hadoop/hdinsight-use-hive.md)
-* [HDInsight ile Apache Pig kullanma](hadoop/hdinsight-use-pig.md)
 * [HDInsight ile MapReduce kullanma](hadoop/hdinsight-use-mapreduce.md)
-

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4ee9bf218765ea4c3966e7f0a8b20a8108de7655
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4af238241293f32be296e7a4243b0d2a6fef15dd
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931903"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151997"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Hızlı başlangıç: IoT Tak ve Kullan önizleme cihazı (Windows) oluşturmak için cihaz yetenek modeli kullanma
 
@@ -46,36 +46,7 @@ Bir Microsoft iş veya okul hesabıyla oturum açtığınızda veya varsa Micros
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prepare-an-iot-hub"></a>IoT Hub 'ı hazırlama
-
-Ayrıca, bu hızlı başlangıcı tamamlayabilmeniz için Azure aboneliğinizde bir Azure IoT Hub 'ınız olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. Bir IoT Hub 'ınız yoksa, [oluşturmak için bu yönergeleri](../iot-hub/iot-hub-create-using-cli.md)izleyin.
-
-> [!IMPORTANT]
-> Genel Önizleme sırasında IoT Tak ve Kullan özellikleri yalnızca **Orta ABD**, **Kuzey Avrupa**ve **Japonya Doğu** bölgelerinde oluşturulan IoT Hub 'larında kullanılabilir.
-
-Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın:
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
-
-IoT Hub 'ınızda cihaz kimliğini oluşturmak için aşağıdaki komutu çalıştırın. **Youriothubname** ve **yourdevice** yer tutucuları gerçek adlarınızla değiştirin.
-
-```azurecli-interactive
-az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
-```
-
-Yeni kaydettiğiniz cihazın _cihaz bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
-```
-
-Hub 'ınız için _IoT Hub bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
+[!INCLUDE [iot-pnp-prepare-iot-hub-windows.md](../../includes/iot-pnp-prepare-iot-hub-windows.md)]
 
 ## <a name="prepare-the-development-environment"></a>Geliştirme ortamını hazırlama
 
@@ -212,11 +183,11 @@ Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK kaynak kodunu kul
 
 1. _IoT Hub bağlantı dizenizi_ girin ve **Bağlan**' ı seçin.
 
-1. Bağlandıktan sonra, cihaza genel bakış sayfasını görürsünüz.
+1. Bağlandıktan sonra **cihazlara** genel bakış sayfasını görürsünüz.
 
 1. Şirket deponuzu eklemek için **Ayarlar**' ı ve **+ modül tanımı kaynağı Ekle**' yi ve ardından **Şirket deposu**' nu seçin. Şirket modeli deposu Bağlantı dizenizi ekleyin ve **Kaydet ve Bağlan**' ı seçin.
 
-1. Cihaza Genel Bakış sayfasında, daha önce oluşturduğunuz cihaz kimliğini bulun ve daha fazla ayrıntı görüntülemek için seçin.
+1. **Cihazların** genel bakış sayfasına geri döndüğünüzde, daha önce oluşturduğunuz cihaz kimliğini bulun. Cihaz uygulaması komut isteminde çalışmaya devam ettiğinden, cihazın Azure IoT Explorer 'daki **bağlantı durumunun** _bağlı_ olarak raporlandığından emin olun (Aksi takdirde, olana kadar **Yenile** ' ye basın). Daha fazla ayrıntı görüntülemek için cihazı seçin.
 
 1. IoT Tak ve Kullan temel özellikler, komutlar ve telemetri özelliklerini görmek için, KIMLIK **urn: < YOUR_INTERFACE_NAME >: Environmentalalgılayıcı: 1** olan arabirimi genişletin. Görüntülenecek arabirim adı, modelinizi yazarken yerleştirdiğiniz addır.
 
@@ -226,7 +197,7 @@ Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK kaynak kodunu kul
 
 1. Güncelleştirebilir yazılabilir özellikleri görüntülemek için **Özellikler (yazılabilir)** sayfasını seçin.
 
-1. Özellik **adı**' nı genişletin, yeni bir adla güncelleştirin ve **yazılabilir özelliği Güncelleştir**' i seçin.
+1. Özellik **adı**' nı genişletin, yeni bir adla güncelleştirin ve **yazılabilir özelliği Güncelleştir**' i seçin. 
 
 1. **Bildirilen özellik** sütununda yeni adı göster ' i görmek için sayfanın üst kısmındaki **Yenile** düğmesini seçin.
 
@@ -235,6 +206,8 @@ Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK kaynak kodunu kul
 1. **Yanıp sönen** komutunu genişletin ve yeni bir yanıp sönen zaman aralığı ayarlayın. Cihazda komutu çağırmak için **Gönder komutunu** seçin.
 
 1. Komutların beklenen şekilde yürütüldüğünü doğrulamak için, sanal cihaz komut istemine gidin ve yazdırılmış onay iletilerini okuyun.
+
+[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

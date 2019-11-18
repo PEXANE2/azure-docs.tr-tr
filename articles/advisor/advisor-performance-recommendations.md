@@ -3,17 +3,17 @@ title: Azure Advisor ile Azure uygulamalarının performansını geliştirme | M
 description: Azure dağıtımlarınızın performansını iyileştirmek için Advisor 'ı kullanın.
 services: advisor
 documentationcenter: NA
-author: kasparks
+author: saket-ms
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: kasparks
-ms.openlocfilehash: 1fec8a10a6699dc1360494cc7ac66e13f5d37ff0
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.author: sagupt
+ms.openlocfilehash: 08af119e7f9e72de4a8ae4a1842289a4fd5d925e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885747"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144156"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Azure Advisor ile Azure uygulamalarının performansını geliştirme
 
@@ -125,3 +125,4 @@ Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 * [Danışman maliyet önerileri](advisor-performance-recommendations.md)
 * [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-security-recommendations.md)
+* [Danışman Işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)

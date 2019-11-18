@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 90ef1be4366205b1f655a0b93619a897d6d1f25d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2e5a5f2a4de4e01d2e4fa66f819e55839959afd0
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929489"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130701"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı V12
 
@@ -98,7 +98,7 @@ Proje dizininden:
 1. Azure ve Node. js modüllerini yüklemek için `require` çağrıları ekleme
 1. Çok temel özel durum işleme dahil olmak üzere programın yapısını oluşturma
 
-    Kod şu şekildedir:
+    Kod aşağıdaki gibidir:
 
     ```javascript
     const { BlobServiceClient } = require('@azure/storage-blob');
@@ -205,7 +205,7 @@ Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğunda
 > [!IMPORTANT]
 > Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcıları ve blobları adlandırma hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-[Fromconnectionstring](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--newpipelineoptions-) metodunu çağırarak [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) sınıfının bir örneğini oluşturun. Ardından, bir kapsayıcıya başvuru almak için [Getcontainerclient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-) metodunu çağırın. Son olarak, depolama hesabınızda kapsayıcıyı gerçekten oluşturmak için [Oluştur](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) ' u çağırın.
+[Fromconnectionstring](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--storagepipelineoptions-) metodunu çağırarak [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) sınıfının bir örneğini oluşturun. Ardından, bir kapsayıcıya başvuru almak için [Getcontainerclient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-) metodunu çağırın. Son olarak, depolama hesabınızda kapsayıcıyı gerçekten oluşturmak için [Oluştur](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) ' u çağırın.
 
 `main` işlevinin sonuna bu kodu ekleyin:
 

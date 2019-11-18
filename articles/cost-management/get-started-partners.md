@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/04/2019
+ms.date: 11/15/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: cd3efbea7b194da54bc1d9bebd1cc77987bd9dea
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b7ae388488de32bb106ae29f975302953cfcb2e9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072346"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123034"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure maliyet yönetimi 'ni kullanmaya başlama
 
-Azure maliyet yönetimi, müşterileri Microsoft Müşteri anlaşmasıyla eklendi ve bir Azure planı satın almış olan iş ortakları için yerel olarak kullanılabilir. Bu makalede, iş ortaklarının [Azure maliyet yönetimi](https://docs.microsoft.com/azure/cost-management/) özelliklerini nasıl kullanacağı açıklanır. Ayrıca, iş ortaklarının müşterileri için maliyet yönetimi erişimini nasıl etkinleştireceğinizi açıklar. Müşteriler, CSP iş ortakları tarafından etkinleştirildiğinde maliyet yönetimi özelliklerini kullanabilir.
+Azure maliyet yönetimi, müşterileri Microsoft Müşteri anlaşmasıyla eklendi ve [bir Azure planı satın](/partner-center/purchase-azure-plan)almış olan iş ortakları için yerel olarak kullanılabilir. Bu makalede, Azure planındaki aboneliklerin maliyetlerini görüntülemek için iş ortaklarının [Azure maliyet yönetimi](index.yml) özelliklerini nasıl kullanacağı açıklanır. Ayrıca, iş ortaklarının müşterileri için maliyet yönetimi erişimini nasıl etkinleştireceğinizi açıklar. Müşteriler, CSP iş ortakları tarafından etkinleştirildiğinde maliyet yönetimi özelliklerini kullanabilir.
 
 CSP iş ortakları maliyet yönetimini şu şekilde kullanır:
 
@@ -147,25 +147,81 @@ RBAC kapsamlarındaki ayrılmış örnekler için itfası görünümleri ve ger�
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Maliyet analizinde maliyetleri analiz etme
 
-İş ortakları, belirli bir müşteri ya da bir fatura için müşteriler genelinde maliyet analizinde maliyetleri araştırabilir ve analiz edebilir.
+İş ortakları, belirli bir müşteri ya da bir fatura için müşteriler genelinde maliyet analizinde maliyetleri araştırabilir ve analiz edebilir. [Maliyet Analizi](quick-acm-cost-analysis.md) görünümünde, [görünümleri kaydedebilir](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) ve verileri [CSV ve PNG dosyalarına](quick-acm-cost-analysis.md#automation-and-offline-analysis)dışarı aktarabilirsiniz.
 
-Kullanım ayrıntı dosyaları ve maliyet yönetimi API 'Lerinde aşağıdaki alanlar bulunur. Maliyetleri birden çok alana göre analiz etmek için, maliyet analizinde filtre ve gruplandırma özelliklerini kullanabilirsiniz. Alanların tüm listesini görüntülemek için bkz. [maliyet yönetimi veri alanları](understand-cost-mgt-data.md#cost-management-data-fields).
+Maliyetleri birden çok alana göre analiz etmek için, maliyet analizinde filtre ve gruplandırma özelliklerini kullanabilirsiniz. İş ortaklarına özgü alanlar, sonraki bölümde gösterilmiştir.
 
-| Alan adı | Açıklama |
-| --- | --- |
-| Customertenantıd | Müşteri&#39;aboneliğinin Azure Active Directory kiracının tanımlayıcısı. |
-| CustomerName | Müşteri&#39;aboneliğinin Azure Active Directory kiracının adı. |
-| CustomerTenantDomainName | Müşteri&#39;aboneliğinin Azure Active Directory kiracının etki alanı adı. |
-| Partnertenantıd | İş ortağı&#39;Azure Active Directory kiracının tanımlayıcısı. |
-| PartnerName | Kiracının kiracı Azure Active Directory adı. |
-| Resellermpnıd | Abonelikle ilişkili Bayi için MPNıD. |
-| Maliyetinusd | ABD Doları cinsinden vergi öncesi tahmini ExtendedCost veya karıştırılan maliyet. |
-| Paygcostınbillingcurrency | Fiyatlandırma perakende fiyatlarında ise maliyetleri gösterir. Faturalandırma para birimiyle Kullandıkça Öde fiyatlarını gösterir. Yalnızca RBAC kapsamlarında kullanılabilir. |
-| Paygcostınusd | Fiyatlandırma perakende fiyatlarında ise maliyetleri gösterir. ABD Doları cinsinden Kullandıkça Öde fiyatlarını gösterir. Yalnızca RBAC kapsamlarında kullanılabilir. |
-| Partnerearnedtrate | İş ortağı yönetici bağlantısı erişimine dayalı bir iş ortağı kazanılmış kredisi (PEC) varsa, uygulanan indirim oranı. |
-| Ortaklıklıya Tattatmi | Ortağın kazanılmış kredisi uygulanıp uygulanmadığı gösterir. |
+## <a name="data-fields"></a>Veri alanları
 
-[Maliyet Analizi](quick-acm-cost-analysis.md) görünümünde, [görünümleri kaydedebilir](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) ve verileri [CSV ve PNG dosyalarına](quick-acm-cost-analysis.md#automation-and-offline-analysis)dışarı aktarabilirsiniz.
+Kullanım ayrıntı dosyaları ve maliyet yönetimi API 'Lerinde aşağıdaki veri alanları bulunur. Kullanılabilir olduğunda, Iş Ortağı Merkezi 'nin eşdeğer bilgileri gösterilir. Aşağıdaki kalın alanlarda iş ortakları, maliyetleri birden çok alana göre çözümlemek için maliyet analizindeki özelliklere göre filtreleme ve gruplama özelliklerini kullanabilir. Kalın alanlar yalnızca iş ortakları tarafından desteklenen Microsoft Müşteri anlaşmaları için geçerlidir.
+
+| **Alan adı** | **Açıklama** | **İş Ortağı Merkezi eşdeğeri** |
+| --- | --- | --- |
+| invoiceId | Faturada belirli bir işlem için gösterilen fatura KIMLIĞI. | Hareketin gösterildiği fatura numarası. |
+| Previousıniceıd | Orijinal faturaya başvuru bir para iadesi (negatif maliyet). Yalnızca bir para iadesi olduğunda doldurulur. | Yok |
+| billingAccountName | İş ortağını temsil eden faturalandırma hesabının adı. Microsoft Müşteri sözleşmesine eklendi sahip olan ve SaaS, Azure Marketi ve rezervasyonlar gibi yetkilendirme satın almalarından oluşan CSP müşterilerinin tüm maliyetlerini tahakkuk ettirmiştir. | Yok |
+| Billingaccountıd | İş ortağını temsil eden faturalandırma hesabı için tanımlayıcı. | MCAPı Iş ortağı ticaret kök KIMLIĞI. Bir istekte kullanılır, ancak bir yanıta dahil edilmez.|
+| Billingprofileıd | Bir Microsoft Müşteri sözleşmesine eklendi sahip olan ve SaaS, Azure Marketi ve gibi yetkilendirme satın alma işlemleri yapmış olan CSP müşterileri üzerinde bulunan müşteriler genelinde tek bir faturalandırma para biriminde bulunan fatura profili için tanımlayıcı. oluşturamaz. | MCAPı Iş ortağı faturalama grubu KIMLIĞI. Bir istekte kullanılır, ancak bir yanıta dahil edilmez. |
+| billingProfileName | Bir Microsoft Müşteri sözleşmesine eklendi sahip olan ve SaaS, Azure Marketi ve gibi yetkilendirme satın alma işlemleri yapmış olan CSP müşterileri ile faturalar arasında maliyetleri gruplandıran faturalandırma profilinin adı. oluşturamaz. | Yok |
+| invoiceSectionName | Faturada ücretlendirilmekte olan projenin adı. İş ortakları tarafından eklendi Microsoft Müşteri anlaşmaları için geçerli değildir. | Yok |
+| ınvoicesectionıd | Faturada ücretlendirilmekte olan projenin tanımlayıcısı. İş ortakları tarafından eklendi Microsoft Müşteri anlaşmaları için geçerli değildir. | Yok |
+| **Customertenantıd** | Müşterinin aboneliğine ait Azure Active Directory kiracının tanıtıcısı. | Müşterinin kurumsal kimliği-müşterinin Azure Active Directory Tenantıd 'si. |
+| **CustomerName** | Müşterinin aboneliğine ait Azure Active Directory kiracının adı. | Iş ortağı merkezinde gösterildiği gibi müşterinin kuruluş adı. Sistem bilgileriniz ile faturayı mutabık kılma için önemli. |
+| **CustomerTenantDomainName** | Müşterinin aboneliğine ait Azure Active Directory kiracının etki alanı adı. | Müşteri Azure Active Directory kiracı etki alanı. |
+| **Partnertenantıd** | Ortağın Azure Active Directory kiracısı için tanımlayıcı. | İş ortağı KIMLIĞI olarak çağrılan Azure Active Directory kiracı KIMLIĞI, GUID biçiminde. |
+| **PartnerName** | Kiracının kiracı Azure Active Directory adı. | İş ortağı adı. |
+| **Resellermpnıd** | Abonelikle ilişkili Bayi için MPNıD. | MPN abonelik kaydı için satıcı KIMLIĞI. Geçerli etkinlik için kullanılamaz. |
+| costCenter | Abonelikle ilişkili maliyet merkezi. | Yok |
+| billingPeriodStartDate | Fatura dönemi başlangıç tarihi, faturada gösterildiği gibi. | Yok |
+| billingPeriodEndDate | Fatura dönemi bitiş tarihi, faturada gösterildiği gibi. | Yok |
+| servicePeriodStartDate | Hizmet kullanımının ücretler için derecelendirmesi olan derecelendirme döneminin başlangıç tarihi. Azure hizmetleri için fiyatlar, derecelendirme dönemi için belirlenir. | Iş Ortağı Merkezi 'nde ChargeStartDate. Fatura döngüsünün başlangıç tarihi, önceki bir fatura döngüsünden daha önce ücretlendirilmeyen kullanım verilerinin tarihlerini sunmasının dışında. Saat her zaman günün başlangıcıdır, 0:00. |
+| servicePeriodEndDate | Hizmet kullanımının ücretler için derecelendirilme süresinin bitiş tarihi. Azure hizmetleri için fiyatlar, derecelendirme dönemine göre belirlenir. | Yok |
+| date | Azure tüketim verileri için, kullanım tarihini derecelendirildi olarak gösterir. Ayrılmış örnek için, satın alınan tarihi gösterir. Market ve destek gibi yinelenen ücretler ve tek seferlik ücretler için, satın alma tarihini gösterir. | Yok |
+| ProductID | Tüketim veya satın alma ile tahakkuk etmiş ücretler içeren ürün için tanımlayıcı. Bu, Iş ortağı merkezinde gösterildiği gibi ProductID ve SKuID öğesinin birleştirilmiş anahtarıdır. | Ürünün KIMLIĞI. |
+| ürün | Faturada gösterildiği gibi, tüketim veya satın alma ücreti verilen ürünün adı. | Katalogdaki ürün adı. |
+| serviceFamily | Satın alınan veya ücretlendirilen ürün için hizmet ailesini gösterir. Örneğin, depolama veya hesaplama. | Yok |
+| productOrderID | Aboneliğin ait olduğu varlık veya Azure planı adının tanıtıcısı. Örneğin, Azure planı. | Yok |
+| productOrderName | Aboneliğin ait olduğu Azure planının adı. Örneğin, Azure planı. | Yok|
+| consumedService | Eski EA Kullanım ayrıntılarında kullanılan hizmet (eski taksonomi). | Hizmet Iş ortağı merkezinde gösteriliyor. Örneğin, Microsoft. Storage, Microsoft. COMPUTE ve Microsoft. operationalınsights. |
+| meterID | Ölçülen tüketim için ölçülen tanımlayıcı. | Kullanılan ölçerin KIMLIĞI. |
+| meterName | Ölçülen tüketim için ölçüm adını tanımlar. | Tüketilen ölçerin adı. |
+| meterCategory | Kullanım için en üst düzey hizmeti tanımlar. | Kullanım için en üst düzey hizmet. |
+| meterSubCategory | Azure hizmetinin hızını etkileyebilecek tür veya alt kategorisini tanımlar. | Hızı etkileyebilecek Azure hizmeti türü.|
+| meterRegion | Veri merkezi konumuna bağlı olarak ücretlendirilen belirli hizmetler için veri merkezinin konumunu belirtir. | Uygulanabilir ve doldurulmuş yerlerde, hizmetler için bir veri merkezinin bölgesel konumu. |
+| abonelik kimliği | Azure aboneliği için Microsoft tarafından oluşturulan benzersiz tanımlayıcı. | Yok |
+| subscriptionName | Azure aboneliğinin adı. | Yok |
+| Sözleşme Dönemi | Teklifin geçerlilik süresini görüntüler. Örneğin, ayrılmış örnekler, ayrılmış örnek için yıllık bir dönem olan 12 ay gösterir. Tek seferlik satın alımlarda veya yinelenen satın alımlarda, terim SaaS, Azure Marketi ve destek için bir ay görüntüler. Azure tüketimi için geçerli değildir. | Yok |
+| publisherType (Firstparti, üçüncü taraf satıcı, thirdPartyAgency) | Yayımcıyı birinci taraf, üçüncü taraf satıcı veya üçüncü taraf kurumu olarak tanımlayan Yayımcı türü. | Yok |
+| partNumber | Kullanılmayan ayrılmış örnek ve Azure Market Hizmetleri için parça numarası. | Yok |
+| publisherName | Microsoft veya üçüncü taraf yayımcılar dahil olmak üzere hizmet yayımcısının adı. | Ürünün yayımcısının adı.|
+| reservationId | Ayrılmış örnek satın alma için tanımlayıcı. | Yok |
+| reservationName | Ayrılmış örnek adı. | Yok |
+| Rezervno | Ayrılmış örnek için OrderID. | Yok |
+| frequency | Ayrılmış bir örnek için ödeme sıklığı. | Yok |
+| resourceGroup | Yaşam döngüsü kaynak yönetimi için kullanılan Azure Kaynak grubunun adı. | Kaynak grubunun adı. |
+| InstanceId (veya) RESOURCEID | Kaynak örneğinin tanımlayıcısı. | Kaynak özelliklerinin tamamını içeren bir ResourceURI olarak gösterilir. |
+| resourceLocation | Kaynak konumunun adı. | Kaynağın konumu. |
+| Konum | Kaynağın normalleştirilmiş konumu. | Yok |
+| effectivePrice | Hizmetin fiyatlandırma para birimi cinsinden geçerli birim fiyatı. Ürün, hizmet ailesi, ölçüm ve teklif için benzersiz. Faturalandırma hesabı için fiyat listesi 'nde fiyatlandırma ile kullanılır. Katmanlı fiyatlandırma veya dahil edilen bir miktar olduğunda, tüketim için karıştırılan fiyatı gösterir. | Ayarlamaların ardından birim fiyatı. |
+| Miktar | Satın alınan veya tüketilen ölçülen miktar. Faturalandırma döneminde kullanılan ölçüm miktarı. | Birim sayısı. Mutabakat sırasında faturalandırma sisteminizdeki bilgilerle eşleştiğinden emin olun. |
+| unitOfMeasure | Hizmetin ücretlendirildiği birimi tanımlar. Örneğin, GB ve saat. | Hizmetin ücretlendirildiği birimi tanımlar. Örneğin, GB, saat ve 10, 000s. |
+| pricingCurrency | Birim fiyatını tanımlayan para birimi. | Pricelist içindeki para birimi.|
+| billingCurrency | Faturalandırılan maliyeti tanımlayan para birimi. | Müşterinin coğrafi bölgesinin para birimi. |
+| chargeType | Maliyetin, satın alma ve geri ödeme gibi Azure maliyet yönetiminde gösterdiği ücret türünü tanımlar. | Ücret veya ayarlamanın türü. Geçerli etkinlik için kullanılamaz. |
+| Maliyetsiz para birimi | Faturalanan para biriminde vergi öncesi, ExtendedCost veya karıştırılan maliyet. | Yok |
+| Costınpricingcurrency | Fiyatlarla ilişki kurmak için fiyatlandırma para birimi cinsinden vergi öncesi vergi veya karma maliyet. | Yok |
+| **Maliyetinusd** | ABD Doları cinsinden vergi öncesi tahmini ExtendedCost veya karıştırılan maliyet. | Yok |
+| **Paygcostınbillingcurrency** | Fiyatlandırma perakende fiyatlarında ise maliyetleri gösterir. Faturalandırma para birimiyle Kullandıkça Öde fiyatlarını gösterir. Yalnızca RBAC kapsamlarında kullanılabilir. | Yok |
+| **Paygcostınusd** | Fiyatlandırma perakende fiyatlarında ise maliyetleri gösterir. ABD Doları cinsinden Kullandıkça Öde fiyatlarını gösterir. Yalnızca RBAC kapsamlarında kullanılabilir. | Yok |
+| exchangeRate | Fiyatlandırma para biriminden faturalandırma para birimine dönüştürmek için kullanılan döviz kuru. | Iş Ortağı Merkezi 'nde PCToBCExchangeRate olarak adlandırılır. Para birimi döviz kuru faturalandırmaya yönelik fiyatlandırma para birimi.|
+| exchangeRateDate | Fiyatlandırma para biriminden faturalandırma para birimine dönüştürmek için kullanılan değişim oranının tarihi. | Iş Ortağı Merkezi 'nde PCToBCExchangeRateDat olarak adlandırılır. Faturalandırma para birimi döviz kuru tarihine kadar fiyatlandırma para birimi.|
+| isAzureCreditEligible | Maliyetin Azure kredileri tarafından ödeme için uygun olup olmadığını gösterir. | Yok |
+| serviceInfo1 | İsteğe bağlı hizmete özgü meta verileri yakalayan eski alan. | İç Azure hizmeti meta verileri. |
+| serviceInfo2 | İsteğe bağlı hizmete özgü meta verileri yakalayan eski alan. | Hizmet bilgileri. Örneğin, ExpressRoute için bir sanal makine ve ISS adı için bir görüntü türü.|
+| additionalInfo | Hizmete özgü meta veriler. Örneğin, sanal makinenin görüntü türü. | Diğer sütunlarda kapsanmayan ek bilgiler. Hizmete özgü meta veriler. Örneğin, sanal makinenin görüntü türü.|
+| etiketler | Ölçüm 'e atadığınız etikettir. Fatura kayıtlarını gruplamak için etiketleri kullanın. Örneğin, ölçümü kullanan departmana göre maliyetleri dağıtmak için Etiketler kullanabilirsiniz. | Müşteri tarafından eklenen Etiketler.|
+| **Partnerearnedtrate** | İş ortağı yönetici bağlantısı erişimine dayalı bir iş ortağı kazanılmış kredisi (PEC) varsa, uygulanan indirim oranı. | İş ortağı kazanılmış kredi (PEC) oranı. Örneğin, %0 veya %15. |
+| **Ortaklıklıya Tattatmi** | Ortağın kazanılmış kredisi uygulanıp uygulanmadığı gösterir. | Yok |
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>Iş ortağı kazanılmış kredi (PEC) kaynak maliyetlerini görüntüle
 

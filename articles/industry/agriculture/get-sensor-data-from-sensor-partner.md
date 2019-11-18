@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 424df8ac7145129dd70a9a5791648730189b528b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 33fd2221d3f3a0562abf83f014a7b84df972eebc
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889665"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128851"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
 
@@ -35,7 +35,7 @@ Algılayıcı verilerinin akışını başlattığınızda, verileri Farmtts sis
  - API Uç Noktası  
  - Kiracı Kimliği  
  - İstemci Kimliği  
- - İstemci parolası  
+ - İstemci Gizli Anahtarı  
  - EventHub bağlantı dizesi
 
 Yukarıdaki bilgiler, sistem tümleştiricisi tarafından size sunulmaktadır. Cihaz tümleştirmelerini etkinleştirirken oluşan herhangi bir sorun için sistem tümleştirmelerine başvurun.
@@ -72,7 +72,7 @@ Alternatif olarak, Azure Cloud Shell bu betiği çalıştırarak kimlik bilgiler
  - API Uç Noktası  
  - EventHub bağlantı dizesi  
  - İstemci Kimliği  
- - İstemci parolası  
+ - İstemci Gizli Anahtarı  
  - Kiracı Kimliği  
 
  Cihaz sağlayıcısı başarılı bir tümleştirmeyi onaylar. Onay sonrasında, tüm cihazları ve algılayıcıları Azure Farmtts üzerinde görüntüleyebilirsiniz.
@@ -86,7 +86,7 @@ Grubunuzdaki cihazları ve algılayıcıları görüntülemek için aşağıdaki
 Şu anda Farmtts aşağıdaki cihazları destekler:
 
 - **Düğüm**: bir veya daha fazla sensörün eklendiği cihaz.
-- **Ağ geçidi**: bir veya daha fazla sensörün eklendiği cihaz.
+- **Ağ geçidi**: bir veya daha fazla düğümün eklendiği cihaz.
 
 Aşağıdaki adımları kullanın:
 

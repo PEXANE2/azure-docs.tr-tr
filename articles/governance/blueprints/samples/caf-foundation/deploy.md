@@ -1,14 +1,14 @@
 ---
 title: CAF Foundation şema örnek dağıtma adımları
-description: CAF Foundation şema örneğinin adımlarını dağıtın.
+description: Şema yapıt parametresi ayrıntıları dahil olmak üzere CAF Foundation şema örneği için adımları dağıtın.
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: ad5d7ce2fb895032f9ae5d19ee6d2978830ccc89
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: afb7b19a2e5ad1f1b115526ac85d63a724101f9b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038474"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128713"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Azure Foundation şema örneği için Microsoft bulut benimseme çerçevesini dağıtma
 

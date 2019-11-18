@@ -15,12 +15,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ac8acf2193442de5c85e0a1134d46330821c77b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 92ea116414e12cb231fdbaa5ec9ad375d2c0eea9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756438"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145004"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Privileged Identity Management bir Azure AD özel rolünü etkinleştirin
 
@@ -33,12 +33,15 @@ Azure Active Directory (Azure AD) Privileged Identity Management artık kimlik v
 
 Bir Azure AD özel rolünü etkinleştirmeniz gerektiğinde, Privileged Identity Management ' de rollerim gezinti seçeneğini belirleyerek etkinleştirme isteyin.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. Oturum [Azure portalında](https://portal.azure.com).
 1. Azure AD [Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart)açın.
 
 1. Uygun Azure AD özel rol atamalarınızın listesini görmek için **Azure AD özel rolleri** ' ni seçin.
 
    ![Uygun Azure AD özel rol atamalarının listesini görüntüleyin](./media/azure-ad-custom-roles-activate/view-preview-roles.png)
+
+> [!Note] 
+>  Rol atamadan önce bir rol oluşturmanız/yapılandırmanız gerekir. AAD özel rollerini yapılandırma hakkında daha fazla bilgi için bkz. [buraya] (https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-custom-roles-configure)
 
 1. **Azure AD özel roller (Önizleme)** sayfasında, ihtiyacınız olan atamayı bulun.
 1. **Etkinleştir** sayfasını açmak için **rolünüzü etkinleştir** ' i seçin.

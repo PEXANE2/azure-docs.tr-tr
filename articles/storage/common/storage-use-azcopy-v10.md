@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 812daaf42a987e9dd63bbc39b60c517d8f0cc761
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: af24a6b6d165ba60a0d88a4ddf74a4f18836e813
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882490"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111763"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’i kullanmaya başlama
 
@@ -49,11 +49,11 @@ tar -xf azcopy.tar.gz
 
 ## <a name="run-azcopy"></a>AzCopy Çalıştır
 
-Kolaylık sağlaması için, AzCopy yürütülebilir dosyasının dizin konumunu, kullanım kolaylığı için sistem yolunuza eklemeyi göz önünde bulundurun. Bu şekilde, sisteminizdeki herhangi bir dizinden `azcopy` yazabilirsiniz.
+Kolaylık sağlaması için, AzCopy yürütülebilir dosyasının dizin konumunu, kullanım kolaylığı için sistem yolunuza eklemeyi göz önünde bulundurun. Böylece, sisteminizdeki herhangi bir dizinden `azcopy` yazabilirsiniz.
 
-Yolunuza AzCopy dizinini eklememayı seçerseniz, dizinleri AzCopy yürütülebilir dosyanızın konumuyla değiştirmeniz ve Windows PowerShell komut istemleri içinde `azcopy` veya `.\azcopy` yazmanız gerekir.
+Yolunuza AzCopy dizinini eklememayı seçerseniz, dizinleri AzCopy yürütülebilir dosyanızın konumuyla değiştirmeniz ve `azcopy` ya da Windows PowerShell komut istemleri ' nde `.\azcopy` yazmanız gerekir.
 
-Komutların listesini görmek için `azcopy -h` yazın ve sonra ENTER tuşuna basın.
+Komutların listesini görmek için `azcopy -h` yazın ve ENTER tuşuna basın.
 
 Belirli bir komut hakkında bilgi edinmek için, yalnızca komutun adını ekleyin (örneğin: `azcopy list -h`).
 
@@ -284,7 +284,7 @@ Bağlantıyı almak için şu komutu çalıştırın:
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
 
 > [!NOTE]
-> Linux için `tar` komutunda `--strip-components=1`, sürüm adını içeren en üst düzey klasörü kaldırır ve bunun yerine ikilisini doğrudan geçerli klasöre ayıklar. Bu, betiğin yalnızca `wget` URL 'sini güncelleştirerek `azcopy` ' ın yeni bir sürümüyle güncelleştirilmesini sağlar.
+> Linux için, `tar` komutunda `--strip-components=1`, sürüm adını içeren en üst düzey klasörü kaldırır ve bunun yerine ikilisini doğrudan geçerli klasöre ayıklar. Bu, betiğin yalnızca `wget` URL 'sini güncelleştirerek `azcopy` yeni bir sürümüyle güncelleştirilmesini sağlar.
 
 URL Bu komutun çıktısında görüntülenir. Komut dosyası daha sonra bu URL 'YI kullanarak AzCopy 'i indirebilir.
 
@@ -305,16 +305,9 @@ Komut dosyalarını çalıştırmak için [Jenkins](https://jenkins.io/) kullanm
 /usr/bin/keyctl new_session
 ```
 
-## <a name="use-azcopy-in-storage-explorer"></a>Depolama Gezgini AzCopy kullanın
+## <a name="use-azcopy-in-azure-storage-explorer"></a>Azure Depolama Gezgini AzCopy kullanın
 
-AzCopy 'in performans avantajlarından yararlanmak istiyorsanız, ancak dosyalarınıza etkileşimde bulunmak için komut satırı yerine Depolama Gezgini kullanmayı tercih ediyorsanız, Depolama Gezgini AzCopy özelliğini etkinleştirin.
-
-Depolama Gezgini ' de, **Önizleme**' yi seçin ->**geliştirilmiş blob yüklemesi ve Indirilmesi Için AzCopy kullanın**.
-
-![Azure Depolama Gezgini bir aktarım altyapısı olarak AzCopy 'i etkinleştirin](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
-
-> [!NOTE]
-> Depolama hesabınızda bir hiyerarşik ad alanı etkinleştirdiyseniz, bu ayarı etkinleştirmeniz gerekmez. Bunun nedeni, Depolama Gezgini hiyerarşik bir ad alanına sahip depolama hesaplarında AzCopy öğesini otomatik olarak kullanır.  
+[Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) , tüm veri aktarımı işlemlerini gerçekleştirmek Için AzCopy kullanır. AzCopy 'in performans avantajlarından yararlanmak istiyorsanız [Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) kullanabilirsiniz, ancak dosyalarınızda etkileşim kurmak için komut satırı yerine bir grafik kullanıcı arabirimi kullanmayı tercih edersiniz.
 
 Depolama Gezgini, işlemleri gerçekleştirmek için hesap anahtarınızı kullanır, bu nedenle Depolama Gezgini oturum açtıktan sonra, ek yetkilendirme kimlik bilgileri sağlamanız gerekmez.
 

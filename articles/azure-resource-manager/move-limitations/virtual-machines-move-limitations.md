@@ -1,17 +1,14 @@
 ---
 title: Azure VM 'lerini yeni aboneliğe veya kaynak grubuna taşıma
 description: Sanal makineleri yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: tomfitz
-ms.openlocfilehash: faeba1c0d7342a4c00f19d4cee8d67b8dbde8e6a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: b03e9618e621216f74cb02828183df7ee6b502ea
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528435"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150924"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Sanal makineler için taşıma Kılavuzu
 
@@ -23,7 +20,7 @@ Aşağıdaki senaryolar henüz desteklenmemektedir:
 
 * Kullanılabilirlik Alanları yönetilen diskler farklı bir aboneliğe taşınamaz.
 * Standart SKU 'SU Load Balancer veya standart SKU genel IP 'si olan sanal makine ölçek kümeleri taşınamaz.
-* Plan ekli olan market kaynaklarından oluşturulan sanal makineler, kaynak grupları veya abonelikler arasında taşınamaz. Sanal makinenin geçerli abonelikte sağlamasını kaldırın ve yeni abonelikte yeniden dağıtın.
+* Market kaynaklardan bağlı planlar ile oluşturulan sanal makineler, kaynak grubu veya abonelik arasında taşınamaz. Sanal makinenin geçerli abonelikte sağlamasını kaldırın ve yeni abonelikte yeniden dağıtın.
 * Sanal ağdaki tüm kaynakları taşımadan, var olan bir sanal ağdaki sanal makineler yeni bir aboneliğe taşınamaz.
 * Düşük öncelikli sanal makineler ve düşük öncelikli sanal makine ölçek kümeleri kaynak grupları veya abonelikler arasında taşınamaz.
 * Bir kullanılabilirlik kümesindeki sanal makineler tek tek taşınamaz.
@@ -34,9 +31,9 @@ Azure Backup ile yapılandırılmış sanal makineleri taşımak için aşağıd
 
 * Sanal makinenizin konumunu bulun.
 * Şu adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<location of your VM>_1` Örneğin, AzureBackupRG_westus2_1
-* Azure portal ' de, "gizli türleri göster" seçeneğini işaretleyin.
-* PowerShell 'de `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` cmdlet 'ini kullanın
-* CLı 'de, `az resource list -g AzureBackupRG_<location of your VM>_1` kullanın
+* Azure portalında, ardından onay "gizli türleri Göster ise"
+* PowerShell'de varsa, kullanmak `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` cmdlet'i
+* CLI, kullanın `az resource list -g AzureBackupRG_<location of your VM>_1`
 * Adlandırma düzenine sahip `Microsoft.Compute/restorePointCollections` türündeki kaynağı bulun `AzureBackup_<name of your VM that you're trying to move>_###########`
 * Bu kaynağı silin. Bu işlem, kasadaki yedeklenen verileri değil yalnızca anlık kurtarma noktalarını siler.
 * Silme işlemi tamamlandıktan sonra, kasayı ve sanal makineyi hedef aboneliğe taşıyabilirsiniz. Taşıma işleminden sonra verilerde kayıp olmadan yedeklemeye devam edebilirsiniz.

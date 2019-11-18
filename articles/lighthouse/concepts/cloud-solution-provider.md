@@ -1,24 +1,20 @@
 ---
 title: Bulut Çözüm Sağlayıcısı programı hakkında önemli noktalar
 description: CSP iş ortakları için, Azure tarafından atanan kaynak yönetimi, ayrıntılı izinleri etkinleştirerek güvenliğin ve denetimin artırılmasına yardımcı olur.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 10/23/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: cf9b834d79fa36bbe327a72089388b3f1a1a0c14
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3ea32418cdf6808ad311d343d28ba2778740dbe4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901827"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132516"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure açık Thouse ve bulut çözümü sağlayıcısı programı
 
 Bir [CSP (bulut çözümü sağlayıcısı)](https://docs.microsoft.com/partner-center/csp-overview) iş ortağıysanız, Kullanıcı [adına yönetme (Aobo)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) işlevini kullanarak, CSP programı aracılığıyla müşterileriniz için oluşturulan Azure aboneliklerine zaten erişebilirsiniz. Bu erişim, müşterilerinizin aboneliklerini doğrudan desteketmenize, yapılandırmanıza ve yönetmenize olanak sağlar.
 
-Azure 'da açık olan Azure Kaynak yönetimini, AOININ yanı bir şekilde kullanabilirsiniz. Bu sayede, kullanıcılarınız için daha ayrıntılı izinler etkinleştirerek güvenliği artırmaya ve gereksiz erişimi azaltmanıza yardımcı olur. Ayrıca, kullanıcılarınızın kiracınızda tek bir oturum açma kullanarak birden çok müşteri aboneliği arasında çalışabilmesi için daha fazla verimlilik ve ölçeklenebilirlik sağlar.
+[Azure](../overview.md)'da açık olan Azure Kaynak YÖNETIMINI, Aoinin yanı bir şekilde kullanabilirsiniz. Bu sayede, kullanıcılarınız için daha ayrıntılı izinler etkinleştirerek güvenliği artırmaya ve gereksiz erişimi azaltmanıza yardımcı olur. Ayrıca, kullanıcılarınızın kiracınızda tek bir oturum açma kullanarak birden çok müşteri aboneliği arasında çalışabilmesi için daha fazla verimlilik ve ölçeklenebilirlik sağlar.
 
 > [!TIP]
 > Müşteri kaynaklarının korunmasına yardımcı olmak için, [Önerilen güvenlik uygulamalarınızı](recommended-security-practices.md) , [iş ortağı güvenlik gereksinimleriyle](https://docs.microsoft.com/partner-center/partner-security-requirements)birlikte gözden geçirip izlediğinizden emin olun.
@@ -38,7 +34,7 @@ CSP programı aracılığıyla oluşturduğunuz bir aboneliği [eklemek, Azure '
 ![AOI ve Azure tarafından atanan kaynak yönetimini kullanan Kiracı Yönetimi](../media/csp-2.jpg)
 
 > [!NOTE]
-> Azure portal [ **müşteriler** sayfasında](../how-to/view-manage-customers.md) , [MICROSOFT Müşteri Sözleşmesi 'ni (MCA) IMZALAYAN](https://docs.microsoft.com/partner-center/confirm-customer-agreement) ve şu anda bulunan CSP müşterilerinin fatura bilgilerini ve kaynaklarını görüntüleyen bir **bulut çözümü sağlayıcısı (Önizleme)** bölümü vardır. Azure planı altında. Daha fazla bilgi için bkz. [Microsoft Iş ortağı sözleşmesi Faturalandırma hesabınızı kullanmaya başlama](https://docs.microsoft.com/azure/billing/mpa-overview).
+> Azure portal [ **müşterilerimiz** sayfasında](../how-to/view-manage-customers.md) , [MICROSOFT Müşteri Sözleşmesi 'ni (MCA) imzalayan](https://docs.microsoft.com/partner-center/confirm-customer-agreement) ve Azure planı kapsamında olan CSP müşterilerinin fatura bilgilerini ve kaynaklarını görüntüleyen bir **bulut çözümü sağlayıcısı (Önizleme)** bölümü vardır. Daha fazla bilgi için bkz. [Microsoft Iş ortağı sözleşmesi Faturalandırma hesabınızı kullanmaya başlama](https://docs.microsoft.com/azure/billing/mpa-overview).
 >
 > CSP müşterileri, Azure tarafından yetkilendirilen kaynak yönetimi için eklendi olup olmadığı konusunda bu bölümde görünebilir. Sahip olmaları durumunda **müşteriler bölümünde,** [müşterileri görüntüleme ve yönetme](../how-to/view-manage-customers.md)bölümünde açıklandığı gibi da görünür.
 

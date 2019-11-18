@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 3bc1bfcf58d622151f0af9c6da693c5533bcf966
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9751435636519100ea13fd850508c99faeb87a92
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721618"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133284"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir Java Spring uygulaması başlatma
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğrenecek
 > * Her mikro hizmeti dağıtma
 > * Uygulamanız için genel uç nokta atama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 >[!Note]
 > Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizleme sırasında destek hakkında daha fazla bilgi için lütfen [SSS](https://azure.microsoft.com/support/faq/) veya dosya dosyası [destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) inceleyerek daha fazla bilgi edinebilirsiniz.
@@ -146,7 +146,16 @@ Son olarak, uygulamanın çalıştığını doğrulayabilmeniz için **ağ geçi
 az spring-cloud app show --name gateway | grep url
 ```
 
-Plımetrik uygulamasının çalıştığını görmek için önceki komutun sunduğu URL 'ye gidin.
+Plımetrimetrik uygulamasını çalıştırmak için önceki komutun sunduğu URL 'ye gidin.
+    ](media/spring-cloud-quickstart-launch-app-cli/launch-app.png) çalıştıran Pıof ölçümlerinin ekran görüntüsünü ![
+
+URL 'YI bulmak için Azure portal de gidebilirsiniz. 
+1. Hizmete git
+1. **Uygulama** seçin
+1. **Ağ geçidini** seçin
+
+    ![Çalıştırılan POF ölçümleri ekran görüntüsü](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
+1. **Ağ geçidine genel bakış** sayfasında URL 'yi ![, çalışan pıof ölçümlerinin ekran görüntüsünü bulun](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

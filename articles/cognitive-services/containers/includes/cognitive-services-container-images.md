@@ -6,22 +6,22 @@ manager: nitinme
 description: Tüm bilişsel hizmet teklifleri için kapsayıcı kayıt defterleri, depolar ve görüntü adları temsil eden iki tablo.
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: ae11fe785237a02652af1f16aaba1f1bac5ecd62
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2058dd6e52ddb417e24368b27384df9a222c378e
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961897"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74142224"
 ---
 ### <a name="container-repositories-and-images"></a>Kapsayıcı depoları ve görüntüleri
 
-Aşağıdaki tablolar, Azure bilişsel hizmetler tarafından sunulan kullanılabilir kapsayıcı görüntülerinin kapsamlı bir listesidir.
+Aşağıdaki tablolarda, Azure bilişsel hizmetler tarafından sunulan kullanılabilir kapsayıcı görüntülerinin bir listesi verilmiştir. Tüm kullanılabilir kapsayıcı görüntüsü adlarının ve kullanılabilir etiketlerinin tüm listesi için bkz. bilişsel [Hizmetler kapsayıcısı görüntü etiketleri](../container-image-tags.md).
 
 #### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Ortak "ungated" (kapsayıcı kayıt defteri: `mcr.microsoft.com`)
 
-Microsoft Container Registry bilişsel hizmetler için genel kullanıma açık olan "geçitli" kapsayıcıları barındırır.
+Microsoft Container Registry (MCR), bilişsel hizmetler için tüm genel kullanıma açık "olmayan" kapsayıcıları Syndicates. Bunlar doğrudan [Docker Hub 'ından](https://hub.docker.com/_/microsoft-azure-cognitive-services)de kullanılabilir.
 
 | Hizmet | Kapsayıcı | Container Registry/depo/görüntü adı |
 |--|--|--|

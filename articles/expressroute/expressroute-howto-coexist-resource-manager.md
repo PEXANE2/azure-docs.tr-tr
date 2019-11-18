@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: e25d6ff0bf0c27926040fcfe190724a666713a05
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 84c4d466a820616b8f8dfa69cfa149cb86006f49
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031740"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132859"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell kullanarak ExpressRoute ve siteden siteye arada var olabilen bağlantılar yapılandırma
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Siteden Siteye VPN ve ExpressRoute eşzamanlı bağlantılarını yapılandırma
 ## <a name="limits-and-limitations"></a>Sınırlar ve sınırlamalar
 * **Geçiş yönlendirmesi desteklenmez.** Siteden Siteye VPN aracılığıyla bağlanan yerel ağınız ve ExpressRoute aracılığıyla bağlanan yerel ağınız arasında (Azure aracılığıyla) yönlendirme yapamazsınız.
 * **Temel SKU ağ geçidi desteklenmez.** Hem [ExpressRoute ağ geçidi](expressroute-about-virtual-network-gateways.md) hem de [VPN ağ geçidi](../vpn-gateway/vpn-gateway-about-vpngateways.md) için Temel SKU olmayan bir ağ geçidi kullanmanız gerekir.
-* **Yalnızca rota tabanlı VPN ağ geçidi desteklenir.** Rota tabanlı [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) kullanmanız gerekir.
+* **Yalnızca rota tabanlı VPN ağ geçidi desteklenir.** Rota tabanlı bir [VPN ağ geçidi](../vpn-gateway/vpn-gateway-about-vpngateways.md)kullanmanız gerekir. Ayrıca, [birden çok ilke tabanlı VPN cihazına bağlanma](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)bölümünde açıklandığı gibi ' ilke tabanlı trafik seçicileri ' için YAPıLANDıRıLMıŞ bir VPN bağlantısı ile rota tabanlı bir VPN ağ geçidini de kullanabilirsiniz.
 * **VPN ağ geçidiniz için statik rota yapılandırılmalıdır.** Yerel ağınız hem ExpressRoute hem de Siteden Siteye VPN’e bağlıysa Siteden Siteye VPN bağlantısını genel İnternet’e yönlendirebilmeniz için yerel ağınızda statik bir rotanın yapılandırılmış olması gerekir.
 * **Belirtilmemişse, varsayılan olarak ASN 65515 VPN Gateway.** Azure VPN Gateway BGP yönlendirme protokolünü destekler. -ASN anahtarını ekleyerek bir sanal ağ için ASN (AS Number) belirtebilirsiniz. Bu parametreyi belirtmezseniz, varsayılan AS numarası 65515 ' dir. Yapılandırma için herhangi bir ASN kullanabilirsiniz, ancak 65515 dışında bir öğe seçerseniz, ayarın etkili olması için ağ geçidini sıfırlamanız gerekir.
 

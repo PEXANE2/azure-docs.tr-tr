@@ -1,18 +1,18 @@
 ---
 title: Azure Application Gateway için Azure CLı örnekleri
-description: Azure Application Gateway için Azure CLı örnekleri
+description: Bu makalede Azure CLı örneklerine bağlantılar bulunur, böylece Azure Application Gateway kolayca çeşitli yollarla dağıtabilirsiniz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: sample
-ms.date: 08/07/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: eac8569f16c84211c1e881a9cb8daab9d7e602b5
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 57df87f6cc101f4cc097b464d93238d3b868c93b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824503"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129788"
 ---
 # <a name="azure-cli-examples-for-azure-application-gateway"></a>Azure Application Gateway için Azure CLı örnekleri
 

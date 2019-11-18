@@ -1,34 +1,32 @@
 ---
-title: Öğretici-Azure Resource Manager şablona kaynak ekleme
+title: Öğretici-şablona kaynak ekleme
 description: İlk Azure Resource Manager şablonunuzu oluşturma adımlarını açıklar. Şablon dosyası söz dizimi ve depolama hesabının nasıl dağıtılacağı hakkında bilgi edinirsiniz.
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6b8bd73a1248168ff8f434afa0a9317a8fe0c618
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963908"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148201"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza kaynak ekleme
 
 [Önceki öğreticide](template-tutorial-create-first-template.md)boş bir şablon oluşturmayı ve bunu dağıtmayı öğrendiniz. Şimdi, gerçek bir kaynağı dağıtmaya hazırsınız demektir. Bu öğreticide bir depolama hesabı eklersiniz. Bu öğreticiyi tamamlamaya yaklaşık **9 dakika** sürer.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [Şablonlar hakkında giriş öğreticisini](template-tutorial-create-first-template.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
 Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="add-resource"></a>Kaynak Ekle
+## <a name="add-resource"></a>Kaynak ekle
 
 Mevcut şablona bir depolama hesabı tanımı eklemek için, vurgulanan JSON ' a aşağıdaki örnekte bakın. Şablonun bölümlerini kopyalamaya çalışmak yerine, tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
-**{Sağlamasını-Unique-Name}** değerini benzersiz bir depolama hesabı adıyla değiştirin. Depolama hesabı adı Azure genelinde benzersiz olmalıdır. Ad yalnızca küçük harf veya rakam içermelidir. Bu, 24 karakterden uzun olamaz. Ön ek olarak **store1** kullanma ve sonra adınızın baş harflerini ve bugünün tarihini ekleme gibi bir adlandırma modelini deneyebilirsiniz. Örneğin, kullandığınız ad **store1abc09092019**gibi görünebilir.
+**{Sağlamasını-Unique-Name}** değerini benzersiz bir depolama hesabı adıyla değiştirin. Depolama hesabı adının Azure’da benzersiz olması gerekir. Ad yalnızca küçük harf veya rakam içermelidir. Bu, 24 karakterden uzun olamaz. Ön ek olarak **store1** kullanma ve sonra adınızın baş harflerini ve bugünün tarihini ekleme gibi bir adlandırma modelini deneyebilirsiniz. Örneğin, kullandığınız ad **store1abc09092019**gibi görünebilir.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json?range=1-19&highlight=5-17)]
 
@@ -54,7 +52,7 @@ Bu öğreticide, şablona bir depolama hesabı eklediniz. Bu API sürümünü [S
 
 Bir kaynağın API sürümünü değiştirmeye karar verirseniz, bu sürümün özelliklerini değerlendirdiğinizden emin olun ve şablonunuzu uygun şekilde ayarlayın.
 
-## <a name="deploy-template"></a>Şablonu dağıt
+## <a name="deploy-template"></a>Şablon dağıtma
 
 Depolama hesabı oluşturmak için şablonu dağıtabilirsiniz. Farklı bir ad verin ve bu sayede geçmişi kolayca bulabilirsiniz.
 
@@ -69,7 +67,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -92,26 +90,26 @@ Karşılaşabileceğiniz iki olası dağıtım başarısızlığı:
 
 Bu dağıtım, depolama hesabı oluşturulduğundan boş şablon dağıtımınızdan daha uzun sürer. Bir dakika sürebilir, ancak genellikle daha hızlıdır.
 
-## <a name="verify-deployment"></a>Dağıtımı doğrula
+## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Bir depolama hesabının dağıtıldığını görürsünüz.
 1. Dağıtım etiketinin şimdi şöyle göründüğünü göreceksiniz: **dağıtımlar: 2 başarılı**.
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
 Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
-1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
+1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
+4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

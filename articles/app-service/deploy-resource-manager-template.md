@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 196aeb69a1948a44afb8170fa5f48d42b978854d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2af3ec61537dc28ab652b669ff46500db19ab307
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070452"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130597"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Web uygulamalarını dağıtma Kılavuzu
 
@@ -46,7 +46,7 @@ Kaynakları aşağıdaki sırayla dağıtabilirsiniz:
 **Katman 3**
 * Kaynak denetimi--Web uygulamasına göre değişir.
 * MSDeploy site uzantısı--Web uygulamasına göre değişir.
-* Sunucu grubunu hedefleyen Application Insights örneği--Web uygulamasına göre değişir.
+* Web uygulamasını hedefleyen Azure Application Insights örneği--Web uygulamasına göre değişir.
 
 **Katman 4**
 * App Service sertifikası--varsa, kaynak denetimine veya MSDeploy 'a bağımlıdır. Aksi halde, Web uygulamasına bağlıdır.
@@ -87,7 +87,7 @@ Aşağıdaki örnek bir şablonun parçasını gösterir. Bağlantı dizesi yap�
 }
 ```
 
-Yukarıdaki kodu kullanan, çalıştırmaya hazırlanma bir örnek için bkz [. şablon: Basit bir maco Web uygulaması](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)oluşturun.
+Yukarıdaki kodu kullanan, çalıştırmaya hazırlanma bir örnek için bkz. [Template: Simple DICO Web uygulaması oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
 
 ## <a name="find-information-about-msdeploy-errors"></a>MSDeploy hataları hakkında bilgi bulma
 
@@ -132,7 +132,7 @@ Key Vault **Sertifikalar** ' ı seçin ve sertifikayı karşıya yüklemek için
 
 ![Sertifikayı içeri aktar](media/web-sites-rm-template-guidance/import-certificate.png)
 
-Şablonunuzda, için `keyVaultSecretName`sertifikanın adını belirtin.
+Şablonunuzda `keyVaultSecretName`sertifikanın adını sağlayın.
 
 Örnek bir şablon için bkz. [Key Vault gizli alanından Web uygulaması sertifikası dağıtma ve SSL bağlaması oluşturmak için bunu kullanma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
 

@@ -1,5 +1,5 @@
 ---
-title: Dizin oluşturucular kullanarak Azure SQL veritabanı içeriğini bağlama ve dizine bağlama
+title: Azure SQL verileri üzerinde arama
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'de tam metin araması için Dizin oluşturucuları kullanarak Azure SQL veritabanı 'ndan veri aktarın. Bu makalede bağlantılar, Dizin Oluşturucu yapılandırması ve veri alımı ele alınmaktadır.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 012f555f3837086946eb4581dadc74011a3acc09
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792204"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113313"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-azure-cognitive-search-indexers"></a>Azure Bilişsel Arama Dizinleyicileri kullanarak Azure SQL veritabanı içeriğine bağlanma ve Dizin bağlama
+# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Azure Bilişsel Arama Dizin oluşturucuyu kullanarak Azure SQL veritabanı içeriğine bağlanma ve dizin oluşturma
 
 [Azure bilişsel arama dizinini](search-what-is-an-index.md)sorgulayabilmeniz için önce bu verileri verilerinize göre doldurmanız gerekir. Veriler bir Azure SQL veritabanında yer alıyorsa, Azure **SQL veritabanı için bir azure bilişsel arama Dizin Oluşturucu** (veya kısa IÇIN **Azure SQL Indexer** ), dizin oluşturma işlemini otomatikleştirebilir. Bu, daha az kod yazmak için daha az kod ve ilgilendiğiniz altyapıyı daha az olabilir.
 
@@ -271,7 +271,7 @@ Geçici silme tekniği kullanılırken, veri kaynağını oluştururken veya gü
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>SQL ve Azure Bilişsel Arama veri türleri arasında eşleme
 | SQL veri türü | İzin verilen hedef dizin alanı türleri | Notlar |
 | --- | --- | --- |
-| sürümleri |EDM. Boolean, Edm. String | |
+| bit |EDM. Boolean, Edm. String | |
 | int, smallint, tinyint |EDM. Int32, Edm. Int64, Edm. String | |
 | bigint |EDM. Int64, Edm. String | |
 | gerçek, float |EDM. Double, Edm. dize | |
@@ -307,7 +307,7 @@ Evet. Ancak, arama hizmetinizin veritabanınıza bağlanmasına izin vermeniz ge
 
 **S: şirket içinde çalışan SQL veritabanlarıyla Azure SQL dizin oluşturucuyu kullanabilir miyim?**
 
-Doğrudan değil. Doğrudan bir bağlantı önermiyor veya desteklemiyoruz, bu sayede veritabanlarınızı Internet trafiğine açmanızı gerektirir. Müşteriler, Azure Data Factory gibi köprü teknolojilerini kullanarak bu senaryoya başarılı olmuştur. Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Azure bilişsel arama dizinine veri gönderme](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
+Doğrudan yönetilemez. Doğrudan bir bağlantı önermiyor veya desteklemiyoruz, bu sayede veritabanlarınızı Internet trafiğine açmanızı gerektirir. Müşteriler, Azure Data Factory gibi köprü teknolojilerini kullanarak bu senaryoya başarılı olmuştur. Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Azure bilişsel arama dizinine veri gönderme](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
 **S: Azure SQL dizin oluşturucuyu, Azure 'da IaaS 'de çalışan SQL Server dışındaki veritabanlarıyla kullanabilir miyim?**
 

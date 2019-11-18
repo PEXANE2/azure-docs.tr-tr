@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5d2b43599c1e1f95f505d7987675e5fd40810fa4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b0c3487bb77f32483d6d65cd0a4b1f637267eabf
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012958"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144359"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure 'da Azure Active Directory kullanarak Geliştirici hesaplarını yetkilendirme API Management
 
@@ -33,7 +33,7 @@ Bu makalede, kullanıcıların Azure Active Directory (Azure AD) aracılığıyl
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Azure AD 'yi kullanarak Geliştirici hesaplarını yetkilendirme
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. 
-2. Seçim ![oku seçin](./media/api-management-howto-aad/arrow.png).
+2. Seçin ![oku seçin](./media/api-management-howto-aad/arrow.png).
 3. Arama kutusuna **API** yazın.
 4. **API Management Hizmetleri**' ni seçin.
 5. API Management hizmet örneğinizi seçin.
@@ -81,12 +81,16 @@ Değişiklikler kaydedildikten sonra, belirtilen Azure AD örneğindeki kullanı
 
 ## <a name="add-an-external-azure-ad-group"></a>Dış Azure AD grubu ekleme
 
-Bir Azure AD örneğindeki kullanıcılar için erişimi etkinleştirdikten sonra API Management Azure AD grupları ekleyebilirsiniz. Daha sonra, gruptaki geliştiricilerin, istenen ürünlerle ilişkilendirmesini daha kolay bir şekilde yönetebilirsiniz.
+Bir Azure AD kiracısındaki kullanıcılar için erişimi etkinleştirdikten sonra, Azure AD gruplarını API Management 'e ekleyebilirsiniz. Sonuç olarak, Azure AD gruplarını kullanarak ürün görünürlüğünü kontrol edebilirsiniz.
 
- > [!IMPORTANT]
- > Dış bir Azure AD grubu eklemek için, önceki bölümde yer alan yordamı izleyerek önce **kimlikler** SEKMESINDE Azure AD örneğini yapılandırmanız gerekir. Ayrıca, uygulamaya `Directory.Read.All` izinle Azure AD Graph API erişimi verilmelidir. 
+APıM 'e dış bir Azure AD grubu eklemek için önce önceki bölümü tamamlamalısınız. Ayrıca, kaydettiğiniz uygulamaya aşağıdaki adımları izleyerek `Directory.ReadAll` izniyle Azure Active Directory Graph API erişim verilmelidir: 
 
-API Management örneğinizin **gruplar** sekmesinden dış Azure AD grupları eklersiniz.
+1. Önceki bölümde oluşturulan uygulama kaydınız için geri dönün
+2. **API izinleri** sekmesine tıklayın ve ardından **+ izin Ekle** düğmesine tıklayın 
+3. **API Izinleri iste** bölmesinde, **Microsoft API 'leri** sekmesini seçin ve desteklenen eski API 'ler bölümünde **Azure Active Directory Graph** kutucuğunu bulmak için en alta kaydırın ve tıklayın. Ardından **Uygulama izinleri** düğmesine tıklayıp **Dizin. ReadAll** iznini seçin ve ardından alttaki düğmeyi kullanarak bu izni ekleyin. 
+4. Bu dizindeki tüm kullanıcılara erişim izni vermek için **{TenantName} için yönetici Izni verme** düğmesine tıklayın. 
+
+Artık API Management örneğinizin **gruplar** sekmesinden dış Azure AD grupları ekleyebilirsiniz.
 
 1. **Gruplar** sekmesini seçin.
 2. **AAD grubu Ekle** düğmesini seçin.

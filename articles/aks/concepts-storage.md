@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: fb15063e41e83b4c9a9f2e01b6ad18c8afed7f5f
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 70272413ef4952cfeed558dd313f12096204d569
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740998"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120499"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için depolama seçenekleri
 
@@ -33,7 +33,7 @@ Uygulamalar genellikle veri depolayabilmek ve alabilmesi gerekir. Kubernetes tip
 
 Verileri depolamak ve almak için geleneksel birimler, Azure depolama tarafından desteklenen Kubernetes kaynakları olarak oluşturulur. Bu veri birimlerini doğrudan veya Pod 'ye atanmak üzere el ile oluşturabilirsiniz veya Kubernetes onları otomatik olarak oluşturabilir. Bu veri birimleri, Azure disklerini veya Azure dosyalarını kullanabilir:
 
-- *Azure diskleri* , bir Kubernetes *veri diski* kaynağı oluşturmak için kullanılabilir. Diskler, yüksek performanslı SSD 'Ler tarafından desteklenen Azure Premium Depolama veya normal HDD 'Ler tarafından desteklenen Azure Standart depolama kullanabilir. Çoğu üretim ve geliştirme iş yükleri için Premium depolama kullanın. Azure diskleri *Readwriteonce*olarak bağlanır, bu nedenle yalnızca tek bir düğüm için kullanılabilir. Aynı anda birden çok düğüm tarafından erişilebilen depolama birimlerinde Azure dosyalarını kullanın.
+- *Azure diskleri* , bir Kubernetes *veri diski* kaynağı oluşturmak için kullanılabilir. Diskler, yüksek performanslı SSD 'Ler tarafından desteklenen Azure Premium Depolama veya normal HDD 'Ler tarafından desteklenen Azure Standart depolama kullanabilir. Çoğu üretim ve geliştirme iş yükleri için Premium depolama kullanın. Azure diskleri *Readwriteonce*olarak bağlanır, bu nedenle yalnızca tek bir pod için kullanılabilir. Aynı anda birden çok dizin tarafından erişilebilen depolama birimlerinde Azure dosyalarını kullanın.
 - *Azure dosyaları* , Azure depolama hesabı tarafından desteklenen bir SMB 3,0 paylaşımının pods 'ye bağlanması için kullanılabilir. Dosyalar, verileri birden çok düğümde ve düğüm genelinde paylaşmanızı sağlar. Dosyalar, yüksek performanslı SSD 'Ler tarafından desteklenen normal HDD 'Ler veya Azure Premium Depolama tarafından desteklenen Azure Standart depolama alanını kullanabilir.
 > [!NOTE] 
 > Azure dosyaları, Kubernetes 1,13 veya üstünü çalıştıran AKS kümelerindeki Premium depolamayı destekler.
@@ -63,7 +63,7 @@ AKS 'de, iki adet ilk StorageClasses oluşturulur:
 - *varsayılan* -yönetilen bir disk oluşturmak Için Azure Standart depolama kullanır. Geri kazanma ilkesi, kendisini kullanan Pod silindiğinde, temel alınan Azure diskinin silindiğini gösterir.
 - *yönetilen-Premium* -yönetilen disk oluşturmak Için Azure Premium depolama kullanır. Geri kazanma ilkesi, kendisini kullanan Pod silindiğinde, temel alınan Azure diskinin silindiğini gösterir.
 
-Kalıcı birim için bir StorageClass belirtilmemişse, varsayılan StorageClass kullanılır. Kalıcı birimler istemek için gereken uygun depolama alanını kullanmaları için dikkatli olmanız gerekir. Kullanarak `kubectl`ek gereksinimler Için bir storageclass oluşturabilirsiniz. Aşağıdaki örnek, Premium yönetilen diskleri kullanır ve pod silindiğinde temel alınan Azure diskinin *korunması* gerektiğini belirtir:
+Kalıcı birim için bir StorageClass belirtilmemişse, varsayılan StorageClass kullanılır. Kalıcı birimler istemek için gereken uygun depolama alanını kullanmaları için dikkatli olmanız gerekir. `kubectl`kullanarak ek gereksinimler için bir StorageClass oluşturabilirsiniz. Aşağıdaki örnek, Premium yönetilen diskleri kullanır ve pod silindiğinde temel alınan Azure diskinin *korunması* gerektiğini belirtir:
 
 ```yaml
 kind: StorageClass

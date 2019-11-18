@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager şablon yapısı ve sözdizimi | Microsoft Docs
+title: Şablon yapısı ve sözdizimi
 description: Bildirim temelli JSON sözdizimi kullanan Azure Resource Manager şablonlarının yapısını ve özelliklerini açıklar.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.author: tomfitz
-ms.openlocfilehash: 8fe665ed9a9c580f5ce7d7bf43e71b9672a2bc5b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: ed3f75862e33f87001bc0a7720a98adb64dde5c3
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075023"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149765"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın
 
@@ -133,7 +130,7 @@ Bir değişken için birkaç değer oluşturmak üzere `copy` kullanma hakkında
 
 Değişkenlerin nasıl kullanılacağına ilişkin örnekler için bkz. [Azure Resource Manager şablonundaki değişkenler](template-variables.md).
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>İşlevler
 
 Şablonunuz içinde kendi işlevlerinizi oluşturabilirsiniz. Bu işlevler, şablonunuzda kullanıma sunulmuştur. Genellikle, şablonunuzun tamamında yinelemek istemediğiniz karmaşık ifadeleri tanımlarsınız. Şablonlarda desteklenen ifadelerden ve [işlevlerden](resource-group-template-functions.md) Kullanıcı tanımlı işlevler oluşturursunuz.
 

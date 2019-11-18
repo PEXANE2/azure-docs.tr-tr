@@ -1,19 +1,16 @@
 ---
-title: Öğretici-Azure Resource Manager şablona değişken ekleme
+title: Öğretici-şablona değişken ekleme
 description: Sözdizimini basitleştirmek için Azure Resource Manager şablonunuza değişken ekleyin.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fb577c0c0f00da3735da98fc2e94f3610c9bd80d
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 9af6b9028dbc5b01c3d0ec9dc41f145e37c31b0e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001474"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147968"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza değişkenler ekleme
 
@@ -86,7 +83,7 @@ az group deployment create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Bir depolama hesabı kaynağının dağıtıldığını görürsünüz. Depolama hesabının adı, **Depo** ve rastgele karakterlerden oluşan bir dizedir.

@@ -1,7 +1,7 @@
 ---
 title: OData Select başvurusu
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama sorgularında sözdizimi seç için OData dil başvurusu.
+description: Azure Bilişsel Arama sorgularının arama sonuçlarına döndürülecek alanların açık seçimi için sözdizimi ve dil başvurusu.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 7786974f3d39f9cbc81e1ffea955156d623f1476
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793258"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113109"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $select söz dizimi
 

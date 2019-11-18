@@ -1,19 +1,16 @@
 ---
-title: Öğretici-Azure Resource Manager şablonuna çıktılar ekleme
+title: Öğretici-şablona çıktılar ekleme
 description: Sözdizimini basitleştirmek için Azure Resource Manager şablonunuza çıktılar ekleyin.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 458833372d5bd03a04e4df7d6e915cddb4bb05c7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 0d89c1651e6b897da7538432d183a8ac003a51ac
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001528"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148264"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza çıktılar ekleme
 
@@ -97,7 +94,7 @@ Son altı öğreticilerde bir çok şey yaptınız. Ne yaptığını gözden ge�
 
 Şimdi, kaynak grubuna ve dağıtım geçmişine bakalım.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Yaptığınız adımlara bağlı olarak, kaynak grubunda en az bir ve belki birkaç depolama hesabınız olmalıdır.

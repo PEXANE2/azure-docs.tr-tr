@@ -1,22 +1,18 @@
 ---
 title: Azure Ilkesini, uygun ölçekte ücretsiz aboneliklere dağıtın
 description: Azure Temsilcili Kaynak yönetiminin, birden fazla kiracıda ilke tanımı ve ilke atamasını dağıtmanıza nasıl olanak sağladığını öğrenin.
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
 ms.date: 11/8/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 537802358af4dbca4f9e24699fc8455c1c6ef01b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: fd335e77feb26241d573db48c2e96c725f70d031
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893770"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131275"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Ilkesini, uygun ölçekte ücretsiz aboneliklere dağıtın
 
-Hizmet sağlayıcı olarak, Azure tarafından atanan kaynak yönetimi için birden fazla müşteri kiracısından eklendi olabilirsiniz. Azure Mathouse, hizmet sağlayıcılarının aynı anda birkaç kiracıda bir ölçekte işlem gerçekleştirmesine olanak sağlayarak yönetim görevlerini daha verimli hale getirir.
+Hizmet sağlayıcı olarak, Azure tarafından atanan kaynak yönetimi için birden fazla müşteri kiracısından eklendi olabilirsiniz. [Azure Mathouse](../overview.md) , hizmet sağlayıcılarının aynı anda birkaç kiracıda bir ölçekte işlem gerçekleştirmesine olanak sağlayarak yönetim görevlerini daha verimli hale getirir.
 
 Bu konu başlığı altında, PowerShell komutlarını kullanarak birden çok kiracıya bir ilke tanımı ve ilke ataması dağıtmak için [Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/) 'nin nasıl kullanılacağı gösterilmektedir. Bu örnekte, ilke tanımı, yalnızca HTTPS trafiğine izin vererek depolama hesaplarının güvenli olmasını sağlar.
 

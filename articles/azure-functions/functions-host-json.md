@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 584fb7b97b8342289d7ca2f23b0479eb1169867a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 222ca8781ae9532f10ed7d113b93eac78c6a3bba
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575886"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129089"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Host. JSON başvurusu  
 
@@ -23,7 +23,7 @@ ms.locfileid: "73575886"
 *Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede v2 çalışma zamanı için kullanılabilen ayarlar listelenir.  
 
 > [!NOTE]
-> Bu makale, Azure Işlevleri 2. x içindir.  1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
+> Bu makale, Azure Işlevleri 2. x içindir.  İşlevlerde host.json başvurusu için 1.x, bkz: [Azure işlevleri için host.json başvurusu 1.x](functions-host-json-v1.md).
 
 Diğer işlev uygulaması yapılandırma seçenekleri [uygulama ayarlarınızda](functions-app-settings.md)yönetilir.
 
@@ -48,6 +48,10 @@ Aşağıdaki örnek *Host. JSON* dosyaları tüm olası seçenekleri belirtti.
         "queues": {},
         "sendGrid": {},
         "serviceBus": {}
+    },
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[1.*, 2.0.0)"
     },
     "functions": [ "QueueProcessor", "GitHubWebHook" ],
     "functionTimeout": "00:05:00",
@@ -91,7 +95,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
-## <a name="applicationinsights"></a>ApplicationInsights
+## <a name="applicationinsights"></a>applicationInsights
 
 Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir.
 
@@ -113,11 +117,11 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir.
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|IsEnabled|doğru|Örneklemeyi etkinleştirilir veya devre dışı bırakır.| 
+|isEnabled|true|Örneklemeyi etkinleştirilir veya devre dışı bırakır.| 
 |maxTelemetryItemsPerSecond|20|Örneklemenin başladığı eşik.| 
-|Enableliveölçümleri |doğru|Canlı ölçüm toplamayı etkin bir şekilde sunar.|
-|EnableDependencyTracking|doğru|Bağımlılık izlemeyi etkinleştirilir.|
-|EnablePerformanceCountersCollection|doğru|Kudu performans sayaçlarını toplamayı etkinleştirilir.|
+|Enableliveölçümleri |true|Canlı ölçüm toplamayı etkin bir şekilde sunar.|
+|EnableDependencyTracking|true|Bağımlılık izlemeyi etkinleştirilir.|
+|EnablePerformanceCountersCollection|true|Kudu performans sayaçlarını toplamayı etkinleştirilir.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -135,7 +139,13 @@ Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functi
 
 [Http](#http) ve [eventHub](#eventhub)gibi bağlamaya özgü tüm ayarları içeren bir nesne döndüren özellik.
 
-## <a name="functions"></a>işlevler
+## <a name="extensionbundle"></a>Extensiondemeti 
+
+Uzantı demeti, işlev uygulamanıza uygun bir Işlev kümesi bağlama uzantısı eklemenize olanak tanır. Daha fazla bilgi için bkz. [yerel geliştirme Için uzantı paketleri](functions-bindings-register.md#extension-bundles).
+
+[!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
+
+## <a name="functions"></a>işlevleri
 
 İş konağının çalıştığı işlevlerin listesi. Boş bir dizi tüm işlevleri Çalıştır anlamına gelir. Yalnızca [yerel olarak çalışırken](functions-run-local.md)kullanılmak üzere tasarlanmıştır. Azure 'daki işlev uygulamaları ' nda, bu ayarı kullanmak yerine belirli işlevleri devre dışı bırakmak için [Azure işlevlerinde işlevleri devre dışı](disable-function.md) bırakma bölümündeki adımları izlemeniz gerekir.
 
@@ -174,7 +184,7 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|enabled|doğru|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
+|enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
 |healthCheckWindow|2 dakika|`healthCheckThreshold` ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
 |healthCheckThreshold|6|Konak geri dönüşüm başlatılmadan önce sistem durumu denetiminin başarısız olması için en fazla sayı.| 
@@ -184,7 +194,7 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 
 Yapılandırma ayarları, [http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md#hostjson-settings)içinde bulunabilir.
 
-## <a name="logging"></a>Açmak
+## <a name="logging"></a>açmak
 
 Application Insights dahil olmak üzere, işlev uygulamasının günlük davranışlarını denetler.
 
@@ -208,8 +218,8 @@ Application Insights dahil olmak üzere, işlev uygulamasının günlük davran�
 |---------|---------|---------|
 |fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never`, `always``debugOnly`. |
 |logLevel|yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x, günlük kategorisi filtrelemesinin ASP.NET Core yerleşimini izler. Bu, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
-|console|yok| [Konsol](#console) günlüğü ayarı. |
-|ApplicationInsights|yok| [ApplicationInsights](#applicationinsights) ayarı. |
+|console|yok| [console](#console) günlüğü ayarı. |
+|applicationInsights|yok| [ApplicationInsights](#applicationinsights) ayarı. |
 
 ## <a name="console"></a>console
 
@@ -229,7 +239,7 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayık
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|IsEnabled|false|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
+|isEnabled|yanlış|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
 
 ## <a name="manageddependency"></a>managedDependency bağımlılığı
 
@@ -255,7 +265,7 @@ Yapılandırma ayarı, [SendGrid Tetikleyicileri ve bağlamaları](functions-bin
 
 Yapılandırma ayarı, [Service Bus Tetikleyiciler ve bağlamalarda](functions-bindings-service-bus.md#host-json)bulunabilir.
 
-## <a name="singleton"></a>adet
+## <a name="singleton"></a>Adet
 
 Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bkz. [Singleton desteği hakkında GitHub sorunu](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
@@ -275,7 +285,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 |---------|---------|---------| 
 |Kilit dönemi|00:00:15|İşlev düzeyi kilitlerinin alındığı dönem için. Kilitleri otomatik yenileme.| 
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
-|Listenerlockrecoverypollingınterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
+|listenerLockRecoveryPollingInterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
 |Locktanışılationtimeout|00:01:00|Çalışma zamanının kilit edinmeye çalışacak en uzun süre.| 
 |Locktanışmalationpollingınterval|yok|Kilit alma denemeleri arasındaki Aralık.| 
 

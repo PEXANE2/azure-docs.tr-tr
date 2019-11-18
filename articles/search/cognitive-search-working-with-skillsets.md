@@ -1,5 +1,5 @@
 ---
-title: Becerileri ile çalışma
+title: Beceri kavramları ve iş akışı
 titleSuffix: Azure Cognitive Search
 description: Becerileri, Azure Bilişsel Arama bir AI zenginleştirme işlem hattı yazar. Beceri Composition hakkında önemli kavramlar ve ayrıntılar hakkında bilgi edinin.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8fa20608f09b4e3006dad685d2fc52bcc9207b5a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890156"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113653"
 ---
-# <a name="working-with-skillsets-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de becerileri ile çalışma
+# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure Bilişsel Arama Beceri kavramları ve bileşimi
 
 Bu makale, enzenginleştirme ardışık düzeninin nasıl çalıştığını daha ayrıntılı olarak anlamak isteyen geliştiriciler için ve AI zenginleştirme işlemini kavramsal olarak anladığınızı varsayar. Bu kavram hakkında yeni bir kavram varsa şu ile başlayın:
 + [Azure Bilişsel Arama AI zenginleştirme](cognitive-search-concept-intro.md)
@@ -43,9 +43,9 @@ Belge, zenginleştirme ardışık düzeninde olduktan sonra bir içerik ağacı 
 
 |Veri kaynağı \ ayrıştırma modu|Varsayılan|JSON, JSON satırları & CSV|
 |---|---|---|
-|Blob Depolama|/Document/Content<br>/Document/normalized_images/*<br>...|/Document/{KEY1}<br>/Document/{key2}<br>...|
-|SQL|/Document/{column1}<br>/Document/{Column2}<br>...|Yok |
-|Cosmos DB|/Document/{KEY1}<br>/Document/{key2}<br>...|Yok|
+|Blob Storage|/Document/Content<br>/Document/normalized_images/*<br>…|/Document/{KEY1}<br>/Document/{key2}<br>…|
+|SQL|/Document/{column1}<br>/Document/{Column2}<br>…|Yok |
+|Cosmos DB|/Document/{KEY1}<br>/Document/{key2}<br>…|Yok|
 
  Yetenekler yürütülürken, yeni düğümleri zenginleştirme ağacına ekler. Bu yeni düğümler daha sonra aşağı akış becerileri, bilgi deposuna yansıtma veya dizin alanlarıyla eşleme için giriş olarak kullanılabilir. Enrichments değişebilir değil: oluşturulduktan sonra düğümler düzenlenemez. Becerileri daha karmaşık olsa da, zenginleştirme ağacınızı oluşturur, ancak zenginleştirme ağacındaki tüm düğümlerin dizin veya bilgi deposu üzerinde olması gerekmez. Dizine veya bilgi deposuna yalnızca zenginlerin bir alt kümesini seçerek kalıcı hale getirebilirsiniz.
 

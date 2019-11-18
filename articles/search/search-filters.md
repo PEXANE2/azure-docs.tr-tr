@@ -1,5 +1,5 @@
 ---
-title: Dizinde arama sonuçlarının kapsamını belirleme filtreleri
+title: Arama sonuçlarına filtre uygula
 titleSuffix: Azure Cognitive Search
 description: Microsoft Azure barındırılan bir bulut arama hizmeti olan Azure Bilişsel Arama 'deki sorgularda arama sonuçlarını azaltmak için Kullanıcı güvenlik kimliğine, dile, coğrafi konuma veya sayısal değerlere göre filtreleyin.
 manager: nitinme
@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7dd289005e91323010cfa2a0298c351b3e757d1d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 960f6f0de94c6bb4fc6b03c31740b63270cf9e14
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792852"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132918"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama filtreler 
 
 *Filtre* , bir Azure bilişsel arama sorgusunda kullanılan belgeleri seçme ölçütlerini sağlar. Filtrelenmemiş arama dizindeki tüm belgeleri içerir. Filtre, bir arama sorgusunun bir belge alt kümesiyle kapsamını sorgular. Örneğin, bir filtre tam metin aramasını yalnızca belirli bir marka veya renge sahip ürünlerle, belirli bir eşiğin üzerindeki fiyat noktalarında kısıtlayabilir.
 
-Bazı arama deneyimleri, uygulamanın bir parçası olarak filtre gereksinimleri uygular, ancak *değer tabanlı* ölçütler kullanarak aramayı kısıtlamak istediğiniz zaman, "tarafından yayımlanamayan" Kategori için "Kitaplar" türünde Simon & Schuster ").
+Bazı arama deneyimleri, uygulamanın bir parçası olarak filtre gereksinimleri uygular, ancak *değer tabanlı* ölçütler ("simon & Schuster" tarafından yayımlanan "" Kitaplar "kategorisine yönelik kapsam) kullanarak aramayı kısıtlamak istediğiniz zaman kullanabilirsiniz.
 
 Bunun yerine, hedefiniz belirli veri *yapılarında* (bir müşteri gözden geçirmeler alanında arama kapsamını belirleme) arama işlemi gerçekleştirdiyse, aşağıda açıklanan alternatif yöntemler vardır.
 
@@ -157,7 +157,7 @@ Metin dizeleri büyük/küçük harfe duyarlıdır. Büyük küçük harf olmaya
 
 ### <a name="approaches-for-filtering-on-text"></a>Metinde filtreleme yaklaşımları
 
-| Uygulanabilecek | Açıklama | Kullanılması gereken durumlar |
+| Yaklaşım | Açıklama | Kullanılması gereken durumlar |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Ayrılmış bir dize listesine karşı bir alanla eşleşen bir işlev. | Birçok ham metin değerinin bir dize alanı ile eşleştirilmesi gereken, [Güvenlik filtreleri](search-security-trimming-for-azure-search.md) ve tüm filtreler için önerilir. **Search.in** işlevi hız için tasarlanmıştır ve `eq` ve `or`kullanarak alanı her bir dizeye göre açıkça karşılaştırmadan çok daha hızlıdır. | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Aynı filtre ifadesinde tam metin arama işlemlerini kesin olarak Boolean filtre işlemleriyle karıştırabilmeniz için bir işlev. | Tek bir istekte birden çok arama filtresi kombinasyonu istediğinizde **Search. IsMatch** (veya Puanlama eşdeğerini, **arama. ısmatchpuanlama**) kullanın. Ayrıca, daha büyük bir dizedeki kısmi bir dizeyi filtrelemek için bir *Contains* filtresi için de kullanabilirsiniz. |

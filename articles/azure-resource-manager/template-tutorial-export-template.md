@@ -1,25 +1,22 @@
 ---
-title: Öğretici-Azure portal Azure Resource Manager şablonu dışarı aktarma
+title: Öğretici-Azure portal şablonu dışarı aktarma
 description: Şablon geliştirmeyi tamamlamaya yönelik olarak, aktarılmış bir şablonu nasıl kullanacağınızı öğrenin.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6e4f246cac0ecc1ab5942e522595f59c3625db8f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6dae5d494ac71ace41586e89de5aab745962cc90
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243201"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147926"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Öğretici: Azure portal dışarıya aktarılmış şablon kullanma
 
 Bu öğretici serisinde, Azure depolama hesabı dağıtmak için bir şablon oluşturdunuz. Sonraki iki öğreticilerde, bir *App Service planı* ve bir *Web sitesi*eklersiniz. Sıfırdan şablon oluşturmak yerine, Azure portal şablonları dışarı aktarmayı ve [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/)örnek şablonları kullanmayı öğreneceksiniz. Bu şablonları kullanım için özelleştirirsiniz. Bu öğretici, şablonları dışarı aktarmaya ve şablonunuzun sonucunu özelleştirmeye odaklanır. Yaklaşık **14 dakika** sürer.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [Çıktılar hakkında öğreticiyi](template-tutorial-add-outputs.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -33,12 +30,12 @@ Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı il
 
 Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, ancak buna daha fazla kaynak eklemek isteyebilirsiniz. Var olan bir kaynaktan bir şablonu dışarı aktarmak için bu kaynağın JSON 'sini hızlıca alabilirsiniz.
 
-## <a name="create-app-service-plan"></a>App Service planı oluştur
+## <a name="create-app-service-plan"></a>App Service planı oluşturma
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
-1. **Kaynak oluştur**' u seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Seçin **kaynak Oluştur**.
 1. **Markette ara**' te **App Service planı**girin ve **App Service planı**' nı seçin.  **App Service planı seçme (klasik)**
-1. **Oluştur**' u seçin.
+1. **Oluştur**'u seçin.
 1. Girmesini
 
     - **Abonelik**: Azure aboneliğinizi seçin.
@@ -50,7 +47,7 @@ Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, anc
 
     ![Kaynak Yöneticisi şablonu dışarı aktarma şablonu portalı](./media/template-tutorial-export-template/resource-manager-template-export.png)
 1. **Gözden geçir ve Oluştur '** u seçin.
-1. **Oluştur**' u seçin. Kaynağı oluşturmak birkaç dakika sürer.
+1. **Oluştur**'u seçin. Kaynağı oluşturmak birkaç dakika sürer.
 
 ## <a name="export-the-template"></a>Şablonu dışarı aktarma
 
@@ -98,7 +95,7 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -110,25 +107,25 @@ az group deployment create \
 
 ---
 
-## <a name="verify-deployment"></a>Dağıtımı doğrula
+## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Kaynak grubu, bir depolama hesabı ve bir App Service planı içerir.
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
 Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
-1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
+1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
+4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

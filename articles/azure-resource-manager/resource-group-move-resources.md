@@ -1,25 +1,22 @@
 ---
-title: Azure kaynaklarını yeni bir aboneliğe veya kaynak grubuna taşıma | Microsoft Docs
+title: Kaynakları yeni bir aboneliğe veya kaynak grubuna taşıma
 description: Kaynakları yeni kaynak grubuna veya aboneliğe taşıma için Azure Resource Manager'ı kullanın.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: tomfitz
-ms.openlocfilehash: 69cd6031111c72d54cb87975c2040078a9965821
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 11/08/2019
+ms.openlocfilehash: f106de7fd35bdbe91033af173b1f338dd251f4e8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035547"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149694"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
 
-Bu makalede, Azure kaynaklarını başka bir Azure aboneliğine veya aynı abonelik altındaki başka bir kaynak grubuna nasıl taşıyacağınız gösterilmektedir. Kaynakları taşımak için Azure portal, Azure PowerShell, Azure CLı veya REST API kullanabilirsiniz.
+Bu makalede, Azure kaynaklarını başka bir Azure aboneliğine veya aynı abonelik altındaki başka bir kaynak grubuna nasıl taşıyacağınız gösterilmektedir. Azure portalı, Azure PowerShell, Azure CLI veya REST API ile kaynakları taşıyabilirsiniz.
 
-Taşıma işlemi sırasında hem kaynak grubu hem de hedef grup kilitlenir. Yazma ve silme işlemleri taşıma işlemi tamamlanana kadar kaynak gruplarında engellenir. Bu kilit ekleyemez, güncelleştirme veya kaynak gruplarındaki kaynakları silin, ancak kaynakları dondurulmuş gelmez anlamına gelir. Örneğin, bir SQL Server ve veritabanı yeni bir kaynak grubuna taşırsanız, veritabanı kullanan bir uygulama kapalı kalma süresi olmadan karşılaşır. Bunu hala okuyabilir ve veritabanına yazma.
+Taşıma işlemi sırasında hem kaynak grubu hem de hedef grup kilitlenir. Yazma ve silme işlemleri taşıma işlemi tamamlanana kadar kaynak gruplarında engellenir. Bu kilit, kaynak gruplarındaki kaynakları ekleyemez, güncelleştiremez veya silemezsiniz. Bu, kaynakların dondurulmuş olduğu anlamına gelmez. Örneğin, bir SQL Server ve veritabanı yeni bir kaynak grubuna taşırsanız, veritabanı kullanan bir uygulama kapalı kalma süresi olmadan karşılaşır. Bunu hala okuyabilir ve veritabanına yazma. Kilit en fazla dört saat için en fazla dört saat olabilir, ancak çoğu zaman çok daha az zaman tamamlanır.
 
-Bir kaynağın taşınması yalnızca yeni bir kaynak grubuna veya aboneliğe taşınır. Kaynağın konumunu değiştirmez.
+Bir kaynağı taşıdığınızda yalnızca onu yeni bir kaynak grubuna veya aboneliğe taşımış olursunuz. Bu işlem kaynağın konumunu değiştirmez.
 
 ## <a name="checklist-before-moving-resources"></a>Kaynakları taşımadan önce Yapılacaklar listesi
 
@@ -108,9 +105,9 @@ Kaynakları bir abonelikten diğerine taşımak üç adımlı bir işlemdir:
 
 Çizim amacıyla yalnızca bir bağımlı kaynağınız var.
 
-* 1\. adım: Bağımlı kaynaklar farklı kaynak grupları arasında dağıtılırsa, önce bunları tek bir kaynak grubuna taşıyın.
-* 2\. adım: Kaynağı ve bağımlı kaynakları kaynak aboneliğinden hedef aboneliğe taşıyın.
-* 3\. adım: İsteğe bağlı olarak, bağımlı kaynakları hedef abonelik içindeki farklı kaynak gruplarına yeniden dağıtın. 
+* 1\. Adım: bağımlı kaynaklar farklı kaynak grupları arasında dağıtılırsa, önce bunları tek bir kaynak grubuna taşıyın.
+* 2\. Adım: kaynağı ve bağımlı kaynakları kaynak aboneliğinden hedef aboneliğe taşıyın.
+* 3\. Adım: Isteğe bağlı olarak, bağımlı kaynakları hedef aboneliğin içindeki farklı kaynak gruplarına yeniden dağıtın. 
 
 ## <a name="validate-move"></a>Taşıma doğrula
 
@@ -187,7 +184,7 @@ Tamamlandığında, sonucunu bildirilir.
 
 Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme](troubleshoot-move.md).
 
-## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
+## <a name="use-azure-powershell"></a>Azure PowerShell’i kullanma
 
 Mevcut kaynakları başka bir kaynak grubuna veya aboneliğe taşımak için [Move-AzResource](/powershell/module/az.resources/move-azresource) komutunu kullanın. Aşağıdaki örnek, birkaç kaynağın yeni bir kaynak grubuna nasıl taşınacağını gösterir.
 
@@ -233,6 +230,51 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 ```
 
 Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme](troubleshoot-move.md).
+
+## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+
+**Soru: genellikle birkaç dakika süren kaynak taşıma işlemi, neredeyse bir saat boyunca çalışmaktadır. Yanlış bir sorun var mı?**
+
+Bir kaynağın taşınması, farklı aşamalara sahip karmaşık bir işlemdir. Taşımaya çalıştığınız kaynağın yalnızca kaynak sağlayıcısından fazlasını içerebilir. Kaynak sağlayıcıları arasındaki bağımlılıklar nedeniyle Azure Resource Manager işlemin tamamlanabilmesi için 4 saat izin verir. Bu zaman dilimi, kaynak sağlayıcılarına geçici sorunlardan kurtulmasına olanak tanır. Taşıma isteğiniz 4 saatlik bir süre içindeyse, işlem tamamlanana kadar devam eder ve yine de başarılı olabilir. Tutarlılık sorunlarından kaçınmak için kaynak ve hedef kaynak grupları bu süre boyunca kilitlenir.
+
+**Soru: kaynak grubu neden kaynak taşıma sırasında 4 saat boyunca kilitlidir?**
+
+4 saatlik pencere, kaynak taşıma için izin verilen en uzun süredir. Taşınan kaynaklarda değişiklik yapılmasını engellemek için kaynak ve hedef kaynak gruplarının her ikisi de kaynak taşıma süresince kilitlenir.
+
+Taşıma isteğinde iki aşama vardır. İlk aşamada kaynak taşınır. İkinci aşamada, bildirimler, taşınan kaynağa bağımlı diğer kaynak sağlayıcılarına gönderilir. Bir kaynak sağlayıcısı her iki aşamada de başarısız olursa, bir kaynak grubu 4 saatlik tüm pencere için kilitlenebilir. İzin verilen süre boyunca başarısız olan adımı yeniden dener Kaynak Yöneticisi.
+
+Bir kaynak 4 saatlik bir pencere içinde taşınamayacağını Kaynak Yöneticisi her iki kaynak grubunun kilidini açar. Başarıyla taşınan kaynaklar hedef kaynak grubunda bulunur. Taşıyacağınız kaynaklar kaynak kaynak grubunun solununlardır.
+
+**Soru: kaynak taşıma sırasında kaynak ve hedef kaynak gruplarının kilitlenmesinin etkileri nelerdir?**
+
+Kilit, kaynak grubunu silmenizi, kaynak grubunda yeni bir kaynak oluşturmayı veya taşımayla ilgili kaynakların herhangi birini silmeyi önler.
+
+Aşağıdaki görüntüde, bir kullanıcı devam eden bir taşımanın parçası olan bir kaynak grubunu silmeye çalıştığında Azure portal bir hata iletisi gösterilmektedir.
+
+![Silmeye çalışan hata iletisini taşı](./media/resource-group-move-resources/move-error-delete.png)
+
+**Soru: "MissingMoveDependentResources" hata kodu ne anlama geliyor?**
+
+Bir kaynağı taşırken, bağımlı kaynakları hedef kaynak grubunda veya abonelikte bulunmalı ya da taşıma isteğine dahil olmalıdır. Bağımlı bir kaynak bu gereksinimi karşılamıyorsa MissingMoveDependentResources hata kodunu alırsınız. Hata iletisinde, taşıma isteğine dahil olması gereken bağımlı kaynakla ilgili ayrıntılar bulunur.
+
+Örneğin, bir sanal makineyi taşımak, yedi kaynak türünün üç farklı kaynak sağlayıcısı ile taşınmasını gerektirebilir. Bu kaynak sağlayıcıları ve türleri şunlardır:
+
+* Microsoft.Compute
+   * virtualMachines
+   * disklerinden
+* Microsoft.Network
+  * NetworkInterfaces
+  * Publicıpaddresses
+  * networkSecurityGroups
+  * virtualNetworks
+* Microsoft.Storage
+  * storageAccounts
+
+Diğer bir yaygın örnek, bir sanal ağın taşınmasını içerir. Bu sanal ağla ilişkili diğer birkaç kaynağı taşımanız gerekebilir. Taşıma isteği, genel IP adreslerinin, yol tablolarının, sanal ağ geçitlerinin, ağ güvenlik gruplarının ve başkalarının taşınmasını gerektirebilir.
+
+**Soru: Azure 'daki bazı kaynakları neden taşıyamıyorum?**
+
+Şu anda Azure desteği 'ndeki tüm kaynaklar hareket etmez. Taşımayı destekleyen kaynakların listesi için bkz. [kaynaklar Için taşıma işlemi desteği](move-support-resources.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

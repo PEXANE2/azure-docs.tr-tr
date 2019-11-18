@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 83114023eb35221bfa53e3ce4de8a861948c7a3a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a623c8d3ff755338ac8b40faa970f2f007115a02
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005838"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144864"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Cihazdan buluta IoT Hub iletileri için ileti zenginleştirmelerinin
 
@@ -54,11 +54,21 @@ Bir ileti zenginleştirmesi, üç temel öğeye sahiptir:
 
 IoT Hub yerleşik uç noktasına veya Azure Blob depolama, Service Bus kuyruğu veya Service Bus konu gibi özel uç noktalara yönlendirilmekte olan iletilere zenginleştirme ekleyebilirsiniz.
 
-Ayrıca, Event Grid olarak uç noktayı seçerek Event Grid yayımlanmakta olan iletilere zenginleştirme ekleyebilirsiniz. Daha fazla bilgi için bkz. [IoT Hub ve Event Grid](iot-hub-event-grid.md).
+Event Grid olarak uç noktayı seçerek Event Grid yayımlanmakta olan iletilere zenginleştirme ekleyebilirsiniz. Event Grid aboneliğinize göre cihaz telemetrisine IoT Hub varsayılan bir yol oluşturacağız. Bu tek yol, tüm Event Grid aboneliklerinizi işleyebilir. Olay Kılavuzu ' nu için enzenginleştirme 'yi, cihaz telemetrisine olay Kılavuzu aboneliğini oluşturduktan sonra da yapılandırabilirsiniz. Daha fazla bilgi için bkz. [IoT Hub ve Event Grid](iot-hub-event-grid.md).
 
 Enzenginler, uç nokta başına uygulanır. Belirli bir uç nokta için damgalı olacak beş zenginleştirme belirtirseniz, bu uç noktaya giden tüm iletiler aynı beş enzenginle damgalı olur.
 
-İleti zenginleştirme hakkında bilgi edinmek için bkz. [ileti zenginleştirme öğreticisi](tutorial-message-enrichments.md)
+Zenginleştirme aşağıdaki yöntemler kullanılarak yapılandırılabilir:
+
+| **Yöntem** | **Komut** |
+| ----- | -----| 
+| Portal | [Azure Portal](https://portal.azure.com) | [İleti zenginleştirme öğreticisine](tutorial-message-enrichments.md) bakın | 
+| Azure CLI   | [az IoT Hub iletisi-zenginleştirme](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
+
+İleti sorgularının eklenmesi ileti yönlendirmeye gecikme eklemez.
+
+İleti zenginleştirmelerinin denemek için [ileti zenginleştirme öğreticisine](tutorial-message-enrichments.md) bakın
 
 ## <a name="limitations"></a>Sınırlamalar
 

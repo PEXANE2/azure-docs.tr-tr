@@ -13,20 +13,20 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 24cba4b02bb046a16db04635a1bf5ef4f6b619a6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 3282106651f9ec101251d7d35369040df9572b06
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234529"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122852"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Hızlı Başlangıç: .NET SDK’sını kullanarak veri fabrikası ve işlem hattı oluşturma
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Hızlı başlangıç: .NET SDK kullanarak veri fabrikası ve işlem hattı oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-dot-net.md)
 
-Bu hızlı başlangıç, .NET SDK’sı kullanarak bir Azure veri fabrikası oluşturma işlemini açıklar. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure blob depolama alanındaki bir klasörden başka bir klasöre **kopyalar**. Azure Data Factory kullanarak verileri **dönüştürme** hakkında bir öğretici için bkz [. Öğretici: Spark](tutorial-transform-data-spark-portal.md)kullanarak verileri dönüştürme.
+Bu hızlı başlangıç, .NET SDK’sı kullanarak bir Azure veri fabrikası oluşturma işlemini açıklar. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure blob depolama alanındaki bir klasörden başka bir klasöre **kopyalar**. Azure Data Factory kullanarak verileri **dönüştürme** hakkında bir öğretici için bkz. [Öğretici: Spark kullanarak verileri dönüştürme](tutorial-transform-data-spark-portal.md).
 
 > [!NOTE]
 > Bu makale, Data Factory hizmetine ayrıntılı giriş bilgileri sağlamaz. Azure Data Factory hizmetine giriş bilgileri için bkz. [Azure Data Factory'ye giriş](introduction.md).
@@ -43,7 +43,7 @@ Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır. Visual Studio 2013, 2
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory’de uygulama oluşturma
 
-İçindeki *bölümlerden nasıl yapılır: Portalı kullanarak kaynaklara*erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturun, bu görevleri yapmak için yönergeleri izleyin:
+*Nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma*bölümündeki bölümden, bu görevleri yapmak için yönergeleri izleyin:
 
 1. [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)bölümünde, bu öğreticide oluşturmakta olduğunuz .NET uygulamasını temsil eden bir uygulama oluşturun. Oturum açma URL'si için, makalede gösterildiği gibi bir işlevsiz URL sağlayabilirsiniz (`https://contoso.org/exampleapp`).
 2. [Oturum açmak için değerleri Al](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)' da, **uygulama KIMLIĞI** ve **Kiracı kimliği**' ni alın ve bu öğreticide daha sonra kullanacağınız bu değerleri unutmayın. 
@@ -55,7 +55,7 @@ Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır. Visual Studio 2013, 2
 Ardından, Visual Studio C# 'da bir .NET konsol uygulaması oluşturun:
 
 1. **Visual Studio**’yu başlatın.
-2. Başlangıç penceresinde **Yeni proje** > **konsol uygulaması (.NET Framework)** oluştur ' u seçin. .NET sürüm 4.5.2 veya üzeri gereklidir.
+2. Başlangıç penceresinde, **Yeni proje** > **konsol uygulaması oluştur (.NET Framework)** öğesini seçin. .NET sürüm 4.5.2 veya üzeri gereklidir.
 3. **Proje adı**alanına **ADFv2QuickStart**girin.
 4. Projeyi oluşturmak için **Oluştur**'u seçin.
 
@@ -85,7 +85,7 @@ Ardından, Visual Studio C# 'da bir .NET konsol uygulaması oluşturun:
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Aşağıdaki kodu, değişkenleri ayarlayan **Main** yöntemine ekleyin. Yer tutucuları kendi değerlerinizle değiştirin. Data Factory Şu anda kullanılabildiği Azure bölgelerinin bir listesi için, aşağıdaki sayfada ilgilendiğiniz bölgeleri seçin ve ardından **analiz** ' i genişleterek **Data Factory**bulun: [Bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Data Factory tarafından kullanılan veri depoları (Azure depolama, Azure SQL veritabanı ve daha fazlası) ve işlemler (HDInsight ve diğerleri), diğer bölgelerde olabilir.
+2. Aşağıdaki kodu, değişkenleri ayarlayan **Main** yöntemine ekleyin. Yer tutucuları kendi değerlerinizle değiştirin. Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Data Factory tarafından kullanılan veri depoları (Azure depolama, Azure SQL veritabanı ve daha fazlası) ve işlemler (HDInsight ve diğerleri), diğer bölgelerde olabilir.
 
    ```csharp
    // Set variables
@@ -287,7 +287,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
        pipelineRun = client.PipelineRuns.Get(
            resourceGroup, dataFactoryName, runResponse.RunId);
        Console.WriteLine("Status: " + pipelineRun.Status);
-       if (pipelineRun.Status == "InProgress")
+       if (pipelineRun.Status == "InProgress" || pipelineRun.Status == "Queued")
            System.Threading.Thread.Sleep(15000);
        else
            break;

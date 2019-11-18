@@ -1,24 +1,16 @@
 ---
-title: Azure Pipelines ile sürekli tümleştirme | Microsoft Docs
+title: Azure Pipelines ile sürekli tümleştirme
 description: Azure Resource Manager şablonlarını sürekli olarak derlemeyi, test etmek ve dağıtmak hakkında bilgi edinin.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: carmonm
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 73ab01b5e4ea923b990932986a938f8c1fb25629
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052188"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149296"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Öğretici: Azure Pipelines Azure Resource Manager şablonlarının sürekli tümleştirilmesi
 
@@ -41,7 +33,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu güncelleştirme ve yeniden dağıtma
 > * Kaynakları temizleme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -126,7 +118,7 @@ Azuredeploy. JSON yerel depoya eklendi. Sonra, şablonu uzak depoya yüklersiniz
     ```
 
     LF hakkında bir uyarı alabilirsiniz. Uyarıyı yoksayabilirsiniz. **ana** dal ana daldır.  Genellikle her güncelleştirme için bir dal oluşturursunuz. Öğreticiyi basitleştirmek için, ana dalı doğrudan kullanırsınız.
-1. Bir tarayıcıdan GitHub deponuza gidin.  URL, **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . **Createazurestorage** klasörünü ve **Azuredeploy. JSON** dosyasını klasörün içinde görürsünüz.
+1. Bir tarayıcıdan GitHub deponuza gidin.  URL, **https://github.com/[YourAccountName]/[YourGitHubRepository]** . **Createazurestorage** klasörünü ve **Azuredeploy. JSON** dosyasını klasörün içinde görürsünüz.
 
 Şimdiye kadar, bir GitHub deposu oluşturdunuz ve depoya bir şablon yüklediniz.
 
@@ -220,7 +212,7 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 
 ## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kaynak grubunu açın. Bu ad, ardışık düzen YAML dosyasında belirttiğiniz şeydir.  Oluşturulmuş bir depolama hesabı görürsünüz.  Depolama hesabı adı **Mağaza**ile başlar.
 1. Açmak için depolama hesabı adını seçin.
 1. **Özellikler**’i seçin. **Çoğaltmanın** **yerel olarak yedekli depolama (LRS)** olduğuna dikkat edin.
@@ -232,7 +224,7 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 Şablonu güncelleştirdiğinizde ve değişiklikleri uzak depoya gönderdiğinizde, işlem hattı bu durumda kaynakları, depolama hesabını otomatik olarak güncelleştirir.
 
 1. Visual Studio Code yerel deponuzdan **azuredeploy. JSON** ' u açın.
-1. **Storageaccounttype** değerinin **Standard_GRS** **olarak güncelleştirilmesini** sağlar. Aşağıdaki ekran görüntüsüne bakın:
+1. **Storageaccounttype** değerinin **Standard_GRS** **olarak değerini güncelleştirin** . Aşağıdaki ekran görüntüsüne bakın:
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines güncelleştirme YAML](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
 

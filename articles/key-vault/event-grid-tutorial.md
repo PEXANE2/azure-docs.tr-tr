@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 480c4c65f1bc0abe81114a2b898696e6d6b153fe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b30e260b2eeb0d8af0c347996cdb51685dedd046
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039643"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133325"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Azure Event Grid ile Anahtar Kasası bildirimlerini alma ve yanıtlama (Önizleme)
 
@@ -194,8 +194,10 @@ Anahtar kasalarınızda gizli dizi durum değişikliklerini aramak için yoklama
 
 Daha fazla bilgi edinin:
 
+
+- Genel Bakış: [Azure Event Grid Key Vault izleme (Önizleme)](event-grid-overview.md)
+- Nasıl yapılır: [Anahtar Kasası gizli anahtarı değiştiğinde e-posta alma](event-grid-logicapps.md)
+- [Azure Key Vault için Azure Event Grid olay şeması (Önizleme)](../event-grid/event-schema-key-vault.md)
 - [Azure Key Vault genel bakış](key-vault-overview.md)
 - [Azure Event Grid genel bakış](../event-grid/overview.md)
-- [Azure Event Grid ile Key Vault izleme (Önizleme)](event-grid-overview.md)
-- [Azure Key Vault için Azure Event Grid olay şeması (Önizleme)](../event-grid/event-schema-key-vault.md)
 - [Azure Otomasyonu’na genel bakış](../automation/index.yml)

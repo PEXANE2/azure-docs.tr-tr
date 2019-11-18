@@ -10,20 +10,20 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 6590b6c3ecf1efc43822a4fefab79cdc7f624dcd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d2f4dbcaf593cb52cb4b101e0c087179d3fd48b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496986"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123578"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Azure Container Instances model dağıtma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Container Instances (ACI) üzerinde bir modeli Web hizmeti olarak dağıtmak için Azure Machine Learning nasıl kullanacağınızı öğrenin. Aşağıdaki koşullardan biri doğru ise Azure Container Instances kullanın:
 
-- Modelinizi hızlıca dağıtmanız ve doğrulamanız gerekir. Zaman içinde acı kapsayıcıları oluşturmanız gerekmez. Dağıtım sürecinin bir parçası olarak oluşturulur.
-- Geliştirme aşamasındaki bir modeli test edersiniz. 
+- Hızlı bir şekilde dağıtın ve modelinizi doğrulama gerekir. Zaman içinde acı kapsayıcıları oluşturmanız gerekmez. Dağıtım sürecinin bir parçası olarak oluşturulur.
+- Geliştirilmekte olan bir modeli test edersiniz. 
 
 ACI 'nin kota ve bölge kullanılabilirliği hakkında daha fazla bilgi için bkz. [Azure Container Instances Için kotalar ve bölge kullanılabilirliği](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) .
 
@@ -64,7 +64,7 @@ print(service.state)
 Bu örnekte kullanılan sınıflar, Yöntemler ve parametreler hakkında daha fazla bilgi için, aşağıdaki başvuru belgelerine bakın:
 
 * [AciWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)
-* [Model. deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-)
+* [Model. deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
 * [WebService. wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
 
 ### <a name="using-the-cli"></a>CLı 'yi kullanma
@@ -86,7 +86,7 @@ Bkz. [vs Code modellerinizi dağıtma](how-to-vscode-tools.md#deploy-and-manage-
 > [!IMPORTANT]
 > Önceden test etmek için bir ACI kapsayıcısı oluşturmanız gerekmez. ACI kapsayıcıları gerektiğinde oluşturulur.
 
-## <a name="update-the-web-service"></a>Web hizmetini güncelleştirme
+## <a name="update-the-web-service"></a>Web hizmetini güncelleştirmek
 
 [!INCLUDE [aml-update-web-service](../../../includes/machine-learning-update-web-service.md)]
 
@@ -94,7 +94,7 @@ Bkz. [vs Code modellerinizi dağıtma](how-to-vscode-tools.md#deploy-and-manage-
 
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md)
-* [SSL ile güvenli Azure Machine Learning Web Hizmetleri](how-to-secure-web-service.md)
-* [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)
+* [Azure Machine Learning web hizmetleri SSL ile güvenli hale getirme](how-to-secure-web-service.md)
+* [Bir web hizmeti olarak ML modeli kullanma](how-to-consume-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)

@@ -1,5 +1,6 @@
 ---
-title: Java için ADAL MSAL Geçiş Kılavuzu-Microsoft Identity platform | Mavisi
+title: Java için ADAL MSAL geçiş kılavuzu | Mavisi
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) Java uygulamanızı Microsoft kimlik doğrulama kitaplığı 'na (MSAL) geçirmeyi öğrenin.
 services: active-directory
 author: sangonzal
@@ -16,12 +17,12 @@ ms.author: sagonzal
 ms.reviewer: navyari.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bddf787ce2c654da99b16387ae347f51600c8dd
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 158cbe4f2598722abe3b2ed3a0dd179a21dc1e1c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905530"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145263"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java için ADAL MSAL geçiş kılavuzu
 
@@ -67,7 +68,7 @@ Aşağıdaki tabloda, ADAL4J işlevlerinin yeni MSAL4J işlevlerine nasıl eşle
 
 ADAL4J tarafından yönetilen kullanıcılar. Bir kullanıcı tek bir insan veya yazılım aracısını temsil ediyorsa, Microsoft Identity sisteminde bir veya daha fazla hesabı olabilir. Örneğin, bir kullanıcının birkaç Azure AD, Azure AD B2C veya Microsoft Kişisel hesabı olabilir.
 
-MSAL4J, `IAccount` arabirimi aracılığıyla hesap kavramını tanımlar. Bu, ADAL4J ' den önemli bir değişiklik olmakla kalmaz, ancak aynı kullanıcının çeşitli hesaplara sahip olabileceğinden ve belki de farklı Azure AD dizinlerinde bile olması durumu yakaladığı için bu iyi bir yoldur. MSAL4J, Konuk senaryolarında ana hesap bilgileri sağlandığı için daha iyi bilgiler sağlar.
+MSAL4J, `IAccount` arabirimi aracılığıyla hesap kavramını tanımlar. Bu, ADAL4J ' den önemli bir değişiklik olmakla kalmaz, ancak aynı kullanıcının çeşitli hesaplara sahip olabileceğinden ve belki de farklı Azure AD dizinlerinde bile olduğu gerçeğini yakaladığı için bu iyi bir yoldur. MSAL4J, Konuk senaryolarında ana hesap bilgileri sağlandığı için daha iyi bilgiler sağlar.
 
 ## <a name="cache-persistence"></a>Önbellek kalıcılığı
 

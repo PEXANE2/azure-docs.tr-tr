@@ -1,21 +1,21 @@
 ---
-title: Azure Event Grid ile Key Vault izleme
-description: Key Vault olaylarına abone olmak için Azure Event Grid kullanma
+title: 'Öğretici: Azure Event Grid ile Key Vault Izleme'
+description: 'Öğretici: Key Vault olaylarına abone olmak için Azure Event Grid kullanma'
 services: media-services
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: article
-ms.date: 10/25/2019
+ms.topic: tutorial
+ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1fa554e03188c4d8d6227a6d2c0a560c3080b0fe
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 5771af365b763d2152eea4ef4f662e08769b378c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033504"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133355"
 ---
-# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Azure Event Grid ile Key Vault izleme (Önizleme)
+# <a name="tutorial-monitoring-key-vault-with-azure-event-grid-preview"></a>Öğretici: Azure Event Grid ile Key Vault Izleme (Önizleme)
 
 Event Grid ile tümleştirme Key Vault Şu anda önizleme aşamasındadır. Anahtar Kasası 'nda depolanan bir gizli dizi durumu değiştiğinde kullanıcılara bildirim gönderilmesini sağlar. Bir durum değişikliği, süresi dolacak (30 gün sonra), süresi dolan bir gizli dizi veya yeni sürümü bulunan gizli anahtar olarak tanımlanır. Üç gizli dizi türü (anahtar, sertifika ve gizli) için bildirimler desteklenir.
 
@@ -45,6 +45,7 @@ Key Vault olaylarını işleyen uygulamalar, önerilen birkaç uygulamayı izlem
 
 - [Azure Key Vault genel bakış](key-vault-overview.md)
 - [Azure Event Grid genel bakış](../event-grid/overview.md)
-- [Nasıl yapılır: Key Vault olaylarını Automation runbook 'A yönlendirme (Önizleme)](event-grid-tutorial.md).
+- Nasıl yapılır: [Key Vault olaylarını Automation runbook 'A yönlendirme (Önizleme)](event-grid-tutorial.md).
+- Nasıl yapılır: [Anahtar Kasası gizli anahtarı değiştiğinde e-posta alma](event-grid-logicapps.md)
 - [Azure Key Vault için Azure Event Grid olay şeması (Önizleme)](../event-grid/event-schema-key-vault.md)
 - [Azure Otomasyonu’na genel bakış](../automation/index.yml)

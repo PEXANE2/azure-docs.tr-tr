@@ -1,25 +1,18 @@
 ---
-title: Azure Application Gateway için SSL ilkesine genel bakış | Microsoft Docs
-description: Azure Application Gateway 'nin SSL ilkesini yapılandırmanıza nasıl izin verdiği hakkında bilgi edinin
+title: Azure Application Gateway için SSL ilkesine genel bakış
+description: Azure Application Gateway SSL ilkesini yapılandırmayı ve arka uç sunucu grubundan şifreleme ve şifre çözme ek yükünü azaltmayı öğrenin.
 services: application gateway
-documentationcenter: na
 author: amsriva
-manager: ''
-editor: ''
-tags: azure resource manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure services
-ms.date: 08/03/2017
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 1710635f145136e564a2bad48d539f242c9bc228
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6b3d52f1f6bd0390ab6ccafa80b2979cb0e498fd
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359904"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130417"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Application Gateway SSL ilkesine genel bakış
 
@@ -33,7 +26,7 @@ Application Gateway önceden tanımlanmış üç güvenlik ilkesi vardır. Uygun
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
-|Özellik  |Value  |
+|Özellik  |Değer  |
 |---|---|
 |Ad     | AppGwSslPolicy20150501        |
 |MinProtocolVersion     | TLSv1_0        |
@@ -42,7 +35,7 @@ Application Gateway önceden tanımlanmış üç güvenlik ilkesi vardır. Uygun
   
 ### <a name="appgwsslpolicy20170401"></a>AppGwSslPolicy20170401
   
-|Özellik  |Value  |
+|Özellik  |Değer  |
 |   ---      |  ---       |
 |Ad     | AppGwSslPolicy20170401        |
 |MinProtocolVersion     | TLSv1_1        |
@@ -51,7 +44,7 @@ Application Gateway önceden tanımlanmış üç güvenlik ilkesi vardır. Uygun
   
 ### <a name="appgwsslpolicy20170401s"></a>AppGwSslPolicy20170401S
 
-|Özellik  |Value  |
+|Özellik  |Değer  |
 |---|---|
 |Ad     | AppGwSslPolicy20170401S        |
 |MinProtocolVersion     | TLSv1_2        |
@@ -65,7 +58,7 @@ Gereksinimlerinize göre önceden tanımlanmış bir SSL ilkesinin yapılandır�
 ### <a name="ssl-protocol-versions"></a>SSL protokolü sürümleri
 
 * SSL 2,0 ve 3,0 tüm uygulama ağ geçitleri için varsayılan olarak devre dışıdır. Bu protokol sürümleri yapılandırılamaz.
-* Özel bir SSL ilkesi, ağ geçidiniz için en düşük SSL protokolü sürümü olarak aşağıdaki üç protokolden birini seçme seçeneği sunar: TLSv1_0, TLSv1_1 ve TLSv1_2.
+* Özel bir SSL ilkesi, aşağıdaki üç protokolden birini ağ geçidinizin en düşük SSL protokolü sürümü olarak seçme seçeneği sunar: TLSv1_0, TLSv1_1 ve TLSv1_2.
 * Hiçbir SSL ilkesi tanımlanmamışsa, üç protokol (TLSv1_0, TLSv1_1 ve TLSv1_2) etkinleştirilir.
 
 ### <a name="cipher-suites"></a>Şifre paketleri

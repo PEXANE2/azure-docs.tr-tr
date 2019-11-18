@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager şablonuyla gizli dizi Key Vault | Microsoft Docs
+title: Şablonla gizli Key Vault
 description: Dağıtım sırasında anahtar kasasından bir parametre olarak bir parolanın nasıl geçirileceğini gösterir.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: tomfitz
-ms.openlocfilehash: 489b09d2523393ae67668ed13c651c9b7b0217b4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 37d21e295eca2b40e91f92d65d6e927ee6857d0e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998899"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149479"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma
 
@@ -19,7 +16,7 @@ Güvenli bir değer (parola gibi) doğrudan şablon veya parametre dosyanıza ko
 
 ## <a name="deploy-key-vaults-and-secrets"></a>Anahtar kasaları ve gizli dizileri dağıtma
 
-Şablon dağıtımı sırasında bir anahtar kasasına erişmek için, anahtar `enabledForTemplateDeployment` kasasında öğesini olarak `true`ayarlayın.
+Şablon dağıtımı sırasında bir anahtar kasasına erişmek için, anahtar kasasındaki `enabledForTemplateDeployment` `true`olarak ayarlayın.
 
 Aşağıdaki Azure CLı ve Azure PowerShell örnekleri, anahtar kasasının nasıl oluşturulacağını ve bir parolanın nasıl ekleneceğini gösterir.
 
@@ -72,7 +69,7 @@ Anahtar kasaları oluşturma ve gizli dizileri ekleme hakkında daha fazla bilgi
 
 ## <a name="grant-access-to-the-secrets"></a>Gizli dizileri için erişim izni verme
 
-Şablonu dağıtan kullanıcının, kaynak grubunun ve anahtar kasasının kapsamı için `Microsoft.KeyVault/vaults/deploy/action` izne sahip olması gerekir. [Sahip](../role-based-access-control/built-in-roles.md#owner) ve [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor) rollerinin her ikisi de bu erişimi verir. Anahtar Kasası oluşturduysanız, izninizin olması gerekir.
+Şablonu dağıtan Kullanıcı, kaynak grubunun ve anahtar kasasının kapsamı için `Microsoft.KeyVault/vaults/deploy/action` iznine sahip olmalıdır. [Sahip](../role-based-access-control/built-in-roles.md#owner) ve [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor) rollerinin her ikisi de bu erişimi verir. Anahtar Kasası oluşturduysanız, izninizin olması gerekir.
 
 Aşağıdaki yordamda, en düşük izinle bir rol oluşturma ve kullanıcının nasıl atanacağı gösterilmektedir
 
@@ -124,7 +121,7 @@ Bu yaklaşımda, şablon değil, parametre dosyasındaki anahtar kasasına başv
 
 ![Kaynak Yöneticisi Anahtar Kasası tümleştirme statik KIMLIK diyagramı](./media/resource-manager-keyvault-parameter/statickeyvault.png)
 
-[Öğretici: Kaynak Yöneticisi Şablon dağıtımı](./resource-manager-tutorial-use-key-vault.md) Azure Key Vault tümleştirme bu yöntemi kullanır.
+[Öğretici: Kaynak Yöneticisi Şablon dağıtımı Azure Key Vault tümleştirme](./resource-manager-tutorial-use-key-vault.md) bu yöntemi kullanır.
 
 Aşağıdaki şablon, yönetici parolası içeren bir SQL Server dağıtır. Password parametresi güvenli bir dizeye ayarlanır. Ancak, şablon bu değerin nereden geldiğini belirtmez.
 
@@ -189,7 +186,7 @@ Aşağıdaki parametre dosyasında, Anahtar Kasası parolasının zaten mevcut o
 }
 ```
 
-Parolanın geçerli sürümden farklı bir sürümünü kullanmanız gerekiyorsa, `secretVersion` özelliğini kullanın.
+Parolanın geçerli sürümden farklı bir sürümünü kullanmanız gerekiyorsa `secretVersion` özelliğini kullanın.
 
 ```json
 "secretName": "ExamplePassword",

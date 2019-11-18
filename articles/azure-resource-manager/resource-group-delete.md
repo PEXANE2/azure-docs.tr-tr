@@ -1,18 +1,15 @@
 ---
-title: Kaynak grubu ve Azure Resource Manager kaynaklarını - sil
+title: Kaynak grubunu ve kaynakları Sil
 description: Kaynak gruplarının ve kaynakların nasıl silineceğini açıklar. Bir kaynak grubunu silerken kaynakların silme işlemini nasıl Azure Resource Manager belirtir. Bu, yanıt kodları ve Resource Manager silme başarılı olup olmadığını belirlemek için bunları nasıl işlediğini açıklar.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 30a394fd33ed5d928175fc27e003661c2b53de9a
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c84dcf64555f40f45dbdaeedb05d4cc461f2cbb7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275081"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150821"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager kaynak grubu ve kaynak silme
 
@@ -50,14 +47,14 @@ Ancak, kaynaktaki alma çağrısı, bir 200 ya da 201 döndürürse, Resource Ma
 
 GET işlemi hata verirse, Resource Manager aşağıdaki hata kodunu alma yeniden deneme:
 
-* 100'den küçük
+* 100’den daha az
 * 408
 * 429
 * 500'den büyük
 
 Diğer hata kodları için Resource Manager kaynak silme işlemi başarısız olur.
 
-## <a name="delete-resource-group"></a>Kaynak grubunu sil
+## <a name="delete-resource-group"></a>Kaynak grubunu silme
 
 Kaynak grubunu silmek için aşağıdaki yöntemlerden birini kullanın.
 
@@ -79,13 +76,13 @@ az group delete --name ExampleResourceGroup
 
 1. **Kaynak grubunu sil**'i seçin.
 
-   ![Kaynak grubunu sil](./media/resource-group-delete/delete-group.png)
+   ![Kaynak grubunu silme](./media/resource-group-delete/delete-group.png)
 
 1. Silmeyi onaylamak için kaynak grubunun adını yazın
 
 ---
 
-## <a name="delete-resource"></a>Kaynağı sil
+## <a name="delete-resource"></a>Kaynağı Sil
 
 Bir kaynağı silmek için aşağıdaki yöntemlerden birini kullanın.
 
@@ -113,7 +110,7 @@ az resource delete \
 
 1. **Sil**’i seçin. Aşağıdaki ekran görüntüsünde, bir sanal makine için yönetim seçenekleri gösterilmektedir.
 
-   ![Kaynağı sil](./media/resource-group-delete/delete-resource.png)
+   ![Kaynağı Sil](./media/resource-group-delete/delete-resource.png)
 
 1. Sorulduğunda silme işlemini onaylayın.
 

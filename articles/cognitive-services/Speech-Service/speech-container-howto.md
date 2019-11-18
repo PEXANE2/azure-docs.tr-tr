@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: efb2fd8fd6b77a27130b834c2b192c1e88eec97c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4170db596d3d4f4b197120770afa2f6e8b0f8a1c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578393"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132613"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yükleyip çalıştırma
 
@@ -26,7 +26,7 @@ Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de
 > [!IMPORTANT]
 > Tüm konuşma kapsayıcıları Şu anda [Genel "geçitli" önizlemenin](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)bir parçası olarak sunulmaktadır. Konuşma kapsayıcıları genel kullanıma (GA) İlerlemede bir duyuru yapılır.
 
-| İşlev | Özellikler | sürümü |
+| İşlev | Özellikler | Sürümü |
 |--|--|--|
 | Konuşmayı metne dönüştürme | Sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla metin içine ekleyin. | 2.0.0 |
 | Özel Konuşma Tanıma metin | [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)özel bir model kullanarak, sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla birlikte metne ekleyin. | 2.0.0 |
@@ -35,13 +35,13 @@ Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Konuşma kapsayıcılarını kullanmadan önce aşağıdaki Önkoşullar:
 
 | Gerekli | Amaç |
 |--|--|
-| Docker altyapısı | Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz. [Docker genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br> |
+| Docker altyapısı | Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz: [Docker'a genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br> |
 | Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarından ve temel `docker` komutlarının bilgisine sahip olmanız gerekir. |
 | Konuşma kaynağı | Bu kapsayıcıları kullanabilmeniz için, şunları yapmanız gerekir:<br><br>İlişkili API anahtarını ve uç nokta URI 'sini almak için bir Azure _konuşma_ kaynağı. Her iki değer de Azure portal **konuşmaya** genel bakış ve anahtarlar sayfalarında kullanılabilir. Kapsayıcının başlatılması için her ikisi de gereklidir.<br><br>**{API_KEY}** : **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **genel bakış** sayfasında belirtilen bitiş noktası |
 
@@ -112,25 +112,25 @@ Konuşma için kapsayıcı görüntüleri aşağıdaki Container Registry kullan
 
 # <a name="speech-to-texttabstt"></a>[Konuşmayı metne dönüştürme](#tab/stt)
 
-| Kapsayıcı | Depo |
+| Kapsayıcı | Havuz |
 |-----------|------------|
 | Konuşmayı metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
 # <a name="custom-speech-to-texttabcstt"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
 
-| Kapsayıcı | Depo |
+| Kapsayıcı | Havuz |
 |-----------|------------|
 | Özel Konuşma Tanıma metin | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
 # <a name="text-to-speechtabtts"></a>[Metin okuma](#tab/tts)
 
-| Kapsayıcı | Depo |
+| Kapsayıcı | Havuz |
 |-----------|------------|
 | Metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
 # <a name="custom-text-to-speechtabctts"></a>[Özel metin okuma](#tab/ctts)
 
-| Kapsayıcı | Depo |
+| Kapsayıcı | Havuz |
 |-----------|------------|
 | Özel metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
 
@@ -151,7 +151,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 ```
 
 > [!IMPORTANT]
-> `latest` etiketi `en-US` yerel ayarı ve `jessarus` sesi çeker. Daha fazla yerel ayar için bkz. [konuşmayı metne göre yerel ayarlar](#speech-to-text-locales).
+> `latest` etiketi `en-US` yerel ayarı çeker. Daha fazla yerel ayar için bkz. [konuşmayı metne göre yerel ayarlar](#speech-to-text-locales).
 
 #### <a name="speech-to-text-locales"></a>Konuşmayı metne göre yerel ayarlar
 
@@ -167,7 +167,7 @@ Aşağıdaki etiket, biçiminin bir örneğidir:
 2.0.0-amd64-en-us-preview
 ```
 
-**Konuşma-metin** kapsayıcısının 2.0.0 sürümünde desteklenen tüm yerel ayarlar için, kira [metin dili destek](language-support.md#speech-to-text) tablosunun **kapsayıcı desteği** sütununa bakın.
+**Konuşmadan metne** kapsayıcının desteklenen tüm yerel ayarları Için lütfen [konuşmadan metne görüntü etiketleri](../containers/container-image-tags.md#speech-to-text)bölümüne bakın.
 
 # <a name="custom-speech-to-texttabcstt"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
 
@@ -209,7 +209,7 @@ Aşağıdaki etiket, biçiminin bir örneğidir:
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-**Metin okuma** kapsayıcısının 1.3.0 sürümünde desteklenen tüm yerel ayarlar ve karşılık gelen sesler için lütfen [standart sesler dil desteği](language-support.md#standard-voices) tablosunun **kapsayıcı desteği** sütununa bakın.
+Desteklenen tüm yerel ayarlar ve **metin okuma** kapsayıcısının karşılık gelen sesleri için bkz. [metin okuma görüntü etiketleri](../containers/container-image-tags.md#text-to-speech).
 
 > [!IMPORTANT]
 > *Standart bir metinden konuşmaya* http gönderisi oluştururken, [konuşma birleştirme biçimlendirme dili (SSML)](speech-synthesis-markup.md) iletisi, `name` özniteliği olan bir `voice` öğesi gerektirir. Değer, ["kısa ad"](language-support.md#standard-voices)olarak da bilinen karşılık gelen kapsayıcı yerel ayarı ve sestir. Örneğin, `latest` etiketinde `en-US-JessaRUS`bir ses adı olacaktır.
@@ -367,7 +367,7 @@ Bu komut:
 ***
 
 > [!IMPORTANT]
-> Kapsayıcıyı çalıştırmak için `Eula`, `Billing`ve `ApiKey` seçenekleri belirtilmelidir; Aksi takdirde, kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
+> `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](#billing).
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
 
@@ -426,12 +426,12 @@ Bu makalede, konuşma kapsayıcılarını indirmek, yüklemek ve çalıştırmak
   * *Metin okuma*
   * *Özel metin okuma*
 * Kapsayıcı görüntüleri Azure 'daki kapsayıcı kayıt defterinden indirilir.
-* Kapsayıcı görüntüleri Docker 'da çalışır.
+* Docker kapsayıcı görüntüleri çalıştırın.
 * Kapsayıcının ana bilgisayar URI 'sini belirterek, konuşma kapsayıcılarındaki işlemleri çağırmak için REST API veya SDK kullanabilirsiniz.
 * Bir kapsayıcıyı örnekledikten sonra faturalandırma bilgilerini sağlamanız gerekir.
 
 > [!IMPORTANT]
->  Bilişsel hizmetler kapsayıcıları, ölçüm için Azure 'a bağlı kalmadan çalıştırılmak üzere lisanslanmaz. Müşterilerin, ödeme bilgilerini her zaman ölçüm hizmetiyle iletişimine olanak tanımak için kapsayıcıların etkinleştirilmesi gerekir. Bilişsel hizmetler kapsayıcıları, müşteri verilerini (ör., çözümlenmekte olan resim veya metin) Microsoft 'a göndermez.
+>  Bilişsel hizmetler kapsayıcıları, kullanım ölçümü için Azure'a bağlanmadan çalıştırmak için lisanslanmaz. Müşteriler, her zaman faturalandırma bilgileri ölçüm hizmeti ile iletişim kurmak kapsayıcıları etkinleştirmeniz gerekiyor. Bilişsel hizmetler kapsayıcılar, Microsoft müşteri verilerini (örneğin, görüntü veya metin analiz edilen) göndermeyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

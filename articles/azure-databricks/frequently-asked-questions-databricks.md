@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 0436a0898f27d3059069ce2df1fdfb143a98f325
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3febdbc8f55f6ccd65eba97de984a9a38ddf214e
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601813"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129328"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks hakkında sık sorulan sorular
 
@@ -34,7 +34,7 @@ Evet. Azure Databricks ile bir Azure sanal ağı (VNET) kullanabilirsiniz. Daha 
 1. Data Lake Storage ' deki hizmet sorumlusuna gerekli izinleri atayın.
 1. Data Lake Storage bir dosyaya erişmek için not defterinde hizmet sorumlusu kimlik bilgilerini kullanın.
 
-Daha fazla bilgi için bkz. [Azure Databricks ile Azure Data Lake Storage kullanma](/azure/databricks/data/data-sources/azure/azure-datalake.html).
+Daha fazla bilgi için bkz. [Azure Databricks ile Azure Data Lake Storage kullanma](/azure/databricks/data/data-sources/azure/azure-datalake).
 
 ## <a name="fix-common-problems"></a>Sık karşılaşılan sorunları giderme
 

@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 11/12/2019
-ms.openlocfilehash: d9a88a40a85ce4be9222f45d3bce53e91346040b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 44ef646328f5f55d16dfa2d6906b78866292ebd9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039415"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123203"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Hızlı Başlangıç: Azure dijital İkizlerini kullanarak kullanılabilir odaları bulun.
 
@@ -76,7 +76,7 @@ Uzamsal graph kullanılarak sağlanan [provisionSample.yaml](https://github.com/
 1. `dotnet run ProvisionSample` öğesini çalıştırın.
 
     >[!NOTE]
-    >Cihaz oturum açma Azure CLI aracını, Azure ad kullanıcının kimliğini doğrulamak için kullanılır. Kullanıcı kimlik doğrulaması için belirli bir kod girmeden [Microsoft oturum açma](https://microsoft.com/devicelogin) sayfası. İlgili kod girildikten sonra kimlik doğrulaması için adımları izleyin. Aracı çalıştırırken, kullanıcının kimliğini doğrulaması gerekir.
+    >Cihaz oturum açma Azure CLI aracını, Azure ad kullanıcının kimliğini doğrulamak için kullanılır. Kullanıcı kimlik doğrulaması için belirli bir kod girmeden [Microsoft oturum açma](https://microsoft.com/devicelogin) sayfası. Kod girildikten sonra kimlik doğrulaması için adımları izleyin. Aracı çalıştırırken, kullanıcının kimliğini doğrulaması gerekir.
 
     >[!TIP]
     > Bu adımı çalıştırdığınızda aşağıdaki hata iletisi görüntülenirse, değişkenlerinizi düzgün bir şekilde kopyalanan emin olun: `EXIT: Unexpected error: The input is not a valid Base-64 string ...`

@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager şablon işlevleri-sayısal | Microsoft Docs
+title: Şablon işlevleri-sayısal
 description: Sayılarla çalışmak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.author: tomfitz
-ms.openlocfilehash: 3ec5477ca6ea1731f18b09d6393bdde6261e0c32
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b663f27d48e3ee4e7ee2a96794015555417b3608
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194339"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149628"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için sayısal işlevler
 
@@ -32,7 +29,7 @@ Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağ
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="add"></a>ekle
+## <a name="add"></a>add
 `add(operand1, operand2)`
 
 Belirtilen iki tam sayının toplamını döndürür.
@@ -41,8 +38,8 @@ Belirtilen iki tam sayının toplamını döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- | 
-|operand1 |Evet |int |Eklenecek ilk numara. |
-|işlenen2 |Evet |int |Eklenecek ikinci sayı. |
+|operand1 |Yes |int |Eklenecek ilk numara. |
+|işlenen2 |Yes |int |Eklenecek ikinci sayı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -85,7 +82,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Value |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | Adresult | Int | 8 |
 
@@ -112,7 +109,7 @@ Yineleme döngüsünün dizinini döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| loopName | Hayır | dize | Yinelemeyi alma döngüsünün adı. |
+| loopName | Hayır | string | Yinelemeyi alma döngüsünün adı. |
 | offset |Hayır |int |Sıfır tabanlı yineleme değerine eklenecek sayı. |
 
 ### <a name="remarks"></a>Açıklamalar
@@ -158,8 +155,8 @@ Belirtilen iki tamsayının tamsayı bölümünü döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| operand1 |Evet |int |Bölünmekte olan sayı. |
-| işlenen2 |Evet |int |Bölmek için kullanılan sayı. 0 olamaz. |
+| operand1 |Yes |int |Bölünmekte olan sayı. |
+| işlenen2 |Yes |int |Bölmek için kullanılan sayı. 0 olamaz. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -202,7 +199,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Value |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | divResult | Int | 2 |
 
@@ -229,7 +226,7 @@ Değeri kayan noktalı sayıya dönüştürür. Bu işlevi yalnızca, bir mantı
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dize veya tamsayı |Kayan noktalı sayıya dönüştürülecek değer. |
+| arg1 |Yes |dize veya tamsayı |Kayan noktalı sayıya dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 Bir kayan nokta numarası.
@@ -263,7 +260,7 @@ Belirtilen değeri bir tamsayıya dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Evet |dize veya tamsayı |Tamsayıya dönüştürülecek değer. |
+| valueToConvert |Yes |dize veya tamsayı |Tamsayıya dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -296,7 +293,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Value |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
@@ -314,7 +311,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="max" />
 
-## <a name="max"></a>en çok
+## <a name="max"></a>Biçimlendir
 `max (arg1)`
 
 Tamsayılar dizisinden en büyük değeri veya virgülle ayrılmış tamsayılar listesini döndürür.
@@ -323,7 +320,7 @@ Tamsayılar dizisinden en büyük değeri veya virgülle ayrılmış tamsayılar
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
+| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -359,7 +356,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Value |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | ıntoutput | Int | 5 |
@@ -387,7 +384,7 @@ Tamsayılar dizisinden en küçük değeri veya virgülle ayrılmış tamsayıla
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
+| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -423,7 +420,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Value |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | ıntoutput | Int | 0 |
@@ -451,8 +448,8 @@ Belirtilen iki tamsayının kullanıldığı tamsayı bölümünün kalanını d
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| operand1 |Evet |int |Bölünmekte olan sayı. |
-| işlenen2 |Evet |int |Bölmek için kullanılan sayı 0 olamaz. |
+| operand1 |Yes |int |Bölünmekte olan sayı. |
+| işlenen2 |Yes |int |Bölmek için kullanılan sayı 0 olamaz. |
 
 ### <a name="return-value"></a>Dönüş değeri
 Kalanı temsil eden bir tamsayı.
@@ -494,9 +491,9 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Value |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| modResult | Int | 1\. |
+| modResult | Int | 1 |
 
 Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
 
@@ -521,8 +518,8 @@ Belirtilen iki tamsayının çarpma sayısını döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| operand1 |Evet |int |Çarpılacak ilk sayı. |
-| işlenen2 |Evet |int |Çarpılacak ikinci sayı. |
+| operand1 |Yes |int |Çarpılacak ilk sayı. |
+| işlenen2 |Yes |int |Çarpılacak ikinci sayı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -565,7 +562,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Value |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | Çoklu sonuç | Int | 15 |
 
@@ -592,8 +589,8 @@ Belirtilen iki tamsayının çıkarma sayısını döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| operand1 |Evet |int |Çıkarılan sayı. |
-| işlenen2 |Evet |int |Çıkarılan sayı. |
+| operand1 |Yes |int |Çıkarılan sayı. |
+| işlenen2 |Yes |int |Çıkarılan sayı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 Çıkarma temsil eden bir tamsayı.
@@ -635,7 +632,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Value |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | Alt sonuç | Int | 4 |
 

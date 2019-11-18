@@ -1,20 +1,14 @@
 ---
-title: Azure Resource Manager şablonu örnekleri
+title: Şablon örnekleri
 description: Roller ve kilitler gibi yönetim özelliklerini dağıtmaya yönelik şablon örnekleri Azure Resource Manager.
-services: azure-resource-manager
-author: tfitzmac
-ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: sample
-ms.tgt_pltfrm: na
 ms.date: 11/16/2018
-ms.author: tomfitz
-ms.openlocfilehash: e342507b584a405637fc6728dfcd6e49199a154f
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 61d46d4b032a4eaf326acd21e85b332bdb407f40
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390174"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148250"
 ---
 # <a name="azure-resource-manager-templates-for-management-features"></a>Yönetim özellikleri için Azure Resource Manager şablonları
 

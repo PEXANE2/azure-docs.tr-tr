@@ -6,22 +6,22 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 08/14/2019
 ms.author: danlep
-ms.openlocfilehash: 4fb9eb8a3ef937ce5ed222c7814a8f191e3874f2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6841bf18f57f514455f7680126c3cc58e7ebd7b1
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803598"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148923"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure Container Registry 'den görüntüleri otomatik olarak Temizleme
 
 Bir Azure Container Registry 'yi bir geliştirme iş akışının parçası olarak kullandığınızda, kayıt defteri kısa bir süre sonra gerek duyulmayan görüntülerle veya diğer yapıtlarla hızlıca doldurabilir. Belirli bir süreden eski olan veya belirtilen bir ad filtresiyle eşleşen tüm etiketleri silmek isteyebilirsiniz. Birden çok yapıyı hızlıca silmek için bu makalede, isteğe bağlı veya [Zamanlanmış](container-registry-tasks-scheduled.md) bir ACR görevi olarak çalıştırabileceğiniz `acr purge` komutu tanıtılmaktadır. 
 
-`acr purge` komutu şu anda, GitHub 'daki [ACR-CLI](https://github.com/Azure/acr-cli) deposunda bulunan kaynak kodundan oluşturulan ortak bir kapsayıcı görüntüsünde (`mcr.microsoft.com/acr/acr-cli:0.1`) dağıtılır. Bir ACR görevinde, `acr purge` [diğer adını](container-registry-tasks-reference-yaml.md#aliases)kullanarak komutunu çalıştırın.
+`acr purge` komutu şu anda, GitHub 'daki [ACR-CLI](https://github.com/Azure/acr-cli) deposunda bulunan kaynak kodundan oluşturulan ortak bir kapsayıcı görüntüsünde (`mcr.microsoft.com/acr/acr-cli:0.1`) dağıtılır.
 
-Bu makalede ACR görev örneklerini çalıştırmak için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Yerel olarak kullanmak isterseniz, 2.0.76 veya üzeri sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install]. 
+Bu makalede ACR görev örneklerini çalıştırmak için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Yerel olarak kullanmak isterseniz, 2.0.69 veya üzeri sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install]. 
 
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
@@ -63,8 +63,8 @@ Bu ve aşağıdaki örneklerde, `acr purge` komutunun çalıştırıldığı kay
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry \$Registry \
-  filter 'hello-world:.*' --untagged --ago 1d"
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} --filter 'hello-world:.*' --untagged --ago 1d"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -78,8 +78,8 @@ Aşağıdaki örnek, günlük [Zamanlanmış ACR görevi](container-registry-tas
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry \$Registry \
-  --filter 'hello-world:.*' --ago 7d"
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 7d"
 
 az acr task create --name purgeTask \
   --cmd "$PURGE_CMD" \
@@ -98,8 +98,8 @@ Süreölçer tetikleyicisinin yapılandırıldığını görmek için [az ACR Ta
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry \$Registry \
-  --filter 'hello-world:.*' --ago 1d --untagged"
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 1d --untagged"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -120,7 +120,8 @@ Aşağıdaki örnekte, her bir depodaki filtre tüm etiketleri seçer. `--ago 0d
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry \$Registry \
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged --dry-run"
 
@@ -160,7 +161,8 @@ Kuru çalıştırmayı doğruladıktan sonra, temizleme işlemini otomatikleşti
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry $Registry \
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged"
 

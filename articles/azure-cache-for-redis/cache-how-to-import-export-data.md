@@ -1,25 +1,17 @@
 ---
-title: Redsıs için Azure önbelleğindeki verileri içeri ve dışarı aktarma | Microsoft Docs
+title: Redsıs için Azure önbelleğindeki verileri içeri ve dışarı aktarma
 description: Redsıs örnekleri için Premium Azure önbelleğiniz ile BLOB depolama alanına ve veri aktarmayı öğrenin
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 4a68ac38-87af-4075-adab-569d37d7cc9e
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: fda366f631e392379bd52b4bba728d0373f3e75e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: e4265cf3f9c211a19fe05bc18cf47a273165c3c3
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756626"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122767"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Redsıs için Azure önbelleğindeki verileri içeri ve dışarı aktarma
 İçeri/dışarı aktarma, redsıs veri yönetimi işlemi için bir Azure önbelleğidir. Bu, redsıs veritabanı (RDB) anlık görüntüsü için bir Azure önbelleğini bir Premium önbellekten bir olarak içeri ve dışarı aktararak bir Azure depolama hesabındaki blob. 
@@ -69,7 +61,7 @@ Bu makalede, Reda için Azure önbelleğiyle verileri içeri ve dışarı aktarm
 
     ![İçeri aktarma ilerleme durumu](./media/cache-how-to-import-export-data/cache-import-data-import-complete.png)
 
-## <a name="export"></a>Dışarı Aktar
+## <a name="export"></a>Dışarı Aktarma
 Dışarı aktarma, redin için Azure önbelleğinde depolanan verileri Redsıs uyumlu RDB dosyaları 'na dışarı aktarıp verbırakmanıza olanak tanır. Bu özelliği, Redsıs örneği için bir Azure önbelleğinden diğerine veya başka bir Redsıs sunucusuna veri taşımak için kullanabilirsiniz. Dışarı aktarma işlemi sırasında, Redsıs sunucu örneği için Azure önbelleğini barındıran VM 'de geçici bir dosya oluşturulur ve dosya belirtilen depolama hesabına yüklenir. Dışarı aktarma işlemi başarı veya başarısızlık durumu ile tamamlandığında geçici dosya silinir.
 
 1. Önbelleğin geçerli içeriğini depolama alanına aktarmak için Azure portal [önbelleğinize gidin](cache-configure.md#configure-azure-cache-for-redis-settings) ve **Kaynak menüsünden** **verileri dışarı aktar** ' a tıklayın.
@@ -87,7 +79,7 @@ Dışarı aktarma, redin için Azure önbelleğinde depolanan verileri Redsıs u
     ![Depolama kapsayıcısını seçin](./media/cache-how-to-import-export-data/cache-export-data-container.png)
 4. Dışarı aktarma işlemini başlatmak için bir **BLOB adı ön eki** yazın ve **dışarı aktar** ' a tıklayın. Blob adı ön eki, bu dışarı aktarma işlemi tarafından oluşturulan dosyaların adlarına önek atamak için kullanılır.
 
-    ![Dışarı Aktar](./media/cache-how-to-import-export-data/cache-export-data.png)
+    ![Dışarı Aktarma](./media/cache-how-to-import-export-data/cache-export-data.png)
 
     Azure portal bildirimleri izleyerek veya [Denetim günlüğündeki](../azure-resource-manager/resource-group-audit.md)olayları görüntüleyerek dışa aktarma işleminin ilerlemesini izleyebilirsiniz.
 
@@ -135,7 +127,7 @@ Evet, kümelenmiş bir önbellek ve kümelenmemiş bir önbellek arasında içer
 Bazı fiyatlandırma katmanları farklı [veritabanları sınırlarına](cache-configure.md#databases)sahiptir, bu nedenle, önbellek oluşturma sırasında `databases` ayarı için özel bir değer yapılandırdıysanız içeri aktarırken bazı hususlar vardır.
 
 * Bir fiyatlandırma katmanına aktarma sırasında, daha düşük bir `databases` limitini içeri aktardığınız katmanla sınırla:
-  * Tüm fiyatlandırma katmanları için 16 olan varsayılan `databases` sayısını kullanıyorsanız, hiçbir veri kaybolmaz.
+  * Tüm fiyatlandırma katmanları için 16 olan varsayılan `databases`sayısını kullanıyorsanız, hiçbir veri kaybolmaz.
   * İçeri aktardığınız katman limitlerinin sınırları dahilinde olan özel sayıda `databases` kullanıyorsanız, hiçbir veri kaybolmaz.
   * Verdiğiniz veriler, yeni katmanın sınırlarını aşan bir veritabanında veri içeriyorsa, bu daha yüksek veritabanlarının verileri içeri aktarılmaz.
 

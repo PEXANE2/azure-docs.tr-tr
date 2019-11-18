@@ -1,18 +1,18 @@
 ---
 title: Kapsayıcılar için Azure Izleyici ile Kubernetes küme performansını izleme | Microsoft Docs
-description: Bu makalede, kapsayıcılar için Azure Izleyici ile performansı ve günlük verilerini nasıl görüntüleyebileceğiniz ve çözümleyebileceğinizi anlatmaktadır.
+description: Bu makalede nasıl görüntüleyebilir ve kapsayıcılar için Azure İzleyici ile performans ve günlük verilerini analiz etme açıklanır.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: f1a5d0d98a442fab80744636eea05d4c2d26f919
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8bb3ac1905167989e27d47304ae539e49a1412e8
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478975"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132344"
 ---
 # <a name="understand-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme performansını anlayın
 
@@ -36,11 +36,11 @@ Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan kapsayıc
 
 [Azure portalında](https://portal.azure.com) oturum açın. 
 
-## <a name="multi-cluster-view-from-azure-monitor"></a>Azure Izleyici 'den çok küme görünümü
+## <a name="multi-cluster-view-from-azure-monitor"></a>Azure İzleyicisi'nden çoklu küme görüntüle
 
-Dağıtılan tüm Kubernetes kümelerinin sistem durumunu görüntülemek için Azure portal sol bölmeden **izleyici** ' yi seçin. **Öngörüler** bölümünde **kapsayıcılar**' ı seçin. 
+Dağıtılan tüm Kubernetes kümelerinin sistem durumunu görüntülemek için Azure portal sol bölmeden **izleyici** ' yi seçin. Altında **Insights** bölümünden **kapsayıcıları**. 
 
-![Azure Izleyici çok küme panosu örneği](./media/container-insights-analyze/azmon-containers-multiview.png)
+![Azure İzleyici çok küme Panosu örneği](./media/container-insights-analyze/azmon-containers-multiview.png)
 
 Kılavuzda gösterilen sonuçların kapsamını şu şekilde tanımlayabilirsiniz:
 
@@ -60,7 +60,7 @@ Belirli bir ortamdaki kümeleri görüntülemek için, sayfanın sol üst köşe
 - Küme başına kaç düğüm ve Kullanıcı ve sistem düğüm dağıtımı yapılır.
 - Kullanılabilir disk alanı miktarı ve bir kapasite sorunu var.
 
-Dahil edilen sistem durumu durumları şunlardır: 
+Dahil edilen sistem durumu durumlar şunlardır: 
 
 * **Sağlıklı**: sanal makine için herhangi bir sorun algılanmadı ve gereken şekilde çalışıyor. 
 * **Kritik**: bir veya daha fazla kritik sorun, normal işlemsel durumu beklendiği gibi geri yüklemek için ele alınmalıdır.
@@ -80,19 +80,19 @@ Aşağıdaki tabloda, çok küme görünümünde izlenen bir kümenin sistem dur
 |-------|-------|-----------------|  
 |**Kullanıcı Pod**| | |  
 | |Sorunsuz |%100 |  
-| |Uyarı |90-99% |  
-| |Kritik |%90 < |  
-| |Bilinmiyor |Son 30 dakika içinde bildirilmezse |  
+| |Uyarı |90 - %99 |  
+| |Kritik |< % 90'dır |  
+| |Bilinmiyor |Son 30 dakika içerisinde bildirilmedi varsa |  
 |**Sistem Pod**| | |  
 | |Sorunsuz |%100 |
 | |Uyarı |Yok |
-| |Kritik |< %100 |
-| |Bilinmiyor |Son 30 dakika içinde bildirilmezse |
+| |Kritik |< % 100 |
+| |Bilinmiyor |Son 30 dakika içerisinde bildirilmedi varsa |
 |**Node** | | |
-| |Sorunsuz |> 85% |
-| |Uyarı |60-84% |
-| |Kritik |%60 < |
-| |Bilinmiyor |Son 30 dakika içinde bildirilmezse |
+| |Sorunsuz |> %85 |
+| |Uyarı |60 - %84 |
+| |Kritik |< % 60 |
+| |Bilinmiyor |Son 30 dakika içerisinde bildirilmedi varsa |
 
 Küme listesinden, kümenin adını seçerek **küme** sayfasına ayrıntıya gidebilirsiniz. Ardından, söz konusu kümenin **düğümler** sütununda düğümlerin toplamasını seçerek **düğümlerin** performans sayfasına gidin. Ya da, **Kullanıcı Pod** veya **sistem Pod** sütununun toplamasını seçerek **denetleyiciler** performans sayfasına gidebilirsiniz.
 
@@ -102,7 +102,7 @@ Kapsayıcılar için Azure Izleyici 'ye erişim, sol bölmeden **öngörüler** 
 
 - Küme
 - Düğümler 
-- Örleri 
+- Denetleyiciler 
 - Kapsayıcılar
 
 >[!NOTE]
@@ -110,13 +110,13 @@ Kapsayıcılar için Azure Izleyici 'ye erişim, sol bölmeden **öngörüler** 
 
 Varsayılan sayfa açılır ve kümenizin önemli performans ölçümlerini gösteren dört satırlık bir performans grafiği görüntüler. 
 
-![Küme sekmesindeki örnek performans grafikleri](./media/container-insights-analyze/containers-cluster-perfview.png)
+![Örnek performans grafiklerini küme sekmesinde](./media/container-insights-analyze/containers-cluster-perfview.png)
 
 Performans grafiklerinde dört performans ölçümü görüntülenir:
 
 - **Düğüm CPU kullanımı&nbsp;%** : tüm küme için CPU kullanımının toplanmış bir perspektifi. Zaman aralığı sonuçlarını filtrelemek için grafiğin üzerindeki yüzdebirlik değeri seçicideki **AVG**, **Min**, **50. Yüzdeliğini**, **90**, **95 TH**veya **Max** ' ı seçin. Filtreler tek tek veya birleştirilmiş olarak kullanılabilir. 
-- **Düğüm bellek kullanımı&nbsp;%** : tüm küme için bellek kullanımının toplanmış bir perspektifi. Zaman aralığı sonuçlarını filtrelemek için grafiğin üzerindeki yüzdebirlik değeri seçicideki **AVG**, **Min**, **50. Yüzdeliğini**, **90**, **95 TH**veya **Max** ' ı seçin. Filtreler tek tek veya birleştirilmiş olarak kullanılabilir. 
-- **Düğüm sayısı**: Kubernetes 'in düğüm sayısı ve durumu. Temsil edilen küme düğümlerinin durumları toplam, Ready ve Ready. Bunlar tek tek filtrelenebilir veya grafiğin üstündeki seçiciyle birleştirilebilir. 
+- **Düğüm bellek kullanımını&nbsp;%** : toplu bir perspektif, tüm küme için bellek kullanımı. Zaman aralığı sonuçlarını filtrelemek için grafiğin üzerindeki yüzdebirlik değeri seçicideki **AVG**, **Min**, **50. Yüzdeliğini**, **90**, **95 TH**veya **Max** ' ı seçin. Filtreler tek tek veya birleştirilmiş olarak kullanılabilir. 
+- **Düğüm sayısı**: düğüm sayısı ve Kubernetes durumu. Temsil edilen küme düğümlerinin durumları toplam, Ready ve Ready. Bunlar tek tek filtrelenebilir veya grafiğin üstündeki seçiciyle birleştirilebilir. 
 - **Etkin Pod sayısı**: Kubernetes 'in Pod sayısı ve durumu. Temsil edilen durumların durumları toplam, bekleyen, çalışıyor, bilinmiyor, başarılı veya başarısız. Bunlar tek tek filtrelenebilir veya grafiğin üstündeki seçiciyle birleştirilebilir. 
 
 Grafikteki her bir veri noktasında geçiş yapmak için sol ve sağ ok tuşlarını kullanın. Yüzdelik çizgiler arasında geçiş yapmak için yukarı ve aşağı ok tuşlarını kullanın. Seçili grafiği, görüntülediğiniz son Azure panosuna sabitlemek için, grafiklerden birinin sağ üst köşesindeki sabitleme simgesini seçin. Panodan grafiği yeniden boyutlandırabilir ve yeniden konumlandırabilirsiniz. Panodaki grafiğin seçilmesi sizi kapsayıcılar için Azure Izleyicisine yönlendirir ve doğru kapsamı ve görünümü yükler.
@@ -127,7 +127,7 @@ Kapsayıcılar için Azure Izleyici Ayrıca, kendi çizim grafiklerinizi oluştu
 
 Ölçüm Gezgini ' nde, kapsayıcılar için Azure Izleyici 'den toplanmış düğüm ve pod kullanım ölçümlerini görüntüleyebilirsiniz. Aşağıdaki tabloda, kapsayıcı ölçümlerini görselleştirmek için ölçüm grafiklerini nasıl kullanacağınızı anlamanıza yardımcı olacak Ayrıntılar özetlenmektedir.
 
-|uzayına | Ölçüm | Açıklama | 
+|Ad Alanı | Ölçüm | Açıklama | 
 |----------|--------|-------------|
 | Öngörüler. kapsayıcı/düğümler | |
 | | Cpuusagemiliçekirdekler | Küme genelinde CPU kullanımının toplu ölçümü. Bu, 1000 birimlerine bölünen bir CPU çekirdeğleridir (Milli = 1000). Birçok uygulamanın bir çekirdek kullandığı bir kapsayıcıda çekirdekler kullanımını belirlemede kullanılır.| 
@@ -144,16 +144,16 @@ Bir ölçümü, boyuta göre görüntülemek ve farklı segmentlerinin birbirler
 
 * Kumandasını
 * Kubernetes ad alanı
-* Node
+* Düğüm
 * Aşama
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>Düğümleri, denetleyicileri ve kapsayıcı sistem durumunu çözümleme
 
 **Düğümler**, **denetleyiciler**ve **kapsayıcılar** sekmelerine geçtiğinizde, sayfanın sağ tarafında otomatik olarak bir özellik bölmesi görüntülenir. Bu, Kubernetes nesnelerini düzenlemek için tanımladığınız etiketleri içeren seçili öğenin özelliklerini gösterir. Bir Linux düğümü seçildiğinde, **yerel disk kapasitesi** bölümü, düğüm için sunulan her disk için kullanılan disk alanını ve yüzdeyi de gösterir. Bölmeyi görüntülemek veya gizlemek için bölmedeki **>>** bağlantısını seçin.
 
-Hiyerarşideki nesneleri genişlettikten sonra Özellikler bölmesi, seçilen nesneye göre güncelleştirilir. Bölmeden, bölmenin üst kısmındaki **canlı verileri görüntüle (Önizleme)** bağlantısını seçerek Kubernetes kapsayıcı günlüklerini (stdout/stderror), olayları ve pod ölçümlerini da görüntüleyebilirsiniz. Bu verileri görüntülemek için gereken yapılandırma ve erişimi denetleme hakkında daha fazla bilgi için bkz. [canlı verileri kurma (Önizleme)](container-insights-livedata-setup.md). Küme kaynaklarını gözden geçirdikten sonra bu verileri kapsayıcıdan gerçek zamanlı olarak görebilirsiniz. Bu özellik hakkında daha fazla bilgi için, bkz. [Kubernetes günlüklerini, olayları ve pod ölçümlerini gerçek zamanlı olarak görüntüleme](container-insights-livedata-overview.md). Önceden tanımlanmış günlük aramalarını temel alan çalışma alanınızda depolanan Kubernetes günlük verilerini görüntülemek için, **analiz Içinde görünüm** açılır listesinden **kapsayıcı günlüklerini görüntüle** ' yi seçin. Bu konu hakkında daha fazla bilgi için bkz. [verileri çözümlemek Için arama günlükleri](container-insights-log-search.md#search-logs-to-analyze-data).
+Özellikler bölmesinde güncelleştirmeleri hiyerarşideki nesneler genişlettikçe tabanlı seçili nesne üzerinde. Bölmeden, bölmenin üst kısmındaki **canlı verileri görüntüle (Önizleme)** bağlantısını seçerek Kubernetes kapsayıcı günlüklerini (stdout/stderror), olayları ve pod ölçümlerini da görüntüleyebilirsiniz. Bu verileri görüntülemek için gereken yapılandırma ve erişimi denetleme hakkında daha fazla bilgi için bkz. [canlı verileri kurma (Önizleme)](container-insights-livedata-setup.md). Küme kaynaklarını gözden geçirdikten sonra bu verileri kapsayıcıdan gerçek zamanlı olarak görebilirsiniz. Bu özellik hakkında daha fazla bilgi için, bkz. [Kubernetes günlüklerini, olayları ve pod ölçümlerini gerçek zamanlı olarak görüntüleme](container-insights-livedata-overview.md). Önceden tanımlanmış günlük aramalarını temel alan çalışma alanınızda depolanan Kubernetes günlük verilerini görüntülemek için, **analiz Içinde görünüm** açılır listesinden **kapsayıcı günlüklerini görüntüle** ' yi seçin. Bu konu hakkında daha fazla bilgi için bkz. [verileri çözümlemek Için arama günlükleri](container-insights-log-search.md#search-logs-to-analyze-data).
 
-Görüntüleme sonuçlarını **hizmet**, **düğüm**, **ad alanı**veya **düğüm havuzuna**göre filtrelemek için sayfanın üst kısmındaki **+ Filtre Ekle** seçeneğini kullanın. Filtre kapsamını seçtikten sonra, **Select value (s)** alanında gösterilen değerlerden birini seçin. Filtre yapılandırıldıktan sonra, AKS kümesinin herhangi bir perspektifi görüntülenirken Global olarak uygulanır. Formül yalnızca eşittir işaretini destekler. Sonuçlarınızı daha da daraltmak için birinciden daha fazla filtre ekleyebilirsiniz. Örneğin, **düğümüne**göre bir filtre belirtirseniz, ikinci filtre Için yalnızca **hizmet** veya **ad alanı** seçebilirsiniz.
+Görüntüleme sonuçlarını **hizmet**, **düğüm**, **ad alanı**veya **düğüm havuzuna**göre filtrelemek için sayfanın üst kısmındaki **+ Filtre Ekle** seçeneğini kullanın. Filtre kapsamını seçtikten sonra, **Select value (s)** alanında gösterilen değerlerden birini seçin. Filtre yapılandırıldıktan sonra, AKS kümesinin herhangi bir perspektifi görüntülenirken Global olarak uygulanır. Formül eşittir işareti yalnızca destekler. Sonuçlarınızı daraltmak için birinci üzerine ek filtreler ekleyebilirsiniz. Örneğin, **düğümüne**göre bir filtre belirtirseniz, ikinci filtre Için yalnızca **hizmet** veya **ad alanı** seçebilirsiniz.
 
 Bir sekmede filtre belirtilmesi, başka bir sekmede seçim yaptığınızda çalışmaya devam eder. Belirtilen filtrenin yanındaki **x** simgesini seçtikten sonra silinir. 
 
@@ -167,15 +167,15 @@ Windows Server 2019 işletim sistemini çalıştıran Windows Server kapsayıcı
 
 Linux işletim sistemini çalıştıran Azure Container Instances sanal düğümler, listedeki son AKS kümesi düğümünden sonra gösterilir. Bir Container Instances sanal düğümünü genişlettiğinizde, düğüm üzerinde çalışan bir veya daha fazla Container Instances Pod ve kapsayıcıyı görüntüleyebilirsiniz. Ölçümler, yalnızca pods için düğümler için toplanmaz ve raporlanır.
 
-![Container Instances listelenen örnek düğüm hiyerarşisi](./media/container-insights-analyze/nodes-view-aci.png)
+![Listelenen Container Instances ile örnek düğüm hiyerarşisi](./media/container-insights-analyze/nodes-view-aci.png)
 
 Genişletilmiş bir düğümden, bu denetleyici için filtrelenmiş performans verilerini görüntülemek için düğüm üzerinde çalışan Pod veya kapsayıcıdan denetleyiciye gidebilirsiniz. Belirli bir düğüm için **Denetleyici** sütununun altındaki değeri seçin.
  
 ![Performans görünümünde düğümden denetleyiciye kadar örnek detaya gitme](./media/container-insights-analyze/drill-down-node-controller.png)
 
-Bu nesneler için durum ve kaynak kullanımını gözden geçirmek için sayfanın üst kısmındaki denetleyiciler veya kapsayıcılar ' ı seçin. Bellek kullanımını gözden geçirmek için, **ölçüm** açılan LISTESINDE **bellek RSS** veya **bellek çalışma kümesi**' ni seçin. **Bellek RSS** yalnızca Kubernetes sürüm 1,8 ve üzeri için desteklenir. Aksi takdirde, bir tanımsız veya gösterilemeyen değeri temsil eden sayısal bir veri türü değeri olan, **en az&nbsp;%** *Nan&nbsp;%* olarak değerleri görüntülenir.
+Bu nesneler için durum ve kaynak kullanımını gözden geçirmek için sayfanın üst kısmındaki denetleyiciler veya kapsayıcılar ' ı seçin. Bellek kullanımını gözden geçirmek için, **ölçüm** açılan LISTESINDE **bellek RSS** veya **bellek çalışma kümesi**' ni seçin. **Bellek RSS** yalnızca Kubernetes sürüm 1.8 ve üzeri desteklenir. Aksi takdirde, değerlerini görüntüleyin **Min&nbsp; %**  olarak *NaN&nbsp;%* , tanımlanmamış bir temsil eden sayısal veri türü değeri olan veya çıkarıldığında değeri.
 
-![Kapsayıcı düğümleri performans görünümü](./media/container-insights-analyze/containers-node-metric-dropdown.png)
+![Kapsayıcı düğümlerini performans görünümü](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
 **Bellek çalışma kümesi** , dahil edilen hem yerleşik belleği hem de sanal belleği (önbellek) gösterir ve uygulamanın kullandığı toplam şeydir. **Bellek RSS** yalnızca ana belleği gösterir (başka bir deyişle, diğer bir deyişle, yerleşik bellek). Bu ölçüm, kullanılabilir belleğin gerçek kapasitesini gösterir. Yerleşik bellek ve sanal bellek arasındaki fark nedir?
 
@@ -185,7 +185,7 @@ Bu nesneler için durum ve kaynak kullanımını gözden geçirmek için sayfan�
 
 Varsayılan olarak, performans verileri son altı saati temel alır, ancak sol üstteki **Timerange** seçeneğini kullanarak pencereyi değiştirebilirsiniz. Ayrıca, yüzdebirlik seçicideki **Min**, **AVG**, **50. Yüzdeliğini**, **90**, **95 TH**ve **Max** ' ı seçerek zaman aralığındaki sonuçları filtreleyebilirsiniz. 
 
-![Veri filtreleme için yüzdebirlik seçimi](./media/container-insights-analyze/containers-metric-percentile-filter.png)
+![Verileri filtreleme için yüzdebirlik seçimi](./media/container-insights-analyze/containers-metric-percentile-filter.png)
 
 **Eğilim** sütununun altındaki çubuk grafiğin üzerine geldiğinizde, her çubuk, hangi ölçümün seçili olduğuna bağlı olarak, 15 dakikalık bir dönem içinde CPU veya bellek kullanımını gösterir. Bir klavye aracılığıyla eğilim grafiğini seçtikten sonra, her bir çubukta tek tek geçiş yapmak için alt + sayfa yukarı tuşu veya alt + sayfa aşağı tuşunu kullanın. Çubuğun üzerine geldiğinizde yaptığınız aynı ayrıntıları alırsınız.
 
@@ -201,16 +201,16 @@ Bu bilgiler, kümenizdeki düğümler arasında doğru kapsayıcılara sahip olu
 
 | Sütun | Açıklama | 
 |--------|-------------|
-| Ad | Konağın adı. |
-| Durum | Düğüm durumunun Kubernetes görünümü. |
-| Min&nbsp;%, Ort&nbsp;%, 50. Yüzdeliğini&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;%  | Seçilen süre boyunca yüzdebirlik değerini temel alan ortalama düğüm yüzdesi. |
+| Ad | Ana bilgisayar adı. |
+| Durum | Düğüm durumu görünümünü Kubernetes. |
+| Min&nbsp;%, Ort&nbsp;%, 50. Yüzdeliğini&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;%  | Seçili süre ve çözüm oranlarına dayanarak ortalama düğüm yüzdesi. |
 | En az, ortalama, 50 TH, 90 TH, en fazla | Ortalama düğümlerin fiili değeri, seçilen süre boyunca yüzdebirlik değerini temel alır. Ortalama değer bir düğüm için ayarlanan CPU/bellek sınırı üzerinden ölçülür. Pod ve kapsayıcılar için, ana bilgisayar tarafından bildirilen ortalama değerdir. |
 | Kapsayıcılar | Kapsayıcı sayısı. |
-| Hizmet | Bir düğümün başlatıldığı veya yeniden başlatıldığı zamandan itibaren geçen süreyi temsil eder. |
-| Kumandasını | Yalnızca kapsayıcılar ve pods için. Bu, içinde hangi denetleyiciyi olduğunu gösterir. Tüm Pod 'ler denetleyicide olmadığından **bazıları yok olarak görüntülenebilir.** | 
-| Eğilim min&nbsp;%, ortalama&nbsp;%, 50.&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;% | Çubuk grafik eğilimi, denetleyicinin ortalama yüzdebirlik ölçüm yüzdesini temsil eder. |
+| Çalışma Süresi | Bir düğüm başlatıldığında veya yeniden başlatıldıktan sonra süresini temsil eder. |
+| Kumandasını | Yalnızca kapsayıcılar ve pod'ları için. Bu, içinde hangi denetleyiciyi olduğunu gösterir. Tüm pod'ların bazı görüntülenebilir bir denetleyici olduğundan **yok**. | 
+| Eğilim min&nbsp;%, ortalama&nbsp;%, 50.&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;% | Çubuk grafik eğilimini denetleyici ortalama yüzdebirlik ölçüm yüzdesini temsil eder. |
 
-Seçicide **denetleyiciler**' i seçin.
+Seçicide seçin **denetleyicileri**.
 
 ![Denetleyici görünümünü seç](./media/container-insights-analyze/containers-controllers-tab.png)
 
@@ -220,7 +220,7 @@ Burada, denetleyicilerinizin performans durumunu ve sanal düğüm denetleyicile
 
 Satır hiyerarşisi bir denetleyici ile başlar. Bir denetleyiciyi genişlettiğinizde bir veya daha fazla Pod 'yi görüntüleyebilirsiniz. Pod ' ı genişletin ve son satır, Pod 'a gruplanmış kapsayıcıyı görüntüler. Genişletilmiş bir denetleyicide, bu düğüm için filtrelenmiş performans verilerini görüntülemek için üzerinde çalıştığı düğümün detayına gidebilirsiniz. Bir denetleyiciye bağlı olmayan Container Instances Pod listede son olarak listelenmiştir.
 
-![Container Instances Pod listelenen örnek denetleyiciler hiyerarşisi](./media/container-insights-analyze/controllers-view-aci.png)
+![Container Instances listelenen pod'ları ile örnek denetleyicileri hiyerarşisi](./media/container-insights-analyze/controllers-view-aci.png)
 
 Belirli bir denetleyicinin **düğüm** sütununun altındaki değeri seçin.
 
@@ -232,34 +232,34 @@ Denetleyicileri görüntülerken görüntülenen bilgiler aşağıdaki tabloda a
 |--------|-------------|
 | Ad | Denetleyicinin adı.|
 | Durum | Çalışma bittikten sonra, *Tamam*, *sonlandırıldı*, *başarısız*, *durduruldu*veya *duraklatıldı*gibi bir durumla çalıştıktan sonra kapsayıcıların toplama durumu. Kapsayıcı çalışıyorsa ancak durum doğru şekilde görüntülenmiyorsa veya aracı tarafından çekilmediyse ve 30 dakikadan uzun süredir yanıt vermediyse durum *bilinmiyor*demektir. Durum simgesinin ek ayrıntıları aşağıdaki tabloda verilmiştir.|
-| Min&nbsp;%, Ort&nbsp;%, 50. Yüzdeliğini&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;%| Seçili ölçüm ve yüzdebirlik için her bir varlığın ortalama yüzdesinin toplam ortalaması. |
-| En az, ortalama, 50 TH, 90 TH, en fazla  | Seçilen yüzdelik için kapsayıcının ortalama CPU frelicore veya bellek performansı toplamı. Ortalama değer bir pod için CPU/bellek sınırı kümesinden ölçülür. |
-| Kapsayıcılar | Denetleyici veya pod için toplam kapsayıcı sayısı. |
-| 'U | Kapsayıcılardan yeniden başlatma sayısı toplaması. |
-| Hizmet | Kapsayıcının başlatılmasından bu yana geçen süreyi temsil eder. |
-| Node | Yalnızca kapsayıcılar ve pods için. Bu, içinde hangi denetleyiciyi olduğunu gösterir. | 
-| Eğilim min&nbsp;%, ortalama&nbsp;%, 50.&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;% | Çubuk grafik eğilimi denetleyicinin ortalama yüzdebirlik ölçüsünü temsil eder. |
+| Min&nbsp;%, Ort&nbsp;%, 50. Yüzdeliğini&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;%| Her varlık için yüzdebirlik ve seçili ölçümün ortalama yüzdesi toplama ortalaması. |
+| En az, ortalama, 50 TH, 90 TH, en fazla  | Seçilen yüzdelik dilim için kapsayıcı ortalama CPU millicore veya bellek performansını dökümü. Ortalama değer, bir pod için CPU/bellek sınırını zamandan ölçülür. |
+| Kapsayıcılar | Denetleyici veya pod için kapsayıcı toplam sayısı. |
+| Yeniden başlatma | Yeniden başlatma sayısı kapsayıcılardan dökümü. |
+| Çalışma Süresi | Kapsayıcı başladıktan sonra süresini temsil eder. |
+| Düğüm | Yalnızca kapsayıcılar ve pod'ları için. Bu, içinde hangi denetleyiciyi olduğunu gösterir. | 
+| Eğilim min&nbsp;%, ortalama&nbsp;%, 50.&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;% | Çubuk grafik eğilimini denetleyicinin ortalama yüzdebirlik ölçüm temsil eder. |
 
 Durum alanındaki simgeler, kapsayıcıların çevrimiçi durumunu gösterir.
  
-| Simg | Durum | 
+| Simge | Durum | 
 |--------|-------------|
-| ![Çalışma durumu simgesi hazırlanıyor](./media/container-insights-analyze/containers-ready-icon.png) | Çalışıyor (hazırlanıyor)|
-| ![Bekleniyor veya duraklatıldı durum simgesi](./media/container-insights-analyze/containers-waiting-icon.png) | Bekliyor veya duraklatıldı|
-| ![Son bildirilen çalışan durum simgesi](./media/container-insights-analyze/containers-grey-icon.png) | Son rapor çalışıyor ancak 30 dakikadan uzun süredir yanıt vermedi|
-| ![Başarılı durum simgesi](./media/container-insights-analyze/containers-green-icon.png) | Başarıyla durduruldu veya durdurulamadı|
+| ![Hazır çalışan durum simgesi](./media/container-insights-analyze/containers-ready-icon.png) | (Hazır) çalıştıran|
+| ![Bekleniyor veya duraklatıldı durum simgesi](./media/container-insights-analyze/containers-waiting-icon.png) | Bekleyen veya duraklatıldı|
+| ![Son durum simgesi çalıştıran bildirdi.](./media/container-insights-analyze/containers-grey-icon.png) | Son rapor çalışıyor ancak 30 dakikadan uzun süredir yanıt vermedi|
+| ![Başarılı durum simgesi](./media/container-insights-analyze/containers-green-icon.png) | Başarılı bir şekilde durdurulmuş veya yanıt vermemesine başarısız|
 
-Durum simgesi, Pod 'un sağladığı şeyi temel alan bir sayı görüntüler. En kötü iki durumu gösterir ve durumun üzerine geldiğinizde, kapsayıcıdaki tüm yığınlardan bir toplama durumu görüntüler. Hazırlık durumu yoksa, durum değeri **(0)** değerini gösterir.
+Durum simgesi ne pod sağlar göre sayısını görüntüler. İki en kötü durum gösterir ve durum geldiğinizde, kapsayıcıda tüm pod'ların bir toplama durumunu görüntüler. Hazır durumda değilse, durum değeri görüntüler **(0)** .
 
-Seçicide **kapsayıcılar**' ı seçin.
+Seçicide seçin **kapsayıcıları**.
 
 ![Kapsayıcılar görünümünü seç](./media/container-insights-analyze/containers-containers-tab.png)
 
-Burada Azure Kubernetes ve Azure Container Instances kapsayıcılarınızın performans durumunu görüntüleyebilirsiniz. 
+Burada, Azure Kubernetes ve Azure Container Instances, kapsayıcılarınızın performans durumunu görüntüleyebilirsiniz. 
 
 ![\<ad > kapsayıcıları performans görünümü](./media/container-insights-analyze/containers-containers-view.png)
 
-Bir kapsayıcıdan, bu nesne için filtrelenmiş performans verilerini görüntülemek için bir pod veya düğüm detayına gidebilirsiniz. Belirli bir kapsayıcı için **Pod** veya **node** sütununun altındaki değeri seçin.
+Bir kapsayıcıdan, bir pod veya filtre bu nesne için performans verilerini görüntülemek için düğümü aşağı detaya gidebilirsiniz. Belirli bir kapsayıcı için **Pod** veya **node** sütununun altındaki değeri seçin.
 
 ![Performans görünümünde düğümden kapsayıcılara örnek detaya gitme](./media/container-insights-analyze/drill-down-controller-node.png)
 
@@ -268,24 +268,24 @@ Kapsayıcıları görüntülerken görüntülenen bilgiler aşağıdaki tabloda 
 | Sütun | Açıklama | 
 |--------|-------------|
 | Ad | Denetleyicinin adı.|
-| Durum | Kapsayıcıların durumu (varsa). Durum simgesinin ek ayrıntıları sonraki tabloda verilmiştir.|
-| Min&nbsp;%, Ort&nbsp;%, 50. Yüzdeliğini&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;% | Seçili ölçüm ve yüzdebirlik için her bir varlığın ortalama yüzdesinin toplamı. |
-| En az, ortalama, 50 TH, 90 TH, en fazla | Seçilen yüzdelik için kapsayıcının ortalama CPU milde veya bellek performansının toplamı. Ortalama değer bir pod için CPU/bellek sınırı kümesinden ölçülür. |
-| Ayak | Pod 'un bulunduğu kapsayıcı.| 
-| Node |  Kapsayıcının bulunduğu düğüm. | 
-| 'U | Kapsayıcının başlatılmasından bu yana geçen süreyi temsil eder. |
-| Hizmet | Kapsayıcının başlatıldığı veya yeniden başlatıldığı zamandan itibaren geçen süreyi temsil eder. |
-| Eğilim min&nbsp;%, ortalama&nbsp;%, 50.&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;% | Çubuk grafik eğilimi kapsayıcının ortalama yüzdebirlik ölçüm yüzdesini temsil eder. |
+| Durum | Kapsayıcılar, varsa durumu. Durum simgesi, ek ayrıntılar sonraki tabloda verilmiştir.|
+| Min&nbsp;%, Ort&nbsp;%, 50. Yüzdeliğini&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;% | Her varlık için yüzdebirlik ve seçili ölçümün ortalama yüzdesini dökümü. |
+| En az, ortalama, 50 TH, 90 TH, en fazla | Ortalama CPU millicore veya bellek performans seçilen yüzdelik dilim kapsayıcısının dökümü. Ortalama değer, bir pod için CPU/bellek sınırını zamandan ölçülür. |
+| Pod | Pod bulunduğu kapsayıcısı.| 
+| Düğüm |  Kapsayıcı bulunduğu düğümü. | 
+| Yeniden başlatma | Kapsayıcı başladıktan sonra süresini temsil eder. |
+| Çalışma Süresi | Kapsayıcı kullanmaya ya da yeniden beri süresini temsil eder. |
+| Eğilim min&nbsp;%, ortalama&nbsp;%, 50.&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;% | Çubuk grafik eğilimini kapsayıcı ortalama yüzdebirlik ölçüm yüzdesini temsil eder. |
 
 Durum alanındaki simgeler, aşağıdaki tabloda açıklandığı gibi, pods 'nin çevrimiçi durumlarını gösterir.
  
-| Simg | Durum |  
+| Simge | Durum |  
 |--------|-------------|  
-| ![Çalışma durumu simgesi hazırlanıyor](./media/container-insights-analyze/containers-ready-icon.png) | Çalışıyor (hazırlanıyor)|  
-| ![Bekleniyor veya duraklatıldı durum simgesi](./media/container-insights-analyze/containers-waiting-icon.png) | Bekliyor veya duraklatıldı|  
-| ![Son bildirilen çalışan durum simgesi](./media/container-insights-analyze/containers-grey-icon.png) | Son bildirilen, ancak 30 dakikadan uzun bir süredir yanıt vermemiş|  
-| ![Sonlandırılan durum simgesi](./media/container-insights-analyze/containers-terminated-icon.png) | Başarıyla durduruldu veya durdurulamadı|  
-| ![Başarısız durum simgesi](./media/container-insights-analyze/containers-failed-icon.png) | Başarısız durum |  
+| ![Hazır çalışan durum simgesi](./media/container-insights-analyze/containers-ready-icon.png) | (Hazır) çalıştıran|  
+| ![Bekleniyor veya duraklatıldı durum simgesi](./media/container-insights-analyze/containers-waiting-icon.png) | Bekleyen veya duraklatıldı|  
+| ![Son durum simgesi çalıştıran bildirdi.](./media/container-insights-analyze/containers-grey-icon.png) | Son çalıştırma bildirdi ancak 30 dakikadan fazla yanıt henüz|  
+| ![Sonlandırılan durum simgesi](./media/container-insights-analyze/containers-terminated-icon.png) | Başarılı bir şekilde durdurulmuş veya yanıt vermemesine başarısız|  
+| ![Başarısız durum simgesi](./media/container-insights-analyze/containers-failed-icon.png) | Durumu başarısız |  
 
 ## <a name="workbooks"></a>Çalışma Kitapları
 
@@ -320,3 +320,5 @@ Kapsayıcılar için Azure Izleyici, başlamanıza olanak sağlamak için dört 
 - DevOps veya işletimsel işlemlerinizi ve yordamlarınızı desteklemek üzere yüksek CPU ve bellek kullanımı için uyarı oluşturmayı öğrenmek üzere [kapsayıcılar Için Azure izleyici ile performans uyarıları oluşturma](container-insights-alerts.md) konusunu inceleyin.
 
 - Önceden tanımlanmış sorguları ve kümelerinizi uyarmak, görselleştirmek veya analiz etmek üzere değerlendirilecek veya özelleştirecek örnekleri görmek için [günlük sorgusu örneklerini](container-insights-log-search.md#search-logs-to-analyze-data) görüntüleyin.
+
+- Kubernetes kümenizin sistem durumunu görüntüleme hakkında bilgi edinmek için [izleyici küme durumunu](container-insights-health.md) görüntüleyin.

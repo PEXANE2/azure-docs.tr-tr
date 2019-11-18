@@ -1,19 +1,16 @@
 ---
-title: Azure Deployment Manager’ı Resource Manager şablonlarıyla kullanma | Microsoft Docs
+title: Azure Dağıtım Yöneticisi şablonlar ile kullanma
 description: Azure kaynaklarını dağıtmak için Azure Deployment Manager ile Resource Manager şablonlarını kullanın.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b381c4be5d0c56e14ccd01657542ef3bff2f8894
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 0ce37a744cdf22beddcef433fca1a64252e1673d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285677"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149900"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Öğretici: Azure Dağıtım Yöneticisi sistem durumu denetimi kullanma (Genel Önizleme)
 
@@ -41,7 +38,7 @@ Ek kaynaklar:
 * [Azure Dağıtım Yöneticisi REST API başvurusu](https://docs.microsoft.com/rest/api/deploymentmanager/).
 * [Azure dağıtım Yöneticisi örneği](https://github.com/Azure-Samples/adm-quickstart).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -65,7 +62,7 @@ Createadmpiyasaya çıkma. Parameters. json dosyasını açın ve **ProjectName*
 
 Azure Işlevini dağıtmak için aşağıdaki iki dosya kullanılır. Öğreticiye gitmek için bu dosyaları indirmeniz gerekmez.
 
-* [@No__t-1](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json)' de bulunan kaynak yöneticisi şablonu. Bu şablonu, bir Azure Işlevi oluşturmak için dağıtırsınız.
+* [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json)konumunda bulunan bir kaynak yöneticisi şablonu. Bu şablonu, bir Azure Işlevi oluşturmak için dağıtırsınız.
 * Azure Işlevi kaynak kodunun bir ZIP dosyası [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip). Çağrılan bu zip Kaynak Yöneticisi şablonu tarafından çağırılır.
 
 Azure işlevini dağıtmak için **dene** ' yi seçerek Azure Cloud Shell 'i açın ve ardından aşağıdaki betiği kabuk penceresine yapıştırın.  Kodu yapıştırmak için kabuk penceresine sağ tıklayıp **Yapıştır**' ı seçin.
@@ -83,14 +80,14 @@ Azure işlevini doğrulamak ve test etmek için:
 
     ![Azure Dağıtım Yöneticisi sistem durumu denetimi Azure Işlevi](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
-1. **@No__t-1/> işlev URL 'Sini al**' ı seçin.
+1. **&lt;/> işlev URL 'Sini al**' ı seçin.
 1. URL 'YI panoya kopyalamak için **Kopyala** ' yı seçin.  URL şuna benzer:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    URL 'deki `{healthStatus}` değerini bir durum kodu ile değiştirin. Bu öğreticide, sağlıksız senaryoyu test etmek için **sağlıksız** kullanın ve sağlıklı senaryoyu test etmek için **sağlıklı** ya da **uyarıyı** kullanın. Biri sağlıksız durum ve diğeri sağlıklı durumda olan iki URL oluşturun. Örnekler için:
+    URL 'deki `{healthStatus}` bir durum kodu ile değiştirin. Bu öğreticide, sağlıksız senaryoyu test etmek için **sağlıksız** kullanın ve sağlıklı senaryoyu test etmek için **sağlıklı** ya da **uyarıyı** kullanın. Biri sağlıksız durum ve diğeri sağlıklı durumda olan iki URL oluşturun. Örnekler için:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/unhealthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
@@ -268,7 +265,7 @@ New-AzResourceGroupDeployment `
 ```
 
 > [!NOTE]
-> `New-AzResourceGroupDeployment` zaman uyumsuz bir çağrıdır. Başarı iletisi yalnızca dağıtımın başarıyla başladığını gösterir. Dağıtımı doğrulamak için `Get-AZDeploymentManagerRollout` kullanın.  Sonraki yordama bakın.
+> `New-AzResourceGroupDeployment` zaman uyumsuz bir çağrıdır. Başarı iletisi yalnızca dağıtımın başarıyla başladığını gösterir. Dağıtımı doğrulamak için `Get-AZDeploymentManagerRollout`kullanın.  Sonraki yordama bakın.
 
 Aşağıdaki PowerShell betiğini kullanarak dağıtım ilerlemesini denetlemek için:
 
