@@ -241,7 +241,9 @@
                   href: migrate-android-adal-msal.md
                 - name: MSAL.iOS ve MacOS’a geçiş
                   href: migrate-objc-adal-msal.md
-                - name: MSAL Java’ya geçiş
+                - name: MSAL Python’a geçiş
+                  href: migrate-python-adal-msal.md
+                - name: Java için MSAL’ye geçiş
                   href: migrate-adal-msal-java.md
                 - name: ADAL.NET ve MSAL.NET’ten aracıları kullanarak Xamarin uygulamalarını geçirme
                   href: msal-net-migration-ios-broker.md
@@ -452,7 +454,11 @@
                   href: request-custom-claims.md
                 - name: Yeniden yönlendirme URI’si yapılandırması
                   href: redirect-uris-ios.md
-            - name: MSAL Java
+            - name: Python için MSAL
+              items:
+                - name: Belirteç önbelleği serileştirme
+                  href: msal-python-token-cache-serialization.md
+            - name: Java için MSAL
               items:
                 - name: Belirteç önbelleği serileştirme
                   href: msal-java-token-cache-serialization.md

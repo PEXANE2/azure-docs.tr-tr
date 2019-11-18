@@ -17,6 +17,8 @@
   items:
     - name: Kapsayıcı desteği
       href: cognitive-services-container-support.md
+    - name: Kapsayıcı görüntüsü etiketleri
+      href: ./containers/container-image-tags.md
     - name: Kapsayıcı hakkında SSS
       href: ./containers/container-faq.md
     - name: Kapsayıcı tarifleri

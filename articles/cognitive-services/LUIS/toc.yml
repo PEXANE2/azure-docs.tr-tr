@@ -171,6 +171,8 @@
           displayName: 'roles, import'
         - name: Önceden oluşturulmuş modelleri kullanma
           href: howto-add-prebuilt-models.md
+        - name: İfadedeki varlığı etiketleme
+          href: label-entity-example-utterance.md
         - name: REST API’ler ile
           items:
             - name: Node.js kullanarak program aracılığıyla uygulama derleme
@@ -188,8 +190,8 @@
         - name: Panoyu kullanma
           displayName: 'dashboard, analytics, charts, data, unclear predictions, incorrect predictions, imbalance, endpoint hits, status, evaluation, accuracy, active version, problematic intents, nearest rival, usage'
           href: luis-how-to-use-dashboard.md
-        - name: Tümcecik listesi ekleme
-          displayName: 'synonym, interchange'
+        - name: Tanımlayıcı ekleme
+          displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
         - name: Uç nokta ifadelerini gözden geçirme
           displayName: active learning

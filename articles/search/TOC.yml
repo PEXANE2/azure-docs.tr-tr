@@ -223,8 +223,6 @@
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Dizin oluşturucuları izleme
           href: search-howto-monitor-indexers.md
-        - name: Yaygın sorunları giderme
-          href: search-indexer-troubleshooting.md
     - name: AI ile zenginleştirme
       items:
         - name: Bilişsel Hizmetler kaynağı iliştirme
@@ -249,7 +247,7 @@
               href: cognitive-search-create-custom-skill-example.md
             - name: Örnek - Kapsayıcılar
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
-        - name: Sorun giderme ipuçları
+        - name: Tasarım ipuçları
           href: cognitive-search-concept-troubleshooting.md
         - name: Belge bağlantıları
           href: cognitive-search-resources-documentation.md
@@ -261,8 +259,6 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Power BI ile bağlanma
               href: knowledge-store-connect-power-bi.md
-        - name: Zenginleştirme sorunlarını giderme
-          href: cognitive-search-common-errors-warnings.md
     - name: Belgeleri sorgulama
       items:
         - name: Sorgu türleri ve oluşturma
@@ -307,6 +303,12 @@
           href: search-manage-powershell.md
         - name: Etkinliği izleme ve günlüğe kaydetme
           href: search-monitor-usage.md
+    - name: Sorun giderme
+      items:
+        - name: Dizin oluşturucu sorunları
+          href: search-indexer-troubleshooting.md
+        - name: Dizin oluşturucu hataları ve uyarıları
+          href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
     - name: Azure CLI

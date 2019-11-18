@@ -216,6 +216,8 @@
         - name: Azure AD tümleştirmesiyle Kubernetes RBAC kullanma
           href: azure-ad-rbac.md
           maintainContext: true
+        - name: Sertifikaları döndürme
+          href: certificate-rotation.md
     - name: İzleme ve günlüğe kaydetme
       items:
         - name: Kapsayıcılar için Azure İzleyici

@@ -7,17 +7,17 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: ASP.NET uygulaması oluşturma
+    - name: ASP.NET uygulaması
       href: cache-web-app-howto.md
-    - name: .NET uygulaması oluşturma
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: .NET Core uygulaması oluşturma
+    - name: .NET Core uygulaması
       href: cache-dotnet-core-quickstart.md
-    - name: Node.js uygulaması oluşturma
-      href: cache-nodejs-get-started.md
-    - name: Java uygulaması oluşturma
+    - name: .NET uygulaması
+      href: cache-dotnet-how-to-use-azure-redis-cache.md
+    - name: Java uygulaması
       href: cache-java-get-started.md
-    - name: Python uygulaması oluşturma
+    - name: Node.js uygulaması
+      href: cache-nodejs-get-started.md
+    - name: Python uygulaması
       href: cache-python-get-started.md
 - name: Öğreticiler
   items:
@@ -33,10 +33,10 @@
       href: cli-samples.md
 - name: Kavramlar
   items:
-    - name: En iyi uygulamalar
-      href: cache-best-practices.md
     - name: Yük devretme ve yama uygulama
       href: cache-failover.md
+    - name: En iyi uygulamalar
+      href: cache-best-practices.md
     - name: Önbelleğe alma İçin mimari açıdan en iyi uygulamalar
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: Nasıl yapılır kılavuzları
@@ -45,12 +45,14 @@
       items:
         - name: Önbellek katmanı seçme
           href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+        - name: Kümelemeyle önbelleğinizi dağıtın
+          href: cache-how-to-premium-clustering.md
         - name: Redis veri kalıcılığı ile önbelleğinizi koruyun
           href: cache-how-to-premium-persistence.md
         - name: Sanal ağ ile önbelleğinizi koruyun
           href: cache-how-to-premium-vnet.md
-        - name: Kümelemeyle önbelleğinizi dağıtın
-          href: cache-how-to-premium-clustering.md
+        - name: Coğrafi çoğaltmayı ayarla
+          href: cache-how-to-geo-replication.md
         - name: Yönetilen Önbellek Hizmeti’nden Geçiş
           href: cache-migrate-to-redis.md
     - name: Otomatikleştirme
@@ -79,8 +81,6 @@
       items:
         - name: Azure portalında yapılandırma
           href: cache-configure.md
-        - name: Coğrafi çoğaltmayı yapılandırma
-          href: cache-how-to-geo-replication.md
         - name: Verileri İçeri/Dışarı Aktarma
           href: cache-how-to-import-export-data.md
         - name: Yeniden başlatma

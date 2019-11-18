@@ -58,8 +58,6 @@
       href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
     - name: Anahtar değiştirme ve denetimi ayarlama
       href: key-vault-key-rotation-log-monitoring.md
-    - name: Event Grid ile Key Vault olaylarını izleme
-      href: event-grid-overview.md
 - name: Örnekler
   items:
     - name: Kod örnekleri
@@ -114,6 +112,8 @@
           href: key-vault-group-permissions-for-apps.md
     - name: Event Grid ile anahtar kasası bildirimlerini yönlendirme
       href: event-grid-tutorial.md
+    - name: Event Grid ve Logic Apps aracılığıyla bildirim alma
+      href: event-grid-logicapps.md
     - name: Azure İlkesi ile tümleştirme
       href: azure-policy.md
     - name: Azure Key Vault günlüğü
