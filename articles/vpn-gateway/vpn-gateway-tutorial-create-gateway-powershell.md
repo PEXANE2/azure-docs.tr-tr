@@ -1,5 +1,5 @@
 ---
-title: PowerShell kullanarak Azure VPN ağ geçidi oluşturma ve yönetme | Microsoft Docs
+title: 'Azure VPN Gateway: ağ geçidi oluşturma ve yönetme: öğretici'
 description: Öğretici - Azure PowerShell modülü ile VPN ağ geçidi oluşturma ve yönetme
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: bfec1493492fb1e8e9bd7394aae3db8983f4cff9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80fd4d707b8335d4edcc5a660569d25886054b6f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495647"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151825"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Öğretici: PowerShell kullanarak bir VPN ağ geçidi oluşturma ve yönetme
 

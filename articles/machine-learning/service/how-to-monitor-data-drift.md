@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 9ac1c5cb25d6b2ad396c2caed74942988a723a0e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bf82714011754ba516fa38444b1019b9cc1aa732
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824249"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111871"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' e dağıtılan modellerdeki veri kayması 'nı (Önizleme) Algıla
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,13 +37,13 @@ Azure Machine Learning, AKS üzerinde dağıtılan bir modelin girişlerini izle
 + Uyarıları e-posta ile veri kayması ile gönderin.
 
 > [!Note]
-> Bu hizmet (Önizleme) ve yapılandırma seçeneklerinde sınırlıdır. Ayrıntılar ve güncelleştirmeler için lütfen [API belgelerimize](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) ve [Sürüm notlarımıza](azure-machine-learning-release-notes.md) bakın. 
+> Bu hizmet (Önizleme) ve yapılandırma seçeneklerinde sınırlıdır. Ayrıntılar ve güncelleştirmeler için lütfen [API belgelerimize](https://docs.microsoft.com/python/api/azureml-datadrift/) ve [Sürüm notlarımıza](azure-machine-learning-release-notes.md) bakın. 
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Azure Machine Learning ' de verileri Drın nasıl izlenir
 
 Azure Machine Learning kullanarak, veri kümeleri veri kümeleri veya dağıtımlar aracılığıyla izlenir. Bir taban çizgisi veri kümesi (genellikle bir model için eğitim veri kümesi) için veri kayması izlemek üzere belirtilir. İkinci bir veri kümesi-genellikle bir dağıtımdan toplanan model giriş verileri, taban çizgisi veri kümesine göre test edilir. Her iki veri kümesi de veri Drın izleme hizmetine profil oluşturulur ve giriş yapılır. Bir makine öğrenimi modeli, iki veri kümesi arasındaki farkları tespit etmek için eğitilir. Modelin performansı, iki veri kümesi arasındaki drifit 'in boyutunu ölçen DRFT katna dönüştürülür. [Model yorumlenebilirliğini](how-to-machine-learning-interpretability.md)kullanarak, değişikliklerini katlarına katkıda bulunan özellikler hesaplanır. Veri kümesi profilinden her bir özellik hakkındaki istatistiksel bilgiler izlenir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Bir tane yoksa, başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
@@ -98,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>Datadriftalgılayıcısı çalıştırması gönder
 
-`DataDriftDetector` nesne yapılandırıldığında, model için verilen bir tarih üzerinde bir [veri DRI çalışması](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) gönderebilirsiniz. Çalıştırmanın bir parçası olarak `drift_threshold` parametresini ayarlayarak Datadriftalgılayıcısı uyarılarını etkinleştirin. [Datadrift_coefficient](#metrics) verilen `drift_threshold`üstündeyse, bir e-posta gönderilir.
+`DataDriftDetector` nesne yapılandırıldığında, model için verilen bir tarih üzerinde bir [veri DRI çalışması](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#run-target-date--services-none--compute-target-none--create-compute-target-false--feature-list-none--drift-threshold-none-) gönderebilirsiniz. Çalıştırmanın bir parçası olarak `drift_threshold` parametresini ayarlayarak Datadriftalgılayıcısı uyarılarını etkinleştirin. [Datadrift_coefficient](#visualize-drift-metrics) verilen `drift_threshold`üstündeyse, bir e-posta gönderilir.
 
 ```python
 # adhoc run today

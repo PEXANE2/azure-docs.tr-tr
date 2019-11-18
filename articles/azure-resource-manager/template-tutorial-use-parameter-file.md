@@ -1,19 +1,16 @@
 ---
-title: Öğretici-Azure Resource Manager şablonu dağıtmaya yardımcı olması için parametre dosyası kullanma
+title: Öğretici-şablon dağıtmak için parametre dosyası kullanma
 description: Azure Resource Manager şablonunuzu dağıtmak için kullanılacak değerleri içeren parametre dosyalarını kullanın.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fa29ea3d2f6edbbb016ce5c0c74415a5e765e85a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 7ebf8a3eed81c8f5233f7212df7e245a27f7fd16
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177544"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149170"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuzu dağıtmak için parametre dosyalarını kullanma
 
@@ -41,13 +38,13 @@ VS Code ' de, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azure
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
 
-Bu dosya, geliştirme ortamı için parametre dosyasıdır. Depolama hesabı için Standard_LRS kullandığını, kaynakları **dev** ön ekine göre isimettiğini ve **ortam** etiketini **dev**olarak ayarladığına dikkat edin.
+Bu dosya, geliştirme ortamı için parametre dosyasıdır. Depolama hesabı için Standard_LRS kullandığına, kaynakları **dev** ön ekine göre isimettiğini ve **ortam** etiketini **dev**olarak ayarladığına dikkat edin.
 
 Yine, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azuredeploy. Parameters. prod. JSON**adıyla kaydedin.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
 
-Bu dosya, üretim ortamı için parametre dosyasıdır. Depolama hesabı için Standard_GRS kullandığını, bir **contoso** ön ekine sahip kaynakları isimettiğini ve **ortam** etiketini **Üretim**olarak ayarladığına dikkat edin. Gerçek bir üretim ortamında, ücretsiz olarak aynı SKU ile bir App Service kullanmak isteyeceksiniz, ancak bu öğretici için bu SKU 'YU kullanmaya devam edeceğiz.
+Bu dosya, üretim ortamı için parametre dosyasıdır. Depolama hesabı için Standard_GRS kullandığına, kaynakları **contoso** ön ekine göre isimettiğini ve **ortam** etiketini **Üretim**olarak ayarladığına dikkat edin. Gerçek bir üretim ortamında, ücretsiz olarak aynı SKU ile bir App Service kullanmak isteyeceksiniz, ancak bu öğretici için bu SKU 'YU kullanmaya devam edeceğiz.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -72,7 +69,7 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
@@ -104,7 +101,7 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group create \
@@ -123,17 +120,17 @@ az group deployment create \
 
 Kaynak gruplarını Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure portalı](https://portal.azure.com)’nda oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Bu öğreticide dağıttığınız iki yeni kaynak grubunu görürsünüz.
 1. Kaynak grubu ' nu seçin ve dağıtılan kaynakları görüntüleyin. Bu ortam için parametre dosyanızda belirttiğiniz değerlerle eşleştiğine dikkat edin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
+1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin. Bu seriyi tamamladıysanız, silinecek üç kaynak grubunuz vardır-myResourceGroup, myResourceGroupDev ve myResourceGroupProd.
 3. Kaynak grubu adını seçin.
-4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
+4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -142,4 +139,4 @@ Tebrikler, Azure 'a şablon dağıtmaya yönelik bu girişi tamamladınız. Geri
 Şablonlar hakkında daha gelişmiş kavramlara geçmek için hazırsınız. Sonraki öğreticide, dağıtılacak kaynakları tanımlamaya yardımcı olması için şablon başvuru belgelerinin kullanılmasıyla ilgili daha fazla ayrıntıya gidersiniz.
 
 > [!div class="nextstepaction"]
-> [Şablon başvurusunu kullanma](resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [Şablon başvurusunda yararlanma](resource-manager-tutorial-create-encrypted-storage-accounts.md)

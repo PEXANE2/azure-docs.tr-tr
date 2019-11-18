@@ -1,5 +1,5 @@
 ---
-title: Azure Uygulama Yapılandırması nedir? | Microsoft Docs
+title: Azure Uygulama Yapılandırması nedir? | Microsoft Belgeleri
 description: Azure uygulama yapılandırma hizmeti 'ne genel bakış.
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 1db46e8562006e1b60e4f51ca88220aeca5fb2a8
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: b26fa822e17ad7e9444b75d4db516ea2ccf5340b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687039"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129690"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure Uygulama Yapılandırması nedir?
 
@@ -30,7 +30,7 @@ Uygulama yapılandırması şu anda genel önizlemededir. Önizleme döneminde k
 
 Bulut tabanlı uygulamalar genellikle birden çok bölgedeki birden çok sanal makine veya kapsayıcı üzerinde çalışır ve birden çok dış hizmet kullanır. Güçlü ve ölçeklenebilir olan böyle bir dağıtılmış uygulama oluşturmak bir zorluk sergilemektir.
 
-Çeşitli programlama yöntemleri, geliştiricilerin uygulama oluşturmanın artmasının karmaşıklığıyla uğraşmasını sağlamaya yardımcı olur. Örneğin, 12 öğeli uygulama, bulut uygulamalarıyla kullanılmak üzere çok iyi sınanmış mimari desenleri ve en iyi uygulamaları açıklar. Bu kılavuzun önemli bir önerisi, koddan yapılandırmanın ayrı olması olur. Bu durumda, bir uygulamanın yapılandırma ayarları, çalıştırılabilirinin dışarıdan tutulması ve çalışma zamanı ortamından veya bir dış kaynaktan okunmalıdır.
+Çeşitli programlama yöntemleri, geliştiricilerin uygulama oluşturmanın artmasının karmaşıklığıyla uğraşmasını sağlamaya yardımcı olur. Örneğin, [on Iki öğeli uygulama](https://12factor.net/) , bulut uygulamalarıyla kullanılmak üzere çok iyi sınanmış mimari desenleri ve en iyi uygulamaları açıklar. Bu kılavuzun önemli bir önerisi, koddan yapılandırmanın ayrı olması olur. Bu durumda, bir uygulamanın yapılandırma ayarları, çalıştırılabilirinin dışarıdan tutulması ve çalışma zamanı ortamından veya bir dış kaynaktan okunmalıdır.
 
 Herhangi bir uygulama uygulama yapılandırmasından yararlanabileceği sürece, aşağıdaki örnekler, kullanmanın avantajlarından yararlanan uygulama türleridir:
 
@@ -60,7 +60,7 @@ Uygulama yapılandırması, uygulama gizli dizileri depolamak için kullanılan 
 
 Uygulamanıza uygulama yapılandırma deposu eklemenin en kolay yolu, Microsoft 'un sağladığı bir istemci kitaplığı kullanmaktır. Programlama diline ve çerçevesine bağlı olarak, aşağıdaki en iyi yöntemler kullanılabilir.
 
-| Programlama dili ve Framework | Nasıl bağlanılır? |
+| Programlama dili ve Framework | Bağlanma |
 |---|---|
 | .NET Core ve ASP.NET Core | .NET Core için uygulama yapılandırma sağlayıcısı |
 | .NET ve ASP.NET | .NET için uygulama yapılandırma Oluşturucusu |

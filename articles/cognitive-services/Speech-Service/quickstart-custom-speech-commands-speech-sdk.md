@@ -1,5 +1,5 @@
 ---
-title: "Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma (Önizleme)"
+title: "Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma-konuşma hizmeti"
 titleSuffix: Azure Cognitive Services
 description: Bu makalede, özel komutlarla bir konuşma SDK 'Sı istemci uygulaması oluşturacaksınız.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5f395d37e0133a081a6fcb2e03821a97e4012316
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507500"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111163"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma (Önizleme)
 
@@ -46,7 +46,7 @@ Bu hızlı başlangıçta, bir istemci uygulamasını özel komutlar uygulamanı
 
 1. [Önceden oluşturulmuş özel komutlar uygulamanızı](./quickstart-custom-speech-commands-create-new.md) açın ve **Yayımla** ' yı seçin.
 
-   > [!div class="mx-imgBorder"]
+   > [!div class="mx-imgBorder"] 
    > ![uygulama](media/custom-speech-commands/fulfill-sdk-publish-application.png) Yayımla
 
 1. Uygulama kimliğini daha sonra kullanmak üzere yayımlama bildiriminden Kopyala
@@ -320,7 +320,7 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
 
    ```csharp
    //
-   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities, 
+   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities,
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
@@ -377,7 +377,7 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
 1. Aşağıdaki kod parçacığını `MainPage` sınıfındaki `ListenButton_ButtonClicked` yönteminin gövdesine ekleyin
 
    ```csharp
-   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and 
+   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
    // registered the event handlers.
    if (connector == null)
    {
@@ -402,7 +402,7 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-1. Menü çubuğundan, uygulamayı derlemek için **build** > **Build Solution** öğesini seçin. Kodun hatasız derlenmesi gerekir.
+1. Uygulama derlemek için menü **çubuğundan** > **derleme çözümü** oluştur ' u seçin. Kodun hatasız olarak derlenmesi gerekir.
 
 1. Uygulamayı başlatmak için hata **ayıklamayı başlatın** > **Hata Ayıkla** ' yı seçin (veya **F5**tuşuna basın). **HelloWorld** penceresi görüntülenir.
 
@@ -415,7 +415,7 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
 1. **Konuş**' u seçin ve cihazınızın mikrofonuna bir İngilizce tümcecik veya cümle konuşun. Konuşma, doğrudan hat konuşma kanalına iletilir ve pencerede görüntülenen metne kaydedilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-> [!div class="nextstepaction"]
-> [Nasıl yapılır: konuşma SDK 'sı (Önizleme) ile Istemcideki komutları yerine getirmek](./how-to-custom-speech-commands-fulfill-sdk.md)
-> [nasıl yapılır: özel komut parametrelerine doğrulama ekleme (Önizleme)](./how-to-custom-speech-commands-validations.md)
 
+> [!div class="nextstepaction"]
+> [Nasıl yapılır: konuşma SDK 'sı (Önizleme) ile istemcideki komutları yerine getirmek](./how-to-custom-speech-commands-fulfill-sdk.md)
+> [nasıl yapılır: özel komut parametrelerine doğrulama ekleme (Önizleme)](./how-to-custom-speech-commands-validations.md)

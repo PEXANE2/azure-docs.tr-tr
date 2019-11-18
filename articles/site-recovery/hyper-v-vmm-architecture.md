@@ -7,19 +7,17 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: f7fa5d7ef68613301c30e26d21f69a80559dbcb9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3e81e353d2912f56a932ce118a0424e45e758df7
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030008"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133004"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Mimari-ikincil siteye Hyper-V çoğaltma
 
 Bu makalede, Azure portalından [Azure Site Recovery](site-recovery-overview.md) hizmeti kullanılarak, System Center Virtual Machine Manager (VMM) bulutlarındaki Hyper-V sanal makinelerini (VM) ikincil bir VMM sitesine çoğaltırken kullanılan bileşenler ve işlemler açıklanmaktadır.
-
-> [!WARNING]
-> Lütfen SCVMM yapılandırması 'nın hesapta kullanılması için ASR desteğinin yakında kullanım dışı olacağını unutmayın. bu nedenle, devam etmeden önce [kullanımdan](site-to-site-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
+a
 
 ## <a name="architectural-components"></a>Mimari bileşenler
 

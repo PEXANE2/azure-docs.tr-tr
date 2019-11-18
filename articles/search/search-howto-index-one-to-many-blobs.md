@@ -1,7 +1,7 @@
 ---
-title: Tam metin araması için Azure Blob Dizin oluşturucudan çok sayıda arama dizini belgesine bir blob 'u dizine ekleyin
+title: Birden çok belge içeren dizin blob 'ları
 titleSuffix: Azure Cognitive Search
-description: Azure Congitive arama blobu Dizin oluşturucuyu kullanarak Azure bloblarını metin içeriği için gezin. Her blob bir veya daha fazla arama dizini belgesi sağlayabilir.
+description: Her Blobun bir veya daha fazla arama dizini belgesi sağlayabildiği Azure Congitive arama blobu Dizin oluşturucuyu kullanarak, Azure bloblarını metin içeriğine göre gezin.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 127354e55a81e379825b41759f2b6150ba554a12
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818535"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112274"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Birden çok arama belgesi üretmek için Blobları dizinleme
 Varsayılan olarak, bir blob Dizin Oluşturucu bir Blobun içeriğini tek bir arama belgesi olarak değerlendirir. Belirli **Parsingmode** değerleri, tek bir Blobun birden çok arama belgesi ile sonuçlanabileceğinden senaryolar destekler. Bir dizin oluşturucunun bir Blobun birden fazla arama belgesi ayıklamasına izin veren farklı türde **Parsingmode** 'lar şunlardır:

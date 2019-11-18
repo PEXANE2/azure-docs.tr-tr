@@ -1,18 +1,18 @@
 ---
-title: Azure Application Gateway WebSocket desteği | Microsoft Docs
-description: Bu sayfa Application Gateway WebSocket desteğine genel bir bakış sağlar.
+title: Azure Application Gateway WebSocket desteği
+description: Application Gateway, tüm ağ geçidi boyutlarında WebSocket için yerel destek sağlar. Kullanıcı tarafından yapılandırılabilir ayarlar yoktur.
 author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
+services: application-gateway
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 03/18/2019
-ms.openlocfilehash: a48f1b6e4410820d40ba6563d431c690ab791ff0
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 11/16/2019
+ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097236"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130340"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Application Gateway 'de WebSocket desteğine genel bakış
 

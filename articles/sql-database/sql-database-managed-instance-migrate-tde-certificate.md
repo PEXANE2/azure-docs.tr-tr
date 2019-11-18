@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: f0bc66260a0eaa66e71241148591146fa38d4120
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 202267d4fffc7c6f0d99cd2a6ef3bbee82947a81
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821783"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132397"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>TDE korumalı veritabanının sertifikasını Azure SQL veritabanı yönetilen örneği 'ne geçirme
 
@@ -32,7 +32,7 @@ Tam yönetilen hizmet kullanılarak hem TDE korumalı veritabanının hem de ilg
 > [!IMPORTANT]
 > Geçirilen sertifika yalnızca TDE korumalı veritabanını geri yüklemek için kullanılır. Geri yükleme işlemi yapıldıktan kısa süre sonra, geçirilen sertifika, örnekte belirlediğiniz saydam veri şifrelemesinin türüne bağlı olarak, hizmet tarafından yönetilen sertifika veya asimetrik anahtar tarafından farklı bir koruyucu ile değiştirilmiştir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -41,7 +41,7 @@ Tam yönetilen hizmet kullanılarak hem TDE korumalı veritabanının hem de ilg
 Bu makaledeki adımları tamamlayabilmeniz için şu önkoşullar gereklidir:
 
 - Şirket içi sunucuya veya dosya olarak dışarı aktarılan sertifikaya erişimi olan başka bir bilgisayara yüklenmiş [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) komut satırı aracı. Pvk2Pfx aracı, tek başına kendi içinde bir komut satırı ortamı olan [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk)'in bir parçasıdır.
-- [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell) sürüm 5.0 veya üstü yüklenmiş olmalıdır.
+- [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell) sürüm 5.0 veya üstü yüklenmiş olmalıdır.
 - Azure PowerShell modül [yüklendi ve güncelleştirildi](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - [Az. SQL modülü](https://www.powershellgallery.com/packages/Az.Sql).
   PowerShell modülünü yüklemek/güncelleştirmek için PowerShell’de şu komutları çalıştırın:

@@ -1,28 +1,21 @@
 ---
-title: 'Hızlı Başlangıç: Redsıs için Azure önbelleğini Java ile kullanma'
+title: 'Hızlı başlangıç: Java ile Redsıs için Azure önbelleğini kullanma'
 description: Bu hızlı başlangıçta, Redsıs için Azure önbelleği kullanan yeni bir Java uygulaması oluşturacaksınız
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 29275a5e-2e39-4ef2-804f-7ecc5161eab9
 ms.service: cache
 ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 019defe782f8258acfd508745d36a0a6599d2e61
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 6163392c80d40b6ea65e681aa175c21c244099b9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273923"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122697"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Hızlı Başlangıç: Redsıs için Azure önbelleğini Java ile kullanma
+# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Hızlı başlangıç: Java ile Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, özel bir önbelleğe erişim sağlamak için [Jedsıs](https://github.com/xetorthio/jedis) redsıs Istemcisini kullanarak redsıs Için Azure önbelleğini bir Java uygulamasına dahil edersiniz.
 
@@ -120,7 +113,7 @@ public class App
 }
 ```
 
-Bu kod, önbellek ana bilgisayar adı ve anahtar ortam değişkenlerini kullanarak Redsıs örneği için bir Azure önbelleğine bağlanmayı gösterir. Kod ayrıca önbellekte bir dize değeri depolar ve alır. Ayrıca `PING` ve `CLIENT LIST` komutları da yürütülür. 
+Bu kod, önbellek ana bilgisayar adı ve anahtar ortam değişkenlerini kullanarak Redsıs örneği için bir Azure önbelleğine bağlanmayı gösterir. Kod ayrıca önbellekte bir dize değeri depolar ve alır. Ayrıca `PING` ve `CLIENT LIST` komutları da yürütüldü. 
 
 *App.java*'yı kaydedin.
 
@@ -147,7 +140,7 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 > Bir kaynak grubunu silme işlemi geri alınamaz ve kaynak grubunun ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. Bu örneği, tutmak istediğiniz kaynakları içeren mevcut bir kaynak grubunda barındırmak için kaynaklar oluşturduysanız, kaynak grubunu silmek yerine her kaynağı kendi ilgili dikey penceresinden tek tek silebilirsiniz.
 >
 
-1. [Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
 
 1. **Ada göre filtrele** metin kutusuna kaynak grubunuzun adını yazın. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **.** .. öğesini seçin ve **kaynak grubunu silin**.
 

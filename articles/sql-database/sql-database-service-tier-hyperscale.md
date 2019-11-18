@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 3a448147390ff2dd6a8049e8338a4cbf2bd94ce3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c71fb8a7e18439817023874146e22c29a5af3b12
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821112"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123695"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -78,7 +78,7 @@ Hiperscale fiyatlandırması hakkında daha fazla bilgi için bkz. [Azure SQL ve
 
 ## <a name="distributed-functions-architecture"></a>Dağıtılmış işlevler mimarisi
 
-Veri yönetimi işlevlerinin tümünü tek bir konum/işlemde merkezi olarak kullanan geleneksel veritabanı altyapılarından farklı olarak (Bu nedenle üretimde bulunan dağıtılmış veritabanlarının bir tek parçalı veri altyapısının birden çok kopyasına sahip olduğu halde), bir hiper ölçek veritabanı ayrılır çeşitli veri altyapılarının semantiğinin, veriler için uzun süreli depolama ve dayanıklılık sağlayan bileşenlerden farklı olduğu sorgu işleme altyapısı. Bu şekilde, depolama kapasitesi gerektiği kadar düzgün şekilde ölçeklendirilebilir (başlangıç hedefi 100 TB). Salt okunur çoğaltmalar aynı depolama bileşenlerini paylaşır, böylece yeni bir okunabilir çoğaltmayı çalıştırmak için veri kopyalama gerekmez. 
+Tek bir konum/işlem içindeki tüm veri yönetimi işlevlerinin merkezi olan geleneksel veritabanı altyapılarından farklı olarak (günümüzde üretimde dağıtılmış veritabanlarının tek parçalı veri altyapısının birden çok kopyasına sahip olması durumunda), hiper ölçekli bir veritabanı, çeşitli veri altyapılarının semantiğinin, veriler için uzun süreli depolama ve dayanıklılık sağlayan bileşenlerden, sorgu işleme altyapısını ayırır. Bu şekilde, depolama kapasitesi gerektiği kadar düzgün şekilde ölçeklendirilebilir (başlangıç hedefi 100 TB). Salt okunur çoğaltmalar aynı depolama bileşenlerini paylaşır, böylece yeni bir okunabilir çoğaltmayı çalıştırmak için veri kopyalama gerekmez. 
 
 Aşağıdaki diyagramda, bir hiper ölçek veritabanındaki farklı düğüm türleri gösterilmektedir:
 
@@ -86,7 +86,7 @@ Aşağıdaki diyagramda, bir hiper ölçek veritabanındaki farklı düğüm tü
 
 Hiper ölçekli bir veritabanı aşağıdaki farklı bileşen türlerini içerir:
 
-### <a name="compute"></a>İşlem
+### <a name="compute"></a>Bilgi İşlem
 
 İşlem düğümü, ilişkisel altyapının bulunduğu yerdir, bu nedenle tüm dil öğeleri, sorgu işleme vb. oluşur. Hiper ölçekli veritabanı olan tüm kullanıcı etkileşimleri, bu işlem düğümleri aracılığıyla gerçekleşir. İşlem düğümlerinde, veri sayfasını getirmek için gereken ağ gidiş dönüşlerin sayısını en aza indirmek için SSD tabanlı önbellekler (önceki diyagramda RBPEX-dayanıklı arabellek havuzu uzantısı olarak etiketlenir) vardır. Tüm okuma/yazma iş yüklerinin ve işlemlerinin işlendiği bir birincil işlem düğümü vardır. Yük devretme amaçlarıyla etkin bekleme düğümleri görevi gören bir veya daha fazla ikincil işlem düğümü vardır ve okuma iş yüklerini boşaltma için salt okunurdur işlem düğümleri görevi görür (Bu işlev isteniyorsa).
 
@@ -98,7 +98,7 @@ Sayfa sunucuları, ölçeği genişletilmiş bir depolama altyapısını temsil 
 
 Günlük hizmeti, birincil işlem çoğaltmasındaki günlük kayıtlarını kabul eder, bunları dayanıklı bir önbellekte devam ettirir ve günlük kayıtlarını, verilerin güncelleştirilebilmesi için ilgili sayfa sunucuları ve ilgili sayfa sunucuları gibi işlem çoğaltmalarının geri kalanına iletir. vardır. Bu şekilde, birincil işlem çoğaltmasındaki tüm veriler, tüm ikincil işlem çoğaltmaları ve sayfa sunucularına günlük hizmeti aracılığıyla dağıtılır. Son olarak, günlük kayıtları, Azure Storage 'daki uzun süreli depolamaya gönderilir ve bu, neredeyse sonsuz bir depolama deposudur. Bu mekanizma, sık kullanılan günlük kesilmesi gereksinimini ortadan kaldırır. Günlük hizmeti 'nin günlük kayıtlarına erişimi hızlandırmak için yerel önbelleği de vardır.
 
-### <a name="azure-storage"></a>Azure depolama alanı
+### <a name="azure-storage"></a>Azure Storage
 
 Azure depolama, bir veritabanındaki tüm veri dosyalarını içerir. Sayfa sunucuları veri dosyalarını Azure depolama 'da güncel tutar. Bu depolama, yedekleme amaçları için ve Azure bölgeleri arasında çoğaltma için kullanılır. Yedeklemeler, veri dosyalarının depolama anlık görüntüleri kullanılarak uygulanır. Anlık görüntüleri kullanarak geri yükleme işlemleri, veri boyutundan bağımsız olarak hızlıdır. Veriler, veritabanının yedekleme saklama süresi içinde herhangi bir noktaya geri yüklenebilir.
 
@@ -114,7 +114,7 @@ Ek salt okuma işlem düğümlerini hızlı bir şekilde artırma/azaltma özell
 
 [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) veya [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)kullanılarak bir hiper ölçek veritabanı oluşturulabilir. Hiper ölçekli veritabanları yalnızca [sanal çekirdek tabanlı satın alma modeli](sql-database-service-tiers-vcore.md)kullanılarak kullanılabilir.
 
-Aşağıdaki T-SQL komutu, hiper ölçekli bir veritabanı oluşturur. `CREATE DATABASE` bildiriminde hem sürüm hem de hizmet hedefini belirtmeniz gerekir. Geçerli hizmet amaçları listesinin [kaynak sınırlarına](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) bakın.
+Aşağıdaki T-SQL komutu, hiper ölçekli bir veritabanı oluşturur. `CREATE DATABASE` bildiriminde hem sürüm hem de hizmet hedefini belirtmeniz gerekir. Geçerli hizmet amaçları listesinin [kaynak sınırlarına](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen5) bakın.
 
 ```sql
 -- Create a HyperScale Database

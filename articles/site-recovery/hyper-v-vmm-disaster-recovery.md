@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 559f29624ef0946374c3e87a26f0983f202a20d7
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082625"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132998"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Hyper-V VM'leri için ikincil bir şirket içi siteye olağanüstü durum kurtarma ayarlama
 
@@ -29,8 +29,6 @@ Bu makalede System Center Virtual Machine Manager (VMM) bulutlarında yönetilen
 > * Çoğaltma ilkesi oluşturma
 > * Sanal makine için çoğaltmayı etkinleştirme
 
-> [!WARNING]
-> Lütfen SCVMM yapılandırması 'nın hesapta kullanılması için ASR desteğinin yakında kullanım dışı olacağını unutmayın. bu nedenle, devam etmeden önce [kullanımdan](site-to-site-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,7 +39,7 @@ Bu senaryoyu tamamlamak için:
 - Çoğaltmak istediğiniz VM'lerin [çoğaltılan makine desteği](hyper-v-vmm-secondary-support-matrix.md#replicated-vm-support) için uygun olup olmadığını denetleyin.
 - VMM sunucularını ağ eşlemesi için hazırlayın.
 
-### <a name="prepare-for-network-mapping"></a>Ağ eşlemesi için hazırlanma
+### <a name="prepare-for-network-mapping"></a>Ağ eşlemeye hazırlama
 
 [Ağ eşlemesi](hyper-v-vmm-network-mapping.md), kaynak ve hedef bulutlardaki şirket içi VMM VM ağlarını eşler. Eşleme sürecinde şu işlemler gerçekleştirilir:
 

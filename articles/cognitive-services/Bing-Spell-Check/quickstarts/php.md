@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Bing Yazım Denetimi REST API ve PHP ile yazım denetimi yapma'
+title: 'Hızlı başlangıç: Bing Yazım Denetimi REST API ve PHP ile yazım denetimi yapma'
 titleSuffix: Azure Cognitive Services
-description: Yazımı ve dilbilgisini denetlemek için Bing Yazım Denetimi API'si kullanmaya başlayın.
+description: Bu basit PHP uygulaması, Bing Yazım Denetimi API'si bir istek gönderir ve önerilen düzeltmelerin bir listesini döndürür.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 15a550321c28703c7bb4d8155ffeb7791eafedc6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 4437297c99e346209cf1f7a8973ea0f6f81894af
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423490"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110797"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Hızlı Başlangıç: Bing Yazım Denetimi REST API ve PHP ile yazım denetimi yapma
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve PHP ile yazım denetimi yapma
 
-Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. Bu basit Python uygulaması, API 'ye bir istek gönderir ve önerilen düzeltmelerin bir listesini döndürür. Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. Bu basit PHP uygulaması, API 'ye bir istek gönderir ve önerilen düzeltmelerin bir listesini döndürür. Bu uygulama PHP 'de yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

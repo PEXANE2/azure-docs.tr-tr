@@ -1,30 +1,22 @@
 ---
-title: Redsıs için Azure önbelleğini izleme | Microsoft Docs
+title: Redsıs için Azure önbelleğini izleme
 description: Redsıs örnekleri için Azure önbelleğinizin durumunu ve performansını nasıl izleyeceğinizi öğrenin
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 7e70b153-9c87-4290-85af-2228f31df118
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 5ae1827c7af3346a9197a9e28ee442d8aca0e38f
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 73e1e3bfbc84e6264897d571fca1bf31061d7ab6
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299530"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122756"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini izleme
 Redsıs için Azure önbelleği, önbellek örneklerinizi izlemeye yönelik çeşitli seçenekler sunmak için [Azure izleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 'yi kullanır. Ölçümleri görüntüleyebilir, ölçüm grafiklerini başlangıç panosuna sabitleyebilir, izleme grafiklerinin tarih ve saat aralığını özelleştirebilir, grafiklerden ölçümleri ekleyebilir ve kaldırabilir ve belirli koşullar karşılandığında uyarılar ayarlayabilirsiniz. Bu araçlar, Redsıs örnekleri için Azure önbelleğinizin durumunu izlemenize ve önbelleğe alma uygulamalarınızı yönetmenize yardımcı olur.
 
-Redsıs örnekleri için Azure Cache ölçümleri, bir dakikada yaklaşık olarak iki kez Redsıs [Info](https://redis.io/commands/info) komutu kullanılarak toplanır ve 30 gün boyunca otomatik olarak depolanır (bkz. farklı bir bekletme ilkesi yapılandırmak için [önbellek ölçümlerini dışarı aktarma](#export-cache-metrics) ) ölçüm grafiklerinde gösterilir ve uyarı kuralları tarafından değerlendirilir. Her önbellek ölçümü için kullanılan farklı BILGI değerleri hakkında daha fazla bilgi için bkz. [kullanılabilir ölçümler ve raporlama aralıkları](#available-metrics-and-reporting-intervals).
+Redsıs örnekleri için Azure Cache ölçümleri, dakikada yaklaşık olarak iki kez Redsıs [Info](https://redis.io/commands/info) komutu kullanılarak toplanır ve 30 gün boyunca otomatik olarak depolanır (bkz. farklı bir bekletme ilkesi yapılandırmak için [önbellek ölçümlerini dışarı aktarma](#export-cache-metrics) ), böylece ölçüm grafiklerinde görüntülenebilmeleri ve uyarı kuralları tarafından değerlendirilir. Her önbellek ölçümü için kullanılan farklı BILGI değerleri hakkında daha fazla bilgi için bkz. [kullanılabilir ölçümler ve raporlama aralıkları](#available-metrics-and-reporting-intervals).
 
 <a name="view-cache-metrics"></a>
 
@@ -89,7 +81,7 @@ Varsayılan olarak, Azure Izleyici 'deki önbellek ölçümleri [30 gün boyunca
 ## <a name="available-metrics-and-reporting-intervals"></a>Kullanılabilir ölçümler ve raporlama aralıkları
 Önbellek ölçümleri, **Geçmiş saat**, **bugün**, **geçen hafta**ve **özel**gibi birkaç Raporlama aralığı kullanılarak raporlanır. Her ölçüm grafiğinin **ölçüm** dikey penceresi grafikteki her ölçüm için Ortalama, en düşük ve en yüksek değerleri görüntüler ve bazı ölçümler Raporlama aralığı için bir toplam görüntüler. 
 
-Her ölçüm iki sürüm içerir. Tek bir ölçüm önbelleğin tamamına yönelik performansı ölçer ve [kümeleme](cache-how-to-premium-clustering.md)kullanan önbellekler için, ad `(Shard 0-9)` içinde bulunan bir ölçümün ikinci bir sürümü önbellekte tek bir parça için performansı ölçer. Örneğin, bir önbellekte 4 parça varsa, `Cache Hits` önbelleğin tamamına yönelik toplam isabet miktarı ve `Cache Hits (Shard 3)` yalnızca önbelleğin söz konusu parçasına ait isabetler olur.
+Her ölçüm iki sürüm içerir. Bir ölçüm tüm önbelleğin performansını ölçer ve [kümeleme](cache-how-to-premium-clustering.md)kullanan önbellekler için, ad içinde `(Shard 0-9)` içeren ikinci bir sürümü bir önbellekte tek bir parça için performansı ölçer. Örneğin, bir önbellekte 4 parça varsa `Cache Hits` tüm önbelleğin toplam isabet miktarı olur ve `Cache Hits (Shard 3)` yalnızca önbelleğin söz konusu parçasına ait olan isabetlerğidir.
 
 > [!NOTE]
 > Önbellek bağlı etkin istemci uygulamaları olmadan boşta kaldığında bile, bağlı istemciler, bellek kullanımı ve gerçekleştirilen işlemler gibi bazı önbellek etkinliklerini görebilirsiniz. Bu etkinlik, Redsıs örneği için Azure önbelleğinin çalışması sırasında normaldir.
@@ -98,25 +90,25 @@ Her ölçüm iki sürüm içerir. Tek bir ölçüm önbelleğin tamamına yönel
 
 | Ölçüm | Açıklama |
 | --- | --- |
-| Önbellek ısabetleri |Belirtilen Raporlama aralığı sırasında başarılı anahtar arama sayısı. Bu, redsıs `keyspace_hits` [Info](https://redis.io/commands/info) komutundan öğesine eşlenir. |
-| Önbellek gecikmesi (Önizleme) | Önbelleğin düğümler arası gecikme süresi temel alınarak hesaplanan önbelleğin gecikmesi. Bu ölçüm mikrosaniye cinsinden ölçülür ve üç boyuta sahiptir: Belirtilen Raporlama aralığı boyunca önbelleğin ortalama, en düşük ve en fazla gecikme süresini temsil eden "AVG", "min" ve "Max". |
-| Önbellek Isabetsizliği |Belirtilen Raporlama aralığı sırasında başarısız anahtar aramalarının sayısı. Bu, redsıs Info komutundan öğesine `keyspace_misses` eşlenir. Önbellek isabetsizliği, önbellekte bir sorun olduğu anlamına gelmez. Örneğin, önbelleğe alma programlama deseninin kullanıldığı bir uygulama, bir öğe için ilk önbellekte görünür. Öğe yoksa (önbellek isabetsizliği), öğe veritabanından alınır ve bir dahaki sefer için önbelleğe eklenir. Önbellek isabetsizliği, önbelleğe alma programlama deseninin normal davranışıdır. Önbellek isabetsizlik sayısı beklenenden yüksekse, önbellekten dolduran ve okunan uygulama mantığını inceleyin. Bellek baskısı nedeniyle Öğeler önbellekten çıkarılacaksa, bazı önbellek isabetsizliği olabilir, ancak bellek basıncını `Used Memory` izlemek için daha iyi bir ölçüm veya `Evicted Keys`olur. |
-| Önbellek Okuma |Belirtilen Raporlama aralığı sırasında önbellekten saniye başına megabayt (MB/sn) cinsinden okunan veri miktarı. Bu değer, önbelleği barındıran sanal makineyi destekleyen ve Redspecific olmayan ağ arabirimi kartlarından türetilir. **Bu değer, bu önbellek tarafından kullanılan ağ bant genişliğine karşılık gelir. Sunucu tarafı ağ bant genişliği sınırları için uyarı ayarlamak istiyorsanız bu `Cache Read` sayacı kullanarak oluşturun. Çeşitli önbellek fiyatlandırma katmanları ve boyutları için gözlenen bant genişliği sınırları için [Bu tabloya](cache-faq.md#cache-performance) bakın.** |
+| Önbellek ısabetleri |Belirtilen Raporlama aralığı sırasında başarılı anahtar arama sayısı. Bu, Redsıs [Info](https://redis.io/commands/info) komutundan `keyspace_hits` eşlenir. |
+| Önbellek gecikmesi (Önizleme) | Önbelleğin düğümler arası gecikme süresi temel alınarak hesaplanan önbelleğin gecikmesi. Bu ölçüm mikrosaniye cinsinden ölçülür ve üç boyuta sahiptir: belirtilen Raporlama aralığı sırasında önbelleğin ortalama, en düşük ve en fazla gecikme süresini temsil eden "AVG", "min" ve "Max". |
+| Önbellek Isabetsizliği |Belirtilen Raporlama aralığı sırasında başarısız anahtar aramalarının sayısı. Bu, Redsıs ıNFO komutundan `keyspace_misses` eşlenir. Önbellek isabetsizliği, önbellekte bir sorun olduğu anlamına gelmez. Örneğin, önbelleğe alma programlama deseninin kullanıldığı bir uygulama, bir öğe için ilk önbellekte görünür. Öğe yoksa (önbellek isabetsizliği), öğe veritabanından alınır ve bir dahaki sefer için önbelleğe eklenir. Önbellek isabetsizliği, önbelleğe alma programlama deseninin normal davranışıdır. Önbellek isabetsizlik sayısı beklenenden yüksekse, önbellekten dolduran ve okunan uygulama mantığını inceleyin. Bellek baskısı nedeniyle Öğeler önbellekten çıkarılacaksa, bazı önbellek isabetsizliği olabilir, ancak bellek basıncını izlemek için daha iyi bir ölçüm `Used Memory` veya `Evicted Keys`. |
+| Önbellek Okuma |Belirtilen Raporlama aralığı sırasında önbellekten saniye başına megabayt (MB/sn) cinsinden okunan veri miktarı. Bu değer, önbelleği barındıran sanal makineyi destekleyen ve Redspecific olmayan ağ arabirimi kartlarından türetilir. **Bu değer, bu önbellek tarafından kullanılan ağ bant genişliğine karşılık gelir. Sunucu tarafı ağ bant genişliği sınırları için uyarı ayarlamak istiyorsanız bu `Cache Read` sayacını kullanarak oluşturun. Çeşitli önbellek fiyatlandırma katmanları ve boyutları için gözlenen bant genişliği sınırları için [Bu tabloya](cache-faq.md#cache-performance) bakın.** |
 | Önbellek yazma |Belirtilen Raporlama aralığı sırasında önbelleğe saniye başına megabayt (MB/sn) cinsinden yazılan veri miktarı. Bu değer, önbelleği barındıran sanal makineyi destekleyen ve Redspecific olmayan ağ arabirimi kartlarından türetilir. Bu değer, istemciden önbelleğe gönderilen verilerin ağ bant genişliğine karşılık gelir. |
-| Bağlı İstemciler |Belirtilen Raporlama aralığı sırasında önbelleğe yönelik istemci bağlantısı sayısı. Bu, redsıs Info komutundan öğesine `connected_clients` eşlenir. [Bağlantı sınırına](cache-configure.md#default-redis-server-configuration) ulaşıldığında önbelleğe yapılan bağlantı denemeleri başarısız olur. Etkin istemci uygulaması olmasa bile, iç süreçler ve bağlantılar nedeniyle bağlı istemcilerin birkaç örneği olabilir. |
+| Bağlı Istemciler |Belirtilen Raporlama aralığı sırasında önbelleğe yönelik istemci bağlantısı sayısı. Bu, Redsıs ıNFO komutundan `connected_clients` eşlenir. [Bağlantı sınırına](cache-configure.md#default-redis-server-configuration) ulaşıldığında önbelleğe yapılan bağlantı denemeleri başarısız olur. Etkin istemci uygulaması olmasa bile, iç süreçler ve bağlantılar nedeniyle bağlı istemcilerin birkaç örneği olabilir. |
 | CPU |Belirtilen Raporlama aralığı sırasında bir yüzde olarak Redsıs sunucusu için Azure önbelleğinin CPU kullanımı. Bu değer, işletim sistemi `\Processor(_Total)\% Processor Time` performans sayacı ile eşlenir. |
 | Hatalar | Belirli bir Raporlama aralığı sırasında önbelleğin karşılaştığı belirli sorunlar ve performans sorunları. Bu ölçüm, farklı hata türlerini temsil eden sekiz boyuta sahiptir, ancak gelecekte daha fazla eklenebilir. Şu anda temsil edilen hata türleri şunlardır: <br/><ul><li>**Yük devretme** – bir önbellek yük devretmediğinde (alt öğe ana için yükseltir)</li><li>**DataLoss** – önbellekte DataLoss olduğunda</li><li>**UnresponsiveClients** – istemciler sunucudan yeterince hızlı veri okumuyor</li><li>**AOF** : AOF kalıcılığı ile ilgili bir sorun olduğunda</li><li>**RDB** : RDB kalıcılığı ile ilgili bir sorun olduğunda</li><li>**Içeri aktarma** – RDB içeri aktarma ile ilgili bir sorun olduğunda</li><li>**Dışarı aktar** : RDB dışarı aktarma ile ilgili bir sorun olduğunda</li></ul> |
-| Çıkarılan anahtarlar |`maxmemory` Sınır nedeniyle belirtilen Raporlama aralığı sırasında önbellekten çıkarılan öğe sayısı. Bu, redsıs Info komutundan öğesine `evicted_keys` eşlenir. |
-| Süre dolma anahtarları |Belirtilen Raporlama aralığı sırasında önbellekten geçen öğe sayısı. Bu değer, redsıs Info komutundan öğesine `expired_keys` eşlenir.|
-| İyorsa |Belirtilen Raporlama aralığı sırasında önbellekten alınan alma işlemlerinin sayısı. Bu `cmdstat_get`değer, redsıs Info All komutundan aşağıdaki değerlerin toplamıdır:, `cmdstat_hget`, `cmdstat_getrange` `cmdstat_hgetall` `cmdstat_hmget`,, `cmdstat_mget`, `cmdstat_getbit`, ve, ve önbellek isabetlerinin ve isabetsizlik toplamına eşdeğerdir Raporlama aralığı sırasında. |
+| Çıkarılan anahtarlar |`maxmemory` sınırı nedeniyle belirtilen Raporlama aralığı sırasında önbellekten çıkarılan öğe sayısı. Bu, Redsıs ıNFO komutundan `evicted_keys` eşlenir. |
+| Süre dolma anahtarları |Belirtilen Raporlama aralığı sırasında önbellekten geçen öğe sayısı. Bu değer Redsıs ıNFO komutundan `expired_keys` eşlenir.|
+| İyorsa |Belirtilen Raporlama aralığı sırasında önbellekten alınan alma işlemlerinin sayısı. Bu değer, Redsıs ıNFO All komutundan aşağıdaki değerlerin toplamıdır: `cmdstat_get`, `cmdstat_hget`, `cmdstat_hgetall`, `cmdstat_hmget`, `cmdstat_mget`, `cmdstat_getbit`ve `cmdstat_getrange`, ve Raporlama aralığı sırasında önbellek isabetlerinin ve isabetsizlik toplamına eşdeğerdir. |
 | İşlem/saniye | Belirtilen Raporlama aralığı sırasında önbellek sunucusu tarafından saniye başına işlenen komutların toplam sayısı.  Bu değer Redsıs ıNFO komutundan "instantaneous_ops_per_sec" ile eşlenir. |
 | Redsıs sunucu yükü |Reddir sunucusunun işleme meşgul olduğu ve iletiler için boşta beklememe döngülerinin yüzdesi. Bu sayaç 100 'e ulaşırsa, Redo sunucusu bir performans üst sınırına ulaştığında ve CPU daha hızlı çalışmayı işleyemez. Yüksek Redsıs sunucu yükünü görüyorsanız, zaman aşımı özel durumlarını istemcide görürsünüz. Bu durumda, verilerinizi birden çok önbellekte ölçeklendirmeyi veya Bölümlendirmeyi düşünmelisiniz. |
-| Kümeler |Belirtilen Raporlama aralığı sırasında önbelleğe yönelik ayarlanan işlem sayısı. Bu değer, Redsıs ıNFO All komutundan aşağıdaki değerlerin toplamıdır `cmdstat_set`:, `cmdstat_setex` `cmdstat_msetnx` `cmdstat_hset`, `cmdstat_setbit` `cmdstat_hsetnx` `cmdstat_lset` `cmdstat_hmset`,,, `cmdstat_mset`,,,,,,,,, `cmdstat_setrange` ,,,,, , ve `cmdstat_setnx`. |
-| Toplam anahtar sayısı  | Geçmiş raporlama dönemi boyunca önbellekte bulunan en fazla anahtar sayısı. Bu, redsıs Info komutundan öğesine `keyspace` eşlenir. Temel alınan ölçümler sisteminin bir sınırlaması nedeniyle, kümelemenin etkinleştirildiği önbellekler için, toplam anahtar, Raporlama aralığı sırasında en fazla sayıda anahtara sahip parça en fazla anahtar sayısını döndürür.  |
-| İşlemler Toplamı |Belirtilen Raporlama aralığı sırasında önbellek sunucusu tarafından işlenen komutların toplam sayısı. Bu değer, redsıs Info komutundan öğesine `total_commands_processed` eşlenir. Redin için Azure Cache 'in yalnızca pub/ `Cache Hits`Sub için kullanıldığı durumlarda,,, veya `Sets`için `Cache Misses` `Gets`hiçbir ölçüm olacağını unutmayın, ancak `Total Operations` bu, yayın/alt işlemler için önbellek kullanımını yansıtan ölçümler olacaktır. |
-| Kullanılan bellek |Belirtilen Raporlama aralığı boyunca önbellekte bulunan anahtar/değer çiftleri için kullanılan önbellek bellek miktarı. Bu değer, redsıs Info komutundan öğesine `used_memory` eşlenir. Bu, meta veri veya parçalama içermez. |
+| Yapar |Belirtilen Raporlama aralığı sırasında önbelleğe yönelik ayarlanan işlem sayısı. Bu değer, Redsıs ıNFO All komutundan aşağıdaki değerlerin toplamıdır: `cmdstat_set`, `cmdstat_hset`, `cmdstat_hmset`, `cmdstat_hsetnx`, `cmdstat_lset`, `cmdstat_mset`, `cmdstat_msetnx`, `cmdstat_setbit`, `cmdstat_setex`, `cmdstat_setrange`ve `cmdstat_setnx`. |
+| Toplam anahtar sayısı  | Geçmiş raporlama dönemi boyunca önbellekte bulunan en fazla anahtar sayısı. Bu, Redsıs ıNFO komutundan `keyspace` eşlenir. Temel alınan ölçümler sisteminin bir sınırlaması nedeniyle, kümelemenin etkinleştirildiği önbellekler için, toplam anahtar, Raporlama aralığı sırasında en fazla sayıda anahtara sahip parça en fazla anahtar sayısını döndürür.  |
+| Toplam Işlem sayısı |Belirtilen Raporlama aralığı sırasında önbellek sunucusu tarafından işlenen komutların toplam sayısı. Bu değer Redsıs ıNFO komutundan `total_commands_processed` eşlenir. Redin için Azure Cache 'in yalnızca pub/Sub için kullanıldığı durumlarda `Cache Hits`, `Cache Misses`, `Gets`veya `Sets`için hiçbir ölçüm olmaz, ancak yayımlama/alt işlemler için önbellek kullanımını yansıtan `Total Operations` ölçümleri olacaktır. |
+| Kullanılan bellek |Belirtilen Raporlama aralığı boyunca önbellekte bulunan anahtar/değer çiftleri için kullanılan önbellek bellek miktarı. Bu değer Redsıs ıNFO komutundan `used_memory` eşlenir. Bu, meta veri veya parçalama içermez. |
 | Kullanılan bellek yüzdesi | Belirtilen Raporlama aralığı boyunca kullanılan toplam belleğin yüzdesi.  Bu, yüzdeyi hesaplamak için Redsıs ıNFO komutundan "used_memory" değerine başvurur. |
-| Kullanılan bellek RSS |Parçalama ve meta veriler dahil olmak üzere, belirtilen Raporlama aralığı sırasında MB cinsinden kullanılan önbellek bellek miktarı. Bu değer, redsıs Info komutundan öğesine `used_memory_rss` eşlenir. |
+| Kullanılan bellek RSS |Parçalama ve meta veriler dahil olmak üzere, belirtilen Raporlama aralığı sırasında MB cinsinden kullanılan önbellek bellek miktarı. Bu değer Redsıs ıNFO komutundan `used_memory_rss` eşlenir. |
 
 <a name="operations-and-alerts"></a>
 ## <a name="alerts"></a>Uyarılar

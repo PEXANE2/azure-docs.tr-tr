@@ -1,19 +1,19 @@
 ---
 title: 'C#Öğretici: birden çok veri kaynağını Dizin'
 titleSuffix: Azure Cognitive Search
-description: Birden çok veri kaynağından verileri tek bir Azure Bilişsel Arama dizinine aktarmayı öğrenin.
+description: Çoklu veri kaynaklarından verileri Dizin oluşturucular kullanarak tek bir Azure Bilişsel Arama dizinine aktarmayı öğrenin. Bu öğretici ve örnek kod ' de C#bulunur.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 69b18cdd4d0bb8e3d13bbacd5d21764004308786
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: fbe3b9ada556f26bd559f040bf2ba5b22367abd0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795650"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112217"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Öğretici: tek bir Azure Bilişsel Arama dizininde bulunan birden çok veri kaynağından verileri birleştirme
 
@@ -30,7 +30,7 @@ Bu öğreticide C#, Azure BILIŞSEL arama .NET SDK ve aşağıdaki görevleri ya
 > * Azure Cosmos DB otel verilerinin dizinini oluştur
 > * BLOB depolama alanından otel odası verilerini birleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki hizmetler, Araçlar ve veriler bu hızlı başlangıçta kullanılır. 
 

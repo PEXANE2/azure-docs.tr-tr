@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 1de9283e1ad609a1f81d7e8a6d8171cc8052e3ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504077"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111797"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak Android 'de Java 'da ses Yardımcısı oluşturma
 
@@ -30,9 +30,9 @@ Bu uygulama, konuşma SDK Maven paketiyle oluşturulmuştur ve 3,3 Android Studi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
-* [Doğrudan hat konuşma kanalı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) ile yapılandırılmış daha önce oluşturulmuş bir bot
-* [Android Studio](https://developer.android.com/studio/) v 3.3 veya üzeri
+- Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
+- [Doğrudan hat konuşma kanalı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) ile yapılandırılmış daha önce oluşturulmuş bir bot
+- [Android Studio](https://developer.android.com/studio/) v 3.3 veya üzeri
 
     > [!NOTE]
     > Lütfen [sesli Yardımcılar için desteklenen bölgeler listesine](regions.md#voice-assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
@@ -96,9 +96,9 @@ Sonra, `activity_main.xml` içeriğini aşağıdaki kodla değiştirin:
 
 Bu XML, bot 'unuzla etkileşim kurmak için basit bir kullanıcı arabirimi tanımlar.
 
-* `button` öğesi bir etkileşim başlatır ve tıklandığında `onBotButtonClicked` yöntemini çağırır.
-* `recoText` öğesi, bot 'unuzla konuşurken konuşmadan metne sonuçları görüntüler.
-* `activityText` öğesi, bot 'ınızdan en son bot Framework etkinliğinin JSON yükünü görüntüler.
+- `button` öğesi bir etkileşim başlatır ve tıklandığında `onBotButtonClicked` yöntemini çağırır.
+- `recoText` öğesi, bot 'unuzla konuşurken konuşmadan metne sonuçları görüntüler.
+- `activityText` öğesi, bot 'ınızdan en son bot Framework etkinliğinin JSON yükünü görüntüler.
 
 UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 

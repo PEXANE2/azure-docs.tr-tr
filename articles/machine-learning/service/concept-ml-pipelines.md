@@ -1,7 +1,7 @@
 ---
 title: ML işlem hatları nelerdir
 titleSuffix: Azure Machine Learning
-description: Bu makalede, Python için Azure Machine Learning SDK ile oluşturabileceğiniz makine öğrenimi ardışık yönlerinin avantajlarını öğrenin. Machine Learning (ML) işlem hatları, veri bilimcilerinin makine öğrenimi iş akışlarını oluşturmak, iyileştirmek ve yönetmek için kullanılır.
+description: Bu makalede, Python için Azure Machine Learning SDK ile oluşturabileceğiniz makine öğrenimi ardışık yönlerinin avantajlarını öğrenin. Machine learning (ML) işlem hatları oluşturmak, en iyi duruma getirmek ve makine öğrenimi iş akışları yönetmek için veri uzmanları tarafından kullanılır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: c42d2d308398d548df4b1c088819c024ff613564
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 21aa869d53a35ee974fb2f852b9be9b10eb929b0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832478"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112410"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları nelerdir?
 
@@ -31,7 +31,7 @@ Azure Machine Learning işlem hatları, Machine Learning projelerinizde iş akı
 
 Bu avantajlar, Machine Learning projeniz saf araştırmadan ve yinelemeye doğru ilerlemediğinde önemli hale gelir. Basit tek adımlı işlem hatları da değerli olabilir. Makine öğrenimi projeleri genellikle karmaşık bir durumlardır ve tek bir iş akışının kesin bir işlem olmasını sağlamak zor olabilir.
 
-[İlk işlem hattınızı oluşturmayı](how-to-create-your-first-pipeline.md)öğrenin.
+Bilgi edinmek için nasıl [ilk işlem hattınızı oluşturma](how-to-create-your-first-pipeline.md).
 
 ![Azure Machine Learning 'de makine öğrenimi ardışık düzenleri](./media/concept-ml-pipelines/pipeline-flow.png)
 
@@ -85,7 +85,7 @@ Azure ML işlem hatları 'ndaki bağımlılık analizi, basit zaman damgalarınd
 
 Ayrıca, bir adımın çıktısı, öğesini seçerseniz, yeniden kullanılabilir. Bir olasılık olarak yeniden kullan seçeneğini belirtirseniz ve yeniden hesaplamayı tetikleyen yukarı akış bağımlılığı yoksa, işlem hattı hizmeti adım sonuçlarının önbelleğe alınmış bir sürümünü kullanır. Bu yeniden kullanım, geliştirme süresini önemli ölçüde azaltabilir. Karmaşık bir veri hazırlama göreviniz varsa, büyük olasılıkla kesinlikle gerekli olandan daha sık yeniden çalıştırmanız gerekir. İşlem hatları sizi merak eder: gerekirse, adım çalışır, yoksa, bu işlem çalışmaz.
 
-Bu bağımlılık analizi, düzenleme ve etkinleştirmenin hepsi, bir işlem [hattı](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) nesnesini örneklediğinizde, bir `Experiment`geçirdiğinizde ve `submit()`çağırdığınızda Azure Machine Learning tarafından işlenir. 
+Bu bağımlılık analizi, düzenleme ve etkinleştirmenin hepsi, bir işlem [hattı](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) nesnesini örneklediğinizde, bir `Experiment`geçirdiğinizde ve `submit()`çağırdığınızda Azure Machine Learning tarafından işlenir. 
 
 ### <a name="coordinating-the-steps-involved"></a>İlgili adımları koordine etme
 
@@ -107,7 +107,7 @@ Bir `Pipeline` nesnesi oluşturup çalıştırdığınızda, aşağıdaki üst d
 
 ## <a name="building-pipelines-with-the-python-sdk"></a>Python SDK ile işlem hatları oluşturma
 
-[Azure Machine Learning Python SDK 'sında](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), işlem hattı `azureml.pipeline.core` modülünde tanımlanan bir Python nesnesidir. İşlem [hattı](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) nesnesi bir veya daha fazla [ardışık düzen inestep](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) nesnesinin sıralı dizisini içerir. `PipelineStep` sınıfı soyuttur ve gerçek adımlar, [Estimatorstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)veya [datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)gibi alt sınıflar olacaktır. [Modulestep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) sınıfı, işlem hatları arasında paylaşılabilen, yeniden kullanılabilir bir adım dizisi içerir. Bir `Pipeline` `Experiment`bir parçası olarak çalışır.
+[Azure Machine Learning Python SDK 'sında](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), işlem hattı `azureml.pipeline.core` modülünde tanımlanan bir Python nesnesidir. İşlem [hattı](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) nesnesi bir veya daha fazla [ardışık düzen inestep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) nesnesinin sıralı dizisini içerir. `PipelineStep` sınıfı soyuttur ve gerçek adımlar, [Estimatorstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)veya [datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)gibi alt sınıflar olacaktır. [Modulestep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) sınıfı, işlem hatları arasında paylaşılabilen, yeniden kullanılabilir bir adım dizisi içerir. Bir `Pipeline` `Experiment`bir parçası olarak çalışır.
 
 Bir Azure ML işlem hattı, bir Azure Machine Learning çalışma alanıyla ilişkilendirilir ve bir işlem hattı adımı söz konusu çalışma alanı içinde kullanılabilir bir işlem hedefi ile ilişkilendirilir. Daha fazla bilgi için bkz. [Azure portal Azure Machine Learning çalışma alanları oluşturma ve yönetme](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) veya [Azure Machine Learning 'Nda işlem hedefleri nelerdir?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
 
@@ -189,15 +189,15 @@ Gördüğünüz gibi, bir Azure ML işlem hattı oluşturmak, bir betiği başla
 
 Bir proje büyük veya daha iyi bir dağıtım yapana kadar, işlem hatlarınızın hassas olması yerine kaba olması gerekir. ML projenizi _aşamalar_ ve bir işlem hattı dahil olmak üzere düşünüyorsanız, sizi belirli bir aşamada hareket ettirmek üzere bir iş akışı sağlamak için doğru yolda olursunuz. 
 
-## <a name="key-advantages"></a>Önemli avantajlar
+## <a name="key-advantages"></a>Başlıca avantajları
 
 Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel avantajları şunlardır:
 
-|Önemli avantaj|Açıklama|
+|Önemli bir avantajı|Açıklama|
 |:-------:|-----------|
-|**Katılımsız&nbsp;çalıştırmaları**|Adımları güvenilir ve katılımsız bir şekilde paralel veya sırayla çalışacak şekilde zamanlayın. Veri hazırlama ve modelleme son günler veya haftadır ve işlem hatları, işlem çalışırken diğer görevlere odaklanabilmenize olanak tanır. |
+|**Katılımsız&nbsp;çalıştırır**|Adımları güvenilir ve katılımsız bir şekilde paralel veya sırayla çalışacak şekilde zamanlayın. Veri hazırlama ve modelleme son günler veya haftadır ve işlem hatları, işlem çalışırken diğer görevlere odaklanabilmenize olanak tanır. |
 |**Heterojen işlem**|Heterojen ve ölçeklenebilir işlem kaynakları ve depolama konumları genelinde güvenilir bir şekilde koordine edilen birden çok işlem hattı kullanın. HDInsight, GPU veri bilimi VM 'Leri ve Databricks gibi farklı işlem hedeflerinde bireysel ardışık düzen adımlarını çalıştırarak kullanılabilir işlem kaynaklarının verimli bir şekilde kullanılmasını sağlayın.|
-|**Ölçeklendirilebileceği**|Yeniden eğitme ve Batch Puanlama gibi belirli senaryolar için ardışık düzen şablonları oluşturun. Dış sistemlerden yayınlanan işlem hatlarını basit REST çağrıları aracılığıyla tetikleyin.|
+|**Yeniden kullanılırlığı**|Yeniden eğitme ve Batch Puanlama gibi belirli senaryolar için ardışık düzen şablonları oluşturun. Dış sistemlerden yayınlanan işlem hatlarını basit REST çağrıları aracılığıyla tetikleyin.|
 |**İzleme ve sürüm oluşturma**|Yineleme sırasında verileri ve sonuç yollarını el ile izlemek yerine, veri kaynaklarınızı, girdilerlerinizi ve çıkışları açıkça adlandırmak ve sürümüne eklemek için işlem hatları SDK 'sını kullanın. Ayrıca, daha fazla üretkenlik için betikleri ve verileri ayrı olarak yönetebilirsiniz.|
 | **Modülerlik** | Kaygıları ve değişiklikleri yalıtma alanlarının ayrılması, yazılımın daha yüksek kalitede daha hızlı gelişmeye olanak tanır. | 
 |**İş**|İşlem hatları, veri bilimcilerinin makine öğrenimi tasarım sürecinin tüm alanlarında işbirliği yapmasına olanak sağlarken işlem hattı adımlarında eşzamanlı olarak çalışabiliyor.|
@@ -207,7 +207,7 @@ Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel
 Azure ML işlem hatları, erken geliştirme aşamalarında değer sunmaya başlayan güçlü bir olanaklardır. Takım ve proje büyüdükçe değer artar. Bu makalede, işlem hatlarının Azure Machine Learning Python SDK ile nasıl belirtildiği ve Azure 'da düzenlendiği açıklanmaktadır. Bazı temel kaynak kodlarını gördünüz ve kullanılabilir `PipelineStep` sınıflarından birkaçı sunulmuştur. Azure ML işlem hatlarını ne zaman kullanacağınızı ve Azure 'un nasıl çalıştığını anlamalısınız. 
 
 
-+ [İlk işlem hattınızı oluşturmayı](how-to-create-your-first-pipeline.md)öğrenin.
++ Bilgi edinmek için nasıl [ilk işlem hattınızı oluşturma](how-to-create-your-first-pipeline.md).
 
 + [Büyük verilerde toplu tahmine dayalı tahminleri nasıl çalıştıracağınızı](tutorial-pipeline-batch-scoring-classification.md )öğrenin.
 

@@ -1,19 +1,16 @@
 ---
 title: Azure Deployment Manager’ı Resource Manager şablonlarıyla kullanma | Microsoft Docs
 description: Azure kaynaklarını dağıtmak için Azure Deployment Manager ile Resource Manager şablonlarını kullanın.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.date: 10/10/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3f10093b1d3087e87279258d04d86fc3d47ba313
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 6a05e45c5dc60cf26b2fb4f50cb4699c0fde142a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285892"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147408"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Öğretici: Azure Deployment Manager’ı Resource Manager şablonlarıyla kullanma (Genel önizleme)
 
@@ -46,7 +43,7 @@ Ek kaynaklar:
 * [Azure Dağıtım Yöneticisi REST API başvurusu](https://docs.microsoft.com/rest/api/deploymentmanager/).
 * [Öğretici: Azure dağıtım Yöneticisi 'da sistem durumu denetimi kullanın](./deployment-manager-tutorial-health-check.md).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -192,7 +189,7 @@ Kullanıcı tarafından atanmış yönetilen bir kimlik oluşturmanız ve abonel
 > [!IMPORTANT]
 > Kullanıcı tarafından atanmış yönetilen kimlik, [piyasaya çıkarma](#create-the-rollout-template) ile aynı konumda olmalıdır. Şu anda piyasaya çıkarma gibi Deployment Manager kaynakları yalnızca Orta ABD veya Doğu ABD 2’de oluşturulabilir. Ancak, bu yalnızca Dağıtım Yöneticisi kaynaklar (hizmet topolojisi, hizmetler, hizmet birimleri, dağıtım ve adımlar gibi) için geçerlidir. Hedef kaynaklarınız, desteklenen herhangi bir Azure bölgesine dağıtılabilir. Bu öğreticide, örneğin Dağıtım Yöneticisi Kaynakları Orta ABD dağıtılır, ancak hizmetler Doğu ABD ve Batı ABD dağıtılır. Bu kısıtlama gelecekte yükseltilmemiş olacaktır.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. [Kullanıcı tarafından atanmış bir yönetilen kimlik](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) oluşturun.
 3. Portalda sol menüden **Abonelikler**’i ve ardından aboneliğinizi seçin.
 4. **Erişim denetimi (IAM)** öğesini seçin ve ardından **rol ataması Ekle**' yi seçin.
@@ -314,7 +311,7 @@ Piyasaya çıkarma şablonuyla kullanılan bir parametre dosyası oluşturursunu
     * **azureResourceLocation**: Şu anda Azure Deployment Manager kaynakları yalnızca **Orta ABD** veya **Doğu ABD 2**’de oluşturulabilir.
     * **artifactSourceSASLocation**: Hizmet birimi şablonu ve parametreler dosyalarının dağıtım için depolandığı kök dizine (Blob kapsayıcısı) SAS URI’sini girin.  [Yapıtları hazırlama](#prepare-the-artifacts) bölümüne bakın.
     * **binaryArtifactRoot**: Yapıtların klasör yapısını değiştirmediğiniz sürece bu öğreticideki **binaries/1.0.0.0** klasörünü kullanın.
-    * **managedIdentityID**: Kullanıcı tarafından atanmış yönetilen kimliği girin. Bkz. [Kullanıcı tarafından atanmış yönetilen kimlik oluşturma](#create-the-user-assigned-managed-identity). Söz dizimi aşağıdaki gibidir:
+    * **managedIdentityID**: Kullanıcı tarafından atanmış yönetilen kimliği girin. Bkz. [Kullanıcı tarafından atanmış yönetilen kimlik oluşturma](#create-the-user-assigned-managed-identity). Sözdizimi şöyledir:
 
         ```
         "/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userassignedidentities/<ManagedIdentityName>"

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
-ms.openlocfilehash: 6c2a8fa57bf6e3a552da57588bdbe752ef0d22e2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5f2d23b3fe33691d37dc00b2d4e79036293252d9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609573"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132881"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Machine Learning için Azure Event Grid olay şeması
 
@@ -155,11 +155,11 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | string | Olay konusunun yayımcı tanımlı yolu. |
-| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| subject | string | Olay konusunun yayımcı tanımlı yolu. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| Verileri | object | BLOB depolama olay verileri. |
+| data | object | BLOB depolama olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
@@ -178,9 +178,9 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| HizmetAdı | string | Dağıtılan hizmetin adı. |
+| serviceName | string | Dağıtılan hizmetin adı. |
 | ServiceComputeType | string | Dağıtılan hizmetin işlem türü (ör. ACI, AKS). |
-| Modelıds | string | Model kimliklerinin ortak bir ayrılmış listesi. Hizmette dağıtılan modellerin kimlikleri. |
+  | Modelıds | string | Model kimliklerinin virgülle ayrılmış listesi. Hizmette dağıtılan modellerin kimlikleri. |
 | ServiceTags | object | Dağıtılan hizmetin etiketleri. |
 | ServiceProperties | object | Dağıtılan hizmetin özellikleri. |
 
@@ -189,7 +189,7 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | ExperimentId | string | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
-| experimentName | string | Çalıştırmanın ait olduğu denemenin adı. |
+| ExperimentName | string | Çalıştırmanın ait olduğu denemenin adı. |
 | RunId | string | Tamamlanan çalıştırmanın KIMLIĞI. |
 | RunType | string | Tamamlanan çalıştırmanın çalıştırma türü. |
 | RunTags | object | Tamamlanan çalıştırmanın etiketleri. |
@@ -214,4 +214,4 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 * Azure Event Grid giriş için bkz. [Event Grid nedir?](overview.md)
 * Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md)
 * Azure Machine Learning Azure Event Grid kullanmaya giriş için bkz. [Azure Machine Learning olaylarını](/azure/machine-learning/service/concept-event-grid-integration) kullanma
-* Azure Machine Learning Azure Event Grid kullanmanın bir örneği için bkz. [olay odaklı makine öğrenimi iş akışları oluşturma](/azure/machine-learning/service/event-schema-machine-learning)
+* Azure Machine Learning Azure Event Grid kullanmanın bir örneği için bkz. [olay odaklı makine öğrenimi iş akışları oluşturma](/azure/machine-learning/service/how-to-use-event-grid)

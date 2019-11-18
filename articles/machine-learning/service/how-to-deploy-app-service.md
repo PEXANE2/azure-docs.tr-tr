@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: b0d7286d96d2fbfa35eb7ce9079413dfd186288c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 52c65bced1d78a4fdad1fbfd59c7a8d6d99d0c4a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496966"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123286"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi iç
     >
     > Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
-## <a name="prepare-for-deployment"></a>Dağıtım için hazırlanma
+## <a name="prepare-for-deployment"></a>Dağıtıma hazırlanma
 
 Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerekenleri tanımlamanız gerekir. Aşağıdaki listede bir dağıtım için gereken temel öğeler açıklanmaktadır:
 
@@ -97,7 +97,7 @@ Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için orta
 
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
-Azure App Service dağıtılan Docker görüntüsünü oluşturmak için [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-)kullanın. Aşağıdaki kod parçacığı, modelden ve çıkarım yapılandırmasından nasıl yeni bir görüntü oluşturulacağını gösterir:
+Azure App Service dağıtılan Docker görüntüsünü oluşturmak için [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-)kullanın. Aşağıdaki kod parçacığı, modelden ve çıkarım yapılandırmasından nasıl yeni bir görüntü oluşturulacağını gösterir:
 
 > [!NOTE]
 > Kod parçacığı, `model` kayıtlı bir model içerdiğini ve `inference_config`, çıkarım ortamının yapılandırmasını içerdiğini varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
@@ -270,4 +270,4 @@ print(response.json())
 * [Azure 'Da otomatik ölçeklendirme ile çalışmaya başlama](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)bölümünde ölçeklendirme hakkında daha fazla bilgi edinin.
 * [Azure App Service BIR SSL sertifikası kullanın](/azure/app-service/configure-ssl-certificate-in-code).
 * [App Service uygulamanızı Azure Active Directory oturum açma kullanacak şekilde yapılandırın](/azure/app-service/configure-authentication-provider-aad).
-* [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)
+* [Bir web hizmeti olarak ML modeli kullanma](how-to-consume-web-service.md)

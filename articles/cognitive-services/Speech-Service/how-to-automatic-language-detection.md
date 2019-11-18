@@ -1,5 +1,5 @@
 ---
-title: 'Nasıl yapılır: konuşmayı metne dönüştürme için otomatik dil algılamayı kullanma-konuşma hizmeti'
+title: Konuşmayı metne dönüştürme için otomatik dil algılamayı kullanma
 titleSuffix: Azure Cognitive Services
 description: Konuşma SDK 'Sı, konuşmadan metne yönelik otomatik dil algılamayı destekler. Bu özellik kullanılırken, belirtilen ses, belirtilen dil listesi ile karşılaştırılır ve en büyük olasılıkla eşleşme belirlenir. Döndürülen değer daha sonra, konuşma için kullanılan dil modelini seçmek için kullanılabilir.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: qiohu
-ms.openlocfilehash: e156704d3ad54c3437f921fae536a497e1d94868
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a72f477e64c856c545801533c131c397de627c00
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506972"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110170"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Konuşmayı metne dönüştürme için otomatik dil algılama
 
@@ -30,7 +30,7 @@ Bu makalede, `SpeechRecognizer` nesnesini oluşturmak ve algılanan dili almak i
 
 Otomatik dil algılama 'nın Şu anda algılama başına iki dilin hizmet tarafı sınırı vardır. `AudoDetectSourceLanguageConfig` nesneniz oluşturulurken bu sınırlamayı aklınızda bulundurun. Aşağıdaki örneklerde bir `AutoDetectSourceLanguageConfig`oluşturup `SpeechRecognizer`oluşturmak için kullanacaksınız.
 
->[!TIP]
+> [!TIP]
 > Ayrıca, metinde konuşma yaparken kullanılacak özel bir model de belirtebilirsiniz. Daha fazla bilgi için bkz. [Otomatik dil algılama için özel model kullanma](#use-a-custom-model-for-automatic-language-detection).
 
 Aşağıdaki kod parçacıkları, uygulamalarınızda otomatik dil algılamayı nasıl kullanacağınızı göstermektedir:
@@ -80,4 +80,4 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSource
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma SDK başvuru belgeleri](speech-sdk.md)
+- [Konuşma SDK başvuru belgeleri](speech-sdk.md)

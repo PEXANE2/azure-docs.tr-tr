@@ -1,18 +1,14 @@
 ---
 title: Azure Market’teki yönetilen hizmetler teklifleri
 description: Yönetilen hizmetler, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 09/19/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 0a6371a1020182650d83d5e7ec9bb2378b44b557
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 0f1ba749a5477f0c006e6666b841e82f4eeb193f
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155267"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131864"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Azure Market’teki yönetilen hizmetler teklifleri
 
@@ -30,7 +26,7 @@ Her yönetilen hizmet teklifi bir veya daha fazla plan içerir. Bu planlar özel
 
 Teklifinizi belirli müşterilerle sınırlandırmak istiyorsanız, özel bir plan yayımlayabilirsiniz. Bunu yaptığınızda, plan yalnızca sağladığınız belirli abonelik kimlikleri için satın alınabilir. Daha fazla bilgi için bkz. [özel teklifler](https://docs.microsoft.com/azure/marketplace/private-offers).
 
-Genel planlar, hizmetlerinizi yeni müşterilere yükseltemenizi sağlar. Bunlar genellikle müşterinin kiracısına sınırlı erişim istediğinizde daha uygundur. Bir müşteriyle ilişki kurduktan sonra, kuruluşunuza ek erişim vermeye karar verirse, bu, yalnızca söz konusu müşteri için yeni bir özel plan yayımlayarak veya [Azure kaynağı kullanarak daha fazla erişim sağlamak için bunları ekleyerek yapabilirsiniz. Yönetici şablonları](../how-to/onboard-customer.md).
+Genel planlar, hizmetlerinizi yeni müşterilere yükseltemenizi sağlar. Bunlar genellikle müşterinin kiracısına sınırlı erişim istediğinizde daha uygundur. Bir müşteriyle ilişki kurduktan sonra, kuruluşunuza ek erişim vermeye karar verirse, bu, yalnızca söz konusu müşteri için yeni bir özel plan yayımlayarak veya [Azure Resource Manager şablonları kullanarak daha fazla erişim sağlamak için bunları](../how-to/onboard-customer.md)ekleyebilirsiniz.
 
 Bir plana ortak olarak yayımlandıktan sonra özel olarak değiştiremeyeceğini aklınızda bulundurun. Ayrıca, bir genel planın belirli müşterilere veya hatta belirli sayıda müşteriye yönelik kullanılabilirliğini kısıtlayamazsınız, ancak bunu yapmak isterseniz planı tamamen satmaya de durdurabilirsiniz.
 

@@ -1,19 +1,19 @@
 ---
 title: PowerShell kullanarak v2 özel kurallarını yapılandırma
 titleSuffix: Azure Web Application Firewall
-description: Azure PowerShell kullanarak WAF v2 özel kurallarını yapılandırmayı öğrenin
+description: Azure PowerShell kullanarak WAF v2 özel kurallarını yapılandırmayı öğrenin. Güvenlik duvarından geçen her istek için değerlendirilen kendi kurallarınızı oluşturabilirsiniz.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 48f45629b82e63dfc3f098b68e1be2523a3a0e5c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1641b74e3b9e59253b2674b22dfd8cd1b6ca2c2c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075395"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133051"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Azure PowerShell kullanarak özel bir kuralla Application Gateway üzerinde Web uygulaması güvenlik duvarı v2 'yi yapılandırma
 

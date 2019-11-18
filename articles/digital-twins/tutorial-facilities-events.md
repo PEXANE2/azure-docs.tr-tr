@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 3cb5d8a6cb605d2150be1e34a9f4b0ac7955aed6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 545e1757f4f3669957d8f6755cdbd9a2b29513b6
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107703"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129167"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Öğretici: Logic Apps kullanarak Azure dijital TWINS boşluklarından bildirimler alma
 
@@ -38,7 +38,7 @@ Bu öğreticide Azure Digital Twins kurulumunu [yapılandırmış](tutorial-faci
 - Çalışan bir Digital Twins örneği.
 - Çalışma makinenize indirilmiş ve ayıklanmış [Digital Twins C# örnekleri](https://github.com/Azure-Samples/digital-twins-samples-csharp).
 - Örneği çalıştırmak için geliştirme makinenizde [sürüm 2.1.403 veya sonraki bir sürümü .NET Core SDK](https://www.microsoft.com/net/download) . Doğru sürümün yüklendiğini doğrulamak için `dotnet --version` çalıştırın.
-- Bildirim e-postalarını göndermek için Office 365 hesabı.
+- Bildirim e-postaları göndermek için bir [Office 365](https://products.office.com/home) hesabı.
 
 > [!TIP]
 > Yeni bir örnek sağlıyorsanız benzersiz bir dijital TWINS örnek adı kullanın.
@@ -63,7 +63,7 @@ Bu bölümde, Azure dijital TWINS örneğinden olayları toplamak için [Event G
 
 1. Kaynak grubunuzda olay kılavuzu konusuna göz atın, **genel bakış**' ı seçin ve **Konu uç noktasının** değerini geçici bir dosyaya kopyalayın. Sonraki bölümde bu URL 'ye ihtiyacınız olacak. 
 
-1. **Erişim anahtarları**' nı seçin ve **YOUR_KEY_1** ve **YOUR_KEY_2** geçici bir dosyaya kopyalayın. Sonraki bölümde uç noktayı oluşturmak için bu değerlere ihtiyacınız olacak.
+1. **Erişim anahtarları**' nı seçin ve **anahtar 1** ile **anahtar 2** ' yi geçici bir dosyaya kopyalayın. Sonraki bölümde uç noktayı oluşturmak için bu değerlere ihtiyacınız olacak.
 
     [![Event Grid anahtarları](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
@@ -85,9 +85,9 @@ Bu bölümde, Azure dijital TWINS örneğinden olayları toplamak için [Event G
       path: <Event Grid Topic Name without https:// and /api/events, e.g. eventgridname.region.eventgrid.azure.net>
     ```
 
-1. Yer tutucu `<Primary connection string for your Event Grid>` **YOUR_KEY_1**değeriyle değiştirin.
+1. Yer tutucu `<Primary connection string for your Event Grid>` **anahtar 1**değeri ile değiştirin.
 
-1. Yer tutucu `<Secondary connection string for your Event Grid>` **YOUR_KEY_2**değeriyle değiştirin.
+1. Yer tutucu `<Secondary connection string for your Event Grid>`, **anahtar 2**değeri ile değiştirin.
 
 1. **Yol** için yer tutucuyu olay Kılavuzu konusunun yoluyla değiştirin. **Konu uç noktası** URL 'sinden **https://** ve sondaki kaynak yollarını kaldırarak bu yolu alın. Şu biçime benzer görünmelidir: *EventGridAdı.Konumunuz.eventgrid.azure.net*.
 
@@ -118,7 +118,7 @@ Diğer hizmetlerden alınan olaylara yönelik otomatik görevler oluşturmak iç
 
 1. Logic Apps kaynağınızı dağıtıldığında açın ve **mantıksal uygulama Tasarımcısı** bölmesini açın. 
 
-1. **Bir Event Grid kaynak olayı gerçekleştiği zaman** ' ı seçin. İstendiğinde Azure hesabınızla kiracınızda oturum açın. İstenirse Event Grid kaynağınız için **erişime Izin ver** ' i seçin. **Devam**'ı seçin.
+1. **Bir Event Grid kaynak olayı gerçekleştiği zaman** ' ı seçin. İstendiğinde Azure hesabınızla kiracınızda oturum açın. İstenirse Event Grid kaynağınız için **erişime Izin ver** ' i seçin. Seçin **devam**.
 
 1. **Kaynak olayı gerçekleştiğinde (Önizleme)** penceresinde: 
    
@@ -178,7 +178,7 @@ Diğer hizmetlerden alınan olaylara yönelik otomatik görevler oluşturmak iç
 
    a. **Eylem Ekle**' yi seçin ve **Office 365 Outlook**' u seçin.
 
-   b. **Eylemler** listesinden **e-posta gönder**' i seçin. **Oturum aç** ' ı seçin ve e-posta hesabı kimlik bilgilerinizi kullanın. İstenirse **erişime Izin ver** ' i seçin.
+   b. **Eylemler** listesinden **e-posta gönder (v2)** seçeneğini belirleyin. **Oturum aç** ' ı seçin ve e-posta hesabı kimlik bilgilerinizi kullanın. İstenirse **erişime Izin ver** ' i seçin.
 
    c. **Alıcı** kutusuna bildirimlerin gönderilmesi için e-posta adresinizi yazın. **Konu**alanında, **daha düşük hava kalitesi Için metin olarak dijital TWINS bildirimi**yazın. Ardından, **JSON ayrıştırma**için **dinamik Içerik** listesinden **topologyobjectıd** ' yi seçin.
 

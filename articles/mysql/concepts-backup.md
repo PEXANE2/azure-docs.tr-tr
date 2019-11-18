@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: dfbf416c93c78e6ba5e23819084d69e57c47edc8
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: fbd595c7de0bde4e8ba8b7aaa9a65aa5880c1165
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273666"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151921"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yedekleme ve geri yükleme
 
@@ -19,13 +19,13 @@ MySQL için Azure veritabanı otomatik olarak sunucu yedeklemeleri oluşturur ve
 
 ## <a name="backups"></a>Yedeklemeler
 
-MySQL için Azure veritabanı, tam, fark ve işlem günlüğü yedeklemeleri gerçekleştirir. Bu yedeklemeler, yapılandırılmış yedekleme saklama döneminizin içindeki herhangi bir zamanda bir sunucuyu geri yüklemenize olanak tanır. Varsayılan yedekleme saklama süresi yedi gündür. [İsteğe bağlı olarak](howto-restore-server-portal.md#set-backup-configuration) 35 güne kadar yapılandırma yapabilirsiniz. Tüm yedeklemeler AES 256 bit şifreleme kullanılarak şifrelenir.
+MySQL için Azure veritabanı, veri dosyalarının ve işlem günlüğünün yedeklerini alır. Desteklenen en fazla depolama boyutuna bağlı olarak, tam ve fark yedeklemeleri (4 TB maksimum depolama sunucusu) veya anlık görüntü yedeklemeleri (en fazla 16 TB depolama sunucusuna kadar) sunuyoruz. Bu yedeklemeler, yapılandırılmış yedekleme saklama döneminizin içindeki herhangi bir zamanda bir sunucuyu geri yüklemenize olanak tanır. Varsayılan yedekleme saklama süresi yedi gündür. [İsteğe bağlı olarak](howto-restore-server-portal.md#set-backup-configuration) 35 güne kadar yapılandırma yapabilirsiniz. Tüm yedeklemeler AES 256 bit şifreleme kullanılarak şifrelenir.
 
 ### <a name="backup-frequency"></a>Yedekleme sıklığı
 
-Genellikle tam yedeklemeler haftalık olarak gerçekleşir, fark yedeklemeleri günde iki kez gerçekleşir ve işlem günlüğü yedeklemeleri beş dakikada bir gerçekleşir. İlk tam yedekleme, bir sunucu oluşturulduktan hemen sonra zamanlanır. İlk yedekleme, büyük bir geri yüklenen sunucuda daha uzun sürebilir. Yeni bir sunucunun geri yüklenebileceği en erken süre, ilk tam yedeklemenin tamamlandığı zamandır.
+Genellikle tam yedeklemeler haftalık olarak gerçekleşir, fark yedeklemeleri en fazla 4 TB depolama alanı olan sunucular için günde iki kez gerçekleşir. Anlık görüntü yedeklemeleri, 16 TB depolama alanını destekleyen sunucular için günde en az bir kez gerçekleşir. Her iki durumda da işlem günlüğü yedeklemeleri beş dakikada bir gerçekleşir. Tam yedeklemenin ilk anlık görüntüsü bir sunucu oluşturulduktan sonra hemen zamanlanır. İlk tam yedekleme, büyük bir geri yüklenen sunucuda daha uzun sürebilir. Yeni bir sunucunun geri yüklenebileceği en erken süre, ilk tam yedeklemenin tamamlandığı zamandır. Anlık görüntüler instantanious olduğundan, 16 TB 'a kadar depolamayı destekleyen sunucular, oluşturma saatine geri geri yüklenebilir.
 
-### <a name="backup-redundancy-options"></a>Yedekleme fazlalık seçenekleri
+### <a name="backup-redundancy-options"></a>Yedekleme artıklığı seçenekleri
 
 MySQL için Azure veritabanı, Genel Amaçlı ve bellek için Iyileştirilmiş katmanlardaki yerel olarak yedekli veya coğrafi olarak yedekli yedekleme depolaması arasında seçim yapmak için esneklik sağlar. Yedeklemeler coğrafi olarak yedekli yedekleme depolaması 'nda depolandığında, yalnızca sunucunuzun barındırıldığı bölge içinde depolanmaz, ancak aynı zamanda [eşleştirilmiş bir veri merkezine](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)çoğaltılır. Bu, daha iyi koruma ve olağanüstü durum durumunda sunucunuzu farklı bir bölgede geri yükleme yeteneği sağlar. Temel katman yalnızca yerel olarak yedekli yedekleme depolama alanı sunar.
 
@@ -34,11 +34,11 @@ MySQL için Azure veritabanı, Genel Amaçlı ve bellek için Iyileştirilmiş k
 
 ### <a name="backup-storage-cost"></a>Yedekleme depolama maliyeti
 
-MySQL için Azure veritabanı, sağlanan sunucu depolama alanınızı ek bir ücret ödemeden yedekleme depolama alanı olarak% 100 ' e kadar sağlar. Genellikle, bu, yedi günlük bir yedekleme bekletme için uygundur. Kullanılan ek yedekleme depolama birimi GB aylık olarak ücretlendirilir.
+MySQL için Azure veritabanı, sağlanan sunucu depolama alanınızı ek bir ücret ödemeden yedekleme depolama alanı olarak %100 ' e kadar sağlar. Genellikle, bu, yedi günlük bir yedekleme bekletme için uygundur. Kullanılan ek yedekleme depolama birimi GB aylık olarak ücretlendirilir.
 
 Örneğin, 250 GB ile bir sunucu sağladıysanız, ek ücret ödemeden 250 GB yedekleme depolama alanı vardır. 250 GB 'tan fazla depolama alanı ücretlendirilir.
 
-## <a name="restore"></a>Geri yükle
+## <a name="restore"></a>Geri Yükleme
 
 MySQL için Azure veritabanı 'nda, geri yükleme gerçekleştirmek özgün sunucunun yedeklemelerinden yeni bir sunucu oluşturur.
 
@@ -62,7 +62,9 @@ Son beş dakika içinde zaman içindeki bir noktaya geri yükleyebilmeniz için 
 
 ### <a name="geo-restore"></a>Coğrafi Geri Yükleme
 
-Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, hizmeti hizmetin kullanılabildiği başka bir Azure bölgesine geri yükleyebilirsiniz. Coğrafi geri yükleme, sunucunuzun barındırıldığı bölgedeki bir olay nedeniyle kullanılamadığında varsayılan kurtarma seçeneğidir. Bir bölgedeki büyük ölçekli bir olay veritabanı uygulamanızın kullanılamamasına neden olursa, coğrafi olarak yedekli yedeklerden bir sunucuyu başka bir bölgedeki sunucuya geri yükleyebilirsiniz. Bir yedeklemenin alınması ve farklı bölgeye çoğaltılma arasında bir gecikme vardır. Bu gecikme bir saat kadar sürebilir. bu nedenle, bir olağanüstü durum oluşursa bir saatlik veri kaybı olabilir.
+Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, hizmeti hizmetin kullanılabildiği başka bir Azure bölgesine geri yükleyebilirsiniz. 16 TB 'a kadar depolamayı destekleyen sunucular için, coğrafi yedeklemeler yalnızca 16 TB sunucu destekleyen bölgelerde geri yüklenebilir. Desteklenen bölgelerin listesi için [MySQL Için Azure veritabanı fiyatlandırma katmanlarını](concepts-pricing-tiers.md) gözden geçirin. 
+
+Coğrafi geri yükleme, sunucunuzun barındırıldığı bölgedeki bir olay nedeniyle kullanılamadığında varsayılan kurtarma seçeneğidir. Bir bölgedeki büyük ölçekli bir olay veritabanı uygulamanızın kullanılamamasına neden olursa, coğrafi olarak yedekli yedeklerden bir sunucuyu başka bir bölgedeki sunucuya geri yükleyebilirsiniz. Bir yedeklemenin alınması ve farklı bölgeye çoğaltılma arasında bir gecikme vardır. Bu gecikme bir saat kadar sürebilir. bu nedenle, bir olağanüstü durum oluşursa bir saatlik veri kaybı olabilir.
 
 Coğrafi geri yükleme sırasında, değiştirilebilecek sunucu yapılandırması işlem oluşturma, sanal çekirdek, yedekleme saklama süresi ve yedekleme artıklığı seçeneklerini içerir. Coğrafi geri yükleme sırasında fiyatlandırma katmanını (temel, Genel Amaçlı veya bellek için Iyileştirilmiş) veya depolama boyutunu değiştirme desteklenmiyor.
 

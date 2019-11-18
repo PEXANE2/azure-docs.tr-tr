@@ -1,5 +1,5 @@
 ---
-title: .NET uygulamasından Azure Bilişsel Arama kullanma
+title: .NET Bilişsel Arama Azure 'da kullanma
 titleSuffix: Azure Cognitive Search
 description: .NET SDK kullanarak C# bir .NET uygulamasında Azure bilişsel arama kullanmayı öğrenin. Kod tabanlı görevler, hizmete bağlanma, içerik dizini oluşturma ve bir dizini sorgulama içerir.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e1903b3b33e1dde5178fadbc37feee191a2eaacd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 54fcd1fb936b5dd41715798408b604106a24bcf9
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792131"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112583"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>.NET uygulamasından Azure Bilişsel Arama kullanma
 
@@ -135,7 +135,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
 ```
 
 > [!NOTE]
-> Tipik bir arama uygulamasında dizin yönetimi ve popülasyon, arama sorgularından ayrı bir bileşen tarafından işlenebilir. `Indexes.GetClient`, ek `SearchCredentials`sağlamaya yönelik bir sorunu kaydettiğinden, bir dizini doldurmak için kullanışlıdır. Yeni `SearchIndexClient` için `SearchServiceClient` oluşturmak üzere kullandığınız yönetici anahtarını geçirerek bunu yapar. Ancak, uygulamanızın sorguları yürüten bölümünde, bir sorgu anahtarı geçirebilmeniz için `SearchIndexClient` doğrudan oluşturulması daha iyidir. böylece, bir yönetici anahtarı yerine yalnızca verileri okuyabilmenizi sağlar. Bu, en az ayrıcalık ilkesiyle tutarlıdır ve uygulamanızın daha güvenli olmasına yardımcı olur. Yönetici anahtarları ve sorgu anahtarları hakkında daha fazla bilgiyi [buradan](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization)edinebilirsiniz.
+> Tipik bir arama uygulamasında dizin yönetimi ve popülasyon, arama sorgularından ayrı bir bileşen tarafından işlenebilir. `Indexes.GetClient`, ek `SearchCredentials`sağlamaya yönelik bir sorunu kaydettiğinden, bir dizini doldurmak için kullanışlıdır. Yeni `SearchServiceClient` için `SearchIndexClient` oluşturmak üzere kullandığınız yönetici anahtarını geçirerek bunu yapar. Ancak, uygulamanızın sorguları yürüten bölümünde, bir sorgu anahtarı geçirebilmeniz için `SearchIndexClient` doğrudan oluşturulması daha iyidir. böylece, bir yönetici anahtarı yerine yalnızca verileri okuyabilmenizi sağlar. Bu, en az ayrıcalık ilkesiyle tutarlıdır ve uygulamanızın daha güvenli olmasına yardımcı olur. Yönetici anahtarları ve sorgu anahtarları hakkında daha fazla bilgiyi [buradan](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization)edinebilirsiniz.
 > 
 > 
 
@@ -464,7 +464,7 @@ public partial class Hotel
 
 Dikkat edilecek ikinci şey, her bir özellik `IsFilterable`, `IsSearchable`, `Key`ve `Analyzer`gibi özniteliklerle tasarlanmalıdır. Bu öznitelikler, [bir Azure bilişsel arama dizininde karşılık gelen alan özniteliklerine](https://docs.microsoft.com/rest/api/searchservice/create-index#request)doğrudan eşlenir. `FieldBuilder` sınıfı, dizin için alan tanımları oluşturmak üzere bu özellikleri kullanır.
 
-`Hotel` sınıfıyla ilgili üçüncü önemli şey, genel özelliklerin veri türleridir. Bu özelliklerin .NET türleri, dizin tanımında eşdeğer alan türleriyle eşlenir. Örneğin, `Category` dize özelliği `Edm.String` türündeki `category` alanına eşlenir. `bool?`, `Edm.Boolean`, `DateTimeOffset?`ve `Edm.DateTimeOffset` arasında benzer tür eşlemeleri vardır. Tür eşlemesine yönelik belirli kurallar, [Azure bilişsel arama .NET SDK başvurusunda](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)`Documents.Get` yöntemiyle belgelenmiştir. `FieldBuilder` sınıfı sizin için bu eşlemeyi üstlenir, ancak herhangi bir serileştirme sorununa sorun gidermeniz gerektiğinde anlaşılması yararlı olabilir.
+`Hotel` sınıfıyla ilgili üçüncü önemli şey, genel özelliklerin veri türleridir. Bu özelliklerin .NET türleri, dizin tanımında eşdeğer alan türleriyle eşlenir. Örneğin, `Category` dize özelliği `category` türündeki `Edm.String` alanına eşlenir. `bool?`, `Edm.Boolean`, `DateTimeOffset?`ve `Edm.DateTimeOffset` arasında benzer tür eşlemeleri vardır. Tür eşlemesine yönelik belirli kurallar, [Azure bilişsel arama .NET SDK başvurusunda](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)`Documents.Get` yöntemiyle belgelenmiştir. `FieldBuilder` sınıfı sizin için bu eşlemeyi üstlenir, ancak herhangi bir serileştirme sorununa sorun gidermeniz gerektiğinde anlaşılması yararlı olabilir.
 
 `SmokingAllowed` özelliğine bildirimde bulunuldunuz musunuz?
 

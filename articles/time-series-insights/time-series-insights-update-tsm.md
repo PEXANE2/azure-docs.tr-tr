@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: a550643640afeefeb4cf79e35265f13557b6ffb0
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5c045a4b5ccda47b786d86f1c004e9da4c8d85f3
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014688"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112301"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede zaman serisi modeli
 
@@ -100,10 +100,10 @@ Time Series Insights ortamı için bir olay kaynağı yapılandırıldıktan son
 | --- | ---|
 | Timeseriesıd | Örneğin ilişkilendirildiği zaman serisinin UUID 'SI. |
 | Türü | Örneğin ilişkilendirildiği zaman serisi modeli türünün UUID 'SI. Varsayılan olarak, bulunan tüm yeni örnekler varsayılan bir türle ilişkili alır.
-| ad | **Name** özelliği isteğe bağlıdır ve büyük/küçük harfe duyarlıdır. **Ad** yoksa, varsayılan olarak **Timeseriesıd değerini**alır. Bir ad sağlanmışsa, **Timeseriesıd** [yine de kullanılabilir.](time-series-insights-update-explorer.md#preview-well) |
+| ad | **Name** özelliği isteğe bağlıdır ve büyük/küçük harfe duyarlıdır. **Ad** yoksa, varsayılan olarak **Timeseriesıd değerini**alır. Bir ad sağlanmışsa, **Timeseriesıd** [yine de kullanılabilir.](time-series-insights-update-explorer.md#4-time-series-well) |
 | açıklama | Örneğin metin açıklaması. |
 | Hierarchyıds | Örneğin hangi hiyerarşilerin ait olduğunu tanımlar. |
-| ınstancefields | **ınstancefields** , bir örneğin ve bir örneği tanımlayan herhangi bir statik verinin özellikleridir. Bunlar hiyerarşi veya hiyerarşi dışı özelliklerin değerlerini tanımlar, Ayrıca, arama işlemlerini gerçekleştirmek için dizin oluşturmayı da destekler. |
+| ınstancefields | Bir örneğin ve bir örneği tanımlayan herhangi bir statik verinin özellikleri. Bunlar hiyerarşi veya hiyerarşi dışı özelliklerin değerlerini tanımlar, Ayrıca, arama işlemlerini gerçekleştirmek için dizin oluşturmayı da destekler. |
 
 > [!NOTE]
 > Hiyerarşiler örnek alanları kullanılarak oluşturulur. Ek örnek özellik tanımları için ek **ınstancefields** eklenebilir.

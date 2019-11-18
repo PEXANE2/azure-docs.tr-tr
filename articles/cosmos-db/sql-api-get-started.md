@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: 25846bb7a19d29a3a72146d4046b5205183a247e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a8af36da7b9043492f1ed3c77dcc1b35dc2936fe
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720854"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132572"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Öğretici: Azure Cosmos DB SQL API hesabındaki verileri yönetmek için bir .NET konsol uygulaması oluşturma
 
@@ -32,7 +32,7 @@ Bu öğreticinin içindekiler:
 
 > [!div class="checklist"]
 >
-> * Azure Cosmos hesabı oluşturma ve bu hesaba bağlanma
+> * Oluşturma ve bir Azure Cosmos hesabına bağlanma
 > * Visual Studio 'da projenizi yapılandırma
 > * Veritabanı ve kapsayıcı oluşturma
 > * Kapsayıcıya öğeleri ekleme
@@ -44,7 +44,7 @@ Zamanınız yok mu? Endişelenmeyin! Eksiksiz çözümü [GitHub](https://github
 
 Şimdi başlayalım!
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin bir Azure hesabı. Bir aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
 
@@ -257,6 +257,16 @@ Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir k
     ```
 
 1. Uygulamanızı çalıştırmak için F5 ' i seçin.
+
+   > [!NOTE]
+   > "503 hizmeti kullanılamayan özel durum" alırsanız, doğrudan mod için gerekli [bağlantı noktaları](performance-tips.md#networking) bir güvenlik duvarı tarafından engelleniyor olabilir. Bu sorunu onarmak için gerekli [bağlantı noktalarını](performance-tips.md#networking) açın ya da aşağıda gösterildiği gibi ağ geçidi modunu kullanmayı deneyin.
+   ```csharp
+     // Create a new instance of the Cosmos Client in Gateway mode
+     this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()
+            {
+                ConnectionMode = ConnectionMode.Gateway
+            });
+   ```
 
 Tebrikler! Azure Cosmos veritabanını başarıyla oluşturdunuz.  
 

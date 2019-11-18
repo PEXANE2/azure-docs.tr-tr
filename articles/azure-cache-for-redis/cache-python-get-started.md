@@ -1,34 +1,27 @@
 ---
 title: 'Hızlı başlangıç: Redsıs için Azure önbelleği kullanan bir Python uygulaması oluşturma'
 description: Bu hızlı başlangıçta, Redu için Azure önbelleği kullanan bir Python uygulaması oluşturmayı öğreneceksiniz.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: v-lincan
-ms.assetid: f186202c-fdad-4398-af8c-aee91ec96ba3
 ms.service: cache
 ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
 ms.date: 11/05/2019
 ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 8cb5a47e884400f09111c6e40b387deea4fb158e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 1ac1767d1ac3f6333d73a1e1c66ff7250942d266
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720400"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122675"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Hızlı başlangıç: Redsıs için Azure önbelleği kullanan bir Python uygulaması oluşturma
 
 Bu makalede, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir Python uygulamasına katabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Python 2 veya 3](https://www.python.org/downloads/)
@@ -61,7 +54,7 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Redsıs sürüm 3,0 veya üzeri için Azure önbelleği için SSL sertifikası denetimi zorlanır. Redsıs için Azure Cache 'e bağlanılırken ssl_ca_certs açık olarak ayarlanmalıdır. RedHat Linux için ssl_ca_certs, */etc/pki/TLS/certs/CA-Paketleyici ka.exe CRT* sertifika modülüdür.
+> Redsıs sürüm 3,0 veya üzeri için Azure önbelleği için SSL sertifikası denetimi zorlanır. Redsıs için Azure Cache 'e bağlanılırken ssl_ca_certs açıkça ayarlanması gerekir. RedHat Linux için ssl_ca_certs, */etc/pki/TLS/certs/CA-Paketleyici ka.exe CRT* sertifika modülüdür.
 
 ## <a name="create-a-python-sample-app"></a>Python örnek uygulaması oluşturma
 

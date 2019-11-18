@@ -1,17 +1,14 @@
 ---
-title: Azure CLı ve şablonuyla kaynak dağıtma | Microsoft Docs
+title: Azure CLı ve şablonuyla kaynak dağıtma
 description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CLı kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.author: tomfitz
-ms.openlocfilehash: e2f1747b8ae98ce53ce570422044a2f172c1a526
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c31a139e40953bf3b652af2172cd5c51578c45cc
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834471"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149734"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma
 

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2b600edc4c360a2b2990be34e44bb8fbd1c8f721
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330662"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133184"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Ahlak hacme sınıfı öğretmek için laboratuvar ayarlama 
 Bu makalede, ahlak korsanın adli tarafına odaklanan bir sınıfın nasıl ayarlanacağı gösterilmektedir. Ahlak hacham topluluk tarafından kullanılan bir uygulama olan sızma testi, birisi kötü niyetli bir saldırganın yararlanmasına yönelik güvenlik açıklarını göstermek üzere sisteme veya ağa erişim kazanmayı denediğinde oluşur. 
 
-Ahlak hacklik bir sınıfta öğrenciler, güvenlik açıklarına karşı savunma için modern teknikler öğrenmesini sağlayabilir. Her öğrenci, iki iç içe sanal makineye sahip bir sanal makine olan ve **Metaspoiltable** görüntüsüne sahip bir sanal makine ve [kalı Linux](https://www.kali.org/) görüntüsüne sahip başka bir makine içeren bir Windows Server konak sanal makinesi Metasplosever sanal makinesi, daha fazla yararlanmak için kullanılır ve kalı sanal makinesi, adli görevlerini yürütmek için gereken araçlara erişim sağlar.
+Ahlak hacklik bir sınıfta öğrenciler, güvenlik açıklarına karşı savunma için modern teknikler öğrenmesini sağlayabilir. Her öğrenci, iki iç içe sanal makineye sahip bir sanal makine olan [Metasploitable3](https://github.com/rapid7/metasploitable3) görüntüsüne sahip bir sanal makine ve [kalı Linux](https://www.kali.org/) görüntüsüne sahip başka bir makine içeren bir Windows Server konak sanal makinesi alır Metasplosever sanal makinesi, daha fazla yararlanmak için kullanılır ve kalı sanal makinesi, adli görevlerini yürütmek için gereken araçlara erişim sağlar.
 
 Bu makalede iki ana bölüm bulunur. Birinci bölüm, sınıf laboratuvarının nasıl oluşturulacağını ele alır. İkinci bölüm, iç içe sanallaştırma etkinleştirilmiş ve gerekli araçlar ve görüntülerle şablon makinenin nasıl oluşturulacağını ele alır. Bu durumda, görüntüleri barındırmak üzere Hyper-V ' y i destekleyen bir makinede Metasplosever görüntüsü ve bir kalı Linux görüntüsü.
 
@@ -44,15 +44,17 @@ Yeni bir laboratuvar oluşturmak ve ardından aşağıdaki ayarları uygulamak i
 2. [Kalı](https://www.kali.org/) Linux görüntüsünü ayarlayın. Kalı, sızma testi ve güvenlik denetimi için araçlar içeren bir Linux dağıtımıdır.
 3. Metasplosever görüntüsünü ayarlayın. Bu örnekte, [Metasploitable3](https://github.com/rapid7/metasploitable3) görüntüsü kullanılacaktır. Bu görüntü, özellikle güvenlik açıklarına karşı bir şekilde oluşturulur.
 
+Yukarıda özetlenen görevleri otomatikleştiren bir betik, [laboratuar hizmetleri ahlak korsanlık betikleri](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/EthicalHacking)bölümünde mevcuttur.
+
 ### <a name="prepare-template-machine-for-nested-virtualization"></a>İç içe sanallaştırma için şablon makinesini hazırlama
 Şablon sanal makinenizi iç içe sanallaştırma için hazırlamak üzere [Bu makaledeki](how-to-enable-nested-virtualization-template-vm.md) yönergeleri izleyin. 
 
 ### <a name="set-up-a-nested-virtual-machine-with-kali-linux-image"></a>Kalı Linux görüntüsü ile iç içe bir sanal makine ayarlama
 Kalı, sızma testi ve güvenlik denetimi için araçlar içeren bir Linux dağıtımıdır.
 
-1. [@No__t-1](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/)' den resim indirin.  
+1. [https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/)görüntüyü indirin.  
     1. Hyper-V için **kalı Linux Hyper-v 64 bitini** indirin.
-    1. .7z dosyasını ayıklayın.  Henüz 7 zip yoksa [https://www.7-zip.org/download.html](https://www.7-zip.org/download.html)' den indirin. Daha sonra gerekli olacak şekilde ayıklanan klasörün konumunu unutmayın.
+    1. .7z dosyasını ayıklayın.  Henüz 7 zip yoksa, [https://www.7-zip.org/download.html](https://www.7-zip.org/download.html)adresinden indirin. Daha sonra gerekli olacak şekilde ayıklanan klasörün konumunu unutmayın.
 2. Yönetim araçlarından **Hyper-V Yöneticisi 'ni** açın.
 1. **Eylem**' i seçin ve ardından **sanal makineyi içeri aktar**' ı seçin. 
 1. **Sanal makine Içeri aktarma** Sihirbazı ' nın **klasörü bul** sayfasında, kalı Linux görüntüsünü tutan ayıklanan klasörün konumunu seçin.
@@ -69,20 +71,20 @@ Kalı, sızma testi ve güvenlik denetimi için araçlar içeren bir Linux dağ�
 
     ![Ağ sayfasına Bağlan](../media/class-type-ethical-hacking/connect-network.png)
 1. **Özet** sayfasında **son** ' u seçin. Kopyalama ve içeri aktarma işlemleri tamamlanana kadar bekleyin. Kalı Linux sanal makinesi artık Hyper-V ' d a kullanılabilir olacaktır.
-1. **Hyper-V Yöneticisi**'Nde, **eylem** -> **Başlat**' ı seçin ve sonra sanal makineye bağlanmak için **eylem** -> **Bağlan** ' ı seçin.  
-12. Varsayılan Kullanıcı adı `root` ' dır ve parola `toor` ' dir. 
+1. **Hyper-V Yöneticisi**'Nde, **Başlat** -> **eylem** ' i seçin, sonra sanal **makineye bağlanmak için -> ** **eylem** ' i seçin.  
+12. Varsayılan Kullanıcı adı `root` ve parola `toor`. 
 
     > [!NOTE]
     > Görüntünün kilidini açmanız gerekiyorsa, CTRL tuşuna basın ve fareyi yukarı doğru sürükleyin.
 
 ## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>Metasplosever görüntüsü ile iç içe bir VM ayarlama  
-Rapid7 Metasplosever görüntüsü, özellikle güvenlik açıklarına göre yapılandırılmış bir görüntüdür. Bu görüntüyü test etmek ve sorunları bulmak için kullanacaksınız. Aşağıdaki yönergelerde önceden oluşturulmuş bir Metasplosever görüntüsünün nasıl kullanılacağı gösterilmektedir. Ancak, Metasplosever görüntüsünün daha yeni bir sürümü gerekiyorsa, bkz. [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3).
+Rapid7 Metasplosever görüntüsü, özellikle güvenlik açıklarına göre yapılandırılmış bir görüntüdür. Bu görüntüyü test etmek ve sorunları bulmak için kullanacaksınız. Aşağıdaki yönergelerde önceden oluşturulmuş bir Metasplosever görüntüsünün nasıl kullanılacağı gösterilmektedir. Ancak, Metasplosever görüntüsünün daha yeni bir sürümü gerekiyorsa bkz. [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3).
 
-1. [@No__t-1](https://information.rapid7.com/download-metasploitable-2017.html)' e gidin. Görüntüyü indirmek için formu doldurun ve **Gönder** düğmesini seçin.
+1. [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html)gidin. Görüntüyü indirmek için formu doldurun ve **Gönder** düğmesini seçin.
 1. **Metasplosever şimdi indir** düğmesini seçin.
 1. ZIP dosyası indirildikten sonra ZIP dosyasını ayıklayın ve konumu hatırlayın.
 1. Ayıklanan VMDK dosyasını Hyper-V ile kullanabilmeniz için bir VHDX dosyasına dönüştürün. Bunu yapmak için, PowerShell 'i yönetici ayrıcalıklarıyla açın ve VMDK dosyasının bulunduğu klasöre gidin ve şu yönergeleri izleyin:
-    1. [Microsoft sanal makine dönüştürücüsünü](https://www.microsoft.com/download/details.aspx?id=42497)indirin ve sorulduğunda mvmc_setup. msi dosyasını çalıştırın.
+    1. [Microsoft sanal makine dönüştürücüsünü](https://www.microsoft.com/download/details.aspx?id=42497)indirin ve istendiğinde mvmc_setup. msi dosyasını çalıştırın.
     1. PowerShell modülünü içeri aktarın.  Modülün yüklü olduğu varsayılan konum C:\Program Files\Microsoft sanal makine Dönüştürücüsü \ ' dir
 
         ```powershell
@@ -96,7 +98,7 @@ Rapid7 Metasplosever görüntüsü, özellikle güvenlik açıklarına göre yap
     1. Yeni oluşturulan metasplosever. vhdx 'i C:\Users\Public\Documents\Hyper-V\Virtual Hard Disks\dizinine kopyalayın. 
 1. Yeni bir Hyper-V sanal makinesi oluşturun.
     1. **Hyper-V Yöneticisi 'ni**açın.
-    1. 1**yeni** -> **sanal makine**@no__t **eylem**seçin.
+    1. **Yeni** -> **sanal makine** -> **eylem** ' i seçin.
     1. **Yeni sanal makine Sihirbazı**' nın **başlamadan önce** sayfasında **İleri**' ye tıklayın.
     1. **Ad ve konum belirtin** sayfasında, **ad**Için **Metasplosever** yazın ve **İleri**' yi seçin.
 
@@ -111,7 +113,7 @@ Rapid7 Metasplosever görüntüsü, özellikle güvenlik açıklarına göre yap
         ![Sanal ağ diski bağlama sayfası](../media/class-type-ethical-hacking/connect-virtual-network-disk.png)
     1. **Yeni sanal makine Sihirbazı Tamamlanıyor** sayfasında **son**' u seçin.
     1. Sanal makine oluşturulduktan sonra, Hyper-V Yöneticisi 'nde bunu seçin. Makineyi henüz kapatmayın.  
-    1. @No__t **eylem** **' i seçin**.
+    1. **Eylem** -> **ayarları**' nı seçin.
     1. **Metasplosever Için ayarlar** Iletişim kutusunda **Donanım Ekle**' yi seçin. 
     1. **Eski ağ bağdaştırıcısı**' nı seçin ve **Ekle**' yi seçin.
 
@@ -119,7 +121,7 @@ Rapid7 Metasplosever görüntüsü, özellikle güvenlik açıklarına göre yap
     1. **Eski ağ bağdaştırıcısı** sayfasında, **sanal anahtar** ayarı için **labservicesswitch** ' i seçin ve **Tamam**' ı seçin. **Iç Içe sanallaştırma Için şablonu hazırlama** bölümünde Hyper-V için şablon makinesi hazırlanırken LabServicesSwitch oluşturuldu.
 
         ![Eski ağ bağdaştırıcısı sayfası](../media/class-type-ethical-hacking/legacy-network-adapter-page.png)
-    1. Metasplosever görüntüsü artık kullanıma hazırdır. **Hyper-V Yöneticisi**'Nde, **eylem** -> **Başlat**' ı seçin ve sonra sanal makineye bağlanmak için **eylem** -> **Bağlan** ' ı seçin.  Varsayılan Kullanıcı adı **msfadmin** ve Password, **msfadmin**' dir. 
+    1. Metasplosever görüntüsü artık kullanıma hazırdır. **Hyper-V Yöneticisi**'Nde, **Başlat** -> **eylem** ' i seçin, sonra sanal **makineye bağlanmak için -> ** **eylem** ' i seçin.  Varsayılan Kullanıcı adı **msfadmin** ve Password, **msfadmin**' dir. 
 
 
 Şablon artık güncellenir ve bu durumda, sızan korsanlık bir test sınıfı için gereken görüntüler, sızma testi yapmak için araçlar içeren bir görüntü ve keşfedilecek güvenlik açıklarına sahip başka bir görüntü vardır. Şablon görüntüsü artık sınıfa yayımlanabilir. Şablonu laboratuvarda yayımlamak için şablon sayfasında **Yayımla** düğmesini seçin.

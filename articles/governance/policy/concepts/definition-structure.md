@@ -1,14 +1,14 @@
 ---
 title: İlke tanımı yapısının ayrıntıları
-description: Kaynak ilke tanımı hangi etkili olması için zaman ilkelerin hiçbiri uygulanmaz ve açıklayarak, kuruluşunuzdaki kaynaklar için kuralları oluşturmak için Azure İlkesi tarafından nasıl kullanıldığını açıklar.
+description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 50edf2941aeb24d800752eec1e93f69abf4211ea
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 6288a7d013256c39e83ee433e867d15f67c81e57
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960006"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132827"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 

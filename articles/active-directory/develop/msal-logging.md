@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2019
+ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9045fd6c1f5dcc4587b6ff85d567584f02421ba
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 97ea1c5260d1082619d59a2b8614a0ba7e9181a8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73902912"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145178"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL uygulamalarında oturum açma
 
@@ -41,6 +41,10 @@ MSAL çeşitli düzeylerde günlük ayrıntısı sağlar:
 ## <a name="personal-and-organizational-data"></a>Kişisel ve Kurumsal veriler
 
 Varsayılan olarak, MSAL günlükçüsü son derece hassas kişisel veya kurumsal verileri yakalamaz. Kitaplığı, bunu yapmayı seçerseniz kişisel ve kurumsal verileri günlüğe kaydetmeyi etkinleştirme seçeneğini sağlar.
+
+Belirli bir dilde MSAL günlük kaydı hakkında daha fazla bilgi için, diliniz ile eşleşen sekmeyi seçin:
+
+## <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ## <a name="logging-in-msalnet"></a>MSAL.NET içinde oturum açma
 
@@ -80,6 +84,8 @@ class Program
   }
  }
  ```
+
+## <a name="androidtabandroid"></a>[Android](#tab/android)
 
 ## <a name="logging-in-msal-for-android-using-java"></a>Java kullanarak Android için MSAL 'de oturum açma
 
@@ -123,7 +129,7 @@ Günlüğe kaydetme varsayılan olarak Logcat devre dışıdır. Şunları etkin
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
-## <a name="logging-in-msaljs"></a>MSAL. js ' de günlüğe kaydetme
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
  Bir `UserAgentApplication` örneği oluşturmak için yapılandırma sırasında bir günlükçü nesnesi geçirerek MSAL. js ' de (JavaScript) günlük kaydını etkinleştirin. Bu günlükçü nesnesi aşağıdaki özelliklere sahiptir:
 
@@ -155,7 +161,9 @@ var msalConfig = {
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 ```
 
-## <a name="logging-in-msal-for-ios-and-macos"></a>İOS ve macOS için MSAL 'da oturum açma
+## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+
+## <a name="msal-for-ios-and-macos-logging-objc"></a>İOS ve macOS günlüğü için MSAL-ObjC
 
 MSAL günlüğünü yakalamak ve kendi uygulamanızın günlüğüne eklemek için bir geri çağırma ayarlayın. Geri arama imzası şöyle görünür:
 
@@ -176,7 +184,6 @@ typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL cont
 
 Örneğin:
 
-Objective-C
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
     {
@@ -190,7 +197,71 @@ Objective-C
     }];
 ```
 
-Swift
+### <a name="personal-data"></a>Kişisel veriler
+
+Varsayılan olarak, MSAL kişisel verileri (PII) yakalamaz veya günlüğe kaydetmez. Kitaplık, uygulama geliştiricilerinin Msalgünlükçü sınıfındaki bir özellik aracılığıyla bunu açmasına olanak sağlar. `pii.Enabled`etkinleştirerek uygulama, yüksek düzeyde hassas verileri güvenli bir şekilde işlemek ve yasal gereksinimleri takip etmek için sorumluluk kazanır.
+
+```objc
+// By default, the `MSALLogger` doesn't capture any PII
+
+// PII will be logged
+MSALGlobalConfig.loggerConfig.piiEnabled = YES;
+
+// PII will NOT be logged
+MSALGlobalConfig.loggerConfig.piiEnabled = NO;
+```
+
+### <a name="logging-levels"></a>Günlüğe kaydetme düzeyleri
+
+İOS ve macOS için MSAL kullanarak günlüğe kaydetme düzeyini ayarlamak için aşağıdaki değerlerden birini kullanın:
+
+|Düzey  |Açıklama |
+|---------|---------|
+| `MSALLogLevelNothing`| Tüm günlüğe kaydetmeyi devre dışı bırak |
+| `MSALLogLevelError` | Varsayılan düzey, yalnızca hata oluştuğunda bilgileri yazdırır |
+| `MSALLogLevelWarning` | Uyarılarına |
+| `MSALLogLevelInfo` |  Kitaplık giriş noktaları, parametreler ve çeşitli Anahtarlık işlemleri |
+|`MSALLogLevelVerbose`     |  API izleme |
+
+Örneğin:
+
+```objc
+MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
+ ```
+
+ ### <a name="log-message-format"></a>Günlük iletisi biçimi
+
+MSAL günlük iletilerinin ileti kısmı `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message` biçimindedir
+
+Örneğin:
+
+`TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
+
+Bağıntı kimlikleri ve zaman damgaları sağlamak, sorunları izlemek için yararlıdır. Zaman damgası ve bağıntı KIMLIĞI bilgileri günlük iletisinde bulunabilir. Bu dosyaları almak için tek güvenilir yer MSAL Logging iletilerinden alınır.
+
+## <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+## <a name="msal-for-ios-and-macos-logging-swift"></a>İOS ve macOS günlüğü için MSAL-Swift
+
+MSAL günlüğünü yakalamak ve kendi uygulamanızın günlüğüne eklemek için bir geri çağırma ayarlayın. Geri arama için imza (hedef-C olarak gösterilir) şuna benzer:
+
+```objc
+/*!
+    The LogCallback block for the MSAL logger
+ 
+    @param  level           The level of the log message
+    @param  message         The message being logged
+    @param  containsPII     If the message might contain Personally Identifiable Information (PII)
+                            this will be true. Log messages possibly containing PII will not be
+                            sent to the callback unless PIllLoggingEnabled is set to YES on the
+                            logger.
+
+ */
+typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
+```
+
+Örneğin:
+
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
     if let message = message, !containsPII
@@ -207,18 +278,6 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 
 Varsayılan olarak, MSAL kişisel verileri (PII) yakalamaz veya günlüğe kaydetmez. Kitaplık, uygulama geliştiricilerinin Msalgünlükçü sınıfındaki bir özellik aracılığıyla bunu açmasına olanak sağlar. `pii.Enabled`etkinleştirerek uygulama, yüksek düzeyde hassas verileri güvenli bir şekilde işlemek ve yasal gereksinimleri takip etmek için sorumluluk kazanır.
 
-Objective-C
-```objc
-// By default, the `MSALLogger` doesn't capture any PII
-
-// PII will be logged
-MSALGlobalConfig.loggerConfig.piiEnabled = YES;
-
-// PII will NOT be logged
-MSALGlobalConfig.loggerConfig.piiEnabled = NO;
-```
-
-Swift
 ```swift
 // By default, the `MSALLogger` doesn't capture any PII
 
@@ -243,12 +302,6 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 Örneğin:
 
-Objective-C
-```objc
-MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
- ```
- 
- Swift
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
  ```
@@ -263,9 +316,11 @@ MSAL günlük iletilerinin ileti kısmı `TID = <thread_id> MSAL <sdk_ver> <OS> 
 
 Bağıntı kimlikleri ve zaman damgaları sağlamak, sorunları izlemek için yararlıdır. Zaman damgası ve bağıntı KIMLIĞI bilgileri günlük iletisinde bulunabilir. Bu dosyaları almak için tek güvenilir yer MSAL Logging iletilerinden alınır.
 
-## <a name="logging-in-msal-for-java"></a>Java için MSAL 'de oturum açma
+## <a name="javatabjava"></a>[Java](#tab/java)
 
-Java için MSAL (MSAL4J), DOLAYıSıYLA SLF4J ile uyumlu olduğu sürece uygulamanızla zaten kullandığınız günlük kitaplığını kullanmanıza olanak sağlar. MSAL4j Java [. util. Logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html), [Logback](http://logback.qos.ch/) ve [Log4J](https://logging.apache.org/log4j/2.x/)gibi çeşitli günlük çerçeveleri için basit bir façlade veya soyutlama olarak Java (dolayısıyla slf4j) [için basit günlük kaydı](http://www.slf4j.org/) kullanır. DOLAYıSıYLA SLF4J, son kullanıcının dağıtım zamanında istenen günlük çerçevesini eklemesine izin verir.
+## <a name="msal-for-java-logging"></a>Java günlüğü için MSAL
+
+Java için MSAL (MSAL4J), DOLAYıSıYLA SLF4J ile uyumlu olduğu sürece uygulamanızla zaten kullandığınız günlük kitaplığını kullanmanıza olanak sağlar. MSAL4j Java [. util. Logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html), [Logback](http://logback.qos.ch/) ve [Log4J](https://logging.apache.org/log4j/2.x/)gibi çeşitli günlük çerçeveleri için basit bir façlade veya soyutlama olarak Java (dolayısıyla slf4j) [için basit günlük kaydı](http://www.slf4j.org/) kullanır. DOLAYıSıYLA SLF4J, kullanıcının istenen günlük çerçevesini dağıtım zamanında eklemesine izin verir.
 
 Örneğin, uygulamanızdaki günlüğe kaydetme çerçevesi olarak Logback kullanmak için, uygulamanız için Maven Pod dosyasına Logback bağımlılığını ekleyin:
 
@@ -310,3 +365,35 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
         .logPii(true)
         .build();
 ```
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+## <a name="msal-for-python-logging"></a>Python günlüğü için MSAL
+
+MSAL Python 'da oturum açmak standart Python günlüğü mekanizmasını kullanır. Örneğin `logging.info("msg")`, aşağıdaki gibi MSAL günlüğünü yapılandırabilir (ve [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)bir işlem halinde görebilirsiniz):
+
+### <a name="enable-debug-logging-for-all-modules"></a>Tüm modüller için hata ayıklama günlüğünü etkinleştir
+
+Varsayılan olarak, herhangi bir Python betiğinde günlüğe kaydetme kapalıdır. Tüm Python betikinizdeki tüm modüller için hata ayıklama günlüğünü etkinleştirmek istiyorsanız şunu kullanın:
+
+```python
+logging.basicConfig(level=logging.DEBUG)
+```
+
+### <a name="silence-only-msal-logging"></a>Yalnızca sessizlik MSAL günlüğü
+
+Yalnızca MSAL kitaplık günlüğünü sessizlik için, Python betiğinizdeki diğer tüm modüllerde hata ayıklama günlüğünü etkinleştirerek, MSAL Python tarafından kullanılan günlükçü 'yi kapatın:
+
+```Python
+logging.getLogger("msal").setLevel(logging.WARN)
+```
+
+### <a name="personal-and-organizational-data-in-python"></a>Python 'da kişisel ve Kurumsal veriler
+
+Python için MSAL kişisel verileri veya kurumsal verileri günlüğe eklemez. Kişisel veya kuruluş verilerinin oturum açmasını açma veya kapatma özelliği yoktur.
+
+İstediğiniz her şeyi günlüğe kaydetmek için standart Python günlüğünü kullanabilirsiniz, ancak hassas verileri güvenle ve yasal gereksinimleri izleyerek siz de sorumlusunuz.
+
+Python 'da günlüğe kaydetme hakkında daha fazla bilgi için lütfen Python 'un [günlüğüne](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)bakın.
+
+---

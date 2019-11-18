@@ -8,16 +8,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: dda074d81857247a922eb7a179b33aa2593e5bf8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb6f1772c7c6f9abd268a8cb58550b253f095dbf
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824483"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132450"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM Görüntünüz için paylaşılan erişim imzası URI 'SI alın
 
-Yayımlama işlemi sırasında, SKU 'larınız ile ilişkili her bir sanal sabit disk (VHD) için bir Tekdüzen Kaynak tanımlayıcısı (URI) sağlamanız gerekir. Sertifika işlemi sırasında Microsoft'un bu VHD'lere erişmesi gerekir. Bu makalede, her VHD için paylaşılan erişim imzası (SAS) URI 'SI oluşturma açıklanmaktadır. Bu URI 'yi Bulut İş Ortağı Portalı **SKU 'ları** sekmesine girersiniz. 
+Yayımlama işlemi sırasında, SKU 'larınız ile ilişkili her bir sanal sabit disk (VHD) için bir Tekdüzen Kaynak tanımlayıcısı (URI) sağlamanız gerekir. Sertifika işlemi sırasında Microsoft'un bu VHD'lere erişmesi gerekir. Bu makalede, her VHD için paylaşılan erişim imzası (SAS) URI 'SI oluşturma açıklanmaktadır. Bu URI 'yi Bulut İş Ortağı Portalı **SKU 'ları** sekmesine girersiniz.
 
 VHD 'niz için SAS URI 'Leri oluştururken aşağıdaki gereksinimlere uyar:
 
@@ -38,35 +38,35 @@ SAS URL 'SI aşağıdaki araçları kullanarak iki ortak şekilde oluşturulabil
 
 Azure CLı ile SAS URI 'SI oluşturmak için aşağıdaki adımları kullanın.
 
-1. [MICROSOFT Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)'yi indirin ve yükleyin.  Sürümler Windows, macOS ve çeşitli Linux 'lar için kullanılabilir. 
+1. [MICROSOFT Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)'yi indirin ve yükleyin.  Sürümler Windows, macOS ve çeşitli Linux 'lar için kullanılabilir.
 2. Bir PowerShell dosyası (`.ps1` dosya uzantısı) oluşturun, aşağıdaki kodu kopyalayın ve yerel olarak kaydedin.
 
    ``` powershell
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
    ```
-    
+
 3. Aşağıdaki parametre değerlerini sağlamak için dosyayı düzenleyin.  Tarihlerin UTC Tarih saat biçiminde sağlanması gerekir, örneğin `2016-10-25T00:00:00Z`.
    - `<account-name>`-Azure depolama hesabınızın adı
    - `<account-key>`-Azure depolama hesabı anahtarınız
    - `<vhd-name>`-VHD adınız
-   - `<start-date>`-VHD erişimi için Izin başlangıç tarihi. Geçerli tarihten bir gün önce bir tarih girin. 
-   - VHD erişimi için `<expiry-date>` Izni sona erme tarihi.  Geçerli tarihin ötesinde en az üç hafta sonra bir tarih girin. 
- 
+   - `<start-date>`-VHD erişimi için Izin başlangıç tarihi. Geçerli tarihten bir gün önce bir tarih girin.
+   - VHD erişimi için `<expiry-date>` Izni sona erme tarihi.  Geçerli tarihin ötesinde en az üç hafta sonra bir tarih girin.
+
    Aşağıdaki örnek, doğru parametre değerlerini gösterir (Bu yazma sırasında).
 
    ``` powershell
        az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
    ```
- 
+
 4. Bu PowerShell betiğine yapılan değişiklikleri kaydedin.
 5. Kapsayıcı düzeyinde erişim için bir *SAS bağlantı dizesi* oluşturmak üzere yönetim ayrıcalıklarını kullanarak bu betiği çalıştırın.  İki temel yaklaşımdan yararlanabilirsiniz:
    - Betiği konsolundan çalıştırın.  Örneğin, Windows 'ta betiğe yazın ve **yönetici olarak çalıştır**' ı seçin.
-   - Betiği, yönetici ayrıcalıklarını kullanarak [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)gibi bir PowerShell betik düzenleyicisinden çalıştırın. 
-     Aşağıda, bu Düzenleyici içinde oluşturulan SAS bağlantı dizesi gösterilmektedir. 
+   - Betiği, yönetici ayrıcalıklarını kullanarak [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise)gibi bir PowerShell betik düzenleyicisinden çalıştırın.
+     Aşağıda, bu Düzenleyici içinde oluşturulan SAS bağlantı dizesi gösterilmektedir.
 
      ![PowerShell ıSE 'de SAS URI 'SI oluşturma](./media/publishvm_032.png)
 
-6. Elde edilen SAS bağlantı dizesini kopyalayın ve güvenli bir konumdaki bir metin dosyasına kaydedin.  Bu dizeyi, ilişkili VHD konum bilgilerini eklemek için, son SAS URI 'sini oluşturmak için düzenleyin. 
+6. Elde edilen SAS bağlantı dizesini kopyalayın ve güvenli bir konumdaki bir metin dosyasına kaydedin.  Bu dizeyi, ilişkili VHD konum bilgilerini eklemek için, son SAS URI 'sini oluşturmak için düzenleyin.
 7. Azure portal, yeni oluşturulan URI ile ilişkili VHD 'YI içeren BLOB depolama alanına gidin.
 8. **BLOB hizmeti uç NOKTASıNıN**URL değerini aşağıda gösterildiği gibi kopyalayın.
 
@@ -91,19 +91,19 @@ Microsoft Azure Depolama Gezgini bir SAS URI 'SI oluşturmak için aşağıdaki 
 2. Gezginini açın ve sol taraftaki menü çubuğunda **Hesap Ekle** simgesine tıklayın.  **Azure depolama 'Ya Bağlan** iletişim kutusu görüntülenir.
 3. **Azure Hesabı Ekle**'yi seçip **Oturum açın**'a tıklayın.  Azure hesabınızda oturum açmak için gerekli adımları devam edin.
 4. Sol **Gezgin** bölmesinde, **depolama hesaplarınıza** gidin ve bu düğümü genişletin.
-5. VHD 'nize sağ tıklayın ve bağlam menüsünden **paylaşma erişim Imzasını al** ' ı seçin. 
+5. VHD 'nize sağ tıklayın ve bağlam menüsünden **paylaşma erişim Imzasını al** ' ı seçin.
 
     ![Azure Explorer 'da SAS öğesi al](./media/publishvm_034.png)
 
 6. **Paylaşılan erişim imzası** iletişim kutusu görüntülenir. Aşağıdaki alanlar için değerler girin:
    - VHD erişimi için **Başlangıç zamanı** -izin başlangıç tarihi. Geçerli tarihten bir gün önce bir tarih girin.
    - VHD erişimi için süre sonu **zamanı** -izin sona erme tarihi.  Geçerli tarihin ötesinde en az üç hafta sonra bir tarih girin.
-   - **İzinler** -`Read` ve `List` izinleri seçin. 
+   - **İzinler** -`Read` ve `List` izinleri seçin.
 
      ![Azure Explorer 'da SAS iletişim kutusu](./media/publishvm_035.png)
 
-7. Bu VHD için ilişkili SAS URI 'sini oluşturmak için **Oluştur** ' a tıklayın.  İletişim kutusu artık bu işlemle ilgili ayrıntıları görüntüler. 
-8. **URL** değerini kopyalayın ve güvenli bir konumdaki bir metin dosyasına kaydedin. 
+7. Bu VHD için ilişkili SAS URI 'sini oluşturmak için **Oluştur** ' a tıklayın.  İletişim kutusu artık bu işlemle ilgili ayrıntıları görüntüler.
+8. **URL** değerini kopyalayın ve güvenli bir konumdaki bir metin dosyasına kaydedin.
 
     ![Azure Explorer 'da SAS URI 'SI oluşturma](./media/publishvm_036.png)
 

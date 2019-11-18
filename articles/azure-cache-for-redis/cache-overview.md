@@ -1,24 +1,18 @@
 ---
-title: Redsıs için Azure önbelleği nedir? | Microsoft Docs
+title: Redsıs için Azure önbelleği nedir?
 description: Redin için Azure önbelleğinin ne olduğunu ve nasıl yaygın olarak kullanıldığını öğrenin.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: martinekuan
-editor: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
 ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 1f0c943bed473178dadb09cfb9d355821e5236e8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 87e7505bddfce431b5e859fbbeee79f75867cfc9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066839"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122644"
 ---
 # <a name="azure-cache-for-redis-description"></a>Redis açıklaması için Azure önbelleği
 
@@ -35,7 +29,7 @@ Redis için Azure önbelleğinin uygulama mimarisini desteklemek veya uygulama p
 | Desen      | Açıklama                                        |
 | ------------ | -------------------------------------------------- |
 | [Edilgen Önbellek](cache-web-app-cache-aside-leaderboard.md) | Bir veritabanı büyük olabileceği için, tüm veritabanının bir önbelleğe yüklenmesi önerilen bir yaklaşım değildir. Veri öğelerini önbelleğe yalnızca gerekli olduğunda yüklemek için [cache-aside](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) düzeninin kullanılması yaygındır. Sistem arka uç verilerinde değişiklikler yaptığında da önbelleği güncelleyebilir ve diğer istemcilerle dağıtabilir. Ek olarak, sistem veri öğeleri için bir süre sonu ayarlayabilir ya da veri güncelleştirmelerinin önbelleğe yeniden yüklenmesine neden olacak bir çıkarma ilkesi kullanabilir.|
-| [İçeriği Önbelleğe Alma](cache-aspnet-output-cache-provider.md) | Çoğu web sayfası üst bilgi, alt bilgi, araç çubuğu, menü vb. içeren şablonlardan oluşturulur. Bu web sayfaları aslında çok sık değişmez ve dinamik olarak oluşturulmamalıdır. Redde için Azure önbelleği gibi bellek içi önbellek kullanımı, web sunucularınız için arka uç veri depolarına kıyasla bu tür statik içerik için hızlı erişim sağlayacak. Bu düzen, içeriği dinamik olarak oluşturmak için gerekecek işleme süresini ve sunucu yükünü azaltır. Bunun yapılması, web sunucularının daha iyi yanıt vermesini sağlar ve yükleri işlemek için gereken sunucu sayısını azaltmanızı sağlayabilir. Redsıs için Azure Cache, ASP.NET ile bu kalıbı desteklemeye yardımcı olmak için Redsıs çıkış önbelleği sağlayıcısı sağlar.|
+| [İçeriği Önbelleğe Alma](cache-aspnet-output-cache-provider.md) | Birçok Web sayfası, üst bilgiler, alt bilgiler, araç çubukları, menüler vb. şablonlardan oluşturulur. Bunlar aslında sık değişmez ve dinamik olarak oluşturulmamalıdır. Redde için Azure önbelleği gibi bellek içi önbellek kullanımı, web sunucularınız için arka uç veri depolarına kıyasla bu tür statik içerik için hızlı erişim sağlayacak. Bu düzen, içeriği dinamik olarak oluşturmak için gerekecek işleme süresini ve sunucu yükünü azaltır. Bunun yapılması, web sunucularının daha iyi yanıt vermesini sağlar ve yükleri işlemek için gereken sunucu sayısını azaltmanızı sağlayabilir. Redsıs için Azure Cache, ASP.NET ile bu kalıbı desteklemeye yardımcı olmak için Redsıs çıkış önbelleği sağlayıcısı sağlar.|
 | [Kullanıcı oturumunu önbelleğe alma](cache-aspnet-session-state-provider.md) | Bu düzen yaygın olarak alışveriş sepetleri ve bir web uygulamasının kullanıcı tanımlama bilgileriyle ilişkilendirmek isteyebileceği diğer kullanıcı geçmişi türündeki bilgilerle birlikte kullanılır. Bir tanımlama bilgisinde çok fazla bilgi depolamak, tanımlama bilgisi boyutu arttıkça ve tanımlama bilgisi her istek ile birlikte geçirilip doğrulandıkça performansı olumsuz yönde etkileyebilir. Tipik bir çözüm, bir arka uç veritabanında verileri sorgulamak üzere tanımlama bilgisinin anahtar olarak kullanılmasıdır. Redde için Azure önbelleği gibi bellek içi önbellek kullanmak, bilgilerin bir kullanıcıyla ilişkilendirilmesi, tam ilişkisel veritabanıyla etkileşime kıyasla çok daha hızlıdır. |
 | İş ve ileti sıraya alma | Uygulamalar istek aldığında genellikle istekle ilişkili işlemlerin yürütülmesi ek zaman alır. Daha uzun süre çalışan işlemleri bir sıraya ekleyerek ertelemek ve daha sonra, muhtemelen başka bir sunucu ile işleme almak yaygın bir düzendir. Bu iş erteleme yöntemine görevi sıraya alma adı verilir. Görev sıralarını desteklemek için tasarlanmış birçok yazılım bileşeni mevcuttur. Redde için Azure Cache Ayrıca bu amaca dağıtılmış bir sıra olarak hizmet verir.|
 | Dağıtılmış işlemler | Uygulamaların tek bir işlem (atomik) olarak bir arka uç veri deposuna karşı bir dizi komut yürütebilmesi genel bir gereksinimdir. Tüm komutlar başarılı olmalı veya tümü ilk durumuna geri döndürülmelidir. Redsıs için Azure cache [, işlem biçiminde](https://redis.io/topics/transactions)tek bir işlem olarak bir dizi komutun yürütülmesini destekler. |

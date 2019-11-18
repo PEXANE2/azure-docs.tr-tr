@@ -3,37 +3,48 @@ title: Varlık özniteliklerini yazar-Akademik Bilgi API
 titlesuffix: Azure Cognitive Services
 description: Akademik Bilgi API 'sindeki Author varlığıyla kullanabileceğiniz öznitelikleri öğrenin.
 services: cognitive-services
-author: alch-msft
-manager: nitinme
+author: darrine
+manager: kuansanw
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
-ms.date: 03/23/2017
-ms.author: alch
+ms.date: 11/14/2019
+ms.author: darrine
 ROBOTS: NOINDEX
-ms.openlocfilehash: e63e9d3f8f17a2473caf3d31b83e318ddb132b43
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: d5fc770c380397f605f8810fa41d3a8907f2358e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705101"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146499"
 ---
 # <a name="author-entity"></a>Yazar varlığı
-<sub>* Aşağıdaki öznitelikler yazar varlığına özeldir. (Ty = ' 1 ')</sub>
 
-Ad    |Açıklama                            |Type       | İşlemler
-------- | ------------------------------------- | --------- | ----------------------------
-Id      |Varlık Kimliği                              |Int64      |Eşittir
-AuN     |Yazar normalleştirilmiş adı                 |Dize     |Eşittir
-Davun    |Yazar görünen adı                    |Dize     |yok
-BİLGİ      |Yazar toplam alıntı sayısı            |Int32      |yok  
-ECC     |Yazar toplam tahmini alıntı sayısı  |Int32      |yok
-E       |Genişletilmiş meta veriler (bkz. "genişletilmiş meta öznitelikler" tablosu)  |Dize     |yok  
+> [!NOTE]
+> Aşağıdaki öznitelikler yazar varlığına özgüdür. (Ty = ' 1 ')
 
+Ad | Açıklama | Tür | İşlemler
+--- | --- | --- | ---
+Kimlik      | Varlık KIMLIĞI                             |Int64      |Eşittir
+AuN     | Yazar normalleştirilmiş adı                    |Dize     |Eşittir
+BILGISI      | Yazar toplam alıntı sayısı           |Int32      |None  
+Davun    | Yazar görünen adı                   |Dize     |None
+E | Genişletilmiş meta veriler</br></br>**Önemli**: Bu öznitelik kullanımdan kaldırılmıştır ve yalnızca eski uygulamalar için desteklenir. Bu özniteliğin tek başına istenir (yani Attributes = ID, TI, E), tüm genişletilmiş meta veri özniteliklerinin *SERILEŞTIRILMIŞ JSON dizesinde* döndürülmesiyle sonuçlanır</br></br>Genişletilmiş meta verilerde bulunan tüm öznitelikler artık üst düzey bir öznitelik olarak kullanılabilir ve bu şekilde istenebilir (örneğin, öznitelikler = ID, Ti, DOı, IA) | [Genişletildiğinde](#extended) | None
+ECC     | Yazar toplam tahmini alıntı sayısı |Int32      |None
+LKA. AID | Yazar için bulunan son bilinen ilişki varlık KIMLIĞI | Int64 | None
+LKA. AfN | Yazar için bulunan son bilinen ilişki normalleştirilmiş adı | Dize | None
+PC | Yazar toplam yayın sayısı | Int32 | None
 
-## <a name="extended-metadata-attributes"></a>Genişletilmiş meta veri öznitelikleri ##
+## <a name="extended"></a>Genişletildiğinde
 
-Ad    | Açıklama               
---------|---------------------------    
-LKA. AFN     | Yazarın yazar ile ilişkili görünen adı  
-LKA. AID        | Yazarın yazar ile ilişkili varlık KIMLIĞI
+> [!IMPORTANT]
+> Bu öznitelik kullanımdan kaldırılmıştır ve yalnızca eski uygulamalar için desteklenir. Bu özniteliğin tek başına istenir (yani Attributes = ID, TI, E), tüm genişletilmiş meta veri özniteliklerinin *SERILEŞTIRILMIŞ JSON dizesinde* döndürülmesiyle sonuçlanır</br></br>Genişletilmiş meta verilerde bulunan tüm öznitelikler artık üst düzey bir öznitelik olarak kullanılabilir ve bu şekilde istenebilir (örneğin, öznitelikler = ID, Ti, DOı, IA)
+
+> [!IMPORTANT]
+> "E" kullanarak ayrı ayrı genişletilmiş öznitelikler isteme desteği. kapsam, yani "E. DN" kullanım dışıdır. Teknik olarak desteklenmeye devam ederken, "E" kullanarak ayrı ayrı genişletilmiş öznitelikler istiyor. kapsam, "E" nesnesinin ve en üst düzey özniteliğin bir parçası olarak JSON yanıtında iki yerde döndürülen öznitelik değerinin oluşmasına neden olur.
+
+Ad | Açıklama | Tür | İşlemler
+--- | --- | --- | ---
+LKA. AID | Yazar için bulunan son bilinen ilişki varlık KIMLIĞI | Int64 | None
+LKA. AfN | Yazar için bulunan son bilinen ilişki normalleştirilmiş adı | Dize | None
+PC | Yazar toplam yayın sayısı | Int32 | None

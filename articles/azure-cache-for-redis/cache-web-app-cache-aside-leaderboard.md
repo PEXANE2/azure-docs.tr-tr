@@ -1,26 +1,18 @@
 ---
-title: Esinme için Azure önbelleği ile bir Web uygulaması oluşturma öğreticisi, önbellek içi kalıbı kullanır | Microsoft Docs
+title: Reda için Azure önbelleği ile bir Web uygulaması oluşturmaya yönelik öğretici, önbellek oluşturma deseninin kullanımı
 description: Önbelleğe alma modelini kullanan Reda için Azure önbelleği ile bir Web uygulaması oluşturmayı öğrenin
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 3260bbbd858fecc8cc305a9fcab0b551fdf182dc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834120"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121519"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Öğretici: ASP.NET üzerinde edilgen önbellekli puan tablosu oluşturma
 

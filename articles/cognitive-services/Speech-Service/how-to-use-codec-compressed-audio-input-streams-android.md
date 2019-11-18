@@ -1,5 +1,5 @@
 ---
-title: Android-konuşma hizmetinde konuşma SDK 'Sı ile sıkıştırılmış ses bileşeni
+title: Android 'de konuşma SDK 'Sı ile codec ile sıkıştırılmış ses akışı
 titleSuffix: Azure Cognitive Services
 description: Android 'de konuşma SDK 'Sı ile Azure konuşma Hizmetleri 'ne sıkıştırılmış ses akışını nasıl sağlayacağınızı öğrenin.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464378"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109909"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Android 'de konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
+# <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Nasıl yapılır: Android 'de konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
 Konuşma SDK 'sının **sıkıştırılmış ses giriş akışı** API 'si, sıkıştırılmış ses ' i, pullstream veya PushStream kullanarak konuşma hizmetine akışa almanın bir yolunu sağlar.
 
@@ -25,9 +25,9 @@ Konuşma SDK 'sının **sıkıştırılmış ses giriş akışı** API 'si, sık
 > [ C++Linux 'ta, C#ve Java için (Ubuntu 16,04, Ubuntu 18,04, de, 9)](how-to-use-codec-compressed-audio-input-streams.md)akış sıkıştırılmış giriş sesi şu anda desteklenmektedir. Ayrıca iOS platformunda Android ve [Amaç-C ' d a](how-to-use-codec-compressed-audio-input-streams-ios.md) Java için de desteklenir.
 > Konuşma SDK sürümü 1.7.0 veya üzeri gereklidir.
 
-WAV/PCM için ana hat konuşma belgelerine bakın.  WAV/PCM dışında, aşağıdaki codec sıkıştırılmış giriş biçimleri desteklenir:
+WAV/PCM için ana hat konuşma belgelerine bakın. WAV/PCM dışında, aşağıdaki codec sıkıştırılmış giriş biçimleri desteklenir:
 
-- ÇA
+- MP3
 - OPUS/OGG
 - FLAC
 - WAV w kapsayıcısında
@@ -35,7 +35,7 @@ WAV/PCM için ana hat konuşma belgelerine bakın.  WAV/PCM dışında, aşağı
 
 ## <a name="prerequisites-to-using-codec-compressed-audio-input-on-android"></a>Android 'de codec ile sıkıştırılmış ses girişi kullanma önkoşulları
 
-Codec sıkıştırılmış ses, [GStreamer](https://gstreamer.freedesktop.org)kullanılarak uygulanır. Lisanslama nedenleriyle, GStreamer ikilileri SDK ile derlenmez. Android için önceden oluşturulmuş ikilileri kullanmanız gerekir. Önceden oluşturulmuş kitaplıkları indirmek için bkz. [Android Için yükleme geliştirme](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c). 
+Codec sıkıştırılmış ses, [GStreamer](https://gstreamer.freedesktop.org)kullanılarak uygulanır. Lisanslama nedenleriyle, GStreamer ikilileri SDK ile derlenmez. Android için önceden oluşturulmuş ikilileri kullanmanız gerekir. Önceden oluşturulmuş kitaplıkları indirmek için bkz. [Android Için yükleme geliştirme](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
 `libgstreamer_android.so` gereklidir. GStreamer eklentilerinizin `libgstreamer_android.so`bağlı olduğundan emin olun.
 
@@ -160,4 +160,4 @@ String text = result.getText();
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-* [Java 'da konuşmayı tanımayı öğrenin](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)
+- [Java 'da konuşmayı tanımayı öğrenin](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

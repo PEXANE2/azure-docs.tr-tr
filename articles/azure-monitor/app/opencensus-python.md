@@ -8,18 +8,18 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7fb436ef8d915898bc8f36dd10766e71f63e4a59
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca34a92dc69cb500efb55f575420d47607cd1a46
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575563"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132216"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Python uygulamanız için Azure Izleyicisini ayarlama (Önizleme)
 
 Azure Izleyici, [Opencensus](https://opencensus.io)ile tümleştirme yoluyla, Python uygulamalarının dağıtılmış izlemeyi, ölçüm toplamayı ve günlüğe kaydedilmesini destekler. Bu makale, Python için OpenCensus ayarlama ve izleme verilerinizi Azure Izleyici 'ye gönderme sürecinde size yol gösterecektir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 - Python yüklemesi. Bu makalede [Python 3.7.0](https://www.python.org/downloads/)kullanılmaktadır, ancak önceki sürümler büyük olasılıkla küçük değişikliklerle çalışacaktır.
@@ -40,7 +40,7 @@ Azure Izleyici, [Opencensus](https://opencensus.io)ile tümleştirme yoluyla, Py
 
    | Ayar        | Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Ad**      | Genel benzersiz değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
+   | **Adı**      | Genel benzersiz değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
    | **Kaynak Grubu**     | myResourceGroup      | Application Insights verileri barındıracak yeni kaynak grubunun adı |
    | **Konum** | Doğu ABD | Size yakın veya uygulamanızın barındırıldığı yerin yakınında bir konum |
 
@@ -109,7 +109,6 @@ SDK, Azure Izleyici 'ye farklı telemetri türleri göndermek için üç Azure I
     tracer = Tracer(
         exporter=AzureExporter(
             connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000'),
-        ),
         sampler=ProbabilitySampler(1.0),
     )
 
@@ -215,7 +214,7 @@ SDK, Azure Izleyici 'ye farklı telemetri türleri göndermek için üç Azure I
     # TODO: replace the all-zero GUID with your instrumentation key.
     exporter = metrics_exporter.new_metrics_exporter(
         connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
+
     view_manager.register_exporter(exporter)
 
     def prompt():
@@ -297,30 +296,6 @@ SDK, Azure Izleyici 'ye farklı telemetri türleri göndermek için üç Azure I
 4. Dışarı aktarma programı günlük verilerini Azure Izleyici 'ye gönderir. `traces`altında verileri bulabilirsiniz.
 
 5. Günlüklerinizi izleme bağlamı verileriyle zenginleştirme hakkında daha fazla bilgi için bkz. OpenCensus Python [günlükleri tümleştirmesi](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
-
-## <a name="start-monitoring-in-the-azure-portal"></a>Azure portalında izlemeyi başlatma
-
-1. Artık çalışmakta olan uygulamanız hakkındaki ayrıntıları görüntülemek için Azure portal Application Insights **genel bakış** bölmesini yeniden açabilirsiniz. **Canlı ölçüm akışı**seçin.
-
-   ![Kırmızı kutuda seçilen "Canlı Ölçüm Akışı" ile genel bakış bölmesinin ekran görüntüsü](./media/opencensus-python/0005-overview-live-metrics-stream.png)
-
-2. **Genel bakış** bölmesine geri dönün. Bağımlılık ilişkilerinin görsel düzeni ve uygulama bileşenleriniz arasındaki çağrı zamanlaması için **uygulama Haritası** ' nı seçin.
-
-   ![Temel uygulama eşlemesinin ekran görüntüsü](./media/opencensus-python/0007-application-map.png)
-
-   Yalnızca bir yöntem çağrısını izlerken, uygulama haritamız ilginç değildir. Ancak, daha fazla Dağıtılmış uygulamayı görselleştirmek için bir uygulama Haritası ölçeklendirebilir:
-
-   ![Uygulama eşlemesi](media/opencensus-python/application-map.png)
-
-3. Performansı ayrıntılı olarak çözümlemek için performansı **Araştır** ' ı seçin ve performansının yavaşlamasına neden olan performansı belirleyin.
-
-   ![Performans ayrıntılarının ekran görüntüsü](./media/opencensus-python/0008-performance.png)
-
-4. İşlem ayrıntıları için uçtan uca deneyimi açmak üzere **örnekler**' i seçin ve ardından sağ bölmede görüntülenen örneklerden birini seçin. 
-
-   Örnek uygulamamız yalnızca tek bir olay gösterse de, daha karmaşık bir uygulama, tek bir olayın çağrı yığınının düzeyine kadar uçtan uca işlemi araştırmanıza olanak sağlar.
-
-   ![Uçtan uca işlem arabiriminin ekran görüntüsü](./media/opencensus-python/0009-end-to-end-transaction.png)
 
 ## <a name="view-your-data-with-queries"></a>Sorgular ile verilerinizi görüntüleme
 

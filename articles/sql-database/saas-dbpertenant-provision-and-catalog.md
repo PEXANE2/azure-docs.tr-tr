@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: cd5b45093be6d7cc8745013f18c897251f89f454
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6ec8f8835e925663fc6ac21a6eb1df09d6927109
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822201"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132112"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Yeni kiracılar sağlamayı ve bunları kataloğa kaydetmeyi öğrenin
 
@@ -25,7 +25,7 @@ Bu öğreticide, SaaS düzenlerini sağlamayı ve kataloglayacağınızı öğre
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> 
+>
 > * Tek bir yeni kiracı sağlayın.
 > * Ek kiracılar için bir toplu iş sağlayın.
 
@@ -39,17 +39,17 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığı
 
 Veritabanı tarafından desteklenen çok kiracılı bir SaaS uygulamasında, her kiracının bilgisinin nerede depolandığını öğrenmek önemlidir. SaaS Katalog modelinde, her kiracı ve verilerinin depolandığı veritabanı arasındaki eşlemeyi tutmak için bir Katalog veritabanı kullanılır. Bu model, kiracı verileri birden çok veritabanı arasında dağıtıldığında geçerlidir.
 
-Her kiracı, katalogdaki bir anahtarla tanımlanır ve bu, veritabanlarının konumuyla eşlenir. Wingtip bilet uygulamasında, anahtar, kiracının adının bir karmasından oluşturulur. Bu düzen, uygulamanın, uygulama URL 'sinde bulunan kiracı adından anahtar oluşturmasına izin verir. Diğer kiracı anahtar şemaları kullanılabilir.  
+Her kiracı, katalogdaki bir anahtarla tanımlanır ve bu, veritabanlarının konumuyla eşlenir. Wingtip bilet uygulamasında, anahtar, kiracının adının bir karmasından oluşturulur. Bu düzen, uygulamanın, uygulama URL 'sinde bulunan kiracı adından anahtar oluşturmasına izin verir. Diğer kiracı anahtar şemaları kullanılabilir.
 
 Katalog, veritabanının adının veya konumunun uygulama üzerinde en az etkiyle değiştirilmesini sağlar. Çok kiracılı bir veritabanı modelinde, bu özellik aynı zamanda bir kiracıyı veritabanları arasında taşımayı de karşılar. Katalog, bir kiracının veya veritabanının bakım veya diğer eylemler için çevrimdışı olup olmadığını göstermek için de kullanılabilir. Bu yetenek, [tek kiracılı geri yükleme öğreticisinde](saas-dbpertenant-restore-single-tenant.md)araştırılabilir.
 
-Katalog Ayrıca kiracılar için sunulan şema sürümü, hizmet planı veya SLA 'Lar gibi ek kiracı veya veritabanı meta verilerini de saklayabilir. Katalog, uygulama yönetimi, müşteri desteği veya DevOps sağlayan diğer bilgileri de saklayabilir. 
+Katalog Ayrıca kiracılar için sunulan şema sürümü, hizmet planı veya SLA 'Lar gibi ek kiracı veya veritabanı meta verilerini de saklayabilir. Katalog, uygulama yönetimi, müşteri desteği veya DevOps sağlayan diğer bilgileri de saklayabilir.
 
-SaaS uygulamasının ötesinde, Katalog veritabanı araçlarını etkinleştirebilir. Wingtip bilet SaaS veritabanı-Kiracı örneği ' nde, katalog, geçici [Raporlama öğreticisinde](saas-tenancy-cross-tenant-reporting.md)araştırılan çapraz kiracı sorgusunu etkinleştirmek için kullanılır. Veritabanları arası iş yönetimi, [şema yönetimi](saas-tenancy-schema-management.md) ve [kiracı Analizi](saas-tenancy-tenant-analytics.md) öğreticilerinde araştırılabilir. 
+SaaS uygulamasının ötesinde, Katalog veritabanı araçlarını etkinleştirebilir. Wingtip bilet SaaS veritabanı-Kiracı örneği ' nde, katalog, geçici [Raporlama öğreticisinde](saas-tenancy-cross-tenant-reporting.md)araştırılan çapraz kiracı sorgusunu etkinleştirmek için kullanılır. Veritabanları arası iş yönetimi, [şema yönetimi](saas-tenancy-schema-management.md) ve [kiracı Analizi](saas-tenancy-tenant-analytics.md) öğreticilerinde araştırılabilir.
 
-Wingtip bilet SaaS örneklerinde, katalog, [elastik veritabanı istemci kitaplığı 'nın (EDCL)](sql-database-elastic-database-client-library.md)parça yönetimi özellikleri kullanılarak uygulanır. EDCL, Java ve .NET Framework kullanılabilir. EDCL, bir uygulamanın veritabanı tarafından desteklenen bir parça eşlemesi oluşturmasına, yönetmesine ve kullanmasına olanak sağlar. 
+Wingtip bilet SaaS örneklerinde, katalog, [elastik veritabanı istemci kitaplığı 'nın (EDCL)](sql-database-elastic-database-client-library.md)parça yönetimi özellikleri kullanılarak uygulanır. EDCL, Java ve .NET Framework kullanılabilir. EDCL, bir uygulamanın veritabanı tarafından desteklenen bir parça eşlemesi oluşturmasına, yönetmesine ve kullanmasına olanak sağlar.
 
-Parça Haritası, parçaların (veritabanlarının) bir listesini ve anahtarlar (kiracılar) ile parçalar arasındaki eşlemeyi içerir. EDCL işlevleri, parça eşlemesinde girdileri oluşturmak için kiracı sağlama sırasında kullanılır. Bunlar, uygulamalar tarafından doğru veritabanına bağlanmak için çalışma zamanında kullanılır. EDCL, Katalog veritabanı trafiğini en aza indirmek ve uygulamayı hızlandırmak için bağlantı bilgilerini önbelleğe alır. 
+Parça Haritası, parçaların (veritabanlarının) bir listesini ve anahtarlar (kiracılar) ile parçalar arasındaki eşlemeyi içerir. EDCL işlevleri, parça eşlemesinde girdileri oluşturmak için kiracı sağlama sırasında kullanılır. Bunlar, uygulamalar tarafından doğru veritabanına bağlanmak için çalışma zamanında kullanılır. EDCL, Katalog veritabanı trafiğini en aza indirmek ve uygulamayı hızlandırmak için bağlantı bilgilerini önbelleğe alır.
 
 > [!IMPORTANT]
 > Eşleme verilerine Katalog veritabanından erişilebilir, ancak *düzenleyemezsiniz*. Yalnızca elastik veritabanı Istemci kitaplığı API 'Lerini kullanarak eşleme verilerini düzenleyin. Eşleme veri risklerini doğrudan işlemek kataloğu bozuyor ve desteklenmez.
@@ -57,15 +57,15 @@ Parça Haritası, parçaların (veritabanlarının) bir listesini ve anahtarlar 
 
 ## <a name="introduction-to-the-saas-provisioning-pattern"></a>SaaS sağlama düzenine giriş
 
-Tek kiracılı veritabanı modeli kullanan bir SaaS uygulamasına yeni bir kiracı eklediğinizde, yeni bir kiracı veritabanı sağlamalısınız. Veritabanının uygun konum ve hizmet katmanında oluşturulması gerekir. Ayrıca, uygun şema ve başvuru verileriyle birlikte başlatılmalıdır. Ve uygun kiracı anahtarı altındaki katalogda kayıtlı olmalıdır. 
+Tek kiracılı veritabanı modeli kullanan bir SaaS uygulamasına yeni bir kiracı eklediğinizde, yeni bir kiracı veritabanı sağlamalısınız. Veritabanının uygun konum ve hizmet katmanında oluşturulması gerekir. Ayrıca, uygun şema ve başvuru verileriyle birlikte başlatılmalıdır. Ve uygun kiracı anahtarı altındaki katalogda kayıtlı olmalıdır.
 
-Veritabanı sağlamaya yönelik farklı yaklaşımlar kullanılabilir. SQL betiklerini yürütebilir, bacpac dağıtabilir veya bir şablon veritabanını kopyalayabilirsiniz. 
+Veritabanı sağlamaya yönelik farklı yaklaşımlar kullanılabilir. SQL betiklerini yürütebilir, bacpac dağıtabilir veya bir şablon veritabanını kopyalayabilirsiniz.
 
-Veritabanı sağlama, şema yönetimi stratejinizin bir parçası olmalıdır. Yeni veritabanlarının en son şemayla sağlandığından emin olmanız gerekir. Bu gereksinim, [şema yönetimi öğreticisinde](saas-tenancy-schema-management.md)araştırılabilir. 
+Veritabanı sağlama, şema yönetimi stratejinizin bir parçası olmalıdır. Yeni veritabanlarının en son şemayla sağlandığından emin olmanız gerekir. Bu gereksinim, [şema yönetimi öğreticisinde](saas-tenancy-schema-management.md)araştırılabilir.
 
-Her kiracı için Wingtip bilet veritabanı uygulaması, katalog sunucusuna dağıtılan _basetenantdb_adlı bir şablon veritabanını kopyalayarak yeni kiracılar sağlar. Sağlama, kayıt deneyiminin bir parçası olarak uygulamayla tümleştirilebilir. Ayrıca, betikler kullanılarak çevrimdışı de desteklenebilir. Bu öğretici, PowerShell kullanarak sağlamayı araştırır. 
+Her kiracı için Wingtip bilet veritabanı uygulaması, katalog sunucusuna dağıtılan _basetenantdb_adlı bir şablon veritabanını kopyalayarak yeni kiracılar sağlar. Sağlama, kayıt deneyiminin bir parçası olarak uygulamayla tümleştirilebilir. Ayrıca, betikler kullanılarak çevrimdışı de desteklenebilir. Bu öğretici, PowerShell kullanarak sağlamayı araştırır.
 
-Sağlama betikleri, bir elastik havuzda yeni bir kiracı veritabanı oluşturmak için _basetenantdb_ veritabanını kopyalar. Kiracı veritabanı, _newtenant_ DNS diğer adına eşlenmiş kiracı sunucusunda oluşturulur. Bu diğer ad, yeni kiracılar sağlamak için kullanılan sunucuya yönelik bir başvuru tutar ve olağanüstü durum kurtarma öğreticilerinde bir kurtarma kiracı sunucusunu işaret etmek üzere güncelleştirilir ([coğrafi geri yükleme kullanarak](saas-dbpertenant-dr-geo-restore.md)Dr, [coğrafi çoğaltma kullanarak](saas-dbpertenant-dr-geo-replication.md)). Betikler daha sonra, kiracıya özel bilgilerle veritabanını başlatır ve Katalog parça haritasına kaydeder. Kiracı veritabanlarına, kiracı adına göre adlar verilir. Bu adlandırma düzeni, deseninin önemli bir parçası değildir. Katalog, kiracı anahtarını veritabanı adıyla eşleştirir, bu nedenle herhangi bir adlandırma kuralı kullanılabilir. 
+Sağlama betikleri, bir elastik havuzda yeni bir kiracı veritabanı oluşturmak için _basetenantdb_ veritabanını kopyalar. Kiracı veritabanı, _newtenant_ DNS diğer adına eşlenmiş kiracı sunucusunda oluşturulur. Bu diğer ad, yeni kiracılar sağlamak için kullanılan sunucuya yönelik bir başvuru tutar ve olağanüstü durum kurtarma öğreticilerinde bir kurtarma kiracı sunucusunu işaret etmek üzere güncelleştirilir ([coğrafi geri yükleme kullanarak](saas-dbpertenant-dr-geo-restore.md)Dr, [coğrafi çoğaltma kullanarak](saas-dbpertenant-dr-geo-replication.md)). Betikler daha sonra, kiracıya özel bilgilerle veritabanını başlatır ve Katalog parça haritasına kaydeder. Kiracı veritabanlarına, kiracı adına göre adlar verilir. Bu adlandırma düzeni, deseninin önemli bir parçası değildir. Katalog, kiracı anahtarını veritabanı adıyla eşleştirir, bu nedenle herhangi bir adlandırma kuralı kullanılabilir.
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Her kiracı uygulama komut dosyası için Wingtip bilet SaaS veritabanı 'nı alın
@@ -95,7 +95,7 @@ Wingtip bilet uygulamasının yeni kiracı sağlaması uygulayıp uygulamadığ�
 
 
 
-**Hata ayıklama** menü seçeneklerini kullanarak betiğin yürütülmesini izleyin. Çağrılan işlevlerin üzerinde veya içine gitmek için F10 ve F11 tuşlarına basın. PowerShell betiklerinde hata ayıklama hakkında daha fazla bilgi için bkz. [PowerShell betiklerinde çalışma ve hata ayıklama hakkında ipuçları](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise).
+**Hata ayıklama** menü seçeneklerini kullanarak betiğin yürütülmesini izleyin. Çağrılan işlevlerin üzerinde veya içine gitmek için F10 ve F11 tuşlarına basın. PowerShell betiklerinde hata ayıklama hakkında daha fazla bilgi için bkz. [PowerShell betiklerinde çalışma ve hata ayıklama hakkında ipuçları](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
 
 Bu iş akışını açık bir şekilde izlemeniz gerekmez. Betikte hata ayıklama yapılacağını açıklar.
@@ -156,17 +156,17 @@ Bu öğreticide bulunmayan diğer sağlama desenleri:
 
 **Ön sağlama veritabanları**: önceden sağlama, elastik havuzdaki veritabanlarının ek maliyet eklememesinden yararlanır. Faturalandırma, veritabanlarına değil, elastik havuza yöneliktir. Boştaki veritabanları hiçbir kaynak tüketmez. Bir havuzdaki veritabanlarının ön sağlamasını yaparak ve gerektiğinde ayırarak, kiracılar ekleme süresini azaltabilirsiniz. Önceden sağlanan veritabanlarının sayısı, bir arabelleğin beklenen sağlama oranına uygun tutulması için gerektiği şekilde ayarlanabilir.
 
-**Otomatik sağlama**: otomatik sağlama modelinde, bir sağlama hizmeti gerektiğinde sunucuları, havuzları ve veritabanlarını otomatik olarak sağlar. İsterseniz, elastik havuzlarda önceden sağlama veritabanlarını dahil edebilirsiniz. Veritabanları kullanımdan çıkarıldı ve silinirse, elastik havuzlardaki boşluklar sağlama hizmeti tarafından doldurulabilir. Bu tür bir hizmet, birden çok coğrafi sistem genelinde sağlamayı işleme ve olağanüstü durum kurtarma için coğrafi çoğaltma ayarlama gibi basit veya karmaşık olabilir. 
+**Otomatik sağlama**: otomatik sağlama modelinde, bir sağlama hizmeti gerektiğinde sunucuları, havuzları ve veritabanlarını otomatik olarak sağlar. İsterseniz, elastik havuzlarda önceden sağlama veritabanlarını dahil edebilirsiniz. Veritabanları kullanımdan çıkarıldı ve silinirse, elastik havuzlardaki boşluklar sağlama hizmeti tarafından doldurulabilir. Bu tür bir hizmet, birden çok coğrafi sistem genelinde sağlamayı işleme ve olağanüstü durum kurtarma için coğrafi çoğaltma ayarlama gibi basit veya karmaşık olabilir.
 
 Otomatik sağlama düzeniyle, bir istemci uygulaması veya betiği, sağlama hizmeti tarafından işlenmek üzere bir sıraya sağlama isteği gönderir. Ardından, tamamlanma sağlamak için hizmeti yoklar. Ön sağlama kullanılıyorsa, istekler hızla işlenir. Hizmet, arka planda bir değiştirme veritabanı sağlar.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunları öğrendiniz:
+Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> 
+>
 > * Tek bir yeni kiracı sağlayın.
 > * Ek kiracılar için bir toplu iş sağlayın.
 > * Kiracılar sağlama ve bunları kataloğa kaydetme ayrıntılarının ayrıntılarına geçin.
@@ -177,4 +177,4 @@ Bu öğreticide, şunları öğrendiniz:
 
 * [Her kiracı Için Wingtip bilet SaaS veritabanı uygulaması üzerinde derleme yapan ek öğreticiler](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastik veritabanı istemci kitaplığı](sql-database-elastic-database-client-library.md)
-* [Windows PowerShell ISE hata ayıklama betikleri](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
+* [Windows PowerShell ISE hata ayıklama betikleri](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)

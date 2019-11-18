@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 62f298e0efb5c54efdcd15cf470ed4640f720058
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b9b58c9b5f32d6ca714ac3ac940b91643fa8020c
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73957836"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123559"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Azure Machine Learning ile eğitim & dağıtımı için ortamları yeniden kullanın.
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -333,7 +333,7 @@ run = experiment.submit(sk_est)
 
 Modelinizi bir Web hizmeti olarak dağıttığınızda ortamları kullanabilirsiniz. Bu, her iki eğitim ve çıkarım hesaplamada aynı kitaplıkları kullanarak modelinizi eğitebileceğiniz, test ettiğiniz ve dağıtabileceğiniz, tekrarlanabilir, bağlantılı bir iş akışına izin vermez.
 
-Bir Web hizmeti dağıtmak için ortam, çıkarım işlem, Puanlama betiği ve dağıtım nesneniz içindeki kayıtlı modeli birleştirin, [dağıtın ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-). [Web hizmetlerini dağıtma](how-to-deploy-and-where.md)hakkında daha fazla bilgi edinin.
+Bir Web hizmeti dağıtmak için ortam, çıkarım işlem, Puanlama betiği ve dağıtım nesneniz içindeki kayıtlı modeli birleştirin, [dağıtın ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-). [Web hizmetlerini dağıtma](how-to-deploy-and-where.md)hakkında daha fazla bilgi edinin.
 
 Bu örnekte, bir eğitim çalıştırmasının tamamlandığını ve bu modeli bir Azure Container Instance 'a (acı) dağıtmayı istediğinizi varsayalım. Web hizmetini oluştururken model ve Puanlama dosyaları görüntüye bağlanır ve Azure Machine Learning çıkarım yığını görüntüye eklenir.
 

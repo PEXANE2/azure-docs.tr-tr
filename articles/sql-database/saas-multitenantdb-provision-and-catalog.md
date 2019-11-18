@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
-ms.openlocfilehash: cae0b2730a9426b183dc330a18a76122ac87cc66
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4ea18ee23d845b2d16209b23de14dc3cd70aaa59
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817937"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133141"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Parçalı bir çok kiracılı Azure SQL veritabanı kullanarak bir SaaS uygulamasında yeni kiracılar sağlama ve kataloglandırın
 
@@ -63,11 +63,11 @@ Katalog, bir kiracının bakım veya diğer eylemler için çevrimdışı olup o
 - Bir veritabanının hizmet katmanı veya sürümü.
 - Veritabanı şemasının sürümü.
 - Kiracı adı ve SLA 'Sı (hizmet düzeyi sözleşmesi).
-- Uygulama yönetimini, müşteri desteğini veya DevOps süreçlerini etkinleştirme bilgileri.  
+- Uygulama yönetimini, müşteri desteğini veya DevOps süreçlerini etkinleştirme bilgileri.
 
-Katalog, analiz amaçları için çapraz kiracı raporlamayı, şema yönetimini ve veri ayıklamayı etkinleştirmek için de kullanılabilir. 
+Katalog, analiz amaçları için çapraz kiracı raporlamayı, şema yönetimini ve veri ayıklamayı etkinleştirmek için de kullanılabilir.
 
-### <a name="elastic-database-client-library"></a>Elastik Veritabanı İstemci Kitaplığı 
+### <a name="elastic-database-client-library"></a>Elastik Veritabanı İstemci Kitaplığı
 
 Wingtip 'de, katalog, *tenantcatalog* veritabanında uygulanır. *Tenantcatalog* , [elastik veritabanı istemci kitaplığı 'nın (Edcl)](sql-database-elastic-database-client-library.md)parça yönetimi özellikleri kullanılarak oluşturulur. Kitaplık, bir uygulamanın bir veritabanında depolanan parça *haritasını* oluşturmasını, yönetmesini ve kullanmasını sağlar. Parça Haritası, kiracı anahtarına çapraz başvuru, yani parçalı veritabanı.
 
@@ -108,7 +108,7 @@ Bu öğreticideki kiracı sağlama betikleri aşağıdaki senaryolardan her ikis
 - Diğer kiracılar ile paylaşılan mevcut bir veritabanına kiracı sağlama.
 - Kiracının kendi veritabanına sağlanması.
 
-Kiracı verileri daha sonra, Katalog parça eşlemesinde başlatılır ve kaydedilir. Örnek uygulamada, birden fazla kiracı içeren veritabanlarına *tenants1* veya *tenants2*gibi genel bir ad verilir. Tek bir kiracı içeren veritabanlarına kiracının adı verilir. Bir kataloğun kullanımı, veritabanına herhangi bir adın atanmasına izin verdiğinden, örnekte kullanılan belirli adlandırma kuralları, düzenin kritik bir parçası değildir.  
+Kiracı verileri daha sonra, Katalog parça eşlemesinde başlatılır ve kaydedilir. Örnek uygulamada, birden fazla kiracı içeren veritabanlarına *tenants1* veya *tenants2*gibi genel bir ad verilir. Tek bir kiracı içeren veritabanlarına kiracının adı verilir. Bir kataloğun kullanımı, veritabanına herhangi bir adın atanmasına izin verdiğinden, örnekte kullanılan belirli adlandırma kuralları, düzenin kritik bir parçası değildir.
 
 <a name="goto_1_tutorial"/>
 
@@ -122,7 +122,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Birden çok kiracılı ve tek kiracılı veritabanlarına kiracı grubu sağlama
 > * Bir katalogda bir veritabanını ve kiracı eşlemesini kaydetme
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -132,7 +132,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığı
 
 - Wingtip betikleri ve kaynak kodunu alın:
     - Wingtip biletleri SaaS çok kiracılı veritabanı betikleri ve uygulama kaynak kodu [Wingtipbilet ssaas-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub deposunda mevcuttur.
-    - Wingtip betikleri indirme ve engellemesini kaldırma adımları için [genel kılavuza](saas-tenancy-wingtip-app-guidance-tips.md) bakın. 
+    - Wingtip betikleri indirme ve engellemesini kaldırma adımları için [genel kılavuza](saas-tenancy-wingtip-app-guidance-tips.md) bakın.
 
 ## <a name="provision-a-tenant-into-a-database-shared-with-other-tenants"></a>Diğer kiracılar ile *paylaşılan* bir veritabanına kiracı sağlama
 
@@ -144,8 +144,8 @@ Aşağıda adım adım iş akışının temel öğeleri verilmiştir:
 
 - **Yeni kiracı anahtarını hesapla**: kiracı adından kiracı anahtarı oluşturmak için bir karma işlev kullanılır.
 - **Kiracı anahtarının zaten mevcut olup olmadığını denetleyin**: anahtarın zaten kayıtlı olmadığından emin olmak için Katalog denetlenir.
-- **Varsayılan kiracı veritabanında kiracıyı Başlat**: Kiracı veritabanı yeni kiracı bilgilerini eklemek üzere güncelleştirilir.  
-- **Kiracıyı katalogda kaydet**: yeni kiracı anahtarı ile mevcut tenants1 veritabanı arasındaki eşleme kataloğa eklenir. 
+- **Varsayılan kiracı veritabanında kiracıyı Başlat**: Kiracı veritabanı yeni kiracı bilgilerini eklemek üzere güncelleştirilir.
+- **Kiracıyı katalogda kaydet**: yeni kiracı anahtarı ile mevcut tenants1 veritabanı arasındaki eşleme kataloğa eklenir.
 - **Kiracı adını bir katalog uzantısı tablosuna ekleyin**: mekan adı katalogdaki kiracılar tablosuna eklenir.  Bu ek, Katalog veritabanının uygulamaya özgü ek verileri destekleyecek şekilde nasıl uzatımda olduğunu gösterir.
 - **Yeni kiracı Için olayları aç sayfası**: *Bushsollow maves* olayları sayfası tarayıcıda açılır.
 
@@ -172,7 +172,7 @@ Wingtip uygulamasının paylaşılan bir veritabanında yeni kiracı sağlamayı
 
 5. Komut dosyasının yürütülmesini, **hata ayıklama** menü seçenekleri, **F10** ve **F11**kullanarak, çağrılan işlevleri üzerinde veya içine adımla izleyin.
 
-PowerShell betiklerinde hata ayıklama hakkında daha fazla bilgi için bkz. [PowerShell betiklerinde çalışma ve hata ayıklama hakkında ipuçları](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise).
+PowerShell betiklerinde hata ayıklama hakkında daha fazla bilgi için bkz. [PowerShell betiklerinde çalışma ve hata ayıklama hakkında ipuçları](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
 ## <a name="provision-a-tenant-in-its-own-database"></a>*Kendi* veritabanında kiracı sağlama
 
@@ -184,7 +184,7 @@ Aşağıda, betiği izlerken adım adım iş akışının temel öğeleri verilm
 - **Kiracı anahtarının zaten mevcut olup olmadığını denetleyin**: anahtarın zaten kayıtlı olmadığından emin olmak için Katalog denetlenir.
 - **Yeni bir kiracı veritabanı oluşturun**: veritabanı, Kaynak Yöneticisi şablonu kullanılarak *basetenantdb* veritabanı kopyalanarak oluşturulur.  Yeni veritabanı adı, kiracının adına göre belirlenir.
 - **Kataloğa veritabanı ekleme**: yeni kiracı veritabanı katalogda parça olarak kaydedilir.
-- **Varsayılan kiracı veritabanında kiracıyı Başlat**: Kiracı veritabanı yeni kiracı bilgilerini eklemek üzere güncelleştirilir.  
+- **Varsayılan kiracı veritabanında kiracıyı Başlat**: Kiracı veritabanı yeni kiracı bilgilerini eklemek üzere güncelleştirilir.
 - **Kiracıyı katalogda kaydet**: yeni kiracı anahtarı ve *sequoıafutbol* veritabanı arasındaki eşleme kataloğa eklenir.
 - **Kiracı adı kataloğa eklenir**: mekan adı, katalogdaki kiracılar uzantı tablosuna eklenir.
 - **Yeni kiracı Için olayları aç sayfası**: *Sequoia futbol* olayları sayfası tarayıcıda açılır.
@@ -217,7 +217,7 @@ Bu alıştırma, 17 kiracılar toplu işi sağlar. Diğer Wingtip bilet öğreti
 
 2. **F5** tuşuna basıp betiği çalıştırın.
 
-### <a name="verify-the-deployed-set-of-tenants"></a>Dağıtılan kiracılar kümesini doğrulama 
+### <a name="verify-the-deployed-set-of-tenants"></a>Dağıtılan kiracılar kümesini doğrulama
 
 Bu aşamada, paylaşılan bir veritabanına ve kendi veritabanlarına dağıtılan kiracılara dağıtılan kiracılar karışımı vardır. Azure portal oluşturulan veritabanlarını denetlemek için kullanılabilir. [Azure Portal](https://portal.azure.com), SQL Server listesine giderek **tenants1-MT-\<Kullanıcı\>** sunucusunu açın.  **SQL veritabanları** listesi, paylaşılan **tenants1** veritabanını ve kendi veritabanında bulunan kiracılar için veritabanlarını içermelidir:
 
@@ -227,7 +227,7 @@ Azure portal Kiracı veritabanlarını gösterirken, bu, paylaşılan veritaban�
 
 #### <a name="using-wingtip-tickets-events-hub-page"></a>Wingtip bilet olayları hub 'ı kullanma sayfası
 
-Tarayıcıda Olay Hub 'ı sayfasını açın (http: Events. Wingtip-mt.\<USER\>. trafficmanager.net)  
+Tarayıcıda Olay Hub 'ı sayfasını açın (http: Events. Wingtip-mt.\<USER\>. trafficmanager.net)
 
 #### <a name="using-catalog-database"></a>Katalog veritabanını kullanma
 
@@ -245,7 +245,7 @@ Kiracıların tam listesi ve her biri için karşılık gelen veritabanı katalo
 3. Sık *kullanılan görünüm '* e sağ tıklayın ve **en üstteki 1000 satırı seç**' i seçin. Farklı kiracılar için kiracı adı ve veritabanı arasındaki eşlemeyi aklınızda yapın.
 
     ![SSMS 'de Extendedkiracılar görünümü](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
-      
+
 ## <a name="other-provisioning-patterns"></a>Diğer sağlama düzenleri
 
 Bu bölümde, diğer ilginç sağlama desenleri ele alınmaktadır.
@@ -264,12 +264,12 @@ Bu otomatik hizmet türü basit veya karmaşık olabilir. Örneğin, Otomasyon b
 
 <!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [Elastik veritabanı istemci kitaplığı](sql-database-elastic-database-client-library.md)
-- [Windows PowerShell ISE’de Betik Hatalarını Ayıklama](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
+- [Windows PowerShell ISE’de Betik Hatalarını Ayıklama](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunları öğrendiniz:
+Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
 > * Paylaşılan çok kiracılı bir veritabanına ve kendi veritabanına tek bir yeni kiracı sağlama

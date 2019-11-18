@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: aae502b350f2cf2e98849b2b6e25543516a0c547
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961832"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122931"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi Birleştir
 
@@ -105,7 +105,7 @@ TripData, TripFare
 
 ### <a name="cross-join-example"></a>Çapraz ekleme örneği
 
-Aşağıdaki örnek, `CartesianProduct` adlı bir JOIN dönüştürmedir `TripData` ve sağ Akış `TripFare`. Bu dönüşüm iki akış alır ve satırlarının Kartezyen bir ürününü döndürür. Tam bir Kartezyen ürün çıkış yaptığından, JOIN koşulu `true()`. `cross``joinType`. `broadcast` `'left'`değer olduğundan, yalnızca sol akışta yayını etkinleştiriyoruz.
+Aşağıdaki örnek, `CartesianProduct` adlı bir JOIN dönüştürmedir `TripData` ve sağ Akış `TripFare`. Bu dönüşüm iki akış alır ve satırlarının Kartezyen bir ürününü döndürür. Tam bir Kartezyen ürün çıkış yaptığından, JOIN koşulu `true()`. `joinType` `cross`. `broadcast` `'left'`değer olduğundan, yalnızca sol akışta yayını etkinleştiriyoruz.
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 

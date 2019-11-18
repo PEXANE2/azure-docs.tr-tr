@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54b158528a67dfe77f33f41f3bb4b4570eb4c508
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802208"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120326"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için G Suite 'i yapılandırma
 
@@ -116,7 +116,7 @@ Azure AD ile otomatik Kullanıcı sağlamaya yönelik G Suite 'i yapılandırmak
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+    ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
 4. Arama kutusuna **g Suite**girin, sonuçlar panelinde **g Suite** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
@@ -131,7 +131,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Azure AD 'de G Suite için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -161,7 +161,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet** düğmesine tıklayın.
+8. **Kaydet**’e tıklayın.
 
 9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları G/Suite ile eşitler**' ı seçin.
 
@@ -195,10 +195,16 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü ve G Suite ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinliği raporuna ilişkin bağlantıları takip edebilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
 
 > [!NOTE]
 > G Suite 'e Kullanıcı sağlamayı otomatik hale getirmeye yönelik başka bir uygulanabilir seçenek, [Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en)kullanmaktır. Bu seçenek, şirket içi Active Directory kimliklerinizi G Suite 'e hazırlar.
+
+## <a name="common-issues"></a>Genel sorunlar
+* G Suite 'in tüm sağlanan kullanıcıların doğrulanmış etki alanlarından olması gerekir. Sağlamak istediğiniz tüm kullanıcıların G Suite 'de doğrulanmış bir etki alanından UPN 'ye sahip olduğundan emin olun. Doğrulanmayacak bir etki alanındaki bir Kullanıcı sağlama kapsamınsa, [sağlama günlüklerinde](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) "GoogleAppsInvalidDomain" gibi bir hata görürsünüz. Bu hataları önleyebilirsiniz ve doğrulanmamış etki alanlarından kullanıcıların kapsam dışı bir [filtre](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)kullanarak kapsam dışında olmasını sağlayabilirsiniz.
+    * Target özniteliği: userPrincipalName
+    * İşleç: REGEX EŞLEŞMESI veya REGEX EŞLEŞMIYOR
+    * Değer:. *@domain.com
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -1,24 +1,16 @@
 ---
-title: Azure Resource Manager şablonlarında koşulları kullanma | Microsoft Docs
+title: Şablonlarda koşul kullanma
 description: Azure kaynaklarını koşullara bağlı olarak dağıtmayı öğrenin. Yeni bir kaynağın nasıl dağıtılacağını veya var olan bir kaynağı nasıl kullanacağınızı gösterir.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5fa1db5131f555c92aa12fc01a109469c2cf819e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: fe0a30ab3931be0473ea4f067d6a02797fec1e4d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390186"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150394"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Öğretici: Azure Resource Manager şablonlarında koşulları kullanma
 
@@ -43,13 +35,13 @@ Bu öğretici yalnızca koşulların kullanıldığı temel bir senaryoyu ele al
 * [Şablon işlevi: Eğer](./resource-group-template-functions-logical.md#if).
 * [Azure Resource Manager şablonları için karşılaştırma işlevleri](./resource-group-template-functions-comparison.md)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* [Visual Studio Code](https://code.visualstudio.com/) ve [Resource Manager Araçları uzantısı](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* [Resource Manager Araçları uzantısı](https://code.visualstudio.com/) içeren [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
 * Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. Parola oluşturma örneği aşağıda verilmiştir:
 
     ```azurecli-interactive

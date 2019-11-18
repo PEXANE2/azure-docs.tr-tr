@@ -1,45 +1,46 @@
 ---
-title: "Öğretici: C# için Konuşma SDK'sını kullanarak konuşmadaki amaçları tanıma"
+title: Konuşma SDK 'sını kullanarak konuşma amaçlarını tanımaC#
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide C# için Konuşma SDK'sını kullanarak konuşmadaki amaçları tanımayı öğreneceksiniz.
+description: Bu kılavuzda, için C#konuşma SDK 'sını kullanarak konuşmadan amaçları tanımayı öğrenirsiniz.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 7f42d5914a2ec7f479a8b3d1df1b8672f318036b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1c61f8c0fe1c2a04d390567cc0bc94f22bc5e897
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464632"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110168"
 ---
-# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Öğretici: C# için Konuşma SDK'sını kullanarak konuşmadaki amaçları tanıma
+# <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>İçin konuşma SDK 'sını kullanarak konuşma amaçlarını tanımaC#
 
 Bilişsel Hizmetler [konuşma SDK 'sı](speech-sdk.md) , **Amaç tanıma**sağlamak IÇIN [Language Understanding hizmeti (Luo)](https://www.luis.ai/home) ile tümleşir. Amaç, kullanıcının yapmak istediği herhangi bir şeydir: uçak rezervasyonu, hava durumuna bakma veya telefon etme. Kullanıcı kendisine hangi terim doğal geliyorsa onu kullanabilir. Machine Learning kullanarak, LUSıS Kullanıcı isteklerini tanımladığınız amaçlar ile eşleştirir.
 
 > [!NOTE]
 > LUIS uygulaması tanımak istediğiniz amaçları ve varlıkları tanımlar. Konuşma hizmetini kullanan C# uygulamasından ayrıdır. Bu makalede "app" LUIS uygulaması anlamına gelirken "uygulama" da C# kodu anlamına gelmektedir.
 
-Bu öğreticide, cihazınızın mikrofonu aracılığıyla alınan kullanıcı konuşmalarından amaçları türeten C# konsol uygulamasını geliştirmek için Konuşma SDK’sı kullanırsınız. Şunları öğrenirsiniz:
+Bu kılavuzda, cihazınızın mikrofonuna göre Kullanıcı aralarından amaçları türeten bir C# konsol uygulaması geliştirmek için konuşma SDK 'sını kullanırsınız. Şunları öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Konuşma SDK'sı NuGet paketine başvuran bir Visual Studio projesi oluşturma
-> * Bir konuşma yapılandırması oluşturma ve amaç tanıyıcısı edinme
-> * LUIS app’iniz için modeli alma ve size gereken amaçları ekleme
-> * Konuşma tanıma için dil belirtme
-> * Dosyadan konuşma tanıma
-> * Zaman uyumsuz, olay odaklı sürekli tanıma kullanma
+>
+> - Konuşma SDK'sı NuGet paketine başvuran bir Visual Studio projesi oluşturma
+> - Bir konuşma yapılandırması oluşturma ve amaç tanıyıcısı edinme
+> - LUIS app’iniz için modeli alma ve size gereken amaçları ekleme
+> - Konuşma tanıma için dil belirtme
+> - Dosyadan konuşma tanıma
+> - Zaman uyumsuz, olay odaklı sürekli tanıma kullanma
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
+Bu kılavuza başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
-* LUIS hesabı. [LUIS portalından](https://www.luis.ai/home) ücretsiz bir hesap alabilirsiniz.
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (herhangi bir sürüm).
+- LUIS hesabı. [LUIS portalından](https://www.luis.ai/home) ücretsiz bir hesap alabilirsiniz.
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (herhangi bir sürüm).
 
 ## <a name="luis-and-speech"></a>LUIS ve konuşma
 
@@ -47,15 +48,15 @@ LU, konuşmadan amaçları tanımak için konuşma hizmetleriyle tümleştirilir
 
 LUSıS üç tür anahtar kullanır:
 
-|Anahtar türü|Amaç|
-|--------|-------|
-|Yazma|LUSıS uygulamalarını programlı bir şekilde oluşturmanızı ve değiştirmenizi sağlar|
-|Başlangıç|LUSıS uygulamanızı yalnızca metin kullanarak test etmenizi sağlar|
-|Uç Nokta |Belirli bir Lua uygulamasına erişim yetkisi verir|
+| Anahtar türü  | Amaç                                               |
+| --------- | ----------------------------------------------------- |
+| Yazma | LUSıS uygulamalarını programlı bir şekilde oluşturmanızı ve değiştirmenizi sağlar |
+| Başlangıç   | LUSıS uygulamanızı yalnızca metin kullanarak test etmenizi sağlar   |
+| Uç Nokta  | Belirli bir Lua uygulamasına erişim yetkisi verir            |
 
-Bu öğretici için uç nokta anahtar türüne ihtiyacınız vardır. Öğretici, [önceden oluşturulmuş giriş Otomasyonu uygulama](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) hızlı başlangıcı ' nı Izleyerek oluşturabileceğiniz GIRIŞ Otomasyonu Luo uygulaması örneğini kullanır. Kendi bir LUSıS uygulaması oluşturduysanız bunun yerine kullanabilirsiniz.
+Bu kılavuz için uç nokta anahtar türüne ihtiyacınız vardır. Bu kılavuzda, [önceden oluşturulmuş giriş Otomasyonu uygulama](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) hızlı başlangıcı ' nı Izleyerek oluşturabileceğiniz GIRIŞ Otomasyonu Luo uygulaması örneği kullanılmaktadır. Kendi bir LUSıS uygulaması oluşturduysanız bunun yerine kullanabilirsiniz.
 
-Bir LUSıS uygulaması oluşturduğunuzda, bu uygulamayı metin sorgularını kullanarak test edebilmeniz için, LUSıS otomatik olarak bir başlangıç anahtarı oluşturur. Bu anahtar, konuşma Hizmetleri tümleştirmesini etkinleştirmez ve bu öğreticiyle çalışmaz. Azure panosunda bir LUSıS kaynağı oluşturun ve bunu LUO uygulamasına atayın. Bu öğretici için ücretsiz abonelik katmanını kullanabilirsiniz.
+Bir LUSıS uygulaması oluşturduğunuzda, bu uygulamayı metin sorgularını kullanarak test edebilmeniz için, LUSıS otomatik olarak bir başlangıç anahtarı oluşturur. Bu anahtar, konuşma Hizmetleri tümleştirmesini etkinleştirmez ve bu kılavuzla çalışmaz. Azure panosunda bir LUSıS kaynağı oluşturun ve bunu LUO uygulamasına atayın. Bu kılavuz için ücretsiz abonelik katmanını kullanabilirsiniz.
 
 Azure panosu 'nda LUO kaynağını oluşturduktan sonra, [Halu portalında](https://www.luis.ai/home)oturum açın, **uygulamalarım** sayfasında uygulamanızı seçin, sonra uygulamanın **Yönet** sayfasına geçin. Son olarak, kenar çubuğunda **anahtarlar ve uç noktalar** ' ı seçin.
 
@@ -66,11 +67,11 @@ Azure panosu 'nda LUO kaynağını oluşturduktan sonra, [Halu portalında](http
 1. Aşağı kaydırarak **kaynaklar ve anahtarlar** bölümüne gidin ve **kaynak ata**' yı seçin.
 1. **Uygulamanıza anahtar ata** iletişim kutusunda aşağıdaki değişiklikleri yapın:
 
-   * **Kiracı**altında **Microsoft**' u seçin.
-   * **Abonelik adı**bölümünde, kullanmak istediğiniz Luo kaynağını içeren Azure aboneliğini seçin.
-   * **Anahtar**altında uygulamayla birlikte kullanmak istediğiniz Luo kaynağını seçin.
+   - **Kiracı**altında **Microsoft**' u seçin.
+   - **Abonelik adı**bölümünde, kullanmak istediğiniz Luo kaynağını içeren Azure aboneliğini seçin.
+   - **Anahtar**altında uygulamayla birlikte kullanmak istediğiniz Luo kaynağını seçin.
 
-   Kısa süre içinde yeni abonelik sayfanın altındaki tabloda görüntülenir. 
+   Kısa süre içinde yeni abonelik sayfanın altındaki tabloda görüntülenir.
 
 1. Panoya kopyalamak için bir anahtarın yanındaki simgeyi seçin. (İstediğiniz anahtarı kullanabilirsiniz.)
 
@@ -112,13 +113,13 @@ Ardından, projeye kod eklersiniz.
 
 1. Bu yöntemdeki yer tutucuları aşağıda gösterildiği gibi LUIS abonelik anahtarınız, bölgeniz ve uygulama kimliğinizle değiştirin.
 
-   |Yer tutucu|Şununla değiştir|
-   |-----------|------------|
-   |`YourLanguageUnderstandingSubscriptionKey`|LUIS uç nokta anahtarınız. Yine de, bu öğeyi bir "başlangıç anahtarı" değil, Azure panonuzdan almanız gerekir. Bu dosyayı, [BASIS portalındaki](https://www.luis.ai/home)uygulamanızın **anahtarlar ve uç noktalar** sayfasında ( **Yönet**bölümünde) bulabilirsiniz.|
-   |`YourLanguageUnderstandingServiceRegion`|LUIS aboneliğinizin içinde bulunduğu bölgenin kısa tanımlayıcısı (örneğin, Batı ABD için `westus`). Bkz. [Bölgeler](regions.md).|
-   |`YourLanguageUnderstandingAppId`|LUIS app kimliği. Bu dosyayı, [lusıs portalındaki](https://www.luis.ai/home)uygulamanızın **Ayarlar** sayfasında bulabilirsiniz.|
+   | Yer tutucu | Şununla değiştir |
+   | ----------- | ------------ |
+   | `YourLanguageUnderstandingSubscriptionKey` | LUIS uç nokta anahtarınız. Yine de, bu öğeyi bir "başlangıç anahtarı" değil, Azure panonuzdan almanız gerekir. Bu dosyayı, [BASIS portalındaki](https://www.luis.ai/home)uygulamanızın **anahtarlar ve uç noktalar** sayfasında ( **Yönet**bölümünde) bulabilirsiniz. |
+   | `YourLanguageUnderstandingServiceRegion` | LUIS aboneliğinizin içinde bulunduğu bölgenin kısa tanımlayıcısı (örneğin, Batı ABD için `westus`). Bkz. [Bölgeler](regions.md). |
+   | `YourLanguageUnderstandingAppId` | LUIS app kimliği. Bu dosyayı, [lusıs portalındaki](https://www.luis.ai/home)uygulamanızın **Ayarlar** sayfasında bulabilirsiniz. |
 
-Bu değişiklikler yapıldıktan sonra, (**Denetim + SHIFT + B**) oluşturup öğreticide (**F5**) eğitim uygulamasını çalıştırabilirsiniz. İstendiğinde, BILGISAYARıNıZıN mikrofonuna "Işıkları kapatmayı" söyleyerek deneyin. Uygulama, sonucu konsol penceresinde görüntüler.
+Bu değişiklikler yapıldıktan sonra, (**Control + SHIFT + B**) oluşturabilir ve uygulamayı çalıştırabilirsiniz (**F5**). İstendiğinde, BILGISAYARıNıZıN mikrofonuna "Işıkları kapatmayı" söyleyerek deneyin. Uygulama, sonucu konsol penceresinde görüntüler.
 
 Aşağıdaki bölümlerde kod açıklaması yer alır.
 
@@ -137,10 +138,10 @@ Daha sonra, `new IntentRecognizer(config)` kullanarak bir amaç tanıyıcı olu�
 
 Amaçları eklemek için üç bağımsız değişken sağlamalısınız: LUSıS modeli (oluşturulan ve `model`olarak adlandırılır), amaç adı ve bir amaç KIMLIĞI. Kimlik ve ad arasındaki fark aşağıda gösterilmiştir.
 
-|`AddIntent()`&nbsp;bağımsız değişkeni|Amaç|
-|--------|-------|
-|intentName|LUIS app’te tanımlandığı şekliyle amacın adı. Bu değer, LUO amaç adıyla tam olarak eşleşmelidir.|
-|intentID|Konuşma SDK’sı tarafından tanınan amaca atanan kimlik. Bu değer, istediğiniz her şey olabilir; LUSıS uygulamasında tanımlanan amaç adına karşılık gelmesi gerekmez. Örneğin, aynı kodla birden çok amaç işleniyorsa, bunlar için aynı kimliği kullanabilirsiniz.|
+| `AddIntent()`&nbsp;bağımsız değişkeni | Amaç |
+| --------------------------- | ------- |
+| `intentName` | LUIS app’te tanımlandığı şekliyle amacın adı. Bu değer, LUO amaç adıyla tam olarak eşleşmelidir. |
+| `intentID` | Konuşma SDK’sı tarafından tanınan amaca atanan kimlik. Bu değer, istediğiniz her şey olabilir; LUSıS uygulamasında tanımlanan amaç adına karşılık gelmesi gerekmez. Örneğin, aynı kodla birden çok amaç işleniyorsa, bunlar için aynı kimliği kullanabilirsiniz. |
 
 Home Automation LUIN uygulamasının iki amacı vardır: bir cihazı açmak için bir, diğeri de bir cihazı kapatmak için. Aşağıdaki satırlar bu amaçları tanıyıcıya ekler; `AddIntent` yöntemindeki üç `RecognizeIntentAsync()` satırını bu kodla değiştirin.
 
@@ -155,24 +156,24 @@ Ayrı amaçlar eklemek yerine, bir modeldeki tüm amaçları tanıyıcıya eklem
 
 Oluşturulan tanıyıcıyla ve eklenen amaçlarla tanıma başlayabilir. Konuşma SDK’sı hem tek seferlik hem de sürekli tanımayı destekler.
 
-|Tanıma modu|Çağrılacak yöntemler|Sonuç|
-|----------------|-----------------|---------|
-|Tek seferlik|`RecognizeOnceAsync()`|Tek konuşmadan sonra, tanınan amacı (varsa) döndürür.|
-|Sürekli|`StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()`|Birden çok kuralı tanır; sonuçlar kullanılabilir olduğunda olayları (örneğin, `IntermediateResultReceived`) yayar.|
+| Tanıma modu | Çağrılacak yöntemler | Sonuç |
+| ---------------- | --------------- | ------ |
+| Tek seferlik | `RecognizeOnceAsync()` | Tek konuşmadan sonra, tanınan amacı (varsa) döndürür. |
+| Sürekli | `StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()` | Birden çok kuralı tanır; sonuçlar kullanılabilir olduğunda olayları (örneğin, `IntermediateResultReceived`) yayar. |
 
-Öğretici uygulaması tek seferlik modu kullanır ve bu nedenle tanımaya başlamak için `RecognizeOnceAsync()` yöntemini çağırır. Sonuç, tanınan amaç hakkındaki bilgileri içeren `IntentRecognitionResult` nesnesidir. Aşağıdaki ifadeyi kullanarak LUSıS JSON yanıtını ayıklayın:
+Uygulama tek atışı modunu kullanır ve bu nedenle tanıma başlamak için `RecognizeOnceAsync()` çağırır. Sonuç, tanınan amaç hakkındaki bilgileri içeren `IntentRecognitionResult` nesnesidir. Aşağıdaki ifadeyi kullanarak LUSıS JSON yanıtını ayıklayın:
 
 ```csharp
 result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult)
 ```
 
-Öğretici uygulaması JSON sonucunu ayrıştırmaz. Yalnızca konsol penceresinde JSON metnini görüntüler.
+Uygulama JSON sonucunu ayrıştırmıyor. Yalnızca konsol penceresinde JSON metnini görüntüler.
 
 ![Tek LUSıS tanıma sonuçları](media/sdk/luis-results.png)
 
 ## <a name="specify-recognition-language"></a>Tanıma dilini belirtme
 
-LUIS varsayılan olarak ABD İngilizcesindeki (`en-us`) amaçları tanır. Konuşma yapılandırmasının `SpeechRecognitionLanguage` özelliğine yerel ayar kodu atayarak başka dillerde de amaçları tanıyabilirsiniz. Örneğin, amaçları Almanca tanımak için tanıyıcıyı oluşturmadan önce öğretici uygulamamıza `config.SpeechRecognitionLanguage = "de-de";` ekleyin. Daha fazla bilgi için bkz. [desteklenen diller](language-support.md#speech-to-text).
+LUIS varsayılan olarak ABD İngilizcesindeki (`en-us`) amaçları tanır. Konuşma yapılandırmasının `SpeechRecognitionLanguage` özelliğine yerel ayar kodu atayarak başka dillerde de amaçları tanıyabilirsiniz. Örneğin, Almanca 'nın amaçlarını tanımak üzere tanıyıcı oluşturmadan önce uygulamamızda `config.SpeechRecognitionLanguage = "de-de";` ekleyin. Daha fazla bilgi için bkz. [desteklenen diller](language-support.md#speech-to-text).
 
 ## <a name="continuous-recognition-from-a-file"></a>Dosyadan sürekli tanıma
 
@@ -196,4 +197,4 @@ Daha önce olduğu gibi LUIS uç nokta anahtarınızı, bölgenizi ve app kimli�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Konuşmayı algılama](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [Hızlı başlangıç: bir mikrofondan konuşmayı tanıma](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

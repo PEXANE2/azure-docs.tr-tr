@@ -1,7 +1,7 @@
 ---
 title: Bing Görsel Arama API'si arama sorguları gönderme
 titleSuffix: Azure Cognitive Services
-description: Bing Görsel Arama API'si kullanılan REST API parametreleri hakkında bilgi edinin.
+description: Bu makalede, yanıt nesnesi ve Bing Görsel Arama API'si gönderilen isteklerin parametreleri ve öznitelikleri açıklanmaktadır.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: aahi
-ms.openlocfilehash: 1c5c9b3af42dfa655c61af5a3aadbb47e0774b01
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2a87bee4769111e01dc49e8fce14569233dfaef3
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835689"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111623"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Bing Görsel Arama API'si arama sorguları gönderme
 
@@ -76,7 +76,7 @@ Aşağıdakiler, isteğinizde belirtilmesi gereken sorgu parametreleridir. En az
 | Ad | Değer | Tür | Gerekli |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | Sonuçların nereden geldiği temsil eden iki karakterli bir ülke kodu.<br /><br /> Bu parametreyi ayarlarsanız, [Accept-Language](#acceptlanguage) üst bilgisini de belirtmelisiniz. Bing dil listesinde bulduğu ilk desteklenen dili kullanır ve dili sizin belirttiğiniz ülke koduyla birleştirerek sonuçları hangi pazardan döndüreceğini saptar. Dil listesi desteklenen bir dil içermiyorsa, Bing isteği destekleyen en yakın dili ve pazarı bulur. Öte yandan, sonuçlarda belirtilen pazar yerine toplu veya varsayılan bir pazarı da kullanılabilir.<br /><br /> Bu sorgu parametresini ve `Accept-Language` sorgu parametresini ancak birden çok dil belirttiyseniz kullanmalısınız; aksi takdirde `mkt` ve `setLang` sorgu parametrelerini kullanmanız gerekir.<br /><br /> Bu parametre ve [mkt](#mkt) sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin. | Dize | Hayır       |
-| <a name="mkt" />mkt   | Sonuçların geldiği pazar. <br /><br /> **Note:** Biliniyorsa, her zaman pazarı belirtmeniz gerekir. Pazarın belirtilmesi Bing’in isteği yönlendirmesine, uygun ve en iyi yanıtı döndürmesine yardımcı olur.<br /><br /> Bu parametre ve [cc](#cc) sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin. | Dize | Evet      |
+| <a name="mkt" />mkt   | Sonuçların geldiği pazar. <br /><br /> **Note:** Biliniyorsa, her zaman pazarı belirtmeniz gerekir. Pazarın belirtilmesi Bing’in isteği yönlendirmesine, uygun ve en iyi yanıtı döndürmesine yardımcı olur.<br /><br /> Bu parametre ve [cc](#cc) sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin. | Dize | Yes      |
 | <a name="safesearch" />safeSearch | Yetişkinlere yönelik içerik için bir filtre. Aşağıdakiler, büyük/küçük harfe duyarlı olmayan olası filtre değerleridir.<br /><ul><li>Off&mdash;Yetişkinlere yönelik metin veya resim içeren web sayfalarını döndürür.<br /><br/></li><li>Moderate&mdash;Yetişkinlere yönelik metin içeren web sayfalarını döndürür ama yetişkinlere yönelik resim içerenleri döndürmez.<br /><br/></li><li>Strict&mdash;Yetişkinlere yönelik metin veya resim içeren web sayfalarını döndürmez.</li></ul><br /> Varsayılan ayar Moderate değeridir.<br /><br /> **NOT:** İstek, Bing'in yetişkinlere yönelik içerik ilkesinin `safeSearch` parametresinde Strict ayarlanmasını gerektirdiği bir pazardan geliyorsa, Bing `safeSearch` değerini yoksayar ve Strict değerini kullanır.<br/><br/>**Note:** `site:` sorgu işlecini kullanırsanız, `safeSearch` sorgu parametresinin ne şekilde ayarlandığına bakılmaksızın yanıtın yetişkinlere yönelik içerik içerebileceği bir şansınız vardır. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın.  | Dize | Hayır       |
 | <a name="setlang" />setLang  | Kullanıcı arabirimi dizelerinde kullanılacak dil. ISO 639-1 iki harfli dil kodunu kullanarak dili belirtin. Örneğin, Türkçe için dil kodu TR'dir. Varsayılan değer EN (İngilizce) ayarıdır.<br /><br /> İsteğe bağlı olsa da, her zaman dil belirtmelisiniz. Kullanıcı tarafından kullanıcı arabirimi dizelerinin farklı dilde görüntülenmesi istenmediği sürece, normalde `setLang` parametresini `mkt` parametresiyle aynı dile ayarlarsınız.<br /><br /> Bu parametre ve [Accept-Language](#acceptlanguage) üst bilgisi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin.<br /><br /> Kullanıcı arabirimi dizesi, kullanıcı arabiriminde etiket olarak kullanılan dizedir. JSON yanıt nesnelerinde çok az kullanıcı arabirimi dizesi vardır. Ayrıca, yanıt nesnelerinde Bing.com özelliklerine yönelik bağlantılar da belirtilen dildedir. | Dize | Hayır   |
 
@@ -121,7 +121,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Yerel bir görüntüyü karşıya yüklerseniz, aşağıdaki kod parçacığı GÖNDERI gövdesine dahil etmeniz gereken form verilerini gösterir. Form verileri `Content-Disposition` üst bilgisini içermelidir. `name` parametresi, "image" olarak, `filename` parametresi ise herhangi bir dize olarak ayarlanmalıdır. `Content-Type` üstbilgisi, yaygın olarak kullanılan herhangi bir görüntü MIME türüne ayarlanabilir. Formun içeriği görüntünün ikili verileri olur. Karşıya yükleyebileceğiniz maksimum görüntü boyutu 1 MB’tır. Genişlik veya yükseklik üst sınırı ise 1.500 pikseldir.
+Yerel bir görüntüyü karşıya yüklerseniz, aşağıdaki kod parçacığı GÖNDERI gövdesine dahil etmeniz gereken form verilerini gösterir. Form verileri `Content-Disposition` üst bilgisini içermelidir. `name` parametresi "image" olarak ayarlanmalıdır, `filename` parametresi ise herhangi bir dizeye ayarlanabilir. `Content-Type` üstbilgisi, yaygın olarak kullanılan herhangi bir görüntü MIME türüne ayarlanabilir. Formun içeriği görüntünün ikili verileri olur. Karşıya yükleyebileceğiniz resim boyutu üst sınırı 1 MB'tır. Genişlik veya yükseklik üst sınırı ise 1.500 pikseldir.
 
 ```
 --boundary_1234-abcd

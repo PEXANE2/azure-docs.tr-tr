@@ -1,7 +1,7 @@
 ---
 title: OData filtre başvurusu
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama sorgularında filtre sözdizimi için OData dil başvurusu.
+description: OData dil başvurusu ve Azure Bilişsel Arama sorgularında filtre ifadeleri oluşturmak için kullanılan tam sözdizimi.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ba1f5e8f2369d3222b3c31738e252a20b6de8906
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793366"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113206"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $filter söz dizimi
 

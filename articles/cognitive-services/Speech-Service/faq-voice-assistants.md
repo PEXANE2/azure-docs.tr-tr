@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579660"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110349"
 ---
-# <a name="voice-assistants-frequently-asked-questions"></a>Ses yardımcıları: sık sorulan sorular
+# <a name="voice-assistants-frequently-asked-questions"></a>Sesli yardımcılar hakkında sık sorulan sorular
 
 Bu belgede sorularınıza yanıt bulamazsanız, [diğer destek seçeneklerine](support.md)göz atın.
 
@@ -35,9 +35,9 @@ Y **:** [özel komutlar (Önizleme)](custom-commands.md) , görev tamamlama sena
 
 Y **:** Özel komutlar (Önizleme) uygulaması veya temel bot Framework bot oluşturmaya başlamak için en iyi yol.
 
-* [Özel komutlar (Önizleme) uygulaması oluşturma](quickstart-custom-speech-commands-create-new.md)
-* [Temel bir bot Framework bot oluşturma](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [Bir bot 'ı doğrudan hat konuşma kanalına bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Özel komutlar (Önizleme) uygulaması oluşturma](quickstart-custom-speech-commands-create-new.md)
+- [Temel bir bot Framework bot oluşturma](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Bir bot 'ı doğrudan hat konuşma kanalına bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Hata ayıklama
 
@@ -47,14 +47,13 @@ Y **:** Doğrudan hat konuşma önizleme sürümünü kullandıysanız veya ilgi
 
 Doğrudan hat konuşma 'nın en son sürümü bir cihazdan bot ile iletişim kurma sürecini basitleştirir. Kanal kaydı sayfasında, üstteki açılan kutuda doğrudan hat konuşma kanalı kaydınızı bir konuşma kaynağıyla ilişkilendirir. Bağlantı kurulduktan sonra, v 1.8 konuşma SDK 'Sı, aboneliğinizle ilişkilendirdiğiniz bot ile iletişim kurmak üzere bir `DialogServiceConnector` yapılandıracak bir `BotFrameworkConfig::FromSubscription` Factory yöntemi içerir.
 
-İstemci uygulamanızı hala v 1.7 'den v 1.8 'e geçiriyorsanız `DialogServiceConfig::FromBotSecret`, kanal gizli parametresi için boş olmayan ve null olmayan bir değer ile çalışmaya devam edebilir, örn. önceki gizli dizi. Daha yeni bir kanal kaydıyla ilişkili bir konuşma aboneliği kullanılırken yalnızca yok sayılır. Bu değer, hizmet tarafı ilişkisinin ilgili olması için cihazda denetlendiğinden, null ve boş olmayan bir değer *olmalıdır* .
-
+İstemci uygulamanızı hala v 1.7 'den v 1.8 'e geçiriyorsanız `DialogServiceConfig::FromBotSecret`, kanal gizli parametresi için boş olmayan ve null olmayan bir değer ile çalışmaya devam edebilir, örn. önceki gizli dizi. Daha yeni bir kanal kaydıyla ilişkili bir konuşma aboneliği kullanılırken yalnızca yok sayılır. Bu değer, hizmet tarafı ilişkisinin ilgili olması için cihazda denetlendiğinden, null ve boş olmayan bir değer _olmalıdır_ .
 
 Daha ayrıntılı bir kılavuz için, lütfen kanal kaydını adım adım gösteren [öğretici bölümüne](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) bakın.
 
 **S: bağlanırken bir 401 hatası alıyorum ve hiçbir şey işe yarar. Konuşma aboneliği anahtarımın geçerli olduğunu biliyorum. Ne var ne yok?**
 
-Y **:** Aboneliğinizi Azure portal yönetirken, lütfen *bilişsel* **Hizmetler** kaynağını değil **konuşma** kaynağını (Microsoft. CognitiveServicesSpeechServices, "konuşma") kullandığınızdan emin olun ( Microsoft. Biliveservicesallinone, "tüm bilişsel hizmetler"). Ayrıca, [sesli yardımcılar Için konuşma hizmeti bölgesi desteğini](regions.md#voice-assistants)inceleyin.
+Y **:** Aboneliğinizi Azure portal yönetirken, lütfen _bilişsel_ **Hizmetler** kaynağını değil **konuşma** kaynağını (Microsoft. CognitiveServicesSpeechServices, "konuşma") kullandığınızdan emin olun ( Microsoft. Biliveservicesallinone, "tüm bilişsel hizmetler"). Ayrıca, [sesli yardımcılar Için konuşma hizmeti bölgesi desteğini](regions.md#voice-assistants)inceleyin.
 
 ![doğrudan hat konuşmayı için doğru abonelik](media/voice-assistants/faq-supported-subscription.png "uyumlu bir konuşma aboneliği örneği")
 
@@ -62,8 +61,8 @@ Y **:** Aboneliğinizi Azure portal yönetirken, lütfen *bilişsel* **Hizmetler
 
 Y **:** Bu hata, yardımcınızla ses Yardımcısı hizmeti arasında bir iletişim sorunu olduğunu gösterir.
 
-* Özel komutlar (Önizleme) için, özel komutlar (Önizleme) uygulamanızın yayımlandığından emin olun
-* Doğrudan hat konuşması için, [botunuzu doğrudan hat konuşma kanalına bağladığınıza](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), bot 'a [akış protokolü desteği ekledik](https://aka.ms/botframework/addstreamingprotocolsupport) (ilgili Web yuvası desteğiyle) emin olun ve ardından bot 'un gelen isteklere yanıt verdiğini denetleyin kanaldan.
+- Özel komutlar (Önizleme) için, özel komutlar (Önizleme) uygulamanızın yayımlandığından emin olun
+- Doğrudan hat konuşması için, [botunuzu doğrudan hat konuşma kanalına bağladığınıza](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), bot 'a [akış protokolü desteği ekledik](https://aka.ms/botframework/addstreamingprotocolsupport) (ilgili Web yuvası desteğiyle) emin olun ve ardından bot 'un gelen isteklere yanıt verdiğini denetleyin kanaldan.
 
 **S: Bu kod hala çalışmıyor ve/veya `DialogServiceConnector`kullanırken farklı bir hata alıyorum. Ne yapmam gerekir?**
 
@@ -71,5 +70,5 @@ Y **:** Dosya tabanlı günlük kaydı önemli ölçüde daha fazla ayrıntı sa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Sorun giderme](troubleshooting.md)
-* [Sürüm notları](releasenotes.md)
+- [Sorun giderme](troubleshooting.md)
+- [Sürüm notları](releasenotes.md)

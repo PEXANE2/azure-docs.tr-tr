@@ -1,21 +1,21 @@
 ---
-title: C#Bir AI zenginleştirme ardışık düzeninde Bilişsel Hizmetler API'si çağırma öğreticisi
+title: 'Öğretici: .NET C# kullanarak beceri oluşturma'
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama enzenginleştirme dizin oluşturma işlem hattında veri ayıklama, doğal dil ve resim AI işleme örneğini adım adım yapın.
+description: Azure Bilişsel Arama zenginleştirme dizin oluşturma işlem hattında veri ayıklama, doğal dil ve resim AI işlemeyi gösteren örnek kod adım adım.
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7a8146f524a6e6f9abed2440c98a83aa3878f0c7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790218"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111738"
 ---
-# <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-cognitive-search-indexing-pipeline"></a>C#Öğretici: Azure Bilişsel Arama Dizin oluşturma ardışık düzeninde Bilişsel Hizmetler API'si çağırma
+# <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>Öğretici: ve .NET SDK kullanarak C# bir AI zenginleştirme Işlem hattı oluşturma
 
 Bu öğreticide, bilişsel *becerileri*kullanarak Azure bilişsel arama veri zenginleştirmesini programlama mekanizması öğrenirsiniz. Yetenekler, bilişsel hizmetler 'de doğal dil işleme (NLP) ve görüntü analizi özellikleri tarafından desteklenir. Beceri kompozisyonu ve yapılandırması aracılığıyla bir görüntünün veya taranan belge dosyasının metin ve metin gösterimlerini ayıklayabilirsiniz. Ayrıca dili, varlıkları, anahtar tümcecikleri ve daha fazlasını tespit edebilirsiniz. Nihai sonuç, bir AI destekli dizin oluşturma işlem hattı tarafından oluşturulan bir arama dizininde zengin ek içerik sağlar.
 
@@ -85,13 +85,13 @@ Zenginleştirme işlem hattı, Azure veri kaynaklarından çekme işlemi yapar. 
 
 Paylaşılan erişim imzası sağlama gibi, bağlantı dizesini belirtmenin başka birçok yolu vardır. Veri kaynağı kimlik bilgileri hakkında daha fazla bilgi edinmek için bkz. [Azure Blob Depolama Alanı dizinini oluşturma](search-howto-indexing-azure-blob-storage.md#Credentials).
 
-## <a name="set-up-your-environment"></a>Ortamınızı kurma
+## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
 Visual Studio 'Yu açıp .NET Core üzerinde çalışabilen yeni bir konsol uygulama projesi oluşturarak başlayın.
 
 ### <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
-[Azure bilişsel arama .NET SDK](https://aka.ms/search-sdk) , dizinlerinizi, veri kaynaklarınızı, Dizin Oluşturucularınızı ve becerileri yönetmenizi sağlayan birkaç istemci kitaplığı içerir ve bunların ayrıntıları ile uğraşmak zorunda kalmadan belgeleri karşıya yükleyebilir ve yönetebilir ve sorguları yürütmenize imkan tanır. HTTP ve JSON. Bu istemci kitaplıklarının hepsi NuGet paketleri olarak dağıtılır.
+[Azure bilişsel arama .NET SDK](https://aka.ms/search-sdk) , dizinlerinizi, veri kaynaklarınızı, Dizin Oluşturucularınızı ve becerileri yönetmenizi sağlayan birkaç istemci kitaplığı içerir. Ayrıca, http ve JSON ayrıntıları ile uğraşmak zorunda kalmadan belgeleri karşıya yükleyip yönetebilir ve sorguları yürütmenize imkan tanır. Bu istemci kitaplıklarının hepsi NuGet paketleri olarak dağıtılır.
 
 Bu proje için, `Microsoft.Azure.Search` NuGet paketinin 9. sürümünü ve en son `Microsoft.Extensions.Configuration.Json` NuGet paketini yüklemeniz gerekir.
 
@@ -646,7 +646,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 
 Çıktı, her bir alanın adını, türünü ve özniteliklerini içeren dizin şemasıdır.
 
-`organizations` gibi tek bir alanın tüm içeriklerini döndürmek için ikinci bir `"*"` sorgusu gönderin.
+`"*"` gibi tek bir alanın tüm içeriklerini döndürmek için ikinci bir `organizations` sorgusu gönderin.
 
 ```csharp
 SearchParameters parameters =

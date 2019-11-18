@@ -1,5 +1,5 @@
 ---
-title: Veri ayıklama, doğal dil, dizin oluşturma sırasında görüntü işleme için yerleşik yetenekler.
+title: Dizin oluşturma sırasında yerleşik metin ve görüntü işleme
 titleSuffix: Azure Cognitive Search
 description: Veri ayıklama, doğal dil, görüntü işleme bilişsel becerileri, Azure Bilişsel Arama işlem hattındaki ham içeriğe semantik ve yapı ekler.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2f03752c5fda366fc16b681d71ba68486527a30f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f419b19b576ebf6f7f853b41128908487f047df6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466803"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113367"
 ---
-# <a name="built-in-cognitive-skills-for-content-enrichment-azure-cognitive-search"></a>İçerik zenginleştirme (Azure Bilişsel Arama) için yerleşik bilişsel yetenekler
+# <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Dizin oluşturma sırasında metin ve görüntü işleme için yerleşik bilişsel yetenekler (Azure Bilişsel Arama)
 
-Bu makalede, Azure Bilişsel Arama ile sunulan bilişsel yetenekler hakkında bilgi edineceksiniz. Bilişsel *beceri* , içeriği bir şekilde dönüştüren bir işlemdir. Genellikle, veri veya devlet yapısını çıkaran ve bu nedenle giriş verilerini anlamamızı genişlettiğini sağlayan bir bileşendir. Neredeyse her zaman çıktı metin tabanlıdır. *Beceri* , enzenginleştirme işlem hattını tanımlayan yeteneklerin koleksiyonudur. 
+Bu makalede, Azure Bilişsel Arama ile sunulan bilişsel yetenekler hakkında bilgi edinirsiniz ve içeriği ve yapıyı ayıklamak için bir beceri ekleyebilirsiniz. Bilişsel *beceri* , içeriği bir şekilde dönüştüren bir modül veya işlemdir. Genellikle, veri veya devlet yapısını çıkaran ve bu nedenle giriş verilerini anlamamızı genişlettiğini sağlayan bir bileşendir. Neredeyse her zaman çıktı metin tabanlıdır. *Beceri* , enzenginleştirme işlem hattını tanımlayan yeteneklerin koleksiyonudur. 
 
 > [!NOTE]
 > İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.

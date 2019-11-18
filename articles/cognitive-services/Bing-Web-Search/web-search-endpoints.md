@@ -1,7 +1,7 @@
 ---
 title: Web araması uç noktası
 titleSuffix: Azure Cognitive Services
-description: Web araması API uç noktasının Özeti.
+description: Web Araması sonuçlarını almak için aşağıdaki uç noktaya bir `GET` isteği gönderin. Üst bilgiler ve URL parametreleri daha fazla belirtim tanımlar.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
-ms.openlocfilehash: be622c5636c253c48bec4d67fba58319262c2603
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883573"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111344"
 ---
 # <a name="web-search-endpoint"></a>Web Araması uç noktası
 
@@ -23,15 +23,15 @@ ms.locfileid: "68883573"
 
 ## <a name="endpoint"></a>Uç Nokta
 
-Bing API kullanarak Web Araması sonuçlarını almak için aşağıdaki uç noktaya bir `GET` istek gönderin. Üst bilgiler ve URL parametreleri daha fazla belirtim tanımlar.
+Bing API kullanarak Web Araması sonuçlarını almak için aşağıdaki uç noktaya bir `GET` isteği gönderin. Üst bilgiler ve URL parametreleri daha fazla belirtim tanımlar.
 
-**Uç nokta**: Kullanıcı tarafından `?q=""`tanımlanan arama sorgusuyla ilgili Web sonuçlarını döndürür.
+**Uç noktası**: kullanıcının `?q=""`tarafından tanımlanan arama sorgusuyla ilgili Web sonuçlarını döndürür.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search
 ```
 
-Bkz Üstbilgiler, parametreler, Pazar kodları, yanıt nesneleri, hatalar ve daha fazlası hakkında ayrıntılar için [Bing Web API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) başvurusuna bakın.
+Uç nokta: üstbilgiler, parametreler, Pazar kodları, yanıt nesneleri, hatalar ve daha fazlası hakkında ayrıntılar Için [Bing Web API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) başvurusuna bakın.
 
 ## <a name="response-json"></a>JSON yanıtı
 

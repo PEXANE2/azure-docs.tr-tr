@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c4c8f123eb8c32362219f21dc70d137f2cc9b4b1
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e0b87757326b5e2a54a78a38bbcd5bef8e6f5be2
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078814"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74119977"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API kullanma
 
@@ -33,7 +33,7 @@ Bu makalede, otomatik kullanım durumunun nasıl gerçekleştirileceğini öğre
 >[!IMPORTANT]
 > Bir Azure AD B2C dizinindeki kullanıcıları yönetmek için [Azure AD Graph API](../active-directory/develop/active-directory-graph-api-quickstart.md) kullanmanız **gerekir** . Azure AD Graph API Microsoft Graph API 'sinden farklıdır. Bu MSDN blog gönderisindeki daha fazla bilgi edinin: [Microsoft Graph veya Azure AD grafiği](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Uygulama veya Kullanıcı oluşturabilmeniz için önce bir Azure AD B2C kiracının olması gerekir. Henüz bir tane yoksa [Azure Active Directory B2C kiracı oluşturun](tutorial-create-tenant.md).
 
@@ -281,7 +281,7 @@ B2C kiracınızdaki kullanıcıları aşağıdaki yollarla arayabilirsiniz:
 
 * Kullanıcının **nesne kimliğine**başvurun.
 * `signInNames` özelliğine, oturum açma tanımlayıcı tanımlayıcısını başvuru.
-* Geçerli OData parametrelerinden herhangi birine (örn. bir, soyadı, displayName vb.) başvurun.
+* Geçerli OData parametrelerinden herhangi birine başvurun. Örneğin, ' i ', ' soyadı ', ' displayName ' vb.
 
 Bir kullanıcı aramak için aşağıdaki komutlardan birini çalıştırın:
 

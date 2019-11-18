@@ -1,5 +1,5 @@
 ---
-title: Bir beceri için bilişsel hizmetler kaynağı iliştirme
+title: Bilişsel Hizmetleri beceri 'e Ekle
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'de bir AI zenginleştirme ardışık düzenine bir bilişsel hizmetler ekleme yönergeleri.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 11ca5f71cb0d08a4bebf72407035a9557c794f9f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d65b9b60ce93656c9acdc76c77291114468d345a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72788023"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113932"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir beceri bilişsel hizmetler kaynağı iliştirme 
 
-AI algoritmaları, Azure Bilişsel Arama 'da içerik dönüştürmesi için kullanılan [zenginleştirme işlem hatlarını](cognitive-search-concept-intro.md) kullanır. Bu algoritmalar, görüntü analizi için [görüntü işleme](https://azure.microsoft.com/services/cognitive-services/computer-vision/) , optik karakter tanıma (OCR) ve varlık tanıma, anahtar tümceciği ayıklama ve diğer zenginler için [metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) dahil olmak üzere Azure bilişsel hizmetler kaynaklarını temel alır. . Belge zenginleştirme amaçları için Azure Bilişsel Arama tarafından kullanıldığı gibi algoritmalar *, bir*yeteneğin içine yerleştirilmiş ve dizin oluşturma sırasında bir *Dizin Oluşturucu* tarafından başvurulan bir *yetenek*içine sarılır.
+AI algoritmaları, Azure Bilişsel Arama 'da içerik dönüştürmesi için kullanılan [zenginleştirme işlem hatlarını](cognitive-search-concept-intro.md) kullanır. Bu algoritmalar, görüntü analizi için [görüntü işleme](https://azure.microsoft.com/services/cognitive-services/computer-vision/) , optik karakter tanıma (OCR) ve varlık tanıma, anahtar tümceciği ayıklama ve diğer zenginler için [metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) dahil olmak üzere Azure bilişsel hizmetler kaynaklarını temel alır. Belge zenginleştirme amaçları için Azure Bilişsel Arama tarafından kullanıldığı gibi algoritmalar *, bir*yeteneğin içine yerleştirilmiş ve dizin oluşturma sırasında bir *Dizin Oluşturucu* tarafından başvurulan bir *yetenek*içine sarılır.
 
 Sınırlı sayıda belgeyi ücretsiz olarak zenginleştirebilirsiniz. Ya da, daha büyük ve daha sık sık iş yükleri için *beceri* 'e faturalanabilir bir bilişsel hizmetler kaynağı iliştirebilirsiniz. Bu makalede, Azure Bilişsel Arama [Dizin oluşturma](search-what-is-an-index.md)sırasında belgeleri zenginleştirmek üzere bir faturalanabilir bilişsel hizmetler kaynağını nasıl ekleyeceğinizi öğreneceksiniz.
 
@@ -99,7 +99,7 @@ Mevcut bir beceri varsa, bunu yeni veya farklı bir bilişsel hizmetler kaynağ�
 
 ## <a name="attach-cognitive-services-programmatically"></a>Bilişsel hizmetler 'i programlı olarak ekle
 
-Program aracılığıyla beceri tanımlarken, Beceri bölümüne bir `cognitiveServices` bölümü ekleyin. Bu bölümde, Beceri ilişkilendirmek istediğiniz bilişsel hizmetler kaynağının anahtarını ekleyin. Kaynağın Azure Bilişsel Arama kaynağınız ile aynı bölgede olması gerektiğini unutmayın. Ayrıca `@odata.type` ekleyin ve `#Microsoft.Azure.Search.CognitiveServicesByKey` olarak ayarlayın.
+Program aracılığıyla beceri tanımlarken, Beceri bölümüne bir `cognitiveServices` bölümü ekleyin. Bu bölümde, Beceri ilişkilendirmek istediğiniz bilişsel hizmetler kaynağının anahtarını ekleyin. Kaynağın Azure Bilişsel Arama kaynağınız ile aynı bölgede olması gerektiğini unutmayın. Ayrıca `@odata.type`ekleyin ve `#Microsoft.Azure.Search.CognitiveServicesByKey`olarak ayarlayın.
 
 Aşağıdaki örnekte bu desenler gösterilmektedir. Tanımın sonundaki `cognitiveServices` bölümüne dikkat edin.
 

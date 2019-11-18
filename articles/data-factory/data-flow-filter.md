@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 77587d007d9bfcdc1461201f676c79880bd89d6b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1daff431fc217c08f3bc3c5aeb3b4711691909c0
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676169"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132529"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Eşleme veri akışında filtre dönüşümü
 
@@ -37,7 +37,7 @@ Filtre koşulu için bir ifade girmek üzere veri akışı ifade oluşturucusunu
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen akış `CleanData`alan `FilterBefore1960` adlı koşullu bölünmüş dönüşümdir. Filtre koşulu `year <= 1960`ifadedir.
+Aşağıdaki örnek, gelen akış `CleanData`alan `FilterBefore1960` adlı bir filtre dönüştürmesinin bir örneğidir. Filtre koşulu `year <= 1960`ifadedir.
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 

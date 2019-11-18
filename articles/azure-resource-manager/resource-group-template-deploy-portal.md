@@ -1,17 +1,14 @@
 ---
-title: Azure kaynaklarını dağıtmak için Azure portal kullanma | Microsoft Docs
+title: Azure portal ile kaynak dağıtma
 description: Kaynaklarınızı aboneliğinizdeki bir kaynak grubuna dağıtmak için Azure portal ve Azure Kaynak yönetme 'yi kullanın.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: 197bd14c425d80a814f370a2050c085b1eef143d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6a8842a9fbda11bf48d45152c167d7b072f38119
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579028"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150762"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Kaynakları Resource Manager şablonları ve Azure portalı ile dağıtma
 
@@ -72,7 +69,7 @@ Bir kaynak grubu oluşturduktan sonra Market 'ten gruba kaynak dağıtabilirsini
 
 1. Kaynaklarınızı dağıttıktan sonra **Ekle**' yi seçerek kaynak grubuna daha fazla kaynak ekleyebilirsiniz.
 
-   ![Kaynak Ekle](./media/resource-group-template-deploy-portal/add-resource.png)
+   ![Kaynak ekle](./media/resource-group-template-deploy-portal/add-resource.png)
 
 ## <a name="deploy-resources-from-custom-template"></a>Kaynakları özel şablondan dağıtma
 

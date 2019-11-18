@@ -1,7 +1,7 @@
 ---
 title: Bing Haber Arama API'si sorguları gönderme
 titleSuffix: Azure Cognitive Services
-description: Bing Haber Arama API'si arama istekleri gönderme hakkında bilgi edinin.
+description: Bing Haber Arama API'si, Web 'de ilgili haberler öğeleri için arama yapmanızı sağlar. API 'ye arama sorguları gönderme hakkında daha fazla bilgi edinmek için bu makaleyi kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: cfa9cd23e19788d847fd9177d70ee2af89c69272
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6be3d95c06862529881be2cbf2e4d74b44908e67
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423835"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111527"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>Bing Haber Arama API'si sorguları gönderme
 

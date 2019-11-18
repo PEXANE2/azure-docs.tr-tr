@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 3af9c5e728bd119ce6c5546c8dc6556967cd1eda
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 83dc18424bc8606eff9a735b76cdaa09e381d588
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606116"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129361"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Hızlı Başlangıç: Azure Resource Manager şablonunu kullanarak Azure Databricks’te Spark işini çalıştırma
 
 Bu hızlı başlangıçta, bir Apache Spark kümesiyle Azure Databricks çalışma alanı oluşturmak için bir Azure Resource Manager şablonu kullanırsınız. Küme üzerinde bir işi çalıştırır ve demografik tabanlı ücretsiz/ücretli kullanımdan gerçek zamanlı raporlar oluşturmak için özel grafikleri kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 
@@ -81,7 +81,7 @@ Bu bölümde, Azure Resource Manager şablonunu kullanarak bir Azure Databricks 
 
    **Küme oluştur**’u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
-Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerinde Spark kümesi oluşturma](/azure/databricks/user-guide/clusters/create).
+Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerinde Spark kümesi oluşturma](/azure/databricks/clusters/create).
 
 ## <a name="run-a-spark-sql-job"></a>Spark SQL işi çalıştırma
 
@@ -126,7 +126,7 @@ Databricks içinde bir not defteri oluşturmak, not defterini bir Azure Blob dep
      Depolama hesabı anahtarınızı alma yönergeleri için bkz. [Depolama erişim anahtarlarınızı yönetme](../storage/common/storage-account-manage.md#access-keys).
 
    > [!NOTE]
-   > Azure Data Lake Store’u Azure Databricks üzerine bir Spark kümesi ile de kullanabilirsiniz. Yönergeler için bkz. [Data Lake Store’u Azure Databricks ile Kullanma](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html).
+   > Azure Data Lake Store’u Azure Databricks üzerine bir Spark kümesi ile de kullanabilirsiniz. Yönergeler için bkz. [Data Lake Store’u Azure Databricks ile Kullanma](/azure/databricks/data/data-sources/azure/azure-datalake-gen2).
 
 4. **small_radio_json.json** adlı örnek JSON veri dosyasındaki verileri kullanarak geçici tablo oluşturmak için bir SQL deyimi çalıştırın. Aşağıdaki kod parçacığında yer tutucu değerlerini kapsayıcınızın adı ve depolama hesabı adı ile değiştirin. Kod parçacığını not defterindeki bir kod hücresine yapıştırın ve sonra SHIFT + ENTER tuşlarına basın. Kod parçacığında `path` değeri, Azure Depolama hesabınıza yüklediğiniz örnek JSON dosyasının konumunu gösterir.
 
@@ -170,7 +170,7 @@ Databricks içinde bir not defteri oluşturmak, not defterini bir Azure Blob dep
    * **Değerler**’ı **düzey** olarak ayarlayın.
    * **Toplama**’yı **SAYI** olarak ayarlayın.
 
-   **Apply (Uygula)** düğmesine tıklayın.
+   **Uygula**'ya tıklayın.
 
 9. Çıktı aşağıdaki ekran görüntüsünde gösterildiği gibi görsel açıklamayı gösterir:
 
@@ -182,11 +182,11 @@ Makaleyi tamamladıktan sonra kümeyi sonlandırabilirsiniz. Bunu yapmak için A
 
 ![Databricks kümesini durdurma](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Bu kümeyi el ile sonlandıramazsanız, kümeyi oluştururken **\_sonra Sonlandır** onay kutusunu \_, sonra da Durdur seçeneğini belirlediyseniz, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+El ile otomatik olarak durdurur küme sonlandırmazsanız, seçtiğiniz sağlanan **sonra Sonlandır \_ \_ yapılmadan geçecek dakika cinsinden** küme oluşturulurken onay kutusu. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Databricks’te bir Spark kümesi oluşturdunuz ve Azure depolama alanındaki verileri kullanarak bir Spark işi çalıştırdınız. Diğer veri kaynaklarından Azure Databricks’e verileri aktarma hakkında bilgi almak için [Spark veri kaynakları](/azure/databricks/data/data-sources/index.html) bölümüne de bakabilirsiniz. [Özel VNET adresi ile Azure Databricks çalışma alanı oluşturmak](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address) için Resource Manager şablonuna da bakabilirsiniz. Bir şablonda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. Databricks/Workspaces](/azure/templates/microsoft.databricks/workspaces) şablon başvurusu.
+Bu makalede, Azure Databricks’te bir Spark kümesi oluşturdunuz ve Azure depolama alanındaki verileri kullanarak bir Spark işi çalıştırdınız. Diğer veri kaynaklarından Azure Databricks’e verileri aktarma hakkında bilgi almak için [Spark veri kaynakları](/azure/databricks/data/data-sources/index) bölümüne de bakabilirsiniz. [Özel VNET adresi ile Azure Databricks çalışma alanı oluşturmak](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address) için Resource Manager şablonuna da bakabilirsiniz. Bir şablonda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. Databricks/Workspaces](/azure/templates/microsoft.databricks/workspaces) şablon başvurusu.
 
 Azure Databricks kullanılarak bir ETL işleminin (verileri ayıklama, dönüştürme ve yükleme) nasıl gerçekleştirileceğini öğrenmek için sonraki makaleye ilerleyin.
 

@@ -1,37 +1,42 @@
 ---
-title: Azure Sentinel 'e ekleme | Microsoft Docs
-description: Azure Sentinel 'de verileri nasıl toplayacağınızı öğrenin.
+title: "Hızlı başlangıç: Azure Sentinel 'e ekleme"
+description: Bu Hızlı Başlangıç belgesini izleyerek Azure Sentinel 'de veri toplamayı öğrenin.
 services: sentinel
-documentationcenter: na
 author: rkarlin
-manager: rkarlin
-editor: ''
+ms.author: rkarlin
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: quickstart
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 7f042cfe10bd8ca57d9a2dae511a13a82f053a67
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316804"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133090"
 ---
-# <a name="on-board-azure-sentinel"></a>Yerleşik Azure Sentinel
+# <a name="quickstart-on-board-azure-sentinel"></a>Hızlı başlangıç: yerleşik Azure Sentinel
 
-
-
-Bu hızlı başlangıçta, yerleşik Azure Sentinel 'i nasıl yapacağınızı öğreneceksiniz. 
+Bu hızlı başlangıçta, yerleşik Azure Sentinel 'i nasıl yapacağınızı öğrenin. 
 
 Azure Sentinel 'de, ilk olarak Azure Sentinel 'i etkinleştirmeniz ve sonra veri kaynaklarınızı bağlamanız gerekir. Azure Sentinel, Microsoft çözümleri için çok sayıda bağlayıcı sunar ve Microsoft tehdit koruması çözümleri Microsoft 365, Office 365, Azure AD, Azure ATP ve dahil gerçek zamanlı tümleştirme sağlar. Microsoft Cloud App Security ve daha fazlası. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar vardır. Veri kaynaklarınızı Azure Sentinel 'e bağlamak için ortak olay biçimi, syslog veya REST API 'sini de kullanabilirsiniz.  
 
 Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertly oluşturulan çalışma kitapları galerisinden seçim yapın. Bu çalışma kitapları, gereksinimlerinize kolayca özelleştirilebilir.
 
+>[!NOTE] 
+> [Azure Sentinel fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-sentinel/) , Ilişkili Azure izleyici Log Analytics çalışma alanındaki veri miktarına göre belirlenir. Aşağıdaki veri bağlayıcılarından bazıları alma işlemi için ücretlendirilmez, ancak Log Analytics çalışma alanında depolanan giriş verilerini kullanarak her türlü uyarı oluşturduğunuzda, [Azure Izleyici Günlük Analizi Fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/)başına ücretlendirilecektir. 
+  > - Azure etkinliği (Azure Işlemleri için etkinlik günlükleri)
+  > - Azure Active Directory Kimlik Koruması (AAD P2 lisanslarına sahip kiracılar Için)
+  > - Azure Information Protection
+  > - Azure Gelişmiş tehdit koruması (Uyarılar)
+  > - Azure Güvenlik Merkezi (Uyarılar)
+  > - Microsoft Cloud App Security (yalnızca uyarılar)
+  > - Microsoft Defender Gelişmiş tehdit koruması (Izleme Aracısı uyarıları)
+  > - Office 365 (Exchange ve SharePoint günlükleri)
+>
+> Azure AD/Office365 denetim günlükleri ücretsiz değildir ve Premium bir katman olarak sunulmadığından bu verilerin alımı GB başına fiyatlandırılır. 
+  
 
 ## <a name="global-prerequisites"></a>Genel Önkoşullar
 
@@ -49,7 +54,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 1. Azure portal gidin.
 2. Azure Sentinel 'in oluşturulduğu aboneliğin seçili olduğundan emin olun. 
 3. Azure Sentinel 'i arayın. 
-   ![aramanız](./media/quickstart-onboard/search-product.png)
+   ![arama](./media/quickstart-onboard/search-product.png)
 
 1. **+ Ekle**' ye tıklayın.
 1. Kullanmak istediğiniz çalışma alanını seçin veya yeni bir tane oluşturun. Azure Sentinel 'i birden fazla çalışma alanında çalıştırabilirsiniz, ancak veriler tek bir çalışma alanına yalıtılmış olur.

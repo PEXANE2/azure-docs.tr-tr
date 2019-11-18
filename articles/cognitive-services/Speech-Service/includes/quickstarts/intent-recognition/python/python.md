@@ -11,18 +11,19 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 9a226c17dd72d0dcd6403277054cf264f0094e65
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 4efa535118d075addf78b2e9be6a645c458d6bb4
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850526"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125634"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
+>
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
 > * [Bir LUSıS uygulaması oluşturma ve bir uç nokta anahtarı edinme](../../../../quickstarts/create-luis.md)
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md)
@@ -39,7 +40,7 @@ Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Bir `IntentRecognizer` nesnesi başlatabilmeniz için, LUSıS Endpoing anahtarınızı ve bölgenizi kullanan bir yapılandırma oluşturmanız gerekir. Daha sonra bu kodu ekleyin.
+Bir `IntentRecognizer` nesnesi başlatabilmeniz için, LUSıS uç noktası anahtarınızı ve bölgenizi kullanan bir yapılandırma oluşturmanız gerekir. Daha sonra bu kodu ekleyin.
 
 Bu örnek, LUSıS anahtar ve bölgesini kullanarak `SpeechConfig` nesnesini oluşturur. Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
 
@@ -48,7 +49,7 @@ Bu örnek, LUSıS anahtar ve bölgesini kullanarak `SpeechConfig` nesnesini olu�
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 
-## <a name="initialize-a-intentrecognizer"></a>Bir Yoğunlumtanıyıcıyı başlatma
+## <a name="initialize-an-intentrecognizer"></a>Bir Yoğunlumtanıyıcıyı başlatma
 
 Şimdi bir `IntentRecognizer`oluşturalım. Konuşma yapılandırmanızın hemen altına bu kodu ekleyin.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=15)]
@@ -60,7 +61,7 @@ Artık bir `LanguageUnderstandingModel` amaç tanıyıcı ile ilişkilendirmeniz
 
 ## <a name="recognize-an-intent"></a>Amacı tanıma
 
-`IntentRecognizer` nesnesinden `recognize_once()` yöntemini çağıracağız. Bu yöntem, konuşma hizmeti 'nin tanıma için tek bir tümcecik gönderdiğini ve tümcecik reconizing konuşmayı durdurma için tanımlandıktan sonra olduğunu bilmesini sağlar.
+`IntentRecognizer` nesnesinden `recognize_once()` yöntemini çağıracağız. Bu yöntem, konuşma hizmetinin tanıma için tek bir tümcecik gönderdiğini ve bu ifadenin konuşmayı tanımayı durdur olarak belirlenmesinin ardından olduğunu bilmesini sağlar.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>Tanıma sonuçlarını (veya hatalarını) görüntüleme
@@ -71,7 +72,8 @@ Using ifadesinin içinde, `recognize_once()`çağrın altında, şu kodu ekleyin
 
 ## <a name="check-your-code"></a>Kodunuzu denetleyin
 
-Bu noktada, kodunuz şuna benzemelidir: (Bu sürüme bazı açıklamalar ekledik) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
+Bu noktada, kodunuzun şöyle görünmesi gerekir:  
+(Bu sürüme bazı açıklamalar ekledik) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
 
 ## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
 

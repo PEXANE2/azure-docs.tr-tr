@@ -1,5 +1,5 @@
 ---
-title: Azure VPN Gateway SSS | Microsoft Docs
+title: Azure VPN Gateway SSS
 description: VPN Ağ Geçidi SSS. Microsoft Azure Sanal Ağ şirket içi ve dışı bağlantılar, karma yapılandırma bağlantıları ve VPN Ağ Geçitleri hakkında SSS.
 services: vpn-gateway
 author: yushwang
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: yushwang
-ms.openlocfilehash: dd012ab94ba47f700230ac761f2dc803988cefd4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: fa4e403733c418a4ceff417dd0cf7b54f9409a49
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075405"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151670"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway SSS
 

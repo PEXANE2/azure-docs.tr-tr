@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 8a87335dba237e8088275706f7dcc2eb7f34831a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8f39556fcffea5f254e5362dbb1b55762f60c9b3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887554"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131947"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -34,7 +34,7 @@ Burada kullanacağınız örnek, `netcoreapp2.2`hedefleyen bir [MVC uygulamasıd
 > [!NOTE]
 > Application Insights ile birlikte ASP.NET Core 3,0 kullanıyorsanız, lütfen [2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) sürümünü veya üstünü kullanın. Bu, ASP.NET Core 3,0 ' i destekleyen tek sürümdür.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Çalışan bir ASP.NET Core uygulaması. Bir ASP.NET Core uygulaması oluşturmanız gerekiyorsa, bu [ASP.NET Core öğreticisini](https://docs.microsoft.com/aspnet/core/getting-started/)izleyin.
 - Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
@@ -130,7 +130,7 @@ Uygulamanızı çalıştırın ve ona istek yapın. Telemetri artık Application
 
 Önem derecesi `Warning` veya daha büyük `ILogger` ile oluşturulan Günlükler otomatik olarak yakalanır. Application Insights tarafından yakalanan günlük düzeylerini özelleştirmek için [ILogger belgelerini](ilogger.md#control-logging-level) izleyin.
 
-### <a name="dependencies"></a>Bağımlılıklar
+### <a name="dependencies"></a>Bağımlılıkları
 
 Bağımlılık koleksiyonu varsayılan olarak etkindir. [Bu](asp-net-dependencies.md#automatically-tracked-dependencies) makalede otomatik olarak toplanan bağımlılıklar açıklanmakta ve ayrıca el ile izleme yapmak için adımlar yer verilmektedir.
 
@@ -197,10 +197,10 @@ public void ConfigureServices(IServiceCollection services)
 
 |Ayar | Açıklama | Varsayılan
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | Liveölçümlerini etkinleştir/devre dışı bırak özelliği | doğru
-|Enableadaptiveörnekleme | Uyarlamalı örneklemeyi etkinleştir/devre dışı bırak | doğru
-|Enablesinyal | Düzenli aralıklarla (15 dakikalık varsayılan), .NET sürümü, Azure ortam bilgileri, varsa vb. gibi çalışma zamanı hakkında bilgi içeren "HeartBeatState" adlı özel bir ölçüm göndererek, sinyalleri etkinleştir/devre dışı bırak özelliği. | doğru
-|Addadutocollectedmetricextractor | Örnekleme gerçekleşmeden önce Istekler/bağımlılıklar hakkında önceden toplanmış ölçümler gönderen bir TelemetryProcessor olan otomatik Collectedölçümler ayıklayıcısı 'nı etkinleştirin/devre dışı bırakın. | doğru
+|EnableQuickPulseMetricStream | Liveölçümlerini etkinleştir/devre dışı bırak özelliği | true
+|Enableadaptiveörnekleme | Uyarlamalı örneklemeyi etkinleştir/devre dışı bırak | true
+|Enablesinyal | Düzenli aralıklarla (15 dakikalık varsayılan), .NET sürümü, Azure ortam bilgileri, varsa vb. gibi çalışma zamanı hakkında bilgi içeren "HeartBeatState" adlı özel bir ölçüm göndererek, sinyalleri etkinleştir/devre dışı bırak özelliği. | true
+|Addadutocollectedmetricextractor | Örnekleme gerçekleşmeden önce Istekler/bağımlılıklar hakkında önceden toplanmış ölçümler gönderen bir TelemetryProcessor olan otomatik Collectedölçümler ayıklayıcısı 'nı etkinleştirin/devre dışı bırakın. | true
 |RequestCollectionOptions. TrackExceptions | Istek koleksiyonu modülü tarafından işlenmeyen özel durum izlemenin raporlamasını etkinleştirin/devre dışı bırakın. | NETSTANDARD 2.0'da false (özel durumlar Applicationınsightsloggerprovider ile izleniyor), aksi takdirde true.
 
 En güncel liste için [`ApplicationInsightsServiceOptions`yapılandırılabilir ayarları](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) inceleyin.
@@ -249,7 +249,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="adding-telemetry-processors"></a>Telemetri işlemcisi ekleme
 
-`IServiceCollection``AddApplicationInsightsTelemetryProcessor` uzantı yöntemini kullanarak `TelemetryConfiguration` için özel telemetri işlemcileri ekleyebilirsiniz. [Gelişmiş filtreleme senaryolarında](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#filtering-itelemetryprocessor)telemetri işlemcileri kullanıyorsunuz. Aşağıdaki örneği kullanın.
+`IServiceCollection``AddApplicationInsightsTelemetryProcessor` uzantı yöntemini kullanarak `TelemetryConfiguration` için özel telemetri işlemcileri ekleyebilirsiniz. [Gelişmiş filtreleme senaryolarında](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#itelemetryprocessor-and-itelemetryinitializer)telemetri işlemcileri kullanıyorsunuz. Aşağıdaki örneği kullanın.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

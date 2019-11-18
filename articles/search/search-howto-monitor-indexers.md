@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c7f688c96576f660795becaf318c3b0677a24542
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 699b5a4e5a7f10c883667ca5030dd971855467f5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793795"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112982"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Azure Bilişsel Arama Dizin Oluşturucu durumunu ve sonuçlarını izleme
 
@@ -180,6 +180,6 @@ Bir Dizin Oluşturucu değişiklik izleme durumunu yenilemek üzere sıfırland�
 
 Durum kodları ve Dizin Oluşturucu izleme bilgileri hakkında daha fazla bilgi için REST API [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) bakın.
 
-@No__t_0 ve `IndexerExecutionResult.Warnings` listeleri numaralandırarak belgeye özgü hatalar veya uyarılar hakkında ayrıntılı bilgi alınabilir.
+`IndexerExecutionResult.Errors` ve `IndexerExecutionResult.Warnings`listeleri numaralandırarak belgeye özgü hatalar veya uyarılar hakkında ayrıntılı bilgi alınabilir.
 
 Dizin oluşturucuyu izlemek için kullanılan .NET SDK sınıfları hakkında daha fazla bilgi için bkz. [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) and [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).

@@ -1,5 +1,5 @@
 ---
-title: Bir zenginleştirme ardışık düzeninde özel Web API 'SI yeteneği
+title: Becerileri 'de özel Web API 'SI yeteneği
 titleSuffix: Azure Cognitive Search
 description: Web API 'Lerine çağırarak Azure Bilişsel Arama becerileri 'in yeteneklerini genişletin. Özel kodunuzu bütünleştirmek için özel Web API 'SI yeteneklerinizi kullanın.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b0d0caa9deb43bc198b3c09836ac94777cf154
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: defe6711049e191ada1a2f6e46d6643debdca86e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466726"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113801"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzeninde özel Web API 'SI yeteneği
 
@@ -36,7 +36,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| Kullanılmamışsa | _JSON_ yükünün GÖNDERILECEĞI Web API 'sinin URI 'si. Yalnızca **https** URI şemasına izin veriliyor |
+| kullanılmamışsa | _JSON_ yükünün GÖNDERILECEĞI Web API 'sinin URI 'si. Yalnızca **https** URI şemasına izin veriliyor |
 | httpMethod | Yük gönderilirken kullanılacak yöntem. `PUT` veya `POST` izin verilen Yöntemler |
 | httpHeaders | Anahtarların üstbilgi adlarını ve değerlerini temsil ettiği anahtar-değer çiftleri koleksiyonu, yük ile birlikte Web API 'nize gönderilecek üst bilgi değerlerini temsil eder. Şu üst bilgilerin bu koleksiyonda olması yasaktır: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
 | timeout | Seçim Belirtildiğinde, API çağrısını yapan http istemcisinin zaman aşımını gösterir. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Örneğin, 60 saniye için `PT60S`. Ayarlanmamışsa, varsayılan değer olan 30 saniye seçilir. Zaman aşımı en fazla 230 saniyeye ayarlanabilir ve en az 1 saniye olabilir. |

@@ -1,5 +1,5 @@
 ---
-title: "Nasıl yapılır: konuşma SDK 'Sı ile istemcide özel komutları yerine getirmek (Önizleme)"
+title: Konuşma SDK 'Sı ile istemcideki özel komutları yerine getirmek
 titleSuffix: Azure Cognitive Services
 description: Bu makalede konuşma SDK 'Sı ile istemcideki özel komut etkinliklerini işleyin
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: a986da74a668075457e28a9a37b6a11fd04a84e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507027"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110080"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Nasıl yapılır: konuşma SDK 'Sı ile istemcide komutları yerine alma (Önizleme)
 
@@ -30,11 +30,11 @@ Bu makalede şunları yapmanız gerekir:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - Konuşma Hizmetleri için bir Azure abonelik anahtarı
-   - [Bir tane ücretsiz alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
+  - [Bir tane ücretsiz alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
 - Önceden oluşturulmuş özel komutlar uygulaması
-   - [Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-parameters.md)
+  - [Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-parameters.md)
 - Bir konuşma SDK 'Sı etkin istemci uygulaması
-   - [Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma (Önizleme)](./quickstart-custom-speech-commands-speech-sdk.md)
+  - [Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma (Önizleme)](./quickstart-custom-speech-commands-speech-sdk.md)
 
 ## <a name="optional-get-started-fast"></a>İsteğe bağlı: hızlı başlangıç
 
@@ -45,14 +45,15 @@ Bu makalede, adım adım, bir istemci uygulamanın özel komutlar uygulamanızla
 1. Daha önce oluşturduğunuz özel komutlar uygulamanızı [konuşma Studio](https://speech.microsoft.com/) 'dan açın
 1. Kullanıcıya geri yanıt veren daha önce oluşturulmuş kurala sahip olduğunuzdan emin olmak için **tamamlama kuralları** bölümüne bakın
 1. Doğrudan istemciye yük göndermek için, etkinlik Gönder eylemiyle yeni bir kural oluşturun
+
    > [!div class="mx-imgBorder"]
    > Etkinlik tamamlanma kuralını gönder ![](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | Ayar    | Önerilen değer                                  | Açıklama                                        |
-   | ---------- | ------------------------------------------------ | -------------------------------------------------- |
-   | Kural Adı  | Güncelleştirme Devemlak                                | Kuralın amacını açıklayan bir ad          |
-   | Koşullar | Gerekli parametre-`OnOff` ve `SubjectDevice` | Kuralın ne zaman çalıştırılabilmesine belirleme koşulları    |
-   | Eylemler    | `SendActivity` (aşağıya bakın)                        | Kural koşulu true olduğunda gerçekleştirilecek eylem |
+   | Ayar | Önerilen değer | Açıklama |
+   | ------- | --------------- | ----------- |
+   | Kural Adı | Güncelleştirme Devemlak | Kuralın amacını açıklayan bir ad |
+   | Koşullar | Gerekli parametre-`OnOff` ve `SubjectDevice` | Kuralın ne zaman çalıştırılabilmesine belirleme koşulları |
+   | Eylemler | `SendActivity` (aşağıya bakın) | Kural koşulu true olduğunda gerçekleştirilecek eylem |
 
    > [!div class="mx-imgBorder"]
    > Etkinlik yükünü gönder](media/custom-speech-commands/fulfill-sdk-send-activity-action.png) ![
@@ -139,6 +140,6 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. TV 'nin görsel durumu "açık" olarak değiştirilmelidir
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 > [!div class="nextstepaction"]
 > [Nasıl yapılır: özel komut parametrelerine doğrulama ekleme (Önizleme)](./how-to-custom-speech-commands-validations.md)
-

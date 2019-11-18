@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 41332a76c3c4e8228e6827e1553d73da3a85fc09
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: fb8f5f2adf497a12b4ed54b381a2dbf85e160b8e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522144"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123961"
 ---
 # <a name="container-security-in-security-center"></a>Güvenlik Merkezi 'nde kapsayıcı güvenliği
 
@@ -59,7 +59,7 @@ Güvenlik Merkezi 'nin önerilerine ilişkin ayrıntılar için bkz. [sanal maki
 
 Güvenlik Merkezi, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit algılama sağlar ve şüpheli etkinlikler için uyarı oluşturur. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
 
-Konuk ve AKS küme düzeyindeki tehditleri tespit ediyoruz. Tam Ayrıntılar için bkz. [Azure Container Service](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-container-service-).
+Konuk ve AKS küme düzeyindeki tehditleri tespit ediyoruz. Tam Ayrıntılar için bkz. [Azure Container Service](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
 
 
 ## <a name="to-view-the-security-posture-of-your-container-related-resources"></a>Kapsayıcılarınızla ilgili kaynaklarınızın güvenlik duruşunu görüntülemek için

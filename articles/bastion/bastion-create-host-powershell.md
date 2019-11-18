@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5fea9c9a99250c8abe26f953b1c6632b561a6013
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6cae6d258da2ddf0c3bfaade65ae74f1201b67b7
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518053"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121062"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Azure PowerShell kullanarak bir Azure savunma ana bilgisayarı oluşturma
 
@@ -39,7 +39,7 @@ Bu bölüm Azure PowerShell kullanarak yeni bir Azure savunma kaynağı oluştur
 2. Azure savunma için genel bir IP adresi oluşturun. Genel IP, RDP/SSH 'ye erişilecek savunma kaynağına genel IP adresidir (443 numaralı bağlantı noktası üzerinden). Genel IP adresi, oluşturmakta olduğunuz savunma kaynağıyla aynı bölgede olmalıdır.
 
    ```azurepowershell-interactive
-   $publicip = New-AzPublicIpAddress -ResourceGroupName "myBastionRG" -name "myPublicIP" -location "westeurope" -AllocationMethod Dynamic -Sku Standard
+   $publicip = New-AzPublicIpAddress -ResourceGroupName "myBastionRG" -name "myPublicIP" -location "westeurope" -AllocationMethod Static -Sku Standard
    ```
 
 3. Sanal ağınızın AzureBastionSubnet yeni bir Azure savunma kaynağı oluşturun. Savunma kaynağının oluşturulması ve dağıtılması yaklaşık 5 dakika sürer.

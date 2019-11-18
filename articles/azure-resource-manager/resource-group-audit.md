@@ -1,17 +1,14 @@
 ---
-title: Kaynakları izlemek için Azure etkinlik günlüklerini görüntüleme | Microsoft Docs
+title: Kaynakları izlemek için Azure etkinlik günlüklerini görüntüleme
 description: Kullanıcı eylemlerini ve hataları gözden geçirmek için etkinlik günlüklerini kullanın. PowerShell, Azure CLı ve REST Azure portal gösterir.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 25bce613ab45f20f7060447bcfc47f452f4d70f2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3ac407fa4cfef1530cb6bbfde2ec666b5a07e324
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329450"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150869"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüleme
 
@@ -29,7 +26,7 @@ Etkinlik günlükleri 90 gün boyunca tutulur. Başlangıç tarihi 90 günden es
 
 Portal, PowerShell, Azure CLı, Öngörüler REST API veya [Öngörüler .NET kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Insights/)aracılığıyla etkinlik günlüklerinden bilgi alabilirsiniz.
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portal
 
 1. Etkinlik günlüklerini Portal üzerinden görüntülemek için **izleyici**' yi seçin.
 

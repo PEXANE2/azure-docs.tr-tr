@@ -8,35 +8,32 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: c4669809f1efa1f69081da17bf5ccbeddc39a716
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f48c8712a2f4fbd69db7de5247e3293ad57ae1e6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077139"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112829"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada akış desteğini değiştirme (Önizleme)
 
 Değişiklik akışı amacı, bloblarda oluşan tüm değişikliklerin işlem günlüklerini ve Depolama hesabınızdaki blob meta verilerini sağlamaktır. Değişiklik akışı, bu değişikliklerin **sıralı**, **garantili**, **dayanıklı**, **sabit**ve **salt** yazılır günlüklerini sağlar. İstemci uygulamaları, akış veya toplu işlem modunda bu günlükleri dilediğiniz zaman okuyabilir. Değişiklik akışı, BLOB depolama hesabınızda gerçekleşen değişiklik olaylarını düşük bir maliyetle işleyen etkili ve ölçeklenebilir çözümler oluşturmanıza olanak sağlar.
 
-> [!NOTE]
-> Değişiklik akışı genel önizlemededir ve **westcentralus** ve **westus2** bölgelerinde kullanılabilir. Bu makalenin [koşullar](#conditions) bölümüne bakın. Önizlemeye kaydolmak için bu makalenin [aboneliğinizi kaydetme](#register) bölümüne bakın.
-
 Değişiklik akışı, standart [BLOB fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/blobs/) maliyetinde Depolama hesabınızdaki özel bir kapsayıcıda [BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) olarak depolanır. Gereksinimlerinize göre bu dosyaların bekletme süresini denetleyebilirsiniz (geçerli yayının [koşullarına](#conditions) bakın). Değişiklik olayları, [Apache avro](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtiminde kayıt olarak değişiklik akışına eklenir: satır içi şema ile zengin veri yapıları sağlayan kompakt, hızlı, ikili bir biçimdir. Bu biçim, Hadoop ekosistemi, Stream Analytics ve Azure Data Factory yaygın olarak kullanılır.
 
-Bu günlükleri zaman uyumsuz, artımlı veya tam olarak işleyebilirsiniz. Herhangi bir sayıda istemci uygulaması değişiklik akışını paralel olarak ve kendi hızda okuyabilir. [Apache detaylandırma](https://drill.apache.org/docs/querying-avro-files/) veya [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) gibi analitik uygulamalar, daha düşük maliyetli, yüksek bant genişliğine sahip ve özel bir uygulama yazmak zorunda kalmadan, günlükleri doğrudan avro dosyaları olarak kullanabilir.
+Bu günlükleri zaman uyumsuz, artımlı veya tam olarak işleyebilirsiniz. Herhangi bir sayıda istemci uygulaması değişiklik akışını paralel olarak ve kendi hızda okuyabilir. [Apache detaya gitme](https://drill.apache.org/docs/querying-avro-files/) veya [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) gibi analitik uygulamalar, günlükleri doğrudan avro dosyaları olarak tüketebilir, bu da bunları yüksek bant genişliğine sahip ve özel bir uygulama yazmak zorunda kalmadan düşük maliyetli bir şekilde işlemenizi sağlar.
 
 Değişiklik akışı desteği, değiştirilen nesnelere göre verileri işleyen senaryolar için uygundur. Örneğin, uygulamalar şunları yapabilir:
 
-  - İkincil bir dizini güncelleştirin, bir önbellek, arama motoru veya diğer içerik yönetimi senaryolarıyla eşitler.
+  - İkincil bir dizini güncelleştirin, önbellek, arama motoru veya diğer içerik yönetimi senaryolarıyla eşitler.
   
   - Bir akış veya toplu modda nesnelerinize gerçekleşen değişikliklere göre iş analizi öngörülerini ve ölçümlerini ayıklayın.
   
-  - Veri yönetimi için güvenlik, uyumluluk veya zeka için herhangi bir süre içinde, nesnelerdeki değişiklikleri depolayın, denetleyin ve çözümleyin.
+  - Şirket veri yönetimi için güvenlik, uyumluluk veya zeka için, nesnelerdeki değişiklikleri istediğiniz zaman boyunca depolayın, denetleyin ve çözümleyin.
 
-  - Olağanüstü durum yönetimi veya uyumluluk için hesabınızdaki nesne durumunu yedeklemek, yansıtmak veya çoğaltmak üzere çözümler oluşturun.
+  - Olağanüstü durum yönetimi veya uyumluluk için hesabınızdaki nesne durumunu yedeklemeye, yansıtmaya veya çoğaltmaya yönelik çözümler oluşturun.
 
-  - Oluşturulan veya değiştirilen nesneye göre değişiklik olaylarına tepki veren veya yürütmeleri zamanlamaya göre bağlantılı uygulama işlem hatları oluşturun.
+  - Oluşturulan veya değiştirilen nesneye göre değişiklik olaylarına tepki veren veya yürütmeleri zamanlamaya dayalı bağlantılı uygulama işlem hatları oluşturun.
 
 > [!NOTE]
 > [BLOB depolama olayları](storage-blob-event-overview.md) , Azure işlevlerinizin veya uygulamalarınızın blob 'da oluşan değişikliklere tepki vermesini sağlayan gerçek zamanlı bir kerelik olaylar sağlar. Değişiklik akışı, değişikliklerin dayanıklı ve sıralı bir günlük modelini sağlar. Değişiklik akışınızdaki değişiklikler, değişiklik akışınızda, değişikliğin birkaç dakikasında bir sıra içinde kullanılabilir hale getirilir. Uygulamanızın olaylara çok daha hızlı yanıt vermesini istiyorsanız, bunun yerine [BLOB Storage olaylarını](storage-blob-event-overview.md) kullanmayı göz önünde bulundurun. BLOB depolama olayları, Azure Işlevlerinizin veya uygulamalarınızın bağımsız olayları gerçek zamanlı olarak tepki vermesini sağlar.
@@ -54,6 +51,9 @@ Değişiklik akışını etkinleştirdiğinizde göz önünde bulundurmanız ger
 - Değişiklik akışı, hesapta oluşan tüm kullanılabilir olaylar için *Tüm* değişiklikleri yakalar. İstemci uygulamaları, gereken şekilde olay türlerini filtreleyebilir. (Geçerli yayının [koşullarına](#conditions) bakın).
 
 - Yalnızca GPv2 ve BLOB depolama hesapları değişiklik akışını etkinleştirebilir. GPv1 depolama hesapları, Premium blok Blobstorage hesapları ve hiyerarşik ad alanı etkinleştirilmiş hesaplar Şu anda desteklenmemektedir.
+
+> [!IMPORTANT]
+> Değişiklik akışı genel önizlemededir ve **westcentralus** ve **westus2** bölgelerinde kullanılabilir. Bu makalenin [koşullar](#conditions) bölümüne bakın. Önizlemeye kaydolmak için bu makalenin [aboneliğinizi kaydetme](#register) bölümüne bakın. Depolama hesaplarınızda değişiklik akışını etkinleştirebilmeniz için aboneliğinizi kaydetmeniz gerekir.
 
 ### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -246,7 +246,7 @@ Bkz. [Azure Blob depolamada işlem değişiklik akışı günlükleri](storage-b
 
 - Segment tarafından temsil edilen zaman, 15 dakikalık sınırlara göre **yaklaşık** olur. Bu nedenle, belirli bir süre içinde tüm kayıtların tüketimini sağlamak için, ardışık önceki ve sonraki saat segmentini kullanın.
 
-- Her segment farklı sayıda `chunkFilePaths`olabilir. Bunun nedeni, yayımlama aktarım hızını yönetmek için günlük akışının dahili bölümleniyor. Her bir `chunkFilePath` günlük dosyası birbirini dışlayan Bloblar içerir ve yineleme sırasında blob başına değişiklik sıralamasını ihlal etmeden paralel olarak tüketilebilir ve işlenebilir.
+- Her segment farklı sayıda `chunkFilePaths`olabilir. Bunun nedeni, yayımlama aktarım hızını yönetmek için günlük akışının dahili bölümleniyor. Her bir `chunkFilePath` günlük dosyalarının birbirini dışlayan blob 'ları içermesi garanti edilir ve yineleme sırasında blob başına değişiklik sıralamasını ihlal etmeden paralel olarak tüketilebilir ve işlenebilir.
 
 - Segmentlerin `Publishing` durumu başlangıcı. Kayıtların segmente eklenmesi tamamlandıktan sonra `Finalized`olur. `$blobchangefeed/meta/Segments.json` dosyasındaki `LastConsumable` özelliğinin tarihinden sonra tarihli tüm kesimlerdeki günlük dosyaları, uygulamanız tarafından tüketilmemelidir. Bir `$blobchangefeed/meta/Segments.json` dosyasında `LastConsumable`özelliğine bir örnek aşağıda verilmiştir:
 
@@ -302,7 +302,16 @@ Bu bölümde, değişiklik akışında geçerli genel önizlemede bulunan biline
 - Günlük dosyasının `url` özelliği her zaman boştur.
 - Segment. json dosyasının `LastConsumable` özelliği, değişiklik akışı 'nın sonlandırabildiği ilk parçayı listelemez. Bu sorun yalnızca ilk kesim sonlandırıldıktan sonra oluşur. İlk saat sonrasındaki sonraki tüm segmentler `LastConsumable` özelliğinde doğru bir şekilde yakalanır.
 
+## <a name="faq"></a>SSS
+
+### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>Değişiklik akışı ve Depolama Analizi günlüğe kaydetme arasındaki fark nedir?
+Değişiklik akışı, değişiklik akışı günlüğüne yalnızca başarılı blob oluşturma, değiştirme ve silme olayları kaydedildiğinde uygulama geliştirme için en iyi duruma getirilmiştir. Analiz günlüğü, okuma ve listeleme işlemleri de dahil olmak üzere tüm işlemlerde tüm başarılı ve başarısız istekleri kaydeder. Değişiklik akışından yararlanarak, bir işlem ağır hesabında günlük gürültüsünü filtreleme ve yalnızca blob değişiklik olaylarına odaklanma konusunda endişelenmeniz gerekmez.
+
+### <a name="should-i-use-change-feed-or-storage-events"></a>Değişiklik akışı veya depolama olaylarını kullanmalıyım mi?
+Hem değişiklik akışı hem de [BLOB depolama olayları](storage-blob-event-overview.md) , olay kayıtlarının gecikmesi, sıralaması ve depolanması ile ilgili önemli bir farklılık ile aynı şekilde her iki özellikten da yararlanabilirsiniz. Değişiklik akışı, blob değişiklik işlemlerinin sırasını garanti ederken her birkaç dakikada bir değişiklik akışı günlüğüne kayıt yazar. Depolama olayları gerçek zamanlı olarak gönderilir ve sıralanmayabilir. Depolama olayları geçicidir ve olay işleyicisi tarafından açık bir şekilde depolanmadığı sürece, akış olayları değişiklik, depolama hesabınız içinde silinir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - .NET istemci uygulaması kullanarak değişiklik akışını okuma hakkında bir örnek için bkz. Bkz. [Azure Blob depolamada işlem değişiklik akışı günlükleri](storage-blob-change-feed-how-to.md).
 - Olaylara gerçek zamanlı olarak tepki verme hakkında bilgi edinin. Bkz. [BLOB depolama olaylarına yeniden davranma](storage-blob-event-overview.md)
+- Tüm istekler için hem başarılı hem de başarısız işlemler için ayrıntılı günlük bilgileri hakkında daha fazla bilgi edinin. Bkz. [Azure Storage Analytics günlüğe kaydetme](../common/storage-analytics-logging.md)

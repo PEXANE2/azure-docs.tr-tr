@@ -4,15 +4,15 @@ description: Azure Analysis Services tablo 1200 ve daha yüksek veri modelleri i
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 038773b41d84a7b2b4f845a8bf70e9eed849bc80
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572952"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120008"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services desteklenen veri kaynakları
 
@@ -22,20 +22,20 @@ Visual Studio 'da veri alma veya Içeri aktarma Sihirbazı 'nda gösterilen veri
 
 |Veri kaynağı  |Bellek içi  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL veritabanı<sup>[2](#azsqlmanaged)</sup>     |   Evet      |    Evet      |
-|Azure SQL Veri Ambarı     |   Evet      |   Evet       |
-|Azure Blob depolama<sup>[1](#tab1400a)</sup>     |   Evet       |    Hayır      |
-|Azure Tablo depolama<sup>[1](#tab1400a)</sup>    |   Evet       |    Hayır      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Evet        |  Hayır        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Evet       |    Hayır      |
-|Azure HDInsight,<sup>[1](#tab1400a) .</sup>     |     Evet     |   Hayır       |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Evet       |   Hayır       |
+|Azure SQL veritabanı<sup>[2](#azsqlmanaged)</sup>     |   Yes      |    Yes      |
+|Azure SQL Veri Ambarı     |   Yes      |   Yes       |
+|Azure Blob depolama<sup>[1](#tab1400a)</sup>     |   Yes       |    Hayır      |
+|Azure Tablo depolama<sup>[1](#tab1400a)</sup>    |   Yes       |    Hayır      |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Yes        |  Hayır        |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Yes       |    Hayır      |
+|Azure HDInsight,<sup>[1](#tab1400a) .</sup>     |     Yes     |   Hayır       |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Yes       |   Hayır       |
 ||||
 
 yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.   
 <a name="azsqlmanaged">2</a> -Azure SQL veritabanı yönetilen örneği desteklenir. Yönetilen örnek, Azure VNet 'te özel bir IP adresi ile çalıştığı için, örnekte ortak uç noktanın etkinleştirilmesi gerekir. Etkinleştirilmemişse, şirket içi veri ağ geçidi gerekir.    
 <a name="databricks">3</a> -Spark bağlayıcısını kullanan Azure Databricks Şu anda desteklenmiyor.   
-<a name="gen2">4</a> -ADLS 2. Şu anda desteklenmiyor.
+<a name="gen2">4</a> -ADLS 2. Bağlayıcısı Şu anda desteklenmiyor, ancak blob Storage bağlayıcısı bir ADLS 2. veri kaynağıyla birlikte kullanılabilir.
 
 
 **Sağlayıcı**   
@@ -43,14 +43,14 @@ Azure veri kaynaklarına bağlanan bellek içi ve DirectQuery modelleri SQL Serv
 
 ## <a name="other-data-sources"></a>Diğer veri kaynakları
 
-Ve Azure 'dan sunucuya şirket içi veri kaynaklarına bağlanmak için şirket içi ağ geçidi gerekir. Bir ağ geçidi kullanırken, 64 bit sağlayıcılar gereklidir.
+Bir Azure Analysis Services sunucusundan şirket içi veri kaynaklarına bağlanmak için şirket içi ağ geçidi gerekir. Bir ağ geçidi kullanırken, 64 bit sağlayıcılar gereklidir.
 
 ### <a name="in-memory-and-directquery"></a>Bellek içi ve DirectQuery
 
 |Veri kaynağı | Bellek içi sağlayıcı | DirectQuery sağlayıcısı |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11,0, SQL Server için Microsoft OLE DB sağlayıcısı, Veri Sağlayıcısı için .NET Framework SQL Server | SQL Server için .NET Framework Veri Sağlayıcısı |
-| SQL Server veri ambarı |SQL Server Native Client 11,0, SQL Server için Microsoft OLE DB sağlayıcısı, Veri Sağlayıcısı için .NET Framework SQL Server | SQL Server için .NET Framework Veri Sağlayıcısı |
+| SQL Server |SQL Server MSOLEDBSQL için Microsoft OLE DB sürücüsü (önerilen), SQL Server Native Client 11,0, Veri Sağlayıcısı için .NET Framework SQL Server | SQL Server için .NET Framework Veri Sağlayıcısı |
+| SQL Server veri ambarı |SQL Server MSOLEDBSQL için Microsoft OLE DB sürücüsü (önerilen), SQL Server Native Client 11,0, Veri Sağlayıcısı için .NET Framework SQL Server | SQL Server için .NET Framework Veri Sağlayıcısı |
 | Oracle | Oracle için OLE DB sağlayıcı, .NET için Oracle Veri Sağlayıcısı |.NET için Oracle Veri Sağlayıcısı |
 | Teradata |Teradata için OLE DB sağlayıcısı, .NET için Teradata Veri Sağlayıcısı |.NET için Teradata Veri Sağlayıcısı |
 | | | |
@@ -101,7 +101,7 @@ Azure Analysis Services veri modelleri, belirli veri kaynaklarına bağlanırken
 2. **Bağlantıyı Düzenle**' de Gelişmiş ' e tıklayarak **İleri** Özellikler penceresini açın.
 3. **Gelişmiş özellikleri ayarla** > **sağlayıcılar**' da, uygun sağlayıcıyı seçin.
 
-## <a name="impersonation"></a>Ation
+## <a name="impersonation"></a>Kimliğe bürünme
 Bazı durumlarda, farklı bir kimliğe bürünme hesabı belirtmek gerekli olabilir. Kimliğe bürünme hesabı, Visual Studio veya SSMS 'de belirtilebilir.
 
 Şirket içi veri kaynakları için:

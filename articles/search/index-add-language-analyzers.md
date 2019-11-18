@@ -1,5 +1,5 @@
 ---
-title: Dizindeki dize alanlarına dil Çözümleyicileri ekleme
+title: Dize alanlarına dil Çözümleyicileri ekleme
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'de Ingilizce olmayan sorgular ve dizinler için çok dilli sözlü metin analizi.
 manager: nitinme
@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f5833da5b15c893499b0d786972eff61c7391137
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ebdbcdda4efd7fdf9eb0e3e04cfa4d1987e03716
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790133"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111816"
 ---
-# <a name="add-language-analyzers-to-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinine dil Çözümleyicileri ekleme
+# <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinindeki dize alanlarına dil Çözümleyicileri ekleme
 
 *Dil çözümleyici* , hedef dilin dil kurallarını kullanarak sözlü analiz gerçekleştiren belirli bir [metin Çözümleyicisi](search-analyzers.md) türüdür. Aranabilir her alanın bir **çözümleyici** özelliği vardır. Dizininiz, Ingilizce ve Çince metin için ayrı alanlar gibi çevrilmiş dizeler içeriyorsa, bu çözümleyicilerin zengin dil özelliklerine erişmek için her bir alanda dil Çözümleyicileri belirtebilirsiniz.  
 
@@ -72,13 +72,13 @@ Dizin özellikleri hakkında daha fazla bilgi için bkz. [Create &#40;ındex Azu
 |Hırvatça|HR. Microsoft||  
 |Çekçe|CS. Microsoft|CS. Lucene|  
 |Danca|da. Microsoft|da. Lucene|  
-|Hollanda dili|nl. Microsoft|nl. Lucene|  
+|Felemenkçe|nl. Microsoft|nl. Lucene|  
 |Türkçe|en. Microsoft|en. Lucene|  
-|Estonca|et. Microsoft||  
+|Estonca|et.microsoft||  
 |Fince|Fi. Microsoft|Fi. Lucene|  
 |Fransızca|fr. Microsoft|fr. Lucene|  
-|Galiçya lehçesi||GL. Lucene|  
-|Almanca|de Microsoft|de. Lucene|  
+|Galiçya dili||GL. Lucene|  
+|Almanca|de.microsoft|de. Lucene|  
 |Yunanca|El. Microsoft|El. Lucene|  
 |Gucerat dili|Gu. Microsoft||  
 |İbranice|BT. Microsoft||  
@@ -112,7 +112,7 @@ Dizin özellikleri hakkında daha fazla bilgi için bkz. [Create &#40;ındex Azu
 |İsveççe|ZF. Microsoft|ZF. Lucene|  
 |Tamil dili|ta. Microsoft||  
 |Telugu dili|te. Microsoft||  
-|Tay dili|TH. Microsoft|TH. Lucene|  
+|Tay Dili|TH. Microsoft|TH. Lucene|  
 |Türkçe|tr. Microsoft|tr. Lucene|  
 |Ukrayna dili|UK. Microsoft||  
 |Urduca|. Microsoft||  

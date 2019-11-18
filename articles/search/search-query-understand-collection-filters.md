@@ -1,7 +1,7 @@
 ---
 title: OData koleksiyon filtrelerini anlama
 titleSuffix: Azure Cognitive Search
-description: OData koleksiyon filtrelerinin Azure Bilişsel Arama sorgularında nasıl çalıştığını anlama.
+description: OData koleksiyon filtrelerinin, koleksiyonlara özgü sınırlamalar ve davranışlar dahil olmak üzere Azure Bilişsel Arama sorgularında nasıl çalıştığı mekanizması öğrenin.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9a57e1d16b13d822b6f5b541a7f838b0dd3a69ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794384"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113060"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama OData koleksiyon filtrelerini anlama
 
@@ -96,14 +96,14 @@ Tam metin arama için `Rooms/Description` nasıl depolanır:
 | Kurs | 2 |
 | city | 1 |
 | Bahçe | 1 |
-| Miktarda | 1 |
+| miktarda | 1 |
 | Motel | 2 |
 | yı | 1, 2 |
 | standart | 1 |
 | kurallarý | 1 |
 | görünüm | 1 |
 
-Bu nedenle, yukarıdaki filtreden farklı olarak, "bir odanın ' Deluxe Oda ' `Type` eşit olduğu ve **aynı odanın** 100 ' den küçük `BaseRate` sahip olduğu belgeleri Eşleştir" ifadesi, arama sorgusu "`Rooms/Type`" Deluxe "teriminin bulunduğu belgeleri eşleştir ve `Rooms/Description` "şehir görünümü" ifadesini içerir. Alanları, ikinci durumda bağıntılı olabilecek ayrı odalar kavramı yoktur.
+Bu nedenle, yukarıdaki filtreden farklı olarak, "bir odanın ' lüks ' 'e eşit `Type` sahip olduğu ve **aynı odanın** 100 ' den küçük `BaseRate` sahip olduğu belgeleri Eşleştir" ifadesi "" Deluxe "teriminin bulunduğu ve `Rooms/Description`" şehir görünümü "ifadesinin bulunduğu" arama sorgusu `Rooms/Type` "diyor. Alanları, ikinci durumda bağıntılı olabilecek ayrı odalar kavramı yoktur.
 
 > [!NOTE]
 > Azure Bilişsel Arama 'a eklenen bağıntılı arama desteğini görmek isterseniz, lütfen [Bu Kullanıcı ses öğesini](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections)oylayın.
@@ -151,7 +151,7 @@ Daha sonra, eşitlik `or`ile aynı Aralık değişkeninde birden çok eşitlik d
 
     seasons/any(s: s eq 'winter' or s eq 'fall')
 
-eşittir:
+eşdeğerdir:
 
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
 
@@ -159,7 +159,7 @@ ve iki `any` alt ifadesinin her biri ters bir dizin kullanılarak etkili bir şe
 
     seasons/all(s: s ne 'winter' and s ne 'fall')
 
-eşittir:
+eşdeğerdir:
 
     not seasons/any(s: s eq 'winter' or s eq 'fall')
 

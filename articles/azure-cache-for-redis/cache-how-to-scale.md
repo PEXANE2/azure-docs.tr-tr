@@ -1,25 +1,17 @@
 ---
-title: Redsıs için Azure önbelleğini ölçeklendirme | Microsoft Docs
+title: Redsıs için Azure önbelleğini ölçeklendirme
 description: Redsıs örnekleri için Azure önbelleğinizi ölçeklendirmeyi öğrenin
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 350db214-3b7c-4877-bd43-fef6df2db96c
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/11/2017
 ms.author: yegu
-ms.openlocfilehash: 21c93cac8b4126a46e4c3dc396db9857f6b62de9
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0fe4092a93e34d6e6b4bb4c4441609f696518b86
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755442"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122130"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini ölçeklendirme
 Redin için Azure önbelleğinde, önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek teklifleri vardır. Bir önbellek oluşturulduktan sonra, uygulamanızın gereksinimlerinin değiştirilmesi durumunda önbelleğin boyutunu ve fiyatlandırma katmanını ölçeklendirebilirsiniz. Bu makalede, Azure portal ve Azure PowerShell ve Azure CLı gibi araçları kullanarak önbelleğinizi nasıl ölçekleyebilirsiniz.
@@ -39,7 +31,7 @@ Redsıs için Azure cache [izleme](cache-how-to-monitor.md) özelliklerini kulla
 ## <a name="scale-a-cache"></a>Bir önbelleği ölçeklendirme
 Önbelleğinizi ölçeklendirmek için [Azure Portal](https://portal.azure.com) [önbelleğe](cache-configure.md#configure-azure-cache-for-redis-settings) gidin ve **Kaynak menüsünden** **Ölçekle** ' ye tıklayın.
 
-![Ölçeklendirme](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![Ölçek](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
 **Fiyatlandırma katmanı Seç** dikey penceresinde istediğiniz fiyatlandırma katmanını seçin ve **Seç**' e tıklayın.
 
@@ -72,7 +64,7 @@ Azure portal önbellek örneklerinizi ölçeklendirmenin yanı sıra, PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-@No__t_1, `Sku` veya `ShardCount` özellikleri değiştirildiğinde [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) cmdlet 'Ini kullanarak PowerShell ile redsıs örnekleri Için Azure önbelleğinizi ölçekleyebilirsiniz. Aşağıdaki örnek, `myCache` adlı bir önbelleğin 2,5 GB önbellek olarak nasıl ölçeklendirilebilen gösterilmektedir. 
+`Size`, `Sku`veya `ShardCount` özellikleri değiştirildiğinde [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) cmdlet 'Ini kullanarak PowerShell ile redsıs örnekleri Için Azure önbelleğinizi ölçekleyebilirsiniz. Aşağıdaki örnek, `myCache` adlı bir önbelleğin 2,5 GB önbellek olarak nasıl ölçeklendirilebilen gösterilmektedir. 
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
@@ -84,7 +76,7 @@ Azure CLı kullanarak Redsıs örnekleri için Azure önbelleğinizi ölçeklend
 Azure CLı ile ölçeklendirme hakkında daha fazla bilgi için bkz. [redsıs için mevcut bir Azure önbelleğinin ayarlarını değiştirme](cache-manage-cli.md#scale).
 
 ### <a name="scale-using-maml"></a>MAML kullanarak ölçeklendirme
-[Microsoft Azure Yönetim kitaplıklarını (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/)kullanarak redsıs örnekleri Için Azure önbelleğinizi ölçeklendirmek için, `IRedisOperations.CreateOrUpdate` metodunu çağırın ve `RedisProperties.SKU.Capacity` yeni boyutunu geçirin.
+[Microsoft Azure Yönetim kitaplıklarını (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/)kullanarak redsıs örnekleri Için Azure önbelleğinizi ölçeklendirmek için, `IRedisOperations.CreateOrUpdate` metodunu çağırın ve `RedisProperties.SKU.Capacity`yeni boyutunu geçirin.
 
     static void Main(string[] args)
     {
@@ -134,7 +126,7 @@ Hayır, bir ölçeklendirme işlemi sırasında önbellek adınız ve anahtarlar
 ### <a name="how-does-scaling-work"></a>Ölçeklendirme nasıl çalışır?
 * **Temel** bir önbellek farklı bir boyuta ölçeklenirse, kapanır ve yeni bir önbellek yeni boyut kullanılarak sağlanır. Bu süre boyunca önbellek kullanılamaz ve önbellekteki tüm veriler kaybolur.
 * **Temel** bir önbellek **Standart** bir önbelleğe ölçeklenirse, bir çoğaltma önbelleği sağlanır ve veriler birincil önbellekten çoğaltma önbelleğine kopyalanır. Önbellek ölçeklendirme işlemi sırasında kullanılabilir kalır.
-* **Standart** bir önbellek farklı bir boyuta veya **Premium** bir önbelleğe ölçeklendiğinde, çoğaltmalardan biri kapatılır ve yeni boyut ve üzerinden aktarılan veriler için yeniden sağlanmış olur ve daha sonra diğer çoğaltma yeniden sağlanmadan önce bir yük devretme işlemi gerçekleştirir. önbellek düğümlerinden birinin başarısızlığı sırasında oluşan işleme benzer.
+* **Standart** bir önbellek farklı bir boyuta veya **Premium** bir önbelleğe ölçeklendiğinde, çoğaltmalardan biri kapatılır ve yeni boyut ve üzerinden aktarılan veriler için yeniden sağlanmış olur ve daha sonra, başka bir çoğaltma, yeniden sağlanmadan önce bir yük devretme gerçekleştirir ve bu işlem, önbellek düğümlerinden birinin başarısızlığı sırasında oluşan işleme benzer.
 
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>Ölçeklendirme sırasında önbelleğim verileri kaybedecek mıyım?
 * **Temel** bir önbellek yeni bir boyuta ölçeklenirken, tüm veriler kaybedilir ve ölçekleme işlemi sırasında önbellek kullanılamaz.
@@ -145,7 +137,7 @@ Hayır, bir ölçeklendirme işlemi sırasında önbellek adınız ve anahtarlar
 Önbellek oluşturma sırasında `databases` ayarı için özel bir değer yapılandırdıysanız, bazı fiyatlandırma katmanlarının farklı [veritabanı sınırlarına](cache-configure.md#databases)sahip olduğunu aklınızda bulundurun. Bu senaryoda ölçeklendirilirken bazı konular aşağıda verilmiştir:
 
 * Geçerli katmandan daha düşük bir `databases` sınırı olan bir fiyatlandırma katmanına ölçeklendirirken:
-  * Tüm fiyatlandırma katmanları için 16 olan varsayılan `databases` sayısını kullanıyorsanız, hiçbir veri kaybolmaz.
+  * Tüm fiyatlandırma katmanları için 16 olan varsayılan `databases`sayısını kullanıyorsanız, hiçbir veri kaybolmaz.
   * Ölçeklendirilen katmana yönelik limitlerde yer alan özel sayıda `databases` kullanıyorsanız, bu `databases` ayarı korunur ve hiçbir veri kaybolmaz.
   * Yeni katmanın sınırlarını aşan özel sayıda `databases` kullanıyorsanız, `databases` ayarı yeni katmanın sınırlarına indirgenmiştir ve kaldırılan veritabanlarındaki tüm veriler kaybolur.
 * Geçerli katmana göre aynı veya daha yüksek `databases` bir fiyatlandırma katmanına ölçeklendirirken, `databases` ayarınız korunur ve hiçbir veri kaybolmaz.

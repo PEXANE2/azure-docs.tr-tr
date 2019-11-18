@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/12/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 881c41ea7a28e64d2840f4a92bd64fab5dbd12ba
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 267177dcdec25b8561b219ae79e40ce61af994df
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961522"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123836"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure VM olağanüstü durum kurtarma için destek matrisi
 
@@ -24,7 +24,7 @@ Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine olağanüstü du
 **Dağıtım** |  **Destek**
 --- | ---
 **Azure Portal** | Destekleniyor.
-**PowerShell** | Destekleniyor. [Daha fazla bilgi](azure-to-azure-powershell.md)
+**PowerShell** | Destekleniyor. [Daha fazla bilgi edinin](azure-to-azure-powershell.md)
 **REST API** | Destekleniyor.
 **CLI** | Şu anda desteklenmiyor
 
@@ -73,7 +73,7 @@ Bu tablo, çoğaltma sırasında Site Recovery tarafından kullanılan önbellek
 --- | --- | ---
 Genel amaçlı v2 depolama hesapları (sık erişimli ve Seyrek Erişimli Katman) | Destekleniyor | V2 için işlem maliyetleri, v1 depolama hesaplarından önemli ölçüde yüksek olduğundan, GPv2 kullanımı önerilmez.
 Premium depolama | Desteklenmiyor | Standart depolama hesapları, maliyetleri iyileştirmenize yardımcı olmak için önbellek depolaması için kullanılır.
-Sanal ağlar için Azure Storage güvenlik duvarları  | Destekleniyor | Güvenlik Duvarı etkin önbellek depolama hesabı veya hedef depolama hesabı kullanıyorsanız, [' güvenilen Microsoft hizmetlerine Izin ver ' '](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)i doğrulayın.
+Sanal ağlar için Azure Storage güvenlik duvarları  | Destekleniyor | Güvenlik Duvarı etkin önbellek depolama hesabı veya hedef depolama hesabı kullanıyorsanız, [' güvenilen Microsoft hizmetlerine Izin ver ' '](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)i doğrulayın.<br></br>Ayrıca, kaynak VNET 'in en az bir alt ağına erişime izin verdiğinizden emin olun.
 
 
 ## <a name="replicated-machine-operating-systems"></a>Çoğaltılan makine işletim sistemleri
@@ -260,10 +260,10 @@ Birden çok IP adresi | Desteklenmiyor | Birden çok IP adresli NIC 'ye sahip bi
 Traffic Manager     | Destekleniyor | Traffic Manager, trafiğin kaynak bölgedeki uç noktaya ve yük devretme durumunda hedef bölgedeki uç noktaya yönlendirilmesi için önceden yapılandırabilirsiniz.
 Azure DNS | Destekleniyor |
 Özel DNS  | Destekleniyor |
-Kimliği doğrulanmamış proxy | Destekleniyor | [Daha fazla bilgi](site-recovery-azure-to-azure-networking-guidance.md)    
+Kimliği doğrulanmamış proxy | Destekleniyor | [Daha fazla bilgi edinin](site-recovery-azure-to-azure-networking-guidance.md)    
 Kimliği doğrulanmış ara sunucu | Desteklenmiyor | VM, giden bağlantı için kimliği doğrulanmış bir proxy kullanıyorsa, Azure Site Recovery kullanılarak çoğaltılamaz.    
-Şirket içinde VPN siteden siteye bağlantısı<br/><br/>(ExpressRoute ile veya olmayan)| Destekleniyor | UDRs ve NSG 'Lerin Site Recovery trafiğinin şirket içine yönlendirilmediğinden emin olmak için yapılandırıldığından emin olun. [Daha fazla bilgi](site-recovery-azure-to-azure-networking-guidance.md)    
-VNET 'ten VNET 'e bağlantı | Destekleniyor | [Daha fazla bilgi](site-recovery-azure-to-azure-networking-guidance.md)  
+Şirket içinde VPN siteden siteye bağlantısı<br/><br/>(ExpressRoute ile veya olmayan)| Destekleniyor | UDRs ve NSG 'Lerin Site Recovery trafiğinin şirket içine yönlendirilmediğinden emin olmak için yapılandırıldığından emin olun. [Daha fazla bilgi edinin](site-recovery-azure-to-azure-networking-guidance.md)    
+VNET 'ten VNET 'e bağlantı | Destekleniyor | [Daha fazla bilgi edinin](site-recovery-azure-to-azure-networking-guidance.md)  
 Sanal Ağ Hizmet Uç Noktaları | Destekleniyor | Depolama hesaplarına sanal ağ erişimini kısıtladığınız takdirde, güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin verildiğinden emin olun.
 Hızlandırılmış ağ iletişimi | Destekleniyor | Kaynak VM 'de hızlandırılmış ağ etkin olmalıdır. [Daha fazla bilgi edinin](azure-vm-disaster-recovery-with-accelerated-networking.md).
 

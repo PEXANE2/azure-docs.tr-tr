@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: e19ba55e48c537974ad4136d40505514b92d387d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/14/2019
+ms.openlocfilehash: 5fd5295e52f0fef5e1432fdb2f81d2ba0e1717e8
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162282"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109774"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure sanal makinelerinizin sistem durumunu anlayın
 
@@ -26,11 +26,15 @@ Bu makalede, sistem durumu sorunlarını VM'ler için Azure İzleyici sistem dur
 
 VM'ler için Azure İzleyici yapılandırma hakkında daha fazla bilgi için bkz. [VM'ler için Azure izleyici etkinleştirme](vminsights-enable-overview.md).
 
+>[!NOTE]
+>Kısa süre önce, genel önizleme müşterilerimizden aldığımız geri bildirimlere göre sistem durumu özelliğine yaptığımız [değişiklikleri duyuruyoruz](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
+) . Yaptığımız değişikliklerin sayısı verildiğinde, yeni müşterilerin sistem durumu özelliğini sunmayı durduracağız. Mevcut müşteriler sistem durumu özelliğini kullanmaya devam edebilir. Daha fazla ayrıntı için lütfen [genel kullanım hakkında SSS bölümüne](vminsights-ga-release-faq.md)bakın. 
+
 ## <a name="monitoring-configuration-details"></a>İzleme yapılandırması ayrıntıları
 
 Bu bölümde, Azure Windows ve Linux VM 'lerini izlemek için varsayılan durum ölçütleri özetlenmektedir. Tüm durum ölçütleri, sağlıksız bir durum tespit edildiğinde bir uyarı gönderecek şekilde önceden yapılandırılmıştır.
 
-| İzleyici adı | Sıklık (dk) | Geriye doğru alma süresi (dk) | İşleç | Eşiği | Durum durumunda uyar | Önem Derecesi | İş yükü kategorisi | 
+| İzleyici adı | Sıklık (dk) | Geriye doğru alma süresi (dk) | İşleç | Eşik | Durum durumunda uyar | Severity | İş yükü kategorisi | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
 | Mantıksal disk çevrimiçi | 5 | 15 | <> | 1 (doğru) | Kritik | Sev1 | Linux | 
 | Mantıksal disk boş alanı | 5 | 15 | < | 200 MB (uyarı)<br> 100 MB (kritik) | Uyarı | Sev1<br> Sev2 | Linux | 
@@ -75,7 +79,7 @@ Bu bölümde, Azure Windows ve Linux VM 'lerini izlemek için varsayılan durum 
 >Geriye doğru arama süresi, en son beş dakika içinde olduğu gibi, geri arama penceresinin ölçüm değerlerini ne sıklıkta denetleyeceğini temsil eder.  
 
 >[!NOTE]
->Sıklık, koşulların karşılanıp karşılanmadığını (her dakika gibi) ölçüm uyarısının ne sıklıkta denetleyeceğini temsil eder.  Sistem durumu ölçütünün yürütüldüğü ve geri dönüş, sistem durumu ölçütünün değerlendirildiği sürenin hızıdır. Örneğin **, durum kriteri** değeri 5 dakikalık bir sıklıkta yüzde 95 ' den büyükse ve 15 dakika (3 ardışık değerlendirme döngüsü) için %95 ' den fazla kalırsa sistem durumu ölçütü değerlendiriliyor henüz yoksa önem derecesi.
+>Sıklık, koşulların karşılanıp karşılanmadığını (her dakika gibi) ölçüm uyarısının ne sıklıkta denetleyeceğini temsil eder.  Sistem durumu ölçütünün yürütüldüğü ve geri dönüş, sistem durumu ölçütünün değerlendirildiği sürenin hızıdır. Örneğin, **sistem durumu ölçütü** değerlendirme süresi 5 dakikalık bir sıklıkta yüzde 95 ' den büyükse ve 15 dakika (3 ardışık değerlendirme döngüsü) için %95 ' den fazla kalırsa durum kriteri değerlendiriliyor.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -99,7 +103,7 @@ Bileşenin yanındaki durumu seçmek, sistem durumu tanılama deneyimini seçili
 
 Bir VM için tanımlanan sistem durumu durumları aşağıdaki tabloda açıklanmıştır:
 
-|Simg |Sistem durumu |Anlamı |
+|Simge |Sistem durumu |Anlamı |
 |-----|-------------|---------------|
 | |Sorunsuz |VM, tanımlı sistem durumu koşullarıdır. Bu durum, algılanan bir sorun olmadığını ve VM 'nin normal şekilde çalıştığını gösterir. Bir üst toplama izleyicisinde, sistem durumu kaydedilir ve alt öğenin en iyi veya en kötü durumunu yansıtır.|
 | |Kritik |Durum, bir veya daha fazla kritik sorunun algılandığını belirten tanımlı sistem durumu koşulu içinde değil. Normal işlevleri geri yüklemek için bu sorunlar ele alınmalıdır. Bir üst toplama izleyicisi ile sistem durumu kaydedilir ve alt öğenin en iyi veya en kötü durumunu yansıtır.|
@@ -111,7 +115,7 @@ Bilinmeyen bir sistem durumu aşağıdaki sorunlardan kaynaklanıyor olabilir:
 - Aracı yeniden yapılandırıldı ve VM'ler için Azure İzleyici etkinleştirildiğinde artık belirtilen çalışma alanına rapor vermez. Aracıyı çalışma alanına rapor verecek şekilde yapılandırmak için bkz. [bir çalışma alanını ekleme veya kaldırma](../platform/agent-manage.md#adding-or-removing-a-workspace).
 - VM silindi.
 - VM'ler için Azure İzleyici ilişkili çalışma alanı silindi. Premier destek avantajlarınız varsa, çalışma alanını kurtarabilirsiniz. [Premier](https://premier.microsoft.com/) adresine gidin ve bir destek isteği açın.
-- Çözüm bağımlılıkları silindi. Log Analytics çalışma alanınızda ServiceMap ve InfrastructureInsights çözümlerini yeniden etkinleştirmek için, [Azure Resource Manager şablonunu](vminsights-enable-at-scale-powershell.md#install-the-servicemap-solution)kullanarak servicemap çözümünü yeniden yükleyin. Infastructureınsights çözümünü, e-posta vminsights@microsoft.com yeniden yüklemek için. 
+- Çözüm bağımlılıkları silindi. Log Analytics çalışma alanınızda ServiceMap ve InfrastructureInsights çözümlerini yeniden etkinleştirmek için, [Azure Resource Manager şablonunu](vminsights-enable-at-scale-powershell.md#install-the-servicemap-solution)kullanarak servicemap çözümünü yeniden yükleyin. Infastructureınsights çözümünü, e-posta vminsights@microsoft.comyeniden yüklemek için. 
 - VM kapatıldı.
 - Azure VM hizmeti kullanılamıyor veya bakım gerçekleştiriliyor.
 - Çalışma alanı [günlük veri veya saklama sınırı](../platform/manage-cost-storage.md) karşılandı.
@@ -302,7 +306,7 @@ Bu görünümü, sayfanın en üstündeki açılan menülerde bulunan değerler 
 |Kaynak Grubu |Tek bir kaynak grubu seçin. Yalnızca seçili kaynak grubunda hedefleri olan uyarılar görünüme dahildir. |
 |Kaynak türü |Bir veya daha fazla kaynak türü seçin. Varsayılan olarak, yalnızca hedef **sanal makinelerin** uyarıları seçilir ve bu görünüme dahildir. Bu sütun yalnızca bir kaynak grubu belirtilmişse kullanılabilir. |
 |Kaynak |Bir kaynak seçin. Yalnızca hedef olarak bu kaynağa sahip olan uyarılar görünüme dahil edilir. Bu sütun yalnızca bir kaynak türü belirtilmişse kullanılabilir. |
-|Önem Derecesi |Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
+|Severity |Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 |İzleme koşulu |Koşul artık etkin değilse, uyarıları sistem tarafından tetiklenmişse veya çözülebiliyorsa, uyarıları filtrelemek için bir izleyici koşulu seçin. Ya da tüm koşulların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 |Uyarı durumu |Tüm durumların uyarılarını dahil etmek için bir uyarı durumu, **Yeni**, **bildirim**, **kapalı**veya **Tümü** seçin. |
 |Hizmeti izle |Tüm hizmetleri dahil etmek için bir hizmet seçin veya **Tümünü** seçin. Bu özellik için yalnızca VM öngörülerinin uyarıları desteklenir.|
@@ -321,7 +325,7 @@ Uyarıları yönetme hakkında daha fazla bilgi edinmek için bkz. [Azure izleyi
 Bir veya birden çok uyarının uyarı durumunu seçip sol üst köşedeki **tüm uyarılar** sayfasında **Durumu Değiştir** ' i seçerek değiştirebilirsiniz. **Uyarı durumunu değiştir** bölmesindeki durumlardan birini seçin, **Açıklama** alanındaki değişikliğin açıklamasını ekleyin ve ardından değişikliklerinizi kaydetmek için **Tamam** ' ı seçin. Bilgiler doğrulandığında ve değişiklikler uygulandığında, menüdeki **Bildirimler** altında ilerlemeyi izleyin.
 
 ### <a name="configure-alerts"></a>Uyarı yapılandırma
-Belirli uyarı yönetimi görevlerini Azure portal yönetemezsiniz. Bu görevlerin [Azure izleyici REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)kullanılarak gerçekleştirilmesi gerekir. Bu avantajlar şunlardır:
+Belirli uyarı yönetimi görevlerini Azure portal yönetemezsiniz. Bu görevlerin [Azure izleyici REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)kullanılarak gerçekleştirilmesi gerekir. Daha ayrıntılı şekilde belirtmek gerekirse:
 
 - Durum ölçütlerine yönelik bir uyarıyı etkinleştirme veya devre dışı bırakma
 - Durum ölçütleri uyarıları için bildirimleri ayarlama

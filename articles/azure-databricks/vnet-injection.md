@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3894904575d545aed0dbfce470247afb145b7590
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605659"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129296"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Sanal ağınızda Azure Databricks'i dağıtma
 
@@ -61,7 +61,7 @@ Alt ağlar ve Azure Databricks denetim düzlemi arasındaki tüm giden ve gelen 
 
 Bu bölümde, Azure portal bir Azure Databricks çalışma alanının nasıl oluşturulduğu ve var olan sanal ağınızda nasıl dağıtılacağı açıklanmaktadır. Azure Databricks sanal ağı, sizin tarafınızdan sunulan CıDR aralıklarını kullanarak iki yeni alt ağ ve ağ güvenlik grubu ile güncelleştirir, gelen ve giden alt ağ trafiğini beyaz listeler ve çalışma alanını güncelleştirilmiş sanal ağa dağıtır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Databricks çalışma alanını dağıtacaksınız bir sanal ağınız olmalıdır. Var olan bir sanal ağı kullanabilir veya yeni bir tane oluşturabilirsiniz ancak sanal ağın, oluşturmayı planladığınız Azure Databricks çalışma alanıyla aynı bölgede olması gerekir. Sanal ağ için/16-/24 arasında bir CıDR aralığı gereklidir.
 
@@ -119,7 +119,7 @@ Bu şablonu ağ güvenlik grupları şablonunu da kullanmadan kullanırsanız, s
 
 ## <a name="whitelisting-subnet-traffic"></a>Alt ağ trafiğini beyaz listeleme
 
-Ağ güvenlik gruplarınızı oluşturmak için [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) veya [Azure Resource Manager şablonlarını](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) kullanmıyorsanız, alt ağlarınıza aşağıdaki trafiği el ile eklemeniz gerekir.
+Ağ güvenlik gruplarınızı oluşturmak için [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) veya [Azure Resource Manager şablonlarını](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-advanced) kullanmıyorsanız, alt ağlarınıza aşağıdaki trafiği el ile eklemeniz gerekir.
 
 |Yön|Protokol|Kaynak|Kaynak Bağlantı Noktası|Hedef|Hedef Bağlantı Noktası|
 |---------|--------|------|-----------|-----------|----------------|

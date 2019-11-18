@@ -1,17 +1,14 @@
 ---
-title: Visual Studio Azure Kaynak grubu projelerini oluşturma & dağıtma
+title: Visual Studio kaynak grubu projelerini oluşturma & dağıtma
 description: Azure Kaynak grubu projesi oluşturmak ve kaynakları Azure 'a dağıtmak için Visual Studio 'Yu kullanın.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.date: 10/16/2019
-ms.author: tomfitz
-ms.openlocfilehash: ae7ff9370bd289dfdec578e6daeb471bbd53a072
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 39ee16ac81ee1b163a4ed4c80152a063f7ee619c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597614"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149254"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio aracılığıyla Azure kaynak grupları oluşturma ve dağıtma
 
@@ -23,7 +20,7 @@ Bu makalede [, Visual Studio 2019 veya sonraki bir sürümünü kullanarak Azure
 
 Bu bölümde, bir **Web uygulaması** şablonuyla bir Azure Kaynak grubu projesi oluşturacaksınız.
 
-1. Visual Studio 'da **dosya** >**Yeni** >**Proje**' yi seçin.
+1. Visual Studio'da **dosya**>**yeni**>**proje**.
 1. **Azure Kaynak grubu** proje şablonunu ve Ileri ' **yi**seçin.
 
     ![Proje oluşturma](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
@@ -68,7 +65,7 @@ Dağıtım projesini, dağıtmak istediğiniz kaynakları açıklayan Kaynak Yö
 
 1. JSON Ana Hattı penceresinin üst tarafında bulunan **Kaynak Ekle** düğmesini seçerek veya **kaynaklar**’a sağ tıklayıp **Yeni Kaynak Ekle**’yi seçerek yeni kaynak ekleyebilirsiniz.
 
-   ![Kaynak Ekle](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource.png)
+   ![Kaynak ekle](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource.png)
 
 1. **Depolama hesabı** ' nı seçin ve bir ad verin. 11 karakterden uzun olmayan ve yalnızca sayı ile küçük harf içeren bir ad belirtin.
 
@@ -192,11 +189,11 @@ Bu noktada, uygulamanız için altyapı dağıttınız, ancak proje ile dağıt�
 
 1. Bundan böyle kaynak grubu projenizin yeni projeyi tanıdığından emin olmanız gerekir. Kaynak grubu projenize (ExampleAppDeploy) geri dönün. **Başvurular**’a sağ tıklayın ve **Başvuru Ekle**’yi seçin.
 
-    ![Başvuru Ekle](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-new-reference.png)
+    ![Başvuru ekleme](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-new-reference.png)
 
 1. Oluşturduğunuz web uygulaması projesini seçin.
 
-   ![Başvuru Ekle](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-reference.png)
+   ![Başvuru ekleme](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-reference.png)
 
    Bir başvuru ekleyerek, Web uygulaması projesini kaynak grubu projesine bağlarsınız ve bazı özellikleri otomatik olarak ayarlar. Bu özellikleri başvurunun **Özellikler** penceresinde görürsünüz. **Dosya Yolu Ekle** paketin oluşturulduğu yerin yolunu içerir. Klasörü (ExampleApp) ve dosyayı (package.zip) not edin. Uygulamayı dağıtırken parametre olarak ileteceğiniz için bu değerleri bilmeniz gerekir.
 
@@ -204,7 +201,7 @@ Bu noktada, uygulamanız için altyapı dağıttınız, ancak proje ile dağıt�
 
 1. Şablonunuza (WebSite. JSON) geri dönün ve şablona bir kaynak ekleyin.
 
-    ![Kaynak Ekle](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource-2.png)
+    ![Kaynak ekle](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource-2.png)
 
 1. Bu kez **Web Apps için Web Dağıtımı**’nı seçin.
 
@@ -212,7 +209,7 @@ Bu noktada, uygulamanız için altyapı dağıttınız, ancak proje ile dağıt�
 
    Şablonunuzu kaydedin.
 
-1. Şablonunuzda bazı yeni parametreler vardır. Önceki adımda eklenirler. **_Artifactslocation** veya **_Artifactslocationsastoken** değerlerini, bu değerler otomatik olarak oluşturulduğundan sağlamanız gerekmez. Ancak, klasör ve dosya adını dağıtım paketini içeren yola ayarlamanız gerekir. Bu parametrelerin adları **PackageFolder** ve **packagefilename**ile biter. Adın ilk bölümü, eklediğiniz Web Dağıtımı kaynağının adıdır. Bu makalede, bunlar **Exampleapppackagefolder** ve **Exampleapppackagefilename**olarak adlandırılmaktadır.
+1. Şablonunuzda bazı yeni parametreler vardır. Önceki adımda eklenirler. **_ArtifactsLocation** veya **_artifactsLocationSasToken** için değer sağlamanız gerekmez, çünkü bu değerler otomatik olarak oluşturulur. Ancak, klasör ve dosya adını dağıtım paketini içeren yola ayarlamanız gerekir. Bu parametrelerin adları **PackageFolder** ve **packagefilename**ile biter. Adın ilk bölümü, eklediğiniz Web Dağıtımı kaynağının adıdır. Bu makalede, bunlar **Exampleapppackagefolder** ve **Exampleapppackagefilename**olarak adlandırılmaktadır.
 
    **Web sitesi. Parameters. JSON** ' u açın ve bu parametreleri başvuru özelliklerinde gördüğünüz değerlere ayarlayın. **Exampleapppackagefolder** değerini klasörün adına ayarlayın. **Exampleapppackagefilename** değerini ZIP dosyasının adına ayarlayın.
 
@@ -248,7 +245,7 @@ Az Module betiğini kullanıyorsanız, şablonunuzda yapmanız gereken küçük 
 "packageUri": "[concat(parameters('_artifactsLocation'), parameters('ExampleAppPackageFolder'), '/', parameters('ExampleAppPackageFileName'), parameters('_artifactsLocationSasToken'))]",
 ```
 
-Yukarıdaki örnekte, **Parametreler (' _artifactsLocation ')** ve **Parametreler (' ExampleAppPackageFolder ')** arasında bir `'/',` olmadığını unutmayın.
+Yukarıdaki örnekte **Parametreler (' _artifactsLocation ')** ve **Parametreler (' ExampleAppPackageFolder ')** arasında `'/',` yok.
 
 Projeyi yeniden derleyin. Projeyi oluşturmak, dağıtmanız gereken dosyaların hazırlama klasörüne eklendiğinden emin olmanızı sağlar.
 

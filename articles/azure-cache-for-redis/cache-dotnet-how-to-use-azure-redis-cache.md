@@ -1,28 +1,21 @@
 ---
-title: .NET uygulamaları ile redin için Azure önbelleğini nasıl kullanacağınızı öğrenmek için hızlı başlangıç | Microsoft Docs
+title: .NET uygulamaları ile redin için Azure önbelleğini nasıl kullanacağınızı öğrenmek için hızlı başlangıç
 description: Bu hızlı başlangıçta, .NET uygulamalarınızdan Redsıs için Azure önbelleğine erişme hakkında bilgi edinin
-services: cache,app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: c502f74c-44de-4087-8303-1b1f43da12d5
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5930ac3834c0b697a4c03ce5b110dfeac105436a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 2738805043b701d9e116d962f88225a6c6ae3e9b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324444"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122798"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Hızlı Başlangıç: .NET Framework bir uygulamayla Redsıs için Azure önbelleğini kullanma
+# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Hızlı başlangıç: .NET Framework bir uygulamayla Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir .NET Framework uygulamasına katabilirsiniz. Özel olarak [StackExchange. Redo](https://github.com/StackExchange/StackExchange.Redis) istemcisini .NET konsol uygulamasında C# kodla birlikte kullanırsınız.
 
@@ -52,7 +45,7 @@ Bilgisayarınızda *CacheSecrets.config* adlı bir dosya oluşturun ve örnek uy
 `<access-key>` adını, önbelleğinizin birincil anahtarıyla değiştirin.
 
 
-## <a name="create-a-console-app"></a>Bir konsol uygulaması oluşturma
+## <a name="create-a-console-app"></a>Konsol uygulaması oluşturma
 
 Visual Studio’da, **Dosya** > **Yeni** > **Proje**’ye tıklayın.
 
@@ -76,7 +69,7 @@ Yükleme tamamlandıktan sonra *StackExchange.Redis* önbellek istemcisi, projen
 
 ## <a name="connect-to-the-cache"></a>Önbelleğe bağlanma
 
-Visual Studio’da, *App.config* dosyanızı açın ve *CacheSecrets.config* dosyasına başvuran bir `appSettings` `file` özniteliği içerecek şekilde güncelleştirin.
+Visual Studio’da, *App.config* dosyanızı açın ve `appSettings`CacheSecrets.config`file` dosyasına başvuran bir özniteliği içerecek şekilde güncelleştirin.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -122,13 +115,13 @@ Kimlik bilgilerini asla kaynak kodunda depolamayın. Bu örneği basit tutmak i�
 ```
 
 
-Uygulamanızda bir `ConnectionMultiplexer` örneğini paylaşmaya ilişkin bu yaklaşım, bağlı bir örnek döndüren bir statik özelliği kullanır. Kod yalnızca tek bir bağlı `ConnectionMultiplexer` örneği başlatmak için iş parçacığı güvenli bir yol sağlar. `abortConnect`, false olarak ayarlanır, bu da çağrının başarılı olduğu anlamına gelen redin için Azure önbelleğine bir bağlantı kurulamazsa. `ConnectionMultiplexer` temel özelliklerinden biri ağ sorunu ya da diğer nedenler çözümlendiğinde önbellek bağlantısını otomatik olarak geri yüklemesidir.
+Uygulamanızda bir `ConnectionMultiplexer` örneğini paylaşmaya ilişkin bu yaklaşım, bağlı bir örnek döndüren bir statik özelliği kullanır. Kod yalnızca tek bir bağlı `ConnectionMultiplexer` örneği başlatmak için iş parçacığı güvenli bir yol sağlar. `abortConnect` false olarak ayarlanır; Bu, redin için Azure önbelleğine bir bağlantı kurulamazsa bile çağrının başarılı olması anlamına gelir. `ConnectionMultiplexer` temel özelliklerinden biri ağ sorunu ya da diğer nedenler çözümlendiğinde önbellek bağlantısını otomatik olarak geri yüklemesidir.
 
 *CacheConnection* appSetting değeri parola parametresi olarak Azure portalından önbellek bağlantısı dizesine başvurmak için kullanılır.
 
 ## <a name="executing-cache-commands"></a>Önbellek komutlarını yürütme
 
-Konsol uygulamanıza yönelik `Program` sınıfının `Main` yordamı için aşağıdaki kodu ekleyin:
+Konsol uygulamanıza yönelik `Main` sınıfının `Program` yordamı için aşağıdaki kodu ekleyin:
 
 ```csharp
         static void Main(string[] args)
@@ -184,7 +177,7 @@ Aşağıdaki örnekte, `Message` anahtarının Azure portaldaki Redis Konsolu ku
 
 Redsıs için Azure Cache hem .NET nesnelerini hem de ilkel veri türlerini önbelleğe alabilir, ancak bir .NET nesnesi önbelleğe alınmadan önce serileştirilmelidir. Bu .NET nesne serileştirmesi uygulama geliştiricisinin sorumluluğundadır ve geliştiriciye seri hale getirici tercihinde esneklik sağlar.
 
-Nesneleri seri hale getirmenin basit bir yolu, [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)’da `JsonConvert` seri hale getirme yöntemlerini kullanmak ve JSON’a ve JSON’dan seri hale getirmektir. Bu bölümde, önbelleğe bir .NET nesnesi ekleyeceksiniz.
+Nesneleri seri hale getirmenin basit bir yolu, `JsonConvert`Newtonsoft.Json[’da ](https://www.nuget.org/packages/Newtonsoft.Json/) seri hale getirme yöntemlerini kullanmak ve JSON’a ve JSON’dan seri hale getirmektir. Bu bölümde, önbelleğe bir .NET nesnesi ekleyeceksiniz.
 
 Visual Studio’da, **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi Konsolu**’na tıklayın ve Paket Yöneticisi Konsolu penceresinden aşağıdaki komutu çalıştırın.
 
@@ -216,7 +209,7 @@ Aşağıdaki `Employee` sınıf tanımını *Program.cs* dosyasına ekleyin:
         }
 ```
 
-*Program.cs* dosyasındaki `Main()` yordamının alt kısmına ve `Dispose()` için çağrı yapılmadan önce aşağıdaki kod satırlarını önbelleğe ekleyin ve seri hale getirilmiş bir .NET nesnesi alın:
+`Main()`Program.cs*dosyasındaki* yordamının alt kısmına ve `Dispose()` için çağrı yapılmadan önce aşağıdaki kod satırlarını önbelleğe ekleyin ve seri hale getirilmiş bir .NET nesnesi alın:
 
 ```csharp
             // Store .NET object to cache

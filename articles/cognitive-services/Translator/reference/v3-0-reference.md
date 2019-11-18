@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 11/14/2019
 ms.author: swmachan
-ms.openlocfilehash: c07673e7b170170de4723a1232d2e7281feaaf99
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888089"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123046"
 ---
 # <a name="translator-text-api-v30"></a>Translator Metin Çevirisi API'si v 3.0
 
@@ -56,7 +56,7 @@ Aboneliğinizin kimliğini doğrulamak için kullanabileceğiniz üç üst bilgi
 
 |Üst bilgiler|Açıklama|
 |:----|:----|
-|OCP-apim-Subscription-Key|*Gizli anahtarınızı geçirmektir bilişsel hizmetler aboneliğiyle kullanın*.<br/>Değer, aboneliğinizin Translator Metin Çevirisi API'si Azure gizli anahtarıdır.|
+|Ocp-Apim-Subscription-Key|*Gizli anahtarınızı geçirmektir bilişsel hizmetler aboneliğiyle kullanın*.<br/>Değer, aboneliğinizin Translator Metin Çevirisi API'si Azure gizli anahtarıdır.|
 |Yetkilendirme|*Kimlik doğrulama belirteci geçirçalışıyorsanız bilişsel hizmetler aboneliğiyle kullanın.*<br/>Değer, taşıyıcı belirtecidir: `Bearer <token>`.|
 |OCP-apim-Subscription-Region|*Çok sunuculu bir gizli anahtar geçirçalışıyorsanız bilişsel hizmetler çoklu hizmet aboneliği ile birlikte kullanın.*<br/>Değer, çoklu hizmet aboneliğinin bölgesidir. Bu değer, çok hizmet temelli bir abonelik kullanmadığınız zaman isteğe bağlıdır.|
 
@@ -165,3 +165,21 @@ Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır
 | 500000| Beklenmeyen bir hata oluştu. Hata devam ederse, hatayı tarih/saat ile, X-RequestId yanıt başlığından istek tanımlayıcısını ve X-Clienttraceıd istek başlığından istemci tanımlayıcısını bildirin.|
 | 503000| Hizmet geçici olarak kullanılamıyor. Lütfen yeniden deneyin. Hata devam ederse, hatayı tarih/saat ile, X-RequestId yanıt başlığından istek tanımlayıcısını ve X-Clienttraceıd istek başlığından istemci tanımlayıcısını bildirin.|
 
+## <a name="metrics"></a>Ölçümler 
+Ölçümler, aşağıdaki ekran görüntüsünde gösterildiği gibi ölçümler bölümünde Azure portal, çevirmen kullanım ve kullanılabilirlik bilgilerini görüntülemenize olanak sağlar. Daha fazla bilgi için bkz. [veri ve platform ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+
+![Çevirmen ölçümleri](../media/translatormetrics.png)
+
+Bu tablo, kullanılabilir ölçümleri, çeviri API çağrılarını izlemek için nasıl kullanıldıklarından ilgili açıklama ile listeler.
+
+| Ölçümler | Açıklama |
+|:----|:-----|
+| Toplam çağrılar| Toplam API çağrısı sayısı.|
+| TotalTokenCalls| Kimlik doğrulama belirteci kullanılarak belirteç hizmeti aracılığıyla yapılan toplam API çağrısı sayısı.|
+| Başarılı çağrılar| Başarılı çağrı sayısı.|
+| Toplam hata sayısı| Hata yanıtı olan çağrı sayısı.|
+| Blockedçağrılarında| Oran veya kota sınırını aşan çağrı sayısı.|
+| ServerErrors| Sunucu iç hatası olan çağrı sayısı (5XX).|
+| ClientErrors| İstemci tarafı hatası olan çağrı sayısı (4XX).|
+| Gecikme süresi| İsteğin tamamlanma süresi (milisaniye).|
+| Karakter Yabanslamuş| Gelen metin isteğindeki toplam karakter sayısı.|

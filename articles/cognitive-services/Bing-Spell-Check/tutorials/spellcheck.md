@@ -1,7 +1,7 @@
 ---
-title: "Öğretici: Bing Yazım Denetimi API'si kullanarak Yazım Denetimi sonuçları alma"
+title: "Öğretici: Bing Yazım Denetimi API'si ile Yazım Denetimi Sonuçlarını Alma"
 titleSuffix: Azure Cognitive Services
-description: Bing Yazım Denetimi özelliğini kullanma adımlarını gösterir.
+description: Bu öğreticide, kullanıcıların Bing Yazım Denetimi API'si sorgulamasını ve sonuçları görüntülemesini sağlayan bir Web sayfası oluşturacağız.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 73466b80915d5eb7228eef397d5aad68d27faa15
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 4ef45d0d67d44ee1bcf0f06f41425ca5366ce46d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996843"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111460"
 ---
-# <a name="tutorial-build-a-web-page-spell-check-client"></a>Öğretici: İstemci Yazım Denetimi Web sayfası oluşturma
+# <a name="tutorial-build-a-web-page-spell-check-client"></a>Öğretici: Web sayfası şeklinde bir Yazım Denetimi istemcisi oluşturma
 
 Bu öğreticide kullanıcıların Bing Yazım Denetimi API'sini sorgulamasını sağlayan bir Web sayfası oluşturacağız. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html)' da kullanılabilir.
 

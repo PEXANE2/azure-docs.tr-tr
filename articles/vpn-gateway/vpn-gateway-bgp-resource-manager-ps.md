@@ -1,5 +1,5 @@
 ---
-title: "Azure VPN ağ geçitleri üzerinde BGP 'yi yapılandırma: Kaynak Yöneticisi: PowerShell | Microsoft Docs"
+title: "Azure VPN Gateway: BGP 'yi yapılandırma: PowerShell"
 description: Bu makalede, Azure Resource Manager ve PowerShell kullanarak Azure VPN ağ geçitleri ile BGP 'yi yapılandırma işlemi adım adım açıklanmaktadır.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 195a6887696bbb8681cdd187a4c03df2ade7e2c0
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f4c5e3ddb5a7f5c9a21d29aa24fe28e095123836
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091924"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151383"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>PowerShell kullanarak Azure VPN ağ geçitlerinde BGP yapılandırma
 Bu makalede, Kaynak Yöneticisi dağıtım modelini ve PowerShell 'i kullanarak şirket içi siteden siteye (S2S) VPN bağlantısı ve VNet-VNet bağlantısı üzerinde BGP 'yi etkinleştirme adımları anlatılmaktadır.

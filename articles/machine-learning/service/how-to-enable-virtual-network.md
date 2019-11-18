@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 10/25/2019
-ms.openlocfilehash: 5ac741579562b41678c4aeb59bb5ebb425d8405c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.date: 11/13/2019
+ms.openlocfilehash: c5d0c517e7a3d4c011d66925b8db0c4d09dd34ca
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932098"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123580"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -79,7 +79,7 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak �
 >
 > Varsayılan depolama hesabı, bir çalışma alanı oluşturduğunuzda otomatik olarak sağlanır.
 >
-> Varsayılan olmayan depolama hesapları için, [`Workspace.create()` işlevindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) `storage_account` parametresi Azure kaynak kimliği 'ne göre özel bir depolama hesabı belirtmenizi sağlar.
+> Varsayılan olmayan depolama hesapları için, [`Workspace.create()` işlevindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) `storage_account` parametresi Azure kaynak kimliği 'ne göre özel bir depolama hesabı belirtmenizi sağlar.
 
 ## <a name="use-a-key-vault-instance-with-your-workspace"></a>Çalışma alanınız ile bir Anahtar Kasası örneği kullanın
 
@@ -244,8 +244,18 @@ except ComputeTargetException:
 
 Oluşturma işlemi tamamlandığında, bir deneyde kümeyi kullanarak modelinizi eğitebilirsiniz. Daha fazla bilgi için bkz. [eğitim için bir işlem hedefi seçme ve kullanma](how-to-set-up-training-targets.md).
 
-<a id="vmorhdi"></a>
+## <a name="use-azure-databricks"></a>Azure Databricks kullan
 
+Azure Azure Databricks çalışma alanınıza sahip bir sanal ağda kullanmak için aşağıdaki gereksinimlerin karşılanması gerekir:
+
+> [!div class="checklist"]
+> * Sanal ağın, Azure Machine Learning çalışma alanıyla aynı abonelikte ve bölgede olması gerekir.
+> * Çalışma alanı için Azure depolama hesabı bir sanal ağda da güvenlik altına alınırsa, Azure Databricks kümesiyle aynı sanal ağda olmaları gerekir.
+> * Azure Databricks tarafından kullanılan __databricks-Private__ ve __databricks-genel__ alt ağlarına ek olarak, sanal ağ için oluşturulan __varsayılan__ alt ağ de gereklidir.
+
+Bir sanal ağla Azure Databricks kullanma hakkında ayrıntılı bilgi için bkz. [Azure sanal ağınızda Azure Databricks dağıtma](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html).
+
+<a id="vmorhdi"></a>
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Bir sanal makine veya HDInsight kümesi kullanma
 
@@ -367,6 +377,6 @@ Ağ kuralını yapılandırma hakkında daha fazla bilgi için bkz. [Azure Güve
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Eğitim ortamlarını ayarlama](how-to-set-up-training-targets.md)
-* [Modellerin dağıtılacağı konum](how-to-deploy-and-where.md)
+* [Modelleri dağıtılacağı yeri](how-to-deploy-and-where.md)
 * [SSL ile güvenli bir şekilde model dağıtma](how-to-secure-web-service.md)
 

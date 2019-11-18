@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 82360dacd68de512bc12ff5d39ddbd3a21578aa7
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "70812675"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120123"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Kapsam filtreleri ile öznitelik tabanlı uygulama sağlama
 Bu makalenin amacı, bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik tabanlı kurallar tanımlamak için kapsam filtrelerinin nasıl kullanılacağını açıklamaktır.
@@ -65,7 +65,7 @@ Bu kapsam filtresine göre, kullanıcıların sağlanması için aşağıdaki ö
 Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öznitelik eşlemelerinin bir parçası olarak yapılandırılır. Aşağıdaki yordamda, [desteklenen uygulamalardan biri](../saas-apps/tutorial-list.md) için otomatik sağlamayı ayarlamış olduğunuz ve buna kapsam filtresi eklemekte olduğunuz varsayılmaktadır.
 
 ### <a name="create-a-scoping-filter"></a>Kapsam filtresi oluşturma
-1. [Azure Portal](https://portal.azure.com), **Azure Active Directory** > **Enterprise Applications** > **tüm uygulamalar** bölümüne gidin.
+1. [Azure portal](https://portal.azure.com) **Azure Active Directory** > **Kurumsal uygulamalar** > **tüm uygulamalar** bölümüne gidin.
 
 2. Otomatik sağlamayı yapılandırdığınız uygulamayı seçin: Örneğin, "ServiceNow".
 
@@ -110,6 +110,14 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
 >[!IMPORTANT] 
 > Yeni bir kapsam filtresi kaydetmek, uygulama için, kaynak sistemdeki tüm kullanıcıların yeni kapsam filtresine göre yeniden değerlendirildiği yeni bir tam eşitleme tetiklemesini tetikler. Uygulamadaki bir Kullanıcı daha önce sağlama için kapsamdadır, ancak kapsam dışında kalırsa, bu durumda hesabı devre dışı bırakılır veya uygulama tarafından devre dışı bırakılır. Bu varsayılan davranışı geçersiz kılmak için [kapsamdaki Kullanıcı hesapları için silme Işlemini atlama](skip-out-of-scope-deletions.md)bölümüne bakın.
 
+
+## <a name="common-scoping-filters"></a>Ortak kapsam filtreleri
+| Target özniteliği| İşleç | Değer | Açıklama|
+|----|----|----|----|
+|userPrincipalName|REGEX EŞLEŞMESI|.\*@domain.com |Etki alanı @domain.com olan Kullanıcısorumlusu olan tüm kullanıcılar sağlama kapsamında yer alacak|
+|userPrincipalName|REGEX EŞLEŞMIYOR|.\*@domain.com|Etki alanı @domain.com olan Kullanıcısorumlusu olan tüm kullanıcılar, sağlama için kapsam dışı olacaktır|
+|Bölüm|EŞITTIR|Sales|Satış departmanından tüm kullanıcılar sağlama kapsamındadır|
+|Workerıd|REGEX EŞLEŞMESI|(1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])| 1000000 ve 2000000 arasında Workerıd 'Leri olan tüm çalışanlar sağlama kapsamındadır.|
 
 ## <a name="related-articles"></a>İlgili makaleler
 * [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme](user-provisioning.md)

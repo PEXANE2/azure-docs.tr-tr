@@ -1,5 +1,5 @@
 ---
-title: AI zenginleştirme için sorun giderme ipuçları
+title: AI zenginleştirme tasarımı ipuçları
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'de AI zenginleştirme işlem hatlarını ayarlamaya yönelik ipuçları ve sorun giderme.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 485dd47e035f03a8e20ded4c8a424f1658f5246a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787714"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113837"
 ---
-# <a name="troubleshooting-tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de AI zenginleştirme için sorun giderme ipuçları
+# <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme ipuçları
 
 Bu makale, Azure Bilişsel Arama 'deki AI zenginleştirme yeteneklerini kullanmaya başlarken hareket ettirmeden elde edilecek ipuçları ve püf noktaları listesini içerir. 
 

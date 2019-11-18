@@ -1,7 +1,7 @@
 ---
 title: OData koleksiyon filtreleri sorunlarını giderme
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama sorgularında OData toplama filtresi hatalarında sorun giderme.
+description: Azure Bilişsel Arama sorgularında OData koleksiyon filtresi hatalarını çözümlemek için yaklaşımlar öğrenin.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0af2525a15618c6bfd9022b4388c547209ee957b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793181"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113086"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama OData koleksiyon filtreleri sorunlarını giderme
 
@@ -64,7 +64,7 @@ Geçerli koleksiyon filtreleri yazma kuralları her veri türü için farklıdı
 Dize koleksiyonları için Lambda ifadelerinde, kullanılabilecek tek karşılaştırma işleçleri `eq` ve `ne`.
 
 > [!NOTE]
-> Azure Bilişsel Arama, bir lambda ifadesinin içinde veya dışında dizeler için `lt`/`le`/`gt`/işleçlerini desteklemez.
+> Azure Bilişsel Arama, bir lambda ifadesinin içinde veya dışında dizeler için `lt`/`le`/`gt`/işleçlerini desteklemez.`ge`
 
 `any` gövdesi yalnızca eşitlik için test edebilir, ancak bir `all` gövdesi yalnızca eşitsizlik için test edebilir.
 
@@ -171,10 +171,10 @@ Ancak, bu tür karşılaştırma ifadelerinin lambda ifadesinin içinde daha kar
 
     Bu ifadeye izin verildiğinde, koşullar örtüştiğinden yararlı değildir:
     - `ratings/any(r: r ne 5 or r gt 7)`
-  - `eq`, `lt`, `le`, `gt`veya `ge` içeren basit karşılaştırma ifadeleri `and`/`or`ile birleştirilebilir. Örnek:
+  - `eq`, `lt`, `le`, `gt`veya `ge` içeren basit karşılaştırma ifadeleri `and`/`or`ile birleştirilebilir. Örneğin:
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - `and` (yarışma) ile birleştirilmiş karşılaştırma ifadeleri `or`kullanılarak daha da birleştirilebilir. Bu form, "ayırt edici[normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF) olarak Boole mantığındaki bilinmektedir. Örnek:
+  - `and` (yarışma) ile birleştirilmiş karşılaştırma ifadeleri `or`kullanılarak daha da birleştirilebilir. Bu form, "ayırt edici[normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF) olarak Boole mantığındaki bilinmektedir. Örneğin:
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
 - `all`kuralları:
   - Basit eşitlik ifadeleri diğer ifadelerle tamamen birleştirilemez. Örneğin, bu ifadeye izin verilir:
@@ -185,10 +185,10 @@ Ancak, bu tür karşılaştırma ifadelerinin lambda ifadesinin içinde daha kar
 
     Bu ifadeye izin verildiğinde, koşullar örtüştiğinden yararlı değildir:
     - `ratings/all(r: r eq 5 and r le 7)`
-  - `ne`, `lt`, `le`, `gt`veya `ge` içeren basit karşılaştırma ifadeleri `and`/`or`ile birleştirilebilir. Örnek:
+  - `ne`, `lt`, `le`, `gt`veya `ge` içeren basit karşılaştırma ifadeleri `and`/`or`ile birleştirilebilir. Örneğin:
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - `or` (ayırt edici) ile birleştirilmiş karşılaştırma ifadeleri `and`kullanılarak daha da birleştirilebilir. Bu form, Boole mantığındaki "[Conjunnormal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF) olarak bilinir. Örnek:
+  - `or` (ayırt edici) ile birleştirilmiş karşılaştırma ifadeleri `and`kullanılarak daha da birleştirilebilir. Bu form, Boole mantığındaki "[Conjunnormal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF) olarak bilinir. Örneğin:
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>

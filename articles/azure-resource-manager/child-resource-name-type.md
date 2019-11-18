@@ -1,17 +1,14 @@
 ---
-title: Alt kaynaklar-Azure Resource Manager Şablonlar
+title: Şablonlarda alt kaynaklar
 description: Bir Azure Resource Manager şablonunda alt kaynaklar için ad ve tür ayarlamayı açıklar.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.author: tomfitz
-ms.openlocfilehash: 3a90b2155b11d4c12bc1f571af3f15fdbceb12b9
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 2ef20e7c046170a3f73821b878680b46e5a8afea
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532293"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147401"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Alt kaynaklar için ad ve tür ayarla
 

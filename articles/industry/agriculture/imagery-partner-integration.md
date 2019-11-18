@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 232ade55350ad1ac85612cf8c69117c19cb20d0c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 788ffd9e7036996f6ac1bc7fcbc33137aca40ee2
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927789"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132028"
 ---
 # <a name="imagery-partner-integration"></a>Görüntüleme iş ortağı tümleştirmesi
 
@@ -34,7 +34,7 @@ Farmtts 'leri bağlamak için drone iş ortağı yazılımında aşağıdaki kim
 - API Uç Noktası
 - Kiracı Kimliği
 - İstemci Kimliği
-- İstemci parolası
+- İstemci Gizli Anahtarı
 
 ## <a name="api-development"></a>API Geliştirme
 
@@ -42,14 +42,14 @@ API 'Ler Swagger teknik belgelerini içerir. API 'Ler ve karşılık gelen istek
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Farmtler Microsoft Azure [Active Directory]((https://docs.microsoft.com/azure/app-service/overview-authentication-authorization))yararlanır. Kimlik doğrulama Azure App Service yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar. 
+Farmtler Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)yararlanır. Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar. 
 
 Hakkında daha fazla bilgi için bkz. [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
 
 Farmtts veri hub 'ı, aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulaması kullanır:
 
 - İstemci Kimliği
-- İstemci parolası
+- İstemci Gizli Anahtarı
 - Kiracı Kimliği
 
 Yukarıdaki kimlik bilgilerini kullanarak, çağıran, üst bilgi bölümünde aşağıdaki gibi, sonraki API isteklerinde gönderilmesi gereken bir erişim belirteci isteyebilir:
@@ -84,9 +84,9 @@ Aşağıda, Farmtts veri merkezine bir API çağrısı yapılırken belirtilmesi
 
 **Üst Bilgi** | **Açıklama ve örnek**
 --- | ---
-İçerik türü  | Farmtts veri merkezi API 'sinin biçimi Için istek biçimi (Content-Type: Application/<format>) JSON. Content-Type: Application/JSON
+Content-Type  | Farmtts veri merkezi API 'sinin biçimi Için istek biçimi (Content-Type: Application/<format>) JSON. Content-Type: Application/JSON
 Yetkilendirme | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı < erişim-belirteç >
-ettiğinizde  | Yanıt biçimi. Farmtts veri merkezi API 'Leri için biçim JSON kabul etme: Application/JSON
+Ettiğinizde  | Yanıt biçimi. Farmtts veri merkezi API 'Leri için biçim JSON kabul etme: Application/JSON
 
 
 ## <a name="api-requests"></a>API istekleri

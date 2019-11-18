@@ -1,5 +1,5 @@
 ---
-title: "Örnek: Bing Varlık Arama API'si özel bilişsel bir yetenek oluşturma"
+title: Bing Varlık Arama API'si kullanarak özel beceri örneği
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'de AI zenginlikli bir dizin oluşturma işlem hattına eşlenmiş özel bir beceriyle Bing Varlık Arama hizmetini kullanmayı gösterir.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1f134ac360b6c5bd04c0e141da52b6dad950e208
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466823"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113809"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Örnek: Bing Varlık Arama API'si kullanarak özel bir yetenek oluşturma
 

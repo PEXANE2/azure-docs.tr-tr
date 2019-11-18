@@ -1,19 +1,16 @@
 ---
-title: Öğretici-Azure Resource Manager şablonundaki kaynaklara etiketler ekleme
+title: Öğretici-şablondaki kaynaklara etiketler ekleme
 description: Azure Resource Manager şablonunuzda dağıttığınız kaynaklara Etiketler ekleyin. Etiketler, kaynakları mantıksal olarak düzenlemenizi sağlar.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8b6ff50f7254a51bcdf37ecb0afd8f0041a2c5da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 663de1e341815eac039c49cee63f8a492b0cb7a9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177559"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150179"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuzda etiketler ekleme
 
@@ -33,7 +30,7 @@ Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı il
 
 Bu kaynakları dağıttıktan sonra, maliyetleri izlemeniz ve bir kategoriye ait kaynakları bulmanız gerekebilir. Bu sorunları çözmeye yardımcı olmak için Etiketler ekleyebilirsiniz.
 
-## <a name="add-tags"></a>Etiket ekle
+## <a name="add-tags"></a>Etiket ekleme
 
 Kullanımları tanımlamanızı sağlayacak değerler eklemek için kaynakları etiketlerseniz. Örneğin, ortamı ve projeyi listelemek için Etiketler ekleyebilirsiniz. Bir maliyet merkezini veya kaynağa sahip olan takımı tanımlayan etiketler ekleyebilirsiniz. Kuruluşunuz için anlamlı olan tüm değerleri ekleyin.
 
@@ -59,7 +56,7 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -75,7 +72,7 @@ az group deployment create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure portalı](https://portal.azure.com)’nda oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Depolama hesabı kaynağı gibi kaynaklardan birini seçin. Artık etiketlere sahip olduğunu görürsünüz.
@@ -88,10 +85,10 @@ Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekme
 
 Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
-1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
+1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
+4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,25 +1,22 @@
 ---
-title: Öğretici-Azure Resource Manager şablona şablon işlevleri ekleme
+title: Öğretici-şablon işlevleri ekleme
 description: Değerler oluşturmak için Azure Resource Manager şablonunuza şablon işlevleri ekleyin.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ca6e7f326ba67eac33e4dee5fa844d7676ab864b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: fe571c2a0088375feff8351f49a476669461b6aa
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963964"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150258"
 ---
 # <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza şablon işlevleri ekleme
 
 Bu öğreticide, şablonunuza [Şablon işlevleri](resource-group-template-functions.md) eklemeyi öğreneceksiniz. Değerleri dinamik olarak oluşturmak için işlevlerini kullanırsınız. Sistem tarafından sağlanmış bu şablon işlevlerine ek olarak, [Kullanıcı tanımlı işlevler](./template-user-defined-functions.md)de oluşturabilirsiniz. Bu öğreticinin tamamlana **7 dakika** sürer.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [Parametreler hakkında öğreticiyi](template-tutorial-add-parameters.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -45,7 +42,7 @@ Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json?range=1-44&highlight=24-27,34)]
 
-## <a name="deploy-template"></a>Şablonu dağıt
+## <a name="deploy-template"></a>Şablon dağıtma
 
 Önceki öğreticilerde, Doğu ABD bir depolama hesabı oluşturdunuz, ancak kaynak grubunuz Orta ABD oluşturulmuş. Bu öğreticide, depolama hesabınız kaynak grubuyla aynı bölgede oluşturulur. Konum için varsayılan değeri kullanın, bu nedenle bu parametre değerini belirtmeniz gerekmez. Farklı bir konumda depolama hesabı oluşturmakta olduğunuz için depolama hesabı için yeni bir ad sağlamalısınız. Örneğin, **store1**yerine ön ek olarak **store2** kullanın.
 
@@ -61,7 +58,7 @@ New-AzResourceGroupDeployment `
   -storageName "{new-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -77,21 +74,21 @@ az group deployment create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Bir depolama hesabı kaynağının dağıtıldığını ve kaynak grubuyla aynı konuma sahip olduğunu görürsünüz.
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
 Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
-1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
+1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
+4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

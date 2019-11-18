@@ -1,25 +1,17 @@
 ---
-title: Kaynak Yöneticisi şablonda Azure Key Vault kullanma
+title: Şablonlarda Azure Key Vault kullanma
 description: Resource Manager şablonu dağıtımı sırasında parametre değerlerini güvenli bir şekilde geçirme amacıyla Azure Key Vault'u kullanmayı öğrenin
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 5dfc186e5d047de76e16ec145f5f0afe94b8d2f4
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 86625132e4ac4aa3ed2c42f1e94babcfbbf63a51
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533605"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149288"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Öğretici: Kaynak Yöneticisi şablonu dağıtımınızdaki Azure Key Vault tümleştirin
 
@@ -39,7 +31,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Dağıtımı doğrulama
 > * Kaynakları temizleme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -59,7 +51,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 Bu bölümde, bir Anahtar Kasası oluşturup buna bir gizli dizi ekleyerek, şablonunuzu dağıtırken gizli dizi elde edebilirsiniz. Anahtar Kasası oluşturmanın birçok yolu vardır. Bu öğreticide, bir [Kaynak Yöneticisi şablonu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)dağıtmak için Azure PowerShell kullanırsınız. Bu şablon şunları yapar:
 
-* @No__t_0 özelliği etkinken bir Anahtar Kasası oluşturur. Şablon dağıtım işleminin anahtar kasasında tanımlanan gizli anahtarlara erişebilmesi için bu özelliğin *true* olması gerekir.
+* `enabledForTemplateDeployment` özelliği etkinken bir Anahtar Kasası oluşturur. Şablon dağıtım işleminin anahtar kasasında tanımlanan gizli anahtarlara erişebilmesi için bu özelliğin *true* olması gerekir.
 * Anahtar kasasına gizli dizi ekler. Gizli dizi VM yönetici parolasını depolar.
 
 > [!NOTE]
@@ -107,7 +99,7 @@ Artık bir anahtar kasası ve gizli anahtarı hazırladınız. Aşağıdaki böl
 
 Azure hızlı başlangıç şablonları Kaynak Yöneticisi şablonlar için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablona [basit bir WINDOWS VM dağıtımı](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)denir.
 
-1. Visual Studio Code, **dosya** >  dosya**Aç**' ı seçin.
+1. Visual Studio Code **dosya** > **Dosya Aç**' ı seçin.
 
 1. **Dosya adı** kutusuna aşağıdaki URL 'yi yapıştırın:
 
@@ -126,7 +118,7 @@ Azure hızlı başlangıç şablonları Kaynak Yöneticisi şablonlar için bir 
 
    Özelleştirebilmeniz için önce şablon hakkında bazı temel bilgileri bilmeniz yararlı olur.
 
-1. **Dosyayı** **farklı kaydet** >  seçin ve sonra dosyanın bir kopyasını yerel bilgisayarınıza *azuredeploy. JSON*adıyla kaydedin.
+1. **Dosyayı** **farklı kaydet** > seçin ve sonra dosyanın bir kopyasını yerel bilgisayarınıza *azuredeploy. JSON*adıyla kaydedin.
 
 1. Aşağıdaki URL 'yi açmak için 1-3 adımlarını yineleyin ve sonra dosyayı *azuredeploy. Parameters. JSON*olarak kaydedin.
 
@@ -139,7 +131,7 @@ Azure hızlı başlangıç şablonları Kaynak Yöneticisi şablonlar için bir 
 Şablon dosyasında değişiklik yapmanıza gerek yoktur.
 
 1. Visual Studio Code, zaten açık değilse *azuredeploy. Parameters. JSON* öğesini açın.
-1. @No__t_0 parametresini şu şekilde güncelleştirin:
+1. `adminPassword` parametresini şu şekilde güncelleştirin:
 
     ```json
     "adminPassword": {
@@ -189,7 +181,7 @@ Sanal makineyi başarıyla dağıttıktan sonra, anahtar kasasında depolanan pa
 
 1. [Azure portalı](https://portal.azure.com) açın.
 
-1. @No__t_1 **\<*Yourresourcegroupname* >**  > **Simplewinvm**' de **kaynak grupları** ' nı seçin.
+1.  >  **\<*Yourresourcegroupname*>**  > **Simplewinvm**' de **kaynak grupları** ' nı seçin.
 1. Üst kısımdaki **Bağlan** ' ı seçin.
 1. **RDP dosyasını indir**' i seçin ve ardından anahtar kasasında depolanan parolayı kullanarak sanal makinede oturum açmak için yönergeleri izleyin.
 

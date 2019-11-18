@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b0649f23403363ca4ab4101a2d5cf7a42d505b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: afa757020ff6de3be23403b78fd9a12c2de97016
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473690"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106599"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Hızlı başlangıç: Web API 'Lerine erişmek için bir istemci uygulaması yapılandırma
 
@@ -55,7 +55,7 @@ Başlamak için aşağıdaki önkoşulları tamamladığınızdan emin olun:
 
 Uygulamayı yapılandırmadan önce, aşağıdaki adımları izleyin:
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşede hesabınızı seçin ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
 1. Arama yapın ve **Azure Active Directory**seçin. 
 1. Sol bölmeden **uygulama kayıtları**' yi seçin.
@@ -171,7 +171,7 @@ Web uygulamanıza kimlik bilgileri eklemek için:
 İstemcinizden kaynak API'lerine erişim izni eklemek için:
 
 1. Uygulamanın **Genel Bakış** sayfasında, **API izinleri** bölümünü seçin.
-1. **İzin ekleyin** düğmesini seçin.
+1. **Yapılandırılan izinler** bölümünde, **izin Ekle** düğmesini seçin.
 1. Varsayılan olarak, görünüm **Microsoft API’leri** arasından seçim yapmanızı sağlar. İlgilendiğiniz API’leri seçin:
     * **Microsoft API’leri** - Microsoft Graph gibi Microsoft API’leri için izinleri seçmenize olanak sağlar.
     * **Kuruluşumun kullandığı API’ler** - Kuruluşunuz tarafından kullanıma sunulan API’ler veya kuruluşunuzun tümleştirdiği API’ler için izinleri seçmenize olanak sağlar.
@@ -179,11 +179,38 @@ Web uygulamanıza kimlik bilgileri eklemek için:
 1. API’leri seçtikten sonra, **API İzinleri İsteme** sayfasını görürsünüz. API hem temsilci hem de uygulama izinlerini kullanıma sunuyorsa, uygulamanız için gereken izin türünü seçin.
 1. İşiniz bittiğinde, **İzinleri ekle** seçeneğini belirleyin. İzinlerin kaydedilip tabloya eklendiği **API izinleri** sayfasına dönersiniz.
 
+## <a name="understanding-api-permissions-and-admin-consent-ui"></a>API izinlerini ve yönetici onayı Kullanıcı arabirimini anlama
+
+### <a name="configured-permissions"></a>Yapılandırılan izinler
+
+Bu bölümde, uygulama nesnesinde (\uygulamanın gerekli kaynak erişim listesinin parçası olan izinler) açık olarak yapılandırılmış izinler gösterilmektedir. Bu tabloya izinleri ekleyebilir veya kaldırabilirsiniz. Yönetici olarak Ayrıca, bu bölümde bir API 'nin izinleri veya ayrı izinler kümesi için yönetici onayı verebilir/iptal edebilirsiniz.
+
+### <a name="other-permissions-granted"></a>Diğer izinler verildi
+
+Uygulamanız bir kiracıda kayıtlıysa, **kiracı için verilen diğer izinler**başlıklı ek bir bölüm görebilirsiniz. Bu bölümde, kiracı için verilen ancak uygulama nesnesinde açıkça yapılandırılmamış olan izinler gösterilir (örneğin, dinamik olarak istenen ve onaylanan izinler). Bu bölüm yalnızca en az bir tane geçerli izin varsa görüntülenir.
+
+Bu bölümde görüntülenen bir API 'nin izinleri veya ayrı izinler kümesi, **yapılandırılan izinler** bölümüne eklenebilir. Yönetici olarak, bu bölümdeki tek tek API 'Ler veya izinler için yönetici onayını de iptal edebilirsiniz.
+
+### <a name="admin-consent-button"></a>Yönetici onay düğmesi
+
+Uygulamanız bir kiracıda kayıtlıysa, **kiracı için yönetici onayı verme** düğmesine görürsünüz. Yönetici değilseniz ya da uygulama için hiçbir izin yapılandırılmamışsa devre dışı bırakılır.
+Bu düğme, yöneticinin uygulama için yapılandırılan izinlere kolayca yönetici onayı vermesini sağlar. Yönetici onay düğmesine tıkladığınızda, tüm yapılandırılmış izinleri gösteren bir onay istemiyle birlikte yeni bir pencere açılır.
+
+> [!NOTE]
+> Uygulama için yapılandırılan izinlerle izin isteminde görüntülenen izinler arasında bir gecikme vardır. İzin isteminde yapılandırılan tüm izinleri görmüyorsanız, kapatın ve yeniden başlatın.
+
+Verilmiş ancak yapılandırılmamış izinleriniz varsa, yönetici onay düğmesine tıklarken bu izinleri nasıl işleyeceğinize karar vermeniz istenir. Bunları, yapılandırılmış izinlere ekleyebilir veya kaldırabilirsiniz.
+
+Onay istemi, **kabul etme** veya **iptal**etme seçeneğini sağlar. **Kabul et**' i seçerseniz, yönetici izni verilir. **İptal**' i seçerseniz, yönetici onayı verilmez ve onay reddedildiğini belirten bir hata görürsünüz.
+
+> [!NOTE]
+> Yönetici onayı verme (onay isteminde **kabul et** ' i seçme) ve yönetici izninin Kullanıcı arabiriminde yansıtıldığı durum arasında bir gecikme vardır.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Uygulamalar için diğer ilgili uygulama yönetimi hızlı başlangıçları hakkında bilgi edinin:
 
-* [Microsoft kimlik platformu ile uygulama kaydetme](quickstart-register-app.md)
+* [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md)
 * [Bir uygulamayı web API'lerini kullanıma sunacak şekilde yapılandırma](quickstart-configure-app-expose-web-apis.md)
 * [Bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md)
 * [Microsoft kimlik platformu ile kaydedilmiş bir uygulamayı kaldırma](quickstart-remove-app.md)

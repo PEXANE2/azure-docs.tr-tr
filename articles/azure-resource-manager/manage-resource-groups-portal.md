@@ -1,19 +1,16 @@
 ---
 title: Kaynak gruplarını yönetme-Azure portal
 description: Kaynak gruplarınızı Azure Resource Manager kullanarak yönetmek için Azure portal kullanın. Kaynak grupları oluşturma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir.
-services: azure-resource-manager,azure-portal
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: b0fac4f618f742a13633473f00dbd24ff8411c44
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: e3402f496371fe89c832dc22c8288a1b94378c82
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528546"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147166"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Resource Manager kaynak gruplarını yönetme
 
@@ -36,7 +33,7 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Kaynak grubu için bir k
 
 ## <a name="create-resource-groups"></a>Kaynak grupları oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Kaynak gruplarını** seçin
 
     ![Kaynak Grubu Ekle](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -47,7 +44,7 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Kaynak grubu için bir k
    - **Kaynak grubu**: yeni bir kaynak grubu adı girin. 
    - **Bölge**: **Orta ABD**gibi bir Azure konumu seçin.
 
-     ![Kaynak grubu oluştur](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
+     ![kaynak grubu oluştur](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. **Gözden geçir + oluştur** ' u seçin
 6. **Oluştur**'u seçin. Bir kaynak grubu oluşturmak birkaç saniye sürer.
 7. Kaynak grubu listesini yenilemek için üstteki menüden **Yenile** ' yi seçin ve ardından yeni oluşturulan kaynak grubunu seçerek dosyayı açın. Ya da üst kısımdaki **bildirim**(zil simgesi) öğesini seçin ve ardından yeni oluşturulan kaynak grubunu açmak için **kaynak grubuna git** ' i seçin.
@@ -56,7 +53,7 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Kaynak grubu için bir k
 
 ## <a name="list-resource-groups"></a>Kaynak gruplarını listeleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Kaynak gruplarını listelemek için **kaynak grupları** ' nı seçin.
 
     ![kaynak gruplarına gözatamıyorum](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -65,7 +62,7 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Kaynak grubu için bir k
 
 ## <a name="open-resource-groups"></a>Kaynak gruplarını aç
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Kaynak grupları**’nı seçin.
 3. Açmak istediğiniz kaynak grubunu seçin.
 

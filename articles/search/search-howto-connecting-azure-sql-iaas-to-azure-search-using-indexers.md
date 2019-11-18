@@ -1,5 +1,5 @@
 ---
-title: Arama dizini oluşturma için Azure SQL sanal makine VM bağlantısı
+title: Arama dizini oluşturma için Azure SQL VM bağlantısı
 titleSuffix: Azure Cognitive Search
 description: Şifrelenmiş bağlantıları etkinleştirin ve güvenlik duvarını Azure Bilişsel Arama bir dizin oluşturucudan bir Azure sanal makinesinde (VM) SQL Server bağlantılara izin verecek şekilde yapılandırın.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 57bea41d95b8859af55be777b17189861a445a12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 426ec57b3dbce884e55ef7a11ccca32ed295d70d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792141"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111900"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure Bilişsel Arama Dizin oluşturucudan Azure sanal makinesinde SQL Server bağlantı yapılandırma
 
-Azure [SQL veritabanı 'nı Dizin oluşturucular kullanarak azure bilişsel arama bağlama](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)bölümünde belirtildiği gibi, Azure **sanal makinelerinde SQL Server** karşı (veya kısa için **SQL Azure VM 'Ler** ) Dizin oluşturucular oluşturmak Azure bilişsel arama tarafından desteklenir, ancak birkaç İlk olarak ele almak için güvenlikle ilgili ön koşullar. 
+Azure [SQL veritabanı 'nı Dizinleyicileri kullanarak azure bilişsel arama bağlama](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)bölümünde belirtildiği gibi, Azure sanal makinelerinde (veya short Için **SQL Azure vm 'ler** ) **SQL Server** karşı dizin oluşturma işlemi Azure bilişsel arama tarafından desteklenir, ancak ilk olarak ele almanız gereken güvenlikle ilgili birkaç önkoşul vardır. 
 
 Azure Bilişsel Arama sanal makine üzerindeki SQL Server bağlantı, genel bir internet bağlantısıdır. Normalde bu bağlantılar için takip ettiğiniz tüm güvenlik önlemleri burada da geçerlidir:
 

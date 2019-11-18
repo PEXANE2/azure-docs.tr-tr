@@ -1,7 +1,7 @@
 ---
 title: OData mantıksal işleç başvurusu
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama sorgularında OData mantıksal işleçleri ve, veya, ve değildir.
+description: Azure Bilişsel Arama sorgularında OData mantıksal işleçleri ve, veya, ve değil, için sözdizimi ve başvuru belgeleri.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 4e016047d66e49f17c08d4b92a1c865f4b63e39b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793320"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113192"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure Bilişsel Arama OData mantıksal işleçleri-`and`, `or`, `not`
 

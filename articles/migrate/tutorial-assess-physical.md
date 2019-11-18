@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 7574e80101784961448ff3c3b5a49d9e2c2f9807
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720219"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123501"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Azure geçişi ile fiziksel sunucuları değerlendirme: Sunucu değerlendirmesi
 
@@ -38,12 +38,12 @@ Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve g
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bu serideki ilk öğreticiyi [doldurun](tutorial-prepare-physical.md) . Bunu yapmazsanız, bu öğreticideki yönergeler çalışmaz.
 - İlk öğreticide yapmanız gerekenler şunlardır:
     - Azure geçişi için [Azure Izinleri ayarlayın](tutorial-prepare-physical.md#prepare-azure) .
-    - [Fiziksel sunucuları](tutorial-prepare-physical.md#prepare-azure) değerlendirme için hazırlayın. Gereç gereksinimleri doğrulanmalıdır. Ayrıca fiziksel sunucu keşfi için ayarlanmış bir hesabınız olmalıdır. Gerekli bağlantı noktaları kullanılabilir olmalıdır ve Azure 'a erişim için gereken URL 'Lerden haberdar olmanız gerekir.
+    - [Fiziksel sunucuları](tutorial-prepare-physical.md#prepare-for-physical-server-assessment) değerlendirme için hazırlayın. Gereç gereksinimleri doğrulanmalıdır. Ayrıca fiziksel sunucu keşfi için ayarlanmış bir hesabınız olmalıdır. Gerekli bağlantı noktaları kullanılabilir olmalıdır ve Azure 'a erişim için gereken URL 'Lerden haberdar olmanız gerekir.
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure geçişi projesi ayarlama
@@ -104,9 +104,10 @@ Gereç için daraltılmış dosyayı indirin.
 Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
-2. VHD için karma oluşturmak üzere aşağıdaki komutu çalıştırın
+2. Daraltılmış dosyanın karmasını oluşturmak için aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Örnek kullanım: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - Örnek kullanım: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller\AzureMigrateInstaller.ps1 SHA256```
+
 3.  Gereç sürümü 1.19.05.10 için, oluşturulan karma bu ayarlarla eşleşmelidir.
 
   **Algoritma** | **Karma değeri**
@@ -114,7 +115,8 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
   SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Azure geçişi yükleyici betiğini çalıştırma
-= Yükleyici betiği şunları yapar:
+
+Yükleyici betiği şunları yapar:
 
 - Fiziksel sunucu keşfi ve değerlendirmesi için aracıları ve bir Web uygulamasını kurar.
 - Windows etkinleştirme hizmeti, IIS ve PowerShell ıSE dahil Windows rollerini yükler.
@@ -129,12 +131,16 @@ Betiği aşağıdaki gibi çalıştırın:
 1. Sıkıştırılmış dosyayı, Gereç barındıracak sunucuda bir klasöre ayıklayın.
 2. Yönetim (yükseltilmiş) ayrıcalığıyla yukarıdaki sunucuda PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan içeriğin ayıklandığı klasör olarak değiştirin.
-4. Aşağıdaki komutu çalıştırarak betiği çalıştırın:
+4. Aşağıdaki komutu çalıştırarak **AzureMigrateInstaller. ps1** adlı betiği çalıştırın:
     ```
-    PS C:\Users\Administrators\Desktop> AzureMigrateInstaller-physical.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-Betik, başarıyla tamamlandığında gereç Web uygulamasını başlatacaktır.
+Betik, başarıyla tamamlandığında gereç Web uygulamasını başlatacaktır. 
 
+Herhangi bir sorun olması durumunda, sorun giderme için C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki komut dosyası günlüklerine erişebilirsiniz.
+
+> [!NOTE]
+> Lütfen mevcut bir Azure geçişi gereci üzerinde Azure geçişi yükleyicisi betiğini çalıştırmayın.
 
 ### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
@@ -182,7 +188,7 @@ Her biri Windows ve Linux sunucuları için bir kimlik bilgileri kümesi ekleyeb
     - Bir sunucuyu kaldırmak için > **Sil**' i seçin.
 4. Doğrulamadan sonra, bulma işlemini başlatmak için **Kaydet ve bulmayı Başlat** ' a tıklayın.
 
-Bu, bulmayı başlatır. Bulunan sunucuların meta verilerinin Azure portal görünmesi 15 dakika sürer. 
+Bu, bulmayı başlatır. Sunucu başına, bulunan sunucunun meta verilerinde Azure portal görünmesi için 1,5 dakika sürer. 
 
 ### <a name="verify-servers-in-the-portal"></a>Portalda sunucuları doğrulama
 
@@ -195,7 +201,7 @@ Bulmadan sonra, sunucuların Azure portal göründüğünü doğrulayabilirsiniz
 
 Azure geçişi: Sunucu değerlendirmesi kullanarak oluşturabileceğiniz iki tür değerlendirme vardır.
 
-**Değerlendirme** | **Ayrıntılar** | **Veriler**
+**Değerlendirme** | **Ayrıntılar** | **Veri**
 --- | --- | ---
 **Performans tabanlı** | Toplanan performans verilerine dayalı değerlendirmeler | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)** : Şirket ıçı disklerin IOPS ve aktarım hızına göre.
 **Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: şirket içi sunucu boyutuna göre<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.

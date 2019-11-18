@@ -1,7 +1,7 @@
 ---
 title: OData karşılaştırma işleci başvurusu
 titleSuffix: Azure Cognitive Search
-description: OData karşılaştırma işleçleri, EQ, ne, gt, lt, GE ve Le, Azure Bilişsel Arama sorgularında.
+description: Azure Bilişsel Arama sorgularında OData karşılaştırma işleçleri (EQ, ne, gt, lt, GE ve Le) kullanılmasına yönelik sözdizimi ve başvuru belgeleri.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 068e2ec822f0a292ac83b3e48049830eb77b49f6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793379"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113213"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure Bilişsel Arama OData karşılaştırma işleçleri `eq`, `ne`, `gt`, `lt`, `ge`ve `le`
 
@@ -81,13 +81,13 @@ Karşılaştırma işlecinin her iki tarafındaki veri türleri uyumlu olmalıd�
 | --- | --- | --- |
 | `Edm.Double` | `Edm.Double` | Karşılaştırma, [`NaN`için özel kurallara](#special-case-nan) tabidir |
 | `Edm.Double` | `Edm.Int64` | Sabit, `Edm.Double`'e dönüştürülüp büyük boyutlu değerler için duyarlık kaybı ile sonuçlanır |
-| `Edm.Double` | `Edm.Int32` | Yok |
+| `Edm.Double` | `Edm.Int32` | yok |
 | `Edm.Int64` | `Edm.Double` | `NaN`, `-INF`veya `INF` karşılaştırmalara izin verilmez |
-| `Edm.Int64` | `Edm.Int64` | Yok |
+| `Edm.Int64` | `Edm.Int64` | yok |
 | `Edm.Int64` | `Edm.Int32` | Sabit, karşılaştırmadan önce `Edm.Int64` dönüştürülür |
 | `Edm.Int32` | `Edm.Double` | `NaN`, `-INF`veya `INF` karşılaştırmalara izin verilmez |
-| `Edm.Int32` | `Edm.Int64` | Yok |
-| `Edm.Int32` | `Edm.Int32` | Yok |
+| `Edm.Int32` | `Edm.Int64` | yok |
+| `Edm.Int32` | `Edm.Int32` | yok |
 
 `Edm.Int64` bir alanı `NaN`olarak karşılaştıran izin verilmeyen karşılaştırmalar için, Azure Bilişsel Arama REST API bir "HTTP 400: Hatalı Istek" hatası döndürür.
 

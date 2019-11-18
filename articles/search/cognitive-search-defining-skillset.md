@@ -1,5 +1,5 @@
 ---
-title: Zenginleştirme ardışık düzeninde beceri oluşturma
+title: Beceri kümesi oluşturma
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'da kullanmak üzere verilerinize veri ayıklama, doğal dil işleme veya görüntü analizi adımlarını tanımlayarak verileri zenginleştirin ve verilerinizi ayıklayın.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e9fd4602d661dd4223c8caa2ec02eaf56284735a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787463"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114545"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir AI zenginleştirme ardışık düzeninde beceri oluşturma 
 
@@ -36,9 +36,9 @@ Anımsanması gereken önemli noktaları:
 
 Bir dizi finansal analist açıklamasını işlemek istediğinizi varsayalım. Her dosya için, yorumların şirket adlarını ve genel yaklaşımını ayıklamak istersiniz. Ayrıca şirket hakkında şirket hakkında ek bilgiler bulmak için Bing Varlık Arama hizmetini kullanan özel bir zenginte yazmak isteyebilirsiniz. Temelde, her belge için dizine alınmış aşağıdaki gibi bilgileri ayıklamak istersiniz:
 
-| Kaydet-metin | firması | Yaklaşım | Şirket açıklamaları |
+| Kaydet-metin | firması | yaklaşım | Şirket açıklamaları |
 |--------|-----|-----|-----|
-|örnek kayıt| ["Microsoft", "LinkedIn"] | 0,99 | ["Microsoft Corporation, çok uluslu bir teknoloji şirketidir...", "LinkedIn iş ve işe yönelik olarak çalışan bir sosyal ağ..."]
+|örnek kayıt| ["Microsoft", "LinkedIn"] | 0.99 | ["Microsoft Corporation, çok uluslu bir teknoloji şirketidir...", "LinkedIn iş ve işe yönelik olarak çalışan bir sosyal ağ..."]
 
 Aşağıdaki diyagramda bir kuramsal zenginleştirme işlem hattı gösterilmektedir:
 
@@ -163,15 +163,15 @@ Yerleşik [varlık tanıma becerisi](cognitive-search-skill-entity-recognition.m
     }
 ```
 
-* Her yerleşik beceri `odata.type`, `input` ve `output` özelliklere sahiptir. Beceriye özgü özellikler, bu beceriye uygun ek bilgiler sağlar. Varlık tanıma için `categories`, önceden eğitilen modelin tanıyabileceği sabit bir varlık türleri kümesi arasında bir varlıktır.
+* Her yerleşik beceri `odata.type`, `input`ve `output` özelliklere sahiptir. Beceriye özgü özellikler, bu beceriye uygun ek bilgiler sağlar. Varlık tanıma için `categories`, önceden eğitilen modelin tanıyabileceği sabit bir varlık türleri kümesi arasında bir varlıktır.
 
-* Her yeteneğin bir ```"context"``` olması gerekir. Bağlam, işlemlerin gerçekleştiği düzeyi temsil eder. Yukarıdaki becerideki bağlam tüm belgedir, yani varlık tanıma becerisi her belge için bir kez çağrılır. Çıkışlar da bu düzeyde oluşturulur. Daha özel olarak, ```"organizations"``` ```"/document"``` üyesi olarak oluşturulur. Aşağı akış becerileri ' nda, yeni oluşturulan bu bilgilere ```"/document/organizations"``` olarak başvurabilirsiniz.  @No__t_0 alanı açıkça ayarlanmamışsa, varsayılan bağlam belgedir.
+* Her yeteneğin bir ```"context"```olması gerekir. Bağlam, işlemlerin gerçekleştiği düzeyi temsil eder. Yukarıdaki becerideki bağlam tüm belgedir, yani varlık tanıma becerisi her belge için bir kez çağrılır. Çıkışlar da bu düzeyde oluşturulur. Daha özel olarak, ```"organizations"``` ```"/document"```üyesi olarak oluşturulur. Aşağı akış becerileri ' nda, yeni oluşturulan bu bilgilere ```"/document/organizations"```olarak başvurabilirsiniz.  ```"context"``` alanı açıkça ayarlanmamışsa, varsayılan bağlam belgedir.
 
-* Yeteneğin, kaynak girişi ```"/document/content"``` olarak ayarlanmış "metin" adlı bir giriş vardır. Yetenek (varlık tanıma), Azure Blob Indexer tarafından oluşturulan standart bir alan olan her belgenin *içerik* alanı üzerinde çalışır. 
+* Yeteneğin, kaynak girişi ```"/document/content"```olarak ayarlanmış "metin" adlı bir giriş vardır. Yetenek (varlık tanıma), Azure Blob Indexer tarafından oluşturulan standart bir alan olan her belgenin *içerik* alanı üzerinde çalışır. 
 
-* Yeteneğin ```"organizations"``` adlı bir çıkış vardır. Çıkışlar yalnızca işlem sırasında mevcuttur. Bu çıktıyı bir aşağı akış becerisi girişine zincirlemek için, çıkışa ```"/document/organizations"``` olarak başvurun.
+* Yeteneğin ```"organizations"```adlı bir çıkış vardır. Çıkışlar yalnızca işlem sırasında mevcuttur. Bu çıktıyı bir aşağı akış becerisi girişine zincirlemek için, çıkışa ```"/document/organizations"```olarak başvurun.
 
-* Belirli bir belge için, ```"/document/organizations"``` değeri metinden ayıklanan kuruluşların bir dizisidir. Örnek:
+* Belirli bir belge için, ```"/document/organizations"``` değeri metinden ayıklanan kuruluşların bir dizisidir. Örneğin:
 
   ```json
   ["Microsoft", "LinkedIn"]
@@ -179,7 +179,7 @@ Yerleşik [varlık tanıma becerisi](cognitive-search-skill-entity-recognition.m
 
 Bazı durumlar, bir dizinin her öğesine ayrı olarak başvurmak için çağrı yapılır. Örneğin, her bir ```"/document/organizations"``` öğesini başka bir yeteneğe (özel Bing varlık arama daha zengin gibi) ayrı olarak geçirmek istediğinizi varsayalım. Yola bir yıldız işareti ekleyerek dizinin her öğesine başvurabilirsiniz: ```"/document/organizations/*"``` 
 
-Yaklaşım ayıklama için ikinci yetenek, ilk zenginleştirme ile aynı kalıbı izler. @No__t_0 giriş olarak alır ve her içerik örneği için bir yaklaşım puanı döndürür. @No__t_0 alanını açıkça ayarlamazsanız, çıkış (mySentiment) artık ```"/document"``` bir alt öğesidir.
+Yaklaşım ayıklama için ikinci yetenek, ilk zenginleştirme ile aynı kalıbı izler. ```"/document/content"``` giriş olarak alır ve her içerik örneği için bir yaklaşım puanı döndürür. ```"context"``` alanını açıkça ayarlamazsanız, çıkış (mySentiment) artık ```"/document"```bir alt öğesidir.
 
 ```json
     {
@@ -229,13 +229,13 @@ Yaklaşım ayıklama için ikinci yetenek, ilk zenginleştirme ile aynı kalıb�
 
 Bu tanım, zenginleştirme sürecinin bir parçası olarak bir Web API 'SI çağıran [özel bir yetentandır](cognitive-search-custom-skill-web-api.md) . Bu yetenek, varlık tanıma tarafından tanımlanan her kuruluş için, bu kuruluşun açıklamasını bulmak için bir Web API 'SI çağırır. Web API 'sinin ne zaman çağrılacağını ve alınan bilgilerin nasıl Flow, enzenginleştirme altyapısı tarafından dahili olarak işlenir. Ancak, bu özel API 'yi çağırmak için gereken başlatma işlemi JSON 'da (URI, httpHeaders ve beklenen girişler gibi) sağlanmalıdır. Zenginleştirme işlem hattı için özel Web API 'SI oluşturma konusunda rehberlik için bkz. [özel bir arabirim tanımlama](cognitive-search-custom-skill-interface.md).
 
-"Bağlam" alanının yıldız işaretiyle ```"/document/organizations/*"``` olarak ayarlandığını, yani ```"/document/organizations"``` altındaki *her kuruluş için* de zenginleştirme adımını çağırdığını unutmayın. 
+"Bağlam" alanının yıldız işaretiyle ```"/document/organizations/*"``` olarak ayarlandığını, yani ```"/document/organizations"```altındaki *her kuruluş için* de zenginleştirme adımını çağırdığını unutmayın. 
 
 Bu durumda, belirtilen her bir kuruluş için bir şirket açıklaması olan çıktı. Bir aşağı akış adımındaki açıklamaya (örneğin, anahtar tümceciği ayıklama) başvururken, bunu yapmak için ```"/document/organizations/*/description"``` yolunu kullanırsınız. 
 
 ## <a name="add-structure"></a>Yapı Ekle
 
-Beceri yapılandırılmamış verilerden yapılandırılmış bilgiler üretir. Aşağıdaki örneği göz önünde bulundurun:
+Beceri yapılandırılmamış verilerden yapılandırılmış bilgiler üretir. Aşağıdaki örnek göz önünde bulundurun:
 
 *"Dördüncü çeyrekte, Microsoft, geçen yıl satın aldığı sosyal ağ şirketi olan LinkedIn 'ten gelir üzerinden $1.100.000.000 'e kaydedildi. Alım, Microsoft 'un LinkedIn yeteneklerini kendi CRM ve Office özellikleri ile birleştirmesine olanak sağlar. Stockholders şu ana kadar ilerleme durumuyla heyecanlanır. "*
 

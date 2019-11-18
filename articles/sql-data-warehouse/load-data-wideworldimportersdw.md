@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5272d9aa77f78d0cef316f9f227f9e269ab7e186
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f58623ec179965c8f8f165805cb181f8c102e746
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839891"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132367"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Öğretici: Azure SQL Veri Ambarı'na veri yükleme
 
@@ -33,7 +33,7 @@ Bu öğreticide, Azure Blob depolamadan Azure SQL Veri Ambarı’na WideWorldImp
 > * Tarih boyutu ve satış bilgi tablolarında bir yıllık veri oluşturma
 > * Yeni yüklenen verilere ilişkin istatistikler oluşturma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -45,7 +45,7 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Boş bir SQL veri ambarı oluşturun
 
-Azure SQL veri ambarı, tanımlı bir [işlem kaynakları] bellek-eşzamanlılık-limits.md) kümesiyle oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-features.md) içinde oluşturulur. 
+Azure SQL veri ambarı, tanımlı bir [işlem kaynakları](memory-concurrency-limits.md)kümesiyle oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-features.md) içinde oluşturulur. 
 
 Boş bir SQL veri ambarı oluşturmak için bu adımları izleyin. 
 
@@ -85,7 +85,7 @@ Boş bir SQL veri ambarı oluşturmak için bu adımları izleyin.
 
     ![performansı yapılandırma](media/load-data-wideworldimportersdw/configure-performance.png)
 
-8. **Apply (Uygula)** düğmesine tıklayın.
+8. **Uygula**'ya tıklayın.
 9. SQL Veri Ambarı sayfasında, boş veritabanı için bir **harmanlama** seçin. Bu öğreticide varsayılan değeri kullanın. Harmanlamalar hakkında daha fazla bilgi için bkz. [Harmanlamalar](/sql/t-sql/statements/collations)
 
 11. SQL Veritabanı formunu tamamladıktan sonra veritabanını sağlamak için **Oluştur**’a tıklayın. Sağlama birkaç dakika sürer. 
@@ -120,7 +120,7 @@ SQL Veri Ambarı hizmeti, dış uygulama ve araçların sunucuya ya da sunucu ü
 
 4.  Geçerli IP adresinizi yeni bir güvenlik duvarı kuralına eklemek için araç çubuğunda **İstemci IP’si Ekle** öğesine tıklayın. Güvenlik duvarı kuralı, 1433 numaralı bağlantı noktasını tek bir IP adresi veya bir IP adresi aralığı için açabilir.
 
-5. **Kaydet** düğmesine tıklayın. Geçerli IP adresiniz için mantıksal sunucuda 1433 numaralı bağlantı noktası açılarak sunucu düzeyinde güvenlik duvarı kuralı oluşturulur.
+5. **Kaydet**’e tıklayın. Geçerli IP adresiniz için mantıksal sunucuda 1433 numaralı bağlantı noktası açılarak sunucu düzeyinde güvenlik duvarı kuralı oluşturulur.
 
 6. **Tamam**’a tıklayın ve sonra **Güvenlik duvarı ayarları** sayfasını kapatın.
 
@@ -143,7 +143,7 @@ SQL sunucunuzun tam sunucu adını Azure portalından alabilirsiniz. Daha sonra 
 
 Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) kullanılmaktadır.
 
-1. SQL Server Management Studio’yu açın.
+1. SQL Server Management Studio'yu açın.
 
 2. **Sunucuya Bağlan** iletişim kutusuna şu bilgileri girin:
 
@@ -182,7 +182,7 @@ En iyisi verileri yüklemeye ayrılmış bir oturum açma ve kullanıcı bilgisi
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
     ```
 
-3. **Yürüt**’e tıklayın.
+3. **Yürüt**'e tıklayın.
 
 4. **SampleDW** seçeneğine sağ tıklayın ve **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.  
 
@@ -196,7 +196,7 @@ En iyisi verileri yüklemeye ayrılmış bir oturum açma ve kullanıcı bilgisi
     EXEC sp_addrolemember 'staticrc60', 'LoaderRC60';
     ```
 
-6. **Yürüt**’e tıklayın.
+6. **Yürüt**'e tıklayın.
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>Yükleme kullanıcısı olarak sunucuya bağlanma
 

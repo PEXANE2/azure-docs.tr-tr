@@ -1,22 +1,18 @@
 ---
-title: Kurumsal senaryolarda Azure ışıklı kullanım
+title: Kurumsal senaryolarda Azure Lighthouse
 description: Azure açık Thouse özellikleri, birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini basitleştirmek için kullanılabilir.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 09/25/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: fbd87cc801824729025feb7aefa411ac38048949
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ae2241048e6ae481e319154beedab74c23c91163
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266730"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132507"
 ---
-# <a name="azure-lighthouse-in-enterprise-scenarios"></a>Kurumsal senaryolarda Azure ışıklı kullanım
+# <a name="azure-lighthouse-in-enterprise-scenarios"></a>Kurumsal senaryolarda Azure Lighthouse
 
-Azure ışıklı kullanım için en yaygın senaryo, müşterilerinin ' Azure Active Directory (Azure AD) kiracılarındaki kaynakları yöneten bir hizmet sağlayıcıdır. Ancak, Azure ışıklı kullanım özellikleri, birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini basitleştirmek için de kullanılabilir.
+[Azure ışıklı kullanım](../overview.md) için en yaygın senaryo, müşterilerinin ' Azure Active Directory (Azure AD) kiracılarındaki kaynakları yöneten bir hizmet sağlayıcıdır. Ancak, Azure ışıklı kullanım özellikleri, birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini basitleştirmek için de kullanılabilir.
 
 ## <a name="single-vs-multiple-tenants"></a>Tek ve birden çok kiracı
 

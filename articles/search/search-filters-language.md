@@ -1,5 +1,5 @@
 ---
-title: Bir arama dizininde çok dilli içerik için dil filtreleri
+title: Arama dizininde dile göre filtrele
 titleSuffix: Azure Cognitive Search
 description: Dile özgü alanlara sorgu yürütmeyi kapsayan çok dilli aramayı desteklemek için ölçütleri filtreleyin.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2762ce42f0d3f5829682e0910c452746a65ef2f3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5dbf32610e54df4ff009d4cb0a0b080babb4ec73
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792881"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112072"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Azure Bilişsel Arama dile göre filtreleme 
 

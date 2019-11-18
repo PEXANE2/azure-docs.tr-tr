@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f095c962f08ab0207ffc51d1c898570d9be7ea9a
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047231"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120542"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Salesforce yapılandırma
 
@@ -55,7 +55,7 @@ Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki 
 
 ## <a name="enable-automated-user-provisioning"></a>Otomatik Kullanıcı sağlamayı etkinleştir
 
-Bu bölümde Azure AD 'nizi Salesforce 'ın Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup atamasını temel alarak Salesforce 'ta atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için yapılandırma işlemi kılavuzluk eder.
+Bu bölümde, Azure AD 'nizi [Salesforce 'ın Kullanıcı hesabı sağlama API 'si-V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api.meta/api/implementation_considerations.htm)' ye bağlama ve sağlama hizmeti 'Ni, Azure AD 'de Kullanıcı ve grup atamasını temel alarak Salesforce 'ta atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için nasıl yapılandıracağınız konusunda kılavuzluk eder.
 
 > [!Tip]
 > [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri izleyerek SALESFORCE için SAML tabanlı çoklu oturum açmayı da tercih edebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
@@ -120,7 +120,16 @@ Bu, kullanıcılar ve Gruplar bölümünde Salesforce 'a atanan tüm Kullanıcı
 Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="common-issues"></a>Genel sorunlar
-* Salesforce 'a sağlama için varsayılan öznitelik eşlemesi, Salesforce 'a Kullanıcı rolleri sağlamak için Singleapprotaatamalar ifadesini içerir. Öznitelik eşlemesi yalnızca bir rol sağlamayı desteklediğinden, kullanıcıların uygulamada kendisine atanmış birden çok rolü olmadığından emin olun. 
+* Salesforce 'a erişimi yetkilendirmek için sorun yaşıyorsanız aşağıdakileri doğrulayın:
+    * Kullanılan kimlik bilgileri Salesforce 'a yönetici erişimine sahiptir.
+    * Kullanmakta olduğunuz Salesforce sürümü Web Erişimi destekler (örneğin, geliştirici, Enterprise, Sandbox ve Salesforce 'un sınırsız sürümleri).)
+    * Web API erişimi kullanıcı için etkinleştirildi.
+* Azure AD sağlama hizmeti, bir kullanıcı için dil, yerel ayar ve saat dilimini sağlamayı destekler. Bu öznitelikler varsayılan öznitelik eşlemeleridir ancak varsayılan bir kaynak özniteliği yoktur. Varsayılan kaynak özniteliğini seçtiğinizden ve kaynak özniteliğin SalesForce tarafından beklenen biçimde olduğundan emin olun. Örneğin, İngilizce (Birleşik Devletler) için Localesıdkey en_US. Doğru Localesıdkey biçimini öğrenmek için [burada](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5) sunulan kılavuzu gözden geçirin. LanguageLocaleKey biçimleri [burada](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5)bulunabilir. Biçimin doğru olduğundan emin olmanın yanı sıra, [burada](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)açıklandığı gibi, dilin kullanıcılarınız için de etkinleştirildiğinden emin olmanız gerekebilir. 
+* **Salesforcelicenselimitexcelıo:** Bu Kullanıcı için kullanılabilir lisans olmadığından, Kullanıcı hedef uygulamada oluşturulamadı. Hedef uygulama için ek lisanslar temin edebilir ya da doğru özniteliklerin doğru özniteliklerle atandığından emin olmak için Kullanıcı atamalarınızı ve öznitelik eşleme yapılandırmanızı gözden geçirin.
+* **Salesforceduplicateusername:** Kullanıcı, başka bir Salesforce.com kiracısında çoğaltılan bir Salesforce.com ' username ' içerdiğinden sağlanamıyor.  Salesforce.com ' de, ' username ' özniteliğinin değerleri tüm Salesforce.com kiracılar genelinde benzersiz olmalıdır.  Varsayılan olarak, Azure Active Directory bir kullanıcının userPrincipalName 'i, Salesforce.com içinde ' username ' olur.   İki seçeneğiniz vardır.  Bir seçenek, başka bir kiracıyı de yönetiyorsanız, kullanıcıyı diğer Salesforce.com kiracısında yinelenen ' username ' ile bulup yeniden adlandırmaya yönelik bir seçenektir.  Diğer seçenek, Azure Active Directory kullanıcıdan, dizininizin tümleştirildiği Salesforce.com kiracısına erişimi kaldırdır. Sonraki eşitleme denemesinde bu işlemi yeniden deneyeceğiz. 
+* **Salesforcerequiredfieldeksik:** Salesforce Kullanıcı oluşturmak veya güncelleştirmek için Kullanıcı üzerinde belirli özniteliklerin mevcut olmasını gerektirir. Bu Kullanıcı, gerekli özniteliklerin birini içermiyor. E-posta ve diğer ad gibi özniteliklerin Salesforce 'a sağlanmasını istediğiniz tüm kullanıcılara doldurulduğundan emin olun. [Öznitelik tabanlı kapsam filtrelerini](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)kullanarak bu özniteliklere sahip olmayan kullanıcıların kapsamını belirleyebilirsiniz. 
+* Salesforce 'a sağlama için varsayılan öznitelik eşlemesi, Azure AD 'deki Approlet atamalarını Salesforce 'ta ProfileName 'e eşlemek için Singleapprotaatamalar ifadesini içerir. Öznitelik eşlemesi yalnızca bir rol sağlamayı desteklediğinden, kullanıcıların Azure AD 'de birden çok uygulama rolü ataması olmadığından emin olun. 
+
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

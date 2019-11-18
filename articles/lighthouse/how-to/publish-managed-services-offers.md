@@ -1,18 +1,14 @@
 ---
 title: Azure Market 'Te yönetilen hizmet teklifi yayımlama
 description: Onpanolar müşterilerinin Azure tarafından yetkilendirilen kaynak yönetimine yönelik bir yönetilen hizmet teklifini yayımlamayı öğrenin.
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: ee8f0f88f1e60c6e8b5da34a165757694f52dcbb
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 29f17e6227d3c50a4d9fe13f7525ac71f7550632
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005387"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131298"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
@@ -140,6 +136,8 @@ Bu bilgileri ekledikten sonra Kaydet ' i seçin **.**
 ## <a name="publish-your-offer"></a>Teklifinizi yayımlayın
 
 Tüm bölümleri tamamladıktan sonra, bir sonraki adımınız teklifi Azure Marketi 'ne yayımlamaktır. Teklifinizi canlı hale getirme sürecini başlatmak için **Yayımla** düğmesini seçin. Bu süreç hakkında daha fazla bilgi için bkz. [Azure Marketi ve AppSource tekliflerini yayımlama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
+
+[Teklifinizin güncelleştirilmiş bir sürümünü](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer) dilediğiniz zaman yayımlayabilirsiniz. Örneğin, daha önce yayımlanmış bir teklifine yeni bir rol tanımı eklemek isteyebilirsiniz. Bunu yaptığınızda, teklifi zaten eklemiş olan müşteriler, bir güncelleştirmenin kullanılabildiğini bilmesini sağlayan Azure portal [**hizmet sağlayıcıları**](view-manage-service-providers.md) sayfasında bir simge görür. Her müşteri [, değişiklikleri gözden](view-manage-service-providers.md#update-service-provider-offers) geçirebilecek ve yeni sürüme güncelleştirmek isteyip istemediğinize karar verecek. 
 
 ## <a name="the-customer-onboarding-process"></a>Müşteri ekleme işlemi
 

@@ -1,5 +1,5 @@
 ---
-title: Arama dizinine veri alımı için veri içeri aktarma
+title: Arama dizinlerinde içeri ve dışarı veri alımı
 titleSuffix: Azure Cognitive Search
 description: Dış veri kaynaklarından Azure Bilişsel Arama verileri doldurun ve dizine yükleyin.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a05291012bcf44b1a07d9b451eef1302862b2fce
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794150"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113785"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Veri içeri genel bakış-Azure Bilişsel Arama
 
@@ -51,7 +51,7 @@ REST API Azure Bilişsel Arama dizininizin Endpoint URL 'nize JSON istek gövdel
 | @search.action | Açıklama | Her bir belge için gerekli alanlar | Notlar |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Bir `upload` eylemi, belgenin yeni olması durumunda ekleneceği ve var olması durumunda güncelleştirileceği/değiştirileceği bir "upsert" ile benzerlik gösterir. |anahtar ve tanımlamak istediğiniz diğer alanlar |Var olan bir belgeyi güncelleştirirken/değiştirirken istekte belirtilmeyen herhangi bir alan `null` olarak ayarlanır. Bu durum, alan daha önce değersiz olmayan bir değere ayarlanmış olsa dahi gerçekleşir. |
-| `merge` |Var olan belgeyi belirtilen alanlarla güncelleştirir. Belge dizinde mevcut değilse birleştirme işlemi başarısız olur. |anahtar ve tanımlamak istediğiniz diğer alanlar |Birleştirmede belirttiğiniz herhangi bir alan belgede var olan alanın yerini alır. .NET SDK 'sında bu, `DataType.Collection(DataType.String)`türünde alanlar içerir. REST API, bu, `Collection(Edm.String)`türündeki alanları içerir. Örneğin, belge `["budget"]` değerine sahip bir `tags` alanını içeriyorsa ve `tags` için `["economy", "pool"]` değeriyle bir birleştirme yürütürseniz `tags` alanının son değeri `["economy", "pool"]` olur. `["budget", "economy", "pool"]` olmayacaktır. |
+| `merge` |Var olan belgeyi belirtilen alanlarla güncelleştirir. Belge dizinde mevcut değilse birleştirme işlemi başarısız olur. |anahtar ve tanımlamak istediğiniz diğer alanlar |Birleştirmede belirttiğiniz herhangi bir alan belgede var olan alanın yerini alır. .NET SDK 'sında bu, `DataType.Collection(DataType.String)`türünde alanlar içerir. REST API, bu, `Collection(Edm.String)`türündeki alanları içerir. Örneğin, belge `tags` değerine sahip bir `["budget"]` alanını içeriyorsa ve `["economy", "pool"]` için `tags` değeriyle bir birleştirme yürütürseniz `tags` alanının son değeri `["economy", "pool"]` olur. `["budget", "economy", "pool"]` olmayacaktır. |
 | `mergeOrUpload` |Belirtilen anahtara sahip bir belge dizinde zaten mevcutsa bu eylem `merge` gibi davranır. Belge mevcut değilse yeni bir belgeyle `upload` gibi davranır. |anahtar ve tanımlamak istediğiniz diğer alanlar |- |
 | `delete` |Belirtilen belgeyi dizinden kaldırır. |yalnızca anahtar |Anahtar alanı dışında belirttiğiniz tüm alanlar yoksayılır. Bir belgeden tek bir alanı kaldırmak istiyorsanız bunun yerine `merge` kullanıp alanı açık bir şekilde null olarak ayarlamanız yeterlidir. |
 

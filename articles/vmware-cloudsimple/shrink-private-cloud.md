@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1ae2f87a3719853f4a91cb8ba801be6d578597d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825675"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108601"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple özel bulutunu daraltma
 
@@ -24,7 +24,8 @@ CloudSimple, özel bir bulutu dinamik olarak küçültme esnekliği sağlar.  Bi
 Özel bulutun küçültülmesi için aşağıdaki koşulların karşılanması gerekir.  Özel bir bulut oluşturulduğunda oluşturulan yönetim kümesi (ilk küme) silinemez.
 
 * VSphere kümesi üç düğüme sahip olmalıdır.  Yalnızca üç düğümü olan bir küme daraltılamaz.
-* Tüketilen toplam depolama alanı, kümenin küçültülmeden sonra toplam kapasiteyi aşmamalıdır. 
+* Tüketilen toplam depolama alanı, kümenin küçültülmeden sonra toplam kapasiteyi aşmamalıdır.
+* Dağıtılmış kaynak Zamanlayıcı (DRS) kurallarının sanal bir makinenin vMotion 'ı önlediği olup olmadığını denetleyin.  Kurallar varsa, kuralları devre dışı bırakın veya silin.  DRS kuralları konak benzeşim kurallarını barındırmak için sanal makineyi içerir.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -55,7 +56,8 @@ CloudSimple, özel bir bulutu dinamik olarak küçültme esnekliği sağlar.  Bi
 Özel bulutun küçültülmesi başlar.  Görevlerin ilerlemesini izleyebilirsiniz.  Daraltma işlemi, sanal San 'da yeniden eşitlenmesi gereken verilere bağlı olarak birkaç saat sürebilir.
 
 > [!NOTE]
-> Veri merkezinde son veya tek kümeyi silerek özel bir bulutu daraldıysanız, veri merkezi silinmez.  
+> 1. Veri merkezinde son veya tek kümeyi silerek özel bir bulutu daraldıysanız, veri merkezi silinmez.
+> 2. Herhangi bir DRS kuralı ihlali oluşursa, düğüm kümeden kaldırılmaz ve görev açıklaması, düğüm kaldırma işleminin kümedeki DRS kurallarını ihlal edeceğini gösterir.    
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

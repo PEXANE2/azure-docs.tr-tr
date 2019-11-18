@@ -11,12 +11,12 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3415522a6ae80723500ba2d38867322fdef0dd7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: caa23d3e86fba86aa45e677f7ab85859cda6ddce
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685333"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133170"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Veri ambarı birimleri (DWU 'Lar) ve işlem verileri ambarı birimleri (cDWUs)
 
@@ -107,7 +107,7 @@ Geçerli DWU ayarını görüntülemek için:
 
 1. Visual Studio 'da SQL Server Nesne Gezgini açın.
 2. Mantıksal SQL veritabanı sunucusuyla ilişkili ana veritabanına bağlanın.
-3. Sys. database_service_objectives dinamik yönetim görünümünden seçim yapın. Örnek aşağıda verilmiştir:
+3. Sys. database_service_objectives dinamik yönetim görünümünden seçin. Örnek aşağıda verilmiştir:
 
 ```sql
 SELECT  db.name [Database]
@@ -128,7 +128,7 @@ DWUs veya cDWUs 'yi değiştirmek için:
 
 2. **Ölçek**altında, DWU ayarını değiştirmek için kaydırıcıyı sola veya sağa taşıyın.
 
-3. **Kaydet** düğmesine tıklayın. Bir onay iletisi görüntülenir. Onaylamak için **evet**’e, iptal etmek için **hayır**’a tıklayın.
+3. **Kaydet**’e tıklayın. Bir onay iletisi görüntülenir. Onaylamak için **evet**’e, iptal etmek için **hayır**’a tıklayın.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -204,7 +204,7 @@ DWU değişikliklerinin durumunu denetlemek için:
     ;
     ```
     
-Bu DMV, SQL havuzunuzdaki işlem ve işlem durumu gibi IN_PROGRESS veya tamamlanmış olan çeşitli yönetim işlemleri hakkında bilgi döndürür.
+Bu DMV, SQL havuzunuzdaki işlem ve işlem durumu gibi IN_PROGRESS ya da tamamlanmış olan çeşitli yönetim işlemleri hakkında bilgi döndürür.
 
 ## <a name="the-scaling-workflow"></a>Ölçeklendirme iş akışı
 
@@ -215,4 +215,4 @@ Bir ölçeklendirme işlemi başlattığınızda, sistem ilk olarak tüm açık 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Performansı yönetme hakkında daha fazla bilgi edinmek için bkz. [iş yükü yönetimi Için kaynak sınıfları](resource-classes-for-workload-management.md) ve [bellek ve eşzamanlılık limitleri] bellek-eşzamanlılık-Limits.MD).
+Performansı yönetme hakkında daha fazla bilgi edinmek için bkz. [iş yükü yönetimi Için kaynak sınıfları](resource-classes-for-workload-management.md) ve [bellek ve eşzamanlılık sınırları](memory-concurrency-limits.md).

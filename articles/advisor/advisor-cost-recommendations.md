@@ -3,17 +3,17 @@ title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma | Microsoft Doc
 description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 services: advisor
 documentationcenter: NA
-author: kasparks
+author: saket-ms
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: kasparks
-ms.openlocfilehash: 78429001b855e3347e72fbb0f0d4d3171731a8e2
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.author: sagupt
+ms.openlocfilehash: cae16430ce933b8d071696377b22f10c15b5eae5
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703041"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145396"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -21,7 +21,7 @@ Danışman, boşta ve az kullanılan kaynakları tanımlayarak Genel Azure harca
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Az kullanılan örnekleri yeniden boyutlandırarak veya kapatarak sanal makineyi harcamayı iyileştirin 
 
-Bazı uygulama senaryoları tasarım tarafından düşük kullanıma yol açabilir, ancak sanal makinelerinizin boyutunu ve sayısını yöneterek paradan tasarruf edebilirsiniz. Danışman gelişmiş değerlendirme modelleri, en yüksek CPU kullanımı değeri olan P95th ' in en fazla% 3 ' ten az olduğu ve ağ kullanımı 7 günlük bir dönemde% 2 ' den az olduğunda sanal makineleri kapatma için kabul eder. Sanal makineler, geçerli yükün daha küçük bir SKU 'da (aynı SKU ailesi içinde) veya daha küçük bir sayıdan (80 örneğin, Kullanıcı tarafından ilgili olmayan iş yükleri için değil) kullanıma sunulmadığı durumlarda doğru boyut olarak değerlendirilir. kullanıcıya yönelik iş yükü olduğunda% 40 üzerinde. Burada iş yükünün türü, iş yükünün CPU kullanım özelliklerinin analiz edilmesine göre belirlenir.
+Bazı uygulama senaryoları tasarım tarafından düşük kullanıma yol açabilir, ancak sanal makinelerinizin boyutunu ve sayısını yöneterek paradan tasarruf edebilirsiniz. Danışman gelişmiş değerlendirme modelleri, en yüksek CPU kullanımı değeri olan P95th ' in en fazla %3 ' ten az olduğu ve ağ kullanımı 7 günlük bir dönemde %2 ' den az olduğunda sanal makineleri kapatma için kabul eder. Sanal makineler, geçerli yükün daha küçük bir SKU 'da (aynı SKU ailesi içinde) sığması mümkün olduğunda doğru boyut olarak kabul edilir veya geçerli yükün Kullanıcı ile ilgili olmayan iş yükleri üzerinde %80 ' un üzerinde olmadığı ve Kullanıcı tarafından kullanıma sunulmadığı zaman %40 ' nin üzerinde olmadığı bir daha küçük sayı olarak değerlendirilir. Burada iş yükünün türü, iş yükünün CPU kullanım özelliklerinin analiz edilmesine göre belirlenir.
 
 Önerilen Eylemler, için önerilen kaynağa özgü olarak kapatılır veya yeniden boyutlandırılır. Danışman, önerilen eylemler için tahmini maliyet tasarrufu gösterir-yeniden boyutlandır veya kapat. Ayrıca, önerilen eylemi yeniden boyutlandır için, Advisor geçerli ve hedef SKU bilgilerini sağlar. 
 
@@ -50,7 +50,7 @@ Danışman, şu anda yük dengeleyiciler veya VM 'Ler gibi Azure kaynaklarıyla 
 Azure Advisor, tekrar tekrar başarısız olan Azure Data Factory işlem hatlarını algılar ve artık gerekli değilse sorunları çözmenize veya başarısız olan işlem hatlarını silmeye önerilir. Bu işlem hatları için, başarısız olduklarında hizmet vermese bile faturalandırılırsınız. 
 
 ## <a name="use-standard-snapshots-for-managed-disks"></a>Yönetilen diskler için standart anlık görüntüleri kullanma
-Maliyetin% 60 ' i kaydetmek için, üst diskin depolama türünden bağımsız olarak anlık görüntülerinizi standart depolamada depolamanızı öneririz. Bu, yönetilen diskler anlık görüntüleri için varsayılan seçenektir. Azure Danışmanı, Premium Depolama depolanan anlık görüntüleri belirler ve anlık görüntü ortamınızı Premium 'dan standart depolamaya geçirmeyi öneririz. [Yönetilen disk fiyatlandırması hakkında daha fazla bilgi edinin](https://aka.ms/aa_manageddisksnapshot_learnmore)
+Maliyetin %60 ' i kaydetmek için, üst diskin depolama türünden bağımsız olarak anlık görüntülerinizi standart depolamada depolamanızı öneririz. Bu, yönetilen diskler anlık görüntüleri için varsayılan seçenektir. Azure Danışmanı, Premium Depolama depolanan anlık görüntüleri belirler ve anlık görüntü ortamınızı Premium 'dan standart depolamaya geçirmeyi öneririz. [Yönetilen disk fiyatlandırması hakkında daha fazla bilgi edinin](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Danışmanı 'nda maliyet önerilerine erişme
 
@@ -62,7 +62,8 @@ Maliyetin% 60 ' i kaydetmek için, üst diskin depolama türünden bağımsız o
 
 Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 * [Advisor 'a giriş](advisor-overview.md)
-* [Kullanmaya Başlama](advisor-get-started.md)
+* [Kullanmaya Başlayın](advisor-get-started.md)
 * [Advisor performans önerileri](advisor-cost-recommendations.md)
 * [Danışman yüksek kullanılabilirlik önerileri](advisor-cost-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-cost-recommendations.md)
+* [Danışman Işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)

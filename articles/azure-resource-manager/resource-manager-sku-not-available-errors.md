@@ -1,24 +1,14 @@
 ---
-title: Azure SKU kullanılamıyor hataları | Microsoft Docs
+title: SKU kullanılamıyor hatası
 description: Azure Resource Manager ile kaynak dağıtımında SKU kullanılamıyor hatası ile ilgili sorunların nasıl giderileceği açıklanmaktadır.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/19/2018
-ms.author: tomfitz
-ms.openlocfilehash: fca028412052a9a1520e1178f5d182a9987a9a85
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 56afca6b6a59ca08f3fd59c4d9b3ebf12bda415a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390229"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150485"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>SKU kullanılamıyor için hataları çözün
 
@@ -40,7 +30,7 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 Seçtiğiniz kaynak SKU 'SU (VM boyutu gibi) seçtiğiniz konum için kullanılabilir olmadığında bu hatayı alırsınız.
 
-## <a name="solution-1---powershell"></a>Çözüm 1-PowerShell
+## <a name="solution-1---powershell"></a>Çözüm 1 - PowerShell
 
 Bir bölgede hangi SKU 'Ların kullanılabildiğini öğrenmek için [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) komutunu kullanın. Sonuçları konuma göre filtreleyin. Bu komut için en son PowerShell sürümüne sahip olmanız gerekir.
 
@@ -48,7 +38,7 @@ Bir bölgede hangi SKU 'Ların kullanılabildiğini öğrenmek için [Get-AzComp
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
-Sonuçlar, konum ve bu SKU için herhangi bir kısıtlama için SKU 'ların bir listesini içerir. SKU 'nun `NotAvailableForSubscription` olarak listelendiğine dikkat edin.
+Sonuçlar, konum ve bu SKU için herhangi bir kısıtlama için SKU 'ların bir listesini içerir. SKU 'nun `NotAvailableForSubscription`olarak listelendiğine dikkat edin.
 
 ```powershell
 ResourceType          Name        Locations   Restriction                      Capability           Value
@@ -58,7 +48,7 @@ virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      M
 virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
 ```
 
-## <a name="solution-2---azure-cli"></a>Çözüm 2-Azure CLı
+## <a name="solution-2---azure-cli"></a>Çözüm 2 - Azure CLI
 
 Bir bölgede hangi SKU 'Ların kullanılabildiğini öğrenmek için `az vm list-skus` komutunu kullanın. Kullandığınız konuma çıktıyı filtrelemek için `--location` parametresini kullanın. Kısmi bir boyut adına göre aramak için `--size` parametresini kullanın.
 
@@ -78,7 +68,7 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 ```
 
 
-## <a name="solution-3---azure-portal"></a>Çözüm 3-Azure portal
+## <a name="solution-3---azure-portal"></a>Çözüm 3 - Azure portalı
 
 Bir bölgede hangi SKU 'Ların kullanılabildiğini öğrenmek için [portalını](https://portal.azure.com)kullanın. Portalda oturum açın ve arabirim aracılığıyla bir kaynak ekleyin. Değerleri ayarladığınız sürece bu kaynak için kullanılabilir SKU 'Ları görürsünüz. Dağıtımı doldurmanız gerekmez.
 

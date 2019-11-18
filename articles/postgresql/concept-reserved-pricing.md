@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 795ca6f1ee45f11fe44f9c14efda1d3463dc9e7c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 753d962cbefd38ec991fb9e63805760fe07a8f2d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076823"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123879"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip PostgreSQL için Azure veritabanı işlem kaynakları için ön ödeme
 
@@ -20,7 +20,7 @@ PostgreSQL için Azure veritabanı artık, Kullandıkça Öde fiyatlarına kıya
 Ayırmayı, PostgreSQL için belirli Azure veritabanı sunucularına atamanız gerekmez. Zaten PostgreSQL için Azure veritabanı veya yeni dağıtılmış olanlar, ayrılmış fiyatlandırma avantajını otomatik olarak alır. Bir rezervasyon satın alarak, bir yıllık dönem için işlem maliyetleri için ön ödeme yaparsınız. Bir ayırma satın alarak, rezervasyon öznitelikleriyle eşleşen PostgreSQL için Azure veritabanı işlem ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Bir ayırma, PostgreSQL veritabanı sunucularıyla ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajı sona erer ve PostgreSQL için Azure veritabanı, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Ayırmalar otomatik olarak yenilemez. Fiyatlandırma bilgileri için bkz. [PostgreSQL Için Azure veritabanı ayrılmış kapasite teklifi](https://azure.microsoft.com/pricing/details/postgresql/). </br>
 
 > [!IMPORTANT]
-> Ayrılmış kapasite fiyatlandırması yalnızca PostgreSQL [Için](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) Azure veritabanı için kullanılabilir ve [hiperscale Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus-preview) dağıtımı için kullanılamaz.
+> Ayrılmış kapasite fiyatlandırması yalnızca PostgreSQL [Için](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) Azure veritabanı için kullanılabilir ve [hiperscale Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) dağıtımı için kullanılamaz.
 
 PostgreSQL için Azure veritabanı 'nın [Azure Portal](https://portal.azure.com/)ayrılmış kapasitesini satın alabilirsiniz. Ayrılmış kapasiteyi satın almak için:
 

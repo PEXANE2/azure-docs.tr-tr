@@ -1,28 +1,28 @@
 ---
 author: IEvangelist
 ms.author: dapine
-ms.date: 06/25/2019
+ms.date: 11/15/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: e36e65b90d560d7953992f875d390c123c8ae7f4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c414bfed40385c2bad6eaaff6b391f57c8d898cb
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704282"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125631"
 ---
-## <a name="blog-posts"></a>Blog yazıları
+## <a name="blog-posts"></a>Blog gönderileri
 
-* [Çalışan kapsayıcılar Bilişsel hizmetler](https://azure.microsoft.com/blog/running-cognitive-service-containers/)
-* [Bilişsel hizmetler Language Understanding kapsayıcısı ile çalışmaya başlama](https://azure.microsoft.com/blog/getting-started-with-cognitive-services-language-understanding-container/)
+* [Bilişsel hizmetler kapsayıcılarını çalıştırma](https://azure.microsoft.com/blog/running-cognitive-service-containers/)
+* [Azure Bilişsel Hizmetler](https://azure.microsoft.com/blog/topics/cognitive-services/)
 
 ## <a name="developer-samples"></a>Geliştirici örnekleri
 
-Geliştirici Örnekleri kullanıma sunduğumuz [GitHub deposu](https://github.com/Azure-Samples/cognitive-services-containers-samples).
+Geliştirici örnekleri, [GitHub deponuzda](https://github.com/Azure-Samples/cognitive-services-containers-samples)bulunabilir.
 
-## <a name="view-webinar"></a>Web seminerini izleyin 
+## <a name="view-webinar"></a>Web seminerini izleyin
 
-Birleştirme [Web Semineri](https://info.microsoft.com/AP-AZUREPLAT-WBNR-FY19-03Mar-20-Seamlesslyintegrateapplicationsdataandprocesses-MCW0012283_02OnDemandRegistration-ForminBody.html) hakkında bilgi edinmek için:
+Hakkında bilgi edinmek için Web [seminerine](https://info.microsoft.com/AP-AZUREPLAT-WBNR-FY19-03Mar-20-Seamlesslyintegrateapplicationsdataandprocesses-MCW0012283_02OnDemandRegistration-ForminBody.html) katılın:
 
-* Bilişsel hizmetler, Docker kullanan herhangi bir makineye dağıtma
-* Bilişsel hizmetler AKS'ye dağıtma
+* Bilişsel hizmetler 'i Docker kullanarak herhangi bir makineye dağıtma
+* Bilişsel hizmetler 'i AKS 'e dağıtma

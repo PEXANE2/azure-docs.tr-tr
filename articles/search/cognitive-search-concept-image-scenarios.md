@@ -1,5 +1,5 @@
 ---
-title: Bir zenginleştirme ardışık düzeninde bulunan görüntülerden metin işleme ve ayıklama
+title: Görüntülerden metin Ayıkla
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama işlem hatları 'ndaki görüntülerden metin ve diğer bilgileri işleyin ve ayıklayın.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787748"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113841"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI zenginleştirme senaryolarında görüntülerden bilgi işleme ve ayıklama
 
@@ -62,7 +62,7 @@ Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](https://docs.microsoft
 
 | Görüntü üyesi       | Açıklama                             |
 |--------------------|-----------------------------------------|
-| Verileri               | JPEG biçimindeki normalleştirilmiş görüntünün BASE64 kodlamalı dizesi.   |
+| data               | JPEG biçimindeki normalleştirilmiş görüntünün BASE64 kodlamalı dizesi.   |
 | Genişlik              | Normalleştirilmiş resmin piksel cinsinden genişliği. |
 | Yükseklik             | Normalleştirilmiş resmin piksel cinsinden yüksekliği. |
 | originalWidth      | Normalleştirme yapmadan önce resmin orijinal genişliği. |
@@ -162,7 +162,7 @@ Aşağıdaki örnek Beceri, belgenizin metinsel içeriğini içeren bir *merged_
 }
 ```
 
-Artık bir merged_text alanı olduğuna göre, Dizin Oluşturucu tanımınızda aranabilir bir alan olarak eşleyebilirsiniz. Resimlerin metni de dahil olmak üzere dosyalarınızın tüm içeriği aranabilir olacaktır.
+Artık merged_text alana sahip olduğunuza göre, Dizin Oluşturucu tanımınızda aranabilir bir alan olarak eşleyebilirsiniz. Resimlerin metni de dahil olmak üzere dosyalarınızın tüm içeriği aranabilir olacaktır.
 
 ## <a name="visualize-bounding-boxes-of-extracted-text"></a>Ayıklanan metnin sınırlayıcı kutularını görselleştirin
 

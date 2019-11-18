@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 46c983fcf863c6948c6107b2213879c65396ed39
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5f497bd06868d586f8378cb81e870a750b8a1670
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684036"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122889"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
 
@@ -194,7 +194,7 @@ Yayımla dalını yapılandırmak için-diğer bir deyişle, Kaynak Yöneticisi 
 }
 ```
 
-Yeni bir yayımlama dalı belirttiğinizde, Data Factory önceki yayımlama dalını silmez. Önceki yayımlama dalını uzak yapmak istiyorsanız el ile silin.
+Yeni bir yayımlama dalı belirttiğinizde, Data Factory önceki yayımlama dalını silmez. Önceki yayımlama dalını kaldırmak istiyorsanız el ile silin.
 
 > [!NOTE]
 > Data Factory, fabrikası yüklerken yalnızca `publish_config.json` dosyayı okur. Portalda zaten fabrika yüklüyse, değişikliklerinizin geçerli olması için tarayıcıyı yenileyin.

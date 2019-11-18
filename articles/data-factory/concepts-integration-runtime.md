@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 7475d660fd2fa64ce69e7c23e0bad518fffddd26
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2b90d95d41bb30226d870a74a47327d6492bbd1e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681506"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122936"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanı
 Integration Runtime (IR), Azure Data Factory tarafından farklı ağ ortamlarında aşağıdaki veri tümleştirme özelliklerini sunmak için kullanılan işlem altyapısıdır:
@@ -78,6 +78,9 @@ Kendinden konak IR şu özelliklere sahiptir:
 
 > [!NOTE] 
 > Şirket içinde barındırılan tümleştirme çalışma zamanını, SAP HANA, MySQL vb. gibi kendi sürücüsünü getir gerektiren veri depolarını desteklemek için kullanın.  Daha fazla bilgi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+
+> [!NOTE] 
+> Java Runtime Environment (JRE), kendine barındırılan IR 'nin bir bağımlılığı. Lütfen JRE 'nin aynı konakta yüklü olduğundan emin olun.
 
 ### <a name="self-hosted-ir-network-environment"></a>Kendinden konak IR ağ ortamı
 Ortak bulut ortamından ulaşılamayan özel ağ ortamında güvenli bir şekilde veri tümleştirmesi gerçekleştirmek istiyorsanız kurumsal güvenlik duvarının arkasına veya bir sanal özel ağ içine kendinden konak IR yükleyebilirsiniz.  Kendinden konak tümleştirme çalışma zamanı yalnızca açık internete giden HTTP tabanlı bağlantılar oluşturur.

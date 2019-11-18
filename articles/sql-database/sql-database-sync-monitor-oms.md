@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 031482fc0b87e095fcb19046564e15642050f261
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0ed0bd3544fff89c8230267e3d6d8826c5ae3c7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820809"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114606"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle SQL Data Sync izleme 
 
@@ -61,7 +61,7 @@ Aşağıdaki iki örneği indirin:
 
 -   [Veri eşitleme Azure Izleyici görünümü](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki şeyleri ayarladığınızdan emin olun:
 
@@ -137,7 +137,7 @@ Azure Izleyici günlüklerini kullanan bir uyarı oluşturmak için aşağıdaki
 
 2.  Seçtiğiniz Aralık dahilinde eşitleme grubuna göre hataları ve uyarıları seçmek için bir sorgu oluşturun. Örneğin:
 
-    `DataSyncLog_CL | where TimeGenerated > ago(60m) | where LogLevel_s != "Success" | summarize count() by SyncGroupName_s`
+    `DataSyncLog_CL | where LogLevel_s != "Success" | summarize AggregatedValue = count() by bin(TimeGenerated,60m),SyncGroupName_s`
 
 3.  Sorguyu çalıştırdıktan sonra, **Uyarı**yazan zili seçin.
 
@@ -149,7 +149,7 @@ Azure Izleyici günlüklerini kullanan bir uyarı oluşturmak için aşağıdaki
 
 5.  **Eylemler**altında, **e-posta bildirimini** "Evet" olarak ayarlayın. İstenen e-posta alıcılarını girin.
 
-6.  **Kaydet** düğmesine tıklayın. Belirtilen alıcılar artık hata oluştuğunda e-posta bildirimleri alıyor.
+6.  **Kaydet**’e tıklayın. Belirtilen alıcılar artık hata oluştuğunda e-posta bildirimleri alıyor.
 
 ## <a name="create-an-azure-monitor-view-for-monitoring"></a>Izleme için bir Azure Izleyici görünümü oluşturma
 
@@ -206,7 +206,7 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
     - PowerShell ile
         -  [PowerShell kullanarak birden çok Azure SQL veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak bir Azure SQL Veritabanı ile SQL Server şirket içi veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Veri eşitleme Aracısı- [Azure SQL Data Sync Için veri eşitleme Aracısı](sql-database-data-sync-agent.md)
+-   Veri Eşitleme Aracısı - [veri Aracısı Azure SQL Data Sync için eşitleme](sql-database-data-sync-agent.md)
 -   En iyi uygulamalar- [Azure SQL Data Sync Için en iyi yöntemler](sql-database-best-practices-data-sync.md)
 -   Sorun giderme- [Azure SQL Data Sync sorunlarını giderme](sql-database-troubleshoot-data-sync.md)
 -   Eşitleme şemasını güncelleştirme

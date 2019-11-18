@@ -1,17 +1,14 @@
 ---
-title: Azure Pipelines ve Kaynak Yöneticisi şablonlarıyla CI/CD
+title: Azure Pipelines ve şablonlar ile CI/CD
 description: Kaynak Yöneticisi şablonlarını dağıtmak üzere Visual Studio 'da Azure Kaynak grubu dağıtım projelerini kullanarak Azure Pipelines sürekli tümleştirmenin nasıl ayarlanacağını açıklar.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.author: tomfitz
-ms.openlocfilehash: 9306ff8787a4e2b873cb11458a4cf9a10589bf6b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 51122e314ebd0a97647fc4026b1f49619950c351
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597507"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143759"
 ---
 # <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Kaynak Yöneticisi şablonlarını Azure Pipelines ile tümleştirme
 
@@ -75,21 +72,21 @@ steps:
     azurePowerShellVersion: LatestVersion
 ```
 
-Görevi `AzurePowerShell@3` ayarladığınızda, işlem hattı, bağlantının kimliğini doğrulamak için Azurerd modülünden komutlar kullanır. Varsayılan olarak, Visual Studio projesindeki PowerShell betiği Azurerd modülünü kullanır. Komut dosyanızı [az modülünü](/powershell/azure/new-azureps-module-az)kullanacak şekilde güncelleştirdiyseniz, görevi `AzurePowerShell@4` olarak ayarlayın.
+Görevi `AzurePowerShell@3`ayarladığınızda, işlem hattı, bağlantının kimliğini doğrulamak için Azurerd modülünden komutlar kullanır. Varsayılan olarak, Visual Studio projesindeki PowerShell betiği Azurerd modülünü kullanır. Komut dosyanızı [az modülünü](/powershell/azure/new-azureps-module-az)kullanacak şekilde güncelleştirdiyseniz, görevi `AzurePowerShell@4`olarak ayarlayın.
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-@No__t_0 için, oluşturduğunuz hizmet bağlantısının adını sağlayın.
+`azureSubscription`için, oluşturduğunuz hizmet bağlantısının adını sağlayın.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-@No__t_0 için, işlem hattı dosyasından betiğe göreli yol belirtin. Yolu görmek için deponuza bakabilirsiniz.
+`scriptPath`için, işlem hattı dosyasından betiğe göreli yol belirtin. Yolu görmek için deponuza bakabilirsiniz.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
@@ -157,13 +154,13 @@ Aşağıdaki YAML, [Azure dosya kopyalama görevini](/azure/devops/pipelines/tas
     sasTokenTimeOutInMinutes: '240'
 ```
 
-Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır. @No__t_0, işlem hattı dosyasına göre yapıtların konumunu gösterir. Bu örnekte, dosyalar, projenin adı olan `AzureResourceGroup1` adlı bir klasörde bulunur.
+Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır. `SourcePath`, işlem hattı dosyasına göre yapıtların konumunu gösterir. Bu örnekte, dosyalar, projenin adı olan `AzureResourceGroup1` adlı bir klasörde bulunur.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-@No__t_0 için, oluşturduğunuz hizmet bağlantısının adını sağlayın.
+`azureSubscription`için, oluşturduğunuz hizmet bağlantısının adını sağlayın.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
@@ -197,7 +194,7 @@ Aşağıdaki YAML, [Azure Resource Manager şablonu dağıtım görevini](https:
 
 Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır.
 
-- `deploymentScope`: `Management Group`, `Subscription` ve `Resource Group` seçeneklerden dağıtım kapsamını seçin. Bu kılavuzda **kaynak grubunu** kullanın. Kapsamlar hakkında daha fazla bilgi edinmek için bkz. [dağıtım kapsamları](./resource-group-template-deploy-rest.md#deployment-scope).
+- `deploymentScope`: `Management Group`, `Subscription` ve `Resource Group`seçeneklerden dağıtım kapsamını seçin. Bu kılavuzda **kaynak grubunu** kullanın. Kapsamlar hakkında daha fazla bilgi edinmek için bkz. [dağıtım kapsamları](./resource-group-template-deploy-rest.md#deployment-scope).
 
 - `ConnectedServiceName`: oluşturduğunuz hizmet bağlantısının adını belirtin.
 

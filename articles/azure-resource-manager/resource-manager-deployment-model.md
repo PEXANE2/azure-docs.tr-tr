@@ -1,19 +1,16 @@
 ---
-title: Resource Manager ve klasik dağıtım | Microsoft Docs
+title: Resource Manager ve klasik dağıtım
 description: Resource Manager dağıtım modeli ile klasik (veya Hizmet Yönetimi) dağıtım modeli arasındaki farklılıkları açıklar.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.author: tomfitz
-ms.openlocfilehash: 9356a1603a39f2ac4d18b27445bf0f8d3a555d7e
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 3cca9c71c754b39d065a599c5bb116176ec89408
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982467"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150615"
 ---
-# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager ile klasik dağıtım karşılaştırması: Dağıtım modellerini ve kaynaklarınızın durumunu anlayın
+# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager ile klasik dağıtım karşılaştırması: Dağıtım modellerini ve kaynaklarınızın durumunu anlama
 
 > [!NOTE]
 > Bu makalede sağlanan bilgiler, yalnızca klasik dağıtımdan Azure Resource Manager dağıtımına geçiş yaptığınızda kullanılır.

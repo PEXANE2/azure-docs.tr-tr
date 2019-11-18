@@ -1,19 +1,16 @@
 ---
-title: Öğretici-Azure hızlı başlangıç şablonlarını kullanma | Microsoft Docs
+title: Öğretici-hızlı başlangıç şablonlarını kullanma
 description: Şablon geliştirmeyi tamamlamaya yönelik Azure hızlı başlangıç şablonlarını nasıl kullanacağınızı öğrenin.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a29d86d105579dda7c12b885e2977406f7b598a4
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: e38dfcd524a1b8fec8934a3a118147e358614a7b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001490"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143745"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Öğretici: Azure hızlı başlangıç şablonlarını kullanma
 
@@ -50,7 +47,7 @@ Hızlı başlangıç şablonunu mevcut şablonla birleştirin:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json?range=1-108&highlight=32-45,49,85-100)]
 
-WebApp adının Azure genelinde benzersiz olması gerekir. Yinelenen adlara sahip olmasını engellemek için, **webappportalname** değişkeni **"webappportalname" kaynağından güncelleştirilmiştir: "[Concat (Parameters (' webappname '), '-WebApp ')]"** , " **webappportalname": "[Concat (Parametreler (' webappname '), uniqueString (resourceGroup (). ID))] "** .
+WebApp adının Azure genelinde benzersiz olması gerekir. Bir yinelenen ad olmaması için, **webappportalname** değişkeni **"webappportalname": "[Concat (Parameters (' webappname '), '-WebApp ')]"** yerine **"webappportalname": "[Concat (Parametreler (' Webappname '), benzersiz dize (resourceGroup (). ID)]"** olarak güncelleştirilmiştir.
 
 Kaynak tanımını `Microsoft.Web/sites` tanımından ayırmak için `Microsoft.Web/serverfarms` tanımının sonuna virgül ekleyin.
 

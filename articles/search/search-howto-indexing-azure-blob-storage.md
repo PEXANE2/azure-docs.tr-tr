@@ -1,5 +1,5 @@
 ---
-title: Tam metin araması için Azure Blob depolama içeriğini Dizin
+title: Azure Blob depolama içeriğini arama
 titleSuffix: Azure Cognitive Search
 description: Azure Blob depolama alanını dizinlemeyi ve Azure Bilişsel Arama ile belgelerden metin ayıklamayı öğrenin.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b093525fcabc31074b398444a2fceffd0f6d3493
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4f662df6692e03cf3eb948b0d8e2ae51002e815d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791785"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113016"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Blob depolamada belge dizin oluşturma
 
@@ -30,7 +30,7 @@ Blob Indexer aşağıdaki belge biçimlerinden metin ayıklayabilir:
 ## <a name="setting-up-blob-indexing"></a>Blob dizinlemeyi ayarlama
 Kullanarak bir Azure Blob depolama Dizin Oluşturucu ayarlayabilirsiniz:
 
-* [Azure portalda](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Bilişsel Arama [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Bilişsel Arama [.NET SDK](https://aka.ms/search-sdk)
 
@@ -70,7 +70,7 @@ Veri kaynağı API 'SI oluşturma hakkında daha fazla bilgi için bkz. [veri ka
 
 Blob kapsayıcısının kimlik bilgilerini şu yollarla sağlayabilirsiniz:
 
-- **Tam erişimli depolama hesabı bağlantı dizesi**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Azure Portal depolama hesabı dikey penceresine giderek > Ayarlar > anahtarlar (klasik depolama hesapları için) veya ayarlar > erişim anahtarları (Azure için Kaynak Yöneticisi depolama hesapları).
+- **Tam erişimli depolama hesabı bağlantı dizesi**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Azure Portal depolama hesabı dikey penceresine giderek > Ayarlar > anahtarlar (klasik depolama hesapları için) veya ayarlar > erişim anahtarları (Azure Resource Manager depolama hesapları için) üzerinden bağlantı dizesini alabilir.
 - **Depolama hesabı paylaşılan erişim imzası** (SAS) bağlantı dizesi: sas 'lar `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` kapsayıcılar ve nesneler üzerinde (Bu durumda Bloblar) liste ve okuma izinlerine sahip olmalıdır.
 -  **Kapsayıcı paylaşılan erişim imzası**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` sa 'lar, kapsayıcıda liste ve okuma izinlerine sahip olmalıdır.
 
@@ -162,7 +162,7 @@ Azure Bilişsel Arama 'de belge anahtarı bir belgeyi benzersiz şekilde tanıml
 
 Hangi ayıklanan alanın, dizininiz için anahtar alanla eşleşmesi gerektiğini dikkatle düşünmeniz gerekir. Adaylar şunlardır:
 
-* **meta veri\_depolama\_adı** -bu kullanışlı bir aday olabilir, ancak farklı klasörlerde aynı ada sahip bloblarınız olabilir ve 2) ad belgede geçersiz karakterler içerebilir çizgiler gibi anahtarlar. `base64Encode` [alan eşleme işlevini](search-indexer-field-mappings.md#base64EncodeFunction) kullanarak geçersiz karakterlerle uğraşabilir. bunu yaparsanız, arama gibi API çağrılarına geçirirken belge anahtarlarını kodlamayı unutmayın. (Örneğin, .NET 'te bu amaçla [UrlTokenEncode yöntemini](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) kullanabilirsiniz).
+* **meta veri\_depolama\_adı** -bu kullanışlı bir aday olabilir, ancak bu, farklı klasörlerde aynı ada sahip bloblarınız olabileceği ve 2) ad, çizgiler gibi belge anahtarlarında geçersiz karakterler içeriyor olabilir. `base64Encode` [alan eşleme işlevini](search-indexer-field-mappings.md#base64EncodeFunction) kullanarak geçersiz karakterlerle uğraşabilir. bunu yaparsanız, arama gibi API çağrılarına geçirirken belge anahtarlarını kodlamayı unutmayın. (Örneğin, .NET 'te bu amaçla [UrlTokenEncode yöntemini](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) kullanabilirsiniz).
 * **meta veri\_depolama\_yolu** -tam yolun kullanılması benzersizlik sağlar, ancak yol kesinlikle [bir belge anahtarında geçersiz](https://docs.microsoft.com/rest/api/searchservice/naming-rules)`/` karakterler içerir.  Yukarıdaki gibi, `base64Encode` [işlevini](search-indexer-field-mappings.md#base64EncodeFunction)kullanarak anahtarları kodlama seçeneğiniz vardır.
 * Yukarıdaki seçeneklerden hiçbiri sizin için işe çalışmadıysanız, bloblara özel meta veri özelliği ekleyebilirsiniz. Ancak, bu seçenek, bu meta veri özelliğini tüm bloblara eklemek için blob karşıya yükleme işleminizi gerektirir. Anahtar gerekli bir özellik olduğundan, bu özelliğe sahip olmayan tüm Blobların dizini oluşturulamaz.
 
@@ -255,8 +255,8 @@ Yukarıda açıklanan yapılandırma parametreleri tüm Bloblar için geçerlidi
 
 | Özellik adı | Özellik değeri | Açıklama |
 | --- | --- | --- |
-| AzureSearch_Skip |değeri |Blob Dizin oluşturucuyu blobu tamamen atlayacak şekilde yönlendirir. Meta veri veya içerik ayıklama denenmez. Bu, belirli bir blob sürekli olarak başarısız olduğunda ve dizin oluşturma işlemini kesintiye uğradığında yararlı olur. |
-| AzureSearch_SkipContent |değeri |Bu, [yukarıda](#PartsOfBlobToIndex) belirtilen bir Blobun kapsamına alınan `"dataToExtract" : "allMetadata"` ayarından eşdeğerdir. |
+| AzureSearch_Skip |"true" |Blob Dizin oluşturucuyu blobu tamamen atlayacak şekilde yönlendirir. Meta veri veya içerik ayıklama denenmez. Bu, belirli bir blob sürekli olarak başarısız olduğunda ve dizin oluşturma işlemini kesintiye uğradığında yararlı olur. |
+| AzureSearch_SkipContent |"true" |Bu, [yukarıda](#PartsOfBlobToIndex) belirtilen bir Blobun kapsamına alınan `"dataToExtract" : "allMetadata"` ayarından eşdeğerdir. |
 
 <a name="DealingWithErrors"></a>
 ## <a name="dealing-with-errors"></a>Hatalarla ilgilenme
@@ -280,7 +280,7 @@ Azure Bilişsel Arama, dizini oluşturulmuş Blobların boyutunu sınırlandır�
 
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
-Blob 'ları ayrıştırırken veya bir dizine belge eklerken, herhangi bir işlem noktasında hatalar meydana geliyorsa dizin oluşturmaya da devam edebilirsiniz. Belirli sayıda hatayı yoksaymak için `maxFailedItems` ve `maxFailedItemsPerBatch` yapılandırma parametrelerini istenen değerlere ayarlayın. Örnek:
+Blob 'ları ayrıştırırken veya bir dizine belge eklerken, herhangi bir işlem noktasında hatalar meydana geliyorsa dizin oluşturmaya da devam edebilirsiniz. Belirli sayıda hatayı yoksaymak için `maxFailedItems` ve `maxFailedItemsPerBatch` yapılandırma parametrelerini istenen değerlere ayarlayın. Örneğin:
 
     {
       ... other parts of indexer definition

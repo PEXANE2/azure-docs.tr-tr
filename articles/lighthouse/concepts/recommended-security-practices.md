@@ -1,18 +1,14 @@
 ---
 title: Önerilen güvenlik uygulamaları
 description: Azure Temsilcili kaynak yönetimini kullanırken, güvenlik ve erişim denetimi göz önünde bulundurmanız önemlidir.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 08a54313885c7d38117c242f01c2780796f38a08
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: e0f0a9d4cdd56ff1bca9b9faf493d3e0d68e558c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286188"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132458"
 ---
 # <a name="recommended-security-practices"></a>Önerilen güvenlik uygulamaları
 
@@ -34,10 +30,10 @@ Yönetimi kolaylaştırmak için, müşterilerinizin kaynaklarını yönetmek i�
 
 |Grup adı  |Tür  |PrincipalId  |Rol tanımı  |Rol tanımı KIMLIĞI  |
 |---------|---------|---------|---------|---------|
-|Ları     |Kullanıcı grubu         |\<Principalıd @ no__t-1         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
-|Değerlendirme     |Kullanıcı grubu         |\<Principalıd @ no__t-1         |Okuyucu         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
-|VM uzmanları     |Kullanıcı grubu         |\<Principalıd @ no__t-1         |VM Katılımcısı         |9980e02c-c2be-4d73-94E8-173b1dc7cf3c  |
-|Otomasyon     |Hizmet asıl adı (SPN)         |\<Principalıd @ no__t-1         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Ları     |Kullanıcı grubu         |\<PrincipalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Değerlendirme     |Kullanıcı grubu         |\<PrincipalId\>         |Okuyucu         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
+|VM uzmanları     |Kullanıcı grubu         |\<PrincipalId\>         |VM Katılımcısı         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
+|Otomasyon     |Hizmet asıl adı (SPN)         |\<PrincipalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
 Bu grupları oluşturduktan sonra, gerektiğinde kullanıcıları atayabilirsiniz. Yalnızca, erişimi olması gereken kullanıcıları ekleyin. Grup üyeliğini düzenli olarak gözden geçirdiğinizden emin olun ve artık uygun veya gerekli olmayan tüm kullanıcıları kaldırın.
 

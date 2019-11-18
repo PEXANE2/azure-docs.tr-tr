@@ -1,5 +1,5 @@
 ---
-title: Konuşma cihazları SDK Microphone dizi önerileri-konuşma hizmeti
+title: Konuşma cihazları SDK 'Sı dizi önerileri
 titleSuffix: Azure Cognitive Services
 description: Konuşma cihazları SDK 'Sı dizi önerileri. Bu dizi geometrileri, Microsoft ses yığını ile kullanım için önerilir.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 0a0bbbb59d09d35d0153f56f65b2ee1d9438e49d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e39056d6ed1ced85e3f953bcbd7f04dd6311942c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072393"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111649"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Konuşma cihazları SDK 'Sı dizi önerileri
 
@@ -41,16 +41,16 @@ Mikrofon bileşenleri, gürültü ve deformasyon dışında bir sinyali sorunsuz
 
 Mikrofonlar seçerken önerilen özellikler şunlardır:
 
-| Parametre                     | Önerilen                                         |
-| ----------------------------- | --------------------------------------------------- |
-| SNR                           | \>= 65 dB (1 kHz sinyal 94 dBSPL, A-ağırlıklı gürültü) |
-| Genlik eşleştirme            | ± 1 dB @ 1 kHz                                      |
-| Aşama eşleştirme                | ± 2 ° @ 1 kHz                                        |
-| Akustik aşırı yükleme noktası (AOP) | \>= 120 dBSPL (THD = %10)                           |
-| Bit hızı                      | En az 24 bit                                      |
-| Örnekleme Oranı                 | En düşük 16 kHz\*                                    |
-| Sıklık yanıtı            | ± 3 dB, 200-8000 Hz kayan maske\*                 |
-| Güvenilirlik                   | Depolama sıcaklığı aralığı-40 °C ila 70 °C<br />İşletim sıcaklığı aralığı-20 °C ila 55 °C |
+| Parametre | Önerilen |
+| --------- | ----------- |
+| SNR | \>= 65 dB (1 kHz sinyal 94 dBSPL, A-ağırlıklı gürültü) |
+| Genlik eşleştirme | ± 1 dB @ 1 kHz |
+| Aşama eşleştirme | ± 2 ° @ 1 kHz |
+| Akustik aşırı yükleme noktası (AOP) | \>= 120 dBSPL (THD = %10) |
+| Bit hızı | En az 24 bit |
+| Örnekleme Oranı | En düşük 16 kHz\* |
+| Sıklık yanıtı | ± 3 dB, 200-8000 Hz kayan maske\* |
+| Güvenilirlik | Depolama sıcaklığı aralığı-40 °C ila 70 °C<br />İşletim sıcaklığı aralığı-20 °C ila 55 °C |
 
 _yüksek kaliteli iletişimler (VoIP) uygulamaları için \*daha yüksek örnekleme oranları veya "daha geniş" Sıklık aralıkları_ gerekebilir
 
@@ -68,7 +68,7 @@ Bir cihazla tümleşik hale geldiğinde Microphone dizisinin performansı, bile�
 | %\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, 5 sipariş             |
 | Sıklık yanıtı | ± 6 dB, 200-8000 Hz kayan maske\*\*              |
 
-_düşük bir deformasyon \*, (örn. Neumann KH120) bir konuşmacı olması gerekir_
+\*\*_düşük bir deformasyon hoparlörünün ölçülmesi gerekir (örn. Neumann KH120)_
 
 _yüksek kaliteli iletişimler (VoIP) uygulamaları için \*\*"daha geniş" Sıklık aralıkları_ gerekebilir
 

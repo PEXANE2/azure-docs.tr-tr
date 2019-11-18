@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: 27321dbcdeae3a830b6ddf5ea70cbaa098d7e4e3
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 06bdcc1cd4f9bfcb1a77140d70435545fbe01079
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931505"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148775"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>ACR görevlerinde çok adımlı derleme, test ve düzeltme eki görevleri çalıştırma
 
@@ -84,7 +84,7 @@ steps:
   - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
 ```
 
-Birçok senaryo için, tüm çok adımlı görev YAML dosyaları ve Dockerfiles için [görev örneklerine][task-examples] bakın.
+Çeşitli senaryolar için bkz. çok adımlı görev YAML dosyaları ve Dockerfiles için [görev örnekleri](container-registry-tasks-samples.md) .
 
 ## <a name="run-a-sample-task"></a>Örnek görev çalıştırma
 
@@ -155,7 +155,7 @@ Git işlemesinde veya temel görüntü güncelleştirmesinde otomatik yapılar h
 Çok adımlı görev başvurusunu ve örnekleri buradan bulabilirsiniz:
 
 * [Görev başvurusu](container-registry-tasks-reference-yaml.md) -görev adımı türleri, özellikleri ve kullanımı.
-* [Görev örnekleri][task-examples] -basit ve karmaşık olmak üzere çeşitli senaryolar için dosya `task.yaml` örnek.
+* [Görev örnekleri](container-registry-tasks-samples.md) -birkaç senaryo için basit ve karmaşık olan Docker dosyaları örnek `task.yaml`.
 * [Cmd deposu](https://github.com/AzureCR/cmd) -ACR görevleri için komut olarak kapsayıcı koleksiyonu.
 
 <!-- IMAGES -->

@@ -1,5 +1,5 @@
 ---
-title: Portalda Azure yönetim erişimi için RBAC rolleri ayarlama
+title: Azure yönetim erişimi için RBAC rollerini ayarlama
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama Yönetimi için yönetim görevlerini denetleme ve bunların yetkisini aktarmaya yönelik Azure portal rol tabanlı yönetim denetimi (RBAC).
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 321aabb26d5929f7587dd61e7d4059701f7ad526
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9262d01e35bd03a9116a30b070b023f578f0b15a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794318"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112565"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure Bilişsel Arama yönetim erişimi için RBAC rolleri ayarlama
 

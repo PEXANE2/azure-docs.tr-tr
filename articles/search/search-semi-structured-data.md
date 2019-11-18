@@ -1,5 +1,5 @@
 ---
-title: 'REST öğreticisi: JSON Bloblarında yarı strutured verilerinin dizinini oluşturma'
+title: 'Öğretici: JSON Bloblarında yarı strutured verileri dizin oluştur'
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama REST API 'Leri ve Postman kullanarak yarı yapılandırılmış Azure JSON bloblarını dizin oluşturma ve arama hakkında bilgi edinin.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 569289a2d750f96423bd03ac82cb9e33f893ee15
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d8d3204c8a5ace17ae47a17d4c4ffec2ec7977f2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794283"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112256"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST öğreticisi: Azure Bilişsel Arama yarı yapılandırılmış verileri (JSON blob 'ları) dizin ve arama
 
@@ -269,7 +269,7 @@ Az önce oluşturduğunuz dizini seçtiğinizden emin olun.
 
 ### <a name="user-defined-metadata-search"></a>Kullanıcı tanımlı meta veri araması
 
-Önceden olduğu gibi veriler birçok şekilde sorgulanabilir: tam metin araması, sistem özellikleri veya kullanıcı tanımlı meta veriler. Hem sistem özellikleri hem de kullanıcı tanımlı meta veriler yalnızca hedef dizin oluşturulurken **alınabilir** olarak işaretlendiyse `$select` parametresiyle aranabilir. Dizindeki parametreler oluşturulduktan sonra değiştirilemez. Ancak ek parametreler eklenebilir.
+Önceden olduğu gibi veriler birçok şekilde sorgulanabilir: tam metin araması, sistem özellikleri veya kullanıcı tanımlı meta veriler. Hem sistem özellikleri hem de kullanıcı tanımlı meta veriler yalnızca hedef dizin oluşturulurken `$select`alınabilir**olarak işaretlendiyse** parametresiyle aranabilir. Dizindeki parametreler oluşturulduktan sonra değiştirilemez. Ancak ek parametreler eklenebilir.
 
 Temel bir sorgu örneği `$select=Gender,metadata_storage_size` olup bu, dönüşü bu iki parametreyle sınırlar.
 

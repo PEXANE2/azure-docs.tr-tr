@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 360fa750da054f9b126a8694f3dd2ce4b0b417b7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8e497d18e39a199f34ff76b11b0e6c2c213f35fb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240311"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129840"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -50,11 +50,11 @@ Linux karma Runbook Worker için en düşük gereksinimler şunlardır:
 |--------------------- | --------------------- | -------------------|
 |GLIBC |GNU C Kitaplığı| 2.5-12 |
 |Openssl| OpenSSL kitaplıkları | 1,0 (TLS 1,1 ve TLS 1,2 desteklenir|
-|kıvr | Web istemcisini kıvır | 7.15.5|
+|Kıvr | Web istemcisini kıvır | 7.15.5|
 |Python-ctypes | Python 2. x gereklidir |
-|KULLANICISI | Takılabilir kimlik doğrulama modülleri|
+|KULLANıCıSı | Takılabilir kimlik doğrulama modülleri|
 | **İsteğe bağlı paket** | **Açıklama** | **En düşük sürüm**|
-| PowerShell Core | PowerShell runbook 'larını çalıştırmak için PowerShell 'in yüklenmesi gerekir, bkz. yükleme hakkında bilgi edinmek için [Linux 'Ta PowerShell Core 'U yükleme](/powershell/scripting/setup/installing-powershell-core-on-linux) .  | 6.0.0 |
+| PowerShell Core | PowerShell runbook 'larını çalıştırmak için PowerShell 'in yüklenmesi gerekir, bkz. yükleme hakkında bilgi edinmek için [Linux 'Ta PowerShell Core 'U yükleme](/powershell/scripting/install/installing-powershell-core-on-linux) .  | 6.0.0 |
 
 ### <a name="installation"></a>Yükleme
 
@@ -69,7 +69,7 @@ Devam etmeden önce Otomasyon hesabınızın bağlı olduğu Log Analytics çal�
          Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
         ```
 
-1. Aşağıdaki komutu çalıştırarak Linux için Log Analytics aracısını yükler. Workspace \<ID\> veWorkspaceKeydeğerlerini\> çalışma alanınızdan uygun değerlerle değiştirin. \<
+1. Aşağıdaki komutu çalıştırarak Linux için Log Analytics aracısını yükler. \<çalışma alanı kimliği\> ve \<WorkspaceKey\> çalışma alanınızdan uygun değerlerle değiştirin.
 
    [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
@@ -86,7 +86,7 @@ Devam etmeden önce Otomasyon hesabınızın bağlı olduğu Log Analytics çal�
 1. Komut tamamlandıktan sonra, Azure portal **karma çalışan grupları** sayfasında yeni grup ve üye sayısı gösterilir. Bu, var olan bir gruptur, üye sayısı artırılır. **Karma çalışan grupları** sayfasında listeden grubu seçebilir ve **hibrit çalışanlar** kutucuğunu seçebilirsiniz. **Karma çalışanlar** sayfasında, grubun her bir üyesini listede görürsünüz.
 
 > [!NOTE]
-> Azure VM için Linux için Azure izleyici sanal makine uzantısını kullanıyorsanız, otomatik yükseltme sürümleri karma Runbook Worker ile `autoUpgradeMinorVersion` sorun oluşmasına neden olabileceği için false ayarını yapmanız önerilir. Uzantıyı el ile yükseltme hakkında bilgi edinmek için bkz. [Azure CLI dağıtımı ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
+> Bir Azure VM için Linux için Azure Izleyici sanal makine uzantısı ' nı kullanıyorsanız, otomatik yükseltme sürümleri karma Runbook Worker 'a neden olabileceği için `autoUpgradeMinorVersion` false olarak ayarlamayı öneririz. Uzantıyı el ile yükseltme hakkında bilgi edinmek için bkz. [Azure CLI dağıtımı ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
 
 ## <a name="turning-off-signature-validation"></a>İmza doğrulamasını kapatma
 
@@ -106,7 +106,7 @@ Aşağıdaki runbook türleri bir Linux karma çalışanı üzerinde çalışır
 * PowerShell
 
   > [!NOTE]
-  > PowerShell runbook 'ları, Linux makinesinde PowerShell Core 'un yüklü olmasını gerektirir. Yükleme hakkında bilgi edinmek için bkz. [Linux üzerinde PowerShell Core yükleme](/powershell/scripting/setup/installing-powershell-core-on-linux) .
+  > PowerShell runbook 'ları, Linux makinesinde PowerShell Core 'un yüklü olmasını gerektirir. Yükleme hakkında bilgi edinmek için bkz. [Linux üzerinde PowerShell Core yükleme](/powershell/scripting/install/installing-powershell-core-on-linux) .
 
 Aşağıdaki runbook türleri bir Linux karma çalışanı üzerinde çalışmıyor:
 

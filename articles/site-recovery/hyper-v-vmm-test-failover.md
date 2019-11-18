@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 4a1b5f804986d2bda85980d01cdaaa130d86b50d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039745"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132948"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>İkincil siteye Hyper-V VM 'Leri için bir DR ayrıntısı çalıştırın
 
@@ -20,10 +20,6 @@ ms.locfileid: "74039745"
 Bu makalede, System Center Virtual Machine Manager V (MM) bulutlarında yönetilen Hyper-V VM 'lerinin, [Azure Site Recovery](site-recovery-overview.md)kullanarak ikincil şirket içi bir siteye nasıl bir olağanüstü durum kurtarma (Dr) detayına nasıl yapılacağı açıklanır.
 
 Çoğaltma stratejinizi doğrulamak için bir yük devretme testi çalıştırırsınız ve veri kaybı veya kapalı kalma süresi olmadan bir DR detayına sahip olursunuz. Yük devretme testi, devam eden çoğaltma üzerinde veya üretim ortamınızda herhangi bir etkiye sahip değildir. 
-
-> [!WARNING]
-> Lütfen SCVMM yapılandırması 'nın hesapta kullanılması için ASR desteğinin yakında kullanım dışı olacağını unutmayın. bu nedenle, devam etmeden önce [kullanımdan](site-to-site-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
-
 
 ## <a name="how-do-test-failovers-work"></a>Yük devretme testi nasıl çalışır?
 

@@ -1,18 +1,16 @@
 ---
-title: Öğretici-Azure Resource Manager şablonu oluşturma & dağıtma
+title: Öğretici-& dağıtım şablonu oluşturma
 description: İlk Azure Resource Manager şablonunuzu oluşturun. Öğreticide, şablon dosyası söz dizimi ve depolama hesabı dağıtma hakkında bilgi edineceksiniz.
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 463f9a54648a9e6950f839bd856ccf42bc66dca0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 961c68ca6d5e0bf6dda95a26a684c3fff60b1d1b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074366"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148003"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma
 

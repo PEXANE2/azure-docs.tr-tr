@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: e00feed416eb3e06b703a2ef4fe040f0c815716e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3039276a49e7bb41660d114e78ca047a3f77f279
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464310"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109939"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Konuşma SDK 'Sı ses girişi akış API 'SI hakkında
 
-Konuşma SDK 'sının **ses girişi akış** API 'si, mikrofon veya giriş dosyası API 'leri kullanmak yerine tanıyıcılara ses akışları akışı sağlamak için bir yol sağlar.
+Konuşma SDK 'sının **ses girişi akış** API 'si, mikrofon veya giriş dosyası API 'leri kullanmak yerine tanıyıcıya ses akışı yapmanın bir yolunu sağlar.
 
 Ses giriş akışları kullanılırken aşağıdaki adımlar gereklidir:
 
@@ -29,7 +29,7 @@ Ses giriş akışları kullanılırken aşağıdaki adımlar gereklidir:
 
   Ses biçimini oluşturmak için SDK 'daki karşılık gelen kod şöyle görünür:
 
-  ```
+  ```csharp
   byte channels = 1;
   byte bitsPerSample = 16;
   int samplesPerSecond = 16000;
@@ -38,9 +38,9 @@ Ses giriş akışları kullanılırken aşağıdaki adımlar gereklidir:
 
 - Kodunuzun ham ses verilerini bu belirtimlere göre sağlaya, emin olun. Ses kaynağı verileriniz desteklenen biçimleriyle eşleşmiyorsa, sesin gerekli biçime dönüştürülmesi gerekir.
 
-- `PullAudioInputStreamCallback`türetilmiş kendi ses giriş akışı sınıfınızı oluşturun. `Read()` ve `Close()` üyelerini uygulayın. Tam işlev imzası dile bağımlıdır, ancak kod şu kod örneğine benzer şekilde görünür:
+- `PullAudioInputStreamCallback`türetilmiş kendi ses giriş akışı sınıfınızı oluşturun. Uygulama `Read()` ve `Close()` üyeleri. Tam işlev imzası dile bağımlıdır, ancak kod şu kod örneğine benzer şekilde görünür:
 
-  ```
+  ```csharp
    public class ContosoAudioStream : PullAudioInputStreamCallback {
       ContosoConfig config;
 
@@ -61,7 +61,7 @@ Ses giriş akışları kullanılırken aşağıdaki adımlar gereklidir:
 
 - Ses biçiminizi ve giriş akışınızı temel alan bir ses yapılandırması oluşturun. Tanıyıcıyı oluştururken hem normal konuşma yapılandırmanızın hem de ses giriş yapılandırmasında geçiş yapın. Örneğin:
 
-  ```
+  ```csharp
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
 
   var speechConfig = SpeechConfig.FromSubscription(...);
@@ -75,5 +75,5 @@ Ses giriş akışları kullanılırken aşağıdaki adımlar gereklidir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-* [Bkz. konuşmayı tanımaC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+- [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
+- [C# ' de Konuşma tanıma öğrenin](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

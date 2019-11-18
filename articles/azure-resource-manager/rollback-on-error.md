@@ -1,17 +1,14 @@
 ---
-title: Başarılı bir Azure dağıtımı için hatayı geri alma
+title: Başarılı dağıtım için hatayı geri alma
 description: Başarısız bir dağıtımın başarılı bir dağıtıma geri dönmesi gerektiğini belirtin.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 035b684bb9f5fbc10eb13e642c3fd5945b85c561
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0978d2547e23a9ac6f920c76be3e877ec236d9ed
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975452"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150337"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>Başarılı dağıtımda hata durumunda geri al
 
@@ -27,7 +24,7 @@ Bu seçeneği kullanmak için, dağıtımlarınızın geçmişte tanımlanabilme
 
 ## <a name="powershell"></a>PowerShell
 
-Son başarılı dağıtımı yeniden dağıtmak için `-RollbackToLastDeployment` parametresini bayrak olarak ekleyin.
+Son başarılı dağıtımı yeniden dağıtmak için `-RollbackToLastDeployment` parametresini bir bayrak olarak ekleyin.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -Name ExampleDeployment02 `
@@ -47,7 +44,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Son başarılı dağıtımı yeniden dağıtmak için `--rollback-on-error` parametresini bayrak olarak ekleyin.
+Son başarılı dağıtımı yeniden dağıtmak için `--rollback-on-error` parametresini bir bayrak olarak ekleyin.
 
 ```azurecli-interactive
 az group deployment create \

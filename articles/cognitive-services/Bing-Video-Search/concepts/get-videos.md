@@ -1,7 +1,7 @@
 ---
 title: Bing Video Arama API'si kullanarak video arayın
 titleSuffix: Azure Cognitive Services
-description: Bing Video Arama API'si arama sorguları gönderme hakkında bilgi edinin.
+description: Bing Video Arama Apifınds ve Web 'den ilgili videoları geri döndürmektedir, Web 'de akıllı ve odaklanmış video alımı için çeşitli özellikler sağlar.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: e3314efe0ea0367eb852fd17aadece17026ff4bb
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512408"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111427"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Arama API'si videoları arayın
 

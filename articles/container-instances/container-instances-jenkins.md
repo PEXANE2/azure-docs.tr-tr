@@ -1,6 +1,6 @@
 ---
 title: Jenkins derleme aracısı olarak Azure Container Instances kullanma
-description: Azure Container Instances Jenkins derleme aracısı olarak kullanmayı öğrenin.
+description: Bir Jenkins sunucusunu istendiğinde derleme işleri çalıştırmak için nasıl yapılandıracağınızı öğrenin Azure Container Instances
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: ed000779940d9af7b1384873bf9fddd1cde79c71
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7e93457a182598a2e8d739f4d626b49ff57b30fb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326024"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150225"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Jenkins derleme aracısı olarak Azure Container Instances kullanma
 
@@ -29,22 +29,22 @@ Azure Container Instances hakkında daha fazla bilgi için bkz. [Azure Container
 
    - **Ad**: Jenkins dağıtımı için bir ad girin.
    - **Kullanıcı adı**: Jenkins sanal makinesinin Yönetici kullanıcısı için bir ad girin.
-   - **Kimlik doğrulama türü**: Kimlik doğrulaması için SSH ortak anahtarı önerilir. Bu seçeneği belirlerseniz, Jenkins sanal makinesinde oturum açmak için kullanılacak SSH ortak anahtarını yapıştırın.
+   - **Kimlik doğrulama türü**: kimlik doğrulaması için SSH ortak anahtarı önerilir. Bu seçeneği belirlerseniz, Jenkins sanal makinesinde oturum açmak için kullanılacak SSH ortak anahtarını yapıştırın.
    - **Abonelik**: Bir Azure aboneliği seçin.
-   - **Kaynak grubu**: Kaynak grubu oluşturun veya var olan bir grubu seçin.
+   - **Kaynak grubu**: Bir kaynak grubu oluşturun veya mevcut bir kaynak grubunu seçin.
    - **Konum**: Jenkins sunucusu için bir konum seçin.
 
    ![Jenkins Portal dağıtımı için temel ayarlar](./media/container-instances-jenkins/jenkins-portal-01.png)
 
 3. **Ek ayarlar** formunda, aşağıdaki öğeleri doldurun:
 
-   - **Boyutu**: Jenkins sanal makineniz için uygun boyutlandırma seçeneğini belirleyin.
+   - **Boyut**: Jenkins sanal makineniz için uygun boyutlandırma seçeneğini belirleyin.
    - **VM disk türü**: Jenkins sunucusu için **HDD** (sabit disk sürücüsü) ya da **SSD** (katı hal sürücüsü) belirtin.
-   - **Sanal ağ**: Varsayılan ayarları değiştirmek istiyorsanız oku seçin.
-   - **Alt ağlar**: Oku seçin, bilgileri doğrulayın ve **Tamam**' ı seçin.
-   - **Genel IP adresi**: Genel IP adresine özel bir ad vermek, SKU 'yu yapılandırmak ve atama yöntemini ayarlamak için oku seçin.
+   - **Sanal ağ**: varsayılan ayarları değiştirmek istiyorsanız oku seçin.
+   - **Alt ağlar**: oku seçin, bilgileri doğrulayın ve **Tamam**' ı seçin.
+   - **Genel IP adresi**: genel IP adresine özel bir ad vermek, SKU 'yu yapılandırmak ve atama yöntemini ayarlamak için oku seçin.
    - **Etki alanı adı etiketi**: Jenkins sanal makinesine tam bir URL oluşturmak için bir değer belirtin.
-   - **Jenkins yayın türü**: Seçeneklerden istediğiniz yayın türünü seçin: **LTS**, **Haftalık derleme**veya **Azure doğrulandı**.
+   - **Jenkins sürüm türü**: **LTS**, **Haftalık derleme**veya **Azure tarafından doğrulanan**seçeneklerden istenen yayın türünü seçin.
 
    ![Jenkins Portal dağıtımı için ek ayarlar](./media/container-instances-jenkins/jenkins-portal-02.png)
 
@@ -66,7 +66,7 @@ Azure Container Instances hakkında daha fazla bilgi için bkz. [Azure Container
 
    ![SSH dizesiyle Jenkins oturum açma yönergeleri](./media/container-instances-jenkins/jenkins-portal-04.png)
 
-3. Geliştirme sisteminizde bir terminal oturumu açın ve son adımdan SSH dizesine yapıştırın. Jenkins sunucusunu dağıtırken belirttiğiniz kullanıcı adına güncelleştirin `username` .
+3. Geliştirme sisteminizde bir terminal oturumu açın ve son adımdan SSH dizesine yapıştırın. Jenkins sunucusunu dağıtırken belirttiğiniz kullanıcı adına `username` güncelleştirin.
 
 4. Oturum bağlandıktan sonra, ilk yönetici parolasını almak için aşağıdaki komutu çalıştırın:
 
@@ -74,7 +74,7 @@ Azure Container Instances hakkında daha fazla bilgi için bkz. [Azure Container
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 
-5. SSH oturumunu ve tüneli çalışır durumda bırakın ve bir tarayıcıda adresine `http://localhost:8080` gidin. İlk yönetici parolasını kutuya yapıştırın ve sonra **devam**' ı seçin.
+5. SSH oturumunu ve tüneli çalışır durumda bırakın ve bir tarayıcıda `http://localhost:8080` gidin. İlk yönetici parolasını kutuya yapıştırın ve sonra **devam**' ı seçin.
 
    !["Jenkins" ekranının yönetici parolası kutusuyla birlikte açılması](./media/container-instances-jenkins/jenkins-portal-05.png)
 
@@ -102,7 +102,7 @@ Jenkins artık yapılandırılır ve kodu derlemek ve dağıtmak için hazırdı
 
    ![Yapılandırma ayrıntıları içeren "genel" sekmesi](./media/container-instances-jenkins/jenkins-job-01.png)
 
-3. **Yapı**' ın altında **derleme Ekle adımı** ' nı seçin ve **kabuğu Yürüt**' ü seçin Komut `echo "aci-demo"` olarak girin.
+3. **Yapı**' ın altında **derleme Ekle adımı** ' nı seçin ve **kabuğu Yürüt**' ü seçin Komut olarak `echo "aci-demo"` girin.
 
    ![Derleme adımının seçimleriyle birlikte "derleme" sekmesi](./media/container-instances-jenkins/jenkins-job-02.png)
 
@@ -128,7 +128,7 @@ Yapı işini test etmek ve derleme platformu olarak Azure Container Instances g�
 
    ![Kapsayıcı örnekleri kaldırılmış kaynak grubu](./media/container-instances-jenkins/jenkins-aci-none.png)
 
-## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins eklentisiyle ilgili sorunları giderme
+## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins eklentisiyle ilgili sorunlarını giderme
 
 Jenkins eklentileriyle ilgili hatalarla karşılaşırsanız [Jenkins JIRA](https://issues.jenkins-ci.org/) sayfasında söz konusu bileşenle ilgili sorun bildirebilirsiniz.
 

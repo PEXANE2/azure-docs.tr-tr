@@ -1,25 +1,17 @@
 ---
 title: Redsıs için Azure önbelleği için en iyi uygulamalar
 description: Bu en iyi yöntemleri izleyerek, redin için Azure önbelleğinizi etkin bir şekilde nasıl kullanacağınızı öğrenin.
-services: cache
-documentationcenter: na
 author: joncole
-manager: jhubbard
-editor: tysonn
-ms.assetid: 3e4905e3-89e3-47f7-8cfb-12caf1c6e50e
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: joncole
-ms.openlocfilehash: 29e5a81c438a7aa834fc002b916739a952c9a270
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 136c29245c63b2f2feed79a10a09fb57a379736f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785864"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122387"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için en iyi uygulamalar 
 Bu en iyi yöntemleri izleyerek Redsıs örneği için Azure önbelleğinizin performansını ve düşük maliyetli kullanımını en üst düzeye çıkarmanıza yardımcı olabilirsiniz.
@@ -67,7 +59,7 @@ Göz önünde bulundurmanız isteyebileceğiniz Redsıs sunucu örneğiniz dahil
 ## <a name="when-is-it-safe-to-retry"></a>Yeniden denenme ne zaman güvenlidir?
 Ne yazık ki kolay bir yanıt yok.  Her uygulamanın hangi işlemlerin yeniden deneneceği ve ne yapabileceğine karar sağlaması gerekir.  Her işlem, farklı gereksinimlere ve anahtar arası bağımlılıklara sahiptir.  Göz önünde bulundurmanız gereken bazı şeyler şunlardır:
 
- * Red, çalıştırmak istediğiniz komutu başarılı bir şekilde çalıştırsa bile, istemci tarafı hataları alabilirsiniz.  Örnek:
+ * Red, çalıştırmak istediğiniz komutu başarılı bir şekilde çalıştırsa bile, istemci tarafı hataları alabilirsiniz.  Örneğin:
      - Zaman aşımları, istemci tarafı kavramıdır.  İşlem sunucuya ulaştıysa, istemci beklemeye alsa bile sunucu komutu çalıştırır.  
      - Yuva bağlantısında bir hata oluştuğunda, işlemin sunucuda gerçekten çalışır durumda olup olmadığını bilmeleri mümkün değildir.  Örneğin, istek sunucu tarafından işlendikten sonra, ancak yanıt istemci tarafından alınmadan önce bağlantı hatası oluşabilir.
  *  Yanlışlıkla aynı işlemi iki kez çalıştırdığımda Uygulamam nasıl tepki veriyor?  Örneğin, bir tamsayıyı yalnızca bir kez yerine iki kez artırdım?  Uygulamam birden çok konumdan aynı anahtara yazıyor mu?  Yeniden deneme mantığı uygulamamın başka bir bölümü tarafından ayarlanan bir değerin üzerine yazıyor mu?

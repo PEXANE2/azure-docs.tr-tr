@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanarak bekleyen şifreleme (Önizleme)
+title: Müşteri tarafından yönetilen anahtarları kullanarak bekleyen şifreleme (Önizleme)
 titleSuffix: Azure Cognitive Search
 description: Azure Key Vault içinde oluşturduğunuz ve yönettiğiniz anahtarlar aracılığıyla Azure Bilişsel Arama Dizin ve eş anlamlı haritalar üzerinde sunucu tarafı şifrelemeyi tamamlar. Bu özellik şu anda genel önizleme aşamasındadır.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4f78b4b7b38c6e67aa8aebf04e3a8ef0fdbd000f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721758"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112929"
 ---
-# <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault içindeki müşteri tarafından yönetilen anahtarlar kullanılarak Azure Bilişsel Arama içerik şifrelemesi
+# <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault içindeki müşteri tarafından yönetilen anahtarları kullanarak Azure Bilişsel Arama içeriğin geri kalanında şifreleme
 
 > [!IMPORTANT] 
 > Rest 'ten şifreleme desteği şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) ve [.net SDK sürüm 8,0-Önizleme](search-dotnet-sdk-migration-version-9.md) bu özelliği sağlar. Şu anda portal desteği yok.
@@ -28,7 +28,7 @@ Müşteri tarafından yönetilen anahtarlarla şifreleme, bu nesneler oluşturul
 
 Farklı anahtar kasalarından farklı anahtarlar kullanabilirsiniz. Bu, tek bir arama hizmetinin birden çok şifrelenmiş ındexes\eş anlamlı haritalarını barındırabileceği anlamına gelir. Bu, her şifrelenmiş, müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmeyen ındexes\eş anlamlı eşlemlerle birlikte, her biri bir müşteri tarafından yönetilen farklı 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki hizmetler bu örnekte kullanılır. 
 

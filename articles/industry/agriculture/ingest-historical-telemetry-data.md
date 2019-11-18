@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e721a7818c5f2fcea23263b296912edf164036b2
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5ae64371bd114a898ddca874e23b499bc4a2b8a3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927808"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128769"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Geçmiş telemetri verilerini alma
 
@@ -29,7 +29,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 - API uç noktası – bu veri merkezi URL 'sidir, örneğin, https://<datahub>. azurewebsites.net
 - Kiracı Kimliği
 - İstemci Kimliği
-- İstemci parolası
+- İstemci Gizli Anahtarı
 - EventHub bağlantı dizesi
 
 Bunları oluşturmak için aşağıdaki adımları izleyin:
@@ -74,7 +74,7 @@ Bunları oluşturmak için aşağıdaki adımları izleyin:
 - /**algılayıcı** algılayıcı, değerleri kaydeden bir fiziksel sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.  
 
 
-|        Cihaz modu   |  Öneriler   |
+|        Cihaz modeli   |  Öneriler   |
 | ------- | -------             |
 |     Tür (düğüm, ağ geçidi)        |          1 Yıldız      |
 |          Üretici            |         2 Yıldız     |
@@ -83,7 +83,7 @@ Bunları oluşturmak için aşağıdaki adımları izleyin:
 |     Ad                 |  Kaynağı tanımlamak için ad. Örneğin, model adı/ürün adı.
       Açıklama     | Modelin anlamlı bir açıklamasını sağlayın
 |    Özellikler          |    Üreticiden ek özellikler   |
-|    **Aygıtların**             |                      |
+|    **cihaz**             |                      |
 |   Devicemodelıd     |     İlişkili cihaz modelinin KIMLIĞI  |
 |  Donanım kimliği          | Cihazın MAC adresi vb. gibi benzersiz KIMLIĞI.
 |  Reportingınterval        |   Saniye cinsinden raporlama aralığı
@@ -125,7 +125,7 @@ Bir API isteği oluşturmak için HTTP (POST) yöntemini, API hizmetinin URL 'si
 Farmtts veri hub 'ı, yukarıdaki bölümde oluşturduğumuz aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır.
 
 - İstemci Kimliği
-- İstemci parolası
+- İstemci Gizli Anahtarı
 - Kiracı Kimliği  
 
 Yukarıdaki kimlik bilgilerini kullanarak, çağıran, üstbilgi bölümündeki sonraki API isteklerinde gönderilmesi gereken bir erişim belirteci isteğinde bulunabilir:

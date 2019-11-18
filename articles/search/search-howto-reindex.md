@@ -1,5 +1,5 @@
 ---
-title: Azure Bilişsel Arama dizinini yeniden oluşturma
+title: Bir arama dizinini yeniden derle
 titleSuffix: Azure Cognitive Search
 description: Bir Azure Bilişsel Arama dizinini yenilemek için yeni öğeler ekleyin, var olan öğeleri veya belgeleri güncelleştirin veya tam yeniden oluşturma veya kısmi artımlı dizin oluşturma içindeki eski belgeleri silin.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b14c153f52e0427e289afeccdfd22d6510e4ace1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466451"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112957"
 ---
-# <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinini yeniden oluşturma
+# <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir dizini yeniden oluşturma
 
 Bu makalede bir Azure Bilişsel Arama dizininin nasıl yeniden oluşturulduğu, yeniden oluşturmanın gerekli olduğu koşullar ve devam eden sorgu isteklerinde yeniden oluşturma işlemlerinin etkisini azaltmaya yönelik öneriler açıklanmaktadır.
 

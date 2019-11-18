@@ -1,6 +1,6 @@
 ---
 title: GPU özellikli Azure Container Instances dağıtma
-description: Azure Container Instances 'ı GPU kaynakları üzerinde çalışacak şekilde dağıtmayı öğrenin.
+description: GPU kaynaklarını kullanarak işlem yoğunluklu kapsayıcı uygulamaları çalıştırmak için Azure Container Instances 'ı dağıtmayı öğrenin.
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: 300e9b82d578663a4d2ada3889a07d8b03051cc5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 08a3cd8841b6b867a2dd22078fca3543d2067830
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325945"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147882"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU kaynaklarını kullanan kapsayıcı örneklerini dağıtma
 
@@ -32,9 +32,9 @@ Bu makalede, bir [YAML dosyası](container-instances-multi-container-yaml.md) ve
 
 Destek, zaman içinde ek bölgeler için eklenecektir.
 
-**Desteklenen işletim sistemi türleri**: Yalnızca Linux
+**Desteklenen işletim sistemi türleri**: yalnızca Linux
 
-**Ek sınırlamalar**: Bir kapsayıcı grubu bir [sanal ağa](container-instances-vnet.md)dağıtıldığında GPU kaynakları kullanılamaz.
+**Ek sınırlamalar**: bir kapsayıcı grubu [sanal bir ağa](container-instances-vnet.md)dağıtıldığında GPU kaynakları kullanılamaz.
 
 ## <a name="about-gpu-resources"></a>GPU kaynakları hakkında
 
@@ -43,7 +43,7 @@ Destek, zaman içinde ek bölgeler için eklenecektir.
 Bir kapsayıcı örneğinde GPU 'ları kullanmak için aşağıdaki bilgileri içeren bir *GPU kaynağı* belirtin:
 
 * **Sayı** -GPU sayısı: **1**, **2**veya **4**.
-* **SKU** -GPU SKU 'su: **K80**, **P100**veya **V100**. Her SKU, aşağıdaki Azure GPU etkin VM ailelerinde bulunan NVıDıA Tesla GPU ile eşlenir:
+* **SKU** -GPU SKU 'Su: **K80**, **P100**veya **V100**. Her SKU, aşağıdaki Azure GPU etkin VM ailelerinde bulunan NVıDıA Tesla GPU ile eşlenir:
 
   | SKU | VM ailesi |
   | --- | --- |
@@ -61,7 +61,7 @@ GPU kaynaklarını dağıttığınızda, önceki tabloda gösterilen en fazla de
 
 * **Fiyatlandırma** -GPU kaynakları olmadan kapsayıcı gruplarına benzer, Azure, GPU kaynaklarıyla bir kapsayıcı grubu *süresince* tüketilen kaynaklar için Azure faturaları. Süre, kapsayıcı grubu sonlanana kadar ilk kapsayıcının görüntüsünü çekme zamanından hesaplanır. Kapsayıcı grubunun dağıtılacağı zaman dahil değildir.
 
-  [Fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/container-instances/)bakın.
+  [Fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/container-instances/) bakın.
 
 * **CUDA sürücüleri** -GPU kaynaklarıyla kapsayıcı ÖRNEKLERI, NVıDıA CUDA sürücüleriyle ve kapsayıcı çalışma zamanları ile önceden sağlanmış olduğundan CUDA iş yükleri için geliştirilmiş kapsayıcı görüntülerini kullanabilirsiniz.
 
@@ -93,7 +93,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-`--file` Parametre için YAML dosya adını belirterek, [az Container Create][az-container-create] komutuyla kapsayıcı grubunu dağıtın. Bir kaynak grubunun adını ve *eastus* gibi bir kapsayıcı grubu için GPU kaynaklarını destekleyen bir konum sağlamanız gerekir.  
+, `--file` parametresi için YAML dosya adını belirterek, [az Container Create][az-container-create] komutuyla kapsayıcı grubunu dağıtın. Bir kaynak grubunun adını ve *eastus* gibi bir kapsayıcı grubu için GPU kaynaklarını destekleyen bir konum sağlamanız gerekir.  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -118,7 +118,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Kaynak Yöneticisi şablonu örneği
 
-Bir kapsayıcı grubunu GPU kaynaklarıyla dağıtmanın bir başka yolu da [Kaynak Yöneticisi şablonu](container-instances-multi-container-group.md)kullanmaktır. Adlı `gpudeploy.json`bir dosya oluşturarak başlayın, ardından aşağıdaki JSON öğesine kopyalayın. Bu örnek, bir V100 GPU ile, bir [TensorFlow](https://www.tensorflow.org/) eğitim işini, veri kümesine göre çalıştıran bir kapsayıcı örneği dağıtır. Kaynak istekleri iş yükünü çalıştırmak için yeterlidir.
+Bir kapsayıcı grubunu GPU kaynaklarıyla dağıtmanın bir başka yolu da [Kaynak Yöneticisi şablonu](container-instances-multi-container-group.md)kullanmaktır. `gpudeploy.json`adlı bir dosya oluşturarak başlayın, ardından aşağıdaki JSON öğesine kopyalayın. Bu örnek, bir V100 GPU ile, bir [TensorFlow](https://www.tensorflow.org/) eğitim işini, veri kümesine göre çalıştıran bir kapsayıcı örneği dağıtır. Kaynak istekleri iş yükünü çalıştırmak için yeterlidir.
 
 ```JSON
 {

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f9d1198a0faca8eed2ca5d3f3ee89ac9019d657
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 777fe1a62002a765460617cd69f3d518d78ed331
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073915"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150876"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -120,6 +120,7 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 
 ## <a name="change-log"></a>Değişiklik günlüğü
+- 11/15/2019: SAP NetWeaver için [yüksek kullanılabilirliğe sahip SUSE Linux Enterprise Server, SAP uygulamaları için Azure NetApp Files](high-availability-guide-suse-netapp-files.md) ve SAP [NetWeaver için yüksek kullanılabilirliğe sahip Red Hat Enterprise Linux](high-availability-guide-rhel-netapp-files.md) SAP uygulamaları Için Azure NetApp Files ve yalnızca NFSv3 sürümünün desteklendiği ve kaldırma ifadesini açıklığa kavuşturacak şekilde destekler.
 - 11/12/2019: [Azure NetApp Files (SMB) Ile Windows ÜZERINDE SAP NetWeaver Için yüksek kullanılabilirlik](high-availability-guide-windows-netapp-files-smb.md) yayını
 - 11/08/2019: [SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](sap-hana-high-availability.md), [Azure sanal makinelerinde (VM) SAP HANA sistem çoğaltmasını ayarlama](sap-hana-high-availability-rhel.md), SAP [uygulamaları için SUSE Linux Enterprise Server üzerinde SAP NetWeaver için yüksek kullanılabilirlik](high-availability-guide-suse.md), Azure sanal makineler for the SUSE Linux Enterprise Server [on](high-availability-guide-suse-netapp-files.md)The SAP NetWeaver for the Azure NetApp Files [ ](high-availability-guide-rhel.md), Azure [sanal makineler Azure NetApp Files Red Hat ENTERPRISE LINUX on SAP NetWeaver için yüksek kullanılabilirlik](high-availability-guide-rhel-netapp-files.md), Azure [VM](high-availability-guide-suse-nfs.md)'lerinde Azure VM 'lerde yüksek kullanılabilirlik, Azure Standart yük dengeleyiciyi önermek için [SAP NetWeaver için Red Hat Enterprise Linux on](high-availability-guide-rhel-glusterfs.md) SUSE Linux Enterprise Server, Azure VM 'lerinde GlusterFS  
 - 11/08/2019: şifreleme önerisini netleştirmek için [SAP iş yükü planlama ve dağıtım denetim listesi](sap-deployment-checklist.md) değişiklikleri  

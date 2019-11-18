@@ -1,5 +1,5 @@
 ---
-title: Artımlı dizine giriş (Önizleme)
+title: Artımlı dizin oluşturma (Önizleme)
 titleSuffix: Azure Cognitive Search
 description: Beceriler, becerileri, Dizin oluşturucular veya veri kaynaklarına yönelik tüm güncelleştirmeleri işlemek üzere verilerinizi nihai tutarlılık altına almak için AI zenginleştirme işlem hattınızı yapılandırın. Bu özellik şu anda genel önizlemede
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715425"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113594"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı dizin oluşturma nedir?
 
@@ -122,7 +122,7 @@ Tutarsız değişikliğe örnek olarak, beceri için bir yetenek değiştiren bi
 
 REST `api-version=2019-05-06-Preview`, Dizin oluşturucular, becerileri ve veri kaynaklarına eklemeler ile artımlı dizin oluşturma için API 'Ler sağlar. Başvuru belgeleri şu anda bu eklemeleri içermez. Aşağıdaki bölümde API değişiklikleri açıklanmaktadır.
 
-### <a name="indexers"></a>Dizin Oluşturucular
+### <a name="indexers"></a>Dizinleyiciler
 
 [Create Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) ve [Update Indexer](https://docs.microsoft.com/rest/api/searchservice/update-indexer) artık önbelleğiyle ilgili yeni özellikleri kullanıma sunacaktır:
 
@@ -138,7 +138,7 @@ Bazı Dizin oluşturucular ( [veri kaynakları](https://docs.microsoft.com/rest/
 
 Becerileri, yeni işlemleri desteklemez, ancak yeni bir QueryString parametresini destekleyecektir: geçerli eyleme göre mevcut belgelerde güncelleştirme yapmak istediğinizde `disableCacheReprocessingChangeDetection` `true` olarak ayarlanmalıdır.
 
-### <a name="datasources"></a>kaynağı
+### <a name="datasources"></a>Kaynağı
 
 Veri kaynakları yeni işlemleri desteklemez, ancak yeni bir QueryString parametresini destekleyecektir: güncelleştirme eyleminiz önbelleği geçersiz kılmaz, `ignoreResetRequirement` `true` olarak ayarlanmalıdır.
 

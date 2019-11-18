@@ -1,19 +1,19 @@
 ---
-title: Kategori hiyerarşisinde çok yönlü gezintiyi uygulama
+title: Çok yönlü bir gezinti kategorisi hiyerarşisi ekleyin
 titleSuffix: Azure Cognitive Search
-description: Microsoft Azure üzerinde bir bulut barındırılan arama hizmeti olan Azure Bilişsel Arama ile tümleştirilen uygulamalara model gezintisi ekleyin.
+description: Azure Bilişsel Arama ile tümleştirilen arama uygulamalarına kendi kendine yönlendirilmiş filtreleme için çok yönlü gezinme ekleyin.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d10a049f7a4c7da7a75054acd442269adc74b948
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496528"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112089"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Bilişsel Arama çok yönlü gezintiyi uygulama
 
@@ -38,7 +38,7 @@ Bu makale örnek olarak bir iş arama portalı kullanır. Örnek, bir ASP.NET MV
 
 -   [GitHub 'Daki Azure-Samples deposundan](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)kodu indirin.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>Başlarken
 Arama geliştirmeye yeni başladıysanız, çok yönlü gezinme yapmanın en iyi yolu, kendi kendine yönlendirilmiş arama olasılıklarını gösterir. Bu, arama sonuçlarını nokta ve tıklama eylemleri aracılığıyla hızlıca daraltmak için kullanılan, önceden tanımlanmış filtreleri temel alan detaya gitme arama deneyiminin bir türüdür. 
 
 ### <a name="interaction-model"></a>Etkileşim modeli
@@ -243,7 +243,7 @@ if (businessTitleFacet != "")
 
 <a name="tips"></a> 
 
-## <a name="tips-and-best-practices"></a>İpuçları ve en iyi uygulamalar
+## <a name="tips-and-best-practices"></a>İpuçları ve en iyi yöntemler
 
 ### <a name="indexing-tips"></a>Dizin oluşturma ipuçları
 **Arama kutusu kullanmıyorsanız Dizin verimliliğini iyileştirme**

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: ed100c27d482065e244bb3dc2cca3b66dfc11986
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013459"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132679"
 ---
 # <a name="add-entities-to-extract-data"></a>Verileri ayıklamak için varlık ekleme 
 
@@ -26,9 +26,20 @@ Varlık, bir sözcük veya tümcecik ayıklanan istediğiniz utterance içinde t
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="creating-an-entity-is-different-from-labeling-an-entity"></a>Varlık oluşturma, bir varlığın etiketlenmesini farklıdır
+## <a name="plan-entities-then-create-and-label"></a>Varlıkları planlayın, ardından Oluştur ve etiketle
 
-Örneğin, örneği bir varlık oluşturmak için önce bir varlık oluşturmanız gerekir. 
+Makine tarafından öğrenilen varlıklar, örnek dıklarından oluşturabilir veya **varlıklar** sayfasından oluşturulabilir. 
+
+Genel olarak, portalda makine tarafından öğrenilen bir varlık oluşturmadan önce varlıkları planlama süresini harcamanız en iyi uygulamadır. Daha sonra örnekte, makinenizde öğrendiğiniz şekilde, alt bileşenlere ve tanımlayıcılara ve kısıtlamalara göre daha ayrıntılı bilgi vererek makine tarafından öğrenilen varlığı oluşturun. [Birleştirilebilen varlık öğreticisi](tutorial-machine-learned-entity.md) , bu yöntemin nasıl kullanılacağını gösterir. 
+
+Varlıkları planlamanın bir parçası olarak, metin ile eşleşen varlıklara (önceden oluşturulmuş varlıklar, normal ifade varlıkları veya liste varlıkları gibi) ihtiyacınız olduğunu bilirsiniz. Bunları örnek bir şekilde etiketlendirmeleri için **varlıklar** sayfasından oluşturabilirsiniz. 
+
+Etiketleme sırasında tek tek varlıkları etiketleyebilir ve ardından bir üst makineye öğrenilen varlık oluşturabilirsiniz. Ya da bir üst makine öğrenmiş varlıkla başlayabilir ve alt varlıklarda bir varlık oluşturabilir. 
+
+> [!TIP] 
+>Sözcükler, istemci uygulamasında ayıklandığında kullanılmasa bile, bir varlığı gösterebilen tüm kelimeleri etiketleyebilir. 
+
+## <a name="creating-an-entity-before-or-with-labeling"></a>Etiketleme öncesinde veya etiketleyerek bir varlık oluşturma
 
 Her bir varlığın hangi varlıkları oluşturmak veya uygulamaya ekleneceğini anlamak için aşağıdaki tabloyu kullanın. 
 

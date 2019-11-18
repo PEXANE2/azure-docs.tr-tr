@@ -1,25 +1,17 @@
 ---
-title: Redsıs sunucu tarafı sorunları için Azure önbelleğinde sorun giderme | Microsoft Docs
+title: Redsıs sunucu tarafı sorunları için Azure Cache sorunlarını giderme
 description: Redsıs için Azure önbelleğiyle ilgili genel sunucu tarafı sorunlarını çözmeyi öğrenin
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: 4310c31f2a59ae30b7317d043dc6d92b93fee050
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 22cb4beb3411c617882972e1b91c5f538019fae4
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819610"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122565"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Redsıs sunucu tarafı sorunları için Azure Cache sorunlarını giderme
 
@@ -81,7 +73,7 @@ Ağ bant genişliği kullanımının en yüksek kapasiteye yakın olduğu duruml
 - Olası etkilerden önce bildirilmesi için önbellek okuma veya önbellek yazma gibi ölçümler üzerinde [uyarılar oluşturun](cache-how-to-monitor.md#alerts) .
 - Daha fazla ağ bant genişliği kapasitesine sahip daha büyük bir önbellek boyutuna [ölçeklendirin](cache-how-to-scale.md) .
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 - [Redsıs istemci tarafı sorunları için Azure Cache sorunlarını giderme](cache-troubleshoot-client.md)
 - [Redne teklif teklifi ve boyutu için Azure önbelleği kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)

@@ -1,19 +1,14 @@
 ---
-title: Azure Resource Manager için güvenlik denetimleri
+title: Güvenlik denetimleri
 description: Azure Resource Manager hizmetini değerlendirmek için yerleşik güvenlik denetimlerinin denetim listesi.
-services: azure-resource-manager
-author: msmbaldwin
-manager: rkarlin
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 78f3f41ca2f0aa45d295fd9846cf3aa96cccea72
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b2916a87c5cef01605054569285362fcf1c649c8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390457"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147560"
 ---
 # <a name="security-controls-for-azure-resource-manager"></a>Azure Resource Manager için güvenlik denetimleri
 
@@ -21,7 +16,7 @@ Bu makalede, Azure Resource Manager yerleşik olarak bulunan güvenlik denetimle
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="data-protection"></a>Veri koruması
+## <a name="data-protection"></a>Veri koruma
 
 | Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|

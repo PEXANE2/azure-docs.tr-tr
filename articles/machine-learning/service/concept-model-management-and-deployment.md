@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: ML modellerini yönetme, dağıtma, & izleme'
+title: 'MLOps: ML model yönetimi'
 titleSuffix: Azure Machine Learning
-description: 'MLOps için Azure Machine Learning kullanmayı öğrenin: modellerinizi dağıtmak, yönetmek ve izlemek için modellerini sürekli olarak geliştirmek üzere kullanın. Azure Machine Learning, yerel makinenizde veya diğer kaynaklardan eğitilen modelleri dağıtabilirsiniz.'
+description: 'Azure Machine Learning (MLOps) ile model yönetimi hakkında bilgi edinin. Modellerini sürekli olarak geliştirmek için modellerinizi dağıtın, yönetin ve izleyin. '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c77e36b5fbeb1ecacd42352c8c52cfd4b617d0e6
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716606"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123611"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Azure Machine Learning modelleri yönetin, dağıtın ve izleyin
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
 Bu makalede, modellerinizin yaşam döngüsünü yönetmek için Azure Machine Learning kullanma hakkında bilgi edinin. Azure Machine Learning, Machine Learning çözümlerinizin kalitesini ve tutarlılığını artıran bir Machine Learning Işlemleri (MLOps) yaklaşımı kullanır. 
 
@@ -47,7 +47,7 @@ Model kaydı, modellerinizi Azure bulutu 'nda çalışma alanınızda depolaman�
 > [!TIP]
 > Kayıtlı bir model, modelinizi oluşturan bir veya daha fazla dosya için mantıksal bir kapsayıcıdır. Örneğin, birden çok dosyada depolanan bir modeliniz varsa, bunları Azure Machine Learning çalışma alanınızda tek bir model olarak kaydedebilirsiniz. Kayıttan sonra, kayıtlı modeli indirebilir veya dağıtabilir ve kayıtlı tüm dosyaları alabilirsiniz.
  
-Kayıtlı modeller ad ve sürüm ile tanımlanır. Varolan bir adla aynı ada sahip bir modeli her kaydettiğinizde kayıt defteri sürümü arttırır. Ayrıca, model ararken kullanılabilecek kayıt sırasında ek meta veri etiketleri de sağlayabilirsiniz. Azure Machine Learning, Python 3.5.2 veya üzeri kullanılarak yüklenebilecek tüm modelleri destekler.
+Kayıtlı modeller ad ve sürüm ile tanımlanır. Mevcut bir aynı ada sahip bir model her kaydettirdiğinizde, kayıt defteri sürüm artırır. Ek meta veri etiketleri aramak modellerinde kullanılabilir kayıt sırasında de sağlayabilirsiniz. Azure Machine Learning, Python 3.5.2 veya üzeri kullanılarak yüklenebilecek tüm modelleri destekler.
 
 > [!TIP]
 > Azure Machine Learning dışında eğitilen modelleri de kaydedebilirsiniz.
@@ -137,7 +137,7 @@ Daha fazla bilgi için bkz. [model veri toplamayı etkinleştirme](how-to-enable
 
 ## <a name="audit-trail-of-the-ml-lifecycle"></a>ML yaşam döngüsünün denetim izi
 
-Azure ML, tüm ML varlıklarınızın uçtan uca denetim izini izleme olanağı sunar. Bu avantajlar şunlardır:
+Azure ML, tüm ML varlıklarınızın uçtan uca denetim izini izleme olanağı sunar. Daha ayrıntılı şekilde belirtmek gerekirse:
 
 - Azure ML, kodunuzun geldiği depoyu/dalı/yürütmeyi belirten bilgileri izlemek için [Git ile tümleşir](how-to-set-up-training-targets.md#gitintegration) .
 - [Azure ML veri kümeleri](how-to-create-register-datasets.md) , verileri izlemenize ve sürümetmenize yardımcı olur.

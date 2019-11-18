@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d1b3961b61d45718e726b31ec406445b202a0adf
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6b2546226d31334592034cfe0455fc32644a3900
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034186"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132767"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure ile SQL Server 2008 ve SQL Server 2008 R2 desteğini genişletme
 
@@ -64,7 +64,7 @@ SQL Server, kurtarmayı güvence altına almak için uygulamayla tutarlı Azure 
 
 Azure VM 'de EOS SQL Server için olağanüstü durum kurtarma çözümleri şunlardır:
 
-- **Yedeklemeleri SQL Server**: Azure Backup kullanarak eos SQL Server fidye, yanlışlıkla silme ve bozulmalara karşı korumanıza yardımcı olur. Çözüm şu anda EOS SQL Server için önizlemededir ve Windows 2008 R2 SP1 üzerinde çalışan SQL Server 2008 ve 2008 R2 'yi destekler. Daha ayrıntılı bilgi için [Bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2)bakın.
+- **Yedeklemeleri SQL Server**: Azure Backup kullanarak eos SQL Server fidye, yanlışlıkla silme ve bozulmalara karşı korumanıza yardımcı olur. Çözüm şu anda EOS SQL Server için önizlemededir ve Windows 2008 R2 SP1 üzerinde çalışan SQL Server 2008 ve 2008 R2 'yi destekler. Daha ayrıntılı bilgi için [Bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support)bakın.
 - **Günlük aktarma**: RTO 'ı azaltmak için sürekli geri yüklemeler içeren başka bir bölgede veya Azure bölgesinde bir günlük aktarma çoğaltması oluşturabilirsiniz. Günlük dağıtımını el ile yapılandırmanız gerekir.
 - **Azure Site Recovery**: sanal makinenizin Azure Site Recovery çoğaltma aracılığıyla bölgeler ve bölgeler arasında çoğaltılmasını sağlayabilirsiniz. SQL Server, olağanüstü bir durum oluşması durumunda kurtarma sağlamak için uygulamayla tutarlı anlık görüntüler gerektirir. Azure Site Recovery, EOS SQL Server olağanüstü durum kurtarma için en az 1 saatlik RPO ve 2 saat (artı SQL Server kurtarma süresi) sağlar.
 

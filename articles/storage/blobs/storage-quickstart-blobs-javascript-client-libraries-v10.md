@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 3eb6f68a443e29a7d4c7b4dedad38783f838dee5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 018a0405215d084962f6c107a607c8f82fae2500
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686675"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132008"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -22,7 +22,7 @@ ms.locfileid: "73686675"
 
 Bu hızlı başlangıçta, tarayıcıdan tamamen tarayıcıda çalışan JavaScript kodundan blob 'ları yönetmek için [Azure Storage SDK ile v10 arasındaki for JavaScript-blob](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) Kitaplığı ' nı kullanmayı öğreneceksiniz. Burada kullanılan yaklaşım, blob depolama hesabınıza korumalı erişimi güvence altına almak için gerekli güvenlik önlemlerinin nasıl kullanılacağını göstermektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -83,7 +83,7 @@ Her parametreden sonraki değer serisini biraz şifreli bulabilirsiniz. Bu param
 
 | Parametre        | Değer   | Açıklama  |
 |------------------|---------|---------|
-| *permissions*    | racwdl  | Bu SAS *read*, *append*, *create*, *write*, *delete* ve *list* özelliklerine izin verir. |
+| *izinleri*    | racwdl  | Bu SAS *read*, *append*, *create*, *write*, *delete* ve *list* özelliklerine izin verir. |
 | *resource-types* | sco     | SAS’den etkilenen kaynaklar *service*, *container* ve *object* kaynaklarıdır. |
 | *services*       | b       | SAS’den etkilenen hizmet *blob* hizmetidir. |
 
@@ -158,7 +158,7 @@ npx http-server
 
 Bu komut, *http-Server* paketini yükleyecek ve sunucuyu başlatarak, önceki adımda gösterilenler de dahil olmak üzere geçerli klasörü varsayılan URL 'ler aracılığıyla kullanılabilir hale getirir.
 
-### <a name="start-debugging"></a>Hata ayıklamayı Başlat
+### <a name="start-debugging"></a>Hata Ayıklamayı Başlat
 
 *İndex. html* dosyasını tarayıcıda vs Code hata ayıklayıcı ekli olarak başlatmak Için hata **Ayıkla > hata ayıklamayı Başlat** ' ı seçin veya vs Code ' de F5 tuşuna basın.
 
@@ -254,7 +254,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-Bu kod, [Aborter](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) örneği kullanmadan kapsayıcı URL 'si [oluşturma](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#create-aborter--icontainercreateoptions-) ve [silme](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#delete-aborter--icontainerdeletemethodoptions-) işlevlerini çağırır. Bu hızlı başlangıçta şeyleri basit tutmak için, bu kod depolama hesabınızın oluşturulduğunu ve etkinleştirildiğini varsayar. Üretim kodunda, zaman aşımı işlevselliği eklemek için bir Aborter örneği kullanın.
+Bu kod, [Aborter](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) örneği kullanmadan kapsayıcı URL 'si [oluşturma](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) ve [silme](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) işlevlerini çağırır. Bu hızlı başlangıçta şeyleri basit tutmak için, bu kod depolama hesabınızın oluşturulduğunu ve etkinleştirildiğini varsayar. Üretim kodunda, zaman aşımı işlevselliği eklemek için bir Aborter örneği kullanın.
 
 ### <a name="list-blobs"></a>Blobları listeleme
 
@@ -290,7 +290,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-Bu kod, tüm segmentlerin alındığından emin olmak için bir döngüde [Containerurl. Listblobyataysegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL?view=azure-node-preview#listblobflatsegment-aborter--undefined---string--icontainerlistblobssegmentoptions-) işlevini çağırır. Her segment için, içerdiği blob öğeleri listesi üzerinde döngü yapılır ve **dosyalar** listesini güncelleştirir.
+Bu kod, tüm segmentlerin alındığından emin olmak için bir döngüde [Containerurl. Listblobyataysegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) işlevini çağırır. Her segment için, içerdiği blob öğeleri listesi üzerinde döngü yapılır ve **dosyalar** listesini güncelleştirir.
 
 ### <a name="upload-blobs"></a>Blobları karşıya yükleme
 
@@ -318,7 +318,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-Bu kod, **dosyaları seç ve karşıya yükle** düğmesini gizli `file-input` öğesine bağlar. Bu şekilde, düğme `click` olayı dosya girişi `click` olayını tetikler ve dosya seçiciyi görüntüler. Dosyaları seçtikten ve iletişim kutusunu kapattıktan sonra, `input` olay oluşur ve `uploadFiles` işlevi çağrılır. Bu işlev, seçtiğiniz her dosya için yalnızca Browser- [Uploadbrowserdatatoblockblob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) işlevini çağırır. Her çağrı, bir listeye eklenen bir Promise döndürür, böylece dosyalar paralel olarak karşıya yüklenmeye neden olur.
+Bu kod, **dosyaları seç ve karşıya yükle** düğmesini gizli `file-input` öğesine bağlar. Bu şekilde, düğme `click` olayı dosya girişi `click` olayını tetikler ve dosya seçiciyi görüntüler. Dosyaları seçtikten ve iletişim kutusunu kapattıktan sonra, `input` olay oluşur ve `uploadFiles` işlevi çağrılır. Bu işlev, seçtiğiniz her dosya için yalnızca Browser- [Uploadbrowserdatatoblockblob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) işlevini çağırır. Her çağrı, bir listeye eklenen bir Promise döndürür, böylece dosyalar paralel olarak karşıya yüklenmeye neden olur.
 
 ### <a name="delete-blobs"></a>Blob’ları silme
 

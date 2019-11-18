@@ -7,12 +7,12 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 278e9ff68fa20a0a99a6447bb4cf7ac7fddbfb7b
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249106"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120974"
 ---
 # <a name="networking-limit-increase"></a>Ağ sınırını artırma
 
@@ -20,11 +20,14 @@ Geçerli ağ kullanımınızı ve kotayı görüntülemek için Azure portal **k
 
 **Yardım + Destek** dikey penceresinde veya portalda **kullanımlar + kota** dikey penceresinde artış isteyebilirsiniz.
 
+> [!Note]
+> Genel IP ön ekinin varsayılan boyutunu değiştirmek için, açılan listeden "En düşük genel IP ağlar arası önek uzunluğu" seçeneğini belirleyin.
+
 ## <a name="request-networking-quota-increase-at-subscription-level-using-the-help--support-blade"></a>**Yardım + Destek** dikey penceresini kullanarak abonelik düzeyinde istek ağ kotası artışı
 
 Azure portal Azure 'un ' yardım + destek ' dikey penceresi aracılığıyla bir destek isteği oluşturmak için aşağıdaki yönergeleri izleyin. 
 
-1. @No__t-0 ' dan **Yardım + Destek**' i seçin.
+1. https://portal.azure.com, **Yardım + Destek**' i seçin.
 
     ![Yardım ve destek](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -61,7 +64,7 @@ Azure portal Azure 'un ' yardım + destek ' dikey penceresi aracılığıyla bir
 
 Azure 'un ' kullanım + kota ' dikey penceresi aracılığıyla Azure portal kullanılabilir bir destek isteği oluşturmak için aşağıdaki yönergeleri izleyin. 
 
-1. @No__t-0 ' dan **abonelikler**' i seçin.
+1. https://portal.azure.com, **abonelikler**' i seçin.
 
     ![Abonelikler](./media/resource-manager-core-quotas-request/subscriptions.png)
 

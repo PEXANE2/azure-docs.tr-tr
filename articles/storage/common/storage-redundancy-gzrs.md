@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c8fc6c552920cf7790bf5c89531fc04ad4c57d36
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e040533acdd8979b7b43358c74d1b729dafa2c66
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333207"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111845"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
@@ -31,6 +31,7 @@ GZRS ve RA-GZRS Şu anda şu bölgelerde önizleme için kullanılabilir:
 
 - Kuzey Avrupa
 - Batı Avrupa
+- Birleşik Krallık Güney
 - ABD Doğu
 - ABD Doğu 2
 - ABD Orta
@@ -53,7 +54,7 @@ Bir depolama hesabı oluşturduğunuzda, bu hesaptaki verilerin nasıl çoğalt�
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Yüksek kullanılabilirlik için RA-GZRS kullanma
 
-Depolama hesabınız için RA-GZRS ' ı etkinleştirdiğinizde, verileriniz ikincil uç noktadan ve depolama hesabınızın birincil uç noktasından okunabilir. İkincil uç nokta son eki *–* hesap adına ekler. Örneğin, blob hizmeti için birincil uç noktanız `myaccount.blob.core.windows.net` ise, ikincil uç noktanız `myaccount-secondary.blob.core.windows.net` ' dir. Depolama hesabınızın erişim anahtarları hem birincil hem de ikincil uç noktalar için aynıdır.
+Depolama hesabınız için RA-GZRS ' ı etkinleştirdiğinizde, verileriniz ikincil uç noktadan ve depolama hesabınızın birincil uç noktasından okunabilir. İkincil uç nokta son eki *–* hesap adına ekler. Örneğin, blob hizmeti için birincil uç noktanız `myaccount.blob.core.windows.net`, ikincil uç noktanız `myaccount-secondary.blob.core.windows.net`. Depolama hesabınızın erişim anahtarları hem birincil hem de ikincil uç noktalar için aynıdır.
 
 Bölgesel bir kesinti durumunda RA-GZRS avantajlarından yararlanmak için, bu senaryoyu işlemek üzere uygulamanızı önceden tasarlamanız gerekir. Uygulamanız birincil uç noktadan okuyup yazmalı, ancak birincil bölgenin kullanılamaz hale geldiği olayda ikincil uç noktayı kullanmaya geçiş yapar. RA-GZRS ile yüksek kullanılabilirlik için tasarlamaya yönelik yönergeler için bkz. [ra-GZRS veya RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
@@ -141,7 +142,7 @@ Dinamik geçiş istemek için [Azure Portal](https://ms.portal.azure.com/#blade/
     - **Sorun türü**: **veri geçişini**seçin.
     - **Kategori**: **bir bölge içinde (ra-) GZRS geçir**' i seçin.
     - **Başlık**: Örneğin, **(ra-) GZRS hesabı geçişi**gibi açıklayıcı bir başlık yazın.
-    - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, "\_ @ no__t-3 bölgesindeki [LRS, GRS] öğesinden GZRS 'e geçiş yapmak istiyorum." ya da "\_ @ no__t-1 bölgesindeki, [LRS, RA-GRS] öğesinden RA-GZRS 'a geçiş yapmak istiyorum."
+    - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, "\_\_ bölgesindeki [LRS, GRS] öğesinden GZRS 'e geçiş yapmak istiyorum." ya da "\_\_ bölgesinde [LRS, RA-GRS] konumundan RA-GZRS ' a geçiş yapmak istiyorum."
 5. **İleri**’yi seçin.
 6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
 7. **Oluştur**'u seçin.

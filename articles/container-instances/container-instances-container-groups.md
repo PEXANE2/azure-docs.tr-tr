@@ -1,6 +1,6 @@
 ---
 title: Azure Container Instances kapsayıcı grupları
-description: Çok Kapsayıcılı grupların nasıl çalıştığını anlama Azure Container Instances
+description: Azure Container Instances içinde kapsayıcı grupları hakkında bilgi edinin, bir yaşam döngüsü ve depolama ve ağ gibi kaynakları paylaşan bir örnek koleksiyonu
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a785ecbfa09c54d3affa97c220d4808f9fe8d90b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ef6745e18a0df3ee0a572f106d1507d0fca32ac2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904460"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150196"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances kapsayıcı grupları
 
 Azure Container Instances en üst düzey kaynak *kapsayıcı grubudur*. Bu makalede, kapsayıcı gruplarının ne olduğu ve etkinleştirildikleri senaryo türleri açıklanmaktadır.
 
-## <a name="how-a-container-group-works"></a>Kapsayıcı grubu nasıl kullanılır?
+## <a name="what-is-a-container-group"></a>Kapsayıcı grubu nedir?
 
 Kapsayıcı grubu, aynı konak makinesinde zamanlanmış bir kapsayıcı koleksiyonudur. Bir kapsayıcı grubundaki kapsayıcılar bir yaşam döngüsü, kaynak, yerel ağ ve depolama birimi paylaşır. Prototip, [Kubernetes][kubernetes-pod]'te *Pod* ile benzerdir.
 
@@ -71,7 +71,7 @@ Daha fazla bilgi için bkz. kapsayıcı gruplarındaki [Resourcerequirements][re
 
 * Bir kapsayıcı grubundaki **en fazla** kaynak için, dağıtım bölgesindeki Azure Container Instances [kaynak kullanılabilirliğine][region-availability] bakın.
 
-## <a name="networking"></a>Ağ İletişimi
+## <a name="networking"></a>Ağ
 
 Kapsayıcı grupları bir IP adresini ve bu IP adresinde bir bağlantı noktası ad alanını paylaşır. Dış istemcilerin Grup içindeki bir kapsayıcıya ulaşmasını sağlamak için, bağlantı noktasını IP adresinde ve kapsayıcıdan kullanıma sunmalısınız. Grup içindeki kapsayıcılar bir bağlantı noktası ad alanını paylaştığından, bağlantı noktası eşleştirmesi desteklenmez. Bir grup içindeki kapsayıcılar, bu bağlantı noktaları grubun IP adresinde dışarıdan sunulmasa bile, açığa çıkarılan bağlantı noktalarında localhost aracılığıyla birbirlerine erişebilir.
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: cab67a9a50d8e9d91897c170ef2cb0884f169c64
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5cdd65d5509d8f46f095d91c509a1fda288517c4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606666"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132424"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure 'da doğru MySQL sunucusu seçeneğini belirleyin
 
@@ -34,11 +34,11 @@ Bu seçenekler arasındaki temel farklılıklar aşağıdaki tabloda listelenmi�
 |            | MySQL için Azure Veritabanı | Azure VM 'lerinde MySQL    |
 |:-------------------|:-----------------------------|:--------------------|
 | Hizmet düzeyi sözleşmesi (SLA)                | % 99,99 kullanılabilirlik için SLA sunar| Aynı Kullanılabilirlik kümesinde iki veya daha fazla örnek ile en fazla% 99,95 kullanılabilirlik vardır.<br/><br/>Premium depolama kullanan tek örnekli bir VM ile% 99,9 kullanılabilirlik.<br/><br/>birden çok kullanılabilirlik kümesindeki birden çok örneğe sahip Kullanılabilirlik Alanları kullanarak% 99,99.<br/><br/>Bkz. [sanal makineler SLA 'sı](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). |
-| İşletim sistemi düzeltme eki uygulama        | Automatic  | Müşteriler tarafından yönetiliyor |
-| MySQL düzeltme eki uygulama     | Automatic  | Müşteriler tarafından yönetiliyor |
+| İşletim sistemi düzeltme eki uygulama        | Otomatik  | Müşteriler tarafından yönetiliyor |
+| MySQL düzeltme eki uygulama     | Otomatik  | Müşteriler tarafından yönetiliyor |
 | Yüksek kullanılabilirlik | Yüksek kullanılabilirlik (HA) modeli, düğüm düzeyinde bir kesinti oluştuğunda için yerleşik yük devretme mekanizmalarına dayanır. Bu gibi durumlarda, hizmet otomatik olarak yeni bir örnek oluşturur ve depolama alanını bu örneğe ekler. | Müşteriler yüksek kullanılabilirliği mimarileri, uygular, test edin ve bakımını yapın. Yetenekler her zaman açık yük devretme kümelemesi, her zaman açık grup çoğaltması, günlük aktarma veya işlemsel çoğaltma içerebilir.|
 | Bölge artıklığı | Şu anda desteklenmiyor | Azure VM 'Leri, farklı kullanılabilirlik bölgelerinde çalışacak şekilde ayarlanabilir. Şirket içi bir çözüm için müşterilerin kendi ikincil veri merkezini oluşturması, yönetmesi ve sürdürmeleri gerekir.|
-| Karma senaryolar | [Gelen verileri çoğaltma](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication), bir dış MySQL sunucusundan verileri MySQL Için Azure veritabanı hizmetine aktarabilirsiniz. Dış sunucu şirket içinde, sanal makinelerde veya diğer bulut sağlayıcıları tarafından barındırılan bir veritabanı hizmeti olabilir.<br/><br/> [Çoğaltma oku](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) özelliğini kullanarak MySQL ana sunucusu Için Azure veritabanı 'ndan en fazla beş salt okuma Çoğaltma sunucusuna veri çoğaltabilirsiniz. Çoğaltmalar aynı Azure bölgesinde ya da bölgeler arasında bulunur. Salt okuma çoğaltmaları, binlog çoğaltma teknolojisi kullanılarak zaman uyumsuz olarak güncelleştirilir.| Müşteriler tarafından yönetiliyor
+| Karma senaryolar | [Gelen verileri çoğaltma](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication), bir dış MySQL sunucusundan verileri MySQL Için Azure veritabanı hizmetine aktarabilirsiniz. Dış sunucu şirket içinde, sanal makinelerde veya diğer bulut sağlayıcıları tarafından barındırılan bir veritabanı hizmeti olabilir.<br/><br/> [Çoğaltma oku](https://docs.microsoft.com/azure/mysql/concepts-read-replicas) özelliğini kullanarak MySQL ana sunucusu Için Azure veritabanı 'ndan en fazla beş salt okuma Çoğaltma sunucusuna veri çoğaltabilirsiniz. Çoğaltmalar aynı Azure bölgesinde ya da bölgeler arasında bulunur. Salt okuma çoğaltmaları, binlog çoğaltma teknolojisi kullanılarak zaman uyumsuz olarak güncelleştirilir.| Müşteriler tarafından yönetiliyor
 | Yedekleme ve geri yükleme | Otomatik olarak [Sunucu yedeklemeleri](https://docs.microsoft.com/azure/mysql/concepts-backup#backups) oluşturur ve bunları yerel olarak yedekli veya coğrafi olarak yedekli olan kullanıcı tarafından yapılandırılmış depolamada depolar. Hizmet tam, fark ve işlem günlüğü yedeklemeleri alır | Müşteriler tarafından yönetiliyor |
 | Veritabanı işlemlerini izleme | Müşterilerine, veritabanı işleminde [Uyarı ayarlama](https://docs.microsoft.com/azure/mysql/concepts-monitoring) ve eşiklere ulaşma olanağı sunan bir işlev sağlar. | Müşteriler tarafından yönetiliyor |
 | Gelişmiş Tehdit Koruması | [Gelişmiş tehdit koruması](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal)sağlar. Bu koruma, veritabanlarına erişmek veya veritabanına yararlanmak için olağan dışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar. | Müşteriler bu korumanın kendileri için derlenmelidir.

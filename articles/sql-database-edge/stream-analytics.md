@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 1b6b3f4e4be9d056bc53fac2eb2f1f3fcd768085
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3ed84e06f693925ed8b484070616e223929e401
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514998"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108753"
 ---
 # <a name="using-sql-database-dac-package-and-stream-analytics-job-with-sql-database-edge"></a>SQL veritabanı ile SQL veritabanı DAC paketi ve Stream Analytics işi kullanma
 
@@ -37,7 +37,7 @@ Azure SQL veritabanı Edge, IoT Edge modülünün *istenen özellikler* seçene�
 |Alan | Açıklama |
 |------|-------------|
 | SQLPackage | SQL veritabanı DAC paketini içeren *. zip dosyası için Azure Blob depolama URI 'SI.
-| Aşama Jobınfo | ASA Edge işi için Azure Blob depolama URI 'SI. ASA Edge işini yayımlama hakkında daha fazla bilgi için [SQL veritabanı Edge için BIR asa Edge Işi yayımlama]()konusuna bakın.
+| Aşama Jobınfo | ASA Edge işi için Azure Blob depolama URI 'SI. ASA Edge işini yayımlama hakkında daha fazla bilgi için [SQL veritabanı Edge için BIR asa Edge Işi yayımlama](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)konusuna bakın.
 
 ## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>SQL veritabanı kenarıyla SQL veritabanı DAC paketlerini kullanma
 
@@ -75,7 +75,7 @@ SQL veritabanı kenarıyla SQL veritabanı DAC paketi (*. dacpac) kullanmak içi
             }
         ```
 
-    7. **Kaydet** düğmesine tıklayın.
+    7. **Kaydet**’e tıklayın.
 
     8. **Modülleri ayarla** sayfasında *İleri*' ye tıklayın.
 
@@ -100,7 +100,7 @@ Azure SQL veritabanı ucunun, Stream Analytics çalışma zamanının yerel bir 
     |Alan      | Açıklama |
     |---------------|-------------|
     |Çıktı diğer adı | Çıkış diğer adının adı.|
-    |Database | SQL veritabanının adı. Bunun SQL veritabanı Edge örneğinde bulunan geçerli bir veritabanı adı olması gerekir.|
+    |Veritabanı | SQL veritabanının adı. Bunun SQL veritabanı Edge örneğinde bulunan geçerli bir veritabanı adı olması gerekir.|
     |Sunucu adı | SQL örneği için ad (veya IP adresi) ve bağlantı noktası numarası ayrıntıları. Bir SQL veritabanı Edge dağıtımı için sunucu adı olarak **TCP:., 1433** kullanabilirsiniz.|
     |Kullanıcı adı | Yukarıda belirtilen veritabanına veri okuyucu ve veri yazıcı erişimi olan SQL oturum açma hesabı.|
     |Parola | Yukarıda bahsedilen SQL oturum açma hesabının parolası.|
@@ -166,7 +166,7 @@ Akış işini SQL veritabanı Edge modülüne dağıtmak için SQL veritabanı E
         }
     ```
 
-7. **Kaydet** düğmesine tıklayın.
+7. **Kaydet**’e tıklayın.
 
 8. **Modülleri ayarla** sayfasında *İleri*' ye tıklayın.
 

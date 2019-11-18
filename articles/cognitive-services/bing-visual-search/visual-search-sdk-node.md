@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Node. js için Bing Görsel Arama SDK 'sını kullanarak görüntü öngörülerini alın"
+title: "Hızlı başlangıç: node. js için Bing Görsel Arama SDK 'sını kullanarak görüntü öngörülerini alın"
 titleSuffix: Azure Cognitive Services
-description: Bing Görsel Arama SDK kullanarak bir görüntüyü karşıya yükleyin ve onunla ilgili Öngörüler alın.
+description: Node. js SDK 'sını kullanarak Bing Görsel Arama hizmetinden görüntü öngörülerini almaya başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: f0dd0bb82f899146956b5671497d298c7ce076ef
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: fd69179c98e999323936daf7e83b165126c20381
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360529"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111596"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Hızlı Başlangıç: Node. js için Bing Görsel Arama SDK 'sını kullanarak görüntü öngörülerini alın
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Hızlı başlangıç: node. js için Bing Görsel Arama SDK 'sını kullanarak görüntü öngörülerini alın
 
 Node. js SDK 'sını kullanarak Bing Görsel Arama hizmetinden görüntü öngörülerini almaya başlamak için bu hızlı başlangıcı kullanın. Bing Görsel Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js)' da bulunabilir. 
 
@@ -57,7 +57,7 @@ Node. js SDK 'sını kullanarak Bing Görsel Arama hizmetinden görüntü öngö
 
 ## <a name="search-for-images"></a>Görüntü ara
 
-1. Resim `fs.createReadStream()` dosyanızı okumak için kullanın ve arama isteğiniz ve sonuçlarınız için değişkenler oluşturun. Ardından, görüntüleri aramak için istemcisini kullanın.
+1. Görüntü dosyanızda okumak için `fs.createReadStream()` kullanın, arama isteğiniz ve sonuçlarınız için değişkenler oluşturun. Ardından, görüntüleri aramak için istemcisini kullanın.
 
     ```javascript
     let fileStream = fs.createReadStream(filePath);

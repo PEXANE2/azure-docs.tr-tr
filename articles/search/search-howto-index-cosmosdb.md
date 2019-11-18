@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB veri kaynağı dizini oluşturma
+title: Azure Cosmos DB verileri arama
 titleSuffix: Azure Cognitive Search
 description: Azure Cosmos DB veri kaynağını gezin ve Azure Bilişsel Arama tam metin ile aranabilir bir dizinde veri alma. Dizin oluşturucular Azure Cosmos DB gibi seçili veri kaynakları için veri alma işlemini otomatik hale getirir.
 author: mgottein
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0657d3d5aec414b867e85b627fcf77174c8ce789
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7e4d51701fd8614831585aac03f2c8a909b2b847
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889904"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112746"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure 'da Dizin Oluşturucu kullanarak Cosmos DB verilerini dizin oluşturma Bilişsel Arama 
 
@@ -172,7 +172,7 @@ Bir veri kaynağı oluşturmak için bir POST isteğini formüle koyun:
 
 | Alan   | Açıklama |
 |---------|-------------|
-| **ada** | Gereklidir. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
+| **name** | Gereklidir. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
 |**type**| Gereklidir. `cosmosdb`olmalıdır. |
 |**Credentials** | Gereklidir. Cosmos DB bir bağlantı dizesi olmalıdır.<br/>SQL koleksiyonları için, bağlantı dizeleri şu biçimdedir: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>MongoDB koleksiyonları için, bağlantı dizesine **Apikind = MongoDb** ekleyin:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>Gremlin grafikleri ve Cassandra tablolarında, önizlemeye erişim sağlamak için [geçitli Dizin Oluşturucu önizlemesine](https://aka.ms/azure-cognitive-search/indexer-preview) kaydolun ve kimlik bilgilerini biçimlendirme hakkında bilgi alın.<br/><br/>Uç nokta URL 'sindeki bağlantı noktası numaralarını önleyin. Bağlantı noktası numarasını eklerseniz, Azure Bilişsel Arama Azure Cosmos DB veritabanınızın dizinini oluşturamıyor.|
 | **kapsayıcı** | Aşağıdaki öğeleri içerir: <br/>**ad**: gerekli. Endekslenecek veritabanı koleksiyonunun KIMLIĞINI belirtin.<br/>**sorgu**: isteğe bağlı. Rastgele bir JSON belgesini, Azure Bilişsel Arama 'in dizinetarafından kullanılabilecek düz bir şemaya düzleştirmek için bir sorgu belirtebilirsiniz.<br/>MongoDB API 'SI, Gremlin API ve Cassandra API için sorgular desteklenmez. |

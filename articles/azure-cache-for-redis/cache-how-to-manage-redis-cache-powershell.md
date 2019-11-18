@@ -1,25 +1,17 @@
 ---
-title: Redsıs için Azure önbelleğini Azure PowerShell ile yönetme | Microsoft Docs
+title: Redsıs için Azure önbelleğini Azure PowerShell ile yönetme
 description: Azure PowerShell kullanarak redin için Azure önbelleği için yönetim görevleri gerçekleştirmeyi öğrenin.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 0286bd7ae20fc1398dbfffad6484164c9d66c7e1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 06d1895a807b4e618be3dc1f816da2c1b3faaf3b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72758084"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122147"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Redsıs için Azure önbelleğini Azure PowerShell ile yönetme
 > [!div class="op_single_selector"]
@@ -52,13 +44,13 @@ Daha sonra, birden fazla Azure aboneliğiniz varsa, Azure aboneliğinizi ayarlam
 
     Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 
-Aboneliği belirtmek için aşağıdaki komutu çalıştırın. Aşağıdaki örnekte, abonelik adı `ContosoSubscription` ' dır.
+Aboneliği belirtmek için aşağıdaki komutu çalıştırın. Aşağıdaki örnekte, abonelik adı `ContosoSubscription`.
 
     Select-AzSubscription -SubscriptionName ContosoSubscription
 
 Windows PowerShell 'i Azure Resource Manager kullanabilmeniz için aşağıdakiler gereklidir:
 
-* Windows PowerShell, sürüm 3,0 veya 4,0. Windows PowerShell sürümünü bulmak için, şunu yazın: `$PSVersionTable` ve `PSVersion` değerini 3,0 veya 4,0 olarak doğrulayın. Uyumlu bir sürüm yüklemek için bkz. [Windows Management framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595) veya [windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855).
+* Windows PowerShell, sürüm 3,0 veya 4,0. Windows PowerShell sürümünü bulmak için, şunu yazın:`$PSVersionTable` ve `PSVersion` değerini 3,0 veya 4,0 olarak doğrulayın. Uyumlu bir sürüm yüklemek için bkz. [Windows Management framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595) veya [windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855).
 
 Bu öğreticide gördüğünüz herhangi bir cmdlet hakkında ayrıntılı yardım almak için Get-Help cmdlet 'ini kullanın.
 
@@ -78,7 +70,7 @@ Azure Kamu bulutuna bağlanmak için aşağıdaki komutlardan birini kullanın.
 
     Connect-AzAccount -EnvironmentName AzureUSGovernment
 
-or
+veya
 
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureUSGovernment)
 
@@ -94,7 +86,7 @@ Azure Çin bulutuna bağlanmak için aşağıdaki komutlardan birini kullanın.
 
     Connect-AzAccount -EnvironmentName AzureChinaCloud
 
-or
+veya
 
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureChinaCloud)
 
@@ -111,7 +103,7 @@ Microsoft Azure Almanya bağlanmak için aşağıdaki komutlardan birini kullan�
     Connect-AzAccount -EnvironmentName AzureGermanCloud
 
 
-or
+veya
 
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureGermanCloud)
 
@@ -127,14 +119,14 @@ Aşağıdaki tabloda, Azure PowerShell kullanarak Redsıs örnekleri için Azure
 
 | Parametre | Açıklama | Varsayılan |
 | --- | --- | --- |
-| Adı |Önbelleğin adı | |
+| Ad |Önbelleğin adı | |
 | Konum |Önbelleğin konumu | |
 | ResourceGroupName |Önbelleğin oluşturulacağı kaynak grubu adı | |
 | Boyut |Önbelleğin boyutu. Geçerli değerler şunlardır: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1 GB, 2,5 GB, 6GB, 13GB, 26GB, 53GB |1 GB |
 | ShardCount |Kümelendirmeyi etkin bir Premium önbellek oluştururken oluşturulacak parça sayısı. Geçerli değerler şunlardır: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Önbelleğin SKU 'sunu belirtir. Geçerli değerler şunlardır: temel, standart, Premium |Standart |
 | RedisConfiguration |Redsıs yapılandırma ayarlarını belirtir. Her bir ayar hakkında ayrıntılar için aşağıdaki [Redisconfiguration Özellikler](#redisconfiguration-properties) tablosuna bakın. | |
-| EnableNonSslPort |SSL olmayan bağlantı noktasının etkinleştirilip etkinleştirilmeyeceğini belirtir. |Yanlış |
+| EnableNonSslPort |SSL olmayan bağlantı noktasının etkinleştirilip etkinleştirilmeyeceğini belirtir. |False |
 | MaxMemoryPolicy |Bu parametre kullanım dışı bırakıldı. bunun yerine RedisConfiguration kullanın. | |
 | Staticıp |Önbelleğinizi VNET 'te barındırırken, önbelleğin alt ağında benzersiz bir IP adresi belirtir. Sağlanmazsa, alt ağdan bir tane seçilir. | |
 | Alt ağ |Önbelleğinizi VNET 'te barındırırken, önbelleğin dağıtılacağı alt ağın adını belirtir. | |
@@ -144,17 +136,17 @@ Aşağıdaki tabloda, Azure PowerShell kullanarak Redsıs örnekleri için Azure
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration özellikleri
 | Özellik | Açıklama | Fiyatlandırma katmanları |
 | --- | --- | --- |
-| RDB-yedekleme-etkin |[Redsıs veri kalıcılığının](cache-how-to-premium-persistence.md) etkin olup olmadığı |Yalnızca Premium |
-| RDB-depolama-bağlantı-dize |[Redsıs veri kalıcılığı](cache-how-to-premium-persistence.md) için depolama hesabına yönelik bağlantı dizesi |Yalnızca Premium |
-| RDB-yedekleme sıklığı |[Redsıs veri kalıcılığı](cache-how-to-premium-persistence.md) için yedekleme sıklığı |Yalnızca Premium |
-| MaxMemory-ayrılmış |Önbelleğe alınmamış süreçler için [ayrılan belleği](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) yapılandırır |Standart ve Premium |
-| MaxMemory-ilke |Önbellek için [çıkarma ilkesini](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) yapılandırır |Tüm fiyatlandırma katmanları |
-| bildirim-keyspace-olaylar |[Anahtar alanı bildirimlerini](cache-configure.md#keyspace-notifications-advanced-settings) yapılandırır |Standart ve Premium |
-| Karma-en yüksek-ZipList-girdileri |Küçük Toplam veri türleri için [bellek iyileştirmeyi](https://redis.io/topics/memory-optimization) yapılandırır |Standart ve Premium |
-| Hash-Max-ZipList-değer |Küçük Toplam veri türleri için [bellek iyileştirmeyi](https://redis.io/topics/memory-optimization) yapılandırır |Standart ve Premium |
-| Set-Max-intset-Entries |Küçük Toplam veri türleri için [bellek iyileştirmeyi](https://redis.io/topics/memory-optimization) yapılandırır |Standart ve Premium |
-| zset-Max-ZipList-Entries |Küçük Toplam veri türleri için [bellek iyileştirmeyi](https://redis.io/topics/memory-optimization) yapılandırır |Standart ve Premium |
-| zset-Max-ZipList-değer |Küçük Toplam veri türleri için [bellek iyileştirmeyi](https://redis.io/topics/memory-optimization) yapılandırır |Standart ve Premium |
+| rdb-backup-enabled |[Redsıs veri kalıcılığının](cache-how-to-premium-persistence.md) etkin olup olmadığı |Yalnızca Premium |
+| rdb-storage-connection-string |[Redsıs veri kalıcılığı](cache-how-to-premium-persistence.md) için depolama hesabına yönelik bağlantı dizesi |Yalnızca Premium |
+| rdb-backup-frequency |[Redsıs veri kalıcılığı](cache-how-to-premium-persistence.md) için yedekleme sıklığı |Yalnızca Premium |
+| maxmemory-reserved |Önbelleğe alınmamış süreçler için [ayrılan belleği](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) yapılandırır |Standart ve Premium |
+| maxmemory-policy |Önbellek için [çıkarma ilkesini](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) yapılandırır |Tüm fiyatlandırma katmanları |
+| notify-keyspace-events |[Anahtar alanı bildirimlerini](cache-configure.md#keyspace-notifications-advanced-settings) yapılandırır |Standart ve Premium |
+| hash-max-ziplist-entries |Küçük Toplam veri türleri için [bellek iyileştirmeyi](https://redis.io/topics/memory-optimization) yapılandırır |Standart ve Premium |
+| hash-max-ziplist-value |Küçük Toplam veri türleri için [bellek iyileştirmeyi](https://redis.io/topics/memory-optimization) yapılandırır |Standart ve Premium |
+| set-max-intset-entries |Küçük Toplam veri türleri için [bellek iyileştirmeyi](https://redis.io/topics/memory-optimization) yapılandırır |Standart ve Premium |
+| zset-max-ziplist-entries |Küçük Toplam veri türleri için [bellek iyileştirmeyi](https://redis.io/topics/memory-optimization) yapılandırır |Standart ve Premium |
+| zset-max-ziplist-value |Küçük Toplam veri türleri için [bellek iyileştirmeyi](https://redis.io/topics/memory-optimization) yapılandırır |Standart ve Premium |
 | veritabanları |Veritabanlarının sayısını yapılandırır. Bu özellik yalnızca önbellek oluşturma sırasında yapılandırılabilir. |Standart ve Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleği oluşturmak için
@@ -167,7 +159,7 @@ Redsıs örnekleri için yeni Azure önbelleği, [New-AzRedisCache](https://docs
 > 
 > 
 
-Kullanılabilir parametrelerin ve `New-AzRedisCache` açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
+Kullanılabilir parametrelerin ve `New-AzRedisCache`açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
 
     PS C:\> Get-Help New-AzRedisCache -detailed
 
@@ -245,29 +237,29 @@ Varsayılan parametrelerle bir önbellek oluşturmak için aşağıdaki komutu �
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
 
-`ResourceGroupName`, `Name` ve `Location` gerekli parametrelerdir, ancak geri kalan değer isteğe bağlıdır ve varsayılan değerlere sahiptir. Önceki komutun çalıştırılması, belirtilen ad, konum ve kaynak grubu ile birlikte, SSL olmayan bağlantı noktası devre dışı bırakılmış şekilde 1 GB olan Redsıs örneği için standart SKU Azure önbelleği oluşturur.
+`ResourceGroupName`, `Name`ve `Location` gerekli parametrelerdir, ancak geri kalan değer isteğe bağlıdır ve varsayılan değerlere sahiptir. Önceki komutun çalıştırılması, belirtilen ad, konum ve kaynak grubu ile birlikte, SSL olmayan bağlantı noktası devre dışı bırakılmış şekilde 1 GB olan Redsıs örneği için standart SKU Azure önbelleği oluşturur.
 
 Premium önbellek oluşturmak için P1 (6 GB-60 GB), P2 (13 GB-130 GB), P3 (26 GB-260 GB) veya P4 (53 GB-530 GB) boyutunu belirtin. Kümelemeyi etkinleştirmek için `ShardCount` parametresini kullanarak bir parça sayısı belirtin. Aşağıdaki örnek 3 parça içeren bir P1 Premium önbellek oluşturur. P1 Premium önbelleği 6 GB boyutdur ve bu yana üç parça belirttiğimiz için toplam boyut 18 GB (3 x 6 GB).
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
 
-@No__t_0 parametresinin değerlerini belirtmek için, `{}` içindeki değerleri `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}` gibi anahtar/değer çiftleri olarak içine alın. Aşağıdaki örnek, `KEA` ile yapılandırılmış `allkeys-random` MaxMemory ilkesi ve anahtar alanı bildirimleri ile standart bir 1 GB önbelleği oluşturur. Daha fazla bilgi için bkz. [keyspace bildirimleri (Gelişmiş ayarlar)](cache-configure.md#keyspace-notifications-advanced-settings) ve [bellek ilkeleri](cache-configure.md#memory-policies).
+`RedisConfiguration` parametresinin değerlerini belirtmek için, `{}` içindeki değerleri `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}`gibi anahtar/değer çiftleri olarak içine alın. Aşağıdaki örnek, `KEA`ile yapılandırılmış `allkeys-random` MaxMemory ilkesi ve anahtar alanı bildirimleri ile standart bir 1 GB önbelleği oluşturur. Daha fazla bilgi için bkz. [keyspace bildirimleri (Gelişmiş ayarlar)](cache-configure.md#keyspace-notifications-advanced-settings) ve [bellek ilkeleri](cache-configure.md#memory-policies).
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}
 
 <a name="databases"></a>
 
 ## <a name="to-configure-the-databases-setting-during-cache-creation"></a>Önbellek oluşturma sırasında veritabanları ayarını yapılandırmak için
-@No__t_0 ayarı yalnızca önbellek oluşturma sırasında yapılandırılabilir. Aşağıdaki örnek, [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCache) cmdlet 'ini kullanarak 48 veritabanı Ile Premium P3 (26 GB) önbelleği oluşturur.
+`databases` ayarı yalnızca önbellek oluşturma sırasında yapılandırılabilir. Aşağıdaki örnek, [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCache) cmdlet 'ini kullanarak 48 veritabanı Ile Premium P3 (26 GB) önbelleği oluşturur.
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
 
-@No__t_0 özelliği hakkında daha fazla bilgi için bkz. [redsıs sunucu yapılandırması Için varsayılan Azure önbelleği](cache-configure.md#default-redis-server-configuration). [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) cmdlet 'ini kullanarak önbellek oluşturma hakkında daha fazla bilgi için bkz. Redsıs Için Azure önbelleği oluşturma bölümüne bakın.
+`databases` özelliği hakkında daha fazla bilgi için bkz. [redsıs sunucu yapılandırması Için varsayılan Azure önbelleği](cache-configure.md#default-redis-server-configuration). [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) cmdlet 'ini kullanarak önbellek oluşturma hakkında daha fazla bilgi için bkz. Redsıs Için Azure önbelleği oluşturma bölümüne bakın.
 
 ## <a name="to-update-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleğini güncelleştirmek için
 Redsıs örnekleri için Azure önbelleği, [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/Set-azRedisCache) cmdlet 'i kullanılarak güncelleştirilir.
 
-Kullanılabilir parametrelerin ve `Set-AzRedisCache` açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
+Kullanılabilir parametrelerin ve `Set-AzRedisCache`açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
 
     PS C:\> Get-Help Set-AzRedisCache -detailed
 
@@ -321,7 +313,7 @@ Kullanılabilir parametrelerin ve `Set-AzRedisCache` açıklamalarının listesi
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-@No__t_0 cmdlet 'i `Size`, `Sku`, `EnableNonSslPort` ve `RedisConfiguration` değerleri gibi özellikleri güncelleştirmek için kullanılabilir. 
+`Set-AzRedisCache` cmdlet 'i `Size`, `Sku`, `EnableNonSslPort`ve `RedisConfiguration` değerleri gibi özellikleri güncelleştirmek için kullanılabilir. 
 
 Aşağıdaki komut, myCache adlı Red, için Azure önbelleği için MaxMemory ilkesini güncelleştirir.
 
@@ -330,7 +322,7 @@ Aşağıdaki komut, myCache adlı Red, için Azure önbelleği için MaxMemory i
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleğini ölçeklendirmek için
-`Set-AzRedisCache`, `Size`, `Sku` veya `ShardCount` özellikleri değiştirildiğinde Redsıs örneği için bir Azure önbelleğini ölçeklendirmek üzere kullanılabilir. 
+`Set-AzRedisCache`, `Size`, `Sku`veya `ShardCount` özellikleri değiştirildiğinde Redsıs örneği için bir Azure önbelleğini ölçeklendirmek üzere kullanılabilir. 
 
 > [!NOTE]
 > PowerShell kullanarak önbelleğin ölçeklendirilmesi, Azure portal bir önbelleği ölçeklendirmeyle aynı sınırlara ve yönergelere tabidir. Aşağıdaki kısıtlamalara sahip farklı bir fiyatlandırma katmanına ölçeklendirebilirsiniz.
@@ -350,7 +342,7 @@ Aşağıdaki örnek, `myCache` adlı bir önbelleğin 2,5 GB önbellek olarak na
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
-Bu komut verildikten sonra, önbelleğin durumu döndürülür (`Get-AzRedisCache` çağırmaya benzer). @No__t_0 `Scaling` olduğunu unutmayın.
+Bu komut verildikten sonra, önbelleğin durumu döndürülür (`Get-AzRedisCache`çağırmaya benzer). `ProvisioningState` `Scaling`olduğunu unutmayın.
 
     PS C:\> Set-AzRedisCache -Name myCache -ResourceGroupName myGroup -Size 2.5GB
 
@@ -379,14 +371,14 @@ Bu komut verildikten sonra, önbelleğin durumu döndürülür (`Get-AzRedisCach
     TenantSettings     : {}
     ShardCount         :
 
-Ölçeklendirme işlemi tamamlandığında, `ProvisioningState` `Succeeded` olarak değişir. Temel ve standart arasında değişen bir ölçeklendirme işlemi yapmanız gerekirse, önceki işlem tamamlanana kadar beklemeniz veya aşağıdakine benzer bir hata almanız gerekir.
+Ölçeklendirme işlemi tamamlandığında, `ProvisioningState` `Succeeded`olarak değişir. Temel ve standart arasında değişen bir ölçeklendirme işlemi yapmanız gerekirse, önceki işlem tamamlanana kadar beklemeniz veya aşağıdakine benzer bir hata almanız gerekir.
 
     Set-AzRedisCache : Conflict: The resource '...' is not in a stable state, and is currently unable to accept the update request.
 
 ## <a name="to-get-information-about-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleği hakkında bilgi almak için
 [Get-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/get-azrediscache) cmdlet 'ini kullanarak bir önbellek hakkında bilgi alabilirsiniz.
 
-Kullanılabilir parametrelerin ve `Get-AzRedisCache` açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
+Kullanılabilir parametrelerin ve `Get-AzRedisCache`açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
 
     PS C:\> Get-Help Get-AzRedisCache -detailed
 
@@ -462,7 +454,7 @@ Belirli bir önbellek hakkında bilgi döndürmek için `Get-AzRedisCache`, önb
 ## <a name="to-retrieve-the-access-keys-for-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleğinin erişim anahtarlarını almak için
 Önbelleğiniz için erişim anahtarlarını almak üzere [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-azRedisCacheKey) cmdlet 'ini kullanabilirsiniz.
 
-Kullanılabilir parametrelerin ve `Get-AzRedisCacheKey` açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
+Kullanılabilir parametrelerin ve `Get-AzRedisCacheKey`açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
 
     PS C:\> Get-Help Get-AzRedisCacheKey -detailed
 
@@ -502,7 +494,7 @@ Kullanılabilir parametrelerin ve `Get-AzRedisCacheKey` açıklamalarının list
 ## <a name="to-regenerate-access-keys-for-your-azure-cache-for-redis"></a>Redsıs için Azure önbelleğiniz için erişim anahtarlarını yeniden oluşturmak için
 Önbelleğiniz için erişim anahtarlarını yeniden oluşturmak üzere [New-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCacheKey) cmdlet 'ini kullanabilirsiniz.
 
-Kullanılabilir parametrelerin ve `New-AzRedisCacheKey` açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
+Kullanılabilir parametrelerin ve `New-AzRedisCacheKey`açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
 
     PS C:\> Get-Help New-AzRedisCacheKey -detailed
 
@@ -552,7 +544,7 @@ Kullanılabilir parametrelerin ve `New-AzRedisCacheKey` açıklamalarının list
 ## <a name="to-delete-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleğini silmek için
 Redsıs için bir Azure önbelleğini silmek için [Remove-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/remove-azrediscache) cmdlet 'ini kullanın.
 
-Kullanılabilir parametrelerin ve `Remove-AzRedisCache` açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
+Kullanılabilir parametrelerin ve `Remove-AzRedisCache`açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
 
     PS C:\> Get-Help Remove-AzRedisCache -detailed
 
@@ -598,14 +590,14 @@ Aşağıdaki örnekte, `myCache` adlı önbellek kaldırılır.
 
 
 ## <a name="to-import-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleğini içeri aktarmak için
-@No__t_0 cmdlet 'ini kullanarak, Redsıs örneği için Azure önbelleğine veri aktarabilirsiniz.
+`Import-AzRedisCache` cmdlet 'ini kullanarak, Redsıs örneği için Azure önbelleğine veri aktarabilirsiniz.
 
 > [!IMPORTANT]
 > İçeri/dışarı aktarma yalnızca [Premium katman](cache-premium-tier-intro.md) önbellekler için kullanılabilir. Içeri/dışarı aktarma hakkında daha fazla bilgi için bkz. [Redu Için Azure önbelleğindeki verileri içeri ve dışarı aktarma](cache-how-to-import-export-data.md).
 > 
 > 
 
-Kullanılabilir parametrelerin ve `Import-AzRedisCache` açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
+Kullanılabilir parametrelerin ve `Import-AzRedisCache`açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
 
     PS C:\> Get-Help Import-AzRedisCache -detailed
 
@@ -658,14 +650,14 @@ Aşağıdaki komut, SAS URI 'si tarafından belirtilen Blobun verileri Redsıs i
     PS C:\>Import-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Files @("https://mystorageaccount.blob.core.windows.net/mycontainername/blobname?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd") -Force
 
 ## <a name="to-export-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleğini dışarı aktarmak için
-@No__t_0 cmdlet 'ini kullanarak Redsıs örneği için Azure önbelleğinden verileri dışarı aktarabilirsiniz.
+`Export-AzRedisCache` cmdlet 'ini kullanarak Redsıs örneği için Azure önbelleğinden verileri dışarı aktarabilirsiniz.
 
 > [!IMPORTANT]
 > İçeri/dışarı aktarma yalnızca [Premium katman](cache-premium-tier-intro.md) önbellekler için kullanılabilir. Içeri/dışarı aktarma hakkında daha fazla bilgi için bkz. [Redu Için Azure önbelleğindeki verileri içeri ve dışarı aktarma](cache-how-to-import-export-data.md).
 > 
 > 
 
-Kullanılabilir parametrelerin ve `Export-AzRedisCache` açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
+Kullanılabilir parametrelerin ve `Export-AzRedisCache`açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
 
     PS C:\> Get-Help Export-AzRedisCache -detailed
 
@@ -719,14 +711,14 @@ Aşağıdaki komut, Redsıs örneği için bir Azure önbelleğindeki verileri S
         pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
 
 ## <a name="to-reboot-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleğini yeniden başlatmak için
-@No__t_0 cmdlet 'ini kullanarak Redsıs örneği için Azure önbelleğinizi yeniden başlatabilirsiniz.
+`Reset-AzRedisCache` cmdlet 'ini kullanarak Redsıs örneği için Azure önbelleğinizi yeniden başlatabilirsiniz.
 
 > [!IMPORTANT]
 > Yeniden başlatma yalnızca [Premium katman](cache-premium-tier-intro.md) önbellekler için kullanılabilir. Önbelleğinizi yeniden başlatma hakkında daha fazla bilgi için bkz. [önbellek yönetimi-yeniden başlatma](cache-administration.md#reboot).
 > 
 > 
 
-Kullanılabilir parametrelerin ve `Reset-AzRedisCache` açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
+Kullanılabilir parametrelerin ve `Reset-AzRedisCache`açıklamalarının listesini görmek için aşağıdaki komutu çalıştırın.
 
     PS C:\> Get-Help Reset-AzRedisCache -detailed
 

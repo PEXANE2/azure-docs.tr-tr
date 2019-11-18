@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: .NET SDK C# kullanarak bir arama dizini oluşturma'
+title: 'Hızlı başlangıç: .NET C# kullanarak bir arama dizini oluşturma'
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama .NET SDK kullanarak C# Dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı açıklar.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: cb52ebc4cfdb6f62e9e68bf007cadc20cd565fad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 45d24286a511ff60db33e149627932b0768c543b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792833"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112032"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Hızlı başlangıç: .NET SDK C# kullanarak Azure bilişsel arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
-## <a name="set-up-your-environment"></a>Ortamınızı kurma
+## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
 Visual Studio 'Yu açıp .NET Core üzerinde çalışabilen yeni bir konsol uygulama projesi oluşturarak başlayın.
 
@@ -87,7 +87,7 @@ Bu proje için, `Microsoft.Azure.Search` NuGet paketinin 9. sürümünü ve en s
 
 1. Dosyayı çıkış dizininize ekleyin. AppSettings. JSON öğesine sağ tıklayın ve **Özellikler**' i seçin. **Çıkış Dizinine Kopyala**' da, **daha yeniyse kopyala**' yı seçin.
 
-1. Aşağıdaki JSON 'ı yeni JSON dosyanıza kopyalayın. Arama hizmeti adı 'nı (-SEARCH-SERVICE-NAME) ve yönetici API anahtarınızı (-ADMIN-API-KEY) geçerli değerlerle değiştirin. Hizmet uç noktanız `https://mydemo.search.windows.net` ise, hizmet adı "mydemo" olacaktır.
+1. Aşağıdaki JSON 'ı yeni JSON dosyanıza kopyalayın. Arama hizmeti adı 'nı (-SEARCH-SERVICE-NAME) ve yönetici API anahtarınızı (-ADMIN-API-KEY) geçerli değerlerle değiştirin. Hizmet uç noktanız `https://mydemo.search.windows.net`, hizmet adı "mydemo" olacaktır.
 
 ```json
 {
@@ -535,7 +535,7 @@ Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgu
 
     [Bir sorgudaki terimlerle eşleşen iki yol](search-query-overview.md#types-of-queries)vardır: tam metin araması ve filtreler. Tam metin arama sorgusu, dizininizdeki `IsSearchable` alanlarında bir veya daha fazla terimi arar. Filtre, bir dizindeki `IsFilterable` alanları üzerinde değerlendirilen Boolean bir ifadedir. Tam metin arama ve filtreleri birlikte veya ayrı olarak kullanabilirsiniz.
 
-    Arama ve filtrelerin her ikisi de `Documents.Search` yöntemi kullanılarak gerçekleştirilir. Bir arama sorgusu `searchText` parametresinde geçirilebilirken bir filtre ifadesi `SearchParameters` sınıfının `Filter` özelliğinden geçirilebilir. Arama yapmadan filtrelemek üzere `searchText` parametresi için `"*"` geçirmeniz yeterlidir. Filtrelemeden arama yapmak için `Filter` özelliğini ayarlamadan bırakmanız veya bir `SearchParameters` örneği geçirmemeniz yeterlidir.
+    Arama ve filtrelerin her ikisi de `Documents.Search` yöntemi kullanılarak gerçekleştirilir. Bir arama sorgusu `searchText` parametresinde geçirilebilirken bir filtre ifadesi `Filter` sınıfının `SearchParameters` özelliğinden geçirilebilir. Arama yapmadan filtrelemek üzere `"*"` parametresi için `searchText` geçirmeniz yeterlidir. Filtrelemeden arama yapmak için `Filter` özelliğini ayarlamadan bırakmanız veya bir `SearchParameters` örneği geçirmemeniz yeterlidir.
 
 1. Program.cs ' de, ana, "3-arama" satırının açıklamasını kaldırın. 
 

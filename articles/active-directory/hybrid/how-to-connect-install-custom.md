@@ -10,16 +10,16 @@ ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2711127c7bdf58e61f2d688c51e0e639d00cda5
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 80b90a22a793c15104bba3eb91e88f851158e13f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883067"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106951"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect özel yüklemesi
 Yükleme için daha fazla seçenek istediğinizde Azure AD Connect **Özel ayarları** kullanılır. Birden fazla ormanınız varsa veya hızlı yükleme kapsamında yer almayan isteğe bağlı özellikleri yapılandırmak istiyorsanız kullanılır. [**Hızlı yükleme**](how-to-connect-install-express.md) seçeneğinin dağıtımınız veya topolojiniz için uygun olmadığı tüm durumlarda kullanılır.
@@ -87,7 +87,9 @@ Orman adını girip **Dizin Ekle**’ye tıkladıktan sonra, bir iletişim kutus
 ![Connect Dizini](./media/how-to-connect-install-custom/connectdir02.png)
 
 #### <a name="enterprise-admin-and-domain-admin-accounts-not-supported"></a>Kurumsal Yönetici ve etki alanı yönetici hesapları desteklenmiyor
-Yapı 1.4 itibariyle. # # #. # artık AD DS bağlayıcı hesabı olarak bir kurumsal yönetici veya etki alanı yöneticisi hesabı kullanmak için desteklenmiyor.  **Mevcut hesabı kullan**' ı belirtirken Kurumsal Yönetici veya etki alanı yöneticisi olan bir hesap girmeyi denerseniz, bir hata alırsınız.
+Derleme 1.4.18.0 itibariyle, artık AD DS bağlayıcı hesabı olarak bir kurumsal yönetici veya etki alanı yöneticisi hesabı kullanmak için desteklenmez.  **Mevcut hesabı kullan**' ı belirtirken Kurumsal Yönetici veya etki alanı yöneticisi olan bir hesap girmeyi denerseniz, şu hatayı alırsınız:
+
+  **"AD Ormanı hesabınız için bir kuruluş veya etki alanı yönetici hesabı kullanılmasına izin verilmiyor.  Hesabı sizin için Azure AD Connect oluşturmaya veya doğru izinlere sahip bir eşitleme hesabı belirtmenize izin verin.  Daha fazla bilgi &lt;&gt;"**
 
 ### <a name="azure-ad-sign-in-configuration"></a>Azure AD oturum açma yapılandırması
 Bu sayfa, Azure AD'de doğrulanmış olup şirket içi AD DS'de var olan UPN etki alanlarını gözden geçirmenize olanak sağlar. Ayrıca bu sayfa sayesinde userPrincipalName için kullanılacak özniteliği yapılandırabilirsiniz.
@@ -380,7 +382,7 @@ Doğrula düğmesine tıkladığınızda Azure AD Connect sizin için DNS ayarla
 
 * Federasyon FQDN'sini çözümleme: Azure AD, bağlantıdan emin olmak için Federasyon FQDN’sinin DNS ile çözümlenip çözümlenemeyeceğini denetler.
 
-![Tamamlama](./media/how-to-connect-install-custom/completed.png)
+![Eksiksiz](./media/how-to-connect-install-custom/completed.png)
 
 ![Doğrulama](./media/how-to-connect-install-custom/adfs7.png)
 

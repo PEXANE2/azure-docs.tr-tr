@@ -1,24 +1,16 @@
 ---
-title: Kaynak Yöneticisi dağıtımlarında sorun giderme | Microsoft Docs
+title: Dağıtımlarla ilgili sorunları giderme
 description: Azure Resource Manager şablonu dağıtımlarını izlemeyi ve sorun gidermeyi öğrenin. Etkinlik günlüklerini ve dağıtım geçmişini gösterir.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4ad32ed83d731a26b6bb72fca230d00d5465c45a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: be390b35a69f44aae38bec100deb2d3c07ad6355
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390205"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149340"
 ---
 # <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Öğretici: Kaynak Yöneticisi şablonu dağıtımlarının sorunlarını giderme
 
@@ -39,7 +31,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Dağıtım hatalarını giderme
 > * Kaynakları temizleme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -47,7 +39,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu makaleyi tamamlamak için gerekenler:
 
-- [Visual Studio Code](https://code.visualstudio.com/) ve [Resource Manager Araçları uzantısı](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+- [Resource Manager Araçları uzantısı](https://code.visualstudio.com/) içeren [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
 
 ## <a name="create-a-problematic-template"></a>Sorunlu şablon oluşturma
 
@@ -68,7 +60,7 @@ Bu makaleyi tamamlamak için gerekenler:
     - **apiVersion1** geçersiz öğe adı. Bu bir doğrulama hatasıdır.
     - API sürümü "2018-07-01" olacaktır.  Bu bir dağıtım hatasıdır.
 
-5. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için **Dosya**>**Farklı Kaydet**’i seçin.
+5. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için >Dosya**Farklı Kaydet**’i seçin.
 
 ## <a name="troubleshoot-the-validation-error"></a>Doğrulama hatası sorunlarını giderme
 
@@ -101,7 +93,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 Dağıtım hatası, aşağıdaki yordam kullanılarak Azure portal bulunabilir:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Kaynak **grupları** ' nı ve ardından kaynak grubu adı ' nı seçerek kaynak grubunu açın. **Dağıtım**altında **1 başarısız** olduğunu göreceksiniz.
 
     ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
@@ -115,8 +107,8 @@ Dağıtım hatası, aşağıdaki yordam kullanılarak Azure portal bulunabilir:
 
 Ayrıca, etkinlik günlüklerinden hatayı bulabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. @No__t-1**etkinlik günlüğünü** **İzle**' yi seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. **İzleme** > **etkinlik günlüğü**' nü seçin.
 3. Günlüğü bulmak için filtreleri kullanın.
 
     ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)

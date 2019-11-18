@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a302e723aa898a62bc43ecb38343bcf026dc769e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: abb6c2212549c3d92f9c1dbc42c31f838a704af2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74022932"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144274"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolü ayarlarını yapılandırma
 
@@ -48,11 +48,19 @@ Azure Kaynak rolü ayarlarını açmak için aşağıdaki adımları izleyin.
 
     ![Rol ayarı ayrıntıları sayfası çeşitli atama ve etkinleştirme ayarlarını listeleme](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. Rol ayarları bölmesini açmak için **Düzenle** ' yi seçin.
+1. **Rol ayarları** bölmesini açmak için **Düzenle** ' yi seçin. İlk sekme, Privileged Identity Management ' de rol etkinleştirme yapılandırmasını güncelleştirmenize olanak tanır.
 
-    ![Rol ayarları sayfasını düzenleme atama ve etkinleştirme ayarlarını güncelleştirme seçenekleri](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Etkinleştirme sekmesi açık olan rol ayarlarını Düzenle sayfası](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 
-    Her rolün rol ayarı bölmesinde yapılandırabileceğiniz çeşitli ayarlar vardır.
+1. Atama ayarı sekmesini açmak için, sayfanın altındaki **atama** sekmesini veya **Sonraki: atama** düğmesini seçin. Bu ayarlar, Privileged Identity Management arabirimi içinde yapılan rol atamalarını denetler.
+
+    ![Rol ayarları sayfasındaki rol atama sekmesi](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
+
+1. Bu rolün bildirim ayarı sekmesine ulaşmak için sayfanın alt kısmındaki **bildirim** sekmesini veya **Sonraki: etkinleştirme** düğmesini kullanın. Bu ayarlar, bu rolle ilgili tüm e-posta bildirimlerini denetler.
+
+    ![Rol ayarları sayfasındaki rol bildirimleri sekmesi](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+1. Rol ayarlarını güncelleştirmek için herhangi bir zamanda **Güncelleştir** düğmesini seçin.
 
 ## <a name="assignment-duration"></a>Atama süresi
 

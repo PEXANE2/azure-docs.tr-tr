@@ -1,5 +1,5 @@
 ---
-title: Dizin oluşturucular kullanılarak otomatik dizin oluşturma için alan eşlemeleri
+title: Dizin oluşturucularda alan eşlemeleri
 titleSuffix: Azure Cognitive Search
 description: Dizin oluşturucudaki alan eşlemelerini, alan adlarında ve veri gösterimlerinde farklılıklar için bir hesaba göre yapılandırın.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cc863ee3dc7f2dc8049fcd22189acac94a855352
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 72623787cdb27c568fe2b4ec075010674a3996ef
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786964"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74124000"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Bilişsel Arama Dizinleyicileri kullanarak alan eşlemeleri ve dönüştürmeler
 
@@ -175,11 +175,14 @@ Azure Bilişsel Arama iki farklı Base64 kodlaması destekler. Aynı alanı kodl
 
 #### <a name="base64-encoding-options"></a>Base64 kodlama seçenekleri
 
-Azure Bilişsel Arama iki farklı Base64 kodlaması destekler: **HttpServerUtility URL belirteci**ve **Padding olmadan URL güvenli Base64 kodlaması**. Dizin oluşturma sırasında Base64 kodlamalı bir dizenin daha sonra aynı kodlama seçenekleriyle kodu oluşturması gerekir, aksi takdirde sonuç orijinalle eşleşmez.
+Azure Bilişsel Arama, URL güvenli Base64 kodlamasını ve normal Base64 kodlamasını destekler. Dizin oluşturma sırasında Base64 kodlamalı bir dize, daha sonra aynı kodlama seçenekleriyle yeniden oluşturulmalıdır, aksi takdirde sonuç orijinalle eşleşmez.
 
 Sırasıyla kodlama ve kod çözme için `useHttpServerUtilityUrlTokenEncode` veya `useHttpServerUtilityUrlTokenDecode` parametreleri `true`olarak ayarlanırsa, `base64Encode` [HttpServerUtility. Urltokenencoding](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) gibi davranır ve `base64Decode` [HttpServerUtility. urltokençözmede](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx)gibi davranır.
 
-Azure Bilişsel Arama davranışına benzemek üzere anahtar değerleri oluşturmak için tam .NET Framework (yani, .NET Core veya başka bir çatı kullanıyorsanız) kullanmıyorsanız, `useHttpServerUtilityUrlTokenEncode` ve `useHttpServerUtilityUrlTokenDecode` `false`olarak ayarlamanız gerekir. Kullandığınız kitaplığa bağlı olarak, Base64 kodlaması ve kod çözme işlevleri, Azure Bilişsel Arama tarafından kullanılanlardan farklı şekilde farklılık gösterebilir.
+> [!WARNING]
+> Anahtar değerleri üretmek için `base64Encode` kullanılırsa, `useHttpServerUtilityUrlTokenEncode` true olarak ayarlanmalıdır. Anahtar değerleri için yalnızca URL-güvenli Base64 kodlaması kullanılabilir. Anahtar değerlerinde bulunan karakterlere ilişkin kısıtlamaların tam olarak ayarlanması için bkz. [adlandırma kuralları &#40;Azure bilişsel arama&#41; ](https://docs.microsoft.com/rest/api/searchservice/naming-rules) .
+
+Azure Bilişsel Arama .NET kitaplıkları, yerleşik kodlama sağlayan tam .NET Framework kabul eder. `useHttpServerUtilityUrlTokenEncode` ve `useHttpServerUtilityUrlTokenDecode` seçenekleri bu yerleşik işlev özelliğinden faydalanır. .NET Core veya başka bir çerçeve kullanıyorsanız, bu seçenekleri `false` ve Framework kodlama ve kod çözme işlevlerinin doğrudan çağrılması için ayarlamayı öneririz.
 
 Aşağıdaki tabloda `00>00?00`dize için farklı Base64 kodlamaları karşılaştırılmaktadır. Base64 işlevleriniz için gerekli ek işlemeyi (varsa) öğrenmek için, kitaplık kodlama işlevinizi dize `00>00?00` uygulayın ve çıktıyı beklenen çıkış `MDA-MDA_MDA`ile karşılaştırın.
 
@@ -188,7 +191,7 @@ Aşağıdaki tabloda `00>00?00`dize için farklı Base64 kodlamaları karşıla�
 | Doldurma ile Base64 | `MDA+MDA/MDA=` | URL-güvenli karakterler kullanın ve doldurmayı kaldırın | Standart Base64 karakterlerini kullanın ve doldurma ekleyin |
 | Doldurma olmadan Base64 | `MDA+MDA/MDA` | URL kullanımı güvenli karakterler | Standart Base64 karakterlerini kullan |
 | URL-doldurma ile güvenli Base64 | `MDA-MDA_MDA=` | Doldurmayı kaldır | Doldurma Ekle |
-| URL-doldurma olmadan güvenli Base64 | `MDA-MDA_MDA` | Hiçbiri | Hiçbiri |
+| URL-doldurma olmadan güvenli Base64 | `MDA-MDA_MDA` | None | None |
 
 <a name="extractTokenAtPositionFunction"></a>
 

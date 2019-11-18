@@ -1,5 +1,6 @@
 ---
-title: 'Noktadan siteye sertifikaları oluşturma ve dışarı aktarma: PowerShell: Azure | Microsoft Docs'
+title: 'P2S için sertifikaları oluşturma ve dışarı aktarma: PowerShell'
+titleSuffix: Azure VPN Gateway
 description: Windows 10 veya Windows Server 2016 ' de otomatik olarak imzalanan bir kök sertifika oluşturun, ortak anahtarı dışarı aktarın ve PowerShell 'i kullanarak istemci sertifikaları oluşturun.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8f7d4f71853e1640146a38fb39384c20ca9553eb
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285753"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151368"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>PowerShell kullanarak noktadan siteye sertifika oluşturma ve dışarı aktarma
 
@@ -24,7 +25,7 @@ Bir Windows 10 veya Windows Server 2016 bilgisayarına erişiminiz yoksa, sertif
 
 [!INCLUDE [generate and export certificates](../../includes/vpn-gateway-generate-export-certificates-include.md)]
 
-## <a name="install"></a>İçe aktarılmış bir istemci sertifikası yükler
+## <a name="install"></a>Dışarı aktarılan istemci sertifikası yükleme
 
 VNet 'e bir P2S bağlantısı üzerinden bağlanan her istemci, istemci sertifikasının yerel olarak yüklenmesini gerektirir.
 

@@ -1,63 +1,51 @@
 ---
-title: VM'ler için Azure İzleyici (Önizleme) nedir? | Microsoft Docs
-description: VM'ler için Azure İzleyici Azure Izleyici 'nin, Azure VM işletim sisteminin sistem durumunu ve performans izlemesini birleştiren ve uygulama bileşenlerini ve bağımlılıklarını diğer kaynaklarla otomatik olarak keşfederek ve iletişimi eşleyen bir özelliktir. aralarında. Bu makalede genel bakış sunulmaktadır.
+title: Azure İzleyici VM'ler (Önizleme) nedir? | Microsoft Belgeleri
+description: VM'ler için Azure İzleyici bir sistem durumunu ve uygulama bileşenleri ve diğer kaynaklarla ilgili bağımlılıkları otomatik olarak keşfetme yanı sıra Azure VM'nin işletim sistemi izleme performansını birleştirir ve iletişimi eşleyen bir Azure İzleyici özelliğidir. Bunlar arasında. Bu makalede, genel bir bakış sağlar.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: c6135f3ab90a2002c3cf0c8d26211d66d0c637e8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.date: 11/14/2019
+ms.openlocfilehash: 84ebf92f795dfe1a21570d782bf24fad27f50eda
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802414"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109075"
 ---
-# <a name="what-is-azure-monitor-for-vms-preview"></a>VM'ler için Azure İzleyici (Önizleme) nedir?
+# <a name="what-is-azure-monitor-for-vms-preview"></a>Azure İzleyici VM'ler (Önizleme) nedir?
 
-VM'ler için Azure İzleyici, Azure sanal makinelerinizi (VM) ve sanal makine ölçek kümelerinizi ölçeklendirerek izler. İşlemlerini ve diğer kaynaklarla dış işlemlere olan bağımlılıklarını izleyerek Windows ve Linux VM'lerinizin performansını ve sistem durumunu analiz eder. 
+Azure sanal makinelerinizi (VM) sanal makineler için Azure İzleyici izler ve uygun ölçekte sanal makine ölçek kümeleri. İşlemlerini ve diğer kaynaklarla dış işlemlere olan bağımlılıklarını izleyerek Windows ve Linux VM'lerinizin performansını ve sistem durumunu analiz eder. 
 
-Şirket içinde veya başka bir bulut sağlayıcısında barındırılan VM 'Ler için performans ve uygulama bağımlılıklarını izleme desteği içerir. Üç temel özellik ayrıntılı öngörüler sunar:
-
-- **Azure VM 'Lerinin mantıksal bileşenleri ve Windows ve Linux çalıştıran sanal makine ölçek kümeleri**: önceden yapılandırılmış durum ölçütlerine göre ölçülür ve değerlendirilen koşul karşılandığında sizi uyarır.  
+Şirket içinde veya başka bir bulut sağlayıcısında barındırılan VM 'Ler için performans ve uygulama bağımlılıklarını izleme desteği içerir. Aşağıdaki temel özellikler ayrıntılı öngörüler sunar:
 
 - **Önceden tanımlanmış popüler performans grafikleri**: Konuk VM işletim sisteminden çekirdek performans ölçümlerini görüntüleyin.
 
-- **Bağımlılık eşlemesi**: çeşitli kaynak gruplarından ve ABONELIKLERDEN VM ile bağlantılı bileşenleri görüntüler.  
-
-Özellikler üç perspektifle düzenlenmiştir:
-
-- Sağlık
-- Performans
-- Eşleme
+- **Bağımlılık Haritası**: çeşitli kaynak gruplarında ve Aboneliklerde VM'den birbirine bağlı bileşenlerle görüntüler.  
 
 >[!NOTE]
->Kısa süre önce, genel önizleme müşterilerimizden aldığımız geri bildirimlere göre sistem durumu özelliğinde değişiklikler [yaptığımız için](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
-) değişiklikler yapıyoruz. Yaptığımız değişikliklerin sayısı verildiğinde, yeni müşterilerin sistem durumu özelliğini sunmayı durduracağız. Mevcut müşteriler sistem durumu özelliğini kullanmaya devam edebilir. Daha fazla ayrıntı için lütfen [genel kullanım hakkında SSS bölümüne](vminsights-ga-release-faq.md)bakın.  
+>Kısa süre önce, genel önizleme müşterilerimizden aldığımız geri bildirimlere göre sistem durumu özelliğine yaptığımız [değişiklikleri duyuruyoruz](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
+) . Yaptığımız değişikliklerin sayısı verildiğinde, yeni müşterilerin sistem durumu özelliğini sunmayı durduracağız. Mevcut müşteriler sistem durumu özelliğini kullanmaya devam edebilir. Daha fazla ayrıntı için lütfen [genel kullanım hakkında SSS bölümüne](vminsights-ga-release-faq.md)bakın.  
 
 Azure Izleyici günlükleri ile tümleştirme, güçlü toplama ve filtreleme sağlar ve zaman içinde veri eğilimlerini analiz edebilir. Bu kapsamlı iş yükü izleme, Azure Izleyici veya tek başına Hizmet Eşlemesi ile elde alınamaz.  
 
-Bu verileri doğrudan sanal makineden tek bir VM 'de görüntüleyebilir veya Azure Izleyici 'yi kullanarak VM 'nizin toplanmış bir görünümünü sağlayabilirsiniz. Bu görünüm her bir özelliğin perspektifine dayalıdır:
+Bu verileri doğrudan sanal makineden tek bir VM 'de görüntüleyebilir veya Azure Izleyici 'yi, görünümün Azure Kaynak bağlamı veya çalışma alanı-bağlam modlarını desteklediği, VM 'nizin toplanmış bir görünümünü sunmak için kullanabilirsiniz. Daha fazla bilgi için bkz. [erişim modlarına genel bakış](../platform/design-logs-deployment.md#access-mode).
 
-- **Sistem durumu**: VM 'ler bir kaynak grubuyla ilgilidir.
-- **Eşleme** ve **performans**: vm 'ler belirli bir Log Analytics çalışma alanına rapor verecek şekilde yapılandırılır.
+![Azure portalında sanal makine ınsights perspektifi](./media/vminsights-overview/vminsights-azmon-directvm.png)
 
-![Azure portal sanal makine öngörüleri perspektifi](./media/vminsights-overview/vminsights-azmon-directvm-01.png)
-
-VM'ler için Azure İzleyici, önemli uygulamaların tahmin edilebilir performansını ve kullanılabilirliğini sunabilir. Kritik işletim sistemi olaylarını, performans sorunlarını ve ağ sorunlarını belirler. VM'ler için Azure İzleyici, bir sorunun diğer bağımlılıklarla ilgili olup olmadığını anlamanıza da yardımcı olabilir.  
+VM'ler için Azure İzleyici, önemli uygulamaların tahmin edilebilir performansını ve kullanılabilirliğini sunabilir. Performans sorunlarını ve ağ sorunlarını belirler. VM'ler için Azure İzleyici, bir sorunun diğer bağımlılıklarla ilgili olup olmadığını anlamanıza da yardımcı olabilir.  
 
 ## <a name="data-usage"></a>Veri kullanımı
 
-VM'ler için Azure İzleyici dağıttığınızda, VM 'leriniz tarafından toplanan veriler Azure Izleyici 'de alınır ve depolanır. Durum ölçütleri ölçümleri Azure Izleyici 'de bir zaman serisi veritabanında depolanır, performans ve toplanan bağımlılık verileri Log Analytics çalışma alanında depolanır. [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)yayınlanan fiyatlandırmaya göre, VM'ler için Azure izleyici için faturalandırılır:
+VM'ler için Azure İzleyici'yi dağıttığınızda, sanal makineleriniz tarafından toplanan verileri alınır ve Azure İzleyici'de depolanan. Toplanan performans ve bağımlılık verileri bir Log Analytics çalışma alanında depolanır. Yayımlanan fiyatlandırmaya göre [Azure fiyatlandırma sayfasını İzleyici](https://azure.microsoft.com/pricing/details/monitor/), VM'ler için Azure İzleyici için faturalandırılır:
 
 - Alınan ve depolanan veriler.
-- İzlenen durum ölçütü ölçüm zaman serisi sayısı.
 - Oluşturulan uyarı kuralları.
-- Gönderilen bildirimler. 
+- Gönderilen bildirimleri. 
 
-Günlük boyutu performans sayaçlarının dize uzunluklarına göre farklılık gösterir ve VM 'ye ayrılan mantıksal disk ve ağ bağdaştırıcısı sayısıyla artabilir. Zaten bir çalışma alanınız varsa ve bu sayaçları topluyorsanız, hiçbir yinelenen ücret uygulanmaz. Zaten Hizmet Eşlemesi kullanıyorsanız, göreceğiniz tek değişiklik Azure Izleyici 'ye gönderilen ek bağlantı vereceğiz.
+Günlük boyutu performans sayaçlarının dize uzunluklarına göre farklılık gösterir ve VM 'ye ayrılan mantıksal disk ve ağ bağdaştırıcısı sayısıyla artabilir. Zaten bir çalışma alanı varsa ve bu sayaçları toplamak, yinelenen herhangi bir ücret uygulanır. Hizmet eşlemesi zaten kullanıyorsanız, gördüğünüz tek değişiklik, Azure İzleyici gönderilen ek bağlantı verilerdir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sanal makinelerinizi izlemenize yardımcı olan gereksinimleri ve yöntemleri anlamak için [VM'ler için Azure izleyici dağıt](vminsights-enable-overview.md)' ı inceleyin.
+Sanal makinelerinizi izlemenize yardımcı yöntemler ve gereksinimleri hakkında bilgilere [VM'ler için Azure İzleyici'ı Dağıtma](vminsights-enable-overview.md).

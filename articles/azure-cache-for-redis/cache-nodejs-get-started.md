@@ -1,26 +1,19 @@
 ---
 title: 'Hızlı başlangıç: node. js ile Redsıs için Azure önbelleğini kullanma'
 description: Bu hızlı başlangıçta, Node. js ve node_redis ile redin için Azure önbelleğini nasıl kullanacağınızı öğreneceksiniz.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: v-lincan
-ms.assetid: 06fddc95-8029-4a8d-83f5-ebd5016891d9
 ms.service: cache
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: bd31cf066b7844eeae02c24cb39ece686630b5ff
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e0458fd257942a455daef911a303437fea03b11b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329849"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122017"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Hızlı başlangıç: node. js ile Redsıs için Azure önbelleğini kullanma
 
@@ -29,7 +22,7 @@ Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen g�
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-- [node_redis](https://github.com/mranney/node_redis), `npm install redis` komutuyla yükleyebilirsiniz. 
+- [node_redis](https://github.com/mranney/node_redis)komut `npm install redis`ile yükleyebilirsiniz. 
 
 Diğer Node.js istemcilerini kullanmaya ilişkin örnekler için [Node.js Redis istemcileri](https://redis.io/clients#nodejs) listesindeki Node.js istemcilerinin kendi belgelerine bakın.
 
@@ -48,7 +41,7 @@ set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## <a name="connect-to-the-cache"></a>Önbelleğe bağlanma
 
-En son [node_redis](https://github.com/mranney/node_redis) DERLEMELERI, SSL kullanarak Redsıs Için Azure önbelleğine bağlanma desteği sağlar. Aşağıdaki örnek, 6380 SSL uç noktasını kullanarak Reda için Azure Cache 'e bağlanmayı gösterir. 
+[Node_redis](https://github.com/mranney/node_redis) en son yapıları, Reda Için Azure Cache 'e SSL kullanarak bağlanma desteği sağlar. Aşağıdaki örnek, 6380 SSL uç noktasını kullanarak Reda için Azure Cache 'e bağlanmayı gösterir. 
 
 ```js
 var redis = require("redis");
@@ -125,7 +118,7 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 > Bir kaynak grubunu silme işlemi geri alınamaz ve kaynak grubunun ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. Bu örneği, tutmak istediğiniz kaynakları içeren mevcut bir kaynak grubunda barındırmak için kaynaklar oluşturduysanız, kaynak grubunu silmek yerine her kaynağı kendi ilgili dikey penceresinden tek tek silebilirsiniz.
 >
 
-[Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
+[Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
 
 **Ada göre filtrele** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **.** .. öğesini seçin ve **kaynak grubunu silin**.
 

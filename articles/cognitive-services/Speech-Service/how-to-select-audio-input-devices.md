@@ -1,5 +1,5 @@
 ---
-title: Konuşma SDK 'Sı konuşma hizmeti ile ses giriş cihazı seçme
+title: Konuşma SDK 'Sı ile bir ses giriş cihazı seçme
 titleSuffix: Azure Cognitive Services
 description: Bir sisteme bağlı olan ses aygıtlarının kimliklerini alarak konuşma SDK 'sındaC++( C#,, Python, amaç-C, Java, JavaScript) ses girişi cihazlarını seçme hakkında bilgi edinin.
 services: cognitive-services
@@ -10,18 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 967e4fbc5484c152867fe5558040631d21e6c0b3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072428"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109965"
 ---
-# <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile bir ses giriş cihazı seçme
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Nasıl yapılır: konuşma SDK 'Sı ile bir ses giriş cihazı seçme
 
-Konuşma SDK 'sının sürüm 1.3.0, ses girişini seçmek için bir API sunar.
-Bu makalede, bir sisteme bağlı olan ses cihazlarının kimliklerinin nasıl alınacağı açıklanır.
-Bunlar daha sonra ses cihazını `AudioConfig` nesnesi aracılığıyla yapılandırarak konuşma SDK 'sında kullanılabilir:
+Konuşma SDK 'sının sürüm 1.3.0, ses girişini seçmek için bir API sunar. Bu makalede, bir sisteme bağlı olan ses cihazlarının kimliklerinin nasıl alınacağı açıklanır. Bunlar daha sonra ses cihazını `AudioConfig` nesnesi aracılığıyla yapılandırarak konuşma SDK 'sında kullanılabilir:
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -53,6 +51,7 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Masaüstü uygulamaları için Windows 'ta ses cihazı kimlikleri
 
 Windows Masaüstü uygulamaları için [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) nesnesinden ses cihazı [uç nokta kimliği dizeleri](/windows/desktop/CoreAudio/endpoint-id-strings) alınabilir.
+
 Aşağıdaki kod örneği, içindeki C++ses aygıtlarını numaralandırmak için nasıl kullanılacağını göstermektedir:
 
 ```cpp
@@ -177,6 +176,7 @@ namespace ConsoleApp
 ## <a name="audio-device-ids-on-uwp"></a>UWP 'de ses cihazı kimlikleri
 
 Evrensel Windows Platformu (UWP) üzerinde, ses giriş cihazları karşılık gelen [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) nesnesinin `Id()` özelliği kullanılarak elde edilebilir.
+
 Aşağıdaki kod örnekleri, ve C++ C#' de bunun nasıl yapılacağını göstermektedir:
 
 ```cpp
@@ -227,13 +227,16 @@ namespace helloworld {
 ## <a name="audio-device-ids-on-linux"></a>Linux 'ta ses cihazı kimlikleri
 
 Cihaz kimlikleri standart ALSA cihaz kimlikleri kullanılarak seçilir.
+
 Sisteme bağlı girişlerin kimlikleri, komut `arecord -L`çıktısıdır.
 Alternatif olarak, [alsa C Kitaplığı](https://www.alsa-project.org/alsa-doc/alsa-lib/)kullanılarak elde edilebilir.
+
 Örnek kimlikler `hw:1,0` ve `hw:CARD=CC,DEV=0`.
 
 ## <a name="audio-device-ids-on-macos"></a>MacOS 'ta ses cihazı kimlikleri
 
 Amaç-C ' d e uygulanan aşağıdaki işlev, bir Mac 'e bağlı olan ses cihazlarının adlarının ve kimliklerinin bir listesini oluşturur.
+
 `deviceUID` dize, macOS için konuşma SDK 'sında bir cihazı tanımlamak için kullanılır.
 
 ```objc
@@ -362,8 +365,8 @@ CFArrayRef CreateInputDeviceArray()
 
 ## <a name="audio-device-ids-on-ios"></a>İOS üzerinde ses cihazı kimlikleri
 
-Konuşma SDK 'Sı ile ses cihazı seçimi, iOS üzerinde desteklenmez.
-Ancak, SDK 'Yı kullanan uygulamalar [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) Framework aracılığıyla ses yönlendirmeyi etkileyebilir.
+Konuşma SDK 'Sı ile ses cihazı seçimi, iOS üzerinde desteklenmez. Ancak, SDK 'Yı kullanan uygulamalar [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) Framework aracılığıyla ses yönlendirmeyi etkileyebilir.
+
 Örneğin, yönerge
 
 ```objc

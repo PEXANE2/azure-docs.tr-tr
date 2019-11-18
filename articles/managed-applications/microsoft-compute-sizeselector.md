@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 288ea7e887a170c8560b0126fa53c9132da35db6
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f3a8426856e1345306acff69946beb4860d5f905
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332660"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151526"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft. COMPUTE. SizeSelector Kullanıcı arabirimi öğesi
+
 Bir veya daha fazla sanal makine örneği için boyut seçmeye yönelik bir denetim.
 
 ## <a name="ui-sample"></a>UI örneği
@@ -34,6 +35,7 @@ Denetim seçildikten sonra Kullanıcı, kullanılabilir boyutların genişletilm
 ![Microsoft. COMPUTE. SizeSelector genişletildi](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
 
 ## <a name="schema"></a>Şema
+
 ```json
 {
   "name": "element1",
@@ -65,21 +67,24 @@ Denetim seçildikten sonra Kullanıcı, kullanılabilir boyutların genişletilm
 }
 ```
 
-## <a name="remarks"></a>Açıklamalar
-- `recommendedSizes` en az bir boyuta sahip olmalıdır. Önerilen ilk boyut varsayılan olarak kullanılır. Kullanılabilir boyutların listesi önerilen duruma göre sıralanmaz. Kullanıcı önerilen duruma göre sıralamak için bu sütunu seçebilir.
-- Seçilen konumda önerilen bir boyut yoksa, boyut otomatik olarak atlanır. Bunun yerine önerilen sonraki boyut kullanılır.
-- `constraints.allowedSizes` ve `constraints.excludedSizes` her ikisi de isteğe bağlıdır, ancak aynı anda kullanılamaz. Kullanılabilir boyutların listesi, [bir abonelik için kullanılabilir sanal makine boyutları](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)çağırarak belirlenebilir. @No__t-0 ' da belirtilmeyen herhangi bir boyut gizlidir ve `constraints.excludedSizes` ' de belirtilmeyen tüm boyut gösterilir.
-- `osPlatform` belirtilmelidir ve **Windows** ya da **Linux**olabilir. Bu, sanal makinelerin donanım maliyetlerini belirlemede kullanılır.
-- `imageReference`, birinci taraf görüntülerde çıkarılır, ancak üçüncü taraf görüntüler için sağlanır. Bu, sanal makinelerin Yazılım maliyetlerini belirlemede kullanılır.
-- `count`, öğe için uygun çarpanı ayarlamak için kullanılır. **2**gibi bir statik değeri veya `[steps('step1').vmCount]` gibi başka bir öğeden dinamik bir değeri destekler. Varsayılan değer **1**' dir.
-- @No__t-0, 1, 2 veya 3 olabilir.
-- Varsayılan olarak, `hideDiskTypeFilter` **false 'tur**. Disk türü filtresi, kullanıcının tüm disk türlerini veya yalnızca SSD 'yi görmesini sağlar.
-
 ## <a name="sample-output"></a>Örnek çıktı
+
 ```json
 "Standard_D1"
 ```
 
+## <a name="remarks"></a>Açıklamalar
+
+- `recommendedSizes` en az bir boyuta sahip olmalıdır. Önerilen ilk boyut varsayılan olarak kullanılır. Kullanılabilir boyutların listesi önerilen duruma göre sıralanmaz. Kullanıcı önerilen duruma göre sıralamak için bu sütunu seçebilir.
+- Seçilen konumda önerilen bir boyut yoksa, boyut otomatik olarak atlanır. Bunun yerine önerilen sonraki boyut kullanılır.
+- `constraints.allowedSizes` ve `constraints.excludedSizes` her ikisi de isteğe bağlıdır, ancak aynı anda kullanılamaz. Kullanılabilir boyutların listesi, [bir abonelik için kullanılabilir sanal makine boyutları](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)çağırarak belirlenebilir. `constraints.allowedSizes` belirtilen herhangi bir boyut gizlidir ve `constraints.excludedSizes` belirtilen tüm boyut gösterilir.
+- `osPlatform` belirtilmelidir ve **Windows** ya da **Linux**olabilir. Bu, sanal makinelerin donanım maliyetlerini belirlemede kullanılır.
+- `imageReference`, birinci taraf görüntüleri için atlanır, ancak üçüncü taraf görüntüler için sağlanır. Bu, sanal makinelerin Yazılım maliyetlerini belirlemede kullanılır.
+- `count`, öğe için uygun çarpanı ayarlamak için kullanılır. **2**gibi bir statik değeri veya `[steps('step1').vmCount]`gibi başka bir öğeden dinamik bir değeri destekler. Varsayılan değer **1**' dir.
+- `numAvailabilityZonesRequired` 1, 2 veya 3 olabilir.
+- Varsayılan olarak, `hideDiskTypeFilter` **false 'tur**. Disk türü filtresi, kullanıcının tüm disk türlerini veya yalnızca SSD 'yi görmesini sağlar.
+
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
 * UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).

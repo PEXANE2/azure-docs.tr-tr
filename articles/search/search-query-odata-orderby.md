@@ -1,7 +1,7 @@
 ---
 title: OData sırası başvuruya göre
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama sorgularında order by sözdizimi için OData dil başvurusu.
+description: Azure Bilişsel Arama sorgularında sıralama ölçütü kullanmaya yönelik sözdizimi ve dil başvurusu belgeleri.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e3ca19b5696b9a7ad9b68b180313753a5c9de912
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793296"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113152"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $orderby söz dizimi
 

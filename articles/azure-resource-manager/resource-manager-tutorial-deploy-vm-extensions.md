@@ -1,22 +1,16 @@
 ---
-title: VM uzantılarını dağıtma-Azure Resource Manager şablonları
+title: Şablon ile VM uzantıları dağıtma
 description: Azure Resource Manager şablonlarıyla sanal makine uzantılarını dağıtmayı öğrenin
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5eb7a8d82f7f61e18afc49c61444354dcde77b5e
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 84e49190c9e6b0c464e58a32fc7c29cb21ddc53a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533438"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149273"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Öğretici: Azure Resource Manager şablonlarıyla sanal makine uzantılarını dağıtma
 
@@ -31,7 +25,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu dağıtma
 > * Dağıtımı doğrulama
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -54,13 +48,13 @@ Bu makaleyi tamamlamak için gerekenler:
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Dosyayı kendi konumunuzda yayımlamayı seçerseniz, daha sonra öğreticideki `fileUri` öğesini güncelleştirmeniz gerekir.
+Dosyayı kendi konumunuzda yayımlamayı seçerseniz, daha sonra öğreticide, şablondaki `fileUri` öğesini güncelleştirmeniz gerekir.
 
 ## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
 
 Azure hızlı başlangıç şablonları Kaynak Yöneticisi şablonlar için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablonun adı: [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Basit bir Windows sanal makinesi dağıtma).
 
-1. Visual Studio Code, **dosya** >  dosya**Aç**' ı seçin.
+1. Visual Studio Code **dosya** > **Dosya Aç**' ı seçin.
 1. **Dosya adı** kutusuna şu URL 'yi yapıştırın: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
 
 1. Dosyayı açmak için **Aç**' ı seçin.
@@ -74,7 +68,7 @@ Azure hızlı başlangıç şablonları Kaynak Yöneticisi şablonlar için bir 
 
      Özelleştirebilmeniz için önce şablon hakkında bazı temel bilgileri almanız yararlı olur.
 
-1. **Dosya  > ** **farklı kaydet**' i seçerek dosyanın bir kopyasını yerel bilgisayarınıza *azuredeploy. JSON* adıyla kaydedin.
+1. **Dosya > ** **farklı kaydet**' i seçerek dosyanın bir kopyasını yerel bilgisayarınıza *azuredeploy. JSON* adıyla kaydedin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 

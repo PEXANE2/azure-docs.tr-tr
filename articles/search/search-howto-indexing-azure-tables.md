@@ -1,5 +1,5 @@
 ---
-title: Tam metin araması için Azure Tablo depolamadan içerik dizini oluştur
+title: Azure Tablo depolama içeriğini arama
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama Dizinleyicisi ile Azure Tablo depolamada depolanan verilerin nasıl dizinleyeceğinizi öğrenin.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ae99145178fba8e204267546dc1cedf42df412eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793747"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113007"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Tablo depolamadaki tabloları dizin oluşturma
 
@@ -24,7 +24,7 @@ Bu makalede, Azure Tablo depolamada depolanan verileri indekslemek için Azure B
 
 Şu kaynakları kullanarak bir Azure Tablo depolama Dizin Oluşturucu oluşturabilirsiniz:
 
-* [Azure portalda](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Bilişsel Arama [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Bilişsel Arama [.NET SDK](https://aka.ms/search-sdk)
 
@@ -67,7 +67,7 @@ DataSource API 'SI oluşturma hakkında daha fazla bilgi için bkz. [veri kayna�
 
 Aşağıdaki yollarla tablo için kimlik bilgilerini sağlayabilirsiniz: 
 
-- **Tam erişimli depolama hesabı bağlantı dizesi**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Azure Portal **depolama hesabı dikey penceresine** giderek > **Ayarlar** > **anahtarlar** (klasik depolama hesapları için) veya **Ayarlar** > **erişim anahtarları** (Azure Resource Manager depolama hesapları için).
+- **Tam erişimli depolama hesabı bağlantı dizesi**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Azure Portal **depolama hesabı dikey penceresine** giderek > **Ayarlar** > **anahtarlar** (klasik depolama hesapları için) veya **Ayarlar** > **erişim anahtarları** (Azure Resource Manager depolama hesapları için) üzerinden bağlantı dizesini alabilir.
 - **Depolama hesabı paylaşılan erişim imzası bağlantı dizesi**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` paylaşılan erişim imzasının, kapsayıcılar (Bu durumda tablolar) ve nesneler (tablo satırları) üzerinde liste ve okuma izinlerine sahip olması gerekir.
 -  **Tablo paylaşılan erişim imzası**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` paylaşılan erişim imzasının tablo üzerinde sorgu (okuma) izinlerine sahip olması gerekir.
 
@@ -121,7 +121,7 @@ Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için 
 Bazen, var olan dizininizdeki alan adları, tablonuzdaki Özellik adlarından farklı olabilir. Alan eşlemelerini, tablodaki özellik adlarını, arama dizininizdeki alan adlarıyla eşlemek için kullanabilirsiniz. Alan eşlemeleri hakkında daha fazla bilgi edinmek için bkz. [Azure bilişsel arama Dizin Oluşturucu alan eşlemeleri köprü kaynakları ve arama dizinleri arasındaki farklılıklar](search-indexer-field-mappings.md).
 
 ## <a name="handle-document-keys"></a>Belge anahtarlarını işle
-Azure Bilişsel Arama 'de belge anahtarı bir belgeyi benzersiz şekilde tanımlar. Her arama dizininin `Edm.String` türünde tam olarak bir anahtar alanı olmalıdır. Dizine eklenmekte olan her belge için anahtar alanı gereklidir. (Aslında, tek gerekli alandır.)
+Azure Bilişsel Arama 'de belge anahtarı bir belgeyi benzersiz şekilde tanımlar. Her arama dizininin `Edm.String`türünde tam olarak bir anahtar alanı olmalıdır. Dizine eklenmekte olan her belge için anahtar alanı gereklidir. (Aslında, tek gerekli alandır.)
 
 Tablo satırları bileşik bir anahtara sahip olduğundan Azure Bilişsel Arama, bölüm anahtarı ve satır anahtarı değerlerinin birleşimi olan `Key` adlı yapay bir alan oluşturur. Örneğin, bir satırın PartitionKey değeri `PK1` ve RowKey `RK1`, `Key` alanının değeri `PK1RK1`olur.
 

@@ -1,7 +1,7 @@
 ---
-title: Tümcecik listeleri-LUSıS
+title: Tanımlayıcılar-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu kategorilerin ve desenlerin ve varlıklarının kullanımını ve tahminini iyileştirebilecek uygulama özellikleri eklemek için Language Understanding (LUO) kullanın
+description: Bu kategori ve desenleri algılama veya hedefleri ve varlıkların tahmin iyileştirebilir uygulama özelliklerini eklemek için Language Understanding (LUIS) kullanın
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,56 +9,51 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 11/14/2019
 ms.author: diberry
-ms.openlocfilehash: 0e3e4226eaaa0505eea96d8b3aca820f2327349e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2b5046bb61dcafbba0b0540935e08777fbd747a5
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467622"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123128"
 ---
-# <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Sözcük listesinin sinyalini artırmak için tümcecik listelerini kullanma
+# <a name="use-descriptors-to-boost-signal-of-word-list"></a>Sözcük listesinin sinyalini artırmak için tanımlayıcıları kullanın
 
-Doğruluğunu artırmak için LUSıS uygulamanıza özellikler ekleyebilirsiniz. Özellikler, belirli sözcüklerin ve deyimlerin bir uygulama etki alanı sözlüğü 'nün parçası olduğunu gösteren ipuçları sunarak LUYA yardımcı olur. 
+LUIS uygulamanızı kendi doğruluğunu artırmak için özellikler ekleyebilirsiniz. Bu belirli kelimeleri ipuçları sağlayarak Yardım LUIS özellikleri ve ifadeleri bir uygulama etki alanı sözlüğü bir parçasıdır. 
 
-[Tümcecik listesi](luis-concept-feature.md) , aynı sınıfa ait olan ve benzer şekilde (örneğin, şehirlerin veya ürünlerin adları) bir grup değer (sözcükler veya ifadeler) içerir. Bunlardan biri hakkında ne tür bir saldırgan, diğerlerine de otomatik olarak uygulanır. Bu liste, eşleşen sözcüklerin bir [liste varlığıyla](reference-entity-list.md) (tam metin eşleşmeleri) aynı şey değildir.
+Bir [tanımlayıcı](luis-concept-feature.md) (tümcecik listesi), aynı sınıfa ait olan ve benzer şekilde (örneğin, şehirlerin veya ürünlerin adları) bir grup değer (sözcükler veya ifadeler) içerir. LUIS bunları biri hakkında ne öğrenir otomatik olarak başkaları için de uygulanır. Bu liste, eşleşen sözcüklerin bir [liste varlığıyla](reference-entity-list.md) (tam metin eşleşmeleri) aynı şey değildir.
 
-Bir tümcecik listesi, bu sözcüklerin yaklaşık olarak LUO 'ya ikinci bir sinyal olarak uygulama etki alanının sözlüğüne ekler.
+Bir tanımlayıcı, bu kelimeyle ilgili ikinci bir sinyal olarak uygulama etki alanının sözlüğüne ekler.
 
-Bir tümcecik listesinin ne zaman ve neden kullanılacağını anlamak için [özellik kavramlarını](luis-concept-feature.md) gözden geçirin. 
+Bir tanımlayıcının ne zaman ve neden kullanılacağını anlamak için [özellik kavramlarını](luis-concept-feature.md) gözden geçirin. 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="add-phrase-list"></a>Tümcecik listesi ekle
+## <a name="add-descriptor"></a>Tanımlayıcı Ekle
 
-LUO, uygulama başına en fazla 10 ifade listesine izin verir. 
+1. **Uygulamalarım** sayfasında adına tıklayarak uygulamanızı açın ve ardından **Oluştur**' a tıklayın ve ardından uygulamanızın sol panelinde **tanımlayıcılar** ' a tıklayın. 
 
-1. **Uygulamalarım** sayfasında adına tıklayarak uygulamanızı açın ve ardından **Oluştur**' a tıklayın ve ardından uygulamanızın sol panelinde **tümcecik listeleri** ' ne tıklayın. 
-
-1. **Tümcecik listeleri** sayfasında, **Yeni tümcecik listesi oluştur**' a tıklayın. 
+1. **Tanımlayıcılar** sayfasında **+ tanımlayıcı Ekle**' ye tıklayın. 
  
-1. **Tümcecik listesi Ekle** iletişim kutusunda, tümcecik listesinin adı olarak `Cities` yazın. **Değer** kutusuna, tümcecik listesinin değerlerini yazın. Tek seferde bir değer veya virgülle ayrılmış bir değerler kümesi yazabilir ve ardından **ENTER**tuşuna basabilirsiniz.
+1. **Yeni tümcecik listesi tanımlayıcısı oluştur** iletişim kutusunda, tanımlayıcı için `Cities` gibi bir ad girin. **Değer** kutusuna, `Seattle`gibi tanımlayıcılarının değerlerini yazın. Bir saat veya virgülle ayrılmış değerler kümesi tek bir değer yazın ve sonra basın **Enter**.
 
-    ![Tümcecik listesi şehirleri ekleme](./media/luis-add-features/add-phrase-list-cities.png)
+    > [!div class="mx-imgBorder"]
+    > ![tanımlayıcı şehir ekleyin](./media/luis-add-features/add-phrase-list-cities.png)
 
-1. LUSıS, tümcecik listenize eklemek için ilgili değerler önerebilir. Eklenen değer (ler) ile ilgili anlam içeren önerilen değerler grubunu almak için **öner** ' e tıklayın. Önerilen değerlerden herhangi birini tıklatabilir veya tümünü eklemek için **Tümünü Ekle** ' ye tıklayabilirsiniz.
+    LUO için yeterli değer girdikten sonra öneriler görünür. Önerilen değerlerin **Tümünü ekleyebilir** veya tek tek terimleri seçebilirsiniz.
 
-    ![Tümcecik listesi önerilen değerler-tümünü ekle](./media/luis-add-features/related-values.png)
+1. Bu değerleri, eklenen tanımlayıcı değerleri birbirinin yerine kullanılabilen alternatifler ise, **Bu değerleri, değiştirilebilir olarak** bırakın.
 
-1. Eklenen tümcecik listesi değerleri birbirinin yerine kullanılabilen alternatifler ise, **Bu değerlere** tıklayın.
-
-    ![Tümcecik listesi önerilen değerler-değiştirilebilir kutu seç](./media/luis-add-features/interchangeable.png)
-
-1. **Bitti**’ye tıklayın. "Şehirler" ifade listesi, **tümcecik listeleri** sayfasına eklenir.
+1. **Done** (Bitti) öğesini seçin. Yeni tanımlayıcı, **tanımlayıcılar** sayfasına eklenir.
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Tümcecik **listeleri** sayfasındaki bağlamsal araç çubuğundan bir tümcecik listesini silebilir veya devre dışı bırakabilirsiniz.
+> **Tanımlayıcılar** sayfasında bağlamsal araç çubuğundan tanımlayıcıyı silebilir veya devre dışı bırakabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir tümcecik listesini ekledikten, düzenledikten, sildikten veya devre dışı bırakadıktan sonra, performansın gelişip artmediğini görmek için [uygulamayı yeniden eğitin ve test](luis-interactive-test.md) edin.
+Bir tanımlayıcıyı ekledikten, düzenledikten, sildikten veya devre dışı bırakarak, performansın gelişip artmediğini görmek için [uygulamayı yeniden eğitin ve test](luis-interactive-test.md) edin.

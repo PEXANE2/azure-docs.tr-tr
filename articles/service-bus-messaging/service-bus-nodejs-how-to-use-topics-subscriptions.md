@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 40543f55dc0cb56f6bc575f926456faf2d0ae5a3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c82edde98242ffe130c2022c428c86de80e3b034
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719212"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111767"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Hızlı başlangıç: node. js ve Azure-SB paketiyle Service Bus konuları ve abonelikleri kullanma
 > [!div class="op_multi_selector" title1="Programlama dili" title2="Node. js 'a paketi ekleyin"]
@@ -40,7 +40,7 @@ Burada ele alınan senaryolar şunlardır:
 
 Konular ve abonelikler hakkında daha fazla bilgi için, [sonraki adımlar](#next-steps) bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 - Hızlı başlangıç içindeki adımları izleyin: bir Service Bus **ad alanı** oluşturmak ve **bağlantı dizesini**almak için [Azure Portal Service Bus konu başlığı ve abonelikleri oluşturmak üzere kullanın](service-bus-quickstart-topics-subscriptions-portal.md) .
 
@@ -150,7 +150,7 @@ Konu abonelikleri **Servicebusservice** nesnesiyle de oluşturulur. Abonelikler 
 > [!NOTE]
 > Varsayılan olarak, abonelikler ya da ilişkili oldukları konu tamamlanana kadar kalıcıdır. Uygulamanız bir abonelik oluşturmak için mantık içeriyorsa, öncelikle `getSubscription` yöntemi kullanılarak aboneliğin mevcut olup olmadığını denetlemelidir.
 >
-> Otomatik [Deleteonıdle özelliği](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle)ayarlanarak aboneliklerin otomatik olarak silinmesini sağlayabilirsiniz.
+> Otomatik [Deleteonıdle özelliği](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)ayarlanarak aboneliklerin otomatik olarak silinmesini sağlayabilirsiniz.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Varsayılan (MatchAll) filtreyle abonelik oluşturma
 **Matchall** filtresi, bir abonelik oluşturulduğunda kullanılan varsayılan filtredir. **MatchAll** filtresini kullandığınızda konu başlığında yayımlanan tüm iletiler aboneliğin sanal kuyruğuna yerleştirilir. Aşağıdaki örnek AllMessages adlı bir abonelik oluşturur ve varsayılan **Matchall** filtresini kullanır.
@@ -314,7 +314,7 @@ Ayrıca, abonelik içinde kilitlenen bir iletiyle ilişkili bir zaman aşımı d
 İleti işlendikten sonra, ancak `deleteMessage` yöntemi çağrılmadan önce uygulamanın çöktüğü durumunda ileti yeniden başlatıldığında uygulamaya yeniden teslim edilir. Bu davranış genellikle *en az bir kez işleme*olarak adlandırılır. Diğer bir deyişle, her ileti en az bir kez işlenir, ancak bazı durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işleme kabul edemeyebilir, yinelenen ileti teslimini işlemek için uygulamanıza mantık eklemeniz gerekir. İletinin **MessageID** özelliğini kullanabilirsiniz. Bu, teslim girişimleri arasında sabitde kalır.
 
 ## <a name="delete-topics-and-subscriptions"></a>Konu başlıklarını ve abonelikleri silme
-[Oto Deleteonıdle özelliği](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle) ayarlanmadıkça konular ve abonelikler kalıcıdır ve [Azure Portal][Azure portal] veya program aracılığıyla açıkça silinmemelidir.
+[Oto Deleteonıdle özelliği](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) ayarlanmadıkça konular ve abonelikler kalıcıdır ve [Azure Portal][Azure portal] veya program aracılığıyla açıkça silinmemelidir.
 Aşağıdaki örnek, `MyTopic`adlı konunun nasıl silineceğini göstermektedir:
 
 ```javascript

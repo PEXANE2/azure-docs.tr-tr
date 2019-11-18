@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 567110b2e0429930720abf6af5f2727e4ad9d3bb
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048269"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131966"
 ---
 # <a name="troubleshooting"></a>Sorun giderme
 
@@ -196,7 +196,7 @@ Kaynak grubu panosunda (datahublogs....) depolama hesabı ' nı arayın. Örneğ
     > [!NOTE]
     > Farmtts dağıtımı sırasında belirtilen Hızlandırıcı kaynak grubunu seçin.
 
-3.  Kaynak grubu panosunda, depolama için arama yapın... Depolama hesabı. Örneğin, storagedop4k
+3.  Kaynak grubu panosunda, depolama için arama yapın... depolama hesabı. Örneğin, storagedop4k
 4.  Depolama hesabı panosunu görüntülemek için **ad** sütunundaki depolama hesabını seçin.
 5.  (Depolama....) sayfasında, açık Azure Depolama Gezgini uygulamasını görüntülemek için **Gezgin 'de aç** ' ı seçin.
 6.  Sol bölmede < Storage....), **BLOB kapsayıcıları**' nda **iş günlükleri**' ni seçin.
@@ -251,7 +251,7 @@ Kaynak grubu panosunda (datahublogs....) depolama hesabı ' nı arayın. Örneğ
 
 **Anlamı**: Azure AD uygulama kayıt yapılandırması düzgün şekilde gerçekleşmedi.  
 
-**Düzeltici eylem**: Azure AD uygulama kaydı oluşturma işlemini oluşturmak için kendi [betiğimizi](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) kullanmak üzere BT yöneticinize (kiracı okuma erişimi olan) sorun. Bu komut dosyası yapılandırma adımlarında da otomatik olarak ele alınacaktır.
+**Düzeltici eylem**: Azure AD uygulama kaydını oluşturmak için [betiğimizi](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) kullanmak üzere BT yöneticisinden (kiracı okuma erişimi olan) sorun. Bu komut dosyası yapılandırma adımlarında da otomatik olarak ele alınacaktır.
 
 **Hata**: yeni Active Directory "Dummyname" uygulaması bu kiracıda oluşturulamıyor: özellik tanımlayıcısı URI 'leri için aynı değere sahip başka bir nesne zaten var
 

@@ -1,5 +1,5 @@
 ---
-title: "Hızlı başlangıç: Windows-Konuşma hizmetinde konuşma cihazları SDK 'sını çalıştırma"
+title: "Hızlı başlangıç: Windows 'ta konuşma cihazları SDK 'sını çalıştırma"
 titleSuffix: Azure Cognitive Services
 description: Windows konuşma cihazları SDK 'Sı ile çalışmaya başlama önkoşulları ve yönergeleri.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: e59cfaa1260cd33c8912437d56bbbb2ace2f43ed
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: e4da99d895ba7a6d9ce537ab513ce4cc248aff7a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090445"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111678"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Hızlı başlangıç: Windows 'ta konuşma cihazları SDK örnek uygulamasını çalıştırma
 
@@ -27,7 +27,7 @@ Bu kılavuzda, bir konuşma Hizmetleri kaynağına sahip bir Azure bilişsel [Hi
 
 [Örnek uygulamanın](https://aka.ms/sdsdk-download-JRE) kaynak kodu, konuşma cihazları SDK 'sına dahildir. Ayrıca [github'da](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
@@ -105,22 +105,21 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Konuşma dökümünü kullanıyorsanız, konuşma anahtarınız ve bölge bilgileriniz de `Cts.java`de gereklidir:
+   Konuşma dökümünü kullanıyorsanız, konuşma anahtarınız ve bölge bilgileriniz de `Cts.java`de gereklidir:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
-    ```
+   ```
 
 1. Default anahtar sözcüğü (anahtar sözcüğü) "bilgisayar" dır. "Makine" veya "yardımcı" gibi, belirtilen diğer anahtar sözcüklerden birini de deneyebilirsiniz. Bu alternatif anahtar sözcüklerin kaynak dosyaları, anahtar sözcük klasöründe konuşma cihazları SDK 'snda bulunur. Örneğin, `C:\SDSDK\JRE-Sample-Release\keyword\Computer` "bilgisayar" anahtar sözcüğü için kullanılan dosyaları içerir.
 
-   > [!TIP]
-   > Ayrıca, [özel bir anahtar sözcük oluşturabilirsiniz](speech-devices-sdk-create-kws.md).
+    > [!TIP]
+    > Ayrıca, [özel bir anahtar sözcük oluşturabilirsiniz](speech-devices-sdk-create-kws.md).
 
     Yeni bir anahtar sözcük kullanmak için `FunctionsList.java`aşağıdaki satırı güncelleştirin ve anahtar sözcüğünü uygulamanıza kopyalayın. Örneğin, anahtar sözcük paketinden ' MACHINE ' anahtar sözcüğünü kullanmak için `machine.zip`:
 
    * `kws.table` dosyasını ZIP paketinden proje klasörü **hedefi/sınıfları**içine kopyalayın.
-
    * `FunctionsList.java` anahtar sözcük adıyla güncelleştirin:
 
      ```java
@@ -143,23 +142,23 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 ## <a name="create-and-run-a-standalone-application"></a>Tek başına uygulama oluşturma ve çalıştırma
 
-1. **Paket Gezgini**' nde projenize sağ tıklayın. Seçin **dışarı**. 
+1. **Paket Gezgini**' nde projenize sağ tıklayın. Seçin **dışarı**.
 
 1. **Dışarı aktarma** penceresi görüntülenir. **Java** ' yı genişletin ve **Runiçin jar dosyasını** seçin ve ardından **İleri**' yi seçin.
 
-   ![Dışarı aktarma penceresinin ekran görüntüsü](media/speech-devices-sdk/eclipse-export-windows.png) 
+   ![Dışarı aktarma penceresinin ekran görüntüsü](media/speech-devices-sdk/eclipse-export-windows.png)
 
 1. **ÇALıŞTıRıLABILIR jar dosya dışarı aktarma** penceresi görüntülenir. Uygulama için bir **dışarı aktarma hedefi** seçin ve ardından **son**' u seçin.
- 
+
    ![Runfor JAR dosya dışarı aktarma ekran görüntüsü](media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
 1. `kws.table`, `participants.properties`, `unimic_runtime.dll`, `pma.dll` ve `Microsoft.CognitiveServices.Speech.extension.pma.dll` bu dosyalar uygulamanın gerektirdiği için yukarıda seçilen hedef klasöre yerleştirin.
 
 1. Tek başına uygulamayı çalıştırmak için
 
-     ```powershell
-     java -jar SpeechDemo.jar
-     ```
+   ```powershell
+   java -jar SpeechDemo.jar
+   ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

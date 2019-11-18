@@ -1,5 +1,6 @@
 ---
-title: VPN Gateway için her zaman açık VPN tüneli yapılandırma
+title: Her zaman açık VPN tüneli yapılandırma
+titleSuffix: Azure VPN Gateway
 description: VPN Gateway için Always on VPN tünelini yapılandırma adımları
 services: vpn-gateway
 author: cherylmc
@@ -7,14 +8,14 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: bc2ec2b952b4f0c6e61fc4953559fa882edfff09
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841134"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146385"
 ---
-# <a name="configure-an-always-on-vpn-device-tunnel"></a>Always on VPN cihaz tüneli yapılandırma
+# <a name="configure-an-always-on-vpn-device-tunnel"></a>Always On VPN cihazı tüneli yapılandırma
 
 Windows 10 sanal özel ağ (VPN) istemcisinin yeni özelliklerinden biri, VPN bağlantısını sürdürme olanağıdır. Her zaman açık, etkin VPN profilinin otomatik olarak bağlanmasını ve tetikleyicilere göre bağlı kalmasını sağlayan bir Windows 10 özelliğidir; yani Kullanıcı oturum açma, ağ durumu değişikliği veya cihaz ekranı etkin olur.
 
@@ -155,7 +156,7 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    ![belirlen](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
 1. **Machineccerttest** girişini bulun ve **Bağlan**' a tıklayın.
 
-   ![Bağlanma](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
+   ![Bağlan](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
 1. Bağlantı başarılı olursa, bilgisayarı yeniden başlatın. Tünel otomatik olarak bağlanır.
 
 ## <a name="cleanup"></a>Temizleme

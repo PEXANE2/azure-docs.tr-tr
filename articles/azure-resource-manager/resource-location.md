@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager şablonu kaynak konumu
+title: Şablon kaynak konumu
 description: Azure Resource Manager şablonunda kaynak konumunun nasıl ayarlanacağını açıklar.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 6af5d82766533ef7bbacab04381db9a37502923e
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1e711b2cfeb42c33dbfa68b1fbdabd42cbd46d10
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294210"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150631"
 ---
 # <a name="set-resource-location-in-resource-manager-template"></a>Kaynak Yöneticisi şablonunda kaynak konumunu ayarla
 
@@ -41,7 +38,7 @@ az provider show \
 
 ## <a name="use-location-parameter"></a>Konum parametresini kullan
 
-Şablonunuzun dağıtımı sırasında esneklik sağlamak için, kaynakların konumunu belirtmek için bir parametre kullanın. Parametresinin varsayılan değerini olarak `resourceGroup().location`ayarlayın.
+Şablonunuzun dağıtımı sırasında esneklik sağlamak için, kaynakların konumunu belirtmek için bir parametre kullanın. Parametrenin varsayılan değerini `resourceGroup().location`olarak ayarlayın.
 
 Aşağıdaki örnekte, parametresi olarak belirtilen bir konuma dağıtılan bir depolama hesabı gösterilmektedir:
 

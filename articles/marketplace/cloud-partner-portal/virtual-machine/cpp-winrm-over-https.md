@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pabutler
-ms.openlocfilehash: 6e159bd9b57b26c99afd590d6a9f2153dba2a205
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e39f83b2ed715afbfff69770c151cfc4d527105d
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808417"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132268"
 ---
 # <a name="windows-remote-management-over-https"></a>HTTPS üzerinden Windows Uzaktan Yönetimi
 
-Bu bölümde, Azure 'da barındırılan, Windows tabanlı bir VM 'nin PowerShell ile uzaktan yönetilebilmesi ve dağıtılması için nasıl yapılandırılacağı açıklanmaktadır.  PowerShell uzaktan iletişimini etkinleştirmek için hedef VM 'nin bir Windows Uzaktan Yönetimi (WinRM) HTTPS uç noktasını kullanıma sunması gerekir.  PowerShell uzaktan iletişimi hakkında daha fazla bilgi için bkz. [uzak komutları çalıştırma](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6).  WinRM hakkında daha fazla bilgi için bkz. [Windows Uzaktan Yönetimi](https://docs.microsoft.com/windows/desktop/WinRM/portal).
+Bu bölümde, Azure 'da barındırılan, Windows tabanlı bir VM 'nin PowerShell ile uzaktan yönetilebilmesi ve dağıtılması için nasıl yapılandırılacağı açıklanmaktadır.  PowerShell uzaktan iletişimini etkinleştirmek için hedef VM 'nin bir Windows Uzaktan Yönetimi (WinRM) HTTPS uç noktasını kullanıma sunması gerekir.  PowerShell uzaktan iletişimi hakkında daha fazla bilgi için bkz. [uzak komutları çalıştırma](https://docs.microsoft.com/powershell/scripting/learn/remoting/running-remote-commands).  WinRM hakkında daha fazla bilgi için bkz. [Windows Uzaktan Yönetimi](https://docs.microsoft.com/windows/desktop/WinRM/portal).
 
-"Klasik" Azure yaklaşımlardan birini (Azure Service Manager portalı veya kullanım dışı bırakılmış [azure hizmet yönetim API'si](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))) kullanarak bir VM oluşturduysanız, otomatik olarak bir WinRM uç noktası ile yapılandırılır.  Ancak, aşağıdaki "modern" Azure yaklaşımının birini kullanarak bir VM oluşturursanız, VM 'niz HTTPS üzerinden WinRM için *yapılandırılmayacak.*  
+"Klasik" Azure yaklaşımlardan birini (Azure Service Manager portalı veya kullanım dışı bırakılmış [azure hizmet yönetim API'si](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))) kullanarak bir VM oluşturduysanız, otomatik olarak bir WinRM uç noktası ile yapılandırılır.  Ancak, aşağıdaki "modern" Azure yaklaşımının birini kullanarak bir VM oluşturursanız, VM 'niz HTTPS üzerinden WinRM için *yapılandırılmayacak.*
 
 - [Azure ile uyumlu bır VHD oluşturma](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd) bölümünde açıklandığı gibi, genellikle onaylanan bir tabandan [Azure Portal](https://portal.azure.com/)kullanma
 - [Azure Resource Manager şablonlarını kullanma](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
@@ -34,9 +34,9 @@ Buna karşılık, genellikle Linux VM 'Ler bir SSH konsolundan [Azure CLI](https
 
 Windows tabanlı bir VM için WinRM uç noktası, geliştirmenin iki farklı aşamasında yapılandırılabilir:
 
-- Oluşturma sırasında-VM 'nin mevcut bir VHD 'ye dağıtılması sırasında.  Bu, yeni teklifler için tercih edilen yaklaşımdır.  Bu yaklaşım, sağlanan Azure Resource Manager şablonlarını kullanarak ve özelleştirilmiş PowerShell betikleri çalıştırarak bir Azure sertifikası oluşturulmasını gerektirir. 
-- Dağıtımdan sonra, Azure 'da barındırılan mevcut bir VM 'de.  Azure üzerinde dağıtılmış bir VM çözümünüz varsa ve bu yaklaşım için pencere uzak yönetimini etkinleştirmeniz gerekiyorsa bu yaklaşımı kullanın.  Bu yaklaşım, Azure portal ve hedef VM üzerinde bir betiğin yürütülmesi için el ile yapılan değişiklikler gerektirir. 
+- Oluşturma sırasında-VM 'nin mevcut bir VHD 'ye dağıtılması sırasında.  Bu, yeni teklifler için tercih edilen yaklaşımdır.  Bu yaklaşım, sağlanan Azure Resource Manager şablonlarını kullanarak ve özelleştirilmiş PowerShell betikleri çalıştırarak bir Azure sertifikası oluşturulmasını gerektirir.
+- Dağıtımdan sonra, Azure 'da barındırılan mevcut bir VM 'de.  Azure üzerinde dağıtılmış bir VM çözümünüz varsa ve bu yaklaşım için pencere uzak yönetimini etkinleştirmeniz gerekiyorsa bu yaklaşımı kullanın.  Bu yaklaşım, Azure portal ve hedef VM üzerinde bir betiğin yürütülmesi için el ile yapılan değişiklikler gerektirir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Yeni bir VM oluşturuyorsanız, [sanal makinenizin VHD 'lerinden dağıtımı](./cpp-deploy-vm-vhd.md)sırasında WinRM 'yi etkinleştirebilirsiniz.  Aksi halde, WinRM mevcut bir VM 'de etkinleştirilebilir  
+Yeni bir VM oluşturuyorsanız, [sanal makinenizin VHD 'lerinden dağıtımı](./cpp-deploy-vm-vhd.md)sırasında WinRM 'yi etkinleştirebilirsiniz.  Aksi halde, WinRM mevcut bir VM 'de etkinleştirilebilir

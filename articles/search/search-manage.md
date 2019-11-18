@@ -1,5 +1,5 @@
 ---
-title: Portalda Azure Bilişsel Arama için hizmet yönetimi
+title: Portalda hizmet yönetimi
 titleSuffix: Azure Cognitive Search
 description: Azure portal kullanarak Microsoft Azure barındırılan bir bulut arama hizmeti olan Azure Bilişsel Arama hizmetini yönetin.
 manager: nitinme
@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 052d772c8ef885d594146d456ebb3cdcbbc0e383
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e00a810e7977e1c45c1833e0b901ff6804f7fb32
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793512"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113295"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal Azure Bilişsel Arama için hizmet yönetimi
 > [!div class="op_single_selector"]
@@ -62,14 +62,14 @@ Panoda, kaynak izleme hizmet panosunda gösterilen bilgilerle ve hizmeti sorgula
 
 Arama hizmeti REST API kullanarak belgeler ve dizinlerde program aracılığıyla bir sayı alabilir: 
 
-* [Dizin Istatistiklerini al](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Dizin istatistiklerini alma](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
 * [Belge sayısı](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Olağanüstü durum kurtarma ve hizmet kesintileri
 
 Verilerinizi, veri merkezi düzeyinde bir kesinti varsa Azure Bilişsel Arama, hizmetin anında yük devretmesini sağlamaz. Veri merkezinde bir küme başarısız olursa, işlemler ekibi, hizmeti algılar ve geri yükleme işlemini çalışır. Hizmet geri yükleme sırasında kapalı kalma süresi yaşarsınız, ancak [hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/)başına hizmet kullanım dışı kalması için hizmet kredileri isteyebilirsiniz. 
 
-Microsoft 'un denetimi dışındaki çok sayıda hata oluşması durumunda sürekli hizmet gerekliyse, farklı bir bölgede [ek bir hizmet](search-create-service-portal.md) sağlayabilir ve dizinlerin tamamen yedekli olmasını sağlamak için coğrafi çoğaltma stratejisi uygulayabilirsiniz tüm hizmetler genelinde.
+Microsoft 'un denetimi dışındaki çok sayıda hata oluşması durumunda sürekli hizmet gerekliyse, farklı bir bölgede [ek bir hizmet](search-create-service-portal.md) sağlayabilir ve dizinlerin tüm hizmetlerde tamamen yedekli olmasını sağlamak için coğrafi çoğaltma stratejisi uygulayabilirsiniz.
 
 Dizinleri doldurmak ve yenilemek için [Dizin oluşturucular](search-indexer-overview.md) kullanan müşteriler, aynı veri kaynağından yararlanan coğrafi olarak özel Dizin oluşturucular aracılığıyla olağanüstü durum kurtarmayı işleyebilir. Her biri Dizin Oluşturucu çalıştıran farklı bölgelerdeki iki hizmet, coğrafi yedeklilik sağlamak için aynı veri kaynağını dizinlede olabilir. Aynı zamanda coğrafi olarak yedekli veri kaynaklarından Dizin oluşturdıysanız Azure Bilişsel Arama dizin oluşturucularının yalnızca birincil çoğaltmalardan artımlı Dizin gerçekleştirebillerinin farkında olun. Bir yük devretme olayında, Dizin oluşturucuyu yeni birincil çoğaltmaya yeniden işaret ettiğinizden emin olun. 
 

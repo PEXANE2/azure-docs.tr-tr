@@ -1,5 +1,5 @@
 ---
-title: Arama hizmeti sağlama sırasında bir fiyatlandırma katmanı veya SKU seçin
+title: Fiyatlandırma Katmanı veya SKU seçin
 titleSuffix: Azure Cognitive Search
 description: "Azure Bilişsel Arama, bu SKU 'Larda sağlanabilir: ücretsiz, temel ve standart ve standart, çeşitli kaynak yapılandırmalarında ve kapasite düzeylerinde kullanılabilir."
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 249ce8e51ff61bac5d418d9e173ec2caed24e0e5
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9caadddf281c6df29f6e36057c7b28abcef0e1c4
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794264"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112517"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 

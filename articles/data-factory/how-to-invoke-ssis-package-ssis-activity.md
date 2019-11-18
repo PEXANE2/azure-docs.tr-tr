@@ -8,22 +8,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/14/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b8ed0a04d2d13556f38873ef5f346d49ba4d1845
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ddb7cd06934c85243717dd2a34dc99bae582b6fa
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673742"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122972"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory 'de SSIS paketi yürütme etkinliğiyle bir SSIS paketi çalıştırın
 Bu makalede, SSIS paketi yürütme etkinliğini kullanarak bir Azure Data Factory işlem hattında SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacağı açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -57,7 +57,7 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
 
     Anahtar Kasası bağlı hizmetinizi oluştururken veya düzenlediğinizde, mevcut anahtar kasanızı seçebilir veya düzenleyebilir veya yeni bir tane oluşturabilirsiniz. Daha önce yapmadıysanız, anahtar kasanıza Data Factory yönetilen kimlik erişimi verdiğinizden emin olun. Gizli dizilerinizi doğrudan şu biçimde de girebilirsiniz: `<Key vault linked service name>/<secret name>/<secret version>`. Paketinizin çalışması için 32 bit çalışma zamanı gerekiyorsa, **32 bit çalışma zamanı** onay kutusunu seçin.
 
-   **Paket konumu**Için **SSISDB**, **dosya sistemi (paket)** veya **dosya sistemi (proje)** seçeneğini belirleyin. Bir Azure SQL veritabanı sunucusu veya yönetilen örnek tarafından barındırılan SSIS Kataloğu (SSSıSDB) ile sağlanmışsa, Azure-SSIS IR otomatik olarak seçilen paket konumunuz olarak **Sssısdb** ' yi seçerseniz, dağıtılan çalıştırılacak paketinizi belirtin SSSıSDB 'ye dönüştürür. 
+   **Paket konumu**Için **SSISDB**, **dosya sistemi (paket)** , **dosya sistemi (proje)** veya **katıştırılmış paket**' i seçin. Bir Azure SQL veritabanı sunucusu veya yönetilen örnek tarafından barındırılan SSIS Kataloğu (SSSıSDB) ile sağlanmışsa, Azure-SSIS IR otomatik olarak seçilen paket konumunuz olarak **Sssısdb** ' yi seçerseniz, dağıtılan çalıştırılacak paketinizi belirtin SSSıSDB 'ye dönüştürür. 
 
     Azure-SSIS IR çalışıyorsa ve **el ile girdiler** onay kutusu SILINIRSE, SSISDB 'den var olan klasörlerinizi, projelerinizi, paketlerinizi veya ortamlarınızı göz atın ve seçin. Yeni eklenen klasörlerinizi, projelerinizi, paketlerinizi veya ortamlarınızı, göz atma ve seçim için kullanılabilir olmaları için SSıSDB 'den getirmek için **Yenile** ' yi seçin. Paket yürütmelerinin ortamlarına gözatıp seçmek için, bu ortamları SSSıSDB altındaki aynı klasörlerden başvuru olarak eklemek üzere projelerinizi önceden yapılandırmanız gerekir. Daha fazla bilgi için bkz. [SSIS ortamlarını oluşturma ve eşleme](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
 
@@ -82,6 +82,10 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
    Ardından, projenize, paketinize veya yapılandırma dosyalarınıza erişmek için kimlik bilgilerini belirtin. Daha önce paket yürütme kimlik bilgileriniz için değerler girdiyseniz (öncekini gör), **paket yürütme kimlik bilgileri Ile aynı** onay kutusunu seçerek bunları yeniden kullanabilirsiniz. Aksi takdirde, paket erişim kimlik bilgilerinizin değerlerini **etki alanı**, **Kullanıcı adı**ve **parola** kutularına girin. Örneğin, projenizi, paketinizi veya yapılandırmayı Azure dosyalarında depolarsanız, etki alanı `Azure`, Kullanıcı adı `<storage account name>`ve parola `<storage account key>`olur. 
 
    Alternatif olarak, anahtar kasasında depolanan gizli dizileri değerler olarak kullanabilirsiniz (öncekine bakın). Bu kimlik bilgileri, paket ve alt paketlerinize, tüm kendi yolundan veya aynı projeden, ayrıca paketleriniz içinde belirtilenler dahil olmak üzere tüm yapılandırma ve alt paketlere erişmek için kullanılır. 
+
+   Paket konumunuz olarak **katıştırılmış paket** ' i seçerseniz, dosyayı çalıştırmak veya bir dosya klasöründen belirtilen kutuya **yüklemek** için paketinizi sürükleyip bırakın. Paketinizin otomatik olarak sıkıştırılması ve etkinlik yüküne katıştırılması gerekir. Ekli olduktan sonra, paketini daha sonra düzenlemeniz için **indirebilirsiniz** . Ayrıca, birden çok etkinlikte kullanılabilecek bir işlem hattı parametresine atayarak gömülü paketinizi **parametreleştirebilirsiniz** , bu nedenle işlem hattı yükünüzü en iyi duruma getirebilirsiniz. Katıştırılmış paketinizin tümü şifrelenmemişse ve paket yürütme görevinin kullanımını tespit ettik, **paket görevi çalıştır** onay kutusu otomatik olarak seçilir ve dosya sistemi başvurularına sahip ilgili alt paketler otomatik olarak eklenir. Paket yürütme görevinin kullanımını algılayamıyoruz, **paket görevini Yürüt** onay kutusunu el ile seçmeniz ve ilgili alt paketleri dosya sistemi başvurularına tek bir tane ekleyerek de eklemeniz gerekir. Alt paketler SQL Server başvurular kullanıyorsa, lütfen SQL Server Azure-SSIS IR tarafından erişilebildiğinden emin olun.  Alt paketlere yönelik proje başvurularının kullanımı Şu anda desteklenmiyor.
+   
+   ![Ayarlar sekmesinde özellikleri ayarlama-El Ile](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
    
    Paketinizi SQL Server Veri Araçları aracılığıyla oluştururken **EncryptAllWithPassword** veya **EncryptSensitiveWithPassword** koruma düzeyini kullandıysanız, **şifreleme parolası** kutusuna parolanızın değerini girin. Alternatif olarak, anahtar kasasında depolanan bir gizli anahtarı değer olarak kullanabilirsiniz (öncekine bakın). **EncryptSensitiveWithUserKey** koruma düzeyini kullandıysanız, hassas değerleri yapılandırma dosyalarına ya da **SSIS parametreleri**, **bağlantı yöneticileri**veya **özellik geçersiz kılmalar** sekmelerinde yeniden girin (daha sonra bkz.). 
 
@@ -281,7 +285,7 @@ Bu adımda, SSIS paketi yürütme etkinliğine sahip bir işlem hattı oluştura
    }
    ```
 
-   Dosya sistemlerinde, dosya paylaşımlarında veya Azure dosyalarında depolanan paketleri yürütmek için, paketinizin veya günlük konumu özellikleri için değerleri aşağıdaki gibi girin:
+   Dosya sistemlerinde, dosya paylaşımlarında veya Azure dosyalarında depolanan paketleri yürütmek için, paketinizin ve günlük konumu özellikleri için değerleri aşağıdaki gibi girin:
 
    ```json
    {
@@ -353,6 +357,31 @@ Bu adımda, SSIS paketi yürütme etkinliğine sahip bir işlem hattı oluştura
                                    "value": "MyAccountKey"
                                }
                            }
+                       }
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   Katıştırılmış paketleri yürütmek için, paket konumu özelliği için değerleri aşağıdaki gibi girin:
+
+   ```json
+   {
+       {
+           {
+               {
+                   "packageLocation": {
+                       "type": "InlinePackage",
+                       "typeProperties": {
+                           "packagePassword": {
+                               "type": "SecureString",
+                               "value": "MyEncryptionPassword"
+                           },
+                           "packageName": "MyPackage.dtsx",
+                           "packageContent":"My compressed/uncompressed package content",
+                           "packageLastModifiedDate": "YYYY-MM-DDTHH:MM:SSZ UTC-/+HH:MM"
                        }
                    }
                }

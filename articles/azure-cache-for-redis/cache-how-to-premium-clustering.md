@@ -1,25 +1,17 @@
 ---
-title: Redsıs için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma | Microsoft Docs
+title: Redsıs için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
 description: Redsıs örnekleri için Premium katman Azure önbelleğiniz için Redsıs Kümelemesi oluşturmayı ve yönetmeyi öğrenin
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
 ms.author: yegu
-ms.openlocfilehash: d81647e8d09d8f10827e8eb6038363db73395c1e
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 1f0c97d6c0854254026e194ffd5030976fc506b2
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596917"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122167"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. Bu makalede, Redsıs örneği için Premium Azure önbelleğinde kümelemenin nasıl yapılandırılacağı açıklanır.
@@ -38,20 +30,20 @@ Kümeleme, kümelenmiş bir önbellek için kullanılabilen bağlantı sayısın
 
 Azure 'da reddo kümesi, her parçanın Redsıs hizmeti için Azure Cache tarafından yönetilen çoğaltma ile birincil/çoğaltma çifti olduğu bir birincil/çoğaltma modeli olarak sunulur. 
 
-## <a name="clustering"></a>Lenmesi
+## <a name="clustering"></a>Kümeleme
 Kümeleme, önbellek oluşturma sırasında **redsıs dikey penceresinde yeni Azure önbelleğinde** etkinleştirilir. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
 Kümeleme, **Redsıs kümesi** dikey penceresinde yapılandırılır.
 
-![Lenmesi][redis-cache-clustering]
+![Kümeleme][redis-cache-clustering]
 
 Kümede en fazla 10 parça olabilir. **Etkin** ' e tıklayın ve kaydırıcıyı kaydırın veya parça **sayısı** için 1 ile 10 arasında bir sayı yazın ve **Tamam**' a tıklayın.
 
 Her parça Azure tarafından yönetilen birincil/çoğaltma önbelleği çiftidir ve önbelleğin toplam boyutu, parça sayısı fiyatlandırma katmanında seçilen önbellek boyutuyla çarpılarak hesaplanır. 
 
-![Lenmesi][redis-cache-clustering-selected]
+![Kümeleme][redis-cache-clustering-selected]
 
 Önbellek oluşturulduktan sonra bu sunucuya bağlanır ve bunu kümelenmemiş bir önbellekte olduğu gibi kullanırsınız ve Redit verileri önbellek parçaları genelinde dağıtır. Tanılama [etkinleştirilmişse](cache-how-to-monitor.md#enable-cache-diagnostics), ölçümler her parça için ayrı olarak yakalanır ve reddo dikey penceresinde Azure önbelleğinde [görüntülenebilir](cache-how-to-monitor.md) . 
 
@@ -111,7 +103,7 @@ Aşağıdaki liste, Redsıs Kümelemesi için Azure önbelleği hakkında sık s
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Anahtarlar bir kümede nasıl dağıtılır?
 Redsıs [anahtarları dağıtım modeli](https://redis.io/topics/cluster-spec#keys-distribution-model) belgeleri: anahtar alanı 16384 yuvalara bölünür. Her anahtar karma hale getirilir ve kümenin düğümlerine dağıtılmış olan bu yuvalardan birine atanır. Karma Etiketler kullanılarak aynı parça içinde birden fazla anahtarın bulunduğundan emin olmak için anahtarın hangi kısmının karma hale getirilmiş olduğunu yapılandırabilirsiniz.
 
-* Karma etiketine sahip anahtarlar-anahtarın herhangi bir bölümü `{` ve `}` içindeyse, anahtarın karma yuvasını belirleme amacıyla yalnızca anahtarın bir bölümü karma hale getirilir. Örneğin, aşağıdaki 3 anahtar aynı parça içinde bulunur: `{key}1`, `{key}2` ve `{key}3` yalnızca adının `key` bölümü karma hale getirilmiş. Anahtarların karma etiket özelliklerinin tamamı listesi için bkz. [anahtarlar Karma etiketleri](https://redis.io/topics/cluster-spec#keys-hash-tags).
+* Karma etiketine sahip anahtarlar-anahtarın herhangi bir bölümü `{` ve `}`içindeyse, anahtarın karma yuvasını belirleme amacıyla yalnızca anahtarın bir bölümü karma hale getirilir. Örneğin, aşağıdaki 3 anahtar aynı parça içinde bulunur: `{key}1`, `{key}2`ve `{key}3` yalnızca adının `key` bölümü karma hale getirilmiş. Anahtarların karma etiket özelliklerinin tamamı listesi için bkz. [anahtarlar Karma etiketleri](https://redis.io/topics/cluster-spec#keys-hash-tags).
 * Karma etiketi olmayan anahtarlar-karma için tüm anahtar adı kullanılır. Bu, önbelleğin parçaları genelinde istatistiksel olarak eşit bir dağıtıma neden olur.
 
 En iyi performans ve verimlilik için anahtarları eşit olarak dağıtmanız önerilir. Bir karma etiketi ile anahtar kullanıyorsanız, anahtarların eşit şekilde dağıtılmasını sağlamak uygulamanın sorumluluğundadır.
@@ -147,7 +139,7 @@ SSL olmayan için aşağıdaki komutları kullanın.
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-SSL için `1300N` `1500N` ile değiştirin.
+SSL için `1300N` `1500N`ile değiştirin.
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Daha önce oluşturulmuş bir önbellek için kümeleme yapılandırabilir miyim?
 Evet. İlk olarak, yoksa ölçeklendirmeye göre önbelleğinizin Premium olduğundan emin olun. Daha sonra, clsuter etkinleştirme seçeneği dahil olmak üzere küme yapılandırma seçeneklerini görebilmeniz gerekir. Önbellek oluşturulduktan sonra veya kümelemeyi ilk kez etkinleştirdikten sonra küme boyutunu değiştirebilirsiniz.
