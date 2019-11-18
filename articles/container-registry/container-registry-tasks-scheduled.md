@@ -1,6 +1,6 @@
 ---
 title: Azure Container Registry görevleri zamanlayın
-description: Bir veya daha fazla Zamanlayıcı tetikleyicisi ayarlayarak tanımlı bir zamanlamaya göre Azure Container Registry görevinin nasıl çalıştırılacağını öğrenin
+description: Bu öğreticide, bir veya daha fazla Zamanlayıcı tetikleyicisi ayarlayarak tanımlı bir zamanlamaya göre Azure Container Registry görevinin nasıl çalıştırılacağını öğrenin
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,16 +8,22 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ae36b8d67d02f8cae0007b7b06485932db851af5
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931458"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148631"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Tanımlı bir zamanlamaya göre bir ACR görevi çalıştırma
 
-Bu makalede bir [ACR görevinin](container-registry-tasks-overview.md) zamanlamaya göre nasıl çalıştırılacağı gösterilmektedir. Bir veya daha fazla *Zamanlayıcı tetikleyicisi*ayarlayarak bir görev zamanlayın.
+Bu öğreticide bir [ACR görevinin](container-registry-tasks-overview.md) bir zamanlamaya göre nasıl çalıştırılacağı gösterilmektedir. Bir veya daha fazla *Zamanlayıcı tetikleyicisi*ayarlayarak bir görev zamanlayın. Zamanlayıcı Tetikleyicileri tek başına veya diğer görev tetikleyicilerle birlikte kullanılabilir.
+
+Bu öğreticide, görevleri planlama ve zamanlama hakkında bilgi edinin:
+
+> [!div class="checklist"]
+> * Zamanlayıcı tetikleyicisiyle görev oluşturma
+> * Zamanlayıcı tetikleyicilerini yönetme
 
 Bir görevin zamanlanması aşağıdakiler gibi senaryolar için yararlıdır:
 
@@ -199,9 +205,11 @@ Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+Bu öğreticide, bir Zamanlayıcı tarafından otomatik olarak tetiklenen Azure Container Registry görevlerinin nasıl oluşturulacağını öğrendiniz. 
+
 Bir kayıt defterindeki depoları temizlemek için zamanlanmış bir görev kullanmanın bir örneği için bkz. [Azure Container Registry 'den görüntüleri otomatik olarak temizleme](container-registry-auto-purge.md).
 
-Kaynak kodu işlemeleri veya temel görüntü güncelleştirmeleri tarafından tetiklenen görev örnekleri için [ACR görevler öğretici serisini](container-registry-tutorial-quick-task.md)inceleyin.
+Kaynak kodu işlemeleri veya temel görüntü güncelleştirmeleri tarafından tetiklenen görev örnekleri için [ACR Tasks öğreticisi serisinde](container-registry-tutorial-quick-task.md)diğer makalelere bakın.
 
 
 

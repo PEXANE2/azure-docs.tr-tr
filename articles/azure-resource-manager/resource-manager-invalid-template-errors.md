@@ -1,17 +1,14 @@
 ---
-title: Azure geçersiz şablon hataları | Microsoft Docs
+title: Geçersiz şablon hataları
 description: Azure Resource Manager şablonları dağıtılırken geçersiz şablon hatalarının nasıl çözümleneceğini açıklar.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 03/08/2018
-ms.author: tomfitz
-ms.openlocfilehash: bdf1d66ab345cc0d86206413db6617e9568b4d22
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 7b9b8021ad34a7ec7f879ce9413f4ae5d44e2720
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390336"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150577"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Geçersiz şablon hatalarını çözme
 
@@ -153,8 +150,8 @@ Döngüsel bağımlılığı çözümlemek için:
 
 Bu yaklaşım dairesel bağımlılığı çözmezse, dağıtım mantığınızın bir kısmını alt kaynaklara (uzantılar veya yapılandırma ayarları gibi) taşımayı göz önünde bulundurun. Bu alt kaynakları, döngüsel bağımlılığa dahil edilen kaynaklardan sonra dağıtılacak şekilde yapılandırın. Örneğin, iki sanal makine dağıttığını, ancak birbirlerine başvuran her bir üzerinde Özellikler ayarlamanız gerektiğini varsayalım. Bunları aşağıdaki sırayla dağıtabilirsiniz:
 
-1. VM1
-2. VM2
+1. vm1
+2. vm2
 3. VM1 üzerindeki uzantı VM1 ve VM2 'ye bağımlıdır. Uzantı, VM1 'teki VM2 'dan aldığı değerleri ayarlar.
 4. VM2 üzerindeki uzantı VM1 ve VM2 'ye bağımlıdır. Uzantı, VM2 'teki VM1 'dan aldığı değerleri ayarlar.
 

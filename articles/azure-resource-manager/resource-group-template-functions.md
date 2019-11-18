@@ -1,17 +1,14 @@
 ---
-title: Kaynak Yöneticisi Şablon Işlevleri | Microsoft Docs
+title: Şablon işlevleri
 description: Değerleri almak, dizeler ve sayı ile çalışmak ve dağıtım bilgilerini almak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: tomfitz
-ms.openlocfilehash: 04358f21af79838f894dc50d5d9c165da67a332c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a9501517672d3ea80a29979ce6b1439c4cc0010e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894171"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150668"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager şablon işlevleri
 
@@ -40,23 +37,23 @@ Kendi işlevlerinizi oluşturmak için, bkz. [Kullanıcı tanımlı işlevler](r
 ## <a name="array-and-object-functions"></a>Dizi ve nesne işlevleri
 Kaynak Yöneticisi diziler ve nesnelerle çalışmak için çeşitli işlevler sağlar.
 
-* [dizide](resource-group-template-functions-array.md#array)
-* [Coalesce](resource-group-template-functions-array.md#coalesce)
-* [Concat](resource-group-template-functions-array.md#concat)
-* [vardır](resource-group-template-functions-array.md#contains)
+* [array](resource-group-template-functions-array.md#array)
+* [coalesce](resource-group-template-functions-array.md#coalesce)
+* [concat](resource-group-template-functions-array.md#concat)
+* [contains](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
-* [olmamalıdır](resource-group-template-functions-array.md#empty)
-* [adı](resource-group-template-functions-array.md#first)
-* [imin](resource-group-template-functions-array.md#intersection)
+* [empty](resource-group-template-functions-array.md#empty)
+* [first](resource-group-template-functions-array.md#first)
+* [intersection](resource-group-template-functions-array.md#intersection)
 * [nesnesinde](resource-group-template-functions-array.md#json)
-* [soyadına](resource-group-template-functions-array.md#last)
-* [uzunluklu](resource-group-template-functions-array.md#length)
-* [Min](resource-group-template-functions-array.md#min)
-* [Biçimlendir](resource-group-template-functions-array.md#max)
-* [aralığı](resource-group-template-functions-array.md#range)
-* [Şimdilik](resource-group-template-functions-array.md#skip)
-* [almanız](resource-group-template-functions-array.md#take)
-* [birleşim](resource-group-template-functions-array.md#union)
+* [last](resource-group-template-functions-array.md#last)
+* [length](resource-group-template-functions-array.md#length)
+* [min](resource-group-template-functions-array.md#min)
+* [max](resource-group-template-functions-array.md#max)
+* [range](resource-group-template-functions-array.md#range)
+* [skip](resource-group-template-functions-array.md#skip)
+* [take](resource-group-template-functions-array.md#take)
+* [union](resource-group-template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -68,7 +65,7 @@ Kaynak Yöneticisi diziler ve nesnelerle çalışmak için çeşitli işlevler s
 Kaynak Yöneticisi, şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
 
 * [eşittir](resource-group-template-functions-comparison.md#equals)
-* [büyüktür](resource-group-template-functions-comparison.md#less)
+* [less](resource-group-template-functions-comparison.md#less)
 * [Lessotalals](resource-group-template-functions-comparison.md#lessorequals)
 * [ilerisi](resource-group-template-functions-comparison.md#greater)
 * [greaterOrEquals](resource-group-template-functions-comparison.md#greaterorequals)
@@ -82,7 +79,7 @@ Kaynak Yöneticisi, şablon bölümlerinden ve dağıtımla ilgili değerlerin d
 
 * [dağıtmak](resource-group-template-functions-deployment.md#deployment)
 * [parametreler](resource-group-template-functions-deployment.md#parameters)
-* [değişkenlerinin](resource-group-template-functions-deployment.md#variables)
+* [variables](resource-group-template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />
@@ -93,10 +90,10 @@ Kaynak Yöneticisi, şablon bölümlerinden ve dağıtımla ilgili değerlerin d
 ## <a name="logical-functions"></a>Mantıksal işlevler
 Kaynak Yöneticisi mantıksal koşullarla çalışmak için aşağıdaki işlevleri sağlar:
 
-* ['](resource-group-template-functions-logical.md#and)
+* [and](resource-group-template-functions-logical.md#and)
 * [bool](resource-group-template-functions-logical.md#bool)
-* [kullandıysanız](resource-group-template-functions-logical.md#if)
-* [başlatılmadı](resource-group-template-functions-logical.md#not)
+* [if](resource-group-template-functions-logical.md#if)
+* [not](resource-group-template-functions-logical.md#not)
 * [veya](resource-group-template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
@@ -115,11 +112,11 @@ Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağ
 
 * [ekleyemiyorum](resource-group-template-functions-numeric.md#add)
 * [Copyındex](resource-group-template-functions-numeric.md#copyindex)
-* [DIV](resource-group-template-functions-numeric.md#div)
+* [div](resource-group-template-functions-numeric.md#div)
 * [float](resource-group-template-functions-numeric.md#float)
 * ['tir](resource-group-template-functions-numeric.md#int)
-* [Min](resource-group-template-functions-numeric.md#min)
-* [Biçimlendir](resource-group-template-functions-numeric.md#max)
+* [min](resource-group-template-functions-numeric.md#min)
+* [max](resource-group-template-functions-numeric.md#max)
 * [alma](resource-group-template-functions-numeric.md#mod)
 * [MUL](resource-group-template-functions-numeric.md#mul)
 * [alt](resource-group-template-functions-numeric.md#sub)
@@ -136,17 +133,17 @@ Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağ
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Kaynak işlevleri
-Kaynak Yöneticisi, kaynak değerlerini almak için aşağıdaki işlevleri sağlar:
+Resource Manager kaynak değerlerini almak için aşağıdaki işlevleri sunar:
 
 * [Extensionresourceıd](resource-group-template-functions-resource.md#extensionresourceid)
 * [listAccountSas](resource-group-template-functions-resource.md#list)
-* [ListKeys 'i al](resource-group-template-functions-resource.md#listkeys)
-* [Listgizlilikler](resource-group-template-functions-resource.md#list)
-* [Listele](resource-group-template-functions-resource.md#list)
-* [sağlayıcılarla](resource-group-template-functions-resource.md#providers)
-* [başvurunun](resource-group-template-functions-resource.md#reference)
-* [Kaynak](resource-group-template-functions-resource.md#resourcegroup)
-* [RESOURCEID](resource-group-template-functions-resource.md#resourceid)
+* [Listkeys'i](resource-group-template-functions-resource.md#listkeys)
+* [listSecrets](resource-group-template-functions-resource.md#list)
+* [Liste *](resource-group-template-functions-resource.md#list)
+* [sağlayıcıları](resource-group-template-functions-resource.md#providers)
+* [Başvuru](resource-group-template-functions-resource.md#reference)
+* [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
+* [resourceId](resource-group-template-functions-resource.md#resourceid)
 * [aboneliği](resource-group-template-functions-resource.md#subscription)
 * [Subscriptionresourceıd](resource-group-template-functions-resource.md#subscriptionresourceid)
 * [Tenantresourceıd](resource-group-template-functions-resource.md#tenantresourceid)
@@ -185,38 +182,38 @@ Kaynak Yöneticisi, kaynak değerlerini almak için aşağıdaki işlevleri sağ
 ## <a name="string-functions"></a>Dize işlevleri
 Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 
-* [biçiminde](resource-group-template-functions-string.md#base64)
+* [base64](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
 * [base64ToString](resource-group-template-functions-string.md#base64tostring)
-* [Concat](resource-group-template-functions-string.md#concat)
-* [vardır](resource-group-template-functions-string.md#contains)
+* [concat](resource-group-template-functions-string.md#concat)
+* [contains](resource-group-template-functions-string.md#contains)
 * [dataUri](resource-group-template-functions-string.md#datauri)
 * [dataUriToString](resource-group-template-functions-string.md#datauritostring)
-* [olmamalıdır](resource-group-template-functions-string.md#empty)
+* [empty](resource-group-template-functions-string.md#empty)
 * [endsWith](resource-group-template-functions-string.md#endswith)
-* [adı](resource-group-template-functions-string.md#first)
-* [formatını](resource-group-template-functions-string.md#format)
-* ['ini](resource-group-template-functions-string.md#guid)
-* [IndexOf](resource-group-template-functions-string.md#indexof)
-* [soyadına](resource-group-template-functions-string.md#last)
-* [LastIndexOf](resource-group-template-functions-string.md#lastindexof)
-* [uzunluklu](resource-group-template-functions-string.md#length)
+* [first](resource-group-template-functions-string.md#first)
+* [format](resource-group-template-functions-string.md#format)
+* [guid](resource-group-template-functions-string.md#guid)
+* [indexOf](resource-group-template-functions-string.md#indexof)
+* [last](resource-group-template-functions-string.md#last)
+* [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
+* [length](resource-group-template-functions-string.md#length)
 * [newGuid](resource-group-template-functions-string.md#newguid)
 * [Asma sol](resource-group-template-functions-string.md#padleft)
-* [değiştirin](resource-group-template-functions-string.md#replace)
-* [Şimdilik](resource-group-template-functions-string.md#skip)
+* [replace](resource-group-template-functions-string.md#replace)
+* [skip](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
-* [dizisinde](resource-group-template-functions-string.md#string)
-* [dizeden](resource-group-template-functions-string.md#substring)
-* [almanız](resource-group-template-functions-string.md#take)
+* [dize](resource-group-template-functions-string.md#string)
+* [substring](resource-group-template-functions-string.md#substring)
+* [take](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
 * [toUpper](resource-group-template-functions-string.md#toupper)
-* [kırpma](resource-group-template-functions-string.md#trim)
+* [trim](resource-group-template-functions-string.md#trim)
 * [uniqueString](resource-group-template-functions-string.md#uniquestring)
-* [kullanılmamışsa](resource-group-template-functions-string.md#uri)
+* [uri](resource-group-template-functions-string.md#uri)
 * [URIComponent](resource-group-template-functions-string.md#uricomponent)
-* [Urıonenttostring](resource-group-template-functions-string.md#uricomponenttostring)
+* [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
 * [utcNow](resource-group-template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Sonraki adımlar

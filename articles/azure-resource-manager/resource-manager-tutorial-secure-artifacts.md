@@ -1,30 +1,22 @@
 ---
-title: Güvenli yapıtlar-Azure Resource Manager şablonları
-description: Azure Resource Manager şablonlarında kullanılan yapıtları güvenli hale getirme hakkında bilgi edinin.
-services: azure-resource-manager
-documentationcenter: ''
+title: Şablonlarda güvenli yapıtlar
+description: Yapıtlar, Azure Resource Manager şablonlarında kullanılan güvenli hale getirmeyi öğrenin.
 author: mumian
-manager: dougeby
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d9570c30e2870a136bd97ed5fc2304d6f0d280c9
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4aea85fe7f71d09c77b0596b4a8ec54922c8eee8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528280"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150424"
 ---
-# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Öğretici: Azure Resource Manager şablonu dağıtımlarında güvenli yapıtlar
+# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Öğretici: Azure Resource Manager şablon dağıtımları yapıları güvenliğini sağlama
 
-Paylaşılan erişim imzaları (SAS) ile Azure depolama hesabı 'nı kullanarak Azure Resource Manager şablonlarında kullanılan yapıtların güvenliğini nasıl sağlayacağınızı öğrenin. Dağıtım yapıtları, ana şablon dosyasına ek olarak, bir dağıtımı tamamlaması için gereken tüm dosyalardır. Örneğin, [öğretici: SQL BACPAC dosyalarını Azure Resource Manager şablonlarıyla Içeri aktarma](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)ana şablon BIR Azure SQL veritabanı oluşturur; Ayrıca tablo oluşturmak ve veri eklemek için BACPAC dosyasını çağırır. BACPAC dosyası bir yapıdır. Yapıt, genel erişime sahip bir Azure depolama hesabında depolanır. Bu öğreticide, kendi Azure Depolama hesabınızdaki BACPAC dosyasına sınırlı erişim sağlamak için SAS kullanacaksınız. SAS hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanma](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Paylaşılan erişim imzaları (SAS) ile Azure depolama hesabı kullanarak, Azure Resource Manager şablonlarında kullanılan yapıtların güvenli hale getirmeyi öğrenin. Dağıtım yapıtları dağıtımı tamamlamak için gereken tüm ana şablon dosyası yanı sıra dosyalarıdır. Örneğin, [öğretici: Azure Resource Manager şablonları ile içeri aktarma SQL BACPAC dosyalarını](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), Azure SQL veritabanı'ana şablon oluşturur; ayrıca tablo oluşturup veri eklemek için bir BACPAC dosyasını çağırır. BACPAC dosyasını bir yapıdır. Yapıt ortak erişim ile bir Azure depolama hesabında depolanır. Bu öğreticide, SAS kendi Azure depolama hesabında BACPAC dosyasına sınırlı erişim vermek için kullanın. SAS hakkında daha fazla bilgi için bkz: [paylaşılan erişim imzaları (SAS) kullanma](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-Bağlı şablonu güvenli hale getirme hakkında bilgi edinmek için bkz. [öğretici: bağlı Azure Resource Manager şablonları oluşturma](./resource-manager-tutorial-create-linked-templates.md).
+Bağlı şablon güvenliğini sağlamayı öğrenmek için bkz: [Öğreticisi: bağlı bir Azure Resource Manager şablonları oluşturma](./resource-manager-tutorial-create-linked-templates.md).
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -35,14 +27,14 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu dağıtma
 > * Dağıtımı doğrulama
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
 * [Visual Studio Code](https://code.visualstudio.com/) ve Resource Manager Araçları uzantısı. Bkz. [Uzantıyı yükleme](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
-* Gözden geçirme [öğreticisi: SQL BACPAC dosyalarını Azure Resource Manager şablonlarıyla Içeri aktarma](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md). Bu öğreticide kullanılan şablon, bu öğreticide geliştirilen bir şablondur. Tamamlanmış şablonun karşıdan yükleme bağlantısı bu makalede verilmiştir.
+* Gözden geçirme [öğretici: Azure Resource Manager şablonları ile içeri aktarma SQL BACPAC dosyalarını](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md). Bu öğreticide kullanılan Bu öğreticide geliştirilen bir şablonudur. Bu makalede bir indirme bağlantısı tamamlanmış şablonu sağlanır.
 * Güvenliği artırmak istiyorsanız SQL Server yönetici hesabı için oluşturulmuş bir parola kullanın. Parola oluşturma örneği aşağıda verilmiştir:
 
     ```azurecli-interactive
@@ -52,89 +44,89 @@ Bu makaleyi tamamlamak için gerekenler:
 
 ## <a name="prepare-a-bacpac-file"></a>BACPAC dosyası hazırlama
 
-Bu bölümde, Kaynak Yöneticisi şablonunu dağıtırken dosyanın güvenli bir şekilde erişilebilir olması için BACPAC dosyasını hazırlarsınız. Bu bölümde beş yordam vardır:
+Bu bölümde, Resource Manager şablonu dağıtırken dosyayı güvenli bir şekilde erişilebilir olacak şekilde BACPAC dosyasını hazırlayın. Bu bölümde beş yordamı vardır:
 
 * BACPAC dosyasını indirin.
 * Bir Azure Depolama hesabı oluşturun.
-* Depolama hesabı blobu kapsayıcısı oluşturun.
+* Bir depolama hesabı Blob kapsayıcı oluşturun.
 * BACPAC dosyasını kapsayıcıya yükleyin.
-* BACPAC dosyasının SAS belirtecini alın.
+* BACPAC dosyası SAS belirtecini alır.
 
-Bir PowerShell betiği kullanarak bu adımları otomatik hale getirmek için, [bağlantılı şablonu karşıya yükleme](./resource-manager-tutorial-create-linked-templates.md#upload-the-linked-template)komut dosyasına bakın.
+Bir PowerShell Betiği kullanarak aşağıdaki adımları otomatikleştirmek için komut dosyasından bkz [bağlı şablonu karşıya](./resource-manager-tutorial-create-linked-templates.md#upload-the-linked-template).
 
 ### <a name="download-the-bacpac-file"></a>BACPAC dosyasını indirin
 
-[Bacpac dosyasını](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac)indirin ve dosyayı, **sqldatabaseextension. bacpac**adlı yerel bilgisayarınıza kaydedin.
+İndirme [BACPAC dosyasına](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac)ve aynı ada sahip yerel bilgisayarınıza kaydedin **SQLDatabaseExtension.bacpac**.
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-1. Azure portal bir Kaynak Yöneticisi şablonu açmak için aşağıdaki görüntüyü seçin.
+1. Aşağıdaki görüntüde Azure portalında Resource Manager şablonu açmak için seçin.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json" target="_blank"><img src="./media/resource-manager-tutorial-secure-artifacts/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. Aşağıdaki özellikleri girin:
 
     * **Abonelik**: Azure aboneliğinizi seçin.
-    * **Kaynak grubu**: **Yeni oluştur** ' u seçin ve bir ad verin. Kaynak grubu, yönetim amacına yönelik olarak Azure kaynakları için bir kapsayıcıdır. Bu öğreticide, depolama hesabı ve Azure SQL veritabanı için aynı kaynak grubunu kullanabilirsiniz. Bu kaynak grubu adını, öğreticilerde daha sonra Azure SQL veritabanı oluşturduğunuzda ihtiyacınız olduğunu unutmayın.
-    * **Konum**: bölge seçin. Örneğin, **Orta ABD**.
-    * **Depolama hesabı türü**: **Standard_LRS**olan varsayılan değeri kullanın.
-    * **Konum**: **[resourceGroup (). Location]** olan varsayılan değeri kullanın. Bu, depolama hesabı için kaynak grubu konumunu kullandığınız anlamına gelir.
-    * **Yukarıda başlatılan hüküm ve koşulları kabul ediyorum**: (seçili)
+    * **Kaynak grubu**: seçin **Yeni Oluştur** ve bir ad verin. Bir kaynak grubu bir Azure kaynakları için yönetim amaç için kapsayıcıdır. Bu öğreticide, depolama hesabı ve Azure SQL veritabanı için aynı kaynak grubunu kullanabilirsiniz. Bu kaynak grubu adını not edin, sonraki öğreticilerde Azure SQL veritabanı oluşturduğunuzda gerekir.
+    * **Konum**: bir bölge seçin. Örneğin, **Orta ABD**.
+    * **Depolama hesabı türü**: varsayılan değeri kullanın **Standard_LRS**.
+    * **Konum**: varsayılan değeri kullanın **[resourceGroup () .location]** . Depolama hesabı için kaynak grubu konumunu kullanmak anlamına gelir.
+    * **Koşulları kabul ediyorum ve koşullar çalışmaya yukarıda**: (Seçili)
 3. **Satın al**'ı seçin.
-4. Dağıtım durumunu görmek için portalın sağ üst köşesindeki bildirim simgesini (zil simgesi) seçin.
+4. Dağıtım durumunu görmek için portalının sağ üst köşesindeki bildirim simgesine (zil simgesi) seçin.
 
-    ![Kaynak Yöneticisi öğreticisi Portal bildirimleri bölmesi](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-portal-notifications-pane.png)
-5. Depolama hesabı başarıyla dağıtıldıktan sonra, kaynak grubunu açmak için Bildirim bölmesinden **kaynak grubuna git** ' i seçin.
+    ![Resource Manager Öğreticisi portal bildirimler bölmesi](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-portal-notifications-pane.png)
+5. Depolama hesabı başarıyla dağıtıldıktan sonra seçin **kaynak grubuna gidin** bildirim bölmesinden kaynak grubunu açın.
 
 ### <a name="create-a-blob-container"></a>Blob kapsayıcısı oluşturma
 
-Herhangi bir dosyayı karşıya yükleyebilmeniz için önce bir blob kapsayıcısı gerekir.
+Dosyaları karşıya yükleyebilmeniz, bir Blob kapsayıcısı gereklidir.
 
-1. Açmak için depolama hesabını seçin. Kaynak grubunda listelenen yalnızca bir depolama hesabı görürsünüz. Depolama hesabınızın adı, aşağıdaki ekran görüntüsünde gösterilenden farklı.
+1. Açmak için depolama hesabını seçin. Kaynak grubunda listelenen yalnızca bir depolama hesabı göreceksiniz. Depolama hesabınızın adını, aşağıdaki ekran görüntüsünde gösterildiği bir farklıdır.
 
-    ![Kaynak Yöneticisi öğreticisi depolama hesabı](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-storage-account.png)
+    ![Resource Manager Öğreticisi depolama hesabı](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-storage-account.png)
 
-2. **Bloblar** kutucuğunu seçin.
+2. Seçin **Blobları** Döşe.
 
-    ![Kaynak Yöneticisi öğretici blob 'ları](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-blobs.png)
-3. Yeni bir kapsayıcı oluşturmak için yukarıdan **kapsayıcı** ' ı seçin.
+    ![Resource Manager Öğreticisi BLOB'ları](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-blobs.png)
+3. Seçin **+ kapsayıcı** en yeni bir kapsayıcı oluşturun.
 4. Aşağıdaki değerleri girin:
 
-    * **Ad**: **sqlbacpac**girin.
-    * **Genel erişim düzeyi**: **özel (anonim erişim yok)** varsayılan değerini kullanın.
+    * **Adı**: girin **sqlbacpac**.
+    * **Genel erişim düzeyi**: varsayılan değeri kullanın **özel (anonim erişim yok)** .
 5. **Tamam**’ı seçin.
-6. Yeni oluşturulan kapsayıcıyı açmak için **sqlbacpac** öğesini seçin.
+6. Seçin **sqlbacpac** yeni oluşturulan kapsayıcı açın.
 
-### <a name="upload-the-bacpac-file-to-the-container"></a>BACPAC dosyasını kapsayıcıya yükleyin
+### <a name="upload-the-bacpac-file-to-the-container"></a>BACPAC dosyasını kapsayıcıya yüklemek
 
 1. **Karşıya Yükle**’yi seçin.
 2. Aşağıdaki değerleri girin:
 
-    * **Dosyalar**: daha önce indirdiğiniz bacpac dosyasını seçmek için yönergeleri takip edin. Varsayılan ad **Sqldatabaseextension. bacpac**' dir.
-    * **Kimlik doğrulama türü**: **SAS**seçin.  *SAS* varsayılan değerdir.
-3. **Karşıya Yükle**’yi seçin.  Dosya başarıyla karşıya yüklendikten sonra, dosya adı kapsayıcıda listelenecektir.
+    * **Dosyaları**: daha önce indirilen BACPAC dosyasını seçmek için talimatları izleyerek. Varsayılan ad **SQLDatabaseExtension.bacpac**.
+    * **Kimlik doğrulama türü**: seçin **SAS**.  *SAS* varsayılan değerdir.
+3. **Karşıya Yükle**’yi seçin.  Dosya başarıyla karşıya yüklendikten sonra dosya adı kapsayıcıda listelenen.
 
 ### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a><a name="generate-a-sas-token" />Bir SAS belirteci oluştur
 
-1. Kapsayıcıdan **Sqldatabaseextension. bacpac öğesine** sağ tıklayın ve ardından **SAS oluştur**' u seçin.
+1. Sağ **SQLDatabaseExtension.bacpac** kapsayıcı ve ardından **Generate SAS**.
 2. Aşağıdaki değerleri girin:
 
-    * **İzin**: varsayılan, **Oku**kullanın.
-    * **Başlangıç ve bitiş tarihi/saati**: varsayılan değer, SAS belirtecini kullanmak için size sekiz saat verir. Bu öğreticiyi tamamlaması için daha fazla zaman gerekiyorsa, **tarihi**Güncelleştir ' i güncelleştirin.
-    * **Izin VERILEN IP adresleri**: bu alanı boş bırakın.
-    * **Izin verilen protokoller**: varsayılan değeri kullanın: **https**.
-    * **İmzalama anahtarı**: varsayılan değeri kullanın: **Key 1**.
-3. **BLOB SAS belirteci oluştur ve URL 'yi**seçin.
-4. **BLOB SAS URL**'sinin bir kopyasını oluşturun. URL 'nin ortasında, **Sqldatabaseextension. bacpac**adlı dosya adı bulunur.  Dosya adı, URL 'YI üç parçaya böler:
+    * **İzni**: varsayılan **okuma**.
+    * **Başlangıç ve bitiş tarihi/saati**: varsayılan değer size sekiz saat içinde bir SAS belirteci kullanabilir. Bu öğreticiyi tamamlamak için daha fazla süreye ihtiyacınız varsa güncelleştirme **bitiş**.
+    * **İzin verilen IP adresleri**: Bu alanı boş bırakın.
+    * **İzin verilen protokoller**: varsayılan değeri kullanın: **HTTPS**.
+    * **İmzalama anahtarı**: varsayılan değeri kullanın: **anahtar 1**.
+3. Seçin **blob SAS belirteci ve URL üretmek**.
+4. Bir kopyasını **Blob SAS URL'si**. Dosya adı URL'dir ortasında **SQLDatabaseExtension.bacpac**.  Dosya adı, URL üç bölüme ayırır:
 
-   - **Yapıt konumu**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Konumun bir "/" ile bitdiğinizden emin olun.
-   - **Bacpac dosya adı**: sqldatabaseextension. bacpac.
-   - **Yapıt konumu SAS belirteci**: belirtecin "?" ile önce geldiğinden emin olun.
+   - **Yapıt konumu**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Emin olun konumu ile biten bir "/".
+   - **BACPAC dosyası adı**: SQLDatabaseExtension.bacpac.
+   - **Yapıt konumuna SAS belirteci**: belirteç önündeki ile emin bir "?."
 
-     [Şablonu dağıtırken](#deploy-the-template)bu üç değere ihtiyacınız vardır.
+     Bu üç değerleri ihtiyacınız [şablonu dağıtmak](#deploy-the-template).
 
 ## <a name="open-an-existing-template"></a>Mevcut bir şablonu açın
 
-Bu oturumda, öğreticide oluşturduğunuz şablonu değiştirirsiniz: BACPAC dosyasını bir SAS belirteci ile çağırmak için [SQL bacpac dosyalarını Azure Resource Manager şablonlarla Içeri aktarın](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) .  SQL uzantı öğreticisinde geliştirilen şablon [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json)'da paylaşılır.
+Bu oturumda, oluşturduğunuz şablonu değiştirmek [öğretici: Azure Resource Manager şablonları ile içeri aktarma SQL BACPAC dosyalarını](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) BACPAC dosyasını bir SAS belirteci ile çağırmak için.  SQL uzantı öğreticisinde geliştirilen şablon [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json)'da paylaşılır.
 
 1. Visual Studio Code’dan **Dosya**>**Dosya Aç**’ı seçin.
 2. **Dosya adı**’na şu URL’yi yapıştırın:
@@ -144,7 +136,7 @@ Bu oturumda, öğreticide oluşturduğunuz şablonu değiştirirsiniz: BACPAC do
     ```
 3. Dosyayı açmak için **Aç**’ı seçin.
 
-    Şablonda tanımlanmış beş kaynak vardır:
+    Şablonda tanımlanan beş kaynak vardır:
 
    * `Microsoft.Sql/servers`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
    * `Microsoft.SQL/servers/securityAlertPolicies`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
@@ -182,9 +174,9 @@ Aşağıdaki ek parametreleri ekleyin:
 }
 ```
 
-![Kaynak Yöneticisi öğreticisi güvenli yapıt parametreleri](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
+![Resource Manager Öğreticisi güvenli yapıtları parametreleri](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
 
-Aşağıdaki iki öğenin değerini güncelleştirin:
+Değeri şu iki öğeyi güncelleştirin:
 
 ```json
 "storageKey": "[parameters('_artifactsLocationSasToken')]",
@@ -218,7 +210,7 @@ New-AzResourceGroupDeployment `
 ```
 
 Oluşturulan bir parola kullanın. [Ön koşullara](#prerequisites) bakın.
-_ArtifactsLocation, _artifactsLocationSasToken ve bacpacFileName değerleri için bkz. [SAS belirteci oluşturma](#generate-a-sas-token).
+_ArtifactsLocation ve _artifactsLocationSasToken bacpacFileName değerleri için bkz. [bir SAS belirteci oluşturmak](#generate-a-sas-token).
 
 ## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
 
@@ -237,7 +229,7 @@ Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir SQL Server, SQL veritabanı dağıtmış ve SAS belirtecini kullanarak BACPAC dosyasını içeri aktardınız. Kaynak Yöneticisi şablonlarını sürekli olarak geliştirip dağıtmak için Azure işlem hattı oluşturmayı öğrenmek için bkz.
+Bu öğreticide, bir SQL veritabanı bir SQL sunucusu dağıttınız ve SAS belirteci kullanarak BACPAC dosyasını içeri aktarıldı. Kaynak Yöneticisi şablonlarını sürekli olarak geliştirip dağıtmak için Azure işlem hattı oluşturmayı öğrenmek için bkz.
 
 > [!div class="nextstepaction"]
 > [Azure işlem hattı ile sürekli tümleştirme](./resource-manager-tutorial-use-azure-pipelines.md)

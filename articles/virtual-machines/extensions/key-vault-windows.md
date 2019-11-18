@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 4a2323212d2112e17dc613040434d54516aad9d3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 03351e964fc7247f87d0b823fae06fc03ff18de7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073711"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74152108"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows için Key Vault sanal makine uzantısı
 
@@ -40,7 +40,7 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault.Edp",
+            "publisher": "Microsoft.Azure.KeyVault",
             "type": "KeyVaultForWindows",
             "typeHandlerVersion": "1.0",
             "autoUpgradeMinorVersion": true,
@@ -68,7 +68,7 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
 | Ad | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft. Azure. Keykasa. EDP | string |
+| publisher | Microsoft. Azure. Keykasası| string |
 | type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
 | Pollingınterinterval bileşenleri | 3600 | string |
@@ -95,7 +95,7 @@ Bir sanal makine uzantısının JSON yapılandırması, şablonun sanal makine k
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault.Edp",
+            "publisher": "Microsoft.Azure.KeyVault",
             "type": "KeyVaultForWindows",
             "typeHandlerVersion": "1.0",
             "autoUpgradeMinorVersion": true,
@@ -125,7 +125,7 @@ Azure PowerShell, Key Vault VM uzantısını var olan bir sanal makineye veya sa
             '", "certificateStoreLocation": "' + <certStoreLoc> + 
             '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName =  "KeyVaultForWindows"
-        $extPublisher = "Microsoft.Azure.KeyVault.Edp"
+        $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
        
     
@@ -145,7 +145,7 @@ Azure PowerShell, Key Vault VM uzantısını var olan bir sanal makineye veya sa
             '", "certificateStoreLocation": "' + <certStoreLoc> + 
             '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName = "KeyVaultForWindows"
-        $extPublisher = "Microsoft.Azure.KeyVault.Edp"
+        $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
         
         # Add Extension to VMSS

@@ -1,17 +1,14 @@
 ---
-title: Azure dağıtım kotası aşıldı
+title: Dağıtım kotası aşıldı
 description: Kaynak grubu geçmişinde 800 ' den fazla dağıtıma sahip olma hatasının nasıl çözümleneceğini açıklar.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 7f9e1b6b8518ebc03f051e379e4707dd1864e003
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7f389827513562a3add67f022fec360081754b02
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578964"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147213"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Dağıtım sayısı 800 ' i aştığında hatayı çözümle
 

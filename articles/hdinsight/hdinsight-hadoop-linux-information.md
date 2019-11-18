@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.openlocfilehash: daaf5763bde560250ddf70e70466fc9f4ed3e1c2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 11/14/2019
+ms.openlocfilehash: 1fd59bd18947d2c7aaba787ff7ce286e76f4f890
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834100"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150040"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux’ta HDInsight kullanma ile ilgili bilgiler
 
 Azure HDInsight kümeleri, Azure bulutu 'nda çalışan tanıdık bir Linux ortamında Apache Hadoop sağlar. Çoğu şey için, tüm Linux üzerinde Hadoop yüklemesi gibi çalışır. Bu belge, bilmeniz gereken belirli farklılıkları çağırır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu belgedeki adımların birçoğu, sisteminizde yüklü olması gerekebilecek aşağıdaki yardımcı programları kullanır.
 
@@ -88,8 +88,8 @@ Daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop Services tarafından ku
 
 Hadoop ile ilgili dosyalar `/usr/hdp`konumundaki küme düğümlerinde bulunabilir. Bu dizin aşağıdaki alt dizinleri içerir:
 
-* **2.6.5.3006-29**: Dizin adı, HDInsight tarafından kullanılan Hadoop platformunun sürümüdür. Kümenizdeki sayı burada listelenenden farklı olabilir.
-* **geçerli**: Bu dizin, **2.6.5.3006-29** dizini altındaki alt dizinlere bağlantılar içerir. Bu dizin, sürüm numarasını anımsamanıza gerek kalmayacak şekilde bulunur.
+* **2.6.5.3009-43**: Dizin adı, HDInsight tarafından kullanılan Hadoop platformunun sürümüdür. Kümenizdeki sayı burada listelenenden farklı olabilir.
+* **geçerli**: Bu dizin, **2.6.5.3009-43** dizininde bulunan alt dizinlere bağlantılar içerir. Bu dizin, sürüm numarasını anımsamanıza gerek kalmayacak şekilde bulunur.
 
 Örnek veri ve JAR dosyaları, Hadoop Dağıtılmış Dosya Sistemi `/example` ve `/HdiSamples`bulunabilir.
 
@@ -284,5 +284,4 @@ Bir bileşenin farklı bir sürümünü kullanmak için, ihtiyacınız olan sür
 
 * [Apache ambarı 'nı kullanarak HDInsight kümelerini yönetme REST API](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [HDInsight ile Apache Hive kullanma](hadoop/hdinsight-use-hive.md)
-* [HDInsight ile Apache Pig kullanma](hadoop/hdinsight-use-pig.md)
 * [HDInsight ile MapReduce işleri kullanma](hadoop/hdinsight-use-mapreduce.md)

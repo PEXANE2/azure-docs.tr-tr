@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD kimlik doğrulaması VPN istemcisinde sorun giderme: Azure VPN Gateway | Microsoft Docs'
+title: 'VPN Gateway: VPN istemcisi-Azure AD kimlik doğrulaması sorunlarını giderme'
 description: Azure AD kimlik doğrulama istemcilerinin P2S VPN Gateway sorunlarını giderme
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: e239f283d5065e032e98e87a72a4bfe9fbafbdb1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8871e92f0911c4d3cbcc1772bef1daeb5c70b5d7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517286"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151964"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Azure AD kimlik doğrulaması VPN istemcisinde sorun giderme
 
@@ -22,7 +22,7 @@ Bu makale, Noktadan siteye VPN ve Azure Active Directory kimlik doğrulaması ku
 
 Hata iletileri için durum günlüğünü görüntüleyin.
 
-![günlükler](./media/troubleshoot-ad-vpn-client/1.png)
+![logs](./media/troubleshoot-ad-vpn-client/1.png)
 
 1. **Durum günlüklerini**göstermek için istemci penceresinin sağ alt köşesindeki oklar simgesine tıklayın.
 2. Sorunu gösterebilen hatalar için günlüklere bakın.

@@ -1,19 +1,16 @@
 ---
-title: Öğretici-Azure Resource Manager şablona parametreler ekleme
+title: Öğretici-şablona parametreler ekleme
 description: Yeniden kullanılabilir hale getirmek için Azure Resource Manager şablonunuza parametreler ekleyin.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 7a4d8db57167bc82d13b4d46be1abc3518c340e4
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001504"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150241"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza parametreler ekleme
 
@@ -81,7 +78,7 @@ Güncelleştirmeleri işlemenin bu yolu, şablonunuz bir Azure çözümü için 
 
 Parametreler, belirli bir ortam için tasarlanmış değerler kullanarak dağıtımı özelleştirmenizi sağlar. Örneğin, geliştirme, test ve üretim için bir ortama dağıtıp dağıtsanız farklı değerleri geçirebilirsiniz.
 
-Önceki şablon her zaman bir Standard_LRS Storage hesabı dağıttı. Ortama bağlı olarak farklı SKU 'Ları dağıtma esnekliği isteyebilirsiniz. Aşağıdaki örnek, SKU için bir parametre eklemek için yapılan değişiklikleri gösterir. Tüm dosyayı kopyalayın ve şablonunuzun üzerine yapıştırın.
+Önceki şablon her zaman bir Standard_LRS depolama hesabı dağıttı. Ortama bağlı olarak farklı SKU 'Ları dağıtma esnekliği isteyebilirsiniz. Aşağıdaki örnek, SKU için bir parametre eklemek için yapılan değişiklikleri gösterir. Tüm dosyayı kopyalayın ve şablonunuzun üzerine yapıştırın.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
 
@@ -89,7 +86,7 @@ Parametreler, belirli bir ortam için tasarlanmış değerler kullanarak dağıt
 
 ## <a name="redeploy-the-template"></a>Şablonu yeniden dağıtın
 
-Yeniden dağıtım için hazırsınız. Varsayılan SKU **Standard_LRS**olarak ayarlandığından, bu parametre için bir değer sağlamanız gerekmez.
+Yeniden dağıtım için hazırsınız. Varsayılan SKU **Standard_LRS**olarak ayarlandığı için, bu parametre için bir değer sağlamanız gerekmez.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 

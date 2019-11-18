@@ -1,22 +1,18 @@
 ---
-title: Birden çok Azure kaynakları örneğini dağıtma | Microsoft Docs
+title: Birden çok kaynak örneğini dağıtma
 description: Kaynak dağıtımında birden çok kez yinelemek için bir Azure Resource Manager şablonunda kopyalama işlemini ve dizileri kullanın.
-services: azure-resource-manager
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3ee4b47dd6cb9043a4100d114c483d1feadbde38
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675097"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150796"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda kaynak, özellik veya değişken yinelemesi
 
-Bu makalede, Azure Resource Manager şablonunuzda bir kaynağın, değişkenin veya özelliğin birden fazla örneğini nasıl oluşturacağınız gösterilmektedir. Birden çok örnek oluşturmak için şablonunuza `copy` nesnesini ekleyin.
+Bu makalede, Azure Resource Manager şablonunuzda bir kaynağın, değişkenin veya özelliğin birden fazla örneğini nasıl oluşturacağınız gösterilmektedir. Birden çok örnek oluşturmak için `copy` nesnesini şablonunuza ekleyin.
 
 Bir kaynakla birlikte kullanıldığında, Copy nesnesi aşağıdaki biçimdedir:
 
@@ -57,7 +53,7 @@ Sayı sınırları, bir kaynak, değişken veya özellik ile birlikte kullanıl�
 
 ## <a name="resource-iteration"></a>Kaynak yinelemesi
 
-Bir dağıtımda kaynağın birden fazla örneğini oluşturmak istiyorsanız, kaynak türüne `copy` öğesi ekleyin. Copy öğesinde, bu döngü için yineleme sayısını ve bir adı belirtin.
+Bir dağıtımda kaynağın birden fazla örneğini oluşturmak istiyorsanız, kaynak türüne bir `copy` öğesi ekleyin. Copy öğesinde, bu döngü için yineleme sayısını ve bir adı belirtin.
 
 Birkaç kez oluşturulacak kaynak aşağıdaki biçimi alır:
 
@@ -110,7 +106,7 @@ Dizin değerini kaydırmak için copyIndex () işlevine bir değer geçirebilirs
 * storage2
 * storage3
 
-Dizideki her öğe arasında yineleme yapmak için, diziler ile çalışırken kopyalama işlemi faydalıdır. Yineleme sayısını belirtmek için dizideki `length` işlevini kullanın ve dizideki geçerli dizini almak için-1 @no__t. Bu nedenle, aşağıdaki örnek:
+Dizideki her öğe arasında yineleme yapmak için, diziler ile çalışırken kopyalama işlemi faydalıdır. Yineleme sayısını belirtmek için dizideki `length` işlevini kullanın ve dizideki geçerli dizini almak için `copyIndex`. Bu nedenle, aşağıdaki örnek:
 
 ```json
 "parameters": {
@@ -143,7 +139,7 @@ Dizideki her öğe arasında yineleme yapmak için, diziler ile çalışırken k
 
 Varsayılan olarak Kaynak Yöneticisi, kaynakları paralel olarak oluşturur. Şablondaki 800 kaynağın toplam sınırının dışında, paralel olarak dağıtılan kaynak sayısına sınır uygulanmaz. Bunların oluşturulma sırası garanti edilmez.
 
-Ancak, kaynakların sırayla dağıtılmasını belirtmek isteyebilirsiniz. Örneğin, bir üretim ortamını güncelleştirirken, yalnızca belirli bir sayının herhangi bir zamanda güncelleştirilmesini sağlamak isteyebilirsiniz. Bir kaynağın birden fazla örneğini yeniden dağıtmak için, `mode` ' ı **seri** ve `batchSize` ' y i aynı anda dağıtılacak örnek sayısına ayarlayın. Seri modda Kaynak Yöneticisi, döngüdeki önceki örneklerde bir bağımlılık oluşturur, bu nedenle, önceki toplu işlem tamamlanana kadar bir toplu işlem başlatmaz.
+Ancak, kaynakların sırayla dağıtılmasını belirtmek isteyebilirsiniz. Örneğin, bir üretim ortamını güncelleştirirken, yalnızca belirli bir sayının herhangi bir zamanda güncelleştirilmesini sağlamak isteyebilirsiniz. Bir kaynağın birden fazla örneğini yeniden dağıtmak için `mode` **seri** olarak ayarlayın ve aynı anda dağıtılacak örnek sayısına `batchSize`. Seri modda Kaynak Yöneticisi, döngüdeki önceki örneklerde bir bağımlılık oluşturur, bu nedenle, önceki toplu işlem tamamlanana kadar bir toplu işlem başlatmaz.
 
 Örneğin, depolama hesaplarını tek seferde bir kez dağıtmak için şunu kullanın:
 
@@ -186,7 +182,7 @@ Bir kaynaktaki bir özellik için birden fazla değer oluşturmak için, Propert
 * sayı-oluşturulacak değer sayısı.
 * Input-özelliğe atanacak değerleri içeren nesne
 
-Aşağıdaki örnek, bir sanal makinede dataDisks özelliğine `copy` uygulanacağını gösterir:
+Aşağıdaki örnek, `copy` bir sanal makinede dataDisks özelliğine nasıl uygulanacağını gösterir:
 
 ```json
 {
@@ -302,7 +298,7 @@ Kaynak ve özellik yinelemesini birlikte kullanabilirsiniz. Özellik yinelemesin
 
 ## <a name="variable-iteration"></a>Değişken yineleme
 
-Bir değişkenin birden çok örneğini oluşturmak için, değişkenler bölümünde `copy` özelliğini kullanın. @No__t-0 özelliğindeki değerden oluşturulan bir dizi öğe oluşturursunuz. @No__t-0 özelliğini bir değişken içinde veya değişkenler bölümünün en üst düzeyinde kullanabilirsiniz. @No__t-0 ' ı bir değişken yinelemesi içinde kullanırken, yinelemenin adını sağlamanız gerekir.
+Bir değişkenin birden çok örneğini oluşturmak için, değişkenler bölümündeki `copy` özelliğini kullanın. `input` özelliğindeki değerden oluşturulan bir dizi öğe oluşturursunuz. `copy` özelliğini bir değişken içinde veya değişkenler bölümünün en üst düzeyinde kullanabilirsiniz. Bir değişken yinelemesi içinde `copyIndex` kullanırken, yinelemenin adını sağlamanız gerekir.
 
 Dize değerleri dizisi oluşturmaya yönelik basit bir örnek için bkz. [dizi şablonunu kopyalama](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
 
@@ -426,7 +422,7 @@ Ve **en üst düzey dize-dizi** adlı değişken şunu döndürür:
 
 ## <a name="depend-on-resources-in-a-loop"></a>Bir döngüdeki kaynaklara bağlıdır
 
-@No__t-0 öğesini kullanarak başka bir kaynaktan sonra bir kaynağın dağıtıldığını belirtirsiniz. Bir döngüde kaynak koleksiyonuna bağlı olan bir kaynağı dağıtmak için, Bağımlıdson öğesinde kopyalama döngüsünün adını sağlayın. Aşağıdaki örnek, sanal makineyi dağıtmadan önce üç depolama hesabının nasıl dağıtılacağını göstermektedir. Tam sanal makine tanımı gösterilmez. Copy öğesinin adı `storagecopy` olarak ayarlanmış olduğuna ve sanal makinelerin Bağımlıdson öğesinin de `storagecopy` olarak ayarlandığını unutmayın.
+Bir kaynağın, `dependsOn` öğesini kullanarak başka bir kaynaktan sonra dağıtıldığını belirtirsiniz. Bir döngüde kaynak koleksiyonuna bağlı olan bir kaynağı dağıtmak için, Bağımlıdson öğesinde kopyalama döngüsünün adını sağlayın. Aşağıdaki örnek, sanal makineyi dağıtmadan önce üç depolama hesabının nasıl dağıtılacağını göstermektedir. Tam sanal makine tanımı gösterilmez. Kopyalama öğesinin adı `storagecopy` olarak ayarlanmış olduğuna ve sanal makinelerin Bağımlıdson öğesinin de `storagecopy`olarak ayarlandığını unutmayın.
 
 ```json
 {
@@ -486,7 +482,7 @@ Alt kaynak için bir kopyalama döngüsü kullanamazsınız. Genellikle başka b
   ]
 ```
 
-Birden fazla veri kümesi oluşturmak için veri fabrikası dışına taşıyın. Veri kümesi Data Factory ile aynı düzeyde olmalıdır, ancak yine de Data Factory 'nin bir alt kaynağıdır. Veri kümesi ve Veri Fabrikası arasındaki ilişkiyi tür ve ad özellikleriyle koruyabilirsiniz. Tür artık şablondaki konumundan çıkarsanamıyor, tam türü şu biçimde sağlamanız gerekir: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
+Birden fazla veri kümesi oluşturmak için veri fabrikası dışına taşıyın. Veri kümesi Data Factory ile aynı düzeyde olmalıdır, ancak yine de Data Factory 'nin bir alt kaynağıdır. Veri kümesi ve Veri Fabrikası arasındaki ilişkiyi tür ve ad özellikleriyle koruyabilirsiniz. Tür, şablondaki konumundan daha fazla çıkarsanamıyor, tam türü: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`biçiminde sağlamanız gerekir.
 
 Veri fabrikasının bir örneğiyle üst/alt ilişkisi kurmak için, üst kaynak adını içeren veri kümesi için bir ad sağlayın. Şu biçimi kullanın: `{parent-resource-name}/{child-resource-name}`.
 
@@ -513,7 +509,7 @@ Aşağıdaki örnek, uygulamayı göstermektedir:
 }]
 ```
 
-## <a name="example-templates"></a>Örnek Şablonlar
+## <a name="example-templates"></a>Örnek şablonları
 
 Aşağıdaki örneklerde bir kaynak veya özelliğin birden fazla örneğini oluşturmak için yaygın senaryolar gösterilmektedir.
 
@@ -523,7 +519,7 @@ Aşağıdaki örneklerde bir kaynak veya özelliğin birden fazla örneğini olu
 |[Seri kopyalama depolaması](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Birden çok depolama hesabını zamanında dağıtır. Ad, Dizin numarasını içerir. |
 |[Depolamayı dizi ile kopyalama](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Birkaç depolama hesabı dağıtır. Ad, diziden bir değer içerir. |
 |[Değişken sayıda veri diskine sahip VM dağıtımı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Bir sanal makine ile birden fazla veri diski dağıtır. |
-|[Değişkenleri Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Değişkenlerde yinelemenin farklı yollarını gösterir. |
+|[Değişkenleri kopyalayın](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Değişkenlerde yinelemenin farklı yollarını gösterir. |
 |[Çoklu güvenlik kuralları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Bir ağ güvenlik grubuna birkaç güvenlik kuralı dağıtır. Bir parametreden güvenlik kuralları oluşturur. Parametresi için bkz. [birden çok NSG parametre dosyası](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>Sonraki adımlar

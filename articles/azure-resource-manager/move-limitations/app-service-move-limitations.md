@@ -1,17 +1,14 @@
 ---
 title: Azure App Service kaynaklarını taşıma
 description: App Service kaynaklarını yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: tomfitz
-ms.openlocfilehash: 04ddf644c58434531dde708ee3b6432b1fce8f91
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: dca9b3a8f328192683cfde586f0ccdb01e84dc16
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533556"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150906"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>App Service kaynakları için kılavuzu taşıma
 
@@ -21,23 +18,23 @@ App Service kaynaklarını taşıma adımları, kaynakları bir abonelik içinde
 
 Bir Web uygulamasını _aynı abonelik içinde_taşırken, üçüncü taraf SSL sertifikalarını taşıyamazsınız. Ancak, üçüncü taraf sertifikasını taşımadan bir Web uygulamasını yeni kaynak grubuna taşıyabilirsiniz ve uygulamanızın SSL işlevselliği hala işe yarar.
 
-SSL sertifikasını Web uygulamasıyla taşımak istiyorsanız aşağıdaki adımları izleyin:
+SSL sertifikası ile Web uygulaması taşımak istiyorsanız, şu adımları izleyin:
 
 1. Web uygulamasından üçüncü taraf sertifikayı silin, ancak sertifikanızın bir kopyasını saklayın
-2. Web uygulamasını taşıyın.
+2. Web uygulaması taşıyın.
 3. Taşınan Web uygulamasına üçüncü taraf sertifikayı yükleyin.
 
 ## <a name="move-across-subscriptions"></a>Abonelikler arasında geçiş
 
-Bir Web uygulamasını _abonelikler arasında_taşırken, aşağıdaki sınırlamalar geçerlidir:
+Bir Web uygulaması taşınırken _abonelikler arasında_, aşağıdaki sınırlamalar geçerlidir:
 
-- Hedef kaynak grubu, mevcut App Service kaynak içermemelidir. App Service kaynaklar şunlardır:
+- Hedef kaynak grubu mevcut App Service kaynaklar olmaması gerekir. App Service kaynakları şunlardır:
     - Web Apps
     - App Service planları
-    - SSL sertifikaları karşıya yüklendi veya alındı
-    - App Service Ortamları
-- Kaynak grubundaki tüm App Service kaynakları birlikte taşınmalıdır.
-- App Service kaynaklar yalnızca, başlangıçta oluşturulduğu kaynak grubundan taşınabilir. Bir App Service kaynağı artık özgün kaynak grubunda yoksa, özgün kaynak grubuna geri taşıyın. Ardından, kaynağı abonelikler arasında taşıyın.
+    - Karşıya yüklenen veya içeri aktarılan SSL sertifikaları
+    - App Service ortamları
+- Kaynak grubundaki tüm App Service kaynakların birlikte taşınması gerekir.
+- App Service kaynaklarını, bunlar ilk olarak oluşturulduğu kaynak grubunun yalnızca taşınabilir. Bir App Service kaynağı artık özgün kaynak grubunda yoksa, özgün kaynak grubuna geri taşıyın. Ardından, kaynağı abonelikler arasında taşıyın.
 
 Özgün kaynak grubunu anımsamıyorsanız tanılama aracılığıyla bulabilirsiniz. Web uygulamanız için **Tanılama ve sorunları çözme**' ı seçin. Ardından **yapılandırma ve yönetim**' i seçin.
 

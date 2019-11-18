@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: bd42117b384b9e384d59f9f4298c937135cafd34
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f17c588d28d0904041970eee8e9aa2201f905836
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810178"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151422"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Veritabanı performansını izlemek ve sorunlarını gidermek için AI kullanarak Akıllı İçgörüler
 
@@ -28,7 +28,7 @@ Akıllı İçgörüler, yapay zeka aracılığıyla veritabanı kullanımını s
 
 Akıllı İçgörüler, Azure yerleşik zekanın aşağıdaki değeri sağlayan benzersiz bir özelliğidir:
 
-- Öngörülebilir izleme
+- Proaktif izleme
 - Özel performans öngörüleri
 - Veritabanı performansı performansında erken algılama
 - Algılanan sorunların kök neden analizi
@@ -65,6 +65,17 @@ Azure SQL Analytics ve tipik kullanım senaryolarında Akıllı İçgörüler ku
 >
 
 SQL veritabanı performans sorunlarını keşfetme ve sorun giderme Akıllı İçgörüler. SQL veritabanı ve yönetilen örnek veritabanı performans sorunlarını gidermek için Akıllı İçgörüler kullanmak için bkz. [akıllı içgörüler Azure SQL veritabanı performans sorunlarını giderme](sql-database-intelligent-insights-troubleshoot-performance.md).
+
+## <a name="intelligent-insights-options"></a>Akıllı İçgörüler seçenekleri
+
+Azure SQL veritabanı 'nda kullanılabilir Akıllı İçgörüler seçenekleri şunlardır:
+
+| Akıllı İçgörüler seçeneği | Tek veritabanı ve havuza alınmış veritabanı desteği | Örnek veritabanı desteği |
+| :----------------------------- | ----- | ----- |
+| **Akıllı içgörüler yapılandırma** -veritabanlarınız için akıllı içgörüler analizini yapılandırın. | Yes | Yes | 
+| Azure SQL veritabanı için Azure SQL Analytics izleme çözümüne akış öngörülerini **Azure SQL Analytics** . | Yes | Yes | 
+| Daha fazla özel Tümleştirmeler için Event Hubs, **Olay Hub 'ına** akış öngörüleri alın. | Yes | Yes | 
+| **Azure depolama** hakkında bilgi edinin-daha fazla analiz ve uzun süreli arşivleme Için Azure depolama ile akış öngörüleri. | Yes | Yes |
 
 ## <a name="configure-intelligent-insights"></a>Akıllı İçgörüler Yapılandır
 

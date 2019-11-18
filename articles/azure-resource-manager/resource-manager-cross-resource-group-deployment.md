@@ -1,17 +1,14 @@
 ---
-title: Azure kaynaklarını çapraz abonelik & kaynak grubu ile dağıtma
+title: Kaynakları dağıtım & çapraz abonelik kaynak grubu
 description: Dağıtım sırasında birden fazla Azure aboneliğini ve kaynak grubunu nasıl hedefleyecek olduğunu gösterir.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: c90096043f54eb8db5834fbe83ed1d6ae710d371
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 99c534e1c51dcdf32c2b3a3b779c01d71b8d0c24
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528332"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149562"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtın
 
@@ -24,7 +21,7 @@ Genellikle, şablonunuzda bulunan tüm kaynakları tek bir [kaynak grubuna](reso
 
 ## <a name="specify-a-subscription-and-resource-group"></a>Bir abonelik ve kaynak grubu belirtin
 
-Farklı bir kaynağı hedeflemek için, iç içe veya bağlı bir şablon kullanın. @No__t_0 kaynak türü `subscriptionId` ve `resourceGroup` için parametreler sağlar. Bu özellikler, iç içe dağıtım için farklı bir abonelik ve kaynak grubu belirtmenizi sağlar. Dağıtımı çalıştırmadan önce tüm kaynak gruplarının mevcut olması gerekir. Abonelik KIMLIĞINI veya kaynak grubunu belirtmezseniz, üst şablondaki abonelik ve kaynak grubu kullanılır.
+Farklı bir kaynağı hedeflemek için, iç içe veya bağlı bir şablon kullanın. `Microsoft.Resources/deployments` kaynak türü `subscriptionId` ve `resourceGroup`için parametreler sağlar. Bu özellikler, iç içe dağıtım için farklı bir abonelik ve kaynak grubu belirtmenizi sağlar. Dağıtımı çalıştırmadan önce tüm kaynak gruplarının mevcut olması gerekir. Abonelik KIMLIĞINI veya kaynak grubunu belirtmezseniz, üst şablondaki abonelik ve kaynak grubu kullanılır.
 
 Şablonu dağıtmak için kullandığınız hesabın, belirtilen abonelik KIMLIĞINE dağıtım izinleri olmalıdır. Belirtilen abonelik farklı bir Azure Active Directory kiracısında varsa, [başka bir dizinden Konuk kullanıcılar eklemeniz](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)gerekir.
 
@@ -158,14 +155,14 @@ Ayrı bir şablona bağlarsanız, bağlantılı şablondaki işlevler, iç içe 
 }
 ```
 
-## <a name="example-templates"></a>Örnek Şablonlar
+## <a name="example-templates"></a>Örnek şablonları
 
 Aşağıdaki şablonlar birden çok kaynak grubu dağıtımını göstermektedir. Şablonları dağıtmaya yönelik betikler tablodan sonra gösterilir.
 
 |Şablon  |Açıklama  |
 |---------|---------|
 |[Çapraz abonelik şablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |Bir depolama hesabını bir kaynak grubuna ve bir depolama hesabını ikinci bir kaynak grubuna dağıtır. İkinci kaynak grubu farklı bir abonelikte olduğunda, abonelik KIMLIĞI için bir değer ekleyin. |
-|[Çapraz kaynak grubu özellikleri şablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |@No__t_0 işlevinin nasıl çözümlendiğini gösterir. Hiçbir kaynak dağıtmaz. |
+|[Çapraz kaynak grubu özellikleri şablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |`resourceGroup()` işlevinin nasıl çözümlendiğini gösterir. Hiçbir kaynak dağıtmaz. |
 
 ### <a name="powershell"></a>PowerShell
 

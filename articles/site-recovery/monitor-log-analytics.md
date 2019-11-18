@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: b5bf568e03d4949b8798dd2e0f4c2d8cbcbbe0c7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936084"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133426"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure İzleyici Günlükleriyle Site Recovery’yi izleme
 
@@ -28,7 +28,7 @@ Site Recovery için, aşağıdakileri yapmanıza yardımcı olması için Azure 
 Azure Izleyici günlüklerini Site Recovery ile Azure 'da Azure **'a** çoğaltma, **VMware VM/fiziksel sunucusu ise Azure** 'a çoğaltma için desteklenir.
 
 > [!NOTE]
-> Dalgalanma veri günlükleri ve karşıya yükleme hızı günlükleri yalnızca ikincil bir Azure bölgesine çoğaltılan Azure VM 'Ler için kullanılabilir.
+> VMware ve fiziksel makinelere yönelik dalgalanma veri günlüklerini ve karşıya yükleme hızı günlüklerini almak için Işlem sunucusuna bir Microsoft Monitoring Agent yüklemeniz gerekir. Bu aracı, çoğaltılan makinelerin günlüklerini çalışma alanına gönderir. Bu özellik yalnızca 9,30 Mobility Agent sürümü için geçerlidir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -54,6 +54,24 @@ Başlamadan önce [yaygın izleme sorularını](monitoring-common-questions.md) 
     ![Çalışma alanını seçme](./media/monitoring-log-analytics/select-workspace.png)
 
 Site Recovery Günlükler seçili çalışma alanındaki bir tabloya (**AzureDiagnostics**) akışa başlar.
+
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>Işlem sunucusunda, değişim ve karşıya yükleme hızı günlükleri göndermek için Microsoft Monitoring Agent 'ı yapılandırma
+
+Şirket içinde VMware/fiziksel makineleriniz için veri değişim oranı bilgilerini ve kaynak verilerini karşıya yükleme hızı bilgilerini yakalayabilirsiniz. Bunu etkinleştirmek için, Işlem sunucusuna bir Microsoft İzleme aracısının yüklenmesi gerekir.
+
+1. Log Analytics çalışma alanına gidin ve **Gelişmiş ayarlar**' a tıklayın.
+2. **Bağlı kaynaklar** sayfasına tıklayın ve **Windows Server**' ı seçin.
+3. Işlem sunucusuna Windows Agent 'ı (64 bit) indirin. 
+4. [Çalışma alanı KIMLIĞINI ve anahtarını alma](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+5. [Aracıyı TLS 1,2 kullanacak şekilde yapılandırma](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. Alınan çalışma alanı KIMLIĞINI ve anahtarını sağlayarak [Aracı yüklemesini doldurun](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) .
+7. Yükleme tamamlandıktan sonra, Log Analytics çalışma alanına gidin ve **Gelişmiş ayarlar**' a tıklayın. **Veri** sayfasına gidin ve **Windows performans sayaçları**' na tıklayın. 
+8. Aşağıdaki iki sayacı 300 saniyelik örnek aralığıyla eklemek için **' + '** düğmesine tıklayın:
+
+        ASRAnalytics(*)\SourceVmChurnRate 
+        ASRAnalytics(*)\SourceVmThrpRate 
+
+Dalgalanma ve karşıya yükleme hızı verileri, çalışma alanına beslemeyi başlatacak.
 
 
 ## <a name="query-the-logs---examples"></a>Günlükleri sorgulama-örnekler
@@ -174,12 +192,9 @@ AzureDiagnostics  
 ```
 ![Makine RPO 'SU sorgula](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-for-a-vm"></a>Bir VM için sorgu veri değişim oranı (karmaşıklık)
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Bir Azure VM için sorgu verileri değişiklik hızı (karmaşıklık) ve karşıya yükleme oranı
 
-> [!NOTE] 
-> Karmaşıklık bilgileri yalnızca ikincil bir Azure bölgesine çoğaltılan Azure VM 'Leri için kullanılabilir.
-
-Bu sorgu belirli bir Azure VM (ContosoVM123) için bir eğilim grafiği çizer, bu da veri değişikliği oranını (saniye başına yazılan bayt) ve veri yükleme hızını izler. 
+Bu sorgu, veri değişim hızını (saniye başına yazılan bayt) ve veri yükleme oranını temsil eden belirli bir Azure VM (ContosoVM123) için bir eğilim grafiği çizer. 
 
 ```
 AzureDiagnostics   
@@ -193,6 +208,23 @@ Category contains "Upload", "UploadRate", "none") 
 | render timechart  
 ```
 ![Sorgu verileri değişikliği](./media/monitoring-log-analytics/example3.png)
+
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>VMware veya fiziksel makine için sorgu veri değişim oranı (karmaşıklık) ve karşıya yükleme oranı
+
+> [!Note]
+> Bu günlükleri getirmek için Işlem sunucusunda izleme aracısını oluşturduğunuzdan emin olun. [İzleme aracısını yapılandırma adımları](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs)bölümüne bakın.
+
+Bu sorgu, veri değişim oranını (saniye başına yazılan bayt) ve veri yükleme oranını temsil eden **Win-9r7sfh9enru**öğesinin çoğaltılan bir öğesi **Disk0** için bir eğilim grafiği çizer. Disk adını, kurtarma hizmetleri kasasındaki çoğaltılan öğenin **diskler** dikey penceresinde bulabilirsiniz. Sorguda kullanılacak örnek adı, makinenin DNS adıdır ve ardından _ ve disk adı bu örnekte olur.
+
+```
+Perf
+| where ObjectName == "ASRAnalytics"
+| where InstanceName contains "win-9r7sfh9qlru_disk0"
+| where TimeGenerated >= ago(4h) 
+| project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
+| render timechart
+```
+İşlem sunucusu bu verileri her 5 dakikada bir Log Analytics çalışma alanına iter. Bu veri noktaları, 5 dakika boyunca hesaplanan ortalama süreyi temsil eder.
 
 ### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Sorgu olağanüstü durum kurtarma Özeti (Azure 'dan Azure 'a)
 

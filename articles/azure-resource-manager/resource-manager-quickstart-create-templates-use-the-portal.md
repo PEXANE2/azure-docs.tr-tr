@@ -1,24 +1,16 @@
 ---
-title: Kaynak Yöneticisi şablonu dağıtma-Azure portal
+title: Şablon dağıtma-Azure portal
 description: Azure portalı kullanarak ilk Azure Resource Manager şablonunuzu oluşturmayı ve dağıtmayı öğrenin.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 299e1f3bc5915d547c4b463e770427d480836179
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9a747dbdda4b822c70edaa5a08c30db80328c321
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834281"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150546"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalı kullanarak Azure Resource Manager şablonu oluşturma ve dağıtma
 
@@ -28,7 +20,7 @@ Azure portal kullanarak bir Kaynak Yöneticisi şablonu oluşturmayı ve portald
 
 Öğreticiyi tamamladıktan sonra bir Azure depolama hesabı dağıtırsınız. Aynı işlem, diğer Azure kaynaklarını dağıtmak için de kullanılabilir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="generate-a-template-using-the-portal"></a>Portalı kullanarak şablon oluşturma
 
@@ -49,7 +41,7 @@ Birçok deneyimli şablon geliştiricisi, bu yöntemi, alışık oldukları Azur
     |Ad|Değer|
     |----|----|
     |**Kaynak grubu**|**Yeni oluştur**' u seçin ve tercih ettiğiniz bir kaynak grubu adı belirtin. Ekran görüntüsünde kaynak grubu adı *mystorage1016rg* olarak belirtilmiştir. Kaynak grubu, Azure kaynakları için bir kapsayıcıdır. Kaynak grubu, Azure kaynaklarını yönetmeyi kolaylaştırır. |
-    |**Ad**|Depolama hesabınıza benzersiz bir ad verin. Depolama hesabı adı tüm Azure genelinde benzersiz olmalıdır ve yalnızca küçük harf ve rakam içermelidir. Ad 3 ile 24 karakter arasında olmalıdır. "Depolama hesabı adı ' mystorage1016 ' zaten alınmış" olarak bir hata iletisi alırsanız, **adınızı&lt;> depolama alanını&lt;>** , örneğin **johndolestorage1016**) kullanmayı deneyin. Daha fazla bilgi için bkz. [adlandırma kuralları ve kısıtlamaları](/azure/architecture/best-practices/resource-naming).|
+    |**Adı**|Depolama hesabınıza benzersiz bir ad verin. Depolama hesabı adı tüm Azure genelinde benzersiz olmalıdır ve yalnızca küçük harf ve rakam içermelidir. Ad 3 ile 24 karakter arasında olmalıdır. "Depolama hesabı adı ' mystorage1016 ' zaten alınmış" olarak bir hata iletisi alırsanız, **adınızı&lt;> depolama alanını&lt;>** , örneğin **johndolestorage1016**) kullanmayı deneyin. Daha fazla bilgi için bkz. [adlandırma kuralları ve kısıtlamaları](/azure/architecture/best-practices/resource-naming).|
 
     Diğer özellikler için varsayılan değerleri kullanabilirsiniz.
 

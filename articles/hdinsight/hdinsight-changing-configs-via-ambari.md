@@ -2,18 +2,18 @@
 title: Küme yapılandırmasını iyileştirmek için Apache ambarı-Azure HDInsight
 description: Azure HDInsight kümelerini yapılandırmak ve iyileştirmek için Apache ambarı Web Kullanıcı arabirimini kullanın.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: e0d94a41febdba1bea6818309e05d287bef6d3a1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492507"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150108"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>HDInsight küme yapılandırmasını iyileştirmek için Apache ambarı 'nı kullanma
 
@@ -123,7 +123,7 @@ Varsayılan ayarlarla Bu örnek 4 azaltıcının ' dir.
 
 Hive sorgusu bir veya daha fazla aşamada yürütülür. Bağımsız aşamalar paralel olarak çalıştırılabilirler, bu, sorgu performansını arttırır.
 
-1. Paralel sorgu yürütmeyi etkinleştirmek için Hive **yapılandırma** sekmesine gidin ve `hive.exec.parallel` özelliğini arayın. Varsayılan değer false 'dur. Değeri true olarak değiştirin ve ardından değeri kaydetmek için **ENTER** tuşuna basın.
+1. Paralel sorgu yürütmeyi etkinleştirmek için Hive **yapılandırma** sekmesine gidin ve `hive.exec.parallel` özelliğini arayın. Varsayılan değer false'tur. Değeri true olarak değiştirin ve ardından değeri kaydetmek için **ENTER** tuşuna basın.
 
 1. Paralel olarak çalışacak işlerin sayısını sınırlandırmak için `hive.exec.parallel.thread.number` özelliğini değiştirin. Varsayılan değer 8 ' dir.
 
@@ -135,7 +135,7 @@ Hive, veri satırını satıra göre işler. Vektörleştirme, Hive 'yi aynı an
 
 1. Vektörleştirilmiş bir sorgu yürütmesini etkinleştirmek için Hive **yapılandırması** sekmesine gidin ve `hive.vectorized.execution.enabled` parametresini arayın. Hive 0.13.0 veya üzeri için varsayılan değer true 'dur.
 
-1. Sorgunun azaltılması için vektörleştirilmiş yürütmeyi etkinleştirmek üzere `hive.vectorized.execution.reduce.enabled` parametresini true olarak ayarlayın. Varsayılan değer false 'dur.
+1. Sorgunun azaltılması için vektörleştirilmiş yürütmeyi etkinleştirmek üzere `hive.vectorized.execution.reduce.enabled` parametresini true olarak ayarlayın. Varsayılan değer false'tur.
 
     ![Apache Hive vektörleştirilmiş yürütme](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
@@ -143,7 +143,7 @@ Hive, veri satırını satıra göre işler. Vektörleştirme, Hive 'yi aynı an
 
 Varsayılan olarak, Hive en iyi bir sorgu yürütme planını bulmak için bir kurallar kümesi izler. Maliyet tabanlı iyileştirme (CBO), bir sorguyu yürütmek için birden çok planı değerlendirir ve her plana bir maliyet atar ve ardından bir sorguyu yürütmek için en ucuz planı belirler.
 
-CBO 'i etkinleştirmek için Hive **yapılandırması** sekmesine gidip `parameter hive.cbo.enable`arayın ve sonra iki durumlu düğmeyi **Açık**olarak değiştirin.
+CBO 'i etkinleştirmek için, **Hive** > **configs** > **Ayarlar** ' a gidin ve **maliyet tabanlı İyileştiriciyi etkinleştir**' i bulun ve geçiş düğmesini **Açık**olarak değiştirin.
 
 ![HDInsight maliyet tabanlı iyileştirici](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
@@ -178,13 +178,13 @@ Kullanılabilir sıkıştırma türleri şunlardır:
 | Biçimlendir | Araç | Algoritmalar | Dosya Uzantısı | Bölünebilir? |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | Söndür | . gz | Hayır |
-| Bzip2 | Bzip2 | Bzip2 |.bz2 | Evet |
+| Bzip2 | Bzip2 | Bzip2 |.bz2 | Yes |
 | LZO | Lzop | LZO | . LZO | Dizine alınmışsa Evet |
 | Snappy | Yok | Snappy | Snappy | Hayır |
 
 Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli olduğundan, bazı durumlarda çok az maplıas oluşturulur. Giriş verileri metin ise, en iyi seçenek `bzip2`. ORC biçimi için, Snappy en hızlı sıkıştırma seçeneğidir.
 
-1. Ara sıkıştırmayı etkinleştirmek için Hive **yapılandırması** ' na gidin ve ardından `hive.exec.compress.intermediate` parametresini true olarak ayarlayın. Varsayılan değer false 'dur.
+1. Ara sıkıştırmayı etkinleştirmek için Hive **yapılandırması** ' na gidin ve ardından `hive.exec.compress.intermediate` parametresini true olarak ayarlayın. Varsayılan değer false'tur.
 
     ![Hive exec sıkıştırma ara](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
@@ -195,15 +195,13 @@ Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli oldu�
 
 1. Özel bir ayar eklemek için:
 
-    a. Hive **configs** sekmesine gidin ve **Gelişmiş** sekmesini seçin.
+    a. **Gelişmiş** > **özel Hive sitesi** > **Hive** > **configs** 'a gidin.
 
-    b. **Gelişmiş** sekmesinde, **özel Hive sitesi** bölmesini bulun ve genişletin.
+    b. Özel Hive sitesi bölmesinin alt kısmındaki **Özellik Ekle...** öğesini seçin.
 
-    c. Özel Hive sitesi bölmesinin altındaki bağlantı **Ekle özelliğine** tıklayın.
+    c. Özellik Ekle penceresinde, anahtar olarak `mapred.map.output.compression.codec` girin ve değer olarak `org.apache.hadoop.io.compress.SnappyCodec`.
 
-    d. Özellik Ekle penceresinde, anahtar olarak `mapred.map.output.compression.codec` girin ve değer olarak `org.apache.hadoop.io.compress.SnappyCodec`.
-
-    e. **Ekle**'ye tıklayın.
+    d. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Özel özellik ekleme Apache Hive](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
@@ -216,7 +214,7 @@ Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli oldu�
 
 Son Hive çıktısı da sıkıştırılabilir.
 
-1. Son Hive çıkışını sıkıştırmak için Hive **configs** sekmesine gidin ve ardından `hive.exec.compress.output` parametresini true olarak ayarlayın. Varsayılan değer false 'dur.
+1. Son Hive çıkışını sıkıştırmak için Hive **configs** sekmesine gidin ve ardından `hive.exec.compress.output` parametresini true olarak ayarlayın. Varsayılan değer false'tur.
 
 1. Çıkış sıkıştırma codec bileşenini seçmek için, önceki bölümün adım 3 ' te açıklandığı şekilde özel Hive-site bölmesine `mapred.output.compression.codec` özel özelliğini ekleyin.
 
@@ -228,7 +226,7 @@ Son Hive çıktısı da sıkıştırılabilir.
 
 Büyük miktarlarda girişi olan uzun süreli MapReduce görevleri için yansımalı yürütme açık olmamalıdır.
 
-* Kurgusal yürütmeyi etkinleştirmek için Hive **yapılandırması** ' na gidin ve ardından `hive.mapred.reduce.tasks.speculative.execution` parametresini true olarak ayarlayın. Varsayılan değer false 'dur.
+* Kurgusal yürütmeyi etkinleştirmek için Hive **yapılandırması** ' na gidin ve ardından `hive.mapred.reduce.tasks.speculative.execution` parametresini true olarak ayarlayın. Varsayılan değer false'tur.
 
     ![Hive mapred, görevleri yansımalı yürütmeyi azaltır](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
@@ -280,11 +278,11 @@ Hive yürütme altyapısını iyileştirmeye yönelik ek öneriler:
 
 | Ayar | Önerilen | HDInsight varsayılan |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | True = daha güvenli, daha yavaş; yanlış = daha hızlı | false |
+| `hive.mapjoin.hybridgrace.hashtable` | True = daha güvenli, daha yavaş; yanlış = daha hızlı | yanlış |
 | `tez.am.resource.memory.mb` | en çok 4 GB üst sınır | Otomatik olarak ayarlanmış |
-| `tez.session.am.dag.submit.timeout.secs` | 300 + | 300 |
-| `tez.am.container.idle.release-timeout-min.millis` | 20000 + | 10000 |
-| `tez.am.container.idle.release-timeout-max.millis` | 40000 + | 20000 |
+| `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
+| `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
+| `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
 
 ## <a name="apache-pig-optimization"></a>Apache Pig iyileştirmesi
 
@@ -313,7 +311,7 @@ Pig betiklerini yürütmek için iki yürütme altyapısı mevcuttur: MapReduce 
 
 Hive ile benzer şekilde, yerel mod, işleri görece daha az miktarda veri ile hızlandırmak için kullanılır.
 
-1. Yerel modu etkinleştirmek için `pig.auto.local.enabled` **true**olarak ayarlayın. Varsayılan değer false 'dur.
+1. Yerel modu etkinleştirmek için `pig.auto.local.enabled` **true**olarak ayarlayın. Varsayılan değer false'tur.
 
 1. Giriş veri boyutu `pig.auto.local.input.maxbytes` özellik değerinden küçük olan işlerin küçük işler olduğu kabul edilir. Varsayılan değer 1 GB 'tır.
 
@@ -329,7 +327,7 @@ Pig, UDF 'ler için gereken JAR dosyalarını görev düğümleri için kullanı
 
 Aşağıdaki bellek ayarları Pig betiği performansını iyileştirmenize yardımcı olabilir.
 
-* `pig.cachedbag.memusage`: bir paket için ayrılan bellek miktarı. Bir paket, tanımlama grupları koleksiyonudur. Kayıt düzeni sıralı bir alan kümesidir ve bir alan veri parçasıdır. Bir torba ait veriler, ayrılan belleğin ötesinde ise diske taşılır. Varsayılan değer, kullanılabilir belleğin yüzde 20 ' sini temsil eden 0,2 ' dir. Bu bellek, bir uygulamadaki tüm baorda paylaşılır.
+* `pig.cachedbag.memusage`: bir paket için ayrılan bellek miktarı. Bir paket, tanımlama grupları koleksiyonudur. Kayıt düzeni sıralı bir alan kümesidir ve bir alan veri parçasıdır. Bir paket içindeki veriler, ayrılan belleğin ötesinde, diske taşılır. Varsayılan değer, kullanılabilir belleğin yüzde 20 ' sini temsil eden 0,2 ' dir. Bu bellek, bir uygulamadaki tüm baorda paylaşılır.
 
 * `pig.spill.size.threshold`: bu taşma boyutundan (bayt olarak) daha büyük olan paketler diske taşmıştır. Varsayılan değer 5 MB 'tır.
 
@@ -337,13 +335,13 @@ Aşağıdaki bellek ayarları Pig betiği performansını iyileştirmenize yard�
 
 Pig, iş yürütülürken geçici dosyalar oluşturur. Dosyaları okurken veya diske yazarken geçici dosyaları sıkıştırmak performans artışına neden olur. Geçici dosyaları sıkıştırmak için aşağıdaki ayarlar kullanılabilir.
 
-* `pig.tmpfilecompression`: doğru olduğunda geçici dosya sıkıştırmasını etkinleştirilir. Varsayılan değer false 'dur.
+* `pig.tmpfilecompression`: doğru olduğunda geçici dosya sıkıştırmasını etkinleştirilir. Varsayılan değer false'tur.
 
 * `pig.tmpfilecompression.codec`: geçici dosyaları sıkıştırmak için kullanılacak sıkıştırma codec bileşeni. Önerilen sıkıştırma codec bileşenleri, daha düşük CPU kullanımı için [LZO](https://www.oberhumer.com/opensource/lzo/) ve Snappy ' dir.
 
 ### <a name="enable-split-combining"></a>Bölünmüş birleştirmeyi etkinleştir
 
-Etkinleştirildiğinde, küçük dosyalar daha az eşleme görevi için birleştirilir. Bu, birçok küçük dosya içeren işlerin verimliliğini artırır. Etkinleştirmek için `pig.noSplitCombination` true olarak ayarlayın. Varsayılan değer false 'dur.
+Etkinleştirildiğinde, küçük dosyalar daha az eşleme görevi için birleştirilir. Bu, birçok küçük dosya içeren işlerin verimliliğini artırır. Etkinleştirmek için `pig.noSplitCombination` true olarak ayarlayın. Varsayılan değer false'tur.
 
 ### <a name="tune-mappers"></a>Mapto ayarla
 
@@ -430,9 +428,9 @@ Memstore boyutu `hbase.regionserver.global.memstore.UpperLimit` ve `hbase.region
 
 ### <a name="set-memstore-local-allocation-buffer"></a>Memstore yerel ayırma arabelleğini ayarla
 
-Memstore yerel ayırma arabelleği kullanımı, `hbase.hregion.memstore.mslab.enabled`özellik tarafından belirlenir. Etkinleştirildiğinde (true), bu, ağır yazma işlemi sırasında yığın parçalanmasını önler. Varsayılan değer true 'dur.
+Memstore yerel ayırma arabelleği kullanımı, `hbase.hregion.memstore.mslab.enabled`özellik tarafından belirlenir. Etkinleştirildiğinde (true), bu, ağır yazma işlemi sırasında yığın parçalanmasını önler. Varsayılan değer true olur.
 
-![HBase. hregion. memstore. mslab. Enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
+![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

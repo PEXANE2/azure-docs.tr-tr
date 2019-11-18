@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub ve Event Grid | Microsoft Docs
 description: İşlemleri IoT Hub gerçekleşen eylemlere göre tetiklemek için Azure Event Grid kullanın.
-author: kgremban
+author: robinsh
 manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: kgremban
-ms.openlocfilehash: a2bb961989d5bb1cc879b197e45d25b566c56e83
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.author: robinsh
+ms.openlocfilehash: 2969791204474a7d73493ce6397c52255f7eab4a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906770"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151304"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylara tepki verme
 
@@ -33,8 +33,8 @@ IoT Hub aşağıdaki olay türlerini yayınlar:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft. Devices. DeviceCreated | Bir cihaz IoT Hub 'ına kaydedildiğinde yayımlandı. |
-| Microsoft. Devices. DeviceDeleted | IoT Hub 'ından bir cihaz silindiğinde yayımlandı. |
+| Microsoft.Devices.DeviceCreated | Bir cihaz IoT Hub 'ına kaydedildiğinde yayımlandı. |
+| Microsoft.Devices.DeviceDeleted | IoT Hub 'ından bir cihaz silindiğinde yayımlandı. |
 | Microsoft. Devices. DeviceConnected | Bir cihaz IoT Hub 'ına bağlandığında yayımlandı. |
 | Microsoft. Devices. DeviceConnected bağlantısı kesildi | Bir cihazın IoT Hub 'ından bağlantısı kesildiğinde yayımlandı. |
 | Microsoft. Devices. Devicetelemetri | Bir IoT Hub 'ına cihaz telemetri iletisi gönderildiğinde yayımlandı |
@@ -176,13 +176,21 @@ devices/{deviceId}
 
 Event Grid Ayrıca, veri içeriği de dahil olmak üzere her bir olayın özniteliklerine filtrelemeye izin verir. Bu, telemetri iletisinin temel içeriğini hangi olayların dağıttığı seçmenizi sağlar. Örnekleri görüntülemek için lütfen [Gelişmiş filtreleme](../event-grid/event-filtering.md#advanced-filtering) bölümüne bakın. Telemetri ileti gövdesinde filtreleme için, kod [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)ContentType öğesini **Application/JSON** ve Contentenkodlamaya göre **UTF-8** olarak ayarlamanız gerekir. Bu özelliklerin her ikisi de büyük/küçük harfe duyarlıdır.
 
-DeviceConnected, DeviceConnected, DeviceCreated ve DeviceDeleted gibi telemetri olmayan olaylar için, abonelik oluşturulurken Event Grid filtrelemesi kullanılabilir. Telemetri olayları için, Event Grid ' deki filtrelemeye ek olarak, kullanıcılar da ileti yönlendirme sorgusu üzerinden cihaz iksi, ileti özellikleri ve gövdesinde filtre uygulayabilir. Cihaz telemetrisine Event Grid aboneliğinize göre IoT Hub varsayılan bir [yol](iot-hub-devguide-messages-d2c.md) oluşturacağız. Bu tek yol, tüm Event Grid aboneliklerinizi işleyebilir. Telemetri verileri gönderilmeden önce iletileri filtrelemek için [yönlendirme sorgunuzu](iot-hub-devguide-routing-query-syntax.md)güncelleştirebilirsiniz. Yönlendirme sorgusunun ileti gövdesine yalnızca gövde JSON olduğunda uygulanabileceğini unutmayın. İleti [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)ContentType öğesini **Application/JSON** ve Contentenkodlamaya de **UTF-8** olarak ayarlamanız gerekir.
+DeviceConnected, DeviceConnected, DeviceCreated ve DeviceDeleted gibi telemetri olmayan olaylar için, abonelik oluşturulurken Event Grid filtrelemesi kullanılabilir. Telemetri olayları için, Event Grid ' deki filtrelemeye ek olarak, kullanıcılar da ileti yönlendirme sorgusu üzerinden cihaz iksi, ileti özellikleri ve gövdesinde filtre uygulayabilir. 
+
+Telemetri olaylarına Event Grid aracılığıyla abone olduğunuzda IoT Hub, veri kaynağı türü cihaz iletilerini Event Grid göndermek için varsayılan bir ileti yolu oluşturur. İleti yönlendirme hakkında daha fazla bilgi için bkz. [IoT Hub Message Routing](iot-hub-devguide-messages-d2c.md). Bu yol, portalda IoT Hub > Ileti yönlendirme altında görünür. Telemetri olayları için oluşturulan örnek aboneliklerin sayısından bağımsız olarak Event Grid yalnızca bir yol oluşturulur. Bu nedenle, farklı filtrelerle birkaç aboneliğe ihtiyacınız varsa, bu sorgularda veya işlecini aynı rotada kullanabilirsiniz. Yolun oluşturulması ve silinmesi, Event Grid aracılığıyla telemetri olaylarının abonelikle denetlenir. IoT Hub Ileti yönlendirmeyi kullanarak Event Grid için bir yol oluşturamaz veya silemezsiniz.
+
+Telemetri verileri gönderilmeden önce iletileri filtrelemek için [yönlendirme sorgunuzu](iot-hub-devguide-routing-query-syntax.md)güncelleştirebilirsiniz. Yönlendirme sorgusunun ileti gövdesine yalnızca gövde JSON olduğunda uygulanabileceğini unutmayın. İleti [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)ContentType öğesini **Application/JSON** ve Contentenkodlamaya de **UTF-8** olarak ayarlamanız gerekir.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Cihaz bağlı ve cihaz bağlantısı kesilen olaylar için sınırlamalar
 
 Cihaza bağlı ve cihaz bağlantısı kesilen olayları almak için, cihazınızın D2C bağlantısını veya C2D bağlantısını açmanız gerekir. Cihazınız MQTT protokolünü kullanıyorsa, IoT Hub C2D bağlantısını açık tutacaktır. AMQP için, [alma zaman uyumsuz API 'yi](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)çağırarak C2D bağlantısını açabilirsiniz.
 
-Telemetri gönderiyorsanız D2C bağlantısı açıktır. Cihaz bağlantısı titreşiyorsa, bu, cihazın sık bağlandığı ve bağlantıyı kestiği anlamına gelir, ancak her bir bağlantı durumunu gönderemeyecektir, ancak bir anlık görüntünün her dakikada alındığı bağlantı durumunu yayımlayacağız. IoT Hub kesintisi olması durumunda cihaz bağlantı durumunu kesinti durumunda olduğu anda yayımlayacağız. Bu kesinti sırasında cihazın bağlantısı kesilirse, cihaz bağlantısı kesilen olay 10 dakika içinde yayımlanır.
+Telemetri gönderiyorsanız D2C bağlantısı açıktır. 
+
+Cihaz bağlantısı titreşiyorsa, bu, cihazın en sık bağlanıp bağlantısını kestiğinde, her bir bağlantı durumunu göndermeyecektir, ancak sonunda tutarlı olan *son* bağlantı durumunu yayımlayacağız. Örneğin, cihazınız başlangıçta bağlı durumdaysa, bağlantı birkaç saniye boyunca bağlantı titreşiyor ve sonra bağlı duruma geri gelir. İlk bağlantı durumuyla bu yana yeni cihaz bağlantısı durumu olayları yayınlanmayacak. 
+
+IoT Hub kesintisi olması durumunda cihaz bağlantı durumunu kesinti durumunda olduğu anda yayımlayacağız. Bu kesinti sırasında cihazın bağlantısı kesilirse, cihaz bağlantısı kesilen olay 10 dakika içinde yayımlanır.
 
 ## <a name="tips-for-consuming-events"></a>Olayları tüketme ipuçları
 

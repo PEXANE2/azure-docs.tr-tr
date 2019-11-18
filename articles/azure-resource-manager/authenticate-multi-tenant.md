@@ -1,17 +1,14 @@
 ---
-title: Kiracılar genelinde kimlik doğrulama-Azure Resource Manager
+title: Kiracılar arasında kimlik doğrulaması
 description: Azure Resource Manager kiracılar genelinde kimlik doğrulama isteklerini nasıl işlediğini açıklar.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.author: tomfitz
-ms.openlocfilehash: b85ed32ac333402caeca4901e4d91bbe4d1d112c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1dccfc522179cd88e69bc5a58307b343aaef8f9e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300355"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149985"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Kiracılar genelinde isteklerin kimliğini doğrulama
 
@@ -23,8 +20,8 @@ ms.locfileid: "72300355"
 
 | Üst bilgi adı | Açıklama | Örnek değer |
 | ----------- | ----------- | ------------ |
-| Yetkilendirme | Birincil belirteç | Taşıyıcı &lt;Birincil-belirteç @ no__t-1 |
-| x-MS-yetkilendirme-yardımcı | Yardımcı belirteçler | Taşıyıcı &lt;yardımcı-token1 @ no__t-1, Encryptedtaşıyıcı &lt;yardımcı-token2 @ no__t-3, taşıyıcı &lt;yardımcı-token3 @ no__t-5 |
+| Yetkilendirme | Birincil belirteç | Taşıyıcı &lt;birincil belirteç&gt; |
+| x-MS-yetkilendirme-yardımcı | Yardımcı belirteçler | Taşıyıcı &lt;yardımcı-token1&gt;, Encryptedtaşıyıcı &lt;yardımcı-token2&gt;, taşıyıcı &lt;yardımcı-token3&gt; |
 
 Yardımcı üst bilgi en fazla üç yardımcı belirteç tutabilir. 
 

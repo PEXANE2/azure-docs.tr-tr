@@ -1,5 +1,6 @@
 ---
-title: 'Rota temelli VPN ağ geçidi oluşturma: Azure portal | Microsoft Docs'
+title: 'Rota tabanlı VPN Gateway oluşturma: Portal'
+titleSuffix: Azure VPN Gateway
 description: Azure portal kullanarak rota tabanlı VPN Gateway oluşturma
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3ab662a4f06b2d73ab0dab52f562398fee23686c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a44bdf654842d964a02f6aebe60e3632aabcd64d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71266540"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151676"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Azure portal kullanarak rota tabanlı bir VPN ağ geçidi oluşturma
 

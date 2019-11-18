@@ -1,17 +1,14 @@
 ---
-title: Taşıma hatalarını giderme-Azure Resource Manager
-description: Kaynakları yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
-author: tfitzmac
-ms.service: azure-resource-manager
+title: Taşıma hatalarını giderme
+description: Kaynakları yeni kaynak grubuna veya aboneliğe taşıma için Azure Resource Manager'ı kullanın.
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: 383098ab227013119bca668b42035c93334c8464
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 46fedeb8b50b19a0adc34b2099e7e76b888821f6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533346"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149114"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme
 
@@ -21,10 +18,10 @@ Bu makalede, kaynakları taşırken oluşan sorunları çözmeye yardımcı olac
 
 Azure aboneliğinizi gerçekten yükseltmek istiyorsanız (örneğin, ücretsiz 'den Kullandıkça Öde 'ye geçiş), aboneliğinizi dönüştürmeniz gerekir.
 
-* Ücretsiz denemeyi yükseltmek için bkz. [ücretsiz deneme sürümünüzü yükseltme veya Azure aboneliğinizi Microsoft Imagine Kullandıkça Öde](../billing/billing-upgrade-azure-subscription.md).
-* Kullandıkça Öde hesabını değiştirmek için bkz. [Azure Kullandıkça Öde aboneliğinizi farklı bir teklifine değiştirme](../billing/billing-how-to-switch-azure-offer.md).
+* Ücretsiz deneme sürümü yükseltmek için bkz: [ücretsiz deneme sürümü ya da Microsoft Imagine Azure aboneliğinizi Kullandıkça Öde aboneliğine yükseltme](../billing/billing-upgrade-azure-subscription.md).
+* Bir Kullandıkça Öde hesabına değiştirmek için bkz [Azure Kullandıkça Öde aboneliğinizi değiştirmek için farklı bir teklif](../billing/billing-how-to-switch-azure-offer.md).
 
-Aboneliği dönüştüremiyoruz, [bir Azure destek isteği oluşturun](../azure-supportability/how-to-create-azure-support-request.md). Sorun türü için **Abonelik yönetimi** ' ni seçin.
+Abonelik dönüştüremezse [bir Azure destek isteği oluşturma](../azure-supportability/how-to-create-azure-support-request.md). Seçin **abonelik yönetimi** sorun türü için.
 
 ## <a name="service-limitations"></a>Hizmet sınırlamaları
 
@@ -39,7 +36,7 @@ Bazı hizmetler, kaynakları taşırken ek hususlar gerektirir. Aşağıdaki hiz
 
 ## <a name="large-requests"></a>Büyük istekler
 
-Mümkün olduğunda, büyük taşıma işlemlerini ayrı olarak bölün. Tek bir işlemde 800 'den fazla kaynak olduğunda hemen Kaynak Yöneticisi bir hata döndürür. Ancak, 800 'den az kaynak taşıma zaman aşımına uğramasından de başarısız olabilir.
+Mümkün olduğunda, kesme büyük ayrı taşıma işlemlerini taşır. Tek bir işlemde 800 'den fazla kaynak olduğunda hemen Kaynak Yöneticisi bir hata döndürür. Ancak, 800'den daha az kaynağı taşımadan da zaman aşımına göre başarısız olabilir.
 
 ## <a name="resource-not-in-succeeded-state"></a>Kaynak başarılı değil durumunda
 
