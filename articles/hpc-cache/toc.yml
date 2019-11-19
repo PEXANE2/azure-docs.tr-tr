@@ -40,6 +40,8 @@
   items:
     - name: Destek bileti açma
       href: hpc-cache-support-ticket.md
+    - name: Blob depolama hesabı güvenlik duvarı ayarları geçici çözümü
+      href: hpc-cache-blob-firewall-fix.md
     - name: Bölgesel kesintiden kurtulma
       href: hpc-region-recovery.md
     - name: Azure HPC Önbelleği ile Azure NetApp Files'ı kullanma

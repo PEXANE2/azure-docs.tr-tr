@@ -1,23 +1,18 @@
 ---
 title: Application Insights 'ten Telemetriyi sürekli dışa aktarma | Microsoft Docs
 description: Tanılama ve kullanım verilerini Microsoft Azure depolama alanına aktarın ve buradan indirin.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/25/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 3238abcbcbc4d776e3736b13d5b32149c642649c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 07/25/2019
+ms.openlocfilehash: 6504661c2df66bda81af03a6364703b4b10f7485
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516941"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819545"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights Telemetriyi dışarı aktarma
 Telemetrinizi standart saklama süresinden daha uzun süre tutmak mı istiyorsunuz? Ya da özel bir şekilde işlesin mi? Sürekli dışa aktarma bu için idealdir. Application Insights portalında gördüğünüz olaylar JSON biçiminde Microsoft Azure depoya aktarılabilir. Buradan, verilerinizi indirebilir ve işlemek için gereken her kodu yazabilirsiniz.  
@@ -92,7 +87,7 @@ Veriler ayrıca, ayarlamış olduğunuz tüm [kullanılabilirlik Web testlerinin
 ## <a name="get"></a>Verileri İnceleme
 Depolamayı doğrudan portalda inceleyebilirsiniz. En soldaki menüdeki giriş ' e tıklayın, en üstte "Azure Services" **depolama hesapları**' nı seçin, depolama hesabı adını seçin, Genel Bakış sayfasında hizmetler ' ın altında **Bloblar** ' ı seçin ve son olarak kapsayıcı adını seçin.
 
-Visual Studio 'da Azure Storage 'ı denetlemek için **Görünüm**, **bulut Gezgini**' ni açın. (Bu menü komutu yoksa, Azure SDK 'sını yüklemeniz gerekir: **Yeni proje** iletişim kutusunu açın, Visual C#/Cloud ' ı genişletin ve **.NET için Microsoft Azure SDK al**' ı seçin.)
+Visual Studio 'da Azure Storage 'ı denetlemek için **Görünüm**, **bulut Gezgini**' ni açın. (Bu menü komutu yoksa, Azure SDK 'sını yüklemeniz gerekir: **Yeni proje** Iletişim kutusunu açın, Visual C#/Cloud ' ı genişletin ve **.NET için Microsoft Azure SDK al**' ı seçin.)
 
 Blob deponuzu açtığınızda blob dosyaları kümesine sahip bir kapsayıcı görürsünüz. Application Insights kaynak adı, izleme anahtarı, telemetri türü/tarih/saat öğesinden türetilen her bir dosyanın URI 'SI. (Kaynak adı tümüyle küçük ve izleme anahtarı kesik çizgileri atlar.)
 
@@ -106,8 +101,8 @@ Yolun biçimi şöyledir:
 
 Konum
 
-* `blobCreationTimeUtc`blob 'un iç hazırlama deposunda oluşturulduğu zaman
-* `blobDeliveryTimeUtc`blob 'un dışarı aktarma hedef depolamasına kopyalandığı zaman
+* `blobCreationTimeUtc` iç hazırlama deposunda blob oluşturulduğunda zaman
+* `blobDeliveryTimeUtc`, blob 'un dışarı aktarma hedef depolamasına kopyalandığı zaman
 
 ## <a name="format"></a>Veri biçimi
 * Her blob, birden çok ' \n ' ayrılmış satır içeren bir metin dosyasıdır. Yaklaşık bir dakikalık bir zaman diliminde işlenen Telemetriyi içerir.
@@ -163,7 +158,7 @@ Sürekli dışarı aktarma yeniden başlatılır.
 
 Daha büyük ölçeklendirilirken, buluttaki [HDInsight](https://azure.microsoft.com/services/hdinsight/) -Hadoop kümelerini göz önünde bulundurun. HDInsight, büyük verilerin yönetilmesi ve çözümlenmesi için kullanabileceğiniz çeşitli teknolojiler sağlar ve bunu, Application Insights aktarılmış verileri işlemek için kullanabilirsiniz.
 
-## <a name="q--a"></a>Soru - Yanıt
+## <a name="q--a"></a>Soru-Cevap
 * *Ancak istediğim tek seferlik bir grafik indirmesi.*  
 
     Evet, bunu yapabilirsiniz. Sekmenin en üstünde, **verileri dışarı aktar**' a tıklayın.
@@ -185,7 +180,7 @@ Daha büyük ölçeklendirilirken, buluttaki [HDInsight](https://azure.microsoft
   * Ayrıca, yüksek trafikli uygulamalar için ek bölüm birimleri ayrılır. Bu durumda, her birim dakikada bir blob oluşturur.
 * *Anahtarı depolama alanım olarak yeniden oluşturdum veya kapsayıcının adını değiştirdi ve şimdi dışarı aktarma çalışmıyor.*
 
-    Dışarı aktarmayı düzenleyin ve hedefi dışarı aktar sekmesini açın. Aynı depolama alanını daha önce olarak bırakın ve onaylamak için Tamam ' ı tıklatın. Dışarı aktarma yeniden başlatılır. Değişiklik son birkaç gün içinde olduysa, verileri kaybetmezsiniz.
+    Dışarı aktarmayı düzenleyin ve dışarı aktarma hedefi sekmesini açın. daha önce aynı depolama alanını seçili bırakın ve onaylamak için Tamam 'ı tıklatın. Dışarı aktarma yeniden başlatılır. Değişiklik son birkaç gün içinde olduysa, verileri kaybetmezsiniz.
 * *Dışarı aktarmayı duraklatabilir miyim?*
 
     Evet. Devre dışı bırak 'a tıklayın.

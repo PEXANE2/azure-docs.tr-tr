@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9e3c999de1804684e77a6224330b2d7077046964
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69543011"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052165"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri
 
@@ -44,7 +44,7 @@ Rezervasyon para iadesi almak için **Rezervasyon Ayrıntıları** bölümüne g
 
 ### <a name="enterprise-agreement-customers"></a>Kurumsal anlaşma müşterileri
 
-İlk satın alma, değişim veya para iadesi kullanılarak yapıldıysa, değişim ve para iadeleri için parasal taahhüde para eklenir. Parasal taahhüdün kullanıldığından emin olmak için, ilk satın almadan itibaren gerçekleşen fazla kullanım faturaları yeniden açılır ve yeniden oranlanır. Satın alınan rezervasyonu kullanan parasal taahhüt dönemi artık etkin değilse kredi, geçerli kurumsal anlaşma parasal taahhüt döneminize eklenir.
+İlk satın alma, değişim veya para iadesi kullanılarak yapıldıysa, değişim ve para iadeleri için parasal taahhüde para eklenir. Parasal taahhüdün kullanıldığından emin olmak için, ilk satın almadan itibaren gerçekleşen fazla kullanım faturaları yeniden açılır ve yeniden oranlanır. Satın alınan rezervasyonu kullanan parasal taahhüt dönemi artık etkin değilse kredi, geçerli kurumsal anlaşma parasal taahhüt döneminize eklenir. Kredi, iade tarihinden itibaren 90 gün geçerlidir. Kullanılmayan kredilerin süresi 90 günün sonunda dolar.
 
 İlk satın alma, fazla kullanım olarak gerçekleştiyse Microsoft bir alacak faturası düzenler.
 

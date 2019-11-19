@@ -10,12 +10,12 @@ ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b67e7bf0b6b79d2ae29c2ba8ed7c337f152faebc
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128696"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092073"
 ---
 ::: zone target="chromeless"
 
@@ -133,15 +133,29 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
 
 ### <a name="in-singaporetabin-singapore"></a>[Singapur’da](#tab/in-singapore)
 
-1. Sevk mektubunu yazdırın ve kutuya iliştirin. Etiket zarar gördüyse veya kayıpsa:
+1. Gönderim etiketini yazdırın ve kutuya iliştirin. Etiket zarar gördüyse veya kayıpsa:
     - **Genel Bakış > Sevkiyat Etiketini İndir**’e gidip bir iade sevkiyat etiketi edinin.
     - Etiketi cihaza iliştirin. Etiketin görünür olduğundan emin olun.
 
-2. Teslim alma istemek için:
-    - Çalışma saatleri içinde (Pazartesi’den Cuma’ya kadar saat 09.00 - 17.00 arası) **6845 6485** numaralı telefondan **SingPost** yardım hattını arayın.  
-    - Teslim alma planlamak için *Microsoft Azure teslim alma hizmetini* ve hizmet isteği numarasını (iade sevkiyat etiketinin üzerinde yer alan izleme numarası) bildirin. 
-    - Teslim alma zamanlaması için sözlü teyit alırsınız. 
-    - Teslim alması için kurye gönderilmezse alternatif planlamalar için **6845 6485** numaralı telefondan **SingPost**’u arayın. 
+2. Teslim alma talebinde bulunmak için, izleme numarasıyla birlikte aşağıdaki şablonu kullanarak SingPost Müşteri Hizmetleri’ne e-posta gönderin (izleme numarasını teslim edilen pakette sağlanan iade etiketi üzerinde bulabilirsiniz).
+
+    ```
+    To: kadcustcare@singpost.com
+    Subject: Microsoft Azure Pick-up - XZ00001234567 
+    Body: 
+     a. Requestor name
+     b. Requestor contact number
+     c. Requestor collection address
+     d. Preferred collection date
+    ```
+
+   > [!NOTE]
+   > İş gününde alınan rezervasyon istekleri için:
+   > - 15:00’ten önce, teslim alma sonraki iş gününde 09:00 ile 13:00 arasında gerçekleştirilir.
+   > - 15:00’ten sonra, teslim alma sonraki iş gününde 14:00 ile 18:00 arasında gerçekleştirilir.
+
+   Herhangi bir sorunla karşılaşırsanız, adbo@microsoft.com üzerinden Data Box İşlemleri Asya’ya ulaşın. Konu başlığında iş adını ve karşılaşılan sorunu sağlayın.
+
 3. Paketi kuryeye teslim edin. 
 
 

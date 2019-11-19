@@ -133,11 +133,13 @@
             - name: VPN istemcisi yapılandırma dosyalarını oluşturma ve yükleme
               href: point-to-site-vpn-client-configuration-radius.md
             - name: P2S VPN RADIUS kimlik doğrulamasını NPS sunucusu ile tümleştirme
-              href: vpn-gateway-radiuis-mfa-nsp.md
+              href: vpn-gateway-radius-mfa-nsp.md
         - name: Azure AD kimlik doğrulaması
           items:
             - name: Kiracı yapılandırma
               href: openvpn-azure-ad-tenant.md
+            - name: Multi-Factor Authentication’ı (MFA) yapılandırma
+              href: openvpn-azure-ad-mfa.md
             - name: VPN istemcisi yapılandırma
               href: openvpn-azure-ad-client.md
         - name: OpenVPN

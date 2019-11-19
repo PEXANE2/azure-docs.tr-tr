@@ -331,6 +331,14 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: İlke Tanımları
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: Python için Azure SDK
+      items:
+        - name: İlke
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy
+        - name: İlke istemcisi
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policyclient
+        - name: İlke İçgörüleri
+          href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
         - name: Olaylar

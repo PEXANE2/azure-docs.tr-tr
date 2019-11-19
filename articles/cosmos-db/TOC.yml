@@ -672,6 +672,8 @@
               href: mongodb-readpreference.md
             - name: Yaşam süresi - MongoDB
               href: mongodb-time-to-live.md
+            - name: Akış değiştirme
+              href: mongodb-change-streams.md
             - name: Veri dizinlemeyi yönetme
               href: mongodb-indexing.md
             - name: Mağaza ve Spring Verilerini yönetme

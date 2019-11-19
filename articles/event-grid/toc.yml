@@ -27,6 +27,8 @@
           href: custom-event-quickstart-powershell.md
         - name: Portal
           href: custom-event-quickstart-portal.md
+    - name: Olay işleyicisi olarak Azure İşlevleri
+      href: custom-event-to-function.md
     - name: Olay işleyicisi olarak kuyruk depolama
       href: custom-event-to-queue-storage.md
     - name: Olay işleyicisi olarak Event Hubs
@@ -111,6 +113,8 @@
       href: post-to-custom-topic.md
     - name: HTTP uç noktasında olayları alma
       href: receive-events.md
+    - name: AAD ile güvenli web kancası
+      href: secure-webhook-delivery.md
     - name: Teslim edilemeyen ileti ve yeniden deneme
       href: manage-event-delivery.md
     - name: Olayları filtreleme
