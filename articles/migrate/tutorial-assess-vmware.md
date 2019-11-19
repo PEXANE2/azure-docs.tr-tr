@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/11/2019
+ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 46bf756a729441bd3bc4b2b00aaa2c79fa06c0b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7187cb41fa7ea499035c57e83e04038b1269b418
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521249"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158676"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Azure geçişi ile VMware VM 'lerini değerlendirin: Sunucu değerlendirmesi
 
@@ -108,8 +108,8 @@ Dağıtmadan önce OVA dosyasının güvenli olduğundan emin olun.
 
   **Algoritma** | **Karma değeri**
   --- | ---
-  MD5 | 27230f3b012187860281b912ee661709
-  SHA256 | c0a5b5998b7f38ac6e57ea9a808ecc4295795e18f9ca99c367585068883f06e7
+  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
+  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ### <a name="create-the-appliance-vm"></a>Gereç VM 'sini oluşturma
@@ -213,14 +213,14 @@ Kapsamı ayarlamak için aşağıdaki adımları gerçekleştirmeniz gerekir:
 4.  **Rol oluştur** eylemi ' ne tıklayın.
 5.  Yeni rol için bir ad yazın. (örneğin, <em>Azure_Migrate</em>).
 6.  Bu [izinleri](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) yeni tanımlanan role atayın.
-7.  **Tamam** düğmesine tıklayın.
+7.  **OK (Tamam)** düğmesine tıklayın.
 
 **VCenter nesnelerinde izin atama**
 
 VCenter 'daki envanter nesnelerine atanmış bir role sahip vCenter Kullanıcı hesabına izin atamak için 2 yaklaşım vardır.
 - Sunucu değerlendirmesi için, bulunması gereken VM 'Lerin barındırıldığı tüm üst nesneler için vCenter Kullanıcı hesabına **salt okuma** rolü uygulanmalıdır. Tüm üst nesneler-konak, konaklar, küme, hiyerarşide veri merkezine kadar olan kümelerin bir klasörü dahil edilecek. Bu izinler hiyerarşideki alt nesnelere yayılmalıdır.
 
-    Benzer şekilde sunucu geçişi için, Kullanıcı tanımlı bir rol ( <em>Azure _Migrate</em>olarak adlandırılabilir), bu [ayrıcalıklarla](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) geçirilecek VM 'lerin barındırıldığı tüm üst nesneler için vCenter Kullanıcı hesabına uygulanması gerekir.
+    Benzer şekilde sunucu geçişi için, Kullanıcı tanımlı bir rol ( <em>Azure _Migrate</em>olarak adlandırılabilir) bu [ayrıcalıklar](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) , geçirilecek VM 'lerin barındırıldığı tüm üst nesneler için vCenter Kullanıcı hesabına uygulanmalıdır.
 
 ![İzin atama](./media/tutorial-assess-vmware/assign-perms.png)
 
@@ -246,7 +246,7 @@ Bulmadan sonra, VM 'Lerin Azure portal göründüğünü doğrulayabilirsiniz.
 
 Azure geçişi: Sunucu değerlendirmesi kullanarak oluşturabileceğiniz iki tür değerlendirme vardır.
 
-**Değerlendirme** | **Ayrıntılar** | **Veriler**
+**Değerlendirme** | **Ayrıntılar** | **Veri**
 --- | --- | ---
 **Performans tabanlı** | Toplanan performans verilerine dayalı değerlendirmeler | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)** : Şirket ıçı disklerin IOPS ve aktarım hızına göre.
 **Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: ŞIRKET içi VM boyutuna göre<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.

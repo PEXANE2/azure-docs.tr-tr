@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 09/16/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2f45f70f1c131e1690997cda18a8d612d3af9dee
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 2a70472518b72052f8338d6f14ea64fed6c6d4f1
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010314"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158331"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM 'lerinin Azure 'a değerlendirmesi ve geçirilmesi için hazırlanma
 
 Bu makalede, [Azure geçişi](migrate-services-overview.md)ile şirket içi Hyper-V VM 'lerinin Azure 'a değerlendirmesi ve geçirilmesi için nasıl hazırlanılacağı açıklanır.
 
-[Azure geçişi](migrate-overview.md) , Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan araçların merkezini sağlar. Hub, Azure geçiş araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir. 
+[Azure geçişi](migrate-overview.md) , Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan araçların merkezini sağlar. Hub, Azure geçiş araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir.
 
 Bu öğretici, Hyper-V sanal makinelerini Azure 'a nasıl değerlendirmenizi ve geçirekullanacağınızı gösteren bir serinin ilk ilkidir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -42,7 +42,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Azure geçişi dağıtımı için izinleri ayarlamanız gerekir.
 
-- Azure geçişi projesi oluşturmak için Azure hesabınız için izinler. 
+- Azure geçişi projesi oluşturmak için Azure hesabınız için izinler.
 - Azure geçişi gerecini kaydetmek için hesabınızın izinleri. Gereç, Hyper-V bulma ve geçiş için kullanılır. Gereç kaydı sırasında Azure geçişi, gereci benzersiz bir şekilde tanımlayan iki Azure Active Directory (Azure AD) uygulaması oluşturur:
     - İlk uygulama Azure geçişi hizmet uç noktaları ile iletişim kurar.
     - İkinci uygulama, Azure AD uygulama bilgileri ve gereç yapılandırma ayarlarını depolamak için kayıt sırasında oluşturulan Azure Key Vault erişir.
@@ -70,14 +70,14 @@ Aşağıdaki yöntemlerden birini kullanarak, Gereç kaydı sırasında oluştur
 Buna dikkat edin:
 
 - Uygulamalar, yukarıda açıklananlar dışında başka bir abonelik üzerinde başka erişim izinlerine sahip değildir.
-- Yalnızca yeni bir gereç kaydettiğinizde bu izinlere ihtiyacınız vardır. Gereç kurulduktan sonra izinleri kaldırabilirsiniz. 
+- Yalnızca yeni bir gereç kaydettiğinizde bu izinlere ihtiyacınız vardır. Gereç kurulduktan sonra izinleri kaldırabilirsiniz.
 
 
 #### <a name="grant-account-permissions"></a>Hesap izinleri verme
 
 Kiracı/Genel yönetici, izinleri aşağıdaki gibi verebilir:
 
-1. Azure AD 'de, kiracı/genel yönetici **Azure Active Directory** >  > Kullanıcı**Kullanıcı ayarları**' na gitmelidir.
+1. Azure AD 'de, kiracı/genel yönetici **Azure Active Directory** > **Kullanıcılar** > **Kullanıcı ayarları**' na gitmelidir.
 2. Yönetici **uygulama kayıtları** **Evet**olarak ayarlanmalıdır.
 
     ![Azure AD izinleri](./media/tutorial-prepare-hyper-v/aad.png)
@@ -87,7 +87,7 @@ Kiracı/Genel yönetici, izinleri aşağıdaki gibi verebilir:
 
 
 
-#### <a name="assign-application-developer-role"></a>Uygulama geliştirici rolü atama 
+#### <a name="assign-application-developer-role"></a>Uygulama geliştirici rolü atama
 
 Kiracı/Genel yönetici, uygulama geliştirici rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
@@ -98,7 +98,7 @@ Hyper-V değerlendirmesi için hazırlanmak üzere şunları yapın:
 
 1. Hyper-V konak ayarlarını doğrulayın.
 2. Her konakta PowerShell uzaktan iletişimini ayarlayın, böylece Azure geçişi gereci konakta PowerShell komutlarını bir WinRM bağlantısı üzerinden çalıştırabilir.
-3. VM diskleri uzak SMB depolaması 'nda bulunuyorsa, kimlik bilgilerinin temsili gereklidir. 
+3. VM diskleri uzak SMB depolaması 'nda bulunuyorsa, kimlik bilgilerinin temsili gereklidir.
     - Azure geçişi gerecinin istemci olarak davranabilmesi ve bir konağa kimlik bilgileri temsilciliğini sağlamak için CredSSP temsilcisini etkinleştirin.
     - Aşağıda açıklandığı gibi, her bir konağın gereç için bir temsilci görevi görmesini sağlayabilirsiniz.
     - Daha sonra gereci ayarladığınızda, Gereç üzerinde temsilciyi etkinleştirecektir.
@@ -122,7 +122,7 @@ Betik, Hyper-v konaklarını doğrular ve Hyper-V VM 'lerini bulup değerlendirm
 - Konağın desteklenen bir Hyper-V sürümü ve Hyper-V rolü çalıştığını denetler.
 - WinRM hizmetini etkinleştirilir ve konakta 5985 (HTTP) ve 5986 (HTTPS) bağlantı noktalarını (meta veri koleksiyonu için gereklidir) açar.
 - Konakta PowerShell uzaktan iletişimini mümkün bir şekilde sunar.
-- Hyper-V tümleştirme hizmetinin konak tarafından yönetilen tüm VM 'lerde etkin olduğunu denetler. 
+- Hyper-V tümleştirme hizmetinin konak tarafından yönetilen tüm VM 'lerde etkin olduğunu denetler.
 - Gerekirse, konakta CredSSP 'yi etkinleştirilir.
 
 Betiği aşağıdaki gibi çalıştırın:
@@ -133,7 +133,7 @@ Betiği aşağıdaki gibi çalıştırın:
     ```
     C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
     ```
-    Örnek kullanım: 
+    Örnek kullanım:
     ```
     C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
     SHA256
@@ -215,7 +215,7 @@ Azure geçişi 'nin şirket içi VM 'Leri bulması için izinleri olması gereki
 
 Azure geçişi 'nin VM 'deki işletim sistemi bilgilerini yakalaması için, her bir sanal makinede Tümleştirme Hizmetleri etkinleştirilmelidir.
 
-Bulup değerlendirmek istediğiniz VM 'lerde, her VM 'de [Hyper-V tümleştirme hizmetlerini](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) etkinleştirin. 
+Bulup değerlendirmek istediğiniz VM 'lerde, her VM 'de [Hyper-V tümleştirme hizmetlerini](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) etkinleştirin.
 
 ## <a name="prepare-for-hyper-v-migration"></a>Hyper-V geçişine hazırlanma
 
@@ -226,12 +226,12 @@ Bulup değerlendirmek istediğiniz VM 'lerde, her VM 'de [Hyper-V tümleştirme 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide şunları yaptınız:
- 
-> [!div class="checklist"] 
+
+> [!div class="checklist"]
 > * Azure hesabı izinlerini ayarlayın.
 > * Değerlendirme ve geçiş için Hyper-V konakları ve VM 'Ler hazırlandı.
 
 Azure geçişi projesi oluşturmak ve Azure 'a geçiş için Hyper-V VM 'lerini değerlendirmek üzere bir sonraki öğreticiye devam edin
 
-> [!div class="nextstepaction"] 
-> [Hyper-V VM 'lerini değerlendirme](./tutorial-assess-hyper-v.md) 
+> [!div class="nextstepaction"]
+> [Hyper-V VM 'lerini değerlendirme](./tutorial-assess-hyper-v.md)

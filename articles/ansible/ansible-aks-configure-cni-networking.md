@@ -3,17 +3,13 @@ title: Öğretici-Azure Kubernetes Service 'te (AKS) Azure CNı ağını, anorma
 description: Azure Kubernetes Service (AKS) kümesinde Kubernetes kullanan ağını yapılandırmak için nasıl kullanılacağını öğrenin
 keywords: anyalabilen, Azure, DevOps, Bash, cloudshell, PlayBook, aks, Container, aks, Kubernetes
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 04da0e8fb06d0a32c8e8bdc39d7722fc1c3fcdba
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e3667ad7a561f56d5fddaacad705c53d1de9ac36
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242040"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156904"
 ---
 # <a name="tutorial-configure-azure-cni-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Öğretici: Azure Kubernetes Service 'te (AKS) Azure CNı ağını, anormal bir şekilde yapılandırma
 
@@ -33,9 +29,9 @@ AKS 'deki uygulamalarınızın ağı hakkında daha fazla bilgi için bkz. [AKS 
 > [!div class="checklist"]
 >
 > * AKS kümesi oluşturma
-> * Azure CNı ağını yapılandırma
+> * Azure CNI ağını yapılandırma
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -48,7 +44,7 @@ Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
 - Sanal ağ oluşturma
 - Sanal ağ içinde bir alt ağ oluşturma
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `vnet.yml` olarak kaydedin:
 
 ```yml
 - name: Create vnet
@@ -73,7 +69,7 @@ Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
 
 - Bir sanal ağ içinde AKS kümesi oluşturun.
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `aks.yml` olarak kaydedin:
 
 ```yml
 - name: List supported kubernetes version from Azure
@@ -109,9 +105,9 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 Örnek PlayBook ile çalışırken göz önünde bulundurmanız gereken bazı önemli notlar şunlardır:
 
 - Desteklenen sürümü bulmak için `azure_rm_aks_version` modülünü kullanın.
-- @No__t-0, önceki bölümde oluşturulan alt ağıdır.
-- PlayBook, `~/.ssh/id_rsa.pub` ' den `ssh_key` yükler. Bunu değiştirirseniz, "SSH-RSA" (tırnak işaretleri olmadan) ile başlayan tek satır biçimini kullanın.
-- @No__t-0 ve `client_secret` değerleri, varsayılan kimlik bilgisi dosyası olan `~/.azure/credentials` ' den yüklenir. Bu değerleri hizmet sorumlusu olarak ayarlayabilir veya bu değerleri ortam değişkenlerinden yükleyebilirsiniz:
+- `vnet_subnet_id`, önceki bölümde oluşturulan alt ağıdır.
+- PlayBook, `~/.ssh/id_rsa.pub``ssh_key` yükler. Bunu değiştirirseniz, "SSH-RSA" (tırnak işaretleri olmadan) ile başlayan tek satır biçimini kullanın.
+- `client_id` ve `client_secret` değerleri, varsayılan kimlik bilgisi dosyası olan `~/.azure/credentials`'dan yüklenir. Bu değerleri hizmet sorumlusu olarak ayarlayabilir veya bu değerleri ortam değişkenlerinden yükleyebilirsiniz:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -122,7 +118,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
 Bu bölümdeki örnek PlayBook kodu, bu öğretici genelinde gösterilen çeşitli özellikleri test etmek için kullanılır.
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `aks-azure-cni.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -152,9 +148,9 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
 Örnek PlayBook ile çalışırken göz önünde bulundurmanız gereken bazı önemli notlar şunlardır:
 
-- @No__t-0 değerini kaynak grubu adınızla değiştirin.
-- @No__t-0 değerini AKS adınızla değiştirin.
-- @No__t-0 değerini kaynak grubu konumuyla değiştirin.
+- `aksansibletest` değerini kaynak grubu adı olarak değiştirin.
+- `aksansibletest` değerini AKS adınızla değiştirin.
+- `eastus` değerini kaynak grubu konumuyla değiştirin.
 
 Anerişilebilir-PlayBook komutunu kullanarak PlayBook 'u çalıştırın:
 
@@ -246,15 +242,15 @@ PLAY RECAP
 localhost                  : ok=9    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
 
 Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
 
-- @No__t-0 bölümünde başvurulan bir kaynak grubunu silin.
+- `vars` bölümünde başvurulan bir kaynak grubunu silin.
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `cleanup.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -271,7 +267,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
 Örnek PlayBook ile çalışırken göz önünde bulundurmanız gereken bazı önemli notlar şunlardır:
 
-- @No__t-0 yer tutucusunu kaynak grubunuzun adıyla değiştirin.
+- `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
 - Belirtilen kaynak grubundaki tüm kaynaklar silinecek.
 
 Anerişilebilir-PlayBook komutunu kullanarak PlayBook 'u çalıştırın:

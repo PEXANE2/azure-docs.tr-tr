@@ -1,19 +1,14 @@
 ---
-title: Azure Backup için veri modeli
+title: Power BI veri modeli
 description: Bu makalede, Azure Backup raporlarının Power BI veri modeli ayrıntıları ele bir şekilde konuşuyor.
-ms.reviewer: adigan
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.author: dacurwin
-ms.openlocfilehash: f3db0e6a78eada52f2b5936f5194138d97ebcca6
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a2f06da16280070448d7b42dc5e1dcfc46354cfa
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074903"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172796"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Azure Backup raporları için veri modeli
 

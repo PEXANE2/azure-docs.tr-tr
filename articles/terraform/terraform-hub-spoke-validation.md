@@ -1,17 +1,14 @@
 ---
 title: Öğretici-Terrayform kullanarak Azure 'da bir hub ve bağlı ağ ağını doğrulama
 description: Hub ve bağlı bileşen ağ topolojisini birbirine bağlı tüm sanal ağlarla doğrulama öğreticisi.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: b0b761fcd79f7129befefa37ce11d9c70cf7cb96
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 9ba4780c59e5e9da4999573abbc08ecd2738a2cd
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969331"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159196"
 ---
 # <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Öğretici: Terrayform kullanarak Azure 'da bir hub ve bağlı ağ ağını doğrulama
 
@@ -100,7 +97,7 @@ Bu bölümde, sanal şirket içi ortamdan hub VNet 'e bağlantının nasıl test
 
 1. **VM yerel hesabını kullanarak metin oturum açma**seçeneğinin yanında, **SSH** komutunu panoya kopyalayın.
 
-1. Linux isteminde, sanal şirket içi ortama bağlanmak için `ssh` çalıştırın. `on-prem.tf` parametre dosyasında belirtilen parolayı kullanın.
+1. Bir Linux istemiyle çalıştırılabilen `ssh` simülasyonu yapılmış şirket içi ortama bağlanmak için. `on-prem.tf` parametre dosyasında belirtilen parolayı kullanın.
 
 1. Hub VNet 'teki sıçrama kutusu VM 'sine bağlantıyı sınamak için `ping` komutunu çalıştırın:
 

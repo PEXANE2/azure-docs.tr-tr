@@ -1,19 +1,15 @@
 ---
 title: Öğretici-Azure App Service kullanarak uygulamaları yapılandırma
 description: Java 8 ve Tomcat kapsayıcı çalışma zamanı ile Azure App Service bir uygulama oluşturmayı öğrenin
-keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, Azure App Service, Web uygulaması, Java
+keywords: ansible, azure, devops, bash, playbook, Azure App Service, Web Uygulaması, Java
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 5104db6bd7fa57600c7212e041263971ca4c91d4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 2891ff47b17900c4c1c8e1c21f22495b65108fd5
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242058"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156562"
 ---
 # <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Öğretici: uygulamaları Azure App Service kullanarak yapılandırma
 
@@ -29,7 +25,7 @@ ms.locfileid: "72242058"
 > * Azure Traffic Manager profili oluşturma
 > * Oluşturulan uygulamayı kullanarak Traffic Manager uç noktası tanımlama
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -41,7 +37,7 @@ Bu bölümdeki PlayBook kodu aşağıdaki kaynakları tanımlar:
 * App Service planının ve uygulamanın dağıtıldığı Azure Kaynak grubu
 * Linux üzerinde Java 8 ve Tomcat kapsayıcı çalışma zamanı ile App Service
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `firstwebapp.yml` olarak kaydedin:
 
 ```yml
 - hosts: localhost
@@ -75,7 +71,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
               java_container_version: 8.5
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook firstwebapp.yml
@@ -103,9 +99,9 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
 ## <a name="create-an-app-and-use-azure-traffic-manager"></a>Uygulama oluşturma ve Azure Traffic Manager kullanma
 
-[Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) , Web istemcilerinden gelen isteklerin Azure App Service uygulamalara nasıl dağıtıldığını denetlemenize olanak sağlar. App Service uç noktalar bir Azure Traffic Manager profiline eklendiğinde, Traffic Manager App Service uygulamalarınızın durumunu izler. Durumlar çalışıyor, durduruldu ve silindi içerir. Traffic Manager, trafiği hangi uç noktaların alacağını belirlemek için kullanılır.
+[Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) , Web istemcilerinden gelen isteklerin Azure App Service uygulamalara nasıl dağıtıldığını denetlemenize olanak sağlar. App Service uç noktaları bir Azure Traffic Manager profiline eklendiğinde, Traffic Manager, App Service uygulamalarınızın durumunu izler. Durumlar arasında çalışıyor, durduruldu ve silindi yer alır. Traffic Manager, trafiği hangi uç noktaların alacağını belirlemek için kullanılır.
 
-App Service, bir uygulama bir [App Service planında](/azure/app-service/overview-hosting-plans)çalışır. App Service planı, bir uygulamanın çalışması için bir işlem kaynakları kümesi tanımlar. App Service planınızı ve Web uygulamanızı farklı gruplarda yönetebilirsiniz.
+App Service'teki uygulamalar bir [App Service planında](/azure/app-service/overview-hosting-plans) çalışır. App Service planı, bir uygulamanın çalışması için bir işlem kaynakları kümesi tanımlar. App Service planınızı ve web uygulamanızı farklı gruplarda yönetebilirsiniz.
 
 Bu bölümdeki PlayBook kodu aşağıdaki kaynakları tanımlar:
 
@@ -116,7 +112,7 @@ Bu bölümdeki PlayBook kodu aşağıdaki kaynakları tanımlar:
 * Traffic Manager profili
 * Oluşturulan uygulamayı kullanarak uç noktası Traffic Manager
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `webapp.yml` olarak kaydedin:
 
 ```yml
 - hosts: localhost
@@ -199,7 +195,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
       target_resource_id: "{{ webapp.webapps[0].id }}"
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook webapp.yml

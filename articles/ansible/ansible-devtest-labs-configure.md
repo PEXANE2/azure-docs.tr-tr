@@ -1,19 +1,15 @@
 ---
 title: Öğretici-Azure DevTest Labs kullanarak laboratuvarları yapılandırma
 description: Azure DevTest Labs kullanarak bir laboratuvarı yapılandırma hakkında bilgi edinin
-ms.service: ansible
 keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, DevTest Labs
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d035c76a811df45af5ed8183b86e14a2ee6218b7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b6981ee94c4d82997c574db037befb9782465d08
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241668"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156267"
 ---
 # <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Öğretici: Azure DevTest Labs ' de laboratuvarları yapılandırma ve kullanma
 
@@ -37,13 +33,13 @@ ms.locfileid: "72241668"
 > * Laboratuvar görüntüsünü oluşturma
 > * Laboratuvarı silme
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-resource-group"></a>Kaynak grubu oluştur
+## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
 Örnek PlayBook kod parçacığı, bir Azure Kaynak grubu oluşturur. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
@@ -75,11 +71,11 @@ Laboratuvar ilkesi ayarlarını ayarlayabilirsiniz. Aşağıdaki değerler ayarl
 
 - `user_owned_lab_vm_count`, bir kullanıcının sahip olduğu VM 'lerin sayısıdır
 - `user_owned_lab_premium_vm_count`, bir kullanıcının sahip olduğu Premium VM 'lerin sayısıdır
-- `lab_vm_count`, maksimum laboratuvar VM sayısıdır
-- `lab_premium_vm_count`, en yüksek laboratuvar Premium VM sayısıdır
+- `lab_vm_count` en yüksek laboratuvar VM sayısıdır
+- `lab_premium_vm_count` en yüksek laboratuvar Premium VM sayısıdır
 - `lab_vm_size`, izin verilen laboratuvar VM 'lerinin boyutudur
-- `gallery_image`, izin verilen Galeri görüntüs görüntüsüdür
-- `user_owned_lab_vm_count_in_subnet`, bir alt ağdaki en fazla Kullanıcı VM 'lerinin sayısıdır
+- `gallery_image`, izin verilen Galeri görüntüs
+- `user_owned_lab_vm_count_in_subnet`, bir alt ağdaki en fazla Kullanıcı sanal makine sayısıdır
 - `lab_target_cost`, laboratuvarın hedef maliyetidir
 
 ```yml
@@ -202,7 +198,7 @@ Aşağıdaki görev tüm yapıtları listeler:
 
 ## <a name="get-azure-resource-manager-information-for-the-artifact-sources"></a>Yapıt kaynakları için Azure Resource Manager bilgileri alın
 
-@No__t-0 ' daki tüm Azure Resource Manager şablonlarını listelemek için, önceden tanımlanmış depo şablonlar:
+`public environment repository`tüm Azure Resource Manager şablonlarını listelemek için, önceden tanımlanmış depo şablonlar:
 
 ```yml
 - name: List the Azure Resource Manager template facts
@@ -278,8 +274,8 @@ Laboratuvarı silmek için aşağıdaki görevi kullanın:
 ## <a name="get-the-sample-playbook"></a>Örnek PlayBook 'u alın
 
 Örnek PlayBook 'un tamamını almanın iki yolu vardır:
-- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/devtestlab-create.yml) ve `devtestlab-create.yml` ' e kaydedin.
-- @No__t-0 adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/devtestlab-create.yml) ve `devtestlab-create.yml`kaydedin.
+- `devtestlab-create.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
 
 ```yml
 ---
@@ -449,20 +445,20 @@ Laboratuvarı silmek için aşağıdaki görevi kullanın:
 Bu bölümde, bu makalede gösterilen çeşitli özellikleri test etmek için PlayBook 'u çalıştırın.
 
 PlayBook 'u çalıştırmadan önce aşağıdaki değişiklikleri yapın:
-- @No__t-0 bölümünde `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
-- GitHub belirtecini `GITHUB_ACCESS_TOKEN` adlı bir ortam değişkeni olarak depolayın.
+- `vars` bölümünde, `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
+- GitHub belirtecini `GITHUB_ACCESS_TOKEN`adlı bir ortam değişkeni olarak depolayın.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook devtestlab-create.yml
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu @no__t olarak kaydet-0:
+Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
 
 ```yml
 - hosts: localhost
@@ -476,7 +472,7 @@ Aşağıdaki kodu @no__t olarak kaydet-0:
         state: absent
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml
@@ -485,4 +481,4 @@ ansible-playbook cleanup.yml
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure üzerinde anormal](/azure/ansible/)
+> [Azure üzerinde Ansible](/azure/ansible/)

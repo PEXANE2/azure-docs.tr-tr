@@ -1,21 +1,17 @@
 ---
-title: PowerShell ile birden fazla Azure VM 'yi yedekleme
+title: 'Öğretici: PowerShell ile birden çok Azure VM yedeklemesi'
 description: Bu öğretici, Azure PowerShell kullanarak birden fazla Azure VM 'yi bir kurtarma hizmetleri kasasına yedeklemeye ilişkin ayrıntılar sağlar.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: tutorial
 ms.date: 03/05/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: c290e44d8bfecfbf57be8f8e1c596a294f077229
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 154238eae78ce44b9fc91058e58d9a11e254c0f9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074703"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171777"
 ---
-# <a name="back-up-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme
+# <a name="back-up-azure-vms-with-powershell"></a>Azure VM’lerini PowerShell ile yedekleme
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

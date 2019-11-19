@@ -1,19 +1,15 @@
 ---
-title: Azure Backup-DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme
+title: DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme
 description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağdan veri göndermenizi sağlar. Bu makalede, DPM ve Azure Backup Sunucusu (MABS) için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.author: dacurwin
-ms.openlocfilehash: 0763cbd4345dca39f37b77a0f3d991a7d77e30c4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4c62fed98a37a821907a889e45d582c452961203
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074300"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173240"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı
 
@@ -108,7 +104,7 @@ Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilm
 
 En yakın Azure veri merkezine gönderilen SATA sürücüleri hazırlamak için *AzureOfflineBackupDiskPrep* yardımcı programı kullanılır. Bu yardımcı program, kurtarma hizmetleri aracısının yükleme dizininde aşağıdaki yolda bulunur:
 
-*\\Microsoft Azure Kurtarma Hizmetleri Aracısı\\yardımcı programları\\*
+    *\\Microsoft Azure Recovery Services Agent\\Utils\\*
 
 1. Dizinine gidin ve **AzureOfflineBackupDiskPrep** dizinini, HAZıRLANMAKTA olan SATA sürücülerin bağlı olduğu bir kopya bilgisayara kopyalayın. Aşağıdaki gibi, kopyalama bilgisayarına dikkat edin:
 

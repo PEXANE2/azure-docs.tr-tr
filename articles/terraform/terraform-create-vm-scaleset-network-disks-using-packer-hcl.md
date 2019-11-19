@@ -1,17 +1,14 @@
 ---
 title: Öğretici-Terrayform kullanarak Packer özel görüntüsünden Azure sanal makine ölçek kümesi oluşturma
 description: Terraform kullanarak Packer tarafından oluşturulan özel bir görüntüden (sanal ağ ve takılmış disklere sahip) Azure sanal makine ölçek kümesi yapılandırın ve sürüm oluşturun.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 7d2813a51e63d86b56712bb6d07efc2f65ec65a0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 9d149a28f82100715035f435de56ff134ca685f5
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077825"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159277"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>Öğretici: Teroyform kullanarak Packer özel görüntüsünden Azure sanal makine ölçek kümesi oluşturma
 
@@ -29,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Terrayform**: [terrayform 'U yükler ve Azure 'a erişimi yapılandırır](/azure/virtual-machines/linux/terraform-install-configure).
 - **SSH anahtar çifti**: [SSH anahtar çifti oluşturun](/azure/virtual-machines/linux/mac-create-ssh-keys).

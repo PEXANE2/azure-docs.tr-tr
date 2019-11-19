@@ -1,18 +1,14 @@
 ---
-title: Azure Backup ile Azure 'da bir SAP HANA veritabanını yedekleme | Microsoft Docs
+title: SAP HANA veritabanını Azure 'a yedekleme
 description: Bu öğreticide, Azure Backup hizmeti ile bir SAP HANA veritabanının Azure 'da nasıl yedekleneceği açıklanmaktadır.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: dacurwin
-ms.openlocfilehash: 8d99ff6f2d8a21a501631a3a062be6b05130c05b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 519e47c6b6793c638e64c4e4bcc4fafdb678c9fb
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931809"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172736"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA veritabanını Azure 'a yedekleme
 
@@ -25,7 +21,7 @@ ms.locfileid: "72931809"
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**Desteklenen coğrafyalar** | Avustralya Güney Doğu, Doğu Avustralya <br> Brezilya Güney <br> Kanada Orta, Kanada Doğu <br> Güney Doğu Asya, Doğu Asya <br> Doğu ABD, Doğu ABD 2, Orta Batı ABD, Batı ABD, Batı ABD 2, Orta Kuzey ABD, Orta ABD, Orta Güney ABD<br> Hindistan Orta, Hindistan Güney <br> Doğu Japonya, Batı Japonya<br> Kore Orta, Kore Güney <br> Kuzey Avrupa, Batı Avrupa <br> UK Güney, UK Batı
+**Desteklenen coğrafyalar** | Avustralya Güney Doğu, Doğu Avustralya <br> Güney Brezilya <br> Kanada Orta, Kanada Doğu <br> Güney Doğu Asya, Doğu Asya <br> Doğu ABD, Doğu ABD 2, Orta Batı ABD, Batı ABD, Batı ABD 2, Orta Kuzey ABD, Orta ABD, Orta Güney ABD<br> Hindistan Orta, Hindistan Güney <br> Doğu Japonya, Batı Japonya<br> Kore Orta, Kore Güney <br> Kuzey Avrupa, Batı Avrupa <br> UK Güney, UK Batı
 **Desteklenen VM işletim sistemleri** | SLES 12 SP2, SP3 veya SP4.
 **Desteklenen HANA sürümleri** | Hana 1. x üzerinde SDC, HANA 2. x < = SPS04 Rev 43
 
@@ -40,7 +36,7 @@ ms.locfileid: "72931809"
 - Veritabanı günlüklerini 15 dakikada bir yedekleyebilirsiniz. Günlük yedeklemeleri, veritabanı için başarılı bir tam yedekleme işlemi tamamlandıktan sonra yalnızca Flow 'a başlar.
 - Tam ve fark yedeklemeleri gerçekleştirebilirsiniz. Artımlı yedekleme şu anda desteklenmiyor.
 - Yedekleme ilkesini, SAP HANA yedeklemeleri için uyguladıktan sonra değiştiremezsiniz. Farklı ayarlarla yedeklemek istiyorsanız yeni bir ilke oluşturun veya farklı bir ilke atayın.
-  - Yeni bir ilke oluşturmak için kasada **ilkeler** > **yedekleme ilkeleri** >  **+** **Azure VM 'de** >  SAP HANA Ekle ' ye tıklayın ve ilke ayarlarını belirtin.
+  - Yeni bir ilke oluşturmak için kasada **ilkeler** > **yedekleme ilkeleri** ' ne tıklayın >  **+** **Azure VM 'de > SAP HANA**ekleyin ve ilke ayarlarını belirtin.
   - Farklı bir ilke atamak için, veritabanını çalıştıran VM 'nin özelliklerinde geçerli ilke adına tıklayın. Ardından **yedekleme ilkesi** sayfasında, yedekleme için kullanılacak farklı bir ilke seçebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -104,7 +100,7 @@ Genel önizlemeye aşağıdaki şekilde katılın:
 
 1. 2\. adımda **yedeklemeyi Yapılandır**' a tıklayın.
 2. **Yedeklenecek öğeleri seçin**' de, korumak istediğiniz tüm veritabanlarını seçin > **Tamam**' a tıklayın.
-3. **Yedekleme ilkesi** > **yedekleme ilkesi seçin**, aşağıdaki yönergelere uygun olarak veritabanları için yeni bir yedekleme ilkesi oluşturun.
+3. **Yedekleme ilkesi** > **yedekleme Ilkesi**' ni seçin ve aşağıdaki yönergelere uygun olarak veritabanları için yeni bir yedekleme ilkesi oluşturun.
 4. İlkeyi oluşturduktan sonra **yedekleme** menüsünde **yedeklemeyi etkinleştir**' e tıklayın.
 5. Yedekleme Yapılandırma ilerlemesini portalın **Bildirimler** alanında izleyin.
 
@@ -170,14 +166,14 @@ Azure Backup ile yedeklenen bir veritabanının yerel yedeklemesini (HANA Studio
 
 1. Veritabanının tamamlaması için herhangi bir tam veya günlük yedeklemesi bekleyin. SAP HANA Studio 'daki durumu denetleyin.
 2. Günlük yedeklemelerini devre dışı bırakın ve ilgili veritabanı için yedekleme kataloğunu dosya sistemine ayarlayın.
-3. Bunu yapmak için **SystemDB** > **yapılandırması**' na çift tıklayın  > **veritabanı seçin** > **filtresi (günlük)** .
-4. **Enable_auto_log_backup** **olarak ayarlayın**.
-5. **Log_backup_using_backint** **değerini false**olarak ayarlayın.
+3. Bunu yapmak için **SystemDB** > **yapılandırması** ' na çift tıklayın > veritabanı > **filtresi (günlük)** **seçeneğini belirleyin** .
+4. **Enable_auto_log_backup** **Hayır**olarak ayarlayın.
+5. **Log_backup_using_backint** **false**olarak ayarlayın.
 6. Veritabanının geçici bir tam yedeklemesini alın.
 7. Tam yedekleme ve Katalog yedeklemesinin bitmesini bekleyin.
 8. Önceki ayarları Azure için geri döndürür:
-    - **Enable_auto_log_backup** öğesini **Evet**olarak ayarlayın.
-    - **Log_backup_using_backint** **değerini true**olarak ayarlayın.
+    - **Enable_auto_log_backup** **Evet**olarak ayarlayın.
+    - **Log_backup_using_backint** **true**olarak ayarlayın.
 
 
 ## <a name="upgrading-protected-10-dbs-to-20"></a>Protected 1,0 DBs 'yi 2,0 olarak yükseltme

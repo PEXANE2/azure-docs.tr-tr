@@ -7,19 +7,16 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715501"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158659"
 ---
 # <a name="assess-servers-using-imported-data"></a>İçeri aktarılan verileri kullanarak sunucuları değerlendirme
 
-> [!NOTE]
-> Azure geçişi portalında bu özelliği henüz görmüyorsanız, ' ı kapatın. Sonraki hafta içinde görünür.
-
-Bu makalede, [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool)Ile, CSV kullanarak sunucu meta verilerini içeri aktararak şirket içi sunucuların nasıl değerlendirileneceği açıklanmaktadır. Bu değerlendirme yöntemiyle, değerlendirme oluşturmak için Azure geçişi gereci ayarlamanız gerekmez. Bu, şu durumlarda yararlı olur: 
+Bu makalede, [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool)Ile, CSV kullanarak sunucu meta verilerini içeri aktararak şirket içi sunucuların nasıl değerlendirileneceği açıklanmaktadır. Bu değerlendirme yöntemiyle, değerlendirme oluşturmak için Azure geçişi gereci ayarlamanız gerekmez. Bu, şu durumlarda yararlı olur:
 
 - Gereci dağıtmadan önce hızlı bir başlangıç değerlendirmesi oluşturmak istiyorsunuz.
 - Azure geçişi gerecini kuruluşunuza dağıtamazsınız.
@@ -29,7 +26,7 @@ Bu makalede, [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Şunlara dikkat edin:
+Aşağıdakilere dikkat edin:
 
 - Tek bir CSV dosyasında en fazla 20000 sunucu ekleyebilirsiniz.
 - CSV kullanarak bir Azure geçişi projesine en fazla 20000 sunucu ekleyebilirsiniz.
@@ -49,7 +46,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="set-azure-permissions-for-azure-migrate"></a>Azure geçişi için Azure izinleri ayarlama 
+## <a name="set-azure-permissions-for-azure-migrate"></a>Azure geçişi için Azure izinleri ayarlama
 
 Azure hesabınız, Azure geçişi projesi oluşturmak için izinlere ihtiyaç duyuyor.
 
@@ -116,11 +113,11 @@ Aşağıdaki tabloda, doldurulacak dosya alanları özetlenmektedir.
 
 **Alan adı** | **Girilmesi** | **Ayrıntılar**
 --- | --- | ---
-**Sunucu adı** | Evet | FQDN 'yi belirtmeyi öneririz. 
+**Sunucu adı** | Yes | FQDN 'yi belirtmeyi öneririz.
 **IP adresi** | Hayır | Sunucu adresi.
-**Çekirdek sayısı** | Evet | Sunucuya ayrılan işlemci çekirdeklerinin sayısı.
-**Bellek** | Evet | Sunucuya ayrılan toplam RAM (MB).
-**İşletim sistemi adı** | Evet | Sunucu işletim sistemi.
+**Çekirdek sayısı** | Yes | Sunucuya ayrılan işlemci çekirdeklerinin sayısı.
+**Bellek** | Yes | Sunucuya ayrılan toplam RAM (MB).
+**İşletim sistemi adı** | Yes | Sunucu işletim sistemi.
 **İşletim sistemi sürümü** | Hayır | Sunucu işletim sistemi sürümü.
 **Disk sayısı** | Hayır | Ayrı disk ayrıntıları sağlanmışsa gerekli değildir.
 **Disk 1 boyutu**  | Hayır | Maksimum disk boyutu (GB)<br/> Şablona [sütun ekleyerek](#add-multiple-disks) daha fazla disk için ayrıntılar ekleyebilirsiniz. En fazla sekiz disk ekleyebilirsiniz.
@@ -144,7 +141,7 @@ Aşağıdaki tabloda, doldurulacak dosya alanları özetlenmektedir.
 **Virtual Machine Manager KIMLIĞI** | Hayır | Bu, VMWare vCenter için **ınstanceuuıd** 'dir. Hyper-V için gerekli değildir.
 **MAC adresi**| Hayır | Sunucu MAC adresi.
 **BıOS KIMLIĞI** | Hayır | Sunucu BIOS KIMLIĞI.
-**Özel sunucu KIMLIĞI**| Hayır | Şirket içinde yerel benzersiz sunucu kimlikleri. <br/> İçeri aktarılan sunucuyu yerel KIMLIĞE göre izlemek için faydalıdır. 
+**Özel sunucu KIMLIĞI**| Hayır | Şirket içinde yerel benzersiz sunucu kimlikleri. <br/> İçeri aktarılan sunucuyu yerel KIMLIĞE göre izlemek için faydalıdır.
 **Uygulama 1 adı** | Hayır | Sunucuda çalışan iş yüklerinin adı.<br/> Şablona [sütun ekleyerek](#add-multiple-applications) daha fazla uygulama için ayrıntılar ekleyebilirsiniz. En fazla beş uygulama ekleyebilirsiniz.
 **Uygulama 1 türü** | Hayır | Sunucuda çalışan iş yükünün türü
 **Uygulama 1 sürümü** | Hayır | Sunucuda çalışan iş yükünün sürümü.
@@ -162,7 +159,7 @@ Değerlendirme, belirli işletim sistemi adlarını tanır. Belirttiğiniz herha
 
 ### <a name="add-multiple-disks"></a>Birden çok disk Ekle
 
-Şablon, ilk disk için varsayılan alanlar sağlar.  8 ' e kadar disk için benzer sütunlar ekleyebilirsiniz. 
+Şablon, ilk disk için varsayılan alanlar sağlar.  8 ' e kadar disk için benzer sütunlar ekleyebilirsiniz.
 
 Örneğin, ikinci bir disk için tüm alanları belirtmek için şu sütunları ekleyin:
 
@@ -192,10 +189,10 @@ CSV şablonuna bilgi ekledikten sonra, sunucuları Azure geçişi: Sunucu değer
 
 1. Azure geçişi > **bilgisayarları bul**' da, doldurulmuş şablona gidin.
 2. **İçeri Aktar**’a tıklayın.
-3. İçeri aktarma durumu gösterilir. 
+3. İçeri aktarma durumu gösterilir.
     - Durum durumunda uyarı görünürse, bunları çözebilir ya da bunları bilmeden devam edebilirsiniz.
     - Uyarılarla önerildiği şekilde sunucu bilgilerini iyileştirmek, değerlendirme doğruluğunu geliştirir.
-    - Görüntülenen uyarıları görüntülemek ve onarmak için **uyarı ayrıntılarını İndir ' e tıklayın. CSV**. Bu, uyarılar eklenmiş şekilde CSV 'yi indirir. Uyarıları gözden geçirebilir ve gerektiğinde sorunları giderebilirsiniz. 
+    - Görüntülenen uyarıları görüntülemek ve onarmak için **uyarı ayrıntılarını İndir ' e tıklayın. CSV**. Bu, uyarılar eklenmiş şekilde CSV 'yi indirir. Uyarıları gözden geçirebilir ve gerektiğinde sorunları giderebilirsiniz.
     Durum durumunda hata görünüyorsa (içeri aktarma durumu **başarısız**olur), içeri aktarmaya devam edebilmeniz için önce bunları çözmeniz gerekir. Bunu yapmak için, şimdi hata ayrıntıları eklenmiş CSV 'yi indirin. Gerektiğinde hataları gözden geçirin ve çözün. Ardından değiştirilen dosyayı yeniden karşıya yükleyin.
 4. İçeri aktarma durumu **tamamlandığında**, sunucu bilgileri içeri aktarılır.
 
@@ -205,7 +202,7 @@ CSV şablonuna bilgi ekledikten sonra, sunucuları Azure geçişi: Sunucu değer
 
 ## <a name="updating-server-information"></a>Sunucu bilgileri güncelleştiriliyor
 
-Sunucu için verileri aynı **sunucu adıyla**yeniden karşıya yükleyerek sunucu bilgilerini güncelleştirebilirsiniz. **Sunucu adı** alanını değiştiremezsiniz. 
+Sunucu için verileri aynı **sunucu adıyla**yeniden karşıya yükleyerek sunucu bilgilerini güncelleştirebilirsiniz. **Sunucu adı** alanını değiştiremezsiniz.
 
 Sunucuları silme işlemi şu anda desteklenmiyor.
 
@@ -221,7 +218,7 @@ Bulmadan sonra, sunucuların Azure portal göründüğünü doğrulayabilirsiniz
 
 Azure geçişi: Sunucu değerlendirmesi kullanarak oluşturabileceğiniz iki tür değerlendirme vardır.
 
-**Değerlendirme** | **Ayrıntılar** | **Veriler**
+**Değerlendirme** | **Ayrıntılar** | **Veri**
 --- | --- | ---
 **Performans tabanlı** | Belirtilen performans verileri değerlerini temel alan değerlendirmeler | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)** : Şirket ıçı disklerin IOPS ve aktarım hızına göre.
 **Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: belirtilen sunucu boyutu temel alınarak<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.
@@ -300,21 +297,21 @@ Bu görünüm Azure 'da çalışan VM 'lerin tahmini işlem ve depolama maliyeti
 
 Ad | Ad
 --- | ---
-**A-H** | 
+**A-H** |
 Apple Mac OS X 10 | Asıanux 3<br/>Asıanux 4<br/>Asıanux 5
-CentOS<br/>CentOS 4/5 | CoreOS Linux 
-Borçlu GNU/Linux 4<br/>Borçlu GNU/Linux 5<br/>Borçlu GNU/Linux 6<br/>Borçlu GNU/Linux 7<br/>De, GNU/Linux 8 | FreeBSD 
-**I-R** | 
+CentOS<br/>CentOS 4/5 | CoreOS Linux
+Borçlu GNU/Linux 4<br/>Borçlu GNU/Linux 5<br/>Borçlu GNU/Linux 6<br/>Borçlu GNU/Linux 7<br/>De, GNU/Linux 8 | FreeBSD
+**I-R** |
 IBM OS/2 | MS-DOS |
-Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11 
-Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | 
-**S-T** | 
+Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11
+Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora |
+**S-T** |
 SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7 | Serenlik sistemleri eComStation 1<br/>Çevre sistemleri, eComStation 2
 Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enterprise 10<br/> SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE
-**U-Z** | 
+**U-Z** |
 Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
 Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server eşiği<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
-    
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Azure Backup korunan iş yüklerini Izleme'
+title: Korunan Azure Backup iş yüklerini izleme
 description: Bu makalede, Azure portal kullanarak Azure Backup iş yükleri için izleme ve bildirim özellikleri hakkında bilgi edinin.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Azure Backup; Larınız
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: cd9e4e14771744b6275bb1dfe0a96bbef475a123
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea5102a95a9bef17f25219e00dec4654bf7f06d6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090952"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172873"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup iş yüklerini izleme
 
@@ -63,7 +57,7 @@ Bir hata üzerinde bir uyarı çıkarılmayan bazı özel durumlar vardır; bunl
 
 Yukarıdaki özel durumlar, bu işlemlerin sonucunun (öncelikli olarak kullanıcının tetiklendiği) Portal/PS/CLı istemcilerinde hemen gösterdiği olduğunu anlamak için tasarlanmıştır. Bu nedenle, Kullanıcı hemen haberdar edilir ve bir bildirime gerek kalmaz.
 
-### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Aşağıdaki Azure Backup çözümlerinin uyarıları burada gösterilmektedir:
+### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Aşağıdaki Azure Backup çözümlerinin uyarıları burada gösterilmektedir
 
 - Azure VM yedeklemeleri
 - Azure Dosya yedeklemeleri

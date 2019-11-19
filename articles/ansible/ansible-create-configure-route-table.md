@@ -3,17 +3,13 @@ title: Öğretici-Azure yol tablolarını anormal kullanarak yapılandırma
 description: Anormal kullanarak Azure yol tabloları oluşturmayı, yönetmeyi ve silmeyi öğrenin. Ayrıca yollar oluşturmayı ve silmeyi de öğrenin.
 keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, ağ, rota, yol tablosu
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 0ffc00606eac4cf57cdf19072986373f5602aafa
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d1e44a98405bc1009f6f3d56d90fc1fd655d77d5
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614353"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156497"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Öğretici: Azure yol tablolarını anormal kullanarak yapılandırma
 
@@ -27,7 +23,7 @@ Azure, Azure alt ağları, sanal ağlar ve şirket içi ağlar arasındaki trafi
 >
 > Yol tablosu oluşturma bir sanal ağ ve alt ağ oluşturma bir yönlendirme tablosunu alt ağ ile Ilişkilendirme rota tablosunun alt ağ ile Ilişkisini kaldırma rotalar oluşturma ve silme rota tablosunu sorgulama rota tablosunu silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]

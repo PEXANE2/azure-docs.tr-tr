@@ -1,18 +1,14 @@
 ---
-title: Microsoft Azure Kurtarma Hizmetleri Aracısı için destek matrisi
+title: MARS Aracısı için destek matrisi
 description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı çalıştıran makineleri yedeklerken Azure Backup desteği özetlenmektedir.
-author: dcurwin
-ms.service: backup
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.author: dacurwin
-manager: carmonm
-ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6e37951dd00b999f59a1b3c08a6852cbc1929630
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090542"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172045"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -54,7 +50,7 @@ Konum değişiklikleri | Yedekleme altyapısını (`net stop bengine`) durdurup 
 
 ## <a name="networking-and-access-support"></a>Ağ ve erişim desteği
 
-### <a name="url-access"></a>URL erişimi
+### <a name="url-and-ip-access"></a>URL ve IP erişimi
 
 MARS aracısının bu URL 'Lere erişmesi gerekir:
 
@@ -63,6 +59,11 @@ MARS aracısının bu URL 'Lere erişmesi gerekir:
 - *.WindowsAzure.com
 - *. MicrosoftOnline.com
 - *. Windows.net
+
+Bu IP adresleri:
+
+- 20.190.128.0/18
+- 40.126.0.0/18
 
 ### <a name="throttling-support"></a>Daraltma desteği
 
@@ -76,7 +77,12 @@ Ağ azaltma | Windows Server 2008 R2, Windows Server 2008 SP2 veya Windows 7 ça
 >[!NOTE]
 > MARS Aracısı Windows Server Core SKU 'Larını desteklemez.
 
-MARS aracısını, şirket içi makinelerde ve Azure VM 'lerde çalışan bazı işletim sistemlerinde doğrudan Azure 'a yedeklemek için kullanabilirsiniz. İşletim sistemleri 64 bit olmalıdır ve en son hizmet paketlerini ve güncelleştirmelerini çalıştırıyor olmalıdır. Aşağıdaki tabloda bu işletim sistemleri özetlenmektedir:
+MARS aracısını aşağıda belirtilen işletim sistemlerinde çalışan Azure 'a doğrudan yedeklemek için kullanabilirsiniz:
+
+1. Şirket içi Windows Server 'Lar
+2. Windows çalıştıran Azure VM 'Leri
+
+İşletim sistemleri 64 bit olmalıdır ve en son hizmet paketlerini ve güncelleştirmelerini çalıştırıyor olmalıdır. Aşağıdaki tabloda bu işletim sistemleri özetlenmektedir:
 
 **İşletim sistemi** | **Dosyalar/klasörler** | **Sistem durumu** | **Yazılım/modül gereksinimleri**
 --- | --- | --- | ---
@@ -128,7 +134,7 @@ OneDrive (eşitlenen dosyalar seyrek akışlardır)| Desteklenmiyor.
 Salt okuma birimleri| Desteklenmiyor | Birim kopyası gölge hizmeti (VSS) yalnızca birim yazılabilir ise geçerlidir.
 Çevrimdışı birimler| Desteklenmiyor |VSS yalnızca birim çevrimiçi olduğunda işe yarar.
 Ağ paylaşma| Desteklenmiyor |Birimin sunucuda yerel olması gerekir.
-BitLocker korumalı birimler| Desteklenmiyor |Yedekleme başlamadan önce birimin kilidi açılmış olmalıdır.
+BitLocker-kilitli birimler| Desteklenmiyor |Yedekleme başlamadan önce birimin kilidi açılmış olmalıdır.
 Dosya sistemi kimliği| Desteklenmiyor |Yalnızca NTFS desteklenir.
 Çıkarılabilir medya| Desteklenmiyor |Tüm yedekleme öğesi kaynakları *sabit* bir duruma sahip olmalıdır.
 Yinelenenleri kaldırılmış sürücüler | Destekleniyor | Azure Backup yinelenenleri kaldırılmış verileri normal verilere dönüştürür. Verileri en iyi duruma getirir, şifreler, depolar ve verileri kasaya gönderir.

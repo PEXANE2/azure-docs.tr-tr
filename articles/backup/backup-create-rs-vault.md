@@ -1,20 +1,15 @@
 ---
-title: 'Azure Backup: kurtarma hizmetleri kasaları oluşturma'
+title: Kurtarma Hizmetleri kasaları oluşturma
 description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurtarma hizmetleri kasaları oluşturmayı öğrenin.
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-keywords: Kurtarma Hizmetleri Kasası; Azure VM yedeklemesi; Azure VM geri yükleme;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: dacurwin
-ms.openlocfilehash: 30e2f8812b14f27b57ef22e30aea89f19fa56e58
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c678452cd65d0b03d923659e380c1dcef3540ce1
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074873"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172421"
 ---
 # <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 

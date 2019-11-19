@@ -1,17 +1,17 @@
 ---
-title: Azure SignalR hizmeti için birden çok örnek ile ölçeklendirme
+title: Birden çok örnek ile ölçeklendirme-Azure SignalR hizmeti
 description: Birçok ölçeklendirme senaryosunda, müşterinin genellikle birden çok örnek sağlaması ve büyük ölçekli bir dağıtım oluşturmak için bunları birlikte kullanmak üzere yapılandırması gerekir. Örneğin, parça birden çok örnek desteği gerektirir.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 1e31bc4133cced793d793c07d2e0ee3df29efddb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672329"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158164"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>SignalR hizmetini birden çok örnek ile ölçeklendirme
 En son SignalR hizmeti SDK 'Sı, SignalR hizmet örnekleri için birden çok uç noktayı destekler. Bu özelliği, eş zamanlı bağlantıları ölçeklendirmek veya bölgeler arası mesajlaşma için kullanmak üzere kullanabilirsiniz.

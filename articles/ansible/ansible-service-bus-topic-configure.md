@@ -3,17 +3,13 @@ title: Öğretici-Azure Service Bus konuları kullanarak yapılandırma
 description: Azure Service Bus konu başlığı oluşturmak için nasıl kullanılacağını öğrenin
 keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, Service Bus, konular, abonelikler
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 952779db582f9437f10608bf86b0b80560ded2c0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d07c7622043353a79d5a82994c2fab4f0835b453
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241227"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155803"
 ---
 # <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>Öğretici: Azure Service Bus konuları yapılandırma ve kullanma
 
@@ -25,14 +21,14 @@ ms.locfileid: "72241227"
 
 > [!div class="checklist"]
 >
-> * Konu Oluştur
+> * Konu başlığı oluşturma
 > * Abonelik oluşturma
 > * SAS ilkesi oluşturma
 > * Ad alanı bilgilerini al
 > * Konu ve abonelik bilgilerini alma
 > * SAS ilkesini iptal etme
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -40,11 +36,11 @@ ms.locfileid: "72241227"
 ## <a name="create-the-service-bus-topic"></a>Service Bus konusunu oluşturma
 
 Örnek PlayBook kodu aşağıdaki kaynakları oluşturur:
-- Azure Kaynak grubu
+- Azure kaynak grubu
 - Kaynak grubu içinde Service Bus ad alanı
 - Ad alanı ile Service Bus konu başlığı
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `servicebus_topic.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -73,7 +69,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
           var: topic
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook servicebus_topic.yml
@@ -104,9 +100,9 @@ ansible-playbook servicebus_topic.yml
           var: subs
 ```
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `servicebus_subscription.yml` olarak kaydedin:
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook servicebus_subscription.yml
@@ -118,7 +114,7 @@ ansible-playbook servicebus_subscription.yml
 
 Örnek PlayBook kodu, farklı ayrıcalıklara sahip bir Service Bus kuyruğu için iki SAS ilkesi oluşturur.
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `servicebus_topic_policy.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -143,7 +139,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
           var: policy
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook servicebus_topic_policy.yml
@@ -153,7 +149,7 @@ ansible-playbook servicebus_topic_policy.yml
 
 Örnek PlayBook kodu, ad alanı bilgilerini sorgular.
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `servicebus_namespace_info.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -174,9 +170,9 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 ```
 
 PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
-- @No__t-0 değeri, belirtilen ad alanı altında SAS ilkelerinin gösterilip gösterilmeyeceğini gösterir. Varsayılan olarak, ek ağ yükünün önüne geçmek için değer `False` ' dır.
+- `show_sas_policies` değeri, belirtilen ad alanı altında SAS ilkelerinin gösterilip gösterilmeyeceğini gösterir. Varsayılan olarak, ek ağ yükünün önüne geçmek için değeri `False`.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
@@ -188,7 +184,7 @@ ansible-playbook servicebus_namespace_info.yml
 - Service Bus konu bilgileri
 - Konunun abonelik ayrıntıları listesi
  
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `servicebus_list.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -221,9 +217,9 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 ```
 
 PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
-- @No__t-0 değeri, belirtilen sırada SAS ilkelerinin gösterilip gösterilmeyeceğini gösterir. Bu değer, ek ağ yükünü önlemek için varsayılan olarak `False` olarak ayarlanır.
+- `show_sas_policies` değeri, SAS ilkelerinin belirtilen sıra altında gösterilip gösterilmeyeceğini gösterir. Bu değer, varsayılan olarak, ek ağ yükünün önüne geçmek için `False` olarak ayarlanır.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook servicebus_list.yml
@@ -233,7 +229,7 @@ ansible-playbook servicebus_list.yml
 
 Örnek PlayBook kodu bir sıra SAS ilkesini siler.
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `servicebus_queue_policy_delete.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -252,17 +248,17 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
           state: absent
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook servicebus_topic_policy_delete.yml
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu @no__t olarak kaydet-0:
+Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
 
 ```yml
 ---
@@ -298,7 +294,7 @@ Aşağıdaki kodu @no__t olarak kaydet-0:
           force_delete_nonempty: yes
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml
@@ -306,4 +302,4 @@ ansible-playbook cleanup.yml
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"] 
-> [Azure üzerinde anormal](/azure/ansible/)
+> [Azure üzerinde Ansible](/azure/ansible/)

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 317efa17b294e859ef8a092451aca70b5b836fe7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927108"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167811"
 ---
 # <a name="authentication-basics"></a>Kimlik doğrulaması temel bilgileri
 
@@ -148,7 +148,7 @@ Bu öznitelik, ASP.NET Kullanıcı kimliğini içeren bir oturum tanımlama bilg
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Bir Web uygulamasının Azure AD 'de oturum açması ve bir belirteç alacağı
 
 Tarayıcı aracılığıyla Kullanıcı kimlik doğrulaması gerçekleşir. OpenID Protokolü standart HTTP protokol iletilerini kullanır.
-- Web uygulaması, Azure AD 'yi kullanmak için tarayıcıya bir HTTP 202 (Redirect) gönderir.
+- Web uygulaması, Azure AD 'yi kullanmak için tarayıcıya bir HTTP 302 (Redirect) gönderir.
 - Kullanıcının kimliği doğrulandığında Azure AD, tarayıcıyı kullanarak bir yeniden yönlendirme kullanarak belirteci Web uygulamasına gönderir.
 - Yeniden yönlendirme, Web uygulaması tarafından yeniden yönlendirme URI 'SI biçiminde sağlanır. Bu yeniden yönlendirme URI 'SI, Azure AD uygulama nesnesi ile kaydedilir. Uygulama çeşitli URL 'Lerde dağıtılabilmesi için birkaç yeniden yönlendirme URI 'si olabilir. Bu nedenle, Web uygulamasının kullanılacak yeniden yönlendirme URI 'sini belirtmesi de gerekecektir.
 - Azure AD, Web uygulaması tarafından gönderilen yeniden yönlendirme URI 'sinin, uygulamanın kayıtlı yeniden yönlendirme URI 'lerinden biri olduğunu doğrular.
@@ -159,7 +159,7 @@ Yukarıda açıklanan akış, küçük farklılıklar ile masaüstü ve mobil uy
 
 Masaüstü ve mobil uygulamalar, kimlik doğrulaması için katıştırılmış bir Web denetimi veya bir sistem tarayıcısı kullanabilir. Aşağıdaki diyagramda, bir masaüstü veya mobil uygulamanın, erişim belirteçleri almak ve Web API 'Lerini çağırmak için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) nasıl kullandığı gösterilmektedir.
 
-![Masaüstü uygulaması nasıl görünür](media/authentication-scenarios/web-app-how-it-appears-to-be.png)
+![Masaüstü uygulaması nasıl görünür](media/authentication-scenarios/desktop-app-how-it-appears-to-be.png)
 
 MSAL, belirteçleri almak için bir tarayıcı kullanır ve Web uygulamalarında olduğu gibi, kimlik doğrulamasını Azure AD 'ye devreder.
 

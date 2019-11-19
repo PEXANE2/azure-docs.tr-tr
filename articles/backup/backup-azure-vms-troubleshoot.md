@@ -1,19 +1,15 @@
 ---
-title: Azure sanal makineler ile yedekleme hatalarını giderme
+title: Azure VM 'Leri ile yedekleme hatalarını giderme
 description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme ile karşılaşılan hatalarla ilgili sorunları nasıl giderebileceğiniz hakkında bilgi edinin.
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: dacurwin
-ms.openlocfilehash: 0be9973aed1aaf5074c3b61d6249b95e8fd45a64
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: e5ee0e06d444db809ce3e168f8883048eaf45e27
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090900"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172456"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 

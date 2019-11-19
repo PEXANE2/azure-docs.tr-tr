@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 21a66b7389df64a776cdecb45c41de56d7d258e4
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 279d7f2ac6481f3aa3ebd8e5a18a52b9e52f6201
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606371"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169313"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure Event Grid içindeki olay işleyicileri
 
@@ -36,6 +36,7 @@ Olaylara sunucusuz yanıt vermek için Azure Işlevlerini kullanın.
 
 |Başlık  |Açıklama  |
 |---------|---------|
+| [Hızlı başlangıç: işlev ile olayları Işleme](custom-event-to-function.md) | İşlemek için bir işleve özel bir olay gönderir. |
 | [Azure Işlevleri için Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) | Işlevlerde Event Grid tetikleyiciyi kullanmaya genel bakış. |
 | [Öğretici: Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme](resize-images-on-storage-blob-upload-event.md) | Kullanıcılar, görüntüleri Web uygulamasına depolama hesabına yükler. Bir Depolama Blobu oluşturulduğunda, Event Grid işlev uygulamasına bir olay göndererek karşıya yüklenen görüntüyü yeniden boyutlandırır. |
 | [Öğretici: veri ambarına büyük veri akışı](event-grid-event-hubs-integration.md) | Event Hubs bir yakalama dosyası oluşturduğunda, Event Grid bir işlev uygulamasına bir olay gönderir. Uygulama yakalama dosyasını alır ve verileri bir veri ambarına geçirir. |
@@ -72,10 +73,15 @@ Olaylara yanıt vermek için iş süreçlerini otomatikleştirmek için Logic Ap
 | [Öğretici: Logic Apps kullanarak Azure IoT Hub olaylarıyla ilgili e-posta bildirimleri gönderme](publish-iot-hub-events-to-logic-apps.md) | Logic App bir cihaz, IoT Hub 'ınıza her eklendiğinde bir bildirim e-postası gönderir. |
 | [Öğretici: Azure Event Grid tümleştirme örneklerine Azure Service Bus](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid, Service Bus konudan işlev uygulaması ve mantıksal uygulama 'a ileti gönderir. |
 
-## <a name="service-bus-queue"></a>Service Bus Kuyruğu 
+## <a name="service-bus"></a>Service Bus
+
+### <a name="service-bus-queues"></a>Service Bus kuyrukları
+
 Event Grid olayları, ara belleğe almak veya komut & Denetim senaryolarında kurumsal uygulamalarda kullanmak üzere Service Bus sıralara doğrudan yönlendirebilirsiniz.
 
-### <a name="using-cli-to-add-a-service-bus-handler"></a>Service Bus işleyici eklemek için CLı kullanma
+Azure portal, bir olay aboneliği oluştururken, uç nokta türü olarak "Service Bus kuyruğu" öğesini seçin ve ardından bir Service Bus kuyruğu seçmek için "Seç ve uç nokta" a tıklayın.
+
+#### <a name="using-cli-to-add-a-service-bus-queue-handler"></a>Service Bus kuyruğu işleyicisi eklemek için CLı kullanma
 
 Azure CLı için aşağıdaki örnek abone olur ve bir olay Kılavuzu konusunu Service Bus kuyruğuna bağlar:
 
@@ -89,6 +95,28 @@ az eventgrid event-subscription create \
     --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1 \
     --endpoint-type servicebusqueue \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/queues/queue1
+```
+
+### <a name="service-bus-topics"></a>Hizmet Veri Yolu konuları
+
+Service Bus konular ile Azure sistem olaylarını işlemek veya komut & Denetim mesajlaşma senaryoları için Event Grid olayları doğrudan Service Bus konularına yönlendirebilirsiniz.
+
+Azure portal, bir olay aboneliği oluştururken, uç nokta türü olarak "Service Bus konu" öğesini seçin ve ardından bir Service Bus konu başlığı seçmek için "Seç ve uç nokta" seçeneğine tıklayın.
+
+#### <a name="using-cli-to-add-a-service-bus-topic-handler"></a>Service Bus konu işleyicisi eklemek için CLı kullanma
+
+Azure CLı için aşağıdaki örnek abone olur ve bir olay Kılavuzu konusunu Service Bus kuyruğuna bağlar:
+
+```azurecli-interactive
+# If you haven't already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
+az eventgrid event-subscription create \
+    --name <my-event-subscription> \
+    --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1 \
+    --endpoint-type servicebustopic \
+    --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/topics/topic1
 ```
 
 ## <a name="queue-storage"></a>Kuyruk Depolama
@@ -113,4 +141,4 @@ Olaylara yanıt veren özelleştirilebilir uç noktalar için Web kancalarını 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).
+* Event Grid ile hızla çalışmaya başlamak için bkz: [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md).

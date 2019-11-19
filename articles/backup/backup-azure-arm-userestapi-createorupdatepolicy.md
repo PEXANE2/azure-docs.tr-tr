@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: REST API kullanarak yedekleme ilkeleri oluşturma'
+title: REST API kullanarak yedekleme ilkeleri oluşturma
 description: Bu makalede, REST API kullanarak yedekleme ilkeleri (zamanlama ve bekletme) oluşturmayı ve yönetmeyi öğreneceksiniz.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Azure VM yedeklemesi; Azure VM geri yükleme;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 7d44f99a9f2a5bfb3d3a04fe5355f7b1dc13c404
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b6e665b5c71dc5f2e8ebc22e00e1a71237f48bfc
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747599"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173430"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API kullanarak Azure Kurtarma Hizmetleri yedekleme ilkeleri oluşturma
 
@@ -152,7 +146,7 @@ Aşağıdaki istek gövdesi, Azure VM yedeklemeleri için bir yedekleme ilkesi t
 > [!IMPORTANT]
 > Zamanlama ve bekletme için zaman biçimleri yalnızca TarihSaat ' i destekler. Yalnızca zaman biçimini desteklemez.
 
-## <a name="responses"></a>Yanıtlar
+## <a name="responses"></a>Responses
 
 Yedekleme ilkesi oluşturma/güncelleştirme [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 

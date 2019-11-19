@@ -1,7 +1,7 @@
 ---
 title: Yerel ve uzak çalıştırmalar için model yorumlenebilirliği
 titleSuffix: Azure Machine Learning
-description: Modelinizin Azure Machine Learning SDK 'Yı kullanarak neden tahmin sağladığını açıklayacağınızı öğrenin. Modelin Özellik önemini nasıl belirlediğini ve tahmin yaptığını anlamak için eğitim ve çıkarım sırasında kullanılabilir.
+description: Machine Learning modelinizin Özellik önemini nasıl belirlediğini ve Azure Machine Learning SDK kullanırken tahmine dayalı hale getirmek için nasıl açıklamalar alabileceğinizi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,29 +10,31 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: a2b71a10606b7cd20f06b2497515b758426833a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ffb9e0547c44ee47a43de00e51933ce7d0584759
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515310"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158716"
 ---
 # <a name="model-interpretability-for-local-and-remote-runs"></a>Yerel ve uzak çalıştırmalar için model yorumlenebilirliği
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, modelinizin, Azure Machine Learning Python SDK 'nın yorumyapılanmış paketiyle neden olduğunu nasıl anlatacağınızı öğreneceksiniz. Aşağıdaki görevleri öğrenirsiniz:
+Bu makalede, modelinizin tahmin yaptığını anlamak için Azure Machine Learning Python SDK 'sının yorumlenebilirliği paketini kullanmayı öğreneceksiniz. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
-* Hem yerel olarak hem de uzaktan işlem kaynaklarında eğitilen makine öğrenimi modellerini yorumlama
-* Azure çalışma geçmişinde yerel ve genel açıklamaları depolama
-* [Azure Machine Learning Studio](https://ml.azure.com) 'da yorumlenebilirlik görselleştirmelerini görüntüleyin
-* Modelinize bir Puanlama açıklama dağıtma
+* Hem yerel olarak hem de uzaktan işlem kaynaklarında eğitilen makine öğrenimi modellerini yorumlayın.
+* Azure çalışma geçmişinde yerel ve genel açıklamaları depolayın.
+* [Azure Machine Learning Studio](https://ml.azure.com)'daki yorumlenebilirlik görselleştirmelerini görüntüleyin.
+* Modelinize bir Puanlama açıklama dağıtın.
 
-Model yorumlenebilirliği hakkında daha fazla bilgi edinmek için bkz. [kavram makalesi](how-to-machine-learning-interpretability.md).
+Daha fazla bilgi için [Azure Machine Learning hizmetinde model yorumlenebilirliği](how-to-machine-learning-interpretability.md)konusuna bakın.
 
 ## <a name="local-interpretability"></a>Yerel yorumlenebilirlik
 
-Aşağıdaki örnek, Azure hizmetleriyle iletişim kurmadan yorumlama paketinin yerel olarak nasıl kullanılacağını gösterir. Yorumlenebilirlik paketini almak için `pip install azureml-interpret` çalıştırın.
+Aşağıdaki örnek, Azure hizmetleriyle iletişim kurmadan yorumlenebilirlik paketinin yerel olarak nasıl kullanılacağını gösterir.
+
+1. Gerekirse, yorumlenebilirlik paketini almak için `pip install azureml-interpret` kullanın.
 
 1. Yerel bir Jupyter not defterinde örnek modeli eğitme.
 
@@ -54,7 +56,13 @@ Aşağıdaki örnek, Azure hizmetleriyle iletişim kurmadan yorumlama paketinin 
     model = clf.fit(x_train, y_train)
     ```
 
-2. Açıklama yerel olarak çağırın: bir açıklama nesnesi başlatmak Için modelinize ve bazı eğitim verilerinizi açıklama oluşturucusuna geçirmeniz gerekir. Ayrıca, açıklamaları ve görselleştirmelerinizi daha bilgilendirici hale getirmek için kullanılacak özellik adlarını ve çıkış sınıfı adlarını (sınıflandırma yapıyorsanız) isteğe bağlı olarak geçirebilirsiniz. `TabularExplainer`, `MimicExplainer`ve `PFIExplainer` yerel olarak kullanarak bir açıklama nesnesinin örneğini oluşturma işlemi aşağıda verilmiştir. `TabularExplainer`, alttaki üç SHAP explainers birini (`TreeExplainer`, `DeepExplainer`veya `KernelExplainer`) çağırır ve kullanım örneği için en uygun olanı otomatik olarak seçiyoruz. Ancak, temel alınan üç explainers her birini doğrudan çağırabilirsiniz.
+1. Açıklama yerel olarak çağırın.
+   * Bir açıklama nesnesini başlatmak için modelinizi ve bazı eğitim verilerinizi açıklama oluşturucusuna geçirin.
+   * Açıklamaları ve görselleştirmelerinizi daha bilgilendirici hale getirmek için sınıflandırma yaparsanız özellik adlarını ve çıkış sınıfı adlarını geçirmeye seçebilirsiniz.
+
+   Aşağıdaki kod blokları, yerel olarak `TabularExplainer`, `MimicExplainer`ve `PFIExplainer` ile bir açıklama nesnesinin örneğini oluşturmayı gösterir.
+   * `TabularExplainer` alttaki üç SHAP explainers birini (`TreeExplainer`, `DeepExplainer`veya `KernelExplainer`) çağırır.
+   * `TabularExplainer`, kullanım durumu için en uygun olanı otomatik olarak seçer, ancak her üç temel explainers doğrudan çağırabilirsiniz.
 
     ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -66,7 +74,7 @@ Aşağıdaki örnek, Azure hizmetleriyle iletişim kurmadan yorumlama paketinin 
                                  classes=classes)
     ```
 
-    or
+    veya
 
     ```python
 
@@ -80,7 +88,7 @@ Aşağıdaki örnek, Azure hizmetleriyle iletişim kurmadan yorumlama paketinin 
     from interpret.ext.glassbox import DecisionTreeExplainableModel
 
     # "features" and "classes" fields are optional
-    # augment_data is optional and if true, oversamples the initialization examples to improve surrogate model accuracy to fit original model.  Useful for high-dimensional data where the number of rows is less than the number of columns. 
+    # augment_data is optional and if true, oversamples the initialization examples to improve surrogate model accuracy to fit original model.  Useful for high-dimensional data where the number of rows is less than the number of columns.
     # max_num_of_augmentations is optional and defines max number of times we can increase the input data size.
     # LGBMExplainableModel can be replaced with LinearExplainableModel, SGDExplainableModel, or DecisionTreeExplainableModel
     explainer = MimicExplainer(model, 
@@ -91,21 +99,22 @@ Aşağıdaki örnek, Azure hizmetleriyle iletişim kurmadan yorumlama paketinin 
                                features=breast_cancer_data.feature_names, 
                                classes=classes)
     ```
-   or
+
+    veya
 
     ```python
-    from interpret.ext.blackbox import PFIExplainer 
-    
+    from interpret.ext.blackbox import PFIExplainer
+
     # "features" and "classes" fields are optional
-    explainer = PFIExplainer(model, 
+    explainer = PFIExplainer(model,
                              features=breast_cancer_data.feature_names, 
                              classes=classes)
     ```
 
-### <a name="overall-global-feature-importance-values"></a>Genel (genel) özellik önem değerleri
+### <a name="overall-global-feature-importance-values"></a>Genel, genel özellik önem değerleri
 
-Genel özellik önem değerlerini alın.
-    
+Genel özellik önem değerlerini almanıza yardımcı olması için aşağıdaki örneğe bakın.
+
 ```python
 
 # you can use the training data or the test data here
@@ -123,12 +132,14 @@ dict(zip(sorted_global_importance_names, sorted_global_importance_values))
 global_explanation.get_feature_importance_dict()
 ```
 
-### <a name="instance-level-local-feature-importance-values"></a>Örnek düzeyi (yerel) özelliği önem değerleri
+### <a name="instance-level-local-feature-importance-values"></a>Örnek düzeyi, yerel özellik önem değerleri
 
-Yerel Özellik önem değerlerini al: tek bir örneği veya örnek grubunu açıklamak için aşağıdaki işlev çağrılarını kullanın. PFIExplainer yerel açıklamaları desteklemediğini lütfen unutmayın.
+Tek bir örneğin veya örnek grubunun açıklamalarını çağırarak yerel özellik önem değerlerini alın.
+> [!NOTE]
+> `PFIExplainer` yerel açıklamaları desteklemez.
 
 ```python
-# explain the first data point in the test set
+# get explanation for the first data point in the test set
 local_explanation = explainer.explain_local(x_test[0:5])
 
 # sorted feature importance values and feature names
@@ -138,9 +149,14 @@ sorted_local_importance_values = local_explanation.get_ranked_local_values()
 
 ## <a name="interpretability-for-remote-runs"></a>Uzaktan çalıştırmalar için yorumlenebilirlik
 
-Bu örnek, uzak çalıştırmalar için model yorumlenebilirliğini etkinleştirmek üzere `ExplanationClient` sınıfının nasıl kullanılacağını gösterir. Kavram önceki bölüme benzer, ancak bir uzak çalıştırmada `ExplanationClient`, yorumlenebilirlik bağlamını karşıya yüklerken kullanır ve ardından bağlamı daha sonra yerel bir ortamda indirebilirsiniz. Gerekli paketi almak için `pip install azureml-contrib-interpret` kullanın.
+Aşağıdaki örnek, uzak çalıştırmalar için model yorumlenebilirliğini etkinleştirmek üzere `ExplanationClient` sınıfını nasıl kullanabileceğinizi gösterir. Bu, yerel işlem için kavramsal olarak benzerdir, ancak şunları yapabilirsiniz:
 
-1. Yerel bir Jupyter not defterinde eğitim betiği oluşturun (örneğin, train_explain. Kopyala).
+* Yorumlenebilirlik bağlamını karşıya yüklemek için uzak çalıştırmada `ExplanationClient` kullanın.
+* Bağlamı daha sonra yerel bir ortamda indirin.
+
+1. Gerekirse, gerekli paketi almak için `pip install azureml-contrib-interpret` kullanın.
+
+1. Bir eğitim betiği yerel bir Jupyter not defteri oluşturun. Örneğin, `train_explain.py`.
 
     ```python
     from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
@@ -171,7 +187,7 @@ Bu örnek, uzak çalıştırmalar için model yorumlenebilirliğini etkinleştir
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. İşlem hedefiniz olarak bir Azure Machine Learning işlem ayarlamayı ve eğitim çalıştırmanızı göndermeyi öğrenmek için [model eğitimi için işlem hedeflerini ayarlama](how-to-set-up-training-targets.md#amlcompute) yönergelerini izleyin. [Örnek not defterlerini](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)da görebilirsiniz.
+1. İşlem hedefi olarak bir Azure Machine Learning Işlem kurun ve eğitim çalıştırmanıza iletin. Yönergeler için bkz. [model eğitimi için işlem hedeflerini ayarlama](how-to-set-up-training-targets.md#amlcompute) . [Örnek Not defterlerinin](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) yararlı olduğunu da görebilirsiniz.
 
 1. Yerel Jupyter Not defterinize açıklamayı indirin.
 
@@ -193,12 +209,11 @@ Bu örnek, uzak çalıştırmalar için model yorumlenebilirliğini etkinleştir
 
 ## <a name="raw-feature-transformations"></a>Ham Özellik dönüştürmeleri
 
-İsteğe bağlı olarak, dönüşümden önceki ham Özellikler (mühendislik uygulanmış özelliklerden değil) açısından açıklamaları almak için özellik dönüştürme işlem hattınızı açıklama (train_explain. Kopyala) geçirebilirsiniz. Bunu atlarsanız açıklama, uygulanan özellikler açısından açıklamaları sağlar.
+Mühendislik uygulanmış özellikler yerine ham, dönüştürülmemiş özellikler açısından açıklamaları almayı tercih edebilirsiniz. Bu seçenek için, özellik dönüştürme işlem hattınızı `train_explain.py`içindeki açıklama geçirin. Aksi takdirde açıklama, mühendislik uygulanmış özellikler açısından açıklamaları sağlar.
 
-Desteklenen dönüşümlerin biçimi, [sköğren-Pandas](https://github.com/scikit-learn-contrib/sklearn-pandas)bölümünde açıklananla aynıdır. Genel olarak, Tüm dönüştürmeler tek bir sütunda çalıştıkları sürece desteklenir ve bu nedenle açıkça bir tane olmak üzere çok daha vardır. 
+Desteklenen dönüşümlerin biçimi, [sköğren-Pandas](https://github.com/scikit-learn-contrib/sklearn-pandas)bölümünde açıklananla aynıdır. Genel olarak, Tüm dönüştürmeler tek bir sütunda çalıştıkları sürece desteklenir, böylece bir çok-çok olacak şekilde net bir şekilde çalışır.
 
-Ham özellikleri bir `sklearn.compose.ColumnTransformer` veya bir veya bir veya bir veya bir veya bir veya bir bir bir transformatör tanımlama grubu Aşağıdaki kod `sklearn.compose.ColumnTransformer`kullanır. 
-
+`sklearn.compose.ColumnTransformer` veya bir birlikte bulunan transformatör tanımlama grupları listesi kullanarak ham özellikler için bir açıklama alın. Aşağıdaki örnek `sklearn.compose.ColumnTransformer`kullanır.
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -232,7 +247,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
                                      transformations=preprocessor)
 ```
 
-Örneği, birlikte bulunan transformatör tanımlama grupları listesiyle çalıştırmak istiyorsanız aşağıdaki kodu kullanın.
+Örneği, birlikte bulunan transformatör tanımlama grupları listesiyle çalıştırmak istiyorsanız aşağıdaki kodu kullanın:
 
 ```python
 from sklearn.pipeline import Pipeline
@@ -276,22 +291,22 @@ Aşağıdaki çizimler, eğitilen modelin, tahmine dayalı ve açıklamalarıyla
 
 |ZF|Açıklama|
 |----|-----------|
-|Veri araştırması| Tahmin değerleriyle birlikte veri kümesine genel bakış.|
-|Küresel önem derecesi|Genel olarak üst K (yapılandırılabilir K) önemli özellikleri gösterir. Bu grafik, temel alınan modelin genel davranışını anlamak için kullanışlıdır.|
-|Açıklama araştırması|Modelin tahmin değerlerinde (veya tahmin değerleri açısından) bir değişiklik yapmaktan bir özelliğin nasıl sorumlu olduğunu gösterir. Ayrıca, tahmine dayalı olarak iki özelliğin nasıl etkileşime gireceğini gösterir.|
-|Özet önem derecesi| Her bir özelliğin tahmin değerinde olduğu etkinin dağılımını göstermek için tüm veri noktalarında imzalı yerel özellik önem değerlerini kullanır.|
+|Veri araştırması| Tahmin değerleriyle birlikte veri kümesine genel bir bakış görüntüler.|
+|Küresel önem derecesi|Üst K (yapılandırılabilir K) önemli özellikleri küresel olarak gösterir. Temel modelin genel davranışının anlaşılmasına yardımcı olur.|
+|Açıklama araştırması|Bir özelliğin modelin tahmin değerlerinde bir değişikliği nasıl etkilediğini veya tahmin değerlerinin olasılığını gösterir. Özellik etkileşiminin etkisini gösterir.|
+|Özet önem derecesi|Her bir özelliğin tahmin değerindeki etkisinin dağıtımını göstermek için tüm veri noktalarında yerel, özellik önem değerlerini kullanır.|
 
 [![görselleştirme panosu genel](./media/machine-learning-interpretability-explainability/global-charts.png)](./media/machine-learning-interpretability-explainability/global-charts.png#lightbox)
 
 ### <a name="local-visualizations"></a>Yerel görselleştirmeler
 
-Verilen veri noktası için yerel özellik önem grafiğini yüklemek üzere yukarıdaki çizim sırasında herhangi bir zamanda herhangi bir veri noktasına tıklayın.
+Her veri noktası için yerel, özellik önem düzeyini, çizmede tek bir veri noktasını seçerek yükleyebilirsiniz.
 
 |ZF|Açıklama|
 |----|-----------|
-|Yerel önem derecesi|Genel olarak üst K (yapılandırılabilir K) önemli özellikleri gösterir. Bu grafik, belirli bir veri noktasındaki temeldeki modelin yerel davranışını anlamak için kullanışlıdır.|
-|Perturbation araştırması|Seçili veri noktasının özellik değerlerini değiştirmenize ve bu değişikliklerin tahmin değerini nasıl etkileyeceğini gözlemlemeye olanak tanır.|
-|Bireysel koşullu beklenti (buz)| Bir özellik değiştiğinde veri noktasının tahmin değişikliğini görmek için bir özellik değerini minimum değerden maksimum değere değiştirmenize izin verir.|
+|Yerel önem derecesi|Genel olarak üst K (yapılandırılabilir K) önemli özellikleri gösterir. Belirli bir veri noktasındaki temeldeki modelin yerel davranışını göstermeye yardımcı olur.|
+|Perturbation araştırması|Seçili veri noktasının özellik değerlerinde değişikliklere izin verir ve sonuç olarak tahmini değişiklikleri gözlemleyin.|
+|Bireysel koşullu beklenti (buz)| Özellik değeri değişikliklerinin en küçük değerden en büyük değere değiştirilmesine izin verir. Bir özellik değiştiğinde veri noktasının öngörme şeklini göstermeye yardımcı olur.|
 
 [![görselleştirme Panosu yerel özellik önemi](./media/machine-learning-interpretability-explainability/local-charts.png)](./media/machine-learning-interpretability-explainability/local-charts.png#lightbox)
 
@@ -301,7 +316,8 @@ Verilen veri noktası için yerel özellik önem grafiğini yüklemek üzere yuk
 
 [![görselleştirme Pano buz çizimleri](./media/machine-learning-interpretability-explainability/ice-plot.png)](./media/machine-learning-interpretability-explainability/ice-plot.png#lightbox)
 
-Bir görselleştirme panosunun, Jupyıter çekirdeği başlamadan önce etkinleştirilmiş pencere öğesi uzantılarına sahip olmanız gerekir.
+> [!NOTE]
+> Jupyıter çekirdeği başlamadan önce görselleştirme panosu için pencere öğesi uzantılarını etkinleştirdiğinizden emin olun.
 
 * Jupyter notebooks
 
@@ -310,16 +326,14 @@ Bir görselleştirme panosunun, Jupyıter çekirdeği başlamadan önce etkinle�
     jupyter nbextension enable --py --sys-prefix azureml.contrib.interpret.visualize
     ```
 
-
-
-* Jupyıter Labs
+* Jupyıterlab
 
     ```shell
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
     jupyter labextension install microsoft-mli-widget
     ```
 
-Görselleştirme panosunu yüklemek için aşağıdaki kodu kullanın.
+Görselleştirme panosunu yüklemek için aşağıdaki kodu kullanın:
 
 ```python
 from azureml.contrib.interpret.visualize import ExplanationDashboard
@@ -329,31 +343,33 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da görselleştirme
 
-[Uzaktan yorumlanbilirlik](how-to-machine-learning-interpretability-aml.md#interpretability-for-remote-runs) bölümündeki adımları tamamlayarak, [Azure Machine Learning Studio](https://ml.azure.com)'daki görselleştirme panosunu kontrol edebilirsiniz. Azure Machine Learning Studio 'da gösterilen Pano, yukarıda açıklanan görselleştirme panosunun daha basit bir sürümüdür ve yalnızca aşağıdaki iki sekmeyi destekler.
+[Uzaktan YORUMSİZ](#interpretability-for-remote-runs) adımları tamamlarınız için [Azure Machine Learning Studio](https://ml.azure.com)'da görselleştirme panosunu görüntüleyebilirsiniz. Bu Pano, yukarıda açıklanan görselleştirme panosunun daha basit bir sürümüdür. Yalnızca iki sekmeyi destekler:
 
 |ZF|Açıklama|
 |----|-----------|
-|Küresel önem derecesi|Genel olarak üst K (yapılandırılabilir K) önemli özellikleri gösterir. Bu grafik, temel alınan modelin genel davranışını anlamak için kullanışlıdır.|
-|Özet önem derecesi| Her bir özelliğin tahmin değerinde olduğu etkinin dağılımını göstermek için tüm veri noktalarında imzalı yerel özellik önem değerlerini kullanır.|
+|Küresel önem derecesi|Üst K (yapılandırılabilir K) önemli özellikleri küresel olarak gösterir. Temel modelin genel davranışının anlaşılmasına yardımcı olur.|
+|Özet önem derecesi|Her bir özelliğin tahmin değerindeki etkisinin dağıtımını göstermek için tüm veri noktalarında yerel, özellik önem değerlerini kullanır.|
 
-Hem genel hem de yerel açıklamalar kullanılabiliyorsa, her iki sekme de verilerle doldurulur. Yalnızca genel açıklama kullanılabiliyorsa ikinci sekme devre dışı bırakılır.
+Hem genel hem de yerel açıklamalar varsa, veriler her iki sekmeden de doldurulur. Yalnızca genel bir açıklama varsa, Özet önem düzeyi sekmesi devre dışıdır.
 
-Azure Machine Learning Studio 'daki görselleştirme panosuna erişmek için aşağıdaki yollardan birini izleyebilirsiniz:
+Azure Machine Learning Studio 'daki görselleştirme panosuna erişmek için bu yollardan birini izleyin:
 
-1. Denemeleri sekmesi (Önizleme): "denemeleri" sekmesine tıklayarak Azure Machine Learning hizmetinde çalıştırdığınız denemeleri listesini görürsünüz. Bu listeden, seçilen deneme adı altındaki tüm çalıştırmaların bulunduğu bir sayfaya yeniden yönlendirilmek üzere belirli bir deneme seçebilirsiniz. Her bir çalıştırmaya ve "açıklamalar" sekmesine tıklayarak açıklama görselleştirme panosunu görürsünüz.
+* **Denemeleri** bölmesi (Önizleme)
+  1. Azure Machine Learning hizmeti 'nde çalıştırdığınız denemeleri listesini görmek için sol bölmedeki **denemeleri** öğesini seçin.
+  1. Bu deneyteki tüm çalıştırmaları görüntülemek için belirli bir deneme seçin.
+  1. Bir çalıştırma seçin ve ardından **açıklamalar** sekmesini açıklama görselleştirme panosu ' na tıklayın.
 
+   [![görselleştirme Panosu yerel özellik önemi](./media/machine-learning-interpretability-explainability/amlstudio-experiments.png)](./media/machine-learning-interpretability-explainability/amlstudio-experiments.png#lightbox)
 
-[![görselleştirme Panosu yerel özellik önemi](./media/machine-learning-interpretability-explainability/amlstudio-experiments.png)](./media/machine-learning-interpretability-explainability/amlstudio-experiments.png#lightbox)
-
-
-2. Modeller sekmesi: özgün modelinizi [Azure Machine Learning modelleri dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)bölümündeki adımları kullanarak kaydettirdiğiniz durumlarda modelinize "modeller" sekmesi listesinde görünür. Her modele ve "açıklamalar" sekmesine tıklayarak açıklama görselleştirme panosunu görürsünüz.
+* **Modeller** bölmesi
+  1. [Azure Machine Learning ile modelleri dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)bölümündeki adımları izleyerek orijinal modelinizi kaydettiniz, görüntülemek için sol bölmedeki **modeller** ' ı seçebilirsiniz.
+  1. Açıklama görselleştirme panosunu görüntülemek için bir model ve ardından **açıklamalar** sekmesini seçin.
 
 ## <a name="interpretability-at-inference-time"></a>Çıkarımı zamanında yorumlenebilirlik
 
-Açıklama özgün modelle birlikte dağıtılabilir ve yerel açıklama bilgilerini sağlamak için çıkarım zamanında kullanılabilir. Ayrıca, çıkarım sırasında yorumlamaya yönelik performansı artırmak için daha hafif Puanlama explainers sunuyoruz. Daha hafif bir Puanlama açıklama dağıtma işlemi, model dağıtmaya benzer ve aşağıdaki adımları içerir:
+Açıklama 'yi özgün modelle birlikte dağıtabilir ve yerel açıklama bilgilerini sağlamak için bunu çıkarımı zaman içinde kullanabilirsiniz. Ayrıca, çıkarım performansını artırmak için daha hafif Puanlama explainers sunuyoruz. Daha hafif bir Puanlama açıklama dağıtma işlemi, model dağıtmaya benzer ve aşağıdaki adımları içerir:
 
-
-1. Açıklama nesnesi oluşturun (örneğin, tablo Rexplainer kullanarak):
+1. Bir açıklama nesnesi oluşturun. Örneğin, `TabularExplainer`kullanabilirsiniz:
 
    ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -366,7 +382,7 @@ Açıklama özgün modelle birlikte dağıtılabilir ve yerel açıklama bilgile
                                 transformations=transformations)
    ```
 
-1. Açıklama nesnesini kullanarak bir Puanlama açıklama oluşturma:
+1. Açıklama nesnesiyle bir Puanlama açıklama oluşturun.
 
    ```python
    from azureml.contrib.interpret.scoring.scoring_explainer import KernelScoringExplainer, save
@@ -392,7 +408,7 @@ Açıklama özgün modelle birlikte dağıtılabilir ve yerel açıklama bilgile
    print(scoring_explainer_model.name, scoring_explainer_model.id, scoring_explainer_model.version, sep = '\t')
    ```
 
-1. Seçim Buluttan Puanlama açıklama alın ve açıklamaları test edin
+1. İsteğe bağlı bir adım olarak, Puanlama açıklama buluttan alabilir ve açıklamaları test edebilirsiniz.
 
    ```python
    from azureml.contrib.interpret.scoring.scoring_explainer import load
@@ -409,26 +425,28 @@ Açıklama özgün modelle birlikte dağıtılabilir ve yerel açıklama bilgile
    print(preds)
    ```
 
-1. Görüntüyü bir işlem hedefine dağıtın:
+1. Aşağıdaki adımları izleyerek görüntüyü bir işlem hedefine dağıtın:
 
-   1. Puanlama dosyası oluşturma (Bu adımdan önce, ilk tahmin modelinizi kaydetmek için [Azure Machine Learning modelleri dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) ' daki adımları izleyin)
+   1. Gerekirse, [modelleri Azure Machine Learning Ile dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)' daki adımları izleyerek orijinal tahmin modelinizi kaydedin.
 
-        ```python
-        %%writefile score.py
-        import json
-        import numpy as np
-        import pandas as pd
-        import os
-        import pickle
-        from sklearn.externals import joblib
-        from sklearn.linear_model import LogisticRegression
-        from azureml.core.model import Model
+   1. Puanlama dosyası oluşturma.
 
-        def init():
-
+         ```python
+         %%writefile score.py
+         import json
+         import numpy as np
+         import pandas as pd
+         import os
+         import pickle
+         from sklearn.externals import joblib
+         from sklearn.linear_model import LogisticRegression
+         from azureml.core.model import Model
+          
+         def init():
+         
             global original_model
             global scoring_model
-
+             
             # retrieve the path to the model file using the model name
             # assume original model is named original_prediction_model
             original_model_path = Model.get_model_path('original_prediction_model')
@@ -437,7 +455,7 @@ Açıklama özgün modelle birlikte dağıtılabilir ve yerel açıklama bilgile
             original_model = joblib.load(original_model_path)
             scoring_explainer = joblib.load(scoring_explainer_path)
 
-        def run(raw_data):
+         def run(raw_data):
             # get predictions and explanations for each data point
             data = pd.read_json(raw_data)
             # make prediction
@@ -446,73 +464,76 @@ Açıklama özgün modelle birlikte dağıtılabilir ve yerel açıklama bilgile
             local_importance_values = scoring_explainer.explain(data)
             # you can return any data type as long as it is JSON-serializable
             return {'predictions': predictions.tolist(), 'local_importance_values': local_importance_values}
-        ```
+         ```
+   1. Dağıtım Yapılandırması tanımlayın.
 
-   1. Dağıtım yapılandırmasını tanımlayın (Bu yapılandırma, modelinizin gereksinimlerine bağlıdır. Aşağıdaki örnek, bir CPU çekirdeği ve 1 GB bellek kullanan bir yapılandırmayı tanımlar.
+         Bu yapılandırma, modelinizin gereksinimlerine bağlıdır. Aşağıdaki örnekte, bir CPU çekirdeği ve bir GB bellek kullanan bir yapılandırma tanımlanmaktadır.
 
-        ```python
-        from azureml.core.webservice import AciWebservice
+         ```python
+         from azureml.core.webservice import AciWebservice
 
-        aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
-                                                       memory_gb=1,
-                                                       tags={"data": "NAME_OF_THE_DATASET",
-                                                             "method" : "local_explanation"},
-                                                       description='Get local explanations for NAME_OF_THE_PROBLEM')
-        ```
+          aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
+                                                    memory_gb=1,
+                                                    tags={"data": "NAME_OF_THE_DATASET",
+                                                          "method" : "local_explanation"},
+                                                    description='Get local explanations for NAME_OF_THE_PROBLEM')
+         ```
 
-   1. Ortam bağımlılıklarıyla dosya oluşturma
+   1. Ortam bağımlılıklarıyla bir dosya oluşturun.
 
-        ```python
-        from azureml.core.conda_dependencies import CondaDependencies
+         ```python
+         from azureml.core.conda_dependencies import CondaDependencies
 
-        # WARNING: to install this, g++ needs to be available on the Docker image and is not by default (look at the next cell)
+         # WARNING: to install this, g++ needs to be available on the Docker image and is not by default (look at the next cell)
 
-        azureml_pip_packages = ['azureml-defaults', 'azureml-contrib-interpret', 'azureml-core', 'azureml-telemetry', 'azureml-interpret']
+         azureml_pip_packages = ['azureml-defaults', 'azureml-contrib-interpret', 'azureml-core', 'azureml-telemetry', 'azureml-interpret']
  
 
-        # specify CondaDependencies obj
-        myenv = CondaDependencies.create(conda_packages=['scikit-learn', 'pandas'],
-                                         pip_packages=['sklearn-pandas'] + azureml_pip_packages,
-                                         pin_sdk_version=False)
+         # specify CondaDependencies obj
+         myenv = CondaDependencies.create(conda_packages=['scikit-learn', 'pandas'],
+                                          pip_packages=['sklearn-pandas'] + azureml_pip_packages,
+                                          pin_sdk_version=False)
 
 
-        with open("myenv.yml","w") as f:
+         with open("myenv.yml","w") as f:
             f.write(myenv.serialize_to_string())
 
-        with open("myenv.yml","r") as f:
+         with open("myenv.yml","r") as f:
             print(f.read())
-        ```
+         ```
 
-   1. G + + yüklenmiş özel bir dockerfile oluşturun
+   1. G + + yüklenmiş özel bir dockerfile oluşturun.
 
-        ```python
-        %%writefile dockerfile
-        RUN apt-get update && apt-get install -y g++
-        ```
+         ```python
+         %%writefile dockerfile
+         RUN apt-get update && apt-get install -y g++
+         ```
 
-   1. Oluşturulan görüntüyü Dağıt (tahmini süre: 5 dakika)
+   1. Oluşturulan görüntüyü dağıtın.
+   
+         Bu işlem yaklaşık beş dakika sürer.
 
-        ```python
-        from azureml.core.webservice import Webservice
-        from azureml.core.image import ContainerImage
+         ```python
+         from azureml.core.webservice import Webservice
+         from azureml.core.image import ContainerImage
 
-        # use the custom scoring, docker, and conda files we created above
-        image_config = ContainerImage.image_configuration(execution_script="score.py",
-                                                        docker_file="dockerfile",
-                                                        runtime="python",
-                                                        conda_file="myenv.yml")
+         # use the custom scoring, docker, and conda files we created above
+         image_config = ContainerImage.image_configuration(execution_script="score.py",
+                                                         docker_file="dockerfile",
+                                                         runtime="python",
+                                                         conda_file="myenv.yml")
 
-        # use configs and models generated above
-        service = Webservice.deploy_from_model(workspace=ws,
-                                            name='model-scoring-service',
-                                            deployment_config=aciconfig,
-                                            models=[scoring_explainer_model, original_model],
-                                            image_config=image_config)
+         # use configs and models generated above
+         service = Webservice.deploy_from_model(workspace=ws,
+                                             name='model-scoring-service',
+                                             deployment_config=aciconfig,
+                                             models=[scoring_explainer_model, original_model],
+                                             image_config=image_config)
 
-        service.wait_for_deployment(show_output=True)
-        ```
+         service.wait_for_deployment(show_output=True)
+         ```
 
-1. Dağıtımı test etme
+1. Dağıtımı test edin.
 
     ```python
     import requests
@@ -531,8 +552,10 @@ Açıklama özgün modelle birlikte dağıtılabilir ve yerel açıklama bilgile
     print("prediction:", resp.text)
     ```
 
-1. Temizle: dağıtılan bir Web hizmetini silmek Için `service.delete()`kullanın.
+1. Temizleyin.
+
+   Dağıtılmış bir web hizmetini silmek için kullanın `service.delete()`.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Model yorumlenebilirliği hakkında daha fazla bilgi edinmek için [kavramsal makaleye](how-to-machine-learning-interpretability.md)bakın.
+[Model yorumlenebilirliği hakkında daha fazla bilgi edinin](how-to-machine-learning-interpretability.md)

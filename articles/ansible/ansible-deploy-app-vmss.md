@@ -1,19 +1,15 @@
 ---
 title: Öğretici-Azure 'daki sanal makine ölçek kümelerine uygulama dağıtma (Anlabilen)
 description: Azure sanal makine ölçek kümelerini yapılandırmak ve ölçek kümesinde uygulama dağıtmak için nasıl kullanılacağını öğrenin
-keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, sanal makine, sanal makine ölçek kümesi, VMSS
+keywords: ansible, azure, devops, bash, playbook, sanal makine, sanal makine ölçek kümesi, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: f9035259d466a50b83fe0094d43bc0fe985e8c4e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7c54790a3d988341caa65bdf0ce33c240f0580fb
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241742"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156399"
 ---
 # <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Öğretici: Azure 'daki sanal makine ölçek kümelerine uygulama dağıtma (Anlabilen)
 
@@ -30,20 +26,20 @@ ms.locfileid: "72241742"
 > * Bir ölçek kümesine JRE 'yi (Java Runtime Environment) yükler
 > * Java uygulamasını bir ölçek kümesine dağıtma
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 [!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
-- **git** - [Git](https://git-scm.com) , bu öğreticide kullanılan bir Java örneğini indirmek için kullanılır.
-- **Java SE Development Kit (JDK)** - [JDK](https://aka.ms/azure-jdks) , örnek Java projesini oluşturmak için kullanılır.
+- **Git** - Bu öğreticide Java örneği indirmek için [git](https://git-scm.com) kullanılmaktadır.
+- **Java SE Development Kit (JDK)** - Örnek Java projesini derlemek için [JDK](https://aka.ms/azure-jdks) kullanılır.
 - **Apache maven** - [Apache Maven](https://maven.apache.org/download.cgi) , örnek Java projesini oluşturmak için kullanılır.
 
-## <a name="get-host-information"></a>Konak bilgilerini al
+## <a name="get-host-information"></a>Ana bilgisayar bilgilerini alma
 
-Bu bölümdeki PlayBook kodu, bir sanal makine grubu için konak bilgilerini alır. Kod, belirtilen bir kaynak grubu içindeki genel IP adreslerini ve yük dengeleyiciyi alır ve envanterde `scalesethosts` adlı bir konak grubu oluşturur.
+Bu bölümdeki PlayBook kodu, bir sanal makine grubu için konak bilgilerini alır. Kod, belirtilen bir kaynak grubundaki genel IP adreslerini ve yük dengeleyiciyi alır ve envanterde `scalesethosts` adlı bir konak grubu oluşturur.
 
-Aşağıdaki örnek PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki örnek playbook'u `get-hosts-tasks.yml` olarak kaydedin:
 
   ```yml
   - name: Get facts for all Public IPs within a resource groups
@@ -69,11 +65,11 @@ Aşağıdaki örnek PlayBook 'u @no__t olarak kaydet-0:
       - "{{ output.ansible_facts.azure_loadbalancers[0].properties.inboundNatRules }}"
   ```
 
-## <a name="prepare-an-application-for-deployment"></a>Uygulamayı dağıtım için hazırlama
+## <a name="prepare-an-application-for-deployment"></a>Uygulamaları dağıtım için hazırlama
 
-Bu bölümdeki PlayBook kodu, GitHub 'dan bir Java örnek projesi kopyalamak için `git` kullanır ve projeyi oluşturur. 
+Bu bölümdeki PlayBook kodu, bir Java örnek projesini GitHub 'dan kopyalamak için `git` kullanır ve projeyi oluşturur. 
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `app.yml` olarak kaydedin:
 
   ```yml
   - hosts: localhost
@@ -91,7 +87,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
       shell: mvn package chdir="{{ workspace }}/complete"
   ```
 
-Aşağıdaki komutla örnek Anerişilebilir PlayBook 'u çalıştırın:
+Örnek Ansible playbook'u aşağıdaki komut ile çalıştırın:
 
   ```bash
   ansible-playbook app.yml
@@ -120,13 +116,13 @@ PlayBook çalıştırıldıktan sonra aşağıdaki sonuçlara benzer bir çıkt�
 
 Bu bölümdeki PlayBook kodu şu şekilde kullanılır:
 
-* JRE 'yi @no__t adlı bir konak grubuna (0) yükler
-* Java uygulamasını @no__t adlı bir konak grubuna dağıtma-0
+* JRE 'yi `saclesethosts` adlı bir konak grubuna yükler
+* Java uygulamasını `saclesethosts` adlı bir konak grubuna dağıtma
 
 Örnek PlayBook 'u almanın iki yolu vardır:
 
-* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml) ve `vmss-setup-deploy.yml` ' e kaydedin.
-* @No__t-0 adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml) ve `vmss-setup-deploy.yml`kaydedin.
+* `vmss-setup-deploy.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
 
 ```yml
 - hosts: localhost
@@ -167,10 +163,10 @@ Bu bölümdeki PlayBook kodu şu şekilde kullanılır:
 
 PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
 
-* @No__t-0 bölümünde `{{ admin_password }}` yer tutucusunu kendi parolanızla değiştirin.
+* `vars` bölümünde, `{{ admin_password }}` yer tutucusunu kendi parolanızla değiştirin.
 * SSH bağlantı türünü parolalarla birlikte kullanmak için sshpass programını yüklemelisiniz:
 
-    Ubuntu
+    Ubuntu:
 
     ```bash
     apt-get install sshpass
@@ -182,14 +178,14 @@ PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
     yum install sshpass
     ```
 
-* Bazı ortamlarda, anahtar yerine SSH parolası kullanmayla ilgili bir hata görebilirsiniz. Bu hatayı alırsanız, `/etc/ansible/ansible.cfg` veya `~/.ansible.cfg` ' e aşağıdaki satırı ekleyerek ana bilgisayar anahtarı denetimini devre dışı bırakabilirsiniz:
+* Bazı ortamlarda, anahtar yerine SSH parolası kullanmayla ilgili bir hata görebilirsiniz. Bu hatayı alırsanız, `/etc/ansible/ansible.cfg` veya `~/.ansible.cfg`' ye aşağıdaki satırı ekleyerek ana bilgisayar anahtarı denetimini devre dışı bırakabilirsiniz:
 
     ```bash
     [defaults]
     host_key_checking = False
     ```
 
-Aşağıdaki komutla PlayBook 'u çalıştırın:
+Playbook'u aşağıdaki komut ile çalıştırın:
 
   ```bash
   ansible-playbook vmss-setup-deploy.yml

@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3f5e01a0ceebac092084e339994161763a11c49b
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c5f4bd079fa215e3fbd4241f603aa29d19f7aad7
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240419"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158859"
 ---
-# <a name="tutorial-monitor-your-data"></a>Öğretici: Veri ardışık
+# <a name="tutorial-monitor-your-data"></a>Öğretici: verilerinizi Izleme
 
 
 
- [Veri kaynaklarınızı](quickstart-onboard.md) Azure Sentinel 'e bağladıktan sonra, özel panolar oluşturma konusunda çok yönlülük sağlayan Azure izleyici çalışma kitapları ile Azure Sentinel tümleştirmesini kullanarak verileri izleyebilirsiniz. Çalışma kitapları Azure Sentinel 'de farklı şekilde görüntülenirken, [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturmayı](../azure-monitor/app/usage-workbooks.md)görmeniz yararlı olabilir. Azure Sentinel, verileriniz genelinde özel çalışma kitapları oluşturmanızı sağlar ve ayrıca, bir veri kaynağını bağladığınızda verilerinize hızlı bir şekilde Öngörüler elde etmenizi sağlayan yerleşik çalışma kitabı şablonlarıyla birlikte gelir.
+Veri kaynaklarınızı Azure Sentinel 'e [bağladıktan](quickstart-onboard.md) sonra Azure Izleyici çalışma kitapları Ile Azure Sentinel tümleştirmesini kullanarak verileri izleyebilirsiniz, bu da özel panolar oluşturma konusunda çok yönlülük sağlar. Çalışma kitapları Azure Sentinel 'de farklı şekilde görüntülenirken, [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturmayı](../azure-monitor/app/usage-workbooks.md)görmeniz yararlı olabilir. Azure Sentinel, verileriniz genelinde özel çalışma kitapları oluşturmanızı sağlar ve ayrıca, bir veri kaynağını bağladığınızda verilerinize hızlı bir şekilde Öngörüler elde etmenizi sağlayan yerleşik çalışma kitabı şablonlarıyla birlikte gelir.
 
 
 Bu öğretici, verilerinizi Azure Sentinel 'de izlemenize yardımcı olur.
@@ -56,7 +56,7 @@ Bu öğretici, verilerinizi Azure Sentinel 'de izlemenize yardımcı olur.
 ![çalışma kitaplarını görüntüleme](./media/tutorial-monitor-data/workbook-graph.png)
 1. Değişikliklerinizi yaptıktan sonra çalışma kitabını kaydedebilirsiniz. 
 
-1. Çalışma kitabını da kopyalayabilirsiniz: **Düzenle** ' yi ve ardından **farklı kaydet**' i seçip aynı abonelik ve kaynak grubu altında başka bir adla kaydettiğinizden emin olun. Bu çalışma kitapları, **çalışma kitapları** sekmesinin altında görüntülenir.
+1. Çalışma kitabını da kopyalayabilir: **Düzenle** ' yi seçin ve **farklı kaydet**' i seçip aynı abonelik ve kaynak grubu altında başka bir adla kaydettiğinizden emin olun. Bu çalışma kitapları, **çalışma kitapları** sekmesinin altında görüntülenir.
 
 
 ## <a name="create-new-workbook"></a>Yeni çalışma kitabı oluştur
@@ -72,7 +72,7 @@ Bu öğretici, verilerinizi Azure Sentinel 'de izlemenize yardımcı olur.
 
 1. Kuruluşunuzdaki başkalarının çalışma kitabını kullanmasına izin vermek istiyorsanız, **paylaşılan raporlar**' ı seçmek **için Kaydet** ' in altında. Bu çalışma kitabının yalnızca sizin için kullanılabilir olmasını istiyorsanız, **Raporlarım**' ı seçin.
 
-1. Çalışma alanınızdaki çalışma kitapları arasında geçiş yapmak için herhangi bir çalışma kitabının üst bölmesinde](./media/tutorial-monitor-data/switch.png)anahtar çalışma kitaplarını **Aç** ![' ı seçebilirsiniz. Sağ tarafta açılan pencerede, çalışma kitapları arasında geçiş yapın.
+1. Çalışma alanınızdaki çalışma kitapları arasında geçiş yapmak için, herhangi bir çalışma kitabının üst bölmesinde bulunan çalışma kitaplarını](./media/tutorial-monitor-data/switch.png)![**Aç** ' ı seçebilirsiniz. Sağ tarafta açılan pencerede, çalışma kitapları arasında geçiş yapın.
 
    ![Çalışma kitaplarını değiştirme](./media/tutorial-monitor-data/switch-workbooks.png)
 
@@ -81,10 +81,7 @@ Bu öğretici, verilerinizi Azure Sentinel 'de izlemenize yardımcı olur.
 
 Azure Sentinel şablonundan oluşturulan çalışma kitaplarını silebilirsiniz. 
 
-Özelleştirilmiş çalışma kitabını silmek için:
-1.  **Çalışma kitabını görüntüle**' yi seçin.
-2.  En üstte **Aç** ' ı seçin.
-3.  Çalışma kitaplarınızı listeleme tablosunda, silmek istediğiniz çalışma kitabının satırında, satırın sonundaki üç noktayı seçin... menüsünü açın ve **Sil**' i seçin. Bu, kaydedilen çalışma kitabını kaldırır.
+Özelleştirilmiş bir çalışma kitabını silmek için, çalışma kitapları sayfasında, silmek istediğiniz kaydedilmiş çalışma kitabını seçin ve **Sil**' i seçin. Bu, kaydedilen çalışma kitabını kaldırır.
 
 > [!NOTE]
 > Bu, kaynağın yanı sıra şablonda yaptığınız değişiklikleri de kaldırır. Özgün şablon kullanılabilir olmaya devam edecektir.

@@ -1,17 +1,14 @@
 ---
 title: Azure 'da Terraytest kullanarak Terrayform modüllerini test etme
 description: Terraform modüllerinizi test etmek için Terratest’i kullanmayı öğrenin.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: bdb76fe2f87806c02a861ea84361b61a3e94b554
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 41f7f9c00f626cf622ea781f01da6db1f46cd805
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969211"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158954"
 ---
 # <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Öğretici: Terraytest kullanarak Azure 'da Teraform modüllerini test etme
 
@@ -326,7 +323,7 @@ output "homepage" {
 
 Birim testlerinin aksine, tümleştirme testleri Azure 'da gerçek kaynakları oluşturur. Bu nedenle, adlandırma çakışmalarını önlemek için dikkatli olmanız gerekir. (Depolama hesabı adları gibi bazı genel benzersiz adlara özel dikkat ödeyin.) Bu nedenle, test mantığının ilk adımı, Terraytest tarafından sunulan `UniqueId()` işlevini kullanarak rastgele bir `websiteName` oluşturur. Bu işlev, küçük harf, büyük harf veya sayı içeren bir rastgele ad üretir. `tfOptions`, `./examples/hello-world/` klasörünü hedefleyen tüm Terlarform komutlarının olmasını sağlar. Ayrıca, `website_name` rastgele `websiteName`olarak ayarlandığından emin olur.
 
-Ardından birer birer `terraform init`, `terraform apply` ve `terraform output` yürütülür. Terraytest tarafından sağlanmış olan `HttpGetWithCustomValidation()`başka bir yardımcı işlevi kullanıyoruz. HTML 'nin `terraform output`tarafından döndürülen çıkış `homepage` URL 'sine yüklendiğinden emin olmak için yardımcı işlevini kullanırız. HTTP GET durum kodunu `200` karşılaştırdık ve HTML içeriğindeki bazı anahtar sözcükleri arayıyoruz. Son olarak, Go'nun `defer` özelliğinden yararlanılarak `terraform destroy` komutunun yürütülmesi "taahhüt edildi".
+Ardından birer birer `terraform init`, `terraform apply` ve `terraform output` yürütülür. Terraytest tarafından sağlanmış olan `HttpGetWithCustomValidation()`başka bir yardımcı işlevi kullanıyoruz. HTML 'nin `terraform output`tarafından döndürülen çıkış `homepage` URL 'sine yüklendiğinden emin olmak için yardımcı işlevini kullanırız. HTTP GET durum kodunu `200` karşılaştırdık ve HTML içeriğindeki bazı anahtar sözcükleri arayıyoruz. Son olarak, Go'nun `terraform destroy` özelliğinden yararlanılarak `defer` komutunun yürütülmesi "taahhüt edildi".
 
 ```go
 package test

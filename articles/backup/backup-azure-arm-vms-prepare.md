@@ -1,19 +1,14 @@
 ---
-title: Azure Backup ile Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
+title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
-service: backup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 2ef8e7e77481c0df6e85545d16c3859949184d2f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: dc47aa2b4da08a0fc2c9a91b4d547a0d19e1869a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968531"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173353"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -34,7 +29,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-* Azure VM yedekleme mimarisini [gözden geçirin](backup-architecture.md#architecture-direct-backup-of-azure-vms) .
+* Azure VM yedekleme mimarisini [gözden geçirin](backup-architecture.md#architecture-built-in-azure-vm-backup) .
 * [Hakkında bilgi edinin](backup-azure-vms-introduction.md) Azure VM yedeklemesi ve yedekleme uzantısı.
 * Yedeklemeyi yapılandırmadan önce [destek matrisini gözden geçirin](backup-support-matrix-iaas.md) .
 
@@ -47,7 +42,7 @@ Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
 
  Kasa, zaman içinde oluşturulan yedeklemeleri ve kurtarma noktalarını depolar ve yedeklenen makinelerle ilişkili yedekleme ilkelerini depolar. Aşağıdaki gibi bir kasa oluşturun:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Arama bölümünde, **Kurtarma Hizmetleri**yazın. **Hizmetler**' in altında, **Kurtarma Hizmetleri kasaları**' na tıklayın.
 
      ![Kurtarma Hizmetleri kasalarını ara](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
@@ -69,7 +64,7 @@ Kasa oluşturulduktan sonra kurtarma hizmetleri kasaları listesinde görünür.
 ![Yedekleme kasalarının listesi](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
 > [!NOTE]
-> Azure Backup hizmeti, anlık görüntüyü depolamak için **AzureBackupRG_geography_number** (örnek: AzureBackupRG_northeurope_1) ile ayrı bir kaynak grubu (VM kaynak grubu dışında) oluşturur. Bu kaynak grubundaki veriler, Azure sanal makine yedekleme ilkesinin *anlık kurtarma anlık görüntüsünü sakla* bölümünde belirtildiği gibi süre boyunca saklanacaktır.  Bu kaynak grubuna bir kilit uygulandığında yedekleme hatalara neden olabilir.<br>
+> Azure Backup hizmet, anlık görüntüyü depolamak için (örneğin: AzureBackupRG_northeurope_1) **AzureBackupRG_geography_number** , farklı bir kaynak grubu (VM kaynak grubu dışında) oluşturur. Bu kaynak grubundaki veriler, Azure sanal makine yedekleme ilkesinin *anlık kurtarma anlık görüntüsünü sakla* bölümünde belirtildiği gibi süre boyunca saklanacaktır.  Bu kaynak grubuna bir kilit uygulandığında yedekleme hatalara neden olabilir.<br>
 Bu kaynak grubu, bir kısıtlama ilkesi herhangi bir ad/etiket kısıtlamalarından dışlanmalıdır, çünkü bu durum, bir kısıtlama ilkesi üzerinde kaynak noktası koleksiyonlarının oluşturulmasını engeller.
 
 ### <a name="modify-storage-replication"></a>Depolama çoğaltmasını değiştirme
@@ -199,7 +194,7 @@ Azure Backup, makinede çalışan Azure VM aracısına bir uzantı yükleyerek A
 VM üzerinde çalışan yedekleme uzantısının Azure genel IP adreslerine giden erişimi olması gerekir.
 
 * Genellikle, Azure Backup ile iletişim kurması için bir Azure VM 'ye giden ağ erişimine açıkça izin vermeniz gerekmez.
-* VM 'lerle ilgili zorluklarla karşılaşıyorsanız veya bağlanmaya çalışırken **Extensionsnapshotfailednonetwork** hatası görürseniz, yedekleme uzantısının yedekleme için Azure genel IP adresleriyle iletişim kurabilmesi için açıkça erişime izin vermelisiniz ğinden. Erişim yöntemleri aşağıdaki tabloda özetlenmiştir.
+* VM 'lerle ilgili zorluklarla karşılaşıyorsanız veya bağlanmaya çalışırken **Extensionsnapshotfailednonetwork** hatası görürseniz, yedekleme uzantısının yedekleme trafiği için Azure genel IP adresleriyle iletişim kurabilmesi için açıkça erişime izin vermelisiniz. Erişim yöntemleri aşağıdaki tabloda özetlenmiştir.
 
 **Seçenek** | **Eylem** | **Ayrıntılar**
 --- | --- | ---
@@ -252,7 +247,7 @@ Bir sistem hesabı ara sunucusu yoksa, bir tane aşağıdaki şekilde ayarlayın
 4. Proxy ayarlarını tanımlayın.
    * Linux makinelerde:
      * Bu satırı **/etc/Environment** dosyasına ekleyin:
-       * **http_proxy = http:\//Proxy IP adresi: proxy bağlantı noktası**
+       * **http_proxy = http:\//Proxy IP adresi: ara sunucu bağlantı noktası**
      * Bu satırları **/etc/waagent.exe** dosyasına ekleyin:
          * **HttpProxy. Host = Proxy IP adresi**
          * **HttpProxy. Port = proxy bağlantı noktası**

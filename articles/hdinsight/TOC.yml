@@ -225,9 +225,9 @@
           items:
             - name: HDInsight 4.0’daki yenilikler nelerdir?
               href: ./hdinsight-version-release.md
-            - name: HDInsight 4.0 tam sürüm notları
+            - name: Sürüm notları
               href: ./hdinsight-release-notes.md
-            - name: HDInsight 3.6 tam sürüm notları
+            - name: Azure HDInsight’a yönelik arşivlenmiş sürüm notları
               href: ./hdinsight-release-notes-archive.md
         - name: Sık sorulan sorular (SSS)
           href: ./hdinsight-faq.md
@@ -837,6 +837,8 @@
           href: ./hdinsight-plan-virtual-network-deployment.md
         - name: NSG ve UDR’ler için gereken IP adresleri
           href: ./hdinsight-management-ip-addresses.md
+        - name: Azure güvenlik duvarına yönelik hizmet etiketleri
+          href: ./hdinsight-service-tags.md
     - name: Nasıl yapılır
       items:
         - name: ESP kümeleri oluşturma ve şirket içi ile eşitleme

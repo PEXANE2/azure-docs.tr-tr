@@ -1,19 +1,15 @@
 ---
-title: SSS-Azure Backup ile Azure VM 'Leri yedekleme
+title: SSS-Azure sanal makinelerini yedekleme
 description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakkında sık sorulan soruların yanıtlarını bulun.
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: dacurwin
-ms.openlocfilehash: ad5e715de2f3467d4530759cbb2acec0358e5597
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 30036d6cf241e1ac840b2be67ca78fbda6c60061
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747270"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172571"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -33,15 +29,15 @@ Hayır. Yedekleme maliyetleri, bir VM 'nin maliyetlerinden ayrıdır. [Azure Bac
 
 Sanal makine katılımcısı ise, VM 'de yedeklemeyi etkinleştirebilirsiniz. Özel bir rol kullanıyorsanız, VM 'de yedeklemeyi etkinleştirmek için aşağıdaki izinlere sahip olmanız gerekir:
 
-- Microsoft. RecoveryServices/Vaults/Write
-- Microsoft. RecoveryServices/Vaults/okuma
+- Microsoft.RecoveryServices/Vaults/write
+- Microsoft.RecoveryServices/Vaults/read
 - Microsoft. RecoveryServices/konumlar/*
 - Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/*/Read
 - Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/Read
 - Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/yazma
-- Microsoft. RecoveryServices/Vaults/Backupdokuları/Backupprotectionamacını/Write
-- Microsoft. RecoveryServices/Vaults/backupPolicies/Read
-- Microsoft. RecoveryServices/Vaults/backupPolicies/Write
+- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write
+- Microsoft.RecoveryServices/Vaults/backupPolicies/read
+- Microsoft.RecoveryServices/Vaults/backupPolicies/write
 
 Kurtarma Hizmetleri kasanızın ve sanal makinenizin farklı kaynak grupları varsa, kurtarma hizmetleri kasasının kaynak grubunda yazma izinlerinizin olduğundan emin olun.  
 

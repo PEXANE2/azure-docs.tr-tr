@@ -1,18 +1,18 @@
 ---
 title: Azure Güvenlik Duvarı günlüklerine ve ölçümlere genel bakış
-description: Bu makale, Azure Güvenlik Duvarı tanılama günlüklerine ve ölçümlerine genel bakış sunulmaktadır.
+description: Güvenlik duvarı günlüklerini kullanarak Azure Güvenlik Duvarı'nı izleyebilirsiniz. Ayrıca etkinlik günlüklerini kullanarak Azure Güvenlik Duvarı kaynaklarıyla ilgili işlemleri denetleyebilirsiniz.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: fea00358fc21cf6f57673e14ebd0feafe532b620
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f233b1a60202b440abf34edd1c56eebaecba18e2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876553"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166993"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Güvenlik Duvarı günlükleri ve ölçümleri
 
@@ -75,9 +75,9 @@ Bu günlüklerden bazılarına portaldan erişebilirsiniz. Günlükler [Azure iz
 
 Günlüklerinizi depolamak için kullanabileceğiniz üç seçenek vardır:
 
-* **Depolama hesabı**: Depolama hesapları, Günlükler daha uzun bir süre boyunca depolandığında ve gerektiğinde incelenip günlüklerde en iyi şekilde kullanılır.
-* **Olay Hub 'ları**: Olay Hub 'ları, kaynaklarınızda uyarı almak için diğer güvenlik bilgileri ve olay yönetimi (SEıM) araçlarıyla tümleştirme için harika bir seçenektir.
-* **Azure izleyici günlükleri**: Azure Izleyici günlükleri, uygulamanızın genel gerçek zamanlı izleme için en iyi şekilde kullanılır veya eğilimleri göz yormaktadır.
+* **Depolama hesabı**: Depolama hesaplarının en iyi kullanım amacı, günlüklerin uzun süre depolanması ve ihtiyaç duyulduğunda gözden geçirilmesi durumlarıdır.
+* **Event Hubs**: Event Hubs, kaynaklarınızla ilgili uyarılar almak için diğer güvenlik bilgisi ve olay yönetimi (SEIM) araçlarıyla tümleştirmek için idealdir.
+* **Azure izleyici günlükleri**: Azure izleyici günlükleri, uygulamanızın genel gerçek zamanlı izleme için en iyi şekilde kullanılır veya eğilimleri göz yormaktadır.
 
 ## <a name="activity-logs"></a>Etkinlik günlükleri
 
@@ -108,8 +108,8 @@ Aşağıdaki ölçümler Azure Güvenlik Duvarı için kullanılabilir:
     Birim: yüzde
 
    Bu ölçümün iki boyutu vardır:
-  - **Durum**: Olası değerler *iyi*, *azaltılmış*, *sağlıksız*.
-  - **Neden**: Güvenlik duvarının ilgili durumunun nedenini gösterir. Örneğin, güvenlik duvarı durumu düşürüldü veya sağlıksız ise, bu, *SNAT bağlantı noktalarını* belirtebilir.
+  - **Durum**: olası değerler *sağlıklı*, *düşürülmüş*, *sağlıksız*.
+  - **Neden**: güvenlik duvarının ilgili durumunun nedenini gösterir. Örneğin, güvenlik duvarı durumu düşürüldü veya sağlıksız ise, bu, *SNAT bağlantı noktalarını* belirtebilir.
 
 
 
@@ -124,6 +124,6 @@ Aşağıdaki ölçümler Azure Güvenlik Duvarı için kullanılabilir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izlemeyi öğrenmek için bkz [. Öğretici: Azure Güvenlik Duvarı günlüklerini](tutorial-diagnostics.md)izleyin.
+- Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izlemeyi öğrenmek için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini izleme](tutorial-diagnostics.md).
 
 - Azure Izleyici 'de ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçümler](../azure-monitor/platform/data-platform-metrics.md).

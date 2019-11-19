@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: bc74ac660c5bba0624416d0a1724d959a4c385a7
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: fc808fee66dee573aecd423e375d30bf3f5b696a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305269"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170703"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Held ile uygulama yükler
 
@@ -33,7 +33,7 @@ Ayrıca, geliştirme sisteminizde çalışan istemci olan Held CLı 'nin yüklü
 
 Helm 'yi RBAC özellikli bir AKS kümesinde dağıtabilmeniz için, Tiller hizmeti için bir hizmet hesabı ve rol bağlaması olması gerekir. RBAC etkin bir kümede Held/Tiller güvenliğini sağlama hakkında daha fazla bilgi için bkz. [Tiller, namespaces ve RBAC][tiller-rbac]. AKS kümeniz RBAC etkinleştirilmemişse, bu adımı atlayın.
 
-Aşağıdaki YAML 'de `helm-rbac.yaml` adlı bir dosya oluşturun ve kopyalayın:
+`helm-rbac.yaml` adlı bir dosya oluşturun ve aşağıdaki YAML 'de kopyalayın:
 
 ```yaml
 apiVersion: v1
@@ -56,7 +56,7 @@ subjects:
     namespace: kube-system
 ```
 
-`kubectl apply` Komutuyla hizmet hesabı ve rol bağlamayı oluşturun:
+`kubectl apply` komutuyla hizmet hesabı ve rol bağlama oluşturun:
 
 ```console
 kubectl apply -f helm-rbac.yaml
@@ -70,15 +70,15 @@ RBAC özellikli bir Kubernetes kümesi ile, Tiller erişim düzeyini kümeye gö
 
 ## <a name="configure-helm"></a>Held 'yi yapılandırma
 
-Bir AKS kümesine temel bir Tiller dağıtmak için [helk init][helm-init] komutunu kullanın. Kümeniz RBAC etkinleştirilmemişse, `--service-account` bağımsız değişkeni ve değeri kaldırın. Aşağıdaki örneklerde Ayrıca [History-Max][helm-history-max] değeri 200 olarak ayarlanır.
+Bir AKS kümesine temel bir Tiller dağıtmak için [helk init][helm-init] komutunu kullanın. Kümeniz RBAC etkinleştirilmemişse, `--service-account` bağımsız değişkenini ve değerini kaldırın. Aşağıdaki örneklerde Ayrıca [History-Max][helm-history-max] değeri 200 olarak ayarlanır.
 
-Tiller ve Held için TLS/SSL yapılandırdıysanız, bu temel başlatma adımını atlayın ve bunun yerine, sonraki örnekte gösterildiği `--tiller-tls-` gibi gerekli olan adımları belirtin.
+Tiller ve Held için TLS/SSL yapılandırdıysanız, bu temel başlatma adımını atlayın ve bunun yerine, sonraki örnekte gösterildiği gibi gerekli `--tiller-tls-` sağlayın.
 
 ```console
 helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
-Helk ve Tiller arasında TLS/SSL yapılandırdıysanız, aşağıdaki örnekte gösterildiği `--tiller-tls-*` gibi kendi sertifikalarınızın parametrelerini ve adlarını belirtin:
+Helk ve Tiller arasında TLS/SSL yapılandırdıysanız, aşağıdaki örnekte gösterildiği gibi, kendi sertifikalarınızın `--tiller-tls-*` parametrelerini ve adlarını sağlayın:
 
 ```console
 helm init \
@@ -148,7 +148,7 @@ Update Complete.
 
 ## <a name="run-helm-charts"></a>Held grafiklerini çalıştırma
 
-Held ile grafik yüklemek için [HELI install][helm-install] komutunu kullanın ve yüklenecek grafiğin adını belirtin. Bir Helm grafiğinin yükleme işlemini görmek için Helm grafiğini kullanarak temel bir NGINX dağıtımı yükleyelim. TLS/SSL yapılandırdıysanız, hele İstemci sertifikanızı `--tls` kullanmak için parametresini ekleyin.
+Held ile grafik yüklemek için [HELI install][helm-install] komutunu kullanın ve yüklenecek grafiğin adını belirtin. Bir Helm grafiğinin yükleme işlemini görmek için Helm grafiğini kullanarak temel bir NGINX dağıtımı yükleyelim. TLS/SSL yapılandırdıysanız, hele İstemci sertifikanızı kullanmak için `--tls` parametresini ekleyin.
 
 ```console
 helm install stable/nginx-ingress \
@@ -187,7 +187,7 @@ NGINX-ingress-Controller hizmetinin *dış IP* adresinin doldurulması ve bir We
 
 ## <a name="list-helm-releases"></a>Held yayınları listeleme
 
-Kümenizde yüklü olan sürümlerin listesini görmek için [HELI List][helm-list] komutunu kullanın. Aşağıdaki örnekte, önceki adımda dağıtılan NGINX-ingress sürümü gösterilmektedir. TLS/SSL yapılandırdıysanız, hele İstemci sertifikanızı `--tls` kullanmak için parametresini ekleyin.
+Kümenizde yüklü olan sürümlerin listesini görmek için [HELI List][helm-list] komutunu kullanın. Aşağıdaki örnekte, önceki adımda dağıtılan NGINX-ingress sürümü gösterilmektedir. TLS/SSL yapılandırdıysanız, hele İstemci sertifikanızı kullanmak için `--tls` parametresini ekleyin.
 
 ```console
 $ helm list
@@ -198,7 +198,7 @@ flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingres
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir helk grafiği dağıttığınızda, bir dizi Kubernetes kaynağı oluşturulur. Bu kaynaklar, pods, dağıtımlar ve hizmetleri içerir. Bu kaynakları temizlemek için, `helm delete` komutunu kullanın ve önceki `helm list` komutta bulunduğu şekilde sürüm adınızı belirtin. Aşağıdaki örnek, *flamı-Alpaca*adlı yayını siler:
+Bir helk grafiği dağıttığınızda, bir dizi Kubernetes kaynağı oluşturulur. Bu kaynaklar, pods, dağıtımlar ve hizmetleri içerir. Bu kaynakları temizlemek için, `helm delete` komutunu kullanın ve önceki `helm list` komutunda bulunan sürüm adınızı belirtin. Aşağıdaki örnek, *flamı-Alpaca*adlı yayını siler:
 
 ```console
 $ helm delete flailing-alpaca
@@ -215,18 +215,18 @@ Held ile Kubernetes uygulama dağıtımlarını yönetme hakkında daha fazla bi
 
 <!-- LINKS - external -->
 [helm]: https://github.com/kubernetes/helm/
-[helm-documentation]: https://docs.helm.sh/
-[helm-init]: https://docs.helm.sh/helm/#helm-init
-[helm-install]: https://docs.helm.sh/using_helm/#installing-helm
+[helm-documentation]: https://v2.helm.sh/docs/
+[helm-init]: https://v2.helm.sh/docs/helm/#helm-init
+[helm-install]: https://v2.helm.sh/docs/using_helm/#installing-helm
 [helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
-[helm-list]: https://docs.helm.sh/helm/#helm-list
-[helm-history-max]: https://helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
-[helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
-[helm-repo-update]: https://docs.helm.sh/helm/#helm-repo-update
-[helm-search]: https://docs.helm.sh/helm/#helm-search
-[tiller-rbac]: https://docs.helm.sh/using_helm/#tiller-namespaces-and-rbac
-[helm-ssl]: https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller
-
+[helm-list]: https://v2.helm.sh/docs/helm/#helm-list
+[helm-history-max]: https://v2.helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
+[helm-rbac]: https://v2.helm.sh/docs/using_helm/#role-based-access-control
+[helm-repo-update]: https://v2.helm.sh/docs/helm/#helm-repo-update
+[helm-search]: https://v2.helm.sh/docs/helm/#helm-search
+[tiller-rbac]: https://v2.helm.sh/docs/using_helm/#tiller-namespaces-and-rbac
+[helm-ssl]: https://v2.helm.sh/docs/using_helm/#using-ssl-between-helm-and-tiller
+            
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md

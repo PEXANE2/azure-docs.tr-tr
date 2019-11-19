@@ -3,17 +3,13 @@ title: Öğretici-Azure App Service kullanarak uygulamaları ölçeklendirin
 description: Azure App Service bir uygulamayı nasıl ölçeklendireceğinizi öğrenin
 keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, Azure App Service, Web uygulaması, ölçek, Java
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 0adcddb8afa4f0e3d0b9288f351dae7d77922612
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9eb50922361c817de8047dece4849a9b221677f0
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241483"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155921"
 ---
 # <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Öğretici: Azure App Service uygulamaları kullanarak ölçeklendirin
 
@@ -28,7 +24,7 @@ ms.locfileid: "72241483"
 > * Mevcut bir App Service planının olguları alın
 > * App Service planını üç çalışan ile S2 'ye kadar ölçeklendirin
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -46,7 +42,7 @@ Bu bölümdeki PlayBook kodu aşağıdaki işlemi tanımlar:
 * Mevcut bir App Service planının olguları alın
 * App Service planını üç çalışan ile S2 'ye güncelleştirme
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `webapp_scaleup.yml` olarak kaydedin:
 
 ```yml
 - hosts: localhost
@@ -84,7 +80,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
       var: facts.appserviceplans[0].sku
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook webapp_scaleup.yml
@@ -138,4 +134,4 @@ localhost                  : ok=6    changed=1    unreachable=0    failed=0
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure üzerinde anormal](/azure/ansible/)
+> [Azure üzerinde Ansible](/azure/ansible/)

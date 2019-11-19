@@ -3,17 +3,13 @@ title: Öğretici-Azure Kubernetes Service 'te (AKS) rol tabanlı erişim deneti
 description: Azure Kubernetes Service (AKS) kümesinde RBAC 'yi yapılandırmak için nasıl kullanılacağını öğrenin
 keywords: anyalabilen, Azure, DevOps, Bash, cloudshell, PlayBook, aks, Container, aks, Kubernetes, Azure Active Directory, RBAC
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 36a6f5ade7a60a989d2e80f2405aaa2d1d50b756
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242349"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156863"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Öğretici: Azure Kubernetes Service 'te (AKS) rol tabanlı erişim denetimi (RBAC) rollerini kullanarak yapılandırma
 
@@ -30,12 +26,12 @@ AKS, Kullanıcı kimlik doğrulaması için [Azure Active Directory (ad)](/azure
 > * Azure AD özellikli bir AKS kümesi oluşturma
 > * Kümede RBAC rolü yapılandırma
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **RedHat OpenShift kitaplığı** -  @ no__t-2 ' i yükler
+- **RedHat OpenShift kitaplığı** - `pip install openshift`
 
 ## <a name="configure-azure-ad-for-aks-authentication"></a>AKS kimlik doğrulaması için Azure AD 'yi yapılandırma
 
@@ -46,7 +42,7 @@ Azure kiracı yöneticisi 'nden aşağıdaki değerleri alın:
 - Sunucu uygulaması gizli dizisi
 - Sunucu uygulama KIMLIĞI
 - İstemci uygulama KIMLIĞI 
-- Kiracı KIMLIĞI
+- Kiracı Kimliği
 
 Bu değerler, örnek PlayBook 'u çalıştırmak için gereklidir.  
 
@@ -56,15 +52,15 @@ Bu bölümde, [Azure AD uygulaması](#configure-azure-ad-for-aks-authentication)
 
 Örnek PlayBook ile çalışırken göz önünde bulundurmanız gereken bazı önemli notlar şunlardır:
 
-- PlayBook, `~/.ssh/id_rsa.pub` ' den `ssh_key` yükler. Bunu değiştirirseniz, "SSH-RSA" (tırnak işaretleri olmadan) ile başlayan tek satır biçimini kullanın.
-- @No__t-0 ve `client_secret` değerleri, varsayılan kimlik bilgisi dosyası olan `~/.azure/credentials` ' den yüklenir. Bu değerleri hizmet sorumlusu olarak ayarlayabilir veya bu değerleri ortam değişkenlerinden yükleyebilirsiniz:
+- PlayBook, `~/.ssh/id_rsa.pub``ssh_key` yükler. Bunu değiştirirseniz, "SSH-RSA" (tırnak işaretleri olmadan) ile başlayan tek satır biçimini kullanın.
+- `client_id` ve `client_secret` değerleri, varsayılan kimlik bilgisi dosyası olan `~/.azure/credentials`'dan yüklenir. Bu değerleri hizmet sorumlusu olarak ayarlayabilir veya bu değerleri ortam değişkenlerinden yükleyebilirsiniz:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
     client_secret: "{{ lookup('env', 'AZURE_SECRET') }}"
     ```
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `aks-create.yml` olarak kaydedin:
 
 ```yml
 - name: Create resource group
@@ -123,11 +119,11 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
 RBAC bağlama oluşturmak için önce Azure AD nesne KIMLIĞINI almanız gerekir. 
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
-1. Sayfanın üst kısmındaki Ara alanında `Azure Active Directory` girin. 
+1. Sayfanın üst kısmındaki Ara alanında `Azure Active Directory`girin. 
 
-1. @No__t-0 ' a tıklayın.
+1. Tıklatın `Enter`.
 
 1. **Yönet** menüsünde **Kullanıcılar**' ı seçin.
 
@@ -143,7 +139,7 @@ RBAC bağlama oluşturmak için önce Azure AD nesne KIMLIĞINI almanız gerekir
 
 Bu bölümde, AKS 'de bir rol bağlama veya küme rolü bağlama oluşturursunuz. 
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `kube-role.yml` olarak kaydedin:
 
 ```yml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -160,9 +156,9 @@ subjects:
   name: <your-aad-account>
 ```
 
-@No__t-0 yer tutucusunu Azure AD kiracı [nesne Kimliğinizle](#get-the-azure-ad-object-id)değiştirin.
+`&lt;your-aad-account>` yer tutucusunu Azure AD kiracı [nesne kimliğiniz](#get-the-azure-ad-object-id)ile değiştirin.
 
-Aşağıdaki PlayBook 'u kaydedin: yeni rolünüzü AKS-as @no__t dağıtır-0:
+Aşağıdaki PlayBook 'u kaydedin-yeni rolünüzü `aks-kube-deploy.yml`olarak dağıtır:
 
 ```yml
 - name: Apply role to AKS
@@ -175,7 +171,7 @@ Aşağıdaki PlayBook 'u kaydedin: yeni rolünüzü AKS-as @no__t dağıtır-0:
 
 Bu bölümde, bu makalede oluşturulan görevleri çağıran tüm örnek PlayBook listelenmektedir. 
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `aks-rbac.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -202,14 +198,14 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
        include_tasks: aks-kube-deploy.yml
 ```
 
-@No__t-0 bölümünde, aşağıdaki yer tutucuları Azure AD bilgileriniz ile değiştirin:
+`vars` bölümünde aşağıdaki yer tutucuları Azure AD bilgileriniz ile değiştirin:
 
 - `<client id>`
 - `<server id>`
 - `<server secret>`
 - `<tenant id>`
 
-@No__t-0 komutunu kullanarak tam PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak tüm PlayBook 'ları çalıştırın:
 
 ```bash
 ansible-playbook aks-rbac.yml
@@ -237,11 +233,11 @@ aks-nodepool1-33413200-1   Ready    agent   49m   v1.12.6
 aks-nodepool1-33413200-2   Ready    agent   49m   v1.12.6
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu @no__t olarak kaydet-0:
+Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
 
 ```yml
 ---
@@ -261,7 +257,7 @@ Aşağıdaki kodu @no__t olarak kaydet-0:
             path: "aks-{{ name }}-kubeconfig"
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml
@@ -270,4 +266,4 @@ ansible-playbook cleanup.yml
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure üzerinde anormal](/azure/ansible/)
+> [Azure üzerinde Ansible](/azure/ansible/)

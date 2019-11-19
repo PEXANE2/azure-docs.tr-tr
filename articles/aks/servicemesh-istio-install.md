@@ -4,15 +4,15 @@ description: Azure Kubernetes Service (AKS) kümesinde hizmet ağı oluşturma v
 author: paulbouwer
 ms.service: container-service
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/15/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 245ac3b1fd88b8d2430e9ddefef3562efd16e6d1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 2768c2d4cef68dcf25e25c047aaa69653af5e0b6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885379"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170853"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Istio 'yu yükleyip kullanma
 
@@ -21,9 +21,9 @@ ms.locfileid: "73885379"
 Bu makalede, Istio 'un nasıl yükleneceği gösterilmektedir. Istio `istioctl` istemci ikilisi istemci makinenize yüklenir ve ıKS bileşenleri AKS 'deki bir Kubernetes kümesine yüklenir.
 
 > [!NOTE]
-> Bu yönergeler, Istio sürüm `1.3.2`referans ve en az Helm sürüm `2.14.2`kullanır.
+> Aşağıdaki yönergeler, Istio sürüm `1.4.0`referans.
 >
-> Istio `1.3.x` yayınları, Kubernetes sürümleriyle `1.13`, `1.14`, `1.15`karşı Istio ekibi tarafından test edilmiştir. [GitHub-Istio yayımları][istio-github-releases]üzerinde ek istio sürümleri, [istio haberleri][istio-release-notes] ve desteklenen Kubernetes sürümlerinin her biri hakkında bilgi edinmek IÇIN bkz. [Genel SSS][istio-faq].
+> Istio `1.4.x` yayınları, Kubernetes sürümleriyle `1.13`, `1.14`, `1.15`karşı Istio ekibi tarafından test edilmiştir. [GitHub-Istio yayımları][istio-github-releases]üzerinde ek istio sürümleri, [istio haberleri][istio-release-notes] ve desteklenen Kubernetes sürümlerinin her biri hakkında bilgi edinmek IÇIN bkz. [Genel SSS][istio-faq].
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -38,11 +38,9 @@ Bu makalede şunları öğreneceksiniz:
 
 Bu makalede açıklanan adımlarda, RBAC etkinleştirilmiş bir AKS kümesi (Kubernetes `1.13` ve üzeri) oluşturdunuz ve kümeyle `kubectl` bir bağlantı oluşturmuş olduğunuz varsayılır. Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, [aks hızlı başlangıç][aks-quickstart]bölümüne bakın.
 
-Bu yönergeleri izlemek ve Istio 'yu yüklemek için [Helm][helm] gerekir. En son kararlı sürümü kümenize doğru yüklenip yapılandırılmış olmalıdır. Held 'yi yüklemeyle ilgili yardıma ihtiyacınız varsa bkz. [aks helk Yükleme Kılavuzu][helm-install]. Tüm istio Pod 'ler de Linux düğümlerinde çalışacak şekilde zamanlanmalıdır.
-
 AKS kümenizde Istio çalıştırmaya yönelik ek kaynak gereksinimlerini anlamak için, [Istio performans ve ölçeklenebilirlik](https://istio.io/docs/concepts/performance-and-scalability/) belgelerini okuduğunuzdan emin olun. Çekirdek ve bellek gereksinimleri, belirli iş yükünüze göre farklılık gösterecektir. Kuruluma uygun sayıda düğüm ve VM boyutu seçin.
 
-Bu makale, Istio yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Nihai sonuç, resmi Istio yükleme [kılavuzundaki][istio-install-helm]yapıda aynıdır.
+Bu makale, Istio yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Nihai sonuç, resmi Istio yükleme [kılavuzundaki][istio-install-istioctl]yapıda aynıdır.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -62,65 +60,15 @@ Bu makale, Istio yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Nihai 
 
 ::: zone-end
 
-## <a name="add-the-istio-helm-chart-repository"></a>Istio Helm grafik deposunu ekleme
-
-Istio yayını için Istio Helm grafik deposunu ekleyin. Grafik deposu için yerel bilgilerinizi güncelleştirmek üzere `helm repo update` çalıştırtığınızdan emin olun.
-
-```azurecli
-helm repo add istio.io https://storage.googleapis.com/istio-release/releases/$ISTIO_VERSION/charts/
-helm repo update
-```
-
-## <a name="install-the-istio-crds-on-aks"></a>AKS 'e Istio CRDs 'yi yükler
-
-İstio, çalışma zamanı yapılandırmasını yönetmek için [özel kaynak tanımları (CRDs)][kubernetes-crd] kullanır. IBU bileşenleri üzerinde bir bağımlılığı olduğundan, önce Istio CRDs 'yi yüklememiz gerekir. AKS kümenizdeki `istio-system` ad alanına Istio CRDs 'yi yüklemek için Helm ve `istio-init` grafiğini kullanın:
-
-```azurecli
-helm install istio.io/istio-init --name istio-init --namespace istio-system
-```
-
-[İşler][kubernetes-jobs] , crds 'yi yüklemek Için `istio-init` hele grafiğinin bir parçası olarak dağıtılır. Bu işlerin tamamlanması, küme ortamınıza bağlı olarak 20 ' den az sürer. İşlerin şu şekilde başarıyla tamamlandığını doğrulayabilirsiniz:
-
-```azurecli
-kubectl get jobs -n istio-system
-```
-
-Aşağıdaki örnek çıktıda başarıyla tamamlanan işler gösterilmektedir.
-
-```console
-NAME                      COMPLETIONS   DURATION   AGE
-istio-init-crd-10-1.3.2   1/1           14s        14s
-istio-init-crd-11-1.3.2   1/1           12s        14s
-istio-init-crd-12-1.3.2   1/1           14s        14s
-```
-
-İşlerin başarılı bir şekilde tamamlandığını Onayladığımıza göre, doğru sayıda Istio CRDs yüklü olduğunu doğrulayalım. Aşağıdaki komutu çalıştırarak tüm 23 Istio CRDs 'nin yüklendiğini doğrulayabilirsiniz. Komut `23`sayı döndürmelidir.
-
-::: zone pivot="client-operating-system-linux"
-
-[!INCLUDE [Bash - check CRD count](includes/servicemesh/istio/install-check-crd-count-bash.md)]
-
-::: zone-end
-
-::: zone pivot="client-operating-system-macos"
-
-[!INCLUDE [Bash - check CRD count](includes/servicemesh/istio/install-check-crd-count-bash.md)]
-
-::: zone-end
-
-::: zone pivot="client-operating-system-windows"
-
-[!INCLUDE [PowerShell - check CRD count](includes/servicemesh/istio/install-check-crd-count-powershell.md)]
-
-::: zone-end
-
-Bu noktaya sahipseniz, bu durumda Istio CRDs 'yi başarıyla yüklemiş olursunuz. Şimdi de bir sonraki bölüme geçin. bu [bileşenleri AKS 'e yükleyebilirsiniz](#install-the-istio-components-on-aks).
-
 ## <a name="install-the-istio-components-on-aks"></a>AKS 'e Istio bileşenlerini yükler
 
 [Grafana][grafana] ve [kiali][kiali] 'nin bir parçası olarak ilerliyoruz. Grafana, analiz ve izleme panoları sağlar ve Kiali bir hizmet ağı Observability panosu sağlar. Kurulumumuzda, bu bileşenlerin her biri [gizli][kubernetes-secrets]olarak sağlanması gereken kimlik bilgilerini gerektirir.
 
-Istio bileşenlerini yükleyebilmemiz için, hem Grafana hem de Kiali için gizli dizileri oluşturuyoruz. 
+Istio bileşenlerini yükleyebilmemiz için, hem Grafana hem de Kiali için gizli dizileri oluşturuyoruz. Bu gizli diziler, IBU tarafından kullanılacak `istio-system` ad alanına yüklenmelidir, bu nedenle ad alanını da oluşturmanız gerekir. `kubectl create` aracılığıyla ad alanını oluştururken `--save-config` seçeneğini kullandığımızda, bu nesnenin gelecekte bu nesne üzerinde `kubectl apply` çalıştırabilmesi gerekir.
+
+```console
+kubectl create namespace istio-system --save-config
+```
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -142,45 +90,149 @@ Istio bileşenlerini yükleyebilmemiz için, hem Grafana hem de Kiali için gizl
 
 ### <a name="install-istio-components"></a>Istio bileşenlerini yükler
 
-AKS kümenizdeki Grafana ve Kiali gizli dizilerini başarıyla oluşturduğumuzdan, bu durumda Istio bileşenlerinin yüklenmesi zaman alabilir. AKS kümenizdeki `istio-system` ad alanına Istio bileşenlerini yüklemek için Helm ve `istio` grafiğini kullanın. 
+AKS kümenizdeki Grafana ve Kiali gizli dizilerini başarıyla oluşturduğumuzdan, bu durumda Istio bileşenlerinin yüklenmesi zaman alabilir. 
+
+Istio için [Helm][helm] yükleme yaklaşımı gelecekte kullanım dışı olacaktır. Yeni yükleme yaklaşımı, `istioctl` istemci ikilisini, [istio yapılandırma profillerini][istio-configuration-profiles]ve yeni [istio denetim düzlemi belirtimini ve API][istio-control-plane]'yi kullanır. Bu yeni yaklaşım, Istio 'yu yüklemek için kullanacağız.
 
 > [!NOTE]
-> **Yükleme seçenekleri**
-> 
-> Yüklememizin kapsamında aşağıdaki seçenekleri kullanıyoruz:
-> - `global.controlPlaneSecurityEnabled=true`-denetim düzlemi için etkin ve karşılıklı TLS
-> - `global.mtls.enabled=true`-tüm hizmetin hizmet ile iletişim kurmak için MTLS olması gerekir
-> - `grafana.enabled=true`-analiz ve izleme panoları için Grafana dağıtımını etkinleştirme
-> - `grafana.security.enabled=true`-Grafana için kimlik doğrulamasını etkinleştirme
-> - `tracing.enabled=true`-izleme için Jaeger dağıtımını etkinleştirme
-> - `kiali.enabled=true`-bir hizmet ağı Observability panosu için Kiali dağıtımını etkinleştirme
->
-> **Düğüm seçicileri**
->
 > IBU Şu anda Linux düğümlerinde çalıştırılmak üzere zamanlanmalıdır. Kümenizde Windows Server düğümleriniz varsa, Istio 'ların yalnızca Linux düğümlerinde çalışacak şekilde zamanlandığından emin olmanız gerekir. Düğümlerin doğru düğümlere zamanlandığından emin olmak için [düğüm seçicileri][kubernetes-node-selectors] kullanacağız.
 
 > [!CAUTION]
 > [SDS (gizli bulma hizmeti)][istio-feature-sds] ve [istio CNI][istio-feature-cni] istio özellikleri şu anda [Alpha][istio-feature-stages]içinde olduğundan, bunlar etkinleştirilmeden önce düşünülmelidir. Ayrıca, [Service Account Token Volume Projection][kubernetes-feature-sa-projected-volume] Kubernetes ÖZELLIĞI (SDS için bir gereksinim) geçerli aks sürümlerinde etkin değildir.
 
-::: zone pivot="client-operating-system-linux"
+Aşağıdaki içerikle `istio.aks.yaml` adlı bir dosya oluşturun. Bu dosya, UBO 'ın yapılandırılması için [istio denetim düzlemi belirtim][istio-control-plane] ayrıntılarını tutacaktır.
 
-[!INCLUDE [Bash - install Istio components](includes/servicemesh/istio/install-components-bash.md)]
+```yaml
+apiVersion: install.istio.io/v1alpha2
+kind: IstioControlPlane
+spec:
+  # Use the default profile as the base
+  # More details at: https://istio.io/docs/setup/additional-setup/config-profiles/
+  profile: default
+  values:
+    global:
+      # Ensure that the Istio pods are only scheduled to run on Linux nodes
+      defaultNodeSelector:
+        beta.kubernetes.io/os: linux
+      # Enable mutual TLS for the control plane
+      controlPlaneSecurityEnabled: true
+      mtls:
+        # Require all service to service communication to have mtls
+        enabled: false
+    grafana:
+      # Enable Grafana deployment for analytics and monitoring dashboards
+      enabled: true
+      security:
+        # Enable authentication for Grafana
+        enabled: true
+    kiali:
+      # Enable the Kiali deployment for a service mesh observability dashboard
+      enabled: true
+    tracing:
+      # Enable the Jaeger deployment for tracing
+      enabled: true
+```
 
-::: zone-end
+`istioctl apply` komutunu ve yukarıdaki `istio.aks.yaml` Istio denetim düzlemi özellikleri dosyasını kullanarak istio 'yu aşağıdaki şekilde yüklersiniz:
 
-::: zone pivot="client-operating-system-macos"
+```console
+istioctl manifest apply -f istio.aks.yaml
+```
 
-[!INCLUDE [Bash - install Istio components](includes/servicemesh/istio/install-components-bash.md)]
+Yükleyici bir dizi [crds][kubernetes-crd] dağıtır ve ardından bu istio yapılandırması için tanımlanan tüm ilgili nesneleri yüklemek üzere bağımlılıkları yönetir. Aşağıdaki çıktı kod parçacığına benzer bir şey görmeniz gerekir.
 
-::: zone-end
+```console
+Applying manifests for these components:
+- Tracing
+- EgressGateway
+- NodeAgent
+- Grafana
+- Policy
+- Citadel
+- CertManager
+- IngressGateway
+- Injector
+- Prometheus
+- PrometheusOperator
+- Kiali
+- Telemetry
+- Galley
+- Cni
+- Pilot
+- Base
+- CoreDNS
+NodeAgent is waiting on a prerequisite...
+Telemetry is waiting on a prerequisite...
+Galley is waiting on a prerequisite...
+Cni is waiting on a prerequisite...
+Grafana is waiting on a prerequisite...
+Policy is waiting on a prerequisite...
+Citadel is waiting on a prerequisite...
+EgressGateway is waiting on a prerequisite...
+Tracing is waiting on a prerequisite...
+Kiali is waiting on a prerequisite...
+PrometheusOperator is waiting on a prerequisite...
+IngressGateway is waiting on a prerequisite...
+Prometheus is waiting on a prerequisite...
+CertManager is waiting on a prerequisite...
+Injector is waiting on a prerequisite...
+Pilot is waiting on a prerequisite...
+Applying manifest for component Base
+Waiting for CRDs to be applied.
+CRDs applied.
+Finished applying manifest for component Base
+Prerequisite for Tracing has completed, proceeding with install.
+Prerequisite for Injector has completed, proceeding with install.
+Prerequisite for Telemetry has completed, proceeding with install.
+Prerequisite for Policy has completed, proceeding with install.
+Prerequisite for PrometheusOperator has completed, proceeding with install.
+Prerequisite for NodeAgent has completed, proceeding with install.
+Prerequisite for IngressGateway has completed, proceeding with install.
+Prerequisite for Kiali has completed, proceeding with install.
+Prerequisite for EgressGateway has completed, proceeding with install.
+Prerequisite for Galley has completed, proceeding with install.
+Prerequisite for Grafana has completed, proceeding with install.
+Prerequisite for Cni has completed, proceeding with install.
+Prerequisite for Citadel has completed, proceeding with install.
+Applying manifest for component Tracing
+Prerequisite for Prometheus has completed, proceeding with install.
+Prerequisite for Pilot has completed, proceeding with install.
+Prerequisite for CertManager has completed, proceeding with install.
+Applying manifest for component Kiali
+Applying manifest for component Prometheus
+Applying manifest for component IngressGateway
+Applying manifest for component Policy
+Applying manifest for component Telemetry
+Applying manifest for component Citadel
+Applying manifest for component Galley
+Applying manifest for component Pilot
+Applying manifest for component Injector
+Applying manifest for component Grafana
+Finished applying manifest for component Kiali
+Finished applying manifest for component Tracing
+Finished applying manifest for component Prometheus
+Finished applying manifest for component Citadel
+Finished applying manifest for component Policy
+Finished applying manifest for component IngressGateway
+Finished applying manifest for component Injector
+Finished applying manifest for component Galley
+Finished applying manifest for component Pilot
+Finished applying manifest for component Grafana
+Finished applying manifest for component Telemetry
 
-::: zone pivot="client-operating-system-windows"
+Component IngressGateway installed successfully:
+================================================
 
-[!INCLUDE [PowerShell - install Istio components](includes/servicemesh/istio/install-components-powershell.md)]
+serviceaccount/istio-ingressgateway-service-account created
+deployment.apps/istio-ingressgateway created
+gateway.networking.istio.io/ingressgateway created
+sidecar.networking.istio.io/default created
+poddisruptionbudget.policy/ingressgateway created
+horizontalpodautoscaler.autoscaling/istio-ingressgateway created
+service/istio-ingressgateway created
 
-::: zone-end
-
-`istio` Held grafiği çok sayıda nesne dağıtır. Listeyi yukarıdaki `helm install` komutunun çıktısından görebilirsiniz. Çalışan bileşenlerinin dağıtımı, küme ortamınıza bağlı olarak 2 dakika sürer.
+...
+```
 
 Bu noktada, AKS kümenize Istio 'u dağıttık. Başarılı bir Istio dağıtımına sahip olduğunuzdan emin olmak için, bir sonraki bölüme ilerleyip bu [yüklemeyi doğrulayalım](#validate-the-istio-installation).
 
@@ -203,22 +255,22 @@ Aşağıdaki örnek çıktıda Şu anda çalışıyor olması gereken hizmetler 
 `istio-ingressgateway` `<pending>`dış IP 'si gösteriyorsa, Azure ağ tarafından bir IP adresi atanmadan birkaç dakika bekleyin.
 
 ```console
-NAME                     TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                                                      AGE   SELECTOR
-grafana                  ClusterIP      10.0.164.244   <none>           3000/TCP                                                                                                                                     53s   app=grafana
-istio-citadel            ClusterIP      10.0.49.16     <none>           8060/TCP,15014/TCP                                                                                                                           53s   istio=citadel
-istio-galley             ClusterIP      10.0.175.173   <none>           443/TCP,15014/TCP,9901/TCP                                                                                                                   53s   istio=galley
-istio-ingressgateway     LoadBalancer   10.0.226.151   20.188.221.111   15020:31128/TCP,80:31380/TCP,443:31390/TCP,31400:31400/TCP,15029:30817/TCP,15030:30436/TCP,15031:32485/TCP,15032:30980/TCP,15443:30124/TCP   53s   app=istio-ingressgateway,istio=ingressgateway,release=istio
-istio-pilot              ClusterIP      10.0.102.158   <none>           15010/TCP,15011/TCP,8080/TCP,15014/TCP                                                                                                       53s   istio=pilot
-istio-policy             ClusterIP      10.0.234.53    <none>           9091/TCP,15004/TCP,15014/TCP                                                                                                                 53s   istio-mixer-type=policy,istio=mixer
-istio-sidecar-injector   ClusterIP      10.0.216.8     <none>           443/TCP,15014/TCP                                                                                                                            53s   istio=sidecar-injector
-istio-telemetry          ClusterIP      10.0.154.215   <none>           9091/TCP,15004/TCP,15014/TCP,42422/TCP                                                                                                       53s   istio-mixer-type=telemetry,istio=mixer
-jaeger-agent             ClusterIP      None           <none>           5775/UDP,6831/UDP,6832/UDP                                                                                                                   52s   app=jaeger
-jaeger-collector         ClusterIP      10.0.26.109    <none>           14267/TCP,14268/TCP                                                                                                                          52s   app=jaeger
-jaeger-query             ClusterIP      10.0.70.55     <none>           16686/TCP                                                                                                                                    52s   app=jaeger
-kiali                    ClusterIP      10.0.36.206    <none>           20001/TCP                                                                                                                                    53s   app=kiali
-prometheus               ClusterIP      10.0.236.99    <none>           9090/TCP                                                                                                                                     53s   app=prometheus
-tracing                  ClusterIP      10.0.83.152    <none>           80/TCP                                                                                                                                       52s   app=jaeger
-zipkin                   ClusterIP      10.0.25.86     <none>           9411/TCP                                                                                                                                     52s   app=jaeger
+NAME                     TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                                      AGE   SELECTOR
+grafana                  ClusterIP      10.0.116.147   <none>           3000/TCP                                                                                                                     92s   app=grafana
+istio-citadel            ClusterIP      10.0.248.152   <none>           8060/TCP,15014/TCP                                                                                                           94s   app=citadel
+istio-galley             ClusterIP      10.0.50.100    <none>           443/TCP,15014/TCP,9901/TCP,15019/TCP                                                                                         93s   istio=galley
+istio-ingressgateway     LoadBalancer   10.0.36.213    20.188.221.111   15020:30369/TCP,80:31368/TCP,443:30045/TCP,15029:32011/TCP,15030:31212/TCP,15031:32411/TCP,15032:30009/TCP,15443:30010/TCP   93s   app=istio-ingressgateway
+istio-pilot              ClusterIP      10.0.23.222    <none>           15010/TCP,15011/TCP,8080/TCP,15014/TCP                                                                                       93s   istio=pilot
+istio-policy             ClusterIP      10.0.59.250    <none>           9091/TCP,15004/TCP,15014/TCP                                                                                                 93s   istio-mixer-type=policy,istio=mixer
+istio-sidecar-injector   ClusterIP      10.0.123.219   <none>           443/TCP                                                                                                                      93s   istio=sidecar-injector
+istio-telemetry          ClusterIP      10.0.216.9     <none>           9091/TCP,15004/TCP,15014/TCP,42422/TCP                                                                                       89s   istio-mixer-type=telemetry,istio=mixer
+jaeger-agent             ClusterIP      None           <none>           5775/UDP,6831/UDP,6832/UDP                                                                                                   96s   app=jaeger
+jaeger-collector         ClusterIP      10.0.221.24    <none>           14267/TCP,14268/TCP,14250/TCP                                                                                                95s   app=jaeger
+jaeger-query             ClusterIP      10.0.46.154    <none>           16686/TCP                                                                                                                    95s   app=jaeger
+kiali                    ClusterIP      10.0.174.97    <none>           20001/TCP                                                                                                                    94s   app=kiali
+prometheus               ClusterIP      10.0.245.226   <none>           9090/TCP                                                                                                                     94s   app=prometheus
+tracing                  ClusterIP      10.0.249.95    <none>           9411/TCP                                                                                                                     95s   app=jaeger
+zipkin                   ClusterIP      10.0.154.89    <none>           9411/TCP                                                                                                                     94s   app=jaeger
 ```
 
 Ardından, gerekli yığınların oluşturulduğunu onaylayın. [Kubectl Get Pod][kubectl-get] komutunu kullanın ve `istio-system` ad alanını sorgulayın:
@@ -235,24 +287,21 @@ Aşağıdaki örnek çıktı, çalıştıran Pod 'leri göstermektedir:
 - `kiali` eklentisi hizmet ağı panosu Pod
 
 ```console
-NAME                                     READY   STATUS      RESTARTS   AGE
-grafana-7c48555456-msl7b                 1/1     Running     0          88s
-istio-citadel-566fc66db7-m8wgl           1/1     Running     0          87s
-istio-galley-5746db8d56-pl5gg            1/1     Running     0          88s
-istio-ingressgateway-6c94f7c9bf-f5lt5    1/1     Running     0          88s
-istio-init-crd-10-1.3.2-xw9g2            0/1     Completed   0          92m
-istio-init-crd-11-1.3.2-54rz8            0/1     Completed   0          92m
-istio-init-crd-12-1.3.2-789qj            0/1     Completed   0          92m
-istio-pilot-6748968b6d-rvdfx             2/2     Running     0          87s
-istio-policy-7576bbbcf7-2stft            2/2     Running     0          87s
-istio-sidecar-injector-76d79d494-7jk9n   1/1     Running     0          87s
-istio-telemetry-74b7bf676d-tfrcl         2/2     Running     0          88s
-istio-tracing-655d9588bc-d2htg           1/1     Running     0          86s
-kiali-65d55bcfb8-tqrfk                   1/1     Running     0          88s
-prometheus-846f9849bd-br8kp              1/1     Running     0          87s
+NAME                                          READY   STATUS    RESTARTS   AGE
+grafana-6bc97ff99-k9sk4                       1/1     Running   0          92s
+istio-citadel-6b5c754454-tb8nf                1/1     Running   0          94s
+istio-galley-7d6d78d7c5-zshsd                 2/2     Running   0          94s
+istio-ingressgateway-85869c5cc7-x5d76         1/1     Running   0          95s
+istio-pilot-787d6995b5-n5vrj                  2/2     Running   0          94s
+istio-policy-6cf4fbc8dc-sdsg5                 2/2     Running   2          94s
+istio-sidecar-injector-5d5b978668-wrz2s       1/1     Running   0          94s
+istio-telemetry-5498db684-6kdnw               2/2     Running   1          94s
+istio-tracing-78548677bc-74tx6                1/1     Running   0          96s
+kiali-59b7fd7f68-92zrh                        1/1     Running   0          95s
+prometheus-7c7cf9dbd6-rjxcv                   1/1     Running   0          94s
 ```
 
-`Completed` durumu olan üç `istio-init-crd-*` Pod olmalıdır. Bu FID 'ler, daha önceki bir adımda CRDs 'yi oluşturan işleri çalıştırmaktan sorumludur. Diğer tüm yığınların `Running`durumunu göstermesi gerekir. Ayırımlarınızın bu durumları yoksa, tamamlanana kadar bir dakika veya iki tane bekleyin. Herhangi bir pod bir sorun bildirirse, çıktısını ve durumlarını gözden geçirmek için [kubectl 'yi bir pod betimleyen][kubectl-describe] komutunu kullanın.
+Tüm FID 'ler `Running`durumunu göstermelidir. Ayırımlarınızın bu durumları yoksa, tamamlanana kadar bir dakika veya iki tane bekleyin. Herhangi bir pod bir sorun bildirirse, çıktısını ve durumlarını gözden geçirmek için [kubectl 'yi bir pod betimleyen][kubectl-describe] komutunu kullanın.
 
 ## <a name="accessing-the-add-ons"></a>Eklentilere erişme
 
@@ -309,33 +358,31 @@ istioctl dashboard envoy <pod-name>.<namespace>
 
 ### <a name="remove-istio-components-and-namespace"></a>Istio bileşenlerini ve ad alanını kaldır
 
-AKS kümenizdeki ICU 'yi kaldırmak için aşağıdaki komutları kullanın. `helm delete` komutları `istio` ve `istio-init` grafiklerini kaldırır ve `kubectl delete namespace` komutu `istio-system` ad alanını kaldırır.
+AKS kümenizdeki ICU 'yi kaldırmak için, `istio.aks.yaml` Istio denetim düzlemi belirtimi dosyası ile `istioctl manifest generate` komutunu kullanın. Bu, yüklü tüm bileşenleri ve `istio-system` ad alanını kaldırmak için `kubectl delete` yönelttireceğiz dağıtılan bildirimi oluşturur.
 
-```azurecli
-helm delete --purge istio
-helm delete --purge istio-init
-kubectl delete namespace istio-system
+```console
+istioctl manifest generate -f istio.aks.yaml | kubectl delete -f -
 ```
 
 ### <a name="remove-istio-crds-and-secrets"></a>Istio CRDs ve gizli dizileri kaldır
 
-Yukarıdaki komutlar tüm Istio bileşenlerini ve ad alanını siler, ancak yine de ilerme CRU ve gizli dizileri ile hala çalışıyoruz. 
+Yukarıdaki komutlar tüm Istio bileşenlerini ve ad alanını siler, ancak yine de üretilmiş olan Istio gizli dizileri ile hala ayrıldık. 
 
 ::: zone pivot="client-operating-system-linux"
 
-[!INCLUDE [Bash - remove Istio CRDs and secrets](includes/servicemesh/istio/uninstall-bash.md)]
+[!INCLUDE [Bash - remove Istio secrets](includes/servicemesh/istio/uninstall-bash.md)]
 
 ::: zone-end
 
 ::: zone pivot="client-operating-system-macos"
 
-[!INCLUDE [Bash - remove Istio CRDs and secrets](includes/servicemesh/istio/uninstall-bash.md)]
+[!INCLUDE [Bash - remove Istio secrets](includes/servicemesh/istio/uninstall-bash.md)]
 
 ::: zone-end
 
 ::: zone pivot="client-operating-system-windows"
 
-[!INCLUDE [PowerShell - remove Istio CRDs and secrets](includes/servicemesh/istio/uninstall-powershell.md)]
+[!INCLUDE [PowerShell - remove Istio secrets](includes/servicemesh/istio/uninstall-powershell.md)]
 
 ::: zone-end
 
@@ -346,10 +393,9 @@ Aşağıdaki belgelerde, bir kanarya yayını kullanıma sunmak üzere akıllı 
 > [!div class="nextstepaction"]
 > [AKS Istio akıllı yönlendirme senaryosu][istio-scenario-routing]
 
-Istio 'ın daha fazla yükleme ve yapılandırma seçeneklerini araştırmak için aşağıdaki resmi Istio makalelerine bakın:
+Istio 'nun daha fazla yükleme ve yapılandırma seçeneklerini araştırmak için aşağıdaki resmi Istio yönergelerine bakın:
 
-- [İstio-Helm Yükleme Kılavuzu][istio-install-helm]
-- [İstio-Helm yükleme seçenekleri][istio-install-helm-options]
+- [İstio-Yükleme Kılavuzu][istio-installation-guides]
 
 Ayrıca şunları kullanarak ek senaryolar izleyebilirsiniz:
 
@@ -368,9 +414,11 @@ Application Insights ve Istio kullanarak AKS uygulamanızı nasıl izleyeceğini
 [istio-github]: https://github.com/istio/istio
 [istio-github-releases]: https://github.com/istio/istio/releases
 [istio-release-notes]: https://istio.io/news/
+[istio-installation-guides]: https://istio.io/docs/setup/install/
 [istio-install-download]: https://istio.io/docs/setup/kubernetes/download-release/
-[istio-install-helm]: https://istio.io/docs/setup/install/helm/
-[istio-install-helm-options]: https://istio.io/docs/reference/config/installation-options/
+[istio-install-istioctl]: https://istio.io/docs/setup/install/istioctl/
+[istio-configuration-profiles]: https://istio.io/docs/setup/additional-setup/config-profiles/
+[istio-control-plane]: https://istio.io/docs/reference/config/istio.operator.v1alpha12.pb/#IstioControlPlane
 [istio-bookinfo-example]: https://istio.io/docs/examples/bookinfo/
 
 [istio-feature-stages]: https://istio.io/about/feature-stages/
@@ -381,7 +429,6 @@ Application Insights ve Istio kullanarak AKS uygulamanızı nasıl izleyeceğini
 
 [kubernetes-feature-sa-projected-volume]: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection
 [kubernetes-crd]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions
-[kubernetes-jobs]: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
 [kubernetes-secrets]: https://kubernetes.io/docs/concepts/configuration/secret/
 [kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
@@ -399,4 +446,3 @@ Application Insights ve Istio kullanarak AKS uygulamanızı nasıl izleyeceğini
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md
 [istio-scenario-routing]: ./servicemesh-istio-scenario-routing.md
-[helm-install]: ./kubernetes-helm.md

@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 3df0fa448e320cba6dd3aaba1bb1be09c1a8b49b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 96238da73a0bf6816635a71d13ea2ae6762d1955
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107672"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170398"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Öğretici: Time Series Insights kullanarak Azure dijital TWINS 'deki olayları görselleştirin ve çözümleyin
 
@@ -54,6 +54,8 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. **Event Hubs** araması yapın ve sonuçlardan seçin. **Oluştur**'u seçin.
 
+    [![Event Hubs ad alanı oluşturma](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
+
 1. Event Hubs ad alanınız için bir **ad** girin. **Fiyatlandırma katmanı**, **aboneliğiniz**, dijital TWINS örneğiniz için kullandığınız **kaynak grubu** ve **konum**için **Standart** ' ı seçin. **Oluştur**'u seçin.
 
 1. Event Hubs ad alanı dağıtımı ' nda **genel bakış** bölmesini seçin, sonra **Kaynağa Git**' i seçin.
@@ -77,7 +79,10 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
     [![Olay Hub 'ı bağlantı dizeleri](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
-1. Oluşturduğunuz ManageSend ilkesini açın ve **bağlantı dizesi--birincil anahtar** ve **bağlantı dizesi--ikincil anahtar** değerlerini geçici bir dosyaya kopyalayın. Sonraki bölümde Olay Hub 'ı için bir uç nokta oluşturmak üzere bu değerlere ihtiyacınız olacak.
+    > [!TIP]
+    > Ad alanınız yerine olay hub örneğiniz için bir SAS Ilkesi oluşturmadiğinizi doğrulayın.
+
+1. Oluşturduğunuz **ManageSend** ilkesini açın ve **Bağlantı dizesi--birincil anahtar** ile **Bağlantı dizesi--ikincil anahtar** değerlerini geçici bir dosyaya kopyalayın. Sonraki bölümde Olay Hub 'ı için bir uç nokta oluşturmak üzere bu değerlere ihtiyacınız olacak.
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>Olay Hub 'ı için bir uç nokta oluşturma
 
@@ -105,13 +110,13 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. Yer tutucuları `Primary_connection_string_for_your_event_hub`, Olay Hub 'ı için **birincil anahtar olan bağlantı dizesinin** değeri ile değiştirin. Bu bağlantı dizesinin biçiminin aşağıdaki gibi olduğundan emin olun:
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
 1. Yer tutucuları `Secondary_connection_string_for_your_event_hub`, Olay Hub 'ı için **İkincil anahtar olan bağlantı dizesinin** değeri ile değiştirin. Bu bağlantı dizesinin biçiminin aşağıdaki gibi olduğundan emin olun: 
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 

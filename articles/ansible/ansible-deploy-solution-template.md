@@ -3,17 +3,13 @@ title: Hızlı başlangıç-Azure için anormal çözüm şablonunu CentOS 'a da
 description: Bu hızlı başlangıçta, Azure 'da barındırılan bir CentOS sanal makinesine ve Azure ile çalışmak üzere yapılandırılmış araçlarla birlikte, anormal çözüm şablonunu dağıtmayı öğrenin.
 keywords: anerişilebilir, Azure, DevOps, çözüm şablonu, sanal makine, Azure kaynakları için Yönetilen kimlikler, CentOS, Red Hat
 ms.topic: quickstart
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 6aa721ee6cf6680518a28d050c22d8649f0f531f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ebd01411ff27b0e95be21ef147098a90b6f62742
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833160"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156319"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Hızlı başlangıç: Azure 'da CentOS 'a yönelik anormal çözüm şablonu dağıtma
 
@@ -23,7 +19,7 @@ Azure için anormal çözüm şablonu, bir CentOS sanal makinesi üzerinde anorm
 - **Azure komut satırı arabirimi (CLI) 2,0** -azure [CLI 2,0](/cli/azure/?view=azure-cli-latest) , Azure kaynaklarını yönetmeye yönelik platformlar arası bir komut satırı deneyimidir. 
 - **Azure kaynakları için Yönetilen kimlikler** - [Azure kaynakları için Yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/overview) özelliği, bulut uygulaması kimlik bilgilerinin güvenliğini sağlama sorununu ele alınmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 

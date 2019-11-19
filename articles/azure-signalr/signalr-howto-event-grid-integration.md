@@ -5,14 +5,14 @@ services: signalr
 author: chenyl
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: 100c7120889f88c1bab3418822835e8d4ece9826
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f89fcdd50d958269b5c79c41ebabd69331c905aa
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839288"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158206"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Azure SignalR hizmetinden olayları Event Grid 'a gönderme
 
@@ -26,7 +26,7 @@ Bu makaledeki Azure CLı komutları **Bash** kabuğu için biçimlendirilir. Pow
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure Kaynak grubu, Azure kaynaklarınızı dağıttığınız ve yönettiğiniz bir mantıksal kapsayıcıdır. Aşağıdaki [az Group Create][az-group-create] komutu, *Eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturur. Kaynak grubunuz için farklı bir ad kullanmak istiyorsanız, farklı bir değere ayarlayın `RESOURCE_GROUP_NAME` .
+Azure Kaynak grubu, Azure kaynaklarınızı dağıttığınız ve yönettiğiniz bir mantıksal kapsayıcıdır. Aşağıdaki [az Group Create][az-group-create] komutu, *Eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturur. Kaynak grubunuz için farklı bir ad kullanmak istiyorsanız, `RESOURCE_GROUP_NAME` farklı bir değere ayarlayın.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -75,7 +75,7 @@ SignalR hizmeti oluşturulduktan sonra Azure CLı, aşağıdakine benzer bir ç�
 
 Bu bölümde, önceden oluşturulmuş örnek bir Web uygulamasını Azure App Service dağıtmak için GitHub deposunda bulunan Kaynak Yöneticisi şablonunu kullanırsınız. Daha sonra, kayıt defterinizin Event Grid olaylarına abone olur ve bu uygulamayı olayların gönderildiği uç nokta olarak belirtirsiniz.
 
-Örnek uygulamayı dağıtmak için, Web uygulamanız `SITE_NAME` için benzersiz bir ad ayarlayın ve aşağıdaki komutları yürütün. Site adı, Web uygulamasının tam etki alanı adının (FQDN) bir kısmını oluşturduğundan Azure içinde benzersiz olmalıdır. Daha sonraki bir bölümde, kayıt defterinizin olaylarını görüntülemek için bir Web tarayıcısında uygulamanın FQDN 'sine gidebilirsiniz.
+Örnek uygulamayı dağıtmak için, `SITE_NAME` Web uygulamanız için benzersiz bir ad olarak ayarlayın ve aşağıdaki komutları yürütün. Site adı, Web uygulamasının tam etki alanı adının (FQDN) bir kısmını oluşturduğundan Azure içinde benzersiz olmalıdır. Daha sonraki bir bölümde, kayıt defterinizin olaylarını görüntülemek için bir Web tarayıcısında uygulamanın FQDN 'sine gidebilirsiniz.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -141,7 +141,7 @@ Abonelik tamamlandığında aşağıdakine benzer bir çıktı görmeniz gerekir
 
 ## <a name="trigger-registry-events"></a>Kayıt defteri olaylarını tetikleme
 
-Hizmet moduna `Serverless Mode` geçin ve SignalR hizmetine bir istemci bağlantısı kurun. Bir başvuru olarak [sunucusuz örnek](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) gerçekleştirebilirsiniz.
+`Serverless Mode` için hizmet moduna geçin ve bir istemci bağlantısını SignalR hizmetine ayarlayın. Bir başvuru olarak [sunucusuz örnek](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) gerçekleştirebilirsiniz.
 
 ```bash
 git clone git@github.com:aspnet/AzureSignalR-samples.git
@@ -162,7 +162,7 @@ dotnet run
 
 ## <a name="view-registry-events"></a>Kayıt defteri olaylarını görüntüleme
 
-Artık bir istemciyi SignalR hizmetine bağladınız. Event Grid Viewer Web uygulamanıza gidin ve bir `ClientConnectionConnected` olay görmeniz gerekir. İstemciyi sona erdirirsiniz, bir `ClientConnectionDisconnected` olay da görürsünüz.
+Artık bir istemciyi SignalR hizmetine bağladınız. Event Grid Viewer Web uygulamanıza gidin ve `ClientConnectionConnected` bir olay görmeniz gerekir. İstemciyi sona erdirirsiniz, `ClientConnectionDisconnected` bir olay da görürsünüz.
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F

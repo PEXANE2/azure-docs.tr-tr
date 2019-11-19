@@ -8,20 +8,16 @@ ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 176dfdabeee6299bba0eb17085be25ced3e97993
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 075c60aed458be8a4bf45fafb2d06757862ff5ba
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091910"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158591"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Fiziksel sunucuların değerlendirmesi ve Azure 'a geçirilmesi için hazırlanma
 
 Bu makalede, [Azure geçişi](migrate-services-overview.md)ile şirket içi fiziksel sunucu değerlendirmesi için nasıl hazırlanılacağı açıklanır.
-
-
-> [!NOTE]
-> Azure geçişi portalında bu özelliklerden bazılarını henüz göremiyorsanız, ' ı kapatın. Bu, sonraki hafta içinde görünürler.
 
 [Azure geçişi](migrate-overview.md) , Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan araçların merkezini sağlar. Hub, Azure geçiş araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir. 
 
@@ -45,7 +41,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Azure geçişi dağıtımı için izinleri ayarlamanız gerekir.
 
-- Azure geçişi projesi oluşturmak için Azure hesabınız için izinler. 
+- Azure geçişi projesi oluşturmak için Azure hesabınız için izinler.
 - Azure geçişi gerecini kaydetmek için hesabınızın izinleri. Gereç, Hyper-V bulma ve geçiş için kullanılır. Gereç kaydı sırasında Azure geçişi, gereci benzersiz bir şekilde tanımlayan iki Azure Active Directory (Azure AD) uygulaması oluşturur:
     - İlk uygulama Azure geçişi hizmet uç noktaları ile iletişim kurar.
     - İkinci uygulama, Azure AD uygulama bilgileri ve gereç yapılandırma ayarlarını depolamak için kayıt sırasında oluşturulan Azure Key Vault erişir.
@@ -73,7 +69,7 @@ Aşağıdaki yöntemlerden birini kullanarak, Gereç kaydı sırasında oluştur
 Buna dikkat edin:
 
 - Uygulamalar, yukarıda açıklananlar dışında başka bir abonelik üzerinde başka erişim izinlerine sahip değildir.
-- Yalnızca yeni bir gereç kaydettiğinizde bu izinlere ihtiyacınız vardır. Gereç kurulduktan sonra izinleri kaldırabilirsiniz. 
+- Yalnızca yeni bir gereç kaydettiğinizde bu izinlere ihtiyacınız vardır. Gereç kurulduktan sonra izinleri kaldırabilirsiniz.
 
 
 #### <a name="grant-account-permissions"></a>Hesap izinleri verme
@@ -88,7 +84,7 @@ Kiracı/Genel yönetici, izinleri aşağıdaki gibi verebilir:
 > [!NOTE]
 > Bu, hassas olmayan bir varsayılan ayardır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
-#### <a name="assign-application-developer-role"></a>Uygulama geliştirici rolü atama 
+#### <a name="assign-application-developer-role"></a>Uygulama geliştirici rolü atama
 
 Kiracı/Genel yönetici, uygulama geliştirici rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
@@ -124,12 +120,12 @@ Azure geçişi 'nin şirket içi sunucuları bulması için izinleri olması ger
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide şunları yaptınız:
- 
-> [!div class="checklist"] 
+
+> [!div class="checklist"]
 > * Azure hesabı izinlerini ayarlayın.
 > * Değerlendirme için fiziksel sunucular hazırlandı.
 
 Azure geçişi projesi oluşturmak ve Azure 'a geçiş için fiziksel sunucuları değerlendirmek üzere bir sonraki öğreticiye devam edin
 
-> [!div class="nextstepaction"] 
-> [Fiziksel sunucuları değerlendir](./tutorial-assess-physical.md) 
+> [!div class="nextstepaction"]
+> [Fiziksel sunucuları değerlendir](./tutorial-assess-physical.md)

@@ -3,17 +3,13 @@ title: Öğretici-Azure Service Bus kullanarak kuyrukları yapılandırma
 description: Azure Service Bus kuyruğu oluşturmak için nasıl kullanılacağını öğrenin
 keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, hizmet veri yolu, kuyruk
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: a48796c2177a8b5b818553bf8aa0ff36f712d4e0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9903419a52be61cd7ec74214858bce81df7e727e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241390"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155816"
 ---
 # <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Öğretici: Azure Service Bus kullanarak kuyrukları yapılandırma
 
@@ -25,13 +21,13 @@ ms.locfileid: "72241390"
 
 > [!div class="checklist"]
 >
-> * Sıra oluşturma
+> * Kuyruk oluşturma
 > * SAS plicy oluşturma
 > * Ad alanı bilgilerini al
 > * Kuyruk bilgilerini al
 > * Kuyruk SAS ilkesini iptal etme
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -39,11 +35,11 @@ ms.locfileid: "72241390"
 ## <a name="create-the-service-bus-queue"></a>Service Bus kuyruğu oluşturma
 
 Örnek PlayBook kodu aşağıdaki kaynakları oluşturur:
-- Azure Kaynak grubu
+- Azure kaynak grubu
 - Kaynak grubu içinde Service Bus ad alanı
 - Ad alanı ile Service Bus kuyruğu
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `servicebus_queue.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -72,7 +68,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
           var: queue
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook servicebus_queue.yml
@@ -84,7 +80,7 @@ ansible-playbook servicebus_queue.yml
 
 Örnek PlayBook kodu, farklı ayrıcalıklara sahip bir Service Bus kuyruğu için iki SAS ilkesi oluşturur.
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `servicebus_queue_policy.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -107,9 +103,9 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 ```
 
 PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
-- @No__t-0 değeri, bir kullanıcının kuyrukla olan ayrıcalığını temsil eder. Şu değerlerden birini belirtin: `manage`, `listen`, `send` veya `listen_send`.
+- `rights` değeri, bir kullanıcının kuyrukla olan ayrıcalığını temsil eder. Şu değerlerden birini belirtin: `manage`, `listen`, `send`veya `listen_send`.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook servicebus_queue_policy.yml
@@ -119,7 +115,7 @@ ansible-playbook servicebus_queue_policy.yml
 
 Örnek PlayBook kodu, ad alanı bilgilerini sorgular.
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `servicebus_namespace_info.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -140,9 +136,9 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 ```
 
 PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
-- @No__t-0 değeri, belirtilen ad alanı altında SAS ilkelerinin gösterilip gösterilmeyeceğini gösterir. Varsayılan olarak, ek ağ yükünün önüne geçmek için değer `False` ' dır.
+- `show_sas_policies` değeri, belirtilen ad alanı altında SAS ilkelerinin gösterilip gösterilmeyeceğini gösterir. Varsayılan olarak, ek ağ yükünün önüne geçmek için değeri `False`.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
@@ -152,7 +148,7 @@ ansible-playbook servicebus_namespace_info.yml
 
 Örnek PlayBook kodu, kuyruk bilgilerini sorgular. 
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `servicebus_queue_info.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -175,9 +171,9 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 ```
 
 PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
-- @No__t-0 değeri, belirtilen sırada SAS ilkelerinin gösterilip gösterilmeyeceğini gösterir. Bu değer, ek ağ yükünü önlemek için varsayılan olarak `False` olarak ayarlanır.
+- `show_sas_policies` değeri, SAS ilkelerinin belirtilen sıra altında gösterilip gösterilmeyeceğini gösterir. Bu değer, varsayılan olarak, ek ağ yükünün önüne geçmek için `False` olarak ayarlanır.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook servicebus_queue_info.yml
@@ -187,7 +183,7 @@ ansible-playbook servicebus_queue_info.yml
 
 Örnek PlayBook kodu bir sıra SAS ilkesini siler.
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `servicebus_queue_policy_delete.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -206,17 +202,17 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
           state: absent
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook servicebus_queue_policy_delete.yml
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu @no__t olarak kaydet-0:
+Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
 
 ```yml
 ---
@@ -244,7 +240,7 @@ Aşağıdaki kodu @no__t olarak kaydet-0:
           force_delete_nonempty: yes
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml

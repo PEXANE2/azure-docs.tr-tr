@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: a33c653199ae21b551acadfb4503eae029ddc5e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e9934f868fb62f9b1a19ef408dab69ab8a2c0e29
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822820"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159154"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>SQL veritabanı ve SQL veri ambarı 'na veritabanı erişimini denetleme ve verme
 
@@ -54,6 +54,9 @@ Yönetici işlevlerine sahip iki yönetici hesabı (**Sunucu yöneticisi** ve **
 - Veritabanları, oturum açmalar, ana öğe ve sunucu düzeyinde IP güvenlik duvarı kuralları oluşturabilir, değiştirebilir ve bırakabilir.
 - `dbmanager` ve `loginmanager` rollerine üye ekleyebilir ve kaldırabilir.
 - `sys.sql_logins` sistem tablosunu görüntüleyebilir.
+- Yeniden adlandırılamaz.
+- Azure AD yönetici hesabını değiştirmek için portalını veya Azure CLı 'yi kullanın.
+- Sunucu Yöneticisi hesabı daha sonra değiştirilemez.
 
 ### <a name="configuring-the-firewall"></a>Güvenlik duvarını yapılandırma
 

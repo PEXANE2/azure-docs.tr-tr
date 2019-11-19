@@ -1,20 +1,15 @@
 ---
-title: Azure sanal makinelerini uygun ölçekte yedekleme
+title: Öğretici-Azure sanal makinelerini ölçekli olarak yedekleme
 description: Bu öğreticide, bir kurtarma hizmetleri Kasası oluşturmayı, bir yedekleme ilkesi tanımlamanızı ve aynı anda birden çok sanal makineyi nasıl yedekleyeceğinizi öğrenin.
-keywords: sanal makine yedeklemesi; sanal makine yedeklemek; VM yedeklemesi; VM’yi yedekleme; Azure VM yedekleme; yedekleme ve olağanüstü durum kurtarma
-author: dcurwin
-manager: carmonm
-ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
-ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 99a842704325e38cbf1ab9203a56a25bc2273827
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6034202649e6d9bce75f0069316b79b55e533490
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747024"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171846"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Birden çok sanal makineyi yedeklemek için Azure portalını kullanma
 
@@ -37,7 +32,7 @@ Kurtarma Hizmetleri kasası, yedekleme verilerini ve korumalı sanal makinelere 
 
 1. Sol taraftaki menüden **Tüm hizmetler**’i seçin ve hizmet listesinde *Kurtarma Hizmetleri* yazın. Siz yazarken kaynakların listesini filtrelenir. Listede Kurtarma Hizmetleri kasalarını gördüğünüzde Kurtarma Hizmetleri kasası menüsünü açmak için seçin.
 
-    ![Kurtarma Hizmetleri Kasası menüsünü açma](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png) <br/>
+    ![Kurtarma Hizmetleri Kasası menüsünü açma](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png)
 
 2. **Kurtarma Hizmetleri kasaları** menüsünde, **Ekle**’ye tıklayarak Kurtarma Hizmetleri kasası menüsünü açın.
 
@@ -48,7 +43,7 @@ Kurtarma Hizmetleri kasası, yedekleme verilerini ve korumalı sanal makinelere 
     * *Ad* alanına **myRecoveryServicesVault** yazın.
     * **Abonelik** bölümünde geçerli abonelik kimliği görüntülenir. Ek abonelikleriniz varsa yeni kasa için başka bir abonelik seçebilirsiniz.
     * **Kaynak grubu** için **Var olanı kullan**’ı seçin ve sonra *myResourceGroup* seçeneğini belirleyin. *myResourceGroup* yoksa **Yeni oluştur**’u seçin ve *myResourceGroup* yazın.
-    * **Konum** açılan menüsünden *Batı Avrupa*’yı seçin.
+    * **Konum** açılır menüsünden *Batı Avrupa*’yı seçin.
     * Kurtarma Hizmetleri kasanızı oluşturmak için **Oluştur**’a tıklayın.
 
 Kurtarma Hizmetleri kasası, korunan sanal makinelerle aynı konumda olmalıdır. Birden çok bölgede sanal makineniz varsa her bölgede bir Kurtarma Hizmetleri kasası oluşturun. Bu öğreticide, *Batı Avrupa*, *myVM*’nin (hızlı başlangıçla oluşturulan sanal makine) oluşturulduğu konum olduğu için burada bir Kurtarma Hizmetleri kasası oluşturulmaktadır.
@@ -78,7 +73,7 @@ Kurtarma Hizmetleri kasasını oluşturduktan sonraki adım, veri türü için k
     ![İş yükünü seçme](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
 5. **Yedekleme ilkesi** menüsünde, **İlke Adı** türü için *Finans* yazın. Yedekleme ilkesi için aşağıdaki değişiklikleri girin:
-   * **Yedekleme sıklığı** için saat dilimini *Merkezi Saat* olarak ayarlayın. Spor tesisi Teksas’ta olduğundan, tesisin sahibi zamanlamanın yerel olarak ayarlanmasını istemektedir. Yedekleme sıklığını Günlük olarak saat 03:30'a ayarlanmış halde bırakın.
+   * **Yedekleme sıklığı** için saat dilimini *Orta Amerika Saati* olarak ayarlayın. Spor tesisi Teksas’ta olduğundan, tesisin sahibi zamanlamanın yerel olarak ayarlanmasını istemektedir. Yedekleme sıklığını Günlük olarak saat 03:30'a ayarlanmış halde bırakın.
    * **Günlük yedekleme noktası bekletmesi** için süreyi 90 gün olarak ayarlayın.
    * **Haftalık yedekleme noktası bekletmesi** için *Pazartesi* geri yükleme noktasını kullanın ve 52 hafta boyunca tutun.
    * **Aylık yedekleme noktası bekletmesi** için her ayın İlk Pazar günündeki geri yükleme noktasını kullanın ve 36 ay boyunca tutun.
@@ -165,7 +160,7 @@ Sonraki öğreticilerle çalışmaya devam etmeyi planlıyorsanız bu öğretici
 
     ![Kasayı silmek için Yedeklemeyi durdur seçeneğine tıklayın](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 
-8. **myRecoveryServicesVault** menüsünde **Sil** seçeneğine tıklayın.
+8. **myRecoveryServicesVault** menüsünde, **Sil** seçeneğine tıklayın.
 
     ![Kasayı silmek için Yedeklemeyi durdur seçeneğine tıklayın](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
 

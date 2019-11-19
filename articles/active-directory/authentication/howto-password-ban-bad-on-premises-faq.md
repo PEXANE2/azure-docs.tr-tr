@@ -4,19 +4,19 @@ description: Şirket içi Azure AD parola koruması hakkında SSS
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 473fe43bb4cf18c61f30d9b7e057da888dc6da62
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71268634"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167911"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Şirket içi Azure AD parola koruması-sık sorulan sorular
 
@@ -101,7 +101,7 @@ Hayır. Proxy sunucusu durum bilgisiz olduğundan, belirli bir proxy sunucusunun
 
 Evet. Azure AD parola koruma proxy hizmeti ve Azure AD Connect hiçbir şekilde doğrudan çakışmalıdır.
 
-Ne yazık ki Azure AD parola koruma proxy 'Si yazılımı tarafından yüklenen Microsoft Azure AD Connect Agent Güncelleştirici hizmeti sürümü ile Azure etkin tarafından yüklenen hizmetin sürümü arasında bir uyumsuzluk bulundu [ Dizin uygulama proxy 'Si](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) yazılımı. Bu uyumsuzluk, aracı güncelleştiricisi hizmetinin yazılım güncelleştirmeleri için Azure ile bağlantı kurabileceğinden kaynaklanabilir. Aynı makinede Azure AD parola koruma proxy ve Azure Active Directory Uygulama Ara Sunucusu yüklenmesi önerilmez.
+Ne yazık ki, Azure AD parola koruma proxy 'Si yazılımı tarafından yüklenen Microsoft Azure AD Connect Agent Güncelleştirici hizmeti sürümü ile [Azure Active Directory uygulama ara sunucusu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) yazılımı tarafından yüklenen hizmetin sürümü arasında bir uyumsuzluk bulundu. Bu uyumsuzluk, aracı güncelleştiricisi hizmetinin yazılım güncelleştirmeleri için Azure ile bağlantı kurabileceğinden kaynaklanabilir. Aynı makinede Azure AD parola koruma proxy ve Azure Active Directory Uygulama Ara Sunucusu yüklenmesi önerilmez.
 
 **S: DC aracıları ve proxy 'lerin hangi sırada yüklü ve kayıtlı olması gerekir?**
 
@@ -113,7 +113,7 @@ Azure AD parola koruması DC Aracısı hizmeti, mevcut bir sağlıklı Active Di
 
 Çoğu Active Directory dağıtım parolası değiştirme işlemleri, belirli bir etki alanı denetleyicisindeki genel iş yükünün küçük bir oransıdır. Örnek olarak, 10000 Kullanıcı hesabı ve bir Maxpasswordadge ilkesi içeren Active Directory bir etki alanını 30 gün olarak düşünün. Ortalama olarak, bu etki alanı, tek bir etki alanı denetleyicisi için çok az sayıda işlem olan her gün 10000/30 = ~ bir parola değiştirme işlemi görür. Olası bir en kötü durum senaryosunu göz önünde bulundurun: tek bir DC 'de ~ 333 parola değişikliklerinin tek bir saat içinde yapıldığını varsayalım. Örneğin, bu senaryo birçok çalışanın bir Pazartesi sabah günü üzerinde çalışması halinde gerçekleşebilir. Bu durumda bile, hala önemli bir yük olmayan ~ 333/60 dakika = altı parola değişikliğine bakıyoruz.
 
-Ancak, geçerli etki alanı denetleyicileriniz zaten performans sınırlı düzeylerde çalışıyorsa (örneğin, CPU, disk alanı, disk g/ç gibi), daha önce ek etki alanı denetleyicileri eklemeniz veya kullanılabilir disk alanını genişletmeniz önerilir Bu özellik dağıtılıyor. Yukarıdaki SYSVOL disk alanı kullanımı hakkında yukarıdaki soruya de bakın.
+Ancak, geçerli etki alanı denetleyicileriniz zaten performans sınırlı düzeylerde çalışıyorsa (örneğin, CPU, disk alanı, disk g/ç vb. açısından), bu özellik dağıtılmadan önce ek etki alanı denetleyicileri eklemeniz veya kullanılabilir disk alanının genişlemesine önerilir. Yukarıdaki SYSVOL disk alanı kullanımı hakkında yukarıdaki soruya de bakın.
 
 **S: Azure AD parola korumasını etki alanım 'da yalnızca birkaç DC 'de test etmek istiyorum. Kullanıcı parolası değişikliklerini söz konusu DC 'leri kullanacak şekilde zorlamak mümkün midir?**
 

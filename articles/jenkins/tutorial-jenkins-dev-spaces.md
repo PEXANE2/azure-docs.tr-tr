@@ -1,18 +1,14 @@
 ---
 title: Azure Kubernetes hizmeti ile Jenkins için Azure Dev Spaces eklentisini kullanma
 description: Azure Dev Spaces eklentisinin sürekli tümleştirme ardışık düzeninde nasıl kullanılacağını öğrenin.
-author: tomarchermsft
-ms.author: tarcher
-ms.service: jenkins
 ms.topic: tutorial
-ms.custom: mvc
 ms.date: 10/23/2019
-ms.openlocfilehash: 7bc2bb63f1382d1c7fd7e436dd5ddfa278262526
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 42d732cda26f0c34f0a54fffc0b1b9c54def94ad
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881874"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158739"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Öğretici: Azure Kubernetes hizmeti ile Jenkins için Azure Dev Spaces eklentisi kullanma 
 
@@ -131,7 +127,7 @@ Azure Dev Spaces ile Azure Dev Spaces ve çoklu hizmet geliştirmeyi kullanma ha
     Dev Spaces CLı 'nın `azds prep` komutu, varsayılan ayarlarla Docker ve Kubernetes varlıkları oluşturur. Bu dosyalar projenin ömrü boyunca kalır ve özelleştirilebilir:
 
     * `./Dockerfile` ve `./Dockerfile.develop` uygulamanın kapsayıcı görüntüsünü ve kaynak kodun, kapsayıcı içinde nasıl oluşturulup çalışacağını açıklamaktadır.
-    * `./charts/webfrontend` altındaki [Helm grafiği](https://helm.sh/docs/developing_charts/), kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
+    * [ altındaki ](https://helm.sh/docs/developing_charts/)Helm grafiği`./charts/webfrontend`, kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
     * `./azds.yaml`, Azure Dev Spaces yapılandırma dosyasıdır.
 
     Daha fazla bilgi için bkz. [Azure dev Spaces nasıl çalıştığını ve nasıl yapılandırılır](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works).
@@ -251,7 +247,7 @@ Bu bölümde, Jenkins sunucusunu örnek CI işlem hattını çalıştıracak şe
     }
     ```
 
-4. Jenkins 'te parola kimlik bilgisi türü *olan bir Kullanıcı adı* ekleyin. **Kullanıcı adı** , son adımdaki kullanıcı adıdır, bu örnekte `acr01`. **Parola** , ilk parolanın değeridir, bu örnekte `vGBP=zzzzzzzzzzzzzzzzzzzzzzzzzzz`. Bu kimlik bilgisinin **KIMLIĞI** ACR_CRED_ID değeridir.
+4. Jenkins 'te parola kimlik bilgisi türü *olan bir Kullanıcı adı* ekleyin. **Kullanıcı adı** , son adımdaki kullanıcı adıdır, bu örnekte `acr01`. **Parola** , ilk parolanın değeridir, bu örnekte `vGBP=zzzzzzzzzzzzzzzzzzzzzzzzzzz`. Bu kimlik bilgisinin **kimliği** ACR_CRED_ID değeridir.
 
 5. AKS kimlik bilgilerini ayarlayın. Jenkins 'te bir *Kubernetes yapılandırma (kubeconfig)* kimlik bilgisi türü ekleyin ("doğrudan gir" seçeneğini kullanın). AKS kümenizin erişim kimlik bilgilerini almak için aşağıdaki komutu çalıştırın:
 
@@ -259,7 +255,7 @@ Bu bölümde, Jenkins sunucusunu örnek CI işlem hattını çalıştıracak şe
     az aks get-credentials -g MyResourceGroup -n <yourAKSName> -f -
     ```
 
-   Bu kimlik bilgisinin **kimliği** , sonrakı bölümde KUBE_CONFIG_ID değeridir.
+   Bu kimlik bilgisinin **kimliği** , sonraki bölümde KUBE_CONFIG_ID değeridir.
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
@@ -337,7 +333,7 @@ Bu bölümdeki 3. adımı tamamlayabilmeniz için Jenkinsfile ' ın bir kısmın
     }
 ```
 
-1. `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`bir değişiklik yapın ve ardından bir çekme isteği oluşturun. Örnek:
+1. `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`bir değişiklik yapın ve ardından bir çekme isteği oluşturun. Örneğin:
 
     ```java
     public String index() {
@@ -351,7 +347,7 @@ Bu bölümdeki 3. adımı tamamlayabilmeniz için Jenkinsfile ' ın bir kısmın
 
 3. Değişiklikleri geçerli paylaşılan sürümle karşılaştırın:
 
-    1. Tarayıcınızı açın ve `https://webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`paylaşılan sürüme gidin. TEST_ENDPOINT, URL 'YI içerir.
+    1. Tarayıcınızı açın ve `https://webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`paylaşılan sürüme gidin. TEST_ENDPOINT URL 'YI içerir.
 
     2. Başka bir sekme açın ve ardından PR dev Space URL 'sini girin. `https://<yourdevspacename>.s.webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`benzer olacaktır. Bağlantıyı, Jenkins işi için derleme **geçmişi > < Build # > > konsol çıktısına** bulacaksınız. Sayfada `aksapp`arayın veya yalnızca öneki görmek için, `azdsprefix`arayın.
 
@@ -376,7 +372,7 @@ stage('create dev space') {
 
 `test_endpoint`, [AKS kümesine örnek uygulamalar dağıtma '](#test_endpoint)da daha önce `azds up`kullanarak dağıttığınız webön uç uygulamasının URL 'Sidir, adım 7 ' dir. `$env.TEST_ENDPOINT` değeri, işlem hattı yapılandırmasında ayarlanır. 
 
-Aşağıdaki kod parçacığı, `smoketest` aşamada alt dev Space URL 'sinin nasıl kullanıldığını gösterir. Kod, TEST_ENDPOINT alt dev Space 'ın kullanılabilir olup olmadığını denetler ve varsa, selamlama metnini stdout 'a indirir:
+Aşağıdaki kod parçacığı, `smoketest` aşamada alt dev Space URL 'sinin nasıl kullanıldığını gösterir. Kod, alt dev Space TEST_ENDPOINT kullanılabilir olup olmadığını denetler ve varsa, selamlama metnini stdout 'a indirir:
 
 ```Groovy
 stage('smoketest') {

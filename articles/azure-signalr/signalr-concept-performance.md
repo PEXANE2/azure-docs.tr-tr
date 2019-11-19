@@ -1,17 +1,17 @@
 ---
 title: Azure SignalR hizmeti için performans Kılavuzu
-description: Azure SignalR hizmeti performansına genel bakış.
+description: Azure SignalR hizmeti performansına ve kıyaslamaya genel bakış. Kapasiteyi planlarken dikkate alınması gereken önemli ölçümler.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 027f9f99161a0e4f76a39a15780bc840380a61ba
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232541"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157674"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Azure SignalR hizmeti için performans Kılavuzu
 
@@ -25,9 +25,9 @@ Bu kılavuzda, SignalR uygulama performansını etkileyen faktörler tanıtılma
 
 *Giden*: Azure SignalR hizmetinden giden ileti.
 
-*Bant genişliği*: Tüm iletilerin 1 saniye içinde toplam boyutu.
+*Bant genişliği*: 1 saniye içinde tüm iletilerin toplam boyutu.
 
-*Varsayılan mod*: Bir Azure SignalR hizmeti örneği oluşturulduğunda varsayılan çalışma modu. Azure SignalR hizmeti, uygulama sunucusunun herhangi bir istemci bağlantısını kabul etmeden önce onunla bağlantı kurmasını bekliyor.
+*Varsayılan mod*: bir Azure SignalR hizmeti örneği oluşturulduğunda varsayılan çalışma modu. Azure SignalR hizmeti, uygulama sunucusunun herhangi bir istemci bağlantısını kabul etmeden önce onunla bağlantı kurmasını bekliyor.
 
 *Sunucusuz mod*: Azure SignalR hizmetinin yalnızca istemci bağlantılarını kabul ettiği bir mod. Sunucu bağlantısına izin verilmez.
 
@@ -54,7 +54,7 @@ Bu kılavuzda tüm senaryolar (ve farklı kullanım durumları, ileti boyutları
 
 Bu bölüm performans değerlendirme yöntemlerini açıklar ve ardından performansı etkileyen tüm faktörleri listeler. Sonunda, performans gereksinimlerini değerlendirmenize yardımcı olmak için yöntemler sağlar.
 
-### <a name="methodology"></a>Yöntemi
+### <a name="methodology"></a>Yöntem
 
 *Aktarım hızı* ve *gecikme süresi* , performans denetiminin iki tipik yönlerdir. Azure SignalR hizmeti için, her SKU katmanının kendi verimlilik Azaltma ilkesi vardır. İlke, *izin verilen en yüksek aktarım hızını (gelen ve giden bant genişliği),* iletilerin yüzde 99 ' luk bir gecikme süresi olduğunda maksimum elde edilen aktarım hızı olarak tanımlar.
 
@@ -118,18 +118,18 @@ Her katmanın en yüksek gelen bant genişliği ve giden bant genişliği vardı
 
 **Echo** en düşük yönlendirme maliyetine sahip olduğu Için, yankı en fazla gelen bant genişliğine sahip olur. **Yayın** , en fazla giden ileti bant genişliğini tanımlar.
 
-Aşağıdaki iki tabloda vurgulanan değerleri aşmayın.
+Aşağıdaki iki tabloda vurgulanan değerleri *aşmayın* .
 
 |       Girdilerinizi                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar                       | 1000 | 2,000 | 5,000 | 10,000 | 20.000 | 50,000 | 100,000 |
+| Bağlantılar                       | 1000 | 2,000 | 5\.000 | 10,000 | 20,000 | 50.000 | 100.000 |
 | **Gelen bant genişliği** | **2 MBps**    | **4 MBps**    | **10 MBps**   | **20 MBps**    | **40 MBps**    | **100 MBps**   | **200 MBps**    |
 | Giden bant genişliği | 2 Mb/sn   | 4 Mb/sn   | 10 Mb/sn  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
 
-|     Yayınla             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
+|     Yayın             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Bağlantılar               | 1000 | 2,000 | 5,000  | 10,000 | 20.000 | 50,000  | 100,000 |
+| Bağlantılar               | 1000 | 2,000 | 5\.000  | 10,000 | 20,000 | 50.000  | 100.000 |
 | Gelen bant genişliği  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps    |
 | **Giden bant genişliği** | **4 MBps**    | **8 MBps**    | **20 MBps**    | **40 MBps**    | **80 MBps**    | **200 MBps**    | **400 MBps**   |
 
@@ -139,15 +139,15 @@ Aşağıdaki iki tabloda vurgulanan değerleri aşmayın.
   outboundBandwidth = outboundConnections * messageSize / sendInterval
 ```
 
-- *InboundConnections*: İletiyi gönderen bağlantı sayısı.
+- *InboundConnections*: iletiyi gönderen bağlantı sayısı.
 
-- *OutboundConnections*: İletiyi alan bağlantı sayısı.
+- *OutboundConnections*: iletiyi alan bağlantı sayısı.
 
-- *messageSize*: Tek bir iletinin boyutu (ortalama değer). 1\.024 bayttan küçük bir ileti, 1.024 baytlık bir iletiye benzer bir performans etkisine sahiptir.
+- *messageSize*: tek bir iletinin boyutu (ortalama değer). 1\.024 bayttan küçük bir ileti, 1.024 baytlık bir iletiye benzer bir performans etkisine sahiptir.
 
-- *Sendınterval*: Bir ileti gönderme zamanı. Genellikle ileti başına 1 saniyedir, bu da her saniye bir ileti gönderir. Daha küçük bir Aralık, zaman diliminde daha fazla ileti gönderilmesini anlamına gelir. Örneğin, ileti başına 0,5 saniye her saniyede iki ileti gönderilmesini anlamına gelir.
+- *Sendınterval*: bir ileti gönderme zamanı. Genellikle ileti başına 1 saniyedir, bu da her saniye bir ileti gönderir. Daha küçük bir Aralık, zaman diliminde daha fazla ileti gönderilmesini anlamına gelir. Örneğin, ileti başına 0,5 saniye her saniyede iki ileti gönderilmesini anlamına gelir.
 
-- *Bağlantılar*: Her katman için Azure SignalR hizmeti için taahhüt edilen en büyük eşik. Bağlantı numarası daha fazla arttırılırsa bağlantı azaltmasından de devam edilir.
+- *Bağlantılar*: her katman Için Azure SignalR hizmeti için taahhüt edilen en büyük eşik. Bağlantı numarası daha fazla arttırılırsa bağlantı azaltmasından de devam edilir.
 
 #### <a name="evaluation-for-complex-use-cases"></a>Karmaşık kullanım örnekleri için değerlendirme
 
@@ -157,10 +157,10 @@ Gerçek kullanım durumu daha karmaşıktır. 2\.048 bayttan daha büyük bir il
 
 Aşağıdaki tabloda, **yayının**gerçek kullanım durumu gösterilmektedir. Ancak ileti boyutu, bağlantı sayısı ve mesaj gönderme hızı, önceki bölümde kabul ettiğimiz verilerden farklıdır. Bu, yalnızca iki tane olduğunu bildiğimiz takdirde bu öğelerden herhangi birini (ileti boyutu, bağlantı sayısı veya ileti gönderme hızı) nasıl vereceğimiz bir sorudır.
 
-| Yayınla  | İleti boyutu | Saniye başına gelen ileti | Bağlantılar | Gönderme aralıkları |
+| Yayın  | İleti boyutu | Saniye başına gelen ileti | Bağlantılar | Gönderme aralıkları |
 |---|---------------------|--------------------------|-------------|-------------------------|
-| 1\. | 20 KB                | 1\.                        | 100,000     | 5 sn                      |
-| 2 | 256 KB               | 1\.                        | 8,000       | 5 sn                      |
+| 1 | 20 KB                | 1                        | 100.000     | 5 sn                      |
+| 2 | 256 KB               | 1                        | 8,000       | 5 sn                      |
 
 Aşağıdaki formül, önceki formüle göre kolayca çıkarsılır:
 
@@ -168,7 +168,7 @@ Aşağıdaki formül, önceki formüle göre kolayca çıkarsılır:
 outboundConnections = outboundBandwidth * sendInterval / messageSize
 ```
 
-Unit100 için, en fazla giden bant genişliği önceki tablodan 400 MB 'tır. 20 KB 'lik bir ileti boyutu için, en fazla giden bağlantı sayısı, gerçek değerle \* eşleşen 400 MB 5/20 KB = 100.000 olmalıdır.
+Unit100 için, en fazla giden bant genişliği önceki tablodan 400 MB 'tır. 20 KB 'lik bir ileti boyutu için, en fazla giden bağlantı 400 MB \* 5/20 KB = 100.000 olmalıdır ve bu değer gerçek değerle eşleşir.
 
 ##### <a name="mixed-use-cases"></a>Karışık kullanım örnekleri
 
@@ -213,8 +213,8 @@ Aşağıdaki diyagramda, 5 ile 8 arasında (kırmızı vurgulanmış trafik) bir
 
 |       Girdilerinizi                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar                       | 1000 | 2,000 | 5,000 | 10,000 | 20.000 | 50,000 | 100,000 |
-| Saniye başına gelen/giden ileti | 1000 | 2,000 | 5,000 | 10,000 | 20.000 | 50,000 | 100,000 |
+| Bağlantılar                       | 1000 | 2,000 | 5\.000 | 10,000 | 20,000 | 50.000 | 100.000 |
+| Saniye başına gelen/giden ileti | 1000 | 2,000 | 5\.000 | 10,000 | 20,000 | 50.000 | 100.000 |
 | Gelen/giden bant genişliği | 2 Mb/sn   | 4 Mb/sn   | 10 Mb/sn  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
 Bu kullanım durumunda, her istemci, uygulama sunucusunda tanımlanan hub 'ı çağırır. Hub yalnızca özgün istemci tarafında tanımlanan yöntemi çağırır. Bu Merkez, **yankı**için en hafif merkezdir.
@@ -231,13 +231,13 @@ Bu basit Hub için bile, uygulama sunucusuna uygulanan trafik, **yankı** gelen 
 
 |    Girdilerinizi          | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2,000 | 5,000 | 10,000 | 20.000 | 50,000 | 100,000 |
+| Bağlantılar      | 1000 | 2,000 | 5\.000 | 10,000 | 20,000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
 > İstemci bağlantı numarası, ileti boyutu, ileti gönderme hızı, SKU katmanı ve App Server 'ın CPU/belleği, **echo**genel performansını etkiler.
 
-#### <a name="broadcast"></a>Yayınla
+#### <a name="broadcast"></a>Yayın
 
 **Yayın**için, Web uygulaması iletiyi aldığında tüm istemcilere yayınlar. Daha fazla istemci yayınlamak durumunda tüm istemciler için daha fazla ileti trafiği vardır. Aşağıdaki diyagrama bakın.
 
@@ -247,19 +247,19 @@ Az sayıda istemci yayınlıyorsunuz. Gelen ileti bant genişliği küçüktür,
 
 Aşağıdaki tabloda, en fazla istemci bağlantısı, gelen/giden ileti sayısı ve bant genişliği özetlenmektedir.
 
-|     Yayınla             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
+|     Yayın             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Bağlantılar               | 1000 | 2,000 | 5,000  | 10,000 | 20.000 | 50,000  | 100,000 |
+| Bağlantılar               | 1000 | 2,000 | 5\.000  | 10,000 | 20,000 | 50.000  | 100.000 |
 | Saniye başına gelen ileti  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Saniye başına giden ileti | 2,000 | 4,000 | 10,000 | 20.000 | 40,000 | 100,000 | 200,000 |
+| Saniye başına giden ileti | 2,000 | 4,000 | 10,000 | 20,000 | 40,000 | 100.000 | 200,000 |
 | Gelen bant genişliği  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     |
 | Giden bant genişliği | 4 Mb/sn   | 8 Mb/sn   | 20 MBps   | 40 MBps   | 80 MBps   | 200 MBps   | 400 MBps   |
 
 İleti gönderenden yayın istemcileri dörtten fazla değil. Gelen ileti miktarı küçük olduğundan, **echo** ile karşılaştırıldığında daha az uygulama sunucusu gerekir. İki uygulama sunucusu hem SLA hem de performans konuları için yeterlidir. Ancak, özellikle Unit50 ve Unit100 için, dengesizliği önlemek üzere varsayılan sunucu bağlantılarını artırmanız gerekir.
 
-|   Yayınla      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|   Yayın      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2,000 | 5,000 | 10,000 | 20.000 | 50,000 | 100,000 |
+| Bağlantılar      | 1000 | 2,000 | 5\.000 | 10,000 | 20,000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -275,7 +275,7 @@ Aşağıdaki tabloda, en fazla istemci bağlantısı, gelen/giden ileti sayısı
 
 Grup üyesi ve grup sayısı, performansı etkileyen iki faktördir. Çözümlemeyi basitleştirmek için iki grup türü tanımlayacağız:
 
-- **Küçük grup**: Her grubun 10 bağlantısı vardır. Grup numarası eşittir (en fazla bağlantı sayısı)/10. Örneğin, Unit1 için 1.000 bağlantı sayısı varsa, 1000/10 = 100 gruplarıdır.
+- **Küçük grup**: her grubun 10 bağlantısı vardır. Grup numarası eşittir (en fazla bağlantı sayısı)/10. Örneğin, Unit1 için 1.000 bağlantı sayısı varsa, 1000/10 = 100 gruplarıdır.
 
 - **Büyük grup**: Grup numarası her zaman 10 ' dur. Grup üye sayısı eşittir (en fazla bağlantı sayısı)/10. Örneğin, Unit1 için 1.000 bağlantı sayısı varsa, her grubun 1000/10 = 100 üyesi vardır.
 
@@ -287,9 +287,9 @@ Yönlendirme maliyeti birçok küçük gruba ileti göndermek için önemlidir. 
 
 |   Küçük gruba gönder     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50 | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|--------|---------|
-| Bağlantılar               | 1000 | 2,000 | 5,000  | 10,000 | 20.000 | 50,000 | 100,000
+| Bağlantılar               | 1000 | 2,000 | 5\.000  | 10,000 | 20,000 | 50.000 | 100.000
 | Grup üye sayısı        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
-| Grup sayısı               | 100   | 200   | 500    | 1000  | 2,000  | 5,000  | 10,000 
+| Grup sayısı               | 100   | 200   | 500    | 1000  | 2,000  | 5\.000  | 10,000 
 | Saniye başına gelen ileti  | 200   | 400   | 1000  | 2,500  | 4,000  | 7,000  | 7,000   |
 | Gelen bant genişliği  | 400 KBps  | 800 KBps  | 2 Mb/sn     | 5 Mb/sn     | 8 Mb/sn     | 14 MBps    | 14 MBps     |
 | Saniye başına giden ileti | 2,000 | 4,000 | 10,000 | 25,000 | 40,000 | 70.000 | 70.000  |
@@ -299,7 +299,7 @@ Birçok istemci bağlantısı hub 'ı çağırıyor, bu nedenle uygulama sunucu 
 
 |  Küçük gruba gönder   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2,000 | 5,000 | 10,000 | 20.000 | 50,000 | 100,000 |
+| Bağlantılar      | 1000 | 2,000 | 5\.000 | 10,000 | 20,000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -311,19 +311,19 @@ Birçok istemci bağlantısı hub 'ı çağırıyor, bu nedenle uygulama sunucu 
 
 |    Büyük gruba gönder      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Bağlantılar               | 1000 | 2,000 | 5,000  | 10,000 | 20.000 | 50,000  | 100,000
-| Grup üye sayısı        | 100   | 200   | 500    | 1000  | 2,000  | 5,000   | 10,000 
+| Bağlantılar               | 1000 | 2,000 | 5\.000  | 10,000 | 20,000 | 50.000  | 100.000
+| Grup üye sayısı        | 100   | 200   | 500    | 1000  | 2,000  | 5\.000   | 10,000 
 | Grup sayısı               | 10    | 10    | 10     | 10     | 10     | 10      | 10
 | Saniye başına gelen ileti  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
 | Gelen bant genişliği  | 80 KBps   | 40 KBps   | 40 KBps    | 20 KBps    | 40 KBps    | 40 KBps     | 40 KBps     |
-| Saniye başına giden ileti | 2,000 | 4,000 | 10,000 | 20.000 | 40,000 | 100,000 | 200,000 |
+| Saniye başına giden ileti | 2,000 | 4,000 | 10,000 | 20,000 | 40,000 | 100.000 | 200,000 |
 | Giden bant genişliği | 8 Mb/sn    | 8 Mb/sn    | 20 MBps    | 40 MBps    | 80 MBps    | 200 MBps    | 400 MBps    |
 
 Gönderme bağlantı sayısı 40 ' den fazla değil. Uygulama sunucusundaki yük küçüktür, bu nedenle önerilen Web uygulaması sayısı küçük.
 
 |  Büyük gruba gönder  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2,000 | 5,000 | 10,000 | 20.000 | 50,000 | 100,000 |
+| Bağlantılar      | 1000 | 2,000 | 5\.000 | 10,000 | 20,000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -345,15 +345,15 @@ Aşağıdaki tablo, **bağlantı gönderme** kıyaslaması çalıştırmanın bi
 
 |   Bağlantıya gönder   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50          | Unit100         |
 |------------------------------------|-------|-------|-------|--------|--------|-----------------|-----------------|
-| Bağlantılar                        | 1000 | 2,000 | 5,000 | 10,000 | 20.000 | 50,000          | 100,000         |
-| Saniye başına gelen/giden ileti | 1000 | 2,000 | 5,000 | 8,000  | 9\.000  | 20.000 | 20.000 |
+| Bağlantılar                        | 1000 | 2,000 | 5\.000 | 10,000 | 20,000 | 50.000          | 100.000         |
+| Saniye başına gelen/giden ileti | 1000 | 2,000 | 5\.000 | 8,000  | 9\.000  | 20,000 | 20,000 |
 | Gelen/giden bant genişliği | 2 Mb/sn    | 4 Mb/sn    | 10 Mb/sn   | 16 MBps    | 18 MBps    | 40 MBps       | 40 MBps       |
 
 Bu kullanım örneği, uygulama sunucusu tarafında yüksek yük gerektirir. Aşağıdaki tabloda önerilen App Server sayısına bakın.
 
 |  Bağlantıya gönder  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2,000 | 5,000 | 10,000 | 20.000 | 50,000 | 100,000 |
+| Bağlantılar      | 1000 | 2,000 | 5\.000 | 10,000 | 20,000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -369,21 +369,21 @@ Aşağıdaki tabloda, ASP.NET SignalR **echo**için önerilen Web uygulaması sa
 
 |   Girdilerinizi           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2,000 | 5,000 | 10,000 | 20.000 | 50,000 | 100,000 |
+| Bağlantılar      | 1000 | 2,000 | 5\.000 | 10,000 | 20,000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 Aşağıdaki tabloda, ASP.NET SignalR **yayını**için önerilen Web uygulaması sayısı verilmiştir.
 
-|  Yayınla       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|  Yayın       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2,000 | 5,000 | 10,000 | 20.000 | 50,000 | 100,000 |
+| Bağlantılar      | 1000 | 2,000 | 5\.000 | 10,000 | 20,000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 Aşağıdaki tabloda, ASP.NET SignalR **için küçük gruba gönder**önerilen Web uygulaması sayısı verilmiştir.
 
 |  Küçük gruba gönder     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2,000 | 5,000 | 10,000 | 20.000 | 50,000 | 100,000 |
+| Bağlantılar      | 1000 | 2,000 | 5\.000 | 10,000 | 20,000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 ### <a name="serverless-mode"></a>Sunucusuz mod
@@ -397,9 +397,9 @@ Tüm istemciler Azure SignalR hizmeti ile WebSocket bağlantısı kurar. Daha so
 
 |   REST API üzerinden yayınla     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Bağlantılar               | 1000 | 2,000 | 5,000  | 10,000 | 20.000 | 50,000  | 100,000 |
+| Bağlantılar               | 1000 | 2,000 | 5\.000  | 10,000 | 20,000 | 50.000  | 100.000 |
 | Saniye başına gelen ileti  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Saniye başına giden ileti | 2,000 | 4,000 | 10,000 | 20.000 | 40,000 | 100,000 | 200,000 |
+| Saniye başına giden ileti | 2,000 | 4,000 | 10,000 | 20,000 | 40,000 | 100.000 | 200,000 |
 | Gelen bant genişliği  | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     | 4 KBps     | 4 KBps      | 4 KBps      |
 | Giden bant genişliği | 4 Mb/sn    | 8 Mb/sn    | 20 MBps    | 40 MBps    | 80 MBps    | 200 MBps    | 400 MBps    |
 
@@ -408,7 +408,7 @@ Kıyaslama, Azure SignalR hizmetine bağlanmaya başlamadan önce tüm istemcile
 
 |   REST API aracılığıyla kullanıcıya gönder | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Bağlantılar               | 1000 | 2,000 | 5,000  | 10,000 | 20.000 | 50,000  | 100,000 |
+| Bağlantılar               | 1000 | 2,000 | 5\.000  | 10,000 | 20,000 | 50.000  | 100.000 |
 | Saniye başına gelen ileti  | 300   | 600   | 900    | 1\.300  | 2,000  | 10,000  | 18.000  |
 | Saniye başına giden ileti | 300   | 600   | 900    | 1\.300  | 2,000  | 10,000  | 18.000 |
 | Gelen bant genişliği  | 600 KBps  | 1,2 MBps  | 1,8 MBps   | 2,6 MBps   | 4 Mb/sn     | 10 Mb/sn     | 36 MBps    |

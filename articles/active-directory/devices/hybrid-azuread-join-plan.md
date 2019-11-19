@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c016ce349acdfff6145286d9fc07e08db4ed9516
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5a188349e15c5e4c486d37daed9f8b611a325dcf
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882824"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167322"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -30,7 +30,7 @@ Cihazlarınızı Azure AD'ye taşıyarak, çoklu oturum açma (SSO) özelliği s
 
 Şirket içi Active Directory (AD) ortamınız varsa ve AD alanına katılmış bilgisayarlarınızı Azure AD 'ye eklemek istiyorsanız, karma Azure AD katılımı yaparak bunu yapabilirsiniz. Bu makalede, ortamınızda karma Azure AD katılımı uygulamak için ilgili adımlar sağlanmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, [Azure Active Directory ' deki cihaz kimliği yönetimine giriş](../device-management-introduction.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
@@ -43,11 +43,11 @@ Hibrit Azure AD uygulamanızı planlamak için şunu öğrenmeniz gerekir:
 
 |   |   |
 | --- | --- |
-| ![İşaretli][1] | Desteklenen cihazları gözden geçir |
-| ![İşaretli][1] | Bilmeniz gereken işlemleri gözden geçirin |
-| ![İşaretli][1] | Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin |
-| ![İşaretli][1] | Kimlik altyapınıza göre senaryonuzu seçin |
-| ![İşaretli][1] | Karma Azure AD katılımı için şirket içi AD UPN desteğini gözden geçirin |
+| ![Onay][1] | Desteklenen cihazları gözden geçir |
+| ![Onay][1] | Bilmeniz gereken işlemleri gözden geçirin |
+| ![Onay][1] | Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin |
+| ![Onay][1] | Kimlik altyapınıza göre senaryonuzu seçin |
+| ![Onay][1] | Karma Azure AD katılımı için şirket içi AD UPN desteğini gözden geçirin |
 
 ## <a name="review-supported-devices"></a>Desteklenen cihazları gözden geçir
 
@@ -93,7 +93,8 @@ Windows 10 etki alanına katılmış cihazlarınız, kiracınıza [kayıtlı Azu
 - Bu kayıt defteri anahtarını ekleyerek, etki alanına katılmış cihazın Azure AD 'ye kaydedilmesini engelleyebilirsiniz-Hklm\software\policies\microsoft\windows\workplacejoın, "Blockaadworkplacejoın" = DWORD: 00000001.
 - Windows 10 1803 ' de, Iş için Windows Hello yapılandırılmışsa, ikili durum temizleme sonrasında kullanıcının Iş için Windows Hello 'Yu yeniden kurulumu gerekir. Bu sorun KB4512509 ile giderilmiştir
 
-
+> [!NOTE]
+> Azure AD kayıtlı cihaz, Intune tarafından yönetiliyorsa otomatik olarak kaldırılmaz.
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin
 
@@ -147,8 +148,8 @@ Aşağıdaki tabloda, Windows 10 karma Azure AD 'ye yönelik bu şirket içi AD 
 
 | Şirket içi AD UPN türü | Etki alanı türü | Windows 10 sürümü | Açıklama |
 | ----- | ----- | ----- | ----- |
-| Lemez | Federasyon | 1703 sürümünden | Genel olarak kullanılabilir |
-| Yönlendirilemeyen | Federasyon | 1803 sürümünden | Genel olarak kullanılabilir |
+| Lemez | Federasyon | 1703 sürümünden | Genel kullanıma sunuldu |
+| Yönlendirilemeyen | Federasyon | 1803 sürümünden | Genel kullanıma sunuldu |
 | Lemez | Yönetilen | 1803 sürümünden | Genel olarak kullanılabilir, Windows kilit ekranı üzerinde Azure AD SSPR desteklenmez |
 | Yönlendirilemeyen | Yönetilen | Desteklenmiyor | |
 

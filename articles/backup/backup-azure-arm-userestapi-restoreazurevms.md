@@ -1,21 +1,15 @@
 ---
-title: "Azure Backup: REST API kullanarak Azure VM 'lerini geri yükleme"
+title: REST API kullanarak Azure VM 'lerini geri yükleme
 description: Bu makalede, REST API kullanarak Azure sanal makine yedekleme 'nin geri yükleme işlemlerini yönetmeyi öğrenin.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Azure VM yedeklemesi; Azure VM geri yükleme;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: eecee01ffc78ec8cc0e60b517e9d5b4f0e6baa25
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4990d815721ddbdde8e6eb6ebf8d6d3b49adc700
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929155"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173377"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API kullanarak Azure sanal makinelerini geri yükleme
 
@@ -35,7 +29,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *Get* URI 'sinin tüm gerekli parametreleri vardır. Ek bir istek gövdesi gerekmez
 
-### <a name="responses"></a>Yanıtlar
+### <a name="responses"></a>Responses
 
 |Ad  |Tür  |Açıklama  |
 |---------|---------|---------|

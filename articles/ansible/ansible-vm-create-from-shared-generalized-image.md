@@ -3,17 +3,13 @@ title: Öğretici-Azure Paylaşılan görüntü galerisinden bir VM veya sanal m
 description: Paylaşılan görüntü galerisinde genelleştirilmiş bir görüntüye göre VM veya sanal makine ölçek kümesi oluşturmak için nasıl kullanılacağını öğrenin.
 keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, sanal makine, sanal makine ölçek kümesi, paylaşılan görüntü Galerisi
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 4b4190ddabe90af135ea64a8ba3d5905f23c457e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: f784419736854095cc1bc5da14f3867ac3f7eb12
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808951"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155829"
 ---
 # <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Öğretici: Azure Paylaşılan görüntü galerisinden bir VM veya sanal makine ölçek kümesi oluşturma
 
@@ -110,11 +106,11 @@ Tüm örnek PlayBook 'ları almanın iki yolu vardır:
 ansible-playbook 00-prerequisites.yml
 ```
 
-[Azure Portal](https://portal.azure.com), yeni sanal makineyi ve oluşturduğunuz çeşitli kaynakları görmek için, `vars.yml` ' de belirttiğiniz kaynak grubunu kontrol edin.
+[Azure Portal](https://portal.azure.com), yeni sanal makineyi ve oluşturduğunuz çeşitli kaynakları görmek için `vars.yml` belirttiğiniz kaynak grubunu kontrol edin.
 
 ## <a name="generalize-the-vm-and-create-a-custom-image"></a>VM 'yi genelleştirin ve özel bir görüntü oluşturun
 
-Bir sonraki PlayBook, `01a-create-generalized-image.yml`, önceki adımda oluşturulan kaynak VM 'yi genelleştirir ve ardından bunu temel alan özel bir görüntü oluşturur.
+`01a-create-generalized-image.yml`bir sonraki PlayBook, önceki adımda oluşturulan kaynak VM 'yi genelleştirir ve bunu temel alan özel bir görüntü oluşturur.
 
 ```yml
 - hosts: localhost
@@ -142,7 +138,7 @@ Bir sonraki PlayBook, `01a-create-generalized-image.yml`, önceki adımda oluşt
 ansible-playbook 01a-create-generalized-image.yml
 ```
 
-Kaynak grubunuzu denetleyin ve `testimagea` ' ın göründüğünden emin olun.
+Kaynak grubunuzu denetleyin ve `testimagea` göründüğünden emin olun.
 
 ## <a name="create-the-shared-image-gallery"></a>Paylaşılan görüntü galerisini oluşturma
 
@@ -169,7 +165,7 @@ Görüntü Galerisi, görüntüleri paylaşmak ve yönetmek için bir depodur. `
 ansible-playbook 02-create-shared-image-gallery.yml
 ```
 
-Şimdi kaynak grubunuzda `myGallery` olan yeni bir galeri görürsünüz.
+Artık kaynak grubunuzda `myGallery`yeni bir galeri görürsünüz.
 
 ## <a name="create-a-shared-image-and-image-version"></a>Paylaşılan görüntü ve görüntü sürümü oluşturma
 
@@ -235,7 +231,7 @@ Kaynak grubunuz artık galeriniz için bir görüntü tanımına ve görüntü s
 
 ## <a name="create-a-vm-based-on-the-generalized-image"></a>Genelleştirilmiş görüntüye göre VM oluşturma
 
-Son olarak, önceki adımda oluşturduğunuz Genelleştirilmiş görüntüye göre bir VM oluşturmak için `04a-create-vm-using-generalized-image.yml` ' ı çalıştırın.
+Son olarak, önceki adımda oluşturduğunuz Genelleştirilmiş görüntüye göre bir VM oluşturmak için `04a-create-vm-using-generalized-image.yml` çalıştırın.
 
 ```yml
 - hosts: localhost
@@ -264,7 +260,7 @@ ansible-playbook 04a-create-vm-using-generalized-image.yml
 
 ## <a name="create-a-virtual-machine-scale-sets-based-on-the-generalized-image"></a>Genelleştirilmiş görüntü temelinde sanal makine ölçek kümeleri oluşturma
 
-Genelleştirilmiş görüntüye göre bir sanal makine ölçek kümesi de oluşturabilirsiniz. Bunu yapmak için `05a-create-vmss-using-generalized-image.yml` ' i çalıştırın.
+Genelleştirilmiş görüntüye göre bir sanal makine ölçek kümesi de oluşturabilirsiniz. Bunu yapmak için `05a-create-vmss-using-generalized-image.yml` çalıştırın.
 
 ```yml
 - hosts: localhost
@@ -331,7 +327,7 @@ ansible-playbook 06-get-info.yml
 
 ## <a name="delete-the-shared-image"></a>Paylaşılan görüntüyü silme
 
-Galeri kaynaklarını silmek için örnek PlayBook `07-delete-gallery.yml` ' a bakın. Kaynakları ters sırada silin. Görüntü sürümünü silerek başlayın. Tüm görüntü sürümlerini sildikten sonra, görüntü tanımını silebilirsiniz. Tüm görüntü tanımlarını sildikten sonra, galeriyi silebilirsiniz.
+Galeri kaynaklarını silmek için örnek PlayBook `07-delete-gallery.yml`bakın. Kaynakları ters sırada silin. Görüntü sürümünü silerek başlayın. Tüm görüntü sürümlerini sildikten sonra, görüntü tanımını silebilirsiniz. Tüm görüntü tanımlarını sildikten sonra, galeriyi silebilirsiniz.
 
 ```yml
 - hosts: localhost

@@ -1,20 +1,15 @@
 ---
 title: "Öğretici: Jenkins ile Azure App Service GitHub 'dan dağıtma"
 description: GitHub ve sürekli dağıtım (CD) için Jenkins 'i, Java Web uygulamaları için Azure App Service ayarlama
-services: jenkins
-ms.service: jenkins
-author: tomarchermsft
-ms.author: tarcher
-manager: jeconnoc
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 24dbe67052d185de0eb308c4c869e63dbc825d9e
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 9fcf178b71ac1f07bfb58cd2502701ae5392b472
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882021"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158391"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Öğretici: Jenkins sürekli tümleştirme ve dağıtım ile Azure App Service GitHub 'dan dağıtma
 
@@ -62,7 +57,7 @@ Bu öğreticiyi tamamlayabilmeniz için şu öğeler gereklidir:
 
 1. **Kullanılabilir** sekmesinde şu eklentileri seçin:
 
-   - [Azure App Service](https://plugins.jenkins.io/azure-app-service)
+   - [Azure Uygulama Hizmeti](https://plugins.jenkins.io/azure-app-service)
    - [GitHub dal kaynağı](https://plugins.jenkins.io/github-branch-source)
    - Jenkins [ortamı Injector eklentisi](https://plugins.jenkins.io/envinject)
    - [Azure kimlik bilgileri](https://plugins.jenkins.io/azure-credentials)
@@ -166,7 +161,7 @@ Hizmet sorumlusu adının etrafında tırnak işaretleri kullandığınızdan em
    | Özellik | Değer | Açıklama | 
    |----------|-------|-------------| 
    | **Abonelik KIMLIĞI** | <*Yourazuyeniden komut dosyası kimliği*> | Azure aboneliğinizin GUID değeri <p>**İpucu**: Azure abonelik kimliğinizi bilmiyorsanız, komut satırından veya Cloud Shell bu Azure CLI komutunu çalıştırın ve `id` GUID değerini kullanın: <p>`az account list` | 
-   | **İstemci KIMLIĞI** | <*yourAzureServicePrincipal-kimliği*> | Azure hizmet sorumlusu için önceden oluşturulan `appId` GUID değeri | 
+   | **İstemci kimliği** | <*yourAzureServicePrincipal-kimliği*> | Azure hizmet sorumlusu için önceden oluşturulan `appId` GUID değeri | 
    | **İstemci parolası** | <*Yoursecurepassword*> | Azure hizmet sorumlusu için verdiğiniz `password` değeri veya "gizli dizi" | 
    | **Kiracı KIMLIĞI** | <*yourAzureActiveDirectoryTenant-kimliği*> | Azure Active Directory kiracınız için `tenant` GUID değeri | 
    | **ID** | <*yourAzureServicePrincipalName*> | Azure hizmet sorumlunuz için `displayName` değeri | 

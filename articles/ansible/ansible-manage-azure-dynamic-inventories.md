@@ -3,17 +3,13 @@ title: Öğretici-Azure kaynaklarınızın dinamik envanterini, anormal kullanar
 description: Azure dinamik envanterlerinizi yönetmek için nasıl kullanılacağını öğrenin
 keywords: anerişilebilir, Azure, DevOps, Bash, cloudshell, Dynamic Inventory
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/23/2019
-ms.openlocfilehash: 6d520518e7180f69ee7293523dd40c8158dcfb99
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: dea6b47e5e263fdd2e048a0435efbebfa90fe69e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990667"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156166"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Öğretici: Azure kaynaklarınızın dinamik envanterini, anormal kullanarak yapılandırma
 
@@ -36,7 +32,7 @@ Anormal, çeşitli kaynaklardan (Azure gibi bulut kaynakları dahil) *dinamik bi
 
 ## <a name="create-the-test-vms"></a>Test VM 'Leri oluşturma
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
 1. [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)'i açın.
 
@@ -91,7 +87,7 @@ Sanal makinelerinizi tanımladıktan (ve etiketledikten) sonra, dinamik envanter
 
 ### <a name="using-ansible-version--28"></a>< 2,8 sürümünü kullanma
 
-Anerişilebilir, Azure kaynaklarınızın dinamik envanterini oluşturan [azure_rm. Kopyala](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) adlı bir Python betiği sağlar. Aşağıdaki adımlar, iki test Azure sanal makinelerinize bağlanmak için `azure_rm.py` betiğini kullanma konusunda size yol gösterir:
+Anerişilebilir, Azure kaynaklarınızın dinamik envanterini üreten [azure_rm. Kopyala](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) adlı bir Python betiği sağlar. Aşağıdaki adımlar, iki test Azure sanal makinelerinize bağlanmak için `azure_rm.py` betiğini kullanma konusunda size yol gösterir:
 
 1. `azure_rm.py` betiğini almak için GNU `wget` komutunu kullanın:
 
@@ -215,7 +211,7 @@ Anormal 2,8 ile başlayarak, anormal bir [Azure dinamik envanter eklentisi](http
 
 ## <a name="set-up-nginx-on-the-tagged-vm"></a>Etiketli VM 'de NGINX 'i ayarlama
 
-Etiketlerin amacı, sanal makinelerinizin alt grupları ile hızlı ve kolay bir şekilde çalışma olanağı sağlamaktır. Örneğin, yalnızca `nginx` etiketi atadığınız sanal makinelere NGINX yüklemek istediğinizi varsayalım. Aşağıdaki adımlar, ne kadar kolay bir şekilde gerçekleştirileceğini göstermektedir:
+Etiketlerin amacı, sanal makinelerinizin alt grupları ile hızlı ve kolay bir şekilde çalışma olanağı sağlamaktır. Örneğin, yalnızca bir `nginx`etiketi atadığınız sanal makinelerde NGINX 'i yüklemek istediğinizi varsayalım. Aşağıdaki adımlar, ne kadar kolay bir şekilde gerçekleştirileceğini göstermektedir:
 
 1. `nginx.yml`adlı bir dosya oluşturun:
 

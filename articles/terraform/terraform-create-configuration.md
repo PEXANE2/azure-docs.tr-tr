@@ -1,17 +1,14 @@
 ---
 title: Hızlı başlangıç-Azure için Terrayform yapılandırması oluşturma
 description: Azure 'da bir Azure Cosmos DB ve Azure Container Instances dağıtarak Terrayform ile çalışmaya başlayın.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: quickstart
 ms.date: 10/26/2019
-ms.openlocfilehash: 07c1839afcc29c7089540c587a3a32eae14944ef
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 47eec1f238d3fdff99b75953bc6d7e92137cca2d
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969864"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159322"
 ---
 # <a name="quickstart-create-a-terraform-configuration-for-azure"></a>Hızlı başlangıç: Azure için Terrayform yapılandırması oluşturma
 
@@ -26,7 +23,7 @@ Bu hızlı başlangıçta, Terrayform kullanarak Azure kaynakları oluşturursun
 
 Bu bölümde, bir Azure Cosmos DB örneği için yapılandırma oluşturacaksınız.
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
 1. Azure Cloud Shell açın.
 
@@ -69,7 +66,7 @@ Bu bölümde, bir Azure Cosmos DB örneği için yapılandırma oluşturacaksın
     }
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
 
 ## <a name="run-the-configuration"></a>Yapılandırmayı çalıştırma
 
@@ -141,7 +138,7 @@ Bu bölümde, yapılandırmanın bir Azure Kapsayıcı örneği içerecek şekil
     }
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
 
 1. Önceki bölümde yaptığınız gibi, yapılan değişiklikler için görsel olarak aşağıdaki komutu çalıştırın:
 

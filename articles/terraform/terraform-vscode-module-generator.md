@@ -1,17 +1,14 @@
 ---
 title: Öğretici-Azure 'da Yeumman kullanarak bir Terrayform temel şablonu oluşturma
 description: Azure 'da Yeumman kullanarak bir Terrayform temel şablonu oluşturmayı öğrenin.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 2f8cbc495a4b46255e7eb31bc1ff8b04fffcad15
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: ba81d0ee797fd879fdadc3a6b25ca8f310383f61
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969263"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159158"
 ---
 # <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>Öğretici: Azure 'da Yeumman kullanarak bir Terrayform temel şablonu oluşturma
 
@@ -37,7 +34,7 @@ Bu makalede, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğrenecek
 
 ## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
-### <a name="install-nodejs"></a>Node.js’yi yükleme
+### <a name="install-nodejs"></a>Node.js yükleme
 
 Terraform'u Cloud Shell'de kullanabilmek için [Node.js](https://nodejs.org/en/download/) 6.0+ sürümünü yüklemeniz gerekir.
 

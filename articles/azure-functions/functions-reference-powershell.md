@@ -8,22 +8,20 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: glenga
-ms.openlocfilehash: 0d398e9848559e70883c07498057d1807651a867
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ae3b8294c7bd91bcd6a2e0e533f5903f44e8aaea
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515658"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173669"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
 Bu makalede, PowerShell kullanarak Azure Işlevleri yazma hakkında ayrıntılı bilgi sağlanır.
 
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
-
 Bir PowerShell Azure işlevi (işlev), tetiklendiğinde yürütülen bir PowerShell betiği olarak temsil edilir. Her işlev betiği, işlevin nasıl davranacağını, örneğin nasıl tetikleneceğini ve giriş ve çıkış parametrelerini tanımlayan ilgili bir `function.json` dosyasına sahiptir. Daha fazla bilgi edinmek için [Tetikleyiciler ve bağlama makalesine](functions-triggers-bindings.md)bakın. 
 
-Diğer işlev türleri gibi, PowerShell betik işlevleri de `function.json` dosyasında tanımlanan tüm giriş bağlamalarının adlarıyla eşleşen parametreleri alır. İşlevi Başlatan tetikleyicide ek bilgiler içeren `TriggerMetadata` parametresi de geçirilir.
+Diğer işlev türleri gibi, PowerShell betik işlevleri de `function.json` dosyasında tanımlanan tüm giriş bağlamalarının adlarıyla eşleşen parametreleri alır. İşlevi Başlatan tetikleyicide ek bilgiler içeren bir `TriggerMetadata` parametresi de geçirilir.
 
 Bu makalede, [Azure işlevleri geliştirici başvurusunu](functions-reference.md)zaten okuduğunuzu varsaymış olursunuz. İlk PowerShell işlevinizi oluşturmak için [PowerShell için hızlı başlangıç işlevleri](functions-create-first-function-powershell.md) de tamamlanmış olmalıdır.
 
@@ -56,13 +54,13 @@ PSFunctionApp
 
 Projenin kökünde, işlev uygulamasını yapılandırmak için kullanılabilecek bir paylaşılan [`host.json`](functions-host-json.md) dosyası vardır. Her işlevde kendi kod dosyası (. ps1) ve bağlama yapılandırma dosyası (`function.json`) içeren bir klasör vardır. Function. json dosyasının üst dizininin adı her zaman işlevinizin adıdır.
 
-Belirli bağlamalar, `extensions.csproj` dosyası olması gerekir. Işlevler çalışma zamanının [2. x sürümünde](functions-versions.md) gerekli olan bağlama uzantıları, `extensions.csproj` dosyasında, `bin` klasöründeki gerçek kitaplık dosyaları ile tanımlanmıştır. Yerel olarak geliştirme yaparken, [bağlama uzantılarını kaydetmeniz](functions-bindings-register.md#extension-bundles)gerekir. Azure portal işlevler geliştirirken, bu kayıt sizin için yapılır.
+Belirli bağlamalar bir `extensions.csproj` dosyası varlığını gerektirir. Işlevler çalışma zamanının [2. x sürümünde](functions-versions.md) gerekli olan bağlama uzantıları, `extensions.csproj` dosyasında, `bin` klasöründeki gerçek kitaplık dosyalarıyla tanımlanmıştır. Yerel olarak geliştirme yaparken, [bağlama uzantılarını kaydetmeniz](functions-bindings-register.md#extension-bundles)gerekir. Azure portal işlevler geliştirirken, bu kayıt sizin için yapılır.
 
-PowerShell Işlev uygulamalarında, isteğe bağlı olarak bir işlev uygulaması çalışmaya başladığında çalışan bir `profile.ps1` olabilir (Aksi takdirde, *[soğuk bir başlangıç](#cold-start)* olarak bilinir. Daha fazla bilgi için bkz. [PowerShell profili](#powershell-profile).
+PowerShell Işlev uygulamalarında, isteğe bağlı olarak, bir işlev uygulaması çalışmaya başladığında çalışan bir `profile.ps1` olabilir (Aksi takdirde, *[soğuk bir başlangıç](#cold-start)* olarak bilinir. Daha fazla bilgi için bkz. [PowerShell profili](#powershell-profile).
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>Bir PowerShell betiğini işlev olarak tanımlama
 
-Varsayılan olarak, Işlevler çalışma zamanı işlevinizi `run.ps1` ' da arar; burada `run.ps1`, karşılık gelen `function.json` ile aynı üst dizini paylaşır.
+Varsayılan olarak, Işlevler çalışma zamanı işlevinizi `run.ps1`arar; burada `run.ps1`, karşılık gelen `function.json`ile aynı üst dizini paylaşır.
 
 Betiğinizin yürütme sırasında bir dizi bağımsız değişkeni geçti. Bu parametreleri işlemek için, aşağıdaki örnekte gösterildiği gibi, betiğinizin en üstüne bir `param` bloğu ekleyin:
 
@@ -73,7 +71,7 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 
 ### <a name="triggermetadata-parameter"></a>TriggerMetadata parametresi
 
-@No__t_0 parametresi, tetikleyici hakkında ek bilgi sağlamak için kullanılır. Ek meta veriler bağlamadan bağlamaya farklılık gösterir, ancak hepsi aşağıdaki verileri içeren bir `sys` özelliği içerir:
+`TriggerMetadata` parametresi, tetikleyici hakkında ek bilgi sağlamak için kullanılır. Ek meta veriler bağlamadan bağlamaya farklılık gösterir, ancak hepsi aşağıdaki verileri içeren bir `sys` özelliği içerir:
 
 ```powershell
 $TriggerMetadata.sys
@@ -81,11 +79,11 @@ $TriggerMetadata.sys
 
 | Özellik   | Açıklama                                     | Tür     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | UTC olarak işlev tetiklendiğinde        | Tarih Saat |
+| utcNow     | UTC olarak işlev tetiklendiğinde        | DateTime |
 | MethodName | Tetiklenen Işlevin adı     | string   |
 | RandGuid   | işlevin bu yürütmeye yönelik benzersiz bir GUID | string   |
 
-Her tetikleyici türünün farklı bir meta veri kümesi vardır. Örneğin, `QueueTrigger` için `$TriggerMetadata`, diğer şeyler arasında `InsertionTime`, `Id`, `DequeueCount` ' ü içerir. Sıra tetikleyicisinin meta verileri hakkında daha fazla bilgi için, [sıra tetikleyicilerinin resmi belgelerine](functions-bindings-storage-queue.md#trigger---message-metadata)gidin. Tetikleyici meta verilerinin içinde neler olduğunu görmek için, üzerinde çalıştığınız [tetikleyicilerle](functions-triggers-bindings.md) ilgili belgelere bakın.
+Her tetikleyici türünün farklı bir meta veri kümesi vardır. Örneğin, `QueueTrigger` için `$TriggerMetadata` diğer şeyler arasındaki `InsertionTime`, `Id`, `DequeueCount`içerir. Sıra tetikleyicisinin meta verileri hakkında daha fazla bilgi için, [sıra tetikleyicilerinin resmi belgelerine](functions-bindings-storage-queue.md#trigger---message-metadata)gidin. Tetikleyici meta verilerinin içinde neler olduğunu görmek için, üzerinde çalıştığınız [tetikleyicilerle](functions-triggers-bindings.md) ilgili belgelere bakın.
 
 ## <a name="bindings"></a>Bağlamalar
 
@@ -93,7 +91,7 @@ PowerShell 'de [bağlamalar](functions-triggers-bindings.md) , bir işlevin func
 
 ### <a name="reading-trigger-and-input-data"></a>Tetikleyici ve giriş verilerini okuma
 
-Tetikleyici ve giriş bağlamaları, işleviniz için parametre olarak okunabilir. Giriş bağlamaları, function. JSON içinde `in` olarak ayarlanmış `direction` ' dır. @No__t_1 tanımlanan `name` özelliği, `param` bloğunda parametrenin adıdır. PowerShell, bağlama için adlandırılmış parametreler kullandığından, parametrelerin sırası bu şekilde değildir. Ancak, `function.json` ' da tanımlanan bağlamaların sırasını izlemek en iyi uygulamadır.
+Tetikleyici ve giriş bağlamaları, işleviniz için parametre olarak okunabilir. Giriş bağlamaları, function. JSON içinde `in` bir `direction` ayarlanmış. `function.json` tanımlanan `name` özelliği, `param` bloğunda parametrenin adıdır. PowerShell, bağlama için adlandırılmış parametreler kullandığından, parametrelerin sırası bu şekilde değildir. Ancak, `function.json`tanımlanan bağlamaların sırasını izlemek en iyi uygulamadır.
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -101,9 +99,9 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 
 ### <a name="writing-output-data"></a>Çıkış verileri yazma
 
-Işlevlerde, çıkış bağlamasındaki `direction`, function. JSON içinde `out` olarak ayarlanmış. Işlevler çalışma zamanı için kullanılabilir olan `Push-OutputBinding` cmdlet 'ini kullanarak bir çıktı bağlamaya yazabilirsiniz. Her durumda, `function.json` ' de tanımlanan bağlamanın `name` özelliği `Push-OutputBinding` cmdlet 'inin `Name` parametresine karşılık gelir.
+Işlevlerde, bir çıkış bağlamasının `direction` function. JSON içinde `out` olarak ayarlanmış bir. Işlevler çalışma zamanı için kullanılabilen `Push-OutputBinding` cmdlet 'ini kullanarak bir çıktı bağlamaya yazabilirsiniz. Her durumda, `function.json` tanımlanan şekilde bağlamanın `name` özelliği `Push-OutputBinding` cmdlet 'inin `Name` parametresine karşılık gelir.
 
-Aşağıda, işlev betiğinizde `Push-OutputBinding` ' ın nasıl çağrılacağını gösterilmektedir:
+Aşağıda, işlev betiğinizdeki `Push-OutputBinding` nasıl çağrılacağını gösterilmektedir:
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -119,19 +117,19 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 ```
 
-`Push-OutputBinding` `-Name` için belirtilen değere göre farklı şekilde davranır:
+`Push-OutputBinding`, `-Name`için belirtilen değere göre farklı şekilde davranır:
 
 * Belirtilen ad geçerli bir çıkış bağlamasıyla çözülemezse bir hata oluşur.
 
-* Çıkış bağlaması bir değer koleksiyonunu kabul ettiğinde, birden fazla değeri göndermek için `Push-OutputBinding` ' ı tekrar tekrar çağırabilirsiniz.
+* Çıkış bağlaması bir değer koleksiyonunu kabul ettiğinde, birden fazla değeri göndermek için `Push-OutputBinding` tekrar tekrar çağırabilirsiniz.
 
 * Çıkış bağlaması yalnızca bir tek değeri kabul ettiğinde, `Push-OutputBinding` ikinci kez çağırma bir hata oluşturur.
 
 #### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` sözdizimi
 
-@No__t_0 çağırmak için geçerli parametreler aşağıda verilmiştir:
+`Push-OutputBinding`çağırmak için geçerli parametreler aşağıda verilmiştir:
 
-| Adı | Tür | Yerine | Açıklama |
+| Ad | Tür | Konum | Açıklama |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Dize | 1 | Ayarlamak istediğiniz çıkış bağlamasının adı. |
 | **`-Value`** | Nesne | 2 | Ayarlamak istediğiniz çıkış bağlamasının değeri, işlem hattı ByValue 'dan kabul edilir. |
@@ -152,7 +150,7 @@ Daha fazla bilgi için bkz. [CommonParameters hakkında](https://go.microsoft.co
 
 #### <a name="push-outputbinding-example-http-responses"></a>Gönderme-OutputBinding örneği: HTTP yanıtları
 
-HTTP tetikleyicisi `response` adlı çıkış bağlamasını kullanarak bir yanıt döndürür. Aşağıdaki örnekte, `response` ' ın çıkış bağlaması "çıkış #1" değerine sahiptir:
+HTTP tetikleyicisi, `response`adlı bir çıkış bağlaması kullanarak bir yanıt döndürür. Aşağıdaki örnekte, `response` çıkış bağlaması "çıkış #1" değerine sahiptir:
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -170,7 +168,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-Yalnızca Singleton değerlerini kabul eden çıkışlar için, bir koleksiyona ekleme yapmak yerine eski değeri geçersiz kılmak üzere `-Clobber` parametresini kullanabilirsiniz. Aşağıdaki örnek, daha önce bir değer eklediğinizi varsayar. @No__t_0 kullanarak, aşağıdaki örnekteki yanıt, "çıkış #3" değeri döndürecek varolan değeri geçersiz kılar:
+Yalnızca Singleton değerlerini kabul eden çıkışlar için, bir koleksiyona eklemeye çalışmak yerine eski değeri geçersiz kılmak üzere `-Clobber` parametresini kullanabilirsiniz. Aşağıdaki örnek, daha önce bir değer eklediğinizi varsayar. `-Clobber`kullanarak, aşağıdaki örnekteki yanıt, "çıkış #3" değeri döndürecek varolan değeri geçersiz kılar:
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -205,7 +203,7 @@ Sıraya yazıldığında ileti şu dört değeri içerir: "çıkış #1", "çık
 
 Çıkış bağlamalarınız için şu anda ayarlanmış olan değerleri almak için `Get-OutputBinding` cmdlet 'ini kullanabilirsiniz. Bu cmdlet, çıkış bağlamalarının adlarını ilgili değerleriyle içeren bir Hashtable alır. 
 
-Geçerli bağlama değerlerini döndürmek için `Get-OutputBinding` kullanılmasına bir örnek aşağıda verilmiştir:
+Aşağıda geçerli bağlama değerlerini döndürmek için `Get-OutputBinding` kullanımına ilişkin bir örnek verilmiştir:
 
 ```powershell
 Get-OutputBinding
@@ -218,7 +216,7 @@ MyQueue                        myData
 MyOtherQueue                   myData
 ```
 
-`Get-OutputBinding`, aşağıdaki örnekte olduğu gibi döndürülen bağlamayı filtrelemek için kullanılabilen `-Name` adlı bir parametre da içerir:
+`Get-OutputBinding` Ayrıca, aşağıdaki örnekte olduğu gibi döndürülen bağlamayı filtrelemek için kullanılabilen `-Name`adlı bir parametre içerir:
 
 ```powershell
 Get-OutputBinding -Name MyQ*
@@ -230,7 +228,7 @@ Name                           Value
 MyQueue                        myData
 ```
 
-Joker karakterler (*) `Get-OutputBinding` ' da desteklenir.
+Joker karakterler (*) `Get-OutputBinding`desteklenir.
 
 ## <a name="logging"></a>Günlüğe kaydetme
 
@@ -247,13 +245,13 @@ PowerShell işlevlerinde günlüğe kaydetme, normal PowerShell günlüğü gibi
 Bu cmdlet 'lere ek olarak, işlem hattına yazılan her şey `Information` günlük düzeyine yönlendirilir ve varsayılan PowerShell biçimlendirmesi ile görüntülenir.
 
 > [!IMPORTANT]
-> @No__t_0 veya `Write-Debug` cmdlet 'lerini kullanmak, ayrıntılı ve hata ayıklama düzeyinde günlüğe kaydetmeyi görmek için yeterli değildir. Ayrıca, gerçekten önem verdiğiniz günlükleri bildiren günlük düzeyi eşiğini da yapılandırmanız gerekir. Daha fazla bilgi için bkz. [işlev uygulaması günlük düzeyini yapılandırma](#configure-the-function-app-log-level).
+> `Write-Verbose` veya `Write-Debug` cmdlet 'lerini kullanmak, ayrıntılı ve hata ayıklama düzeyinde günlüğe kaydetmeyi görmek için yeterli değildir. Ayrıca, gerçekten önem verdiğiniz günlükleri bildiren günlük düzeyi eşiğini da yapılandırmanız gerekir. Daha fazla bilgi için bkz. [işlev uygulaması günlük düzeyini yapılandırma](#configure-the-function-app-log-level).
 
 ### <a name="configure-the-function-app-log-level"></a>İşlev uygulaması günlük düzeyini yapılandırma
 
-Azure Işlevleri, Işlevlerin günlüklere yazma yöntemini denetlemenizi kolaylaştırmak için eşik düzeyini tanımlamanızı sağlar. Konsola yazılan tüm izlemelerin eşiğini ayarlamak için, [`host.json` dosya][Host. json başvurusu]içindeki `logging.logLevel.default` özelliğini kullanın. Bu ayar, işlev uygulamanızdaki tüm işlevler için geçerlidir.
+Azure Işlevleri, Işlevlerin günlüklere yazma yöntemini denetlemenizi kolaylaştırmak için eşik düzeyini tanımlamanızı sağlar. Konsola yazılan tüm izlemelerin eşiğini ayarlamak için, [`host.json` File][Host. json başvurusu]içindeki `logging.logLevel.default` özelliğini kullanın. Bu ayar, işlev uygulamanızdaki tüm işlevler için geçerlidir.
 
-Aşağıdaki örnek, tüm işlevler için ayrıntılı günlük kaydını etkinleştirmek üzere eşiği ayarlar, ancak `MyFunction` adlı bir işlev için hata ayıklama günlüğünü etkinleştirmek üzere eşiği ayarlar:
+Aşağıdaki örnek, tüm işlevler için ayrıntılı günlük kaydını etkinleştirmek üzere eşiği ayarlar, ancak `MyFunction`adlı bir işlev için hata ayıklama günlüğünü etkinleştirmek üzere eşiği ayarlar:
 
 ```json
 {
@@ -282,7 +280,7 @@ Tüm tetikleyiciler ve bağlamalar kodda birkaç gerçek veri türü olarak tems
 
 * Hashtable
 * string
-* Byte []
+* byte[]
 * int
 * double
 * HttpRequestContext
@@ -298,7 +296,7 @@ Http ve Web kancası Tetikleyicileri ve HTTP çıkış bağlamaları, HTTP ileti
 
 #### <a name="request-object"></a>İstek nesnesi
 
-Betiğe geçirilen istek nesnesi, aşağıdaki özelliklere sahip `HttpRequestContext` türündedir:
+Betiğe geçirilen istek nesnesi, aşağıdaki özelliklere sahip `HttpRequestContext`türüdür:
 
 | Özellik  | Açıklama                                                    | Tür                      |
 |-----------|----------------------------------------------------------------|---------------------------|
@@ -307,13 +305,13 @@ Betiğe geçirilen istek nesnesi, aşağıdaki özelliklere sahip `HttpRequestCo
 | **`Method`** | İsteğin HTTP yöntemi.                                | string                    |
 | **`Params`**  | İsteğin yönlendirme parametrelerini içeren nesne. | Sözlük < dize, dize ><sup>*</sup> |
 | **`Query`** | Sorgu parametrelerini içeren bir nesne.                  | Sözlük < dize, dize ><sup>*</sup> |
-| **`Url`** | İsteğin URL 'SI.                                        | string                    |
+| **`Url`** | İsteğin URL'si.                                        | string                    |
 
 <sup>*</sup> Tüm `Dictionary<string,string>` anahtarlar büyük/küçük harfe duyarlıdır.
 
 #### <a name="response-object"></a>Yanıt nesnesi
 
-Geri göndermeniz gereken yanıt nesnesi, aşağıdaki özelliklere sahip `HttpResponseContext` türündedir:
+Geri göndermeniz gereken yanıt nesnesi, aşağıdaki özelliklere sahip `HttpResponseContext`türüdür:
 
 | Özellik      | Açıklama                                                 | Tür                      |
 |---------------|-------------------------------------------------------------|---------------------------|
@@ -324,9 +322,9 @@ Geri göndermeniz gereken yanıt nesnesi, aşağıdaki özelliklere sahip `HttpR
 
 #### <a name="accessing-the-request-and-response"></a>İstek ve yanıta erişme
 
-HTTP tetikleyicilerle çalışırken, HTTP isteğine diğer giriş bağlamalarla aynı şekilde erişebilirsiniz. @No__t_0 bloğunda.
+HTTP tetikleyicilerle çalışırken, HTTP isteğine diğer giriş bağlamalarla aynı şekilde erişebilirsiniz. `param` bloğunda.
 
-Aşağıdaki şekilde gösterildiği gibi bir yanıt döndürmek için `HttpResponseContext` nesnesi kullanın:
+Aşağıdaki şekilde gösterildiği gibi bir yanıt döndürmek için bir `HttpResponseContext` nesnesi kullanın:
 
 `function.json`
 
@@ -370,7 +368,7 @@ Hello Functions!
 
 Blob bağlaması gibi bazı bağlamalar için, parametrenin türünü belirtebilirsiniz.
 
-Örneğin, BLOB depolama alanından bir dize olarak sağlanan verilerin olmasını sağlamak için, `param` bloğuna aşağıdaki tür dönüştürmeyi ekleyin:
+Örneğin, BLOB depolama alanından bir dize olarak sağlanan verilerin olmasını sağlamak için `param` bloba aşağıdaki tür dönüştürmeyi ekleyin:
 
 ```powershell
 param([string] $myBlob)
@@ -424,13 +422,13 @@ Requirements. psd1 dosyasını güncelleştirdiğinizde, güncelleştirilmiş mo
 > [!NOTE]
 > Yönetilen bağımlılıklar, modülleri indirmek için www.powershellgallery.com 'e erişim gerektirir. Yerel olarak çalışırken, gerekli güvenlik duvarı kurallarını ekleyerek çalışma zamanının bu URL 'ye erişebildiğinizden emin olun. 
 
-Aşağıdaki uygulama ayarları, yönetilen bağımlılıkların nasıl indirileceğini ve yükleneceğini değiştirmek için kullanılabilir. Uygulama yükseltmeniz `MDMaxBackgroundUpgradePeriod` içinde başlar ve yükseltme işlemi yaklaşık `MDNewSnapshotCheckPeriod` yaklaşık olarak tamamlanır.
+Aşağıdaki uygulama ayarları, yönetilen bağımlılıkların nasıl indirileceğini ve yükleneceğini değiştirmek için kullanılabilir. Uygulama yükseltmeniz `MDMaxBackgroundUpgradePeriod`içinde başlar ve yükseltme işlemi yaklaşık `MDNewSnapshotCheckPeriod`yaklaşık olarak tamamlanır.
 
 | İşlev Uygulaması ayarı              | Varsayılan değer             | Açıklama                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 gün)     | Her PowerShell çalışan işlemi, işlem başlatma PowerShell Galerisi ve bundan sonra her `MDMaxBackgroundUpgradePeriod` modül yükseltmelerini denetlemeyi başlatır. PowerShell Galerisi yeni bir modül sürümü kullanılabilir olduğunda, dosya sistemine yüklenir ve PowerShell çalışanları için kullanılabilir hale getirilir. Bu değeri azaltmak, işlev uygulamanızın daha önce daha yeni modül sürümlerini almasını sağlar, ancak aynı zamanda uygulama kaynak kullanımını (ağ g/ç, CPU, depolama) de artırır. Bu değerin artırılması uygulamanın kaynak kullanımını düşürür, ancak uygulamanıza yeni modül sürümlerinin teslim edilmesini de erteleyebilir. | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 saat)       | Yeni modül sürümleri dosya sistemine yüklendikten sonra, her PowerShell çalışan işleminin yeniden başlatılması gerekir. PowerShell çalışanlarını yeniden başlatmak, geçerli işlev yürütmesini kesintiye uğratmak için uygulamanızın kullanılabilirliğini etkiler. Tüm PowerShell çalışan süreçler yeniden başlatılana kadar, işlev etkinleştirmeleri eski veya yeni modül sürümlerini kullanabilir. Tüm PowerShell çalışanlarının yeniden başlatılması `MDNewSnapshotCheckPeriod` içinde tamamlanmıştır. Bu değerin artırılması kesintiler sıklığını düşürür, ancak işlev etkinleştirmeleri eski veya yeni modül sürümlerini belirleyici olmayan şekilde kullandığınızda zaman dilimini de artırabilir. |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 gün)     | Sık gerçekleştirilen çalışan yeniden başlatmalarının aşırı modül yükseltmelerini önlemek için, son `MDMinBackgroundUpgradePeriod` bir çalışan tarafından zaten başlatılmışsa modül yükseltmelerinden dolayı denetim yapılmamaktadır. |
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 saat)       | Yeni modül sürümleri dosya sistemine yüklendikten sonra, her PowerShell çalışan işleminin yeniden başlatılması gerekir. PowerShell çalışanlarını yeniden başlatmak, geçerli işlev yürütmesini kesintiye uğratmak için uygulamanızın kullanılabilirliğini etkiler. Tüm PowerShell çalışan süreçler yeniden başlatılana kadar, işlev etkinleştirmeleri eski veya yeni modül sürümlerini kullanabilir. Tüm PowerShell çalışanlarının yeniden başlatılması `MDNewSnapshotCheckPeriod`içinde tamamlanmıştır. Bu değerin artırılması kesintiler sıklığını düşürür, ancak işlev etkinleştirmeleri eski veya yeni modül sürümlerini belirleyici olmayan şekilde kullandığınızda zaman dilimini de artırabilir. |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 gün)     | Sık gerçekleştirilen çalışan yeniden başlatmalarının aşırı modül yükseltmelerini önlemek için, son `MDMinBackgroundUpgradePeriod`bir çalışan tarafından zaten başlatılmışsa modül yükseltmelerinden dolayı denetim yapılmamaktadır. |
 
 Kendi özel modüllerinizi kullanmak, normal şekilde nasıl yapacağınıza göre biraz farklıdır.
 
@@ -441,14 +439,14 @@ Işlevlerde `PSModulePath` iki yol içerir:
 * İşlev uygulamanızın kökünde bulunan bir `Modules` klasörü.
 * PowerShell dil çalışanı tarafından denetlenen `Modules` klasörünün yolu.
 
-### <a name="function-app-level-modules-folder"></a>İşlev uygulama düzeyi `Modules` klasör
+### <a name="function-app-level-modules-folder"></a>İşlev uygulama düzeyi `Modules` klasörü
 
-Özel modülleri kullanmak için işlevlerinizin `Modules` klasörüne bağlı olduğu modülleri yerleştirebilirsiniz. Bu klasörden modüller, işlevler çalışma zamanı tarafından otomatik olarak kullanılabilir. İşlev uygulamasındaki herhangi bir işlev bu modülleri kullanabilir. 
+Özel modülleri kullanmak için işlevlerinizin `Modules` klasöre bağlı olduğu modülleri yerleştirebilirsiniz. Bu klasörden modüller, işlevler çalışma zamanı tarafından otomatik olarak kullanılabilir. İşlev uygulamasındaki herhangi bir işlev bu modülleri kullanabilir. 
 
 > [!NOTE]
 > Requirements. psd1 dosyasında belirtilen modüller otomatik olarak indirilir ve bunları modüller klasörüne dahil etmeniz gerekmez. Bunlar, bulutta çalıştırıldığında `$env:LOCALAPPDATA/AzureFunctions` klasöründe ve `/data/ManagedDependencies` klasöründe yerel olarak depolanır.
 
-Özel modül özelliğinden yararlanmak için, işlev uygulamanızın kökünde bir `Modules` klasörü oluşturun. İşlevleriniz içinde kullanmak istediğiniz modülleri bu konuma kopyalayın.
+Özel modül özelliğinden faydalanmak için, işlev uygulamanızın kökünde bir `Modules` klasörü oluşturun. İşlevleriniz içinde kullanmak istediğiniz modülleri bu konuma kopyalayın.
 
 ```powershell
 mkdir ./Modules
@@ -471,22 +469,22 @@ PSFunctionApp
  | - requirements.psd1
 ```
 
-İşlev uygulamanızı başlattığınızda, PowerShell dil çalışanı bu `Modules` klasörünü `$env:PSModulePath` öğesine ekler. böylece, normal bir PowerShell betiğiyle yaptığınız gibi modül tekrar yüklemeye güvenebilirsiniz.
+İşlev uygulamanızı başlattığınızda, PowerShell dil çalışanı bu `Modules` klasörünü `$env:PSModulePath` ekler, böylece normal bir PowerShell betiğiyle yaptığınız gibi modül, el ile yüklemeye güvenebilirsiniz.
 
 ### <a name="language-worker-level-modules-folder"></a>Dil çalışanı düzeyi `Modules` klasörü
 
-Birçok modül genellikle PowerShell dil çalışanı tarafından kullanılır. Bu modüller `PSModulePath` ' ın son konumunda tanımlanmıştır. 
+Birçok modül genellikle PowerShell dil çalışanı tarafından kullanılır. Bu modüller `PSModulePath`son konumunda tanımlanmıştır. 
 
 Geçerli modüller listesi aşağıdaki gibidir:
 
-* [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): `.zip`, `.nupkg` ve diğerleri gibi arşivleri ile çalışmak için kullanılan modül.
+* [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): `.zip`, `.nupkg`ve diğerleri gibi arşivleri ile çalışmak için kullanılan modül.
 * **Threadjob**: PowerShell iş API 'lerinin iş parçacığı tabanlı bir uygulamasıdır.
 
 Varsayılan olarak, Işlevler bu modüllerin en son sürümünü kullanır. Belirli bir modül sürümünü kullanmak için, söz konusu sürümü işlev uygulamanızın `Modules` klasörüne yerleştirin.
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 
-Işlevlerde, hizmet bağlantı dizeleri gibi [uygulama ayarları](functions-app-settings.md), yürütme sırasında ortam değişkenleri olarak sunulur. Aşağıdaki örnekte gösterildiği gibi `$env:NAME_OF_ENV_VAR` kullanarak bu ayarlara erişebilirsiniz:
+Işlevlerde, hizmet bağlantı dizeleri gibi [uygulama ayarları](functions-app-settings.md), yürütme sırasında ortam değişkenleri olarak sunulur. Aşağıdaki örnekte gösterildiği gibi `$env:NAME_OF_ENV_VAR`kullanarak bu ayarlara erişebilirsiniz:
 
 ```powershell
 param($myTimer)
@@ -521,13 +519,13 @@ PowerShell, varsayılan olarak _tek bir iş parçacıklı_ betik dilidir. Ancak,
 
 Azure PowerShell, size fazla yazma işleminden tasarruf etmenize yardımcı olmak için bazı _işlem düzeyi_ bağlamlar ve durumları kullanır. Ancak, işlev uygulamanızda eşzamanlılık özelliğini açıp durumu değiştirme eylemlerini çağırdığınızda, yarış koşullarına sahip olabilirsiniz. Bir çağrı belirli bir duruma bağlı olduğundan ve diğer çağrının durumu değiştiğinden, bu yarış durumlarının hata ayıklaması zordur.
 
-Bazı işlemler oldukça uzun sürebileceğinden, Azure PowerShell eşzamanlılık içinde de bir değer vardır. Ancak, dikkatli ilerlemeniz gerekir. Bir yarış durumu yaşadığınızı düşünüyorsanız, PSWorkerInProcConcurrencyUpperBound uygulama ayarını `1` olarak ayarlayın ve bunun yerine eşzamanlılık için [dil çalışan işlem düzeyi yalıtımı](functions-app-settings.md#functions_worker_process_count) kullanın.
+Bazı işlemler oldukça uzun sürebileceğinden, Azure PowerShell eşzamanlılık içinde de bir değer vardır. Ancak, dikkatli ilerlemeniz gerekir. Bir yarış durumu yaşıyor olduğunuzdan şüpheleniyorsanız, PSWorkerInProcConcurrencyUpperBound uygulama ayarını `1` olarak ayarlayın ve bunun yerine eşzamanlılık için [dil çalışan işlem düzeyi yalıtımı](functions-app-settings.md#functions_worker_process_count) kullanın.
 
 ## <a name="configure-function-scriptfile"></a>İşlev `scriptFile` Yapılandır
 
-Varsayılan olarak, karşılık gelen `function.json` ile aynı üst dizini paylaşan bir dosya olan `run.ps1` ' dan bir PowerShell işlevi yürütülür.
+Varsayılan olarak, karşılık gelen `function.json`aynı üst dizini paylaşan bir dosya olan `run.ps1`bir PowerShell işlevi yürütülür.
 
-@No__t_1 `scriptFile` özelliği, aşağıdaki örnekte olduğu gibi görünen bir klasör yapısını almak için kullanılabilir:
+`function.json` `scriptFile` özelliği, aşağıdaki örnekte olduğu gibi görünen bir klasör yapısını almak için kullanılabilir:
 
 ```
 FunctionApp
@@ -538,7 +536,7 @@ FunctionApp
  | | - PSFunction.ps1
 ```
 
-Bu durumda, `myFunction` için `function.json`, dosyaya, çalıştırılacak işlevi içeren bir `scriptFile` özelliği içerir.
+Bu durumda, `myFunction` için `function.json`, dosyaya, çalıştırılabilir işlevi ile başvuran bir `scriptFile` özelliği içerir.
 
 ```json
 {
@@ -552,9 +550,9 @@ Bu durumda, `myFunction` için `function.json`, dosyaya, çalıştırılacak iş
 ## <a name="use-powershell-modules-by-configuring-an-entrypoint"></a>Giriş noktası yapılandırarak PowerShell modüllerini kullanma
 
 Bu makalede, şablonlar tarafından oluşturulan varsayılan `run.ps1` betik dosyasında PowerShell işlevleri gösterilmektedir.
-Ancak, işlevlerinizi PowerShell modüllerine de ekleyebilirsiniz. Module. json ' yapılandırma dosyasında `scriptFile` ve `entryPoint` alanlarını kullanarak modüldeki özel işlev koduna başvurabilirsiniz.
+Ancak, işlevlerinizi PowerShell modüllerine de ekleyebilirsiniz. Function. json ' yapılandırma dosyasında `scriptFile` ve `entryPoint` alanlarını kullanarak modüldeki özel işlev kodunuza başvurabilirsiniz.
 
-Bu durumda, `entryPoint`, `scriptFile` ' de başvurulan PowerShell modülündeki bir işlevin veya cmdlet 'in adıdır.
+Bu durumda `entryPoint`, `scriptFile`' de başvurulan PowerShell modülündeki bir işlevin veya cmdlet 'in adıdır.
 
 Aşağıdaki klasör yapısını göz önünde bulundurun:
 
@@ -567,7 +565,7 @@ FunctionApp
  | | - PSFunction.psm1
 ```
 
-@No__t_0 şunları içerir:
+`PSFunction.psm1` şunları içerir:
 
 ```powershell
 function Invoke-PSTestFunc {
@@ -579,7 +577,7 @@ function Invoke-PSTestFunc {
 Export-ModuleMember -Function "Invoke-PSTestFunc"
 ```
 
-Bu örnekte, `myFunction` yapılandırması, başka bir klasördeki bir PowerShell modülü olan `PSFunction.psm1` ' ye başvuran bir `scriptFile` özelliği içerir.  @No__t_0 özelliği, modüldeki giriş noktası olan `Invoke-PSTestFunc` işlevine başvurur.
+Bu örnekte `myFunction` yapılandırması, başka bir klasördeki bir PowerShell modülü olan `PSFunction.psm1`başvuran bir `scriptFile` özelliği içerir.  `entryPoint` özelliği, modüldeki giriş noktası olan `Invoke-PSTestFunc` işlevine başvurur.
 
 ```json
 {
@@ -601,9 +599,9 @@ PowerShell işlevleriyle çalışırken, aşağıdaki bölümlerde yer aldığı
 
 [Sunucusuz barındırma modelinde](functions-scale.md#consumption-plan)Azure işlevleri geliştirirken soğuk başlar. *Soğuk başlatma* , bir isteği işlemek için işlev uygulamanızın çalışmaya başlaması için gereken süreyi ifade eder. İşlev uygulamanız işlem yapılmayan dönemler sırasında kapandığı için, tüketim planında soğuk başlatma daha sık gerçekleşir.
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>@No__t_0 kullanmak yerine modülleri paketleyin
+### <a name="bundle-modules-instead-of-using-install-module"></a>`Install-Module` kullanmak yerine modülleri paketleyin
 
-Komut dosyası her çağrıdan çalıştırılır. Betiğinizdeki `Install-Module` kullanmaktan kaçının. Bunun yerine, yayımlamadan önce `Save-Module` kullanın, böylece işlevinizin modülü indirme süresini atık olarak almamasını sağlayın. Soğuk başlıyorsa işlevlerinizi etkilese, işlev uygulamanızı *her zaman açık* veya bir [Premium plana](functions-scale.md#premium-plan)ayarlanmış bir [App Service plana](functions-scale.md#app-service-plan) dağıtmaya göz önünde bulundurun.
+Komut dosyası her çağrıdan çalıştırılır. Betiğinizdeki `Install-Module` kullanmaktan kaçının. Bunun yerine `Save-Module` yayımlamadan önce kullanın, böylece işlevinizin modülü indirme süresini atık olarak almamasını sağlayın. Soğuk başlıyorsa işlevlerinizi etkilese, işlev uygulamanızı *her zaman açık* veya bir [Premium plana](functions-scale.md#premium-plan)ayarlanmış bir [App Service plana](functions-scale.md#app-service-plan) dağıtmaya göz önünde bulundurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

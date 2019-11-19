@@ -3,7 +3,7 @@ title: Azure VM 'lerinde bir Service Fabric kümesi için altyapı oluşturma ö
 description: Bu öğreticide, Azure VM altyapısını bir Service Fabric kümesi çalıştıracak şekilde ayarlamayı öğreneceksiniz.
 services: service-fabric
 documentationcenter: .net
-author: v-vasuke
+author: jpconnock
 manager: jpconnock
 editor: ''
 ms.assetid: ''
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/22/2019
-ms.author: v-vasuke
+ms.author: jeconnoc
 ms.custom: mvc
-ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b24b4d95827dbd398c0eba43dcbad9fbfeb51469
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177733"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166269"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesi barındırmak için Azure VM altyapısı oluşturma
 
 Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fabric’in benimsediği "her işletim sistemi, her bulut" yaklaşımının bir parçası olarak bir küme oluşturma seçeneği sunar. Bu öğretici serisinde, Azure VM 'lerinde barındırılan tek başına bir küme oluşturup üzerine bir uygulama yüklersiniz.
 
-Bu öğretici, bir dizinin birinci bölümüdür. Bu makalede, tek başına Service Fabric kümenizi barındırmak için gereken Azure VM kaynaklarını üretin. Gelecek makalelerde, Service Fabric tek başına paketini yüklemeniz, kümenize bir örnek uygulama yüklemeniz ve son olarak kümenizi temizlemeniz gerekir.
+Bu öğretici, bir serinin birinci bölümüdür. Bu makalede, tek başına Service Fabric kümenizi barındırmak için gereken Azure VM kaynaklarını üretin. Gelecek makalelerde, Service Fabric tek başına paketini yüklemeniz, kümenize bir örnek uygulama yüklemeniz ve son olarak kümenizi temizlemeniz gerekir.
 
 Serinin birinci bölümünde şunları öğrenirsiniz:
 
@@ -90,12 +90,18 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
  
 4. RDP dosyasını açın ve istendiğinde VM kurulumunda verdiğiniz kullanıcı adını ve parolayı girin.
 
-5. Bir örneğe bağlandıktan sonra, uzak kayıt defterinin çalıştığını doğrulamanız ve önkoşul bağlantı noktalarını açmanız gerekir.
+5. Bir örneğe bağlandıktan sonra, uzak kayıt defterinin çalıştığını doğrulamanız, SMB 'yi etkinleştirmeniz ve SMB ve uzak kayıt defteri için gereken bağlantı noktalarını açmanız gerekir.
+
+   SMB 'yi etkinleştirmek için bu PowerShell komutunuz:
+
+   ```powershell
+   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+   ```
 
 6. Buradaki güvenlik duvarında bağlantı noktalarını açmak için şu PowerShell komutunu kullanın:
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
    ```
 
 7. Diğer örnekleriniz için bu işlemi tekrarlayın, özel IP adreslerini yeniden de not edin.
@@ -111,6 +117,15 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
    ```
 
    Çıktınız dört kez tekrar eden `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` gibi görünüyorsa, örnekler arasındaki bağlantınız çalışıyordur.
+
+3. Şimdi aşağıdaki komutla SMB paylaşımınızın çalıştığını doğrulayın:
+
+   ```
+   net use * \\172.31.20.163\c$
+   ```
+
+   Çıktı olarak `Drive Z: is now connected to \\172.31.20.163\c$.` döndürülmelidir.
+
 
    Artık örneklerinizin Service Fabric için uygun şekilde hazırlandığından emin olun.
 

@@ -1,19 +1,14 @@
 ---
-title: Sistem durumunu koruma & tam geri yükleme-Azure Backup Sunucusu
+title: Sistem durumu ve tam kurtarma koruması
 description: Sistem durumunu yedeklemek ve tam kurtarma (BMR) koruması sağlamak için Azure Backup Sunucusu kullanın.
-author: dcurwin
-manager: carmonm
-keywords: ''
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: dacurwin
-ms.openlocfilehash: 50f534a5a682cd9e4f6aeb040b897e7aae48dddd
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 2940ef5b8c0c2a7d751c46209253d4f4dbe6d13f
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969023"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172258"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Sistem durumunu yedekleme ve Azure Backup Sunucusu ile çıplak sisteme geri yükleme
 
@@ -42,7 +37,7 @@ Aşağıdaki tabloda neleri yedekleyebileceğiniz ve kurtarabileceğiniz özetle
 |Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />Ana bilgisayarın BMR/sistem durumu yedeklemesi|Kayıp Hyper-V konağı (VM 'Ler bozulmadan)|N|N|E|
 |Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />Ana bilgisayarın BMR/sistem durumu yedeklemesi|Kayıp Hyper-V konağı (VM 'Ler kayıp)|N|N|E<br /><br />BMR, ardından normal Azure Backup Sunucusu kurtarma|
 |SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/sistem durumu yedeklemesi|Kayıp uygulama verileri|E|N|N|
-|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/sistem durumu yedeklemesi|Kayıp veya hasarlı işletim sistemi|N|Iz|E|
+|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/sistem durumu yedeklemesi|Kayıp veya hasarlı işletim sistemi|N|Y|E|
 |SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/sistem durumu yedeklemesi|Kayıp sunucu (veritabanı/işlem günlükleri bozulmamış)|N|N|E|
 |SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/sistem durumu yedeklemesi|Kayıp sunucu (veritabanı/işlem günlükleri kayıp)|N|N|E<br /><br />BMR kurtarma, ardından normal Azure Backup Sunucusu kurtarma|
 

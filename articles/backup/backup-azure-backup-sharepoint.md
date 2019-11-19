@@ -1,19 +1,15 @@
 ---
-title: Azure 'da bir SharePoint grubunun DPM/Azure Backup Server koruması
+title: DPM ile bir SharePoint grubunu Azure 'a yedekleme
 description: Bu makalede, Azure 'da bir SharePoint grubunun DPM/Azure Backup sunucu korumasına genel bakış sunulmaktadır
 ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: dacurwin
-ms.openlocfilehash: 830dc313ea321f74c495f46c7c2d4ea5f9d4e5b5
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 1750270b3383e815b9255273923b50d2879fdba6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968553"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173331"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>DPM ile bir SharePoint grubunu Azure 'a yedekleme
 
@@ -75,7 +71,7 @@ SharePoint 'i korumak için DPM 'yi kullanabilmeniz için, **ConfigureSharePoint
 2. ConfigureSharePoint-EnableSharePointProtection girin.
 3. Grup Yöneticisi kimlik bilgilerini girin. Bu hesap, WFE sunucusunda yerel yönetici grubunun bir üyesi olmalıdır. Grup Yöneticisi yerel bir yönetici değilse WFE sunucusunda aşağıdaki izinleri verin:
    * DPM klasörüne (% Program Files%\Microsoft Data Protection Manager\DPM) WSS_Admin_WPG grubuna Tam Denetim izni verin.
-   * DPM kayıt defteri anahtarına (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager) WSS_Admin_WPG grubuna Okuma erişimi verin.
+   * DPM kayıt defteri anahtarına WSS_Admin_WPG grubuna Okuma erişimi verin (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager).
 
 > [!NOTE]
 > SharePoint grubu yönetici kimlik bilgilerinde bir değişiklik olduğunda ConfigureSharePoint. exe ' yi yeniden çalıştırmanız gerekir.

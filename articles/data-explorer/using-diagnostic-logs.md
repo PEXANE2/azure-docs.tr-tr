@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 7d0fec56791c0d3e7ae60d78da83cf286532b9ab
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124012"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173808"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Tanılama günlüklerini kullanarak Azure Veri Gezgini alma işlemlerini izleme (Önizleme)
 
@@ -25,7 +25,7 @@ Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasında
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesi için tanılama günlüklerini ayarlama
 
@@ -51,7 +51,7 @@ Tanılama günlükleri, varsayılan olarak devre dışıdır. Tanılama günlük
 
     1. Tanılama ayarınız için **ad** seçin.
     1. Bir veya daha fazla hedef seçin: depolama hesabı, Olay Hub 'ı veya Log Analytics.
-    1. Toplanacak günlükleri seçin: `SucceededIngestion` veya. `FailedIngestion`
+    1. Toplanacak günlükleri seçin: `SucceededIngestion` veya `FailedIngestion`.
     1. Toplanacak [ölçümleri](using-metrics.md) seçin (isteğe bağlı).   
     1. Yeni tanılama günlükleri ayarlarını ve ölçümlerini kaydetmek için **Kaydet** ' i seçin.
     1. Tanılama günlüklerini etkinleştirmeyi istemek için Azure portal **Yeni bir destek isteği** oluşturun.
@@ -66,13 +66,13 @@ Tüm [Azure izleyici tanılama günlükleri, ortak bir en üst düzey şemayı p
 
 Günlük JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
-|Name               |Açıklama
+|Ad               |Açıklama
 |---                |---
 |time               |Raporun saati
 |resourceId         |Azure Resource Manager kaynak KIMLIĞI
-|operationName      |İşlemin adı: MICROSOFT. KUSTO/KÜMELER/ALMA/EYLEM '
+|operationName      |İşlemin adı: ' MICROSOFT. KUSTO/KÜMELER/ALMA/EYLEM '
 |operationVersion   |Şema sürümü: ' 1,0 ' 
-|category           |İşlemin kategorisi. `SucceededIngestion`veya `FailedIngestion`. [Başarılı işlem](#successful-ingestion-operation-log) veya [başarısız işlem](#failed-ingestion-operation-log)için özellikler farklılık gösterir.
+|category           |İşlemin kategorisi. `SucceededIngestion` veya `FailedIngestion`. [Başarılı işlem](#successful-ingestion-operation-log) veya [başarısız işlem](#failed-ingestion-operation-log)için özellikler farklılık gösterir.
 |properties         |İşlemin ayrıntılı bilgileri.
 
 #### <a name="successful-ingestion-operation-log"></a>Başarılı alma işlemi günlüğü
@@ -100,11 +100,11 @@ Günlük JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 ```
 **Başarılı bir işlem tanılama günlüğü özellikleri**
 
-|Name               |Açıklama
+|Ad               |Açıklama
 |---                |---
 |succeededOn        |Alma işleminin tamamlanma süresi
 |operationId        |Azure Veri Gezgini alma işlemi KIMLIĞI
-|database           |Hedef veritabanının adı
+|veritabanı           |Hedef veritabanının adı
 |table              |Hedef tablonun adı
 |ınestionsourceıd  |Alım veri kaynağının KIMLIĞI
 |ınestionsourcepath|Alma veri kaynağının veya blob URI 'sinin yolu
@@ -141,21 +141,23 @@ Günlük JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
 **Başarısız bir işlem tanılama günlüğünün özellikleri**
 
-|Name               |Açıklama
+|Ad               |Açıklama
 |---                |---
 |failedOn           |Alma işleminin tamamlanma süresi
 |operationId        |Azure Veri Gezgini alma işlemi KIMLIĞI
-|database           |Hedef veritabanının adı
+|veritabanı           |Hedef veritabanının adı
 |table              |Hedef tablonun adı
 |ınestionsourceıd  |Alım veri kaynağının KIMLIĞI
 |ınestionsourcepath|Alma veri kaynağının veya blob URI 'sinin yolu
 |Rootactivityıd     |Etkinlik Kimliği
 |details            |Hatanın ve hata iletisinin ayrıntılı açıklaması
 |errorCode          |Hata kodu 
-|failureStatus      |`Permanent`veya `Transient`. Geçici bir hata yeniden deneniyorsa başarılı olabilir.
+|failureStatus      |`Permanent` veya `Transient`. Geçici bir hata yeniden deneniyorsa başarılı olabilir.
 |originatesFromUpdatePolicy|Hata bir güncelleştirme ilkesinden kaynaklanıyorsa doğru
 |shouldRetry        |Yeniden deneme başarılı olursa doğru
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Küme durumunu izlemek için ölçümleri kullanma](using-metrics.md)
+* [Öğretici: Azure Veri Gezgini veri alma ve sorgu izleme](ingest-data-no-code.md)
+* [Küme durumunu izlemek için ölçümleri kullanma](using-metrics.md)
+

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120326"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167867"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için G Suite 'i yapılandırma
 
@@ -32,7 +32,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları G Suit
 > [!NOTE]
 > G Suite Bağlayıcısı son zamanlarda 2019 Ekim tarihinde güncelleştirildi. G Suite bağlayıcısında yapılan değişiklikler şunları içerir:
 - Ek G Suite Kullanıcı ve grup öznitelikleri için destek eklendi. 
-- [Burada](/azure/active-directory/manage-apps/customize-application-attributes)tanımlananla eşleşecek şekilde, G Suite hedef öznitelik adları güncelleştirildi.
+- [Burada](https://developers.google.com/admin-sdk/directory)tanımlananla eşleşecek şekilde, G Suite hedef öznitelik adları güncelleştirildi.
 - Varsayılan öznitelik eşlemeleri güncelleştirildi.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -129,6 +129,9 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 > [!TIP]
 > G Suite [Çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial)sunulan yönergeleri Izleyerek g SUITE için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
+> [!NOTE]
+> G paketinin Dizin API 'SI uç noktası hakkında daha fazla bilgi edinmek için [DIZIN API](https://developers.google.com/admin-sdk/directory)'sine bakın.
+
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Azure AD 'de G Suite için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
@@ -161,7 +164,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**’e tıklayın.
+8. **Save (Kaydet)** düğmesine tıklayın.
 
 9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları G/Suite ile eşitler**' ı seçin.
 
@@ -196,15 +199,6 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü ve G Suite ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinliği raporuna ilişkin bağlantıları takip edebilirsiniz.
 
 Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
-
-> [!NOTE]
-> G Suite 'e Kullanıcı sağlamayı otomatik hale getirmeye yönelik başka bir uygulanabilir seçenek, [Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en)kullanmaktır. Bu seçenek, şirket içi Active Directory kimliklerinizi G Suite 'e hazırlar.
-
-## <a name="common-issues"></a>Genel sorunlar
-* G Suite 'in tüm sağlanan kullanıcıların doğrulanmış etki alanlarından olması gerekir. Sağlamak istediğiniz tüm kullanıcıların G Suite 'de doğrulanmış bir etki alanından UPN 'ye sahip olduğundan emin olun. Doğrulanmayacak bir etki alanındaki bir Kullanıcı sağlama kapsamınsa, [sağlama günlüklerinde](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) "GoogleAppsInvalidDomain" gibi bir hata görürsünüz. Bu hataları önleyebilirsiniz ve doğrulanmamış etki alanlarından kullanıcıların kapsam dışı bir [filtre](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)kullanarak kapsam dışında olmasını sağlayabilirsiniz.
-    * Target özniteliği: userPrincipalName
-    * İşleç: REGEX EŞLEŞMESI veya REGEX EŞLEŞMIYOR
-    * Değer:. *@domain.com
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

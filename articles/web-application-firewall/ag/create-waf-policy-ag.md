@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/26/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 31a5ad92942b40e42b66e404df2d09cd8158f7a2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3f7d213aed82d1cb94bb96b9e212d3b255851afd
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606480"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171213"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway için Web uygulaması güvenlik duvarı ilkeleri oluşturma
 
@@ -64,13 +64,13 @@ Bir WAF ilkesi oluşturduğunuzda, varsayılan olarak *algılama* modundadır. A
 
 Azure tarafından yönetilen OWASP kuralları varsayılan olarak etkinleştirilmiştir. Bir kural grubundaki tek bir kuralı devre dışı bırakmak için bu kural grubundaki kuralları genişletin, kural numarasının önündeki onay kutusunu seçin ve yukarıdaki sekmede **devre dışı bırak** ' ı seçin.
 
-![Yönetilen kurallar](../media/create-waf-policy-ag/managed-rules.png)
+[Yönetilen kuralları ![](../media/create-waf-policy-ag/managed-rules.png)](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
 
 ## <a name="custom-rules"></a>Özel kurallar
 
 Özel kural oluşturmak için özel **kurallar** sekmesinin altında **özel kural ekle** ' yi seçin. Bu, özel kural yapılandırma sayfasını açar. Aşağıdaki ekran görüntüsünde, sorgu dizesinde *blok metni varsa*bir isteği engellemek için yapılandırılmış örnek bir özel kural gösterilmektedir.
 
-![Özel kuralı Düzenle](../media/create-waf-policy-ag/edit-custom-rule.png)
+[Özel kuralı Düzenle](../media/create-waf-policy-ag/edit-custom-rule.png) ![](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
 ## <a name="migrate"></a>WAF yapılandırmasını bir WAF Ilkesine geçirme
 
@@ -82,7 +82,7 @@ Zaten bir WAF varsa, portalda bazı değişiklikler fark etmiş olabilirsiniz. �
 
 Portalda, WAF 'nizin hangi duruma olduğunu söyleyebilirsiniz. WAF ayarları görünür durumdaysa ve Application Gateway görünümünde değiştirilebiliyorsa, WAF 'niz durum 1 ' dir.
 
-![WAF yapılandırması](../media/create-waf-policy-ag/waf-configure.png)
+[![WAF yapılandırma](../media/create-waf-policy-ag/waf-configure.png)](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
 
 **Web uygulaması güvenlik duvarı 'nı** seçerseniz ve ilgili bir ilke gösteriyorsa WAF, durum 2 veya durum 3 ' dir. İlkeye gidildikten sonra, **yalnızca** özel kurallar ve Ilişkili uygulama ağ geçitleri gösteriyorsa, bu yalnızca özel bir kural ilkesidir.
 
@@ -98,9 +98,9 @@ Yalnızca WAF Ilkenize özel bir Kuraldıysanız, yeni WAF Ilkesine geçiş yapm
 
 Özel kuralda yapılan düzenlemeler yalnızca WAF ilkesi devre dışı bırakıldı. Kuralları devre dışı bırakma, dışlamaları ekleme vb. gibi WAF ayarlarını düzenlemek için, yeni bir üst düzey güvenlik duvarı ilkesi kaynağına geçiş yapmanız gerekir.
 
-Bunu yapmak için bir *Web uygulaması güvenlik duvarı ilkesi* oluşturun ve bunu tercih ettiğiniz Application Gateway ve dinleyiclarıyla ilişkilendirin. Bu yeni Ilke, geçerli WAF yapılandırması ile tam olarak aynı **olmalıdır** , yani her özel kural, dışlama, devre dışı kuralı vb., oluşturmakta olduğunuz yeni ilkeye kopyalanmalıdır. Application Gateway ilişkili bir Ilkeniz olduktan sonra, WAF kurallarınızdaki ve ayarlarınızda değişiklik yapmaya devam edebilirsiniz. 
+Bunu yapmak için bir *Web uygulaması güvenlik duvarı ilkesi* oluşturun ve bunu tercih ettiğiniz Application Gateway ve dinleyiclarıyla ilişkilendirin. Bu yeni Ilke, geçerli WAF yapılandırması ile tam olarak aynı **olmalıdır** , yani her özel kural, dışlama, devre dışı kuralı vb., oluşturmakta olduğunuz yeni ilkeye kopyalanmalıdır. Application Gateway ilişkili bir Ilkeniz olduktan sonra, WAF kurallarınızdaki ve ayarlarınızda değişiklik yapmaya devam edebilirsiniz. Bunu, Azure PowerShell ile de yapabilirsiniz. Daha fazla bilgi için bkz. [BIR WAF ilkesini mevcut bir Application Gateway ilişkilendirme](associate-waf-policy-existing-gateway.md).
 
-Bunu, Azure PowerShell ile de yapabilirsiniz. Daha fazla bilgi için bkz. [BIR WAF ilkesini mevcut bir Application Gateway ilişkilendirme](associate-waf-policy-existing-gateway.md).
+İsteğe bağlı olarak, bir WAF ilkesine geçiş yapmak için bir geçiş betiği kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure PowerShell kullanarak Web uygulaması güvenlik duvarı Ilkelerini geçirme](migrate-policy.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

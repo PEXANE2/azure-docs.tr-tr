@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 0f34aad4a8590c71f926d12d201f9a614afaa127
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4766d48a748fedd82532f2ac49223ab0460b9ef7
+ms.sourcegitcommit: fa41a56357de487b10e54711fbbdbd4a373fa67c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114935"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74153564"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>Video Indexer ile canlı akış analizi
 
-Azure Media Services Video Indexer, video ve ses dosyalarından daha derin Öngörüler çıkarmak için tasarlanan bir Azure hizmetidir. Bu, önceden oluşturulmuş olan belirli bir medya dosyasını analiz etmek için kullanılır. Öte yandan, bazı kullanım durumları için medya öngörülerini canlı bir akıştan, işletimsel ve diğer kullanım durumlarının kilidini açmak için mümkün olduğunca hızlı bir şekilde almanız önemlidir. Örneğin, canlı bir akışta bulunan zengin meta veriler, Content üreticileri tarafından TV üretimini otomatikleştirmek için kullanılabilir. Örneğin, bir newsodanın gazeteclerinin, içeriğe göre bildirim hizmetleri oluşturmak için Canlı akışları aradığı, [Endemol ışığı grubu](https://customers.microsoft.com/story/esg-media-telecommunications-azure).
+Azure Media Services Video Indexer, video ve ses dosyalarından daha derin Öngörüler çıkarmak için tasarlanan bir Azure hizmetidir. Bu, önceden oluşturulmuş olan belirli bir medya dosyasını analiz etmek için kullanılır. Öte yandan, bazı kullanım durumları için medya öngörülerini canlı bir akıştan, işletimsel ve diğer kullanım durumlarının kilidini açmak için mümkün olduğunca hızlı bir şekilde almanız önemlidir. Örneğin, canlı bir akışta bulunan zengin meta veriler, Content üreticileri tarafından TV üretimini otomatikleştirmek için kullanılabilir.
 
 Bu makalede açıklanan bir çözüm, müşterilerin canlı akışlar üzerinde neredeyse gerçek zamanlı çözünürlükler Video Indexer kullanmasına izin verir. Dizin oluşturma işleminin gecikmesi, bu çözümü, dizin oluşturulan verilerin parçalara, giriş çözümlemesine, içerik türüne ve bu işlem için kullanılan işlem gücü 'ne bağlı olarak dört dakika içinde en az olabilir.
 

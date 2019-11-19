@@ -1,21 +1,16 @@
 ---
-title: Azure hızlı başlangıç-Azure CLı ile sanal makine yedekleme
+title: Hızlı başlangıç-Azure CLı ile sanal makine yedekleme
 description: Bu hızlı başlangıçta, bir kurtarma hizmetleri Kasası oluşturmayı, bir VM 'de korumayı etkinleştirmeyi ve Azure CLı ile ilk kurtarma noktasını oluşturmayı öğrenin.
-author: dcurwin
-manager: carmonm
-tags: azure-resource-manager, virtual-machine-backup
-ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 0d16237e0d5dc0e2176a2a9f600ca0be96328717
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a359e47a70f6a1a9e0957b4e1c3965c8db12339a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747136"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171981"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>CLI ile Azure'daki bir sanal makineyi yedekleme
 

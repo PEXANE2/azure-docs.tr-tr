@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3518404b76625e2557aaefdc6ab5ad7353683984
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: 3283cfe9455ba29679d7c741941aa8863c47b1c0
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823317"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158302"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamaları ve bilinen sorunlar
 
@@ -191,7 +191,7 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
 - [Arabellek havuzu uzantısı](/sql/database-engine/configure-windows/buffer-pool-extension) desteklenmiyor.
 - `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` desteklenmez. Bkz. [Alter Server CONFIGURATION](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Mediğinden
+### <a name="collation"></a>Harmanlama
 
 Varsayılan örnek harmanlama `SQL_Latin1_General_CP1_CI_AS` ve oluşturma parametresi olarak belirtilebilir. Bkz. [harmanlamalar](/sql/t-sql/statements/collations).
 
@@ -299,7 +299,7 @@ Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-databas
 
 Aşağıdaki SQL Aracısı özellikleri şu anda desteklenmiyor:
 
-- Kullanıldığı
+- Proxy'ler
 - Boştaki bir CPU 'da iş planlama
 - Aracıyı etkinleştirme veya devre dışı bırakma
 - Uyarılar
@@ -526,7 +526,7 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 - Bir bölgede dağıtabileceğiniz sanal çekirdek sayısı ve örnek türleri bazı [kısıtlamalar ve sınırlara](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)sahiptir.
 - [Alt ağda uygulanması gereken bazı güvenlik kuralları](sql-database-managed-instance-connectivity-architecture.md#network-requirements)vardır.
 
-### <a name="vnet"></a>ADLı
+### <a name="vnet"></a>VNET
 - VNet, kaynak modeli kullanılarak dağıtılabilir-sanal ağ için klasik model desteklenmez.
 - Yönetilen bir örnek oluşturulduktan sonra, yönetilen örneği veya VNet 'i başka bir kaynak grubuna veya aboneliğe taşımak desteklenmez.
 - App Service ortamları, Logic Apps ve yönetilen örnekler (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları küresel olarak bağlandığında farklı bölgelerdeki yönetilen örneklere erişemez [ eşleme](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.
@@ -564,16 +564,6 @@ SQL Server/yönetilen örnek [, kullanıcının boş olmayan bir dosyayı bırak
 Devam eden `RESTORE` ekstresi, veri geçiş hizmeti geçiş işlemi ve yerleşik nokta geri yükleme işlemi, hizmet katmanını güncelleştirmeyi veya mevcut örneğin yeniden boyutlandırılmasını engeller ve geri yükleme işlemi bitene kadar yeni örnekler oluşturur. Geri yükleme işlemi, geri yükleme işleminin çalıştırıldığı aynı alt ağdaki yönetilen örneklerde ve örnek havuzlardaki bu işlemleri engeller. Örnek havuzlardaki örnekler etkilenmez. Hizmet katmanı işlemleri oluşturma veya değiştirme başarısız olmayacak veya zaman aşımı-geri yükleme işlemi tamamlandıktan veya iptal edildikten sonra devam eder.
 
 **Geçici çözüm**: geri yükleme işlemi tamamlanana kadar bekleyin veya hizmet katmanı oluşturma veya güncelleştirme işlemi daha yüksek önceliğe sahipse geri yükleme işlemini iptal edin.
-
-### <a name="missing-validations-in-restore-process"></a>Restore işleminde eksik doğrulamalar
-
-**Tarih:** Eyl 2019
-
-`RESTORE` deyimin ve yerleşik nokta geri yüklemesi, geri yüklenen veritabanında bazı nessecary denetimleri gerçekleştirmez:
-- **DBCC CHECKDB** - `RESTORE` ifade geri yüklenen veritabanında `DBCC CHECKDB` gerçekleştirmez. Özgün bir veritabanı bozuksa veya Azure Blob depolama alanına kopyalanırken yedekleme dosyası bozuksa, otomatik yedeklemeler alınmaz ve Azure desteği müşteriyle iletişim kuracaktır. 
-- Yerleşik bir zaman noktası geri yükleme işlemi, İş Açısından Kritik örneğinden otomatik yedeklemenin [bellek ıçı OLTP nesnelerini](sql-database-in-memory.md#in-memory-oltp)içermediğini denetlemez. 
-
-**Geçici çözüm**: bir yedeklemeyi almadan önce kaynak veritabanında `DBCC CHECKDB` yürütdiğinizden ve yönetilen örnek üzerinde geri yüklenelebilecek olası bozulmaları önlemek için yedeklemedeki `WITH CHECKSUM` seçeneğini kullandığınızdan emin olun. Kaynak veritabanınızın Genel Amaçlı katmana geri yüklüyorsanız [bellek ıçı OLTP nesneleri](sql-database-in-memory.md#in-memory-oltp) içermediğinden emin olun.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>İş Açısından Kritik hizmet katmanındaki Resource Governor yük devretmeden sonra yeniden yapılandırılması gerekebilir
 

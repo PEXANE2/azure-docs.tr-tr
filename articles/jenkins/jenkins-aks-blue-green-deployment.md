@@ -1,19 +1,15 @@
 ---
 title: Jenkins ve mavi/yeşil dağıtım modelini kullanarak Azure Kubernetes hizmetine dağıtın
 description: Jenkins ve mavi/yeşil dağıtım düzenini kullanarak Azure Kubernetes Service'e (AKS) nasıl dağıtım yapacağınızı öğrenin.
-ms.service: jenkins
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, mavi yeşil dağıtım, sürekli teslim, cd
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 4f528a667a7b498cadb15a441f9d9321259fffde
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: ae9c496cd820bf1263cac50fb676990ed65ed0ba
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882079"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158545"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Jenkins ve mavi/yeşil dağıtım düzenini kullanarak Azure Kubernetes Service'e (AKS) dağıtım yapma
 
@@ -147,7 +143,7 @@ Mavi/yeşil dağıtımı AKS'de el ile veya önceden kopyalanan örnekte sağlan
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. Genel ve test uç noktaları için DNS adını güncelleştirin. Bir Kubernetes kümesi oluşturduğunuzda, aynı zamanda adlandırma düzeni **MC_&lt;kaynak-grubu-adınız> _&lt;kubernetes-kümesi-adınız>_ &lt;konumunuz>** olan bir [ek kaynak grubu](https://github.com/Azure/AKS/issues/3) da oluşturmuş olursunuz.
+1. Genel ve test uç noktaları için DNS adını güncelleştirin. Bir Kubernetes kümesi oluşturduğunuzda, aynı zamanda adlandırma düzeni [MC_](https://github.com/Azure/AKS/issues/3)kaynak-grubu-adınız> **&lt;kubernetes-kümesi-adınız> _&lt;konumunuz>_ olan bir &lt;ek kaynak grubu** da oluşturmuş olursunuz.
 
     Kaynak grubundaki genel IP'leri bulun.
 
@@ -272,7 +268,7 @@ Genel ve mavi test uç noktaları aynı güncelleştirmeye sahiptir, yeşil uç 
 
 Derlemeyi bir kereden fazla çalıştırırsanız, mavi ve yeşil dağıtımlar arasında geçiş yapar. Diğer bir deyişle, geçerli ortamın mavi olması durumunda iş yeşil ortama dağıtılır ve burada test edilir. Testler başarılıysa, iş uygulamanın genel uç noktasını trafiği yeşil ortama yönlendirecek şekilde güncelleştirir.
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 Sıfır kesinti süreli dağıtım hakkında daha fazla bilgi için bu [hızlı başlangıç şablonuna](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-aks-zero-downtime-deployment) bakın. 
 

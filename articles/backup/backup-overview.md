@@ -1,19 +1,15 @@
 ---
-title: Azure Yedekleme nedir?
+title: Azure Backup nedir?
 description: Azure Backup hizmetine genel bir bakış sağlar ve iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunur.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: overview
 ms.date: 04/24/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 29e0b05ee9cb8f7dc67f90b54081bca4db0691b6
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 49ef90c874e920ef92dd5206447081a6aa4f7988
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035232"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172190"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup hizmeti nedir?
 
@@ -119,12 +115,12 @@ Aşağıdaki tablo, her bileşen için en fazla yedekleme sıklığını göster
 |  | Azure Backup (MARS) aracısı| System Center DPM | Azure Backup Sunucusu | Azure IaaS VM Backup |
 | --- | --- | --- | --- | --- |
 | Yedekleme sıklığı<br/> (Kurtarma hizmetleri kasasına) |Günde üç yedekleme |Günde iki yedekleme |Günde iki yedekleme |Günde bir yedekleme |
-| Yedekleme sıklığı<br/> (diske) |Geçerli değil |SQL Server için 15 dakikada bir<br/><br/> Diğer iş yükleri için saatte bir |SQL Server için 15 dakikada bir<br/><br/> Diğer iş yükleri için saatte bir |Geçerli değil |
+| Yedekleme sıklığı<br/> (diske) |Uygulanamaz |SQL Server için 15 dakikada bir<br/><br/> Diğer iş yükleri için saatte bir |SQL Server için 15 dakikada bir<br/><br/> Diğer iş yükleri için saatte bir |Uygulanamaz |
 | Bekletme seçenekleri |Günlük, haftalık, aylık, yıllık |Günlük, haftalık, aylık, yıllık |Günlük, haftalık, aylık, yıllık |Günlük, haftalık, aylık, yıllık |
 | Korumalı örnek başına en fazla kurtarma noktası |9999|9999|9999|9999|
 | En uzun bekletme süresi |Yedekleme sıklığına bağlıdır |Yedekleme sıklığına bağlıdır |Yedekleme sıklığına bağlıdır |Yedekleme sıklığına bağlıdır |
-| Yerel diskteki kurtarma noktaları |Geçerli değil | Dosya sunucuları için 64<br/><br/> Uygulama Sunucuları için 448 | Dosya sunucuları için 64<br/><br/> Uygulama Sunucuları için 448 |Geçerli değil |
-| Banttaki kurtarma noktaları |Geçerli değil |İş çalışma zamanında |Geçerli değil |Geçerli değil |
+| Yerel diskteki kurtarma noktaları |Uygulanamaz | Dosya sunucuları için 64<br/><br/> Uygulama Sunucuları için 448 | Dosya sunucuları için 64<br/><br/> Uygulama Sunucuları için 448 |Uygulanamaz |
+| Banttaki kurtarma noktaları |Uygulanamaz |Sınırsız |Uygulanamaz |Uygulanamaz |
 
 ## <a name="how-does-azure-backup-work-with-encryption"></a>Azure Backup şifrelemeyle nasıl çalışır?
 

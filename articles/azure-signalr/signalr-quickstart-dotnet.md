@@ -1,5 +1,5 @@
 ---
-title: Azure SignalR hizmetini ASP.NET ile nasıl kullanacağınızı öğrenmek için hızlı başlangıç
+title: ASP.NET ile geliştirme-Azure SignalR hizmeti
 description: ASP.NET Framework ile sohbet odası oluşturmak için Azure SignalR hizmetini kullanmaya yönelik hızlı başlangıç.
 author: sffamily
 ms.service: signalr
@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: 8dfb74fc941a9bb6d235093287ac47983c0e0564
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931832"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158184"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Hızlı başlangıç: ASP.NET ve SignalR hizmeti ile sohbet odası oluşturma
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, benzer bir [sohbet odası uygulaması](./signalr-quic
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
 * [ASP.NET SignalR 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Azure hesabınızla [Azure portalında](https://portal.azure.com/) oturum açın.
 

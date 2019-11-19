@@ -1,19 +1,15 @@
 ---
 title: Öğretici-Azure 'da sanal makine ölçek kümelerini, anormal kullanarak yapılandırma
 description: Azure 'da sanal makine ölçek kümeleri oluşturmak ve yapılandırmak için nasıl kullanılacağını öğrenin
-keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, sanal makine, sanal makine ölçek kümesi, VMSS
+keywords: ansible, azure, devops, bash, playbook, sanal makine, sanal makine ölçek kümesi, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1d9b8cd207596aefa01af852627f11cb9b4ce5dc
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e1cc40459988fb9bc38e3dbbcde563cebb531e3d
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241723"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156542"
 ---
 # <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Öğretici: Azure 'da sanal makine ölçek kümelerini, anormal kullanarak yapılandırma
 
@@ -29,7 +25,7 @@ ms.locfileid: "72241723"
 > * Ölçek kümesi yapılandırma
 > * Ölçek kümesini sanal makine örneklerinin artırarak ölçeklendirin 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -39,17 +35,17 @@ ms.locfileid: "72241723"
 Bu bölümdeki PlayBook kodu aşağıdaki kaynakları tanımlar:
 
 * Tüm kaynaklarınızın dağıtılacağı **kaynak grubu** .
-* 10.0.0.0/16 adres alanındaki **sanal ağ**
-* Sanal ağ içindeki **alt ağ**
-* Internet üzerinden kaynaklara erişmenize izin veren **genel IP adresi**
+* 10.0.0.0/16 adres alanında **sanal ağ**
+* Sanal ağ içinde **alt ağ**
+* İnternet üzerindeki kaynaklara erişmenizi sağlayan **genel IP adresi**
 * Ölçek kümesi içindeki ve olmayan ağ trafiği akışını denetleyen **ağ güvenlik grubu**
-* Yük dengeleyici kuralları kullanan bir tanımlı VM 'Ler kümesi üzerinden trafiği dağıtan **yük dengeleyici**
+* Yük dengeleyici kurallarını kullanarak trafiği tanımlı bir VM'ler kümesi arasında dağıtan **yük dengeleyici**
 * Oluşturulan tüm kaynakları kullanan **sanal makine ölçek kümesi**
 
 Örnek PlayBook 'u almanın iki yolu vardır:
 
-* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) ve `vmss-create.yml` ' e kaydedin.
-* @No__t-0 adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) ve `vmss-create.yml`kaydedin.
+* `vmss-create.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
 
 ```yml
 - hosts: localhost
@@ -147,9 +143,9 @@ Bu bölümdeki PlayBook kodu aşağıdaki kaynakları tanımlar:
 
 PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
 
-* @No__t-0 bölümünde `{{ admin_password }}` yer tutucusunu kendi parolanızla değiştirin.
+* `vars` bölümünde, `{{ admin_password }}` yer tutucusunu kendi parolanızla değiştirin.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook vmss-create.yml
@@ -193,7 +189,7 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 
 [Yapılandırılmış ölçek kümesinde](#configure-a-scale-set) Şu anda iki örnek vardır. Bu değeri doğrulamak için aşağıdaki adımlar kullanılır:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
 1. Yapılandırdığınız ölçek kümesine gidin.
 
@@ -219,8 +215,8 @@ Bu bölümdeki PlayBook kodu, ölçek kümesi hakkındaki bilgileri alır ve kap
 
 Örnek PlayBook 'u almanın iki yolu vardır:
 
-* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) ve `vmss-scale-out.yml` ' e kaydedin.
-* @No__t-0 adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) ve `vmss-scale-out.yml`kaydedin.
+* `vmss-scale-out.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
 
 ```yml
 - hosts: localhost
@@ -247,7 +243,7 @@ Bu bölümdeki PlayBook kodu, ölçek kümesi hakkındaki bilgileri alır ve kap
       azure_rm_virtualmachinescaleset: "{{ body }}"
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook vmss-scale-out.yml
@@ -293,13 +289,13 @@ localhost                  : ok=5    changed=1    unreachable=0    failed=0
 
 Azure portal yoluyla çalışmalarınızın sonuçlarını doğrulayın:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
 1. Yapılandırdığınız ölçek kümesine gidin.
 
 1. Ölçek kümesi adını parantez içindeki örneklerin sayısıyla görürsünüz: `Standard_DS1_v2 (3 instances)` 
 
-1. Ayrıca, aşağıdaki komutu çalıştırarak [Azure Cloud Shell](https://shell.azure.com/) değişikliği doğrulayabilirsiniz:
+1. Değişikliği [Azure Cloud Shell](https://shell.azure.com/) ile aşağıdaki komutu çalıştırarak da doğrulayabilirsiniz:
 
     ```azurecli-interactive
     az vmss show -n myScaleSet -g myResourceGroup --query '{"capacity":sku.capacity}' 

@@ -1,19 +1,15 @@
 ---
-title: Azure Backup Içeri/dışarı aktarma hizmeti ile çekirdek çevrimdışı yedekleme
+title: Içeri/dışarı aktarma hizmeti ile çekirdek çevrimdışı yedekleme
 description: Azure Backup Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri göndermenizi nasıl sağlayacağınızı öğrenin. Bu makalede, Azure Içeri aktarma hizmeti kullanılarak ilk yedekleme verilerinin çevrimdışı dengeli dağıtımı açıklanmaktadır.
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: dacurwin
-ms.openlocfilehash: 15a5a67209552134969c01220e8412d0c9dace15
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 331d5528c8f124f4d43142ff7be4daa3169b0381
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968511"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173298"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup’ta çevrimdışı yedekleme iş akışı
 
@@ -31,7 +27,7 @@ Azure Backup çevrimdışı dağıtım işlemi, diskleri kullanarak ilk yedeklem
 4. Azure veri merkezinde, disklerdeki veriler bir Azure depolama hesabına kopyalanır.
 5. Azure Backup, yedekleme verilerini depolama hesabından kurtarma hizmetleri kasasına kopyalar ve artımlı yedeklemeler zamanlanır.
 
-## <a name="supported-configurations"></a>Desteklenen konfigürasyonlar
+## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
 
 Aşağıdaki Azure Backup özellikleri veya iş yükleri çevrimdışı yedekleme kullanımını destekler.
 
@@ -40,7 +36,7 @@ Aşağıdaki Azure Backup özellikleri veya iş yükleri çevrimdışı yedeklem
 > * Azure Backup Aracısı olarak da adlandırılan Microsoft Azure Kurtarma Hizmetleri (MARS) aracısıyla dosya ve klasörlerin yedeklenmesi.
 > * Tüm iş yüklerini ve dosyaları System Center Data Protection Manager (SC DPM) ile yedekleme
 > * Tüm iş yüklerini ve dosyaları Microsoft Azure Backup sunucusuna yedekleme
-
+ 
    > [!NOTE]
    > Çevrimdışı yedekleme, Azure Backup Aracısı kullanılarak gerçekleştirilen sistem durumu yedeklemeleri için desteklenmez.
 
@@ -69,7 +65,7 @@ Aşağıdaki Azure Backup özellikleri veya iş yükleri çevrimdışı yedeklem
 * Diskler Azure 'a gönderilirken yalnızca 2,5 inç SSD veya 2,5 inç veya 3,5-inç SATA II/III iç sabit sürücü kullanın. Sabit sürücüleri 10 TB 'a kadar kullanabilirsiniz. Hizmetin desteklediği en son sürücü kümesi için [Azure içeri/dışarı aktarma hizmeti belgelerini](../storage/common/storage-import-export-requirements.md#supported-hardware) denetleyin.
 * SATA sürücülerin, *hazırlama KONUMUNDAN* SATA sürücülere olan yedekleme verilerinin kopyasının yapıldığı bir bilgisayara ( *kopya bilgisayar*olarak adlandırılır) bağlanması gerekir. *Kopya bilgisayarda*BitLocker 'ın etkinleştirildiğinden emin olun.
 
-## <a name="workflow"></a>İş Akışı
+## <a name="workflow"></a>İş akışı
 
 Bu bölüm, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure depolama 'ya yüklenebilmesi için çevrimdışı yedekleme iş akışını açıklar. Içeri aktarma hizmeti veya işlemin herhangi bir yönü hakkında sorularınız varsa bkz. [Içeri aktarma hizmeti genel bakış belgeleri](../storage/common/storage-import-export-service.md).
 
@@ -109,7 +105,7 @@ Bu bölüm, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure 
 
 *AzureOfflineBackupDiskPrep* yardımcı programı, en yakın Azure veri merkezıne gönderilen SATA sürücüleri hazırlar. Bu yardımcı program, Azure Backup Aracısı yükleme dizininde (aşağıdaki yolda) kullanılabilir:
 
-   *\Microsoft Azure kurtarma hizmetleri servisleri \ utils\\*
+    *\Microsoft Azure Recovery Services Agent\Utils\\*
 
 1. Dizine gidin ve **AzureOfflineBackupDiskPrep** dizinini SATA sürücülerin bağlı olduğu başka bir bilgisayara kopyalayın. Bağlı SATA sürücülerine sahip bilgisayarda şunları doğrulayın:
 

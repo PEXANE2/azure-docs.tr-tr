@@ -1,18 +1,14 @@
 ---
-title: Azure Backup kullanan bulut iş yüklerini korumanıza yardımcı olacak güvenlik özellikleri
+title: Bulut iş yüklerini korumaya yardımcı olan güvenlik özellikleri
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.author: dacurwin
-ms.openlocfilehash: f0e4540f3f5ab3fdbb5953cbf100c5fdc2b2542a
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 95eb72fe9d918b527cdceec69a0e90a682d62b07
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621990"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172714"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup kullanan bulut iş yüklerini korumanıza yardımcı olacak güvenlik özellikleri
 
@@ -95,7 +91,7 @@ Geçici silme devre dışı bırakmak için önkoşulların karşılandığında
 
 ## <a name="other-security-features"></a>Diğer güvenlik özellikleri
 
-### <a name="storage-side-encryption"></a>Depolama tarafı şifrelemesi
+### <a name="storage-side-encryption"></a>Depolama tarafında şifreleme
 
 Azure depolama, verilerinizi buluta kalıcı hale geldiğinde otomatik olarak şifreler. Şifreleme, verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Azure depolama 'daki veriler, 256 bit AES şifrelemesi kullanılarak şifrelenmiş ve şifresi çözülür, en güçlü blok şifrelemeleri kullanılabilir ve FIPS 140-2 uyumludur. Azure depolama şifrelemesi, Windows 'da BitLocker şifrelemeye benzer. Azure Backup verileri depolamadan önce otomatik olarak şifreler. Azure Storage, verileri almadan önce şifresini çözer.  
 

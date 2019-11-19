@@ -1,20 +1,15 @@
 ---
-title: "Azure Backup: Linux VM 'lerinin uygulamayla tutarlı yedeklemeleri"
+title: Linux VM 'lerinin uygulamayla tutarlı yedeklemeleri
 description: Linux sanal makinelerinizin Azure 'da uygulamayla tutarlı yedeklerini oluşturun. Bu makalede, betik çerçevesinin Azure tarafından dağıtılan Linux VM 'lerini yedeklemek için yapılandırılması açıklanmaktadır. Bu makalede, sorun giderme bilgileri de yer alır.
 ms.reviewer: anuragm
-author: dcurwin
-manager: carmonm
-keywords: uygulamayla tutarlı yedekleme; uygulamayla tutarlı Azure VM yedeklemesi; Linux VM yedeklemesi; Azure Backup
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.author: dacurwin
-ms.openlocfilehash: 1835c6968bfdfcc3f3ce4d8a624e8f6bd62e224c
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375939"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173000"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM 'lerinin uygulamayla tutarlı yedeklemesi
 

@@ -1,18 +1,14 @@
 ---
-title: PowerShell ile Azure Backup kullanarak Azure VM 'lerini yedekleme ve kurtarma
+title: PowerShell ile Azure VM 'lerini yedekleme ve kurtarma
 description: PowerShell ile Azure Backup kullanarak Azure VM 'lerinin nasıl yedekleneceği ve kurtarılacağı açıklanmaktadır
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.author: dacurwin
-ms.openlocfilehash: 91e71e2ab4c028e44f667133237cefb2263ae49a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 7afa791c4a98ca5e40c0ee3983ba8650268c00ee
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969068"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172540"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -21,6 +17,7 @@ Bu makalede, PowerShell cmdlet 'lerini kullanarak bir [Azure Backup](backup-over
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Bir kurtarma hizmetleri Kasası oluşturun ve kasa bağlamını ayarlayın.
 > * Yedekleme ilkesi tanımlama
 > * Birden çok sanal makineyi korumak için yedekleme ilkesini uygulama
@@ -29,7 +26,7 @@ Bu makalede şunları öğreneceksiniz:
 ## <a name="before-you-start"></a>Başlamadan önce
 
 * Kurtarma Hizmetleri kasaları hakkında [daha fazla bilgi edinin](backup-azure-recovery-services-vault-overview.md) .
-* Azure VM yedeklemesi mimarisini [gözden geçirin](backup-architecture.md#architecture-direct-backup-of-azure-vms) , yedekleme süreci [hakkında bilgi edinin](backup-azure-vms-introduction.md) ve destek, sınırlamalar ve önkoşulları [gözden geçirin](backup-support-matrix-iaas.md) .
+* Azure VM yedeklemesi mimarisini [gözden geçirin](backup-architecture.md#architecture-built-in-azure-vm-backup) , yedekleme süreci [hakkında bilgi edinin](backup-azure-vms-introduction.md) ve destek, sınırlamalar ve önkoşulları [gözden geçirin](backup-support-matrix-iaas.md) .
 * Kurtarma Hizmetleri için PowerShell nesne hiyerarşisini gözden geçirin.
 
 ## <a name="recovery-services-object-hierarchy"></a>Kurtarma Hizmetleri nesne hiyerarşisi
@@ -131,7 +128,7 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-## <a name="back-up-azure-vms"></a>Azure Sanal Makinelerini yedekleme
+## <a name="back-up-azure-vms"></a>Azure VM'lerini yedekleme
 
 Sanal makinelerinizi korumak için bir kurtarma hizmetleri Kasası kullanın. Korumayı uygulamadan önce, kasa bağlamını ayarlayın (kasada korunan veri türü) ve koruma ilkesini doğrulayın. Koruma ilkesi, yedekleme işlerinin çalıştırıldığı zamanlamanın ve her bir yedek anlık görüntüsünün ne kadar süre korunduğu zamanlamadır.
 
@@ -605,7 +602,7 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
      }
       ```
 
-   * **Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler (yalnızca bek)** -Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler için (yalnızca bek kullanılarak şifrelenir), kaynak **keykasası/gizli anahtar kullanılamıyorsa** , içindeki [yordamı kullanarak gizli dizileri Anahtar Kasası 'na geri yükleyin Azure Backup kurtarma noktasından şifreli olmayan bir sanal makineyi geri yükleme](backup-azure-restore-key-secret.md). Ardından, geri yüklenen işletim sistemi blobundan şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri blobu için gerekli değildir). $Dekurl, geri yüklenen Keykasasından getirilebilir.<br>
+   * **Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler (yalnızca bek)** -Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler için (yalnızca bek kullanılarak şifrelenir), kaynak **Anahtar Kasası/gizli** anahtarı yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi blobundan şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri blobu için gerekli değildir). $Dekurl, geri yüklenen Keykasasından getirilebilir.<br>
 
    Aşağıdaki betiğin yalnızca kaynak Keykasası/gizli dizi kullanılabilir olmadığında yürütülmesi gerekir.
 
@@ -632,7 +629,7 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
       }
       ```
 
-   * **Azure AD (bek ve kek) olmadan yönetilmeyen ve şifreli VM 'ler** -Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler IÇIN (bek & kek kullanılarak şifrelenir), kaynak **keykasası/anahtar/gizli anahtar kullanılamıyorsa** , [bir Azure Backup kurtarma noktasından şifreli olmayan bir sanal makineyi geri yükleme](backup-azure-restore-key-secret.md)yordamı. Ardından, geri yüklenen işletim sistemi blobundan şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri blobu için gerekli değildir). $Dekurl ve $kekurl, geri yüklenen Keykasasından getirilebilir.
+   * **Azure AD (bek ve kek) olmadan yönetilmeyen ve şifrelenmiş sanal makineler** -Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler IÇIN (bek & kek kullanılarak şifrelenir), kaynak **keykasası/anahtar/gizli** anahtar yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak anahtarı ve gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi blobundan şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri blobu için gerekli değildir). $Dekurl ve $kekurl, geri yüklenen Keykasasından getirilebilir.
 
    Aşağıdaki betiğin yalnızca kaynak Keykasası/Key/Secret kullanılabilir olmadığında yürütülmesi gerekir.
 
@@ -666,7 +663,7 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
 
    * **Azure AD Ile yönetilen ve şifrelenmiş VM 'ler (bek ve kek)** -Azure AD ile yönetilen şifreli VM 'ler IÇIN (bek ve kek kullanılarak şifrelenir), geri yüklenen yönetilen diskleri iliştirin. Ayrıntılı bilgi için bkz. [PowerShell kullanarak bir WINDOWS VM 'ye veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler (yalnızca bek)** -Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler için (yalnızca bek kullanılarak şifrelenir), kaynak **keykasası/gizli anahtar kullanılamıyorsa** , [geri yükleme işlemini kullanarak gizli dizileri Anahtar Kasası 'na geri yükleyin Azure Backup kurtarma noktasından şifreli olmayan sanal makine](backup-azure-restore-key-secret.md). Ardından, geri yüklenen işletim sistemi diskinde şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (veri diski için bu adım gerekli değildir). $Dekurl, geri yüklenen Keykasasından getirilebilir.
+   * **Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler (yalnızca bek)** -Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler için (yalnızca bek kullanılarak şifrelenir), kaynak **keykasası/gizli** anahtarı yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi diskinde şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (veri diski için bu adım gerekli değildir). $Dekurl, geri yüklenen Keykasasından getirilebilir.
 
      Aşağıdaki betiğin yalnızca kaynak Keykasası/gizli dizi kullanılabilir olmadığında yürütülmesi gerekir.  
 
@@ -680,7 +677,7 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
 
      Gizli dizileri kullanılabilir olduktan ve şifreleme ayrıntıları işletim sistemi diskinde ayarlandıktan sonra, geri yüklenen yönetilen diskleri eklemek için bkz. [PowerShell kullanarak bir WINDOWS sanal makinesine veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler (bek ve kek)** -kaynak **keykasası/anahtar/gizli** anahtar yoksa, Azure AD olmadan yönetilen ve şifrelenmiş VM 'ler IÇIN (bek & kek kullanılarak şifrelenir), bu yordamı kullanarak anahtarı ve gizli dizileri Anahtar Kasası 'na geri yükleyin [Azure Backup kurtarma noktasından şifreli olmayan bir sanal makineyi geri yükleme](backup-azure-restore-key-secret.md). Ardından, geri yüklenen işletim sistemi diskinde şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (veri diski için bu adım gerekli değildir). $Dekurl ve $kekurl, geri yüklenen Keykasasından getirilebilir.
+   * **Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler (bek ve kek)** -kaynak **Anahtar Kasası/anahtar/gizli** anahtar yoksa, Azure AD olmayan şifreli VM 'ler IÇIN (bek & kek kullanılarak şifrelenir),, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak anahtarı ve gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi diskinde şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (veri diski için bu adım gerekli değildir). $Dekurl ve $kekurl, geri yüklenen Keykasasından getirilebilir.
 
    Aşağıdaki betiğin yalnızca kaynak Keykasası/Key/Secret kullanılabilir olmadığında yürütülmesi gerekir.
 

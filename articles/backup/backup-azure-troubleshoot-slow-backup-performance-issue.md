@@ -1,19 +1,15 @@
 ---
-title: Azure Backup’ta dosya ve klasörlerin yavaş yedekleme sorunlarını giderme
+title: Dosya ve klasörlerin yavaş yedeklenmesinde sorun giderme
 description: Azure Backup performans sorunlarının nedenini tanılamanıza yardımcı olması için sorun giderme kılavuzu sağlar
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.author: dacurwin
-ms.openlocfilehash: c56ddf04b98cc2b38e023714fcb0ffc5452236f2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2b7b8903da0d8dd83591b260bacb496b0c253ae3
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074906"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172578"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup’ta dosya ve klasörlerin yavaş yedekleme sorunlarını giderme
 

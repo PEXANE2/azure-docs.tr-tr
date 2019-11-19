@@ -1,19 +1,15 @@
 ---
-title: Azure Backup Izleme uyarısı SSS
+title: Uyarı ve rapor izleme hakkında SSS
 description: Bu makalede, Azure Backup Izleme uyarısı ve rapor Azure Backup hakkında sık sorulan soruların yanıtlarını bulun.
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.author: dacurwin
-ms.openlocfilehash: dc0225092d23371ca97dfedd48a2d3ffcf85a9be
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9cf7bf49d29b5faa9811a591b45179fe83c1d483
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747388"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172921"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup Izleme uyarısı-SSS
 

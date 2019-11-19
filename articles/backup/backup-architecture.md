@@ -1,18 +1,14 @@
 ---
-title: Azure Backup mimarisi
+title: Mimariye genel bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: dacurwin
-ms.openlocfilehash: d914c2988b5f28940021de24dcfe1183c68b15cc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074359"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173516"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -96,7 +92,7 @@ Depolama alanı tüketimi, kurtarma süresi hedefi (RTO) ve ağ tüketimi her bi
 
 Aşağıdaki tabloda farklı yedekleme türleri için desteklenen özellikler özetlenmektedir:
 
-**Özellik** | **Şirket içi Windows Server makineleri (doğrudan)** | **Azure VM 'Leri** | **DPM/MABS ile makineler veya uygulamalar**
+**Özelliği** | **Dosya ve klasörlerin doğrudan yedeklemesi (MARS Aracısı 'nı kullanarak)** | **Azure VM yedeklemesi** | **DPM/MABS ile makineler veya uygulamalar**
 --- | --- | --- | ---
 Kasaya yedekleme | ![Yes][green] | ![Yes][green] | ![Yes][green]
 DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Yes][green]
@@ -106,7 +102,7 @@ Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br
 
 ![Tablo anahtarı](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>Mimari: Azure VM 'lerinin doğrudan yedeklemesi
+## <a name="architecture-built-in-azure-vm-backup"></a>Mimari: yerleşik Azure VM yedeklemesi
 
 1. Bir Azure VM için yedeklemeyi etkinleştirdiğinizde, belirttiğiniz zamanlamaya göre bir yedekleme çalışır.
 1. İlk yedekleme sırasında VM çalışıyorsa VM 'ye bir yedekleme uzantısı yüklenir.

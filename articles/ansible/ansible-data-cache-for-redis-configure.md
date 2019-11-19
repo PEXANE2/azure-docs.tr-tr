@@ -3,17 +3,13 @@ title: Öğretici-Redto kullanarak Azure önbelleğinde önbellekleri yapıland�
 description: Redsıs için Azure önbelleği 'ne bir güvenlik duvarı kuralı oluşturmak, ölçeklendirmek, yeniden başlatmak ve bu kuralı eklemek için nasıl kullanacağınızı öğrenin
 keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, Cache, redsıs
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 95b42bc9539c36a533eb528c3c26ade89e99290b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 2ef36ee9e3601d77bfa114b903f6a75b5874b158
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614357"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156518"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Öğretici: redin kullanarak Azure önbelleğinde önbellekleri yapılandırma
 
@@ -31,7 +27,7 @@ ms.locfileid: "73614357"
 > * Önbelleğe bir güvenlik duvarı kuralı ekleme
 > * Önbellek silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]

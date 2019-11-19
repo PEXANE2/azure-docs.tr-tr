@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 038773b41d84a7b2b4f845a8bf70e9eed849bc80
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c92baf5c97597a0161f402cc458e90bb3e637d6c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120008"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170655"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services desteklenen veri kaynakları
 
@@ -91,7 +91,7 @@ yalnızca <a name="tab1400b">1</a> tablolu 1400 ve daha yüksek modeller.
 
 ## <a name="specifying-a-different-provider"></a>Farklı bir sağlayıcı belirtme
 
-Azure Analysis Services veri modelleri, belirli veri kaynaklarına bağlanırken farklı veri sağlayıcıları gerektirebilir. Bazı durumlarda, SQL Server Native Client (SQLNCLI11) gibi yerel sağlayıcıları kullanarak veri kaynaklarına bağlanan tablo modelleri bir hata döndürebilir. SQLOLEDB dışında yerel sağlayıcılar kullanılıyorsa, hata iletisi görebilirsiniz: **' SQLNCLI 11.1 ' sağlayıcısı kayıtlı değil**. Ya da şirket içi veri kaynaklarına bağlanan bir DirectQuery modeliniz varsa ve yerel sağlayıcılar kullanıyorsanız, hata iletisi: **OLE DB satır kümesi oluşturma hatası görebilirsiniz. ' LIMIT ' yakınında yanlış sözdizimi**.
+Azure Analysis Services veri modelleri, belirli veri kaynaklarına bağlanırken farklı veri sağlayıcıları gerektirebilir. Bazı durumlarda, SQL Server Native Client (SQLNCLI11) gibi yerel sağlayıcıları kullanarak veri kaynaklarına bağlanan tablo modelleri bir hata döndürebilir. MSOLEDBSQL dışında yerel sağlayıcılar kullanılıyorsa, hata iletisi görebilirsiniz: **' SQLNCLI 11.1 ' sağlayıcısı kayıtlı değil**. Ya da şirket içi veri kaynaklarına bağlanan bir DirectQuery modeliniz varsa ve yerel sağlayıcılar kullanıyorsanız, hata iletisi: **OLE DB satır kümesi oluşturma hatası görebilirsiniz. ' LIMIT ' yakınında yanlış sözdizimi**.
 
 Şirket içi SQL Server Analysis Services tablolu modeli Azure Analysis Services ' e geçirirken sağlayıcının değiştirilmesi gerekebilir.
 

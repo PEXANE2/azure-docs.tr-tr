@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: 7e07419115a6e9709879c71dfac1234408bda0ee
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 488616ab2068337331d589bbf5c61ae06b299f5d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824070"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173969"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -54,7 +54,6 @@ Azure Machine Learning, aşağıdakiler dahil olmak üzere makine öğrenimi iş
 
 Hatta, [ölçümleri izlemek Için Mlflow, modelleri](how-to-use-mlflow.md) veya Kubeflow kullanarak [uçtan uca iş akışı işlem hatları](https://www.kubeflow.org/docs/azure/)oluşturabilirsiniz.
 
-
 ## <a name="build-ml-models-in-python-or-r"></a>Python veya R 'de ML modelleri derleme
 
 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> veya <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>Azure Machine Learning kullanarak yerel makinenizde eğitim başlatın. Daha sonra, buluta ölçeklendirebilirsiniz. 
@@ -69,7 +68,7 @@ Kod içermeyen veya düşük kodlu eğitim ve dağıtım için şunu deneyin:
 
 + **Azure Machine Learning Tasarımcısı (Önizleme)**
 
-  Herhangi bir kod yazmadan, verileri geliştirmek, eğitme, test etmek, dağıtmak, yönetmek ve makine öğrenimi modellerini izlemek için tasarımcıyı kullanın. Programlama gerekmez, modelinizi oluşturmak için veri kümelerini ve modülleri görsel olarak bağlamanız gerekir.   [Tasarımcı öğreticisini](tutorial-designer-automobile-price-train-score.md)deneyin.
+  Herhangi bir kod yazmadan, verileri geliştirmek, eğitme, test etmek, dağıtmak, yönetmek ve makine öğrenimi modellerini izlemek için tasarımcıyı kullanın. Programlama gerekmez, modelinizi oluşturmak için veri kümelerini ve modülleri görsel olarak bağlamanız gerekir. [Tasarımcı öğreticisini](tutorial-designer-automobile-price-train-score.md)deneyin.
 
   [Azure Machine Learning tasarımcı genel bakış makalesinde](concept-designer.md)daha fazla bilgi edinin. 
 
@@ -98,6 +97,24 @@ Gelişmiş [makine öğrenimi ardışık düzenleri](concept-ml-pipelines.md)say
 Machine Learning iş akışınızı otomatik hale getirmek için betikleri kullanmak istiyorsanız, [Machine LEARNING CLI](reference-azure-machine-learning-cli.md) , bir eğitim gönderme veya model dağıtma gibi genel görevleri gerçekleştiren komut satırı araçları sağlar.
 
 Azure Machine Learning kullanmaya başlamak için bkz. [sonraki adımlar](#next-steps).
+
+## <a name="integration-with-other-services"></a>Diğer hizmetlerle tümleştirme
+
+Azure Machine Learning Azure platformunda diğer hizmetlerle çalışır ve ayrıca git ve MLFlow gibi açık kaynak araçlarla tümleştirilir.
+
++ __Azure Kubernetes hizmeti__, __Azure Container Instances__, __Azure Databricks__, __Azure Data Lake Analytics__ve __Azure HDInsight__gibi işlem hedefleri. İşlem hedefleri hakkında daha fazla bilgi için bkz. [işlem hedefleri nelerdir?](concept-compute-target.md).
++ __Azure Event Grid__. Daha fazla bilgi için bkz. [Azure Machine Learning olayları](concept-event-grid-integration.md)kullanma.
++ __Azure İzleyici__. Daha fazla bilgi için bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
++ __Azure depolama hesapları__, __Azure Data Lake Storage__, __Azure SQL veritabanı__, __PostgreSQL Için Azure veritabanı__ve __Azure açık veri kümeleri__gibi veri depoları. Daha fazla bilgi için bkz. Azure [Storage hizmetlerindeki verilere erişme](how-to-access-data.md) ve [Azure açık veri kümeleri Ile veri kümeleri oluşturma](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets).
++ __Azure sanal ağları__. Daha fazla bilgi için bkz. [sanal ağdaki güvenli deneme ve çıkarım](how-to-enable-virtual-network.md).
++ __Azure işlem hatları__. Daha fazla bilgi için bkz. [makine öğrenimi modellerini eğitme ve dağıtma](/azure/devops/pipelines/targets/azure-machine-learning).
++ __Git deposu günlükleri__. Daha fazla bilgi için bkz. [Git tümleştirmesi](concept-train-model-git-integration.md).
++ __Mlflow__. Daha fazla bilgi için bkz. [ölçümleri izlemek ve modelleri dağıtmak Için Mlflow](how-to-use-mlflow.md) 
++ __Kubeflow__. Daha fazla bilgi için bkz. [uçtan uca iş akışı işlem hatları oluşturma](https://www.kubeflow.org/docs/azure/).
+
+### <a name="secure-communications"></a>Güvenli iletişim
+
+Azure depolama hesabınız, işlem hedefleri ve diğer kaynaklarınız, modelleri eğitmek ve çıkarım gerçekleştirmek için bir sanal ağ içinde güvenli bir şekilde kullanılabilir. Daha fazla bilgi için bkz. [sanal ağdaki güvenli deneme ve çıkarım](how-to-enable-virtual-network.md).
 
 ## <a name="sku"></a>Temel & Enterprise sürümleri
 

@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 09/23/2019
-ms.openlocfilehash: 0253a46cd73679c7c2f50a1e37d26d67578e342e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/15/2019
+ms.openlocfilehash: 7bccc75b4a70e98f069d1ffb86909368105b9a32
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006428"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167666"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Hızlı Başlangıç: Azure Time Series Insights’ı Keşfedin
 
@@ -38,45 +38,47 @@ Bu Time Series Insights gezgin hızlı başlangıcı, genel kullanıma sunulan �
 
 1. Time Series Insights hızlı tur sayfası görüntülenir. Hızlı tura başlamak için **İleri ' yi** seçin.
 
-   [![Ileri Seç](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
+   [Hızlı başlangıç ![hoş geldiniz-Ileri Seç](media/quickstart/quickstart-welcome.png)](media/quickstart/quickstart-welcome.png#lightbox)
 
 ## <a name="explore-the-demo-environment"></a>Tanıtım ortamını keşfet
 
 1. **Zaman seçim paneli** görüntülenir. Görselleştirilecek zaman aralığını seçmek için bu paneli kullanın.
 
-   [![zaman seçimi paneli](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
+   [![zaman seçimi paneli](media/quickstart/quickstart-time-selection-panel.png)](media/quickstart/quickstart-time-selection-panel.png#lightbox)
 
 1. Bir zaman dilimi seçin ve bölgeye sürükleyin. Ardından **Ara**' yı seçin.
 
-   [zaman dilimi ![seçin](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
+   [zaman dilimi ![seçin](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
 
    Time Series Insights, belirttiğiniz zaman aralığı için bir grafik görselleştirmesi görüntüler. Çizgi grafik içinde çeşitli eylemler gerçekleştirebilirsiniz. Örneğin, filtreleyebilir, sabitleyebilir, sıralayabilir ve yığın oluşturabilirsiniz.
 
    **Zaman seçimi paneline**dönmek için gösterilen aşağı oku seçin:
 
-   [Grafik ![](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
+   [Grafik ![](media/quickstart/quickstart-select-down-arrow.png)](media/quickstart/quickstart-select-down-arrow.png#lightbox)
 
 1. Yeni bir arama terimi eklemek için **terimler panelinde** **Ekle** ' yi seçin.
 
-   [![öğe Ekle](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
+   [![arama terimleri bölmesi Ekle](media/quickstart/quickstart-add-terms.png)](media/quickstart/quickstart-add-terms.png#lightbox)
 
 1. Grafikte bir bölgeyi seçip bölgeye sağ tıklayabilir ve **Olayları Keşfet**’i seçebilirsiniz.
 
-   [Olayları araştırmak ![](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+   [Olayları araştırmak ![](media/quickstart/quickstart-explore-events.png)](media/quickstart/quickstart-explore-events.png#lightbox)
 
    Ham verilerinizin bir Kılavuzu, araştırırken bulunan bölgeden görüntülenir.
 
-   [![Grid görünümü](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
+   [![araştırma-kılavuz veri görünümü](media/quickstart/quickstart-explore-events-grid-data.png)](media/quickstart/quickstart-explore-events-grid-data.png#lightbox)
 
 ## <a name="select-and-filter-data"></a>Verileri seçme ve filtreleme
 
 1. Grafikteki değerleri değiştirmek için koşullarınızı düzenleyin. Farklı değer türlerini çapraz ilişkilendirmek için başka bir terim ekleyin.
 
-   [Terim eklemek ![](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
+   [Terim eklemek ![](media/quickstart/quickstart-add-a-term.png)](media/quickstart/quickstart-add-a-term.png#lightbox)
 
-1. İmprovised serisi filtreleme için **filtre serisi** kutusuna bir filtre terimi girin. Bu hızlı başlangıçta, bir istasyona ait sıcaklığı ve basıncı karşılıklı olarak ilişkilendirmek için **Station5** terimini girin.
+1. Seçili tüm arama terimlerini görmek veya improvised serisi filtreleme için **filtre serisi** kutusuna bir filtre terimi girmek Için, **filtre serisi** kutusunu boş bırakın.
 
-   [![filtresi serisi](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
+   [![filtresi serisi](media/quickstart/quickstart-filter-series.png)](media/quickstart/quickstart-filter-series.png#lightbox)
+
+   Bu hızlı başlangıçta, bir istasyona ait sıcaklığı ve basıncı karşılıklı olarak ilişkilendirmek için **Station5** terimini girin.
 
 Hızlı başlangıcı bitirdikten sonra örnek veri kümesiyle deneme yaparak farklı görselleştirmeler oluşturabilirsiniz.
 

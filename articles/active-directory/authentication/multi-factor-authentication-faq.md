@@ -4,19 +4,19 @@ description: Azure Multi-Factor Authentication ile ilgili sık sorulan sorular v
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
+ms.topic: troubleshooting
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae7390afead843fa0784454f7e0374bedf735ad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 37f375b6d4284b4728b2337dc5ab5186ce22772c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081542"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167773"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication hakkında sık sorulan sorular
 
@@ -61,7 +61,7 @@ Kanada 'daki Microsoft, aşağıdaki SMS kısa kodlarını kullanır:
 
 Microsoft, tutarlı SMS veya sesli tabanlı Multi-Factor Authentication istemi teslimini aynı numarayla garanti etmez. Kullanıcılarımız konusunda, Microsoft, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için, her zaman kısa kodlar ekleyebilir veya kaldırabilir. Microsoft, Birleşik Devletler ve Kanada yanı sıra ülkeler/bölgeler için kısa kodları desteklemez.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Çoğu faturalandırma sorusu, [Multi-Factor Authentication fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) veya [Azure Multi-Factor Authentication alma](concept-mfa-licensing.md)hakkında belgelere başvurarak cevaplanır.
 
@@ -142,13 +142,11 @@ Kuruluşunuzda eski istemciler yoksa, kullanıcılarınızın uygulama parolalar
 >
 > Uygulama parolaları yalnızca modern kimlik doğrulamayı desteklemeyen uygulamalar için gereklidir. Office 2013 istemcileri modern kimlik doğrulama protokollerini destekler, ancak yapılandırılması gerekir. Artık modern kimlik doğrulama, Office 2013 için Mart 2015 veya sonraki bir güncelleştirmeyi çalıştıran tüm müşteriler tarafından kullanılabilir. Daha fazla bilgi için bkz. [Office 365 modern kimlik doğrulaması güncelleştirilmiş](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)Web günlüğü.
 
-**S: Kullanıcılarım bazen SMS iletisini almadıklarında veya iki yönlü metin iletilerine yanıt vermez ancak doğrulama zaman aşımına uğrar.**
+**S: Kullanıcılarım bazen kısa mesaj almadıklarında veya doğrulama zaman aşımına uğrar.**
 
-Hizmetin güvenilirliğini etkileyebilecek denetlenebilir faktörler olduğundan, metin iletilerinin ve yanıtların iki yönlü SMS 'de teslim alınması garanti edilmez. Bu etkenlere, hedef ülke/bölge, cep telefonu taşıyıcısı ve sinyal gücü dahildir.
+Hizmetin güvenilirliğini etkileyebilecek denetlenebilir faktörlere sahip olduğundan SMS iletilerinin teslimi garanti edilmez. Bu etkenlere, hedef ülke/bölge, cep telefonu taşıyıcısı ve sinyal gücü dahildir.
 
 Kullanıcılarınız genellikle SMS mesajları güvenilir bir şekilde almaya yönelik sorunlar yaşıyorsanız, bunun yerine mobil uygulama veya telefon araması yöntemini kullanmasını söyleyin. Mobil uygulama, hem hücresel hem de Wi-Fi bağlantılarında bildirim alabilir. Ayrıca, mobil uygulama, cihazın hiç sinyali olmadığında bile doğrulama kodları oluşturabilir. Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [IOS](https://go.microsoft.com/fwlink/?Linkid=825073)ve [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)için kullanılabilir.
-
-Metin iletilerini kullanmanız gerekiyorsa, mümkün olduğunda iki yönlü SMS yerine tek yönlü bir SMS kullanmanızı öneririz. Tek yönlü SMS daha güvenilirdir ve kullanıcıların küresel SMS ücretlerinden başka bir ülke/bölge tarafından gönderilen bir SMS iletisine yanıt almasını engeller.
 
 **S: sistem zaman aşımına uğramadan önce kullanıcılarınızın bir SMS iletisinden doğrulama kodunu girmesi gereken süre miktarını değiştirebilir miyim?**
 
@@ -162,7 +160,7 @@ Azure MFA Server v 7.0 veya üzeri bir tek yönlü SMS için bir kayıt defteri 
 >[!TIP] 
 >Birden çok MFA sunucunuz varsa, yalnızca özgün kimlik doğrulama isteğini işleyen bir Kullanıcı, kullanıcıya gönderilen doğrulama kodunu bilir. Kullanıcı koda girdiğinde, doğrulama isteğinin aynı sunucuya gönderilmesi gerekir. Kod doğrulaması farklı bir sunucuya gönderilirse, kimlik doğrulaması reddedilir. 
 
-Azure MFA sunucusu ile iki yönlü SMS için, MFA Yönetim Portalı zaman aşımı ayarını yapılandırabilirsiniz. Kullanıcılar, tanımlanan zaman aşımı süresi içinde SMS 'ye yanıt vermezse, kimlik doğrulaması reddedilir. 
+Kullanıcılar, tanımlanan zaman aşımı süresi içinde SMS 'ye yanıt vermezse, kimlik doğrulaması reddedilir. 
 
 Bulutta Azure MFA ile tek yönlü bir SMS için (AD FS bağdaştırıcısı veya ağ Ilkesi sunucu uzantısı dahil), zaman aşımı ayarını yapılandıramazsınız. Azure AD, 180 saniyelik doğrulama kodunu depolar. 
 

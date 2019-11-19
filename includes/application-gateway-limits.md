@@ -4,14 +4,14 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: cd0ec07ebfffc839fedcdc76c9aff8e86556a7de
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 3b692ed697d69deca4c50a0595cc54251bac4990
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70130126"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74175022"
 ---
-| Resource | Varsayılan/en yüksek sınır | Not |
+| Kaynak | Varsayılan/en yüksek sınır | Not |
 | --- | --- | --- |
 | Azure Application Gateway |Abonelik başına 1.000 | |
 | Ön uç IP yapılandırması |2 |1 ortak ve 1 özel |
@@ -29,11 +29,12 @@ ms.locfileid: "70130126"
 | İstek zaman aşımı en az |1 saniye | |
 | İstek zaman aşımı üst sınırı |24 saat | |
 | Site sayısı |100<sup>1</sup> |HTTP dinleyicilerine göre 1 |
-| Dinleyici başına URL haritaları |1\. | |
+| Dinleyici başına URL haritaları |1 | |
 | URL eşlemesi başına en fazla yol tabanlı kural|100||
 | Yeniden yönlendirme yapılandırması |100<sup>1</sup>| |
 | Eşzamanlı WebSocket bağlantıları |Orta ağ geçitleri 20.000<br> Büyük ağ geçitleri 50.000| |
-| En fazla URL uzunluğu|8,000||
+| En fazla URL uzunluğu|AŞAMAZ| |
+| HTTP/2 için üst bilgi boyutu üst sınırı |4 KB 'DIR| |
 | Dosya karşıya yükleme boyutu üst sınırı, standart |2 GB | |
 | En fazla dosya yükleme boyutu WAF |Orta WAF ağ geçitleri, 100 MB<br>Büyük WAF ağ geçitleri, 500 MB| |
 | WAF gövde boyutu sınırı, dosyalar olmadan|128 KB||

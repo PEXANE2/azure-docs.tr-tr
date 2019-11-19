@@ -1,18 +1,18 @@
 ---
 title: Azure Güvenlik Duvarı günlük Analizi örnekleri
-description: Azure Güvenlik Duvarı günlük Analizi örnekleri
+description: Azure Izleyici günlükleri, Azure Güvenlik duvarınızı analiz etmek için kullanılabilir. Örnek dosya, Azure Izleyici 'de Görünüm Tasarımcısı 'nda yerleşiktir.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: a4ab1263abac67714357594e5bd87a4b910953b1
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 714054b8e538b2fb1bfb3fb4f2293636802f3bc4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033991"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168897"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure Güvenlik Duvarı günlük Analizi örnekleri
 
@@ -26,11 +26,11 @@ Aşağıdaki Azure Izleyici günlükleri örnekleri, Azure Güvenlik Duvarı gü
 
 Görünümü Log Analytics çalışma alanınıza eklemek için aşağıdaki adımları yürütün:
 
-1. Azure portalında Log Analytics çalışma alanını açın.
+1. Azure portal Log Analytics çalışma alanını açın.
 2. **Görünüm tasarımcısını** **genel**altında açın.
 3. **İçeri Aktar**’a tıklayın.
 4. Daha önce indirdiğiniz **AzureFirewall. omsview** dosyasına gözatıp seçin.
-5. **Kaydet**’e tıklayın.
+5. **Save (Kaydet)** düğmesine tıklayın.
 
 Görünümün uygulama kuralı günlük verilerini nasıl aradığı aşağıda açıklanmıştır:
 
@@ -168,4 +168,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Güvenlik Duvarı izleme ve tanılama hakkında bilgi edinmek için [bkz. Öğretici: Azure Güvenlik Duvarı günlüklerini ve ölçümlerini](tutorial-diagnostics.md)izleyin.
+Azure Güvenlik Duvarı izleme ve tanılama hakkında bilgi edinmek için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme](tutorial-diagnostics.md).

@@ -1,21 +1,17 @@
 ---
-title: '& Monitor Microsoft Azure Kurtarma Hizmetleri aracı yedeklemelerini yönetme'
-description: Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri Agent yedeklemelerini yönetme ve izleme hakkında bilgi edinin.
+title: MARS Aracısı yedeklemelerini yönetme ve izleme
+description: Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı yedeklemelerini yönetme ve izleme hakkında bilgi edinin.
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: dacurwin
-ms.openlocfilehash: 756fd720b468681b8ea31dc867cfdb6e44c0bb0a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: edb672f97f467378176bf6cdf04fe8e22cc5e51b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074991"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173075"
 ---
-# <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri Agent yedeklemelerini yönetme
+# <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri (MARS) aracı yedeklemelerini yönetme
 
 Bu makalede, Microsoft Azure Kurtarma Hizmetleri aracısıyla yedeklenen dosya ve klasörlerin nasıl yönetileceği açıklanır.
 

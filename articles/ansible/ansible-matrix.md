@@ -3,17 +3,13 @@ title: Azure için anerişilebilir modül ve Sürüm matrisi | Microsoft Docs
 description: Azure için anerişilebilir modül ve Sürüm matrisi
 keywords: anerişilebilir, roller, matris, sürüm, Azure, DevOps
 ms.topic: reference
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 275dca40ab20c222da2b9115f9a5dc141228c766
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 54e27c7570ba1cdbce7355740181d68a2f3efbac
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385460"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155990"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible modülü ve sürüm matrisi
 
@@ -26,7 +22,7 @@ Aşağıdaki modüller doğrudan uzak konaklarda veya playbooks aracılığıyla
 Bu modüller, anormal bir resmi yayından ve aşağıdaki Microsoft PlayBook rollerinden edinilebilir.
 
 > [!NOTE]
-> Anormal 2,9 ve sonraki sürümlerde, tüm * _olgu modüllerini, erişilebilir adlandırma kuralına uyacak şekilde * _ınfo olarak yeniden adlandırdık. Eski ve yeniden adlandırılmış modüller, kullanımdan kaldırma uyarısı görmekten, tüm modüllerin daha önce olduğu gibi çalıştığı şekilde bağlantılıdır.
+> Anormal 2,9 ve sonraki sürümlerde, tüm * _facts modüllerini * _info olarak yeniden adlandırdık ve izin verilen adlandırma kuralına bağlı olarak. Eski ve yeniden adlandırılmış modüller, kullanımdan kaldırma uyarısı görmekten, tüm modüllerin daha önce olduğu gibi çalıştığı şekilde bağlantılıdır.
 
 | Azure için anerişilebilir modül                   |  Anerişilebilir 2,4 |  Anerişilebilir 2,5 |  Anerişilebilir 2,6 | Anerişilebilir 2,7 | Anerişilebilir 2,8 | Anerişilebilir 2,9 | Anormal rol | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|--------------|--------------|--------------|  
@@ -161,7 +157,7 @@ Bu modüller, anormal bir resmi yayından ve aşağıdaki Microsoft PlayBook rol
 | azure_rm_sqlfirewallrule_info              | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
 | azure_rm_sqlserver                          | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
 | azure_rm_sqlserver_info                    | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| **Analizler**                    |           |                          |                          |                             |           |           |          |
+| **Analiz**                    |           |                          |                          |                             |           |           |          |
 | azure_rm_hdinsightcluster                   | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
 | azure_rm_hdinsightcluster_info              | -            | -                           | -            | -            | -            | Yes          | Yes          |
 | **Tümleştirme**                    |           |                          |                          |                             |           |           |          |
@@ -221,9 +217,9 @@ Bu modüller, anormal bir resmi yayından ve aşağıdaki Microsoft PlayBook rol
 
 ## <a name="introduction-to-playbook-role-for-azure"></a>Azure için PlayBook rolüne giriş
 
-[Azure_preview_module PlayBook rolü](https://galaxy.ansible.com/Azure/azure_preview_modules/) , en son Azure modüllerini içerir. Güncelleştirmeler ve hata düzeltmeleri, resmi olarak erişilebilir sürümden daha zamanında yapılır. Azure kaynak sağlama amaçları için kullanılması durumunda, `azure_preview_module` PlayBook rolünü yüklemek için önerilir.
+[Azure_preview_module PlayBook rolü](https://galaxy.ansible.com/Azure/azure_preview_modules/) , en son Azure modüllerini içerir. Güncelleştirmeler ve hata düzeltmeleri, resmi olarak erişilebilir sürümden daha zamanında yapılır. Azure kaynak sağlama amaçlarıyla kullanılması durumunda, `azure_preview_module` PlayBook rolünü yüklemelisiniz.
 
-@No__t-0 PlayBook rolü her üç haftada bir yayımlanır.
+`azure_preview_module` PlayBook rolü her üç haftada bir yayımlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,17 +3,13 @@ title: Öğretici-Azure sanal ağ eşlemesini, anormal kullanarak yapılandırma
 description: Sanal ağ eşlemesi ile sanal ağları bağlamak için nasıl kullanılacağını öğrenin.
 keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, ağ, eşleme
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 180bdff48a2ace4dfee1d1cb10eb75a33d360f4c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 78699a005d721b46a88a26452f5db68438793d34
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241230"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155736"
 ---
 # <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Öğretici: Azure sanal ağ eşlemesini, anormal kullanarak yapılandırma
 
@@ -31,7 +27,7 @@ Trafik, özel IP adresleri aracılığıyla aynı sanal ağdaki VM 'Ler arasınd
 > * İki sanal ağı eşler
 > * İki ağ arasındaki eşlemeyi silme
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -147,8 +143,8 @@ Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
 
 Örnek PlayBook 'un tamamını almanın iki yolu vardır:
 
-- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) ve `vnet_peering.yml` ' e kaydedin.
-- @No__t-0 adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) ve `vnet_peering.yml`kaydedin.
+- `vnet_peering.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
 
 ```yml
 - hosts: localhost
@@ -235,7 +231,7 @@ Bu bölümdeki örnek PlayBook kodu, bu öğretici genelinde gösterilen çeşit
 
 Örnek PlayBook ile çalışırken göz önünde bulundurmanız gereken bazı önemli notlar şunlardır:
 
-- @No__t-0 bölümünde `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
+- `vars` bölümünde, `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
 
 Anerişilebilir-PlayBook komutunu kullanarak PlayBook 'u çalıştırın:
 
@@ -290,7 +286,7 @@ PLAY RECAP
 localhost                  : ok=12   changed=9    unreachable=0    failed=0    skipped=0   rescued=0    ignored=0
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
 
@@ -298,7 +294,7 @@ Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
 
 - Daha önce oluşturulan iki kaynak grubunu sil
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `cleanup.yml` olarak kaydedin:
 
 ```bash
 - hosts: localhost
@@ -321,8 +317,8 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
 Örnek PlayBook ile çalışırken göz önünde bulundurmanız gereken bazı önemli notlar şunlardır:
 
-- @No__t-0 yer tutucusunu, oluşturulan ilk kaynak grubunun adıyla değiştirin.
-- @No__t-0 yer tutucusunu, oluşturulan ikinci kaynak grubunun adıyla değiştirin.
+- `{{ resource_group_name-1 }}` yer tutucusunu oluşturulan ilk kaynak grubunun adıyla değiştirin.
+- `{{ resource_group_name-2 }}` yer tutucusunu, oluşturulan ikinci kaynak grubunun adıyla değiştirin.
 - Belirtilen iki kaynak grubu içindeki tüm kaynaklar silinecek.
 
 Anerişilebilir-PlayBook komutunu kullanarak PlayBook 'u çalıştırın:
@@ -334,4 +330,4 @@ ansible-playbook cleanup.yml
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure üzerinde anormal](/azure/ansible/)
+> [Azure üzerinde Ansible](/azure/ansible/)

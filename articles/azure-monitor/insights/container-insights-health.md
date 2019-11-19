@@ -10,20 +10,26 @@ ms.assetid: ''
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 11/14/2019
+ms.date: 11/18/2019
 ms.author: magoedte
-ms.openlocfilehash: e369067a3ff61ffefe1758f6fa8b4acdce4bb2e2
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f748399b6b356e5f8655f59221e78acd0d98f51e
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134443"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173629"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme durumunu anlayın
 
 Kapsayıcılar için Azure Izleyici ile, yönetilen altyapı bileşenlerinin ve kapsayıcı için Azure Izleyici tarafından desteklenen herhangi bir Kubernetes kümesinde çalışan tüm düğümlerin sistem durumunu izler ve raporlar. Bu deneyim, [birden çok küme görünümünde](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)hesaplanan ve bildirilen küme durumu durumunun ötesine uzanır, burada kümede bir veya daha fazla düğüm kısıtlanmış olup olmadığını anlayabilir veya bir düğüm ya da Pod, seçilen ölçümleri temel alarak kümedeki çalışan bir uygulamayı etkileyebilecek bir düğüm veya Pod kullanılamaz. 
 
 Kapsayıcılar için Azure Izleyicisini etkinleştirme hakkında daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyicisini](container-insights-onboard.md)ekleme.
+
+>[!NOTE]
+>AKS motoru kümelerini desteklemek için, aşağıdakileri karşıladığını doğrulayın:
+>- Bu, [Held istemcisinin](https://helm.sh/docs/using_helm/)en son sürümünü kullanıyor.
+>- Kapsayıcılı aracı sürümü *Microsoft/OMS: ciprod11012019*. Aracıyı yükseltmek için bkz. [Kubernetes kümesinde aracıyı yükseltme](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster).
+>
 
 ## <a name="overview"></a>Genel Bakış
 

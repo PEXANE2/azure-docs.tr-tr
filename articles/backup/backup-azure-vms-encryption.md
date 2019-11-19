@@ -1,19 +1,14 @@
 ---
-title: Azure Backup ile şifrelenmiş Azure sanal makinelerini yedekleme ve geri yükleme
+title: Şifrelenmiş Azure VM 'lerini yedekleme ve geri yükleme
 description: Azure Backup hizmetiyle şifrelenmiş Azure VM 'lerinin nasıl yedeklendiğini ve geri yükleneceğini açıklar.
-ms.reviewer: geg
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004f15a1af11e3ed27f792e245888671b94fbb1a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4bc413e70d8e19f8006580c0631641651dcaf92
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074921"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172531"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Şifrelenmiş Azure VM 'yi yedekleme ve geri yükleme
 
@@ -21,7 +16,7 @@ Bu makalede, [Azure Backup](backup-overview.md) hizmetini kullanarak Windows vey
 
 Başlamadan önce Azure Backup Azure VM 'leriyle nasıl etkileşime gireceğini öğrenmek istiyorsanız şu kaynakları gözden geçirin:
 
-- Azure VM yedekleme mimarisini [gözden geçirin](backup-architecture.md#architecture-direct-backup-of-azure-vms) .
+- Azure VM yedekleme mimarisini [gözden geçirin](backup-architecture.md#architecture-built-in-azure-vm-backup) .
 - [Hakkında bilgi edinin](backup-azure-vms-introduction.md) Azure VM yedeklemesi ve Azure Backup uzantısı.
 
 ## <a name="encryption-support"></a>Şifreleme desteği

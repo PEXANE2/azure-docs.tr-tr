@@ -1,20 +1,15 @@
 ---
-title: 'Sorun giderme Azure Backup hatası: aracı ve uzantı sorunları'
+title: Aracı ve uzantı sorunlarını giderme
 description: Belirtiler, nedenler ve Aracı, uzantısı ve disklerle ilgili Azure Backup hatalarının çözümleri.
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-keywords: Azure yedekleme; VM Aracısı; Ağ bağlantısı;
-ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.author: dacurwin
-ms.openlocfilehash: 50db82206bbc0b98dcc80bd504022799011697d4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4ee8cbeeec21c4af0cc3a7fd83844bc8c676add
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074129"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172599"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 

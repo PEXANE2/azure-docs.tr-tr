@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi 'nde uygulama hizmetlerini koruma | Microsoft Docs
-description: Bu makale, Azure Güvenlik Merkezi 'nde uygulama hizmetlerinizi korumaya başlamanıza yardımcı olur.
+title: Azure App Service Web uygulamalarınızı ve API 'lerinizi koruyun
+description: Bu makale, Azure Güvenlik Merkezi 'nde Azure App Service Web uygulamalarınızı ve API 'lerinizi korumaya başlamanıza yardımcı olur.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,57 +10,59 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 68f7c47f0a0f56085d632f1c1741318f440b41ee
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: be9331ccd548628bfc27172c4f6e625bdba1632c
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202471"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158906"
 ---
-# <a name="protect-app-service-with-azure-security-center"></a>Azure Güvenlik Merkezi ile App Service koruma
-Bu makale, App Service üstünde çalışan uygulamalarınızı izlemek ve korumak için Azure Güvenlik Merkezi 'ni kullanmanıza yardımcı olur.
+# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Azure App Service Web uygulamalarınızı ve API 'lerinizi koruyun
 
-App Service, altyapıyı yönetmeksizin seçtiğiniz programlama dilinde Web uygulamaları oluşturmanıza ve barındırmanıza olanak sağlar. App Service otomatik ölçeklendirme ve yüksek kullanılabilirlik sunar, hem Windows hem de Linux 'un yanı sıra GitHub, Azure DevOps veya herhangi bir git deposundan otomatik dağıtımları destekler. 
+Azure App Service, altyapıyı yönetmek zorunda kalmadan Web uygulamalarınızı ve API 'lerinizi oluşturmak ve barındırmak için tam olarak yönetilen bir platformdur. Kurumsal düzeyde performans, güvenlik ve uyumluluk gereksinimlerini karşılamak için yönetim, izleme ve operasyonel içgörüler sağlar. Daha fazla bilgi için bkz. [Azure App Service](https://azure.microsoft.com/services/app-service/).
 
-Web uygulamalarındaki güvenlik açıkları, saldırganların neredeyse her kuruluşun ortak ve dinamik bir arabirimine sahip oldukları için genellikle saldırganlar tarafından kullanılır. App Service üzerinde çalışan uygulamalara yönelik istekler, dünyanın dört bir yanındaki Azure veri merkezlerinde dağıtılan çeşitli ağ geçitlerinden geçerek her isteği ilgili uygulamaya yönlendirmekten sorumludur. 
+Azure App Service planınız için Gelişmiş tehdit korumasını etkinleştirmek üzere şunları yapmanız gerekir:
 
-Azure Güvenlik Merkezi, VM 'nizin veya istek üzerine örnekinizdeki korumalı alanlardaki App Service çalıştıran uygulamalarınızda değerlendirme ve öneriler çalıştırabilir. Güvenlik Merkezi, Azure 'un bulut sağlayıcısı olarak sahip olduğu görünürlüğden yararlanarak, genellikle birden çok hedef genelinde çalıştırılan ortak Web uygulaması saldırılarını izlemek üzere App Service iç günlüklerinizi analiz eder.
+* Azure Güvenlik Merkezi 'nin standart fiyatlandırma katmanına abone olma
+* App Service planını aşağıda gösterildiği gibi etkinleştirin. Güvenlik Merkezi, App Service ile yerel olarak tümleşiktir ve dağıtım ve ekleme gereksinimini ortadan kaldırır; tümleştirme saydamdır.
+* Adanmış makinelerle ilişkili bir App Service planına sahip olmanız gerekir. Desteklenen planlar şunlardır: temel, standart, Premium, yalıtılmış veya Linux. Güvenlik Merkezi, ücretsiz, paylaşılan veya tüketim planlarını desteklemez. Daha fazla bilgi için bkz. [App Service planları](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
-Güvenlik Merkezi, App Service uygulamalarınızda saldırıları tanımlamak ve gelişmekte olan saldırılara odaklanırken, saldırganlar keşif aşamasında olduğunda, saldırganlar, Azure 'da barındırılan birden çok Web sitesinde güvenlik açıklarını belirlemek için tarama yapar. Güvenlik Merkezi, müşterilerin, HTTP üzerinden veya bir yönetim yöntemi aracılığıyla uygulamalarıyla etkileşime geçmesini sağlayan tüm arabirimleri kapsayan analiz ve makine öğrenimi modellerini kullanır. Üstelik, Azure 'da birinci taraf bir hizmet olarak Güvenlik Merkezi, bu PaaS 'nin temel işlem düğümlerini kapsayan ana bilgisayar tabanlı güvenlik analizlerinin yanı sıra, güvenlik merkezi 'nin şu Web uygulamalarına karşı saldırıları algılamasını sağlar. zaten kullanılıyor.
+App Service planı etkinken, Güvenlik Merkezi, App Service planınız kapsamındaki kaynakları değerlendirir ve bulguları temelinde güvenlik önerileri oluşturur. Güvenlik Merkezi, App Service çalıştığı VM örneğini ve yönetim arabirimini korur. Ayrıca, App Service ' de çalışan uygulamalarınıza gönderilen istekleri ve yanıtları izler.
 
-## <a name="prerequisites"></a>Önkoşullar
-
-App Service ortamınızı izlemek ve güvenliğini sağlamak için ayrılmış makinelerle ilişkilendirilen bir App Service planına sahip olmanız gerekir. Bu planlar şunlardır: Temel, Standart, Premium, Yalıtılmış veya Linux. Azure Güvenlik Merkezi Ücretsiz, Paylaşılan veya Tüketim planlarını desteklemez. Daha fazla bilgi için bkz. [App Service planları](https://azure.microsoft.com/pricing/details/app-service/plans/).
-
-## <a name="security-center-protection"></a>Güvenlik Merkezi koruması
-
-Azure Güvenlik Merkezi, App Service çalıştığı sanal makine örneğini ve yönetim arabirimini korur. Ayrıca, App Service ' de çalışan uygulamalarınıza gönderilen istekleri ve yanıtları izler.
-
-Güvenlik Merkezi, App Service ile yerel olarak tümleşiktir ve dağıtım ve ekleme gereksinimini ortadan kaldırır; tümleştirme tamamen saydamdır.
-
+Güvenlik Merkezi, bulut ölçeğinden yararlanır ve Azure 'un ortak Web uygulaması saldırılarını izlemek için bir bulut sağlayıcısı olarak sahip olduğu görünürlüğe sahiptir. Güvenlik Merkezi, uygulamalarınızda saldırıları bulabilir ve gelişen saldırıları tanımlayabilir. saldırganlar keşif aşamasında olsa bile, Azure 'da barındırılan birden çok uygulama üzerinde güvenlik açıklarını belirlemek için tarama yapın. Azure-Native hizmeti olarak Güvenlik Merkezi, bu PaaS için temeldeki işlem düğümlerini kapsayan ana bilgisayar tabanlı güvenlik analizlerini sunmaya yönelik benzersiz bir konumda de bulunur ve Güvenlik Merkezi 'nin önceden kullanılmış olan Web uygulamalarına yönelik saldırıları algılamasını sağlar.
 
 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>App Service izlemeyi ve korumayı etkinleştirme
 
-1. Azure 'da Güvenlik Merkezi ' ni seçin.
+1. Azure portal, Güvenlik Merkezi ' ni seçin.
 2. **Fiyatlandırma & ayarları** ' na gidin ve bir abonelik seçin.
 3. **Fiyatlandırma katmanı**altında, **App Service** satırında planınızı **etkin**olarak değiştirin.
 
-![App Service değiştirme](./media/security-center-app-services/app-services-toggle.png)
+    [uygulama hizmetlerini Standart katman aboneliğinizde etkinleştirmek ![](media/security-center-app-services/app-services-toggle.png)](media/security-center-app-services/app-services-toggle.png#lightbox)
+
 
 >[!NOTE]
-> Kaynak miktarınız için listelenen örnek sayısı, fiyatlandırma katmanı dikey penceresini açtığınızda şu anda etkin olan ilgili App Service örneklerinin sayısını temsil eder. Bu sayı, seçtiğiniz ölçekleme seçeneklerine bağlı olarak değişeceğinden, ücretlendirilecek örneklerin sayısı buna göre değiştirilir.
+> **Kaynak miktarınız** için listelenen örnek sayısı, fiyatlandırma katmanı dikey penceresini açtığınızda bu abonelikte çalışan tüm App Service planlardaki toplam işlem örneği sayısını temsil eder.
+>
+> Azure App Service çeşitli planlar sunmaktadır. App Service planınız bir Web uygulamasının çalışması için işlem kaynakları kümesini tanımlar. Bunlar geleneksel web barındırma içindeki sunucu grupları ile eşdeğerdir. Bir veya daha fazla uygulama aynı bilgi işlem kaynaklarında (veya aynı App Service planında) çalışacak şekilde yapılandırılabilir.
+>
+>Sayıyı doğrulamak için, Azure portalında ' App Service planlar ' bölümüne gidin; burada her plan tarafından kullanılan işlem örneklerinin sayısını görebilirsiniz. 
+
+
+
+
+
 
 App Service izlemeyi ve önerilerini devre dışı bırakmak için bu işlemi tekrarlayın ve **App Service** planınızı **devre dışı**olarak değiştirin.
 
 
 
 ## <a name="see-also"></a>Ayrıca bkz.
-Bu makalede, Azure Güvenlik Merkezi'nde izleme işlevlerini nasıl kullanacağınız hakkında bilgi edindiniz. Azure Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
+Bu makalede, Azure Güvenlik Merkezi'nde izleme işlevlerini nasıl kullanacağınız hakkında bilgi edindiniz. Azure Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-* [Azure Güvenlik Merkezi 'nde güvenlik Ilkelerini ayarlama](tutorial-security-policy.md): Azure Güvenlik Merkezi 'nde güvenlik ayarlarını yapılandırmayı öğrenin.
-* [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md): Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
-* [Uygulama hizmetleri](security-center-virtual-machine-protection.md#app-services):  Durum özetleri olan App Service ortamlarınızın listesini görüntüleyin.
-* [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md): İş ortağı çözümlerinizin sistem durumunu izleme hakkında bilgi edinin.
-* [Azure Güvenlik MERKEZI SSS](security-center-faq.md): Hizmet kullanımı ile ilgili sık sorulan soruları bulun.
-* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/): Azure güvenliği ve uyumluluğu ile ilgili blog yazılarını bulun.
+* [Azure Güvenlik Merkezi'nde güvenlik ilkelerini ayarlama](tutorial-security-policy.md): Azure Güvenlik Merkezi'nde güvenlik ayarlarını yapılandırma hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md): Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
+* [Uygulama hizmetleri](security-center-virtual-machine-protection.md#app-services): sistem durumu özetleri ile App Service ortamlarınızın listesini görüntüleyin.
+* [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md): İş ortağı çözümlerinizin sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md): Hizmet kullanımı ile ilgili sık sorulan soruları bulabilirsiniz.
+* [Azure Güvenlik Blogu](https://blogs.msdn.com/b/azuresecurity/): Azure güvenliği ve uyumluluğu ile ilgili blog yazılarını bulabilirsiniz.

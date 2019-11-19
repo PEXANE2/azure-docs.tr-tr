@@ -1,19 +1,14 @@
 ---
-title: SAP HANA veritabanlarının yedekleme hatalarını giderme-Azure Backup
+title: SAP HANA veritabanlarının yedekleme hatalarını giderme
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: cbffa7415f315fd396e57afa355d2415c4612eb5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968445"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172757"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -82,7 +77,7 @@ HANA için birden çok kapsayıcı veritabanında standart yapılandırma SISTEM
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>Usererrorınopeninghanaodbcconnection
 
-Verileri| Hata iletisi | Olası nedenler | Önerilen eylem |
+data| Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
 | HANA sistemine bağlanılamadı. Sisteminizin çalışır ve çalışır olduğunu doğrulayın.| HANA veritabanı çalışmadığından Azure Backup hizmeti HANA 'ya bağlanamaz. Ya da HANA çalışıyor ancak Azure Backup hizmetinin bağlanmasına izin vermiyor. | HANA veritabanının veya hizmetinin çalışıp çalışmadığını denetleyin. HANA veritabanı veya hizmeti çalışır duruma ayarlanmışsa, [tüm izinlerin ayarlanmış](#setting-up-permissions)olup olmadığını kontrol edin. Anahtar eksikse, yeni bir anahtar oluşturmak için preregistration betiğini yeniden çalıştırın. |
 

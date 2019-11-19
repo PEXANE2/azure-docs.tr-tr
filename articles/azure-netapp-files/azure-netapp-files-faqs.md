@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: eefa54806d9f5ec9ef3a0c02e4abbaf6b4bf22e2
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 815ac261a29f710914347443f7882b9fe682229f
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298477"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173600"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -105,14 +105,7 @@ Azure NetApp Files, birim performans ölçümleri sağlar. Azure Izleyici 'yi, A
 
 Bir NFS biriminin VM başlatma veya yeniden başlatma sırasında otomatik olarak bağlanması için konaktaki `/etc/fstab` dosyasına bir giriş ekleyin. 
 
-Örneğin, `$ANFIP:/$FILEPATH      /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
-
-- $ANFIP  
-    Birim Özellikleri dikey penceresinde bulunan Azure NetApp Files biriminin IP adresi
-- $FILEPATH  
-    Azure NetApp Files biriminin dışarı aktarma yolu
-- $MOUNTPOINT  
-    NFS dışarı aktarmayı bağlamak için kullanılan Linux ana bilgisayarında oluşturulan dizin
+Ayrıntılar için bkz. [Windows veya Linux sanal makineleri için bir birimi bağlama veya çıkarma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) .  
 
 ### <a name="why-does-the-df-command-on-nfs-client-not-show-the-provisioned-volume-size"></a>NFS istemcisindeki DF komutu neden sağlanan birim boyutunu göstermiyor?
 
@@ -123,7 +116,7 @@ DF olarak bildirilen birim boyutu, Azure NetApp Files biriminin büyüyebileceğ
 Azure NetApp Files, NFSv3 ve NFSv 4.1 destekler. NFS sürümünü kullanarak bir birim oluşturabilirsiniz. 
 
 > [!IMPORTANT] 
-> NFSv 4.1 özelliğine erişim için beyaz liste gerekir.  Beyaz liste istemek için <anffeedback@microsoft.com> ' a bir istek gönderebilirsiniz. 
+> NFSv 4.1 özelliğine erişim için beyaz liste gerekir.  Beyaz liste istemek için <anffeedback@microsoft.com>bir istek gönderebilirsiniz. 
 
 
 ### <a name="how-do-i-enable-root-squashing"></a>Nasıl yaparım? kök ele geçirme etkinleştirilsin mi?
@@ -144,7 +137,7 @@ Azure NetApp Files Şu anda abonelik başına bir Active Directory bağlantısı
 
 [Azure Active Directory (ad) etki alanı Hizmetleri](https://docs.microsoft.com/azure/active-directory-domain-services/overview) ve [Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) desteklenir. Mevcut Active Directory etki alanı denetleyicilerini Azure NetApp Files ile birlikte kullanabilirsiniz. Etki alanı denetleyicileri, Azure 'da sanal makineler veya ExpressRoute ya da S2S VPN aracılığıyla şirket içi olarak bulunabilir. Azure NetApp Files Şu anda [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) için ad katılmayı desteklemez.
 
-Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, NetApp hesabınız için Active Directory yapılandırdığınızda kuruluş birimi yolu `OU=AADDC Computers` ' dır.
+Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, NetApp hesabınız için Active Directory yapılandırdığınızda kuruluş birimi yolu `OU=AADDC Computers`.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Windows Server Active Directory sürümleri destekleniyor mu?
 

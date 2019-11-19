@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77309a73f3c5641aa8a7667015ed02808e376348
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 27530b143e46acad4152e8333836cbe9c79fab17
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032887"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168085"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Kuruluşunuzdaki hatalı parolaları kaldırın
 
@@ -39,7 +39,7 @@ Azure AD 'de herhangi bir kiracıda herhangi bir kullanıcı için yeni bir paro
 > [!NOTE]
 > Cyber-Dolandırıcılar, saldırılarına karşı benzer stratejileri de kullanır. Bu nedenle Microsoft bu listenin içeriğini herkese açık bir şekilde yayımlamaz.
 
-## <a name="custom-banned-password-list"></a>Özel yasaklanan parola listesi
+## <a name="custom-banned-password-list"></a>Özel yasaklanmış parola listesi
 
 Bazı kuruluşlar, Microsoft 'un özel yasaklanmış parola listesini çağırdığı genel yasaklanmış parola listesinin üzerine kendi özelleştirmelerini ekleyerek güvenliği daha da geliştirmek isteyebilir. Microsoft bu listeye eklenen koşulların birincil olarak kuruluşa özgü koşullara odaklanmasını önerir, örneğin:
 
@@ -98,7 +98,7 @@ Kullanıcı parolasını değiştirdiğinde veya sıfırladığında yeni parola
 
 Kullanıcının parolası yasaklanmış bir parola içerse bile, genel parola yeterince güçlü olursa parola yine de kabul edilebilir. Yeni yapılandırılan bir parola, kabul edilip edilmesinin gerekip gerekmediğini belirlemek için genel gücünü değerlendirmek üzere aşağıdaki adımlara geçer.
 
-### <a name="step-1-normalization"></a>1\. adım: Normalleştirme
+### <a name="step-1-normalization"></a>1\. Adım: normalleştirme
 
 Yeni bir parola, önce bir normalleştirme işleminden geçer. Bu teknik, küçük bir yasaklanmış parola kümesinin daha büyük olabilecek çok zayıf parolalara eşlenmesine olanak tanır.
 
@@ -111,9 +111,9 @@ Normalleştirme iki bölümden oluşur.  İlk olarak, tüm büyük harfler küç
 | '$'  | üreticinin |
 | '\@'  | 'm |
 
-Örnek: "boş" parolasının yasaklanmış olduğunu ve bir kullanıcının parolasını "Bl@nK" olarak değiştirmeye çalıştığını varsayın. "Bl@nk" Özellikle yasaklanmış olsa da, normalleştirme süreci bu parolayı yasaklanmış bir parola olan "boş" olarak dönüştürür.
+Örnek: "Blank" parolasının yasaklanmış olduğunu ve bir kullanıcının parolasını "Bl@nK" olarak değiştirmeye çalıştığını varsayın. "Bl@nk" özellikle yasaklanmış olsa da, normalleştirme süreci bu parolayı yasaklanmış bir parola olan "boş" olarak dönüştürür.
 
-### <a name="step-2-check-if-password-is-considered-banned"></a>2\. adım: Parolanın yasaklanmış olarak kabul edildiğinden emin olun
+### <a name="step-2-check-if-password-is-considered-banned"></a>2\. Adım: parolanın yasaklanmış olarak kabul edildiğinden emin olun
 
 #### <a name="fuzzy-matching-behavior"></a>Belirsiz eşleştirme davranışı
 
@@ -133,7 +133,7 @@ Alt dize eşleştirme, kullanıcının adını ve soyadını denetlemek için no
 
 #### <a name="score-calculation"></a>Puan hesaplaması
 
-Sonraki adım kullanıcının normalleştirilmiş yeni parolalarındaki tüm yasaklanmış parolaların örneklerini belirlemektir. Ni
+Sonraki adım kullanıcının normalleştirilmiş yeni parolalarındaki tüm yasaklanmış parolaların örneklerini belirlemektir. Ardından:
 
 1. Bir kullanıcının parolasıdır bulunan her yasaklanmış parolanın tek bir noktası verilir.
 2. Kalan her benzersiz karaktere bir nokta verilir.
@@ -147,7 +147,7 @@ Normalleştirme sonrasında bu parola "contosoblank12" olur. Eşleşen işlem bu
 
 [contoso] + [boş] + [1] + [2] = 4 punto bu parola beş (5) Punto altında olduğundan reddedilecek.
 
-Örnek: bir Kullanıcı parolasını "ContoS0Bl@nkf9!" olarak değiştirir.
+Örnek: bir Kullanıcı, parolasını "ContoS0Bl@nkf9!" olarak değiştirir.
 
 Normalleştirme sonrasında bu parola "contosoblankf9!" olur. Eşleşen işlem bu parolanın iki yasaklanmış parola içerdiğini bulur: contoso ve Blank. Bu parolaya daha sonra bir puan verilir:
 
@@ -164,7 +164,7 @@ Normalleştirme sonrasında bu parola "contosoblankf9!" olur. Eşleşen işlem b
 | Şirket içi Windows Server Active Directory eşitlenen kullanıcılar | Azure AD Premium P1 veya P2 | Azure AD Premium P1 veya P2 |
 
 > [!NOTE]
-> Şirket içi Windows Server Active Directory, aynı zamanda eşitlenmiş kullanıcılara yönelik mevcut lisanslara dayanan Azure AD parola korumasının avantajlarını Azure Active Directory.
+> Şirket içi Windows Server Active Directory, aynı zamanda eşitlenmiş kullanıcılara yönelik mevcut lisanslama temelinde Azure AD parola korumasından de faydalanan Azure Active Directory.
 
 [Azure Active Directory fiyatlandırma sitesinde](https://azure.microsoft.com/pricing/details/active-directory/)maliyetler de dahil olmak üzere ek lisans bilgileri bulunabilir.
 

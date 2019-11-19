@@ -2,13 +2,13 @@
 title: Kaynaklar için etiket desteği
 description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir. Tüm Azure hizmetleri için ayrıntılar sağlar.
 ms.topic: conceptual
-ms.date: 10/27/2019
-ms.openlocfilehash: c0f36568bbbf824285cfaa3385d2225e0a989639
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/18/2019
+ms.openlocfilehash: aa8736310a5c18a1f94d3920a4f88632212c7af4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149219"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173544"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, bir kaynak türünün [etiketleri](resource-group-using-tags.md)destekleyip desteklemediğini açıklanmaktadır. Etiketi **destekleyen** sütun, kaynak türünün etiket için bir özelliğe sahip olup olmadığını gösterir. **Maliyet raporundaki etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmediğini belirtir.
@@ -1364,14 +1364,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
 > | ------------- | ----------- | ----------- |
-> | netAppAccounts | Yes | Yes |
-> | netAppAccounts/backupPolicies | Yes | Yes |
-> | netAppAccounts/Capacityhavuzları | Yes | Yes |
-> | netAppAccounts/Capacityhavuzları/birimleri | Yes | Yes |
-> | netAppAccounts/Capacityhavuzları/birimleri/yedeklemeleri | Hayır | Hayır |
-> | netAppAccounts/Capacityhavuzlar/Volumes/Mount hedefleri | Yes | Yes |
-> | netAppAccounts/Capacityhavuzlar/birimler/anlık görüntüler | Yes | Yes |
-> | netAppAccounts/Vaults | Hayır | Hayır |
+> | netAppAccounts | Yes | Hayır |
+> | netAppAccounts/Capacityhavuzları | Yes | Hayır |
+> | netAppAccounts/Capacityhavuzları/birimleri | Yes | Hayır |
+> | netAppAccounts/Capacityhavuzlar/Volumes/Mount hedefleri | Yes | Hayır |
+> | netAppAccounts/Capacityhavuzlar/birimler/anlık görüntüler | Yes | Hayır |
+
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]

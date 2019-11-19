@@ -1,17 +1,14 @@
 ---
 title: Öğretici-Terrayform kullanarak Azure 'da hub sanal ağı oluşturma
 description: Azure 'da diğer ağlar arasında ortak bağlantı noktası görevi gören bir hub sanal ağı oluşturmayı gösteren öğretici
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 25c4d6fa881f7ec6c96dd5ea7c935544374bc57d
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6669e90c3d12fcf55bcb1ad69c3b275c5117a8fc
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077694"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159052"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Öğretici: Terrayform kullanarak Azure 'da hub sanal ağı oluşturma
 
@@ -25,7 +22,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Bir hub sanal özel ağ geçidi oluşturmak için Terrayform 'u kullanın.
 > * Hub ve şirket içi ağ geçidi bağlantıları oluşturmak için Terrayform 'u kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure 'Da Terrayform ile hub ve bağlı bileşen karma ağ topolojisi oluşturun](./terraform-hub-spoke-introduction.md).
 1. [Azure 'Da Terrayform ile şirket içi sanal ağ oluşturun](./terraform-hub-spoke-on-prem.md).

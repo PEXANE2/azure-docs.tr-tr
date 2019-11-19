@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 11/15/2019
+ms.date: 11/18/2019
 ms.author: dapine
-ms.openlocfilehash: 8a8c49089d5c0554c4636e98b5820ef206010207
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 0d8c7a36582c30975f3a408a2ea6e95d39e560ef
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134183"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173747"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure bilişsel hizmetler kapsayıcı görüntüsü etiketleri
 
@@ -127,124 +127,121 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 | Resim etiketleri | Notlar |
 |------------|:------|
 | `latest` | `en-US` yerel ayarıyla kapsayıcı görüntüsü. |
-| `2.0.0-amd64-zh-tw-preview` | |
-| `2.0.0-amd64-zh-hk-preview` | |
-| `2.0.0-amd64-zh-cn-preview` | |
-| `2.0.0-amd64-tr-tr-preview` | |
-| `2.0.0-amd64-th-th-preview` | |
-| `2.0.0-amd64-sv-se-preview` | |
-| `2.0.0-amd64-ru-ru-preview` | |
-| `2.0.0-amd64-pt-pt-preview` | |
-| `2.0.0-amd64-pt-br-preview` | |
-| `2.0.0-amd64-pl-pl-preview` | |
-| `2.0.0-amd64-nl-nl-preview` | |
-| `2.0.0-amd64-nb-no-preview` | |
-| `2.0.0-amd64-ko-kr-preview` | |
-| `2.0.0-amd64-ja-jp-preview` | |
-| `2.0.0-amd64-it-it-preview` | |
-| `2.0.0-amd64-hi-in-preview` | |
-| `2.0.0-amd64-fr-fr-preview` | |
-| `2.0.0-amd64-fr-ca-preview` | |
-| `2.0.0-amd64-fi-fi-preview` | |
-| `2.0.0-amd64-es-mx-preview` | |
-| `2.0.0-amd64-es-es-preview` | |
-| `2.0.0-amd64-en-us-preview` | |
-| `2.0.0-amd64-en-nz-preview` | |
-| `2.0.0-amd64-en-in-preview` | |
-| `2.0.0-amd64-en-gb-preview` | |
-| `2.0.0-amd64-en-ca-preview` | |
-| `2.0.0-amd64-en-au-preview` | |
-| `2.0.0-amd64-de-de-preview` | |
-| `2.0.0-amd64-da-dk-preview` | |
-| `2.0.0-amd64-ca-es-preview` | |
-| `2.0.0-amd64-ar-eg-preview` | |
-| `1.2.0-amd64-zh-cn-preview` | |
-| `1.2.0-amd64-pt-br-preview` | |
-| `1.2.0-amd64-preview` | |
-| `1.2.0-amd64-ja-jp-preview` | |
-| `1.2.0-amd64-it-it-preview` | |
-| `1.2.0-amd64-fr-fr-preview` | |
-| `1.2.0-amd64-fr-ca-preview` | |
-| `1.2.0-amd64-es-mx-preview` | |
-| `1.2.0-amd64-es-es-preview` | |
-| `1.2.0-amd64-en-us-preview` | |
-| `1.2.0-amd64-en-in-preview` | |
-| `1.2.0-amd64-en-gb-preview` | |
-| `1.2.0-amd64-en-ca-preview` | |
-| `1.2.0-amd64-en-au-preview` | |
-| `1.2.0-amd64-de-de-preview` | |
-| `1.1.3-amd64-zh-cn-preview` | |
-| `1.1.3-amd64-pt-br-preview` | |
-| `1.1.3-amd64-preview` | |
-| `1.1.3-amd64-ja-jp-preview` | |
-| `1.1.3-amd64-it-it-preview` | |
-| `1.1.3-amd64-fr-fr-preview` | |
-| `1.1.3-amd64-fr-ca-preview` | |
-| `1.1.3-amd64-es-mx-preview` | |
-| `1.1.3-amd64-es-es-preview` | |
-| `1.1.3-amd64-en-us-preview` | |
-| `1.1.3-amd64-en-in-preview` | |
-| `1.1.3-amd64-en-gb-preview` | |
-| `1.1.3-amd64-en-ca-preview` | |
-| `1.1.3-amd64-en-au-preview` | |
-| `1.1.3-amd64-de-de-preview` | |
-| `1.1.2-amd64-zh-cn-preview` | |
-| `1.1.2-amd64-pt-br-preview` | |
-| `1.1.2-amd64-preview` | |
-| `1.1.2-amd64-ja-jp-preview` | |
-| `1.1.2-amd64-it-it-preview` | |
-| `1.1.2-amd64-fr-fr-preview` | |
-| `1.1.2-amd64-fr-ca-preview` | |
-| `1.1.2-amd64-es-mx-preview` | |
-| `1.1.2-amd64-es-es-preview` | |
-| `1.1.2-amd64-en-us-preview` | |
-| `1.1.2-amd64-en-in-preview` | |
-| `1.1.2-amd64-en-gb-preview` | |
-| `1.1.2-amd64-en-ca-preview` | |
-| `1.1.2-amd64-en-au-preview` | |
-| `1.1.2-amd64-de-de-preview` | |
-| `1.1.1-amd64-zh-cn-preview` | |
-| `1.1.1-amd64-pt-br-preview` | |
-| `1.1.1-amd64-ja-jp-preview` | |
-| `1.1.1-amd64-it-it-preview` | |
-| `1.1.1-amd64-fr-fr-preview` | |
-| `1.1.1-amd64-fr-ca-preview` | |
-| `1.1.1-amd64-es-mx-preview` | |
-| `1.1.1-amd64-es-es-preview` | |
-| `1.1.1-amd64-en-us-preview` | |
-| `1.1.1-amd64-en-in-preview` | |
-| `1.1.1-amd64-en-gb-preview` | |
-| `1.1.1-amd64-en-ca-preview` | |
-| `1.1.1-amd64-en-au-preview` | |
-| `1.1.1-amd64-de-de-preview` | |
-| `1.1.0-amd64-zh-cn-preview` | |
-| `1.1.0-amd64-pt-br-preview` | |
-| `1.1.0-amd64-ja-jp-preview` | |
-| `1.1.0-amd64-it-it-preview` | |
-| `1.1.0-amd64-fr-fr-preview` | |
-| `1.1.0-amd64-fr-ca-preview` | |
-| `1.1.0-amd64-es-mx-preview` | |
-| `1.1.0-amd64-es-es-preview` | |
-| `1.1.0-amd64-en-us-preview` | |
-| `1.1.0-amd64-en-in-preview` | |
-| `1.1.0-amd64-en-gb-preview` | |
-| `1.1.0-amd64-en-ca-preview` | |
-| `1.1.0-amd64-en-au-preview` | |
-| `1.1.0-amd64-de-de-preview` | |
-| `1.0.0-amd64-zh-cn-preview` | |
-| `1.0.0-amd64-pt-br-preview` | |
-| `1.0.0-amd64-ja-jp-preview` | |
-| `1.0.0-amd64-it-it-preview` | |
-| `1.0.0-amd64-fr-fr-preview` | |
-| `1.0.0-amd64-fr-ca-preview` | |
-| `1.0.0-amd64-es-mx-preview` | |
-| `1.0.0-amd64-es-es-preview` | |
-| `1.0.0-amd64-en-us-preview` | |
-| `1.0.0-amd64-en-in-preview` | |
-| `1.0.0-amd64-en-gb-preview` | |
-| `1.0.0-amd64-en-ca-preview` | |
-| `1.0.0-amd64-en-au-preview` | |
-| `1.0.0-amd64-de-de-preview` | |
+| `2.0.0-amd64-ar-eg-preview` | `ar-EG` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-ca-es-preview` | `ca-ES` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-da-dk-preview` | `da-DK` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-de-de-preview` | `de-DE` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-en-au-preview` | `en-AU` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-en-ca-preview` | `en-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-en-gb-preview` | `en-GB` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-en-in-preview` | `en-IN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-en-nz-preview` | `en-NZ` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-en-us-preview` | `en-US` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-es-es-preview` | `es-ES` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-es-mx-preview` | `es-MX` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-fi-fi-preview` | `fi-FI` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-fr-ca-preview` | `fr-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-fr-fr-preview` | `fr-FR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-hi-in-preview` | `hi-IN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-it-it-preview` | `it-IT` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-ja-jp-preview` | `ja-JP` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-ko-kr-preview` | `ko-KR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-nb-no-preview` | `nb-NO` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-nl-nl-preview` | `nl-NL` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-pl-pl-preview` | `pl-PL` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-pt-br-preview` | `pt-BR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-pt-pt-preview` | `pt-PT` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-ru-ru-preview` | `ru-RU` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-sv-se-preview` | `sv-SE` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-th-th-preview` | `th-TH` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-tr-tr-preview` | `tr-TR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-zh-cn-preview` | `zh-CN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-zh-hk-preview` | `zh-HK` yerel ayarıyla kapsayıcı görüntüsü. |
+| `2.0.0-amd64-zh-tw-preview` | `zh-TW` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-de-de-preview` | `de-DE` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-au-preview` | `en-AU` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-ca-preview` | `en-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-gb-preview` | `en-GB` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-in-preview` | `en-IN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-us-preview` | `en-US` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-es-es-preview` | `es-ES` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-es-mx-preview` | `es-MX` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-fr-ca-preview` | `fr-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-fr-fr-preview` | `fr-FR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-it-it-preview` | `it-IT` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-ja-jp-preview` | `ja-JP` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-pt-br-preview` | `pt-BR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.2.0-amd64-zh-cn-preview` | `zh-CN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-de-de-preview` | `de-DE` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-en-au-preview` | `en-AU` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-en-ca-preview` | `en-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-en-gb-preview` | `en-GB` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-en-in-preview` | `en-IN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-en-us-preview` | `en-US` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-es-es-preview` | `es-ES` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-es-mx-preview` | `es-MX` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-fr-ca-preview` | `fr-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-fr-fr-preview` | `fr-FR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-it-it-preview` | `it-IT` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-ja-jp-preview` | `ja-JP` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-pt-br-preview` | `pt-BR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.3-amd64-zh-cn-preview` | `zh-CN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-de-de-preview` | `de-DE` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-en-au-preview` | `en-AU` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-en-ca-preview` | `en-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-en-gb-preview` | `en-GB` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-en-in-preview` | `en-IN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-en-us-preview` | `en-US` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-es-es-preview` | `es-ES` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-es-mx-preview` | `es-MX` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-fr-ca-preview` | `fr-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-fr-fr-preview` | `fr-FR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-it-it-preview` | `it-IT` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-ja-jp-preview` | `ja-JP` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-pt-br-preview` | `pt-BR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.2-amd64-zh-cn-preview` | `zh-CN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-de-de-preview` | `de-DE` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-en-au-preview` | `en-AU` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-en-ca-preview` | `en-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-en-gb-preview` | `en-GB` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-en-in-preview` | `en-IN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-en-us-preview` | `en-US` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-es-es-preview` | `es-ES` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-es-mx-preview` | `es-MX` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-fr-ca-preview` | `fr-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-fr-fr-preview` | `fr-FR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-it-it-preview` | `it-IT` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-ja-jp-preview` | `ja-JP` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-pt-br-preview` | `pt-BR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.1-amd64-zh-cn-preview` | `zh-CN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-de-de-preview` | `de-DE` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-au-preview` | `en-AU` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-ca-preview` | `en-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-gb-preview` | `en-GB` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-in-preview` | `en-IN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-us-preview` | `en-US` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-es-es-preview` | `es-ES` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-es-mx-preview` | `es-MX` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-fr-ca-preview` | `fr-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-fr-fr-preview` | `fr-FR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-it-it-preview` | `it-IT` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-ja-jp-preview` | `ja-JP` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-pt-br-preview` | `pt-BR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.1.0-amd64-zh-cn-preview` | `zh-CN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-de-de-preview` | `de-DE` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-en-au-preview` | `en-AU` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-en-ca-preview` | `en-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-en-gb-preview` | `en-GB` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-en-in-preview` | `en-IN` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-en-us-preview` | `en-US` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-es-es-preview` | `es-ES` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-es-mx-preview` | `es-MX` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-fr-ca-preview` | `fr-CA` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-fr-fr-preview` | `fr-FR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-it-it-preview` | `it-IT` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-ja-jp-preview` | `ja-JP` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-pt-br-preview` | `pt-BR` yerel ayarıyla kapsayıcı görüntüsü. |
+| `1.0.0-amd64-zh-cn-preview` | `zh-CN` yerel ayarıyla kapsayıcı görüntüsü. |
 
 ## <a name="text-to-speech"></a>Metin okuma
 
@@ -254,169 +251,173 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 
 | Resim etiketleri | Notlar |
 |------------|:------|
-| `latest` | `en-US` yerel ayarı ve `JessaRUS` sesli kapsayıcı görüntüsü. |
-| `1.3.0-amd64-zh-tw-zhiwei-apollo-preview` | |
-| `1.3.0-amd64-zh-tw-yating-apollo-preview` | |
-| `1.3.0-amd64-zh-tw-hanhanrus-preview` | |
-| `1.3.0-amd64-zh-hk-tracyrus-preview` | |
-| `1.3.0-amd64-zh-hk-tracy-apollo-preview` | |
-| `1.3.0-amd64-zh-hk-danny-apollo-preview` | |
-| `1.3.0-amd64-zh-cn-yaoyao-apollo-preview` | |
-| `1.3.0-amd64-zh-cn-kangkang-apollo-preview` | |
-| `1.3.0-amd64-zh-cn-huihuirus-preview` | |
-| `1.3.0-amd64-vi-vn-an-preview` | |
-| `1.3.0-amd64-tr-tr-sedarus-preview` | |
-| `1.3.0-amd64-th-th-pattara-preview` | |
-| `1.3.0-amd64-te-in-chitra-preview` | |
-| `1.3.0-amd64-ta-in-valluvar-preview` | |
-| `1.3.0-amd64-sv-se-hedvigrus-preview` | |
-| `1.3.0-amd64-sl-si-lado-preview` | |
-| `1.3.0-amd64-sk-sk-filip-preview` | |
-| `1.3.0-amd64-ru-ru-pavel-apollo-preview` | |
-| `1.3.0-amd64-ru-ru-irina-apollo-preview` | |
-| `1.3.0-amd64-ru-ru-ekaterinarus-preview` | |
-| `1.3.0-amd64-ro-ro-andrei-preview` | |
-| `1.3.0-amd64-pt-pt-heliarus-preview` | |
-| `1.3.0-amd64-pt-br-heloisarus-preview` | |
-| `1.3.0-amd64-pt-br-daniel-apollo-preview` | |
-| `1.3.0-amd64-pl-pl-paulinarus-preview` | |
-| `1.3.0-amd64-nl-nl-hannarus-preview` | |
-| `1.3.0-amd64-nb-no-huldarus-preview` | |
-| `1.3.0-amd64-ms-my-rizwan-preview` | |
-| `1.3.0-amd64-ko-kr-heamirus-preview` | |
-| `1.3.0-amd64-ja-jp-ichiro-apollo-preview` | |
-| `1.3.0-amd64-ja-jp-harukarus-preview` | |
-| `1.3.0-amd64-ja-jp-ayumi-apollo-preview` | |
-| `1.3.0-amd64-it-it-luciarus-preview` | |
-| `1.3.0-amd64-it-it-cosimo-apollo-preview` | |
-| `1.3.0-amd64-id-id-andika-preview` | |
-| `1.3.0-amd64-hu-hu-szabolcs-preview` | |
-| `1.3.0-amd64-hr-hr-matej-preview` | |
-| `1.3.0-amd64-hi-in-kalpana-preview` | |
-| `1.3.0-amd64-hi-in-kalpana-apollo-preview` | |
-| `1.3.0-amd64-hi-in-hemant-preview` | |
-| `1.3.0-amd64-he-il-asaf-preview` | |
-| `1.3.0-amd64-fr-fr-paul-apollo-preview` | |
-| `1.3.0-amd64-fr-fr-julie-apollo-preview` | |
-| `1.3.0-amd64-fr-fr-hortenserus-preview` | |
-| `1.3.0-amd64-fr-ch-guillaume-preview` | |
-| `1.3.0-amd64-fr-ca-harmonierus-preview` | |
-| `1.3.0-amd64-fr-ca-caroline-preview` | |
-| `1.3.0-amd64-fi-fi-heidirus-preview` | |
-| `1.3.0-amd64-es-mx-raul-apollo-preview` | |
-| `1.3.0-amd64-es-mx-hildarus-preview` | |
-| `1.3.0-amd64-es-es-pablo-apollo-preview` | |
-| `1.3.0-amd64-es-es-laura-apollo-preview` | |
-| `1.3.0-amd64-es-es-helenarus-preview` | |
-| `1.3.0-amd64-en-us-zirarus-preview` | |
-| `1.3.0-amd64-en-us-jessarus-preview` | |
-| `1.3.0-amd64-en-us-jessa24krus-preview` | |
-| `1.3.0-amd64-en-us-guy24krus-preview` | |
-| `1.3.0-amd64-en-us-benjaminrus-preview` | |
-| `1.3.0-amd64-en-in-ravi-apollo-preview` | |
-| `1.3.0-amd64-en-in-priyarus-preview` | |
-| `1.3.0-amd64-en-in-heera-apollo-preview` | |
-| `1.3.0-amd64-en-ie-sean-preview` | |
-| `1.3.0-amd64-en-gb-susan-apollo-preview` | |
-| `1.3.0-amd64-en-gb-hazelrus-preview` | |
-| `1.3.0-amd64-en-gb-george-apollo-preview` | |
-| `1.3.0-amd64-en-ca-linda-preview` | |
-| `1.3.0-amd64-en-ca-heatherrus-preview` | |
-| `1.3.0-amd64-en-au-hayleyrus-preview` | |
-| `1.3.0-amd64-en-au-catherine-preview` | |
-| `1.3.0-amd64-el-gr-stefanos-preview` | |
-| `1.3.0-amd64-de-de-stefan-apollo-preview` | |
-| `1.3.0-amd64-de-de-heddarus-preview` | |
-| `1.3.0-amd64-de-de-hedda-preview` | |
-| `1.3.0-amd64-de-ch-karsten-preview` | |
-| `1.3.0-amd64-de-at-michael-preview` | |
-| `1.3.0-amd64-da-dk-hellerus-preview` | |
-| `1.3.0-amd64-cs-cz-jakub-preview` | |
-| `1.3.0-amd64-ca-es-herenarus-preview` | |
-| `1.3.0-amd64-bg-bg-ivan-preview` | |
-| `1.3.0-amd64-ar-sa-naayf-preview` | |
-| `1.3.0-amd64-ar-eg-hoda-preview` | |
-| `1.2.0-amd64-zh-cn-yaoyao-apollo-preview` | |
-| `1.2.0-amd64-zh-cn-kangkang-apollo-preview` | |
-| `1.2.0-amd64-zh-cn-huihuirus-preview` | |
-| `1.2.0-amd64-pt-br-heloisarus-preview` | |
-| `1.2.0-amd64-pt-br-daniel-apollo-preview` | |
-| `1.2.0-amd64-ko-kr-heamirus-preview` | |
-| `1.2.0-amd64-ja-jp-ichiro-apollo-preview` | |
-| `1.2.0-amd64-ja-jp-harukarus-preview` | |
-| `1.2.0-amd64-ja-jp-ayumi-apollo-preview` | |
-| `1.2.0-amd64-it-it-luciarus-preview` | |
-| `1.2.0-amd64-it-it-cosimo-apollo-preview` | |
-| `1.2.0-amd64-fr-fr-paul-apollo-preview` | |
-| `1.2.0-amd64-fr-fr-julie-apollo-preview` | |
-| `1.2.0-amd64-fr-fr-hortenserus-preview` | |
-| `1.2.0-amd64-fr-ca-harmonierus-preview` | |
-| `1.2.0-amd64-fr-ca-caroline-preview` | |
-| `1.2.0-amd64-es-mx-raul-apollo-preview` | |
-| `1.2.0-amd64-es-mx-hildarus-preview` | |
-| `1.2.0-amd64-es-es-pablo-apollo-preview` | |
-| `1.2.0-amd64-es-es-laura-apollo-preview` | |
-| `1.2.0-amd64-es-es-helenarus-preview` | |
-| `1.2.0-amd64-en-us-zirarus-preview` | |
-| `1.2.0-amd64-en-us-jessarus-preview` | |
-| `1.2.0-amd64-en-us-jessa24krus-preview` | |
-| `1.2.0-amd64-en-us-guy24krus-preview` | |
-| `1.2.0-amd64-en-us-benjaminrus-preview` | |
-| `1.2.0-amd64-en-in-ravi-apollo-preview` | |
-| `1.2.0-amd64-en-in-priyarus-preview` | |
-| `1.2.0-amd64-en-in-heera-apollo-preview` | |
-| `1.2.0-amd64-en-gb-susan-apollo-preview` | |
-| `1.2.0-amd64-en-gb-hazelrus-preview` | |
-| `1.2.0-amd64-en-gb-george-apollo-preview` | |
-| `1.2.0-amd64-en-au-hayleyrus-preview` | |
-| `1.2.0-amd64-en-au-catherine-preview` | |
-| `1.2.0-amd64-de-de-stefan-apollo-preview` | |
-| `1.2.0-amd64-de-de-heddarus-preview` | |
-| `1.1.0-amd64-zh-cn-yaoyao-apollo-preview` | |
-| `1.1.0-amd64-zh-cn-kangkang-apollo-preview` | |
-| `1.1.0-amd64-zh-cn-huihuirus-preview` | |
-| `1.1.0-amd64-pt-br-heloisarus-preview` | |
-| `1.1.0-amd64-pt-br-daniel-apollo-preview` | |
-| `1.1.0-amd64-ko-kr-heamirus-preview` | |
-| `1.1.0-amd64-ja-jp-ichiro-apollo-preview` | |
-| `1.1.0-amd64-ja-jp-harukarus-preview` | |
-| `1.1.0-amd64-ja-jp-ayumi-apollo-preview` | |
-| `1.1.0-amd64-it-it-luciarus-preview` | |
-| `1.1.0-amd64-it-it-cosimo-apollo-preview` | |
-| `1.1.0-amd64-fr-fr-paul-apollo-preview` | |
-| `1.1.0-amd64-fr-fr-julie-apollo-preview` | |
-| `1.1.0-amd64-fr-fr-hortenserus-preview` | |
-| `1.1.0-amd64-fr-ca-harmonierus-preview` | |
-| `1.1.0-amd64-fr-ca-caroline-preview` | |
-| `1.1.0-amd64-es-mx-raul-apollo-preview` | |
-| `1.1.0-amd64-es-mx-hildarus-preview` | |
-| `1.1.0-amd64-es-es-pablo-apollo-preview` | |
-| `1.1.0-amd64-es-es-laura-apollo-preview` | |
-| `1.1.0-amd64-es-es-helenarus-preview` | |
-| `1.1.0-amd64-en-us-zirarus-preview` | |
-| `1.1.0-amd64-en-us-jessarus-preview` | |
-| `1.1.0-amd64-en-us-jessa24krus-preview` | |
-| `1.1.0-amd64-en-us-guy24krus-preview` | |
-| `1.1.0-amd64-en-us-benjaminrus-preview` | |
-| `1.1.0-amd64-en-in-ravi-apollo-preview` | |
-| `1.1.0-amd64-en-in-priyarus-preview` | |
-| `1.1.0-amd64-en-in-heera-apollo-preview` | |
-| `1.1.0-amd64-en-gb-susan-apollo-preview` | |
-| `1.1.0-amd64-en-gb-hazelrus-preview` | |
-| `1.1.0-amd64-en-gb-george-apollo-preview` | |
-| `1.1.0-amd64-en-au-hayleyrus-preview` | |
-| `1.1.0-amd64-en-au-catherine-preview` | |
-| `1.1.0-amd64-de-de-stefan-apollo-preview` | |
-| `1.1.0-amd64-de-de-heddarus-preview` | |
-| `1.1.0-amd64-de-de-hedda-preview` | |
-| `1.0.0-amd64-zh-cn-yaoyao-apollo-preview` | |
-| `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | |
-| `1.0.0-amd64-zh-cn-huihuirus-preview` | |
-| `1.0.0-amd64-en-us-zirarus-preview` | |
-| `1.0.0-amd64-en-us-jessarus-preview` | |
-| `1.0.0-amd64-en-us-jessa24krus-preview` | |
-| `1.0.0-amd64-en-us-guy24krus-preview` | |
-| `1.0.0-amd64-en-us-benjaminrus-preview` | |
+| `latest` | `en-US` yerel ayarı ve `en-US-JessaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ar-eg-hoda-preview` | `ar-EG` yerel ayarı ve `ar-EG-Hoda` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ar-sa-naayf-preview` | `ar-SA` yerel ayarı ve `ar-SA-Naayf` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-bg-bg-ivan-preview` | `bg-BG` yerel ayarı ve `bg-BG-Ivan` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ca-es-herenarus-preview` | `ca-ES` yerel ayarı ve `ca-ES-HerenaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-cs-cz-jakub-preview` | `cs-CZ` yerel ayarı ve `cs-CZ-Jakub` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-da-dk-hellerus-preview` | `da-DK` yerel ayarı ve `da-DK-HelleRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-de-at-michael-preview` | `de-AT` yerel ayarı ve `de-AT-Michael` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-de-ch-karsten-preview` | `de-CH` yerel ayarı ve `de-CH-Karsten` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-de-de-hedda-preview` | `de-DE` yerel ayarı ve `de-DE-Hedda` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-de-de-heddarus-preview` | `de-DE` yerel ayarı ve `de-DE-Hedda` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-de-de-heddarus-preview` | `de-DE` yerel ayarı ve `de-DE-HeddaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-de-de-stefan-apollo-preview` | `de-DE` yerel ayarı ve `de-DE-Stefan-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-el-gr-stefanos-preview` | `el-GR` yerel ayarı ve `el-GR-Stefanos` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-au-catherine-preview` | `en-AU` yerel ayarı ve `en-AU-Catherine` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-au-hayleyrus-preview` | `en-AU` yerel ayarı ve `en-AU-HayleyRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-ca-heatherrus-preview` | `en-CA` yerel ayarı ve `en-CA-HeatherRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-ca-linda-preview` | `en-CA` yerel ayarı ve `en-CA-Linda` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-gb-george-apollo-preview` | `en-GB` yerel ayarı ve `en-GB-George-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-gb-hazelrus-preview` | `en-GB` yerel ayarı ve `en-GB-HazelRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-gb-susan-apollo-preview` | `en-GB` yerel ayarı ve `en-GB-Susan-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-ie-sean-preview` | `en-IE` yerel ayarı ve `en-IE-Sean` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-in-heera-apollo-preview` | `en-IN` yerel ayarı ve `en-IN-Heera-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-in-priyarus-preview` | `en-IN` yerel ayarı ve `en-IN-PriyaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-in-ravi-apollo-preview` | `en-IN` yerel ayarı ve `en-IN-Ravi-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-us-benjaminrus-preview` | `en-US` yerel ayarı ve `en-US-BenjaminRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-us-guy24krus-preview` | `en-US` yerel ayarı ve `en-US-Guy24kRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-us-jessa24krus-preview` | `en-US` yerel ayarı ve `en-US-Jessa24kRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-us-jessarus-preview` | `en-US` yerel ayarı ve `en-US-JessaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-en-us-zirarus-preview` | `en-US` yerel ayarı ve `en-US-ZiraRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-es-es-helenarus-preview` | `es-ES` yerel ayarı ve `es-ES-HelenaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-es-es-laura-apollo-preview` | `es-ES` yerel ayarı ve `es-ES-Laura-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-es-es-pablo-apollo-preview` | `es-ES` yerel ayarı ve `es-ES-Pablo-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-es-mx-hildarus-preview` | `es-MX` yerel ayarı ve `es-MX-HildaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-es-mx-raul-apollo-preview` | `es-MX` yerel ayarı ve `es-MX-Raul-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-fi-fi-heidirus-preview` | `fi-FI` yerel ayarı ve `fi-FI-HeidiRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-fr-ca-caroline-preview` | `fr-CA` yerel ayarı ve `fr-CA-Caroline` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-fr-ca-harmonierus-preview` | `fr-CA` yerel ayarı ve `fr-CA-HarmonieRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-fr-ch-guillaume-preview` | `fr-CH` yerel ayarı ve `fr-CH-Guillaume` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-fr-fr-hortenserus-preview` | `fr-FR` yerel ayarı ve `fr-FR-HortenseRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-fr-fr-julie-apollo-preview` | `fr-FR` yerel ayarı ve `fr-FR-Julie-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-fr-fr-paul-apollo-preview` | `fr-FR` yerel ayarı ve `fr-FR-Paul-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-he-il-asaf-preview` | `he-IL` yerel ayarı ve `he-IL-Asaf` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-hi-in-hemant-preview` | `hi-IN` yerel ayarı ve `hi-IN-Hemant` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-hi-in-kalpana-apollo-preview` | `hi-IN` yerel ayarı ve `hi-IN-Kalpana-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-hi-in-kalpana-apollo-preview` | `hi-IN` yerel ayarı ve `hi-IN-Kalpana` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-hi-in-kalpana-preview` | `hi-IN` yerel ayarı ve `hi-IN-Kalpana` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-hr-hr-matej-preview` | `hr-HR` yerel ayarı ve `hr-HR-Matej` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-hu-hu-szabolcs-preview` | `hu-HU` yerel ayarı ve `hu-HU-Szabolcs` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-id-id-andika-preview` | `id-ID` yerel ayarı ve `id-ID-Andika` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-it-it-cosimo-apollo-preview` | `it-IT` yerel ayarı ve `it-IT-Cosimo-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-it-it-luciarus-preview` | `it-IT` yerel ayarı ve `it-IT-LuciaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ja-jp-ayumi-apollo-preview` | `ja-JP` yerel ayarı ve `ja-JP-Ayumi-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ja-jp-harukarus-preview` | `ja-JP` yerel ayarı ve `ja-JP-HarukaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ja-jp-ichiro-apollo-preview` | `ja-JP` yerel ayarı ve `ja-JP-Ichiro-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ko-kr-heamirus-preview` | `ko-KR` yerel ayarı ve `ko-KR-HeamiRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ms-my-rizwan-preview` | `ms-MY` yerel ayarı ve `ms-MY-Rizwan` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-nb-no-huldarus-preview` | `nb-NO` yerel ayarı ve `nb-NO-HuldaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-nl-nl-hannarus-preview` | `nl-NL` yerel ayarı ve `nl-NL-HannaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-pl-pl-paulinarus-preview` | `pl-PL` yerel ayarı ve `pl-PL-PaulinaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-pt-br-daniel-apollo-preview` | `pt-BR` yerel ayarı ve `pt-BR-Daniel-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-pt-br-heloisarus-preview` | `pt-BR` yerel ayarı ve `pt-BR-HeloisaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-pt-pt-heliarus-preview` | `pt-PT` yerel ayarı ve `pt-PT-HeliaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ro-ro-andrei-preview` | `ro-RO` yerel ayarı ve `ro-RO-Andrei` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ru-ru-ekaterinarus-preview` | `ru-RU` yerel ayarı ve `ru-RU-EkaterinaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ru-ru-irina-apollo-preview` | `ru-RU` yerel ayarı ve `ru-RU-Irina-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ru-ru-pavel-apollo-preview` | `ru-RU` yerel ayarı ve `ru-RU-Pavel-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-sk-sk-filip-preview` | `sk-SK` yerel ayarı ve `sk-SK-Filip` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-sl-si-lado-preview` | `sl-SI` yerel ayarı ve `sl-SI-Lado` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-sv-se-hedvigrus-preview` | `sv-SE` yerel ayarı ve `sv-SE-HedvigRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-ta-in-valluvar-preview` | `ta-IN` yerel ayarı ve `ta-IN-Valluvar` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-te-in-chitra-preview` | `te-IN` yerel ayarı ve `te-IN-Chitra` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-th-th-pattara-preview` | `th-TH` yerel ayarı ve `th-TH-Pattara` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-tr-tr-sedarus-preview` | `tr-TR` yerel ayarı ve `tr-TR-SedaRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-vi-vn-an-preview` | `vi-VN` yerel ayarı ve `vi-VN-An` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-zh-cn-huihuirus-preview` | `zh-CN` yerel ayarı ve `zh-CN-HuihuiRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-zh-cn-kangkang-apollo-preview` | `zh-CN` yerel ayarı ve `zh-CN-Kangkang-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-zh-cn-yaoyao-apollo-preview` | `zh-CN` yerel ayarı ve `zh-CN-Yaoyao-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-zh-hk-danny-apollo-preview` | `zh-HK` yerel ayarı ve `zh-HK-Danny-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-zh-hk-tracy-apollo-preview` | `zh-HK` yerel ayarı ve `zh-HK-Tracy-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-zh-hk-tracyrus-preview` | `zh-HK` yerel ayarı ve `zh-HK-TracyRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-zh-tw-hanhanrus-preview` | `zh-TW` yerel ayarı ve `zh-TW-HanHanRUS` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-zh-tw-yating-apollo-preview` | `zh-TW` yerel ayarı ve `zh-TW-Yating-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.3.0-amd64-zh-tw-zhiwei-apollo-preview` | `zh-TW` yerel ayarı ve `zh-TW-Zhiwei-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-de-de-heddarus-preview` | `de-DE` yerel ayarı ve `de-DE-Hedda` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-de-de-heddarus-preview` | `de-DE` yerel ayarı ve `de-DE-HeddaRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-de-de-stefan-apollo-preview` | `de-DE` yerel ayarı ve `de-DE-Stefan-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-au-catherine-preview` | `en-AU` yerel ayarı ve `en-AU-Catherine` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-au-hayleyrus-preview` | `en-AU` yerel ayarı ve `en-AU-HayleyRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-gb-george-apollo-preview` | `en-GB` yerel ayarı ve `en-GB-George-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-gb-hazelrus-preview` | `en-GB` yerel ayarı ve `en-GB-HazelRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-gb-susan-apollo-preview` | `en-GB` yerel ayarı ve `en-GB-Susan-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-in-heera-apollo-preview` | `en-IN` yerel ayarı ve `en-IN-Heera-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-in-priyarus-preview` | `en-IN` yerel ayarı ve `en-IN-PriyaRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-in-ravi-apollo-preview` | `en-IN` yerel ayarı ve `en-IN-Ravi-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-us-benjaminrus-preview` | `en-US` yerel ayarı ve `en-US-BenjaminRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-us-guy24krus-preview` | `en-US` yerel ayarı ve `en-US-Guy24kRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-us-jessa24krus-preview` | `en-US` yerel ayarı ve `en-US-Jessa24kRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-us-jessarus-preview` | `en-US` yerel ayarı ve `en-US-JessaRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-en-us-zirarus-preview` | `en-US` yerel ayarı ve `en-US-ZiraRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-es-es-helenarus-preview` | `es-ES` yerel ayarı ve `es-ES-HelenaRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-es-es-laura-apollo-preview` | `es-ES` yerel ayarı ve `es-ES-Laura-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-es-es-pablo-apollo-preview` | `es-ES` yerel ayarı ve `es-ES-Pablo-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-es-mx-hildarus-preview` | `es-MX` yerel ayarı ve `es-MX-HildaRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-es-mx-raul-apollo-preview` | `es-MX` yerel ayarı ve `es-MX-Raul-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-fr-ca-caroline-preview` | `fr-CA` yerel ayarı ve `fr-CA-Caroline` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-fr-ca-harmonierus-preview` | `fr-CA` yerel ayarı ve `fr-CA-HarmonieRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-fr-fr-hortenserus-preview` | `fr-FR` yerel ayarı ve `fr-FR-HortenseRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-fr-fr-julie-apollo-preview` | `fr-FR` yerel ayarı ve `fr-FR-Julie-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-fr-fr-paul-apollo-preview` | `fr-FR` yerel ayarı ve `fr-FR-Paul-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-it-it-cosimo-apollo-preview` | `it-IT` yerel ayarı ve `it-IT-Cosimo-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-it-it-luciarus-preview` | `it-IT` yerel ayarı ve `it-IT-LuciaRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-ja-jp-ayumi-apollo-preview` | `ja-JP` yerel ayarı ve `ja-JP-Ayumi-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-ja-jp-harukarus-preview` | `ja-JP` yerel ayarı ve `ja-JP-HarukaRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-ja-jp-ichiro-apollo-preview` | `ja-JP` yerel ayarı ve `ja-JP-Ichiro-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-ko-kr-heamirus-preview` | `ko-KR` yerel ayarı ve `ko-KR-HeamiRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-pt-br-daniel-apollo-preview` | `pt-BR` yerel ayarı ve `pt-BR-Daniel-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-pt-br-heloisarus-preview` | `pt-BR` yerel ayarı ve `pt-BR-HeloisaRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-zh-cn-huihuirus-preview` | `zh-CN` yerel ayarı ve `zh-CN-HuihuiRUS` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-zh-cn-kangkang-apollo-preview` | `zh-CN` yerel ayarı ve `zh-CN-Kangkang-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.2.0-amd64-zh-cn-yaoyao-apollo-preview` | `zh-CN` yerel ayarı ve `zh-CN-Yaoyao-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-de-de-hedda-preview` | `de-DE` yerel ayarı ve `de-DE-Hedda` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-de-de-heddarus-preview` | `de-DE` yerel ayarı ve `de-DE-Hedda` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-de-de-heddarus-preview` | `de-DE` yerel ayarı ve `de-DE-HeddaRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-de-de-stefan-apollo-preview` | `de-DE` yerel ayarı ve `de-DE-Stefan-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-au-catherine-preview` | `en-AU` yerel ayarı ve `en-AU-Catherine` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-au-hayleyrus-preview` | `en-AU` yerel ayarı ve `en-AU-HayleyRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-gb-george-apollo-preview` | `en-GB` yerel ayarı ve `en-GB-George-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-gb-hazelrus-preview` | `en-GB` yerel ayarı ve `en-GB-HazelRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-gb-susan-apollo-preview` | `en-GB` yerel ayarı ve `en-GB-Susan-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-in-heera-apollo-preview` | `en-IN` yerel ayarı ve `en-IN-Heera-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-in-priyarus-preview` | `en-IN` yerel ayarı ve `en-IN-PriyaRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-in-ravi-apollo-preview` | `en-IN` yerel ayarı ve `en-IN-Ravi-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-us-benjaminrus-preview` | `en-US` yerel ayarı ve `en-US-BenjaminRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-us-guy24krus-preview` | `en-US` yerel ayarı ve `en-US-Guy24kRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-us-jessa24krus-preview` | `en-US` yerel ayarı ve `en-US-Jessa24kRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-us-jessarus-preview` | `en-US` yerel ayarı ve `en-US-JessaRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-en-us-zirarus-preview` | `en-US` yerel ayarı ve `en-US-ZiraRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-es-es-helenarus-preview` | `es-ES` yerel ayarı ve `es-ES-HelenaRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-es-es-laura-apollo-preview` | `es-ES` yerel ayarı ve `es-ES-Laura-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-es-es-pablo-apollo-preview` | `es-ES` yerel ayarı ve `es-ES-Pablo-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-es-mx-hildarus-preview` | `es-MX` yerel ayarı ve `es-MX-HildaRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-es-mx-raul-apollo-preview` | `es-MX` yerel ayarı ve `es-MX-Raul-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-fr-ca-caroline-preview` | `fr-CA` yerel ayarı ve `fr-CA-Caroline` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-fr-ca-harmonierus-preview` | `fr-CA` yerel ayarı ve `fr-CA-HarmonieRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-fr-fr-hortenserus-preview` | `fr-FR` yerel ayarı ve `fr-FR-HortenseRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-fr-fr-julie-apollo-preview` | `fr-FR` yerel ayarı ve `fr-FR-Julie-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-fr-fr-paul-apollo-preview` | `fr-FR` yerel ayarı ve `fr-FR-Paul-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-it-it-cosimo-apollo-preview` | `it-IT` yerel ayarı ve `it-IT-Cosimo-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-it-it-luciarus-preview` | `it-IT` yerel ayarı ve `it-IT-LuciaRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-ja-jp-ayumi-apollo-preview` | `ja-JP` yerel ayarı ve `ja-JP-Ayumi-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-ja-jp-harukarus-preview` | `ja-JP` yerel ayarı ve `ja-JP-HarukaRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-ja-jp-ichiro-apollo-preview` | `ja-JP` yerel ayarı ve `ja-JP-Ichiro-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-ko-kr-heamirus-preview` | `ko-KR` yerel ayarı ve `ko-KR-HeamiRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-pt-br-daniel-apollo-preview` | `pt-BR` yerel ayarı ve `pt-BR-Daniel-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-pt-br-heloisarus-preview` | `pt-BR` yerel ayarı ve `pt-BR-HeloisaRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-zh-cn-huihuirus-preview` | `zh-CN` yerel ayarı ve `zh-CN-HuihuiRUS` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-zh-cn-kangkang-apollo-preview` | `zh-CN` yerel ayarı ve `zh-CN-Kangkang-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.1.0-amd64-zh-cn-yaoyao-apollo-preview` | `zh-CN` yerel ayarı ve `zh-CN-Yaoyao-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.0.0-amd64-en-us-benjaminrus-preview` | `en-US` yerel ayarı ve `en-US-BenjaminRUS` sesli kapsayıcı görüntüsü. |
+| `1.0.0-amd64-en-us-guy24krus-preview` | `en-US` yerel ayarı ve `en-US-Guy24kRUS` sesli kapsayıcı görüntüsü. |
+| `1.0.0-amd64-en-us-jessa24krus-preview` | `en-US` yerel ayarı ve `en-US-Jessa24kRUS` sesli kapsayıcı görüntüsü. |
+| `1.0.0-amd64-en-us-jessarus-preview` | `en-US` yerel ayarı ve `en-US-JessaRUS` sesli kapsayıcı görüntüsü. |
+| `1.0.0-amd64-en-us-zirarus-preview` | `en-US` yerel ayarı ve `en-US-ZiraRUS` sesli kapsayıcı görüntüsü. |
+| `1.0.0-amd64-zh-cn-huihuirus-preview` | `zh-CN` yerel ayarı ve `zh-CN-HuihuiRUS` sesli kapsayıcı görüntüsü. |
+| `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | `zh-CN` yerel ayarı ve `zh-CN-Kangkang-Apollo` sesli kapsayıcı görüntüsü. |
+| `1.0.0-amd64-zh-cn-yaoyao-apollo-preview` | `zh-CN` yerel ayarı ve `zh-CN-Yaoyao-Apollo` sesli kapsayıcı görüntüsü. |
 
 ## <a name="key-phrase-extraction"></a>Anahtar İfade Ayıklama
 

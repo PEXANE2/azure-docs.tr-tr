@@ -1,19 +1,14 @@
 ---
-title: İş yüklerini Azure 'a yedeklemek için Azure Backup Sunucusu kullanma
+title: İş yüklerini yedeklemek için Azure Backup Sunucusu kullanma
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini korumak ve yedeklemek için ortamınızı nasıl hazırlayacağınızı öğrenin.
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: dacurwin
-ms.openlocfilehash: 5b1e417ecd41f93d7919b67ebdd3faf32521d8a4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7379992eeb441372a9140621f9d90b337ad0d2e2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012921"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172984"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -335,8 +330,6 @@ MABS 'yi yükseltmek için aşağıdaki adımları kullanın:
    > [!NOTE]
    >
    > SQL örneğiniz yükseltilirken çıkmayın, çıkılıyor SQL Raporlama örneğini kaldıracak ve bu nedenle MABS 'i yeniden yükseltme girişimi başarısız olur.
-
-
 
    > [!IMPORTANT]
    >

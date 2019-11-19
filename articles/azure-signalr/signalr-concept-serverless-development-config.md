@@ -1,17 +1,17 @@
 ---
-title: Azure Işlevleri SignalR hizmeti uygulamaları geliştirin ve yapılandırın
+title: Azure Işlevleri uygulamasını geliştirme & yapılandırma uygulaması-Azure SignalR
 description: Azure Işlevleri ve Azure SignalR hizmeti kullanılarak sunucusuz gerçek zamanlı uygulamalar geliştirmeye ve yapılandırmaya ilişkin ayrıntılar
 author: anthonychu
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: be77704f562a1e05485e6f3704dff265635b1dc2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 68ada90699fe9a9db6faeb32a04e8eb02c176944
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882299"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157659"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR hizmeti ile Azure Işlevleri geliştirme ve yapılandırma
 
@@ -38,7 +38,7 @@ Azure Işlevleri ve Azure SignalR hizmeti ile oluşturulan sunucusuz gerçek zam
 
 İstemci uygulaması, Azure SignalR hizmetine bağlanmak için geçerli bir erişim belirteci gerektirir. Erişim belirteci, belirli bir kullanıcı KIMLIĞI için anonim veya kimliği doğrulanmış olabilir. Sunucusuz SignalR hizmeti uygulamaları, bir belirteç ve SignalR hizmeti uç noktası URL 'SI gibi diğer bağlantı bilgilerini almak için "Negotiate" adlı bir HTTP uç noktası gerektirir.
 
-Bağlantı bilgileri nesnesini oluşturmak için HTTP ile tetiklenen bir Azure Işlevi ve *Signalrconnectionınfo* giriş bağlaması kullanın. İşlevin ' de `/negotiate`sonlanan bir http yolu olması gerekir.
+Bağlantı bilgileri nesnesini oluşturmak için HTTP ile tetiklenen bir Azure Işlevi ve *Signalrconnectionınfo* giriş bağlaması kullanın. İşlevin `/negotiate`biten bir HTTP yolu olması gerekir.
 
 Negotiate işlevinin nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [ *Signalrconnectionınfo* giriş bağlama başvurusu](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding).
 
@@ -67,7 +67,7 @@ SignalR hizmetine bağlanmak için, bir istemcinin aşağıdaki adımlardan olu�
 1. Geçerli bağlantı bilgilerini almak için yukarıda ele alınan *Negotiate* HTTP uç noktasına bir istek yapın
 1. Hizmet uç noktası URL 'sini ve *Negotiate* uç noktasından alınan erişim belirtecini kullanarak SignalR hizmetine bağlanma
 
-SignalR istemci SDK 'Ları, anlaşma anlaşmasını gerçekleştirmek için gereken mantığı zaten içeriyor. Negotiate uç noktasının URL 'sini, `negotiate` segmenti, SDK 'nın `HubConnectionBuilder`' ye geçirin. JavaScript 'te bir örnek aşağıda verilmiştir:
+SignalR istemci SDK 'Ları, anlaşma anlaşmasını gerçekleştirmek için gereken mantığı zaten içeriyor. Anlaşma uç noktasının URL 'sini, `negotiate` segmentini, SDK 'nın `HubConnectionBuilder`olarak geçirin. JavaScript 'te bir örnek aşağıda verilmiştir:
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -75,7 +75,7 @@ const connection = new signalR.HubConnectionBuilder()
   .build()
 ```
 
-Kural gereği, SDK otomatik olarak URL `/negotiate` 'ye ekler ve anlaşmayı başlatmak için onu kullanır.
+Kural gereği, SDK otomatik olarak URL 'ye `/negotiate` ekler ve anlaşmayı başlatmak için onu kullanır.
 
 > [!NOTE]
 > JavaScript/TypeScript SDK bir tarayıcıda kullanıyorsanız, İşlev Uygulaması için [çıkış noktaları arası kaynak paylaşımı 'nı (CORS) etkinleştirmeniz](#enabling-cors) gerekir.
@@ -102,10 +102,10 @@ JavaScript/TypeScript istemcisi, bağlantı anlaşmasını başlatmak için Nego
 
 #### <a name="localhost"></a>E
 
-Yerel bilgisayarınızda işlev uygulamasını çalıştırırken CORS 'yi etkinleştirmek için `Host` *yerel. Settings. JSON* öğesine bir bölüm ekleyebilirsiniz. `Host` Bölümünde iki özellik ekleyin:
+Yerel bilgisayarınızda Işlev uygulamasını çalıştırırken CORS 'yi etkinleştirmek için *yerel. Settings. JSON* öğesine bir `Host` bölümü ekleyebilirsiniz. `Host` bölümünde iki özellik ekleyin:
 
 * `CORS`-istemci uygulamanın kaynağı olan temel URL 'YI girin
-* `CORSCredentials`-Bunu `true` "withcredentials" isteklerine izin verecek şekilde ayarlayın
+* `CORSCredentials`, "withCredentials" isteklerine izin vermek için bunu `true` ayarla
 
 Örnek:
 
@@ -167,9 +167,9 @@ Azure Işlevleri, Facebook, Twitter, Microsoft hesabı, Google ve Azure Active D
 
 Azure portal, Işlev uygulamanızın *platform özellikleri* sekmesinde *kimlik doğrulama/yetkilendirme* ayarları penceresini açın. Seçtiğiniz kimlik sağlayıcısını kullanarak kimlik doğrulaması yapılandırmak için [App Service kimlik doğrulama](../app-service/overview-authentication-authorization.md) belgelerini izleyin.
 
-Yapılandırıldıktan sonra kimliği doğrulanmış http istekleri, sırasıyla `x-ms-client-principal-name` kimliği `x-ms-client-principal-id` doğrulanmış kimliğin Kullanıcı adı ve Kullanıcı kimliği bilgilerini içerir.
+Yapılandırıldıktan sonra kimliği doğrulanmış HTTP istekleri, sırasıyla kimliği doğrulanmış kimliğin Kullanıcı adını ve kullanıcı KIMLIĞINI içeren `x-ms-client-principal-name` ve `x-ms-client-principal-id` üst bilgilerini içerir.
 
-Kimliği doğrulanmış bağlantılar oluşturmak için, *Signalrconnectionınfo* bağlama yapılandırmanızda bu üst bilgileri kullanabilirsiniz. `x-ms-client-principal-id` Üstbilgiyi kullanan örnek C# bir anlaşma işlevi aşağıda verilmiştir.
+Kimliği doğrulanmış bağlantılar oluşturmak için, *Signalrconnectionınfo* bağlama yapılandırmanızda bu üst bilgileri kullanabilirsiniz. `x-ms-client-principal-id` üst bilgisini kullanan C# örnek bir Negotiate işlevi aşağıda verilmiştir.
 
 ```csharp
 [FunctionName("negotiate")]
@@ -184,7 +184,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-Daha sonra, bir SignalR iletisinin `UserId` özelliğini ayarlayarak bu kullanıcıya iletiler gönderebilirsiniz.
+Daha sonra bir SignalR iletisinin `UserId` özelliğini ayarlayarak bu kullanıcıya iletiler gönderebilirsiniz.
 
 ```csharp
 [FunctionName("SendMessage")]

@@ -5,20 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7f840a99ab76548c16389955cf49791036cc63a2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123501"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158369"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Azure geçişi ile fiziksel sunucuları değerlendirme: Sunucu değerlendirmesi
-
-> [!NOTE]
-> Azure geçişi portalında bu özelliği henüz görmüyorsanız, ' ı kapatın. Sonraki hafta içinde görünür.
- 
 
 Bu makalede, şirket içi fiziksel sunucuların Azure geçişi: Sunucu değerlendirmesi Aracı kullanılarak nasıl değerlendirireceğiniz gösterilmektedir.
 
@@ -112,7 +108,8 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
   **Algoritma** | **Karma değeri**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 5b98cf68dad495696c789bdad8f0d91b
+  SHA256 | c2364887738875a31634eb0cf5defd0398f813d41069875976ca076297071e6f
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Azure geçişi yükleyici betiğini çalıştırma
 
@@ -135,7 +132,7 @@ Betiği aşağıdaki gibi çalıştırın:
     ```
     PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-Betik, başarıyla tamamlandığında gereç Web uygulamasını başlatacaktır. 
+Betik, başarıyla tamamlandığında gereç Web uygulamasını başlatacaktır.
 
 Herhangi bir sorun olması durumunda, sorun giderme için C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki komut dosyası günlüklerine erişebilirsiniz.
 
@@ -166,7 +163,7 @@ Gereci ilk kez ayarlayın.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
 1. **Oturum aç**' a tıklayın. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
-2. Yeni sekmede, Azure kimlik bilgilerinizi kullanarak oturum açın. 
+2. Yeni sekmede, Azure kimlik bilgilerinizi kullanarak oturum açın.
     - Kullanıcı adınızla ve parolanızla oturum açın.
     - PIN ile oturum açma desteklenmez.
 3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün.
@@ -188,7 +185,7 @@ Her biri Windows ve Linux sunucuları için bir kimlik bilgileri kümesi ekleyeb
     - Bir sunucuyu kaldırmak için > **Sil**' i seçin.
 4. Doğrulamadan sonra, bulma işlemini başlatmak için **Kaydet ve bulmayı Başlat** ' a tıklayın.
 
-Bu, bulmayı başlatır. Sunucu başına, bulunan sunucunun meta verilerinde Azure portal görünmesi için 1,5 dakika sürer. 
+Bu, bulmayı başlatır. Sunucu başına, bulunan sunucunun meta verilerinde Azure portal görünmesi için 1,5 dakika sürer.
 
 ### <a name="verify-servers-in-the-portal"></a>Portalda sunucuları doğrulama
 

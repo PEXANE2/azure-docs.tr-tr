@@ -4,27 +4,25 @@ description: Makine bağımlılıklarını aracısız bir şekilde kullanarak gr
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720257"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158425"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Değerlendirme için aracısız bağımlılık görselleştirmesini ayarlama
-
-> [!NOTE]
-> Azure geçişi portalında bu özelliği henüz görmüyorsanız, ' ı kapatın. Sonraki hafta içinde görünür.
 
 Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlılık eşlemesinin nasıl ayarlanacağı açıklanır. Bu özellik şu anda Azure geçiş gereci kullanılarak bulunan VMware makineleri için önizleme aşamasında mevcuttur. 
 
 > [!IMPORTANT]
 > Aracısız bağımlılık görselleştirmesi Şu anda Azure geçiş gereci kullanılarak bulunan Azure VMware VM 'Leri için önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="about-dependency-mapping"></a>Bağımlılık eşleme hakkında 
+## <a name="about-dependency-mapping"></a>Bağımlılık eşleme hakkında
 
 Bağımlılık eşleme, değerlendirmek ve geçirmek istediğiniz makineler arasında bağımlılıkları görselleştirmenize yardımcı olur. Daha yüksek düzeyde güvenle makineler değerlendirmek istediğinizde genellikle bağımlılık eşlemesini kullanırsınız.
 
@@ -46,7 +44,7 @@ Aracısız bağımlılık görselleştirmesi, makinelere herhangi bir aracı yü
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
 - Aracısız bağımlılık görselleştirmesi Şu anda yalnızca VMware VM 'Leri için kullanılabilir.
-- Artık, bağımlılık analizi görünümünde bir gruba sunucu ekleyemez veya gruptan sunucu kaldıramazsınız. 
+- Artık, bağımlılık analizi görünümünde bir gruba sunucu ekleyemez veya gruptan sunucu kaldıramazsınız.
 - Bir sunucu grubu için bağımlılık eşlemesi Şu anda kullanılamıyor.
 - Şu anda, bağımlılık verileri tablolu biçimde indirilemez.
 
@@ -60,12 +58,12 @@ Aracısız bağımlılık görselleştirmesi, makinelere herhangi bir aracı yü
 
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
- 
+
 Aracısız bağımlılık görselleştirmesi için desteklenen işletim sistemleri aşağıdaki gibidir.
 
 **Tür** | **Desteklenen işletim sistemleri**
---- | --- 
-**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64-bit) 
+--- | ---
+**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64-bit)
 **Linux** | Red Hat Enterprise Linux 7, 6, 5 <br/> Ubuntu Linux 14,04, 16,04 <br/> Desek6, 8 <br/> Oracle Linux 6, 7 <br/> CentOS 5, 6, 7  
 
 
@@ -84,10 +82,10 @@ Hesabı aşağıdaki gibi ekleyin:
 
 1. Gereç Yönetimi uygulamasını açın. **VCenter ayrıntıları sağla** paneline gidin.
 2. **VM 'lerde uygulama ve bağımlılıkları bul** bölümünde **kimlik bilgileri ekle** ' ye tıklayın.
-3. **İşletim sistemini**seçin. 
+3. **İşletim sistemini**seçin.
 4. Hesap için bir kolay ad belirtin.
 5. **Kullanıcı adı** ve **parola** belirtin
-6. **Kaydet** düğmesine tıklayın.
+6. **Save (Kaydet)** düğmesine tıklayın.
 7. **Kaydet ve bulmayı Başlat**' a tıklayın.
 
     ![VM Kullanıcı hesabı ekle](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -113,8 +111,8 @@ Bağımlılık bulmayı başlattıktan sonra 6 saat bağımlılıklarını görs
 2. Bağımlılık eşlemesini görüntülemek istediğiniz makineyi arayın.
 3. **Bağımlılıklar** sütununda **bağımlılıkları görüntüle** ' ye tıklayın.
 4. **Zaman süresi** açılan listesini kullanarak Haritayı görüntülemek istediğiniz zaman aralığını değiştirin.
-5. Seçili makinede bağımlılığı olan makineleri listelemek için **istemci** grubunu genişletin. 
-6. Seçili makineden bağımlılığı olan makineleri listelemek için **bağlantı noktası** grubunu genişletin. 
+5. Seçili makinede bağımlılığı olan makineleri listelemek için **istemci** grubunu genişletin.
+6. Seçili makineden bağımlılığı olan makineleri listelemek için **bağlantı noktası** grubunu genişletin.
 7. Bağımlı makinelerin herhangi birinin harita görünümüne gitmek için makine adına tıklayın ve ardından **sunucu haritasını yükle** ' ye tıklayın.
 
     ![Sunucu bağlantı noktası grubunu ve yükleme sunucusu haritasını Genişlet](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)

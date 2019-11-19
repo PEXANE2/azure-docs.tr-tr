@@ -1,21 +1,15 @@
 ---
-title: "Azure Backup: REST API kullanarak Azure VM 'lerini yedekleme"
+title: REST API kullanarak Azure VM 'lerini yedekleme
 description: Bu makalede, REST API kullanarak Azure VM yedeklemesi 'nin yedekleme işlemlerini yapılandırma, başlatma ve yönetme hakkında bilgi edinin.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Azure VM yedeklemesi; Azure VM geri yükleme;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 6f64f45aca6948665c088279002d3d8054ef8d80
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c929f820862f5d041b4a63a1ca9c083abf1a1e4c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929166"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173454"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak bir Azure VM 'yi yedekleme
 
@@ -41,7 +35,7 @@ POST URI 'sinin `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}``{f
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>Yanıtlar
+#### <a name="responses"></a>Responses
 
 ' Refresh ' işlemi [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
@@ -164,7 +158,7 @@ Yanıt, tüm korumasız Azure VM 'lerinin listesini içerir ve her `{value}`, Az
 Örnekte yukarıdaki değerler şu şekilde çeviri yapar:
 
 - containerName = "ıaasvmcontainer; iaasvmcontainerv2; testRG; testVM"
-- Korunabilir bir Dıtemname = "VM; iaasvmcontainerv2; testRG; testVM"
+- protectedItemName = "vm;iaasvmcontainerv2;testRG;testVM"
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Azure VM için korumayı etkinleştirme
 
@@ -208,7 +202,7 @@ Aşağıdaki istek gövdesi, korumalı bir öğe oluşturmak için gereken özel
 
 `{sourceResourceId}` [korunabilir öğelerin listesinin yanıtından](#example-responses-1)yukarıda bahsedilen `{virtualMachineId}`.
 
-#### <a name="responses"></a>Yanıtlar
+#### <a name="responses"></a>Responses
 
 Korumalı bir öğenin oluşturulması [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
@@ -319,7 +313,7 @@ Aşağıdaki istek gövdesi, korumalı bir öğe için bir yedeklemeyi tetikleme
 }
 ```
 
-### <a name="responses"></a>Yanıtlar
+### <a name="responses"></a>Responses
 
 İsteğe bağlı yedekleme tetiklenmesi [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 

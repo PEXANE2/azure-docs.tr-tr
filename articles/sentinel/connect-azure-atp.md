@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 764fb4c22bcce5fc5b045e68dc512243e783020e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fb8f4de3b3b24d1eba372600c817627771ef0ef6
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261836"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158880"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Verileri Azure Gelişmiş tehdit koruması (ATP) ile bağlama
 
@@ -32,7 +32,7 @@ ms.locfileid: "71261836"
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Genel yönetici veya Güvenlik Yöneticisi izinlerine sahip Kullanıcı
-- Azure ATP 'nin bir önizleme müşterisi olmanız gerekir
+- Azure ATP 'nin bir önizleme müşterisi olmanız ve Azure ATP ile Microsoft Cloud App Security arasında tümleştirmeyi etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [Azure gelişmiş koruma tümleştirmesi](https://docs.microsoft.com/cloud-app-security/aatp-integration).
 
 ## <a name="connect-to-azure-atp"></a>Azure ATP 'ye bağlanma
 
