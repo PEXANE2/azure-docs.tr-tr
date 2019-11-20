@@ -974,21 +974,19 @@
       items:
         - name: Verileri bir yedeklemeden geri yükleme
           href: how-to-backup-and-restore.md
-    - name: Günlüğe kaydetme
+    - name: İzleme
       items:
-        - name: Tanılama günlüğüne kaydetme
-          href: logging.md
+        - name: İzleyici Cosmos DB
+          href: monitor-cosmos-db.md
+        - name: Cosmos için Azure İzleyici (önizleme)
+          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
+        - name: Cosmos DB hesabından ölçümleri görüntüleme
+          href: use-metrics.md
         - name: Logic Apps ile uygulama günlüğü kaydı
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: Ölçümler ile izleme
-      items:
-        - name: Cosmos DB hesabından ölçümleri görüntüleme
-          href: use-metrics.md
-        - name: Azure İzleyici’den ölçümleri görüntüleme
-          href: cosmos-db-azure-monitor-metrics.md
-        - name: SLA’ları izleme
-          href: monitor-accounts.md
+        - name: İzleme verileri başvurusu
+          href: monitor-cosmos-db-reference.md
     - name: Yerel olarak geliştirme
       items:
         - name: Öykünücüyü kullanma

@@ -17,8 +17,8 @@
           href: quickstart-dotnet-core-app.md
         - name: .NET Framework
           href: quickstart-dotnet-app.md
-        - name: .NET Core’da Azure İşlevi
-          href: quickstart-azure-function-csharp.md
+        - name: .NET Core’da Azure İşlevleri
+          href: quickstart-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-java-spring-app.md
     - name: Özellik yönetimi
@@ -37,6 +37,8 @@
       href: enable-dynamic-configuration-dotnet-core.md
     - name: .NET Framework'te dinamik yapılandırmayı etkinleştirme
       href: enable-dynamic-configuration-dotnet.md
+    - name: Azure İşlevleri’nde dinamik yapılandırmayı etkinleştirme
+      href: enable-dynamic-configuration-azure-functions-csharp.md
     - name: .NET Core uygulamasında özellik bayraklarını kullanma
       href: use-feature-flags-dotnet-core.md
     - name: Spring Boot uygulamasında özellik bayraklarını kullanma
@@ -67,7 +69,7 @@
           href: concept-disaster-recovery.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Azure Yönetilen Hizmet Kimliği ile tümleştirme
+    - name: Azure Yönetilen Kimliği ile tümleştirme
       href: howto-integrate-azure-managed-service-identity.md
     - name: Yapılandırma verilerini içeri veya dışarı aktarma
       href: howto-import-export-data.md

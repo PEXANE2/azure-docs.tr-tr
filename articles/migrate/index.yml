@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Geçişi belgeleri
-summary: Azure bulutuna geçmek için Azure Geçişi'ni kullanın. Azure Geçişi şirket içi iş yüklerinin bulunması, değerlendirilmesi ve Azure'a geçişi için merkezi bir konum sağlar. Bu merkezi konum hem Azure Geçişi araçlarını hem de bağımsız yazılım satıcılarının (ISV) tümleşik araçlarını sağlar.
+summary: Azure Geçişi şirket içi iş yüklerinin bulunması, değerlendirilmesi ve Azure'a geçişi için araçlara yönelik merkezi bir konum sağlar.
 metadata:
   title: Azure Geçişi belgeleri
-  description: Azure bulutuna geçmek için Azure Geçişi'ni kullanın. Azure Geçişi şirket içi iş yüklerinin bulunması, değerlendirilmesi ve Azure'a geçişi için merkezi bir konum sağlar. Bu merkezi konum hem Azure Geçişi araçlarını hem de bağımsız yazılım satıcılarının (ISV) tümleşik araçlarını sağlar.
+  description: Şirket içi iş yüklerini Azure’a geçirmek için Azure Geçişi’ni kullanın.
   ms.service: azure-migrate
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 494bb2f7ec6076bbc7b3b891cd0cb525ae53c5d1
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: e49bfdefe08b3a8f4598e809fd44b57f3f93de67
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001143"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74185843"
 landingContent:
 - title: Azure Geçişi Hakkında
   linkLists:
@@ -35,6 +35,10 @@ landingContent:
       url: ./tutorial-prepare-vmware.md
     - text: Sunucu Değerlendirmesiyle Hyper-V VM'lerini Değerlendirme
       url: ./tutorial-prepare-hyper-v.md
+    - text: Sunucu Değerlendirmesiyle fiziksel sunucuları değerlendirme
+      url: ./tutorial-prepare-physical.md
+    - text: İçeri aktarılan verileri kullanarak sunucuları değerlendirme
+      url: tutorial-assess-import.md
     - text: VMware VM'leri Sunucu Geçişi ile geçirme
       url: ./server-migrate-overview.md
     - text: Hyper-V VM'leri Sunucu Geçişi ile geçirme
@@ -52,13 +56,19 @@ landingContent:
     - text: Azure Geçişi destek matrisini gözden geçirin
       url: migrate-support-matrix.md
     - text: VMware destek matrisini gözden geçirin
-      url: migrate-support-matrix-vmware.md
+      url: ./migrate-support-matrix-vmware.md
     - text: Hyper-V destek matrisini gözden geçirin
-      url: migrate-support-matrix-hyper-v.md
+      url: ./migrate-support-matrix-hyper-v.md
+    - text: Fiziksel sunucu destek matrisini gözden geçirin
+      url: ./migrate-support-matrix-physical.md
 - title: Yönetme
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Değerlendirme araçları ekleme
+      url: ./how-to-assess.md
+    - text: Uygulama envanterini keşfetme
+      url: ./how-to-discover-applications.md
     - text: Geçiş araçları ekleme
       url: ./how-to-migrate.md
     - text: VMware değerlendirmesini ölçeklendirme
@@ -71,9 +81,9 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: VMware aracı tabanlı geçiş mimarisi
+    - text: VMware/fiziksel aracı tabanlı geçiş hakkında bilgi edinin
       url: ./agent-based-migration-architecture.md
-    - text: Hyper-V geçiş mimarisi
+    - text: Hyper-V geçişi hakkında bilgi edinin
       url: ./hyper-v-migration-architecture.md
     - text: Değerlendirmeler hakkında bilgi edinin
       url: ./concepts-assessment-calculation.md

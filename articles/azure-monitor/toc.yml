@@ -798,12 +798,14 @@
               items:
                 - name: İzlemeyi etkinleştirmeye genel bakış
                   href: insights/container-insights-onboard.md
-                - name: Yeni küme için etkinleştirme
+                - name: Yeni AKS kümesi için etkinleştirme
                   href: insights/container-insights-enable-new-cluster.md
-                - name: Mevcut küme için etkinleştirme
+                - name: Mevcut AKS kümesi için etkinleştirme
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: Karma küme için etkinleştirme
                   href: insights/container-insights-hybrid-setup.md
+                - name: Azure Red Hat OpenShift için etkinleştirme
+                  href: insights/container-insights-azure-redhat-setup.md
                 - name: Bölge eşlemeleri
                   href: insights/container-insights-region-mapping.md
             - name: Performansı izleme

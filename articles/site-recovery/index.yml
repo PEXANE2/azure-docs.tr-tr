@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Site Recovery belgeleri
-summary: Şirket içi makineleri ve iş yükleri için Azure'a ve Azure VM'leri için ikincil Azure bölgesine olağanüstü durum kurtarma işleminde Azure Site Recovery'yi kullanın. Azure'a yerinde çoğaltma özelliğiyle, kesintiler oluştuğunda yük devretmeyi düzenleyebilir ve Azure'da iş yükleriyle uygulamalarına erişmeye devam edebilirsiniz. Birincil konum tekrar kullanılabilir duruma geldiğinde gerektiği gibi yeniden çalıştırabilirsiniz.
+summary: Şirket içi iş yüklerinin ve Azure VM’lerinin olağanüstü durum kurtarması için Azure Site Recovery kullanın.
 metadata:
   title: Azure Site Recovery belgeleri
-  description: Şirket içi makineleri ve iş yükleri için Azure'a ve Azure VM'leri için ikincil Azure bölgesine olağanüstü durum kurtarma işleminde Azure Site Recovery'yi kullanın. Azure'a yerinde çoğaltma özelliğiyle, kesintiler oluştuğunda yük devretmeyi düzenleyebilir ve Azure'da iş yükleriyle uygulamalarına erişmeye devam edebilirsiniz. Birincil konum tekrar kullanılabilir duruma geldiğinde gerektiği gibi yeniden çalıştırabilirsiniz.
+  description: Şirket içi iş yükleri ve Azure VM’leri için Azure’da olağanüstü durum kurtarmayı ayarlayın.
   ms.service: site-recovery
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 0d4405e447c7624e4d6cc714209ffc86451a74bd
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: ccbc4c92a6d0db9d5baf8a226ba79405a2b824ff
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001098"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74186593"
 landingContent:
 - title: Site Recovery Hakkında
   linkLists:

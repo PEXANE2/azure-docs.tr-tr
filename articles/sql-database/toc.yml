@@ -278,6 +278,8 @@
                   href: sql-database-xevent-code-ring-buffer.md
         - name: Hiper ölçek performans tanılama
           href: sql-database-hyperscale-performance-diagnostics.md
+        - name: Yoğun elastik havuzlardaki kaynak yönetimi
+          href: sql-database-elastic-pool-resource-management.md
     - name: Ölçeklenebilirlik
       items:
         - name: Ölçeklenebilirlik belgeleri
