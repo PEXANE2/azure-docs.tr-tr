@@ -1,10 +1,10 @@
 ---
-title: PaaS kaynaklarına - Azure CLI ağ erişimini kısıtlama | Microsoft Docs
-description: Bu makalede, sınırlandırmak ve Azure CLI kullanarak sanal ağ hizmet uç noktaları ile Azure depolama ve Azure SQL veritabanı gibi Azure kaynaklarına ağ erişimini kısıtlama hakkında bilgi edinin.
+title: PaaS kaynaklarına ağ erişimini kısıtlama-Azure CLı
+description: Bu makalede, Azure depolama ve Azure SQL veritabanı gibi Azure kaynaklarına ağ erişimini, Azure CLı kullanan sanal ağ hizmet uç noktaları ile sınırlama ve kısıtlama hakkında bilgi edineceksiniz.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: e52829723b41f9274251ebe7432aa659251c0da4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2dcc714bc9052dd51f114e24f0b9bd74b87480c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695107"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186396"
 ---
-# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Azure CLI kullanarak sanal ağ hizmet uç noktaları ile PaaS kaynaklarına ağ erişimini kısıtlama
+# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Azure CLı kullanarak sanal ağ hizmet uç noktaları ile PaaS kaynaklarına ağ erişimini kısıtlama
 
 Sanal ağ hizmet uç noktaları bazı Azure hizmet uç noktalarına ağ erişimini bir sanal ağ alt ağı ile sınırlamanıza olanak tanır. Ayrıca, kaynaklara internet erişimini de kaldırabilirsiniz. Hizmet uç noktaları, sanal ağınızdan desteklenen Azure hizmetlerine doğrudan bağlantı sağlar, böylece Azure hizmetlerine erişmek için sanal ağınızın özel adres alanını kullanabilirsiniz. Hizmet uç noktaları aracılığıyla Azure kaynaklarına gönderilen trafik her zaman Microsoft Azure omurga ağı üzerinde kalır. Bu makalede şunları öğreneceksiniz:
 
@@ -43,7 +43,7 @@ CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç i�
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-Bir sanal ağ oluşturmadan önce sanal ağ ve bu makalede oluşturulan tüm kaynakları için bir kaynak grubu oluşturmanız gerekir. [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
+Bir sanal ağ oluşturmadan önce, sanal ağ ve bu makalede oluşturulan tüm diğer kaynaklar için bir kaynak grubu oluşturmanız gerekir. [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
 
 ```azurecli-interactive
 az group create \
@@ -51,7 +51,7 @@ az group create \
   --location eastus
 ```
 
-Bir alt ağ ile sanal ağ oluşturma [az ağ sanal ağ oluşturma](/cli/azure/network/vnet).
+[Az Network VNET Create](/cli/azure/network/vnet)komutuyla bir alt ağa sahip bir sanal ağ oluşturun.
 
 ```azurecli-interactive
 az network vnet create \
@@ -64,7 +64,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>Hizmet uç noktasını girin 
 
-Hizmet uç noktaları destekleyen hizmetler için hizmet uç noktaları etkinleştirebilirsiniz. Hizmet uç noktası etkin hizmetler kullanılabilir bir Azure konumu görünümünde [az network vnet liste-endpoint-services](/cli/azure/network/vnet). Aşağıdaki örnek, hizmet uç noktası etkin kullanılabilir hizmetlerin listesini döndürür *eastus* bölge. Diğer Azure Hizmetleri etkin hizmet bitiş noktası oldukça döndürülen hizmetlerin listesi zamanla büyüyecektir.
+Hizmet uç noktalarını yalnızca hizmet uç noktalarını destekleyen hizmetler için etkinleştirebilirsiniz. [Az Network VNET List-Endpoint-Services](/cli/azure/network/vnet)Ile bir Azure konumunda bulunan hizmet uç noktası etkin hizmetlerini görüntüleyin. Aşağıdaki örnek, *eastus* bölgesinde kullanılabilir olan hizmet uç noktası etkin hizmetleri listesini döndürür. Daha fazla Azure hizmeti uç noktası etkinleştirildiğinden, döndürülen hizmetlerin listesi zaman içinde büyüyerek artar.
 
 ```azurecli-interactive
 az network vnet list-endpoint-services \
@@ -72,7 +72,7 @@ az network vnet list-endpoint-services \
   --out table
 ``` 
 
-Ek bir alt ağ ile sanal ağ oluşturma [az ağ sanal ağ alt ağı oluşturma](/cli/azure/network/vnet/subnet). Bu örnekte, bir hizmet uç noktası için *Microsoft.Storage* alt ağ için oluşturulur: 
+[Az Network VNET subnet Create](/cli/azure/network/vnet/subnet)komutuyla sanal ağda ek bir alt ağ oluşturun. Bu örnekte, alt ağ için *Microsoft. Storage* için bir hizmet uç noktası oluşturulur: 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -85,7 +85,7 @@ az network vnet subnet create \
 
 ## <a name="restrict-network-access-for-a-subnet"></a>Bir kaynak için ağ erişimini kısıtlama
 
-Bir ağ güvenlik grubu oluşturun [az ağ nsg oluşturma](/cli/azure/network/nsg). Aşağıdaki örnekte adlı bir ağ güvenlik grubu oluşturur *myNsgPrivate*.
+[Az Network NSG Create](/cli/azure/network/nsg)komutuyla bir ağ güvenlik grubu oluşturun. Aşağıdaki örnek, *Mynsgprivate*adlı bir ağ güvenlik grubu oluşturur.
 
 ```azurecli-interactive
 az network nsg create \
@@ -93,7 +93,7 @@ az network nsg create \
   --name myNsgPrivate
 ```
 
-Ağ güvenlik grubuyla ilişkilendirdiğiniz *özel* alt ağ ile [az ağ sanal ağ alt ağı güncelleştirme](/cli/azure/network/vnet/subnet). Aşağıdaki örnek ilişkilendirir *myNsgPrivate* ağ güvenlik grubunu *özel* alt ağı:
+Ağ güvenlik grubunu, [az Network VNET subnet Update](/cli/azure/network/vnet/subnet)ile *özel* alt ağ ile ilişkilendirin. Aşağıdaki örnek, *Mynsgprivate* ağ güvenlik grubunu *özel* alt ağla ilişkilendirir:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -103,7 +103,7 @@ az network vnet subnet update \
   --network-security-group myNsgPrivate
 ```
 
-Güvenlik kuralları ile oluşturma [az ağ nsg kuralı oluşturmak](/cli/azure/network/nsg/rule). Aşağıdaki kural, Azure depolama hizmetine atanmış genel IP adreslerine giden erişim sağlar: 
+[Az Network NSG Rule Create](/cli/azure/network/nsg/rule)ile güvenlik kuralları oluşturun. Aşağıdaki kural, Azure depolama hizmetine atanan genel IP adreslerine giden erişime izin verir: 
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -120,7 +120,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-Her ağ güvenlik grubu birkaç içeren [varsayılan güvenlik kuralları](security-overview.md#default-security-rules). Aşağıdaki kural, tüm genel IP adreslerine giden erişime izin veren bir varsayılan güvenlik kuralı geçersiz kılar. `destination-address-prefix "Internet"` Seçeneği tüm genel IP adreslerine giden erişime izin vermez. Önceki kural, Azure Depolama'nın genel IP adreslerine erişim sağlar, daha yüksek önceliği nedeniyle bu kuralı geçersiz kılar.
+Her ağ güvenlik grubu, çeşitli [varsayılan güvenlik kuralları](security-overview.md#default-security-rules)içerir. Aşağıdaki kural, tüm genel IP adreslerine giden erişime izin veren bir varsayılan güvenlik kuralını geçersiz kılar. `destination-address-prefix "Internet"` seçeneği, tüm genel IP adreslerine giden erişimi reddeder. Önceki kural, Azure depolama 'nın genel IP adreslerine erişim sağlayan daha yüksek öncelikli bir nedenle bu kuralı geçersiz kılar.
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -137,7 +137,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-Aşağıdaki kural SSH trafiğine izin verir. her yerden alt ağa gelen. Kural, internetten gelen tüm trafiği engelleyen bir varsayılan güvenlik kuralını geçersiz kılar. SSH, böylece daha sonraki bir adımda bağlanabilirliği test edilebilir alt ağa izin verilir.
+Aşağıdaki kural, alt ağa gelen SSH trafiğinin her yerden çalışmasına izin verir. Kural, internetten gelen tüm trafiği engelleyen bir varsayılan güvenlik kuralını geçersiz kılar. Daha sonraki bir adımda bağlantının test edileceği şekilde, SSH alt ağa izin verilir.
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -156,11 +156,11 @@ az network nsg rule create \
 
 ## <a name="restrict-network-access-to-a-resource"></a>Bir kaynağa ağ erişimini kısıtlama
 
-Hizmet uç noktaları için etkinleştirilmiş Azure hizmetleri aracılığıyla oluşturulan kaynaklara ağ erişimini kısıtlamak için gereken adımlar, hizmetler arasında farklılık gösterir. Bir hizmete yönelik belirli adımlar için ilgili hizmetin belgelerine bakın. Bu makalenin geri kalanında örnek olarak bir Azure depolama hesabı için ağ erişimini kısıtlamaya yönelik adımlar içerir.
+Hizmet uç noktaları için etkinleştirilmiş Azure hizmetleri aracılığıyla oluşturulan kaynaklara ağ erişimini kısıtlamak için gereken adımlar, hizmetler arasında farklılık gösterir. Bir hizmete yönelik belirli adımlar için ilgili hizmetin belgelerine bakın. Bu makalenin geri kalanında bir Azure depolama hesabı için ağ erişimini bir örnek olarak kısıtlama adımları yer alır.
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-Bir Azure depolama hesabı oluşturun [az depolama hesabı oluşturma](/cli/azure/storage/account). Değiştirin `<replace-with-your-unique-storage-account-name>` 3-24 karakter uzunluğunda, tüm Azure konumlarında benzersiz olan bir ada sahip yalnızca sayı ve küçük harfler kullanarak.
+[Az Storage Account Create](/cli/azure/storage/account)komutuyla bir Azure depolama hesabı oluşturun. `<replace-with-your-unique-storage-account-name>`, tüm Azure konumlarında benzersiz, yalnızca rakamlar ve küçük harfler kullanılarak 3-24 karakter uzunluğunda bir adla değiştirin.
 
 ```azurecli-interactive
 storageAcctName="<replace-with-your-unique-storage-account-name>"
@@ -172,7 +172,7 @@ az storage account create \
   --kind StorageV2
 ```
 
-Depolama hesabı oluşturulduktan sonra depolama hesabı için bağlantı dizesi sahip bir değişken içine alma [az depolama hesabı bağlantı-dizesini-Göster](/cli/azure/storage/account). Bağlantı dizesini, daha sonraki bir adımda bir dosya paylaşımı oluşturmak için kullanılır.
+Depolama hesabı oluşturulduktan sonra, [az Storage Account Show-Connection-String](/cli/azure/storage/account)ile depolama hesabının bağlantı dizesini bir değişkene alın. Bağlantı dizesi, sonraki bir adımda dosya paylaşma oluşturmak için kullanılır.
 
 ```azurecli-interactive
 saConnectionString=$(az storage account show-connection-string \
@@ -182,7 +182,7 @@ saConnectionString=$(az storage account show-connection-string \
   --out tsv)
 ```
 
-<a name="account-key"></a>Değişken içeriğini görüntüleyebilir ve değerini not edin **AccountKey** daha sonraki bir adımda kullanıldığından çıktıda döndürdü.
+<a name="account-key"></a>Değişkenin içeriğini görüntüleyin ve sonraki bir adımda kullanıldığından çıktıda döndürülen **Accountkey** değerini aklınızda edin.
 
 ```azurecli-interactive
 echo $saConnectionString
@@ -190,7 +190,7 @@ echo $saConnectionString
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Depolama hesabında dosya paylaşımı oluşturma
 
-İle depolama hesabında dosya paylaşımı oluşturma [az depolama alanı paylaşımı oluşturma](/cli/azure/storage/share). Daha sonraki bir adımda, ağ erişimi onaylamak için bu dosya paylaşımı bağlanmıştır.
+Depolama hesabında [az Storage Share Create](/cli/azure/storage/share)komutuyla bir dosya paylaşma oluşturun. Sonraki bir adımda, bu dosya paylaşımının ağa erişimi onaylamak için bağlanmış olması gerekir.
 
 ```azurecli-interactive
 az storage share create \
@@ -199,9 +199,9 @@ az storage share create \
   --connection-string $saConnectionString > /dev/null
 ```
 
-### <a name="deny-all-network-access-to-a-storage-account"></a>Tüm bir depolama hesabına ağ erişimini engelle
+### <a name="deny-all-network-access-to-a-storage-account"></a>Bir depolama hesabına tüm ağ erişimini reddet
 
-Varsayılan olarak, depolama hesapları herhangi bir ağdaki istemcilerden gelen ağ bağlantılarını kabul eder. Seçili ağlar erişimi sınırlamak için varsayılan eylem için değiştirme *Reddet* ile [az depolama hesabını güncelleştirme](/cli/azure/storage/account). Ağ erişimi engellendi sonra depolama hesabı herhangi bir ağdan erişilebilir değil.
+Varsayılan olarak, depolama hesapları herhangi bir ağdaki istemcilerden gelen ağ bağlantılarını kabul eder. Seçilen ağlara erişimi sınırlandırmak için, varsayılan eylemi [az Storage Account Update](/cli/azure/storage/account)ile *Reddet* olarak değiştirin. Ağ erişimi reddedildikten sonra, depolama hesabına herhangi bir ağdan erişilemez.
 
 ```azurecli-interactive
 az storage account update \
@@ -212,7 +212,7 @@ az storage account update \
 
 ### <a name="enable-network-access-from-a-subnet"></a>Bir alt ağdan ağ erişimini etkinleştirme
 
-Depolama hesabından için ağ erişimine izin ver *özel* alt ağ ile [az depolama hesabı ağ kuralı ekleyin](/cli/azure/storage/account/network-rule).
+[Az Storage Account Network-Rule Add](/cli/azure/storage/account/network-rule)ile *özel* alt ağdan depolama hesabına ağ erişimine izin verin.
 
 ```azurecli-interactive
 az storage account network-rule add \
@@ -227,7 +227,7 @@ Bir depolama hesabına ağ erişimini test etmek için her alt ağa bir VM dağ�
 
 ### <a name="create-the-first-virtual-machine"></a>İlk sanal makineyi oluşturma
 
-Bir VM oluşturma *genel* alt ağ ile [az vm oluşturma](/cli/azure/vm). SSH anahtarları, varsayılan anahtar konumunda zaten mevcut değilse komut bunları oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
+[Az VM Create](/cli/azure/vm)komutuyla *ortak* alt ağda bir VM oluşturun. SSH anahtarları, varsayılan anahtar konumunda zaten mevcut değilse komut bunları oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
 
 ```azurecli-interactive
 az vm create \
@@ -239,7 +239,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Sanal makinenin oluşturulması birkaç dakika sürer. VM oluşturulduktan sonra Azure CLI'yı bilgiler aşağıdaki örneğe benzer gösterir: 
+Sanal makinenin oluşturulması birkaç dakika sürer. VM oluşturulduktan sonra Azure CLı, aşağıdaki örneğe benzer bilgiler gösterir: 
 
 ```azurecli 
 {
@@ -254,7 +254,7 @@ Sanal makinenin oluşturulması birkaç dakika sürer. VM oluşturulduktan sonra
 }
 ```
 
-Not **Publicıpaddress** döndürülen çıktı. Bu adres, bir sonraki adımda internet'ten sanal Makineye erişmek için kullanılır.
+Döndürülen çıktıda **Publicıpaddress** ' i bir yere göz atın. Bu adres, sonraki bir adımda sanal makineye internet 'ten erişmek için kullanılır.
 
 ### <a name="create-the-second-virtual-machine"></a>İkinci sanal makineyi oluşturma
 
@@ -268,31 +268,31 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Sanal makinenin oluşturulması birkaç dakika sürer. Oluşturulduktan sonra Not **Publicıpaddress** döndürülen çıktı. Bu adres, bir sonraki adımda internet'ten sanal Makineye erişmek için kullanılır.
+Sanal makinenin oluşturulması birkaç dakika sürer. Oluşturulduktan sonra, döndürülen çıktıda **Publicıpaddress** ' i göz önünde atın. Bu adres, sonraki bir adımda sanal makineye internet 'ten erişmek için kullanılır.
 
 ## <a name="confirm-access-to-storage-account"></a>Depolama hesabına erişimi onaylama
 
-İçine SSH *myVmPrivate* VM. Değiştirin  *\<Publicıpaddress >* genel IP adresi ile *myVmPrivate* VM.
+*MyVmPrivate* VM 'ye SSH. *\<Publicıpaddress >* değerini *myVmPrivate* sanal makinenizin genel IP adresiyle değiştirin.
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-Bir bağlama noktası için bir klasör oluşturun:
+Bağlama noktası için bir klasör oluşturun:
 
 ```bash
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Azure dosya paylaşımını oluşturduğunuz dizine bağlayın. Aşağıdaki komutu çalıştırmadan önce değiştirin `<storage-account-name>` hesap adıyla ve `<storage-account-key>` , alınan anahtarla [depolama hesabı oluşturma](#create-a-storage-account).
+Azure dosya paylaşımından oluşturduğunuz dizine bağlayın. Aşağıdaki komutu çalıştırmadan önce `<storage-account-name>` hesap adıyla değiştirin ve [depolama hesabı oluşturma](#create-a-storage-account)bölümünde aldığınız anahtarla `<storage-account-key>`.
 
 ```bash
 sudo mount --types cifs //<storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Aldığınız `user@myVmPrivate:~$` istemi. Azure dosya paylaşımı başarıyla takılı */mnt/MyAzureFileShare*.
+`user@myVmPrivate:~$` istemi alırsınız. Azure dosya paylaşımı, */mnt/myazurefileshare*öğesine başarıyla bağlandı.
 
-VM'ye diğer herhangi bir genel IP adreslerine giden bağlantısının olmadığını doğrulayın:
+VM 'nin herhangi bir genel IP adresine giden bağlantısı olmadığını doğrulayın:
 
 ```bash
 ping bing.com -c 4
@@ -300,33 +300,33 @@ ping bing.com -c 4
 
 *Özel* alt ağ ile ilişkili ağ güvenlik grubu Azure Depolama hizmetine atanan adreslerden başka genel IP adreslerine giden erişime izin vermediği için bir yanıt almazsınız.
 
-İçin SSH oturumundan çıkın *myVmPrivate* VM.
+SSH oturumundan *myVmPrivate* VM 'sine çıkın.
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>Depolama hesabına erişimin reddedildiğini onaylama
 
-İle bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın *myVmPublic* VM. Değiştirin `<publicIpAddress>` genel IP adresi ile *myVmPublic* VM: 
+*MyVmPublic* VM Ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. `<publicIpAddress>`, *myVmPublic* sanal MAKINENIZIN genel IP adresiyle değiştirin: 
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-Bir bağlama noktası için bir dizin oluşturun:
+Bağlama noktası için dizin oluşturma:
 
 ```bash
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Azure dosya paylaşımını oluşturduğunuz dizine bağlama girişimi. Bu makalede, en son sürümünü Ubuntu dağıttığınız varsayılır. Ubuntu önceki sürümleri kullanıyorsanız bkz [Linux üzerinde bağlama](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) dosya paylaşımlarına bağlama hakkında ek yönergeler için. Aşağıdaki komutu çalıştırmadan önce değiştirin `<storage-account-name>` hesap adıyla ve `<storage-account-key>` , alınan anahtarla [depolama hesabı oluşturma](#create-a-storage-account):
+Azure dosya paylaşımından oluşturduğunuz dizine bağlama girişimi. Bu makalede Ubuntu 'ın en son sürümünü dağıttığınız varsayılmaktadır. Ubuntu 'nun önceki sürümlerini kullanıyorsanız, dosya paylaşımları bağlama hakkında ek yönergeler için bkz. [Linux üzerinde bağlama](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Aşağıdaki komutu çalıştırmadan önce `<storage-account-name>` hesap adıyla değiştirin ve [depolama hesabı oluşturma](#create-a-storage-account)bölümünde aldığınız anahtarla `<storage-account-key>`:
 
 ```bash
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Erişim reddedilir ve aldığınız bir `mount error(13): Permission denied` hata, çünkü *myVmPublic* VM içinden dağıtıldığı *genel* alt ağ. *Genel* alt ağında Azure Depolama için etkinleştirilmiş bir hizmet uç noktası bulunmaz ve depolama hesabı *Genel* alt ağından değil, yalnızca *Özel* alt ağından ağ erişimine izin verir.
+Erişim engellendi ve *myVmPublic* VM *ortak* alt ağ içinde dağıtıldığından `mount error(13): Permission denied` bir hata alırsınız. *Genel* alt ağında Azure Depolama için etkinleştirilmiş bir hizmet uç noktası bulunmaz ve depolama hesabı *Genel* alt ağından değil, yalnızca *Özel* alt ağından ağ erişimine izin verir.
 
-İçin SSH oturumundan çıkın *myVmPublic* VM.
+SSH oturumundan *myVmPublic* VM 'sine çıkın.
 
-Depolama hesabınızda paylaşımlarını görüntülemek, bilgisayarınızdan denemek [az storage share liste](/cli/azure/storage/share?view=azure-cli-latest). Değiştirin `<account-name>` ve `<account-key>` depolama hesabı adı ve anahtarı ile [depolama hesabı oluşturma](#create-a-storage-account):
+Bilgisayarınızdan, [az Storage Share List](/cli/azure/storage/share?view=azure-cli-latest)komutuyla Depolama hesabınızdaki paylaşımları görüntülemeyi deneyin. `<account-name>` ve [`<account-key>` depolama hesabı](#create-a-storage-account)adı ve anahtarıyla değiştirin:
 
 ```azurecli-interactive
 az storage share list \
@@ -334,11 +334,11 @@ az storage share list \
   --account-key <account-key>
 ```
 
-Erişim reddedilir ve aldığınız bir *bu isteği bu işlemi gerçekleştirmek için yetkili değil* hata, bilgisayarınızı olmadığı *özel* alt *MyVirtualNetwork* sanal ağ.
+Erişim engellendi ve bu istek, *MyVirtualNetwork* sanal ağının *özel* alt ağında olmadığından, bu *işlemi gerçekleştirme yetkisi yok* .
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse [az grubu Sil](/cli/azure) kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için.
+Artık gerekli değilse, [az Group Delete](/cli/azure) ' i kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırın.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
@@ -346,6 +346,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir sanal ağ alt ağı için hizmet uç noktası etkin. Hizmet uç noktalarının birden fazla Azure hizmeti ile dağıtılmış kaynaklar için etkinleştirilebildiğini öğrendiniz. Bir Azure Depolama hesabı oluşturdunuz ve depolama hesabına ağ erişimini yalnızca bir sanal ağ alt ağındaki kaynaklarla sınırladınız. Hizmet uç noktaları hakkında daha fazla bilgi için bkz. [Hizmet uç noktalarına genel bakış](virtual-network-service-endpoints-overview.md) ve [Alt ağları yönetme](virtual-network-manage-subnet.md).
+Bu makalede, bir sanal ağ alt ağı için bir hizmet uç noktası etkinleştirdiniz. Hizmet uç noktalarının birden fazla Azure hizmeti ile dağıtılmış kaynaklar için etkinleştirilebildiğini öğrendiniz. Bir Azure Depolama hesabı oluşturdunuz ve depolama hesabına ağ erişimini yalnızca bir sanal ağ alt ağındaki kaynaklarla sınırladınız. Hizmet uç noktaları hakkında daha fazla bilgi için bkz. [Hizmet uç noktalarına genel bakış](virtual-network-service-endpoints-overview.md) ve [Alt ağları yönetme](virtual-network-manage-subnet.md).
 
-Hesabınızda birden fazla sanal ağ varsa, her bir sanal ağın içindeki kaynakların birbiriyle iletişim kurabilmesi iki sanal ağı birbirine bağlamak isteyebilirsiniz. Bilgi edinmek için bkz. nasıl [sanal ağları birbirine bağlama](tutorial-connect-virtual-networks-cli.md).
+Hesabınızda birden fazla sanal ağ varsa, her bir sanal ağın içindeki kaynakların birbiriyle iletişim kurabilmesi iki sanal ağı birbirine bağlamak isteyebilirsiniz. Nasıl yapılacağını öğrenmek için bkz. [sanal ağları bağlama](tutorial-connect-virtual-networks-cli.md).

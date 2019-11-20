@@ -1,5 +1,5 @@
 ---
-title: Azure CLI kullanarak bir Azure kaynağı için bir yönetilen kimlik erişim atama
+title: Azure CLı kullanarak bir kaynağa yönetilen kimlik erişimi atama-Azure AD
 description: Adım adım yönergeler bir kaynakta bir yönetilen kimlik atamak için Azure CLI kullanarak başka bir kaynağa erişin.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fb16b1762f1e5330cf058c37a6b7e0f008eb447
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4153e038228d7ec4631fc5fec81303966a12b01b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290987"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184094"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Azure CLI kullanarak bir kaynak için bir yönetilen kimlik erişim atama
 

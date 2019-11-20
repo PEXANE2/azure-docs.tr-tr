@@ -1,19 +1,19 @@
 ---
-title: Azure geçişi ile Azure 'a geçiş için şirket içi makineleri hazırlama
-description: Bu makalede, Azure geçişi ile Azure 'a geçiş için şirket içi makinelerin nasıl hazırlanacağı açıklanır.
+title: Azure geçişi ile makineleri geçişe hazırlama
+description: Azure geçişi ile geçiş için şirket içi makineleri nasıl hazırlayacağınızı öğrenin.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/03/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 61b4f41a0b36945413e45a357a5ca73ac75ceb98
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480120"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196430"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
@@ -46,8 +46,7 @@ Bu makalede şunları yapacaksınız:
 
 - VMware VM 'Leri için Azure geçişi sunucu geçişi [aracısız veya aracı tabanlı geçişi](server-migrate-overview.md)destekler. VMware VM gereksinimlerini/ [aracısız](migrate-support-matrix-vmware.md#migration---limitations) ve [aracı tabanlı](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) geçişler için desteği doğrulayın.
 - Hyper-V VM 'Leri için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) doğrulayın.
-- Şirket içi fiziksel makineler veya diğer sanallaştırılmış sunucular için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) doğrulayın. Bu gereksinimler VMware VM gereksinimlerine benzerdir.
-
+- Şirket içi fiziksel makineler veya diğer sanallaştırılmış sunucular için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-physical.md) doğrulayın. 
 
 
 

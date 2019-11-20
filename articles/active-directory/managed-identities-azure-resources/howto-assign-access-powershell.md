@@ -1,5 +1,5 @@
 ---
-title: PowerShell kullanarak bir Azure kaynağı için bir yönetilen kimlik erişim atama
+title: PowerShell kullanarak bir kaynağa yönetilen kimlik erişimi atama-Azure AD
 description: Adım adım yönergeler bir kaynakta bir yönetilen kimlik atamak için PowerShell kullanarak başka bir kaynağa erişin.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff36be7f87d0dd9e5cac5ee7f788eec0cda5a9fd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82fa5019e740d16d0b97111fcf8dbc4f6c91d57b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290703"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183994"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>PowerShell kullanarak bir kaynak için bir yönetilen kimlik erişim atama
 
@@ -45,7 +45,7 @@ Yönetilen bir Azure kaynak kimliğini etkinleştirdikten sonra [Azure VM'deki g
    ```powershell
    Connect-AzAccount
    ```
-2. Bu örnekte biz bir depolama hesabı için bir Azure VM erişimini vermiş olursunuz. Önce kullandığımız [Get-AzVM](/powershell/module/az.compute/get-azvm) adlı VM için hizmet sorumlusu almak için `myVM`, biz etkinleştirildiğinde oluşturulduğu yönetilen kimliği. Ardından, [yeni AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) VM vermek **okuyucu** adlı bir depolama hesabı erişim `myStorageAcct`:
+2. Bu örnekte biz bir depolama hesabı için bir Azure VM erişimini vermiş olursunuz. İlk olarak, yönetilen kimliği etkinleştirdiğimiz sırada oluşturulan `myVM`adlı sanal makineye yönelik hizmet sorumlusunu almak için [Get-AzVM](/powershell/module/az.compute/get-azvm) ' i kullanırız. Ardından, `myStorageAcct`adlı bir depolama hesabına VM **okuyucusu** erişimi sağlamak için [New-azroleatama](/powershell/module/Az.Resources/New-AzRoleAssignment) kullanın:
 
     ```powershell
     $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid

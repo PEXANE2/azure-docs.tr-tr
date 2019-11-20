@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 114a5bbfd71fc0847c2b1bc65a8ba0bfa0df1add
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1cdd8fdac03c25bf28db94867891fef4c2846fcd
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821937"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196549"
 ---
 # <a name="automated-backups"></a>Otomatik yedeklemeler
 
@@ -46,7 +46,7 @@ Aşağıdaki örnekleri kullanarak bu işlemlerden bazılarını deneyebilirsini
 
 | | Azure portal | Azure PowerShell |
 |---|---|---|
-| Yedekleme bekletmesini değiştirme | [Tek Veritabanı](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Yönetilen örnek](sql-database-automated-backups.md#managed-instance-database) | [Tek Veritabanı](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| Yedekleme bekletmesini değiştirme | [Tek Veritabanı](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [Yönetilen örnek](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [Tek Veritabanı](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | Uzun süreli yedekleme bekletmesini değiştirme | [Tek veritabanı](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Yönetilen örnek-yok  | [Tek Veritabanı](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Yönetilen örnek-yok  |
 | Veritabanını zaman noktasından geri yükle | [Tek veritabanı](sql-database-recovery-using-backups.md#point-in-time-restore) | [Tek veritabanı](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | Silinen veritabanını geri yükleme | [Tek veritabanı](sql-database-recovery-using-backups.md) | [Tek veritabanı](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
@@ -84,6 +84,15 @@ Daha fazla bilgi için bkz. [uzun süreli yedek saklama](sql-database-long-term-
 ## <a name="storage-costs"></a>Depolama maliyetleri
 Tek veritabanları ve yönetilen örnekler için, veritabanı boyutunun %100 ' ına eşit olan en düşük yedekleme depolama miktarı ek bir ücret ödemeden sunulmaktadır. Elastik havuzlar için, havuz için ayrılan veri depolamanın %100 ' ına eşit olan en düşük yedekleme depolama miktarı ek ücret ödemeden sunulmaktadır. Ek yedekleme alanı kullanımı, GB/ay üzerinden ücretlendirilir. Bu ek tüketim, bireysel veritabanlarının iş yüküne ve boyutuna bağlı olarak değişir.
 
+Azure abonelik maliyeti analizini, yedekleme depolamada geçerli harcamalarınızı öğrenmek için kullanabilirsiniz.
+
+![Yedekleme depolama maliyeti Analizi](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
+
+Aboneliğiniz varsa ve maliyet analizi dikey penceresini açarsanız, geçerli yedekleme maliyetinizi ve ücretlendirmesini görmek için ölçüm alt kategorisi **mi \ yedekleme depolama alanı** ' nı seçebilirsiniz. Yedekleme depolama maliyetini diğer maliyet kategorilerine göre karşılaştırmak için, **yönetilen örnek genel amaçlı depolama alanı** veya **yönetilen örnek genel amaçlı** depolama gibi diğer ölçüm alt kategorilerini da dahil edebilirsiniz.
+
+> [!Note]
+> Yedekleme depolama maliyetini azaltmak için [bekletme süresini 7 gün olarak değiştirebilirsiniz](#change-pitr-backup-retention-period-using-azure-portal) .
+
 Depolama fiyatları hakkında daha fazla bilgi için bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/sql-database/single/) sayfası. 
 
 ## <a name="are-backups-encrypted"></a>Yedeklemeler şifreli
@@ -118,17 +127,19 @@ Varsayılan yedek saklama süresini Azure portal, PowerShell veya REST API kulla
 
 Azure portal kullanarak yedek saklama süresini değiştirmek için, saklama süresini portalda değiştirmek istediğiniz sunucu nesnesine gidin ve ardından değiştirmekte olduğunuz sunucu nesnesine göre uygun seçeneği belirleyin.
 
-#### <a name="single-azure-sql-database"></a>Tek Azure SQL veritabanı
+#### <a name="single-database--elastic-poolstabsingle-database"></a>[Tek veritabanı & elastik havuzlar](#tab/single-database)
 
 Tek Azure SQL veritabanı için yedek saklama bekletme değişikliği, sunucu düzeyinde gerçekleştirilir. Sunucu düzeyinde yapılan değişiklik, bu sunucudaki veritabanları için geçerlidir. Azure SQL veritabanı sunucusu için veri Azure portal ' dan değiştirmek için, sunucuya genel bakış dikey penceresine gidin, gezinti menüsünde Yedeklemeleri Yönet ' e tıklayın ve ardından Gezinti çubuğunda bekletme yapılandırması ' na tıklayın.
 
 ![Azure portal Değiştir](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instance-database"></a>Yönetilen örnek veritabanı
+#### <a name="managed-instancetabmanaged-instance"></a>[Yönetilen örnek](#tab/managed-instance)
 
 SQL veritabanı yönetilen örneği için ara yedek saklama 'nın değiştirilmesi, tek bir veritabanı düzeyinde gerçekleştirilir. Azure portal bir örnek veritabanının ara veritabanı yedekleme bekletmesini değiştirmek için, tek tek veritabanına genel bakış dikey penceresine gidin ve ardından Gezinti çubuğunda yedekleme bekletmesini yapılandır seçeneğine tıklayın.
 
 ![Azure portal Değiştir](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
+
+---
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>PowerShell kullanarak yedek saklama süresini değiştirme
 
@@ -142,7 +153,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 
 ### <a name="change-pitr-retention-period-using-rest-api"></a>REST API kullanarak elde tutma süresini değiştirme
 
-#### <a name="sample-request"></a>Örnek İsteği
+#### <a name="sample-request"></a>Örnek İstek
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview

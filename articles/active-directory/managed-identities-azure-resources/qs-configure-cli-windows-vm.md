@@ -1,5 +1,5 @@
 ---
-title: Azure CLı kullanarak bir Azure VM 'de sistem ve Kullanıcı tarafından atanan Yönetilen kimlikler yapılandırma
+title: Azure CLı kullanarak Azure VM 'de yönetilen kimlikleri Yapılandırma-Azure AD
 description: Azure CLı kullanarak bir Azure VM 'de sistem ve Kullanıcı tarafından atanan yönetilen kimlikleri yapılandırmaya yönelik adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 272315346091bacb15aef02184e1cc72d64ed49d
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: ca02505ba9b7d93cac4216916909a8c6df7fdd05
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309810"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184060"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Azure CLı kullanarak Azure VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -61,13 +61,13 @@ Sistem tarafından atanan yönetilen kimlik etkin bir Azure VM 'si oluşturmak i
    az login
    ```
 
-2. VM'nizin ve onunla ilgili kaynakların kapsaması ve dağıtımı için, [az group create](/cli/azure/group/#az-group-create) komutunu kullanarak bir [kaynak grubu](../../azure-resource-manager/resource-group-overview.md#terminology) oluşturun. Bunun yerine kullanmak istediğiniz bir kaynak grubunuz varsa, bu adımı atlayabilirsiniz:
+2. VM'nizin ve onunla ilgili kaynakların kapsaması ve dağıtımı için, [az group create](../../azure-resource-manager/resource-group-overview.md#terminology) komutunu kullanarak bir [kaynak grubu](/cli/azure/group/#az-group-create) oluşturun. Bunun yerine kullanmak istediğiniz bir kaynak grubunuz varsa, bu adımı atlayabilirsiniz:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-3. [az vm create](/cli/azure/vm/#az-vm-create) kullanarak VM oluşturun. Aşağıdaki örnek, `--assign-identity` parametresi tarafından istenen şekilde, sistem tarafından atanan yönetilen kimlik ile *myvm* adlı bir VM oluşturur. `--admin-username` ve `--admin-password` parametreleri, sanal makinede oturum açmak için yönetici hesabının kullanıcı adı ve parolasını belirtir. Bu değerleri ortamınıza uyacak şekilde güncelleştirin: 
+3. [az vm create](/cli/azure/vm/#az-vm-create) kullanarak VM oluşturun. Aşağıdaki örnek, `--assign-identity` parametresi tarafından istendiği gibi, sistem tarafından atanan yönetilen kimlik ile *Myvm* ADLı bir VM oluşturur. `--admin-username` ve `--admin-password` parametreleri, sanal makinede oturum açmak için yönetici hesabının kullanıcı adı ve parolasını belirtir. Bu değerleri ortamınıza uyacak şekilde güncelleştirin: 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
@@ -83,7 +83,7 @@ Bir VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için h
    az login
    ```
 
-2. Sistem tarafından atanan kimliği mevcut bir VM `identity assign` 'ye etkinleştirmek için [az VM Identity Assign](/cli/azure/vm/identity/) komutunu kullanın:
+2. `identity assign` komutuyla [az VM Identity Assign](/cli/azure/vm/identity/) kullanın, sistem tarafından atanan kimliği var olan bir VM 'ye etkinleştirin:
 
    ```azurecli-interactive
    az vm identity assign -g myResourceGroup -n myVm
@@ -102,7 +102,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type='UserAssigned'
 Artık sistem tarafından atanan kimliğe ihtiyacı olmayan ve Kullanıcı tarafından atanan kimlikleri olmayan bir sanal makineniz varsa, aşağıdaki komutu kullanın:
 
 > [!NOTE]
-> Değer `none` büyük/küçük harfe duyarlıdır. Küçük harfle yazılmalıdır. 
+> `none` değeri büyük/küçük harfe duyarlıdır. Küçük harfle yazılmalıdır. 
 
 ```azurecli-interactive
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
@@ -157,7 +157,7 @@ Oluşturma sırasında bir VM 'ye Kullanıcı tarafından atanan bir kimlik atam
 
 Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. Kullanıcı tarafından atanan kimliği oluşturmak için [az identity create](/cli/azure/identity#az-identity-create) kullanın.  Parametresi, Kullanıcı tarafından atanan kimliğin oluşturulduğu kaynak grubunu belirtir `-n` ve parametresi adını belirtir. `-g` `<RESOURCE GROUP>` ve `<USER ASSIGNED IDENTITY NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+1. Kullanıcı tarafından atanan kimliği oluşturmak için [az identity create](/cli/azure/identity#az-identity-create) kullanın.  `-g` parametresi, Kullanıcı tarafından atanan kimliğin oluşturulduğu kaynak grubunu belirtir ve `-n` parametresi adını belirtir. `<RESOURCE GROUP>` ve `<USER ASSIGNED IDENTITY NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
     > [!IMPORTANT]
     > Adında özel karakterler (alt çizgi) ile Kullanıcı tarafından atanan Yönetilen kimlikler oluşturma işlemi şu anda desteklenmiyor. Lütfen alfasayısal karakterler kullanın. Güncelleştirmeler için sonra yeniden denetleyin.  Daha fazla bilgi için bkz. [SSS ve bilinen sorunlar](known-issues.md)
@@ -182,7 +182,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
    }
    ```
 
-2. [Az VM Identity Assign](/cli/azure/vm)kullanarak VM 'nize Kullanıcı tarafından atanan kimlik atayın. `<RESOURCE GROUP>` ve `<VM NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. , `<USER ASSIGNED IDENTITY NAME>` Önceki adımda oluşturulduğu gibi kullanıcı tarafından atanan yönetilen kimliğin `name` kaynak özelliğidir:
+2. [Az VM Identity Assign](/cli/azure/vm)kullanarak VM 'nize Kullanıcı tarafından atanan kimlik atayın. `<RESOURCE GROUP>` ve `<VM NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. `<USER ASSIGNED IDENTITY NAME>`, önceki adımda oluşturulan kullanıcı tarafından atanan yönetilen kimliğin kaynak `name` özelliğidir:
 
     ```azurecli-interactive
     az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>
@@ -192,7 +192,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
 
 Kullanıcı tarafından atanan kimliği bir VM 'ye kaldırmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir. 
 
-Sanal makineye atanan tek kullanıcı tarafından atanan yönetilen kimlik ise, `UserAssigned` kimlik türü değerinden kaldırılır.  `<RESOURCE GROUP>` ve `<VM NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. , `<USER ASSIGNED IDENTITY>` Kullanıcı tarafından atanan `name` kimliğin özelliği olur ve bu, şu kullanılarak `az vm identity show`sanal makinenin kimlik bölümünde bulunabilir:
+Sanal makineye atanan tek kullanıcı tarafından atanan yönetilen kimlik ise, kimlik türü değerinden `UserAssigned` kaldırılır.  `<RESOURCE GROUP>` ve `<VM NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. `<USER ASSIGNED IDENTITY>`, Kullanıcı tarafından atanan kimliğin `name` özelliği olacaktır ve bu, `az vm identity show`kullanılarak sanal makinenin kimlik bölümünde bulunabilir:
 
 ```azurecli-interactive
 az vm identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>
@@ -201,7 +201,7 @@ az vm identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGN
 SANAL makinenizin sistem tarafından atanan bir yönetilen kimliği yoksa ve bundan sonra Kullanıcı tarafından atanan tüm kimlikleri kaldırmak istiyorsanız aşağıdaki komutu kullanın:
 
 > [!NOTE]
-> Değer `none` büyük/küçük harfe duyarlıdır. Küçük harfle yazılmalıdır.
+> `none` değeri büyük/küçük harfe duyarlıdır. Küçük harfle yazılmalıdır.
 
 ```azurecli-interactive
 az vm update -n myVM -g myResourceGroup --set identity.type="none" identity.userAssignedIdentities=null

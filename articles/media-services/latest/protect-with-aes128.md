@@ -1,6 +1,7 @@
 ---
-title: Video AES-128 ile şifrelemek için Azure Media Services'i kullanma | Microsoft Docs
-description: İçeriğinizi AES 128 bit şifreleme anahtarları ile Microsoft Azure Media Services'ı kullanarak şifreli sunun. Media Services, şifreleme anahtarlarını yetkili kullanıcıların sunan anahtar dağıtımı hizmetiyle de sağlar. Bu konu nasıl dinamik olarak AES-128 ile şifrelemek ve anahtar dağıtımı hizmetiyle nasıl kullanılacağını gösterir.
+title: AES-128 ile videoyu şifreleme
+titleSuffix: Azure Media Services
+description: AES 128 bit şifreleme ile videoyu şifrelemeyi ve Azure Media Services ' de anahtar teslimi hizmeti 'ni kullanmayı öğrenin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: f7f68398cb473ca166d328ee15a92f3c848840f2
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 3b56747d9bc8c8ae5884d4fb654c20d49527fed5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273286"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186084"
 ---
-# <a name="tutorial-use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Öğretici: AES-128 dinamik şifreleme ve anahtar teslim hizmetini kullanma
+# <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Öğretici: AES-128 ile videoyu şifreleyin ve anahtar teslim hizmetini kullanın
 
 > [!NOTE]
-> Öğreticiyi kullansa bile [.NET SDK'sı](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örnekler, genel adımlar aynıdır için [REST API](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), veya desteklenen diğer [SDK'ları](media-services-apis-overview.md#sdks) .
+> Öğretici [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örnekleri kullanıyor olsa da, genel adımlar [REST API](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır.
 
-HTTP canlı akışı (HLS), MPEG-DASH ve kesintisiz akış ile AES 128 bit şifreleme anahtarları kullanılarak şifrelenmiş sunmak için Media Services'ı kullanabilirsiniz. Media Services, şifreleme anahtarlarını yetkili kullanıcıların sunan anahtar dağıtımı hizmetiyle de sağlar. Media Services'ın dinamik olarak videonuzu şifrelemek isterseniz, şifreleme anahtarını akış Bulucu ile ilişkilendirmek ve ayrıca içerik anahtar ilkeyi yapılandırın. Bir akışa bir oynatıcı tarafından istendiğinde Media Services belirtilen anahtarı içeriğinizi AES-128 ile dinamik olarak şifrelemek için kullanır. Oynatıcı, akışın şifresini çözmek için anahtar teslim hizmetinden anahtarı ister. Hizmet, kullanıcının anahtarı alma yetkisine sahip olup olmadığını belirlemek için anahtar için belirlediğiniz içerik anahtarı ilkesini değerlendirir.
+Media Services, HTTP Canlı Akışı (HLS), MPEG-DASH ve Kesintisiz Akış 128 bit şifreleme anahtarlarını kullanarak AES ile şifreli olarak dağıtmak için kullanabilirsiniz. Media Services, yetkili kullanıcılara şifreleme anahtarları sunan anahtar teslim hizmetini de sağlar. Videonuzu dinamik olarak şifrelemek için Media Services istiyorsanız, şifreleme anahtarını bir akış bulucu ile ilişkilendirir ve ayrıca içerik anahtarı ilkesini de yapılandırırsınız. Player tarafından bir akış istendiğinde, Media Services, içeriğinizi AES-128 ile dinamik olarak şifrelemek için belirtilen anahtarı kullanır. Oynatıcı, akışın şifresini çözmek için anahtar teslim hizmetinden anahtarı ister. Hizmet, kullanıcının anahtarı alma yetkisine sahip olup olmadığını belirlemek için anahtar için belirlediğiniz içerik anahtarı ilkesini değerlendirir.
 
-Her bir varlığı birden fazla şifreleme türü (AES-128, PlayReady, Widevine, FairPlay) ile şifreleyebilirsiniz. Birlikte kullanılabilecek türler hakkında bilgi almak için bkz. [Akış protokolleri ve şifreleme türleri](content-protection-overview.md#streaming-protocols-and-encryption-types). Ayrıca bkz [DRM ile koruma](protect-with-drm.md).
+Her bir varlığı birden fazla şifreleme türü (AES-128, PlayReady, Widevine, FairPlay) ile şifreleyebilirsiniz. Birlikte kullanılabilecek türler hakkında bilgi almak için bkz. [Akış protokolleri ve şifreleme türleri](content-protection-overview.md#streaming-protocols-and-encryption-types). Ayrıca bkz. [DRM ile koruma](protect-with-drm.md).
 
-Örnek çıktısı Bu makale, Azure Media Player için bir URL, bildirim URL'sini ve içeriğini oynatmak için gereken AES belirteci içerir. Örnek, JWT belirteci süre sonu 1 saate ayarlar. Bir tarayıcı açın ve URL'yi ve sizin için zaten şu biçimde doldurulan belirteci ile Azure Media Player tanıtım sayfasını başlatmak için elde edilen URL'yi yapıştırın: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.
+Bu makaleye örnek çıktısı, Azure Media Player, bildirim URL 'si ve içeriği kayıttan yürütmek için gereken AES belirtecinin URL 'sini içerir. Örnek, JSON Web Token (JWT) belirtecinin kullanım süresini 1 saat olarak ayarlar. Bir tarayıcı açabilir ve aşağıdaki biçimde doldurulmuş URL ve belirteç ile Azure Media Player Demo sayfasını başlatmak üzere elde edilen URL 'yi yapıştırabilirsiniz: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.
 
-Bu öğretici şunların nasıl yapıldığını gösterir:    
+Bu öğretici şunların nasıl yapıldığını gösterir:
 
 > [!div class="checklist"]
-> * İndirme [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) makalesinde açıklanan örnek
-> * .NET SDK ile Media Services API’sini kullanmaya başlama
-> * Çıktı varlığı oluşturma
-> * Bir kodlama dönüştürme oluşturma
-> * Bir iş gönderdiniz
-> * İşin tamamlanmasını bekleyin
-> * Bir içerik anahtarı ilkesi oluşturma
-> * JWT belirteci kısıtlama kullanılacak ilkeyi yapılandırma 
-> * Akış Bulucusu oluşturma
-> * Video AES (ClearKey) ile şifrelemek için akış Bulucu yapılandırın
-> * Test belirteci alma
-> * Bir akış URL'si oluşturmanıza
-> * Kaynakları temizleme
+> * Makalesinde açıklanan [Encryptwithaes](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) örneğini indirin.
+> * .NET SDK ile Media Services API 'Lerini kullanmaya başlayın.
+> * Çıkış varlığı oluşturun.
+> * Kodlama dönüştürmesi oluşturun.
+> * Bir Iş gönderebilirsiniz.
+> * Işin tamamlanmasını bekleyin.
+> * Içerik anahtarı Ilkesi oluşturma
+> * İlkeyi JWT belirteci kısıtlamasını kullanacak şekilde yapılandırın.
+> * Bir akış Bulucu oluşturun.
+> * Video 'yu AES (ClearKey) ile şifrelemek için akış bulucuyu yapılandırın.
+> * Bir test belirteci alın.
+> * Akış URL 'SI oluşturun.
+> * Kaynakları temizleyin.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -54,10 +55,10 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir.
 
-* Gözden geçirme [içerik korumaya genel bakış](content-protection-overview.md) makale
-* Visual Studio Code veya Visual Studio yükleme
-* [Bir Media Services hesabı oluşturma](create-account-cli-quickstart.md)
-* [Erişim API'lerini](access-api-cli-how-to.md) kullanarak Media Services API'lerini kullanmak için gerekli kimlik bilgilerini edinin.
+* [İçerik korumaya genel bakış](content-protection-overview.md) makalesini gözden geçirin.
+* Visual Studio Code veya Visual Studio 'Yu yükler.
+* [Bir Media Services hesabı oluşturma](create-account-cli-quickstart.md).
+* API ['leri](access-api-cli-how-to.md)kullanarak Media Services API 'leri kullanmak için gereken kimlik bilgilerini alın.
 
 ## <a name="download-code"></a>Kodu indirin
 
@@ -66,15 +67,15 @@ Aşağıdaki komutu kullanarak, bu makalede anlatılan eksiksiz .NET örneğini 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
- 
-"Şifreleme ile AES-128" örnek bulunan [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) klasör.
+
+"AES ile şifreleme-128" örneği, [Encryptwithaes](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) klasöründe bulunur.
 
 > [!NOTE]
-> Örnek, uygulamayı her çalıştırdığınızda benzersiz kaynaklar oluşturur. Genelde dönüşümler ve ilkeler (var olan kaynak gerekli yapılandırmalara sahipse) gibi var olan kaynaklar yeniden kullanılır. 
+> Örnek, uygulamayı her çalıştırdığınızda benzersiz kaynaklar oluşturur. Genellikle, dönüşümler ve ilkeler gibi mevcut kaynakları yeniden kullanacaksınız (mevcut kaynak gerekli yapılandırmalara sahipseniz).
 
 ## <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK ile Media Services API’sini kullanmaya başlama
 
-.NET ile Media Services API’lerini kullanmaya başlamak için bir **AzureMediaServicesClient** nesnesi oluşturmanız gerekir. Nesneyi oluşturmak için, Azure AD kullanarak Azure’a bağlanmak üzere istemcinin ihtiyaç duyduğu kimlik bilgilerini sağlamanız gerekir. Makalenin başlangıcında kopyaladığınız koddaki **GetCredentialsAsync** işlevi, yerel yapılandırma dosyasında sağlanan kimlik bilgilerini temel alan ServiceClientCredentials nesnesini oluşturur. 
+.NET ile Media Services API 'Leri kullanmaya başlamak için bir **Azudüzeltici Aservicesclient** nesnesi oluşturun. Nesneyi oluşturmak için, Azure AD kullanarak Azure’a bağlanmak üzere istemcinin ihtiyaç duyduğu kimlik bilgilerini sağlamanız gerekir. Makalenin başlangıcında kopyaladığınız koddaki **GetCredentialsAsync** işlevi, yerel yapılandırma dosyasında sağlanan kimlik bilgilerini temel alan ServiceClientCredentials nesnesini oluşturur.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateMediaServicesClient)]
 
@@ -83,88 +84,88 @@ Aşağıdaki komutu kullanarak, bu makalede anlatılan eksiksiz .NET örneğini 
 Çıktı [Varlığı](https://docs.microsoft.com/rest/api/media/assets), kodlama işinizin sonucunu depolar.  
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateOutputAsset)]
- 
+
 ## <a name="get-or-create-an-encoding-transform"></a>Kodlama Dönüşümü alma veya oluşturma
 
-Yeni bir [Dönüşüm](https://docs.microsoft.com/rest/api/media/transforms) örneği oluştururken çıktı olarak neyi üretmesi istediğinizi belirtmeniz gerekir. Gerekli parametre, aşağıdaki kodda gösterildiği gibi bir **TransformOutput** nesnesidir. Her **TransformOutput** bir **Ön ayar** içerir. **Ön ayar**, video ve/veya ses işleme işlemlerinin istenen **TransformOutput** nesnesini oluşturmak üzere kullanılacak adım adım yönergelerini açıklar. Bu makalede açıklanan örnek, **AdaptiveStreaming** adlı yerleşik bir Ön Ayar kullanır. Ön Ayar, giriş çözünürlüğü ve bit hızını temel alarak, giriş videosunu otomatik olarak oluşturulan bir bit hızı basamağına (bit hızı-çözünürlük çiftleri) kodlar ve her bir bit hızı-çözünürlük çiftine karşılık gelen H.264 video ve AAC sesi ile ISO MP4 dosyaları üretir. 
+Yeni bir [Dönüşüm](https://docs.microsoft.com/rest/api/media/transforms) örneği oluştururken çıktı olarak neyi üretmesi istediğinizi belirtmeniz gerekir. Gerekli parametre, aşağıdaki kodda gösterildiği gibi bir **TransformOutput** nesnesidir. Her **TransformOutput** bir **Ön ayar** içerir. **Ön ayar**, video ve/veya ses işleme işlemlerinin istenen **TransformOutput** nesnesini oluşturmak üzere kullanılacak adım adım yönergelerini açıklar. Bu makalede açıklanan örnek, **AdaptiveStreaming** adlı yerleşik bir Ön Ayar kullanır. Önceden ayarlanmış, giriş videosunu, giriş çözünürlüğünü ve bit hızını temel alarak otomatik olarak oluşturulan bir bit hızı (bit hızı çözünürlük çiftleri) olarak kodlar ve ardından her bit hızı çözme çiftine karşılık gelen H. leneçini ve AAC ses ile ISO MP4 dosyaları üretir.
 
-Yeni bir [Dönüşüm](https://docs.microsoft.com/rest/api/media/transforms) oluşturmadan önce ilk olarak aşağıdaki kodda gösterildiği gibi **Get** yöntemi ile bir dönüşümün zaten var olup olmadığını denetlemeniz gerekir.  Media Services v3’te varlıklar üzerindeki **Get** yöntemleri, varlığın mevcut olmaması durumunda **null** değerini döndürür (büyük/küçük harfe duyarlı ad denetimi).
+Yeni bir [dönüşüm](https://docs.microsoft.com/rest/api/media/transforms)oluşturmadan önce, aşağıdaki kodda gösterildiği gibi **Get** metodunu kullanarak zaten bir tane var olup olmadığını denetleyin. Media Services v3’te varlıklar üzerindeki **Get** yöntemleri, varlığın mevcut olmaması durumunda **null** değerini döndürür (büyük/küçük harfe duyarlı ad denetimi).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#EnsureTransformExists)]
 
 ## <a name="submit-job"></a>İşi gönderme
 
-Yukarıda bahsedildiği gibi [Transform](https://docs.microsoft.com/rest/api/media/transforms) nesnesi tarif, [Job](https://docs.microsoft.com/rest/api/media/jobs) ise bu **Transform** nesnesini belirli bir giriş videosu veya ses içeriğine uygulamak için Media Services’e gönderilen gerçek istektir. **İş** giriş videosunun konumu ve çıktının konumu gibi bilgileri belirtir.
+Yukarıda bahsedildiği gibi [Transform](https://docs.microsoft.com/rest/api/media/transforms) nesnesi tarif, [Job](https://docs.microsoft.com/rest/api/media/jobs) ise bu **Transform** nesnesini belirli bir giriş videosu veya ses içeriğine uygulamak için Media Services’e gönderilen gerçek istektir. **İş** , giriş videonun konumu ve çıktının konumu gibi bilgileri belirtir.
 
-Bu öğreticide işin girişini doğrudan bir [HTTPs kaynak URL'sinden](job-input-from-http-how-to.md) alınan bir dosyaya göre oluşturacaksınız.
+Bu öğreticide, doğrudan bir [https kaynak URL](job-input-from-http-how-to.md)'sinden alınan bir dosyayı temel alarak iş girişini oluşturacağız.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#SubmitJob)]
 
 ## <a name="wait-for-the-job-to-complete"></a>İşin tamamlanmasını bekleyin
 
-İşin tamamlanması biraz sürüyor ve tamamlandığında bildirim almak istiyorsunuz. Aşağıdaki kod örneği, [İş](https://docs.microsoft.com/rest/api/media/jobs)’in durumu için hizmette nasıl yoklama yapılacağını gösterir. Yoklama, olası gecikme süresi nedeniyle üretim uygulamaları için önerilen en iyi uygulamalardan biri değildir. Yoklama, bir hesap üzerinde gereğinden fazla kullanılırsa kısıtlanabilir. Geliştiricilerin onun yerine Event Grid kullanmalıdır. Bkz. [Olayları özel bir web uç noktasına yönlendirme](job-state-events-cli-how-to.md).
+İşin tamamlaması biraz zaman alır. Ne zaman sorulduğunda bildirim almak istersiniz. Aşağıdaki kod örneği, [İş](https://docs.microsoft.com/rest/api/media/jobs)’in durumu için hizmette nasıl yoklama yapılacağını gösterir. Yoklama, olası gecikme nedeniyle üretim uygulamaları için önerilen en iyi uygulamadır. Yoklama, bir hesap üzerinde gereğinden fazla kullanılırsa kısıtlanabilir. Geliştiricilerin onun yerine Event Grid kullanmalıdır. Daha fazla bilgi için bkz. [olayları özel bir Web uç noktasına yönlendirme](job-state-events-cli-how-to.md).
 
-**İş** genellikle şu durumlardan geçer: **Zamanlanmış**, **sıraya alınan**, **işleme**, **tamamlandı** (son durumu). İş bir hatayla karşılaştıysa **Hata** durumunu alırsınız. İş iptal edilme sürecindeyse **İptal Ediliyor** ve **İptal Edildi** durumunu alırsınız.
+**İş** genellik şu aşamalardan geçer: **Zamanlandı**, **Kuyruğa Alındı**, **İşleniyor**, **Tamamlandı** (son aşama). İş bir hatayla karşılaşmışsa, **hata** durumunu alırsınız. İş iptal edilme süreciiyorsa, tamamlandığında iptal edip **Iptal etmiş** olursunuz **.**
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#WaitForJobToFinish)]
 
-## <a name="create-a-content-key-policy"></a>Bir içerik anahtarı ilkesi oluşturma
+## <a name="create-a-content-key-policy"></a>Içerik anahtarı Ilkesi oluşturma
 
-İçerik anahtarı, Varlıklarınıza güvenli bir şekilde erişilmesini sağlar. Oluşturmak için ihtiyacınız bir **içerik anahtarı ilke** istemcileri sonlandırmak için içerik anahtarını nasıl teslim edildiğini yapılandırır. İçerik anahtarı ile ilişkili **akış Bulucu**. Media Services, şifreleme anahtarlarını yetkili kullanıcıların sunan anahtar dağıtımı hizmetiyle de sağlar. 
+İçerik anahtarı, Varlıklarınıza güvenli bir şekilde erişilmesini sağlar. İçerik anahtarının son istemcilere nasıl teslim edildiğini yapılandıran bir **Içerik anahtarı ilkesi** oluşturmanız gerekir. İçerik anahtarı, **akış bulucunun**ilişkilendirildiği. Media Services, yetkili kullanıcılara şifreleme anahtarları sunan anahtar teslim hizmetini de sağlar.
 
-Bir akışa bir oynatıcı tarafından istendiğinde Media Services belirtilen anahtarı (Bu durumda, AES şifrelemesi kullanılarak.) içeriğinizi dinamik olarak şifrelemek için kullanır. Oynatıcı, akışın şifresini çözmek için anahtar teslim hizmetinden anahtarı ister. Hizmet, kullanıcının anahtarı alma yetkisine sahip olup olmadığını belirlemek için anahtar için belirlediğiniz içerik anahtarı ilkesini değerlendirir.
+Player tarafından bir akış istendiğinde, Media Services içeriğinizi dinamik olarak şifrelemek için belirtilen anahtarı kullanır (Bu durumda, AES şifrelemesini kullanarak). Akışın şifresini çözmek için, Player anahtarı anahtar teslim hizmetinden ister. Hizmet, kullanıcının anahtarı alma yetkisine sahip olup olmadığını belirlemek için anahtar için belirlediğiniz içerik anahtarı ilkesini değerlendirir.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetOrCreateContentKeyPolicy)]
 
-## <a name="create-a-streaming-locator"></a>Akış Bulucusu oluşturma
+## <a name="create-a-streaming-locator"></a>Akış Bulucu oluşturma
 
-Kodlama tamamlandıktan ve içerik anahtarı ilkesi ayarlandıktan sonra sıradaki adım, çıktı Varlığındaki videoyu yürütmek için istemcilerin kullanımına sunmaktır. Bunu iki adımda gerçekleştirirsiniz: 
+Kodlama tamamlandıktan ve içerik anahtarı ilkesi ayarlandıktan sonra sıradaki adım, çıktı Varlığındaki videoyu yürütmek için istemcilerin kullanımına sunmaktır. Videoyu iki adımda kullanılabilir hale getirebilirsiniz:
 
-1. Oluşturma bir [akış Bulucusu](https://docs.microsoft.com/rest/api/media/streaminglocators)
-2. İstemcilerin kullanabileceği akış URL'sini oluşturma. 
+1. Bir [akış Bulucu](https://docs.microsoft.com/rest/api/media/streaminglocators)oluşturun.
+2. İstemcilerin kullanabileceği akış URL'sini oluşturma.
 
-Oluşturma işlemi **akış Bulucu** yayımlama denir. Varsayılan olarak, **akış Bulucu** API çağrılarını hemen sonra geçerli olduğunu ve isteğe bağlı bir başlangıç ve bitiş zamanlarını yapılandırmadığınız sürece silinene kadar sürer. 
+**Akış bulucuyu** oluşturma işlemine yayımlama denir. Varsayılan olarak, **akış Bulucu** , API çağrılarını yaptıktan hemen sonra geçerlidir. İsteğe bağlı başlangıç ve bitiş zamanlarını yapılandırmadığınız sürece, silinene kadar sürer.
 
-Oluştururken bir [akış Bulucu](https://docs.microsoft.com/rest/api/media/streaminglocators), istenen belirtmeniz gerekecektir **StreamingPolicyName**. Bu öğreticide Azure Media Services'a içeriğin akış için nasıl yayımlanacağını belirten bir PredefinedStreamingPolicies öğesini kullanılmaktadır. Bu örnekte, AES zarfı şifreleme (key HTTPS ve DRM lisans yoluyla kayıttan yürütme istemciye teslim edildiğinden da ClearKey şifreleme bilinir) uygulanır.
+Bir [akış Bulucu](https://docs.microsoft.com/rest/api/media/streaminglocators)oluştururken, Istenen **Streamingpolicyname**' i belirtmeniz gerekir. Bu öğreticide, PredefinedStreamingPolicies 'den birini kullanıyoruz, bu da içeriğin akış için nasıl yayımlanacağını söyler Azure Media Services. Bu örnekte, AES zarf şifrelemesi uygulanır (anahtar, bir DRM lisansı değil HTTPS aracılığıyla kayıttan yürütme istemcisine teslim edildiğinden, bu şifreleme ClearKey şifrelemesi olarak da bilinir).
 
 > [!IMPORTANT]
-> Özel bir kullanırken [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies), medya hizmeti hesabınız için sınırlı sayıda gibi ilkelerin tasarlamanıza ve protokolleri ve aynı şifreleme seçenekleri gerektiğinde bunları sizin için akış bulucuları aşağıdaki yeniden kullanımı. Media Service hesabınızda StreamingPolicy girişlerinin sayısı için bir kota bulunur. Yeni bir StreamingPolicy her akış Bulucu için oluşturduğunuz değil.
+> Özel bir [Streamingpolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies)kullanırken, medya hizmeti hesabınız için sınırlı sayıda ilke kümesi tasarlamalı ve aynı şifreleme seçenekleri ve protokoller gerektiğinde bunları akış bulucular için yeniden kullanmanız gerekir. Media Service hesabınızda StreamingPolicy girişlerinin sayısı için bir kota bulunur. Her akış bulucu için yeni bir StreamingPolicy oluşturmamalısınız.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateStreamingLocator)]
 
 ## <a name="get-a-test-token"></a>Test belirteci alma
-        
-Bu öğreticide içerik anahtarı ilkesi için belirteç sınırlaması getirilmektedir. Belirteç kısıtlamalı ilkenin beraberinde bir güvenlik belirteci hizmeti (STS) tarafından verilmiş bir belirteç bulunmalıdır. Media Services, [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) biçimindeki belirteçleri destekler ve örnekte de bu belirteç yapılandırılmaktadır.
 
-ContentKeyIdentifierClaim kullanılan **içerik anahtarı ilke**, anahtar teslim hizmeti için sunulan belirteci içerik anahtarı tanımlayıcısı içinde olması gerektiğini anlamına gelir. Bu örnekte biz içerik eklemediğiniz akış Bulucu oluşturulurken anahtar, sistem oluşturulan bizim için rastgele bir tane. Test belirtecini oluşturmak için ContentKeyIdentifierClaim talebine yerleştirilecek ContentKeyId değerini almamız gerekiyor.
+Bu öğreticide içerik anahtarı ilkesi için belirteç sınırlaması getirilmektedir. Belirteç kısıtlamalı ilkenin beraberinde bir güvenlik belirteci hizmeti (STS) tarafından verilmiş bir belirteç bulunmalıdır. Media Services, [JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) biçimindeki belirteçleri destekler ve örnekte yapılandırdığımız şeydir.
+
+Contentkeyıdentifierclaim, **Içerik anahtarı ilkesinde**kullanılır. Bu, anahtar teslim hizmetine sunulan belirtecin, içindeki içerik anahtarının tanımlayıcısına sahip olması gerektiği anlamına gelir. Örnekte, akış bulucuyu oluştururken bir içerik anahtarı belirtmedik, sistem bizim için rastgele bir tane oluşturdu. Test belirtecini oluşturmak için Contentkeyıd öğesini Contentkeyıdentifierclaim talebine koymak üzere almalısınız.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
 
 ## <a name="build-a-dash-streaming-url"></a>DASH akış URL'si oluşturma
 
-Şimdi [akış Bulucu](https://docs.microsoft.com/rest/api/media/streaminglocators) olmuştur oluşturulmuş akış URL'lerini alabilirsiniz. URL oluşturmak için birleştirmek gereken [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) ana bilgisayar adı ve **akış Bulucu** yolu. Bu örnekte *varsayılan* **akış uç noktası** kullanılır. Bir medya hizmeti hesabı oluşturduğunuzda bu *varsayılan* **akış uç noktası** çağırmanız gerekir böylece durdurulmuş bir durumda olacaktır **Başlat**.
+[Akış bulucunun](https://docs.microsoft.com/rest/api/media/streaminglocators) oluşturuldığına göre, akış URL 'lerini alabilirsiniz. URL oluşturmak için, [Streamingendpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirmeniz gerekir. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir medya hizmeti hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olacaktır, bu yüzden **Start**'ı çağırmanız gerekir.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Media Services hesabınızdaki kaynakları temizleme
 
-Genel olarak, yeniden kullanmak için planlama nesneler dışında her şeyi temizlemeniz gerekir (genellikle, dönüşümler yeniden kullanır ve korunur akış Bulucular vb..). Deneme sonrasında hesabınızın temiz olmasını istiyorsanız, yeniden kullanmayı planlamadığınız kaynakları silmeniz gerekir.  Örneğin, aşağıdaki kod İşleri siler.
+Genellikle, yeniden kullanmayı planladığınız nesneler hariç her şeyi temizlemeniz gerekir (genellikle dönüşümler, akış Bulıcıları ve benzerlerini yeniden kullanacaksınız). Deneme sonrasında hesabınızın temiz olmasını istiyorsanız, kullanmayı planlamadığınız kaynakları silin. Örneğin, aşağıdaki kod Işleri siler:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticide oluşturduğunuz Media Services ve depolama hesapları dahil olmak üzere, kaynak grubunuzdaki kaynaklardan herhangi birine artık ihtiyacınız yoksa kaynak grubunu silebilirsiniz. 
+Bu öğreticide oluşturduğunuz Media Services ve depolama hesapları dahil olmak üzere, kaynak grubunuzdaki kaynaklardan herhangi birine artık ihtiyacınız yoksa kaynak grubunu silebilirsiniz.
 
-Aşağıdaki CLI komutunu yürütün:
+Aşağıdaki CLı komutunu yürütün:
 
 ```azurecli
 az group delete --name amsResourceGroup
 ```
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, görüşlerinizi, güncelleştirmeleri alın
+## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 
-Kullanıma [Azure Media Services topluluğu](media-services-community.md) soru sorun, görüşlerinizi ve medya hizmetleri hakkında güncelleştirmeler almak farklı yollarını görmek için makaleyi.
+Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

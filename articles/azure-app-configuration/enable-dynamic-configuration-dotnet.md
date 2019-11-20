@@ -13,12 +13,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7e28cdacce8eac4774683013ae1c30ca34ebfaad
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821714"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185246"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Öğretici: .NET Framework uygulamasında dinamik yapılandırmayı kullanma
 
@@ -31,9 +31,8 @@ Bu öğreticide, kodunuzda dinamik yapılandırma güncelleştirmelerini nasıl 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Uygulamanızı isteğe bağlı olarak bir uygulama yapılandırma deposu ile güncelleştirmek için uygulamanızı ayarlayın.
-> * En son yapılandırmayı uygulamanızın denetleyicilerine ekleme.
-
+> * Uygulama yapılandırma deposundaki değişikliklere yanıt olarak yapılandırmasını güncelleştirmek için .NET Framework uygulamanızı ayarlayın.
+> * Uygulamanıza en son yapılandırmayı ekleme.
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
@@ -52,13 +51,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     **Etiket** ve **içerik türü** şimdilik boş bırakın.
 
-## <a name="create-a-net-console-app"></a>.NET konsol uygulaması oluşturma
+## <a name="create-a-net-framework-console-app"></a>.NET Framework konsol uygulaması oluşturma
 
-1. Visual Studio 'yu başlatın ve **dosya** > **Yeni** > **Proje**' yi seçin.
+1. Visual Studio 'yu başlatın ve **dosya** > **Yeni** > **projesi**' ni seçin.
 
 1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)** . **İleri**’ye tıklayın.
 
-1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**’a tıklayın.
+1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**'a tıklayın.
 
 ## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
 1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Araştır** sekmesinde, *Microsoft. Extensions. Configuration. AzureAppConfiguration* NuGet paketini arayın ve projenize ekleyin. Bulamıyorsanız, **ön sürümü dahil** et onay kutusunu seçin.
@@ -135,7 +134,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     ![Uygulama başlatma yerel](./media/dotnet-app-run.png)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarların değerlerini güncelleştirin:
 
@@ -148,7 +147,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     ![Uygulama yerel olarak Yenile](./media/dotnet-app-run-refresh.png)
     
     > [!NOTE]
-    > Yenileme işleminin yapılandırmasını belirtirken `SetCacheExpiration` yöntemi kullanılarak önbelleğin süre sonu zamanı 10 saniye olarak ayarlandığı için, yapılandırma ayarı değeri yalnızca en son yenilemeden sonra en az 10 saniye geçtiğinde güncelleştirilir. Bu ayar.
+    > Önbellek sona erme saati, yenileme işleminin yapılandırmasını belirtirken `SetCacheExpiration` yöntemi kullanılarak 10 saniye olarak ayarlandığı için, yapılandırma ayarı değeri yalnızca bu ayar için en son yenilemeden bu yana en az 10 saniye geçtikten sonra güncelleştirilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -156,7 +155,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, uygulama yapılandırmasına erişimi kolaylaştırmak ve uygulamanız için kimlik bilgisi yönetimini geliştirmek üzere bir Azure yönetilen hizmet kimliği eklediniz. Uygulama yapılandırmasına erişimi kolaylaştıran Azure tarafından yönetilen bir hizmet kimliği ekleme hakkında bilgi edinmek için sonraki öğreticiye geçin.
+Bu öğreticide, uygulama yapılandırmasından yapılandırma ayarlarını dinamik olarak yenilemek için .NET Framework uygulamanızı etkinleştirdiniz. Azure yönetilen kimliğin uygulama yapılandırmasına erişimi kolaylaştırmak için nasıl kullanılacağını öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Yönetilen kimlik tümleştirmesi](./howto-integrate-azure-managed-service-identity.md)

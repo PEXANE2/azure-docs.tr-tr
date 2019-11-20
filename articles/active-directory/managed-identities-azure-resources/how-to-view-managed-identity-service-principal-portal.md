@@ -1,5 +1,5 @@
 ---
-title: Azure portal yönetilen bir kimliğin hizmet sorumlusunu görüntüleme
+title: Azure portal yönetilen bir kimliğin hizmet sorumlusunu görüntüleme-Azure AD
 description: Azure portal yönetilen bir kimliğin hizmet sorumlusunu görüntülemek için adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a8db0254f85980022115cab5d73f7f329b57001
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b51aeabaa4bb7fa9884c95cf0da2dc68ba5b64b0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827560"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184111"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Azure portal yönetilen bir kimliğin hizmet sorumlusunu görüntüleme
 
@@ -31,9 +31,9 @@ Bu makalede, Azure portal kullanarak yönetilen bir kimliğin hizmet sorumlusunu
  > [!NOTE] 
  > Hizmet sorumluları kurumsal uygulamalardır. 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın.
+- Azure kaynakları için yönetilen kimliklerle bilmiyorsanız kullanıma [genel bakış bölümünde](overview.md).
 - Henüz bir Azure hesabınız yoksa [ücretsiz hesap için kaydolun](https://azure.microsoft.com/free/).
 - [Bir sanal makine veya uygulama üzerinde sistem tarafından atanan kimliği](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) etkinleştirin. [](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity)
 
@@ -49,5 +49,5 @@ Bu yordamda, sistem tarafından atanan kimlik etkin bir VM 'nin hizmet sorumlusu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure kaynakları için Yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/overview)
+[Azure kaynakları için yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/overview)
 

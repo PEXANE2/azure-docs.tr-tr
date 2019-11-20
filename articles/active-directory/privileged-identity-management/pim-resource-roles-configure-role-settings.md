@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb6c2212549c3d92f9c1dbc42c31f838a704af2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144274"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74182735"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolü ayarlarını yapılandırma
 
@@ -57,6 +57,9 @@ Azure Kaynak rolü ayarlarını açmak için aşağıdaki adımları izleyin.
     ![Rol ayarları sayfasındaki rol atama sekmesi](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
 
 1. Bu rolün bildirim ayarı sekmesine ulaşmak için sayfanın alt kısmındaki **bildirim** sekmesini veya **Sonraki: etkinleştirme** düğmesini kullanın. Bu ayarlar, bu rolle ilgili tüm e-posta bildirimlerini denetler.
+
+    > [!NOTE]
+    > Bu bildirimler Kullanıcı arabirimi şu anda Azure bölgeleri ve abonelikleri genelinde alındı. Bu ayrıntılı bildirimleri yapılandıramıyorum, lütfen bir gün veya iki gün sonra yeniden denetleyin.
 
     ![Rol ayarları sayfasındaki rol bildirimleri sekmesi](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
 

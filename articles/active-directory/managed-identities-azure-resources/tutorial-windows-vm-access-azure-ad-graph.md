@@ -1,5 +1,5 @@
 ---
-title: Azure AD Graph API hizmetine erişmek için Windows VM sistem tarafından atanan yönetilen kimliği kullanma
+title: Öğretici`:`Azure AD grafiğine erişmek için Windows VM tarafından yönetilen kimlik kullanma
 description: Windows VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure AD Graph API hizmetine erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60938f26c27b9f94046b1be8e3d0cb6b247017c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 43ef467adb8970d410404c151d0028ee4cda92b9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307803"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183014"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Öğretici: Azure AD Graph API hizmetine erişmek için Windows VM sistem tarafından atanan yönetilen kimliği kullanma
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
-Bu öğretici, sistem tarafından atanan yönetilen bir kimlik bir Windows sanal makine (VM) için kendi grup üyeliklerini almak için Azure AD Graph API'sine erişmek için nasıl kullanılacağını gösterir. Azure kaynaklarına yönelik yönetilen kimlikler Azure tarafından otomatik olarak yönetilir ve kodunuza kimlik bilgileri girmenize gerek kalmadan Azure AD kimlik doğrulamasını destekleyen hizmetlerde kimlik doğrulaması yapmanıza olanak tanır.  Bu öğreticide, VM kimliğinizin Azure AD gruplarındaki üyeliğini sorgulayacaksınız. Örnek verecek olursak, grup bilgileri genellikle yetkilendirme kararlarında kullanılır. Arka planda, sanal makinenizin yönetilen kimliği Azure AD’de bir **Hizmet Sorumlusu** ile temsil edilir. Grup sorgusu yapmadan önce, VM'nin kimliğini temsil eden hizmet sorumlusunu Azure AD'deki bir gruba ekleyin. Azure PowerShell, Azure AD PowerShell veya Azure CLI kullanarak bunu yapabilirsiniz.
+Bu öğreticide, bir Windows sanal makinesi (VM) için sistem tarafından atanan yönetilen kimliğin, grup üyeliklerini almak üzere Azure AD Graph API erişmek üzere nasıl kullanılacağı gösterilir. Azure kaynaklarına yönelik yönetilen kimlikler Azure tarafından otomatik olarak yönetilir ve kodunuza kimlik bilgileri girmenize gerek kalmadan Azure AD kimlik doğrulamasını destekleyen hizmetlerde kimlik doğrulaması yapmanıza olanak tanır.  Bu öğreticide, VM kimliğinizin Azure AD gruplarındaki üyeliğini sorgulayacaksınız. Örnek verecek olursak, grup bilgileri genellikle yetkilendirme kararlarında kullanılır. Arka planda, sanal makinenizin yönetilen kimliği Azure AD’de bir **Hizmet Sorumlusu** ile temsil edilir. Grup sorgusu yapmadan önce, VM'nin kimliğini temsil eden hizmet sorumlusunu Azure AD'deki bir gruba ekleyin. Azure PowerShell, Azure AD PowerShell veya Azure CLI kullanarak bunu yapabilirsiniz.
 
 > [!div class="checklist"]
 > * Azure AD'ye Bağlanma
@@ -39,11 +39,11 @@ Bu öğretici, sistem tarafından atanan yönetilen bir kimlik bir Windows sanal
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 - Bir VM kimliğine Azure AD Graph erişimi vermek için hesabınıza Azure AD’de **Global Admin** rolünün atanmış olması gerekir.
-- Son yükleme [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) henüz yapmadıysanız. 
+- Henüz yapmadıysanız en son [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) 'i yükleyebilirsiniz. 
 
 ## <a name="connect-to-azure-ad"></a>Azure AD'ye Bağlanma
 
-VM’yi bir gruba atamak ve VM’ye grup üyeliklerini alma izni vermek için Azure AD’ye bağlanmanız gerekir. Birden fazla Kiracı varsa doğrudan veya Tenantıd parametresi ile Connect-AzureAD cmdlet'ini kullanabilirsiniz.
+VM’yi bir gruba atamak ve VM’ye grup üyeliklerini alma izni vermek için Azure AD’ye bağlanmanız gerekir. Birden çok kiracının olması durumunda doğrudan veya Tenantıd parametresi ile birlikte Connect-AzureAD cmdlet 'ini kullanabilirsiniz.
 
 ```powershell
 Connect-AzureAD
@@ -70,9 +70,9 @@ Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure A
 Bu öğreticide VM kimliğinize ```Directory.Read.All``` uygulama iznini kullanarak grup üyeliğini sorgulama olanağı vereceksiniz. Bu izni vermek için Azure AD'de Genel Yönetici rolü atanmış bir kullanıcı hesabı gerekir. Normalde Azure portalda uygulamanızın kaydını ziyaret edip izni oraya ekleyerek bir uygulama izni verebilirsiniz. Ancak, Azure kaynakları için yönetilen kimlikler uygulama nesnelerini Azure AD'ye kaydetmez, yalnızca hizmet sorumlularını kaydeder. Uygulama iznini kaydetmek için Azure AD PowerShell komut satırı aracını kullanırsınız. 
 
 Azure AD Graph:
-- Hizmet sorumlusu uygulama kimliği (uygulama izni verilirken kullanılır): 00000002-0000-0000-c000-000000000000
+- Hizmet Sorumlusu appId (uygulama izni verilirken kullanılır): 00000002-0000-0000-c000-000000000000
 - Kaynak Kimliği (Azure kaynakları için yönetilen kimliklerden erişim belirteci istenirken kullanılır): https://graph.windows.net
-- İzin kapsam başvurusu: [Azure AD Graph izinleri başvurusu](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- İzin kapsamı başvurusu: [Azure AD Graph İzinleri Başvurusu](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-azure-ad-powershell"></a>Azure AD PowerShell kullanarak uygulama izinleri verme
 
@@ -83,7 +83,7 @@ Bu seçeneği kullanmak için Azure AD PowerShell gerekir. Makinenizde yüklü d
    ```powershell
    Connect-AzureAD
    ```
-   Belirli bir Azure Active Directory'ye bağlanın _Tenantıd_ parametresini aşağıdaki gibi:
+   Belirli bir Azure Active Directory bağlanmak için, _Tenantıd_ parametresini aşağıdaki gibi kullanın:
 
    ```powershell
    Connect-AzureAD -TenantId "Object Id of the tenant"
@@ -165,7 +165,7 @@ Azure AD Graph kimlik doğrulamasında VM sistem tarafından atanan yönetilen k
    $AccessToken = $content.access_token
    ```
 
-5. Sanal makine kimliğinizin hizmet sorumlusuna ait Nesne Kimliğini (bu değeri önceki adımlarda bildirilen değişkenden alabilirsiniz: ``$ManagedIdentitiesServicePrincipal.ObjectId``) kullanarak, grup üyeliklerini almak üzere Azure AD Graph API’yi sorgulayabilirsiniz. Değiştirin `<OBJECT ID>` önceki adımdan gelen nesne Kimliğine sahip ve <`ACCESS-TOKEN>` daha önce alınan erişim belirteci ile:
+5. Sanal makine kimliğinizin hizmet sorumlusuna ait Nesne Kimliğini (bu değeri önceki adımlarda bildirilen değişkenden alabilirsiniz: ``$ManagedIdentitiesServicePrincipal.ObjectId``) kullanarak, grup üyeliklerini almak üzere Azure AD Graph API’yi sorgulayabilirsiniz. `<OBJECT ID>` önceki adımdaki nesne KIMLIĞIYLE ve <`ACCESS-TOKEN>` daha önce edinilen erişim belirteciyle değiştirin:
 
    ```powershell
    Invoke-WebRequest 'https://graph.windows.net/<Tenant ID>/servicePrincipals/<VM Object ID>/getMemberGroups?api-version=1.6' -Method POST -Body '{"securityEnabledOnly":"false"}' -Headers @{Authorization="Bearer $AccessToken"} -ContentType "application/json"

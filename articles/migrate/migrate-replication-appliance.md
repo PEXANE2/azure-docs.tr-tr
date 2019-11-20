@@ -1,73 +1,73 @@
 ---
-title: Azure geçişi çoğaltma Gereci mimarisi | Microsoft Docs
-description: Azure geçişi çoğaltma Gereci genel bir bakış sağlar
+title: Azure geçişi çoğaltma gereç mimarisi
+description: Aracı tabanlı geçiş için Azure geçişi çoğaltma gereci 'na genel bir bakış sağlar.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4f4dc307bee4190a0e94ace493053e0cfd01150e
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ba14767bde5d6cdca3a82dbe4e8a115ec25cc911
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811446"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186548"
 ---
-# <a name="replication-appliance"></a>Çoğaltma gereç
+# <a name="replication-appliance"></a>Çoğaltma gereci
 
-Bu makalede, Azure geçişi tarafından kullanılan çoğaltma Gereci açıklanır: Bir aracı tabanlı geçişi kullanarak sanal makineleri azure'a geçirme VMware Vm'lerini ve fiziksel makineler private/public bulut olduğunda server değerlendirmesi. 
+Bu makalede, Azure geçişi tarafından kullanılan çoğaltma gereci açıklanmaktadır: VMware VM 'Leri, fiziksel makineler ve özel/genel bulut VM 'lerini, aracı tabanlı bir geçiş kullanarak Azure 'a geçirirken sunucu değerlendirmesi. 
 
-Aracı [Azure geçişi](migrate-overview.md) hub. Hub'ı değerlendirme ve geçiş için yerel araçlar sağlar, aynı zamanda diğer Azure Hizmetleri ve üçüncü taraf bağımsız yazılım satıcılarına (ISV) araçları.
+Araç [Azure geçiş](migrate-overview.md) Merkezi ' nde kullanılabilir. Hub, değerlendirme ve geçiş için yerel araçlar, diğer Azure hizmetlerinden araçlar ve üçüncü taraf bağımsız yazılım satıcıları (ISV 'Ler) için de sağlar.
 
 
-## <a name="appliance-overview"></a>Gereç genel bakış
+## <a name="appliance-overview"></a>Gereç genel bakışı
 
-Çoğaltma gereç, tek bir makine, bir VMware VM veya fiziksel sunucu olarak şirket olarak dağıtılır. Bunu çalıştırır:
-- **Çoğaltma Gereci**: Çoğaltma Gereci iletişimleri koordine eder ve şirket içi VMware Vm'leri ve fiziksel sunucuları Azure'a çoğaltma için veri çoğaltma işlemlerini yönetir.
-- **İşlem sunucusu**: Çoğaltma gereçte varsayılan olarak yüklenir ve aşağıdaki işlem sunucusu:
-    - **Çoğaltma ağ geçidi**: Bu, bir çoğaltma ağ geçidi olarak davranır. Çoğaltma için etkinleştirilmiş makinelerden çoğaltma verilerini alır. Çoğaltma verileri önbelleğe alma, sıkıştırma ve şifreleme ile iyileştirir ve Azure'a gönderir.
-    - **Aracı yükleyici**: Mobility hizmetinin göndererek yükleme gerçekleştirir. Her çalıştırma için geçiş çoğaltmak istiyorsanız makine şirket içinde ve bu hizmeti yüklü olmalıdır.
+Çoğaltma gereci, VMware VM ya da fiziksel sunucu olarak tek bir şirket içi makine olarak dağıtılır. Çalışır:
+- **Çoğaltma**gereci: çoğaltma gereci iletişimleri koordine eder ve Azure 'a çoğaltılan şirket Içi VMware VM 'leri ve fiziksel sunucular için veri çoğaltmasını yönetir.
+- **İşlem sunucusu**: çoğaltma gereci üzerinde varsayılan olarak yüklenen işlem sunucusu ve şunları yapar:
+    - **Çoğaltma ağ geçidi**: çoğaltma ağ geçidi olarak davranır. Çoğaltma için etkinleştirilen makinelerden çoğaltma verilerini alır. Önbelleğe alma, sıkıştırma ve şifreleme ile çoğaltma verilerini iyileştirir ve Azure 'a gönderir.
+    - **Aracı yükleyicisi**: Mobility hizmetinin anında yüklenmesini gerçekleştirir. Bu hizmet, geçiş için çoğaltmak istediğiniz her şirket içi makinede yüklü ve çalışır olmalıdır.
 
-## <a name="appliance-deployment"></a>Gereç dağıtım
+## <a name="appliance-deployment"></a>Gereç dağıtımı
 
-**Olarak dağıtma** | **İçin kullanılan** | **Ayrıntılar**
+**Farklı dağıt** | **İçin kullanılan** | **Ayrıntılar**
 --- | --- |  ---
-VMware VM | Genellikle, Azure geçişi geçiş aracı ile aracı tabanlı geçiş kullanarak VMware Vm'lerini geçiş sırasında kullanılır. | Azure geçişi hub'ından OVA şablonu indirin ve vCenter Server'a VM Gereci oluşturmak için içeri aktarın.
-Fiziksel makine | Bir VMware altyapınız yoksa, şirket içi fiziksel sunucuları geçirirken ya da bir OVA şablonu kullanarak bir VMware VM oluşturmak zamanınız yoksa kullanılır. | Azure geçişi hub'ından yazılım yükleyicisini indirin ve gereç makine kurmak için çalıştırın.
+VMware VM | Genellikle, aracı tabanlı geçişle Azure geçişi geçiş aracı kullanılarak VMware VM 'Leri geçirilirken kullanılır. | OVA şablonunu Azure geçiş hub 'ından indirir ve gereç sanal makinesini oluşturmak için vCenter Server içeri aktarabilirsiniz.
+Fiziksel makine | Bir VMware altyapınız yoksa veya bir OVA şablonu kullanarak bir VMware VM 'si oluşturmıyorsanız şirket içi fiziksel sunucuları geçirirken kullanılır. | Bir yazılım yükleyicisini Azure geçiş hub 'ından indirir ve gereci makinesini kurmak için çalıştırın.
 
 ## <a name="appliance-deployment-requirements"></a>Gereç dağıtım gereksinimleri
 
-[Gözden geçirme](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) dağıtım gereksinimleri.
+Dağıtım gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) .
 
 
 
-## <a name="appliance-license"></a>Gereç lisans
-Gereç, 180 gün boyunca geçerli bir Windows Server 2016 değerlendirme lisansı ile birlikte gelir. Değerlendirme süresi sona erme yakın ise, indirin ve yeni Gereci dağıtmadan veya gerecinin VM işletim sistemi lisans etkinleştirmenizi öneririz.
+## <a name="appliance-license"></a>Gereç lisansı
+Gereç, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
 
 ## <a name="replication-process"></a>Çoğaltma işlemi
 
-1. Bir sanal makine için çoğaltmayı etkinleştirdiğinizde, belirtilen çoğaltma ilkesini kullanarak Azure depolama için ilk çoğaltma başlar. 
-2. Trafik, internet üzerinden genel uç noktaları Azure depolama alanına çoğaltır. Trafiği bir siteden siteye sanal özel ağ (VPN) bir şirket içi siteden Azure'a çoğaltılması desteklenmez.
-3. İlk çoğaltma sonlandırıldıktan sonra değişim çoğaltması başlar. Bir makine için izlenen değişiklikler kaydedilir.
-4. İletişim şu şekilde olur:
-    - Vm'leri HTTPS 443 numaralı bağlantı noktasında çoğaltma Gereci ile çoğaltma yönetimi için gelen iletişim.
-    - Çoğaltma gereç HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltma işlemlerini yönetir.
-    - VM'ler, gelen çoğaltma verilerini HTTPS 9443 numaralı bağlantı noktasında (çoğaltma gerecinde çalıştıran) işlem sunucusuna gönderir. Bu bağlantı noktası değiştirilebilir.
-    - İşlem sunucusu çoğaltma verilerini alıp, en iyi duruma getirir ve şifreler ve Azure depolamaya bağlantı noktası 443 üzerinden giden gönderir.
-5. Çoğaltma verilerinin bir önbellek depolama hesabına azure'da ilk land kaydeder. Bu günlükler işlenir ve bir Azure'da depolanan verileri yönetilen disk.
+1. Bir sanal makine için çoğaltmayı etkinleştirdiğinizde, Azure Storage 'a ilk çoğaltma, belirtilen çoğaltma ilkesi kullanılarak başlar. 
+2. Trafik, internet üzerinden Azure depolama genel uç noktalarına çoğaltılır. Şirket içi siteden Azure 'a siteden siteye sanal özel ağ (VPN) üzerinden trafik çoğaltma desteklenmez.
+3. İlk çoğaltma tamamlandıktan sonra Delta çoğaltma başlar. Bir makine için izlenen değişiklikler günlüğe kaydedilir.
+4. İletişim şu şekilde gerçekleşir:
+    - VM 'Ler, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında çoğaltma gereci ile iletişim kurar.
+    - Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.
+    - VM 'Ler, çoğaltma verilerini işlem sunucusuna (çoğaltma gereci üzerinde çalışır), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
+    - İşlem sunucusu çoğaltma verilerini alır, bunları iyileştirir ve şifreler ve 443 giden bağlantı noktası üzerinden Azure depolama 'ya gönderir.
+5. Çoğaltma verileri günlüğü, ilk olarak Azure 'da bir önbellek depolama hesabında yer açar. Bu Günlükler işlenir ve veriler bir Azure yönetilen diskinde depolanır.
 
 ![Mimari](./media/migrate-replication-appliance/architecture.png)
 
 ## <a name="appliance-upgrades"></a>Gereç yükseltmeleri
 
-Gereç el ile Azure geçişi hub'ından yükseltilir. Her zaman en son sürümünü çalıştırmanızı öneririz.
+Gereç, Azure geçiş hub 'ından el ile yükseltilir. En son sürümü her zaman çalıştırmanızı öneririz.
 
-1. Azure'da geçirme > sunucuları > Azure geçişi: Server değerlendirmesi, altyapı sunucularını tıklatın **yapılandırma sunucusu**.
-2. İçinde **yapılandırma sunucusu**, bir bağlantı görünür **aracı sürümü** çoğaltma gerecinin yeni bir sürüm olduğunda kullanılabilir. 
-3. Çoğaltma Gereci makinesinde yükleyiciyi indirin ve yükseltme yükleyin. Yükleyici, sürüm geçerli gerecinde çalıştıran algılar.
+1. Azure geçişi > sunucuları > Azure geçişi: Sunucu değerlendirmesi, altyapı sunucuları, **yapılandırma sunucuları**' na tıklayın.
+2. **Yapılandırma sunucularında**, çoğaltma gerecinin yeni bir sürümü kullanılabilir olduğunda **Aracı sürümünde** bir bağlantı görüntülenir. 
+3. Yükleyiciyi, çoğaltma gereci makinesine indirin ve yükseltmeyi yükleyin. Yükleyici, Gereç üzerinde çalışan geçerli sürümü algılar.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bilgi nasıl](tutorial-assess-vmware.md#set-up-the-appliance-vm) VMware için gerecini ayarlamak için.
-[Bilgi nasıl](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) gerecini ayarlamak için Hyper-V için.
+VMware için gereci ayarlamayı [öğrenin](tutorial-assess-vmware.md#set-up-the-appliance-vm) .
+Hyper-V için gereci ayarlamayı [öğrenin](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) .
 

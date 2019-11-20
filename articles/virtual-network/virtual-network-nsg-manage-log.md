@@ -1,11 +1,11 @@
 ---
-title: Ağ güvenlik grubu olay ve kural sayacı Azure tanılama günlükleri
+title: Ağ güvenlik grubu için tanılama günlüğü
 titlesuffix: Azure Virtual Network
 description: Azure ağ güvenlik grubu için olay ve kural sayacı tanılama günlüklerini etkinleştirme hakkında bilgi edinin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 047c92f1c50409e6a1716f0ef2f774464bd12a0a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 55fc18a718d0c69ba90a86ff6aea00d32a8f465b
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972774"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196743"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Ağ güvenlik grubu için tanılama günlüğü
 
@@ -48,7 +48,7 @@ Tanılama günlük kaydını etkinleştirmek için [Azure Portal](#azure-portal)
 
     | Ayar                                                                                     | Değer                                                          |
     | ---------                                                                                   |---------                                                       |
-    | Adı                                                                                        | Seçinizdeki bir ad.  Örneğin: *Mynsgdiagnostics*      |
+    | Ad                                                                                        | Seçinizdeki bir ad.  Örneğin: *Mynsgdiagnostics*      |
     | **Bir depolama hesabına arşivleme**, **bir olay hub 'ına akış**ve **Log Analytics gönderme** | Seçtiğiniz sayıda hedef seçebilirsiniz. Her biri hakkında daha fazla bilgi için bkz. [günlük hedefleri](#log-destinations).                                                                                                                                           |
     | LOG                                                                                         | Ya da her iki günlük kategorisini seçin. Her kategori için günlüğe kaydedilen veriler hakkında daha fazla bilgi edinmek için bkz. [günlük kategorileri](#log-categories).                                                                                                                                             |
 6. Günlükleri görüntüleyin ve çözümleyin. Daha fazla bilgi için bkz. [günlükleri görüntüleme ve çözümleme](#view-and-analyze-logs).
@@ -57,7 +57,7 @@ Tanılama günlük kaydını etkinleştirmek için [Azure Portal](#azure-portal)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, sürüm 1.0.0 veya sonraki bir sürümü gerekir. Yüklü sürümü bulmak için bilgisayarınızda `Get-Module -ListAvailable Az` ' ı çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, Azure 'da [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla oturum açmak için `Connect-AzAccount` ' ı da çalıştırmanız gerekir.
+[Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, sürüm 1.0.0 veya sonraki bir sürümü gerekir. Yüklü sürümü bulmak için bilgisayarınızda `Get-Module -ListAvailable Az` çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, Azure 'da [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla oturum açmak için de `Connect-AzAccount` çalıştırmanız gerekir.
 
 Tanılama günlük kaydını etkinleştirmek için mevcut bir NSG kimliği gerekir. Mevcut bir NSG yoksa, [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)ile bir tane oluşturabilirsiniz.
 
@@ -88,13 +88,13 @@ Set-AzDiagnosticSetting `
   -Enabled $true
 ```
 
-Her ikisi yerine yalnızca bir kategori ya da diğeri için veri kaydetmek istiyorsanız, önceki komuta `-Categories` seçeneğini, ardından *Networksecuritygroupevent* veya *Networksecuritygrouprulecounter*' ı ekleyin. Log Analytics çalışma alanından farklı bir [hedefe](#log-destinations) oturum açmak Istiyorsanız, Azure [depolama hesabı](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Olay Hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)'ı için uygun parametreleri kullanın.
+Her ikisi yerine yalnızca bir kategori veya diğeri için veri kaydetmek istiyorsanız, önceki komuta `-Categories` seçeneğini, ardından *Networksecuritygroupevent* veya *Networksecuritygrouprulecounter*' ı ekleyin. Log Analytics çalışma alanından farklı bir [hedefe](#log-destinations) oturum açmak Istiyorsanız, Azure [depolama hesabı](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Olay Hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)'ı için uygun parametreleri kullanın.
 
 Günlükleri görüntüleyin ve çözümleyin. Daha fazla bilgi için bkz. [günlükleri görüntüleme ve çözümleme](#view-and-analyze-logs).
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure Cloud Shell](https://shell.azure.com/bash)izleyen komutları veya BILGISAYARıNıZDAN Azure CLI 'yi çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. CLı 'yı bilgisayarınızdan çalıştırırsanız, sürüm 2.0.38 veya daha yeni bir sürüme ihtiyacınız vardır. Yüklü sürümü bulmak için bilgisayarınızda `az --version` ' ı çalıştırın. Yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli?view=azure-cli-latest). CLı 'yi yerel olarak çalıştırıyorsanız, Azure 'da [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla oturum açmak için `az login` ' ı da çalıştırmanız gerekir.
+[Azure Cloud Shell](https://shell.azure.com/bash)izleyen komutları veya BILGISAYARıNıZDAN Azure CLI 'yi çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. CLı 'yı bilgisayarınızdan çalıştırırsanız, sürüm 2.0.38 veya daha yeni bir sürüme ihtiyacınız vardır. Yüklü sürümü bulmak için bilgisayarınızda `az --version` çalıştırın. Yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli?view=azure-cli-latest). CLı 'yi yerel olarak çalıştırıyorsanız, Azure 'da [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla oturum açmak için de `az login` çalıştırmanız gerekir.
 
 Tanılama günlük kaydını etkinleştirmek için mevcut bir NSG kimliği gerekir. Mevcut bir NSG yoksa, [az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create)komutuyla bir tane oluşturabilirsiniz.
 
@@ -208,8 +208,8 @@ Tanılama günlüğü verilerini görüntülemeyi öğrenmek için bkz. [Azure t
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Daha önce denetim veya işletimsel Günlükler olarak bilinen [etkinlik günlüğü](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)hakkında daha fazla bilgi edinin. Etkinlik günlüğü, Azure dağıtım modelinden oluşturulan NSG 'ler için varsayılan olarak etkindir. Etkinlik günlüğündeki NSG 'ler üzerinde hangi işlemlerin tamamlandığını öğrenmek için aşağıdaki kaynak türlerini içeren girdileri arayın:
-  - Microsoft. ClassicNetwork/networkSecurityGroups
-  - Microsoft. ClassicNetwork/networkSecurityGroups/securityRules
+  - Microsoft.ClassicNetwork/networkSecurityGroups
+  - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups
-  - Microsoft. Network/networkSecurityGroups/securityRules
+  - Microsoft.Network/networkSecurityGroups/securityRules
 - Her akışın kaynak IP adresini dahil etmek için tanılama bilgilerinin nasıl günlüğe alınacağını öğrenmek için bkz. [NSG akış günlüğü](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

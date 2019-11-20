@@ -2,25 +2,25 @@
 title: Azure Service Fabric yayınları
 description: Service Fabric 'teki en son özellikler ve geliştirmeler için sürüm notları.
 author: athinanthny
-manager: chackdan
+manager: gamonroy
 ms.author: atsenthi
-ms.date: 6/10/2019
+ms.date: 06/10/2019
 ms.topic: conceptual
 ms.service: service-fabric
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 4a681b3a09def3a7b27b603cf5201aebdbf2e4bf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 496a5babe58be4354ffb10a331d35abc8a51b04d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72386221"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186512"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric yayınları
 
 | <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">sorun giderme kılavuzu</a> 
-| <a href="https://github.com/Azure/service-fabric-issues" target="blank">sorun izleme</a> 
-| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Destek seçenekleri</a> 
+| <a href="https://github.com/Azure/service-fabric-issues" target="blank">sorun Izleme</a> 
+| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">destek seçenekleri</a> 
 | <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">Desteklenen sürümler</a> 
 | <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">kod örnekleri</a>
 
@@ -28,9 +28,41 @@ Bu makalede, Service Fabric çalışma zamanına ve SDK 'lara yönelik en son ya
 
 ## <a name="whats-new-in-service-fabric"></a>Service Fabric yenilikleri
 
+### <a name="service-fabric-70"></a>Service Fabric 7,0
+
+Azure Service Fabric 7,0 artık kullanılabilir! Azure portal veya Azure Resource Manager dağıtımı aracılığıyla 7,0 ' e güncelleştirebilirsiniz. Tatil döneminde yer alan yayınlarda müşteri geri bildirimleri nedeniyle, kümeler otomatik olarak güncelleştirme için ayarlanan, Ocak tarihine kadar otomatik yükseltmeleri alacak şekilde başlamacağız.
+Ocak ayında, standart çıkış prosedürü ve otomatik yükseltmeler etkinleştirilmiş kümeler, 7,0 güncelleştirmesini otomatik olarak almaya başlayacaktır. Kullanıma alma başlamadan önce başka bir duyuru sağlayacağız.
+Ayrıca, bu ilkenin dikkate alınması gerektiğini göstermek için planlanmış yayın tarihlerimizi de güncelleştireceğiz. Gelecekteki [Sürüm zamanlamalarımızla](https://github.com/Microsoft/service-fabric/#service-fabric-release-schedule)ilgili güncelleştirmeler için buraya bakın.
+ 
+Bu, Service Fabric en son sürümüdür ve temel özellikler ve geliştirmeler ile yüklenir.
+
+### <a name="key-announcements"></a>Anahtar Duyurular
+ - [**Uygulama gizli dizileri Için Keyvaultreference desteği (Önizleme)** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references): Service Fabric [yönetilen kimlikleri](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) etkinleştirilmiş olan uygulamalar artık bir Key Vault gizli URL 'sine doğrudan bir ortam değişkeni, uygulama parametresi veya kapsayıcı deposu kimlik bilgileri olarak başvurabilir. Service Fabric, uygulamanın yönetilen kimliğini kullanarak gizli anahtarı otomatik olarak çözer. 
+     
+- **Durum bilgisi olmayan hizmetler Için geliştirilmiş yükseltme güvenliği**: bir uygulama yükseltmesi sırasında kullanılabilirliği garantilemek için, [durum bilgisi olmayan hizmetler için en az sayıda örnek](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) belirlemek için kullanılabilir kabul edilecek yeni yapılandırmaların tanıtıldık. Bu değer daha önce tüm hizmetler için 1 idi ve değiştirilemez. Bu yeni hizmet başına güvenlik denetimi sayesinde, hizmetlerinizin uygulama yükseltmeleri sırasında, küme yükseltmeleri sırasında ve Service Fabric sistem durumu ve güvenlik denetimlerine dayanan diğer bakımda en az sayıda örnek korumasını sağlayabilirsiniz.
+  
+- [**Kullanıcı Hizmetleri Için kaynak sınırları**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance#enforcing-the-resource-limits-for-user-services): kullanıcılar, Service Fabric sistem hizmetlerinin kaynak tükenmesi gibi senaryoları engellemek için bir düğümdeki Kullanıcı Hizmetleri için kaynak sınırları ayarlayabilir. 
+  
+- Bir çoğaltma türü için [**çok yüksek hizmet taşıma maliyeti**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost) . Çok yüksek taşıma maliyeti olan çoğaltmalar yalnızca kümede başka bir şekilde sabitlenemez bir kısıtlama ihlali varsa taşınır. "Çok yüksek" taşıma maliyetinin kullanımının makul olduğu ve ek konular açısından daha fazla bilgi için lütfen belgelere bakın.
+  
+-  **Ek küme güvenliği denetimleri**: Bu sürümde, yapılandırılabilir bir çekirdek düğüm çekirdeği güvenlik denetimi tanıtıldık. Bu, küme yaşam döngüsü ve yönetim senaryolarında kaç çekirdek düğümünün kullanılabilir olması gerektiğini özelleştirmenizi sağlar. Yapılandırılan değerin altında kümeyi alacak işlemler engellenir. Günümüzde varsayılan değer her zaman çekirdek düğümlerinin bir çekirdektir. Örneğin, 7 çekirdek düğümünüz varsa, 5 tohum düğümü altına almanız gereken bir işlem varsayılan olarak engellenir. Bu değişiklik ile, en az bir çekirdek düğümün aynı anda kapatılmasını sağlayan 6 Minimum güvenli değerini yapabilirsiniz.
+   
+- [**Service Fabric Explorer 'de yedekleme ve geri yükleme hizmetinin yönetilmesine**](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)yönelik destek eklendi. Bu, aşağıdaki etkinlikleri doğrudan SFX içinden mümkün hale getirir: yedekleme ve geri yükleme hizmetini keşfetme, yedekleme ilkesi oluşturma, otomatik yedeklemeleri etkinleştirme, geçici yedeklemeler alma, geri yükleme işlemlerini tetikleme ve var olan yedeklemelere göz atma.
+
+- [**Reliablecollectionsmissingtypestool**](https://github.com/hiadusum/ReliableCollectionsMissingTypesTool)'un kullanılabilirliği duyuruldu: Bu araç, çalışan bir uygulama yükseltmesi sırasında güvenilir koleksiyonlarda kullanılan türlerin ileriye ve geriye dönük olarak uyumlu olduğunu doğrulamaya yardımcı olur. Bu, eksik veya uyumsuz türler nedeniyle yükseltme hatalarının veya veri kaybını ve verilerin bozulmasını önlemeye yardımcı olur.
+
+- [**İkincil çoğaltmalarda kararlı okumaları etkinleştirin**](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-configuration#configuration-names-1): kararlı okumalar, ikincil çoğaltmaları, çekirdek erişimi olan değerleri döndürmeye yönelik olarak kısıtlar.
+
+Ayrıca, bu sürüm diğer yeni özellikler, hata düzeltmeleri ve desteklenebilirlik, güvenilirlik ve performans iyileştirmeleri içerir. Değişikliklerin tam listesi için lütfen [sürüm notlarına](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)bakın.
+
+| Sürüm tarihi | Yayınla | Daha fazla bilgi |
+|---|---|---|
+| 18 Kasım 2019 | [Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [Sürüm notları](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
+
+
 ### <a name="service-fabric-65"></a>Service Fabric 6,5
 
-En son Service Fabric sürümü, küme ve uygulama yaşam döngüsü yönetimini kolaylaştırmak için desteklenebilirlik, güvenilirlik ve performans iyileştirmeleri, yeni özellikler, hata düzeltmeleri ve geliştirmeler içerir.
+Bu sürüm, küme ve uygulama yaşam döngüsü yönetimini kolaylaştırmak için desteklenebilirlik, güvenilirlik ve performans iyileştirmeleri, yeni özellikler, hata düzeltmeleri ve geliştirmeler içerir.
 
 > [!IMPORTANT]
 > Service Fabric 6,5, Visual Studio 2015 ' de Service Fabric araçları desteğiyle son sürümdür. Müşterilerin ileri giderek [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) ' e taşınması önerilir.
@@ -59,7 +91,7 @@ Daha fazla ayrıntı için [Service Fabric 6,5 sürüm notlarına](https://githu
 
 ### <a name="service-fabric-65-releases"></a>Service Fabric 6,5 yayınları
 
-| Sürüm tarihi | Yayınlayın | Daha fazla bilgi |
+| Sürüm tarihi | Yayınla | Daha fazla bilgi |
 |---|---|---|
 | 11 Haziran 2019 | [Azure Service Fabric 6,5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [Sürüm notları](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
 | 2 Temmuz 2019 | [Azure Service Fabric 6,5 yenileme sürümü](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [Sürüm notları](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
@@ -72,7 +104,7 @@ Daha fazla ayrıntı için [Service Fabric 6,5 sürüm notlarına](https://githu
 
 ### <a name="service-fabric-64-releases"></a>Service Fabric 6,4 yayınları
 
-| Sürüm tarihi | Yayınlayın | Daha fazla bilgi |
+| Sürüm tarihi | Yayınla | Daha fazla bilgi |
 |---|---|---|
 | 30 Kasım 2018 | [Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/)  | [Sürüm notları](https://msdnshared.blob.core.windows.net/media/2018/12/Service-Fabric-6.4-Release.pdf)|
 | 12 Aralık 2018 | [Windows kümeleri için Azure Service Fabric 6,4 yenileme sürümü](https://blogs.msdn.microsoft.com/azureservicefabric/2018/12/12/azure-service-fabric-6-4-refresh-for-windows-clusters/)  | [Sürüm notları](https://msdnshared.blob.core.windows.net/media/2018/12/Links.pdf)  |

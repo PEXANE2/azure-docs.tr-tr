@@ -6,15 +6,15 @@ keywords: kodlama; kodlayıcılar; medya
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 10/10/2019
+ms.date: 11/18/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: aa5eae3e40b8578f826b1b275995bbb3d346e586
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300936"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186030"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Önerilen canlı akış kodlayıcıları
 
@@ -31,7 +31,7 @@ Media Services ile canlı kodlama hakkında ayrıntılı bilgi için bkz. [Media
 
 ## <a name="live-encoders-that-output-rtmp"></a>RTMP çıkış yapan canlı kodlayıcılar
 
-Media Services, aşağıdaki RTMP çıkışı sağlayan gerçek zamanlı kodlayıcılardan birinin kullanılmasını önerir. Desteklenen URL şemaları `rtmp://` veya `rtmps://` ' dir.
+Media Services, aşağıdaki RTMP çıkışı sağlayan gerçek zamanlı kodlayıcılardan birinin kullanılmasını önerir. Desteklenen URL şemaları `rtmp://` veya `rtmps://`.
 
 > [!NOTE]
 > RTMP üzerinden akış yaparken güvenlik duvarı ve/veya ara sunucu ayarlarını kontrol ederek 1935 ve 1936 numaralı giden TCP bağlantı noktalarının açık olduğundan emin olun.
@@ -49,10 +49,13 @@ Media Services, aşağıdaki RTMP çıkışı sağlayan gerçek zamanlı kodlay�
 - Tricaster Mini HD-4
 - VMIX
 - xStream
+- [FFmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 ve Hero 8
+- [Restream.io](https://restream.io/)
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>Parçalanan MP4 veren canlı kodlayıcılar
 
-Media Services, çıkış olarak çoklu bit hızına Kesintisiz Akış (parçalanmış MP4) sahip aşağıdaki canlı kodlayıcılardan birini kullanmanızı önerir. Desteklenen URL şemaları `http://` veya `https://` ' dir.
+Media Services, çıkış olarak çoklu bit hızına Kesintisiz Akış (parçalanmış MP4) sahip aşağıdaki canlı kodlayıcılardan birini kullanmanızı önerir. Desteklenen URL şemaları `http://` veya `https://`.
 
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
@@ -60,9 +63,11 @@ Media Services, çıkış olarak çoklu bit hızına Kesintisiz Akış (parçala
 - Envivio 4Caster C4 Gen III
 - Imagine Communications Selenıo MCP3
 - Media Excel Hero Live ve Hero 4K (UHD/HEVC)
+- [FFmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  Canlı olayları birden çok dilde (örneğin, bir Ingilizce ses izi ve bir Ispanyolca ses izi) akışdıysanız, canlı akışı bir geçişli canlı olaya göndermek üzere yapılandırılmış medya Excel Live Encoder ile bunu yapabilirsiniz.
+
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Şirket içi Live Encoder ayarlarını yapılandırma
 
@@ -74,9 +79,9 @@ Canlı olay türleriniz için geçerli olan ayarlar hakkında daha fazla bilgi i
 
 ### <a name="configuration-tips"></a>Yapılandırma ipuçları
 
-- Mümkün olduğunda, bir hardkablolu internet bağlantısı kullanın.
+- Mümkün olduğunda, bir sabit internet bağlantısı kullanın.
 - Bant genişliği gereksinimlerini belirlerken, akış bit hızları ' nı çift belirleyin. Zorunlu olmasa da bu basit kural, ağ tıkanıklığı etkisini azaltmaya yardımcı olur.
-- Yazılım tabanlı kodlayıcılar kullanırken gereksiz programları kapatın.
+- Yazılım tabanlı kodlayıcılar kullanırken, gereksiz tüm programları kapatın.
 - Kodlayıcı yapılandırmasını başlattıktan sonra dönüştürme işlemi, olayda olumsuz etkilere sahiptir. Yapılandırma değişiklikleri olayın kararsız hale gelmesine neden olabilir. 
 - Olaylarınızı ayarlamak için kendinize bir zaman kazandırdığınızdan emin olun. Yüksek ölçekli olaylar için, kurulum 'un etkinlikten bir saat öncesine başlamasını öneririz.
 
@@ -128,7 +133,7 @@ Adım 11 hariç [geçiş canlı olay doğrulaması ile](#pass-through-live-event
 
 ### <a name="email-your-recorded-settings"></a>Kayıtlı ayarlarınıza e-posta gönderin
 
-Son olarak, kayıtlı ayarlarınızı ve Canlı Arşiv parametrelerinizi, tüm otomatik doğrulama denetimlerinin başarılı olduğunu belirten bir bildirim olarak amshelp@microsoft.com ' dan Azure Media Services. Ayrıca, herhangi bir izleme için iletişim bilgilerinizi ekleyin. Azure Media Services ekibine bu işlemle ilgili tüm soruları ile başvurabilirsiniz.
+Son olarak, kayıtlı ayarlarınızı ve Canlı Arşiv parametrelerinizi, tüm otomatik doğrulama denetimlerinin başarılı olduğunu belirten bir bildirim olarak amshelp@microsoft.com Azure Media Services için e-posta ile gönderin. Ayrıca, herhangi bir izleme için iletişim bilgilerinizi ekleyin. Azure Media Services ekibine bu işlemle ilgili tüm soruları ile başvurabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

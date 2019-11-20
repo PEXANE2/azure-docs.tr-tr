@@ -1,5 +1,5 @@
 ---
-title: Ön kapı Azure PowerShell için bir Web uygulaması güvenlik duvarı hız sınırı kuralı yapılandırma
+title: Ön kapı için WAF hız limiti kuralını Yapılandırma-Azure PowerShell
 description: Varolan bir ön kapı uç noktası için hız limiti kuralını yapılandırmayı öğrenin.
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: ce9ace445d87479da4047da205b59e79402ece07
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517143"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186618"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell kullanarak bir Web uygulaması güvenlik duvarı hız sınırı kuralı yapılandırma
 Azure ön kapısının Azure Web uygulaması güvenlik duvarı (WAF) hız sınırı kuralı, tek dakikalık bir süre içinde tek bir istemci IP 'sinden izin verilen isteklerin sayısını denetler.

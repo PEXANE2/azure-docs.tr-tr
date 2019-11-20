@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 4766d48a748fedd82532f2ac49223ab0460b9ef7
-ms.sourcegitcommit: fa41a56357de487b10e54711fbbdbd4a373fa67c
-ms.translationtype: HT
+ms.openlocfilehash: 89d0254fc758834c437f347e6ecb7bcafc1fe467
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74153564"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185988"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>Video Indexer ile canlı akış analizi
 
@@ -27,7 +27,7 @@ Bu makalede açıklanan bir çözüm, müşterilerin canlı akışlar üzerinde 
 
 *Şekil 1 – Canlı akışta Video Indexer meta verileri görüntüleyen örnek yürütücü*
 
-[Akış analizi çözümü](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/blob/master/media-functions-for-logic-app/LiveStreamAnalysis.md) , Azure işlevlerini ve iki Logic Apps kullanır ve canlı bir programı, Azure Media Services video Indexer ile gerçek zamanlı olarak gösteren canlı bir kanaldan işleyecek şekilde Azure Media Player görüntüler.
+[Akış analizi çözümü](https://aka.ms/livestreamanalysis) , Azure işlevlerini ve iki Logic Apps kullanır ve canlı bir programı, Azure Media Services video Indexer ile gerçek zamanlı olarak gösteren canlı bir kanaldan işleyecek şekilde Azure Media Player görüntüler.
 
 Yüksek düzeyde, bu iki ana adımdan oluşur. İlk adım her 60 saniyede bir çalışır ve son 60 saniyelik bir alt klip alır, bundan bir varlık oluşturur ve Video Indexer aracılığıyla dizinler. İkinci adım, dizin oluşturma işlemi tamamlandıktan sonra çağrılır. Yakalanan Öngörüler işlenir, Azure Cosmos DB gönderilir ve dizin oluşturulan alt klip silinir.
 

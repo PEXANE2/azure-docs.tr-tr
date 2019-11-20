@@ -1,18 +1,18 @@
 ---
-title: Azure PowerShell kullanarak birden çok genel IP adresi ile Azure Güvenlik Duvarı dağıtma
+title: PowerShell kullanarak birden çok genel IP adresi ile Azure Güvenlik Duvarı dağıtma
 description: Bu makalede, Azure PowerShell kullanarak birden çok genel IP adresi ile Azure Güvenlik Duvarı dağıtmayı öğreneceksiniz.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: ba2736ae69d0bf7feff5f852da2446bfa7a722a6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ad54b60d8f15e36636f887015d97967740123669
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325245"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195876"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Azure PowerShell kullanarak birden çok genel IP adresi ile Azure Güvenlik Duvarı dağıtma
 

@@ -1,5 +1,5 @@
 ---
-title: Sorun giderme-Azure ön kapı hizmeti yapılandırmanızla ilgili sorunları giderin | Microsoft Docs
+title: Azure ön kapı hizmeti yapılandırma sorunlarını giderme
 description: Bu öğreticide, ön kapılarınız için yüz yüze olabilecek bazı yaygın sorunları nasıl giderebileceğinizi öğreneceksiniz.
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 420d7afe0d825da9149f2cb2ae1540a2805b357c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c0d6303620b92368e422b54beab4f9c346d022a5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335884"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184571"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Yaygın yönlendirme sorunlarını giderme
 Bu makalede, Azure ön kapı hizmeti yapılandırmanız için kullanabileceğiniz bazı yaygın yönlendirme sorunları nasıl giderilir açıklanmaktadır. 

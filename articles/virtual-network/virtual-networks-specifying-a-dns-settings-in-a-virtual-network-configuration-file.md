@@ -1,5 +1,5 @@
 ---
-title: Sanal ağ yapılandırma dosyasında DNS ayarlarını belirtme | Microsoft Docs
+title: Azure VNet yapılandırma dosyasında DNS ayarlarını belirtme
 description: Klasik dağıtım modelinde bir sanal ağ yapılandırma dosyası kullanarak bir sanal ağdaki DNS sunucusu ayarlarını değiştirme
 services: virtual-network
 documentationcenter: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: c15d73673c19383deabe15ef30026990dfd138b9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: db8b1817bb14d293632d16fe02792dbb85766559
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059087"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196650"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Bir sanal ağ yapılandırma dosyasında DNS ayarlarını belirtme
-Bir ağ yapılandırma dosyası, etki alanı adı sistemi (DNS) ayarlarını belirtmek için kullanabileceğiniz iki öğeye sahiptir: **Dnsservers** ve **dnsserverref**. **Dnservers** öğesine IP adreslerini ve başvuru ADLARıNı belirterek DNS sunucularının bir listesini ekleyebilirsiniz. Daha sonra, DnsServers öğesinden hangi DNS sunucusu girişlerinin sanal ağınızdaki farklı ağ siteleri için kullanıldığını belirtmek için bir **Dnsserverref** öğesi kullanabilirsiniz.
+Bir ağ yapılandırma dosyası, etki alanı adı sistemi (DNS) ayarlarını belirtmek için kullanabileceğiniz iki öğeye sahiptir: **dnsservers** ve **dnsserverref**. **Dnservers** öğesine IP adreslerini ve başvuru ADLARıNı belirterek DNS sunucularının bir listesini ekleyebilirsiniz. Daha sonra, DnsServers öğesinden hangi DNS sunucusu girişlerinin sanal ağınızdaki farklı ağ siteleri için kullanıldığını belirtmek için bir **Dnsserverref** öğesi kullanabilirsiniz.
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 

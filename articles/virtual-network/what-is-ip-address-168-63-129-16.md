@@ -1,5 +1,5 @@
 ---
-title: IP adresi 168.63.129.16 nedir? | Microsoft Docs
+title: IP adresi 168.63.129.16 nedir? | Microsoft Belgeleri
 description: IP adresi 168.63.129.16 ve kaynaklarınızın nasıl çalıştığı hakkında bilgi edinin.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 0ea8a8ec1a92a7dbc01dddc175f7116825ba00f9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067775"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196664"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP adresi 168.63.129.16 nedir?
 
@@ -35,6 +35,7 @@ ms.locfileid: "71067775"
 ## <a name="scope-of-ip-address-1686312916"></a>IP adresi 168.63.129.16 kapsamı
 
 168.63.129.16 genel IP adresi tüm bölgelerde ve tüm ulusal bulutlarda kullanılır. Bu özel genel IP adresi Microsoft 'a aittir ve değişmeyecektir. Varsayılan ağ güvenlik grubu kuralı tarafından izin verilir. Tüm yerel güvenlik duvarı ilkelerinde bu IP adresine hem gelen hem de giden yönlere izin vermeniz önerilir. Yalnızca iç Azure platformu bu IP adresinden bir ileti kaynağı olabileceğinden, bu özel IP adresi ve kaynakları arasındaki iletişim güvenlidir. Bu adres engellenirse, çeşitli senaryolarda beklenmeyen davranış oluşabilir.
+Kablolu sunucu: 80, 443 ve 32526 ile iletişime izin vermek için en azından aşağıdaki bağlantı noktalarının açılması gerekir.
 
 [Azure Load Balancer sistem durumu araştırmaları](../load-balancer/load-balancer-custom-probe-overview.md) bu IP adresinden kaynaklanır. Bu IP adresini engellerseniz, araştırmalar başarısız olur.
 

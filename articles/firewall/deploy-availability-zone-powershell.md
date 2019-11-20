@@ -1,39 +1,39 @@
 ---
-title: Azure güvenlik duvarı Azure PowerShell kullanarak kullanılabilirlik alanları ile dağıtma
-description: Bu makalede, bir Azure güvenlik duvarı Azure PowerShell ile kullanılabilirlik alanları ile dağıtmayı öğrenin.
+title: PowerShell kullanarak Kullanılabilirlik Alanları Azure Güvenlik duvarını dağıtma
+description: Bu makalede, Azure PowerShell kullanarak Kullanılabilirlik Alanları bir Azure Güvenlik Duvarı dağıtmayı öğreneceksiniz.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 7/10/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 56958eedceeb4602589d65d5e0eb7b10e8a9ff2d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 33dcebf14f4d534962783a30ec94f7ff6529ae0d
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704007"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195919"
 ---
-# <a name="deploy-an-azure-firewall-with-availability-zones-using-azure-powershell"></a>Bir Azure güvenlik duvarı Azure PowerShell kullanarak kullanılabilirlik alanları ile dağıtma
+# <a name="deploy-an-azure-firewall-with-availability-zones-using-azure-powershell"></a>Azure PowerShell kullanarak Kullanılabilirlik Alanları Azure Güvenlik Duvarı dağıtma
 
-Azure güvenlik duvarı, yüksek kullanılabilirlik için birden fazla kullanılabilirlik yaymasına izin dağıtımı sırasında yapılandırılabilir.
+Azure Güvenlik Duvarı, daha fazla kullanılabilirlik için dağıtım sırasında birden fazla Kullanılabilirlik Alanları yayılarak yapılandırılabilir.
 
-Bu özellik aşağıdaki senaryolar sağlar:
+Bu özellik aşağıdaki senaryolara izin vermez:
 
-- % 99,99 çalışma süresi kullanılabilirliğini artırabilirsiniz. Daha fazla bilgi için bkz: Azure Güvenlik Duvarı [hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). İki veya daha fazla kullanılabilirlik seçildiğinde % 99,99 çalışma süresi SLA sunulur.
-- Azure güvenlik duvarı yalnızca yakınlığı nedeniyle için belirli bir bölgesine hizmeti standart % 99,95 oranında SLA kullanarak da ilişkilendirebilirsiniz.
+- Kullanılabilirliği% 99,99 çalışma süresi olarak artırabilirsiniz. Daha fazla bilgi için bkz. Azure Güvenlik Duvarı [hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). İki veya daha fazla Kullanılabilirlik Alanları seçildiğinde% 99,99 çalışma süresi SLA 'Sı sunulur.
+- Ayrıca, Azure Güvenlik duvarını belirli bir bölgeye yalnızca yakınlık nedenleriyle, hizmet standardı% 99,95 SLA ile ilişkilendirebilirsiniz.
 
-Azure güvenlik duvarı kullanılabilirlik alanları hakkında daha fazla bilgi için bkz. [Azure güvenlik duvarı nedir?](overview.md)
+Azure Güvenlik Duvarı Kullanılabilirlik Alanları hakkında daha fazla bilgi için bkz. [Azure Güvenlik Duvarı nedir?](overview.md)
 
-Aşağıdaki Azure PowerShell örneği, kullanılabilirlik alanları ile bir Azure güvenlik duvarının nasıl dağıtılacağı gösterilmektedir.
+Aşağıdaki Azure PowerShell örnek, Kullanılabilirlik Alanları ile Azure Güvenlik duvarını nasıl dağıtacağınızı gösterir.
 
-## <a name="create-a-firewall-with-availability-zones"></a>Kullanılabilirlik alanları ile güvenlik duvarı oluşturma
+## <a name="create-a-firewall-with-availability-zones"></a>Kullanılabilirlik Alanları bir güvenlik duvarı oluşturma
 
-Bu örnek, bölge 1, 2 ve 3 bir güvenlik duvarı oluşturur.
+Bu örnek, 1, 2 ve 3. bölgelerde bir güvenlik duvarı oluşturur.
 
-Belirli bir bölge yok, standart genel IP adresinin oluşturulduğu sırada belirtilir. Bu, varsayılan olarak bölgesel olarak yedekli bir IP adresi oluşturur. Standart genel IP adresleri, tek bir bölge veya tüm bölgeler yapılandırılabilir.
+Standart genel IP adresi oluşturulduğunda, belirli bir bölge belirtilmez. Bu, varsayılan olarak bölgesel olarak yedekli bir IP adresi oluşturur. Standart genel IP adresleri tüm bölgelerde ya da tek bir bölgede yapılandırılabilir.
 
-2 bölgesinde bir Güvenlik Duvarı'nda Bölge 1 ve bir IP adresi bulunamayacağından bilmesi önemlidir. Ancak, yakınlık amacıyla aynı tek bölgesinde bir Güvenlik Duvarı'nda Bölge 1 ve tüm bölgelerde IP adresi veya bir güvenlik duvarı ve bir IP adresi olabilir.
+Bölge 1 ' de bir güvenlik duvarına ve bölge 2 ' deki bir IP adresine sahip olmadığınızdan bilmeniz önemlidir. Ancak bölge 1 ' de, tüm bölgelerde IP adresinde bir güvenlik duvarınız veya bir güvenlik duvarı ve aynı tek bölgedeki bir IP adresi için yakınlık amaçlarına sahip olabilirsiniz.
 
 ```azurepowershell
 $rgName = "resourceGroupName"
@@ -60,4 +60,4 @@ New-AzFirewall `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Azure güvenlik duvarı günlüklerini izleyin](./tutorial-diagnostics.md)
+- [Öğretici: Azure Güvenlik Duvarı günlüklerini izleme](./tutorial-diagnostics.md)

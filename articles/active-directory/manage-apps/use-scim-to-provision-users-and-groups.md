@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a24ebd8aca3cebab7898689b00e590298a8d1e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: d8bb9b507763c935ab244c42584120a279063954
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144733"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195461"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) ile SCıM Kullanıcı sağlama
 
@@ -65,7 +65,7 @@ Hem kullanıcıları hem de grupları veya aşağıda gösterilen tüm özniteli
 | displayName |displayName |
 | Faks TelephoneNumber |PhoneNumber [türü eq "faks"] .value |
 | givenName |name.givenName |
-| İş Unvanı |title |
+| İş Unvanı |başlık |
 | posta |e-postaları [türü eq "İş"] .value |
 | mailNickname |externalId |
 | Yöneticisi |Yöneticisi |
@@ -602,7 +602,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 *HTTP/1.1 204 Içerik yok*
 
-#### <a name="delete-group"></a>Grubu Silme
+#### <a name="delete-group"></a>Grubu Sil
 
 ##### <a name="request-13"></a>İsteyen
 
@@ -1306,6 +1306,24 @@ Başlangıç çevrimi başladıktan sonra, uygulamanızdaki sağlama hizmeti tar
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>5\. Adım: uygulamanızı Azure AD Uygulama Galerisi 'nde yayımlama
 
 Birden fazla kiracı tarafından kullanılacak bir uygulama oluşturuyorsanız, Azure AD uygulama galerisinde kullanılabilir hale getirebilirsiniz. Bu, kuruluşların uygulamayı keşfetmesini ve sağlamayı yapılandırmasını kolaylaştırır. Uygulamanızı Azure AD galerisinde yayımlama ve sağlama sağlamak kolaydır. [Buradaki](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)adımlara göz atın. Microsoft, uygulamanızı galerimize tümleştirme, uç noktanızı test etme ve müşterilerin kullanması için ekleme [belgelerini](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) yayınlama konusunda sizinle birlikte çalışacaktır. 
+
+
+### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Uygulama galerisinde bağlayıcıları sağlama yetkilendirmesi
+SCıM özelliği, kimlik doğrulama ve yetkilendirme için bir SCıM 'e özgü düzen tanımlamaz. Mevcut sektör standartlarının kullanımını temel alır. Azure AD sağlama istemcisi galerideki uygulamalar için iki yetkilendirme yöntemini destekler. 
+
+**OAuth yetkilendirme kodu verme akışı:** Sağlama hizmeti [yetkilendirme kodu vermeyi](https://tools.ietf.org/html/rfc6749#page-24)destekler. Uygulamanızı galeride yayımlama isteğinizi gönderdikten sonra, takımımız aşağıdaki bilgileri toplamak için sizinle birlikte çalışacaktır:
+*  Yetkilendirme URL 'SI: istemci tarafından, Kullanıcı Aracısı yeniden yönlendirme aracılığıyla kaynak sahibinden yetkilendirme elde etmek için bir URL. Kullanıcı, erişim yetkisi vermek için bu URL 'ye yeniden yönlendirilir. 
+*  Belirteç Exchange URL 'SI: bir erişim belirtecine, genellikle istemci kimlik doğrulamasıyla bir yetkilendirme izni vermek için istemcinin URL 'SI.
+*  İstemci KIMLIĞI: yetkilendirme sunucusu, kayıtlı istemciye, istemci tarafından sunulan kayıt bilgilerini temsil eden benzersiz bir dize olan istemci tanımlayıcısını verir.  İstemci tanımlayıcısı gizli değil; Kaynak sahibine gösterilir ve yalnızca istemci kimlik doğrulaması **için kullanılmamalıdır.**  
+*  Gizli anahtar: istemci parolası, yetkilendirme sunucusu tarafından oluşturulan bir gizli dizi. Bu, yalnızca yetkilendirme sunucusu için bilinen benzersiz bir değer olmalıdır. 
+
+En iyi uygulamalar (önerilir ancak gerekli değildir):
+* Birden çok yeniden yönlendirme URL 'sini destekler. Yöneticiler, "portal.azure.com" ve "aad.portal.azure.com" ile sağlamayı yapılandırabilir. Birden çok yeniden yönlendirme URL 'Leri desteklemek, kullanıcıların her iki portaldan da erişim yetkisi alabilmek için
+* Kapalı kalma süresi olmadan sorunsuz gizli yenilemeyi sağlamak için birden çok gizli dizi desteği. 
+
+**Uzun süreli OAuth taşıyıcı belirteçleri:** Uygulamanız OAuth yetkilendirme kodu verme akışını desteklemiyorsa, yöneticinin sağlama tümleştirmesini ayarlamak için kullanabileceği bir uzun süreli OAuth taşıyıcı belirteci de oluşturabilirsiniz. Belirtecin kalıcı olması gerekir, aksi takdirde, belirtecin süresi dolarsa sağlama işi [karantinaya](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) alınır. Bu belirtecin boyutu 1KB 'tan sonra olmalıdır.  
+
+Ek kimlik doğrulama ve yetkilendirme yöntemleri için [UserVoice](https://aka.ms/appprovisioningfeaturerequest)'ta bize bilgi verin.
 
 ### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>Azure AD sağlama hizmeti tarafından SCIM isteklerini yapmak için kullanılan IP adreslerine izin ver
 

@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 11/08/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: d89fa4c067e511e6210e8c1473bf1856297fc1de
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 51697aa426a638ad536390c4114df5faa18a41ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904085"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184862"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposundaki anahtar değerleriyle çalışma
 
@@ -88,12 +88,12 @@ Bu betik, bir uygulama yapılandırma deposundaki anahtar değerlerinde işlem y
 
 | Komut | Notlar |
 |---|---|
-| [az appconfig kV set](/cli/azure/ext/appconfig/appconfig) | Anahtar-değer oluşturur veya güncelleştirir. |
-| [az appconfig kV List](/cli/azure/ext/appconfig/appconfig) | Bir uygulama yapılandırma deposundaki anahtar değerlerini listeler. |
-| [az appconfig kV Delete](/cli/azure/ext/appconfig/appconfig) | Anahtar değerini siler. |
+| [az appconfig kV set](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-set) | Anahtar-değer oluşturur veya güncelleştirir. |
+| [az appconfig kV List](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Bir uygulama yapılandırma deposundaki anahtar değerlerini listeler. |
+| [az appconfig kV Delete](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-delete) | Anahtar değerini siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
-Ek uygulama yapılandırması CLı betiği örnekleri, [Azure uygulama yapılandırma belgelerinde](../cli-samples.md)bulunabilir.
+Ek uygulama yapılandırması CLı betiği örnekleri, [Azure Uygulama YAPıLANDıRMASı CLI örneklerinde](../cli-samples.md)bulunabilir.

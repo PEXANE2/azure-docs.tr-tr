@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0196e6fb4b2cd52fd66a26e07e8d4ce71983bc16
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 53441f5fedb4fa5e68cd1d8230ffe3ee6122e55b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013201"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186672"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturmak için bölge yedekli depolama (ZRS)
 
@@ -29,8 +29,8 @@ ZRS, blok Blobları, disk olmayan sayfa Blobları, standart dosya paylaşımlar�
 Genel amaçlı v2 hesaplarında, ZRS aşağıdaki bölgelerde genel kullanıma sunulmuştur:
 
 - Güneydoğu Asya
-- Batı Avrupa
 - Kuzey Avrupa
+- Batı Avrupa
 - Fransa Orta
 - Japonya Doğu
 - Birleşik Krallık Güney

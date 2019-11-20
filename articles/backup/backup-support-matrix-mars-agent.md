@@ -3,12 +3,12 @@ title: MARS Aracısı için destek matrisi
 description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı çalıştıran makineleri yedeklerken Azure Backup desteği özetlenmektedir.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6e37951dd00b999f59a1b3c08a6852cbc1929630
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 43f11bb73578187bd851f58cb6311c95b8648d08
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172045"
+ms.locfileid: "74194996"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -64,6 +64,8 @@ Bu IP adresleri:
 
 - 20.190.128.0/18
 - 40.126.0.0/18
+
+Yukarıda listelenen tüm URL ve IP adreslerine erişim, bağlantı noktası 443 ' de HTTPS protokolünü kullanır.
 
 ### <a name="throttling-support"></a>Daraltma desteği
 

@@ -1,17 +1,17 @@
 ---
-title: Azure geçiş gereç mimarisi | Microsoft Docs
-description: Azure geçişi gerecine genel bakış sağlar
+title: Azure geçişi gereç mimarisi
+description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 249cbea173afe1671118446e0714b721b8c7f72b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.openlocfilehash: bdc81820b1ac9867d45fd26e26d24c65e20641e4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685102"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185826"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -25,7 +25,7 @@ Bu makalede, Azure geçişi gereci açıklanmaktadır. Microsoft Azure için uyg
 
 Azure geçiş gereç türleri ve kullanımı aşağıdaki gibidir.
 
-**Farklı dağıtıldı** | **Kullanıldığı yer** | **Ayrıntılar**
+**Farklı dağıtıldı** | **İçin kullanılan** | **Ayrıntılar**
 --- | --- |  ---
 VMware VM | Azure geçişi değerlendirme aracı ile VMware VM değerlendirmesi.<br/><br/> Azure geçişi sunucu geçiş aracı ile VMware VM aracısız geçişi | OVA şablonunu indirin ve gereç sanal makinesini oluşturmak için vCenter Server alın.
 Hyper-V VM | Azure geçişi değerlendirme aracı ile Hyper-V VM değerlendirmesi. | Sıkıştırılmış VHD 'yi indirin ve gereç sanal makinesini oluşturmak için Hyper-V ' d e aktarın.
@@ -58,7 +58,7 @@ Geçiş ağ geçidi | Çoğaltılan VM verilerini Azure 'a gönderir.
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM performans verileri aşağıda verilmiştir.
 
-**Veriler** | **Sayaç** | **Değerlendirme etkisi**
+**Veri** | **Counter** | **Değerlendirme etkisi**
 --- | --- | ---
 CPU utilization | CPU. Usage. Average | Önerilen VM boyutu/maliyet
 Bellek kullanımı | mem. kullanım. Ortalama | Önerilen VM boyutu/maliyet
@@ -77,10 +77,10 @@ NIC yazma üretimi (MB/saniye) | net. iletilmiş. Average  |VM boyutu için hesa
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM meta verilerinin tam listesini aşağıda bulabilirsiniz.
 
-**Veriler** | **Sayaç**
+**Veri** | **Counter**
 --- | --- 
 **Makine ayrıntıları** | 
-VM KIMLIĞI | 'nin. Config. ınstanceuuıd 
+VM Kimliği | 'nin. Config. ınstanceuuıd 
 VM adı | 'nin. Config.Name
 vCenter Server KIMLIĞI | VMwareClient. Instance. UUID
 VM açıklaması | 'nin. Summary. config. Annotation
@@ -131,7 +131,7 @@ VM başına ana bilgisayar ayrıntıları | (HostSystem) kapsayıcısı). 'Nın
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper VM performans verileri aşağıda verilmiştir.
 
-**Performans sayacı sınıfı** | **Sayaç** | **Değerlendirme etkisi**
+**Performans sayacı sınıfı** | **Counter** | **Değerlendirme etkisi**
 --- | --- | ---
 Hyper-V hiper yönetici sanal Işlemcisi | % Konuk çalışma zamanı | Önerilen VM boyutu/maliyet
 Hyper-V Dinamik Bellek VM | Geçerli basınç (%)<br/> Konuk görünür fiziksel bellek (MB) | Önerilen VM boyutu/maliyet
@@ -148,7 +148,7 @@ Hyper-V sanal ağ bağdaştırıcısı | Gönderilen bayt/saniye | VM boyutu iç
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper-V VM meta verilerinin tam listesidir.
 
-**Veriler** | **WMI sınıfı** | **WMI sınıfı özelliği**
+**Veri** | **WMI sınıfı** | **WMI sınıfı özelliği**
 --- | --- | ---
 **Makine ayrıntıları** | 
 BIOS _ Msvm_BIOSElement seri numarası | Bıino SerialNumber
@@ -167,7 +167,7 @@ Sanal sabit disk boyutu | Msvm_VirtualHardDiskSettingData | Maxınternalsize
 Sanal sabit disk üst öğesi | Msvm_VirtualHardDiskSettingData | ParentPath
 **NIC başına Ayrıntılar** | 
 IP adresleri (yapay NIC 'ler) | Msvm_GuestNetworkAdapterConfiguration | IpAdresleri
-DHCP etkin (yapay NIC 'ler) | Msvm_GuestNetworkAdapterConfiguration | DHCPEtkin
+DHCP etkin (yapay NIC 'ler) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
 NIC KIMLIĞI (yapay NIC 'ler) | Msvm_SyntheticEthernetPortSettingData | InstanceId
 NIC MAC adresi (yapay NIC 'ler) | Msvm_SyntheticEthernetPortSettingData | Adres
 NIC KIMLIĞI (eski NIC 'ler) | MsvmEmulatedEthernetPortSetting verileri | InstanceId
@@ -206,7 +206,7 @@ Gereç üzerinde çalışan Azure geçiş aracıları güncelleştirildiğinden,
 
 - Otomatik güncelleştirme gereç üzerinde varsayılan olarak etkin olduğundan bu otomatik olarak gerçekleşir.
 - Aracıları el ile güncelleştirmek için bu varsayılan ayarı değiştirebilirsiniz.
-- Otomatik güncelleştirmeyi devre dışı bırakmak için, HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance > kayıt defteri düzenleyicisine gidin ve kayıt defteri anahtarını-"otomatik güncelleştirme" (DWORD) olarak ayarlayın.
+- Otomatik güncelleştirmeyi devre dışı bırakmak için, HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance kayıt defteri Düzenleyicisi > gidin ve kayıt defteri anahtarını-"otomatik güncelleştirme", 0 (DWORD) olarak ayarlayın.
  
 ### <a name="set-agent-updates-to-manual"></a>Aracı güncelleştirmelerini el ile olarak ayarla
 

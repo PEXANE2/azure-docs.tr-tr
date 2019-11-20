@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: beea911c9bb938458d8bd12e091e6c908ebb1566
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111738"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185684"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>Öğretici: ve .NET SDK kullanarak C# bir AI zenginleştirme Işlem hattı oluşturma
 
@@ -103,7 +103,7 @@ Visual Studio 'da `Microsoft.Extensions.Configuration.Json` NuGet paketini yükl
 
 Azure Bilişsel Arama hizmetinize bağlanmak için, arama hizmeti bilgilerini projenize eklemeniz gerekir. Çözüm Gezgini projenize sağ tıklayın ve > **Yeni öğe Ekle...** seçeneğini belirleyin. `appsettings.json` dosyayı adlandırın ve **Ekle**' yi seçin. 
 
-Bu dosyanın, çıkış dizininize dahil olması gerekir. Bunu yapmak için `appsettings.json` ' a sağ tıklayıp **Özellikler**' i seçin. **Çıkış Dizinine Kopyala** değerini **daha yeni bir kopya**olacak şekilde değiştirin.
+Bu dosyanın, çıkış dizininize dahil olması gerekir. Bunu yapmak için `appsettings.json` ' a sağ tıklayıp **Özellikler**' i seçin. **Daha yeniyse**, **çıkış dizinine kopyalanacak kopya** değerini değiştirin.
 
 Aşağıdaki JSON dosyasını yeni JSON dosyanıza kopyalayın.
 

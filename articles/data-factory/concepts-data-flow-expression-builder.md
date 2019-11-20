@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 872c7ce6a0c39ab19165a5f16ea3e4f6ef8bd6a5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 11/17/2019
+ms.openlocfilehash: 3664a7c311e15ce3aa61fc71f98a46e3f2618143
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388042"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184663"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Eşleme veri akışı Ifade Oluşturucusu
 
@@ -53,7 +53,7 @@ Tek satırlı ve çok satırlı açıklama söz dizimini kullanarak ifadeleriniz
 
 ## <a name="regular-expressions"></a>Normal Ifadeler
 
-Azure Data Factory veri akışı ifade dili, [burada tam başvuru belgeleri](https://aka.ms/dataflowexpressions), normal ifade söz dizimini içeren işlevleri sunar. Normal ifade işlevleri kullanılırken, Ifade Oluşturucusu ters eğik çizgiyi (\\) bir kaçış karakter dizisi olarak yorumlamaya çalışır. Normal ifadenizde ters eğik çizgi kullandığınızda, tüm Regex ' ı (\`) içine alın ya da çift ters eğik çizgi kullanın.
+Azure Data Factory veri akışı ifade dili, [burada tam başvuru belgeleri](https://aka.ms/dataflowexpressions), normal ifade söz dizimini içeren işlevleri sunar. Normal ifade işlevleri kullanılırken, Ifade Oluşturucusu ters eğik çizgiyi (\\) bir kaçış karakter sırası olarak yorumlamaya çalışır. Normal ifadenizde ters eğik çizgi kullandığınızda, tüm Regex ' ı (\`) içine alın ya da çift ters eğik çizgi kullanın.
 
 Tick kullanarak örnek
 
@@ -77,6 +77,40 @@ Dizi döndüren ifade işlevleri ile, dönüş dizisi nesnesinin içindeki belir
 
 Özel karakterler veya boşluklar içeren sütun adlarınız varsa, adı küme ayraçları ile çevreleyin.
 * ```{[dbo].this_is my complex name$$$}```
+
+## <a name="keyboard-shortcuts"></a>Klavye kısayolları
+
+* ```Ctrl-K Ctrl-C```: tüm satır açıklamaları
+* ```Ctrl-K Ctrl-U```: Açıklama
+* ```F1```: Düzenleyici Yardım komutlarını sağlama
+* ```Alt-Down Arrow```: geçerli satırı aşağı taşı
+* ```Alt-Up Arrow```: geçerli satırı yukarı taşı
+* ```Cntrl-Space```: bağlam yardımını göster
+
+## <a name="manual-comments"></a>El ile Yorumlar
+
+* ```/* This is my comment */```
+
+* ```/* This is a```
+*   ```multi-line comment */```
+   
+* ```// This is a single line comment```
+
+İfadeniz üzerine bir yorum koyarsanız, dönüştürme ifadelerinizi belgelemek için dönüşüm metin kutusunda görünür:
+
+![Açıklamalar](media/data-flow/comments2.png "Yorumlar")
+
+## <a name="convert-to-dates-or-timestamps"></a>Tarihlere veya zaman damgalarına Dönüştür
+
+```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
+
+Zaman damgası çıktısında dize sabit değerleri dahil etmek için, dönüştürmelerinizi toString () içinde sarmanın olması gerektiğini unutmayın
+
+## <a name="handling-column-names-with-special-characters"></a>Sütun adlarını özel karakterlerle işleme
+
+Özel karakterler veya boşluklar içeren sütun adlarınız varsa, adı küme ayraçları ile çevreleyin.
+
+```{[dbo].this_is my complex name$$$}```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

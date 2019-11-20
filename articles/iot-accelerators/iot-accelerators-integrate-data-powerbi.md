@@ -1,6 +1,6 @@
 ---
 title: Power BI-Azure kullanarak uzaktan Izleme verilerini görselleştirin | Microsoft Docs
-description: Bu öğretici, bir uzaktan Izleme çözümünün verilerini özelleştirilmiş bir görselleştirmeye dönüştürmek için Power BI Desktop ve Cosmos DB kullanır. Böylece kullanıcılar kendi özel panoları oluşturabilir ve bunları çözümde bulunmayan kullanıcılara paylaşabilir.
+description: Bu öğreticide, uzaktan Izleme çözümünden özelleştirilmiş bir görselleştirmeye veri bütünleştirmek için Power BI Desktop ve Cosmos DB kullanılır. Böylece kullanıcılar kendi özel panoları oluşturabilir ve bunları çözümde bulunmayan kullanıcılara paylaşabilir.
 author: dominicbetts
 manager: hegate
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 13b10aa4f40b7c4b62b35e8580c2826c10e6683f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
-ms.translationtype: HT
+ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166290"
+ms.locfileid: "74184235"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Power BI kullanarak uzaktan Izleme verilerini görselleştirin
 
@@ -22,13 +22,13 @@ Bu öğreticide, CosmosDB 'den Power BI 'e uzaktan Izleme çözümü verileriniz
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Şu anda çalışan bir uzaktan Izleme çözümünüz olması gerekir
-- [Azure portalına](https://portal.azure.com) ve IoT Hub ve çözümünün çalıştığı aboneliğinize erişiminizin olması gerekir
+- IoT Hub ve çözümünün çalıştığı [Azure Portal](https://portal.azure.com) ve aboneliğiniz için erişiminizin olması gerekir
 - [Power BI Masaüstü](https://powerbi.microsoft.com) yüklü olmalıdır, herhangi bir sürüm
 
 
-## <a name="information-needed-from-azure-portal"></a>Azure portalından gereken bilgiler
+## <a name="information-needed-from-azure-portal"></a>Azure portal gereken bilgiler
 
-1. [Azure Portal](https://portal.azure.com) 'a gidin ve gerekirse oturum açın
+1. [Azure Portal](https://portal.azure.com) gidin ve gerekirse oturum açın
 
 2. Sol bölmedeki kaynak grupları ' na tıklayın.
 

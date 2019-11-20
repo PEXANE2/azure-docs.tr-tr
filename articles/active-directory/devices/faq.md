@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7730dc1143586eb4c5c05fd475b8412546b7a6
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: MT
+ms.openlocfilehash: f593d5ea621ad450eb82388416534e40df36e2d5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809264"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184186"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
 
@@ -119,7 +119,7 @@ Y **:** Bu işlem tasarıma göre yapılır. Bu durumda, cihazın buluttaki kayn
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>S: Azure AD 'de Windows 10 cihaz kaydı FIPS modunda TPMs 'yi destekliyor mu?
 
-Y **:** Hayır, şu anda tüm cihaz durumları için Windows 10 ' da cihaz kaydı-hibrit Azure AD JOIN, Azure AD JOIN ve Azure AD kaydedildi-FIPS modunda TPMs 'yi desteklemez. Azure AD 'ye başarıyla katılmanız veya kaydolmak için, bu cihazlarda TPMs 'lerin FIPS modunun kapalı olması gerekir
+Y **:** Windows 10 cihaz kaydı yalnızca FIPS uyumlu TPM 2,0 için desteklenir ve TPM 1,2 için desteklenmez. Cihazlarınızda FIPS uyumlu TPM 1,2 varsa, Azure AD JOIN veya hibrit Azure AD JOIN ile devam etmeden önce bunları devre dışı bırakmanız gerekir. Microsoft 'un TPM üreticisine bağlı olduğu için, TPM 'Ler için FIPS modunu devre dışı bırakmaya yönelik araçlar sağlamayacağını unutmayın. Destek için lütfen donanımınızın OEM 'nize başvurun. 
 
 ---
 

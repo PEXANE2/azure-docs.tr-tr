@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: ad359a19cb42bf115189aca7905d1908d0dc5284
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087050"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185519"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure 'da iç içe sanallaştırmayı kullanarak sorun giderme Azure VM
 
@@ -34,13 +34,13 @@ Sorun sanal makinesini bağlamak için, kurtarma VM 'sinin aşağıdaki önkoşu
 
 -   Kurtarma VM 'si, sorun sanal makinesi ile aynı depolama hesabı türünü (Standart veya Premium) kullanmalıdır.
 
-## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>1\. adım: Bir kurtarma VM 'si oluşturun ve Hyper-V rolünü yükler
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>1\. Adım: bir kurtarma VM 'si oluşturun ve Hyper-V rolünü yükler
 
 1.  Yeni bir kurtarma VM 'si oluşturun:
 
-    -  İşletim Sistemi: Windows Server 2016 Datacenter
+    -  İşletim sistemi: Windows Server 2016 Datacenter
 
-    -  Boyut: İç içe sanallaştırmayı destekleyen en az iki çekirdekli tüm v3 dizileri. Daha fazla bilgi için bkz. [Yeni Dv3 ve EV3 VM boyutlarını tanıtma](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
+    -  Boyut: iç içe sanallaştırmayı destekleyen en az iki çekirdeğe sahip tüm v3 serileri. Daha fazla bilgi için bkz. [Yeni Dv3 ve EV3 VM boyutlarını tanıtma](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
 
     -  Sorun VM 'si olarak aynı konum, depolama hesabı ve kaynak grubu.
 
@@ -48,13 +48,13 @@ Sorun sanal makinesini bağlamak için, kurtarma VM 'sinin aşağıdaki önkoşu
 
 2.  Kurtarma VM 'si oluşturulduktan sonra, Uzak Masaüstü ' ni kurtarma VM 'sine.
 
-3.  Sunucu Yöneticisi, **Yönet** > **rol ve Özellik Ekle**' yi seçin.
+3.  Sunucu Yöneticisi, **yönet** > **rol ve Özellik Ekle**' yi seçin.
 
 4.  **Yükleme türü** bölümünde **rol tabanlı veya özellik tabanlı yükleme**' yi seçin.
 
 5.  **Hedef sunucuyu Seç** bölümünde, kurtarma sanal makinesinin seçildiğinden emin olun.
 
-6.  **Hyper-V rolü** > **Özellik Ekle**' yi seçin.
+6.  **Özellik eklemek** > **Hyper-V rolünü** seçin.
 
 7.  **Özellikler** bölümünde **İleri ' yi** seçin.
 
@@ -70,72 +70,57 @@ Sorun sanal makinesini bağlamak için, kurtarma VM 'sinin aşağıdaki önkoşu
 
 13. Sunucunun Hyper-V rolünü yüklemesine izin verin. Bu işlem birkaç dakika sürer ve sunucu otomatik olarak yeniden başlatılır.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>2\. adım: Kurtarma VM 'sinin Hyper-V sunucusunda sorun sanal makinesini oluşturma
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>2\. Adım: kurtarma VM 'sinin Hyper-V sunucusunda sorun sanal makinesini oluşturma
 
-1.  Sorun sanal makinesine diskin adını kaydedin ve ardından sorun sanal makinesini silin. Tüm bağlı diskleri tutduğunuzdan emin olun. 
+1.  Sanal makinenin işletim sistemi diski için sorunlu [bir anlık görüntü diski oluşturun](troubleshoot-recovery-disks-portal-windows.md#take-a-snapshot-of-the-os-disk) ve ardından anlık görüntü diskini YENIDEN kullanım VM 'sine bağlayın.
 
-2.  Sorunlu VM 'nin işletim sistemi diskini kurtarma sanal makinesinin veri diski olarak ekleyin.
+2.  Kurtarma sanal makinesine uzak masaüstü.
 
-    1.  Sorun sanal makinesi silindikten sonra, kurtarma VM 'sine gidin.
+3.  Disk Yönetimi 'ni (Diskmgmt. msc) açın. Sorun sanal makinesinin diskinin **çevrimdışı**olarak ayarlandığından emin olun.
 
-    2.  **Diskler**' i seçin ve ardından **veri diski ekleyin**.
+4.  Hyper-V Yöneticisi 'Ni açın: **Sunucu Yöneticisi**Içinde, **Hyper-v rolünü**seçin. Sunucuya sağ tıklayın ve ardından **Hyper-V Yöneticisi**' ni seçin.
 
-    3.  Sorun VM 'sinin diskini seçin ve ardından **Kaydet**' i seçin.
+5.  Hyper-V Yöneticisi 'nde, kurtarma VM 'sini sağ tıklatın ve sonra **yeni** > **sanal makine** ** > '** ni seçin.
 
-3.  Disk başarıyla eklendikten sonra, Uzak Masaüstü ' ni kurtarma VM 'sine.
+6.  VM için bir ad yazın ve ardından **İleri**' yi seçin.
 
-4.  Disk Yönetimi 'ni (Diskmgmt. msc) açın. Sorun sanal makinesinin diskinin **çevrimdışı**olarak ayarlandığından emin olun.
+7.  **1. nesil**' i seçin.
 
-5.  Hyper-V Yöneticisi 'Ni açın: **Sunucu Yöneticisi**, **Hyper-V rolünü**seçin. Sunucuya sağ tıklayın ve ardından **Hyper-V Yöneticisi**' ni seçin.
+8.  Başlangıç belleğini 1024 MB veya daha fazla olacak şekilde ayarlayın.
 
-6.  Hyper-V Yöneticisi 'nde, kurtarma sanal makinesine sağ tıklayın ve ardından **Yeni** > **sanal makine** > **İleri**' yi seçin.
+9. Geçerliyse, oluşturulan Hyper-V ağ anahtarını seçin. Başka bir sonraki sayfaya geçin.
 
-7.  VM için bir ad yazın ve ardından **İleri**' yi seçin.
-
-8.  **1. nesil**' i seçin.
-
-9.  Başlangıç belleğini 1024 MB veya daha fazla olacak şekilde ayarlayın.
-
-10. Geçerliyse, oluşturulan Hyper-V ağ anahtarını seçin. Başka bir sonraki sayfaya geçin.
-
-11. **Daha sonra bir sanal sabit disk Ekle**' yi seçin.
+10. **Daha sonra bir sanal sabit disk Ekle**' yi seçin.
 
     ![Sanal sabit disk Ekle sonrası seçeneği hakkında resim](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
-12. VM oluşturulduğunda **son** ' u seçin.
+11. VM oluşturulduğunda **son** ' u seçin.
 
-13. Oluşturduğunuz sanal makineye sağ tıklayın ve ardından **Ayarlar**' ı seçin.
+12. Oluşturduğunuz sanal makineye sağ tıklayın ve ardından **Ayarlar**' ı seçin.
 
-14. **IDE denetleyicisi 0**' ni seçin, **sabit sürücü**' i seçin ve **Ekle**' ye tıklayın.
+13. **IDE denetleyicisi 0**' ni seçin, **sabit sürücü**' i seçin ve **Ekle**' ye tıklayın.
 
     ![Yeni sabit sürücü ekleyen resim](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-15. **Fiziksel sabit disk**' te, Azure VM 'ye eklediğiniz sorun sanal makinesinin diskini seçin. Listelenen diskleri görmüyorsanız, diskin disk yönetimi kullanılarak çevrimdışı olarak ayarlandığından emin olun.
+14. **Fiziksel sabit disk**' te, Azure VM 'ye eklediğiniz sorun sanal makinesinin diskini seçin. Listelenen diskleri görmüyorsanız, diskin disk yönetimi kullanılarak çevrimdışı olarak ayarlandığından emin olun.
 
     ![diski bağlama hakkındaki görüntü](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
-17. Seçin **Uygula**ve ardından **Tamam**.
+15. Seçin **Uygula**ve ardından **Tamam**.
 
-18. VM 'ye çift tıklayın ve ardından başlatın.
+16. VM 'ye çift tıklayın ve ardından başlatın.
 
-19. Artık VM 'de şirket içi VM olarak çalışabilirsiniz. İhtiyacınız olan herhangi bir sorun giderme adımını izleyebilirsiniz.
+17. Artık VM 'de şirket içi VM olarak çalışabilirsiniz. İhtiyacınız olan herhangi bir sorun giderme adımını izleyebilirsiniz.
 
-## <a name="step-3-re-create-your-azure-vm-in-azure"></a>3\. adım: Azure VM 'nizi Azure 'da yeniden oluşturun
+## <a name="step-3-replace-the-os-disk-used-by-the-problem-vm"></a>3\. Adım: sorun sanal makinesi tarafından kullanılan işletim sistemi diskini değiştirme
 
 1.  VM 'yi yeniden çevrimiçi olduktan sonra, Hyper-V Yöneticisi 'nde VM 'yi kapatın.
 
-2.  [Azure Portal](https://portal.azure.com) gidin ve kurtarma VM 'Si > diskler ' i seçin, diskin adını kopyalayın. Bu adı bir sonraki adımda kullanacaksınız. Sabit diski kurtarma VM 'sinden ayırın.
-
-3.  **Tüm kaynaklar**' a gidin, disk adını arayın ve ardından diski seçin.
-
-     ![diskte arama yapmak için görüntü](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
-
-4. **VM oluştur**' a tıklayın.
-
-     ![ile ilgili görüntü diskten VM oluşturur](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
-
-VM 'yi diskten oluşturmak için Azure PowerShell de kullanabilirsiniz. Daha fazla bilgi için bkz. [PowerShell kullanarak var olan bir diskten yenı VM oluşturma](../windows/create-vm-specialized.md#create-the-new-vm). 
+2.  [Onarılan işletim sistemi diskini çıkarın ve](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk
+)çıkarın.
+3.  [VM tarafından kullanılan işletim sistemi diskini onarılan işletim sistemi diski Ile değiştirin](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm
+).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

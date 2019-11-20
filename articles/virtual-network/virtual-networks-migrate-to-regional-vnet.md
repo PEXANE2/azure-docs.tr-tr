@@ -1,5 +1,5 @@
 ---
-title: Bir Azure sanal ağını (klasik) bir benzeşim grubundan bölgeye geçirme | Microsoft Docs
+title: Azure sanal ağını (klasik) benzeşim grubundan bölgeye geçirme
 description: Bir benzeşim grubundan bir sanal ağı (klasik) bir bölgeye geçirmeyi öğrenin.
 services: virtual-network
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: d33d9ec4eadeaa3a082103f1ad699e2fc3010e3b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 57e6c551e1377425dab5509a886a0454b9410a32
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058389"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196709"
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>Bir benzeşim grubundan bir sanal ağı (klasik) bir bölgeye geçirme
 
 > [!IMPORTANT]
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Bu makale klasik dağıtım modelini incelemektedir. Microsoft, en yeni dağıtımların Kaynak Yöneticisi dağıtım modelini kullanmasını önerir.
+> Azure, kaynak oluşturmak ve bu kaynaklarla çalışmak için iki dağıtım modeli kullanır: [Resource Manager ve klasik](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Bu makale klasik dağıtım modelini incelemektedir. Microsoft, en yeni dağıtımların Kaynak Yöneticisi dağıtım modelini kullanmasını önerir.
 
 Benzeşim grupları aynı benzeşim grubunda oluşturulan kaynakların, birlikte yakın sunucular tarafından fiziksel olarak barındırıldığından ve bu kaynakların daha hızlı iletişim kurmasını sağlar. Geçmişte, benzeşim grupları sanal ağlar (klasik) oluşturmak için bir gereksinimdi. Bu sırada, yönetilen sanal ağların (klasik) Ağ Yöneticisi hizmeti yalnızca bir fiziksel sunucu kümesi veya ölçek birimi içinde çalışabilir. Mimari iyileştirmeler ağ yönetiminin kapsamını bir bölgeye artmıştır.
 
@@ -50,7 +50,7 @@ Genel olarak benzeşim grupları kullanmanızı öneririz. Sanal ağ gereksinimi
    
     Ağ yapılandırma dosyanızda, değerleri kendi değerlerinizle değiştirerek aşağıdaki satırları düzenleyin: 
    
-    **Eski değer:** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
+    **Eski değer:** \<VirtualNetworkSitename = "Vnetusbatı" affinitygroup = "VNetDemoAG"\> 
    
     **Yeni değer:** \<VirtualNetworkSitename = "Vnetusbatı" location = "Batı ABD"\>
 3. Değişikliklerinizi kaydedin ve ağ yapılandırmasını Azure 'a [aktarın](virtual-networks-using-network-configuration-file.md#import) .

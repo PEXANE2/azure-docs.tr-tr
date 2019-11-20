@@ -1,7 +1,7 @@
 ---
-title: 'Tasarımcı: sınıflandırma, gelir tahmin etme'
+title: 'Tasarımcı: sınıflandırma, gelir tahmin örneği'
 titleSuffix: Azure Machine Learning
-description: Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan makine öğrenimi sınıflandırıcısını oluşturmayı öğrenin.
+description: Azure Machine Learning Designer ile gelir tahmin etmek için kod içermeyen bir sınıflandırıcı oluşturun Bu örneği izleyin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 383cbc11955598505730a4613c50536afac75f95
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 527db89be85cc5b095d33ba89c776a077119f08a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647971"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196062"
 ---
-# <a name="sample-3---classification-with-feature-selection-income-prediction"></a>Örnek 3-Özellik seçimi ile sınıflandırma: gelir tahmini
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısıyla gelir tahmin etmek için özellik seçimini kullanmak & bir sınıflandırıcı oluşturma
+
+**Tasarımcı (Önizleme) örnek 3**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan makine öğrenimi sınıflandırıcısını oluşturmayı öğrenin. Bu örnek, Yetişkin görselleştirmenizdeki geliri (> = 50K veya < = 50K) tahmin etmek için iki sınıf bir öngörme **kararı ağacı** sağlar.
@@ -28,7 +31,7 @@ Bu örnek için nihai işlem hattı grafiği aşağıda verilmiştir:
 
 ![İşlem hattının grafiği](media/how-to-ui-sample-classification-predict-income/overall-graph.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

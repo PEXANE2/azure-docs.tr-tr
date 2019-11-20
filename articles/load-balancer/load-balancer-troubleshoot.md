@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/09/2018
+ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: d1c10fa8267131f13d3148ace6c97218a18fd494
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
-ms.translationtype: MT
+ms.openlocfilehash: b6647c1b850b7678944edbc899f0727f8e10db08
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076917"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184340"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer sorunlarını giderme
 
@@ -27,6 +27,8 @@ ms.locfileid: "74076917"
 Bu sayfa, yaygın Azure Load Balancer sorularıyla ilgili sorun giderme bilgileri sağlar. Load Balancer bağlantısı kullanılamadığında en yaygın belirtiler aşağıdaki gibidir: 
 - Load Balancer arkasındaki VM 'Ler sistem durumu araştırmalara yanıt vermiyor 
 - Load Balancer arkasındaki VM 'Ler yapılandırılmış bağlantı noktasındaki trafiğe yanıt vermiyor
+
+Arka uç VM 'lerine dış istemciler yük dengeleyiciye geldiğinde, istemcilerin IP adresi iletişim için kullanılacaktır. İstemcilerin IP adresinin NSG izin verilenler listesine eklendiğinden emin olun. 
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Belirti: Load Balancer arkasındaki VM 'Ler sistem durumu araştırmalara yanıt vermiyor
 Arka uç sunucularının yük dengeleyici kümesine katılması için, araştırma denetimini geçmesi gerekir. Sistem durumu araştırmaları hakkında daha fazla bilgi için bkz. [Load Balancer araştırmalarını anlama](load-balancer-custom-probe-overview.md). 
@@ -96,18 +98,20 @@ Bir VM veri trafiğine yanıt vermezse, bunun nedeni hedef bağlantı noktasın�
 1. Arka uç VM 'de oturum açın. 
 2. Bir komut istemi açın ve veri bağlantı noktasında dinleme yapan bir uygulama olduğunu doğrulamak için şu komutu çalıştırın:  netstat-a 
 3. Bağlantı noktası "dınleme" durumu ile listelenmiyorsa, doğru dinleyici bağlantı noktasını yapılandırın 
-4. Bağlantı noktası dinleme olarak işaretlenmişse, olası sorunlar için bu bağlantı noktasındaki hedef uygulamayı kontrol edin. 
+4. Bağlantı noktası dinleme olarak işaretlenmişse, olası sorunlar için bu bağlantı noktasındaki hedef uygulamayı kontrol edin.
 
 ### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Neden 2: ağ güvenlik grubu Load Balancer arka uç havuzu sanal makinesi üzerindeki bağlantı noktasını engelliyor  
 
 Alt ağda veya VM 'de yapılandırılmış bir veya daha fazla ağ güvenlik grubu kaynak IP veya bağlantı noktasını engelliyorsa, VM yanıt veremez.
 
-* Arka uç VM üzerinde yapılandırılan ağ güvenlik gruplarını listeleyin. Daha fazla bilgi için bkz. [ağ güvenlik gruplarını yönetme](../virtual-network/manage-network-security-group.md).
-* Ağ güvenlik grupları listesinden şunları denetleyin:
+Ortak yük dengeleyici için, Internet istemcilerinin IP adresi, istemcilerle yük dengeleyici arka uç VM 'Leri arasındaki iletişim için kullanılacaktır. İstemcilerin IP adresine arka uç VM 'sinin ağ güvenlik grubunda izin verildiğinden emin olun.
+
+1. Arka uç VM üzerinde yapılandırılan ağ güvenlik gruplarını listeleyin. Daha fazla bilgi için bkz. [ağ güvenlik gruplarını yönetme](../virtual-network/manage-network-security-group.md)
+1. Ağ güvenlik grupları listesinden şunları denetleyin:
     - veri bağlantı noktasındaki gelen veya giden trafiğin girişimi vardır. 
-    - sanal makinenin NIC 'inde veya Load Balancer araştırmasını ve trafiğe izin veren varsayılan kuralın (ağ güvenlik grupları, araştırma bağlantı noktası olan 168.63.129.16 IP 'si Load Balancer izin vermelidir) daha yüksek önceliğe sahip bir ağ güvenlik grubu kuralını **Engelle** 
-* Kurallardan herhangi biri trafiği engelliyorsa, veri trafiğine izin vermek için bu kuralları kaldırın ve yeniden yapılandırın.  
-* VM şimdi durum araştırmalara yanıt vermeye başlamışsa test edin.
+    - sanal makinenin NIC 'inde veya Load Balancer araştırmasını ve trafiğe izin veren varsayılan kuralın (ağ güvenlik grupları, araştırma bağlantı noktası olan 168.63.129.16 IP 'si Load Balancer izin vermelidir) daha yüksek önceliğe sahip bir ağ güvenlik grubu kuralını **Engelle**
+1. Kurallardan herhangi biri trafiği engelliyorsa, veri trafiğine izin vermek için bu kuralları kaldırın ve yeniden yapılandırın.  
+1. VM şimdi durum araştırmalara yanıt vermeye başlamışsa test edin.
 
 ### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Neden 3: aynı VM ve ağ arabiriminden Load Balancer erişme 
 

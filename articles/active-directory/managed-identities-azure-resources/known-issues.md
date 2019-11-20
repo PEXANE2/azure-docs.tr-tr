@@ -1,5 +1,5 @@
 ---
-title: Azure kaynakları için yönetilen kimliklerle ilgili SSS ve bilinen sorunlar
+title: Yönetilen kimliklerle ilgili SSS ve bilinen sorunlar-Azure AD
 description: Azure kaynakları için yönetilen kimliklerle ilgili bilinen sorunlar.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d882b34bc4f057035a16b7916249cfe8f0b8d0b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f0f0c678f2426d9de58d2ab337c56243394b4d0f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983426"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183882"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimliklerle ilgili SSS ve bilinen sorunlar
 
@@ -68,7 +68,7 @@ VM Uzantısı uç noktasını kullanmanın sınırlamalarından bazıları şunl
 - VM 'ye yalnızca Kullanıcı tarafından atanan yönetilen kimliklerin atanabileceği 32.
 
 
-Not: Azure kaynakları için Yönetilen kimlikler VM uzantısı, Ocak 2019 ' de destek dışı olacaktır. 
+Note: Azure kaynakları için Yönetilen kimlikler VM uzantısı, Ocak 2019 ' de destek dışı olacaktır. 
 
 Azure Instance Metadata Service hakkında daha fazla bilgi için bkz. [IMDS belgeleri](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
@@ -84,8 +84,8 @@ Hayır. Yönetilen kimlikler Şu anda çapraz dizin senaryolarını desteklemez.
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Bir kaynaktaki yönetilen kimlik için hangi Azure RBAC izinleri gerekir? 
 
-- Sistem tarafından atanan yönetilen kimlik: Kaynak üzerinde yazma izinlerine sahip olmanız gerekir. Örneğin, sanal makineler için Microsoft. COMPUTE/virtualMachines/Write gerekir. Bu eylem, [sanal makine katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)gibi kaynağa özgü yerleşik rollere dahildir.
-- Kullanıcı tarafından atanan yönetilen kimlik: Kaynak üzerinde yazma izinlerine sahip olmanız gerekir. Örneğin, sanal makineler için Microsoft. COMPUTE/virtualMachines/Write gerekir. Yönetilen kimliğe göre [yönetilen kimlik operatörü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) rolü atamaya ek olarak.
+- Sistem tarafından atanan yönetilen kimlik: kaynak üzerinde yazma izinlerine sahip olmanız gerekir. Örneğin, sanal makineler için Microsoft. COMPUTE/virtualMachines/Write gerekir. Bu eylem, [sanal makine katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)gibi kaynağa özgü yerleşik rollere dahildir.
+- Kullanıcı tarafından atanan yönetilen kimlik: kaynak üzerinde yazma izinlerine sahip olmanız gerekir. Örneğin, sanal makineler için Microsoft. COMPUTE/virtualMachines/Write gerekir. Yönetilen kimliğe göre [yönetilen kimlik operatörü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) rolü atamaya ek olarak.
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Azure kaynakları uzantısı için Yönetilen kimlikler nasıl yeniden başlatılır?
 Windows ve Linux 'un belirli sürümlerinde, uzantı durdurulduğunda aşağıdaki cmdlet 'i el ile yeniden başlatmak için kullanılabilir:
@@ -94,9 +94,9 @@ Windows ve Linux 'un belirli sürümlerinde, uzantı durdurulduğunda aşağıda
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
-Konumlar: 
-- Windows için uzantı adı ve tür: Managedıdentityextensionforwindows
-- Linux için uzantı adı ve türü: Managedıdentityextensionforlinux
+Nerede: 
+- Windows için uzantı adı ve tür: ManagedIdentityExtensionForWindows
+- Linux için uzantı adı ve türü: ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 

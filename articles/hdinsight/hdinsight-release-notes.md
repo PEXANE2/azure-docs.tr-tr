@@ -8,135 +8,86 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 7c31520efd881e8e0b5ed309f62d273bac59c0e3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 54e28a9d434500915aa8cc8e07ade3592e5aa96c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945024"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185612"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
 Bu makalede **en son** Azure HDInsight sürüm güncelleştirmeleri hakkında bilgi sağlanır. Önceki sürümler hakkında daha fazla bilgi için bkz. [HDInsight sürüm notları Arşivi](hdinsight-release-notes-archive.md).
 
-> [!IMPORTANT]  
-> Linux, HDInsight sürüm 3.4 ve üzerinde kullanılan tek işletim sistemidir. Daha fazla bilgi için bkz. [HDInsight sürüm oluşturma makalesi](hdinsight-component-versioning.md).
-
 ## <a name="summary"></a>Özet
 
 Azure HDInsight, Azure üzerinde açık kaynaklı Apache Hadoop ve Apache Spark analizlere yönelik kurumsal müşteriler arasındaki en popüler hizmetlerden biridir.
 
-## <a name="new-features"></a>Yeni Özellikler
+## <a name="release-date-11072019"></a>Yayın tarihi: 11/07/2019
 
-HDInsight 4,0 ile ilgili önemli değişiklikler hakkında daha fazla bilgi için bkz. [HDI 4,0 ' deki](../hdinsight/hdinsight-version-release.md)yenilikler.
+Bu sürüm yalnızca HDInsight 3,6 ve 4,0 için geçerlidir.
 
-## <a name="component-versions"></a>Bileşen sürümleri
+> [!IMPORTANT]  
+> Linux, HDInsight sürüm 3.4 ve üzerinde kullanılan tek işletim sistemidir. Daha fazla bilgi için bkz. [HDInsight sürüm oluşturma makalesi](hdinsight-component-versioning.md).
 
-Tüm HDInsight 4,0 bileşenlerinin resmi Apache sürümleri aşağıda verilmiştir. Listelenen bileşenler, kullanılabilir en son kararlı sürümlerin yayınlardır.
 
-- Apache ambarı 2.7.1
-- Apache Hadoop 3.1.1
-- Apache HBase 2.0.0
-- Apache Hive 3.1.0
-- Apache Kafka 1.1.1, 2.1.0
-- Apache Mahout 0.9.0 +
-- Apache Oozie 4.2.0
-- Apache Phoenix 4.7.0
-- Apache Pig 0.16.0
-- Apache Ranger 0.7.0
-- Apache Kaydırıcı 0.92.0
-- Apache Spark 2.3.1, 2.4.0
-- Apache Sqoop 1.4.7
-- Apache TEZ 0.9.1
-- Apache Zeppelin 0.8.0
-- Apache ZooKeeper 3.4.6
+## <a name="new-features"></a>Yeni özellikler
 
-Apache bileşenlerinin sonraki sürümleri, bazen yukarıda listelenen sürümlere ek olarak HDP dağıtımında paketlenmiştir. Bu durumda, bu sonraki sürümler teknik önizlemeler tablosunda listelenir ve bir üretim ortamında yukarıdaki listenin Apache bileşen sürümleri yerine kullanılmamalıdır.
+### <a name="hdinsight-identity-broker-hib-preview"></a>HDInsight Identity broker (HIB) (Önizleme)
 
-## <a name="apache-patch-information"></a>Apache Patch bilgileri
+HDInsight Identity broker (HIB), kullanıcıların Multi-Factor Authentication (MFA) kullanarak Apache ambarı 'nda oturum açmasını ve Azure Active Directory Domain Services (AAD-DS) içinde parola karmaları gerekmeden gerekli Kerberos biletlerini almasını sağlar. Şu anda HIB yalnızca ARM şablonu aracılığıyla dağıtılan kümeler için kullanılabilir.
 
-HDInsight 4,0 ' de kullanılabilen düzeltme ekleri hakkında daha fazla bilgi için, aşağıdaki tabloda yer alan her ürün için düzeltme eki listesine bakın.
+### <a name="kafka-rest-api-proxy-preview"></a>Kafka REST API proxy (Önizleme)
 
-| Ürün adı | Düzeltme eki bilgileri |
-|---|---|
-| Ambari | [Ambarı düzeltme eki bilgileri](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
-| Hadoop | [Hadoop Patch bilgileri](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
-| HBase | [HBase düzeltme eki bilgileri](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
-| Kovan  | Bu sürüm, ek Apache düzeltme ekleri olmadan Hive 3.1.0 sağlar.  |
-| Kafka | Bu sürüm, ek Apache düzeltme ekleri olmadan Kafka 1.1.1 sağlar. |
-| Oozie | [Oozie düzeltme eki bilgileri](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
-| Phoenix | [Phoenix düzeltme eki bilgileri](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
-| Pig | [Pig Patch bilgileri](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
-| Ranger | [Ranger düzeltme eki bilgileri](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
-| Spark | [Spark Patch bilgileri](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
-| Sqoop | Bu sürüm, ek Apache düzeltme ekleri olmadan Sqoop 1.4.7 sağlar. |
-| Tez | Bu sürüm, ek Apache düzeltme ekleri olmadan tez 0.9.1 sağlar. |
-| Zeppelin | Bu sürüm, ek Apache düzeltme ekleri olmadan Zeppelin 0.8.0 sağlar. |
-| Zookeeper | [Zookeeper Patch bilgileri](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
+Kafka REST API proxy, güvenli AAD yetkilendirmesi ve OAuth protokolü aracılığıyla Kafka kümesi ile yüksek oranda kullanılabilir REST proxy 'nin tek tıklamayla dağıtımını sağlar. 
 
-## <a name="fixed-common-vulnerabilities-and-exposures"></a>Düzeltilen Ortak Güvenlik Açıkları ve Etkilenmeler
+### <a name="auto-scale"></a>Otomatik ölçeklendirme
 
-Bu sürümde çözümlenen güvenlik sorunları hakkında daha fazla bilgi için bkz. Hortonçalışmalar ' [için HDP 3.0.1 Için sabit ortak güvenlik açıkları ve Etkilenmeler](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html).
+Azure HDInsight için otomatik ölçeklendirme artık Apache Spark ve Hadoop kümesi türleri için tüm bölgelerde genel kullanıma sunulmuştur. Bu özellik, büyük veri analizi iş yüklerinin daha uygun maliyetli ve üretken bir şekilde yönetilmesini sağlar. Artık HDInsight kümelerinizin kullanımını iyileştirebilmeniz ve yalnızca ihtiyacınız olan şeyler için ödeme yapabilirsiniz.
 
-## <a name="known-issues"></a>Bilinen sorunlar
+Gereksinimlerinize bağlı olarak, yük tabanlı ve zamanlama tabanlı otomatik ölçeklendirme arasında seçim yapabilirsiniz. Zamanlama tabanlı otomatik ölçeklendirme, küme boyutunu önceden tanımlanmış bir zamanlamaya göre değiştirebilmesini sağlarken, yük tabanlı otomatik ölçeklendirme, geçerli kaynak gereksinimlerine bağlı olarak küme boyutunu yukarı ve aşağı ölçeklendirebilir. 
 
-### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>Çoğaltma, varsayılan yükleme ile güvenli HBase için kopuk
+HBase ve LLAP iş yükünün otomatik ölçeklendirme desteği de genel önizlemeye sunuldu. Daha fazla bilgi için bkz. [Azure HDInsight kümelerini otomatik olarak ölçeklendirme](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters).
 
-HDInsight 4,0 için aşağıdaki adımları uygulayın:
+### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>Apache HBase için HDInsight hızlandırılmış yazma Işlemleri 
 
-1. Küme içi iletişimi etkinleştirin.
-1. Etkin yayın düğümünde oturum açın.
-1. Aşağıdaki komutla çoğaltmayı etkinleştirmek için bir komut dosyası indirin:
+Hızlandırılmış Yazmalar özelliği Apache HBase Önceden Yazılan Günlük (WAL) performansını geliştirmek için Azure premium SSD yönetilen disklerini kullanır. Daha fazla bilgi için bkz. [Apache HBase Için Azure HDInsight hızlandırılmış yazma](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes).
 
-    ```
-    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
-    ```
-1. Komutu `sudo kinit <domainuser>`yazın.
-1. Betiği çalıştırmak için aşağıdaki komutu yazın:
+### <a name="custom-ambari-db"></a>Özel Ambari DB
 
-    ```
-    sudo bash hdi_enable_replication.sh -m <hn0> -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
-    ```
-HDInsight 3,6 için aşağıdakileri yapın:
+HDInsight artık müşterilerin ambarı için kendi SQL DB 'yi kullanmasını sağlamak için yeni bir kapasite sunmaktadır. Artık müşteriler, ambarı için doğru SQL DB 'yi seçip kendi iş büyüme gereksinimlerine göre kolayca yükseltebilir. Dağıtım bir Azure Resource Manager şablonuyla yapılır. Daha fazla bilgi için bkz. [HDInsight kümelerini özel bir AMBARı DB Ile ayarlama](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db).
 
-1. Etkin HMaster ZK 'de oturum açın.
-1. Aşağıdaki komutla çoğaltmayı etkinleştirmek için bir komut dosyası indirin:
-    ```
-    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
-    ```
-1. Komutu `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>`yazın.
-1. Aşağıdaki komutu yazın:
+### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>F Serisi sanal makineler artık HDInsight ile kullanılabilir
 
-    ```bash
-    sudo bash hdi_enable_replication.sh -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
-    ```
-
-### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>Phoenix Sqlline, HBase kümesi HDInsight 4,0 ' e geçirildikten sonra çalışmayı durduruyor
-
-Aşağıdaki adımları uygulayın:
-
-1. Aşağıdaki Phoenix tablolarını bırakın:
-    1. `SYSTEM.FUNCTION`
-    1. `SYSTEM.SEQUENCE`
-    1. `SYSTEM.STATS`
-    1. `SYSTEM.MUTEX`
-    1. `SYSTEM.CATALOG`
-1. Tablolardan hiçbirini silemseniz, tablolara yönelik bağlantıları temizlemek için HBase 'i yeniden başlatın.
-1. `sqlline.py` komutunu yeniden çalıştırın. Phoenix, 1. adımda silinen tüm tabloları yeniden oluşturur.
-1. HBase verileriniz için Phoenix tablolarını ve görünümlerini yeniden oluşturun.
-
-### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>Phoenix Sqlline, HDInsight 3,6 ' den 4,0 ' ye HBase Phoenix meta verileri çoğaltıldıktan sonra çalışmayı durduruyor
-
-Aşağıdaki adımları uygulayın:
-
-1. Çoğaltmayı yapmadan önce, hedef 4,0 kümesine gidin ve yürütün `sqlline.py`. Bu komut, gibi `SYSTEM.MUTEX` Phoenix tabloları oluşturur ve `SYSTEM.LOG` yalnızca 4,0 içinde bulunur.
-1. Aşağıdaki tabloları bırakın:
-    1. `SYSTEM.FUNCTION`
-    1. `SYSTEM.SEQUENCE`
-    1. `SYSTEM.STATS`
-    1. `SYSTEM.CATALOG`
-1. HBase çoğaltmasını başlatma
+F Serisi sanal makineler (VM 'Ler), hafif işlem gereksinimleriyle HDInsight kullanmaya başlamak için iyi bir seçimdir. Daha düşük bir saatlik liste fiyatına sahip olan F Serisi, vCPU başına Azure İşlem Birimi (ACU) açısından fiyat-performans alanında Azure portföyündeki en iyi seçenektir. Daha fazla bilgi için bkz. [Azure HDInsight kümeniz için doğru VM boyutunu seçme](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size).
 
 ## <a name="deprecation"></a>Kullanımdan kaldırma
 
-Apache Storm ve ML Hizmetleri HDInsight 4,0 ' de kullanılamaz.
+### <a name="g-series-virtual-machine-deprecation"></a>G Serisi sanal makinenin kullanımdan kaldırılması
+Bu sürümden, G serisi VM 'Ler artık HDInsight 'ta sunulmamaktadır.
+
+### <a name="dv1-virtual-machine-deprecation"></a>Dv1 sanal makinesini kullanımdan kaldırma
+Bu sürümden, HDInsight ile Dv1 VM 'lerinin kullanımı kullanım dışıdır. Dv1 için herhangi bir müşteri isteği, Dv2 ile otomatik olarak sunulur. Dv1 ve dv2 VM 'Ler arasında bir fiyat farkı yoktur.
+
+## <a name="behavior-changes"></a>Davranış değişiklikleri
+
+### <a name="cluster-managed-disk-size-change"></a>Küme tarafından yönetilen disk boyutu değişikliği
+HDInsight, kümeyle yönetilen disk alanı sağlar. Bu sürümden, yeni oluşturulan kümedeki her bir düğümün yönetilen disk boyutu 128 GB olarak değiştirilir.
+
+## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
+Yaklaşan sürümlerde aşağıdaki değişiklikler olur. 
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. HDInsight 'tan itibaren, HDInsight bunun yerine Azure sanal makine ölçek kümelerini kullanacaktır. [Azure sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)hakkında daha fazla bilgi için bkz.
+
+### <a name="hbase-20-to-21"></a>HBase 2,0-2,1
+Yakında düzenlenecek HDInsight 4,0 sürümünde HBase sürümü 2,0 sürümünden 2,1 sürümüne yükseltilir.
+
+### <a name="a-series-virtual-machine-deprecation-for-esp-cluster"></a>A serisi sanal makine, ESP kümesi için kullanımdan kaldırıldı
+A serisi VM 'Ler görece düşük CPU ve bellek kapasitesi nedeniyle ESP küme sorunlarına neden olabilir. Gelecek sürümde, yeni ESP kümeleri oluşturmak için A serisi VM 'Ler kullanım dışı bırakılır.
+
+## <a name="bug-fixes"></a>Hata düzeltmeleri
+HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam eder. 
+
+## <a name="component-version-change"></a>Bileşen sürümü değişikliği
+Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ad HDInsight 3,6 için geçerli bileşen sürümlerini [burada](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)bulabilirsiniz.

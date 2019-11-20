@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/03/2019
+ms.date: 11/18/2019
 ms.author: atsenthi
-ms.openlocfilehash: 6b29eb31f5d425fc063c8c42e7911272e63167c8
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: c2453167bbdabbb201f2463e1eec8206be6d4223
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331094"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186488"
 ---
 # <a name="supported-service-fabric-versions"></a>Desteklenen Service Fabric sürümleri
 
@@ -37,18 +37,18 @@ Aşağıdaki tabloda Service Fabric sürümleri ve destek bitiş tarihleri liste
 | Kümede Service Fabric çalışma zamanı | Doğrudan küme sürümünden yükseltebilir |Uyumlu SDK veya NuGet paketi sürümü | Destek sonu |
 | --- | --- |--- | --- |
 | 5\.3.121 önceki tüm küme sürümleri | 5.1.158.* |Sürüm 2,3 ' den küçük veya buna eşit |20 Ocak 2017 |
-| 5,3. * | 5.1.158.* |Sürüm 2,3 ' den küçük veya buna eşit |24 Şubat 2017 |
-| 5,4. * | 5.1.158.* |Sürüm 2,4 ' den küçük veya buna eşit |10 Mayıs 2017       |
-| 5,5. * | 5.4.164.* |Sürüm 2,5 ' den küçük veya buna eşit |10 Ağustos 2017    |
-| 5,6. * | 5.4.164.* |Sürüm 2,6 ' den küçük veya buna eşit |13 Ekim 2017   |
-| 5,7. * | 5.4.164.* |Sürüm 2,7 ' den küçük veya buna eşit |15 Aralık 2017  |
-| 6,0. * | 5.6.205.* |Sürüm 2,8 ' den küçük veya buna eşit |30 Mart 2018     |
+| 5.3.* | 5.1.158.* |Sürüm 2,3 ' den küçük veya buna eşit |24 Şubat 2017 |
+| 5.4.* | 5.1.158.* |Sürüm 2,4 ' den küçük veya buna eşit |10 Mayıs 2017       |
+| 5.5.* | 5.4.164.* |Sürüm 2,5 ' den küçük veya buna eşit |10 Ağustos 2017    |
+| 5.6.* | 5.4.164.* |Sürüm 2,6 ' den küçük veya buna eşit |13 Ekim 2017   |
+| 5.7.* | 5.4.164.* |Sürüm 2,7 ' den küçük veya buna eşit |15 Aralık 2017  |
+| 6.0.* | 5.6.205.* |Sürüm 2,8 ' den küçük veya buna eşit |30 Mart 2018     |
 | 6,1. * | 5.7.221.* |Sürüm 3,0 ' den küçük veya buna eşit |15 Temmuz 2018      |
 | 6,2. * | 6.0.232.* |Sürüm 3,1 ' den küçük veya buna eşit |26 Ekim 2018   |
 | 6,3. * | 6.1.480.* |Sürüm 3,2 ' den küçük veya buna eşit |31 Mart 2019  |
 | 6,4. * | 6.2.301.* |Sürüm 3,3 ' den küçük veya buna eşit |15 Eylül 2019 |
-| 6,5. * | 6.4.617.* |Sürüm 3,4 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
-
+| 6,5. * | 6.4.617.* |Sürüm 3,4 ' den küçük veya buna eşit |1 Mayıs 2020 |
+| 7,0. * | 6.4.664. # |Sürüm 4,0 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
 Aşağıdaki tabloda desteklenen Service Fabric sürümleri için desteklenen işletim sistemleri listelenmektedir.
@@ -110,3 +110,4 @@ Aşağıdaki tabloda Service Fabric sürüm adları ve bunlara karşılık gelen
 | 6,5 CU2 UYGULAMAZSANıZ | 6.5.658.9590 | 6.5.460.1 |
 | 6,5 CU3 | 6.5.664.9590 | 6.5.466.1 |
 | 6,5 CU5 | 6.5.676.9590 | 6.5.467.1 |
+| 7,0 RTO | 7.0.457.9590 | 7.0.457.1 |

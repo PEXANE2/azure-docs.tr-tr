@@ -1,11 +1,11 @@
 ---
-title: Azure sanal ağ 'da IPv6 ikili yığın uygulaması dağıtma-CLı
+title: IPv6 çift yığın uygulaması dağıtma-Standart Load Balancer-CLı
 titlesuffix: Azure Virtual Network
 description: Bu makalede, Azure CLı kullanarak Azure sanal ağ 'da IPv6 ikili yığın uygulamasının nasıl dağıtılacağı gösterilmektedir.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: d0968ddedb36ab7fb4ee515ef1d20a177d4d59fe
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: c2f6c331e1f769f3d24fde9ab2adbd820b704d3b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820998"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186326"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Azure sanal ağ 'da IPv6 ikili yığın uygulaması dağıtma-CLı (Önizleme)
 
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.c
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.49 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için `az --version` ' ı çalıştırın. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.49 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için `az --version`çalıştırın. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
 
 ## <a name="prerequisites"></a>Önkoşullar
 Azure sanal ağ için IPv6 özelliğini kullanmak üzere aboneliğinizi Azure CLı kullanarak aşağıdaki şekilde yapılandırmanız gerekir:
@@ -62,7 +62,7 @@ az group create \
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>Yük Dengeleyici için IPv4 ve IPv6 genel IP adresleri oluşturma
-Internet 'teki IPv4 ve IPv6 uç noktalarınıza erişmek için yük dengeleyici için IPv4 ve IPv6 genel IP adresleri gerekir. [az network public-ip create](/cli/azure/network/public-ip) komutu ile bir genel IP adresi oluşturun. Aşağıdaki örnek *DsResourceGroup01* kaynak grubunda *dsPublicIP_v4* ve *dsPublicIP_v6* adlı IPv4 ve IPv6 genel IP adresi oluşturur:
+Internet 'teki IPv4 ve IPv6 uç noktalarınıza erişmek için yük dengeleyici için IPv4 ve IPv6 genel IP adresleri gerekir. [az network public-ip create](/cli/azure/network/public-ip) komutu ile bir genel IP adresi oluşturun. Aşağıdaki örnek, *DsResourceGroup01* kaynak grubunda *dsPublicIP_v4* ve *dsPublicIP_v6* adlı IPv4 ve IPv6 genel IP adresi oluşturur:
 
 ```azurecli
 # Create an IPV4 IP address
@@ -113,7 +113,7 @@ Bu bölümde, yük dengeleyici için çift ön uç IP (IPv4 ve IPv6) ve arka uç
 
 ### <a name="create-load-balancer"></a>Yük dengeleyici oluşturma
 
-**DsLbFrontEnd_v4**adlı bir ön uç havuzu içeren, [az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) adlı **dslb** adlı bir standart Load Balancer oluşturun, bu, IPv4 Genel IP adresiyle **ilişkili dsLbBackEndPool_v4 adlı bir arka uç havuzu içerir** önceki adımda oluşturduğunuz dsPublicIP_v4. 
+Önceki adımda oluşturduğunuz **DsPublicIP_v4** ıPV4 genel IP adresiyle ilişkili **dsLbBackEndPool_v4** adlı bir arka uç havuzu içeren, [az Network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) adlı **dslb** adlı **dsLbFrontEnd_v4**bir standart Load Balancer oluşturun. 
 
 ```azurecli
 az network lb create \
@@ -128,7 +128,7 @@ az network lb create \
 
 ### <a name="create-ipv6-frontend"></a>IPv6 ön ucu oluşturma
 
-[Az Network lb ön uç-IP Create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)komutuyla bir IPv6 ön uç IP 'si oluşturun. Aşağıdaki örnek *dsLbFrontEnd_v6* adlı bir ön uç IP yapılandırması oluşturur ve *dsPublicIP_v6* adresini iliştirir:
+[Az Network lb ön uç-IP Create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)komutuyla bir IPv6 ön uç IP 'si oluşturun. Aşağıdaki örnek, *dsLbFrontEnd_v6* adlı bir ön uç IP yapılandırması oluşturur ve *dsPublicIP_v6* adresini iliştirir:
 
 ```azurepowershell-interactive
 az network lb frontend-ip create \
@@ -141,7 +141,7 @@ az network lb frontend-ip create \
 
 ### <a name="configure-ipv6-back-end-address-pool"></a>IPv6 arka uç adres havuzunu yapılandırma
 
-[Az Network lb Address-Pool Create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)komutuyla bir IPv6 arka uç adres havuzu oluşturun. Aşağıdaki örnek, IPv6 NIC yapılandırmalarına sahip VM 'Leri eklemek için *dsLbBackEndPool_v6* adlı arka uç adres havuzunu oluşturur:
+[Az Network lb Address-Pool Create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)komutuyla bir IPv6 arka uç adres havuzu oluşturun. Aşağıdaki örnek, IPv6 NIC yapılandırmalarına sahip VM 'Leri dahil etmek için *dsLbBackEndPool_v6* adlı arka uç adres havuzunu oluşturur:
 
 ```azurecli
 az network lb address-pool create \
@@ -154,7 +154,7 @@ az network lb address-pool create \
 
 Trafiğin VM’lere dağıtımını tanımlamak için bir yük dengeleyici kuralı kullanılır. Gerekli kaynak ve hedef bağlantı noktalarının yanı sıra gelen trafik için ön uç IP yapılandırması ve trafiği almak için arka uç IP havuzu tanımlamanız gerekir. 
 
-[az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) komutuyla bir yük dengeleyici kuralı oluşturun. Aşağıdaki örnek, *dsLBrule_v4* ve *dsLBrule_v6* adlı yük dengeleyici kuralları oluşturur ve *TCP* bağlantı noktası *80* üzerindeki trafiği IPv4 ve IPv6 ön uç IP yapılandırmalarına dengeler:
+[az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) komutuyla bir yük dengeleyici kuralı oluşturun. Aşağıdaki örnek, *dsLBrule_v4* ve *dsLBrule_v6* adlı yük dengeleyici kuralları oluşturur ve *TCP* bağlantı noktası *80* ' deki trafiği IPv4 ve IPv6 ön uç IP yapılandırmalarına dengeler:
 
 ```azurecli
 az network lb rule create \
@@ -266,9 +266,9 @@ az network nsg rule create \
 ```
 
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) komutu ile bir sanal ağ oluşturun. Aşağıdaki örnek, *dsSubNET_v4* ve *dsSubNET_v6*alt ağları ile *dsvnet* adlı bir sanal ağ oluşturur:
+[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) komutu ile bir sanal ağ oluşturun. Aşağıdaki örnek, alt ağlar *dsSubNET_v4* ve *DsSubNET_v6*ile *dsvnet* adlı bir sanal ağ oluşturur:
 
 ```azurecli
 # Create the virtual network

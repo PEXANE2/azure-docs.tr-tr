@@ -1,25 +1,22 @@
 ---
-title: Öğretici-Azure ön kapı hizmeti için coğrafi filtreleme Web uygulaması güvenlik duvarı ilkesini yapılandırma
+title: Öğretici-coğrafi filtreleme WAF ilkesini Yapılandırma-Azure ön kapı hizmeti
 description: Bu öğreticide basit bir coğrafi filtreleme ilkesi oluşturmayı ve bu ilkeyi mevcut Front Door ön uç konağınız ile ilişkilendirmeyi öğreneceksiniz
 services: frontdoor
 documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
+author: teresayao
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
-ms.author: kumud
-ms.reviewer: tyao
-ms.openlocfilehash: e40e99aa57d10bd69143efc8db38ac0071d8952f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: tyao
+ms.openlocfilehash: 393d7790aadc87237081aa5437f8316eda59c52e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827762"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184531"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Ön kapılarınız için coğrafi filtreleme WAF ilkesini ayarlama
 Bu öğreticide, örnek bir coğrafi filtreleme ilkesi oluşturmak ve bu ilkeyi mevcut bir Front Door ön uç konağı ile ilişkilendirmek için Azure PowerShell kullanma gösterilmektedir. Bu örnek coğrafi filtreleme ilkesi, Birleşik Devletler dışındaki diğer tüm ülke/bölgelerden gelen istekleri engeller.
@@ -50,7 +47,7 @@ Install-Module -Name Az.FrontDoor
 ```
 
 ### <a name="create-a-front-door-profile"></a>Ön kapı profili oluşturma
-Hızlı Başlangıç bölümünde [açıklanan yönergeleri izleyerek bir ön kapı profili oluşturun: Ön kapı profili](quickstart-create-front-door.md)oluşturun.
+[Hızlı başlangıç: ön kapı profili oluşturma](quickstart-create-front-door.md)bölümünde açıklanan yönergeleri Izleyerek bir ön kapı profili oluşturun.
 
 ## <a name="define-geo-filtering-match-condition"></a>Coğrafi filtreleme eşleştirme koşulunu tanımlayın
 
@@ -66,7 +63,7 @@ $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
  
 ## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>Eylem ve Öncelik ile bir kurala coğrafi filtreleme eşleşme koşulu ekleme
 
-[New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)kullanarak eşleşme `nonUSBlockRule` koşuluna, eyleme ve önceliğe göre bir customrule nesnesi oluşturun.  Bir CustomRule'un birden fazla MatchCondition'ı olabilir.  Bu örnekte Eylem Engelle değerine, Öncelik ise en yüksek öncelik olan 1 değerine ayarlanmıştır.
+Eşleştirme koşuluna, eyleme ve bir önceliğe göre [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)kullanarak bir customrule nesnesi `nonUSBlockRule` oluşturun.  Bir CustomRule'un birden fazla MatchCondition'ı olabilir.  Bu örnekte Eylem Engelle değerine, Öncelik ise en yüksek öncelik olan 1 değerine ayarlanmıştır.
 
 ```
 $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
@@ -78,9 +75,9 @@ $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
 ```
 
 ## <a name="add-rules-to-a-policy"></a>İlkeye kural ekleme
-Kullanarak `Get-AzResourceGroup`ön kapı profilini içeren kaynak grubunun adını bulun. Ardından, ön kapı `geoPolicy` profilini içeren belirtilen `nonUSBlockRule` kaynak grubunda [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak içeren bir ilke nesnesi oluşturun. Coğrafi ilke için benzersiz bir ad sağlamanız gerekir. 
+`Get-AzResourceGroup`kullanarak ön kapı profilini içeren kaynak grubunun adını bulun. Ardından, ön kapı profilini içeren belirtilen kaynak grubunda [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak `nonUSBlockRule` içeren bir `geoPolicy` ilkesi nesnesi oluşturun. Coğrafi ilke için benzersiz bir ad sağlamanız gerekir. 
 
-Aşağıdaki örnek, [hızlı başlangıçta belirtilen yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır: Ön kapı](quickstart-create-front-door.md) oluşturma makalesi. Aşağıdaki örnekte, *Geopolicyallowusname* Ilke adını yalnızca benzersiz bir ilke adıyla değiştirin.
+Aşağıdaki örnek, [hızlı başlangıç: ön kapı oluşturma](quickstart-create-front-door.md) makalesinde belirtilen yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır. Aşağıdaki örnekte, *Geopolicyallowusname* Ilke adını yalnızca benzersiz bir ilke adıyla değiştirin.
 
 ```
 $geoPolicy = New-AzFrontDoorWafPolicy `
@@ -101,7 +98,7 @@ $geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName myResourceGroupF
 $geoFrontDoorObjectExample[0].FrontendEndpoints[0].WebApplicationFirewallPolicyLink = $geoPolicy.Id
 ```
 
-Ardından, ön uç webapplicationfirewallpolicylink özelliğini, `geoPolicy` [set-azfrontkapısının](/powershell/module/az.frontdoor/set-azfrontdoor)kullanıldığı RESOURCEID olarak ayarlayın.
+Sonra, [set-Azfrontkapısı](/powershell/module/az.frontdoor/set-azfrontdoor)kullanarak, ön uç WebApplicationFirewallPolicyLink özelliğini `geoPolicy`RESOURCEID olarak ayarlayın.
 
 ```
 Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]

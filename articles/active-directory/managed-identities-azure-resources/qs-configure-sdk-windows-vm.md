@@ -1,5 +1,5 @@
 ---
-title: Azure kaynakları için yönetilen kimliklere sahip bir VM 'yi yapılandırmak için bir Azure SDK kullanma
+title: Bir VM 'de yönetilen kimlikleri yapılandırmak için SDK kullanma-Azure AD
 description: Azure SDK kullanarak bir Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırmak ve kullanmak için adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/28/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b4f5a26f240656911fb9627d273de8b69edff6a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d11cd51984f82bc20c02669e796d9ba21b9ed5d7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809177"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183472"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Azure SDK kullanarak Azure kaynakları için yönetilen kimliklerle VM yapılandırma
 

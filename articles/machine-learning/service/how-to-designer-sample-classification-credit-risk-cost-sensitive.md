@@ -1,7 +1,7 @@
 ---
-title: 'Tasarımcı: kredi riskini tahmin etme (maliyet duyarlı)'
+title: 'Tasarımcı: Kredi risk örneğini tahmin etme'
 titleSuffix: Azure Machine Learning
-description: Bu makalede tasarımcı (Önizleme) kullanarak karmaşık makine öğrenimi işlem hattı oluşturma gösterilmektedir. Özel Python betikleri uygulamayı ve en iyi seçeneği belirlemek için birden çok modeli karşılaştırmayı öğreneceksiniz.
+description: Azure Machine Learning tasarımcısını kullanarak kredi riskini tahmin etmek için bir sınıflandırıcı oluşturun ve özel Python betikleri kullanın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 7af0ee31c7d7e5dae4a38db7f6c74ff3e5f964bb
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 0bf69683fc5afe24e0e7977b05892c3c10b0cd46
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647982"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196084"
 ---
-# <a name="sample-4---classification-with-custom-python-script-predict-credit-risk"></a>Örnek 4-özel Python betiği ile sınıflandırma: kredi riskini tahmin etme
+# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak kredi riskini tahmin etmek için Python betikleri kullanma & bir sınıflandırıcı oluşturma
+
+**Tasarımcı (Önizleme) örnek 4**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Bu makalede tasarımcı (Önizleme) kullanarak karmaşık makine öğrenimi işlem hattı oluşturma gösterilmektedir. Python betikleri kullanarak özel mantık uygulamayı ve en iyi seçeneği belirlemek için birden çok modeli karşılaştırmayı öğreneceksiniz.
@@ -28,7 +31,7 @@ Bu işlem hattı için tamamlanan grafik aşağıda verilmiştir:
 
 [işlem hattının ![grafiği](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

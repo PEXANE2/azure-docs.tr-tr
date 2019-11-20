@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: sagupt
-ms.openlocfilehash: 08af119e7f9e72de4a8ae4a1842289a4fd5d925e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 82c77568a2c62a0e02bf00c164f4600e221376da
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144156"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183110"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Azure Advisor ile Azure uygulamalarının performansını geliştirme
 
@@ -122,7 +122,7 @@ Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 
 * [Advisor 'a giriş](advisor-overview.md)
 * [Danışman’ı kullanmaya başlama](advisor-get-started.md)
-* [Danışman maliyet önerileri](advisor-performance-recommendations.md)
+* [Danışman maliyet önerileri](advisor-cost-recommendations.md)
 * [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-security-recommendations.md)
 * [Danışman Işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)

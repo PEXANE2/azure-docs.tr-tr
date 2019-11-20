@@ -1,19 +1,19 @@
 ---
-title: Azure portalını kullanarak Azure Güvenlik Duvarı DNAT ile gelen trafiği filtreleme
+title: Portalı kullanarak Azure Güvenlik Duvarı DNAT ile gelen trafiği Filtreleme
 description: Bu öğreticide Azure portalını kullanarak Azure Güvenlik Duvarı DNAT’yi dağıtmayı ve yapılandırmayı öğreneceksiniz.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 11/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f0a58382b9825a7b32aee69c00b9801d1c77251a
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 2f390f3ad540a2a25055dfcc97cc3af1f22c2b73
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114625"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195730"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak Azure Güvenlik Duvarı DNAT ile gelen trafiği filtreleme
 
@@ -52,7 +52,7 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 
 1. Azure portal giriş sayfasında **Tüm hizmetler**'e tıklayın.
 2. **Ağ** bölümünde **Sanal ağlar**'a tıklayın.
-3. **Ekle**'yi tıklatın.
+3. **Ekle**'ye tıklayın.
 4. **Ad** için **VN-Hub** yazın.
 5. **Adres alanı** için **10.0.0.0/16** yazın.
 6. **Abonelik** bölümünde aboneliğinizi seçin.
@@ -71,7 +71,7 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 
 1. Azure portal giriş sayfasında **Tüm hizmetler**'e tıklayın.
 2. **Ağ** bölümünde **Sanal ağlar**'a tıklayın.
-3. **Ekle**'yi tıklatın.
+3. **Ekle**'ye tıklayın.
 4. **Ad** için **VN-Spoke** yazın.
 5. **Adres alanı** için **192.168.0.0/16** yazın.
 6. **Abonelik** bölümünde aboneliğinizi seçin.
@@ -91,20 +91,20 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 
 1. **VN-Hub** sanal ağına tıklayın.
 2. **Ayarlar**'ın altında **Eşlemeler**'e tıklayın.
-3. **Ekle**'yi tıklatın.
+3. **Ekle**'ye tıklayın.
 4. Ad olarak **Peer-HubSpoke** yazın.
 5. Sanal ağ olarak **VN-Spoke**’u seçin.
-6. **Tamam**'ı tıklatın.
+6. **OK (Tamam)** düğmesine tıklayın.
 
 #### <a name="spoke-to-hub"></a>Uçtan merkeze
 
 1. **VN-Spoke** sanal ağına tıklayın.
 2. **Ayarlar**'ın altında **Eşlemeler**'e tıklayın.
-3. **Ekle**'yi tıklatın.
+3. **Ekle**'ye tıklayın.
 4. Ad olarak **Peer-SpokeHub** yazın.
 5. Sanal ağ olarak **VN-Hub**’ı seçin.
 6. **Yönlendirilen trafiğe izin ver**’e tıklayın.
-7. **Tamam**'ı tıklatın.
+7. **OK (Tamam)** düğmesine tıklayın.
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
@@ -121,12 +121,12 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 6. **Abonelik** bölümünde aboneliğinizi seçin.
 7. **Kaynak grubu** için **Var olanı kullan**’a tıklayın ve **RG-DNAT-Test** girişini seçin.
 8. **Konum** alanında önceden kullandığınız konumu seçin.
-9. **Tamam**'ı tıklatın.
+9. **OK (Tamam)** düğmesine tıklayın.
 
 **Boyut**
 
 1. Windows Server çalıştıran test amaçlı sanal makine için uygun bir boyut seçin. Örneğin: **B2ms** (8 GB RAM, 16 GB depolama alanı).
-2. Tıklayın **seçin**.
+2. **Seç**'e tıklayın.
 
 **Ayarlar**
 
@@ -149,13 +149,13 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
 3. **Güvenlik duvarı**'na ve ardından **Oluştur**'a tıklayın. 
 4. **Güvenlik duvarı oluştur** sayfasında aşağıdaki ayarları kullanarak güvenlik duvarını yapılandırın:
 
-   |Ayar  |Value  |
+   |Ayar  |Değer  |
    |---------|---------|
-   |Name     |FW-DNAT-test|
-   |Subscription     |\<aboneliğiniz\>|
-   |Resource group     |**Mevcut olanı kullan**: RG-DNAT-test |
-   |Location     |Önceden kullandığınız konumu seçin|
-   |Bir sanal ağ seçin     |**Mevcut olanı kullan**: VN-hub|
+   |Ad     |FW-DNAT-test|
+   |Abonelik     |\<aboneliğiniz\>|
+   |Kaynak grubu     |**Var olanı kullan**: RG-DNAT-Test |
+   |Konum     |Önceden kullandığınız konumu seçin|
+   |Bir sanal ağ seçin     |**Var olanı kullan**: VN-Hub|
    |Genel IP adresi     |**Yeni oluşturun**. Genel IP adresinin türü Standart SKU olmalıdır.|
 
 5. **Gözden geçir ve oluştur**’a tıklayın.
@@ -171,7 +171,7 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
 
 1. Azure portal giriş sayfasında **Tüm hizmetler**'e tıklayın.
 2. **Ağ** bölümünde **Rota tabloları**'na tıklayın.
-3. **Ekle**'yi tıklatın.
+3. **Ekle**'ye tıklayın.
 4. **Ad** için **RT-FWroute** yazın.
 5. **Abonelik** bölümünde aboneliğinizi seçin.
 6. **Kaynak grubu** için **Var olanı kullan**’ı ve **RG-DNAT-Test** girişini seçin.
@@ -181,7 +181,7 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
 10. **Alt ağlar**’a ve ardından **İlişkilendir**’e tıklayın.
 11. **Sanal ağlar**'a tıklayın ve ardından **VN-Spoke** girişini seçin.
 12. **Alt ağ** için **SN-Workload** girişine tıklayın.
-13. **Tamam**'ı tıklatın.
+13. **OK (Tamam)** düğmesine tıklayın.
 14. **Rotalar**'a ve ardından **Ekle**'ye tıklayın.
 15. **Rota adı** alanına **FW-DG** yazın.
 16. **Adres ön eki** alanına **0.0.0.0/0** yazın.
@@ -189,7 +189,7 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
 
     Azure Güvenlik Duvarı, normalde yönetilen bir hizmettir ancak bu durumda sanal gereç kullanılabilir.
 18. **Sonraki atlama adresi** alanına önceden not ettiğiniz güvenlik duvarı özel IP adresini yazın.
-19. **Tamam**'ı tıklatın.
+19. **OK (Tamam)** düğmesine tıklayın.
 
 ## <a name="configure-a-nat-rule"></a>NAT kuralı yapılandırma
 
@@ -205,7 +205,7 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
 10. **Hedef bağlantı noktaları** için **3389** yazın. 
 11. **Çevrilmiş Adres** için Srv-Workload sanal makinesinin özel IP adresini yazın. 
 12. **Çevrilmiş bağlantı noktası** için **3389** yazın. 
-13. **Ekle**'yi tıklatın. 
+13. **Ekle**'ye tıklayın. 
 
 ## <a name="test-the-firewall"></a>Güvenlik duvarını test etme
 

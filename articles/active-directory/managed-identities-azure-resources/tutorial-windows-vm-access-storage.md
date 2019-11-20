@@ -1,5 +1,5 @@
 ---
-title: Azure Depolama’ya erişmek için Windows VM sistem tarafından atanan yönetilen kimliği kullanma
+title: Öğretici`:` Azure depolama 'ya erişmek için yönetilen kimlik kullanma-Windows-Azure AD
 description: Windows VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure Depolama'ya erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147ee2450a6a67f8ca02149105533401d038a53a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2449307936839d50fe0d48a0536ca4dd9c8d85c3
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191091"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181913"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Öğretici: Azure depolama erişim anahtarı erişmek için bir Windows VM sistem tarafından atanan yönetilen kimliği kullanma
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Öğretici: Erişim anahtarı yoluyla Azure Depolama'ya erişmek için Windows VM sistem tarafından atanan yönetilen kimliği kullanma
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
 > [!IMPORTANT] 
-> Azure depolama artık Azure AD kimlik doğrulamasını destekler. En iyi uygulama, kullanın [Azure AD kimlik doğrulaması](tutorial-vm-windows-access-storage.md) erişim anahtarları yerine. 
+> Azure Storage artık Azure AD kimlik doğrulamasını destekliyor. En iyi uygulama olarak, erişim anahtarları yerine [Azure AD kimlik doğrulaması](tutorial-vm-windows-access-storage.md) kullanın. 
 
 
 Bu öğreticide, depolama hesabı erişim anahtarlarını almak amacıyla, Windows sanal makinesi (VM) için sistem tarafından atanmış yönetilen bir kimliği nasıl kullanacağınız gösterilmektedir. Depolama işlemleri yaparken, örneğin Depolama SDK'sını kullanırken depolama erişim anahtarlarını olağan şekilde kullanabilirsiniz. Bu öğreticide, Azure Depolama PowerShell kullanarak blob'ları karşıya yüklüyor ve indiriyoruz. Şunları öğrenirsiniz:
@@ -36,7 +36,7 @@ Bu öğreticide, depolama hesabı erişim anahtarlarını almak amacıyla, Windo
 
 > [!div class="checklist"]
 > * Depolama hesabı oluşturma
-> * VM’inize Resource Manager’da yer alan depolama hesabı erişim anahtarı için erişim verme 
+> * Resource Manager'da VM'nize depolama hesabı erişim anahtarları için erişim verme 
 > * VM'nizin kimliğini kullanarak erişim belirteci alma ve Resource Manager'dan depolama erişim anahtarlarını almak için bu belirteci kullanma 
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -54,9 +54,9 @@ Henüz bir depolama hesabınız yoksa, şimdi oluşturacaksınız. Ayrıca bu ad
 3. Daha sonra kullanacağınız depolama hesabı için bir ad girin.  
 4. **Dağıtım modeli** ve **Hesap türü** sırasıyla "Kaynak yöneticisi" ve "Genel amaçlı" olarak ayarlanmalıdır. 
 5. **Abonelik** ve **Kaynak Grubu** değerlerinin, önceki adımda VM'nizi oluştururken belirttiklerinizle eşleştiğinden emin olun.
-6. **Oluştur**’a tıklayın.
+6. **Oluştur**'a tıklayın.
 
-    ![Yeni depolama hesabı oluştur](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Yeni depolama hesabı oluşturma](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>Depolama hesabında bir blob kapsayıcısı oluşturma
 
@@ -75,7 +75,7 @@ Azure Depolama Azure AD kimlik doğrulamayı yerel olarak desteklemez.  Bununla 
 
 1. Yeni oluşturulan depolama hesabınıza geri gidin.  
 2. Sol bölmedeki **Erişim denetimi (IAM)** bağlantısına tıklayın.  
-3. Tıklayın **+ rol ataması Ekle** VM'niz için yeni bir rol ataması eklemek için sayfanın en üstünde
+3. VM 'niz için yeni bir rol ataması eklemek üzere sayfanın üstünde **+ rol ataması Ekle** ' ye tıklayın
 4. Sayfanın sağ tarafında, **Rol** olarak  "Depolama Hesabı Anahtarı İşleci Hizmet Rolü" seçeneğini ayarlayın. 
 5. Sonraki açılan listede **Erişimin atanacağı hedef** olarak "Sanal Makine" seçeneğini ayarlayın.  
 6. Ardından, uygun aboneliğin **Abonelik**’te listelendiğinden emin olun ve sonra **Kaynak Grubu**’nu "Tüm kaynak grupları" olarak ayarlayın.  
@@ -85,9 +85,9 @@ Azure Depolama Azure AD kimlik doğrulamayı yerel olarak desteklemez.  Bununla 
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-to-call-azure-resource-manager"></a>VM’nin sistem tarafından atanan yönetilen kimliğini kullanarak erişim belirteci alma ve Azure Resource Manager çağrısı yapma 
 
-Bu öğreticinin kalan bölümünde, daha önce oluşturmuş olduğumuz VM'den çalışacağız. 
+Bu öğreticinin kalan bölümünde, daha önce oluşturmuş olduğunuz VM'den çalışacağız. 
 
-Bu bölümde Azure Resource Manager PowerShell cmdlet’lerini kullanmanız gerekir.  Bunu yüklemediyseniz, devam etmeden önce [en son sürümünü indirin](https://docs.microsoft.com/powershell/azure/overview).
+Bu bölümde Azure Resource Manager PowerShell cmdlet’lerini kullanmanız gerekir.  Makinenizde yüklü değilse, devam etmeden önce [en son sürümü indirin](https://docs.microsoft.com/powershell/azure/overview).
 
 1. Azure portalında **Sanal Makineler**'e gidin, Windows sanal makinenize gidin ve ardından **Genel Bakış** sayfasında üst kısımdaki **Bağlan**'a tıklayın. 
 2. Windows VM'sini oluştururken eklendiğiniz hesabın **Kullanıcı adı** ve **Parola** değerlerini girin. 

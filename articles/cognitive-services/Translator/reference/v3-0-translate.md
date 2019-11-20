@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 11/12/2019
 ms.author: swmachan
-ms.openlocfilehash: b4daa04a4dbf87006147fb0d44d7b128a6d8ecf4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d58383b20e4311f8ab9490dc241722eee2e44ad6
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835778"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184800"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Metin Çevirisi API'si 3,0: çevir
 
@@ -33,21 +33,30 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
+### <a name="required-parameters"></a>Gerekli parametreler
+
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
   <th>Açıklama</th>
   <tr>
-    <td>api sürümü</td>
+    <td>api-version</td>
     <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer <code>3.0</code>olmalıdır.</td>
-  </tr>
-  <tr>
-    <td>Kaynak</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dilini belirtir. <code>translation</code> kapsamını kullanarak <a href="./v3-0-languages.md">desteklenen dilleri</a> arayarak hangi dillerin çevrilebileceğini bulun. <code>from</code> parametresi belirtilmemişse, kaynak dili saptamak için otomatik dil algılama uygulanır. <br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">Dinamik sözlük</a> özelliğini kullanırken, <code>from</code> parametresini, oto algılaması yerine kullanmanız gerekir.</td>
   </tr>
   <tr>
     <td>-</td>
     <td><em>Gerekli parametre</em>.<br/>Çıkış metninin dilini belirtir. Hedef dil <code>translation</code> kapsamında bulunan <a href="./v3-0-languages.md">desteklenen dillerden</a> biri olmalıdır. Örneğin, Almanca 'ya çevirmek için <code>to=de</code> kullanın.<br/>Sorgu dizesindeki parametresini tekrarlayarak birden fazla dile aynı anda çeviri yapılabilir. Örneğin, Almanca ve Italyanca 'e çevirmek için <code>to=de&to=it</code> kullanın.</td>
   </tr>
+</table>
+
+### <a name="optional-parameters"></a>İsteğe bağlı parametreler
+
+<table width="100%">
+  <th width="20%">Sorgu parametresi</th>
+  <th>Açıklama</th>
+  <tr>
+    <td>from</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dilini belirtir. <code>translation</code> kapsamını kullanarak <a href="./v3-0-languages.md">desteklenen dilleri</a> arayarak hangi dillerin çevrilebileceğini bulun. <code>from</code> parametresi belirtilmemişse, kaynak dili saptamak için otomatik dil algılama uygulanır. <br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">Dinamik sözlük</a> özelliğini kullanırken, <code>from</code> parametresini, oto algılaması yerine kullanmanız gerekir.</td>
+  </tr>  
   <tr>
     <td>textType</td>
     <td><em>Isteğe bağlı parametre</em>.<br/>Çevrilen metnin düz metin mi yoksa HTML metni mi olduğunu tanımlar. Herhangi bir HTML 'nin iyi biçimlendirilmiş, tam bir öğe olması gerekir. Olası değerler şunlardır: <code>plain</code> (varsayılan) veya <code>html</code>.</td>
@@ -57,7 +66,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
     <td><em>Isteğe bağlı parametre</em>.<br/>Çeviri kategorisini (etki alanı) belirten bir dize. Bu parametre, <a href="../customization.md">özel çevirmenle</a>oluşturulmuş özelleştirilmiş bir sistemden çevirileri almak için kullanılır. Dağıtılan özelleştirilmiş sisteminizi kullanmak için özel Translator <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">projem ayrıntılarından</a> bu PARAMETREYE kategori kimliği ekleyin. Varsayılan değer: <code>general</code>.</td>
   </tr>
   <tr>
-    <td>ProfanityAction</td>
+    <td>profanityAction</td>
     <td><em>Isteğe bağlı parametre</em>.<br/>Profanities 'in çevirilerde nasıl ele alınacağını belirtir. Olası değerler şunlardır: <code>NoAction</code> (varsayılan), <code>Marked</code> veya <code>Deleted</code>. Küfür işleme yollarını anlamak için bkz. <a href="#handle-profanity">küfür işleme</a>.</td>
   </tr>
   <tr>
@@ -101,7 +110,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
     <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
   </tr>
   <tr>
-    <td>İçerik türü</td>
+    <td>Content-Type</td>
     <td><em>Gerekli istek üst bilgisi</em>.<br/>Yükün içerik türünü belirtir.<br/> Kabul edilen değer <code>application/json; charset=UTF-8</code>.</td>
   </tr>
   <tr>
@@ -155,7 +164,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
     `transliteration` nesnesi, bir alfabeye çevirme gerçekleşmezse dahil edilmez.
 
-    * `alignment`: giriş metnini çevrilmiş metne eşleyen `proj`adlı tek bir dize özelliğine sahip bir nesne. Hizalama bilgileri yalnızca istek parametresi `includeAlignment` `true`olduğunda sağlanır. Hizalama, Şu biçimdeki bir dize değeri olarak döndürülür: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  İki nokta üst üste başlangıç ve bitiş dizinini ayırır, tire dilleri ayırır ve boşluklar sözcükleri ayırır. Bir sözcük, diğer dilde sıfır, bir veya birden çok sözcükten hizalanabilir ve hizalanmış sözcükler bitişik olmayabilir. Hiçbir hizalama bilgisi yoksa, hizalama öğesi boş olur. Bkz. bir örnek ve kısıtlamalar için [hizalama bilgileri alma](#obtain-alignment-information) .
+    * `alignment`: giriş metnini çevrilmiş metne eşleyen `proj`adlı tek bir dize özelliğine sahip bir nesne. Hizalama bilgileri yalnızca istek parametresi `includeAlignment` `true`olduğunda sağlanır. Hizalama, Şu biçimdeki bir dize değeri olarak döndürülür: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  İki nokta üst üste başlangıç ve bitiş dizinini ayırır, tire dilleri ayırır ve boşluklar sözcükleri ayırır. Bir sözcük ile sıfır, bir veya birden çok sözcük başka bir dil yeteri kadar ve hizalanmış sözcükleri bitişik olmayan olabilir. Hiçbir hizalama bilgisi yoksa, hizalama öğesi boş olur. Bkz. bir örnek ve kısıtlamalar için [hizalama bilgileri alma](#obtain-alignment-information) .
 
     * `sentLen`: giriş ve çıkış metinlerinde tümce sınırları döndüren bir nesne.
 
@@ -353,11 +362,11 @@ Normalde çevirmen hizmeti, çevirinin kaynağında bulunan küfür 'ı korur. K
 Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almayı önlemek istiyorsanız, küfür filtreleme seçeneğini kullanabilirsiniz. Bu seçenek, profanities uygun etiketlerle işaretlemek isteyip istemediğinizi seçmenizi sağlar (kendi işlem sonrası kendi işlemlerini ekleme seçeneğini sağlar) veya hiçbir işlem yapılıp yapılmayacağını seçebilirsiniz. Kabul edilen `ProfanityAction` değerleri `Deleted`, `Marked` ve `NoAction` (varsayılan).
 
 <table width="100%">
-  <th width="20%">ProfanityAction</th>
+  <th width="20%">profanityAction</th>
   <th>Eylem</th>
   <tr>
     <td><code>NoAction</code></td>
-    <td>Bu, varsayılan davranıştır. Küfür kaynaktan hedefe geçirilecek.<br/><br/>
+    <td>Bu varsayılan davranıştır. Küfür kaynaktan hedefe geçirilecek.<br/><br/>
     <strong>Örnek kaynak (Japonca)</strong>: 彼はジャッカスです.<br/>
     <strong>Örnek çeviri (İngilizce)</strong>: bir Jackass.
     </td>
@@ -474,7 +483,7 @@ Aşağıdaki kısıtlamalara göz önünde edin:
 
 * HTML biçimindeki metin için hizalama kullanılamaz, örneğin textType = HTML
 * Hizalama yalnızca dil çiftlerinin bir alt kümesi için döndürülür:
-  - Ingilizce 'den başka bir dilde;
+  - herhangi bir dili İngilizce;
   - Basitleştirilmiş Çince, geleneksel Çince ve Letonca Ingilizce dışındaki diğer dillerden Ingilizce;
   - Japonca 'dan Korece 'e veya Korece 'e kadar Japonca.
 * Tümce bir çeviri ise hizalama almazsınız. "Bu bir sınamadır", "Seni seviyorum" ve diğer yüksek frekanslı cümleler örneği.

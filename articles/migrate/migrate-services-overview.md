@@ -1,20 +1,20 @@
 ---
-title: Azure Geçişi Hakkında | Microsoft Azure
-description: Azure Geçişi hizmetine genel bir bakış sağlar.
+title: Azure Geçişi hakkında
+description: Azure geçişi hizmeti ile sunucu değerlendirmesi ve geçişi hakkında bilgi edinin.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/05/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8b1e716e482c49ceba0c600aaba30fe276bdb74d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a64e7366281f15c94d6551c1f7be27f461737634
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748011"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185787"
 ---
-# <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
+# <a name="about-azure-migrate"></a>Azure Geçişi hakkında
 
 Bu makalede, Azure geçişi hakkında hızlı bir genel bakış sunulmaktadır.
 
@@ -42,7 +42,7 @@ Azure geçişi, kuruluşunuzda Şirket içinden Azure 'a geçiş yapmanıza yard
 
 Azure geçişi, yerel Azure araçlarına ek olarak çeşitli ISV teklifleri ile tümleşir. 
 
-**'Ye** | **Özellik**
+**'Ye** | **Özelliği**
 --- | ---
 [Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Sunucuları geçirme
 [Cloudamize](https://www.cloudamize.com/platform) | Sunucuları değerlendir
@@ -130,7 +130,7 @@ Yardımcı hakkında [daha fazla bilgi edinin](https://appmigration.microsoft.co
 
 ## <a name="offline-data-migration"></a>Çevrimdışı veri geçişi
 
-Büyük miktarlardaki verileri Azure 'a çevrimdışı taşımak için Azure Data Box ürünlerini kullanabilirsiniz. [Daha fazla bilgi](https://docs.microsoft.com/azure/databox/)
+Büyük miktarlardaki verileri Azure 'a çevrimdışı taşımak için Azure Data Box ürünlerini kullanabilirsiniz. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/databox/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

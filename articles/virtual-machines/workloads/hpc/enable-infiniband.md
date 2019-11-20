@@ -10,77 +10,59 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 10/17/2019
 ms.author: amverma
-ms.openlocfilehash: 7218fceae71969f204c6c25ba4793a7c94341693
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7f7907482da886d9da17ef1e7844b205f3e4b906
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858475"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196775"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>SR-ıOV ile InfiniBand 'yi etkinleştirme
 
-HPC için IaaS VM 'Leri kullanmaya başlamanın en basit ve önerilen yolu, CentOS-HPC 7,6 VM OS görüntüsünü kullanmaktır. Özel VM görüntünüzü kullanıyorsanız, bunu InfiniBand (ıB) ile yapılandırmanın en kolay yolu, ınfinıbanddriverlinux veya ınfinibanddriverwindows VM uzantısını dağıtımınıza eklemektir.
-[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) ve [WINDOWS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances) ile bu VM uzantılarını kullanmayı öğrenin
+Azure NC, ND ve H serisi VM 'lerin tümü adanmış bir InfiniBand ağı tarafından desteklenir. RDMA etkin olan tüm boyutlar, bu ağı Intel MPı kullanarak kullanabiliyor. Bazı VM dizileri, SR-ıOV aracılığıyla tüm MPı uygulamaları ve RDMA fiilleri desteğini genişletmiştir. RDMA özellikli VM 'Ler, [GPU ile iyileştirilmiş](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) ve [yüksek performanslı BILGI işlem (HPC)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) VM 'lerini içerir.
 
-SR-ıOV etkinleştirilmiş VM 'lerde (Şu anda HB ve HC Serisi) InfiniBand 'yi el ile yapılandırmak için aşağıdaki adımları izleyin. Bu adımlar yalnızca RHEL/CentOS içindir. Ubuntu (16,04 ve 18,04) ve SLES (12 SP4 ve 15) için gelen kutusu sürücüleri iyi çalışır.
+## <a name="choose-your-installation-path"></a>Yükleme yolunuzu seçin
 
-## <a name="manually-install-ofed"></a>El ile yüklemesi
+Başlamak için en basit seçenek, kullanılabilir olduğunda, InfiniBand için önceden yapılandırılmış bir platform görüntüsü kullanmaktır:
 
-[Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26)-5 ' ten en son MLNX_OFED sürücülerini yükler.
+- **HPC IaaS VM 'leri** – HPC Için IaaS VM 'leri kullanmaya başlamak için en basit çözüm, zaten InfiniBand ile yapılandırılmış olan [CENTOS-HPC 7,6 VM OS görüntüsünü](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)kullanmaktır. Bu görüntü zaten InfiniBand ile yapılandırılmış olduğundan, el ile yapılandırmanız gerekmez. Uyumlu Windows sürümleri için bkz. [WINDOWS RDMA özellikli örnekler](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
 
-RHEL/CentOS için (7,6 için aşağıdaki örnek):
+- **GPU IaaS VM 'leri** : bir platform görüntüsü, [CENTOS-HPC 7,6 VM OS görüntüsü](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)dışında, GPU için iyileştirilmiş VM 'ler için önceden yapılandırılmış durumda değildir. InfiniBand ile özel bir görüntü yapılandırmak için bkz. [Mellanox OFED 'ı el ile yüklemek](#manually-install-mellanox-ofed).
 
-```bash
-sudo yum install -y kernel-devel python-devel
-sudo yum install -y redhat-rpm-config rpm-build gcc-gfortran gcc-c++
-sudo yum install -y gtk2 atk cairo tcl tk createrepo
-wget --retry-connrefused --tries=3 --waitretry=5 http://content.mellanox.com/ofed/MLNX_OFED-4.5-1.0.1.0/MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
-tar zxvf MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
-sudo ./MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64/mlnxofedinstall --add-kernel-support
-```
+Özel bir VM görüntüsü veya [GPU ile iyileştirilmiş](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) bir VM kullanıyorsanız, dağıtımınıza ıbanddriverlinux veya ınfinibanddriverwindows VM uzantısını ekleyerek bunu InfiniBand ile yapılandırmanız gerekir. Bu VM uzantılarını [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) ve [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)ile nasıl kullanacağınızı öğrenin.
 
-Windows için, [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34) 'den ConnectX-5 Için winof-2 sürücülerini indirip yükleyin
+## <a name="manually-install-mellanox-ofed"></a>Mellanox 'nin el ile yüklenmesi
 
-## <a name="enable-ipoib"></a>Ipoıb 'i etkinleştir
+InfiniBand 'yi SR-ıOV ile el ile yapılandırmak için aşağıdaki adımları kullanın. Bu adımlarda örnek, RHEL/CentOS için sözdizimi gösterir, ancak adımlar genel olur ve Ubuntu (16,04, 18,04 19,04) ve SLES (12 SP4 ve 15) gibi uyumlu bir işletim sistemi için kullanılabilir. Gelen kutusu sürücüleri de çalışır, ancak Mellanox Opendokuların sürücüleri daha fazla özellik sağlar.
+
+Mellanox sürücüsü için desteklenen dağıtımlar hakkında daha fazla bilgi için bkz. en son [Mellanox Openyapılar sürücüleri](https://www.mellanox.com/page/products_dyn?product_family=26). Mellanox Openyapılar sürücüsü hakkında daha fazla bilgi için bkz. [Mellanox Kullanıcı Kılavuzu](https://docs.mellanox.com/category/mlnxofedib).
+
+Linux üzerinde InfiniBand yapılandırma için aşağıdaki örneğe bakın:
 
 ```bash
-sudo sed -i 's/LOAD_EIPOIB=no/LOAD_EIPOIB=yes/g' /etc/infiniband/openib.conf
-sudo /etc/init.d/openibd restart
-if [ $? -eq 1 ]
-then
-  sudo modprobe -rv  ib_isert rpcrdma ib_srpt
-  sudo /etc/init.d/openibd restart
-fi
+# Modify the variable to desired Mellanox OFED version
+MOFED_VERSION=#4.7-1.0.0.1
+# Modify the variable to desired OS
+MOFED_OS=#rhel7.6
+pushd /tmp
+curl -fSsL https://www.mellanox.com/downloads/ofed/MLNX_OFED-${MOFED_VERSION}/MLNX_OFED_LINUX-${MOFED_VERSION}-${MOFED_OS}-x86_64.tgz | tar -zxpf -
+cd MLNX_OFED_LINUX-*
+sudo ./mlnxofedinstall
+popd
 ```
 
-## <a name="assign-an-ip-address"></a>Bir IP adresi atayın
+Windows için, [Windows sürücüleri Için Mellanox OFED](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)' i indirip yükleyin.
 
-İb0 arabirimine aşağıdakilerden birini kullanarak bir IP adresi atayın:
+## <a name="enable-ip-over-infiniband"></a>InfiniBand üzerinde IP 'yi etkinleştir
 
-- IP adresini İb0 arabirimine el ile atayın (kök olarak).
+InfiniBand üzerinde IP 'yi etkinleştirmek için aşağıdaki komutları kullanın.
 
-    ```bash
-    ifconfig ib0 $(sed '/rdmaIPv4Address=/!d;s/.*rdmaIPv4Address="\([0-9.]*\)".*/\1/' /var/lib/waagent/SharedConfig.xml)/16
-    ```
-
-OR
-
-- IP adresi atamak ve kalıcı hale getirmek için Walınuxagent 'ı kullanın.
-
-    ```bash
-    yum install -y epel-release
-    yum install -y python-pip
-    python -m pip install --upgrade pip setuptools wheel
-    wget "https://github.com/Azure/WALinuxAgent/archive/release-2.2.36.zip"
-    unzip release-2.2.36.zip
-    cd WALinuxAgent*
-    python setup.py install --register-service --force
-    sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
-    sed -i -e 's/# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
-    systemctl restart waagent
-    ```
+```bash
+sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
+sudo systemctl restart waagent
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

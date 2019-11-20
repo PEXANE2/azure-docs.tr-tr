@@ -1,18 +1,18 @@
 ---
-title: Azure geçişi 'nin önceki sürümüyle çalışma | Microsoft Docs
-description: Azure geçişi 'nin eski sürümüyle çalışma için bir Özet sağlar
+title: Azure geçişi 'nin önceki sürümüyle çalışma
+description: Azure geçişi 'nin önceki sürümüyle nasıl çalışabileceğinizi açıklar.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 07/11/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 52fe4af87d1f5ed6684896aebf404926691ccb07
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162467"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186533"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -21,8 +21,8 @@ Bu makalede, Azure geçişi 'nin önceki sürümüyle çalışma hakkında bilgi
 
 Azure geçişi hizmetinin iki sürümü vardır:
 
-- **Geçerli sürüm**: Azure geçişi projelerini oluşturmak, şirket içi makineleri yönetmek ve değerlendirmeleri ve geçişleri düzenlemek için bu sürümü kullanın. Bu sürümdeki yenilikler hakkında [daha fazla bilgi edinin](whats-new.md) .
-- **Önceki sürüm**: Azure geçişi 'nin önceki sürümünü kullanıyorsanız (yalnızca şirket içi VMware VM 'lerinin değerlendirmesi desteklenir), artık geçerli sürümü kullanmanız gerekir. Yine de önceki sürümde oluşturulan Azure geçiş projelerini kullanmanız gerekiyorsa, bu sizin yapabileceğiniz ve yapameyeceğiniz bir şeydir:
+- **Geçerli sürüm**: bu sürümü kullanarak Azure geçişi projelerini oluşturun, şirket içi makineleri bulun ve değerlendirmeleri ve geçişleri düzenleyin. Bu sürümdeki yenilikler hakkında [daha fazla bilgi edinin](whats-new.md) .
+- **Önceki sürüm**: Azure geçişi 'nin önceki sürümünü kullanıyorsanız (yalnızca şirket Içi VMware VM 'lerinin değerlendirmesi desteklenir), artık geçerli sürümü kullanmalısınız. Yine de önceki sürümde oluşturulan Azure geçiş projelerini kullanmanız gerekiyorsa, bu sizin yapabileceğiniz ve yapameyeceğiniz bir şeydir:
     - Artık geçiş projeleri oluşturamazsınız.
     - Yeni bulmalar gerçekleştirmemenizi öneririz.
     - Mevcut projelere erişmeye devam edebilirsiniz.
@@ -81,7 +81,7 @@ Değerlendirmedeki Azure için hazır olma görünümü, her bir sanal makinenin
 Azure için hazır | Uyumluluk sorunu yok. Makine Azure 'a olduğu gibi geçirilebilir ve Azure 'da tam Azure desteğiyle önyüklenir. | Azure Geçişi, hazır olan VM’ler için Azure’da bir VM boyutu önerir.
 Azure için koşullu olarak hazır | Makine Azure 'da önbaşlatılabilir, ancak tam Azure desteği olmayabilir. Örneğin, Windows Server 'ın Azure 'da desteklenmeyen eski bir sürümü olan bir makine. | Azure geçişi hazırlık sorunlarını açıklar ve düzeltme adımları sağlar.
 Azure için hazır değil |  VM, Azure 'da önyüklenmez. Örneğin, bir VM 'nin 4 TB 'den fazla diski varsa, Azure üzerinde barındırılamaz. | Azure geçişi hazırlık sorunlarını açıklar ve düzeltme adımları sağlar.
-Hazırlık bilinmiyor | Azure geçişi, genellikle veri kullanılamadığından Azure hazırlığını tanımlayamıyor.
+Hazır olma durumu bilinmiyor | Azure geçişi, genellikle veri kullanılamadığından Azure hazırlığını tanımlayamıyor.
 
 
 #### <a name="azure-vm-properties"></a>Azure VM özellikleri
@@ -92,7 +92,7 @@ Hazır olma durumu, VM 'nin Azure 'da çalıştırılıp çalıştırılamayaca�
 --- | --- | ---
 **Önyükleme türü** | BIOS desteklenir. UEFı desteklenmiyor. | Önyükleme türü UEFı ise koşullu olarak hazırlanın.
 **Sayısı** | Makine çekirdeği < = bir Azure VM için desteklenen en fazla çekirdek sayısı (128).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan çekirdekleri dikkate alır.<br/>Değerlendirme ayarlarında bir rahatlık faktörü belirtilmişse, kullanılan çekirdek sayısı, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir performans geçmişi yoksa, Azure geçişi,, rahatlık faktörünü uygulamadan ayrılmış çekirdekleri kullanır. | Sınırlara eşit veya daha küçükse hazırlanın.
-**Bellek** | Makine bellek boyutu < = bir Azure VM 'si için maksimum bellek (Azure 8 serisi Standard_M128m&nbsp;<sup>2</sup>üzerinde 3892 GB). [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan belleği dikkate alır.<br/><br/>Bir rakip faktörü belirtilmişse, kullanılan bellek, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir geçmiş yoksa, rahatlık faktörünü uygulamadan ayrılan bellek kullanılır.<br/><br/> | Sınırlar içindeyse hazırlanın.
+**Bellek** | Makine bellek boyutu < = bir Azure VM 'si için en fazla bellek (3892 GB Standard_M128m&nbsp;<sup>2</sup>). [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan belleği dikkate alır.<br/><br/>Bir rakip faktörü belirtilmişse, kullanılan bellek, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir geçmiş yoksa, rahatlık faktörünü uygulamadan ayrılan bellek kullanılır.<br/><br/> | Sınırlar içindeyse hazırlanın.
 **Depolama diski** | Bir diskin ayrılan boyutu 4 TB (4096 GB) veya daha az olmalıdır.<br/><br/> Makineye bağlı disk sayısı, işletim sistemi diski dahil 65 veya daha az olmalıdır. | Sınırlar içindeyse hazırlanın.
 **Ağ** | Bir makinenin kendisine bağlı 32 veya daha az NIC 'e sahip olması gerekir. | Sınırlar içindeyse hazırlanın.
 
@@ -210,7 +210,7 @@ Bağımlılık görselleştirmesini kullanmak için bir Log Analytics çalışma
 
 Bir çalışma alanını yapılandırdıktan sonra, değerlendirmek istediğiniz her şirket içi makineye aracıları indirip yüklersiniz. Ayrıca, internet bağlantısı olmayan makineleriniz varsa [Log Analytics ağ geçidini](../azure-monitor/platform/gateway.md) indirip yüklemeniz gerekir.
 
-1. Genel olarak,**makineleri** **Yönet** > ' **e**tıklayın ve gerekli makineyi seçin.
+1. Genel olarak, > **makineleri** **Yönet** ' **e**tıklayın ve gerekli makineyi seçin.
 2. **Bağımlılıklar** sütununda, **aracıları yüklensin**' e tıklayın.
 3. **Bağımlılıklar** sayfasında, değerlendirmek ISTEDIĞINIZ her VM 'ye Microsoft Monitoring Agent (MMA) ve bağımlılık aracısını indirip yükleyin.
 4. Çalışma alanı kimliğini ve anahtarını kopyalayın. Bu, şirket içi makineye MMA 'yı yüklerken gereklidir.
@@ -261,7 +261,7 @@ System Center Operations Manager 2012 R2 veya üzeriyle izlenen makineler için 
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Bağımlılık eşleme ile bir grup oluşturma
 
-1. Aracıları yükledikten sonra portala gidin ve**makineleri** **Yönet** > ' e tıklayın.
+1. Aracıları yükledikten sonra portala gidin ve > **makineleri** **Yönet** ' e tıklayın.
 2. Aracıları yüklediğiniz makineyi arayın.
 3. Makinenin **Bağımlılıklar** sütunu artık **Görünüm bağımlılıkları**olarak gösterilmelidir. Makinenin bağımlılıklarını görüntülemek için sütuna tıklayın.
 4. Makinenin bağımlılık eşlemesi aşağıdaki ayrıntıları gösterir:
@@ -295,7 +295,7 @@ Kusto sorgularını çalıştırmak için:
 
 1. Aracıları yükledikten sonra portala gidin ve **Genel Bakış ' a**tıklayın.
 2. **Genel bakış**bölümünde, projenin **temel parçalar** bölümüne gidin ve **OMS çalışma alanının**yanında sunulan çalışma alanı adına tıklayın.
-3. Log Analytics çalışma alanı sayfasında **genel** > **Günlükler**' e tıklayın.
+3. Log Analytics çalışma alanı sayfasında, **genel** > **Günlükler**' e tıklayın.
 4. Azure Izleyici günlüklerini kullanarak bağımlılık verilerini toplamak için sorgunuzu yazın. Sonraki bölümde örnek sorgular bulun.
 5. Çalıştır ' a tıklayarak sorgunuzu çalıştırın. 
 

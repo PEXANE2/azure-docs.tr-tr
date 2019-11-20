@@ -7,18 +7,19 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: alzam
-ms.openlocfilehash: 3f407ecfcbfdff72b79bfe6b5bc3e6b7606b1cf0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1b506f8439deabd110daaefab36442140e20d0d4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174635"
+ms.locfileid: "74185363"
 ---
 # <a name="enable-multi-factor-authentication-mfa-for-vpn-users"></a>VPN kullanıcıları için Multi-Factor Authentication (MFA) etkinleştirme
 
 Azure AD kiracınızdaki kullanıcılar için MFA 'yı etkinleştirerek, erişim verilmeden önce kullanıcılardan ikinci faktör kimlik doğrulaması istenir.
 
-> [! Önkoşul] "Kiracı yapılandırma" belgesinde açıklandığı gibi bir Azure AD kiracısı yapılandırdınız.
+> [!NOTE]
+> Önkoşul: "Kiracı yapılandırma" belgesinde açıklandığı gibi bir Azure AD kiracısı yapılandırdınız.
 >
 
 ### <a name="tenant"></a>1. Azure portal oturum açın ve **Azure Active Directory** , **tüm kullanıcılar** ' a gidin ve **Multi-Factor Authentication** ' e tıklayın.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b26fa822e17ad7e9444b75d4db516ea2ccf5340b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 01644054868ffc08738e67654ba181c76e7aed39
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129690"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185077"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure Uygulama Yapılandırması nedir?
 
@@ -63,7 +63,7 @@ Uygulamanıza uygulama yapılandırma deposu eklemenin en kolay yolu, Microsoft 
 | Programlama dili ve Framework | Bağlanma |
 |---|---|
 | .NET Core ve ASP.NET Core | .NET Core için uygulama yapılandırma sağlayıcısı |
-| .NET ve ASP.NET | .NET için uygulama yapılandırma Oluşturucusu |
+| .NET Framework ve ASP.NET | .NET için uygulama yapılandırma Oluşturucusu |
 | Java Spring | Yay bulutu için uygulama yapılandırma istemcisi |
 | Diğerleri | Uygulama yapılandırma REST API |
 
@@ -72,7 +72,7 @@ Uygulamanıza uygulama yapılandırma deposu eklemenin en kolay yolu, Microsoft 
 * [Hızlı başlangıç ASP.NET Core](./quickstart-aspnet-core-app.md)
 * [.NET Core hızlı başlangıç](./quickstart-dotnet-core-app.md)
 * [Hızlı başlangıç .NET Framework](./quickstart-dotnet-app.md)
-* [Azure Işlevi hızlı başlangıç](./quickstart-azure-function-csharp.md)
+* [Azure Işlevleri hızlı başlangıç](./quickstart-azure-functions-csharp.md)
 * [Java Spring hızlı başlangıç](./quickstart-java-spring-app.md)
 * [ASP.NET Core Özellik bayrağını hızlı başlangıç](./quickstart-feature-flag-aspnet-core.md)
 * [Yay önyükleme özelliği bayrak hızlı başlangıç](./quickstart-feature-flag-spring-boot.md)

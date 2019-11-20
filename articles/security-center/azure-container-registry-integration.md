@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Merkezi ve Azure Container Registry | Microsoft Docs
+title: Azure Güvenlik Merkezi ve Azure Container Registry
 description: Azure Güvenlik Merkezi 'nin Azure Container Registry ile tümleştirmesi hakkında bilgi edinin
 services: security-center
 documentationcenter: na
@@ -10,22 +10,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: f0de56f968488f0e5d551ad705cc6f8ca6e7bc47
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
-ms.translationtype: MT
+ms.openlocfilehash: f2a07774fa23173738bc33907dd00017ca260fd9
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521871"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196374"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Güvenlik Merkezi ile tümleştirme Azure Container Registry (Önizleme)
 
 Azure Container Registry (ACR), Azure dağıtımları için kapsayıcı görüntülerinizi merkezi bir kayıt defterinde depolayan ve yöneten, yönetilen ve özel bir Docker kayıt defteri hizmetidir. Bu, açık kaynaklı Docker kayıt defteri 2,0 ' i temel alır.
 
-ACR 'yi Azure Güvenlik Merkezi 'nin standart katmanı (bkz. [fiyatlandırma](security-center-pricing.md)) ile birlikte kullanırken, kayıt defteriniz ve görüntülerinizin güvenlik açıklarına daha derin bir görünürlük elde edersiniz.
+Kayıt defteriniz ve görüntülerinizin güvenlik açıklarına daha derin görünürlük sağlamak için Azure Güvenlik Merkezi 'nin standart katmanının kullanıcıları isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirebilir. Daha fazla bilgi için bkz. [Fiyatlandırma](security-center-pricing.md). Paket etkinken, Güvenlik Merkezi, kayıt defterine her bir görüntü gönderildiğinde ACR hizmetinizdeki görüntüleri otomatik olarak tarar. Tarama tamamlandığında (genellikle yaklaşık 10 dakika sonra), bulgular Güvenlik Merkezi 'nde aşağıdakine benzer önerilere sunulmaktadır:
 
-[Azure Güvenlik Merkezi 'nin içinde ![Azure Container Registry (ACR) önerileri](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+[Azure Container Registry (ACR) barındırılan görüntüde bulunan güvenlik açıklarına ilişkin ![örnek Azure Güvenlik Merkezi önerisi](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
 ## <a name="benefits-of-integration"></a>Tümleştirmenin avantajları
 

@@ -1,79 +1,79 @@
 ---
-title: Azure geçişi geçiş araçları ekleme
-description: Geçiş Araçları Azure geçişi Merkezi'nde eklemeyi açıklar.
+title: Azure geçişi 'ne geçiş araçları ekleme
+description: Azure geçişi 'ne geçiş araçları ekleme hakkında bilgi edinin.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.manager: carmonm
 ms.topic: article
-ms.date: 07/09/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: b3c77f052ed92db235b363e63859b9beb9e4f5a2
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 6bcb65912627356215769ccc8380ee1a7404f6f7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811875"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185954"
 ---
-# <a name="add-migration-tools"></a>Geçiş Araçları'nı ekleyin
+# <a name="add-migration-tools"></a>Geçiş araçları ekleme
 
-Bu makalede, Geçiş Araçları'nda eklemeyi açıklar [Azure geçişi](migrate-overview.md).
+Bu makalede, [Azure](migrate-overview.md)geçişi 'nde geçiş araçlarının nasıl ekleneceği açıklanmaktadır.
 
-Azure geçişi, Azure'a Araçları'nın bir hub'ı değerlendirme ve geçiş için sağlar. Bu araçlar, diğer Azure Hizmetleri ve üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri tarafından sağlanan yerel araçlar içerir.
+Azure geçişi, değerlendirme ve Azure 'a geçiş için bir araç merkezi sağlar. Bu, yerel araçları, diğer Azure hizmetleri tarafından sunulan araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir.
 
-Geçiş Aracı eklemek istediğiniz ve bir Azure geçişi projesini ayarlarsınız henüz ayarlamadıysanız, bu izleyin [makale](how-to-add-tool-first-time.md).
+Bir geçiş aracı eklemek ve henüz bir Azure geçişi projesi ayarlamadıysanız, bu [makaleye](how-to-add-tool-first-time.md)uyun.
 
 
 
-## <a name="selecting-an-isv-tool"></a>Bir ISV aracı seçme
+## <a name="selecting-an-isv-tool"></a>ISV aracı seçme
 
-Seçerseniz bir [ISV aracı](migrate-services-overview.md#isv-integration) geçiş için bir lisans almak veya ISV ilkesine uygun olarak ücretsiz bir deneme için kaydolma başlatabilirsiniz. Her Aracı'nda Azure geçişi için bağlanmak için bir seçenek yoktur. Aracı dağıtma ve Azure geçişi ile aracı çalışma alanına bağlamak için aracı yönergeleri ve belgeleri izleyin. 
+Geçiş için bir [ISV aracı](migrate-services-overview.md#isv-integration) seçerseniz, bir lisans alarak başlayabilir veya ücretsiz deneme için kayıt yaparak ISV ilkesine uygun olarak kaydolabilirsiniz. Her araçta Azure geçişi 'ne bağlanma seçeneği vardır. Aracı dağıtın ve araç çalışma alanını Azure geçişi ile bağlamak için araç yönergelerini ve belgeleri izleyin. 
 
 ## <a name="select-a-migration-scenario"></a>Bir geçiş senaryosu seçin
 
-1. Azure geçişi projesinde tıklayın **genel bakış**.
-2. Kullanmak istediğiniz geçiş senaryosu seçin:
+1. Azure geçişi projesinde **Genel Bakış ' a**tıklayın.
+2. Kullanmak istediğiniz geçiş senaryosunu seçin:
 
-    - Makineleri ve iş yüklerini Azure'a geçirmek için seçin **değerlendirin ve sunucularını geçirme**.
-    - Şirket içi SQL makineleri geçirmeyi seçin **değerlendirin ve veritabanlarını geçirme**.
-    - Şirket içi web uygulamaları geçirmek için seçin **değerlendirin ve web uygulamaları geçirme**.
-    - Şirket içi veri büyük miktarlarda çevrimdışı modda Azure'a geçirmek için seçin **Data Box sipariş**.
+    - Makineleri ve iş yüklerini Azure 'a geçirmek için, **sunucuları değerlendir ve geçir**' i seçin.
+    - Şirket içi SQL makinelerini geçirmek için **veritabanlarını değerlendir ve geçir**' i seçin.
+    - Şirket içi Web uygulamalarını geçirmek için **Web uygulamalarını değerlendir ve geçir**' i seçin.
+    - Çevrimiçi modda büyük miktarlarda şirket içi verileri Azure 'a geçirmek için **Data Box Sırala**' yı seçin.
 
     ![Değerlendirme senaryosu](./media/how-to-migrate/assess-scenario.png)
 
-## <a name="select-a-server-migration-tool"></a>Bir sunucu geçiş aracını seçin
+## <a name="select-a-server-migration-tool"></a>Sunucu geçiş aracı seçin
 
-1. Tıklayın **değerlendirmek ve sunucularını geçirme**.
-2. İçinde **Azure geçişi - sunucuları**, Geçiş Araçları'nı henüz eklemediyseniz altında **Geçiş Araçları**seçin **geçiş aracı eklemek için burayı tıklatın**. Varsa, Geçiş Araçları, önceden eklediğiniz **daha fazla geçiş araçları ekleme**seçin **değişiklik**.
+1. **Sunucuları değerlendir ve geçir**' e tıklayın.
+2. **Azure geçişi-sunucularında**, henüz geçiş araçları eklemediyseniz geçiş **araçları**' nın altında, geçiş **Aracı eklemek için buraya tıklayın ' ı**seçin. Daha önce geçiş araçları eklediyseniz, **daha fazla geçiş Ekle**' de **Değiştir**' i seçin.
 
     > [!NOTE]
-    > Farklı bir projeye gidin gerekip gerekmediğini **Azure geçişi - sunucuları**yanındaki **farklı geçiş projesi için ayrıntılara bakın**, tıklayın **Buraya**.
+    > Farklı bir projeye gitmeniz gerekiyorsa, **Azure geçişi-sunucular**' da, **farklı bir geçiş projesinin ayrıntılarını gör**' ün yanındaki **buraya tıklayın**' e tıklayın.
 
-3. İçinde **Azure geçişi**, kullanmak istediğiniz Taşıma Aracı'nı seçin.
-    - Azure geçişi sunucusu geçişi kullanırsanız, ayarlayın ve doğrudan Azure geçişi projesinde geçişleri çalıştırın.
-    - Bir üçüncü taraf değerlendirme aracı kullanırsanız, ISV için sağlanan bağlantıya gidin ve sağladıkları yönergelere uygun olarak bir geçiş çalıştırın.
+3. **Azure geçişi**' nde, kullanmak istediğiniz geçiş aracını seçin.
+    - Azure geçişi sunucu geçişini kullanıyorsanız, doğrudan Azure geçişi projesindeki geçişleri ayarlayabilir ve çalıştırabilirsiniz.
+    - Üçüncü taraf bir değerlendirme aracı kullanıyorsanız, ISV için sunulan bağlantıya gidin ve bu geçişi sağladığı yönergelere uygun olarak çalıştırın.
 
-## <a name="select-a-database-migration-tool"></a>Veritabanı geçiş aracını seçin
+## <a name="select-a-database-migration-tool"></a>Veritabanı geçiş aracı seçin
 
-1. Tıklayın **değerlendirin ve veritabanlarını geçirme**
-2. İçinde **veritabanları**, tıklayın **ekleme Araçları**.
-3. Bir araç eklentisi > **Select geçiş aracı**, veritabanınızı geçirme için kullanmak istediğiniz aracı seçin.
+1. **Veritabanlarını değerlendir ve geçir** ' e tıklayın
+2. **Veritabanları**' nda **araç ekle**' ye tıklayın.
+3. Araç Ekle > **geçiş aracını seçin**bölümünde, veritabanınızı geçirmek için kullanmak istediğiniz aracı seçin.
 
-## <a name="select-a-web-app-migration-tool"></a>Bir web uygulaması geçiş aracını seçin
+## <a name="select-a-web-app-migration-tool"></a>Web uygulaması geçiş aracı seçin
 
-1. Tıklayın **değerlendirin ve web uygulamaları geçirme**.
-2. Bağlantı için Azure App Service için geçiş aracı izleyin. Geçiş Aracı için kullanın:
+1. **Web uygulamalarını değerlendir ve geçir**' e tıklayın.
+2. Azure App Service geçiş aracının bağlantısını izleyin. Geçiş aracını kullanarak şunları yapın:
 
-    - **Çevrimiçi uygulamalar değerlendirmek**: Değerlendirmek ve uygulamaları çevrimiçi Genel bir URL ile Azure App Service Migration Yardımcısı'nı kullanarak geçirme.
-    - **.NET/PHP**: Dahili .NET ve PHP uygulamaları için indirin ve geçiş Yardımcısı'nı çalıştırın.
+    - **Uygulamaları çevrimiçi değerlendirin**: Azure App Service Geçiş Yardımcısı kullanarak, uygulamaları çevrimiçi olarak ortak bir URL ile değerlendirebilir ve geçirebilirsiniz.
+    - **.Net/php**: iç .net ve PHP uygulamaları için Geçiş Yardımcısı indirebilir ve çalıştırabilirsiniz.
 
-## <a name="order-an-azure-data-box"></a>Bir Azure Data Box sipariş
+## <a name="order-an-azure-data-box"></a>Azure Data Box sıralama
 
-Büyük miktarda veriyi Azure'a geçirmek için çevrimdışı veri aktarımı için bir Azure DAta Box sipariş edebilirsiniz.
+Büyük miktarlardaki verileri Azure 'a geçirmek için çevrimdışı veri aktarımı için bir Azure DAta Box siparişi verebilirsiniz.
 
-1. Tıklayın **bir veri kutusu siparişi**.
-2. İçinde **Azure Data Box'ınızı seçin**, aboneliğinizi belirtin. 
-3. Azure'a bir içeri aktarım olacaktır. Veri kaynağı ve verileri bir Azure bölgesine hedefini belirtin.
+1. **Data Box Sırala**' ya tıklayın.
+2. **Azure Data Box seçin**bölümünde aboneliğinizi belirtin. 
+3. Aktarım, Azure 'a bir içeri aktarma olacaktır. Veri kaynağını ve verilerin Azure bölgesi hedefini belirtin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure geçişi sunucusu geçişi kullanan bir geçiş denemek [Hyper-V](tutorial-migrate-hyper-v.md) veya [VMware](tutorial-migrate-vmware.md) VM'ler.
+[Hyper-V](tutorial-migrate-hyper-v.md) veya [VMware](tutorial-migrate-vmware.md) VM 'Leri Için Azure geçişi sunucu geçişini kullanarak geçiş yapmayı deneyin.

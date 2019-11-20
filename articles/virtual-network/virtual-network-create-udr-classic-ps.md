@@ -1,5 +1,5 @@
 ---
-title: Azure sanal ağında denetim yönlendirme-PowerShell-klasik | Microsoft Docs
+title: Azure VNet 'te denetim yönlendirme-PowerShell-klasik
 description: PowerShell kullanarak VNET 'lerde yönlendirmeyi nasıl denetleyeceğinizi öğrenin | Klasik
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: f2f2c17740bd94629209c2bffb82689ecc931fc8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 4170418b4f53277a8f4306fe2835286c8ac99dee
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058761"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186350"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>PowerShell kullanarak yönlendirmeyi denetleme ve sanal gereçler (klasik) kullanma
 
@@ -33,7 +33,7 @@ ms.locfileid: "71058761"
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure kaynaklarıyla çalışmadan önce Azure 'da Şu anda iki dağıtım modeli olduğunu anlamanız önemlidir: Azure Resource Manager ve klasik. Azure kaynaklarıyla çalışmadan önce [dağıtım modellerini ve araçlarlarını](../azure-resource-manager/resource-manager-deployment-model.md) iyice anladığınızdan emin olun. Bu makalenin üst kısmında bir seçenek belirleyerek farklı araçların belgelerini görüntüleyebilirsiniz. Bu makale, klasik dağıtım modelini kapsamaktadır.
+> Azure kaynaklarıyla çalışmadan önce Azure’da şu anda iki dağıtım modeli olduğunu anlamak önemlidir: Azure Resource Manager ve klasik. Azure kaynaklarıyla çalışmadan önce [dağıtım modellerini ve araçlarlarını](../azure-resource-manager/resource-manager-deployment-model.md) iyice anladığınızdan emin olun. Bu makalenin üst kısmında bir seçenek belirleyerek farklı araçların belgelerini görüntüleyebilirsiniz. Bu makale, klasik dağıtım modelini kapsamaktadır.
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]

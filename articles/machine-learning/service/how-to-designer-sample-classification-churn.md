@@ -1,7 +1,7 @@
 ---
-title: 'Tasarımcı: sınıflandırma, karmaşıklığı tahmin etme'
+title: 'Tasarımcı: dalgalanma örneğini tahmin etme'
 titleSuffix: Azure Machine Learning
-description: Bu tasarımcı (Önizleme) örnek işlem hattı, müşteri ilişkileri yönetimi (CRM) için ortak bir görev olan ikili sınıflandırıcı tahminini gösterir.
+description: Azure Machine Learning tasarımcı ile dalgalanma karar ağaçları & karmaşıklığı tahmin etmek için bu sınıflandırma örneğini izleyin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: a09060e16b877df4412b785edbb60930cb4122bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 5cf61d3446f960b65eb85538be9ea020671cced2
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647184"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196032"
 ---
-# <a name="sample-5---classification-predict-churn"></a>Örnek 5-sınıflandırma: karmaşıklığı tahmin etme
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Azure Machine Learning Designer ile dalgalanma tahmin etmek için önceden artırılmış karar ağacını kullanın
+
+**Tasarımcı (Önizleme) örnek 5**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan karmaşık makine öğrenimi ardışık düzeni oluşturmayı öğrenin.
@@ -30,7 +33,7 @@ Bu işlem hattı için tamamlanan grafik aşağıda verilmiştir:
 
 ![Ardışık düzen grafiği](./media/how-to-ui-sample-classification-predict-churn/pipeline-graph.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

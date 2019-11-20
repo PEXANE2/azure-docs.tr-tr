@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/26/2019
-ms.openlocfilehash: c71893ec9eae844fb213114f6a3805815ff5894f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd92f5aedd1fbc51531730e6a7826322570cd1b1
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555456"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195013"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'de performans sorunları için uyarıları ayarlama
 Kapsayıcılar için Azure Izleyici, Azure Kubernetes Service (AKS) üzerinde barındırılan, Azure Container Instances veya yönetilen Kubernetes kümelerine dağıtılan kapsayıcı iş yüklerinin performansını izler.
@@ -102,7 +102,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->Aşağıdaki sorgular, kümenizi ve denetleyicinizi temsil etmek için \<your-Cluster-name > ve \<your-Controller-name > yer tutucu değerlerini kullanır. Uyarıları ayarlarken bunları ortamınıza özgü değerlerle değiştirin.
+>Aşağıdaki sorgular, küme adı > \<yer tutucu değerlerini kullanır ve kümenizi ve denetleyicinizi temsil etmek için-Controller-name > \<. Uyarıları ayarlarken bunları ortamınıza özgü değerlerle değiştirin.
 
 Aşağıdaki sorgu, bir denetleyicideki tüm kapsayıcıların ortalama CPU kullanımını, her dakikada bir denetleyicideki her kapsayıcı örneğinin ortalama CPU kullanımı olarak hesaplar. Ölçüm, bir kapsayıcı için ayarlanan sınırın yüzdesidir.
 
@@ -284,12 +284,12 @@ Daha önce sağlanmış olan günlük arama kurallarından birini kullanarak Azu
 >Kapsayıcı kaynak kullanımı için bir uyarı kuralı oluşturmak için aşağıdaki yordam, [günlük uyarıları Için anahtar API tercihi](../platform/alerts-log-api-switch.md)bölümünde açıklandığı gibi yeni bir günlük uyarıları API 'sine geçmeniz gerekir.
 >
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki bölmeden **izleyici** ' yi seçin. **Öngörüler**altında **kapsayıcılar**' ı seçin.
 3. **Izlenen kümeler** sekmesinde listeden bir küme seçin.
 4. **İzleme**altında sol taraftaki bölmede **Günlükler** ' i seçerek Azure izleyici günlükleri sayfasını açın. Azure Log Analytics sorgularını yazmak ve yürütmek için bu sayfayı kullanın.
 5. **Günlükler** sayfasında **+ Yeni uyarı kuralı**' nı seçin.
-6. **Koşul** bölümünde, **özel günlük araması her ne zaman tanımsız >** önceden tanımlanmış özel günlük koşulunu \<logic seçin. Doğrudan Azure Izleyici günlükleri sayfasından bir uyarı kuralı oluşturduğumuz için **özel günlük araması** sinyali türü otomatik olarak seçilir.  
+6. **Koşul** bölümünde, **özel günlük araması her seferinde \<** , önceden tanımlanmış özel günlük koşulu > tanımsız mantığı seçin. Doğrudan Azure Izleyici günlükleri sayfasından bir uyarı kuralı oluşturduğumuz için **özel günlük araması** sinyali türü otomatik olarak seçilir.  
 7. Daha önce belirtilen [sorgulardan](#resource-utilization-log-search-queries) birini **arama sorgusu** alanına yapıştırın.
 8. Uyarıyı şu şekilde yapılandırın:
 
@@ -308,4 +308,4 @@ Daha önce sağlanmış olan günlük arama kurallarından birini kullanarak Azu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Daha önceden tanımlanmış sorguları ve Uyarıları izlemek için değerlendirmek veya özelleştirmek üzere ön tanımlı sorguları ve örnekleri görmek için [günlük sorgusu örneklerini](container-insights-log-search.md#search-logs-to-analyze-data) görüntüleyin, kümelerinizi görselleştirmeyi veya çözümlemeyi inceleyin.
-- Azure Izleyici hakkında daha fazla bilgi edinmek ve AKS kümenizin diğer yönlerini izlemek için bkz. [Azure Kubernetes hizmet durumunu görüntüleme](container-insights-analyze.md).
+- Azure Izleyici hakkında daha fazla bilgi edinmek ve Kubernetes kümenizin diğer yönlerini izlemek için bkz. [Kubernetes küme performansını görüntüleme](container-insights-analyze.md) ve [Kubernetes küme durumunu görüntüleme](container-insights-health.md).

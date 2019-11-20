@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: bf9afb66163532b4095e0d30b1167010320abbf8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a5b5de71ee290b39603968cf4309171689e22e4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490951"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184840"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Konuşma hizmetini kullanarak özel anahtar sözcük oluşturma
 
@@ -27,26 +27,26 @@ Bu makalede, cihazınız için özel bir anahtar sözcük oluşturmayı öğrene
 
 Bir anahtar sözcük seçerken aşağıdaki yönergeleri göz önünde bulundurun:
 
-* Anahtar kelimelisiniz Ingilizce bir sözcük veya tümcecik olmalıdır. İki saniyeden daha uzun sürmemelidir.
+* Anahtar kelimelisiniz Ingilizce bir sözcük veya tümcecik olmalıdır. Söyleyin iki saniyeden daha uzun sürer.
 
-* 4 ile 7 hece hecelere en iyi şekilde çalışan sözcükler. Örneğin, "Hey, Computer" iyi bir anahtar sözcüktür. Yalnızca "Hey" kötü bir alışkanlıktır.
+* 4 ila 7 hece sözcükleri en iyi çalışır. Örneğin, "Hey, Computer" iyi bir anahtar sözcüktür. Yalnızca "Merhaba" zayıf bir paroladır.
 
 * Anahtar sözcükler, yaygın Ingilizce Söyleniş kurallarını izlemelidir.
 
-* Yaygın Ingilizce telaffuz kuralları takip eden, benzersiz veya hatta oluşturulmuş bir sözcük, hatalı pozitif sonuçları düşürebilir. Örneğin, "computerama" iyi bir anahtar sözcük olabilir.
+* Benzersiz bir veya daha yaygın İngilizce telaffuz kurallarını izleyen made-up sözcük hatalı pozitif sonuçları azaltmak. Örneğin, "computerama" iyi bir anahtar sözcük olabilir.
 
-* Ortak bir sözcük seçemezsiniz. Örneğin, "yemek" ve "Go", insanların normal konuşmada sıkça söyledikleri sözcüklerdir. Cihazınız için yanlış Tetikleyiciler olabilir.
+* Ortak bir sözcük seçmeyin. Örneğin, "yemek" ve "kişiler sık sıradan konuşmada söyleyin sözcükler Git". Bunlar, cihazınız için false Tetikleyiciler olabilir.
 
-* Alternatif söylenişleri olabilecek bir anahtar sözcük kullanmaktan kaçının. Kullanıcıların, cihazlarını yanıt vermesini sağlamak için "sağ" söylenişini bilmeleri gerekir. Örneğin, "509", "5 0 9", "5 0 9" veya "509" olarak kullanılabilir. "R.E.I." "r-e-i" veya "Ray" olarak kullanılabilir. "Canlı", "/līv/" veya "/Liv/" ile yapılabilir.
+* Alternatif söylenişleri olabilecek bir anahtar sözcük kullanmaktan kaçının. Kullanıcılar, cihazlarını yanıt almak için "doğru" telaffuz bilmesi gerekir. Örneğin, "509" "beş sıfır dokuz" bildirilebilir "beş oh dokuz," veya "beş yüz ve dokuz." "R.E.I." "r-e-i" veya "ışın" bildirilebilir "Canlı" "/līv/" veya "/liv/" bildirilebilir.
 
-* Özel karakterler, semboller veya basamaklar kullanmayın. Örneğin, "Go #" ve "20 + kediler" iyi anahtar kelimelerdir. Bununla birlikte, "keskin" veya "yirmi Plus kediler" işe devam edebilir. Markanızdaki sembolleri kullanmaya devam edebilir ve uygun telaffuz zorlamak için pazarlama ve belgeleri kullanabilirsiniz.
+* Özel karakterler, simgeler veya basamak kullanmayın. Örneğin, "Go #" ve "20 + kediler" iyi anahtar kelimelerdir. Ancak, "NET Git" veya "yirmi kediler artı" işe yarayabilir. Yine de, marka simgeleri kullanın ve uygun telaffuz güçlendirmek için pazarlama ve belgeleri kullanın.
 
 > [!NOTE]
 > Anahtar kelime olarak bir trademarked sözcüğü seçerseniz, bu ticari marka sahibi olduğunuzdan veya ticari marka sahibinden, kelimeyi kullanmak için izninizin olduğundan emin olun. Microsoft, sizin tercih ettiğiniz anahtar kelimeden çıkabilecek herhangi bir yasal sorun için tabi değildir.
 
 ## <a name="create-your-keyword"></a>Anahtar keliinizi oluşturma
 
-Aygıtınızla özel bir anahtar sözcük kullanabilmeniz için, Microsoft özel anahtar sözcük oluşturma hizmeti ile bir anahtar sözcük oluşturmanız gerekir. Bir anahtar sözcük belirledikten sonra, hizmet cihazınızda anahtar sözcüğü etkinleştirmek için geliştirme setinizi dağıttığınız bir dosya oluşturur.
+Özel bir anahtar sözcüğü kullanabilmeniz için, [konuşma Studio](https://aka.ms/sdsdk-speechportal)'Daki [özel anahtar](https://aka.ms/sdsdk-wakewordportal) sözcük sayfasını kullanarak bir anahtar sözcük oluşturmanız gerekir. Bir anahtar sözcük girdikten sonra, cihazınıza dağıttığınız bir dosya oluşturur.
 
 1. [Konuşma Studio](https://aka.ms/sdsdk-speechportal) 'ya gidin ve **oturum açın** veya henüz bir konuşma aboneliğiniz yoksa, [**abonelik oluştur**](https://go.microsoft.com/fwlink/?linkid=2086754)' u seçin.
 
@@ -62,7 +62,7 @@ Aygıtınızla özel bir anahtar sözcük kullanabilmeniz için, Microsoft özel
 
     ![Anahtar keliinizi indirin](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
 
-1. . Zip dosyasını bilgisayarınıza kaydedin. Özel anahtar sözcüðünü geliştirme paketine dağıtmak için bu dosyaya ihtiyacınız olacaktır.
+1. .Zip dosyasını bilgisayarınıza kaydedin. Özel anahtar keliinizi cihazınıza dağıtmak için bu dosyaya ihtiyacınız olacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

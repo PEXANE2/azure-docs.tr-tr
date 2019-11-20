@@ -1,5 +1,5 @@
 ---
-title: PowerShell kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma
+title: PowerShell kullanarak sanal makine ölçek kümelerinde yönetilen kimlikleri Yapılandırma-Azure AD
 description: PowerShell kullanarak bir sanal makine ölçek kümesi üzerinde sistem ve Kullanıcı tarafından atanan Yönetilen kimlikler yapılandırmaya yönelik adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fa3100cae9b1a2c9ca320776cc357f3720b3473
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: a09780ae117beb1a8d601b8fd88d43191321854f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309990"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183993"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>PowerShell kullanarak sanal makine ölçek kümelerinde Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -56,7 +56,7 @@ Bu bölümde, Azure PowerShell kullanarak sistem tarafından atanan yönetilen k
 
 Sistem tarafından atanan yönetilen kimlik etkin bir sanal makine ölçek kümesi oluşturmak için:
 
-1. Sistem tarafından atanan yönetilen kimliğe sahip bir sanal makine ölçek kümesi oluşturmak için [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet başvurusu makalesindeki *Örnek 1* ' e bakın.  `New-AzVmssConfig` Cmdlet 'ine parametresini `-IdentityType SystemAssigned` ekleyin:
+1. Sistem tarafından atanan yönetilen kimliğe sahip bir sanal makine ölçek kümesi oluşturmak için [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet başvurusu makalesindeki *Örnek 1* ' e bakın.  `New-AzVmssConfig` cmdlet 'ine `-IdentityType SystemAssigned` parametresini ekleyin:
 
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
@@ -68,13 +68,13 @@ Sistem tarafından atanan yönetilen kimlik etkin bir sanal makine ölçek küme
 
 Var olan bir Azure sanal makine ölçek kümesinde sistem tarafından atanan bir yönetilen kimliği etkinleştirmeniz gerekiyorsa:
 
-1. Kullanarak `Connect-AzAccount`Azure 'da oturum açın. Sanal makine ölçek kümesini içeren Azure aboneliğiyle ilişkili bir hesap kullanın. Ayrıca, hesabınızın "sanal makine katılımcısı" gibi, sanal makine ölçek kümesinde yazma izinleri veren bir role ait olduğundan emin olun:
+1. `Connect-AzAccount`kullanarak Azure 'da oturum açın. Sanal makine ölçek kümesini içeren Azure aboneliğiyle ilişkili bir hesap kullanın. Ayrıca, hesabınızın "sanal makine katılımcısı" gibi, sanal makine ölçek kümesinde yazma izinleri veren bir role ait olduğundan emin olun:
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. İlk olarak [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) cmdlet 'ini kullanarak sanal makine ölçek kümesi özelliklerini alın. Ardından, sistem tarafından atanan bir yönetilen kimliği etkinleştirmek için `-IdentityType` [Update-azvmss](/powershell/module/az.compute/update-azvmss) cmdlet 'inde anahtarı kullanın:
+2. Önce [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) cmdlet 'ini kullanarak sanal makine ölçek kümesi özelliklerini alın. Ardından, sistem tarafından atanan bir yönetilen kimliği etkinleştirmek için, [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 'inde `-IdentityType` anahtarını kullanın:
 
    ```powershell
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
@@ -86,7 +86,7 @@ Var olan bir Azure sanal makine ölçek kümesinde sistem tarafından atanan bir
 
 Artık sistem tarafından atanan yönetilen kimliğe ihtiyacı olmayan ancak hala Kullanıcı tarafından atanan yönetilen kimliklere ihtiyacı olan bir sanal makine ölçek kümesine sahipseniz, aşağıdaki cmdlet 'i kullanın:
 
-1. Kullanarak `Connect-AzAccount`Azure 'da oturum açın. VM 'yi içeren Azure aboneliğiyle ilişkili bir hesap kullanın. Ayrıca, hesabınızın "sanal makine katılımcısı" gibi, sanal makine ölçek kümesinde yazma izinleri veren bir role ait olduğundan emin olun:
+1. `Connect-AzAccount`kullanarak Azure 'da oturum açın. VM 'yi içeren Azure aboneliğiyle ilişkili bir hesap kullanın. Ayrıca, hesabınızın "sanal makine katılımcısı" gibi, sanal makine ölçek kümesinde yazma izinleri veren bir role ait olduğundan emin olun:
 
 2. Aşağıdaki cmdlet'i çalıştırın:
 
@@ -112,13 +112,13 @@ Kullanıcı tarafından atanan yönetilen kimlik ile yeni bir sanal makine ölç
 
 Var olan bir Azure sanal makine ölçek kümesine Kullanıcı tarafından atanan bir yönetilen kimlik atamak için:
 
-1. Kullanarak `Connect-AzAccount`Azure 'da oturum açın. Sanal makine ölçek kümesini içeren Azure aboneliğiyle ilişkili bir hesap kullanın. Ayrıca, hesabınızın "sanal makine katılımcısı" gibi, sanal makine ölçek kümesinde yazma izinleri veren bir role ait olduğundan emin olun:
+1. `Connect-AzAccount`kullanarak Azure 'da oturum açın. Sanal makine ölçek kümesini içeren Azure aboneliğiyle ilişkili bir hesap kullanın. Ayrıca, hesabınızın "sanal makine katılımcısı" gibi, sanal makine ölçek kümesinde yazma izinleri veren bir role ait olduğundan emin olun:
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. İlk olarak `Get-AzVM` cmdlet 'ini kullanarak sanal makine ölçek kümesi özelliklerini alın. Sonra, sanal makine ölçek kümesine Kullanıcı tarafından atanan bir yönetilen kimlik atamak için `-IdentityType` [Update-azvmss](/powershell/module/az.compute/update-azvmss) cmdlet 'inde ve `-IdentityID` anahtarını kullanın. ,,,,`<SUBSCRIPTION ID>`, Değerlerini kendi değerlerinizle değiştirin `<VM NAME>`. `<RESROURCE GROUP>` `<USER ASSIGNED ID1>` `USER ASSIGNED ID2`
+2. Önce `Get-AzVM` cmdlet 'ini kullanarak sanal makine ölçek kümesi özelliklerini alın. Sonra, sanal makine ölçek kümesine Kullanıcı tarafından atanan bir yönetilen kimlik atamak için, [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 'inde `-IdentityType` ve `-IdentityID` anahtarını kullanın. `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`ve `USER ASSIGNED ID2` değerlerini kendi değerlerinizle değiştirin.
 
    [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -128,7 +128,7 @@ Var olan bir Azure sanal makine ölçek kümesine Kullanıcı tarafından atanan
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Kullanıcı tarafından atanan yönetilen kimliği bir Azure sanal makine ölçek kümesinden kaldırma
 
-Sanal makine ölçek kümesinde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, aşağıdaki komutları kullanarak en son biri hariç tümünü kaldırabilirsiniz. `<RESOURCE GROUP>` ve `<VIRTUAL MACHINE SCALE SET NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. , `<USER ASSIGNED IDENTITY NAME>` Kullanıcı tarafından atanan yönetilen kimliğin Name özelliği olduğundan sanal makine ölçek kümesinde kalması gerekir. Bu bilgiler, şu kullanılarak `az vmss show`sanal makine ölçek kümesinin kimlik bölümünde bulunabilir:
+Sanal makine ölçek kümesinde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, aşağıdaki komutları kullanarak en son biri hariç tümünü kaldırabilirsiniz. `<RESOURCE GROUP>` ve `<VIRTUAL MACHINE SCALE SET NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. `<USER ASSIGNED IDENTITY NAME>`, Kullanıcı tarafından atanan yönetilen kimliğin ad özelliğidir ve sanal makine ölçek kümesinde kalması gerekir. Bu bilgiler, `az vmss show`kullanılarak sanal makine ölçek kümesinin kimlik bölümünde bulunabilir:
 
 ```powershell
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType UserAssigned -IdentityID "<USER ASSIGNED IDENTITY NAME>"

@@ -4,15 +4,18 @@ description: Azure dosya paylaşımından dosyaları silme başarısızlığın�
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
+manager: dcscontentpm
 ms.date: 10/25/2019
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: b535578328e7ca77f1071187b6ac761bc7076ac1
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+services: storage
+tags: ''
+ms.openlocfilehash: d3a3763a8964810626bcdc47da230a9ee406f1f8
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73065983"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196474"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure dosya paylaşma – dosyaları Azure dosya paylaşımından silme işlemi başarısız oldu
 
@@ -69,7 +72,7 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 
 ## <a name="example-result"></a>Örnek sonuç:
 
-|Handleıd|Yol|ClientIP|Istemci bağlantı noktası|OpenTime|LastReconnectTime|File|ParentID|Kimliği|
+|Handleıd|Yol|ClientIP|Istemci bağlantı noktası|OpenTime|LastReconnectTime|File|ParentID|oturum kimliği|
 |---|---|---|---|---|---|---|---|---|
 |259101229083|---|10.222.10.123|62758|2019-10-05|12:16:50Z|0|0|9507758546259807489|
 |259101229131|---|10.222.10.123|62758|2019-10-05|12:36:20Z|0|0|9507758546259807489|

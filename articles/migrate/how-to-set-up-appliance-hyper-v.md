@@ -1,17 +1,17 @@
 ---
-title: Hyper-V VM 'Leri için Azure geçişi sunucu değerlendirmesini/geçişini ayarlama | Microsoft Docs
-description: Azure geçişi sunucu değerlendirmesini/geçişini kullanarak Hyper-V VM 'lerinin bulma, değerlendirme ve aracısız geçiş için bir gereç ayarlamayı açıklar.
+title: Hyper-V için Azure geçişi gereci ayarlama
+description: Hyper-V VM 'lerini değerlendirmek ve geçirmek için bir Azure geçiş gereci ayarlamayı öğrenin.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 00473519ad324d34d1fd595b2fb08408ad991f4c
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 1676ad3dde5a97d2afdb64595d51f5502f9dcc3d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158620"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185928"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM 'Leri için gereç ayarlama
 

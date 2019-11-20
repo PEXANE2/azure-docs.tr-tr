@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 10/11/2019
 ms.author: yegu
-ms.openlocfilehash: 4e08192788329e7a835ddb0b6b3f1aa01b2c73e1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 91712b3f730317e65cda7b48c8f5636b2fb9ab2c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299943"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185084"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla ASP.NET Core uygulaması oluşturma
 
@@ -59,9 +59,9 @@ Yeni bir ASP.NET Core MVC web uygulaması projesi oluşturmak için [.NET Core k
 
 ## <a name="add-secret-manager"></a>Gizli dizi Yöneticisi ekleme
 
-Gizli dizi Yöneticisi 'ni kullanmak için *. csproj* dosyanıza `UserSecretsId` öğesi ekleyin.
+Gizli yönetimi kullanmak için, *. csproj* dosyanıza bir `UserSecretsId` öğesi ekleyin.
 
-- *. Csproj* dosyasını açın. Burada gösterildiği gibi `UserSecretsId` öğesi ekleyin. Aynı GUID 'i kullanabilir veya bu değeri kendi kendinizinkini kullanarak değiştirebilirsiniz. Dosyayı kaydedin.
+- *. Csproj* dosyasını açın. Burada gösterildiği gibi bir `UserSecretsId` öğesi ekleyin. Aynı GUID 'i kullanabilir veya bu değeri kendi kendinizinkini kullanarak değiştirebilirsiniz. Dosyayı kaydedin.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -104,7 +104,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
     ```
 
     > [!IMPORTANT]
-    > Bazı kabuklar, tırnak içine alınmadığı takdirde bağlantı dizesini keser. @No__t-0 komutunun çıktısının tüm bağlantı dizesini belirttiğinden emin olun. Aksi takdirde, bağlantı dizesini tırnak içine alarak komutu yeniden çalıştırın.
+    > Bazı kabuklar, tırnak içine alınmadığı takdirde bağlantı dizesini keser. `dotnet user-secrets` komutunun çıktısının tüm bağlantı dizesini belirttiğinden emin olun. Aksi takdirde, bağlantı dizesini tırnak içine alarak komutu yeniden çalıştırın.
 
     Gizli dizi Yöneticisi yalnızca Web uygulamasını yerel olarak test etmek için kullanılır. Uygulama [Azure App Service](https://azure.microsoft.com/services/app-service/web)dağıtıldığında, örneğin, bağlantı dizesini depolamak Için gizli yönetici yerine App Service bir uygulama ayarı **bağlantı** dizesi kullanırsınız.
 
@@ -116,10 +116,10 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-5. @No__t-0 yöntemini, `config.AddAzureAppConfiguration()` yöntemini çağırarak uygulama yapılandırmasını kullanacak şekilde güncelleştirin.
+5. `config.AddAzureAppConfiguration()` metodunu çağırarak uygulama yapılandırmasını kullanmak için `CreateWebHostBuilder` yöntemini güncelleştirin.
     
     > [!IMPORTANT]
-    > `CreateHostBuilder`, .NET Core 3,0 ' de `CreateWebHostBuilder` ' i değiştirir.  Ortamınıza göre doğru söz dizimini seçin.
+    > `CreateHostBuilder` `CreateWebHostBuilder` .NET Core 3,0 ' de yer alır.  Ortamınıza göre doğru söz dizimini seçin.
 
     ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>.NET Core 2. x için güncelleştirme `CreateWebHostBuilder`
 
@@ -134,7 +134,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
             .UseStartup<Startup>();
     ```
 
-    ### <a name="update-createhostbuilder-for-net-core-3x"></a>.NET Core 3. x için güncelleştirme `CreateHostBuilder`
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>.NET Core 3. x için `CreateHostBuilder` güncelleştirme
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -167,7 +167,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
     <h1>@Configuration["TestApp:Settings:Message"]</h1>
     ```
 
-7. Görünümler > paylaşılan dizinde *_Layout. cshtml* dosyasını açın ve içeriğini aşağıdaki kodla değiştirin:
+7. Görünümler > paylaşılan dizinde *_Layout. cshtml* dosyasını açın ve içeriğini şu kodla değiştirin:
 
     ```HTML
     <!DOCTYPE html>
@@ -208,7 +208,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
         dotnet run
     ```
 
-3. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `http://localhost:5000` ' a gidin.
+3. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `http://localhost:5000`' a gidin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -216,7 +216,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu [uygulama yapılandırma sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=2074664)aracılığıyla bir ASP.NET Core Web uygulamasıyla kullandınız. Uygulama yapılandırmasını kullanma hakkında daha fazla bilgi edinmek için, Web uygulamanızı yapılandırma ayarlarını dinamik olarak yenilemek üzere nasıl yapılandıracağınızı gösteren bir sonraki öğreticiye geçin.
+Bu hızlı başlangıçta, yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu [uygulama yapılandırma sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=2074664)aracılığıyla bir ASP.NET Core Web uygulamasıyla kullandınız. Yapılandırma ayarlarını dinamik olarak yenilemek üzere ASP.NET Core uygulamanızı nasıl yapılandıracağınızı öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core uygulamasında dinamik yapılandırma kullanma](./enable-dynamic-configuration-aspnet-core.md)
+> [Dinamik yapılandırmayı etkinleştir](./enable-dynamic-configuration-aspnet-core.md)

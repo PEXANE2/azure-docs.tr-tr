@@ -1,6 +1,6 @@
 ---
-title: Azure VM'de oturum açma için Azure kaynakları için yönetilen kimliklerini kullanma
-description: Adım adım yönergeler ve örnekler için bir Azure VM kullanarak betiği istemci oturum açma ve kaynak erişimi için Azure kaynaklarını hizmet sorumlusu için kimlikleri yönetilen.
+title: Azure VM 'de oturum açmak için Yönetilen kimlikler kullanma-Azure AD
+description: Komut dosyası istemcisi oturum açma ve kaynak erişimi için Azure kaynakları hizmet sorumlusu için Azure VM tarafından yönetilen kimlikler kullanmaya yönelik adım adım yönergeler ve örnekler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,17 +15,17 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43aa0859fa67cc6b2f5c5974f072e7b6d4b29527
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e3d6d128677d2e82f4750a7771885474bf284fb1
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112971"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184226"
 ---
-# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure VM'de oturum açma için Azure kaynakları için yönetilen kimliklerini kullanma 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure VM 'de oturum açmak üzere Azure kaynakları için Yönetilen kimlikler kullanma 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-Bu makalede, Azure kaynaklarını hizmet sorumlusu ve hata işleme gibi önemli konular kılavuzu için yönetilen kimliklerle oturum için PowerShell ve CLI betiği örnekleri sağlar.
+Bu makalede, Azure kaynakları hizmet sorumlusu için yönetilen kimlikleri kullanarak oturum açma için PowerShell ve CLı betik örnekleri ve hata işleme gibi önemli konularda rehberlik sağlanmıştır.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
@@ -33,27 +33,27 @@ Bu makalede, Azure kaynaklarını hizmet sorumlusu ve hata işleme gibi önemli 
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Bu makalede Azure PowerShell veya Azure CLI örnekleri kullanmayı planlıyorsanız, en son sürümünü yüklediğinizden emin olun [Azure PowerShell](/powershell/azure/install-az-ps) veya [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Bu makaledeki Azure PowerShell veya Azure CLı örneklerini kullanmayı planlıyorsanız, [Azure PowerShell](/powershell/azure/install-az-ps) veya [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)'nin en son sürümünü yüklediğinizden emin olun. 
 
 > [!IMPORTANT]
-> - Bu makaledeki tüm örnek betik, komut satırı istemcisi etkinleştirilmiş Azure kaynakları için yönetilen kimliklerle bir VM'de çalışan varsayar. VM "Bağlan" özelliği Azure Portalı'nda uzaktan VM'nize bağlanmak için kullanın. Bir VM'de Azure kaynakları için yönetilen kimlikleri etkinleştirme hakkında daha fazla bilgi için bkz [yapılandırma kimlikleri Azure portalını kullanarak bir VM üzerindeki Azure kaynakları için yönetilen](qs-configure-portal-windows-vm.md), ya da (PowerShell, CLI, bir şablon veya bir Azure kullanarak değişken makalelerden birine SDK'SI). 
-> - Kaynak erişim sırasında hataları önlemek için sanal makinenin yönetilen kimlik en az verilmelidir "Okuyucu" uygun kapsamında erişim (VM veya üzeri) Azure Resource Manager işlemlerini VM'de izin vermek için. Bkz: [Ata yönetilen Azure kaynaklarına erişim için Azure portalını kullanarak kaynak kimlikleri](howto-assign-access-portal.md) Ayrıntılar için.
+> - Bu makaledeki tüm örnek betik, komut satırı istemcisinin Azure kaynakları için yönetilen kimliklere sahip bir VM 'de çalıştığını varsayar. Sanal makinenize uzaktan bağlanmak için Azure portal VM "Connect" özelliğini kullanın. Bir VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirme hakkında daha fazla bilgi için bkz. Azure portal veya varyant makalelerinden birini [kullanarak BIR VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md)(POWERSHELL, CLI, bir şablon veya BIR Azure SDK kullanarak). 
+> - Kaynak erişimi sırasında hata oluşmasını engellemek için, VM 'de Azure Resource Manager işlemlerine izin vermek üzere VM 'nin yönetilen kimliğine uygun kapsamda (VM veya üzeri) en az "okuyucu" erişiminin verilmesi gerekir. Ayrıntılar için [Azure Portal kullanarak bir kaynağa Azure kaynakları için Yönetilen kimlikler atama](howto-assign-access-portal.md) bölümüne bakın.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure kaynakları için yönetilen kimlikleri sağlayan bir [hizmet sorumlusu nesnesi](../develop/developer-glossary.md#service-principal-object) , olduğu [Azure kaynakları için yönetilen kimlikleri etkinleştirme sırasında oluşturulan](overview.md#how-does-it-work) VM üzerinde. Hizmet sorumlusunu Azure kaynaklarına erişim verilir ve bir kimlik olarak komut dosyası/komut satırı istemcileri için oturum açma ve kaynak erişimi tarafından kullanılan. Geleneksel olarak, kendi kimliği altında güvenlikli kaynaklara erişmek için bir betik istemci gerekir:  
+Azure kaynakları için Yönetilen kimlikler, VM 'deki [Azure kaynakları için Yönetilen kimlikler etkinleştirildikten sonra oluşturulan](overview.md#how-does-it-work) bir [hizmet sorumlusu nesnesi](../develop/developer-glossary.md#service-principal-object) sağlar. Hizmet sorumlusuna Azure kaynaklarına erişim verilebilir ve oturum açma ve kaynak erişimi için betik/komut satırı istemcilerinin kimlik olarak kullanılması verilebilir. Geleneksel olarak, kendi kimliği altında güvenli kaynaklara erişmek için bir komut dosyası istemcisinin şunları yapması gerekir:  
 
-   - kayıtlı ve istemci gizli/web uygulaması olarak Azure AD ile onaylı
-   - (Bu betikte ekli olasıdır) bir uygulamanın kimlik bilgilerini kullanarak, hizmet sorumlusu altında oturum açın
+   - Azure AD 'ye bir gizli/Web istemci uygulaması olarak kaydolmuş ve bunlarla yarışmalıdır
+   - uygulamanın kimlik bilgilerini (büyük olasılıkla betiğe gömülü) kullanarak hizmet sorumlusu altında oturum açın
 
-Bu hizmet sorumlusunu Azure kaynakları için yönetilen kimlik altında oturum gibi Azure kaynakları için yönetilen kimliklerle betik istemcinizi bunlardan herhangi birini yapmak artık gerekir. 
+Azure kaynakları için Yönetilen kimlikler sayesinde, komut dosyası istemciniz artık Azure kaynakları hizmet sorumlusu için Yönetilen kimlikler altında oturum açabilse de bunu yapması gerekmez. 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Aşağıdaki komut dosyasını gösterir nasıl yapılır:
+Aşağıdaki betik, aşağıdakilerin nasıl yapılacağını göstermektedir:
 
-1. Azure kaynaklarını hizmet sorumlusu için sanal makinenin yönetilen kimlik altında Azure AD'de oturum açın  
-2. Azure Resource Manager'ı çağırın ve sanal makinenin hizmet sorumlusu kimliğini alın CLI belirteç edinme/kullanmak sizin için otomatik olarak yönetme üstlenir. İçin sanal makine adı yerine mutlaka `<VM-NAME>`.  
+1. Azure kaynakları hizmet sorumlusu için VM 'nin yönetilen kimliği kapsamında Azure AD 'de oturum açın  
+2. Azure Resource Manager çağırın ve VM 'nin hizmet sorumlusu KIMLIĞINI alın. CLı, belirteç alımı/kullanımını sizin için otomatik olarak yönetme işlemini gerçekleştirir. `<VM-NAME>`için sanal makine adınızın yerine konacak olduğunuzdan emin olun.  
 
    ```azurecli
    az login --identity
@@ -64,10 +64,10 @@ Aşağıdaki komut dosyasını gösterir nasıl yapılır:
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Aşağıdaki komut dosyasını gösterir nasıl yapılır:
+Aşağıdaki betik, aşağıdakilerin nasıl yapılacağını göstermektedir:
 
-1. Azure kaynaklarını hizmet sorumlusu için sanal makinenin yönetilen kimlik altında Azure AD'de oturum açın  
-2. VM hakkında bilgi almak için bir Azure Resource Manager cmdlet'i çağırın. PowerShell belirteci kullanmak sizin için otomatik olarak yönetme üstlenir.  
+1. Azure kaynakları hizmet sorumlusu için VM 'nin yönetilen kimliği kapsamında Azure AD 'de oturum açın  
+2. VM hakkında bilgi almak için bir Azure Resource Manager cmdlet 'i çağırın. PowerShell, belirteç kullanımını sizin için otomatik olarak yönetme işlemini gerçekleştirir.  
 
    ```azurepowershell
    Add-AzAccount -identity
@@ -78,27 +78,27 @@ Aşağıdaki komut dosyasını gösterir nasıl yapılır:
    echo "The managed identity for Azure resources service principal ID is $spID"
    ```
 
-## <a name="resource-ids-for-azure-services"></a>Azure Hizmetleri için kaynak kimlikleri
+## <a name="resource-ids-for-azure-services"></a>Azure hizmetleri için kaynak kimlikleri
 
-Bkz: [Azure Hizmetleri, desteği Azure AD kimlik doğrulaması](services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) Azure AD'ye destekleyen ve Azure kaynaklarını ve onların ilgili kaynak kimlikleri için yönetilen kimliklerle test kaynaklar listesi.
+Azure AD [kimlik doğrulamasını](services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) destekleyen ve Azure kaynakları için Yönetilen kimlikler ve bunlara karşılık gelen kaynak kimlikleri ile test edilmiş bir kaynak listesi için bkz. Azure hizmetleri.
 
-## <a name="error-handling-guidance"></a>Hata işleme yönergeleri 
+## <a name="error-handling-guidance"></a>Hata işleme Kılavuzu 
 
-Yanıt aşağıdaki gibi Azure kaynakları için sanal makinenin yönetilen kimlik değil doğru şekilde yapılandırıldığını gösterebilir:
+Aşağıdakiler gibi yanıtlar, sanal makinenin Azure kaynakları için yönetilen kimliğinin doğru şekilde yapılandırılmadığını gösterebilir:
 
-- PowerShell: *Invoke-WebRequest: Uzak sunucuya bağlanılamıyor*
-- CLI: *MSI: Uygulamasından bir belirteç alınamadı `http://localhost:50342/oauth2/token` hata nedeniyle ' HTTPConnectionPool (konak 'localhost', bağlantı noktası = 50342 =)* 
+- PowerShell: *Invoke-WebRequest: uzak sunucuya bağlanılamıyor*
+- CLı: *MSI: ' HTTPConnectionPool (Host = ' localhost ', bağlantı noktası = 50342) hatası ile `http://localhost:50342/oauth2/token` belirteç alınamadı* 
 
-Azure VM ile Bu hatalardan birini alırsanız, dönmek [Azure portalında](https://portal.azure.com) ve:
+Bu hatalardan birini alırsanız, [Azure Portal](https://portal.azure.com) Azure VM 'ye geri dönün ve:
 
-- Git **kimlik** sayfasında ve olun **sistem tarafından atanan** "Evet" olarak ayarlayın
-- Git **uzantıları** sayfasında ve uzantı Azure kaynakları için yönetilen kimlikleri sağlamak **(Ocak 2019'da kullanımdan kaldırma planlanan)** başarıyla dağıtıldı.
+- **Kimlik** sayfasına gidin ve **sistem atanın** "Evet" olarak ayarlandığından emin olun.
+- **Uzantılar** sayfasına gidin ve Azure kaynakları uzantısı için yönetilen kimliklerin **(Ocak 2019 ' de kullanımdan kaldırma için planlanmış)** başarıyla dağıtıldığından emin olun.
 
-Ya da yanlışsa, kaynağınızı Azure kaynakları için yönetilen kimlikleri yeniden dağıtmanız veya dağıtım hatasıyla ilgili sorunları giderme gerekebilir. Bkz: [Azure kaynaklarındaki Azure portalını kullanarak bir VM için yapılandırma yönetilen kimlikleri](qs-configure-portal-windows-vm.md) VM yapılandırması ile ilgili yardıma ihtiyacınız varsa.
+Bunlardan biri yanlışsa, kaynak üzerinde Azure kaynakları için yönetilen kimlikleri yeniden dağıtmanız veya dağıtım başarısızlığının sorunlarını gidermeniz gerekebilir. VM yapılandırması için yardıma ihtiyacınız varsa [Azure Portal kullanarak VM 'de Azure kaynakları Için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) konusuna bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure sanal makinesinde Azure kaynakları için yönetilen kimlikleri etkinleştirmek için bkz: [yapılandırma kimliklerini Azure VM'de PowerShell kullanarak Azure kaynakları için yönetilen](qs-configure-powershell-windows-vm.md), veya [yönetilen bir Azure sanal makinesinde Azure kaynakları için kimlik yapılandırma Azure CLI kullanma](qs-configure-cli-windows-vm.md)
+- Azure VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirmek üzere bkz. [PowerShell kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-powershell-windows-vm.md)veya Azure [CLI kullanarak bir Azure VM 'de Azure kaynakları Için Yönetilen kimlikler yapılandırma](qs-configure-cli-windows-vm.md)
 
 
 

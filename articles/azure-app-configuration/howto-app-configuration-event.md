@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: d41ce06279536e3479b96d8d7afedf81624dbc9b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326594"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185168"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Hızlı Başlangıç: Azure CLı ile Azure uygulama yapılandırma olaylarını bir Web uç noktasına yönlendirme
+# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure uygulama yapılandırma olaylarını bir Web uç noktasına yönlendirme
 
 Bu hızlı başlangıçta, bir Web uç noktasına anahtar-değer değiştirme olayları göndermek için Azure uygulama yapılandırma olay aboneliklerini ayarlamayı öğreneceksiniz. Azure uygulama yapılandırma kullanıcıları, anahtar değerleri değiştirildiğinde yayınlanan olaylara abone olabilir. Bu olaylar Web kancaları, Azure Işlevleri, Azure depolama kuyrukları veya Azure Event Grid tarafından desteklenen diğer herhangi bir olay işleyicisini tetikleyebilir. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
 
@@ -40,7 +40,7 @@ Event Grid konuları Azure kaynaklarıdır ve bir Azure kaynak grubuna yerleşti
 
 [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. 
 
-Aşağıdaki örnek, `<resource_group_name>` *westus* konumunda adlı bir kaynak grubu oluşturur.  `<resource_group_name>` değerini kaynak grubunuz için benzersiz bir adla değiştirin.
+Aşağıdaki örnek, *westus* konumunda `<resource_group_name>` adlı bir kaynak grubu oluşturur.  `<resource_group_name>` değerini kaynak grubunuz için benzersiz bir adla değiştirin.
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westus
@@ -48,7 +48,7 @@ az group create --name <resource_group_name> --location westus
 
 ## <a name="create-an-app-configuration"></a>Uygulama yapılandırması oluşturma
 
-Uygulama `<appconfig_name>` yapılandırmanız için benzersiz bir adla ve `<resource_group_name>` daha önce oluşturduğunuz kaynak grubuyla değiştirin. Ad bir DNS adı olarak kullanıldığı için benzersiz olmalıdır.
+`<appconfig_name>`, uygulama yapılandırmanız için benzersiz bir adla değiştirin ve daha önce oluşturduğunuz kaynak grubuyla `<resource_group_name>`. Ad bir DNS adı olarak kullanıldığı için benzersiz olmalıdır.
 
 ```azurecli-interactive
 az appconfig create \
@@ -100,7 +100,7 @@ Web uygulamanızı yeniden görüntüleyin ve buna bir abonelik doğrulama olay�
 
 ## <a name="trigger-an-app-configuration-event"></a>Uygulama yapılandırma olayını tetikleme
 
-Şimdi, Event Grid’in iletiyi uç noktanıza nasıl dağıttığını görmek için bir olay tetikleyelim. `<appconfig_name>` Öğesinden daha önce kullanarak bir anahtar değeri oluşturun.
+Şimdi, Event Grid’in iletiyi uç noktanıza nasıl dağıttığını görmek için bir olay tetikleyelim. Daha önce `<appconfig_name>` kullanarak bir anahtar değeri oluşturun.
 
 ```azurecli-interactive
 az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes

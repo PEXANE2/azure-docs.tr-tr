@@ -1,6 +1,6 @@
 ---
-title: Azure CLI betik örneği - bir Azure uygulama yapılandırma Store dışarı aktarma | Microsoft Docs
-description: Bir uygulama yapılandırma Azure Mağazası'ndan dışarı aktarmak için bilgi ve örnek betikler sağlar
+title: Azure CLı betik örneği-Azure uygulama yapılandırma deposundan dışarı aktarma | Microsoft Docs
+description: Azure uygulama yapılandırma deposundan dışarı aktarmak için bilgi ve örnek komut dosyaları sağlar
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,16 +14,16 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 480e21994846f5b2adb85bcf846df2a7cdda4bda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7969300e9865c943c0f3759277bd26529c0c5464
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60239085"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184879"
 ---
-# <a name="export-from-an-azure-app-configuration-store"></a>Bir uygulama yapılandırma Azure Mağazası'ndan dışarı aktarma
+# <a name="export-from-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposundan dışarı aktarma
 
-Bu örnek betik bir Azure uygulama yapılandırması deposundan anahtar-değer verir.
+Bu örnek betik, bir Azure uygulama yapılandırma deposundan anahtar değerlerini dışarı aktarır.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,7 +31,7 @@ Bu örnek betik bir Azure uygulama yapılandırması deposundan anahtar-değer v
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
-Aşağıdaki komutu yürüterek Azure uygulama yapılandırma CLI uzantısını yüklemeniz gerekir:
+Aşağıdaki komutu yürüterek önce Azure uygulama yapılandırma CLı uzantısını yüklemeniz gerekir:
 
         az extension add -n appconfig
 
@@ -48,14 +48,14 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu betik, bir uygulama yapılandırma deposu dışarı aktarmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu betik, bir uygulama yapılandırma deposundan dışarı aktarmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | Komut | Notlar |
 |---|---|
-| [az appconfig dışarı aktarma](/cli/azure/ext/appconfig/appconfig) | Uygulama yapılandırması dışarı kaynağını depolayın. |
+| [az appconfig kV Export](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-export) | Uygulama yapılandırma deposu kaynağından dışarı aktarır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
-Ek uygulama yapılandırma CLI betiği örnekleri, içinde bulunabilir [Azure uygulama yapılandırması belgeleri](../cli-samples.md).
+Ek uygulama yapılandırması CLı betiği örnekleri, [Azure Uygulama YAPıLANDıRMASı CLI örneklerinde](../cli-samples.md)bulunabilir.

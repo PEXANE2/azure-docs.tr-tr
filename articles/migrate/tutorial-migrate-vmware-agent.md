@@ -1,19 +1,19 @@
 ---
-title: Aracı tabanlı Azure geçişi sunucu geçişi ile şirket içi VMware VM 'lerini Azure 'a geçirme | Microsoft Docs
-description: Bu makalede, Azure geçiş sunucusu geçişi ile şirket içi makinelerin Azure 'a yönelik aracı tabanlı geçişinin nasıl gerçekleştirileceği açıklanır.
+title: Aracı tabanlı Azure geçişi sunucu geçişine sahip VMware VM 'lerini geçirme
+description: Azure geçişi ile VMware VM 'lerinin aracı tabanlı geçişini çalıştırmayı öğrenin.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07e91abc1130505abc84f6687be7edd04522fa76
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 581014b89627905e3206705dffade5ba19443b65
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720181"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196290"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM 'lerini Azure 'a geçirme (aracı tabanlı)
 
@@ -61,7 +61,7 @@ Aracısız veya aracı tabanlı geçiş kullanmak isteyip istemediğinize karar 
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
@@ -165,7 +165,7 @@ Hesabı aşağıdaki gibi oluşturun:
 Hesabı aşağıdaki gibi hazırlayın:
 
 1. VM üzerinde yükleme izinleri ile bir etki alanı veya yerel hesap hazırlayın.
-2. Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız, kayıt defterinde bir değere sahip **LocalAccountTokenFilterPolicy**DWORD girdisini ekleyerek yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakın, **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ altında Windows\currentversion\policies\sistemi**
+2. Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakarak, kayıt defterinde bir değere sahip **LocalAccountTokenFilterPolicy**adlı DWORD girişi ' ni **HKEY_LOCAL_MACHINE \Software\microsoft\windows\currentversion\policies\sistem** ' in altına ekleyin.
 3. Linux VM 'Ler için kaynak Linux sunucusunda bir kök hesap hazırlayın.
 
 

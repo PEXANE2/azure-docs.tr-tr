@@ -1,6 +1,6 @@
 ---
-title: Yapılandırma kimlikleri, Azure portalını kullanarak bir Azure sanal makinesinde Azure kaynakları için yönetilen
-description: Adım adım yapılandırma yönergeleri kimlikleri Azure portalını kullanarak bir Azure sanal makinesinde Azure kaynakları için yönetilen.
+title: Azure portal kullanarak yönetilen kimlikleri Yapılandırma-Azure AD
+description: Azure portal kullanarak bir Azure VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırmaya yönelik adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,20 +15,20 @@ ms.workload: identity
 ms.date: 11/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab0a5b021048f0f684473d3f54bbeadf870cd007
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75971dbd35a6b29306bc87988423ab662a343705
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112823"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183862"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Azure kaynakları için yönetilen kimlikleri Azure portalını kullanarak bir VM yapılandırma
+# <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Azure portal kullanarak bir VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırma
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Azure kaynakları için yönetilen kimlikleri Azure Active Directory'de otomatik olarak yönetilen bir kimlikle Azure hizmetleri sağlar. Bu kimlik, Azure AD kimlik doğrulaması, kimlik bilgilerini kodunuzda zorunda kalmadan destekleyen herhangi bir hizmeti kimlik doğrulaması için kullanabilirsiniz. 
+Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomatik olarak yönetilen bir kimlikle Azure hizmetleri sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz. 
 
-Bu makalede, Azure sanal makine (Azure portalı kullanarak VM için), sistem ve kullanıcı tarafından atanan yönetilen kimlikler devre öğrenin. 
+Bu makalede, Azure portal kullanarak bir Azure sanal makinesi (VM) için sistem ve Kullanıcı tarafından atanan yönetilen kimliklerin nasıl etkinleştirileceğini ve devre dışı bırakılacağını öğreneceksiniz. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -37,84 +37,84 @@ Bu makalede, Azure sanal makine (Azure portalı kullanarak VM için), sistem ve 
 
 ## <a name="system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik
 
-Bu bölümde, Azure portalını kullanarak sanal makine için sistem tarafından atanan bir yönetilen kimlik devre öğrenin.
+Bu bölümde, Azure portal kullanarak VM için sistem tarafından atanan yönetilen kimliği etkinleştirmeyi ve devre dışı bırakmayı öğreneceksiniz.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-a-vm"></a>Yönetilen kimlik sistem tarafından atanan bir VM oluşturma sırasında etkinleştir
+### <a name="enable-system-assigned-managed-identity-during-creation-of-a-vm"></a>VM oluşturma sırasında sistem tarafından atanan yönetilen kimliği etkinleştir
 
-Yönetilen kimlik sistem tarafından atanan bir VM'de kendi oluşturma sırasında etkinleştirmek için hesabınızın gerekir [sanal makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rol ataması.  Hiçbir ek Azure AD dizini rol atamaları gereklidir.
+Oluşturma sırasında bir VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
-- Altında **Yönetim** sekmesinde **kimlik** bölümünde, geçiş **yönetilen hizmet kimliği** için **üzerinde**.  
+- **Kimlik** bölümündeki **Yönetim** sekmesinde, **yönetilen hizmet kimliğini** **Açık**olarak değiştirin.  
 
-![VM oluşturma sırasında sistem tarafından atanan kimlik etkinleştir](./media/msi-qs-configure-portal-windows-vm/enable-system-assigned-identity-vm-creation.png)
+![VM oluşturma sırasında sistem tarafından atanan kimliği etkinleştirme](./media/msi-qs-configure-portal-windows-vm/enable-system-assigned-identity-vm-creation.png)
 
-Bir VM oluşturmak için şu hızlı Başlangıçlarda için bakın: 
+VM oluşturmak için aşağıdaki hızlı başlangıçlara bakın: 
 
-- [Azure portalı ile bir Windows sanal makine oluşturun](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine) 
-- [Azure portal ile Linux sanal makinesi oluşturma](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
+- [Azure portal ile bir Windows sanal makinesi oluşturma](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine) 
+- [Azure portal bir Linux sanal makinesi oluşturun](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
 
 
-### <a name="enable-system-assigned-managed-identity-on-an-existing-vm"></a>Mevcut VM'yi yönetilen kimlik sistem tarafından atanan etkinleştir
+### <a name="enable-system-assigned-managed-identity-on-an-existing-vm"></a>Mevcut bir VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirme
 
-Sistem tarafından atanan yönetilen kimlik olmadan ilk olarak sağlanan bir VM üzerinde etkinleştirmek için hesabınızın gerekir [sanal makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rol ataması.  Hiçbir ek Azure AD dizini rol atamaları gereklidir.
+Başlangıçta sağlanan bir VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. Oturum [Azure portalında](https://portal.azure.com) VM içeren Azure aboneliği ile ilişkili bir hesap kullanarak.
+1. VM 'yi içeren Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. İstenen sanal makineye gidin ve seçin **kimlik**.
+2. İstediğiniz sanal makineye gidin ve **kimlik**' i seçin.
 
-3. Altında **sistem tarafından atanan**, **durumu**seçin **üzerinde** ve ardından **Kaydet**:
+3. **Sistem atandı**altında **durum**' un altında **, seçin ve** ardından **Kaydet**' e tıklayın:
 
-   ![Yapılandırma sayfasında ekran görüntüsü](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
+   ![Yapılandırma sayfası ekran görüntüsü](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
-### <a name="remove-system-assigned-managed-identity-from-a-vm"></a>Yönetilen kimlik sistem tarafından atanan bir sanal makineden kaldırın
+### <a name="remove-system-assigned-managed-identity-from-a-vm"></a>Bir VM 'den sistem tarafından atanan yönetilen kimliği kaldırma
 
-Yönetilen kimlik sistem tarafından atanan bir sanal makineden kaldırmak için hesabınızın gerekli [sanal makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rol ataması.  Hiçbir ek Azure AD dizini rol atamaları gereklidir.
+Bir VM 'den sistem tarafından atanan yönetilen kimliği kaldırmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
-Bir sanal makine varsa, artık yönetilen kimlik sistem tarafından atanan gerekir:
+Artık sistem tarafından atanan yönetilen kimliğe ihtiyaç olmayan bir sanal makineniz varsa:
 
-1. Oturum [Azure portalında](https://portal.azure.com) VM içeren Azure aboneliği ile ilişkili bir hesap kullanarak. 
+1. VM 'yi içeren Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın. 
 
-2. İstenen sanal makineye gidin ve seçin **kimlik**.
+2. İstediğiniz sanal makineye gidin ve **kimlik**' i seçin.
 
-3. Altında **sistem tarafından atanan**, **durumu**seçin **kapalı** ve ardından **Kaydet**:
+3. **Sistem atandı**, **durum**' un altında **kapalı** ' yı seçin ve **Kaydet**' e tıklayın:
 
-   ![Yapılandırma sayfasında ekran görüntüsü](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)
+   ![Yapılandırma sayfası ekran görüntüsü](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)
 
 ## <a name="user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik
 
- Bu bölümde, bir kullanıcı tarafından atanan bir yönetilen kimlik Azure portalını kullanarak bir sanal makineden ekleyip öğrenin.
+ Bu bölümde, Azure portal kullanarak bir VM 'den Kullanıcı tarafından atanan yönetilen kimlik ekleme ve kaldırma hakkında bilgi edineceksiniz.
 
-### <a name="assign-a-user-assigned-identity-during-the-creation-of-a-vm"></a>Bir VM oluşturma sırasında bir kullanıcı tarafından atanan kimliği atayın
+### <a name="assign-a-user-assigned-identity-during-the-creation-of-a-vm"></a>VM oluşturma sırasında Kullanıcı tarafından atanan bir kimlik atama
 
-Bir VM için bir kullanıcı tarafından atanan kimliği atamak için hesabınızın gerekir [sanal makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamaları. Hiçbir ek Azure AD dizini rol atamaları gereklidir.
+Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin rolü ataması gerekli değildir.
 
-Şu anda Azure portalında bir VM oluşturma sırasında kullanıcı tarafından atanan bir yönetilen kimlik atama desteklemez. Bunun yerine, öncelikle bir VM oluşturmak için aşağıdaki VM oluşturma Hızlı Başlangıç makalelerini birine bakın ve ardından VM için bir kullanıcı tarafından atanan bir yönetilen kimlik atama hakkında ayrıntılar için sonraki bölüme devam edin:
+Şu anda Azure portal, bir VM oluşturulurken Kullanıcı tarafından atanan yönetilen kimliğin atanmasını desteklemez. Bunun yerine, aşağıdaki VM oluşturma hızlı başlangıç makalelerinden birine başvurarak bir VM oluşturun ve ardından VM 'ye Kullanıcı tarafından atanan bir yönetilen kimlik atama hakkında ayrıntılı bilgi edinmek için sonraki bölüme ilerleyin:
 
-- [Azure portalı ile bir Windows sanal makine oluşturun](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
-- [Azure portal ile Linux sanal makinesi oluşturma](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
+- [Azure portal ile bir Windows sanal makinesi oluşturma](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [Azure portal bir Linux sanal makinesi oluşturun](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-existing-vm"></a>Kullanıcı tarafından atanan bir yönetilen kimlik mevcut bir VM'ye atayın
+### <a name="assign-a-user-assigned-managed-identity-to-an-existing-vm"></a>Mevcut bir VM 'ye Kullanıcı tarafından atanan bir yönetilen kimlik atama
 
-Bir VM için bir kullanıcı tarafından atanan kimliği atamak için hesabınızın gerekir [sanal makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamaları. Hiçbir ek Azure AD dizini rol atamaları gereklidir.
+Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. Oturum [Azure portalında](https://portal.azure.com) VM içeren Azure aboneliği ile ilişkili bir hesap kullanarak.
-2. İstenen VM tıklatın gidip **kimlik**, **kullanıcıya atanan** ardından  **\+Ekle**.
+1. VM 'yi içeren Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+2. İstediğiniz sanal makineye gidin ve **kimlik**, **kullanıcı atandı** ve **\+sonra Ekle**' ye tıklayın.
 
-   ![VM'ye kullanıcı tarafından atanan yönetilen kimlik ekleme](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
+   ![VM 'ye Kullanıcı tarafından atanan yönetilen kimlik ekleme](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
 
-3. VM'ye ekleyin ve ardından istediğiniz kullanıcı tarafından atanan kimliği tıklatın **Ekle**.
+3. VM 'ye eklemek istediğiniz kullanıcı tarafından atanan kimliğe tıklayın ve ardından **Ekle**' ye tıklayın.
 
-    ![VM'ye kullanıcı tarafından atanan yönetilen kimlik ekleme](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
+    ![VM 'ye Kullanıcı tarafından atanan yönetilen kimlik ekleme](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
 
-### <a name="remove-a-user-assigned-managed-identity-from-a-vm"></a>Kullanıcı tarafından atanan bir yönetilen kimlik bir sanal makineden kaldırın
+### <a name="remove-a-user-assigned-managed-identity-from-a-vm"></a>Kullanıcı tarafından atanan yönetilen kimliği bir VM 'den kaldırma
 
-Bir kullanıcı tarafından atanan kimliği bir sanal makineden kaldırmak için hesabınızın gerekli [sanal makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rol ataması. Hiçbir ek Azure AD dizini rol atamaları gereklidir.
+Kullanıcı tarafından atanan kimliği bir VM 'den kaldırmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir. Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. Oturum [Azure portalında](https://portal.azure.com) VM içeren Azure aboneliği ile ilişkili bir hesap kullanarak.
-2. İstenen VM tıklatın gidip **kimlik**, **atanan kullanıcı**, kullanıcı tarafından atanan adı yönetilen silin ve ardından istediğiniz kimliği **Kaldır** ( tıklayın **Evet** onay bölmesinde).
+1. VM 'yi içeren Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+2. İstediğiniz sanal makineye gidin ve **kimlik**, **Kullanıcı atandı**, silmek istediğiniz kullanıcı tarafından atanan yönetilen kimliğin adı ' na tıklayın ve ardından **Kaldır** ' a tıklayın (onay bölmesinde **Evet** ' e tıklayın).
 
-   ![Yönetilen kimlik kullanıcı tarafından atanan bir sanal makineden kaldırın](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vm-screenshot.png)
+   ![Kullanıcı tarafından atanan yönetilen kimliği bir VM 'den kaldırma](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vm-screenshot.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure portalını kullanarak, bir Azure sanal makinenin yönetilen kimlik vermek [başka bir Azure kaynağına erişim](howto-assign-access-portal.md).
+- Azure portal kullanarak, bir Azure VM 'nin yönetilen kimlik [erişimini başka bir Azure kaynağına](howto-assign-access-portal.md)verin.
 

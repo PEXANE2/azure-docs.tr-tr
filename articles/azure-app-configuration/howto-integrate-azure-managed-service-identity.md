@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 3a5517c31cdac0bf6f5ea386a8614d15521d4479
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b0c6e39aebe7864ab132805b78aa7be2d61c5160
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035542"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185136"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Azure yönetilen kimliklerle tümleştirin
 
-Azure Active Directory [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , bulut uygulamanız için gizli dizi yönetimini basitleştirmeye yardımcı olur. Yönetilen bir kimlikle kodunuzu, üzerinde çalıştığı Azure işlem hizmeti için oluşturulan hizmet sorumlusunu kullanacak şekilde ayarlayabilirsiniz. Azure Key Vault veya yerel bağlantı dizesinde depolanan ayrı kimlik bilgileri yerine yönetilen bir kimlik kullanırsınız. 
+Azure Active Directory [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , bulut uygulamanız için gizli dizi yönetimini basitleştirmeye yardımcı olur. Yönetilen bir kimlikle kodunuzu, üzerinde çalıştığı Azure hizmeti için oluşturulan hizmet sorumlusunu kullanacak şekilde ayarlayabilirsiniz. Azure Key Vault veya yerel bağlantı dizesinde depolanan ayrı kimlik bilgileri yerine yönetilen bir kimlik kullanırsınız. 
 
-Azure Uygulama yapılandırması ve .NET Core, .NET ve Java Spring istemci kitaplıkları, içinde yerleşik olarak bulunan yönetilen hizmet kimliği (MSI) desteğiyle birlikte gelir. Bunu kullanmanız gerekmese de, MSI, gizli dizileri içeren bir erişim belirteci gereksinimini ortadan kaldırır. Kodunuz, yalnızca hizmet uç noktasını kullanarak uygulama yapılandırma deposuna erişebilir. Bu URL 'YI, herhangi bir parolayı açığa çıkarmak gerekmeden doğrudan kodunuza katıştırabilirsiniz.
+Azure Uygulama yapılandırması ve .NET Core, .NET Framework ve Java Spring istemci kitaplıkları, yerleşik olarak bulunan yönetilen kimlik desteğiyle birlikte gelir. Bunu kullanmanız gerekmese de, yönetilen kimlik gizli dizileri içeren bir erişim belirteci gereksinimini ortadan kaldırır. Kodunuz, yalnızca hizmet uç noktasını kullanarak uygulama yapılandırma deposuna erişebilir. Bu URL 'YI, herhangi bir parolayı açığa çıkarmak gerekmeden doğrudan kodunuza katıştırabilirsiniz.
 
-Bu öğreticide, uygulama yapılandırmasına erişmek için MSI 'den nasıl yararlanabilmeniz gösterilmektedir. Hızlı başlangıçlarda tanıtılan web uygulamasında oluşturulur. Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md) .
+Bu öğreticide, uygulama yapılandırmasına erişmek için yönetilen kimliğin nasıl yararlanabilmeniz gösterilmektedir. Hızlı başlangıçlarda tanıtılan web uygulamasında oluşturulur. Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md) .
 
-Ayrıca, bu öğretici isteğe bağlı olarak, MSI 'yi uygulama yapılandırmasının Key Vault başvurularıyla birlikte nasıl kullanabileceğinizi gösterir. Bu, Key Vault depolanan gizli dizileri ve uygulama yapılandırmasındaki yapılandırma değerlerini sorunsuz bir şekilde erişmenizi sağlar. Bu özelliği araştırmak isterseniz, önce [ASP.NET Core Key Vault başvuruları kullanın](./use-key-vault-references-dotnet-core.md) .
+Ayrıca, bu öğretici isteğe bağlı olarak, yönetilen kimliği uygulama yapılandırmasının Key Vault başvurularıyla birlikte nasıl kullanabileceğinizi gösterir. Bu, Key Vault depolanan gizli dizileri ve uygulama yapılandırmasındaki yapılandırma değerlerini sorunsuz bir şekilde erişmenizi sağlar. Bu özelliği araştırmak isterseniz, önce [ASP.NET Core Key Vault başvuruları kullanın](./use-key-vault-references-dotnet-core.md) .
 
 Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
 
@@ -84,7 +84,7 @@ Portalda yönetilen bir kimlik ayarlamak için ilk olarak bir uygulama oluşturu
 
 1. Azure portal yapılandırma ekranına gidip **erişim tuşları** sekmesine tıklayarak uygulama yapılandırma DEPONUZDAKI URL 'yi bulun.
 
-1. *AppSettings. JSON*dosyasını açın ve aşağıdaki betiği ekleyin. Parantez dahil *\<service_endpoint >* , uygulama yapılandırma deponuzu URL 'siyle değiştirin. 
+1. *AppSettings. JSON*dosyasını açın ve aşağıdaki betiği ekleyin. Parantez dahil *\<service_endpoint >* yerine, uygulama yapılandırma deponuzu URL 'siyle değiştirin. 
 
     ```json
     "AppConfig": {
@@ -92,7 +92,7 @@ Portalda yönetilen bir kimlik ayarlamak için ilk olarak bir uygulama oluşturu
     }
     ```
 
-1. Yalnızca uygulama yapılandırmasında doğrudan depolanan değerlere erişmek istiyorsanız, *program.cs*' yi açın ve `CreateWebHostBuilder` metodunu `config.AddAzureAppConfiguration()` metodunu değiştirerek güncelleştirin.
+1. Yalnızca uygulama yapılandırmasında doğrudan depolanan değerlere erişmek istiyorsanız *program.cs*' ı açın ve `CreateWebHostBuilder` yöntemini `config.AddAzureAppConfiguration()` metodunu değiştirerek güncelleştirin.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -106,7 +106,7 @@ Portalda yönetilen bir kimlik ayarlamak için ilk olarak bir uygulama oluşturu
             .UseStartup<Startup>();
     ```
 
-1. Uygulama yapılandırma değerlerinin yanı sıra Key Vault başvurular kullanmak istiyorsanız, *program.cs*açın ve `CreateWebHostBuilder` metodunu aşağıda gösterildiği gibi güncelleştirin. Bu, bir `AzureServiceTokenProvider` kullanarak yeni `KeyVaultClient` oluşturur ve bu başvuruyu `UseAzureKeyVault` yöntemine bir çağrıya geçirir.
+1. Uygulama yapılandırma değerlerinin yanı sıra Key Vault başvurular kullanmak istiyorsanız, *program.cs*açın ve `CreateWebHostBuilder` metodunu aşağıda gösterildiği gibi güncelleştirin. Bu, bir `AzureServiceTokenProvider` kullanarak yeni bir `KeyVaultClient` oluşturur ve bu başvuruyu `UseAzureKeyVault` yöntemine yapılan çağrıya geçirir.
 
     ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -145,19 +145,19 @@ git add .
 git commit -m "Initial version"
 ```
 
-Kudu yapı sunucusuyla uygulamanız için yerel git dağıtımını etkinleştirmek üzere Cloud Shell [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) ' i çalıştırın.
+Kudu yapı sunucusuyla uygulamanız için yerel git dağıtımını etkinleştirmek üzere Cloud Shell [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) çalıştırın.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
 ```
 
-Bunun yerine git özellikli bir uygulama oluşturmak için, Cloud Shell `--deployment-local-git` parametresiyle [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) ' i çalıştırın.
+Bunun yerine git özellikli bir uygulama oluşturmak için, Cloud Shell [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) `--deployment-local-git` parametresiyle çalıştırın.
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
 ```
 
-@No__t-0 komutu aşağıdaki çıktıya benzer bir işlem sağlar:
+`az webapp create` komutu aşağıdaki çıktıya benzer bir işlem sağlar:
 
 ```json
 Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
@@ -177,7 +177,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 
 ### <a name="deploy-your-project"></a>Projenizi dağıtın
 
-_Yerel terminal penceresine_ dönüp yerel Git deponuza bir Azure uzak deposu ekleyin. _@No__t-1url >_ , [uygulamanız Için git 'i etkinleştirin](#enable-local-git-with-kudu)öğesinden aldığınız git uzak URL 'si ile değiştirin.
+_Yerel terminal penceresine_ dönüp yerel Git deponuza bir Azure uzak deposu ekleyin. _\<URL 'si >_ , [uygulamanız Için git 'i etkinleştirin](#enable-local-git-with-kudu)öğesinden aldığınız git uzak URL 'si ile değiştirin.
 
 ```bash
 git remote add azure <url>
@@ -228,6 +228,7 @@ http://<app_name>.azurewebsites.net
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
+Bu öğreticide, uygulama yapılandırmasına erişimi kolaylaştırmak ve uygulamanız için kimlik bilgisi yönetimini geliştirmek üzere bir Azure yönetilen kimliği ekledik. Uygulama yapılandırmasını kullanma hakkında daha fazla bilgi için Azure CLı örneklerine devam edin.
 
 > [!div class="nextstepaction"]
 > [CLI örnekleri](./cli-samples.md)

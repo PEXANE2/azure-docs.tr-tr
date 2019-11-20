@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8a58b73f3f3acb8d7c6ced9e0086687b54fff734
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cd150368898b3f02b4366debbe775ece76b23043
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029800"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184899"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposu oluşturma
 
@@ -29,7 +29,7 @@ Bu örnek betik, yeni bir kaynak grubunda rastgele bir ada sahip yeni bir Azure 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
 Aşağıdaki komutu yürüterek önce Azure uygulama yapılandırma CLı uzantısını yüklemeniz gerekir:
 
@@ -76,11 +76,11 @@ Bu betik, yeni bir kaynak grubu ve bir uygulama yapılandırma deposu oluşturma
 | Komut | Notlar |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az appconfig Create](/cli/azure/ext/appconfig/appconfig) | Bir uygulama yapılandırma deposu kaynağı oluşturur. |
-| [az appconfig anahtar listesi](/cli/azure/ext/appconfig/appconfig/kv) | Bir uygulama yapılandırma deposunda depolanan anahtarları listeleyin. |
+| [az appconfig Create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Bir uygulama yapılandırma deposu kaynağı oluşturur. |
+| [az appconfig kV List](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Bir uygulama yapılandırma deposunda depolanan anahtarları listeleyin. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
-Ek uygulama yapılandırması CLı betiği örnekleri, [Azure uygulama yapılandırma belgelerinde](../cli-samples.md)bulunabilir.
+Ek uygulama yapılandırması CLı betiği örnekleri, [Azure Uygulama YAPıLANDıRMASı CLI örneklerinde](../cli-samples.md)bulunabilir.

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Graph API'ye erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma
+title: Öğretici`:` Azure AD Graph API erişmek için bir Linux VM yönetilen kimliği kullanma
 description: Linux VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure AD Graph API'ye erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 481cb560daa26e59de2c78cc64bab9fb168eed58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68d560e7d326cc2ddc47ed9f689dc8e31f8ab9ff
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307514"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183640"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Öğretici: Azure AD Graph API'ye erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma
 
@@ -65,9 +65,9 @@ Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure A
 Bu öğreticide VM kimliğinize `Directory.Read.All` uygulama iznini kullanarak grup üyeliğini sorgulama olanağı vereceksiniz. Bu izni vermek için Azure AD'de Genel Yönetici rolü atanmış bir kullanıcı hesabı gerekir. Normalde Azure portalda uygulamanızın kaydını ziyaret edip izni oraya ekleyerek bir uygulama izni verebilirsiniz. Ancak, Azure kaynakları için yönetilen kimlikler uygulama nesnelerini Azure AD'ye kaydetmez, yalnızca hizmet sorumlularını kaydeder. Uygulama iznini kaydetmek için Azure AD PowerShell komut satırı aracını kullanırsınız. 
 
 Azure AD Graph:
-- Hizmet sorumlusu uygulama kimliği (uygulama izni verilirken kullanılır): 00000002-0000-0000-c000-000000000000
+- Hizmet Sorumlusu appId (uygulama izni verilirken kullanılır): 00000002-0000-0000-c000-000000000000
 - Kaynak Kimliği (Azure kaynakları için yönetilen kimliklerden erişim belirteci istenirken kullanılır): https://graph.windows.net
-- İzin kapsam başvurusu: [Azure AD Graph izinleri başvurusu](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- İzin kapsamı başvurusu: [Azure AD Graph İzinleri Başvurusu](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-curl"></a>CURL kullanarak uygulama izinleri verme
 
@@ -83,7 +83,7 @@ Azure AD Graph:
    curl 'https://graph.windows.net/myorganization/servicePrincipals?$filter=startswith%28displayName%2C%27myVM%27%29&api-version=1.6' -H "Authorization: Bearer <ACCESS TOKEN>"
    ```
 
-3. Azure AD Graph 00000002-0000-0000-c000-000000000000 appID değerini kullanarak, `odata.type: Microsoft.DirectoryServices.ServicePrincipal` için `objectId` ve `Directory.Read.All` uygulama rolü izni için `id` değerini alın ve not edin.  `<ACCESS TOKEN>` değerini daha önce aldığınız erişim belirteciyle değiştirin.
+3. Azure AD Graph 00000002-0000-0000-c000-000000000000 appID değerini kullanarak, `objectId` için `odata.type: Microsoft.DirectoryServices.ServicePrincipal` ve `id` uygulama rolü izni için `Directory.Read.All` değerini alın ve not edin.  `<ACCESS TOKEN>` değerini daha önce aldığınız erişim belirteciyle değiştirin.
 
    ```bash
    curl "https://graph.windows.net/myorganization/servicePrincipals?api-version=1.6&%24filter=appId%20eq%20'00000002-0000-0000-c000-000000000000'" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -124,7 +124,7 @@ Azure AD Graph:
             }
    ``` 
 
-4. Şimdi, Azure AD Graph API'yi kullanarak sanal makinenin hizmet sorumlusuna Azure AD dizin nesnelerini okuma erişimi verin.  `id` değeri `Directory.Read.All` uygulama rolü izninin, `resourceId` ise `odata.type:Microsoft.DirectoryServices.ServicePrincipal` hizmet sorumlusunun `objectId` değeridir (önceki adımda not ettiğiniz değerler).
+4. Şimdi, Azure AD Graph API'yi kullanarak sanal makinenin hizmet sorumlusuna Azure AD dizin nesnelerini okuma erişimi verin.  `id` değeri `Directory.Read.All` uygulama rolü izninin, `resourceId` ise `objectId` hizmet sorumlusunun `odata.type:Microsoft.DirectoryServices.ServicePrincipal` değeridir (önceki adımda not ettiğiniz değerler).
 
    ```bash
    curl "https://graph.windows.net/myorganization/servicePrincipals/<VM Object ID>/appRoleAssignments?api-version=1.6" -X POST -d '{"id":"5778995a-e1bf-45b8-affa-663a9f3f4d04","principalId":"<VM Object ID>","resourceId":"81789304-ff96-402b-ae73-07ec0db26721"}'-H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -132,11 +132,11 @@ Azure AD Graph:
  
 ## <a name="get-an-access-token-using-the-vms-identity-to-call-azure-ad-graph"></a>VM kimliğini kullanarak erişim belirteci alma ve Azure AD Graph çağrısı yapma 
 
-Bu adımları tamamlamak için bir SSH istemciniz olmalıdır. Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](https://msdn.microsoft.com/commandline/wsl/about)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
+Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](https://msdn.microsoft.com/commandline/wsl/about)'ndeki SSH istemcisini kullanabilirsiniz. SSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
 1. Portalda Linux VM’nize gidin ve **Genel Bakış**’ta **Bağlan**’a tıklayın.  
 2. Tercih ettiğiniz SSH istemcisiyle VM’ye bağlanmak için **Bağlan**’ı seçin. 
-3. Terminal penceresinde CURL, kullanarak Azure AD Graph için bir erişim belirteci almak Azure kaynaklarını uç noktası için yönetilen yerel kimlikler için bir istek olun.  
+3. Terminal penceresinde, KıVRıMLı kullanarak Azure AD grafiğine yönelik bir erişim belirteci almak için Azure kaynakları için yerel yönetilen kimliklere bir istek oluşturun.  
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://graph.windows.net' -H Metadata:true
@@ -156,7 +156,7 @@ Bu adımları tamamlamak için bir SSH istemciniz olmalıdır. Windows kullanıy
    }
    ```
 
-4. Sanal makinenizin hizmet sorumlusuna ait nesne kimliğini (önceki adımlarda aldığınız değer) kullanarak, grup üyeliklerini almak üzere Azure AD Graph API’yi sorgulayabilirsiniz. Değiştirin `<OBJECT-ID>` VM'NİZİN hizmet sorumlusu nesne kimliği ve `<ACCESS-TOKEN>` daha önce alınan erişim belirteci ile:
+4. Sanal makinenizin hizmet sorumlusuna ait nesne kimliğini (önceki adımlarda aldığınız değer) kullanarak, grup üyeliklerini almak üzere Azure AD Graph API’yi sorgulayabilirsiniz. `<OBJECT-ID>`, sanal makinenizin hizmet sorumlusunun nesne KIMLIĞIYLE ve `<ACCESS-TOKEN>` daha önce edinilen erişim belirteciyle değiştirin:
 
    ```bash
    curl 'https://graph.windows.net/myorganization/servicePrincipals/<OBJECT-ID>/getMemberGroups?api-version=1.6' -X POST -d "{\"securityEnabledOnly\": false}" -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS-TOKEN>"

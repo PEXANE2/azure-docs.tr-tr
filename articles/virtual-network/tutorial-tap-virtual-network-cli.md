@@ -1,6 +1,6 @@
 ---
-title: Oluşturma, değiştirme veya silme bir sanal ağ TAP - Azure CLI | Microsoft Docs
-description: Oluşturma, değiştirme veya bir sanal ağ Azure CLI kullanarak DOKUNUN silme öğrenin.
+title: VNet TAP oluşturma, değiştirme veya silme-Azure CLı
+description: Azure CLı kullanarak bir sanal ağ oluşturma, değiştirme veya silme hakkında bilgi edinin.
 services: virtual-network
 documentationcenter: na
 author: karthikananth
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 3d95a9ea555cceda82530eb5c487eeb993c1a678
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05ce45a52db2b8a47223023ce31b5591b2b97c37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743199"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185388"
 ---
-# <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Bir DOKUNUN Azure CLI kullanarak sanal ağ ile çalışma
+# <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Azure CLı kullanarak bir sanal ağ ile çalışma
 
-Azure sanal ağ TAP (Terminal erişim noktası) bir ağ paketi Toplayıcı veya Analiz aracı, sanal makine ağ trafiğini sürekli akışı sağlar. Toplayıcı veya Analiz aracı tarafından sağlanan bir [ağ sanal Gereci](https://azure.microsoft.com/solutions/network-appliances/) iş ortağı. Sanal ağ TAP ile çalışacak şekilde doğrulanmış olan iş ortağı çözümlerini bir listesi için bkz. [iş ortağı çözümleri](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions). 
+Azure sanal ağ TAP (Terminal erişim noktası), sanal makine ağ trafiğinizi bir ağ paketi toplayıcısına veya analiz aracına sürekli olarak akışla kullanmanıza olanak sağlar. Toplayıcı veya Analiz Aracı bir [ağ sanal gereç](https://azure.microsoft.com/solutions/network-appliances/) ortağı tarafından sağlanır. Sanal ağ dokunarak çalışmak üzere doğrulanan iş ortağı çözümlerinin listesi için bkz. [iş ortağı çözümleri](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions). 
 
-## <a name="create-a-virtual-network-tap-resource"></a>Sanal ağ TAP kaynak oluşturma
+## <a name="create-a-virtual-network-tap-resource"></a>Sanal ağ dokunma kaynağı oluşturma
 
-Okuma [önkoşulları](virtual-network-tap-overview.md#prerequisites) bir sanal ağ TAP kaynak oluşturmadan önce. İçinde izleyen komutları çalıştırabilirsiniz [Azure Cloud Shell](https://shell.azure.com/bash), veya Azure komut satırı arabirimi (CLI) bilgisayarınızdan çalıştırarak. Azure Cloud Shell, bilgisayarınızda Azure CLI yükleme gerektirmeyen bir ücretsiz etkileşimli kabuk ' dir. Azure için uygun olan bir hesapla oturum açmalısınız [izinleri](virtual-network-tap-overview.md#permissions). Bu makale Azure CLI Sürüm 2.0.46 gerekir veya üzeri. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI 2.0 yükleme](/cli/azure/install-azure-cli). Sanal ağ DOKUNUN, şu anda bir uzantısı olarak kullanılabilir. Çalışmanız için gereken uzantıyı yüklemek için `az extension add -n virtual-network-tap`. Azure CLI'yi yerel olarak çalıştırıyorsanız, aynı zamanda çalıştırmak ihtiyacınız `az login` Azure ile bir bağlantı oluşturmak için.
+Sanal ağ TAP kaynağı oluşturmadan önce [önkoşulları](virtual-network-tap-overview.md#prerequisites) okuyun. [Azure Cloud Shell](https://shell.azure.com/bash), veya bilgisayarınızdan Azure komut satırı arabirimi 'NI (CLI) çalıştırarak bu komutları çalıştırabilirsiniz. Azure Cloud Shell, bilgisayarınızda Azure CLı yüklemesi gerektirmeyen ücretsiz bir etkileşimli kabuktur. Azure 'da uygun [izinlere](virtual-network-tap-overview.md#permissions)sahip bir hesapla oturum açmalısınız. Bu makale, Azure CLı sürüm 2.0.46 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI 2.0 yükleme](/cli/azure/install-azure-cli). Sanal ağ dokunma Şu anda bir uzantı olarak kullanılabilir. Uzantıyı yüklemek için `az extension add -n virtual-network-tap`çalıştırmanız gerekir. Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure ile bağlantı oluşturmak için `az login` çalıştırmanız da gerekir.
 
-1. Sonraki adımlardan birinde kullanılan bir değişkenin aboneliğinize Kimliğini alın:
+1. Aboneliğinizin KIMLIĞINI sonraki bir adımda kullanılan bir değişkene alın:
 
    ```azurecli-interactive
    subscriptionId=$(az account show \
@@ -38,21 +38,21 @@ Okuma [önkoşulları](virtual-network-tap-overview.md#prerequisites) bir sanal 
    --out tsv)
    ```
 
-2. Bir sanal ağ TAP kaynak oluşturmak için kullanacağınız abonelik kimliğini ayarlayın.
+2. Sanal ağ dokunma kaynağı oluşturmak için kullanacağınız abonelik kimliğini ayarlayın.
 
    ```azurecli-interactive
    az account set --subscription $subscriptionId
    ```
 
-3. Bir sanal ağ TAP kaynak oluşturmak için kullanacağınız abonelik Kimliğini yeniden kaydedin. Bir DOKUNUN kaynak oluştururken bir kayıt hatası alırsanız, aşağıdaki komutu çalıştırın:
+3. Sanal ağ dokunma kaynağı oluşturmak için kullanacağınız abonelik KIMLIĞINI yeniden kaydedin. Bir dokunma kaynağı oluştururken bir kayıt hatası alırsanız, aşağıdaki komutu çalıştırın:
 
    ```azurecli-interactive
    az provider register --namespace Microsoft.Network --subscription $subscriptionId
    ```
 
-4. Hedef sanal ağ TAP'için bir ağ sanal Gereci Toplayıcı veya Analiz aracı için ağ arabiriminde ise-
+4. Sanal ağ ' a yönelik hedef, toplayıcı veya Analiz Aracı için ağ sanal gereci 'nda bulunan ağ arabirimidir.
 
-   - Ağ sanal Gereci ait ağ arabirimi IP yapılandırması sonraki adımlardan birinde kullanılan bir değişkenin içine alın. DOKUNUN trafiği toplayacak uç noktası kimliğidir. Aşağıdaki örnek Kimliğini alır. *ipconfig1* adlı bir ağ arabirimi IP yapılandırması *myNetworkInterface*, adlı bir kaynak grubu içinde *myResourceGroup*:
+   - Ağ sanal gerecinin ağ arabiriminin IP yapılandırmasını sonraki bir adımda kullanılan bir değişkene alın. KIMLIK, dokunma trafiğini toplayacak olan bitiş noktasıdır. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubunda *mynetworkınterface*adlı bir ağ arabirimi IÇIN *ipconfig1* IP yapılandırmasının kimliğini alır:
 
       ```azurecli-interactive
        IpConfigId=$(az network nic ip-config show \
@@ -63,7 +63,7 @@ Okuma [önkoşulları](virtual-network-tap-overview.md#prerequisites) bir sanal 
        --out tsv)
       ```
 
-   - Hedef ve isteğe bağlı bağlantı noktası özelliği IP yapılandırmasının Kimliğini kullanarak westcentralus azure bölgesinde sanal ağ TAP'ı oluşturun. Bağlantı noktası, hedef bağlantı noktası üzerinde ağ arabirimi IP yapılandırması yere DOKUNUN trafiği alınır belirtir:  
+   - Hedef olarak IP yapılandırmasının KIMLIĞINI ve isteğe bağlı bir bağlantı noktası özelliğini kullanarak westcentralus Azure bölgesinde sanal ağ ' a dokunun. Bağlantı noktası, dokunma trafiğinin alındığı ağ arabirimi IP yapılandırmasındaki hedef bağlantı noktasını belirtir:  
 
       ```azurecli-interactive
        az network vnet tap create \
@@ -74,9 +74,9 @@ Okuma [önkoşulları](virtual-network-tap-overview.md#prerequisites) bir sanal 
        --location westcentralus
       ```
 
-5. Hedef sanal ağ TAP'için bir azure iç yük dengeleyici ise:
+5. Sanal ağın hedefi bir Azure iç yük dengeleyiciye ise:
   
-   - Azure iç yük dengeleyici ön uç IP yapılandırması sonraki adımlardan birinde kullanılan bir değişkenin içine alın. DOKUNUN trafiği toplayacak uç noktası kimliğidir. Aşağıdaki örnek Kimliğini alır. *frontendipconfig1* adlı bir yük dengeleyici için ön uç IP yapılandırması *myInternalLoadBalancer*, adlı bir kaynak grubu içinde  *myResourceGroup*:
+   - Azure iç yük dengeleyicinin ön uç IP yapılandırmasını sonraki bir adımda kullanılan bir değişkene alın. KIMLIK, dokunma trafiğini toplayacak olan bitiş noktasıdır. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubunda *myınternalloadbalancer*adlı bir yük dengeleyici IÇIN *FRONTENDIPCONFIG1* ön uç IP yapılandırmasının kimliğini alır:
 
       ```azurecli-interactive
       FrontendIpConfigId=$(az network lb frontend-ip show \
@@ -86,7 +86,7 @@ Okuma [önkoşulları](virtual-network-tap-overview.md#prerequisites) bir sanal 
       --query id \
       --out tsv)
       ```
-   - Sanal ağ TAP hedef ve isteğe bağlı bağlantı noktası özelliği ön uç IP yapılandırması Kimliğini kullanarak oluşturun. Bağlantı noktası, hedef bağlantı noktası yere DOKUNUN trafiği alınır, ön uç IP yapılandırması üzerinde belirtir:  
+   - Hedef ve isteğe bağlı bir bağlantı noktası özelliği olan ön uç IP yapılandırmasının KIMLIĞINI kullanarak sanal ağ ' a dokunun. Bağlantı noktası, dokunma trafiğinin alındığı ön uç IP yapılandırmasındaki hedef bağlantı noktasını belirtir:  
 
       ```azurecli-interactive
       az network vnet tap create \
@@ -97,7 +97,7 @@ Okuma [önkoşulları](virtual-network-tap-overview.md#prerequisites) bir sanal 
      --location westcentralus
      ```
 
-6. Sanal ağ TAP oluşturulmasını onaylayın:
+6. Sanal ağ ' ın oluşturulmasını onaylayın:
 
    ```azurecli-interactive
    az network vnet tap show \
@@ -105,9 +105,9 @@ Okuma [önkoşulları](virtual-network-tap-overview.md#prerequisites) bir sanal 
    --name myTap
    ```
 
-## <a name="add-a-tap-configuration-to-a-network-interface"></a>Bir ağ arabirimi için bir DOKUNUN Yapılandırması Ekle
+## <a name="add-a-tap-configuration-to-a-network-interface"></a>Bir ağ arabirimine bir dokunma yapılandırması ekleme
 
-1. Mevcut bir sanal ağ TAP kaynak Kimliğini alın. Aşağıdaki örnek, bir sanal ağ TAP adlı alır. *myTap* adlı bir kaynak grubu içinde *myResourceGroup*:
+1. Mevcut bir sanal ağın KIMLIĞINI alın kaynak ' a dokunun. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *mytap* ADLı bir sanal ağ tap 'ı alır:
 
    ```azurecli-interactive
    tapId=$(az network vnet tap show \
@@ -117,7 +117,7 @@ Okuma [önkoşulları](virtual-network-tap-overview.md#prerequisites) bir sanal 
    --out tsv)
    ```
 
-2. İzlenen sanal makinenin ağ arabiriminde bir DOKUNUN yapılandırması oluşturun. Aşağıdaki örnek bir DOKUNUN Yapılandırması adlı bir ağ arabirimi oluşturur *myNetworkInterface*:
+2. İzlenen sanal makinenin ağ arabiriminde bir dokunma yapılandırması oluşturun. Aşağıdaki örnek, *Mynetworkınterface*adlı bir ağ arabirimi IÇIN bir dokunma yapılandırması oluşturur:
 
    ```azurecli-interactive
    az network nic vtap-config create \
@@ -128,7 +128,7 @@ Okuma [önkoşulları](virtual-network-tap-overview.md#prerequisites) bir sanal 
    --subscription subscriptionId
    ```
 
-3. DOKUNUN yapılandırmanın oluşturulmasını onaylayın:
+3. DOKUNMA yapılandırması oluşturmayı onaylayın:
 
    ```azurecli-interactive
    az network nic vtap-config show \
@@ -138,7 +138,7 @@ Okuma [önkoşulları](virtual-network-tap-overview.md#prerequisites) bir sanal 
    --subscription subscriptionId
    ```
 
-## <a name="delete-the-tap-configuration-on-a-network-interface"></a>Bir ağ arabiriminde DOKUNUN yapılandırmasını Sil
+## <a name="delete-the-tap-configuration-on-a-network-interface"></a>Ağ arabirimindeki dokunma yapılandırmasını silme
 
    ```azure-cli-interactive
    az network nic vtap-config delete \
@@ -148,13 +148,13 @@ Okuma [önkoşulları](virtual-network-tap-overview.md#prerequisites) bir sanal 
    --subscription subscriptionId
    ```
 
-## <a name="list-virtual-network-taps-in-a-subscription"></a>Bir Abonelikteki sanal ağlar dokunduğunda
+## <a name="list-virtual-network-taps-in-a-subscription"></a>Bir abonelikte sanal ağ dokunmalar listeleme
 
    ```azurecli-interactive
    az network vnet tap list
    ```
 
-## <a name="delete-a-virtual-network-tap-in-a-resource-group"></a>Bir kaynak grubundaki sanal ağ TAP Sil
+## <a name="delete-a-virtual-network-tap-in-a-resource-group"></a>Bir kaynak grubunda bir sanal ağ DOKUNMAYı silme
 
    ```azurecli-interactive
    az network vnet tap delete \

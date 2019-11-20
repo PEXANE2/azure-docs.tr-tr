@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6b51581b5a8f94419dba60eee72669a3e1261b24
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 4a0a005d096702b864c770675a427184547a2b44
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151581"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185714"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -30,13 +30,23 @@ Bu makaledeki hata bilgileri, dizin oluşturmanın devam etmesine izin veren hat
 
 Uyarılar Dizin oluşturmayı durdurmaz, ancak beklenmedik sonuçlar oluşmasına neden olabilecek koşullar olduğunu gösterir. Eyleme ve senaryonuza bağlı olup olmadığına bakılmaksızın.
 
+API sürümü `2019-05-06`başlayarak, öğe düzeyinde Dizin Oluşturucu hataları ve uyarıları, nedenler ve sonraki adımlarla ilgili daha fazla açıklık sağlamak üzere yapılandırılır. Bunlar aşağıdaki özellikleri içerir:
+
+| Özellik | Açıklama | Örnek |
+| --- | --- | --- |
+| anahtar | Hatanın veya uyarıdan etkilenen belge kimliği. | https://coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| ad | Hatanın veya uyarının nerede oluştuğunu açıklayan işlem adı. Bu, şu yapı tarafından oluşturulur: [Kategori]. [alt kategori]. [resourceType]. Kaynak | Belgetextraction. azureblob. myBlobContainerName Enrichment. WebApiSkill. mySkillName Projection. Searchındex. OutputFieldMapping. mbir Putfieldname Projection. Searchındex. MergeOrUpload. Myındexname Projection. KnowledgeStore. Table. myTableName |
+| message | Hatanın veya uyarının üst düzey bir açıklaması. | Web API isteği başarısız olduğundan yetenek yürütülemedi. |
+| details | Özel bir yetenek yürütülerek WebApi yanıtı gibi sorunu tanılamaya yardımcı olabilecek ek ayrıntılar başarısız oldu. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 kaynak, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... yığın izlemenin geri kalanı... |
+| Belgetationlink | Hata ayıklama ve sorunu çözme hakkında ayrıntılı bilgiler içeren ilgili belgelere bir bağlantı. Bu bağlantı genellikle bu sayfada aşağıdaki bölümlerden birini işaret eder. | https://go.microsoft.com/fwlink/?linkid=2106475 |
+
 <a name="could-not-read-document"/>
 
 ## <a name="error-could-not-read-document"></a>Hata: belge okunamıyor
 
 Dizin Oluşturucu, veri kaynağından belgeyi okuyamadı. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözüm |
+| Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
 | farklı belgeler genelinde tutarsız alan türleri | Değerin türü sütun türüyle eşleşmiyor. `'{47.6,-122.1}'` yazarlar sütununda depolanamadı.  Beklenen tür JArray. | Her alanın türünün farklı belgeler arasında aynı olduğundan emin olun. Örneğin, ilk belge `'startTime'` alanı bir tarih Tariheyse ve ikinci belgede bir dize ise, bu hata olur. |
 | veri kaynağının temelindeki hizmetten alınan hatalar | (Cosmos DB) `{"Errors":["Request rate is large"]}` | Sağlıklı olduğundan emin olmak için depolama örneğinizi denetleyin. Ölçeklendirmeyi/bölümlemeyi ayarlamanız gerekebilir. |
@@ -47,7 +57,7 @@ Dizin Oluşturucu, veri kaynağından belgeyi okuyamadı. Bunun nedeni aşağıd
 ## <a name="error-could-not-extract-document-content"></a>Hata: belge içeriği ayıklanamadı
 Blob veri kaynağı olan Dizin Oluşturucu, içeriği belgeden (örneğin, bir PDF dosyası) ayıklayamadı. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözüm |
+| Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
 | blob boyut sınırının üzerinde | Belge, geçerli hizmet katmanınız için belge ayıklama için en büyük boyut `'134217728'` baytı aşan `'150441598'` bayttır. | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob desteklenmeyen içerik türüne sahip | Belge desteklenmeyen içerik türüne sahip `'image/png'` | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -59,7 +69,7 @@ Blob veri kaynağı olan Dizin Oluşturucu, içeriği belgeden (örneğin, bir P
 ## <a name="error-could-not-parse-document"></a>Hata: belge ayrıştırılamadı
 Dizin Oluşturucu veri kaynağından belgeyi okudu, ancak belge içeriği belirtilen alan eşleme şemasına dönüştürülürken bir sorun oluştu. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözüm |
+| Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
 | Belge anahtarı eksik | Belge anahtarı eksik veya boş olamaz | Tüm belgelerin geçerli belge anahtarlarına sahip olduğundan emin olun |
 | Belge anahtarı geçersiz | Belge anahtarı 1024 karakterden uzun olamaz | Belge anahtarını doğrulama gereksinimlerini karşılayacak şekilde değiştirin. |
@@ -71,10 +81,8 @@ Dizin Oluşturucu veri kaynağından belgeyi okudu, ancak belge içeriği belirt
 ## <a name="error-could-not-execute-skill"></a>Hata: yetenek yürütülemedi
 Dizin Oluşturucu beceri içinde bir yetenek çalıştıramıyor.
 
-| Neden | Ayrıntılar/örnek | Çözüm |
+| Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
-| Bir alan çok büyük bir terim içeriyor | Belgenizdeki bir terim [32 KB sınırından](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Alanın filtrelenebilir, çok yönlü veya sıralanabilir olarak yapılandırılmadığından emin olmak için bu kısıtlamayı önleyebilirsiniz.
-| Belge dizine eklenemeyecek kadar büyük | Belge, [en yüksek API istek boyutundan](search-limits-quotas-capacity.md#api-request-limits) daha büyük | [Büyük veri kümelerini dizin oluşturma](search-howto-large-index.md)
 | Geçici bağlantı sorunları | Geçici bir hata oluştu. Lütfen daha sonra tekrar deneyin. | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
 | Olası ürün hatası | Beklenmeyen bir hata oluştu. | Bu, bilinmeyen bir hata sınıfını gösterir ve bir ürün hatası olduğu anlamına gelebilir. Yardım almak için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) girin. |
 | Bir beceri yürütme sırasında bir hatayla karşılaştı | (Birleştirme becerinizden) Bir veya daha fazla fark değeri geçersizdi ve ayrıştırılamadı. Metnin sonuna öğe eklendi | Sorunu giderecek hata iletisindeki bilgileri kullanın. Bu tür bir hata çözümü için eylem gerekir. |
@@ -96,6 +104,8 @@ Bu hata iletisiyle karşılaşacağınız iki durum vardır; bunların her biri 
 
 ### <a name="built-in-cognitive-service-skills"></a>Yerleşik bilişsel hizmet becerileri
 Dil algılama, varlık tanıma veya OCR gibi yerleşik bilişsel yeteneklerin çoğu bilişsel hizmet API uç noktası tarafından desteklenir. Bazen bu uç noktalarla geçici sorunlar vardır ve bir istek zaman aşımına uğrar. Geçici sorunlar için, beklemek ve yeniden denemek dışında bir çözüm yoktur. Risk azaltma olarak, Dizin Oluşturucularınızı [bir zamanlamaya göre çalışacak](search-howto-schedule-indexers.md)şekilde ayarlamayı düşünün. Zamanlanan dizin oluşturma, sol taraftaki yeri seçer. Geçici sorunların çözümlendiğini, dizin oluşturma ve Bilişsel Beceri işleme, bir sonraki zamanlanan çalıştırmaya devam edebilmelidir.
+
+Bu hatayı, yerleşik bir Bilişsel Beceri yeteneği için aynı belgede görmeye devam ederseniz, bu beklenmediğinden yardım almak için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) dosyası sağlayın.
 
 ### <a name="custom-skills"></a>Özel beceriler
 Oluşturduğunuz özel bir yeteneğe sahip bir zaman aşımı hatasıyla karşılaşırsanız, deneyebileceğiniz birkaç işlem vardır. İlk olarak, özel becerinizi gözden geçirin ve sonsuz bir döngüde takılı olmadığından ve sürekli olarak bir sonuç döndürmediğinden emin olun. Durum olduğunu onayladıktan sonra, becerinizde yürütme zamanının ne olduğunu saptayın. Özel beceri tanımınızda açıkça bir `timeout` değeri ayarlamadıysanız, varsayılan `timeout` 30 saniyedir. Becerinizi yürütmek için 30 saniye yeterince uzun değilse, özel beceri tanımınızda daha yüksek bir `timeout` değeri belirtebilirsiniz. Zaman aşımının 90 saniyeye ayarlandığı özel beceri tanımına bir örnek aşağıda verilmiştir:
@@ -130,10 +140,10 @@ Oluşturduğunuz özel bir yeteneğe sahip bir zaman aşımı hatasıyla karşı
 
 Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözüm |
+| Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
-| Belgenizdeki bir terim [32 KB sınırından](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Bir alan çok büyük bir terim içeriyor | Alanın filtrelenebilir, çok yönlü veya sıralanabilir olarak yapılandırılmadığından emin olmak için bu kısıtlamayı önleyebilirsiniz.
-| Belge, [en yüksek API istek boyutundan](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Belge dizine eklenemeyecek kadar büyük | [Büyük veri kümelerini dizin oluşturma](search-howto-large-index.md)
+| Bir alan çok büyük bir terim içeriyor | Belgenizdeki bir terim [32 KB sınırından](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Alanın filtrelenebilir, çok yönlü veya sıralanabilir olarak yapılandırılmadığından emin olmak için bu kısıtlamayı önleyebilirsiniz.
+| Belge dizine eklenemeyecek kadar büyük | Belge, [en yüksek API istek boyutundan](search-limits-quotas-capacity.md#api-request-limits) daha büyük | [Büyük veri kümelerini dizin oluşturma](search-howto-large-index.md)
 | Belge koleksiyonda çok fazla nesne içeriyor | Belgenizdeki bir koleksiyon [tüm karmaşık koleksiyonlar limitindeki en fazla öğeyi](search-limits-quotas-capacity.md#index-limits) aşıyor | Belgedeki karmaşık toplamanın boyutunu sınırın altına düşürmenizi ve yüksek depolama kullanımından kaçınmanızı öneririz.
 | Hizmet, sorgulama veya dizin oluşturma gibi başka bir yük altında olduğundan, hedef dizine bağlanma sorunu (yeniden denemeden sonra devam eden). | Güncelleştirme diziniyle bağlantı kurulamadı. Arama hizmeti ağır yük altında. | [Arama hizmetinizin ölçeğini artırma](search-capacity-planning.md)
 | Arama hizmeti 'nin hizmet güncelleştirmesi için düzeltme eki uygulanıyor veya bir topoloji yeniden yapılandırması ortasında. | Güncelleştirme diziniyle bağlantı kurulamadı. Arama hizmeti şu anda açık/arama hizmeti bir geçiş işlemi yaşıyor. | [SLA belgeleri](https://azure.microsoft.com/support/legal/sla/search/v1_0/) başına% 99,9 kullanılabilirlik için en az 3 çoğaltmalarla hizmeti yapılandırın
@@ -185,7 +195,7 @@ Eksik giriş durumunda varsayılan bir değer sağlamak istiyorsanız, [koşullu
 }
 ```
 
-| Neden | Ayrıntılar/örnek | Çözüm |
+| Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
 | Beceri girişi yanlış türde | Gerekli yetenek girişi `X` `String`beklenen türde değil. Gerekli yetenek girişi `X` beklenen biçimde değil. | Bazı yetenekler belirli türlerin girdilerini bekler, örneğin yaklaşım [becerisi](cognitive-search-skill-sentiment.md) `text` bir dize olmasını bekler. Giriş dize olmayan bir değer belirtiyorsa, yetenek yürütülmez ve çıkış oluşturmaz. Veri ayarlamış olduğunuz giriş değerlerinin türünde Tekdüzen olduğundan emin olun veya girişi önceden işlemek için [özel bir Web API 'si](cognitive-search-custom-skill-web-api.md) kullanın. Yeteneği bir dizi üzerinden yineleyorsanız, yetenek bağlamını ve girişin doğru konumlarda `*` olduğunu kontrol edin. Genellikle bağlam ve giriş kaynağı diziler için `*` bitmelidir. |
 | Yetenek girişi eksik | Gerekli yetenek girişi `X` eksik. | Tüm belgeleriniz bu uyarıyı alıyorsa, büyük olasılıkla giriş yollarında bir yazım hatası vardır ve özellik adının büyük küçük harf, ek veya eksik `*` ve veri kaynağından alınan belgeler gerekli girdileri tanımlar. |

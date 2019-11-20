@@ -6,16 +6,16 @@ author: rothja
 manager: jeffreyg
 tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
-ms.service: billing
+ms.service: azure-policy
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: f9fe540611b1b773867e1f92439e13df91ad4bd3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: b6ce20196b6ffdcd6699611998260dc981cc4f44
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818340"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185037"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar
 Bu belgede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure limitlerin bazıları listelenir. Bu belge şu anda tüm Azure hizmetlerini kapsamıyor. Zamanla, liste genişletilir ve daha fazla hizmeti kapsayacak şekilde güncelleştirilir.
@@ -25,7 +25,7 @@ Azure fiyatlandırması hakkında daha fazla bilgi edinmek için bkz. [Azure fiy
 > [!NOTE]
 > Sınırı veya kotayı varsayılan sınırın üzerinde yükseltmek istiyorsanız, [ücretsiz bir çevrimiçi müşteri destek isteği açın](azure-resource-manager/resource-manager-quota-errors.md). Sınırlar, aşağıdaki tablolarda gösterilen en büyük sınır değerinin üzerinde olamaz. En fazla limit sütunu yoksa, kaynak, ayarlanabilir sınırlara sahip değildir.
 >
-> [Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. [Ücretsiz bir deneme aboneliğiniz](https://azure.microsoft.com/offers/ms-azr-0044p)varsa, bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) aboneliğine yükseltebilirsiniz. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme aboneliğinizi bir Kullandıkça Öde aboneliğine yükseltme](billing/billing-upgrade-azure-subscription.md) ve [ücretsiz deneme aboneliği hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
+> [Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. Varsa bir [ücretsiz deneme aboneliği](https://azure.microsoft.com/offers/ms-azr-0044p), Yükseltme yapabileceğiniz bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) abonelik. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme aboneliğinizi bir Kullandıkça Öde aboneliğine yükseltme](billing/billing-upgrade-azure-subscription.md) ve [ücretsiz deneme aboneliği hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Sınırlar ve Azure Resource Manager
@@ -78,7 +78,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Kimlik Yöneticisi](#identity-manager-limits)
 * [IoT Hub’ı](#iot-hub-limits)
 * [IoT Hub Cihazı Sağlama Hizmeti](#iot-hub-device-provisioning-service-limits)
-* [Anahtar Kasası](#key-vault-limits)
+* [Key Vault](#key-vault-limits)
 * [Media Services](#media-services-limits)
 * [Mobile Services](#mobile-services-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication-limits)
@@ -89,10 +89,10 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
   * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Güvenlik Duvarı](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
-  * [Yük Dengeleyici](#load-balancer)
+  * [Load Balancer](#load-balancer)
   * [Ağ Izleyicisi](#network-watcher-limits)
   * [Genel IP adresi](#publicip-address)
-  * [Özel bağlantı](#private-link-limits)
+  * [Özel Bağlantı](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Sanal Ağ](#networking-limits)
   * [Sanal WAN](#virtual-wan-limits)
@@ -101,7 +101,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Rol tabanlı erişim denetimi](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
 * [Service Bus](#service-bus-limits)
-* [Site Recovery](#site-recovery-limits)
+* [Konum Kurtarma](#site-recovery-limits)
 * [SQL Veritabanı](#sql-database-limits)
 * [SQL Veri Ambarı](#sql-data-warehouse-limits)
 * [Depolama](#storage-limits)

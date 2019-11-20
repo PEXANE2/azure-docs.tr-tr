@@ -1,19 +1,19 @@
 ---
-title: Azure geçişi sunucu değerlendirmesi ile fiziksel sunucuları değerlendirmeye hazırlama
-description: Azure geçişi sunucu değerlendirmesi kullanılarak fiziksel sunucuların Azure 'a değerlendirmesi ve geçirilmesi için nasıl hazırlanılacağı açıklanmaktadır.
+title: Azure geçişi ile değerlendirme/geçiş için fiziksel sunucuları hazırlama
+description: Azure geçişi ile fiziksel sunucuların değerlendirilmesi/geçirilmesi için hazırlanma hakkında bilgi edinin.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/07/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 075c60aed458be8a4bf45fafb2d06757862ff5ba
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 363549662a17a87513c8426347909142ee405cae
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158591"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196391"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Fiziksel sunucuların değerlendirmesi ve Azure 'a geçirilmesi için hazırlanma
 

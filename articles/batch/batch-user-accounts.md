@@ -11,15 +11,15 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 05/22/2017
+ms.date: 11/18/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 820e979c41ddc1c1cf14456ed77a4a55e353ab12
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 866f2e5e1ba9df9e8e63b77250d6c94635bbc009
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094272"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74194967"
 ---
 > [!NOTE] 
 > Bu makalede ele alınan kullanıcı hesapları, güvenlik nedenleriyle Uzak Masaüstü Protokolü (RDP) veya Secure Shell (SSH) için kullanılan kullanıcı hesaplarından farklıdır. 
@@ -59,7 +59,7 @@ Bir görevden dosya ve dizinlere erişme hakkında daha fazla bilgi için bkz. [
 
 Kullanıcı hesabının yükseltme düzeyi, bir görevin yükseltilmiş erişimle çalıştırılıp çalıştırılmadığını gösterir. Hem bir otomatik Kullanıcı hesabı hem de adlandırılmış bir kullanıcı hesabı, yükseltilmiş erişimle çalıştırılabilir. Yükseltme düzeyi için iki seçenek şunlardır:
 
-- **NonAdmin** Görev, yükseltilmiş erişim olmadan standart bir kullanıcı olarak çalışır. Batch Kullanıcı hesabı için varsayılan yükseltme düzeyi her zaman **yönetici olmayan**bir hesaptır.
+- **Yönetici olmayan:** Görev, yükseltilmiş erişim olmadan standart bir kullanıcı olarak çalışır. Batch Kullanıcı hesabı için varsayılan yükseltme düzeyi her zaman **yönetici olmayan**bir hesaptır.
 - **Yönetici:** Görev, yükseltilmiş erişimi olan bir kullanıcı olarak çalışır ve tam yönetici izinleriyle çalışır. 
 
 ## <a name="auto-user-accounts"></a>Otomatik Kullanıcı hesapları
@@ -94,7 +94,7 @@ Yükseltilmiş erişimle bir görevi çalıştırmanız gerektiğinde, yönetici
 >
 >
 
-Aşağıdaki kod parçacıkları, otomatik Kullanıcı belirtiminin nasıl yapılandırılacağını gösterir. Örnekler, yükseltme düzeyini `Admin` ve kapsamını olarak `Task`ayarlar. Görev kapsamı varsayılan ayardır, ancak örnek için buraya eklenmiştir.
+Aşağıdaki kod parçacıkları, otomatik Kullanıcı belirtiminin nasıl yapılandırılacağını gösterir. Örnekler, yükseltme düzeyini `Admin` ve kapsamını `Task`olarak ayarlar. Görev kapsamı varsayılan ayardır, ancak örnek için buraya eklenmiştir.
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -159,7 +159,7 @@ Adlandırılmış bir kullanıcı hesabı, aynı kullanıcı hesabı altında bi
 
 Ayrıca, dosya paylaşımları gibi dış kaynaklarda izinleri ayarlayan bir görevi çalıştırmak için adlandırılmış bir kullanıcı hesabı kullanabilirsiniz. Adlandırılmış bir kullanıcı hesabı ile Kullanıcı kimliğini kontrol edersiniz ve izinleri ayarlamak için bu kullanıcı kimliğini kullanabilirsiniz.  
 
-Adlandırılmış Kullanıcı hesapları, Linux düğümleri arasında parola daha az SSH 'yi etkinleştirir. Çok örnekli görevleri çalıştırması gereken Linux düğümlerinde adlandırılmış bir kullanıcı hesabı kullanabilirsiniz. Havuzdaki her düğüm, tüm havuzda tanımlanan bir kullanıcı hesabı altında görevleri çalıştırabilir. Çok örnekli görevler hakkında daha fazla bilgi için bkz. [MPI\-uygulamalarını çalıştırmak için çok örnekli görevleri kullanma](batch-mpi.md).
+Adlandırılmış Kullanıcı hesapları, Linux düğümleri arasında parola daha az SSH 'yi etkinleştirir. Çok örnekli görevleri çalıştırması gereken Linux düğümlerinde adlandırılmış bir kullanıcı hesabı kullanabilirsiniz. Havuzdaki her düğüm, tüm havuzda tanımlanan bir kullanıcı hesabı altında görevleri çalıştırabilir. Çok örnekli görevler hakkında daha fazla bilgi için bkz. [MPI uygulamalarını çalıştırmak için çoklu\-örnek görevleri kullanma](batch-mpi.md).
 
 ### <a name="create-named-user-accounts"></a>Adlandırılmış Kullanıcı hesapları oluşturma
 
@@ -280,7 +280,7 @@ users = [
     batchmodels.UserAccount(
         name='pool-nonadmin',
         password='******',
-        elevation_level=batchmodels.ElevationLevel.nonadmin)
+        elevation_level=batchmodels.ElevationLevel.non_admin)
 ]
 pool = batchmodels.PoolAddParameter(
     id=pool_id,
@@ -295,7 +295,7 @@ batch_client.pool.add(pool)
 
 ### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Bir görevi, yükseltilmiş erişimle adlandırılmış bir kullanıcı hesabı altında çalıştırın
 
-Bir görevi yükseltilmiş bir kullanıcı olarak çalıştırmak için görevin **UserIdentity** özelliğini, ' nin **yükseltme düzeyi** özelliği olarak ayarlanmış şekilde `Admin`oluşturulmuş bir adlandırılmış Kullanıcı hesabı olarak ayarlayın.
+Bir görevi yükseltilmiş bir kullanıcı olarak çalıştırmak için görevin **UserIdentity** özelliğini, **yükseltme düzeyi** özelliği `Admin`olarak ayarlanmış bir adlandırılmış Kullanıcı hesabı olarak ayarlayın.
 
 Bu kod parçacığı, görevin adlandırılmış bir kullanıcı hesabı altında çalışması gerektiğini belirtir. Havuz oluşturulduğu sırada bu adlandırılmış Kullanıcı hesabı havuzda tanımlanmıştır. Bu durumda, adlandırılmış Kullanıcı hesabı yönetici izinleriyle oluşturulmuştur:
 
@@ -314,7 +314,7 @@ Batch hizmeti sürüm 2017 -01-01.4.0, daha önceki sürümlerde bulunan **Runay
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated`belirtilmemiş | Güncelleştirme gerekmiyor                                                                                               |
+| `CloudTask.RunElevated` belirtilmedi | Güncelleştirme gerekmiyor                                                                                               |
 
 ### <a name="batch-java"></a>Batch Java
 
@@ -322,15 +322,15 @@ Batch hizmeti sürüm 2017 -01-01.4.0, daha önceki sürümlerde bulunan **Runay
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated`belirtilmemiş | Güncelleştirme gerekmiyor                                                                                                                     |
+| `CloudTask.withRunElevated` belirtilmedi | Güncelleştirme gerekmiyor                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
 | Kodunuz kullanıyorsa...                      | Güncelleştirme....                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, burada <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
-| `run_elevated=False`                      | `user_identity=user`, burada <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin))`             |
-| `run_elevated`belirtilmemiş | Güncelleştirme gerekmiyor                                                                                                                                  |
+| `run_elevated=False`                      | `user_identity=user`, burada <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
+| `run_elevated` belirtilmedi | Güncelleştirme gerekmiyor                                                                                                                                  |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

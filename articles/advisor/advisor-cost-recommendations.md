@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: sagupt
-ms.openlocfilehash: cae16430ce933b8d071696377b22f10c15b5eae5
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9f074c8077f41392fa9d45022a6a7a537964afa9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145396"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74180579"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -63,7 +63,7 @@ Maliyetin %60 ' i kaydetmek için, üst diskin depolama türünden bağımsız o
 Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 * [Advisor 'a giriş](advisor-overview.md)
 * [Kullanmaya Başlayın](advisor-get-started.md)
-* [Advisor performans önerileri](advisor-cost-recommendations.md)
-* [Danışman yüksek kullanılabilirlik önerileri](advisor-cost-recommendations.md)
-* [Danışman güvenlik önerileri](advisor-cost-recommendations.md)
+* [Advisor performans önerileri](advisor-performance-recommendations.md)
+* [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
+* [Danışman güvenlik önerileri](advisor-security-recommendations.md)
 * [Danışman Işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)

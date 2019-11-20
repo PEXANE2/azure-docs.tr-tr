@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: 4ed23beae6edb13efabf034c1e87b9cb76048f82
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 3d15afc26c876c6e4d2d7244e26f0b13ced59a58
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648473"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184752"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>U-SQL geliştiricileri için Apache Spark kodunu anlayın
 
@@ -143,13 +143,13 @@ Spark içinde NULL değeri, değerin bilinmediğini gösterir. Spark NULL değer
 
 Bu davranış U-SQL ' den farklıdır, bu durum C# , `null` herhangi bir değerden farklı, ancak kendine eşit olduğu semantiğini izler.  
 
-Bu nedenle, `column_name`içinde NULL değerler olsa bile `WHERE column_name = NULL` kullanan bir mini SQL `SELECT` deyimleri sıfır satır döndürür. Bu, U-SQL ' de, `column_name` `null`olarak ayarlandığı satırları döndürür. Benzer şekilde, `WHERE column_name != NULL` kullanan bir Spark `SELECT` deyimleri, `column_name`null olmayan değerler olsa bile sıfır satır döndürür. Bu, U-SQL ' de, null olmayan satırları döndürür. Bu nedenle, U-SQL null denetimi semantiğini istiyorsanız, sırasıyla [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull)) ve [ınotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (ya da DSL eşdeğerini) kullanmanız gerekir.
+Bu nedenle, `column_name`içinde NULL değerler olsa bile `WHERE column_name = NULL` kullanan bir mini SQL `SELECT` deyimleri sıfır satır döndürür. Bu, U-SQL ' de, `column_name` `null`olarak ayarlandığı satırları döndürür. Benzer şekilde, `WHERE column_name != NULL` kullanan bir Spark `SELECT` deyimleri, `column_name`null olmayan değerler olsa bile sıfır satır döndürür. Bu, U-SQL ' de, null olmayan satırları döndürür. Bu nedenle, U-SQL null denetimi semantiğini istiyorsanız, sırasıyla [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) ve [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) kullanmanız gerekır (ya da DSL eşdeğerini).
 
 ## <a name="transform-u-sql-catalog-objects"></a>U-SQL Katalog nesnelerini dönüştürme
 
 Büyük bir fark, U-SQL betiklerinin, çoğu doğrudan Spark eşdeğeri olmayan, Katalog nesnelerini de kullanmalarından biridir.
 
-Spark, Hive meta veri deposu kavramları, temel olarak veritabanları ve tablolar için destek sağlar; böylece, c-SQL veritabanlarını ve şemalarını Hive veritabanlarına ve U-SQL tablolarını Spark tablolarında (bkz. [U-SQL tablolarında depolanan verileri taşıma](understand-spark-data-formats.md#move-data-stored-in-u-sql-tables)) eşleyebilirsiniz, ancak görünüm desteği yoktur. tablo değerli işlevler (TVFs), saklı yordamlar, U-SQL derlemeleri, dış veri kaynakları vb.
+Spark, Hive meta deposu kavramları için destek sağlar, temel olarak veritabanları ve tablolar, bu sayede U-SQL veritabanlarını ve şemaları Hive veritabanlarına ve U-SQL tablolarına (örneğin, [u-SQL tablolarında depolanan verileri taşıma](understand-spark-data-formats.md#move-data-stored-in-u-sql-tables)) eşleyebilirsiniz, ancak görünümler, tablo değerli Işlevler (TVFs), saklı yordamlar, U-SQL derlemeleri, dış veri kaynakları vb. için bir destek yoktur.
 
 Görünümler, TVFs, saklı yordamlar ve derlemeler gibi U-SQL kodu nesneleri Spark 'daki kod işlevleri ve kitaplıkları aracılığıyla modellenebilir ve ana bilgisayar dilinin işlevi ve yordamsal soyutlama mekanizmaları kullanılarak başvurulabilir (örneğin, içeri aktarma aracılığıyla) Python modülleri ya da Scala işlevlerine başvuruluyor).
 

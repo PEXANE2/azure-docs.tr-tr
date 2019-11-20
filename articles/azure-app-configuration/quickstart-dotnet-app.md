@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329808"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185052"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla .NET Framework uygulaması oluşturma
 
@@ -45,11 +45,11 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 ## <a name="create-a-net-console-app"></a>.NET konsol uygulaması oluşturma
 
-1. Visual Studio 'yu başlatın ve **dosya** > **Yeni** > **Proje**' yi seçin.
+1. Visual Studio 'yu başlatın ve **dosya** > **Yeni** > **projesi**' ni seçin.
 
 1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)** . **İleri**’ye tıklayın.
 
-1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**’a tıklayın.
+1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**'a tıklayın.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
@@ -81,9 +81,9 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
     </appSettings>
     ```
 
-   Uygulama yapılandırma deponuzın bağlantı dizesi `ConnectionString` ' dır. @No__t-3 bölümünün `configBuilders` özelliğinde, `MyConfigStore` ' den önce `Environment` yapılandırma oluşturucuyu ekleyin.
+   Uygulama yapılandırma deponuzın bağlantı dizesi `ConnectionString`ortam değişkeninden okundu. `appSettings` bölümünün `configBuilders` özelliğindeki `MyConfigStore` önce `Environment` yapılandırma oluşturucuyu ekleyin.
 
-1. *Program.cs*'i açın ve `Main` metodunu, uygulama yapılandırmasını kullanmak için `ConfigurationManager` çağırarak güncelleştirin.
+1. *Program.cs*'i açın ve `ConfigurationManager`çağırarak uygulama yapılandırmasını kullanmak üzere `Main` yöntemini güncelleştirin.
 
     ```csharp
     static void Main(string[] args)
@@ -112,7 +112,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bir .NET Framework konsol uygulamasıyla kullandınız. Uygulama yapılandırmasını kullanma hakkında daha fazla bilgi edinmek için, kimlik doğrulamasını gösteren bir sonraki öğreticiye geçin.
+Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bir .NET Framework konsol uygulamasıyla kullandınız. `AppSettings` değeri `ConfiguratoinManager` uygulama başlatıldıktan sonra değişmez. Uygulama yapılandırma .NET Standard yapılandırma sağlayıcısı kitaplığı, ancak aynı zamanda bir .NET Framework uygulamasında da kullanılabilir. Yapılandırma ayarlarını dinamik olarak yenilemek üzere .NET Framework uygulamanızın nasıl etkinleştirileceğini öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Yönetilen kimlik tümleştirmesi](./howto-integrate-azure-managed-service-identity.md)
+> [Dinamik yapılandırmayı etkinleştir](./enable-dynamic-configuration-dotnet.md)

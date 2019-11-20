@@ -1,31 +1,31 @@
 ---
-title: Azure geçişi sunucu geçiş ile Hyper-V geçişi nasıl çalışır? | Microsoft Docs
-description: Hyper-V geçiş Azure geçişi sunucusu geçişine genel bakış sağlar
+title: Azure 'da Hyper-V geçişi nasıl çalışır?
+description: Azure geçişi ile Hyper-V geçişi hakkında bilgi edinin
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 9148e76a9f2abd369ae595422d785a347e58dfab
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811719"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185872"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hyper-V çoğaltma nasıl çalışır?
 
-Bu makalede, mimari ve işlemlerdeki Hyper-V Vm'lerini Azure geçişi Server Geçiş Aracı ile geçiş sırasında kullanılan genel bir bakış sağlar.
+Bu makalede, Hyper-V VM 'lerini Azure geçiş sunucusu geçiş aracı ile geçirdiğinizde kullanılan mimari ve işlemlere genel bakış sunulmaktadır.
 
-[Azure geçişi](migrate-services-overview.md) bulma, değerlendirme ve şirket içi uygulamalarınızı ve iş yükleri ve private/public bulut Vm'lerinden azure'a geçişini izlemek için merkezi bir nokta sağlar. Hub araçları Azure geçişi, değerlendirme ve geçiş, ek olarak üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
+[Azure geçişi](migrate-services-overview.md) , şirket içi uygulamalarınızı, iş yüklerinizi ve özel/genel bulut VM 'lerini Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için bir merkezi Merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve ayrıca üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
 
 ## <a name="agentless-migration"></a>Aracısız geçiş
 
-Azure geçişi Server Geçiş Aracı, Hyper-V için en iyi duruma getirilmiş bir geçiş iş akışı kullanarak, şirket içi Hyper-V Vm'leri için aracısız çoğaltma sağlar. Yazılım Aracısı, yalnızca Hyper-V konakları veya küme düğümlerine yükleyin. Hiçbir şey, Hyper-V Vm'lerinde yüklü olması gerekir.
+Azure geçişi sunucu geçiş aracı, Hyper-V için iyileştirilmiş bir geçiş iş akışı kullanarak şirket içi Hyper-V VM 'Leri için aracısız çoğaltma sağlar. Yalnızca Hyper-V konaklarına veya küme düğümlerine yazılım Aracısı yüklersiniz. Hyper-V VM 'lerine hiçbir şeyin yüklenmesi gerekmez.
 
-## <a name="server-migration-and-azure-site-recovery"></a>Sunucu geçiş ve Azure Site Recovery
+## <a name="server-migration-and-azure-site-recovery"></a>Sunucu geçişi ve Azure Site Recovery
 
-Azure geçişi sunucusu geçişi geçirme şirket içi iş yüklerini ve azure'a, bulut tabanlı VM'ler için bir araçtır. Site kurtarma, olağanüstü durum kurtarma aracıdır. Araçları, veri çoğaltma için kullanılan bazı yaygın teknolojisi bileşenleri paylaşır, ancak farklı amaçlara hizmet eder. 
+Azure geçişi sunucu geçişi, şirket içi iş yüklerini ve bulut tabanlı VM 'Leri Azure 'a geçirmeye yönelik bir araçtır. Site Recovery bir olağanüstü durum kurtarma aracıdır. Araçlar, veri çoğaltma için kullanılan bazı yaygın teknoloji bileşenlerini paylaşır, ancak farklı amaçlara hizmet eder. 
 
 
 ## <a name="architectural-components"></a>Mimari bileşenler
@@ -36,56 +36,56 @@ Azure geçişi sunucusu geçişi geçirme şirket içi iş yüklerini ve azure'a
 
 **Bileşen** | **Dağıtım** | 
 --- | --- 
-**Çoğaltma sağlayıcısı** | Microsoft Azure Site Recovery sağlayıcısı, Hyper-V konaklarında yüklü ve Azure geçişi sunucu geçişi ile kayıtlı.<br/> Sağlayıcıyı Hyper-V Vm'leri için çoğaltmayı düzenler.
-**Kurtarma Hizmetleri Aracısı** | Microsoft Azure kurtarma Hizmetleri Aracısı, veri çoğaltma işlemini gerçekleştirir. Azure'a Hyper-V sanal makinelerinden veri sağlayıcısı ile çalışır.<br/> Çoğaltılan veriler, Azure Aboneliğinize bir depolama hesabına yüklenir. Sunucu geçişinin çoğaltılan veriler işlemler aracı ve Abonelikteki çoğaltma diskleri geçerli olur. Çoğaltma diskleri geçiş yaptığınızda Azure Vm'leri oluşturmak için kullanılır.
+**Çoğaltma sağlayıcısı** | Microsoft Azure Site Recovery sağlayıcı, Hyper-V konaklarına yüklenir ve Azure geçiş sunucusu geçişine kaydedilir.<br/> Sağlayıcı, Hyper-V VM 'lerinin çoğaltmasını düzenler.
+**Kurtarma Hizmetleri Aracısı** | Microsoft Azure kurtarma hizmeti Aracısı veri çoğaltmasını işler. Hyper-V VM 'lerinden Azure 'a veri çoğaltmak için sağlayıcı ile birlikte kullanılır.<br/> Çoğaltılan veriler Azure aboneliğinizdeki bir depolama hesabına yüklenir. Sunucu geçiş aracı, çoğaltılan verileri işler ve aboneliğin çoğaltma disklerine uygular. Çoğaltma diskleri, geçiş yaparken Azure VM 'Leri oluşturmak için kullanılır.
 
-- Bileşenler tarafından tek bir kurulum dosyası, Azure geçişi Server Geçiş Portalı'nda karşıdan yüklenir.
-- Gereç ve sağlayıcı Azure geçişi sunucusu geçişi ile iletişim kurmak için giden HTTPS bağlantı noktası 443 bağlantıları kullanın.
-- Sağlayıcı ve aracı arasındaki iletişimler şifrelenir ve güvenli alınır.
+- Bileşenler tek bir kurulum dosyası tarafından yüklenir, bu, portalda Azure geçiş sunucusu geçişi ' nden indirilir.
+- Sağlayıcı ve gereç, Azure geçişi sunucu geçişi ile iletişim kurmak için giden HTTPS bağlantı noktası 443 bağlantılarını kullanır.
+- Sağlayıcıdan ve aracıdaki iletişimler güvenlidir ve şifrelenir.
 
 
 ## <a name="replication-process"></a>Çoğaltma işlemi
 
-1. Bir Hyper-V sanal makine için çoğaltmayı etkinleştirdiğinizde, ilk çoğaltma başlar.
-2. Bir Hyper-V VM anlık görüntüsü alınır.
-3. Tümünü Azure'a kopyalanana kadar sanal makine VHD'leri çoğaltılan tek tek, ' dir. İlk çoğaltma süresi VM boyutu ve ağ bant genişliğine bağlıdır.
-4. İlk çoğaltma sırasında meydana gelen disk değişiklikleri, Hyper-V çoğaltma kullanarak ve günlük dosyalarında (hrl dosyaları) depolanan izlenir.
-    - Günlük dosyaları disklerle aynı klasörde olduğundan.
-    - Her diskin ikincil depolamaya gönderilir bir ilişkili hrl dosyası vardır.
+1. Hyper-V VM için çoğaltmayı etkinleştirdiğinizde, ilk çoğaltma başlar.
+2. Hyper-V VM anlık görüntüsü alınır.
+3. VM 'deki VHD 'ler, hepsi Azure 'a kopyalanana kadar tek tek çoğaltılır. İlk çoğaltma süresi VM boyutuna ve ağ bant genişliğine bağlıdır.
+4. İlk çoğaltma sırasında oluşan disk değişiklikleri, Hyper-V çoğaltma kullanılarak izlenir ve günlük dosyalarında (HRL dosyaları) depolanır.
+    - Günlük dosyaları diskleriyle aynı klasörslardır.
+    - Her disk, ikincil depolamaya gönderilen ilişkili bir HRL dosyasına sahiptir.
     - İlk çoğaltma sırasında anlık görüntü ve günlük dosyaları disk kaynaklarını kullanır.
-4. İlk çoğaltma tamamlandığında VM anlık görüntüsü silinir ve değişiklik çoğaltması başlar.
-5. Artımlı disk değişiklikleri hrl dosyalarında izlenir. Çoğaltma günlükleri için bir Azure depolama hesabı kurtarma Hizmetleri aracısı tarafından düzenli aralıklarla geri yüklenir.
+4. İlk çoğaltma tamamlandıktan sonra VM anlık görüntüsü silinir ve Delta çoğaltma başlar.
+5. Artımlı disk değişiklikleri, HRL dosyalarında izlenir. Çoğaltma günlükleri, kurtarma hizmetleri Aracısı tarafından düzenli aralıklarla bir Azure depolama hesabına yüklenir.
 
 
 ## <a name="performance-and-scaling"></a>Performans ve ölçeklenebilirlik
 
-Hyper-v çoğaltma performansı Azure'da VM boyutu, VM veri değişim hızı (erime), günlük dosya depolama, çoğaltma verileri için karşıya yükleme bant genişliğinin ve hedef depolama için Hyper-V konağında kullanılabilir alanı içeren faktörler tarafından etkilenir.
+Hyper-V ' d e yönelik çoğaltma performansı, VM boyutu, sanal makinelerin veri değişim oranı (dalgalanması), depolama dosya depolaması için Hyper-V konağındaki kullanılabilir alan ve Azure 'da hedef depolama alanları dahil olmak üzere faktörlerden etkilenir.
 
-- Aynı anda birden çok makine çoğaltma yapıyorsanız kullanmak [Azure Site Recovery dağıtım Planlayıcısı](../site-recovery/hyper-v-deployment-planner-overview.md) çoğaltma iyileştirilmesine yardımcı olmak üzere Hyper-v,.
-- Hyper-V çoğaltma planlama ve çoğaltma kapasite uygun olarak, Azure depolama hesapları üzerinden dağıtın.
+- Aynı anda birden çok makineyi çoğaltdıysanız, çoğaltmayı iyileştirmenize yardımcı olmak için Hyper-V [Azure Site Recovery dağıtım planlayıcısı](../site-recovery/hyper-v-deployment-planner-overview.md) kullanın.
+- Hyper-V çoğaltmasını planlayın ve Azure depolama hesapları üzerinden çoğaltmayı kapasiteye göre dağıtın.
 
-### <a name="control-upload-throughput"></a>Denetim karşıya yükleme verimi
+### <a name="control-upload-throughput"></a>Yükleme aktarım hızını denetleme
 
-Her Hyper-V konağında veri yüklemek için kullanılan bant genişliği miktarını sınırlayabilirsiniz. Dikkat et. Çoğaltma ve gecikme geçiş olumsuz etkiler çok düşük değerleri ayarlarsanız.
+Her Hyper-V konağında Azure 'a veri yüklemek için kullanılan bant genişliği miktarını sınırlayabilirsiniz. Dikkat et. Değerleri çok düşük olarak ayarlarsanız çoğaltmayı olumsuz yönde etkiler ve geçişi erteleyebilirsiniz.
 
 
-1. Hyper-V konak veya küme düğümünde oturum açın.
-2. Çalıştırma **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc**, Windows Azure Backup MMC ek bileşenini açın.
-3. Ek bileşeninde, seçin **özelliklerini değiştirme**.
-4. İçinde **azaltma**seçin **yedekleme işlemleri için internet bant genişliği kullanımını azaltmayı etkinleştir**. Ve çalışma dışı saatler için sınırları ayarlayın. Geçerli aralıklar 512 Kbps ila 1,023 MB/sn olan.
+1. Hyper-V konağında veya küme düğümünde oturum açın.
+2. Windows Azure Backup MMC ek bileşenini açmak için **C:\Program Files\Microsoft Azure Kurtarma Hizmetleri ' ni T\bin\wabadmin.msc**' yi çalıştırın.
+3. Ek bileşende **Özellikleri Değiştir**' i seçin.
+4. **Daraltma**bölümünde, **yedekleme işlemleri için internet bant genişliği kullanımını azaltmayı etkinleştir**' i seçin. Çalışma ve çalışılmayan saatlerin sınırlarını ayarlayın. Geçerli aralıklar 512 kbps ile 1.023 Mbps arasındadır.
 I
 
-### <a name="influence-upload-efficiency"></a>Karşıya yükleme verimliliği etkisi
+### <a name="influence-upload-efficiency"></a>Karşıya yükleme verimliliğini etkiler
 
-Çoğaltma için yedek bant genişliğine sahip ve karşıya artırmak istiyorsanız, karşıya yükleme görevi gibi ayrılan iş parçacığı sayısını artırabilirsiniz:
+Çoğaltma için yedek bant genişliğiniz varsa ve karşıya yüklemeleri artırmak istiyorsanız karşıya yükleme görevi için ayrılan iş parçacığı sayısını aşağıdaki gibi artırabilirsiniz:
 
-1. Kayıt defteri Regedit ile açın.
-2. HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM anahtarına gidin
-3. Her bir çoğaltma VM için karşıya veri yükleme için kullanılan iş parçacıklarının sayısı değerini artırın. Varsayılan değer 4'tür ve maksimum değer 32'dir. 
+1. Regedit ile kayıt defterini açın.
+2. Anahtar HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM 'e gidin
+3. Her bir çoğaltma sanal makinesi için veri yüklemesi için kullanılan iş parçacığı sayısı değerini artırın. Varsayılan değer 4 ' dir ve en büyük değer 32 ' dir. 
 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Denemenin [Hyper-V geçişi](tutorial-migrate-hyper-v.md) Azure geçişi sunucusu geçişi kullanan.
+Azure geçişi sunucu geçişini kullanarak [Hyper-V geçişini](tutorial-migrate-hyper-v.md) deneyin.

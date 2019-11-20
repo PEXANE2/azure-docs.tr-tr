@@ -1,6 +1,6 @@
 ---
-title: Özel IP adresleri Vm'leri - Azure portalı için yapılandırma | Microsoft Docs
-description: Azure portalını kullanarak sanal makineleri için özel IP adresleri yapılandırmayı öğrenin.
+title: VM 'Ler için özel IP adresleri Yapılandırma-Azure portal
+description: Azure portal kullanarak sanal makineler için özel IP adreslerini yapılandırmayı öğrenin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,101 +15,101 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: kumud
-ms.openlocfilehash: 31aeab946b9ad740e2f56eb1ecaafd3e76cc42b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd734f171f4e10c4227fbab77485a788f02848b3
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723797"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196628"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Azure portalını kullanarak bir sanal makine için özel IP adreslerini yapılandırın
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Azure portal kullanarak bir sanal makine için özel IP adresleri yapılandırma
 
 > [!div class="op_single_selector"]
-> * [Azure portal](virtual-networks-static-private-ip-arm-pportal.md)
+> * [Azure Portal](virtual-networks-static-private-ip-arm-pportal.md)
 > * [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 > * [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
-> * [Azure portalını (Klasik)](virtual-networks-static-private-ip-classic-pportal.md)
+> * [Azure portal (klasik)](virtual-networks-static-private-ip-classic-pportal.md)
 > * [PowerShell (Klasik)](virtual-networks-static-private-ip-classic-ps.md)
-> * [Azure CLI (Klasik)](virtual-networks-static-private-ip-classic-cli.md)
+> * [Azure CLı (klasik)](virtual-networks-static-private-ip-classic-cli.md)
 
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Bu makalede Resource Manager dağıtım modeli anlatılmaktadır. Ayrıca [Klasik dağıtım modelinde statik özel IP adresi yönetme](virtual-networks-static-private-ip-classic-pportal.md).
+Bu makalede Resource Manager dağıtım modeli anlatılmaktadır. Ayrıca, [klasik dağıtım modelindeki statik özel IP adresini de yönetebilirsiniz](virtual-networks-static-private-ip-classic-pportal.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Aşağıdaki örnek adımlarda, önceden oluşturulmuş basit bir ortam bekler. Açıklanan test ortamı adımları bu belgede gösterildiği çalıştırmak istiyorsanız, öncelikle yapı [sanal ağ oluşturma](quick-create-portal.md).
+Aşağıdaki örnek adımlarda önceden oluşturulmuş basit bir ortam beklenir. Adımları bu belgede görüntülendikleri gibi çalıştırmak istiyorsanız, önce [sanal ağ oluşturma](quick-create-portal.md)bölümünde açıklanan test ortamını oluşturun.
 
-## <a name="how-to-create-a-vm-for-testing-static-private-ip-addresses"></a>Statik özel IP adresleri test etmek için bir VM oluşturma
-Statik özel IP adresi, Azure portalını kullanarak Resource Manager dağıtım modunda bir VM oluşturma sırasında ayarlanamıyor. İlk VM oluşturma ardından kendi özel IP statik olarak ayarlayın.
+## <a name="how-to-create-a-vm-for-testing-static-private-ip-addresses"></a>Statik özel IP adreslerini test etmek için VM oluşturma
+Azure portal kullanarak Kaynak Yöneticisi dağıtım modunda bir VM oluşturma sırasında statik bir özel IP adresi ayarlayamazsınız. Önce VM 'yi oluşturmanız ve ardından özel IP 'sini statik olacak şekilde ayarlamanız gerekir.
 
-Adlı bir VM oluşturmak için *DNS01* içinde *ön uç* adlı bir sanal ağ alt ağı *TestVNet*, şu adımları izleyin:
+*Testvnet*adlı VNET 'In *ön uç* alt AĞıNDA *DNS01* adlı bir VM oluşturmak için aşağıdaki adımları izleyin:
 
 1. Tarayıcıdan https://portal.azure.com adresine gidin ve gerekiyorsa Azure hesabınızla oturum açın.
-2. Tıklayın **kaynak Oluştur** > **işlem** > **Windows Server 2012 R2 Datacenter**, dikkat **bir dağıtım seçin Model** listesinde zaten gösterir **Resource Manager**ve ardından **Oluştur**, aşağıdaki resimde görüldüğü gibi.
+2. **Windows Server 2012 R2 Datacenter** > **Işlem** > **kaynak oluştur** ' a tıklayın, **bir dağıtım modeli Seç** listesinin zaten **Kaynak Yöneticisi**gösterdiğini ve ardından **Oluştur**' a tıklayarak aşağıdaki şekilde görüldüğü gibi.
    
-    ![Azure portalını kullanarak VM oluşturma](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
-3. İçinde **Temelleri** bölmesinde, VM oluşturmak için adını girin (*DNS01* senaryoda), yerel yönetici hesabı ve parola, aşağıdaki resimde görüldüğü gibi.
+    ![Azure portal VM oluşturma](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
+3. **Temel bilgiler** bölmesinde, aşağıdaki şekilde görüldüğü gibi, oluşturulacak sanal makinenin adını (senaryoda*DNS01* ), yerel yönetici hesabını ve parolayı girin.
    
-    ![Temel bilgileri bölmesi](./media/virtual-networks-static-ip-arm-pportal/figure02.png)
-4. Emin olun **konumu** seçilmişse *Orta ABD*, ardından **var olanı Seç** altında **kaynak grubu**, ardından**Kaynak grubu** yeniden ardından *TestRG*ve ardından **Tamam**.
+    ![Temel bilgiler bölmesi](./media/virtual-networks-static-ip-arm-pportal/figure02.png)
+4. Seçilen **konumun** *Orta ABD*olduğundan emin olun, ardından **kaynak grubu**altında **Varolanı Seç** ' e tıklayın, ardından **kaynak** grubu ' na ve ardından *testrg*' ye tıklayın ve ardından **Tamam**' a tıklayın.
    
-    ![Temel bilgileri bölmesi](./media/virtual-networks-static-ip-arm-pportal/figure03.png)
-5. İçinde **bir boyut seçin** bölmesinde **standart A1**ve ardından **seçin**.
+    ![Temel bilgiler bölmesi](./media/virtual-networks-static-ip-arm-pportal/figure03.png)
+5. **Boyut seçin** bölmesinde, **a1 standart**' ı seçin ve ardından **Seç**' e tıklayın.
    
-    ![Bir boyut bölmesinde seçin](./media/virtual-networks-static-ip-arm-pportal/figure04.png)    
-6. İçinde **ayarları** bölmesinde, özelliklerini aşağıdaki değerleri ayarlayın ve ardından mutlaka **Tamam**.
+    ![Boyut bölmesi seçin](./media/virtual-networks-static-ip-arm-pportal/figure04.png)    
+6. **Ayarlar** bölmesinde, özelliklerin aşağıdaki değerlerle ayarlandığından emin olun ve ardından **Tamam**' a tıklayın.
    
-    -**Depolama hesabı**: *vnetstorage*
+    -**depolama hesabı**: *vnetstorage*
    
-   * **Ağ**: *TestVNet*
-   * **Alt ağ**: *Ön uç*
+   * **Ağ**: *testvnet*
+   * **Alt ağ**: *ön uç*
      
-     ![Bir boyut bölmesinde seçin](./media/virtual-networks-static-ip-arm-pportal/figure05.png)     
-7. İçinde **özeti** bölmesinde tıklayın **Tamam**. Panonuzda görüntülenen aşağıdaki kutucuğa dikkat edin.
+     ![Boyut bölmesi seçin](./media/virtual-networks-static-ip-arm-pportal/figure05.png)     
+7. **Özet** bölmesinde, **Tamam**' a tıklayın. Panonuzda aşağıdaki kutucuğun görüntülendiğini fark edin.
    
-    ![Azure portalını kullanarak VM oluşturma](./media/virtual-networks-static-ip-arm-pportal/figure06.png)
+    ![Azure portal VM oluşturma](./media/virtual-networks-static-ip-arm-pportal/figure06.png)
 
-Önerilen, statik olarak bir sanal makinenin işletim sistemi içinde Azure sanal makinesine atanmış özel IP sürece atamayın, gerekli olduğunda gibi [birden çok IP adresleri atama bir Windows VM'ye](virtual-network-multiple-ip-addresses-portal.md). İşletim sistemi içinde özel IP adresini el ile ayarlamanız durumunda Azure atanmış özel IP adresiyle aynı adresi olduğundan emin olun [ağ arabirimi](virtual-network-network-interface-addresses.md#change-ip-address-settings), ya da sanal makineye bağlantı kaybedebilir. Daha fazla bilgi edinin [özel IP adresi](virtual-network-network-interface-addresses.md#private) ayarları. Hiçbir zaman el ile bir Azure sanal makinesi sanal makinenin işletim sistemi içinde atanan genel IP adresi atamanız gerekir.
+[Bir WINDOWS VM 'ye birden çok IP adresi atarken](virtual-network-multiple-ip-addresses-portal.md), GEREKMEDIKÇE, sanal makinenin işletim sistemi içinde Azure sanal makinesine atanan özel IP 'yi statik olarak atamanız önerilir. İşletim sistemi içinde özel IP adresini el ile ayarlarsanız, Azure [ağ arabirimine](virtual-network-network-interface-addresses.md#change-ip-address-settings)ATANMıŞ özel IP adresi ile aynı adres olduğundan emin olun veya sanal makineyle olan bağlantıyı kaybedebilirsiniz. [Özel IP adresi](virtual-network-network-interface-addresses.md#private) ayarları hakkında daha fazla bilgi edinin. Hiçbir zaman el ile bir Azure sanal makinesi sanal makinenin işletim sistemi içinde atanan genel IP adresi atamanız gerekir.
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Bir sanal makine için statik özel IP adresi bilgilerini alma
-Yukarıdaki adımları ile oluşturulan sanal makine için statik özel IP adresi bilgilerini görüntülemek için aşağıdaki adımları uygulayın.
+Yukarıdaki adımlarla oluşturulan VM 'nin statik özel IP adresi bilgilerini görüntülemek için aşağıdaki adımları yürütün.
 
-1. Azure portalından tıklayın **TÜMÜNE Gözat** > **sanal makineler** > **DNS01** > **tümayarlar**  >  **Ağ arabirimleri** ve listelenen yalnızca ağ arabiriminden'ye tıklayın.
+1. Azure portal, tüm > **sanal makinelere** **gözatıp** **' > ** **Tüm ayarlar** > **ağ arabirimlerini** > ve ardından listelenen tek ağ arabirimine tıklayın.
    
-    ![VM kutucuğu dağıtma](./media/virtual-networks-static-ip-arm-pportal/figure07.png)
-2. İçinde **ağ arabirimi** bölmesinde tıklayın **tüm ayarlar** > **IP adresleri** ve fark **atama** ve  **IP adresi** değerleri.
+    ![VM kutucuğu dağıtılıyor](./media/virtual-networks-static-ip-arm-pportal/figure07.png)
+2. **Ağ arabirimi** bölmesinde, **Tüm ayarlar** > **IP adresleri** ' ne tıklayın ve **atama** ve **IP adresi** değerlerine dikkat edin.
    
-    ![VM kutucuğu dağıtma](./media/virtual-networks-static-ip-arm-pportal/figure08.png)
+    ![VM kutucuğu dağıtılıyor](./media/virtual-networks-static-ip-arm-pportal/figure08.png)
 
-## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Mevcut bir VM'ye statik özel IP adresi ekleme
-Yukarıdaki adımları kullanarak oluşturulan VM'ye statik özel IP adresi eklemek için aşağıdaki adımları izleyin:
+## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Var olan bir VM 'ye statik bir özel IP adresi ekleme
+Yukarıdaki adımlar kullanılarak oluşturulan VM 'ye statik bir özel IP adresi eklemek için aşağıdaki adımları izleyin:
 
-1. Gelen **IP adresleri** , yukarıda gösterilen bölmesi **statik** altında **atama**.
-2. Tür *192.168.1.101* için **IP adresi**ve ardından **Kaydet**.
+1. Yukarıda gösterilen **IP adresleri** bölmesinden **atama**altında **statik** ' e tıklayın.
+2. **IP adresi**için *192.168.1.101* yazın ve ardından **Kaydet**' e tıklayın.
    
-    ![Azure portalını kullanarak VM oluşturma](./media/virtual-networks-static-ip-arm-pportal/figure09.png)
+    ![Azure portal VM oluşturma](./media/virtual-networks-static-ip-arm-pportal/figure09.png)
 
 > [!NOTE]
-> Tıkladıktan sonra eğer **Kaydet**, ataması hala ayarlanır fark **dinamik**, girdiğiniz IP adresi zaten kullanılıyor anlamına gelir. Farklı bir IP adresi deneyin.
+> **Kaydet**'e tıkladıktan sonra, atamanın hala **dinamik**olarak ayarlandığını fark edersiniz. Bu, yazdığınız IP adresinin zaten kullanımda olduğunu gösterir. Farklı bir IP adresi deneyin.
 > 
 > 
 
-Önerilen, statik olarak bir sanal makinenin işletim sistemi içinde Azure sanal makinesine atanmış özel IP sürece atamayın, gerekli olduğunda gibi [birden çok IP adresleri atama bir Windows VM'ye](virtual-network-multiple-ip-addresses-portal.md). İşletim sistemi içinde özel IP adresini el ile ayarlamanız durumunda Azure atanmış özel IP adresiyle aynı adresi olduğundan emin olun [ağ arabirimi](virtual-network-network-interface-addresses.md#change-ip-address-settings), ya da sanal makineye bağlantı kaybedebilir. Daha fazla bilgi edinin [özel IP adresi](virtual-network-network-interface-addresses.md#private) ayarları. Hiçbir zaman el ile bir Azure sanal makinesi sanal makinenin işletim sistemi içinde atanan genel IP adresi atamanız gerekir.
+[Bir WINDOWS VM 'ye birden çok IP adresi atarken](virtual-network-multiple-ip-addresses-portal.md), GEREKMEDIKÇE, sanal makinenin işletim sistemi içinde Azure sanal makinesine atanan özel IP 'yi statik olarak atamanız önerilir. İşletim sistemi içinde özel IP adresini el ile ayarlarsanız, Azure [ağ arabirimine](virtual-network-network-interface-addresses.md#change-ip-address-settings)ATANMıŞ özel IP adresi ile aynı adres olduğundan emin olun veya sanal makineyle olan bağlantıyı kaybedebilirsiniz. [Özel IP adresi](virtual-network-network-interface-addresses.md#private) ayarları hakkında daha fazla bilgi edinin. Hiçbir zaman el ile bir Azure sanal makinesi sanal makinenin işletim sistemi içinde atanan genel IP adresi atamanız gerekir.
 
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>VM'den özel statik IP adresi kaldırma
-Yukarıda oluşturulan sanal makine statik özel IP adresini kaldırmak için aşağıdaki adımı tamamlayın:
+Yukarıda oluşturulan VM 'den statik özel IP adresini kaldırmak için aşağıdaki adımları izleyin:
 
-Gelen **IP adresleri** , yukarıda gösterilen bölmesi **dinamik** altında **atama**ve ardından **Kaydet**.
+Yukarıda gösterilen **IP adresleri** bölmesinden **atama**altında **dinamik** ' e ve ardından **Kaydet**' e tıklayın.
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>İşletim sistemi içinde IP adreslerini ayarlayın
 
-Önerilen, statik olarak bir sanal makinenin işletim sistemi içinde Azure sanal makinesine atanmış özel IP sürece atamayın, gerekli olduğunda gibi [birden çok IP adresleri atama bir Windows VM'ye](virtual-network-multiple-ip-addresses-portal.md). İşletim sistemi içinde özel IP adresini el ile ayarlamanız durumunda Azure atanmış özel IP adresiyle aynı adresi olduğundan emin olun [ağ arabirimi](virtual-network-network-interface-addresses.md#change-ip-address-settings), ya da sanal makineye bağlantı kaybedebilir. Daha fazla bilgi edinin [özel IP adresi](virtual-network-network-interface-addresses.md#private) ayarları. Hiçbir zaman el ile bir Azure sanal makinesi sanal makinenin işletim sistemi içinde atanan genel IP adresi atamanız gerekir.
+[Bir WINDOWS VM 'ye birden çok IP adresi atarken](virtual-network-multiple-ip-addresses-portal.md), GEREKMEDIKÇE, sanal makinenin işletim sistemi içinde Azure sanal makinesine atanan özel IP 'yi statik olarak atamanız önerilir. İşletim sistemi içinde özel IP adresini el ile ayarlarsanız, Azure [ağ arabirimine](virtual-network-network-interface-addresses.md#change-ip-address-settings)ATANMıŞ özel IP adresi ile aynı adres olduğundan emin olun veya sanal makineyle olan bağlantıyı kaybedebilirsiniz. [Özel IP adresi](virtual-network-network-interface-addresses.md#private) ayarları hakkında daha fazla bilgi edinin. Hiçbir zaman el ile bir Azure sanal makinesi sanal makinenin işletim sistemi içinde atanan genel IP adresi atamanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yönetme hakkında daha fazla bilgi [IP adresi ayarları](virtual-network-network-interface-addresses.md).
+[IP adresi ayarlarını](virtual-network-network-interface-addresses.md)yönetme hakkında bilgi edinin.
 

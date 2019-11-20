@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: bd808c0c71e02483b4c4b06e612720c1802869a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577969"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195932"
 ---
 # <a name="about-voice-assistants"></a>Sesli yardımcılar hakkında
 
@@ -39,7 +39,8 @@ Bir ses Yardımcısı oluşturmaya yönelik ilk adım, ne yapacağına karar ver
 Yardımcınızın hangi özellikleri işlemesini istediğinizi bilmiyorsanız en iyi varsayılan seçenek olarak [doğrudan ses konuşmanızı](direct-line-speech.md) öneririz. Ortak desenleri oluşturmak ve mevcut bilgi kaynaklarınızı kullanmak için, [sanal yardımcı çözümü ve kurumsal şablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) ve [soru-cevap oluşturma hizmeti](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) gibi zengin araç ve yazma yardımlarıyla tümleştirme sunar.
 
 [Özel komutlar (Önizleme)](custom-commands.md) , doğal dil komut ve denetim senaryoları için özel olarak tasarlanmış ve kolay bir yazma ve barındırma deneyimi sağlar.
-   ![Yardımcı çözümlerin karşılaştırması](media/voice-assistants/assistant-solution-comparison.png "Compyardımcı çözümlerin Arison ")
+
+   ![Yardımcı çözümlerin karşılaştırması](media/voice-assistants/assistant-solution-comparison.png "Yardımcı çözümlerin karşılaştırması")
 
 ## <a name="core-features"></a>Temel Özellikler
 
@@ -57,9 +58,9 @@ Kodu, 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan hız
 
 | Hızlı Başlangıç | Platform | API başvurusu |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Ata](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Ata](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Göz atma](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Göz atma](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Göz atma](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Örnek kod
 

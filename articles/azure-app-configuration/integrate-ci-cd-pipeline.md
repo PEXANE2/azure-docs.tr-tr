@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e2f682a2782eb1a61dd44e02d665175e31c441f8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357022"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185115"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD işlem hattıyla tümleştirme
 
@@ -56,7 +56,7 @@ Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](https://docs.micr
 
     Uygulama yapılandırma deponuzda ilişkili *ConnectionString* öğesini bir ortam değişkeni olarak ekleyin.
 
-2. *Program.cs*'i açın ve yöntemi çağırarak `CreateWebHostBuilder` `config.AddJsonFile()` , bu JSON dosyasını kullanmak için yöntemi güncelleştirin.
+2. *Program.cs*'i açın ve `CreateWebHostBuilder` yöntemi, `config.AddJsonFile()` metodunu çağırarak, DıŞARıYA aktarılmış json dosyasını kullanacak şekilde güncelleştirin.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -94,7 +94,7 @@ Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](https://docs.micr
 
         dotnet run
 
-4. Bir tarayıcı penceresi açın ve yerel olarak `http://localhost:5000`barındırılan Web uygulaması için varsayılan URL olan adresine gidin.
+4. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `http://localhost:5000`' a gidin.
 
     ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/aspnet-core-app-launch-local.png)
 

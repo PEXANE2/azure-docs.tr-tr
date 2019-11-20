@@ -8,18 +8,20 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d5432c794c26e350b23fe47aa1574422143ca4b2
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: d1ef8852916e598373c104fb98a1c09ab656fbaf
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521962"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196216"
 ---
 # <a name="using-custom-security-policies-preview"></a>Özel güvenlik ilkeleri kullanma (Önizleme)
 
 Azure Güvenlik Merkezi, sistem ve ortamınızın güvenliğini sağlamaya yardımcı olmak için güvenlik önerileri oluşturur. Bu öneriler, tüm müşterilere sağlanan genel, varsayılan güvenlik ilkesine dahil olan sektör en iyi uygulamalarına dayalıdır. Ayrıca, güvenlik merkezi 'nin sektör ve mevzuat standartları hakkında bilgi edinmeleri de gelebilir.
 
-Bu önizleme özelliği ile kendi *özel* girişimlerinizi ekleyebilirsiniz. Daha sonra, makineleriniz oluşturduğunuz ilkeleri izleyememesi durumunda öneriler alacaksınız.
+Bu önizleme özelliği ile kendi *özel* girişimlerinizi ekleyebilirsiniz. Daha sonra ortamınız oluşturduğunuz ilkeleri izmazsa öneriler alacaksınız.
+
+[Burada](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) açıklandığı gibi, Azure ilke belgelerinde, özel girişim'niz için bir konum belirttiğinizde bir yönetim grubu veya abonelik olması gerekir. 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Aboneliğinize özel bir girişim eklemek için 
 
@@ -48,14 +50,14 @@ Bu önizleme özelliği ile kendi *özel* girişimlerinizi ekleyebilirsiniz. Dah
     1. Tanımın konumunu ve adını girin.
     1. Dahil edilecek ilkeleri seçin ve **Ekle**' ye tıklayın.
     1. İstediğiniz parametreleri girin.
-    1. **Kaydet** düğmesine tıklayın.
+    1. **Kaydet**’e tıklayın.
     1. Özel girişimler Ekle sayfasında Yenile ' ye tıklayın ve yeni girişim kullanılabilir olarak gösterilir.
     1. **Ekle** ' ye tıklayın ve aboneliğinize atayın.
 
     > [!NOTE]
     > Yeni girişimler oluşturmak için abonelik sahibi kimlik bilgileri gerekir. Azure rolleri hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde izinler](security-center-permissions.md).
 
-1. İlkenize yönelik sonuç önerilerini görmek için kenar çubuğundan **öneriler** ' e tıklayarak öneriler sayfasını açın. Öneriler "özel" bir etiketle birlikte görüntülenir ve 30 dakikaya kadar kullanılabilir.
+1. İlkenize yönelik sonuç önerilerini görmek için kenar çubuğundan **öneriler** ' e tıklayarak öneriler sayfasını açın. Öneriler "özel" bir etiketle görüntülenir ve yaklaşık bir saat içinde kullanılabilir.
 
     [![özel öneriler](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 

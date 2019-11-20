@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell betiği örneği - Azure Güvenlik Duvarı test ortamı oluşturma
+title: Azure Güvenlik Duvarı test ortamı oluşturma
 description: Bu betik örneği, bir güvenlik duvarı ve bir test ağ ortamı oluşturur. Ağın, üç alt ağı olan bir VNet 'i vardır.
 services: virtual-network
 author: vhorne
@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 79fce47c02decffa8132ed4b093992d2db2c937f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 6cb0eafce354ba54dd161fee52efe46677ad2765
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166927"
+ms.locfileid: "74195878"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Azure Güvenlik Duvarı test ortamı oluşturma
 

@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 61cb6003549530f381b9cbbed74c1cb62c91431c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512905"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184263"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet Analyzer hakkında SSS (Önizleme)
 
@@ -98,6 +98,10 @@ Internet Çözümleyicisi 'nde oluşturduğunuz her test, uç nokta A ve uç nok
 ## <a name="how-is-internet-analyzer-different-from-other-monitoring-services-provided-by-azure"></a>Internet Çözümleyicisi, Azure tarafından sunulan diğer izleme hizmetlerinden farklı midir?
 
 Internet Çözümleyicisi, son kullanıcılarınızın performansını anlamanıza yardımcı olur ve performanslarını geliştirmek için kararlar almanıza yardımcı olur. Diğer Azure izleme araçları, Azure hizmetlerinize yönelik Öngörüler sağlarken, Internet Çözümleyicisi kullanıcılarınız için uçtan uca Internet performansını ölçmeye odaklanır.
+
+## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>Ölçüm verileri Internet çözümleyici tarafından nasıl işlenir?
+
+Azure [güçlü güvenlik işlemlerine sahiptir ve çok çeşitli uyumluluk standartlarını karşılar](https://azure.microsoft.com/support/trust-center/). Yalnızca siz ve belirlediğiniz takımınızın verilerinize erişimi vardır. Microsoft personeli, yalnızca bilginiz ile sınırlı belirli koşullar altında buna sınırlı erişim sağlayabilir. Aktarım sırasında ve bekleyen sırada şifrelenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

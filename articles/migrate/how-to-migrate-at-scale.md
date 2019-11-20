@@ -1,70 +1,72 @@
 ---
-title: Çok sayıda Vm'lerini azure'a geçişini otomatikleştirmek | Microsoft Docs
-description: Çok sayıda Azure Site Recovery kullanarak sanal makineleri geçirmek için komut dosyaları kullanmayı açıklar
+title: Azure geçişi 'nde geçiş makinesi geçişini otomatikleştirme
+description: Azure geçişi 'nde çok sayıda makinenin geçirilmesi için betiklerin nasıl kullanılacağını açıklar
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: b45a158569b3be8250728293c1bf73c1a860a0f6
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67808015"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196356"
 ---
-# <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Azure Site Recovery kullanarak bir VM ölçek geçiş
+# <a name="scale-migration-of-vms"></a>VM 'lerin geçişini ölçeklendirin 
 
-Bu makalede Azure Site RECOVERY'yi kullanarak VM'lerin çok sayıda geçirmek için betikleri kullanma anlamanıza yardımcı olur. Bu komut dosyalarını, yükleme için kullanılabilir [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) github deposu. Betikler, VMware, AWS, GCP Vm'leri ve fiziksel sunucuları azure'da yönetilen disklere geçirmek için kullanılabilir. Bu betikler, fiziksel sunucuları olarak sanal makineleri geçiriyorsanız Hyper-V sanal makineleri geçirmek için de kullanabilirsiniz. Azure Site Recovery PowerShell yararlanan komut dosyalarını belgelenmiştir [burada](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
+Bu makale, çok sayıda sanal makineyi (VM) geçirmek için betikleri nasıl kullanacağınızı anlamanıza yardımcı olur. Geçişi ölçeklendirmek için [Azure Site Recovery](../site-recovery/site-recovery-overview.md)kullanırsınız. 
 
-## <a name="current-limitations"></a>Geçerli sınırlamalar:
-- ' % S'hedef sanal makine, yalnızca birincil NIC için statik IP adresi belirtme desteği
-- Azure hibrit avantajı ilgili betikleri almayan girişlerinin portalında çoğaltılan sanal makinenin özelliklerini el ile güncelleştirmeniz gerekir
+Site Recovery betikler, GitHub 'da [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) deposunda indirileceği için kullanılabilir. Betikler, VMware, AWS, GCP VM 'Leri ve fiziksel sunucuları Azure 'da yönetilen disklere geçirmek için kullanılabilir. Bu komut dosyalarını, VM 'Leri fiziksel sunucu olarak geçirirseniz Hyper-V VM 'lerini geçirmek için de kullanabilirsiniz. Azure Site Recovery PowerShell 'den yararlanan betikler [burada](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)belgelenmiştir.
+
+## <a name="current-limitations"></a>Geçerli sınırlamalar
+- Yalnızca hedef VM 'nin birincil NIC 'ı için statik IP adresi belirtme desteği
+- Betikler Azure Hibrit Avantajı ilgili girişleri almaz, portalda çoğaltılan sanal makinenin özelliklerini el ile güncelleştirmeniz gerekir
 
 ## <a name="how-does-it-work"></a>Nasıl çalışır?
 
 ### <a name="prerequisites"></a>Önkoşullar
-Başlamadan önce aşağıdakileri yapmanız gerekir:
-- Site Recovery kasası, Azure aboneliğinizde oluşturduğunuzdan emin olun
-- Yapılandırma sunucusu ve işlem sunucusu kaynak ortamda yüklü olan ve kasa ortamı bulabilir olduğundan emin olun
-- Bir çoğaltma ilkesi oluşturuldu ve yapılandırma sunucusu ile ilişkili emin olun
-- (Bu, şirket içi sanal makineleri çoğaltmak için kullanılacak) yapılandırma sunucusu sanal makine yönetici hesabı eklediğinizden emin olun
-- Azure'da hedef yapıtları oluşturduğunuzdan emin olun
+Başlamadan önce aşağıdaki adımları gerçekleştirmeniz gerekir:
+- Azure aboneliğinizde Site Recovery kasasının oluşturulduğundan emin olun
+- Yapılandırma sunucusu ve Işlem sunucusunun kaynak ortamda yüklü olduğundan ve kasasının ortamı keşfedebildiğinden emin olun
+- Bir çoğaltma Ilkesinin oluşturulduğundan ve yapılandırma sunucusuyla ilişkilendirildiğinden emin olun
+- VM yönetici hesabını yapılandırma sunucusuna (Şirket içi VM 'Leri çoğaltmak için kullanılacak) eklediğinizden emin olun
+- Azure 'daki hedef yapıtların oluşturulduğundan emin olun
     - Hedef kaynak grubu
-    - Hedef depolama hesabı (ve kaynak grubu) - premium yönetilen disklere geçirme planlıyorsanız, bir premium depolama hesabı oluşturma
-    - Önbellek depolama hesabına (ve kaynak grubu) - kasa ile aynı bölgede standart depolama hesabı oluşturma
-    - Hedef yük devretme için sanal ağ (ve kaynak grubu)
+    - Hedef depolama hesabı (ve kaynak grubu)-Premium yönetilen disklere geçirmeyi planlıyorsanız Premium depolama hesabı oluşturun
+    - Önbellek depolama hesabı (ve kaynak grubu)-kasa ile aynı bölgede standart bir depolama hesabı oluşturma
+    - Yük devretme için hedef sanal ağ (ve kaynak grubu)
     - Hedef alt ağ
-    - Hedef yük devretme testi için sanal ağ (ve kaynak grubu)
+    - Yük devretme testi için hedef sanal ağ (ve kaynak grubu)
     - Kullanılabilirlik kümesi (gerekirse)
     - Hedef ağ güvenlik grubu ve kaynak grubu
-- ' % S'hedef sanal makine özellikleri üzerinde karar verdiğiniz emin olun.
+- Hedef VM 'nin özelliklerine karar vermiş olduğunuzdan emin olun
     - Hedef VM adı
-    - Hedef VM boyutu azure'da (Azure geçişi değerlendirmesi'ni kullanarak karar)
-    - Birincil NIC VM'deki özel IP adresi
-- Betiklerin indirme [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) github deposu
+    - Azure 'da hedef VM boyutu (Azure geçişi değerlendirmesi kullanılarak karar verebilir)
+    - VM 'deki birincil NIC 'in özel IP adresi
+- GitHub 'daki [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) deposundan betikleri indirin
 
 ### <a name="csv-input-file"></a>CSV giriş dosyası
-Tamamlanan tüm ön koşullar oluşturduktan sonra geçirmek istediğiniz her bir kaynak makine için verileri içeren bir CSV dosyası oluşturmanız gerekir. ' % S'giriş CSV giriş ayrıntılarını içeren bir üst bilgi satırı ve geçirilmesi gereken her makineye ilişkin ayrıntılı bir satır olması gerekir. Tüm betikler, aynı CSV dosyası üzerinde çalışacak şekilde tasarlanmıştır. Örnek bir CSV şablonu scripts klasörü başvuru amacıyla kullanılabilir.
+Tüm önkoşulların tamamlanmasını tamamladıktan sonra, geçirmek istediğiniz her kaynak makine için verileri içeren bir CSV dosyası oluşturmanız gerekir. Giriş CSV, giriş ayrıntılarına sahip bir başlık satırına ve geçirilmesi gereken her makine için ayrıntıların bulunduğu bir satıra sahip olmalıdır. Tüm betikler aynı CSV dosyasında çalışmak üzere tasarlanmıştır. Başvurunuz için betikler klasöründe örnek bir CSV şablonu bulunur.
 
 ### <a name="script-execution"></a>Betik yürütme
-CSV hazır hale geldikten sonra şirket içi sanal makineleri geçirmek için aşağıdaki adımları yürütebilirsiniz:
+CSV 'ye hazırladıktan sonra şirket içi VM 'lerin geçişini gerçekleştirmek için aşağıdaki adımları gerçekleştirebilirsiniz:
 
-**Adım #** | **Betik adı** | **Açıklama**
+**Indan #** | **Betik adı** | **Açıklama**
 --- | --- | ---
-1\. | asr_startmigration.ps1 | Tüm sanal makineler için çoğaltmayı etkinleştirme csv dosyasında listelenen, betik iş ayrıntılarını CSV çıkışında, her VM için oluşturur.
-2 | asr_replicationstatus.ps1 | Çoğaltma durumunu, betik durumu ile bir csv, her VM için oluşturur.
-3 | asr_updateproperties.ps1 | Çoğaltılan ve korumalı Vm'leri olduktan sonra VM (işlem ve ağ özellikleri) hedef özelliklerini güncelleştirmek için bu betiği kullanın
-4 | asr_propertiescheck.ps1 | Özellikleri uygun şekilde güncelleştirilir olmadığını doğrulayın
-5 | asr_testmigration.ps1 |  Csv dosyasında listelenen sanal makinelerinin yük devretme testi başlatmak için betik iş ayrıntılarını CSV çıkışında, her VM için oluşturur.
-6 | asr_cleanuptestmigration.ps1 | El ile doğrulama sonra başarısız olan Vm'leri test, test yük devretmesi Vm'leri temizlemek için bu betiği kullanın
-7 | asr_migration.ps1 | Csv dosyasında listelenen VM'ler planlanmamış yük devretme gerçekleştirmek, betiği bir CSV çıkışında iş ayrıntılarını ile her VM için oluşturur. Betik bilgisayar şirket içi Vm'leri uygulama tutarlılığı için yük devretmeyi tetiklemeden önce tavsiye edilir betiği çalıştırmadan önce Vm'lerini el ile kapatın.
-8 | asr_completemigration.ps1 | Vm'lerde yürütme işlemini gerçekleştirmek ve Azure Site Recovery varlıklarını silme
-9 | asr_postmigration.ps1 | NIC yük devretmesi için ağ güvenlik grupları atamayı düşünüyorsanız, bunu yapmak için bu betiği kullanabilirsiniz. ' % S'hedef sanal makine olarak herhangi bir NIC bir NSG atar.
+1 | asr_startmigration. ps1 | CSV 'de listelenen tüm VM 'Ler için çoğaltmayı etkinleştirme betiği, her VM için iş ayrıntılarının bulunduğu bir CSV çıkışı oluşturur
+2 | asr_replicationstatus. ps1 | Çoğaltma durumunu kontrol edin, betik her VM için durum ile bir CSV oluşturur
+3 | asr_updateproperties. ps1 | VM 'Ler çoğaltıldıktan/korunduktan sonra, sanal makinenin hedef özelliklerini güncelleştirmek için bu betiği kullanın (Işlem ve ağ özellikleri)
+4 | asr_propertiescheck. ps1 | Özelliklerin uygun şekilde güncelleştirilip güncelleştirilmediğini doğrulama
+5 | asr_testmigration. ps1 |  CSV 'de listelenen VM 'lerin yük devretme testini başlatın, betik her VM için iş ayrıntılarının bulunduğu bir CSV çıkışı oluşturur
+6 | asr_cleanuptestmigration. ps1 | Test yük devretmesi yapılan VM 'Leri el ile doğruladıktan sonra, bu betiği kullanarak test yük devretme VM 'lerini temizleyebilirsiniz
+7 | asr_migration. ps1 | CSV 'de listelenen VM 'Ler için plansız bir yük devretme gerçekleştirme, betik her VM için iş ayrıntıları ile bir CSV çıkışı oluşturur. Betik, yük devretmeyi tetiklemeden önce şirket içi VM 'Leri kapatır, uygulama tutarlılığı için, betiği yürütmeden önce VM 'Leri el ile kapatmanız önerilir.
+8 | asr_completemigration. ps1 | VM 'lerde işleme işlemini gerçekleştirin ve Azure Site Recovery varlıklarını silin
+9 | asr_postmigration. ps1 | Ağ güvenlik gruplarını NIC yük devretme sonrası atamak istiyorsanız, bu betiği kullanarak bunu gerçekleştirebilirsiniz. Hedef VM 'deki herhangi bir NIC 'ye bir NSG atar.
 
-## <a name="how-to-migrate-to-managed-disks"></a>Yönetilen disklere geçirmek nasıl?
-Betik varsayılan olarak, Azure yönetilen diskler için sanal makineleri geçirir. Sağlanan hedef depolama hesabı bir premium depolama hesabı, premium yönetilen diskler geçiş sonrası oluşturulur. Önbellek depolama hesabı, standart bir hesap olarak yine de olabilir. Standart diskler, hedef depolama hesabı bir standart depolama hesabı ise, geçiş sonrasında oluşturulur. 
+## <a name="how-to-migrate-to-managed-disks"></a>Yönetilen disklere nasıl geçiş yapılır?
+Komut dosyası, varsayılan olarak VM 'Leri Azure 'da yönetilen disklere geçirir. Belirtilen hedef depolama hesabı bir Premium depolama hesabı ise, Premium ile yönetilen diskler geçiş sonrası oluşturulur. Önbellek depolama hesabı hala standart bir hesap olabilir. Hedef depolama hesabı standart bir depolama hesabsıdır, Standart diskler geçiş sonrası oluşturulur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) Azure Site Recovery kullanarak azure'a geçirme hakkında sunucuları
+Azure Site Recovery kullanarak sunucuları Azure 'a geçirme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure)

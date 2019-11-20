@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 1b3ee75d1b24cab8211337cf1cdbd053327e16b8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ba309b864056b10fe6540e85ffbc4c013af00455
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823826"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186461"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastik havuzlar birden çok Azure SQL veritabanını yönetmenize ve ölçeklendirmenize yardımcı olur
 
@@ -226,3 +226,4 @@ Daha fazla bilgi için bkz. [Azure Portal SQL veritabanı uyarıları oluşturma
 - Bir video için bkz. [Microsoft sanal akademik My video Kurumu Azure SQL veritabanı elastik özellikleri](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - Elastik havuzları kullanan SaaS uygulamalarının tasarım desenleri hakkında daha fazla bilgi edinmek için bkz. [Azure SQL Veritabanı kullanan Çok Kiracılı SaaS Uygulamaları için Tasarım Desenleri](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 - Elastik havuzlar kullanan bir SaaS öğreticisi için bkz. [Wingtip SaaS uygulamasına giriş](sql-database-wtp-overview.md).
+- Birçok veritabanı ile elastik havuzlardaki kaynak yönetimi hakkında bilgi edinmek için bkz. [yoğun elastik havuzlarda kaynak yönetimi](sql-database-elastic-pool-resource-management.md).

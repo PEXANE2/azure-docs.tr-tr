@@ -1,7 +1,7 @@
 ---
-title: Tasarımcı&#58; sınıflandırma defteri İncelemeleri
+title: 'Tasarımcı: sınıflandırma Book İncelemeleri örneği'
 titleSuffix: Azure Machine Learning
-description: Makine öğrenimi modeli oluşturma İnceleme, farklı kategoriler halinde kitap İncelemeleri.
+description: Azure Machine Learning tasarımcısını kullanarak Vil. 500 veri kümesiyle şirket kategorisini tahmin etmek için çok bir Lass lojistik regresyon Sınıflandırıcısı oluşturun.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,24 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 949ddc847a6011d460f2a3685008d12e64868767
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 43545c2d3bb3afe4e1c458f14c1ba30e41eea721
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647119"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195999"
 ---
-# <a name="sample-7---text-classification-predict-company-category"></a>Örnek 7-metin sınıflandırması: Şirket kategorisini tahmin etme 
+# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak şirket kategorisini tahmin etmek için bir sınıflandırıcı oluşturun.
+
+**Tasarımcı (Önizleme) örnek 7**
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Bu örnek, Azure Machine Learning tasarımcısında metin sınıflandırma işlem hattı oluşturmak için metin analizi modüllerinin nasıl kullanılacağını gösterir (Önizleme).
 
 Metin sınıflandırmasının amacı, bir veya daha fazla önceden tanımlanmış sınıfa veya kategoriye bir metin parçası atamaktır. Metin parçası bir belge, Haberler makalesi, arama sorgusu, e-posta, tweet, destek bileti, müşteri geri bildirimi, Kullanıcı ürün incelemesi vb. olabilir. Metin sınıflandırmasının uygulamaları, gazete makalelerini ve haber kullanımı içeriğini konu başlıkları halinde kategorilere ayırır, Web sayfalarını hiyerarşik kategoriler halinde düzenler, istenmeyen e-posta ve yaklaşım analizini filtreleyerek Kullanıcı amacını arama sorgularından tahmin eder, yönlendirme Bilet destekler ve müşteri geri bildirimini analiz edin. 
 
-Bu işlem hattı, vikül 'den türetilen Vil. SP 500 veri kümesiyle şirket kategorisini tahmin etmek için çok **Lass lojistik regresyon sınıflandırıcısını** ister.  
+Bu işlem hattı, **vikül 'den türetilen VIL. SP 500 veri kümesiyle**şirket kategorisini tahmin etmek için çok **Lass lojistik regresyon sınıflandırıcısını** ister.  
 
 Eğitim makinesi öğrenme modelinin metin verileri ile temel adımları şunlardır:
 

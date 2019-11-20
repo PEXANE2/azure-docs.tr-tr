@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 2952f7f24e92b952daafa682eee9d4605537a37b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839517"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184276"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>CLı kullanarak Internet çözümleyici testi oluşturma (Önizleme)
 
@@ -132,5 +132,6 @@ Internet Çözümleyicisi CLı aşağıdaki kaynak türlerini kullanıma sunar:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Internet ÇÖZÜMLEYICISI SSS](internet-analyzer-faq.md) makalesini okuyun
+* Desteklenen komutların ve kullanım örneklerinin tam listesi için [Internet ÇÖZÜMLEYICISI CLI başvurusuna](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) gözatamazsınız.
+* [Internet ÇÖZÜMLEYICISI SSS](internet-analyzer-faq.md)makalesini okuyun.
 * [Internet Çözümleyicisi istemcisini](internet-analyzer-embed-client.md) katıştırma ve [özel bir uç nokta](internet-analyzer-custom-endpoint.md)oluşturma hakkında daha fazla bilgi edinin. 

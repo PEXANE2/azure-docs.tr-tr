@@ -1,17 +1,17 @@
 ---
-title: Azure 'da aracı tabanlı geçiş mimarisi sunucu geçişini geçirme
+title: Azure geçişi sunucu geçişine aracı tabanlı geçiş
 description: Azure geçişi sunucu geçişi ile aracı tabanlı VMware VM geçişine genel bir bakış sağlar.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: f5ad3aa0fc51f47942750d3745ffef1d6e4a087d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a8477b4c10ccbc76f36eed4d64ac12e8bb648a28
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232589"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186096"
 ---
 # <a name="agent-based-migration-architecture"></a>Aracı tabanlı geçiş mimarisi
 
@@ -42,14 +42,14 @@ Tablo, aracı tabanlı geçiş için kullanılan bileşenleri özetler.
 
 **Bileşen** | **Ayrıntılar** | **Yükleme**
 --- | --- | ---
-**Çoğaltma gereci** | Çoğaltma gereci (yapılandırma sunucusu), şirket içi ortam arasında köprü görevi gören şirket içi bir makinedir ve Azure geçiş sunucusu geçiş aracı. Gereç, şirket içi VM envanterini bulur, böylece Azure Server geçişi çoğaltmayı ve geçişi düzenleyebilir. Gereç iki bileşene sahiptir:<br/><br/> **Yapılandırma sunucusu**: Azure geçişi sunucu geçişine bağlanır ve çoğaltmaları koordine eder.<br/> **İşlem sunucusu**: Veri çoğaltmasını işler. VM verilerini alır, sıkıştırır ve şifreler ve Azure aboneliğine gönderir. Burada, sunucu geçişi verileri yönetilen disklere yazar. | Varsayılan olarak, işlem sunucusu çoğaltma gereci üzerinde yapılandırma sunucusu ile birlikte yüklenir.
+**Çoğaltma gereci** | Çoğaltma gereci (yapılandırma sunucusu), şirket içi ortam arasında köprü görevi gören şirket içi bir makinedir ve Azure geçiş sunucusu geçiş aracı. Gereç, şirket içi VM envanterini bulur, böylece Azure Server geçişi çoğaltmayı ve geçişi düzenleyebilir. Gereç iki bileşene sahiptir:<br/><br/> **Yapılandırma sunucusu**: Azure geçişi sunucu geçişine bağlanır ve çoğaltmaları koordine eder.<br/> **İşlem sunucusu**: veri çoğaltmasını işler. VM verilerini alır, sıkıştırır ve şifreler ve Azure aboneliğine gönderir. Burada, sunucu geçişi verileri yönetilen disklere yazar. | Varsayılan olarak, işlem sunucusu çoğaltma gereci üzerinde yapılandırma sunucusu ile birlikte yüklenir.
 **Ulaşım hizmeti** | Mobility hizmeti, çoğaltmak ve geçirmek istediğiniz her makinede yüklü bir aracıdır. Makineden işlem sunucusuna çoğaltma verileri gönderir. Birçok farklı Mobility hizmeti Aracısı mevcuttur. | Mobility hizmeti için yükleme dosyaları, çoğaltma gereci 'nda bulunur. Çoğaltmak istediğiniz makinenin işletim sistemine ve sürümüne uygun olarak, ihtiyacınız olan aracıyı indirip yüklersiniz.
 
 ### <a name="mobility-service-installation"></a>Mobility hizmeti yüklemesi
 
 Mobility hizmetini aşağıdaki yöntemleri kullanarak dağıtabilirsiniz:
 
-- **Gönderim yükleme**: Bir makine için korumayı etkinleştirdiğinizde Mobility hizmeti işlem sunucusu tarafından yüklenir. 
+- **Anında yükleme**: bir makine için korumayı etkinleştirdiğinizde Mobility hizmeti işlem sunucusu tarafından yüklenir. 
 - **El Ile yüklensin**: Mobility hizmetini her makineye Kullanıcı arabirimi veya komut istemi aracılığıyla el ile yükleyebilirsiniz.
 
 Mobility hizmeti, çoğaltma gereci ve çoğaltılan makinelerle iletişim kurar. Çoğaltma gereci, işlem sunucularında veya çoğaltılan makinelerde çalışan bir virüsten koruma yazılımınız varsa, aşağıdaki klasörlerin taramanın dışında tutulması gerekir:
@@ -77,7 +77,7 @@ Mobility hizmeti, çoğaltma gereci ve çoğaltılan makinelerle iletişim kurar
 
 **cihaz** | **bağlantı**
 --- | --- 
-VM | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna gönderir (varsayılan olarak çoğaltma gereci üzerinde çalışır), HTTPS 9443 gelen bağlantı noktası üzerinden. Bu bağlantı noktası değiştirilebilir.
+VM'ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna gönderir (varsayılan olarak çoğaltma gereci üzerinde çalışır), HTTPS 9443 gelen bağlantı noktası üzerinden. Bu bağlantı noktası değiştirilebilir.
 Çoğaltma gereci | Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.
 İşlem sunucusu | İşlem sunucusu çoğaltma verilerini alır, bunları iyileştirir ve şifreler ve 443 giden bağlantı noktası üzerinden Azure depolama 'ya gönderir.
 
@@ -118,7 +118,7 @@ Bir genişleme işlem sunucusu dağıtmanız gerekiyorsa, bu tablo sunucu boyutu
 
  Azure 'a çoğaltılan VMware trafiği belirli bir işlem sunucusundan geçer. İşlem sunucuları olarak çalışan makinelerdeki bant genişliğini azaltarak karşıya yükleme verimini sınırlayabilirsiniz. Bu kayıt defteri anahtarını kullanarak bant genişliğini etkileyebilirsiniz:
 
-- HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM kayıt defteri değeri, bir diskin veri aktarımı (başlangıç veya değişim çoğaltması) için kullanılan iş parçacıklarının sayısını belirtir. Daha yüksek bir değer, çoğaltma için kullanılan ağ bant genişliğini artırır. Varsayılan değer 4 ' tür. En büyük değer 32 ' dir. Değeri iyileştirmek için trafiği izleyin.
+- HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM kayıt defteri değeri, bir diskin veri aktarımı (başlangıç veya değişim çoğaltması) için kullanılan iş parçacıklarının sayısını belirtir. Daha yüksek bir değer, çoğaltma için kullanılan ağ bant genişliğini artırır. Varsayılan değer 4 ' tür. En büyük değer 32 ' dir. Değeri iyileştirmek için trafiği izleyin.
 - Buna ek olarak, işlem sunucusu makinesindeki bant genişliğini şu şekilde kısıtlama edebilirsiniz:
 
     1. İşlem sunucusu makinesinde, Azure Backup MMC ek bileşenini açın. Masaüstünde veya C:\Program Files\Microsoft Azure kurtarma hizmetleri servisleri \ bin klasöründe bir kısayol bulunur. 

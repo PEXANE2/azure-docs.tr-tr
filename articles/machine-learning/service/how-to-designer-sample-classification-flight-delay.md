@@ -1,7 +1,7 @@
 ---
-title: 'Tasarımcı: sınıflandırma, uçuş gecikmelerini tahmin etme'
+title: 'Tasarımcı: Uçuş gecikmesi örneğini tahmin etme'
 titleSuffix: Azure Machine Learning
-description: Bu makalede, sürükle ve bırak tasarımcısını ve özel R kodunu kullanarak uçuş gecikmelerini tahmin etmek için bir makine öğrenimi modelinin nasıl oluşturulacağı gösterilmektedir.
+description: Azure Machine Learning Designer ile uçuş gecikmelerini tahmin etmek için bir sınıflandırıcı oluşturun ve özel R kodu kullanın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 10b3b78b4878eeddf2f786fda90ab9709e4bd2b4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 06d158fb228ea82e61e785407fc0c59d66c2de15
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647193"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196015"
 ---
-# <a name="sample-6---classification-predict-flight-delays-using-r"></a>Örnek 6-sınıflandırma: R kullanarak uçuş gecikmelerini tahmin etme
+# <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Azure Machine Learning Designer ile uçuş gecikmelerini tahmin etmek için R & bir sınıflandırıcı oluşturma
+
+**Tasarımcı (Önizleme) örnek 6**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Bu işlem hattı, zamanlanan bir pasur uçuşun 15 dakikadan fazla ertelenmesini tahmin etmek için geçmiş Uçuş ve hava durumu verilerini kullanır. Bu sorun, bir sınıflandırma sorunu olarak approached olabilir ve iki sınıfı tahmin edebilir: gecikiyor ya da zaman.
@@ -26,7 +29,7 @@ Bu örnek için nihai işlem hattı grafiği aşağıda verilmiştir:
 
 [işlem hattının ![grafiği](media/how-to-ui-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

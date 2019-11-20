@@ -1,7 +1,7 @@
 ---
-title: 'Tasarımcı: tahmin fiyatı (gerileme)'
+title: 'Tasarımcı: araba fiyatlarını tahmin etme (temel) örneği'
 titleSuffix: Azure Machine Learning
-description: Tek bir kod satırı yazmadan bir otomobil fiyatını tahmin etmek için bir makine öğrenimi modeli oluşturmayı öğrenin.
+description: Azure Machine Learning Designer ile tek bir kod satırı yazmadan bir otomobil fiyatını tahmin etmek için bir ML regresyon modeli oluşturun.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 0cdf2d0b632368a5a5bc24e092783c979f7c26bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: ab922733133856409e7c91ee7b216fdc5a341c06
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647162"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196132"
 ---
-# <a name="sample-1---regression-predict-price"></a>Örnek 1-gerileme: tahmin fiyatı
+# <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı ile otomobil fiyatlarını tahmin etmek için gerileme kullanma
+
+**Tasarımcı (Önizleme) örnek 1**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan Machine Learning regresyon modeli oluşturmayı öğrenin.
@@ -35,7 +38,7 @@ Ardışık düzenin son, tamamlanan grafiği aşağıda verilmiştir. Bu makaled
 
 ![İşlem hattının grafiği](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

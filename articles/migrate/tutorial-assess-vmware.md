@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/18/2019
+ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 7187cb41fa7ea499035c57e83e04038b1269b418
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 595b6705b4e876ce5b42a7de831136cb0b62b1f5
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158676"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196438"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Azure geçişi ile VMware VM 'lerini değerlendirin: Sunucu değerlendirmesi
 
@@ -172,7 +172,7 @@ Gerecin, VM 'lerin yapılandırma ve performans verilerini bulması için vCente
 
 ### <a name="specify-vcenter-server-details"></a>vCenter Server ayrıntılarını belirtin
 1. **VCenter Server ayrıntılarını belirtin**bölümünde vCenter Server adı (FQDN) veya IP adresini belirtin. Varsayılan bağlantı noktasını bırakabilir veya vCenter Server dinlediği özel bir bağlantı noktası belirtebilirsiniz.
-2. **Kullanıcı adı** ve **parola**' da, gerecin vCenter sunucusundaki VM 'leri bulması için kullanacağı salt okuma hesabı kimlik bilgilerini belirtin. Hesabın [bulma için gerekli izinlere](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)sahip olduğundan emin olun. VCenter hesabına erişimi uygun şekilde sınırlayarak bulma kapsamını belirleyebilirsiniz; kapsam [bulma hakkında](tutorial-assess-vmware.md#scoping-discovery)daha fazla bilgi edinin.
+2. **Kullanıcı adı** ve **parola**' da, gerecin vCenter sunucusundaki VM 'leri bulması için kullanacağı vCenter Server hesabı kimlik bilgilerini belirtin. Hesabın [bulma için gerekli izinlere](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)sahip olduğundan emin olun. VCenter hesabına erişimi uygun şekilde sınırlayarak bulma kapsamını belirleyebilirsiniz; kapsam [bulma hakkında](tutorial-assess-vmware.md#scoping-discovery)daha fazla bilgi edinin.
 3. Gerecin vCenter Server bağlanabildiğini sağlamak için **bağlantıyı doğrula** ' ya tıklayın.
 
 ### <a name="specify-vm-credentials"></a>VM kimlik bilgilerini belirtin
@@ -222,7 +222,7 @@ VCenter 'daki envanter nesnelerine atanmış bir role sahip vCenter Kullanıcı 
 
     Benzer şekilde sunucu geçişi için, Kullanıcı tanımlı bir rol ( <em>Azure _Migrate</em>olarak adlandırılabilir) bu [ayrıcalıklar](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) , geçirilecek VM 'lerin barındırıldığı tüm üst nesneler için vCenter Kullanıcı hesabına uygulanmalıdır.
 
-![İzin atama](./media/tutorial-assess-vmware/assign-perms.png)
+  ![İzin atama](./media/tutorial-assess-vmware/assign-perms.png)
 
 - Alternatif yaklaşım, Kullanıcı hesabını ve rolü veri merkezi düzeyinde atamak ve bunları alt nesnelere yaymalıdır. Ardından hesaba, bulmayı/geçirmeyi istemediğiniz her nesne için **erişim** rolü (örneğin, VM 'ler) verin. Bu yapılandırma, kısaberbir yapılandırmadır. Her yeni alt nesneye Ayrıca otomatik olarak üst öğeden devralınan erişim verildiğinden, bu, yanlışlıkla erişim denetimleri sunar. Bu nedenle, ilk yaklaşımı kullanmanızı öneririz.
 

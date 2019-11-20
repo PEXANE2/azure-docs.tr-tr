@@ -1,5 +1,5 @@
 ---
-title: VM 'Ler için özel IP adresleri yapılandırma (klasik)-Azure klasik CLı
+title: VM 'Ler için özel IP adresleri yapılandırma (klasik)-CLı
 titlesuffix: Azure Virtual Network
 description: Klasik Azure komut satırı arabirimi (CLI) kullanarak sanal makineler (Klasik) için özel IP adresleri yapılandırmayı öğrenin.
 services: virtual-network
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 64342c6dcf4c9a052442a6f4b0afb7a56994f496
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9deaf4b1d80ad4e55e7c971998e8b1f5ea562257
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059230"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196576"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>Klasik Azure CLI kullanarak sanal makine (Klasik) için özel IP adreslerini yapılandırın
 

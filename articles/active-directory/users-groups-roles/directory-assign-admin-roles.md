@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a53f2a0e5927a75c4d22ada5837da26bd8deeda
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fc9565f44fdb868bc45d2f99de1d4036e1d5d123
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028281"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181139"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -51,9 +51,14 @@ Aşağıdaki Yönetici rolleri kullanılabilir:
 
 Bu roldeki kullanıcılar kurumsal uygulamaların, uygulama kayıtlarının ve uygulama proxy ayarlarının tüm yönlerini oluşturabilir ve yönetebilir. Bu role atanan kullanıcıların yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmediğini unutmayın.
 
-> [!IMPORTANT]
-> Bu rol, uygulama kimlik bilgilerini yönetme olanağı verir. Bu role atanan kullanıcılar, bir uygulamaya kimlik bilgileri ekleyebilir ve uygulamanın kimliğini taklit etmek için bu kimlik bilgilerini kullanabilir. Uygulamanın kimliğine Kullanıcı veya başka nesneler oluşturma veya güncelleştirme yeteneği gibi Azure Active Directory erişimi verildiyse, bu role atanan bir Kullanıcı, uygulamayı taklit ederken bu eylemleri gerçekleştirebilir. Uygulamanın kimliğini taklit etme özelliği, kullanıcının Azure AD 'de rol atamaları aracılığıyla yapabilecekleri ayrıcalık yükselmesine neden olabilir. Bir kullanıcıyı uygulama yöneticisi rolüne atamanın, uygulamanın kimliğini taklit etme olanağı sağladığını anlamak önemlidir.
+Uygulama yöneticileri, uygulamanın taklit etmesine izin veren uygulama kimlik bilgilerini yönetebilir. Bu nedenle, bu role atanan kullanıcılar yalnızca herhangi bir Azure AD rolüne atanmamış ya da yalnızca aşağıdaki yönetici rollerine atanmayan uygulamaların uygulama kimlik bilgilerini yönetebilir:
+* Uygulama Yöneticisi
+* Uygulama geliştiricisi
+* Bulut uygulaması Yöneticisi
+* Dizin okuyucuları
 
+Bir uygulama yukarıda belirtilmeyen başka herhangi bir role atanırsa, uygulama Yöneticisi bu uygulamanın kimlik bilgilerini yönetemez. 
+ 
 Bu rol Ayrıca, Microsoft Graph ve Azure AD grafiğinde izin verilen izinler ve uygulama _izinleri için izin verme olanağı verir_ .
 
 > [!IMPORTANT]
@@ -122,8 +127,12 @@ Satın alma işlemleri yapar, abonelikleri yönetir, destek biletlerini yönetir
 
 Bu roldeki kullanıcılar uygulama proxy 'si rolüyle aynı izinlere sahiptir ve uygulama ara sunucusunu yönetme imkanını dışlar. Bu rol, kurumsal uygulamaların ve uygulama kayıtlarının tüm yönlerini oluşturma ve yönetme olanağı verir. Bu rol Ayrıca, Microsoft Graph ve Azure AD grafiğini dışlayarak uygulama izinleri için izin verme izni verir. Bu role atanan kullanıcılar, yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmez.
 
-> [!IMPORTANT]
-> Bu rol, uygulama kimlik bilgilerini yönetme olanağı verir. Bu role atanan kullanıcılar, bir uygulamaya kimlik bilgileri ekleyebilir ve uygulamanın kimliğini taklit etmek için bu kimlik bilgilerini kullanabilir. Uygulamanın kimliğine Kullanıcı veya başka nesneler oluşturma veya güncelleştirme yeteneği gibi Azure Active Directory erişimi verildiyse, bu role atanan bir Kullanıcı, uygulamayı taklit ederken bu eylemleri gerçekleştirebilir. Uygulamanın kimliğini taklit etme özelliği, kullanıcının Azure AD 'de rol atamaları aracılığıyla yapabilecekleri ayrıcalık yükselmesine neden olabilir. Bir kullanıcıyı bulut uygulaması Yöneticisi rolüne atamanın, bir uygulamanın kimliğini taklit etme olanağı sağladığını anlamak önemlidir.
+Bulut uygulaması yöneticileri, uygulamanın taklit etmesine izin veren uygulama kimlik bilgilerini yönetebilir. Bu nedenle, bu role atanan kullanıcılar yalnızca herhangi bir Azure AD rolüne atanmamış ya da yalnızca aşağıdaki yönetici rollerine atanmayan uygulamaların uygulama kimlik bilgilerini yönetebilir:
+* Uygulama geliştiricisi
+* Bulut uygulaması Yöneticisi
+* Dizin okuyucuları
+
+Bir uygulama yukarıda belirtilmeyen başka herhangi bir role atanırsa, bulut uygulaması Yöneticisi bu uygulamanın kimlik bilgilerini yönetemez.
 
 ### <a name="cloud-device-administratorcloud-device-administrator-permissions"></a>[Bulut Cihaz Yöneticisi](#cloud-device-administrator-permissions)
 

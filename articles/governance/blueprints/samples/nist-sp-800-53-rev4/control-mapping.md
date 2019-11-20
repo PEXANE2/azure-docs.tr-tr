@@ -1,14 +1,14 @@
 ---
 title: NIST SP 800-53 R4 şema örnek denetimi eşlemesi
 description: NIST SP 800-53 R4 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-ms.date: 06/24/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 1197c6153c0252d8b6738f0e4909e32ca2ddf94e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 94011cf5bbebf0278fa66d4c2ad97e3918679ca4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037849"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184496"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 şema örneğinin denetim eşlemesi
 

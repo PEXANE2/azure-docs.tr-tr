@@ -1,6 +1,7 @@
 ---
-title: Media Services varlıkların filtrelenmesi, sıralanması ve sayfalanması-Azure | Microsoft Docs
-description: Bu makalede, Azure Media Services varlıkların filtrelenmesini, sıralanmasını ve sayfalama işlemlerini ele alınmaktadır.
+title: Media Services varlıkların filtrelenmesi, sıralanması ve sayfalama
+titleSuffix: Azure Media Services
+description: Azure Media Services varlıkların filtrelenmesi, sıralanması ve sayfalama hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,12 +13,12 @@ ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d13ff3944e53f103c03a92e03d217b0066bc97df
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 22b8c4e2454d6130ebcaf85346b767c843fbc1f0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693321"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186241"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services varlıkların filtrelenmesi, sıralanması ve sayfalama
 
@@ -25,7 +26,7 @@ Bu konu, Azure Media Services v3 varlıklarını listelerken kullanılabilen ODa
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* @No__t_0 türündeki varlıkların özellikleri her zaman UTC biçimindedir.
+* `Datetime` türündeki varlıkların özellikleri her zaman UTC biçimindedir.
 * İstek gönderilmeden önce sorgu dizesindeki boşluk, URL kodlamalı olmalıdır.
 
 ## <a name="comparison-operators"></a>Karşılaştırma işleçleri
@@ -41,10 +42,10 @@ Aralık işleçleri:
 
 - `gt`: bir alanın sabit değerden *büyük* olup olmadığını test edin.
 - `lt`: bir alanın sabit değerden *küçük* olup olmadığını test edin.
-- `ge`: bir alanın bir *sabitten büyük veya ona eşit* olup olmadığını test edin. değer
+- `ge`: bir alanın sabit değere *eşit veya ondan büyük* olup olmadığını test edin.
 - `le`: bir alanın sabit değere *eşit veya ondan küçük* olup olmadığını test edin.
 
-## <a name="filter"></a>Filtrele
+## <a name="filter"></a>Filtre
 
 Yalnızca ilgilendiğiniz nesneleri bulmak için bir OData filtre parametresi sağlamak üzere `$filter` kullanın.
 
@@ -59,17 +60,17 @@ Aşağıdaki C# örnek, varlığın oluşturulma tarihinde filtreliyor:
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
-```    
+```
 
 ## <a name="order-by"></a>Sıralama ölçütü
 
-Döndürülen nesneleri belirtilen parametreye göre sıralamak için `$orderby` kullanın. Örnek:    
+Döndürülen nesneleri belirtilen parametreye göre sıralamak için `$orderby` kullanın. Örneğin:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-Sonuçları artan veya azalan düzende sıralamak için, alan adına `asc` veya `desc` ' i boşlukla ayırarak ekleyin. Örneğin: `$orderby properties/created desc`.
+Sonuçları artan veya azalan düzende sıralamak için, alan adına `asc` veya `desc` boşlukla ayırarak ekleyin. Örneğin: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Belirteci atla
 
@@ -77,14 +78,14 @@ Bir sorgu yanıtı çok sayıda öğe içeriyorsa, hizmet bir sonraki sonuç say
 
 V3 Media Services, sayfa boyutunu yapılandıramazsınız. Sayfa boyutu varlık türüne göre değişir. Ayrıntılar için aşağıdaki ayrı bölümleri okuyun.
 
-Koleksiyon üzerinde sayfalama yaparken varlıklar oluşturulur veya silinirse, değişiklikler döndürülen sonuçlara yansıtılır (Bu değişiklikler henüz indirilmemiş koleksiyonun parçasıysa). 
+Koleksiyon üzerinde sayfalama yaparken varlıklar oluşturulur veya silinirse, değişiklikler döndürülen sonuçlara yansıtılır (Bu değişiklikler henüz indirilmemiş koleksiyonun parçasıysa).
 
 > [!TIP]
 > Belirli bir sayfa boyutuna bağlı değil, koleksiyonu numaralandırmak için `nextLink` her zaman kullanmalısınız.
 >
-> @No__t_0 değeri yalnızca birden fazla varlık sayfası varsa mevcut olacaktır.
+> `nextLink` değeri yalnızca birden fazla varlık sayfası varsa mevcut olacaktır.
 
-@No__t_0 kullanıldığı yerde aşağıdaki örneği göz önünde bulundurun. *Amstestaccount* değerini hesap adınızla değiştirdiğinizden ve *api sürümü* değerini en son sürüme ayarladığınızdan emin olun.
+`$skiptoken` kullanıldığı yerde aşağıdaki örneği göz önünde bulundurun. *Amstestaccount* değerini hesap adınızla değiştirdiğinizden ve *api sürümü* değerini en son sürüme ayarladığınızdan emin olun.
 
 Aşağıdaki gibi varlıkların bir listesini istemeniz durumunda:
 
@@ -155,29 +156,29 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 Aşağıdaki tabloda, filtreleme ve sıralama seçeneklerinin farklı varlıklara nasıl uygulanacağı gösterilmektedir:
 
-|Varlık adı|Özellik adı|Filtrele|Sipariş|
+|Varlık adı|Özellik adı|Filtre|Sipariş verme|
 |---|---|---|---|
 |[Varlıklar](https://docs.microsoft.com/rest/api/media/assets/)|ad|`eq`, `gt`, `lt`, `ge`, `le`|`asc` ve `desc`|
-||Properties. AlternateId |`eq`||
-||Properties. assetId |`eq`||
-||Özellikler. oluşturuldu| `eq`, `gt`, `lt`| `asc` ve `desc`|
+||properties.alternateId |`eq`||
+||properties.assetId |`eq`||
+||Properties.Created| `eq`, `gt`, `lt`| `asc` ve `desc`|
 |[İçerik anahtarı ilkeleri](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|ad|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
-||Özellikler. oluşturuldu    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
-||Properties. Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
-||Properties. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
-||Properties. PolicyId|`eq`, `ne`||
+||Properties.Created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+||Properties.Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+||properties.policyId|`eq`, `ne`||
 |[İşler](https://docs.microsoft.com/rest/api/media/jobs)| ad  | `eq`            | `asc` ve `desc`|
 ||Properties. State        | `eq`, `ne`        |                         |
-||Özellikler. oluşturuldu      | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
-||Properties. lastModified | `gt`, `ge`, `lt`, `le` | `asc` ve `desc`| 
+||Properties.Created      | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
+||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` ve `desc`| 
 |[Akış Konumlandırıcı](https://docs.microsoft.com/rest/api/media/streaminglocators)|ad|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
-||Özellikler. oluşturuldu    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+||Properties.Created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
 ||Properties. BitişZamanı    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
 |[Akış ilkeleri](https://docs.microsoft.com/rest/api/media/streamingpolicies)|ad|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
-||Özellikler. oluşturuldu    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+||Properties.Created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
 |[Dönüşümler](https://docs.microsoft.com/rest/api/media/transforms)| ad | `eq`            | `asc` ve `desc`|
-|| Özellikler. oluşturuldu      | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
-|| Properties. lastModified | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
+|| Properties.Created      | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
+|| properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

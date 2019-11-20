@@ -1,7 +1,7 @@
 ---
-title: 'Tasarımcı: araba fiyatlarını tahmin etme (gerileme)'
+title: 'Tasarımcı: araba fiyatlarını tahmin etme (Gelişmiş) örneği'
 titleSuffix: Azure Machine Learning
-description: Bu makalede, tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan karmaşık makine öğrenimi işlem hattının nasıl oluşturulacağı gösterilmektedir. Bir otomobil 'nin teknik özelliklerine göre fiyatını tahmin etmek için birden çok regresyon modelini eğitme ve karşılaştırma hakkında bilgi edinin
+description: Azure Machine Learning Designer ile teknik özelliklere göre bir otomobil fiyatını tahmin etmek için, birden çok ML regresyon modeli oluşturun & karşılaştırın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: d73f6d67afff13696de78d026ff65228fd68fb28
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 5eb701af90125e2654d6f908b28512aba3ad37aa
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647945"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196075"
 ---
-# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Örnek 2-gerileme: fiyat ve karşılaştırma algoritmalarını tahmin etme
+# <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Azure Machine Learning Designer ile otomobil fiyatlarını tahmin etmek için birden çok gerileme modelini karşılaştırın & eğitme
+
+**Tasarımcı (Önizleme) örnek 2**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan makine öğrenimi ardışık düzeni oluşturmayı öğrenin. Bu örnek, bir arabasının teknik özelliklerine göre fiyatını tahmin etmek için birden çok regresyon modelini karşılaştırır. Kendi makine öğrenimi sorunlarınızı ortadan kaldırmak için bu işlem hattında yapılan seçenekler için ktionale sağlayacağız.
@@ -28,7 +31,7 @@ Bu işlem hattı için tamamlanan grafik aşağıda verilmiştir:
 
 [işlem hattının ![grafiği](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

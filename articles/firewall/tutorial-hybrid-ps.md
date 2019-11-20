@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell kullanarak hibrit bir ağda Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
+title: PowerShell kullanarak karma ağda Azure Güvenlik Duvarı 'Nı dağıtma & yapılandırma
 description: Bu makalede, Azure Güvenlik Duvarı 'Nı Azure PowerShell kullanarak dağıtmayı ve yapılandırmayı öğreneceksiniz.
 services: firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a5a008a795b88dbcb72ed9fba869e5251fd93567
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d198ee2e1fa8d3afeacda53c2ad6b91d69abca2a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163525"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195773"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure PowerShell kullanarak hibrit bir ağda Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
 
@@ -464,7 +464,7 @@ Azure portalından, **VM-Onprem** sanal makinesine bağlanın.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-**VM-Onpred**üzerinde bir Web tarayıcısı açın ve http://\<VM-bağlı-01 özel IP \> gidin.
+**VM-Onpred**üzerinde bir Web tarayıcısı açın ve http://\<VM-ışınsal-01 özel IP\>gidin.
 
 Internet Information Services varsayılan sayfasını görmelisiniz.
 

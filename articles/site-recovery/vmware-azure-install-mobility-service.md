@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: f1a96302d180f3b4b179f42013232f3b48d4e2b0
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016359"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186446"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Mobility aracısının gönderim yüklemesi için kaynak makineyi hazırlama
 
@@ -24,15 +24,15 @@ Korumak istediğiniz her bir Windows makinesinde şunları yapın:
 1. Makine ve işlem sunucusu arasında ağ bağlantısı olduğundan emin olun. Ayrı bir işlem sunucusu ayarlamadıysanız, varsayılan olarak yapılandırma sunucusunda çalışır.
 1. İşlem sunucusunun bilgisayara erişmek için kullanabileceği bir hesap oluşturun. Hesabın yerel veya etki alanı yönetici haklarına sahip olması gerekir. Bu hesabı yalnızca anında yükleme ve aracı güncelleştirmeleri için kullanın.
 2. Bir etki alanı hesabı kullanmıyorsanız, yerel bilgisayarda Uzak Kullanıcı erişim denetimini şu şekilde devre dışı bırakın:
-    - HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System kayıt defteri anahtarı altında yeni bir DWORD ekleyin: **LocalAccountTokenFilterPolicy**. Değeri **1**olarak ayarlayın.
+    - HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System kayıt defteri anahtarı altında yeni bir DWORD: **LocalAccountTokenFilterPolicy**ekleyin. Değeri **1**olarak ayarlayın.
     -  Bunu bir komut isteminde yapmak için aşağıdaki komutu çalıştırın:  
-   ' REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/v LocalAccountTokenFilterPolicy/t REG_DWORD/d
+   ' REG ADD HKEY_LOCAL_MACHINE \Software\microsoft\windows\currentversion\policies\sistem/v LocalAccountTokenFilterPolicy/t REG_DWORD/d
 3. Korumak istediğiniz makinedeki Windows Güvenlik Duvarı ' nda, **güvenlik duvarı aracılığıyla bir uygulamaya veya özelliğe Izin ver**' i seçin. **Dosya ve yazıcı paylaşımını** ve **Windows Yönetim Araçları (WMI)** etkinleştirin. Bir etki alanına ait bilgisayarlar için, güvenlik duvarı ayarlarını bir grup ilkesi nesnesi (GPO) kullanarak yapılandırabilirsiniz.
 
-   ![Güvenlik Duvarı ayarları](./media/vmware-azure-install-mobility-service/mobility1.png)
+   ![Güvenlik duvarı ayarları](./media/vmware-azure-install-mobility-service/mobility1.png)
 
 4. Oluşturduğunuz hesabı CSPSConfigtool içine ekleyin. Bunu yapmak için yapılandırma sunucunuzda oturum açın.
-5. **cspsconfigtool.exe** dosyasını açın. Bu, masaüstünde ve%ProgramData%\home\svsystems\bin klasöründe bir kısayol olarak kullanılabilir.
+5. **cspsconfigtool.exe** dosyasını açın. Bu, masaüstünde ve%ProgramData%\ASR\home\svsystems\bin klasöründe bir kısayol olarak kullanılabilir.
 6. **Hesapları Yönet** sekmesinde **Hesap Ekle**' yi seçin.
 7. Oluşturduğunuz hesabı ekleyin.
 8. Bir bilgisayar için çoğaltmayı etkinleştirdiğinizde kullandığınız kimlik bilgilerini girin.
